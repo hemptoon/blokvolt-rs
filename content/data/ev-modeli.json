@@ -1,5 +1,7 @@
 {
   "checked": "22.09.2026",
+  "next_check": "15.11.2026",
+  "subsidy_eur": 5000,
   "method_note": "Cene preuzete isključivo sa zvaničnih sajtova/cenovnika uvoznika (osim Leapmotor — mediji). Dodatna polja po modelu: 'price_includes_subsidy' (true = objavljena cena je već umanjena za državnu subvenciju 5.000 €; false = subvencija izričito nije uračunata; null = nije navedeno) i 'note'. PDF-ovi blokirani robots.txt nisu zaobilaženi. WebSearch budžet sesije iscrpljen tokom rada — brendovi 25+ provereni samo direktnim pristupom domenima.",
   "brands": [
     {

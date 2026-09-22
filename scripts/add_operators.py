@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """Ring 2 — public charging operators, hosts and free chargers in Serbia (content/operateri/*.json).
-Facts, dates and confidence levels follow the 22.09.2026 research (BlokVolt_Agregator_Istrazivanje_Javno_Punjenje)."""
+Facts, dates and confidence levels follow the 22.09.2026 research (BlokVolt_Agregator_Istrazivanje_Javno_Punjenje).
+
+HISTORICAL IMPORT SCRIPT — DO NOT RE-RUN. Since 22.09.2026 the JSON files in content/operateri/ are the
+source of truth and are edited directly (see docs/RUNBOOK.md); re-running this script would overwrite those edits."""
 import json
 from pathlib import Path
 

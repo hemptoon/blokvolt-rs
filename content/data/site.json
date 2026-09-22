@@ -1,0 +1,21 @@
+{
+ "updated": "22.09.2026",
+ "updated_note": "Datum poslednje izmene sadržaja: footer, početna, sitemap lastmod. Menja se pri svakom deploy-u sa izmenama sadržaja.",
+ "firms_checked": "22.09.2026",
+ "firms_checked_note": "Datum poslednje pune provere registra firmi (tabela cena, /firme/, gradovi). Menja se samo posle revizije svih firmi.",
+ "home_stats": [
+  {"b": "7.155", "html": "električnih automobila u Srbiji (MUP, april 2026) — uz 55.184 hibrida"},
+  {"b": "535", "html": "novih električnih automobila registrovanih u prvoj polovini 2026 — <strong>+232 %</strong> (SAUVD)"},
+  {"b": "~220", "html": "javno dostupnih punjača u celoj Srbiji; državnih na autoputevima 36, i besplatni su — <a href=\"/javno-punjenje/\">mreže i cene</a>"}
+ ],
+ "news": [
+  {"date": "22.09.2026", "html": "Novo: <a href=\"/alati/kalkulator-troskova/\">kalkulator troškova</a> — punjenje kod kuće po tarifama EPS-a, javni punjači po cenama sa računa, poređenje sa benzinom i dizelom."},
+  {"date": "22.09.2026", "html": "Nove stranice: <a href=\"/podaci/cene-elektricnih-automobila/\">cene električnih automobila</a> (66 modela kod uvoznika), <a href=\"/podaci/rent-a-car-i-car-sharing/\">iznajmljivanje</a> i <a href=\"/javno-punjenje/region/\">punjenje u regionu</a>."},
+  {"date": "22.09.2026", "html": "Nove stranice o vlasništvu: <a href=\"/podaci/registracija-i-porezi/\">registracija i porezi</a>, <a href=\"/podaci/osiguranje-elektricnog-automobila/\">osiguranje</a>, <a href=\"/podaci/krediti-i-lizing/\">krediti i lizing</a>, <a href=\"/podaci/uvoz-i-carina/\">uvoz i carina</a>, <a href=\"/podaci/servisi-za-elektricne-automobile/\">servisi</a>."},
+  {"date": "22.09.2026", "html": "Novi razdel: <a href=\"/javno-punjenje/\">javno punjenje</a> — 11 mreža, aplikacija i domaćina, indeks poslednjih zabeleženih cena sa računicom po kWh i <a href=\"/javno-punjenje/besplatni-punjaci/\">besplatni punjači</a>."},
+  {"date": "22.09.2026", "html": "Registar firmi proširen sa 20 na 42: dodati Orion eMobility (11 kW 99.000 RSD), Voltech (48.000), Energy Net, Union/Avtera (MID u uređaju), Električar Niš (jedini javni cenovnik ugradnje) i još 17 firmi. <a href=\"/izmene/\">Dnevnik izmena</a>."},
+  {"date": "22.09.2026", "html": "Nova stranica: <a href=\"/podaci/subvencije-2026/\">subvencije za električne automobile 2026</a> — rok za prijave produžen do 1. decembra, budžet i status."},
+  {"date": "22.09.2026", "html": "Nova stranica: <a href=\"/podaci/statistika-ev-srbija/\">statistika električnih automobila u Srbiji</a> — vozni park, registracije, javni punjači."}
+ ],
+ "news_on_home": 5
+}

@@ -23,17 +23,11 @@
 <a class="bva-card" href="/podaci/"><b>Podaci: subvencije, registracija, osiguranje, krediti</b><span>Subvencija od 5.000 € do 1. decembra 2026, porez na upotrebu (0 RSD za EV), autoodgovornost po kW, kamate banaka, carina pri uvozu, servisi, statistika — sa izvorom i datumom.</span></a>
 </div>
 <div class="bva-stats">
-<div class="bva-stat"><b>7.155</b><span>električnih automobila u Srbiji (MUP, april 2026) — uz 55.184 hibrida</span></div>
-<div class="bva-stat"><b>535</b><span>novih električnih automobila registrovanih u prvoj polovini 2026 — <strong>+232 %</strong> (SAUVD)</span></div>
-<div class="bva-stat"><b>~220</b><span>javno dostupnih punjača u celoj Srbiji; državnih na autoputevima 36, i besplatni su — <a href="/javno-punjenje/">mreže i cene</a></span></div>
-</div>
+{% for s in SITE_META.home_stats %}<div class="bva-stat"><b>{{ s.b }}</b><span>{{ s.html|safe }}</span></div>
+{% endfor %}</div>
 <h2>Šta je novo</h2>
 <ul class="agg-news">
-<li><b>{{ TODAY }}</b> — Nove stranice o vlasništvu: <a href="/podaci/registracija-i-porezi/">registracija i porezi</a>, <a href="/podaci/osiguranje-elektricnog-automobila/">osiguranje</a>, <a href="/podaci/krediti-i-lizing/">krediti i lizing</a>, <a href="/podaci/uvoz-i-carina/">uvoz i carina</a>, <a href="/podaci/servisi-za-elektricne-automobile/">servisi</a>.</li>
-<li><b>{{ TODAY }}</b> — Novi razdel: <a href="/javno-punjenje/">javno punjenje</a> — {{ n_ops }} mreža, aplikacija i domaćina, indeks poslednjih zabeleženih cena sa računicom po kWh i <a href="/javno-punjenje/besplatni-punjaci/">besplatni punjači</a>.</li>
-<li><b>{{ TODAY }}</b> — Registar firmi proširen sa 20 na {{ n_firms }}: dodati Orion eMobility (11 kW 99.000 RSD), Voltech (48.000), Energy Net, Union/Avtera (MID u uređaju), Električar Niš (jedini javni cenovnik ugradnje) i još 17 firmi. <a href="/izmene/">Dnevnik izmena</a>.</li>
-<li><b>{{ TODAY }}</b> — Nova stranica: <a href="/podaci/subvencije-2026/">subvencije za električne automobile 2026</a> — rok za prijave produžen do 1. decembra, budžet i status.</li>
-<li><b>{{ TODAY }}</b> — Nova stranica: <a href="/podaci/statistika-ev-srbija/">statistika električnih automobila u Srbiji</a> — vozni park, registracije, javni punjači.</li>
-</ul>
+{% for n in SITE_META.news[:SITE_META.news_on_home] %}<li><b>{{ n.date }}</b> — {{ n.html|safe }}</li>
+{% endfor %}</ul>
 <p class="bva-disc">Sajt vodi tim kompanije Evolako, koja i sama ugrađuje punjače u Novom Sadu i Beogradu. Zato objavljujemo samo javne, proverljive podatke sa izvorom i datumom, ne ocenjujemo firme, a sopstvenu ponudu označavamo kao „naša ponuda“ — u istoj tabeli, po istim kolonama. <a href="/metodologija/">Kako radimo</a> · <a href="/o-sajtu/">O sajtu</a> · <a href="/ispravka/">Prijavite ispravku</a>.</p>
 </div></div>{% endblock %}

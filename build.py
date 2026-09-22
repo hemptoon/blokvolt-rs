@@ -11,8 +11,12 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).parent
 DIST = ROOT / 'dist'
 SITE = 'https://www.blokvolt.rs'
-TODAY = '22.09.2026'
-ISO_TODAY = '2026-09-22'
+# Dates live in content/data/site.json: 'updated' = last content update (footer, home, sitemap lastmod),
+# 'firms_checked' = last full revision of the firm register. Update them there, not here.
+SITE_META = json.load(open(ROOT / 'content' / 'data' / 'site.json', encoding='utf-8'))
+TODAY = SITE_META['updated']
+ISO_TODAY = '-'.join(reversed(TODAY.split('.')))
+FIRMS_CHECKED = SITE_META['firms_checked']
 
 env = Environment(loader=FileSystemLoader(str(ROOT / 'templates')), autoescape=select_autoescape(['html']), trim_blocks=True, lstrip_blocks=True)
 
@@ -150,7 +154,7 @@ for row in price_index['rows']:
 
 # ---------- shared context ----------
 NAV = [('/firme/', 'Firme'), ('/cena-punjaca-za-elektricni-auto', 'Cene'), ('/javno-punjenje/', 'Javno punjenje'), ('/alati/kalkulator-troskova/', 'Kalkulator'), ('/vodici/', 'Vodiči'), ('/podaci/', 'Podaci')]
-base_ctx = dict(SITE=SITE, TODAY=TODAY, NAV=NAV, n_firms=len(published), n_leads=len(firms) - len(published), n_vodica=7, n_ops=len(operators))
+base_ctx = dict(SITE=SITE, TODAY=TODAY, FIRMS_CHECKED=FIRMS_CHECKED, SITE_META=SITE_META, NAV=NAV, n_firms=len(published), n_leads=len(firms) - len(published), n_vodica=7, n_ops=len(operators))
 
 def render(tpl, path, **ctx):
     t = env.get_template(tpl)
@@ -219,13 +223,13 @@ for f in published:
     add_url(f['url'], '0.6')
 render('firme_index.html', '/firme/', GROUPS=GROUPS, by_group=by_group, firms=published, cities=cities, CITY_SLUGS=CITY_SLUGS, KINDS=KINDS,
        title=f"Firme za punjače u Srbiji — {len(published)} prodavaca i instalatera, iste kolone za sve | BlokVolt",
-       description=f"Registar {len(published)} firmi koje prodaju ili ugrađuju kućne punjače za električne automobile u Srbiji: javne cene, ugradnja, MID brojilo, papiri za skupštinu, garancija. Provereno {TODAY}.")
+       description=f"Registar {len(published)} firmi koje prodaju ili ugrađuju kućne punjače za električne automobile u Srbiji: javne cene, ugradnja, MID brojilo, papiri za skupštinu, garancija. Provereno {FIRMS_CHECKED}.")
 add_url('/firme/', '0.9')
 for city, lst in cities.items():
     slug = CITY_SLUGS[city]
     render('grad.html', f'/gradovi/{slug}/', city=city, firms=lst, GROUPS=GROUPS,
            title=f"Punjači za električni auto — {city}: {len(lst)} firmi koje prodaju i ugrađuju | BlokVolt",
-           description=f"Ko prodaje i ugrađuje kućne punjače u gradu {city}: {len(lst)} firmi sa javnim cenama, uslovima ugradnje i garancijom. Provereno {TODAY}.")
+           description=f"Ko prodaje i ugrađuje kućne punjače u gradu {city}: {len(lst)} firmi sa javnim cenama, uslovima ugradnje i garancijom. Provereno {FIRMS_CHECKED}.")
     add_url(f'/gradovi/{slug}/', '0.6')
 
 # 4) markdown pages (podaci, o-sajtu, metodologija, ispravka, izmene)
@@ -252,9 +256,10 @@ for o in operators:
     render('operator.html', o['url'], op=o, title=f"{o['name']} — javno punjenje: cene, naplata, uslovi | BlokVolt",
            description=f"{o['name']}: {o['short'][:150]} Provereno {o['verified']}.")
     add_url(o['url'], '0.6')
+index_checked = price_index['updated']
 render('javno_index.html', '/javno-punjenje/', ops=operators, ops_by_kind=ops_by_kind, KIND_GROUPS=KIND_GROUPS, index=price_index,
        title='Javni punjači u Srbiji — mreže, cene po minutu i po kWh, besplatni punjači | BlokVolt',
-       description=f'Ko vodi javne punjače u Srbiji (Charge&GO, Orion eMobility, JP Putevi Srbije, Tesla, OMV…), poslednje zabeležene cene sa računicom po kWh, 36 besplatnih državnih punjača na autoputevima i propisi. Provereno {TODAY}.')
+       description=f'Ko vodi javne punjače u Srbiji (Charge&GO, Orion eMobility, JP Putevi Srbije, Tesla, OMV…), poslednje zabeležene cene sa računicom po kWh, 36 besplatnih državnih punjača na autoputevima i propisi. Provereno {index_checked}.')
 add_url('/javno-punjenje/', '0.9')
 
 # 4c) cost calculator (tools)

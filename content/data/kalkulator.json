@@ -4,21 +4,59 @@
   "valid_from": "01.10.2025",
   "note": "Regulisana cena za garantovano snabdevanje domaćinstava, bez akcize i PDV-a; cena sadrži i pristup mreži. Plava zona važi do 1.200 kWh mesečno do kraja 2026.",
   "zones": [
-   {"id": "zelena", "name": "Zelena zona", "range": "do 350 kWh mesečno", "vt": 9.6136, "nt": 2.4034},
-   {"id": "plava", "name": "Plava zona", "range": "351–1.200 kWh mesečno", "vt": 14.4203, "nt": 3.6051},
-   {"id": "crvena", "name": "Crvena zona", "range": "preko 1.200 kWh mesečno", "vt": 28.8407, "nt": 7.2102}
+   {
+    "id": "zelena",
+    "name": "Zelena zona",
+    "range": "do 350 kWh mesečno",
+    "vt": 9.6136,
+    "nt": 2.4034
+   },
+   {
+    "id": "plava",
+    "name": "Plava zona",
+    "range": "351–1.200 kWh mesečno",
+    "vt": 14.4203,
+    "nt": 3.6051
+   },
+   {
+    "id": "crvena",
+    "name": "Crvena zona",
+    "range": "preko 1.200 kWh mesečno",
+    "vt": 28.8407,
+    "nt": 7.2102
+   }
   ],
   "oie": 0.801,
   "ee": 0.015,
   "akciza": 0.075,
-  "pdv": 0.20,
+  "pdv": 0.2,
   "snaga_rsd_kw": 60.8947,
   "sources": [
-   {"label": "EPS — cene električne energije za garantovano snabdevanje (odluka od 01.10.2025, bez akcize i PDV-a)", "url": "https://www.eps.rs/cir/snabdevanje/Pages/cene.aspx", "date": "22.09.2026"},
-   {"label": "EPS, 01.09.2025 — nova cena od 01.10.2025, rast zbog cene pristupa prenosnom i distributivnom sistemu", "url": "https://www.eps.rs/lat/vesti/Stranice/nova-cena-ee-gs.aspx", "date": "01.09.2025"},
-   {"label": "Paragraf, 25.08.2025 — plava zona do 1.200 kWh, metodologija do kraja 2026", "url": "https://www.paragraf.rs/dnevne-vesti/250825/250825-vest6.html", "date": "25.08.2025"},
-   {"label": "021.rs — naknada za podsticaj povlašćenih proizvođača u 2026. ista kao u 2025 (0,801 RSD/kWh)", "url": "https://www.021.rs/info/srbija/433015/vlada-srbije-naknada-za-podsticaj-povlascenih-proizvodjaca-elektricne-energije-kao-i-u-2025", "date": "22.09.2026"},
-   {"label": "EPS — objašnjenje računa (obračunska snaga 60,8947 RSD/kW, naknada za energetsku efikasnost 0,015 RSD/kWh)", "url": "https://www.eps.rs/lat/snabdevanje/Stranice/objasnjenje-racuna-kp.aspx", "date": "22.09.2026"}
+   {
+    "label": "EPS — cene električne energije za garantovano snabdevanje (odluka od 01.10.2025, bez akcize i PDV-a)",
+    "url": "https://www.eps.rs/cir/snabdevanje/Pages/cene.aspx",
+    "date": "22.09.2026"
+   },
+   {
+    "label": "EPS, 01.09.2025 — nova cena od 01.10.2025, rast zbog cene pristupa prenosnom i distributivnom sistemu",
+    "url": "https://www.eps.rs/lat/vesti/Stranice/nova-cena-ee-gs.aspx",
+    "date": "01.09.2025"
+   },
+   {
+    "label": "Paragraf, 25.08.2025 — plava zona do 1.200 kWh, metodologija do kraja 2026",
+    "url": "https://www.paragraf.rs/dnevne-vesti/250825/250825-vest6.html",
+    "date": "25.08.2025"
+   },
+   {
+    "label": "021.rs — naknada za podsticaj povlašćenih proizvođača u 2026. ista kao u 2025 (0,801 RSD/kWh)",
+    "url": "https://www.021.rs/info/srbija/433015/vlada-srbije-naknada-za-podsticaj-povlascenih-proizvodjaca-elektricne-energije-kao-i-u-2025",
+    "date": "22.09.2026"
+   },
+   {
+    "label": "EPS — objašnjenje računa (obračunska snaga 60,8947 RSD/kW, naknada za energetsku efikasnost 0,015 RSD/kWh)",
+    "url": "https://www.eps.rs/lat/snabdevanje/Stranice/objasnjenje-racuna-kp.aspx",
+    "date": "22.09.2026"
+   }
   ]
  },
  "fuel": {
@@ -26,13 +64,43 @@
   "valid_to": "25.09.2026",
   "benzin": 207,
   "dizel": 236,
-  "label": "najviše maloprodajne cene, Ministarstvo unutrašnje i spoljne trgovine (važe do 25.09.2026)",
+  "label": "najviše maloprodajne cene koje objavljuje Ministarstvo unutrašnje i spoljne trgovine; menjaju se svakog petka",
   "url": "https://www.mojnovisad.com/objavljene-cene-goriva-koje-ce-vaziti-do-25-septembra/"
  },
  "public": [
-  {"id": "dc", "label": "Brzi DC punjač", "rsd_kwh": 60, "note": "prosek četiri računa iz aplikacije Charge&GO, avgust–septembar 2026 (43–79 RSD/kWh)"},
-  {"id": "ac", "label": "AC punjač, auto prima 11 kW", "rsd_kwh": 91, "note": "Charge&GO AC 22 kW, 16,67 RSD/min (aplikacija, 22.09.2026)"},
-  {"id": "free", "label": "Besplatni državni punjač", "rsd_kwh": 0, "note": "JP „Putevi Srbije“ na autoputevima, za sada bez naplate"}
+  {
+   "id": "dc",
+   "label": "Brzi DC punjač",
+   "rsd_kwh": 60,
+   "note": "prosek četiri računa iz aplikacije Charge&GO, avgust–septembar 2026 (43–79 RSD/kWh)"
+  },
+  {
+   "id": "ac",
+   "label": "AC punjač, auto prima 11 kW",
+   "rsd_kwh": 91,
+   "note": "Charge&GO AC 22 kW, 16,67 RSD/min (aplikacija, 22.09.2026)"
+  },
+  {
+   "id": "free",
+   "label": "Besplatni državni punjač",
+   "rsd_kwh": 0,
+   "note": "JP „Putevi Srbije“ na autoputevima, za sada bez naplate"
+  }
  ],
- "defaults": {"km": 1250, "kwh100": 17, "loss": 10, "public_share": 10, "zone": "plava", "tariff": "nt", "public": "dc", "fuel": "benzin", "l100_benzin": 6.5, "l100_dizel": 5.5, "extra_kw": 0}
+ "public_checked": "22.09.2026",
+ "public_basis": "računi i cene iz aplikacija",
+ "public_range": "43–79",
+ "defaults": {
+  "km": 1250,
+  "kwh100": 17,
+  "loss": 10,
+  "public_share": 10,
+  "zone": "plava",
+  "tariff": "nt",
+  "public": "dc",
+  "fuel": "benzin",
+  "l100_benzin": 6.5,
+  "l100_dizel": 5.5,
+  "extra_kw": 0
+ }
 }

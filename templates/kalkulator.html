@@ -6,7 +6,7 @@
   {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Kalkulator troškova", "item": "{{ SITE }}{{ path }}"}]}
  ]
 }</script>{% endblock %}
-{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Alati · kalkulator · ažurirano {{ calc.checked }}</div><h1>Kalkulator: koliko košta vožnja električnim automobilom</h1><p>Punjenje kod kuće i na javnim punjačima, poređenje sa benzinom i dizelom — po tarifama EPS-a, zvaničnim cenama goriva i računima sa javnih punjača. Sve brojke možete da promenite.</p><div class="v3-meta"><span>Struja: EPS od {{ eps.valid_from }}</span><span>Gorivo: {{ fuel.date }}</span><span>Javno punjenje: računi iz aplikacije, 09.2026</span></div><div class="v3-chips"><a href="#kalkulator">Kalkulator</a><a href="#cena-kwh">Cena kWh kod kuće</a><a href="#kako-racunamo">Kako računamo</a><a href="/javno-punjenje/#cene">Cene javnog punjenja</a></div></div></div>{% endblock %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Alati · kalkulator · ažurirano {{ calc.checked }}</div><h1>Kalkulator: koliko košta vožnja električnim automobilom</h1><p>Punjenje kod kuće i na javnim punjačima, poređenje sa benzinom i dizelom — po tarifama EPS-a, zvaničnim cenama goriva i računima sa javnih punjača. Sve brojke možete da promenite.</p><div class="v3-meta"><span>Struja: EPS od {{ eps.valid_from }}</span><span>Gorivo: {{ fuel.date }}</span><span>Javno punjenje: {{ calc.public_basis }}, {{ calc.public_checked }}</span></div><div class="v3-chips"><a href="#kalkulator">Kalkulator</a><a href="#cena-kwh">Cena kWh kod kuće</a><a href="#kako-racunamo">Kako računamo</a><a href="/javno-punjenje/#cene">Cene javnog punjenja</a></div></div></div>{% endblock %}
 {% block content %}<div class="bva"><div class="w3">
 <form class="calc" id="kalkulator" action="#" novalidate>
 <div class="calc-in">
@@ -52,7 +52,7 @@
 <div class="bva-tw"><table class="bva-tbl"><thead><tr><th>Zona (mesečna potrošnja)</th><th>Niža tarifa (noć)</th><th>Viša tarifa (dan)</th><th>100 km noću, {{ d.kwh100|sr(0) }} kWh + {{ d.loss }} % gubitaka</th></tr></thead><tbody>
 {% for r in tariff_rows %}<tr><td data-label="Zona">{{ r.name }}<small class="chk">{{ r.range }}; energija {{ r.nt_raw|sr(4) }} / {{ r.vt_raw|sr(4) }} RSD/kWh bez poreza</small></td><td data-label="Niža tarifa (noć)"><b>{{ r.nt|sr(2) }} RSD/kWh</b></td><td data-label="Viša tarifa (dan)">{{ r.vt|sr(2) }} RSD/kWh</td><td data-label="100 km noću">{{ r.per100|sr }} RSD</td></tr>
 {% endfor %}</tbody></table></div>
-<p>Za poređenje: na javnim brzim punjačima kilovat-sat je na našim računima izašao 43–79 RSD, a na besplatnim državnim punjačima na autoputevima punjenje se za sada ne naplaćuje — vidi <a href="/javno-punjenje/">javno punjenje</a> i <a href="/javno-punjenje/besplatni-punjaci/">besplatne punjače</a>.</p>
+<p>Za poređenje: na javnim brzim punjačima kilovat-sat je na našim računima izašao {{ calc.public_range }} RSD, a na besplatnim državnim punjačima na autoputevima punjenje se za sada ne naplaćuje — vidi <a href="/javno-punjenje/">javno punjenje</a> i <a href="/javno-punjenje/besplatni-punjaci/">besplatne punjače</a>.</p>
 
 <h2 id="kako-racunamo">Kako računamo</h2>
 <p><strong>Kod kuće:</strong> cena kWh = (cena energije za zonu i tarifu + naknada za obnovljive izvore {{ eps.oie|sr(3) }} RSD + naknada za energetsku efikasnost {{ eps.ee|sr(3) }} RSD) × akciza 7,5 % × PDV 20 %. Potrošena energija sa brojila = kilometri × potrošnja ÷ 100 × (1 + gubici). Veća odobrena snaga: {{ eps.snaga_rsd_kw|sr(4) }} RSD po kW mesečno, sa akcizom i PDV-om {{ snaga_brutto|sr(2) }} RSD. Fiksne stavke koje plaćate i bez automobila (trošak snabdevača, taksa za javni servis) nisu uračunate.</p>
@@ -62,7 +62,7 @@
 <div class="bva-note"><p>Kalkulator daje okvirnu računicu, ne ponudu. Cene struje, goriva i javnog punjenja proveravamo svakog meseca; datumi su uz svaku brojku. Ako imate račun koji pokazuje drugačije — <a href="/ispravka/">pošaljite nam ga</a>.</p></div>
 
 <h2>Izvori</h2>
-<ul class="bva-src">{% for s in eps.sources %}<li><a href="{{ s.url }}" rel="noopener">{{ s.label }}</a></li>{% endfor %}<li><a href="{{ fuel.url }}" rel="noopener">Cene goriva od {{ fuel.date }} — {{ fuel.label }}</a></li><li><a href="/javno-punjenje/#cene">BlokVolt — indeks cena javnog punjenja (računi i aplikacije, 22.09.2026)</a></li></ul>
+<ul class="bva-src">{% for s in eps.sources %}<li><a href="{{ s.url }}" rel="noopener">{{ s.label }}</a></li>{% endfor %}<li><a href="{{ fuel.url }}" rel="noopener">Cene goriva od {{ fuel.date }} — {{ fuel.label }}</a></li><li><a href="/javno-punjenje/#cene">BlokVolt — indeks cena javnog punjenja ({{ calc.public_basis }}, {{ calc.public_checked }})</a></li></ul>
 <p class="bva-disc">Tekst i kalkulator pripremljeni su uz pomoć AI alata; tarife, cene i formule proverila je redakcija BlokVolta. Nije finansijski savet. Grešku prijavite na <a href="/ispravka/">stranici za ispravke</a>.</p>
 </div></div>
 <script id="calc-data" type="application/json">{{ calc_json|safe }}</script>

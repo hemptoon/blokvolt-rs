@@ -7,8 +7,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = json.load(open(ROOT / 'content' / 'data' / 'ev-modeli.json', encoding='utf-8'))
 OUT = ROOT / 'content' / 'podaci' / 'cene-elektricnih-automobila.md'
-SUB = 5000
+SUB = DATA.get('subsidy_eur', 5000)
 CHECKED = DATA.get('checked', '22.09.2026')
+NEXT_CHECK = DATA.get('next_check', '15.11.2026')
+MODIFIED = '-'.join(reversed(CHECKED.split('.')))
 
 def eur(x):
     return f"{int(round(x)):,}".replace(',', '.') + ' €'
@@ -148,9 +150,9 @@ description: Početne cene {n_models} električnih modela {len(brands_priced)} m
 kicker: Podaci · modeli i cene
 lead: Koliko košta nov električni automobil u Srbiji: najniža javno objavljena cena svakog modela, računica posle državne subvencije i gde se kupuje. Samo cene koje uvoznik objavljuje, sa linkom i datumom.
 updated: {CHECKED}
-next_check: 15.11.2026
+next_check: {NEXT_CHECK}
 published: 2026-09-22
-modified: 2026-09-22
+modified: {MODIFIED}
 priority: 0.8
 disclaimer: Cene su informativne — važi ponuda prodavca na dan kupovine, a subvencija zavisi od raspoloživog budžeta. Tekst je pripremljen uz pomoć AI alata; cene je redakcija BlokVolta prepisala sa sajtova i cenovnika uvoznika {CHECKED}. Grešku ili novu cenu prijavite na
 sources: {' | '.join(sources)}
