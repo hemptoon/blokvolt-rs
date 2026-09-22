@@ -1,5 +1,5 @@
 {
- "checked": "22.09.2026",
+ "checked": "23.09.2026",
  "eps": {
   "valid_from": "01.10.2025",
   "note": "Regulisana cena za garantovano snabdevanje domaćinstava, bez akcize i PDV-a; cena sadrži i pristup mreži. Plava zona važi do 1.200 kWh mesečno do kraja 2026.",
@@ -35,7 +35,7 @@
    {
     "label": "EPS — cene električne energije za garantovano snabdevanje (odluka od 01.10.2025, bez akcize i PDV-a)",
     "url": "https://www.eps.rs/cir/snabdevanje/Pages/cene.aspx",
-    "date": "22.09.2026"
+    "date": "23.09.2026"
    },
    {
     "label": "EPS, 01.09.2025 — nova cena od 01.10.2025, rast zbog cene pristupa prenosnom i distributivnom sistemu",
@@ -50,14 +50,57 @@
    {
     "label": "021.rs — naknada za podsticaj povlašćenih proizvođača u 2026. ista kao u 2025 (0,801 RSD/kWh)",
     "url": "https://www.021.rs/info/srbija/433015/vlada-srbije-naknada-za-podsticaj-povlascenih-proizvodjaca-elektricne-energije-kao-i-u-2025",
-    "date": "22.09.2026"
+    "date": "23.09.2026"
    },
    {
     "label": "EPS — objašnjenje računa (obračunska snaga 60,8947 RSD/kW, naknada za energetsku efikasnost 0,015 RSD/kWh)",
     "url": "https://www.eps.rs/lat/snabdevanje/Stranice/objasnjenje-racuna-kp.aspx",
-    "date": "22.09.2026"
+    "date": "23.09.2026"
+   },
+   {
+    "label": "Nova.rs, 13.08.2026 — Elektrodistribucija Srbije: sati niže tarife po regionima (Beograd 24–8, Vojvodina 23–7, centralna Srbija 22–6)",
+    "url": "https://nova.rs/vesti/biznis/u-koliko-sati-pocinje-jeftina-struja-srbija-je-podeljena-na-tri-zone-evo-tacne-satnice",
+    "date": "23.09.2026"
+   },
+   {
+    "label": "Novosti, 09.04.2018 — EPS: niža tarifa traje osam sati bez obzira na sezonu, vikend i praznike",
+    "url": "https://www.novosti.rs/vesti/naslovna/ekonomija/aktuelno.239.html:721175-SAROLIKA-NOCNA-TARIFA-Traje-osam-sati-ne-pocinje-svuda-u-Srbiji-u-isto-vreme",
+    "date": "23.09.2026"
+   },
+   {
+    "label": "Danas, 01.10.2025 — nove cene po zonama i tarifama, granica plave zone spuštena sa 1.600 na 1.200 kWh",
+    "url": "https://www.danas.rs/vesti/ekonomija/poskupljenje-struje-cenovnik-racuni-tarife/",
+    "date": "01.10.2025"
+   },
+   {
+    "label": "Servisinfo — cene za jednotarifno merenje po zonama (sekundarni izvor, bez datuma)",
+    "url": "https://www.servisinfo.com/cena-struje",
+    "date": "23.09.2026"
    }
-  ]
+  ],
+  "zone_note": "Za obračunski period od 30 dana prvih 350 kWh ulazi u zelenu zonu, potrošnja do 1.200 kWh u plavu, a ostatak u crvenu; granice se srazmerno prilagođavaju broju dana u periodu.",
+  "zone_change": "Od 01.10.2025. granica plave zone spuštena je sa 1.600 na 1.200 kWh, uz prosečno poskupljenje od 6,6 %.",
+  "nt_hours": [
+   {
+    "region": "Beograd",
+    "window": "od 24.00 do 8.00"
+   },
+   {
+    "region": "Vojvodina",
+    "window": "od 23.00 do 7.00"
+   },
+   {
+    "region": "centralna Srbija",
+    "window": "od 22.00 do 6.00"
+   }
+  ],
+  "nt_note": "Niža tarifa traje neprekidno osam časova svakog dana, bez obzira na letnje i zimsko računanje vremena, vikend, neradne dane i praznike. Koriste je samo domaćinstva sa dvotarifnim brojilom.",
+  "jednotarifno": {
+   "zelena": 8.41,
+   "plava": 12.62,
+   "crvena": 25.24,
+   "conf": "sekundarni izvor (servisinfo.com); EPS jednotarifne cene ne objavljuje na stranici sa cenama, a odluka je skenirana"
+  }
  },
  "fuel": {
   "date": "18.09.2026",
@@ -102,5 +145,6 @@
   "l100_benzin": 6.5,
   "l100_dizel": 5.5,
   "extra_kw": 0
- }
+ },
+ "tarife_next_check": "15.11.2026"
 }

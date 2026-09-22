@@ -52,6 +52,7 @@
 <div class="bva-tw"><table class="bva-tbl"><thead><tr><th>Zona (mesečna potrošnja)</th><th>Niža tarifa (noć)</th><th>Viša tarifa (dan)</th><th>100 km noću, {{ d.kwh100|sr(0) }} kWh + {{ d.loss }} % gubitaka</th></tr></thead><tbody>
 {% for r in tariff_rows %}<tr><td data-label="Zona">{{ r.name }}<small class="chk">{{ r.range }}; energija {{ r.nt_raw|sr(4) }} / {{ r.vt_raw|sr(4) }} RSD/kWh bez poreza</small></td><td data-label="Niža tarifa (noć)"><b>{{ r.nt|sr(2) }} RSD/kWh</b></td><td data-label="Viša tarifa (dan)">{{ r.vt|sr(2) }} RSD/kWh</td><td data-label="100 km noću">{{ r.per100|sr }} RSD</td></tr>
 {% endfor %}</tbody></table></div>
+<p>Zone, sati niže tarife po regionima (Beograd 24–8, Vojvodina 23–7, centralna Srbija 22–6) i šta auto radi mesečnom računu — na stranici <a href="/podaci/tarife-eps/">cene struje za domaćinstva</a>.</p>
 <p>Za poređenje: na javnim brzim punjačima kilovat-sat je na našim računima izašao {{ calc.public_range }} RSD, a na besplatnim državnim punjačima na autoputevima punjenje se za sada ne naplaćuje — vidi <a href="/javno-punjenje/">javno punjenje</a> i <a href="/javno-punjenje/besplatni-punjaci/">besplatne punjače</a>.</p>
 
 <h2 id="kako-racunamo">Kako računamo</h2>

@@ -3,16 +3,20 @@ title: Dnevnik izmena
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Svaka ispravka i svako veće ažuriranje ostavljaju trag ovde. Najnovije je na vrhu.
-updated: 22.09.2026
+updated: 23.09.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-09-22
+modified: 2026-09-23
 priority: 0.3
 disclaimer: Nedostaje nešto u dnevniku? Pišite na
 ---
+## 23. septembar 2026
+
+- Nova stranica: <a href="/podaci/tarife-eps/">cene struje za domaćinstva</a> — regulisane cene EPS-a po zonama i tarifama sa svim naknadama, akcizom i PDV-om, sati niže tarife po regionima (Beograd 24–8, Vojvodina 23–7, centralna Srbija 22–6, izvor Elektrodistribucija Srbije) i računica šta električni auto dodaje na račun. Cene provereno uz drugi izvor (Danas, 01.10.2025).
+- Novi meni: padajuće sekcije <strong>Firme</strong>, <strong>Javno punjenje</strong>, <strong>Podaci</strong> i <strong>Vodiči</strong> sa svim stranicama na jednom mestu, plus prečica do kalkulatora. Na telefonu meni radi kao klizne kartice.
+
 ## 22. septembar 2026
 
-- Novi meni: padajuće sekcije <strong>Firme</strong>, <strong>Javno punjenje</strong>, <strong>Podaci</strong> i <strong>Vodiči</strong> sa svim stranicama na jednom mestu, plus prečica do kalkulatora. Na telefonu meni radi kao klizne kartice.
 - Novo: <a href="/alati/kalkulator-troskova/">kalkulator troškova</a> — punjenje kod kuće po tarifama EPS-a (sa naknadama, akcizom i PDV-om), javni punjači po cenama sa računa, poređenje sa benzinom i dizelom po zvaničnim cenama goriva. Kalkulator je dodat u glavni meni.
 - Nove stranice: <a href="/podaci/cene-elektricnih-automobila/">cene električnih automobila</a> (66 modela 17 marki sa cenom kod uvoznika, računica posle subvencije, uvoznici i saloni), <a href="/podaci/rent-a-car-i-car-sharing/">iznajmljivanje električnog automobila</a> (rent-a-car, car-sharing, taksi, dugoročni najam) i <a href="/javno-punjenje/region/">punjenje u regionu</a> (Hrvatska, Mađarska, Severna Makedonija, BiH, Crna Gora: cene, plaćanje, srpske aplikacije, brzi punjači na putu).
 - <a href="/javno-punjenje/#cene">Indeks cena javnog punjenja</a>: cene iz aplikacija Charge&GO, Orion eMobility i Emobility Spectra (snimci ekrana redakcije, 22.09.2026) i četiri računa iz aplikacije Charge&GO; stariji zapisi korisnika i medija (2021–2025) premešteni u istoriju cena na karticama mreža. Dodato upozorenje da isti punjač u različitim aplikacijama ima različitu cenu (roming Charge&GO u Orionu) i opis obračuna po „jedinici punjenja“ kod Emobility Spectra.
