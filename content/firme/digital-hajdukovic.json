@@ -1,21 +1,47 @@
 {
  "slug": "digital-hajdukovic",
  "name": "Digital Hajduković",
- "group": "L",
- "publish": false,
+ "group": "C",
+ "publish": true,
  "is_us": false,
- "kind": "trag",
- "website": "https://digital.rs",
- "domain": "digital.rs",
- "city": "—",
- "coverage": "",
- "offer": "EVD02-11RD 11 kW u pretrazi; domen na parking-stranici",
- "price_headline": "",
- "cells": {},
- "verdicts": {},
- "contact": {},
- "sources": [],
- "verified": "22.09.2026",
- "confidence": "nisko",
- "notes": "Trag — proveriti pozivom pre objave."
+ "kind": "prodavnica",
+ "website": "https://digital.co.rs/punjaci-za-elektricna-vozila/",
+ "domain": "digital.co.rs",
+ "city": "Sombor",
+ "coverage": "cela Srbija (online)",
+ "offer": "Elektro i IT web-shop; sopstvena serija zidnih punjača EVD02 (7, 11 i 22 kW, Tip 2) i prenosni punjači",
+ "price_headline": "Wallbox 7 kW EVD02-07RD: 43.191 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">Wallbox 7 kW (EVD02-07RD): 43.191 RSD</b> (redovna 47.990)<br/>11 kW (EVD02-11RD): 47.511 (52.790)<br/>22 kW (EVD02-22RD): 56.151 (62.390)<br/>22 kW SMART sa WiFi aplikacijom (EVD02-22RW): 60.471 (67.190)<br/>22 kW M3W3 swift (WiFi): 89.990<br/>Prenosni 16 A (E0123016AT2C): 19.863 (22.070)<small>sajt navodi da su cene sa uračunatim porezom; bez ugradnje</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: 2 godine (navedeno uz kategoriju punjača)</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 25 420 200",
+  "email": "office@digital.rs",
+  "address": "Staparski put 32, 25000 Sombor"
+ },
+ "sources": [
+  {
+   "url": "https://digital.co.rs/punjaci-za-elektricna-vozila/",
+   "label": "digital.co.rs — punjači za električna vozila (cene)",
+   "date": "23.09.2026"
+  },
+  {
+   "url": "https://digital.rs/punjaci-za-elektricna-vozila",
+   "label": "digital.rs — ista kategorija na srpskom domenu",
+   "date": "23.09.2026"
+  }
+ ],
+ "verified": "23.09.2026",
+ "confidence": "visoko",
+ "notes": "Najniža objavljena cena zidnog punjača u registru na dan provere. Cene su akcijske — uz svaku stoji i redovna."
 }

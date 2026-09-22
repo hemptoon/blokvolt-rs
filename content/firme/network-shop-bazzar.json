@@ -1,21 +1,50 @@
 {
  "slug": "network-shop-bazzar",
- "name": "„Network shop“ (Bazzar)",
- "group": "L",
- "publish": false,
+ "name": "Bazzar (marketplace)",
+ "group": "C",
+ "publish": true,
  "is_us": false,
- "kind": "trag",
- "website": "https://bazzar.rs",
+ "kind": "prodavnica",
+ "website": "https://bazzar.rs/c/punjaci-za-elektricna-vozila",
  "domain": "bazzar.rs",
- "city": "—",
- "coverage": "",
- "offer": "ABB Terra AC 22 kW RFID 4G za 275.559 RSD na marketplace-u; prodavac nije identifikovan",
- "price_headline": "",
- "cells": {},
- "verdicts": {},
- "contact": {},
- "sources": [],
- "verified": "22.09.2026",
- "confidence": "nisko",
- "notes": "Trag — proveriti pozivom pre objave."
+ "city": "Beograd",
+ "coverage": "cela Srbija (online)",
+ "offer": "Marketplace sa zasebnim prodavcima; u kategoriji punjača dva zidna uređaja (ABB, Union) i kablovi",
+ "price_headline": "Union EVC04-AC7SWDA: 88.690 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">Union EV punjač EVC04-AC7SWDA: 88.690 RSD</b><br/>ABB Terra AC 22 kW, 3P 32 A, utičnica Tip 2, RFID + 4G: 275.559<br/>Kabl Gembird Tip 2, 3,7 kW, 8 m: 9.561 · adapter 4.145 · držači kabla 503 i 915<small>PDV nije naznačen uz cenu; prodavac po artiklu, bez ugradnje</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "address": "Radnička 7, 11000 Beograd (BAZZAR MARKETPLACE RS d.o.o.)"
+ },
+ "sources": [
+  {
+   "url": "https://bazzar.rs/c/punjaci-za-elektricna-vozila",
+   "label": "bazzar.rs — punjači za električna vozila (kategorija)",
+   "date": "23.09.2026"
+  },
+  {
+   "url": "https://bazzar.rs/p/3352R69-abb-terra-ac-ev-punjac-22kw-3p-32a-uticnica-tip-2-rfid4g",
+   "label": "bazzar.rs — ABB Terra AC 22 kW",
+   "date": "23.09.2026"
+  },
+  {
+   "url": "https://bazzar.rs/p/DEVD25J-union-ev-auto-punjac-evc04-ac7swda",
+   "label": "bazzar.rs — Union EVC04-AC7SWDA",
+   "date": "23.09.2026"
+  }
+ ],
+ "verified": "23.09.2026",
+ "confidence": "srednje",
+ "notes": "Marketplace, ne specijalizovana prodavnica: prodavac se razlikuje po artiklu. Cena ABB Terra AC 22 kW je ovde 275.559 RSD i ista je i pri ranijoj proveri 22.09.2026, dok isti model kod drugih prodavaca u registru ide od 78.820 do 111.972 — pre kupovine proveriti tačnu oznaku modela."
 }

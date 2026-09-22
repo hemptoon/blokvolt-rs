@@ -220,7 +220,8 @@ def patch_legacy(html_text, current=None):
     html_text = html_text.replace('<link rel="stylesheet" href="/assets/webflow.css">\n', '')
     html_text = html_text.replace('<link rel="stylesheet" href="/assets/site.css">', '<link rel="stylesheet" href="/assets/site.css">\n<link rel="stylesheet" href="/assets/agg.css">')
     html_text = html_text.replace('<script src="/assets/site.js" defer></script>', SCRIPTS)
-    html_text = html_text.replace('cene 20 firmi', 'cene 42 firme').replace('Cene 20 firmi', 'Cene 42 firme').replace('20 firmi', '42 firme')
+    _nf = f'{len(published)} firmi'
+    html_text = html_text.replace('cene 20 firmi', 'cene ' + _nf).replace('Cene 20 firmi', 'Cene ' + _nf).replace('20 firmi', _nf)
     return html_text
 
 # 1) legacy guides (passthrough with new chrome)

@@ -4,6 +4,7 @@
  "group": "C",
  "publish": true,
  "is_us": false,
+ "kind": "prodavnica",
  "website": "https://qoltec.co.rs/e-mobilnost/ev-punjaci/",
  "domain": "qoltec.co.rs",
  "city": "Beograd",
@@ -11,7 +12,7 @@
  "offer": "Qoltec AC 3,5 / 7 / 11 / 22 kW (CEE utikač), zidni 22 kW WiFi/RFID; aplikacija Tuya; Novi Beograd, Borča; isporuka",
  "price_headline": "11 kW: 39.800 RSD",
  "cells": {
-  "cena": "<b class=\"pr\">11 kW: 39.800 RSD</b><br/>(redovno 48.750)<br/>7 kW: 42.900 · 22 kW: 51.400<br/>22 kW WiFi/LCD/RFID: 67.490 (redovno 82.720)<small>sve „sa PDV-om“</small>",
+  "cena": "<b class=\"pr\">11 kW: 39.800 RSD</b><br/>(redovno 48.750)<br/>7 kW: 42.900 · 22 kW: 51.400 (redovno 64.250)<br/>22 kW WiFi/LCD/RFID: 67.490 (redovno 82.720)<br/>Prenosni 3,5 kW, 5 m: 19.800 (redovno 24.750)<small>sve „sa PDV-om“; 23.09.2026. na stanju su bili 11 kW i 7 kW, ostalo „nema na stanju“</small>",
   "ugradnja": "<b class=\"v no\">Ne pominje se</b><small>„preporučuje se instalacija zaštitnog prekidača“</small>",
   "brojilo": "<b class=\"v no\">Ne pominje se</b>",
   "skupstina": "<b class=\"v no\">Ne pominje se</b><small>samo prodaja uređaja</small>",
@@ -23,16 +24,22 @@
   "skupstina": "Ne pominje se",
   "usluga": "Ne pominje se"
  },
- "contact": {},
+ "contact": {
+  "phone": "011/411 411 4"
+ },
  "sources": [
+  {
+   "url": "https://qoltec.co.rs/e-mobilnost/ev-punjaci/",
+   "label": "qoltec.co.rs — EV punjači (cene sa PDV-om)",
+   "date": "23.09.2026"
+  },
   {
    "url": "https://qoltec.co.rs",
    "label": "qoltec.co.rs",
    "date": "07.09.2026"
   }
  ],
- "verified": "07.09.2026",
+ "verified": "23.09.2026",
  "confidence": "visoko",
- "notes": "",
- "kind": "prodavnica"
+ "notes": "Cena 11 kW je niža od cene 7 kW — proveriti specifikaciju pre kupovine."
 }
