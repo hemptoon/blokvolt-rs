@@ -12,6 +12,7 @@ disclaimer: Nedostaje nešto u dnevniku? Pišite na
 ---
 ## 23. septembar 2026
 
+- Nova stranica: <a href="/podaci/wallbox-modeli/">wallbox modeli i cene</a> — 45 javno objavljenih cena uređaja kod 20 prodavaca, poređanih po snazi, sa napomenom o PDV-u i kablu, i poređenjem cena istog modela kod različitih prodavaca.
 - Nova stranica: <a href="/podaci/tarife-eps/">cene struje za domaćinstva</a> — regulisane cene EPS-a po zonama i tarifama sa svim naknadama, akcizom i PDV-om, sati niže tarife po regionima (Beograd 24–8, Vojvodina 23–7, centralna Srbija 22–6, izvor Elektrodistribucija Srbije) i računica šta električni auto dodaje na račun. Cene provereno uz drugi izvor (Danas, 01.10.2025).
 - Novi meni: padajuće sekcije <strong>Firme</strong>, <strong>Javno punjenje</strong>, <strong>Podaci</strong> i <strong>Vodiči</strong> sa svim stranicama na jednom mestu, plus prečica do kalkulatora. Na telefonu meni radi kao klizne kartice.
 
