@@ -1,0 +1,41 @@
+{
+ "slug": "praktiker-elektrowebshop",
+ "name": "Praktiker (elektrowebshop.rs)",
+ "group": "C",
+ "publish": true,
+ "is_us": false,
+ "kind": "prodavnica",
+ "website": "https://elektrowebshop.rs/category/punjaci-za-elektricna-vozila",
+ "domain": "elektrowebshop.rs",
+ "city": "Nova Pazova",
+ "coverage": "cela Srbija (online)",
+ "offer": "Web-shop elektroopreme; Noark punjač 22 kW (400 V, 32 A) i Noark oprema za merenje struje",
+ "price_headline": "Noark 22 kW: 99.990 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">Noark 22 kW: 99.990 RSD</b><br/>Noark oprema za merenje struje: 22.999<small>PDV-status nije označen</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "062 267 147",
+  "email": "info@elektrowebshop.rs"
+ },
+ "sources": [
+  {
+   "url": "https://elektrowebshop.rs/category/punjaci-za-elektricna-vozila",
+   "label": "elektrowebshop.rs/category/punjaci-za-elektricna-vozila",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednje",
+ "notes": ""
+}

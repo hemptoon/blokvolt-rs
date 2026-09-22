@@ -1,0 +1,38 @@
+{
+ "slug": "vulovic-electric",
+ "name": "Vulović Electric",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "website": "https://vulovicelectric.rs/services/ev-charger-install",
+ "domain": "vulovicelectric.rs",
+ "city": "Ivanjica",
+ "coverage": "Srbija",
+ "offer": "AC 3,7–22 kW i DC do 300+ kW; elektro radovi, solar, KNX; područje nije navedeno",
+ "price_headline": "Nije objavljena",
+ "cells": {
+  "cena": "<b class=\"pr\">Nije objavljena</b>",
+  "ugradnja": "<b class=\"v ask\">Na upit</b><small>„Ključ u ruke“: priprema instalacije, zaštita, povezivanje, obuka — bez cena</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: „garancija za sve usluge“ (trajanje nije navedeno)</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Na upit",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://vulovicelectric.rs",
+   "label": "vulovicelectric.rs",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "srednje",
+ "notes": "",
+ "kind": "instalater"
+}

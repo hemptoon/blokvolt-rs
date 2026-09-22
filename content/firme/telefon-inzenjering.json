@@ -1,0 +1,46 @@
+{
+ "slug": "telefon-inzenjering",
+ "name": "Telefon inženjering",
+ "group": "B",
+ "publish": true,
+ "is_us": false,
+ "website": "https://elektro-punjaci.rs/proizvodi/",
+ "domain": "elektro-punjaci.rs",
+ "city": "Novi Banovci, Beograd",
+ "coverage": "cela Srbija",
+ "offer": "Wallbox, Alfen, Fronius Wattpilot, SMA, Sigen, Victron; 3,7–22 kW i DC moduli; od 2007; Srbija (dva sedišta, 3 magacina)",
+ "price_headline": "Wallbox Pulsar Max 22 kW: 92.040 RSD bez PDV",
+ "cells": {
+  "cena": "<b class=\"pr\">Wallbox Pulsar Max 22 kW: 92.040,39 RSD bez PDV</b> (≈110.450 sa PDV)<br/>Pulsar Plus 7,4 kW: 80.047,89 bez PDV<br/>Copper SB 22 kW: 91.649,61 bez PDV<br/>Alfen Eve Double Pro-line: 369.622,89 bez PDV<small>web-shop solarni-paneli.co.rs (isto pravno lice), 22.09.2026; na elektro-punjaci.rs cene nema</small>",
+  "ugradnja": "<b class=\"v ask\">Na upit</b><small>„Od planiranja, preko realizacije, do održavanja“</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: Wallbox produžena garancija (proizvođač); osnovni rok nije naveden</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Na upit",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se",
+  "cena": "javna cena (web-shop)"
+ },
+ "contact": {
+  "phone": "011 316 95 99"
+ },
+ "sources": [
+  {
+   "url": "https://www.solarni-paneli.co.rs/kategorija-proizvoda/punjaci-za-elektricna-vozila/",
+   "label": "solarni-paneli.co.rs — punjači (web-shop)",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://elektro-punjaci.rs",
+   "label": "elektro-punjaci.rs",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoko",
+ "notes": "",
+ "kind": "instalater"
+}

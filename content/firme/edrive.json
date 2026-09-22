@@ -1,0 +1,38 @@
+{
+ "slug": "edrive",
+ "name": "eDrive",
+ "group": "B",
+ "publish": true,
+ "is_us": false,
+ "website": "https://edrive.co.rs/shop/",
+ "domain": "edrive.co.rs",
+ "city": "Beograd",
+ "coverage": "cela Srbija",
+ "offer": "FMT AC 7–22 kW (OCPP, RFID, aplikacija), Teltonika; DC; „ključ u ruke“; regionalni operater javnih punjača",
+ "price_headline": "FMT AC 7–22 kW: 570 € + PDV",
+ "cells": {
+  "cena": "<b class=\"pr\">FMT AC 7–22 kW: 570 € + PDV</b><br/>(≈ 80.200 RSD sa PDV)<br/>Teltonika 11/22 kW: na upit",
+  "ugradnja": "<b class=\"v ask\">Na upit</b><small>„Vršimo sve potrebne radove po sistemu ključ u ruke“; cena nije objavljena</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>„24/7 podrška“. Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Na upit",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://edrive.co.rs",
+   "label": "edrive.co.rs",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "srednje",
+ "notes": "",
+ "kind": "instalater"
+}

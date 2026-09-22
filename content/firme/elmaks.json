@@ -1,0 +1,38 @@
+{
+ "slug": "elmaks",
+ "name": "Elmaks",
+ "group": "C",
+ "publish": true,
+ "is_us": false,
+ "website": "https://elmaks.rs/kategorija/stanice-za-punjenje/",
+ "domain": "elmaks.rs",
+ "city": "Niš",
+ "coverage": "Niš / online",
+ "offer": "Schneider Charge 7,4/11/22 kW, EVlink Home, dodaci za raspodelu opterećenja; veleprodaja elektromaterijala",
+ "price_headline": "Schneider Charge 7,4/11/22 kW: 93.120 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">Schneider Charge 7,4/11/22 kW: 93.120 RSD</b><br/>Schneider Charge 11 kW sa kablom 7 m: 97.920<br/>EVlink Home 11 kW: 120.360<small>PDV nije naznačen na sajtu</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b><small>samo prodaja uređaja</small>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://elmaks.rs",
+   "label": "elmaks.rs",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "srednje",
+ "notes": "",
+ "kind": "prodavnica"
+}

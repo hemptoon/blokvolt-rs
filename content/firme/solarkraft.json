@@ -1,0 +1,38 @@
+{
+ "slug": "solarkraft",
+ "name": "SolarKraft",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "website": "https://solarkraft.rs/ev-punjaci/",
+ "domain": "solarkraft.rs",
+ "city": "Novi Beograd",
+ "coverage": "primarno Vojvodina",
+ "offer": "PupinEnergy SkyCharge / WallMax / DualCharge, EcoFlow PowerPulse 2; integracija sa solarom; „primarno Vojvodina, po dogovoru i druge lokacije“",
+ "price_headline": "Nije objavljena",
+ "cells": {
+  "cena": "<b class=\"pr\">Nije objavljena</b><small>„zatražite besplatnu procenu“</small>",
+  "ugradnja": "<b class=\"v ask\">Na upit</b><small>„prodaja + instalacija“ — bez cena</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: 2 godine (PupinEnergy), 3 godine (EcoFlow)</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Na upit",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://solarkraft.rs",
+   "label": "solarkraft.rs",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "srednje",
+ "notes": "",
+ "kind": "solar"
+}

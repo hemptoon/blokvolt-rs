@@ -1,0 +1,41 @@
+{
+ "slug": "mda-e-technology",
+ "name": "MDA E-Technology",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "kind": "distributer",
+ "website": "https://www.mdaetechnology.rs/proizvodi-elektro-punjaci/",
+ "domain": "mdaetechnology.rs",
+ "city": "Beograd",
+ "coverage": "cela Srbija",
+ "offer": "Ekskluzivni distributer španskog Orbis (Viaris UNI 3,7–22 kW, Viaris combi, city); OCPP-J; MID opciono; pominje stambene zgrade i garaže investitora",
+ "price_headline": "na upit",
+ "cells": {
+  "cena": "<b class=\"v ask\">Na upit</b><small>cene nisu objavljene, forma za konsultaciju</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b><small>samo forma za konsultaciju</small>",
+  "brojilo": "<b class=\"v\">MID opciono</b><small>„merenje i snimanje naelektrisane energije“; MID kao opcija za sve modele; obračun kao usluga se ne pominje</small>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b><small>stambene zgrade se pominju kao primena, ne kao usluga sa papirima</small>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "MID opciono",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 63 244 211",
+  "email": "office@mdaetechnology.rs"
+ },
+ "sources": [
+  {
+   "url": "https://www.mdaetechnology.rs/proizvodi-elektro-punjaci/",
+   "label": "www.mdaetechnology.rs/proizvodi-elektro-punjaci",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednje",
+ "notes": ""
+}

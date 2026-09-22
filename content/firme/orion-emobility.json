@@ -1,0 +1,46 @@
+{
+ "slug": "orion-emobility",
+ "name": "Orion eMobility (Orion Telekom)",
+ "group": "B",
+ "publish": true,
+ "is_us": false,
+ "kind": "operator",
+ "website": "https://oriontelekom.rs/emobility/emobility-fizicka-lica/",
+ "domain": "oriontelekom.rs",
+ "city": "Beograd",
+ "coverage": "cela Srbija",
+ "offer": "Orion eMobility AC wallbox (ABB Terra AC), 11 i 22 kW, RFID, 4G; operator javne mreže punjača; „Elektro punjači za fizička lica“",
+ "price_headline": "11 kW: 99.000 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">11 kW (kabl 5 m, RFID): 99.000 RSD</b><br/>22 kW kabl 5 m, RFID + 4G: 119.000<br/>22 kW utičnica: 109.000<br/>postolje 42.300 · kabl Type 2 7 m 42.600<small>cene na sajtu sa PDV-om, bez montaže</small>",
+  "ugradnja": "<b class=\"v ask\">Na upit</b><small>„Montaža, instalacija i puštanje u rad električnog punjača se dodatno naplaćuju, a cena zavisi od lokacije“</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Orion eMobility aplikacija; besplatna RFID kartica za javnu mrežu. Garancija: „minimum 24 meseca“</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Na upit",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "011 4100 007",
+  "email": "emobility.prodaja@oriontelekom.rs"
+ },
+ "sources": [
+  {
+   "url": "https://oriontelekom.rs/emobility/emobility-fizicka-lica/",
+   "label": "oriontelekom.rs/emobility/emobility-fizicka-lica",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "label": "oriontelekom.rs/emobility/aplikacija",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoko",
+ "notes": "Telekom-operator sa sopstvenim naplatnim sistemom i aplikacijom — ušao u prodaju kućnih punjača fizičkim licima."
+}

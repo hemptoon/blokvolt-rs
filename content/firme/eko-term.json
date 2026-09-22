@@ -1,0 +1,41 @@
+{
+ "slug": "eko-term",
+ "name": "Eko-Term",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "kind": "solar",
+ "website": "https://eko-term.co.rs/",
+ "domain": "eko-term.co.rs",
+ "city": "Senta",
+ "coverage": "severna Vojvodina",
+ "offer": "Grejanje, klimatizacija i solarni sistemi; Huawei SCharger-7KS-S0 (7,4 kW, jednofazni), FusionSolar aplikacija",
+ "price_headline": "na upit",
+ "cells": {
+  "cena": "<b class=\"v ask\">Na upit</b>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b><small>„instalaciju mora izvesti kvalifikovani električar“; sopstvena montaža se ne pominje</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 24 812 445",
+  "email": "info@eko-term.co.rs"
+ },
+ "sources": [
+  {
+   "url": "https://eko-term.co.rs/en/product/ev-charger-3/",
+   "label": "eko-term.co.rs/en/product/ev-charger-3",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednje",
+ "notes": ""
+}

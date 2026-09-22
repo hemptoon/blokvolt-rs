@@ -1,0 +1,46 @@
+{
+ "slug": "voltech",
+ "name": "Voltech Srbija",
+ "group": "C",
+ "publish": true,
+ "is_us": false,
+ "kind": "prodavnica",
+ "website": "https://voltech.rs/product-category/punjaci-za-ev/wallbox-od-7-22kw/",
+ "domain": "voltech.rs",
+ "city": "Čoka",
+ "coverage": "cela Srbija (online)",
+ "offer": "Sopstveni brend Voltech (EVX07/11/22) + Honor, BENY, Gemini; wallbox 7,4–22 kW, deo modela OCPP/WiFi; „preko dve godine iskustva“",
+ "price_headline": "EVX11 11 kW: 48.000 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">EVX11 11 kW: 48.000 RSD</b><br/>Gemini 11 kW: 60.000 · Honor11 + DLB: 68.000<br/>EVX07 7,4 kW: 38.000<br/>22 kW: 55.000–80.000 · BENY 22 kW OCPP: 70.000<small>PDV-status na sajtu nije označen; iste cene i na eponuda.com</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b><small>samo prodaja uređaja</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>„Smart konekcija“ — daljinsko praćenje i upravljanje na delu modela. Garancija: nije navedena na stranici kategorije</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 65 55 88 007",
+  "email": "voltech.srbija@gmail.com"
+ },
+ "sources": [
+  {
+   "url": "https://voltech.rs/product-category/punjaci-za-ev/wallbox-od-7-22kw/",
+   "label": "voltech.rs/product-category/punjaci-za-ev/wallbox-od-7-22kw",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.eponuda.com/punjaci-za-elektricne-automobile-cene",
+   "label": "www.eponuda.com/punjaci-za-elektricne-automobile-cene",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoko",
+ "notes": "Najniža javna cena uređaja od 11 kW u Srbiji na dan provere."
+}

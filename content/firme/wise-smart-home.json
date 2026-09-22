@@ -1,0 +1,41 @@
+{
+ "slug": "wise-smart-home",
+ "name": "WISE Smart Home",
+ "group": "C",
+ "publish": true,
+ "is_us": false,
+ "kind": "prodavnica",
+ "website": "https://wifioprema.rs/product-category/wifi-pametna-oprema-pametna-kuca/punjaci-za-elektricna-vozila/",
+ "domain": "wifioprema.rs",
+ "city": "Beograd, Novi Sad",
+ "coverage": "cela Srbija",
+ "offer": "Prodavnice pametne kuće u Beogradu i Novom Sadu; sopstveni brend Wise (Tuya / Smart Life): zidni WSCP02/07/08, prenosni, dvostruki WSCP10",
+ "price_headline": "WSCP08 7 kW: 62.890 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">WSCP08 7 kW: 62.890 RSD</b><br/>WSCP02: 67.390–82.390 · WSCP07: 62.390–72.390<br/>prenosni 3,5–7 kW: 21.690–52.990<small>PDV-status na sajtu nije označen (maloprodaja)</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Smart Life aplikacija (struja, napon, raspored, istorija); OCPP se ne pominje. Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 66 534 35 79 (BG), +381 62 39 19 14 (NS)",
+  "email": "info@wise-smarthome.rs"
+ },
+ "sources": [
+  {
+   "url": "https://wifioprema.rs/product-category/wifi-pametna-oprema-pametna-kuca/punjaci-za-elektricna-vozila/",
+   "label": "wifioprema.rs/product-category/wifi-pametna-oprema-pametna-kuca/punjaci-za-elektricna-vozila",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoko",
+ "notes": ""
+}

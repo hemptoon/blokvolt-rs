@@ -1,0 +1,38 @@
+{
+ "slug": "pupinenergy",
+ "name": "PupinEnergy",
+ "group": "B",
+ "publish": true,
+ "is_us": false,
+ "website": "https://pupinenergy.com/shop/",
+ "domain": "pupinenergy.com",
+ "city": "Beograd",
+ "coverage": "cela Srbija",
+ "offer": "Sopstveni brend: WallMax 1000 (7,4 / 11 / 22 kW), SkyCharge, PowerGo MultiPlug (prenosivi 11 kW); prodaja i instalacija; „celokupna teritorija Srbije“",
+ "price_headline": "cena nije objavljena",
+ "cells": {
+  "cena": "WallMax 7,4/11/22 kW: <b class=\"pr\">cena nije objavljena</b><br/>PowerGo MultiPlug 2000 (prenosivi): 64.590 RSD<br/>FleXcharge 1000: 41.490 RSD<small>PDV nije naznačen</small>",
+  "ugradnja": "<b class=\"v\">Da</b><small>u vodiču na sajtu: „instalacija zidnog punjača u Srbiji košta tipično 15.000–35.000 dinara“</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: 2 godine na radove; program „doživotne garancije“ uz ovlašćenu ugradnju</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Da",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://pupinenergy.com",
+   "label": "pupinenergy.com",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "srednje",
+ "notes": "",
+ "kind": "prodavnica"
+}

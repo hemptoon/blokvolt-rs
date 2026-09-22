@@ -1,0 +1,42 @@
+{
+ "slug": "handyman",
+ "name": "Handyman – Moj Majstor",
+ "group": "E",
+ "publish": true,
+ "is_us": false,
+ "kind": "elektricar",
+ "website": "https://handyman.rs/elektricar/elektricni-automobili-instalacija-punjaca-u-vasem-domacinstvu/",
+ "domain": "handyman.rs",
+ "city": "Beograd",
+ "coverage": "Beograd",
+ "offer": "Servis majstora i električara; posebna usluga „Električni automobili: instalacija punjača u vašem domaćinstvu“; uređaj ne prodaje",
+ "price_headline": "na upit",
+ "cells": {
+  "cena": "<b class=\"v no\">Uređaj ne prodaje</b>",
+  "ugradnja": "<b class=\"v ask\">Na upit</b><small>„najpovoljnija ponuda“ na upit; stranica /cenovnik/ ne radi</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>„usluga instalacije često dolazi sa garancijom kvaliteta“ — trajanje nije navedeno</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Na upit",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "064 00 55 999",
+  "email": "office@handyman.rs",
+  "other": "WhatsApp / Viber"
+ },
+ "sources": [
+  {
+   "url": "https://handyman.rs/elektricar/elektricni-automobili-instalacija-punjaca-u-vasem-domacinstvu/",
+   "label": "handyman.rs/elektricar/elektricni-automobili-instalacija-punjaca-u-vasem-domacinstvu",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednje",
+ "notes": ""
+}

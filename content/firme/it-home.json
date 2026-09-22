@@ -1,0 +1,45 @@
+{
+ "slug": "it-home",
+ "name": "IT-Home",
+ "group": "C",
+ "publish": true,
+ "is_us": false,
+ "kind": "solar",
+ "website": "https://store.it-home.rs/product-category/ev-punjaci/",
+ "domain": "it-home.rs",
+ "city": "Vranje",
+ "coverage": "cela Srbija (online)",
+ "offer": "Solarni sistemi i pametna kuća; distribucija Teltonika TeltoCharge 11 i 22 kW (WiFi/Bluetooth ili GSM, NFC)",
+ "price_headline": "TeltoCharge 11 kW: 93.600 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">TeltoCharge 11 kW: 93.600 RSD</b><br/>TeltoCharge 22 kW: 128.700<small>sa PDV-om</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b><small>na stranicama proizvoda se ne pominje</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: 3 godine</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "email": "info@it-home.rs"
+ },
+ "sources": [
+  {
+   "url": "https://store.it-home.rs/product-category/ev-punjaci/",
+   "label": "store.it-home.rs/product-category/ev-punjaci",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.it-home.rs/ev-punjaci/",
+   "label": "www.it-home.rs/ev-punjaci",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoko",
+ "notes": ""
+}

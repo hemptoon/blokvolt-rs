@@ -1,0 +1,38 @@
+{
+ "slug": "bp-echarge",
+ "name": "BP eCharge",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "website": "https://punjacizaelektricneautomobile.rs/pitanja/",
+ "domain": "punjacizaelektricneautomobile.rs",
+ "city": "Beograd-Zemun",
+ "coverage": "cela Srbija",
+ "offer": "Isključivo KEBA KeContact P30 / P40 (7,4–22 kW); „500+ instaliranih punjača“, 9 godina; „ugradnju vršimo na teritoriji cele Srbije“",
+ "price_headline": "Nije objavljena",
+ "cells": {
+  "cena": "<b class=\"pr\">Nije objavljena</b><small>„U cenu je uključena stručna montaža i kompletna konfiguracija“ — ali cena se ne objavljuje</small>",
+  "ugradnja": "<b class=\"v\">Da</b><small>montaža uključena u cenu; ugradnja 2–3 sata</small>",
+  "brojilo": "<b class=\"v ask\">U uređaju</b><small>MID merač u C-seriji i P40 („obračun za kompanijska vozila“); obračun kao usluga se ne pominje</small>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: 24 meseca na izvedene radove</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Da",
+  "brojilo": "U uređaju",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://punjacizaelektricneautomobile.rs",
+   "label": "punjacizaelektricneautomobile.rs",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "srednje",
+ "notes": "",
+ "kind": "instalater"
+}

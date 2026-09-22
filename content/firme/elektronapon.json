@@ -1,0 +1,40 @@
+{
+ "slug": "elektronapon",
+ "name": "Elektronapon",
+ "group": "C",
+ "publish": true,
+ "is_us": false,
+ "kind": "prodavnica",
+ "website": "https://elektronapon.rs/",
+ "domain": "elektronapon.rs",
+ "city": "Subotica",
+ "coverage": "Subotica / online",
+ "offer": "Elektrotehnička prodavnica; ABB Terra AC 7 kW (jednofazni, RFID) i 22 kW (trofazni)",
+ "price_headline": "ABB Terra AC 7 kW: 97.977 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">ABB Terra AC W7, 7 kW: 97.977 RSD</b> (81.647,50 bez PDV)<br/>ABB Terra AC W22, 22 kW: 111.972<small>sa PDV-om; 7 kW „trenutno nema na stanju“, 22 kW po narudžbini; bez kabla</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: 2 godine</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 24 4-150-150"
+ },
+ "sources": [
+  {
+   "url": "https://elektronapon.rs/sr/punjac-tac-w7-t-r-0-terra-zidna-abb-tip2-1-fazni32a-rfid-ac/proizvod/2304",
+   "label": "elektronapon.rs/sr/punjac-tac-w7-t-r-0-terra-zidna-abb-tip2-1-fazni32a-rfid-ac/proizvod/2304",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoko",
+ "notes": ""
+}

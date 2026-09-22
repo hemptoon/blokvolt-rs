@@ -1,0 +1,38 @@
+{
+ "slug": "solar-energy-lazic",
+ "name": "Solar Energy Lazić",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "website": "https://solarenergylazic.rs/punjaci-za-automobile/",
+ "domain": "solarenergylazic.rs",
+ "city": "Vinča, Beograd",
+ "coverage": "Srbija",
+ "offer": "Wallbox Pulsar Plus, Copper SB, Quasar (DC); solarni integrator; Beograd i prigradske opštine",
+ "price_headline": "Nije objavljena",
+ "cells": {
+  "cena": "<b class=\"pr\">Nije objavljena</b><small>svaki proizvod „zahtev za ponudu“</small>",
+  "ugradnja": "<b class=\"v ask\">Na upit</b><small>„Projektujemo i instaliramo rešenja po meri“</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: Wallbox produžena garancija (1 ili 3 godine, proizvođač)</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Na upit",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://solarenergylazic.rs",
+   "label": "solarenergylazic.rs",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "srednje",
+ "notes": "",
+ "kind": "solar"
+}

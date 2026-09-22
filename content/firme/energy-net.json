@@ -1,0 +1,41 @@
+{
+ "slug": "energy-net",
+ "name": "Energy Net",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "kind": "instalater",
+ "website": "https://www.energynet.rs/resenja-za-dom/obnovljivi-izvori/elektro-punjaci/",
+ "domain": "energynet.rs",
+ "city": "Novi Sad",
+ "coverage": "cela Srbija (mreža instalatera)",
+ "offer": "HVAC i OIE integrator sa 30+ godina; punjač EVC16 do 22 kW sa aplikacijom; „više od 200 sertifikovanih instalatera u Republici Srbiji“ obučenih u sopstvenoj akademiji",
+ "price_headline": "na upit",
+ "cells": {
+  "cena": "<b class=\"v ask\">Na upit</b><small>katalog „uskoro“, cene nisu objavljene</small>",
+  "ugradnja": "<b class=\"v\">Da</b><small>preko mreže od 200+ sertifikovanih instalatera; cena nije objavljena</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v\">Produžena garancija</b><small>„produženi garantni rok za instalacije od strane Energy Net instalatera“ — trajanje nije navedeno; mesečna usluga se ne pominje</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Da",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Produžena garancija"
+ },
+ "contact": {
+  "phone": "066/090 090",
+  "email": "office@energynet.rs"
+ },
+ "sources": [
+  {
+   "url": "https://www.energynet.rs/resenja-za-dom/obnovljivi-izvori/elektro-punjaci/",
+   "label": "www.energynet.rs/resenja-za-dom/obnovljivi-izvori/elektro-punjaci",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednje",
+ "notes": "Strukturno najbliži model mreži nezavisnih električara sa produženom garancijom."
+}

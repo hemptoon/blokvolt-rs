@@ -1,0 +1,38 @@
+{
+ "slug": "elektromil",
+ "name": "ElektroMil",
+ "group": "E",
+ "publish": true,
+ "is_us": false,
+ "website": "https://www.elektromilnis.rs/usluge/ugradnja-ev-punjaca/",
+ "domain": "elektromilnis.rs",
+ "city": "Niš",
+ "coverage": "Niš i okolina",
+ "offer": "Električarski servis: montaža Wallbox i pametnih punjača, namenski strujni krugovi, servis; uređaj ne prodaje; „Niš i okolina“",
+ "price_headline": "Nije objavljena",
+ "cells": {
+  "cena": "<b class=\"pr\">Nije objavljena</b><small>samo ugradnja i servis, na poziv — bez cenovnika</small>",
+  "ugradnja": "<b class=\"v ask\">Na upit</b><small>samo ugradnja i servis</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: „garancija na sve izvršene radove“ (trajanje nije navedeno)</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Na upit",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://elektromilnis.rs",
+   "label": "elektromilnis.rs",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "srednje",
+ "notes": "",
+ "kind": "elektricar"
+}

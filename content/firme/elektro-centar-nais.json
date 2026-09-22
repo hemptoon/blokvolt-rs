@@ -1,0 +1,41 @@
+{
+ "slug": "elektro-centar-nais",
+ "name": "Elektro Centar Nais",
+ "group": "C",
+ "publish": true,
+ "is_us": false,
+ "kind": "prodavnica",
+ "website": "https://www.ecn.rs/evlink-home-jednostavno-punjenje-ev-vozila-kod-kuce",
+ "domain": "ecn.rs",
+ "city": "Niš",
+ "coverage": "Niš / online",
+ "offer": "Veleprodaja i maloprodaja elektromaterijala; Schneider EVlink Home 3,7 / 7,4 / 11 kW, sa utičnicom ili kablom; load-shedder",
+ "price_headline": "EVlink Home 11 kW: 120.360 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">EVlink Home 11 kW (utičnica): 120.360 RSD</b><br/>3,7 kW: 110.920 · 7,4 kW: 114.460<br/>sa kablom 5 m: 125.080–141.600<br/>load-shedder: 21.240–22.080<small>PDV-status na stranici nije označen</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b><small>inženjerska podrška; montaža se ne pominje</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 18 51 63 64",
+  "email": "slobodan@elektrocentarnais.rs"
+ },
+ "sources": [
+  {
+   "url": "https://www.ecn.rs/evlink-home-jednostavno-punjenje-ev-vozila-kod-kuce",
+   "label": "www.ecn.rs/evlink-home-jednostavno-punjenje-ev-vozila-kod-kuce",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednje",
+ "notes": ""
+}

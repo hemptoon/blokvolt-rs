@@ -1,0 +1,38 @@
+{
+ "slug": "elektricni-automobili-d-o-o",
+ "name": "Električni Automobili d.o.o.",
+ "group": "B",
+ "publish": true,
+ "is_us": false,
+ "website": "https://elektricniautomobili.eu/listing-category/punjaci/",
+ "domain": "elektricniautomobili.eu",
+ "city": "Beograd",
+ "coverage": "cela Srbija",
+ "offer": "Prodavac EV (GAC, JMEV, BYD…) koji nudi i punjače: AC 7,3/11/22 kW, DC; „Beograd i Srbija“",
+ "price_headline": "",
+ "cells": {
+  "cena": "EV punjač 7,3/11 kW: „500“ · 11/22 kW: „800“<small>na sajtu bez valute i bez naznake PDV-a (oglasi iz 2024) — proverite pre kupovine</small>",
+  "ugradnja": "<b class=\"v ask\">Na upit</b><small>„prodaja i instalacija“; cena nije objavljena</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Na upit",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://elektricniautomobili.eu",
+   "label": "elektricniautomobili.eu",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "srednje",
+ "notes": "",
+ "kind": "instalater"
+}

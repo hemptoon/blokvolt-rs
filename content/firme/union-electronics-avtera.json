@@ -1,0 +1,46 @@
+{
+ "slug": "union-electronics-avtera",
+ "name": "Union Electronics (AVTERA)",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "kind": "distributer",
+ "website": "https://www.unionelectronics.rs/proizvodi/elektricni-punjaci/",
+ "domain": "unionelectronics.rs",
+ "city": "Beograd",
+ "coverage": "cela Srbija",
+ "offer": "Zastupnik brenda UNION (proizvodi Vestel EVC04); model EVC04-AC22SWDLMID: do 22 kW, ugrađen MID brojač, LCD 4,3″, kabl 5 m, WiFi, LTE, NFC",
+ "price_headline": "na upit",
+ "cells": {
+  "cena": "<b class=\"v ask\">Na upit</b><small>na sajtu bez cene; na marketplace-u Bazzar: EVC04-AC7 (7 kW) 88.690 RSD (prodavac Avtera)</small>",
+  "ugradnja": "<b class=\"v ask\">Na upit</b><small>„instalirani i servisirani od strane naših sertifikovanih profesionalaca“; cena nije objavljena</small>",
+  "brojilo": "<b class=\"v\">Da, u uređaju</b><small>„dolazi sa ugrađenim MID metrom“ — jedini od novih igrača koji MID ističe u opisu; obračun kao usluga se ne pominje</small>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>stranica /garancija/ postoji, trajanje nije navedeno u opisu proizvoda</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Na upit",
+  "brojilo": "Da, u uređaju",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 11 41 42 090",
+  "email": "info@avtera.rs"
+ },
+ "sources": [
+  {
+   "url": "https://www.unionelectronics.rs/proizvodi/elektricni-punjaci/",
+   "label": "www.unionelectronics.rs/proizvodi/elektricni-punjaci",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://bazzar.rs/c/punjaci-za-elektricna-vozila",
+   "label": "bazzar.rs/c/punjaci-za-elektricna-vozila",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednje",
+ "notes": ""
+}

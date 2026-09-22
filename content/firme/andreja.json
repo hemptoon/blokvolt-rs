@@ -1,0 +1,46 @@
+{
+ "slug": "andreja",
+ "name": "Andreja d.o.o. (solar-shop.rs)",
+ "group": "C",
+ "publish": true,
+ "is_us": false,
+ "kind": "prodavnica",
+ "website": "https://www.solar-shop.rs/",
+ "domain": "solar-shop.rs",
+ "city": "Temerin",
+ "coverage": "cela Srbija (online)",
+ "offer": "Web-shop solarne opreme i akumulatora; Growatt THOR 11/22 kW, Victron EVCS 22 kW, Huawei SCharger 22 kW; integracija sa solarnim sistemom",
+ "price_headline": "Growatt THOR 22 kW: 72.000 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">Growatt THOR 22 kW: 72.000 RSD</b> (bilo 118.800)<br/>Growatt THOR 11 kW: 101.880<br/>Victron 22 kW: 76.800<br/>Huawei SCharger 22 kW: 118.800 (nema na stanju)<small>PDV-status na sajtu nije označen</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b><small>samo prodaja; besplatna dostava od 4.000 RSD</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>WiFi, aplikacija, rad uz solarnu elektranu. Garancija: 25 meseci (THOR 22 kW)</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "021/840-666, Viber 060 0840 666",
+  "email": "solar@andreja.co.rs"
+ },
+ "sources": [
+  {
+   "url": "https://www.solar-shop.rs/kupi/growatt-thor-22kw-as-p-v1-ac-punjac-za-elektro-vozila-1263",
+   "label": "www.solar-shop.rs/kupi/growatt-thor-22kw-as-p-v1-ac-punjac-za-elektro-vozila-1263",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.akumulator-shop.rs/punjaci-za-ev-vozila",
+   "label": "www.akumulator-shop.rs/punjaci-za-ev-vozila",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoko",
+ "notes": ""
+}

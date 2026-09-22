@@ -1,0 +1,46 @@
+{
+ "slug": "veming",
+ "name": "Veming",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "kind": "instalater",
+ "website": "https://veming.rs/kucni-punjaci/",
+ "domain": "veming.rs",
+ "city": "Čačak",
+ "coverage": "zapadna Srbija",
+ "offer": "Elektroinstalaterska firma („inteligentne elektroinstalacije“); Enelion Wallbox i Wallbox Duo (7,4 ili 22 kW), EV Stream; OCPP 1.6, GSM/WiFi/Ethernet, RFID, balansiranje; regionalni partner Emobility",
+ "price_headline": "na upit",
+ "cells": {
+  "cena": "<b class=\"v ask\">Na upit</b>",
+  "ugradnja": "<b class=\"v\">Da</b><small>elektromontaža je delatnost firme; cena nije objavljena</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Da",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 32 40051",
+  "email": "office@veming.rs"
+ },
+ "sources": [
+  {
+   "url": "https://veming.rs/kucni-punjaci/",
+   "label": "veming.rs/kucni-punjaci",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://emobility.rs/partneri/",
+   "label": "emobility.rs/partneri",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednje",
+ "notes": ""
+}

@@ -1,0 +1,46 @@
+{
+ "slug": "elektricar-nis",
+ "name": "Električar Niš",
+ "group": "E",
+ "publish": true,
+ "is_us": false,
+ "kind": "elektricar",
+ "website": "https://www.niselektricar.rs/cenovnik",
+ "domain": "niselektricar.rs",
+ "city": "Niš",
+ "coverage": "Niš i okolina",
+ "offer": "Električarski servis sa javnim cenovnikom; „postavljanje kućnih punjača za električna vozila, sa posebnim vodom i osiguračem prilagođenim snazi punjenja“; uređaj ne prodaje",
+ "price_headline": "ugradnja: 12.000–20.000 RSD",
+ "cells": {
+  "cena": "<b class=\"v no\">Uređaj ne prodaje</b><small>montira punjač koji donese kupac</small>",
+  "ugradnja": "<b class=\"v\">Da — javna cena</b><small>ugradnja kućnog punjača 12.000–20.000 RSD; poseban vod 8.000–18.000; ugradnja u garaži ili dvorištu 15.000–25.000; konsultacije od 3.000; izlazak u Nišu besplatan (PDV-status nije označen)</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>„garancija na sve radove“, trajanje nije navedeno</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Da — javna cena",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "063 133 7373",
+  "email": "kontakt@niselektricar.rs"
+ },
+ "sources": [
+  {
+   "url": "https://www.niselektricar.rs/cenovnik",
+   "label": "www.niselektricar.rs/cenovnik",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.niselektricar.rs/",
+   "label": "www.niselektricar.rs",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoko",
+ "notes": "Jedini javni cenovnik rada za ugradnju punjača koji smo našli u Srbiji."
+}

@@ -1,0 +1,38 @@
+{
+ "slug": "stamteh",
+ "name": "Stamteh",
+ "group": "C",
+ "publish": true,
+ "is_us": false,
+ "website": "https://www.stamteh.rs/catalog/tag/wallbox-punjaci-za-eletkro-vozila-ev-punjac-kucni",
+ "domain": "stamteh.rs",
+ "city": "Niš",
+ "coverage": "Niš / online",
+ "offer": "Wallbox Pulsar Plus 7,4 kW, Pulsar Max 22 kW, Copper SB 22 kW (opšta tehnika); online prodaja",
+ "price_headline": "Pulsar Plus 7,4 kW: 98.166,99 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">Pulsar Plus 7,4 kW: 98.166,99 RSD</b><br/>Pulsar Max 22 kW: 110.293,99<br/>Copper SB 22 kW: 112.393,99<small>sa PDV-om; 11 kW varijanta nije u ponudi</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b><small>samo prodaja uređaja</small>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://stamteh.rs",
+   "label": "stamteh.rs",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "visoko",
+ "notes": "",
+ "kind": "prodavnica"
+}

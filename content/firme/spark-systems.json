@@ -1,0 +1,38 @@
+{
+ "slug": "spark-systems",
+ "name": "Spark Systems",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "website": "https://svetkontrolepristupa.rs/product-category/punjaci-za-elektricna-vozila/",
+ "domain": "svetkontrolepristupa.rs",
+ "city": "Futog",
+ "coverage": "Vojvodina",
+ "offer": "Circontrol eNext / eVolve (7,4 / 22 kW); web-shop kontrole pristupa; isporuka na teritoriji Srbije",
+ "price_headline": "Nije objavljena",
+ "cells": {
+  "cena": "<b class=\"pr\">Nije objavljena</b><small>svaki punjač „cena na upit“</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://svetkontrolepristupa.rs",
+   "label": "svetkontrolepristupa.rs",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "srednje",
+ "notes": "",
+ "kind": "instalater"
+}

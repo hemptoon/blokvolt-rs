@@ -1,0 +1,40 @@
+{
+ "slug": "sp-solar",
+ "name": "SP Solar",
+ "group": "C",
+ "publish": true,
+ "is_us": false,
+ "kind": "solar",
+ "website": "https://spsolar.rs/proizvod/punjac-za-elektricna-vozila-sungrow-ac011e-01/",
+ "domain": "spsolar.rs",
+ "city": "Pirot",
+ "coverage": "cela Srbija (online)",
+ "offer": "Solarne elektrane + web-shop; Sungrow AC011E-01 11 kW, kabl 7 m, IP65, OCPP 1.6, RFID i aplikacija",
+ "price_headline": "Sungrow 11 kW: 70.092 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">Sungrow AC011E-01, 11 kW: 70.092 RSD</b><small>sa PDV-om; isti model kod ChargeGo košta 90.000</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b><small>na stranici proizvoda se ne pominje; firma inače montira solarne sisteme</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>OCPP 1.6, RFID kartica, mobilna aplikacija. Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 61 660 9999"
+ },
+ "sources": [
+  {
+   "url": "https://spsolar.rs/proizvod/punjac-za-elektricna-vozila-sungrow-ac011e-01/",
+   "label": "spsolar.rs/proizvod/punjac-za-elektricna-vozila-sungrow-ac011e-01",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoko",
+ "notes": ""
+}

@@ -1,0 +1,38 @@
+{
+ "slug": "pmp",
+ "name": "PMP (ETEK)",
+ "group": "C",
+ "publish": true,
+ "is_us": false,
+ "website": "https://pmp.rs/prodaja/kategorija-proizvoda/etek/ev-punjaci/",
+ "domain": "pmp.rs",
+ "city": "Beograd",
+ "coverage": "cela Srbija",
+ "offer": "ETEK: prenosivi 3,7 / 7,3 kW, zidni 11 / 22 kW (RFID), Smart 11 / 22 kW (OCPP, MID, 4G), DC 40–240 kW; Ostružnica; isporuka 2–5 dana",
+ "price_headline": "11 kW RFID: 43.197,72 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">11 kW RFID: 43.197,72 RSD</b><br/>Smart 11 kW OCPP sa ugrađenim MID brojilom: 64.294,27<br/>22 kW RFID: 48.364,22<small>sve „sa PDV“</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v ask\">U uređaju</b><small>Smart modeli imaju ugrađeno MID brojilo — uređaj, ne usluga obračuna</small>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b><small>samo prodaja uređaja</small>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "U uređaju",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://pmp.rs",
+   "label": "pmp.rs",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "visoko",
+ "notes": "",
+ "kind": "distributer"
+}

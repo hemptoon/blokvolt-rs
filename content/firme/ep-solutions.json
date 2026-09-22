@@ -1,0 +1,41 @@
+{
+ "slug": "ep-solutions",
+ "name": "EP Solutions (Electro Pneumatic Solutions)",
+ "group": "C",
+ "publish": true,
+ "is_us": false,
+ "kind": "distributer",
+ "website": "https://www.ep-solutions.rs/",
+ "domain": "ep-solutions.rs",
+ "city": "Beograd",
+ "coverage": "cela Srbija (B2B web-shop)",
+ "offer": "Industrijski distributer Schneider Electric sa web-shopom; EVlink Wallbox 11 kW (T2 utičnica) i 22 kW",
+ "price_headline": "EVlink Wallbox 11 kW: 157.028 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">EVlink Wallbox 11 kW: 157.028,40 RSD</b><small>PDV-status nije označen; „out of stock“ na dan provere</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 11 257 19 22",
+  "email": "office@ep-solutions.rs"
+ },
+ "sources": [
+  {
+   "url": "https://www.ep-solutions.rs/en/schneider-electric-evlink-wallbox-11-kw-t2-uticnica-stanice-za-punjenje-evh2s11p02k",
+   "label": "www.ep-solutions.rs/en/schneider-electric-evlink-wallbox-11-kw-t2-uticnica-stanice-za-punjenje-evh2s11p02k",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednje",
+ "notes": ""
+}

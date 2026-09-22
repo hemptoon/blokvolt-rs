@@ -1,0 +1,41 @@
+{
+ "slug": "conseko",
+ "name": "Conseko",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "kind": "distributer",
+ "website": "https://conseko.rs/",
+ "domain": "conseko.rs",
+ "city": "Beograd",
+ "coverage": "Srbija",
+ "offer": "Inženjerska firma, zastupnik evropskih proizvođača; Fronius Wattpilot Go 11J / Home 11J; web-shop prodaja.conseko.rs nije radio na dan provere",
+ "price_headline": "na upit",
+ "cells": {
+  "cena": "<b class=\"v ask\">Na upit</b>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Fronius aplikacija. Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 11 2971 995",
+  "email": "info@conseko.rs"
+ },
+ "sources": [
+  {
+   "url": "https://conseko.rs/en/",
+   "label": "conseko.rs/en",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "nisko",
+ "notes": ""
+}

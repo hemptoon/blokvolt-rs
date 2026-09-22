@@ -1,0 +1,38 @@
+{
+ "slug": "smit",
+ "name": "SMIT",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "website": "https://smit.rs/punjaci-za-e-vozila/",
+ "domain": "smit.rs",
+ "city": "Srbobran",
+ "coverage": "Vojvodina",
+ "offer": "Circontrol AC wallbox i DC; primarno video-nadzor i kapije; Srbobran, Novi Sad, Subotica, Ruma, Inđija; Vojvodina",
+ "price_headline": "Nije objavljena",
+ "cells": {
+  "cena": "<b class=\"pr\">Nije objavljena</b><small>„zatraži ponudu“</small>",
+  "ugradnja": "<b class=\"v ask\">Na upit</b><small>konsultacija i istraživanje lokacije — bez cena</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Na upit",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://smit.rs",
+   "label": "smit.rs",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "srednje",
+ "notes": "",
+ "kind": "instalater"
+}

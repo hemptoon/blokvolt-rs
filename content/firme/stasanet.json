@@ -1,0 +1,40 @@
+{
+ "slug": "stasanet",
+ "name": "STASANET",
+ "group": "A",
+ "publish": true,
+ "is_us": false,
+ "website": "https://punjac.rs/",
+ "domain": "punjac.rs",
+ "city": "Beograd",
+ "coverage": "cela Srbija",
+ "offer": "Livoltek Atom / Robot, AC 7–22 kW i DC; aplikacija; „cela teritorija Srbije“; 12+ godina, 200+ partnera",
+ "price_headline": "11 kW: 95.000 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">11 kW: 95.000 RSD</b><br/>(redovno 130.000)<br/>22 kW: 110.000 (redovno 170.500)<small>„ukupno sa PDV-om i standardnom ugradnjom“</small>",
+  "ugradnja": "<b class=\"v\">Da</b><small>„standardna ugradnja na postojeće izvedene instalacije“; dodatni radovi po proceni na licu mesta; „kompletna instalacija sa kabliranjem od 150 €“</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b><small>„precizno merenje potrošnje po korisniku“ za deljene punjače; MID brojilo i obračun se ne pominju</small>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: trajanje nije navedeno; „podrška i servis u Srbiji, u garanciji i van nje“</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Da",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 11 406 5158"
+ },
+ "sources": [
+  {
+   "url": "https://punjac.rs/kucni-punjac-za-elektricni-auto",
+   "label": "punjac.rs/kucni-punjac-za-elektricni-auto",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoko",
+ "notes": "",
+ "kind": "instalater"
+}

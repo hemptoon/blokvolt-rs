@@ -1,0 +1,45 @@
+{
+ "slug": "ev-charging-solutions",
+ "name": "EV Charging Solutions (Europlus System)",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "kind": "distributer",
+ "website": "https://www.evchargingsolutions.rs/",
+ "domain": "evchargingsolutions.rs",
+ "city": "Beograd",
+ "coverage": "cela Srbija",
+ "offer": "Distributer i integrator: Kempower, Alfen (Eve Single/Double), NRGkick, Wallbox Pulsar Pro/Max, Juice, Zaptec, Exicom; klijenti Rivian, Volvo Trucks, Premier Taxi",
+ "price_headline": "na upit",
+ "cells": {
+  "cena": "<b class=\"v ask\">Na upit</b><small>„Za ponudu punjača i kompletne instalacije možete nas kontaktirati“</small>",
+  "ugradnja": "<b class=\"v ask\">Na upit</b><small>„nudimo standardnu garanciju i paket usluge montaže“; cena nije objavljena</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>„standardna garancija“, trajanje nije navedeno</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Na upit",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "email": "info@evchargingsolutions.rs"
+ },
+ "sources": [
+  {
+   "url": "https://www.evchargingsolutions.rs/",
+   "label": "www.evchargingsolutions.rs",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.evchargingsolutions.rs/category/ev-punjaci/",
+   "label": "www.evchargingsolutions.rs/category/ev-punjaci",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednje",
+ "notes": ""
+}

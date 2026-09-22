@@ -1,0 +1,41 @@
+{
+ "slug": "obd2-evchargers",
+ "name": "OBD2 d.o.o. (evchargers.rs)",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "kind": "distributer",
+ "website": "https://evchargers.rs/punjaci-za-elektricne-automobile/",
+ "domain": "evchargers.rs",
+ "city": "Beograd",
+ "coverage": "Srbija i region",
+ "offer": "Zastupnik Autel za Srbiju i region; Autel MaxiCharger AC Wallbox (kućna upotreba), DC Wallbox, DC Fast; dijagnostička oprema",
+ "price_headline": "na upit",
+ "cells": {
+  "cena": "<b class=\"v ask\">Na upit</b><small>cene nisu na stranici kategorije</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Autel aplikacija. Garancija: nije navedena</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "+381 63 800 800 7",
+  "email": "info@evchargers.rs"
+ },
+ "sources": [
+  {
+   "url": "https://evchargers.rs/punjaci-za-elektricne-automobile/",
+   "label": "evchargers.rs/punjaci-za-elektricne-automobile",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednje",
+ "notes": ""
+}

@@ -1,0 +1,38 @@
+{
+ "slug": "webasto-srbija",
+ "name": "Webasto Srbija (Vebasto S)",
+ "group": "D",
+ "publish": true,
+ "is_us": false,
+ "website": "https://www.webastosrbija.rs/punjaci-za-elektricna-vozila",
+ "domain": "webastosrbija.rs",
+ "city": "Čačak",
+ "coverage": "Srbija",
+ "offer": "Webasto Pure 11/22 kW, Webasto Next; primarno grejači i klime za vozila; područje nije navedeno",
+ "price_headline": "Nije objavljena",
+ "cells": {
+  "cena": "<b class=\"pr\">Nije objavljena</b>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v ask\">U uređaju</b><small>Next: „integrisani modul brojila“ (uređaj); obračun kao usluga se ne pominje</small>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: 2 godine + 3 godine Webasto (Pure)</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "U uređaju",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://webastosrbija.rs",
+   "label": "webastosrbija.rs",
+   "date": "07.09.2026"
+  }
+ ],
+ "verified": "07.09.2026",
+ "confidence": "srednje",
+ "notes": "",
+ "kind": "distributer"
+}

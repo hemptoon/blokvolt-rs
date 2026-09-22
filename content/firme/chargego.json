@@ -1,0 +1,46 @@
+{
+ "slug": "chargego",
+ "name": "Charge&GO / ChargeGo (MT-KOMEX)",
+ "group": "B",
+ "publish": true,
+ "is_us": false,
+ "website": "https://elektropunjaci.com/shop/",
+ "domain": "elektropunjaci.com",
+ "city": "Beograd (NTP)",
+ "coverage": "cela Srbija",
+ "offer": "Charge&amp;GO Smart Mini (Teison), Sungrow, Schneider; AC 7–22 kW i DC; „instalacija punjača svih brendova“; aplikacija; „600 ugrađenih punjača“; „servis širom Srbije“",
+ "price_headline": "Sungrow 7,4/11/22 kW: 90.000 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">Sungrow 7,4/11/22 kW: 90.000 RSD</b><br/>(redovno 120.000)<br/>Smart Mini 11/22 kW: 72.000 sa kablom / 69.000 bez<br/>Smart Mini 7,4 kW: 42.000 (redovno 75.000)<small>sve „sa PDV-om“, bez ugradnje</small>",
+  "ugradnja": "<b class=\"v ask\">Na upit</b><small>„Kompletna instalacija od A do Š“, ugradnja za 24–48h; cena ugradnje nije objavljena</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>monitoring preko aplikacije. Garancija: „minimum 2 godine (24 meseca)“</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Na upit",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "phone": "011-715-85-98",
+  "email": "prodaja@chargego.rs"
+ },
+ "sources": [
+  {
+   "url": "https://elektropunjaci.com/proizvod/sungrow-7-4-11-22kw-sa-kablom/",
+   "label": "elektropunjaci.com — Sungrow",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://chargego.rs/ugradnja-elektro-punjaca/",
+   "label": "chargego.rs/ugradnja-elektro-punjaca",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoko",
+ "notes": "Isto pravno lice kao javna mreža Charge&GO (79 punjača / 68 lokacija).",
+ "kind": "instalater"
+}
