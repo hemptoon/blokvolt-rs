@@ -20,6 +20,10 @@
  "news": [
   {
    "date": "23.09.2026",
+   "html": "Novi alat: <a href=\"/alati/racun-u-zgradi/\">ko koliko plaća punjenje u zgradi</a> — računica za zajedničko brojilo, paušal i merenje, po stanu i godišnje."
+  },
+  {
+   "date": "23.09.2026",
    "html": "Nove stranice: <a href=\"/podaci/tarife-eps/\">cene struje za domaćinstva</a> (zone, tarife, sati niže tarife po regionima) i <a href=\"/podaci/wallbox-modeli/\">wallbox modeli i cene</a> (45 cena uređaja kod 20 prodavaca). Meni sajta preuređen u četiri sekcije."
   },
   {

@@ -298,6 +298,28 @@ render('kalkulator.html', '/alati/kalkulator-troskova/', calc=CALC, eps=_E, fuel
        description=_desc)
 add_url('/alati/kalkulator-troskova/', '0.9')
 
+# 4d) building billing calculator (tools)
+ZG = json.load(open(ROOT / 'content' / 'data' / 'kalkulator-zgrada.json', encoding='utf-8'))
+_zd = ZG['defaults']
+_zreal = _zd['auta'] * _zd['kwh_auto'] * _zd['cena_kwh']
+_zper = _zreal / _zd['stanovi']
+_zgap = max(0.0, _zreal - _zd['pausal'] * _zd['auta'])
+_zerr = _zreal - _zd['pausal'] * _zd['auta']
+if _zerr > 0.5:
+    _m = int(-(-(_zd['brojilo'] * _zd['auta']) // _zerr))
+    _zpay = 'mesec dana' if _m <= 1 else (f'{_m} meseci' if _m < 24 else f'{_m / 12:.1f}'.replace('.', ',') + ' godine')
+else:
+    _zpay = 'paušal već pokriva trošak'
+_zex = dict(real=_zreal, real_y=_zreal * 12, per_flat=_zper, per_flat_y=_zper * 12,
+            others_y=_zper * max(0, _zd['stanovi'] - _zd['auta']) * 12, gap=_zgap,
+            gap_note='ostatak i dalje plaćaju svi stanovi' if _zgap > 0 else 'paušal tačno pokriva trošak',
+            payback=_zpay, owner=_zper + _zd['pausal'], owner_fair=_zd['kwh_auto'] * _zd['cena_kwh'])
+render('kalkulator_zgrada.html', '/alati/racun-u-zgradi/', z=ZG, d=_zd, ex=_zex,
+       z_json=json.dumps(ZG, ensure_ascii=False).replace('</', '<\\/'), modified_iso=ISO_TODAY,
+       title='Ko koliko plaća punjenje u zgradi — kalkulator zajedničke struje | BlokVolt',
+       description=f"Koliko stanari bez automobila plate tuđe punjenje kad punjač visi na zajedničkom brojilu: računica po stanu, mesečno i godišnje, i za koliko se vrati brojilo. Cene overenog merenja {ZG['meter_cost']['low']:,.0f}–{ZG['meter_cost']['high']:,.0f} RSD.".replace(',', '.'))
+add_url('/alati/racun-u-zgradi/', '0.8')
+
 # 5) home
 render('home.html', '/', GUIDES=GUIDES_META, PODACI=PODACI, by_group=by_group, cities=cities, CITY_SLUGS=CITY_SLUGS,
        title='BlokVolt — sve o električnim automobilima u Srbiji: firme, cene, procedure',

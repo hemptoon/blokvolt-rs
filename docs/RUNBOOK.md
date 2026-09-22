@@ -49,6 +49,9 @@ credentials) — commits go through the owner's browser (section 6).
 | Public charging price index | `content/javno/indeks-cena.json` | `updated`, `next_check` (a month name is fine), `rows` (schema below). |
 | Charging networks | `content/operateri/<slug>.json` | Edit these JSON files directly. `scripts/add_operators.py` is a historical import — never re-run it. `prices` is the full dated history shown on the network page; `verified` = last check. |
 | Free chargers | `content/javno/besplatni-punjaci.md`, `content/operateri/putevi-srbije.json` | The count (36 installed / 31 working) is repeated elsewhere — see sync points. |
+| EPS tariffs page | `content/data/kalkulator.json` (+ `tarife_next_check`) | Then run `python3 scripts/gen_tarife_eps.py` — the page `/podaci/tarife-eps/` is generated, never edited by hand. Night-tariff hours per region and the single-tariff prices live in the same `eps` block. |
+| Wallbox model prices | `content/data/wallbox-modeli.json` | The model-level view of the firm register: re-derive it from `content/firme/*.json` at the quarterly revision, then run `python3 scripts/gen_wallbox.py`. |
+| Building-billing calculator | `content/data/kalkulator-zgrada.json` | Defaults and the MID meter price range (taken from the register); the page `/alati/racun-u-zgradi/` is a template, no generator. |
 | New EV prices | `content/data/ev-modeli.json` | Then run `python3 scripts/gen_ev_modeli.py` (regenerates `/podaci/cene-elektricnih-automobila/`). Update `checked` and `next_check` in the JSON. `subsidy_eur` drives the "after subsidy" column. |
 | Rentals, regional charging | `content/data/rent-carsharing.json`, `content/data/region.json` + the pages `content/podaci/rent-a-car-i-car-sharing.md`, `content/javno/region.md` | The pages are hand-written from the JSON; edit both. |
 | All other data pages | `content/podaci/*.md`, `content/javno/*.md` | Front matter: `updated`, `next_check`, `modified` (ISO), `sources` (`Label :: URL | Label :: URL`). |
@@ -151,6 +154,14 @@ page's stat block (cheapest model, count under 30.000 €).
 
 `content/podaci/statistika-ev-srbija.md` + `home_stats` in `content/data/site.json`. MUP fleet figures
 usually appear via media (RTS, 021.rs); SAUVD quarterly registration figures 3–6 weeks after a quarter.
+
+### 3.6b Wallbox model prices (with the firm register)
+
+Prices in `content/data/wallbox-modeli.json` are the same numbers the register carries per firm, only
+organised by model. After the quarterly firm revision, walk the register's price cells again, update
+the rows (brand, model, kW, price, VAT status, seller slug, note, product URL), keep `checked` and
+`next_check` current and run `scripts/gen_wallbox.py`. Only add a row when the seller publishes the
+price itself; "na upit" stays out of the table.
 
 ### 3.7 Firm register (quarterly revision)
 

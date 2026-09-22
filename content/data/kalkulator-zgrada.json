@@ -1,0 +1,23 @@
+{
+ "checked": "23.09.2026",
+ "next_check": "15.12.2026",
+ "defaults": {
+  "stanovi": 40,
+  "auta": 1,
+  "kwh_auto": 234,
+  "cena_kwh": 5.7,
+  "pausal": 1500,
+  "brojilo": 22000
+ },
+ "meter_cost": {
+  "low": 21096.55,
+  "high": 22999,
+  "note": "Dve javno objavljene cifre za overeno (MID) merenje: razlika između ETEK Smart 11 kW sa ugrađenim MID brojilom (64.294,27 RSD) i istog punjača bez njega (43.197,72) iznosi 21.096,55 RSD, a Praktiker „opremu za merenje struje“ uz Noark punjač prodaje za 22.999 RSD. Ugradnja i sitan materijal nisu uračunati."
+ },
+ "sources": [
+  {"label": "PMP (ETEK) — cene punjača sa i bez ugrađenog MID brojila (provera 22.09.2026)", "url": "https://pmp.rs/prodaja/kategorija-proizvoda/etek/ev-punjaci/", "date": "22.09.2026"},
+  {"label": "Praktiker / elektrowebshop.rs — Noark oprema za merenje struje 22.999 RSD (provera 22.09.2026)", "url": "https://elektrowebshop.rs/category/punjaci-za-elektricna-vozila", "date": "22.09.2026"},
+  {"label": "Zakon o stanovanju i održavanju zgrada — nadležnosti skupštine stambene zajednice (čl. 42–45)", "url": "https://www.paragraf.rs/propisi/zakon_o_stanovanju_i_odrzavanju_zgrada.html", "date": "22.09.2026"},
+  {"label": "Zakon o energetici, član 210v — punjenje električnih vozila i preprodaja energije", "url": "https://www.paragraf.rs/propisi/zakon-o-energetici.html", "date": "22.09.2026"}
+ ]
+}

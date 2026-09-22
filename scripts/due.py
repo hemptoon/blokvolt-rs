@@ -9,6 +9,8 @@ within --ahead days (default 10). Sources of truth:
   content/javno/indeks-cena.json                `next_check` (month name allowed, e.g. "oktobar 2026")
   content/data/kalkulator.json                  fuel.date / fuel.valid_to, public_checked, EPS source dates
   content/data/ev-modeli.json                   `next_check`
+  content/data/wallbox-modeli.json              `next_check` (device prices, mirrors the firm register)
+  content/data/kalkulator-zgrada.json           `next_check` (MID meter prices, calculator defaults)
   content/data/site.json                        `firms_checked` (full firm register revision, every ~90 days)
   content/firme/*.json                          `verified` per firm (published) and leads (group L, publish=false)
   content/operateri/*.json                      `verified` per network
@@ -100,6 +102,14 @@ def main():
     ev = json.load(open(ROOT / 'content' / 'data' / 'ev-modeli.json', encoding='utf-8'))
     check(parse(ev.get('next_check')), 'content/data/ev-modeli.json',
           f"EV list prices at importers, checked {ev.get('checked')}; after editing run scripts/gen_ev_modeli.py")
+
+    # 4b) wallbox model prices and the building calculator
+    wb = json.load(open(ROOT / 'content' / 'data' / 'wallbox-modeli.json', encoding='utf-8'))
+    check(parse(wb.get('next_check')), 'content/data/wallbox-modeli.json',
+          f"device prices of {len(wb['rows'])} models, checked {wb.get('checked')}; re-derive from the firm register, then run scripts/gen_wallbox.py")
+    zg = json.load(open(ROOT / 'content' / 'data' / 'kalkulator-zgrada.json', encoding='utf-8'))
+    check(parse(zg.get('next_check')), 'content/data/kalkulator-zgrada.json',
+          f"building-billing calculator defaults and MID meter prices, checked {zg.get('checked')}")
 
     # 5) firm register
     site = json.load(open(ROOT / 'content' / 'data' / 'site.json', encoding='utf-8'))

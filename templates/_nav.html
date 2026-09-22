@@ -39,6 +39,7 @@
    ]),
    ('Računica', true, [
      ('/alati/kalkulator-troskova/', 'Kalkulator troškova', 'Koliko košta 100 km kod kuće i na putu'),
+     ('/alati/racun-u-zgradi/', 'Ko koliko plaća u zgradi', 'Kalkulator zajedničke struje'),
      ('/ko-placa-struju-za-punjenje', 'Ko plaća struju u zgradi', 'Brojilo, tarife i obračun po stanu'),
    ]),
  ]),
@@ -61,6 +62,12 @@
      ('/podaci/statistika-ev-srbija/', 'Statistika EV u Srbiji', 'Vozni park, registracije, punjači'),
      ('/metodologija/', 'Metodologija', 'Kako proveravamo i šta ne objavljujemo'),
      ('/izmene/', 'Dnevnik izmena', 'Šta je i kada promenjeno'),
+   ]),
+ ]),
+ ('alati', 'Alati', ['/alati/'], [
+   ('Kalkulatori', false, [
+     ('/alati/kalkulator-troskova/', 'Kalkulator troškova vožnje', 'Struja kod kuće, javni punjači, benzin i dizel'),
+     ('/alati/racun-u-zgradi/', 'Ko koliko plaća u zgradi', 'Zajedničko brojilo, paušal ili merenje — po stanu'),
    ]),
  ]),
  ('vodici', 'Vodiči', ['/vodici/', '/punjenje-elektricnog-auta-u-zgradi', '/punjac-u-zgradi-skupstina', '/ko-placa-struju-za-punjenje', '/punjac-u-iznajmljenoj-garazi', '/wallbox-cena-srbija', '/bezbednost-punjenja-atest'], [
@@ -90,7 +97,6 @@
 {% for pid, plabel, prefixes, cols in PANELS %}
 <li data-nav-list-item><button data-dropdown-toggle="{{ pid }}" data-fallback-href="{{ prefixes[0] }}" aria-expanded="false" aria-haspopup="true" class="mega-nav__bar-link is--dropdown{% for pre in prefixes %}{% if _p == pre or (pre.endswith('/') and _p.startswith(pre)) %} is--active{% endif %}{% endfor %}"><span class="mega-nav__bar-link-label">{{ plabel }}</span>{{ CHEV }}</button></li>
 {% endfor %}
-<li data-nav-list-item><a href="/alati/kalkulator-troskova/" class="mega-nav__bar-link{% if _p.startswith('/alati/') %} is--active{% endif %}"{% if _p.startswith('/alati/') %} aria-current="page"{% endif %}><span class="mega-nav__bar-link-label">Kalkulator</span></a></li>
 </ul>
 <ul data-nav-list-item class="mega-nav__bar-list is--actions">
 <li class="mega-nav__bar-action"><a href="https://www.evolako.rs/proveri-svoju-garazu" class="mega-nav__bar-cta"><span class="mega-nav__bar-link-label">Proverite svoju garažu</span>{{ ARROW }}</a></li>
