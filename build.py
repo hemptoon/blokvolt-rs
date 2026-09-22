@@ -123,6 +123,10 @@ def _r(x):
 
 def kwh_html(row):
     parts = []
+    if row.get('kwh'):  # a real receipt: exact price per kWh
+        return f'<span class="k">= {_r(row["rsd_total"] / row["kwh"])} RSD po kWh</span><span class="k">stvarni račun</span>'
+    if row.get('unit_rsd'):  # billed per operator-defined "charging unit", not per kWh
+        return '<span class="k">ne preračunava se</span><span class="k">„jedinica“ nije kWh</span>'
     if row.get('rsd_hour'):
         for k in row['assume_kw']:
             parts.append(f'<span class="k">≈{_r(row["rsd_hour"] / k)} RSD pri {k} kW</span>')

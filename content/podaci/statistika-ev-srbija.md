@@ -42,7 +42,7 @@ Napomena o neslaganju: 021.rs navodi „uvoz 657 e-automobila u prvoj polovini g
 | jun 2026 | oko 230 | Danas / Forbes Srbija (nacrt zakona) |
 | septembar 2026 | 220, uglavnom na autoputevima i prometnijim pumpama | 021.rs |
 
-Za orijentaciju: Electromaps ima 150 stanica u bazi za Srbiju (60 u Beogradu), a razlika prema 220–230 je razlika između stanica i priključnih mesta plus nepotpunost baza. Charge&GO, najveća komercijalna mreža, navodi 79 punjača na 68 lokacija sa 135 konektora; JP Putevi Srbije ima 36 instaliranih punjača na autoputevima (31 u radu) i punjenje je na njima **besplatno**; Tesla ima dva Supercharger-a (Beograd, Aleksinac). Ni jedan operater ne objavljuje cenovnik — naplata je po minutu, jer podzakonski akt uz čl. 210v Zakona o energetici još nije donet.
+Za orijentaciju: Electromaps ima 150 stanica u bazi za Srbiju (60 u Beogradu), a razlika prema 220–230 je razlika između stanica i priključnih mesta plus nepotpunost baza. Komercijalna mreža Charge&GO navodi 79 punjača na 68 lokacija sa 135 konektora; JP Putevi Srbije ima 36 instaliranih punjača na autoputevima (31 u radu) i punjenje je na njima **besplatno**; Tesla ima dva Supercharger-a (Beograd, Aleksinac). Nijedan operater ne objavljuje cenovnik na sajtu — cene su u aplikacijama, a naplata je po minutu (Emobility Spectra: po „jedinici punjenja“ uz doplatu po minutu), jer podzakonski akt uz čl. 210v Zakona o energetici još nije donet; vidi <a href="/javno-punjenje/#cene">indeks cena</a>.
 
 ## Gustina i poređenje
 

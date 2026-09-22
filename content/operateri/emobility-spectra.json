@@ -9,23 +9,56 @@
  "app": "Emobility Spectra (iOS/Android)",
  "city": "Novi Sad",
  "coverage": "Novi Sad i Vojvodina (mapa punjača na sajtu)",
- "network": "Veličina mreže nije objavljena (mapa na sajtu se učitava kroz aplikaciju, broj punjača se ne vidi)",
- "power": "AC i DC (prema ponudi opreme)",
- "billing": "Nije objavljeno; naplata kroz novčanik u aplikaciji.",
+ "network": "Veličina mreže nije objavljena. U aplikaciji (22.09.2026) vidljivi su, između ostalih: JMEV CUBI (DC 90 kW), CITY TAXI Novi Sad (DC 180 kW), Battery Magic (DC 120 kW), GIORGIO Luxury (AC 11 kW), Salaš 265 (AC 17,2 kW).",
+ "power": "AC 11–17,2 kW, DC 90–180 kW (punjači vidljivi u aplikaciji); punjač Battery Magic ima i kineski konektor GB/T",
+ "billing": "Kombinovani obračun: cena po „jedinici punjenja“ (45–60 RSD, zavisi od punjača i tarife) + 1,20 RSD po minutu, PDV uračunat (aplikacija, 22.09.2026). Po objašnjenju u aplikaciji, jedinicu računa punjač iz snage, vremena i profila punjenja; ona nije zakonski overeno merenje i ne odgovara tačno potrošnji u kWh.",
  "verdicts": {
-  "cenovnik": "Nije objavljen",
-  "naplata": "Ne pominje se",
-  "kwh": "Ne pominje se",
-  "idle": "Ne pominje se"
+  "cenovnik": "Nije objavljen — samo u aplikaciji",
+  "naplata": "Po „jedinici“ + po minutu",
+  "kwh": "Ne — „jedinica punjenja“",
+  "idle": "10,20 RSD/min posle 10 min (ECO tarifa)"
  },
  "vclass": {
-  "cenovnik": "no",
-  "naplata": "no",
+  "cenovnik": "ask",
+  "naplata": "ask",
   "kwh": "no",
-  "idle": "no"
+  "idle": "yes"
  },
- "prices": [],
- "fees": "Nije objavljeno.",
+ "prices": [
+  {
+   "what": "DC 180 kW — CITY TAXI Novi Sad (ECO tarifa)",
+   "value": "45 RSD po jedinici + 1,20 RSD/min",
+   "date": "22.09.2026",
+   "source": "aplikacija Emobility Spectra — snimak ekrana redakcije",
+   "url": "https://emobility.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "DC 120 kW — Battery Magic",
+   "value": "60 RSD po jedinici + 1,20 RSD/min",
+   "date": "22.09.2026",
+   "source": "aplikacija Emobility Spectra — snimak ekrana redakcije",
+   "url": "https://emobility.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "AC 17,2 kW — Salaš 265 (ECO tarifa)",
+   "value": "45 RSD po jedinici + 1,20 RSD/min",
+   "date": "22.09.2026",
+   "source": "aplikacija Emobility Spectra — snimak ekrana redakcije",
+   "url": "https://emobility.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "AC 11 kW — GIORGIO Luxury",
+   "value": "54 RSD po jedinici + 1,20 RSD/min",
+   "date": "22.09.2026",
+   "source": "aplikacija Emobility Spectra — snimak ekrana redakcije",
+   "url": "https://emobility.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  }
+ ],
+ "fees": "ECO tarifa: posle završetka punjenja 10 minuta bez naknade, zatim 10,20 RSD/min za zauzeće mesta. Za punjače Battery Magic i GIORGIO Luxury naknada za zauzeće u aplikaciji nije navedena (22.09.2026).",
  "payment": "Novčanik u aplikaciji (platna kartica), RFID kartica, Apple Wallet",
  "roaming": "Ne pominje se",
  "support": "021 674 10 33 · Bulevar cara Lazara 88, Novi Sad",
@@ -39,12 +72,17 @@
    "url": "https://apps.apple.com/us/app/emobility-spectra/id6476980928",
    "label": "App Store — Emobility Spectra (verzija 2026.5.0, 11.06.2026)",
    "date": "22.09.2026"
+  },
+  {
+   "url": "https://emobility.rs/",
+   "label": "aplikacija Emobility Spectra — cene po punjaču (snimci ekrana redakcije)",
+   "date": "22.09.2026"
   }
  ],
  "verified": "22.09.2026",
- "confidence": "srednja — postojanje potvrđeno, obim mreže i cene nepoznati",
+ "confidence": "visoka za cene iz aplikacije (22.09.2026) · veličina mreže nepoznata",
  "notes": "Ista firma je u registru kućnih punjača: <a href=\"/firme/emobility-d-o-o/\">Emobility d.o.o.</a>",
- "card": "veličina mreže nije objavljena",
+ "card": "45–60 RSD po „jedinici“ + 1,20 RSD/min",
  "kind_label": "Operator mreže + aplikacija",
  "publish": true
 }

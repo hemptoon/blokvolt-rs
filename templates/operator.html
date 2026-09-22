@@ -17,11 +17,11 @@
 <h2>Kako se naplaćuje</h2>
 <p>{{ op.billing }}</p>
 {% if op.prices %}
-<h3 id="cene">Poslednje javno zabeležene cene</h3>
+<h3 id="cene">Cene: aplikacija, računi i istorija</h3>
 <div class="bva-tw"><table class="bva-tbl"><thead><tr><th>Punjač</th><th>Cena</th><th>Kada</th><th>Izvor</th></tr></thead><tbody>
 {% for p in op.prices %}<tr><td data-label="Punjač">{{ p.what }}</td><td data-label="Cena"><b class="pr">{{ p.value }}</b></td><td data-label="Kada">{{ p.date }}</td><td data-label="Izvor"><a href="{{ p.url }}" rel="noopener nofollow">{{ p.source }}</a><small>{{ p.confidence }}</small></td></tr>
 {% endfor %}</tbody></table></div>
-<p class="bva-disc">Operateri cene ne objavljuju na sajtu — važi cena koju aplikacija prikaže u trenutku pokretanja punjenja. Ovde su poslednji javno zabeleženi iznosi sa datumom; služe kao orijentir, ne kao ponuda. Kako da cenu po minuti preračunate u cenu po kWh: <a href="/javno-punjenje/#po-minutu">objašnjenje i računica</a>.</p>
+<p class="bva-disc">Operateri cene ne objavljuju na sajtu — važi cena koju aplikacija prikaže u trenutku pokretanja punjenja. U tabeli su cene koje je redakcija videla u aplikaciji (snimak ekrana, sa datumom), računi za punjenja koja je redakcija platila i, pod „Istorija“, ranije javno zabeleženi iznosi. Služe kao orijentir, ne kao ponuda. Kako da cenu po minuti preračunate u cenu po kWh: <a href="/javno-punjenje/#po-minutu">objašnjenje i računica</a>.</p>
 {% else %}
 <div class="bva-note"><p><strong>Javno objavljenih cena nema.</strong> Nismo našli ni cenovnik na sajtu ni proverljiv zapis cene sa datumom. Ako ste punili ovde — pošaljite snimak ekrana aplikacije na <a href="/ispravka/">stranici za ispravke</a>; objavljujemo sa datumom.</p></div>
 {% endif %}
@@ -32,5 +32,5 @@
 {% if op.notes %}<div class="bva-note"><p>{{ op.notes|safe }}</p></div>{% endif %}
 <h2>Izvori</h2>
 <ul class="bva-src">{% for s in op.sources %}<li><a href="{{ s.url }}" rel="noopener nofollow">{{ s.label }}</a> — provereno {{ s.date }}</li>{% endfor %}</ul>
-<p class="bva-disc">Podatke prepisujemo sa javnih stranica operatera, iz zvaničnih saopštenja, a cene i iz proverljivih zapisa korisnika (uvek sa datumom i oznakom izvora). Ne ocenjujemo mreže. Ako ste iz ove kompanije i nešto se promenilo — <a href="/ispravka/?operator={{ op.slug }}">prijavite ispravku</a>; promene beležimo u <a href="/izmene/">dnevniku izmena</a>.</p>
+<p class="bva-disc">Podatke prepisujemo sa javnih stranica operatera i iz zvaničnih saopštenja; cene čitamo iz aplikacija operatera i sa računa redakcije, a starije i iz proverljivih zapisa korisnika (uvek sa datumom i oznakom izvora). Ne ocenjujemo mreže. Ako ste iz ove kompanije i nešto se promenilo — <a href="/ispravka/?operator={{ op.slug }}">prijavite ispravku</a>; promene beležimo u <a href="/izmene/">dnevniku izmena</a>.</p>
 </div></div>{% endblock %}

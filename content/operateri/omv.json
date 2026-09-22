@@ -24,7 +24,48 @@
   "kwh": "no",
   "idle": "ask"
  },
- "prices": [],
+ "prices": [
+  {
+   "what": "Charge&GO: DC 240 kW — OMV Zemun park (Novosadski put)",
+   "value": "126,67 RSD/min",
+   "date": "22.09.2026",
+   "source": "aplikacija Charge&GO — snimak ekrana redakcije",
+   "url": "https://chargego.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "Charge&GO: DC 180 kW — OMV Bačka Topola 1",
+   "value": "114,17 RSD/min",
+   "date": "22.09.2026",
+   "source": "aplikacija Charge&GO — snimak ekrana redakcije",
+   "url": "https://chargego.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "Charge&GO: DC 110–120 kW — OMV Kneževac, Borska, Vranje, Palić",
+   "value": "101,67 RSD/min",
+   "date": "22.09.2026",
+   "source": "aplikacija Charge&GO — snimak ekrana redakcije",
+   "url": "https://chargego.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "Charge&GO: DC 50 kW — OMV Ada Ciganlija",
+   "value": "33,33 RSD/min",
+   "date": "22.09.2026",
+   "source": "aplikacija Charge&GO — snimak ekrana redakcije",
+   "url": "https://chargego.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "Orion eMobility: DC 50 kW i AC 22 kW — OMV Novi Sad",
+   "value": "50 RSD/min · 700 RSD za 60 min; + 50 RSD priključenje",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility — snimak ekrana redakcije",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "confidence": "primarni izvor (aplikacija)"
+  }
+ ],
  "fees": "Prema uslovima operatera na konkretnoj stanici (vidi Charge&GO).",
  "payment": "Samo aplikacija partnera (Charge&GO ili EasyPark)",
  "roaming": "Prema operateru",

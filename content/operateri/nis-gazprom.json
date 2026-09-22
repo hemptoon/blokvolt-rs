@@ -24,7 +24,16 @@
   "kwh": "no",
   "idle": "yes"
  },
- "prices": [],
+ "prices": [
+  {
+   "what": "Račun, Charge&GO: BS Gazprom Stari Banovci, DC (tarifa 58,33 RSD/min)",
+   "value": "349,98 RSD za 4,43 kWh ≈ 79 RSD/kWh",
+   "date": "avgust 2026",
+   "source": "račun u aplikaciji Charge&GO (punjenje redakcije)",
+   "url": "https://chargego.rs/",
+   "confidence": "primarni izvor (račun)"
+  }
+ ],
  "fees": "Prema uslovima Charge&GO.",
  "payment": "Aplikacija Charge&GO, QR karticom",
  "roaming": "Prema Charge&GO",

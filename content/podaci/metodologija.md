@@ -26,7 +26,7 @@ BlokVolt uređuje tim kompanije Evolako iz Novog Sada, koja prodaje i ugrađuje 
 
 ## Javno punjenje
 
-Operateri javnih punjača u Srbiji ne objavljuju cenovnike na sajtu — cena se vidi u aplikaciji tek pre pokretanja punjenja. Zato u <a href="/javno-punjenje/">indeksu cena</a> koristimo poslednje javno zabeležene cene iz medija i proverljivih zapisa korisnika (forumi, blogovi), uvek sa datumom, linkom i oznakom pouzdanosti („primarni izvor“, „medij“, „korisnički podatak“). Preračun cene po minutu u cenu po kWh je naša računica i uz nju su navedene pretpostavke o prosečnoj snazi punjenja. Mreže, aplikacije i domaćine ne rangiramo; poređani su po tipu, ne po kvalitetu, a veličinu mreže navodimo onako kako je objavljuje operater. Snimke ekrana cene iz aplikacije sa datumom i lokacijom rado primamo preko <a href="/ispravka/">stranice za ispravke</a>.
+Operateri javnih punjača u Srbiji ne objavljuju cenovnike na sajtu — cena se vidi u aplikaciji tek pre pokretanja punjenja. Zato cene u <a href="/javno-punjenje/">indeksu cena</a> čitamo iz aplikacija operatera (snimak ekrana redakcije, sa datumom) i sa računa za punjenja koja je redakcija platila; stariji zapisi iz medija i od korisnika (forumi, blogovi) ostaju na karticama mreža kao istorija cena. Uz svaku cenu stoje datum, izvor i oznaka pouzdanosti („primarni izvor (aplikacija)“, „primarni izvor (račun)“, „medij“, „korisnički podatak“). Preračun cene po minutu u cenu po kWh je naša računica i uz nju su navedene pretpostavke o prosečnoj snazi punjenja. Mreže, aplikacije i domaćine ne rangiramo; poređani su po tipu, ne po kvalitetu, a veličinu mreže navodimo onako kako je objavljuje operater. Snimke ekrana cene iz aplikacije sa datumom i lokacijom rado primamo preko <a href="/ispravka/">stranice za ispravke</a>.
 
 ## Propisi i brojke
 
@@ -37,6 +37,7 @@ Za propise navodimo broj Službenog glasnika i, gde postoji, link na tekst. Za b
 - Registar firmi i tabela cena: kvartalno (sledeća provera decembar 2026) i po svakoj prijavi.
 - Subvencije: pri svakoj zvaničnoj vesti.
 - Statistika: po kvartalnim objavama SAUVD-a.
+- Cene javnog punjenja: mesečno, iz aplikacija operatera.
 - Tarife, putarina, parking: pri promeni propisa, najmanje dvaput godišnje.
 - Javno punjenje: cene mesečno, mreže i besplatne lokacije kvartalno.
 

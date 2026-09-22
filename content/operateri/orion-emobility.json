@@ -11,22 +11,86 @@
  "coverage": "Srbija; aplikacija pokriva i Crnu Goru, BiH, Hrvatsku, Sloveniju, Severnu Makedoniju, Albaniju (partnerske mreže)",
  "network": "„Infrastruktura od 300 EV punjačnih mesta u zemlji“ i „više od 1.000 EV punjača širom Srbije i regiona“ — navodi operatera bez datuma (marketinška cifra, ne proverena nezavisno)",
  "power": "AC do 22 kW; DC 20–400 kW (po katalogu opreme); punjači JP „Putevi Srbije“ 40–300 kW",
- "billing": "Po vremenu (po minutu); cenovnik po lokaciji je u aplikaciji („cenovnik usluga punjenja“), na sajtu nije objavljen.",
+ "billing": "Po minutu (na AC punjaču i po satu, npr. 700 RSD za 60 min) + naknada za priključenje; cenovnik po punjaču je u aplikaciji, na sajtu nije objavljen. Za sopstvene punjače aplikacija 22.09.2026 navodi: naknada za priključenje 50 RSD, „cena na min počinje se naplaćivati nakon 3 minuta“, posle punjenja 15 minuta bez naknade, zatim 5 RSD/min za mirovanje.",
  "verdicts": {
   "cenovnik": "Nije objavljen — samo u aplikaciji",
-  "naplata": "Po minutu",
+  "naplata": "Po minutu + 50 RSD priključenje",
   "kwh": "Ne",
-  "idle": "Ne pominje se"
+  "idle": "5 RSD/min posle 15 min"
  },
  "vclass": {
   "cenovnik": "ask",
   "naplata": "ask",
   "kwh": "no",
-  "idle": "no"
+  "idle": "yes"
  },
  "prices": [
   {
-   "what": "DC 75 kW, OMV Novi Sad (Partizanska)",
+   "what": "DC 50 kW CHAdeMO — OMV Novi Sad",
+   "value": "50 RSD/min + 50 RSD priključenje",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility — snimak ekrana redakcije",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "AC 22 kW — OMV Novi Sad",
+   "value": "700 RSD za 60 min (11,67 RSD/min) + 50 RSD",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility — snimak ekrana redakcije",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "DC 75 kW CCS — SIRIUS eksterno",
+   "value": "70 RSD/min + 50 RSD",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility — snimak ekrana redakcije",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "DC 50 kW CCS — Škoda Auto Čačak",
+   "value": "70 RSD/min + 50 RSD",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility — snimak ekrana redakcije",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "AC 22 kW — Auto kuća Mikom",
+   "value": "30 RSD/min + 50 RSD",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility — snimak ekrana redakcije",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "Roming, punjač Charge&GO: DC 150 kW, Super Vero Novi Sad",
+   "value": "197 RSD/min + 140 RSD",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility — snimak ekrana redakcije",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "Roming, punjač Charge&GO: DC 120 kW, OMV Borska (Bahtijara Vagabzade)",
+   "value": "176 RSD/min + 140 RSD",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility — snimak ekrana redakcije",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "Roming, punjač Charge&GO: AC 22 kW, Staro Sajmište 29",
+   "value": "30 RSD/min + 80 RSD",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility — snimak ekrana redakcije",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "Istorija: DC 75 kW, OMV Novi Sad (Partizanska)",
    "value": "70 RSD/min (4.200 RSD/sat)",
    "date": "2024",
    "source": "evfix.rs",
@@ -34,7 +98,7 @@
    "confidence": "korisnički podatak"
   },
   {
-   "what": "DC 50 kW, ista lokacija",
+   "what": "Istorija: DC 50 kW, ista lokacija",
    "value": "50 RSD/min (3.000 RSD/sat)",
    "date": "2024",
    "source": "evfix.rs",
@@ -42,7 +106,7 @@
    "confidence": "korisnički podatak"
   },
   {
-   "what": "AC 22 kW, ista lokacija",
+   "what": "Istorija: AC 22 kW, ista lokacija",
    "value": "11,66 RSD/min (700 RSD/sat)",
    "date": "2024",
    "source": "evfix.rs",
@@ -50,9 +114,9 @@
    "confidence": "korisnički podatak"
   }
  ],
- "fees": "Tokom sesije aplikacija rezerviše na kartici 2.000 RSD (AC punjač) ili 4.000 RSD (DC punjač); naplaćuje se stvarni iznos. Naknada za zauzeće posle punjenja nije javno objavljena.",
+ "fees": "Naknada za priključenje: 50 RSD na sopstvenim punjačima, 80–140 RSD na roming punjačima Charge&GO. Naknada za mirovanje: 5 RSD/min posle 15 minuta na sopstvenim punjačima; na roming punjačima 0 RSD (aplikacija, 22.09.2026). Tokom sesije aplikacija rezerviše na kartici 2.000 RSD (AC punjač) ili 4.000 RSD (DC punjač); naplaćuje se stvarni iznos.",
  "payment": "Platna kartica u aplikaciji (Visa, MasterCard, Diners, Amex, DinaCard), opcioni pripejd kredit, RFID kartica Orion, QR kod na punjaču; korporativni računi na zahtev",
- "roaming": "„Uvid u lokacije preko 400.000 punjača širom Evrope i sveta“ (partner za roming nije naveden)",
+ "roaming": "„Uvid u lokacije preko 400.000 punjača širom Evrope i sveta“ (partner za roming nije naveden). U aplikaciji su i punjači Charge&GO, skuplji nego u aplikaciji Charge&GO: 22.09.2026 Super Vero Novi Sad 197 RSD/min + 140 RSD, naspram 114,17 RSD/min.",
  "support": "011 4100 333 · support.emobility@oriontelekom.rs",
  "sources": [
   {
@@ -71,6 +135,11 @@
    "date": "22.09.2026"
   },
   {
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "label": "aplikacija Orion eMobility — cene po punjaču (snimci ekrana redakcije)",
+   "date": "22.09.2026"
+  },
+  {
    "url": "https://evfix.rs/stanice-za-punjenje-ev/naplata-punjenja/omv-novi-sad/",
    "label": "evfix.rs — cene OMV Novi Sad (2024)",
    "date": "22.09.2026"
@@ -82,9 +151,9 @@
   }
  ],
  "verified": "22.09.2026",
- "confidence": "visoka za uslove · niska za cene (jedini javni podaci su iz 2024)",
- "notes": "Na stranici OMV-a (provereno 22.09.2026) uz lokaciju OMV Novi Sad stoji aplikacija EasyPark, a ne Orion — moguće je da je operater promenjen posle 2024. Orion prodaje i kućne punjače: <a href=\"/firme/orion-emobility/\">kartica u registru firmi</a>.",
- "card": "„300 punjačnih mesta u zemlji“ (navod operatera)",
+ "confidence": "visoka — cene iz aplikacije (22.09.2026); veličina mreže je navod operatera",
+ "notes": "OMV Novi Sad je u aplikaciji Orion eMobility i 22.09.2026 (punjači 1128 i 1129), iako na stranici OMV-a uz tu lokaciju stoji aplikacija EasyPark — ista stanica može da se naplaćuje kroz više aplikacija, po različitim cenama. Punjač u Surčinskoj 52 (Garni hotel Mar) aplikacija vodi kao rezervisan za goste hotela. Orion prodaje i kućne punjače: <a href=\"/firme/orion-emobility/\">kartica u registru firmi</a>.",
+ "card": "11,67–70 RSD/min + 50 RSD po sesiji",
  "kind_label": "Operator mreže + aplikacija",
  "publish": true
 }
