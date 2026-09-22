@@ -1,1 +1,114 @@
-<div class="v3-nav"><div class="w3 v3-nbar"><a class="v3-logo" href="/" aria-label="BlokVolt — vodič kroz električne automobile u Srbiji"><span>blok</span><span>volt</span></a><div class="v3-links" id="v3-links">{% for href, label in NAV %}<a href="{{ href }}"{% if path and (path == href or (href != '/' and path.startswith(href.rstrip('/')))) %} aria-current="page"{% endif %}>{{ label }}</a>{% endfor %}<a class="v3-links-cta" href="https://www.evolako.rs/proveri-svoju-garazu">Proverite svoju garažu →</a></div><div class="v3-ncta"><a href="https://www.evolako.rs/proveri-svoju-garazu">Proverite svoju garažu</a><button class="v3-burger" type="button" aria-label="Meni" aria-expanded="false" aria-controls="v3-links"><span></span><span></span><span></span></button></div></div></div>
+{# Mega navigation (Osmo "Mega Navigation — Directional Hover"), same component as on evolako.rs.
+   Data attributes are used by /assets/meganav.js — do not rename them. #}
+{% set CHEV %}<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" class="mega-nav__bar-link-icon is--dropdown" aria-hidden="true"><path d="M6.6665 8.3335L9.99984 11.6668L13.3332 8.3335" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>{% endset %}
+{% set ARROW %}<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" class="mega-nav__bar-link-icon" aria-hidden="true"><path d="M8.3335 13.3335L11.6668 10.0002L8.3335 6.66683" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>{% endset %}
+{% set PANELS = [
+ ('firme', 'Firme', ['/firme/', '/gradovi/', '/cena-punjaca-za-elektricni-auto'], [
+   ('Registar', false, [
+     ('/firme/', 'Sve firme (' ~ n_firms ~ ')', 'Iste kolone za svakoga, sa datumom provere'),
+     ('/cena-punjaca-za-elektricni-auto', 'Uporedna tabela cena', 'Svi javno objavljeni cenovnici na jednom mestu'),
+     ('/ispravka/', 'Prijavite ispravku ili dodajte firmu', 'Besplatno i javno zabeleženo'),
+   ]),
+   ('Po tipu ponude', false, [
+     ('/firme/#grupa-a', 'Punjač sa ugradnjom', 'Cena uređaja i ugradnje zajedno'),
+     ('/firme/#grupa-b', 'Javna cena uređaja', 'Ugradnja se nudi, cena na upit'),
+     ('/firme/#grupa-c', 'Web-shopovi', 'Samo uređaj, bez ugradnje'),
+     ('/firme/#grupa-d', 'Bez javne cene', 'Sve na upit'),
+     ('/firme/#grupa-e', 'Električari', 'Montiraju punjač koji donesete'),
+   ]),
+   ('Po gradu', true, [
+     ('/gradovi/beograd/', 'Beograd', ''),
+     ('/gradovi/novi-sad/', 'Novi Sad', ''),
+     ('/gradovi/nis/', 'Niš', ''),
+   ]),
+ ]),
+ ('javno', 'Javno punjenje', ['/javno-punjenje/'], [
+   ('Mreže i cene', false, [
+     ('/javno-punjenje/', 'Sve mreže i domaćini (' ~ n_ops ~ ')', 'Ko vodi punjače, kako se plaća, koliko košta'),
+     ('/javno-punjenje/#cene', 'Indeks cena', 'Poslednje zabeležene cene po minutu i po kWh'),
+     ('/javno-punjenje/besplatni-punjaci/', 'Besplatni punjači', 'Autoputevi, Lidl, garaže Parking servisa'),
+     ('/javno-punjenje/region/', 'Punjenje u regionu', 'Hrvatska, Mađarska, BiH, Crna Gora, Makedonija'),
+   ]),
+   ('Najveće mreže', false, [
+     ('/javno-punjenje/chargego/', 'Charge&GO', ''),
+     ('/javno-punjenje/orion-emobility/', 'Orion eMobility', ''),
+     ('/javno-punjenje/putevi-srbije/', 'JP „Putevi Srbije“', ''),
+     ('/javno-punjenje/omv/', 'OMV', ''),
+     ('/javno-punjenje/emobility-spectra/', 'Emobility Spectra', ''),
+   ]),
+   ('Računica', true, [
+     ('/alati/kalkulator-troskova/', 'Kalkulator troškova', 'Koliko košta 100 km kod kuće i na putu'),
+     ('/ko-placa-struju-za-punjenje', 'Ko plaća struju u zgradi', 'Brojilo, tarife i obračun po stanu'),
+   ]),
+ ]),
+ ('podaci', 'Podaci', ['/podaci/'], [
+   ('Novac', false, [
+     ('/podaci/subvencije-2026/', 'Subvencije 2026', 'Iznosi, uslovi i rok 1. decembra'),
+     ('/podaci/cene-elektricnih-automobila/', 'Cene električnih automobila', 'Modeli sa cenom kod uvoznika'),
+     ('/podaci/krediti-i-lizing/', 'Krediti i lizing', 'Kamate banaka za „zelena“ vozila'),
+     ('/podaci/rent-a-car-i-car-sharing/', 'Iznajmljivanje', 'Rent-a-car, car-sharing, taksi'),
+   ]),
+   ('Papiri i troškovi', false, [
+     ('/podaci/registracija-i-porezi/', 'Registracija i porezi', ''),
+     ('/podaci/uvoz-i-carina/', 'Uvoz i carina', ''),
+     ('/podaci/osiguranje-elektricnog-automobila/', 'Osiguranje', ''),
+     ('/podaci/putarina-i-parking/', 'Putarina i parking', ''),
+     ('/podaci/servisi-za-elektricne-automobile/', 'Servisi i baterija', ''),
+   ]),
+   ('Brojke i pravila', true, [
+     ('/podaci/statistika-ev-srbija/', 'Statistika EV u Srbiji', 'Vozni park, registracije, punjači'),
+     ('/metodologija/', 'Metodologija', 'Kako proveravamo i šta ne objavljujemo'),
+     ('/izmene/', 'Dnevnik izmena', 'Šta je i kada promenjeno'),
+   ]),
+ ]),
+ ('vodici', 'Vodiči', ['/vodici/', '/punjenje-elektricnog-auta-u-zgradi', '/punjac-u-zgradi-skupstina', '/ko-placa-struju-za-punjenje', '/punjac-u-iznajmljenoj-garazi', '/wallbox-cena-srbija', '/bezbednost-punjenja-atest'], [
+   ('Punjenje u zgradi', false, [
+     ('/punjenje-elektricnog-auta-u-zgradi', 'Kompletan vodič', 'Od ideje do punjača u garaži'),
+     ('/punjac-u-zgradi-skupstina', 'Saglasnost skupštine', 'Koraci, rokovi i šablon odluke'),
+     ('/ko-placa-struju-za-punjenje', 'Ko plaća struju', 'Brojilo, MID i obračun'),
+     ('/punjac-u-iznajmljenoj-garazi', 'Iznajmljena garaža', 'Dogovor sa vlasnikom'),
+   ]),
+   ('Cene i bezbednost', false, [
+     ('/cena-punjaca-za-elektricni-auto', 'Koliko košta punjač', 'Sve javne cene u Srbiji'),
+     ('/wallbox-cena-srbija', 'Wallbox cena', 'Šta zaista ulazi u cenu ugradnje'),
+     ('/bezbednost-punjenja-atest', 'Bezbednost i atest', 'Zašto produžni kabl nije rešenje'),
+   ]),
+   ('Sve na jednom mestu', true, [
+     ('/vodici/', 'Svi vodiči', 'Sedam vodiča i dva šablona'),
+     ('/ispravka/', 'Prijavite ispravku', 'Ako nešto nije tačno ili se promenilo'),
+   ]),
+ ]),
+] %}
+{% set _p = path or '' %}
+<nav data-menu-open="false" data-menu-wrap class="mega-nav" aria-label="Glavna navigacija">
+<div class="mega-nav__bar"><div class="mega-nav__container"><div class="mega-nav__bar-start">
+<a data-menu-logo href="/" class="mega-nav__bar-logo" aria-label="BlokVolt — početna strana"><span>blok</span><span>volt</span></a>
+<div data-nav-list data-mobile-nav class="mega-nav__bar-inner">
+<ul class="mega-nav__bar-list">
+{% for pid, plabel, prefixes, cols in PANELS %}
+<li data-nav-list-item><button data-dropdown-toggle="{{ pid }}" data-fallback-href="{{ prefixes[0] }}" aria-expanded="false" aria-haspopup="true" class="mega-nav__bar-link is--dropdown{% for pre in prefixes %}{% if _p == pre or (pre.endswith('/') and _p.startswith(pre)) %} is--active{% endif %}{% endfor %}"><span class="mega-nav__bar-link-label">{{ plabel }}</span>{{ CHEV }}</button></li>
+{% endfor %}
+<li data-nav-list-item><a href="/alati/kalkulator-troskova/" class="mega-nav__bar-link{% if _p.startswith('/alati/') %} is--active{% endif %}"{% if _p.startswith('/alati/') %} aria-current="page"{% endif %}><span class="mega-nav__bar-link-label">Kalkulator</span></a></li>
+</ul>
+<ul data-nav-list-item class="mega-nav__bar-list is--actions">
+<li class="mega-nav__bar-action"><a href="https://www.evolako.rs/proveri-svoju-garazu" class="mega-nav__bar-cta"><span class="mega-nav__bar-link-label">Proverite svoju garažu</span>{{ ARROW }}</a></li>
+</ul>
+</div>
+<div class="mega-nav__bar-end"><button data-burger-toggle aria-label="Meni" aria-expanded="false" class="mega-nav__burger"><span data-burger-line="top" class="mega-nav__burger-line"></span><span data-burger-line="mid" class="mega-nav__burger-line"></span><span data-burger-line="bot" class="mega-nav__burger-line"></span></button></div>
+<div data-mobile-back class="mega-nav__back"><button aria-label="Nazad na meni" class="mega-nav__bar-link is--back"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" class="mega-nav__bar-link-icon" aria-hidden="true"><path d="M11.6665 6.6665L8.33317 9.99984L11.6665 13.3332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="mega-nav__bar-link-label">Nazad</span></button></div>
+</div></div></div>
+<div data-dropdown-wrapper class="mega-nav__dropdown-wrapper"><div data-dropdown-container class="mega-nav__dropdown-container"><div data-dropdown-bg class="mega-nav__dropdown-bg"></div>
+{% for pid, plabel, prefixes, cols in PANELS %}
+<div data-panel-state data-nav-content="{{ pid }}" role="region" aria-label="{{ plabel }} — meni" class="mega-nav__dropdown-panel"><div class="mega-nav__dropdown-inner">
+{% for clabel, colored, links in cols %}
+<div data-menu-fade class="mega-nav__panel-col{% if colored %} is--colored{% endif %}"><span data-menu-fade class="mega-nav__panel-label">{{ clabel }}</span><ul class="mega-nav__panel-list">
+{% for href, text, desc in links %}
+<li data-menu-fade><a href="{{ href }}" class="mega-nav__panel-link"><span class="mega-nav__panel-link-text">{{ text }}</span>{% if desc %}<span class="mega-nav__panel-link-desc">{{ desc }}</span>{% endif %}</a></li>
+{% endfor %}
+</ul></div>
+{% endfor %}
+</div></div>
+{% endfor %}
+</div></div>
+<div data-menu-backdrop class="mega-nav__backdrop"></div>
+</nav>

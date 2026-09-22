@@ -12,6 +12,7 @@ disclaimer: Nedostaje nešto u dnevniku? Pišite na
 ---
 ## 22. septembar 2026
 
+- Novi meni: padajuće sekcije <strong>Firme</strong>, <strong>Javno punjenje</strong>, <strong>Podaci</strong> i <strong>Vodiči</strong> sa svim stranicama na jednom mestu, plus prečica do kalkulatora. Na telefonu meni radi kao klizne kartice.
 - Novo: <a href="/alati/kalkulator-troskova/">kalkulator troškova</a> — punjenje kod kuće po tarifama EPS-a (sa naknadama, akcizom i PDV-om), javni punjači po cenama sa računa, poređenje sa benzinom i dizelom po zvaničnim cenama goriva. Kalkulator je dodat u glavni meni.
 - Nove stranice: <a href="/podaci/cene-elektricnih-automobila/">cene električnih automobila</a> (66 modela 17 marki sa cenom kod uvoznika, računica posle subvencije, uvoznici i saloni), <a href="/podaci/rent-a-car-i-car-sharing/">iznajmljivanje električnog automobila</a> (rent-a-car, car-sharing, taksi, dugoročni najam) i <a href="/javno-punjenje/region/">punjenje u regionu</a> (Hrvatska, Mađarska, Severna Makedonija, BiH, Crna Gora: cene, plaćanje, srpske aplikacije, brzi punjači na putu).
 - <a href="/javno-punjenje/#cene">Indeks cena javnog punjenja</a>: cene iz aplikacija Charge&GO, Orion eMobility i Emobility Spectra (snimci ekrana redakcije, 22.09.2026) i četiri računa iz aplikacije Charge&GO; stariji zapisi korisnika i medija (2021–2025) premešteni u istoriju cena na karticama mreža. Dodato upozorenje da isti punjač u različitim aplikacijama ima različitu cenu (roming Charge&GO u Orionu) i opis obračuna po „jedinici punjenja“ kod Emobility Spectra.

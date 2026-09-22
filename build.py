@@ -175,6 +175,10 @@ def add_url(path, prio='0.6', lastmod=ISO_TODAY):
 nav_html = env.get_template('_nav.html').render(**base_ctx, path='')
 foot_html = env.get_template('_footer.html').render(**base_ctx)
 
+SCRIPTS = ('<script src="/assets/vendor/gsap.min.js" defer></script>\n'
+           '<script src="/assets/meganav.js" defer></script>\n'
+           '<script src="/assets/site.js" defer></script>')
+
 def patch_legacy(html_text, current=None):
     """Replace legacy nav/footer with the new ones and fix counts/dates."""
     nav = nav_html if not current else env.get_template('_nav.html').render(**base_ctx, path=current)
@@ -182,6 +186,7 @@ def patch_legacy(html_text, current=None):
     html_text = re.sub(r'<div class="v3-foot">.*?<div class="v3-legal">.*?</div></div>', foot_html, html_text, count=1, flags=re.S)
     html_text = html_text.replace('<link rel="stylesheet" href="/assets/webflow.css">\n', '')
     html_text = html_text.replace('<link rel="stylesheet" href="/assets/site.css">', '<link rel="stylesheet" href="/assets/site.css">\n<link rel="stylesheet" href="/assets/agg.css">')
+    html_text = html_text.replace('<script src="/assets/site.js" defer></script>', SCRIPTS)
     html_text = html_text.replace('cene 20 firmi', 'cene 42 firme').replace('Cene 20 firmi', 'Cene 42 firme').replace('20 firmi', '42 firme')
     return html_text
 
@@ -324,7 +329,7 @@ sm.append('</urlset>')
 render('article.html', '/404.html', crumb=None, meta={'title': 'Stranica nije pronađena', 'kicker': 'Greška 404', 'updated': ''}, body='<p class="bva-lead">Ta stranica ne postoji ili je premeštena.</p><p>Probajte <a href="/firme/">registar firmi</a>, <a href="/javno-punjenje/">javno punjenje</a>, <a href="/vodici/">vodiče</a> ili <a href="/podaci/">podatke</a>.</p>', title='404 | BlokVolt', description='', sources=[])
 import hashlib as _hl
 _ver = {}
-for _a in ('site.css', 'agg.css', 'site.js'):
+for _a in ('site.css', 'agg.css', 'site.js', 'meganav.js', 'vendor/gsap.min.js'):
     _ver[_a] = _hl.sha1((DIST / 'assets' / _a).read_bytes()).hexdigest()[:10]
 for _f in DIST.rglob('*.html'):
     _t = _f.read_text(encoding='utf-8')
