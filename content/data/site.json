@@ -20,6 +20,10 @@
  "news": [
   {
    "date": "23.09.2026",
+   "html": "Dodata <a href=\"/pretraga/\">pretraga sajta</a> i blok „poslednje provere“ na početnoj strani."
+  },
+  {
+   "date": "23.09.2026",
    "html": "Novi alat: <a href=\"/alati/racun-u-zgradi/\">ko koliko plaća punjenje u zgradi</a> — računica za zajedničko brojilo, paušal i merenje, po stanu i godišnje."
   },
   {

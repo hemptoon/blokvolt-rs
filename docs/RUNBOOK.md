@@ -171,6 +171,13 @@ report, do not unpublish silently. Leads (`group` L, 16 at the time of writing):
 columns; publish (`publish: true`, proper group) only when the firm's own site confirms what it sells.
 After the full pass set `firms_checked` in `content/data/site.json`, log in `izmene.md`, add a news item.
 
+### 3.8 Site search index
+
+`build.py` writes `dist/assets/search.json` from the generated pages (title, description, section,
+headings and the first 1.200 characters of body text) and `/pretraga/` searches it in the browser.
+Nothing to maintain by hand — but if a page should be findable by a word that is not in its text,
+put that word in the page's description.
+
 ## 4. Build and check
 
 ```bash
@@ -236,7 +243,9 @@ to sign in, stop and tell the owner — never type credentials.
    const inp=document.querySelector('#upload-manifest-files-input'); inp.files=dt.files; inp.dispatchEvent(new Event('change',{bubbles:true}));
    Object.keys(obj)
    ```
-5. Wait until the page no longer shows "Uploading N of M files":
+5. Wait until the page no longer shows "Uploading N of M files" — the commit button goes live before
+   the attachments finish, and committing early silently loses the commit (the page lands on a browser
+   error and the branch is unchanged). Poll until it reads "done":
    ```js
    (document.body.innerText.match(/Uploading \d+ of \d+ files/)||['done'])[0]
    ```
@@ -256,7 +265,8 @@ to sign in, stop and tell the owner — never type credentials.
    const b=j.tree.filter(x=>x.type==='blob'); const lines=b.map(x=>x.path+':'+x.sha).sort().join('\n')+'\n';
    ({files:b.length, hash:[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(lines)))].map(x=>x.toString(16).padStart(2,'0')).join('').slice(0,16)})
    ```
-   The hash must equal the one printed by `gh_payload.py`.
+   The hash must equal the one printed by `gh_payload.py`. If it still shows the previous commit,
+   the commit did not go through — redo section 6 from step 2 rather than assuming a caching delay.
 
 If a browser call answers "Browser extension is not connected", retry the same call once — the link
 to Brave drops for a few seconds now and then. If it fails again, go to section 7.

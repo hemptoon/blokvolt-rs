@@ -239,6 +239,7 @@ for city, lst in cities.items():
 
 # 4) markdown pages (podaci, o-sajtu, metodologija, ispravka, izmene)
 PODACI = []
+CHECKS = []
 CRUMBS = [('/podaci/', ('Podaci', '/podaci/')), ('/javno-punjenje/', ('Javno punjenje', '/javno-punjenje/'))]
 md_files = sorted(glob.glob(str(ROOT / 'content' / 'podaci' / '*.md'))) + sorted(glob.glob(str(ROOT / 'content' / 'javno' / '*.md')))
 for mdf in md_files:
@@ -251,6 +252,10 @@ for mdf in md_files:
     add_url(path, meta.get('priority', '0.7'))
     if path.startswith('/podaci/'):
         PODACI.append(dict(meta, path=path))
+    if meta.get('next_check'):
+        _kick = meta.get('kicker', '').split('·')[-1].strip()
+        _name = (_kick[:1].upper() + _kick[1:]) if _kick else meta['title'].split(' — ')[0].split(':')[0]
+        CHECKS.append({'name': _name, 'path': path, 'updated': meta.get('updated', ''), 'next': meta['next_check']})
 PODACI.sort(key=lambda m: (-float(m.get('priority', '0.5')), m.get('title', '')))
 render('podaci_index.html', '/podaci/', pages=PODACI, title='Podaci: subvencije, statistika, tarife, propisi za električne automobile u Srbiji | BlokVolt',
        description='Proverene brojke i propisi za vlasnike električnih automobila u Srbiji — subvencije 2026, registracija i porezi, osiguranje, krediti, uvoz i carina, servisi, statistika, putarina i parking. Svaka stranica sa izvorom i datumom.')
@@ -320,11 +325,23 @@ render('kalkulator_zgrada.html', '/alati/racun-u-zgradi/', z=ZG, d=_zd, ex=_zex,
        description=f"Koliko stanari bez automobila plate tuđe punjenje kad punjač visi na zajedničkom brojilu: računica po stanu, mesečno i godišnje, i za koliko se vrati brojilo. Cene overenog merenja {ZG['meter_cost']['low']:,.0f}–{ZG['meter_cost']['high']:,.0f} RSD.".replace(',', '.'))
 add_url('/alati/racun-u-zgradi/', '0.8')
 
+CHECKS.append({'name': f'Registar firmi ({len(published)})', 'path': '/firme/', 'updated': FIRMS_CHECKED, 'next': 'kvartalno'})
+CHECKS.append({'name': 'Indeks cena javnog punjenja', 'path': '/javno-punjenje/#cene', 'updated': price_index['updated'], 'next': price_index.get('next_check', '')})
+def _d(x):
+    p = (x.get('updated') or '').split('.')
+    return (p[2], p[1], p[0]) if len(p) == 3 else ('0', '0', '0')
+CHECKS.sort(key=_d, reverse=True)
+
 # 5) home
-render('home.html', '/', GUIDES=GUIDES_META, PODACI=PODACI, by_group=by_group, cities=cities, CITY_SLUGS=CITY_SLUGS,
+render('home.html', '/', GUIDES=GUIDES_META, PODACI=PODACI, CHECKS=CHECKS, by_group=by_group, cities=cities, CITY_SLUGS=CITY_SLUGS,
        title='BlokVolt — sve o električnim automobilima u Srbiji: firme, cene, procedure',
        description=f'Nezavisni vodič za vlasnike električnih automobila u Srbiji: {len(published)} firmi za punjače sa javnim cenama, javni punjači i cene, besplatni punjači, 7 vodiča o punjenju u zgradi, subvencije 2026, statistika i propisi. Sve sa izvorom i datumom provere.')
 add_url('/', '1.0')
+
+# 5b) search page + index
+render('pretraga.html', '/pretraga/', title='Pretraga sajta | BlokVolt',
+       description='Pretraga svih stranica BlokVolta: firme, cene punjača, javno punjenje, podaci, propisi i vodiči.')
+add_url('/pretraga/', '0.3')
 
 # 6) sitemap, robots, redirects, 404
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
@@ -351,6 +368,28 @@ sm.append('</urlset>')
 render('article.html', '/404.html', crumb=None, meta={'title': 'Stranica nije pronađena', 'kicker': 'Greška 404', 'updated': ''}, body='<p class="bva-lead">Ta stranica ne postoji ili je premeštena.</p><p>Probajte <a href="/firme/">registar firmi</a>, <a href="/javno-punjenje/">javno punjenje</a>, <a href="/vodici/">vodiče</a> ili <a href="/podaci/">podatke</a>.</p>', title='404 | BlokVolt', description='', sources=[])
 import hashlib as _hl
 _ver = {}
+# search index (built from the generated pages, so legacy pages are in it too)
+_index = []
+for _f in sorted(DIST.rglob('*.html')):
+    _rel = '/' + str(_f.relative_to(DIST)).replace('\\', '/')
+    if _rel in ('/404.html', '/pretraga/index.html'):
+        continue
+    _url = _rel[:-len('index.html')] if _rel.endswith('/index.html') else _rel
+    _soup = BeautifulSoup(_f.read_text(encoding='utf-8'), 'html.parser')
+    _t = (_soup.title.string or '').split(' | ')[0].strip() if _soup.title else ''
+    _d = (_soup.find('meta', attrs={'name': 'description'}) or {}).get('content', '')
+    _kick = _soup.find(class_='v3-kick')
+    _h = ' · '.join(h.get_text(' ', strip=True) for h in _soup.find_all(['h2', 'h3'])[:14])
+    _main = _soup.find('div', class_='bva') or _soup.find('main') or _soup
+    for _junk in _main.find_all(['script', 'style', 'nav']):
+        _junk.decompose()
+    _body = re.sub(r'\s+', ' ', _main.get_text(' ', strip=True))
+    _index.append({'u': _url, 't': _t, 'd': _d[:220],
+                   's': _kick.get_text(' ', strip=True).split('·')[0].strip() if _kick else '',
+                   'h': _h[:400], 'b': _body[:1200]})
+(DIST / 'assets' / 'search.json').write_text(json.dumps(_index, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+print(f'search index: {len(_index)} pages, {(DIST / "assets" / "search.json").stat().st_size // 1024} KB')
+
 for _a in ('site.css', 'agg.css', 'site.js', 'meganav.js', 'vendor/gsap.min.js'):
     _ver[_a] = _hl.sha1((DIST / 'assets' / _a).read_bytes()).hexdigest()[:10]
 for _f in DIST.rglob('*.html'):

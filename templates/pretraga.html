@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Pretraga · ceo sajt</div><h1>Pretraga</h1><p>Sve stranice BlokVolta na jednom mestu: firme, cene punjača i modeli, javno punjenje i cene po kWh, subvencije, propisi, statistika i vodiči.</p>
+<form class="bv-search is--big" role="search" action="/pretraga/" method="get">
+<label class="sr-only" for="q">Šta tražite?</label>
+<input type="search" id="q" name="q" placeholder="na primer: subvencija, brojilo, Novi Sad, Charge&amp;GO" autocomplete="off" autofocus>
+<button type="submit">Traži</button>
+</form>
+<div class="v3-chips"><a href="/pretraga/?q=subvencija">subvencija</a><a href="/pretraga/?q=brojilo">brojilo</a><a href="/pretraga/?q=skupština">skupština</a><a href="/pretraga/?q=noćna+tarifa">noćna tarifa</a><a href="/pretraga/?q=besplatno">besplatno punjenje</a></div>
+</div></div>{% endblock %}
+{% block content %}<div class="bva"><div class="w3">
+<p id="s-status" class="bva-lead">Učitavanje…</p>
+<ul class="bv-results" id="s-results"></ul>
+<noscript><p>Pretraga radi uz JavaScript. Bez njega, krenite od <a href="/firme/">registra firmi</a>, <a href="/javno-punjenje/">javnog punjenja</a>, <a href="/podaci/">podataka</a> ili <a href="/vodici/">vodiča</a>.</p></noscript>
+</div></div>
+<script>
+(function(){
+ var input=document.getElementById('q'), out=document.getElementById('s-results'), status=document.getElementById('s-status'), data=null, timer=null;
+ function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[đ]/g,'d').replace(/[^a-z0-9 ]+/g,' ').replace(/\s+/g,' ').trim();}
+ function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+ function stem(w){ return w.length>=7 ? w.slice(0,-3) : (w.length>=5 ? w.slice(0,-2) : w); }
+ function score(it,words){
+  var t=norm(it.t), d=norm(it.d), h=norm(it.h), s=norm(it.s), b=norm(it.b), sc=0;
+  for(var i=0;i<words.length;i++){
+   var w=words[i]; if(!w) continue;
+   var st=stem(w), hit=0;
+   if(t.indexOf(w)>=0){sc+=12;hit=1;if(t.indexOf(w)===0)sc+=5;}
+   else if(t.indexOf(st)>=0){sc+=8;hit=1;}
+   if(s.indexOf(st)>=0){sc+=3;hit=1;}
+   if(h.indexOf(w)>=0){sc+=4;hit=1;} else if(h.indexOf(st)>=0){sc+=2;hit=1;}
+   if(d.indexOf(w)>=0){sc+=3;hit=1;} else if(d.indexOf(st)>=0){sc+=2;hit=1;}
+   if(b.indexOf(w)>=0){sc+=2;hit=1;} else if(b.indexOf(st)>=0){sc+=1;hit=1;}
+   if(!hit) return 0;
+  }
+  return sc;
+ }
+ function run(){
+  var q=input.value.trim();
+  if(!data){return;}
+  if(!q){out.innerHTML=''; status.textContent='Upišite pojam — pretražuje se '+data.length+' stranica.'; return;}
+  var words=norm(q).split(' ');
+  var hits=data.map(function(it){return {it:it, sc:score(it,words)};}).filter(function(x){return x.sc>0;});
+  hits.sort(function(a,b){return b.sc-a.sc;});
+  status.textContent = hits.length ? (hits.length+' rezultata za „'+q+'“') : ('Nema rezultata za „'+q+'“. Probajte drugu reč ili krenite od registra firmi.');
+  out.innerHTML = hits.slice(0,40).map(function(x){
+   var it=x.it;
+   return '<li><a href="'+esc(it.u)+'"><span class="bv-r-t">'+esc(it.t)+'</span>'+(it.s?'<span class="bv-r-s">'+esc(it.s)+'</span>':'')+'<span class="bv-r-d">'+esc(it.d)+'</span></a></li>';
+  }).join('');
+  if(history.replaceState){history.replaceState(null,'', '/pretraga/'+(q?('?q='+encodeURIComponent(q)):''));}
+ }
+ fetch('/assets/search.json').then(function(r){return r.json();}).then(function(j){
+  data=j;
+  var p=new URLSearchParams(location.search).get('q');
+  if(p){input.value=p;}
+  run();
+ }).catch(function(){status.textContent='Pretraga trenutno nije dostupna. Probajte kasnije ili krenite od menija.';});
+ input.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(run,120);});
+ input.form.addEventListener('submit',function(e){e.preventDefault();run();});
+})();
+</script>
+{% endblock %}
