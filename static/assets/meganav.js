@@ -598,3 +598,22 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   initMegaNavDirectionalHover();
 });
+
+/* Language picker in the bar. Separate from the Osmo component on purpose — it touches none of its
+   data- attributes or its GSAP timeline. The menu is a placeholder until the site is translated:
+   the entries are not links yet, so it only opens and closes. */
+document.addEventListener('DOMContentLoaded', function () {
+  var toggle = document.querySelector('[data-lang-toggle]');
+  var menu = document.querySelector('[data-lang-menu]');
+  if (!toggle || !menu) return;
+  function close() { menu.hidden = true; toggle.setAttribute('aria-expanded', 'false'); }
+  function open() { menu.hidden = false; toggle.setAttribute('aria-expanded', 'true'); }
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    menu.hidden ? open() : close();
+  });
+  document.addEventListener('click', function (e) {
+    if (!menu.hidden && !menu.contains(e.target) && e.target !== toggle) close();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+});

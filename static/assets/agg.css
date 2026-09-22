@@ -206,7 +206,7 @@
 .bva-tbl.agg-ev th:nth-child(2){width:18%}
 .bva-tbl.agg-ev th:nth-child(3){width:19%}
 .evm{display:flex;gap:11px;align-items:flex-start}
-.evm-i{flex:0 0 88px;width:88px;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:var(--paper2);display:block}
+.evm-i{flex:0 0 104px;width:104px;height:auto;aspect-ratio:16/9;object-fit:contain;display:block}
 .evm-t{min-width:0;font-weight:800;line-height:1.35;padding-top:1px}
 .evm-t small.chk{font-weight:500}
 .bva-fotos{margin:0 0 30px;max-width:760px}
@@ -214,5 +214,18 @@
 .bva-fotos summary:hover{color:var(--voltd)}
 .bva-fotos ul.bva-src{margin-top:16px}
 .bva-fotos ul.bva-src b{font-weight:700}
-@media(max-width:1023px){.evm-i{flex:0 0 96px;width:96px}.bva-tbl.agg-ev td:first-child .evm-t{font-size:16px}}
-@media(max-width:420px){.evm-i{flex:0 0 78px;width:78px}}
+@media(max-width:1023px){.evm-i{flex:0 0 120px;width:120px}.bva-tbl.agg-ev td:first-child .evm-t{font-size:16px}}
+@media(max-width:420px){.evm-i{flex:0 0 92px;width:92px}}
+/* language picker in the bar — visible placeholder until the site is actually translated */
+.mega-nav__lang{position:relative}
+.mega-nav__bar-link.is--lang{gap:6px;padding-left:12px;padding-right:8px}
+.mega-nav__bar-link.is--lang .mega-nav__bar-link-label{font-weight:700;letter-spacing:.04em}
+.mega-nav__lang-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:30;min-width:210px;margin:0;padding:8px;list-style:none;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 40px -22px rgba(13,17,26,.45)}
+.mega-nav__lang-menu[hidden]{display:none}
+.mega-nav__lang-menu li{margin:0}
+.mega-nav__lang-menu span{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:9px 12px;border-radius:10px;font-size:14.5px;font-weight:600;color:var(--ink);cursor:default}
+.mega-nav__lang-menu span i{font-style:normal;font-size:12px;font-weight:500;color:var(--mut)}
+.mega-nav__lang-menu span.is--on{background:var(--volt);color:var(--vink)}
+.mega-nav__lang-menu span.is--on i{color:rgba(11,18,32,.6)}
+.mega-nav__lang-menu span[aria-disabled="true"]{color:var(--mut)}
+@media(max-width:991px){.mega-nav__lang{width:100%}.mega-nav__lang-menu{position:static;min-width:0;border:0;box-shadow:none;padding:0 0 6px;background:transparent}.mega-nav__bar-link.is--lang{width:100%;justify-content:flex-start}}

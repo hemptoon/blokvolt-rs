@@ -15,7 +15,7 @@ def thumb(brand, model, name):
     f = FOTO_ITEMS.get(f'{brand}||{model}')
     if not f:
         return ''
-    return (f'<img class="evm-i" src="/assets/auto/{f["slug"]}.png" alt="" width="{FOTO["w"]}" '
+    return (f'<img class="evm-i" src="/assets/auto/{f["slug"]}.png?v={f["v"]}" alt="" width="{FOTO["w"]}" '
             f'height="{FOTO["h"]}" loading="lazy" decoding="async">')
 
 OUT = ROOT / 'content' / 'podaci' / 'cene-elektricnih-automobila.md'
@@ -202,7 +202,7 @@ sources: {' | '.join(sources)}
 
 „Cena od“ je najniža cena modela koju uvoznik objavljuje na svom sajtu ili u cenovniku, uglavnom sa PDV-om (gde stranica PDV ne pominje, to piše uz izvor). Ako uvoznik prikazuje cenu već umanjenu za subvenciju — kao Kia za EV3 i Niro EV i JMEV za Elight — vratili smo 5.000 € da bi cene bile uporedive, a objavljenu cenu naveli smo ispod. „Posle subvencije“ je naša računica: cena od minus 5.000 €. Subvencija važi samo za nov automobil, a budžet za 2026. je ograničen — uslovi i stanje su na stranici [subvencije 2026](/podaci/subvencije-2026/).
 
-Tabela je poređana po ceni pre subvencije. Ne ocenjujemo modele; domet i opremu proverite u konfiguratoru uvoznika. Fotografije su tu samo da se model brže prepozna — {plural(n_foto, 'slika', 'slike', 'slika')} sa Wikimedia Commonsa, pod slobodnim licencama; mogu prikazivati drugu verziju, godinu ili tržište, pa boju, felne i opremu ne treba čitati iz njih. Autori i licence su [niže na stranici](#fotografije).
+Tabela je poređana po ceni pre subvencije. Ne ocenjujemo modele; domet i opremu proverite u konfiguratoru uvoznika. Fotografije su tu samo da se model brže prepozna — {plural(n_foto, 'slika', 'slike', 'slika')} sa Wikimedia Commonsa, pod slobodnim licencama, sa uklonjenom pozadinom i svedene na istu veličinu. Snimljene su na sajmovima i ulici, pa neka vozila stoje otpozadi ili pod uglom; boju, felne i opremu ne treba čitati iz njih. Autori i licence su [niže na stranici](#fotografije).
 
 ## Modeli i cene
 
@@ -232,7 +232,7 @@ Da li je cena „sa zaliha“ ili za naručivanje (Dacia Spring po najnižoj cen
 
 ## Fotografije modela {{#fotografije}}
 
-Fotografije uz modele preuzete su sa [Wikimedia Commonsa](https://commons.wikimedia.org/) i objavljene su pod slobodnim licencama koje dozvoljavaju dalju upotrebu uz navođenje autora. Slike su smanjene i isečene na format 16:9; izmenjene verzije dele licencu originala. Ilustrativne su: automobil na slici može biti druga verzija, godište ili tržište od modela u tabeli.
+Fotografije uz modele preuzete su sa [Wikimedia Commonsa](https://commons.wikimedia.org/) i objavljene su pod slobodnim licencama koje dozvoljavaju dalju upotrebu uz navođenje autora. Slike su smanjene, isečene i pozadina im je uklonjena; izmenjene verzije dele licencu originala. Ilustrativne su: automobil na slici može biti druga verzija, godište ili tržište od modela u tabeli.
 
 <details class="bva-fotos"><summary>Autori i licence ({plural(n_foto, 'fotografija', 'fotografije', 'fotografija')})</summary>
 <ul class="bva-src">

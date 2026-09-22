@@ -168,8 +168,9 @@ Adding one: open the file page on commons.wikimedia.org, take the 640 px thumbna
 `Image.resize((240,135), LANCZOS).quantize(colors=128)` and save as PNG (~20 KB) into
 `static/assets/auto/`. This container cannot reach wikimedia.org (proxy 403), so the fetch and the
 crop happen in the browser on the Commons origin and the bytes come back through the GitHub upload
-tab; section 6 describes that transfer. Because `/assets/*` is served `immutable`, a replaced photo
-needs a new file name — never overwrite a slug that is already live.
+tab; section 6 describes that transfer. `/assets/*` is served `immutable`, so every thumbnail carries `?v=<hash>` in its `src`, taken from
+`v` in `ev-foto.json` (first 8 hex of the file's SHA-1). Recompute that field whenever a file
+changes, or browsers keep the old picture forever.
 
 ### 3.6 Statistics (quarterly, after SAUVD/ABS figures appear)
 
