@@ -1,20 +1,50 @@
 {% extends 'base.html' %}
+{% set n_local = firms|length %}
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
-  {"@type": "CollectionPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ path }}", "inLanguage": "sr-Latn", "dateModified": "2026-09-22",
-   "mainEntity": {"@type": "ItemList", "numberOfItems": {{ firms|length }}, "itemListElement": [{% for f in firms %}{"@type": "ListItem", "position": {{ loop.index }}, "name": {{ f.name|tojson }}, "url": "{{ SITE }}{{ f.url }}"}{% if not loop.last %},{% endif %}{% endfor %}]}},
+  {"@type": "CollectionPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ path }}", "inLanguage": "sr-Latn", "dateModified": "{{ ISO_TODAY }}",
+   "about": {"@type": "City", "name": {{ city|tojson }}, "addressCountry": "RS"},
+   "mainEntity": {"@type": "ItemList", "numberOfItems": {{ n_all }}, "itemListElement": [{% for f in firms + covering %}{"@type": "ListItem", "position": {{ loop.index }}, "name": {{ f.name|tojson }}, "url": "{{ SITE }}{{ f.url }}"}{% if not loop.last %},{% endif %}{% endfor %}]}},
   {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Firme", "item": "{{ SITE }}/firme/"}, {"@type": "ListItem", "position": 3, "name": {{ city|tojson }}, "item": "{{ SITE }}{{ path }}"}]}
  ]
 }</script>{% endblock %}
-{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Grad · {{ city }}</div><h1>Punjači za električni auto — {{ city }}</h1><p>{{ firms|length }} firmi sa sedištem u gradu {{ city }} koje prodaju ili ugrađuju kućne punjače. Većina instalatera radi i van svog grada — pogledajte kolonu „pokrivenost“ na stranici firme. Podaci prepisani sa sajtova firmi, sa datumom provere.</p><div class="v3-meta"><span>Provereno {{ FIRMS_CHECKED }}</span><span>{{ firms|length }} firmi</span></div><div class="v3-chips"><a href="/firme/">Sve firme u Srbiji</a><a href="/cena-punjaca-za-elektricni-auto">Uporedna tabela cena</a><a href="/punjac-u-zgradi-skupstina">Skupština: kako do saglasnosti</a></div></div></div>{% endblock %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Grad · {{ city }}</div><h1>Punjač za električni auto u {{ cfg.loc }}</h1><p>{% if n_local %}{{ n_local|plural("firma ima", "firme imaju", "firmi ima") }} sedište u {{ cfg.loc }}, još {{ covering|length|plural("jedna pokriva", "ih pokrivaju", "ih pokriva") }} grad sa strane{% else %}Nijedna firma iz registra nema sedište u {{ cfg.loc }}, ali {{ covering|length|plural("jedna firma radi", "firme rade", "firmi radi") }} na celoj teritoriji Srbije{% endif %} — sve po istim kolonama: javna cena, ugradnja, brojilo, papiri za skupštinu, garancija. Ispod su i mreže javnog punjenja koje navode {{ cfg.acc }}, kao i sati niže tarife za ovaj deo Srbije.</p><div class="v3-meta"><span>{{ n_all|plural("firma za " + cfg.acc, "firme za " + cfg.acc, "firmi za " + cfg.acc) }}</span><span>{{ city_ops|length|plural("mreža", "mreže", "mreža") }} javnog punjenja</span><span>Provereno {{ FIRMS_CHECKED }}</span></div><div class="v3-chips"><a href="#u-gradu">Firme</a><a href="#javno">Javno punjenje</a><a href="#struja">Struja i tarife</a><a href="/cena-punjaca-za-elektricni-auto">Uporedna tabela cena</a></div></div></div>{% endblock %}
 {% block content %}<div class="bva"><div class="w3">
+<h2 id="u-gradu">{% if n_local %}Firme sa sedištem u {{ cfg.loc }}{% else %}Firme koje pokrivaju {{ cfg.acc }}{% endif %}</h2>
+{% if n_local %}
+<p class="bva-lead">Adresa firme ne znači da radi samo ovde, ni da je jeftinija — ali izlazak na teren je obično bez dodatne naplate, a servis brži. Cene i uslovi su prepisani sa sajtova firmi, sa datumom provere.</p>
 <div class="bva-cards agg-grid">
 {% for f in firms %}
-<a class="bva-card agg-card{% if f.is_us %} is-us{% endif %}" href="{{ f.url }}"><b>{{ f.name }}{% if f.is_us %} <i class="agg-us">naša ponuda</i>{% endif %}</b><span class="agg-meta">{{ f.kind_label }} · {{ f.group_label.split(' — ')[0] }}</span><span class="agg-price">{{ f.price_headline or 'cena na upit' }}</span><span class="agg-vc"><i class="is-{{ f.vclass.get('ugradnja','no') }}">Ugradnja: {{ f.verdicts.get('ugradnja') or 'ne pominje se' }}</i><i class="is-{{ f.vclass.get('brojilo','no') }}">Brojilo: {{ f.verdicts.get('brojilo') or 'ne pominje se' }}</i></span><span class="agg-chk">provereno {{ f.verified }}</span></a>
+<a class="bva-card agg-card{% if f.is_us %} is-us{% endif %}" href="{{ f.url }}"><b>{{ f.name }}{% if f.is_us %} <i class="agg-us">naša ponuda</i>{% endif %}</b><span class="agg-meta">{{ f.kind_label }} · {{ f.city }}</span><span class="agg-price">{{ f.price_headline or 'cena na upit' }}</span><span class="agg-vc"><i class="is-{{ f.vclass.get('ugradnja','no') }}">Ugradnja: {{ f.verdicts.get('ugradnja') or 'ne pominje se' }}</i><i class="is-{{ f.vclass.get('brojilo','no') }}">Brojilo: {{ f.verdicts.get('brojilo') or 'ne pominje se' }}</i></span><span class="agg-chk">provereno {{ f.verified }}</span></a>
 {% endfor %}
 </div>
-<h2>Šta još treba znati u gradu {{ city }}</h2>
-{% if city == 'Novi Sad' %}<p>Novi Sad je od jula 2026. jedini veliki grad koji naplaćuje parkiranje na mestima sa javnim punjačem posebno: <strong>500 RSD za 60 minuta</strong> (Cenovnik JKP „Parking servis“, Sl. list Grada Novog Sada 35/26) — u cenu ulazi i struja. Detalji i izvori: <a href="/podaci/putarina-i-parking/">putarina i parking</a>. Niža tarifa EPS-a u Vojvodini važi od 23 do 7 časova (proverite na svom računu).</p>{% elif city == 'Beograd' %}<p>Beograd nema parking-povlastice za električna vozila u zonskom sistemu; jedina poznata izuzeća su u garaži „Obilićev venac“ (podaci iz 2021, proveravamo). Niža tarifa EPS-a u Beogradu važi od 24 do 8 časova (proverite na svom računu). Detalji: <a href="/podaci/putarina-i-parking/">putarina i parking</a>.</p>{% elif city == 'Niš' %}<p>U Nišu je neobično velika ponuda uređaja bez ugradnje (Schneider i Wallbox preko elektroprodavnica) i jedini električar u Srbiji sa javnim cenovnikom ugradnje. Niža tarifa EPS-a u centralnoj Srbiji važi od 22 do 6 časova (proverite na svom računu).</p>{% endif %}
-<p>Za punjač u garaži zgrade procedura je ista u svim gradovima — <a href="/punjac-u-zgradi-skupstina">saglasnost skupštine</a>, <a href="/ko-placa-struju-za-punjenje">obračun struje</a> i <a href="/bezbednost-punjenja-atest">atest instalacije</a>.</p>
+{% endif %}
+{% if covering %}
+<h3>{% if n_local %}Pokrivaju {{ cfg.acc }}, sedište im je drugde{% else %}Rade na celoj teritoriji Srbije{% endif %} ({{ covering|length }})</h3>
+<p class="bva-lead">Ovako te firme same opisuju svoju pokrivenost na sajtu. Pre dogovora pitajte da li se izlazak na teren u {{ cfg.acc }} naplaćuje posebno i koliko se čeka na servis.</p>
+<div class="bva-cards agg-grid">
+{% for f in covering %}
+<a class="bva-card agg-card{% if f.is_us %} is-us{% endif %}" href="{{ f.url }}"><b>{{ f.name }}{% if f.is_us %} <i class="agg-us">naša ponuda</i>{% endif %}</b><span class="agg-meta">{{ f.kind_label }} · {{ f.city }}</span><span class="agg-price">{{ f.price_headline or 'cena na upit' }}</span><span class="agg-vc"><i class="is-yes">Pokrivenost: {{ f.coverage }}</i><i class="is-{{ f.vclass.get('brojilo','no') }}">Brojilo: {{ f.verdicts.get('brojilo') or 'ne pominje se' }}</i></span><span class="agg-chk">provereno {{ f.verified }}</span></a>
+{% endfor %}
+</div>
+{% endif %}
+{% if shops %}
+<p>Uređaj bez ugradnje šalju i web-shopovi koji isporučuju po celoj Srbiji — {{ shops|length }} ih je u registru, a spisak je u grupama <a href="/firme/#grupa-c">web-shopovi</a> i <a href="/firme/#grupa-d">bez javne cene</a>. Ako punjač kupite sam, ugradnju može da uradi <a href="/firme/#grupa-e">električar</a>; šta tada mora da ostane u papirima piše u vodiču <a href="/bezbednost-punjenja-atest">bezbednost i atest</a>.</p>
+{% endif %}
+
+<h2 id="javno">Javno punjenje u {{ cfg.loc }}</h2>
+{% if city_ops %}
+<p>Ove mreže na svojim sajtovima navode {{ cfg.acc }} ili region u kom je grad. Tačne lokacije i trenutne cene proverite u njihovoj aplikaciji — cene se menjaju češće nego stranice.</p>
+<ul>{% for o in city_ops %}<li><a href="{{ o.url }}">{{ o.name }}</a> — {{ o.kind_label }}{% if o.coverage %} · pokrivenost po sajtu: {{ o.coverage.rstrip(".") }}{% endif %}</li>{% endfor %}</ul>
+<p>Poslednje zabeležene cene po minutu i po kilovat-satu za sve mreže su u <a href="/javno-punjenje/#cene">indeksu cena</a>, a gde se puni besplatno — na stranici <a href="/javno-punjenje/besplatni-punjaci/">besplatni punjači</a>.</p>
+{% else %}
+<p>Nijedna mreža iz našeg registra ne navodi {{ cfg.acc }} izričito u svojoj pokrivenosti. Pregled svih mreža u Srbiji je na stranici <a href="/javno-punjenje/">javno punjenje</a>.</p>
+{% endif %}
+
+<h2 id="struja">Struja, tarife i ostalo u {{ cfg.loc }}</h2>
+{% if nt %}<p>Za ovaj deo Srbije ({{ cfg.nt_region }}) niža tarifa EPS-a važi <strong>{{ nt }}</strong> časova, svaki dan u godini — to je vreme kad punjenje kod kuće košta najmanje. Cena kilovat-sata zavisi od zone potrošnje; sve cene sa naknadama, akcizom i PDV-om su na stranici <a href="/podaci/tarife-eps/">cene struje EPS</a>, a koliko vas košta 100 km izračunajte u <a href="/alati/kalkulator-troskova/">kalkulatoru troškova</a>.</p>{% endif %}
+{% if cfg.note %}<p>{{ cfg.note|safe }}</p>{% endif %}
+<p>Za punjač u garaži zgrade procedura je ista u svim gradovima: <a href="/punjac-u-zgradi-skupstina">saglasnost skupštine</a>, <a href="/ko-placa-struju-za-punjenje">obračun struje po stanu</a> i <a href="/bezbednost-punjenja-atest">atest instalacije</a>. Koliko zgrada plaća tuđe punjenje kad brojila nema, pokazuje <a href="/alati/racun-u-zgradi/">kalkulator zajedničke struje</a>.</p>
+<p class="bva-disc">Spisak nije reklama ni rangiranje: firme su poređane po grupi i imenu, podaci su prepisani sa njihovih sajtova sa datumom provere, a našu ponudu označavamo kao „naša ponuda“. Ako vaša firma radi u {{ cfg.loc }}, a nije ovde — <a href="/ispravka/">javite nam</a>.</p>
 </div></div>{% endblock %}

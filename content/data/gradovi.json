@@ -1,0 +1,108 @@
+{
+ "note": "City pages. `aliases` are matched inside a firm's `city` string (a firm can belong to several cities); `regions` are matched inside a firm's or operator's `coverage` string, on top of the country-wide match. `nt_region` must equal a region in kalkulator.json -> eps.nt_hours. `loc` is the locative (u Beogradu), `acc` the accusative (izlazak u Suboticu) — both are needed because Serbian city names decline.",
+ "cities": [
+  {
+   "name": "Beograd",
+   "slug": "beograd",
+   "aliases": [
+    "Beograd",
+    "Zemun",
+    "Vinča",
+    "Borča",
+    "Surčin"
+   ],
+   "regions": [
+    "beograd"
+   ],
+   "nt_region": "Beograd",
+   "note": "Beograd nema parking-povlastice za električna vozila u zonskom sistemu; jedina poznata izuzeća su u garaži „Obilićev venac“ (podaci iz 2021, proveravamo). Detalji: <a href=\"/podaci/putarina-i-parking/\">putarina i parking</a>.",
+   "loc": "Beogradu",
+   "acc": "Beograd"
+  },
+  {
+   "name": "Novi Sad",
+   "slug": "novi-sad",
+   "aliases": [
+    "Novi Sad",
+    "Futog",
+    "Veternik",
+    "Petrovaradin",
+    "Sremska Kamenica"
+   ],
+   "regions": [
+    "vojvodina",
+    "novi sad"
+   ],
+   "nt_region": "Vojvodina",
+   "note": "Novi Sad je od jula 2026. jedini veliki grad koji posebno naplaćuje parkiranje na mestu sa javnim punjačem: <strong>500 RSD za 60 minuta</strong>, struja uključena (Cenovnik JKP „Parking servis“, Sl. list Grada Novog Sada 35/26). Detalji i izvori: <a href=\"/podaci/putarina-i-parking/\">putarina i parking</a>.",
+   "loc": "Novom Sadu",
+   "acc": "Novi Sad"
+  },
+  {
+   "name": "Niš",
+   "slug": "nis",
+   "aliases": [
+    "Niš"
+   ],
+   "regions": [
+    "niš",
+    "nis",
+    "južna srbija"
+   ],
+   "nt_region": "centralna Srbija",
+   "note": "U Nišu je neobično velika ponuda uređaja bez ugradnje (Schneider i Wallbox preko elektroprodavnica) i jedini električar u Srbiji sa javnim cenovnikom ugradnje.",
+   "loc": "Nišu",
+   "acc": "Niš"
+  },
+  {
+   "name": "Subotica",
+   "slug": "subotica",
+   "aliases": [
+    "Subotica",
+    "Palić"
+   ],
+   "regions": [
+    "vojvodina",
+    "severna vojvodina",
+    "subotica"
+   ],
+   "nt_region": "Vojvodina",
+   "note": "Subotica je na koridoru E75 prema granici, pa je javno punjenje pre svega usputno — a za kućni punjač se najčešće zove firma iz Novog Sada ili neko ko pokriva celu Srbiju.",
+   "loc": "Subotici",
+   "acc": "Suboticu"
+  },
+  {
+   "name": "Čačak",
+   "slug": "cacak",
+   "aliases": [
+    "Čačak"
+   ],
+   "regions": [
+    "zapadna srbija",
+    "čačak",
+    "cacak"
+   ],
+   "nt_region": "centralna Srbija",
+   "note": "Čačak je jedan od retkih gradova van Beograda, Novog Sada i Niša gde firme iz registra imaju sedište, a ne samo pokrivenost.",
+   "loc": "Čačku",
+   "acc": "Čačak"
+  },
+  {
+   "name": "Kragujevac",
+   "slug": "kragujevac",
+   "aliases": [
+    "Kragujevac"
+   ],
+   "regions": [
+    "šumadija",
+    "sumadija",
+    "centralna srbija",
+    "kragujevac"
+   ],
+   "nt_region": "centralna Srbija",
+   "note": "U Kragujevcu nijedna firma iz registra nema sedište — punjač se ugrađuje preko firmi koje rade na celoj teritoriji Srbije. Pre dogovora pitajte da li se izlazak na teren naplaćuje posebno.",
+   "loc": "Kragujevcu",
+   "acc": "Kragujevac"
+  }
+ ]
+}

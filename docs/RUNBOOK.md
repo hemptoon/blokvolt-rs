@@ -55,6 +55,7 @@ credentials) — commits go through the owner's browser (section 6).
 | New EV prices | `content/data/ev-modeli.json` | Then run `python3 scripts/gen_ev_modeli.py` (regenerates `/podaci/cene-elektricnih-automobila/`). Update `checked` and `next_check` in the JSON. `subsidy_eur` drives the "after subsidy" column. |
 | Rentals, regional charging | `content/data/rent-carsharing.json`, `content/data/region.json` + the pages `content/podaci/rent-a-car-i-car-sharing.md`, `content/javno/region.md` | The pages are hand-written from the JSON; edit both. |
 | All other data pages | `content/podaci/*.md`, `content/javno/*.md` | Front matter: `updated`, `next_check`, `modified` (ISO), `sources` (`Label :: URL | Label :: URL`). |
+| City pages | `content/data/gradovi.json` | One entry per `/gradovi/<slug>/`: `aliases` matched inside a firm's `city` (a firm can belong to several cities), `regions` matched inside a firm's or operator's `coverage`, `loc`/`acc` the Serbian locative and accusative, `nt_region` one of the regions in `kalkulator.json` → `eps.nt_hours`, `note` one paragraph of local fact (HTML allowed). |
 | Firms | `content/firme/<slug>.json` | `verified`, cells/verdicts, `sources`. Leads: `"group": "L", "publish": false` (not shown). |
 
 `indeks-cena.json` row schema (one row per app + station/tariff):
@@ -182,6 +183,17 @@ organised by model. After the quarterly firm revision, walk the register's price
 the rows (brand, model, kW, price, VAT status, seller slug, note, product URL), keep `checked` and
 `next_check` current and run `scripts/gen_wallbox.py`. Only add a row when the seller publishes the
 price itself; "na upit" stays out of the table.
+
+### 3.6c Adding a city page
+
+Add an entry to `content/data/gradovi.json` — nothing else is needed: the page, the menu column
+"Po gradu", the line on `/firme/` and the sitemap all come from that file. Fill `aliases` with every
+spelling that appears in a firm's `city` field (a suburb that officially belongs to the city counts:
+Futog and Veternik are Novi Sad), `regions` with the words firms actually use for the area
+("vojvodina", "zapadna srbija") — matching is whole-word, so short ones are safe — and write `note`
+as one paragraph of something true about that city only. A city with no firm of its own is fine; the
+page then says so and lists the firms that cover it from elsewhere. Do not add a city just to have
+the page: without a local firm, a local operator or a local fact, it repeats the neighbour's page.
 
 ### 3.7 Firm register (quarterly revision)
 

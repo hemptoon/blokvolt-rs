@@ -26,6 +26,17 @@ def sr_num(x, d=0):
     return ('−' if float(x) < 0 and round(abs(float(x)), d) != 0 else '') + s_
 env.filters['sr'] = sr_num
 
+def sr_plural(n, one, few, many):
+    """Serbian count agreement: 1 mreža / 2-4 mreže / 5+ mreža."""
+    last, last2 = n % 10, n % 100
+    if last == 1 and last2 != 11:
+        return f'{n} {one}'
+    if last in (2, 3, 4) and last2 not in (12, 13, 14):
+        return f'{n} {few}'
+    return f'{n} {many}'
+
+env.filters['plural'] = sr_plural
+
 GROUPS = {
     'A': ('Punjač sa ugradnjom — javna cena', 'Firme koje objavljuju cenu punjača zajedno sa ugradnjom.'),
     'B': ('Javna cena uređaja, ugradnja na upit', 'Cena uređaja je na sajtu, ugradnja se nudi ali se cena dobija na upit.'),
@@ -37,7 +48,8 @@ KINDS = {
     'instalater': 'Prodaja i ugradnja', 'prodavnica': 'Web-shop / prodavnica', 'distributer': 'Distributer brenda',
     'solar': 'Solarni integrator', 'elektricar': 'Električar', 'operator': 'Operator javne mreže', 'trag': 'Na proveri',
 }
-CITY_SLUGS = {'Beograd': 'beograd', 'Novi Sad': 'novi-sad', 'Niš': 'nis'}
+CITY_CFG = json.load(open(ROOT / 'content' / 'data' / 'gradovi.json', encoding='utf-8'))['cities']
+CITY_SLUGS = {c['name']: c['slug'] for c in CITY_CFG}
 
 # ---------- helpers ----------
 def read_json_dir(d):
@@ -83,12 +95,28 @@ def write(path, content):
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(content, encoding='utf-8')
 
-def city_of(firm):
+def cities_of(firm):
+    """Every configured city whose name or alias appears in the firm's seat (`city`)."""
     c = firm.get('city', '')
-    for name in CITY_SLUGS:
-        if name in c:
-            return name
-    return None
+    return [cfg['name'] for cfg in CITY_CFG if any(a in c for a in cfg['aliases'])]
+
+NATIONWIDE = ('cela srbija', 'citava srbija', 'čitava srbija', 'srbija i region', 'mreža instalatera')
+
+_WORD = 'a-zà-ž0-9čćđšž'
+
+def _word_in(term, text):
+    """Whole-word match, so "nis" does not fire inside "nisu potvrđene"."""
+    return re.search(f'(?<![{_WORD}])' + re.escape(term) + f'(?![{_WORD}])', text) is not None
+
+def covers_city(entity, cfg):
+    """True when the published `coverage` string reaches this city without a seat there:
+    country-wide wording, the city itself, or one of the city's regions."""
+    cov = (entity.get('coverage') or '').lower()
+    if not cov:
+        return False
+    if cov.strip() in ('srbija', 'srbija.') or any(k in cov for k in NATIONWIDE):
+        return True
+    return any(_word_in(t, cov) for t in [cfg['name'].lower()] + cfg['regions'])
 
 def verdict_class(v):
     v = (v or '').lower()
@@ -107,17 +135,20 @@ def firm_sort(f):
 published.sort(key=firm_sort)
 for f in published:
     f['kind_label'] = KINDS.get(f.get('kind', ''), '')
-    f['city_main'] = city_of(f)
-    f['city_slug'] = CITY_SLUGS.get(f['city_main'] or '', '')
+    f['city_list'] = cities_of(f)
+    f['city_main'] = f['city_list'][0] if f['city_list'] else None
+    f['city_slug'] = ' '.join(CITY_SLUGS[c] for c in f['city_list'])
     f['url'] = f"/firme/{f['slug']}/"
     f['group_label'] = GROUPS[f['group']][0]
     f['vclass'] = {k: verdict_class(v) for k, v in f.get('verdicts', {}).items()}
 by_group = {g: [f for f in published if f['group'] == g] for g in GROUPS}
 cities = {}
-for f in published:
-    if f['city_main']:
-        cities.setdefault(f['city_main'], []).append(f)
+for cfg in CITY_CFG:
+    lst = [f for f in published if cfg['name'] in f['city_list']]
+    if lst:
+        cities[cfg['name']] = lst
 
+CALC = json.load(open(ROOT / 'content' / 'data' / 'kalkulator.json', encoding='utf-8'))
 operators = sorted([o for o in read_json_dir('operateri') if o.get('publish')], key=lambda o: o.get('order', 99))
 for o in operators:
     o['url'] = f"/javno-punjenje/{o['slug']}/"
@@ -154,7 +185,8 @@ for row in price_index['rows']:
 
 # ---------- shared context ----------
 NAV = [('/firme/', 'Firme'), ('/cena-punjaca-za-elektricni-auto', 'Cene'), ('/javno-punjenje/', 'Javno punjenje'), ('/alati/kalkulator-troskova/', 'Kalkulator'), ('/vodici/', 'Vodiči'), ('/podaci/', 'Podaci')]
-base_ctx = dict(SITE=SITE, TODAY=TODAY, FIRMS_CHECKED=FIRMS_CHECKED, SITE_META=SITE_META, NAV=NAV, n_firms=len(published), n_leads=len(firms) - len(published), n_vodica=7, n_ops=len(operators))
+CITY_LINKS = [(f"/gradovi/{c['slug']}/", c['name']) for c in CITY_CFG]
+base_ctx = dict(SITE=SITE, TODAY=TODAY, ISO_TODAY=ISO_TODAY, FIRMS_CHECKED=FIRMS_CHECKED, CITY_LINKS=CITY_LINKS, SITE_META=SITE_META, NAV=NAV, n_firms=len(published), n_leads=len(firms) - len(published), n_vodica=7, n_ops=len(operators))
 
 def render(tpl, path, **ctx):
     t = env.get_template(tpl)
@@ -223,19 +255,39 @@ add_url('/vodici/', '0.8')
 
 # 3) firms
 for f in published:
-    render('firma.html', f['url'], firm=f, GROUPS=GROUPS, title=f"{f['name']} — punjači za električne automobile: cene, ugradnja, uslovi | BlokVolt",
+    render('firma.html', f['url'], firm=f, GROUPS=GROUPS, CITY_SLUGS=CITY_SLUGS, title=f"{f['name']} — punjači za električne automobile: cene, ugradnja, uslovi | BlokVolt",
            description=f"{f['name']} ({f['city']}): šta nudi, javne cene, da li ugrađuje, brojilo, papiri za skupštinu, garancija. Provereno {f['verified']}. Isti podaci za sve firme.")
     add_url(f['url'], '0.6')
 render('firme_index.html', '/firme/', GROUPS=GROUPS, by_group=by_group, firms=published, cities=cities, CITY_SLUGS=CITY_SLUGS, KINDS=KINDS,
        title=f"Firme za punjače u Srbiji — {len(published)} prodavaca i instalatera, iste kolone za sve | BlokVolt",
        description=f"Registar {len(published)} firmi koje prodaju ili ugrađuju kućne punjače za električne automobile u Srbiji: javne cene, ugradnja, MID brojilo, papiri za skupštinu, garancija. Provereno {FIRMS_CHECKED}.")
 add_url('/firme/', '0.9')
-for city, lst in cities.items():
-    slug = CITY_SLUGS[city]
-    render('grad.html', f'/gradovi/{slug}/', city=city, firms=lst, GROUPS=GROUPS,
-           title=f"Punjači za električni auto — {city}: {len(lst)} firmi koje prodaju i ugrađuju | BlokVolt",
-           description=f"Ko prodaje i ugrađuje kućne punjače u gradu {city}: {len(lst)} firmi sa javnim cenama, uslovima ugradnje i garancijom. Provereno {FIRMS_CHECKED}.")
+NT_HOURS = {h['region']: h['window'] for h in CALC['eps']['nt_hours']}
+CITY_PAGES = []
+for cfg in CITY_CFG:
+    city, slug = cfg['name'], cfg['slug']
+    local = cities.get(city, [])
+    local_slugs = {f['slug'] for f in local}
+    # installers based elsewhere whose published coverage reaches this city
+    covering = [f for f in published if f['slug'] not in local_slugs and f['group'] in ('A', 'B', 'E')
+                and covers_city(f, cfg)]
+    shops = [f for f in published if f['slug'] not in local_slugs and f['group'] in ('C', 'D')
+             and covers_city(f, cfg)]
+    city_ops = [o for o in operators if covers_city(o, cfg) or city.lower() in (o.get('city') or '').lower()]
+    n_all = len(local) + len(covering)
+    render('grad.html', f'/gradovi/{slug}/', city=city, cfg=cfg, firms=local, covering=covering,
+           shops=shops, city_ops=city_ops, n_all=n_all, nt=NT_HOURS.get(cfg['nt_region'], ''),
+           GROUPS=GROUPS,
+           title=f"Punjač za električni auto u {cfg['loc']} — {n_all} firmi koje prodaju i ugrađuju | BlokVolt",
+           description=(f"Ko ugrađuje kućni punjač u {cfg['loc']}: "
+                        + (f"{sr_plural(len(local), 'firma', 'firme', 'firmi')} sa sedištem u gradu i "
+                           + (f"još jedna koja pokriva {cfg['acc']} sa strane" if len(covering) == 1
+                              else f"još {len(covering)} koje pokrivaju {cfg['acc']} sa strane")
+                           if local else
+                           f"sedište u gradu nema nijedna, ali {sr_plural(len(covering), 'firma pokriva', 'firme pokrivaju', 'firmi pokriva')} grad sa cele teritorije Srbije")
+                        + f" — javne cene, uslovi ugradnje, brojilo i garancija. Javno punjenje u gradu i sati niže tarife EPS-a. Provereno {FIRMS_CHECKED}."))
     add_url(f'/gradovi/{slug}/', '0.6')
+    CITY_PAGES.append({'name': city, 'slug': slug, 'n': n_all, 'local': len(local)})
 
 # 4) markdown pages (podaci, o-sajtu, metodologija, ispravka, izmene)
 PODACI = []
@@ -273,7 +325,6 @@ render('javno_index.html', '/javno-punjenje/', ops=operators, ops_by_kind=ops_by
 add_url('/javno-punjenje/', '0.9')
 
 # 4c) cost calculator (tools)
-CALC = json.load(open(ROOT / 'content' / 'data' / 'kalkulator.json', encoding='utf-8'))
 _E, _d = CALC['eps'], CALC['defaults']
 def all_in(x):
     return (x + _E['oie'] + _E['ee']) * (1 + _E['akciza']) * (1 + _E['pdv'])

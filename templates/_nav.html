@@ -2,6 +2,7 @@
    Data attributes are used by /assets/meganav.js — do not rename them. #}
 {% set CHEV %}<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" class="mega-nav__bar-link-icon is--dropdown" aria-hidden="true"><path d="M6.6665 8.3335L9.99984 11.6668L13.3332 8.3335" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>{% endset %}
 {% set ARROW %}<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" class="mega-nav__bar-link-icon" aria-hidden="true"><path d="M8.3335 13.3335L11.6668 10.0002L8.3335 6.66683" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>{% endset %}
+{% set CITY_ITEMS = [] %}{% for href, name in CITY_LINKS %}{% set _ = CITY_ITEMS.append((href, name, '')) %}{% endfor %}
 {% set PANELS = [
  ('firme', 'Firme', ['/firme/', '/gradovi/', '/cena-punjaca-za-elektricni-auto'], [
    ('Registar', false, [
@@ -17,11 +18,7 @@
      ('/firme/#grupa-d', 'Bez javne cene', 'Sve na upit'),
      ('/firme/#grupa-e', 'Električari', 'Montiraju punjač koji donesete'),
    ]),
-   ('Po gradu', true, [
-     ('/gradovi/beograd/', 'Beograd', ''),
-     ('/gradovi/novi-sad/', 'Novi Sad', ''),
-     ('/gradovi/nis/', 'Niš', ''),
-   ]),
+   ('Po gradu', true, CITY_ITEMS),
  ]),
  ('javno', 'Javno punjenje', ['/javno-punjenje/'], [
    ('Mreže i cene', false, [
