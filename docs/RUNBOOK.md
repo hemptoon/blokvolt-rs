@@ -187,17 +187,24 @@ to sign in, stop and tell the owner — never type credentials.
    const i=document.querySelector('input[type=file][accept*="zip"]'); i?(i.setAttribute('aria-label','bvzip upload'),'ok'):'no zip input yet'
    ```
    `find` "bvzip upload" → ref → `file_upload` with `/mnt/user-data/outputs/blokvolt-dist.zip`.
-4. Wait until the page says all files are uploaded, then deploy:
+4. Wait. The status goes "Preparing upload" → "Unzipped N files." → "N/N files uploaded" and takes
+   1–3 minutes for ~100 files; the "Save and deploy" button stays disabled until the end. A background
+   tab is throttled, so `innerText` can lag behind the screen — poll every 10–15 s (a single JS call
+   that sleeps longer than ~40 s times out), and take a screenshot if the numbers look frozen.
+   Then deploy:
    ```js
    const b=[...document.querySelectorAll('button')].find(b=>/Save and deploy/i.test(b.textContent)); b&&!b.disabled?(b.click(),'clicked'):'not ready'
    ```
 5. Wait for "Success". If a call times out, look at the deployments list before retrying — the deploy
    may already be live.
-6. Verify live: navigate the tab to `https://www.blokvolt.rs/` and, on that origin, run
+6. Verify live: navigate the tab to `https://www.blokvolt.rs/?nc=1` and, on that origin, run
    ```js
-   const t=await (await fetch('/alati/kalkulator-troskova/',{cache:'no-store'})).text(); t.includes('EXPECTED TEXT')
+   const t=await (await fetch('/alati/kalkulator-troskova/?nc=1',{cache:'no-store'})).text(); t.includes('EXPECTED TEXT')
    ```
    (The cloud container cannot reach blokvolt.rs; cross-origin fetches are blocked, so fetch same-origin.)
+   Always add a query string: the browser still holds an old permanent redirect from the days when
+   www.blokvolt.rs pointed at evolako.rs, and without it a plain navigation can land on the old target.
+   That is only the local browser cache — it says nothing about what the site serves.
 
 ## 6. Commit — GitHub `hemptoon/blokvolt-rs` via the web upload page (owner's browser)
 
@@ -239,6 +246,9 @@ to sign in, stop and tell the owner — never type credentials.
    ({files:b.length, hash:[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(lines)))].map(x=>x.toString(16).padStart(2,'0')).join('').slice(0,16)})
    ```
    The hash must equal the one printed by `gh_payload.py`.
+
+If a browser call answers "Browser extension is not connected", retry the same call once — the link
+to Brave drops for a few seconds now and then. If it fails again, go to section 7.
 
 ## 7. If the browser is not available
 
