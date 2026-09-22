@@ -50,3 +50,44 @@
 .bva .w3>h3 .agg-count{font-size:13px}
 .bva .w3>.bva-stats .bva-stat b{white-space:nowrap}
 .bva-stat span a{color:var(--volt);text-decoration-color:rgba(217,244,91,.5)}
+/* ==== cost calculator (/alati/kalkulator-troskova/) ==== */
+.calc{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;align-items:start;margin:8px 0 56px}
+.calc-in{display:grid;gap:16px;min-width:0}
+.calc-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:20px 22px 8px;margin:0;min-width:0}
+.calc-card legend{float:left;width:100%;font-weight:800;font-size:18px;letter-spacing:-.01em;margin:0 0 14px;padding:0}
+.calc-card legend+*{clear:both}
+.calc-f{display:block;margin:0 0 16px}
+.calc-f[hidden]{display:none}
+.calc-f>span:first-child{display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--ink)}
+.calc-f small{display:block;color:var(--mut);font-size:12.5px;line-height:1.45;margin-top:6px}
+.calc-f small a{color:inherit}
+.calc-u{display:flex;align-items:stretch;border:1px solid rgba(13,17,26,.18);border-radius:14px;overflow:hidden;background:var(--paper)}
+.calc-u:focus-within{border-color:var(--ink);box-shadow:0 0 0 3px rgba(217,244,91,.55)}
+.calc-u input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:17px;font-weight:700;padding:11px 12px;color:var(--ink);outline:none}
+.calc-u i{font-style:normal;display:flex;align-items:center;padding:0 12px;color:var(--mut);font-size:13px;border-left:1px solid var(--line);white-space:nowrap}
+.calc select{width:100%;font:inherit;font-size:16px;padding:11px 12px;border-radius:14px;border:1px solid rgba(13,17,26,.18);background:var(--paper);color:var(--ink)}
+.calc select:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(217,244,91,.55)}
+.calc-range{display:flex;align-items:center;gap:12px}
+.calc-range input{flex:1;accent-color:var(--ink)}
+.calc-range output{min-width:52px;text-align:right;font-weight:800;font-size:17px}
+.calc-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.calc-chips button{font:inherit;font-size:13px;font-weight:600;border:1px solid rgba(13,17,26,.18);background:var(--paper);border-radius:999px;padding:8px 12px;cursor:pointer;color:var(--ink);line-height:1.2}
+.calc-chips button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.calc-kwh{background:var(--mist);border-radius:14px;padding:10px 12px;font-size:14px;margin:0 0 16px}
+.calc-kwh b{white-space:nowrap}
+.calc-out{position:sticky;top:96px;background:var(--night);color:#fff;border-radius:28px;padding:24px}
+.calc-res{padding:0 0 16px;margin:0 0 16px;border-bottom:1px solid var(--lined)}
+.calc-res>span,.calc-save>span{display:block;color:var(--mutd);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.calc-res small span{font-weight:700;color:#fff}
+.calc-res b{display:block;font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:6px 0 4px;color:#fff}
+.calc-res small,.calc-save small{color:var(--mutd);font-size:13px}
+.calc-save b{display:block;font-size:28px;color:var(--volt);font-weight:800;letter-spacing:-.02em;margin:6px 0 2px}
+.calc-br{list-style:none;padding:14px 0 0;margin:16px 0 0;border-top:1px solid var(--lined);font-size:13.5px;color:var(--mutd)}
+.calc-br li{margin:0 0 6px}
+.calc-br b{color:#fff}
+.calc-warn{font-size:13px;line-height:1.45;color:var(--mutd);margin:12px 0 0}
+@media (max-width:980px){.calc{grid-template-columns:1fr}.calc-out{position:static}}
+.bva .calc-out .calc-br{list-style:none;padding:14px 0 0;margin:16px 0 0}
+.bva .calc-out .calc-br li{color:rgba(240,242,236,.74);padding:0;margin:0 0 6px;font-size:13.5px;line-height:1.45}
+.bva .calc-out .calc-br li::before{content:none;display:none}
+.bva .calc-out p.calc-warn{color:rgba(240,242,236,.66);font-size:13px;line-height:1.45;margin:12px 0 0}

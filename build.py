@@ -16,6 +16,12 @@ ISO_TODAY = '2026-09-22'
 
 env = Environment(loader=FileSystemLoader(str(ROOT / 'templates')), autoescape=select_autoescape(['html']), trim_blocks=True, lstrip_blocks=True)
 
+def sr_num(x, d=0):
+    """Serbian number format: 1.234,56"""
+    s_ = f'{abs(float(x)):,.{d}f}'.replace(',', 'X').replace('.', ',').replace('X', '.')
+    return ('−' if float(x) < 0 and round(abs(float(x)), d) != 0 else '') + s_
+env.filters['sr'] = sr_num
+
 GROUPS = {
     'A': ('Punjač sa ugradnjom — javna cena', 'Firme koje objavljuju cenu punjača zajedno sa ugradnjom.'),
     'B': ('Javna cena uređaja, ugradnja na upit', 'Cena uređaja je na sajtu, ugradnja se nudi ali se cena dobija na upit.'),
@@ -143,7 +149,7 @@ for row in price_index['rows']:
         row['kwh_html'] = kwh_html(row)
 
 # ---------- shared context ----------
-NAV = [('/firme/', 'Firme'), ('/cena-punjaca-za-elektricni-auto', 'Cene'), ('/javno-punjenje/', 'Javno punjenje'), ('/vodici/', 'Vodiči'), ('/podaci/', 'Podaci')]
+NAV = [('/firme/', 'Firme'), ('/cena-punjaca-za-elektricni-auto', 'Cene'), ('/javno-punjenje/', 'Javno punjenje'), ('/alati/kalkulator-troskova/', 'Kalkulator'), ('/vodici/', 'Vodiči'), ('/podaci/', 'Podaci')]
 base_ctx = dict(SITE=SITE, TODAY=TODAY, NAV=NAV, n_firms=len(published), n_leads=len(firms) - len(published), n_vodica=7, n_ops=len(operators))
 
 def render(tpl, path, **ctx):
@@ -251,6 +257,37 @@ render('javno_index.html', '/javno-punjenje/', ops=operators, ops_by_kind=ops_by
        description=f'Ko vodi javne punjače u Srbiji (Charge&GO, Orion eMobility, JP Putevi Srbije, Tesla, OMV…), poslednje zabeležene cene sa računicom po kWh, 36 besplatnih državnih punjača na autoputevima i propisi. Provereno {TODAY}.')
 add_url('/javno-punjenje/', '0.9')
 
+# 4c) cost calculator (tools)
+CALC = json.load(open(ROOT / 'content' / 'data' / 'kalkulator.json', encoding='utf-8'))
+_E, _d = CALC['eps'], CALC['defaults']
+def all_in(x):
+    return (x + _E['oie'] + _E['ee']) * (1 + _E['akciza']) * (1 + _E['pdv'])
+_k100 = _d['kwh100'] * (1 + _d['loss'] / 100)
+tariff_rows = [dict(name=z['name'], range=z['range'], nt_raw=z['nt'], vt_raw=z['vt'], nt=all_in(z['nt']), vt=all_in(z['vt']), per100=all_in(z['nt']) * _k100) for z in _E['zones']]
+_zone = next(z for z in _E['zones'] if z['id'] == _d['zone'])
+home_default = all_in(_zone[_d['tariff']])
+public_default = next(p['rsd_kwh'] for p in CALC['public'] if p['id'] == _d['public'])
+snaga_brutto = _E['snaga_rsd_kw'] * (1 + _E['akciza']) * (1 + _E['pdv'])
+_need = _d['km'] * _d['kwh100'] / 100
+_share = _d['public_share'] / 100
+_ex = dict(home_kwh=_need * (1 - _share) * (1 + _d['loss'] / 100), pub_kwh=_need * _share)
+_ex['home_cost'] = _ex['home_kwh'] * home_default
+_ex['pub_cost'] = _ex['pub_kwh'] * public_default
+_ex['kw_cost'] = _d['extra_kw'] * snaga_brutto
+_ex['ev'] = _ex['home_cost'] + _ex['pub_cost'] + _ex['kw_cost']
+_ex['ev100'] = _ex['ev'] / _d['km'] * 100
+_ex['ice'] = _d['km'] * _d['l100_' + _d['fuel']] / 100 * CALC['fuel'][_d['fuel']]
+_ex['ice100'] = _ex['ice'] / _d['km'] * 100
+_ex['save'] = _ex['ice'] - _ex['ev']
+_desc = (f"Koliko košta 100 km na struju u Srbiji: kod kuće noću oko {sr_num(tariff_rows[1]['per100'])} RSD (plava zona), "
+         f"benzin oko {sr_num(_ex['ice100'])} RSD. Kalkulator sa tarifama EPS-a, cenama goriva od {CALC['fuel']['date']} i računima sa javnih punjača.")
+render('kalkulator.html', '/alati/kalkulator-troskova/', calc=CALC, eps=_E, fuel=CALC['fuel'], public=CALC['public'], d=_d,
+       tariff_rows=tariff_rows, home_default=home_default, public_default=public_default, snaga_brutto=snaga_brutto, ex=_ex,
+       calc_json=json.dumps(CALC, ensure_ascii=False).replace('</', '<\\/'), modified_iso=ISO_TODAY,
+       title='Kalkulator troškova električnog automobila — struja kod kuće, javni punjači, benzin i dizel | BlokVolt',
+       description=_desc)
+add_url('/alati/kalkulator-troskova/', '0.9')
+
 # 5) home
 render('home.html', '/', GUIDES=GUIDES_META, PODACI=PODACI, by_group=by_group, cities=cities, CITY_SLUGS=CITY_SLUGS,
        title='BlokVolt — sve o električnim automobilima u Srbiji: firme, cene, procedure',
@@ -273,8 +310,22 @@ sm.append('</urlset>')
     '/firme /firme/ 301',
     '/podaci /podaci/ 301',
     '/javno-punjenje /javno-punjenje/ 301',
+    '/alati /alati/kalkulator-troskova/ 302',
+    '/alati/ /alati/kalkulator-troskova/ 302',
+    '/kalkulator /alati/kalkulator-troskova/ 301',
     'https://blokvolt.rs/* https://www.blokvolt.rs/:splat 301',
 ]) + '\n', encoding='utf-8')
 (DIST / '_headers').write_text('/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n', encoding='utf-8')
 render('article.html', '/404.html', crumb=None, meta={'title': 'Stranica nije pronađena', 'kicker': 'Greška 404', 'updated': ''}, body='<p class="bva-lead">Ta stranica ne postoji ili je premeštena.</p><p>Probajte <a href="/firme/">registar firmi</a>, <a href="/javno-punjenje/">javno punjenje</a>, <a href="/vodici/">vodiče</a> ili <a href="/podaci/">podatke</a>.</p>', title='404 | BlokVolt', description='', sources=[])
+import hashlib as _hl
+_ver = {}
+for _a in ('site.css', 'agg.css', 'site.js'):
+    _ver[_a] = _hl.sha1((DIST / 'assets' / _a).read_bytes()).hexdigest()[:10]
+for _f in DIST.rglob('*.html'):
+    _t = _f.read_text(encoding='utf-8')
+    _n = _t
+    for _a, _h in _ver.items():
+        _n = _n.replace(f'"/assets/{_a}"', f'"/assets/{_a}?v={_h}"')
+    if _n != _t:
+        _f.write_text(_n, encoding='utf-8')
 print('built', len(urls), 'urls;', len(published), 'firms;', len(operators), 'operators;', len(PODACI), 'data pages')

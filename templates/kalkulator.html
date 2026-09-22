@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebApplication", "name": "Kalkulator troškova električnog automobila", "url": "{{ SITE }}{{ path }}", "inLanguage": "sr-Latn", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RSD"}, "dateModified": "{{ modified_iso }}", "description": {{ description|tojson }}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Kalkulator troškova", "item": "{{ SITE }}{{ path }}"}]}
+ ]
+}</script>{% endblock %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Alati · kalkulator · ažurirano {{ calc.checked }}</div><h1>Kalkulator: koliko košta vožnja električnim automobilom</h1><p>Punjenje kod kuće i na javnim punjačima, poređenje sa benzinom i dizelom — po tarifama EPS-a, zvaničnim cenama goriva i računima sa javnih punjača. Sve brojke možete da promenite.</p><div class="v3-meta"><span>Struja: EPS od {{ eps.valid_from }}</span><span>Gorivo: {{ fuel.date }}</span><span>Javno punjenje: računi iz aplikacije, 09.2026</span></div><div class="v3-chips"><a href="#kalkulator">Kalkulator</a><a href="#cena-kwh">Cena kWh kod kuće</a><a href="#kako-racunamo">Kako računamo</a><a href="/javno-punjenje/#cene">Cene javnog punjenja</a></div></div></div>{% endblock %}
+{% block content %}<div class="bva"><div class="w3">
+<form class="calc" id="kalkulator" action="#" novalidate>
+<div class="calc-in">
+<fieldset class="calc-card"><legend>Vožnja</legend>
+<label class="calc-f" for="c-km"><span>Pređeni kilometri mesečno</span><span class="calc-u"><input type="number" id="c-km" min="0" max="20000" step="50" value="{{ d.km }}" inputmode="numeric"><i>km</i></span><small>{{ (d.km * 12)|sr }} km godišnje — promenite po sebi</small></label>
+<label class="calc-f" for="c-kwh100"><span>Potrošnja električnog automobila</span><span class="calc-u"><input type="number" id="c-kwh100" min="5" max="40" step="0.5" value="{{ d.kwh100 }}" inputmode="decimal"><i>kWh/100 km</i></span><small>Pogledajte u računaru automobila; manji gradski automobili troše manje, veliki SUV više, a zimi svi troše više.</small></label>
+<label class="calc-f" for="c-loss"><span>Gubici pri punjenju kod kuće</span><span class="calc-u"><input type="number" id="c-loss" min="0" max="30" step="1" value="{{ d.loss }}" inputmode="numeric"><i>%</i></span><small>Deo struje sa brojila ostaje u punjaču i kablu. Pretpostavka; na javnom punjaču plaćate isporučene kWh.</small></label>
+</fieldset>
+<fieldset class="calc-card"><legend>Punjenje kod kuće</legend>
+<label class="calc-f" for="c-zone"><span>Zona u kojoj se završava vaša potrošnja</span><select id="c-zone">{% for z in eps.zones %}<option value="{{ z.id }}"{% if z.id == d.zone %} selected{% endif %}>{{ z.name }} — {{ z.range }}</option>{% endfor %}<option value="custom">Upisaću cenu sa svog računa</option></select><small>Zona se računa po ukupnoj mesečnoj potrošnji domaćinstva. Ako i bez automobila trošite blizu 350 kWh, punjenje ide po plavoj zoni.</small></label>
+<label class="calc-f" for="c-tariff" id="w-tariff"><span>Tarifa</span><select id="c-tariff"><option value="nt"{% if d.tariff == 'nt' %} selected{% endif %}>Niža tarifa — punjenje noću</option><option value="vt"{% if d.tariff == 'vt' %} selected{% endif %}>Viša tarifa — punjenje danju</option></select></label>
+<label class="calc-f" for="c-homecustom" id="w-homecustom" hidden><span>Moja cena kWh sa svim naknadama i PDV-om</span><span class="calc-u"><input type="number" id="c-homecustom" min="0" max="100" step="0.1" value="{{ '%.1f'|format(home_default) }}" inputmode="decimal"><i>RSD/kWh</i></span></label>
+<p class="calc-kwh">Cena kilovat-sata sa naknadama, akcizom i PDV-om: <b id="o-homeprice">{{ home_default|sr(2) }} RSD</b></p>
+<label class="calc-f" for="c-kw"><span>Povećanje odobrene snage zbog punjača</span><span class="calc-u"><input type="number" id="c-kw" min="0" max="30" step="0.01" value="{{ d.extra_kw }}" inputmode="decimal"><i>kW</i></span><small>Ako za punjač povećate snagu na brojilu (npr. sa 11,04 na 17,25 kW = 6,21 kW), svaki kW košta {{ snaga_brutto|sr(2) }} RSD mesečno sa akcizom i PDV-om.</small></label>
+</fieldset>
+<fieldset class="calc-card"><legend>Javno punjenje</legend>
+<label class="calc-f" for="c-share"><span>Koliko energije punite na javnim punjačima</span><span class="calc-range"><input type="range" id="c-share" min="0" max="100" step="5" value="{{ d.public_share }}"><output id="o-share" for="c-share">{{ d.public_share }} %</output></span></label>
+<div class="calc-chips" role="group" aria-label="Brzi izbor cene javnog punjenja">{% for p in public %}<button type="button" data-rsd="{{ p.rsd_kwh }}" aria-pressed="{{ 'true' if p.id == d.public else 'false' }}" title="{{ p.note }}">{{ p.label }} · {{ p.rsd_kwh }} RSD/kWh</button>{% endfor %}</div>
+<label class="calc-f" for="c-pub"><span>Cena javnog punjenja</span><span class="calc-u"><input type="number" id="c-pub" min="0" max="300" step="1" value="{{ public_default }}" inputmode="decimal"><i>RSD/kWh</i></span><small>Naplata je po minutu, pa cena po kWh zavisi od automobila; 60 RSD je prosek naših računa sa brzih punjača (43–79 RSD/kWh). Cene po operaterima: <a href="/javno-punjenje/#cene">indeks cena</a>.</small></label>
+</fieldset>
+<fieldset class="calc-card"><legend>Poređenje sa gorivom</legend>
+<label class="calc-f" for="c-fuel"><span>Gorivo</span><select id="c-fuel"><option value="benzin"{% if d.fuel == 'benzin' %} selected{% endif %}>Benzin BMB 95</option><option value="dizel"{% if d.fuel == 'dizel' %} selected{% endif %}>Evrodizel</option></select></label>
+<label class="calc-f" for="c-l100"><span>Potrošnja automobila na gorivo</span><span class="calc-u"><input type="number" id="c-l100" min="2" max="25" step="0.1" value="{{ d.l100_benzin }}" inputmode="decimal"><i>l/100 km</i></span><small>Pretpostavka: {{ d.l100_benzin|sr(1) }} l benzina ili {{ d.l100_dizel|sr(1) }} l dizela na 100 km.</small></label>
+<label class="calc-f" for="c-lp"><span>Cena goriva</span><span class="calc-u"><input type="number" id="c-lp" min="50" max="500" step="1" value="{{ fuel.benzin }}" inputmode="decimal"><i>RSD/l</i></span><small>Najviše maloprodajne cene od {{ fuel.date }}: benzin {{ fuel.benzin }} RSD, evrodizel {{ fuel.dizel }} RSD po litru.</small></label>
+</fieldset>
+</div>
+<aside class="calc-out" aria-live="polite">
+<div class="calc-res"><span>Električni automobil</span><b id="o-ev">{{ ex.ev|sr }} RSD</b><small>mesečno · <span id="o-ev100">{{ ex.ev100|sr }}</span> RSD na 100 km</small></div>
+<div class="calc-res"><span id="o-fuelname">Benzin</span><b id="o-ice">{{ ex.ice|sr }} RSD</b><small>mesečno · <span id="o-ice100">{{ ex.ice100|sr }}</span> RSD na 100 km</small></div>
+<div class="calc-save"><span>Razlika</span><b id="o-save">{{ ex.save|sr }} RSD mesečno</b><small id="o-save-y">{{ (ex.save * 12)|sr }} RSD godišnje</small></div>
+<ul class="calc-br">
+<li>Kod kuće: <b id="o-homekwh">{{ ex.home_kwh|sr }}</b> kWh sa brojila → <b id="o-homecost">{{ ex.home_cost|sr }} RSD</b></li>
+<li>Javni punjači: <b id="o-pubkwh">{{ ex.pub_kwh|sr }}</b> kWh → <b id="o-pubcost">{{ ex.pub_cost|sr }} RSD</b></li>
+<li>Veća odobrena snaga: <b id="o-kwcost">{{ ex.kw_cost|sr }} RSD</b></li>
+</ul>
+<p class="calc-warn" id="o-zone">Punjenje kod kuće dodaje oko {{ ex.home_kwh|sr }} kWh mesečno na vaš račun — proverite da li vas to prebacuje u višu zonu.</p>
+</aside>
+</form>
+<noscript><div class="bva-note"><p>Kalkulatoru treba JavaScript. Primer sa podrazumevanim vrednostima je iznad, a tabele ispod rade i bez njega.</p></div></noscript>
+
+<h2 id="cena-kwh">Koliko košta kilovat-sat kod kuće</h2>
+<p>Cene EPS-a za domaćinstva na garantovanom snabdevanju važe od {{ eps.valid_from }} i sadrže pristup mreži, ali ne i naknade, akcizu i PDV. Kad se sve doda, jedan kilovat-sat sa brojila košta:</p>
+<div class="bva-tw"><table class="bva-tbl"><thead><tr><th>Zona (mesečna potrošnja)</th><th>Niža tarifa (noć)</th><th>Viša tarifa (dan)</th><th>100 km noću, {{ d.kwh100|sr(0) }} kWh + {{ d.loss }} % gubitaka</th></tr></thead><tbody>
+{% for r in tariff_rows %}<tr><td data-label="Zona">{{ r.name }}<small class="chk">{{ r.range }}; energija {{ r.nt_raw|sr(4) }} / {{ r.vt_raw|sr(4) }} RSD/kWh bez poreza</small></td><td data-label="Niža tarifa (noć)"><b>{{ r.nt|sr(2) }} RSD/kWh</b></td><td data-label="Viša tarifa (dan)">{{ r.vt|sr(2) }} RSD/kWh</td><td data-label="100 km noću">{{ r.per100|sr }} RSD</td></tr>
+{% endfor %}</tbody></table></div>
+<p>Za poređenje: na javnim brzim punjačima kilovat-sat je na našim računima izašao 43–79 RSD, a na besplatnim državnim punjačima na autoputevima punjenje se za sada ne naplaćuje — vidi <a href="/javno-punjenje/">javno punjenje</a> i <a href="/javno-punjenje/besplatni-punjaci/">besplatne punjače</a>.</p>
+
+<h2 id="kako-racunamo">Kako računamo</h2>
+<p><strong>Kod kuće:</strong> cena kWh = (cena energije za zonu i tarifu + naknada za obnovljive izvore {{ eps.oie|sr(3) }} RSD + naknada za energetsku efikasnost {{ eps.ee|sr(3) }} RSD) × akciza 7,5 % × PDV 20 %. Potrošena energija sa brojila = kilometri × potrošnja ÷ 100 × (1 + gubici). Veća odobrena snaga: {{ eps.snaga_rsd_kw|sr(4) }} RSD po kW mesečno, sa akcizom i PDV-om {{ snaga_brutto|sr(2) }} RSD. Fiksne stavke koje plaćate i bez automobila (trošak snabdevača, taksa za javni servis) nisu uračunate.</p>
+<p><strong>Javni punjači:</strong> kWh koje automobil primi × cena po kWh. Operateri u Srbiji naplaćuju po minutu, pa je cena po kWh računica: {{ public[0].note }}.</p>
+<p><strong>Gorivo:</strong> kilometri × potrošnja ÷ 100 × cena litra ({{ fuel.label }}).</p>
+<p><strong>Šta nije uračunato:</strong> cena automobila i subvencija (<a href="/podaci/cene-elektricnih-automobila/">cene električnih automobila</a>), porez na upotrebu vozila koji se za električni automobil ne plaća (<a href="/podaci/registracija-i-porezi/">registracija i porezi</a>), osiguranje (<a href="/podaci/osiguranje-elektricnog-automobila/">autoodgovornost po kW</a>), održavanje, putarina (električna vozila imaju 10 % popusta uz elektronsku naplatu — <a href="/podaci/putarina-i-parking/">putarina i parking</a>) i kućni punjač (<a href="/firme/">ko ih prodaje i ugrađuje</a>).</p>
+<div class="bva-note"><p>Kalkulator daje okvirnu računicu, ne ponudu. Cene struje, goriva i javnog punjenja proveravamo svakog meseca; datumi su uz svaku brojku. Ako imate račun koji pokazuje drugačije — <a href="/ispravka/">pošaljite nam ga</a>.</p></div>
+
+<h2>Izvori</h2>
+<ul class="bva-src">{% for s in eps.sources %}<li><a href="{{ s.url }}" rel="noopener">{{ s.label }}</a></li>{% endfor %}<li><a href="{{ fuel.url }}" rel="noopener">Cene goriva od {{ fuel.date }} — {{ fuel.label }}</a></li><li><a href="/javno-punjenje/#cene">BlokVolt — indeks cena javnog punjenja (računi i aplikacije, 22.09.2026)</a></li></ul>
+<p class="bva-disc">Tekst i kalkulator pripremljeni su uz pomoć AI alata; tarife, cene i formule proverila je redakcija BlokVolta. Nije finansijski savet. Grešku prijavite na <a href="/ispravka/">stranici za ispravke</a>.</p>
+</div></div>
+<script id="calc-data" type="application/json">{{ calc_json|safe }}</script>
+<script>
+(function(){
+ var D=JSON.parse(document.getElementById('calc-data').textContent),E=D.eps;
+ function $(id){return document.getElementById(id)}
+ function num(id){var v=parseFloat(String($(id).value).replace(',','.'));return isFinite(v)?v:0}
+ function fmt(x,d){d=d||0;var s=Math.abs(x).toFixed(d).split('.');s[0]=s[0].replace(/\B(?=(\d{3})+(?!\d))/g,'.');return (x<0?'−':'')+s[0]+(d?','+s[1]:'')}
+ function allin(x){return (x+E.oie+E.ee)*(1+E.akciza)*(1+E.pdv)}
+ function zone(){var id=$('c-zone').value;for(var i=0;i<E.zones.length;i++){if(E.zones[i].id===id)return E.zones[i]}return null}
+ function homePrice(){var z=zone();if(!z)return num('c-homecustom');return allin($('c-tariff').value==='vt'?z.vt:z.nt)}
+ function calc(){
+  var km=num('c-km'),k100=num('c-kwh100'),loss=num('c-loss')/100,share=num('c-share')/100,pub=num('c-pub'),kw=num('c-kw');
+  var need=km*k100/100,pubKwh=need*share,homeKwh=need*(1-share)*(1+loss),hp=homePrice();
+  var homeCost=homeKwh*hp,pubCost=pubKwh*pub,kwCost=kw*E.snaga_rsd_kw*(1+E.akciza)*(1+E.pdv),ev=homeCost+pubCost+kwCost;
+  var ice=km*num('c-l100')/100*num('c-lp'),save=ice-ev;
+  $('o-homeprice').textContent=fmt(hp,2)+' RSD';
+  $('o-share').textContent=Math.round(share*100)+' %';
+  $('o-ev').textContent=fmt(ev)+' RSD';$('o-ev100').textContent=km>0?fmt(ev/km*100):'0';
+  $('o-ice').textContent=fmt(ice)+' RSD';$('o-ice100').textContent=km>0?fmt(ice/km*100):'0';
+  $('o-fuelname').textContent=$('c-fuel').value==='dizel'?'Evrodizel':'Benzin';
+  $('o-save').textContent=fmt(save)+' RSD mesečno';$('o-save-y').textContent=fmt(save*12)+' RSD godišnje';
+  $('o-homekwh').textContent=fmt(homeKwh);$('o-homecost').textContent=fmt(homeCost)+' RSD';
+  $('o-pubkwh').textContent=fmt(pubKwh);$('o-pubcost').textContent=fmt(pubCost)+' RSD';$('o-kwcost').textContent=fmt(kwCost)+' RSD';
+  $('o-zone').textContent='Punjenje kod kuće dodaje oko '+fmt(homeKwh)+' kWh mesečno na vaš račun. Zelena zona važi do 350 kWh, plava do 1.200 kWh — proverite na računu gde završavate.';
+ }
+ $('c-zone').addEventListener('change',function(){var c=this.value==='custom';$('w-homecustom').hidden=!c;$('w-tariff').hidden=c;calc()});
+ $('c-fuel').addEventListener('change',function(){var dz=this.value==='dizel';$('c-lp').value=dz?D.fuel.dizel:D.fuel.benzin;$('c-l100').value=dz?D.defaults.l100_dizel:D.defaults.l100_benzin;calc()});
+ [].slice.call(document.querySelectorAll('.calc-chips button')).forEach(function(b){b.addEventListener('click',function(){[].slice.call(document.querySelectorAll('.calc-chips button')).forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');$('c-pub').value=b.getAttribute('data-rsd');calc()})});
+ $('c-pub').addEventListener('input',function(){[].slice.call(document.querySelectorAll('.calc-chips button')).forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-rsd')===$('c-pub').value?'true':'false')})});
+ $('kalkulator').addEventListener('input',calc);$('kalkulator').addEventListener('submit',function(e){e.preventDefault()});
+ calc();
+})();
+</script>
+{% endblock %}
