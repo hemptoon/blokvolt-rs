@@ -150,6 +150,26 @@ Change only what the importer publishes; keep promotions as separate fields as t
 `checked`, `next_check` (+~2 months), run `python3 scripts/gen_ev_modeli.py`, and check the generated
 page's stat block (cheapest model, count under 30.000 €).
 
+### 3.5b Model photos (only when a model is added or a photo is wrong)
+
+`content/data/ev-foto.json` maps `"<brand>||<model>"` (the raw keys of `ev-modeli.json`) to a file in
+`static/assets/auto/<slug>.png` plus the author, licence name, licence URL and Commons file page.
+`scripts/gen_ev_modeli.py` renders the thumbnail in the first table column and the credit list under
+`## Fotografije modela`; a model with no entry simply gets no photo (today: JMEV Elight, JMEV EWind).
+
+Rules, non-negotiable: only files from Wikimedia Commons under a free licence (CC0, CC BY, CC BY-SA),
+never a press photo, a dealer photo or an image found through a search engine. Copy the author string
+and the licence exactly as the file page states them — CC BY-SA requires the author, the licence and
+the fact that the picture was changed, all of which the page's credit block carries.
+
+Adding one: open the file page on commons.wikimedia.org, take the 640 px thumbnail, cover-crop to
+480x270, then
+`Image.resize((240,135), LANCZOS).quantize(colors=128)` and save as PNG (~20 KB) into
+`static/assets/auto/`. This container cannot reach wikimedia.org (proxy 403), so the fetch and the
+crop happen in the browser on the Commons origin and the bytes come back through the GitHub upload
+tab; section 6 describes that transfer. Because `/assets/*` is served `immutable`, a replaced photo
+needs a new file name — never overwrite a slug that is already live.
+
 ### 3.6 Statistics (quarterly, after SAUVD/ABS figures appear)
 
 `content/podaci/statistika-ev-srbija.md` + `home_stats` in `content/data/site.json`. MUP fleet figures

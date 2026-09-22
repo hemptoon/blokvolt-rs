@@ -51,7 +51,7 @@ def md_to_html(text):
     s = BeautifulSoup(h, 'html.parser')
     for t in s.find_all('table'):
         heads = [th.get_text(' ', strip=True) for th in t.find_all('th')]
-        t['class'] = 'bva-tbl'
+        t['class'] = 'bva-tbl agg-ev' if t.find('span', class_='evm') else 'bva-tbl'
         for tr in t.find_all('tr'):
             for i, td in enumerate(tr.find_all('td')):
                 if i < len(heads):

@@ -12,6 +12,7 @@ disclaimer: Nedostaje nešto u dnevniku? Pišite na
 ---
 ## 23. septembar 2026
 
+- Na stranici <a href="/podaci/cene-elektricnih-automobila/">cene električnih automobila</a> uz svaki model stoji i fotografija — 64 slike sa Wikimedia Commonsa, pod slobodnim licencama, sa autorima i licencama na dnu stranice. Slike su ilustrativne i ne prikazuju obavezno verziju iz cenovnika.
 - Nova <a href="/pretraga/">pretraga sajta</a> (radi bez servera, pretražuje sve stranice) i blok „poslednje provere“ na početnoj — koja stranica je kada proverena i kada joj je sledeća provera.
 - Novi alat: <a href="/alati/racun-u-zgradi/">ko koliko plaća punjenje u zgradi</a> — koliko stanari bez automobila plate tuđe punjenje kad punjač visi na zajedničkom brojilu, koliko od toga pokriva paušal i za koliko meseci se vrati overeno brojilo (cene opreme 21.097–22.999 RSD iz registra).
 - Nova stranica: <a href="/podaci/wallbox-modeli/">wallbox modeli i cene</a> — 45 javno objavljenih cena uređaja kod 20 prodavaca, poređanih po snazi, sa napomenom o PDV-u i kablu, i poređenjem cena istog modela kod različitih prodavaca.

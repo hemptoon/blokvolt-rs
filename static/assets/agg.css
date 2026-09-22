@@ -201,3 +201,18 @@
  .mega-nav__bar-link.is--search .is--mob{display:inline}
  .bv-search{margin:18px 0 4px}
 }
+/* model photos in the EV price table (/podaci/cene-elektricnih-automobila/) */
+.bva-tbl.agg-ev th:nth-child(1){width:28%}
+.bva-tbl.agg-ev th:nth-child(2){width:18%}
+.bva-tbl.agg-ev th:nth-child(3){width:19%}
+.evm{display:flex;gap:11px;align-items:flex-start}
+.evm-i{flex:0 0 88px;width:88px;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:var(--paper2);display:block}
+.evm-t{min-width:0;font-weight:800;line-height:1.35;padding-top:1px}
+.evm-t small.chk{font-weight:500}
+.bva-fotos{margin:0 0 30px;max-width:760px}
+.bva-fotos summary{cursor:pointer;font-weight:700;font-size:15px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.bva-fotos summary:hover{color:var(--voltd)}
+.bva-fotos ul.bva-src{margin-top:16px}
+.bva-fotos ul.bva-src b{font-weight:700}
+@media(max-width:1023px){.evm-i{flex:0 0 96px;width:96px}.bva-tbl.agg-ev td:first-child .evm-t{font-size:16px}}
+@media(max-width:420px){.evm-i{flex:0 0 78px;width:78px}}

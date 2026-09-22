@@ -6,11 +6,34 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = json.load(open(ROOT / 'content' / 'data' / 'ev-modeli.json', encoding='utf-8'))
+FOTO = json.load(open(ROOT / 'content' / 'data' / 'ev-foto.json', encoding='utf-8'))
+FOTO_ITEMS = FOTO['items']
+
+
+def thumb(brand, model, name):
+    """Illustrative photo from Wikimedia Commons, if we have one for this model."""
+    f = FOTO_ITEMS.get(f'{brand}||{model}')
+    if not f:
+        return ''
+    return (f'<img class="evm-i" src="/assets/auto/{f["slug"]}.png" alt="" width="{FOTO["w"]}" '
+            f'height="{FOTO["h"]}" loading="lazy" decoding="async">')
+
 OUT = ROOT / 'content' / 'podaci' / 'cene-elektricnih-automobila.md'
 SUB = DATA.get('subsidy_eur', 5000)
 CHECKED = DATA.get('checked', '22.09.2026')
 NEXT_CHECK = DATA.get('next_check', '15.11.2026')
 MODIFIED = '-'.join(reversed(CHECKED.split('.')))
+
+
+def plural(n, one, few, many):
+    """Serbian count agreement: 1 slika / 2-4 slike / 5+ slika."""
+    last, last2 = n % 10, n % 100
+    if last == 1 and last2 != 11:
+        return f'{n} {one}'
+    if last in (2, 3, 4) and last2 not in (12, 13, 14):
+        return f'{n} {few}'
+    return f'{n} {many}'
+
 
 def eur(x):
     return f"{int(round(x)):,}".replace(',', '.') + ' €'
@@ -93,8 +116,9 @@ for b in DATA['brands']:
         kind = 'cenovnik' if m.get('source_type') == 'pricelist_pdf' else 'sajt uvoznika'
         date = DATES.get((brand, model), f'provereno {CHECKED}')
         src = f'[{kind}]({m["url"]})<small class="chk">{date}' + ('; PDV nije naveden' if vat == 'nije navedeno' else '') + '</small>'
-        model_cell = name + (f'<small class="chk">{ver}</small>' if ver else '')
-        rows.append((base, model_cell, price_cell, after_cell, src, brand, name))
+        model_cell = ('<span class="evm">' + thumb(brand, model, name) + '<span class="evm-t">' + name
+                      + (f'<small class="chk">{ver}</small>' if ver else '') + '</span></span>')
+        rows.append((base, model_cell, price_cell, after_cell, src, brand, name, model))
 
 rows.sort(key=lambda r: (r[0], r[6]))
 n_models = len(rows)
@@ -103,7 +127,7 @@ under30 = sum(1 for r in rows if r[0] < 30000)
 cheapest = rows[0]
 
 table = ['| Model | Cena od | Posle subvencije 5.000 € | Izvor |', '|---|---|---|---|']
-for base, model_cell, price_cell, after_cell, src, brand, name in rows:
+for base, model_cell, price_cell, after_cell, src, brand, name, model_key in rows:
     table.append(f'| {model_cell} | {price_cell} | {after_cell} | {src} |')
 
 IMPORTERS = [
@@ -128,6 +152,16 @@ imp = ['| Marka | Uvoznik (kako ga navodi sajt) | Gradovi sa salonom ili ovlaš�
 for a, b_, c in IMPORTERS:
     imp.append(f'| {a} | {b_} | {c} |')
 
+# photo credits: every rendered thumbnail, with author, license and link to the file page
+used_foto = [(name, FOTO_ITEMS[f'{brand}||{model_key}'])
+             for base, model_cell, price_cell, after_cell, src, brand, name, model_key in rows
+             if f'{brand}||{model_key}' in FOTO_ITEMS]
+credit_li = '\n'.join(
+    f'<li><b>{nm}</b> — {f["au"]}, <a href="{f["licurl"]}" rel="nofollow noopener">{f["lic"]}</a>, '
+    f'<a href="{f["page"]}" rel="nofollow noopener">Wikimedia Commons</a></li>'
+    for nm, f in sorted(used_foto, key=lambda x: x[0].lower()))
+n_foto = len(used_foto)
+
 sources = [
     'Uredba o subvencionisanoj kupovini novih vozila isključivo na električni pogon (Sl. glasnik 12/2026 i 86/2026) :: https://www.paragraf.rs/propisi/uredba-o-uslovima-subvencionisane-kupovine-elektricnih-hibridnih-vozila.html',
     'Kia EV3 — cena sa uračunatom subvencijom :: https://www.kia.rs/ev3',
@@ -142,6 +176,7 @@ sources = [
     'Auto Motorevija, 26.07.2026 — prva polovina 2026: 535 novih električnih automobila (SAUVD) :: https://www.automotorevija.rs/rubrike/veliki-rast-prodaje-novih-vozila-u-srbiji',
     'BYD Srbija, 23.07.2026 — podatak uvoznika o najprodavanijim modelima :: https://byd-auto.rs/vesti/byd-u-top-10-brendova-u-srbiji-i-apsolutni-lider-ev-segmenta/',
     'Tesla — prodajni centri, Srbija (lista prazna) :: https://www.tesla.com/findus/list/stores/Serbia',
+    'Fotografije modela — Wikimedia Commons, slobodne licence (autori i licence su na stranici) :: https://commons.wikimedia.org/',
 ]
 
 md = f"""---
@@ -167,7 +202,7 @@ sources: {' | '.join(sources)}
 
 „Cena od“ je najniža cena modela koju uvoznik objavljuje na svom sajtu ili u cenovniku, uglavnom sa PDV-om (gde stranica PDV ne pominje, to piše uz izvor). Ako uvoznik prikazuje cenu već umanjenu za subvenciju — kao Kia za EV3 i Niro EV i JMEV za Elight — vratili smo 5.000 € da bi cene bile uporedive, a objavljenu cenu naveli smo ispod. „Posle subvencije“ je naša računica: cena od minus 5.000 €. Subvencija važi samo za nov automobil, a budžet za 2026. je ograničen — uslovi i stanje su na stranici [subvencije 2026](/podaci/subvencije-2026/).
 
-Tabela je poređana po ceni pre subvencije. Ne ocenjujemo modele; domet i opremu proverite u konfiguratoru uvoznika.
+Tabela je poređana po ceni pre subvencije. Ne ocenjujemo modele; domet i opremu proverite u konfiguratoru uvoznika. Fotografije su tu samo da se model brže prepozna — {plural(n_foto, 'slika', 'slike', 'slika')} sa Wikimedia Commonsa, pod slobodnim licencama; mogu prikazivati drugu verziju, godinu ili tržište, pa boju, felne i opremu ne treba čitati iz njih. Autori i licence su [niže na stranici](#fotografije).
 
 ## Modeli i cene
 
@@ -194,6 +229,16 @@ Zvanična statistika po modelima za električne automobile nije javno objavljena
 ## Pre kupovine proverite
 
 Da li je cena „sa zaliha“ ili za naručivanje (Dacia Spring po najnižoj ceni je, prema cenovniku, samo iz zaliha), da li „akcijska cena“ već sadrži subvenciju, šta je uključeno (priprema vozila, registracija, kabl za punjenje) i koliko se čeka isporuka. Subvencija se može iskoristiti i kao učešće u finansijskom lizingu — vidi [krediti i lizing](/podaci/krediti-i-lizing/). Posle kupovine: [registracija i porezi](/podaci/registracija-i-porezi/) (porez na upotrebu se ne plaća) i [osiguranje](/podaci/osiguranje-elektricnog-automobila/).
+
+## Fotografije modela {{#fotografije}}
+
+Fotografije uz modele preuzete su sa [Wikimedia Commonsa](https://commons.wikimedia.org/) i objavljene su pod slobodnim licencama koje dozvoljavaju dalju upotrebu uz navođenje autora. Slike su smanjene i isečene na format 16:9; izmenjene verzije dele licencu originala. Ilustrativne su: automobil na slici može biti druga verzija, godište ili tržište od modela u tabeli.
+
+<details class="bva-fotos"><summary>Autori i licence ({plural(n_foto, 'fotografija', 'fotografije', 'fotografija')})</summary>
+<ul class="bva-src">
+{credit_li}
+</ul>
+</details>
 
 ## Povezano
 
