@@ -1,0 +1,1524 @@
+{
+  "checked": "22.09.2026",
+  "method": "WebSearch + WebFetch, lokalni jezici i engleski; posle iscrpljivanja WebSearch limita korišćen samo WebFetch zvaničnih stranica i već pronađenih URL-ova. Blokirane stranice označene kao „nije dostupno”, bez zaobilaženja.",
+  "countries": [
+    {
+      "code": "ME",
+      "name_sr": "Crna Gora",
+      "currency": "EUR",
+      "networks": [
+        {
+          "name": "EKO punjači (benzinske stanice Jugopetrol)",
+          "operator": "Jugopetrol AD (HELLENiQ ENERGY)",
+          "app": "nije navedena",
+          "website": "https://www.jugopetrol.co.me/",
+          "size": "7 DC punjača od 50 kW planirano do kraja 2024; „Punjači za električna vozila već su postavljeni na benzinskim stanicama u Podgorici na tri lokacije, i u Bijelom Polju i Tivtu”, planirani Žabljak i Herceg Novi (investitor.me, 11.12.2024). Pretraga stanica na sajtu (49 stanica) ne navodi punjače (provereno 22.09.2026).",
+          "prices": [
+            {
+              "what": "DC 50 kW",
+              "price": "cenovnik nije javno objavljen",
+              "vat": "—",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.jugopetrol.co.me/stanice/prona-i-stanicu/",
+              "confidence": "visoka",
+              "note": "Sajt Jugopetrola nema odeljak o punjenju EV; cena nije navedena ni u vesti investitor.me."
+            }
+          ],
+          "payment": "Način plaćanja nije objavljen.",
+          "notes": "Podatak o broju i lokacijama je iz medija (investitor.me, 11.12.2024) – trenutni rad nije proveren kod operatera."
+        },
+        {
+          "name": "Brzi punjači na autoputu „Princeza Ksenija” (Bar–Boljare, deonica Smokovac–Mateševo)",
+          "operator": "nije naveden u izvorima",
+          "app": "nije navedena",
+          "website": "—",
+          "size": "Odmorište Pelev Brijeg: „stanica sa četiri punjača od po 50 kW” (izgrađena); odmorište Gornje Mrke: „radovi na instaliranju četiri punjača od po 60 kW” – nacrt Nacionalnog okvira politike za infrastrukturu alternativnih goriva, preneo Portal Analitika 14.06.2026; RTCG 22.07.2026: „Na odmorištu Pelev Brijeg, na trasi autoputa Princeza Ksenija, instalirana su četiri brza punjača.”",
+          "prices": [
+            {
+              "what": "DC 50 kW (Pelev Brijeg)",
+              "price": "cenovnik nije javno objavljen",
+              "vat": "—",
+              "date": "14.06.2026 / 22.07.2026; provereno 22.09.2026",
+              "url": "https://www.portalanalitika.me/clanak/crna-gora-bez-ultrabrzih-punjaca-za-elektricna-vozila-potrebno-najmanje-14-novih-lokacija",
+              "confidence": "srednja"
+            }
+          ],
+          "payment": "Nije objavljeno.",
+          "notes": "Jugopetrol je dobio tender za benzinsku stanicu na odmorištu Gornje Mrke (investitor.me, 04.05.2025), ali izvor ne kaže ko upravlja punjačima."
+        },
+        {
+          "name": "EVC Montenegro (EVC Charge)",
+          "operator": "EVC Montenegro d.o.o., Podgorica",
+          "app": "EVC Charge (iOS/Android, izdavač EVC Montenegro)",
+          "website": "https://www.evcmontenegro.me/",
+          "size": "Ukupan broj nije objavljen. Primer: Kotor, parking Žičare Kotor–Lovćen, „Snaga punjenja dostiže do 100 kW” (ecoportal.me, 03.04.2026).",
+          "prices": [
+            {
+              "what": "AC/DC",
+              "price": "cenovnik nije javno objavljen",
+              "vat": "—",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.evcmontenegro.me/",
+              "confidence": "visoka",
+              "note": "Na sajtu: „Radimo na digitalnom rješenju koje će omogućiti naplatu usluge putem pametnog telefona”."
+            }
+          ],
+          "payment": "Pokretanje i praćenje punjenja preko aplikacije EVC Charge (ecoportal.me, 03.04.2026).",
+          "notes": "Zvanični zastupnik Schneider Electric i Kempower u Crnoj Gori."
+        },
+        {
+          "name": "Orion eMobility (Orion telekom Crna Gora)",
+          "operator": "Orion telekom (crnogorska stranica oriontelekom.me)",
+          "app": "Orion eMobility",
+          "website": "https://oriontelekom.me/emobility/",
+          "size": "Stranica navodi „Infrastruktura od 300 EV punjačnih mjesta u zemlji” i „Više od 1.000 EV punjača širom Srbije i regiona” (©2025) – nije jasno da li se broj 300 odnosi na Crnu Goru (RTCG 22.07.2026 navodi manje od 200 javnih punjača u Crnoj Gori).",
+          "prices": [
+            {
+              "what": "AC/DC",
+              "price": "cenovnik nije javno objavljen",
+              "vat": "—",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://oriontelekom.me/emobility/",
+              "confidence": "visoka"
+            }
+          ],
+          "payment": "„Možete aktivirati EV punjač pomoću Orion eMobility aplikacije ili RFID kartice”; kartice: MasterCard, Visa, DinaCard, American Express, Diners.",
+          "notes": "Konkretne crnogorske lokacije nisu navedene na stranici."
+        }
+      ],
+      "price_overview": [
+        {
+          "what": "DC javni punjači (opšti raspon)",
+          "price": "0,30–0,70 €/kWh",
+          "vat": "nije navedeno",
+          "date": "19.11.2025; provereno 22.09.2026",
+          "url": "https://www.goldmelectric.me/novosti/kako-puniti-elektricno-vozilo-crna-gora",
+          "confidence": "niska",
+          "note": "Procena prodavca vozila (Gold-m), ne cenovnik operatera."
+        }
+      ],
+      "serbian_apps": {
+        "chargego": "Crna Gora nije posebno navedena. Charge&GO ne navodi spisak zemalja. Stranica aplikacije: „Zahvaljujući integraciji sa najvećom e-roaming platformom, putem Charge&GO aplikacije dostupno je preko 400.000 punjača širom Evrope” (https://chargego.rs/chg-aplikacija/); FAQ: „Da biste bili u mogućnosti da pristupite punjačima u roaming mreži potrebno je da nas obavestite o tome putem imejla podrska@chargego.rs kako bismo vam omogućili tu opciju” (https://chargego.rs/podrska-cesta-pitanja/); Google Play (ažurirano 28.08.2026): „users can charge their vehicle throughout Europe through our roaming partners” (https://play.google.com/store/apps/details?id=com.charge_and_go_mobile). Na mapi client.chargego.rs nude se samo operatori „Charge&GO RS” i „CHARGE&GO MK” (https://client.chargego.rs/map). Da su crnogorski punjači dostupni u Charge&GO aplikaciji – nije potvrđeno.",
+        "orion": "DA – Crna Gora je izričito navedena. Opis aplikacije Orion eMobility (Google Play, ažurirano 03.09.2026; App Store v3.242.1): „more than 240,000 own and partner charging stations in as many as 30 EU countries, including Serbia, Montenegro, Bosnia & Herzegovina, Croatia, Slovenia, Macedonia, Albania” (https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app; https://apps.apple.com/rs/app/orion-emobility/id1615624626). Postoji i stranica Orion telekom Crna Gora: „U Srbiji, Sloveniji, kao i svim zemljama Evropske unije, Crnoj Gori, Bosni i Hercegovini, Hrvatskoj, Albaniji i mnogim drugim zemljama” (https://oriontelekom.me/emobility/)."
+      },
+      "roaming_apps": "Nije pronađen izvor koji potvrđuje da Electroverse, Shell Recharge, Plugsurfing, Chargemap Pass ili EnBW rade na crnogorskim punjačima. Electromaps navodi 38 stanica u Crnoj Gori (mapa, ne naplata; https://www.electromaps.com/en/charging-stations/montenegro).",
+      "free": [
+        {
+          "what": "Bar – solarna punionica na parkingu ispred ulaza u marinu (Komunalno preduzeće Bar + Beam Europe, EV ARC; 2 parking mesta, 4 vozila istovremeno)",
+          "quote": "„Vlasnici električnih vozila mogu od danas u Baru besplatno da napajanju automobile”",
+          "date": "19.05.2026; provereno 22.09.2026",
+          "url": "https://www.sjevercg.me/u-baru-pustena-u-funkciju-solarna-stanica-besplatno-napajanje-elektricnih-automobila/",
+          "confidence": "srednja",
+          "note": "Snaga nije navedena; rok besplatnog punjenja nije naveden."
+        }
+      ],
+      "corridors": [
+        {
+          "route": "Beograd – Zlatibor – Bijelo Polje – Podgorica (– Budva)",
+          "facts": "Crnogorski deo: Jugopetrol DC 50 kW postavljen u Bijelom Polju i na tri lokacije u Podgorici (investitor.me, 11.12.2024). Autoput Princeza Ksenija: Pelev Brijeg 4 × 50 kW (izgrađeno), Gornje Mrke 4 × 60 kW (u instalaciji) (Portal Analitika 14.06.2026, prema nacrtu Nacionalnog okvira; RTCG 22.07.2026 potvrđuje 4 brza punjača na Pelevom Brijegu). Prodavac Gold-m u vodiču navodi punjače i u Kolašinu, Mojkovcu, Žabljaku i „Smokovac (DC)” bez snage (niska pouzdanost). U Crnoj Gori nema punjača iznad 150 kW i nijedna lokacija ne ispunjava AFIR zahtev (Portal Analitika 14.06.2026).",
+          "url": "https://investitor.me/2024/12/11/posvecenost-energetskoj-odrzivosti-jugopetrol-postavlja-sedam-novih-punjaca-za-elektricna-vozila-sirom-crne-gore/ ; https://www.portalanalitika.me/clanak/crna-gora-bez-ultrabrzih-punjaca-za-elektricna-vozila-potrebno-najmanje-14-novih-lokacija ; https://rtcg.me/vijesti/ekologija/866615/manje-od-200-javnih-punjaca-za-elektricna-vozila-ne-postoji-mapa-za-turiste.html ; https://www.goldmelectric.me/novosti/kako-puniti-elektricno-vozilo-crna-gora"
+        },
+        {
+          "route": "Beograd – Višegrad – Foča (BiH) – Plužine/Nikšić – Podgorica",
+          "facts": "Nije pronađen izvor sa imenovanim brzim (DC) punjačem na delu kroz Republiku Srpsku (Višegrad–Foča) niti na delu Plužine–Nikšić.",
+          "url": "—"
+        },
+        {
+          "route": "Podgorica – Budva / primorje",
+          "facts": "Jugopetrol DC 50 kW u Tivtu (investitor.me, 11.12.2024); EVC Montenegro do 100 kW u Kotoru, parking Žičare Kotor–Lovćen (ecoportal.me, 03.04.2026); besplatna solarna punionica u Baru (sjevercg.me, 19.05.2026). Herceg Novi (Jugopetrol) bio je u planu (11.12.2024).",
+          "url": "https://investitor.me/2024/12/11/posvecenost-energetskoj-odrzivosti-jugopetrol-postavlja-sedam-novih-punjaca-za-elektricna-vozila-sirom-crne-gore/ ; https://www.ecoportal.me/kotor-dobio-pametnu-ev-punionicu-sa-solarnim-panelima-i-baterijskim-skladistenjem/ ; https://www.sjevercg.me/u-baru-pustena-u-funkciju-solarna-stanica-besplatno-napajanje-elektricnih-automobila/"
+        }
+      ],
+      "practical": [
+        {
+          "note": "Mreža je retka i uglavnom spora: „nešto manje od 200 javno dostupnih, uglavnom takozvanih sporih punjača”; zvanična mapa za turiste ne postoji (RTCG pokrenuo interaktivnu mapu 24.08.2026).",
+          "url": "https://rtcg.me/vijesti/ekologija/866615/manje-od-200-javnih-punjaca-za-elektricna-vozila-ne-postoji-mapa-za-turiste.html ; https://rtcg.me/vijesti/servisne-informacije/865048/mapa-punjaca-za-elektricna-vozila-u-crnoj-gori.html",
+          "date": "22.07.2026 / 24.08.2026",
+          "confidence": "srednja"
+        },
+        {
+          "note": "Nacrt nacionalnog okvira: „94 javno dostupna mjesta za punjenje” ukupne snage 2.235 kW; „ultrabrzih punjača snage veće od 150 kW nema”; na 797 km TEN-T mreže nijedna lokacija ne ispunjava AFIR; potrebno najmanje 14 lokacija.",
+          "url": "https://www.portalanalitika.me/clanak/crna-gora-bez-ultrabrzih-punjaca-za-elektricna-vozila-potrebno-najmanje-14-novih-lokacija",
+          "date": "14.06.2026",
+          "confidence": "srednja"
+        },
+        {
+          "note": "Tesla Supercharger: na tesla.com listi za Crnu Goru nema lokacija (najbliže u Srbiji: Beograd, Aleksinac).",
+          "url": "https://www.tesla.com/findus/list/superchargers/Montenegro",
+          "date": "bez datuma na stranici; provereno 22.09.2026",
+          "confidence": "visoka"
+        }
+      ],
+      "ev_stats": "Oko 950 vozila na električni pogon registrovano („Prema podacima iz prošle godine”) i oko 5.800 hibrida (RTCG, 22.07.2026, https://rtcg.me/vijesti/ekologija/866615/manje-od-200-javnih-punjaca-za-elektricna-vozila-ne-postoji-mapa-za-turiste.html). U 2025: 129 BEV od 7.285 novih putničkih automobila, udeo 1,8% – 36. mesto od 38 evropskih zemalja (Eurostat, preneo pvinformer.me 18.08.2026, https://www.pvinformer.me/crna-gora-pri-evropskom-dnu-elektricni-automobili-cinili-tek-18-novih-registracija/). Cilj ministarstva: „najmanje 35.000 električnih putničkih vozila” do 2030 (RTCG 22.07.2026).",
+      "subsidies": "Eko-fond, poziv 2025 (bankar.me, 20.05.2025, https://bankar.me/eko-fond-raspisao-oglas-za-subvencije-za-elektricna-vozila/): budžet 150.000 €; BEV 7.200 € (vozilo do 35.000 €), 6.500 € (35–45 hilj. €), 4.500 € (45–65 hilj. €); građanin najviše 1 vozilo; hibridi isključeni. Eko-fond je opštinama dao 150.000 € za javne punjače, iskoristili samo Bar (13.000 €) i Cetinje (12.000 €) (RTCG 22.07.2026). Poziv za građane za 2026. nije pronađen."
+    },
+    {
+      "code": "BA",
+      "name_sr": "Bosna i Hercegovina (Federacija BiH i Republika Srpska)",
+      "currency": "BAM (KM)",
+      "networks": [
+        {
+          "name": "Elektroprivreda BiH – punionice (EPBiH Charge)",
+          "operator": "JP Elektroprivreda BiH d.d. Sarajevo",
+          "app": "EPBiH Charge (Play Store/App Store) + web https://charge.epbih.ba",
+          "website": "https://www.epbih.ba/stranica/elektromobilnost",
+          "size": "Na stranici navedeno 17 AC lokacija (Sarajevo ×2, Bihać, Goražde, Mostar, Travnik ×2, Tuzla ×2, Zenica, Jablanica, Kakanj, Konjic, Ključ, Cazin, Visoko, Srebrenik – „trenutno van funkcije”) i 1 DC: „Autocesta A1, Odmorište Lepenica, smjer od Mostara prema Sarajevu” (provereno 22.09.2026).",
+          "prices": [
+            {
+              "what": "AC i DC",
+              "price": "cenovnik nije javno objavljen",
+              "vat": "—",
+              "date": "13.04.2026 (najava); provereno 22.09.2026",
+              "url": "https://tuzlainfo.ba/index.php/bosna-i-hercegovina/item/299692-epbih-uvodi-novu-aplikaciju-i-naplatu-punjenja-elektricnih-automobila/",
+              "confidence": "srednja",
+              "note": "EPBiH: „Naplata će se vršiti u skladu sa važećim Cjenovnikom koji će biti objavljen na stranici https://mojaenergija.epbih.ba/elektromobilnost/” – na toj stranici cena nema (provereno 22.09.2026)."
+            }
+          ],
+          "payment": "„Mobilna aplikacija i web platforma omogućavaju korisnicima plaćanje usluge punjenja putem platnih kartica, uz obaveznu rezervaciju iznosa prije početka punjenja”; „Ranije dodijeljene RFID kartice više nisu u funkciji”; RFID samo za poslovne korisnike (tuzlainfo.ba 13.04.2026; epbih.ba).",
+          "notes": "Sistem je u testnom radu pre „zvanične komercijalizacije usluge”; da li je punjenje u testnom periodu besplatno – nije navedeno. Podrška: punionice@epbih.ba."
+        },
+        {
+          "name": "e-GO Charger",
+          "operator": "„e-GO” d.o.o. Sarajevo",
+          "app": "e-GO Charger (Android/iOS)",
+          "website": "https://e-go.ba/en/e-go-charger/",
+          "size": "Na stranici: 11 punjača 22 kW, 3 × 50 kW i 1 × 150 kW (lokacije uključuju Aerodrom Sarajevo, Aria Mall, Čengić Vilu, Megamix, Konjic). FERK evidencija: „e-GO” d.o.o. – 20 stanica (upis 02.04.2024). Mostar: novi DC 50 kW na Energopetrolu, Bišće Polje (klix.ba 01.05.2025).",
+          "prices": [
+            {
+              "what": "AC 22 kW / DC 50–150 kW",
+              "price": "cenovnik nije javno objavljen",
+              "vat": "—",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://e-go.ba/en/e-go-charger/",
+              "confidence": "visoka",
+              "note": "klix.ba (01.05.2025) navodi da je cenovnik vidljiv samo na fotografiji uz članak."
+            }
+          ],
+          "payment": "Aplikacija: registracija, pa „Find, book and recharge”; opis na Google Play: „pay the fee for charging using one of your favorite payment cards” (ažurirano 03.09.2026).",
+          "notes": "Opis aplikacije e-GO Charger na Google Play identičan je opisu Orion eMobility („more than 240,000 own and partner charging stations in as many as 30 EU countries”, sa listom BiH, HR, SI, RS, ME, MK, AL)."
+        },
+        {
+          "name": "MOON DC 150 kW – Porsche Inter Auto BH (Blažuj, Sarajevo)",
+          "operator": "Porsche Inter Auto BH d.o.o.",
+          "app": "nije navedena",
+          "website": "https://www.porschesarajevo.ba/",
+          "size": "1 stanica u FERK evidenciji (upis 16.02.2024); DC 150 kW, Mali Kiseljak 6A, Blažuj.",
+          "prices": [
+            {
+              "what": "DC 150 kW",
+              "price": "0,80 KM/kWh",
+              "vat": "sa PDV-om („0,80KM sa PDV-om po utrošenom kWh”)",
+              "date": "23.08.2024; provereno 22.09.2026",
+              "url": "https://www.porschesarajevo.ba/novosti/obavijest-korisnicima-moon-dc-150kw-punjaca",
+              "confidence": "visoka",
+              "note": "Radno vreme punjača: ponedeljak–petak 08:00–18:00. Cena iz 2024 – moguće da je promenjena."
+            }
+          ],
+          "payment": "Nije navedeno u obaveštenju.",
+          "notes": "Punjač na adresi Bulevar Meše Selimovića 16 nije dostupan za punjenje (isto obaveštenje)."
+        },
+        {
+          "name": "UNIS Charge – Mostar (iza zgrade Gradske uprave)",
+          "operator": "UNIS Charge",
+          "app": "nije navedena",
+          "website": "—",
+          "size": "2 × 22 kW (bljesak.info, 30.03.2024).",
+          "prices": [
+            {
+              "what": "AC 22 kW",
+              "price": "0,15 KM/kWh",
+              "vat": "nije navedeno",
+              "date": "30.03.2024; provereno 22.09.2026",
+              "url": "https://bljesak.info/auto-moto/flash/punionica-elektricnih-vozila-u-mostaru-koliko-se-puni-i-koliko-se-stedi/450273",
+              "confidence": "srednja",
+              "note": "Samo medijski podatak iz 2024."
+            }
+          ],
+          "payment": "Nije navedeno.",
+          "notes": ""
+        },
+        {
+          "name": "Elektroprivreda HZ HB",
+          "operator": "JP Elektroprivreda HZ HB d.d. Mostar",
+          "app": "nije pronađena",
+          "website": "https://ephzhb.ba/",
+          "size": "Na sajtu ephzhb.ba nema podataka o punionicama (provereno 22.09.2026); automobili.ba (03.04.2026) je navodi kao jednog od operatera koji razvijaju mrežu.",
+          "prices": [
+            {
+              "what": "—",
+              "price": "cenovnik nije javno objavljen",
+              "vat": "—",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://ephzhb.ba/en/",
+              "confidence": "visoka"
+            }
+          ],
+          "payment": "Nije pronađeno.",
+          "notes": ""
+        },
+        {
+          "name": "Republika Srpska – javni operateri",
+          "operator": "nije pronađen mrežni operater (ERS, telekom, naftne kompanije)",
+          "app": "—",
+          "website": "—",
+          "size": "Nije pronađen izvor o mreži. Primer: u Bijeljini su punjači firme „EP mobile” uklonjeni posle probnog perioda, planirani novi brži (donacija MKF „Partner”) (desavanjaubijeljini.com, 08.04.2024).",
+          "prices": [
+            {
+              "what": "—",
+              "price": "cenovnik nije javno objavljen",
+              "vat": "—",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://desavanjaubijeljini.com/vijest.php?id=54699&title=bijeljina-punjai-za-elektrina-vozila-skinuti-zbog-isteka-probnog-perioda--u-planu-postavka-novih-brih-punjaa",
+              "confidence": "niska"
+            }
+          ],
+          "payment": "—",
+          "notes": "Orion eMobility navodi BiH u opisu aplikacije, ali konkretne lokacije u RS nisu navedene."
+        }
+      ],
+      "price_overview": [
+        {
+          "what": "AC do 22 kW (opšti raspon u BiH)",
+          "price": "0,00–0,50 KM/kWh",
+          "vat": "nije navedeno",
+          "date": "03.04.2026; provereno 22.09.2026",
+          "url": "https://www.automobili.ba/mreza-stanica-za-punjenje-elektricnih-automobila-u-bih/",
+          "confidence": "srednja",
+          "note": "„mnogi punjači u BiH su još u promotivnoj fazi” – dakle besplatni; bez spiska lokacija."
+        },
+        {
+          "what": "DC 50 kW+ (opšti raspon u BiH)",
+          "price": "0,50–0,90 KM/kWh",
+          "vat": "nije navedeno",
+          "date": "03.04.2026; provereno 22.09.2026",
+          "url": "https://www.automobili.ba/mreza-stanica-za-punjenje-elektricnih-automobila-u-bih/",
+          "confidence": "srednja"
+        }
+      ],
+      "serbian_apps": {
+        "chargego": "BiH nije posebno navedena. Charge&GO ne navodi spisak zemalja. Stranica aplikacije: „Zahvaljujući integraciji sa najvećom e-roaming platformom, putem Charge&GO aplikacije dostupno je preko 400.000 punjača širom Evrope” (https://chargego.rs/chg-aplikacija/); FAQ: „Da biste bili u mogućnosti da pristupite punjačima u roaming mreži potrebno je da nas obavestite o tome putem imejla podrska@chargego.rs kako bismo vam omogućili tu opciju” (https://chargego.rs/podrska-cesta-pitanja/); Google Play (ažurirano 28.08.2026): „users can charge their vehicle throughout Europe through our roaming partners” (https://play.google.com/store/apps/details?id=com.charge_and_go_mobile). Na mapi client.chargego.rs nude se samo operatori „Charge&GO RS” i „CHARGE&GO MK” (https://client.chargego.rs/map). Da su punjači u BiH (EPBiH, e-GO, RS) dostupni u Charge&GO aplikaciji – nije potvrđeno.",
+        "orion": "DA – Bosna i Hercegovina je izričito navedena. Opis aplikacije Orion eMobility (Google Play, ažurirano 03.09.2026; App Store v3.242.1): „more than 240,000 own and partner charging stations in as many as 30 EU countries, including Serbia, Montenegro, Bosnia & Herzegovina, Croatia, Slovenia, Macedonia, Albania” (https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app; https://apps.apple.com/rs/app/orion-emobility/id1615624626). Aplikacija e-GO Charger (Sarajevo) ima identičan opis."
+      },
+      "roaming_apps": "Nije pronađen izvor koji potvrđuje Electroverse, Shell Recharge, Plugsurfing, Chargemap Pass ili EnBW na punjačima u BiH. automobili.ba (03.04.2026) preporučuje PlugShare i ChargePoint (informativne mape) i lokalne aplikacije.",
+      "free": [
+        {
+          "what": "Aerodrom Sarajevo – punjač 22 kW (2 vozila) na parkingu ispred terminala",
+          "quote": "„Ova usluga se za korisnike parkinga neće dodatno naplaćivati”",
+          "date": "bez datuma na stranici; provereno 22.09.2026",
+          "url": "https://sarajevo-airport.ba/Page/Punjenje",
+          "confidence": "visoka",
+          "note": "Besplatno je samo punjenje – parking se plaća."
+        },
+        {
+          "what": "Opšta tvrdnja: deo punjača u BiH u promotivnoj fazi (besplatno)",
+          "quote": "„mnogi punjači u BiH su još u promotivnoj fazi, što znači da je punjenje besplatno”",
+          "date": "03.04.2026; provereno 22.09.2026",
+          "url": "https://www.automobili.ba/mreza-stanica-za-punjenje-elektricnih-automobila-u-bih/",
+          "confidence": "srednja",
+          "note": "Bez imenovanih lokacija – ne može se koristiti kao spisak besplatnih punjača."
+        }
+      ],
+      "corridors": [
+        {
+          "route": "Beograd – Zvornik ili Višegrad – Sarajevo",
+          "facts": "Na delu kroz Republiku Srpsku (Zvornik–Vlasenica–Sokolac, Višegrad–Rogatica–Pale) nije pronađen imenovani brzi punjač. U Sarajevu: MOON DC 150 kW, Blažuj (radnim danima 08–18, 0,80 KM/kWh, 2024); mreža e-GO sa 1 × 150 kW i 3 × 50 kW (lokacije bez snage po lokaciji).",
+          "url": "https://www.porschesarajevo.ba/novosti/obavijest-korisnicima-moon-dc-150kw-punjaca ; https://e-go.ba/en/e-go-charger/"
+        },
+        {
+          "route": "Sarajevo – Konjic – Jablanica – Mostar (A1 / M17)",
+          "facts": "EPBiH DC na odmorištu Lepenica na A1 („smjer od Mostara prema Sarajevu”); EPBiH AC u Konjicu, Jablanici i Mostaru; e-GO u Konjicu; Mostar: e-GO DC 50 kW na Energopetrolu u Bišće Polju na izlazu iz grada, 24/7, preko aplikacije e-GO Charger (klix.ba 01.05.2025). Vozač je za N1 (03.08.2025) prijavio da je punjač na Lepenici bio u kvaru (pojedinačan slučaj).",
+          "url": "https://www.epbih.ba/stranica/elektromobilnost ; https://www.klix.ba/auto/elektricni/mostar-dobio-brzi-punjac-za-elektricna-vozila/250501075 ; https://n1info.ba/vijesti/rast-broja-elektricnih-vozila-u-bih-koce-zastarjela-infrastruktura-i-manjak-punionica/"
+        },
+        {
+          "route": "Mostar – Neum / Makarska",
+          "facts": "U BiH do granice i u Neumu nije pronađen imenovani brzi punjač. U Hrvatskoj, u Vrgorcu (Zagrebačka 31): Tesla Supercharger – 6 punjača do 125 kW, otvoren i za druga vozila sa CCS, 24/7.",
+          "url": "https://www.tesla.com/findus/location/supercharger/vrgoracsupercharger"
+        }
+      ],
+      "practical": [
+        {
+          "note": "EPBiH: stare RFID kartice ne važe; plaćanje karticom preko aplikacije EPBiH Charge ili web platforme charge.epbih.ba, uz obaveznu rezervaciju iznosa na kartici pre početka punjenja.",
+          "url": "https://tuzlainfo.ba/index.php/bosna-i-hercegovina/item/299692-epbih-uvodi-novu-aplikaciju-i-naplatu-punjenja-elektricnih-automobila/",
+          "date": "13.04.2026",
+          "confidence": "srednja"
+        },
+        {
+          "note": "Cene su u KM; EPBiH cenovnik još nije objavljen (provereno 22.09.2026).",
+          "url": "https://mojaenergija.epbih.ba/elektromobilnost/",
+          "date": "bez datuma na stranici; provereno 22.09.2026",
+          "confidence": "visoka"
+        },
+        {
+          "note": "Tesla Supercharger: na tesla.com listi za BiH nema lokacija.",
+          "url": "https://www.tesla.com/findus/list/superchargers/Bosnia%20and%20Herzegovina",
+          "date": "bez datuma na stranici; provereno 22.09.2026",
+          "confidence": "visoka"
+        },
+        {
+          "note": "U cijeloj zemlji „postoji tek oko 500 punionica”, a punjači su često u kvaru, zauzeti ili zaključani (izjave vozača).",
+          "url": "https://n1info.ba/vijesti/rast-broja-elektricnih-vozila-u-bih-koce-zastarjela-infrastruktura-i-manjak-punionica/",
+          "date": "03.08.2025",
+          "confidence": "srednja"
+        }
+      ],
+      "ev_stats": "U 2025. udeo BEV u novim registracijama 0,7% (Eurostat, preneo pvinformer.me 18.08.2026, https://www.pvinformer.me/crna-gora-pri-evropskom-dnu-elektricni-automobili-cinili-tek-18-novih-registracija/). U januaru 2026. prvi put registrovano 7.095 motornih vozila, „Samo pola procenta se odnosi na potpuno električna vozila” (biznisinfo.ba 18.02.2026, https://www.biznisinfo.ba/pad-broja-registrovanih-vozila-u-bih-elektricnih-samo-05-posto/). UIO: uvezeno 240 električnih automobila u 2023. i 69 u 2022. (slobodna-bosna.ba 04.02.2024, https://www.slobodna-bosna.ba/vijest/339378/gradi_se_infrastruktura_povecan_broj_uvezenih_elektrichnih_vozila_u_bih_raste_i_broj_elektrichnih_punionica.html).",
+      "subsidies": "Federacija BiH – Fond za zaštitu okoliša FBiH, javni poziv (klix.ba 16.09.2026, https://www.klix.ba/auto/elektricni/objavljen-javni-poziv-dostupne-subvencije-za-kupovinu-elektricnih-i-hibridnih-vozila-u-federaciji-bih/260916031): do 12.000 KM za BEV i do 10.000 KM za plug-in hibrid, najviše 30% cene; poziv 500.000 KM (od ukupno 2 mil. KM); do utroška sredstava, najkasnije 31.12.2026; samo građani sa prebivalištem u FBiH, firme i obrti iz FBiH; nova vozila M1/N1 (i zenicablog.com 16.09.2026). Republika Srpska: aktuelni program nije pronađen."
+    },
+    {
+      "code": "MK",
+      "name_sr": "Severna Makedonija",
+      "currency": "MKD (denar)",
+      "networks": [
+        {
+          "name": "EVN Македонија – Електромобилност",
+          "operator": "EVN Македонија Електроснабдување ДООЕЛ Скопје",
+          "app": "nije navedena (EVN RFID kartica ili platna kartica preko QR koda)",
+          "website": "https://emobility.evn.mk/",
+          "size": "Brošura EVN (bez datuma): „над 40 станици за полнење на електрични возила во Скопје и 17 градови”. Vesti EVN: 150 kW u Ohridu (22.01.2025), DC na Makpetrolu Prilep–Bitola (07.04.2025), DC na Makpetrolu Strumica (10.11.2025), 150 kW na Makpetrolu Bitola (03.02.2026), AC u Gevgelija Mall (01.04.2026), dva DC od 180 kW – Kisela Voda i Kičevo (18.06.2026), AC u Strumici i Probištipu (12.08.2026).",
+          "prices": [
+            {
+              "what": "AC – sa EVN karticom",
+              "price": "25 MKD/kWh",
+              "vat": "PDV uključen („Сите наведени цени се со вклучен ДДВ.”)",
+              "date": "29.07.2026; provereno 22.09.2026",
+              "url": "https://elektricniavtomobili.mk/%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%be%d0%bc%d0%be%d0%b1%d0%b8%d0%bb%d0%bd%d0%be%d1%81%d1%82-%d0%bd%d0%b0-%d0%b5%d0%b2%d0%bd-%d0%bc%d0%b0%d0%ba%d0%b5%d0%b4%d0%be%d0%bd%d0%b8%d1%98%d0%b0-%d1%81e/",
+              "confidence": "srednja",
+              "note": "Medijski izvor (elektricniavtomobili.mk); na stranici Tarifi EVN cene energije nisu u tekstu."
+            },
+            {
+              "what": "DC – sa EVN karticom",
+              "price": "28 MKD/kWh",
+              "vat": "PDV uključen",
+              "date": "29.07.2026; provereno 22.09.2026",
+              "url": "https://elektricniavtomobili.mk/%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%be%d0%bc%d0%be%d0%b1%d0%b8%d0%bb%d0%bd%d0%be%d1%81%d1%82-%d0%bd%d0%b0-%d0%b5%d0%b2%d0%bd-%d0%bc%d0%b0%d0%ba%d0%b5%d0%b4%d0%be%d0%bd%d0%b8%d1%98%d0%b0-%d1%81e/",
+              "confidence": "srednja"
+            },
+            {
+              "what": "AC – platnom karticom (QR)",
+              "price": "30 MKD/kWh",
+              "vat": "PDV uključen",
+              "date": "29.07.2026; provereno 22.09.2026",
+              "url": "https://elektricniavtomobili.mk/%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%be%d0%bc%d0%be%d0%b1%d0%b8%d0%bb%d0%bd%d0%be%d1%81%d1%82-%d0%bd%d0%b0-%d0%b5%d0%b2%d0%bd-%d0%bc%d0%b0%d0%ba%d0%b5%d0%b4%d0%be%d0%bd%d0%b8%d1%98%d0%b0-%d1%81e/",
+              "confidence": "srednja"
+            },
+            {
+              "what": "DC – platnom karticom (QR)",
+              "price": "40 MKD/kWh",
+              "vat": "PDV uključen",
+              "date": "29.07.2026; provereno 22.09.2026",
+              "url": "https://elektricniavtomobili.mk/%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%be%d0%bc%d0%be%d0%b1%d0%b8%d0%bb%d0%bd%d0%be%d1%81%d1%82-%d0%bd%d0%b0-%d0%b5%d0%b2%d0%bd-%d0%bc%d0%b0%d0%ba%d0%b5%d0%b4%d0%be%d0%bd%d0%b8%d1%98%d0%b0-%d1%81e/",
+              "confidence": "srednja"
+            },
+            {
+              "what": "Naknada za zauzeće – AC",
+              "price": "0,83 MKD/min od 241. minuta",
+              "vat": "nije navedeno",
+              "date": "nova DC tarifa od 01.05.2025; provereno 22.09.2026",
+              "url": "https://emobility.evn.mk/Tariffs.aspx",
+              "confidence": "visoka"
+            },
+            {
+              "what": "Naknada za zauzeće – DC",
+              "price": "1,7 MKD/min od 61. minuta",
+              "vat": "nije navedeno",
+              "date": "nova DC tarifa od 01.05.2025; provereno 22.09.2026",
+              "url": "https://emobility.evn.mk/Tariffs.aspx",
+              "confidence": "visoka"
+            }
+          ],
+          "payment": "Strani vozač: „Скенирајте го QR кодот означен на приклучокот” i plati platnom karticom (EVN uputstvo). EVN kartica je samo za „резидент на Република Македонија со постојана адреса”.",
+          "notes": "Brzi DC punjači (elektricniavtomobili.mk 29.07.2026): „на Меѓународниот Аеродром во Скопје, на Макпетрол Визбегово, на Макпетрол на влезот во Куманово, во Охрид на Кеј спроти хотел Гарден, на Макпетрол на магистралниот пат Прилеп – Битола итн.”"
+        },
+        {
+          "name": "Makpetrol – polnači za električni vozila",
+          "operator": "Makpetrol AD Skopje (u saradnji sa EVN Makedonija)",
+          "app": "nije navedena",
+          "website": "https://www.makpetrol.com.mk/en/chargers-for-electric-vehicles/",
+          "size": "5 stanica na stranici (izmenjeno 22.08.2025): 163 Bucila – 2 × CCS 150 kW; 008 Vizbegovo – 2 × CCS 150 kW; 013 Kumanovo – 2 × CCS 150 kW; 046 Gevgelija – CCS, CHAdeMO, Type 2, 150 kW; 164 Negotino – 2 × CCS 120 kW. Kasnije EVN vesti: Makpetrol Strumica, Prilep–Bitola, Bitola 150 kW.",
+          "prices": [
+            {
+              "what": "DC 120–150 kW",
+              "price": "cenovnik nije javno objavljen",
+              "vat": "—",
+              "date": "stranica izmenjena 22.08.2025; provereno 22.09.2026",
+              "url": "https://www.makpetrol.com.mk/en/chargers-for-electric-vehicles/",
+              "confidence": "visoka",
+              "note": "Stranica kaže da su punjači postavljeni u saradnji sa EVN, ali ne navodi koja tarifa važi."
+            }
+          ],
+          "payment": "„via RFID card / credit card payment”.",
+          "notes": ""
+        },
+        {
+          "name": "Charge&GO MK",
+          "operator": "Чарџ&ГО ДООЕЛ Скопје (Даме Груев 18/2-1, Скопје; +389-23-111-199; poddrska@chargego.mk)",
+          "app": "Charge&GO",
+          "website": "https://chargego.rs/mk/pocetnata/",
+          "size": "Broj punjača u Makedoniji nije posebno naveden (brojači na MK stranici – 79 punjača / 68 lokacija / 135 konektora – isti su kao na srpskoj stranici).",
+          "prices": [
+            {
+              "what": "—",
+              "price": "cenovnik nije javno objavljen",
+              "vat": "—",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://chargego.rs/mk/pocetnata/",
+              "confidence": "visoka"
+            }
+          ],
+          "payment": "Na mapi client.chargego.rs bira se operator „CHARGE&GO MK” (poseban od „Charge&GO RS”).",
+          "notes": "Domen chargego.mk preusmerava na chargego.rs."
+        },
+        {
+          "name": "Lawesgo",
+          "operator": "nepoznato",
+          "app": "—",
+          "website": "https://lawesgo.mk/",
+          "size": "nije dostupno (sajt se nije učitao)",
+          "prices": [
+            {
+              "what": "—",
+              "price": "nije dostupno",
+              "vat": "—",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://lawesgo.mk/",
+              "confidence": "niska"
+            }
+          ],
+          "payment": "—",
+          "notes": "U pretrazi naslov: „Lawesgo | Електрични полначи и картички”."
+        }
+      ],
+      "price_overview": [],
+      "serbian_apps": {
+        "chargego": "DELIMIČNO – Charge&GO ima makedonsku firmu (Чарџ&ГО ДООЕЛ Скопје) i poseban operatorski nalog „CHARGE&GO MK” na mapi (https://client.chargego.rs/map; https://chargego.rs/mk/pocetnata/). Da li srpski Charge&GO nalog puni na makedonskim punjačima – nije navedeno. Charge&GO ne navodi spisak zemalja. Stranica aplikacije: „Zahvaljujući integraciji sa najvećom e-roaming platformom, putem Charge&GO aplikacije dostupno je preko 400.000 punjača širom Evrope” (https://chargego.rs/chg-aplikacija/); FAQ: „Da biste bili u mogućnosti da pristupite punjačima u roaming mreži potrebno je da nas obavestite o tome putem imejla podrska@chargego.rs kako bismo vam omogućili tu opciju” (https://chargego.rs/podrska-cesta-pitanja/); Google Play (ažurirano 28.08.2026): „users can charge their vehicle throughout Europe through our roaming partners” (https://play.google.com/store/apps/details?id=com.charge_and_go_mobile). Na mapi client.chargego.rs nude se samo operatori „Charge&GO RS” i „CHARGE&GO MK” (https://client.chargego.rs/map).",
+        "orion": "DA – „Macedonia” je izričito navedena u opisu aplikacije. Opis aplikacije Orion eMobility (Google Play, ažurirano 03.09.2026; App Store v3.242.1): „more than 240,000 own and partner charging stations in as many as 30 EU countries, including Serbia, Montenegro, Bosnia & Herzegovina, Croatia, Slovenia, Macedonia, Albania” (https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app; https://apps.apple.com/rs/app/orion-emobility/id1615624626)."
+      },
+      "roaming_apps": "Nije pronađen izvor koji potvrđuje Electroverse, Shell Recharge, Plugsurfing, Chargemap Pass ili EnBW na punjačima EVN/Makpetrol. Za strane vozače relevantno je plaćanje platnom karticom preko QR koda (EVN) i „credit card payment” (Makpetrol).",
+      "free": [],
+      "corridors": [
+        {
+          "route": "Beograd – Preševo/Tabanovce – Kumanovo – Skopje – Veles – Negotino – Gevgelija (A1/E-75, ka Grčkoj)",
+          "facts": "Makpetrol Kumanovo 2 × CCS 150 kW (EVN: „Макпетрол на влезот во Куманово”); Makpetrol Vizbegovo (Skoplje) 2 × CCS 150 kW; EVN DC na Međunarodnom aerodromu Skoplje; EVN DC 180 kW u Kiseloj Vodi (Skoplje, 18.06.2026); Makpetrol Negotino 2 × CCS 120 kW; Makpetrol Gevgelija 150 kW (CCS, CHAdeMO, Type 2); EVN AC u Gevgelija Mall (01.04.2026).",
+          "url": "https://www.makpetrol.com.mk/en/chargers-for-electric-vehicles/ ; https://elektricniavtomobili.mk/%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%be%d0%bc%d0%be%d0%b1%d0%b8%d0%bb%d0%bd%d0%be%d1%81%d1%82-%d0%bd%d0%b0-%d0%b5%d0%b2%d0%bd-%d0%bc%d0%b0%d0%ba%d0%b5%d0%b4%d0%be%d0%bd%d0%b8%d1%98%d0%b0-%d1%81e/ ; https://emobility.evn.mk/Новости.aspx"
+        }
+      ],
+      "practical": [
+        {
+          "note": "EVN kartica (niža cena) je samo za rezidente Severne Makedonije; strani vozač plaća platnom karticom preko QR koda po višoj ceni (AC 30 / DC 40 MKD/kWh prema elektricniavtomobili.mk).",
+          "url": "https://emobility.evn.mk/Apply-for-card.aspx ; https://emobility.evn.mk/charging-stations/Charging-directions.aspx",
+          "date": "bez datuma na stranici; provereno 22.09.2026",
+          "confidence": "visoka"
+        },
+        {
+          "note": "Naknada za zauzeće mesta: AC posle 240 min, DC posle 60 min („Првите 240 односно 60 минути користење на местото за полнење не се наплаќаат”).",
+          "url": "https://emobility.evn.mk/Tariffs.aspx",
+          "date": "bez datuma na stranici; provereno 22.09.2026",
+          "confidence": "visoka"
+        },
+        {
+          "note": "Tesla Supercharger: na tesla.com listi za Severnu Makedoniju nema lokacija.",
+          "url": "https://www.tesla.com/findus/list/superchargers/North%20Macedonia",
+          "date": "bez datuma na stranici; provereno 22.09.2026",
+          "confidence": "visoka"
+        }
+      ],
+      "ev_stats": "Električnih putničkih automobila: 561 (2023, Državni zavod za statistiku), 1.507 (kraj 2024), 2.047 (kraj 2025); Skoplje 1.229; hibrida 7.400 (carclub.mk 07.07.2026, https://www.carclub.mk/2026/07/07/kolku-elektricni-vozila-ima-vo-makedonija/). Udeo BEV u voznom parku „nešto više od 0,3%” (pvinformer.me 18.08.2026).",
+      "subsidies": "Aktivan državni program nije pronađen; Bloomberg Adria (01.03.2024): „Во Македонија нема субвенции” (https://mk.bloombergadria.com/ekonomija/adria/53488/subvencii-od-5-do-10-iljadi-evra-za-elektricni-vozila-vo-makedonija-nema/news)."
+    },
+    {
+      "code": "HR",
+      "name_sr": "Hrvatska",
+      "currency": "EUR",
+      "networks": [
+        {
+          "name": "ELEN (HEP)",
+          "operator": "HEP d.d.",
+          "app": "ELEN",
+          "website": "https://elen.hep.hr/",
+          "size": "Broj punionica nije naveden na sajtu.",
+          "prices": [
+            {
+              "what": "AC do 22,1 kW – van autoputa",
+              "price": "0,35 €/kWh",
+              "vat": "PDV uključen",
+              "date": "cjenik na snazi od 01.04.2025; provereno 22.09.2026",
+              "url": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+              "confidence": "visoka",
+              "note": "Besplatno zauzeće 180 min, zatim 0,06 €/min."
+            },
+            {
+              "what": "22,2–50 kW – van autoputa",
+              "price": "0,45 €/kWh",
+              "vat": "PDV uključen",
+              "date": "od 01.04.2025; provereno 22.09.2026",
+              "url": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+              "confidence": "visoka",
+              "note": "Besplatno 60 min, zatim 0,06 €/min."
+            },
+            {
+              "what": "AC do 22,1 kW – autoput",
+              "price": "0,42 €/kWh",
+              "vat": "PDV uključen",
+              "date": "od 01.04.2025; provereno 22.09.2026",
+              "url": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+              "confidence": "visoka",
+              "note": "Besplatno 180 min, zatim 0,14 €/min."
+            },
+            {
+              "what": "22,2–50 kW – autoput",
+              "price": "0,57 €/kWh",
+              "vat": "PDV uključen",
+              "date": "od 01.04.2025; provereno 22.09.2026",
+              "url": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+              "confidence": "visoka",
+              "note": "Besplatno 60 min, zatim 0,14 €/min."
+            },
+            {
+              "what": "DC iznad 50 kW – autoput",
+              "price": "0,78 €/kWh",
+              "vat": "PDV uključen",
+              "date": "od 01.04.2025; provereno 22.09.2026",
+              "url": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+              "confidence": "visoka",
+              "note": "Besplatno 45 min, zatim 0,14 €/min."
+            }
+          ],
+          "payment": "Samo preko aplikacije ELEN (skeniranje QR koda ili izbor na mapi), registracija obavezna; predautorizacija na kartici 53,09 € (DC) / 33,18 € (AC), razlika se poništava posle obračuna. „U tijeku je proširenje usluge roaminga na sve ELEN punionice.”",
+          "notes": ""
+        },
+        {
+          "name": "Petrol – OneCharge",
+          "operator": "Petrol d.o.o. (Hrvatska)",
+          "app": "OneCharge",
+          "website": "https://www.petrol.hr/mobilnost/onecharge",
+          "size": "„u regiji imamo već više od 500 punionica” (broj za Hrvatsku nije naveden).",
+          "prices": [
+            {
+              "what": "AC do 22 kW",
+              "price": "0,37 €/kWh registrovani / 0,41 €/kWh ad hoc",
+              "vat": "PDV uključen",
+              "date": "važi od 01.11.2025; provereno 22.09.2026",
+              "url": "https://www.petrol.hr/mobilnost/privatni-korisnici/javne-elektricne-punionice/cjenik-punjenja",
+              "confidence": "visoka",
+              "note": "Blokada 0,04 €/min posle 180 min (07–20 h)."
+            },
+            {
+              "what": "DC 22–50 kW",
+              "price": "0,47 €/kWh registrovani / 0,51 €/kWh ad hoc",
+              "vat": "PDV uključen",
+              "date": "od 01.11.2025; provereno 22.09.2026",
+              "url": "https://www.petrol.hr/mobilnost/privatni-korisnici/javne-elektricne-punionice/cjenik-punjenja",
+              "confidence": "visoka",
+              "note": "Blokada 0,08 €/min posle 60 min."
+            },
+            {
+              "what": "DC iznad 50 kW",
+              "price": "0,66 €/kWh registrovani / 0,73 €/kWh ad hoc",
+              "vat": "PDV uključen",
+              "date": "od 01.11.2025; provereno 22.09.2026",
+              "url": "https://www.petrol.hr/mobilnost/privatni-korisnici/javne-elektricne-punionice/cjenik-punjenja",
+              "confidence": "visoka",
+              "note": "Blokada 0,15 €/min posle 40 min."
+            }
+          ],
+          "payment": "„Povremeni korisnici … mogu puniti … čak i bez registracije”; web aplikacija: Visa, Mastercard, Diners; mobilna aplikacija: Petrol Club, Mastercard, Diners, Visa.",
+          "notes": ""
+        },
+        {
+          "name": "IONITY",
+          "operator": "IONITY GmbH",
+          "app": "IONITY",
+          "website": "https://www.ionity.eu/hr",
+          "size": "Mreža: 821 lokacija u 24 zemlje (broj u Hrvatskoj nije naveden).",
+          "prices": [
+            {
+              "what": "HPC do 350 kW – IONITY Direct (bez registracije, QR)",
+              "price": "0,74 €/kWh",
+              "vat": "cene sa lokalnim PDV-om (napomena na stranici)",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.ionity.eu/hr",
+              "confidence": "visoka"
+            },
+            {
+              "what": "Pretplata IONITY Power 365",
+              "price": "11,99 €/mes. ili 99,99 €/god. + niža cena po kWh (na stranici očitano 0,39–0,44 €/kWh)",
+              "vat": "sa PDV-om",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.ionity.eu/hr",
+              "confidence": "srednja",
+              "note": "Cenovni modul na stranici nije jednoznačno očitan – proveriti u aplikaciji. Početna strana: „currently from 0,39 €/kWh plus 99,99 € per year”."
+            }
+          ],
+          "payment": "IONITY aplikacija ili QR kod na stanici (Direct, bez registracije).",
+          "notes": ""
+        },
+        {
+          "name": "Tesla Supercharger",
+          "operator": "Tesla",
+          "app": "Tesla",
+          "website": "https://www.tesla.com/findus/list/superchargers/Croatia",
+          "size": "17 lokacija na listi: Varaždin, Gospić, Janjče (zapad i istok, A1), Jastrebarsko, Karlovac, Otočac, Vrata Jadrana (sever i jug, Kastav), Senj, Slavonski Brod, Split (Dugopolje), Vrgorac, Zadar (2), Zagreb (istok), Rugvica.",
+          "prices": [
+            {
+              "what": "DC",
+              "price": "0,23–0,60 €/kWh (zavisno od lokacije/vremena)",
+              "vat": "nije navedeno",
+              "date": "11.05.2026; provereno 22.09.2026",
+              "url": "https://www.strujnikrug.hr/vodic-kroz-punjace-za-elektricna-vozila/",
+              "confidence": "srednja",
+              "note": "Cene nisu na javnim stranicama lokacija – samo medijski podatak (Strujni krug)."
+            }
+          ],
+          "payment": "Stranice lokacija (npr. Slavonski Brod, Vrgorac, Zadar) navode da su otvorene i za druga vozila sa CCS; način plaćanja nije naveden na stranici lokacije.",
+          "notes": "Slavonski Brod: 8 punjača do 250 kW; Rugvica (Shell): 6 do 110 kW; Vrgorac: 6 do 125 kW; Zadar: 8 do 250 kW."
+        },
+        {
+          "name": "MOL Plugee",
+          "operator": "MOL Grupa (u Hrvatskoj na Tifon stanicama – tportal.hr 13.07.2021: 13 punjača na 12 Tifon stanica)",
+          "app": "MOL Plugee",
+          "website": "https://molplugee.hr/hr",
+          "size": "Aktuelan broj nije dostupan (sajt se nije učitao).",
+          "prices": [
+            {
+              "what": "AC / DC",
+              "price": "AC 0,45–0,55 €/kWh; DC 0,66–0,76 €/kWh",
+              "vat": "nije navedeno",
+              "date": "ažurirano 05.01.2026; provereno 22.09.2026",
+              "url": "https://postanivozac.com/blog/cijene-punjenja-elektricnih-vozila",
+              "confidence": "srednja",
+              "note": "Zvanični cenovnik nije dostupan (molplugee.hr se nije učitao); podatak samo iz medija (postanivozac.com)."
+            }
+          ],
+          "payment": "Nije provereno kod operatera.",
+          "notes": ""
+        },
+        {
+          "name": "Lidl Hrvatska – e-punionice",
+          "operator": "Lidl Hrvatska (plaćanje na webu preko partnera Chargepoint Austria GmbH)",
+          "app": "Lidl Plus",
+          "website": "https://www.lidl.hr/c/e-punionice/s10038053",
+          "size": "Broj nije naveden (spisak u PDF-u); snaga od 3,7 do 50 kW zavisno od lokacije.",
+          "prices": [
+            {
+              "what": "AC",
+              "price": "0,35 €/kWh sa Lidl Plus / 0,40 €/kWh bez",
+              "vat": "nije navedeno",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.lidl.hr/c/e-punionice/s10038053",
+              "confidence": "visoka"
+            },
+            {
+              "what": "DC",
+              "price": "0,45 €/kWh sa Lidl Plus / 0,60 €/kWh bez",
+              "vat": "nije navedeno",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.lidl.hr/c/e-punionice/s10038053",
+              "confidence": "visoka"
+            }
+          ],
+          "payment": "Lidl Plus aplikacija; web plaćanje (Chargepoint Austria GmbH); RFID kartica ili aplikacija drugog pružaoca (roaming).",
+          "notes": "Punjenje nije besplatno."
+        },
+        {
+          "name": "Kaufland Hrvatska – e-punionice",
+          "operator": "Kaufland Hrvatska",
+          "app": "nije navedena",
+          "website": "https://www.kaufland.hr/usluge/e-punionice.html",
+          "size": "Broj nije naveden; Type 2, CHAdeMO i CCS; punjenje tokom radnog vremena, oko 1 sat.",
+          "prices": [
+            {
+              "what": "AC / DC",
+              "price": "AC 0,35 €/kWh; DC 0,45 €/kWh",
+              "vat": "nije navedeno",
+              "date": "ažurirano 05.01.2026; provereno 22.09.2026",
+              "url": "https://postanivozac.com/blog/cijene-punjenja-elektricnih-vozila",
+              "confidence": "srednja",
+              "note": "Na stranici Kauflanda cena nije navedena – podatak iz medija (postanivozac.com)."
+            }
+          ],
+          "payment": "Nije navedeno na stranici.",
+          "notes": ""
+        },
+        {
+          "name": "Hrvatski Telekom – eSpot",
+          "operator": "Hrvatski Telekom d.d.",
+          "app": "e-Spots (prema Strujnom krugu)",
+          "website": "—",
+          "size": "nije dostupno (sajt HT preusmerava na prijavu)",
+          "prices": [
+            {
+              "what": "AC",
+              "price": "0,21–0,45 €/kWh (zavisno od lokacije)",
+              "vat": "nije navedeno",
+              "date": "11.05.2026; provereno 22.09.2026",
+              "url": "https://www.strujnikrug.hr/vodic-kroz-punjace-za-elektricna-vozila/",
+              "confidence": "srednja",
+              "note": "Samo medijski podatak."
+            }
+          ],
+          "payment": "Nije provereno.",
+          "notes": ""
+        }
+      ],
+      "price_overview": [
+        {
+          "what": "Qelo (mediji)",
+          "price": "AC 0,28–0,33 €/kWh; DC 0,40–0,47 €/kWh",
+          "vat": "nije navedeno",
+          "date": "ažurirano 05.01.2026; provereno 22.09.2026",
+          "url": "https://postanivozac.com/blog/cijene-punjenja-elektricnih-vozila",
+          "confidence": "srednja"
+        },
+        {
+          "what": "Opšti raspon (mediji)",
+          "price": "AC od oko 0,22 €/kWh; DC do 0,85 €/kWh",
+          "vat": "nije navedeno",
+          "date": "14.08.2026; provereno 22.09.2026",
+          "url": "https://buco.com.hr/2026/08/14/koliko-zapravo-kosta-punjenje-elektricnog-automobila-u-hrvatskoj-2026-godine/",
+          "confidence": "srednja"
+        }
+      ],
+      "serbian_apps": {
+        "chargego": "Hrvatska nije posebno navedena; Charge&GO navodi pristup evropskoj mreži preko roaming partnera (roaming se uključuje na zahtev). Charge&GO ne navodi spisak zemalja. Stranica aplikacije: „Zahvaljujući integraciji sa najvećom e-roaming platformom, putem Charge&GO aplikacije dostupno je preko 400.000 punjača širom Evrope” (https://chargego.rs/chg-aplikacija/); FAQ: „Da biste bili u mogućnosti da pristupite punjačima u roaming mreži potrebno je da nas obavestite o tome putem imejla podrska@chargego.rs kako bismo vam omogućili tu opciju” (https://chargego.rs/podrska-cesta-pitanja/); Google Play (ažurirano 28.08.2026): „users can charge their vehicle throughout Europe through our roaming partners” (https://play.google.com/store/apps/details?id=com.charge_and_go_mobile). Na mapi client.chargego.rs nude se samo operatori „Charge&GO RS” i „CHARGE&GO MK” (https://client.chargego.rs/map).",
+        "orion": "DA – Hrvatska je izričito navedena. Opis aplikacije Orion eMobility (Google Play, ažurirano 03.09.2026; App Store v3.242.1): „more than 240,000 own and partner charging stations in as many as 30 EU countries, including Serbia, Montenegro, Bosnia & Herzegovina, Croatia, Slovenia, Macedonia, Albania” (https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app; https://apps.apple.com/rs/app/orion-emobility/id1615624626)."
+      },
+      "roaming_apps": "Potvrđeno kod operatera: Lidl prihvata RFID/aplikacije drugih pružalaca usluga (roaming); ELEN proširuje roaming „na sve ELEN punionice”. Strujni krug (11.05.2026) među ključnim aplikacijama navodi Plugsurfing. Pokrivenost Electroverse, Shell Recharge, Chargemap Pass i EnBW za pojedinačne mreže nije potvrđena zvaničnim izvorom.",
+      "free": [],
+      "corridors": [
+        {
+          "route": "Beograd – Batrovci/Bajakovo – Slavonski Brod – Zagreb (A3)",
+          "facts": "Tesla Supercharger Slavonski Brod (Gospodarska 11): 8 punjača do 250 kW, otvoren i za druga vozila sa CCS, 24/7. HAC odmorišta sa oznakom punionice na A3: Spačvanska šuma (oba smera), Rastovica (smer Bregana), Sava i Dragalić (smer Lipovac), Stari Grabovac, Novoselec, Gradna (oba smera). Kod Zagreba: Tesla Rugvica (Shell, 6 do 110 kW) i Zagreb istok. ELEN na autoputu: DC iznad 50 kW 0,78 €/kWh.",
+          "url": "https://www.tesla.com/findus/location/supercharger/slavonskibrodsupercharger ; https://www.hac.hr/hr/servisne-informacije/informacije-o-odmoristima?rests=1 ; https://www.tesla.com/findus/location/supercharger/zagrebsupercharger ; https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf"
+        },
+        {
+          "route": "Zagreb – Rijeka (A6)",
+          "facts": "HAC odmorišta sa oznakom punionice: Kupjak (oba smera), Lepenica (smer Rijeka), Tuhobić (smer Bosiljevo), Cernik–Čavle (oba smera); A7 Vrata Jadrana. Tesla Vrata Jadrana sever i jug (Ćikovići, Kastav).",
+          "url": "https://www.hac.hr/hr/servisne-informacije/informacije-o-odmoristima?rests=1 ; https://www.tesla.com/findus/list/superchargers/Croatia"
+        },
+        {
+          "route": "Zagreb – Split / Makarska (A1)",
+          "facts": "HAC odmorišta sa oznakom punionice: Stupnik (smer Split), Desinec, Draganić, Vukova Gorica, Dobra, Sokolac, Janjče, Zir, Jasenice, Nadin, Prokljan, Krka, Kozjak, Mosor. Tesla: Jastrebarsko, Karlovac, Janjče (zapad/istok), Gospić, Zadar (8 do 250 kW, otvoren za CCS), Split (Dugopolje), Vrgorac (6 do 125 kW, otvoren za CCS).",
+          "url": "https://www.hac.hr/hr/servisne-informacije/informacije-o-odmoristima?rests=1 ; https://www.tesla.com/findus/list/superchargers/Croatia ; https://www.tesla.com/findus/location/supercharger/zadarcroatiasupercharger ; https://www.tesla.com/findus/location/supercharger/vrgoracsupercharger"
+        }
+      ],
+      "practical": [
+        {
+          "note": "AFIR (Uredba EU 2023/1804, čl. 5): javni punjači moraju omogućiti ad hoc plaćanje; novi punjači od 50 kW i više od 13.04.2024. moraju imati čitač platnih kartica/beskontaktno plaćanje; postojeći na TEN-T mreži do 01.01.2027; ispod 50 kW dozvoljen je npr. QR kod.",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1804",
+          "date": "Uredba od 13.09.2023",
+          "confidence": "visoka"
+        },
+        {
+          "note": "Na autoputu je ELEN skuplji nego van njega (npr. 22,2–50 kW: 0,57 prema 0,45 €/kWh), a naknada za zauzeće na autoputu je 0,14 €/min.",
+          "url": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+          "date": "od 01.04.2025",
+          "confidence": "visoka"
+        },
+        {
+          "note": "Popust na putarinu za električna vozila nije pronađen – pregled podsticaja EAFO za Hrvatsku ga ne navodi (navodi: bez trošarina, bez posebne ekološke naknade, oslobađanje od godišnje naknade za puteve za BEV).",
+          "url": "https://alternative-fuels-observatory.ec.europa.eu/transport-mode/road/croatia/incentives-legislations",
+          "date": "bez datuma na stranici; provereno 22.09.2026",
+          "confidence": "srednja"
+        }
+      ],
+      "ev_stats": "„Hrvatska je tokom prošle godine registrovala 992 potpuno električna automobila” (2025); udeo BEV u voznom parku 0,6% (Eurostat, preneo pvinformer.me 18.08.2026, https://www.pvinformer.me/crna-gora-pri-evropskom-dnu-elektricni-automobili-cinili-tek-18-novih-registracija/). TechPrognoza (18.05.2026): oko 1.450 javnih mesta za punjenje krajem 2025, od toga oko 420 DC 50 kW+ (https://techprognoza.com/posts/elektromobilnost-punionice-hrvatska-2026/, niska pouzdanost).",
+      "subsidies": "FZOEU: javni poziv od 10.03.2026, ukupno 3.200.000 € bespovratnih sredstava za nova vozila na alternativna goriva, mogu se prijaviti i građani (laqo.hr 09.03.2026, https://www.laqo.hr/blog/poticaji-za-elektricne-automobile-2026-kako-se-prijaviti-i-tko-moze-dobiti-subvenciju/); iznos po vozilu nije utvrđen iz izvora."
+    },
+    {
+      "code": "HU",
+      "name_sr": "Mađarska",
+      "currency": "HUF (forinta)",
+      "networks": [
+        {
+          "name": "Mobiliti (MVM)",
+          "operator": "MVM Mobiliti Kft. (grupa MVM)",
+          "app": "Mobiliti",
+          "website": "https://www.mobiliti.hu/emobilitas",
+          "size": "„2000 töltő ponton” (stranica bez datuma, provereno 22.09.2026); mapa na toltopont.eu.",
+          "prices": [
+            {
+              "what": "DC 50 kW – registrovani korisnici",
+              "price": "od 199 Ft („Az 50 kW-os DC töltőkön akár 199 Ft-ért …”)",
+              "vat": "nije navedeno",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.mobiliti.hu/emobilitas/nyilvanos-toltes/mennyiert-tolthetek-regisztralt-ugyfelkent/dijak",
+              "confidence": "visoka",
+              "note": "Jedinica (Ft/kWh) nije ispisana uz broj; cena se razlikuje po punjaču: „Az adott töltőre érvényes ár a Mobiliti appban ellenőrizhető!”"
+            },
+            {
+              "what": "Ultrabrzi DC – registrovani korisnici",
+              "price": "od 253 Ft („az ultragyors töltőkön akár 253 Ft-ért”)",
+              "vat": "nije navedeno",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.mobiliti.hu/emobilitas/nyilvanos-toltes/mennyiert-tolthetek-regisztralt-ugyfelkent/dijak",
+              "confidence": "visoka"
+            },
+            {
+              "what": "Ad hoc preko start.mobiliti.hu",
+              "price": "cenovnik se prikazuje tek u web aplikaciji – nije dostupno; naknada za obradu 500 Ft; blokada 30.000 Ft na kartici",
+              "vat": "nije navedeno",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.mobiliti.hu/emobilitas/nyilvanos-toltes/eseti-toltes",
+              "confidence": "visoka"
+            }
+          ],
+          "payment": "Bez registracije: (1) na punjačima sa terminalom – prisloni karticu, iznos blokade se vidi na ekranu; strane kartice rade ako su omogućene međunarodne transakcije (procesor Threeforce B.V., Holandija); (2) web start.mobiliti.hu – izbor punjača po 5-cifrenom ID-u. Aplikacija traži registraciju sa adresom za račun i karticom.",
+          "notes": "Registrovani korisnici imaju niže cene nego ad hoc."
+        },
+        {
+          "name": "IONITY",
+          "operator": "IONITY GmbH",
+          "app": "IONITY",
+          "website": "https://www.ionity.eu/hu",
+          "size": "Mreža: 822 lokacije u 24 zemlje (broj u Mađarskoj nije naveden).",
+          "prices": [
+            {
+              "what": "HPC – IONITY Direct (bez registracije, QR)",
+              "price": "279 Ft/kWh",
+              "vat": "nije navedeno",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.ionity.eu/hu",
+              "confidence": "visoka"
+            },
+            {
+              "what": "HPC – IONITY App (bez pretplate)",
+              "price": "265 Ft/kWh",
+              "vat": "nije navedeno",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.ionity.eu/hu",
+              "confidence": "visoka"
+            },
+            {
+              "what": "Pretplata Power 365",
+              "price": "165 Ft/kWh + 39.000 Ft/god. ili 159 Ft/kWh + 4.720 Ft/mes.",
+              "vat": "nije navedeno",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.ionity.eu/hu",
+              "confidence": "visoka"
+            },
+            {
+              "what": "Pretplata Motion 365",
+              "price": "207 Ft/kWh + 19.400 Ft/god. ili 199 Ft/kWh + 2.340 Ft/mes.",
+              "vat": "nije navedeno",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.ionity.eu/hu",
+              "confidence": "visoka"
+            }
+          ],
+          "payment": "„Fizetés az IONITY alkalmazáson vagy QR-kódon keresztül”.",
+          "notes": ""
+        },
+        {
+          "name": "Tesla Supercharger",
+          "operator": "Tesla",
+          "app": "Tesla",
+          "website": "https://www.tesla.com/findus/list/superchargers/Hungary",
+          "size": "15 lokacija na listi, među njima Szeged – Rókus (Rókusi krt. 42) i Szeged – Béketelep (Zápor út 4), Budimpešta – Óbuda, Fót, Szigetszentmiklós, Törökbálint, Győr (M1), Sormás (M7).",
+          "prices": [
+            {
+              "what": "DC",
+              "price": "oko 180 Ft/kWh",
+              "vat": "nije navedeno",
+              "date": "ažurirano 03.01.2025; provereno 22.09.2026",
+              "url": "https://villanyautosok.hu/elektromos-auto-toltes-arak/",
+              "confidence": "srednja",
+              "note": "Samo medijski podatak iz januara 2025 – verovatno zastareo."
+            }
+          ],
+          "payment": "Szeged (Zápor út 4): otvoren i za druga vozila sa CCS; način plaćanja nije naveden na stranici lokacije.",
+          "notes": "Szeged Béketelep (kod Auchana): 8 punjača do 150 kW, 24/7."
+        },
+        {
+          "name": "MOL Plugee",
+          "operator": "MOL Nyrt.",
+          "app": "MOL Plugee",
+          "website": "https://molplugee.hu/",
+          "size": "nije dostupno (sajt se nije učitao)",
+          "prices": [
+            {
+              "what": "AC / DC",
+              "price": "AC 219 Ft/kWh; DC 269–289 Ft/kWh (zavisno od snage)",
+              "vat": "nije navedeno",
+              "date": "ažurirano 03.01.2025; provereno 22.09.2026",
+              "url": "https://villanyautosok.hu/elektromos-auto-toltes-arak/",
+              "confidence": "srednja",
+              "note": "Zvanični cenovnik nije dostupan; medijski podatak iz januara 2025 – verovatno zastareo."
+            }
+          ],
+          "payment": "Nije provereno kod operatera.",
+          "notes": ""
+        },
+        {
+          "name": "E.ON Drive",
+          "operator": "E.ON Hungária",
+          "app": "nije provereno",
+          "website": "https://www.eon.hu/hu/e-mobilitas.html",
+          "size": "nije dostupno (stranica se učitava samo uz JavaScript)",
+          "prices": [
+            {
+              "what": "AC / DC",
+              "price": "AC 149 Ft/kWh (promocija do 31.03.2025); DC 149–249 Ft/kWh; u Budimpešti i naknada po minutu",
+              "vat": "nije navedeno",
+              "date": "ažurirano 03.01.2025; provereno 22.09.2026",
+              "url": "https://villanyautosok.hu/elektromos-auto-toltes-arak/",
+              "confidence": "niska",
+              "note": "Promotivna cena je istekla; aktuelne cene nisu pronađene."
+            }
+          ],
+          "payment": "Nije provereno.",
+          "notes": ""
+        },
+        {
+          "name": "Lidl Magyarország",
+          "operator": "Lidl Magyarország",
+          "app": "Lidl Plus (prema medijima)",
+          "website": "—",
+          "size": "Nije navedeno; Mobiliti ih navodi kao roaming partnera („domestic LIDL store chargers”).",
+          "prices": [
+            {
+              "what": "AC / DC",
+              "price": "AC 149 Ft/kWh; DC 179 Ft/kWh (preko aplikacije)",
+              "vat": "nije navedeno",
+              "date": "ažurirano 03.01.2025; provereno 22.09.2026",
+              "url": "https://villanyautosok.hu/elektromos-auto-toltes-arak/",
+              "confidence": "srednja",
+              "note": "Stranica o punjenju na lidl.hu nije pronađena; medijski podatak iz januara 2025."
+            }
+          ],
+          "payment": "Nije provereno kod operatera.",
+          "notes": ""
+        },
+        {
+          "name": "Shell Recharge (Mađarska)",
+          "operator": "Shell Hungary",
+          "app": "Shell Recharge",
+          "website": "https://www.shell.hu/",
+          "size": "nije dostupno (sadržaj se nije učitao)",
+          "prices": [
+            {
+              "what": "—",
+              "price": "nije dostupno",
+              "vat": "—",
+              "date": "bez datuma na stranici; provereno 22.09.2026",
+              "url": "https://www.shell.hu/",
+              "confidence": "niska"
+            }
+          ],
+          "payment": "—",
+          "notes": "Mobiliti navodi SHELL i OMV mreže kao roaming partnere za svoje korisnike."
+        }
+      ],
+      "price_overview": [],
+      "serbian_apps": {
+        "chargego": "Mađarska nije posebno navedena; Charge&GO navodi pristup evropskoj mreži preko roaming partnera (uključuje se na zahtev). Charge&GO ne navodi spisak zemalja. Stranica aplikacije: „Zahvaljujući integraciji sa najvećom e-roaming platformom, putem Charge&GO aplikacije dostupno je preko 400.000 punjača širom Evrope” (https://chargego.rs/chg-aplikacija/); FAQ: „Da biste bili u mogućnosti da pristupite punjačima u roaming mreži potrebno je da nas obavestite o tome putem imejla podrska@chargego.rs kako bismo vam omogućili tu opciju” (https://chargego.rs/podrska-cesta-pitanja/); Google Play (ažurirano 28.08.2026): „users can charge their vehicle throughout Europe through our roaming partners” (https://play.google.com/store/apps/details?id=com.charge_and_go_mobile). Na mapi client.chargego.rs nude se samo operatori „Charge&GO RS” i „CHARGE&GO MK” (https://client.chargego.rs/map).",
+        "orion": "Mađarska NIJE poimenično navedena. Opis aplikacije govori o „30+ countries in Europe” / „30 EU countries” i navodi samo Srbiju, Crnu Goru, BiH, Hrvatsku, Sloveniju, Makedoniju i Albaniju (https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app); crnogorska stranica Oriona kaže „svim zemljama Evropske unije” (https://oriontelekom.me/emobility/). Konkretne mađarske mreže nisu navedene."
+      },
+      "roaming_apps": "Mobiliti (kao pružalac) omogućava svojim korisnicima punjenje na IONITY, Lidl, Shell, OMV i TEA punjačima. Da li Electroverse, Shell Recharge, Plugsurfing, Chargemap Pass ili EnBW rade na Mobiliti/MOL/E.ON punjačima – nije potvrđeno zvaničnim izvorom. Za stranog vozača bez aplikacije: IONITY Direct (QR) i Mobiliti terminali/start.mobiliti.hu rade bez registracije.",
+      "free": [],
+      "corridors": [
+        {
+          "route": "Subotica/Horgoš – Röszke – Szeged – Kecskemét – Budimpešta (M5)",
+          "facts": "Tesla Supercharger Szeged – Béketelep (Zápor út 4, kod Auchana): 8 punjača do 150 kW, otvoren i za druga vozila sa CCS, 24/7; Tesla Szeged – Rókus (Rókusi krt. 42). Kod Budimpešte: Tesla Szigetszentmiklós (Háros 120), Törökbálint, Óbuda, Fót. Tesla nema lokaciju u Kecskemétu. Lokacije MOL Plugee, Mobiliti i IONITY na samom M5 nisu potvrđene (sajtovi nedostupni / mape samo uz JavaScript).",
+          "url": "https://www.tesla.com/findus/location/supercharger/szegedsupercharger ; https://www.tesla.com/findus/list/superchargers/Hungary"
+        }
+      ],
+      "practical": [
+        {
+          "note": "AFIR (Uredba EU 2023/1804, čl. 5) važi i u Mađarskoj: ad hoc plaćanje; novi punjači od 50 kW i više od 13.04.2024. sa čitačem kartica/beskontaktno; postojeći na TEN-T do 01.01.2027.",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1804",
+          "date": "Uredba od 13.09.2023",
+          "confidence": "visoka"
+        },
+        {
+          "note": "E-matrica: zvanična stranica NÚSZ se ne učitava bez JavaScripta, pa izuzeće za električna vozila nije potvrđeno. EAFO pregled podsticaja ne navodi oslobađanje od e-matrice; pogodnosti „zelenih tablica” (bez poreza na registraciju, godišnjeg poreza i poreza na prenos) važe za vozila sa mađarskim zelenim tablicama, a besplatan parking se „u Budimpešti i većim gradovima ukida 2026”.",
+          "url": "https://alternative-fuels-observatory.ec.europa.eu/transport-mode/road/hungary/incentives-legislations",
+          "date": "bez datuma na stranici; provereno 22.09.2026",
+          "confidence": "srednja"
+        },
+        {
+          "note": "Mobiliti ad hoc preko weba: blokada 30.000 Ft i naknada 500 Ft; kod plaćanja na terminalu u bankarskoj aplikaciji može se pojaviti „Hollandia” (procesor Threeforce B.V.) – to je normalno.",
+          "url": "https://www.mobiliti.hu/emobilitas/nyilvanos-toltes/eseti-toltes ; https://www.mobiliti.hu/emobilitas/nyilvanos-toltes/eseti-toltes-new",
+          "date": "bez datuma na stranici; provereno 22.09.2026",
+          "confidence": "visoka"
+        }
+      ],
+      "ev_stats": "Broj BEV nije pronađen u tekstualnom izvoru. EAFO: „All alternative fuelled vehicles (Q2 2026): 145,180” – obuhvata sva alternativna goriva, ne samo BEV (podaci ažurirani 18.08.2026, https://alternative-fuels-observatory.ec.europa.eu/transport-mode/road/hungary).",
+      "subsidies": "EAFO: program subvencija za firme RRF-REP-10.10.1-24 bio je otvoren do 26.02.2026 (budžet iscrpljen sredinom aprila 2025), za putnička vozila 5.500–10.500 €; BEV sa zelenim tablicama oslobođeni poreza na registraciju, godišnjeg poreza i poreza na prenos (https://alternative-fuels-observatory.ec.europa.eu/transport-mode/road/hungary/incentives-legislations). Program za građane nije pronađen."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Charge&GO – aplikacija (roaming, 400.000 punjača)",
+      "url": "https://chargego.rs/chg-aplikacija/",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Charge&GO – podrška / česta pitanja (roaming na zahtev)",
+      "url": "https://chargego.rs/podrska-cesta-pitanja/",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Charge&GO – Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.charge_and_go_mobile",
+      "date": "ažurirano 28.08.2026"
+    },
+    {
+      "label": "Charge&GO – App Store",
+      "url": "https://apps.apple.com/rs/app/charge-go/id1662961378",
+      "date": "v4.2.5, 28.08.2026"
+    },
+    {
+      "label": "Charge&GO – makedonska verzija sajta",
+      "url": "https://chargego.rs/mk/pocetnata/",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Charge&GO – mapa (izbor operatora RS/MK)",
+      "url": "https://client.chargego.rs/map",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Charge&GO – uputstvo za korišćenje (PDF)",
+      "url": "https://chargego.rs/wp-content/uploads/2025/07/Kako-koristiti-uputstvo-za-koriscenje.pdf",
+      "date": "otpremljeno 07/2025"
+    },
+    {
+      "label": "EIB – priča o Charge&Go",
+      "url": "https://www.eib.org/en/stories/electric-cars-innovation-hub-belgrade-serbia",
+      "date": "14.02.2025"
+    },
+    {
+      "label": "Orion eMobility – Google Play",
+      "url": "https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app",
+      "date": "ažurirano 03.09.2026"
+    },
+    {
+      "label": "Orion eMobility – App Store",
+      "url": "https://apps.apple.com/rs/app/orion-emobility/id1615624626",
+      "date": "v3.242.1 (septembar 2026)"
+    },
+    {
+      "label": "Orion telekom Crna Gora – eMobility",
+      "url": "https://oriontelekom.me/emobility/",
+      "date": "©2025; provereno 22.09.2026"
+    },
+    {
+      "label": "Orion eMobility – FAQ (PDF na sajtu NIS)",
+      "url": "https://www.nisgazprom.rs/wp-content/uploads/2023/12/Orion-pitanja-ENG.pdf",
+      "date": "12/2023"
+    },
+    {
+      "label": "RTCG – Manje od 200 javnih punjača, ne postoji mapa za turiste",
+      "url": "https://rtcg.me/vijesti/ekologija/866615/manje-od-200-javnih-punjaca-za-elektricna-vozila-ne-postoji-mapa-za-turiste.html",
+      "date": "22.07.2026"
+    },
+    {
+      "label": "RTCG – Mapa punjača u Crnoj Gori",
+      "url": "https://rtcg.me/vijesti/servisne-informacije/865048/mapa-punjaca-za-elektricna-vozila-u-crnoj-gori.html",
+      "date": "24.08.2026"
+    },
+    {
+      "label": "Portal Analitika – Crna Gora bez ultrabrzih punjača",
+      "url": "https://www.portalanalitika.me/clanak/crna-gora-bez-ultrabrzih-punjaca-za-elektricna-vozila-potrebno-najmanje-14-novih-lokacija",
+      "date": "14.06.2026"
+    },
+    {
+      "label": "Investitor – Jugopetrol postavlja sedam punjača",
+      "url": "https://investitor.me/2024/12/11/posvecenost-energetskoj-odrzivosti-jugopetrol-postavlja-sedam-novih-punjaca-za-elektricna-vozila-sirom-crne-gore/",
+      "date": "11.12.2024"
+    },
+    {
+      "label": "Investitor – Jugopetrol, odmorište Gornje Mrke",
+      "url": "https://investitor.me/2025/05/04/jugopetrol-gradi-jos-jednu-pumpu-na-auto-putu-25-godina-zakupa-za-lokaciju-gornje-mrke/",
+      "date": "04.05.2025"
+    },
+    {
+      "label": "Jugopetrol – pronađi stanicu",
+      "url": "https://www.jugopetrol.co.me/stanice/prona-i-stanicu/",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "ecoportal.me – Kotor, EVC punionica do 100 kW",
+      "url": "https://www.ecoportal.me/kotor-dobio-pametnu-ev-punionicu-sa-solarnim-panelima-i-baterijskim-skladistenjem/",
+      "date": "03.04.2026"
+    },
+    {
+      "label": "EVC Montenegro",
+      "url": "https://www.evcmontenegro.me/",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "EVC Charge – App Store",
+      "url": "https://apps.apple.com/us/app/evc-charge/id6502548717",
+      "date": "v2.4.10"
+    },
+    {
+      "label": "Sjever CG – Bar, besplatna solarna punionica",
+      "url": "https://www.sjevercg.me/u-baru-pustena-u-funkciju-solarna-stanica-besplatno-napajanje-elektricnih-automobila/",
+      "date": "19.05.2026"
+    },
+    {
+      "label": "Gold-m – vodič za punjenje u Crnoj Gori",
+      "url": "https://www.goldmelectric.me/novosti/kako-puniti-elektricno-vozilo-crna-gora",
+      "date": "19.11.2025"
+    },
+    {
+      "label": "pvinformer.me – Crna Gora 1,8% BEV u novim registracijama (Eurostat)",
+      "url": "https://www.pvinformer.me/crna-gora-pri-evropskom-dnu-elektricni-automobili-cinili-tek-18-novih-registracija/",
+      "date": "18.08.2026"
+    },
+    {
+      "label": "bankar.me – Eko-fond subvencije 2025",
+      "url": "https://bankar.me/eko-fond-raspisao-oglas-za-subvencije-za-elektricna-vozila/",
+      "date": "20.05.2025"
+    },
+    {
+      "label": "Electromaps – Crna Gora",
+      "url": "https://www.electromaps.com/en/charging-stations/montenegro",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Tesla – Superchargers Montenegro",
+      "url": "https://www.tesla.com/findus/list/superchargers/Montenegro",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Tesla – Superchargers Bosnia and Herzegovina",
+      "url": "https://www.tesla.com/findus/list/superchargers/Bosnia%20and%20Herzegovina",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Tesla – Superchargers North Macedonia",
+      "url": "https://www.tesla.com/findus/list/superchargers/North%20Macedonia",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "EPBiH – Elektromobilnost",
+      "url": "https://www.epbih.ba/stranica/elektromobilnost",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "EPBiH Moja energija – Elektromobilnost",
+      "url": "https://mojaenergija.epbih.ba/elektromobilnost/",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "TuzlaInfo – EPBiH uvodi aplikaciju i naplatu",
+      "url": "https://tuzlainfo.ba/index.php/bosna-i-hercegovina/item/299692-epbih-uvodi-novu-aplikaciju-i-naplatu-punjenja-elektricnih-automobila/",
+      "date": "13.04.2026"
+    },
+    {
+      "label": "automobili.ba – Mreža stanica za punjenje u BiH",
+      "url": "https://www.automobili.ba/mreza-stanica-za-punjenje-elektricnih-automobila-u-bih/",
+      "date": "03.04.2026"
+    },
+    {
+      "label": "Porsche Sarajevo – obaveštenje MOON DC 150 kW",
+      "url": "https://www.porschesarajevo.ba/novosti/obavijest-korisnicima-moon-dc-150kw-punjaca",
+      "date": "23.08.2024"
+    },
+    {
+      "label": "FERK – evidencija pružatelja usluga punjenja",
+      "url": "https://www.ferk.ba/_hr/index.php/dozvole/registar-punionica/20740-registar-isporucioca-usluga-punjenja-elektricnih-vozila",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "e-GO Charger",
+      "url": "https://e-go.ba/en/e-go-charger/",
+      "date": "slike 12/2024; provereno 22.09.2026"
+    },
+    {
+      "label": "e-GO Charger – Google Play",
+      "url": "https://play.google.com/store/apps/details?id=ba.ego.emobility.app",
+      "date": "ažurirano 03.09.2026"
+    },
+    {
+      "label": "klix.ba – Mostar dobio brzi punjač",
+      "url": "https://www.klix.ba/auto/elektricni/mostar-dobio-brzi-punjac-za-elektricna-vozila/250501075",
+      "date": "01.05.2025"
+    },
+    {
+      "label": "bljesak.info – punionica u Mostaru",
+      "url": "https://bljesak.info/auto-moto/flash/punionica-elektricnih-vozila-u-mostaru-koliko-se-puni-i-koliko-se-stedi/450273",
+      "date": "30.03.2024"
+    },
+    {
+      "label": "Aerodrom Sarajevo – punjenje električnih automobila",
+      "url": "https://sarajevo-airport.ba/Page/Punjenje",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "N1 BiH – rast broja EV, manjak punionica",
+      "url": "https://n1info.ba/vijesti/rast-broja-elektricnih-vozila-u-bih-koce-zastarjela-infrastruktura-i-manjak-punionica/",
+      "date": "03.08.2025"
+    },
+    {
+      "label": "Biznis Info – registracije januar 2026",
+      "url": "https://www.biznisinfo.ba/pad-broja-registrovanih-vozila-u-bih-elektricnih-samo-05-posto/",
+      "date": "18.02.2026"
+    },
+    {
+      "label": "Slobodna Bosna – uvoz EV 2023",
+      "url": "https://www.slobodna-bosna.ba/vijest/339378/gradi_se_infrastruktura_povecan_broj_uvezenih_elektrichnih_vozila_u_bih_raste_i_broj_elektrichnih_punionica.html",
+      "date": "04.02.2024"
+    },
+    {
+      "label": "klix.ba – javni poziv FBiH za EV",
+      "url": "https://www.klix.ba/auto/elektricni/objavljen-javni-poziv-dostupne-subvencije-za-kupovinu-elektricnih-i-hibridnih-vozila-u-federaciji-bih/260916031",
+      "date": "16.09.2026"
+    },
+    {
+      "label": "Zenicablog – do 12.000 KM za EV",
+      "url": "https://www.zenicablog.com/objavljen-javni-poziv-gradanima-i-firmama-do-12-000-km-za-elektricni-automobil/",
+      "date": "16.09.2026"
+    },
+    {
+      "label": "Dešavanja u Bijeljini – uklonjeni punjači",
+      "url": "https://desavanjaubijeljini.com/vijest.php?id=54699&title=bijeljina-punjai-za-elektrina-vozila-skinuti-zbog-isteka-probnog-perioda--u-planu-postavka-novih-brih-punjaa",
+      "date": "08.04.2024"
+    },
+    {
+      "label": "EVN – Tarifi (Електромобилност)",
+      "url": "https://emobility.evn.mk/Tariffs.aspx",
+      "date": "nova DC tarifa od 01.05.2025"
+    },
+    {
+      "label": "EVN – Насоки за полнење",
+      "url": "https://emobility.evn.mk/charging-stations/Charging-directions.aspx",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "EVN – Пријави се за картичка",
+      "url": "https://emobility.evn.mk/Apply-for-card.aspx",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "EVN – Новости (e-mobilnost)",
+      "url": "https://emobility.evn.mk/Новости.aspx",
+      "date": "vesti 22.01.2025–12.08.2026"
+    },
+    {
+      "label": "EVN – brošura Elektromobilnost",
+      "url": "https://elektrodistribucija.mk/Files/Elektromobilnost/Docs/Brosura-EVN-Elektromobilnost-A4_3-10_fin.aspx",
+      "date": "bez datuma"
+    },
+    {
+      "label": "elektricniavtomobili.mk – Електромобилност на ЕВН Македонија",
+      "url": "https://elektricniavtomobili.mk/%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%be%d0%bc%d0%be%d0%b1%d0%b8%d0%bb%d0%bd%d0%be%d1%81%d1%82-%d0%bd%d0%b0-%d0%b5%d0%b2%d0%bd-%d0%bc%d0%b0%d0%ba%d0%b5%d0%b4%d0%be%d0%bd%d0%b8%d1%98%d0%b0-%d1%81e/",
+      "date": "29.07.2026"
+    },
+    {
+      "label": "Makpetrol – chargers for electric vehicles",
+      "url": "https://www.makpetrol.com.mk/en/chargers-for-electric-vehicles/",
+      "date": "izmenjeno 22.08.2025"
+    },
+    {
+      "label": "CARclub.mk – Колку електрични возила има во Македонија",
+      "url": "https://www.carclub.mk/2026/07/07/kolku-elektricni-vozila-ima-vo-makedonija/",
+      "date": "07.07.2026"
+    },
+    {
+      "label": "Bloomberg Adria MK – nema subvencija",
+      "url": "https://mk.bloombergadria.com/ekonomija/adria/53488/subvencii-od-5-do-10-iljadi-evra-za-elektricni-vozila-vo-makedonija-nema/news",
+      "date": "01.03.2024"
+    },
+    {
+      "label": "ELEN (HEP)",
+      "url": "https://elen.hep.hr/",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "ELEN – cjenik usluge punjenja (PDF)",
+      "url": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+      "date": "na snazi od 01.04.2025"
+    },
+    {
+      "label": "Petrol HR – cjenik punjenja",
+      "url": "https://www.petrol.hr/mobilnost/privatni-korisnici/javne-elektricne-punionice/cjenik-punjenja",
+      "date": "važi od 01.11.2025"
+    },
+    {
+      "label": "Petrol HR – OneCharge",
+      "url": "https://www.petrol.hr/mobilnost/onecharge",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Petrol HR – javne električne punionice",
+      "url": "https://www.petrol.hr/mobilnost/privatni-korisnici/javne-elektricne-punionice",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "IONITY – početna",
+      "url": "https://www.ionity.eu/",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "IONITY – Hrvatska",
+      "url": "https://www.ionity.eu/hr",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "IONITY – Mađarska",
+      "url": "https://www.ionity.eu/hu",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Lidl HR – e-punionice",
+      "url": "https://www.lidl.hr/c/e-punionice/s10038053",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Kaufland HR – e-punionice",
+      "url": "https://www.kaufland.hr/usluge/e-punionice.html",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "PostaniVozac – cijene punjenja EV",
+      "url": "https://postanivozac.com/blog/cijene-punjenja-elektricnih-vozila",
+      "date": "ažurirano 05.01.2026"
+    },
+    {
+      "label": "Strujni krug – vodič kroz punjače",
+      "url": "https://www.strujnikrug.hr/vodic-kroz-punjace-za-elektricna-vozila/",
+      "date": "ažurirano 11.05.2026"
+    },
+    {
+      "label": "TechPrognoza – punionice u Hrvatskoj 2026",
+      "url": "https://techprognoza.com/posts/elektromobilnost-punionice-hrvatska-2026/",
+      "date": "18.05.2026"
+    },
+    {
+      "label": "BUCO – koliko košta punjenje u Hrvatskoj 2026",
+      "url": "https://buco.com.hr/2026/08/14/koliko-zapravo-kosta-punjenje-elektricnog-automobila-u-hrvatskoj-2026-godine/",
+      "date": "14.08.2026"
+    },
+    {
+      "label": "Tesla – Superchargers Croatia",
+      "url": "https://www.tesla.com/findus/list/superchargers/Croatia",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Tesla – Slavonski Brod",
+      "url": "https://www.tesla.com/findus/location/supercharger/slavonskibrodsupercharger",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Tesla – Rugvica (Zagreb)",
+      "url": "https://www.tesla.com/findus/location/supercharger/zagrebsupercharger",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Tesla – Vrgorac",
+      "url": "https://www.tesla.com/findus/location/supercharger/vrgoracsupercharger",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Tesla – Zadar",
+      "url": "https://www.tesla.com/findus/location/supercharger/zadarcroatiasupercharger",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "HAC – informacije o odmorištima",
+      "url": "https://www.hac.hr/hr/servisne-informacije/informacije-o-odmoristima?rests=1",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "EAFO – Croatia incentives & legislation",
+      "url": "https://alternative-fuels-observatory.ec.europa.eu/transport-mode/road/croatia/incentives-legislations",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "LAQO – poticaji za EV 2026",
+      "url": "https://www.laqo.hr/blog/poticaji-za-elektricne-automobile-2026-kako-se-prijaviti-i-tko-moze-dobiti-subvenciju/",
+      "date": "09.03.2026"
+    },
+    {
+      "label": "tportal – MOL Plugee u Hrvatskoj na Tifonu",
+      "url": "https://www.tportal.hr/autozona/clanak/mol-plugee-aplikacija-za-novo-iskustvo-punjenja-elektricnih-vozila-odsada-dostupna-i-u-hrvatskoj-na-tifonu-20210713",
+      "date": "13.07.2021"
+    },
+    {
+      "label": "Mobiliti – hol tölthetek (2000 töltőpont)",
+      "url": "https://www.mobiliti.hu/emobilitas/nyilvanos-toltes/hol-tolthetek",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Mobiliti – díjak",
+      "url": "https://www.mobiliti.hu/emobilitas/nyilvanos-toltes/mennyiert-tolthetek-regisztralt-ugyfelkent/dijak",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Mobiliti – eseti töltés bankkártyával",
+      "url": "https://www.mobiliti.hu/emobilitas/nyilvanos-toltes/eseti-toltes-new",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Mobiliti – eseti töltés (start.mobiliti.hu)",
+      "url": "https://www.mobiliti.hu/emobilitas/nyilvanos-toltes/eseti-toltes",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Mobiliti – app",
+      "url": "https://www.mobiliti.hu/emobilitas/nyilvanos-toltes/hogyan-tolthetek-maganszemelykent/app",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Mobiliti – roaming",
+      "url": "https://www.mobiliti.hu/emobilitas/nyilvanos-toltes/hol-tolthetek/roaming",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Tesla – Superchargers Hungary",
+      "url": "https://www.tesla.com/findus/list/superchargers/Hungary",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Tesla – Szeged (Zápor út)",
+      "url": "https://www.tesla.com/findus/location/supercharger/szegedsupercharger",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "Villanyautósok – elektromos autó töltés árak",
+      "url": "https://villanyautosok.hu/elektromos-auto-toltes-arak/",
+      "date": "ažurirano 03.01.2025"
+    },
+    {
+      "label": "EAFO – Hungary incentives & legislation",
+      "url": "https://alternative-fuels-observatory.ec.europa.eu/transport-mode/road/hungary/incentives-legislations",
+      "date": "bez datuma na stranici; provereno 22.09.2026"
+    },
+    {
+      "label": "EAFO – Hungary road overview",
+      "url": "https://alternative-fuels-observatory.ec.europa.eu/transport-mode/road/hungary",
+      "date": "podaci ažurirani 18.08.2026"
+    },
+    {
+      "label": "EUR-Lex – Uredba (EU) 2023/1804 (AFIR)",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1804",
+      "date": "13.09.2023"
+    }
+  ],
+  "not_found": [
+    "MOL Plugee (HR i HU) – zvanični cenovnici nisu dostupni: molplugee.hr, molplugee.hu i mol.hu se nisu učitali (robots.txt timeout); korišćeni samo medijski podaci (postanivozac.com 05.01.2026; villanyautosok.hu 03.01.2025).",
+    "E.ON Drive (HU) i Shell Recharge (HU) – aktuelne cene nisu pronađene; stranice eon.hu/shell.hu se učitavaju samo uz JavaScript (nije dostupno).",
+    "Mađarska e-matrica za strana električna vozila – zvanična potvrda nije pronađena (nemzetiutdij.hu i ematrica.nemzetiutdij.hu rade samo uz JavaScript); EAFO pregled podsticaja ne navodi izuzeće.",
+    "Mobiliti – ad hoc cenovnik (prikazuje se samo u web aplikaciji start.mobiliti.hu → charging.mobiliti.hu, JavaScript); jedinica uz „akár 199 Ft / 253 Ft” nije ispisana.",
+    "Crna Gora – cenovnici operatera (Jugopetrol, EVC Montenegro, punjači na Pelevom Brijegu) nisu javno objavljeni; operater punjača na autoputu Princeza Ksenija nije naveden ni u jednom izvoru.",
+    "Crna Gora – plaćanje platnom karticom direktno na punjaču: nijedan izvor ne navodi.",
+    "EPBiH – cenovnik još nije objavljen (najavljen na mojaenergija.epbih.ba/elektromobilnost/); da li je testni period besplatan – nije navedeno.",
+    "Republika Srpska – nije pronađen operater javne mreže (ERS, telekom, naftne kompanije) niti cenovnik; Elektroprivreda HZ HB – na sajtu nema podataka o punionicama.",
+    "FERK – verzija registra na _ba stranici nije dostupna (robots.txt timeout); korišćena _hr verzija.",
+    "portal.sef.ba (analiza cena punjenja u BiH 2026), autoklub.net, netpress.com.mk, primorski.me, a-drive.me, lawesgo.mk – nije dostupno (timeout).",
+    "Tesla – nema Supercharger lokacija u Crnoj Gori, BiH i Severnoj Makedoniji (tesla.com liste prazne); cene Tesle za druga vozila u HR/HU nisu na javnim stranicama.",
+    "Pokrivenost Electroverse, Shell Recharge, Plugsurfing, Chargemap Pass i EnBW po zemljama/mrežama – nije potvrđena (zvanične stranice ne daju spisak zemalja); limit WebSearch upita je iscrpljen tokom istraživanja.",
+    "Charge&GO – spisak roaming zemalja i platforme nije objavljen; da li srpski nalog radi na punjačima „CHARGE&GO MK” – nije navedeno.",
+    "Orion eMobility – Mađarska nije poimenično navedena; konkretne stanice po zemljama nisu navedene.",
+    "M5 (HU) – lokacije i snaga MOL Plugee / Mobiliti / IONITY punjača na deonici Röszke–Budimpešta nisu potvrđene.",
+    "Brzi punjači na deonicama Zvornik–Sarajevo, Višegrad–Foča–Plužine i u Neumu – nisu pronađeni.",
+    "IONITY lokacije u HR i HU – mapa samo uz JavaScript; broj stanica po zemlji nije naveden.",
+    "Hrvatski Telekom eSpot – zvanični cenovnik nije dostupan (sajt preusmerava na prijavu).",
+    "Hrvatska – iznos FZOEU subvencije po vozilu za 2026. nije utvrđen iz izvora; broj javnih punjača iz zvaničnog izvora nije pronađen.",
+    "Mađarska – broj BEV (zelenih tablica) iz tekstualnog izvora nije pronađen.",
+    "Besplatno punjenje u HR, HU i MK (2025–2026) – nije pronađen izvor koji navodi konkretnu besplatnu lokaciju."
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "checked": "22.09.2026",
+  "rent_a_car": [
+    {
+      "company": "Gama Rent (Gama Elektrocentar d.o.o. – ogranak Gama Rent; deo Gama Centra — prodaja, servis i razvoj električne mobilnosti)",
+      "cities": ["Beograd (Deligradska 27)", "Beograd–Zemun (Batajnički drum 14)"],
+      "models": ["Seres 5"],
+      "price": "12.000 RSD (na sajtu „RSD12.000/RSD”; jedinica nije eksplicitno navedena — po smislu dnevna cena, potvrditi) ; 140.000 RSD mesečno (eksplicitno „mesečno”). PDV nije naveden.",
+      "conditions": "„Depozit: 2.000 EUR” — „Depozit se blokira na kreditnoj kartici pre preuzimanja vozila”; „Franšiza: 2.000 EUR”; uključeno „Osnovno osiguranje od odgovornosti prema trećim licima”; dodatna pokrića „CDW, PAI (6 EUR/dan), WWI (8 EUR/dan)”; „Neograničeni kilometri”; „Minimalna starost: 25 godina”, B kategorija, „Minimalno iskustvo: 5 godina” (vozači 25–26 i 70–75 god. jednokratna doplata 10 EUR; početna strana navodi „minimum 21 godina” za većinu EV); osiguranje ne pokriva „Putovanje van teritorije Srbije”; besplatno otkazivanje više od 48h unapred; minimalan broj dana nije naveden; dostava „na željenu adresu, hotel, aerodrom ili poslovnu lokaciju” (https://gamarent.rs/).",
+      "charging_rules": "„Vozilo se isporučuje sa napunjenom baterijom na najmanje 80% i vraća se u istom stanju.” Na lokaciji Gama Centra „dostupno je i punjenje električnih vozila”. Naknada za vraćanje sa nižim nivoom baterije nije objavljena.",
+      "url": "https://gamarent.rs/cars/seres-5/",
+      "page_date": "© 2026, bez datuma ažuriranja",
+      "confidence": "visoka"
+    },
+    {
+      "company": "KiBOST Car (specijalizovan Tesla rent a car; nudi i transfer sa vozačem, iznajmljivanje/prodaju punjača)",
+      "cities": ["Beograd (YU Biznis centar, Bul. Mihajla Pupina 10V/10L; strana „Rent a car Beograd” navodi i BW Aria, Bul. Vudroa Vilsona 6, kanc. 206)", "Novi Sad (Trg galerija 3b/2, Pupinova palata)"],
+      "models": ["Tesla Model 3", "Tesla Model Y", "Tesla Model S", "Tesla Model X"],
+      "price": "€ po danu, „Cene su sa PDV-om”, po trajanju (od 2 dana / od 3–15 dana / od 15–30 dana / od 30 dana): Model 3 — 90 / 70 / 50 / 30; Model S — 100 / 80 / 60 / 35; Model Y — 120 / 90 / 70 / 40; Model X — 160 / 130 / 100 / 80.",
+      "conditions": "Najkraći najam „od 2 dana”; „Depozit je neophodan u iznosu od 1.500 € preko kreditne kartice”; „Bez ograničenja kilometraže!”; dostava po dogovoru („Pozovite nas ako Vam trebaju usluge dostave vozila”); „Za najam preko 2 meseca, kontaktirajte nas za popust”.",
+      "charging_rules": "Nisu objavljena — ni cenovnik ni uslovi korišćenja sajta (https://kibostcar.com/uslovi-koriscenja/, izmenjeno 14.07.2023) ne navode nivo baterije pri vraćanju, Supercharger troškove ni kartice za punjenje.",
+      "url": "https://kibostcar.com/cenovnik-rent-a-car/",
+      "page_date": "cenovnik izmenjen 22.02.2025 (meta „modified”) — cene mogu biti zastarele",
+      "confidence": "visoka"
+    },
+    {
+      "company": "Royal rent a car (Car rental Beograd / Royal rent a car Novi Sad — isti kontakt +381 69 77 63 61)",
+      "cities": ["Beograd (Bul. Arsenija Čarnojevića 88, Novi Beograd)", "Novi Sad"],
+      "models": ["Tesla Model 3", "Tesla Model Y", "Tesla Model S", "Tesla Model X (samo Beograd)"],
+      "price": "€ po danu po trajanju (2–3 d / 4–5 / 6–7 / 8–15 / 16–29 / 30+). Beograd: Tesla 3 — 125/100/82/69/63/57; Tesla Y — 138/125/100/88/75/63; Tesla S — 175/150/138/113/100/75; Tesla X — 375/350/300/250/200/150. Novi Sad: Tesla 3 — 126/102/84/72/60/54 (početna NS: Tesla Y od 60, Tesla S od 72). PDV nije naveden.",
+      "conditions": "Kilometraža: 2–3 dana 200 km; 4–5 dana 200 km/dan; 6–29 dana neograničeno; 30+ dana 4.000 km. „No deposit” (meta opis BG) / „bez depozita” (NS). Cena je „informativno-sezonskog karaktera i odnosi se na cene iznajmljivanja vozila u trenutnom mesecu”; agencija „zadržava pravo na PROMENU cena” i „NIJE OBAVEZNA” da izda vozilo po izračunatoj ceni. DOSTUPNOST na dan provere: Beograd — Tesla 3, Y i X „Ovaj model vozila je dugoročno rezervisan”, Tesla S „currently unavailable”; Novi Sad — Tesla 3 „Ovo vozilo trenutno nije dostupno”. Preuzimanje u poslovnici ili na aerodromu (strana NS: https://www.rentacarnovisad77.rs/iznajmljivanje-luksuznih-automobila/tesla-3).",
+      "charging_rules": "Nisu objavljena.",
+      "url": "https://www.carrentalbeograd.rs/luxury-car-rental/tesla-3",
+      "page_date": "bez datuma; cene „za trenutni mesec”",
+      "confidence": "visoka"
+    },
+    {
+      "company": "Električni Automobili d.o.o. (PIB 113469622; prodaja novih i polovnih EV, punjači, servis, flotni menadžment, rent)",
+      "cities": ["Beograd (Časlava Veljića 53)"],
+      "models": ["Tesla Model 3", "Tesla Model S", "Chery FX EV", "Chery EQ1", "Renault Zoe", "Renault Zoe (Black)", "Renault Kangoo (naslov oglasa „Renault Kangoo Rent”; verzija E-Tech/Z.E. nije navedena)", "Renault Kangoo Express", "oglasi „Putnički Rent” i „Komercijalni Rent” bez modela"],
+      "price": "„Cena Na upit” — svih 10 oglasa u kategoriji „Rent E Car”",
+      "conditions": "Kratkoročni i dugoročni najam („dnevno, nedeljno ili duže”); kod Tesla oglasa „Dugoročni najam sa mogućnošću otkupa i lizing”; online rezervacija. Minimum dana, depozit, PDV i kilometraža nisu objavljeni. Kontakt +381 63 763 8333.",
+      "charging_rules": "Bez pravila; oglasi navode samo „U saradnji sa mrežom punjača širom Srbije, nudimo vam lako i brzo punjenje”.",
+      "url": "https://elektricniautomobili.eu/listing-category/rent-e-car/",
+      "page_date": "početna/rent strana izmenjena 17.04.2026; oglasi Chery FX EV, Tesla Model 3 i Model S ažurirani 18.03.2026; oglasi dodati 15.07.2024–11.06.2025",
+      "confidence": "visoka"
+    },
+    {
+      "company": "Electric Blue Rent-a-Car (oglas na KupujemProdajem; ime se poklapa sa ELECTRIC BLUE d.o.o., prodavcem EV, Stevana Filipovića 1V, Železnik — https://www.polovniautomobili.com/electric-blue-doo; sajt electricblue.rs nije dostupan)",
+      "cities": ["Beograd (Čukarica)"],
+      "models": ["Tesla Model S S85", "Tesla Model S 70D", "Tesla Model X P90DL Signature", "Renault ZOE Intense", "Renault Kangoo Maxi ZE 33 kW(h)"],
+      "price": "od 16 €/dan (ZOE Intense; Kangoo Maxi ZE33), od 28 €/dan (Model S S85), od 29 €/dan (Model S 70D), od 46 €/dan (Model X P90DL). „Cena najma uključuje osiguranje, neograničenu kilometražu, i poreze.”",
+      "conditions": "„Potrebno je da imate važeću vozačku dozvolu i minimalno 21 godinu. Takođe, potrebna je i kreditna kartica za depozit.” (iznos depozita nije naveden); „posebne pogodnosti za dugoročne najmove”; dostava na adresu po dogovoru; put van Srbije uz najavu i doplatu. Oglas #170628580 prikazan kao „pre 9 dana”, 4.836 pregleda.",
+      "charging_rules": "„Naši automobili dolaze sa uputstvima za punjenje i kablovima. Takođe, možete koristiti javne punjače” — bez pravila o nivou baterije pri vraćanju.",
+      "url": "https://www.kupujemprodajem.com/usluge-transport/iznajmljivanje-vozila/rent-a-car-elektricna-vozila-beograd-najpovoljnije-cene/oglas/170628580",
+      "page_date": "oglas obnovljen ≈13.09.2026 („pre 9 dana” na dan provere)",
+      "confidence": "srednja"
+    },
+    {
+      "company": "Tesla Rent a Car (teslarent.rs)",
+      "cities": ["nepoznato (.rs domen)"],
+      "models": ["Tesla Model S (BLACK)", "Tesla Model 3"],
+      "price": null,
+      "conditions": "nije dostupno — sajt odbija automatsko preuzimanje (robots.txt / timeout). Postojanje ponude vidi se samo iz naslova stranica u pretrazi: „Tesla Model S - BLACK – Tesla Rent a Car” (https://teslarent.rs/products/tesla-model-s), „Tesla Model 3 – Tesla Rent a Car” (https://teslarent.rs/products/tesla-model-3), „Opšti Uslovi – Tesla Rent a Car”. Grad, cene i aktivnost nisu potvrđeni.",
+      "charging_rules": "nije dostupno",
+      "url": "https://teslarent.rs/",
+      "page_date": null,
+      "confidence": "niska"
+    }
+  ],
+  "car_sharing": [
+    {
+      "name": "Anygo (Transport Sharing; free-floating car-sharing preko aplikacije)",
+      "city": "Beograd; Novi Sad (zona u NS — pravila međugradske vožnje objavljena 10.12.2025)",
+      "status": "aktivno",
+      "models": ["Toyota Yaris Hybrid (hibrid — nije BEV)", "Hyundai i10 (benzin)"],
+      "price": "Start 100 RSD; vožnja 24 RSD/min; rezervacija/čekanje 8 RSD/min; paketi: 1h+20 km 1.100 RSD; 3h+40 km 2.000; 6h+50 km 3.100; 15h+60 km 3.900; 1 dan+100 km 4.400; 2 dana+200 km 8.100; 5 dana+400 km 18.000; 7 dana+500 km 24.500 RSD; gorivo uključeno; „exact and up-to-date prices … are provided in the Anygo app”. Vožnja započeta u BG i završena u NS zoni: 1.200 RSD (https://anygo.tech/intercity-rules/?lang=en). BEV u floti: NEMA — „Anygo Green Cars” (50% popust na minut u prvom satu) sajt ne definiše kao električne.",
+      "url": "https://anygo.tech/prices/?lang=en",
+      "date": "cenovnik izmenjen 28.07.2025; pravila međugradske vožnje 10–15.12.2025; start 02.01.2024 sa 34 vozila (https://www.netokracija.rs/anygo-beograd-215226, 06.02.2024); ~8.700 registrovanih korisnika (https://rs.bloombergadria.com/biznis/kompanije/81886/kako-je-car-sharing-stigao-u-beograd/news, 04.07.2025)",
+      "confidence": "visoka"
+    },
+    {
+      "name": "Car4Use (CAR4USE d.o.o.)",
+      "city": "Beograd",
+      "status": "ugašeno",
+      "models": ["Fiat 500", "Fiat Panda (nisu EV)"],
+      "price": "1.440 RSD/sat (2015; gorivo i osiguranje uključeni)",
+      "url": "https://car4use.rs/en/about-us/",
+      "date": "start 04.05.2015 sa 30 vozila (https://www.b92.net/o/automobili/aktuelno?yyyy=2015&mm=05&nav_id=989540, 08.05.2015); firma danas navodi da je car-sharing prekinut i radi kao rent-a-car (© 2023)",
+      "confidence": "visoka"
+    }
+  ],
+  "taxi_ridehailing": [
+    {
+      "company": "CarGo (DNP GO TECHNOLOGIES d.o.o.)",
+      "fact": "Na sajtu kao cilj: „Da proširimo flotu sa hibridnim i potpuno elektičnim automobilima.” i „Da Beograd i Srbija budu zeleno i zdravo mesto za život.” Broj EV vozila nije objavljen.",
+      "url": "https://appcargo.com/",
+      "date": "© 2025",
+      "confidence": "visoka"
+    },
+    {
+      "company": "CarGo (istorijski podatak)",
+      "fact": "CarGo je predstavio biznis klasu od 100 vozila „među kojima se nalazi i električni Jaguari I-Pace” (Beograd); broj električnih nije naveden.",
+      "url": "https://www.netokracija.rs/cargo-biznis-klasa-164637",
+      "date": "15.01.2020",
+      "confidence": "srednja"
+    },
+    {
+      "company": "Yandex Go",
+      "fact": "Radi u Beogradu, Novom Sadu, Pančevu i Nišu („dostupna u Beogradu, Novom Sadu, Pančevu i Nišu”); nema EV tarife — baza znanja za vozače u Beogradu navodi tarife Ekonomik i Komfort, lista pogodnih vozila (ažurirana 25.08.2026) ne pominje EV modele (https://pro.yandex.com/rs-rs/beograd/knowledge-base/taxi/tariffs/auto-list).",
+      "url": "https://www.techzone.rs/2026/07/30/yandex-go-business-u-srbiji/",
+      "date": "30.07.2026",
+      "confidence": "srednja"
+    },
+    {
+      "company": "Yandex Go / Pink Taxi (kontekst tržišta, Beograd)",
+      "fact": "U Beogradu je oko 6.500 registrovanih taksi vozila; Pink Taxi ušao u Yandex Go sistem (praktično svi beogradski taksiji na aplikaciji); provizija Yandex Go za taksiste 10% bez PDV-a. O električnim vozilima nema podataka.",
+      "url": "https://novaekonomija.rs/vesti-iz-zemlje/pink-taksi-konacno-usao-u-jandeksov-sistem-od-ove-nedelje-na-ruskoj-aplikaciji-prakticno-svi-taksiji-u-beogradu",
+      "date": "26.02.2026",
+      "confidence": "srednja"
+    },
+    {
+      "company": "Bolt",
+      "fact": "Ne radi u Srbiji: Srbija nije na listi zemalja/gradova na bolt.eu (od regiona samo Hrvatska). Mediji 18.05.2024 pisali o regrutaciji vozača za Beograd, ali „Zvaničnih informacija još uvek nema” (https://www.kurir.rs/techvision/vesti/4392473/stize-li-bolt-u-srbiju-aplikacija-koju-koristi-150-miliona-ljudi-daje-beograd-kao-opciju-za-vozace-sta-se-krije-iza-toga).",
+      "url": "https://bolt.eu/en/cities/",
+      "date": "22.09.2026 (lista gradova bez datuma)",
+      "confidence": "visoka"
+    },
+    {
+      "company": "City Taxi Novi Sad",
+      "fact": "Udruženje navodi „flotu električnih i hibridnih ekoloških vozila”; 19.02.2026 u flotu uveden Changan Deepal S07 (tip pogona BEV/EREV i broj vozila nisu navedeni, https://citytaxins.rs/city-taxi-novi-sad-changan-deepal-s07/); 02.04.2026: „90% vozila čine hibridi sa gasnim sistemom”, „razvijena sopstvena infrastruktura za punjenje”, rast 250% za 2,5 godine. Ukupan broj vozila nije objavljen.",
+      "url": "https://citytaxins.rs/kako-je-city-taxi-novi-sad-za-dve-i-po-godine-promenio-standard-taksi-usluge-u-novom-sadu/",
+      "date": "02.04.2026 (sajt izmenjen 09.08.2026)",
+      "confidence": "visoka"
+    },
+    {
+      "company": "Taksi udruženja Niš",
+      "fact": "Hibridi čine „90% voznih parkova svih taksi udruženja u Nišu”, Niš ima najveći broj ekoloških taksi vozila u Srbiji, a tada samo tri lokacije za punjenje; broj potpuno električnih taksija nije naveden.",
+      "url": "https://www.industrija.rs/vesti/clanak/najveci-broj-ekoloskih-taksi-vozila-u-srbiji-nalazi-se-u-nisu",
+      "date": "06.02.2023 (isto: https://www.juznevesti.com/drustvo/u-srbiji-nis-ima-najvise-eko-taksi-vozila-a-svega-tri-punjaca/)",
+      "confidence": "srednja"
+    },
+    {
+      "company": "Vlada Srbije / Ministarstvo građevinarstva, saobraćaja i infrastrukture — subvencije za taksi vozila (program 2020–2022)",
+      "fact": "Bespovratno 8.000 € po novom taksi vozilu; važilo za vozila sa „potpuno električnim, hibridnim ili pogonom na komprimovani prirodni gas” ili najmanje Euro 6; min. vrednost vozila 13.000 €, korišćenje u taksiju najmanje 3 godine. Do 25.11.2022 isplaćeno za 2.403 vozila od početka 2020, za 2023 planirano 880 miliona RSD (https://www.srbija.gov.rs/vest/666220/nastavak-isplata-subvencija-za-kupovinu-novih-taksi-vozila.php). Program nije bio EV-specifičan; broj EV među subvencionisanim vozilima nije objavljen. Stranica MGSI sadrži dokumente do marta 2023 (https://www.mgsi.gov.rs/lat/dokumenti/subvencije-u-taksi-prevozu); novi taksi program za 2024–2026 nije pronađen.",
+      "url": "https://novaekonomija.rs/vesti-iz-zemlje/taksistima-za-nova-kola-subvencija-od-8000-evra",
+      "date": "31.12.2021 (program za 2022); status 25.11.2022",
+      "confidence": "visoka"
+    },
+    {
+      "company": "Ministarstvo zaštite životne sredine — opšta EV subvencija 2026",
+      "fact": "Nema posebne EV-taksi subvencije za 2026. Opšta Uredba („Sl. glasnik RS”, br. 12/2026 i 86/2026): „za vozila vrste M1 i N1 isključivo na električni pogon - 5.000 evra”; „Pravo na subvencionisanu kupovinu vozila imaju pravna lica, preduzetnici i fizička lica.” Taksi se u tekstu ne pominje posebno — taksi prevoznik može konkurisati kao preduzetnik/pravno lice pod opštim uslovima (tumačenje, ne posebna mera).",
+      "url": "https://www.paragraf.rs/propisi/uredba-o-uslovima-subvencionisane-kupovine-elektricnih-hibridnih-vozila.html",
+      "date": "Uredba 12/2026 i 86/2026",
+      "confidence": "visoka"
+    }
+  ],
+  "subscription_leasing": [
+    {
+      "company": "Gama Rent (Gama Elektrocentar d.o.o.)",
+      "cities": ["Beograd"],
+      "models": ["Seres 5"],
+      "price": "140.000 RSD mesečno (PDV nije naveden)",
+      "conditions": "Tip: mesečni najam (nije lizing). Isti uslovi kao kratkoročni: depozit 2.000 EUR na kreditnoj kartici, franšiza 2.000 EUR, neograničeni kilometri, min. 25 god. i 5 god. iskustva.",
+      "charging_rules": "Isporuka sa najmanje 80% baterije, vraćanje u istom stanju; punjenje dostupno na lokaciji Gama Centra.",
+      "url": "https://gamarent.rs/cars/seres-5/",
+      "page_date": "© 2026",
+      "confidence": "visoka"
+    },
+    {
+      "company": "KiBOST Car",
+      "cities": ["Beograd", "Novi Sad"],
+      "models": ["Tesla Model 3", "Tesla Model S", "Tesla Model Y", "Tesla Model X"],
+      "price": "Najam „od 30 dana”, € po danu sa PDV-om: Model 3 — 30; Model S — 35; Model Y — 40; Model X — 80. Preko 2 meseca popust po dogovoru.",
+      "conditions": "Tip: dugoročni najam (nije lizing). Depozit 1.500 € preko kreditne kartice; bez ograničenja kilometraže.",
+      "charging_rules": "Nisu objavljena.",
+      "url": "https://kibostcar.com/cenovnik-rent-a-car/",
+      "page_date": "izmenjeno 22.02.2025",
+      "confidence": "visoka"
+    },
+    {
+      "company": "Royal rent a car",
+      "cities": ["Beograd", "Novi Sad"],
+      "models": ["Tesla Model 3", "Tesla Model Y", "Tesla Model S", "Tesla Model X"],
+      "price": "Najam 30+ dana, € po danu: Beograd — Tesla 3 57, Tesla Y 63, Tesla S 75, Tesla X 150; Novi Sad — Tesla 3 54 (sa limitom 4.000 km).",
+      "conditions": "Tip: dugoročni najam. Cene „informativno-sezonske”; na dan provere sva Tesla vozila označena kao „dugoročno rezervisan” ili „trenutno nije dostupno”.",
+      "charging_rules": "Nisu objavljena.",
+      "url": "https://www.carrentalbeograd.rs/luxury-car-rental/tesla-3",
+      "page_date": "bez datuma",
+      "confidence": "visoka"
+    },
+    {
+      "company": "Električni Automobili d.o.o.",
+      "cities": ["Beograd"],
+      "models": ["Tesla Model 3", "Tesla Model S", "Chery FX EV", "Chery EQ1", "Renault Zoe", "Renault Kangoo"],
+      "price": "„Cena Na upit”",
+      "conditions": "Tip: „Dugoročni najam sa mogućnošću otkupa i lizing”; lizing opcije za poslovne klijente. Mesečna cena nije objavljena.",
+      "charging_rules": "Nisu objavljena.",
+      "url": "https://elektricniautomobili.eu/listing/tesla-model-3-rent/",
+      "page_date": "ažurirano 18.03.2026",
+      "confidence": "visoka"
+    },
+    {
+      "company": "BYD Srbija + Banca Intesa (kredit za fizička lica / lizing za pravna lica)",
+      "cities": ["Srbija (BYD mreža)"],
+      "models": ["BYD ATTO 2", "BYD ATTO 3", "BYD SEAL", "BYD SEAL U", "BYD SEALION 7"],
+      "price": "Primer za fizička lica: ATTO 2 Active, 84 meseca — „vama ostaje rata od 252,72 evra”, „7.647 evra učešća (uračunato je 5.000 evra subvencija)”. Pravna lica: „NKS na lizing iznosi 3,99%”, ATTO 2 — učešće 9.250,74 €, „mesečnu ratu od 299 evra”.",
+      "conditions": "Tip: kredit (fizička lica, rokovi 48/60/72/84 meseca, min. 30% učešća za EUR kredite) i finansijski lizing (pravna lica) — nije pretplata. Članak iz 2025; rok važenja ponude nije naveden — za 2026 potvrditi kod BYD/Intesa (sajt byd-auto.rs na dan provere prikazuje samo cenu, npr. Dolphin Surf „od 23.990€”).",
+      "charging_rules": "n/p",
+      "url": "https://www.telegraf.rs/auto/auto-vesti/4088938-kreditne-pogodnosti-obradovale-kupce-byd-elektricnih-automobila",
+      "page_date": "11.04.2025",
+      "confidence": "srednja"
+    },
+    {
+      "company": "Škoda Alpros (ovlašćeni partner Škoda) — operativni lizing",
+      "cities": ["Srbija"],
+      "models": ["Škoda Enyaq (električni)", "Škoda Enyaq Coupé (električni)", "Škoda Elroq (električni) — u meniju modela"],
+      "price": null,
+      "conditions": "Program objavljen, mesečna cena za EV nije: „Korisnici lizinga mogu biti: fizička lica, poljoprivrednici, preduzetnici i pravna lica”; „do 48 meseci”; depozit tipično 20% (10–25%); „nepromenljiva mesečna rata”, „PDV (20%) se plaća kroz rate”; za fizička lica — državljani RS, 6 meseci neprekidnog zaposlenja, „Polovina plate mora da pokrije mesečnu ratu”.",
+      "charging_rules": "n/p",
+      "url": "https://skoda-alpros.rs/finansiranje/operativni-lizing/",
+      "page_date": "13.12.2023",
+      "confidence": "visoka"
+    },
+    {
+      "company": "Porsche Leasing SCG — „Zakup vozila” (operativni zakup)",
+      "cities": ["Srbija"],
+      "models": ["Volkswagen, Audi, SEAT, Cupra (EV modeli nisu posebno navedeni)"],
+      "price": null,
+      "conditions": "Program objavljen, cene nisu: „Ugovor o zakupu mogu da zaključe fizička lica, pravna lica i preduzetnici”; vozilo se vraća na kraju ugovora; „Visina depozita utiče na visinu mesečne zakupnine”.",
+      "charging_rules": "n/p",
+      "url": "https://www.porscheleasing.rs/proizvodi/finansiranje/zakup-vozila/",
+      "page_date": "bez datuma",
+      "confidence": "visoka"
+    }
+  ],
+  "checked_without_result": [
+    "SIXT Srbija (Beograd, aerodrom Beograd, aerodrom Niš, Novi Sad) — sixt.com stranice za Srbiju i BEG ne pominju EV kategoriju ni modele.",
+    "Europcar Srbija (europcar.rs) — kategorije bez EV/hibrida; operativni lizing samo za pravna lica.",
+    "Enterprise / Alamo (enterprise.com/en/rental-cars/rs.html; alamo.com BEG) — klase bez EV.",
+    "Avis — avis.com stranica BEG ima samo generički link „Electric” u podnožju, bez EV za Beograd; avis.rs nije dostupno.",
+    "Budget (budget.com/en/locations/rs: Beograd, Kraljevo, Niš) — bez EV za Srbiju.",
+    "Hertz Srbija (hertz.rs/en/car-rental/our-fleet/) — stranica flote ne prikazuje modele; EV nije potvrđen.",
+    "Green Motion Beograd — greenmotion.com/belgrade 403 (nije dostupno); stranica aerodroma bez EV modela; bookingauto.com listing Green Motion BEG bez EV.",
+    "Carwiz Srbija (carwiz.rs) — bez EV (EV flota postoji samo na carwiz.hr).",
+    "Lokalne agencije bez EV: EKO Rent a car (ekorentacar.rs), ZIM rent a car, Unirent (flota bez EV; blog o EV nije dostupan), Stars rent a car (samo blog o kineskom EV), „Rent a car Tesla” aerodrom (ime po aerodromu, bez EV), Booom!/Royal aerodrom sajt (rentacaraerodrombeograd.rs), Car4Use.",
+    "Niš (grad i aerodrom Konstantin Veliki) — nije pronađena nijedna EV rent-a-car ponuda (lokalne agencije + SIXT/Budget Niš).",
+    "Agregatori: economybookings.com (EV stranice za Beograd/Srbiju generičke, bez modela i cena), discovercars.com/serbia/belgrade (bez EV), kayak.com „Tesla car rentals in Belgrade” (generička, bez konkretnih Tesla ponuda), rentalcars.com (HTTP 405 — nije dostupno). Nijedan agregator ne prikazuje jasno EV model za Beograd/Novi Sad.",
+    "electricblue.rs i teslarent.rs — nije dostupno (timeout / robots).",
+    "EV car-sharing u Srbiji (Beograd, Novi Sad, Niš, Kragujevac, Subotica, Čačak): pretrage SR/EN, Bloomberg Adria (04.07.2025), Netokracija (06.02.2024), 013info „Razvoj car sharinga u Beogradu” (24.04.2026 — pominje Anygo i potencijal Fiat Grande Panda EV iz Kragujevca, bez konkretnog projekta), Beobuild forum (tema 03/2024), Balkan Green Energy News (tag car-sharing), NAAEV projekti — nema aktivnog ni najavljenog EV car-sharinga. Na Beobuild forumu korisnici pominju da Yandex navodno razmatra Beograd — nepotvrđeno (niska).",
+    "Plan održive urbane mobilnosti Beograda (usvojen 18.12.2020; energetskiportal.rs 21.12.2020) — prikaz ne pominje car-sharing.",
+    "Broj električnih taksija u Srbiji ili po gradovima — nije objavljen ni u jednom pronađenom izvoru.",
+    "Gradske subvencije za EV-taksi 2026 (Beograd, Novi Sad, Niš) — nisu pronađene; u Beogradu samo promo tekst kandidata za gradonačelnika (mondo.rs, 30.03.2022) o subvencionisanju ekoloških vozila za taksiste — bez realizacije u pronađenim izvorima. bgprevoz.rs „Propisi Taksi” — naslovi dokumenata bez EV odredbi (sadržaj odluke nije otvoren).",
+    "Nacrt izmena zakona o prevozu putnika (021.rs, 03.09.2026) — dinamične cene za vožnje preko aplikacija (+30% / −20%), bez odredbi o EV.",
+    "Lizing/pretplata bez objavljene EV mesečne cene: Renault operativni lizing (renault.rs — samo pravna lica); Intesa Leasing operativni lizing (13.02.2025 — usmeren na firme; uključuje produženu garanciju, kasko i registraciju, do 4 godine); UniCredit Leasing specijalne ponude (sajamski EV keš-bek 500/1.000 € važio do 30.04.2025; aktuelni primeri samo Citroën benzin/hibrid); Raiffeisen Leasing i Raiffeisen Rent (bez EV ponude); OTP Leasing (finansijski lizing za fizička lica, bez EV akcije); Europcar operativni lizing (pravna lica); Leapmotor Srbija / Avtonova KAB (18–19.03.2026 — samo cene, T03 od 17.490 €); BYD sajamska ponuda 2026 (automotorevija.rs 20.03.2026 — samo cene, važila do 15.04.2026); hyundai.rs/ponuda/finansiranje (sadržaj iza prijave — nije dostupno).",
+    "Nije provereno (iscrpljen budžet pretrage u sesiji): Ayvens/ALD, Arval, NLB lizing, AIK/ProCredit lizing, Uber (status u Srbiji)."
+  ],
+  "notes": "Stanje 22.09.2026. (1) EV rent-a-car u Srbiji postoji samo kod malih, EV-specijalizovanih lokalnih firmi u Beogradu (Gama Rent, KiBOST, Royal, Električni Automobili d.o.o., Electric Blue) i delom u Novom Sadu (KiBOST, Royal); nijedan međunarodni brend (SIXT, Avis, Budget, Hertz, Europcar, Enterprise/Alamo, Green Motion, Carwiz) ne prikazuje EV u Srbiji; u Nišu nije nađena nijedna EV ponuda. Samo Gama Rent javno objavljuje pravilo punjenja (isporuka sa ≥80%, vraćanje u istom stanju) — ostali nemaju pisana pravila o bateriji, Supercharger troškovima ni karticama za punjenje. (2) Cene: najniža objavljena je Electric Blue od 16 €/dan (ZOE/Kangoo, oglas); Tesla od 30 €/dan samo za najam od 30 dana (KiBOST, sa PDV-om) do 90–160 €/dan za 2 dana; Royal Tesla vozila su na dan provere sva rezervisana ili nedostupna — cenovnik nije dokaz dostupnosti. Preračun po kursu projekta 117,2 RSD/EUR (samo orijentacija): Gama Seres 5 12.000 RSD ≈ 102 €; 140.000 RSD/mesec ≈ 1.195 €. (3) Car-sharing sa BEV: NE POSTOJI aktivan niti najavljen servis; jedini aktivni car-sharing je Anygo (Beograd + Novi Sad) sa hibridima i benzincima; Car4Use (2015) ugašen. (4) Taksi: nema javnog broja EV taksija; Bolt ne radi u Srbiji; Yandex Go (BG, NS, Pančevo, Niš) i CarGo nemaju EV tarifu — CarGo samo deklarativno najavljuje širenje flote hibridima i EV; City Taxi Novi Sad jedini javno ističe EV/hibridnu flotu (90% hibridi sa gasom, Changan Deepal S07 od 02/2026, sopstveni punjači). Posebna subvencija za taksi (8.000 €, 2020–2022) nije bila EV-specifična; za 2026 postoji samo opšta EV subvencija (5.000 € za M1/N1 BEV, pravo imaju i preduzetnici/pravna lica). (5) Pretplata/lizing: prava „auto na pretplatu” sa javnom EV mesečnom cenom za fizička lica nije pronađena; javne mesečne cene postoje samo za dugoročni najam (Gama 140.000 RSD/mes; KiBOST i Royal 30+ dana), a operativni lizing za fizička lica nude Škoda Alpros i Porsche Leasing SCG bez javne EV cene. (6) Regionalno (za širenje, van Srbije): Eco Taxi Podgorica vozi isključivo VW ID.4 (https://ecotaksi.me/); Avant2Go nudi 100% električni car-sharing u Severnoj Makedoniji — Renault ZOE, Smart ForFour/ForTwo, BMW i3 (https://avant2go.mk/en/car-sharing/vehicle); Ljubljana je potpisala koncesiju za električni car-sharing (Balkan Green Energy News, 24.03.2026). (7) Za neutralni vodič: sajt Električni Automobili d.o.o. promoviše i „REC1 Token” ulaganja vezana za EV flotu sa navedenim prinosom do 10% godišnje — nije predmet ove provere i ne treba ga preporučivati bez posebne analize. KP oglas Electric Blue postavljen je sa naloga fizičkog lica — ime oglašivača namerno nije preneto. Svi datumi viđenja: 22.09.2026; poverenje: visoka = zvanični sajt, srednja = mediji/oglas/agregator, niska = neproverljivo/pojedinačni izvor."
+}
