@@ -2,13 +2,14 @@
 """BlokVolt static site generator (blokvolt.rs). Python 3 + Jinja2 + Markdown + BeautifulSoup.
 Usage: python3 build.py  -> dist/
 """
-import json, os, re, shutil, glob, datetime, html
+import json, os, re, shutil, glob, datetime, html, sys
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import markdown
 from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).parent
+sys.path.insert(0, str(ROOT / 'scripts'))
 DIST = ROOT / 'dist'
 SITE = 'https://www.blokvolt.rs'
 # Dates live in content/data/site.json: 'updated' = last content update (footer, home, sitemap lastmod),
@@ -382,6 +383,26 @@ def _d(x):
     p = (x.get('updated') or '').split('.')
     return (p[2], p[1], p[0]) if len(p) == 3 else ('0', '0', '0')
 CHECKS.sort(key=_d, reverse=True)
+
+# 4e) open data — CSV exports of everything the site publishes as a table
+import open_data
+EV_DATA = json.load(open(ROOT / 'content' / 'data' / 'ev-modeli.json', encoding='utf-8'))
+WALLBOX = json.load(open(ROOT / 'content' / 'data' / 'wallbox-modeli.json', encoding='utf-8'))
+DATASETS = open_data.export_all(DIST, SITE, published, operators, price_index, EV_DATA, WALLBOX, FIRMS_CHECKED)
+DL_META = {
+    'blokvolt-firme.csv': ('Registar firmi', f'Svih {len(published)} firmi koje u Srbiji prodaju ili ugrađuju kućni punjač: sedište, pokrivenost, javna cena, da li nude ugradnju, brojilo, papire za skupštinu i garanciju, sajt i datum provere.', f'kvartalno (poslednja revizija {FIRMS_CHECKED})'),
+    'blokvolt-cene-elektricnih-automobila.csv': ('Cene električnih automobila', 'Svaki model sa cenom koju uvoznik javno objavljuje: cena od, cena posle subvencije, redovna i akcijska cena, da li je subvencija već uračunata, link na cenovnik.', f'mesečno (poslednja provera {EV_DATA["checked"]})'),
+    'blokvolt-wallbox-modeli.csv': ('Wallbox modeli i cene', 'Javno objavljene cene samih uređaja kod prodavaca u Srbiji, po modelu i snazi, sa PDV-statusom i linkom na proizvod.', f'kvartalno (poslednja provera {WALLBOX["checked"]})'),
+    'blokvolt-javno-punjenje-cene.csv': ('Indeks cena javnog punjenja', 'Zabeležene tarife i računi sa javnih punjača: cena po minutu, po satu ili po „jedinici“, stvarni računi sa cenom po kWh, snaga punjača, datum i izvor.', f'mesečno (poslednji snimak {index_checked})'),
+    'blokvolt-mreze-javnog-punjenja.csv': ('Mreže javnog punjenja', 'Operatori, aplikacije i domaćini: pokrivenost, veličina mreže, način plaćanja, kartica, roming i podrška.', f'mesečno (poslednja provera {index_checked})'),
+}
+for d in DATASETS:
+    d['title'], d['desc'], d['cadence'] = DL_META[d['name']]
+    d['kb'] = round(d['bytes'] / 1024, 1)
+render('preuzimanje.html', '/preuzimanje/', datasets=DATASETS,
+       title='Podaci za preuzimanje — CSV tabele o električnim automobilima u Srbiji | BlokVolt',
+       description=f'Svi podaci sa BlokVolta u CSV formatu, besplatno i uz slobodnu licencu: registar od {len(published)} firmi, cene električnih automobila kod uvoznika, cene wallbox uređaja, indeks cena javnog punjenja i mreže. Sa izvorom i datumom provere uz svaki red.')
+add_url('/preuzimanje/', '0.6')
 
 # 5) home
 render('home.html', '/', GUIDES=GUIDES_META, PODACI=PODACI, CHECKS=CHECKS, by_group=by_group, cities=cities, CITY_SLUGS=CITY_SLUGS,

@@ -43,6 +43,10 @@ Za propise navodimo broj Službenog glasnika i, gde postoji, link na tekst. Za b
 
 Datum poslednje provere stoji na svakoj stranici i uz svaku firmu.
 
+## Podaci su otvoreni
+
+Sve što objavljujemo kao tabelu može da se skine kao CSV na stranici [preuzimanje podataka](/preuzimanje/), uz licencu Creative Commons Attribution 4.0 — slobodno za korišćenje i objavljivanje, uz navođenje izvora. Uz svaki red ide link na stranicu sa koje je podatak prepisan i datum provere, pa svako može da proveri naš rad umesto da nam veruje na reč. To je i najlakši način da nas neko uhvati u grešci, što nam odgovara.
+
 ## Kako nastaju tekstovi
 
 Tekstove pripremamo uz pomoć AI alata, iz liste proverenih činjenica sa izvorima; činjenice, iznose i izvore pre objave proverava redakcija. Lektura sa izvornim govornikom srpskog radi se u paketima; ako naiđete na grešku u jeziku ili činjenici, <a href="/ispravka/">prijavite je</a>.

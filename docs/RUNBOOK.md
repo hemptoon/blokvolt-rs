@@ -195,6 +195,15 @@ as one paragraph of something true about that city only. A city with no firm of 
 page then says so and lists the firms that cover it from elsewhere. Do not add a city just to have
 the page: without a local firm, a local operator or a local fact, it repeats the neighbour's page.
 
+### 3.6d Open data (/preuzimanje/)
+
+Nothing to maintain: `scripts/open_data.py` rebuilds the five CSV files from the same objects the
+pages use, on every build. When a dataset gains a column, add it there and to `DL_META` in `build.py`
+(title, description, update cadence) — the page, the JSON-LD `Dataset` blocks and the sitemap follow.
+Keep the promise the page makes: every row carries its source URL and check date, an unpublished
+value stays empty rather than estimated, and numbers are written with a comma decimal mark because
+the delimiter is a semicolon (Serbian Excel opens that without an import wizard).
+
 ### 3.7 Firm register (quarterly revision)
 
 For every published `content/firme/*.json`: open the firm's site and price pages from `sources`,

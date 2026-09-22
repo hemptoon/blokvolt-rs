@@ -12,6 +12,7 @@ disclaimer: Nedostaje nešto u dnevniku? Pišite na
 ---
 ## 23. septembar 2026
 
+- Novo: <a href="/preuzimanje/">podaci za preuzimanje</a> — registar firmi, cene električnih automobila, cene wallbox uređaja, indeks cena javnog punjenja i mreže, sve kao CSV pod licencom CC BY 4.0. Uz svaki red ide link na izvor i datum provere.
 - Stranice po gradu proširene: uz <a href="/gradovi/beograd/">Beograd</a>, <a href="/gradovi/novi-sad/">Novi Sad</a> i <a href="/gradovi/nis/">Niš</a> dodati su <a href="/gradovi/subotica/">Subotica</a>, <a href="/gradovi/cacak/">Čačak</a> i <a href="/gradovi/kragujevac/">Kragujevac</a>. Svaka sada pokazuje i firme koje grad pokrivaju sa strane (po pokrivenosti koju same objavljuju), mreže javnog punjenja koje taj grad navode i sate niže tarife EPS-a za taj deo Srbije. Firma sa dva sedišta sada se pojavljuje na obe gradske stranice.
 - Na stranici <a href="/podaci/cene-elektricnih-automobila/">cene električnih automobila</a> uz svaki model stoji i fotografija — 64 slike sa Wikimedia Commonsa, pod slobodnim licencama, sa autorima i licencama na dnu stranice. Slike su ilustrativne i ne prikazuju obavezno verziju iz cenovnika.
 - Nova <a href="/pretraga/">pretraga sajta</a> (radi bez servera, pretražuje sve stranice) i blok „poslednje provere“ na početnoj — koja stranica je kada proverena i kada joj je sledeća provera.
