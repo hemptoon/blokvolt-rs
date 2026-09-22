@@ -1,0 +1,59 @@
+{
+ "slug": "lidl-echarge",
+ "name": "Lidl eCharge — Novi Sad, Liman",
+ "kind": "besplatno",
+ "order": 10,
+ "short": "Besplatno punjenje na parkingu Lidl prodavnice u Novom Sadu (Ive Andrića 16) tokom radnog vremena, do 60 minuta dnevno.",
+ "website": "https://kompanija.lidl.rs/press-centar/subitems/saopstenja-za-medije/2022/besplatno-punjenje-e-automobila-u-lidlu-na-limanu",
+ "domain": "lidl.rs",
+ "app": "Lidl eCharge / bilo koja RFID kartica",
+ "city": "Novi Sad",
+ "coverage": "jedna lokacija (Liman); druge Lidl prodavnice sa punjačima nisu potvrđene",
+ "network": "2 mesta za punjenje: DC do 20 kW (CCS / CHAdeMO) i AC 11 kW",
+ "power": "DC 20 kW, AC 11 kW",
+ "billing": "Besplatno tokom radnog vremena prodavnice (svakog dana 08–22), najviše 60 minuta dnevno.",
+ "verdicts": {
+  "cenovnik": "Besplatno",
+  "naplata": "Bez naplate",
+  "kwh": "—",
+  "idle": "Limit 60 min/dan"
+ },
+ "vclass": {
+  "cenovnik": "yes",
+  "naplata": "yes",
+  "kwh": "no",
+  "idle": "ask"
+ },
+ "prices": [
+  {
+   "what": "Punjenje",
+   "value": "Besplatno, max 60 min dnevno",
+   "date": "2022 (saopštenje) / 2024 (evfix.rs)",
+   "source": "lidl.rs, evfix.rs",
+   "url": "https://evfix.rs/stanice-za-punjenje-ev/besplatno-punjenje/lidl-echarge/",
+   "confidence": "primarni izvor + korisnik"
+  }
+ ],
+ "fees": "Nema; važi ograničenje 60 minuta dnevno.",
+ "payment": "Aktivacija RFID karticom ili aplikacijom Lidl eCharge",
+ "roaming": "—",
+ "support": "kompanija.lidl.rs",
+ "sources": [
+  {
+   "url": "https://kompanija.lidl.rs/press-centar/subitems/saopstenja-za-medije/2022/besplatno-punjenje-e-automobila-u-lidlu-na-limanu",
+   "label": "lidl.rs — saopštenje (2022)",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://evfix.rs/stanice-za-punjenje-ev/besplatno-punjenje/lidl-echarge/",
+   "label": "evfix.rs — uslovi i iskustvo (2024)",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednja — saopštenje je iz 2022, potvrda korisnika iz 2024",
+ "notes": "",
+ "card": "Novi Sad, Liman · do 60 min dnevno",
+ "kind_label": "Besplatno punjenje",
+ "publish": true
+}

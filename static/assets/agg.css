@@ -1,0 +1,52 @@
+/* BlokVolt aggregator — additions to site.css (registar, filteri, kartice firmi) */
+.w-inline-block{display:inline-block;max-width:100%}
+.agg-us{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;background:var(--volt);color:var(--vink);border-radius:999px;padding:4px 10px;vertical-align:middle;margin-left:8px;font-style:normal}
+.v3-ph h1 .agg-us{font-size:13px;vertical-align:middle;position:relative;top:-6px}
+.agg-count{display:inline-block;font-size:14px;font-weight:700;color:var(--mut);background:var(--paper2);border-radius:999px;padding:2px 10px;margin-left:8px;vertical-align:middle}
+.agg-filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 26px;font-size:14px}
+.agg-filters b{margin-right:4px;color:var(--mut);font-weight:700}
+.agg-filters button{font:inherit;font-size:13.5px;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;transition:background .15s,border-color .15s}
+.agg-filters button:hover{border-color:var(--ink)}
+.agg-filters button.is-on{background:var(--night);color:#fff;border-color:var(--night)}
+.bva .w3>.bva-cards.agg-grid{grid-template-columns:repeat(3,1fr);margin-bottom:34px}
+.bva a.bva-card.agg-card{display:flex;flex-direction:column;gap:6px;padding-bottom:18px}
+.bva a.bva-card.agg-card.is-us{outline:2px solid var(--volt);outline-offset:-2px}
+.agg-card .agg-meta{display:block;font-size:13px;color:var(--mut);font-weight:600}
+.agg-card .agg-price{display:block;font-size:15px;font-weight:800;color:var(--ink);margin-top:4px}
+.agg-card .agg-vc{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.agg-card .agg-vc i,.agg-verdict{font-style:normal;font-size:12px;font-weight:700;border-radius:999px;padding:4px 9px;background:var(--paper2);color:var(--mut)}
+.agg-card .agg-vc i.is-yes{background:#E4F3C2;color:#2C3B05}
+.agg-card .agg-vc i.is-ask{background:var(--ice);color:#2C3240}
+.agg-card .agg-chk,.bva-tbl td small.chk,.bva-card .agg-chk{display:block;font-size:12px;color:var(--mut);margin-top:8px}
+.bva-tbl td small.chk{margin-top:6px}
+.agg-verdicts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 34px}
+.agg-verdict{display:flex;flex-direction:column;gap:6px;padding:16px 18px;border-radius:18px;background:#fff;border:1px solid var(--line);font-size:13px}
+.agg-verdict span{font-weight:600;color:var(--mut);font-size:12.5px}
+.agg-verdict b{font-size:16px;font-weight:800;color:var(--ink)}
+.agg-verdict.is-yes{background:#E4F3C2;border-color:transparent}
+.agg-verdict.is-yes b{color:#2C3B05}
+.agg-verdict.is-ask{background:var(--ice);border-color:transparent}
+.agg-verdict.is-no b{color:var(--mut);font-weight:700}
+.bva-tbl.agg-card-tbl td{padding:18px 18px 20px}
+.bva-tbl.agg-card-tbl td small.lbl{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);margin:0 0 8px}
+.bva-tbl.agg-card-tbl td::before{display:none}
+.bva .w3>ul.agg-news{list-style:none;padding:0;margin:0 0 30px}
+.bva .w3>ul.agg-news li{padding:12px 0;border-top:1px solid var(--line);font-size:16px}
+.bva .w3>ul.agg-news li b{margin-right:8px;font-weight:800}
+.bva .w3>.bva-cards.agg-home{grid-template-columns:repeat(2,1fr);margin:0 0 34px}
+@media (max-width:1100px){.bva .w3>.bva-cards.agg-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.bva .w3>.bva-cards.agg-grid,.bva .w3>.bva-cards.agg-home{grid-template-columns:1fr}.agg-verdicts{grid-template-columns:repeat(2,1fr)}}
+/* hero chips visible on aggregator pages; wide hero on hub-like pages */
+.v2-page.agg .v3-chips{display:flex}
+.v2-page.agg.agg-wide .v3-ph .w3{max-width:1240px}
+/* section numbering continues across the page (legacy reset lives on .bva-layout only) */
+.v2-page.agg{counter-reset:bvsec}
+/* public charging: price index + operator cards */
+.bva-tbl.agg-idx tr.is-free td{background:rgba(217,244,91,.14)}
+.bva-tbl.agg-idx tr.is-ref td{background:var(--paper2);font-style:normal}
+.bva-tbl.agg-idx td small.of{display:block}
+.bva-tbl.agg-idx td .k{display:block;white-space:nowrap;font-weight:700}
+.bva-tbl.agg-idx td .k+.k{font-weight:600;color:var(--mut)}
+.bva .w3>h3 .agg-count{font-size:13px}
+.bva .w3>.bva-stats .bva-stat b{white-space:nowrap}
+.bva-stat span a{color:var(--volt);text-decoration-color:rgba(217,244,91,.5)}

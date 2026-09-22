@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "CollectionPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ path }}", "inLanguage": "sr-Latn", "dateModified": "2026-09-22",
+   "mainEntity": {"@type": "ItemList", "numberOfItems": {{ firms|length }}, "itemListElement": [{% for f in firms %}{"@type": "ListItem", "position": {{ loop.index }}, "name": {{ f.name|tojson }}, "url": "{{ SITE }}{{ f.url }}"}{% if not loop.last %},{% endif %}{% endfor %}]}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Firme", "item": "{{ SITE }}/firme/"}, {"@type": "ListItem", "position": 3, "name": {{ city|tojson }}, "item": "{{ SITE }}{{ path }}"}]}
+ ]
+}</script>{% endblock %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Grad · {{ city }}</div><h1>Punjači za električni auto — {{ city }}</h1><p>{{ firms|length }} firmi sa sedištem u gradu {{ city }} koje prodaju ili ugrađuju kućne punjače. Većina instalatera radi i van svog grada — pogledajte kolonu „pokrivenost“ na stranici firme. Podaci prepisani sa sajtova firmi, sa datumom provere.</p><div class="v3-meta"><span>Provereno {{ TODAY }}</span><span>{{ firms|length }} firmi</span></div><div class="v3-chips"><a href="/firme/">Sve firme u Srbiji</a><a href="/cena-punjaca-za-elektricni-auto">Uporedna tabela cena</a><a href="/punjac-u-zgradi-skupstina">Skupština: kako do saglasnosti</a></div></div></div>{% endblock %}
+{% block content %}<div class="bva"><div class="w3">
+<div class="bva-cards agg-grid">
+{% for f in firms %}
+<a class="bva-card agg-card{% if f.is_us %} is-us{% endif %}" href="{{ f.url }}"><b>{{ f.name }}{% if f.is_us %} <i class="agg-us">naša ponuda</i>{% endif %}</b><span class="agg-meta">{{ f.kind_label }} · {{ f.group_label.split(' — ')[0] }}</span><span class="agg-price">{{ f.price_headline or 'cena na upit' }}</span><span class="agg-vc"><i class="is-{{ f.vclass.get('ugradnja','no') }}">Ugradnja: {{ f.verdicts.get('ugradnja') or 'ne pominje se' }}</i><i class="is-{{ f.vclass.get('brojilo','no') }}">Brojilo: {{ f.verdicts.get('brojilo') or 'ne pominje se' }}</i></span><span class="agg-chk">provereno {{ f.verified }}</span></a>
+{% endfor %}
+</div>
+<h2>Šta još treba znati u gradu {{ city }}</h2>
+{% if city == 'Novi Sad' %}<p>Novi Sad je od jula 2026. jedini veliki grad koji naplaćuje parkiranje na mestima sa javnim punjačem posebno: <strong>500 RSD za 60 minuta</strong> (Cenovnik JKP „Parking servis“, Sl. list Grada Novog Sada 35/26) — u cenu ulazi i struja. Detalji i izvori: <a href="/podaci/putarina-i-parking/">putarina i parking</a>. Niža tarifa EPS-a u Vojvodini važi od 23 do 7 časova (proverite na svom računu).</p>{% elif city == 'Beograd' %}<p>Beograd nema parking-povlastice za električna vozila u zonskom sistemu; jedina poznata izuzeća su u garaži „Obilićev venac“ (podaci iz 2021, proveravamo). Niža tarifa EPS-a u Beogradu važi od 24 do 8 časova (proverite na svom računu). Detalji: <a href="/podaci/putarina-i-parking/">putarina i parking</a>.</p>{% elif city == 'Niš' %}<p>U Nišu je neobično velika ponuda uređaja bez ugradnje (Schneider i Wallbox preko elektroprodavnica) i jedini električar u Srbiji sa javnim cenovnikom ugradnje. Niža tarifa EPS-a u centralnoj Srbiji važi od 22 do 6 časova (proverite na svom računu).</p>{% endif %}
+<p>Za punjač u garaži zgrade procedura je ista u svim gradovima — <a href="/punjac-u-zgradi-skupstina">saglasnost skupštine</a>, <a href="/ko-placa-struju-za-punjenje">obračun struje</a> i <a href="/bezbednost-punjenja-atest">atest instalacije</a>.</p>
+</div></div>{% endblock %}

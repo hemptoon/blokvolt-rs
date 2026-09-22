@@ -1,0 +1,103 @@
+{
+ "slug": "chargego",
+ "name": "Charge&GO (MT-KOMEX)",
+ "kind": "cpo",
+ "order": 1,
+ "short": "Komercijalna mreža javnih punjača — operator mreže (CPO) i aplikacija za naplatu (eMSP): 79 punjača na 68 lokacija prema brojačima operatera. Ista firma kao ChargeGo / elektropunjaci.com iz registra kućnih punjača.",
+ "website": "https://chargego.rs/",
+ "domain": "chargego.rs",
+ "app": "Charge&GO (iOS/Android) · veb-klijent client.chargego.rs",
+ "city": "Beograd",
+ "coverage": "cela Srbija (koridori E75/E70, Beograd, Novi Sad, Niš, Kragujevac, Čačak, Subotica); Severna Makedonija, BiH",
+ "network": "79 punjača · 68 lokacija · 135 konektora (brojači na chargego.rs, stanje 31.07.2025, provereno 22.09.2026)",
+ "power": "AC 22 kW – DC 240 kW (tipično DC 50–150 kW); domaćini: OMV (18 lokacija), NIS/Gazprom, Stop Shop, BIG, Promenada, Airport City",
+ "billing": "Po minutu punjenja; cena zavisi od snage punjača i statusa korisnika (registrovan / neregistrovan) i prikazuje se u aplikaciji u trenutku pokretanja sesije.",
+ "verdicts": {
+  "cenovnik": "Nije objavljen — samo u aplikaciji",
+  "naplata": "Po minutu",
+  "kwh": "Ne",
+  "idle": "5 RSD/min posle 15 min"
+ },
+ "vclass": {
+  "cenovnik": "ask",
+  "naplata": "ask",
+  "kwh": "no",
+  "idle": "yes"
+ },
+ "prices": [
+  {
+   "what": "DC 150 kW, Super Vero Novi Sad",
+   "value": "99 RSD/min (registrovani) · 118 RSD/min (neregistrovani)",
+   "date": "februar 2025",
+   "source": "komentar korisnika, evfix.rs",
+   "url": "https://evfix.rs/stanice-za-punjenje-ev/naplata-punjenja/mapa-punjaca-novi-sad/",
+   "confidence": "korisnički podatak"
+  },
+  {
+   "what": "DC ~120 kW",
+   "value": "81–97,20 RSD/min",
+   "date": "avgust 2023",
+   "source": "forum.beobuild.rs",
+   "url": "https://forum.beobuild.rs/threads/električna-vozila-i-punjači.3889/page-64",
+   "confidence": "korisnički podatak"
+  },
+  {
+   "what": "AC 11/22 kW",
+   "value": "780–936 RSD/sat (13–15,6 RSD/min)",
+   "date": "avgust 2023",
+   "source": "forum.beobuild.rs",
+   "url": "https://forum.beobuild.rs/threads/električna-vozila-i-punjači.3889/page-64",
+   "confidence": "korisnički podatak"
+  },
+  {
+   "what": "Raspon cele mreže (izjava operatera)",
+   "value": "„od 12 dinara na malom sporom punjaču, do 80 dinara na najvećem od 180 kilovata“ po minutu",
+   "date": "novembar 2022",
+   "source": "24sedam.rs (intervju)",
+   "url": "https://24sedam.rs/biznis/finansije/173480/negde-besplatno-a-negde-samo-jeftino-sve-vise-e-automobila-u-srbiji-gde-ih-puniti-strujom/vest",
+   "confidence": "medij"
+  }
+ ],
+ "fees": "Naknada za zauzeće (idle fee): prvih 15 minuta posle završetka punjenja besplatno, zatim 5,00 RSD za svaki započeti minut (Opšti uslovi, na snazi od 26.06.2024). Registracija: početna uplata 3.000 RSD; automatska dopuna 3.000 RSD kad saldo padne ispod 400 RSD. Bez registracije: jednokratno plaćanje karticom preko QR koda na punjaču, fiskalni račun na e-mail.",
+ "payment": "Aplikacija (pripejd saldo), QR kod na punjaču karticom bez registracije, RFID kartica (dostava 2–3 dana), postpejd za pravna lica",
+ "roaming": "Platforma Virta / Hubject — „preko 400.000 punjača“ u Evropi kroz istu aplikaciju; roming se uključuje na zahtev (podrska@chargego.rs). Punjači su vidljivi i u Electromaps-u (Electropass).",
+ "support": "011 715 85 99 (pon–pet 8–16) · dežurna linija 24/7 066 803 17 00 · podrska@chargego.rs",
+ "sources": [
+  {
+   "url": "https://chargego.rs/",
+   "label": "chargego.rs — brojači mreže",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://chargego.rs/opsti-uslovi/",
+   "label": "chargego.rs/opsti-uslovi — naknada za zauzeće",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://chargego.rs/podrska-cesta-pitanja/",
+   "label": "chargego.rs/podrska-cesta-pitanja — cene, depozit, roming",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.omv.rs/sr/mobilnost/elektricni-punjaci/lokacije",
+   "label": "omv.rs — lokacije i snage",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://evfix.rs/stanice-za-punjenje-ev/naplata-punjenja/mapa-punjaca-novi-sad/",
+   "label": "evfix.rs — cena Super Vero Novi Sad (02.2025)",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://energetskiportal.rs/platforma-chargego/",
+   "label": "energetskiportal.rs — ko je operater (03.2021)",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoka za uslove i mrežu · niska za aktuelne cene (poslednji javni podaci: februar 2025)",
+ "notes": "Charge&GO i „ChargeGo“ sa elektropunjaci.com su ista kompanija (MT-KOMEX d.o.o., Beograd) — u registru kućnih punjača vodimo je kao <a href=\"/firme/chargego/\">Charge&GO / ChargeGo</a>. Aktuelne cene po lokaciji vidite tek u aplikaciji pre pokretanja punjenja; brojke iz tabele su poslednje javno zabeležene i služe samo kao orijentir.",
+ "card": "79 punjača · 68 lokacija · DC do 240 kW",
+ "kind_label": "Operator mreže + aplikacija",
+ "publish": true
+}

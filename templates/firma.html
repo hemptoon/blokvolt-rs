@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "Organization", "name": {{ firm.name|tojson }}, "url": {{ firm.website|tojson }}, "address": {"@type": "PostalAddress", "addressLocality": {{ firm.city|tojson }}, "addressCountry": "RS"}},
+  {"@type": "WebPage", "name": {{ title|tojson }}, "url": "{{ SITE }}{{ path }}", "inLanguage": "sr-Latn", "dateModified": "2026-09-22", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}, "about": {"@type": "Organization", "name": {{ firm.name|tojson }}}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Firme", "item": "{{ SITE }}/firme/"}, {"@type": "ListItem", "position": 3, "name": {{ firm.name|tojson }}, "item": "{{ SITE }}{{ path }}"}]}
+ ]
+}</script>{% endblock %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Registar firmi · {{ firm.kind_label }} · {{ firm.city }}</div><h1>{{ firm.name }}{% if firm.is_us %} <span class="agg-us">naša ponuda</span>{% endif %}</h1><p>{{ firm.offer|safe }}</p><div class="v3-meta"><span>Grupa: {{ firm.group_label }}</span><span>Provereno {{ firm.verified }}</span><span>Pouzdanost podataka: {{ firm.confidence }}</span></div><div class="v3-chips"><a href="{{ firm.website }}" rel="noopener{% if not firm.is_us %} nofollow{% endif %}">{{ firm.domain }} ↗</a><a href="/firme/#grupa-{{ firm.group|lower }}">Sve firme iz grupe</a>{% if firm.city_slug %}<a href="/gradovi/{{ firm.city_slug }}/">Firme u gradu {{ firm.city_main }}</a>{% endif %}<a href="/cena-punjaca-za-elektricni-auto#tabela">Uporedna tabela</a></div></div></div>{% endblock %}
+{% block content %}<div class="bva"><div class="w3">
+<div class="agg-verdicts">
+{% for key, label in [('ugradnja','Ugradnja'),('brojilo','Brojilo i obračun'),('skupstina','Papiri za skupštinu'),('usluga','Usluga i garancija')] %}
+<div class="agg-verdict is-{{ firm.vclass.get(key,'no') }}"><span>{{ label }}</span><b>{{ firm.verdicts.get(key) or 'Ne pominje se' }}</b></div>
+{% endfor %}
+</div>
+<h2>Šta piše na sajtu firme</h2>
+<p>Ista četiri pitanja kao za svaku firmu u registru. „Ne pominje se“ znači da na sajtu firme te informacije nema — ne da usluga ne postoji. Cene su prepisane doslovno, sa datumom provere.</p>
+<div class="bva-tw"><table class="bva-tbl agg-card-tbl"><tbody>
+<tr><td data-label="Javna cena"><small class="lbl">Javna cena</small>{{ firm.cells.cena|safe }}</td></tr>
+<tr><td data-label="Ugradnja"><small class="lbl">Ugradnja</small>{{ firm.cells.ugradnja|safe }}</td></tr>
+<tr><td data-label="Brojilo i obračun"><small class="lbl">Brojilo i obračun</small>{{ firm.cells.brojilo|safe }}</td></tr>
+<tr><td data-label="Papiri za skupštinu"><small class="lbl">Papiri za skupštinu</small>{{ firm.cells.skupstina|safe }}</td></tr>
+<tr><td data-label="Usluga i garancija"><small class="lbl">Usluga i garancija</small>{{ firm.cells.usluga|safe }}</td></tr>
+</tbody></table></div>
+<h2>Osnovni podaci</h2>
+<div class="bva-kv"><div><b>Sajt</b><span><a href="{{ firm.website }}" rel="noopener{% if not firm.is_us %} nofollow{% endif %}">{{ firm.domain }}</a></span></div><div><b>Grad</b><span>{{ firm.city }}</span></div>{% if firm.coverage %}<div><b>Pokrivenost</b><span>{{ firm.coverage }}</span></div>{% endif %}<div><b>Tip</b><span>{{ firm.kind_label }}</span></div>{% if firm.contact.phone %}<div><b>Telefon</b><span>{{ firm.contact.phone }}</span></div>{% endif %}{% if firm.contact.email %}<div><b>E-mail</b><span><a href="mailto:{{ firm.contact.email }}">{{ firm.contact.email }}</a></span></div>{% endif %}{% if firm.contact.other %}<div><b>Ostalo</b><span>{{ firm.contact.other }}</span></div>{% endif %}<div><b>Poslednja provera</b><span>{{ firm.verified }}</span></div></div>
+{% if firm.notes %}<div class="bva-note"><p>{{ firm.notes }}</p></div>{% endif %}
+{% if firm.is_us %}<div class="bva-note is-lav"><p><strong>Ovo je naša ponuda.</strong> BlokVolt vodi tim kompanije Evolako. Podaci o Evolaku su prikazani po istim kolonama i istim pravilima kao za sve ostale firme; cene i uslovi su na <a href="https://www.evolako.rs/paketi-i-cene">evolako.rs</a>.</p></div>{% endif %}
+<h2>Izvori</h2>
+<ul class="bva-src">{% for s in firm.sources %}<li><a href="{{ s.url }}" rel="noopener{% if not firm.is_us %} nofollow{% endif %}">{{ s.label }}</a> — provereno {{ s.date }}</li>{% else %}<li>Sajt firme, provereno {{ firm.verified }}</li>{% endfor %}</ul>
+<p class="bva-disc">Podatke prepisujemo sa javnih stranica firmi i ne ocenjujemo ih. Ako ste iz ove firme i nešto se promenilo ili nije tačno — <a href="/ispravka/?firma={{ firm.slug }}">prijavite ispravku</a>; ažuriramo u roku od nekoliko dana i beležimo u <a href="/izmene/">dnevniku izmena</a>. Na zahtev firme unos uklanjamo.</p>
+</div></div>{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "Organization", "name": {{ op.name|tojson }}, "url": {{ op.website|tojson }}{% if op.city and op.city != '—' %}, "address": {"@type": "PostalAddress", "addressLocality": {{ op.city|tojson }}, "addressCountry": "RS"}{% endif %}},
+  {"@type": "WebPage", "name": {{ title|tojson }}, "url": "{{ SITE }}{{ path }}", "inLanguage": "sr-Latn", "dateModified": "2026-09-22", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}, "about": {"@type": "Organization", "name": {{ op.name|tojson }}}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Javno punjenje", "item": "{{ SITE }}/javno-punjenje/"}, {"@type": "ListItem", "position": 3, "name": {{ op.name|tojson }}, "item": "{{ SITE }}{{ path }}"}]}
+ ]
+}</script>{% endblock %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Javno punjenje · {{ op.kind_label }}{% if op.city and op.city != '—' %} · {{ op.city }}{% endif %}</div><h1>{{ op.name }}</h1><p>{{ op.short }}</p><div class="v3-meta"><span>Provereno {{ op.verified }}</span><span>Pouzdanost: {{ op.confidence }}</span></div><div class="v3-chips"><a href="{{ op.website }}" rel="noopener nofollow">{{ op.domain }} ↗</a><a href="/javno-punjenje/">Sve mreže i cene</a><a href="/javno-punjenje/#cene">Indeks cena</a><a href="/javno-punjenje/besplatni-punjaci/">Besplatni punjači</a></div></div></div>{% endblock %}
+{% block content %}<div class="bva"><div class="w3">
+<div class="agg-verdicts">
+{% for key, label in [('cenovnik','Javni cenovnik'),('naplata','Način naplate'),('kwh','Cena po kWh'),('idle','Naknada za zauzeće')] %}
+<div class="agg-verdict is-{{ op.vclass.get(key,'no') }}"><span>{{ label }}</span><b>{{ op.verdicts.get(key) or 'Ne pominje se' }}</b></div>
+{% endfor %}
+</div>
+<h2>Kako se naplaćuje</h2>
+<p>{{ op.billing }}</p>
+{% if op.prices %}
+<h3 id="cene">Poslednje javno zabeležene cene</h3>
+<div class="bva-tw"><table class="bva-tbl"><thead><tr><th>Punjač</th><th>Cena</th><th>Kada</th><th>Izvor</th></tr></thead><tbody>
+{% for p in op.prices %}<tr><td data-label="Punjač">{{ p.what }}</td><td data-label="Cena"><b class="pr">{{ p.value }}</b></td><td data-label="Kada">{{ p.date }}</td><td data-label="Izvor"><a href="{{ p.url }}" rel="noopener nofollow">{{ p.source }}</a><small>{{ p.confidence }}</small></td></tr>
+{% endfor %}</tbody></table></div>
+<p class="bva-disc">Operateri cene ne objavljuju na sajtu — važi cena koju aplikacija prikaže u trenutku pokretanja punjenja. Ovde su poslednji javno zabeleženi iznosi sa datumom; služe kao orijentir, ne kao ponuda. Kako da cenu po minuti preračunate u cenu po kWh: <a href="/javno-punjenje/#po-minutu">objašnjenje i računica</a>.</p>
+{% else %}
+<div class="bva-note"><p><strong>Javno objavljenih cena nema.</strong> Nismo našli ni cenovnik na sajtu ni proverljiv zapis cene sa datumom. Ako ste punili ovde — pošaljite snimak ekrana aplikacije na <a href="/ispravka/">stranici za ispravke</a>; objavljujemo sa datumom.</p></div>
+{% endif %}
+<h2>Naknade i uslovi</h2>
+<p>{{ op.fees }}</p>
+<h2>Osnovni podaci</h2>
+<div class="bva-kv"><div><b>Sajt</b><span><a href="{{ op.website }}" rel="noopener nofollow">{{ op.domain }}</a></span></div><div><b>Aplikacija</b><span>{{ op.app }}</span></div><div><b>Mreža</b><span>{{ op.network }}</span></div><div><b>Snaga</b><span>{{ op.power }}</span></div><div><b>Pokrivenost</b><span>{{ op.coverage }}</span></div><div><b>Plaćanje</b><span>{{ op.payment }}</span></div>{% if op.roaming and op.roaming != '—' %}<div><b>Roming</b><span>{{ op.roaming }}</span></div>{% endif %}{% if op.support and op.support != '—' %}<div><b>Podrška</b><span>{{ op.support }}</span></div>{% endif %}<div><b>Poslednja provera</b><span>{{ op.verified }}</span></div></div>
+{% if op.notes %}<div class="bva-note"><p>{{ op.notes|safe }}</p></div>{% endif %}
+<h2>Izvori</h2>
+<ul class="bva-src">{% for s in op.sources %}<li><a href="{{ s.url }}" rel="noopener nofollow">{{ s.label }}</a> — provereno {{ s.date }}</li>{% endfor %}</ul>
+<p class="bva-disc">Podatke prepisujemo sa javnih stranica operatera, iz zvaničnih saopštenja, a cene i iz proverljivih zapisa korisnika (uvek sa datumom i oznakom izvora). Ne ocenjujemo mreže. Ako ste iz ove kompanije i nešto se promenilo — <a href="/ispravka/?operator={{ op.slug }}">prijavite ispravku</a>; promene beležimo u <a href="/izmene/">dnevniku izmena</a>.</p>
+</div></div>{% endblock %}

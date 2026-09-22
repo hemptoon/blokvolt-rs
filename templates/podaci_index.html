@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "CollectionPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}/podaci/", "inLanguage": "sr-Latn",
+   "mainEntity": {"@type": "ItemList", "itemListElement": [{% for p in pages %}{"@type": "ListItem", "position": {{ loop.index }}, "name": {{ p.title|tojson }}, "url": "{{ SITE }}{{ p.path }}"}{% if not loop.last %},{% endif %}{% endfor %}]}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Podaci", "item": "{{ SITE }}/podaci/"}]}
+ ]
+}</script>{% endblock %}
+{% block pageclass %} agg-wide{% endblock %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Podaci · propisi · brojke</div><h1>Podaci za vlasnike električnih automobila u Srbiji</h1><p>Subvencije, registracija i porezi, osiguranje, krediti, uvoz i carina, servisi, statistika, putarina i parking — proverene brojke sa izvorom i datumom, bez tumačenja napamet. Stranice ažuriramo kad se promeni propis ili izađu novi podaci.</p><div class="v3-meta"><span>{{ pages|length }} stranica</span><span>Ažurirano {{ TODAY }}</span></div></div></div>{% endblock %}
+{% block content %}<div class="bva"><div class="w3">
+<div class="bva-cards">
+{% for p in pages %}
+<a class="bva-card" href="{{ p.path }}"><b>{{ p.title }}</b><span>{{ p.description }}</span><span class="agg-chk">ažurirano {{ p.updated }}</span></a>
+{% endfor %}
+</div>
+<div class="bva-note"><p>Javni punjači, cene po operaterima i besplatne lokacije su u posebnom razdelu: <a href="/javno-punjenje/">javno punjenje</a>. U pripremi: dileri i modeli, rent-a-car i car-sharing, region (Crna Gora, BiH, Severna Makedonija). Predlog teme ili izvor: <a href="/ispravka/">pišite nam</a>.</p></div>
+</div></div>{% endblock %}

@@ -1,0 +1,50 @@
+{
+ "slug": "edrive",
+ "name": "eDrive (eMobil, Beograd)",
+ "kind": "app",
+ "order": 9,
+ "short": "Aplikacija za punjenje (eMSP) i softver za vlasnike punjača; deo evropske eRoaming mreže. Sopstvena mreža u Srbiji i cene nisu objavljene.",
+ "website": "https://edrive.co.rs/",
+ "domain": "edrive.co.rs",
+ "app": "eDrive (iOS/Android)",
+ "city": "Beograd",
+ "coverage": "Srbija + eRoaming (≈50.000 punjača u Evropi u bazi, 2023)",
+ "network": "Nije objavljena; 2023: oko 300 korisnika, ≈14 MWh isporučeno (Netokracija, 26.06.2023)",
+ "power": "—",
+ "billing": "Nije objavljeno; e-fiskalni računi na e-mail.",
+ "verdicts": {
+  "cenovnik": "Nije objavljen",
+  "naplata": "Ne pominje se",
+  "kwh": "Ne pominje se",
+  "idle": "Ne pominje se"
+ },
+ "vclass": {
+  "cenovnik": "no",
+  "naplata": "no",
+  "kwh": "no",
+  "idle": "no"
+ },
+ "prices": [],
+ "fees": "Nije objavljeno.",
+ "payment": "Aplikacija",
+ "roaming": "„Deo najveće eRoaming mreže u Evropi“ (partner nije imenovan na sajtu)",
+ "support": "edrive.co.rs — kontakt",
+ "sources": [
+  {
+   "url": "https://edrive.co.rs/",
+   "label": "edrive.co.rs",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.netokracija.rs/edrive-aplikacija-208889",
+   "label": "netokracija.rs — predstavljanje aplikacije (26.06.2023)",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "niska — podaci iz 2023, aktuelnost nije potvrđena",
+ "notes": "U registru kućnih punjača: <a href=\"/firme/edrive/\">eDrive</a>.",
+ "card": "sopstvena mreža nije objavljena",
+ "kind_label": "Aplikacija za plaćanje",
+ "publish": true
+}

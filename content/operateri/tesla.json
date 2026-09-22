@@ -1,0 +1,74 @@
+{
+ "slug": "tesla",
+ "name": "Tesla — Supercharger i Destination Charging",
+ "kind": "cpo",
+ "order": 4,
+ "short": "Dve Supercharger lokacije (Beograd, Aleksinac) i četiri Destination Charging lokacije (hoteli). Cene za Srbiju Tesla ne prikazuje na sajtu.",
+ "website": "https://www.tesla.com/findus/list/superchargers/Serbia",
+ "domain": "tesla.com",
+ "app": "Tesla (iOS/Android)",
+ "city": "Beograd",
+ "coverage": "Beograd (AVA Shopping Park), Aleksinac (E75); Destination: Zlatibor, Beograd",
+ "network": "Supercharger Beograd — AVA Shopping Park, Astrid Lindgren 23: 8 mesta, do 250 kW, 24/7. Supercharger Aleksinac — Bosphorus Hotel, Žitkovački put bb: 4 mesta, do 125 kW, 24/7. Destination Charging: Vila Đokić (Zlatibor), Crowne Plaza Belgrade, Tesla Smart Stay, Square Nine Hotel",
+ "power": "DC do 250 kW (Beograd), do 125 kW (Aleksinac); Destination AC",
+ "billing": "Cena po kWh za Srbiju nije prikazana na tesla.com; obračun i plaćanje idu kroz Tesla aplikaciju/nalog. Da li su Supercharger-i u Srbiji otvoreni za vozila drugih marki — nije potvrđeno.",
+ "verdicts": {
+  "cenovnik": "Nije prikazan za Srbiju",
+  "naplata": "Kroz Tesla nalog",
+  "kwh": "Ne pominje se",
+  "idle": "Po minutu (globalno pravilo)"
+ },
+ "vclass": {
+  "cenovnik": "no",
+  "naplata": "ask",
+  "kwh": "no",
+  "idle": "ask"
+ },
+ "prices": [
+  {
+   "what": "Supercharger u Srbiji",
+   "value": "„besplatno u Srbiji za Tesla vozila“ — navod korisnika",
+   "date": "septembar 2023",
+   "source": "forum.beobuild.rs",
+   "url": "https://forum.beobuild.rs/threads/električna-vozila-i-punjači.3889/",
+   "confidence": "korisnički podatak, nije potvrđen"
+  }
+ ],
+ "fees": "Tesla globalno naplaćuje idle fee / congestion fee po minutu kad je stanica zauzeta a auto napunjen; iznos za Srbiju nije naveden u Teslinoj tabeli naknada.",
+ "payment": "Tesla aplikacija (platna kartica na nalogu)",
+ "roaming": "—",
+ "support": "tesla.com/support",
+ "sources": [
+  {
+   "url": "https://www.tesla.com/findus/list/superchargers/Serbia",
+   "label": "tesla.com — lista Supercharger lokacija u Srbiji",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.tesla.com/findus/location/supercharger/belgradeavasupercharger",
+   "label": "tesla.com — Beograd AVA: 8 mesta, do 250 kW",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.tesla.com/en_NZ/findus/list/chargers/Serbia",
+   "label": "tesla.com — Destination Charging lokacije",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.tesla.com/support/charging/supercharger/fees",
+   "label": "tesla.com — naknade (idle/congestion fee)",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://avashoppingpark.rs/en/ava-shopping-park-part-of-the-tesla-supercharger-network/",
+   "label": "avashoppingpark.rs — planirano proširenje",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoka za lokacije · cene nepoznate",
+ "notes": "AVA Shopping Park najavljuje još 10 Supercharger mesta i „nekoliko generičkih“ punjača za druge marke (bez datuma).",
+ "card": "2 Supercharger lokacije · do 250 kW",
+ "kind_label": "Operator mreže + aplikacija",
+ "publish": true
+}

@@ -1,0 +1,50 @@
+{
+ "slug": "omv",
+ "name": "OMV Srbija — punjači na benzinskim stanicama",
+ "kind": "host",
+ "order": 5,
+ "short": "Domaćin, ne operator: 24 OMV stanice sa brzim punjačima koje vode partneri — Charge&GO (18 lokacija) i aplikacija EasyPark (6 lokacija). Cene određuju operateri.",
+ "website": "https://www.omv.rs/sr/mobilnost/elektricni-punjaci/lokacije",
+ "domain": "omv.rs",
+ "app": "Charge&GO ili EasyPark — zavisi od stanice (piše na stubu punjača)",
+ "city": "Beograd",
+ "coverage": "Beograd, Novi Sad, Kragujevac, Kruševac, Kraljevo, Vranje, Loznica, Jagodina, Zaječar, koridori E75/E70",
+ "network": "24 lokacije (sajt OMV-a, provereno 22.09.2026): Charge&GO — Ada Ciganlija 50 kW, Bačka Topola 1 180, Borska 120, Doljevac 140, Gradina 90, Jagodina 110, Kneževac 120, Kragujevac 150, Kraljevo 2 60, Kruševac 130, Lapovo Sever 100, Lapovo Jug 120, Loznica 120, Martinci 1 180, Metro 240, Obilaznica 1 120, Obilaznica 2 120, Vranje 120, Zaječar 45; EasyPark — Beška 1 75, Bubanj Potok 60, Novi Sad (Partizanska) 75, Ražanj 60, Ruma 75",
+ "power": "DC 45–240 kW",
+ "billing": "„Plaćanje usluge je moguće samo preko aplikacije“ — cene i uslovi su operatera (Charge&GO / EasyPark), OMV ih ne objavljuje.",
+ "verdicts": {
+  "cenovnik": "Kod operatera",
+  "naplata": "Preko aplikacije partnera",
+  "kwh": "Ne",
+  "idle": "Kod operatera"
+ },
+ "vclass": {
+  "cenovnik": "ask",
+  "naplata": "ask",
+  "kwh": "no",
+  "idle": "ask"
+ },
+ "prices": [],
+ "fees": "Prema uslovima operatera na konkretnoj stanici (vidi Charge&GO).",
+ "payment": "Samo aplikacija partnera (Charge&GO ili EasyPark)",
+ "roaming": "Prema operateru",
+ "support": "omv.rs — kontakt; za punjač: podrška operatera sa stuba",
+ "sources": [
+  {
+   "url": "https://www.omv.rs/sr/mobilnost/elektricni-punjaci/lokacije",
+   "label": "omv.rs — tabela lokacija, snaga i aplikacija",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.omv.rs/sr/mobilnost/elektricni-punjaci",
+   "label": "omv.rs — „plaćanje samo preko aplikacije“, plan eMotion do 2030",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoka (primarni izvor)",
+ "notes": "OMV najavljuje integraciju u evropsku mrežu „OMV eMotion“ do 2030; u Srbiji eMotion još ne radi kao operator.",
+ "card": "24 stanice · DC 45–240 kW",
+ "kind_label": "Domaćin (benzinske stanice)",
+ "publish": true
+}

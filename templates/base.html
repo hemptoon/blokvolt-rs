@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ SITE }}{{ path if path != '/404.html' else '/404' }}">
+<meta property="og:type" content="{% block ogtype %}website{% endblock %}">
+<meta property="og:site_name" content="BlokVolt">
+<meta property="og:locale" content="sr_RS">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ SITE }}{{ path }}">
+<meta property="og:image" content="{{ SITE }}/assets/og/og-sr.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B0F17">
+<meta name="google-site-verification" content="sFX9stJkfLtrkO_-R4xLC4vWI3gvlH6XlpkkoragjEw">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/onest-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/agg.css">
+{% block jsonld %}{% endblock %}
+</head>
+<body>
+<div class="v2-page agg{% block pageclass %}{% endblock %}">{% include '_nav.html' %}{% block hero %}{% endblock %}{% block content %}{% endblock %}{% block cta %}<div class="v3-cta"><div class="w3"><h2>Punjač u vašoj garaži ili zgradi?</h2><p>Tri pitanja i pola minuta na evolako.rs: koji komplet odgovara vašoj garaži i koliko košta. Ponuda bez obaveza.</p><div class="v3-ctab"><a href="https://www.evolako.rs/proveri-svoju-garazu">Proverite svoju garažu</a><a href="/ispravka/">Prijavite ispravku</a></div></div></div>{% endblock %}{% include '_footer.html' %}</div>
+<script src="/assets/site.js" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

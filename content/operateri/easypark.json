@@ -1,0 +1,45 @@
+{
+ "slug": "easypark",
+ "name": "EasyPark — aplikacija na 6 OMV stanica",
+ "kind": "app",
+ "order": 6,
+ "short": "Aplikacija za plaćanje navedena na stranici OMV-a uz 6 stanica. Sajt EasyPark-a za Srbiju sa uslovima punjenja nismo našli — podaci su nepotpuni.",
+ "website": "https://www.omv.rs/sr/mobilnost/elektricni-punjaci/lokacije",
+ "domain": "omv.rs (navod)",
+ "app": "EasyPark",
+ "city": "—",
+ "coverage": "OMV Beška 1, Bubanj Potok, Novi Sad (Partizanska), Ražanj, Ruma (+ jedna lokacija koju OMV ne imenuje)",
+ "network": "6 OMV lokacija (sajt OMV-a, 22.09.2026)",
+ "power": "DC 60–75 kW",
+ "billing": "Nije objavljeno. Napomena: na OMV Novi Sad (Partizanska) 2024. je naplatu vodio Orion eMobility (po minutu) — vidi karticu Orion.",
+ "verdicts": {
+  "cenovnik": "Nije objavljen",
+  "naplata": "Ne pominje se",
+  "kwh": "Ne pominje se",
+  "idle": "Ne pominje se"
+ },
+ "vclass": {
+  "cenovnik": "no",
+  "naplata": "no",
+  "kwh": "no",
+  "idle": "no"
+ },
+ "prices": [],
+ "fees": "Nije objavljeno.",
+ "payment": "Aplikacija EasyPark (prema OMV-u)",
+ "roaming": "—",
+ "support": "—",
+ "sources": [
+  {
+   "url": "https://www.omv.rs/sr/mobilnost/elektricni-punjaci/lokacije",
+   "label": "omv.rs — lokacije sa aplikacijom EasyPark",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "niska — jedini izvor je stranica OMV-a",
+ "notes": "Ako imate podatke sa lica mesta (cena, uslovi), <a href=\"/ispravka/\">javite nam</a> — dopunjujemo sa datumom.",
+ "card": "6 OMV stanica · DC 60–75 kW",
+ "kind_label": "Aplikacija za plaćanje",
+ "publish": true
+}

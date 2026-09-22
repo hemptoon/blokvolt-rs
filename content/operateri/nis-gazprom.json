@@ -1,0 +1,55 @@
+{
+ "slug": "nis-gazprom",
+ "name": "NIS Petrol / Gazprom — punjači na benzinskim stanicama",
+ "kind": "host",
+ "order": 7,
+ "short": "Domaćin: na delu NIS Petrol i Gazprom stanica rade punjači mreže Charge&GO. Tačan broj stanica sa punjačima NIS ne objavljuje.",
+ "website": "https://www.nisgazprom.rs/",
+ "domain": "nisgazprom.rs",
+ "app": "Charge&GO",
+ "city": "Novi Sad",
+ "coverage": "izabrane NIS Petrol / Gazprom stanice (E75, Beograd, Novi Sad…)",
+ "network": "Broj lokacija nije objavljen. Primeri: NIS Zmaj 1 (A3, Beograd) — CCS2 75 kW, CHAdeMO 50 kW, Type 2 22 kW (Electromaps, 08.2025); 2022: Velika Plana, Stari Banovci, Novi Sad 16, Sokolići 1",
+ "power": "DC 50–75 kW, AC 22 kW (prema zabeleženim lokacijama)",
+ "billing": "Cene i uslovi Charge&GO (po minutu, u aplikaciji); NIS na sajtu objavljuje samo Charge&GO FAQ (decembar 2023).",
+ "verdicts": {
+  "cenovnik": "Kod operatera (Charge&GO)",
+  "naplata": "Po minutu (Charge&GO)",
+  "kwh": "Ne",
+  "idle": "5 RSD/min posle 15 min (Charge&GO)"
+ },
+ "vclass": {
+  "cenovnik": "ask",
+  "naplata": "ask",
+  "kwh": "no",
+  "idle": "yes"
+ },
+ "prices": [],
+ "fees": "Prema uslovima Charge&GO.",
+ "payment": "Aplikacija Charge&GO, QR karticom",
+ "roaming": "Prema Charge&GO",
+ "support": "Charge&GO: 011 715 85 99",
+ "sources": [
+  {
+   "url": "https://www.nisgazprom.rs/wp-content/uploads/2023/12/Chargego.pdf",
+   "label": "nisgazprom.rs — Charge&GO FAQ (12.2023)",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.electromaps.com/en/charging-stations/serbia",
+   "label": "Electromaps — NIS Zmaj 1 (08.2025)",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://energijabalkana.net/u-srbiji-besplatno-punjenje-auta-na-struju-ali-malo-punjaca/",
+   "label": "energijabalkana.net — prve 4 NIS lokacije (01.2022)",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednja — broj lokacija nije objavljen",
+ "notes": "",
+ "card": "broj lokacija nije objavljen",
+ "kind_label": "Domaćin (benzinske stanice)",
+ "publish": true
+}

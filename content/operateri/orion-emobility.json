@@ -1,0 +1,90 @@
+{
+ "slug": "orion-emobility",
+ "name": "Orion eMobility (Orion Telekom)",
+ "kind": "cpo",
+ "order": 2,
+ "short": "Operator mreže i aplikacija za naplatu (CPO + eMSP) telekom-operatera Orion Telekom; upravlja i državnim punjačima JP „Putevi Srbije“ na autoputevima.",
+ "website": "https://oriontelekom.rs/emobility/aplikacija/",
+ "domain": "oriontelekom.rs",
+ "app": "Orion eMobility (iOS/Android)",
+ "city": "Beograd",
+ "coverage": "Srbija; aplikacija pokriva i Crnu Goru, BiH, Hrvatsku, Sloveniju, Severnu Makedoniju, Albaniju (partnerske mreže)",
+ "network": "„Infrastruktura od 300 EV punjačnih mesta u zemlji“ i „više od 1.000 EV punjača širom Srbije i regiona“ — navodi operatera bez datuma (marketinška cifra, ne proverena nezavisno)",
+ "power": "AC do 22 kW; DC 20–400 kW (po katalogu opreme); punjači JP „Putevi Srbije“ 40–300 kW",
+ "billing": "Po vremenu (po minutu); cenovnik po lokaciji je u aplikaciji („cenovnik usluga punjenja“), na sajtu nije objavljen.",
+ "verdicts": {
+  "cenovnik": "Nije objavljen — samo u aplikaciji",
+  "naplata": "Po minutu",
+  "kwh": "Ne",
+  "idle": "Ne pominje se"
+ },
+ "vclass": {
+  "cenovnik": "ask",
+  "naplata": "ask",
+  "kwh": "no",
+  "idle": "no"
+ },
+ "prices": [
+  {
+   "what": "DC 75 kW, OMV Novi Sad (Partizanska)",
+   "value": "70 RSD/min (4.200 RSD/sat)",
+   "date": "2024",
+   "source": "evfix.rs",
+   "url": "https://evfix.rs/stanice-za-punjenje-ev/naplata-punjenja/omv-novi-sad/",
+   "confidence": "korisnički podatak"
+  },
+  {
+   "what": "DC 50 kW, ista lokacija",
+   "value": "50 RSD/min (3.000 RSD/sat)",
+   "date": "2024",
+   "source": "evfix.rs",
+   "url": "https://evfix.rs/stanice-za-punjenje-ev/naplata-punjenja/omv-novi-sad/",
+   "confidence": "korisnički podatak"
+  },
+  {
+   "what": "AC 22 kW, ista lokacija",
+   "value": "11,66 RSD/min (700 RSD/sat)",
+   "date": "2024",
+   "source": "evfix.rs",
+   "url": "https://evfix.rs/stanice-za-punjenje-ev/naplata-punjenja/omv-novi-sad/",
+   "confidence": "korisnički podatak"
+  }
+ ],
+ "fees": "Tokom sesije aplikacija rezerviše na kartici 2.000 RSD (AC punjač) ili 4.000 RSD (DC punjač); naplaćuje se stvarni iznos. Naknada za zauzeće posle punjenja nije javno objavljena.",
+ "payment": "Platna kartica u aplikaciji (Visa, MasterCard, Diners, Amex, DinaCard), opcioni pripejd kredit, RFID kartica Orion, QR kod na punjaču; korporativni računi na zahtev",
+ "roaming": "„Uvid u lokacije preko 400.000 punjača širom Evrope i sveta“ (partner za roming nije naveden)",
+ "support": "011 4100 333 · support.emobility@oriontelekom.rs",
+ "sources": [
+  {
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "label": "oriontelekom.rs/emobility/aplikacija — plaćanje, rezervacija na kartici",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://oriontelekom.rs/emobility/kompletna-infrastruktura/",
+   "label": "oriontelekom.rs — veličina mreže, partneri",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://apps.apple.com/rs/app/orion-emobility/id1615624626",
+   "label": "App Store — opis aplikacije, zemlje",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://evfix.rs/stanice-za-punjenje-ev/naplata-punjenja/omv-novi-sad/",
+   "label": "evfix.rs — cene OMV Novi Sad (2024)",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.putevi-srbije.rs/index.php/en/electric-chargers",
+   "label": "putevi-srbije.rs — aktivacija državnih punjača kroz Orion aplikaciju",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoka za uslove · niska za cene (jedini javni podaci su iz 2024)",
+ "notes": "Na stranici OMV-a (provereno 22.09.2026) uz lokaciju OMV Novi Sad stoji aplikacija EasyPark, a ne Orion — moguće je da je operater promenjen posle 2024. Orion prodaje i kućne punjače: <a href=\"/firme/orion-emobility/\">kartica u registru firmi</a>.",
+ "card": "„300 punjačnih mesta u zemlji“ (navod operatera)",
+ "kind_label": "Operator mreže + aplikacija",
+ "publish": true
+}

@@ -1,0 +1,50 @@
+{
+ "slug": "emobility-spectra",
+ "name": "Emobility (DOO Spectra, Novi Sad)",
+ "kind": "cpo",
+ "order": 8,
+ "short": "Operator mreže punjača (CPO) i pružalac usluga e-mobilnosti sa sopstvenom aplikacijom „Emobility Spectra“; prodaje i ugrađuje AC/DC punjače.",
+ "website": "https://emobility.rs/",
+ "domain": "emobility.rs",
+ "app": "Emobility Spectra (iOS/Android)",
+ "city": "Novi Sad",
+ "coverage": "Novi Sad i Vojvodina (mapa punjača na sajtu)",
+ "network": "Veličina mreže nije objavljena (mapa na sajtu se učitava kroz aplikaciju, broj punjača se ne vidi)",
+ "power": "AC i DC (prema ponudi opreme)",
+ "billing": "Nije objavljeno; naplata kroz novčanik u aplikaciji.",
+ "verdicts": {
+  "cenovnik": "Nije objavljen",
+  "naplata": "Ne pominje se",
+  "kwh": "Ne pominje se",
+  "idle": "Ne pominje se"
+ },
+ "vclass": {
+  "cenovnik": "no",
+  "naplata": "no",
+  "kwh": "no",
+  "idle": "no"
+ },
+ "prices": [],
+ "fees": "Nije objavljeno.",
+ "payment": "Novčanik u aplikaciji (platna kartica), RFID kartica, Apple Wallet",
+ "roaming": "Ne pominje se",
+ "support": "021 674 10 33 · Bulevar cara Lazara 88, Novi Sad",
+ "sources": [
+  {
+   "url": "https://emobility.rs/",
+   "label": "emobility.rs — opis usluge, kontakt",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://apps.apple.com/us/app/emobility-spectra/id6476980928",
+   "label": "App Store — Emobility Spectra (verzija 2026.5.0, 11.06.2026)",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednja — postojanje potvrđeno, obim mreže i cene nepoznati",
+ "notes": "Ista firma je u registru kućnih punjača: <a href=\"/firme/emobility-d-o-o/\">Emobility d.o.o.</a>",
+ "card": "veličina mreže nije objavljena",
+ "kind_label": "Operator mreže + aplikacija",
+ "publish": true
+}

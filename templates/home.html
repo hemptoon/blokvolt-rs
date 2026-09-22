@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebSite", "name": "BlokVolt", "alternateName": "BlokVolt — vodič kroz električne automobile u Srbiji", "url": "{{ SITE }}/", "inLanguage": "sr-Latn", "description": {{ description|tojson }}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/", "parentOrganization": {"@type": "Organization", "name": "Evolako", "url": "https://www.evolako.rs/"}}},
+  {"@type": "ItemList", "name": "Razdeli sajta", "itemListElement": [
+   {"@type": "ListItem", "position": 1, "name": "Firme", "url": "{{ SITE }}/firme/"},
+   {"@type": "ListItem", "position": 2, "name": "Cene punjača", "url": "{{ SITE }}/cena-punjaca-za-elektricni-auto"},
+   {"@type": "ListItem", "position": 3, "name": "Javno punjenje", "url": "{{ SITE }}/javno-punjenje/"},
+   {"@type": "ListItem", "position": 4, "name": "Vodiči", "url": "{{ SITE }}/vodici/"},
+   {"@type": "ListItem", "position": 5, "name": "Podaci", "url": "{{ SITE }}/podaci/"}]}
+ ]
+}</script>{% endblock %}
+{% block pageclass %} agg-wide{% endblock %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Nezavisni vodič · Srbija · {{ TODAY }}</div><h1>Sve o električnim automobilima u Srbiji: firme, cene, procedure</h1><p>Ko prodaje i ugrađuje punjače i po kojoj ceni, kako se punjač dobija u garaži zgrade, ko plaća struju, koliko košta javno punjenje i gde je besplatno, kolika je subvencija i koliko električnih automobila zaista vozi po Srbiji. Sve sa izvorom i datumom provere — bez ocena, rangiranja i plaćenih pozicija.</p><div class="v3-meta"><span>{{ n_firms }} firmi u registru</span><span>{{ n_ops }} mreža i lokacija javnog punjenja</span><span>7 vodiča · 2 šablona</span><span>Ažurirano {{ TODAY }}</span></div><div class="v3-chips"><a href="/firme/">Registar firmi</a><a href="/cena-punjaca-za-elektricni-auto">Cene punjača</a><a href="/javno-punjenje/">Javno punjenje</a><a href="/podaci/subvencije-2026/">Subvencije 2026</a><a href="/punjac-u-zgradi-skupstina">Skupština</a><a href="/podaci/statistika-ev-srbija/">Statistika</a></div></div></div>{% endblock %}
+{% block content %}<div class="bva"><div class="w3">
+<div class="bva-cards agg-home">
+<a class="bva-card" href="/firme/"><b>Firme — {{ n_firms }} prodavaca i instalatera</b><span>Instalateri, web-shopovi, distributeri, solarni integratori i električari po istim kolonama: javna cena, ugradnja, brojilo, papiri za skupštinu, garancija. Filter po gradu.</span></a>
+<a class="bva-card" href="/cena-punjaca-za-elektricni-auto"><b>Cene: koliko košta punjač sa ugradnjom</b><span>Sve javne cene u jednoj tabeli — od 38.000 RSD za uređaj do 130.000 sa ugradnjom — plus šta ulazi u cenu i osam pitanja za svaku ponudu.</span></a>
+<a class="bva-card" href="/javno-punjenje/"><b>Javno punjenje: mreže i cene</b><span>Charge&amp;GO, Orion eMobility, Tesla, OMV i drugi: poslednje zabeležene cene po minutu i koliko je to po kWh, zašto nema cene po kilovat-satu i šta se menja u propisima.</span></a>
+<a class="bva-card" href="/javno-punjenje/besplatni-punjaci/"><b>Besplatni punjači</b><span>Državni punjači na autoputevima (31 u radu), Lidl na Limanu u Novom Sadu, garaže Parking servisa u Beogradu — sa izvorom i datumom provere.</span></a>
+<a class="bva-card" href="/vodici/"><b>Vodiči: punjač u zgradi, skupština, struja, atest</b><span>Sedam vodiča za stanare i upravnike sa propisima, tarifama EPS-a i šablonima odluke skupštine i saglasnosti vlasnika garaže.</span></a>
+<a class="bva-card" href="/podaci/"><b>Podaci: subvencije, registracija, osiguranje, krediti</b><span>Subvencija od 5.000 € do 1. decembra 2026, porez na upotrebu (0 RSD za EV), autoodgovornost po kW, kamate banaka, carina pri uvozu, servisi, statistika — sa izvorom i datumom.</span></a>
+</div>
+<div class="bva-stats">
+<div class="bva-stat"><b>7.155</b><span>električnih automobila u Srbiji (MUP, april 2026) — uz 55.184 hibrida</span></div>
+<div class="bva-stat"><b>535</b><span>novih električnih automobila registrovanih u prvoj polovini 2026 — <strong>+232 %</strong> (SAUVD)</span></div>
+<div class="bva-stat"><b>~220</b><span>javno dostupnih punjača u celoj Srbiji; državnih na autoputevima 36, i besplatni su — <a href="/javno-punjenje/">mreže i cene</a></span></div>
+</div>
+<h2>Šta je novo</h2>
+<ul class="agg-news">
+<li><b>{{ TODAY }}</b> — Nove stranice o vlasništvu: <a href="/podaci/registracija-i-porezi/">registracija i porezi</a>, <a href="/podaci/osiguranje-elektricnog-automobila/">osiguranje</a>, <a href="/podaci/krediti-i-lizing/">krediti i lizing</a>, <a href="/podaci/uvoz-i-carina/">uvoz i carina</a>, <a href="/podaci/servisi-za-elektricne-automobile/">servisi</a>.</li>
+<li><b>{{ TODAY }}</b> — Novi razdel: <a href="/javno-punjenje/">javno punjenje</a> — {{ n_ops }} mreža, aplikacija i domaćina, indeks poslednjih zabeleženih cena sa računicom po kWh i <a href="/javno-punjenje/besplatni-punjaci/">besplatni punjači</a>.</li>
+<li><b>{{ TODAY }}</b> — Registar firmi proširen sa 20 na {{ n_firms }}: dodati Orion eMobility (11 kW 99.000 RSD), Voltech (48.000), Energy Net, Union/Avtera (MID u uređaju), Električar Niš (jedini javni cenovnik ugradnje) i još 17 firmi. <a href="/izmene/">Dnevnik izmena</a>.</li>
+<li><b>{{ TODAY }}</b> — Nova stranica: <a href="/podaci/subvencije-2026/">subvencije za električne automobile 2026</a> — rok za prijave produžen do 1. decembra, budžet i status.</li>
+<li><b>{{ TODAY }}</b> — Nova stranica: <a href="/podaci/statistika-ev-srbija/">statistika električnih automobila u Srbiji</a> — vozni park, registracije, javni punjači.</li>
+</ul>
+<p class="bva-disc">Sajt vodi tim kompanije Evolako, koja i sama ugrađuje punjače u Novom Sadu i Beogradu. Zato objavljujemo samo javne, proverljive podatke sa izvorom i datumom, ne ocenjujemo firme, a sopstvenu ponudu označavamo kao „naša ponuda“ — u istoj tabeli, po istim kolonama. <a href="/metodologija/">Kako radimo</a> · <a href="/o-sajtu/">O sajtu</a> · <a href="/ispravka/">Prijavite ispravku</a>.</p>
+</div></div>{% endblock %}

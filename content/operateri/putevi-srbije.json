@@ -1,0 +1,74 @@
+{
+ "slug": "putevi-srbije",
+ "name": "JP „Putevi Srbije“ — punjači na autoputevima",
+ "kind": "drzavni",
+ "order": 3,
+ "short": "Državni punjači na naplatnim stanicama i odmorištima autoputeva. Punjenje je za sada besplatno; naplata još nije zakonski uređena.",
+ "website": "https://www.putevi-srbije.rs/index.php/en/electric-chargers",
+ "domain": "putevi-srbije.rs",
+ "app": "Orion eMobility; punjači su vidljivi i u Plug&Share, Virta i Google Maps",
+ "city": "Beograd",
+ "coverage": "mreža autoputeva (E75, E70, E80, A2 i drugi)",
+ "network": "36 punjača ukupno: 31 u radu, 5 u priključenju, 3 planirana na novim deonicama (sajt JP „Putevi Srbije“, provereno 22.09.2026)",
+ "power": "DC 40–300 kW (+ AC 20–22 kW na delu lokacija); ultrabrzi 175–300 kW na platoima Stara Pazova i Šimanovci",
+ "billing": "Besplatno — „punjenje električnih vozila na postojećim punjačima je trenutno besplatno“ (sajt); priprema se regulativa za uvođenje naplate (B92, 19.06.2026).",
+ "verdicts": {
+  "cenovnik": "Besplatno",
+  "naplata": "Bez naplate",
+  "kwh": "—",
+  "idle": "Ne pominje se"
+ },
+ "vclass": {
+  "cenovnik": "yes",
+  "naplata": "yes",
+  "kwh": "no",
+  "idle": "no"
+ },
+ "prices": [
+  {
+   "what": "Sve lokacije",
+   "value": "Besplatno (0 RSD)",
+   "date": "22.09.2026",
+   "source": "putevi-srbije.rs",
+   "url": "https://www.putevi-srbije.rs/index.php/en/electric-chargers",
+   "confidence": "primarni izvor"
+  }
+ ],
+ "fees": "Nema naknada. Nema objavljenog ograničenja trajanja sesije.",
+ "payment": "Aktivacija kroz aplikaciju Orion eMobility (bez naplate)",
+ "roaming": "—",
+ "support": "011 4100 333 (tehnička podrška, broj Orion Telekoma)",
+ "sources": [
+  {
+   "url": "https://www.putevi-srbije.rs/index.php/en/electric-chargers",
+   "label": "putevi-srbije.rs — broj punjača, status, besplatno",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.b92.net/automobili/garaza/243280/koliko-kosta-punjenje-elektricnog-automobila-u-srbiji-detaljna-racunica-troskova-na-100-kilometara/vest",
+   "label": "B92, 19.06.2026 — besplatno, naplata u pripremi",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://rs.bloombergadria.com/ekonomija/srbija/84075/drzavni-punjaci-besplatni-elektricnih-vozila-malo/news",
+   "label": "Bloomberg Adria, 25.07.2025 — naplata nije zakonski regulisana",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.palo.rs/punjaci-za-elektricna-kola-na-putevima-u-srbiji/",
+   "label": "palo.rs — lokacije i snage (medij)",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://byd-auto.rs/blog/gde-napuniti-elektricni-auto-u-srbiji-sve-sto-treba-da-znate/",
+   "label": "byd-auto.rs — pregled lokacija (16.04.2026)",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "visoka (primarni izvor za broj i besplatnost); lokacije i snage prema medijima",
+ "notes": "Poznate lokacije prema medijima: Subotica (DC 50), Šid–Adaševci (DC 75 + AC 22), Dimitrovgrad (DC 50 / AC 22), Trstenik I i II (DC 50 / AC 20), Preševo (DC 40), Boljkovci, Koševi, Ćićevac, Kruševac, Vrnjačka Banja, Stara Pazova i Šimanovci (175–300 kW), Beograd i Niš (175 kW). Pun spisak sa statusom je na stranici JP „Putevi Srbije“. Vidi i <a href=\"/javno-punjenje/besplatni-punjaci/\">besplatne punjače</a>.",
+ "card": "36 punjača, 31 u radu · besplatno",
+ "kind_label": "Državni punjači",
+ "publish": true
+}

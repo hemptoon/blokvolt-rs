@@ -1,0 +1,64 @@
+{
+ "slug": "parking-servis-beograd",
+ "name": "JKP „Parking servis“ Beograd — punjači u garažama",
+ "kind": "besplatno",
+ "order": 11,
+ "short": "AC punjači u javnim garažama u Beogradu: punjenje se ne naplaćuje, plaća se parkiranje. Podaci o tarifi su iz 2021. godine.",
+ "website": "https://www.parking-servis.co.rs/eng/garaza-obilicev-venac",
+ "domain": "parking-servis.co.rs",
+ "app": "— (kabl kod obezbeđenja garaže)",
+ "city": "Beograd",
+ "coverage": "garaža Obilićev venac (6 mesta), Pionirski park (2), Međunarodni carinski terminal (2 + 6 za teretna)",
+ "network": "Obilićev venac: 6 mesta sa punjačem (sajt garaže); Schneider EVlink 22 kW AC, Type 2 — 2 mesta na nivou 1 i 4 na nivou 5 (PlugShare)",
+ "power": "AC 22 kW",
+ "billing": "Punjenje bez naknade; naplaćuje se parkiranje — 2021: 100 RSD po započetom satu za električne automobile (120 RSD za ostale). Aktuelni cenovnik garaža za 2026. nismo mogli da proverimo (sajt blokira automatsko čitanje).",
+ "verdicts": {
+  "cenovnik": "Plaća se samo parking",
+  "naplata": "Kroz parking",
+  "kwh": "—",
+  "idle": "Ne pominje se"
+ },
+ "vclass": {
+  "cenovnik": "yes",
+  "naplata": "ask",
+  "kwh": "no",
+  "idle": "no"
+ },
+ "prices": [
+  {
+   "what": "Parkiranje EV u garaži Obilićev venac",
+   "value": "100 RSD/započeti sat (punjenje uključeno)",
+   "date": "oktobar 2021",
+   "source": "24sedam.rs",
+   "url": "https://24sedam.rs/beograd/vesti/85803/besplatna-voznja-ali-samo-uz-automobil-na-struju-gde-u-beogradu-naci-punjace-za-elektricna-vozila/vest",
+   "confidence": "medij, zastarelo"
+  }
+ ],
+ "fees": "Samo parkiranje po cenovniku garaže.",
+ "payment": "Naplata parkinga u garaži",
+ "roaming": "—",
+ "support": "parking-servis.co.rs",
+ "sources": [
+  {
+   "url": "https://www.parking-servis.co.rs/eng/garaza-obilicev-venac",
+   "label": "parking-servis.co.rs — garaža Obilićev venac (6 mesta sa punjačem)",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://www.plugshare.com/location/121438",
+   "label": "PlugShare — oprema i raspored mesta (korisnici)",
+   "date": "22.09.2026"
+  },
+  {
+   "url": "https://24sedam.rs/beograd/vesti/85803/besplatna-voznja-ali-samo-uz-automobil-na-struju-gde-u-beogradu-naci-punjace-za-elektricna-vozila/vest",
+   "label": "24sedam.rs — garaže sa punjačima i cena parkinga za EV (29.10.2021)",
+   "date": "22.09.2026"
+  }
+ ],
+ "verified": "22.09.2026",
+ "confidence": "srednja za postojanje · niska za tarifu (2021)",
+ "notes": "Planirane lokacije iz 2021 (Masarikova, Zeleni venac, Belvil) nismo proverili.",
+ "card": "3 garaže · plaća se samo parking",
+ "kind_label": "Besplatno punjenje",
+ "publish": true
+}
