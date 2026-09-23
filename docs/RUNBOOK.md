@@ -47,6 +47,7 @@ credentials) — commits go through the owner's browser (section 6).
 | EPS tariffs, fees, taxes | `content/data/kalkulator.json` → `eps`, `checked` | Zones VT/NT without taxes, `oie`, `ee`, `akciza`, `pdv`, `snaga_rsd_kw`, `sources` (+date). |
 | Public charging price for the calculator | `content/data/kalkulator.json` → `public`, `public_checked`, `public_basis`, `public_range` | `dc` = average RSD/kWh of recent DC receipts; `ac` = Charge&GO AC 22 kW per-minute price × 60 ÷ 11 kW; `public_range` = min–max RSD/kWh of the DC receipts. |
 | Public charging price index | `content/javno/indeks-cena.json` | `updated`, `next_check` (a month name is fine), `rows` (schema below). |
+| Price index archive | `content/javno/indeks-arhiva/YYYY-MM.json` | Written by `scripts/snapshot_index.py` (step 6 of 3.3), never edited by hand. One file per month = the last state of the index in that month. From the second month on the build adds `/javno-punjenje/cene/` (last three months side by side, changes first) and a frozen page per past month. |
 | Charging networks | `content/operateri/<slug>.json` | Edit these JSON files directly. `scripts/add_operators.py` is a historical import — never re-run it. `prices` is the full dated history shown on the network page; `verified` = last check. |
 | Free chargers | `content/javno/besplatni-punjaci.md`, `content/operateri/putevi-srbije.json` | The count (36 installed / 31 working) is repeated elsewhere — see sync points. |
 | EPS tariffs page | `content/data/kalkulator.json` (+ `tarife_next_check`) | Then run `python3 scripts/gen_tarife_eps.py` — the page `/podaci/tarife-eps/` is generated, never edited by hand. Night-tariff hours per region and the single-tariff prices live in the same `eps` block. |
@@ -130,6 +131,12 @@ ones are moved into `<archive>/YYYY-MM/` inside it — never deleted).
    rounded; `ac` = Charge&GO AC 22 kW RSD/min × 60 ÷ 11, rounded), `public_checked`, `public_range`,
    and the `note` texts. Then the "43–79" sync points.
 5. Move the processed files into `<archive>/YYYY-MM/` (mv -n, inside the same folder — no deletions).
+6. `python3 scripts/snapshot_index.py` — archives the updated index as `content/javno/indeks-arhiva/YYYY-MM.json`
+   (month of `updated`; a second run in the same month overwrites it). The first archive is September 2026;
+   the October file makes `/javno-punjenje/cene/` and `/javno-punjenje/cene/2026-09/` appear — check both
+   pages after the build, then add a line to `izmene.md` and a news item the first time. Rows are compared by
+   operator + location + charger; a row carried over with the same `date` shows as "nije ponovo provereno",
+   so never refresh a row's date without having seen the price again.
 
 If no new screenshots arrived, keep the old values and dates; the report tells the owner.
 

@@ -256,3 +256,8 @@
 .agg-brands a:hover{background:rgba(217,244,91,.35)}
 @media (max-width:1100px){.bva .w3>.bva-cards.agg-hubs,.agg-brands{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:760px){.bva .w3>.bva-cards.agg-hubs,.agg-brands{grid-template-columns:1fr}}
+
+/* price index history (/javno-punjenje/cene/) */
+.bva-tbl.agg-hist th:nth-child(1){width:24%}
+.bva-tbl.agg-hist th:nth-child(2){width:14%}
+.bva-tbl.agg-hist th:last-child{width:15%}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{# Month-over-month view of the public-charging price index; built only when two or more snapshots exist. #}
+{% set shown = hist.shown %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "CollectionPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ path }}", "inLanguage": "sr-Latn", "dateModified": "{{ ISO_TODAY }}",
+   "mainEntity": {"@type": "ItemList", "numberOfItems": {{ archive|length }}, "itemListElement": [{% for a in archive %}{"@type": "ListItem", "position": {{ loop.index }}, "name": {{ ('Cene javnog punjenja — ' ~ a.label)|tojson }}, "url": "{{ SITE }}{{ a.url }}"}{% if not loop.last %},{% endif %}{% endfor %}]}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Javno punjenje", "item": "{{ SITE }}/javno-punjenje/"}, {"@type": "ListItem", "position": 3, "name": "Istorija cena", "item": "{{ SITE }}{{ path }}"}]}
+ ]
+}</script>{% endblock %}
+{% block pageclass %} agg-wide{% endblock %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Javno punjenje · istorija cena</div><h1>Kako se menjaju cene javnog punjenja u Srbiji</h1><p>Svakog meseca čuvamo snimak indeksa cena — tarife iz aplikacija operatera, stvarne račune i besplatne punjače — i ovde upoređujemo poslednja {{ shown|length }} meseca: šta je poskupelo, šta pojeftinilo, a šta u međuvremenu nismo ponovo proverili. Prvi snimak je iz {{ archive[0].label_gen }}.</p><div class="v3-meta"><span>{{ archive|length|plural('mesečni snimak', 'mesečna snimka', 'mesečnih snimaka') }}</span><span>{{ hist.n_changed|plural('promena', 'promene', 'promena') }} u poslednjem mesecu</span><span>Poslednji snimak {{ archive[-1].captured }}</span></div><div class="v3-chips"><a href="/javno-punjenje/#cene">Trenutne cene</a>{% for a in archive[:-1]|reverse %}<a href="{{ a.url }}">{{ a.label }}</a>{% endfor %}<a href="/alati/kalkulator-troskova/">Kalkulator troškova</a></div></div></div>{% endblock %}
+{% block content %}<div class="bva"><div class="w3">
+<p class="bva-lead">Poređenje je red po red: isti operator, ista lokacija i isti punjač. Računi su jednokratni, pa nisu u poređenju — ostaju u snimku svog meseca. Kada operator promeni način naplate (na primer sa minuta na kWh), to piše u koloni „Promena“ umesto procenta.</p>
+<h2 id="promene">Šta se promenilo</h2>
+<div class="bva-tw"><table class="bva-tbl agg-idx agg-hist"><thead><tr><th>Operator · lokacija</th><th>Punjač</th>{% for a in shown %}<th>{{ a.label }}</th>{% endfor %}<th>Promena</th></tr></thead><tbody>
+{% for l in hist.lines %}<tr><td data-label="Operator · lokacija"><a href="/javno-punjenje/{{ l.op }}/">{{ l.op_name }}</a><small class="of">{{ l.where }}</small></td><td data-label="Punjač">{{ l.charger }}</td>{% for c in l.cells %}<td data-label="{{ shown[loop.index0].label }}">{% if c %}<b class="pr">{{ c.label }}</b><small class="of">{{ c.date }}</small>{% else %}—{% endif %}</td>{% endfor %}<td data-label="Promena"><b class="v{% if l.cls != 'yes' %} {{ l.cls }}{% endif %}">{{ l.change }}</b></td></tr>
+{% endfor %}</tbody></table></div>
+<p class="bva-disc">„Nije ponovo provereno“ znači da je red u novom snimku prenet sa istim datumom — cena možda jeste promenjena, ali je nismo videli u aplikaciji. „Novo u indeksu“ znači da taj punjač ranije nismo beležili, ne da je nov na terenu. Procenat se računa od cene po minutu, po satu ili po „jedinici“, onako kako je operator naplaćuje.</p>
+<h2 id="snimci">Mesečni snimci</h2>
+<div class="bva-cards agg-hubs">{% for a in archive|reverse %}<a class="bva-card" href="{{ a.url }}"><b>{{ a.label[:1]|upper }}{{ a.label[1:] }}{% if loop.first %} <span class="agg-count">trenutno</span>{% endif %}</b><span>{{ a.rows|length|plural('zapis', 'zapisa', 'zapisa') }} · snimljeno {{ a.captured }}</span></a>{% endfor %}</div>
+<p>Kako nastaje indeks i odakle su cene: <a href="/javno-punjenje/#cene">indeks cena</a> i <a href="/metodologija/">metodologija</a>. Trenutni indeks je i u CSV-u na stranici <a href="/preuzimanje/">podaci za preuzimanje</a>.</p>
+</div></div>{% endblock %}

@@ -1,0 +1,444 @@
+{
+ "month": "2026-09",
+ "captured": "22.09.2026",
+ "rows": [
+  {
+   "op": "chargego",
+   "op_name": "Charge&GO",
+   "date": "22.09.2026",
+   "source": "aplikacija Charge&GO",
+   "url": "https://chargego.rs/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "HIT Auto (Staro Sajmište), MT-Komex, Termovent, TC Promenada NS, Mokrin",
+   "charger": "AC 22 kW",
+   "rsd_min": [
+    16.67
+   ],
+   "label": "16,67 RSD/min",
+   "who": "1.000 RSD/sat",
+   "assume_kw": [
+    11,
+    22
+   ]
+  },
+  {
+   "op": "chargego",
+   "op_name": "Charge&GO",
+   "date": "22.09.2026",
+   "source": "aplikacija Charge&GO",
+   "url": "https://chargego.rs/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "NCR, Španskih boraca 75, Beograd",
+   "charger": "DC 30 kW",
+   "rsd_min": [
+    33.33
+   ],
+   "label": "33,33 RSD/min",
+   "who": "",
+   "assume_kw": [
+    30,
+    20
+   ]
+  },
+  {
+   "op": "chargego",
+   "op_name": "Charge&GO",
+   "date": "22.09.2026",
+   "source": "aplikacija Charge&GO",
+   "url": "https://chargego.rs/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "OMV Ada Ciganlija, Beograd",
+   "charger": "DC 50 kW",
+   "rsd_min": [
+    33.33
+   ],
+   "label": "33,33 RSD/min",
+   "who": "",
+   "assume_kw": [
+    45,
+    30
+   ]
+  },
+  {
+   "op": "chargego",
+   "op_name": "Charge&GO",
+   "date": "22.09.2026",
+   "source": "aplikacija Charge&GO",
+   "url": "https://chargego.rs/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "BIG Rakovica, Stop Shop Borča, OMV Dragoslava Srejovića",
+   "charger": "DC 60 kW",
+   "rsd_min": [
+    58.33
+   ],
+   "label": "58,33 RSD/min",
+   "who": "",
+   "assume_kw": [
+    50,
+    35
+   ]
+  },
+  {
+   "op": "chargego",
+   "op_name": "Charge&GO",
+   "date": "22.09.2026",
+   "source": "aplikacija Charge&GO",
+   "url": "https://chargego.rs/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "OMV Kneževac, OMV Borska, BIG Karaburma, OMV Vranje, OMV Palić, Stop Shop Sombor",
+   "charger": "DC 110–120 kW",
+   "rsd_min": [
+    101.67
+   ],
+   "label": "101,67 RSD/min",
+   "who": "",
+   "assume_kw": [
+    90,
+    50
+   ]
+  },
+  {
+   "op": "chargego",
+   "op_name": "Charge&GO",
+   "date": "22.09.2026",
+   "source": "aplikacija Charge&GO",
+   "url": "https://chargego.rs/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "Super Vero Novi Sad, BIG Zrenjanin, OMV Bačka Topola",
+   "charger": "DC 150–180 kW",
+   "rsd_min": [
+    114.17
+   ],
+   "label": "114,17 RSD/min",
+   "who": "",
+   "assume_kw": [
+    100,
+    50
+   ]
+  },
+  {
+   "op": "chargego",
+   "op_name": "Charge&GO",
+   "date": "22.09.2026",
+   "source": "aplikacija Charge&GO",
+   "url": "https://chargego.rs/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "OMV Zemun park, Beograd",
+   "charger": "DC 240 kW",
+   "rsd_min": [
+    126.67
+   ],
+   "label": "126,67 RSD/min",
+   "who": "",
+   "assume_kw": [
+    130,
+    80
+   ]
+  },
+  {
+   "op": "chargego",
+   "op_name": "Charge&GO — račun",
+   "source": "račun u aplikaciji Charge&GO",
+   "url": "https://chargego.rs/",
+   "conf": "primarni izvor (račun redakcije)",
+   "where": "OMV Zemun park, Beograd",
+   "charger": "DC 240 kW",
+   "rsd_total": 760.02,
+   "kwh": 12.742,
+   "label": "760,02 RSD za 12,74 kWh",
+   "who": "",
+   "date": "septembar 2026"
+  },
+  {
+   "op": "chargego",
+   "op_name": "Charge&GO — račun",
+   "source": "račun u aplikaciji Charge&GO",
+   "url": "https://chargego.rs/",
+   "conf": "primarni izvor (račun redakcije)",
+   "where": "OMV Zemun park, Beograd",
+   "charger": "DC 240 kW",
+   "rsd_total": 1013.36,
+   "kwh": 17.963,
+   "label": "1.013,36 RSD za 17,96 kWh",
+   "who": "neto 844,47 RSD + PDV 20 %",
+   "date": "septembar 2026"
+  },
+  {
+   "op": "chargego",
+   "op_name": "Charge&GO — račun",
+   "source": "račun u aplikaciji Charge&GO",
+   "url": "https://chargego.rs/",
+   "conf": "primarni izvor (račun redakcije)",
+   "where": "Super Vero Novi Beograd",
+   "charger": "DC",
+   "rsd_total": 1198.85,
+   "kwh": 27.888,
+   "label": "1.198,85 RSD za 27,89 kWh",
+   "who": "",
+   "date": "septembar 2026"
+  },
+  {
+   "op": "chargego",
+   "op_name": "Charge&GO — račun",
+   "source": "račun u aplikaciji Charge&GO",
+   "url": "https://chargego.rs/",
+   "conf": "primarni izvor (račun redakcije)",
+   "where": "BS Gazprom Stari Banovci, autoput Beograd–Novi Sad",
+   "charger": "DC (tarifa 58,33 RSD/min)",
+   "rsd_total": 349.98,
+   "kwh": 4.43,
+   "label": "349,98 RSD za 4,43 kWh",
+   "who": "",
+   "date": "avgust 2026"
+  },
+  {
+   "op": "orion-emobility",
+   "op_name": "Orion eMobility",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "OMV Novi Sad",
+   "charger": "DC 50 kW (CHAdeMO)",
+   "who": "+ 50 RSD priključenje",
+   "assume_kw": [
+    45,
+    30
+   ],
+   "rsd_min": [
+    50
+   ],
+   "label": "50 RSD/min"
+  },
+  {
+   "op": "orion-emobility",
+   "op_name": "Orion eMobility",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "OMV Novi Sad",
+   "charger": "AC 22 kW",
+   "who": "+ 50 RSD priključenje",
+   "assume_kw": [
+    11,
+    22
+   ],
+   "rsd_hour": 700,
+   "label": "700 RSD za 60 min"
+  },
+  {
+   "op": "orion-emobility",
+   "op_name": "Orion eMobility",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "SIRIUS eksterno",
+   "charger": "DC 75 kW (CCS)",
+   "who": "+ 50 RSD priključenje",
+   "assume_kw": [
+    55,
+    40
+   ],
+   "rsd_min": [
+    70
+   ],
+   "label": "70 RSD/min"
+  },
+  {
+   "op": "orion-emobility",
+   "op_name": "Orion eMobility",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "Škoda Auto Čačak",
+   "charger": "DC 50 kW (CCS)",
+   "who": "+ 50 RSD priključenje",
+   "assume_kw": [
+    45,
+    30
+   ],
+   "rsd_min": [
+    70
+   ],
+   "label": "70 RSD/min"
+  },
+  {
+   "op": "orion-emobility",
+   "op_name": "Orion eMobility",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "Auto kuća Mikom",
+   "charger": "AC 22 kW",
+   "who": "+ 50 RSD priključenje",
+   "assume_kw": [
+    11,
+    22
+   ],
+   "rsd_min": [
+    30
+   ],
+   "label": "30 RSD/min"
+  },
+  {
+   "op": "orion-emobility",
+   "op_name": "Orion eMobility · roming",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "punjač Charge&GO: Super Vero Novi Sad",
+   "charger": "DC 150 kW",
+   "who": "+ 140 RSD priključenje",
+   "assume_kw": [
+    100,
+    50
+   ],
+   "rsd_min": [
+    197
+   ],
+   "label": "197 RSD/min"
+  },
+  {
+   "op": "orion-emobility",
+   "op_name": "Orion eMobility · roming",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "punjač Charge&GO: OMV Borska, Beograd",
+   "charger": "DC 120 kW",
+   "who": "+ 140 RSD priključenje",
+   "assume_kw": [
+    90,
+    50
+   ],
+   "rsd_min": [
+    176
+   ],
+   "label": "176 RSD/min"
+  },
+  {
+   "op": "orion-emobility",
+   "op_name": "Orion eMobility · roming",
+   "date": "22.09.2026",
+   "source": "aplikacija Orion eMobility",
+   "url": "https://oriontelekom.rs/emobility/aplikacija/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "punjač Charge&GO: Staro Sajmište 29, Beograd",
+   "charger": "AC 22 kW",
+   "who": "+ 80 RSD priključenje",
+   "assume_kw": [
+    11,
+    22
+   ],
+   "rsd_min": [
+    30
+   ],
+   "label": "30 RSD/min"
+  },
+  {
+   "op": "emobility-spectra",
+   "op_name": "Emobility Spectra",
+   "date": "22.09.2026",
+   "source": "aplikacija Emobility Spectra",
+   "url": "https://emobility.rs/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "CITY TAXI Novi Sad",
+   "charger": "DC 180 kW",
+   "unit_rsd": 45,
+   "rsd_per_min": 1.2,
+   "label": "45 RSD po „jedinici“ + 1,20 RSD/min",
+   "who": "ECO tarifa; zauzeće 10,20 RSD/min posle 10 min"
+  },
+  {
+   "op": "emobility-spectra",
+   "op_name": "Emobility Spectra",
+   "date": "22.09.2026",
+   "source": "aplikacija Emobility Spectra",
+   "url": "https://emobility.rs/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "Battery Magic",
+   "charger": "DC 120 kW (CCS, GB/T)",
+   "unit_rsd": 60,
+   "rsd_per_min": 1.2,
+   "label": "60 RSD po „jedinici“ + 1,20 RSD/min",
+   "who": ""
+  },
+  {
+   "op": "emobility-spectra",
+   "op_name": "Emobility Spectra",
+   "date": "22.09.2026",
+   "source": "aplikacija Emobility Spectra",
+   "url": "https://emobility.rs/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "Salaš 265",
+   "charger": "AC 17,2 kW",
+   "unit_rsd": 45,
+   "rsd_per_min": 1.2,
+   "label": "45 RSD po „jedinici“ + 1,20 RSD/min",
+   "who": "ECO tarifa; zauzeće 10,20 RSD/min posle 10 min"
+  },
+  {
+   "op": "emobility-spectra",
+   "op_name": "Emobility Spectra",
+   "date": "22.09.2026",
+   "source": "aplikacija Emobility Spectra",
+   "url": "https://emobility.rs/",
+   "conf": "primarni izvor (aplikacija)",
+   "where": "GIORGIO Luxury",
+   "charger": "AC 11 kW",
+   "unit_rsd": 54,
+   "rsd_per_min": 1.2,
+   "label": "54 RSD po „jedinici“ + 1,20 RSD/min",
+   "who": ""
+  },
+  {
+   "op": "putevi-srbije",
+   "op_name": "JP „Putevi Srbije“",
+   "where": "autoputevi, 31 punjač u radu",
+   "charger": "DC 40–300 kW",
+   "free": true,
+   "label": "besplatno",
+   "who": "",
+   "date": "22.09.2026",
+   "source": "putevi-srbije.rs",
+   "url": "https://www.putevi-srbije.rs/index.php/en/electric-chargers",
+   "conf": "primarni izvor"
+  },
+  {
+   "op": "lidl-echarge",
+   "op_name": "Lidl eCharge",
+   "where": "Liman, Novi Sad",
+   "charger": "DC 20 kW / AC 11 kW",
+   "free": true,
+   "label": "besplatno",
+   "who": "do 60 min dnevno, 08–22",
+   "date": "2022 / 2024",
+   "source": "lidl.rs, evfix.rs",
+   "url": "https://evfix.rs/stanice-za-punjenje-ev/besplatno-punjenje/lidl-echarge/",
+   "conf": "saopštenje + korisnik"
+  },
+  {
+   "op": "parking-servis-beograd",
+   "op_name": "Parking servis Beograd",
+   "where": "garaža Obilićev venac",
+   "charger": "AC 22 kW",
+   "rsd_hour": 100,
+   "label": "100 RSD/sat parkinga",
+   "who": "punjenje bez naknade",
+   "assume_kw": [
+    11,
+    22
+   ],
+   "date": "oktobar 2021",
+   "source": "24sedam.rs",
+   "url": "https://24sedam.rs/beograd/vesti/85803/besplatna-voznja-ali-samo-uz-automobil-na-struju-gde-u-beogradu-naci-punjace-za-elektricna-vozila/vest",
+   "conf": "medij, zastarelo"
+  }
+ ]
+}

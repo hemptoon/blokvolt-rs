@@ -361,11 +361,81 @@ for o in operators:
     render('operator.html', o['url'], op=o, title=f"{o['name']} — javno punjenje: cene, naplata, uslovi | BlokVolt",
            description=f"{o['name']}: {o['short'][:150]} Provereno {o['verified']}.")
     add_url(o['url'], '0.6')
+# 4b') monthly archive of the price index (content/javno/indeks-arhiva/YYYY-MM.json, written by
+# scripts/snapshot_index.py). Pages appear only from the second archived month on: one frozen page per
+# past month plus /javno-punjenje/cene/ with what changed; the current month is the live table above.
+MONTHS_SR = ['januar', 'februar', 'mart', 'april', 'maj', 'jun', 'jul', 'avgust', 'septembar', 'oktobar', 'novembar', 'decembar']
+MONTHS_SR_GEN = ['januara', 'februara', 'marta', 'aprila', 'maja', 'juna', 'jula', 'avgusta', 'septembra', 'oktobra', 'novembra', 'decembra']
+ARCHIVE = []
+for _p in sorted((ROOT / 'content' / 'javno' / 'indeks-arhiva').glob('*.json')):
+    _a = json.load(open(_p, encoding='utf-8'))
+    _y, _m = _a['month'].split('-')
+    _a['label'] = f'{MONTHS_SR[int(_m) - 1]} {_y}'
+    _a['label_gen'] = f"{MONTHS_SR_GEN[int(_m) - 1]} {_y}"   # "iz septembra 2026"
+    _a['url'] = f"/javno-punjenje/cene/{_a['month']}/"
+    for row in _a['rows']:
+        if not row.get('free'):
+            row['kwh_html'] = kwh_html(row)
+    ARCHIVE.append(_a)
+PRICE_HISTORY = None
+if len(ARCHIVE) >= 2:
+    ARCHIVE[-1]['url'] = '/javno-punjenje/#cene'   # the latest month is the live index
+    def _key(r):
+        return (r['op'], r.get('where', ''), r.get('charger', ''))
+    def _unit(r):
+        if r.get('free'):
+            return 'free'
+        return next((k for k in ('rsd_min', 'rsd_hour', 'unit_rsd') if r.get(k)), None)
+    def _val(r):
+        v = r.get(_unit(r)) if _unit(r) not in (None, 'free') else None
+        return float(v[0] if isinstance(v, list) else v) if v else None
+    _shown = ARCHIVE[-3:]
+    _keys = []
+    for _a in _shown:
+        for r in _a['rows']:
+            if not r.get('rsd_total') and _key(r) not in _keys:   # receipts are one-off, not tariffs
+                _keys.append(_key(r))
+    _lines = []
+    for k in _keys:
+        cells = [next((r for r in _a['rows'] if not r.get('rsd_total') and _key(r) == k), None) for _a in _shown]
+        last = cells[-1]
+        prev = next((c for c in reversed(cells[:-1]) if c), None)
+        if last is None:
+            change, cls = 'nije u poslednjem snimku', 'no'
+        elif prev is None:
+            change, cls = 'novo u indeksu', 'ask'
+        elif last.get('date') == prev.get('date'):
+            change, cls = 'nije ponovo provereno', 'no'
+        elif prev.get('free') and not last.get('free'):
+            change, cls = 'više nije besplatno', 'yes'
+        elif _unit(prev) != _unit(last):
+            change, cls = 'promenjen način naplate', 'yes'
+        elif _val(prev) and _val(last) is not None:
+            pct = (_val(last) - _val(prev)) / _val(prev) * 100
+            change, cls = ('bez promene', 'ask') if abs(pct) < 0.5 else (('+' if pct > 0 else '−') + sr_num(abs(pct)) + ' %', 'yes')
+        else:
+            change, cls = ('bez promene', 'ask') if last.get('label') == prev.get('label') else ('promenjen način naplate', 'yes')
+        first = next(c for c in cells if c)
+        _lines.append({'op': first['op'], 'op_name': first['op_name'], 'where': first.get('where', ''), 'charger': first.get('charger', ''),
+                       'cells': cells, 'change': change, 'cls': cls})
+    _lines.sort(key=lambda l: {'yes': 0, 'ask': 1, 'no': 2}[l['cls']])   # what changed first; stable within a class
+    PRICE_HISTORY = {'shown': _shown, 'lines': _lines, 'n_changed': sum(1 for l in _lines if l['cls'] == 'yes')}
+    for i, _a in enumerate(ARCHIVE[:-1]):
+        render('javno_snimak.html', _a['url'], snap=_a, newer=ARCHIVE[i + 1], older=ARCHIVE[i - 1] if i else None,
+               title=f"Cene javnog punjenja u Srbiji — {_a['label']} (arhiva) | BlokVolt",
+               description=f"Arhivski snimak indeksa cena javnog punjenja za {_a['label']}: tarife iz aplikacija Charge&GO, Orion eMobility i Emobility Spectra, stvarni računi i besplatni punjači, sa računicom po kWh. Snimljeno {_a['captured']}.")
+        add_url(_a['url'], '0.4', '-'.join(reversed(_a['captured'].split('.'))))
+    render('javno_istorija.html', '/javno-punjenje/cene/', archive=ARCHIVE, hist=PRICE_HISTORY,
+           title='Istorija cena javnog punjenja u Srbiji — promene po mesecima | BlokVolt',
+           description=f"Kako su se menjale cene javnog punjenja u Srbiji od {ARCHIVE[0]['label_gen']}: mesečni snimci indeksa (Charge&GO, Orion eMobility, Emobility Spectra, besplatni punjači) i šta je poskupelo ili pojeftinilo.")
+    add_url('/javno-punjenje/cene/', '0.6')
+
 index_checked = price_index['updated']
-render('javno_index.html', '/javno-punjenje/', ops=operators, ops_by_kind=ops_by_kind, KIND_GROUPS=KIND_GROUPS, index=price_index,
+render('javno_index.html', '/javno-punjenje/', ops=operators, ops_by_kind=ops_by_kind, KIND_GROUPS=KIND_GROUPS, index=price_index, hist=PRICE_HISTORY,
        title='Javni punjači u Srbiji — mreže, cene po minutu i po kWh, besplatni punjači | BlokVolt',
        description=f'Ko vodi javne punjače u Srbiji (Charge&GO, Orion eMobility, JP Putevi Srbije, Tesla, OMV…), poslednje zabeležene cene sa računicom po kWh, 36 besplatnih državnih punjača na autoputevima i propisi. Provereno {index_checked}.')
 add_url('/javno-punjenje/', '0.9')
+
 
 # 4c) cost calculator (tools)
 _E, _d = CALC['eps'], CALC['defaults']
