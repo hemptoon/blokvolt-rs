@@ -1,0 +1,598 @@
+{
+ "code": "BA",
+ "name": "Bosnia and Herzegovina",
+ "checked": "23.09.2026",
+ "currency": "BAM",
+ "summary": "Bosnia and Herzegovina is one of Europe's smallest EV markets: 763 electric vehicles were registered at the end of 2024, and Eurostat-based figures show 71 new battery-electric cars in 2025 (0.7% of new car registrations). Public charging is split between the utility Elektroprivreda BiH, private networks such as e-GO and single chargers at hotels, malls and fuel stations; most operators publish no prices, there is no official nationwide count and no Tesla Supercharger. Only a few firms publish home-charger prices (about 670–2,900 KM per wallbox), household electricity is regulated separately in the Federation, Republika Srpska and Brčko District, and the Federation's 2026 EV purchase subsidy (up to 12,000 KM) was fully reserved within two days.",
+ "stats": [
+  {
+   "label": "Electric vehicles registered (all vehicle categories)",
+   "value": "763 (end of 2024)",
+   "note": "Fuel type 'Električni' across all categories: 0.0589% of 1,295,224 registered vehicles; 453 a year earlier. BIHAMK had not published a 2025 report by 23.09.2026 (its statistics page lists 2024 as the latest year).",
+   "source": "https://bihamk.ba/assets/files/1739351705-2024-godina.pdf",
+   "source_title": "BIHAMK – Informacija o registrovanim cestovnim motornim vozilima u BiH, januar–decembar 2024",
+   "source_date": "February 2025",
+   "confidence": "high"
+  },
+  {
+   "label": "Hybrid vehicles registered",
+   "value": "4,350 petrol-electric and 1,565 diesel-electric (end of 2024)",
+   "note": "Same BIHAMK table by fuel type; plug-in and full hybrids are not shown separately.",
+   "source": "https://bihamk.ba/assets/files/1739351705-2024-godina.pdf",
+   "source_title": "BIHAMK – Informacija o registrovanim cestovnim motornim vozilima u BiH, januar–decembar 2024",
+   "source_date": "February 2025",
+   "confidence": "high"
+  },
+  {
+   "label": "New battery-electric cars registered, 2025",
+   "value": "71",
+   "note": "Eurostat data processed by Euronews/Investitor; the lowest number among the European countries compared (Montenegro 129). Eurostat notes that countries report voluntarily and methods are not fully harmonised.",
+   "source": "https://www.pvinformer.me/crna-gora-pri-evropskom-dnu-elektricni-automobili-cinili-tek-18-novih-registracija/",
+   "source_title": "Crna Gora pri evropskom dnu: Električni automobili činili tek 1,8% novih registracija (PV Informer)",
+   "source_date": "18.08.2026",
+   "confidence": "medium"
+  },
+  {
+   "label": "Battery-electric share of new car registrations, 2025",
+   "value": "0.7%",
+   "note": "Last of 38 European countries compared (Serbia 1.7%, Montenegro 1.8%).",
+   "source": "https://www.pvinformer.me/crna-gora-pri-evropskom-dnu-elektricni-automobili-cinili-tek-18-novih-registracija/",
+   "source_title": "Crna Gora pri evropskom dnu: Električni automobili činili tek 1,8% novih registracija (PV Informer)",
+   "source_date": "18.08.2026",
+   "confidence": "medium"
+  },
+  {
+   "label": "Battery-electric share of the passenger-car fleet, end of 2025",
+   "value": "0.1%",
+   "note": "Lowest among the 37 countries with comparable data (Serbia 0.2%).",
+   "source": "https://www.pvinformer.me/crna-gora-pri-evropskom-dnu-elektricni-automobili-cinili-tek-18-novih-registracija/",
+   "source_title": "Crna Gora pri evropskom dnu: Električni automobili činili tek 1,8% novih registracija (PV Informer)",
+   "source_date": "18.08.2026",
+   "confidence": "medium"
+  },
+  {
+   "label": "First registrations, January 2026",
+   "value": "7,095 motor vehicles, of which about 0.5% fully electric",
+   "note": "7.4% fewer than in January 2025. The article does not name its data source.",
+   "source": "https://www.biznisinfo.ba/pad-broja-registrovanih-vozila-u-bih-elektricnih-samo-05-posto/",
+   "source_title": "Biznisinfo.ba – first-time vehicle registrations in BiH, January 2026",
+   "source_date": "18.02.2026",
+   "confidence": "medium"
+  },
+  {
+   "label": "Electric cars imported",
+   "value": "240 in 2023 (69 in 2022)",
+   "note": "Indirect Taxation Authority (UIO) data supplied to the FENA agency; value about 18.6 million KM including duties.",
+   "source": "https://www.slobodna-bosna.ba/vijest/339378/gradi_se_infrastruktura_povecan_broj_uvezenih_elektrichnih_vozila_u_bih_raste_i_broj_elektrichnih_punionica.html",
+   "source_title": "Slobodna Bosna – Gradi se infrastruktura: povećan broj uvezenih električnih vozila u BiH",
+   "source_date": "04.02.2024",
+   "confidence": "medium"
+  },
+  {
+   "label": "Public charging price ranges (media overview)",
+   "value": "AC up to 22 kW: 0.00–0.50 KM/kWh; DC 50 kW and above: 0.50–0.90 KM/kWh",
+   "note": "About €0–0.26 and €0.26–0.46 per kWh. The article says many chargers are still in a free promotional phase and names no locations. Another automobili.ba article (05.03.2026) gives about 0.25–0.30 KM/kWh at public chargers and 0.45–0.60 KM/kWh at DC fast chargers. VAT not stated in either.",
+   "source": "https://www.automobili.ba/mreza-stanica-za-punjenje-elektricnih-automobila-u-bih/",
+   "source_title": "Automobili.ba – Mreža stanica za punjenje električnih automobila u BiH",
+   "source_date": "03.04.2026",
+   "confidence": "low"
+  },
+  {
+   "label": "Motorway fast charging",
+   "value": "One DC site found: A1 motorway, Lepenica rest area (Mostar→Sarajevo direction)",
+   "note": "Operated by Elektroprivreda BiH (CCS 50 kW, CHAdeMO 50 kW, Type 2 22 kW per its FAQ). A 50 kW DC charger also operates 24/7 at the Energopetrol station at Mostar's exit, Bišće Polje (klix.ba, 01.05.2025). No fast charger was found on motorways in Republika Srpska.",
+   "source": "https://www.epbih.ba/stranica/elektromobilnost",
+   "source_title": "EPBiH – Elektromobilnost",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "label": "Online marketplace listings for EV chargers",
+   "value": "306 listings",
+   "note": "OLX.ba category 'Punjači za električna vozila'. Individual listings did not load without JavaScript; this is a marketplace count, not a list of verified sellers.",
+   "source": "https://olx.ba/pretraga?category_id=2664",
+   "source_title": "OLX.ba – Punjači za električna vozila",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "medium"
+  }
+ ],
+ "home_companies": [
+  {
+   "name": "e-punionice.ba (Vektra d.o.o.)",
+   "city": "Grude",
+   "what": "Online shop for EV charging equipment: wall-mounted home chargers (36 models in its wallbox category), mobile chargers, commercial and DC chargers, adapters. Its business page offers installation and connection of chargers to software for monitoring and billing ('praćenje i naplatu').",
+   "brands": [
+    "dé",
+    "Anker SOLIX",
+    "Easee",
+    "Etrel",
+    "go-e",
+    "Huawei",
+    "NexBlue",
+    "Stekerr",
+    "Tesla (Wall Connector)",
+    "Wallbox",
+    "Wolfbox"
+   ],
+   "price": "Wallboxes 670–2,895 KM, e.g. dé Wallbox 11 kW 845–1,190 KM, Easee Charge Core 2,279 KM, Tesla Wall Connector 22 kW 2,195 KM; twin-socket Stekerr P1 units 8,549–9,159 KM. VAT not stated.",
+   "price_eur": "€342.57–1,480.19 (dé Wallbox 11 kW €432.04–608.44)",
+   "installation": "Yes",
+   "installation_note": "Business page: 'Profesionalna montaža traje svega nekoliko sati' (professional installation takes a few hours); the contact page offers help with charger installation ('ugradnju punionice'). Installation price not published.",
+   "url": "https://e-punionice.ba/",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "MOON POWER BiH (Porsche BH d.o.o.)",
+   "city": "Sarajevo",
+   "what": "General importer of MOON charging products in BiH ('Generalni uvoznik za MOON proizvode u BiH'): home wallboxes, portable POWER2Go chargers, DC chargers and charging-point management for businesses.",
+   "brands": [
+    "MOON"
+   ],
+   "price": "MOON Inch LITE (up to 22 kW) 1,900 KM; MOON Inch Pro 2,800 KM; POWER2Go Complete Set 2,500 KM; POWER2Go cable 3,400 KM — all 'bez PDV' (excl. VAT).",
+   "price_eur": "€971.45; €1,431.62; €1,278.23; €1,738.39 (excl. VAT)",
+   "installation": "Yes",
+   "installation_note": "Private-customer page: 'Od kupovine wallboxa do instalacije, naši partneri prate sve korake' (partner companies handle every step from purchase to installation). Installation price not published.",
+   "url": "https://www.moon-power.ba/privatni-korisnici",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "Schrack Technik BH d.o.o.",
+   "city": "Mostar (branches in Sarajevo and Tuzla)",
+   "what": "Electrical wholesaler; its online shop has an 'Elektromobilnost' category tagged for chargers and charging stations. The products did not display without JavaScript, so models and prices could not be checked.",
+   "brands": [],
+   "price": "Not published (products not visible)",
+   "price_eur": "",
+   "installation": "Not mentioned",
+   "installation_note": "The site mentions expert advice ('stručni savjeti'), not installation.",
+   "url": "https://www.schrack.ba/trgovina/elektromobilnost.html",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "medium"
+  }
+ ],
+ "home_price_ranges": [
+  {
+   "what": "Wallbox list prices at a BiH online shop (e-punionice.ba, 36 models)",
+   "range": "670–2,895 KM per wallbox (twin-socket units up to 9,159 KM)",
+   "note": "About €342.57–1,480.19. VAT not stated on the site. One retailer's catalogue, not a market survey.",
+   "source": "https://e-punionice.ba/product-category/wallbox/",
+   "source_title": "Wallbox (zidne) punionice – e-punionice.ba",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "what": "MOON home wallboxes (importer list prices)",
+   "range": "1,900–2,800 KM excl. VAT",
+   "note": "About €971.45–1,431.62 excl. VAT (MOON Inch LITE and MOON Inch Pro).",
+   "source": "https://www.moon-power.ba/privatni-korisnici",
+   "source_title": "MOON POWER BiH – Privatni korisnici",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "what": "AC home charger, device only (dealer estimate)",
+   "range": "€500–1,000",
+   "note": "About 978–1,956 KM. Quoted by a sales adviser at a Sarajevo car dealership; VAT not stated.",
+   "source": "https://www.oslobodjenje.ba/vijesti/bih/broj-elektricnih-automobila-raste-i-u-bih-a-gdje-su-punionice-921453/",
+   "source_title": "Oslobođenje – Broj električnih automobila raste i u BiH, a gdje su punionice…?",
+   "source_date": "15.01.2024",
+   "confidence": "low"
+  },
+  {
+   "what": "Installation of a home charger",
+   "range": "Not published",
+   "note": "No BiH source found publishes an installation price. e-punionice.ba says professional installation takes a few hours; MOON says partner companies do the installation.",
+   "source": "https://e-punionice.ba/business/",
+   "source_title": "e-punionice.ba – Business",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "medium"
+  }
+ ],
+ "public_count": {
+  "value": "No official nationwide count; published figures range from 78 to about 500",
+  "note": "Electromaps lists 78 stations (Sarajevo Canton 33, Republika Srpska 22, the rest spread over other cantons). Automobili.ba (05.03.2026) gives about 180 public stations (about 120 AC and 60 DC; Sarajevo about 50, Banja Luka about 30) citing 'IRENA 2026' without a link. N1 and Balans.co.ba (03.08.2025) report 'about 500'. In February 2024 media quoted 320–350 chargers, about 15 of them fast. The Federation regulator FERK's register of charging service providers lists 2 providers with 20 stations, all in Sarajevo (last entry 02.04.2024).",
+  "source": "https://www.electromaps.com/en/charging-stations/bosnia-herzegovina",
+  "source_title": "Electromaps – Charging stations in Bosnia & Herzegovina",
+  "source_date": "no date on page; checked 23.09.2026",
+  "confidence": "low"
+ },
+ "networks": [
+  {
+   "name": "EPBiH punionice",
+   "operator": "JP Elektroprivreda BiH d.d. Sarajevo",
+   "app": "EPBiH Charge (Android/iOS) and web platform charge.epbih.ba",
+   "size": "17 AC locations in 14 towns (Type 2, 2 × 22 kW; the Srebrenik charger is marked out of service) and 1 DC site on the A1 motorway, Lepenica rest area (CCS 50 kW, CHAdeMO 50 kW, Type 2 22 kW). Federation of BiH only.",
+   "prices": [
+    {
+     "what": "AC and DC charging",
+     "price": "Not published. EPBiH said the price list would be posted at mojaenergija.epbih.ba/elektromobilnost; no prices there on 23.09.2026.",
+     "vat": "not stated",
+     "source": "https://mojaenergija.epbih.ba/elektromobilnost/",
+     "source_date": "no date on page; checked 23.09.2026",
+     "confidence": "high"
+    },
+    {
+     "what": "Parking after charging ends",
+     "price": "15 minutes free, then an overstay parking tariff (amount not published)",
+     "vat": "not stated",
+     "source": "https://www.epbih.ba/upload/documents/Elektromobilnost/Baza%20najcescih%20pitanja%20korisnika%20punionica%20EPBIH_EA_20_04_26.pdf",
+     "source_date": "no date in text (file name dated 20.04.2026); checked 23.09.2026",
+     "confidence": "high"
+    }
+   ],
+   "payment": "Visa and Mastercard bank cards through the Monri payment service, with an amount reserved on the card before charging; web app without registration, mobile app with registration. Earlier RFID cards no longer work; RFID cards remain for business users (TuzlaInfo, 13.04.2026).",
+   "url": "https://www.epbih.ba/stranica/elektromobilnost"
+  },
+  {
+   "name": "e-GO Charger",
+   "operator": "\"e-GO\" d.o.o. Sarajevo",
+   "app": "e-GO Charger (Android/iOS); its Google Play description matches that of Orion eMobility ('more than 240,000 own and partner charging stations in as many as 30 EU countries')",
+   "size": "11 × 22 kW, 3 × 50 kW and 1 × 150 kW chargers at 14 named locations, mostly in Sarajevo, plus Garden City Konjic (e.g. Aerodrom Sarajevo, Aria Mall, Čengić Vila, Megamix); plus a 50 kW DC charger at the Energopetrol station in Bišće Polje, Mostar, public 24/7 via the app (klix.ba, 01.05.2025). The FERK register lists 19 e-GO stations (entry of 02.04.2024).",
+   "prices": [
+    {
+     "what": "AC 22 kW and DC 50–150 kW",
+     "price": "Not published on the operator's site",
+     "vat": "not stated",
+     "source": "https://e-go.ba/en/e-go-charger/",
+     "source_date": "no date on page (© 2023); checked 23.09.2026",
+     "confidence": "high"
+    }
+   ],
+   "payment": "In the app with a payment card ('pay the fee for charging using one of your favorite payment cards', Google Play, updated 03.09.2026); chargers are found and reserved in the app.",
+   "url": "https://e-go.ba/en/e-go-charger/"
+  },
+  {
+   "name": "MOON DC 150 kW, Blažuj (Sarajevo)",
+   "operator": "Porsche Inter Auto BH d.o.o. (name in the FERK register)",
+   "app": "Not stated",
+   "size": "1 DC charger, 150 kW, Mali Kiseljak 6A, Blažuj; open Monday–Friday 08:00–18:00. The same notice says the chargers at Bulevar Meše Selimovića 16 are not available for charging.",
+   "prices": [
+    {
+     "what": "DC 150 kW",
+     "price": "0.80 KM/kWh (about €0.41)",
+     "vat": "incl.",
+     "source": "https://www.porschesarajevo.ba/novosti/obavijest-korisnicima-moon-dc-150kw-punjaca",
+     "source_date": "23.08.2024",
+     "confidence": "high"
+    }
+   ],
+   "payment": "Not stated in the notice",
+   "url": "https://www.porschesarajevo.ba/novosti/obavijest-korisnicima-moon-dc-150kw-punjaca"
+  },
+  {
+   "name": "Sarajevo International Airport car park",
+   "operator": "Sarajevo International Airport",
+   "app": "Not stated",
+   "size": "1 charger, 22 kW, two vehicles at a time, in the car park in front of the terminal. e-GO also lists 'Aerodrom Sarajevo' among its charger locations.",
+   "prices": [
+    {
+     "what": "AC 22 kW",
+     "price": "No extra charge for car-park users ('neće dodatno naplaćivati'); the car park itself is paid",
+     "vat": "not stated",
+     "source": "https://sarajevo-airport.ba/Page/Punjenje",
+     "source_date": "no date on page; checked 23.09.2026",
+     "confidence": "high"
+    }
+   ],
+   "payment": "Not stated",
+   "url": "https://sarajevo-airport.ba/Page/Punjenje"
+  },
+  {
+   "name": "Public charger behind Mostar City Hall",
+   "operator": "Not stated in the article (page keywords mention 'UNIS Charge')",
+   "app": "Not stated",
+   "size": "2 × 22 kW; described as Mostar's first official public charger, opened at the end of 2021. Current status not verified.",
+   "prices": [
+    {
+     "what": "AC 22 kW",
+     "price": "Not stated. The 0.15 KM/kWh in the article is an electricity price used for a savings estimate, not a charging tariff.",
+     "vat": "not stated",
+     "source": "https://bljesak.info/auto-moto/flash/punionica-elektricnih-vozila-u-mostaru-koliko-se-puni-i-koliko-se-stedi/450273",
+     "source_date": "30.03.2024",
+     "confidence": "medium"
+    }
+   ],
+   "payment": "Not stated",
+   "url": "https://bljesak.info/auto-moto/flash/punionica-elektricnih-vozila-u-mostaru-koliko-se-puni-i-koliko-se-stedi/450273"
+  },
+  {
+   "name": "easy2charge (Republika Srpska)",
+   "operator": "Not identified (name as listed on Electromaps)",
+   "app": "Listed on Electromaps as working with the Electropass key fob",
+   "size": "At least 2 stations listed on Electromaps: Jahorina, Obućina Bare (Type 2, 22 kW) and Kozarska Dubica, Svetosavska 3 (CCS2, 30 kW), both shown as publicly accessible.",
+   "prices": [
+    {
+     "what": "AC 22 kW / DC 30 kW",
+     "price": "Not shown",
+     "vat": "not stated",
+     "source": "https://www.electromaps.com/en/charging-stations/bosnia-herzegovina/republika-srpska/kozarska-dubica/easy2charge-javni-brzi-punjac-opstina-novi-svetosavska",
+     "source_date": "station pages updated 17.05.2026 and 03.07.2026; checked 23.09.2026",
+     "confidence": "low"
+    }
+   ],
+   "payment": "Electropass (per Electromaps)",
+   "url": "https://www.electromaps.com/en/charging-stations/bosnia-herzegovina/republika-srpska"
+  },
+  {
+   "name": "Elektroprivreda HZ HB",
+   "operator": "JP Elektroprivreda HZ HB d.d. Mostar",
+   "app": "None found",
+   "size": "No charging information on ephzhb.ba. Automobili.ba (03.04.2026) names it among operators building charging networks.",
+   "prices": [
+    {
+     "what": "Charging",
+     "price": "Not published",
+     "vat": "not stated",
+     "source": "https://ephzhb.ba/",
+     "source_date": "no date on page; checked 23.09.2026",
+     "confidence": "high"
+    }
+   ],
+   "payment": "Not stated",
+   "url": "https://ephzhb.ba/"
+  },
+  {
+   "name": "Elektroprivreda Republike Srpske (ERS)",
+   "operator": "MH Elektroprivreda Republike Srpske, Trebinje",
+   "app": "None found",
+   "size": "No charging information on ers.ba. No public network operator with a price list was found in Republika Srpska.",
+   "prices": [
+    {
+     "what": "Charging",
+     "price": "Not published",
+     "vat": "not stated",
+     "source": "https://ers.ba/",
+     "source_date": "no date on page; checked 23.09.2026",
+     "confidence": "high"
+    }
+   ],
+   "payment": "Not stated",
+   "url": "https://ers.ba/"
+  },
+  {
+   "name": "Tesla Supercharger",
+   "operator": "Tesla",
+   "app": "Not applicable",
+   "size": "No locations listed for Bosnia and Herzegovina. Nearest found across the border: Vrgorac, Croatia (Zagrebačka 31) – 6 Superchargers up to 125 kW, open to other CCS vehicles, 24/7.",
+   "prices": [
+    {
+     "what": "Supercharging in BiH",
+     "price": "Not applicable (no sites)",
+     "vat": "not stated",
+     "source": "https://www.tesla.com/findus/list/superchargers/Bosnia%20and%20Herzegovina",
+     "source_date": "no date on page; checked 23.09.2026",
+     "confidence": "high"
+    }
+   ],
+   "payment": "Not applicable",
+   "url": "https://www.tesla.com/findus/list/superchargers/Bosnia%20and%20Herzegovina"
+  },
+  {
+   "name": "Orion eMobility (roaming app)",
+   "operator": "Orion eMobility (Serbia)",
+   "app": "Orion eMobility (Android/iOS)",
+   "size": "The app description lists Bosnia & Herzegovina among countries covered by 'more than 240,000 own and partner charging stations in as many as 30 EU countries'; BiH stations are not named.",
+   "prices": [
+    {
+     "what": "Charging in BiH",
+     "price": "Not published",
+     "vat": "not stated",
+     "source": "https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app",
+     "source_date": "app updated 03.09.2026; checked 23.09.2026",
+     "confidence": "medium"
+    }
+   ],
+   "payment": "Not stated",
+   "url": "https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app"
+  }
+ ],
+ "electricity": [
+  {
+   "what": "Federation of BiH – Elektroprivreda BiH (EPBiH) households, single-rate meter, from 01.09.2025",
+   "price": "0.1590 KM/kWh (green block, 0–350 kWh a month); 0.1620 KM/kWh (blue, 351–1,000 kWh); 0.1650 KM/kWh (red, over 1,000 kWh)",
+   "note": "Excl. VAT; about €0.081–0.084 per kWh. VAT of 17% and metering and renewable-energy fees are added on the bill (TuzlaInfo, 03.07.2025, same figures). Euronews presents network charges as a separate bill item; EPBiH's own tariff tables are published as images and could not be read to confirm which components these prices include.",
+   "source": "https://euronews.ba/bosna-i-hercegovina/drustvo/39445/ko-gdje-i-koliko-placa-struju-u-bih",
+   "source_title": "Euronews BiH – Ko, gdje i koliko plaća struju u BiH?",
+   "source_date": "20.10.2025",
+   "confidence": "medium"
+  },
+  {
+   "what": "Federation of BiH – EPBiH households, two-rate meter (day/night), from 01.09.2025",
+   "price": "Higher tariff 0.1988 / 0.2025 / 0.2063 KM/kWh; lower tariff 0.0994 / 0.1012 / 0.1031 KM/kWh (green / blue / red block)",
+   "note": "Excl. VAT; lower tariff about €0.051–0.053 per kWh. TuzlaInfo (03.07.2025) printed the proposed green-block lower tariff as 9.44 fening/kWh; Euronews gives 0.0994 KM/kWh.",
+   "source": "https://euronews.ba/bosna-i-hercegovina/drustvo/39445/ko-gdje-i-koliko-placa-struju-u-bih",
+   "source_title": "Euronews BiH – Ko, gdje i koliko plaća struju u BiH?",
+   "source_date": "20.10.2025",
+   "confidence": "medium"
+  },
+  {
+   "what": "Federation of BiH – EPBiH cheaper-tariff hours",
+   "price": "Winter time: weekdays and Saturday 13–16 h and 22–07 h, all day Sunday. Summer time: 14–17 h and 23–08 h, all day Sunday.",
+   "note": "From EPBiH's tariff-model page for public supply (prices valid from 01.09.2025).",
+   "source": "https://mojaenergija.epbih.ba/javno-snabdijevanje/cijene-elektricne-energije/tarifni-modeli/",
+   "source_title": "EPBiH Moja energija – Tarifni modeli",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "what": "Federation of BiH – Elektroprivreda HZ HB households (tariff table valid from 01.01.2020, still published)",
+   "price": "Single-rate: 15.79 fening/kWh (winter season) and 12.15 (summer season). Two-rate: 19.74 / 9.87 fening/kWh higher/lower (winter) and 15.18 / 7.59 (summer). Plus 1.90 KM per metering point and a billing-power charge of 6.64 KM/kW (winter) or 5.11 KM/kW (summer).",
+   "note": "The table excludes the renewable-energy fee and VAT. 15.79 fening is about €0.081 per kWh. Seasons per Euronews (20.10.2025): winter 1 November–28 February, summer 1 March–31 October; Euronews gives the same per-kWh figures.",
+   "source": "https://ephzhb.ba/en/kupci/kucanstva/",
+   "source_title": "Elektroprivreda HZHB Mostar – Kućanstva",
+   "source_date": "no date on page (table 'from 01.01.2020'); checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "what": "Republika Srpska – ERS public supply, energy part, households, from 01.02.2026",
+   "price": "Single-rate: 0.0675 KM/kWh (white zone, up to 500 kWh a month), 0.1060 (blue, 501–1,500 kWh), 0.2013 (red, above 1,500 kWh). Two-rate higher/lower: white 0.0813 / 0.0406; blue 0.1277 / 0.0638; red 0.2425 / 0.1212 KM/kWh.",
+   "note": "Excl. VAT ('ne sadrže porez na dodatu vrijednost'). Plus a supply fee of 2.48 KM per metering point a month; network charges are billed separately (next row). RERS decision of 22.12.2025 (No. 01-1324-23/24/Р-157-1338) amending the decision of 17.12.2024. Zone limits from ers.ba. White-zone night energy is about €0.021 per kWh.",
+   "source": "https://ers.ba/wp-content/uploads/2026/01/Odluka-o-izmjenana-i-dopunama-Odluke-o-odobravanju-cijene-energije-i-tarifnih-stavova-za-javno-snabdijevanje-CIR-2.pdf",
+   "source_title": "RERS – Odluka o izmjenama i dopunama Odluke o odobravanju cijene energije i tarifnih stavova za javno snabdijevanje",
+   "source_date": "22.12.2025",
+   "confidence": "high"
+  },
+  {
+   "what": "Republika Srpska – network charge, households, from 01.02.2026",
+   "price": "Higher tariff 0.0654 KM/kWh; lower tariff 0.0397 KM/kWh",
+   "note": "Excl. VAT. RERS decision of 22.12.2025 (No. 01-1430-41/25/P-157-1336). Per ERS, the lower tariff runs 22:00–06:00 on weekdays in winter time (23:00–07:00 in summer time); the decision also applies it at weekends. Media reported that electricity for households would cost 10% more from 01.02.2026 (Nezavisne novine, 22.12.2025).",
+   "source": "https://www.elektrokrajina.com/wp-content/uploads/2026/02/Odluka-o-TARIFAMA-za-korisnike-DISTRIBUTIVNIH-sistema-u-Republici-Srpskoj-dec-2025.pdf",
+   "source_title": "RERS – Odluka o tarifama za korisnike distributivnih sistema u Republici Srpskoj (published by Elektrokrajina)",
+   "source_date": "22.12.2025",
+   "confidence": "high"
+  },
+  {
+   "what": "Brčko District – universal supply (energy part), households, from 01.02.2026",
+   "price": "Two-rate: 25.42 fening/kWh higher tariff, 12.71 fening/kWh lower tariff; single-rate 18.89 fening/kWh; plus 5.72 KM per metering point a month",
+   "note": "Excl. VAT. DERK decision of 21.01.2026 (No. 04-28-5-342-18/25); single-rate value read from the PDF table layout. Higher tariff 07–13 h and 16–22 h in winter time, lower tariff 13–16 h, 22–07 h and Sundays. About €0.130 / €0.065 per kWh. Media reported a 7.06% rise for households (Novi glas, 22.01.2026).",
+   "source": "https://www.derk.ba/DocumentsPDFs/Tarifa-Brcko-snabdijevanje-21jan2026-h.pdf",
+   "source_title": "DERK – Odluka o tarifama za snabdijevanje električnom energijom u okviru univerzalne usluge u Brčko Distriktu BiH",
+   "source_date": "21.01.2026",
+   "confidence": "high"
+  },
+  {
+   "what": "Brčko District – distribution network charge, households, from 01.02.2026",
+   "price": "Single-rate 4.73 fening/kWh; two-rate 6.56 / 3.28 fening/kWh (higher/lower); plus 2.22 KM per kW of billing power (5 kW where power is not measured)",
+   "note": "Excl. VAT. DERK decision of 21.01.2026; values read from the PDF table layout, so check before quoting.",
+   "source": "https://www.derk.ba/DocumentsPDFs/Tarifa-Brcko-distribucija-21jan2026-h.pdf",
+   "source_title": "DERK – Odluka o tarifama za usluge distribucije električne energije u Brčko Distriktu BiH",
+   "source_date": "21.01.2026",
+   "confidence": "medium"
+  },
+  {
+   "what": "VAT on household electricity (whole country)",
+   "price": "17%",
+   "note": "Charged on the total of all bill items, in both entities and Brčko District.",
+   "source": "https://euronews.ba/bosna-i-hercegovina/drustvo/39445/ko-gdje-i-koliko-placa-struju-u-bih",
+   "source_title": "Euronews BiH – Ko, gdje i koliko plaća struju u BiH?",
+   "source_date": "20.10.2025",
+   "confidence": "medium"
+  }
+ ],
+ "subsidies": [
+  {
+   "programme": "Federation of BiH – Environmental Protection Fund (Fond za zaštitu okoliša FBiH), public call JP EV 2026 for new electric vehicles",
+   "status": "closed",
+   "amount": "Up to 12,000 KM for a battery-electric vehicle and up to 10,000 KM for a plug-in hybrid, at most 30% of the vehicle price (about €6,135.50 / €5,112.92); call budget 500,000 KM",
+   "who": "Adults resident in the Federation of BiH; legal entities and sole traders (obrti) registered in the Federation. New M1 (passenger) and N1 (light goods) vehicles only, never registered before.",
+   "deadline": "Until funds are used up, at the latest 31.12.2026. Temporarily closed on 18.09.2026 after all funds were reserved; it reopens only if money remains after the submitted applications are processed.",
+   "note": "Opened 16.09.2026; applications via e-prijava.fzofbih.org.ba, handled in order of arrival. Chargers are not mentioned as eligible. Closure notice: https://fzofbih.org.ba/2026/09/18/privremeno-zatvaranje-javnog-poziva-za-sufinanciranje-nabave-elektricnih-vozila-za-2026-godinu-zbog-rezervacije-raspolozivih-sredstava/ . Oslobođenje (15.01.2024) reported Federation incentives of 10,000 KM per vehicle in 2023.",
+   "source": "https://fzofbih.org.ba/wp-content/uploads/2026/09/JP-EV-2026_Tekst-Poziva.pdf",
+   "source_title": "Fond za zaštitu okoliša FBiH – JP EV 2026, tekst poziva",
+   "source_date": "16.09.2026",
+   "confidence": "high"
+  },
+  {
+   "programme": "Republika Srpska – Environmental Protection and Energy Efficiency Fund (Fond za zaštitu životne sredine i energetsku efikasnost RS)",
+   "status": "none",
+   "amount": "None",
+   "who": "—",
+   "deadline": "—",
+   "note": "The Fund's 2026 calls page lists one call, for energy efficiency in homes (08.09.2026; windows, insulation, heat pumps, solar), with no measure for electric vehicles or chargers.",
+   "source": "https://www.ekofondrs.org/konkurs/2026_index.html",
+   "source_title": "Fond za zaštitu životne sredine i energetsku efikasnost RS – Javni konkursi 2026",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "programme": "Tuzla Canton – co-financing of charging stations (Ministry of Trade, Tourism and Transport)",
+   "status": "unconfirmed",
+   "amount": "100,000 KM in the 2025 budget; up to 25,000 KM per application (about €51,129 / €12,782)",
+   "who": "Private companies building charging stations (not home chargers)",
+   "deadline": "Not stated",
+   "note": "Stated by an assistant minister of the cantonal ministry; also reported by N1 (03.08.2025). No 2026 call was found.",
+   "source": "https://balans.co.ba/problem-nedostatka-punionica-kakva-je-buducnost-elektricnih-automobila-u-bih/",
+   "source_title": "Balans.co.ba – Problem nedostatka punionica: Kakva je budućnost električnih automobila u BiH?",
+   "source_date": "03.08.2025",
+   "confidence": "medium"
+  }
+ ],
+ "buildings": [
+  {
+   "topic": "Work on common parts for an owner's own installation (Federation of BiH)",
+   "text": "An owner may change their own unit, but if the change requires work on common parts of the building it is allowed only if it is usual or serves an important interest of the owner; otherwise any co-owner can forbid it. Co-owners cannot, however, forbid laying lines for light, gas, energy, water and telephone. The law does not mention EV chargers.",
+   "law": "Zakon o stvarnim pravima FBiH (Službene novine FBiH 66/13, 100/13, 32/19), Art. 95",
+   "source": "https://www.paragraf.ba/propisi/fbih/zakon-o-stvarnim-pravima.html",
+   "source_title": "Zakon o stvarnim pravima (FBiH) – Paragraf.ba",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "topic": "Improvements to common parts (Federation of BiH)",
+   "text": "Owners who together hold a majority of co-ownership shares can decide on improvements to the building without everyone's consent, provided the improvements do not harm the outvoted owners.",
+   "law": "Zakon o stvarnim pravima FBiH, Art. 99",
+   "source": "https://www.paragraf.ba/propisi/fbih/zakon-o-stvarnim-pravima.html",
+   "source_title": "Zakon o stvarnim pravima (FBiH) – Paragraf.ba",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "topic": "Ordinary and extraordinary management (Federation of BiH)",
+   "text": "A building in unit ownership is managed by the owners under the general co-ownership rules and they must keep a common reserve fund. Ordinary management needs owners holding more than half of the shares; works beyond ordinary management (for example change of use, leasing, larger repairs or alterations not needed for maintenance) need the consent of all co-owners.",
+   "law": "Zakon o stvarnim pravima FBiH, Art. 31, 32 and 97",
+   "source": "https://www.paragraf.ba/propisi/fbih/zakon-o-stvarnim-pravima.html",
+   "source_title": "Zakon o stvarnim pravima (FBiH) – Paragraf.ba",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "topic": "Work on common parts for an owner's own installation (Republika Srpska)",
+   "text": "Work on common parts is allowed only if the change is usual or serves an important interest, otherwise any co-owner can forbid it — except laying lines for light, gas, energy, water, telephone and similar devices needed by the state of technology. The law does not mention EV chargers.",
+   "law": "Zakon o stvarnim pravima Republike Srpske (Službeni glasnik RS 124/08 … 21/26), Art. 95(1)(b)",
+   "source": "https://www.paragraf.ba/propisi/republika-srpska/zakon-o-stvarnim-pravima.html",
+   "source_title": "Zakon o stvarnim pravima (Republika Srpska) – Paragraf.ba",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "topic": "Improvements and management majorities (Republika Srpska)",
+   "text": "Owners holding a majority of co-ownership shares can decide on improvements to common parts, provided the outvoted owners are not harmed. Ordinary management needs more than half of the shares; extraordinary management needs all co-owners.",
+   "law": "Zakon o stvarnim pravima Republike Srpske, Art. 99(2), 31 and 32",
+   "source": "https://www.paragraf.ba/propisi/republika-srpska/zakon-o-stvarnim-pravima.html",
+   "source_title": "Zakon o stvarnim pravima (Republika Srpska) – Paragraf.ba",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "topic": "Building-level charging service",
+   "text": "No provider was found that markets a shared-garage charging service to apartment owners (handling co-owner consent, per-user metering and billing). The closest published offer is e-punionice.ba's business package: installation in a few hours and connection of the charger to software for monitoring and billing.",
+   "law": "—",
+   "source": "https://e-punionice.ba/business/",
+   "source_title": "e-punionice.ba – Business",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "medium"
+  }
+ ],
+ "policy": [
+  {
+   "text": "At the third Green Agenda ministerial meeting for the Western Balkans (Žabljak, 18–19.09.2026), the Transport Community secretariat said it gives regional partners technical assistance on alignment with the EU Alternative Fuels Infrastructure Regulation (AFIR), preparation of national policy frameworks and a regional roadmap, aiming at an interoperable charging and refuelling network along the TEN-T network.",
+   "source": "https://www.transport-community.org/news/transport-community-calls-for-investment-and-action-on-green-transport-at-western-balkans-ministerial-meeting/",
+   "source_date": "18.09.2026",
+   "confidence": "high"
+  },
+  {
+   "text": "In the Federation of BiH the energy regulator FERK keeps a register of EV charging service providers; it lists 2 providers (e-GO and Porsche Inter Auto BH) with 20 stations, all in Sarajevo, and its last entry is dated 02.04.2024. EPBiH's own network is not in the register.",
+   "source": "https://www.ferk.ba/_hr/index.php/dozvole/registar-punionica/20740-registar-isporucioca-usluga-punjenja-elektricnih-vozila",
+   "source_date": "last entry 02.04.2024; checked 23.09.2026",
+   "confidence": "high"
+  }
+ ],
+ "gaps": [
+  "The WebSearch budget ran out early in this pass; the rest was done by opening official pages and already-known URLs. Only 3 home-charger sellers could be verified and none in Banja Luka or Tuzla (the 22.09.2026 pass had the same gap).",
+  "Installation prices for home chargers: not published by any BiH source found.",
+  "Republika Srpska: no verified home-charger seller or installer. The OLX shop 'Elektropunjaci' (Bijeljina) has no active listings and was last online about four years ago.",
+  "Hager's BiH site (hager.com/ba) shows its witty charger range but names no sellers or prices. Schrack's e-mobility products do not display without JavaScript.",
+  "EPBiH public charging prices: announced for mojaenergija.epbih.ba/elektromobilnost/ but not published as of 23.09.2026. e-GO prices are not on its site. Whether EPBiH charging is still in a free test phase is not stated.",
+  "Republika Srpska: no public charging operator with published prices found; the ERS, Elektroprivreda HZ HB, Petrol BiH, INA BiH/Energopetrol and m:tel sites have no charging information. The operator behind 'easy2charge' was not identified.",
+  "No official nationwide count of public charge points. FERK's Federation register was last updated 02.04.2024; map and media figures range from 78 to about 500.",
+  "BIHAMK has not yet published its 2025 registered-vehicles report; no IDDEEA or statistics-agency series by fuel type was found.",
+  "EPBiH household tariff tables are published as images; EPBiH figures come from media, and whether they include network charges is not confirmed.",
+  "Brčko District: no EV purchase or charger subsidy found.",
+  "No subsidy for home chargers found in either entity; the Federation's JP EV 2026 does not list chargers as eligible.",
+  "Apartment buildings: no EV-specific rule in the entity property laws; the Federation's cantonal building-management laws (e.g. Sarajevo Canton) could not be opened; no rules found on metering or billing a charger in a shared garage.",
+  "Policy: no BiH national policy framework for alternative fuels or NECP e-mobility target was verified; the Energy Community's BiH page has no e-mobility content.",
+  "Tuzla Canton charging-station co-financing: only the 2025 budget line is reported; no 2026 call found.",
+  "Blocked or not loading: autoklub.net (robots.txt timeout), portal.sef.ba (timeout), energologija.com (timeout), ekapija.com (403), ferk.ba tariff pages (robots.txt fetch failed), chargerbh.ba (domain does not resolve), akta.ba article on the Hager charger in Zenica (server error), otisak.ba (did not resolve), paragraf.ba index of Republika Srpska laws (disallowed by robots.txt)."
+ ]
+}

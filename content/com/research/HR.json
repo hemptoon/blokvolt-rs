@@ -1,0 +1,933 @@
+{
+ "code": "HR",
+ "name": "Croatia",
+ "checked": "23.09.2026",
+ "currency": "EUR",
+ "summary": "Croatia's electric-car market is small but grew quickly in 2026: Eurostat counts about 7,100 battery-electric passenger cars on the road at the end of 2025, and ACEA reports 1,781 new BEVs in January–June 2026, about four and a half times the same period of 2025. Public charging is run by 32 companies, led by HEP's ELEN network, Petrol and Hrvatski Telekom, with published prices of about €0.35–0.42/kWh for AC and €0.66–0.78/kWh for fast DC without a subscription. Home wallboxes are sold by solar and electrical firms, the supplier E.ON, online shops and a DIY chain at roughly €475–1,500 for the unit; in apartment buildings, installing charging points is a co-owners' decision taken by a majority of ownership shares under the building-management law in force since 2025.",
+ "stats": [
+  {
+   "label": "Battery-electric passenger cars on the road",
+   "value": "7,058 (2025)",
+   "note": "Eurostat, energy type 'electricity'. Earlier years: 5,330 (2023) and 7,286 (2024); the 2025 value is lower than 2024 as published. Total passenger cars in 2025: 2,058,313, so BEVs are about 0.34% of the fleet (our calculation).",
+   "source": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/road_eqs_carpda?geo=HR&mot_nrg=ELC&unit=NR&lastTimePeriod=4",
+   "source_title": "Eurostat – Passenger cars by type of motor energy (road_eqs_carpda)",
+   "source_date": "dataset updated 01.09.2026",
+   "confidence": "high"
+  },
+  {
+   "label": "New battery-electric cars registered, 2025 (ACEA)",
+   "value": "1,266",
+   "note": "2024: 1,793 (−29.4%). All new cars in 2025: 69,841 (+7.4%), so BEVs were about 1.8% of new cars (our calculation). Plug-in hybrids in 2025: 2,529 (+80.0%).",
+   "source": "https://www.acea.auto/files/Press_release_car_registrations_December_2025.pdf",
+   "source_title": "ACEA – New car registrations, December 2025 and full year 2025",
+   "source_date": "27.01.2026",
+   "confidence": "high"
+  },
+  {
+   "label": "New battery-electric cars registered, 2025 (Eurostat)",
+   "value": "992",
+   "note": "2024: 882. All new passenger cars in 2025: 52,917, so about 1.9% BEV (our calculation). Eurostat and ACEA publish different totals for Croatia; the reason is not stated.",
+   "source": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/road_eqr_carpda?geo=HR&mot_nrg=ELC&unit=NR&lastTimePeriod=4",
+   "source_title": "Eurostat – New passenger cars by type of motor energy (road_eqr_carpda)",
+   "source_date": "dataset updated 01.09.2026",
+   "confidence": "high"
+  },
+  {
+   "label": "New battery-electric cars registered, January–June 2026",
+   "value": "1,781",
+   "note": "January–June 2025: 396 (+349.7%). June 2026 alone: 344. All new cars in January–June 2026: 44,164 (+5.3%), so BEVs were about 4.0% of new cars (our calculation). Figures for later 2026 months were not found.",
+   "source": "https://www.acea.auto/files/Press_release_car_registrations_June_2026.pdf",
+   "source_title": "ACEA – New car registrations, June 2026",
+   "source_date": "23.07.2026",
+   "confidence": "high"
+  },
+  {
+   "label": "Charging operators and e-mobility providers",
+   "value": "32 companies",
+   "note": "According to an analysis of the national CRO-IDRO registry of the Ministry of the Sea, Transport and Infrastructure, reported by Lider.",
+   "source": "https://lidermedia.hr/zeleno-i-digitalno/hrvatska-ima-300-ultra-brzih-punionica-ali-problem-nije-broj/",
+   "source_title": "Lider – Hrvatska ima 300 ultra brzih punionica, ali problem nije broj",
+   "source_date": "24.03.2026",
+   "confidence": "medium"
+  },
+  {
+   "label": "Share of the three largest public networks",
+   "value": "more than 80% of charging stations",
+   "note": "ELEN (HEP), Hrvatski Telekom and Petrol: 'koji drže više od 80 posto punionica', according to the EV owners' association Strujni krug.",
+   "source": "https://www.strujnikrug.hr/vodic-kroz-punjace-za-elektricna-vozila/",
+   "source_title": "Strujni krug – Vodič kroz punjače za električna vozila",
+   "source_date": "updated 11.05.2026",
+   "confidence": "medium"
+  },
+  {
+   "label": "Motorway rest areas with a charging symbol (HAC network)",
+   "value": "28",
+   "note": "A1: 14, A3: 7, A4: 2, A6: 4, A7: 1 (Vrata Jadrana). The page shows symbols only; operators and power are not given.",
+   "source": "https://www.hac.hr/hr/servisne-informacije/informacije-o-odmoristima?rests=1",
+   "source_title": "HAC – Informacije o odmorištima",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  }
+ ],
+ "home_companies": [
+  {
+   "name": "E.ON Hrvatska (E.ON Energija d.o.o.)",
+   "city": "Zagreb",
+   "what": "Electricity supplier selling home charging stations as a turnkey package: design for the installation, optional site visit and installation by the company's staff. At launch the named unit was a Wallbox Pulsar PRO with dynamic load balancing (Energetika-net, 23.04.2024); chargers are also sold in an E.ON webshop (Strujni krug, 29.11.2024).",
+   "brands": [
+    "Wallbox"
+   ],
+   "price": "Not found: the offer pages load their content with JavaScript and no price was visible",
+   "price_eur": "",
+   "installation": "Yes",
+   "installation_note": "Turnkey ('ključ u ruke'): 'od izrade glavnog projekta za ugradnju, preko opcijskog izvida lokacije do ugradnje' (Energetika-net, https://www.energetika-net.com/izdvajamo/e-on-hrvatska-lansirao-kucne-punionice).",
+   "url": "https://www.eon.hr/hr/e-mobilnost-za-kucanstva.html",
+   "source_date": "articles 23.04.2024 and 29.11.2024; company page: no date",
+   "confidence": "medium"
+  },
+  {
+   "name": "E-Punjači (TSG Croatia d.o.o.)",
+   "city": "Sveta Nedelja (Zagreb County)",
+   "what": "Charging-systems company: consulting and design, project management and permits, installation and commissioning, maintenance and service; AC wallboxes, public AC and DC chargers. Describes smart stations with per-user access and automated billing for shared parking in apartment buildings.",
+   "brands": [
+    "Circontrol",
+    "ELINTA"
+   ],
+   "price": "Not published (quote on request)",
+   "price_eur": "",
+   "installation": "Yes",
+   "installation_note": "'Ugradnje i puštanja u rad' (installation and commissioning) listed among services.",
+   "url": "https://epunjaci.hr/",
+   "source_date": "home-charging page modified 12.05.2023; AC wallbox page modified 24.04.2024",
+   "confidence": "high"
+  },
+  {
+   "name": "Energija Solarnih Panela d.o.o. (solarne-elektrane.shop)",
+   "city": "Orle (Zagreb County)",
+   "what": "Online shop for solar systems and EV chargers with a separate charger installation service.",
+   "brands": [
+    "Delta",
+    "Huawei",
+    "MRS"
+   ],
+   "price": "Delta 11 kW 475,00 €; Huawei 22 kW 799,00 €; Huawei 7 kW 800,00 €; MRS 22 kW from 849,00 € (VAT not stated)",
+   "price_eur": "475–849",
+   "installation": "Yes",
+   "installation_note": "Installation service for Zagreb County only; includes 10 m of cable, an RCD, a distribution box and a protective breaker; price on request ('za cijenu montaže obratite se...').",
+   "url": "https://www.solarne-elektrane.shop/ev-punjaci-prodaja/",
+   "source_date": "12.07.2026 (page metadata)",
+   "confidence": "high"
+  },
+  {
+   "name": "AleDo TECH d.o.o.",
+   "city": "Not verified (company website did not load)",
+   "what": "Designs and installs solar power plants; its home chargers appear in the home-charger price list of the EV owners' association Strujni krug (source: https://www.strujnikrug.hr/cjenik-kucnih-punjaca/).",
+   "brands": [
+    "Huawei",
+    "Ingeteam"
+   ],
+   "price": "Huawei 7,4 kW 530,00 € + PDV; Huawei 22 kW 580,00 € + PDV; Ingeteam FUSION Street (2 × 22 kW) 3500,00 € + PDV (association members: 450,50 / 493,00 / 2975,00 € + PDV)",
+   "price_eur": "530–580 excl. VAT (home units)",
+   "installation": "On request",
+   "installation_note": "'Uz punjače je moguće ugovoriti i montažu (150–400 €), ovisno o uvjetima na terenu'; Huawei units need a separate electrical cabinet with all protection.",
+   "url": "https://www.aledo-tech.hr/",
+   "source_date": "08.09.2026 (Strujni krug price list)",
+   "confidence": "medium"
+  },
+  {
+   "name": "Robotic d.o.o.",
+   "city": "Zagreb",
+   "what": "Croatian maker of electrical and electronic equipment for vehicles; sells its own Mode 3 wall chargers and accessories in an online shop.",
+   "brands": [
+    "Robotic Charger (R-Charger)"
+   ],
+   "price": "Robotic Charger S, Type 2 socket: 700,00 €; Robotic Charger P, Type 2 plug: 760,00 € (VAT not stated)",
+   "price_eur": "700–760",
+   "installation": "Not mentioned",
+   "installation_note": "",
+   "url": "https://www.r-charger.eu/hr/shop",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "METAN d.o.o. (eMOBILITY shop)",
+   "city": "Zagreb",
+   "what": "Online shop for EV chargers, charging cables, mounting posts and a solar carport.",
+   "brands": [
+    "PowerBox",
+    "HabuDen"
+   ],
+   "price": "PowerBox 22 kW: 590,00 €; PowerBox 22 kW with 6 m cable: 690,00 €; HabuDen 22 kW: 849,00–949,00 €; mounting post: 289,00 € (VAT not stated)",
+   "price_eur": "590–949",
+   "installation": "Not mentioned",
+   "installation_note": "",
+   "url": "https://emobility.hr/punjaci/",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "GREEN CHARGE d.o.o.",
+   "city": "Split",
+   "what": "Distributor of energy products presenting home, business and public charging solutions, including the Wallbox range (Pulsar Plus, Copper SB, Commander 2, Quasar, Supernova).",
+   "brands": [
+    "Wallbox"
+   ],
+   "price": "Not published",
+   "price_eur": "",
+   "installation": "Not mentioned",
+   "installation_note": "",
+   "url": "https://greencharge.hr/",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "Ragusa Solar d.o.o.",
+   "city": "Dubrovnik",
+   "what": "Solar company offering EV chargers for households and businesses: site assessment, choice of an AC (homes, apartments) or DC (business) charger, and installation; quotes via an online form.",
+   "brands": [],
+   "price": "Not published",
+   "price_eur": "",
+   "installation": "Yes",
+   "installation_note": "'Naši stručnjaci će vam pomoći u odabiru i instalaciji najprikladnijeg punjača.'",
+   "url": "https://www.ragusa-solar.hr/usluge/punjaci-za-elektricna-vozila",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "Ionic d.o.o.",
+   "city": "Not stated (says it supports customers across Croatia)",
+   "what": "Solar, battery-storage and EV-charger company; lists Wallbox Pulsar Plus (7.4, 11 and 22 kW) and Pulsar Pro (11 and 22 kW); quotes via a questionnaire; phone support at commissioning anywhere in Croatia.",
+   "brands": [
+    "Wallbox"
+   ],
+   "price": "Not published",
+   "price_eur": "",
+   "installation": "Yes",
+   "installation_note": "'Brza i povoljna ugradnja, osigurana podrška i servis.'",
+   "url": "https://ionic.hr/wallbox/",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "TS Energy (Team Sun's Energy)",
+   "city": "Vrsar (Istria)",
+   "what": "Solar installer that also offers home EV chargers and recommends a model according to the vehicle.",
+   "brands": [],
+   "price": "Not published",
+   "price_eur": "",
+   "installation": "Not mentioned",
+   "installation_note": "The services page offers 'razne modele punjača' but does not state explicitly that the company installs them.",
+   "url": "https://tsenergy.hr/usluge.html",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "CRAS d.o.o.",
+   "city": "Osijek",
+   "what": "Solar company whose site lists production of EV charging stations ('Proizvodnja punionica za električna vozila'); its blog gives general cost ranges for home chargers.",
+   "brands": [],
+   "price": "Not published for its own products (blog ranges: 400–1,000 € basic 3.7–7.4 kW, 800–1,500 € smart; installation 300–800 €; VAT not stated)",
+   "price_eur": "",
+   "installation": "Not mentioned",
+   "installation_note": "",
+   "url": "https://cras.hr/",
+   "source_date": "blog post 03.03.2026, modified 11.05.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "e-punionice.hr (Vekić Prijevoz d.o.o., named in the site footer)",
+   "city": "Not stated",
+   "what": "Online shop for wallboxes and public chargers across many brands.",
+   "brands": [
+    "Wallbox",
+    "Schneider Electric",
+    "Amina",
+    "Tesla",
+    "Zaptec",
+    "Easee",
+    "NexBlue"
+   ],
+   "price": "Tesla Wall Connector 3: 625,00 €; Amina S: 635,00–692,50 €; Zaptec Go: 761,25 €; Schneider Electric Charge 22 kW: 850,00 €; Wallbox Pulsar Max: 862,50–1.000,00 €; Easee Charge Core: 1.100,00–1.149,75 €; Wallbox Pulsar Pro: 1.337,50–1.487,50 € ('uključujući PDV', incl. VAT)",
+   "price_eur": "625–1487.50",
+   "installation": "Not mentioned",
+   "installation_note": "The contact page offers to answer questions on 'ugradnju punionice'; no installation service or price is listed.",
+   "url": "https://e-punionice.hr/product-category/wallbox/",
+   "source_date": "no date on page (© 2026); checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "BAUHAUS Hrvatska",
+   "city": "Online shop (bauhaus.hr)",
+   "what": "DIY retail chain selling EV chargers online.",
+   "brands": [
+    "Anker",
+    "LRT"
+   ],
+   "price": "Anker Solix V1 7.4 kW: 549 €; 11 kW: 629 €; 22 kW: 649 €; LRT charging station 11 kW: 650 € (incl. VAT)",
+   "price_eur": "549–650",
+   "installation": "Not mentioned",
+   "installation_note": "",
+   "url": "https://www.bauhaus.hr/punionice-za-elektricne-automobile/c/10004145",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "Tesla (online shop for Croatia)",
+   "city": "Online (shop.tesla.com)",
+   "what": "Sells the Tesla Wall Connector (up to 22 kW on a three-phase supply) online.",
+   "brands": [
+    "Tesla"
+   ],
+   "price": "Wall Connector: 'Maloprodajna cijena: 535 €'",
+   "price_eur": "535",
+   "installation": "Not mentioned",
+   "installation_note": "Installation is not included: 'Teslin Wall Connector mora ugraditi ovlašteni električar'; the page links to Tesla's certified-installer finder.",
+   "url": "https://shop.tesla.com/hr_hr/product/wall-connector",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  }
+ ],
+ "home_price_ranges": [
+  {
+   "what": "Wallbox unit prices on the company pages listed above",
+   "range": "475 € – 1.487,50 €",
+   "note": "Lowest: Delta 11 kW (solarne-elektrane.shop, VAT not stated); highest home unit: Wallbox Pulsar Pro (e-punionice.hr, incl. VAT). Tesla Wall Connector: 535 € at Tesla, 625,00 € at e-punionice.hr. Compiled by BlokVolt.",
+   "source": "https://www.solarne-elektrane.shop/ev-punjaci-prodaja/ ; https://e-punionice.hr/product-category/wallbox/",
+   "source_title": "Company price pages (compiled)",
+   "source_date": "checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "what": "Installation arranged with a charger (association partner price list)",
+   "range": "150–400 €",
+   "note": "AleDo TECH, 'ovisno o uvjetima na terenu'; VAT not stated for installation. Huawei units need a separate electrical cabinet with protection.",
+   "source": "https://www.strujnikrug.hr/cjenik-kucnih-punjaca/",
+   "source_title": "Strujni krug – Cjenik kućnih punjača za električna vozila",
+   "source_date": "updated 08.09.2026",
+   "confidence": "medium"
+  },
+  {
+   "what": "Wallbox with installation on a prepared connection (retailer example)",
+   "range": "890,00 € without / 1.190,00 € with installation (Wallbox Pulsar Plus 22 kW, incl. VAT)",
+   "note": "Installation 'na predpripremljeni električni priključak'. The seller, Solarni svet, is based in Slovenia (Višnja Gora); its installation area in Croatia is not stated.",
+   "source": "https://solarni-svet.hr/izdelek/wallbox-pulsar-plus-3-fazni-punjac-za-elektricna-vozila-s-montazom/",
+   "source_title": "Solarni svet – Wallbox Pulsar Plus 3-fazni punjač s montažom",
+   "source_date": "modified 08.04.2026 (page metadata)",
+   "confidence": "medium"
+  },
+  {
+   "what": "Charger and installation, marketplace averages",
+   "range": "Charger 560–1.600 € (average 810 €); installation 190–310 € (average 250 €)",
+   "note": "Sample customer projects on the page range from 850 € to 3.200 €. Marketplace data; trebam.hr also lists local providers for Zagreb, Split, Rijeka and other cities.",
+   "source": "https://www.trebam.hr/cijene/punjaci-za-elektricna-vozila/punjac-za-elektricna-vozila-cijena",
+   "source_title": "Trebam.hr – Cjenici, cijene 2026: Punjač za električna vozila",
+   "source_date": "no date on page (titled 2026)",
+   "confidence": "low"
+  },
+  {
+   "what": "Reported real case: 11 kW charger at the outdoor parking of a new apartment building (Zagreb)",
+   "range": "1.607 € total",
+   "note": "Tesla Wall Connector 535 €, pedestal about 472 €, about 40 m of three-phase cable about 400 €, electrician 200 €; the charger is connected to the owner's apartment meter. The article also lists 2.700 € for raising the HEP connection to 19 kW.",
+   "source": "https://autonet.bug.hr/elektricna-vozila/provjerili-smo-koliko-je-isplativa-ugradnja-vlastitog-ev-punjaca-na-parkingu-48074",
+   "source_title": "Autonet (Bug.hr) – Provjerili smo koliko je isplativa ugradnja vlastitog EV punjača na parkingu nove zgrade",
+   "source_date": "10.03.2025",
+   "confidence": "medium"
+  },
+  {
+   "what": "Typical costs (consumer guide)",
+   "range": "Charger 300–500 € (basic), 600–900 € (smart), 900 €+ (advanced); installation 150–300 €; total about 800–1.300 €",
+   "note": "'Cijena montaže najčešće se kreće od 150 do 300 €, ovisno o složenosti'; extra protection 50–150 €.",
+   "source": "https://vozim.hr/kucni-punjaci-za-elektricna-vozila/",
+   "source_title": "Vozim.hr – Kućni punjači za električna vozila: Jesu li isplativi?",
+   "source_date": "27.11.2025",
+   "confidence": "low"
+  },
+  {
+   "what": "Typical costs (company blog, Osijek)",
+   "range": "Charger 400–1.000 € (basic 3.7–7.4 kW) or 800–1.500 € (smart); installation 300–800 €; total 800–2.000 €",
+   "note": "General estimates by CRAS d.o.o.; VAT not stated.",
+   "source": "https://cras.hr/kucna-punionica-za-elektricna-vozila-isplati-li-se/",
+   "source_title": "CRAS – Kućna punionica za električna vozila – isplati li se?",
+   "source_date": "03.03.2026 (modified 11.05.2026)",
+   "confidence": "low"
+  },
+  {
+   "what": "Home charger including installation (guide site)",
+   "range": "7.4 kW: 500–1.200 € with installation; 11 kW: 700–1.500 €",
+   "note": "Estimate on an information portal; VAT not stated.",
+   "source": "https://energetska-ucinkovitost.hr/vodici/elektricna-vozila/",
+   "source_title": "Energetska-učinkovitost.hr – Električna vozila u Hrvatskoj, vodič za 2026.",
+   "source_date": "no date on page (© 2026)",
+   "confidence": "low"
+  }
+ ],
+ "public_count": {
+  "value": "about 1,000 charging locations, including about 300 ultra-fast connectors",
+  "note": "'Ukupan broj ultra brzih priključaka u Hrvatskoj procjenjuje se na oko 300, dok ukupna infrastruktura – uključujući sporije punionice – doseže oko 1000 lokacija'; based on the Ministry's CRO-IDRO registry, which could not be opened directly. Other published estimates: about 1,450 public charge points at the end of 2025, about 420 of them DC 50 kW+ (TechPrognoza, 18.05.2026, low confidence); about 1,500 (Plava kamenica, 18.08.2026, no source given). The EU Alternative Fuels Observatory publishes its count only in interactive charts that could not be read.",
+  "source": "https://lidermedia.hr/zeleno-i-digitalno/hrvatska-ima-300-ultra-brzih-punionica-ali-problem-nije-broj/",
+  "source_title": "Lider – Hrvatska ima 300 ultra brzih punionica, ali problem nije broj",
+  "source_date": "24.03.2026",
+  "confidence": "medium"
+ },
+ "networks": [
+  {
+   "name": "ELEN",
+   "operator": "HEP (Hrvatska elektroprivreda)",
+   "app": "ELEN",
+   "size": "More than 230 locations, most up to 50 kW; of six ultra-fast connectors, one was working (Lider, 24.03.2026, citing the CRO-IDRO registry). elen.hep.hr gives no total.",
+   "prices": [
+    {
+     "what": "AC up to 22,1 kW, off motorways",
+     "price": "0,35 €/kWh",
+     "vat": "incl.",
+     "source": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 23.09.2026)",
+     "confidence": "high"
+    },
+    {
+     "what": "22,2–50 kW, off motorways",
+     "price": "0,45 €/kWh",
+     "vat": "incl.",
+     "source": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 23.09.2026)",
+     "confidence": "high"
+    },
+    {
+     "what": "AC up to 22,1 kW, motorways",
+     "price": "0,42 €/kWh",
+     "vat": "incl.",
+     "source": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 23.09.2026)",
+     "confidence": "high"
+    },
+    {
+     "what": "22,2–50 kW, motorways",
+     "price": "0,57 €/kWh",
+     "vat": "incl.",
+     "source": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 23.09.2026)",
+     "confidence": "high"
+    },
+    {
+     "what": "DC above 50 kW, motorways",
+     "price": "0,78 €/kWh",
+     "vat": "incl.",
+     "source": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 23.09.2026)",
+     "confidence": "high"
+    },
+    {
+     "what": "Occupation fee after the free time (180 min AC up to 22,1 kW; 60 min 22,2–50 kW; 45 min above 50 kW)",
+     "price": "0,06 €/min off motorways; 0,14 €/min on motorways",
+     "vat": "incl.",
+     "source": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 23.09.2026)",
+     "confidence": "high"
+    }
+   ],
+   "payment": "ELEN app (scan the QR code or pick the charger on the map); RFID cards for businesses under contract; roaming for other providers' users is being introduced (elen.hep.hr).",
+   "url": "https://elen.hep.hr/"
+  },
+  {
+   "name": "Petrol OneCharge",
+   "operator": "Petrol (Croatia)",
+   "app": "OneCharge",
+   "size": "OneCharge page: 'više od 100 Petrolovih e-punionica' (country not specified); network page: 'u regiji imamo već više od 500 punionica'. In Croatia, 61 ultra-fast connectors at 21 locations (Lider, 24.03.2026).",
+   "prices": [
+    {
+     "what": "AC up to 22 kW – registered users / ad hoc",
+     "price": "0,37 €/kWh / 0,41 €/kWh",
+     "vat": "incl.",
+     "source": "https://www.petrol.hr/mobilnost/privatni-korisnici/javne-elektricne-punionice/cjenik-punjenja",
+     "source_date": "valid from 01.11.2025 'do daljnjeg'",
+     "confidence": "high"
+    },
+    {
+     "what": "22,01–50 kW – registered / ad hoc",
+     "price": "0,47 €/kWh / 0,51 €/kWh",
+     "vat": "incl.",
+     "source": "https://www.petrol.hr/mobilnost/privatni-korisnici/javne-elektricne-punionice/cjenik-punjenja",
+     "source_date": "valid from 01.11.2025 'do daljnjeg'",
+     "confidence": "high"
+    },
+    {
+     "what": "Above 50,01 kW – registered / ad hoc",
+     "price": "0,66 €/kWh / 0,73 €/kWh",
+     "vat": "incl.",
+     "source": "https://www.petrol.hr/mobilnost/privatni-korisnici/javne-elektricne-punionice/cjenik-punjenja",
+     "source_date": "valid from 01.11.2025 'do daljnjeg'",
+     "confidence": "high"
+    },
+    {
+     "what": "Blocking fee",
+     "price": "0,04 €/min after 180 min (up to 22 kW); 0,08 €/min after 60 min (22–50 kW); 0,15 €/min after 40 min (above 50 kW)",
+     "vat": "incl.",
+     "source": "https://www.petrol.hr/mobilnost/privatni-korisnici/javne-elektricne-punionice/cjenik-punjenja",
+     "source_date": "valid from 01.11.2025 'do daljnjeg'",
+     "confidence": "high"
+    }
+   ],
+   "payment": "Occasional users can charge 'čak i bez registracije i preuzimanja mobilne aplikacije'; web app accepts Visa, Mastercard and Diners; the OneCharge app accepts the Petrol Club card, Mastercard, Diners and Visa; QR codes on chargers.",
+   "url": "https://www.petrol.hr/mobilnost/onecharge"
+  },
+  {
+   "name": "IONITY",
+   "operator": "IONITY GmbH",
+   "app": "IONITY",
+   "size": "8 locations with 40 ultra-fast connectors of 200–350 kW in Croatia (Lider, 24.03.2026). Network-wide: 821 locations in 24 countries (ionity.eu).",
+   "prices": [
+    {
+     "what": "IONITY Direct (ad hoc, no subscription)",
+     "price": "0.74 €/kWh",
+     "vat": "incl.",
+     "source": "https://www.ionity.eu/hr",
+     "source_date": "no date on page; checked 23.09.2026",
+     "confidence": "high"
+    },
+    {
+     "what": "IONITY Power 365 subscription (€11.99/month or €99.99/year)",
+     "price": "0.39–0.44 €/kWh",
+     "vat": "incl.",
+     "source": "https://www.ionity.eu/hr",
+     "source_date": "no date on page; checked 23.09.2026",
+     "confidence": "medium"
+    },
+    {
+     "what": "IONITY Motion 365 subscription (€5.99/month or €49.99/year)",
+     "price": "0.53–0.55 €/kWh",
+     "vat": "incl.",
+     "source": "https://www.ionity.eu/hr",
+     "source_date": "no date on page; checked 23.09.2026",
+     "confidence": "medium"
+    }
+   ],
+   "payment": "IONITY app, or scan the QR code at the station for Direct (ad hoc) charging.",
+   "url": "https://www.ionity.eu/hr"
+  },
+  {
+   "name": "Tesla Supercharger",
+   "operator": "Tesla",
+   "app": "Tesla",
+   "size": "17 Supercharger sites listed for Croatia (Varaždin, Gospić, Janjče west and east, Jastrebarsko, Karlovac, Otočac, Vrata Jadrana north and south, Senj, Slavonski Brod, Split-Dugopolje, Vrgorac, Zadar, Zadar westbound, Zagreb east, Rugvica). Slavonski Brod: 8 stalls up to 250 kW, 'Open to Tesla and Other EVs with CCS compatibility', 24/7. Lider (24.03.2026) counted 88 connectors at 12 locations.",
+   "prices": [
+    {
+     "what": "DC, depending on location and time of day",
+     "price": "0,23–0,60 €/kWh",
+     "vat": "not stated",
+     "source": "https://www.strujnikrug.hr/vodic-kroz-punjace-za-elektricna-vozila/",
+     "source_date": "updated 11.05.2026",
+     "confidence": "medium"
+    }
+   ],
+   "payment": "Not stated on the location pages checked; prices for other EVs are not shown on public pages.",
+   "url": "https://www.tesla.com/findus/list/superchargers/Croatia"
+  },
+  {
+   "name": "eSpots",
+   "operator": "Hrvatski Telekom d.d.",
+   "app": "e-Spots",
+   "size": "One of the three largest networks (with ELEN and Petrol, together more than 80% of stations, Strujni krug); two ultra-fast locations, one working (Lider, 24.03.2026).",
+   "prices": [
+    {
+     "what": "Charging, depending on the partner location",
+     "price": "0,21–0,45 €/kWh",
+     "vat": "not stated",
+     "source": "https://www.strujnikrug.hr/vodic-kroz-punjace-za-elektricna-vozila/",
+     "source_date": "updated 11.05.2026",
+     "confidence": "medium"
+    },
+    {
+     "what": "Range reported by a consumer site (AC and DC)",
+     "price": "0,21–0,80 €/kWh",
+     "vat": "not stated",
+     "source": "https://postanivozac.com/blog/cijene-punjenja-elektricnih-vozila",
+     "source_date": "updated 05.01.2026",
+     "confidence": "medium"
+    }
+   ],
+   "payment": "e-Spots app; payment cards sold at Hrvatski Telekom shops (Strujni krug).",
+   "url": ""
+  },
+  {
+   "name": "MOL Plugee",
+   "operator": "MOL Group (chargers at Tifon fuel stations)",
+   "app": "MOL Plugee",
+   "size": "Not verified (molplugee.hr and tifon.hr did not load).",
+   "prices": [
+    {
+     "what": "Registered users",
+     "price": "about 0,45 €/kWh",
+     "vat": "not stated",
+     "source": "https://www.strujnikrug.hr/vodic-kroz-punjace-za-elektricna-vozila/",
+     "source_date": "updated 11.05.2026",
+     "confidence": "medium"
+    },
+    {
+     "what": "Registered / unregistered users (range)",
+     "price": "0,45–0,66 €/kWh / 0,55–0,76 €/kWh",
+     "vat": "not stated",
+     "source": "https://postanivozac.com/blog/cijene-punjenja-elektricnih-vozila",
+     "source_date": "updated 05.01.2026",
+     "confidence": "medium"
+    }
+   ],
+   "payment": "Not verified with the operator.",
+   "url": "https://molplugee.hr/hr"
+  },
+  {
+   "name": "Lidl e-punionice",
+   "operator": "Lidl Hrvatska (web payment through a partner)",
+   "app": "Lidl Plus",
+   "size": "11–50 kW depending on location (lidl.hr); Lidl and Kaufland together have almost 200 locations (Lider, 24.03.2026).",
+   "prices": [
+    {
+     "what": "AC with Lidl Plus",
+     "price": "0,35 €/kWh",
+     "vat": "incl.",
+     "source": "https://www.lidl.hr/c/e-punionice/s10038053",
+     "source_date": "no date on page; checked 23.09.2026",
+     "confidence": "high"
+    },
+    {
+     "what": "AC without Lidl Plus",
+     "price": "0,40 €/kWh",
+     "vat": "not stated",
+     "source": "https://www.lidl.hr/c/e-punionice/s10038053",
+     "source_date": "no date on page; checked 23.09.2026",
+     "confidence": "high"
+    },
+    {
+     "what": "DC with Lidl Plus",
+     "price": "0,45 €/kWh",
+     "vat": "incl.",
+     "source": "https://www.lidl.hr/c/e-punionice/s10038053",
+     "source_date": "no date on page; checked 23.09.2026",
+     "confidence": "high"
+    },
+    {
+     "what": "DC without Lidl Plus",
+     "price": "0,60 €/kWh",
+     "vat": "not stated",
+     "source": "https://www.lidl.hr/c/e-punionice/s10038053",
+     "source_date": "no date on page; checked 23.09.2026",
+     "confidence": "high"
+    }
+   ],
+   "payment": "Lidl Plus app, web payment through the partner, or roaming with other providers' RFID cards or apps.",
+   "url": "https://www.lidl.hr/c/e-punionice/s10038053"
+  },
+  {
+   "name": "Kaufland e-punionice",
+   "operator": "Kaufland Hrvatska (charging service via ChargePoint Austria GmbH)",
+   "app": "None named (QR code and online registration)",
+   "size": "Type 2, CHAdeMO and CCS; available during store opening hours, charging for up to about one hour (kaufland.hr). See the Lidl entry for the combined count.",
+   "prices": [
+    {
+     "what": "AC / DC",
+     "price": "0,35 €/kWh / 0,45 €/kWh",
+     "vat": "not stated",
+     "source": "https://postanivozac.com/blog/cijene-punjenja-elektricnih-vozila",
+     "source_date": "updated 05.01.2026",
+     "confidence": "medium"
+    }
+   ],
+   "payment": "Scan the QR code on the charger, register online and choose a payment method.",
+   "url": "https://www.kaufland.hr/usluge/e-punionice.html"
+  },
+  {
+   "name": "Qelo",
+   "operator": "enasolAuto d.o.o. (Zagreb)",
+   "app": "Qelo (iOS and Android)",
+   "size": "46 ultra-fast connectors at 18 locations (Lider, 24.03.2026); chargers at STOP SHOP retail parks in 15 towns (qelo.eu).",
+   "prices": [
+    {
+     "what": "Tariff structure",
+     "price": "GO, DRIVE and FLY subscription tariffs plus an AD-HOC tariff; the summer 2026 price table is published only as an image",
+     "vat": "incl.",
+     "source": "https://qelo.eu/hr/page/cjenik/",
+     "source_date": "summer 2026 price list (image); checked 23.09.2026",
+     "confidence": "high"
+    },
+    {
+     "what": "Range reported by a consumer site (AC and DC)",
+     "price": "0,28–0,47 €/kWh",
+     "vat": "not stated",
+     "source": "https://postanivozac.com/blog/cijene-punjenja-elektricnih-vozila",
+     "source_date": "updated 05.01.2026",
+     "confidence": "medium"
+    }
+   ],
+   "payment": "Qelo app; 'plaćanje bankovnom karticom po AD-HOC tarifi'.",
+   "url": "https://qelo.eu/"
+  },
+  {
+   "name": "Electrip",
+   "operator": "Electrip",
+   "app": "Not checked",
+   "size": "42 ultra-fast connectors at 11 locations (Lider, 24.03.2026).",
+   "prices": [],
+   "payment": "Not checked",
+   "url": ""
+  },
+  {
+   "name": "Eleport",
+   "operator": "Eleport",
+   "app": "Not checked",
+   "size": "5 locations with 48 connectors of up to 400 kW (Lider, 24.03.2026).",
+   "prices": [],
+   "payment": "Not checked",
+   "url": ""
+  },
+  {
+   "name": "GreenWay",
+   "operator": "GreenWay",
+   "app": "Not checked",
+   "size": "20 connectors at 7 locations (Lider, 24.03.2026).",
+   "prices": [],
+   "payment": "Not checked",
+   "url": ""
+  },
+  {
+   "name": "MOON",
+   "operator": "MOON (Porsche group)",
+   "app": "Not checked",
+   "size": "5 locations with 14 ultra-fast connectors (Lider, 24.03.2026).",
+   "prices": [],
+   "payment": "Not checked",
+   "url": ""
+  }
+ ],
+ "electricity": [
+  {
+   "what": "Energy price, single-rate household tariff (JT, 'Plavi' model), 1.10.2026–31.3.2027",
+   "price": "0,091324 EUR/kWh",
+   "note": "Set by the Government's Uredba o mjerama za stabilnost domaćeg tržišta energije (NN 101/2026, adopted 10.09.2026), Art. 2. Applies to household consumption of up to 3,000 kWh per metering point over the six months; consumption above that is charged 35% more. Energy component only: network charges, the renewables fee and VAT are added; Art. 2 does not mention VAT.",
+   "source": "https://narodne-novine.nn.hr/clanci/sluzbeni/2026_09_101_1209.html",
+   "source_title": "Narodne novine 101/2026 – Uredba o mjerama za stabilnost domaćeg tržišta energije",
+   "source_date": "10.09.2026",
+   "confidence": "high"
+  },
+  {
+   "what": "Energy price, two-rate household tariff (VT/NT, 'Bijeli' model), 1.10.2026–31.3.2027",
+   "price": "VT 0,097189 EUR/kWh; NT 0,047688 EUR/kWh",
+   "note": "Same Uredba and conditions as above (3,000 kWh six-month threshold, +35% above it).",
+   "source": "https://narodne-novine.nn.hr/clanci/sluzbeni/2026_09_101_1209.html",
+   "source_title": "Narodne novine 101/2026 – Uredba o mjerama za stabilnost domaćeg tržišta energije",
+   "source_date": "10.09.2026",
+   "confidence": "high"
+  },
+  {
+   "what": "Network charges, household, single-rate 'Plavi' (JT), from 1.1.2026",
+   "price": "0,052324 €/kWh (distribution 0,037608 + transmission 0,014716)",
+   "note": "Plus a metering fee of 1,983 € per month. The tariff document does not state whether VAT is included.",
+   "source": "https://www.hep.hr/ods/UserDocsImages/dokumenti/NTS01012026/kucanstvo_NTS_01012026.pdf",
+   "source_title": "HEP ODS – Tarifne stavke (cijene) za kućanstvo od 01.01.2026.",
+   "source_date": "in force from 01.01.2026",
+   "confidence": "high"
+  },
+  {
+   "what": "Network charges, household, two-rate 'Bijeli' (VT/NT), from 1.1.2026",
+   "price": "VT 0,065702 €/kWh; NT 0,028689 €/kWh",
+   "note": "Distribution VT 0,044446 / NT 0,020514; transmission VT 0,021256 / NT 0,008175; metering fee 1,983 € per month. VAT status not stated.",
+   "source": "https://www.hep.hr/ods/UserDocsImages/dokumenti/NTS01012026/kucanstvo_NTS_01012026.pdf",
+   "source_title": "HEP ODS – Tarifne stavke (cijene) za kućanstvo od 01.01.2026.",
+   "source_date": "in force from 01.01.2026",
+   "confidence": "high"
+  },
+  {
+   "what": "Renewables and high-efficiency cogeneration fee (all customers)",
+   "price": "0,013239 EUR/kWh (excl. VAT)",
+   "note": "'u iznos nije uključen PDV'.",
+   "source": "https://www.hep.hr/elektra/kucanstvo/tarifne-stavke-cijene/1547",
+   "source_title": "HEP Elektra – Tarifne stavke (cijene), kućanstvo",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  }
+ ],
+ "subsidies": [
+  {
+   "programme": "FZOEU EnU-4/26 – purchase of new alternative-fuel vehicles",
+   "status": "closed",
+   "amount": "Up to 9.000,00 € per electric M1 car (max. 40% of net cost; car price cap 50.000,00 €); up to 2.500,00 € for electric L1–L7 vehicles",
+   "who": "Sole traders (obrtnici) and public or private legal entities; associations and firms mainly in taxi, freight or vehicle rental/leasing are excluded. Private individuals who are not registered sole traders are not listed as eligible.",
+   "deadline": "Applications from 10.03.2026 at 09:00 (moved from 24.02.2026 by the amendment of 26.02.2026); open until the end of the year or until funds run out; projects to be completed by 31.07.2026 (a deadline-extension decision is posted but could not be read).",
+   "note": "Budget 3.200.000,00 €, raised to 3.550.000,00 € by the second amendment of 19.05.2026; applications handled 'po redoslijedu zaprimanja' (first come, first served). Shown as 'zatvoren' (closed) on FZOEU's list of calls on 23.09.2026; remaining budget not published.",
+   "source": "https://www.fzoeu.hr/hr/natjecaj/7539?nid=267",
+   "source_title": "FZOEU – Javni poziv za kupnju novih vozila na alternativna goriva (EnU-4/26)",
+   "source_date": "call dated 18.02.2026; amendments 26.02.2026 and 19.05.2026",
+   "confidence": "high"
+  },
+  {
+   "programme": "MF-2025-3-1 – electric vehicles for taxi, delivery and car-sharing providers",
+   "status": "open",
+   "amount": "Up to 9.000,00 € per vehicle; total budget 45.000.000,00 €",
+   "who": "Micro, small, medium and large companies and sole traders registered for taxi (49.33), road freight (49.41) or car-sharing (77.11) activities",
+   "deadline": "From 15.01.2026 at 09:00 to 30.09.2026 at 12:00, or until funds run out",
+   "note": "New electric M1 vehicles with a battery of 40 kWh or more and N1 vehicles with 75 kWh or more; applications assessed by a selection committee. Shown as 'otvoren' (open) on FZOEU's list of calls on 23.09.2026.",
+   "source": "https://www.fzoeu.hr/hr/natjecaj/7539?nid=266",
+   "source_title": "FZOEU – Nabava električnih vozila za pružatelje usluge autotaksi prijevoza, korisnike dostavnih vozila i pružatelje usluge dijeljenja vozila (MF-2025-3-1)",
+   "source_date": "opened 15.01.2026",
+   "confidence": "high"
+  },
+  {
+   "programme": "FZOEU EnU-4/25 – purchase of new alternative-fuel vehicles",
+   "status": "closed",
+   "amount": "Up to €9,000 per electric M1 car; up to €2,500 (max. 40% of net cost) for electric L1–L7 vehicles; budget €21,205,640",
+   "who": "Sole traders and legal entities (not associations)",
+   "deadline": "Applications from 15.10.2025 at 09:00; projects to be completed by 31.05.2026",
+   "note": "Funded under the National Recovery and Resilience Plan (NextGenerationEU). Shown as 'zatvoren' on FZOEU's list of calls on 23.09.2026.",
+   "source": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/new-croatian-subsidy-program-zero-emission-vehicles",
+   "source_title": "European Alternative Fuels Observatory – New Croatian Subsidy Program for Zero-Emission Vehicles",
+   "source_date": "15.08.2025",
+   "confidence": "high"
+  },
+  {
+   "programme": "EV purchase grant for private individuals",
+   "status": "none",
+   "amount": "—",
+   "who": "Private individuals",
+   "deadline": "—",
+   "note": "No 2026 FZOEU vehicle call open to private individuals was found: the calls listed are for sole traders, companies and other legal entities. A consumer article (LAQO, 09.03.2026) said natural persons could apply to the 2026 call, but the call text limits natural persons to registered sole traders ('fizičke osobe - obrtnici').",
+   "source": "https://www.fzoeu.hr/hr/nacionalni-javni-pozivi-i-natjecaji/1367",
+   "source_title": "FZOEU – Nacionalni javni pozivi i natječaji",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "medium"
+  },
+  {
+   "programme": "Home charger (wallbox) grant",
+   "status": "none",
+   "amount": "—",
+   "who": "—",
+   "deadline": "—",
+   "note": "No FZOEU call for home or building chargers was listed on 23.09.2026. The EU Alternative Fuels Observatory mentions 'periodic co-financing schemes for private, business, and public charging infrastructure', usually opened alongside vehicle calls (page updated 18.04.2025).",
+   "source": "https://www.fzoeu.hr/hr/nacionalni-javni-pozivi-i-natjecaji/1367",
+   "source_title": "FZOEU – Nacionalni javni pozivi i natječaji",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "medium"
+  }
+ ],
+ "buildings": [
+  {
+   "topic": "Who decides in a multi-unit building",
+   "text": "Decisions on installing ducting and charging points for electric vehicles, 'vodeći računa o sigurnosti u slučaju požara' (with regard to fire safety), are listed among building-management decisions. Such a decision is adopted when co-owners holding more than 50% of the co-ownership shares vote for it; a qualified majority is reserved for other listed decisions.",
+   "law": "Zakon o upravljanju i održavanju zgrada (NN 152/24, 47/26), Art. 39(1), 39(3) item 10 and 39(4); in force since 01.01.2025",
+   "source": "https://www.zakon.hr/z/3880/zakon-o-upravljanju-i-odrzavanju-zgrada",
+   "source_title": "Zakon.hr – Zakon o upravljanju i održavanju zgrada",
+   "source_date": "consolidated text NN 152/24, 47/26; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "topic": "Fire safety",
+   "text": "'Na mjestima za punjenje električnih vozila u zgradama ili na zgradama potrebno je primijeniti mjere zaštite od požara' – fire-protection measures must be applied at charging points in or on buildings.",
+   "law": "Zakon o upravljanju i održavanju zgrada, Art. 20(7)",
+   "source": "https://www.zakon.hr/z/3880/zakon-o-upravljanju-i-odrzavanju-zgrada",
+   "source_title": "Zakon.hr – Zakon o upravljanju i održavanju zgrada",
+   "source_date": "consolidated text NN 152/24, 47/26; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "topic": "Single owner acting alone",
+   "text": "No provision letting one co-owner install a charger in common parts without a co-owners' decision was found in the consolidated text; the law deals with charging points through the decision rule above.",
+   "law": "Zakon o upravljanju i održavanju zgrada",
+   "source": "https://www.zakon.hr/z/3880/zakon-o-upravljanju-i-odrzavanju-zgrada",
+   "source_title": "Zakon.hr – Zakon o upravljanju i održavanju zgrada",
+   "source_date": "consolidated text NN 152/24, 47/26; checked 23.09.2026",
+   "confidence": "medium"
+  },
+  {
+   "topic": "Costs of common parts",
+   "text": "Costs of the building's common parts are shared among co-owners 'razmjerno njihovim suvlasničkim dijelovima' (in proportion to their co-ownership shares).",
+   "law": "Zakon o upravljanju i održavanju zgrada, Art. 28",
+   "source": "https://www.zakon.hr/z/3880/zakon-o-upravljanju-i-odrzavanju-zgrada",
+   "source_title": "Zakon.hr – Zakon o upravljanju i održavanju zgrada",
+   "source_date": "consolidated text NN 152/24, 47/26; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "topic": "Electricity and metering in practice",
+   "text": "In a reported case at a new apartment building in Zagreb, the owner ran a 40 m three-phase cable from his apartment through conduit laid by the developer to his outdoor parking space and connected the charger to his own apartment meter; he said no paperwork was needed ('Od papira za to ne treba apsolutno ništa'). He also said fire inspectors were refusing chargers in underground garages although, in his view, no rule requires this.",
+   "law": "—",
+   "source": "https://autonet.bug.hr/elektricna-vozila/provjerili-smo-koliko-je-isplativa-ugradnja-vlastitog-ev-punjaca-na-parkingu-48074",
+   "source_title": "Autonet (Bug.hr) – Provjerili smo koliko je isplativa ugradnja vlastitog EV punjača na parkingu nove zgrade",
+   "source_date": "10.03.2025",
+   "confidence": "medium"
+  },
+  {
+   "topic": "Draft rules on works without a building permit",
+   "text": "In August 2026 a draft 'Pravilnik o građevinama i radovima za koje nije potrebna građevinska dozvola' was put to public consultation; critics fear it could require extra design documentation and a longer procedure for home wallboxes. The draft was not final.",
+   "law": "Draft regulation (public consultation, 2026)",
+   "source": "https://www.tportal.hr/autozona/clanak/zelite-kucni-punjac-za-elektricni-auto-novi-hrvatski-prijedlog-izazvao-je-veliku-raspravu-20260822",
+   "source_title": "tportal – Želite kućni punjač za električni auto? Novi hrvatski prijedlog izazvao je veliku raspravu",
+   "source_date": "22.08.2026",
+   "confidence": "medium"
+  },
+  {
+   "topic": "Building-level charging services",
+   "text": "E-Punjači (TSG Croatia d.o.o.) states that shared parking in apartment buildings needs smart stations with online access to control and split costs, with access rights per user, metering of 'točan utrošak svakog pojedinog korisnika' and automated billing. No company advertising a subscription charging service for residential buildings was found (re-charge.hr could not be checked).",
+   "law": "—",
+   "source": "https://epunjaci.hr/punjenje-kod-kuce/",
+   "source_title": "E-Punjači – Punjenje vozila na Vašem privatnom parkiralištu",
+   "source_date": "modified 12.05.2023",
+   "confidence": "high"
+  },
+  {
+   "topic": "EU rules (EPBD recast)",
+   "text": "The recast Energy Performance of Buildings Directive (EU) 2024/1275 calls for removing barriers to recharging infrastructure 'such as split incentives and administrative complications' (recital 50). Whether Croatia has transposed its building-charging provisions was not confirmed in this check.",
+   "law": "Directive (EU) 2024/1275",
+   "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32024L1275",
+   "source_title": "EUR-Lex – Directive (EU) 2024/1275 on the energy performance of buildings (recast)",
+   "source_date": "2024",
+   "confidence": "high"
+  },
+  {
+   "topic": "Alternative-fuels infrastructure law",
+   "text": "Croatia's law on alternative-fuels infrastructure deals with publicly accessible charging; for non-public charging points it only says the national policy framework may include measures to encourage and ease their installation.",
+   "law": "Zakon o uspostavi infrastrukture za alternativna goriva (NN 120/16, 63/22), Art. 6(13)",
+   "source": "https://www.zakon.hr/z/891/zakon-o-uspostavi-infrastrukture-za-alternativna-goriva",
+   "source_title": "Zakon.hr – Zakon o uspostavi infrastrukture za alternativna goriva",
+   "source_date": "consolidated text in force from 11.06.2022",
+   "confidence": "high"
+  }
+ ],
+ "policy": [
+  {
+   "text": "Under the EU Alternative Fuels Infrastructure Regulation (AFIR, (EU) 2023/1804), Croatia must provide publicly accessible charging with a total power of at least 1.3 kW per registered battery-electric car or van and 0.80 kW per plug-in hybrid (Art. 3(1)).",
+   "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1804",
+   "source_date": "Regulation (EU) 2023/1804",
+   "confidence": "high"
+  },
+  {
+   "text": "On the TEN-T core network, AFIR requires charging pools at most 60 km apart with at least 400 kW in total by 31.12.2025 and 600 kW by 31.12.2027, each with at least one 150 kW point (Art. 3).",
+   "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1804",
+   "source_date": "Regulation (EU) 2023/1804",
+   "confidence": "high"
+  },
+  {
+   "text": "AFIR requires ad hoc payment without a contract at all public charging points, and card payment at points of 50 kW or more installed from 13.04.2024; existing ones on the TEN-T network must follow by 01.01.2027 (Art. 5).",
+   "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1804",
+   "source_date": "Regulation (EU) 2023/1804",
+   "confidence": "high"
+  },
+  {
+   "text": "Croatia's 2017 national policy framework for alternative fuels (NN 34/2017) set minimum targets of 602 public charging sockets at 348 stations by 2025 (434 AC, 168 DC of 50 kW+) and 806 sockets at 479 stations by 2030 (554 AC, 252 DC); whether these targets have been updated was not checked.",
+   "source": "https://alternative-fuels-observatory.ec.europa.eu/system/files/documents/2022-12/Croatia%20NPF%20(EN)_0.pdf",
+   "source_date": "adopted 06.04.2017 (NN 34/2017)",
+   "confidence": "high"
+  }
+ ],
+ "gaps": [
+  "WebSearch quota ran out midway; later checks used only WebFetch on known URLs, so some installers and 2026 sources may be missing.",
+  "Official public charger count: the EU Alternative Fuels Observatory shows Croatian figures only in interactive charts that could not be read, and the national CRO-IDRO registry was not reachable; the count used is a media figure (Lider).",
+  "Home chargers: no installer based in Rijeka with its own website listing charger work was found (trebam.hr lists local providers only as a marketplace); Njuškalo was not checked.",
+  "Sites that did not load (robots.txt timeout or DNS error): aledo-tech.hr, ses-croatia.com (Soft Energy Systems, Zadar/Zagreb), re-charge.hr, chargingshop.hr, kralj.hr, ams.hr, evshop.com.hr, energycentar.hr, cee.hr, elektricna-vozila.com.hr, elektroinstalacije-sporcic.com, shop.autohrvatska.hr, zenerg.hr, molplugee.hr, tifon.hr; cvh.hr returned error 521; Petrol's home-charger page returned 404 (Petrol only mentions 'financiranje pri kupnji e-punionice').",
+  "E.ON home-charger pages load via JavaScript; prices not visible. HGSPOT product pages returned no product data. No HEP home-charger offer was found on the HEP pages checked.",
+  "Electricity: HEP Elektra's universal-service tariff table in force since 01.11.2025 (energy prices and supply fee up to 30.09.2026) is published only as an image and was not read; the VAT rate on household electricity was not confirmed.",
+  "ELEN: BUCO (19.12.2025) reported new motorway prices of 0,50/0,60 €/kWh, but elen.hep.hr still lists the price list of 01.04.2025 as current (checked 23.09.2026); the official list is used here.",
+  "IONITY subscription per-kWh prices were read inconsistently from the dynamic page (Power 365: 0.39–0.44 €/kWh; Motion 365: 0.53–0.55 €/kWh) – check in the app.",
+  "Prices not published by the operator or not readable: Tesla (for other EVs), Kaufland, Hrvatski Telekom eSpots (no official page found), MOL Plugee, Qelo (image); Electrip, Eleport, GreenWay and MOON prices not checked.",
+  "EV fleet: CVH/MUP statistics by fuel type were not found; Eurostat's 2025 BEV stock (7,058) is below its 2024 value (7,286) as published. A media figure of 0.6% BEV share of the fleet (pvinformer.me, 18.08.2026) does not match the Eurostat dataset (about 0.34%) and is not used.",
+  "2026 registrations: ACEA releases after June 2026 were not found; January–June 2026 is the latest period used.",
+  "Subsidies: the EnU-4/26 deadline-extension decision (PDF) has no readable text; remaining budget not published.",
+  "Buildings: Croatia's transposition of the EPBD recast charging provisions, the full text of the August 2026 draft regulation on permit-free works, HEP ODS rules and fees for a separate charger connection in a building, and the Strujni krug members-only building guide were not checked."
+ ]
+}

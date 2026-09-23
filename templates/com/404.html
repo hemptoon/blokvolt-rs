@@ -1,0 +1,2 @@
+{% extends 'base.html' %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">404</div><h1>This page doesn't exist</h1><p>It may have moved, or it may never have been here. The country guides are below; Serbia has its own site, blokvolt.rs.</p><div class="v3-chips">{% for c in COUNTRIES %}<a href="{{ c.url }}">{{ c.name }}</a>{% endfor %}<a href="/">Home</a></div></div></div>{% endblock %}

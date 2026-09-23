@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/", "inLanguage": "en", "description": {{ description|tojson }}},
+  {"@type": "CollectionPage", "name": {{ title|tojson }}, "url": "{{ SITE }}/", "inLanguage": "en", "dateModified": "{{ CHECKED_ISO }}",
+   "mainEntity": {"@type": "ItemList", "numberOfItems": {{ COUNTRIES|length }}, "itemListElement": [{% for c in COUNTRIES %}{"@type": "ListItem", "position": {{ loop.index }}, "name": {{ ('EV charging in ' ~ c.name)|tojson }}, "url": "{{ SITE }}{{ c.url }}"}{% if not loop.last %},{% endif %}{% endfor %}]}}
+ ]
+}</script>{% endblock %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Independent guide · Serbia and the Western Balkans · checked {{ CHECKED }}</div><h1>EV charging in Serbia and the Western Balkans</h1><p>Who sells and installs home chargers, what public charging costs, what a kilowatt-hour costs at home, which subsidies are open and what the rules are in apartment buildings — country by country, with a source and a check date for every figure.</p><div class="v3-meta"><span>{{ COUNTRIES|length }} countries</span><span>{{ n_companies }} companies listed</span><span>{{ n_sources }} sources</span></div><div class="v3-chips">{% for c in COUNTRIES %}<a href="{{ c.url }}">{{ c.name }}</a>{% endfor %}</div></div></div>{% endblock %}
+{% block content %}<div class="bva"><div class="w3">
+<h2 id="countries">Countries</h2>
+<div class="bva-cards agg-grid com-cards">{% for c in COUNTRIES %}<a class="bva-card agg-card" href="{{ c.url }}"><b>{{ c.name }}</b>{% for f in c.facts %}<span>{{ f }}</span>{% endfor %}</a>{% endfor %}</div>
+<p>Serbia has the most detail: a register of {{ n_rs_firms }} installers and sellers, eleven public charging networks with a monthly price index, subsidies, EPS tariffs and guides for apartment buildings — on <a href="https://www.blokvolt.rs/en/">blokvolt.rs</a>, in English, Serbian and Russian.</p>
+
+<h2 id="how">How we check</h2>
+<ol class="bva-steps">
+<li><b>Public sources only.</b>Company websites, operators' price lists and apps, statistics offices, regulators, funds and law texts. Where only the media or a dealer gives a figure, we mark it as medium or low reliability.</li>
+<li><b>A date on everything.</b>Each figure shows the date on its source and the date we checked it. Markets change quickly; an old price is labelled as old.</li>
+<li><b>Same rules for every company.</b>We copy what a company says on its own site — what it sells, its prices, whether it installs — into the same columns for everyone. No ratings, no rankings, no paid placements.</li>
+<li><b>Gaps are published.</b>Each country page lists what we could not verify, so you know where the picture is incomplete.</li>
+</ol>
+<p class="bva-disc">BlokVolt is run by the team of Evolako, a home-charger installer that works in Serbia. Outside Serbia we do not sell or install anything. Found a mistake or want a company added? Write to <a href="mailto:{{ EMAIL }}">{{ EMAIL }}</a> — corrections are free and follow the same rules for everyone. The full rules are in the <a href="https://www.blokvolt.rs/en/metodologija/">methodology</a>.</p>
+</div></div>{% endblock %}

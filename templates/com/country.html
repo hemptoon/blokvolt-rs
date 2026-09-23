@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as m %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ path }}", "inLanguage": "en", "dateModified": "{{ CHECKED_ISO }}", "about": {"@type": "Country", "name": {{ c.name|tojson }}}, "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": {{ c.name|tojson }}, "item": "{{ SITE }}{{ path }}"}]}
+ ]
+}</script>{% endblock %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Country guide · {{ c.group }} · checked {{ r.checked }}</div><h1>EV charging in {{ c.name }}</h1><p>{{ r.summary|lk }}</p><div class="v3-meta"><span>Checked {{ r.checked }}</span><span>{{ r.home_companies|length }} {{ 'company' if r.home_companies|length == 1 else 'companies' }} listed</span><span>{{ n_sources }} sources</span></div><div class="v3-chips"><a href="#home-charging">Home chargers</a><a href="#public-charging">Public charging</a><a href="#electricity">Electricity at home</a><a href="#subsidies">Subsidies</a><a href="#buildings">Apartment buildings</a><a href="#sources">Sources</a></div></div></div>{% endblock %}
+{% block content %}<div class="bva"><div class="w3">
+<div class="bva-kv com-glance">{% for label, fact in glance %}<div><b>{{ label }}</b><span>{{ fact }}</span></div>{% endfor %}</div>
+<p class="bva-disc">BlokVolt is run by the team of Evolako, a home-charger installer that works only in Serbia. Companies in {{ c.name }} are listed by the same rules as everywhere on the site: only what their own websites say, with the date we checked, no ratings and no paid placements. Every figure below has its source; where a source is weak we say so.</p>
+
+<h2 id="numbers">Key numbers</h2>
+<div class="bva-tw"><table class="bva-tbl com-tbl"><thead><tr><th>Figure</th><th>Value</th><th>Source</th></tr></thead><tbody>
+{% for s in r.stats %}<tr><td data-label="Figure">{{ s.label|lk }}{% if s.note %}<small>{{ s.note|lk }}</small>{% endif %}</td><td data-label="Value"><b>{{ s.value|lk }}</b></td><td data-label="Source">{{ m.src(s, 'Source') }}</td></tr>
+{% endfor %}</tbody></table></div>
+
+<h2 id="home-charging">Home chargers: who sells and installs them <span class="agg-count">{{ r.home_companies|length }}</span></h2>
+<p>Companies that sell wallboxes or install home chargers in {{ c.name }}, as their own websites describe them. Prices are copied as published, with the currency and VAT as stated on the page.</p>
+<p class="bva-legend"><b>Yes</b> — installation is offered on the company's site · <b>On request</b> — offered, without a price or terms · <b>Not mentioned</b> — nothing about installation on the site</p>
+<div class="bva-tw"><table class="bva-tbl com-tbl agg-hub"><thead><tr><th>Company</th><th>What they offer</th><th>Published price</th><th>Installation</th></tr></thead><tbody>
+{% for h in r.home_companies %}<tr><td data-label="Company"><b>{% if h.url %}<a href="{{ h.url }}" rel="noopener nofollow">{{ h.name }}</a>{% else %}{{ h.name }}{% endif %}</b><small>{{ h.city|lk }}</small>{% if h.brands %}<small class="of">{{ 'Brand' if h.brands|length == 1 else 'Brands' }}: {{ h.brands|join(', ') }}</small>{% endif %}<small class="chk">checked {{ h.source_date|lk }}</small></td><td data-label="What they offer">{{ h.what|lk }}</td><td data-label="Published price">{% if h.price and not h.price.lower().startswith('not ') %}<b class="pr">{{ h.price|lk }}</b>{% else %}{{ (h.price or 'Not published')|lk }}{% endif %}{% if h.price_eur %}<small>≈ {{ h.price_eur|lk }}</small>{% endif %}</td><td data-label="Installation"><b class="v">{{ h.installation }}</b>{% if h.installation_note %}<small>{{ h.installation_note|lk }}</small>{% endif %}</td></tr>
+{% endfor %}</tbody></table></div>
+{% if r.home_price_ranges %}
+<h3 id="price-ranges">Price ranges from other sources</h3>
+<ul class="com-list">{% for p in r.home_price_ranges %}<li><b>{{ p.what|lk }}: {{ p.range|lk }}</b>{% if p.note %} — {{ p.note|lk }}{% endif %}{{ m.src(p) }}</li>{% endfor %}</ul>
+{% endif %}
+
+<h2 id="public-charging">Public charging</h2>
+<div class="bva-note"><p><strong>How many public chargers: {{ r.public_count.value|lk }}.</strong> {{ r.public_count.note|lk }}</p>{% if r.public_count.source %}<p>{{ m.src(r.public_count) }}</p>{% endif %}</div>
+<div class="bva-tw"><table class="bva-tbl com-tbl"><thead><tr><th>Network</th><th>Size</th><th>Prices</th><th>Payment</th></tr></thead><tbody>
+{% for n in r.networks %}<tr><td data-label="Network"><b>{% if n.url %}<a href="{{ n.url }}" rel="noopener nofollow">{{ n.name|lk }}</a>{% else %}{{ n.name|lk }}{% endif %}</b>{% if n.operator and n.operator not in ('—', '') %}<small>{{ n.operator|lk }}</small>{% endif %}{% if n.app and n.app not in ('—', 'Not stated', '') %}<small class="of">App: {{ n.app|lk }}</small>{% endif %}</td><td data-label="Size">{{ n.size|lk }}</td><td data-label="Prices">{% for p in n.prices %}<div class="com-price"><span>{{ p.what|lk }}</span> <b{% if not p.price.lower().startswith('not ') %} class="pr"{% endif %}>{{ p.price|lk }}</b>{% if p.vat and p.vat not in ('not stated', '—') %} <small>VAT {{ p.vat }}</small>{% endif %}{{ m.src(p) }}</div>{% endfor %}</td><td data-label="Payment">{{ n.payment|lk }}</td></tr>
+{% endfor %}</tbody></table></div>
+
+<h2 id="electricity">Electricity at home</h2>
+<p>What a kilowatt-hour costs at home — the number to compare with public charging.</p>
+<div class="bva-tw"><table class="bva-tbl com-tbl"><thead><tr><th>Tariff</th><th>Price</th><th>Source</th></tr></thead><tbody>
+{% for e in r.electricity %}<tr><td data-label="Tariff">{{ e.what|lk }}{% if e.note %}<small>{{ e.note|lk }}</small>{% endif %}</td><td data-label="Price"><b>{{ e.price|lk }}</b></td><td data-label="Source">{{ m.src(e) }}</td></tr>
+{% endfor %}</tbody></table></div>
+
+<h2 id="subsidies">Subsidies</h2>
+<ul class="com-list com-subs">{% for s in r.subsidies %}<li>{{ m.status(s.status) }} <b>{{ s.programme|lk }}</b>{% if s.amount and s.amount not in ('—', '') %}<span><em>Amount:</em> {{ s.amount|lk }}</span>{% endif %}{% if s.who and s.who not in ('—', '') %}<span><em>Who:</em> {{ s.who|lk }}</span>{% endif %}{% if s.deadline and s.deadline not in ('—', '') %}<span><em>Deadline:</em> {{ s.deadline|lk }}</span>{% endif %}{% if s.note %}<span>{{ s.note|lk }}</span>{% endif %}{{ m.src(s) }}</li>{% endfor %}</ul>
+
+<h2 id="buildings">Charging in an apartment building</h2>
+<p>What the law says about a charger in a shared garage or parking lot — who has to agree, who pays for the electricity and how it is metered.</p>
+<ul class="com-list">{% for b in r.buildings %}<li><b>{{ b.topic|lk }}</b><span>{{ b.text|lk }}</span>{% if b.law %}<span><em>Law:</em> {{ b.law|lk }}</span>{% endif %}{{ m.src(b) }}</li>{% endfor %}</ul>
+
+{% if r.policy %}
+<h2 id="plans">National plans and EU rules</h2>
+<ul class="com-list">{% for p in r.policy %}<li><span>{{ p.text|lk }}</span>{{ m.src(p) }}</li>{% endfor %}</ul>
+{% endif %}
+
+{% if r.gaps %}
+<h2 id="gaps">What we could not verify</h2>
+<p>Gaps we know about. If you can fill one with a public source, write to <a href="mailto:{{ EMAIL }}">{{ EMAIL }}</a>.</p>
+<ul class="com-list com-gaps">{% for g in r.gaps %}<li>{{ g|lk }}</li>{% endfor %}</ul>
+{% endif %}
+
+<h2 id="sources">Sources</h2>
+<div class="bva-fotos"><details><summary>All {{ n_sources }} sources for this page</summary><ul class="bva-src">{% for s in sources %}<li><a href="{{ s.url }}" rel="noopener nofollow">{{ s.title }}</a>{% if s.date %} — {{ s.date }}{% endif %}</li>{% endfor %}</ul></details></div>
+
+<div class="bva-note"><p><strong>Something changed or is missing?</strong> We add companies and correct data from public sources and on request — free, by the same rules for everyone. Send the company name, website and city, or the correction with a link, to <a href="mailto:{{ EMAIL }}">{{ EMAIL }}</a>.</p></div>
+<p class="com-other">Other countries: {% for o in COUNTRIES if o.slug != c.slug %}<a href="{{ o.url }}">{{ o.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+</div></div>{% endblock %}

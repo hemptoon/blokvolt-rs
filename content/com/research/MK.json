@@ -1,0 +1,580 @@
+{
+ "code": "MK",
+ "name": "North Macedonia",
+ "checked": "23.09.2026",
+ "currency": "MKD",
+ "summary": "North Macedonia had 2,047 battery-electric passenger cars at the end of 2025, about 0.33% of all passenger cars, and no national subsidy for buying an electric car or a home charger was found for 2026. Public charging is mostly provided by EVN Macedonia, whose map lists 12 DC fast-charging sites of up to 180 kW (nine at Makpetrol fuel stations) and more than 40 AC points in 20 towns; residents with an EVN card pay 25/28 MKD per kWh (AC/DC) and other drivers 30/40 MKD by bank card, VAT included. Seven sellers of home chargers were found, mostly in Skopje; some publish device prices of about €440–1,590 per wallbox, none publishes a fixed installation price, and no building-level charging service for apartment blocks was found.",
+ "stats": [
+  {
+   "label": "Battery-electric passenger cars registered, end of 2025",
+   "value": "2,047",
+   "note": "State Statistical Office figures as reported: 1,507 at the end of 2024 and 561 in 2023 (implied increase in 2025: 540, calculated). The Office's MakStat table of registered vehicles by fuel (2012–2025) was last updated on 24.06.2026; its values are shown only after an interactive selection.",
+   "source": "https://www.carclub.mk/2026/07/07/kolku-elektricni-vozila-ima-vo-makedonija/",
+   "source_title": "Колку електрични возила има во Македонија? | CARclub.mk",
+   "source_date": "07.07.2026",
+   "confidence": "medium"
+  },
+  {
+   "label": "Electric share of all passenger cars, 2025",
+   "value": "0.33% of more than 615,000 passenger cars",
+   "note": "Diesel 63.8%, petrol 25.7%, hybrids almost 1.2%. The number of passenger cars grew from 429,000 in 2020. The article cites the State Statistical Office.",
+   "source": "https://denesen.mk/makedonija-ima-615-000-avtomobili-za-5-godini-brojot-e-zgolemen-nad-40-otsto-dizelite-caruvaat-benzincite-i-hibridite-malcinstvo",
+   "source_title": "МАКЕДОНИЈА ИМА 615.000 АВТОМОБИЛИ: За 5 години бројот е зголемен над 40 отсто, дизелите царуваат, бензинците и хибридите малцинство – Denesen.mk",
+   "source_date": "11.09.2026",
+   "confidence": "medium"
+  },
+  {
+   "label": "Hybrid passenger cars registered, 2025",
+   "value": "7,393",
+   "note": "Up from 1,287 in 2023 and 5,078 in 2024 (State Statistical Office, as reported). CARclub.mk (07.07.2026) gives a rounded 7,400.",
+   "source": "https://denesen.mk/makedonija-ima-615-000-avtomobili-za-5-godini-brojot-e-zgolemen-nad-40-otsto-dizelite-caruvaat-benzincite-i-hibridite-malcinstvo",
+   "source_title": "МАКЕДОНИЈА ИМА 615.000 АВТОМОБИЛИ: За 5 години бројот е зголемен над 40 отсто, дизелите царуваат, бензинците и хибридите малцинство – Denesen.mk",
+   "source_date": "11.09.2026",
+   "confidence": "medium"
+  },
+  {
+   "label": "Other electric vehicles registered, end of 2025",
+   "value": "543 electric motorcycles, 11 electric buses, 40 electric goods vehicles",
+   "note": "State Statistical Office figures as reported.",
+   "source": "https://www.carclub.mk/2026/07/07/kolku-elektricni-vozila-ima-vo-makedonija/",
+   "source_title": "Колку електрични возила има во Македонија? | CARclub.mk",
+   "source_date": "07.07.2026",
+   "confidence": "medium"
+  },
+  {
+   "label": "Where electric cars are registered, end of 2025",
+   "value": "Skopje 1,229 (of which Centar municipality 475); Štip 89; Veles 68; Bitola 63",
+   "note": "State Statistical Office figures as reported.",
+   "source": "https://www.carclub.mk/2026/07/07/kolku-elektricni-vozila-ima-vo-makedonija/",
+   "source_title": "Колку електрични возила има во Македонија? | CARclub.mk",
+   "source_date": "07.07.2026",
+   "confidence": "medium"
+  },
+  {
+   "label": "New passenger cars sold, 2025 (all fuel types)",
+   "value": "about 6,400",
+   "note": "About 7,500 including light commercial vehicles; the article reports growth of 1.7% on 2024. In January–March 2026, 3,067 new and more than 12,800 used passenger cars were imported (Customs Administration data, as reported). The battery-electric share of new cars was not found.",
+   "source": "https://avtoplus.mk/prodazhbata-na-novi-vozila-vo-makedonija-prodolzhuva-da-raste/",
+   "source_title": "Продажбата на нови возила во Македонија расте | Avtoplus.mk",
+   "source_date": "08.06.2026",
+   "confidence": "low"
+  },
+  {
+   "label": "EVN public charging network (own map)",
+   "value": "12 DC fast-charging sites and more than 40 AC 22 kW points in 20 towns",
+   "note": "Counted on 23.09.2026 from EVN's charger map, which shows no total and no date. DC power 50–180 kW; nine of the DC sites are at Makpetrol fuel stations, the others at Skopje airport, Lazar Ličenoski 11 in Skopje and the Ohrid quay. AC points are 22 kW with Type 2 sockets.",
+   "source": "https://emobility.evn.mk/charging-stations/ChargerMap.aspx?lang=en",
+   "source_title": "ChargerMap - ELECTROMOBILITY (EVN)",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "medium"
+  },
+  {
+   "label": "Most powerful public chargers",
+   "value": "180 kW DC (two chargers)",
+   "note": "Opened in Kisela Voda (Skopje) and Kičevo; EVN describes them as the most powerful EV chargers in Macedonia so far. No public charger above 180 kW was found.",
+   "source": "https://emobility.evn.mk/Новости.aspx",
+   "source_title": "Новости - ЕЛЕКТРОМОБИЛНОСТ (EVN)",
+   "source_date": "18.06.2026",
+   "confidence": "high"
+  },
+  {
+   "label": "DC chargers on the Serbia–Greece route (Kumanovo–Skopje–Negotino–Gevgelija)",
+   "value": "Kumanovo, Skopje (Vizbegovo, airport, Kisela Voda), Negotino, Bogorodica border crossing near Gevgelija",
+   "note": "EVN map: Makpetrol Kumanovo 150 kW; Makpetrol Vizbegovo 150 kW; Skopje airport 150 kW; Makpetrol Kisela Voda 180 kW; Makpetrol Negotino 150 kW; Makpetrol at the Bogorodica border crossing 100 kW + 50 kW. Makpetrol's own page lists Negotino as 2 × CCS 120 kW and Gevgelija as 150 kW (CCS, CHAdeMO, Type 2).",
+   "source": "https://emobility.evn.mk/charging-stations/ChargerMap.aspx?lang=en ; https://www.makpetrol.com.mk/en/chargers-for-electric-vehicles/",
+   "source_title": "ChargerMap - ELECTROMOBILITY (EVN); Полначи за електрични возила (Makpetrol)",
+   "source_date": "EVN map undated; Makpetrol page modified 22.08.2025; checked 23.09.2026",
+   "confidence": "medium"
+  },
+  {
+   "label": "Tesla Superchargers",
+   "value": "0",
+   "note": "Tesla's list for North Macedonia shows no Supercharger or destination-charger locations.",
+   "source": "https://www.tesla.com/findus/list/superchargers/North%20Macedonia",
+   "source_title": "Tesla Superchargers in North Macedonia",
+   "source_date": "no date on page; checked 23.09.2026",
+   "confidence": "high"
+  }
+ ],
+ "home_companies": [
+  {
+   "name": "Polnac.mk (Полнач)",
+   "city": "Skopje (delivery and installation across North Macedonia)",
+   "what": "Sells AC wallboxes for homes and businesses (7.4, 11 and 22 kW, with app) and installs them with certified electricians. Handles the paperwork: technical documentation, application to the distribution operator and the necessary permits. States 500+ installations, 20+ cities served, founded in 2009; 1-year warranty.",
+   "brands": [
+    "IGI"
+   ],
+   "price": "Prices 'from': IGI HS 7.4 kW 33,825 MKD (€550) + 18% VAT = 39,914 MKD; IGI HS 11 kW 42,435 MKD (€690) + 18% VAT = 50,073 MKD; IGI HS 22 kW 45,510 MKD (€740) + 18% VAT = 53,702 MKD. Installation price not published.",
+   "price_eur": "€550 / €690 / €740 before VAT (as published); ≈ €649 / €814 / €873 incl. VAT (approx.)",
+   "installation": "Yes",
+   "installation_note": "Includes wall mounting, cable to the main distribution board, RCD/MCB protection, earthing and surge protection, final test and user training; 2–4 hours (single-phase), 3–4 hours (three-phase). Free on-site survey in Skopje; outside Skopje for a small travel fee. Free delivery nationwide.",
+   "url": "https://www.polnac.mk/",
+   "source_date": "no date on page (© 2026); checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "SWEDCHARGE (North Macedonia)",
+   "city": "Skopje (Jane Sandanski 76)",
+   "what": "Sells Charge Amps home and building chargers (HALO wallbox, AURA twin charger) and a load balancer; offers delivery, mounting and installation, and mentions solutions for collective housing buildings.",
+   "brands": [
+    "Charge Amps"
+   ],
+   "price": "Charge Amps HALO (3.7 / 7.4 / 11 kW, 7.5 m cable): €1,590, summer discount €1,350; Charge Amps AURA (2 × 22 kW): €3,245, summer discount €2,900. VAT not stated; installation extra. No end date given for the discount.",
+   "price_eur": "€1,350–1,590 (HALO); €2,900–3,245 (AURA), as published",
+   "installation": "Yes",
+   "installation_note": "Installation is charged separately according to the materials actually used; a cost-estimate form is provided on the product pages.",
+   "url": "https://mk.swedcharge.com/",
+   "source_date": "homepage 'updated 01.07.2024'; product pages undated; checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "eCars.mk (Е Мобилити 3М ДООЕЛ)",
+   "city": "Skopje (Pero Nakov 25)",
+   "what": "Sells AC charging stations under its own eCars range (IDA Logo Solo and Duo, IDA Slim Logo, IDA Duo 12.3″, AYA): 7.4 kW single-phase or 22 kW three-phase, Type 2, wall or floor mounting, app and web statistics on the smart models, 12-month warranty. Offers inspections and professional installation.",
+   "brands": [
+    "eCars (IDA, AYA models)"
+   ],
+   "price": "Not published",
+   "price_eur": "",
+   "installation": "Yes",
+   "installation_note": "Homepage heading 'Professional installation – expert inspections and installations'; no installation price published.",
+   "url": "https://ecars.mk/",
+   "source_date": "page modified 19.04.2026 (metadata); checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "eDrive.mk (Grand SD Solutions)",
+   "city": "Skopje (8-mi Septemvri Boulevard)",
+   "what": "Sells home wallboxes (7–22 kW AC), twin commercial units (22–60 kW), portable chargers (3.5–22 kW) and fast DC chargers (60–180 kW and more); offers implementation from planning to completion across North Macedonia and mentions complete solutions for houses and buildings. Brands are not named.",
+   "brands": [],
+   "price": "Not published",
+   "price_eur": "",
+   "installation": "Yes",
+   "installation_note": "Professional implementation 'from planning to final realisation'; no installation price published.",
+   "url": "https://edrive.mk/",
+   "source_date": "page modified 12.08.2026 (metadata); checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "MOON POWER (North Macedonia)",
+   "city": "Not stated on page (Skopje phone number +389 2; e-mail at porsche.com.mk)",
+   "what": "Charging brand of Porsche Holding Salzburg, active in North Macedonia: MOON Charger Single/Double Pro-line smart wallboxes for private and public use, a DC wallbox (POWER Charger HYC 50), fast chargers, the portable POWER2Go, plus storage and solar systems. Customers are asked to contact the local team.",
+   "brands": [
+    "MOON"
+   ],
+   "price": "Not published",
+   "price_eur": "",
+   "installation": "Not mentioned",
+   "installation_note": "The home and product pages describe equipment only; installation is not mentioned.",
+   "url": "https://www.moon-power.mk/",
+   "source_date": "no date on page (© 2026); checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "name": "LKV Kostovski DOOEL (ЛКВ Костовски)",
+   "city": "Veles",
+   "what": "Company offering transport services, heat pumps and EV chargers; its website lists chargers for electric vehicles (Teltonika). Its marketplace ad offers 11 kW and 22 kW home chargers of Lithuanian manufacture with app, scheduling and dynamic load balancing, with or without a fixed cable.",
+   "brands": [
+    "Teltonika"
+   ],
+   "price": "11 kW home charger: 43,600 MKD, VAT (18%) not included (own ad on pazar3.mk, 21.04.2026: https://www.pazar3.mk/ad/vehicles/automobile-parts-equipment/chargers-for-electric-vehicles/for-sale/veles/municipality-of-veles/polnach-za-elektrichno-vozilo-za-domashna-upotreba-11kw/6842894). The company website shows no prices.",
+   "price_eur": "≈ €709 before VAT (approx.)",
+   "installation": "Not mentioned",
+   "installation_note": "Neither the website nor the ad mentions installation; the ad offers courier delivery from 150 MKD.",
+   "url": "https://lkvkostovski.com/",
+   "source_date": "website updated 11.07.2023; ad posted 21.04.2026; checked 23.09.2026",
+   "confidence": "medium"
+  },
+  {
+   "name": "Vozi na struja (Вози на струја)",
+   "city": "Skopje (Jadranska magistrala 125)",
+   "what": "Online shop for EV charging equipment, linked from the website of used-car dealer Olympia Motors Outlet, whose marketplace profile gives the same street address. Lists a 22 kW wallbox and an 11 kW mobile charging station; the dealer's marketplace ad promotes KEBA and Wallbox charging solutions for homes, businesses and cities.",
+   "brands": [
+    "KEBA",
+    "Wallbox"
+   ],
+   "price": "'Wallbox 22kw' €440.00; '11kW Mobile Charging Station with Type 2/CEE Charging Cable' €290.00; VAT not stated. Marketplace ad 'Chargers for electric vehicles' (pazar3.mk, 20.02.2026): 950 EUR, model not stated.",
+   "price_eur": "€440 (22 kW wallbox); €290 (11 kW mobile unit), as published",
+   "installation": "Not mentioned",
+   "installation_note": "No installation information on the shop page or in the ad.",
+   "url": "https://vozinastruja.mk/",
+   "source_date": "page modified 13.09.2026 (metadata); ad posted 20.02.2026; checked 23.09.2026",
+   "confidence": "high"
+  }
+ ],
+ "home_price_ranges": [
+  {
+   "what": "Home wallbox – list prices on company sites (device only)",
+   "range": "€440 – €1,590 per single-point wallbox",
+   "note": "Examples: 'Wallbox 22kw' €440 (Vozi na struja, VAT not stated); IGI HS 7.4 / 11 / 22 kW from €550 / €690 / €740 + 18% VAT (Polnac.mk); Charge Amps HALO €1,350 on summer discount, €1,590 regular (SWEDCHARGE, VAT not stated). A marketplace ad by LKV Kostovski offers an 11 kW unit for 43,600 MKD + VAT (≈ €709, approx.). Installation is extra or not priced.",
+   "source": "https://vozinastruja.mk/ ; https://www.polnac.mk/ ; https://mk.swedcharge.com/car_chargers_mk/halo_mk/",
+   "source_title": "Company pages: Vozi na struja, Polnac.mk, SWEDCHARGE (see home_companies)",
+   "source_date": "checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "what": "Wallbox and installation – rule-of-thumb ranges",
+   "range": "Wallbox €300–1,000; installation €100–300",
+   "note": "Given on a vehicle-import advice site for 7, 11 or 22 kW units, without a cited source; VAT not stated. The same page puts home charging at about €0.05–0.08 per kWh and public charging at about €0.30–0.50 per kWh.",
+   "source": "https://www.uvoznavozila.com/elektricni-vozila-uvoz",
+   "source_title": "Увоз на електрични возила 2026 - поволности и давачки",
+   "source_date": "no exact date on page ('updated 2026')",
+   "confidence": "low"
+  },
+  {
+   "what": "Marketplace listings (pazar3.mk)",
+   "range": "550–950 EUR or 43,600–45,000 MKD per charger (≈ €709–732, approx.)",
+   "note": "Four EV-charger ads among seven in the category on 23.09.2026 (the others were battery and scooter chargers): 43,600 MKD for an 11 kW home unit, VAT excluded (LKV Kostovski, 21.04.2026); 950 EUR 'KEBA and Wallbox' (Olympia Motors Outlet, 20.02.2026); 550 EUR and 45,000 MKD from sellers without a company name (dates shown without year). No ad mentions installation.",
+   "source": "https://www.pazar3.mk/ads/vehicles/automobile-parts-equipment/chargers-for-electric-vehicles",
+   "source_title": "Полначи за електрични возила | во Македонија (Pazar3.mk)",
+   "source_date": "ads dated January–April; checked 23.09.2026",
+   "confidence": "low"
+  }
+ ],
+ "public_count": {
+  "value": "62 charging stations (Electromaps listing)",
+  "note": "No official national count was found. Electromaps is crowd-sourced; by municipality it lists Centar 12, Aerodrom 5, Karpoš 4, Delčevo 3 and Gjorče Petrov 3, and its latest addition in North Macedonia is dated 13.09.2025. EVN's own map lists 12 DC fast-charging sites and more than 40 AC 22 kW points in 20 towns (counted on 23.09.2026; the map shows no total, and some sites are listed once per connector). Older EVN material speaks of 'over 40 stations in Skopje and 17 towns'.",
+  "source": "https://www.electromaps.com/en/charging-stations/north-macedonia",
+  "source_title": "Charging stations in North Macedonia | Electromaps",
+  "source_date": "no date on page (latest listing added 13.09.2025); checked 23.09.2026",
+  "confidence": "low"
+ },
+ "networks": [
+  {
+   "name": "EVN Electromobility (ЕВН Електромобилност)",
+   "operator": "EVN Macedonia",
+   "app": "None mentioned; EVN RFID charging card, or bank card via the QR code on the connector",
+   "size": "12 DC fast-charging sites (50–180 kW) and more than 40 AC 22 kW points in 20 towns, per EVN's charger map (counted 23.09.2026; no total published). Latest additions: two 180 kW DC chargers in Kisela Voda (Skopje) and Kičevo (18.06.2026); AC points in Strumica and Probištip (12.08.2026); on 20.04.2026 EVN announced upgraded chargers at two Skopje locations, including a new fast DC charger at Lazar Ličenoski 11.",
+   "prices": [
+    {
+     "what": "AC, with EVN card",
+     "price": "25 MKD/kWh (≈ €0.41, approx.)",
+     "vat": "incl.",
+     "source": "https://elektricniavtomobili.mk/%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%be%d0%bc%d0%be%d0%b1%d0%b8%d0%bb%d0%bd%d0%be%d1%81%d1%82-%d0%bd%d0%b0-%d0%b5%d0%b2%d0%bd-%d0%bc%d0%b0%d0%ba%d0%b5%d0%b4%d0%be%d0%bd%d0%b8%d1%98%d0%b0-%d1%81e/",
+     "source_date": "29.07.2026",
+     "confidence": "medium"
+    },
+    {
+     "what": "DC, with EVN card",
+     "price": "28 MKD/kWh (≈ €0.46, approx.)",
+     "vat": "incl.",
+     "source": "https://elektricniavtomobili.mk/%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%be%d0%bc%d0%be%d0%b1%d0%b8%d0%bb%d0%bd%d0%be%d1%81%d1%82-%d0%bd%d0%b0-%d0%b5%d0%b2%d0%bd-%d0%bc%d0%b0%d0%ba%d0%b5%d0%b4%d0%be%d0%bd%d0%b8%d1%98%d0%b0-%d1%81e/",
+     "source_date": "29.07.2026",
+     "confidence": "medium"
+    },
+    {
+     "what": "AC, bank card via QR code",
+     "price": "30 MKD/kWh (≈ €0.49, approx.)",
+     "vat": "incl.",
+     "source": "https://elektricniavtomobili.mk/%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%be%d0%bc%d0%be%d0%b1%d0%b8%d0%bb%d0%bd%d0%be%d1%81%d1%82-%d0%bd%d0%b0-%d0%b5%d0%b2%d0%bd-%d0%bc%d0%b0%d0%ba%d0%b5%d0%b4%d0%be%d0%bd%d0%b8%d1%98%d0%b0-%d1%81e/",
+     "source_date": "29.07.2026",
+     "confidence": "medium"
+    },
+    {
+     "what": "DC, bank card via QR code",
+     "price": "40 MKD/kWh (≈ €0.65, approx.)",
+     "vat": "incl.",
+     "source": "https://elektricniavtomobili.mk/%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%be%d0%bc%d0%be%d0%b1%d0%b8%d0%bb%d0%bd%d0%be%d1%81%d1%82-%d0%bd%d0%b0-%d0%b5%d0%b2%d0%bd-%d0%bc%d0%b0%d0%ba%d0%b5%d0%b4%d0%be%d0%bd%d0%b8%d1%98%d0%b0-%d1%81e/",
+     "source_date": "29.07.2026",
+     "confidence": "medium"
+    },
+    {
+     "what": "Idle fee, AC (after 240 free minutes)",
+     "price": "0.83 MKD per minute from the 241st minute (≈ €0.013/min, approx.)",
+     "vat": "not stated",
+     "source": "https://emobility.evn.mk/Tariffs.aspx",
+     "source_date": "no date on page; DC tariff in force since 01.05.2025 (as shown); checked 23.09.2026",
+     "confidence": "high"
+    },
+    {
+     "what": "Idle fee, DC (after 60 free minutes)",
+     "price": "1.7 MKD per minute from the 61st minute (≈ €0.028/min, approx.)",
+     "vat": "not stated",
+     "source": "https://emobility.evn.mk/Tariffs.aspx",
+     "source_date": "no date on page; DC tariff in force since 01.05.2025 (as shown); checked 23.09.2026",
+     "confidence": "high"
+    }
+   ],
+   "payment": "EVN RFID card: available to individuals or companies that own an electric vehicle and are resident in North Macedonia with a permanent address and a Macedonian personal ID number (EMBG). Other drivers scan the QR code on the connector and pay by bank card. EVN's tariff page shows the per-kWh prices only as an image; the figures above come from a specialist portal and include VAT.",
+   "url": "https://emobility.evn.mk/"
+  },
+  {
+   "name": "Makpetrol fuel stations (chargers installed with EVN)",
+   "operator": "Makpetrol AD Skopje, in cooperation with EVN Macedonia",
+   "app": "Not stated",
+   "size": "Makpetrol's page lists five stations: 163 Bucila (2 × CCS, 150 kW), 008 Vizbegovo (2 × CCS, 150 kW), 013 Kumanovo (2 × CCS, 150 kW), 046 Gevgelija (CCS, CHAdeMO, Type 2; 150 kW) and 164 Negotino (2 × CCS, 120 kW). EVN's map shows EVN DC chargers at nine Makpetrol stations, including Kičevo and Kisela Voda (180 kW), Bitola, Strumica and the Prilep–Bitola road.",
+   "prices": [
+    {
+     "what": "DC 120–150 kW",
+     "price": "Not published on Makpetrol's page; which tariff applies is not stated",
+     "vat": "not stated",
+     "source": "https://www.makpetrol.com.mk/en/chargers-for-electric-vehicles/",
+     "source_date": "page modified 22.08.2025; checked 23.09.2026",
+     "confidence": "high"
+    }
+   ],
+   "payment": "RFID card or credit card (Makpetrol page)",
+   "url": "https://www.makpetrol.com.mk/en/chargers-for-electric-vehicles/"
+  },
+  {
+   "name": "Charge&GO MK",
+   "operator": "Чарџ&ГО ДООЕЛ Скопје (Dame Gruev 18/2-1, Skopje)",
+   "app": "Charge&GO",
+   "size": "Not stated for North Macedonia: the site's counters (79 chargers, 68 locations, 135 connectors) are not split by country. Serbian media reported a 50 kW charger at the OKTA fuel station in Ržaničino (Auto blog / Energetski portal via naslovi.net, 23.05.2026).",
+   "prices": [
+    {
+     "what": "All charging in North Macedonia",
+     "price": "Not published",
+     "vat": "not stated",
+     "source": "https://chargego.rs/mk/pocetnata/",
+     "source_date": "no date on page; checked 23.09.2026",
+     "confidence": "high"
+    }
+   ],
+   "payment": "Through the Charge&GO app; payment details for North Macedonia are not published",
+   "url": "https://chargego.rs/mk/pocetnata/"
+  },
+  {
+   "name": "Orion eMobility (roaming app)",
+   "operator": "Orion Telekom (Serbia)",
+   "app": "Orion eMobility",
+   "size": "The app description lists Macedonia among the countries covered ('more than 240,000 own and partner charging stations in as many as 30 EU countries, including Serbia, Montenegro, Bosnia & Herzegovina, Croatia, Slovenia, Macedonia, Albania'); which Macedonian stations are included is not stated.",
+   "prices": [
+    {
+     "what": "Charging in North Macedonia",
+     "price": "Not published",
+     "vat": "not stated",
+     "source": "https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app",
+     "source_date": "app updated 03.09.2026",
+     "confidence": "medium"
+    }
+   ],
+   "payment": "In the app; details not published",
+   "url": "https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app"
+  }
+ ],
+ "electricity": [
+  {
+   "what": "Household energy price, higher tariff, block 1 (up to 210 kWh)",
+   "price": "4.7074 MKD/kWh (≈ €0.077, approx.)",
+   "note": "Regulated price of the universal supplier EVN Home for households, in force from 01.01.2026. Energy component only: according to EVN's billing page, the bill also includes the transmission and distribution fee, a distribution-system access fee, the municipal public-lighting fee and VAT. VAT is not stated in the decision. The same rates are shown on evn.mk (checked 23.09.2026).",
+   "source": "https://www.erc.org.mk/odluki/2025.12.22%20ODLUKA%20-%20EVN%20HOME%202026.pdf",
+   "source_title": "Одлука за ЕВН Хоум – цени за 2026 (РКЕ, седница од 22.12.2025)",
+   "source_date": "22.12.2025 (applies from 01.01.2026)",
+   "confidence": "high"
+  },
+  {
+   "what": "Household energy price, higher tariff, block 2 (211–630 kWh)",
+   "price": "5.8976 MKD/kWh (≈ €0.096, approx.)",
+   "note": "Energy component only; see block 1.",
+   "source": "https://www.erc.org.mk/odluki/2025.12.22%20ODLUKA%20-%20EVN%20HOME%202026.pdf",
+   "source_title": "Одлука за ЕВН Хоум – цени за 2026 (РКЕ, седница од 22.12.2025)",
+   "source_date": "22.12.2025 (applies from 01.01.2026)",
+   "confidence": "high"
+  },
+  {
+   "what": "Household energy price, higher tariff, block 3 (631–1,050 kWh)",
+   "price": "7.8537 MKD/kWh (≈ €0.128, approx.)",
+   "note": "Energy component only; see block 1.",
+   "source": "https://www.erc.org.mk/odluki/2025.12.22%20ODLUKA%20-%20EVN%20HOME%202026.pdf",
+   "source_title": "Одлука за ЕВН Хоум – цени за 2026 (РКЕ, седница од 22.12.2025)",
+   "source_date": "22.12.2025 (applies from 01.01.2026)",
+   "confidence": "high"
+  },
+  {
+   "what": "Household energy price, higher tariff, block 4 (over 1,050 kWh)",
+   "price": "19.1904 MKD/kWh (≈ €0.312, approx.)",
+   "note": "Energy component only; see block 1.",
+   "source": "https://www.erc.org.mk/odluki/2025.12.22%20ODLUKA%20-%20EVN%20HOME%202026.pdf",
+   "source_title": "Одлука за ЕВН Хоум – цени за 2026 (РКЕ, седница од 22.12.2025)",
+   "source_date": "22.12.2025 (applies from 01.01.2026)",
+   "confidence": "high"
+  },
+  {
+   "what": "Household energy price, lower tariff",
+   "price": "2.1893 MKD/kWh (≈ €0.036, approx.)",
+   "note": "One lower-tariff rate, not split into blocks; energy component only (see block 1).",
+   "source": "https://www.erc.org.mk/odluki/2025.12.22%20ODLUKA%20-%20EVN%20HOME%202026.pdf",
+   "source_title": "Одлука за ЕВН Хоум – цени за 2026 (РКЕ, седница од 22.12.2025)",
+   "source_date": "22.12.2025 (applies from 01.01.2026)",
+   "confidence": "high"
+  },
+  {
+   "what": "Lower-tariff hours",
+   "price": "13:00–15:00 and 22:00–07:00 every day; at weekends from 22:00 on Saturday to 07:00 on Monday",
+   "note": "As stated on EVN's price page.",
+   "source": "https://www.evn.mk/Invoices.aspx",
+   "source_title": "ЕВН Македонија - Invoices (section 'Цени')",
+   "source_date": "prices applied from 01.01.2026 (as shown); checked 23.09.2026",
+   "confidence": "high"
+  },
+  {
+   "what": "Price change from 01.01.2026",
+   "price": "+2.45% (block 1), +2.87% (block 2), +3.32% (block 3), +3.84% (block 4), +2.5% (lower tariff)",
+   "note": "Decided by the energy regulator (ERC); EVN Home had asked for 7.66%. From the same date ERC also cut the distribution fee by 3.64%, the transmission fee by 2.67% and the market-operator fee by 3.40% (Energetika24, 05.12.2025).",
+   "source": "https://grid.mk/c/2KBVS5sBspgDJCUVUF0B/2025-12-23/vo-novata-godina-%D1%9Ce-vlezeme-so-poskapena-struja-rke-gi-objavi-detalite",
+   "source_title": "Во новата година ќе влеземе со поскапена струја - РКЕ ги објави деталите - GRID.mk",
+   "source_date": "23.12.2025",
+   "confidence": "medium"
+  },
+  {
+   "what": "Price per kWh including network fee, 2025 (reference)",
+   "price": "Block 1: 6.58 MKD/kWh (energy 4.44 + network 2.14; ≈ €0.107, approx.); block 2: 7.71; block 3: 9.57; block 4: 20.4; lower tariff: 4.12 MKD/kWh",
+   "note": "2025 figures given by the regulator's chairman, as reported; VAT not stated. No equivalent all-in figures for 2026 were found (see the 2026 changes above).",
+   "source": "https://nezavisen.mk/vo-novata-godina-so-minimalno-zgolemena-cena-na-strujata-i-ponatamu-dnevna-evtina-tarifa-od-13-do-15-chasot/",
+   "source_title": "Во Новата година со минимално зголемена цена на струјата, и понатаму дневна евтина тарифа од 13 до 15 часот - Независен Весник",
+   "source_date": "01.01.2025",
+   "confidence": "medium"
+  },
+  {
+   "what": "VAT on household electricity",
+   "price": "10% from 01.01.2023 (previously 5%)",
+   "note": "As reported in December 2022; the rate applied in 2026 was not confirmed.",
+   "source": "https://vesti.alfa.mk/%D0%B7%D0%B0-%D0%BE%D0%BD%D0%B8%D0%B5-%D0%BA%D0%BE%D0%B8-%D1%82%D1%80%D0%BE%D1%88%D0%B0%D1%82-%D0%BC%D0%B0%D0%BB%D0%BA%D1%83-%D1%80%D0%B5%D1%87%D0%B8%D1%81%D0%B8-%D0%B8%D1%81%D1%82%D0%B8-%D1%81%D0%BC/",
+   "source_title": "За оние кои трошат малку речиси исти сметки, за оние кои трошат повеќе повисоки · Алфа Вести",
+   "source_date": "28.12.2022",
+   "confidence": "medium"
+  },
+  {
+   "what": "All-in cost of charging at home – installer estimate",
+   "price": "About 3.5–4 MKD/kWh in the cheap tariff and 7.5–8.5 MKD/kWh in the expensive tariff (≈ €0.06 and €0.12–0.14, approx.)",
+   "note": "Estimate on an installer's blog, no official source cited: about 60–65 MKD per 100 km when charging at home in the cheap tariff, 120–135 MKD in the expensive tariff, and 350–500 MKD on public fast chargers.",
+   "source": "https://www.polnac.mk/blog/kolku-cini-kosta-polnenje-elektricna-kola-100km-cena-struja-denari-punjac-za-kola",
+   "source_title": "Колку денари чини 100 km возење на електричен автомобил во Македонија? | Polnac.mk",
+   "source_date": "06.08.2026",
+   "confidence": "low"
+  }
+ ],
+ "subsidies": [
+  {
+   "programme": "National purchase subsidy for electric cars",
+   "status": "none",
+   "amount": "—",
+   "who": "—",
+   "deadline": "—",
+   "note": "A specialist portal wrote that North Macedonia has no active state programme for subsidising electric vehicles, and that measures announced in earlier years, especially in 2018, were never implemented. No 2026 programme was found in the sources checked on 23.09.2026; the environment ministry's website did not load.",
+   "source": "https://elektricniavtomobili.mk/%d0%b4%d1%80%d0%b6%d0%b0%d0%b2%d0%bd%d0%b8-%d1%81%d1%83%d0%b1%d0%b2%d0%b5%d0%bd%d1%86%d0%b8%d0%b8-%d0%b7%d0%b0-%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%b8%d1%87%d0%bd%d0%b8-%d0%b0%d0%b2%d1%82%d0%be/",
+   "source_title": "Државни субвенции за електрични автомобили: Каде е Македонија во споредба со регионот и Европа?",
+   "source_date": "07.05.2025 (updated 23.07.2025)",
+   "confidence": "medium"
+  },
+  {
+   "programme": "Subsidies for 200 electric taxis (Ministry of Environment and Physical Planning)",
+   "status": "unconfirmed",
+   "amount": "Not published",
+   "who": "Taxi sector only",
+   "deadline": "Not published",
+   "note": "Measure announced in September 2025; the report gives no amount per vehicle, budget, eligibility rules or dates, and no call for applications was found.",
+   "source": "https://elektricniavtomobili.mk/%d0%ba%d0%b0%d0%ba%d0%b2%d0%be-%d0%b2%d0%bb%d0%b8%d1%98%d0%b0%d0%bd%d0%b8%d0%b5-%d0%b1%d0%b8-%d0%b8%d0%bc%d0%b0%d0%bb%d0%b5-%d0%bd%d0%b0%d1%98%d0%b0%d0%b2%d0%b5%d0%bd%d0%b8%d1%82%d0%b5-%d0%b4%d1%80/",
+   "source_title": "Какво влијание би имале најавените државни субвенции за 200 електрични такси возила?",
+   "source_date": "12.09.2025",
+   "confidence": "medium"
+  },
+  {
+   "programme": "2018 programme for buying new electric and hybrid cars (historic)",
+   "status": "closed",
+   "amount": "€5,000 per electric car; €3,000 (paid in denars) per hybrid",
+   "who": "Not stated in the report",
+   "deadline": "—",
+   "note": "Adopted in 2018 with 200 vehicles planned for the first year; in August 2023 a news site reported that no money had been budgeted for it that year.",
+   "source": "https://plusinfo.mk/elektrichni-vozila-vo-makedoni-a-stru-a-ima-ga-tan-nema-drzhavata-dava-subvencii-ama-samo-na-harti-a/",
+   "source_title": "ЕЛЕКТРИЧНИ ВОЗИЛА ВО МАКЕДОНИЈА - СТРУЈА ИМА, ГАЈТАН НЕМА Државата дава субвенции, ама само на хартија - plusinfo.mk",
+   "source_date": "30.08.2023",
+   "confidence": "medium"
+  }
+ ],
+ "buildings": [
+  {
+   "topic": "Consent of co-owners (law)",
+   "text": "The current text of the Law on Housing could not be retrieved, so the majority needed to install a charger or run a cable through common parts of a multi-unit building is not confirmed here. None of the Macedonian sources checked cites a legal article on chargers in apartment buildings; an installer's guide says the rules in this area 'are still developing'.",
+   "law": "Закон за домување (Law on Housing) – article not verified",
+   "source": "https://www.polnac.mk/blog/elektricen-polnac-vo-stanbena-zgrada",
+   "source_title": "Електричен автомобил во зграда: Како до сопствен полнач во заедничка гаража? | Polnac.mk",
+   "source_date": "14.05.2026",
+   "confidence": "low"
+  },
+  {
+   "topic": "Consent in practice",
+   "text": "Installer guides advise starting with the community of owners (house council) or the building manager, and say their approval is needed to run the cable through common areas. No majority or legal article is cited.",
+   "law": "None cited",
+   "source": "https://www.polnac.mk/blog/polnenje-elektricno-vozilo-zgrada-zaednicki-parking-stan-punjac-za-kola",
+   "source_title": "Полнење на електрично возило ако живеете во зграда: Како да инсталирате полнач на заеднички паркинг? | Polnac.mk",
+   "source_date": "05.08.2026 (similar posts 14.05.2026 and 10.09.2026)",
+   "confidence": "low"
+  },
+  {
+   "topic": "Who pays and how it is metered",
+   "text": "Two set-ups are described: (1) a cable from the resident's own apartment meter, so charging appears on the resident's own EVN bill and can use the cheap tariff; (2) one or two smart chargers on the building's common meter, with RFID cards and a built-in MID-certified meter, where software records each flat's kWh and the manager or house council receives a monthly report to recover the cost from each user.",
+   "law": "None cited",
+   "source": "https://www.polnac.mk/blog/instalacija-punjac-za-kola-podzemna-garaza-stanbena-zgrada-avtomobil",
+   "source_title": "Полнач за електрично возило во зграда: Како да инсталирате Wallbox во подземна или заедничка гаража? | Polnac.mk",
+   "source_date": "22.07.2026 (similar posts 05.08.2026 and 19.06.2026)",
+   "confidence": "low"
+  },
+  {
+   "topic": "Shared chargers in front of buildings (media)",
+   "text": "A specialist portal describes shared smart chargers on a few parking spaces in front of a building, with access limited to residents by RFID card and each resident paying only for the kWh used. It names no legal steps, providers or costs.",
+   "law": "None cited",
+   "source": "https://elektricniavtomobili.mk/%d0%b7%d0%b0%d0%b5%d0%b4%d0%bd%d0%b8%d1%87%d0%ba%d0%b8-%d0%bf%d0%be%d0%bb%d0%bd%d0%b0%d1%87%d0%b8-%d0%bf%d1%80%d0%b5%d0%b4-%d0%b7%d0%b3%d1%80%d0%b0%d0%b4%d0%b0-%d0%bf%d1%80%d0%b0%d0%ba%d1%82%d0%b8/",
+   "source_title": "Заеднички полначи пред зграда: практично решение за станари со ЕВ",
+   "source_date": "24.08.2026",
+   "confidence": "low"
+  },
+  {
+   "topic": "Building-level offers",
+   "text": "Two sellers mention multi-unit buildings: SWEDCHARGE advertises solutions for collective housing buildings with Charge Amps chargers and a load balancer, and eDrive.mk mentions complete solutions for houses and buildings. No company was found that runs shared charging in apartment buildings as a service with metering and billing of residents.",
+   "law": "Not applicable",
+   "source": "https://mk.swedcharge.com/ ; https://edrive.mk/",
+   "source_title": "SWEDCHARGE (mk.swedcharge.com); eDrive.mk",
+   "source_date": "SWEDCHARGE homepage 'updated 01.07.2024'; eDrive page modified 12.08.2026; checked 23.09.2026",
+   "confidence": "medium"
+  },
+  {
+   "topic": "Energy law and charging points",
+   "text": "The Energy Law text published on the energy regulator's website (promulgated 21.05.2018) does not mention vehicles or charging points. Later amendments were not checked.",
+   "law": "Закон за енергетика (Energy Law), 2018 text as published by ERC",
+   "source": "https://www.erc.org.mk/odluki/Zakon%20za%20energetika%20MK.pdf",
+   "source_title": "Закон за енергетика (ERC website)",
+   "source_date": "promulgated 21.05.2018 (as shown); checked 23.09.2026",
+   "confidence": "medium"
+  },
+  {
+   "topic": "Grid connection power",
+   "text": "An installer's guide gives typical household connections as 5.7–7.4 kW single-phase (25–32 A) and 11–17.2 kW three-phase (3 × 16 A or 3 × 25 A). More power is requested from EVN's distribution company with an application for connection consent and proof of ownership of the property or parking space.",
+   "law": "None cited",
+   "source": "https://www.polnac.mk/blog/prijavuvanje-polnac-za-kola-evn-dokupuvanje-moknost-kilovati-punjac-za-avtomobil",
+   "source_title": "Пријавување полнач за електрично возило во EVN и докупување моќност: Сè што треба да знаете за процедурите во Македонија | Polnac.mk",
+   "source_date": "24.08.2026",
+   "confidence": "low"
+  }
+ ],
+ "policy": [
+  {
+   "text": "The Transport Community's November 2025 progress report states that none of the Western Balkan partners has yet transposed the EU Alternative Fuels Infrastructure Regulation (AFIR, 2023/1804), and that Transport Community technical assistance will help them prepare national policy frameworks and identify priority corridors.",
+   "source": "https://www.transport-community.org/wp-content/uploads/2025/12/Smart-and-Sustainable-Strategy-2025_Progress_report_FINAL.pdf",
+   "source_date": "November 2025 (published December 2025)",
+   "confidence": "medium"
+  },
+  {
+   "text": "The same report names North Macedonia's Ministry of Energy, Mining and Mineral Resources as primarily responsible for alternative-fuels policy, and notes that motor-vehicle tax and registration fees are now linked to measured CO2 emissions (Ministry of Finance).",
+   "source": "https://www.transport-community.org/wp-content/uploads/2025/12/Smart-and-Sustainable-Strategy-2025_Progress_report_FINAL.pdf",
+   "source_date": "November 2025 (published December 2025)",
+   "confidence": "medium"
+  }
+ ],
+ "gaps": [
+  "Apartment buildings: the text of the Law on Housing was not retrieved (dejure.mk is blocked by robots.txt, pravdiko.mk has an expired security certificate, akademik.mk returned 404), so the co-owner majority for installing a charger in common parts is not confirmed.",
+  "Official sites did not load: moepp.gov.mk (environment ministry, timeout), economy.gov.mk (timeout) and ea.gov.mk (Energy Agency, DNS error). 2026 subsidy calls, the National Energy and Climate Plan and any EV targets could not be checked on official pages.",
+  "Registrations: no count of new battery-electric cars for 2025 or for 2026 to date was found. The State Statistical Office first-registration table has no fuel breakdown, and Eurostat (new passenger cars by motor energy, updated 01.09.2026) reports only a total of 42,159 for North Macedonia in 2025 with no fuel split; the definitions behind this total and the 'about 6,400 new cars sold' reported by trade media were not checked.",
+  "EV fleet figures from the State Statistical Office are quoted from media (CARclub.mk, Denesen.mk); the MakStat table shows values only after an interactive selection that could not be made with the tools used.",
+  "Public charge points: no official national count was found. EVN's map gives no total and some sites are listed once per connector, so the EVN figures are approximate; Electromaps (62 stations) is crowd-sourced; chargemap.com is blocked by robots.txt.",
+  "EVN's per-kWh prices appear only as an image on emobility.evn.mk/Tariffs.aspx; the figures (25/28 and 30/40 MKD) come from a specialist portal (29.07.2026).",
+  "Makpetrol, Charge&GO MK and Orion eMobility publish no per-kWh prices for North Macedonia; whether EVN's tariff applies at Makpetrol stations is not stated.",
+  "lawesgo.mk (title 'Electric chargers and cards') did not load (robots.txt timeout); its role (public chargers, cards or sales) is unknown.",
+  "Home chargers: loging.mk ('chargers for electric cars' category) returned 403 and e-vozila.apptree.mk did not load; large electronics retailers and car importers' wallbox offers were not checked. Charge&GO MK sells no home chargers locally and links to its Serbian shop (elektropunjaci.com), whose delivery or installation in North Macedonia was not checked.",
+  "Installation prices: no company publishes a fixed installation price; the only range (€100–300) comes from an import-advice site without a cited source.",
+  "Electricity: no 2026 all-in household price per kWh (energy plus network fees and VAT) was found, and the VAT rate applied to household electricity in 2026 was not confirmed.",
+  "Subsidies: no source explicitly confirms or rules out support for home chargers, and municipal schemes (e.g. City of Skopje) were not checked; the September 2025 taxi-subsidy announcement has no published amount, budget or call.",
+  "Method: the web-search quota ran out during the check; the remaining items were verified by fetching known URLs only."
+ ]
+}

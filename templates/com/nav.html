@@ -1,0 +1,59 @@
+{# Same mega navigation component as www.blokvolt.rs (templates/_nav.html) — data attributes are used by /assets/meganav.js. #}
+{% set CHEV %}<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" class="mega-nav__bar-link-icon is--dropdown" aria-hidden="true"><path d="M6.6665 8.3335L9.99984 11.6668L13.3332 8.3335" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>{% endset %}
+{% set ARROW %}<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" class="mega-nav__bar-link-icon" aria-hidden="true"><path d="M8.3335 13.3335L11.6668 10.0002L8.3335 6.66683" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>{% endset %}
+{% set WB = [] %}{% set EU = [] %}{% set PREFIXES = [] %}
+{% for c in COUNTRIES %}{% set _ = PREFIXES.append(c.url) %}{% if c.group == 'EU neighbours' %}{% set _ = EU.append((c.url, c.name, c.nav_desc)) %}{% else %}{% set _ = WB.append((c.url, c.name, c.nav_desc)) %}{% endif %}{% endfor %}
+{% set PANELS = [
+ ('countries', 'Countries', PREFIXES, [
+   ('Western Balkans', false, WB),
+   ('EU neighbours', false, EU),
+   ('Serbia in detail', true, [
+     ('https://www.blokvolt.rs/en/firme/', 'Company register', 'Installers and sellers, same columns for all'),
+     ('https://www.blokvolt.rs/en/javno-punjenje/', 'Public charging in Serbia', 'Networks, apps and prices'),
+     ('https://www.blokvolt.rs/en/podaci/subvencije-2026/', 'Subsidies 2026', '€5,000 per new electric car'),
+     ('https://www.blokvolt.rs/en/', 'All of blokvolt.rs', 'In English, Serbian and Russian'),
+   ]),
+ ]),
+ ('about', 'About', ['/partners/'], [
+   ('This site', false, [
+     ('/#how', 'How we check', 'Public sources, dates, same rules for all'),
+     ('https://www.blokvolt.rs/en/metodologija/', 'Methodology', 'The full rules, on blokvolt.rs'),
+     ('mailto:' ~ EMAIL, 'Report a correction', EMAIL),
+   ]),
+   ('Companies', true, [
+     ('/partners/', 'For companies and suppliers', 'Listing is free and follows the same rules'),
+   ]),
+ ]),
+] %}
+{% set _p = path or '' %}
+<nav data-menu-open="false" data-menu-wrap class="mega-nav" aria-label="Main navigation">
+<div class="mega-nav__bar"><div class="mega-nav__container"><div class="mega-nav__bar-start">
+<a data-menu-logo href="/" class="mega-nav__bar-logo" aria-label="BlokVolt — home" translate="no"><span>blok</span><span>volt</span></a>
+<div data-nav-list data-mobile-nav class="mega-nav__bar-inner">
+<ul class="mega-nav__bar-list">
+{% for pid, plabel, prefixes, cols in PANELS %}
+<li data-nav-list-item><button data-dropdown-toggle="{{ pid }}" data-fallback-href="{{ prefixes[0] }}" aria-expanded="false" aria-haspopup="true" class="mega-nav__bar-link is--dropdown{% if _p in prefixes %} is--active{% endif %}"><span class="mega-nav__bar-link-label">{{ plabel }}</span>{{ CHEV }}</button></li>
+{% endfor %}
+</ul>
+<ul data-nav-list-item class="mega-nav__bar-list is--actions">
+<li class="mega-nav__bar-action"><a href="https://www.blokvolt.rs/en/" class="mega-nav__bar-cta"><span class="mega-nav__bar-link-label">Serbia guide</span>{{ ARROW }}</a></li>
+</ul>
+</div>
+<div class="mega-nav__bar-end"><button data-burger-toggle aria-label="Menu" aria-expanded="false" class="mega-nav__burger"><span data-burger-line="top" class="mega-nav__burger-line"></span><span data-burger-line="mid" class="mega-nav__burger-line"></span><span data-burger-line="bot" class="mega-nav__burger-line"></span></button></div>
+<div data-mobile-back class="mega-nav__back"><button aria-label="Back to menu" class="mega-nav__bar-link is--back"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" class="mega-nav__bar-link-icon" aria-hidden="true"><path d="M11.6665 6.6665L8.33317 9.99984L11.6665 13.3332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="mega-nav__bar-link-label">Back</span></button></div>
+</div></div></div>
+<div data-dropdown-wrapper class="mega-nav__dropdown-wrapper"><div data-dropdown-container class="mega-nav__dropdown-container"><div data-dropdown-bg class="mega-nav__dropdown-bg"></div>
+{% for pid, plabel, prefixes, cols in PANELS %}
+<div data-panel-state data-nav-content="{{ pid }}" role="region" aria-label="{{ plabel }} — menu" class="mega-nav__dropdown-panel"><div class="mega-nav__dropdown-inner">
+{% for clabel, colored, links in cols %}
+<div data-menu-fade class="mega-nav__panel-col{% if colored %} is--colored{% endif %}"><span data-menu-fade class="mega-nav__panel-label">{{ clabel }}</span><ul class="mega-nav__panel-list">
+{% for href, text, desc in links %}
+<li data-menu-fade><a href="{{ href }}" class="mega-nav__panel-link"><span class="mega-nav__panel-link-text">{{ text }}</span>{% if desc %}<span class="mega-nav__panel-link-desc">{{ desc }}</span>{% endif %}</a></li>
+{% endfor %}
+</ul></div>
+{% endfor %}
+</div></div>
+{% endfor %}
+</div></div>
+<div data-menu-backdrop class="mega-nav__backdrop"></div>
+</nav>

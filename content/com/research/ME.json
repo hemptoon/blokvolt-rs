@@ -1,0 +1,452 @@
+{
+  "code": "ME",
+  "name": "Montenegro",
+  "checked": "23.09.2026",
+  "currency": "EUR",
+  "summary": "Montenegro's EV market is small but growing: Monstat counted 950 electric-only and 5,874 hybrid vehicles among 322,241 registered motor vehicles in 2025 (715 and 3,221 a year earlier), and battery-electric cars made up 1.8% of new car registrations. Public charging is sparse and mostly slow: a draft national framework counts 94 publicly accessible charging points with none above 150 kW, there are no Tesla Superchargers, and none of the operators checked publishes per-kWh prices. Only a few firms advertise home chargers and none publishes prices, while household electricity averaged 9.98 euro cents per kWh including taxes in 2025.",
+  "stats": [
+    {
+      "label": "Electric-only vehicles registered, 2025",
+      "value": "950",
+      "note": "2024: 715. Monstat category 'El. energija'; counts all vehicle categories registered with the Ministry of Interior during the year, not only passenger cars.",
+      "source": "https://www.monstat.org/uploads/files/Saobracaj/2025/Publikacija%20-%20Godi%C5%A1nja%20statistika%20saobra%C4%87aja%20za%202025.%20godinu.pdf",
+      "source_title": "Godišnja statistika saobraćaja, skladištenja i veza 2025 (Monstat)",
+      "source_date": "April 2026",
+      "confidence": "high"
+    },
+    {
+      "label": "Hybrid and other vehicles registered, 2025",
+      "value": "5,874",
+      "note": "2024: 3,221. Monstat category 'Hibridna vozila i ostala' (not split into plug-in and full hybrids).",
+      "source": "https://www.monstat.org/uploads/files/Saobracaj/2025/Publikacija%20-%20Godi%C5%A1nja%20statistika%20saobra%C4%87aja%20za%202025.%20godinu.pdf",
+      "source_title": "Godišnja statistika saobraćaja, skladištenja i veza 2025 (Monstat)",
+      "source_date": "April 2026",
+      "confidence": "high"
+    },
+    {
+      "label": "All registered road motor vehicles, 2025",
+      "value": "322,241",
+      "note": "Of which passenger cars: 275,036. Excludes trailers (326,711 vehicles including trailers).",
+      "source": "https://www.monstat.org/uploads/files/Saobracaj/2025/Publikacija%20-%20Godi%C5%A1nja%20statistika%20saobra%C4%87aja%20za%202025.%20godinu.pdf",
+      "source_title": "Godišnja statistika saobraćaja, skladištenja i veza 2025 (Monstat)",
+      "source_date": "April 2026",
+      "confidence": "high"
+    },
+    {
+      "label": "Battery-electric passenger cars in use, end of 2025",
+      "value": "782 (0.28% of 275,036 passenger cars)",
+      "note": "Eurostat data as processed by Euronews.",
+      "source": "https://investitor.me/2026/08/17/crna-gora-pri-evropskom-dnu-elektricni-automobili-cinili-tek-18-novih-registracija/",
+      "source_title": "Crna Gora pri evropskom dnu: Električni automobili činili tek 1,8% novih registracija",
+      "source_date": "17.08.2026",
+      "confidence": "medium"
+    },
+    {
+      "label": "New battery-electric passenger cars registered, 2025",
+      "value": "129 of 7,285 new passenger cars (1.8%)",
+      "note": "36th of 38 European countries compared; Eurostat data as processed by Euronews.",
+      "source": "https://investitor.me/2026/08/17/crna-gora-pri-evropskom-dnu-elektricni-automobili-cinili-tek-18-novih-registracija/",
+      "source_title": "Crna Gora pri evropskom dnu: Električni automobili činili tek 1,8% novih registracija",
+      "source_date": "17.08.2026",
+      "confidence": "medium"
+    },
+    {
+      "label": "2030 target for electric passenger cars",
+      "value": "At least 35,000",
+      "note": "Target of the National Energy and Climate Plan, cited in coverage of the draft alternative-fuels framework.",
+      "source": "https://borba.me/eu-trazi-od-crne-gore-punionice-za-elektricna-vozila-na-svakih-60-kilometara/",
+      "source_title": "EU traži od Crne Gore: Punionice za električna vozila na svakih 60 kilometara",
+      "source_date": "16.06.2026",
+      "confidence": "medium"
+    },
+    {
+      "label": "Public chargers above 150 kW",
+      "value": "0",
+      "note": "Per the draft National Policy Framework for alternative fuels infrastructure, as reported.",
+      "source": "https://www.portalanalitika.me/clanak/crna-gora-bez-ultrabrzih-punjaca-za-elektricna-vozila-potrebno-najmanje-14-novih-lokacija",
+      "source_title": "Crna Gora bez ultrabrzih punjača za električna vozila, potrebno najmanje 14 novih lokacija",
+      "source_date": "14.06.2026",
+      "confidence": "medium"
+    },
+    {
+      "label": "Tesla Superchargers",
+      "value": "0",
+      "note": "tesla.com lists no Supercharger locations for Montenegro.",
+      "source": "https://www.tesla.com/findus/list/superchargers/Montenegro",
+      "source_title": "Tesla Superchargers in Montenegro",
+      "source_date": "no date on page; checked 23.09.2026",
+      "confidence": "high"
+    }
+  ],
+  "home_companies": [
+    {
+      "name": "EVC Montenegro d.o.o.",
+      "city": "Podgorica",
+      "what": "Sells home, public and DC fast chargers plus accessories, and states that it lays the supply cable, installs the charger and marks the parking bay. Describes itself as the official and sole authorised representative of Schneider Electric chargers in Montenegro; its home range is EVlink Wallbox, 3.7–22 kW (company article of 29.11.2021). Its project list includes two home-charger installations (Podgorica, Tuzi).",
+      "brands": [
+        "Schneider Electric (EVlink)",
+        "Kempower"
+      ],
+      "price": "Not published",
+      "price_eur": "",
+      "installation": "Yes",
+      "installation_note": "Installation takes 1–3 days, depending on whether the supply cable already reaches the charging spot (company site).",
+      "url": "https://www.evcmontenegro.me/",
+      "source_date": "no date on page (© 2025); checked 23.09.2026",
+      "confidence": "high"
+    },
+    {
+      "name": "Gold-m Electric Cars",
+      "city": "Podgorica",
+      "what": "Electric-vehicle dealer and service centre. Its chargers page lists a Cenntro AC charger (7–11 kW) for home, office or hotel use and a Cenntro DC charger (90–180 kW), with prices on request.",
+      "brands": [
+        "Cenntro"
+      ],
+      "price": "Not published (quote on request)",
+      "price_eur": "",
+      "installation": "On request",
+      "installation_note": "The page offers support 'from selection to installation and maintenance' and a quote request; no installation price is shown.",
+      "url": "https://www.goldmelectric.me/punjaci",
+      "source_date": "no date on page (© 2025); checked 23.09.2026",
+      "confidence": "high"
+    },
+    {
+      "name": "NEMO-MONT (Solar-Shop.me)",
+      "city": "Bar",
+      "what": "Solar-equipment company (founded 2007) whose web shop has an 'EV chargers' category (Punjači za električna vozila); no charger products or prices were displayed when checked.",
+      "brands": [],
+      "price": "Not published",
+      "price_eur": "",
+      "installation": "Not mentioned",
+      "installation_note": "Installation by certified engineers is offered for solar systems; charger installation is not mentioned.",
+      "url": "https://solar-shop.me/product-category/punjaci-za-elektricna-vozila/",
+      "source_date": "no date on page (© 2021); checked 23.09.2026",
+      "confidence": "high"
+    }
+  ],
+  "home_price_ranges": [
+    {
+      "what": "Wallbox, 11 kW (device)",
+      "range": "€1,000–1,200",
+      "note": "Given as 'realistic for Montenegro' in an EV dealer's guide that recommends a 7.4 or 11 kW wallbox; VAT not stated.",
+      "source": "https://www.goldmelectric.me/novosti/kako-puniti-elektricno-vozilo-crna-gora",
+      "source_title": "Kompletan vodič: Kako puniti električno vozilo u Crnoj Gori (2025) | Gold-m Electric Cars",
+      "source_date": "19.11.2025",
+      "confidence": "low"
+    },
+    {
+      "what": "Wallbox, 22 kW (device)",
+      "range": "€1,800–2,200",
+      "note": "EV dealer's guide; VAT not stated.",
+      "source": "https://www.goldmelectric.me/novosti/kako-puniti-elektricno-vozilo-crna-gora",
+      "source_title": "Kompletan vodič: Kako puniti električno vozilo u Crnoj Gori (2025) | Gold-m Electric Cars",
+      "source_date": "19.11.2025",
+      "confidence": "low"
+    },
+    {
+      "what": "Installation",
+      "range": "€200–250",
+      "note": "EV dealer's guide; scope of work and VAT not stated.",
+      "source": "https://www.goldmelectric.me/novosti/kako-puniti-elektricno-vozilo-crna-gora",
+      "source_title": "Kompletan vodič: Kako puniti električno vozilo u Crnoj Gori (2025) | Gold-m Electric Cars",
+      "source_date": "19.11.2025",
+      "confidence": "low"
+    }
+  ],
+  "public_count": {
+    "value": "94 publicly accessible charging points",
+    "note": "Figure from the draft National Policy Framework for alternative fuels infrastructure, as reported: 2,235 kW in total, 88% normal-power chargers, none above 150 kW. Other counts: RTCG (22.07.2026) reports 'somewhat fewer than 200' publicly accessible, mostly slow chargers; Electromaps lists 38 stations (crowd-sourced map, latest point added 12.09.2025). RTCG launched an interactive charger map on 24.08.2026 without naming its data source.",
+    "source": "https://www.portalanalitika.me/clanak/crna-gora-bez-ultrabrzih-punjaca-za-elektricna-vozila-potrebno-najmanje-14-novih-lokacija",
+    "source_title": "Crna Gora bez ultrabrzih punjača za električna vozila, potrebno najmanje 14 novih lokacija",
+    "source_date": "14.06.2026",
+    "confidence": "medium"
+  },
+  "networks": [
+    {
+      "name": "EKO fast chargers at Jugopetrol fuel stations",
+      "operator": "Jugopetrol AD",
+      "app": "Not stated",
+      "size": "Seven 50 kW DC chargers announced in December 2024: installed at three locations in Podgorica, in Bijelo Polje and in Tivat, with Žabljak and Herceg Novi planned (Investitor, 11.12.2024). The operator's website has no EV-charging section.",
+      "prices": [
+        {
+          "what": "DC 50 kW",
+          "price": "Not published",
+          "vat": "not stated",
+          "source": "https://www.jugopetrol.co.me/",
+          "source_date": "no date on page (© 2026); checked 23.09.2026",
+          "confidence": "high"
+        }
+      ],
+      "payment": "Not published",
+      "url": "https://www.jugopetrol.co.me/"
+    },
+    {
+      "name": "EVC Charge",
+      "operator": "EVC Montenegro d.o.o.",
+      "app": "EVC Charge",
+      "size": "Total number of public chargers not published. Example: smart station at the Žičara Kotor–Lovćen car park in Kotor, with a solar carport and battery storage, up to 100 kW and expandable to 200 kW (ecoportal.me, 03.04.2026).",
+      "prices": [
+        {
+          "what": "AC and DC charging",
+          "price": "Not published",
+          "vat": "not stated",
+          "source": "https://www.evcmontenegro.me/",
+          "source_date": "no date on page (© 2025); checked 23.09.2026",
+          "confidence": "high"
+        }
+      ],
+      "payment": "Charging is started and monitored in the EVC Charge app (ecoportal.me, 03.04.2026); the company website says it is working on a digital solution for payment by smartphone.",
+      "url": "https://www.evcmontenegro.me/"
+    },
+    {
+      "name": "Orion eMobility",
+      "operator": "Orion telekom",
+      "app": "Orion eMobility",
+      "size": "The Montenegrin page states 'infrastructure of 300 EV charging points in the country' and 'more than 1,000 EV chargers across Serbia and the region'; it is not clear whether the 300 refers to Montenegro, and no Montenegrin locations are listed. The app description (Google Play, updated 03.09.2026) names Montenegro among the countries covered by own and partner stations.",
+      "prices": [
+        {
+          "what": "AC and DC charging",
+          "price": "Not published",
+          "vat": "not stated",
+          "source": "https://oriontelekom.me/emobility/",
+          "source_date": "no date on page (© 2025); checked 23.09.2026",
+          "confidence": "high"
+        }
+      ],
+      "payment": "Orion eMobility app or RFID card; cards listed: MasterCard, Visa, DinaCard, American Express, Diners.",
+      "url": "https://oriontelekom.me/emobility/"
+    },
+    {
+      "name": "Motorway rest areas, A1 'Princeza Ksenija' (Smokovac–Mateševo)",
+      "operator": "Not named in sources",
+      "app": "Not stated",
+      "size": "Pelev Brijeg: four fast chargers installed (RTCG, 22.07.2026), 4 × 50 kW according to the draft national framework; Gornje Mrke: 4 × 60 kW being installed (Portal Analitika, 14.06.2026).",
+      "prices": [
+        {
+          "what": "DC fast charging",
+          "price": "Not published",
+          "vat": "not stated",
+          "source": "https://rtcg.me/vijesti/ekologija/866615/manje-od-200-javnih-punjaca-za-elektricna-vozila-ne-postoji-mapa-za-turiste.html",
+          "source_date": "22.07.2026",
+          "confidence": "medium"
+        }
+      ],
+      "payment": "Not published",
+      "url": ""
+    },
+    {
+      "name": "Bar solar charging point",
+      "operator": "Komunalno preduzeće Bar",
+      "app": "Not stated",
+      "size": "One off-grid solar unit with battery storage (Beam EV ARC, installed with Beam Europe, Kraljevo) at the car park in front of the Bar marina entrance: 2 parking spaces, up to 4 vehicles at once; power not stated.",
+      "prices": [
+        {
+          "what": "Charging",
+          "price": "Free (no end date stated)",
+          "vat": "not stated",
+          "source": "https://www.sjevercg.me/u-baru-pustena-u-funkciju-solarna-stanica-besplatno-napajanje-elektricnih-automobila/",
+          "source_date": "19.05.2026",
+          "confidence": "medium"
+        }
+      ],
+      "payment": "Free of charge",
+      "url": ""
+    },
+    {
+      "name": "Destination chargers (hotels, shopping centres, marinas, fuel stations)",
+      "operator": "Various",
+      "app": "Varies",
+      "size": "An EV dealer's guide lists chargers at hotels (Hilton, CUE, Ramada, Splendid, Mediteran, Portonovi, Porto Montenegro), shopping centres (Delta City, Capital Plaza, KIC Budo Tomović) and EKO and Petrol fuel stations. PlugShare shows Porto Montenegro (Tivat) with 3 Tesla Wall Connectors (22 kW) and 3 CEE 32 A sockets (adapter needed).",
+      "prices": [
+        {
+          "what": "Charging",
+          "price": "Not published",
+          "vat": "not stated",
+          "source": "https://www.goldmelectric.me/novosti/kako-puniti-elektricno-vozilo-crna-gora",
+          "source_date": "19.11.2025",
+          "confidence": "low"
+        }
+      ],
+      "payment": "Not published",
+      "url": ""
+    },
+    {
+      "name": "Public DC charging – price estimate (not an operator price list)",
+      "operator": "—",
+      "app": "—",
+      "size": "—",
+      "prices": [
+        {
+          "what": "DC charging, general range",
+          "price": "€0.30–0.70 per kWh",
+          "vat": "not stated",
+          "source": "https://www.goldmelectric.me/novosti/kako-puniti-elektricno-vozilo-crna-gora",
+          "source_date": "19.11.2025",
+          "confidence": "low"
+        }
+      ],
+      "payment": "—",
+      "url": ""
+    }
+  ],
+  "electricity": [
+    {
+      "what": "Average household electricity price, 2025",
+      "price": "9.98 euro cents per kWh, all taxes and VAT included",
+      "note": "From the regulator REGAGEN's report on the energy sector in 2025, as reported. The article adds that prices have been practically unchanged for about 15 years and that EPCG kept the same supply prices in 2025. The report itself was not yet posted on regagen.co.me (latest there: 2024 report, 31.07.2025).",
+      "source": "https://kodex.me/cijena-struje-u-crnoj-gori-medju-najnizim-jos-bez-najave-rasta/",
+      "source_title": "Cijena struje u Crnoj Gori među najnižim, još bez najave rasta",
+      "source_date": "15.08.2026",
+      "confidence": "medium"
+    },
+    {
+      "what": "Lower (cheaper) tariff hours for households",
+      "price": "23:00–07:00 Monday to Saturday; all day on Sunday",
+      "note": "Per-kWh prices for the higher and lower tariff are not given in the source. From 1 January 2026 total bills rose slightly because of a correction of transmission-system costs.",
+      "source": "https://inflacija.me/me/energetika/jeftina-struja-u-crnoj-gori-termini-ustede",
+      "source_title": "Jeftina struja i dalje ključ uštede: Evo kada su najniže tarife",
+      "source_date": "03.01.2026",
+      "confidence": "medium"
+    },
+    {
+      "what": "Home charging cost per kWh (dealer estimate)",
+      "price": "€0.10–0.12 per kWh; €0.05–0.06 per kWh at the night tariff",
+      "note": "Estimate in an EV dealer's guide; VAT treatment not stated. The same guide estimates €0.30–0.70 per kWh for public DC charging.",
+      "source": "https://www.goldmelectric.me/novosti/kako-puniti-elektricno-vozilo-crna-gora",
+      "source_title": "Kompletan vodič: Kako puniti električno vozilo u Crnoj Gori (2025) | Gold-m Electric Cars",
+      "source_date": "19.11.2025",
+      "confidence": "low"
+    }
+  ],
+  "subsidies": [
+    {
+      "programme": "Eko-fond – SKLAD E-mobility grants for new electric vehicles, 2026 rounds",
+      "status": "closed",
+      "amount": "Not confirmed for 2026 (the first 2025 round paid up to €7,200 per passenger car)",
+      "who": "Individuals, companies, entrepreneurs and public-sector bodies",
+      "deadline": "Rounds published 27.02.2026 and 15.05.2026; both marked 'ZATVOREN KONKURS' (closed)",
+      "note": "Selection decisions posted 03.06.2026. No vehicle call was open on Eko-fond's site on 23.09.2026.",
+      "source": "https://www.eko-fond.co.me/arhiva",
+      "source_title": "EKO-FOND Fond za zaštitu životne sredine – Arhiva javnih konkursa",
+      "source_date": "no date on page; entries dated 27.02.2026 and 15.05.2026; checked 23.09.2026",
+      "confidence": "high"
+    },
+    {
+      "programme": "Eko-fond – SKLAD E-mobility, first round 2025 (for reference)",
+      "status": "closed",
+      "amount": "Passenger cars (M1): €7,200 up to a €35,000 vehicle price, €6,500 for €35,000–45,000, €4,500 for €45,000–65,000; vans (N1): €6,500 / €4,500; L-category: €300–1,500; total budget €150,000",
+      "who": "Montenegrin citizens aged 18+ (max. 1 vehicle), companies and entrepreneurs (max. 4), public institutions (max. 8)",
+      "deadline": "03.07.2025",
+      "note": "Battery-electric vehicles only (0 g/km CO2; hybrids excluded); new vehicles bought from authorised sellers in Montenegro or imported with first registration after 01.01.2024; the vehicle must be kept for at least 24 months.",
+      "source": "https://www.ecoportal.me/subvencije/javni-konkurs-za-dodjelu-bespovratnih-sredstava-za-kupovinu-novih-elektricnih-vozila-za-fizicka-lica-privredna-drustva-preduzetnike-ce-i-javni-sektor-sklad-e-mobility/",
+      "source_title": "Javni konkurs za dodjelu bespovratnih sredstava za kupovinu novih električnih vozila za fizička lica, privredna društva, preduzetnike/ce i javni sektor (SKLAD E-mobility) – ecoportal.me",
+      "source_date": "20.05.2025",
+      "confidence": "medium"
+    },
+    {
+      "programme": "Eko-fond – SKLAD E-mobility results, 2025",
+      "status": "closed",
+      "amount": "€300,000 awarded in two rounds for 53 new electric vehicles (26 + 27)",
+      "who": "Individuals and legal entities",
+      "deadline": "—",
+      "note": "Eko-fond reports about €434,000 awarded across three e-mobility programmes run in cooperation with Slovenia, and said a new call would follow once the remaining budget was confirmed.",
+      "source": "https://eko-fond.co.me/vijesti-template?id=427",
+      "source_title": "Boljević: Sljedeća godina biće u znaku velikih ulaganja u energetsku efikasnost i e-mobilnost",
+      "source_date": "17.11.2025",
+      "confidence": "high"
+    },
+    {
+      "programme": "Subsidy for household (home) chargers",
+      "status": "none",
+      "amount": "—",
+      "who": "—",
+      "deadline": "—",
+      "note": "No Eko-fond call for household chargers appears among its current or archived calls; the only charging-station call (published 19.02.2024) was for businesses, entrepreneurs and the public sector.",
+      "source": "https://www.eko-fond.co.me/arhiva",
+      "source_title": "EKO-FOND Fond za zaštitu životne sredine – Arhiva javnih konkursa",
+      "source_date": "checked 23.09.2026",
+      "confidence": "medium"
+    },
+    {
+      "programme": "Eko-fond funds for municipal public chargers",
+      "status": "unconfirmed",
+      "amount": "€150,000 made available to municipalities; only Bar (€13,000) and Cetinje (€12,000) used it",
+      "who": "Municipalities",
+      "deadline": "Not stated",
+      "note": "Programme dates are not given in the source.",
+      "source": "https://rtcg.me/vijesti/ekologija/866615/manje-od-200-javnih-punjaca-za-elektricna-vozila-ne-postoji-mapa-za-turiste.html",
+      "source_title": "Manje od 200 javnih punjača za električna vozila, ne postoji mapa za turiste (RTCG)",
+      "source_date": "22.07.2026",
+      "confidence": "medium"
+    }
+  ],
+  "buildings": [
+    {
+      "topic": "Legal definition of a charging station",
+      "text": "Montenegro's Energy Law defines a charging station as an interface through which one electric vehicle can be charged, or have its battery swapped, at a given time.",
+      "law": "Zakon o energetici (Energy Law), Official Gazette of Montenegro 28/25 and 3/26, Art. 7, point 47",
+      "source": "https://regagen.co.me/wp-content/uploads/2025/10/Zakon-o-energetici.pdf",
+      "source_title": "Zakon o energetici – consolidated text (Katalog propisa 2026, hosted by REGAGEN)",
+      "source_date": "no date on page; consolidated to Official Gazette 3/26 of 09.01.2026",
+      "confidence": "high"
+    },
+    {
+      "topic": "What installers show",
+      "text": "EVC Montenegro's project list shows two home-charger installations (Podgorica, Tuzi municipality) alongside hotels, public institutions and car dealers; no multi-unit residential building is listed.",
+      "law": "",
+      "source": "https://www.evcmontenegro.me/project/",
+      "source_title": "Projekti – EVC Montenegro",
+      "source_date": "no date on page; checked 23.09.2026",
+      "confidence": "high"
+    },
+    {
+      "topic": "Prerequisites named in a dealer guide",
+      "text": "An EV dealer's guide lists a parking space 'in a building or a house', single- or three-phase supply, a 7.4 or 11 kW wallbox and protection (fuse and residual-current device) as what a home charger needs. It does not address co-owner approval in apartment buildings.",
+      "law": "",
+      "source": "https://www.goldmelectric.me/novosti/kako-puniti-elektricno-vozilo-crna-gora",
+      "source_title": "Kompletan vodič: Kako puniti električno vozilo u Crnoj Gori (2025) | Gold-m Electric Cars",
+      "source_date": "19.11.2025",
+      "confidence": "low"
+    }
+  ],
+  "policy": [
+    {
+      "text": "Under the EU AFIR rules, charging points on TEN-T corridors must be at most 60 km apart; Montenegro's draft National Policy Framework for alternative fuels infrastructure (Ministry of Transport with the Ministry of Energy) says at least 14 car-charging locations along the TEN-T network and 11 truck-charging hubs (27 MW in total) are needed.",
+      "source": "https://borba.me/eu-trazi-od-crne-gore-punionice-za-elektricna-vozila-na-svakih-60-kilometara/",
+      "source_date": "16.06.2026",
+      "confidence": "medium"
+    },
+    {
+      "text": "The framework, Montenegro's first aligned with AFIR (Regulation (EU) 2023/1804), is EU-funded and prepared by a consortium led by DAI Global Belgium with GIZ and ENOVA; it was presented at a stakeholder workshop in Podgorica on 16.09.2026.",
+      "source": "https://www.evropskakuca.me/me/radionica-nacionalni-okvir-politike-za-infrastrukturu-za-alternativna-goriva-16-septembra-u-podgorici/",
+      "source_date": "15.09.2026",
+      "confidence": "high"
+    },
+    {
+      "text": "A dedicated Law on Alternative Fuels Infrastructure is being prepared, with adoption by Parliament expected by the end of 2026; the 2030 goal is about 35,000 electric passenger cars with about 50 fast and 500 slow chargers.",
+      "source": "https://rtcg.me/vijesti/ekologija/866615/manje-od-200-javnih-punjaca-za-elektricna-vozila-ne-postoji-mapa-za-turiste.html",
+      "source_date": "22.07.2026",
+      "confidence": "medium"
+    },
+    {
+      "text": "The draft framework also proposes a single national portal for permits with legally fixed maximum decision times, targeted financial incentives for charge-point operators, and minimum user rights, including ad hoc charging without a prior contract.",
+      "source": "https://borba.me/eu-trazi-od-crne-gore-punionice-za-elektricna-vozila-na-svakih-60-kilometara/",
+      "source_date": "16.06.2026",
+      "confidence": "medium"
+    }
+  ],
+  "gaps": [
+    "Home chargers: only three Montenegrin sellers/installers could be verified, and none publishes device or installation prices; the only price ranges come from an EV dealer's guide.",
+    "Car importers: Jadran Auto d.o.o. (Hyundai) has a wallbox information page without models, prices or an installation offer; Toyota Montenegro's charging page links to the Croatian Toyota HomeCharge page; the BMW Voli and MINI home-charging pages returned 404.",
+    "Checked without an EV-charger offer: retailers Tehno Planet and Tehnomax; electrical wholesalers/contractors Electro Group, ENEL PS CG, Telemont and Vigoris Ecotech. Serbian installers Elektropunjači/Charge&GO and ElektroMil (Niš) do not name Montenegro as a service area.",
+    "Did not load: elvod.me (Elektrovod, DNS error), popovicelektrosistem.co.me (certificate error), evcmontenegro.me/products/ (server error 500), paragraf.me (403), pvportal.me (401), epcg.com tariff pages (404; the site renders via JavaScript).",
+    "Public charging prices: no operator price list found for EKO/Jugopetrol, EVC Montenegro, Orion eMobility or the motorway chargers; the operator of the motorway chargers (Pelev Brijeg, Gornje Mrke) is not named in any source.",
+    "Payment by bank card directly at a Montenegrin charger is not confirmed; coverage of Montenegrin chargers by roaming apps (Charge&GO, Electroverse, Shell Recharge, Plugsurfing, Chargemap) is not confirmed.",
+    "Electricity: EPCG's per-kWh prices for the higher and lower tariff were not retrieved; REGAGEN's 2025 energy-sector report (source of the 9.98 c/kWh figure) is not yet posted on regagen.co.me.",
+    "Registrations: no 2026 year-to-date count of new battery-electric cars was found. Monstat's quarterly releases (Q1 2026 of 14.05.2026, Q2 2026 of 12.08.2026) contain a table by propulsion energy, but its figures could not be extracted reliably and were not used. The annual Monstat release does not split electric-only vehicles into passenger cars and other categories.",
+    "Subsidies: amounts, budgets and deadlines of the 2026 SKLAD E-mobility rounds (published 27.02.2026 and 15.05.2026) were not confirmed; only their dates and closed status were seen.",
+    "Apartment buildings: the text of the Law on Housing and Maintenance of Residential Buildings (Zakon o stanovanju i održavanju stambenih zgrada) was not retrieved, so rules on co-owner consent, cost sharing and sub-metering for chargers in shared garages are not confirmed. No building-specific charging rules were found in the consolidated Energy Law text checked, and the distribution operator CEDIS's website shows no guidance on connecting EV chargers.",
+    "No company offering a building-level (multi-unit residential) charging or metering service was found.",
+    "Method: the web-search quota ran out during the check; the remaining items were verified by fetching known URLs only."
+  ]
+}

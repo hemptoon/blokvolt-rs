@@ -1,0 +1,11 @@
+{% macro src(o, label='Source') -%}
+{%- if o and o.source -%}
+<small class="com-src">{{ label }}: <a href="{{ o.source }}" rel="noopener nofollow">{{ o.source_title or (o.source|domain) }}</a>{% if o.source_date %} · {{ o.source_date }}{% endif %}{% if o.confidence %} · <span class="com-conf is-{{ o.confidence|lower }}">{{ o.confidence|lower }} reliability</span>{% endif %}</small>
+{%- elif o and o.source_date -%}
+<small class="com-src">{{ o.source_date }}{% if o.confidence %} · <span class="com-conf is-{{ o.confidence|lower }}">{{ o.confidence|lower }} reliability</span>{% endif %}</small>
+{%- endif -%}
+{%- endmacro %}
+
+{% macro status(s) -%}
+<span class="com-status is-{{ s|lower }}">{{ {'open': 'Open', 'closed': 'Closed', 'none': 'None', 'unconfirmed': 'Unconfirmed'}.get(s|lower, s) }}</span>
+{%- endmacro %}

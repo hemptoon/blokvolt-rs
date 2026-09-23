@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ path }}", "inLanguage": "en", "dateModified": "{{ CHECKED_ISO }}", "about": {"@type": "Country", "name": "Serbia"}, "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Serbia", "item": "{{ SITE }}{{ path }}"}]}
+ ]
+}</script>{% endblock %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Country guide · Western Balkans · checked {{ CHECKED }}</div><h1>EV charging in Serbia</h1><p>Serbia is where BlokVolt has the most detail: a register of {{ n_rs_firms }} installers and sellers with their published prices, public charging networks and a monthly price index, EPS electricity tariffs, subsidies and step-by-step guides for charging in an apartment building. All of it is on blokvolt.rs — in English, Serbian and Russian.</p><div class="v3-meta"><span>Checked {{ CHECKED }}</span><span>{{ n_rs_firms }} companies in the register</span></div><div class="v3-chips"><a href="https://www.blokvolt.rs/en/">Open the Serbia guide ↗</a><a href="https://www.blokvolt.rs/">Srpski</a><a href="https://www.blokvolt.rs/ru/">Русский</a></div></div></div>{% endblock %}
+{% block content %}<div class="bva"><div class="w3">
+<div class="bva-stats">{% for s in RS.stats %}<div class="bva-stat"><b>{{ s.b }}</b><span>{{ s.t }}</span></div>{% endfor %}</div>
+<h2 id="facts">In short</h2>
+<div class="bva-kv">{% for label, text in RS.facts %}<div><b>{{ label }}</b><span>{{ text }}</span></div>{% endfor %}</div>
+<h2 id="guide">The Serbia guide on blokvolt.rs</h2>
+<div class="bva-cards agg-grid">{% for href, name, desc in RS.links %}<a class="bva-card agg-card" href="{{ href }}"><b>{{ name }}</b><span>{{ desc }}</span></a>{% endfor %}</div>
+<p class="bva-disc">Figures on this page are a summary of blokvolt.rs as of {{ CHECKED }}; the sources and check dates for each of them are on the linked pages there.</p>
+<p class="com-other">Other countries: {% for o in COUNTRIES if o.slug != 'serbia' %}<a href="{{ o.url }}">{{ o.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+</div></div>{% endblock %}
+{% block cta %}<div class="v3-cta"><div class="w3"><h2>A charger in your garage or building in Serbia?</h2><p>The team behind BlokVolt installs home chargers in Serbia as Evolako: a metered charging socket or an 11 kW wallbox, the paperwork for the residents' assembly and, if you want it, a monthly statement. In Serbian, English and Russian.</p><div class="v3-ctab"><a href="https://www.evolako.rs/?lang=en">evolako.rs</a><a href="https://www.blokvolt.rs/en/firme/">Compare all installers</a></div></div></div>{% endblock %}
