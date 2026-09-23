@@ -187,7 +187,7 @@ for row in price_index['rows']:
 # ---------- shared context ----------
 NAV = [('/firme/', 'Firme'), ('/cena-punjaca-za-elektricni-auto', 'Cene'), ('/javno-punjenje/', 'Javno punjenje'), ('/alati/kalkulator-troskova/', 'Kalkulator'), ('/vodici/', 'Vodiči'), ('/podaci/', 'Podaci')]
 CITY_LINKS = [(f"/gradovi/{c['slug']}/", c['name']) for c in CITY_CFG]
-base_ctx = dict(SITE=SITE, TODAY=TODAY, ISO_TODAY=ISO_TODAY, FIRMS_CHECKED=FIRMS_CHECKED, CITY_LINKS=CITY_LINKS, SITE_META=SITE_META, NAV=NAV, n_firms=len(published), n_leads=len(firms) - len(published), n_vodica=7, n_ops=len(operators))
+base_ctx = dict(SITE=SITE, TODAY=TODAY, ISO_TODAY=ISO_TODAY, FIRMS_CHECKED=FIRMS_CHECKED, CITY_LINKS=CITY_LINKS, SITE_META=SITE_META, NAV=NAV, n_firms=len(published), n_leads=sum(1 for f in firms if not f.get('publish') and not f.get('excluded_reason')), n_excluded=sum(1 for f in firms if not f.get('publish') and f.get('excluded_reason')), n_vodica=7, n_ops=len(operators))
 
 def render(tpl, path, **ctx):
     t = env.get_template(tpl)
@@ -260,7 +260,8 @@ for f in published:
     render('firma.html', f['url'], firm=f, GROUPS=GROUPS, CITY_SLUGS=CITY_SLUGS, title=f"{f['name']} — punjači za električne automobile: cene, ugradnja, uslovi | BlokVolt",
            description=f"{f['name']} ({f['city']}): šta nudi, javne cene, da li ugrađuje, brojilo, papiri za skupštinu, garancija. Provereno {f['verified']}. Isti podaci za sve firme.")
     add_url(f['url'], '0.6')
-render('firme_index.html', '/firme/', GROUPS=GROUPS, by_group=by_group, firms=published, cities=cities, CITY_SLUGS=CITY_SLUGS, KINDS=KINDS,
+EXCLUDED = sorted([f for f in firms if not f.get('publish') and f.get('excluded_reason')], key=lambda f: f['name'].lower())
+render('firme_index.html', '/firme/', GROUPS=GROUPS, by_group=by_group, firms=published, cities=cities, CITY_SLUGS=CITY_SLUGS, KINDS=KINDS, EXCLUDED=EXCLUDED,
        title=f"Firme za punjače u Srbiji — {len(published)} prodavaca i instalatera, iste kolone za sve | BlokVolt",
        description=f"Registar {len(published)} firmi koje prodaju ili ugrađuju kućne punjače za električne automobile u Srbiji: javne cene, ugradnja, MID brojilo, papiri za skupštinu, garancija. Provereno {FIRMS_CHECKED}.")
 add_url('/firme/', '0.9')

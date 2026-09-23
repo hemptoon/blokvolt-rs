@@ -1,470 +1,40 @@
 {
  "checked": "23.09.2026",
  "source": "Wikimedia Commons",
- "w": 260,
- "h": 146,
- "note": "PNG 260x146 sa providnom pozadinom (prikaz 104 px): pozadina uklonjena, vozilo izrezano i skalirano na istu veličinu.",
+ "w": 360,
+ "h": 200,
+ "note": "PNG 360x200 sa providnom pozadinom (prikaz oko 130 px): vozilo izrezano (IS-Net), očišćeno od okolnih predmeta, postavljeno na istu širinu i istu osnovnu liniju, sa istom mekom senkom.",
  "disclaimer": "Fotografije su ilustrativne: mogu prikazivati drugu verziju, godinu ili tržište od modela u tabeli, a neke su snimljene otpozadi.",
  "items": {
-  "BYD||Dolphin Surf": {
-   "slug": "byd-dolphin-surf",
-   "au": "Alexander-93",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:BYD_Dolphin_Surf_IMG_3808.jpg",
-   "file": "BYD Dolphin Surf IMG 3808.jpg",
-   "bytes": 12190,
-   "v": "d37fba22"
-  },
-  "BYD||Atto 2": {
-   "slug": "byd-atto-2",
-   "au": "Alexander-93",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:BYD_Atto_2_IAA_2025_DSC_2131.jpg",
-   "file": "BYD_Atto_2_IAA_2025_DSC_2131.jpg",
-   "bytes": 10553,
-   "v": "10f7bbbf"
-  },
-  "BYD||Atto 3 Evo": {
-   "slug": "byd-atto-3-evo",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:BYD_Atto_3_Evo_IMG_7851.jpg",
-   "file": "BYD Atto 3 Evo IMG 7851.jpg",
-   "bytes": 10626,
-   "v": "1cb098b3"
-  },
-  "BYD||Seal": {
-   "slug": "byd-seal",
-   "au": "User3204",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:2022_BYD_Seal.jpg",
-   "file": "2022_BYD_Seal.jpg",
-   "bytes": 9941,
-   "v": "ccc8aaa1"
-  },
-  "BYD||Sealion 7": {
-   "slug": "byd-sealion-7",
-   "au": "LuvsMG481",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:2025_BYD_Sealion_7_Performance_front.jpg",
-   "file": "2025_BYD_Sealion_7_Performance_front.jpg",
-   "bytes": 9692,
-   "v": "3abf7256"
-  },
-  "Škoda||Elroq": {
-   "slug": "skoda-elroq",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:%C5%A0koda_Elroq_DSC_9260.jpg",
-   "file": "Škoda_Elroq_DSC_9260.jpg",
-   "bytes": 13149,
-   "v": "664a9433"
-  },
-  "Škoda||Enyaq": {
-   "slug": "skoda-enyaq",
-   "au": "Alexander-93",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:%C5%A0koda_Enyaq_IMG_1190.jpg",
-   "file": "Škoda_Enyaq_IMG_1190.jpg",
-   "bytes": 11659,
-   "v": "b8f38632"
-  },
-  "Škoda||Enyaq Coupé": {
-   "slug": "skoda-enyaq-coupe",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:%C5%A0koda_Enyaq_Coup%C3%A9_DSC_7072.jpg",
-   "file": "Škoda Enyaq Coupé DSC 7072.jpg",
-   "bytes": 9446,
-   "v": "9e93d0a5"
-  },
-  "Volkswagen||ID. Polo": {
-   "slug": "volkswagen-id-polo",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Volkswagen_ID.Polo_IMG_8361.jpg",
-   "file": "Volkswagen_ID.Polo_IMG_8361.jpg",
-   "bytes": 11585,
-   "v": "1f202dad"
-  },
-  "Volkswagen||ID.3 Neo": {
-   "slug": "volkswagen-id-3",
-   "au": "Vauxford",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:2020_Volkswagen_ID.3_1st_Front.jpg",
-   "file": "2020_Volkswagen_ID.3_1st_Front.jpg",
-   "bytes": 10158,
-   "v": "18d57a66"
-  },
-  "Volkswagen||ID.4": {
-   "slug": "volkswagen-id-4",
-   "au": "LuvsMG481",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:2025_Volkswagen_ID4_Pro_Redspot_front.jpg",
-   "file": "2025_Volkswagen_ID4_Pro_Redspot_front.jpg",
-   "bytes": 10188,
-   "v": "f7e61e18"
-  },
-  "Volkswagen||ID.5": {
-   "slug": "volkswagen-id-5",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Volkswagen_ID.5_Leonberg_2022_1X7A0459.jpg",
-   "file": "Volkswagen ID.5 Leonberg 2022 1X7A0459.jpg",
-   "bytes": 10685,
-   "v": "67db26e8"
-  },
-  "Volkswagen||ID.7": {
-   "slug": "volkswagen-id-7",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Volkswagen_ID.7_DSC_7879_(cropped).jpg",
-   "file": "Volkswagen_ID.7_DSC_7879_(cropped).jpg",
-   "bytes": 9822,
-   "v": "6421e2e4"
-  },
-  "Renault||Twingo E-Tech electric": {
-   "slug": "renault-twingo-e-tech",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Renault_Twingo_E-Tech_IMG_6605.jpg",
-   "file": "Renault_Twingo_E-Tech_IMG_6605.jpg",
-   "bytes": 12390,
-   "v": "480da9c4"
-  },
-  "Renault||Renault 5 E-Tech electric": {
-   "slug": "renault-5-e-tech",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Renault_5_E-Tech_Electric_DSC_7279.jpg",
-   "file": "Renault_5_E-Tech_Electric_DSC_7279.jpg",
-   "bytes": 12408,
-   "v": "693698ec"
-  },
-  "Renault||Renault 4 E-Tech electric": {
-   "slug": "renault-4-e-tech",
-   "au": "© M 93",
-   "lic": "CC BY-SA 3.0 de",
-   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
-   "page": "https://commons.wikimedia.org/wiki/File:Renault_4_E-Tech_150_Comfort_Range_Techno_%E2%80%93_f_22062025.jpg",
-   "file": "Renault_4_E-Tech_150_Comfort_Range_Techno_–_f_22062025.jpg",
-   "bytes": 10786,
-   "v": "e800098e"
-  },
-  "Dacia||Spring": {
-   "slug": "dacia-spring",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Dacia_Spring_IAA_2021_1X7A0215.jpg",
-   "file": "Dacia_Spring_IAA_2021_1X7A0215.jpg",
-   "bytes": 12268,
-   "v": "bb5ca484"
-  },
-  "Hyundai||INSTER": {
-   "slug": "hyundai-inster",
-   "au": "Matti Blume",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
-   "page": "https://commons.wikimedia.org/wiki/File:Hyundai_Inster,_Auto_2024,_Zurich_(PANA1030).jpg",
-   "file": "Hyundai Inster, Auto 2024, Zurich (PANA1030).jpg",
-   "bytes": 9005,
-   "v": "352ab090"
-  },
-  "Hyundai||IONIQ 5": {
-   "slug": "hyundai-ioniq-5",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Hyundai_Ioniq_5_IAA_2021_1X7A0189.jpg",
-   "file": "Hyundai Ioniq 5 IAA 2021 1X7A0189.jpg",
-   "bytes": 9974,
-   "v": "bb28db57"
-  },
-  "Hyundai||IONIQ 6": {
-   "slug": "hyundai-ioniq-6",
-   "au": "Alexander-93",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Hyundai_Ioniq_6_1X7A7258.jpg",
-   "file": "Hyundai Ioniq 6 1X7A7258.jpg",
-   "bytes": 9219,
-   "v": "f7fd9381"
-  },
-  "Hyundai||IONIQ 6 N": {
-   "slug": "hyundai-ioniq-6-n",
-   "au": "Calreyn88",
-   "lic": "CC0",
-   "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-   "page": "https://commons.wikimedia.org/wiki/File:Hyundai_ioniq_6_N_1.jpg",
-   "file": "Hyundai ioniq 6 N 1.jpg",
-   "bytes": 10766,
-   "v": "19da144d"
-  },
-  "Hyundai||IONIQ 9": {
-   "slug": "hyundai-ioniq-9",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Hyundai_Ioniq_9_IMG_5950.jpg",
-   "file": "Hyundai Ioniq 9 IMG 5950.jpg",
-   "bytes": 9790,
-   "v": "a0f98936"
-  },
-  "Kia||EV3": {
-   "slug": "kia-ev3",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Kia_EV3_GT-Line_Automesse_Ludwigsburg_2025_DSC_2635_(cropped).jpg",
-   "file": "Kia_EV3_GT-Line_Automesse_Ludwigsburg_2025_DSC_2635_(cropped).jpg",
-   "bytes": 11082,
-   "v": "184d4dc1"
-  },
-  "Kia||Niro EV": {
-   "slug": "kia-niro-ev",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Kia_Niro_(SG2)_PHEV_Leonberg_2022_1X7A0474.jpg",
-   "file": "Kia_Niro_(SG2)_PHEV_Leonberg_2022_1X7A0474.jpg",
-   "bytes": 12434,
-   "v": "475ace68"
-  },
-  "Toyota||C-HR+": {
-   "slug": "toyota-c-hr",
-   "au": "© M 93",
-   "lic": "CC BY-SA 3.0 de",
-   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
-   "page": "https://commons.wikimedia.org/wiki/File:Toyota_C-HR%2B_Teamplayer_%E2%80%93_f_05042026.jpg",
-   "file": "Toyota_C-HR+_Teamplayer_–_f_05042026.jpg",
-   "bytes": 10658,
-   "v": "6d01f3e7"
-  },
-  "Toyota||bZ4X": {
-   "slug": "toyota-bz4x",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Toyota_bZ4X_Automesse_Ludwigsburg_2022_1X7A5895.jpg",
-   "file": "Toyota_bZ4X_Automesse_Ludwigsburg_2022_1X7A5895.jpg",
-   "bytes": 11404,
-   "v": "4e3e1898"
-  },
-  "Toyota||bZ4X Touring": {
-   "slug": "toyota-bz4x-touring",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Toyota_bZ4X_Touring_IMG_8458.jpg",
-   "file": "Toyota bZ4X Touring IMG 8458.jpg",
-   "bytes": 11507,
-   "v": "1ea3ec74"
-  },
-  "Toyota||Proace City Verso Electric (putnički kombi, M1)": {
-   "slug": "toyota-proace-city",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Toyota_ProAce_City_Electric_1X7A0258.jpg",
-   "file": "Toyota ProAce City Electric 1X7A0258.jpg",
-   "bytes": 13312,
-   "v": "63cfed69"
-  },
-  "Fiat||Grande Panda (električni)": {
-   "slug": "fiat-grande-panda",
-   "au": "© M 93",
-   "lic": "CC BY-SA 3.0 de",
-   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
-   "page": "https://commons.wikimedia.org/wiki/File:Fiat_Grande_Panda_Elektro_La_Prima_%E2%80%93_f_01062025.jpg",
-   "file": "Fiat_Grande_Panda_Elektro_La_Prima_–_f_01062025.jpg",
-   "bytes": 12317,
-   "v": "ced76d2e"
-  },
-  "Fiat||500e": {
-   "slug": "fiat-500e",
-   "au": "AuHaidhausen",
-   "lic": "CC BY 4.0",
-   "licurl": "https://creativecommons.org/licenses/by/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Fiat_500e_in_M%C3%BCnchen.jpg",
-   "file": "Fiat 500e in München.jpg",
-   "bytes": 12223,
-   "v": "eb8a7a2e"
-  },
-  "Fiat||600e": {
-   "slug": "fiat-600e",
-   "au": "Alexander-93",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Fiat_600e_Auto_Zuerich_2023_1X7A0959.jpg",
-   "file": "Fiat 600e Auto Zuerich 2023 1X7A0959.jpg",
-   "bytes": 11679,
-   "v": "d540bc03"
-  },
-  "Citroën||ë-C3": {
-   "slug": "citroen-e-c3",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Citroen_%C3%AB-C3_IMG_4539.jpg",
-   "file": "Citroen ë-C3 IMG 4539.jpg",
-   "bytes": 10776,
-   "v": "41651822"
-  },
-  "Citroën||ë-C3 Aircross": {
-   "slug": "citroen-e-c3-aircross",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Citro%C3%ABn_%C3%AB-C3_Aircross_DSC_8343.jpg",
-   "file": "Citroën ë-C3 Aircross DSC 8343.jpg",
-   "bytes": 11517,
-   "v": "d7827021"
-  },
-  "Citroën||ë-C4": {
-   "slug": "citroen-e-c4",
-   "au": "Alexander-93",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Citro%C3%ABn_e-C4_X_Automesse_Ludwigsburg_2023_1X7A0016.jpg",
-   "file": "Citroën e-C4 X Automesse Ludwigsburg 2023 1X7A0016.jpg",
-   "bytes": 10105,
-   "v": "f8998c72"
-  },
-  "Citroën||ë-C4 X": {
-   "slug": "citroen-e-c4-x",
-   "au": "Alexander-93",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Citro%C3%ABn_e-C4_X_Automesse_Ludwigsburg_2023_1X7A0016.jpg",
-   "file": "Citroën e-C4 X Automesse Ludwigsburg 2023 1X7A0016.jpg",
-   "bytes": 10105,
-   "v": "f8998c72"
-  },
-  "Peugeot||E-208": {
-   "slug": "peugeot-e-208",
-   "au": "Alexander-93",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Peugeot_e-208_facelift_Auto_Zuerich_2023_1X7A1209.jpg",
-   "file": "Peugeot e-208 facelift Auto Zuerich 2023 1X7A1209.jpg",
-   "bytes": 11726,
-   "v": "b018eefc"
-  },
-  "Peugeot||E-2008": {
-   "slug": "peugeot-e-2008",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Peugeot_e-2008_Automesse_Ludwigsburg_2022_1X7A5883.jpg",
-   "file": "Peugeot e-2008 Automesse Ludwigsburg 2022 1X7A5883.jpg",
-   "bytes": 12150,
-   "v": "6fb09563"
-  },
-  "Peugeot||E-3008": {
-   "slug": "peugeot-e-3008",
-   "au": "Alexander-93",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Peugeot_e-3008_Automesse_Ludwigsburg_2024_IMG_1537.jpg",
-   "file": "Peugeot e-3008 Automesse Ludwigsburg 2024 IMG 1537.jpg",
-   "bytes": 11124,
-   "v": "64413bb2"
-  },
-  "Peugeot||E-5008": {
-   "slug": "peugeot-e-5008",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Peugeot_e-5008_Automesse_Ludwigsburg_2025_DSC_2651.jpg",
-   "file": "Peugeot e-5008 Automesse Ludwigsburg 2025 DSC 2651.jpg",
-   "bytes": 11534,
-   "v": "567c5fee"
-  },
-  "BMW||iX1": {
-   "slug": "bmw-ix1",
-   "au": "Alexander-93",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:BMW_iX1_1X7A6827.jpg",
-   "file": "BMW iX1 1X7A6827.jpg",
-   "bytes": 12065,
-   "v": "7e636650"
-  },
-  "BMW||iX2": {
-   "slug": "bmw-ix2",
-   "au": "Alexander-93",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:BMW_iX2_xDrive30_IMG_1811.jpg",
-   "file": "BMW iX2 xDrive30 IMG 1811.jpg",
-   "bytes": 10643,
-   "v": "f0e22ed1"
-  },
   "BMW||i4": {
    "slug": "bmw-i4",
    "au": "Alexander Migl",
    "lic": "CC BY-SA 4.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:BMW_i4_IMG_6695.jpg",
-   "file": "BMW_i4_IMG_6695.jpg",
-   "bytes": 10308,
-   "v": "7615eb6a"
-  },
-  "BMW||iX3 (Neue Klasse)": {
-   "slug": "bmw-ix3",
-   "au": "© M 93",
-   "lic": "CC BY-SA 3.0 de",
-   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
-   "page": "https://commons.wikimedia.org/wiki/File:BMW_iX3_50_xDrive_M_Sportpaket_Pro_(NA5)_%E2%80%93_f_17052026.jpg",
-   "file": "BMW_iX3_50_xDrive_M_Sportpaket_Pro_(NA5)_–_f_17052026.jpg",
-   "bytes": 10240,
-   "v": "316565ef"
+   "file": "BMW i4 IMG 6695.jpg",
+   "bytes": 15764,
+   "v": "55377fba"
   },
   "BMW||i5": {
    "slug": "bmw-i5",
-   "au": "Alexander-93",
+   "au": "MrWalkr",
    "lic": "CC BY-SA 4.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:BMW_i5_IMG_9363.jpg",
-   "file": "BMW i5 IMG 9363.jpg",
-   "bytes": 9500,
-   "v": "2ae59a44"
+   "page": "https://commons.wikimedia.org/wiki/File:2023_BMW_i5_M60.jpg",
+   "file": "2023 BMW i5 M60.jpg",
+   "bytes": 17620,
+   "v": "aa90b827"
   },
   "BMW||i5 Touring": {
    "slug": "bmw-i5-touring",
-   "au": "Alexander Migl",
+   "au": "Alexander-93",
    "lic": "CC BY-SA 4.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:BMW_i5_Touring_DSC_7267.jpg",
-   "file": "BMW i5 Touring DSC 7267.jpg",
-   "bytes": 12235,
-   "v": "6f648ea7"
-  },
-  "BMW||iX": {
-   "slug": "bmw-ix",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:BMW_iX_IAA_2021_1X7A0204.jpg",
-   "file": "BMW_iX_IAA_2021_1X7A0204.jpg",
-   "bytes": 11136,
-   "v": "2ef74140"
+   "page": "https://commons.wikimedia.org/wiki/File:BMW_i5_Touring_IMG_9530.jpg",
+   "file": "BMW i5 Touring IMG 9530.jpg",
+   "bytes": 16135,
+   "v": "bd2305ef"
   },
   "BMW||i7": {
    "slug": "bmw-i7",
@@ -473,118 +43,188 @@
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:BMW_i7_xDrive60_1X7A6834.jpg",
    "file": "BMW i7 xDrive60 1X7A6834.jpg",
-   "bytes": 12211,
-   "v": "633192f3"
+   "bytes": 20236,
+   "v": "0c29622a"
   },
-  "MINI||Cooper E (električni)": {
-   "slug": "mini-cooper-j01",
+  "BMW||iX": {
+   "slug": "bmw-ix",
    "au": "Alexander Migl",
    "lic": "CC BY-SA 4.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Mini_Hatch_(J01)_John_Cooper_Works_DSC_9696.jpg",
-   "file": "Mini Hatch (J01) John Cooper Works DSC 9696.jpg",
-   "bytes": 13759,
-   "v": "8fb3dcc6"
+   "page": "https://commons.wikimedia.org/wiki/File:BMW_iX_IAA_2021_1X7A0204.jpg",
+   "file": "BMW iX IAA 2021 1X7A0204.jpg",
+   "bytes": 17405,
+   "v": "7b90c04d"
   },
-  "MINI||Aceman": {
-   "slug": "mini-aceman",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Mini_Aceman_DSC_7114.jpg",
-   "file": "Mini_Aceman_DSC_7114.jpg",
-   "bytes": 11210,
-   "v": "14c256b5"
-  },
-  "MINI||Countryman (električni)": {
-   "slug": "mini-countryman-u25",
-   "au": "Alexander-93",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Mini_Countryman_(U25)_John_Cooper_Works_IMG_0034.jpg",
-   "file": "Mini Countryman (U25) John Cooper Works IMG 0034.jpg",
-   "bytes": 12110,
-   "v": "75b3bb6a"
-  },
-  "Mercedes-Benz||EQA": {
-   "slug": "mercedes-benz-eqa",
-   "au": "Matti Blume",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_Concept_EQA,_IAA_2017,_Frankfurt_(1Y7A2961).jpg",
-   "file": "Mercedes-Benz Concept EQA, IAA 2017, Frankfurt (1Y7A2961).jpg",
-   "bytes": 11421,
-   "v": "2da6d444"
-  },
-  "Mercedes-Benz||EQE limuzina": {
-   "slug": "mercedes-benz-eqe",
+  "BMW||iX1": {
+   "slug": "bmw-ix1",
    "au": "© M 93",
    "lic": "CC BY-SA 3.0 de",
    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
-   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_EQE_350%2B_AMG_Line_(V_295)_%E2%80%93_f_12022023.jpg",
-   "file": "Mercedes-Benz EQE 350+ AMG Line (V 295) – f 12022023.jpg",
-   "bytes": 7871,
-   "v": "5a817bfd"
+   "page": "https://commons.wikimedia.org/wiki/File:BMW_iX1_xDrive30_(U11)_%E2%80%93_f_05052024.jpg",
+   "file": "BMW iX1 xDrive30 (U11) – f 05052024.jpg",
+   "bytes": 14466,
+   "v": "919aa42b"
   },
-  "Mercedes-Benz||EQE SUV": {
-   "slug": "mercedes-benz-eqe-suv",
-   "au": "Dinkun Chen",
+  "BMW||iX2": {
+   "slug": "bmw-ix2",
+   "au": "Alexander-93",
    "lic": "CC BY-SA 4.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:MERCEDES-BENZ_EQE_SUV_China_(5).jpg",
-   "file": "MERCEDES-BENZ EQE SUV China (5).jpg",
-   "bytes": 11000,
-   "v": "fc0a1208"
+   "page": "https://commons.wikimedia.org/wiki/File:BMW_iX2_xDrive30_IMG_1811.jpg",
+   "file": "BMW iX2 xDrive30 IMG 1811.jpg",
+   "bytes": 14345,
+   "v": "dbf6ec1a"
   },
-  "Mercedes-Benz||EQS limuzina": {
-   "slug": "mercedes-benz-eqs",
+  "BMW||iX3 (Neue Klasse)": {
+   "slug": "bmw-ix3",
+   "au": "© M 93",
+   "lic": "CC BY-SA 3.0 de",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File:BMW_iX3_50_xDrive_M_Sportpaket_Pro_(NA5)_%E2%80%93_f_17052026.jpg",
+   "file": "BMW iX3 50 xDrive M Sportpaket Pro (NA5) – f 17052026.jpg",
+   "bytes": 14800,
+   "v": "88fe121a"
+  },
+  "BYD||Atto 2": {
+   "slug": "byd-atto-2",
+   "au": "Alexander-93",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:BYD_Atto_2_IAA_2025_DSC_2131.jpg",
+   "file": "BYD Atto 2 IAA 2025 DSC 2131.jpg",
+   "bytes": 14822,
+   "v": "9169aba5"
+  },
+  "BYD||Atto 3 Evo": {
+   "slug": "byd-atto-3-evo",
    "au": "Alexander Migl",
    "lic": "CC BY-SA 4.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_Vision_EQS_at_IAA_2019_IMG_0753.jpg",
-   "file": "Mercedes-Benz Vision EQS at IAA 2019 IMG 0753.jpg",
-   "bytes": 9683,
-   "v": "8afebc8a"
+   "page": "https://commons.wikimedia.org/wiki/File:BYD_Atto_3_Evo_IMG_7851.jpg",
+   "file": "BYD Atto 3 Evo IMG 7851.jpg",
+   "bytes": 14438,
+   "v": "764092cf"
   },
-  "Mercedes-Benz||EQS SUV": {
-   "slug": "mercedes-benz-eqs-suv",
-   "au": "Navigator84",
+  "BYD||Dolphin Surf": {
+   "slug": "byd-dolphin-surf",
+   "au": "Alexander-93",
    "lic": "CC BY-SA 4.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_EQS_SUV_01_China_2023-04-10.jpg",
-   "file": "Mercedes-Benz EQS SUV 01 China 2023-04-10.jpg",
-   "bytes": 12750,
-   "v": "44aa3af9"
+   "page": "https://commons.wikimedia.org/wiki/File:BYD_Dolphin_Surf_IMG_3831.jpg",
+   "file": "BYD Dolphin Surf IMG 3831.jpg",
+   "bytes": 16446,
+   "v": "c7b4b028"
   },
-  "Mercedes-Benz||Električna G-Klasa (G 580 sa EQ tehnologijom)": {
-   "slug": "mercedes-benz-g-580",
+  "BYD||Seal": {
+   "slug": "byd-seal",
+   "au": "User3204",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:2022_BYD_Seal.jpg",
+   "file": "2022 BYD Seal.jpg",
+   "bytes": 14455,
+   "v": "7840b6f5"
+  },
+  "BYD||Sealion 7": {
+   "slug": "byd-sealion-7",
+   "au": "LuvsMG481",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:2025_BYD_Sealion_7_Performance_front.jpg",
+   "file": "2025 BYD Sealion 7 Performance front.jpg",
+   "bytes": 15239,
+   "v": "ead66a6b"
+  },
+  "Citroën||ë-C3": {
+   "slug": "citroen-e-c3",
    "au": "Alexander Migl",
    "lic": "CC BY-SA 4.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_G_580_with_EQ_Technology_DSC_8257.jpg",
-   "file": "Mercedes-Benz G 580 with EQ Technology DSC 8257.jpg",
-   "bytes": 10681,
-   "v": "a27f3a6b"
+   "page": "https://commons.wikimedia.org/wiki/File:Citroen_%C3%AB-C3_IMG_4539.jpg",
+   "file": "Citroen ë-C3 IMG 4539.jpg",
+   "bytes": 15870,
+   "v": "2df908fe"
   },
-  "Mercedes-Benz||Mercedes-Maybach EQS SUV": {
-   "slug": "mercedes-maybach-eqs-suv",
-   "au": "JustAnotherCarDesigner",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Maybach_EQS_SUV_002.jpg",
-   "file": "Mercedes-Maybach EQS SUV 002.jpg",
-   "bytes": 10037,
-   "v": "30a0b1bd"
-  },
-  "Ford||Puma Gen-E": {
-   "slug": "ford-puma-gen-e",
+  "Citroën||ë-C3 Aircross": {
+   "slug": "citroen-e-c3-aircross",
    "au": "Alexander Migl",
    "lic": "CC BY-SA 4.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Ford_Puma_Gen-E_Autofr%C3%BChling_Ulm_2025_DSC_8726.jpg",
-   "file": "Ford Puma Gen-E Autofrühling Ulm 2025 DSC 8726.jpg",
-   "bytes": 12140,
-   "v": "7009f2b4"
+   "page": "https://commons.wikimedia.org/wiki/File:Citro%C3%ABn_C3_Aircross_(2024)_DSC_8767.jpg",
+   "file": "Citroën C3 Aircross (2024) DSC 8767.jpg",
+   "bytes": 20420,
+   "v": "cf7cb243"
+  },
+  "Citroën||ë-C4": {
+   "slug": "citroen-e-c4",
+   "au": "© M 93",
+   "lic": "CC BY-SA 3.0 de",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File:Citro%C3%ABn_%C3%AB-C4_Feel_(III)_%E2%80%93_f_14042024.jpg",
+   "file": "Citroën ë-C4 Feel (III) – f 14042024.jpg",
+   "bytes": 13468,
+   "v": "5dfc69ee"
+  },
+  "Citroën||ë-C4 X": {
+   "slug": "citroen-e-c4-x",
+   "au": "Alexander-93",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Citro%C3%ABn_e-C4_X_Automesse_Ludwigsburg_2023_1X7A0016.jpg",
+   "file": "Citroën e-C4 X Automesse Ludwigsburg 2023 1X7A0016.jpg",
+   "bytes": 16777,
+   "v": "d9d4364e"
+  },
+  "Dacia||Spring": {
+   "slug": "dacia-spring",
+   "au": "Alexander-93",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:2024_Dacia_Spring_Extreme_DSC_6037.jpg",
+   "file": "2024 Dacia Spring Extreme DSC 6037.jpg",
+   "bytes": 13594,
+   "v": "be01ba4a"
+  },
+  "Fiat||500e": {
+   "slug": "fiat-500e",
+   "au": "AuHaidhausen",
+   "lic": "CC BY 4.0",
+   "licurl": "https://creativecommons.org/licenses/by/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Fiat_500e_in_M%C3%BCnchen.jpg",
+   "file": "Fiat 500e in München.jpg",
+   "bytes": 15464,
+   "v": "9cef7134"
+  },
+  "Fiat||600e": {
+   "slug": "fiat-600e",
+   "au": "Tokumeigakarinoaoshima",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:FIAT_600e_LA_PRIMA_(ZAA-FH1FI)_front.jpg",
+   "file": "FIAT 600e LA PRIMA (ZAA-FH1FI) front.jpg",
+   "bytes": 14410,
+   "v": "e2f8b99c"
+  },
+  "Fiat||Grande Panda (električni)": {
+   "slug": "fiat-grande-panda",
+   "au": "© M 93",
+   "lic": "CC BY-SA 3.0 de",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File:Fiat_Grande_Panda_Elektro_La_Prima_%E2%80%93_f_01062025.jpg",
+   "file": "Fiat Grande Panda Elektro La Prima – f 01062025.jpg",
+   "bytes": 16905,
+   "v": "ec0d7736"
+  },
+  "Ford||Capri": {
+   "slug": "ford-capri",
+   "au": "Alexander Migl",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Ford_Capri_(2024)_Autofr%C3%BChling_Ulm_2025_DSC_8721.jpg",
+   "file": "Ford Capri (2024) Autofrühling Ulm 2025 DSC 8721.jpg",
+   "bytes": 16766,
+   "v": "c7371162"
   },
   "Ford||Explorer EV": {
    "slug": "ford-explorer-ev",
@@ -592,19 +232,69 @@
    "lic": "CC BY-SA 4.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Ford_Explorer_EV_IMG_2120.jpg",
-   "file": "Ford_Explorer_EV_IMG_2120.jpg",
-   "bytes": 10230,
-   "v": "4ab0a885"
+   "file": "Ford Explorer EV IMG 2120.jpg",
+   "bytes": 15998,
+   "v": "562492b6"
   },
-  "JAC||E30X": {
-   "slug": "jac-e30x",
-   "au": "LKS1990",
-   "lic": "CC0",
-   "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-   "page": "https://commons.wikimedia.org/wiki/File:JAC_E30X,_Shenzhen_Auto_Show_2025.jpg",
-   "file": "JAC E30X, Shenzhen Auto Show 2025.jpg",
-   "bytes": 8334,
-   "v": "a0b08564"
+  "Ford||Puma Gen-E": {
+   "slug": "ford-puma-gen-e",
+   "au": "© M 93",
+   "lic": "CC BY-SA 3.0 de",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File:Ford_Puma_Gen-E_Premium_%E2%80%93_f_22062025.jpg",
+   "file": "Ford Puma Gen-E Premium – f 22062025.jpg",
+   "bytes": 15557,
+   "v": "f80965dd"
+  },
+  "Hyundai||INSTER": {
+   "slug": "hyundai-inster",
+   "au": "Alexander-93",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Hyundai_Inster_Auto_Zuerich_2024_DSC_6263.jpg",
+   "file": "Hyundai Inster Auto Zuerich 2024 DSC 6263.jpg",
+   "bytes": 13911,
+   "v": "6cc73746"
+  },
+  "Hyundai||IONIQ 5": {
+   "slug": "hyundai-ioniq-5",
+   "au": "Alexander Migl",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Hyundai_Ioniq_5_IAA_2021_1X7A0189.jpg",
+   "file": "Hyundai Ioniq 5 IAA 2021 1X7A0189.jpg",
+   "bytes": 16248,
+   "v": "076eecc7"
+  },
+  "Hyundai||IONIQ 6": {
+   "slug": "hyundai-ioniq-6",
+   "au": "Alexander-93",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Hyundai_Ioniq_6_1X7A7258.jpg",
+   "file": "Hyundai Ioniq 6 1X7A7258.jpg",
+   "bytes": 14377,
+   "v": "6335a142"
+  },
+  "Hyundai||IONIQ 6 N": {
+   "slug": "hyundai-ioniq-6-n",
+   "au": "Damian B Oh",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Hyundai_IONIQ_6_N_CE1_N_Performance_Blue_Pearl_(9).jpg",
+   "file": "Hyundai IONIQ 6 N CE1 N Performance Blue Pearl (9).jpg",
+   "bytes": 15353,
+   "v": "87436647"
+  },
+  "Hyundai||IONIQ 9": {
+   "slug": "hyundai-ioniq-9",
+   "au": "Alexander Migl",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Hyundai_Ioniq_9_IMG_5950.jpg",
+   "file": "Hyundai Ioniq 9 IMG 5950.jpg",
+   "bytes": 16217,
+   "v": "9fb8d46b"
   },
   "JAC||e-JS4": {
    "slug": "jac-e-js4",
@@ -613,8 +303,18 @@
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:JAC_e-JS4_Auto_Zuerich_2023_1X7A1321.jpg",
    "file": "JAC e-JS4 Auto Zuerich 2023 1X7A1321.jpg",
-   "bytes": 12856,
-   "v": "34153a14"
+   "bytes": 17407,
+   "v": "5ef41084"
+  },
+  "JAC||E30X": {
+   "slug": "jac-e30x",
+   "au": "LKS1990",
+   "lic": "CC0",
+   "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File:JAC_E30X,_Shenzhen_Auto_Show_2025.jpg",
+   "file": "JAC E30X, Shenzhen Auto Show 2025.jpg",
+   "bytes": 11192,
+   "v": "db943a1a"
   },
   "JMEV||EV3": {
    "slug": "jmev-ev3",
@@ -622,9 +322,329 @@
    "lic": "CC0",
    "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
    "page": "https://commons.wikimedia.org/wiki/File:JMEV_EVeasy_EV3_004_(cropped).jpg",
-   "file": "JMEV_EVeasy_EV3_004_(cropped).jpg",
-   "bytes": 10252,
-   "v": "2c381ef0"
+   "file": "JMEV EVeasy EV3 004 (cropped).jpg",
+   "bytes": 14891,
+   "v": "ac90b858"
+  },
+  "Kia||EV3": {
+   "slug": "kia-ev3",
+   "au": "Alexander Migl",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Kia_EV3_GT-Line_Automesse_Ludwigsburg_2025_DSC_2635_(cropped).jpg",
+   "file": "Kia EV3 GT-Line Automesse Ludwigsburg 2025 DSC 2635 (cropped).jpg",
+   "bytes": 15977,
+   "v": "3d22e5b2"
+  },
+  "Kia||Niro EV": {
+   "slug": "kia-niro-ev",
+   "au": "Alexander-93",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Kia_Niro_EV_(SG2)_1X7A7188.jpg",
+   "file": "Kia Niro EV (SG2) 1X7A7188.jpg",
+   "bytes": 19885,
+   "v": "97ff335f"
+  },
+  "Mercedes-Benz||EQA": {
+   "slug": "mercedes-benz-eqa",
+   "au": "Damian B Oh",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_H243_EQA_250_Polar_White_(2).jpg",
+   "file": "Mercedes-Benz H243 EQA 250 Polar White (2).jpg",
+   "bytes": 14643,
+   "v": "2f6f4c87"
+  },
+  "Mercedes-Benz||EQB": {
+   "slug": "mercedes-benz-eqb",
+   "au": "© M 93",
+   "lic": "CC BY-SA 3.0 de",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_EQB_250_Progressive_(X_243)_%E2%80%93_f_30062024.jpg",
+   "file": "Mercedes-Benz EQB 250 Progressive (X 243) – f 30062024.jpg",
+   "bytes": 14909,
+   "v": "a8022be9"
+  },
+  "Mercedes-Benz||EQE limuzina": {
+   "slug": "mercedes-benz-eqe",
+   "au": "© M 93",
+   "lic": "CC BY-SA 3.0 de",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_EQE_350%2B_AMG_Line_(V_295)_%E2%80%93_f_12022023.jpg",
+   "file": "Mercedes-Benz EQE 350+ AMG Line (V 295) – f 12022023.jpg",
+   "bytes": 12904,
+   "v": "1231d189"
+  },
+  "Mercedes-Benz||EQE SUV": {
+   "slug": "mercedes-benz-eqe-suv",
+   "au": "Dinkun Chen",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:MERCEDES-BENZ_EQE_SUV_China_(4).jpg",
+   "file": "MERCEDES-BENZ EQE SUV China (4).jpg",
+   "bytes": 17421,
+   "v": "98ae1dfa"
+  },
+  "Mercedes-Benz||EQS limuzina": {
+   "slug": "mercedes-benz-eqs",
+   "au": "Damian B Oh",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_V297_EQS_450%2B_Obsidian_Black_(6).jpg",
+   "file": "Mercedes-Benz V297 EQS 450+ Obsidian Black (6).jpg",
+   "bytes": 16950,
+   "v": "a54cb9cc"
+  },
+  "Mercedes-Benz||EQS SUV": {
+   "slug": "mercedes-benz-eqs-suv",
+   "au": "Navigator84",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_EQS_SUV_01_China_2023-04-10.jpg",
+   "file": "Mercedes-Benz EQS SUV 01 China 2023-04-10.jpg",
+   "bytes": 17667,
+   "v": "d546e422"
+  },
+  "Mercedes-Benz||Električna G-Klasa (G 580 sa EQ tehnologijom)": {
+   "slug": "mercedes-benz-g-580",
+   "au": "Alexander-93",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_G_580_with_EQ_Technology_Auto_Zuerich_2024_DSC_6663.jpg",
+   "file": "Mercedes-Benz G 580 with EQ Technology Auto Zuerich 2024 DSC 6663.jpg",
+   "bytes": 13773,
+   "v": "e06daf22"
+  },
+  "Mercedes-Benz||Mercedes-Maybach EQS SUV": {
+   "slug": "mercedes-maybach-eqs-suv",
+   "au": "JustAnotherCarDesigner",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Maybach_EQS_SUV_001_(2).jpg",
+   "file": "Mercedes-Maybach EQS SUV 001 (2).jpg",
+   "bytes": 19414,
+   "v": "ad065ee1"
+  },
+  "MINI||Aceman": {
+   "slug": "mini-aceman",
+   "au": "Alexander Migl",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Mini_Aceman_DSC_7114.jpg",
+   "file": "Mini Aceman DSC 7114.jpg",
+   "bytes": 15829,
+   "v": "4c8b6943"
+  },
+  "MINI||Cooper E (električni)": {
+   "slug": "mini-cooper-j01",
+   "au": "Ethan Llamas",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Mini_Cooper_S_Electric_J01_Classic_Chili_Red_-_front.jpg",
+   "file": "Mini Cooper S Electric J01 Classic Chili Red - front.jpg",
+   "bytes": 15640,
+   "v": "f2b7ae0e"
+  },
+  "MINI||Countryman (električni)": {
+   "slug": "mini-countryman-u25",
+   "au": "Ethan Llamas",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Mini_Countryman_S_Electric_U25_Classic_ALL4_Melting_Silver_-_front.jpg",
+   "file": "Mini Countryman S Electric U25 Classic ALL4 Melting Silver - front.jpg",
+   "bytes": 16203,
+   "v": "44f18927"
+  },
+  "Peugeot||E-2008": {
+   "slug": "peugeot-e-2008",
+   "au": "Damian B Oh",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Peugeot_e-2008_GT_P24_Onyx_Black_(1).jpg",
+   "file": "Peugeot e-2008 GT P24 Onyx Black (1).jpg",
+   "bytes": 19655,
+   "v": "7d549834"
+  },
+  "Peugeot||E-208": {
+   "slug": "peugeot-e-208",
+   "au": "Vauxford",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:2020_Peugeot_e-208_Allure_Front.jpg",
+   "file": "2020 Peugeot e-208 Allure Front.jpg",
+   "bytes": 16378,
+   "v": "a43e3eed"
+  },
+  "Peugeot||E-3008": {
+   "slug": "peugeot-e-3008",
+   "au": "Alexander-93",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Peugeot_e-3008_Automesse_Ludwigsburg_2024_IMG_1537.jpg",
+   "file": "Peugeot e-3008 Automesse Ludwigsburg 2024 IMG 1537.jpg",
+   "bytes": 16135,
+   "v": "6becf305"
+  },
+  "Peugeot||E-5008": {
+   "slug": "peugeot-e-5008",
+   "au": "Alexander-93",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Peugeot_5008_C_Automesse_Ludwigsburg_2024_IMG_1452.jpg",
+   "file": "Peugeot 5008 C Automesse Ludwigsburg 2024 IMG 1452.jpg",
+   "bytes": 15009,
+   "v": "35a09e11"
+  },
+  "Renault||Renault 4 E-Tech electric": {
+   "slug": "renault-4-e-tech",
+   "au": "Y.Leclercq",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Renault_4_E-Tech_Electric_-_02_(cropped).jpg",
+   "file": "Renault 4 E-Tech Electric - 02 (cropped).jpg",
+   "bytes": 14628,
+   "v": "98aa2b4f"
+  },
+  "Renault||Renault 5 E-Tech electric": {
+   "slug": "renault-5-e-tech",
+   "au": "Alexander Migl",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Renault_5_E-Tech_Electric_DSC_7279.jpg",
+   "file": "Renault 5 E-Tech Electric DSC 7279.jpg",
+   "bytes": 16759,
+   "v": "dd5b7c41"
+  },
+  "Renault||Twingo E-Tech electric": {
+   "slug": "renault-twingo-e-tech",
+   "au": "Alexander Migl",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Renault_Twingo_E-Tech_IMG_6605.jpg",
+   "file": "Renault Twingo E-Tech IMG 6605.jpg",
+   "bytes": 16114,
+   "v": "5c1f3984"
+  },
+  "Škoda||Elroq": {
+   "slug": "skoda-elroq",
+   "au": "Alexander Migl",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%C5%A0koda_Elroq_DSC_9260.jpg",
+   "file": "Škoda Elroq DSC 9260.jpg",
+   "bytes": 19378,
+   "v": "1b5348d1"
+  },
+  "Škoda||Enyaq": {
+   "slug": "skoda-enyaq",
+   "au": "Alexander-93",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%C5%A0koda_Enyaq_IMG_1190.jpg",
+   "file": "Škoda Enyaq IMG 1190.jpg",
+   "bytes": 16205,
+   "v": "be1b854f"
+  },
+  "Škoda||Enyaq Coupé": {
+   "slug": "skoda-enyaq-coupe",
+   "au": "Alexander-93",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%C5%A0koda_Enyaq_Coup%C3%A9_RS_1X7A0851.jpg",
+   "file": "Škoda Enyaq Coupé RS 1X7A0851.jpg",
+   "bytes": 18610,
+   "v": "e3a95e53"
+  },
+  "Toyota||bZ4X": {
+   "slug": "toyota-bz4x",
+   "au": "Alexander Migl",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:2026_Toyota_bZ4X_IMG_5806.jpg",
+   "file": "2026 Toyota bZ4X IMG 5806.jpg",
+   "bytes": 17389,
+   "v": "6eba915c"
+  },
+  "Toyota||bZ4X Touring": {
+   "slug": "toyota-bz4x-touring",
+   "au": "TTTNIS",
+   "lic": "CC0",
+   "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File:Toyota_bZ4X_Touring_Z_4WD_front_right.jpg",
+   "file": "Toyota bZ4X Touring Z 4WD front right.jpg",
+   "bytes": 16596,
+   "v": "d91be652"
+  },
+  "Toyota||C-HR+": {
+   "slug": "toyota-c-hr",
+   "au": "© M 93",
+   "lic": "CC BY-SA 3.0 de",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File:Toyota_C-HR%2B_Teamplayer_%E2%80%93_f_05042026.jpg",
+   "file": "Toyota C-HR+ Teamplayer – f 05042026.jpg",
+   "bytes": 17317,
+   "v": "44b153fb"
+  },
+  "Toyota||Proace City Verso Electric (putnički kombi, M1)": {
+   "slug": "toyota-proace-city",
+   "au": "© M 93",
+   "lic": "CC BY-SA 3.0 de",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File:Toyota_Proace_City_Verso_L2_Electric_Executive_%E2%80%93_f_20102024.jpg",
+   "file": "Toyota Proace City Verso L2 Electric Executive – f 20102024.jpg",
+   "bytes": 16269,
+   "v": "c1d4c2c4"
+  },
+  "Volkswagen||ID.3 Neo": {
+   "slug": "volkswagen-id-3",
+   "au": "Alexander-93",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Volkswagen_ID.3_(2023)_IMG_7972.jpg",
+   "file": "Volkswagen ID.3 (2023) IMG 7972.jpg",
+   "bytes": 15382,
+   "v": "36961fa2"
+  },
+  "Volkswagen||ID.4": {
+   "slug": "volkswagen-id-4",
+   "au": "John Kalinga",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:2021_Volkswagen_ID.4_Front.jpg",
+   "file": "2021 Volkswagen ID.4 Front.jpg",
+   "bytes": 15786,
+   "v": "470f2cbb"
+  },
+  "Volkswagen||ID.5": {
+   "slug": "volkswagen-id-5",
+   "au": "Vauxford",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:2022_Volkswagen_ID.5.jpg",
+   "file": "2022 Volkswagen ID.5.jpg",
+   "bytes": 17329,
+   "v": "4eb1e9c4"
+  },
+  "Volkswagen||ID.7": {
+   "slug": "volkswagen-id-7",
+   "au": "Alexander Migl",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Volkswagen_ID.7_DSC_7879_(cropped).jpg",
+   "file": "Volkswagen ID.7 DSC 7879 (cropped).jpg",
+   "bytes": 16023,
+   "v": "bef33cb4"
+  },
+  "Volkswagen||ID. Polo": {
+   "slug": "volkswagen-id-polo",
+   "au": "Alexander Migl",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Volkswagen_ID.Polo_IMG_8361.jpg",
+   "file": "Volkswagen ID.Polo IMG 8361.jpg",
+   "bytes": 15265,
+   "v": "e8f7460f"
   }
  }
 }

@@ -1,21 +1,40 @@
 {
  "slug": "tesla-sistemi-energetika",
- "name": "Tesla sistemi „Energetika“",
- "group": "L",
- "publish": false,
+ "name": "Tesla sistemi (Energetika)",
+ "group": "D",
+ "publish": true,
  "is_us": false,
- "kind": "trag",
- "website": "https://energetika.co.rs",
+ "kind": "instalater",
+ "website": "https://energetika.co.rs/kategorija-proizvoda/automobilski-punjaci/",
  "domain": "energetika.co.rs",
  "city": "Novi Beograd",
- "coverage": "",
- "offer": "WallBox Smart 22 kW, OCPP, RFID, „smart metering“, cilja stambene blokove i biznis; B2B profil (UPS, telekom); cena nije objavljena",
- "price_headline": "",
- "cells": {},
- "verdicts": {},
- "contact": {},
- "sources": [],
- "verified": "22.09.2026",
- "confidence": "nisko",
- "notes": "Trag — proveriti pozivom pre objave."
+ "coverage": "Srbija",
+ "offer": "Sistem integrator (energetika, dojava požara, trafostanice); punjači RAPTION 22 TRIO, Urban post i WallBox Smart sa montažom i puštanjem u rad, pre svega za investitore",
+ "price_headline": "Nije objavljena",
+ "cells": {
+  "cena": "<b class=\"pr\">Nije objavljena</b><small>tri modela u katalogu (RAPTION 22 TRIO, Urban post, WallBox Smart), cene nisu prikazane</small>",
+  "ugradnja": "<b class=\"v\">Da</b><small>„obučeni radnici za montažu i puštanje ... u rad“</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b>"
+ },
+ "verdicts": {
+  "ugradnja": "Da",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "address": "Dr Ivana Ribara 181a, Novi Beograd"
+ },
+ "sources": [
+  {
+   "url": "https://energetika.co.rs/kategorija-proizvoda/automobilski-punjaci/",
+   "label": "energetika.co.rs — automobilski punjači",
+   "date": "23.09.2026"
+  }
+ ],
+ "verified": "23.09.2026",
+ "confidence": "srednje",
+ "notes": ""
 }

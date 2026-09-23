@@ -1,21 +1,40 @@
 {
  "slug": "elmik-inzenjering",
  "name": "Elmik Inženjering",
- "group": "L",
- "publish": false,
+ "group": "D",
+ "publish": true,
  "is_us": false,
- "kind": "trag",
- "website": "https://elmik.rs",
+ "kind": "solar",
+ "website": "https://elmik.rs/sr/solarni-paneli-i-punjaci",
  "domain": "elmik.rs",
  "city": "Mali Zvornik",
- "coverage": "",
- "offer": "meni „Solarni paneli i Punjači“, bez detalja",
- "price_headline": "",
- "cells": {},
- "verdicts": {},
- "contact": {},
- "sources": [],
- "verified": "22.09.2026",
- "confidence": "nisko",
- "notes": "Trag — proveriti pozivom pre objave."
+ "coverage": "nije navedena na sajtu",
+ "offer": "Električne instalacije, solarni sistemi i ugradnja punjača za električna vozila za kuće i firme",
+ "price_headline": "Nije objavljena",
+ "cells": {
+  "cena": "<b class=\"pr\">Nije objavljena</b><small>ni cena ni modeli punjača nisu navedeni</small>",
+  "ugradnja": "<b class=\"v\">Da</b><small>„pomaže da izaberete odgovarajući punjač, obavlja kompletnu instalaciju i puštanje u rad“</small>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>pominje se „kontinuirana tehnička podrška“, bez uslova</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Da",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "address": "Vuka Karadžića 116, 15318 Mali Zvornik"
+ },
+ "sources": [
+  {
+   "url": "https://elmik.rs/sr/solarni-paneli-i-punjaci",
+   "label": "elmik.rs — solarni paneli i punjači",
+   "date": "23.09.2026"
+  }
+ ],
+ "verified": "23.09.2026",
+ "confidence": "srednje",
+ "notes": ""
 }

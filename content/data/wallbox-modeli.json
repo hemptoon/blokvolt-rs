@@ -29,6 +29,30 @@
   },
   {
    "brand": "ABB",
+   "model": "Terra AC W7-T-R-0 (7,4 kW, RFID)",
+   "kw": 7.4,
+   "price_rsd": 103892,
+   "vat": "nije naznačen",
+   "seller": "tehnoducan",
+   "url": "https://www.tehnoducan.rs/shop/elektro-oprema/punjaci-za-elektro-vozila/privatni-kucni-ev-punjaci/view.0804030.html",
+   "note": "",
+   "stock": "na zalihama",
+   "date": "23.09.2026"
+  },
+  {
+   "brand": "ABB",
+   "model": "Terra AC W22-T-R-C-0 (22 kW, RFID, 4G)",
+   "kw": 22,
+   "price_rsd": 76483,
+   "vat": "nije naznačen",
+   "seller": "tehnoducan",
+   "url": "https://www.tehnoducan.rs/shop/abb-w22-t-r-c-0/product.html?id=6AGC082153",
+   "note": "popust za online kupovinu, redovna 95.604",
+   "stock": "na zalihama",
+   "date": "23.09.2026"
+  },
+  {
+   "brand": "ABB",
    "model": "Terra AC W22-T-R-C-0 (22 kW, kabl, RFID, 4G)",
    "kw": 22,
    "price_rsd": 78820,
@@ -293,6 +317,30 @@
    "date": "22.09.2026"
   },
   {
+   "brand": "Morek",
+   "model": "MEV11DREWN6T2 (11 kW, ekran, LAN, WiFi, RFID, kabl 6,5 m)",
+   "kw": 11,
+   "price_rsd": 72000,
+   "vat": "sa PDV-om",
+   "seller": "sirotin",
+   "url": "https://www.sirotin.rs/index.php?c=2519",
+   "note": "",
+   "stock": "na lageru",
+   "date": "23.09.2026"
+  },
+  {
+   "brand": "Morek",
+   "model": "MEV22DREWN6T2 (22 kW, pametni)",
+   "kw": 22,
+   "price_rsd": 81600,
+   "vat": "sa PDV-om",
+   "seller": "sirotin",
+   "url": "https://www.sirotin.rs/index.php?c=2519",
+   "note": "",
+   "stock": "na lageru",
+   "date": "23.09.2026"
+  },
+  {
    "brand": "Noark",
    "model": "Ex9EVS 22 kW",
    "kw": 22,
@@ -423,6 +471,42 @@
    "note": "sa kablom 7 m (11 kW) 97.920",
    "stock": "",
    "date": "22.09.2026"
+  },
+  {
+   "brand": "Schneider Electric",
+   "model": "EVlink Pro AC 22 kW (EVB3S22N41)",
+   "kw": 22,
+   "price_rsd": 150000,
+   "vat": "nije naznačen",
+   "seller": "elektroleum",
+   "url": "https://elektroleum.rs/proizvod/schneider-electric-wallbox-type-2-mode-3-22kw-rfid-nfc-evb3s22n41/",
+   "note": "na sajtu kao „Wallbox Type 2 Mode 3 22 kW RFID NFC“",
+   "stock": "",
+   "date": "23.09.2026"
+  },
+  {
+   "brand": "Schneider Electric",
+   "model": "EVlink Pro AC 22 kW (EVB3I22NC0M)",
+   "kw": 22,
+   "price_rsd": 232000,
+   "vat": "nije naznačen",
+   "seller": "elektroleum",
+   "url": "https://elektroleum.rs/proizvod/schneider-electric-wallbox-type-2-mode-3-22kw-rfid-nfc-evb3i22nc0m/",
+   "note": "na sajtu kao „Wallbox Type 2 Mode 3 22 kW RFID NFC“",
+   "stock": "",
+   "date": "23.09.2026"
+  },
+  {
+   "brand": "Schrack",
+   "model": "i-CHARGE CION Home 22 kW (kabl Tip 2 4,7 m, bez mreže)",
+   "kw": 22,
+   "price_rsd": 82460,
+   "vat": "nije naznačen",
+   "seller": "schrack-technik",
+   "url": "https://www.schrack.rs/prodavnica/catalog/product/view/id/187537/",
+   "note": "prodavnica je namenjena i firmama",
+   "stock": "",
+   "date": "23.09.2026"
   },
   {
    "brand": "Sungrow",
@@ -693,6 +777,6 @@
   "**Sungrow**: 70.092 RSD za AC011E-01 (11 kW) kod SP Solara prema 90.000 RSD za „Sungrow 7,4/11/22 kW sa kablom“ kod ChargeGo — kod ChargeGo je u ceni kabl, a cena je akcijska (redovna 120.000).",
   "**Schneider Electric**: ista marka, tri linije i tri cene za 11 kW — Charge 93.120 RSD (Elmaks), EVlink Home 120.360 (Elmaks i Elektro Centar Nais), EVlink Wallbox 157.028,40 (EP Solutions).",
   "**Wallbox Pulsar**: Plus i Max se razlikuju po snazi i opremi, ne samo po imenu — Pulsar Plus 7,4 kW je oko 96.000–98.000 RSD, Pulsar Max 22 kW oko 110.000, a Pulsar Pro 22 kW 141.600 (Emobility).",
-  "**ABB Terra AC 22 kW**: najveći raspon u registru — 78.820 RSD (Jakov Sistem, W22-T-R-C-0 sa kablom, akcija sa 119.710), 111.972 (Elektronapon, W22 bez kabla) i 275.559 (Bazzar, utičnica sa RFID i 4G). Oznake modela nisu iste, pa ni uređaji nisu isti — razlika je u kablu, RFID-u i 4G modulu — ali trostruka razlika u ceni zaslužuje da se pre kupovine uporede tačne oznake."
+  "**ABB Terra AC 22 kW**: najveći raspon u registru — 76.483 RSD (Tehnodućan, sa RFID i 4G, online popust sa 95.604), 78.820 (Jakov Sistem, akcija sa 119.710), 111.972 (Elektronapon, bez kabla) i 275.559 (Bazzar, sa RFID i 4G). Oznake modela nisu iste, pa ni uređaji nisu isti — razlika je u kablu, RFID-u i 4G modulu — ali višestruka razlika u ceni zaslužuje da se pre kupovine uporede tačne oznake."
  ]
 }

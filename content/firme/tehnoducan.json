@@ -1,21 +1,47 @@
 {
  "slug": "tehnoducan",
  "name": "Tehnodućan",
- "group": "L",
- "publish": false,
+ "group": "C",
+ "publish": true,
  "is_us": false,
- "kind": "trag",
- "website": "https://tehnoducan.rs",
+ "kind": "prodavnica",
+ "website": "https://www.tehnoducan.rs/shop/elektro-oprema/punjaci-za-elektro-vozila/privatni-kucni-ev-punjaci/view.0804030.html",
  "domain": "tehnoducan.rs",
- "city": "—",
- "coverage": "",
- "offer": "ABB Terra AC W22/W11/W7 u kategoriji; stranice proizvoda bez cene",
- "price_headline": "",
- "cells": {},
- "verdicts": {},
- "contact": {},
- "sources": [],
- "verified": "22.09.2026",
- "confidence": "nisko",
- "notes": "Trag — proveriti pozivom pre objave."
+ "city": "Beograd",
+ "coverage": "cela Srbija (online)",
+ "offer": "Online prodavnica elektro opreme; ABB Terra AC 7,4 i 22 kW, kabl i RFID kartice",
+ "price_headline": "ABB Terra AC 22 kW: 76.483 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">ABB Terra AC 22 kW, RFID, 4G (W22-T-R-C-0): 76.483 RSD</b> (redovna 95.604 — popust samo za online kupovinu)<br/>ABB Terra AC 7,4 kW, RFID (W7-T-R-0): 103.892<br/>Kabl Tip 2 – Tip 2, 7 m, 32 A: 53.367 · RFID kartice, 5 kom: 3.410<small>PDV nije naznačen uz cenu; na zalihama 22 kW i 7,4 kW; bez ugradnje</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b><small>Garancija: 2 godine</small>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "address": "Bulevar Zorana Đinđića 73, 11070 Beograd",
+  "phone": "+381 60 466 66 50",
+  "email": "office@tehnoducan.rs"
+ },
+ "sources": [
+  {
+   "url": "https://www.tehnoducan.rs/shop/elektro-oprema/punjaci-za-elektro-vozila/privatni-kucni-ev-punjaci/view.0804030.html",
+   "label": "tehnoducan.rs — kućni EV punjači (cene)",
+   "date": "23.09.2026"
+  },
+  {
+   "url": "https://www.tehnoducan.rs/shop/abb-w22-t-r-c-0/product.html?id=6AGC082153",
+   "label": "tehnoducan.rs — ABB Terra AC 22 kW",
+   "date": "23.09.2026"
+  }
+ ],
+ "verified": "23.09.2026",
+ "confidence": "visoko",
+ "notes": "Ranije u tragovima jer se cena nije videla bez pregledača; 23.09.2026. proverena u pregledaču."
 }

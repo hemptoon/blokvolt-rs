@@ -15,7 +15,8 @@
  "verdicts": {},
  "contact": {},
  "sources": [],
- "verified": "22.09.2026",
+ "verified": "23.09.2026",
  "confidence": "nisko",
- "notes": "Trag — proveriti pozivom pre objave."
+ "notes": "Provereno 23.09.2026 — nije u registru. Distributer video nadzora i mrežne opreme (Teltonika); punjači za automobile se na sajtu ne pominju, ni u pretrazi.",
+ "excluded_reason": "Distributer video nadzora i mrežne opreme (Teltonika); punjači za automobile se na sajtu ne pominju, ni u pretrazi."
 }

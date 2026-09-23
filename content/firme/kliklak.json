@@ -1,0 +1,28 @@
+{
+ "slug": "kliklak",
+ "name": "Kliklak",
+ "group": "L",
+ "publish": false,
+ "is_us": false,
+ "kind": "trag",
+ "website": "https://www.kliklak.rs/punjaci-za-elektricna-vozila/wallbox",
+ "domain": "kliklak.rs",
+ "city": "",
+ "coverage": "",
+ "offer": "",
+ "price_headline": "",
+ "cells": {},
+ "verdicts": {},
+ "contact": {},
+ "sources": [
+  {
+   "url": "https://www.kliklak.rs/punjaci-za-elektricna-vozila/wallbox",
+   "label": "kliklak.rs — kategorija Wallbox",
+   "date": "23.09.2026"
+  }
+ ],
+ "verified": "23.09.2026",
+ "confidence": "nisko",
+ "excluded_reason": "Web-shop ima kategoriju „Punjači za električna vozila / Wallbox“, ali u njoj na dan provere nije bilo nijednog proizvoda.",
+ "notes": "Proveriti ponovo na kvartalnoj reviziji."
+}

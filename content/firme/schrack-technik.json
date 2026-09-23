@@ -1,21 +1,43 @@
 {
  "slug": "schrack-technik",
  "name": "Schrack Technik Srbija",
- "group": "L",
- "publish": false,
+ "group": "C",
+ "publish": true,
  "is_us": false,
- "kind": "trag",
- "website": "https://schrack.rs",
+ "kind": "distributer",
+ "website": "https://www.schrack.rs/prodavnica/catalog/product/view/id/187537/",
  "domain": "schrack.rs",
  "city": "Beograd",
- "coverage": "",
- "offer": "i-CHARGE CION u pretrazi; stranice proizvoda 404",
- "price_headline": "",
- "cells": {},
- "verdicts": {},
+ "coverage": "cela Srbija",
+ "offer": "Distributer elektroopreme, pre svega za električare i firme; punjači i-CHARGE CION",
+ "price_headline": "i-CHARGE CION Home 22 kW: 82.460 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">i-CHARGE CION Home 22 kW, kabl Tip 2 4,7 m, bez mreže: 82.460 RSD</b><br/>i-CHARGE CION Semipublic 22 kW sa RFID karticama: cena nije prikazana<small>PDV nije naznačen uz cenu; prodavnica je namenjena i firmama; bez ugradnje</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
  "contact": {},
- "sources": [],
- "verified": "22.09.2026",
- "confidence": "nisko",
- "notes": "Trag — proveriti pozivom pre objave."
+ "sources": [
+  {
+   "url": "https://www.schrack.rs/prodavnica/catalog/product/view/id/187537/",
+   "label": "schrack.rs — i-CHARGE CION Home 22 kW",
+   "date": "23.09.2026"
+  },
+  {
+   "url": "https://www.schrack.rs/prodavnica/catalog/product/view/id/187538/",
+   "label": "schrack.rs — i-CHARGE CION Semipublic 22 kW",
+   "date": "23.09.2026"
+  }
+ ],
+ "verified": "23.09.2026",
+ "confidence": "srednje",
+ "notes": "Cena se vidi bez prijave; nije naznačeno da li je sa PDV-om, a prodavnica je prvenstveno za električare i firme."
 }

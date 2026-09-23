@@ -1,21 +1,41 @@
 {
  "slug": "sirotin",
  "name": "Sirotin Šabac",
- "group": "L",
- "publish": false,
+ "group": "C",
+ "publish": true,
  "is_us": false,
- "kind": "trag",
- "website": "https://sirotin.rs",
+ "kind": "prodavnica",
+ "website": "https://www.sirotin.rs/index.php?c=2519",
  "domain": "sirotin.rs",
  "city": "Šabac",
- "coverage": "",
- "offer": "veleprodaja elektromaterijala; Schneider EVlink u pretrazi, bez cena na sajtu",
- "price_headline": "",
- "cells": {},
- "verdicts": {},
- "contact": {},
- "sources": [],
- "verified": "22.09.2026",
- "confidence": "nisko",
- "notes": "Trag — proveriti pozivom pre objave."
+ "coverage": "cela Srbija (online)",
+ "offer": "Veleprodaja i maloprodaja elektromaterijala; punjači Morek od 11 i 22 kW",
+ "price_headline": "Morek 11 kW sa kablom: 72.000 RSD",
+ "cells": {
+  "cena": "<b class=\"pr\">Morek 11 kW, ekran, LAN, WiFi, RFID, kabl 6,5 m (MEV11DREWN6T2): 72.000 RSD</b><br/>Morek 22 kW, pametni (MEV22DREWN6T2): 81.600<br/>Morek 11 kW, prenosni (MEV11DNNNN5T2): 60.000<small>sve sa PDV-om; na lageru; bez ugradnje</small>",
+  "ugradnja": "<b class=\"v no\">Ne pominje se</b>",
+  "brojilo": "<b class=\"v no\">Ne pominje se</b>",
+  "skupstina": "<b class=\"v no\">Ne pominje se</b>",
+  "usluga": "<b class=\"v no\">Ne pominje se</b>"
+ },
+ "verdicts": {
+  "ugradnja": "Ne pominje se",
+  "brojilo": "Ne pominje se",
+  "skupstina": "Ne pominje se",
+  "usluga": "Ne pominje se"
+ },
+ "contact": {
+  "address": "Veleprodaja: Obilazni put 26A · Maloprodaja: Masarikova 96, Šabac",
+  "email": "office@sirotin.rs"
+ },
+ "sources": [
+  {
+   "url": "https://www.sirotin.rs/index.php?c=2519",
+   "label": "sirotin.rs — Morek punjači do 22 kW AC (cene sa PDV-om)",
+   "date": "23.09.2026"
+  }
+ ],
+ "verified": "23.09.2026",
+ "confidence": "visoko",
+ "notes": ""
 }

@@ -153,24 +153,34 @@ page's stat block (cheapest model, count under 30.000 €).
 
 ### 3.5b Model photos (only when a model is added or a photo is wrong)
 
-`content/data/ev-foto.json` maps `"<brand>||<model>"` (the raw keys of `ev-modeli.json`) to a file in
-`static/assets/auto/<slug>.png` plus the author, licence name, licence URL and Commons file page.
-`scripts/gen_ev_modeli.py` renders the thumbnail in the first table column and the credit list under
-`## Fotografije modela`; a model with no entry simply gets no photo (today: JMEV Elight, JMEV EWind).
+`content/data/ev-foto.json` maps `"<brand>||<model>"` (the raw keys of `ev-modeli.json`) to
+`static/assets/auto/<slug>.png` plus author, licence, licence URL, Commons file page and `v` (first 8
+hex of the PNG's SHA-1 — `/assets/*` is served `immutable`, so the `src` carries `?v=` and must change
+whenever the file does). `scripts/gen_ev_modeli.py` renders the thumbnail in the first table column
+(a grey silhouette when a model has no photo — today JMEV Elight and EWind) and the credit list under
+`## Fotografije modela`.
 
 Rules, non-negotiable: only files from Wikimedia Commons under a free licence (CC0, CC BY, CC BY-SA),
-never a press photo, a dealer photo or an image found through a search engine. Copy the author string
-and the licence exactly as the file page states them — CC BY-SA requires the author, the licence and
-the fact that the picture was changed, all of which the page's credit block carries.
+never a press photo, a dealer photo or an image found through a search engine. Copy author and licence
+exactly as the file page states them. The photo must show the model and generation in the table — the
+facelift if the price list is for the facelift, the EV and not the petrol or PHEV twin, not a concept,
+not an N Line when the table says N. A front three-quarter view with the whole car in frame; no rear
+views, no open doors, nothing standing in front of the car.
 
-Adding one: open the file page on commons.wikimedia.org, take the 640 px thumbnail, cover-crop to
-480x270, then
-`Image.resize((240,135), LANCZOS).quantize(colors=128)` and save as PNG (~20 KB) into
-`static/assets/auto/`. This container cannot reach wikimedia.org (proxy 403), so the fetch and the
-crop happen in the browser on the Commons origin and the bytes come back through the GitHub upload
-tab; section 6 describes that transfer. `/assets/*` is served `immutable`, so every thumbnail carries `?v=<hash>` in its `src`, taken from
-`v` in `ev-foto.json` (first 8 hex of the file's SHA-1). Recompute that field whenever a file
-changes, or browsers keep the old picture forever.
+How it was done (23.09.2026), and how to add one:
+1. Choose on commons.wikimedia.org in the browser: the Commons API (`generator=search`,
+   `gsrsearch=intitle:"<model>" filetype:bitmap`, `iiprop=url|size|extmetadata`) gives candidates;
+   render them as a grid of 320 px thumbnails with index numbers on a blank Commons page and pick by
+   eye from a screenshot. The container cannot reach wikimedia.org (proxy 403).
+2. Transfer: re-encode the chosen files to 1024 px JPEG in the browser, open
+   `github.com/hemptoon/blokvolt-rs/upload/<branch>` from the Commons tab through a clicked
+   `<a target="_blank" rel="opener">`, and `postMessage` the blobs to it; commit to a throwaway
+   branch (`hemptoon-patch-2` holds the current sources and `sources*.json`), then `git archive` it here.
+3. Cut out and compose: `python3 scripts/foto_compose.py <slug>` (IS-Net). Add a `KEEP` box, `CUT`
+   region, `RED` colour cut or a larger opening `KERNEL` for that slug when something else sticks to
+   the car, and look at the result at display size before publishing.
+4. Quantize to 256 colours with dithering and write to `static/assets/auto/<slug>.png` (~16 KB),
+   recompute `v`, update the entry in `ev-foto.json`, run `gen_ev_modeli.py`.
 
 ### 3.6 Statistics (quarterly, after SAUVD/ABS figures appear)
 
