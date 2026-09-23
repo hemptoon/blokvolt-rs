@@ -10,6 +10,10 @@
  "city": "Beograd",
  "coverage": "cela Srbija (online)",
  "offer": "Marketplace sa zasebnim prodavcima; u kategoriji punjača dva zidna uređaja (ABB, Union) i kablovi",
+ "brands": [
+  "ABB",
+  "Union (Vestel)"
+ ],
  "price_headline": "Union EVC04-AC7SWDA: 88.690 RSD",
  "cells": {
   "cena": "<b class=\"pr\">Union EV punjač EVC04-AC7SWDA: 88.690 RSD</b><br/>ABB Terra AC 22 kW, 3P 32 A, utičnica Tip 2, RFID + 4G: 275.559<br/>Kabl Gembird Tip 2, 3,7 kW, 8 m: 9.561 · adapter 4.145 · držači kabla 503 i 915<small>PDV nije naznačen uz cenu; prodavac po artiklu, bez ugradnje</small>",

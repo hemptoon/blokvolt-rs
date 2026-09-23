@@ -10,6 +10,9 @@
  "city": "Beograd",
  "coverage": "cela Srbija",
  "offer": "Orion eMobility AC wallbox (ABB Terra AC), 11 i 22 kW, RFID, 4G; operator javne mreže punjača; „Elektro punjači za fizička lica“",
+ "brands": [
+  "ABB"
+ ],
  "price_headline": "11 kW: 99.000 RSD",
  "cells": {
   "cena": "<b class=\"pr\">11 kW (kabl 5 m, RFID): 99.000 RSD</b><br/>22 kW kabl 5 m, RFID + 4G: 119.000<br/>22 kW utičnica: 109.000<br/>postolje 42.300 · kabl Type 2 7 m 42.600<small>cene na sajtu sa PDV-om, bez montaže</small>",

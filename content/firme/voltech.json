@@ -10,6 +10,10 @@
  "city": "Čoka",
  "coverage": "cela Srbija (online)",
  "offer": "Sopstveni brend Voltech (EVX07/11/22) + Honor, BENY, Gemini; wallbox 7,4–22 kW, deo modela OCPP/WiFi; „preko dve godine iskustva“",
+ "brands": [
+  "BENY",
+  "Voltech"
+ ],
  "price_headline": "EVX11 11 kW: 48.000 RSD",
  "cells": {
   "cena": "<b class=\"pr\">EVX11 11 kW: 48.000 RSD</b><br/>Gemini 11 kW: 60.000 · Honor11 + DLB: 68.000<br/>EVX07 7,4 kW: 38.000<br/>22 kW: 55.000–80.000 · BENY 22 kW OCPP: 70.000<small>PDV-status na sajtu nije označen; iste cene i na eponuda.com</small>",

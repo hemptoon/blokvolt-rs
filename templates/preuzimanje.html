@@ -11,7 +11,7 @@
 <h2 id="tabele">Tabele</h2>
 <div class="bva-cards agg-grid">
 {% for d in datasets %}
-<a class="bva-card agg-card" href="/preuzimanje/{{ d.name }}" download><b>{{ d.title }}</b><span class="agg-meta">CSV · {{ d.rows }} redova · {{ d.kb }} KB</span><span>{{ d.desc }}</span><span class="agg-chk">Ažurira se {{ d.cadence }}</span></a>
+<a class="bva-card agg-card" href="/preuzimanje/{{ d.name }}" download><b>{{ d.title }}</b><span class="agg-meta">CSV · {{ d.rows|plural('red', 'reda', 'redova') }} · {{ d.kb|sr(1) }} KB</span><span>{{ d.desc }}</span><span class="agg-chk">Ažurira se {{ d.cadence }}</span></a>
 {% endfor %}
 </div>
 <h2>Kako da otvorite fajl</h2>

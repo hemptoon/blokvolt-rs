@@ -10,6 +10,9 @@
  "city": "Beograd",
  "coverage": "Srbija",
  "offer": "Inženjerska firma, zastupnik evropskih proizvođača; Fronius Wattpilot Go 11J / Home 11J; web-shop prodaja.conseko.rs nije radio na dan provere",
+ "brands": [
+  "Fronius"
+ ],
  "price_headline": "na upit",
  "cells": {
   "cena": "<b class=\"v ask\">Na upit</b>",

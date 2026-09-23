@@ -39,12 +39,13 @@ def export_all(dist, site, published, operators, price_index, ev_data, wallbox, 
         v = f.get('verdicts', {})
         rows.append([f['name'], f.get('city', ''), f.get('coverage', ''), f['group'], f['group_label'],
                      f.get('kind_label', ''), f.get('price_headline', ''), v.get('ugradnja', ''),
-                     v.get('brojilo', ''), v.get('skupstina', ''), v.get('garancija', ''),
-                     f.get('website', ''), f['verified'], f.get('confidence', ''), site + f['url']])
+                     v.get('brojilo', ''), v.get('skupstina', ''), v.get('usluga', ''),
+                     f.get('website', ''), f['verified'], f.get('confidence', ''), site + f['url'],
+                     ', '.join(f.get('brands', []))])
     out.append(_write(dist, 'blokvolt-firme.csv',
                       ['naziv', 'sediste', 'pokrivenost', 'grupa', 'grupa_opis', 'tip', 'javna_cena',
-                       'ugradnja', 'brojilo', 'skupstina', 'garancija', 'sajt', 'provereno',
-                       'pouzdanost', 'stranica_blokvolt'], rows))
+                       'ugradnja', 'brojilo', 'skupstina', 'usluga_i_garancija', 'sajt', 'provereno',
+                       'pouzdanost', 'stranica_blokvolt', 'brendovi'], rows))
 
     # 2. EV models with a published price
     sub = ev_data.get('subsidy_eur', 5000)

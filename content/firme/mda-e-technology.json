@@ -10,6 +10,9 @@
  "city": "Beograd",
  "coverage": "cela Srbija",
  "offer": "Ekskluzivni distributer španskog Orbis (Viaris UNI 3,7–22 kW, Viaris combi, city); OCPP-J; MID opciono; pominje stambene zgrade i garaže investitora",
+ "brands": [
+  "Orbis"
+ ],
  "price_headline": "na upit",
  "cells": {
   "cena": "<b class=\"v ask\">Na upit</b><small>cene nisu objavljene, forma za konsultaciju</small>",

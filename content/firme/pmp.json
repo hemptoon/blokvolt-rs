@@ -9,6 +9,9 @@
  "city": "Beograd",
  "coverage": "cela Srbija",
  "offer": "ETEK: prenosivi 3,7 / 7,3 kW, zidni 11 / 22 kW (RFID), Smart 11 / 22 kW (OCPP, MID, 4G), DC 40–240 kW; Ostružnica; isporuka 2–5 dana",
+ "brands": [
+  "ETEK"
+ ],
  "price_headline": "11 kW RFID: 43.197,72 RSD",
  "cells": {
   "cena": "<b class=\"pr\">11 kW RFID: 43.197,72 RSD</b><br/>Smart 11 kW OCPP sa ugrađenim MID brojilom: 64.294,27<br/>22 kW RFID: 48.364,22<small>sve „sa PDV“</small>",

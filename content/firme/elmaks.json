@@ -9,6 +9,9 @@
  "city": "Niš",
  "coverage": "Niš / online",
  "offer": "Schneider Charge 7,4/11/22 kW, EVlink Home, dodaci za raspodelu opterećenja; veleprodaja elektromaterijala",
+ "brands": [
+  "Schneider Electric"
+ ],
  "price_headline": "Schneider Charge 7,4/11/22 kW: 93.120 RSD",
  "cells": {
   "cena": "<b class=\"pr\">Schneider Charge 7,4/11/22 kW: 93.120 RSD</b><br/>Schneider Charge 11 kW sa kablom 7 m: 97.920<br/>EVlink Home 11 kW: 120.360<small>PDV nije naznačen na sajtu</small>",

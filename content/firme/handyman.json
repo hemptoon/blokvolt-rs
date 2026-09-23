@@ -10,6 +10,7 @@
  "city": "Beograd",
  "coverage": "Beograd",
  "offer": "Servis majstora i električara; posebna usluga „Električni automobili: instalacija punjača u vašem domaćinstvu“; uređaj ne prodaje",
+ "brands": [],
  "price_headline": "na upit",
  "cells": {
   "cena": "<b class=\"v no\">Uređaj ne prodaje</b>",

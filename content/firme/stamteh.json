@@ -9,6 +9,9 @@
  "city": "Niš",
  "coverage": "Niš / online",
  "offer": "Wallbox Pulsar Plus 7,4 kW, Pulsar Max 22 kW, Copper SB 22 kW (opšta tehnika); online prodaja",
+ "brands": [
+  "Wallbox"
+ ],
  "price_headline": "Pulsar Plus 7,4 kW: 98.166,99 RSD",
  "cells": {
   "cena": "<b class=\"pr\">Pulsar Plus 7,4 kW: 98.166,99 RSD</b><br/>Pulsar Max 22 kW: 110.293,99<br/>Copper SB 22 kW: 112.393,99<small>sa PDV-om; 11 kW varijanta nije u ponudi</small>",

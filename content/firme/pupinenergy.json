@@ -9,6 +9,9 @@
  "city": "Beograd",
  "coverage": "cela Srbija",
  "offer": "Sopstveni brend: WallMax 1000 (7,4 / 11 / 22 kW), SkyCharge, PowerGo MultiPlug (prenosivi 11 kW); prodaja i instalacija; „celokupna teritorija Srbije“",
+ "brands": [
+  "PupinEnergy"
+ ],
  "price_headline": "cena nije objavljena",
  "cells": {
   "cena": "WallMax 7,4/11/22 kW: <b class=\"pr\">cena nije objavljena</b><br/>PowerGo MultiPlug 2000 (prenosivi): 64.590 RSD<br/>FleXcharge 1000: 41.490 RSD<small>PDV nije naznačen</small>",

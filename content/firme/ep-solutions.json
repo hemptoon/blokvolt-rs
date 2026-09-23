@@ -10,6 +10,9 @@
  "city": "Beograd",
  "coverage": "cela Srbija (B2B web-shop)",
  "offer": "Industrijski distributer Schneider Electric sa web-shopom; EVlink Wallbox 11 kW (T2 utičnica) i 22 kW",
+ "brands": [
+  "Schneider Electric"
+ ],
  "price_headline": "EVlink Wallbox 11 kW: 157.028 RSD",
  "cells": {
   "cena": "<b class=\"pr\">EVlink Wallbox 11 kW: 157.028,40 RSD</b><small>PDV-status nije označen; „out of stock“ na dan provere</small>",

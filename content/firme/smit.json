@@ -9,6 +9,9 @@
  "city": "Srbobran",
  "coverage": "Vojvodina",
  "offer": "Circontrol AC wallbox i DC; primarno video-nadzor i kapije; Srbobran, Novi Sad, Subotica, Ruma, Inđija; Vojvodina",
+ "brands": [
+  "Circontrol"
+ ],
  "price_headline": "Nije objavljena",
  "cells": {
   "cena": "<b class=\"pr\">Nije objavljena</b><small>„zatraži ponudu“</small>",

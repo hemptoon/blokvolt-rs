@@ -10,6 +10,9 @@
  "city": "Beograd",
  "coverage": "cela Srbija",
  "offer": "Distributer elektroopreme, pre svega za električare i firme; punjači i-CHARGE CION",
+ "brands": [
+  "Schrack"
+ ],
  "price_headline": "i-CHARGE CION Home 22 kW: 82.460 RSD",
  "cells": {
   "cena": "<b class=\"pr\">i-CHARGE CION Home 22 kW, kabl Tip 2 4,7 m, bez mreže: 82.460 RSD</b><br/>i-CHARGE CION Semipublic 22 kW sa RFID karticama: cena nije prikazana<small>PDV nije naznačen uz cenu; prodavnica je namenjena i firmama; bez ugradnje</small>",

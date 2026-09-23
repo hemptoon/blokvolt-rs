@@ -10,6 +10,15 @@
  "city": "Beograd",
  "coverage": "cela Srbija",
  "offer": "Distributer i integrator: Kempower, Alfen (Eve Single/Double), NRGkick, Wallbox Pulsar Pro/Max, Juice, Zaptec, Exicom; klijenti Rivian, Volvo Trucks, Premier Taxi",
+ "brands": [
+  "Alfen",
+  "Exicom",
+  "Juice",
+  "Kempower",
+  "NRGkick",
+  "Wallbox",
+  "Zaptec"
+ ],
  "price_headline": "na upit",
  "cells": {
   "cena": "<b class=\"v ask\">Na upit</b><small>„Za ponudu punjača i kompletne instalacije možete nas kontaktirati“</small>",

@@ -10,6 +10,7 @@
  "city": "Beograd / Novi Sad",
  "coverage": "Srbija",
  "offer": "Rent-a-car i uvoz EV; „iznajmljivanje i prodaja punjača“ različitih snaga; za vlasnike lokacija: renta 1,99 €/dan ili podela prihoda",
+ "brands": [],
  "price_headline": "na upit",
  "cells": {
   "cena": "<b class=\"v ask\">Na upit</b><small>modeli, snage i cene u RSD nisu objavljeni</small>",

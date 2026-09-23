@@ -9,6 +9,14 @@
  "city": "Novi Banovci, Beograd",
  "coverage": "cela Srbija",
  "offer": "Wallbox, Alfen, Fronius Wattpilot, SMA, Sigen, Victron; 3,7–22 kW i DC moduli; od 2007; Srbija (dva sedišta, 3 magacina)",
+ "brands": [
+  "Alfen",
+  "Fronius",
+  "Sigenergy",
+  "SMA",
+  "Victron",
+  "Wallbox"
+ ],
  "price_headline": "Wallbox Pulsar Max 22 kW: 92.040 RSD bez PDV",
  "cells": {
   "cena": "<b class=\"pr\">Wallbox Pulsar Max 22 kW: 92.040,39 RSD bez PDV</b> (≈110.450 sa PDV)<br/>Pulsar Plus 7,4 kW: 80.047,89 bez PDV<br/>Copper SB 22 kW: 91.649,61 bez PDV<br/>Alfen Eve Double Pro-line: 369.622,89 bez PDV<small>web-shop solarni-paneli.co.rs (isto pravno lice), 22.09.2026; na elektro-punjaci.rs cene nema</small>",

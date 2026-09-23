@@ -9,6 +9,9 @@
  "city": "Beograd",
  "coverage": "cela Srbija",
  "offer": "Livoltek Atom / Robot, AC 7–22 kW i DC; aplikacija; „cela teritorija Srbije“; 12+ godina, 200+ partnera",
+ "brands": [
+  "Livoltek"
+ ],
  "price_headline": "11 kW: 95.000 RSD",
  "cells": {
   "cena": "<b class=\"pr\">11 kW: 95.000 RSD</b><br/>(redovno 130.000)<br/>22 kW: 110.000 (redovno 170.500)<small>„ukupno sa PDV-om i standardnom ugradnjom“</small>",

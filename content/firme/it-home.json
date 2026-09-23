@@ -10,6 +10,9 @@
  "city": "Vranje",
  "coverage": "cela Srbija (online)",
  "offer": "Solarni sistemi i pametna kuća; distribucija Teltonika TeltoCharge 11 i 22 kW (WiFi/Bluetooth ili GSM, NFC)",
+ "brands": [
+  "Teltonika"
+ ],
  "price_headline": "TeltoCharge 11 kW: 93.600 RSD",
  "cells": {
   "cena": "<b class=\"pr\">TeltoCharge 11 kW: 93.600 RSD</b><br/>TeltoCharge 22 kW: 128.700<small>sa PDV-om</small>",

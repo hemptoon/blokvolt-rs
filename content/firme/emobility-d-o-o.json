@@ -9,6 +9,11 @@
  "city": "Novi Sad",
  "coverage": "cela Srbija; partneri u Čačku i Somboru",
  "offer": "Wallbox Pulsar Plus / Pro, IoCharger, Etrel; DC (SCU); platforma za monitoring i naplatu; područje nije navedeno (mreža instalatera)",
+ "brands": [
+  "Etrel",
+  "Iocharger",
+  "Wallbox"
+ ],
  "price_headline": "Wallbox Pulsar Pro 22 kW: 118.000 RSD + PDV",
  "cells": {
   "cena": "<b class=\"pr\">Wallbox Pulsar Pro 22 kW: 118.000 RSD + PDV</b><br/>(≈ 141.600 sa PDV)<br/>IoCharger Smart AC 22 kW sa kablom: 80.900 + PDV (≈ 97.080)<br/>Mini Smart AC 22 kW: 59.100 + PDV (≈ 70.920)<br/>Pulsar Plus 22 kW: 84.000 + PDV (≈ 100.800; „nema na stanju“)",

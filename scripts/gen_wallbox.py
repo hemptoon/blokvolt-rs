@@ -68,6 +68,16 @@ def cena_plural(n):
     return f'{n} objavljenih cena'
 
 
+def pl(n, one, few, many):
+    """Serbian noun form for a count (without the number): 1/21 model, 2-4 modela, 5+ modela."""
+    last, last2 = n % 10, n % 100
+    if last == 1 and last2 != 11:
+        return one
+    if last in (2, 3, 4) and last2 not in (12, 13, 14):
+        return few
+    return many
+
+
 blocks = []
 for title, pred in CLASSES:
     rows = [r for r in ROWS if pred(r)]
@@ -101,7 +111,7 @@ sources = ' | '.join(sorted({f"{FIRMS[r['seller']]['name']} — cene sa sajta ({
 
 md = f"""---
 title: Wallbox modeli u Srbiji 2026 — ko šta prodaje i po kojoj ceni
-description: {n_models} modela kućnih punjača sa javno objavljenom cenom kod {n_sellers} prodavaca u Srbiji: od {price(cheap11['price_rsd'])} RSD za 11 kW do preko 150.000 za iste snage. Cene za sam uređaj, sa izvorom i datumom provere ({CHECKED}).
+description: {n_models} {pl(n_models, 'model', 'modela', 'modela')} kućnih punjača sa javno objavljenom cenom kod {n_sellers} {pl(n_sellers, 'prodavca', 'prodavca', 'prodavaca')} u Srbiji: od {price(cheap11['price_rsd'])} RSD za 11 kW do preko 150.000 za iste snage. Cene za sam uređaj, sa izvorom i datumom provere ({CHECKED}).
 kicker: Podaci · modeli punjača
 lead: Isti punjač u Srbiji ume da košta i 30 % više kod drugog prodavca, a „11 kW“ na dve etikete ne znači isti uređaj. Ovde su svi modeli sa javnom cenom, poređani po snazi, sa linkom na prodavca.
 updated: {CHECKED}
@@ -113,7 +123,7 @@ disclaimer: Cene se menjaju i akcije traju kratko — pre kupovine proverite kod
 sources: {sources}
 ---
 <div class="bva-stats">
-<div class="bva-stat"><b>{len(ROWS)}</b><span>javno objavljenih cena uređaja kod {n_sellers} prodavaca u registru</span></div>
+<div class="bva-stat"><b>{len(ROWS)}</b><span>{pl(len(ROWS), 'javno objavljena cena', 'javno objavljene cene', 'javno objavljenih cena')} uređaja kod {n_sellers} {pl(n_sellers, 'prodavca', 'prodavca', 'prodavaca')} u registru</span></div>
 <div class="bva-stat"><b>{price(cheap11['price_rsd'])} RSD</b><span>najniža objavljena cena za 11 kW ({cheap11['brand']} {cheap11['model']}) — najskuplji 11 kW je četiri puta skuplji</span></div>
 <div class="bva-stat"><b>{price(cheap22['price_rsd'])} RSD</b><span>najniža objavljena cena za 22 kW ({cheap22['brand']} {cheap22['model']})</span></div>
 </div>
@@ -122,7 +132,7 @@ sources: {sources}
 
 Cena je za **sam uređaj**, bez ugradnje, onako kako je objavljena na sajtu prodavca {CHECKED}. Gde je cena bila bez PDV-a ili u evrima, u napomeni stoji originalna cena, a u koloni je naš preračun (PDV 20 %, 117,2 RSD/€). Kod nekih prodavaca PDV-status uopšte nije označen — i to piše u napomeni, jer je razlika 20 %.
 
-Cene „ključ u ruke“ (uređaj + ugradnja) nisu ovde nego u [uporednoj tabeli cena](/cena-punjaca-za-elektricni-auto), gde su i firme koje uređaj ne prodaju nego samo ugrađuju.
+Cene „ključ u ruke“ (uređaj + ugradnja) nisu ovde nego u [uporednoj tabeli cena](/cena-punjaca-za-elektricni-auto), gde su i firme koje uređaj ne prodaju nego samo ugrađuju. Ko u Srbiji zastupa koji brend i ko ga nudi i bez javne cene, piše na stranici [distributeri i brendovi](/firme/distributeri-punjaca/#brendovi); prodavci sa javnom cenom su zbirno na stranici [prodaja punjača](/firme/prodaja-punjaca/).
 
 {chr(10).join(blocks)}
 

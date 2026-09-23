@@ -9,6 +9,10 @@
  "city": "Beograd",
  "coverage": "cela Srbija",
  "offer": "FMT AC 7–22 kW (OCPP, RFID, aplikacija), Teltonika; DC; „ključ u ruke“; regionalni operater javnih punjača",
+ "brands": [
+  "FMT",
+  "Teltonika"
+ ],
  "price_headline": "FMT AC 7–22 kW: 570 € + PDV",
  "cells": {
   "cena": "<b class=\"pr\">FMT AC 7–22 kW: 570 € + PDV</b><br/>(≈ 80.200 RSD sa PDV)<br/>Teltonika 11/22 kW: na upit",

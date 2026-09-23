@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{# Sub-hub of the register by type of firm. Config and texts: content/data/firme-tipovi.json; membership: TYPE_RULES in build.py. #}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "CollectionPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ path }}", "inLanguage": "sr-Latn", "dateModified": "{{ ISO_TODAY }}",
+   "mainEntity": {"@type": "ItemList", "numberOfItems": {{ hub.n }}, "itemListElement": [{% for f in hub.firms %}{"@type": "ListItem", "position": {{ loop.index }}, "name": {{ f.name|tojson }}, "url": "{{ SITE }}{{ f.url }}"}{% if not loop.last %},{% endif %}{% endfor %}]}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Firme", "item": "{{ SITE }}/firme/"}, {"@type": "ListItem", "position": 3, "name": {{ hub.nav|tojson }}, "item": "{{ SITE }}{{ path }}"}]}
+ ]
+}</script>{% endblock %}
+{% block pageclass %} agg-wide{% endblock %}
+{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">{{ hub.kicker }}</div><h1>{{ hub.h1 }}</h1><p>{{ lead|safe }}</p><div class="v3-meta"><span>{{ hub.n|plural('firma', 'firme', 'firmi') }}</span><span>Provereno {{ FIRMS_CHECKED }}</span><span>Iste kolone za sve, uključujući nas</span></div><div class="v3-chips"><a href="/firme/">Sve firme ({{ n_firms }})</a>{% for h in TYPE_HUBS if h.slug != hub.slug %}<a href="{{ h.url }}">{{ h.chip }} ({{ h.n }})</a>{% endfor %}</div></div></div>{% endblock %}
+{% block content %}<div class="bva"><div class="w3">
+<p class="bva-lead">{{ intro|safe }}</p>
+<p class="bva-disc">Sajt vodi tim kompanije Evolako, koja i sama ugrađuje punjače. Zato objavljujemo samo javne, proverljive podatke sa izvorom i datumom, ne ocenjujemo firme, a sopstvenu ponudu označavamo kao „naša ponuda“ — u istoj listi, po istim kolonama. Kako biramo i proveravamo podatke: <a href="/metodologija/">metodologija</a>.</p>
+{% if hub.checklist %}
+<h2 id="pitanja">{{ hub.checklist_title }}</h2>
+<ol class="bva-steps">{% for t, d in hub.checklist %}<li><b>{{ t }}</b>{{ d|safe }}</li>{% endfor %}</ol>
+{% endif %}
+<h2 id="firme">{{ hub.list_title }} <span class="agg-count">{{ hub.n }}</span></h2>
+<p>Poređane po grupi iz <a href="/firme/">registra</a> i po imenu. Cene i uslovi su prepisani doslovno sa sajtova firmi; sve ostalo o firmi — kontakt, izvori, brojilo, papiri za skupštinu i garancija — je na njenoj stranici.</p>
+<p class="bva-legend"><b>Da</b> — piše na sajtu firme · <b>Na upit</b> — postoji, ali bez cene ili uslova · <b>Ne pominje se</b> — na sajtu nema te informacije</p>
+{% for g, label, lst in sections %}
+{% if sections|length > 1 %}<h3 id="grupa-{{ g|lower }}">{{ label }} <span class="agg-count">{{ lst|length }}</span></h3>{% endif %}
+<div class="bva-tw"><table class="bva-tbl agg-hub"><thead><tr><th>Firma</th><th>Javna cena</th><th>Ugradnja</th><th>Pokrivenost</th></tr></thead><tbody>
+{% for f in lst %}
+<tr{% if f.is_us %} class="is-us"{% endif %}><td data-label="Firma"><b><a href="{{ f.url }}">{{ f.name }}</a></b>{% if f.is_us %}<b class="us">naša ponuda</b>{% endif %}<small>{{ f.kind_label }} · {{ f.city }}</small>{% if f.brands %}<small class="of">{{ 'Brend' if f.brands|length == 1 else 'Brendovi' }}: {{ f.brands|join(', ') }}</small>{% endif %}<small class="chk">provereno {{ f.verified }} · <a href="{{ f.website }}" rel="noopener{% if not f.is_us %} nofollow{% endif %}">{{ f.domain }}</a></small></td><td data-label="Javna cena">{{ f.cells.cena|safe }}</td><td data-label="Ugradnja">{{ f.cells.ugradnja|safe }}</td><td data-label="Pokrivenost">{{ f.coverage or 'nije navedena na sajtu' }}</td></tr>
+{% endfor %}
+</tbody></table></div>
+{% endfor %}
+{% if outro %}<p>{{ outro|safe }}</p>{% endif %}
+{% if BRANDS %}
+<h2 id="brendovi">Brendovi u registru i ko ih nudi <span class="agg-count">{{ BRANDS|length }}</span></h2>
+<p>{{ brand_intro|safe }}</p>
+<div class="agg-brands">{% for b, lst in BRANDS %}<div><b>{{ b }}</b><span>{% for f in lst %}<a href="{{ f.url }}">{{ f.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span></div>{% endfor %}</div>
+<p>Cene po modelu, za one brendove čiji prodavci cenu objavljuju, su na stranici <a href="/podaci/wallbox-modeli/">wallbox modeli i cene</a>.</p>
+{% endif %}
+{% if show_cities %}
+<p>Ko radi u vašem gradu — firme sa sedištem u gradu i one koje ga pokrivaju sa strane, mreže javnog punjenja i sati niže tarife: {% for href, name in CITY_LINKS %}<a href="{{ href }}">{{ name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}.</p>
+{% endif %}
+<div class="bva-note"><p><strong>Nema vaše firme ili se nešto promenilo?</strong> Registar dopunjavamo iz javnih izvora i po prijavi. Pošaljite naziv, sajt i grad na <a href="/ispravka/">stranici za ispravke</a> — objavljujemo po istim pravilima kao sve ostale, bez naknade i bez ocena. Promene beležimo u <a href="/izmene/">dnevniku izmena</a>.</p></div>
+</div></div>{% endblock %}

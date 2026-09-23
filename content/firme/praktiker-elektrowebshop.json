@@ -10,6 +10,9 @@
  "city": "Nova Pazova",
  "coverage": "cela Srbija (online)",
  "offer": "Web-shop elektroopreme; Noark punjač 22 kW (400 V, 32 A) i Noark oprema za merenje struje",
+ "brands": [
+  "Noark"
+ ],
  "price_headline": "Noark 22 kW: 99.990 RSD",
  "cells": {
   "cena": "<b class=\"pr\">Noark 22 kW: 99.990 RSD</b><br/>Noark oprema za merenje struje: 22.999<small>PDV-status nije označen</small>",

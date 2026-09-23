@@ -10,6 +10,9 @@
  "city": "Pirot",
  "coverage": "cela Srbija (online)",
  "offer": "Solarne elektrane + web-shop; Sungrow AC011E-01 11 kW, kabl 7 m, IP65, OCPP 1.6, RFID i aplikacija",
+ "brands": [
+  "Sungrow"
+ ],
  "price_headline": "Sungrow 11 kW: 70.092 RSD",
  "cells": {
   "cena": "<b class=\"pr\">Sungrow AC011E-01, 11 kW: 70.092 RSD</b><small>sa PDV-om; isti model kod ChargeGo košta 90.000</small>",

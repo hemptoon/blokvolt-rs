@@ -9,6 +9,9 @@
  "city": "Čačak",
  "coverage": "Srbija",
  "offer": "Webasto Pure 11/22 kW, Webasto Next; primarno grejači i klime za vozila; područje nije navedeno",
+ "brands": [
+  "Webasto"
+ ],
  "price_headline": "Nije objavljena",
  "cells": {
   "cena": "<b class=\"pr\">Nije objavljena</b>",

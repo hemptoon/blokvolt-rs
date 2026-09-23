@@ -10,6 +10,11 @@
  "city": "Temerin",
  "coverage": "cela Srbija (online)",
  "offer": "Web-shop solarne opreme i akumulatora; Growatt THOR 11/22 kW, Victron EVCS 22 kW, Huawei SCharger 22 kW; integracija sa solarnim sistemom",
+ "brands": [
+  "Growatt",
+  "Huawei",
+  "Victron"
+ ],
  "price_headline": "Growatt THOR 22 kW: 72.000 RSD",
  "cells": {
   "cena": "<b class=\"pr\">Growatt THOR 22 kW: 72.000 RSD</b> (bilo 118.800)<br/>Growatt THOR 11 kW: 101.880<br/>Victron 22 kW: 76.800<br/>Huawei SCharger 22 kW: 118.800 (nema na stanju)<small>PDV-status na sajtu nije označen</small>",

@@ -9,6 +9,9 @@
  "city": "Vinča, Beograd",
  "coverage": "Srbija",
  "offer": "Wallbox Pulsar Plus, Copper SB, Quasar (DC); solarni integrator; Beograd i prigradske opštine",
+ "brands": [
+  "Wallbox"
+ ],
  "price_headline": "Nije objavljena",
  "cells": {
   "cena": "<b class=\"pr\">Nije objavljena</b><small>svaki proizvod „zahtev za ponudu“</small>",

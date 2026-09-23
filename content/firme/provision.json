@@ -10,6 +10,10 @@
  "city": "Novi Sad / Subotica",
  "coverage": "Vojvodina",
  "offer": "Circontrol eHome 5, eNext T, eVolve Smart S; Teltonika; servis ABB i Webasto; od 2017; sestrinski brend firme SMIT (Srbobran)",
+ "brands": [
+  "Circontrol",
+  "Teltonika"
+ ],
  "price_headline": "Circontrol eHome 5 (7,4 kW): 107.000 RSD",
  "cells": {
   "cena": "<b class=\"pr\">Circontrol eHome 5, 7,4 kW: 107.000 RSD</b><br/>eNext T, eVolve Smart S — cena na upit<small>„preporučene maloprodajne cene sa PDV-om“; „uz punjač se ne dobija kabl za punjenje“</small>",

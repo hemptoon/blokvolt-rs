@@ -10,6 +10,9 @@
  "city": "Beograd",
  "coverage": "cela Srbija (online)",
  "offer": "Online prodavnica elektronskih komponenti i alata; Schneider Electric wallbox 22 kW",
+ "brands": [
+  "Schneider Electric"
+ ],
  "price_headline": "Schneider Electric 22 kW: 150.000 RSD",
  "cells": {
   "cena": "<b class=\"pr\">Schneider Electric wallbox 22 kW, RFID/NFC (EVB3S22N41): 150.000 RSD</b><br/>Schneider Electric wallbox 22 kW, RFID/NFC (EVB3I22NC0M): 232.000<small>PDV nije naznačen uz cenu; bez ugradnje. Kategorija „punjači za električna vozila“ na sajtu sadrži punjače za trotinete — wallbox se nalazi pretragom</small>",

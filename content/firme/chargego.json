@@ -9,6 +9,11 @@
  "city": "Beograd (NTP)",
  "coverage": "cela Srbija",
  "offer": "Charge&amp;GO Smart Mini (Teison), Sungrow, Schneider; AC 7–22 kW i DC; „instalacija punjača svih brendova“; aplikacija; „600 ugrađenih punjača“; „servis širom Srbije“",
+ "brands": [
+  "Charge&GO",
+  "Schneider Electric",
+  "Sungrow"
+ ],
  "price_headline": "Sungrow 7,4/11/22 kW: 90.000 RSD",
  "cells": {
   "cena": "<b class=\"pr\">Sungrow 7,4/11/22 kW: 90.000 RSD</b><br/>(redovno 120.000)<br/>Smart Mini 11/22 kW: 72.000 sa kablom / 69.000 bez<br/>Smart Mini 7,4 kW: 42.000 (redovno 75.000)<small>sve „sa PDV-om“, bez ugradnje</small>",

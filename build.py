@@ -143,6 +143,30 @@ for f in published:
     f['group_label'] = GROUPS[f['group']][0]
     f['vclass'] = {k: verdict_class(v) for k, v in f.get('verdicts', {}).items()}
 by_group = {g: [f for f in published if f['group'] == g] for g in GROUPS}
+
+# Sub-hubs of the register by type of firm (/firme/<slug>/). Texts live in content/data/firme-tipovi.json;
+# who belongs where is decided here, from the same verdicts and groups the register shows.
+TYPE_RULES = {
+    'ugradnja': lambda f: f['vclass'].get('ugradnja') in ('yes', 'ask'),   # says on its site that it installs
+    'prodaja': lambda f: f['group'] in ('A', 'B', 'C'),                     # publishes a device price
+    'distributer': lambda f: f.get('kind') == 'distributer',
+    'solar': lambda f: f.get('kind') == 'solar',
+    'elektricar': lambda f: f.get('kind') == 'elektricar',
+}
+TYPE_HUBS = []
+for _h in json.load(open(ROOT / 'content' / 'data' / 'firme-tipovi.json', encoding='utf-8'))['hubs']:
+    _m = [f for f in published if TYPE_RULES[_h['rule']](f)]
+    TYPE_HUBS.append(dict(_h, url=f"/firme/{_h['slug']}/", firms=_m, n=len(_m)))
+_hub_slugs = {h['slug'] for h in TYPE_HUBS}
+assert not _hub_slugs & {f['slug'] for f in firms}, 'a firm slug collides with a /firme/ sub-hub'
+for f in published:
+    f['hubs'] = [h for h in TYPE_HUBS if any(x['slug'] == f['slug'] for x in h['firms'])]
+# brand -> firms that name it on their own site (curated `brands` in content/firme/*.json)
+BRAND_INDEX = {}
+for f in published:
+    for b in f.get('brands', []):
+        BRAND_INDEX.setdefault(b, []).append(f)
+BRAND_INDEX = [(b, sorted(lst, key=lambda f: f['name'].lower())) for b, lst in sorted(BRAND_INDEX.items(), key=lambda kv: kv[0].lower())]
 cities = {}
 for cfg in CITY_CFG:
     lst = [f for f in published if cfg['name'] in f['city_list']]
@@ -187,7 +211,8 @@ for row in price_index['rows']:
 # ---------- shared context ----------
 NAV = [('/firme/', 'Firme'), ('/cena-punjaca-za-elektricni-auto', 'Cene'), ('/javno-punjenje/', 'Javno punjenje'), ('/alati/kalkulator-troskova/', 'Kalkulator'), ('/vodici/', 'Vodiči'), ('/podaci/', 'Podaci')]
 CITY_LINKS = [(f"/gradovi/{c['slug']}/", c['name']) for c in CITY_CFG]
-base_ctx = dict(SITE=SITE, TODAY=TODAY, ISO_TODAY=ISO_TODAY, FIRMS_CHECKED=FIRMS_CHECKED, CITY_LINKS=CITY_LINKS, SITE_META=SITE_META, NAV=NAV, n_firms=len(published), n_leads=sum(1 for f in firms if not f.get('publish') and not f.get('excluded_reason')), n_excluded=sum(1 for f in firms if not f.get('publish') and f.get('excluded_reason')), n_vodica=7, n_ops=len(operators))
+base_ctx = dict(SITE=SITE, TODAY=TODAY, ISO_TODAY=ISO_TODAY, FIRMS_CHECKED=FIRMS_CHECKED, CITY_LINKS=CITY_LINKS, SITE_META=SITE_META, NAV=NAV, n_firms=len(published), n_leads=sum(1 for f in firms if not f.get('publish') and not f.get('excluded_reason')), n_excluded=sum(1 for f in firms if not f.get('publish') and f.get('excluded_reason')), n_vodica=7, n_ops=len(operators),
+                TYPE_NAV=[(h['url'], h['nav'], h['nav_desc'], h['n']) for h in TYPE_HUBS])
 
 def render(tpl, path, **ctx):
     t = env.get_template(tpl)
@@ -220,8 +245,11 @@ def patch_legacy(html_text, current=None):
     html_text = html_text.replace('<link rel="stylesheet" href="/assets/webflow.css">\n', '')
     html_text = html_text.replace('<link rel="stylesheet" href="/assets/site.css">', '<link rel="stylesheet" href="/assets/site.css">\n<link rel="stylesheet" href="/assets/agg.css">')
     html_text = html_text.replace('<script src="/assets/site.js" defer></script>', SCRIPTS)
-    _nf = f'{len(published)} firmi'
-    html_text = html_text.replace('cene 20 firmi', 'cene ' + _nf).replace('Cene 20 firmi', 'Cene ' + _nf).replace('20 firmi', _nf)
+    # the legacy pages say "cene 20 firmi" (genitive) and "20 firmi · 14 izvora" (a count label):
+    # 51 needs "cene 51 firme" but "51 firma · 14 izvora", so the two contexts are replaced separately
+    _n = len(published)
+    html_text = html_text.replace('>20 firmi · ', '>' + sr_plural(_n, 'firma', 'firme', 'firmi') + ' · ')
+    html_text = html_text.replace('20 firmi', sr_plural(_n, 'firme', 'firme', 'firmi'))
     return html_text
 
 # 1) legacy guides (passthrough with new chrome)
@@ -261,10 +289,22 @@ for f in published:
            description=f"{f['name']} ({f['city']}): šta nudi, javne cene, da li ugrađuje, brojilo, papiri za skupštinu, garancija. Provereno {f['verified']}. Isti podaci za sve firme.")
     add_url(f['url'], '0.6')
 EXCLUDED = sorted([f for f in firms if not f.get('publish') and f.get('excluded_reason')], key=lambda f: f['name'].lower())
-render('firme_index.html', '/firme/', GROUPS=GROUPS, by_group=by_group, firms=published, cities=cities, CITY_SLUGS=CITY_SLUGS, KINDS=KINDS, EXCLUDED=EXCLUDED,
-       title=f"Firme za punjače u Srbiji — {len(published)} prodavaca i instalatera, iste kolone za sve | BlokVolt",
-       description=f"Registar {len(published)} firmi koje prodaju ili ugrađuju kućne punjače za električne automobile u Srbiji: javne cene, ugradnja, MID brojilo, papiri za skupštinu, garancija. Provereno {FIRMS_CHECKED}.")
+render('firme_index.html', '/firme/', GROUPS=GROUPS, TYPE_HUBS=TYPE_HUBS, by_group=by_group, firms=published, cities=cities, CITY_SLUGS=CITY_SLUGS, KINDS=KINDS, EXCLUDED=EXCLUDED,
+       title=f"Firme za punjače u Srbiji — registar od {sr_plural(len(published), 'prodavca i instalatera', 'prodavca i instalatera', 'prodavaca i instalatera')}, iste kolone za sve | BlokVolt",
+       description=f"Registar od {sr_plural(len(published), 'firme', 'firme', 'firmi')} koje prodaju ili ugrađuju kućne punjače za električne automobile u Srbiji: javne cene, ugradnja, MID brojilo, papiri za skupštinu, garancija. Provereno {FIRMS_CHECKED}.")
 add_url('/firme/', '0.9')
+_WB = json.load(open(ROOT / 'content' / 'data' / 'wallbox-modeli.json', encoding='utf-8'))
+for h in TYPE_HUBS:
+    _tctx = dict(n=h['n'], n_firms=len(published), checked=FIRMS_CHECKED, n_d=len(by_group['D']),
+                 n_price=sum(1 for f in h['firms'] if f['group'] == 'A' or 'javna cena' in (f.get('verdicts', {}).get('ugradnja') or '').lower()),
+                 wb_rows=len(_WB['rows']), wb_models=len({(r['brand'], r['model']) for r in _WB['rows']}), n_brands=len(BRAND_INDEX))
+    _T = lambda txt: env.from_string(txt).render(**_tctx) if txt else ''
+    _sections = [(g, GROUPS[g][0], [f for f in h['firms'] if f['group'] == g]) for g in GROUPS]
+    render('firme_tip.html', h['url'], hub=h, TYPE_HUBS=TYPE_HUBS, sections=[x for x in _sections if x[2]],
+           lead=_T(h['lead']), intro=_T(h.get('intro')), outro=_T(h.get('outro')), brand_intro=_T(h.get('brand_intro')),
+           BRANDS=BRAND_INDEX if h['rule'] == 'distributer' else None, show_cities=h['rule'] in ('ugradnja', 'solar', 'elektricar'),
+           title=_T(h['title']), description=_T(h['description']))
+    add_url(h['url'], '0.7')
 NT_HOURS = {h['region']: h['window'] for h in CALC['eps']['nt_hours']}
 CITY_PAGES = []
 for cfg in CITY_CFG:
@@ -281,7 +321,7 @@ for cfg in CITY_CFG:
     render('grad.html', f'/gradovi/{slug}/', city=city, cfg=cfg, firms=local, covering=covering,
            shops=shops, city_ops=city_ops, n_all=n_all, nt=NT_HOURS.get(cfg['nt_region'], ''),
            GROUPS=GROUPS,
-           title=f"Punjač za električni auto u {cfg['loc']} — {n_all} firmi koje prodaju i ugrađuju | BlokVolt",
+           title=f"Punjač za električni auto u {cfg['loc']} — {sr_plural(n_all, 'firma koja prodaje i ugrađuje', 'firme koje prodaju i ugrađuju', 'firmi koje prodaju i ugrađuju')} | BlokVolt",
            description=(f"Ko ugrađuje kućni punjač u {cfg['loc']}: "
                         + (f"{sr_plural(len(local), 'firma', 'firme', 'firmi')} sa sedištem u gradu i "
                            + (f"još jedna koja pokriva {cfg['acc']} sa strane" if len(covering) == 1
@@ -392,7 +432,7 @@ EV_DATA = json.load(open(ROOT / 'content' / 'data' / 'ev-modeli.json', encoding=
 WALLBOX = json.load(open(ROOT / 'content' / 'data' / 'wallbox-modeli.json', encoding='utf-8'))
 DATASETS = open_data.export_all(DIST, SITE, published, operators, price_index, EV_DATA, WALLBOX, FIRMS_CHECKED)
 DL_META = {
-    'blokvolt-firme.csv': ('Registar firmi', f'Svih {len(published)} firmi koje u Srbiji prodaju ili ugrađuju kućni punjač: sedište, pokrivenost, javna cena, da li nude ugradnju, brojilo, papire za skupštinu i garanciju, sajt i datum provere.', f'kvartalno (poslednja revizija {FIRMS_CHECKED})'),
+    'blokvolt-firme.csv': ('Registar firmi', f'Sve firme iz registra ({len(published)}) koje u Srbiji prodaju ili ugrađuju kućni punjač: sedište, pokrivenost, brendovi koje nude, javna cena, da li nude ugradnju, brojilo, papire za skupštinu, uslugu i garanciju, sajt i datum provere.', f'kvartalno (poslednja revizija {FIRMS_CHECKED})'),
     'blokvolt-cene-elektricnih-automobila.csv': ('Cene električnih automobila', 'Svaki model sa cenom koju uvoznik javno objavljuje: cena od, cena posle subvencije, redovna i akcijska cena, da li je subvencija već uračunata, link na cenovnik.', f'mesečno (poslednja provera {EV_DATA["checked"]})'),
     'blokvolt-wallbox-modeli.csv': ('Wallbox modeli i cene', 'Javno objavljene cene samih uređaja kod prodavaca u Srbiji, po modelu i snazi, sa PDV-statusom i linkom na proizvod.', f'kvartalno (poslednja provera {WALLBOX["checked"]})'),
     'blokvolt-javno-punjenje-cene.csv': ('Indeks cena javnog punjenja', 'Zabeležene tarife i računi sa javnih punjača: cena po minutu, po satu ili po „jedinici“, stvarni računi sa cenom po kWh, snaga punjača, datum i izvor.', f'mesečno (poslednji snimak {index_checked})'),
@@ -403,13 +443,13 @@ for d in DATASETS:
     d['kb'] = round(d['bytes'] / 1024, 1)
 render('preuzimanje.html', '/preuzimanje/', datasets=DATASETS,
        title='Podaci za preuzimanje — CSV tabele o električnim automobilima u Srbiji | BlokVolt',
-       description=f'Svi podaci sa BlokVolta u CSV formatu, besplatno i uz slobodnu licencu: registar od {len(published)} firmi, cene električnih automobila kod uvoznika, cene wallbox uređaja, indeks cena javnog punjenja i mreže. Sa izvorom i datumom provere uz svaki red.')
+       description=f'Svi podaci sa BlokVolta u CSV formatu, besplatno i uz slobodnu licencu: registar od {sr_plural(len(published), "firme", "firme", "firmi")}, cene električnih automobila kod uvoznika, cene wallbox uređaja, indeks cena javnog punjenja i mreže. Sa izvorom i datumom provere uz svaki red.')
 add_url('/preuzimanje/', '0.6')
 
 # 5) home
 render('home.html', '/', GUIDES=GUIDES_META, PODACI=PODACI, CHECKS=CHECKS, by_group=by_group, cities=cities, CITY_SLUGS=CITY_SLUGS,
        title='BlokVolt — sve o električnim automobilima u Srbiji: firme, cene, procedure',
-       description=f'Nezavisni vodič za vlasnike električnih automobila u Srbiji: {len(published)} firmi za punjače sa javnim cenama, javni punjači i cene, besplatni punjači, 7 vodiča o punjenju u zgradi, subvencije 2026, statistika i propisi. Sve sa izvorom i datumom provere.')
+       description=f'Nezavisni vodič za vlasnike električnih automobila u Srbiji: {sr_plural(len(published), "firma", "firme", "firmi")} za punjače sa javnim cenama, javni punjači i cene, besplatni punjači, 7 vodiča o punjenju u zgradi, subvencije 2026, statistika i propisi. Sve sa izvorom i datumom provere.')
 add_url('/', '1.0')
 
 # 5b) search page + index

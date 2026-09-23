@@ -56,7 +56,8 @@ credentials) — commits go through the owner's browser (section 6).
 | Rentals, regional charging | `content/data/rent-carsharing.json`, `content/data/region.json` + the pages `content/podaci/rent-a-car-i-car-sharing.md`, `content/javno/region.md` | The pages are hand-written from the JSON; edit both. |
 | All other data pages | `content/podaci/*.md`, `content/javno/*.md` | Front matter: `updated`, `next_check`, `modified` (ISO), `sources` (`Label :: URL | Label :: URL`). |
 | City pages | `content/data/gradovi.json` | One entry per `/gradovi/<slug>/`: `aliases` matched inside a firm's `city` (a firm can belong to several cities), `regions` matched inside a firm's or operator's `coverage`, `loc`/`acc` the Serbian locative and accusative, `nt_region` one of the regions in `kalkulator.json` → `eps.nt_hours`, `note` one paragraph of local fact (HTML allowed). |
-| Firms | `content/firme/<slug>.json` | `verified`, cells/verdicts, `sources`. Leads: `"group": "L", "publish": false` (not shown). |
+| Firms | `content/firme/<slug>.json` | `verified`, cells/verdicts, `sources`, `brands`. Leads: `"group": "L", "publish": false` (not shown). A checked lead that does not sell home chargers keeps `publish: false` and gets `excluded_reason` (one Serbian sentence) — it is then listed with the reason at the bottom of `/firme/`. |
+| Register sub-hubs by type | `content/data/firme-tipovi.json` + `TYPE_RULES` in `build.py` | Texts of `/firme/ugradnja-punjaca/`, `/firme/prodaja-punjaca/`, `/firme/distributeri-punjaca/`, `/firme/solarni-integratori/`, `/firme/elektricari/` (Jinja strings: `n`, `n_firms`, `checked`, `n_price`, `n_d`, `wb_rows`, `wb_models`, `n_brands`, filter `plural`). Who is on which page is decided in `build.py` from the firm's verdicts, group and `kind` — never by hand. |
 
 `indeks-cena.json` row schema (one row per app + station/tariff):
 
@@ -215,12 +216,30 @@ Keep the promise the page makes: every row carries its source URL and check date
 value stays empty rather than estimated, and numbers are written with a comma decimal mark because
 the delimiter is a semicolon (Serbian Excel opens that without an import wizard).
 
+### 3.6e Register sub-hubs by type (/firme/<tip>/)
+
+Five pages cut the same register by what the reader needs: firms that say they install
+(`verdicts.ugradnja` is "Da…" or "Na upit"), firms that publish a device price (groups A–C),
+distributors (`kind` distributer), solar integrators (`kind` solar) and electricians (`kind`
+elektricar). Membership follows the data on every build, so a firm edited at the revision moves by
+itself. The distributors page also carries the brand index — every value of `brands` across the
+register, with the firms that name it. A new hub needs an entry in `firme-tipovi.json`, a rule in
+`TYPE_RULES` and at least three firms; a slug must not collide with a firm slug (the build stops if
+it does). Numbers in the texts go through `plural` (1 firma / 2 firme / 5 firmi — and 51 is "51 firma").
+
+`brands` lists only the makes the firm's own site names for sale or installation — not "servis ABB",
+not a model name whose make is unclear, not the generic word "wallbox". Keep it in step with `offer`
+and with the seller rows in `wallbox-modeli.json` (same spelling: "Schneider Electric", "Union (Vestel)").
+
 ### 3.7 Firm register (quarterly revision)
 
 For every published `content/firme/*.json`: open the firm's site and price pages from `sources`,
 compare every cell, update values and `verified`. A site that is down twice in a row: note it in the
-report, do not unpublish silently. Leads (`group` L, 16 at the time of writing): verify with the same
-columns; publish (`publish: true`, proper group) only when the firm's own site confirms what it sells.
+report, do not unpublish silently. Update `brands` together with `offer`. Leads (`group` L, none open
+since 23.09.2026): verify with the same columns in a real browser; publish (`publish: true`, proper
+group) only when the firm's own site confirms what it sells, otherwise set `excluded_reason`. Never
+contact firms to verify — no calls, e-mails or forms to firms or operators without a separate,
+explicit go-ahead from the owner (decision of 23.09.2026).
 After the full pass set `firms_checked` in `content/data/site.json`, log in `izmene.md`, add a news item.
 
 ### 3.8 Site search index

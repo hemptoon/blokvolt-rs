@@ -10,6 +10,9 @@
  "city": "Šabac",
  "coverage": "cela Srbija (online)",
  "offer": "Veleprodaja i maloprodaja elektromaterijala; punjači Morek od 11 i 22 kW",
+ "brands": [
+  "Morek"
+ ],
  "price_headline": "Morek 11 kW sa kablom: 72.000 RSD",
  "cells": {
   "cena": "<b class=\"pr\">Morek 11 kW, ekran, LAN, WiFi, RFID, kabl 6,5 m (MEV11DREWN6T2): 72.000 RSD</b><br/>Morek 22 kW, pametni (MEV22DREWN6T2): 81.600<br/>Morek 11 kW, prenosni (MEV11DNNNN5T2): 60.000<small>sve sa PDV-om; na lageru; bez ugradnje</small>",

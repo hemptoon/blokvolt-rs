@@ -9,6 +9,10 @@
  "city": "Novi Beograd",
  "coverage": "primarno Vojvodina",
  "offer": "PupinEnergy SkyCharge / WallMax / DualCharge, EcoFlow PowerPulse 2; integracija sa solarom; „primarno Vojvodina, po dogovoru i druge lokacije“",
+ "brands": [
+  "EcoFlow",
+  "PupinEnergy"
+ ],
  "price_headline": "Nije objavljena",
  "cells": {
   "cena": "<b class=\"pr\">Nije objavljena</b><small>„zatražite besplatnu procenu“</small>",

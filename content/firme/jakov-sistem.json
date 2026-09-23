@@ -10,6 +10,10 @@
  "city": "Beograd",
  "coverage": "cela Srbija (online)",
  "offer": "IT i tehnički web-shop; ABB Terra AC i Telwin Mastercharge, plus postolje i RFID kartice",
+ "brands": [
+  "ABB",
+  "Telwin"
+ ],
  "price_headline": "ABB Terra AC 22 kW (W22-T-R-C-0): 78.820 RSD",
  "cells": {
   "cena": "<b class=\"pr\">ABB Terra AC 22 kW, kabl, RFID, 4G (W22-T-R-C-0): 78.820 RSD</b> (redovna 119.710)<br/>ABB Terra AC 7 kW (W7-T-R-0): 85.650 (130.090)<br/>Telwin Mastercharge 370, 230 V: 97.250<br/>Telwin Mastercharge Flex 22: 101.170<br/>Telwin Mastercharge 740 Connect: 116.610<br/>Telwin Mastercharge 2200 Connect, 400 V: 158.790<br/>ABB postolje (TAC Pedestal BTB): 57.470 · ABB RFID kartice: 2.970<small>PDV nije naznačen uz cenu; bez ugradnje</small>",

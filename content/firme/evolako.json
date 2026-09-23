@@ -9,6 +9,7 @@
  "city": "Novi Sad, Beograd",
  "coverage": "Vojvodina i Beograd, uskoro cela Srbija",
  "offer": "WALLBOX 11 kW (OCPP, Type 2) ili START (pojačana utičnica 2,3–3,7 kW); MID brojilo u svakom paketu; Beograd, Novi Sad, Vojvodina — uskoro cela Srbija",
+ "brands": [],
  "price_headline": "WALLBOX 11 kW: 125.000 RSD",
  "cells": {
   "cena": "<b class=\"pr\">WALLBOX 11 kW: 125.000 RSD</b><br/>START: 59.000 RSD<br/>ZGRADA: od 96.000 RSD po mestu<small>sa PDV-om, ugradnjom, MID brojilom, atestom i papirima</small>",

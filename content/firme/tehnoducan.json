@@ -10,6 +10,9 @@
  "city": "Beograd",
  "coverage": "cela Srbija (online)",
  "offer": "Online prodavnica elektro opreme; ABB Terra AC 7,4 i 22 kW, kabl i RFID kartice",
+ "brands": [
+  "ABB"
+ ],
  "price_headline": "ABB Terra AC 22 kW: 76.483 RSD",
  "cells": {
   "cena": "<b class=\"pr\">ABB Terra AC 22 kW, RFID, 4G (W22-T-R-C-0): 76.483 RSD</b> (redovna 95.604 — popust samo za online kupovinu)<br/>ABB Terra AC 7,4 kW, RFID (W7-T-R-0): 103.892<br/>Kabl Tip 2 – Tip 2, 7 m, 32 A: 53.367 · RFID kartice, 5 kom: 3.410<small>PDV nije naznačen uz cenu; na zalihama 22 kW i 7,4 kW; bez ugradnje</small>",

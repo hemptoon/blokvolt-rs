@@ -10,6 +10,9 @@
  "city": "Beograd, Novi Sad",
  "coverage": "cela Srbija",
  "offer": "Prodavnice pametne kuće u Beogradu i Novom Sadu; sopstveni brend Wise (Tuya / Smart Life): zidni WSCP02/07/08, prenosni, dvostruki WSCP10",
+ "brands": [
+  "WISE"
+ ],
  "price_headline": "WSCP08 7 kW: 62.890 RSD",
  "cells": {
   "cena": "<b class=\"pr\">WSCP08 7 kW: 62.890 RSD</b><br/>WSCP02: 67.390–82.390 · WSCP07: 62.390–72.390<br/>prenosni 3,5–7 kW: 21.690–52.990<small>PDV-status na sajtu nije označen (maloprodaja)</small>",

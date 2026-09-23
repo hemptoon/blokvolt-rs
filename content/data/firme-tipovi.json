@@ -1,0 +1,173 @@
+{
+ "_note": "Podstranice registra po tipu firme (/firme/<slug>/). Ko ulazi na stranicu određuje `rule` u build.py (TYPE_RULES), ne ovaj fajl. Tekstovi su Jinja šabloni: n = broj firmi na stranici, n_firms = ceo registar, checked = datum revizije, n_price, n_d, wb_rows, wb_models, n_brands. Filter plural(n, 1, 2-4, 5+) slaže broj i imenicu.",
+ "hubs": [
+  {
+   "slug": "ugradnja-punjaca",
+   "rule": "ugradnja",
+   "nav": "Ugradnja punjača",
+   "nav_desc": "Ko ugrađuje — sa cenom ili na upit",
+   "chip": "Ugradnja",
+   "kicker": "Registar · ugradnja punjača",
+   "h1": "Ugradnja kućnog punjača za električni auto: ko ugrađuje u Srbiji",
+   "title": "Ugradnja punjača za električni auto u Srbiji — {{ n|plural('firma koja ugrađuje', 'firme koje ugrađuju', 'firmi koje ugrađuju') }} | BlokVolt",
+   "description": "Ko u Srbiji ugrađuje kućni punjač za električni automobil: {{ n|plural('firma', 'firme', 'firmi') }} — instalateri, distributeri, solarni integratori i električari. Šta ulazi u cenu ugradnje, javne cene gde postoje, pokrivenost i pitanja pre ugradnje. Provereno {{ checked }}.",
+   "lead": "Ovde su samo firme koje ugradnju punjača izričito pominju na svom sajtu — {{ n }} od {{ n_firms }} u registru. Uz svaku je doslovno prepisano šta nude i dokle pokrivaju teren. {{ n_price|plural('firma ima', 'firme imaju', 'firmi ima') }} javnu cenu ugradnje, ostale daju ponudu na upit.",
+   "intro": "Ugradnja kućnog punjača nije samo kačenje uređaja na zid. Električar vodi zaseban strujni krug od razvodne table do mesta punjenja, ugrađuje zaštitu, povezuje i podešava punjač i na kraju meri instalaciju. Zato cena najviše zavisi od udaljenosti do table i od toga kako se kabl vodi — kroz zid, u kanalici ili po zidu garaže. Firme koje objavljuju cenu uglavnom navode šta ulazi u „standardnu ugradnju“, a dodatne radove procenjuju na licu mesta. Ako ste punjač već kupili, na listi su i <a href=\"/firme/elektricari/\">električari</a> koji montiraju uređaj koji donesete.",
+   "list_title": "Firme koje ugrađuju punjač",
+   "checklist_title": "Šta pitati pre nego što prihvatite ponudu",
+   "checklist": [
+    [
+     "Šta tačno ulazi u cenu",
+     "Do koliko metara kabla, koja zaštita, materijal i izlazak na teren — i koliko se plaća svaki metar ili sat rada preko toga."
+    ],
+    [
+     "Koja zaštita se ugrađuje",
+     "Punjaču treba FID tip A uz detekciju jednosmerne struje kvara od 6 mA u samom punjaču, ili FID tip B; obični FID tip AC nije dovoljan. Objašnjenje je u vodiču <a href=\"/bezbednost-punjenja-atest\">bezbednost i atest</a>."
+    ],
+    [
+     "Da li dobijate atest",
+     "Pisani izveštaj o ispitivanju instalacije je dokaz za vas, zgradu, vlasnika garaže i osiguranje, a proizvođači punjača ugradnju ovlašćenog električara traže kao uslov garancije."
+    ],
+    [
+     "Da li je odobrena snaga dovoljna",
+     "Punjač od 11 kW vuče koliko nekoliko velikih kućnih uređaja zajedno. Ako je odobrena snaga mala, punjač se podešava na manju snagu ili se snaga povećava kod Elektrodistribucije; koliko košta kilovat odobrene snage piše na stranici <a href=\"/podaci/tarife-eps/\">cene struje EPS</a>."
+    ],
+    [
+     "U zgradi: ko radi papire",
+     "Za punjač u garaži zgrade potrebna je saglasnost skupštine stanara, a potrošnju je pošteno meriti posebnim brojilom — vodiči <a href=\"/punjac-u-zgradi-skupstina\">saglasnost skupštine</a> i <a href=\"/ko-placa-struju-za-punjenje\">ko plaća struju</a>."
+    ],
+    [
+     "Izlazak na teren i servis",
+     "Da li se dolazak van sedišta firme naplaćuje posebno i koliko se čeka na servis ako punjač prestane da radi."
+    ]
+   ]
+  },
+  {
+   "slug": "prodaja-punjaca",
+   "rule": "prodaja",
+   "nav": "Prodaja punjača",
+   "nav_desc": "Prodavci sa javnom cenom uređaja",
+   "chip": "Prodaja sa cenom",
+   "kicker": "Registar · prodaja punjača",
+   "h1": "Gde kupiti kućni punjač za električni auto u Srbiji",
+   "title": "Prodaja punjača za električni auto u Srbiji — {{ n|plural('prodavac', 'prodavca', 'prodavaca') }} sa javnom cenom | BlokVolt",
+   "description": "{{ n|plural('firma u Srbiji javno objavljuje', 'firme u Srbiji javno objavljuju', 'firmi u Srbiji javno objavljuje') }} cenu kućnog punjača za električni automobil: web-shopovi, distributeri i instalateri, brendovi koje nude i najniža objavljena cena. Šta proveriti pre kupovine. Provereno {{ checked }}.",
+   "lead": "{{ n|plural('firma iz registra objavljuje', 'firme iz registra objavljuju', 'firmi iz registra objavljuje') }} cenu punjača na svom sajtu — od web-shopova elektromaterijala do instalatera koji uređaj prodaju zajedno sa ugradnjom. Uz svaku su brendovi, najniža objavljena cena i podatak da li nudi ugradnju.",
+   "intro": "Cena uređaja je samo deo troška. Web-shopovi prodaju punjač bez ugradnje, pa kabl, zaštitu i rad električara plaćate posebno; kod instalatera je ugradnja ponekad uračunata. Cene su prepisane doslovno — gde su bez PDV-a ili u evrima, to piše u ćeliji. Pojedinačne cene po modelu i prodavcu su na stranici <a href=\"/podaci/wallbox-modeli/\">wallbox modeli i cene</a> ({{ wb_rows|plural('cena', 'cene', 'cena') }}, {{ wb_models|plural('model', 'modela', 'modela') }}).",
+   "list_title": "Prodavci sa javnom cenom uređaja",
+   "checklist_title": "Šta proveriti pre kupovine",
+   "checklist": [
+    [
+     "Koliko kW prima vaš auto",
+     "Na naizmeničnoj struji (AC) većina automobila prima između 7 i 11 kW — u specifikaciji piše kao snaga ugrađenog punjača (on-board charger). Punjač od 22 kW neće puniti brže od toga."
+    ],
+    [
+     "Jedna ili tri faze",
+     "Do 7,4 kW punjač radi na jednoj fazi (32 A); za 11 kW treba trofazni priključak 3×16 A, a za 22 kW 3×32 A — više od uobičajenih 17,25 kW (3×25 A) odobrene snage domaćinstva."
+    ],
+    [
+     "Kabl ili utičnica",
+     "Kod modela sa utičnicom Type 2 kabl se kupuje posebno — neki prodavci to navode u opisu, neki ne."
+    ],
+    [
+     "Zaštita od jednosmerne struje kvara",
+     "Ako punjač ima ugrađenu detekciju DC struje kvara (6 mA), ispred njega je dovoljan FID tip A; ako nema, potreban je skuplji FID tip B. Vodič: <a href=\"/bezbednost-punjenja-atest\">bezbednost i atest</a>."
+    ],
+    [
+     "Brojilo",
+     "Kad punite na zajedničkoj struji zgrade, overeno (MID) brojilo je osnov za pošten obračun po stanu — vodič <a href=\"/ko-placa-struju-za-punjenje\">ko plaća struju</a>."
+    ],
+    [
+     "PDV, garancija i servis",
+     "Deo prodavaca objavljuje cenu bez PDV-a — u tabeli je naznačeno. Pitajte ko u Srbiji servisira uređaj u garanciji; zastupnici brendova su na stranici <a href=\"/firme/distributeri-punjaca/\">distributeri</a>."
+    ]
+   ],
+   "outro": "Još {{ n_d|plural('firma nudi', 'firme nude', 'firmi nudi') }} punjače bez javne cene, samo na upit — spisak je u grupi <a href=\"/firme/#grupa-d\">bez javne cene</a>, a zastupnici brendova i spisak svih brendova iz registra su na stranici <a href=\"/firme/distributeri-punjaca/\">distributeri i brendovi</a>."
+  },
+  {
+   "slug": "distributeri-punjaca",
+   "rule": "distributer",
+   "nav": "Distributeri i brendovi",
+   "nav_desc": "Ko zastupa koji brend u Srbiji",
+   "chip": "Distributeri i brendovi",
+   "kicker": "Registar · distributeri i brendovi",
+   "h1": "Distributeri punjača u Srbiji: ko zastupa koji brend",
+   "title": "Distributeri punjača za električne automobile u Srbiji — {{ n|plural('firma', 'firme', 'firmi') }}, {{ n_brands|plural('brend', 'brenda', 'brendova') }} | BlokVolt",
+   "description": "Ko u Srbiji uvozi i zastupa kućne punjače za električne automobile: {{ n|plural('distributer', 'distributera', 'distributera') }} iz registra i svi brendovi iz registra ({{ n_brands }}) sa firmama koje ih nude — Wallbox, ABB, Schneider Electric, Webasto, Autel, Alfen i drugi. Provereno {{ checked }}.",
+   "lead": "Distributeri i zastupnici proizvođača punjača iz registra — {{ n|plural('firma', 'firme', 'firmi') }} — sa brendovima koje nude, javnom cenom gde postoji i uslovima ugradnje. Ispod je i spisak svih brendova iz registra: kome da se obratite za određeni uređaj, rezervne delove i garanciju.",
+   "intro": "Distributeri uvoze uređaje i često ih prodaju preko partnera — instalatera, električara i web-shopova — pa na sajtu nemaju uvek cenu za krajnjeg kupca. Vredi ih pitati ono što prodavnica često ne zna: ko u Srbiji servisira brend u garanciji, ima li rezervnih delova, koji instalateri su obučeni za taj uređaj i kako se ažurira softver punjača.",
+   "list_title": "Distributeri i zastupnici brendova",
+   "brand_intro": "Brendovi kućnih punjača koje firme iz registra navode na svom sajtu — prodaju ih, ugrađuju ili zastupaju. Nije katalog celog tržišta: spisak pokazuje samo ono što smo našli kod firmi iz registra na dan provere. Među njima su i proizvođači brzih DC punjača, jer ih distributeri navode zajedno sa kućnim."
+  },
+  {
+   "slug": "solarni-integratori",
+   "rule": "solar",
+   "nav": "Solar i punjač",
+   "nav_desc": "Integratori solarnih elektrana",
+   "chip": "Solar i punjač",
+   "kicker": "Registar · solar i punjač",
+   "h1": "Solarna elektrana i punjač za električni auto: integratori u Srbiji",
+   "title": "Solarni paneli i punjač za električni auto — {{ n|plural('integrator', 'integratora', 'integratora') }} u Srbiji | BlokVolt",
+   "description": "Firme koje u Srbiji grade solarne elektrane i nude kućni punjač za električni automobil — {{ n|plural('integrator', 'integratora', 'integratora') }} iz registra: brendovi punjača, javne cene, ugradnja i pokrivenost. Šta pitati za punjenje iz viška solarne energije. Provereno {{ checked }}.",
+   "lead": "{{ n|plural('solarni integrator iz registra nudi', 'solarna integratora iz registra nude', 'solarnih integratora iz registra nudi') }} i punjač za automobil — kao deo sistema sa solarnom elektranom ili zasebno. Uz svakog su brendovi punjača, javna cena gde postoji i dokle pokriva teren.",
+   "intro": "Kad kuća ima solarnu elektranu, punjač može da puni auto viškom proizvodnje umesto da taj višak ode u mrežu. Za to punjač i invertor moraju da rade zajedno: neki punjači imaju režim punjenja iz viška solarne energije, a neki se upravljaju iz aplikacije invertora — tako rade parovi istog proizvođača, na primer Huawei, Sungrow, Growatt ili Fronius.",
+   "list_title": "Solarni integratori koji nude punjač",
+   "checklist_title": "Šta pitati solarnog integratora",
+   "checklist": [
+    [
+     "Punjenje iz viška",
+     "Da li punjač može da puni samo iz viška solarne proizvodnje i da li radi sa invertorom koji već imate."
+    ],
+    [
+     "Raspodela snage",
+     "Da li punjač smanjuje snagu kad u kući rade bojler, šporet i klima, da ukupna potrošnja ne pređe odobrenu snagu."
+    ],
+    [
+     "Ko ugrađuje punjač",
+     "Integrator sam ili partner-električar — i da li posle ugradnje dobijate atest (<a href=\"/bezbednost-punjenja-atest\">šta je atest</a>)."
+    ],
+    [
+     "Garancija i servis",
+     "Ko servisira punjač — integrator ili distributer brenda (<a href=\"/firme/distributeri-punjaca/\">spisak distributera</a>)."
+    ]
+   ]
+  },
+  {
+   "slug": "elektricari",
+   "rule": "elektricar",
+   "nav": "Električari",
+   "nav_desc": "Montiraju punjač koji donesete",
+   "chip": "Električari",
+   "kicker": "Registar · električari",
+   "h1": "Električari koji ugrađuju punjač koji ste sami kupili",
+   "title": "Električar za ugradnju punjača za električni auto — {{ n|plural('firma', 'firme', 'firmi') }} u registru | BlokVolt",
+   "description": "Električari koji ugrađuju kućni punjač za električni automobil kupljen na drugom mestu: {{ n|plural('firma', 'firme', 'firmi') }} iz registra, javne cene rada gde postoje, šta električar treba da uradi i da preda. Provereno {{ checked }}.",
+   "lead": "Električarske firme koje na sajtu izričito nude ugradnju punjača, a uređaj ne prodaju. Takvih u registru ima {{ n }}: ulaze samo one koje ugradnju punjača posebno navode na sajtu.",
+   "intro": "Kad punjač kupite sami — u web-shopu ili kod distributera — ostaje ugradnja: zaseban strujni krug od razvodne table, zaštita, povezivanje, podešavanje snage i merenje instalacije. Električara možete naći i van ovog spiska; važno je da posao završi atestom. Ako u vašem gradu nema električara sa spiska, pitajte i <a href=\"/firme/ugradnja-punjaca/\">firme koje ugrađuju punjače</a> — neke navode da montiraju uređaje svih brendova.",
+   "list_title": "Električari koji ugrađuju punjač",
+   "checklist_title": "Šta električar treba da uradi i preda",
+   "checklist": [
+    [
+     "Poseban strujni krug",
+     "Od razvodne table do punjača, sa presekom kabla prema snazi punjenja i dužini voda."
+    ],
+    [
+     "Zaštitu",
+     "Automatski osigurač i FID tip A uz detekciju DC struje kvara u punjaču, ili FID tip B (<a href=\"/bezbednost-punjenja-atest\">vodič bezbednost i atest</a>)."
+    ],
+    [
+     "Podešavanje snage",
+     "Punjač se podešava prema odobrenoj snazi priključka, da glavni osigurač ne isključuje kuću dok auto puni."
+    ],
+    [
+     "Atest",
+     "Pisani izveštaj o ispitivanju instalacije, sa rezultatima merenja."
+    ],
+    [
+     "Za garažu zgrade",
+     "Saglasnost skupštine stanara pre početka radova (<a href=\"/punjac-u-zgradi-skupstina\">vodič</a>)."
+    ]
+   ]
+  }
+ ]
+}

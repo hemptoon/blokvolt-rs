@@ -9,6 +9,9 @@
  "city": "Futog",
  "coverage": "Vojvodina",
  "offer": "Circontrol eNext / eVolve (7,4 / 22 kW); web-shop kontrole pristupa; isporuka na teritoriji Srbije",
+ "brands": [
+  "Circontrol"
+ ],
  "price_headline": "Nije objavljena",
  "cells": {
   "cena": "<b class=\"pr\">Nije objavljena</b><small>svaki punjač „cena na upit“</small>",
