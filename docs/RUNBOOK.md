@@ -10,18 +10,20 @@ needed or handled.
 - Publish only public, verifiable facts, each with a source URL and a date. Copy prices literally;
   our own conversions go in parentheses (PDV 20 %, 117,2 RSD/€). If something cannot be verified,
   leave the old value, keep its old date, and mention it in the report — never guess.
-- Same columns and the same rules for every firm and network, including Evolako ("naša ponuda").
-  No ratings, rankings, logos, affiliate links or paid placements. Missing information is written as
-  "Ne pominje se", never as "ne".
+- Same columns and the same rules for every firm and network, including Evolako (marked "Izdvojeno";
+  who runs the site is said only on /o-sajtu/). No ratings, rankings, affiliate links or paid placements.
+  Logos only identify a company: taken from its own website, shown as-is, removed on request (note in
+  /metodologija/). Missing information is written as "Ne pominje se", never as "ne".
+- Short texts: one idea per sentence, details and footnotes in `<details>` or on the source/method pages,
+  no filler. `docs/CONTENT_STYLE.md` has the rules and examples.
 - App screenshots and receipts: use only the price, tariff, station name, power, kWh, amount, duration
   and date. Never publish account names, e-mails, phone numbers, card digits, fiscal/receipt numbers,
   car plates or anything that shows where the owner was at what time (use the month, not the exact
   timestamp, for receipts).
 - No personal names of the team anywhere in the repo or on the site.
 - Site copy is Serbian (Latin script), calm and factual.
-- Every public change gets a line in `content/podaci/izmene.md` (newest date section on top). Notable
-  changes also get a short item at the top of `news` in `content/data/site.json` (the home page shows
-  the first `news_on_home` items).
+- Every public change gets a line in `content/podaci/izmene.md` (newest date section on top). The home
+  page no longer shows news; `news` in `content/data/site.json` is only an archive.
 - Do not delete files (the GitHub web upload cannot delete anyway). Do not touch other sites or projects.
 
 ## 1. Setup in a fresh container
@@ -42,14 +44,17 @@ credentials) — commits go through the owner's browser (section 6).
 |---|---|---|
 | Last content update date | `content/data/site.json` → `updated` | Set to today (DD.MM.YYYY) on every deploy that changes content. Footer, home, sitemap `lastmod`. |
 | Firm register revision date | `content/data/site.json` → `firms_checked` | Only after a full revision of all published firms. Price table, /firme/, city pages. |
-| Home stats and news | `content/data/site.json` → `home_stats`, `news` | Stats mirror /podaci/statistika-ev-srbija/ and the free-charger count. |
+| Home stats | `content/data/site.json` → `home_stats` | The first two mirror /podaci/statistika-ev-srbija/; the third (`"b": "auto:putevi"`) is filled in by `build.py` from `content/mapa/putevi-srbije.json`. |
 | Fuel prices (calculator) | `content/data/kalkulator.json` → `fuel` | `date` = first day the prices apply, `valid_to`, `benzin` (BMB 95), `dizel` (evrodizel), `url`. |
 | EPS tariffs, fees, taxes | `content/data/kalkulator.json` → `eps`, `checked` | Zones VT/NT without taxes, `oie`, `ee`, `akciza`, `pdv`, `snaga_rsd_kw`, `sources` (+date). |
 | Public charging price for the calculator | `content/data/kalkulator.json` → `public`, `public_checked`, `public_basis`, `public_range` | `dc` = average RSD/kWh of recent DC receipts; `ac` = Charge&GO AC 22 kW per-minute price × 60 ÷ 11 kW; `public_range` = min–max RSD/kWh of the DC receipts. |
 | Public charging price index | `content/javno/indeks-cena.json` | `updated`, `next_check` (a month name is fine), `rows` (schema below). |
 | Price index archive | `content/javno/indeks-arhiva/YYYY-MM.json` | Written by `scripts/snapshot_index.py` (step 6 of 3.3), never edited by hand. One file per month = the last state of the index in that month. From the second month on the build adds `/javno-punjenje/cene/` (last three months side by side, changes first) and a frozen page per past month. |
 | Charging networks | `content/operateri/<slug>.json` | Edit these JSON files directly. `scripts/add_operators.py` is a historical import — never re-run it. `prices` is the full dated history shown on the network page; `verified` = last check. |
-| Free chargers | `content/javno/besplatni-punjaci.md`, `content/operateri/putevi-srbije.json` | The count (36 installed / 31 working) is repeated elsewhere — see sync points. |
+| Free chargers | `content/javno/besplatni-punjaci.md`, `content/operateri/putevi-srbije.json` | The count (36 installed / 24 working) is repeated elsewhere — see sync points. |
+| State motorway chargers, per charger | `content/mapa/putevi-srbije.json` | Hand copy of the three tables (images) on putevi-srbije.rs: site, road, direction, power, status (1 works, 0 does not, -1 being connected). Drives the map status, the table on `/javno-punjenje/putevi-srbije/` and the "24 od 36" stats (home, /javno-punjenje/). See 3.11. |
+| Map of public chargers | `content/mapa/punjaci-ocm.json`, `punjaci-osm.json` + `scripts/map_data.py` | Open-data snapshots (OCM CC BY 4.0, OSM ODbL) made by `Scripts/make_chargers.py` in the Evolako iOS app repo; merged by `map_data.py` into `/assets/map/punjaci.json` (ODbL); prices from the index go to `/assets/map/cene.json`. See 3.11. |
+| Logos | `static/assets/logos/*.png`, `content/data/logos.json`, `scripts/logos.py` | `<slug>.png` for firms, `op-<slug>.png` for networks (a network without one uses the firm logo of the same slug). See 3.12. |
 | EPS tariffs page | `content/data/kalkulator.json` (+ `tarife_next_check`) | Then run `python3 scripts/gen_tarife_eps.py` — the page `/podaci/tarife-eps/` is generated, never edited by hand. Night-tariff hours per region and the single-tariff prices live in the same `eps` block. |
 | Wallbox model prices | `content/data/wallbox-modeli.json` | The model-level view of the firm register: re-derive it from `content/firme/*.json` at the quarterly revision, then run `python3 scripts/gen_wallbox.py`. |
 | Building-billing calculator | `content/data/kalkulator-zgrada.json` | Defaults and the MID meter price range (taken from the register); the page `/alati/racun-u-zgradi/` is a template, no generator. |
@@ -82,13 +87,15 @@ credentials) — commits go through the owner's browser (section 6).
 After changing any of these, grep and update every occurrence:
 
 ```bash
-grep -rn "43–79\|36 \|31 u radu\|7\.155\|535\|~220\|4–7 RSD" templates content build.py | cut -c1-160
+grep -rn "43–79\|36 \|radi 24\|24 od 36\|7\.155\|535\|~220\|4–7 RSD" templates content build.py | cut -c1-160
 ```
 
 - DC receipt range "43–79 RSD/kWh": `templates/javno_index.html` (stat block), `content/javno/region.md`,
   `content/data/kalkulator.json` → `public_range`.
-- State chargers "36 / 31 u radu": `templates/javno_index.html` (stat + sources), `content/javno/besplatni-punjaci.md`,
-  `build.py` (javno description), `content/data/site.json` home stat.
+- State chargers "36 / radi 24": the home stat and the /javno-punjenje/ stat are computed from
+  `content/mapa/putevi-srbije.json`; by hand: `content/operateri/putevi-srbije.json` (`network`, `card`,
+  `network_short`), `content/javno/indeks-cena.json` (the putevi-srbije row), `content/javno/besplatni-punjaci.md`,
+  `content/podaci/statistika-ev-srbija.md`.
 - Fleet and registrations "7.155", "535": `content/podaci/statistika-ev-srbija.md`, `content/data/site.json` → `home_stats`.
 - Home night tariff "kod kuće noću 4–7 RSD": `templates/javno_index.html` (follows the EPS NT prices with taxes).
 
@@ -142,9 +149,9 @@ ones are moved into `<archive>/YYYY-MM/` inside it — never deleted).
 If no new screenshots arrived, keep the old values and dates; the report tells the owner.
 
 Things that can be checked without the owner: whether the state chargers on motorways are still free
-(https://www.putevi-srbije.rs/index.php/en/electric-chargers), network sizes and news on the operators'
-sites (chargego.rs, oriontelekom.rs/emobility, emobility.rs, omv.co.rs, nis.rs, tesla.com/findus),
-Lidl eCharge, Parking servis Beograd.
+and which of them work (https://www.putevi-srbije.rs/index.php/en/electric-chargers — see 3.11), network
+sizes and news on the operators' sites (chargego.rs, oriontelekom.rs/emobility, emobility.rs, omv.co.rs,
+nis.rs, tesla.com/findus), Lidl eCharge, Parking servis Beograd.
 
 ### 3.4 Subsidies (every run until the programme closes)
 
@@ -292,6 +299,9 @@ After every content change:
    the Serbian sentence until the next run.
 5. Now and then `python3 scripts/i18n.py prune` drops translations of Serbian text that is gone.
 
+An element whose text sits next to an inline SVG icon (buttons, chips: `<a class="btn"><svg…>Mapa punjača</a>`)
+is one segment without the icon; the icon is put back before (or after) the translated text.
+
 Not segments: JavaScript texts live in `<script id="bv-i18n" type="application/json">` blocks in the
 templates (calculators, search). Plain strings there are translated like any segment; objects keyed by
 `sr`/`en`/`ru` (plural forms, month names, quotation marks) are edited in the template itself. Elements
@@ -316,7 +326,8 @@ They are generated by `python3 scripts/gen_com.py` into `dist-com/` (not committ
 Refresh: one research subagent per country, told to verify and extend the existing file (same schema, WebSearch
 and WebFetch only, no workarounds for blocked sites, no ratings, Evolako and BlokVolt excluded). Then update the
 four facts in `site.json` and `checked`/`checked_iso`, build, and look at the pages (desktop and phone).
-The design is the one of blokvolt.rs (`static/assets/*.css`, `meganav.js`) plus `static/com/com.css`;
+The design is the old one of blokvolt.rs (`static/assets/site.css`, `agg.css`, `site.js`, `meganav.js` —
+kept only for blokvolt.com; blokvolt.rs uses `bv.css`/`bv.js`) plus `static/com/com.css`;
 `scripts/og_com.py` renders the share image `static/com/og-en.png`.
 
 Publish (GitHub Pages, repository `hemptoon/blokvolt-com`, branch `main`, root):
@@ -330,13 +341,49 @@ DNS (Spaceship, blokvolt.com): four A records `@` → 185.199.108.153 / 109 / 11
 `google-site-verification=…` (Search Console, property `sc-domain:blokvolt.com`) — keep all of them; the Spacemail
 records (MX, SPF, DKIM, SRV, `_dmarc`) belong to the mailbox and are never touched.
 
+### 3.11 Map of public chargers (/mapa/) and the state motorway chargers (monthly)
+
+Stations: two open snapshots in `content/mapa/` — `punjaci-ocm.json` (Open Charge Map) and
+`punjaci-osm.json` (OpenStreetMap). They are made by `Scripts/make_chargers.py` in the Evolako iOS app
+repository (it has the network access and the OCM key); that repository is read-only for BlokVolt runs —
+ask the owner for fresh copies, or keep the old ones and say so in the report. `scripts/map_data.py`
+merges them (docstring: same-site rules, network names, Lidl free only on Liman, bicycle chargers dropped)
+into `dist/assets/map/punjaci.json`; the page loads it with `?v=<hash>`.
+
+State chargers (monthly): open the source page, read the three tables (they are images:
+`elektro-punjaci-u-funkciji-lat.png`, `…-u-postupku-prikljucenja-lat.png`, `planirani-elektropunjaci-lat.png`
+under `/images/putarine/`) and update `content/mapa/putevi-srbije.json`: status per charger, new chargers,
+`checked`. A site listed in `ids` takes its name, road, power and status from this file; a working site
+missing from both snapshots is added at `lat`/`lon` = the toll plaza or rest area in OpenStreetMap (`pos`
+= that OSM element — find it with Overpass/Nominatim from the browser, never guess). The build prints
+`putevi-srbije.json: station … is not in the open data any more` when a snapshot dropped a listed id —
+fix `ids` then. After the update: the "radi 24 od 36" sync points (2), `izmene.md`, and the EN/RU todo —
+counts are part of some segments ("185 javnih punjača…", "Na mapi (22)", "24 od 36"), so a new number
+means a new translation.
+
+Checks after the build: `/mapa/` list count, `/mapa/?mreza=putevi-srbije`, a card with status
+(`/mapa/#<id>`), `/javno-punjenje/putevi-srbije/` table. MapLibre does not render in a hidden browser tab;
+to test the layers in the container, run Playwright with the style and glyph URLs of tiles.openfreemap.org
+routed to a tiny local style (the container cannot reach OpenFreeMap).
+
+### 3.12 Logos (when a firm or network is added, or on request)
+
+`static/assets/logos/<slug>.png` (firms) and `op-<slug>.png` (networks), max 360×160, trimmed. Source: the
+company's own website (its header logo or apple-touch icon), never a logo site. The container cannot reach
+most firm sites: fetch the image in the owner's browser (through `https://images.weserv.nl/?url=…` when the
+site sends no CORS header, or a `zoom` screenshot with `save_to_disk` when nothing else works), bring the
+raw file into the container, add the slug to `CHOICE` in `scripts/logos.py` (`dark` = shown on a dark tile)
+and run it — it trims, resizes and rewrites `content/data/logos.json`. A company that asks for removal:
+delete its entry from `CHOICE`, rerun, rebuild (the file itself can stay; nothing links to it).
+
 ## 4. Build and check
 
 ```bash
 bash scripts/pack.sh      # build.py + check_links.py + /mnt/user-data/outputs/blokvolt-dist.zip
 ```
 
-`build.py` also appends `?v=<hash>` to site.css/agg.css/site.js (they are cached for a year). Look at
+`build.py` also appends `?v=<hash>` to bv.css, bv.js, map.js, the search indexes, the map data and the
+logos (everything under `/assets/` is cached for a year; the MapLibre files sit in a versioned folder). Look at
 the changed pages in `dist/` (grep for the new numbers) before deploying, and check the two
 `i18n` lines of the build output (3.9).
 
@@ -352,7 +399,8 @@ to sign in, stop and tell the owner — never type credentials.
    ```js
    const b=[...document.querySelectorAll('button,a')].find(e=>/^\s*Create deployment\s*$/i.test(e.textContent)); b?(b.click(),'clicked'):'not found yet — wait and retry'
    ```
-   (The direct URL `…/deployments/new` does not render the upload form — use the button.)
+   (On 23.09.2026 the direct URL `https://dash.cloudflare.com/?to=/:account/pages/view/blokvolt/deployments/new`
+   rendered the upload form, with "Production" preselected; if it does not, use the button.)
 3. Label the zip input, then find it and upload the zip:
    ```js
    const i=document.querySelector('input[type=file][accept*="zip"]'); i?(i.setAttribute('aria-label','bvzip upload'),'ok'):'no zip input yet'
@@ -381,6 +429,9 @@ to sign in, stop and tell the owner — never type credentials.
 
 1. In the clone: `python3 scripts/gh_payload.py /mnt/user-data/outputs/.gh/payload.json.gz` — prints the
    changed files and the expected tree hash. (Deleted files cannot be committed this way; avoid deletions.)
+   GitHub takes fewer than 100 files per upload ("Yowza, that's a lot of files"): with more, commit in parts —
+   unpack the same payload twice with a filter in step 4 (e.g. everything except `static/assets/logos/`, then
+   only those) and verify the tree hash after the last part.
 2. Open `https://github.com/hemptoon/blokvolt-rs/upload/main` (the owner is signed in; if not, stop and
    tell the owner).
 3. Add a helper file input, then `find` "bvpay payload" → `file_upload` the payload:
