@@ -14,6 +14,8 @@ needed or handled.
   who runs the site is said only on /o-sajtu/). No ratings, rankings, affiliate links or paid placements.
   Logos only identify a company: taken from its own website, shown as-is, removed on request (note in
   /metodologija/). Missing information is written as "Ne pominje se", never as "ne".
+  The old label "naša ponuda" and the site-wide Evolako mentions are retired (owner's decision, 23.09.2026):
+  some scheduled-task prompts still quote «naša ponuda» — follow this runbook, never bring the label back.
 - Short texts: one idea per sentence, details and footnotes in `<details>` or on the source/method pages,
   no filler. `docs/CONTENT_STYLE.md` has the rules and examples.
 - App screenshots and receipts: use only the price, tariff, station name, power, kWh, amount, duration
