@@ -1,16 +1,14 @@
 {% extends 'base.html' %}
+{% from '_macros.html' import pagehead %}
 {# Frozen monthly snapshot of the public-charging price index (content/javno/indeks-arhiva/YYYY-MM.json). #}
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
-  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ path }}", "inLanguage": "sr-Latn", "datePublished": "{{ '-'.join(snap.captured.split('.')|reverse) }}", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
-  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Javno punjenje", "item": "{{ SITE }}/javno-punjenje/"}, {"@type": "ListItem", "position": 3, "name": "Istorija cena", "item": "{{ SITE }}/javno-punjenje/cene/"}, {"@type": "ListItem", "position": 4, "name": {{ snap.label|tojson }}, "item": "{{ SITE }}{{ path }}"}]}
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "datePublished": "{{ '-'.join(snap.captured.split('.')|reverse) }}", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Javno punjenje", "item": "{{ SITE }}/javno-punjenje/"}, {"@type": "ListItem", "position": 3, "name": "Istorija cena", "item": "{{ SITE }}/javno-punjenje/cene/"}, {"@type": "ListItem", "position": 4, "name": {{ snap.label|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
  ]
 }</script>{% endblock %}
-{% block pageclass %} agg-wide{% endblock %}
-{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Javno punjenje · arhiva cena · {{ snap.label }}</div><h1>Cene javnog punjenja u Srbiji — {{ snap.label }}</h1><p>Arhivski snimak indeksa: tarife iz aplikacija operatera, stvarni računi i besplatni punjači onako kako su zabeleženi zaključno sa {{ snap.captured }}. Stranica se više ne menja, pa se na nju može pozivati kao na stanje iz tog meseca.</p><div class="v3-meta"><span>{{ snap.rows|length|plural('zapis', 'zapisa', 'zapisa') }}</span><span>Snimljeno {{ snap.captured }}</span><span>Arhiva, bez naknadnih izmena</span></div><div class="v3-chips">{% if older %}<a href="{{ older.url }}">← {{ older.label }}</a>{% endif %}<a href="{{ newer.url }}">{{ newer.label }} →</a><a href="/javno-punjenje/cene/">Promene po mesecima</a><a href="/javno-punjenje/#cene">Trenutne cene</a></div></div></div>{% endblock %}
-{% block content %}<div class="bva"><div class="w3">
-<p class="bva-lead">Ovo nisu trenutne cene. Aktuelni indeks je na stranici <a href="/javno-punjenje/#cene">javno punjenje</a>, a šta se od ovog snimka promenilo — na stranici <a href="/javno-punjenje/cene/">istorija cena</a>. Pre punjenja uvek važi cena koju aplikacija operatera prikaže u trenutku pokretanja sesije.</p>
-{% with rows=snap.rows, ref_row=False %}{% include '_indeks_tabela.html' %}{% endwith %}
-<p class="bva-disc">Računica po kWh: cena po minutu ÷ (prosečna snaga punjenja u kW ÷ 60); naknada za priključenje nije uračunata. Kod računa je cena po kWh tačna: iznos ÷ isporučeni kWh. Redovi sa starijim datumom su preneti iz ranijih provera i u tom mesecu nisu ponovo provereni — datum stoji u poslednjoj koloni.</p>
-</div></div>{% endblock %}
+{% block pagehead %}{% call pagehead('Cene javnog punjenja: ' ~ snap.label, 'Arhivski snimak od ' ~ snap.captured ~ '. Ovo nisu trenutne cene.', crumbs=[('/javno-punjenje/', 'Javno punjenje'), ('/javno-punjenje/cene/', 'Istorija cena')]) %}<div class="ph-actions">{% if older %}<a class="btn" href="{{ older.url }}">← {{ older.label }}</a>{% endif %}<a class="btn" href="{{ newer.url }}">{{ newer.label }} →</a><a class="btn dark" href="/javno-punjenje/">Trenutne cene</a></div>{% endcall %}{% endblock %}
+{% block content %}
+{% with rows=snap.rows %}{% include '_indeks_tabela.html' %}{% endwith %}
+{% endblock %}

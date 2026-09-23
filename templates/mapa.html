@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import ic %}
+{% block bodyclass %}map-page{% endblock %}
+{% block head %}<link rel="stylesheet" href="/assets/vendor/maplibre-6.11.1/maplibre-gl.css">
+<link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>{% endblock %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}/mapa/", "inLanguage": "sr-Latn", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "Dataset", "name": "Javni punjači za električne automobile u Srbiji", "description": "Lokacije javnih punjača u Srbiji (spoj OpenStreetMap i Open Charge Map), sa mrežom, snagom i priključcima.", "url": "{{ SITE }}/mapa/", "license": "https://opendatacommons.org/licenses/odbl/1-0/", "distribution": {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "{{ SITE }}/assets/map/punjaci.json"}, "creator": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}}
+ ]
+}</script>{% endblock %}
+{% block page %}
+<div class="map-app">
+<aside class="map-side">
+<div class="map-top" data-bv-note>
+<h1>Mapa punjača</h1>
+<p>{{ M.n }} javnih punjača u Srbiji, sa cenom po mreži.</p>
+<div class="search-box">{{ ic('search') }}<label class="sr-only" for="mq">Pretraga punjača</label><input class="input" id="mq" type="search" placeholder="Grad, adresa ili mreža" autocomplete="off"></div>
+<div class="chips" id="mchips">
+<button class="chip" type="button" data-f="all" aria-pressed="true">Svi</button>
+<button class="chip" type="button" data-f="fast" aria-pressed="false">{{ ic('bolt') }}Brzi (DC ≥ 50 kW)</button>
+<button class="chip" type="button" data-f="ac" aria-pressed="false">AC</button>
+<button class="chip" type="button" data-f="free" aria-pressed="false">Besplatni</button>
+{% for slug, name, n in M.chips %}<button class="chip" type="button" data-f="net:{{ slug }}" aria-pressed="false">{{ name }} <span class="n">{{ n }}</span></button>{% endfor %}
+</div>
+</div>
+<div class="map-count" id="mcount" aria-live="polite">Učitavanje…</div>
+<div class="map-list" id="mlist"><noscript><p class="empty">Za mapu je potreban JavaScript. Cene po mrežama su ispod.</p></noscript></div>
+</aside>
+<div class="map-wrap">
+<div id="map" role="region" aria-label="Mapa javnih punjača"></div>
+<div class="map-legend" aria-hidden="true"><span><i class="l-dc"></i>DC</span><span><i class="l-ac"></i>AC</span><span><i class="l-free"></i>Besplatno</span><span><i class="l-off"></i>Ne radi</span></div>
+<button class="btn sm map-me" id="mme" type="button">{{ ic('locate') }}Blizu mene</button>
+<div class="map-attr">Mapa: <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/" rel="noopener">OpenMapTiles</a> · Podaci: © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>, <a href="https://openchargemap.org" rel="noopener">Open Charge Map</a>, <a href="https://www.putevi-srbije.rs/index.php/en/electric-chargers" rel="noopener">JP Putevi Srbije</a> · {{ M.retrieved_sr }}</div>
+<div class="card-ov" id="mcard"></div>
+</div>
+</div>
+<div class="wrap map-below">
+<div class="sec-head"><h2>Cene po mrežama</h2><a href="/javno-punjenje/">Sve o javnom punjenju →</a></div>
+{% include '_price_summary.html' %}
+<details><summary>Odakle su podaci na mapi</summary>
+<p>Lokacije su iz otvorenih baza OpenStreetMap (licenca ODbL) i Open Charge Map (CC BY 4.0), snimak od {{ M.retrieved_sr }}. Isto mesto iz obe baze prikazano je jednom. Stanje državnih punjača na autoputevima je po spisku JP „Putevi Srbije“; punjače kojih nema u bazama postavili smo na naplatnu stanicu ili odmorište. Baze ne znaju za svaki punjač, a neki podaci su stari — proverite u aplikaciji mreže pre polaska.</p>
+<p>Cene su iz aplikacija mreža i sa računa, sa datumom. Kad cena nije zabeležena baš na tom punjaču, prikazana je cena iste mreže za istu snagu. Ceo spisak lokacija: <a class="lnk" href="/assets/map/punjaci.json">punjaci.json</a> (ODbL).</p>
+<p>Nema punjača ili je podatak netačan? Pišite na <a class="lnk" href="mailto:hello@blokvolt.com">hello@blokvolt.com</a>.</p>
+</details>
+</div>
+<script id="map-cfg" type="application/json">{{ M.cfg|safe }}</script>
+<script id="bv-i18n" type="application/json">{{ M.i18n|safe }}</script>
+{% endblock %}
+{% block scripts %}<script type="module" src="/assets/map.js"></script>{% endblock %}

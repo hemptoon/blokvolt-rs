@@ -45,17 +45,26 @@ def note_cell(row):
     if row.get('note'):
         bits.append(row['note'])
     if row.get('stock'):
-        bits.append(f"<strong>{row['stock']}</strong>")
-    vat = row['vat']
-    bits.append('cena ' + ('sa PDV-om' if vat.startswith('sa PDV') else 'bez naznake PDV-a' if vat == 'nije naznačen' else vat))
+        bits.append(row['stock'])
     return '; '.join(bits)
 
 
+def vat_note(row):
+    vat = row['vat']
+    if vat.startswith('sa PDV'):
+        return ''
+    return 'PDV nije naznačen' if vat == 'nije naznačen' else vat
+
+
 def table(rows):
-    out = ['| Model | Snaga | Cena | Prodavac | Napomena |', '|---|---|---|---|---|']
+    out = ['| Model | Snaga | Cena | Prodavac |', '|---|---|---|---|']
     for r in sorted(rows, key=lambda x: x['price_rsd']):
         kw = sr(r['kw'], 1).rstrip('0').rstrip(',') + ' kW'
-        out.append(f"| **{r['brand']} {r['model']}** | {kw} | {price(r['price_rsd'])} RSD | {seller_cell(r)} | {note_cell(r)} |")
+        note = note_cell(r)
+        vat = vat_note(r)
+        model = f"**{r['brand']} {r['model']}**" + (f"<small>{note}</small>" if note else '')
+        cena = f"{price(r['price_rsd'])} RSD" + (f"<small>{vat}</small>" if vat else '')
+        out.append(f"| {model} | {kw} | {cena} | {seller_cell(r)} |")
     return '\n'.join(out)
 
 
@@ -84,8 +93,8 @@ for title, pred in CLASSES:
     if not rows:
         continue
     lo, hi = min(r['price_rsd'] for r in rows), max(r['price_rsd'] for r in rows)
-    span = f'{cena_plural(len(rows))}, od {price(lo)} do {price(hi)} RSD.' if len(rows) > 1 else f'{cena_plural(len(rows))}: {price(lo)} RSD.'
-    blocks.append(f"### {title}\n\n{span}\n\n{table(rows)}")
+    span = f'Od {price(lo)} do {price(hi)} RSD ({cena_plural(len(rows))}).' if len(rows) > 1 else f'{price(lo)} RSD.'
+    blocks.append(f"## {title}\n\n{span}\n\n{table(rows)}")
 
 # same model at more than one seller
 same = defaultdict(list)
@@ -110,53 +119,51 @@ mid = [r for r in ROWS if 'MID' in (r['model'] + r.get('note', ''))]
 sources = ' | '.join(sorted({f"{FIRMS[r['seller']]['name']} — cene sa sajta ({CHECKED}) :: {r['url']}" for r in ROWS}))
 
 md = f"""---
-title: Wallbox modeli u Srbiji 2026 — ko šta prodaje i po kojoj ceni
-description: {n_models} {pl(n_models, 'model', 'modela', 'modela')} kućnih punjača sa javno objavljenom cenom kod {n_sellers} {pl(n_sellers, 'prodavca', 'prodavca', 'prodavaca')} u Srbiji: od {price(cheap11['price_rsd'])} RSD za 11 kW do preko 150.000 za iste snage. Cene za sam uređaj, sa izvorom i datumom provere ({CHECKED}).
-kicker: Podaci · modeli punjača
-lead: Isti punjač u Srbiji ume da košta i 30 % više kod drugog prodavca, a „11 kW“ na dve etikete ne znači isti uređaj. Ovde su svi modeli sa javnom cenom, poređani po snazi, sa linkom na prodavca.
+title: Wallbox modeli u Srbiji 2026: cene kućnih punjača kod prodavaca
+h1: Wallbox modeli i cene
+description: {n_models} {pl(n_models, 'model', 'modela', 'modela')} kućnih punjača sa javnom cenom kod {n_sellers} {pl(n_sellers, 'prodavca', 'prodavca', 'prodavaca')} u Srbiji: 11 kW od {price(cheap11['price_rsd'])} RSD, 22 kW od {price(cheap22['price_rsd'])} RSD. Cena samog uređaja, bez ugradnje.
+kicker: Modeli punjača
+lead: Cene samih uređaja kod prodavaca u Srbiji, po snazi. Isti model kod drugog prodavca može da košta i 30 % više.
 updated: {CHECKED}
 next_check: {DATA['next_check']}
 published: 2026-09-23
 modified: {MODIFIED}
 priority: 0.85
-disclaimer: Cene se menjaju i akcije traju kratko — pre kupovine proverite kod prodavca. Grešku ili noviju cenu prijavite na
 sources: {sources}
 ---
-<div class="bva-stats">
-<div class="bva-stat"><b>{len(ROWS)}</b><span>{pl(len(ROWS), 'javno objavljena cena', 'javno objavljene cene', 'javno objavljenih cena')} uređaja kod {n_sellers} {pl(n_sellers, 'prodavca', 'prodavca', 'prodavaca')} u registru</span></div>
-<div class="bva-stat"><b>{price(cheap11['price_rsd'])} RSD</b><span>najniža objavljena cena za 11 kW ({cheap11['brand']} {cheap11['model']}) — najskuplji 11 kW je četiri puta skuplji</span></div>
-<div class="bva-stat"><b>{price(cheap22['price_rsd'])} RSD</b><span>najniža objavljena cena za 22 kW ({cheap22['brand']} {cheap22['model']})</span></div>
+<div class="sum" markdown="1">
+- **{len(ROWS)}** {pl(len(ROWS), 'objavljena cena', 'objavljene cene', 'objavljenih cena')} kod **{n_sellers}** {pl(n_sellers, 'prodavca', 'prodavca', 'prodavaca')}
+- 11 kW od **{price(cheap11['price_rsd'])} RSD** ({cheap11['brand']} {cheap11['model']})
+- 22 kW od **{price(cheap22['price_rsd'])} RSD** ({cheap22['brand']} {cheap22['model']})
+- Cena je za **sam uređaj**; ugradnja, kabl do table i zaštita plaćaju se posebno
 </div>
 
-## Šta je u tabeli
-
-Cena je za **sam uređaj**, bez ugradnje, onako kako je objavljena na sajtu prodavca {CHECKED}. Gde je cena bila bez PDV-a ili u evrima, u napomeni stoji originalna cena, a u koloni je naš preračun (PDV 20 %, 117,2 RSD/€). Kod nekih prodavaca PDV-status uopšte nije označen — i to piše u napomeni, jer je razlika 20 %.
-
-Cene „ključ u ruke“ (uređaj + ugradnja) nisu ovde nego u [uporednoj tabeli cena](/cena-punjaca-za-elektricni-auto), gde su i firme koje uređaj ne prodaju nego samo ugrađuju. Ko u Srbiji zastupa koji brend i ko ga nudi i bez javne cene, piše na stranici [distributeri i brendovi](/firme/distributeri-punjaca/#brendovi); prodavci sa javnom cenom su zbirno na stranici [prodaja punjača](/firme/prodaja-punjaca/).
+Cene su prepisane sa sajtova prodavaca. Gde cena nije sa PDV-om, to piše ispod cene. Punjač sa ugradnjom: [koliko košta kućni punjač](/cena-punjaca-za-elektricni-auto).
 
 {chr(10).join(blocks)}
 
-## Isti model, različita cena
+<details markdown="1">
+<summary>Isti model kod više prodavaca</summary>
 
 {dupes}
 
-Razlike nisu greška: neki prodavci daju preporučenu maloprodajnu cenu proizvođača, neki akcijsku, a neki cenu bez kabla. Zato uz svaku cenu proveravamo šta tačno ulazi u nju.
+Razlika je obično u tome da li je cena preporučena, akcijska ili bez kabla.
 
-## Šta gledati u specifikaciji
+</details>
 
-**Kabl ili utičnica.** Uređaj sa Type 2 utičnicom je jeftiniji, ali kabl košta zasebno — kod Oriona je, na primer, kabl od 7 m 42.600 RSD, skoro pola cene punjača. Circontrol eHome 5 se takođe isporučuje bez kabla.
+## Šta gledati pri kupovini
 
-**Brojilo u uređaju (MID).** Ako punjač stoji u zajedničkoj garaži i struja se preračunava stanarima, potreban je overen (MID) obračun. Od svih modela sa javnom cenom, ugrađeno MID brojilo javno navodi {len(mid)} — {', '.join(sorted({m['brand'] + ' ' + m['model'] for m in mid})) if mid else '—'}. Kod ostalih se brojilo ugrađuje zasebno; kako to izgleda u zgradi, piše u vodiču [ko plaća struju](/ko-placa-struju-za-punjenje).
+- **Snaga:** većina automobila prima najviše 11 kW naizmenične struje. Punjač od 22 kW ne puni brže ako ga auto ne prima.
+- **Kabl ili utičnica:** uređaj sa Type 2 utičnicom je jeftiniji, ali se kabl kupuje posebno.
+- **Brojilo (MID):** za zajedničku garažu treba overeno merenje. Ugrađeno MID brojilo navodi {len(mid)} {pl(len(mid), 'model', 'modela', 'modela')}.
+- **Raspodela snage (DLB):** punjač smanjuje struju kad rade šporet i bojler, pa ne iskače glavni osigurač.
 
-**OCPP, RFID, aplikacija.** OCPP znači da punjač može da radi sa tuđim sistemom za naplatu i nadzor — bitno za zgrade i firme, nepotrebno za kuću. RFID kartica služi da punjač ne koristi bilo ko. Aplikacija je udobnost, ali proverite da li radi bez interneta (punjenje mora da radi i kad padne WiFi).
+<details markdown="1">
+<summary>Detalji: OCPP, RFID, aplikacija</summary>
 
-**Dinamičko ograničenje snage (DLB).** Punjač sam smanjuje struju kad se u stanu uključe šporet i bojler, pa ne iskače glavni osigurač. Kod starijih instalacija to je često jeftinije rešenje nego povećavanje odobrene snage — o tome i o tome zašto 22 kW u praksi retko ima smisla piše u vodiču [koliko košta punjač](/cena-punjaca-za-elektricni-auto).
+OCPP znači da punjač radi sa tuđim sistemom za naplatu i nadzor; to je bitno za zgrade i firme. RFID kartica sprečava da punjač koristi bilo ko. Aplikacija je korisna, ali punjenje mora da radi i bez interneta. Modeli sa MID brojilom: {', '.join(sorted({m['brand'] + ' ' + m['model'] for m in mid})) if mid else '—'}. Kako se meri struja u zgradi: [ko plaća struju](/ko-placa-struju-za-punjenje).
 
-**11 ili 22 kW.** Skoro svi automobili u Srbiji primaju najviše 11 kW naizmenične struje, a tipična kućna instalacija ionako ima odobrenih 17,25 kW (3×25 A). Punjač od 22 kW ne puni brže ako auto to ne prima.
-
-## Cena uređaja nije cena punjenja
-
-Uz uređaj idu zaštita (FID tip A + automatski osigurač), kabl do table, ugradnja i izveštaj o ispitivanju. Zato kod dve firme koje objavljuju cenu zajedno sa ugradnjom (Evolako i STASANET) 11 kW „ključ u ruke“ košta {price(95000)}–{price(130000)} RSD, dok sam uređaj počinje od {price(cheap11['price_rsd'])} RSD. Ko i pod kojim uslovima ugrađuje — u [registru firmi](/firme/); koliko struja košta posle toga — u [kalkulatoru](/alati/kalkulator-troskova/).
+</details>
 """
 
 OUT.write_text(md, encoding='utf-8')

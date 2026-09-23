@@ -55,5 +55,11 @@
  "notes": "",
  "card": "Novi Sad, Liman · do 60 min dnevno",
  "kind_label": "Besplatno punjenje",
- "publish": true
+ "publish": true,
+ "short_name": "Lidl eCharge",
+ "lead": "Besplatno punjenje na parkingu Lidla na Limanu u Novom Sadu, do 60 minuta dnevno.",
+ "network_short": "1 lokacija, 2 mesta",
+ "power_short": "DC 20 kW, AC 11 kW",
+ "billing_short": "Besplatno, do 60 min dnevno, 08–22 h.",
+ "payment_short": "RFID kartica ili aplikacija Lidl"
 }

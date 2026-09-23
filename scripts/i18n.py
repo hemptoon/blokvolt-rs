@@ -23,7 +23,7 @@ LANGS = ('en', 'ru')
 SITE = 'https://www.blokvolt.rs'
 
 INLINE = {'a', 'b', 'strong', 'i', 'em', 'small', 'span', 'br', 'code', 'sup', 'sub', 'abbr', 'time',
-          'mark', 'u', 's', 'del', 'ins', 'wbr', 'q', 'cite', 'kbd', 'var', 'bdi', 'bdo', 'img'}
+          'mark', 'u', 's', 'del', 'ins', 'wbr', 'q', 'cite', 'kbd', 'var', 'bdi', 'bdo', 'img', 'output'}
 SKIP = {'script', 'style', 'svg', 'noscript_', 'template', 'head', 'code', 'pre'}
 ATTRS = ('alt', 'title', 'aria-label', 'placeholder', 'data-label')
 NUM = re.compile(r'(?<![\w.,])\d+(?:[.,]\d+)+(?![\w])')
@@ -66,8 +66,42 @@ def _direct_text(el):
     return any(isinstance(c, NavigableString) and not isinstance(c, Comment) and c.strip() for c in el.children)
 
 
+def _icon(t, el):
+    """An inline SVG icon that is a direct child of `el` (buttons and links: icon + text)."""
+    return isinstance(t, Tag) and t.name == 'svg' and t.parent is el
+
+
 def _has_block(el):
-    return any(isinstance(d, Tag) and d.name not in INLINE for d in el.descendants)
+    for d in el.descendants:
+        if isinstance(d, Tag) and d.name not in INLINE and not _icon(d, el) and not any(_icon(p, el) for p in d.parents if p is not el):
+            return True
+    return False
+
+
+def seg_html(el):
+    """Inner HTML of a segment without its icons (icons are kept in place when the text is replaced)."""
+    if not any(_icon(c, el) for c in el.children):
+        return el.decode_contents()
+    return ''.join(str(c) for c in el.children if not _icon(c, el))
+
+
+def replace_segment(el, html):
+    """Put the translated inner HTML into `el`, keeping direct-child icons before or after the text."""
+    kids = list(el.children)
+    lead, trail, seen_text = [], [], False
+    for c in kids:
+        if _icon(c, el):
+            (trail if seen_text else lead).append(c)
+        elif not (isinstance(c, NavigableString) and not c.strip()):
+            seen_text = True
+    for c in lead + trail:
+        c.extract()
+    el.clear()
+    for c in lead:
+        el.append(c)
+    el.append(BeautifulSoup(html, 'html.parser'))
+    for c in trail:
+        el.append(c)
 
 
 def segment_roots(root):
@@ -132,7 +166,7 @@ def iter_page_keys(soup):
     for u in page_units(soup):
         kind = u[0]
         if kind == 'html':
-            yield make_key(u[1].decode_contents())[0]
+            yield make_key(seg_html(u[1]))[0]
         elif kind == 'attr':
             yield text_key(u[1][u[2]])[0]
         elif kind == 'title':
@@ -183,8 +217,8 @@ def collect(dist):
 
 # ---------------------------------------------------------------- rendering
 NOTE = {
-    'en': 'Translated from Serbian. Prices, quotes from company websites and data are given in English for convenience; where the exact wording matters, the <a href="{sr}" data-bv-lang="sr" hreflang="sr">Serbian original</a> applies.',
-    'ru': 'Перевод с сербского. Цены, цитаты с сайтов компаний и данные переведены для удобства; если важна точная формулировка, действует <a href="{sr}" data-bv-lang="sr" hreflang="sr">сербский оригинал</a>.',
+    'en': 'Translated from Serbian. Where the exact wording matters, the <a href="{sr}" data-bv-lang="sr" hreflang="sr">Serbian original</a> applies.',
+    'ru': 'Перевод с сербского. Если важна точная формулировка, действует <a href="{sr}" data-bv-lang="sr" hreflang="sr">сербский оригинал</a>.',
 }
 OG_LOCALE = {'en': 'en_US', 'ru': 'ru_RU'}
 HREFLANG = {'sr': 'sr', 'en': 'en', 'ru': 'ru'}
@@ -254,10 +288,9 @@ class Renderer:
         # 1. running text, from the pristine tree (keys must match `collect`)
         roots = list(segment_roots(soup.body or soup))
         for el in roots:
-            t = self.tr_html(lang, el.decode_contents(), where)
+            t = self.tr_html(lang, seg_html(el), where)
             if t is not None:
-                el.clear()
-                el.append(BeautifulSoup(t, 'html.parser'))
+                replace_segment(el, t)
         # 2. attributes the reader sees
         for el in (soup.body or soup).find_all(True):
             if el.name in SKIP or el.find_parent(lambda t: t.name in SKIP or t.get('translate') == 'no'):
@@ -307,10 +340,14 @@ class Renderer:
             a['href'] = f'/{lang}/pretraga/?q=' + re.sub(r'\s+', '+', a.get_text(' ', strip=True).lower())
         # 6. language switcher and the note on top
         self.fix_switcher(soup, url, lang)
-        hero = soup.find('div', class_='v3-ph')
-        if hero is not None:
-            note = BeautifulSoup('<div class="w3 bv-tr-wrap"><p class="bv-tr-note">' + NOTE[lang].format(sr=url) + '</p></div>', 'html.parser')
-            hero.insert_after(note)
+        # the note sits under the page head (.ph / .hero) or at the end of the map's top panel
+        head = soup.find(attrs={'data-bv-note': True})
+        if head is not None:
+            cls = head.get('class') or []
+            if 'ph' in cls or 'hero' in cls:
+                head.insert_after(BeautifulSoup('<div class="wrap bv-tr-wrap"><p class="bv-tr-note">' + NOTE[lang].format(sr=url) + '</p></div>', 'html.parser'))
+            else:
+                head.append(BeautifulSoup('<p class="bv-tr-note">' + NOTE[lang].format(sr=url) + '</p>', 'html.parser'))
         self.add_alternates(soup, url)
         return str(soup)
 

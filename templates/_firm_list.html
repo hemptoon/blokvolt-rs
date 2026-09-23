@@ -1,0 +1,14 @@
+{% from '_macros.html' import lg %}
+{% from '_icons.html' import ic %}
+<div data-filter-list>
+<div class="list-tools">
+<div class="search-box">{{ ic('search') }}<input class="input" data-f-q type="search" placeholder="Naziv firme ili brend" aria-label="Pretraga firmi" autocomplete="off"></div>
+<select class="select" data-f-sel="grad" aria-label="Grad"><option value="">Svi gradovi</option>{% for slug, name in CITY_OPTS %}<option value="{{ slug }}">{{ name }}</option>{% endfor %}</select>
+</div>
+{% if TYPE_CHIPS %}<div class="chips" style="margin:0 0 14px">{% for key, label in TYPE_CHIPS %}<button class="chip" type="button" data-f-chip="tip:{{ key }}" aria-pressed="{{ 'true' if not key else 'false' }}">{{ label }}</button>{% endfor %}</div>{% endif %}
+<p class="list-count" data-f-count data-tpl="{{ count_tpl }}">{{ firms|length }}</p>
+{% for g, label, items in groups %}<div data-f-group class="fgroup">{% if label %}<h2 class="grp">{{ label }}</h2>{% endif %}
+<div class="rows">{% for f in items %}<a class="row" href="{{ f.url }}" data-row data-q="{{ f.q }}" data-grad="{{ f.grad }}" data-tip="{{ f.tips }}">{{ lg(f) }}<div><h3>{{ f.name }}{% if f.is_us %}<span class="badge feat">Izdvojeno</span>{% endif %}</h3><div class="sub">{{ f.kind_label }} · {{ f.city }}</div>{% if f.pos %}<div class="badges">{% for b in f.pos %}<span class="badge ok">{{ b }}</span>{% endfor %}</div>{% endif %}</div><div class="val">{% if f.price_val %}{{ f.price_val }}<small>{{ f.price_note }}</small>{% else %}<small>Cena na upit</small>{% endif %}</div></a>{% endfor %}</div>
+</div>{% endfor %}
+<p class="empty" data-f-empty hidden>Nema firmi za ovaj izbor.</p>
+</div>

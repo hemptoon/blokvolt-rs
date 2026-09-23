@@ -1,8 +1,17 @@
 # -*- coding: utf-8 -*-
-"""BlokVolt static site generator (blokvolt.rs). Python 3 + Jinja2 + Markdown + BeautifulSoup.
-Usage: python3 build.py  -> dist/
-"""
-import json, os, re, shutil, glob, datetime, html, sys
+"""BlokVolt static site generator (www.blokvolt.rs), portal design of September 2026.
+
+Python 3 + Jinja2 + Markdown + BeautifulSoup.  Usage: python3 build.py  ->  dist/
+
+  content/firme/*.json       companies (register), content/operateri/*.json  public-charging networks
+  content/podaci, javno, vodici/*.md   articles (front matter + Markdown; style: docs/CONTENT_STYLE.md)
+  content/mapa/*.json        open charger snapshots for /mapa/ (scripts/map_data.py)
+  content/data/*.json        calculators, cities, hubs, logos, site dates
+  templates/*.html           Jinja templates (base.html + _header/_footer/_macros/_icons)
+  static/                    copied as is (assets/bv.css, bv.js, map.js, vendor/, logos/, fonts/)
+
+After the Serbian pages exist, scripts/i18n.py writes /en/ and /ru/ from the translation memory."""
+import json, os, re, shutil, glob, html, sys, hashlib, unicodedata
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import markdown
@@ -10,34 +19,27 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).parent
 sys.path.insert(0, str(ROOT / 'scripts'))
+import map_data  # noqa: E402
+
 DIST = ROOT / 'dist'
 SITE = 'https://www.blokvolt.rs'
-# Dates live in content/data/site.json: 'updated' = last content update (footer, home, sitemap lastmod),
-# 'firms_checked' = last full revision of the firm register. Update them there, not here.
+# Dates live in content/data/site.json: 'updated' = last content update (footer, sitemap lastmod),
+# 'firms_checked' = last full revision of the firm register.
 SITE_META = json.load(open(ROOT / 'content' / 'data' / 'site.json', encoding='utf-8'))
 TODAY = SITE_META['updated']
 ISO_TODAY = '-'.join(reversed(TODAY.split('.')))
 FIRMS_CHECKED = SITE_META['firms_checked']
+EVOLAKO = 'https://www.evolako.rs/'
 
 env = Environment(loader=FileSystemLoader(str(ROOT / 'templates')), autoescape=select_autoescape(['html']), trim_blocks=True, lstrip_blocks=True)
 
+
+# ---------------------------------------------------------------- helpers
 def sr_num(x, d=0):
     """Serbian number format: 1.234,56"""
     s_ = f'{abs(float(x)):,.{d}f}'.replace(',', 'X').replace('.', ',').replace('X', '.')
     return ('−' if float(x) < 0 and round(abs(float(x)), d) != 0 else '') + s_
-env.filters['sr'] = sr_num
 
-def clip(text, n):
-    """Shorten to at most n characters at a word boundary, with an ellipsis."""
-    text = ' '.join(str(text).split())
-    if len(text) <= n:
-        return text
-    head = text[:n + 1]
-    end = head.rfind('. ')
-    if end >= n // 2:                      # a whole sentence fits: stop there
-        return head[:end + 1]
-    cut = text[:n].rsplit(' ', 1)[0].rstrip(',;:–—- ')
-    return cut + '…'
 
 def sr_plural(n, one, few, many):
     """Serbian count agreement: 1 mreža / 2-4 mreže / 5+ mreža."""
@@ -48,51 +50,69 @@ def sr_plural(n, one, few, many):
         return f'{n} {few}'
     return f'{n} {many}'
 
+
+def mono(name):
+    """Two-letter monogram for an entity without a logo file."""
+    words = [w for w in re.findall(r'[^\W_]+', name or '') if w.lower() not in ('d', 'o', 'doo', 'jp', 'jkp')]
+    if not words:
+        return '?'
+    if len(words) == 1:
+        return words[0][:2].upper()
+    return (words[0][0] + words[1][0]).upper()
+
+
+def clip(text, n):
+    """Shorten to at most n characters at a word boundary, with an ellipsis."""
+    text = ' '.join(str(text).split())
+    if len(text) <= n:
+        return text
+    head = text[:n + 1]
+    end = head.rfind('. ')
+    if end >= n // 2:
+        return head[:end + 1]
+    cut = text[:n].rsplit(' ', 1)[0].rstrip(',;:–—- ')
+    return cut + '…'
+
+
+def iso(d):
+    """'22.09.2026' -> '2026-09-22' (anything else -> today)."""
+    p = (d or '').split('.')
+    return f'{p[2]}-{p[1]}-{p[0]}' if len(p) == 3 and all(x.isdigit() for x in p) else ISO_TODAY
+
+
+def fold(s):
+    s = (s or '').lower().replace('đ', 'd')
+    return ''.join(c for c in unicodedata.normalize('NFD', s) if unicodedata.category(c) != 'Mn')
+
+
+def fmt_rsd(v):
+    return sr_num(v, 2) if abs(v - round(v)) > 0.004 else sr_num(v, 0)
+
+
+def clean_src(label):
+    """Source labels are shown to readers: no in-house wording ("snimak ekrana redakcije")."""
+    t = label or ''
+    t = re.sub(r'\s*[—-]\s*snimak ekrana redakcije', '', t)
+    t = re.sub(r'\s*\((?:punjenje|snimak|snimci ekrana|račun) redakcije\)', '', t)
+    t = re.sub(r'\s*\(snimci ekrana redakcije\)', '', t)
+    t = t.replace('računi redakcije', 'računi').replace('račun redakcije', 'račun').replace(' redakcije', '')
+    return t.strip()
+
+
+env.filters['sr'] = sr_num
 env.filters['plural'] = sr_plural
+env.filters['mono'] = mono
+env.filters['iso'] = iso
 
-GROUPS = {
-    'A': ('Punjač sa ugradnjom — javna cena', 'Firme koje objavljuju cenu punjača zajedno sa ugradnjom.'),
-    'B': ('Javna cena uređaja, ugradnja na upit', 'Cena uređaja je na sajtu, ugradnja se nudi ali se cena dobija na upit.'),
-    'C': ('Samo uređaj — web-shop, bez ugradnje', 'Prodaju punjač; ugradnju ne pominju ili je ne nude.'),
-    'D': ('Bez javne cene — samo na upit', 'Prodaju i/ili ugrađuju, ali cene ne objavljuju.'),
-    'E': ('Samo ugradnja — električari', 'Ne prodaju uređaj; montiraju punjač koji donesete.'),
-}
-KINDS = {
-    'instalater': 'Prodaja i ugradnja', 'prodavnica': 'Web-shop / prodavnica', 'distributer': 'Distributer brenda',
-    'solar': 'Solarni integrator', 'elektricar': 'Električar', 'operator': 'Operator javne mreže', 'trag': 'Na proveri',
-}
-CITY_CFG = json.load(open(ROOT / 'content' / 'data' / 'gradovi.json', encoding='utf-8'))['cities']
-CITY_SLUGS = {c['name']: c['slug'] for c in CITY_CFG}
 
-# ---------- helpers ----------
 def read_json_dir(d):
-    out = []
-    for f in sorted(glob.glob(str(ROOT / 'content' / d / '*.json'))):
-        out.append(json.load(open(f, encoding='utf-8')))
-    return out
+    return [json.load(open(f, encoding='utf-8')) for f in sorted(glob.glob(str(ROOT / 'content' / d / '*.json')))]
 
-def md_to_html(text):
-    h = markdown.markdown(text, extensions=['tables', 'attr_list', 'md_in_html', 'sane_lists'])
-    s = BeautifulSoup(h, 'html.parser')
-    for t in s.find_all('table'):
-        heads = [th.get_text(' ', strip=True) for th in t.find_all('th')]
-        t['class'] = 'bva-tbl agg-ev' if t.find('span', class_='evm') else 'bva-tbl'
-        for tr in t.find_all('tr'):
-            for i, td in enumerate(tr.find_all('td')):
-                if i < len(heads):
-                    td['data-label'] = heads[i]
-        wrap = s.new_tag('div', attrs={'class': 'bva-tw'})
-        t.wrap(wrap)
-    for ul in s.find_all('ul'):
-        if ul.find_parent('li'):
-            continue
-    return str(s)
 
 def front_matter(path):
     txt = open(path, encoding='utf-8').read()
     m = re.match(r'^---\n(.*?)\n---\n(.*)$', txt, re.S)
-    meta = {}
-    body = txt
+    meta, body = {}, txt
     if m:
         for line in m.group(1).split('\n'):
             if ':' in line:
@@ -101,6 +121,25 @@ def front_matter(path):
         body = m.group(2)
     return meta, body
 
+
+def md_to_html(text):
+    h = markdown.markdown(text, extensions=['tables', 'attr_list', 'md_in_html', 'sane_lists'])
+    s = BeautifulSoup(h, 'html.parser')
+    for t in s.find_all('table'):
+        heads = [th.get_text(' ', strip=True) for th in t.find_all('th')]
+        for tr in t.find_all('tr'):
+            for i, td in enumerate(tr.find_all('td')):
+                if i < len(heads) and not td.get('data-label'):
+                    td['data-label'] = heads[i]
+        if t.parent is not None and 'tw' in (t.parent.get('class') or []):
+            continue
+        t.wrap(s.new_tag('div', attrs={'class': 'tw stack'}))
+    for a in s.find_all('a', href=True):
+        if a['href'].startswith('http') and 'blokvolt' not in a['href'] and not a.get('rel'):
+            a['rel'] = 'noopener'
+    return str(s)
+
+
 def write(path, content):
     p = DIST / path.lstrip('/')
     if path.endswith('/') or not os.path.splitext(path)[1]:
@@ -108,28 +147,84 @@ def write(path, content):
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(content, encoding='utf-8')
 
+
+def canon_of(path):
+    if path == '/404.html':
+        return '/404'
+    return path[:-5] if path.endswith('.html') else path
+
+
+def sources_of(meta):
+    """Front-matter 'sources: label :: url | label :: url' -> [{label, url}]."""
+    out = []
+    for s in (meta.get('sources') or '').split(' | '):
+        if not s.strip():
+            continue
+        label, _, url = s.partition(' :: ')
+        out.append({'label': clean_src(label.strip()), 'url': url.strip()})
+    return out
+
+
+# ---------------------------------------------------------------- logos
+# content/data/logos.json: {"<slug>": {"file": "stasanet.svg", "dark": false, "source": "https://…"}}
+# Files live in static/assets/logos/. A logo is shown only when its file exists.
+LOGO_DIR = ROOT / 'static' / 'assets' / 'logos'
+_logos_path = ROOT / 'content' / 'data' / 'logos.json'
+LOGO_META = json.load(open(_logos_path, encoding='utf-8')).get('logos', {}) if _logos_path.exists() else {}
+LOGOS, LOGO_DARK = {}, set()
+for _slug, _l in LOGO_META.items():
+    _f = LOGO_DIR / _l.get('file', '')
+    if _l.get('file') and _f.is_file():
+        LOGOS[_slug] = f"/assets/logos/{_l['file']}?v={hashlib.sha1(_f.read_bytes()).hexdigest()[:8]}"
+        if _l.get('dark'):
+            LOGO_DARK.add(_slug)
+
+
+def attach_logo(e, key=None):
+    """Networks use the key 'op-<slug>' and fall back to the firm with the same slug."""
+    keys = [key, e['slug']] if key else [e['slug']]
+    k = next((x for x in keys if x in LOGOS), None)
+    e['logo'] = LOGOS.get(k, '') if k else ''
+    e['logo_dark'] = k in LOGO_DARK
+    e['logo_abs'] = (SITE + e['logo'].split('?')[0]) if e['logo'] else ''
+
+
+# ---------------------------------------------------------------- firms
+GROUPS = {
+    'A': 'Punjač sa ugradnjom, javna cena',
+    'B': 'Uređaj sa cenom, ugradnja na upit',
+    'C': 'Samo uređaj',
+    'D': 'Cena na upit',
+    'E': 'Električari: samo ugradnja',
+}
+KINDS = {
+    'instalater': 'Prodaja i ugradnja', 'prodavnica': 'Prodavnica', 'distributer': 'Distributer',
+    'solar': 'Solarni integrator', 'elektricar': 'Električar', 'operator': 'Mreža punjača', 'trag': 'Na proveri',
+}
+CITY_CFG = json.load(open(ROOT / 'content' / 'data' / 'gradovi.json', encoding='utf-8'))['cities']
+CITY_SLUGS = {c['name']: c['slug'] for c in CITY_CFG}
+TOWN_XY = {t[0]: (t[1], t[2]) for t in map_data.TOWNS}
+NATIONWIDE = ('cela srbija', 'citava srbija', 'čitava srbija', 'srbija i region', 'mreža instalatera')
+_WORD = 'a-zà-ž0-9čćđšž'
+
+
+def _word_in(term, text):
+    return re.search(f'(?<![{_WORD}])' + re.escape(term) + f'(?![{_WORD}])', text) is not None
+
+
 def cities_of(firm):
-    """Every configured city whose name or alias appears in the firm's seat (`city`)."""
     c = firm.get('city', '')
     return [cfg['name'] for cfg in CITY_CFG if any(a in c for a in cfg['aliases'])]
 
-NATIONWIDE = ('cela srbija', 'citava srbija', 'čitava srbija', 'srbija i region', 'mreža instalatera')
-
-_WORD = 'a-zà-ž0-9čćđšž'
-
-def _word_in(term, text):
-    """Whole-word match, so "nis" does not fire inside "nisu potvrđene"."""
-    return re.search(f'(?<![{_WORD}])' + re.escape(term) + f'(?![{_WORD}])', text) is not None
 
 def covers_city(entity, cfg):
-    """True when the published `coverage` string reaches this city without a seat there:
-    country-wide wording, the city itself, or one of the city's regions."""
     cov = (entity.get('coverage') or '').lower()
     if not cov:
         return False
     if cov.strip() in ('srbija', 'srbija.') or any(k in cov for k in NATIONWIDE):
         return True
     return any(_word_in(t, cov) for t in [cfg['name'].lower()] + cfg['regions'])
+
 
 def verdict_class(v):
     v = (v or '').lower()
@@ -139,243 +234,527 @@ def verdict_class(v):
         return 'ask'
     return 'yes'
 
-# ---------- load content ----------
-firms = read_json_dir('firme')
-published = [f for f in firms if f.get('publish')]
-order = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4}
-def firm_sort(f):
-    return (order.get(f['group'], 9), 0 if f.get('is_us') else 1, f['name'].lower())
-published.sort(key=firm_sort)
-for f in published:
-    f['kind_label'] = KINDS.get(f.get('kind', ''), '')
-    f['city_list'] = cities_of(f)
-    f['city_main'] = f['city_list'][0] if f['city_list'] else None
-    f['city_slug'] = ' '.join(CITY_SLUGS[c] for c in f['city_list'])
-    f['url'] = f"/firme/{f['slug']}/"
-    f['group_label'] = GROUPS[f['group']][0]
-    f['vclass'] = {k: verdict_class(v) for k, v in f.get('verdicts', {}).items()}
-by_group = {g: [f for f in published if f['group'] == g] for g in GROUPS}
 
-# Sub-hubs of the register by type of firm (/firme/<slug>/). Texts live in content/data/firme-tipovi.json;
-# who belongs where is decided here, from the same verdicts and groups the register shows.
+def split_cell(h):
+    """Register cell HTML -> {'head': the bold answer, 'rest': details and quotes, one line}."""
+    s = BeautifulSoup(h or '', 'html.parser')
+    b = s.find('b')
+    head = b.decode_contents().strip() if b else ''
+    if b:
+        b.extract()
+    for br in s.find_all('br'):
+        br.replace_with(' · ')
+    for sm in s.find_all('small'):
+        sm.insert_before(' · ')
+        sm.unwrap()
+    rest = re.sub(r'(\s*·\s*){2,}', ' · ', str(s)).strip()
+    rest = re.sub(r'^(·\s*)+|(\s*·)+$', '', rest).strip()
+    return {'head': head, 'rest': rest}
+
+
+def firm_price(f):
+    h = (f.get('price_headline') or '').strip()
+    if not h or re.search(r'(?i)nije objavljen|na upit|cena nije', h):
+        return None, None
+    model, sep, val = h.rpartition(':')
+    if not sep:
+        model, val = '', h
+    model, val = model.strip(), val.strip()
+    if f['group'] == 'A':
+        note = f'{model}, sa ugradnjom' if model else 'sa ugradnjom'
+    else:
+        note = model
+    return val, clip(note, 34) if note else ''
+
+
+POS = [('ugradnja', 'Ugradnja'), ('brojilo', 'MID brojilo'), ('skupstina', 'Papiri za skupštinu'), ('usluga', 'Mesečna usluga')]
 TYPE_RULES = {
-    'ugradnja': lambda f: f['vclass'].get('ugradnja') in ('yes', 'ask'),   # says on its site that it installs
-    'prodaja': lambda f: f['group'] in ('A', 'B', 'C'),                     # publishes a device price
+    'ugradnja': lambda f: f['vclass'].get('ugradnja') in ('yes', 'ask'),
+    'prodaja': lambda f: f['group'] in ('A', 'B', 'C'),
     'distributer': lambda f: f.get('kind') == 'distributer',
     'solar': lambda f: f.get('kind') == 'solar',
     'elektricar': lambda f: f.get('kind') == 'elektricar',
 }
+
+firms = read_json_dir('firme')
+published = sorted([f for f in firms if f.get('publish')], key=lambda f: ('ABCDE'.index(f['group']), f['name'].lower()))
+for f in published:
+    f['kind_label'] = KINDS.get(f.get('kind', ''), '')
+    f.setdefault('contact', {})
+    f['city_list'] = cities_of(f)
+    f['url'] = f"/firme/{f['slug']}/"
+    f['group_label'] = GROUPS[f['group']]
+    f['vclass'] = {k: verdict_class(v) for k, v in f.get('verdicts', {}).items()}
+    f['cell'] = {k: split_cell(v) for k, v in f.get('cells', {}).items()}
+    for k in ('cena', 'ugradnja', 'brojilo', 'skupstina', 'usluga'):
+        f['cell'].setdefault(k, {'head': '', 'rest': ''})
+    f['price_val'], f['price_note'] = firm_price(f)
+    pos = []
+    for k, label in POS:
+        if f['vclass'].get(k) == 'yes':
+            if k == 'usluga' and 'garanc' in (f['verdicts'].get(k) or '').lower():
+                label = 'Produžena garancija'
+            pos.append(label)
+    f['pos'] = pos
+    f['tips'] = ' '.join(k for k, rule in TYPE_RULES.items() if rule(f))
+    f['src_items'] = [{'url': s['url'], 'label': clean_src(s.get('label') or s['url']), 'date': s.get('date', '')} for s in f.get('sources', [])]
+    f['verified_iso'] = iso(f.get('verified'))
+    attach_logo(f)
+    grad = [CITY_SLUGS[c] for c in f['city_list']]
+    if f['group'] in ('A', 'B', 'E'):
+        grad += [cfg['slug'] for cfg in CITY_CFG if cfg['slug'] not in grad and covers_city(f, cfg)]
+    f['grad'] = ' '.join(grad)
+    f['q'] = fold(' '.join([f['name'], f.get('domain', ''), f.get('city', ''), ' '.join(f.get('brands', [])), f['kind_label']]))
+
 TYPE_HUBS = []
 for _h in json.load(open(ROOT / 'content' / 'data' / 'firme-tipovi.json', encoding='utf-8'))['hubs']:
     _m = [f for f in published if TYPE_RULES[_h['rule']](f)]
     TYPE_HUBS.append(dict(_h, url=f"/firme/{_h['slug']}/", firms=_m, n=len(_m)))
-_hub_slugs = {h['slug'] for h in TYPE_HUBS}
-assert not _hub_slugs & {f['slug'] for f in firms}, 'a firm slug collides with a /firme/ sub-hub'
+assert not {h['slug'] for h in TYPE_HUBS} & {f['slug'] for f in firms}, 'a firm slug collides with a /firme/ sub-hub'
 for f in published:
-    f['hubs'] = [h for h in TYPE_HUBS if any(x['slug'] == f['slug'] for x in h['firms'])]
-# brand -> firms that name it on their own site (curated `brands` in content/firme/*.json)
+    f['hubs'] = [h for h in TYPE_HUBS if any(x is f for x in h['firms'])]
 BRAND_INDEX = {}
 for f in published:
     for b in f.get('brands', []):
         BRAND_INDEX.setdefault(b, []).append(f)
 BRAND_INDEX = [(b, sorted(lst, key=lambda f: f['name'].lower())) for b, lst in sorted(BRAND_INDEX.items(), key=lambda kv: kv[0].lower())]
-cities = {}
-for cfg in CITY_CFG:
-    lst = [f for f in published if cfg['name'] in f['city_list']]
-    if lst:
-        cities[cfg['name']] = lst
+EXCLUDED = sorted([f for f in firms if not f.get('publish') and f.get('excluded_reason')], key=lambda f: f['name'].lower())
+CITY_OPTS = [(c['slug'], c['name']) for c in CITY_CFG]
+TYPE_CHIPS = [('', 'Sve')] + [(h['rule'], h['chip']) for h in TYPE_HUBS]
 
+
+def grouped(lst):
+    return [(g, GROUPS[g], [f for f in lst if f['group'] == g]) for g in GROUPS if any(f['group'] == g for f in lst)]
+
+
+# ---------------------------------------------------------------- public charging
 CALC = json.load(open(ROOT / 'content' / 'data' / 'kalkulator.json', encoding='utf-8'))
-operators = sorted([o for o in read_json_dir('operateri') if o.get('publish')], key=lambda o: o.get('order', 99))
+_E = CALC['eps']
+
+
+def all_in(x):
+    return (x + _E['oie'] + _E['ee']) * (1 + _E['akciza']) * (1 + _E['pdv'])
+
+
+KIND_ORDER = ['cpo', 'drzavni', 'host', 'app', 'besplatno']
+operators = [o for o in read_json_dir('operateri') if o.get('publish')]
+operators.sort(key=lambda o: (KIND_ORDER.index(o['kind']) if o['kind'] in KIND_ORDER else 9, o.get('order', 99)))
 for o in operators:
+    o['legal'] = o['name']
+    o['name'] = o.get('short_name') or o['name']
     o['url'] = f"/javno-punjenje/{o['slug']}/"
-    o['network_short'] = o.get('card') or ''
-KIND_GROUPS = [('cpo', 'Komercijalne mreže'), ('drzavni', 'Državni punjači'), ('host', 'Domaćini — benzinske stanice'), ('app', 'Aplikacije za plaćanje'), ('besplatno', 'Besplatno punjenje')]
-KIND_RANK = {k: i for i, (k, _) in enumerate(KIND_GROUPS)}
-operators.sort(key=lambda o: (KIND_RANK.get(o['kind'], 9), o.get('order', 99)))
-ops_by_kind = {k: [o for o in operators if o['kind'] == k] for k, _ in KIND_GROUPS}
+    o['app_short'] = (re.split(r' \(| · | — |; ', o.get('app') or '')[0].strip() or '—') if not (o.get('app') or '').startswith('—') else '—'
+    o['card_short'] = o.get('card', '')
+    o['verified_iso'] = iso(o.get('verified'))
+    o['src_items'] = [{'url': s['url'], 'label': clean_src(s.get('label') or s['url']), 'date': s.get('date', '')} for s in o.get('sources', [])]
+    prices = []
+    for p in o.get('prices', []):
+        prices.append(dict(p, source=clean_src(p.get('source', ''))))
+    o['now_prices'] = [p for p in prices if not p['what'].startswith('Istorija')]
+    o['old_prices'] = [p for p in prices if p['what'].startswith('Istorija')]
+    attach_logo(o, 'op-' + o['slug'])
+
 price_index = json.load(open(ROOT / 'content' / 'javno' / 'indeks-cena.json', encoding='utf-8'))
+
 
 def _r(x):
     return int(x + 0.5)
 
-def kwh_html(row):
-    parts = []
-    if row.get('kwh'):  # a real receipt: exact price per kWh
-        return f'<span class="k">= {_r(row["rsd_total"] / row["kwh"])} RSD po kWh</span><span class="k">stvarni račun</span>'
-    if row.get('unit_rsd'):  # billed per operator-defined "charging unit", not per kWh
-        return '<span class="k">ne preračunava se</span><span class="k">„jedinica“ nije kWh</span>'
+
+def kwh_text(row):
+    """≈ price per kWh for one index row, as short lines joined with <br>."""
+    if row.get('kwh'):
+        return f'= {_r(row["rsd_total"] / row["kwh"])} RSD<br>stvarni račun'
+    if row.get('unit_rsd'):
+        return '„jedinica“ nije kWh'
     if row.get('rsd_hour'):
-        for k in row['assume_kw']:
-            parts.append(f'<span class="k">≈{_r(row["rsd_hour"] / k)} RSD pri {k} kW</span>')
-        return ''.join(parts)
-    vals = row['rsd_min']
+        return '<br>'.join(f'≈{_r(row["rsd_hour"] / k)} RSD pri {k} kW' for k in row['assume_kw'])
+    vals, out = row['rsd_min'], []
     for k in row['assume_kw']:
         lo, hi = _r(min(vals) / (k / 60)), _r(max(vals) / (k / 60))
-        txt = f'≈{lo}' if lo == hi else f'≈{lo}–{hi}'
-        parts.append(f'<span class="k">{txt} RSD pri {k} kW</span>')
-    return ''.join(parts)
+        out.append((f'≈{lo}' if lo == hi else f'≈{lo}–{hi}') + f' RSD pri {k} kW')
+    return '<br>'.join(out)
+
 
 for row in price_index['rows']:
+    row['source'] = clean_src(row.get('source', ''))
     if not row.get('free'):
-        row['kwh_html'] = kwh_html(row)
+        row['kwh_html'] = kwh_text(row)
+RECEIPTS = [r['rsd_total'] / r['kwh'] for r in price_index['rows'] if r.get('kwh')]
+KWH_RANGE = f'{_r(min(RECEIPTS))}–{_r(max(RECEIPTS))}' if RECEIPTS else ''
 
-# ---------- shared context ----------
-NAV = [('/firme/', 'Firme'), ('/cena-punjaca-za-elektricni-auto', 'Cene'), ('/javno-punjenje/', 'Javno punjenje'), ('/alati/kalkulator-troskova/', 'Kalkulator'), ('/vodici/', 'Vodiči'), ('/podaci/', 'Podaci')]
-CITY_LINKS = [(f"/gradovi/{c['slug']}/", c['name']) for c in CITY_CFG]
-base_ctx = dict(SITE=SITE, TODAY=TODAY, ISO_TODAY=ISO_TODAY, FIRMS_CHECKED=FIRMS_CHECKED, CITY_LINKS=CITY_LINKS, SITE_META=SITE_META, NAV=NAV, n_firms=len(published), n_leads=sum(1 for f in firms if not f.get('publish') and not f.get('excluded_reason')), n_excluded=sum(1 for f in firms if not f.get('publish') and f.get('excluded_reason')), n_vodica=7, n_ops=len(operators),
-                TYPE_NAV=[(h['url'], h['nav'], h['nav_desc'], h['n']) for h in TYPE_HUBS])
 
-def render(tpl, path, **ctx):
-    t = env.get_template(tpl)
-    c = dict(base_ctx); c.update(ctx); c['path'] = path
-    write(path, t.render(**c))
+def per_min(r):
+    if r.get('rsd_min'):
+        return r['rsd_min'][0]
+    if r.get('rsd_hour'):
+        return r['rsd_hour'] / 60
+    return None
 
-# ---------- build ----------
+
+def price_summary():
+    """Compact price cards per network, straight from the price index (content/javno/indeks-cena.json)."""
+    ops = {o['slug']: o for o in operators}
+    rows = price_index['rows']
+    cards = []
+
+    def card(slug, **kw):
+        o = ops.get(slug, {'name': slug, 'slug': slug})
+        c = {'name': o.get('name'), 'page': o.get('url', ''), 'logo': o.get('logo', ''), 'logo_dark': o.get('logo_dark'), 'items': [], 'sub': '', 'note': '', 'free': False}
+        c.update(kw)
+        cards.append(c)
+    # Charge&GO: one tariff per charger power
+    cg = [r for r in rows if r['op'] == 'chargego' and r.get('rsd_min') and not r.get('kwh')]
+    rc = [r['rsd_total'] / r['kwh'] for r in rows if r['op'] == 'chargego' and r.get('kwh')]
+    card('chargego', sub='po minutu, prema snazi punjača', items=[(r['charger'], r['label']) for r in cg],
+         note=(f'Po računima {_r(min(rc))}–{_r(max(rc))} RSD po kWh. ' if rc else '') + 'Posle punjenja: 5 RSD/min posle 15 min.')
+    # Orion: own chargers, grouped by charger type
+    orion = [r for r in rows if r['op'] == 'orion-emobility' and not r.get('where', '').startswith('punjač ') and per_min(r)]
+    by = {}
+    for r in orion:
+        by.setdefault(re.sub(r'\s*\(.*?\)', '', r['charger']), []).append(per_min(r))
+    items = []
+    for ch in sorted(by, key=lambda c: (c.startswith('DC'), float(re.search(r'(\d+)', c).group(1)))):
+        lo, hi = min(by[ch]), max(by[ch])
+        items.append((ch, (fmt_rsd(lo) if abs(lo - hi) < 0.01 else f'{fmt_rsd(lo)}–{fmt_rsd(hi)}') + ' RSD/min'))
+    card('orion-emobility', sub='+ 50 RSD po punjenju; cena zavisi od lokacije', items=items)
+    # Spectra: per "unit" + per minute
+    sp = [r for r in rows if r['op'] == 'emobility-spectra']
+    if sp:
+        items = []
+        for cur in ('AC', 'DC'):
+            u = [r['unit_rsd'] for r in sp if r['charger'].startswith(cur)]
+            if u:
+                items.append((cur, (f'{min(u)}–{max(u)}' if min(u) != max(u) else f'{u[0]}') + ' RSD/jed. + 1,20 RSD/min'))
+        card('emobility-spectra', sub='„jedinica punjenja“ nije kWh', items=items)
+    for r in rows:
+        if r.get('free'):
+            card(r['op'], sub=r.get('who') or '', items=[(r['where'][:1].upper() + r['where'][1:], 'Besplatno')], free=True)
+    ps = next((r for r in rows if r['op'] == 'parking-servis-beograd'), None)
+    if ps:
+        card('parking-servis-beograd', sub='punjenje bez naknade, plaća se parking', items=[(ps['where'][:1].upper() + ps['where'][1:], ps['label'])], note=f"Tarifa iz {ps['date'].split()[-1]}.")
+    return cards
+
+
+PRICE_SUMMARY = price_summary()
+PRICE_DATE = price_index['updated']
+NT_GREEN = sr_num(all_in(next(z for z in _E['zones'] if z['id'] == 'zelena')['nt']), 2)
+NT_BLUE = sr_num(all_in(next(z for z in _E['zones'] if z['id'] == 'plava')['nt']), 2)
+
+
+# ---------------------------------------------------------------- build start
 if DIST.exists():
     shutil.rmtree(DIST)
 DIST.mkdir()
 shutil.copytree(ROOT / 'static', DIST, dirs_exist_ok=True)
 
+# map data first: counts are used on several pages
+MAP = map_data.build(DIST, operators, price_index, {o['slug']: {'logo': o['logo'], 'dark': o['logo_dark']} for o in operators})
+MAP_COUNTS = MAP['counts']
+
+# state motorway chargers: counts and the per-site status list come from content/mapa/putevi-srbije.json (map_data)
+_pv = next((o for o in operators if o['slug'] == 'putevi-srbije'), None)
+_PS = MAP.get('ps') or {}
+PUTEVI_N = str(_PS.get('total', ''))
+PUTEVI_RUN = str(_PS.get('works', ''))
+PUTEVI_VERB = 'rade' if _PS and _PS['works'] % 10 in (2, 3, 4) and _PS['works'] % 100 not in (12, 13, 14) else 'radi'
+PS_NOTE = {'kw60': 'do 60 kW', 'dc_only': 'samo DC konektor', 'toll': 'do otvaranja naplatne stanice'}
+if _PS and _pv:
+    _ps_ids = {}
+    for _st in MAP['stations']:
+        if _st.get('ps'):
+            _ps_ids.setdefault(_st['ps']['site'], _st['id'])
+    _pv['ps_sites'] = [{'name': s['name'], 'road': s['road'], 'map': _ps_ids.get(s['name']),
+                        'lines': [{'dir': c.get('dir') or '', 'power': c['power'], 'st': c['status'],
+                                   'note': PS_NOTE.get(c.get('note', ''), ''), 'when': c.get('when', '')} for c in s['chargers']]}
+                       for s in _PS['sites']]
+    _pv['ps_meta'] = {k: _PS[k] for k in ('total', 'works', 'down', 'connecting', 'planned', 'checked', 'source')}
+for _s in SITE_META['home_stats']:  # "auto:putevi" = counts from the official list (content/mapa/putevi-srbije.json)
+    if _s['b'] == 'auto:putevi':
+        _s['b'] = f'{PUTEVI_RUN} od {PUTEVI_N}'
+        _s['short'] = f'državnih punjača na autoputevima {PUTEVI_VERB}, besplatno'
+for o in operators:
+    o['on_map'] = MAP_COUNTS.get(o['slug'], 0)
+
+
+def _ver(p):
+    return hashlib.sha1(p.read_bytes()).hexdigest()[:10]
+
+
+MAP_T = {
+    'schuko': 'Šuko', 'other': 'Ostalo', 'charger': 'Punjač', 'near': 'okolina: {t}', 'per_min': 'RSD/min', 'free': 'Besplatno',
+    'p_unknown': 'Cena nije poznata. Proverite u aplikaciji mreže.', 'p_free': 'Besplatno', 'p_exact': 'Cena na ovom punjaču',
+    'p_tier': 'Cena mreže za {c}', 'p_receipt': 'Račun: {l}, {k} RSD po kWh', 'p_range': 'Između cena za {a} i {b}',
+    'p_seen': 'Zabeležene cene ove mreže:', 'price': 'Cena', 'count_all': 'Punjača: {n}', 'count': 'Prikazano {n} od {all}',
+    'sorted_near': 'najbliži prvi', 'none': 'Nema punjača za ovaj izbor.', 'conn': 'Priključci', 'access': 'Pristup',
+    'customers': 'Samo za goste ili kupce', 'navigate': 'Navigacija', 'site': 'Sajt mreže', 'about_net': 'O mreži',
+    'report': 'Prijavi grešku', 'mail_subj': 'Greška na mapi', 'mail_body': 'Šta nije tačno:', 'data': 'Podaci',
+    'close': 'Zatvori', 'net_known': 'Mreža', 'operator': 'Operater', 'net_unknown': 'Mreža nije poznata',
+    'no_location': 'Lokacija nije dostupna.', 'load_err': 'Mapa trenutno ne može da se učita. Pokušajte ponovo.',
+    'idle': 'Zauzeće posle punjenja: {x}', 'in_view': 'U ovom delu mape: {n}', 'all_serbia': 'Cela Srbija', 'more': 'Prikaži još ({n})',
+    'off': 'Ne radi', 'status': 'Stanje punjača', 'st_ok': 'radi', 'st_off': 'ne radi', 'st_kw60': 'do 60 kW',
+    'st_dc_only': 'samo DC konektor', 'st_src': 'Po spisku JP „Putevi Srbije“ od {d}',
+}
+CHIP_NETS = ['chargego', 'orion-emobility', 'putevi-srbije', 'tesla', 'emobility-spectra']
+_r0 = MAP['retrieved'].split('-')
+M = {
+    'n': MAP['n'],
+    'chips': [(s, map_data.NAMES.get(s, s), MAP_COUNTS[s]) for s in CHIP_NETS if MAP_COUNTS.get(s, 0) >= 4],
+    'retrieved_sr': f'{_r0[2]}.{_r0[1]}.{_r0[0]}' if len(_r0) == 3 else MAP['retrieved'],
+    'cfg': json.dumps({
+        'style': 'https://tiles.openfreemap.org/styles/positron',
+        'font': ['Noto Sans Bold'],
+        'stations': '/assets/map/punjaci.json?v=' + _ver(DIST / 'assets' / 'map' / 'punjaci.json'),
+        'prices': '/assets/map/cene.json?v=' + _ver(DIST / 'assets' / 'map' / 'cene.json'),
+        'cities': {c['slug']: list(TOWN_XY[c['name']]) for c in CITY_CFG if c['name'] in TOWN_XY},
+        'idle': {'chargego': '5 RSD/min posle 15 min', 'orion-emobility': '5 RSD/min posle 15 min', 'emobility-spectra': '10,20 RSD/min posle 10 min (ECO)'},
+    }, ensure_ascii=False).replace('</', '<\\/'),
+    'i18n': json.dumps(MAP_T, ensure_ascii=False),
+}
+
+
+def near_count(lat, lon, km=15):
+    return sum(1 for s in MAP['stations'] if map_data.dist_m({'latitude': lat, 'longitude': lon}, {'latitude': s['lat'], 'longitude': s['lon']}) <= km * 1000)
+
+
+# ---------------------------------------------------------------- navigation and page context
+NAV = [('/mapa/', 'Mapa punjača', 'mapa'), ('/firme/', 'Firme', 'firme'), ('/cene/', 'Cene', 'cene'),
+       ('/vodici/', 'Vodiči', 'vodici'), ('/alati/kalkulator-troskova/', 'Kalkulator', 'kalk')]
+PRICE_PAGES = ('/podaci/tarife-eps/', '/podaci/wallbox-modeli/', '/podaci/cene-elektricnih-automobila/', '/cena-punjaca-za-elektricni-auto')
+
+
+def section_of(path):
+    if path.startswith('/mapa/'):
+        return 'mapa'
+    if path.startswith(('/firme/', '/gradovi/')):
+        return 'firme'
+    if path.startswith(('/javno-punjenje/', '/cene/')) or path.startswith(PRICE_PAGES):
+        return 'cene'
+    if path.startswith('/alati/kalkulator-troskova/'):
+        return 'kalk'
+    if path.startswith(('/podaci/', '/vodici/', '/alati/')) or path.endswith('.html') and 'politika' not in path:
+        return 'vodici'
+    return ''
+
+
+CRUMB = {'cene': ('/cene/', 'Cene'), 'vodici': ('/vodici/', 'Vodiči'), 'firme': ('/firme/', 'Firme')}
+
+base_ctx = dict(SITE=SITE, TODAY=TODAY, ISO_TODAY=ISO_TODAY, FIRMS_CHECKED=FIRMS_CHECKED, SITE_META=SITE_META, NAV=NAV,
+                n_firms=len(published), n_map=MAP['n'])
+
 urls = []
+
+
 def add_url(path, prio='0.6', lastmod=ISO_TODAY):
-    urls.append((SITE + path, prio, lastmod))
+    urls.append((SITE + canon_of(path), prio, lastmod))
 
-# nav + footer html (rendered once, used to patch legacy pages)
-nav_html = env.get_template('_nav.html').render(**base_ctx, path='')
-foot_html = env.get_template('_footer.html').render(**base_ctx)
 
-SCRIPTS = ('<script src="/assets/vendor/gsap.min.js" defer></script>\n'
-           '<script src="/assets/meganav.js" defer></script>\n'
-           '<script src="/assets/site.js" defer></script>')
+def render(tpl, path, **ctx):
+    c = dict(base_ctx)
+    c.update(ctx)
+    c['path'] = path
+    c['canon'] = canon_of(path)
+    c.setdefault('section', section_of(path))
+    write(path, env.get_template(tpl).render(**c))
 
-def patch_legacy(html_text, current=None):
-    """Replace legacy nav/footer with the new ones and fix counts/dates."""
-    nav = nav_html if not current else env.get_template('_nav.html').render(**base_ctx, path=current)
-    html_text = re.sub(r'<div class="v3-nav">.*?(?=<div class="v3-ph">)', nav, html_text, count=1, flags=re.S)
-    html_text = re.sub(r'<div class="v3-foot">.*?<div class="v3-legal">.*?</div></div>', foot_html, html_text, count=1, flags=re.S)
-    html_text = html_text.replace('<link rel="stylesheet" href="/assets/webflow.css">\n', '')
-    html_text = html_text.replace('<link rel="stylesheet" href="/assets/site.css">', '<link rel="stylesheet" href="/assets/site.css">\n<link rel="stylesheet" href="/assets/agg.css">')
-    html_text = html_text.replace('<script src="/assets/site.js" defer></script>', SCRIPTS)
-    # the legacy pages say "cene 20 firmi" (genitive) and "20 firmi · 14 izvora" (a count label):
-    # 51 needs "cene 51 firme" but "51 firma · 14 izvora", so the two contexts are replaced separately
-    _n = len(published)
-    html_text = html_text.replace('>20 firmi · ', '>' + sr_plural(_n, 'firma', 'firme', 'firmi') + ' · ')
-    html_text = html_text.replace('20 firmi', sr_plural(_n, 'firme', 'firme', 'firmi'))
-    return html_text
 
-# 1) legacy guides (passthrough with new chrome)
-LEGACY = ['cena-punjaca-za-elektricni-auto', 'punjac-u-zgradi-skupstina', 'ko-placa-struju-za-punjenje', 'punjac-u-iznajmljenoj-garazi',
-          'bezbednost-punjenja-atest', 'wallbox-cena-srbija', 'punjenje-elektricnog-auta-u-zgradi', 'politika-privatnosti']
-GUIDES_META = []
-for slug in LEGACY:
-    src = (ROOT / 'content' / 'vodici' / f'{slug}.html').read_text(encoding='utf-8')
-    title = re.search(r'<title>(.*?)</title>', src).group(1)
-    desc = re.search(r'<meta name="description" content="([^"]*)"', src).group(1)
-    GUIDES_META.append({'slug': slug, 'title': html.unescape(title.split(' | ')[0]), 'desc': html.unescape(desc)})
-    out = patch_legacy(src, current='/' + slug)
-    if slug == 'cena-punjaca-za-elektricni-auto':
-        # regenerate the comparison tables from JSON
-        tbl = env.get_template('_cena_tabela.html').render(**base_ctx, GROUPS=GROUPS, by_group=by_group)
-        out = re.sub(r'<div class="bva bva-wide" id="tabela">.*?</div></div>(?=<div class="bva")', tbl, out, count=1, flags=re.S)
-        out = out.replace('stanje 07.09.2026', 'stanje 22.09.2026').replace('Ažurirano 7. septembra 2026.', 'Ažurirano 22. septembra 2026.').replace('ažurirano 07.09.2026', 'ažurirano 22.09.2026')
-        out = out.replace('Zato smo 7. septembra 2026. prošli kroz sajtove', 'Zato smo u septembru 2026. (prva provera 7. septembra, dopuna 22. septembra) prošli kroz sajtove')
-        out = out.replace('prepisane su sa navedenih stranica 7. septembra 2026.', 'prepisane su sa navedenih stranica 7. i 22. septembra 2026. (datum provere stoji uz svaku firmu).')
-        out = out.replace('"dateModified": "2026-09-07"', '"dateModified": "2026-09-22"')
-    write('/' + slug + '.html', out)
-    add_url('/' + slug, '0.8' if slug != 'politika-privatnosti' else '0.2')
-
-# 2) vodici hub = legacy index moved to /vodici/
-src = (ROOT / 'content' / 'vodici' / 'index.html').read_text(encoding='utf-8')
-out = patch_legacy(src, current='/vodici/')
-out = out.replace('<link rel="canonical" href="https://www.blokvolt.rs/">', '<link rel="canonical" href="https://www.blokvolt.rs/vodici/">')
-out = out.replace('<meta property="og:url" content="https://www.blokvolt.rs/">', '<meta property="og:url" content="https://www.blokvolt.rs/vodici/">')
-out = out.replace('"url": "https://www.blokvolt.rs/",\n   "publisher"', '"url": "https://www.blokvolt.rs/vodici/",\n   "publisher"')
-out = out.replace('<a href="/" aria-current="page">Svi vodiči</a>', '<a href="/vodici/" aria-current="page">Svi vodiči</a>')
-write('/vodici/', out)
-add_url('/vodici/', '0.8')
-
-# 3) firms
-for f in published:
-    render('firma.html', f['url'], firm=f, GROUPS=GROUPS, CITY_SLUGS=CITY_SLUGS, title=f"{f['name']} — punjači za električne automobile: cene, ugradnja, uslovi | BlokVolt",
-           description=f"{f['name']} ({f['city']}): šta nudi, javne cene, da li ugrađuje, brojilo, papiri za skupštinu, garancija. Provereno {f['verified']}. Isti podaci za sve firme.")
-    add_url(f['url'], '0.6')
-EXCLUDED = sorted([f for f in firms if not f.get('publish') and f.get('excluded_reason')], key=lambda f: f['name'].lower())
-render('firme_index.html', '/firme/', GROUPS=GROUPS, TYPE_HUBS=TYPE_HUBS, by_group=by_group, firms=published, cities=cities, CITY_SLUGS=CITY_SLUGS, KINDS=KINDS, EXCLUDED=EXCLUDED,
-       title=f"Firme za punjače u Srbiji — registar od {sr_plural(len(published), 'prodavca i instalatera', 'prodavca i instalatera', 'prodavaca i instalatera')}, iste kolone za sve | BlokVolt",
-       description=f"Registar od {sr_plural(len(published), 'firme', 'firme', 'firmi')} koje prodaju ili ugrađuju kućne punjače za električne automobile u Srbiji: javne cene, ugradnja, MID brojilo, papiri za skupštinu, garancija. Provereno {FIRMS_CHECKED}.")
-add_url('/firme/', '0.9')
-_WB = json.load(open(ROOT / 'content' / 'data' / 'wallbox-modeli.json', encoding='utf-8'))
-for h in TYPE_HUBS:
-    _tctx = dict(n=h['n'], n_firms=len(published), checked=FIRMS_CHECKED, n_d=len(by_group['D']),
-                 n_price=sum(1 for f in h['firms'] if f['group'] == 'A' or 'javna cena' in (f.get('verdicts', {}).get('ugradnja') or '').lower()),
-                 wb_rows=len(_WB['rows']), wb_models=len({(r['brand'], r['model']) for r in _WB['rows']}), n_brands=len(BRAND_INDEX))
-    _T = lambda txt: env.from_string(txt).render(**_tctx) if txt else ''
-    _sections = [(g, GROUPS[g][0], [f for f in h['firms'] if f['group'] == g]) for g in GROUPS]
-    render('firme_tip.html', h['url'], hub=h, TYPE_HUBS=TYPE_HUBS, sections=[x for x in _sections if x[2]],
-           lead=_T(h['lead']), intro=_T(h.get('intro')), outro=_T(h.get('outro')), brand_intro=_T(h.get('brand_intro')),
-           BRANDS=BRAND_INDEX if h['rule'] == 'distributer' else None, show_cities=h['rule'] in ('ugradnja', 'solar', 'elektricar'),
-           title=_T(h['title']), description=_T(h['description']))
-    add_url(h['url'], '0.7')
-NT_HOURS = {h['region']: h['window'] for h in CALC['eps']['nt_hours']}
-CITY_PAGES = []
-for cfg in CITY_CFG:
-    city, slug = cfg['name'], cfg['slug']
-    local = cities.get(city, [])
-    local_slugs = {f['slug'] for f in local}
-    # installers based elsewhere whose published coverage reaches this city
-    covering = [f for f in published if f['slug'] not in local_slugs and f['group'] in ('A', 'B', 'E')
-                and covers_city(f, cfg)]
-    shops = [f for f in published if f['slug'] not in local_slugs and f['group'] in ('C', 'D')
-             and covers_city(f, cfg)]
-    city_ops = [o for o in operators if covers_city(o, cfg) or city.lower() in (o.get('city') or '').lower()]
-    n_all = len(local) + len(covering)
-    render('grad.html', f'/gradovi/{slug}/', city=city, cfg=cfg, firms=local, covering=covering,
-           shops=shops, city_ops=city_ops, n_all=n_all, nt=NT_HOURS.get(cfg['nt_region'], ''),
-           GROUPS=GROUPS,
-           title=f"Punjač za električni auto u {cfg['loc']} — {sr_plural(n_all, 'firma koja prodaje i ugrađuje', 'firme koje prodaju i ugrađuju', 'firmi koje prodaju i ugrađuju')} | BlokVolt",
-           description=(f"Ko ugrađuje kućni punjač u {cfg['loc']}: "
-                        + (f"{sr_plural(len(local), 'firma', 'firme', 'firmi')} sa sedištem u gradu i "
-                           + (f"još jedna koja pokriva {cfg['acc']} sa strane" if len(covering) == 1
-                              else f"još {len(covering)} koje pokrivaju {cfg['acc']} sa strane")
-                           if local else
-                           f"sedište u gradu nema nijedna, ali {sr_plural(len(covering), 'firma pokriva', 'firme pokrivaju', 'firmi pokriva')} grad sa cele teritorije Srbije")
-                        + f" — javne cene, uslovi ugradnje, brojilo i garancija. Javno punjenje u gradu i sati niže tarife EPS-a. Provereno {FIRMS_CHECKED}."))
-    add_url(f'/gradovi/{slug}/', '0.6')
-    CITY_PAGES.append({'name': city, 'slug': slug, 'n': n_all, 'local': len(local)})
-
-# 4) markdown pages (podaci, o-sajtu, metodologija, ispravka, izmene)
-PODACI = []
-CHECKS = []
-CRUMBS = [('/podaci/', ('Podaci', '/podaci/')), ('/javno-punjenje/', ('Javno punjenje', '/javno-punjenje/'))]
-md_files = sorted(glob.glob(str(ROOT / 'content' / 'podaci' / '*.md'))) + sorted(glob.glob(str(ROOT / 'content' / 'javno' / '*.md')))
-for mdf in md_files:
+# ---------------------------------------------------------------- articles (Markdown)
+PROMO = {'text': 'Evolako ugrađuje punjač u zgradi ili garaži sa MID brojilom, atestom i papirima za skupštinu, uz mesečni obračun struje.',
+         'href': EVOLAKO, 'link': 'evolako.rs'}
+PROMO_ON = {'/punjenje-elektricnog-auta-u-zgradi.html', '/punjac-u-zgradi-skupstina.html', '/ko-placa-struju-za-punjenje.html',
+            '/punjac-u-iznajmljenoj-garazi.html'}
+ARTICLES = {}
+for mdf in sorted(glob.glob(str(ROOT / 'content' / 'podaci' / '*.md'))) + sorted(glob.glob(str(ROOT / 'content' / 'javno' / '*.md'))) \
+        + sorted(glob.glob(str(ROOT / 'content' / 'vodici' / '*.md'))):
     meta, body = front_matter(mdf)
     slug = Path(mdf).stem
     path = meta.get('path') or f'/podaci/{slug}/'
-    body_html = md_to_html(body)
-    crumb = next((c for pre, c in CRUMBS if path.startswith(pre) and path != pre), None)
-    render('article.html', path, meta=meta, body=body_html, crumb=crumb, title=meta.get('title') + ' | BlokVolt', description=meta.get('description', ''), sources=[s for s in meta.get('sources', '').split(' | ') if s])
-    add_url(path, meta.get('priority', '0.7'))
-    if path.startswith('/podaci/'):
-        PODACI.append(dict(meta, path=path))
-    if meta.get('next_check'):
-        _kick = meta.get('kicker', '').split('·')[-1].strip()
-        _name = (_kick[:1].upper() + _kick[1:]) if _kick else meta['title'].split(' — ')[0].split(':')[0]
-        CHECKS.append({'name': _name, 'path': path, 'updated': meta.get('updated', ''), 'next': meta['next_check']})
-PODACI.sort(key=lambda m: (-float(m.get('priority', '0.5')), m.get('title', '')))
-render('podaci_index.html', '/podaci/', pages=PODACI, title='Podaci: subvencije, statistika, tarife, propisi za električne automobile u Srbiji | BlokVolt',
-       description='Proverene brojke i propisi za vlasnike električnih automobila u Srbiji — subvencije 2026, registracija i porezi, osiguranje, krediti, uvoz i carina, servisi, statistika, putarina i parking. Svaka stranica sa izvorom i datumom.')
-add_url('/podaci/', '0.8')
+    ARTICLES[path] = {'meta': meta, 'body': body, 'path': path, 'canon': canon_of(path), 'slug': slug,
+                      'h1': meta.get('h1') or meta.get('title', '').split(' — ')[0].split(':')[0],
+                      'lead': meta.get('lead', ''), 'title': meta.get('title', '')}
 
-# 4b) public charging (ring 2)
+# the two hubs; each entry: (href, name, description, icon)
+def A(path, name=None, desc=None, icon='doc'):
+    a = ARTICLES.get(path)
+    href = canon_of(path)
+    return {'href': href, 'name': name or (a['h1'] if a else path), 'desc': desc or (clip(a['lead'], 120) if a else ''), 'icon': icon}
+
+
+VODICI_GROUPS = [
+    ('Punjač u zgradi i garaži', [
+        A('/punjenje-elektricnog-auta-u-zgradi.html', icon='building'), A('/punjac-u-zgradi-skupstina.html', icon='doc'),
+        A('/ko-placa-struju-za-punjenje.html', icon='coins'),
+        {'href': '/alati/racun-u-zgradi/', 'name': 'Ko koliko plaća u zgradi', 'desc': 'Kalkulator: koliko komšije plaćaju tuđe punjenje bez brojila.', 'icon': 'calc'},
+        A('/bezbednost-punjenja-atest.html', icon='shield'), A('/punjac-u-iznajmljenoj-garazi.html', icon='plug'),
+        A('/wallbox-cena-srbija.html', icon='plug')]),
+    ('Kupovina i vlasništvo', [
+        A('/podaci/subvencije-2026/', icon='gift'), A('/podaci/cene-elektricnih-automobila/', 'Cene električnih automobila', icon='car'),
+        A('/podaci/registracija-i-porezi/', icon='doc'), A('/podaci/uvoz-i-carina/', icon='doc'),
+        A('/podaci/osiguranje-elektricnog-automobila/', icon='shield'), A('/podaci/krediti-i-lizing/', icon='coins'),
+        A('/podaci/servisi-za-elektricne-automobile/', icon='car'), A('/podaci/rent-a-car-i-car-sharing/', icon='car')]),
+    ('Na putu', [
+        A('/podaci/putarina-i-parking/', icon='road'), A('/javno-punjenje/besplatni-punjaci/', icon='gift'),
+        A('/javno-punjenje/region/', icon='globe2')]),
+    ('Brojke', [
+        A('/podaci/statistika-ev-srbija/', icon='chart'), A('/podaci/tarife-eps/', 'Cena struje kod kuće', icon='bolt'),
+        A('/podaci/wallbox-modeli/', 'Wallbox modeli i cene', icon='plug')]),
+]
+CENE_TILES = [
+    {'href': '/javno-punjenje/', 'name': 'Javno punjenje', 'desc': 'Cene po mrežama, po minutu i po kWh, i besplatni punjači.', 'icon': 'bolt'},
+    {'href': '/cena-punjaca-za-elektricni-auto', 'name': 'Kućni punjač sa ugradnjom', 'desc': 'Koliko traže firme i šta ulazi u ugradnju.', 'icon': 'plug'},
+    {'href': '/podaci/wallbox-modeli/', 'name': 'Wallbox uređaji', 'desc': 'Cene modela kod prodavaca u Srbiji.', 'icon': 'firm'},
+    {'href': '/podaci/tarife-eps/', 'name': 'Struja kod kuće', 'desc': 'Zone, tarife i sati jeftinije struje.', 'icon': 'coins'},
+    {'href': '/podaci/cene-elektricnih-automobila/', 'name': 'Električni automobili', 'desc': 'Cene modela kod uvoznika i posle subvencije.', 'icon': 'car'},
+    {'href': '/alati/kalkulator-troskova/', 'name': 'Kalkulator troškova', 'desc': 'Koliko košta 100 km: kuća, javni punjač, benzin.', 'icon': 'calc'},
+]
+
+
+def related_for(path):
+    href = canon_of(path)
+    for _, items in VODICI_GROUPS:
+        if any(i['href'] == href for i in items):
+            rel = [i for i in items if i['href'] != href][:3]
+            return [{'path': i['href'], 'h1': i['name'], 'lead': i['desc']} for i in rel]
+    return []
+
+
+for path, a in ARTICLES.items():
+    meta = a['meta']
+    sec = section_of(path)
+    if path.startswith('/javno-punjenje/'):
+        crumbs = [('/javno-punjenje/', 'Javno punjenje')]
+    elif sec in ('cene', 'vodici') and path not in ('/politika-privatnosti.html',):
+        crumbs = [CRUMB[sec]]
+    else:
+        crumbs = []
+    meta = dict(meta, h1=a['h1'])
+    render('article.html', path, meta=meta, body=md_to_html(a['body']), crumbs=crumbs, section=sec,
+           title=meta.get('title', a['h1']) + ' | BlokVolt', description=meta.get('description', ''), sources=sources_of(meta),
+           promo_box=PROMO if path in PROMO_ON else None, related=related_for(path))
+    add_url(path, meta.get('priority', '0.7'), meta.get('modified', ISO_TODAY))
+
+def _numbered(groups):
+    n = 0
+    for g in groups:
+        for it in g['items']:
+            n += 1
+            it['pos'] = n
+    return groups
+
+
+render('hub.html', '/vodici/', h1='Vodiči', lead='Kratki odgovori o punjenju, kupovini i troškovima električnog automobila u Srbiji.',
+       groups=_numbered([{'title': t, 'tiles': False, 'items': [dict(i) for i in items]} for t, items in VODICI_GROUPS]),
+       title='Vodiči za električni automobil u Srbiji: punjač u zgradi, subvencije, troškovi | BlokVolt',
+       description='Punjač u zgradi i odluka skupštine, ko plaća struju, subvencije 2026, registracija, osiguranje, putarina, statistika i cene struje. Kratko, sa izvorima.')
+add_url('/vodici/', '0.8')
+render('hub.html', '/cene/', h1='Cene', lead='Koliko košta punjenje, kućni punjač, struja kod kuće i sam automobil.',
+       groups=_numbered([{'title': '', 'tiles': True, 'items': [dict(i) for i in CENE_TILES]}]),
+       title='Cene u Srbiji: javno punjenje, kućni punjač, struja, električni automobili | BlokVolt',
+       description='Cene javnog punjenja po mrežama, kućnih punjača sa ugradnjom, wallbox uređaja, struje po tarifama EPS-a i električnih automobila kod uvoznika.')
+add_url('/cene/', '0.8')
+
+# ---------------------------------------------------------------- firms
+for f in published:
+    city = f['city_list'][0] if f['city_list'] else None
+    cfg = next((c for c in CITY_CFG if c['name'] == city), None)
+    if cfg:
+        pool = [x for x in published if x is not f and cfg['slug'] in x['grad'].split()]
+        sim_title, sim_href = f"Još firmi za {cfg['acc']}", f"/gradovi/{cfg['slug']}/"
+    else:
+        hub = f['hubs'][0] if f['hubs'] else None
+        pool = [x for x in (hub['firms'] if hub else published) if x is not f]
+        sim_title, sim_href = ('Slične firme', hub['url'] if hub else '/firme/')
+    pool.sort(key=lambda x: (0 if x['price_val'] else 1, 'ABCDE'.index(x['group']), x['name'].lower()))
+    price = f['price_val'] or 'cena na upit'
+    render('firma.html', f['url'], firm=f, similar=pool[:4], similar_title=sim_title, similar_href=sim_href,
+           title=f"{f['name']}: punjač za električni auto, cena i ugradnja | BlokVolt",
+           description=clip(f"{f['name']} ({f['city']}): {price}. Ugradnja: {f['verdicts'].get('ugradnja', 'ne pominje se').lower()}. Podaci sa sajta firme, provereno {f['verified']}.", 158))
+    add_url(f['url'], '0.6', f['verified_iso'])
+
+render('firme_index.html', '/firme/', firms=published, groups=grouped(published), CITY_OPTS=CITY_OPTS, TYPE_CHIPS=TYPE_CHIPS,
+       count_tpl='Prikazano: {n} od {all}', EXCLUDED=EXCLUDED, crumbs=[],
+       title=f"Firme za kućni punjač u Srbiji: {sr_plural(len(published), 'firma', 'firme', 'firmi')}, cene i ugradnja | BlokVolt",
+       description=f"Ko u Srbiji prodaje i ugrađuje kućni punjač za električni auto: {sr_plural(len(published), 'firma', 'firme', 'firmi')} sa javnim cenama, ugradnjom i gradovima. Provereno {FIRMS_CHECKED}.")
+add_url('/firme/', '0.9')
+_WB = json.load(open(ROOT / 'content' / 'data' / 'wallbox-modeli.json', encoding='utf-8'))
+for h in TYPE_HUBS:
+    _tctx = dict(n=h['n'], n_firms=len(published), checked=FIRMS_CHECKED, n_brands=len(BRAND_INDEX),
+                 wb_rows=len(_WB['rows']), wb_models=len({(r['brand'], r['model']) for r in _WB['rows']}))
+    _T = (lambda txt: env.from_string(txt).render(**_tctx) if txt else '')
+    render('firme_tip.html', h['url'], hub=h, TYPE_HUBS=TYPE_HUBS, firms=h['firms'], groups=grouped(h['firms']), CITY_OPTS=CITY_OPTS,
+           TYPE_CHIPS=None, count_tpl='Prikazano: {n} od {all}', lead=_T(h['lead']), intro=_T(h.get('intro')), brand_intro=_T(h.get('brand_intro')),
+           BRANDS=BRAND_INDEX if h['rule'] == 'distributer' else None, title=_T(h['title']), description=_T(h['description']))
+    add_url(h['url'], '0.7')
+
+NT_HOURS = {x['region']: x['window'] for x in _E['nt_hours']}
+for cfg in CITY_CFG:
+    city, slug = cfg['name'], cfg['slug']
+    local = [f for f in published if city in f['city_list']]
+    local_slugs = {f['slug'] for f in local}
+    covering = [f for f in published if f['slug'] not in local_slugs and f['group'] in ('A', 'B', 'E') and covers_city(f, cfg)]
+    shops = [f for f in published if f['slug'] not in local_slugs and f['group'] in ('C', 'D') and covers_city(f, cfg)]
+    xy = TOWN_XY.get(city)
+    near = [s for s in MAP['stations'] if xy and map_data.dist_m({'latitude': xy[0], 'longitude': xy[1]}, {'latitude': s['lat'], 'longitude': s['lon']}) <= 15000]
+    n_near = len(near)
+    per_net = {}
+    for s in near:
+        if s['net']:
+            per_net[s['net']] = per_net.get(s['net'], 0) + 1
+    city_ops = []
+    for o in operators:
+        if o['slug'] in per_net:
+            city_ops.append(dict(o, card_short=sr_plural(per_net[o['slug']], 'punjač', 'punjača', 'punjača') + ' na 15 km od centra'))
+    n_all = len(local) + len(covering)
+    lead = f"Javni punjači, firme za ugradnju kućnog punjača i sati jeftinije struje u {cfg['loc']}."
+    render('grad.html', f'/gradovi/{slug}/', city=city, cfg=cfg, firms=local, covering=covering, shops=shops, city_ops=city_ops,
+           n_map=n_near, nt=NT_HOURS.get(cfg['nt_region'], ''), lead=lead,
+           title=f"Punjač za električni auto u {cfg['loc']}: javni punjači i firme | BlokVolt",
+           description=f"{city}: {sr_plural(n_near, 'javni punjač', 'javna punjača', 'javnih punjača')} na mapi, {sr_plural(n_all, 'firma', 'firme', 'firmi')} za ugradnju kućnog punjača, niža tarifa EPS-a {NT_HOURS.get(cfg['nt_region'], '')}.")
+    add_url(f'/gradovi/{slug}/', '0.6')
+
+# price guide for home chargers (neutral: every firm with a published price, same rules)
+def price_num(f):
+    """Published price as a number for sorting only (EUR at 117,2; '+ PDV' and 'bez PDV' + 20 %)."""
+    v = f.get('price_val') or ''
+    m_ = re.search(r'\d{1,3}(?:\.\d{3})+(?:,\d+)?|\d+(?:,\d+)?', v)
+    if not m_:
+        return 10 ** 9
+    x = float(m_.group(0).replace('.', '').replace(',', '.'))
+    if '€' in v:
+        x *= 117.2
+    if '+ PDV' in v or 'bez PDV' in v:
+        x *= 1.2
+    return x
+
+
+_priced = sorted([f for f in published if f['price_val'] and f['group'] in ('A', 'B', 'C', 'E')], key=price_num)
+_dev11 = []
+for f in published:
+    if f['group'] in ('B', 'C') and '11 kW' in (f.get('price_headline') or '') and 'PDV' not in f['price_val'] and 'RSD' in f['price_val']:
+        m_ = re.match(r'([\d.]+)', f['price_val'])
+        if m_:
+            _dev11.append(int(m_.group(1).replace('.', '')))
+CENA_STATS = [
+    {'b': f"od {sr_num(min(_dev11))} RSD" if _dev11 else '—', 't': 'uređaj od 11 kW u prodavnici, bez ugradnje'},
+    {'b': '95.000–130.000 RSD', 't': 'punjač 11 kW sa standardnom ugradnjom, javne cene firmi'},
+    {'b': '12.000–35.000 RSD', 't': 'sama ugradnja, kad uređaj kupite posebno'},
+]
+render('cena_punjaca.html', '/cena-punjaca-za-elektricni-auto.html', h1='Koliko košta kućni punjač',
+       lead='Uređaj u prodavnici, punjač sa ugradnjom i sama ugradnja: javne cene firmi u Srbiji, na jednom mestu.',
+       stats=CENA_STATS, firms=_priced, groups=grouped(_priced), CITY_OPTS=CITY_OPTS, TYPE_CHIPS=None, count_tpl='Prikazano: {n} od {all}',
+       install_note='Električar iz Niša objavljuje 12.000–20.000 RSD za ugradnju. Vodič firme PupinEnergy navodi tipično 15.000–35.000 RSD, a STASANET kabliranje „od 150 €“. Cenu najviše menja dužina kabla do table.',
+       src_items=[s for f in published if f['slug'] in ('stasanet', 'evolako', 'elektricar-nis', 'pupinenergy') for s in f['src_items']],
+       checked_iso=iso(FIRMS_CHECKED),
+       title='Cena punjača za električni auto u Srbiji 2026: uređaj, ugradnja, firme | BlokVolt',
+       description=f"Kućni punjač 11 kW: uređaj od {sr_num(min(_dev11)) if _dev11 else '40.000'} RSD, sa ugradnjom 95.000–130.000 RSD, sama ugradnja 12.000–35.000 RSD. Javne cene firmi, provereno {FIRMS_CHECKED}.")
+add_url('/cena-punjaca-za-elektricni-auto', '0.9', iso(FIRMS_CHECKED))
+
+# ---------------------------------------------------------------- public charging pages
 for o in operators:
-    render('operator.html', o['url'], op=o, title=f"{o['name']} — javno punjenje: cene, naplata, uslovi | BlokVolt",
-           description=f"{o['name']}: {clip(o['short'], 150)} Provereno {o['verified']}.")
-    add_url(o['url'], '0.6')
-# 4b') monthly archive of the price index (content/javno/indeks-arhiva/YYYY-MM.json, written by
-# scripts/snapshot_index.py). Pages appear only from the second archived month on: one frozen page per
-# past month plus /javno-punjenje/cene/ with what changed; the current month is the live table above.
+    render('operator.html', o['url'], op=o, title=f"{o['name']}: javno punjenje, cene i uslovi | BlokVolt",
+           description=clip(f"{o['name']}: {o['lead']} {o['card']}. Provereno {o['verified']}.", 158))
+    add_url(o['url'], '0.6', o['verified_iso'])
+
 MONTHS_SR = ['januar', 'februar', 'mart', 'april', 'maj', 'jun', 'jul', 'avgust', 'septembar', 'oktobar', 'novembar', 'decembar']
 MONTHS_SR_GEN = ['januara', 'februara', 'marta', 'aprila', 'maja', 'juna', 'jula', 'avgusta', 'septembra', 'oktobra', 'novembra', 'decembra']
 ARCHIVE = []
@@ -383,21 +762,25 @@ for _p in sorted((ROOT / 'content' / 'javno' / 'indeks-arhiva').glob('*.json')):
     _a = json.load(open(_p, encoding='utf-8'))
     _y, _m = _a['month'].split('-')
     _a['label'] = f'{MONTHS_SR[int(_m) - 1]} {_y}'
-    _a['label_gen'] = f"{MONTHS_SR_GEN[int(_m) - 1]} {_y}"   # "iz septembra 2026"
+    _a['label_gen'] = f"{MONTHS_SR_GEN[int(_m) - 1]} {_y}"
     _a['url'] = f"/javno-punjenje/cene/{_a['month']}/"
     for row in _a['rows']:
+        row['source'] = clean_src(row.get('source', ''))
         if not row.get('free'):
-            row['kwh_html'] = kwh_html(row)
+            row['kwh_html'] = kwh_text(row)
     ARCHIVE.append(_a)
 PRICE_HISTORY = None
 if len(ARCHIVE) >= 2:
-    ARCHIVE[-1]['url'] = '/javno-punjenje/#cene'   # the latest month is the live index
+    ARCHIVE[-1]['url'] = '/javno-punjenje/#cene'
+
     def _key(r):
         return (r['op'], r.get('where', ''), r.get('charger', ''))
+
     def _unit(r):
         if r.get('free'):
             return 'free'
         return next((k for k in ('rsd_min', 'rsd_hour', 'unit_rsd') if r.get(k)), None)
+
     def _val(r):
         v = r.get(_unit(r)) if _unit(r) not in (None, 'free') else None
         return float(v[0] if isinstance(v, list) else v) if v else None
@@ -405,7 +788,7 @@ if len(ARCHIVE) >= 2:
     _keys = []
     for _a in _shown:
         for r in _a['rows']:
-            if not r.get('rsd_total') and _key(r) not in _keys:   # receipts are one-off, not tariffs
+            if not r.get('rsd_total') and _key(r) not in _keys:
                 _keys.append(_key(r))
     _lines = []
     for k in _keys:
@@ -430,29 +813,31 @@ if len(ARCHIVE) >= 2:
         first = next(c for c in cells if c)
         _lines.append({'op': first['op'], 'op_name': first['op_name'], 'where': first.get('where', ''), 'charger': first.get('charger', ''),
                        'cells': cells, 'change': change, 'cls': cls})
-    _lines.sort(key=lambda l: {'yes': 0, 'ask': 1, 'no': 2}[l['cls']])   # what changed first; stable within a class
+    _lines.sort(key=lambda l: {'yes': 0, 'ask': 1, 'no': 2}[l['cls']])
     PRICE_HISTORY = {'shown': _shown, 'lines': _lines, 'n_changed': sum(1 for l in _lines if l['cls'] == 'yes')}
     for i, _a in enumerate(ARCHIVE[:-1]):
         render('javno_snimak.html', _a['url'], snap=_a, newer=ARCHIVE[i + 1], older=ARCHIVE[i - 1] if i else None,
                title=f"Cene javnog punjenja u Srbiji — {_a['label']} (arhiva) | BlokVolt",
-               description=f"Arhivski snimak indeksa cena javnog punjenja za {_a['label']}: tarife iz aplikacija Charge&GO, Orion eMobility i Emobility Spectra, stvarni računi i besplatni punjači, sa računicom po kWh. Snimljeno {_a['captured']}.")
-        add_url(_a['url'], '0.4', '-'.join(reversed(_a['captured'].split('.'))))
+               description=f"Arhivski snimak cena javnog punjenja za {_a['label']}: tarife iz aplikacija mreža, računi i besplatni punjači, sa računicom po kWh. Snimljeno {_a['captured']}.")
+        add_url(_a['url'], '0.4', iso(_a['captured']))
     render('javno_istorija.html', '/javno-punjenje/cene/', archive=ARCHIVE, hist=PRICE_HISTORY,
-           title='Istorija cena javnog punjenja u Srbiji — promene po mesecima | BlokVolt',
-           description=f"Kako su se menjale cene javnog punjenja u Srbiji od {ARCHIVE[0]['label_gen']}: mesečni snimci indeksa (Charge&GO, Orion eMobility, Emobility Spectra, besplatni punjači) i šta je poskupelo ili pojeftinilo.")
+           title='Istorija cena javnog punjenja u Srbiji po mesecima | BlokVolt',
+           description=f"Kako su se menjale cene javnog punjenja u Srbiji od {ARCHIVE[0]['label_gen']}: mesečni snimci i šta je poskupelo ili pojeftinilo.")
     add_url('/javno-punjenje/cene/', '0.6')
 
-index_checked = price_index['updated']
-render('javno_index.html', '/javno-punjenje/', ops=operators, ops_by_kind=ops_by_kind, KIND_GROUPS=KIND_GROUPS, index=price_index, hist=PRICE_HISTORY,
-       title='Javni punjači u Srbiji — mreže, cene po minutu i po kWh, besplatni punjači | BlokVolt',
-       description=f'Ko vodi javne punjače u Srbiji (Charge&GO, Orion eMobility, JP Putevi Srbije, Tesla, OMV…), poslednje zabeležene cene sa računicom po kWh, 36 besplatnih državnih punjača na autoputevima i propisi. Provereno {index_checked}.')
+render('javno_index.html', '/javno-punjenje/', ops=operators, index=price_index, hist=PRICE_HISTORY, kwh_range=KWH_RANGE,
+       putevi_n=PUTEVI_N, putevi_run=PUTEVI_RUN, putevi_verb=PUTEVI_VERB, nt_green=NT_GREEN, nt_blue=NT_BLUE, PRICE_SUMMARY=PRICE_SUMMARY, PRICE_DATE=PRICE_DATE,
+       title='Javno punjenje u Srbiji: cene po mrežama i besplatni punjači | BlokVolt',
+       description=f"Koliko košta javno punjenje u Srbiji: Charge&GO, Orion eMobility i druge mreže, cena po minutu i po kWh, besplatni državni punjači na autoputevima. Provereno {price_index['updated']}.")
 add_url('/javno-punjenje/', '0.9')
 
+render('mapa.html', '/mapa/', M=M, PRICE_SUMMARY=PRICE_SUMMARY, PRICE_DATE=PRICE_DATE,
+       title='Mapa punjača za električne automobile u Srbiji, sa cenama | BlokVolt',
+       description=f"{MAP['n']} javnih punjača u Srbiji na mapi: mreža, snaga, priključci i cena punjenja. Charge&GO, Orion eMobility, besplatni punjači na autoputevima.")
+add_url('/mapa/', '0.9')
 
-# 4c) cost calculator (tools)
-_E, _d = CALC['eps'], CALC['defaults']
-def all_in(x):
-    return (x + _E['oie'] + _E['ee']) * (1 + _E['akciza']) * (1 + _E['pdv'])
+# ---------------------------------------------------------------- calculators
+_d = CALC['defaults']
 _k100 = _d['kwh100'] * (1 + _d['loss'] / 100)
 tariff_rows = [dict(name=z['name'], range=z['range'], nt_raw=z['nt'], vt_raw=z['vt'], nt=all_in(z['nt']), vt=all_in(z['vt']), per100=all_in(z['nt']) * _k100) for z in _E['zones']]
 _zone = next(z for z in _E['zones'] if z['id'] == _d['zone'])
@@ -470,16 +855,14 @@ _ex['ev100'] = _ex['ev'] / _d['km'] * 100
 _ex['ice'] = _d['km'] * _d['l100_' + _d['fuel']] / 100 * CALC['fuel'][_d['fuel']]
 _ex['ice100'] = _ex['ice'] / _d['km'] * 100
 _ex['save'] = _ex['ice'] - _ex['ev']
-_desc = (f"Koliko košta 100 km na struju u Srbiji: kod kuće noću oko {sr_num(tariff_rows[1]['per100'])} RSD (plava zona), "
-         f"benzin oko {sr_num(_ex['ice100'])} RSD. Kalkulator sa tarifama EPS-a, cenama goriva od {CALC['fuel']['date']} i računima sa javnih punjača.")
 render('kalkulator.html', '/alati/kalkulator-troskova/', calc=CALC, eps=_E, fuel=CALC['fuel'], public=CALC['public'], d=_d,
        tariff_rows=tariff_rows, home_default=home_default, public_default=public_default, snaga_brutto=snaga_brutto, ex=_ex,
-       calc_json=json.dumps(CALC, ensure_ascii=False).replace('</', '<\\/'), modified_iso=ISO_TODAY,
-       title='Kalkulator troškova električnog automobila — struja kod kuće, javni punjači, benzin i dizel | BlokVolt',
-       description=_desc)
-add_url('/alati/kalkulator-troskova/', '0.9')
+       calc_json=json.dumps(CALC, ensure_ascii=False).replace('</', '<\\/'), modified_iso=iso(CALC['checked']),
+       src_items=[{'url': s['url'], 'label': s['label']} for s in _E['sources']] + [{'url': CALC['fuel']['url'], 'label': f"Cene goriva od {CALC['fuel']['date']}"}],
+       title='Kalkulator troškova električnog automobila: struja, javni punjači, benzin | BlokVolt',
+       description=f"Koliko košta 100 km na struju u Srbiji: kod kuće noću oko {sr_num(tariff_rows[1]['per100'])} RSD (plava zona), na benzinu oko {sr_num(_ex['ice100'])} RSD. Tarife EPS-a i cene goriva od {CALC['fuel']['date']}.")
+add_url('/alati/kalkulator-troskova/', '0.9', iso(CALC['checked']))
 
-# 4d) building billing calculator (tools)
 ZG = json.load(open(ROOT / 'content' / 'data' / 'kalkulator-zgrada.json', encoding='utf-8'))
 _zd = ZG['defaults']
 _zreal = _zd['auta'] * _zd['kwh_auto'] * _zd['cena_kwh']
@@ -491,63 +874,68 @@ if _zerr > 0.5:
     _zpay = 'mesec dana' if _m <= 1 else (sr_plural(_m, 'mesec', 'meseca', 'meseci') if _m < 24 else f'{_m / 12:.1f}'.replace('.', ',') + ' godine')
 else:
     _zpay = 'paušal već pokriva trošak'
-_zex = dict(real=_zreal, real_y=_zreal * 12, per_flat=_zper, per_flat_y=_zper * 12,
-            others_y=_zper * max(0, _zd['stanovi'] - _zd['auta']) * 12, gap=_zgap,
-            gap_note='ostatak i dalje plaćaju svi stanovi' if _zgap > 0 else 'paušal tačno pokriva trošak',
+_zex = dict(real=_zreal, real_y=_zreal * 12, per_flat=_zper, per_flat_y=_zper * 12, others_y=_zper * max(0, _zd['stanovi'] - _zd['auta']) * 12,
+            gap=_zgap, gap_note='Ostatak i dalje plaćaju svi stanovi.' if _zgap > 0 else 'Paušal tačno pokriva trošak.',
             payback=_zpay, owner=_zper + _zd['pausal'], owner_fair=_zd['kwh_auto'] * _zd['cena_kwh'])
-render('kalkulator_zgrada.html', '/alati/racun-u-zgradi/', z=ZG, d=_zd, ex=_zex,
-       z_json=json.dumps(ZG, ensure_ascii=False).replace('</', '<\\/'), modified_iso=ISO_TODAY,
-       title='Ko koliko plaća punjenje u zgradi — kalkulator zajedničke struje | BlokVolt',
-       description=f"Koliko stanari bez automobila plate tuđe punjenje kad punjač visi na zajedničkom brojilu: računica po stanu, mesečno i godišnje, i za koliko se vrati brojilo. Cene overenog merenja {sr_num(ZG['meter_cost']['low'])}–{sr_num(ZG['meter_cost']['high'])} RSD.")
-add_url('/alati/racun-u-zgradi/', '0.8')
+render('kalkulator_zgrada.html', '/alati/racun-u-zgradi/', z=ZG, d=_zd, ex=_zex, section='vodici',
+       z_json=json.dumps(ZG, ensure_ascii=False).replace('</', '<\\/'), modified_iso=iso(ZG['checked']), promo_box=PROMO,
+       src_items=[{'url': s['url'], 'label': s['label']} for s in ZG['sources']],
+       title='Ko koliko plaća punjenje u zgradi: kalkulator zajedničke struje | BlokVolt',
+       description=f"Koliko stanari bez automobila plate tuđe punjenje kad je punjač na zajedničkom brojilu: računica po stanu i za koliko se brojilo vrati. Overeno merenje {sr_num(ZG['meter_cost']['low'])}–{sr_num(ZG['meter_cost']['high'])} RSD.")
+add_url('/alati/racun-u-zgradi/', '0.8', iso(ZG['checked']))
 
-CHECKS.append({'name': f'Registar firmi ({len(published)})', 'path': '/firme/', 'updated': FIRMS_CHECKED, 'next': 'kvartalno'})
-CHECKS.append({'name': 'Indeks cena javnog punjenja', 'path': '/javno-punjenje/#cene', 'updated': price_index['updated'], 'next': price_index.get('next_check', '')})
-def _d(x):
-    p = (x.get('updated') or '').split('.')
-    return (p[2], p[1], p[0]) if len(p) == 3 else ('0', '0', '0')
-CHECKS.sort(key=_d, reverse=True)
-
-# 4e) open data — CSV exports of everything the site publishes as a table
-import open_data
+# ---------------------------------------------------------------- open data
+import open_data  # noqa: E402
 EV_DATA = json.load(open(ROOT / 'content' / 'data' / 'ev-modeli.json', encoding='utf-8'))
-WALLBOX = json.load(open(ROOT / 'content' / 'data' / 'wallbox-modeli.json', encoding='utf-8'))
-DATASETS = open_data.export_all(DIST, SITE, published, operators, price_index, EV_DATA, WALLBOX, FIRMS_CHECKED)
+DATASETS = open_data.export_all(DIST, SITE, published, operators, price_index, EV_DATA, _WB, FIRMS_CHECKED)
 DL_META = {
-    'blokvolt-firme.csv': ('Registar firmi', f'Sve firme iz registra ({len(published)}) koje u Srbiji prodaju ili ugrađuju kućni punjač: sedište, pokrivenost, brendovi koje nude, javna cena, da li nude ugradnju, brojilo, papire za skupštinu, uslugu i garanciju, sajt i datum provere.', f'kvartalno (poslednja revizija {FIRMS_CHECKED})'),
-    'blokvolt-cene-elektricnih-automobila.csv': ('Cene električnih automobila', 'Svaki model sa cenom koju uvoznik javno objavljuje: cena od, cena posle subvencije, redovna i akcijska cena, da li je subvencija već uračunata, link na cenovnik.', f'mesečno (poslednja provera {EV_DATA["checked"]})'),
-    'blokvolt-wallbox-modeli.csv': ('Wallbox modeli i cene', 'Javno objavljene cene samih uređaja kod prodavaca u Srbiji, po modelu i snazi, sa PDV-statusom i linkom na proizvod.', f'kvartalno (poslednja provera {WALLBOX["checked"]})'),
-    'blokvolt-javno-punjenje-cene.csv': ('Indeks cena javnog punjenja', 'Zabeležene tarife i računi sa javnih punjača: cena po minutu, po satu ili po „jedinici“, stvarni računi sa cenom po kWh, snaga punjača, datum i izvor.', f'mesečno (poslednji snimak {index_checked})'),
-    'blokvolt-mreze-javnog-punjenja.csv': ('Mreže javnog punjenja', 'Operatori, aplikacije i domaćini: pokrivenost, veličina mreže, način plaćanja, kartica, roming i podrška.', f'mesečno (poslednja provera {index_checked})'),
+    'blokvolt-firme.csv': ('Firme za kućne punjače', f'{sr_plural(len(published), "firma", "firme", "firmi")}: sedište, pokrivenost, brendovi, javna cena, ugradnja, brojilo, sajt i datum provere.'),
+    'blokvolt-cene-elektricnih-automobila.csv': ('Cene električnih automobila', 'Modeli sa cenom koju uvoznik objavljuje, cena posle subvencije i link na cenovnik.'),
+    'blokvolt-wallbox-modeli.csv': ('Wallbox modeli i cene', 'Cene uređaja kod prodavaca u Srbiji, po modelu i snazi, sa linkom na proizvod.'),
+    'blokvolt-javno-punjenje-cene.csv': ('Cene javnog punjenja', 'Tarife i računi sa javnih punjača: po minutu, satu ili „jedinici“, snaga, datum i izvor.'),
+    'blokvolt-mreze-javnog-punjenja.csv': ('Mreže javnog punjenja', 'Mreže, aplikacije i domaćini: pokrivenost, plaćanje, roming i podrška.'),
 }
 for d in DATASETS:
-    d['title'], d['desc'], d['cadence'] = DL_META[d['name']]
+    d['title'], d['desc'] = DL_META[d['name']]
     d['kb'] = round(d['bytes'] / 1024, 1)
-render('preuzimanje.html', '/preuzimanje/', datasets=DATASETS,
-       title='Podaci za preuzimanje — CSV tabele o električnim automobilima u Srbiji | BlokVolt',
-       description=f'Svi podaci sa BlokVolta u CSV formatu, besplatno i uz slobodnu licencu: registar od {sr_plural(len(published), "firme", "firme", "firmi")}, cene električnih automobila kod uvoznika, cene wallbox uređaja, indeks cena javnog punjenja i mreže. Sa izvorom i datumom provere uz svaki red.')
-add_url('/preuzimanje/', '0.6')
+render('preuzimanje.html', '/preuzimanje/', datasets=DATASETS, section='',
+       title='Podaci za preuzimanje: CSV tabele o električnim automobilima u Srbiji | BlokVolt',
+       description='CSV tabele sa sajta, besplatno uz navođenje izvora: firme za punjače, cene električnih automobila, wallbox modeli, cene javnog punjenja i mreže.')
+add_url('/preuzimanje/', '0.5')
 
-# 5) home
-render('home.html', '/', GUIDES=GUIDES_META, PODACI=PODACI, CHECKS=CHECKS, by_group=by_group, cities=cities, CITY_SLUGS=CITY_SLUGS,
-       title='BlokVolt — sve o električnim automobilima u Srbiji: firme, cene, procedure',
-       description=f'Nezavisni vodič za vlasnike električnih automobila u Srbiji: {sr_plural(len(published), "firma", "firme", "firmi")} za punjače sa javnim cenama, javni punjači i cene, besplatni punjači, 7 vodiča o punjenju u zgradi, subvencije 2026, statistika i propisi. Sve sa izvorom i datumom provere.')
+# ---------------------------------------------------------------- home, search, 404
+HOME_GUIDES = [
+    {'href': '/punjenje-elektricnog-auta-u-zgradi', 'name': 'Punjenje u zgradi', 'desc': 'Šta je dozvoljeno, kada se pita skupština i koliko se štedi.', 'icon': 'building'},
+    {'href': '/punjac-u-zgradi-skupstina', 'name': 'Odluka skupštine', 'desc': 'Kojom većinom se odlučuje, sa šablonom odluke.', 'icon': 'doc'},
+    {'href': '/ko-placa-struju-za-punjenje', 'name': 'Ko plaća struju', 'desc': 'Brojilo i obračun po ceni sa računa, bez marže.', 'icon': 'coins'},
+    {'href': '/podaci/tarife-eps/', 'name': 'Cena struje kod kuće', 'desc': 'Zone, tarife i kada počinje jeftinija struja.', 'icon': 'bolt'},
+    {'href': '/bezbednost-punjenja-atest', 'name': 'Bezbednost i atest', 'desc': 'Zašto ne produžni kabl i šta proverava atest.', 'icon': 'shield'},
+]
+render('home.html', '/', HOME_GUIDES=HOME_GUIDES, section='',
+       title='BlokVolt: punjači, cene i firme za električne automobile u Srbiji',
+       description=f"Mapa sa {MAP['n']} javnih punjača i cenama, {sr_plural(len(published), 'firma', 'firme', 'firmi')} za kućni punjač, cene struje i javnog punjenja, subvencije i vodiči za električni auto u Srbiji.")
 add_url('/', '1.0')
-
-# 5b) search page + index
-render('pretraga.html', '/pretraga/', title='Pretraga sajta | BlokVolt',
-       description='Pretraga svih stranica BlokVolta: firme, cene punjača, javno punjenje, podaci, propisi i vodiči.')
+render('pretraga.html', '/pretraga/', section='', title='Pretraga | BlokVolt',
+       description='Pretraga sajta: punjači, firme, cene, vodiči i propisi za električne automobile u Srbiji.')
 add_url('/pretraga/', '0.3')
+render('article.html', '/404.html', crumbs=[], noindex=True, section='',
+       meta={'h1': 'Stranica nije pronađena', 'lead': 'Ta stranica ne postoji ili je premeštena.'},
+       body='<p>Probajte <a href="/mapa/">mapu punjača</a>, <a href="/firme/">firme</a>, <a href="/cene/">cene</a> ili <a href="/vodici/">vodiče</a>.</p>'
+            '<p lang="en" translate="no">Page not found. Try the <a href="/en/">English home page</a>.</p>'
+            '<p lang="ru" translate="no">Страница не найдена. Попробуйте <a href="/ru/">главную страницу на русском</a>.</p>',
+       title='Stranica nije pronađena | BlokVolt', description='', sources=[])
 
-# 6) robots, redirects, headers, 404
+# ---------------------------------------------------------------- robots, redirects, headers
 (DIST / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n', encoding='utf-8')
-_dir_redirects = ['/vodici', '/firme', '/podaci', '/javno-punjenje']
+_dir_redirects = ['/vodici', '/firme', '/javno-punjenje', '/mapa', '/cene']
 (DIST / '_redirects').write_text('\n'.join([
     '/paketi-i-cene https://www.evolako.rs/paketi-i-cene 301',
     '/proveri-svoju-garazu https://www.evolako.rs/proveri-svoju-garazu 301',
     '/cesta-pitanja https://www.evolako.rs/cesta-pitanja 301',
     '/kontakt https://www.evolako.rs/kontakt 301',
-] + [f'{pre}{d} {pre}{d}/ 301' for pre in ('', '/en', '/ru') for d in _dir_redirects] + [
+] + [f'{pre}{d} {pre}{d}/ 301' for pre in ('', '/en', '/ru') for d in _dir_redirects]
+  + [f'{pre}/podaci {pre}/vodici/ 301' for pre in ('', '/en', '/ru')]
+  + [f'{pre}/podaci/ {pre}/vodici/ 301' for pre in ('', '/en', '/ru')] + [
     '/en /en/ 301',
     '/ru /ru/ 301',
     '/alati /alati/kalkulator-troskova/ 302',
@@ -557,17 +945,15 @@ _dir_redirects = ['/vodici', '/firme', '/podaci', '/javno-punjenje']
     '/ru/alati /ru/alati/kalkulator-troskova/ 302',
     '/ru/alati/ /ru/alati/kalkulator-troskova/ 302',
     '/kalkulator /alati/kalkulator-troskova/ 301',
+    '/karta /mapa/ 301',
+    '/mapa-punjaca /mapa/ 301',
     'https://blokvolt.rs/* https://www.blokvolt.rs/:splat 301',
 ]) + '\n', encoding='utf-8')
 (DIST / '_headers').write_text('/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n', encoding='utf-8')
-render('article.html', '/404.html', crumb=None, meta={'title': 'Stranica nije pronađena', 'kicker': 'Greška 404', 'updated': ''}, body='<p class="bva-lead">Ta stranica ne postoji ili je premeštena.</p><p>Probajte <a href="/firme/">registar firmi</a>, <a href="/javno-punjenje/">javno punjenje</a>, <a href="/vodici/">vodiče</a> ili <a href="/podaci/">podatke</a>.</p><p lang="en" translate="no">Page not found — try the <a href="/en/firme/">company register</a> or the <a href="/en/">English home page</a>.</p><p lang="ru" translate="no">Страница не найдена — попробуйте <a href="/ru/firme/">реестр компаний</a> или <a href="/ru/">главную страницу на русском</a>.</p>', title='404 | BlokVolt', description='', sources=[])
-import hashlib as _hl
-import i18n as _i18n
-_ver = {}
 
 
+# ---------------------------------------------------------------- search index
 def build_search(prefix=''):
-    """Search index for one language (built from the generated pages, so legacy pages are in it too)."""
     idx = []
     base = DIST / prefix.strip('/') if prefix else DIST
     for f in sorted(base.rglob('*.html')):
@@ -576,34 +962,37 @@ def build_search(prefix=''):
             continue
         if rel in (f'{prefix}/404.html', f'{prefix}/pretraga/index.html'):
             continue
-        url = rel[:-len('index.html')] if rel.endswith('/index.html') else rel
+        url = rel[:-len('index.html')] if rel.endswith('/index.html') else rel[:-5] if rel.endswith('.html') else rel
         soup = BeautifulSoup(f.read_text(encoding='utf-8'), 'html.parser')
         t = (soup.title.string or '').split(' | ')[0].strip() if soup.title else ''
+        h1 = soup.find('h1')
         d = (soup.find('meta', attrs={'name': 'description'}) or {}).get('content', '')
-        kick = soup.find(class_='v3-kick')
-        h = ' · '.join(x.get_text(' ', strip=True) for x in soup.find_all(['h2', 'h3'])[:14])
-        main = soup.find('div', class_='bva') or soup.find('main') or soup
-        for junk in main.find_all(['script', 'style', 'nav']):
+        crumbs = soup.select('.crumbs a')
+        sec = crumbs[-1].get_text(' ', strip=True) if len(crumbs) > 1 else ''
+        main = soup.find('main') or soup
+        for junk in main.find_all(['script', 'style', 'nav', 'noscript']):
             junk.decompose()
+        h = ' · '.join(x.get_text(' ', strip=True) for x in main.find_all(['h2', 'h3', 'summary'])[:16])
         body = re.sub(r'\s+', ' ', main.get_text(' ', strip=True))
-        idx.append({'u': url, 't': t, 'd': clip(d, 220), 's': kick.get_text(' ', strip=True).split('·')[0].strip() if kick else '',
-                    'h': h[:400], 'b': body[:1200]})
+        idx.append({'u': url, 't': h1.get_text(' ', strip=True) if h1 else t, 'd': clip(d, 200), 's': sec, 'h': h[:400], 'b': body[:1200]})
     name = 'search.json' if not prefix else f'search-{prefix.strip("/")}.json'
-    (DIST / 'assets' / name).write_text(json.dumps(idx, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
-    return len(idx), (DIST / 'assets' / name).stat().st_size // 1024
+    p = DIST / 'assets' / name
+    p.write_text(json.dumps(idx, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    return len(idx), p.stat().st_size // 1024
 
 
 _n, _kb = build_search()
 print(f'search index: {_n} pages, {_kb} KB')
 
-# 7) English and Russian versions (scripts/i18n.py, translation memory in content/i18n/)
+# ---------------------------------------------------------------- English and Russian (scripts/i18n.py)
+import i18n as _i18n  # noqa: E402
 I18N = _i18n.render_all(DIST)
 for _l in _i18n.LANGS:
     _st = I18N.stats[_l]
     _n, _kb = build_search('/' + _l)
     print(f'i18n {_l}: {_st["hit"]} segments translated, {_st["miss"]} left in Serbian ({len(_st["missing"])} distinct); search {_n} pages, {_kb} KB')
 
-# 8) sitemap with language alternates
+# ---------------------------------------------------------------- sitemap with language alternates
 sm = ['<?xml version="1.0" encoding="UTF-8"?>',
       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
 for u, p, lm in urls:
@@ -618,13 +1007,16 @@ for u, p, lm in urls:
 sm.append('</urlset>')
 (DIST / 'sitemap.xml').write_text('\n'.join(sm), encoding='utf-8')
 
-for _a in ('site.css', 'agg.css', 'site.js', 'meganav.js', 'vendor/gsap.min.js'):
-    _ver[_a] = _hl.sha1((DIST / 'assets' / _a).read_bytes()).hexdigest()[:10]
+# ---------------------------------------------------------------- cache busting (/assets/* is cached for a year)
+_ver_map = {a: _ver(DIST / 'assets' / a) for a in ('bv.css', 'bv.js', 'map.js')}
+_search = json.dumps({'sr': '/assets/search.json?v=' + _ver(DIST / 'assets' / 'search.json'),
+                      **{l: f'/assets/search-{l}.json?v=' + _ver(DIST / 'assets' / f'search-{l}.json') for l in _i18n.LANGS}})
 for _f in DIST.rglob('*.html'):
     _t = _f.read_text(encoding='utf-8')
     _n = _t
-    for _a, _h in _ver.items():
+    for _a, _h in _ver_map.items():
         _n = _n.replace(f'"/assets/{_a}"', f'"/assets/{_a}?v={_h}"')
+    _n = _n.replace('__SEARCH_URLS__', _search)
     if _n != _t:
         _f.write_text(_n, encoding='utf-8')
-print('built', len(urls), 'urls;', len(published), 'firms;', len(operators), 'operators;', len(PODACI), 'data pages')
+print('built', len(urls), 'urls;', len(published), 'firms;', len(operators), 'networks;', MAP['n'], 'stations on the map;', len(ARTICLES), 'articles')

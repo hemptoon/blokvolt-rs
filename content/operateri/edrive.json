@@ -46,5 +46,11 @@
  "notes": "U registru kućnih punjača: <a href=\"/firme/edrive/\">eDrive</a>.",
  "card": "sopstvena mreža nije objavljena",
  "kind_label": "Aplikacija za plaćanje",
- "publish": true
+ "publish": true,
+ "short_name": "eDrive",
+ "lead": "Aplikacija za punjenje i softver za vlasnike punjača. Sopstvena mreža i cene nisu objavljeni.",
+ "network_short": "nije objavljena",
+ "power_short": "—",
+ "billing_short": "Nije objavljeno.",
+ "payment_short": "Aplikacija"
 }

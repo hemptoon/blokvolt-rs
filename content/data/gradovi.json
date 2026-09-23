@@ -15,7 +15,7 @@
     "beograd"
    ],
    "nt_region": "Beograd",
-   "note": "Beograd nema parking-povlastice za električna vozila u zonskom sistemu; jedina poznata izuzeća su u garaži „Obilićev venac“ (podaci iz 2021, proveravamo). Detalji: <a href=\"/podaci/putarina-i-parking/\">putarina i parking</a>.",
+   "note": "Popusta na parking za električna vozila u zonama nema. Punjenje u garaži Obilićev venac ne naplaćuje se posebno, plaća se parking (tarifa iz 2021). Više: <a href=\"/podaci/putarina-i-parking/\">putarina i parking</a>.",
    "loc": "Beogradu",
    "acc": "Beograd"
   },
@@ -34,7 +34,7 @@
     "novi sad"
    ],
    "nt_region": "Vojvodina",
-   "note": "Novi Sad je od jula 2026. jedini veliki grad koji posebno naplaćuje parkiranje na mestu sa javnim punjačem: <strong>500 RSD za 60 minuta</strong>, struja uključena (Cenovnik JKP „Parking servis“, Sl. list Grada Novog Sada 35/26). Detalji i izvori: <a href=\"/podaci/putarina-i-parking/\">putarina i parking</a>.",
+   "note": "Od jula 2026. parking na mestu sa javnim punjačem u Novom Sadu košta 500 RSD za 60 minuta, struja uključena. Više: <a href=\"/podaci/putarina-i-parking/\">putarina i parking</a>.",
    "loc": "Novom Sadu",
    "acc": "Novi Sad"
   },
@@ -50,7 +50,7 @@
     "južna srbija"
    ],
    "nt_region": "centralna Srbija",
-   "note": "U Nišu je neobično velika ponuda uređaja bez ugradnje (Schneider i Wallbox preko elektroprodavnica) i jedini električar u Srbiji sa javnim cenovnikom ugradnje.",
+   "note": "",
    "loc": "Nišu",
    "acc": "Niš"
   },
@@ -67,7 +67,7 @@
     "subotica"
    ],
    "nt_region": "Vojvodina",
-   "note": "Subotica je na koridoru E75 prema granici, pa je javno punjenje pre svega usputno — a za kućni punjač se najčešće zove firma iz Novog Sada ili neko ko pokriva celu Srbiju.",
+   "note": "",
    "loc": "Subotici",
    "acc": "Suboticu"
   },
@@ -83,7 +83,7 @@
     "cacak"
    ],
    "nt_region": "centralna Srbija",
-   "note": "Čačak je jedan od retkih gradova van Beograda, Novog Sada i Niša gde firme iz registra imaju sedište, a ne samo pokrivenost.",
+   "note": "",
    "loc": "Čačku",
    "acc": "Čačak"
   },
@@ -100,7 +100,7 @@
     "kragujevac"
    ],
    "nt_region": "centralna Srbija",
-   "note": "U Kragujevcu nijedna firma iz registra nema sedište — punjač se ugrađuje preko firmi koje rade na celoj teritoriji Srbije. Pre dogovora pitajte da li se izlazak na teren naplaćuje posebno.",
+   "note": "U Kragujevcu nijedna firma sa spiska nema sedište. Kad zovete firmu iz drugog grada, pitajte da li se izlazak na teren plaća posebno.",
    "loc": "Kragujevcu",
    "acc": "Kragujevac"
   }

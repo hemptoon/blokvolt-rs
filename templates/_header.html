@@ -1,0 +1,15 @@
+{% from '_icons.html' import ic, mark %}
+<header class="hd"><div class="wrap hd-in">
+<a class="logo" href="/" aria-label="BlokVolt — početna">{{ mark() }}<span translate="no">blok<b>volt</b></span></a>
+<nav class="hd-nav" id="hd-nav" aria-label="Glavni meni">{% for href, name, key in NAV %}<a href="{{ href }}"{% if section == key %} aria-current="page"{% endif %}>{{ name }}</a>{% endfor %}</nav>
+<div class="hd-tools">
+<a class="ib" href="/pretraga/" aria-label="Pretraga">{{ ic('search') }}</a>
+<div class="lang"><button class="ib" type="button" data-lang-toggle aria-expanded="false" aria-haspopup="true" aria-label="Jezik">{{ ic('globe') }}<span translate="no" data-bv-langcode>SR</span></button>
+<ul data-lang-menu class="lang-menu" role="menu" hidden translate="no">
+<li role="none"><a role="menuitem" data-bv-lang="sr" hreflang="sr-Latn" lang="sr-Latn" href="{{ '/' if canon == '/404' else canon }}" aria-current="true" class="is--on">Srpski</a></li>
+<li role="none"><a role="menuitem" data-bv-lang="en" hreflang="en" lang="en" href="/en{{ '/' if canon == '/404' else canon }}">English</a></li>
+<li role="none"><a role="menuitem" data-bv-lang="ru" hreflang="ru" lang="ru" href="/ru{{ '/' if canon == '/404' else canon }}">Русский</a></li>
+</ul></div>
+<button class="ib burger" type="button" aria-controls="hd-nav" aria-expanded="false" aria-label="Meni">{{ ic('menu') }}</button>
+</div>
+</div></header>

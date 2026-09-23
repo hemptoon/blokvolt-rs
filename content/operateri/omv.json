@@ -87,5 +87,11 @@
  "notes": "OMV najavljuje integraciju u evropsku mrežu „OMV eMotion“ do 2030; u Srbiji eMotion još ne radi kao operator.",
  "card": "24 stanice · DC 45–240 kW",
  "kind_label": "Domaćin (benzinske stanice)",
- "publish": true
+ "publish": true,
+ "short_name": "OMV",
+ "lead": "Brzi punjači na 24 OMV stanice. Vode ih Charge&GO i EasyPark, pa je cena u njihovoj aplikaciji.",
+ "network_short": "24 stanice",
+ "power_short": "DC 45–240 kW",
+ "billing_short": "Po ceni operatera koji vodi punjač.",
+ "payment_short": "Aplikacija Charge&GO ili EasyPark"
 }

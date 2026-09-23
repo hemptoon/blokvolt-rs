@@ -1,54 +1,57 @@
 {% extends 'base.html' %}
+{% from '_macros.html' import pagehead, sources as src_block, promo %}
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
-  {"@type": "WebApplication", "name": "Kalkulator: ko koliko plaća punjenje u zgradi", "url": "{{ SITE }}{{ path }}", "inLanguage": "sr-Latn", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RSD"}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}, "dateModified": "{{ modified_iso }}"},
-  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Ko koliko plaća u zgradi", "item": "{{ SITE }}{{ path }}"}]}
+  {"@type": "WebApplication", "name": "Kalkulator: ko koliko plaća punjenje u zgradi", "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RSD"}, "dateModified": "{{ modified_iso }}", "description": {{ description|tojson }}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Vodiči", "item": "{{ SITE }}/vodici/"}, {"@type": "ListItem", "position": 3, "name": "Ko koliko plaća u zgradi", "item": "{{ SITE }}{{ canon }}"}]}
  ]
 }</script>{% endblock %}
-{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Alati · zgrada · ažurirano {{ z.checked }}</div><h1>Ko koliko plaća punjenje u zgradi</h1><p>Kad punjač visi na zajedničkom brojilu, struju za jedan automobil plaća cela zgrada. Ovaj kalkulator pokazuje koliko tačno — po stanu, mesečno i godišnje — i kada se brojilo isplati.</p><div class="v3-meta"><span>Cena struje: vaša, sa računa</span><span>Brojilo: {{ z.meter_cost.low|sr(0) }}–{{ z.meter_cost.high|sr(0) }} RSD</span><span>Provereno {{ z.checked }}</span></div><div class="v3-chips"><a href="#kalkulator">Kalkulator</a><a href="#nacini">Tri načina</a><a href="#odluka">Šta upisati u odluku</a><a href="/alati/kalkulator-troskova/">Kalkulator troškova vožnje</a></div></div></div>{% endblock %}
-{% block content %}<div class="bva"><div class="w3">
+{% block pagehead %}{{ pagehead('Ko koliko plaća punjenje u zgradi', 'Kad punjač visi na zajedničkom brojilu, struju za tuđi auto plaća cela zgrada. Računica po stanu i za koliko se brojilo vrati.', crumbs=[('/vodici/', 'Vodiči')]) }}{% endblock %}
+{% block content %}
 <form class="calc" id="kalkulator" action="#" novalidate>
 <div class="calc-in">
-<fieldset class="calc-card"><legend>Zgrada</legend>
-<label class="calc-f" for="z-stanovi"><span>Broj stanova koji dele zajednički račun</span><span class="calc-u"><input type="number" id="z-stanovi" min="2" max="300" step="1" value="{{ d.stanovi }}" inputmode="numeric"><i>stanova</i></span></label>
-<label class="calc-f" for="z-auta"><span>Koliko automobila se puni</span><span class="calc-u"><input type="number" id="z-auta" min="1" max="50" step="1" value="{{ d.auta }}" inputmode="numeric"><i>auta</i></span></label>
-<label class="calc-f" for="z-kwh"><span>Potrošnja po automobilu mesečno</span><span class="calc-u"><input type="number" id="z-kwh" min="10" max="2000" step="10" value="{{ d.kwh_auto }}" inputmode="numeric"><i>kWh</i></span><small>Oko 234 kWh je 1.250 km mesečno pri 17 kWh/100 km i 10 % gubitaka. Tačnu računicu za svoj auto napravite u <a href="/alati/kalkulator-troskova/">kalkulatoru troškova</a>.</small></label>
-</fieldset>
-<fieldset class="calc-card"><legend>Struja i dogovor</legend>
-<label class="calc-f" for="z-cena"><span>Cena kilovat-sata na računu zgrade</span><span class="calc-u"><input type="number" id="z-cena" min="1" max="100" step="0.01" value="{{ d.cena_kwh }}" inputmode="decimal"><i>RSD/kWh</i></span><small>Podrazumevano je noćna tarifa domaćinstva u plavoj zoni sa svim dažbinama. Zajednička potrošnja zgrade može da se obračunava po drugoj kategoriji — uzmite cenu sa svog računa, <a href="/podaci/tarife-eps/">objašnjenje tarifa je ovde</a>.</small></label>
-<label class="calc-f" for="z-pausal"><span>Paušal koji vlasnik auta plaća zgradi</span><span class="calc-u"><input type="number" id="z-pausal" min="0" max="20000" step="100" value="{{ d.pausal }}" inputmode="numeric"><i>RSD/mes</i></span><small>Ako paušala nema, upišite 0 — dobićete čist scenario „na oko“.</small></label>
-<label class="calc-f" for="z-brojilo"><span>Cena brojila sa ugradnjom</span><span class="calc-u"><input type="number" id="z-brojilo" min="0" max="200000" step="500" value="{{ d.brojilo }}" inputmode="numeric"><i>RSD</i></span><small>Javne cene overenog (MID) merenja u Srbiji: {{ z.meter_cost.low|sr(0) }}–{{ z.meter_cost.high|sr(0) }} RSD za opremu, bez ugradnje.</small></label>
-</fieldset>
+<div class="box">
+<h2>Zgrada</h2>
+<div class="fields2">
+<div class="field"><label for="z-stanovi">Stanova na zajedničkom računu</label><input class="input" type="number" id="z-stanovi" min="2" max="300" step="1" value="{{ d.stanovi }}" inputmode="numeric"></div>
+<div class="field"><label for="z-auta">Automobila koji se pune</label><input class="input" type="number" id="z-auta" min="1" max="50" step="1" value="{{ d.auta }}" inputmode="numeric"></div>
 </div>
-<aside class="calc-out" aria-live="polite">
-<div class="calc-res"><span>Stvarna struja za punjenje</span><b id="z-o-real">{{ ex.real|sr(0) }} RSD</b><small>mesečno · <span id="z-o-realy">{{ ex.real_y|sr(0) }}</span> RSD godišnje</small></div>
-<div class="calc-res"><span>Bez brojila: plaća svaki stan</span><b id="z-o-perflat">{{ ex.per_flat|sr(0) }} RSD</b><small>mesečno · <span id="z-o-perflaty">{{ ex.per_flat_y|sr(0) }}</span> RSD godišnje po stanu</small></div>
-<div class="calc-res calc-save"><span>Tuđe punjenje koje plate stanovi bez automobila</span><b id="z-o-others">{{ ex.others_y|sr(0) }} RSD</b><small>godišnje, zajedno</small></div>
-<div class="calc-res"><span>Sa paušalom: nepokriveno mesečno</span><b id="z-o-gap">{{ ex.gap|sr(0) }} RSD</b><small><span id="z-o-gapnote">{{ ex.gap_note }}</span></small></div>
-<div class="calc-res"><span>Brojilo se vrati za</span><b id="z-o-payback">{{ ex.payback }}</b><small>ako se umesto deljenja uvede merenje</small></div>
-<ul class="calc-br">
-<li>Vlasnik automobila bez brojila plaća <span id="z-o-owner">{{ ex.owner|sr(0) }}</span> RSD mesečno umesto <span id="z-o-ownerfair">{{ ex.owner_fair|sr(0) }}</span> RSD.</li>
-<li>Sa brojilom svako plaća svoje: <span id="z-o-fair">{{ ex.owner_fair|sr(0) }}</span> RSD po automobilu, ostali stanovi 0 RSD.</li>
-</ul>
-<p class="calc-warn">Računica je informativna: koristi jednu cenu kilovat-sata i ne uključuje gubitke u instalaciji zgrade ni naknade koje zgrada sama odredi.</p>
+<div class="field"><label for="z-kwh">kWh po automobilu mesečno</label><input class="input" type="number" id="z-kwh" min="10" max="2000" step="10" value="{{ d.kwh_auto }}" inputmode="numeric"><span class="hint">234 kWh ≈ 1.250 km mesečno.</span></div>
+</div>
+<div class="box">
+<h2>Struja i dogovor</h2>
+<div class="fields2">
+<div class="field"><label for="z-cena">Cena kWh na računu zgrade, RSD</label><input class="input" type="number" id="z-cena" min="1" max="100" step="0.01" value="{{ d.cena_kwh }}" inputmode="decimal"></div>
+<div class="field"><label for="z-pausal">Paušal po autu, RSD mesečno</label><input class="input" type="number" id="z-pausal" min="0" max="20000" step="100" value="{{ d.pausal }}" inputmode="numeric"><span class="hint">Bez paušala upišite 0.</span></div>
+</div>
+<div class="field"><label for="z-brojilo">Brojilo sa ugradnjom, RSD</label><input class="input" type="number" id="z-brojilo" min="0" max="200000" step="500" value="{{ d.brojilo }}" inputmode="numeric"><span class="hint">Oprema za overeno (MID) merenje: {{ z.meter_cost.low|sr(0) }}–{{ z.meter_cost.high|sr(0) }} RSD.</span></div>
+</div>
+</div>
+<aside class="box res" aria-live="polite">
+<div class="rbig"><span>Struja za punjenje, mesečno</span><b id="z-o-real">{{ ex.real|sr(0) }} RSD</b><small><span id="z-o-realy">{{ ex.real_y|sr(0) }}</span> RSD godišnje</small></div>
+<div class="rbig"><span>Bez brojila plaća svaki stan</span><b id="z-o-perflat">{{ ex.per_flat|sr(0) }} RSD</b><small><span id="z-o-perflaty">{{ ex.per_flat_y|sr(0) }}</span> RSD godišnje</small></div>
+<div class="rsave"><span>Stanovi bez auta plate za tuđe punjenje</span><b id="z-o-others">{{ ex.others_y|sr(0) }} RSD</b><small>godišnje, zajedno</small></div>
+<div class="row2"><span>Sa paušalom ostaje nepokriveno</span><b id="z-o-gap">{{ ex.gap|sr(0) }} RSD</b></div>
+<p class="note" id="z-o-gapnote">{{ ex.gap_note }}</p>
+<div class="row2"><span>Brojilo se vrati za</span><b id="z-o-payback">{{ ex.payback }}</b></div>
+<div class="row2"><span>Vlasnik auta plaća bez brojila</span><b><span id="z-o-owner">{{ ex.owner|sr(0) }}</span> RSD</b></div>
+<div class="row2"><span>Sa brojilom plaća samo svoje</span><b><span id="z-o-fair">{{ ex.owner_fair|sr(0) }}</span> RSD</b></div>
+<span id="z-o-ownerfair" hidden>{{ ex.owner_fair|sr(0) }}</span>
 </aside>
 </form>
 
-<h2 id="nacini">Tri načina i šta svaki znači</h2>
-<p><strong>1. Na oko — nema merenja.</strong> Punjač ide na zajedničko brojilo i trošak se razlije na sve stanove kroz račun stambene zajednice. Zgradi je to najlakše dok nema automobila; sa prvim automobilom postaje prenošenje tuđeg troška na komšije, a sa trećim postaje vidljivo na računu. Ovo je i najčešći izvor svađe na skupštini.</p>
-<p><strong>2. Paušal.</strong> Skupština odredi fiksni iznos mesečno po automobilu. Pošteno je onoliko koliko je procena tačna: ako je paušal manji od stvarne potrošnje, razliku i dalje plaćaju svi; ako je veći, vlasnik automobila plaća više nego što troši. Paušal ima smisla kao privremeno rešenje dok se ne postavi brojilo.</p>
-<p><strong>3. Brojilo (MID).</strong> Overeno brojilo meri samo to mesto i račun se prefakturiše vlasniku po ceni sa računa zgrade — bez marže. To je i pravno najčistije: zgrada ne preprodaje struju nego prenosi trošak, što je bitno zbog člana 210v Zakona o energetici. Cena opreme je danas {{ z.meter_cost.low|sr(0) }}–{{ z.meter_cost.high|sr(0) }} RSD, a neki punjači imaju brojilo u sebi.</p>
-
-<h2 id="odluka">Šta upisati u odluku skupštine</h2>
-<p>Da dogovor ne bi zavisio od pamćenja, u odluci treba da stoje četiri stvari: ko postavlja i plaća punjač i brojilo, kako se očitava potrošnja i po kojoj ceni se prefakturiše, ko snosi troškove održavanja i šta se dešava kad se stan proda ili iznajmi. Gotov šablon odluke i redosled koraka su u vodiču <a href="/punjac-u-zgradi-skupstina">saglasnost skupštine</a>, a pravni okvir i primer obračuna u vodiču <a href="/ko-placa-struju-za-punjenje">ko plaća struju</a>.</p>
-
-<h2>Izvori</h2>
-<ul class="bva-src">{% for s in z.sources %}<li><a href="{{ s.url }}" rel="noopener">{{ s.label }}</a></li>{% endfor %}<li><a href="/podaci/tarife-eps/">BlokVolt — cene struje za domaćinstva, zone i tarife</a></li></ul>
-<p class="bva-disc">{{ z.meter_cost.note }}</p>
-</div></div>
+<div class="sec faq"><div class="sec-head"><h2>Tri načina</h2></div>
+<details><summary>Bez merenja</summary><p>Punjač je na zajedničkom brojilu i trošak se deli na sve stanove. Sa prvim autom to znači da komšije plaćaju tuđe punjenje; to je najčešći povod za svađu na skupštini.</p></details>
+<details><summary>Paušal</summary><p>Skupština odredi iznos mesečno po autu. Ako je paušal manji od stvarne potrošnje, razliku i dalje plaćaju svi. Dobar je kao privremeno rešenje dok se ne postavi brojilo.</p></details>
+<details><summary>Brojilo (MID)</summary><p>Overeno brojilo meri samo to mesto, a vlasnik auta plaća izmerene kWh po ceni sa računa zgrade, bez marže. To nije prodaja struje (čl. 210v Zakona o energetici). Neki punjači imaju brojilo u sebi.</p></details>
+<p class="note">Šta upisati u odluku skupštine: <a class="lnk" href="/punjac-u-zgradi-skupstina">vodič sa šablonom</a>. Kako se obračunava: <a class="lnk" href="/ko-placa-struju-za-punjenje">ko plaća struju</a>.</p>
+</div>
+{% if promo_box %}{{ promo(promo_box.text, promo_box.href, promo_box.link) }}{% endif %}
+{{ src_block(src_items) }}
+<p class="upd">Ažurirano {{ z.checked }} · <a href="/ispravka/">Prijavite grešku</a></p>
 <script id="calc-zgrada-data" type="application/json">{{ z_json|safe }}</script>
-<script id="bv-i18n" type="application/json">{"month1": "mesec dana", "months": {"sr": ["mesec", "meseca", "meseci"], "en": ["months", "months", "months"], "ru": ["месяц", "месяца", "месяцев"]}, "years": {"sr": "godine", "en": "years", "ru": "года"}, "covered": "paušal već pokriva trošak", "rest": "ostatak i dalje plaćaju svi stanovi", "over": "paušal je veći od troška za {x} RSD mesečno", "exact": "paušal tačno pokriva trošak"}</script>
+<script id="bv-i18n" type="application/json">{"month1": "mesec dana", "months": {"sr": ["mesec", "meseca", "meseci"], "en": ["months", "months", "months"], "ru": ["месяц", "месяца", "месяцев"]}, "years": {"sr": "godine", "en": "years", "ru": "года"}, "covered": "paušal već pokriva trošak", "rest": "Ostatak i dalje plaćaju svi stanovi.", "over": "Paušal je veći od troška za {x} RSD mesečno.", "exact": "Paušal tačno pokriva trošak."}</script>
 <script>
 (function(){
  var D=JSON.parse(document.getElementById('calc-zgrada-data').textContent),T=JSON.parse(document.getElementById('bv-i18n').textContent),L=(document.documentElement.lang||'sr').slice(0,2);
@@ -58,36 +61,20 @@
  function num(id,def){var v=parseFloat(($(id)||{}).value);return isFinite(v)?v:def;}
  function fmt(x,d){d=d||0;var s=Math.abs(x).toFixed(d).replace(/\B(?=(\d{3})+(?!\d))/g,'.');return (x<0?'−':'')+s;}
  function calc(){
-  var stanovi=Math.max(2,num('z-stanovi',D.defaults.stanovi));
-  var auta=Math.max(1,num('z-auta',D.defaults.auta));
-  var kwh=num('z-kwh',D.defaults.kwh_auto);
-  var cena=num('z-cena',D.defaults.cena_kwh);
-  var pausal=num('z-pausal',D.defaults.pausal);
-  var brojilo=num('z-brojilo',D.defaults.brojilo);
-  var real=auta*kwh*cena;
-  var perFlat=real/stanovi;
-  var others=perFlat*Math.max(0,stanovi-auta)*12;
-  var gap=Math.max(0,real-pausal*auta);
-  var over=Math.max(0,pausal*auta-real);
-  var ownerFair=kwh*cena;
-  var owner=perFlat+pausal;
-  var monthlyErr=real-pausal*auta;
-  var payback;
+  var stanovi=Math.max(2,num('z-stanovi',D.defaults.stanovi)),auta=Math.max(1,num('z-auta',D.defaults.auta));
+  var kwh=num('z-kwh',D.defaults.kwh_auto),cena=num('z-cena',D.defaults.cena_kwh),pausal=num('z-pausal',D.defaults.pausal),brojilo=num('z-brojilo',D.defaults.brojilo);
+  var real=auta*kwh*cena,perFlat=real/stanovi,others=perFlat*Math.max(0,stanovi-auta)*12;
+  var gap=Math.max(0,real-pausal*auta),over=Math.max(0,pausal*auta-real),ownerFair=kwh*cena,owner=perFlat+pausal,monthlyErr=real-pausal*auta,payback;
   if(monthlyErr>0.5){var m=Math.ceil(brojilo*auta/monthlyErr);payback=m<=1?T.month1:(m<24?m+' '+pl(m,tr(T.months)):(m/12).toFixed(1).replace('.',',')+' '+tr(T.years));}
   else {payback=T.covered;}
-  $('z-o-real').textContent=fmt(real)+' RSD';
-  $('z-o-realy').textContent=fmt(real*12);
-  $('z-o-perflat').textContent=fmt(perFlat)+' RSD';
-  $('z-o-perflaty').textContent=fmt(perFlat*12);
-  $('z-o-others').textContent=fmt(others)+' RSD';
-  $('z-o-gap').textContent=fmt(gap)+' RSD';
+  $('z-o-real').textContent=fmt(real)+' RSD';$('z-o-realy').textContent=fmt(real*12);
+  $('z-o-perflat').textContent=fmt(perFlat)+' RSD';$('z-o-perflaty').textContent=fmt(perFlat*12);
+  $('z-o-others').textContent=fmt(others)+' RSD';$('z-o-gap').textContent=fmt(gap)+' RSD';
   $('z-o-gapnote').textContent = gap>0 ? T.rest : (over>0 ? T.over.replace('{x}',fmt(over)) : T.exact);
-  $('z-o-payback').textContent=payback;
-  $('z-o-owner').textContent=fmt(owner);
-  $('z-o-ownerfair').textContent=fmt(ownerFair);
-  $('z-o-fair').textContent=fmt(ownerFair);
+  $('z-o-payback').textContent=payback;$('z-o-owner').textContent=fmt(owner);$('z-o-ownerfair').textContent=fmt(ownerFair);$('z-o-fair').textContent=fmt(ownerFair);
  }
  ['z-stanovi','z-auta','z-kwh','z-cena','z-pausal','z-brojilo'].forEach(function(id){var el=$(id);if(el){el.addEventListener('input',calc);el.addEventListener('change',calc);}});
+ $('kalkulator').addEventListener('submit',function(e){e.preventDefault()});
  calc();
 })();
 </script>

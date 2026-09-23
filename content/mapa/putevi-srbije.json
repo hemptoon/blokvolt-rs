@@ -1,0 +1,421 @@
+{
+ "about": "Official list of the state chargers on motorways (JP Putevi Srbije), copied by hand from the three tables (images) on the source page. status: 1 = U funkciji, 0 = (trenutno) nije u funkciji, -1 = u postupku priključenja. ids = stations of punjaci-ocm/osm that are this site (their status is taken from here); lat/lon/pos only for working sites that have no station in the open data: position of the toll plaza or rest area in OpenStreetMap (pos = that OSM element; the charger is somewhere on it). Refresh with the monthly update.",
+ "source": "https://www.putevi-srbije.rs/index.php/en/electric-chargers",
+ "checked": "23.09.2026",
+ "planned": 3,
+ "sites": [
+  {
+   "name": "Naplatna stanica Subotica",
+   "road": "A1",
+   "ids": [
+    "ocm-260778"
+   ],
+   "chargers": [
+    {
+     "dir": "Subotica–Beograd",
+     "power": "DC 50 kW, AC 44 kW",
+     "status": 1
+    }
+   ]
+  },
+  {
+   "name": "Naplatna stanica Stara Pazova",
+   "road": "A1",
+   "ids": [
+    "osm-n13310874259"
+   ],
+   "chargers": [
+    {
+     "dir": "Subotica–Beograd",
+     "power": "DC 75 kW, AC 22 kW",
+     "status": 0
+    }
+   ]
+  },
+  {
+   "name": "Naplatna stanica Beograd",
+   "road": "A1",
+   "ids": [
+    "ocm-265200"
+   ],
+   "chargers": [
+    {
+     "dir": "Beograd–Niš",
+     "power": "DC 75 kW, AC 22 kW",
+     "status": 1
+    },
+    {
+     "dir": "Niš–Beograd",
+     "power": "DC 75 kW, AC 22 kW",
+     "status": 0
+    }
+   ]
+  },
+  {
+   "name": "Odmorište Jerina",
+   "road": "A1",
+   "ids": [
+    "osm-n13379053204"
+   ],
+   "chargers": [
+    {
+     "dir": "Beograd–Niš",
+     "power": "DC 75 kW, AC 22 kW",
+     "status": 1
+    }
+   ]
+  },
+  {
+   "name": "Plato bivše naplatne stanice Niš",
+   "road": "A1",
+   "ids": [
+    "ocm-176249"
+   ],
+   "chargers": [
+    {
+     "dir": "Beograd–Niš",
+     "power": "DC 120 kW",
+     "status": 1,
+     "note": "kw60"
+    },
+    {
+     "dir": "Niš–Beograd",
+     "power": "DC 120 kW",
+     "status": 0
+    }
+   ]
+  },
+  {
+   "name": "Naplatna stanica Preševo",
+   "road": "A1",
+   "ids": [
+    "ocm-127691"
+   ],
+   "chargers": [
+    {
+     "dir": "Preševo–Niš",
+     "power": "DC 40 kW",
+     "status": 1
+    }
+   ]
+  },
+  {
+   "name": "Odmorište Korbevac",
+   "road": "A1",
+   "ids": [],
+   "chargers": [
+    {
+     "dir": "Niš–Preševo",
+     "power": "DC 75 kW",
+     "status": -1,
+     "when": "do kraja septembra 2026"
+    }
+   ]
+  },
+  {
+   "name": "Odmorište Boljkovci",
+   "road": "A2",
+   "ids": [],
+   "chargers": [
+    {
+     "dir": "Beograd–Čačak",
+     "power": "DC 40 kW",
+     "status": 1
+    }
+   ],
+   "lat": 44.1544,
+   "lon": 20.325,
+   "place": "Boljkovci",
+   "pos": "https://www.openstreetmap.org/way/720198636"
+  },
+  {
+   "name": "Odmorište Lalinci",
+   "road": "A2",
+   "ids": [],
+   "chargers": [
+    {
+     "dir": "Čačak–Beograd",
+     "power": "DC 75 kW, AC 22 kW",
+     "status": 1
+    }
+   ],
+   "lat": 44.1682,
+   "lon": 20.3129,
+   "place": "Lalinci",
+   "pos": "https://www.openstreetmap.org/way/701462781"
+  },
+  {
+   "name": "Naplatna stanica Šid",
+   "road": "A3",
+   "ids": [
+    "ocm-94048",
+    "osm-n5793648253"
+   ],
+   "chargers": [
+    {
+     "dir": "Šid–Beograd",
+     "power": "DC 50 kW",
+     "status": 0
+    },
+    {
+     "dir": "Šid–Beograd",
+     "power": "DC 75 kW, AC 22 kW",
+     "status": 1
+    }
+   ]
+  },
+  {
+   "name": "Naplatna stanica Šimanovci",
+   "road": "A3",
+   "ids": [],
+   "lat": 44.88224,
+   "lon": 20.11382,
+   "place": "Šimanovci",
+   "chargers": [
+    {
+     "dir": "Beograd–Šid",
+     "power": "DC 75 kW, AC 22 kW",
+     "status": 1,
+     "note": "dc_only"
+    }
+   ],
+   "pos": "https://www.openstreetmap.org/node/32403710"
+  },
+  {
+   "name": "Odmorište Toplik",
+   "road": "A4",
+   "ids": [
+    "ocm-478966",
+    "ocm-478967"
+   ],
+   "chargers": [
+    {
+     "dir": "Niš–Dimitrovgrad",
+     "power": "DC 75 kW, AC 22 kW",
+     "status": 1
+    },
+    {
+     "dir": "Dimitrovgrad–Niš",
+     "power": "DC 75 kW, AC 22 kW",
+     "status": 1
+    }
+   ]
+  },
+  {
+   "name": "Naplatna stanica Dimitrovgrad",
+   "road": "A4",
+   "ids": [
+    "ocm-107451"
+   ],
+   "chargers": [
+    {
+     "dir": "Dimitrovgrad–Niš",
+     "power": "DC 50 kW",
+     "status": 0
+    }
+   ]
+  },
+  {
+   "name": "Naplatna stanica Ćićevac",
+   "road": "A5",
+   "ids": [
+    "osm-n13310970419"
+   ],
+   "chargers": [
+    {
+     "dir": "Pojate–Kruševac",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 1
+    }
+   ]
+  },
+  {
+   "name": "Naplatna stanica Kruševac istok",
+   "road": "A5",
+   "ids": [],
+   "chargers": [
+    {
+     "dir": "Pojate–Kruševac",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 0,
+     "note": "toll"
+    },
+    {
+     "dir": "Pojate–Kruševac",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 0,
+     "note": "toll"
+    }
+   ]
+  },
+  {
+   "name": "Naplatna stanica Kruševac zapad",
+   "road": "A5",
+   "ids": [],
+   "chargers": [
+    {
+     "dir": "Pojate–Kruševac",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 1
+    },
+    {
+     "dir": "Pojate–Kruševac",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 1
+    }
+   ],
+   "lat": 43.6077,
+   "lon": 21.3084,
+   "place": "Kruševac",
+   "pos": "https://www.openstreetmap.org/node/11972310498"
+  },
+  {
+   "name": "Naplatna stanica Koševi",
+   "road": "A5",
+   "ids": [
+    "ocm-475685"
+   ],
+   "chargers": [
+    {
+     "dir": "Pojate–Kruševac",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 1
+    }
+   ]
+  },
+  {
+   "name": "Naplatna stanica Trstenik",
+   "road": "A5",
+   "ids": [
+    "ocm-475501"
+   ],
+   "chargers": [
+    {
+     "dir": "Pojate–Trstenik",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 1
+    },
+    {
+     "dir": "Pojate–Trstenik",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 1
+    }
+   ]
+  },
+  {
+   "name": "Naplatna stanica Vrnjačka Banja",
+   "road": "A5",
+   "ids": [
+    "ocm-475322"
+   ],
+   "chargers": [
+    {
+     "dir": "Pojate–Vrnjačka Banja",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 1
+    },
+    {
+     "dir": "Pojate–Vrnjačka Banja",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 1
+    }
+   ]
+  },
+  {
+   "name": "Naplatna stanica Adrani",
+   "road": "A5",
+   "ids": [],
+   "chargers": [
+    {
+     "dir": "",
+     "power": "DC 120 kW",
+     "status": -1,
+     "when": "do kraja godine"
+    },
+    {
+     "dir": "",
+     "power": "DC 120 kW",
+     "status": -1,
+     "when": "do kraja godine"
+    }
+   ]
+  },
+  {
+   "name": "Naplatna stanica Preljina",
+   "road": "A5",
+   "ids": [],
+   "chargers": [
+    {
+     "dir": "",
+     "power": "DC 120 kW",
+     "status": -1,
+     "when": "do kraja godine"
+    },
+    {
+     "dir": "",
+     "power": "DC 120 kW",
+     "status": -1,
+     "when": "do kraja godine"
+    }
+   ]
+  },
+  {
+   "name": "Naplatna stanica Ruma",
+   "road": "A8",
+   "ids": [],
+   "chargers": [
+    {
+     "dir": "Beograd–Ruma",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 1
+    },
+    {
+     "dir": "Beograd–Ruma",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 1
+    }
+   ],
+   "lat": 44.9679,
+   "lon": 19.8084,
+   "place": "Ruma",
+   "pos": "https://www.openstreetmap.org/node/11205994490"
+  },
+  {
+   "name": "Naplatna stanica Hrtkovci",
+   "road": "A8",
+   "ids": [],
+   "chargers": [
+    {
+     "dir": "Beograd–Šabac",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 1
+    }
+   ],
+   "lat": 44.85934,
+   "lon": 19.77466,
+   "place": "Hrtkovci",
+   "pos": "https://www.openstreetmap.org/node/11257279964"
+  },
+  {
+   "name": "Naplatna stanica Šabac",
+   "road": "A8",
+   "ids": [],
+   "chargers": [
+    {
+     "dir": "Beograd–Šabac",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 1
+    },
+    {
+     "dir": "Beograd–Šabac",
+     "power": "DC 120 kW, AC 22 kW",
+     "status": 1
+    }
+   ],
+   "lat": 44.80834,
+   "lon": 19.71928,
+   "place": "Šabac",
+   "pos": "https://www.openstreetmap.org/node/11257279967"
+  }
+ ]
+}

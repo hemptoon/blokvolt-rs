@@ -1,1 +1,30 @@
-<div class="v3-foot"><div class="v3-fcard"><div class="w3"><div class="v3-fgrid"><div class="v3-fintro"><p>BlokVolt je nezavisni vodič kroz električne automobile u Srbiji: firme, cene, procedure, propisi i brojke — sve sa izvorom i datumom provere. Sajt vodi tim kompanije Evolako, koja i sama ugrađuje punjače; u poređenjima je označena kao „naša ponuda“ i prikazana po istim kolonama kao sve ostale firme.</p></div><div class="v3-fcol"><div>Sajt</div><a href="/firme/">Firme ({{ n_firms }})</a><a href="/cena-punjaca-za-elektricni-auto">Cene punjača</a><a href="/javno-punjenje/">Javno punjenje</a><a href="/vodici/">Vodiči</a><a href="/podaci/">Podaci i propisi</a></div><div class="v3-fcol"><div>O sajtu</div><a href="/metodologija/">Metodologija</a><a href="/o-sajtu/">O sajtu</a><a href="/ispravka/">Prijavite ispravku</a><a href="/izmene/">Dnevnik izmena</a><a href="/politika-privatnosti">Politika privatnosti</a></div><div class="v3-fcol"><div>Kontakt</div><a href="https://www.evolako.rs">Ugradnja punjača — evolako.rs</a><a aria-label="Copy email to clipboard" class="copy-email-button" data-copy-email="hello@blokvolt.com" href="mailto:hello@blokvolt.com"><span data-osmo="copy-ikona"></span><span data-osmo="copy-wrap"><span data-osmo="copy-el">hello@blokvolt.com</span><span data-osmo="copy-el">Kopiraj adresu</span><span data-osmo="copy-el">Kopirano ✓</span></span></a></div></div></div><div aria-hidden="true" class="v3-word" translate="no"><span>blok</span><span>volt</span></div></div><div class="v3-legal">© 2026 BlokVolt · nezavisni vodič kroz električne automobile u Srbiji · podaci ažurirani {{ TODAY }}</div></div>
+{% from '_icons.html' import ic, mark %}
+<footer class="ft"><div class="wrap">
+<div class="ft-in">
+<div><a class="logo" href="/" aria-label="BlokVolt — početna">{{ mark() }}<span translate="no">blok<b>volt</b></span></a>
+<p>Gde napuniti električni auto u Srbiji, koliko košta i ko ugrađuje kućni punjač.</p>
+<a class="ft-mail" href="mailto:hello@blokvolt.com">{{ ic('mail') }}<span translate="no">hello@blokvolt.com</span></a></div>
+<div><h2>Punjenje</h2><ul>
+<li><a href="/mapa/">Mapa punjača</a></li>
+<li><a href="/javno-punjenje/">Cene javnog punjenja</a></li>
+<li><a href="/javno-punjenje/besplatni-punjaci/">Besplatni punjači</a></li>
+<li><a href="/javno-punjenje/region/">Punjenje u regionu</a></li>
+<li><a href="/alati/kalkulator-troskova/">Kalkulator troškova</a></li>
+</ul></div>
+<div><h2>Kućni punjač</h2><ul>
+<li><a href="/firme/">Firme ({{ n_firms }})</a></li>
+<li><a href="/cena-punjaca-za-elektricni-auto">Cena punjača sa ugradnjom</a></li>
+<li><a href="/podaci/wallbox-modeli/">Wallbox modeli</a></li>
+<li><a href="/punjac-u-zgradi-skupstina">Punjač u zgradi</a></li>
+<li><a href="/ko-placa-struju-za-punjenje">Ko plaća struju</a></li>
+</ul></div>
+<div><h2>O sajtu</h2><ul>
+<li><a href="/o-sajtu/">O sajtu</a></li>
+<li><a href="/metodologija/">Kako radimo</a></li>
+<li><a href="/ispravka/">Prijavite grešku</a></li>
+<li><a href="/izmene/">Izmene</a></li>
+<li><a href="/preuzimanje/">Podaci za preuzimanje</a></li>
+</ul></div>
+</div>
+<div class="ft-legal"><span>© 2026 BlokVolt · podaci ažurirani {{ TODAY }}</span><span><a href="/politika-privatnosti">Politika privatnosti</a> · <a href="https://blokvolt.com/" rel="noopener">blokvolt.com — region (EN)</a></span></div>
+</div></footer>

@@ -111,3 +111,26 @@ decimal comma as in the source; «с НДС» / «без НДС»; «кВт·ч�
 
 The already translated menu, footer and table labels in `en.json` / `ru.json` are the reference for
 terminology — read them before translating and stay consistent with them.
+
+## Since the 2026-09 redesign
+
+The Serbian text is now short and impersonal (no "we", no "the editors"). Keep translations just as
+short. New interface terms:
+
+| Serbian | English | Russian |
+|---|---|---|
+| Mapa punjača | Charger map | Карта зарядок |
+| Cene | Prices | Цены |
+| Vodiči | Guides | Гайды |
+| Kalkulator (troškova) | (Cost) calculator | Калькулятор (расходов) |
+| Izdvojeno (badge) | Featured | В фокусе |
+| Blizu mene | Near me | Рядом со мной |
+| Prijavite grešku / Prijavi grešku | Report an error | Сообщить об ошибке |
+| Izvori | Sources | Источники |
+| Ažurirano … · sledeća provera … | Updated … · next check … | Обновлено … · следующая проверка … |
+| Detalji: … (folded block title) | Details: … | Подробнее: … |
+| Povezano | Related | По теме |
+| Prikazano: {n} od {all} | Showing {n} of {all} | Показано: {n} из {all} |
+| brzi punjač (DC) | fast charger (DC) | быстрая зарядка (DC) |
+| Besplatno | Free | Бесплатно |
+| jedinica punjenja | charging unit | единица зарядки |

@@ -1,0 +1,9 @@
+{% from '_macros.html' import lg %}
+<div class="pcards">{% for net in PRICE_SUMMARY %}
+<div class="pcard">
+<div class="pcard-h">{{ lg(net) }}<div><b>{% if net.page %}<a href="{{ net.page }}">{{ net.name }}</a>{% else %}{{ net.name }}{% endif %}</b>{% if net.sub %}<span>{{ net.sub }}</span>{% endif %}</div></div>
+{% if net['items'] %}<ul class="pl">{% for c, p in net['items'] %}<li><span>{{ c }}</span><b{% if net.free %} class="free"{% endif %}>{{ p }}</b></li>{% endfor %}</ul>{% endif %}
+{% if net.note %}<p class="note">{{ net.note }}</p>{% endif %}
+</div>{% endfor %}
+</div>
+<p class="note">Cene iz aplikacija mreža i sa računa, {{ PRICE_DATE }}. Tačnu cenu pre punjenja pokazuje aplikacija mreže.</p>

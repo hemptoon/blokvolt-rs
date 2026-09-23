@@ -41,5 +41,11 @@
  "notes": "Ako imate podatke sa lica mesta (cena, uslovi), <a href=\"/ispravka/\">javite nam</a> — dopunjujemo sa datumom.",
  "card": "6 OMV stanica · DC 60–75 kW",
  "kind_label": "Aplikacija za plaćanje",
- "publish": true
+ "publish": true,
+ "short_name": "EasyPark",
+ "lead": "Aplikacija za plaćanje na šest OMV stanica. Uslovi za Srbiju nisu objavljeni.",
+ "network_short": "6 OMV stanica",
+ "power_short": "DC 60–75 kW",
+ "billing_short": "Nije objavljeno.",
+ "payment_short": "Aplikacija EasyPark"
 }

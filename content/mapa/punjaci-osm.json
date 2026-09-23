@@ -1,0 +1,2205 @@
+{
+ "source": "OpenStreetMap",
+ "sourceURL": "https://www.openstreetmap.org/copyright",
+ "license": "ODbL 1.0",
+ "licenseURL": "https://opendatacommons.org/licenses/odbl/1-0/",
+ "attribution": "© OpenStreetMap contributors, ODbL 1.0",
+ "export": "Overpass API, amenity=charging_station, ISO3166-1=RS",
+ "dataUpdated": "2026-09-22",
+ "retrieved": "2026-09-23",
+ "chargers": [
+  {
+   "id": "osm-n10008908002",
+   "name": "Lidl",
+   "address": "",
+   "latitude": 44.817391,
+   "longitude": 20.476997,
+   "operator": "lidl",
+   "operatorName": "Lidl",
+   "connectors": [],
+   "access": "customers",
+   "url": "https://www.openstreetmap.org/node/10008908002",
+   "updated": null
+  },
+  {
+   "id": "osm-n10078413138",
+   "name": "Tesla, Inc.",
+   "address": "",
+   "latitude": 43.863467,
+   "longitude": 21.421247,
+   "operator": "tesla",
+   "operatorName": "Tesla, Inc.",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/10078413138",
+   "updated": null
+  },
+  {
+   "id": "osm-n10094584889",
+   "name": "Charge&GO - Stop Shop S.Mitrovica",
+   "address": "",
+   "latitude": 44.977286,
+   "longitude": 19.59175,
+   "operator": "charge-and-go",
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/10094584889",
+   "updated": null
+  },
+  {
+   "id": "osm-n10156814144",
+   "name": null,
+   "address": "",
+   "latitude": 43.322861,
+   "longitude": 21.907116,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/10156814144",
+   "updated": null
+  },
+  {
+   "id": "osm-n10713611582",
+   "name": null,
+   "address": "",
+   "latitude": 44.446999,
+   "longitude": 20.690142,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/10713611582",
+   "updated": null
+  },
+  {
+   "id": "osm-n10713642850",
+   "name": "Orion - Naplatna stanica Vrčin",
+   "address": "",
+   "latitude": 44.665422,
+   "longitude": 20.612251,
+   "operator": "putevi-srbije",
+   "operatorName": "Putevi Srbije",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/10713642850",
+   "updated": null
+  },
+  {
+   "id": "osm-n10864765534",
+   "name": "ProCredit",
+   "address": "",
+   "latitude": 43.643927,
+   "longitude": 21.882568,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/10864765534",
+   "updated": null
+  },
+  {
+   "id": "osm-n10869327403",
+   "name": "Tesla Destination Charger",
+   "address": "",
+   "latitude": 43.785774,
+   "longitude": 21.145271,
+   "operator": "tesla",
+   "operatorName": "Tesla",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/10869327403",
+   "updated": null
+  },
+  {
+   "id": "osm-n10961924286",
+   "name": "ProCredit Bank",
+   "address": "",
+   "latitude": 44.004077,
+   "longitude": 20.912815,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "customers",
+   "url": "https://www.openstreetmap.org/node/10961924286",
+   "updated": null
+  },
+  {
+   "id": "osm-n10961947490",
+   "name": null,
+   "address": "",
+   "latitude": 44.803105,
+   "longitude": 20.447856,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 6
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/10961947490",
+   "updated": null
+  },
+  {
+   "id": "osm-n10961948836",
+   "name": null,
+   "address": "",
+   "latitude": 43.862896,
+   "longitude": 21.411365,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "schuko",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/10961948836",
+   "updated": null
+  },
+  {
+   "id": "osm-n10961949709",
+   "name": "Lidl",
+   "address": "",
+   "latitude": 45.236602,
+   "longitude": 19.826422,
+   "operator": "lidl",
+   "operatorName": "Lidl",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 20.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 20.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 11.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/10961949709",
+   "updated": null
+  },
+  {
+   "id": "osm-n10961950559",
+   "name": null,
+   "address": "",
+   "latitude": 44.815411,
+   "longitude": 20.436315,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/10961950559",
+   "updated": null
+  },
+  {
+   "id": "osm-n10961952025",
+   "name": null,
+   "address": "",
+   "latitude": 44.308703,
+   "longitude": 20.549287,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/10961952025",
+   "updated": null
+  },
+  {
+   "id": "osm-n11159497626",
+   "name": "Charge&GO - Stop Shop Zaječar",
+   "address": "",
+   "latitude": 43.903143,
+   "longitude": 22.268316,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/11159497626",
+   "updated": null
+  },
+  {
+   "id": "osm-n11161539392",
+   "name": "Tesla Destination Charger",
+   "address": "",
+   "latitude": 43.867066,
+   "longitude": 21.40766,
+   "operator": "tesla",
+   "operatorName": "Tesla",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/11161539392",
+   "updated": null
+  },
+  {
+   "id": "osm-n11283269584",
+   "name": null,
+   "address": "",
+   "latitude": 43.622796,
+   "longitude": 20.893674,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/11283269584",
+   "updated": null
+  },
+  {
+   "id": "osm-n11285994388",
+   "name": null,
+   "address": "",
+   "latitude": 43.61231,
+   "longitude": 20.884881,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/11285994388",
+   "updated": null
+  },
+  {
+   "id": "osm-n11608859730",
+   "name": null,
+   "address": "",
+   "latitude": 45.157251,
+   "longitude": 19.77984,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/11608859730",
+   "updated": null
+  },
+  {
+   "id": "osm-n11640250197",
+   "name": "Charge&GO - Stop Shop Niš",
+   "address": "",
+   "latitude": 43.311065,
+   "longitude": 21.937176,
+   "operator": "charge-and-go",
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/11640250197",
+   "updated": null
+  },
+  {
+   "id": "osm-n11688511922",
+   "name": "Tesla",
+   "address": "",
+   "latitude": 43.864582,
+   "longitude": 21.625611,
+   "operator": "tesla",
+   "operatorName": "Tesla",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/11688511922",
+   "updated": null
+  },
+  {
+   "id": "osm-n11818344853",
+   "name": "Charge&Go",
+   "address": "",
+   "latitude": 44.888529,
+   "longitude": 20.458893,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 46.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/11818344853",
+   "updated": null
+  },
+  {
+   "id": "osm-n12144831292",
+   "name": null,
+   "address": "",
+   "latitude": 43.935015,
+   "longitude": 20.401712,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12144831292",
+   "updated": null
+  },
+  {
+   "id": "osm-n12144831293",
+   "name": null,
+   "address": "",
+   "latitude": 43.935106,
+   "longitude": 20.401698,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12144831293",
+   "updated": null
+  },
+  {
+   "id": "osm-n12206033248",
+   "name": null,
+   "address": "",
+   "latitude": 45.135631,
+   "longitude": 19.677875,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12206033248",
+   "updated": null
+  },
+  {
+   "id": "osm-n12206033249",
+   "name": null,
+   "address": "",
+   "latitude": 45.15647,
+   "longitude": 19.749597,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12206033249",
+   "updated": null
+  },
+  {
+   "id": "osm-n12281405040",
+   "name": null,
+   "address": "",
+   "latitude": 44.810974,
+   "longitude": 20.470533,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12281405040",
+   "updated": null
+  },
+  {
+   "id": "osm-n12281409515",
+   "name": null,
+   "address": "",
+   "latitude": 44.811768,
+   "longitude": 20.469707,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12281409515",
+   "updated": null
+  },
+  {
+   "id": "osm-n12531705082",
+   "name": "Gazprom",
+   "address": "",
+   "latitude": 46.125062,
+   "longitude": 19.83256,
+   "operator": "nis",
+   "operatorName": "Gazprom",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12531705082",
+   "updated": null
+  },
+  {
+   "id": "osm-n12633260621",
+   "name": "Belgrade Supercharger",
+   "address": "Astrid Lindgren 23, Beograd",
+   "latitude": 44.712602,
+   "longitude": 20.560184,
+   "operator": "tesla",
+   "operatorName": "Tesla",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 250.0,
+     "count": 8
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12633260621",
+   "updated": null
+  },
+  {
+   "id": "osm-n12744335444",
+   "name": null,
+   "address": "",
+   "latitude": 43.157956,
+   "longitude": 22.580963,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12744335444",
+   "updated": null
+  },
+  {
+   "id": "osm-n12760859109",
+   "name": null,
+   "address": "",
+   "latitude": 45.151939,
+   "longitude": 19.839678,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12760859109",
+   "updated": null
+  },
+  {
+   "id": "osm-n12769389499",
+   "name": null,
+   "address": "",
+   "latitude": 44.968925,
+   "longitude": 19.809264,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12769389499",
+   "updated": null
+  },
+  {
+   "id": "osm-n12787662268",
+   "name": null,
+   "address": "",
+   "latitude": 44.253353,
+   "longitude": 20.676394,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12787662268",
+   "updated": null
+  },
+  {
+   "id": "osm-n12787665011",
+   "name": null,
+   "address": "",
+   "latitude": 44.560091,
+   "longitude": 20.669315,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12787665011",
+   "updated": null
+  },
+  {
+   "id": "osm-n12787761148",
+   "name": null,
+   "address": "",
+   "latitude": 45.000623,
+   "longitude": 19.820249,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12787761148",
+   "updated": null
+  },
+  {
+   "id": "osm-n12806234883",
+   "name": "orion mobility",
+   "address": "",
+   "latitude": 45.013177,
+   "longitude": 19.442199,
+   "operator": "orion",
+   "operatorName": "orion mobility",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/12806234883",
+   "updated": null
+  },
+  {
+   "id": "osm-n13036761706",
+   "name": null,
+   "address": "",
+   "latitude": 43.645308,
+   "longitude": 21.879683,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13036761706",
+   "updated": null
+  },
+  {
+   "id": "osm-n13235072666",
+   "name": "Orion - Putevi Srbije naplatna stanica Koševi",
+   "address": "",
+   "latitude": 43.586626,
+   "longitude": 21.231239,
+   "operator": "putevi-srbije",
+   "operatorName": "Putevi Srbije",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 2
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13235072666",
+   "updated": null
+  },
+  {
+   "id": "osm-n13247957032",
+   "name": "Virta global 180KW EV charging station",
+   "address": "Autoput Šid - Beograd, Sremska Mitrovica",
+   "latitude": 45.035573,
+   "longitude": 19.449735,
+   "operator": "virta",
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13247957032",
+   "updated": null
+  },
+  {
+   "id": "osm-n13287698264",
+   "name": "Charge&GO",
+   "address": "",
+   "latitude": 45.378307,
+   "longitude": 20.355228,
+   "operator": "charge-and-go",
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 150.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13287698264",
+   "updated": null
+  },
+  {
+   "id": "osm-n13310874259",
+   "name": "Orion - Naplatna stanica Stara Pazova",
+   "address": "",
+   "latitude": 45.005298,
+   "longitude": 20.201351,
+   "operator": "orion",
+   "operatorName": "Orion",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13310874259",
+   "updated": null
+  },
+  {
+   "id": "osm-n13310965714",
+   "name": "Orion - Putevi Srbije naplatna stanica Preševo",
+   "address": "",
+   "latitude": 42.303458,
+   "longitude": 21.709953,
+   "operator": "putevi-srbije",
+   "operatorName": "Putevi Srbije",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 40.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 40.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13310965714",
+   "updated": null
+  },
+  {
+   "id": "osm-n13310970419",
+   "name": "Orion - Naplatna stanica Ćićevac",
+   "address": "",
+   "latitude": 43.722983,
+   "longitude": 21.420665,
+   "operator": "putevi-srbije",
+   "operatorName": "Putevi Srbije",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 2
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13310970419",
+   "updated": null
+  },
+  {
+   "id": "osm-n13312080622",
+   "name": "Ledi MS Brestovac",
+   "address": "",
+   "latitude": 43.149543,
+   "longitude": 21.888789,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 4
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13312080622",
+   "updated": null
+  },
+  {
+   "id": "osm-n13312088642",
+   "name": "Ledi MS Nova Pazova",
+   "address": "",
+   "latitude": 44.969046,
+   "longitude": 20.233273,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 350.0,
+     "count": 6
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 6
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 3
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13312088642",
+   "updated": null
+  },
+  {
+   "id": "osm-n13313453050",
+   "name": "Charge&GO",
+   "address": "",
+   "latitude": 43.220108,
+   "longitude": 22.306116,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&GO",
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13313453050",
+   "updated": null
+  },
+  {
+   "id": "osm-n13316672162",
+   "name": "Orion eMobility",
+   "address": "",
+   "latitude": 44.831698,
+   "longitude": 20.36928,
+   "operator": "orion",
+   "operatorName": "Orion eMobility",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13316672162",
+   "updated": null
+  },
+  {
+   "id": "osm-n13316918838",
+   "name": "Charge&Go",
+   "address": "",
+   "latitude": 43.182505,
+   "longitude": 21.862736,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 140.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13316918838",
+   "updated": null
+  },
+  {
+   "id": "osm-n13316918839",
+   "name": "Charge&Go",
+   "address": "",
+   "latitude": 44.809963,
+   "longitude": 20.417176,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 150.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13316918839",
+   "updated": null
+  },
+  {
+   "id": "osm-n13316918840",
+   "name": "Charge&Go",
+   "address": "",
+   "latitude": 44.760458,
+   "longitude": 20.472825,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13316918840",
+   "updated": null
+  },
+  {
+   "id": "osm-n13317124914",
+   "name": "Charge&Go",
+   "address": "",
+   "latitude": 45.277249,
+   "longitude": 19.825709,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13317124914",
+   "updated": null
+  },
+  {
+   "id": "osm-n13317124915",
+   "name": "Charge&Go",
+   "address": "",
+   "latitude": 44.20669,
+   "longitude": 21.105932,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13317124915",
+   "updated": null
+  },
+  {
+   "id": "osm-n13317235499",
+   "name": "Charge&Go",
+   "address": "",
+   "latitude": 43.000276,
+   "longitude": 22.819403,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13317235499",
+   "updated": null
+  },
+  {
+   "id": "osm-n13320386074",
+   "name": "Charge&Go",
+   "address": "",
+   "latitude": 42.544074,
+   "longitude": 21.900642,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13320386074",
+   "updated": null
+  },
+  {
+   "id": "osm-n13320386075",
+   "name": "Charge&Go",
+   "address": "",
+   "latitude": 43.910349,
+   "longitude": 22.260259,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 45.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13320386075",
+   "updated": null
+  },
+  {
+   "id": "osm-n13320431183",
+   "name": "Charge&Go",
+   "address": "",
+   "latitude": 43.964394,
+   "longitude": 21.278285,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 110.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13320431183",
+   "updated": null
+  },
+  {
+   "id": "osm-n13320431184",
+   "name": "Charge&Go",
+   "address": "",
+   "latitude": 44.002458,
+   "longitude": 20.893152,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 150.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13320431184",
+   "updated": null
+  },
+  {
+   "id": "osm-n13339598301",
+   "name": "Orion eMobility",
+   "address": "",
+   "latitude": 44.707404,
+   "longitude": 20.567597,
+   "operator": "orion",
+   "operatorName": "Orion eMobility",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13339598301",
+   "updated": null
+  },
+  {
+   "id": "osm-n13343550063",
+   "name": null,
+   "address": "",
+   "latitude": 44.806468,
+   "longitude": 20.477843,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13343550063",
+   "updated": null
+  },
+  {
+   "id": "osm-n13379053204",
+   "name": "Orion - Odmorište Jerina",
+   "address": "",
+   "latitude": 44.582846,
+   "longitude": 20.813939,
+   "operator": "putevi-srbije",
+   "operatorName": "Putevi Srbije",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 2
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13379053204",
+   "updated": null
+  },
+  {
+   "id": "osm-n13622746585",
+   "name": "Orion - JP Putevi Srbije",
+   "address": "",
+   "latitude": 43.251531,
+   "longitude": 22.169475,
+   "operator": "putevi-srbije",
+   "operatorName": "Putevi Srbije",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13622746585",
+   "updated": null
+  },
+  {
+   "id": "osm-n13622746586",
+   "name": "Orion - JP Putevi Srbije",
+   "address": "",
+   "latitude": 43.253653,
+   "longitude": 22.166381,
+   "operator": "putevi-srbije",
+   "operatorName": "Putevi Srbije",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13622746586",
+   "updated": null
+  },
+  {
+   "id": "osm-n13622779639",
+   "name": "Orion - Putevi Srbije naplatna stanica Vrnjačka Banja",
+   "address": "",
+   "latitude": 43.649452,
+   "longitude": 20.911743,
+   "operator": "putevi-srbije",
+   "operatorName": "Putevi Srbije",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 2
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13622779639",
+   "updated": null
+  },
+  {
+   "id": "osm-n13622784822",
+   "name": "Orion - Putevi Srbije naplatna stanica Trstenik",
+   "address": "",
+   "latitude": 43.619692,
+   "longitude": 21.02203,
+   "operator": "putevi-srbije",
+   "operatorName": "Putevi Srbije",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 2
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13622784822",
+   "updated": null
+  },
+  {
+   "id": "osm-n13841833514",
+   "name": "Charge&Go",
+   "address": "",
+   "latitude": 43.569936,
+   "longitude": 21.339874,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/13841833514",
+   "updated": null
+  },
+  {
+   "id": "osm-n14087523491",
+   "name": null,
+   "address": "",
+   "latitude": 44.81302,
+   "longitude": 20.390235,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/14087523491",
+   "updated": null
+  },
+  {
+   "id": "osm-n14103645539",
+   "name": null,
+   "address": "",
+   "latitude": 43.996314,
+   "longitude": 20.482286,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/14103645539",
+   "updated": null
+  },
+  {
+   "id": "osm-n14142441100",
+   "name": null,
+   "address": "",
+   "latitude": 45.377442,
+   "longitude": 20.392903,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/14142441100",
+   "updated": null
+  },
+  {
+   "id": "osm-n14167014009",
+   "name": "Econec",
+   "address": "",
+   "latitude": 44.970426,
+   "longitude": 19.613681,
+   "operator": null,
+   "operatorName": "Econec",
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/14167014009",
+   "updated": null
+  },
+  {
+   "id": "osm-n5102115442",
+   "name": null,
+   "address": "",
+   "latitude": 44.815832,
+   "longitude": 20.457676,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/5102115442",
+   "updated": null
+  },
+  {
+   "id": "osm-n5304717494",
+   "name": "ProCredit",
+   "address": "",
+   "latitude": 45.244752,
+   "longitude": 19.845665,
+   "operator": null,
+   "operatorName": "ProCredit",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/5304717494",
+   "updated": null
+  },
+  {
+   "id": "osm-n5345818447",
+   "name": null,
+   "address": "",
+   "latitude": 44.804459,
+   "longitude": 20.466539,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/5345818447",
+   "updated": null
+  },
+  {
+   "id": "osm-n5793648253",
+   "name": "putevi srbije",
+   "address": "",
+   "latitude": 45.048137,
+   "longitude": 19.193213,
+   "operator": "putevi-srbije",
+   "operatorName": "putevi srbije",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": null,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": null,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/5793648253",
+   "updated": null
+  },
+  {
+   "id": "osm-n5793659152",
+   "name": "putevi srbije",
+   "address": "",
+   "latitude": 43.022341,
+   "longitude": 22.735101,
+   "operator": "putevi-srbije",
+   "operatorName": "putevi srbije",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": null,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": null,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/5793659152",
+   "updated": null
+  },
+  {
+   "id": "osm-n6077045372",
+   "name": null,
+   "address": "",
+   "latitude": 43.313004,
+   "longitude": 21.796175,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "schuko",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/6077045372",
+   "updated": null
+  },
+  {
+   "id": "osm-n6077073468",
+   "name": "Societe Generale",
+   "address": "",
+   "latitude": 44.814621,
+   "longitude": 20.42678,
+   "operator": null,
+   "operatorName": "Societe Generale",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/6077073468",
+   "updated": null
+  },
+  {
+   "id": "osm-n6317084325",
+   "name": "Orion - Putevi Srbije naplatna stanica Subotica",
+   "address": "",
+   "latitude": 46.020446,
+   "longitude": 19.733293,
+   "operator": "orion",
+   "operatorName": "Orion",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 44.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/6317084325",
+   "updated": null
+  },
+  {
+   "id": "osm-n6797205413",
+   "name": null,
+   "address": "",
+   "latitude": 44.00235,
+   "longitude": 20.891036,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/6797205413",
+   "updated": null
+  },
+  {
+   "id": "osm-n6797205414",
+   "name": "Ikea",
+   "address": "",
+   "latitude": 44.710545,
+   "longitude": 20.561868,
+   "operator": null,
+   "operatorName": "Elektropunjači",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/6797205414",
+   "updated": null
+  },
+  {
+   "id": "osm-n8185526053",
+   "name": null,
+   "address": "",
+   "latitude": 44.012879,
+   "longitude": 20.913256,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/8185526053",
+   "updated": null
+  },
+  {
+   "id": "osm-n8228565597",
+   "name": null,
+   "address": "",
+   "latitude": 45.243075,
+   "longitude": 19.841009,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/8228565597",
+   "updated": null
+  },
+  {
+   "id": "osm-n8278064838",
+   "name": "Porsche - punjač za električna vozila",
+   "address": "",
+   "latitude": 43.723681,
+   "longitude": 19.703039,
+   "operator": null,
+   "operatorName": "Porsche",
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/8278064838",
+   "updated": null
+  },
+  {
+   "id": "osm-n8405248202",
+   "name": "Belgrade Supercharger",
+   "address": "",
+   "latitude": 44.71004,
+   "longitude": 20.561059,
+   "operator": "tesla",
+   "operatorName": "Tesla",
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/8405248202",
+   "updated": null
+  },
+  {
+   "id": "osm-n8598316554",
+   "name": "Charge&GO - BS Gazprom Stari Banovci",
+   "address": "",
+   "latitude": 44.971226,
+   "longitude": 20.233511,
+   "operator": "nis",
+   "operatorName": "Gazprom",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/8598316554",
+   "updated": null
+  },
+  {
+   "id": "osm-n8804816304",
+   "name": "Bikeep",
+   "address": "",
+   "latitude": 44.821254,
+   "longitude": 20.454177,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/8804816304",
+   "updated": null
+  },
+  {
+   "id": "osm-n8813850644",
+   "name": "Charge&GO - BS Gazprom Sokolići",
+   "address": "",
+   "latitude": 43.937385,
+   "longitude": 20.400193,
+   "operator": "nis",
+   "operatorName": "Gazprom",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/8813850644",
+   "updated": null
+  },
+  {
+   "id": "osm-n8813926899",
+   "name": "Charge&GO - BS Gazprom Novi Sad 16",
+   "address": "",
+   "latitude": 45.275753,
+   "longitude": 19.922139,
+   "operator": "nis",
+   "operatorName": "Gazprom",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/8813926899",
+   "updated": null
+  },
+  {
+   "id": "osm-n8821069016",
+   "name": "Charge&GO - TC Promenada Novi Sad",
+   "address": "",
+   "latitude": 45.245712,
+   "longitude": 19.843016,
+   "operator": "charge-and-go",
+   "operatorName": "charge&GO",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 5
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/8821069016",
+   "updated": null
+  },
+  {
+   "id": "osm-n8821114619",
+   "name": "Charge&GO - BS Gazprom Velika Plana",
+   "address": "",
+   "latitude": 44.345325,
+   "longitude": 21.078353,
+   "operator": "nis",
+   "operatorName": "Gazprom",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/8821114619",
+   "updated": null
+  },
+  {
+   "id": "osm-n8821129797",
+   "name": "Charge&Go - Big Fashion Kragujevac",
+   "address": "",
+   "latitude": 44.00894,
+   "longitude": 20.896175,
+   "operator": "charge-and-go",
+   "operatorName": "charge&GO",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 5
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/8821129797",
+   "updated": null
+  },
+  {
+   "id": "osm-n8862662345",
+   "name": "Aleksinac Supercharger",
+   "address": "",
+   "latitude": 43.528865,
+   "longitude": 21.709347,
+   "operator": "tesla",
+   "operatorName": "Tesla",
+   "connectors": [
+    {
+     "type": "tesla",
+     "current": "dc",
+     "powerKW": 150.0,
+     "count": 4
+    },
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 130.0,
+     "count": 4
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/8862662345",
+   "updated": null
+  },
+  {
+   "id": "osm-n8936385452",
+   "name": null,
+   "address": "",
+   "latitude": 44.78648,
+   "longitude": 20.419086,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/8936385452",
+   "updated": null
+  },
+  {
+   "id": "osm-n9249259411",
+   "name": null,
+   "address": "",
+   "latitude": 43.133663,
+   "longitude": 22.607317,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/9249259411",
+   "updated": null
+  },
+  {
+   "id": "osm-n9270518764",
+   "name": null,
+   "address": "",
+   "latitude": 44.811239,
+   "longitude": 20.463169,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/9270518764",
+   "updated": null
+  },
+  {
+   "id": "osm-n9630355880",
+   "name": "Etrel",
+   "address": "",
+   "latitude": 43.61763,
+   "longitude": 20.885731,
+   "operator": null,
+   "operatorName": "Etrel",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/9630355880",
+   "updated": null
+  },
+  {
+   "id": "osm-n9676497940",
+   "name": "Orion - Putevi Srbije auto-put BG-NIŠ",
+   "address": "",
+   "latitude": 43.390258,
+   "longitude": 21.801657,
+   "operator": "putevi-srbije",
+   "operatorName": "Putevi Srbije",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/9676497940",
+   "updated": null
+  },
+  {
+   "id": "osm-n9676497954",
+   "name": "Orion - Putevi Srbije auto-put NIŠ-BG",
+   "address": "",
+   "latitude": 43.390435,
+   "longitude": 21.802214,
+   "operator": "putevi-srbije",
+   "operatorName": "Putevi Srbije",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/9676497954",
+   "updated": null
+  },
+  {
+   "id": "osm-n9683482215",
+   "name": null,
+   "address": "",
+   "latitude": 43.012408,
+   "longitude": 22.777123,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/9683482215",
+   "updated": null
+  },
+  {
+   "id": "osm-n9720396261",
+   "name": null,
+   "address": "",
+   "latitude": 43.324568,
+   "longitude": 21.909747,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/9720396261",
+   "updated": null
+  },
+  {
+   "id": "osm-n9720423282",
+   "name": null,
+   "address": "",
+   "latitude": 43.324557,
+   "longitude": 21.90947,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/9720423282",
+   "updated": null
+  },
+  {
+   "id": "osm-n9720436756",
+   "name": null,
+   "address": "",
+   "latitude": 43.324562,
+   "longitude": 21.909593,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/9720436756",
+   "updated": null
+  },
+  {
+   "id": "osm-n9720452170",
+   "name": null,
+   "address": "",
+   "latitude": 43.324575,
+   "longitude": 21.909902,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/9720452170",
+   "updated": null
+  },
+  {
+   "id": "osm-n9982302929",
+   "name": "ProCredit Bank",
+   "address": "",
+   "latitude": 43.339202,
+   "longitude": 21.923476,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/9982302929",
+   "updated": null
+  },
+  {
+   "id": "osm-n9991658957",
+   "name": null,
+   "address": "",
+   "latitude": 43.323886,
+   "longitude": 21.930363,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/node/9991658957",
+   "updated": null
+  },
+  {
+   "id": "osm-w1393014271",
+   "name": null,
+   "address": "",
+   "latitude": 44.814608,
+   "longitude": 20.251929,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/way/1393014271",
+   "updated": null
+  },
+  {
+   "id": "osm-w1451968119",
+   "name": "Charge&Go",
+   "address": "",
+   "latitude": 44.865742,
+   "longitude": 20.345898,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 240.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/way/1451968119",
+   "updated": null
+  },
+  {
+   "id": "osm-w1484707444",
+   "name": null,
+   "address": "",
+   "latitude": 45.764332,
+   "longitude": 19.125167,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/way/1484707444",
+   "updated": null
+  },
+  {
+   "id": "osm-w431468548",
+   "name": "Charge&GO - OMV Ada Ciganlija",
+   "address": "",
+   "latitude": 44.784279,
+   "longitude": 20.4131,
+   "operator": "charge-and-go",
+   "operatorName": "Charge&Go",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/way/431468548",
+   "updated": null
+  },
+  {
+   "id": "osm-w956048412",
+   "name": null,
+   "address": "",
+   "latitude": 44.962675,
+   "longitude": 20.239805,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [],
+   "access": "public",
+   "url": "https://www.openstreetmap.org/way/956048412",
+   "updated": null
+  }
+ ]
+}

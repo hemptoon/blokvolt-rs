@@ -1,43 +1,46 @@
 ---
 title: Dnevnik izmena
+h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
-lead: Svaka ispravka i svako veće ažuriranje ostavljaju trag ovde. Najnovije je na vrhu.
+lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
 updated: 23.09.2026
 path: /izmene/
 published: 2026-09-22
 modified: 2026-09-23
 priority: 0.3
-disclaimer: Nedostaje nešto u dnevniku? Pišite na
+disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 23. septembar 2026
 
-- Nove stranice po zemljama na engleskom na <a href="https://blokvolt.com/">blokvolt.com</a>: Crna Gora, BiH, Severna Makedonija, Hrvatska i Slovenija — firme koje prodaju i ugrađuju kućne punjače (iste kolone za sve), javno punjenje i cene, cene struje za domaćinstva, subvencije i pravila za punjač u zgradi, sa izvorima i datumima. Na stranici <a href="/javno-punjenje/region/">punjenje u regionu</a> ispravljen je red za Hrvatsku: poziv FZOEU za 2026. je zatvoren i bio je samo za obrtnike i firme.
-- Sajt je sada i na <a href="/en/">engleskom</a> i <a href="/ru/">ruskom</a>: sve stranice, meni, tabele, pretraga i kalkulatori. Prevod se pravi iz srpskih stranica pri svakoj izmeni sajta, pa su brojevi, cene i datumi isti na sva tri jezika. Imena firmi, modela i propisa se ne prevode, a CSV fajlovi za preuzimanje ostaju na srpskom. Na svakoj prevedenoj stranici je napomena sa linkom na srpski original, koji ostaje merodavan.
-- Registar firmi podeljen po tipu, sa posebnom stranicom za svaki: <a href="/firme/ugradnja-punjaca/">ugradnja punjača</a> (25 firmi koje ugradnju izričito nude na sajtu), <a href="/firme/prodaja-punjaca/">prodaja punjača</a> (30 prodavaca sa javnom cenom), <a href="/firme/distributeri-punjaca/">distributeri i brendovi</a> (11 distributera i spisak brendova iz registra, njih 41, sa firmama koje ih nude), <a href="/firme/solarni-integratori/">solar i punjač</a> i <a href="/firme/elektricari/">električari</a>. Uz svaku listu su pitanja koja vredi postaviti pre ugradnje ili kupovine. Na stranici svake firme sada piše i koje brendove nudi, a u CSV registru firmi je nova kolona „brendovi“.
-- Registar firmi proširen na 51: posle provere u pregledaču objavljeni su i <a href="/firme/tehnoducan/">Tehnodućan</a> (ABB Terra AC od 76.483 RSD), <a href="/firme/sirotin/">Sirotin Šabac</a> (Morek od 60.000 RSD sa PDV-om), <a href="/firme/schrack-technik/">Schrack Technik</a>, <a href="/firme/elektroleum/">Elektroleum</a>, <a href="/firme/elmik-inzenjering/">Elmik Inženjering</a> i <a href="/firme/tesla-sistemi-energetika/">Tesla sistemi (Energetika)</a>. Firme koje smo proverili, a na sajtu nemaju kućni punjač, navedene su na dnu <a href="/firme/#provereno-nije-u-registru">registra</a> sa razlogom.
-- Registar firmi proširen sa 42 na 45: posle provere tragova objavljeni su <a href="/firme/digital-hajdukovic/">Digital Hajduković</a> (Sombor, zidni punjači od 43.191 RSD sa PDV-om), <a href="/firme/jakov-sistem/">Jakov Sistem</a> (Beograd, ABB i Telwin) i <a href="/firme/network-shop-bazzar/">Bazzar</a> (marketplace). Njihove cene ušle su i u <a href="/podaci/wallbox-modeli/">tabelu wallbox modela</a> — sada 57 cena kod 23 prodavca. Tragovi koji ne prodaju kućne punjače (ProCharge, Energize, Gramper, Lampomanija, Big Bang, AZ Group) proverom su odbačeni i ostaju neobjavljeni.
-- Novo: <a href="/preuzimanje/">podaci za preuzimanje</a> — registar firmi, cene električnih automobila, cene wallbox uređaja, indeks cena javnog punjenja i mreže, sve kao CSV pod licencom CC BY 4.0. Uz svaki red ide link na izvor i datum provere.
-- Stranice po gradu proširene: uz <a href="/gradovi/beograd/">Beograd</a>, <a href="/gradovi/novi-sad/">Novi Sad</a> i <a href="/gradovi/nis/">Niš</a> dodati su <a href="/gradovi/subotica/">Subotica</a>, <a href="/gradovi/cacak/">Čačak</a> i <a href="/gradovi/kragujevac/">Kragujevac</a>. Svaka sada pokazuje i firme koje grad pokrivaju sa strane (po pokrivenosti koju same objavljuju), mreže javnog punjenja koje taj grad navode i sate niže tarife EPS-a za taj deo Srbije. Firma sa dva sedišta sada se pojavljuje na obe gradske stranice.
-- Na stranici <a href="/podaci/cene-elektricnih-automobila/">cene električnih automobila</a> uz svaki model stoji i fotografija — 64 slike sa Wikimedia Commonsa, pod slobodnim licencama, sa uklonjenom pozadinom i svedene na istu veličinu; autori i licence su na dnu stranice. Slike su ilustrativne i ne prikazuju obavezno verziju iz cenovnika.
+- Nov izgled sajta i mapa javnih punjača sa cenama; tekstovi skraćeni.
+- Logotipi firmi i mreža. Državni punjači na autoputevima: stanje svakog punjača po spisku JP „Putevi Srbije“ (radi 24 od 36), ispravljene snage (DC 40–120 kW) i sedam lokacija dodato na mapu.
+- Nove stranice na engleskom na [blokvolt.com](https://blokvolt.com/): Crna Gora, BiH, Severna Makedonija, Hrvatska i Slovenija; ispravljen podatak o subvenciji u Hrvatskoj.
+- Sajt je dostupan i na engleskom i ruskom, sa pretragom i kalkulatorima; merodavan je srpski original.
+- Registar firmi podeljen po tipu (ugradnja, prodaja, distributeri, solarni integratori, električari); na stranici firme su i brendovi.
+- Registar proširen na 51 firmu (Tehnodućan, Sirotin, Schrack Technik, Elektroleum, Elmik Inženjering, Tesla sistemi); dodat spisak neuvrštenih firmi sa razlogom.
+- Registar proširen sa 42 na 45 firmi (Digital Hajduković, Jakov Sistem, Bazzar); tabela wallbox modela ima 57 cena.
+- Novo: [podaci za preuzimanje](/preuzimanje/), pet CSV tabela pod licencom CC BY 4.0, uz izvor i datum za svaki red.
+- Gradske stranice: nove Subotica, Čačak i Kragujevac; na svima su i firme sa strane, javno punjenje i sati niže tarife.
+- Na stranici o cenama električnih automobila dodate su 64 fotografije sa Wikimedia Commonsa, pod slobodnim licencama.
 - U zaglavlju je dodat izbor jezika (srpski, engleski, ruski).
-- Nova <a href="/pretraga/">pretraga sajta</a> (radi bez servera, pretražuje sve stranice) i blok „poslednje provere“ na početnoj — koja stranica je kada proverena i kada joj je sledeća provera.
-- Novi alat: <a href="/alati/racun-u-zgradi/">ko koliko plaća punjenje u zgradi</a> — koliko stanari bez automobila plate tuđe punjenje kad punjač visi na zajedničkom brojilu, koliko od toga pokriva paušal i za koliko meseci se vrati overeno brojilo (cene opreme 21.097–22.999 RSD iz registra).
-- Nova stranica: <a href="/podaci/wallbox-modeli/">wallbox modeli i cene</a> — 45 javno objavljenih cena uređaja kod 20 prodavaca, poređanih po snazi, sa napomenom o PDV-u i kablu, i poređenjem cena istog modela kod različitih prodavaca.
-- Nova stranica: <a href="/podaci/tarife-eps/">cene struje za domaćinstva</a> — regulisane cene EPS-a po zonama i tarifama sa svim naknadama, akcizom i PDV-om, sati niže tarife po regionima (Beograd 24–8, Vojvodina 23–7, centralna Srbija 22–6, izvor Elektrodistribucija Srbije) i računica šta električni auto dodaje na račun. Cene provereno uz drugi izvor (Danas, 01.10.2025).
-- Novi meni: padajuće sekcije <strong>Firme</strong>, <strong>Javno punjenje</strong>, <strong>Podaci</strong> i <strong>Vodiči</strong> sa svim stranicama na jednom mestu, plus prečica do kalkulatora. Na telefonu meni radi kao klizne kartice.
+- Nova [pretraga sajta](/pretraga/) i blok „poslednje provere“ na početnoj strani.
+- Novi alat „Ko koliko plaća punjenje u zgradi“: tuđe punjenje na zajedničkom brojilu i za koliko se isplati overeno brojilo.
+- Nova stranica „Wallbox modeli i cene“: 45 javnih cena uređaja kod 20 prodavaca, poređanih po snazi.
+- Nova stranica „Cene struje za domaćinstva“: cene EPS-a po zonama, sati niže tarife i koliko auto dodaje na račun.
+- Novi meni sa padajućim sekcijama Firme, Javno punjenje, Podaci i Vodiči i prečicom do kalkulatora.
 
 ## 22. septembar 2026
 
-- Novo: <a href="/alati/kalkulator-troskova/">kalkulator troškova</a> — punjenje kod kuće po tarifama EPS-a (sa naknadama, akcizom i PDV-om), javni punjači po cenama sa računa, poređenje sa benzinom i dizelom po zvaničnim cenama goriva. Kalkulator je dodat u glavni meni.
-- Nove stranice: <a href="/podaci/cene-elektricnih-automobila/">cene električnih automobila</a> (66 modela 17 marki sa cenom kod uvoznika, računica posle subvencije, uvoznici i saloni), <a href="/podaci/rent-a-car-i-car-sharing/">iznajmljivanje električnog automobila</a> (rent-a-car, car-sharing, taksi, dugoročni najam) i <a href="/javno-punjenje/region/">punjenje u regionu</a> (Hrvatska, Mađarska, Severna Makedonija, BiH, Crna Gora: cene, plaćanje, srpske aplikacije, brzi punjači na putu).
-- <a href="/javno-punjenje/#cene">Indeks cena javnog punjenja</a>: cene iz aplikacija Charge&GO, Orion eMobility i Emobility Spectra (snimci ekrana redakcije, 22.09.2026) i četiri računa iz aplikacije Charge&GO. Stariji zapisi korisnika i medija (2021–2025) premešteni su u istoriju cena na karticama mreža. Dodato upozorenje da isti punjač u različitim aplikacijama ima različitu cenu (roming Charge&GO u Orionu) i opis obračuna po „jedinici punjenja“ kod Emobility Spectra.
-- Nove stranice u rubrici Podaci: <a href="/podaci/registracija-i-porezi/">registracija i porezi</a>, <a href="/podaci/osiguranje-elektricnog-automobila/">osiguranje</a>, <a href="/podaci/krediti-i-lizing/">krediti i lizing</a>, <a href="/podaci/uvoz-i-carina/">uvoz i carina</a>, <a href="/podaci/servisi-za-elektricne-automobile/">servisi</a>. Ispravljeni linkovi ka izvorima na stranicama o subvencijama i statistici.
-- Novi razdel <a href="/javno-punjenje/">Javno punjenje</a>: kartice 11 mreža, aplikacija i domaćina (Charge&GO, Orion eMobility, JP „Putevi Srbije“, Tesla, OMV, EasyPark, NIS/Gazprom, Emobility Spectra, eDrive, Lidl eCharge, Parking servis Beograd), indeks poslednjih javno zabeleženih cena sa računicom po kWh, <a href="/javno-punjenje/besplatni-punjaci/">besplatni punjači</a> i propisi (čl. 210v Zakona o energetici, nacrt zakona o infrastrukturi za alternativna goriva). Metodologija dopunjena pravilima za cene javnog punjenja.
-- Sajt preuređen u vodič kroz električne automobile u Srbiji: nova početna strana, registar firmi, stranice po gradovima (Beograd, Novi Sad, Niš), rubrika Podaci, metodologija, ispravke, dnevnik izmena. Vodiči su na <a href="/vodici/">/vodici/</a>, adrese pojedinačnih vodiča nepromenjene.
-- Registar firmi proširen sa 20 na 42: dodati Orion eMobility, ProVision, Voltech, SP Solar, IT-Home, Andreja (solar-shop.rs), WISE Smart Home, Elektronapon, Elektro Centar Nais, EP Solutions, Praktiker (elektrowebshop.rs), Union Electronics/AVTERA, MDA E-Technology, EV Charging Solutions, Energy Net, Veming, OBD2 (evchargers.rs), KiBOST Car, Eko-Term, Conseko, Električar Niš, Handyman. Još 16 tragova čeka proveru i nije objavljeno.
-- Tabela cena: nova grupa „samo ugradnja — električari“; Telefon inženjering prebačen u grupu sa javnom cenom uređaja (web-shop solarni-paneli.co.rs); ElektroMil prebačen u grupu električara; ChargeGo označen kao isto pravno lice sa mrežom Charge&GO. Provera cena STASANET i ChargeGo 22.09.2026 — bez promena.
-- Nove stranice: <a href="/podaci/subvencije-2026/">subvencije 2026</a>, <a href="/podaci/statistika-ev-srbija/">statistika EV u Srbiji</a>, <a href="/podaci/putarina-i-parking/">putarina, parking i porez</a>.
+- Novo: [kalkulator troškova](/alati/kalkulator-troskova/) za punjenje kod kuće i na javnim punjačima, uz poređenje sa benzinom i dizelom.
+- Nove stranice: cene električnih automobila (66 modela, 17 marki), iznajmljivanje električnog automobila i punjenje u regionu.
+- Indeks cena javnog punjenja: cene iz aplikacija Charge&GO, Orion eMobility i Emobility Spectra i sa četiri računa.
+- Nove stranice u Podacima: registracija i porezi, osiguranje, krediti i lizing, uvoz i carina, servisi; ispravljeni linkovi ka izvorima.
+- Novi razdel [Javno punjenje](/javno-punjenje/): kartice 11 mreža, aplikacija i domaćina, indeks cena, besplatni punjači i propisi.
+- Sajt preuređen u vodič kroz električne automobile u Srbiji: registar firmi, gradske stranice, rubrika Podaci; adrese vodiča nepromenjene.
+- Registar firmi proširen sa 20 na 42; još 16 tragova čeka proveru i nije objavljeno.
+- Tabela cena: nova grupa „samo ugradnja — električari“, dve firme premeštene; cene STASANET i ChargeGo bez promena.
+- Nove stranice: subvencije 2026, statistika EV u Srbiji, putarina, parking i porez.
 
 ## 7–8. septembar 2026
 

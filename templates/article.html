@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
+{% from '_macros.html' import pagehead, sources as src_block, promo %}
 {% block ogtype %}article{% endblock %}
-{% block jsonld %}<script type="application/ld+json">{
+{% block jsonld %}{% if not noindex %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
-  {"@type": "Article", "headline": {{ meta.title|tojson }}, "description": {{ description|tojson }}, "inLanguage": "sr-Latn", "url": "{{ SITE }}{{ path }}", "datePublished": "{{ meta.published or '2026-09-22' }}", "dateModified": "{{ meta.modified or '2026-09-22' }}", "author": {"@type": "Organization", "name": "BlokVolt (tim Evolako)", "url": "{{ SITE }}/o-sajtu/"}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}, "isAccessibleForFree": true},
-  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}{% if crumb %}, {"@type": "ListItem", "position": 2, "name": {{ crumb[0]|tojson }}, "item": "{{ SITE }}{{ crumb[1] }}"}{% endif %}, {"@type": "ListItem", "position": {{ 3 if crumb else 2 }}, "name": {{ meta.title|tojson }}, "item": "{{ SITE }}{{ path }}"}]}
+  {"@type": "Article", "headline": {{ (meta.h1 or meta.title)|tojson }}, "description": {{ description|tojson }}, "inLanguage": "sr-Latn", "url": "{{ SITE }}{{ canon }}", "datePublished": "{{ meta.published or '2026-09-22' }}", "dateModified": "{{ meta.modified or '2026-09-23' }}", "author": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/o-sajtu/"}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}, "isAccessibleForFree": true},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}{% for href, name in crumbs %}{% if href %}, {"@type": "ListItem", "position": {{ loop.index + 1 }}, "name": {{ name|tojson }}, "item": "{{ SITE }}{{ href }}"}{% endif %}{% endfor %}, {"@type": "ListItem", "position": {{ (crumbs|length) + 2 }}, "name": {{ (meta.h1 or meta.title)|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
  ]
-}</script>{% endblock %}
-{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">{{ meta.kicker or 'Podaci' }}{% if meta.updated %} · ažurirano {{ meta.updated }}{% endif %}</div><h1>{{ meta.title }}</h1>{% if meta.lead %}<p>{{ meta.lead }}</p>{% endif %}<div class="v3-meta">{% if meta.updated %}<span>Provereno {{ meta.updated }}</span>{% endif %}{% if meta.next_check %}<span>Sledeća provera: {{ meta.next_check }}</span>{% endif %}<span>Svaka brojka sa izvorom</span></div></div></div>{% endblock %}
-{% block content %}<div class="bva"><div class="w3">
+}</script>{% endif %}{% endblock %}
+{% block pagehead %}{{ pagehead(meta.h1 or meta.title, meta.lead, crumbs) }}{% endblock %}
+{% block content %}<div class="prose">
 {{ body|safe }}
-{% if sources %}
-<h2>Izvori</h2>
-<ul class="bva-src">{% for s in sources %}{% set parts = s.split(' :: ') %}<li>{% if parts|length > 1 %}<a href="{{ parts[1] }}" rel="noopener">{{ parts[0] }}</a>{% else %}{{ s }}{% endif %}</li>{% endfor %}</ul>
-{% endif %}
-{% if meta.kicker != 'Greška 404' %}<p class="bva-disc">{{ meta.disclaimer or 'Tekst je pripremljen uz pomoć AI alata; činjenice, iznose i izvore proverila je redakcija BlokVolta. Nije pravni ni finansijski savet — za sopstveni slučaj proverite izvor. Grešku ili promenu propisa prijavite na' }} <a href="/ispravka/">stranici za ispravke</a>.</p>{% endif %}
-</div></div>{% endblock %}
+{% if promo_box %}{{ promo(promo_box.text, promo_box.href, promo_box.link) }}{% endif %}
+{{ src_block(sources) }}
+{% if meta.updated %}<p class="upd">Ažurirano {{ meta.updated }}{% if meta.next_check %} · sledeća provera {{ meta.next_check }}{% endif %} · <a href="/ispravka/">Prijavite grešku</a></p>{% endif %}
+</div>
+{% if related %}<div class="sec"><div class="sec-head"><h2>Povezano</h2></div><div class="tiles">{% for r in related %}<a class="tile" href="{{ r.path }}"><h3>{{ r.h1 or r.title }}</h3><p>{{ r.lead }}</p></a>{% endfor %}</div></div>{% endif %}
+{% endblock %}

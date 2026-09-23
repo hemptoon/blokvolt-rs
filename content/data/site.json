@@ -6,15 +6,18 @@
  "home_stats": [
   {
    "b": "7.155",
-   "html": "električnih automobila u Srbiji (MUP, april 2026) — uz 55.184 hibrida"
+   "html": "električnih automobila u Srbiji (MUP, april 2026) — uz 55.184 hibrida",
+   "short": "električnih automobila u Srbiji (MUP, april 2026)"
   },
   {
    "b": "535",
-   "html": "novih električnih automobila registrovanih u prvoj polovini 2026 — <strong>+232 %</strong> (SAUVD)"
+   "html": "novih električnih automobila registrovanih u prvoj polovini 2026 — <strong>+232 %</strong> (SAUVD)",
+   "short": "novih registrovano u prvoj polovini 2026, +232 %"
   },
   {
-   "b": "~220",
-   "html": "javno dostupnih punjača u celoj Srbiji; državnih na autoputevima 36, i besplatni su — <a href=\"/javno-punjenje/\">mreže i cene</a>"
+   "b": "auto:putevi",
+   "html": "",
+   "short": ""
   }
  ],
  "news": [

@@ -70,5 +70,11 @@
  "notes": "AVA Shopping Park najavljuje još 10 Supercharger mesta i „nekoliko generičkih“ punjača za druge marke (bez datuma).",
  "card": "2 Supercharger lokacije · do 250 kW",
  "kind_label": "Operator mreže + aplikacija",
- "publish": true
+ "publish": true,
+ "short_name": "Tesla",
+ "lead": "Supercharger u Beogradu (AVA Shopping Park) i Aleksincu i punjači u četiri hotela. Cenu za Srbiju Tesla ne objavljuje.",
+ "network_short": "2 Supercharger lokacije, 4 hotela",
+ "power_short": "DC do 250 kW",
+ "billing_short": "Kroz Tesla nalog; cena za Srbiju nije objavljena.",
+ "payment_short": "Tesla aplikacija"
 }

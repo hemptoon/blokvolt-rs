@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import pagehead, sources as src_block %}
+{% block ogtype %}article{% endblock %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "Article", "headline": {{ h1|tojson }}, "description": {{ description|tojson }}, "inLanguage": "sr-Latn", "url": "{{ SITE }}{{ canon }}", "datePublished": "2026-09-07", "dateModified": "{{ checked_iso }}", "author": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/o-sajtu/"}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "ItemList", "name": "Firme sa javnom cenom punjača", "itemListElement": [{% for f in firms %}{"@type": "ListItem", "position": {{ loop.index }}, "url": "{{ SITE }}{{ f.url }}", "name": {{ f.name|tojson }}}{{ ',' if not loop.last }}{% endfor %}]},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Cene", "item": "{{ SITE }}/cene/"}, {"@type": "ListItem", "position": 3, "name": {{ h1|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
+ ]
+}</script>{% endblock %}
+{% block pagehead %}{{ pagehead(h1, lead, crumbs=[('/cene/', 'Cene')]) }}{% endblock %}
+{% block content %}
+<div class="stats">{% for s in stats %}<div class="stat"><b>{{ s.b }}</b><span>{{ s.t }}</span></div>{% endfor %}</div>
+<div class="sec"><div class="sec-head"><h2>Firme sa javnom cenom</h2><a href="/firme/">Sve firme →</a></div>
+{% include '_firm_list.html' %}
+</div>
+<div class="sec faq"><div class="sec-head"><h2>Pitanja</h2></div>
+<details><summary>Šta ulazi u cenu ugradnje?</summary>
+<p>Poseban vod od razvodne table do punjača, automatski osigurač i FID zaštita (tip A uz detekciju DC struje od 6 mA u punjaču, ili tip B), rad električara i merenje instalacije sa atestom. „Standardna ugradnja“ obično znači kratak vod do table; duži kabl, kopanje ili nova tabla plaćaju se posebno.</p>
+</details>
+<details><summary>Koliko košta sama ugradnja?</summary>
+<p>{{ install_note }}</p>
+</details>
+<details><summary>Zašto su cene toliko različite?</summary>
+<p>Firme u cenu stavljaju različite stvari: neke samo uređaj, neke uređaj sa ugradnjom, retke i brojilo, atest i papire za zgradu. Deo cena je bez PDV-a ili u evrima. Uređaj od 11 kW sa aplikacijom i evropskim brendom košta više od osnovnog, a snaga (7,4, 11 ili 22 kW) cenu menja manje nego brend.</p>
+</details>
+<details><summary>Šta pitati pre nego što prihvatite ponudu?</summary>
+<ul>
+<li>Da li je cena sa PDV-om i šta tačno ulazi u „standardnu ugradnju“.</li>
+<li>Koja zaštita se ugrađuje i da li dobijate atest.</li>
+<li>Ko meri struju ako punite u zgradi ili tuđoj garaži (<a class="lnk" href="/ko-placa-struju-za-punjenje">ko plaća struju</a>).</li>
+<li>Kolika je garancija na uređaj, a kolika na radove.</li>
+</ul>
+</details>
+<details><summary>Kako se čita spisak</summary>
+<p>Cene su prepisane sa sajtova firmi, sa datumom provere na stranici svake firme. Prikazana je najniža objavljena cena. Firme bez javne cene su na stranici <a class="lnk" href="/firme/">firme</a>. Cene samih uređaja po modelu: <a class="lnk" href="/podaci/wallbox-modeli/">wallbox modeli</a>.</p>
+</details>
+</div>
+{{ src_block(src_items) }}
+<p class="upd">Provereno {{ FIRMS_CHECKED }} · <a href="/ispravka/">Prijavite grešku</a></p>
+{% endblock %}

@@ -93,32 +93,32 @@ for b in DATA['brands']:
         if m.get('price_includes_subsidy') is True:
             after = promo or reg
             base = after + SUB
-            price_cell = f'{eur(base)}<small class="chk">računica: uvoznik objavljuje {eur(after)} sa uračunatom subvencijom</small>'
-            after_cell = f'{eur(after)}<small class="chk">cena uvoznika</small>'
+            price_cell = f'{eur(base)}<small>računica: uvoznik objavljuje {eur(after)} sa uračunatom subvencijom</small>'
+            after_cell = f'{eur(after)}<small>cena uvoznika</small>'
         elif brand == 'Ford' and promo and reg and reg - promo == SUB:
             base = reg
-            price_cell = f'{eur(reg)}<small class="chk">u cenovniku i „akcijska cena“ {eur(promo)}</small>'
-            after_cell = f'{eur(reg - SUB)}<small class="chk">= akcijska cena; cenovnik ne kaže da li je to subvencija</small>'
+            price_cell = f'{eur(reg)}<small>u cenovniku i „akcijska cena“ {eur(promo)}</small>'
+            after_cell = f'{eur(reg - SUB)}<small>= akcijska cena; cenovnik ne kaže da li je to subvencija</small>'
         elif promo and reg and brand == 'Toyota':
             base = reg
-            price_cell = f'{eur(reg)}<small class="chk">u cenovniku i {eur(promo)} — proverite uslove</small>'
+            price_cell = f'{eur(reg)}<small>u cenovniku i {eur(promo)} — proverite uslove</small>'
             after_cell = eur(reg - SUB)
         elif promo and reg:
             base = promo
-            price_cell = f'{eur(promo)}<small class="chk">akcija; redovna {eur(reg)}</small>'
+            price_cell = f'{eur(promo)}<small>akcija; redovna {eur(reg)}</small>'
             after_cell = eur(promo - SUB)
         else:
             base = reg or promo
             price_cell = eur(base)
             after_cell = eur(base - SUB)
         if brand == 'Toyota' and model == 'bZ4X':
-            price_cell += '<small class="chk">na naslovnoj toyota.rs: 39.990 €</small>'
+            price_cell += '<small>na naslovnoj toyota.rs: 39.990 €</small>'
         vat = m.get('vat') or ''
         kind = 'cenovnik' if m.get('source_type') == 'pricelist_pdf' else 'sajt uvoznika'
         date = DATES.get((brand, model), f'provereno {CHECKED}')
-        src = f'[{kind}]({m["url"]})<small class="chk">{date}' + ('; PDV nije naveden' if vat == 'nije navedeno' else '') + '</small>'
+        src = f'[{kind}]({m["url"]})<small>{date}' + ('; PDV nije naveden' if vat == 'nije navedeno' else '') + '</small>'
         model_cell = ('<span class="evm">' + thumb(brand, model, name) + '<span class="evm-t">' + name
-                      + (f'<small class="chk">{ver}</small>' if ver else '') + '</span></span>')
+                      + (f'<small>{ver}</small>' if ver else '') + '</span></span>')
         rows.append((base, model_cell, price_cell, after_cell, src, brand, name, model))
 
 rows.sort(key=lambda r: (r[0], r[6]))
@@ -181,71 +181,69 @@ sources = [
 ]
 
 md = f"""---
-title: Cene električnih automobila u Srbiji 2026 — svi modeli kod uvoznika
-description: Početne cene {n_models} električnih modela {len(brands_priced)} marki, prepisane sa sajtova i cenovnika zvaničnih uvoznika — od {eur(cheapest[0])} (Dacia Spring), {under30} modela ispod 30.000 €. Cena posle subvencije od 5.000 €, uvoznici i gradovi sa salonima. Stanje {CHECKED}.
-kicker: Podaci · modeli i cene
-lead: Koliko košta nov električni automobil u Srbiji: najniža javno objavljena cena svakog modela, računica posle državne subvencije i gde se kupuje. Samo cene koje uvoznik objavljuje, sa linkom i datumom.
+title: Cene električnih automobila u Srbiji 2026: svi modeli kod uvoznika
+h1: Cene električnih automobila
+description: {n_models} električnih modela {len(brands_priced)} marki sa javnom cenom kod uvoznika u Srbiji: od {eur(cheapest[0])} (Dacia Spring), {under30} ispod 30.000 €. Cena pre i posle subvencije od 5.000 €.
+kicker: Modeli i cene
+lead: Najniža cena svakog električnog modela kod zvaničnih uvoznika u Srbiji, pre i posle subvencije od 5.000 €.
 updated: {CHECKED}
 next_check: {NEXT_CHECK}
 published: 2026-09-22
 modified: {MODIFIED}
 priority: 0.8
-disclaimer: Cene su informativne — važi ponuda prodavca na dan kupovine, a subvencija zavisi od raspoloživog budžeta. Tekst je pripremljen uz pomoć AI alata; cene je redakcija BlokVolta prepisala sa sajtova i cenovnika uvoznika {CHECKED}. Grešku ili novu cenu prijavite na
 sources: {' | '.join(sources)}
 ---
-<div class="bva-stats">
-<div class="bva-stat"><b>{eur(cheapest[0])}</b><span>najniža objavljena cena novog električnog automobila (Dacia Spring, cenovnik od 01.09.2026) — {eur(cheapest[0] - SUB)} posle subvencije</span></div>
-<div class="bva-stat"><b>{n_models}</b><span>modela {len(brands_priced)} marki sa javnom cenom; {under30} ispod 30.000 € pre subvencije</span></div>
-<div class="bva-stat"><b>5.000 €</b><span>državna subvencija za nov električni automobil, zahtevi preko eUprave do 01.12.2026 — dok ima novca u budžetu</span></div>
+<div class="sum" markdown="1">
+- Najjeftiniji: **{eur(cheapest[0])}** (Dacia Spring), posle subvencije **{eur(cheapest[0] - SUB)}**
+- **{n_models}** modela {len(brands_priced)} marki sa javnom cenom, **{under30}** ispod 30.000 €
+- Subvencija **5.000 €** za nov automobil, prijava do **1. decembra 2026.** ([uslovi](/podaci/subvencije-2026/))
 </div>
-
-## Kako čitati tabelu
-
-„Cena od“ je najniža cena modela koju uvoznik objavljuje na svom sajtu ili u cenovniku, uglavnom sa PDV-om (gde stranica PDV ne pominje, to piše uz izvor). Ako uvoznik prikazuje cenu već umanjenu za subvenciju — kao Kia za EV3 i Niro EV i JMEV za Elight — vratili smo 5.000 € da bi cene bile uporedive, a objavljenu cenu naveli smo ispod. „Posle subvencije“ je naša računica: cena od minus 5.000 €. Subvencija važi samo za nov automobil, a budžet za 2026. je ograničen — uslovi i stanje su na stranici [subvencije 2026](/podaci/subvencije-2026/).
-
-Tabela je poređana po ceni pre subvencije. Ne ocenjujemo modele; domet i opremu proverite u konfiguratoru uvoznika. Fotografije su tu samo da se model brže prepozna — {plural(n_foto, 'slika', 'slike', 'slika')} sa Wikimedia Commonsa, pod slobodnim licencama, sa uklonjenom pozadinom i svedene na istu veličinu; sva vozila su snimljena spreda, pod uglom. Snimljene su na sajmovima i ulici, pa pojedini primerci imaju drugu opremu, felne ili boju od verzije u tabeli — to ne treba čitati iz slike. Autori i licence su [niže na stranici](#fotografije).
 
 ## Modeli i cene
 
+„Cena od“ je najniža cena koju uvoznik objavljuje, po pravilu sa PDV-om. Kad uvoznik objavi cenu već umanjenu za subvenciju, u tabeli je cena pre subvencije, a objavljena cena stoji ispod.
+
 {chr(10).join(table)}
 
-## Modeli bez javne cene
+<details markdown="1">
+<summary>Modeli bez javne cene</summary>
 
-Na srpskim sajtovima ovih marki električni modeli postoje, ali cenu nismo mogli da pročitamo — ili je nema, ili se učitava samo u konfiguratoru: **Audi** (Q4 e-tron, Q6 e-tron, A6 e-tron, e-tron GT), **Kia** (EV2, EV4, EV6, EV9 — cenovnici u PDF-u nisu javno dostupni), **Opel** (Astra, Frontera i Grandland Electric), **MG** (MG4, MG5, MGS5 EV), **Geely** (E5), **Volvo** (EX30, EX60, EX90), **Mazda** (6e, CX-6e), **Ford** Mustang Mach-E i **Leapmotor** (T03, B10, C10; na sajmu u martu 2026. T03 je prikazan po ceni od 17.490 € sa popustom, prema medijima — aktuelnost nismo potvrdili).
+Cenu na srpskom sajtu nije moguće pročitati za: **Audi** (Q4 e-tron, Q6 e-tron, A6 e-tron, e-tron GT), **Kia** (EV2, EV4, EV6, EV9), **Opel** (Astra, Frontera, Grandland Electric), **MG** (MG4, MG5, MGS5 EV), **Geely** (E5), **Volvo** (EX30, EX60, EX90), **Mazda** (6e, CX-6e), **Ford** Mustang Mach-E i **Leapmotor** (T03, B10, C10).
 
-Cupra Tavascan na srpskom sajtu „čeka homologaciju“, a Nissan trenutno ne prikazuje nijedan električni model. Za Suzuki (e Vitara) i Porsche (Taycan, Macan Electric) sajtovi na dan provere nisu bili dostupni. Za Changan/Deepal, Dongfeng, Voyah, BAIC, GWM, Chery/Omoda, Xpeng, Zeekr, Polestar i Smart nismo našli zvaničan srpski sajt sa električnim modelom i cenom — neki se prodaju preko pojedinačnih prodavaca.
+Cupra Tavascan „čeka homologaciju“, a Nissan ne prikazuje nijedan električni model. **Tesla** u Srbiji nema zvaničnog uvoznika; automobili stižu individualnim uvozom ([uvoz i carina](/podaci/uvoz-i-carina/)).
 
-**Tesla** u Srbiji nema zvaničnog uvoznika ni prodajni centar; automobili stižu individualnim uvozom (vidi [uvoz i carina](/podaci/uvoz-i-carina/)), a servis rade nezavisne radionice (vidi [servisi](/podaci/servisi-za-elektricne-automobile/)).
+</details>
 
-## Uvoznici i saloni
+<details markdown="1">
+<summary>Uvoznici i gradovi sa salonima</summary>
 
 {chr(10).join(imp)}
 
-Gradove smo prepisali sa lokatora prodavaca na sajtovima marki; spisak ovlašćenih servisa je na stranici [servisi za električne automobile](/podaci/servisi-za-elektricne-automobile/).
-
-## Šta se najviše prodaje
-
-Zvanična statistika po modelima za električne automobile nije javno objavljena. Po podacima SAUVD-a, u prvoj polovini 2026. u Srbiji je prvi put registrovano 535 novih električnih automobila (Auto Motorevija, 26.07.2026) — vidi [statistiku](/podaci/statistika-ev-srbija/). BYD kao uvoznik navodi da ima polovinu tog segmenta i da je Sealion 7 najprodavaniji električni model (podatak uvoznika, 23.07.2026).
-
-## Pre kupovine proverite
-
-Da li je cena „sa zaliha“ ili za naručivanje (Dacia Spring po najnižoj ceni je, prema cenovniku, samo iz zaliha), da li „akcijska cena“ već sadrži subvenciju, šta je uključeno (priprema vozila, registracija, kabl za punjenje) i koliko se čeka isporuka. Subvencija se može iskoristiti i kao učešće u finansijskom lizingu — vidi [krediti i lizing](/podaci/krediti-i-lizing/). Posle kupovine: [registracija i porezi](/podaci/registracija-i-porezi/) (porez na upotrebu se ne plaća) i [osiguranje](/podaci/osiguranje-elektricnog-automobila/).
-
-## Fotografije modela {{#fotografije}}
-
-Fotografije uz modele preuzete su sa [Wikimedia Commonsa](https://commons.wikimedia.org/) i objavljene su pod slobodnim licencama koje dozvoljavaju dalju upotrebu uz navođenje autora. Slike su smanjene i isečene, pozadina im je uklonjena i dodata je senka; izmenjene verzije dele licencu originala. Ilustrativne su: automobil na slici može biti druga verzija, godište ili tržište od modela u tabeli.
-
-<details class="bva-fotos"><summary>Autori i licence ({plural(n_foto, 'fotografija', 'fotografije', 'fotografija')})</summary>
-<ul class="bva-src">
-{credit_li}
-</ul>
 </details>
 
-## Povezano
+## Pre kupovine
 
-- [Subvencije 2026](/podaci/subvencije-2026/) — iznos, uslovi, rok 01.12.2026.
-- [Punjač kod kuće](/firme/) — ko prodaje i ugrađuje kućne punjače, po istim kolonama.
-- [Iznajmljivanje električnog automobila](/podaci/rent-a-car-i-car-sharing/) — ako želite da ga probate pre kupovine.
+- Pitajte da li je cena za auto sa zaliha ili za naručivanje i koliko se čeka isporuka.
+- Proverite da li „akcijska cena“ već sadrži subvenciju.
+- Subvencija može biti i učešće u lizingu ([krediti i lizing](/podaci/krediti-i-lizing/)).
+
+<details markdown="1">
+<summary>Šta se najviše prodaje</summary>
+
+Zvanična statistika po modelima nije objavljena. U prvoj polovini 2026. registrovano je 535 novih električnih automobila (SAUVD). BYD kao uvoznik navodi da ima polovinu tog segmenta i da je Sealion 7 najprodavaniji model. Više: [statistika](/podaci/statistika-ev-srbija/).
+
+</details>
+
+<details markdown="1">
+<summary>Fotografije: autori i licence ({plural(n_foto, 'fotografija', 'fotografije', 'fotografija')})</summary>
+
+Fotografije su sa Wikimedia Commonsa, pod slobodnim licencama; pozadina je uklonjena, a veličina ujednačena. Ilustrativne su: auto na slici može biti druga verzija modela.
+
+<ul>
+{credit_li}
+</ul>
+
+</details>
 """
 OUT.write_text(md, encoding='utf-8')
 print('written', OUT.name, n_models, 'models', len(brands_priced), 'brands; cheapest', cheapest[6], cheapest[0], 'under30', under30)

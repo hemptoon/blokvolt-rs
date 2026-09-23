@@ -95,7 +95,7 @@ def export_all(dist, site, published, operators, price_index, ev_data, wallbox, 
                        'pretpostavljena_snaga_kw', 'datum', 'izvor', 'pouzdanost', 'izvor_url'], rows))
 
     # 5. charging networks
-    rows = [[o['name'], o.get('kind_label', ''), o.get('coverage', ''), o.get('network', ''),
+    rows = [[o.get('legal', o['name']), o.get('kind_label', ''), o.get('coverage', ''), o.get('network', ''),
              o.get('payment', ''), o.get('card', ''), o.get('roaming', ''), o.get('support', ''),
              o.get('website', ''), o['verified']] for o in operators]
     out.append(_write(dist, 'blokvolt-mreze-javnog-punjenja.csv',

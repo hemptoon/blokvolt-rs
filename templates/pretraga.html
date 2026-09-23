@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
-{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Pretraga · ceo sajt</div><h1>Pretraga</h1><p>Sve stranice BlokVolta na jednom mestu: firme, cene punjača i modeli, javno punjenje i cene po kWh, subvencije, propisi, statistika i vodiči.</p>
-<form class="bv-search is--big" role="search" action="/pretraga/" method="get">
+{% from '_macros.html' import pagehead %}
+{% from '_icons.html' import ic %}
+{% block pagehead %}{% call pagehead('Pretraga') %}
+<form class="hero-form" role="search" action="/pretraga/" method="get" style="display:flex;gap:8px;max-width:640px;margin-top:14px">
 <label class="sr-only" for="q">Šta tražite?</label>
-<input type="search" id="q" name="q" placeholder="na primer: subvencija, brojilo, Novi Sad, Charge&amp;GO" autocomplete="off" autofocus>
-<button type="submit">Traži</button>
+<div class="search-box" style="flex:1">{{ ic('search') }}<input class="input" style="height:50px" type="search" id="q" name="q" placeholder="Subvencija, brojilo, Novi Sad, Charge&amp;GO…" autocomplete="off" autofocus></div>
+<button class="btn dark" type="submit">Traži</button>
 </form>
-<div class="v3-chips"><a href="/pretraga/?q=subvencija">subvencija</a><a href="/pretraga/?q=brojilo">brojilo</a><a href="/pretraga/?q=skupština">skupština</a><a href="/pretraga/?q=noćna+tarifa">noćna tarifa</a><a href="/pretraga/?q=besplatno">besplatno punjenje</a></div>
-</div></div>{% endblock %}
-{% block content %}<div class="bva"><div class="w3">
-<p id="s-status" class="bva-lead">Učitavanje…</p>
-<ul class="bv-results" id="s-results"></ul>
-<noscript><p>Pretraga radi uz JavaScript. Bez njega, krenite od <a href="/firme/">registra firmi</a>, <a href="/javno-punjenje/">javnog punjenja</a>, <a href="/podaci/">podataka</a> ili <a href="/vodici/">vodiča</a>.</p></noscript>
-</div></div>
-<script id="bv-i18n" type="application/json">{"hint": "Upišite pojam — pretražuje se {n} stranica.", "found": {"sr": ["rezultat za", "rezultata za", "rezultata za"], "en": ["result for", "results for", "results for"], "ru": ["результат по запросу", "результата по запросу", "результатов по запросу"]}, "none": "Nema rezultata za „{q}“. Probajte drugu reč ili krenite od registra firmi.", "down": "Pretraga trenutno nije dostupna. Probajte kasnije ili krenite od menija.", "q": {"sr": ["„", "“"], "en": ["“", "”"], "ru": ["«", "»"]}}</script>
+<div class="chips" style="margin-top:12px"><a class="chip" href="/pretraga/?q=subvencija">subvencija</a><a class="chip" href="/pretraga/?q=brojilo">brojilo</a><a class="chip" href="/pretraga/?q=skupština">skupština</a><a class="chip" href="/pretraga/?q=noćna+tarifa">noćna tarifa</a><a class="chip" href="/pretraga/?q=besplatno">besplatno punjenje</a></div>
+{% endcall %}{% endblock %}
+{% block content %}
+<p id="s-status" class="list-count">Učitavanje…</p>
+<div class="rows hits" id="s-results" hidden></div>
+<noscript><p>Pretraga radi uz JavaScript. Krenite od <a class="lnk" href="/mapa/">mape</a>, <a class="lnk" href="/firme/">firmi</a> ili <a class="lnk" href="/vodici/">vodiča</a>.</p></noscript>
+<script id="s-cfg" type="application/json">__SEARCH_URLS__</script>
+<script id="bv-i18n" type="application/json">{"hint": "Upišite pojam — pretražuje se {n} stranica.", "found": {"sr": ["rezultat za", "rezultata za", "rezultata za"], "en": ["result for", "results for", "results for"], "ru": ["результат по запросу", "результата по запросу", "результатов по запросу"]}, "none": "Nema rezultata za „{q}“. Probajte drugu reč.", "down": "Pretraga trenutno nije dostupna. Probajte kasnije.", "q": {"sr": ["„", "“"], "en": ["“", "”"], "ru": ["«", "»"]}}</script>
 <script>
 (function(){
  var input=document.getElementById('q'), out=document.getElementById('s-results'), status=document.getElementById('s-status'), data=null, timer=null;
@@ -40,18 +42,19 @@
  function run(){
   var q=input.value.trim();
   if(!data){return;}
-  if(!q){out.innerHTML=''; status.textContent=T.hint.replace('{n}',data.length); return;}
+  if(!q){out.innerHTML=''; out.hidden=true; status.textContent=T.hint.replace('{n}',data.length); return;}
   var words=norm(q).split(' ');
   var hits=data.map(function(it){return {it:it, sc:score(it,words)};}).filter(function(x){return x.sc>0;});
   hits.sort(function(a,b){return b.sc-a.sc;});
   var qq=tr(T.q); status.textContent = hits.length ? (hits.length+' '+pl(hits.length,tr(T.found))+' '+qq[0]+q+qq[1]) : T.none.replace('{q}',q);
   out.innerHTML = hits.slice(0,40).map(function(x){
    var it=x.it;
-   return '<li><a href="'+esc(it.u)+'"><span class="bv-r-t">'+esc(it.t)+'</span>'+(it.s?'<span class="bv-r-s">'+esc(it.s)+'</span>':'')+'<span class="bv-r-d">'+esc(it.d)+'</span></a></li>';
+   return '<a class="hit" href="'+esc(it.u)+'">'+(it.s?'<small>'+esc(it.s)+'</small>':'')+'<b>'+esc(it.t)+'</b><span>'+esc(it.d)+'</span></a>';
   }).join('');
+  out.hidden=!hits.length;
   if(history.replaceState){history.replaceState(null,'', PRE+'/pretraga/'+(q?('?q='+encodeURIComponent(q)):''));}
  }
- fetch('/assets/search'+(PRE?'-'+L:'')+'.json').then(function(r){return r.json();}).then(function(j){
+ fetch(JSON.parse(document.getElementById('s-cfg').textContent)[PRE?L:'sr']).then(function(r){return r.json();}).then(function(j){
   data=j;
   var p=new URLSearchParams(location.search).get('q');
   if(p){input.value=p;}

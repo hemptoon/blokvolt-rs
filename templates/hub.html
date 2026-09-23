@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import pagehead %}
+{% from '_icons.html' import ic %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "CollectionPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "ItemList", "itemListElement": [{% for g in groups %}{% set go = loop.last %}{% for it in g['items'] %}{"@type": "ListItem", "position": {{ it.pos }}, "url": "{{ SITE }}{{ it.href }}", "name": {{ it.name|tojson }}}{{ ',' if not (go and loop.last) }}{% endfor %}{% endfor %}]}
+ ]
+}</script>{% endblock %}
+{% block pagehead %}{{ pagehead(h1, lead) }}{% endblock %}
+{% block content %}
+{% for g in groups %}<div class="sec"{% if loop.first %} style="margin-top:6px"{% endif %}>{% if g.title %}<div class="sec-head"><h2>{{ g.title }}</h2></div>{% endif %}
+{% if g.tiles %}<div class="tiles">{% for it in g['items'] %}<a class="tile" href="{{ it.href }}"><span class="ic">{{ ic(it.icon) }}</span><h3>{{ it.name }}</h3><p>{{ it.desc }}</p></a>{% endfor %}</div>
+{% else %}<div class="rows">{% for it in g['items'] %}<a class="row" href="{{ it.href }}"><span class="lg mono" aria-hidden="true">{{ ic(it.icon) }}</span><div><h3>{{ it.name }}</h3><div class="sub">{{ it.desc }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>{% endif %}
+</div>{% endfor %}
+{% endblock %}

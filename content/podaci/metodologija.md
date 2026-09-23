@@ -1,56 +1,75 @@
 ---
-title: Metodologija — kako biramo, proveravamo i objavljujemo podatke
-description: Pravila po kojima BlokVolt objavljuje podatke o firmama, cenama i propisima — javni izvori, datum provere, iste kolone za sve, „ne pominje se“ umesto ocene, ispravke na zahtev.
+title: Metodologija — izvori podataka, provere i ispravke
+h1: Kako radimo
+description: Odakle su podaci o firmama i cenama javnog punjenja, koliko često se proveravaju, šta znači „Ne pominje se“ i kako se prijavljuje greška.
 kicker: O sajtu · metodologija
-lead: Sajt vodi firma koja i sama ugrađuje punjače. Zato pravila moraju da budu mehanička i javna — da poređenje vredi i onda kad vam ga pokažemo na sednici skupštine.
+lead: Podaci o firmama su sa njihovih javnih stranica, po istim pravilima za sve.
 updated: 22.09.2026
 path: /metodologija/
 published: 2026-09-22
 modified: 2026-09-22
 priority: 0.5
-disclaimer: Pitanja o metodologiji i primedbe šaljite na
+disclaimer: Primedbe na pravila prijavite na
 ---
-## Ko stoji iza sajta
+<div class="sum" markdown="1">
+- Firme: podaci sa **javnih stranica**, iste kolone za sve
+- Javno punjenje: cene iz **aplikacija mreža** i sa **računa**
+- Provera: firme **kvartalno**, cene javnog punjenja **mesečno**
+- **Bez ocena i rangiranja**
+</div>
 
-BlokVolt uređuje tim kompanije Evolako iz Novog Sada, koja prodaje i ugrađuje kućne punjače u Vojvodini i Beogradu. To je sukob interesa i ne krijemo ga: na svakoj stranici piše ko je autor, a Evolako je u svim tabelama i listama prikazan **po istim kolonama i istim pravilima** kao svaka druga firma, sa oznakom „naša ponuda“.
+## Firme
 
-## Odakle podaci o firmama
+Podaci o firmi su prepisani sa njene javne stranice, uz link i datum provere. Za svaku firmu važe iste kolone: javna cena, ugradnja, brojilo, papiri za skupštinu, usluga i garancija.
 
-1. **Samo javni izvori.** Sve što piše o firmi prepisano je sa njenog sajta ili sa javnog marketplace-a (eponuda, Bazzar), uz link i datum provere. Ne zovemo firme „tajno“ i ne objavljujemo ponude koje smo dobili kao kupci.
-2. **Cene doslovno.** Cena se prepisuje kako je objavljena, sa naznakom da li je sa PDV-om, bez PDV-a ili neoznačena. Ako je cena bila u evrima ili bez PDV-a, naš preračun stoji u zagradi (PDV 20 %, kurs 117,2 RSD/€).
-3. **„Ne pominje se“ nije ocena.** Znači samo da na sajtu firme te informacije nema. Usluga može da postoji — pitajte firmu.
-4. **Bez rangiranja, ocena i zvezdica.** Grupe u tabeli (javna cena sa ugradnjom, javna cena uređaja, samo uređaj, bez javne cene, samo ugradnja) opisuju šta je javno objavljeno, ne kvalitet.
-5. **Ista pitanja za sve:** javna cena, ugradnja, brojilo i obračun potrošnje, papiri za skupštinu, usluga i garancija. Ta pitanja biramo zato što po njima kupac zaista bira — i zato što na njih nijedna firma osim naše ne odgovara potvrdno u poslednje dve kolone; to smatramo važnim da čitalac vidi sam.
-6. **Firma ulazi u registar** kad na svojoj javnoj stranici jasno nudi prodaju ili ugradnju punjača fizičkim licima u Srbiji. Firme za koje to nismo mogli da potvrdimo (trag u pretrazi, mrtav sajt, samo marketplace) vodimo kao „na proveri“ i ne objavljujemo.
-7. **Ispravke i uklanjanje.** Svaka firma može da traži ispravku ili dopunu podataka, ili uklanjanje svog unosa — bez objašnjenja. Ispravke unosimo u roku od nekoliko dana i beležimo u <a href="/izmene/">dnevniku izmena</a>.
+**„Ne pominje se“** znači samo da na stranici firme te informacije nema. Usluga može da postoji, pa pitajte firmu.
+
+Izdvojena firma je označena kao „Izdvojeno“ i prikazana po istim kolonama kao ostale.
+
+<details markdown="1">
+<summary>Detalji o firmama</summary>
+
+- Cena se prepisuje doslovno, uz oznaku: sa PDV-om, bez PDV-a ili neoznačena. Ako je cena u evrima ili bez PDV-a, preračun stoji u zagradi (PDV 20 %, kurs 117,2 RSD/€).
+- U registar ulazi firma koja na svojoj javnoj stranici jasno nudi prodaju ili ugradnju punjača građanima u Srbiji. Nepotvrđene firme ostaju „na proveri“ i ne objavljuju se.
+- Grupe u tabeli (npr. javna cena sa ugradnjom, samo uređaj) opisuju šta je objavljeno, a ne kvalitet.
+- Ponude dobijene na upit, kao kupac, ne objavljuju se.
+- Poređenje sadrži samo javne i proverljive podatke, bez vrednosnih sudova (uslovi iz čl. 14 Zakona o oglašavanju).
+- Tabele su dostupne kao [CSV za preuzimanje](/preuzimanje/), pod licencom CC BY 4.0.
+- Logotipi su preuzeti sa sajtova firmi i mreža i služe samo da se firma lakše prepozna. Pripadaju svojim vlasnicima; na zahtev firme logotip se uklanja.
+
+</details>
 
 ## Javno punjenje
 
-Operateri javnih punjača u Srbiji ne objavljuju cenovnike na sajtu — cena se vidi u aplikaciji tek pre pokretanja punjenja. Zato cene u <a href="/javno-punjenje/">indeksu cena</a> čitamo iz aplikacija operatera (snimak ekrana redakcije, sa datumom) i sa računa za punjenja koja je redakcija platila; stariji zapisi iz medija i od korisnika (forumi, blogovi) ostaju na karticama mreža kao istorija cena. Uz svaku cenu stoje datum, izvor i oznaka pouzdanosti („primarni izvor (aplikacija)“, „primarni izvor (račun)“, „medij“, „korisnički podatak“). Preračun cene po minutu u cenu po kWh je naša računica i uz nju su navedene pretpostavke o prosečnoj snazi punjenja. Mreže, aplikacije i domaćine ne rangiramo; poređani su po tipu, ne po kvalitetu, a veličinu mreže navodimo onako kako je objavljuje operater. Snimke ekrana cene iz aplikacije sa datumom i lokacijom rado primamo preko <a href="/ispravka/">stranice za ispravke</a>.
+Mreže ne objavljuju cenovnike na svojim sajtovima, pa se cena vidi tek u aplikaciji. Zato se cene jednom mesečno čitaju iz aplikacija mreža i sa računa za plaćena punjenja.
 
-## Propisi i brojke
+<details markdown="1">
+<summary>Detalji o cenama punjenja</summary>
 
-Za propise navodimo broj Službenog glasnika i, gde postoji, link na tekst. Za brojke navodimo primarni izvor (MUP, SAUVD, NALED, JP Putevi Srbije, gradski cenovnici) i datum. Kad se izvori ne slažu, navodimo oba i kažemo koji koristimo i zašto. Ništa na sajtu nije pravni savet.
+- Cena iz aplikacije se beleži snimkom ekrana sa datumom. Uz svaku cenu stoje izvor i oznaka: „primarni izvor (aplikacija)“, „primarni izvor (račun)“, „medij“ ili „korisnički podatak“.
+- Preračun cene po minutu u cenu po kWh je računica sajta, uz navedenu pretpostavku o prosečnoj snazi punjenja.
+- Podaci o punjačima na mapi su iz otvorenih baza Open Charge Map (CC BY 4.0) i OpenStreetMap (ODbL).
+- Snimak ekrana cene, sa datumom i lokacijom, može se poslati preko stranice za ispravke.
 
-## Koliko često proveravamo
+</details>
 
-- Registar firmi i tabela cena: kvartalno (sledeća provera decembar 2026) i po svakoj prijavi.
-- Subvencije: pri svakoj zvaničnoj vesti.
-- Statistika: po kvartalnim objavama SAUVD-a.
-- Cene javnog punjenja: mesečno, iz aplikacija operatera.
-- Tarife, putarina, parking: pri promeni propisa, najmanje dvaput godišnje.
-- Javno punjenje: cene mesečno, mreže i besplatne lokacije kvartalno.
+## Ažuriranje
+
+- Firme i tabela cena punjača: kvartalno i posle svake prijave.
+- Cene javnog punjenja: mesečno.
 
 Datum poslednje provere stoji na svakoj stranici i uz svaku firmu.
 
-## Podaci su otvoreni
+<details markdown="1">
+<summary>Ostali podaci i propisi</summary>
 
-Sve što objavljujemo kao tabelu može da se skine kao CSV na stranici [preuzimanje podataka](/preuzimanje/), uz licencu Creative Commons Attribution 4.0 — slobodno za korišćenje i objavljivanje, uz navođenje izvora. Uz svaki red ide link na stranicu sa koje je podatak prepisan i datum provere, pa svako može da proveri naš rad umesto da nam veruje na reč. To je i najlakši način da nas neko uhvati u grešci, što nam odgovara.
+- Mreže i besplatne lokacije: kvartalno. Subvencije: pri svakoj zvaničnoj vesti. Statistika: po kvartalnim objavama SAUVD-a.
+- Tarife, putarina i parking: pri promeni propisa, najmanje dvaput godišnje.
+- Uz propise stoji broj Službenog glasnika, a uz brojke primarni izvor i datum. Kad se izvori razlikuju, navode se oba, uz napomenu koji se koristi.
+- Ništa na sajtu nije pravni savet.
 
-## Kako nastaju tekstovi
+</details>
 
-Tekstove pripremamo uz pomoć AI alata, iz liste proverenih činjenica sa izvorima; činjenice, iznose i izvore pre objave proverava redakcija. Lektura sa izvornim govornikom srpskog radi se u paketima; ako naiđete na grešku u jeziku ili činjenici, <a href="/ispravka/">prijavite je</a>.
+## Ispravke
 
-## Pravni okvir poređenja
-
-Uporedno oglašavanje je u Srbiji dozvoljeno Zakonom o oglašavanju (čl. 14) pod uslovom da je objektivno, proverljivo, da se odnosi na bitna svojstva i da ne omalovažava konkurenta. Naše tabele su pravljene tako da te uslove ispunjavaju: samo javni, proverljivi podaci, sa izvorom i datumom, bez vrednosnih sudova.
+Firma može da traži ispravku, dopunu ili uklanjanje svog unosa, bez objašnjenja. Grešku prijavite na [stranici za ispravke](/ispravka/). Ispravke se unose u roku od nekoliko dana i beleže u [dnevniku izmena](/izmene/).

@@ -1,0 +1,300 @@
+{
+ "note": "Logos of companies and networks, from their own websites (source), trimmed and resized by scripts/logos.py (raw files: branch logos-raw-2026-09 and screenshots, see RUNBOOK). Shown only to identify the company; removed on request. dark = shown on a dark tile.",
+ "logos": {
+  "andreja": {
+   "file": "andreja.png",
+   "dark": false,
+   "source": "https://c.cdnmp.net/178278256/logo.png"
+  },
+  "bp-echarge": {
+   "file": "bp-echarge.png",
+   "dark": false,
+   "source": "https://punjacizaelektricneautomobile.rs/wp-content/uploads/2025/11/punjaci_logo.webp"
+  },
+  "chargego": {
+   "file": "chargego.png",
+   "dark": false,
+   "source": "https://elektropunjaci.com/wp-content/uploads/2025/02/ep-crni-ikonica.png"
+  },
+  "conseko": {
+   "file": "conseko.png",
+   "dark": false,
+   "source": "https://conseko.rs/wp-content/uploads/2025/06/cropped-logo.webp"
+  },
+  "digital-hajdukovic": {
+   "file": "digital-hajdukovic.png",
+   "dark": false,
+   "source": "https://digital.co.rs/fajlovi/logo/logo.png"
+  },
+  "edrive": {
+   "file": "edrive.png",
+   "dark": true,
+   "source": "https://edrive.co.rs/images/edrive-y-bigg.svg"
+  },
+  "eko-term": {
+   "file": "eko-term.png",
+   "dark": false,
+   "source": "https://eko-term.co.rs/wp-content/uploads/2025/06/logo.png"
+  },
+  "elektricar-nis": {
+   "file": "elektricar-nis.png",
+   "dark": false,
+   "source": "https://www.niselektricar.rs/images/logo.png"
+  },
+  "elektricni-automobili-d-o-o": {
+   "file": "elektricni-automobili-d-o-o.png",
+   "dark": false,
+   "source": "https://elektricniautomobili.eu/wp-content/uploads/2026/03/Elektricni-automobili-1.png"
+  },
+  "elektro-centar-nais": {
+   "file": "elektro-centar-nais.png",
+   "dark": false,
+   "source": "https://elektrocentarnais.rs/wp-content/uploads/2024/01/elektro-centar-nais-logo-i-natpis-1024x193.png"
+  },
+  "elektroleum": {
+   "file": "elektroleum.png",
+   "dark": true,
+   "source": "https://elektroleum.rs/wp-content/uploads/logo-light.webp"
+  },
+  "elektromil": {
+   "file": "elektromil.png",
+   "dark": false,
+   "source": "https://www.elektromilnis.rs/wp-content/uploads/2026/04/cropped-ELECTBULB-AI-CS6-768x219.webp"
+  },
+  "elektronapon": {
+   "file": "elektronapon.png",
+   "dark": false,
+   "source": "https://elektronapon.rs/tenancy/assets/pictures/0/4/5/45/_thumb/logo-napon-big-header_webp.webp"
+  },
+  "elmaks": {
+   "file": "elmaks.png",
+   "dark": false,
+   "source": "https://elmaks.rs/wp-content/uploads/2025/03/1024x203-logo.png"
+  },
+  "elmik-inzenjering": {
+   "file": "elmik-inzenjering.png",
+   "dark": false,
+   "source": "https://elmik.rs/assets/logo.png"
+  },
+  "emobility-d-o-o": {
+   "file": "emobility-d-o-o.png",
+   "dark": false,
+   "source": "https://emobility.rs/spectra_emobility/wp-content/uploads/2020/10/logo_emobility_2x.png"
+  },
+  "energy-net": {
+   "file": "energy-net.png",
+   "dark": false,
+   "source": "https://www.energynet.rs/wp-content/uploads/2026/04/Logo-color.png"
+  },
+  "ep-solutions": {
+   "file": "ep-solutions.png",
+   "dark": false,
+   "source": "https://www.ep-solutions.rs/assets/img/logo/logo-center-eps.png"
+  },
+  "ev-charging-solutions": {
+   "file": "ev-charging-solutions.png",
+   "dark": false,
+   "source": "https://www.evchargingsolutions.rs/wp-content/uploads/2021/02/EV_charging_solutions.png"
+  },
+  "evolako": {
+   "file": "evolako.png",
+   "dark": false,
+   "source": "https://cdn.prod.website-files.com/6ab19bf9a3bb86f8fb7bba00/6ab1cb92d1ca9dd33c2b7acf_icon-512.png"
+  },
+  "handyman": {
+   "file": "handyman.png",
+   "dark": false,
+   "source": "https://handyman.rs/wp-content/uploads/2023/02/handyman_logo_desktop.png"
+  },
+  "it-home": {
+   "file": "it-home.png",
+   "dark": false,
+   "source": "https://www.store.it-home.rs/wp-content/uploads/2025/01/Header.png"
+  },
+  "jakov-sistem": {
+   "file": "jakov-sistem.png",
+   "dark": false,
+   "source": "https://jakov.rs/assets/Logo.webp"
+  },
+  "kibost-car": {
+   "file": "kibost-car.png",
+   "dark": false,
+   "source": "https://kibostcar.com/wp-content/uploads/2023/03/kibost-logo.png"
+  },
+  "mda-e-technology": {
+   "file": "mda-e-technology.png",
+   "dark": false,
+   "source": "https://www.mdaetechnology.rs/wp-content/uploads/2017/12/cropped-MDA-E-Technology-Logo-1.png"
+  },
+  "network-shop-bazzar": {
+   "file": "network-shop-bazzar.png",
+   "dark": true,
+   "source": "https://bazzar.rs/assets/bazzar-logo-transparent-8db5d83769b81dc93f639defb8850d041a51100b83c76e3716b40c15bbcc9f29.svg"
+  },
+  "obd2-evchargers": {
+   "file": "obd2-evchargers.png",
+   "dark": false,
+   "source": "https://evchargers.rs/wp-content/themes/obd/assets/images/logo-1.png"
+  },
+  "orion-emobility": {
+   "file": "orion-emobility.png",
+   "dark": true,
+   "source": "https://oriontelekom.rs/wp-content/themes/orion/public/img/sample/white-logo.png"
+  },
+  "pmp": {
+   "file": "pmp.png",
+   "dark": false,
+   "source": "https://pmp.rs/wp-content/themes/pmp-core/assets/img/pmp-logo-red-88.png"
+  },
+  "praktiker-elektrowebshop": {
+   "file": "praktiker-elektrowebshop.png",
+   "dark": false,
+   "source": "https://elektrowebshop.rs/img/logo.png"
+  },
+  "provision": {
+   "file": "provision.png",
+   "dark": false,
+   "source": "https://provision.rs/wp-content/uploads/2025/04/Novi-logo-2025-e1744302139667.png"
+  },
+  "pupinenergy": {
+   "file": "pupinenergy.png",
+   "dark": false,
+   "source": "https://pupinenergy.com/wp-content/uploads/2026/02/PupinEnergy-logo-main-464-x-160-px.svg"
+  },
+  "qoltec": {
+   "file": "qoltec.png",
+   "dark": false,
+   "source": "https://qoltec.co.rs/wp-content/uploads/2026/03/qoltec-logo-2026.png"
+  },
+  "schrack-technik": {
+   "file": "schrack-technik.png",
+   "dark": false,
+   "source": "https://www.schrack.rs/_assets/e3d6a9be731934855a3322e244edc0c7/Images/rwd/schrack-logo.png"
+  },
+  "sirotin": {
+   "file": "sirotin.png",
+   "dark": false,
+   "source": "https://sirotin.rs/logo.webp"
+  },
+  "smit": {
+   "file": "smit.png",
+   "dark": false,
+   "source": "https://smit.rs/wp-content/uploads/2017/04/Logo-clasic-kroz-sredinu-scaled.png"
+  },
+  "solar-energy-lazic": {
+   "file": "solar-energy-lazic.png",
+   "dark": false,
+   "source": "https://solarenergylazic.rs/wp-content/uploads/l.png"
+  },
+  "solarkraft": {
+   "file": "solarkraft.png",
+   "dark": false,
+   "source": "https://solarkraft.rs/wp-content/uploads/2026/01/SolarKraft-logo-negativ-1.svg"
+  },
+  "sp-solar": {
+   "file": "sp-solar.png",
+   "dark": true,
+   "source": "https://spsolar.rs/wp-content/uploads/2026/09/sp-solar-logo.png"
+  },
+  "spark-systems": {
+   "file": "spark-systems.png",
+   "dark": false,
+   "source": "https://svetkontrolepristupa.rs/wp-content/uploads/2022/09/logo.png"
+  },
+  "stamteh": {
+   "file": "stamteh.png",
+   "dark": false,
+   "source": "https://c.cdnmp.net/124663331/logo.png"
+  },
+  "stasanet": {
+   "file": "stasanet.png",
+   "dark": false,
+   "source": "https://vibe.filesafe.space/1777819448581388478/attachments/3b4f11a2-6859-4b82-91c0-3c1843d1128c.png"
+  },
+  "tehnoducan": {
+   "file": "tehnoducan.png",
+   "dark": true,
+   "source": "https://www.tehnoducan.rs/images/logo.png"
+  },
+  "telefon-inzenjering": {
+   "file": "telefon-inzenjering.png",
+   "dark": false,
+   "source": "https://elektro-punjaci.rs/wp-content/uploads/Telefon-inzenjering-hor-logo.png"
+  },
+  "tesla-sistemi-energetika": {
+   "file": "tesla-sistemi-energetika.png",
+   "dark": false,
+   "source": "https://energetika.co.rs/wp-content/uploads/2019/02/Logo_TESLA_SISTEMI.png"
+  },
+  "union-electronics-avtera": {
+   "file": "union-electronics-avtera.png",
+   "dark": false,
+   "source": "https://www.unionelectronics.rs/media/Union-logo.svg"
+  },
+  "veming": {
+   "file": "veming.png",
+   "dark": false,
+   "source": "https://veming.rs/wp-content/uploads/2021/03/veming-logo.png"
+  },
+  "voltech": {
+   "file": "voltech.png",
+   "dark": false,
+   "source": "https://voltech.rs/wp-content/uploads/2024/07/cropped-voltech-logo-2-e1721310487901-1.jpg"
+  },
+  "vulovic-electric": {
+   "file": "vulovic-electric.png",
+   "dark": false,
+   "source": "https://vulovicelectric.rs/wp-content/uploads/2025/12/VULOVIC-1-3-edited.png"
+  },
+  "webasto-srbija": {
+   "file": "webasto-srbija.png",
+   "dark": false,
+   "source": "https://www.webastosrbija.rs/images/logo.jpg"
+  },
+  "wise-smart-home": {
+   "file": "wise-smart-home.png",
+   "dark": false,
+   "source": "https://wifioprema.rs/wp-content/uploads/2024/12/Logo_symbol_positive-1.png"
+  },
+  "op-chargego": {
+   "file": "op-chargego.png",
+   "dark": true,
+   "source": "https://chargego.rs/wp-content/uploads/2024/06/chargego-dva-reda-beli.png"
+  },
+  "op-putevi-srbije": {
+   "file": "op-putevi-srbije.png",
+   "dark": false,
+   "source": "https://www.putevi-srbije.rs/images/Putevi-Srbije-logo.png"
+  },
+  "op-tesla": {
+   "file": "op-tesla.png",
+   "dark": false,
+   "source": "https://www.tesla.com/"
+  },
+  "op-omv": {
+   "file": "op-omv.png",
+   "dark": false,
+   "source": "https://www.omv.rs/assets/img/logos/omv-logo.svg"
+  },
+  "op-nis-gazprom": {
+   "file": "op-nis-gazprom.png",
+   "dark": false,
+   "source": "https://www.nisgazprom.rs/wp-content/themes/nisgazprom/assets/images/logo-main-new.svg"
+  },
+  "op-emobility-spectra": {
+   "file": "op-emobility-spectra.png",
+   "dark": false,
+   "source": "https://emobility.rs/spectra_emobility/wp-content/uploads/2020/10/logo_emobility_2x.png"
+  },
+  "op-lidl-echarge": {
+   "file": "op-lidl-echarge.png",
+   "dark": false,
+   "source": "https://www.lidl.rs/cdn/assets/logos/1.0.0/logo.svg"
+  },
+  "op-parking-servis-beograd": {
+   "file": "op-parking-servis-beograd.png",
+   "dark": false,
+   "source": "https://www.parking-servis.co.rs/favicons/apple-touch-icon.png"
+  }
+ }
+}

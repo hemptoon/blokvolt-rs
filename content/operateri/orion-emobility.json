@@ -10,7 +10,7 @@
  "city": "Beograd",
  "coverage": "Srbija; aplikacija pokriva i Crnu Goru, BiH, Hrvatsku, Sloveniju, Severnu Makedoniju, Albaniju (partnerske mreže)",
  "network": "„Infrastruktura od 300 EV punjačnih mesta u zemlji“ i „više od 1.000 EV punjača širom Srbije i regiona“ — navodi operatera bez datuma (marketinška cifra, ne proverena nezavisno)",
- "power": "AC do 22 kW; DC 20–400 kW (po katalogu opreme); punjači JP „Putevi Srbije“ 40–300 kW",
+ "power": "AC do 22 kW; DC 20–400 kW (po katalogu opreme); punjači JP „Putevi Srbije“ DC 40–120 kW",
  "billing": "Po minutu (na AC punjaču i po satu, npr. 700 RSD za 60 min) + naknada za priključenje; cenovnik po punjaču je u aplikaciji, na sajtu nije objavljen. Za sopstvene punjače aplikacija 22.09.2026 navodi: naknada za priključenje 50 RSD, „cena na min počinje se naplaćivati nakon 3 minuta“, posle punjenja 15 minuta bez naknade, zatim 5 RSD/min za mirovanje.",
  "verdicts": {
   "cenovnik": "Nije objavljen — samo u aplikaciji",
@@ -155,5 +155,11 @@
  "notes": "OMV Novi Sad je u aplikaciji Orion eMobility i 22.09.2026 (punjači 1128 i 1129), iako na stranici OMV-a uz tu lokaciju stoji aplikacija EasyPark — ista stanica može da se naplaćuje kroz više aplikacija, po različitim cenama. Punjač u Surčinskoj 52 (Garni hotel Mar) aplikacija vodi kao rezervisan za goste hotela. Orion prodaje i kućne punjače: <a href=\"/firme/orion-emobility/\">kartica u registru firmi</a>.",
  "card": "11,67–70 RSD/min + 50 RSD po sesiji",
  "kind_label": "Operator mreže + aplikacija",
- "publish": true
+ "publish": true,
+ "short_name": "Orion eMobility",
+ "lead": "Mreža i aplikacija Orion Telekoma. Preko iste aplikacije se aktiviraju i besplatni državni punjači na autoputevima.",
+ "network_short": "„300 punjačkih mesta“ (navod operatera)",
+ "power_short": "AC do 22 kW, DC do 400 kW",
+ "billing_short": "Po minutu + 50 RSD po punjenju. Zauzeće: 5 RSD/min posle 15 min.",
+ "payment_short": "Kartica u aplikaciji, RFID, QR kod"
 }

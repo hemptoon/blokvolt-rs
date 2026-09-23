@@ -84,5 +84,11 @@
  "notes": "Ista firma je u registru kućnih punjača: <a href=\"/firme/emobility-d-o-o/\">Emobility d.o.o.</a>",
  "card": "45–60 RSD po „jedinici“ + 1,20 RSD/min",
  "kind_label": "Operator mreže + aplikacija",
- "publish": true
+ "publish": true,
+ "short_name": "Emobility Spectra",
+ "lead": "Mreža iz Novog Sada sa sopstvenom aplikacijom. Naplata po „jedinici punjenja“ i po minutu.",
+ "network_short": "veličina nije objavljena",
+ "power_short": "AC 11 – DC 180 kW",
+ "billing_short": "45–60 RSD po „jedinici“ + 1,20 RSD/min.",
+ "payment_short": "Novčanik u aplikaciji, RFID"
 }

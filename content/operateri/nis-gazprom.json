@@ -60,5 +60,11 @@
  "notes": "",
  "card": "broj lokacija nije objavljen",
  "kind_label": "Domaćin (benzinske stanice)",
- "publish": true
+ "publish": true,
+ "short_name": "NIS Petrol i Gazprom",
+ "lead": "Na delu NIS Petrol i Gazprom stanica rade punjači mreže Charge&GO, po njenim cenama.",
+ "network_short": "broj nije objavljen",
+ "power_short": "DC 50–75 kW, AC 22 kW",
+ "billing_short": "Po cenama Charge&GO.",
+ "payment_short": "Aplikacija Charge&GO, QR kod"
 }

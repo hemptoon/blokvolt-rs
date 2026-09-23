@@ -1,0 +1,2616 @@
+{
+ "source": "Open Charge Map",
+ "sourceURL": "https://openchargemap.org",
+ "license": "CC BY 4.0",
+ "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Open Charge Map contributors (openchargemap.org), CC BY 4.0",
+ "export": "https://github.com/openchargemap/ocm-export (data/RS)",
+ "dataUpdated": "2026-04-22",
+ "retrieved": "2026-09-23",
+ "chargers": [
+  {
+   "id": "ocm-107451",
+   "name": "Roads of Serbia",
+   "address": "Highway near toll gate E-80, Zeljusa",
+   "latitude": 43.022283,
+   "longitude": 22.735319,
+   "operator": "putevi-srbije",
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 43.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 43.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/107451",
+   "updated": "2019-05-26"
+  },
+  {
+   "id": "ocm-112837",
+   "name": "Solaris Resort",
+   "address": "Cerska 10, Vrnjacka Banja",
+   "latitude": 43.629595,
+   "longitude": 20.896524,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "customers",
+   "url": "https://openchargemap.org/site/poi/details/112837",
+   "updated": "2018-11-20"
+  },
+  {
+   "id": "ocm-117649",
+   "name": "Hotel Petrus",
+   "address": "Nikole Pasica bb, Paracin",
+   "latitude": 43.86311,
+   "longitude": 21.411453,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "customers",
+   "url": "https://openchargemap.org/site/poi/details/117649",
+   "updated": "2019-08-11"
+  },
+  {
+   "id": "ocm-125797",
+   "name": "Garage Obilićev venac",
+   "address": "Obilićev venac 14-16, Stari Grad Urban Municipality",
+   "latitude": 44.815711,
+   "longitude": 20.457503,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 4
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/125797",
+   "updated": "2021-08-17"
+  },
+  {
+   "id": "ocm-125973",
+   "name": "Porsche Belgrad",
+   "address": "Zrenjaninski put, Palilula Urban Municipality",
+   "latitude": 44.840639,
+   "longitude": 20.489812,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/125973",
+   "updated": "2019-11-14"
+  },
+  {
+   "id": "ocm-127691",
+   "name": "Roads of Serbia Charger",
+   "address": "Just after the road toll station direction Belgrade, Presevo",
+   "latitude": 42.303065,
+   "longitude": 21.709937,
+   "operator": "putevi-srbije",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 40.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 40.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/127691",
+   "updated": "2023-12-09"
+  },
+  {
+   "id": "ocm-135331",
+   "name": "charge&go BS Gazprom Velika Plana",
+   "address": "Velika Plana, Velika Plana Municipality",
+   "latitude": 44.344847,
+   "longitude": 21.078572,
+   "operator": "charge-and-go",
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/135331",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-150105",
+   "name": "Belgrade Supercharger",
+   "address": "Ikea Belgrade, Belgrade",
+   "latitude": 44.711176,
+   "longitude": 20.561414,
+   "operator": "tesla",
+   "operatorName": "Tesla (Tesla-only charging)",
+   "connectors": [
+    {
+     "type": "tesla",
+     "current": "dc",
+     "powerKW": 125.0,
+     "count": 4
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/150105",
+   "updated": "2020-03-19"
+  },
+  {
+   "id": "ocm-150106",
+   "name": "Aleksinac Supercharger",
+   "address": "Bosphorus hotel, Aleksinac Municipality",
+   "latitude": 43.528022,
+   "longitude": 21.709364,
+   "operator": "tesla",
+   "operatorName": "Tesla (Tesla-only charging)",
+   "connectors": [
+    {
+     "type": "tesla",
+     "current": "dc",
+     "powerKW": 125.0,
+     "count": 6
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/150106",
+   "updated": "2020-03-19"
+  },
+  {
+   "id": "ocm-156416",
+   "name": "RUŽO RUMENA",
+   "address": "164 Lole Ribara, Belgrade",
+   "latitude": 44.726597,
+   "longitude": 20.369459,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 11.0,
+     "count": 1
+    }
+   ],
+   "access": "customers",
+   "url": "https://openchargemap.org/site/poi/details/156416",
+   "updated": "2020-05-20"
+  },
+  {
+   "id": "ocm-156418",
+   "name": "Restaurant Ružo Rumena",
+   "address": "Lole Ribara 164, Cukarica Urban Municipality",
+   "latitude": 44.726471,
+   "longitude": 20.36945,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 11.0,
+     "count": 1
+    }
+   ],
+   "access": "customers",
+   "url": "https://openchargemap.org/site/poi/details/156418",
+   "updated": "2020-05-19"
+  },
+  {
+   "id": "ocm-156420",
+   "name": "Autocentar SAVIN",
+   "address": "Crnogorska 17, ZEMUN",
+   "latitude": 44.843033,
+   "longitude": 20.395078,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "customers",
+   "url": "https://openchargemap.org/site/poi/details/156420",
+   "updated": "2020-05-19"
+  },
+  {
+   "id": "ocm-175433",
+   "name": "LAKE AUTO",
+   "address": "Bulevar oslobodioca Čačka 96 a, Cacak",
+   "latitude": 43.891663,
+   "longitude": 20.385715,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 25.0,
+     "count": 1
+    }
+   ],
+   "access": "customers",
+   "url": "https://openchargemap.org/site/poi/details/175433",
+   "updated": "2021-05-19"
+  },
+  {
+   "id": "ocm-175794",
+   "name": "HOTEL VICEROY",
+   "address": "brzeća 4B Kopaonik",
+   "latitude": 43.284719,
+   "longitude": 20.810665,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "customers",
+   "url": "https://openchargemap.org/site/poi/details/175794",
+   "updated": "2021-06-18"
+  },
+  {
+   "id": "ocm-175795",
+   "name": "KOPAONIK HOTEL VICEROY",
+   "address": "Brzeća bb",
+   "latitude": 43.284743,
+   "longitude": 20.810522,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "customers",
+   "url": "https://openchargemap.org/site/poi/details/175795",
+   "updated": "2021-06-18"
+  },
+  {
+   "id": "ocm-175829",
+   "name": "Autokomerc",
+   "address": "Oblakovska bb, Beograd",
+   "latitude": 44.794613,
+   "longitude": 20.459991,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 25.0,
+     "count": 1
+    }
+   ],
+   "access": "customers",
+   "url": "https://openchargemap.org/site/poi/details/175829",
+   "updated": "2021-06-19"
+  },
+  {
+   "id": "ocm-176246",
+   "name": "Autoput NIS-BG",
+   "address": "Gradska opština Crveni Krst, Niš",
+   "latitude": 43.390743,
+   "longitude": 21.802055,
+   "operator": "nis",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 30.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 30.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/176246",
+   "updated": "2023-12-09"
+  },
+  {
+   "id": "ocm-176249",
+   "name": "charge&GO 023 - 53167 - JP Putevi Srbije Trupale",
+   "address": "A1, Gradska opština Crveni Krst",
+   "latitude": 43.390472,
+   "longitude": 21.801543,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 80.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 80.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/176249",
+   "updated": "2023-12-09"
+  },
+  {
+   "id": "ocm-190760",
+   "name": "Pod lipom",
+   "address": "Siriška 42, Novi Sad Municipality",
+   "latitude": 45.298532,
+   "longitude": 19.827934,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/190760",
+   "updated": "2021-12-20"
+  },
+  {
+   "id": "ocm-190761",
+   "name": "42 Siriska",
+   "address": "42 Siriska, Novi Sad",
+   "latitude": 45.30069,
+   "longitude": 19.82799,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/190761",
+   "updated": "2021-12-20"
+  },
+  {
+   "id": "ocm-193121",
+   "name": "charge&GO 032 - OMV Lapovo sever",
+   "address": "OMV, Lapovo Municipality",
+   "latitude": 44.205404,
+   "longitude": 21.108015,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 100.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/193121",
+   "updated": "2022-05-20"
+  },
+  {
+   "id": "ocm-202430",
+   "name": "Turistička Organizacija Zlatibor",
+   "address": "Turistička Organizacija Zlatibor, Cajetina Municipality",
+   "latitude": 43.728373,
+   "longitude": 19.704422,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/202430",
+   "updated": "2022-09-11"
+  },
+  {
+   "id": "ocm-210550",
+   "name": "OMV Beška",
+   "address": "Partizanska, Novi Sad",
+   "latitude": 45.148956,
+   "longitude": 20.082804,
+   "operator": "omv",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/210550",
+   "updated": "2023-12-09"
+  },
+  {
+   "id": "ocm-213274",
+   "name": "Partizanska",
+   "address": "Partizanska, Novi Sad",
+   "latitude": 45.269012,
+   "longitude": 19.824718,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/213274",
+   "updated": "2023-02-05"
+  },
+  {
+   "id": "ocm-260290",
+   "name": "Pirot EV",
+   "address": "Vojvode Momčila, Pirot",
+   "latitude": 43.157434,
+   "longitude": 22.580611,
+   "operator": null,
+   "operatorName": "Be Energised (has-to-be)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260290",
+   "updated": "2023-04-25"
+  },
+  {
+   "id": "ocm-260771",
+   "name": "Vladike Nikolaja",
+   "address": "Vladike Nikolaja, Sombor",
+   "latitude": 45.764001,
+   "longitude": 19.124845,
+   "operator": "virta",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260771",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-260778",
+   "name": "Naplatna Stanica Subotica",
+   "address": "A1, Bikovo",
+   "latitude": 46.020781,
+   "longitude": 19.733426,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 44.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260778",
+   "updated": "2023-12-09"
+  },
+  {
+   "id": "ocm-260779",
+   "name": "Charge&GO OMV Bačka Topola",
+   "address": "A1",
+   "latitude": 45.792663,
+   "longitude": 19.693173,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "other",
+     "current": "dc",
+     "powerKW": 180.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260779",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-260780",
+   "name": "Charge&GO Gazprom Novi Sad 16",
+   "address": "A1",
+   "latitude": 45.276008,
+   "longitude": 19.921528,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 2
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260780",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-260781",
+   "name": "Charge&GO Gazprom Stari Banovci",
+   "address": "A1",
+   "latitude": 44.9714,
+   "longitude": 20.233369,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260781",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-260782",
+   "name": "Ledi MS Nova Pazova",
+   "address": "A1",
+   "latitude": 44.969349,
+   "longitude": 20.233013,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 350.0,
+     "count": 2
+    },
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 175.0,
+     "count": 1
+    },
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 3
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 6
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 3
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260782",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-260784",
+   "name": "Charge&GO Airport City Beograd",
+   "address": "",
+   "latitude": 44.8124,
+   "longitude": 20.396783,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 30.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260784",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-260785",
+   "name": "charge&go Stop Shop Borča",
+   "address": "Bratstva i jedinstva, Borča",
+   "latitude": 44.888078,
+   "longitude": 20.458737,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 63.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260785",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-260786",
+   "name": "Charge&GO Stop Shop Smederevo",
+   "address": "Šalinačka",
+   "latitude": 44.675681,
+   "longitude": 20.945509,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260786",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-260805",
+   "name": "Charge&GO Stop Shop Lazarevac",
+   "address": "Železnička",
+   "latitude": 44.386896,
+   "longitude": 20.251776,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260805",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-260806",
+   "name": "Charge&GO BS Gazprom Sokolići",
+   "address": "Miloš Veliki",
+   "latitude": 43.936843,
+   "longitude": 20.399982,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260806",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-260807",
+   "name": "Charge&GO Autočačak, Konjevići",
+   "address": "Obilazni put",
+   "latitude": 43.903247,
+   "longitude": 20.398732,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260807",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-260808",
+   "name": "Charge&GO Intertrans Lučani",
+   "address": "Dositejeva, Lučani",
+   "latitude": 43.862378,
+   "longitude": 20.131119,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 22.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260808",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-260809",
+   "name": "Charge&GO Stop Shop Valjevo",
+   "address": "Uzun Mirkova",
+   "latitude": 44.270732,
+   "longitude": 19.898257,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260809",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-260810",
+   "name": "Charge&GO Stop Shop Šabac",
+   "address": "Zapadna transverzala I",
+   "latitude": 44.754458,
+   "longitude": 19.66258,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/260810",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-262055",
+   "name": "Charge&GO, Renault Hit Auto",
+   "address": "Sajmište",
+   "latitude": 44.812903,
+   "longitude": 20.441293,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/262055",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-262197",
+   "name": "charge&go BS OMV Martinci 1",
+   "address": "A3",
+   "latitude": 45.035587,
+   "longitude": 19.449863,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 180.0,
+     "count": 2
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/262197",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-263893",
+   "name": "charge&go TC Promenada Novi Sad",
+   "address": "Bulevar oslobođenja",
+   "latitude": 45.245186,
+   "longitude": 19.841351,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 5
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/263893",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-263895",
+   "name": "charge&go Big Fashion Kragujevac",
+   "address": "Bulevar kraljice Marije",
+   "latitude": 44.008556,
+   "longitude": 20.896386,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 5
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/263895",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-263897",
+   "name": "charge&go BS OMV Kruševac",
+   "address": "Jasički put",
+   "latitude": 43.595445,
+   "longitude": 21.315397,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 130.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/263897",
+   "updated": "2023-07-27"
+  },
+  {
+   "id": "ocm-263900",
+   "name": "charge&go BS OMV Doljevac",
+   "address": "A1",
+   "latitude": 43.182868,
+   "longitude": 21.862517,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 140.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/263900",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-263902",
+   "name": "charge&go Stop Shop Vršac",
+   "address": "Miloša Obilića",
+   "latitude": 45.131731,
+   "longitude": 21.286206,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/263902",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-263904",
+   "name": "charge&go BS OMV Gradina",
+   "address": "A4",
+   "latitude": 43.000361,
+   "longitude": 22.819311,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 90.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/263904",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-264442",
+   "name": "charge&go Stop Shop Subotica",
+   "address": "Segedinski put",
+   "latitude": 46.10048,
+   "longitude": 19.698238,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 2
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 7.4,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/264442",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-264443",
+   "name": "charge&go Podrum Pevac",
+   "address": "Železnička",
+   "latitude": 44.080592,
+   "longitude": 20.983116,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/264443",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-264444",
+   "name": "charge&go Stop Shop Zaječar",
+   "address": "Čupićeva",
+   "latitude": 43.902504,
+   "longitude": 22.268642,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/264444",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-264445",
+   "name": "charge&go Termovent",
+   "address": "35",
+   "latitude": 44.625101,
+   "longitude": 22.581927,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/264445",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-264446",
+   "name": "charge&go Stop Shop Niš",
+   "address": "Bulevar svetog Cara Konstantina",
+   "latitude": 43.310866,
+   "longitude": 21.936517,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/264446",
+   "updated": "2023-05-02"
+  },
+  {
+   "id": "ocm-264470",
+   "name": "Ledi MS Brestovac",
+   "address": "Leskovačka",
+   "latitude": 43.149571,
+   "longitude": 21.889559,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 4
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/264470",
+   "updated": "2023-05-03"
+  },
+  {
+   "id": "ocm-264471",
+   "name": "Gazprom Petrol - Orion eMobility",
+   "address": "A1",
+   "latitude": 46.124172,
+   "longitude": 19.825129,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/264471",
+   "updated": "2023-07-23"
+  },
+  {
+   "id": "ocm-264472",
+   "name": "Gazprom Petrol - Orion eMobility",
+   "address": "A3",
+   "latitude": 44.879256,
+   "longitude": 20.121641,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/264472",
+   "updated": "2023-05-03"
+  },
+  {
+   "id": "ocm-264473",
+   "name": "OMV - Orion eMobility",
+   "address": "A3",
+   "latitude": 44.934919,
+   "longitude": 19.914587,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/264473",
+   "updated": "2023-05-03"
+  },
+  {
+   "id": "ocm-264474",
+   "name": "NIS Zmaj 1 - Orion eMobility",
+   "address": "Autoput za Zagreb",
+   "latitude": 44.831937,
+   "longitude": 20.369273,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/264474",
+   "updated": "2023-05-03"
+  },
+  {
+   "id": "ocm-264497",
+   "name": "BS EVOIL Preljina",
+   "address": "Ibarski put",
+   "latitude": 43.898665,
+   "longitude": 20.419683,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 40.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/264497",
+   "updated": "2023-05-03"
+  },
+  {
+   "id": "ocm-265195",
+   "name": "Hotel Royal Čačak - eDrive App",
+   "address": "Bulevar oslobodilaca Čačka",
+   "latitude": 43.877897,
+   "longitude": 20.350469,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 1
+    },
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265195",
+   "updated": "2023-05-05"
+  },
+  {
+   "id": "ocm-265196",
+   "name": "charge&go Stop Shop Čačak",
+   "address": "Bulevar Vuka Karadžića",
+   "latitude": 43.883664,
+   "longitude": 20.331036,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 150.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265196",
+   "updated": "2023-05-05"
+  },
+  {
+   "id": "ocm-265197",
+   "name": "charge&go ABB Beograd",
+   "address": "Bulevar Peka Dapčevića",
+   "latitude": 44.768737,
+   "longitude": 20.485727,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 30.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 30.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265197",
+   "updated": "2025-06-16"
+  },
+  {
+   "id": "ocm-265198",
+   "name": "charge&go Roaming Networks",
+   "address": "Južni bulevar",
+   "latitude": 44.791879,
+   "longitude": 20.470794,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 24.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265198",
+   "updated": "2025-06-15"
+  },
+  {
+   "id": "ocm-265200",
+   "name": "Free Charger at Toll Station direction Niš-Belgrad",
+   "address": "E75 Motorway, Vrcin",
+   "latitude": 44.665215,
+   "longitude": 20.611806,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 25.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 25.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265200",
+   "updated": "2024-04-10"
+  },
+  {
+   "id": "ocm-265201",
+   "name": "charge&go BS OMV Vranje",
+   "address": "Partizanski put",
+   "latitude": 42.544278,
+   "longitude": 21.900631,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265201",
+   "updated": "2023-06-23"
+  },
+  {
+   "id": "ocm-265202",
+   "name": "charge&go Stop Shop Leskovac",
+   "address": "Dvadesetosmi mart",
+   "latitude": 43.000325,
+   "longitude": 21.952012,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265202",
+   "updated": "2023-05-05"
+  },
+  {
+   "id": "ocm-265213",
+   "name": "Golubački Trg",
+   "address": "Golubački trg, Golubac",
+   "latitude": 44.65358,
+   "longitude": 21.627892,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265213",
+   "updated": "2023-05-07"
+  },
+  {
+   "id": "ocm-265214",
+   "name": "KPM Automobili Hyundai",
+   "address": "Pere Dobrinovića",
+   "latitude": 45.369938,
+   "longitude": 20.410082,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265214",
+   "updated": "2023-05-07"
+  },
+  {
+   "id": "ocm-265215",
+   "name": "Konjovićeva",
+   "address": "Konjovićeva 69",
+   "latitude": 45.782024,
+   "longitude": 19.118409,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265215",
+   "updated": "2023-05-07"
+  },
+  {
+   "id": "ocm-265216",
+   "name": "MIF Petrol Bajina Bašta",
+   "address": "Milenka Topalovića",
+   "latitude": 43.981213,
+   "longitude": 19.569073,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265216",
+   "updated": "2023-05-07"
+  },
+  {
+   "id": "ocm-265217",
+   "name": "Mercedes-Benz Biševac",
+   "address": "Ivanča bb, Novi Pazar",
+   "latitude": 43.14992,
+   "longitude": 20.456908,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265217",
+   "updated": "2023-05-07"
+  },
+  {
+   "id": "ocm-265219",
+   "name": "Marić centar Hyundai",
+   "address": "Progorelica 74A, Konarevo",
+   "latitude": 43.683913,
+   "longitude": 20.574586,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265219",
+   "updated": "2023-05-07"
+  },
+  {
+   "id": "ocm-265221",
+   "name": "Hyundai Svetozarevo promet doo",
+   "address": "Ribarska 91, Jagodina",
+   "latitude": 43.987299,
+   "longitude": 21.261843,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265221",
+   "updated": "2023-05-07"
+  },
+  {
+   "id": "ocm-265223",
+   "name": "Restoran Kapija Svrljiga",
+   "address": "Dušana Trifunca",
+   "latitude": 43.409788,
+   "longitude": 22.103439,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265223",
+   "updated": "2023-05-07"
+  },
+  {
+   "id": "ocm-265385",
+   "name": "charge&go Stop Shop Požarevac",
+   "address": "Djure Djakovica, Požarevac",
+   "latitude": 44.610157,
+   "longitude": 21.175121,
+   "operator": "charge-and-go",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265385",
+   "updated": "2023-05-08"
+  },
+  {
+   "id": "ocm-265530",
+   "name": "Kia centar Subotica",
+   "address": "Teslina",
+   "latitude": 46.10242,
+   "longitude": 19.67308,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265530",
+   "updated": "2023-05-13"
+  },
+  {
+   "id": "ocm-265531",
+   "name": "Mercedes-Benz Martinci",
+   "address": "Vojvođanska",
+   "latitude": 45.013097,
+   "longitude": 19.442164,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265531",
+   "updated": "2023-05-13"
+  },
+  {
+   "id": "ocm-265532",
+   "name": "AC Brajić Šabac",
+   "address": "Svetog Save",
+   "latitude": 44.76694,
+   "longitude": 19.665668,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265532",
+   "updated": "2023-05-13"
+  },
+  {
+   "id": "ocm-265533",
+   "name": "Ideal Auto Hyundai Niš",
+   "address": "Stevana Sinđelića",
+   "latitude": 43.367481,
+   "longitude": 21.838232,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265533",
+   "updated": "2023-05-13"
+  },
+  {
+   "id": "ocm-265534",
+   "name": "Kemoimpex",
+   "address": "Vizantijski bulevar",
+   "latitude": 43.321891,
+   "longitude": 21.933397,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265534",
+   "updated": "2023-05-13"
+  },
+  {
+   "id": "ocm-265586",
+   "name": "Jevtović Cars",
+   "address": "Ibarski put",
+   "latitude": 43.935388,
+   "longitude": 20.412051,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265586",
+   "updated": "2023-05-15"
+  },
+  {
+   "id": "ocm-265794",
+   "name": "Duo-Pro",
+   "address": "Anđe Rankovića, Ćuprija",
+   "latitude": 43.932595,
+   "longitude": 21.374688,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 14.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265794",
+   "updated": "2023-05-20"
+  },
+  {
+   "id": "ocm-265795",
+   "name": "Sirius Office Building",
+   "address": "Milutina Milankovića",
+   "latitude": 44.807284,
+   "longitude": 20.419834,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 3
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/265795",
+   "updated": "2023-05-20"
+  },
+  {
+   "id": "ocm-273019",
+   "name": "Crowne Plaza",
+   "address": "Vladimira Popovića",
+   "latitude": 44.809596,
+   "longitude": 20.436288,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/273019",
+   "updated": "2023-07-23"
+  },
+  {
+   "id": "ocm-274114",
+   "name": "International Inn",
+   "address": "Mihajla Pupina 16, Paraćin",
+   "latitude": 43.866886,
+   "longitude": 21.407684,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "customers",
+   "url": "https://openchargemap.org/site/poi/details/274114",
+   "updated": "2023-09-06"
+  },
+  {
+   "id": "ocm-279311",
+   "name": "BIG Shopping Centar Karabirma",
+   "address": "Višnjička 84",
+   "latitude": 44.816999,
+   "longitude": 20.507474,
+   "operator": "virta",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/279311",
+   "updated": "2023-10-21"
+  },
+  {
+   "id": "ocm-279312",
+   "name": "BIG Shopping Centar Pančevo",
+   "address": "Miloša Obrenovića 12",
+   "latitude": 44.868571,
+   "longitude": 20.660431,
+   "operator": "virta",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/279312",
+   "updated": "2023-10-21"
+  },
+  {
+   "id": "ocm-279313",
+   "name": "BIG Shopping Centar Pazova",
+   "address": "Vojački put 1a",
+   "latitude": 44.95538,
+   "longitude": 20.199222,
+   "operator": "virta",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/279313",
+   "updated": "2023-10-21"
+  },
+  {
+   "id": "ocm-279314",
+   "name": "Kraljevi Čardaci - Garaža",
+   "address": "Stefana Prvovenčanog 79",
+   "latitude": 43.27504,
+   "longitude": 20.766691,
+   "operator": "virta",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/279314",
+   "updated": "2023-10-21"
+  },
+  {
+   "id": "ocm-279315",
+   "name": "Forma Ideale - Glecher 021",
+   "address": "Kralja Petra Prvog 1a",
+   "latitude": 44.451796,
+   "longitude": 20.682447,
+   "operator": "virta",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 150.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/279315",
+   "updated": "2023-10-21"
+  },
+  {
+   "id": "ocm-279536",
+   "name": "BIG Shopping Centar Novi Sad",
+   "address": "Sentandrejski put 11",
+   "latitude": 45.27603,
+   "longitude": 19.825955,
+   "operator": "virta",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/279536",
+   "updated": "2023-10-31"
+  },
+  {
+   "id": "ocm-287962",
+   "name": "OMV",
+   "address": "Dobrivoja Radosavljevića Bobija",
+   "latitude": 43.910534,
+   "longitude": 22.260062,
+   "operator": "omv",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/287962",
+   "updated": "2023-12-09"
+  },
+  {
+   "id": "ocm-287963",
+   "name": "BIG Inđija Charge & GO",
+   "address": "Lukačeva",
+   "latitude": 45.068521,
+   "longitude": 20.13554,
+   "operator": "virta",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/287963",
+   "updated": "2023-12-09"
+  },
+  {
+   "id": "ocm-287964",
+   "name": "OMV Bubanj Potok",
+   "address": "Astrid Lindgren, Gradska opština Grocka",
+   "latitude": 44.707369,
+   "longitude": 20.568047,
+   "operator": "omv",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/287964",
+   "updated": "2023-12-09"
+  },
+  {
+   "id": "ocm-287965",
+   "name": "BIG Shopping Center Kruševac",
+   "address": "Krfska",
+   "latitude": 43.569544,
+   "longitude": 21.339514,
+   "operator": "virta",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 180.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/287965",
+   "updated": "2023-12-09"
+  },
+  {
+   "id": "ocm-287967",
+   "name": "BIG Shopping Center Zrenjanin",
+   "address": "Bulevar Veljka Vlahovića",
+   "latitude": 45.378199,
+   "longitude": 20.353936,
+   "operator": "virta",
+   "operatorName": "VIRTA",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 120.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/287967",
+   "updated": "2023-12-09"
+  },
+  {
+   "id": "ocm-296382",
+   "name": "Lidl Zlatibor",
+   "address": "23, Zlatibor",
+   "latitude": 43.728749,
+   "longitude": 19.707736,
+   "operator": "lidl",
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 22.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 22.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/296382",
+   "updated": "2025-10-30"
+  },
+  {
+   "id": "ocm-302428",
+   "name": "Parking",
+   "address": "Gospodar Jovanova, Cacak",
+   "latitude": 43.892602,
+   "longitude": 20.348804,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/302428",
+   "updated": "2024-08-08"
+  },
+  {
+   "id": "ocm-31458",
+   "name": "Serbien (Säule 1)",
+   "address": "Serbien (Säule 1), Belgrad",
+   "latitude": 44.811207,
+   "longitude": 20.431094,
+   "operator": null,
+   "operatorName": "Essent (NL)",
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 11.0,
+     "count": 2
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/31458",
+   "updated": "2016-01-19"
+  },
+  {
+   "id": "ocm-475322",
+   "name": "Žitna",
+   "address": "Žitna",
+   "latitude": 43.648998,
+   "longitude": 20.912459,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 2
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/475322",
+   "updated": "2026-02-11"
+  },
+  {
+   "id": "ocm-475501",
+   "name": "Moravski koridor",
+   "address": "Moravski koridor",
+   "latitude": 43.619718,
+   "longitude": 21.022297,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 2
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/475501",
+   "updated": "2026-02-08"
+  },
+  {
+   "id": "ocm-475685",
+   "name": "Miodraga Petrovića Čkalje",
+   "address": "Miodraga Petrovića Čkalje",
+   "latitude": 43.586598,
+   "longitude": 21.231262,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 60.0,
+     "count": 2
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/475685",
+   "updated": "2026-02-11"
+  },
+  {
+   "id": "ocm-475708",
+   "name": "Relax Vuckovic",
+   "address": "Bukovica bb",
+   "latitude": 43.61015,
+   "longitude": 20.18822,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 11.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/475708",
+   "updated": "2026-02-11"
+  },
+  {
+   "id": "ocm-478966",
+   "name": "A4",
+   "address": "A4",
+   "latitude": 43.253085,
+   "longitude": 22.167113,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/478966",
+   "updated": "2026-03-01"
+  },
+  {
+   "id": "ocm-478967",
+   "name": "A4",
+   "address": "A4",
+   "latitude": 43.251598,
+   "longitude": 22.168867,
+   "operator": "orion",
+   "operatorName": "Orion Telekom (Serbia)",
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 75.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/478967",
+   "updated": "2026-03-01"
+  },
+  {
+   "id": "ocm-48798",
+   "name": "Merkator Centar Novi Sad",
+   "address": "Bulevar Oslobodjenja 102, Novi Sad",
+   "latitude": 45.242805,
+   "longitude": 19.840708,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": null,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/48798",
+   "updated": "2015-07-02"
+  },
+  {
+   "id": "ocm-75741",
+   "name": "CEEFOR",
+   "address": "Bulevar oslobođenja 103, Beograd",
+   "latitude": 44.781884,
+   "longitude": 20.467656,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/75741",
+   "updated": "2025-06-15"
+  },
+  {
+   "id": "ocm-77175",
+   "name": "Business Park",
+   "address": "Industrijska zona bb, Backi Petrovac, Serbia, Backi Petrovac Municipality",
+   "latitude": 45.347666,
+   "longitude": 19.583429,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "other",
+     "current": "ac",
+     "powerKW": 9.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/77175",
+   "updated": "2017-03-02"
+  },
+  {
+   "id": "ocm-79019",
+   "name": "Square Nine Hotel Belgrade",
+   "address": "Studentski TRG 9, Beograd",
+   "latitude": 44.819485,
+   "longitude": 20.456304,
+   "operator": "tesla",
+   "operatorName": "Tesla (Tesla-only charging)",
+   "connectors": [
+    {
+     "type": "tesla",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "customers",
+   "url": "https://openchargemap.org/site/poi/details/79019",
+   "updated": "2018-10-03"
+  },
+  {
+   "id": "ocm-84440",
+   "name": "Alex Galan",
+   "address": "Baje Pivljanina 75-B, Belgrade",
+   "latitude": 44.759813,
+   "longitude": 20.452903,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "other",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "customers",
+   "url": "https://openchargemap.org/site/poi/details/84440",
+   "updated": "2017-06-07"
+  },
+  {
+   "id": "ocm-94048",
+   "name": "ADAŠEVCI Toll station - Šid",
+   "address": "A3, Šid",
+   "latitude": 45.048383,
+   "longitude": 19.189283,
+   "operator": null,
+   "operatorName": null,
+   "connectors": [
+    {
+     "type": "ccs2",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "chademo",
+     "current": "dc",
+     "powerKW": 50.0,
+     "count": 1
+    },
+    {
+     "type": "type2",
+     "current": "ac",
+     "powerKW": 43.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/94048",
+   "updated": "2019-12-11"
+  },
+  {
+   "id": "ocm-97615",
+   "name": "Hotel Tesla Smart Stay",
+   "address": "42 Sumatovacka, Belgrade",
+   "latitude": 44.795242,
+   "longitude": 20.472455,
+   "operator": "tesla",
+   "operatorName": "Tesla (Tesla-only charging)",
+   "connectors": [
+    {
+     "type": "tesla",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/97615",
+   "updated": "2018-10-04"
+  },
+  {
+   "id": "ocm-97897",
+   "name": "Hyatt Regency Belgrade",
+   "address": "5 Milentija Popovica, Belgrade",
+   "latitude": 44.812861,
+   "longitude": 20.434342,
+   "operator": "tesla",
+   "operatorName": "Tesla (Tesla-only charging)",
+   "connectors": [
+    {
+     "type": "tesla",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/97897",
+   "updated": "2018-10-03"
+  },
+  {
+   "id": "ocm-98070",
+   "name": "Hotel Crowne Plaza Belgrade",
+   "address": "10 Vladimira Popovica, Belgrade",
+   "latitude": 44.809413,
+   "longitude": 20.434753,
+   "operator": "tesla",
+   "operatorName": "Tesla (Tesla-only charging)",
+   "connectors": [
+    {
+     "type": "tesla",
+     "current": "ac",
+     "powerKW": 22.0,
+     "count": 1
+    }
+   ],
+   "access": "public",
+   "url": "https://openchargemap.org/site/poi/details/98070",
+   "updated": "2018-10-03"
+  }
+ ]
+}

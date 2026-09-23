@@ -1,76 +1,46 @@
 {% extends 'base.html' %}
+{% from '_macros.html' import pagehead, lg %}
+{% from '_icons.html' import ic %}
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
-  {"@type": "CollectionPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}/javno-punjenje/", "inLanguage": "sr-Latn", "dateModified": "2026-09-22",
-   "mainEntity": {"@type": "ItemList", "numberOfItems": {{ ops|length }}, "itemListElement": [{% for o in ops %}{"@type": "ListItem", "position": {{ loop.index }}, "name": {{ o.name|tojson }}, "url": "{{ SITE }}{{ o.url }}"}{% if not loop.last %},{% endif %}{% endfor %}]}},
-  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Javno punjenje", "item": "{{ SITE }}/javno-punjenje/"}]}
+  {"@type": "CollectionPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}/javno-punjenje/", "inLanguage": "sr-Latn", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "ItemList", "itemListElement": [{% for o in ops %}{"@type": "ListItem", "position": {{ loop.index }}, "url": "{{ SITE }}{{ o.url }}", "name": {{ o.name|tojson }}}{{ ',' if not loop.last }}{% endfor %}]}
  ]
 }</script>{% endblock %}
-{% block pageclass %} agg-wide{% endblock %}
-{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Javno punjenje · Srbija · {{ index.updated }}</div><h1>Javni punjači u Srbiji: ko ih vodi, koliko košta, gde je besplatno</h1><p>Mreže, aplikacije i domaćini javnih punjača, poslednje zabeležene cene, besplatne lokacije i propisi. Nijedan operater u Srbiji ne objavljuje cenovnik na sajtu, pa uz svaku cenu stoje datum i izvor — i računica koliko je to po kilovat-satu.</p><div class="v3-meta"><span>{{ ops|length }} mreža, aplikacija i domaćina</span><span>Provereno {{ index.updated }}</span><span>Sledeća provera cena: {{ index.next_check }}</span></div><div class="v3-chips"><a href="#cene">Indeks cena</a><a href="#po-minutu">Zašto po minutu</a><a href="/javno-punjenje/besplatni-punjaci/">Besplatni punjači</a><a href="#mape">Mape i aplikacije</a><a href="/javno-punjenje/region/">Punjenje u regionu</a><a href="#propisi">Propisi</a></div></div></div>{% endblock %}
-{% block content %}<div class="bva"><div class="w3">
-<div class="bva-stats">
-<div class="bva-stat"><b>≈220</b><span>javno dostupnih punjača u Srbiji — otprilike jedan na 29.000 stanovnika (021.rs, 03.09.2026)</span></div>
-<div class="bva-stat"><b>36</b><span>državnih punjača na autoputevima, 31 u radu — punjenje je za sada <strong>besplatno</strong> (JP „Putevi Srbije“, 22.09.2026)</span></div>
-<div class="bva-stat"><b>43–79 RSD</b><span>po kWh na četiri računa iz aplikacije Charge&amp;GO (DC punjači, avgust–septembar 2026); kod kuće noću 4–7 RSD</span></div>
+{% block pagehead %}{% call pagehead('Javno punjenje: cene i mreže', 'Koliko košta punjenje na javnim punjačima u Srbiji i gde je besplatno.') %}<div class="ph-actions"><a class="btn dark" href="/mapa/">{{ ic('map') }}Mapa punjača</a><a class="btn" href="/alati/kalkulator-troskova/">{{ ic('calc') }}Kalkulator troškova</a></div>{% endcall %}{% endblock %}
+{% block content %}
+<div class="stats">
+<div class="stat"><b>{{ n_map }}</b><span>javnih punjača na mapi</span></div>
+{% if kwh_range %}<div class="stat"><b>{{ kwh_range }} RSD</b><span>po kWh na brzim punjačima, po stvarnim računima</span></div>{% endif %}
+<div class="stat"><b>{{ putevi_run }} od {{ putevi_n }}</b><span>državnih punjača na autoputevima {{ putevi_verb }}, besplatno</span></div>
 </div>
-<p class="bva-lead">Cena javnog punjenja u Srbiji vidi se tek u aplikaciji, pre pokretanja sesije, i računa se po minutu — pa isti punjač sporijem automobilu naplati skuplji kilovat-sat nego bržem. Ovde je sabrano ono što se može proveriti, sa datumom i izvorom za svaku brojku.</p>
-<p class="bva-disc">BlokVolt vodi tim kompanije Evolako, koja ugrađuje kućne punjače u zgradama i ne bavi se javnim punjenjem. Mreže ne ocenjujemo i ne rangiramo; kartice su poređane po tipu (komercijalne mreže, državni punjači, domaćini, aplikacije, besplatne lokacije), ne po kvalitetu. Kako biramo i proveravamo podatke: <a href="/metodologija/">metodologija</a>.</p>
-
-<h2 id="mreze">Mreže, aplikacije i domaćini</h2>
-<p>„Operator“ vodi punjače i naplatu, „aplikacija“ samo naplaćuje tuđe punjače, a „domaćin“ (benzinska stanica, tržni centar) daje prostor — cene određuje operator. Na istom stubu na OMV-u možete, na primer, platiti preko Charge&amp;GO ili preko aplikacije koju odredi drugi partner.</p>
-<div class="bva-cards agg-grid">
-{% for o in ops %}
-<a class="bva-card agg-card" href="{{ o.url }}"><b>{{ o.name }}</b><span class="agg-meta">{{ o.kind_label }}{% if o.city and o.city != '—' %} · {{ o.city }}{% endif %}</span><span class="agg-price">{{ o.network_short }}</span><span class="agg-vc"><i class="is-{{ o.vclass.get('cenovnik','no') }}">Cenovnik: {{ o.verdicts.get('cenovnik') }}</i><i class="is-{{ o.vclass.get('naplata','no') }}">Naplata: {{ o.verdicts.get('naplata') }}</i></span><span class="agg-chk">provereno {{ o.verified }}</span></a>
-{% endfor %}
+<div class="sec" id="cene"><div class="sec-head"><h2>Cene po mrežama</h2>{% if hist %}<a href="/javno-punjenje/cene/">Istorija cena →</a>{% endif %}</div>
+{% include '_price_summary.html' %}
+<details><summary>Sve zabeležene cene, sa lokacijama ({{ index.rows|length }})</summary>
+{% with rows=index.rows %}{% include '_indeks_tabela.html' %}{% endwith %}
+</details>
 </div>
-
-<h2 id="cene">Indeks cena javnog punjenja</h2>
-<p>Operateri cene ne objavljuju na sajtu, pa ih čitamo iz njihovih aplikacija: cene u tabeli redakcija je videla u aplikacijama Charge&amp;GO, Orion eMobility i Emobility Spectra 22.09.2026 (snimci ekrana), a četiri reda su stvarni računi za punjenja koja je redakcija platila. Charge&amp;GO i Emobility Spectra u aplikaciji navode da cene sadrže PDV. Pre punjenja uvek proverite cenu u aplikaciji: važi iznos prikazan u trenutku pokretanja sesije. Starije zapise korisnika i medija (2021–2025) čuvamo na karticama mreža, kao istoriju cena.</p>
-{% with rows=index.rows, ref_row=True %}{% include '_indeks_tabela.html' %}{% endwith %}{% if hist %}
-<p>Kako su se cene menjale iz meseca u mesec — šta je poskupelo, šta pojeftinilo i šta nije ponovo provereno: <a href="/javno-punjenje/cene/">istorija cena javnog punjenja</a>{% if hist.n_changed %} ({{ hist.n_changed|plural('promena', 'promene', 'promena') }} u poslednjem mesecu){% endif %}.</p>{% endif %}
-<p class="bva-disc">Računica: cena po minutu ÷ (prosečna snaga punjenja u kW ÷ 60); naknada za priključenje nije uračunata. Kod računa je cena po kWh tačna: iznos ÷ isporučeni kWh. Prosečna snaga zavisi od automobila, stanja baterije i temperature — većina automobila na AC punjaču prima najviše 11 kW, a na DC punjaču retko drži maksimalnu snagu duže od nekoliko minuta. Zato uz svaku cenu dajemo dva slučaja: brži i sporiji automobil.</p>
-
-<div class="bva-note"><p><strong>Ista stanica, različita cena.</strong> Punjači Charge&amp;GO vidljivi su i u aplikaciji Orion eMobility, kao roming. Na dan provere (22.09.2026) Super Vero Novi Sad (DC 150 kW) koštao je u Orionu 197 RSD/min + 140 RSD za priključenje, a u aplikaciji Charge&amp;GO 114,17 RSD/min bez te naknade. Ako stanicu vidite u više aplikacija, uporedite cenu pre pokretanja punjenja.</p></div>
-
-<h2 id="po-minutu">Zašto se naplaćuje po minutu, a ne po kWh</h2>
-<p>Po <strong>čl. 210v Zakona o energetici</strong> punjenje vozila je usluga, a ne prodaja struje: pružalac usluge je firma ili preduzetnik koji struju kupuje kao krajnji kupac, pa mu licenca za snabdevanje nije potrebna. Zakon je predvideo da Vlada uredbom propiše tehničke uslove i merenje — prema dostupnim podacima ta uredba još nije doneta, pa naplata po kilovat-satu „sada nije moguća“ (RTS, 03.04.2026). Operateri zato naplaćuju vreme.</p>
-<p>Posledica: na punjaču od 150 kW po 114,17 RSD/min (Charge&amp;GO, 22.09.2026) automobil koji prosečno prima 100 kW plaća oko 69 RSD po kWh, a automobil koji prima 50 kW — oko 137 RSD. Na četiri računa redakcije kilovat-sat je izašao između 43 i 79 RSD. Koliko vas to košta mesečno u odnosu na punjenje kod kuće i na benzin: <a href="/alati/kalkulator-troskova/">kalkulator troškova</a>. Kilovat-sat poskupljuje i zimi i posle 80 % baterije, kad punjenje usporava. Jedinstvena cena ne postoji: tarifa zavisi od operatera, lokacije, snage, registracije korisnika i načina obračuna (B92, 19.06.2026).</p>
-<p>Emobility Spectra ide drugim putem: naplaćuje „jedinicu punjenja“ (45–60 RSD, zavisi od punjača) i 1,20 RSD po minutu. Po objašnjenju u aplikaciji, jedinicu računa punjač iz snage, vremena i profila punjenja; ona nije zakonski overeno merenje i ne odgovara tačno potrošnji u kWh.</p>
-
-<h2 id="mape">Mape i aplikacije</h2>
-<p>Nijedna mapa ne prikazuje cene za Srbiju sistematski; aktuelnu cenu daje samo aplikacija operatera. Za pronalaženje punjača:</p>
-<div class="bva-tw"><table class="bva-tbl"><thead><tr><th>Naziv</th><th>Šta je</th><th>Cene po stanicama</th><th>Napomena</th></tr></thead><tbody>
-<tr><td data-label="Naziv"><a href="https://www.plugshare.com/" rel="noopener nofollow">PlugShare</a></td><td data-label="Šta je">mapa koju popunjavaju korisnici</td><td data-label="Cene"><b class="v ask">Samo ako ih unesu korisnici</b></td><td data-label="Napomena">osnovni sloj većine srpskih mapa — prikazuju je emobilnost.rs i elektricniautomobili.eu</td></tr>
-<tr><td data-label="Naziv"><a href="https://www.electromaps.com/en/charging-stations/serbia" rel="noopener nofollow">Electromaps</a></td><td data-label="Šta je">evropska mapa + privezak Electropass za plaćanje</td><td data-label="Cene"><b class="v no">Ne pominje se</b></td><td data-label="Napomena">150 stanica za Srbiju u bazi (22.09.2026); Charge&amp;GO i NIS označeni kao kompatibilni sa Electropass-om</td></tr>
-<tr><td data-label="Naziv">Google Maps</td><td data-label="Šta je">opšta mapa</td><td data-label="Cene"><b class="v no">Ne pominje se</b></td><td data-label="Napomena">preporučuje je JP „Putevi Srbije“ za državne punjače</td></tr>
-<tr><td data-label="Naziv"><a href="https://evfix.rs/" rel="noopener nofollow">evfix.rs</a></td><td data-label="Šta je">blog i katalog stanica u Vojvodini</td><td data-label="Cene"><b class="v">Da, za pojedine stanice</b></td><td data-label="Napomena">jedini srpski izvor sa cenama po stanicama; poslednje objave februar 2025</td></tr>
-<tr><td data-label="Naziv"><a href="https://ev-charge.rs/" rel="noopener nofollow">ev-charge.rs</a></td><td data-label="Šta je">spisak aplikacija i linkova</td><td data-label="Cene"><b class="v no">Ne pominje se</b></td><td data-label="Napomena">upućuje na Charge&amp;GO, PlugShare, Orion eMobility, eDrive i Google Maps</td></tr>
-<tr><td data-label="Naziv">Aplikacije operatera</td><td data-label="Šta je">Charge&amp;GO, Orion eMobility, Emobility Spectra, eDrive, Tesla</td><td data-label="Cene"><b class="v">Da, pre pokretanja punjenja</b></td><td data-label="Napomena">jedini zvanični izvor aktuelne cene — vidi kartice mreža iznad</td></tr>
-<tr><td data-label="Naziv">Chargemap, A Better Routeplanner, Chargeprice</td><td data-label="Šta je">evropske mape i kalkulatori</td><td data-label="Cene"><b class="v no">Nije potvrđeno</b></td><td data-label="Napomena">pokrivenost i cene za Srbiju nismo potvrdili</td></tr>
-</tbody></table></div>
-
-<h2 id="propisi">Propisi: šta važi i šta se menja</h2>
-<p><strong>Važi sada.</strong> Punjenje je usluga po čl. 210v Zakona o energetici (izmene iz 2021, Sl. glasnik RS 40/2021); izmenama iz 2024. zakon je dobio i definiciju „mesta za punjenje“ — standardizovanog uređaja koji u datom trenutku puni jedno vozilo. Cene javnog punjenja nisu regulisane.</p>
-<p><strong>U pripremi.</strong> Nacrt zakona o uređenju infrastrukture za alternativna goriva (Ministarstvo građevinarstva, saobraćaja i infrastrukture; javna rasprava do 25.06.2026) je srpska verzija evropske uredbe AFIR. Na javnim punjačima od 50 kW i više cena bi se određivala po kWh, uz dozvoljenu naknadu po minuti za zauzeće mesta; cene bi morale da budu jasne, uporedive i nediskriminatorne; uvodi se registar operatera; na koridorima TEN-T punjač najmanje na svakih 60 km (od 150 kW), a gradovi sa 50.000 i više stanovnika dobijaju bar jednu stanicu sa pet mesta u roku od dve godine. Stanje 22.09.2026: usvajanje nije potvrđeno.</p>
-<p><strong>Procedura za postavljanje.</strong> NALED ocenjuje da je procedura za javne punjače „gotovo kao za građevinsku dozvolu“ i predlaže postavljanje samo uz saglasnost Elektrodistribucije i upravljača puta (Biznis.rs, 17.08.2026).</p>
-<div class="bva-note"><p><strong>Punjenje kod kuće i u zgradi</strong> je druga tema — tu se plaća kilovat-sat sa računa, po domaćoj tarifi. Kako se punjač dobija u garaži zgrade i kako se deli struja: <a href="/punjac-u-zgradi-skupstina">skupština i saglasnost</a>, <a href="/ko-placa-struju-za-punjenje">ko plaća struju</a>, <a href="/firme/">ko prodaje i ugrađuje kućne punjače</a>.</p></div>
-
-<h2>Izvori</h2>
-<ul class="bva-src">
-<li><a href="https://www.putevi-srbije.rs/index.php/en/electric-chargers" rel="noopener">JP „Putevi Srbije“ — punjači na autoputevima: 36 postavljeno, 31 u radu, besplatno</a> — provereno 22.09.2026</li>
-<li><a href="https://www.b92.net/automobili/garaza/243280/koliko-kosta-punjenje-elektricnog-automobila-u-srbiji-detaljna-racunica-troskova-na-100-kilometara/vest" rel="noopener">B92, 19.06.2026 — nema jedinstvene cene; državni punjači besplatni, naplata u pripremi</a></li>
-<li><a href="https://rs.bloombergadria.com/ekonomija/srbija/84075/drzavni-punjaci-besplatni-elektricnih-vozila-malo/news" rel="noopener">Bloomberg Adria, 25.07.2025 — državni punjači besplatni, naplata nije zakonski regulisana</a></li>
-<li><a href="https://www.021.rs/info/biznis-i-ekonomija/454118/elektricna-vozila-daleko-od-vozaca-u-srbiji" rel="noopener">021.rs, 03.09.2026 — oko 220 javnih punjača</a></li>
-<li><a href="https://www.rts.rs/lat/vesti/ekonomija/5916187/srbija-elektricna-vozila-.html" rel="noopener">RTS, 03.04.2026 — naplata po kilovat-času „sada nije moguća“</a></li>
-<li><a href="https://www.paragraf.rs/100pitanja/trgovina/uslovi-za-pruzanje-usluge-punjenja-vozila-elektricnom-energijom.html" rel="noopener">Paragraf — uslovi za pružanje usluge punjenja (čl. 210v)</a></li>
-<li><a href="https://www.paragraf.rs/izmene_i_dopune/281124-zakon-o-izmenama-i-dopunama-zakona-o-energetici.html" rel="noopener">Paragraf — izmene Zakona o energetici 2024 (definicija mesta za punjenje)</a></li>
-<li><a href="https://forbes.n1info.rs/biznis/zakon-crta-mrezu-punjaca-gde-ce-se-sirom-srbije-puniti-baterije-a-gde-vodonik-i-utecnjeni-gas/" rel="noopener">Forbes Srbija, 10.06.2026 — Nacrt zakona o infrastrukturi za alternativna goriva</a></li>
-<li><a href="https://oie.rs/nacrt-zakona-o-uvodjenju-infrastrukture-za-alternativna-goriva-solarni-punjaci-pametno-punjenje-vodonik/" rel="noopener">OIE Srbija, 10.06.2026 — odredbe nacrta (cena po kWh, registar, TEN-T)</a></li>
-<li><a href="https://biznis.rs/vesti/srbija/u-srbiji-7-200-elektricnih-automobila-a-procedura-za-punjace-gotovo-kao-za-gradjevinsku-dozvolu/" rel="noopener">Biznis.rs, 17.08.2026 — NALED o proceduri za punjače</a></li>
-<li><a href="https://www.electromaps.com/en/charging-stations/serbia" rel="noopener">Electromaps — stanice u Srbiji</a> — provereno 22.09.2026</li>
-<li>Cene po operaterima — izvori su navedeni u tabeli i na stranicama pojedinačnih mreža.</li>
-</ul>
-<p class="bva-disc">Imate snimak ekrana cene iz aplikacije (Charge&amp;GO, Orion eMobility ili druge) sa datumom i lokacijom? Pošaljite ga na <a href="/ispravka/">stranici za ispravke</a> — dopunjujemo indeks i beležimo u <a href="/izmene/">dnevniku izmena</a>.</p>
-</div></div>{% endblock %}
+<div class="sec"><div class="sec-head"><h2>Mreže i aplikacije</h2></div>
+<div class="rows">{% for o in ops %}<a class="row" href="{{ o.url }}">{{ lg(o) }}<div><h3>{{ o.name }}</h3><div class="sub">{{ o.kind_label }}{% if o.card %} · {{ o.card }}{% endif %}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
+</div>
+<div class="sec faq"><div class="sec-head"><h2>Pitanja</h2></div>
+<details><summary>Zašto se plaća po minutu, a ne po kWh?</summary>
+<p>Po čl. 210v Zakona o energetici punjenje je usluga, a ne prodaja struje. Uredba o merenju još nije doneta, pa naplata po kWh „sada nije moguća“ (RTS, 03.04.2026). Mreže zato naplaćuju vreme.</p>
+<p>Zato kWh košta više kad auto puni sporije: auto koji na brzom punjaču prima 50 kW plaća po kWh duplo više od auta koji prima 100 kW.</p>
+</details>
+<details><summary>Kako se plaća?</summary>
+<p>Kroz aplikaciju mreže: platnom karticom, pripejd saldom, RFID karticom ili QR kodom na punjaču. Tačnu cenu aplikacija pokazuje pre pokretanja punjenja. Ista stanica može biti skuplja u tuđoj aplikaciji (roming) — uporedite pre punjenja.</p>
+</details>
+<details><summary>Gde je besplatno?</summary>
+<p>Državni punjači JP „Putevi Srbije“ na autoputevima su za sada besplatni, kao i Lidl na Limanu u Novom Sadu (do 60 minuta dnevno). Spisak: <a class="lnk" href="/javno-punjenje/besplatni-punjaci/">besplatni punjači</a>.</p>
+</details>
+<details><summary>Šta se menja u propisima?</summary>
+<p>Nacrt zakona o infrastrukturi za alternativna goriva (javna rasprava do 25.06.2026) predviđa cenu po kWh na punjačima od 50 kW i više, registar operatera i punjač na svakih 60 km koridora TEN-T. Na dan 22.09.2026 usvajanje nije potvrđeno.</p>
+</details>
+<details><summary>Koliko je to u odnosu na punjenje kod kuće?</summary>
+<p>Kod kuće noću kWh košta {{ nt_green }} RSD u zelenoj i {{ nt_blue }} RSD u plavoj zoni, sa svim naknadama i PDV-om. Računica za vaš auto: <a class="lnk" href="/alati/kalkulator-troskova/">kalkulator troškova</a>.</p>
+</details>
+</div>
+<div class="sec"><p class="note">Imate snimak cene iz aplikacije sa datumom i lokacijom? Pošaljite ga na <a class="lnk" href="mailto:hello@blokvolt.com">hello@blokvolt.com</a>. Punjenje u regionu: <a class="lnk" href="/javno-punjenje/region/">Hrvatska, Mađarska, BiH, Crna Gora, Makedonija</a>.</p></div>
+{% endblock %}

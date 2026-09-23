@@ -1,31 +1,27 @@
 {% extends 'base.html' %}
+{% from '_macros.html' import pagehead %}
+{% from '_icons.html' import ic %}
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
-  {% for d in datasets %}{"@type": "Dataset", "name": {{ d.title|tojson }}, "description": {{ d.desc|tojson }}, "url": "{{ SITE }}{{ path }}", "inLanguage": "sr-Latn", "isAccessibleForFree": true, "license": "https://creativecommons.org/licenses/by/4.0/", "creator": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}, "dateModified": "{{ ISO_TODAY }}", "distribution": {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "{{ SITE }}/preuzimanje/{{ d.name }}"}},
-  {% endfor %}{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Podaci za preuzimanje", "item": "{{ SITE }}{{ path }}"}]}
+  {% for d in datasets %}{"@type": "Dataset", "name": {{ d.title|tojson }}, "description": {{ d.desc|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "isAccessibleForFree": true, "license": "https://creativecommons.org/licenses/by/4.0/", "creator": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}, "dateModified": "{{ ISO_TODAY }}", "distribution": {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "{{ SITE }}/preuzimanje/{{ d.name }}"}},
+  {% endfor %}{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Podaci za preuzimanje", "item": "{{ SITE }}{{ canon }}"}]}
  ]
 }</script>{% endblock %}
-{% block hero %}<div class="v3-ph"><div class="w3"><div class="v3-kick">Podaci · preuzimanje · {{ TODAY }}</div><h1>Podaci za preuzimanje</h1><p>Sve što BlokVolt objavljuje kao tabelu možete skinuti kao CSV i koristiti u svom radu — u tekstu, analizi, seminarskom radu ili aplikaciji. Besplatno, bez registracije, uz navođenje izvora. Uz svaki red ide link na stranicu sa koje je podatak prepisan i datum provere, tako da svaki broj može da se proveri.</p><div class="v3-meta"><span>{{ datasets|length|plural("tabela", "tabele", "tabela") }}</span><span>CSV, UTF-8, tačka-zarez</span><span>CC BY 4.0</span></div><div class="v3-chips"><a href="#tabele">Tabele</a><a href="#licenca">Licenca</a><a href="/metodologija/">Metodologija</a><a href="/ispravka/">Prijavite grešku</a></div></div></div>{% endblock %}
-{% block content %}<div class="bva"><div class="w3">
-<h2 id="tabele">Tabele</h2>
-<div class="bva-cards agg-grid">
-{% for d in datasets %}
-<a class="bva-card agg-card" href="/preuzimanje/{{ d.name }}" download><b>{{ d.title }}</b><span class="agg-meta">CSV · {{ d.rows|plural('red', 'reda', 'redova') }} · {{ d.kb|sr(1) }} KB</span><span>{{ d.desc }}</span><span class="agg-chk">Ažurira se {{ d.cadence }}</span></a>
-{% endfor %}
+{% block pagehead %}{{ pagehead('Podaci za preuzimanje', 'Tabele sa sajta u CSV formatu, besplatno, uz navođenje izvora.') }}{% endblock %}
+{% block content %}
+<div class="rows">{% for d in datasets %}<a class="row" href="/preuzimanje/{{ d.name }}" download><span class="lg mono" aria-hidden="true">{{ ic('download') }}</span><div><h3>{{ d.title }}</h3><div class="sub">{{ d.desc }}</div></div><div class="val">CSV<small>{{ d.rows|plural('red', 'reda', 'redova') }} · {{ d.kb|sr(1) }} KB</small></div></a>{% endfor %}</div>
+<div class="sec">
+<details><summary>Kako otvoriti fajl</summary>
+<p>UTF-8, razdvajač je tačka-zarez: u srpskom Excelu se otvara dvoklikom. U Google Sheets: Datoteka → Uvezi, razdvajač „tačka-zarez“. U Pythonu: <code>pandas.read_csv("blokvolt-firme.csv", sep=";")</code>.</p>
+<p>Cene su brojevi bez razdvajača hiljada, a valuta je u imenu kolone (<code>cena_rsd</code>, <code>cena_od_eur</code>). Prazno polje znači da podatak nije objavljen, a ne nulu.</p>
+</details>
+<details><summary>Licenca</summary>
+<p><a class="lnk" href="https://creativecommons.org/licenses/by/4.0/deed.sr_LATN" rel="noopener">CC BY 4.0</a>: podatke smete da koristite i objavljujete, i komercijalno, uz navođenje izvora „BlokVolt, blokvolt.rs“. Lokacije punjača sa mape imaju posebnu licencu ODbL (OpenStreetMap): <a class="lnk" href="/assets/map/punjaci.json">punjaci.json</a>.</p>
+</details>
+<details><summary>Šta podaci nisu</summary>
+<p>Nisu zvanična statistika. U tabelama je ono što su firme javno objavile na dan provere, a datum stoji uz svaki red. Firme se ne rangiraju i ne ocenjuju.</p>
+</details>
 </div>
-<h2>Kako da otvorite fajl</h2>
-<p>Fajlovi su u UTF-8 kodiranju sa tačka-zarezom kao razdvajačem, pa se u srpskoj verziji Excela otvaraju dvoklikom, bez čarobnjaka za uvoz. U Google Sheets idite na <em>Datoteka → Uvezi → Otpremi</em> i izaberite razdvajač „tačka-zarez“. U Pythonu: <code>pandas.read_csv("blokvolt-firme.csv", sep=";")</code>.</p>
-<p>Cene su zapisane kao brojevi bez razdvajača hiljada, valuta je u imenu kolone (<code>cena_rsd</code>, <code>cena_od_eur</code>). Prazno polje znači da podatak nije javno objavljen — ne da je nula.</p>
-
-<h2 id="licenca">Licenca i navođenje izvora</h2>
-<p>Podaci su objavljeni pod licencom <a href="https://creativecommons.org/licenses/by/4.0/deed.sr_LATN" rel="noopener">Creative Commons Attribution 4.0</a>: smete da ih koristite, menjate i objavljujete, i u komercijalne svrhe, uz navođenje izvora. Dovoljno je: <em>Izvor: BlokVolt, blokvolt.rs</em> — a ako je tekst na sajtu, link je lepši od običnog pomena.</p>
-<p>Sami brojevi su činjenice sa javnih stranica prodavaca, uvoznika i operatera i nisu ničije autorsko delo; licenca se odnosi na ovu zbirku — na to što su prikupljeni, svedeni na iste kolone i datirani.</p>
-
-<h2>Šta ovi podaci nisu</h2>
-<p>Nisu zvanična statistika i nisu potpuni: u tabelama je ono što je firma sama javno objavila na dan provere. Cena koja nije objavljena ostaje prazna, a ne procenjena. Akcije traju kratko, cenovnici se menjaju bez najave, a poneka firma promeni ponudu između dve naše provere — zato uz svaki red stoji datum. Ako pravite analizu, navedite i taj datum, ne samo izvor.</p>
-<p>Ne rangiramo firme i ne objavljujemo ocene, pa ih nema ni u fajlovima. Kako biramo šta ulazi u registar i šta ne objavljujemo, piše u <a href="/metodologija/">metodologiji</a>.</p>
-
-<h2>Greška u podacima</h2>
-<p>Ako nađete netačan podatak — vaš ili tuđi — <a href="/ispravka/">javite nam</a>. Ispravljamo i beležimo izmenu u <a href="/izmene/">dnevniku</a>, a novi CSV se pravi pri svakom objavljivanju sajta. Ako vam treba format koji ovde ne postoji (JSON, drugi razdvajač, istorija cena), pišite — napravićemo ako ima smisla.</p>
-</div></div>{% endblock %}
+<p class="upd">Fajlovi se prave pri svakom ažuriranju sajta · <a href="/ispravka/">Prijavite grešku</a></p>
+{% endblock %}

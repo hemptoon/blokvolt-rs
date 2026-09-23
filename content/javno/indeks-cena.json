@@ -400,12 +400,12 @@
   {
    "op": "putevi-srbije",
    "op_name": "JP „Putevi Srbije“",
-   "where": "autoputevi, 31 punjač u radu",
-   "charger": "DC 40–300 kW",
+   "where": "autoputevi, radi 24 od 36 punjača",
+   "charger": "DC 40–120 kW",
    "free": true,
    "label": "besplatno",
    "who": "",
-   "date": "22.09.2026",
+   "date": "23.09.2026",
    "source": "putevi-srbije.rs",
    "url": "https://www.putevi-srbije.rs/index.php/en/electric-chargers",
    "conf": "primarni izvor"

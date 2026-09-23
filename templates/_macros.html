@@ -1,0 +1,27 @@
+{% from '_icons.html' import ic %}
+
+{# Page head: breadcrumbs, H1, one-line lead, optional meta line and actions (call block). #}
+{% macro pagehead(h1, lead=None, crumbs=None, meta=None, cls='') -%}
+<div class="ph {{ cls }}" data-bv-note><div class="wrap">
+{% if crumbs %}<nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a>{% for href, name in crumbs %}<span aria-hidden="true">›</span>{% if href %}<a href="{{ href }}">{{ name }}</a>{% else %}<span>{{ name }}</span>{% endif %}{% endfor %}</nav>{% endif %}
+<h1>{{ h1 }}</h1>
+{% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
+{% if meta %}<p class="meta">{{ meta }}</p>{% endif %}
+{% if caller is defined %}{{ caller() }}{% endif %}
+</div></div>
+{%- endmacro %}
+
+{# Company / network logo in a square box; monogram when there is no logo file. #}
+{% macro lg(e, size='') -%}
+{% if e.logo %}<span class="lg w {{ size }}{% if e.logo_dark %} dark{% endif %}"><img src="{{ e.logo }}" alt="{{ e.name }}" loading="lazy" decoding="async"></span>{% else %}<span class="lg w mono {{ size }}" aria-hidden="true" translate="no">{{ e.name|mono }}</span>{% endif %}
+{%- endmacro %}
+
+{# Folded sources block for any page. items: [{url, label, date}] #}
+{% macro sources(items, title='Izvori') -%}
+{% if items %}<details class="src"><summary>{{ title }} ({{ items|length }})</summary><ul>{% for s in items %}<li>{% if s.url %}<a href="{{ s.url }}" rel="noopener nofollow">{{ s.label }}</a>{% else %}{{ s.label }}{% endif %}{% if s.date %} — {{ s.date }}{% endif %}</li>{% endfor %}</ul></details>{% endif %}
+{%- endmacro %}
+
+{# "Izdvojeno" box: a clearly marked promotion. #}
+{% macro promo(text, href, link) -%}
+<div class="promo"><span class="badge feat">Izdvojeno</span><p>{{ text }} <a class="lnk" href="{{ href }}" rel="noopener">{{ link }}</a></p></div>
+{%- endmacro %}

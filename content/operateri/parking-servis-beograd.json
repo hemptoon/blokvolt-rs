@@ -60,5 +60,11 @@
  "notes": "Planirane lokacije iz 2021 (Masarikova, Zeleni venac, Belvil) nismo proverili.",
  "card": "3 garaže · plaća se samo parking",
  "kind_label": "Besplatno punjenje",
- "publish": true
+ "publish": true,
+ "short_name": "Parking servis Beograd",
+ "lead": "Punjači u javnim garažama u Beogradu: struja se ne naplaćuje, plaća se parking.",
+ "network_short": "garaža Obilićev venac, 6 mesta",
+ "power_short": "AC 22 kW",
+ "billing_short": "Plaća se samo parking (2021: 100 RSD po satu).",
+ "payment_short": "Naplata parkinga u garaži"
 }
