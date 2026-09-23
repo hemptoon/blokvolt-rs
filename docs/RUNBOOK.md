@@ -249,6 +249,7 @@ group) only when the firm's own site confirms what it sells, otherwise set `excl
 contact firms to verify — no calls, e-mails or forms to firms or operators without a separate,
 explicit go-ahead from the owner (decision of 23.09.2026).
 After the full pass set `firms_checked` in `content/data/site.json`, log in `izmene.md`, add a news item.
+In the same quarterly run refresh blokvolt.com (section 3.10): the five country files, the four facts per country and the check date, then build and publish it.
 
 ### 3.8 Site search index
 
