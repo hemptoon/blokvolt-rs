@@ -1,0 +1,44 @@
+{
+ "items": [
+  {
+   "slug": "peugeot-e-2008",
+   "file": "Peugeot e-2008 GT P24 Onyx Black (1).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Peugeot_e-2008_GT_P24_Onyx_Black_(1).jpg",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "au": "Damian B Oh",
+   "w": 3807,
+   "h": 2856
+  },
+  {
+   "slug": "renault-4-e-tech",
+   "file": "Renault 4 E-Tech Electric - 02 (cropped).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Renault_4_E-Tech_Electric_-_02_(cropped).jpg",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "au": "Y.Leclercq",
+   "w": 3376,
+   "h": 2288
+  },
+  {
+   "slug": "mercedes-benz-eqe-suv",
+   "file": "MERCEDES-BENZ EQE SUV China (4).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:MERCEDES-BENZ_EQE_SUV_China_(4).jpg",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "au": "Dinkun Chen",
+   "w": 6840,
+   "h": 3794
+  },
+  {
+   "slug": "mercedes-benz-eqa",
+   "file": "Mercedes-Benz H243 EQA 250 Polar White (2).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_H243_EQA_250_Polar_White_(2).jpg",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "au": "Damian B Oh",
+   "w": 4032,
+   "h": 3024
+  }
+ ]
+}
