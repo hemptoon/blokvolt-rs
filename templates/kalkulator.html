@@ -67,9 +67,10 @@
 <p class="bva-disc">Tekst i kalkulator pripremljeni su uz pomoć AI alata; tarife, cene i formule proverila je redakcija BlokVolta. Nije finansijski savet. Grešku prijavite na <a href="/ispravka/">stranici za ispravke</a>.</p>
 </div></div>
 <script id="calc-data" type="application/json">{{ calc_json|safe }}</script>
+<script id="bv-i18n" type="application/json">{"dizel": "Evrodizel", "benzin": "Benzin", "mes": "RSD mesečno", "god": "RSD godišnje", "zone": "Punjenje kod kuće dodaje oko {kwh} kWh mesečno na vaš račun. Zelena zona važi do 350 kWh, plava do 1.200 kWh — proverite na računu gde završavate."}</script>
 <script>
 (function(){
- var D=JSON.parse(document.getElementById('calc-data').textContent),E=D.eps;
+ var D=JSON.parse(document.getElementById('calc-data').textContent),E=D.eps,T=JSON.parse(document.getElementById('bv-i18n').textContent);
  function $(id){return document.getElementById(id)}
  function num(id){var v=parseFloat(String($(id).value).replace(',','.'));return isFinite(v)?v:0}
  function fmt(x,d){d=d||0;var s=Math.abs(x).toFixed(d).split('.');s[0]=s[0].replace(/\B(?=(\d{3})+(?!\d))/g,'.');return (x<0?'−':'')+s[0]+(d?','+s[1]:'')}
@@ -85,11 +86,11 @@
   $('o-share').textContent=Math.round(share*100)+' %';
   $('o-ev').textContent=fmt(ev)+' RSD';$('o-ev100').textContent=km>0?fmt(ev/km*100):'0';
   $('o-ice').textContent=fmt(ice)+' RSD';$('o-ice100').textContent=km>0?fmt(ice/km*100):'0';
-  $('o-fuelname').textContent=$('c-fuel').value==='dizel'?'Evrodizel':'Benzin';
-  $('o-save').textContent=fmt(save)+' RSD mesečno';$('o-save-y').textContent=fmt(save*12)+' RSD godišnje';
+  $('o-fuelname').textContent=$('c-fuel').value==='dizel'?T.dizel:T.benzin;
+  $('o-save').textContent=fmt(save)+' '+T.mes;$('o-save-y').textContent=fmt(save*12)+' '+T.god;
   $('o-homekwh').textContent=fmt(homeKwh);$('o-homecost').textContent=fmt(homeCost)+' RSD';
   $('o-pubkwh').textContent=fmt(pubKwh);$('o-pubcost').textContent=fmt(pubCost)+' RSD';$('o-kwcost').textContent=fmt(kwCost)+' RSD';
-  $('o-zone').textContent='Punjenje kod kuće dodaje oko '+fmt(homeKwh)+' kWh mesečno na vaš račun. Zelena zona važi do 350 kWh, plava do 1.200 kWh — proverite na računu gde završavate.';
+  $('o-zone').textContent=T.zone.replace('{kwh}',fmt(homeKwh));
  }
  $('c-zone').addEventListener('change',function(){var c=this.value==='custom';$('w-homecustom').hidden=!c;$('w-tariff').hidden=c;calc()});
  $('c-fuel').addEventListener('change',function(){var dz=this.value==='dizel';$('c-lp').value=dz?D.fuel.dizel:D.fuel.benzin;$('c-l100').value=dz?D.defaults.l100_dizel:D.defaults.l100_benzin;calc()});

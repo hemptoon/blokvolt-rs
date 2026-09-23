@@ -27,6 +27,18 @@ def sr_num(x, d=0):
     return ('−' if float(x) < 0 and round(abs(float(x)), d) != 0 else '') + s_
 env.filters['sr'] = sr_num
 
+def clip(text, n):
+    """Shorten to at most n characters at a word boundary, with an ellipsis."""
+    text = ' '.join(str(text).split())
+    if len(text) <= n:
+        return text
+    head = text[:n + 1]
+    end = head.rfind('. ')
+    if end >= n // 2:                      # a whole sentence fits: stop there
+        return head[:end + 1]
+    cut = text[:n].rsplit(' ', 1)[0].rstrip(',;:–—- ')
+    return cut + '…'
+
 def sr_plural(n, one, few, many):
     """Serbian count agreement: 1 mreža / 2-4 mreže / 5+ mreža."""
     last, last2 = n % 10, n % 100
@@ -359,7 +371,7 @@ add_url('/podaci/', '0.8')
 # 4b) public charging (ring 2)
 for o in operators:
     render('operator.html', o['url'], op=o, title=f"{o['name']} — javno punjenje: cene, naplata, uslovi | BlokVolt",
-           description=f"{o['name']}: {o['short'][:150]} Provereno {o['verified']}.")
+           description=f"{o['name']}: {clip(o['short'], 150)} Provereno {o['verified']}.")
     add_url(o['url'], '0.6')
 # 4b') monthly archive of the price index (content/javno/indeks-arhiva/YYYY-MM.json, written by
 # scripts/snapshot_index.py). Pages appear only from the second archived month on: one frozen page per
@@ -476,7 +488,7 @@ _zgap = max(0.0, _zreal - _zd['pausal'] * _zd['auta'])
 _zerr = _zreal - _zd['pausal'] * _zd['auta']
 if _zerr > 0.5:
     _m = int(-(-(_zd['brojilo'] * _zd['auta']) // _zerr))
-    _zpay = 'mesec dana' if _m <= 1 else (f'{_m} meseci' if _m < 24 else f'{_m / 12:.1f}'.replace('.', ',') + ' godine')
+    _zpay = 'mesec dana' if _m <= 1 else (sr_plural(_m, 'mesec', 'meseca', 'meseci') if _m < 24 else f'{_m / 12:.1f}'.replace('.', ',') + ' godine')
 else:
     _zpay = 'paušal već pokriva trošak'
 _zex = dict(real=_zreal, real_y=_zreal * 12, per_flat=_zper, per_flat_y=_zper * 12,
@@ -486,7 +498,7 @@ _zex = dict(real=_zreal, real_y=_zreal * 12, per_flat=_zper, per_flat_y=_zper * 
 render('kalkulator_zgrada.html', '/alati/racun-u-zgradi/', z=ZG, d=_zd, ex=_zex,
        z_json=json.dumps(ZG, ensure_ascii=False).replace('</', '<\\/'), modified_iso=ISO_TODAY,
        title='Ko koliko plaća punjenje u zgradi — kalkulator zajedničke struje | BlokVolt',
-       description=f"Koliko stanari bez automobila plate tuđe punjenje kad punjač visi na zajedničkom brojilu: računica po stanu, mesečno i godišnje, i za koliko se vrati brojilo. Cene overenog merenja {ZG['meter_cost']['low']:,.0f}–{ZG['meter_cost']['high']:,.0f} RSD.".replace(',', '.'))
+       description=f"Koliko stanari bez automobila plate tuđe punjenje kad punjač visi na zajedničkom brojilu: računica po stanu, mesečno i godišnje, i za koliko se vrati brojilo. Cene overenog merenja {sr_num(ZG['meter_cost']['low'])}–{sr_num(ZG['meter_cost']['high'])} RSD.")
 add_url('/alati/racun-u-zgradi/', '0.8')
 
 CHECKS.append({'name': f'Registar firmi ({len(published)})', 'path': '/firme/', 'updated': FIRMS_CHECKED, 'next': 'kvartalno'})
@@ -527,52 +539,84 @@ render('pretraga.html', '/pretraga/', title='Pretraga sajta | BlokVolt',
        description='Pretraga svih stranica BlokVolta: firme, cene punjača, javno punjenje, podaci, propisi i vodiči.')
 add_url('/pretraga/', '0.3')
 
-# 6) sitemap, robots, redirects, 404
-sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-for u, p, lm in urls:
-    sm.append(f'<url><loc>{u}</loc><lastmod>{lm}</lastmod><priority>{p}</priority></url>')
-sm.append('</urlset>')
-(DIST / 'sitemap.xml').write_text('\n'.join(sm), encoding='utf-8')
+# 6) robots, redirects, headers, 404
 (DIST / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n', encoding='utf-8')
+_dir_redirects = ['/vodici', '/firme', '/podaci', '/javno-punjenje']
 (DIST / '_redirects').write_text('\n'.join([
     '/paketi-i-cene https://www.evolako.rs/paketi-i-cene 301',
     '/proveri-svoju-garazu https://www.evolako.rs/proveri-svoju-garazu 301',
     '/cesta-pitanja https://www.evolako.rs/cesta-pitanja 301',
     '/kontakt https://www.evolako.rs/kontakt 301',
-    '/vodici /vodici/ 301',
-    '/firme /firme/ 301',
-    '/podaci /podaci/ 301',
-    '/javno-punjenje /javno-punjenje/ 301',
+] + [f'{pre}{d} {pre}{d}/ 301' for pre in ('', '/en', '/ru') for d in _dir_redirects] + [
+    '/en /en/ 301',
+    '/ru /ru/ 301',
     '/alati /alati/kalkulator-troskova/ 302',
     '/alati/ /alati/kalkulator-troskova/ 302',
+    '/en/alati /en/alati/kalkulator-troskova/ 302',
+    '/en/alati/ /en/alati/kalkulator-troskova/ 302',
+    '/ru/alati /ru/alati/kalkulator-troskova/ 302',
+    '/ru/alati/ /ru/alati/kalkulator-troskova/ 302',
     '/kalkulator /alati/kalkulator-troskova/ 301',
     'https://blokvolt.rs/* https://www.blokvolt.rs/:splat 301',
 ]) + '\n', encoding='utf-8')
 (DIST / '_headers').write_text('/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n', encoding='utf-8')
-render('article.html', '/404.html', crumb=None, meta={'title': 'Stranica nije pronađena', 'kicker': 'Greška 404', 'updated': ''}, body='<p class="bva-lead">Ta stranica ne postoji ili je premeštena.</p><p>Probajte <a href="/firme/">registar firmi</a>, <a href="/javno-punjenje/">javno punjenje</a>, <a href="/vodici/">vodiče</a> ili <a href="/podaci/">podatke</a>.</p>', title='404 | BlokVolt', description='', sources=[])
+render('article.html', '/404.html', crumb=None, meta={'title': 'Stranica nije pronađena', 'kicker': 'Greška 404', 'updated': ''}, body='<p class="bva-lead">Ta stranica ne postoji ili je premeštena.</p><p>Probajte <a href="/firme/">registar firmi</a>, <a href="/javno-punjenje/">javno punjenje</a>, <a href="/vodici/">vodiče</a> ili <a href="/podaci/">podatke</a>.</p><p lang="en" translate="no">Page not found — try the <a href="/en/firme/">company register</a> or the <a href="/en/">English home page</a>.</p><p lang="ru" translate="no">Страница не найдена — попробуйте <a href="/ru/firme/">реестр компаний</a> или <a href="/ru/">главную страницу на русском</a>.</p>', title='404 | BlokVolt', description='', sources=[])
 import hashlib as _hl
+import i18n as _i18n
 _ver = {}
-# search index (built from the generated pages, so legacy pages are in it too)
-_index = []
-for _f in sorted(DIST.rglob('*.html')):
-    _rel = '/' + str(_f.relative_to(DIST)).replace('\\', '/')
-    if _rel in ('/404.html', '/pretraga/index.html'):
-        continue
-    _url = _rel[:-len('index.html')] if _rel.endswith('/index.html') else _rel
-    _soup = BeautifulSoup(_f.read_text(encoding='utf-8'), 'html.parser')
-    _t = (_soup.title.string or '').split(' | ')[0].strip() if _soup.title else ''
-    _d = (_soup.find('meta', attrs={'name': 'description'}) or {}).get('content', '')
-    _kick = _soup.find(class_='v3-kick')
-    _h = ' · '.join(h.get_text(' ', strip=True) for h in _soup.find_all(['h2', 'h3'])[:14])
-    _main = _soup.find('div', class_='bva') or _soup.find('main') or _soup
-    for _junk in _main.find_all(['script', 'style', 'nav']):
-        _junk.decompose()
-    _body = re.sub(r'\s+', ' ', _main.get_text(' ', strip=True))
-    _index.append({'u': _url, 't': _t, 'd': _d[:220],
-                   's': _kick.get_text(' ', strip=True).split('·')[0].strip() if _kick else '',
-                   'h': _h[:400], 'b': _body[:1200]})
-(DIST / 'assets' / 'search.json').write_text(json.dumps(_index, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
-print(f'search index: {len(_index)} pages, {(DIST / "assets" / "search.json").stat().st_size // 1024} KB')
+
+
+def build_search(prefix=''):
+    """Search index for one language (built from the generated pages, so legacy pages are in it too)."""
+    idx = []
+    base = DIST / prefix.strip('/') if prefix else DIST
+    for f in sorted(base.rglob('*.html')):
+        rel = '/' + str(f.relative_to(DIST)).replace('\\', '/')
+        if not prefix and rel.startswith(('/en/', '/ru/')):
+            continue
+        if rel in (f'{prefix}/404.html', f'{prefix}/pretraga/index.html'):
+            continue
+        url = rel[:-len('index.html')] if rel.endswith('/index.html') else rel
+        soup = BeautifulSoup(f.read_text(encoding='utf-8'), 'html.parser')
+        t = (soup.title.string or '').split(' | ')[0].strip() if soup.title else ''
+        d = (soup.find('meta', attrs={'name': 'description'}) or {}).get('content', '')
+        kick = soup.find(class_='v3-kick')
+        h = ' · '.join(x.get_text(' ', strip=True) for x in soup.find_all(['h2', 'h3'])[:14])
+        main = soup.find('div', class_='bva') or soup.find('main') or soup
+        for junk in main.find_all(['script', 'style', 'nav']):
+            junk.decompose()
+        body = re.sub(r'\s+', ' ', main.get_text(' ', strip=True))
+        idx.append({'u': url, 't': t, 'd': clip(d, 220), 's': kick.get_text(' ', strip=True).split('·')[0].strip() if kick else '',
+                    'h': h[:400], 'b': body[:1200]})
+    name = 'search.json' if not prefix else f'search-{prefix.strip("/")}.json'
+    (DIST / 'assets' / name).write_text(json.dumps(idx, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    return len(idx), (DIST / 'assets' / name).stat().st_size // 1024
+
+
+_n, _kb = build_search()
+print(f'search index: {_n} pages, {_kb} KB')
+
+# 7) English and Russian versions (scripts/i18n.py, translation memory in content/i18n/)
+I18N = _i18n.render_all(DIST)
+for _l in _i18n.LANGS:
+    _st = I18N.stats[_l]
+    _n, _kb = build_search('/' + _l)
+    print(f'i18n {_l}: {_st["hit"]} segments translated, {_st["miss"]} left in Serbian ({len(_st["missing"])} distinct); search {_n} pages, {_kb} KB')
+
+# 8) sitemap with language alternates
+sm = ['<?xml version="1.0" encoding="UTF-8"?>',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+for u, p, lm in urls:
+    path = u[len(SITE):]
+    langs = ['sr'] + (list(_i18n.LANGS) if I18N.is_page(path) else [])
+    alts = ''
+    if len(langs) > 1:
+        alts = ''.join(f'<xhtml:link rel="alternate" hreflang="{_i18n.HREFLANG[l]}" href="{SITE}{_i18n.lang_url(path, l)}"/>' for l in langs)
+        alts += f'<xhtml:link rel="alternate" hreflang="x-default" href="{u}"/>'
+    for l in langs:
+        sm.append(f'<url><loc>{SITE}{_i18n.lang_url(path, l)}</loc><lastmod>{lm}</lastmod><priority>{p}</priority>{alts}</url>')
+sm.append('</urlset>')
+(DIST / 'sitemap.xml').write_text('\n'.join(sm), encoding='utf-8')
 
 for _a in ('site.css', 'agg.css', 'site.js', 'meganav.js', 'vendor/gsap.min.js'):
     _ver[_a] = _hl.sha1((DIST / 'assets' / _a).read_bytes()).hexdigest()[:10]

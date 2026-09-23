@@ -59,6 +59,7 @@ credentials) — commits go through the owner's browser (section 6).
 | City pages | `content/data/gradovi.json` | One entry per `/gradovi/<slug>/`: `aliases` matched inside a firm's `city` (a firm can belong to several cities), `regions` matched inside a firm's or operator's `coverage`, `loc`/`acc` the Serbian locative and accusative, `nt_region` one of the regions in `kalkulator.json` → `eps.nt_hours`, `note` one paragraph of local fact (HTML allowed). |
 | Firms | `content/firme/<slug>.json` | `verified`, cells/verdicts, `sources`, `brands`. Leads: `"group": "L", "publish": false` (not shown). A checked lead that does not sell home chargers keeps `publish: false` and gets `excluded_reason` (one Serbian sentence) — it is then listed with the reason at the bottom of `/firme/`. |
 | Register sub-hubs by type | `content/data/firme-tipovi.json` + `TYPE_RULES` in `build.py` | Texts of `/firme/ugradnja-punjaca/`, `/firme/prodaja-punjaca/`, `/firme/distributeri-punjaca/`, `/firme/solarni-integratori/`, `/firme/elektricari/` (Jinja strings: `n`, `n_firms`, `checked`, `n_price`, `n_d`, `wb_rows`, `wb_models`, `n_brands`, filter `plural`). Who is on which page is decided in `build.py` from the firm's verdicts, group and `kind` — never by hand. |
+| English and Russian pages | `content/i18n/en.json`, `content/i18n/ru.json`, `content/i18n/STYLE.md` | Translation memory {Serbian segment: translation}. `/en/` and `/ru/` are generated from the Serbian pages at build time by `scripts/i18n.py` — never edit `dist/en` or `dist/ru`. See 3.9. |
 
 `indeks-cena.json` row schema (one row per app + station/tariff):
 
@@ -256,6 +257,46 @@ headings and the first 1.200 characters of body text) and `/pretraga/` searches 
 Nothing to maintain by hand — but if a page should be findable by a word that is not in its text,
 put that word in the page's description.
 
+### 3.9 English and Russian versions (every run that changes text)
+
+`/en/` and `/ru/` are made by `build.py` from the finished Serbian pages (`scripts/i18n.py`). Every piece
+of running text, every visible attribute (alt, title, aria-label, placeholder), the title, the
+descriptions and the JSON-LD names are looked up in the translation memory `content/i18n/en.json` /
+`ru.json` ({Serbian: translation}). Numbers with separators (dates, prices, decimals) become
+placeholders `⟦0⟧`, so a new price or date needs no new translation; a changed sentence does. Text
+without a translation stays Serbian on the EN/RU page — nothing breaks — and the build prints it:
+
+```
+i18n en: 27147 segments translated, 0 left in Serbian (0 distinct)
+```
+
+After every content change:
+
+1. `python3 scripts/i18n.py todo` — writes `content/i18n/todo-en.json` and `todo-ru.json` (key = the
+   Serbian segment, value = the first page it is on) and prints the counts.
+2. Up to ~150 segments: translate them yourself, following `content/i18n/STYLE.md` (same tags and
+   attributes, keep `⟦n⟧` and `{name}` placeholders and entities, numbers as written, proper names
+   unchanged, the terminology table, the offer's package names). Write `{key: translation}` with the
+   keys copied exactly from the todo file to a scratch JSON per language, then
+   `python3 scripts/i18n.py add en <file>` and `python3 scripts/i18n.py add ru <file>`. Rejected lines
+   are printed with the reason — fix them and add again.
+3. More than that (a new section, many new pages): `python3 scripts/i18n.py batches 28000` writes
+   `content/i18n/work/batch-NN.json` ({id, page, sr, en}); translate each batch into
+   `content/i18n/work/out-NN-<lang>.json` ({id: translation}) — parallel subagents, one batch each,
+   English first so the Russian pass gets `en` as a reference — check each with
+   `python3 scripts/i18n.py check <lang> <batch> <out>` and merge with `python3 scripts/i18n.py merge <lang>`.
+   `content/i18n/work/` is scratch and not committed.
+4. Rebuild (`bash scripts/pack.sh`). Both "left in Serbian" counts should be 0 before deploying. If a run
+   has no time for translation, deploy anyway and list the leftovers in the report — those pages show
+   the Serbian sentence until the next run.
+5. Now and then `python3 scripts/i18n.py prune` drops translations of Serbian text that is gone.
+
+Not segments: JavaScript texts live in `<script id="bv-i18n" type="application/json">` blocks in the
+templates (calculators, search). Plain strings there are translated like any segment; objects keyed by
+`sr`/`en`/`ru` (plural forms, month names, quotation marks) are edited in the template itself. Elements
+with `translate="no"` (logo, language menu) are left alone. CSV downloads stay Serbian. Links to
+evolako.rs get `?lang=en|ru`.
+
 ## 4. Build and check
 
 ```bash
@@ -263,7 +304,8 @@ bash scripts/pack.sh      # build.py + check_links.py + /mnt/user-data/outputs/b
 ```
 
 `build.py` also appends `?v=<hash>` to site.css/agg.css/site.js (they are cached for a year). Look at
-the changed pages in `dist/` (grep for the new numbers) before deploying.
+the changed pages in `dist/` (grep for the new numbers) before deploying, and check the two
+`i18n` lines of the build output (3.9).
 
 ## 5. Deploy — Cloudflare Pages, project `blokvolt`, direct upload (owner's browser)
 

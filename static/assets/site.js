@@ -38,9 +38,10 @@ links.forEach(function(a){var id=(a.getAttribute('href')||'').split('#')[1];var 
 function act(){var y=W.scrollY+150,cur=null;secs.forEach(function(s){if(s.el.getBoundingClientRect().top+W.scrollY<=y)cur=s;});secs.forEach(function(s){s.a.classList.toggle('is-active',s===cur);});}
 W.addEventListener('scroll',act,{passive:true});act();
 [].slice.call(d.querySelectorAll('.bva-doc')).forEach(function(doc){
- var b=d.createElement('button');b.type='button';b.className='bva-copy';b.textContent='Kopiraj tekst';
+ var CL=(d.documentElement.lang||'sr').slice(0,2),CT={sr:['Kopiraj tekst','Kopirano ✓'],en:['Copy text','Copied ✓'],ru:['Скопировать текст','Скопировано ✓']}[CL]||['Kopiraj tekst','Kopirano ✓'];
+ var b=d.createElement('button');b.type='button';b.className='bva-copy';b.textContent=CT[0];
  b.addEventListener('click',function(){var t=[].map.call(doc.querySelectorAll('h4,p,li'),function(n){return n.innerText.trim();}).filter(Boolean).join('\n\n');
-  if(W.navigator.clipboard){W.navigator.clipboard.writeText(t).then(function(){b.textContent='Kopirano ✓';setTimeout(function(){b.textContent='Kopiraj tekst';},1800);});}});
+  if(W.navigator.clipboard){W.navigator.clipboard.writeText(t).then(function(){b.textContent=CT[1];setTimeout(function(){b.textContent=CT[0];},1800);});}});
  doc.insertBefore(b,doc.firstChild);});
 if(!W.matchMedia('(prefers-reduced-motion: reduce)').matches){
  var els=[].slice.call(d.querySelectorAll('.bva .w3 > *')).filter(function(el){return el.getBoundingClientRect().top>W.innerHeight;});

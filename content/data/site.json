@@ -20,6 +20,10 @@
  "news": [
   {
    "date": "23.09.2026",
+   "html": "Sajt je sada i na <a href=\"/en/\">engleskom</a> i <a href=\"/ru/\">ruskom</a> — sve stranice, pretraga i kalkulatori. Merodavan je srpski original."
+  },
+  {
+   "date": "23.09.2026",
    "html": "Registar firmi po tipu: <a href=\"/firme/ugradnja-punjaca/\">ugradnja</a>, <a href=\"/firme/prodaja-punjaca/\">prodaja sa javnom cenom</a>, <a href=\"/firme/distributeri-punjaca/\">distributeri i brendovi</a>, <a href=\"/firme/solarni-integratori/\">solar i punjač</a> i <a href=\"/firme/elektricari/\">električari</a>. U registru je sada 51 firma."
   },
   {

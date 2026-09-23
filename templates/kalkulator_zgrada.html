@@ -48,9 +48,12 @@
 <p class="bva-disc">{{ z.meter_cost.note }}</p>
 </div></div>
 <script id="calc-zgrada-data" type="application/json">{{ z_json|safe }}</script>
+<script id="bv-i18n" type="application/json">{"month1": "mesec dana", "months": {"sr": ["mesec", "meseca", "meseci"], "en": ["months", "months", "months"], "ru": ["месяц", "месяца", "месяцев"]}, "years": {"sr": "godine", "en": "years", "ru": "года"}, "covered": "paušal već pokriva trošak", "rest": "ostatak i dalje plaćaju svi stanovi", "over": "paušal je veći od troška za {x} RSD mesečno", "exact": "paušal tačno pokriva trošak"}</script>
 <script>
 (function(){
- var D=JSON.parse(document.getElementById('calc-zgrada-data').textContent);
+ var D=JSON.parse(document.getElementById('calc-zgrada-data').textContent),T=JSON.parse(document.getElementById('bv-i18n').textContent),L=(document.documentElement.lang||'sr').slice(0,2);
+ function tr(v){return (v&&typeof v==='object'&&!Array.isArray(v))?(v[L]||v.sr):v;}
+ function pl(n,f){var l=n%10,l2=n%100;if(L==='en')return n===1?f[0]:f[2];return (l===1&&l2!==11)?f[0]:((l>=2&&l<=4&&(l2<12||l2>14))?f[1]:f[2]);}
  function $(id){return document.getElementById(id);}
  function num(id,def){var v=parseFloat(($(id)||{}).value);return isFinite(v)?v:def;}
  function fmt(x,d){d=d||0;var s=Math.abs(x).toFixed(d).replace(/\B(?=(\d{3})+(?!\d))/g,'.');return (x<0?'−':'')+s;}
@@ -70,15 +73,15 @@
   var owner=perFlat+pausal;
   var monthlyErr=real-pausal*auta;
   var payback;
-  if(monthlyErr>0.5){var m=Math.ceil(brojilo*auta/monthlyErr);payback=m<=1?'mesec dana':(m<24?m+' meseci':(m/12).toFixed(1).replace('.',',')+' godine');}
-  else {payback='paušal već pokriva trošak';}
+  if(monthlyErr>0.5){var m=Math.ceil(brojilo*auta/monthlyErr);payback=m<=1?T.month1:(m<24?m+' '+pl(m,tr(T.months)):(m/12).toFixed(1).replace('.',',')+' '+tr(T.years));}
+  else {payback=T.covered;}
   $('z-o-real').textContent=fmt(real)+' RSD';
   $('z-o-realy').textContent=fmt(real*12);
   $('z-o-perflat').textContent=fmt(perFlat)+' RSD';
   $('z-o-perflaty').textContent=fmt(perFlat*12);
   $('z-o-others').textContent=fmt(others)+' RSD';
   $('z-o-gap').textContent=fmt(gap)+' RSD';
-  $('z-o-gapnote').textContent = gap>0 ? 'ostatak i dalje plaćaju svi stanovi' : (over>0 ? 'paušal je veći od troška za '+fmt(over)+' RSD mesečno' : 'paušal tačno pokriva trošak');
+  $('z-o-gapnote').textContent = gap>0 ? T.rest : (over>0 ? T.over.replace('{x}',fmt(over)) : T.exact);
   $('z-o-payback').textContent=payback;
   $('z-o-owner').textContent=fmt(owner);
   $('z-o-ownerfair').textContent=fmt(ownerFair);

@@ -4,3 +4,5 @@ __pycache__/
 *.pyc
 .DS_Store
 static/assets/fonts/
+content/i18n/work/
+content/i18n/todo-*.json
