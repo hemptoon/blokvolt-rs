@@ -24,6 +24,9 @@
 <div class="sec"><div class="sec-head"><h2>Mreže i aplikacije</h2></div>
 <div class="rows">{% for o in ops %}<a class="row" href="{{ o.url }}">{{ lg(o) }}<div><h3>{{ o.name }}</h3><div class="sub">{{ o.kind_label }}{% if o.card %} · {{ o.card }}{% endif %}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
 </div>
+<div class="sec"><div class="sec-head"><h2>Kako se puni na javnom punjaču</h2></div>
+<div class="sec-fig">{{ yt('vLLw5ZsULYY') }}{{ yt('dK64RmDSSCI') }}</div>
+</div>
 <div class="sec faq"><div class="sec-head"><h2>Pitanja</h2></div>
 <details><summary>Zašto se plaća po minutu, a ne po kWh?</summary>
 <p>Po čl. 210v Zakona o energetici punjenje je usluga, a ne prodaja struje. Uredba o merenju još nije doneta, pa naplata po kWh „sada nije moguća“ (RTS, 03.04.2026). Mreže zato naplaćuju vreme.</p>
@@ -41,6 +44,9 @@
 <details><summary>Koliko je to u odnosu na punjenje kod kuće?</summary>
 <p>Kod kuće noću kWh košta {{ nt_green }} RSD u zelenoj i {{ nt_blue }} RSD u plavoj zoni, sa svim naknadama i PDV-om. Računica za vaš auto: <a class="lnk" href="/alati/kalkulator-troskova/">kalkulator troškova</a>.</p>
 </details>
+</div>
+<div class="sec"><div class="sec-head"><h2>Na putu kroz Srbiju</h2><a href="/javno-punjenje/besplatni-punjaci/">Besplatni punjači →</a></div>
+<div class="sec-fig">{{ fig('odmoriste-brzi-punjaci', 'Brzi punjači na odmorištu uz autoput', sizes='(max-width: 760px) 100vw, 560px') }}{{ yt('8593Y1iQY24') }}</div>
 </div>
 <div class="sec"><p class="note">Imate snimak cene iz aplikacije sa datumom i lokacijom? Pošaljite ga na <a class="lnk" href="mailto:hello@blokvolt.com">hello@blokvolt.com</a>. Punjenje u regionu: <a class="lnk" href="/javno-punjenje/region/">Hrvatska, Mađarska, BiH, Crna Gora, Makedonija</a>.</p></div>
 {% endblock %}

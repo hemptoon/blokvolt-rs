@@ -122,8 +122,56 @@ def front_matter(path):
     return meta, body
 
 
+# ---------------------------------------------------------------- images and videos
+# static/assets/img/<name>-<width>.webp (illustrations, see docs/RUNBOOK.md §3.13); content/data/video.json (YouTube)
+from markupsafe import Markup, escape  # noqa: E402
+from PIL import Image as _PIL  # noqa: E402
+IMG_DIR = ROOT / 'static' / 'assets' / 'img'
+IMGS, IMG_SIZE = {}, {}
+for _p in sorted(IMG_DIR.glob('*.webp')):
+    _m = re.match(r'(.+)-(\d+)\.webp$', _p.name)
+    if _m:
+        IMGS.setdefault(_m.group(1), []).append(int(_m.group(2)))
+for _n, _ws in IMGS.items():
+    _ws.sort()
+    with _PIL.open(IMG_DIR / f'{_n}-{_ws[-1]}.webp') as _im:
+        IMG_SIZE[_n] = _im.size
+VIDEOS = json.load(open(ROOT / 'content' / 'data' / 'video.json', encoding='utf-8'))
+AI_NOTE = 'Ilustracija (AI)'
+
+
+def fig_html(name, alt, caption=None, sizes='(max-width: 820px) 100vw, 760px', cls='', eager=False):
+    """A responsive <figure> for an illustration; caption defaults to the AI note."""
+    ws = IMGS[name]
+    w, h = IMG_SIZE[name]
+    srcset = ', '.join(f'/assets/img/{name}-{x}.webp {x}w' for x in ws)
+    mid = next((x for x in ws if x >= 800), ws[-1])
+    cap = AI_NOTE if caption is None else caption
+    img = (f'<img src="/assets/img/{name}-{mid}.webp" srcset="{srcset}" sizes="{sizes}" width="{w}" height="{h}" alt="{escape(alt)}" '
+           + ('fetchpriority="high" ' if eager else 'loading="lazy" ') + 'decoding="async">')
+    return Markup(f'<figure class="fig {cls}">{img}' + (f'<figcaption>{escape(cap)}</figcaption>' if cap else '') + '</figure>')
+
+
+def yt_html(vid, cls=''):
+    """YouTube video behind a click: nothing loads from YouTube until the reader presses play (bv.js)."""
+    v = VIDEOS[vid]
+    t, ch = escape(v['title']), escape(v['channel'])
+    bg = f'<img class="yt-bg" src="/assets/img/{v["poster"]}-800.webp" alt="" loading="lazy" decoding="async">' if v.get('poster') in IMGS else ''
+    return Markup(f'<figure class="yt {cls}"><button class="yt-play" type="button" data-yt="{vid}">{bg}'
+                  f'<span class="yt-in"><span class="yt-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>'
+                  f'<span class="sr-only">Pusti video:</span><span class="yt-t" translate="no">{t}</span><span class="yt-c">{ch} · YouTube</span></span></button>'
+                  f'<figcaption>Video: {ch}, YouTube. Učitava se tek kad pritisnete.</figcaption></figure>')
+
+
+env.globals['fig'] = fig_html
+env.globals['yt'] = yt_html
+
+
 def md_to_html(text):
     h = markdown.markdown(text, extensions=['tables', 'attr_list', 'md_in_html', 'sane_lists'])
+    # [[yt:ID]] and [[fig:name|alt]] on their own line
+    h = re.sub(r'<p>\[\[yt:([\w-]+)\]\]</p>', lambda m: str(yt_html(m.group(1))), h)
+    h = re.sub(r'<p>\[\[fig:([\w-]+)\|([^\]]+)\]\]</p>', lambda m: str(fig_html(m.group(1), html.unescape(m.group(2)))), h)
     s = BeautifulSoup(h, 'html.parser')
     for t in s.find_all('table'):
         heads = [th.get_text(' ', strip=True) for th in t.find_all('th')]
@@ -494,20 +542,56 @@ MAP_T = {
     'idle': 'Zauzeće posle punjenja: {x}', 'in_view': 'U ovom delu mape: {n}', 'all_serbia': 'Cela Srbija', 'more': 'Prikaži još ({n})',
     'off': 'Ne radi', 'status': 'Stanje punjača', 'st_ok': 'radi', 'st_off': 'ne radi', 'st_kw60': 'do 60 kW',
     'st_dc_only': 'samo DC konektor', 'st_src': 'Po spisku JP „Putevi Srbije“ od {d}',
+    # verification (content/mapa/provera.json, content/mapa/mreze/)
+    'v_ok': 'Potvrđeno', 'v_cg': 'na spisku lokacija mreže Charge&GO', 'v_rm': 'na roming mapi Charge&GO',
+    'v_te': 'na zvaničnom spisku Tesla', 'v_ps': 'na spisku JP „Putevi Srbije“', 'v_g': 'skorašnje ocene vozača na Google mapama',
+    'v_nep': 'Nije potvrđeno', 'v_checked': 'Provereno {d}',
+    'v_none': 'Punjač je samo u otvorenim bazama. Nismo ga našli ni na spisku mreža ni na Google mapama — možda više ne postoji ili nije javan. Proverite pre polaska.',
+    'v_old': 'Punjač je u otvorenim bazama i na Google mapama, ali bez skorijih potvrda: nijedna ocena vozača iz poslednjih godinu dana. Proverite pre polaska.',
+    'v_prob_t': 'Prijavljen kvar', 'v_prob': 'Vozači u skorašnjim recenzijama pišu da punjač ne radi. Proverite pre polaska.',
+    'src_rm': 'Charge&GO roming',
+    # drivers' reports (/api)
+    'rv_title': 'Iskustva vozača', 'rv_empty': 'Još nema prijava za ovaj punjač.', 'ratings': 'ocena: {n}', 'last_report': 'Poslednja prijava',
+    'rv_q': 'Bili ste ovde? Javite kako je.', 'ci_ok': 'Radi', 'ci_problem': 'Radi, uz problem', 'ci_broken': 'Ne radi', 'ci_missing': 'Nema punjača',
+    'rv_rate': 'Ocena', 'rv_comment': 'Komentar', 'rv_comment_ph': 'Kako je prošlo punjenje? (nije obavezno)', 'rv_name': 'Ime ili nadimak (nije obavezno)',
+    'rv_send': 'Pošalji', 'rv_cancel': 'Otkaži', 'rv_rules': 'Bez ličnih podataka, reklama i uvreda.', 'rv_rules_link': 'Pravila',
+    'rv_thanks': 'Hvala! Prijava je sačuvana.', 'rv_thanks_pending': 'Hvala! Prijava je sačuvana, a komentar će biti objavljen posle provere.',
+    'rv_err': 'Slanje nije uspelo. Pokušajte ponovo.', 'rv_limit': 'Previše prijava za danas. Pokušajte sutra.',
+    'report_abuse': 'Prijavi neprikladan komentar', 'report_photo': 'Prijavi fotografiju', 'reported': 'Prijavljeno, hvala.',
+    'add_photo': 'Dodaj fotografiju', 'photo_alt': 'Fotografija punjača',
+    'photo_note': 'Fotografije objavljujemo posle provere. Ne slikajte ljude i tablice izbliza.',
+    'photo_wait': 'Šaljem…', 'photo_thanks': 'Hvala! Fotografija će se pojaviti posle provere.', 'photo_bad': 'Ova slika ne može da se pošalje. Probajte JPEG.',
+    'today': 'danas', 'yesterday': 'juče', 'days_ago': 'pre {n} dana',
 }
+# Serbian notes that come with the price data (cene.json) and the idle fees: added as 'tx:<text>' so that the
+# translation memory translates them on /en/ and /ru/ (map.js looks them up with tr())
+_IDLE = {'chargego': '5 RSD/min posle 15 min', 'orion-emobility': '5 RSD/min posle 15 min', 'emobility-spectra': '10,20 RSD/min posle 10 min (ECO)'}
+_tx = set(_IDLE.values())
+for _n in MAP['nets'].values():
+    _tx.update(x for x in (_n.get('note'), _n.get('free_note')) if x)
+    for _t in _n.get('tiers', []) + _n.get('places', []):
+        _tx.update(x for x in (_t.get('extra'), _t.get('src')) if x)
+    for _rc in _n.get('receipts', []):
+        _tx.update(x for x in (_rc.get('label'),) if x and re.search('[a-zčćžšđ]{3}', x.lower()))
+for _x in sorted(_tx):
+    MAP_T['tx:' + _x] = _x
 CHIP_NETS = ['chargego', 'orion-emobility', 'putevi-srbije', 'tesla', 'emobility-spectra']
 _r0 = MAP['retrieved'].split('-')
 M = {
     'n': MAP['n'],
+    'ok': sum(1 for _s in MAP['stations'] if (_s.get('v') or {}).get('s') == 'ok'),
     'chips': [(s, map_data.NAMES.get(s, s), MAP_COUNTS[s]) for s in CHIP_NETS if MAP_COUNTS.get(s, 0) >= 4],
     'retrieved_sr': f'{_r0[2]}.{_r0[1]}.{_r0[0]}' if len(_r0) == 3 else MAP['retrieved'],
+    'checked': MAP.get('checked', ''),
     'cfg': json.dumps({
         'style': 'https://tiles.openfreemap.org/styles/positron',
         'font': ['Noto Sans Bold'],
         'stations': '/assets/map/punjaci.json?v=' + _ver(DIST / 'assets' / 'map' / 'punjaci.json'),
+        'nets': '/assets/map/mreze.json?v=' + _ver(DIST / 'assets' / 'map' / 'mreze.json'),
+        'api': '/api',
         'prices': '/assets/map/cene.json?v=' + _ver(DIST / 'assets' / 'map' / 'cene.json'),
         'cities': {c['slug']: list(TOWN_XY[c['name']]) for c in CITY_CFG if c['name'] in TOWN_XY},
-        'idle': {'chargego': '5 RSD/min posle 15 min', 'orion-emobility': '5 RSD/min posle 15 min', 'emobility-spectra': '10,20 RSD/min posle 10 min (ECO)'},
+        'idle': _IDLE,
     }, ensure_ascii=False).replace('</', '<\\/'),
     'i18n': json.dumps(MAP_T, ensure_ascii=False),
 }
@@ -577,7 +661,8 @@ for mdf in sorted(glob.glob(str(ROOT / 'content' / 'podaci' / '*.md'))) + sorted
 def A(path, name=None, desc=None, icon='doc'):
     a = ARTICLES.get(path)
     href = canon_of(path)
-    return {'href': href, 'name': name or (a['h1'] if a else path), 'desc': desc or (clip(a['lead'], 120) if a else ''), 'icon': icon}
+    return {'href': href, 'name': name or (a['h1'] if a else path), 'desc': desc or (clip(a['lead'], 120) if a else ''), 'icon': icon,
+            'img': (a['meta'].get('image') if a else None)}
 
 
 VODICI_GROUPS = [
@@ -905,11 +990,11 @@ add_url('/preuzimanje/', '0.5')
 
 # ---------------------------------------------------------------- home, search, 404
 HOME_GUIDES = [
-    {'href': '/punjenje-elektricnog-auta-u-zgradi', 'name': 'Punjenje u zgradi', 'desc': 'Šta je dozvoljeno, kada se pita skupština i koliko se štedi.', 'icon': 'building'},
-    {'href': '/punjac-u-zgradi-skupstina', 'name': 'Odluka skupštine', 'desc': 'Kojom većinom se odlučuje, sa šablonom odluke.', 'icon': 'doc'},
-    {'href': '/ko-placa-struju-za-punjenje', 'name': 'Ko plaća struju', 'desc': 'Brojilo i obračun po ceni sa računa, bez marže.', 'icon': 'coins'},
+    {'href': '/punjenje-elektricnog-auta-u-zgradi', 'name': 'Punjenje u zgradi', 'desc': 'Šta je dozvoljeno, kada se pita skupština i koliko se štedi.', 'icon': 'building', 'img': 'garaza-wallbox'},
+    {'href': '/punjac-u-zgradi-skupstina', 'name': 'Odluka skupštine', 'desc': 'Kojom većinom se odlučuje, sa šablonom odluke.', 'icon': 'doc', 'img': 'skupstina-stanara'},
+    {'href': '/ko-placa-struju-za-punjenje', 'name': 'Ko plaća struju', 'desc': 'Brojilo i obračun po ceni sa računa, bez marže.', 'icon': 'coins', 'img': 'brojilo-ugradnja'},
     {'href': '/podaci/tarife-eps/', 'name': 'Cena struje kod kuće', 'desc': 'Zone, tarife i kada počinje jeftinija struja.', 'icon': 'bolt'},
-    {'href': '/bezbednost-punjenja-atest', 'name': 'Bezbednost i atest', 'desc': 'Zašto ne produžni kabl i šta proverava atest.', 'icon': 'shield'},
+    {'href': '/bezbednost-punjenja-atest', 'name': 'Bezbednost i atest', 'desc': 'Zašto ne produžni kabl i šta proverava atest.', 'icon': 'shield', 'img': 'elektricar-atest'},
 ]
 render('home.html', '/', HOME_GUIDES=HOME_GUIDES, section='',
        title='BlokVolt: punjači, cene i firme za električne automobile u Srbiji',
@@ -949,7 +1034,10 @@ _dir_redirects = ['/vodici', '/firme', '/javno-punjenje', '/mapa', '/cene']
     '/mapa-punjaca /mapa/ 301',
     'https://blokvolt.rs/* https://www.blokvolt.rs/:splat 301',
 ]) + '\n', encoding='utf-8')
-(DIST / '_headers').write_text('/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n', encoding='utf-8')
+(DIST / '_headers').write_text('/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n/admin/*\n  X-Robots-Tag: noindex, nofollow\n  Cache-Control: no-store\n', encoding='utf-8')
+# API: Cloudflare Pages advanced mode (worker/_worker.js, D1 binding DB); only /api/* invokes it
+shutil.copy2(ROOT / 'worker' / '_worker.js', DIST / '_worker.js')
+(DIST / '_routes.json').write_text(json.dumps({'version': 1, 'include': ['/api/*'], 'exclude': []}), encoding='utf-8')
 
 
 # ---------------------------------------------------------------- search index

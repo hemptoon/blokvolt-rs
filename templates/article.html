@@ -10,6 +10,7 @@
 }</script>{% endif %}{% endblock %}
 {% block pagehead %}{{ pagehead(meta.h1 or meta.title, meta.lead, crumbs) }}{% endblock %}
 {% block content %}<div class="prose">
+{% if meta.image %}{{ fig(meta.image, meta.image_alt or '', cls='art-fig', eager=True) }}{% endif %}
 {{ body|safe }}
 {% if promo_box %}{{ promo(promo_box.text, promo_box.href, promo_box.link) }}{% endif %}
 {{ src_block(sources) }}

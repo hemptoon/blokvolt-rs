@@ -1,0 +1,92 @@
+45.04814|19.19316|RS*ORI|2|XX|2026-09-23|Naplatna stanica Šid-Adaševci|Naplatna stanica Šid-Adaševci --|Šid|T2c;CCS|22AC_3_PHASE;75DC
+45.04638|19.22433|RS*ORI|1|X|2026-09-23|Shell Adaševci 1|Na Autoputu E-70 na relaciji Adaševci-Kuzmin --|Adaševci|CCS|360DC
+43.98122|19.56910|RS*ORI|1|O|2026-09-23|MIF PETROL Bajina Bašta|Gmila Priseka 87/1 BAJINA BAŠTA --|Bajina Basta|T2c|22AC_3_PHASE
+44.76733|19.66371|RS*ORI|2|XX|2026-09-23|AC BRAJIC Sabac|SVETOG SAVE 84 Majur --|Шабац|T2o|22AC_3_PHASE
+46.10248|19.67330|RS*ORI|1|X|2026-09-23|Kia centar Subotica|Jovana Mikića 18 Subotica --|Суботица|T2o|22AC_3_PHASE
+46.07162|19.67982|RS*ORI|2|XX|2026-09-23|BEX Subotica 1|Beogradski put 171|Subotica|CCS|90DC
+44.73884|19.69113|RS*ORI|2|XX|2026-09-23|Suvoborska180-002|Suvoborska --|Šabac|CCS|90DC
+43.72826|19.70457|RS*ORI|2|AA|2026-09-23|BMW TO Zlatibor|Miladina Pećinara 2|Zlatibor|CCS|50DC
+44.80815|19.71800|RS*ORI|3|XXX|2026-09-23|JP Putevi Srbije - Sabac 1|Klenak --|Klenak|T2o;CCS|22AC_3_PHASE;60DC
+44.80828|19.71883|RS*ORI|3|XXX|2026-09-23|JP Putevi Srbije - Sabac 2|RP59+8G --|Klenak|T2o;CCS|22AC_3_PHASE;60DC
+46.02044|19.73339|RS*ORI|3|XXX|2026-09-23|„Putevi Srbije” naplatna stanica „Subotica”|naplatna stanica „Subotica” --|Bikovo|T2o;CHA;CCS|44AC_3_PHASE;50DC
+44.85952|19.77475|RS*ORI|3|XXX|2026-09-23|Hrtkovci|VQ5F+RV Hrtkovci --|Hrtkovci|T2o;CCS|22AC_3_PHASE;60DC
+44.96788|19.80860|RS*ORI|6|XXXXXX|2026-09-23|Ruma 1|XR95+MF --|Ruma|T2o;CCS|22AC_3_PHASE;60DC
+45.26911|19.82478|RS*ORI|3|AAA|2026-09-23|OMV Novi Sad|Partizanska --|Novi Sad|T2c;CHA;CCS|22AC_3_PHASE;50DC;75DC
+45.29410|19.83115|RS*ORI|1|X|2026-09-23|Auto Kuca Mikom doo|Temerinski put 22A Novi Sad --|Нови Сад|T2o|22AC_3_PHASE
+46.12498|19.83249|RS*ORI|3|AAA|2026-09-23|NIS Bački Vinogradi|Бачки Виногради --|Бачки Виногради|T2c;CHA;CCS|22AC_3_PHASE;50DC;75DC
+44.27350|19.89452|RS*007|4|AOAA|2026-09-23|E00040|Kneza Mihaila 88|Valjevo|CCS|60.03DC
+44.93451|19.91476|RS*ORI|3|AAA|2026-09-23|OMV Dobrinci - Ruma|Autoput E-70 --|Ruma|T2o;CHA;CCS|22AC_3_PHASE;50DC;75DC
+44.11356|19.99653|RS*007|2|AA|2026-09-23|E00050|Divčibare|Valjevo|CCS|60.03DC
+43.84458|20.03481|RS*ORI|1|X|2026-09-23|Bumix|Vojvode Mišića 50|Požega|T2o|22AC_3_PHASE
+45.05521|20.06743|RS*007|2|AA|2026-09-23|E00045|Novosadski Put 2|Inđija|CCS|50.37DC
+45.14979|20.08263|RS*ORI|2|XX|2026-09-23|OMV Beška|E75 75|Beška|CCS|160DC
+44.88296|20.11267|RS*ORI|2|XX|2026-09-23|Naplatna stanica Simanovci smer Beograd-Sid|Naplatna stanica Simanovci smer Beograd-Sid --|Pecinci|CCS;T2o|75DC;22AC_3_PHASE
+44.87862|20.12203|RS*ORI|2|AA|2026-09-23|BS NIS Krnješevci, autoput Beograd - Zagreb, sm...|Autoput E70 BB --|Unknown|CCS|60DC
+45.00535|20.20148|RS*ORI|2|XX|2026-09-23|Naplatna stanica Stara Pazova|Stara Pazova --|Unknown|T2o;CCS|22AC_3_PHASE;75DC
+44.92063|20.30473|RS*ORI|1|X|2026-09-23|Shell Batajnica 1|Široki Put 95|Batajnica|CCS|360DC
+44.92033|20.30493|RS*ORI|3|XXX|2026-09-23|Shell Batajnica|Siroki Put 95|Beograd|T2o;CHA;CCS|22AC_3_PHASE;60DC
+44.16842|20.31325|RS*ORI|2|XX|2026-09-23|JP Putevi Srbije Lalinci odmoriste|Лалинци --|Лалинци|T2c;CCS|22AC_3_PHASE;75DC
+44.15420|20.32559|RS*ORI|2|XX|2026-09-23|„Putevi Srbije” odmorište „Boljkovci”|Odmorište „Boljkovci“ --|Гостун|CCS|40DC
+43.89846|20.34077|RS*007|2|AA|2026-09-23|E00004|Ilije Garašanina|Čačak|CCS|60.72DC
+44.83181|20.36973|RS*ORI|3|AAA|2026-09-23|NIS Zmaj 1|A1 BG - ZG --|Beograd|T2o;CHA;CCS|22AC_3_PHASE;50DC;75DC
+44.81301|20.39023|RS*007|2|AA|2026-09-23|E00003|Tošin Bunar 272|Beograd|CHA;CCS|62.1DC
+43.93533|20.40224|RS*ORI|3|AAA|2026-09-23|NIS Sokolici 2|Autoput Milos Veliki smer ka Beogradu --|Sokolići|T2o;CHA;CCS|22AC_3_PHASE;50DC;75DC
+45.36982|20.40964|RS*ORI|2|XX|2026-09-23|EVROBROD DOO ZRENJANIN|Pere Dobrinovića 22|Vojvodina|CCS|120DC
+45.37008|20.41016|RS*ORI|1|X|2026-09-23|KPM AUTOMOBILI|PERE DOBRINOVIĆA 26 ZRENJANIN --|Зрењанин|T2o|22AC_3_PHASE
+44.81181|20.41040|RS*ORI|2|XX|2026-09-23|Skoda Auto Cacak|Milutina Milankovica 9 b --|Novi Beograd|CCS;T2o|50DC;22AC_3_PHASE
+43.93540|20.41259|RS*ORI|1|O|2026-09-23|Jevtovic Cars|Prislonica --|Prislonica|T2o|AC_1_PHASE
+44.57848|20.41739|RS*007|1|A|2026-09-23|E00012|Miodraga Vukovica 7|Barajevo|CCS|31.05DC
+44.78598|20.41938|RS*ORI|1|X|2026-09-23|FMC NETS punjac|Мајданска Чукарица 20|Београд|T2c|22AC_3_PHASE
+44.80741|20.41947|RS*ORI|3|XAA|2026-09-23|SIRIUS eksterno|Milutina Milankovića 3V 11070 Novi Beograd --|Beograd|T2o;CCS|22AC_3_PHASE;75DC
+44.80713|20.41972|RS*ORI|2|AA|2026-09-23|SIRIUS Interno|Milutina Milankovića 3V|Београд|T2c;T2o|24AC_3_PHASE;22AC_3_PHASE
+43.89826|20.41978|RS*ORI|1|A|2026-09-23|BS EVOIL Preljina|Ibarski put 118 Preljina --|Preljina|CCS|40DC
+44.80728|20.42005|RS*ORI|1|O|2026-09-23|SIRIUS INTERNO|Milutina Milankovića 3b|Београд|T2c|22AC_3_PHASE
+44.79035|20.42305|RS*007|10|AAAAAAAAAA|2026-09-23|E00023|Bulevar Milutina Milankovića 5|Београд|CCS|90.39DC;31.05DC;80.04DC;60.03DC
+44.80986|20.43109|RS*ORI|18|AAAXAAAAAAAAXXAAAX|2026-09-23|Delta kongresni centar - Sava Centar|Vladimira Popovića 8A|Beograd|T2c;CCS;CHA|11AC_3_PHASE;60DC;22AC_3_PHASE;50DC;75DC;AC_1_PHASE
+44.80920|20.43382|RS*ORI|3|XXA|2026-09-23|Crowne Plaza Hypercharger|Vladimira Popovića 10|Београд|T2o;CHA;CCS|22AC_3_PHASE;50DC;75DC
+44.80943|20.43396|RS*ORI|1|X|2026-09-23|Crowne Plaza 3|Vladimira Popovica 10|Београд|T2o|11AC_3_PHASE
+44.80945|20.43399|RS*ORI|1|X|2026-09-23|Crowne Plaza 1|Vladimira Popovica 10|Београд|T2o|11AC_3_PHASE
+44.80940|20.43426|RS*ORI|1|X|2026-09-23|Crowne Plaza 2|Vladimira Popovica 10|Београд|T2o|11AC_3_PHASE
+44.81229|20.43561|RS*ORI|9|XXXXXXXXX|2026-09-23|Hyatt Regency Belgrade|Milentija Popovića 5|Beograd|CCS;T2c|DC;240DC;60DC;22AC_3_PHASE
+44.76876|20.48587|RS*ORI|3|AAA|2026-09-23|ABB Doo Bulevar Peka Dapcevica 13 Terra|Bulevar Peka Dapčevića 13|Beograd|CHA;CCS;T2c|50DC;22AC_3_PHASE
+44.81069|20.49306|RS*ORI|1|A|2026-09-23|Ehom Auto Severni bulevar 6|Severni bulevar 6 Beograd --|Београд|T2o|22AC_3_PHASE
+44.81635|20.50186|RS*ORI|1|X|2026-09-23|OBD2 centar|Pribojska 44a|Beograd|T2o|11AC_3_PHASE
+44.77679|20.50987|RS*ORI|2|XX|2026-09-23|Konjarnik180-001|Vladimira Tomanovića --|Beograd|CCS|90DC
+44.84989|20.52859|RS*ORI|2|XX|2026-09-23|PancevackiPut180-001|Pancevacki put 60|Beograd|CCS|90DC
+43.15402|20.53238|RS*ORI|3|AAA|2026-09-23|Next Charge|Save Kovacevica 296|Novi Pazar|CCS;T2o|100DC;22AC_3_PHASE
+44.70756|20.56797|RS*ORI|3|AAA|2026-09-23|OMV Bubanj Potok|Astrid Lindgren bb --|Beograd|T2c;CHA;CCS|22AC_3_PHASE;50DC;60DC
+43.68398|20.57456|RS*ORI|1|X|2026-09-23|Hyundai centar „Marić Centar“ d.o.o.|Ibarska 66-68 --|Kraljevo|T2o|22AC_3_PHASE
+44.66549|20.61218|RS*ORI|2|XX|2026-09-23|JP Putevi Srbije - Naplatna stanica Vrčin|Vrcin --|Belgrade|T2o;CCS|22AC_3_PHASE;75DC
+44.66267|20.61325|RS*ORI|2|XX|2026-09-23|Vrčin smer ka Nišu|Милета Церовца 72|Врчин|T2o;CCS|22AC_3_PHASE;75DC
+44.84139|20.66951|RS*ORI|4|XXXX|2026-09-23|Hip-Azotara Pančevo|Spoljnostarčevačka 80|Pančevo|CCS|120DC;80DC
+43.79922|20.79314|RS*ORI|4|XXXX|2026-09-23|Test kinezi|Test kinezi --|Витковац|CCS|160DC;60DC
+44.58296|20.81516|RS*ORI|2|XX|2026-09-23|Jerina odmoriste|Malo Orašje --|Malo Orašje|T2c;CCS|22AC_3_PHASE;75DC
+44.03115|20.81841|RS*ORI|3|XX|2026-09-23|Electrify Serbia|Drača 278|Unknown|T2o|22AC_3_PHASE;AC_1_PHASE
+43.29057|20.81970|RS*ORI|2|AA|2026-09-23|Rtanj Kopaonik Eco Resort & Spa|Kopaonik --|Kopaonik|T2o|22AC_3_PHASE
+44.11349|20.85626|RS*ORI|2|XX|2026-09-23|MIND CHARGHER 120 KW|Aleja Milanovic bb --|Lužnice|CCS|120DC
+43.64948|20.91170|RS*ORI|6|XXXXXX|2026-09-23|Vrnjačka Banja 2|Naplatna stanica Vrnjacka Banja --|Vrnjacka Banja|T2c;CCS;T2o|22AC_3_PHASE;60DC
+44.67204|20.96806|RS*007|2|AA|2026-09-23|E00020|Šalinačka bb|Smederevo|T2o|22.08AC_3_PHASE
+43.61975|21.02203|RS*ORI|6|XXXXXX|2026-09-23|Trstenik 1|Naplatna stanica JP Putevi --|Trstenik|T2o;CCS|22AC_3_PHASE;60DC
+43.58660|21.23115|RS*ORI|3|XXX|2026-09-23|Koševi|Koševi --|Koševi|T2o;CCS|22AC_3_PHASE;60DC
+43.98744|21.26162|RS*ORI|1|X|2026-09-23|Svetozarevo promet doo|Jagodina 35000|Jagodina|T2o|22AC_3_PHASE
+43.98570|21.26361|RS*ORI|2|XX|2026-09-23|BEX Jagodina 1|Kablovska 5|Jagodina|CCS|90DC
+43.60804|21.30840|RS*ORI|3|XXX|2026-09-23|Krusevac Zapad 1|J855+69 Lazarica --|Lazarica|T2c;CCS|22AC_3_PHASE;60DC
+43.60799|21.30860|RS*ORI|3|XXX|2026-09-23|Krusevac Zapad 2|Naplatna Stanica Krusevac Zapad --|Krusevac|CCS;T2c|60DC;22AC_3_PHASE
+43.60554|21.33408|RS*ORI|3|XXX|2026-09-23|Krusevac Istok 2|Naplatna Stanica Kruevac Istok --|Krusevac|T2c;CCS|22AC_3_PHASE;60DC
+43.60550|21.33408|RS*ORI|3|XXX|2026-09-23|Krusevac Istok 1|Naplatna stanica Krusevac Istok --|Krusevac|CCS;T2c|60DC;22AC_3_PHASE
+43.91719|21.36818|RS*ORI|2|XX|2026-09-23|Duo-pro inženjering doo Ćuprija|Braće Nešića 68|Ćuprija|T2o|22AC_3_PHASE
+43.72300|21.42073|RS*ORI|3|XXX|2026-09-23|Ćićevac|Naplatna Stanica Cicevac --|Cicevac|T2o;CCS|22AC_3_PHASE;60DC
+43.67282|21.54818|RO*PLG|2|AA|2026-09-23|E03201|4. Juli 1|Ražanj|T2o|11.04AC_3_PHASE
+43.64179|21.55717|RS*ORI|2|XX|2026-09-23|OMV Razanj|Auto-put E75 --|Razanj|CCS|60DC
+44.65365|21.62791|RS*ORI|2|AA|2026-09-23|Golubački trg|Golubački trg --|Golubac|T2o|22AC_3_PHASE
+42.30262|21.70963|RS*ORI|2|XX|2026-09-23|Putevi Srbije” naplatna stanica „Preševo”|naplatna stanica „Preševo” --|Žujince|CCS;CHA|40DC
+43.39025|21.80162|RS*ORI|2|XX|2026-09-23|Putevi Srbije” auto-put BG-NIŠ|Plato bivše naplatne stanice „Niš” --|Niš|CHA;CCS|120DC
+43.39046|21.80217|RS*ORI|2|XX|2026-09-23|Putevi Srbije” auto-put NIŠ-BG|Plato bivše naplatne stanice „Niš” --|Niš|CHA;CCS|120DC
+43.36767|21.83814|RS*ORI|1|X|2026-09-23|IDEAL AUTO DOO NIS|Stevana Sinđelića 90|Niš|T2o|22AC_3_PHASE
+43.32479|21.91035|RS*ORI|14|AAAAAAAXXXXAAA|2026-09-23|Delta Planet Nis|Bulevar Nemanjića 11b|Niš|T2o|AC_1_PHASE;11AC_3_PHASE
+43.32181|21.93336|RS*ORI|2|XX|2026-09-23|Kemoimpex Vizantijski bulevar BB|Vizantijski bulevar BB Nis --|Niš|T2o|22AC_3_PHASE
+42.59301|22.01330|RS*ORI|2|XX|2026-09-23|Korbevac Odmoriste|Korbevac Odmaraliste --|Unknown|T2c;CCS|22AC_3_PHASE;75DC
+43.40992|22.10353|RS*ORI|2|AA|2026-09-23|Kapija Svrljiga|Душана Тривунца bb --|Сврљиг|T2o|22AC_3_PHASE
+43.25365|22.16636|RS*ORI|2|XX|2026-09-23|JP Putevi Srbije - Crvena reka odmorište ka Niš...|Crvena Reka --|Crvena Reka|T2c;CCS|22AC_3_PHASE;75DC
+43.25149|22.16951|RS*ORI|2|XX|2026-09-23|JP Putevi Srbije - Crvena reka odmoriste ka Pir...|Crvena Reka --|Crvena Reka|T2c;CCS|22AC_3_PHASE;75DC
+43.07922|22.39961|RS*ORI|4|XXX|2026-09-23|Hotel Izvor EV2|Ливађе 10|Извор|T2o|22AC_3_PHASE

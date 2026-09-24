@@ -10,6 +10,8 @@ published: 2026-09-22
 modified: 2026-09-22
 priority: 0.9
 sources: Uredba o uslovima i načinu sprovođenja subvencionisane kupovine novih vozila koja imaju isključivo električni pogon (Sl. glasnik RS 12/2026, 86/2026) :: https://www.paragraf.rs/propisi/uredba-o-uslovima-subvencionisane-kupovine-elektricnih-hibridnih-vozila.html | eUprava — životna situacija „Električna vozila“ (usluge 01107 i 01108) :: https://euprava.gov.rs/%C5%BEivotna-oblast/18/%C5%BEivotna-situacija/184 | Najčešća pitanja i odgovori — Ministarstvo zaštite životne sredine (PDF) :: https://euprava.gov.rs/media/dokumenta/Najcesca_pitanja_odgovori_subvencija_mv.pdf | Biznis.rs, 10.09.2026 — rok produžen do 1. decembra :: https://biznis.rs/vesti/srbija/produzen-rok-za-subvencije-za-elektricna-vozila-prijave-do-1-decembra/ | 021.rs, 12.09.2026 — rok produžen, 170 miliona pre rebalansa :: https://www.021.rs/info/biznis-i-ekonomija/455006/rok-za-subvencije-za-elektricna-vozila-produzen-do-1-decembra | Tanjug, 07.08.2026 — preko 1.000 zahteva, ~600 vozila finansirano :: https://www.tanjug.rs/ekonomija/srbija/271957/pavkov-veliko-interesovanje-za-elektricna-vozila-u-srbiji-1000-prijava-za-subvencije/vest | Paragraf dnevne vesti, 12.02.2026 — 170 miliona dinara za 2026 :: https://www.paragraf.rs/dnevne-vesti/120226/120226-vest10.html | B92, 08.01.2026 — rezultati 2025: 980 odobrenih zahteva :: https://www.b92.net/automobili/visoki-napon/196442/subvencije-dale-rezultat-gotovo-1000-elektricnih-automobila-kupljeno-u-2025-pomoc-stize-i-u-2026/vest
+image: ac-punjac-bulevar
+image_alt: Mali električni auto na punjenju na bulevaru
 ---
 <div class="sum" markdown="1">
 - **5.000 €** za nov električni automobil, oko **586.000 RSD**
@@ -48,6 +50,8 @@ Vozilo mora biti novo: pre zahteva ni registrovano ni korišćeno. Subvencija mo
 Prijave traju od 1. marta. Prvobitni rok, 30. septembar, produžen je uredbom u Sl. glasniku 86/2026. Dokumenta su u čl. 6 st. 2 Uredbe; COC je sertifikat o usaglašenosti.
 
 </details>
+
+[[yt:NY8W52-4xmw]]
 
 ## Stanje budžeta
 

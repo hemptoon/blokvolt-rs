@@ -10,6 +10,8 @@ modified: 2026-09-21
 priority: 0.8
 path: /punjenje-elektricnog-auta-u-zgradi.html
 sources: Zakon o energetici, čl. 210v (punjenje na javnim mestima) :: https://www.paragraf.rs/propisi/zakon_o_energetici.html | Zakon o stanovanju i održavanju zgrada, čl. 12, 44 i 45 :: https://www.paragraf.rs/propisi/zakon_o_stanovanju_i_odrzavanju_zgrada.html | Pravilnik o tehničkim normativima bezbednosti garaža od požara, „Sl. glasnik RS“ 31/2024 i 59/2025 :: https://pravno-informacioni-sistem.rs/eli/rep/sgrs/ministarstva/pravilnik/2024/31/2 | Cenovnik EPS-a za domaćinstva od 1.10.2025 (ceneizakon.rs) :: https://ceneizakon.rs/cena-struje-u-srbiji-2026/
+image: garaza-wallbox
+image_alt: Zidni punjač u podzemnoj garaži stambene zgrade, auto na punjenju
 ---
 <div class="sum" markdown="1">
 - Punjenje u zgradi je **legalno** i ne traži licencu
@@ -63,6 +65,8 @@ Pojačana utičnica radi na običnoj monofaznoj instalaciji i daje 100–180 km 
 Šuko utičnica nije pravljena za sate neprekidnog opterećenja. Pri dužem punjenju na 16 A kontakti i kabl se greju, a u staroj instalaciji temperatura ume da poraste do opasnog nivoa. Namenska linija sa zaštitom to rešava.
 
 </details>
+
+[[yt:YWX9zuDh3tQ]]
 
 ## Česta pitanja
 

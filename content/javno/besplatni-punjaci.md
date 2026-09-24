@@ -11,6 +11,8 @@ published: 2026-09-22
 modified: 2026-09-23
 priority: 0.8
 sources: JP „Putevi Srbije“ — spisak punjača na autoputevima sa stanjem (36 postavljeno, radi 24, besplatno) :: https://www.putevi-srbije.rs/index.php/en/electric-chargers | B92, 19.06.2026 — 32 postavljena / 29 u radu, „priprema se regulativa za uvođenje naplate“ :: https://www.b92.net/automobili/garaza/243280/koliko-kosta-punjenje-elektricnog-automobila-u-srbiji-detaljna-racunica-troskova-na-100-kilometara/vest | Bloomberg Adria, 25.07.2025 — državni punjači besplatni jer naplata nije zakonski regulisana :: https://rs.bloombergadria.com/ekonomija/srbija/84075/drzavni-punjaci-besplatni-elektricnih-vozila-malo/news | Lidl Srbija, 2022 — besplatno punjenje na Limanu :: https://kompanija.lidl.rs/press-centar/subitems/saopstenja-za-medije/2022/besplatno-punjenje-e-automobila-u-lidlu-na-limanu | evfix.rs — Lidl eCharge, uslovi i iskustvo :: https://evfix.rs/stanice-za-punjenje-ev/besplatno-punjenje/lidl-echarge/ | JKP „Parking servis“ — garaža Obilićev venac :: https://www.parking-servis.co.rs/eng/garaza-obilicev-venac | 24sedam.rs, 29.10.2021 — punjači u garažama i cena parkinga za EV :: https://24sedam.rs/beograd/vesti/85803/besplatna-voznja-ali-samo-uz-automobil-na-struju-gde-u-beogradu-naci-punjace-za-elektricna-vozila/vest
+image: odmoriste-brzi-punjaci
+image_alt: Brzi punjači na odmorištu uz autoput
 ---
 <div class="sum" markdown="1">
 - Autoputevi: **36 državnih punjača**, trenutno radi **24** — **besplatno**, uz aplikaciju **Orion eMobility**
@@ -25,6 +27,8 @@ Sve lokacije su na [mapi punjača](/mapa/).
 Po spisku JP „Putevi Srbije“ od 23.09.2026: radi 24 punjača, 7 trenutno ne radi, 5 se priključuje, a još 3 su planirana na novim deonicama. Snaga je DC 40–120 kW, na većini lokacija i AC 22 kW. Naplata nije zakonski uređena; propisi su u pripremi.
 
 Stanje svakog punjača: [JP „Putevi Srbije“](/javno-punjenje/putevi-srbije/).
+
+[[yt:8593Y1iQY24]]
 
 ## Lidl, Novi Sad
 

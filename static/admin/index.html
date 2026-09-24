@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>BlokVolt — moderacija</title>
+<style>
+:root{--ink:#0D111A;--mut:#5C6270;--line:rgba(13,17,26,.12);--ok:#3F6A0B;--no:#B4531A;--bg:#F4F3EE}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+.wrap{max-width:1000px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:22px;margin:0 0 14px}
+h2{font-size:17px;margin:26px 0 10px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,button,textarea{font:inherit}
+input[type=password]{flex:1;min-width:220px;padding:9px 12px;border:1px solid var(--line);border-radius:10px}
+button{padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;cursor:pointer}
+button.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+button.no{background:#fff;color:var(--no);border-color:var(--no)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.grid img{width:100%;height:170px;object-fit:cover;border-radius:10px;background:#eee;display:block}
+.meta{color:var(--mut);font-size:13px;margin:6px 0}
+pre{white-space:pre-wrap;word-break:break-word;background:#f7f7f4;border-radius:8px;padding:8px;font-size:13px;margin:6px 0}
+.empty{color:var(--mut)}
+#msg{margin:10px 0;color:var(--no)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>BlokVolt — moderacija</h1>
+<p class="meta">Ključ (ADMIN_KEY iz podešavanja Cloudflare Pages) čuva se samo u ovoj kartici pregledača.</p>
+<div class="bar"><input id="key" type="password" placeholder="ADMIN_KEY" autocomplete="off"><button id="load" type="button">Učitaj red</button></div>
+<div id="msg"></div>
+<h2>Fotografije na čekanju</h2><div id="photos" class="grid"></div>
+<h2>Komentari na čekanju</h2><div id="comments"></div>
+<h2>Zahtevi firmi i ispravke</h2><div id="requests"></div>
+</div>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var when = function (t) { return new Date(t * 1000).toLocaleString('sr-Latn-RS'); };
+  try { $('key').value = sessionStorage.getItem('bvkey') || ''; } catch (e) {}
+  function hdr() { return { 'authorization': 'Bearer ' + $('key').value.trim(), 'content-type': 'application/json' }; }
+  function decide(t, id, a, el) {
+    fetch('/api/admin/odluka', { method: 'POST', headers: hdr(), body: JSON.stringify({ t: t, id: id, a: a }) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) { if (j.ok) { el.style.opacity = .35; el.querySelectorAll('button').forEach(function (b) { b.disabled = true; }); } else $('msg').textContent = 'Greška: ' + j.error; });
+  }
+  function load() {
+    try { sessionStorage.setItem('bvkey', $('key').value.trim()); } catch (e) {}
+    $('msg').textContent = '';
+    fetch('/api/admin/red', { headers: hdr() }).then(function (r) { return r.json(); }).then(function (j) {
+      if (!j.ok) { $('msg').textContent = 'Nije uspelo (' + (j.error || '') + '). Proverite ključ.'; return; }
+      $('photos').innerHTML = j.photos.length ? '' : '<p class="empty">Nema.</p>';
+      j.photos.forEach(function (p) {
+        var d = document.createElement('div'); d.className = 'card';
+        d.innerHTML = '<a href="/api/foto/' + p.id + '.jpg" target="_blank" rel="noopener"><img src="/api/foto/' + p.id + '.jpg?v=t" alt=""></a>' +
+          '<div class="meta">' + esc(p.st) + ' · ' + when(p.at) + (p.rep ? ' · prijave: ' + p.rep : '') + '</div>' + (p.cap ? '<div>' + esc(p.cap) + '</div>' : '') +
+          '<div class="bar" style="margin-top:8px"><button class="ok" type="button">Objavi</button><button class="no" type="button">Odbij</button></div>';
+        d.querySelector('.ok').onclick = function () { decide('f', p.id, 'ok', d); };
+        d.querySelector('.no').onclick = function () { decide('f', p.id, 'no', d); };
+        $('photos').appendChild(d);
+      });
+      $('comments').innerHTML = j.comments.length ? '' : '<p class="empty">Nema.</p>';
+      j.comments.forEach(function (c) {
+        var d = document.createElement('div'); d.className = 'card';
+        d.innerHTML = '<div class="meta">' + esc(c.st) + ' · ' + esc(c.s) + (c.r ? ' · ' + c.r + '★' : '') + ' · ' + when(c.at) + (c.rep ? ' · prijave: ' + c.rep : '') + '</div>' +
+          '<div>' + esc(c.c) + '</div>' + (c.n ? '<div class="meta">— ' + esc(c.n) + '</div>' : '') +
+          '<div class="bar" style="margin-top:8px"><button class="ok" type="button">Objavi</button><button class="no" type="button">Sakrij</button></div>';
+        d.querySelector('.ok').onclick = function () { decide('c', c.id, 'ok', d); };
+        d.querySelector('.no').onclick = function () { decide('c', c.id, 'no', d); };
+        $('comments').appendChild(d);
+      });
+      $('requests').innerHTML = j.requests.length ? '' : '<p class="empty">Nema.</p>';
+      j.requests.forEach(function (q) {
+        var d = document.createElement('div'); d.className = 'card';
+        var data = q.data; try { data = JSON.stringify(JSON.parse(q.data), null, 1); } catch (e) {}
+        d.innerHTML = '<div class="meta">#' + q.id + ' · ' + esc(q.kind) + (q.slug ? ' · ' + esc(q.slug) : '') + ' · ' + when(q.at) + (q.email ? ' · ' + esc(q.email) : '') + '</div><pre>' + esc(data) + '</pre>' +
+          '<div class="bar"><button class="ok" type="button">Urađeno</button><button class="no" type="button">Odbijeno</button></div>';
+        d.querySelector('.ok').onclick = function () { decide('z', q.id, 'ok', d); };
+        d.querySelector('.no').onclick = function () { decide('z', q.id, 'no', d); };
+        $('requests').appendChild(d);
+      });
+    }).catch(function () { $('msg').textContent = 'Mreža nije dostupna.'; });
+  }
+  $('load').onclick = load;
+  $('key').addEventListener('keydown', function (e) { if (e.key === 'Enter') load(); });
+})();
+</script>
+</body>
+</html>

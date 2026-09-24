@@ -32,11 +32,13 @@
 {% for s in op.ps_sites %}<tr><td data-label="Lokacija">{% if s.map %}<a class="lnk" href="/mapa/#{{ s.map }}">{{ s.name }}</a>{% else %}{{ s.name }}{% endif %} <small class="muted">{{ s.road }}</small></td><td data-label="Smer · snaga · stanje"><ul class="stl">{% for c in s.lines %}<li class="{{ 'ok' if c.st == 1 else ('no' if c.st == 0 else 'wait') }}"><i></i><span>{% if c.dir %}{{ c.dir }} · {% endif %}{{ c.power }} · <b>{% if c.st == 1 %}radi{% elif c.st == 0 %}ne radi{% else %}u priključenju{% endif %}</b>{% if c.note %} ({{ c.note }}){% endif %}{% if c.when %} ({{ c.when }}){% endif %}</span></li>{% endfor %}</ul></td></tr>
 {% endfor %}</tbody></table></div>
 <p class="note">Po spisku JP „Putevi Srbije“ od {{ op.ps_meta.checked }}. Na novim deonicama planirano je još: {{ op.ps_meta.planned }}.</p></div>{% endif %}
+{% if op.video %}<div class="sec"><div class="sec-head"><h2>Kako se koristi</h2></div>{{ yt(op.video) }}</div>{% endif %}
 <div class="sec">
 <details><summary>Naplata i naknade</summary><p>{{ op.billing }}</p>{% if op.fees and op.fees != '—' %}<p>{{ op.fees }}</p>{% endif %}</details>
 <details><summary>Mreža, roming i podrška</summary><p><b>Mreža:</b> {{ op.network }}</p><p><b>Plaćanje:</b> {{ op.payment }}</p><p><b>Aplikacija:</b> {{ op.app }}</p><p><b>Snaga:</b> {{ op.power }}</p><p><b>Pokrivenost:</b> {{ op.coverage }}</p>{% if op.roaming and op.roaming != '—' %}<p><b>Roming:</b> {{ op.roaming }}</p>{% endif %}{% if op.support and op.support != '—' %}<p><b>Podrška:</b> {{ op.support }}</p>{% endif %}{% if op.notes %}<p>{{ op.notes|safe }}</p>{% endif %}</details>
 {% if op.old_prices %}<details><summary>Ranije zabeležene cene ({{ op.old_prices|length }})</summary><ul>{% for p in op.old_prices %}<li>{{ p.what|replace('Istorija: ', '') }} — <b>{{ p.value }}</b>, {{ p.date }} (<a class="lnk" href="{{ p.url }}" rel="noopener nofollow">{{ p.source }}</a>)</li>{% endfor %}</ul></details>{% endif %}
 {{ src_block(op.src_items) }}
 <p class="upd">Provereno {{ op.verified }} · <a href="/ispravka/?operator={{ op.slug }}">Prijavite grešku</a></p>
+<div class="claim"><div><b>Vodite ovu mrežu?</b><span>Pošaljite tačan cenovnik, spisak lokacija i priključaka — besplatno. Podatke mreže označavamo datumom.</span></div><a class="btn" href="/za-firme/?mreza={{ op.slug }}">{{ ic('doc') }}Pošaljite podatke</a></div>
 </div>
 {% endblock %}

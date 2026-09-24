@@ -8,14 +8,17 @@
  ]
 }</script>{% endblock %}
 {% block page %}
-<div class="hero" data-bv-note><div class="wrap">
+<div class="hero" data-bv-note><div class="wrap hero-grid">
+<div>
 <h1>Sve za električni auto u Srbiji</h1>
 <p class="lead">Gde napuniti, koliko košta i ko ugrađuje kućni punjač.</p>
 <form action="/pretraga/" method="get" role="search">
 <label class="sr-only" for="home-q">Pretraga</label>
-<div class="search-box">{{ ic('search') }}<input class="input" id="home-q" name="q" type="search" placeholder="Grad, mreža, firma ili pojam" autocomplete="off"></div>
+<div class="search-box">{{ ic('search') }}<input class="input" id="home-q" name="q" type="search" placeholder="Grad, mreža ili firma" autocomplete="off"></div>
 <button class="btn dark" type="submit">Traži</button>
 </form>
+</div>
+{{ fig('grad-punjac-vece', 'Električni auto se puni na javnom punjaču ispred stambenog bloka, uveče', sizes='(max-width: 900px) 100vw, 560px', cls='hero-fig', eager=True) }}
 </div></div>
 <div class="wrap main">
 <div class="tiles">
@@ -28,7 +31,7 @@
 
 <div class="sec home-sec">
 <div class="sec-head"><h2>Vodiči</h2><a href="/vodici/">Svi vodiči →</a></div>
-<div class="rows">{% for g in HOME_GUIDES %}<a class="row" href="{{ g.href }}"><span class="lg mono" aria-hidden="true">{{ ic(g.icon) }}</span><div><h3>{{ g.name }}</h3><div class="sub">{{ g.desc }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
+<div class="rows">{% for g in HOME_GUIDES %}<a class="row" href="{{ g.href }}">{% if g.img %}<img class="th" src="/assets/img/{{ g.img }}-480.webp" alt="" width="72" height="54" loading="lazy" decoding="async">{% else %}<span class="lg mono" aria-hidden="true">{{ ic(g.icon) }}</span>{% endif %}<div><h3>{{ g.name }}</h3><div class="sub">{{ g.desc }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
 </div>
 
 <div class="sec home-sec">

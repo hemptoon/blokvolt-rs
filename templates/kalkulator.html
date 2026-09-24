@@ -60,6 +60,7 @@
 </form>
 <noscript><p class="note">Kalkulatoru treba JavaScript. Iznad je primer sa podrazumevanim vrednostima.</p></noscript>
 
+<div class="sec"><div class="sec-head"><h2>Iskustvo iz prakse</h2></div>{{ yt('K8K-5Sz5py8') }}</div>
 <div class="sec"><div class="sec-head"><h2>Kilovat-sat kod kuće</h2><a href="/podaci/tarife-eps/">Tarife i zone →</a></div>
 <div class="tw stack"><table><thead><tr><th>Zona</th><th>Noć</th><th>Dan</th><th>100 km noću</th></tr></thead><tbody>
 {% for r in tariff_rows %}<tr><td data-label="Zona"><b>{{ r.name }}</b><br><small class="muted">{{ r.range }}</small></td><td data-label="Noć"><b>{{ r.nt|sr(2) }} RSD</b></td><td data-label="Dan">{{ r.vt|sr(2) }} RSD</td><td data-label="100 km noću">{{ r.per100|sr }} RSD</td></tr>

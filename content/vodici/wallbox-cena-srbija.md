@@ -9,6 +9,8 @@ published: 2026-09-08
 modified: 2026-09-21
 priority: 0.8
 path: /wallbox-cena-srbija.html
+image: konektor-noc
+image_alt: Konektor punjača uključen u električni auto
 ---
 <div class="sum" markdown="1">
 - Wallbox 11 kW sa ugradnjom: tipične ponude oko **95.000–130.000 RSD sa PDV-om**

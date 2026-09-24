@@ -12,6 +12,6 @@
 {% block content %}
 {% for g in groups %}<div class="sec"{% if loop.first %} style="margin-top:6px"{% endif %}>{% if g.title %}<div class="sec-head"><h2>{{ g.title }}</h2></div>{% endif %}
 {% if g.tiles %}<div class="tiles">{% for it in g['items'] %}<a class="tile" href="{{ it.href }}"><span class="ic">{{ ic(it.icon) }}</span><h3>{{ it.name }}</h3><p>{{ it.desc }}</p></a>{% endfor %}</div>
-{% else %}<div class="rows">{% for it in g['items'] %}<a class="row" href="{{ it.href }}"><span class="lg mono" aria-hidden="true">{{ ic(it.icon) }}</span><div><h3>{{ it.name }}</h3><div class="sub">{{ it.desc }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>{% endif %}
+{% else %}<div class="rows">{% for it in g['items'] %}<a class="row" href="{{ it.href }}">{% if it.img %}<img class="th" src="/assets/img/{{ it.img }}-480.webp" alt="" width="72" height="54" loading="lazy" decoding="async">{% else %}<span class="lg mono" aria-hidden="true">{{ ic(it.icon) }}</span>{% endif %}<div><h3>{{ it.name }}</h3><div class="sub">{{ it.desc }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>{% endif %}
 </div>{% endfor %}
 {% endblock %}

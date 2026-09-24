@@ -368,6 +368,58 @@ Checks after the build: `/mapa/` list count, `/mapa/?mreza=putevi-srbije`, a car
 to test the layers in the container, run Playwright with the style and glyph URLs of tiles.openfreemap.org
 routed to a tiny local style (the container cannot reach OpenFreeMap).
 
+#### 3.11b Checking every charger (monthly, with the snapshots)
+
+Rule: a charger is **confirmed** only when a network's own list has it at that place, or when it exists on
+Google Maps with a driver rating from the last 12 months. Everything else is shown as „Nije potvrđeno“
+(or „Prijavljen kvar“ when recent reviews say it does not work). Nothing is copied from Google (no text,
+summary, photo or rating) — only our conclusion and the date.
+
+Inputs in `content/mapa/mreze/` (dates in `izvori.json`, change them when a list is refreshed):
+- `chargego-raw.txt` — Charge&GO's public map (client.chargego.rs, the `data-locations` attribute),
+  `id|lat|lon|name|street|city|access|icon|connectors`; `access=test` and Skopje are skipped.
+- `roaming-raw.txt` — the roaming layer of the same portal (Hubject: RS*ORI = Orion eMobility, also the
+  state chargers; RS*007/RO*PLG = network not published), `lat|lon|op|n|statuses|date|name|street|city|plugs|power`.
+- `tesla.json` — Tesla's own lists of Superchargers and Destination chargers (tesla.com/sl_SI/findus/list/…).
+- `content/mapa/provera.json` — the hand check: `x` (remove, with the reason), `dup` (join into another
+  station), `fix` ([lat, lon] from a network's list), `g` = `g` / `g_old` / `g_none` / `prob` for stations
+  on no list (Google check). Stations missing from this file and from the lists count as `g_none`.
+
+`map_data.verify()` matches every open-data station to the nearest official site of a compatible network
+(250 m same network, 150 m host network such as OMV/NIS, 100 m unknown network), joins open-data duplicates
+of one site, adds official sites the open data lacks (ids `cg-…`, `rm-…`, `te-…`; state-charger roaming
+records are never added — they come from `putevi-srbije.json`), and writes two files: `punjaci.json`
+(ODbL, open data + `v` flags) and `mreze.json` (the networks' connectors/names for matched stations and the
+added stations; not open data). The browser joins them. The build's counts (240 stations, "Potvrđeno: 176")
+come from the joined list.
+
+Refresh (browser): open client.chargego.rs, read the element with `data-locations` (Charge&GO) and the
+response of the roaming POST `api/public/locations/locations-update` (needs the page's csrf `_token`) into a
+page variable, then copy it out in 900-character slices with `javascript_tool` (its output is cut at about
+1,000 characters, and `?`, `=` must be replaced before returning). Rewrite the two raw files, update the dates.
+Google check for the `g_*` stations: search "EV charging station" at the station's coordinates (zoom 18),
+open the nearest place within ~100 m, sort reviews by newest; a review younger than 12 months = `g`.
+Do not batch more than two places per browser call; Google rate-limits fast loops.
+
+#### 3.11c Drivers' reports, ratings, photos (backend)
+
+`worker/_worker.js` (copied to `dist/_worker.js`; `dist/_routes.json` sends only `/api/*` to it) with the
+D1 database `blokvolt` (binding `DB`, schema `worker/schema.sql`). Endpoints: `GET /api/stanice`,
+`GET /api/stanica/<id>`, `GET /api/foto/<id>.jpg[?v=t]`, `POST /api/stanica/<id>/prijava`,
+`POST /api/stanica/<id>/foto`, `POST /api/prijavi`, `POST /api/zahtev` (forms of /ispravka/ and /za-firme/),
+`GET /api/zdravlje`. Comments with links/contacts/rude words and every photo wait for moderation.
+
+Moderation: `/admin/` (noindex) works only after the **owner** sets the secret `ADMIN_KEY` (≥16 characters)
+in Cloudflare Pages → Settings → Variables and Secrets (Production) and redeploys; never type the key
+yourself. Without it: D1 console queries — `SELECT * FROM photos WHERE status='pending'`,
+`UPDATE photos SET status='ok' WHERE id='…'`, `SELECT * FROM checkins WHERE cs='pending'`,
+`SELECT * FROM requests WHERE status='new'`. Requests from companies are **not answered** without the
+owner's permission (outreach rule). Old form messages (older than 12 months) are deleted by the owner
+(privacy policy promise).
+
+Live test after a deploy: `GET /api/zdravlje` → `{"ok":true,…}`; a POST with `"hp":"x"` returns ok and
+stores nothing (use it to test routes without creating data).
+
 ### 3.12 Logos (when a firm or network is added, or on request)
 
 `static/assets/logos/<slug>.png` (firms) and `op-<slug>.png` (networks), max 360×160, trimmed. Source: the
@@ -377,6 +429,28 @@ site sends no CORS header, or a `zoom` screenshot with `save_to_disk` when nothi
 raw file into the container, add the slug to `CHOICE` in `scripts/logos.py` (`dark` = shown on a dark tile)
 and run it — it trims, resizes and rewrites `content/data/logos.json`. A company that asks for removal:
 delete its entry from `CHOICE`, rerun, rebuild (the file itself can stay; nothing links to it).
+
+### 3.13 Illustrations and video
+
+Illustrations: `static/assets/img/<name>-<width>.webp` (480/800/1200/full); the build reads the sizes and
+`fig(name, alt)` (templates) or `[[fig:name|alt]]` (Markdown) makes a responsive `<figure>` with the caption
+„Ilustracija (AI)“. Article front matter `image:` / `image_alt:` puts one under the lead. The nine current
+ones were generated in Higgsfield (gpt_image_2_5, high, 2k; about 2.75 credits each) and brought into the
+container as full-size `zoom` screenshots of the image opened in the owner's Chrome (the container cannot
+reach the CDN). A few images need no confirmation; a batch of many does (ask the owner first), and every
+generation is reported with the credit count.
+
+Video: `content/data/video.json` (id, title, channel, poster = an illustration name; check titles with
+YouTube oEmbed through WebFetch). `yt(id)` / `[[yt:ID]]` renders a poster; `bv.js` creates the
+youtube-nocookie iframe only after a click (privacy policy promise — never embed a live iframe).
+
+### 3.14 Company updates (/za-firme/) and corrections (/ispravka/)
+
+Both forms post to `/api/zahtev` (stored in D1 `requests`). Firm pages have „Ovo je vaša firma?“ and a
+claim box, network pages „Vodite ovu mrežu?“, the footer „Za firme i mreže“. Publishing company-supplied
+data: verify first (reply to the company-domain e-mail or call the number on its site — only with the
+owner's permission while the outreach rule holds), then mark the data „prema podacima firme“ with the date
+and log it in `izmene.md`. Ratings are never removed on a company's request unless they break the rules.
 
 ## 4. Build and check
 

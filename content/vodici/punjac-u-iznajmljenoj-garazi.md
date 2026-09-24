@@ -10,6 +10,8 @@ modified: 2026-09-08
 priority: 0.8
 path: /punjac-u-iznajmljenoj-garazi.html
 sources: Zakon o obligacionim odnosima, odredbe o ugovoru o zakupu :: https://www.paragraf.rs/propisi/zakon_o_obligacionim_odnosima.html | Zakon o stanovanju i održavanju zgrada, čl. 12 (radovi na posebnom delu i zajedničkim delovima) :: https://www.paragraf.rs/propisi/zakon_o_stanovanju_i_odrzavanju_zgrada.html | Cenovnik EPS-a za domaćinstva od 1.10.2025 (ceneizakon.rs) :: https://ceneizakon.rs/cena-struje-u-srbiji-2026/
+image: garaze-u-bloku
+image_alt: Niz garaža u stambenom bloku, u otvorenoj garaži auto na punjenju
 ---
 <div class="sum" markdown="1">
 - Dovoljna je **pismena saglasnost vlasnika**, kao aneks ugovora o zakupu; skupština samo ako kabl prolazi kroz zajedničke delove zgrade

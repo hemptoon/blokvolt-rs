@@ -1,0 +1,92 @@
+3|43.90323|20.39864|AUTOČAČAK, Konjevići|Konjevići BB|Čačak|P|ava|T2a22a,CCSd50a
+4|44.73363|20.43201|MT-KOMEX|Oslobođenja 22b|Beograd|P|ava|T2a22a
+7|44.62474|22.58218|Termovent|Slobodana Penezića 25|Kladovo|P|ava|T2a22a,T2a22a
+8|44.08020|20.98307|Podrum Pevac|Cvetojevac|Kragujevac|P|out|T2a22o
+11|44.81234|20.44138|HIT AUTO|Staro Sajmište 29|Beograd|P|ava|T2a22a,T2a22a
+16|45.24510|19.84225|PROMENADA NOVI SAD|Bulevar Oslobodjenja 119|Novi Sad|P|ava|T2a22a,T2a22a,T2a22a,T2a22a,T2a22a
+18|43.93737|20.40014|BS GAZPROM Sokolići|Put Igumana Vasilija 52b|Sokolići|P|out|CCSd50a,cha_de_mod50a,T2a22a
+19|45.27583|19.92151|BS GAZPROM Novi Sad 16|Autoput E75 Novi Sad, Atar broj 14|Novi Sad|P|ava|CCSd50a,cha_de_mod50a,T2a22a
+20|44.34495|21.07843|BS GAZPROM Velika Plana|Autput A1 BG-NIŠ|Velika Plana|P|ava|CCSd45a,cha_de_mod45a,T2a22a
+21|44.97123|20.23351|BS GAZPROM Stari Banovci|Autoput BG-NS bb|Stari Banovci|P|out|CCSd50a,cha_de_mod50a,T2a22a
+22|44.20484|21.10785|OMV Lapovo sever|Autoput NIŠ-BG|Lapovo|P|ava|CCSd120a,CCSd120a
+23|45.03564|19.44982|OMV Martinci 1|Autoput ŠID-BG|Sremska Mitrovica|P|ava|CCSd180a,CCSd180a
+24|43.18265|21.86232|OMV Doljevac|Autoput E75 VR-NIŠ, Čečina|Doljevac|P|ava|CCSd140a,CCSd140a
+25|43.00041|22.81940|OMV Gradina|Granični prelaz Gradina bb|Gradinje|P|out|CCSd83a,CCSd83a
+26|45.79237|19.69318|OMV Bačka Topola 1|Autoput E75 SU-NS|Bačka Topola|P|ava|CCSd180a,CCSd180a
+27|44.00897|20.89589|BIG FASHION Kragujevac|Bulevar Kraljice Marije 56|Kragujevac|P|ava|T2a22a,T2a22a,T2a22a,T2a22a,T2a22a
+28|44.97730|19.59182|STOP SHOP Sremska Mitrovica|Bulevar Konstantina Velikog 74|Sremska Mitrovica|P|out|CCSd22a
+29|44.38684|20.25184|STOP SHOP Lazarevac|Železnička bb|Lazarevac|P|ava|CCSd22a
+30|45.13089|21.28495|STOP SHOP Vršac|Bulevar Miloša Obilića bb|Vršac|P|ava|CCSd120a,CCSd120a
+31|43.90300|22.26821|STOP SHOP Zaječar|Čupićeva 2|Zaječar|P|ava|CCSd60a,CCSd60a
+32|43.88408|20.32992|STOP SHOP Čačak|Bulevar Vuka Karadžića 80|Čačak|P|ava|CCSd120a,CCSd120a
+33|46.10049|19.69773|STOP SHOP Subotica|Segedinski put 88a|Subotica|P|ava|CCSd120a,CCSd120a
+34|44.60972|21.17498|STOP SHOP Požarevac|Djure Djakovića 3a/3b|Požarevac|P|ava|CCSd22a
+35|44.67539|20.94576|STOP SHOP Smederevo|Salinačka 58|Smederevo|P|ava|CCSd22a
+36|44.27096|19.89821|STOP SHOP Valjevo|Uzun Mirkova 2|Valjevo|P|occ|CCSd22o
+37|45.76425|19.12501|STOP SHOP Sombor|Štrosmajerova 28|Sombor|P|ava|CCSd120a,CCSd120a
+40|44.75415|19.66237|STOP SHOP Šabac|Zapadna Transvezala I 4|Šabac|P|ava|CCSd60a,CCSd60a
+41|42.99969|21.95309|STOP SHOP Leskovac|28. Marta 10|Leskovac|P|ava|CCSd60a,cha_de_mod60a,T2a22a
+42|43.31105|21.93693|STOP SHOP Niš|Bulevar Medijana 21|Niš|P|ava|CCSd120a,CCSd120a
+43|44.88848|20.45888|STOP SHOP Borča|Bratstva i Jedinstva 2g/2v|Beograd|P|ava|CCSd60a,CCSd60a
+44|44.81259|20.39508|Airport City Beograd|Omladinskih brigada 90|Belgrade|P|ava|CCSd30a,CCSd30a
+46|43.59566|21.31550|OMV Kruševac|Jasički put BB|Kruševac|P|ava|CCSd130a,CCSd130a
+51|43.86245|20.13087|Intertrans Lučani|Dositejeva 1|Lučani|P|ava|CCSd30a
+52|44.19533|21.05284|DelAsol AC|Patrijarha Pavla bb|Lapovo|P|out|type_2_outleta22a
+53|42.54402|21.90066|OMV Vranje|Partizanski put bb|Vranje|P|ava|CCSd120a,CCSd120a
+54|44.76048|20.47316|OMV Borska|Bahtijara Vagabzade|Beograd|P|ava|CCSd120a,CCSd120a
+55|44.86584|20.34631|OMV Zemun|Novosadski put bb|Beograd|test|ava|CCSd240a,CCSd240a
+56|44.73413|20.41939|OMV Kneževac (BS Vidikovac)|Ibarska magistrala M22|Beograd|P|ava|CCSd120a,CCSd120a
+58|44.80921|20.41536|NCR|Španskih Boraca 75|Beograd|P|ava|CCSd30a,CCSd30a
+59|43.91082|22.25990|OMV Zaječar|Dobrivoja Radosavljevića Bobija 57|Zaječar|P|ava|CCSd45a,CCSd45o
+60|44.78450|20.41271|OMV Ada Ciganlija|Radnička 6|Beograd|P|out|CCSd50a,CCSd50a,cha_de_mod30o
+61|45.27741|19.82578|BIG Novi Sad|Sentandrejski put 11|Novi Sad|P|ava|CCSd60a,CCSd60a
+62|44.81690|20.50722|BIG Beograd Karaburma|Višnjička 84|Beograd|P|ava|CCSd120a,CCSd120a
+63|44.86702|20.66001|BIG Pančevo|Miloša Obrenovića 12|Pančevo|P|ava|CCSd60a,CCSd60a
+64|45.07021|20.13544|BIG Indjija|Vojvode Putnika bb|Indjija|P|out|CCSd60o,CCSd60a
+65|44.73954|20.43683|BIG Rakovica|Patrijarha Dimitrija 14|Beograd|P|ava|CCSd60a,CCSd60a
+67|43.56998|21.33982|BIG Kruševac|Krfska 37|Kruševac|P|ava|CCSd180a,CCSd180a
+68|44.95547|20.19889|BIG Pazova|Vojački put 1a|Nova Pazova|P|ava|CCSd50a,CCSd50a
+70|43.27481|20.76688|Kraljevi Čardaci|Stefana Prvovenčanog 79|Kopaonik|P|ava|T2a22a,T2a22a
+71|44.45139|20.68278|Glecher 021|Kralja Petra 1a|Mladenovac|P|ava|CCSd150a,CCSd150a
+72|44.81122|20.25487|OMV Obilaznica Surčin 1|Beogradska obilaznica|Beograd|P|ava|CCSd110a,CCSd110a
+73|44.81496|20.25184|OMV Obilaznica Surčin 2|Dobanovci 251|Beograd|P|ava|CCSd130a,CCSd130a
+74|45.67701|20.61846|Nova Crnja|Maršala Tita|Nova Crnja|test|ava|CCSd60a,CCSd60a
+76|45.81242|20.47178|B2 SUN SPORT MOKRIN (KIKINDA)|RF6F+XP9 Кикинда|Mokrin|P|ava|type_2_outleta22a,type_2_outleta22a
+79|43.24164|21.60770|Penta Park Prokuplje|Vuka Stefanovića Karadžića 3i|Prokuplje|P|ava|CCSd60a,CCSd60a
+80|45.26785|19.82403|Super Vero Novi Sad|Industrijska|Novi Sad|P|ava|CCSd150a,CCSd150a
+84|45.37832|20.35525|BIG Zrenjanin|Zapad 5|Zrenjanin|P|ava|CCSd150a,CCSd150a
+85|44.00245|20.89347|OMV Kragujevac|Kneza Mihaila bb|Kragujevac|P|ava|CCSd150a,CCSd150a
+86|43.96462|21.27867|OMV Jagodina|Stefana Prvovenčanog bb|Jagodina|P|ava|CCSd110a,CCSd110a
+87|44.57432|19.24172|OMV Loznica|Magistralni put M-19|Loznica 15300|P|ava|CCSd120a,CCSd120a
+88|44.45173|20.10486|Nova Retail Park Ub|Orloviceva 80|UB|P|ava|CCSd120a,CCSd120a
+89|44.20660|21.10613|OMV Lapovo Jug|Auto Put Lapovo|Lapovo|P|out|CCSd60a,CCSd60a
+90|43.71183|20.61662|OMV Kraljevo 2|Magistralni put M-22|Kraljevo|P|ava|CCSd70a,CCSd70a
+91|44.81022|20.41661|Super Vero Novi Beograd|Bulevar Milutina Milankovica 86a|belgrade|P|ava|CCSd150a,CCSd150a
+92|44.01634|20.93282|Fluid-Comerc|Milice Miljojković 4|Kragujevac|P|ava|T2a22a
+96|41.90472|21.65586|OKTA Ržaničino|Ržaničino, Katlanovo-Skopje, Auto-put E-75|Skopje|P|ava|CCSd50a
+101|43.22007|22.30606|Opština Bela Palanka|Srpskih Vladara 101|Bela Palanka|P|ava|CCSd75a,CCSd75a
+104|43.32454|21.91353|Planet Residence|Blagoja Parovića 1P|Niš|public_paying|ava|CCSd60a,CCSd60a
+105|44.33445|21.07762|Riva Park - Velika Plana|ul. Miloša Velikog 93|Velika Plana|P|ava|CCSd120a,CCSd120a
+106|43.87278|21.40069|Futura Park Paraćin|Tome Živanovića 56, Paraćin|Paraćin|P|ava|CCSd120a,CCSd120a
+107|43.30831|20.61438|MILKOP DOO RAŠKA|Ibarska 77|Raška|P|ava|CCSd90a,CCSd90a
+108|44.19362|21.04979|DeLasol Lapovo|Patrijarha Pavla|Lapovo|P|ava|CCSd30a,CCSd30a,CCSd75a,cha_de_mod50a
+109|43.33754|21.86822|Aerodrom Niš|Aerodrom Konstantin Veliki|Niš|P|ava|CCSd24a,CCSd24a,CCSd24a
+113|45.82254|20.45454|OMV Kikinda|Svetosavska|Kikinda|P|out|CCSd60o,CCSd60o
+114|45.37414|20.41220|OMV Zrenjanin|Beogradska|Zrenjanin|P|out|CCSd60o,CCSd60o
+115|43.33924|21.87526|OMV Niš 2|Bulevar 12. februara|Niš|P|ava|CCSd110a,CCSd110a
+118|46.10472|19.73744|OMV Palić|Magistralni put M-22|Palić|P|ava|CCSd110a,CCSd110a
+119|43.32433|21.92550|OMV Niš 4|Branka Miljkovića 83|Niš|P|out|CCSd140o,CCSd140o
+120|46.08591|19.66982|OMV Subotica|Beogradski put 88|Subotica|P|ava|CCSd110a,CCSd110a
+121|44.60587|21.16556|OMV Požarevac|Đure Đakovića bb|Požarevac|P|ava|CCSd100a,CCSd100a
+122|44.75094|20.96669|OMV Kovin|Železnička bb|Kovin|P|ava|CCSd120a,CCSd120a
+123|44.64929|20.94587|OMV Smederevo|Crvene Armije bb|Smederevo|P|out|CCSd110o,CCSd110o
+124|44.85686|20.65178|OMV Pančevo|Prvomajska bb|Pančevo|P|ava|CCSd150a,CCSd150a
+125|44.80863|20.51270|OMV Dragoslava Srejovića|Dragoslava Srejovića 16-18|Beograd|P|out|CCSd60o,CCSd60o
+126|41.99337|21.44083|VERO JUMBO|Boulevard Kocho Racin|Skopje|P|ava|CCSd150a,CCSd150a
+127|44.19367|21.05014|STOP SHOP DeLasol Lapovo|Patrijarha Pavla bb|Lapovo|P|out|CCSd50a,cha_de_mod50a
+128|44.60582|20.96337|HBIS Smederevo|Carigradska 55|Smederevo|P|ava|CCSd60a,CCSd60a,T2a22a
+129|43.88100|20.37316|OMV Čačak 1|Bulevar oslobodilaca Čačka|Čačak|P|out|CCSd140a,CCSd140a
+130|43.89054|20.33368|OMV Čačak 2|Vojvode Stepe 190|Čačak|P|out|CCSd130a,CCSd130a
+131|44.01112|20.46257|OMV Gornji Milanovac|Magistralni put 22|Gornji Milanovac|P|out|CCSd120o,CCSd120o
+132|44.74002|19.68935|OMV Šabac|Obilazni put|Šabac|P|out|CCSd120o,CCSd120o
+134|41.99713|21.40559|VERO TAFTALIDZE|bul. M. Teodosij Gologanov br. 76, Skopje,|Skopje|P|out|CCSd150o,CCSd150o

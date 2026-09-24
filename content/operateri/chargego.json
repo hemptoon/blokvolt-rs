@@ -3,13 +3,13 @@
  "name": "Charge&GO (MT-KOMEX)",
  "kind": "cpo",
  "order": 1,
- "short": "Komercijalna mreža javnih punjača — operator mreže (CPO) i aplikacija za naplatu (eMSP): 79 punjača na 68 lokacija prema brojačima operatera. Ista firma kao ChargeGo / elektropunjaci.com iz registra kućnih punjača.",
+ "short": "Komercijalna mreža javnih punjača — operator mreže (CPO) i aplikacija za naplatu (eMSP): 87 lokacija u Srbiji na javnoj mapi mreže (24.09.2026). Ista firma kao ChargeGo / elektropunjaci.com iz registra kućnih punjača.",
  "website": "https://chargego.rs/",
  "domain": "chargego.rs",
  "app": "Charge&GO (iOS/Android) · veb-klijent client.chargego.rs",
  "city": "Beograd",
  "coverage": "cela Srbija (koridori E75/E70, Beograd, Novi Sad, Niš, Kragujevac, Čačak, Subotica); Severna Makedonija, BiH",
- "network": "79 punjača · 68 lokacija · 135 konektora (brojači na chargego.rs, stanje 31.07.2025, provereno 22.09.2026)",
+ "network": "87 lokacija u Srbiji na javnoj mapi mreže (client.chargego.rs, 24.09.2026) i 3 u Skoplju; brojači na chargego.rs pokazuju stariji podatak: 79 punjača, 68 lokacija, stanje 31.07.2025",
  "power": "AC 22 kW – DC 240 kW (tipično DC 50–150 kW); domaćini: OMV (18 lokacija), NIS/Gazprom, Stop Shop, BIG, Promenada, Airport City",
  "billing": "Po minutu punjenja, PDV uračunat. Cena zavisi od snage punjača: u aplikaciji 22.09.2026 od 16,67 RSD/min (AC 22 kW) do 126,67 RSD/min (DC 240 kW). Na računu u aplikaciji stoje trajanje, isporučeni kWh, neto iznos i PDV. Ranije je zabeležena i razlika u ceni za registrovane i neregistrovane korisnike (2025).",
  "verdicts": {
@@ -152,6 +152,11 @@
  "support": "011 715 85 99 (pon–pet 8–16) · dežurna linija 24/7 066 803 17 00 · podrska@chargego.rs",
  "sources": [
   {
+   "url": "https://client.chargego.rs/",
+   "label": "client.chargego.rs — javna mapa lokacija mreže",
+   "date": "24.09.2026"
+  },
+  {
    "url": "https://chargego.rs/",
    "label": "chargego.rs — brojači mreže",
    "date": "22.09.2026"
@@ -190,13 +195,14 @@
  "verified": "22.09.2026",
  "confidence": "visoka — cene iz aplikacije i računi redakcije (22.09.2026)",
  "notes": "Charge&GO i „ChargeGo“ sa elektropunjaci.com su ista kompanija (MT-KOMEX d.o.o., Beograd) — u registru kućnih punjača vodimo je kao <a href=\"/firme/chargego/\">Charge&GO / ChargeGo</a>. Cene u tabeli su iz aplikacije na dan provere; pre punjenja proverite iznos u aplikaciji. U aplikaciji je i punjač u Skoplju (Vero Jumbo, DC 150 kW, 113,63 RSD/min).",
- "card": "79 punjača · 16,67–126,67 RSD/min",
+ "card": "87 lokacija · 16,67–126,67 RSD/min",
  "kind_label": "Operator mreže + aplikacija",
  "publish": true,
  "short_name": "Charge&GO",
  "lead": "Komercijalna mreža brzih punjača, najviše na OMV, NIS, BIG i Stop Shop lokacijama. Naplata po minutu, cena zavisi od snage punjača.",
- "network_short": "79 punjača, 68 lokacija",
+ "network_short": "87 lokacija u Srbiji",
  "power_short": "AC 22 – DC 240 kW",
  "billing_short": "Po minutu, PDV uračunat. Zauzeće posle punjenja: 5 RSD/min posle 15 min.",
- "payment_short": "Aplikacija, QR kod karticom, RFID"
+ "payment_short": "Aplikacija, QR kod karticom, RFID",
+ "video": "dK64RmDSSCI"
 }

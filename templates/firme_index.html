@@ -15,6 +15,6 @@
 <p>Podaci su sa sajtova firmi, isti za sve. Cena je najniža objavljena; „na upit“ znači da je firma ne objavljuje. Oznake ispod naziva pokazuju šta firma na sajtu nudi: ugradnju, brojilo, papire za skupštinu ili mesečnu uslugu. Firma označena kao „Izdvojeno“ prikazana je po istim pravilima. Više: <a class="lnk" href="/metodologija/">kako radimo</a>.</p>
 </details>
 {% if EXCLUDED %}<details><summary>Provereno, ali nije na spisku ({{ EXCLUDED|length }})</summary><ul>{% for f in EXCLUDED %}<li><b>{{ f.name }}</b> — {{ f.excluded_reason }}</li>{% endfor %}</ul></details>{% endif %}
-<p class="note">Nema vaše firme ili je podatak netačan? <a class="lnk" href="/ispravka/">Javite nam</a>.</p>
+<p class="note">Nema vaše firme ili je podatak netačan? <a class="lnk" href="/za-firme/">Pošaljite podatke</a> — upis je besplatan.</p>
 </div>
 {% endblock %}

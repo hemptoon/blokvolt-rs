@@ -9,7 +9,7 @@
  "app": "Orion eMobility (iOS/Android)",
  "city": "Beograd",
  "coverage": "Srbija; aplikacija pokriva i Crnu Goru, BiH, Hrvatsku, Sloveniju, Severnu Makedoniju, Albaniju (partnerske mreže)",
- "network": "„Infrastruktura od 300 EV punjačnih mesta u zemlji“ i „više od 1.000 EV punjača širom Srbije i regiona“ — navodi operatera bez datuma (marketinška cifra, ne proverena nezavisno)",
+ "network": "Na roming mapi Charge&GO (Hubject, 23.09.2026): 72 lokacije i 198 priključnih mesta u Srbiji, uključujući državne punjače na autoputevima. Operater navodi „infrastrukturu od 300 EV punjačnih mesta u zemlji“ i „više od 1.000 EV punjača širom Srbije i regiona“ (bez datuma).",
  "power": "AC do 22 kW; DC 20–400 kW (po katalogu opreme); punjači JP „Putevi Srbije“ DC 40–120 kW",
  "billing": "Po minutu (na AC punjaču i po satu, npr. 700 RSD za 60 min) + naknada za priključenje; cenovnik po punjaču je u aplikaciji, na sajtu nije objavljen. Za sopstvene punjače aplikacija 22.09.2026 navodi: naknada za priključenje 50 RSD, „cena na min počinje se naplaćivati nakon 3 minuta“, posle punjenja 15 minuta bez naknade, zatim 5 RSD/min za mirovanje.",
  "verdicts": {
@@ -148,6 +148,11 @@
    "url": "https://www.putevi-srbije.rs/index.php/en/electric-chargers",
    "label": "putevi-srbije.rs — aktivacija državnih punjača kroz Orion aplikaciju",
    "date": "22.09.2026"
+  },
+  {
+   "url": "https://client.chargego.rs/",
+   "label": "client.chargego.rs — roming mapa (lokacije RS*ORI)",
+   "date": "23.09.2026"
   }
  ],
  "verified": "22.09.2026",
@@ -158,8 +163,9 @@
  "publish": true,
  "short_name": "Orion eMobility",
  "lead": "Mreža i aplikacija Orion Telekoma. Preko iste aplikacije se aktiviraju i besplatni državni punjači na autoputevima.",
- "network_short": "„300 punjačkih mesta“ (navod operatera)",
+ "network_short": "72 lokacije (roming mapa, 09/2026)",
  "power_short": "AC do 22 kW, DC do 400 kW",
  "billing_short": "Po minutu + 50 RSD po punjenju. Zauzeće: 5 RSD/min posle 15 min.",
- "payment_short": "Kartica u aplikaciji, RFID, QR kod"
+ "payment_short": "Kartica u aplikaciji, RFID, QR kod",
+ "video": "vLLw5ZsULYY"
 }

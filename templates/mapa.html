@@ -15,13 +15,14 @@
 <aside class="map-side">
 <div class="map-top" data-bv-note>
 <h1>Mapa punjača</h1>
-<p>{{ M.n }} javnih punjača u Srbiji, sa cenom po mreži.</p>
+<p>{{ M.n }} javnih punjača u Srbiji, sa cenom po mreži. Potvrđeno: {{ M.ok }}.</p>
 <div class="search-box">{{ ic('search') }}<label class="sr-only" for="mq">Pretraga punjača</label><input class="input" id="mq" type="search" placeholder="Grad, adresa ili mreža" autocomplete="off"></div>
 <div class="chips" id="mchips">
 <button class="chip" type="button" data-f="all" aria-pressed="true">Svi</button>
 <button class="chip" type="button" data-f="fast" aria-pressed="false">{{ ic('bolt') }}Brzi (DC ≥ 50 kW)</button>
 <button class="chip" type="button" data-f="ac" aria-pressed="false">AC</button>
 <button class="chip" type="button" data-f="free" aria-pressed="false">Besplatni</button>
+<button class="chip" type="button" data-f="ok" aria-pressed="false">Potvrđeni</button>
 {% for slug, name, n in M.chips %}<button class="chip" type="button" data-f="net:{{ slug }}" aria-pressed="false">{{ name }} <span class="n">{{ n }}</span></button>{% endfor %}
 </div>
 </div>
@@ -30,9 +31,9 @@
 </aside>
 <div class="map-wrap">
 <div id="map" role="region" aria-label="Mapa javnih punjača"></div>
-<div class="map-legend" aria-hidden="true"><span><i class="l-dc"></i>DC</span><span><i class="l-ac"></i>AC</span><span><i class="l-free"></i>Besplatno</span><span><i class="l-off"></i>Ne radi</span></div>
+<div class="map-legend" aria-hidden="true"><span><i class="l-dc"></i>DC</span><span><i class="l-ac"></i>AC</span><span><i class="l-free"></i>Besplatno</span><span><i class="l-off"></i>Ne radi</span><span><i class="l-nep"></i>Nije potvrđeno</span></div>
 <button class="btn sm map-me" id="mme" type="button">{{ ic('locate') }}Blizu mene</button>
-<div class="map-attr">Mapa: <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/" rel="noopener">OpenMapTiles</a> · Podaci: © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>, <a href="https://openchargemap.org" rel="noopener">Open Charge Map</a>, <a href="https://www.putevi-srbije.rs/index.php/en/electric-chargers" rel="noopener">JP Putevi Srbije</a> · {{ M.retrieved_sr }}</div>
+<div class="map-attr">Mapa: <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/" rel="noopener">OpenMapTiles</a> · Podaci: © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>, <a href="https://openchargemap.org" rel="noopener">Open Charge Map</a>, <a href="https://www.putevi-srbije.rs/index.php/en/electric-chargers" rel="noopener">JP Putevi Srbije</a>, mreže · {{ M.retrieved_sr }}</div>
 <div class="card-ov" id="mcard"></div>
 </div>
 </div>
@@ -40,9 +41,10 @@
 <div class="sec-head"><h2>Cene po mrežama</h2><a href="/javno-punjenje/">Sve o javnom punjenju →</a></div>
 {% include '_price_summary.html' %}
 <details><summary>Odakle su podaci na mapi</summary>
-<p>Lokacije su iz otvorenih baza OpenStreetMap (licenca ODbL) i Open Charge Map (CC BY 4.0), snimak od {{ M.retrieved_sr }}. Isto mesto iz obe baze prikazano je jednom. Stanje državnih punjača na autoputevima je po spisku JP „Putevi Srbije“; punjače kojih nema u bazama postavili smo na naplatnu stanicu ili odmorište. Baze ne znaju za svaki punjač, a neki podaci su stari — proverite u aplikaciji mreže pre polaska.</p>
-<p>Cene su iz aplikacija mreža i sa računa, sa datumom. Kad cena nije zabeležena baš na tom punjaču, prikazana je cena iste mreže za istu snagu. Ceo spisak lokacija: <a class="lnk" href="/assets/map/punjaci.json">punjaci.json</a> (ODbL).</p>
-<p>Nema punjača ili je podatak netačan? Pišite na <a class="lnk" href="mailto:hello@blokvolt.com">hello@blokvolt.com</a>.</p>
+<p>Lokacije su iz otvorenih baza OpenStreetMap (licenca ODbL) i Open Charge Map (CC BY 4.0), snimak od {{ M.retrieved_sr }}. Isto mesto iz obe baze prikazano je jednom. Svaki punjač smo {{ M.checked }} proverili na spiskovima koje mreže same objavljuju (Charge&GO, roming mapa Charge&GO sa punjačima Orion eMobility, Tesla, JP „Putevi Srbije“). Punjače sa tih spiskova kojih nema u bazama dodali smo na mapu. Ostale smo tražili na Google mapama: ako postoje i imaju ocene vozača iz poslednjih godinu dana, računamo ih kao potvrđene. Sve ostalo je označeno sa „Nije potvrđeno“ — takav punjač možda više ne postoji ili nije javan.</p>
+<p>Stanje državnih punjača na autoputevima je po spisku JP „Putevi Srbije“. Vozači mogu na kartici punjača da jave da li radi, da ga ocene i pošalju fotografiju; komentare sa linkovima i sve fotografije objavljujemo posle provere.</p>
+<p>Cene su iz aplikacija mreža i sa računa, sa datumom. Kad cena nije zabeležena baš na tom punjaču, prikazana je cena iste mreže za istu snagu. Otvoreni skup podataka: <a class="lnk" href="/assets/map/punjaci.json">punjaci.json</a> (ODbL); lokacije i priključci sa spiskova mreža su u posebnom fajlu <a class="lnk" href="/assets/map/mreze.json">mreze.json</a> i nisu deo otvorenog skupa.</p>
+<p>Nema punjača ili je podatak netačan? <a class="lnk" href="/ispravka/">Pošaljite ispravku</a> ili pišite na <a class="lnk" href="mailto:hello@blokvolt.com">hello@blokvolt.com</a>.</p>
 </details>
 </div>
 <script id="map-cfg" type="application/json">{{ M.cfg|safe }}</script>

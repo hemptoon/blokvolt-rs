@@ -192,7 +192,7 @@ def source_pages(dist):
     """Serbian pages that get a translation: every HTML page except the 404 and the language trees."""
     for p in sorted(dist.rglob('*.html')):
         rel = '/' + str(p.relative_to(dist)).replace('\\', '/')
-        if rel.startswith('/en/') or rel.startswith('/ru/') or rel == '/404.html':
+        if rel.startswith('/en/') or rel.startswith('/ru/') or rel.startswith('/admin/') or rel == '/404.html':
             continue
         yield p, rel
 

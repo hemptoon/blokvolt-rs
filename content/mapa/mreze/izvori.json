@@ -1,0 +1,6 @@
+{
+ "about": "Spiskovi lokacija koje mreže same objavljuju (za proveru i dopunu mape). Kad se spisak osveži, promeni datum ovde. Videti docs/RUNBOOK.md §3.11.",
+ "cg": {"file": "chargego-raw.txt", "date": "24.09.2026", "url": "https://client.chargego.rs/", "label": "Charge&GO"},
+ "rm": {"file": "roaming-raw.txt", "date": "23.09.2026", "url": "https://client.chargego.rs/", "label": "Charge&GO — roming"},
+ "te": {"file": "tesla.json", "date": "24.09.2026", "url": "https://www.tesla.com/sl_SI/findus/list/superchargers/Serbia", "label": "Tesla"}
+}

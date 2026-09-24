@@ -10,6 +10,8 @@ modified: 2026-09-08
 priority: 0.8
 path: /punjac-u-zgradi-skupstina.html
 sources: Zakon o stanovanju i održavanju zgrada, čl. 12, 44 i 45 :: https://www.paragraf.rs/propisi/zakon_o_stanovanju_i_odrzavanju_zgrada.html | Zakon o energetici, čl. 210v (punjenje na javnim mestima) :: https://www.paragraf.rs/propisi/zakon_o_energetici.html | Pravilnik o tehničkim normativima bezbednosti garaža od požara, „Sl. glasnik RS“ 31/2024 i 59/2025 :: https://pravno-informacioni-sistem.rs/eli/rep/sgrs/ministarstva/pravilnik/2024/31/2 | Vodič profesionalnog upravnika: „Punjači za električna vozila u garaži“ (aleksic.xyz) :: https://www.aleksic.xyz/odrzavanje-zgrade/investiciono-odrzavanje/punjaci-elektricna-vozila-garazi/ | Zakon o planiranju i izgradnji, čl. 145 (rešenje o odobrenju izvođenja radova) :: https://www.paragraf.rs/propisi/zakon_o_planiranju_i_izgradnji.html
+image: skupstina-stanara
+image_alt: Stanari zgrade razgovaraju u ulazu o predlogu za punjač
 ---
 <div class="sum" markdown="1">
 - Odluka skupštine treba kad kabl do vašeg mesta prolazi kroz **zajedničke delove zgrade**

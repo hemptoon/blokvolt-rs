@@ -69,6 +69,8 @@ Electromaps ima 150 stanica (60 u Beogradu): broji stanice, ne priključna mesta
 
 </details>
 
+[[yt:OguHd9Ihrfs]]
+
 ## Subvencije
 
 Od 2020. do 2025. za subvencije je izdvojeno preko 1,67 milijardi RSD, za više od 3.800 vozila (do 2024. i za hibride). Za 2026. budžet je 170 miliona RSD — [subvencije 2026](/podaci/subvencije-2026/).

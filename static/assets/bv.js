@@ -81,4 +81,60 @@
     });
     apply();
   });
+
+  // forms that post to /api/zahtev (corrections, companies): fields by name; ?firma= ?operator= ?stanica= prefill the page field
+  [].forEach.call(d.querySelectorAll('form[data-bv-form]'), function (f) {
+    var t0 = Date.now(), kind = f.getAttribute('data-bv-form');
+    var p = new URLSearchParams(location.search), slug = p.get('firma') || p.get('operator') || p.get('mreza') || p.get('stanica') || '';
+    var what = f.querySelector('select[name=sta]'), where = f.querySelector('[name=gde],[name=stranica]');
+    if (what && p.get('stanica')) what.value = 'stanica';
+    else if (what && (p.get('operator') || p.get('mreza'))) what.value = 'mreza';
+    if (kind === 'firma' && (p.get('operator') || p.get('mreza'))) { var ko = f.querySelector('[name=vrsta]'); if (ko) ko.value = 'mreza'; }
+    if (where && slug) {
+      where.value = p.get('stanica') ? location.origin + '/mapa/#' + slug : location.origin + (p.get('firma') ? '/firme/' : '/javno-punjenje/') + slug + '/';
+    }
+    function show(cls) {
+      [].forEach.call(f.querySelectorAll('.f-msg'), function (m) { m.hidden = !m.classList.contains(cls); });
+    }
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var bad = [].filter.call(f.querySelectorAll('[required]'), function (el) { return el.type === 'checkbox' ? !el.checked : !el.value.trim(); });
+      if (bad.length) { show('f-need'); bad[0].focus(); return; }
+      var data = {}, email = '';
+      [].forEach.call(f.elements, function (el) {
+        if (!el.name || el.name === 'website') return;
+        if (el.type === 'checkbox') { if (el.checked) data[el.name] = true; return; }
+        if (el.name === 'email') { email = el.value.trim(); return; }
+        if (el.value.trim()) data[el.name] = el.value.trim();
+      });
+      var k = kind === 'firma' ? (data.vrsta === 'mreza' ? 'mreza' : 'firma') : (data.sta === 'stanica' || data.sta === 'novi-punjac' ? 'stanica' : 'ispravka');
+      var btn = f.querySelector('[type=submit]');
+      btn.disabled = true;
+      fetch('/api/zahtev', { method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ kind: k, slug: slug, data: data, email: email, hp: f.elements.website ? f.elements.website.value : '', t: Date.now() - t0 }) })
+        .then(function (r) { return r.json().then(function (j) { j.status = r.status; return j; }, function () { return { ok: false, status: r.status }; }); })
+        .then(function (j) {
+          btn.disabled = false;
+          if (j.ok) { show('f-ok'); f.reset(); btn.hidden = true; }
+          else show(j.status === 429 ? 'f-limit' : 'f-err');
+        }, function () { btn.disabled = false; show('f-err'); });
+    });
+  });
+
+  // YouTube behind a click: the iframe (youtube-nocookie.com) is created only when the reader presses play
+  d.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.yt-play');
+    if (!b) return;
+    var id = b.getAttribute('data-yt');
+    if (!/^[\w-]{6,20}$/.test(id)) return;
+    var f = d.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+    var tt = b.querySelector('.yt-t');
+    f.title = tt ? tt.textContent : 'YouTube';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.setAttribute('allowfullscreen', '');
+    f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    f.className = 'yt-frame';
+    b.replaceWith(f);
+  });
 })();

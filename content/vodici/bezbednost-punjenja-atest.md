@@ -10,6 +10,8 @@ modified: 2026-09-08
 priority: 0.8
 path: /bezbednost-punjenja-atest.html
 sources: SRPS HD 60364-7-722 — Električne instalacije niskog napona, posebni zahtevi za napajanje električnih vozila (Institut za standardizaciju Srbije) :: https://iss.rs/ | SRPS HD 60364-6 — Električne instalacije niskog napona, verifikacija (ispitivanje) (iss.rs) :: https://iss.rs/ | Pravilnik o tehničkim normativima bezbednosti garaža od požara, „Sl. glasnik RS“ 31/2024 i 59/2025 :: https://pravno-informacioni-sistem.rs/eli/rep/sgrs/ministarstva/pravilnik/2024/31/2 | Zagrevanje šuko utičnica pri dugotrajnom punjenju (emobilitysimplified.com) :: https://www.emobilitysimplified.com/2019/10/ev-charging-basics-can-you-charge-your-electric-car-using-a-household-socket.html | Vodič profesionalnog upravnika: zasebna linija, ovlašćeni izvođač, atest (aleksic.xyz) :: https://www.aleksic.xyz/odrzavanje-zgrade/investiciono-odrzavanje/punjaci-elektricna-vozila-garazi/
+image: elektricar-atest
+image_alt: Električar meri instalaciju pored kućnog punjača u garaži
 ---
 <div class="sum" markdown="1">
 - Opasno nije punjenje, nego **obična šuko utičnica**: na 16 A, posle pola sata neprekidnog punjenja, zagreje se do **~100 °C**

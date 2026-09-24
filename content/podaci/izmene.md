@@ -4,13 +4,21 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 23.09.2026
+updated: 24.09.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-09-23
+modified: 2026-09-24
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 24. septembar 2026
+
+- Svaki punjač na [mapi](/mapa/) proveren je na spiskovima koje mreže same objavljuju (Charge&GO, roming mapa Charge&GO sa punjačima Orion eMobility, Tesla, JP „Putevi Srbije“) i na Google mapama. Potvrđeni su označeni, a ostali nose oznaku „Nije potvrđeno“ ili „Prijavljen kvar“; 67 lokacija sa spiskova mreža dodato je na mapu, a uklonjeni su punjači za bicikle, privatni punjači i duplikati.
+- Na kartici punjača vozači mogu da jave da li radi, da ga ocene, ostave komentar i pošalju fotografiju; [pravila](/pravila-objavljivanja/) i [politika privatnosti](/politika-privatnosti.html) su dopunjeni.
+- Nova strana [za firme i mreže](/za-firme/) i forma za [ispravke](/ispravka/).
+- Ilustracije uz vodiče i video o punjenju, subvencijama i putovanju kroz Srbiju; video se učitava tek kad ga pokrenete.
+- Charge&GO: 87 lokacija u Srbiji po javnoj mapi mreže (ranije 68 po brojačima sa sajta).
+
 ## 23. septembar 2026
 
 - Nov izgled sajta i mapa javnih punjača sa cenama; tekstovi skraćeni.

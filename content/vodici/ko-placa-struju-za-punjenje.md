@@ -10,6 +10,8 @@ modified: 2026-09-08
 priority: 0.8
 path: /ko-placa-struju-za-punjenje.html
 sources: Cenovnik EPS-a za domaćinstva od 1.10.2025 po zonama i tarifama (danas.rs) :: https://www.danas.rs/vesti/ekonomija/poskupljenje-struje-cenovnik-racuni-tarife/ | Cenovnik EPS-a za domaćinstva od 1.10.2025 (ceneizakon.rs) :: https://ceneizakon.rs/cena-struje-u-srbiji-2026/ | Izmena metodologije: plava zona do 1.200 kWh, primena do kraja 2026 (paragraf.rs) :: https://www.paragraf.rs/dnevne-vesti/250825/250825-vest6.html | Zakon o energetici, čl. 210v :: https://www.paragraf.rs/propisi/zakon_o_energetici.html | Direktiva 2014/32/EU o mernim instrumentima (MID) :: https://eur-lex.europa.eu/eli/dir/2014/32/oj | Vodič profesionalnog upravnika o punjačima u garaži: odvojeno merenje kao uslov (aleksic.xyz) :: https://www.aleksic.xyz/odrzavanje-zgrade/investiciono-odrzavanje/punjaci-elektricna-vozila-garazi/
+image: brojilo-ugradnja
+image_alt: Električar ugrađuje brojilo za punjač u ormar zgrade
 ---
 <div class="sum" markdown="1">
 - Struju plaća onaj ko puni: **tačno koliko potroši**, po ceni iz stvarnog računa, **bez marže**

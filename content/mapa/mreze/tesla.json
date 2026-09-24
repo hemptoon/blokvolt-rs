@@ -1,0 +1,14 @@
+{
+ "about": "Tesla locations in Serbia from Tesla's own lists (Superchargers and Destination Charging), copied by hand. Positions: the existing open-data stations (OSM/OCM) at these addresses.",
+ "source": "https://www.tesla.com/sl_SI/findus/list/superchargers/Serbia",
+ "source2": "https://www.tesla.com/sl_SI/findus/list/chargers/Serbia",
+ "checked": "24.09.2026",
+ "sites": [
+  {"name": "Tesla Supercharger Aleksinac", "addr": "Žitkovački put bb, Aleksinac", "kind": "supercharger", "lat": 43.52802, "lon": 21.70936},
+  {"name": "Tesla Supercharger Beograd", "addr": "Astrid Lindgren 23, Beograd", "kind": "supercharger", "lat": 44.71118, "lon": 20.56141},
+  {"name": "Hotel Crowne Plaza Belgrade", "addr": "Vladimira Popovića 10, Beograd", "kind": "destination", "lat": 44.8092, "lon": 20.43382},
+  {"name": "Hotel Tesla Smart Stay", "addr": "Šumatovačka 42, Beograd", "kind": "destination", "lat": 44.79524, "lon": 20.47246},
+  {"name": "Square Nine Hotel Belgrade", "addr": "Studentski trg 9, Beograd", "kind": "destination", "lat": 44.81949, "lon": 20.4563},
+  {"name": "Guest House Vila Đokić", "addr": "Gajevi 154, Zlatibor", "kind": "destination", "lat": null, "lon": null}
+ ]
+}
