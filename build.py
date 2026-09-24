@@ -549,6 +549,7 @@ MAP_T = {
     'v_none': 'Punjač je samo u otvorenim bazama. Nismo ga našli ni na spisku mreža ni na Google mapama — možda više ne postoji ili nije javan. Proverite pre polaska.',
     'v_old': 'Punjač je u otvorenim bazama i na Google mapama, ali bez skorijih potvrda: nijedna ocena vozača iz poslednjih godinu dana. Proverite pre polaska.',
     'v_prob_t': 'Prijavljen kvar', 'v_prob': 'Vozači u skorašnjim recenzijama pišu da punjač ne radi. Proverite pre polaska.',
+    'v_test': 'Po spisku mreže punjač je u probnom radu i još nije otvoren za sve. Proverite u aplikaciji pre polaska.',
     'src_rm': 'Charge&GO roming',
     # drivers' reports (/api)
     'rv_title': 'Iskustva vozača', 'rv_empty': 'Još nema prijava za ovaj punjač.', 'ratings': 'ocena: {n}', 'last_report': 'Poslednja prijava',

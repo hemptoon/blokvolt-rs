@@ -497,12 +497,12 @@ def official_sites():
         if len(f) < 9:
             continue
         cid, lat, lon, name, street, city, acc = f[0], float(f[1]), float(f[2]), f[3], f[4], f[5], f[6]
-        if lat < 42.2 or fold(city) == 'skopje' or acc == 'test':
-            continue   # North Macedonia; chargers still in test
+        if lat < 42.2 or fold(city) == 'skopje':
+            continue   # North Macedonia
         c = _city(city)
         recs.append({'k': 'cg', 'id': 'cg-' + cid, 'lat': lat, 'lon': lon, 'net': 'chargego', 'raw': name,
                      'n': smart_case(NAME_FIX.get(name, name)), 'a': ', '.join(x for x in (_street(street, c), c) if x),
-                     'c': _cg_conns(f[8]), 'evse': None})
+                     'c': _cg_conns(f[8]), 'evse': None, 'test': acc == 'test'})   # test = in trial operation, not public yet
     for line in open(MREZE / meta['rm']['file'], encoding='utf-8'):
         f = line.rstrip('\n').split('|')
         if len(f) < 11:
@@ -634,6 +634,9 @@ def verify(stations, notes, checked):
             if dist_m(_ll(keep), _ll(other)) <= 250 and not other.get('ps'):
                 _absorb(keep, other)
                 gone.add(other['id'])
+        if site.get('test'):
+            keep['v'] = {'s': 'nep', 'g': 'test', 'd': meta[site['k']]['date']}   # the network lists it as in trial operation
+            continue
         by = sorted(set((keep.get('v') or {}).get('by', [])) | {site['k']})
         keep['v'] = {'s': 'ok', 'by': by, 'd': meta[site['k']]['date']}
         if site.get('putevi') or keep.get('ps'):
@@ -654,8 +657,8 @@ def verify(stations, notes, checked):
     stations[:] = [s for s in stations if s['id'] not in gone]
     claimed = {id(site) for site, _ in claim.values()}
     for site in sites:
-        if id(site) in claimed or site.get('putevi'):
-            continue   # the state chargers come from the list of JP "Putevi Srbije" only
+        if id(site) in claimed or site.get('putevi') or site.get('test'):
+            continue   # the state chargers come from the list of JP "Putevi Srbije" only; chargers in trial are not added
         dc = [c[2] for c in site['c'] if c[1] == 'dc' and c[2]]
         ac = [c[2] for c in site['c'] if c[1] == 'ac' and c[2]]
         town, km = near_town(site['lat'], site['lon'])

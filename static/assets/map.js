@@ -191,7 +191,7 @@ function verHtml(s) {
     const by = (v.by || []).map(b => VBY()[b]).filter(Boolean).join('; ');
     return '<p class="vf">' + ICON.ok + '<span><b>' + esc(T.v_ok) + '</b> ' + esc(by) + (v.d ? ' · ' + esc(v.d) : '') + '</span></p>';
   }
-  const why = v.s === 'prob' ? T.v_prob : (v.g === 'g_old' ? T.v_old : T.v_none);
+  const why = v.s === 'prob' ? T.v_prob : (v.g === 'test' ? T.v_test : v.g === 'g_old' ? T.v_old : T.v_none);
   return '<div class="vf-warn' + (v.s === 'prob' ? ' no' : '') + '"><b>' + ICON.warn + esc(v.s === 'prob' ? T.v_prob_t : T.v_nep) + '</b><p>' + esc(why) + '</p><small>' + esc(T.v_checked.replace('{d}', v.d || '')) + '</small></div>';
 }
 function openCard(s, fly) {
