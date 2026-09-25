@@ -1,12 +1,12 @@
 ---
 title: Politika privatnosti i uslovi korišćenja
 h1: Politika privatnosti
-description: Kako blokvolt.rs postupa sa podacima o ličnosti i pod kojim uslovima se sajt koristi. Bez naloga, analitike i kolačića za praćenje; forme i prijave sa mape čuvaju samo ono što upišete.
-lead: Sajt nema naloge i ne koristi analitiku, oglasne piksele ni kolačiće za praćenje. Forme i prijave sa mape čuvaju samo ono što sami upišete.
+description: Kako blokvolt.rs postupa sa podacima o ličnosti i pod kojim uslovima se sajt koristi. Bez naloga i kolačića za praćenje; posete se broje bez kolačića, a forme čuvaju samo ono što upišete.
+lead: Sajt nema naloge, oglasne piksele ni kolačiće za praćenje. Posete se broje bez kolačića, a forme i prijave sa mape čuvaju samo ono što sami upišete.
 kicker: Pravno
-updated: 24.09.2026
+updated: 25.09.2026
 published: 2026-09-21
-modified: 2026-09-24
+modified: 2026-09-25
 priority: 0.2
 path: /politika-privatnosti.html
 ---
@@ -14,6 +14,7 @@ path: /politika-privatnosti.html
 - Lični podaci stižu do sajta samo ako ih **sami upišete** — u formu, prijavu sa mape ili e-mail na **hello@blokvolt.com**
 - IP adresu vide **Cloudflare** i, na mapi punjača, **OpenFreeMap**; mi čuvamo samo njen **jednosmerni otisak** koji se menja svakog dana
 - Lokacija za „Blizu mene“ **ne šalje se** sajtu, a video sa YouTube-a se učitava **tek kad ga pokrenete**
+- Posete se broje **bez kolačića**, a omiljeni punjači ostaju **samo u vašem pregledaču**
 </div>
 
 Rukovalac podacima: [PRAVNI-PODACI: poslovno ime, sedište, MB, PIB]. Kontakt: hello@blokvolt.com.
@@ -22,17 +23,29 @@ Rukovalac podacima: [PRAVNI-PODACI: poslovno ime, sedište, MB, PIB]. Kontakt: h
 
 Ako pišete e-mailom ili kroz formu za ispravke i firme, sajt dobija ono što upišete: poruku, ime i e-adresu ako ih navedete, a za firme i telefon. Ako na kartici punjača pošaljete prijavu, ocenu, komentar ili fotografiju, čuvamo njih, nadimak ako ga navedete i vreme. Uz svaku poruku i prijavu čuvamo i jednosmerni otisak IP adrese koji se menja svakog dana: služi samo za zaštitu od zloupotrebe, a iz njega se adresa ne može vratiti. Fotografiju pregledač pre slanja smanji i ponovo sačuva, bez podataka o lokaciji i uređaju (EXIF).
 
-Pri svakoj poseti provajder sajta (Cloudflare) obrađuje tehničke podatke: IP adresu, vreme zahteva, tip uređaja i pregledača. Fontovi i sav ostali sadržaj učitavaju se sa istog domena, osim podloge mape.
+Pri svakoj poseti provajder sajta (Cloudflare) obrađuje tehničke podatke: IP adresu, vreme zahteva, tip uređaja i pregledača. Fontovi i sav ostali sadržaj učitavaju se sa istog domena, osim podloge mape i skripti za merenje poseta.
 
 <details markdown="1">
 <summary>Detalji: svrha, rokovi, obrađivači, kolačići</summary>
 
 - **Svrha i osnov:** odgovor na poruke, tačni podaci, bezbedan i ispravan rad sajta i prikaz mape (legitimni interes). Automatizovanog odlučivanja nema, a podaci se ne prodaju.
 - **Rokovi:** prepiska i poruke iz formi čuvaju se najduže 12 meseci od poslednjeg kontakta, a na zahtev se brišu i ranije, osim ako zakon traži duže čuvanje. Prijave, ocene i fotografije sa mape stoje dok je punjač na mapi ili dok ne tražite brisanje. Tehničke zapise čuva provajder po svojim pravilima.
-- **Obrađivači:** Cloudflare (hosting i baza podataka) i Spacemail kompanije Spaceship (e-pošta). Podatke obrađuju i van Srbije, uz mere zaštite iz Zakona o zaštiti podataka o ličnosti: primeren nivo zaštite ili standardne ugovorne klauzule.
-- **Kolačići:** provajder može da postavi samo tehnički neophodan bezbednosni kolačić. Za analitiku bi se prvo tražila vaša saglasnost.
+- **Obrađivači:** Cloudflare (hosting, baza podataka i merenje poseta) i Spacemail kompanije Spaceship (e-pošta).<!--posthog--> Korišćenje funkcija sajta meri PostHog (serveri u EU).<!--/posthog--> Podatke obrađuju i van Srbije, uz mere zaštite iz Zakona o zaštiti podataka o ličnosti: primeren nivo zaštite ili standardne ugovorne klauzule.
+- **Kolačići i memorija pregledača:** sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. U memoriju pregledača (localStorage) upisuje se samo spisak omiljenih punjača, i to tek kad ga sami napravite. Kad bi sajt ikada uveo kolačiće za analitiku ili reklame, prvo bi tražio vašu saglasnost.
 
 </details>
+
+## Merenje poseta
+
+Posete se broje uz Cloudflare Web Analytics: pregledi stranica, sa kog sajta ili pretraživača je poseta došla, zemlja, tip uređaja i brzina učitavanja. Alat ne postavlja kolačiće, ništa ne upisuje u pregledač i ne prati vas na drugim sajtovima. Rezultati su zbirni.
+
+<!--posthog-->
+Da bi sajt radio bolje, beleži se i kako se koriste njegove funkcije: kartica punjača, filteri na mapi, pretraga, klik na sajt ili telefon firme, slanje forme. To radi PostHog, na serverima u EU (Frankfurt), u režimu bez kolačića: u pregledaču se ništa ne čuva, a od IP adrese i podataka o pregledaču pravi se anonimni identifikator koji se menja svakog dana. IP adresa se ne čuva, a zapisi se ne povezuju sa imenom ni nalogom i brišu se posle najviše godinu dana. Ako pregledač šalje signal „Ne prati me“ (Do Not Track), ovi zapisi se ne šalju.
+<!--/posthog-->
+
+## Omiljeni punjači
+
+Punjač koji na mapi sačuvate u omiljene upisuje se samo u vaš pregledač (localStorage). Spisak se ne šalje sajtu i nestaje kad obrišete podatke sajta u pregledaču.
 
 ## Mapa punjača
 
@@ -65,6 +78,6 @@ Sajt vodi [PRAVNI-PODACI]. Korišćenjem sajta prihvatate ove uslove.
 - Objavom prijave, komentara ili fotografije na mapi dajete BlokVoltu neisključivu, besplatnu dozvolu da ih prikazuje na sajtu; autorska prava ostaju vaša. Sadržaj koji krši [pravila](/pravila-objavljivanja/) uklanjamo.
 - Tekstovi, tabele i znak BlokVolt su zaštićeni. Citiranje uz link je dozvoljeno, a kopiranje u komercijalne svrhe bez pisane saglasnosti nije. Izuzetak su [podaci za preuzimanje](/preuzimanje/), pod licencom CC BY 4.0.
 - Sajt je dostupan „takav kakav jeste“. Vlasnik sajta ne odgovara za štetu zbog privremene nedostupnosti sajta, promene cena kod firmi ili sadržaja spoljnih linkova.
-- Važeća verzija je uvek na ovoj stranici. Prva verzija važi od 21.09.2026, dopuna o mapi punjača od 23.09.2026, a dopuna o formama, prijavama sa mape i videu od 24.09.2026.
+- Važeća verzija je uvek na ovoj stranici. Prva verzija važi od 21.09.2026, dopuna o mapi punjača od 23.09.2026, dopuna o formama, prijavama sa mape i videu od 24.09.2026, a dopuna o merenju poseta i omiljenim punjačima od 25.09.2026.
 
 </details>

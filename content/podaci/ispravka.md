@@ -13,7 +13,6 @@ priority: 0.4
 <div class="sum" markdown="1">
 - Greška se ispravlja **u roku od nekoliko dana**
 - Upis nove firme je **besplatan**
-- Predstavljate firmu ili mrežu? Koristite [stranu za firme](/za-firme/)
 </div>
 
 <form class="bform" data-bv-form="ispravka" novalidate>
@@ -43,3 +42,5 @@ Umesto forme možete pisati i na **hello@blokvolt.com**. Za punjač na mapi najb
 Za upis u registar pošaljite naziv, sajt i grad firme. Pravila su ista za sve. Firma može da traži uklanjanje svog unosa bez objašnjenja.
 
 Svaka ispravka se beleži u [dnevniku izmena](/izmene/).
+
+<p class="claim-min"><span>Predstavljate firmu ili mrežu?</span> <a href="/za-firme/">Strana za firme i mreže</a></p>

@@ -66,3 +66,5 @@ Udruženje uvoznika SAUVD predložilo je u februaru 2026. zelene tablice i nefin
 ## Struja kod kuće
 
 Niža tarifa EPS-a u zelenoj zoni (do 350 kWh) je 2,4034 RSD/kWh, bez mrežarine, akcize, naknada i PDV-a. Više: [tarife EPS](/podaci/tarife-eps/) i [ko plaća struju za punjenje](/ko-placa-struju-za-punjenje).
+
+<aside class="ru-note" data-only="ru" lang="ru" translate="no"><p><b>Для переехавших в Сербию.</b> Парковочная карта жителя Белграда и полезные ссылки для водителей (транспондеры для оплаты дорог, парковочные службы городов): <a href="https://www.srb.guide/guides/vozila/parking-card/">парковочная карта</a>, <a href="https://www.srb.guide/guides/vozila/useful-links/">полезные ссылки</a>. Это сторонний русскоязычный гид <a href="https://www.srb.guide/">srb.guide</a>, с BlokVolt он не связан; пошлины и адреса сверяйте по ссылкам на официальные источники в самом гиде.</p></aside>

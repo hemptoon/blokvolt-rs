@@ -1,6 +1,7 @@
 /* BlokVolt — map of public chargers (/mapa/). MapLibre GL + OpenFreeMap; stations from
    /assets/map/punjaci.json (OSM + OCM, ODbL) completed with /assets/map/mreze.json (the networks' own lists),
-   prices from /assets/map/cene.json (ours), drivers' reports, ratings and photos from /api (Cloudflare D1). */
+   prices from /assets/map/cene.json (ours), drivers' reports, ratings and photos from /api (Cloudflare D1).
+   Favourites (★) are station ids kept only in this browser (localStorage 'bv:fav'); nothing is sent anywhere. */
 import * as maplibregl from '/assets/vendor/maplibre-6.11.1/maplibre-gl.mjs';
 
 const d = document;
@@ -25,6 +26,16 @@ const ICON = {
   cam: svg('<path d="M4 8h3l2-3h6l2 3h3v11H4V8Z"/><circle cx="12" cy="13" r="3.5"/>')
 };
 const ST_LABEL = { ok: T.ci_ok, problem: T.ci_problem, broken: T.ci_broken, missing: T.ci_missing };
+const STAR = '<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.6l2.55 5.17 5.7.83-4.13 4.02.98 5.68L12 16.62l-5.1 2.68.98-5.68L3.75 9.6l5.7-.83L12 3.6Z"/></svg>';
+// usage events go through bv.js (window.bvTrack); a missing or blocked analytics script never breaks the map
+const track = (e, p) => { try { if (window.bvTrack) window.bvTrack(e, p); } catch (x) { /* ignore */ } };
+
+// ---------- favourites (this browser only) ----------
+const FAV_KEY = 'bv:fav';
+let FAV = new Set();
+try { FAV = new Set((JSON.parse(localStorage.getItem(FAV_KEY) || '[]') || []).filter(x => typeof x === 'string').slice(0, 300)); } catch (e) { FAV = new Set(); }
+function saveFav() { try { localStorage.setItem(FAV_KEY, JSON.stringify([...FAV])); } catch (e) { /* private mode: kept for this visit only */ } }
+function isFav(s) { return FAV.has(s.id); }
 
 let ST = [], NETS = {}, CI = {}, map, me = null, sel = null, city = null, opened = 0;
 const state = { q: '', f: 'all', bounds: null, lim: 20 };
@@ -102,6 +113,7 @@ function match(s) {
   if (f === 'ac' && !(s.ac || s.c.some(c => c[1] !== 'dc'))) return false;
   if (f === 'free' && kind(s) !== 'free') return false;
   if (f === 'ok' && ver(s) !== 'ok') return false;
+  if (f === 'fav' && !FAV.has(s.id)) return false;
   if (f.indexOf('net:') === 0 && s.net !== f.slice(4)) return false;
   if (state.q) {
     const hay = s._q || (s._q = fold([s.n, s.a, s.t, netName(s), s.opn].join(' ')));
@@ -143,9 +155,9 @@ function renderList() {
     const sub = [netName(s), place(s)].filter(Boolean).join(' · ') + rating(s);
     const dist = ref ? '<span>' + fmt(s._d, s._d < 10 ? 1 : 0) + ' km</span>' : '';
     return '<button class="st' + (sel === s ? ' is-on' : '') + (ver(s) === 'nep' ? ' is-nep' : '') + '" data-id="' + esc(s.id) + '"><span class="dot ' + k + '">' + (pw ? Math.round(pw) : '') + '</span>' +
-      '<span class="nm"><b>' + esc(title(s)) + badge(s) + '</b><span class="sb">' + esc(sub) + '</span></span><span class="pr ' + ps.cls + '">' + esc(ps.t) + dist + '</span></button>';
+      '<span class="nm"><b>' + (isFav(s) ? '<i class="fv">' + STAR + '<span class="sr-only">' + esc(T.fav_sr) + '</span></i>' : '') + esc(title(s)) + badge(s) + '</b><span class="sb">' + esc(sub) + '</span></span><span class="pr ' + ps.cls + '">' + esc(ps.t) + dist + '</span></button>';
   }).join('');
-  $list.innerHTML = (html || '<p class="empty">' + esc(T.none) + '</p>') + (more > 0 ? '<div class="more"><button class="btn sm" type="button" data-more>' + esc(T.more.replace('{n}', more)) + '</button></div>' : '');
+  $list.innerHTML = (html || '<p class="empty">' + esc(state.f === 'fav' && !FAV.size ? T.fav_none : T.none) + '</p>') + (more > 0 ? '<div class="more"><button class="btn sm" type="button" data-more>' + esc(T.more.replace('{n}', more)) + '</button></div>' : '');
 }
 
 // ---------- card ----------
@@ -208,6 +220,7 @@ function openCard(s, fly) {
   const SRC = { ocm: 'Open Charge Map', osm: 'OpenStreetMap', ps: 'JP Putevi Srbije', cg: 'Charge&GO', rm: T.src_rm, te: 'Tesla' };
   const srcs = s.src.filter(x => x.u).map(x => '<a href="' + esc(x.u) + '" rel="noopener nofollow">' + esc(SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(x.upd) + ')' : '')).join(' · ');
   $card.innerHTML = '<div class="ccard" role="dialog" aria-label="' + esc(title(s)) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
+    favBtn(s) +
     '<h2>' + esc(title(s)) + '</h2><p class="addr">' + esc(place(s)) + '</p>' + verHtml(s) + netLine + priceHtml(s) + statusHtml(s) + conns + acc +
     '<div class="acts"><a class="btn dark full" href="' + nav + '" target="_blank" rel="noopener">' + ICON.nav + esc(T.navigate) + '</a>' +
     (site ? '<a class="btn" href="' + esc(site) + '"' + (site[0] === '/' ? '' : ' target="_blank" rel="noopener"') + '>' + ICON.ext + esc(n && n.page ? T.about_net : T.site) + '</a>' : '') +
@@ -216,10 +229,40 @@ function openCard(s, fly) {
     '<p class="src">' + esc(T.data) + ': ' + srcs + '</p></div>';
   $card.classList.add('is-open');
   $card.querySelector('.x').addEventListener('click', closeCard);
+  $card.querySelector('.fav').addEventListener('click', () => toggleFav(s));
+  $card.querySelector('.acts').addEventListener('click', e => {
+    const a = e.target.closest('a');
+    if (!a) return;
+    track(a.href.indexOf('google.com/maps') >= 0 ? 'map_navigate' : (a.href.indexOf('/ispravka/') >= 0 ? 'map_report_error' : 'map_network_link'), { station: s.id, network: s.net || '' });
+  });
   rvBind(s);
+  track('map_card_open', { station: s.id, network: s.net || '', verified: ver(s), favourite: isFav(s) });
   if (map && map.getSource('sel')) map.getSource('sel').setData({ type: 'FeatureCollection', features: [feat(s)] });
   if (fly && map) map.flyTo({ center: [s.lon, s.lat], zoom: Math.max(map.getZoom(), 13), speed: 1.4, padding: padding() });
   history.replaceState(null, '', location.pathname + location.search + '#' + s.id);
+  renderList();
+}
+function favBtn(s) {
+  const on = isFav(s);
+  return '<button class="fav" type="button" aria-pressed="' + on + '" aria-label="' + esc(on ? T.fav_del : T.fav_add) + '" title="' + esc(on ? T.fav_del : T.fav_add) + '">' + STAR + '</button>';
+}
+function favCount() {
+  const n = d.querySelector('[data-favn]');
+  if (n) { n.textContent = FAV.size; n.hidden = !FAV.size; }
+}
+function toggleFav(s) {
+  const on = !FAV.has(s.id);
+  if (on) FAV.add(s.id); else FAV.delete(s.id);
+  saveFav();
+  favCount();
+  const b = $card.querySelector('.fav');
+  if (b && sel === s) {
+    b.setAttribute('aria-pressed', on);
+    b.setAttribute('aria-label', on ? T.fav_del : T.fav_add);
+    b.title = on ? T.fav_del : T.fav_add;
+  }
+  track(on ? 'favourite_add' : 'favourite_remove', { station: s.id, network: s.net || '', total: FAV.size });
+  if (map && map.getSource('st')) map.getSource('st').setData(data());
   renderList();
 }
 function closeCard() {
@@ -322,6 +365,7 @@ function rvBind(s) {
       btn.disabled = false;
       if (!j.ok) { msg.textContent = errText(j); return; }
       form.hidden = true;
+      track('checkin_sent', { station: s.id, network: s.net || '', status, rating: r || 0, comment: !!form.querySelector('textarea').value.trim() });
       form.reset(); r = 0;
       msg.textContent = j.pending ? T.rv_thanks_pending : T.rv_thanks;
       rvLoad(s, box);
@@ -345,7 +389,7 @@ function rvBind(s) {
       fd.append('thumb', p.th, 'thumb.jpg');
       fd.append('w', p.w); fd.append('h', p.h); fd.append('t', Date.now() - opened); fd.append('hp', '');
       return post(cfg.api + '/stanica/' + encodeURIComponent(s.id) + '/foto', fd, true);
-    }).then(j => { note.textContent = j.ok ? T.photo_thanks : errText(j); }).catch(() => { note.textContent = T.photo_bad; });
+    }).then(j => { note.textContent = j.ok ? T.photo_thanks : errText(j); if (j.ok) track('photo_sent', { station: s.id, network: s.net || '' }); }).catch(() => { note.textContent = T.photo_bad; });
   });
   rvLoad(s, box);
 }
@@ -404,7 +448,7 @@ function loadSummaries() {
 // ---------- map ----------
 function feat(s) {
   const v = ver(s), p = Math.round(power(s)) || '';
-  return { type: 'Feature', id: s._i, geometry: { type: 'Point', coordinates: [s.lon, s.lat] }, properties: { id: s.id, k: kind(s), v, p: v === 'nep' ? p + '?' : p } };
+  return { type: 'Feature', id: s._i, geometry: { type: 'Point', coordinates: [s.lon, s.lat] }, properties: { id: s.id, k: kind(s), v, p: v === 'nep' ? p + '?' : p, f: FAV.has(s.id) ? 1 : 0 } };
 }
 function data() { return { type: 'FeatureCollection', features: visible().map(feat) }; }
 function refresh() {
@@ -438,6 +482,9 @@ function initMap() {
         'circle-stroke-opacity': ['case', nep, 0.55, 1],
         'circle-stroke-color': ['match', ['get', 'k'], 'dc', '#D9F45B', 'off', '#8A909B', '#0D111A']
       } });
+    // favourites: a ring around the point
+    map.addLayer({ id: 'pt-fav', type: 'circle', source: 'st', filter: ['all', ['!', ['has', 'point_count']], ['==', ['get', 'f'], 1]],
+      paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 10, 12, 14, 16, 17], 'circle-color': 'rgba(0,0,0,0)', 'circle-stroke-width': 2.5, 'circle-stroke-color': '#6E8A12' } });
     map.addLayer({ id: 'pt-kw', type: 'symbol', source: 'st', filter: ['!', ['has', 'point_count']], minzoom: 12,
       layout: { 'text-field': ['to-string', ['get', 'p']], 'text-font': font, 'text-size': 10, 'text-allow-overlap': true },
       paint: { 'text-color': ['match', ['get', 'k'], 'dc', '#D9F45B', 'off', '#5C6270', '#0D111A'] } });
@@ -470,8 +517,9 @@ function initMap() {
 }
 
 // ---------- controls ----------
-function setChip(f) {
+function setChip(f, quiet) {
   state.f = f;
+  if (!quiet) track('map_filter', { filter: f, favourites: FAV.size });
   [].forEach.call($chips.querySelectorAll('.chip'), c => c.setAttribute('aria-pressed', c.dataset.f === f ? 'true' : 'false'));
   refresh();
 }
@@ -483,7 +531,13 @@ $count.addEventListener('click', e => {
   renderList();
 });
 let qt;
-$q.addEventListener('input', () => { clearTimeout(qt); qt = setTimeout(() => { state.q = $q.value.trim(); refresh(); }, 120); });
+let qTrack;
+$q.addEventListener('input', () => {
+  clearTimeout(qt); clearTimeout(qTrack);
+  qt = setTimeout(() => { state.q = $q.value.trim(); refresh(); }, 120);
+  // one event per finished query (the reader stopped typing), not per keystroke
+  qTrack = setTimeout(() => { const q = $q.value.trim(); if (q.length >= 3) track('map_search', { query: q.slice(0, 60), results: visible().length }); }, 1500);
+});
 $list.addEventListener('click', e => {
   if (e.target.closest('[data-more]')) { state.lim += 30; renderList(); return; }
   const b = e.target.closest('.st'); if (b) { const s = ST.find(x => x.id === b.dataset.id); if (s) openCard(s, true); }
@@ -496,9 +550,10 @@ $me.addEventListener('click', () => {
     me = { lat: pos.coords.latitude, lon: pos.coords.longitude };
     state.bounds = null;
     $me.disabled = false;
+    track('map_near_me', { ok: true });
     if (map) map.flyTo({ center: [me.lon, me.lat], zoom: 11 });
     renderList();
-  }, () => { $me.disabled = false; alertNote(T.no_location); }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
+  }, () => { $me.disabled = false; alertNote(T.no_location); track('map_near_me', { ok: false }); }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
 });
 function alertNote(msg) { $count.textContent = msg; }
 
@@ -510,9 +565,9 @@ function fromUrl() {
   if (q) { $q.value = q; state.q = q; }
   const c = g && cfg.cities[g];
   if (c) city = { lat: c[0], lon: c[1] };
-  if (net && $chips.querySelector('[data-f="net:' + net + '"]')) setChip('net:' + net);
+  if (net && $chips.querySelector('[data-f="net:' + net + '"]')) setChip('net:' + net, true);
   else if (net) { state.q = state.q || net.replace(/-/g, ' '); refresh(); }
-  else if (f && $chips.querySelector('[data-f="' + f + '"]')) setChip(f);
+  else if (f && $chips.querySelector('[data-f="' + f + '"]')) setChip(f, true);
   else refresh();
   const id = decodeURIComponent(location.hash.slice(1));
   if (id) { const s = ST.find(x => x.id === id); if (s) openCard(s, false); }
@@ -532,6 +587,10 @@ Promise.all([getJson(cfg.stations), getJson(cfg.nets).catch(() => ({ upd: {}, ad
   ST.sort((x, y) => (!x.n - !y.n) || fold(x.n).localeCompare(fold(y.n)) || (x.id < y.id ? -1 : 1));
   NETS = b.nets;
   ST.forEach((s, i) => { s._i = i; });
+  // favourites of stations that are no longer on the map are dropped quietly
+  const ids = new Set(ST.map(s => s.id));
+  if ([...FAV].some(id => !ids.has(id))) { FAV = new Set([...FAV].filter(id => ids.has(id))); saveFav(); }
+  favCount();
   fromUrl();
   loadSummaries();
   try { initMap(); } catch (e) { d.getElementById('map').classList.add('is-off'); }

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import pagehead %}
+{% from '_icons.html' import ic %}
+{% block head %}<link rel="alternate" type="application/rss+xml" title="BlokVolt — vesti" href="/vesti/rss.xml">{% if prev_url %}
+<link rel="prev" href="{{ prev_url }}">{% endif %}{% if next_url %}
+<link rel="next" href="{{ next_url }}">{% endif %}{% endblock %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "CollectionPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "ItemList", "itemListElement": [{% for x in items %}{"@type": "ListItem", "position": {{ loop.index }}, "url": "{{ SITE }}{{ x.url }}", "name": {{ x.title|tojson }}}{{ ',' if not loop.last }}{% endfor %}]}
+ ]
+}</script>{% endblock %}
+{% block pagehead %}{% call pagehead('Vesti', 'Šta se menja za vozače električnih automobila u Srbiji: subvencije, punjači, cene i propisi.' if page_no == 1 else 'Starije vesti, strana ' ~ page_no ~ '.') %}{% endcall %}{% endblock %}
+{% block content %}
+{% if items %}<div class="news-list">{% for x in items %}
+<article class="news-item">
+<p class="news-meta"><time datetime="{{ x.iso }}">{{ x.date }}</time>{% if x.tag_label %}<span aria-hidden="true">·</span><span>{{ x.tag_label }}</span>{% endif %}</p>
+<h2><a href="{{ x.url }}">{{ x.title }}</a></h2>
+<p>{{ x.lead }}</p>
+</article>{% endfor %}
+</div>{% else %}<p class="empty">Još nema vesti.</p>{% endif %}
+{% if pages > 1 %}<nav class="pager" aria-label="Strane">{% if prev_url %}<a class="btn sm" href="{{ prev_url }}" rel="prev">← Novije</a>{% endif %}<span>Strana {{ page_no }} od {{ pages }}</span>{% if next_url %}<a class="btn sm" href="{{ next_url }}" rel="next">Starije →</a>{% endif %}</nav>{% endif %}
+<p class="upd news-foot"><a href="/vesti/rss.xml">RSS</a> · <a href="/metodologija/#vesti">Kako nastaju vesti</a> · Primetili ste grešku? <a href="/ispravka/">Javite</a></p>
+{% endblock %}

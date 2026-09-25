@@ -9,6 +9,7 @@
   {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Javno punjenje", "item": "{{ SITE }}/javno-punjenje/"}, {"@type": "ListItem", "position": 3, "name": {{ op.name|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
  ]
 }</script>{% endblock %}
+{% block pagekey %} data-page="network:{{ op.slug }}"{% endblock %}
 {% block pagehead %}<div class="ph" data-bv-note><div class="wrap">
 <nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a><span aria-hidden="true">›</span><a href="/javno-punjenje/">Javno punjenje</a></nav>
 <div class="ent">{{ lg(op, 'lg-lg') }}<div><h1>{{ op.name }}</h1><p class="lead">{{ op.lead }}</p></div></div>
@@ -39,6 +40,6 @@
 {% if op.old_prices %}<details><summary>Ranije zabeležene cene ({{ op.old_prices|length }})</summary><ul>{% for p in op.old_prices %}<li>{{ p.what|replace('Istorija: ', '') }} — <b>{{ p.value }}</b>, {{ p.date }} (<a class="lnk" href="{{ p.url }}" rel="noopener nofollow">{{ p.source }}</a>)</li>{% endfor %}</ul></details>{% endif %}
 {{ src_block(op.src_items) }}
 <p class="upd">Provereno {{ op.verified }} · <a href="/ispravka/?operator={{ op.slug }}">Prijavite grešku</a></p>
-<div class="claim"><div><b>Vodite ovu mrežu?</b><span>Pošaljite tačan cenovnik, spisak lokacija i priključaka — besplatno. Podatke mreže označavamo datumom.</span></div><a class="btn" href="/za-firme/?mreza={{ op.slug }}">{{ ic('doc') }}Pošaljite podatke</a></div>
 </div>
+<p class="claim-min"><span>Vodite ovu mrežu?</span> <a href="/za-firme/?mreza={{ op.slug }}">Pošaljite podatke</a></p>
 {% endblock %}

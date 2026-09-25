@@ -68,3 +68,5 @@ U februaru 2026. udruženje uvoznika SAUVD predložilo je zelene tablice, parkin
 Od 2026. električni bicikli brži od 25 km/h i skuteri sa sedištem moraju da dobiju nalepnicu Agencije za bezbednost saobraćaja i prođu tehnički pregled. Za one kupljene ili uvezene do 27.06.2026 zahtev za utvrđivanje karakteristika podnosi se do 01.02.2027, a registracija do 01.03.2027.
 
 </details>
+
+<aside class="ru-note" data-only="ru" lang="ru" translate="no"><p><b>Для переехавших в Сербию.</b> Как иностранцу заменить водительское удостоверение и купить автомобиль в Сербии, пошагово описано здесь: <a href="https://www.srb.guide/guides/vozila/replacing-driving-license/">замена прав</a>, <a href="https://www.srb.guide/guides/vozila/buy-car/">покупка автомобиля</a>. Это сторонний русскоязычный гид <a href="https://www.srb.guide/">srb.guide</a>, с BlokVolt он не связан; пошлины и адреса сверяйте по ссылкам на официальные источники в самом гиде.</p></aside>

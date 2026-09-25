@@ -563,6 +563,9 @@ MAP_T = {
     'photo_note': 'Fotografije objavljujemo posle provere. Ne slikajte ljude i tablice izbliza.',
     'photo_wait': 'Šaljem…', 'photo_thanks': 'Hvala! Fotografija će se pojaviti posle provere.', 'photo_bad': 'Ova slika ne može da se pošalje. Probajte JPEG.',
     'today': 'danas', 'yesterday': 'juče', 'days_ago': 'pre {n} dana',
+    # favourites (kept only in this browser)
+    'fav_add': 'Sačuvaj u omiljene', 'fav_del': 'Ukloni iz omiljenih', 'fav_sr': 'omiljeni',
+    'fav_none': 'Još nema omiljenih punjača. Otvorite punjač i dodirnite zvezdicu — lista se čuva u ovom pregledaču.',
 }
 # Serbian notes that come with the price data (cene.json) and the idle fees: added as 'tx:<text>' so that the
 # translation memory translates them on /en/ and /ru/ (map.js looks them up with tr())
@@ -604,13 +607,15 @@ def near_count(lat, lon, km=15):
 
 # ---------------------------------------------------------------- navigation and page context
 NAV = [('/mapa/', 'Mapa punjača', 'mapa'), ('/firme/', 'Firme', 'firme'), ('/cene/', 'Cene', 'cene'),
-       ('/vodici/', 'Vodiči', 'vodici'), ('/alati/kalkulator-troskova/', 'Kalkulator', 'kalk')]
+       ('/vodici/', 'Vodiči', 'vodici'), ('/vesti/', 'Vesti', 'vesti'), ('/alati/kalkulator-troskova/', 'Kalkulator', 'kalk')]
 PRICE_PAGES = ('/podaci/tarife-eps/', '/podaci/wallbox-modeli/', '/podaci/cene-elektricnih-automobila/', '/cena-punjaca-za-elektricni-auto')
 
 
 def section_of(path):
     if path.startswith('/mapa/'):
         return 'mapa'
+    if path.startswith('/vesti/'):
+        return 'vesti'
     if path.startswith(('/firme/', '/gradovi/')):
         return 'firme'
     if path.startswith(('/javno-punjenje/', '/cene/')) or path.startswith(PRICE_PAGES):
@@ -624,8 +629,11 @@ def section_of(path):
 
 CRUMB = {'cene': ('/cene/', 'Cene'), 'vodici': ('/vodici/', 'Vodiči'), 'firme': ('/firme/', 'Firme')}
 
+# usage analytics (docs/RUNBOOK.md 3.16): PostHog only when a project key is set in site.json
+_AN = SITE_META.get('analytics') or {}
+ANALYTICS = json.dumps({'key': _AN['posthog_key'], 'host': _AN['posthog_host'], 'ui': _AN['posthog_ui'], 'assets': _AN['posthog_assets']}) if _AN.get('posthog_key') else ''
 base_ctx = dict(SITE=SITE, TODAY=TODAY, ISO_TODAY=ISO_TODAY, FIRMS_CHECKED=FIRMS_CHECKED, SITE_META=SITE_META, NAV=NAV,
-                n_firms=len(published), n_map=MAP['n'])
+                n_firms=len(published), n_map=MAP['n'], ANALYTICS=ANALYTICS)
 
 urls = []
 
@@ -704,7 +712,15 @@ def related_for(path):
     return []
 
 
+def posthog_blocks(body):
+    """Text between <!--posthog--> and <!--/posthog--> (privacy policy) exists only while PostHog is on."""
+    if ANALYTICS:
+        return body.replace('<!--posthog-->', '').replace('<!--/posthog-->', '')
+    return re.sub(r'\n?<!--posthog-->.*?<!--/posthog-->\n?', lambda m: '\n' if m.group(0).startswith('\n') and m.group(0).endswith('\n') else '', body, flags=re.S)
+
+
 for path, a in ARTICLES.items():
+    a['body'] = posthog_blocks(a['body'])
     meta = a['meta']
     sec = section_of(path)
     if path.startswith('/javno-punjenje/'):
@@ -738,6 +754,95 @@ render('hub.html', '/cene/', h1='Cene', lead='Koliko košta punjenje, kućni pun
        title='Cene u Srbiji: javno punjenje, kućni punjač, struja, električni automobili | BlokVolt',
        description='Cene javnog punjenja po mrežama, kućnih punjača sa ugradnjom, wallbox uređaja, struje po tarifama EPS-a i električnih automobila kod uvoznika.')
 add_url('/cene/', '0.8')
+
+# ---------------------------------------------------------------- news (/vesti/)
+# content/vesti/YYYY-MM-DD-<slug>.md, one file per news item (docs/RUNBOOK.md 3.15, docs/NEWS_STYLE.md).
+# Front matter: title, lead, description (optional, else the lead), date (DD.MM.YYYY: the day the news happened, shown),
+# published (YYYY-MM-DD: the day the item went online; JSON-LD, RSS), modified (optional), tag (key of NEWS_TAGS),
+# sources (label :: url | …), related (site paths, " | ").
+NEWS_TAGS = {'subvencije': 'Subvencije', 'punjaci': 'Punjači', 'cene': 'Cene', 'modeli': 'Modeli', 'propisi': 'Propisi',
+             'struja': 'Struja', 'statistika': 'Statistika', 'region': 'Region'}
+PAGE_NAMES = {'/mapa/': ('Mapa punjača', 'Javni punjači u Srbiji, sa cenom i snagom.'),
+              '/javno-punjenje/': ('Javno punjenje', 'Cene po mrežama, po minutu i po kWh.'),
+              '/javno-punjenje/putevi-srbije/': ('Državni punjači na autoputevima', 'Spisak, snaga i stanje po lokaciji.'),
+              '/firme/': ('Firme za kućni punjač', 'Ko prodaje i ugrađuje punjač i po kojoj ceni.'),
+              '/alati/kalkulator-troskova/': ('Kalkulator troškova', 'Koliko košta 100 km: kuća, javni punjač, benzin.'),
+              '/gradovi/novi-sad/': ('Punjači u Novom Sadu', 'Javni punjači i firme za ugradnju u Novom Sadu.'),
+              '/gradovi/nis/': ('Punjači u Nišu', 'Javni punjači i firme za ugradnju u Nišu.')}
+NEWS_PER_PAGE = 20
+
+
+def _iso_date(d):
+    p_ = (d or '').split('.')
+    return f'{p_[2]}-{p_[1]}-{p_[0]}' if len(p_) >= 3 else ISO_TODAY
+
+
+def _sr_date(iso_):
+    y, m, d = iso_.split('-')
+    return f'{d}.{m}.{y}'
+
+
+def page_link(path):
+    """Title and one line for a link to one of our pages (news 'related' and home)."""
+    href = canon_of(path)
+    a = ARTICLES.get(path) or ARTICLES.get(path.rstrip('/') + '.html')
+    if a:
+        return {'href': href, 'name': a['h1'], 'desc': clip(a['lead'], 110)}
+    name, desc = PAGE_NAMES.get(path, (path, ''))
+    return {'href': href, 'name': name, 'desc': desc}
+
+
+NEWS = []
+for _mdf in sorted(glob.glob(str(ROOT / 'content' / 'vesti' / '*.md'))):
+    _meta, _body = front_matter(_mdf)
+    _slug = re.sub(r'^\d{4}-\d{2}-\d{2}-', '', Path(_mdf).stem)
+    _iso = _iso_date(_meta.get('date'))
+    _pub = _meta.get('published') or _iso
+    NEWS.append({'slug': _slug, 'url': f'/vesti/{_slug}/', 'title': _meta['title'], 'lead': _meta.get('lead', ''),
+                 'description': _meta.get('description') or _meta.get('lead', ''), 'date': _meta.get('date', ''), 'iso': _iso,
+                 'published': _pub, 'published_sr': _sr_date(_pub), 'modified': _meta.get('modified') or _pub,
+                 'tag': _meta.get('tag', ''), 'tag_label': NEWS_TAGS.get(_meta.get('tag', ''), ''),
+                 'sources': sources_of(_meta), 'related': [page_link(x.strip()) for x in (_meta.get('related') or '').split(' | ') if x.strip()],
+                 'body': md_to_html(_body)})
+assert len({n['slug'] for n in NEWS}) == len(NEWS), 'two news items share a slug'
+NEWS.sort(key=lambda n: (n['iso'], n['published'], n['slug']), reverse=True)
+for _i, _n in enumerate(NEWS):
+    others = [x for x in NEWS if x is not _n]
+    render('vest.html', _n['url'], n=_n, body=_n['body'], sources=_n['sources'], related=_n['related'], latest=others[:3], section='vesti',
+           title=f"{_n['title']} | BlokVolt", description=clip(_n['description'], 158))
+    add_url(_n['url'], '0.5', _n['modified'])
+_pages = [NEWS[i:i + NEWS_PER_PAGE] for i in range(0, len(NEWS), NEWS_PER_PAGE)] or [[]]
+for _pi, _items in enumerate(_pages, start=1):
+    _url = '/vesti/' if _pi == 1 else f'/vesti/strana/{_pi}/'
+    render('vesti_index.html', _url, items=_items, page_no=_pi, pages=len(_pages), section='vesti',
+           prev_url=(None if _pi == 1 else ('/vesti/' if _pi == 2 else f'/vesti/strana/{_pi - 1}/')),
+           next_url=(f'/vesti/strana/{_pi + 1}/' if _pi < len(_pages) else None), tags=NEWS_TAGS,
+           title=('Vesti o električnim automobilima u Srbiji: subvencije, punjači, cene | BlokVolt' if _pi == 1 else f'Vesti, strana {_pi} | BlokVolt'),
+           description='Kratke vesti za vozače i kupce električnih automobila u Srbiji: subvencije, novi punjači, cene punjenja i struje, modeli i propisi. Uz svaku vest izvor.')
+    add_url(_url, '0.7' if _pi == 1 else '0.3', NEWS[0]['modified'] if NEWS else ISO_TODAY)
+
+
+def rss_date(iso_):
+    import datetime as _dt
+    return _dt.datetime.strptime(iso_, '%Y-%m-%d').strftime('%a, %d %b %Y 09:00:00 +0200')
+
+
+def _x(s):
+    return html.escape(str(s), quote=True)
+
+
+_rss = ['<?xml version="1.0" encoding="UTF-8"?>', '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">', '<channel>',
+        '<title>BlokVolt — vesti o električnim automobilima u Srbiji</title>', f'<link>{SITE}/vesti/</link>',
+        f'<atom:link href="{SITE}/vesti/rss.xml" rel="self" type="application/rss+xml"/>',
+        '<description>Subvencije, punjači, cene punjenja i struje, modeli i propisi. Uz svaku vest izvor.</description>',
+        '<language>sr-Latn</language>']
+for _n in NEWS[:30]:
+    _rss += ['<item>', f"<title>{_x(_n['title'])}</title>", f"<link>{SITE}{_n['url']}</link>", f"<guid isPermaLink=\"true\">{SITE}{_n['url']}</guid>",
+             f"<pubDate>{rss_date(_n['published'] if _n['published'] > _n['iso'] else _n['iso'])}</pubDate>",
+             f"<description>{_x(_n['lead'])}</description>"] + ([f"<category>{_x(_n['tag_label'])}</category>"] if _n['tag_label'] else []) + ['</item>']
+_rss += ['</channel>', '</rss>']
+(DIST / 'vesti').mkdir(parents=True, exist_ok=True)
+(DIST / 'vesti' / 'rss.xml').write_text('\n'.join(_rss) + '\n', encoding='utf-8')
 
 # ---------------------------------------------------------------- firms
 for f in published:
@@ -997,7 +1102,7 @@ HOME_GUIDES = [
     {'href': '/podaci/tarife-eps/', 'name': 'Cena struje kod kuće', 'desc': 'Zone, tarife i kada počinje jeftinija struja.', 'icon': 'bolt'},
     {'href': '/bezbednost-punjenja-atest', 'name': 'Bezbednost i atest', 'desc': 'Zašto ne produžni kabl i šta proverava atest.', 'icon': 'shield', 'img': 'elektricar-atest'},
 ]
-render('home.html', '/', HOME_GUIDES=HOME_GUIDES, section='',
+render('home.html', '/', HOME_GUIDES=HOME_GUIDES, NEWS_HOME=NEWS[:3], section='',
        title='BlokVolt: punjači, cene i firme za električne automobile u Srbiji',
        description=f"Mapa sa {MAP['n']} javnih punjača i cenama, {sr_plural(len(published), 'firma', 'firme', 'firmi')} za kućni punjač, cene struje i javnog punjenja, subvencije i vodiči za električni auto u Srbiji.")
 add_url('/', '1.0')
@@ -1035,7 +1140,7 @@ _dir_redirects = ['/vodici', '/firme', '/javno-punjenje', '/mapa', '/cene']
     '/mapa-punjaca /mapa/ 301',
     'https://blokvolt.rs/* https://www.blokvolt.rs/:splat 301',
 ]) + '\n', encoding='utf-8')
-(DIST / '_headers').write_text('/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n/admin/*\n  X-Robots-Tag: noindex, nofollow\n  Cache-Control: no-store\n', encoding='utf-8')
+# _headers (security headers + CSP) is written at the very end, after every HTML file is final (see below)
 # API: Cloudflare Pages advanced mode (worker/_worker.js, D1 binding DB); only /api/* invokes it
 shutil.copy2(ROOT / 'worker' / '_worker.js', DIST / '_worker.js')
 (DIST / '_routes.json').write_text(json.dumps({'version': 1, 'include': ['/api/*'], 'exclude': []}), encoding='utf-8')
@@ -1061,6 +1166,9 @@ def build_search(prefix=''):
         main = soup.find('main') or soup
         for junk in main.find_all(['script', 'style', 'nav', 'noscript']):
             junk.decompose()
+        for junk in main.select('[data-only]'):
+            if junk['data-only'] != (prefix.strip('/') or 'sr'):
+                junk.decompose()
         h = ' · '.join(x.get_text(' ', strip=True) for x in main.find_all(['h2', 'h3', 'summary'])[:16])
         body = re.sub(r'\s+', ' ', main.get_text(' ', strip=True))
         idx.append({'u': url, 't': h1.get_text(' ', strip=True) if h1 else t, 'd': clip(d, 200), 's': sec, 'h': h[:400], 'b': body[:1200]})
@@ -1076,6 +1184,30 @@ print(f'search index: {_n} pages, {_kb} KB')
 # ---------------------------------------------------------------- English and Russian (scripts/i18n.py)
 import i18n as _i18n  # noqa: E402
 I18N = _i18n.render_all(DIST)
+
+
+def strip_lang_only():
+    """<… data-only="ru"> exists only on the Russian page (e.g. links to Russian-language guides); written in the
+    Serbian source with translate="no", removed from the Serbian and English pages after translation."""
+    n = 0
+    for f in DIST.rglob('*.html'):
+        t = f.read_text(encoding='utf-8')
+        if 'data-only=' not in t:
+            continue
+        rel = '/' + str(f.relative_to(DIST)).replace('\\', '/')
+        lang = rel[1:3] if rel[:4] in ('/en/', '/ru/') else 'sr'
+        s = BeautifulSoup(t, 'html.parser')
+        for el in s.select('[data-only]'):
+            if el['data-only'] != lang:
+                el.decompose()
+                n += 1
+            else:
+                del el['data-only']
+        f.write_text(str(s), encoding='utf-8')
+    return n
+
+
+print('language-only blocks removed:', strip_lang_only())
 for _l in _i18n.LANGS:
     _st = I18N.stats[_l]
     _n, _kb = build_search('/' + _l)
@@ -1108,4 +1240,49 @@ for _f in DIST.rglob('*.html'):
     _n = _n.replace('__SEARCH_URLS__', _search)
     if _n != _t:
         _f.write_text(_n, encoding='utf-8')
+
+
+# ---------------------------------------------------------------- security headers (docs/RUNBOOK.md 3.17)
+# Content-Security-Policy: scripts only from this site, the hashes of our few inline scripts (computed here from the
+# final HTML, so a new inline script is allowed automatically), Cloudflare Web Analytics and, when switched on, PostHog.
+import base64  # noqa: E402
+_INLINE = re.compile(r'<script(?![^>]*\bsrc=)(?![^>]*type="application/(?:ld\+)?json")[^>]*>(.*?)</script>', re.S)
+_hashes = set()
+for _f in DIST.rglob('*.html'):
+    for _m in _INLINE.finditer(_f.read_text(encoding='utf-8')):
+        if _m.group(1).strip():
+            _hashes.add("'sha256-" + base64.b64encode(hashlib.sha256(_m.group(1).encode('utf-8')).digest()).decode() + "'")
+_ph = [_AN['posthog_assets'], _AN['posthog_host']] if ANALYTICS else []
+CSP = '; '.join([
+    "default-src 'self'",
+    "script-src 'self' " + ' '.join(sorted(_hashes)) + ' https://static.cloudflareinsights.com' + (' ' + _ph[0] if _ph else ''),
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: blob: https://tiles.openfreemap.org",
+    "font-src 'self'",
+    "connect-src 'self' https://tiles.openfreemap.org https://cloudflareinsights.com" + (' ' + ' '.join(_ph) if _ph else ''),
+    "worker-src 'self' blob:",
+    "child-src 'self' blob:",
+    'frame-src https://www.youtube-nocookie.com',
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+    'upgrade-insecure-requests',
+])
+(DIST / '_headers').write_text('\n'.join([
+    '/assets/*',
+    '  Cache-Control: public, max-age=31536000, immutable',
+    '/*',
+    '  X-Content-Type-Options: nosniff',
+    '  Referrer-Policy: strict-origin-when-cross-origin',
+    '  Strict-Transport-Security: max-age=31536000; includeSubDomains',
+    '  X-Frame-Options: DENY',
+    '  Cross-Origin-Opener-Policy: same-origin',
+    '  Permissions-Policy: geolocation=(self), camera=(), microphone=(), payment=(), usb=(), browsing-topics=()',
+    '  Content-Security-Policy: ' + CSP,
+    '/admin/*',
+    '  X-Robots-Tag: noindex, nofollow',
+    '  Cache-Control: no-store',
+]) + '\n', encoding='utf-8')
+print(f'_headers: CSP with {len(_hashes)} inline-script hashes' + (', PostHog on' if ANALYTICS else ''))
 print('built', len(urls), 'urls;', len(published), 'firms;', len(operators), 'networks;', MAP['n'], 'stations on the map;', len(ARTICLES), 'articles')

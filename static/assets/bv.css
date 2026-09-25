@@ -314,7 +314,15 @@ a.row:hover{background:#FAFAF6}
 .ccard{height:auto;max-height:100%;overflow:auto;background:#fff;border-radius:var(--r2);box-shadow:0 10px 40px rgba(13,17,26,.2);padding:18px}
 .ccard .x{position:absolute;right:10px;top:10px;width:34px;height:34px;border-radius:10px;border:0;background:var(--surface2);cursor:pointer;display:grid;place-items:center}
 .ccard .x svg{width:18px;height:18px}
-.ccard h2{font-size:19px;margin:0 36px 4px 0}
+.ccard h2{font-size:19px;margin:0 84px 4px 0}
+.ccard .fav{position:absolute;right:52px;top:10px;width:34px;height:34px;border-radius:10px;border:0;background:var(--surface2);color:var(--ink2);cursor:pointer;display:grid;place-items:center}
+.ccard .fav .star{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
+.ccard .fav[aria-pressed="true"]{background:var(--volt);color:var(--vink)}
+.ccard .fav[aria-pressed="true"] .star{fill:currentColor}
+.st .fv{display:inline-block;margin-right:4px;color:var(--voltd);vertical-align:-1px}
+.st .fv .star{width:13px;height:13px;fill:currentColor;display:block}
+.chip-fav svg{width:15px;height:15px}
+.chip-fav .n[hidden]{display:none}
 .ccard .addr{font-size:14px;color:var(--mut);margin:0 0 10px}
 .ccard .net{display:flex;align-items:center;gap:10px;margin:0 0 12px}
 .ccard .net .lg{width:36px;height:36px;border-radius:10px}
@@ -347,6 +355,33 @@ a.row:hover{background:#FAFAF6}
 }
 .maplibregl-ctrl-group{border-radius:12px!important;box-shadow:var(--shadow)!important}
 .maplibregl-ctrl-attrib{display:none!important}
+
+/* Russian-only note (links to Russian-language guides for newcomers), shown only on /ru/ */
+.ru-note{margin:26px 0 0;padding:12px 16px;border:1px solid var(--line);border-radius:var(--r);background:#fff;font-size:15px;color:var(--ink2)}
+.ru-note p{margin:0}
+
+/* ---------- news (/vesti/) ---------- */
+.news-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;color:var(--mut);margin:0 0 8px}
+.news-meta time{font-variant-numeric:tabular-nums}
+.news-ph .news-meta{margin:0 0 10px}
+.news-list{display:grid;gap:12px;max-width:760px}
+.news-item{background:#fff;border:1px solid var(--line);border-radius:var(--r2);padding:18px 20px}
+.news-item h2{font-size:20px;line-height:1.3;margin:0 0 6px}
+.news-item h2 a{text-decoration:none}
+.news-item h2 a:hover{text-decoration:underline;text-decoration-color:var(--volt2);text-decoration-thickness:2px;text-underline-offset:3px}
+.news-item p:last-child{margin:0;color:var(--ink2);font-size:15.5px}
+.news-rows .row time{font-size:13px;color:var(--mut);font-variant-numeric:tabular-nums;white-space:nowrap;min-width:78px}
+.news-rows .row h3{font-size:15.5px;font-weight:620}
+.pager{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:22px 0 0;font-size:14px;color:var(--mut)}
+.news-foot{max-width:760px}
+@media (max-width:640px){
+ .news-item{padding:14px 16px}
+ .news-item h2{font-size:18px}
+ .news-rows .row{grid-template-columns:minmax(0,1fr) auto;row-gap:2px}
+ .news-rows .row time{grid-column:1;grid-row:1;min-width:0}
+ .news-rows .row>div{grid-column:1;grid-row:2}
+ .news-rows .row .chev{grid-column:2;grid-row:1 / span 2}
+}
 
 /* ---------- footer ---------- */
 .ft{background:var(--night);color:#E8EAE3;margin-top:24px}
@@ -534,11 +569,10 @@ a.row:hover{background:#FAFAF6}
 .f-msg{font-size:15px;border-radius:12px;padding:10px 14px;margin:0 0 12px}
 .f-ok{background:var(--okbg);color:var(--ok)}
 .f-err,.f-need,.f-limit{background:#FBE3D6;color:#9A3F0E}
-.claim{display:flex;align-items:center;justify-content:space-between;gap:12px 18px;flex-wrap:wrap;background:#fff;border:1px dashed var(--line2);border-radius:var(--r2);padding:14px 18px;margin:18px 0}
-.claim b{display:block;font-size:16px}
-.claim span{display:block;color:var(--mut);font-size:14px;line-height:1.45;max-width:560px}
-.claim-top{margin:10px 0 0;font-size:13.5px}
-.claim-top a{color:var(--mut)}
+/* company/network line: the last, quietest thing on a firm or network page (readers first) */
+.claim-min{margin:40px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--mut)}
+.claim-min a{color:var(--mut);text-underline-offset:2px}
+.claim-min a:hover{color:var(--ink)}
 
 /* ---------- illustrations and video (2026-09-24) ---------- */
 .fig{margin:0 0 22px}
@@ -581,5 +615,4 @@ a.row:hover{background:#FAFAF6}
 @media (max-width:430px){
  .calc .fields2{grid-template-columns:minmax(0,1fr)}
  .bform .fields2{grid-template-columns:minmax(0,1fr)}
- .claim .btn{width:100%}
 }

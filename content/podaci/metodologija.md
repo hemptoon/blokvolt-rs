@@ -1,13 +1,13 @@
 ---
 title: Metodologija — izvori podataka, provere i ispravke
 h1: Kako radimo
-description: Odakle su podaci o firmama i cenama javnog punjenja, koliko često se proveravaju, šta znači „Ne pominje se“ i kako se prijavljuje greška.
+description: Odakle su podaci o firmama, cenama javnog punjenja i vestima, koliko često se proveravaju, šta znači „Ne pominje se“ i kako se prijavljuje greška.
 kicker: O sajtu · metodologija
 lead: Podaci o firmama su sa njihovih javnih stranica, po istim pravilima za sve.
-updated: 22.09.2026
+updated: 25.09.2026
 path: /metodologija/
 published: 2026-09-22
-modified: 2026-09-22
+modified: 2026-09-25
 priority: 0.5
 disclaimer: Primedbe na pravila prijavite na
 ---
@@ -15,6 +15,7 @@ disclaimer: Primedbe na pravila prijavite na
 - Firme: podaci sa **javnih stranica**, iste kolone za sve
 - Javno punjenje: cene iz **aplikacija mreža** i sa **računa**
 - Provera: firme **kvartalno**, cene javnog punjenja **mesečno**
+- Vesti: samo uz **izvor i datum**
 - **Bez ocena i rangiranja**
 </div>
 
@@ -53,10 +54,26 @@ Mreže ne objavljuju cenovnike na svojim sajtovima, pa se cena vidi tek u aplika
 
 </details>
 
+## Vesti {#vesti}
+
+Vesti prate zvanične izvore i pouzdane medije: ministarstva, Službeni glasnik, EPS, JP „Putevi Srbije“, mreže punjača i uvoznike. Svaka vest ima datum i link na izvor. Objavljuje se samo ono što piše u izvoru, a najave i predlozi su označeni kao takvi.
+
+<details markdown="1">
+<summary>Detalji o vestima</summary>
+
+- Izvori se pregledaju dva puta nedeljno. Vest se objavljuje samo kad ima nečeg novog i proverljivog; broj vesti nije unapred zadat.
+- Tekst je kratak i napisan svojim rečima. Citati su kratki i uz izvor, a fotografije iz medija se ne preuzimaju.
+- Tekst vesti se priprema uz pomoć AI alata, po istim pravilima kao ceo sajt. Svaka brojka se pre objave proverava u izvoru.
+- Vesti koje se oslanjaju na podatke sa ovog sajta (cene punjenja, stanje državnih punjača) upućuju na stranicu sa podacima.
+- Zastarela vest se ne briše. Kad se nešto promeni, objavljuje se nova vest.
+
+</details>
+
 ## Ažuriranje
 
 - Firme i tabela cena punjača: kvartalno i posle svake prijave.
 - Cene javnog punjenja: mesečno.
+- Vesti: dva puta nedeljno, kad ima novosti.
 
 Datum poslednje provere stoji na svakoj stranici i uz svaku firmu.
 

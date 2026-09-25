@@ -1,6 +1,62 @@
-/* BlokVolt — small site script: menu, language switcher, list filters. No dependencies. */
+/* BlokVolt — small site script: menu, language switcher, list filters, usage events. No dependencies. */
 (function () {
   var d = document;
+
+  // ---------- usage events ----------
+  // window.bvTrack(name, props) is the one entry point for the site and the map (and later the apps, which use the
+  // same event names). Events are sent to PostHog (EU cloud, cookieless: nothing is written to the browser) only
+  // when content/data/site.json -> analytics.posthog_key is set; the build then adds <script id="bv-an">.
+  // Without it every call is a no-op. Page views are counted separately by Cloudflare Web Analytics (no cookies).
+  var AN = null, anQ = [], anReady = false;
+  try { var anEl = d.getElementById('bv-an'); AN = anEl ? JSON.parse(anEl.textContent) : null; } catch (e) { AN = null; }
+  if (AN && (!AN.key || navigator.webdriver)) AN = null;    // automated browsers (tests) are not counted
+  var PAGE = (d.body && d.body.getAttribute('data-page')) || '';
+  var LANG = (d.documentElement.lang || 'sr').slice(0, 2);
+  window.bvTrack = function (name, props) {
+    if (!AN) return;
+    var p = {};
+    for (var k in props || {}) p[k] = props[k];
+    p.lang = LANG;
+    if (PAGE) p.page = PAGE;
+    if (anReady && window.posthog && window.posthog.capture) window.posthog.capture(name, p); else if (anQ.length < 50) anQ.push([name, p]);
+  };
+  function loadAnalytics() {
+    var ph = window.posthog = window.posthog || [];
+    if (ph.__SV) return;
+    ph.__SV = 1;
+    ph._i = [[AN.key, {
+      api_host: AN.host, ui_host: AN.ui, cookieless_mode: 'always', person_profiles: 'never',
+      capture_pageview: true, capture_pageleave: true, autocapture: true, respect_dnt: true,
+      disable_session_recording: true, disable_surveys: true, advanced_disable_feature_flags: true,
+      loaded: function (inst) { anReady = true; anQ.splice(0).forEach(function (e) { inst.capture(e[0], e[1]); }); }
+    }, 'posthog']];
+    var s = d.createElement('script');
+    s.async = true; s.crossOrigin = 'anonymous'; s.src = AN.assets + '/static/array.js';
+    d.head.appendChild(s);
+  }
+  if (AN) {
+    var later = function () { (window.requestIdleCallback || function (f) { setTimeout(f, 1200); })(loadAnalytics); };
+    if (d.readyState === 'complete') later(); else window.addEventListener('load', later);
+  }
+  // links out: firm and network sites, phone numbers, e-mail addresses; language switch
+  d.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var h = a.getAttribute('href') || '';
+    if (a.hasAttribute('data-bv-lang')) { window.bvTrack('language_switch', { to: a.getAttribute('data-bv-lang') }); return; }
+    if (h.indexOf('tel:') === 0) window.bvTrack('contact_phone', {});
+    else if (h.indexOf('mailto:') === 0) window.bvTrack('contact_email', { to: h.slice(7).split('?')[0] });
+    else if (/^https?:/.test(h) && a.hostname && a.hostname !== location.hostname) window.bvTrack('outbound_click', { host: a.hostname.replace(/^www\./, ''), url: h.slice(0, 200) });
+  }, true);
+  // calculators: one event per page view, on the first change
+  var calcSeen = false;
+  function calcUsed(e) {
+    if (calcSeen || !(e.target.closest && e.target.closest('form.calc'))) return;
+    calcSeen = true;
+    window.bvTrack('calculator_used', { calculator: location.pathname.indexOf('racun-u-zgradi') >= 0 ? 'zgrada' : 'troskovi' });
+  }
+  d.addEventListener('input', calcUsed, true);
+  d.addEventListener('change', calcUsed, true);
 
   // mobile menu
   var nav = d.querySelector('.hd-nav'), burger = d.querySelector('.burger');
@@ -115,7 +171,7 @@
         .then(function (r) { return r.json().then(function (j) { j.status = r.status; return j; }, function () { return { ok: false, status: r.status }; }); })
         .then(function (j) {
           btn.disabled = false;
-          if (j.ok) { show('f-ok'); f.reset(); btn.hidden = true; }
+          if (j.ok) { show('f-ok'); f.reset(); btn.hidden = true; window.bvTrack('form_sent', { form: k }); }
           else show(j.status === 429 ? 'f-limit' : 'f-err');
         }, function () { btn.disabled = false; show('f-err'); });
     });
@@ -136,5 +192,6 @@
     f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
     f.className = 'yt-frame';
     b.replaceWith(f);
+    window.bvTrack('video_play', { video: id });
   });
 })();

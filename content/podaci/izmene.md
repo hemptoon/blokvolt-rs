@@ -4,13 +4,20 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 24.09.2026
+updated: 25.09.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-09-24
+modified: 2026-09-25
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 25. septembar 2026
+
+- Nova rubrika [Vesti](/vesti/): subvencije, punjači, cene, modeli i propisi, uz izvor i datum za svaku vest; [RSS](/vesti/rss.xml). Kako nastaju vesti piše na stranici [Kako radimo](/metodologija/#vesti).
+- Na [mapi](/mapa/) punjač može da se sačuva u omiljene (zvezdica na kartici, filter „Omiljeni“); spisak se čuva samo u vašem pregledaču.
+- Posete se broje uz Cloudflare Web Analytics, bez kolačića; [politika privatnosti](/politika-privatnosti.html) je dopunjena.
+- Na stranicama firmi i mreža poruka za firme premeštena je na dno stranice.
+
 ## 24. septembar 2026
 
 - Svaki punjač na [mapi](/mapa/) proveren je na spiskovima koje mreže same objavljuju (Charge&GO, roming mapa Charge&GO sa punjačima Orion eMobility, Tesla, JP „Putevi Srbije“) i na Google mapama. Potvrđeni su označeni, a ostali nose oznaku „Nije potvrđeno“ ili „Prijavljen kvar“; 67 lokacija sa spiskova mreža dodato je na mapu, a uklonjeni su punjači za bicikle, privatni punjači i duplikati.

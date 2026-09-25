@@ -25,14 +25,14 @@ needed or handled.
 - No personal names of the team anywhere in the repo or on the site.
 - Site copy is Serbian (Latin script), calm and factual.
 - Every public change gets a line in `content/podaci/izmene.md` (newest date section on top). The home
-  page no longer shows news; `news` in `content/data/site.json` is only an archive.
+  page shows the three newest items of /vesti/ (3.15); `news` in `content/data/site.json` is only an old archive of site changes.
 - Do not delete files (the GitHub web upload cannot delete anyway). Do not touch other sites or projects.
 
 ## 1. Setup in a fresh container
 
 ```bash
 git clone https://github.com/hemptoon/blokvolt-rs && cd blokvolt-rs
-pip install --break-system-packages -q jinja2 markdown beautifulsoup4
+pip install --break-system-packages -q jinja2 markdown beautifulsoup4 pillow playwright   # playwright only for scripts/qa
 bash scripts/fetch_fonts.sh >/dev/null      # fonts are not in git
 python3 scripts/due.py --ahead 15            # what is overdue / due before the next run
 ```
@@ -66,6 +66,9 @@ credentials) — commits go through the owner's browser (section 6).
 | City pages | `content/data/gradovi.json` | One entry per `/gradovi/<slug>/`: `aliases` matched inside a firm's `city` (a firm can belong to several cities), `regions` matched inside a firm's or operator's `coverage`, `loc`/`acc` the Serbian locative and accusative, `nt_region` one of the regions in `kalkulator.json` → `eps.nt_hours`, `note` one paragraph of local fact (HTML allowed). |
 | Firms | `content/firme/<slug>.json` | `verified`, cells/verdicts, `sources`, `brands`. Leads: `"group": "L", "publish": false` (not shown). A checked lead that does not sell home chargers keeps `publish: false` and gets `excluded_reason` (one Serbian sentence) — it is then listed with the reason at the bottom of `/firme/`. |
 | Register sub-hubs by type | `content/data/firme-tipovi.json` + `TYPE_RULES` in `build.py` | Texts of `/firme/ugradnja-punjaca/`, `/firme/prodaja-punjaca/`, `/firme/distributeri-punjaca/`, `/firme/solarni-integratori/`, `/firme/elektricari/` (Jinja strings: `n`, `n_firms`, `checked`, `n_price`, `n_d`, `wb_rows`, `wb_models`, `n_brands`, filter `plural`). Who is on which page is decided in `build.py` from the firm's verdicts, group and `kind` — never by hand. |
+| News (/vesti/) | `content/vesti/YYYY-MM-DD-<slug>.md` | One file per item; rules and sources in `docs/NEWS_STYLE.md`, procedure 3.15. RSS `/vesti/rss.xml` and the three newest on the home page are built from the same files. |
+| Usage analytics | `content/data/site.json` → `analytics` | Cloudflare Web Analytics is switched on in the Pages project (no code); PostHog only when `posthog_key` is set. See 3.16. |
+| Security headers (CSP) | `build.py`, end of file | Written to `dist/_headers` on every build; inline-script hashes are computed automatically. See 3.17. |
 | English and Russian pages | `content/i18n/en.json`, `content/i18n/ru.json`, `content/i18n/STYLE.md` | Translation memory {Serbian segment: translation}. `/en/` and `/ru/` are generated from the Serbian pages at build time by `scripts/i18n.py` — never edit `dist/en` or `dist/ru`. See 3.9. |
 
 `indeks-cena.json` row schema (one row per app + station/tariff):
@@ -304,6 +307,10 @@ After every content change:
 An element whose text sits next to an inline SVG icon (buttons, chips: `<a class="btn"><svg…>Mapa punjača</a>`)
 is one segment without the icon; the icon is put back before (or after) the translated text.
 
+A block that exists in one language only (for example links to a Russian-language guide for newcomers on three
+/ru/ pages) is written in the Serbian source as `<aside … data-only="ru" lang="ru" translate="no">…</aside>` in the
+target language; after translation `build.py` removes it from the other languages (`strip_lang_only`).
+
 Not segments: JavaScript texts live in `<script id="bv-i18n" type="application/json">` blocks in the
 templates (calculators, search). Plain strings there are translated like any segment; objects keyed by
 `sr`/`en`/`ru` (plural forms, month names, quotation marks) are edited in the template itself. Elements
@@ -446,16 +453,94 @@ youtube-nocookie iframe only after a click (privacy policy promise — never emb
 
 ### 3.14 Company updates (/za-firme/) and corrections (/ispravka/)
 
-Both forms post to `/api/zahtev` (stored in D1 `requests`). Firm pages have „Ovo je vaša firma?“ and a
-claim box, network pages „Vodite ovu mrežu?“, the footer „Za firme i mreže“. Publishing company-supplied
+Both forms post to `/api/zahtev` (stored in D1 `requests`). Readers come first and companies last (owner's decision,
+25.09.2026): a firm page ends — after the similar firms — with one quiet line „Predstavljate ovu firmu? Ažurirajte
+podatke“, a network page with „Vodite ovu mrežu? Pošaljite podatke“, and the footer has „Za firme i mreže“. No
+company prompts in page heads, summary boxes or next to the facts. Publishing company-supplied
 data: verify first (reply to the company-domain e-mail or call the number on its site — only with the
 owner's permission while the outreach rule holds), then mark the data „prema podacima firme“ with the date
 and log it in `izmene.md`. Ratings are never removed on a company's request unless they break the rules.
+
+### 3.15 News (/vesti/) — twice a week, by the scheduled news task
+
+Everything about content is in `docs/NEWS_STYLE.md` (what counts as news, sources with RSS, checking, writing,
+file format). The run:
+
+1. Setup (§1), then `ls content/vesti/` — the newest file date is where to start looking.
+2. Scan the sources of NEWS_STYLE §2 for news since then; choose at most three items; open the primary source of each.
+3. Write the files; `python3 scripts/lint_sr.py content/vesti/<new>.md` must show 0 errors.
+4. If a news item changes a fact stated elsewhere on the site, update that page too (the procedures above) and add
+   a line to `izmene.md`.
+5. `python3 scripts/i18n.py todo` → translate (3.9) → `bash scripts/pack.sh` with 0 segments left in Serbian.
+6. Check the new pages in `dist/` (and `scripts/qa/` at 390 and 1440 px), deploy (§5), commit (§6).
+7. Report: one line per published item. Nothing new → say so, do not build or deploy.
+
+No messages, comments or forms to anyone — the outreach rule of 3.7 applies to news work as well.
+
+### 3.16 Usage analytics
+
+- **Cloudflare Web Analytics** — switched on 25.09.2026 in Pages → blokvolt → Metrics → Web Analytics. Cloudflare
+  adds its beacon (`static.cloudflareinsights.com`) to every deployment; no cookies, no storage in the browser.
+  Numbers: Cloudflare dashboard → Analytics → Web analytics. Page views, referrers, countries, devices, Core Web Vitals.
+- **PostHog** (EU cloud, cookieless) — prepared in the code, off while `analytics.posthog_key` in
+  `content/data/site.json` is empty. To switch on (the owner creates the account; never sign up or log in yourself):
+  1. eu.posthog.com → new project; Project settings → Web analytics: turn on **Cookieless server hash mode**;
+     Project settings → General: turn on **Discard client IP data**; sign the DPA in the organisation settings.
+  2. Copy the project API key (`phc_…`, public by design) into `analytics.posthog_key`, build, deploy, commit.
+  3. The build then adds `<script id="bv-an">` to every page, the PostHog hosts to the CSP (3.17) and the PostHog
+     paragraphs of the privacy policy (text between `<!--posthog-->` and `<!--/posthog-->`).
+  `bv.js` loads PostHog after the page is idle with `cookieless_mode: 'always'`, `person_profiles: 'never'`,
+  `respect_dnt: true`, no session recording. Automated browsers (`navigator.webdriver`) are not counted.
+- **Events** — one entry point, `window.bvTrack(name, props)`; the same names are meant for the future apps.
+  Every event carries `lang` and, on firm and network pages, `page` (`firm:<slug>`, `network:<slug>`).
+
+  | Event | Where | Properties |
+  |---|---|---|
+  | `map_card_open` | map, a charger card opens | `station`, `network`, `verified`, `favourite` |
+  | `map_filter` | map chip clicked | `filter`, `favourites` |
+  | `map_search` | map search, 1,5 s after typing stops | `query` (≤ 60 chars), `results` |
+  | `map_near_me` | „Blizu mene“ | `ok` |
+  | `map_navigate` / `map_network_link` / `map_report_error` | card buttons | `station`, `network` |
+  | `favourite_add` / `favourite_remove` | star on a card | `station`, `network`, `total` |
+  | `checkin_sent` / `photo_sent` | drivers' reports | `station`, `network`, `status`, `rating`, `comment` |
+  | `outbound_click` / `contact_phone` / `contact_email` | any link out, tel:, mailto: | `host`, `url` / — / `to` |
+  | `form_sent` | /ispravka/, /za-firme/ | `form` |
+  | `calculator_used` | first change in a calculator | `calculator` |
+  | `video_play` | YouTube poster clicked | `video` |
+  | `language_switch` | language menu | `to` |
+
+  With PostHog on, page views, page leaves and clicks (autocapture) are recorded as well.
+
+### 3.17 Security headers
+
+`build.py` writes `dist/_headers` at the end of every build: HSTS, `X-Frame-Options: DENY`, COOP, a
+Permissions-Policy (geolocation only for the site itself) and a Content-Security-Policy that allows scripts only
+from the site, the SHA-256 hashes of the inline scripts found in the final HTML (calculators, search, /admin/),
+Cloudflare Web Analytics and — when switched on — PostHog. Map tiles come from `tiles.openfreemap.org`, videos
+only from `youtube-nocookie.com`. A new third-party script, iframe, font or tile host must be added to the lists in
+`build.py`, or the browser blocks it. `scripts/qa/cfserve.py` serves `dist/` with these headers, so CSP errors show
+up as console errors in `scripts/qa/qa_all.py` and `map_ui_test.py`.
+
+### 3.18 Favourite chargers
+
+The star on a charger card saves the station id in the reader's browser only (`localStorage` key `bv:fav`, at most
+300 ids); the chip „Omiljeni“ and `/mapa/?f=fav` show them, and the map draws a green ring around them. Nothing is
+sent to the server; ids of stations that disappear from the map are dropped quietly. The privacy policy says so.
+When user accounts exist, the list can be synced to the account.
 
 ## 4. Build and check
 
 ```bash
 bash scripts/pack.sh      # build.py + check_links.py + /mnt/user-data/outputs/blokvolt-dist.zip
+```
+
+Local checks (the container cannot reach blokvolt.rs or the map tiles) are in `scripts/qa/`:
+
+```bash
+python3 scripts/qa/cfserve.py dist 8787 &          # like Cloudflare Pages, with dist/_headers
+python3 scripts/qa/qa_all.py sr,en,ru 360,768,1440 # every sitemap URL: JS/CSP errors, overflow, images, footer
+python3 scripts/qa/map_ui_test.py /tmp/bv-shots    # map cards, reports, photos, favourites (fake /api)
+python3 scripts/qa/vis_shots.py /,/vesti/ /tmp/bv-shots   # full-page screenshots, desktop and phone
 ```
 
 `build.py` also appends `?v=<hash>` to bv.css, bv.js, map.js, the search indexes, the map data and the

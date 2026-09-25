@@ -34,6 +34,11 @@
 <div class="rows">{% for g in HOME_GUIDES %}<a class="row" href="{{ g.href }}">{% if g.img %}<img class="th" src="/assets/img/{{ g.img }}-480.webp" alt="" width="72" height="54" loading="lazy" decoding="async">{% else %}<span class="lg mono" aria-hidden="true">{{ ic(g.icon) }}</span>{% endif %}<div><h3>{{ g.name }}</h3><div class="sub">{{ g.desc }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
 </div>
 
+{% if NEWS_HOME %}<div class="sec home-sec">
+<div class="sec-head"><h2>Vesti</h2><a href="/vesti/">Sve vesti →</a></div>
+<div class="rows news-rows">{% for x in NEWS_HOME %}<a class="row" href="{{ x.url }}"><time datetime="{{ x.iso }}">{{ x.date }}</time><div><h3>{{ x.title }}</h3></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
+</div>{% endif %}
+
 <div class="sec home-sec">
 <div class="sec-head"><h2>Brojke</h2><a href="/podaci/statistika-ev-srbija/">Statistika →</a></div>
 <div class="stats">{% for s in SITE_META.home_stats %}<div class="stat"><b>{{ s.b }}</b><span>{{ s.short|safe }}</span></div>{% endfor %}</div>

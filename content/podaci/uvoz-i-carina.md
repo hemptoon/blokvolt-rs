@@ -54,3 +54,5 @@ Za polovni automobil [subvencija](/podaci/subvencije-2026/) ne važi. Za marku b
 - Za vozila iz SAD (na primer Tesla) špediteri upozoravaju na teškoće sa COC dokumentom i homologacijom.
 
 </details>
+
+<aside class="ru-note" data-only="ru" lang="ru" translate="no"><p><b>Для переехавших в Сербию.</b> Общий порядок покупки и регистрации автомобиля иностранцем описан здесь: <a href="https://www.srb.guide/guides/vozila/buy-car/">покупка автомобиля в Сербии</a>. Это сторонний русскоязычный гид <a href="https://www.srb.guide/">srb.guide</a>, с BlokVolt он не связан; пошлины и адреса сверяйте по ссылкам на официальные источники в самом гиде.</p></aside>

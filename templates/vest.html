@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import sources as src_block %}
+{% from '_icons.html' import ic %}
+{% block ogtype %}article{% endblock %}
+{% block head %}<link rel="alternate" type="application/rss+xml" title="BlokVolt — vesti" href="/vesti/rss.xml">{% endblock %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "NewsArticle", "headline": {{ n.title|tojson }}, "description": {{ description|tojson }}, "inLanguage": "sr-Latn", "url": "{{ SITE }}{{ canon }}", "datePublished": "{{ n.published }}", "dateModified": "{{ n.modified }}", "author": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/o-sajtu/"}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/", "logo": {"@type": "ImageObject", "url": "{{ SITE }}/assets/apple-touch-icon.png"}}, "isAccessibleForFree": true{% if n.tag_label %}, "articleSection": {{ n.tag_label|tojson }}{% endif %}{% if n.sources %}, "isBasedOn": [{% for s in n.sources %}{{ s.url|tojson }}{{ ',' if not loop.last }}{% endfor %}]{% endif %}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Vesti", "item": "{{ SITE }}/vesti/"}, {"@type": "ListItem", "position": 3, "name": {{ n.title|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
+ ]
+}</script>{% endblock %}
+{% block pagehead %}<div class="ph news-ph" data-bv-note><div class="wrap">
+<nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a><span aria-hidden="true">›</span><a href="/vesti/">Vesti</a></nav>
+<p class="news-meta"><time datetime="{{ n.iso }}">{{ n.date }}</time>{% if n.tag_label %}<span aria-hidden="true">·</span><span>{{ n.tag_label }}</span>{% endif %}</p>
+<h1>{{ n.title }}</h1>
+{% if n.lead %}<p class="lead">{{ n.lead }}</p>{% endif %}
+</div></div>{% endblock %}
+{% block content %}<div class="prose news-body">
+{{ body|safe }}
+{{ src_block(sources) }}
+<p class="upd">Objavljeno {{ n.published_sr }} · <a href="/ispravka/">Prijavite grešku</a> · <a href="/metodologija/#vesti">Kako nastaju vesti</a></p>
+</div>
+{% if related %}<div class="sec"><div class="sec-head"><h2>Više o temi</h2></div><div class="tiles">{% for r in related %}<a class="tile" href="{{ r.href }}"><h3>{{ r.name }}</h3><p>{{ r.desc }}</p></a>{% endfor %}</div></div>{% endif %}
+{% if latest %}<div class="sec"><div class="sec-head"><h2>Najnovije vesti</h2><a href="/vesti/">Sve vesti →</a></div>
+<div class="rows news-rows">{% for x in latest %}<a class="row" href="{{ x.url }}"><time datetime="{{ x.iso }}">{{ x.date }}</time><div><h3>{{ x.title }}</h3></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div></div>{% endif %}
+{% endblock %}

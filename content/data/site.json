@@ -1,8 +1,15 @@
 {
- "updated": "24.09.2026",
+ "updated": "25.09.2026",
  "updated_note": "Datum poslednje izmene sadržaja: footer, početna, sitemap lastmod. Menja se pri svakom deploy-u sa izmenama sadržaja.",
  "firms_checked": "22.09.2026",
  "firms_checked_note": "Datum poslednje pune provere registra firmi (tabela cena, /firme/, gradovi). Menja se samo posle revizije svih firmi.",
+ "analytics": {
+  "posthog_key": "",
+  "posthog_host": "https://eu.i.posthog.com",
+  "posthog_ui": "https://eu.posthog.com",
+  "posthog_assets": "https://eu-assets.i.posthog.com",
+  "note": "PostHog (EU, cookieless) se uključuje kad se upiše javni ključ projekta (phc_…). Prazno = isključeno. Cloudflare Web Analytics se uključuje u Cloudflare Pages → Metrics i ne zavisi od ovoga. Videti docs/RUNBOOK.md 3.16."
+ },
  "home_stats": [
   {
    "b": "7.155",

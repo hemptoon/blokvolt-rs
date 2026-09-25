@@ -27,14 +27,15 @@
 {% block head %}{% endblock %}
 {% block jsonld %}{% endblock %}
 </head>
-<body class="{% block bodyclass %}{% endblock %}">
+<body class="{% block bodyclass %}{% endblock %}"{% block pagekey %}{% endblock %}>
 <a class="skip" href="#main">Preskoči na sadržaj</a>
 {% include '_header.html' %}
 <main id="main">
 {% block page %}{% block pagehead %}{% endblock %}<div class="wrap main">{% block content %}{% endblock %}</div>{% endblock %}
 </main>
 {% include '_footer.html' %}
-<script src="/assets/bv.js" defer></script>
+{% if ANALYTICS %}<script id="bv-an" type="application/json">{{ ANALYTICS|safe }}</script>
+{% endif %}<script src="/assets/bv.js" defer></script>
 {% block scripts %}{% endblock %}
 </body>
 </html>

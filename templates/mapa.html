@@ -19,6 +19,7 @@
 <div class="search-box">{{ ic('search') }}<label class="sr-only" for="mq">Pretraga punjača</label><input class="input" id="mq" type="search" placeholder="Grad, adresa ili mreža" autocomplete="off"></div>
 <div class="chips" id="mchips">
 <button class="chip" type="button" data-f="all" aria-pressed="true">Svi</button>
+<button class="chip chip-fav" type="button" data-f="fav" aria-pressed="false">{{ ic('star') }}Omiljeni <span class="n" data-favn hidden></span></button>
 <button class="chip" type="button" data-f="fast" aria-pressed="false">{{ ic('bolt') }}Brzi (DC ≥ 50 kW)</button>
 <button class="chip" type="button" data-f="ac" aria-pressed="false">AC</button>
 <button class="chip" type="button" data-f="free" aria-pressed="false">Besplatni</button>

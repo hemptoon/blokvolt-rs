@@ -9,11 +9,11 @@
   {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Firme", "item": "{{ SITE }}/firme/"}, {"@type": "ListItem", "position": 3, "name": {{ firm.name|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
  ]
 }</script>{% endblock %}
+{% block pagekey %} data-page="firm:{{ firm.slug }}"{% endblock %}
 {% block pagehead %}<div class="ph" data-bv-note><div class="wrap">
 <nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a><span aria-hidden="true">›</span><a href="/firme/">Firme</a></nav>
 <div class="ent">{{ lg(firm, 'lg-lg') }}<div><h1>{{ firm.name }}</h1><p class="lead">{{ firm.kind_label }} · {{ firm.city }}{% if firm.is_us %} · <span class="badge feat">Izdvojeno</span>{% endif %}</p></div></div>
 <div class="ph-actions"><a class="btn dark" href="{{ firm.website }}" rel="noopener{% if not firm.is_us %} nofollow{% endif %}" target="_blank">{{ ic('ext') }}{{ firm.domain }}</a>{% if firm.contact.phone %}<a class="btn" href="tel:{{ firm.contact.phone|replace(' ', '') }}">{{ ic('phone') }}{{ firm.contact.phone }}</a>{% endif %}{% if firm.contact.email %}<a class="btn" href="mailto:{{ firm.contact.email }}">{{ ic('mail') }}{{ firm.contact.email }}</a>{% endif %}</div>
-{% if not firm.is_us %}<p class="claim-top"><a href="/za-firme/?firma={{ firm.slug }}">Ovo je vaša firma? Ažurirajte podatke besplatno</a></p>{% endif %}
 </div></div>{% endblock %}
 {% block content %}
 <div class="facts">
@@ -34,6 +34,6 @@
 {% if firm.notes %}<p class="note">{{ firm.notes }}</p>{% endif %}
 {{ src_block(firm.src_items) }}
 <p class="upd">Provereno {{ firm.verified }} · <a href="/ispravka/?firma={{ firm.slug }}">Prijavite grešku</a></p>
-{% if not firm.is_us %}<div class="claim"><div><b>Predstavljate ovu firmu?</b><span>Ispravite podatke i pošaljite cene i uslove — besplatno. Podatke firme označavamo datumom; redosled na sajtu se ne plaća.</span></div><a class="btn" href="/za-firme/?firma={{ firm.slug }}">{{ ic('doc') }}Ažurirajte podatke</a></div>{% endif %}
 {% if similar %}<div class="sec"><div class="sec-head"><h2>{{ similar_title }}</h2><a href="{{ similar_href }}">Sve →</a></div><div class="rows">{% for f in similar %}<a class="row" href="{{ f.url }}">{{ lg(f) }}<div><h3>{{ f.name }}</h3><div class="sub">{{ f.kind_label }} · {{ f.city }}</div></div><div class="val">{% if f.price_val %}{{ f.price_val }}<small>{{ f.price_note }}</small>{% else %}<small>Cena na upit</small>{% endif %}</div></a>{% endfor %}</div></div>{% endif %}
+{% if not firm.is_us %}<p class="claim-min"><span>Predstavljate ovu firmu?</span> <a href="/za-firme/?firma={{ firm.slug }}">Ažurirajte podatke</a></p>{% endif %}
 {% endblock %}
