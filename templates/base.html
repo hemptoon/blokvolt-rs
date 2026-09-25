@@ -21,6 +21,8 @@
 {% if noindex %}<meta name="robots" content="noindex">
 {% endif %}<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="BlokVolt">
 <link rel="preload" href="/assets/fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/onest-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/bv.css">
@@ -34,7 +36,11 @@
 {% block page %}{% block pagehead %}{% endblock %}<div class="wrap main">{% block content %}{% endblock %}</div>{% endblock %}
 </main>
 {% include '_footer.html' %}
-{% if ANALYTICS %}<script id="bv-an" type="application/json">{{ ANALYTICS|safe }}</script>
+{% if ANALYTICS_CONSENT %}<div class="consent" id="bv-consent" role="region" aria-label="Kolačić za analitiku" hidden>
+<p>Sajt broji posete bez kolačića. Ako dozvolite kolačić alata PostHog, vide se i ponovne posete i snimci kretanja po stranicama, bez teksta koji upisujete. <a href="/politika-privatnosti.html#merenje-poseta">Više o tome</a></p>
+<div class="consent-b"><button class="btn sm" type="button" data-consent="no">Odbij</button><button class="btn sm" type="button" data-consent="yes">Dozvoli</button></div>
+</div>
+{% endif %}{% if ANALYTICS %}<script id="bv-an" type="application/json">{{ ANALYTICS|safe }}</script>
 {% endif %}<script src="/assets/bv.js" defer></script>
 {% block scripts %}{% endblock %}
 </body>

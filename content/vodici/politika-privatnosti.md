@@ -3,6 +3,8 @@ title: Politika privatnosti i uslovi korišćenja
 h1: Politika privatnosti
 description: Kako blokvolt.rs postupa sa podacima o ličnosti i pod kojim uslovima se sajt koristi. Bez naloga i kolačića za praćenje; posete se broje bez kolačića, a forme čuvaju samo ono što upišete.
 lead: Sajt nema naloge, oglasne piksele ni kolačiće za praćenje. Posete se broje bez kolačića, a forme i prijave sa mape čuvaju samo ono što sami upišete.
+lead_consent: Sajt nema naloge ni oglasne piksele. Posete se broje bez kolačića, kolačić za analitiku postavlja se samo uz vašu dozvolu, a forme i prijave sa mape čuvaju samo ono što sami upišete.
+description_consent: Kako blokvolt.rs postupa sa podacima o ličnosti. Bez naloga; posete se broje bez kolačića, a kolačić za analitiku samo uz vašu dozvolu.
 kicker: Pravno
 updated: 25.09.2026
 published: 2026-09-21
@@ -14,7 +16,7 @@ path: /politika-privatnosti.html
 - Lični podaci stižu do sajta samo ako ih **sami upišete** — u formu, prijavu sa mape ili e-mail na **hello@blokvolt.com**
 - IP adresu vide **Cloudflare** i, na mapi punjača, **OpenFreeMap**; mi čuvamo samo njen **jednosmerni otisak** koji se menja svakog dana
 - Lokacija za „Blizu mene“ **ne šalje se** sajtu, a video sa YouTube-a se učitava **tek kad ga pokrenete**
-- Posete se broje **bez kolačića**, a omiljeni punjači ostaju **samo u vašem pregledaču**
+- Posete se broje **bez kolačića**, a omiljeni punjači ostaju **samo u vašem pregledaču**<!--consent-->; kolačić za analitiku postavlja se **samo uz vašu dozvolu**<!--/consent-->
 </div>
 
 Rukovalac podacima: [PRAVNI-PODACI: poslovno ime, sedište, MB, PIB]. Kontakt: hello@blokvolt.com.
@@ -31,17 +33,22 @@ Pri svakoj poseti provajder sajta (Cloudflare) obrađuje tehničke podatke: IP a
 - **Svrha i osnov:** odgovor na poruke, tačni podaci, bezbedan i ispravan rad sajta i prikaz mape (legitimni interes). Automatizovanog odlučivanja nema, a podaci se ne prodaju.
 - **Rokovi:** prepiska i poruke iz formi čuvaju se najduže 12 meseci od poslednjeg kontakta, a na zahtev se brišu i ranije, osim ako zakon traži duže čuvanje. Prijave, ocene i fotografije sa mape stoje dok je punjač na mapi ili dok ne tražite brisanje. Tehničke zapise čuva provajder po svojim pravilima.
 - **Obrađivači:** Cloudflare (hosting, baza podataka i merenje poseta) i Spacemail kompanije Spaceship (e-pošta).<!--posthog--> Korišćenje funkcija sajta meri PostHog (serveri u EU).<!--/posthog--> Podatke obrađuju i van Srbije, uz mere zaštite iz Zakona o zaštiti podataka o ličnosti: primeren nivo zaštite ili standardne ugovorne klauzule.
-- **Kolačići i memorija pregledača:** sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. U memoriju pregledača (localStorage) upisuje se samo spisak omiljenih punjača, i to tek kad ga sami napravite. Kad bi sajt ikada uveo kolačiće za analitiku ili reklame, prvo bi tražio vašu saglasnost.
+- **Kolačići i memorija pregledača:** <!--noconsent-->sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. U memoriju pregledača (localStorage) upisuje se samo spisak omiljenih punjača, i to tek kad ga sami napravite. Kad bi sajt ikada uveo kolačiće za analitiku ili reklame, prvo bi tražio vašu saglasnost.<!--/noconsent--><!--consent-->bez vaše dozvole sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. Ako u baneru dozvolite kolačić za analitiku, PostHog postavlja kolačić čije ime počinje sa ph_ i u memoriju pregledača upisuje nasumični identifikator; kolačić važi godinu dana, a dozvolu možete povući bilo kada (dugme u delu „Merenje poseta“). U memoriju pregledača (localStorage) upisuju se i vaš izbor o kolačiću i spisak omiljenih punjača, kad ga sami napravite. Kolačića za reklame nema.<!--/consent-->
 
 </details>
 
-## Merenje poseta
+## Merenje poseta {#merenje-poseta}
 
 Posete se broje uz Cloudflare Web Analytics: pregledi stranica, sa kog sajta ili pretraživača je poseta došla, zemlja, tip uređaja i brzina učitavanja. Alat ne postavlja kolačiće, ništa ne upisuje u pregledač i ne prati vas na drugim sajtovima. Rezultati su zbirni.
 
 <!--posthog-->
-Da bi sajt radio bolje, beleži se i kako se koriste njegove funkcije: kartica punjača, filteri na mapi, pretraga, klik na sajt ili telefon firme, slanje forme. To radi PostHog, na serverima u EU (Frankfurt), u režimu bez kolačića: u pregledaču se ništa ne čuva, a od IP adrese i podataka o pregledaču pravi se anonimni identifikator koji se menja svakog dana. IP adresa se ne čuva, a zapisi se ne povezuju sa imenom ni nalogom i brišu se posle najviše godinu dana. Ako pregledač šalje signal „Ne prati me“ (Do Not Track), ovi zapisi se ne šalju.
+Da bi sajt radio bolje, beleži se i kako se koriste njegove funkcije: kartica punjača, filteri na mapi, pretraga, klik na sajt ili telefon firme, slanje forme. To radi PostHog, na serverima u EU (Frankfurt)<!--cookieless-->, u režimu bez kolačića<!--/cookieless--><!--consent-->. Dok ne dozvolite kolačić, radi bez njega<!--/consent-->: u pregledaču se ništa ne čuva, a od IP adrese i podataka o pregledaču pravi se anonimni identifikator koji se menja svakog dana. IP adresa se ne čuva, a zapisi se ne povezuju sa imenom ni nalogom i brišu se posle najviše godinu dana. Ako pregledač šalje signal „Ne prati me“ (Do Not Track) ili Global Privacy Control, ovi zapisi se ne šalju.
 <!--/posthog-->
+<!--consent-->
+Ako u baneru dozvolite kolačić, PostHog od sledeće stranice čuva nasumični identifikator u vašem pregledaču, pa se vide i ponovne posete, i snima kretanje po stranicama: klikove, skrolovanje i promene na ekranu. Tekst koji upisujete u polja se ne snima, a snimci se čuvaju najviše 30 dana. Dozvolu možete povući u svakom trenutku: kolačić se tada briše, a merenje se vraća u režim bez kolačića.
+
+<p><button class="btn sm" type="button" data-bv-consent-reset>Promeni izbor o kolačiću</button></p>
+<!--/consent-->
 
 ## Omiljeni punjači
 

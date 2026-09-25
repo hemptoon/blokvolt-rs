@@ -26,6 +26,9 @@ SITE = 'https://www.blokvolt.rs'
 # Dates live in content/data/site.json: 'updated' = last content update (footer, sitemap lastmod),
 # 'firms_checked' = last full revision of the firm register.
 SITE_META = json.load(open(ROOT / 'content' / 'data' / 'site.json', encoding='utf-8'))
+# the Android app (docs/RUNBOOK.md 3.20): version, APK file name, size, SHA-256 and the signing certificate
+_APP_F = ROOT / 'content' / 'data' / 'app.json'
+APP = json.load(open(_APP_F, encoding='utf-8')) if _APP_F.exists() else {}
 TODAY = SITE_META['updated']
 ISO_TODAY = '-'.join(reversed(TODAY.split('.')))
 FIRMS_CHECKED = SITE_META['firms_checked']
@@ -666,10 +669,16 @@ def section_of(path):
 CRUMB = {'cene': ('/cene/', 'Cene'), 'vodici': ('/vodici/', 'Vodiči'), 'firme': ('/firme/', 'Firme')}
 
 # usage analytics (docs/RUNBOOK.md 3.16): PostHog only when a project key is set in site.json
-_AN = SITE_META.get('analytics') or {}
-ANALYTICS = json.dumps({'key': _AN['posthog_key'], 'host': _AN['posthog_host'], 'ui': _AN['posthog_ui'], 'assets': _AN['posthog_assets']}) if _AN.get('posthog_key') else ''
+_AN = dict(SITE_META.get('analytics') or {})
+if os.environ.get('BV_QA_POSTHOG_KEY'):       # QA only: build with a dummy key to see the banner and the PostHog texts
+    _AN['posthog_key'] = os.environ['BV_QA_POSTHOG_KEY']
+# consent: true = cookieless for everyone until the reader allows the analytics cookie in the banner (then cookies and
+# session replay with masked inputs); false = cookieless only, no banner
+ANALYTICS_CONSENT = bool(_AN.get('posthog_key')) and bool(_AN.get('consent'))
+ANALYTICS = json.dumps({'key': _AN['posthog_key'], 'host': _AN['posthog_host'], 'ui': _AN['posthog_ui'], 'assets': _AN['posthog_assets'],
+                        'consent': ANALYTICS_CONSENT}) if _AN.get('posthog_key') else ''
 base_ctx = dict(SITE=SITE, TODAY=TODAY, ISO_TODAY=ISO_TODAY, FIRMS_CHECKED=FIRMS_CHECKED, SITE_META=SITE_META, NAV=NAV,
-                n_firms=len(published), n_map=MAP['n'], ANALYTICS=ANALYTICS)
+                n_firms=len(published), n_map=MAP['n'], ANALYTICS=ANALYTICS, ANALYTICS_CONSENT=ANALYTICS_CONSENT)
 
 urls = []
 
@@ -748,16 +757,31 @@ def related_for(path):
     return []
 
 
+AN_BLOCKS = {'posthog': bool(ANALYTICS), 'noposthog': not ANALYTICS, 'consent': ANALYTICS_CONSENT, 'noconsent': not ANALYTICS_CONSENT,
+             'cookieless': bool(ANALYTICS) and not ANALYTICS_CONSENT}
+
+
 def posthog_blocks(body):
-    """Text between <!--posthog--> and <!--/posthog--> (privacy policy) exists only while PostHog is on."""
-    if ANALYTICS:
-        return body.replace('<!--posthog-->', '').replace('<!--/posthog-->', '')
-    return re.sub(r'\n?<!--posthog-->.*?<!--/posthog-->\n?', lambda m: '\n' if m.group(0).startswith('\n') and m.group(0).endswith('\n') else '', body, flags=re.S)
+    """Privacy-policy text that depends on the analytics mode: <!--posthog-->…<!--/posthog--> (PostHog on),
+    <!--noposthog--> (off), <!--consent--> (on, with the cookie banner), <!--noconsent--> (no banner: off or
+    cookieless), <!--cookieless--> (on, no banner)."""
+    for k, on in AN_BLOCKS.items():
+        if on:
+            body = body.replace(f'<!--{k}-->', '').replace(f'<!--/{k}-->', '')
+        else:
+            body = re.sub(rf'\n?<!--{k}-->.*?<!--/{k}-->\n?', lambda m: '\n' if m.group(0).startswith('\n') and m.group(0).endswith('\n') else '',
+                          body, flags=re.S)
+    return body
 
 
 for path, a in ARTICLES.items():
     a['body'] = posthog_blocks(a['body'])
     meta = a['meta']
+    if ANALYTICS_CONSENT:          # front matter lead_consent / description_consent replace the lead and description
+        for _k in ('lead', 'description'):
+            if meta.get(_k + '_consent'):
+                meta[_k] = meta[_k + '_consent']
+        a['lead'] = meta.get('lead', a['lead'])
     sec = section_of(path)
     if path.startswith('/javno-punjenje/'):
         crumbs = [('/javno-punjenje/', 'Javno punjenje')]
@@ -1336,6 +1360,18 @@ CSP = '; '.join([
     '/admin/*',
     '  X-Robots-Tag: noindex, nofollow',
     '  Cache-Control: no-store',
-]) + '\n', encoding='utf-8')
+    '/sw.js',
+    '  Cache-Control: no-cache',
+    '/manifest.webmanifest',
+    '  Content-Type: application/manifest+json',
+    '  Cache-Control: public, max-age=3600',
+    '/.well-known/assetlinks.json',
+    '  Content-Type: application/json',
+    '  Access-Control-Allow-Origin: *',
+    '  Cache-Control: public, max-age=3600',
+    '/offline.html',
+    '  X-Robots-Tag: noindex',
+] + ([f'/aplikacija/{APP["apk"]}', '  Content-Type: application/vnd.android.package-archive', '  Content-Disposition: attachment',
+      '  Cache-Control: public, max-age=3600'] if APP.get('apk') else [])) + '\n', encoding='utf-8')
 print(f'_headers: CSP with {len(_hashes)} inline-script hashes' + (', PostHog on' if ANALYTICS else ''))
 print('built', len(urls), 'urls;', len(published), 'firms;', len(operators), 'networks;', MAP['n'], 'stations on the map;', len(ARTICLES), 'articles')

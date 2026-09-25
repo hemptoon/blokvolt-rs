@@ -7,3 +7,10 @@ static/assets/fonts/
 content/i18n/work/
 content/i18n/todo-*.json
 dist-com/
+# Android app (android/): signing keys never go into the repo; Gradle outputs are built on GitHub Actions
+*.jks
+*.keystore
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties

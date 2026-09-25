@@ -4,14 +4,20 @@
 
   // ---------- usage events ----------
   // window.bvTrack(name, props) is the one entry point for the site and the map (and later the apps, which use the
-  // same event names). Events are sent to PostHog (EU cloud, cookieless: nothing is written to the browser) only
-  // when content/data/site.json -> analytics.posthog_key is set; the build then adds <script id="bv-an">.
-  // Without it every call is a no-op. Page views are counted separately by Cloudflare Web Analytics (no cookies).
-  var AN = null, anQ = [], anReady = false;
+  // same event names). Events go to PostHog (EU cloud) only when content/data/site.json -> analytics.posthog_key is
+  // set; the build then adds <script id="bv-an">. Without it every call is a no-op. Page views are counted
+  // separately by Cloudflare Web Analytics (no cookies).
+  // Modes: cookieless for everyone (nothing written to the browser); with analytics.consent the page also shows a
+  // banner, and a reader who allows the cookie is measured with cookies and session replay (inputs masked) from the
+  // next page on. The choice is kept in localStorage 'bv:consent' ('yes' / 'no'). Do Not Track or Global Privacy
+  // Control: nothing is sent and no banner is shown.
+  var AN = null, anQ = [], anReady = false, CK = 'bv:consent';
   try { var anEl = d.getElementById('bv-an'); AN = anEl ? JSON.parse(anEl.textContent) : null; } catch (e) { AN = null; }
-  if (AN && (!AN.key || navigator.webdriver)) AN = null;    // automated browsers (tests) are not counted
+  var optOut = navigator.doNotTrack === '1' || window.doNotTrack === '1' || navigator.globalPrivacyControl === true;
+  if (AN && (!AN.key || navigator.webdriver || optOut)) AN = null;    // automated browsers (tests) are not counted
   var PAGE = (d.body && d.body.getAttribute('data-page')) || '';
   var LANG = (d.documentElement.lang || 'sr').slice(0, 2);
+  function consent() { try { return localStorage.getItem(CK); } catch (e) { return null; } }
   window.bvTrack = function (name, props) {
     if (!AN) return;
     var p = {};
@@ -20,16 +26,33 @@
     if (PAGE) p.page = PAGE;
     if (anReady && window.posthog && window.posthog.capture) window.posthog.capture(name, p); else if (anQ.length < 50) anQ.push([name, p]);
   };
+  function wipeAnalyticsStorage() {
+    try { Object.keys(localStorage).forEach(function (k) { if (/^(ph_|__ph)/.test(k)) localStorage.removeItem(k); }); } catch (e) {}
+    try { Object.keys(sessionStorage).forEach(function (k) { if (/^(ph_|__ph)/.test(k)) sessionStorage.removeItem(k); }); } catch (e) {}
+    var host = location.hostname.replace(/^www\./, '');
+    d.cookie.split(';').forEach(function (c) {
+      var n = c.split('=')[0].trim();
+      if (/^ph_/.test(n)) { d.cookie = n + '=; Max-Age=0; path=/'; d.cookie = n + '=; Max-Age=0; path=/; domain=.' + host; }
+    });
+  }
   function loadAnalytics() {
     var ph = window.posthog = window.posthog || [];
     if (ph.__SV) return;
     ph.__SV = 1;
-    ph._i = [[AN.key, {
-      api_host: AN.host, ui_host: AN.ui, cookieless_mode: 'always', person_profiles: 'never',
-      capture_pageview: true, capture_pageleave: true, autocapture: true, respect_dnt: true,
-      disable_session_recording: true, disable_surveys: true, advanced_disable_feature_flags: true,
+    var cookies = AN.consent && consent() === 'yes';
+    var cfg = {
+      api_host: AN.host, ui_host: AN.ui, capture_pageview: true, capture_pageleave: true, autocapture: true, respect_dnt: true,
+      disable_surveys: true, advanced_disable_feature_flags: true,
       loaded: function (inst) { anReady = true; anQ.splice(0).forEach(function (e) { inst.capture(e[0], e[1]); }); }
-    }, 'posthog']];
+    };
+    if (cookies) {
+      cfg.persistence = 'localStorage+cookie'; cfg.person_profiles = 'identified_only';
+      cfg.disable_session_recording = false; cfg.session_recording = { maskAllInputs: true };
+    } else {
+      cfg.cookieless_mode = 'always'; cfg.person_profiles = 'never'; cfg.disable_session_recording = true;
+      if (AN.consent) wipeAnalyticsStorage();          // left over from an earlier 'yes' that was withdrawn
+    }
+    ph._i = [[AN.key, cfg, 'posthog']];
     var s = d.createElement('script');
     s.async = true; s.crossOrigin = 'anonymous'; s.src = AN.assets + '/static/array.js';
     d.head.appendChild(s);
@@ -37,6 +60,31 @@
   if (AN) {
     var later = function () { (window.requestIdleCallback || function (f) { setTimeout(f, 1200); })(loadAnalytics); };
     if (d.readyState === 'complete') later(); else window.addEventListener('load', later);
+  }
+  // consent banner (only with analytics.consent): shown until the reader chooses; the privacy policy can reopen it
+  var banner = d.getElementById('bv-consent');
+  if (banner && AN && AN.consent) {
+    if (consent() !== 'yes' && consent() !== 'no') banner.hidden = false;
+    banner.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('[data-consent]');
+      if (!b) return;
+      var v = b.getAttribute('data-consent');
+      try { localStorage.setItem(CK, v); } catch (err) {}
+      if (v === 'no') wipeAnalyticsStorage();
+      banner.hidden = true;
+      window.bvTrack('consent_choice', { choice: v });
+    });
+  }
+  d.addEventListener('click', function (e) {
+    var r = e.target.closest && e.target.closest('[data-bv-consent-reset]');
+    if (!r) return;
+    try { localStorage.removeItem(CK); } catch (err) {}
+    wipeAnalyticsStorage();
+    location.reload();                                   // start again without cookies; the banner shows
+  });
+  // offline support and the Android app (TWA): a small service worker, network first (static/sw.js)
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); });
   }
   // links out: firm and network sites, phone numbers, e-mail addresses; language switch
   d.addEventListener('click', function (e) {

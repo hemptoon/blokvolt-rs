@@ -405,6 +405,20 @@ a.row:hover{background:#FAFAF6}
  .nc-b .news-meta{font-size:12px;margin:0 0 3px}
 }
 
+.offline{max-width:640px;padding-top:48px;padding-bottom:64px}
+.offline h1{font-size:30px;margin:12px 0}
+.offline p{color:var(--ink2);line-height:1.55}
+.offline img{border-radius:14px}
+
+/* ---------- analytics cookie banner (only with analytics.consent) ---------- */
+.consent{position:fixed;right:16px;bottom:16px;left:auto;z-index:90;width:min(460px,calc(100% - 32px));background:#fff;border:1px solid var(--line2);border-radius:var(--r2);box-shadow:0 10px 36px rgba(13,17,26,.18);padding:14px 16px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.45;color:var(--ink2)}
+.consent[hidden]{display:none}
+.consent p{margin:0}
+.consent a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--volt2);text-decoration-thickness:2px;text-underline-offset:3px}
+.consent-b{display:flex;gap:8px;justify-content:flex-end}
+.consent-b .btn{min-width:112px}
+@media (max-width:640px){.consent{right:10px;bottom:10px;width:calc(100% - 20px)}.consent-b .btn{flex:1}}
+
 /* ---------- footer ---------- */
 .ft{background:var(--night);color:#E8EAE3;margin-top:24px}
 .ft-in{display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr));gap:28px;padding:44px 0 26px}

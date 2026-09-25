@@ -131,7 +131,7 @@ def page_units(soup):
     if soup.title and soup.title.string:
         units.append(('title', soup.title))
     for m in soup.find_all('meta'):
-        if m.get('name') in ('description',) or m.get('property') in ('og:title', 'og:description'):
+        if m.get('name') in ('description',) or m.get('property') in ('og:title', 'og:description', 'og:image:alt'):
             units.append(('meta', m))
     for s in soup.find_all('script', type='application/ld+json'):
         units.append(('ld', s))
@@ -192,7 +192,7 @@ def source_pages(dist):
     """Serbian pages that get a translation: every HTML page except the 404 and the language trees."""
     for p in sorted(dist.rglob('*.html')):
         rel = '/' + str(p.relative_to(dist)).replace('\\', '/')
-        if rel.startswith('/en/') or rel.startswith('/ru/') or rel.startswith('/admin/') or rel == '/404.html':
+        if rel.startswith('/en/') or rel.startswith('/ru/') or rel.startswith('/admin/') or rel in ('/404.html', '/offline.html'):
             continue
         yield p, rel
 
@@ -302,7 +302,7 @@ class Renderer:
         if soup.title and soup.title.string:
             soup.title.string = self.tr_text(lang, soup.title.string, where)
         for m in soup.find_all('meta'):
-            if m.get('name') == 'description' or m.get('property') in ('og:title', 'og:description'):
+            if m.get('name') == 'description' or m.get('property') in ('og:title', 'og:description', 'og:image:alt'):
                 m['content'] = self.tr_text(lang, m['content'], where)
             if m.get('property') == 'og:url':
                 m['content'] = SITE + lang_url(url, lang)

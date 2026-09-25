@@ -5,10 +5,11 @@
  "firms_checked_note": "Datum poslednje pune provere registra firmi (tabela cena, /firme/, gradovi). Menja se samo posle revizije svih firmi.",
  "analytics": {
   "posthog_key": "",
+  "consent": true,
   "posthog_host": "https://eu.i.posthog.com",
   "posthog_ui": "https://eu.posthog.com",
   "posthog_assets": "https://eu-assets.i.posthog.com",
-  "note": "PostHog (EU, cookieless) se uključuje kad se upiše javni ključ projekta (phc_…). Prazno = isključeno. Cloudflare Web Analytics se uključuje u Cloudflare Pages → Metrics i ne zavisi od ovoga. Videti docs/RUNBOOK.md 3.16."
+  "note": "PostHog (EU) se uključuje kad se upiše javni ključ projekta (phc_…). Prazno = isključeno. consent: true = bez kolačića dok čitalac u baneru ne dozvoli kolačić (tada kolačić i snimci sesija bez teksta iz polja); false = samo bez kolačića, bez banera. Cloudflare Web Analytics se uključuje u Cloudflare Pages → Metrics i ne zavisi od ovoga. Videti docs/RUNBOOK.md 3.16."
  },
  "home_stats": [
   {

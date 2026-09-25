@@ -484,15 +484,32 @@ No messages, comments or forms to anyone — the outreach rule of 3.7 applies to
 - **Cloudflare Web Analytics** — switched on 25.09.2026 in Pages → blokvolt → Metrics → Web Analytics. Cloudflare
   adds its beacon (`static.cloudflareinsights.com`) to every deployment; no cookies, no storage in the browser.
   Numbers: Cloudflare dashboard → Analytics → Web analytics. Page views, referrers, countries, devices, Core Web Vitals.
-- **PostHog** (EU cloud, cookieless) — prepared in the code, off while `analytics.posthog_key` in
-  `content/data/site.json` is empty. To switch on (the owner creates the account; never sign up or log in yourself):
+- **PostHog** (EU cloud) — prepared in the code, off while `analytics.posthog_key` in `content/data/site.json` is
+  empty. `analytics.consent` (true since 25.09.2026, the owner's choice) picks the mode:
+  - `consent: true` — every reader is measured **without cookies** (`cookieless_mode: 'always'`, nothing written to
+    the browser) and sees a small banner „Odbij / Dozvoli“ (equal buttons, bottom right; `base.html`, `bv.js`).
+    „Dozvoli“ stores `bv:consent=yes` in localStorage; from the next page PostHog runs with its cookie
+    (`localStorage+cookie`, `person_profiles: 'identified_only'`) and **session replay** (`maskAllInputs: true`).
+    „Odbij“ stores `no`. The privacy policy has „Promeni izbor o kolačiću“ (`data-bv-consent-reset`): it removes the
+    choice and every `ph_*` cookie and storage key, reloads, and the banner shows again.
+  - `consent: false` — cookieless only, no banner.
+  Do Not Track or Global Privacy Control: PostHog is not loaded and no banner is shown. Automated browsers
+  (`navigator.webdriver`) are not counted either. The privacy policy follows the mode: text between
+  `<!--posthog-->`, `<!--noposthog-->`, `<!--consent-->`, `<!--noconsent-->`, `<!--cookieless-->` markers, and
+  front matter `lead_consent` / `description_consent`; it promises replays are kept 30 days at most (PostHog free
+  plan) — change that sentence if the plan changes.
+  To switch on (the owner creates the account; never sign up or log in yourself):
   1. eu.posthog.com → new project; Project settings → Web analytics: turn on **Cookieless server hash mode**;
-     Project settings → General: turn on **Discard client IP data**; sign the DPA in the organisation settings.
+     Project settings → General: turn on **Discard client IP data**; Session replay: on (the site masks inputs
+     itself); sign the DPA in the organisation settings.
   2. Copy the project API key (`phc_…`, public by design) into `analytics.posthog_key`, build, deploy, commit.
-  3. The build then adds `<script id="bv-an">` to every page, the PostHog hosts to the CSP (3.17) and the PostHog
-     paragraphs of the privacy policy (text between `<!--posthog-->` and `<!--/posthog-->`).
-  `bv.js` loads PostHog after the page is idle with `cookieless_mode: 'always'`, `person_profiles: 'never'`,
-  `respect_dnt: true`, no session recording. Automated browsers (`navigator.webdriver`) are not counted.
+  3. The build then adds `<script id="bv-an">` (and the banner) to every page, the PostHog hosts to the CSP (3.17)
+     and the PostHog texts of the privacy policy. Their EN/RU translations are already in the memory (added
+     25.09.2026 from a QA build): `BV_QA_POSTHOG_KEY=phc_dummy python3 build.py` builds with a dummy key to look at
+     the banner or translate new consent texts; build again without it before packing. Run `i18n.py prune` only
+     after such a QA build, or it drops those translations while PostHog is off.
+  QA with the banner: Playwright sets `navigator.webdriver`, so override it in an init script
+  (`Object.defineProperty(navigator,'webdriver',{get:()=>false})`) and route the PostHog hosts to empty responses.
 - **Events** — one entry point, `window.bvTrack(name, props)`; the same names are meant for the future apps.
   Every event carries `lang` and, on firm and network pages, `page` (`firm:<slug>`, `network:<slug>`).
 
@@ -510,6 +527,7 @@ No messages, comments or forms to anyone — the outreach rule of 3.7 applies to
   | `calculator_used` | first change in a calculator | `calculator` |
   | `video_play` | YouTube poster clicked | `video` |
   | `language_switch` | language menu | `to` |
+  | `consent_choice` | cookie banner | `choice` (`yes` / `no`) |
 
   With PostHog on, page views, page leaves and clicks (autocapture) are recorded as well.
 
@@ -566,6 +584,44 @@ when a photo has no credit or a news item names an unknown photo.
   Add the entry to `foto.json` (and to a pool if it suits a tag), then the build: the caption+credit and the alt
   text become translation segments (3.9); `/metodologija/#vesti` lists every photo with its credit
   (`[[fotografije]]`), so a pool photo's caption is already translated before an item uses it.
+
+### 3.20 Web app, offline pages and the Android app
+
+- **Web app.** `static/manifest.webmanifest` (name, colours, icons in `static/assets/app/` drawn by
+  `scripts/app_icons.py` from the favicon, three shortcuts) and `static/sw.js`, registered by `bv.js` on https. The
+  service worker is network-first: when online nothing is served from its cache. It keeps the last 40 pages and the
+  assets they used, so they open without a connection; any other page gets `/offline.html` (SR/EN/RU in one file,
+  not translated by `i18n.py`). It never touches `/api/`, `/admin/` or other sites. `_headers`: `sw.js` no-cache.
+  Change the cache names (`bv-core-1` …) only when `CORE_FILES` or the offline page change. Kill switch: replace
+  `sw.js` with one that calls `self.registration.unregister()`.
+- **Android app** — a Trusted Web Activity, package `rs.blokvolt.app`: it opens `https://www.blokvolt.rs/?src=android`
+  full screen in Chrome (or another browser with TWA support; otherwise a Custom Tab). No permissions, no data of its
+  own; content and updates come from the site. The Android project is `android/`, generated 25.09.2026 with
+  `@bubblewrap/core` 1.25 from `android/twa-manifest.json`, plus a themed-icon layer (`ic_monochrome`) and
+  `mavenCentral()` instead of jcenter. Icons come from `static/assets/app/`.
+- **Build.** The container cannot reach Google Maven or Gradle (proxy), so the app is built by GitHub Actions:
+  `.github/workflows/android.yml` runs on every push that changes `android/**` and puts the **unsigned** APK and App
+  Bundle into branch `android-build`, folder `<versionName>-<versionCode>/` with `SHA256SUMS`.
+- **Sign** (in the container): `apt-get install -y apksigner zipalign`;
+  `git fetch origin android-build && git show origin/android-build:<v>/app-release-unsigned.apk > in.apk`;
+  `zipalign -p -f 4 in.apk aligned.apk`;
+  `apksigner sign --ks <jks> --ks-key-alias blokvolt --ks-pass file:<pw> --key-pass file:<pw> --out blokvolt.apk aligned.apk`;
+  `apksigner verify --print-certs blokvolt.apk`. App Bundle for Google Play:
+  `jarsigner -keystore <jks> -storepass:file <pw> app-release.aab blokvolt`.
+- **Key.** `blokvolt-android.jks` (PKCS12, alias `blokvolt`, RSA 2048, valid until 2056), certificate SHA-256
+  `AA:62:B4:08:E9:FA:69:4E:FB:89:57:99:8E:29:FF:93:4C:6F:DF:CA:71:CA:32:75:F8:B0:0D:82:EE:6A:17:21`. The owner keeps
+  the file and its password (handed over 25.09.2026); they never go into the repo, the project docs or a chat log.
+  Every update of the APK from the site must be signed with this key, or phones refuse to update. On Google Play
+  it is the upload key (Play App Signing); add Play's app-signing certificate to `assetlinks.json` then.
+- **On the site.** `static/.well-known/assetlinks.json` (the certificate fingerprints; without it the app shows a URL
+  bar), the APK at `/aplikacija/blokvolt.apk` (`static/aplikacija/`), its data in `content/data/app.json`
+  (version, code, size, SHA-256, certificate, date) and the page `/aplikacija/` (Android download, iPhone and
+  computer instructions). `_headers` serves the APK as `application/vnd.android.package-archive`, attachment.
+- **New version.** Raise `versionCode` and `versionName` in `android/app/build.gradle` and `android/twa-manifest.json`,
+  commit (§6), wait for the workflow (~5 min, green check on the commit), sign, replace the APK and `app.json`,
+  build, deploy, commit. Android developer verification for apps installed outside Google Play becomes mandatory
+  worldwide in 2027: before then the owner registers as a developer, or the APK on the site stops installing on
+  certified phones.
 
 ## 4. Build and check
 

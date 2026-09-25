@@ -1,0 +1,69 @@
+{
+  "packageId": "rs.blokvolt.app",
+  "host": "www.blokvolt.rs",
+  "name": "BlokVolt",
+  "launcherName": "BlokVolt",
+  "display": "standalone",
+  "themeColor": "#FFFFFF",
+  "themeColorDark": "#FFFFFF",
+  "navigationColor": "#FFFFFF",
+  "navigationColorDark": "#FFFFFF",
+  "navigationDividerColor": "#E6E5DC",
+  "navigationDividerColorDark": "#E6E5DC",
+  "backgroundColor": "#FFFFFF",
+  "enableNotifications": false,
+  "startUrl": "/?src=android",
+  "iconUrl": "https://www.blokvolt.rs/assets/app/icon-512.png",
+  "maskableIconUrl": "https://www.blokvolt.rs/assets/app/icon-maskable-512.png",
+  "monochromeIconUrl": "https://www.blokvolt.rs/assets/app/icon-monochrome-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./blokvolt-android.jks",
+    "alias": "blokvolt"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [
+    {
+      "name": "Mapa punjača",
+      "shortName": "Mapa",
+      "url": "/mapa/?src=android",
+      "chosenIconUrl": "https://www.blokvolt.rs/assets/app/sc-mapa-192.png"
+    },
+    {
+      "name": "Cene javnog punjenja",
+      "shortName": "Cene",
+      "url": "/javno-punjenje/?src=android",
+      "chosenIconUrl": "https://www.blokvolt.rs/assets/app/sc-cene-192.png"
+    },
+    {
+      "name": "Vesti",
+      "shortName": "Vesti",
+      "url": "/vesti/?src=android",
+      "chosenIconUrl": "https://www.blokvolt.rs/assets/app/sc-vesti-192.png"
+    }
+  ],
+  "generatorApp": "bubblewrap-core",
+  "webManifestUrl": "https://www.blokvolt.rs/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://www.blokvolt.rs/",
+  "minSdkVersion": 21,
+  "orientation": "default",
+  "fingerprints": [
+    {
+      "name": "upload key",
+      "value": "AA:62:B4:08:E9:FA:69:4E:FB:89:57:99:8E:29:FF:93:4C:6F:DF:CA:71:CA:32:75:F8:B0:0D:82:EE:6A:17:21"
+    }
+  ],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "displayOverride": [],
+  "appVersion": "1.0.0"
+}

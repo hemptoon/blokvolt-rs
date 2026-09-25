@@ -1,0 +1,25 @@
+{
+ "id": "/",
+ "name": "BlokVolt — punjači, cene i firme za električne automobile",
+ "short_name": "BlokVolt",
+ "description": "Mapa javnih punjača u Srbiji sa cenama, cene punjenja i struje, firme za kućni punjač i vesti o električnim automobilima.",
+ "lang": "sr-Latn",
+ "dir": "ltr",
+ "start_url": "/?src=pwa",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#FFFFFF",
+ "theme_color": "#FFFFFF",
+ "categories": ["travel", "utilities", "navigation"],
+ "icons": [
+  {"src": "/assets/app/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+  {"src": "/assets/app/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+  {"src": "/assets/app/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+  {"src": "/assets/app/icon-monochrome-512.png", "sizes": "512x512", "type": "image/png", "purpose": "monochrome"}
+ ],
+ "shortcuts": [
+  {"name": "Mapa punjača", "short_name": "Mapa", "url": "/mapa/?src=pwa", "icons": [{"src": "/assets/app/sc-mapa-192.png", "sizes": "192x192", "type": "image/png"}]},
+  {"name": "Cene javnog punjenja", "short_name": "Cene", "url": "/javno-punjenje/?src=pwa", "icons": [{"src": "/assets/app/sc-cene-192.png", "sizes": "192x192", "type": "image/png"}]},
+  {"name": "Vesti", "short_name": "Vesti", "url": "/vesti/?src=pwa", "icons": [{"src": "/assets/app/sc-vesti-192.png", "sizes": "192x192", "type": "image/png"}]}
+ ]
+}
