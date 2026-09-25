@@ -50,6 +50,10 @@ Ako u baneru dozvolite kolačić, PostHog od sledeće stranice čuva nasumični 
 <p><button class="btn sm" type="button" data-bv-consent-reset>Promeni izbor o kolačiću</button></p>
 <!--/consent-->
 
+## Aplikacija za Android {#aplikacija}
+
+[Aplikacija BlokVolt](/aplikacija/) otvara ovaj sajt u Chrome-u ili drugom pregledaču, preko celog ekrana. Ne traži dozvole, ne šalje obaveštenja i sama ništa ne prikuplja: stranice učitava sa sajta kao pregledač, pa za nju važi sve što piše na ovoj stranici.
+
 ## Omiljeni punjači
 
 Punjač koji na mapi sačuvate u omiljene upisuje se samo u vaš pregledač (localStorage). Spisak se ne šalje sajtu i nestaje kad obrišete podatke sajta u pregledaču.

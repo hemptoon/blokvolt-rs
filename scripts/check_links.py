@@ -10,7 +10,7 @@ bad = {}
 for f in glob.glob('**/*.html', recursive=True):
     s = BeautifulSoup(open(f, encoding='utf-8').read(), 'html.parser')
     for el in s.find_all(['a', 'link'], href=True) + s.find_all('script', src=True):
-        h = el.get('href') or el.get('src')
+        h = el.get('href') or el.get('src') or ''   # href="" (reload link on the offline page) is not a link to check
         if not h.startswith('/') or h.startswith('//'):
             continue
         h = h.split('#')[0].split('?')[0]

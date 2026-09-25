@@ -410,6 +410,16 @@ a.row:hover{background:#FAFAF6}
 .offline p{color:var(--ink2);line-height:1.55}
 .offline img{border-radius:14px}
 
+/* ---------- app page (/aplikacija/) ---------- */
+.app-card{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;max-width:760px;background:#fff;border:1px solid var(--line);border-radius:var(--r2);padding:18px 20px;box-shadow:var(--shadow)}
+.app-card img{border-radius:16px}
+.app-t h2{margin:0 0 4px;font-size:20px}
+.app-t p{margin:0;color:var(--mut);font-size:14px}
+.app-dl svg{width:18px;height:18px}
+.app-prose{margin-top:26px}
+.app-prose code.hash{word-break:break-all;font-size:12.5px}
+@media (max-width:640px){.app-card{grid-template-columns:auto minmax(0,1fr);padding:14px}.app-dl{grid-column:1 / -1;width:100%}}
+
 /* ---------- analytics cookie banner (only with analytics.consent) ---------- */
 .consent{position:fixed;right:16px;bottom:16px;left:auto;z-index:90;width:min(460px,calc(100% - 32px));background:#fff;border:1px solid var(--line2);border-radius:var(--r2);box-shadow:0 10px 36px rgba(13,17,26,.18);padding:14px 16px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.45;color:var(--ink2)}
 .consent[hidden]{display:none}

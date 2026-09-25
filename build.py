@@ -678,7 +678,7 @@ ANALYTICS_CONSENT = bool(_AN.get('posthog_key')) and bool(_AN.get('consent'))
 ANALYTICS = json.dumps({'key': _AN['posthog_key'], 'host': _AN['posthog_host'], 'ui': _AN['posthog_ui'], 'assets': _AN['posthog_assets'],
                         'consent': ANALYTICS_CONSENT}) if _AN.get('posthog_key') else ''
 base_ctx = dict(SITE=SITE, TODAY=TODAY, ISO_TODAY=ISO_TODAY, FIRMS_CHECKED=FIRMS_CHECKED, SITE_META=SITE_META, NAV=NAV,
-                n_firms=len(published), n_map=MAP['n'], ANALYTICS=ANALYTICS, ANALYTICS_CONSENT=ANALYTICS_CONSENT)
+                n_firms=len(published), n_map=MAP['n'], ANALYTICS=ANALYTICS, ANALYTICS_CONSENT=ANALYTICS_CONSENT, APP=APP)
 
 urls = []
 
@@ -1166,6 +1166,12 @@ DL_META = {
 for d in DATASETS:
     d['title'], d['desc'] = DL_META[d['name']]
     d['kb'] = round(d['bytes'] / 1024, 1)
+if APP.get('apk'):  # the Android app page (docs/RUNBOOK.md 3.20)
+    assert (ROOT / 'static' / 'aplikacija' / APP['apk']).stat().st_size == APP['bytes'], 'app.json bytes differ from the APK file'
+    render('aplikacija.html', '/aplikacija/', section='', app_mb=sr_num(APP['bytes'] / 1048576, 1), app_iso=_iso_date(APP['released']),
+           title='Aplikacija BlokVolt za Android, iPhone i računar | BlokVolt',
+           description='BlokVolt kao aplikacija: APK za Android, dodavanje na početni ekran na iPhone-u i instalacija na računaru. Mapa punjača, cene i vesti, i bez interneta.')
+    add_url('/aplikacija/', '0.5')
 render('preuzimanje.html', '/preuzimanje/', datasets=DATASETS, section='',
        title='Podaci za preuzimanje: CSV tabele o električnim automobilima u Srbiji | BlokVolt',
        description='CSV tabele sa sajta, besplatno uz navođenje izvora: firme za punjače, cene električnih automobila, wallbox modeli, cene javnog punjenja i mreže.')

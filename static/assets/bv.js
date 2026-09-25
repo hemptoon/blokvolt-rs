@@ -86,6 +86,9 @@
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
     window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); });
   }
+  d.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('[data-bv-app-download]')) window.bvTrack('app_download', { platform: 'android' });
+  }, true);
   // links out: firm and network sites, phone numbers, e-mail addresses; language switch
   d.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href]');

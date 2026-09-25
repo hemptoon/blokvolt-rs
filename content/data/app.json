@@ -1,0 +1,14 @@
+{
+ "name": "BlokVolt",
+ "package": "rs.blokvolt.app",
+ "version": "1.0.0",
+ "code": 1,
+ "apk": "blokvolt.apk",
+ "bytes": 1217805,
+ "sha256": "73b8558d35ba3a12a143948be09549907087d8d5b941d148c609dbb7c74f6442",
+ "cert_sha256": "AA:62:B4:08:E9:FA:69:4E:FB:89:57:99:8E:29:FF:93:4C:6F:DF:CA:71:CA:32:75:F8:B0:0D:82:EE:6A:17:21",
+ "min_android": "5.0",
+ "released": "25.09.2026",
+ "built_from": "77d5f5e",
+ "note": "Android app (Trusted Web Activity), docs/RUNBOOK.md 3.20. apk = file in static/aplikacija/; bytes and sha256 of that file; cert_sha256 = signing certificate (also in static/.well-known/assetlinks.json); built_from = commit the android-build output came from."
+}

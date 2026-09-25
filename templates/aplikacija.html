@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import pagehead %}
+{% from '_icons.html' import ic %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "MobileApplication", "name": "BlokVolt", "operatingSystem": "Android {{ APP.min_android }}+", "applicationCategory": "TravelApplication", "inLanguage": "sr-Latn", "softwareVersion": "{{ APP.version }}", "datePublished": "{{ app_iso }}", "downloadUrl": "{{ SITE }}/aplikacija/{{ APP.apk }}", "fileSize": "{{ app_mb }} MB", "url": "{{ SITE }}{{ canon }}", "image": "{{ SITE }}/assets/app/icon-512.png", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RSD"}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Aplikacija", "item": "{{ SITE }}{{ canon }}"}]}
+ ]
+}</script>{% endblock %}
+{% block pagehead %}{{ pagehead('Aplikacija BlokVolt', 'Mapa punjača, cene punjenja i vesti na početnom ekranu telefona. Aplikacija otvara ovaj sajt preko celog ekrana i menja se zajedno sa njim.') }}{% endblock %}
+{% block content %}
+<div class="app-card">
+<img src="/assets/app/icon-192.png" width="72" height="72" alt="">
+<div class="app-t"><h2>BlokVolt za Android</h2><p>Verzija {{ APP.version }} · {{ app_mb }} MB · {{ APP.released }} · Android {{ APP.min_android }} ili noviji</p></div>
+<a class="btn dark app-dl" href="/aplikacija/{{ APP.apk }}" download data-bv-app-download>{{ ic('download') }}Preuzmi APK</a>
+</div>
+<div class="prose app-prose">
+<h2>Kako se instalira na Android</h2>
+<ol>
+<li>Otvorite ovu stranicu na telefonu i pritisnite „Preuzmi APK“.</li>
+<li>Otvorite preuzeti fajl. Ako telefon pita, dozvolite instalaciju iz pregledača kojim ste ga preuzeli; to podešavanje posle možete da isključite.</li>
+<li>Pritisnite „Instaliraj“. BlokVolt se pojavljuje među aplikacijama, sa prečicama za mapu, cene i vesti (dugo pritisnite ikonicu).</li>
+</ol>
+<p>Aplikacija radi preko Chrome-a ili drugog pregledača koji podržava ovu vrstu aplikacija. Ako takvog pregledača nema, sajt se otvara u običnoj kartici pregledača.</p>
+<h2>iPhone i iPad</h2>
+<p>U App Store-u aplikacije nema, ali sajt može da radi kao aplikacija: otvorite www.blokvolt.rs u Safariju, pritisnite „Podeli“ (kvadrat sa strelicom nagore), pa „Dodaj na početni ekran“. Ikonica BlokVolt tada otvara sajt preko celog ekrana.</p>
+<h2>Na računaru</h2>
+<p>U Chrome-u ili Edge-u kliknite ikonicu za instalaciju na kraju adresne trake ili u meniju izaberite „Instaliraj BlokVolt“. Sajt se tada otvara u svom prozoru.</p>
+<h2>Šta aplikacija radi</h2>
+<ul>
+<li>To je isti sajt: iste cene, ista mapa, iste vesti. Promene na sajtu odmah se vide i u aplikaciji, pa novu verziju aplikacije retko treba instalirati.</li>
+<li>Stranice koje ste nedavno otvorili rade i bez interneta.</li>
+<li>Aplikacija ne traži dozvole i ne šalje obaveštenja. Lokaciju za „Blizu mene“ pregledač traži tek kad pritisnete to dugme. Sve o podacima je u <a href="/politika-privatnosti.html">politici privatnosti</a>.</li>
+</ul>
+<details><summary>Za proveru fajla</summary>
+<ul>
+<li><span>Paket i verzija:</span> <code translate="no">{{ APP.package }} {{ APP.version }} ({{ APP.code }})</code></li>
+<li><span>SHA-256 fajla:</span> <code class="hash" translate="no">{{ APP.sha256 }}</code></li>
+<li><span>SHA-256 sertifikata kojim je potpisan:</span> <code class="hash" translate="no">{{ APP.cert_sha256 }}</code></li>
+</ul>
+<p>Svaka sledeća verzija na ovoj stranici potpisana je istim sertifikatom, pa se instalira preko postojeće.</p>
+</details>
+</div>
+<p class="upd">Objavljeno {{ APP.released }} · <a href="/ispravka/">Prijavite grešku</a></p>
+{% endblock %}

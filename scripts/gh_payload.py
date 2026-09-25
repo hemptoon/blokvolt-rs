@@ -39,7 +39,8 @@ def blob_sha(b):
 subprocess.check_call(['git', 'add', '-A'])  # stage to respect .gitignore when listing
 files = subprocess.check_output(['git', 'ls-files'], text=True).splitlines()
 subprocess.check_call(['git', 'reset', '-q'])
-lines = ''.join(f'{p}:{blob_sha(open(p, "rb").read())}\n' for p in sorted(files) if os.path.isfile(p))
+# sort the finished lines, as the check in RUNBOOK §6 does (android/gradlew vs android/gradlew.bat sort differently)
+lines = ''.join(sorted(f'{p}:{blob_sha(open(p, "rb").read())}\n' for p in files if os.path.isfile(p)))
 print(f'changed {len(changed)}: {changed}')
 if deleted:
     print(f'DELETED (remove manually on github.com): {deleted}')

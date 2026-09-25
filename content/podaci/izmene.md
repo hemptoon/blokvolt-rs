@@ -19,6 +19,8 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 - Na stranicama firmi i mreža poruka za firme premeštena je na dno stranice.
 - [Mapa](/mapa/): filter „Potvrđeni“ sada može da se kombinuje sa ostalima (na primer brzi i potvrđeni); novi filter CHAdeMO; navigacija i u Apple mapama i Waze-u; dugme „Podeli“ na kartici punjača; cena starija od godinu dana označena je upozorenjem.
 - Evolako: opis cene i ugradnje usklađen sa sajtom firme (standardna ugradnja do 7 m kabla, isti nivo).
+- Vesti imaju fotografije sa Unsplasha i Wikimedia Commonsa, uz potpis šta je na slici, autora i licencu; spisak je na stranici [Kako radimo](/metodologija/#vesti).
+- [Aplikacija BlokVolt](/aplikacija/) za Android (APK), uputstvo za iPhone i računar; nedavno otvorene stranice rade i bez interneta.
 
 ## 24. septembar 2026
 

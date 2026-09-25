@@ -20,7 +20,8 @@
 </ul></div>
 <div><h2>O sajtu</h2><ul>
 <li><a href="/vesti/">Vesti</a></li>
-<li><a href="/o-sajtu/">O sajtu</a></li>
+{% if APP.apk %}<li><a href="/aplikacija/">Aplikacija</a></li>
+{% endif %}<li><a href="/o-sajtu/">O sajtu</a></li>
 <li><a href="/metodologija/">Kako radimo</a></li>
 <li><a href="/ispravka/">Prijavite grešku</a></li>
 <li><a href="/za-firme/">Za firme i mreže</a></li>
