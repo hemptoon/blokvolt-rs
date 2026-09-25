@@ -521,12 +521,18 @@ only from `youtube-nocookie.com`. A new third-party script, iframe, font or tile
 `build.py`, or the browser blocks it. `scripts/qa/cfserve.py` serves `dist/` with these headers, so CSP errors show
 up as console errors in `scripts/qa/qa_all.py` and `map_ui_test.py`.
 
-### 3.18 Favourite chargers
+### 3.18 Favourite chargers and the card actions
 
 The star on a charger card saves the station id in the reader's browser only (`localStorage` key `bv:fav`, at most
 300 ids); the chip „Omiljeni“ and `/mapa/?f=fav` show them, and the map draws a green ring around them. Nothing is
 sent to the server; ids of stations that disappear from the map are dropped quietly. The privacy policy says so.
 When user accounts exist, the list can be synced to the account.
+
+Filters: one-of chips (Svi, Omiljeni, Brzi, AC, CHAdeMO, Besplatni, networks) plus the switch „Potvrđeni“, which
+combines with any of them (`?ok=1`; the old `?f=ok` still works). Card actions: „Navigacija“ opens Apple Maps on
+Apple devices and Google Maps elsewhere, with the other apps (Google Maps, Waze) linked under it; „Podeli“ uses the
+system share sheet or copies the `/mapa/#<id>` link. A price whose date is more than a year old gets the warning
+`p_old` (the Evolako app shows the same marker).
 
 ## 4. Build and check
 

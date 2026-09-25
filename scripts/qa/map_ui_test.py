@@ -26,7 +26,8 @@ async def main():
     async with async_playwright() as p:
         b = await p.chromium.launch(args=['--use-gl=swiftshader', '--enable-webgl', '--ignore-gpu-blocklist'])
         for w, h, tag in ((1440, 900, 'd'), (390, 844, 'm')):
-            ctx = await b.new_context(viewport={'width': w, 'height': h})
+            ua = {'user_agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1'} if tag == 'm' else {}
+            ctx = await b.new_context(viewport={'width': w, 'height': h}, permissions=['clipboard-read', 'clipboard-write'], **ua)
             pg = await ctx.new_page()
             errs = []
             pg.on('pageerror', lambda e: errs.append('JS ' + str(e)[:200]))
@@ -110,6 +111,32 @@ async def main():
             await pg.click('#mchips [data-f="ok"]')
             await pg.wait_for_timeout(400)
             print(tag, 'ok-filter count:', await pg.inner_text('#mcount'))
+            # "Potvrđeni" combines with another chip; CHAdeMO chip
+            await pg.click('#mchips [data-f="fast"]')
+            await pg.wait_for_timeout(400)
+            both = await pg.evaluate("[...document.querySelectorAll('#mchips .chip[aria-pressed=true]')].map(c => c.dataset.f).join('+')")
+            print(tag, 'fast+ok pressed:', both, '| count:', await pg.inner_text('#mcount'))
+            await pg.click('#mchips [data-f="ok"]')
+            await pg.click('#mchips [data-f="chademo"]')
+            await pg.wait_for_timeout(400)
+            print(tag, 'chademo count:', await pg.inner_text('#mcount'))
+            # card actions: directions (platform order), share (clipboard fallback), stale price warning
+            await pg.goto('about:blank')
+            await pg.goto('http://127.0.0.1:8787/mapa/#ocm-279311', wait_until='load')
+            await pg.wait_for_timeout(1200)
+            navs = await pg.evaluate("[...document.querySelectorAll('.ccard [data-nav]')].map(a => a.dataset.nav).join(',')")
+            await pg.click('.ccard [data-share]')
+            await pg.wait_for_timeout(400)
+            shared = await pg.inner_text('.ccard [data-share]')
+            print(tag, 'nav order:', navs, '| share button after click:', shared)
+            await pg.goto('about:blank')
+            await pg.goto('http://127.0.0.1:8787/mapa/?mreza=parking-servis-beograd', wait_until='load')
+            await pg.wait_for_timeout(1200)
+            if await pg.evaluate("!!document.querySelector('.st')"):
+                await pg.click('.st')
+                await pg.wait_for_timeout(600)
+                print(tag, 'stale price warning:', await pg.evaluate("(document.querySelector('.ccard .stale')||{}).textContent || 'NONE'"))
+                await pg.screenshot(path=str(SHOTS / f'stale_card_{tag}.png'))
             print(tag, 'errors:', errs[:6])
             await ctx.close()
         await b.close()

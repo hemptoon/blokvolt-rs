@@ -22,8 +22,9 @@
 <button class="chip chip-fav" type="button" data-f="fav" aria-pressed="false">{{ ic('star') }}Omiljeni <span class="n" data-favn hidden></span></button>
 <button class="chip" type="button" data-f="fast" aria-pressed="false">{{ ic('bolt') }}Brzi (DC ≥ 50 kW)</button>
 <button class="chip" type="button" data-f="ac" aria-pressed="false">AC</button>
+<button class="chip" type="button" data-f="chademo" aria-pressed="false">CHAdeMO</button>
 <button class="chip" type="button" data-f="free" aria-pressed="false">Besplatni</button>
-<button class="chip" type="button" data-f="ok" aria-pressed="false">Potvrđeni</button>
+<button class="chip chip-ok" type="button" data-f="ok" aria-pressed="false">{{ ic('check') }}Potvrđeni</button>
 {% for slug, name, n in M.chips %}<button class="chip" type="button" data-f="net:{{ slug }}" aria-pressed="false">{{ name }} <span class="n">{{ n }}</span></button>{% endfor %}
 </div>
 </div>

@@ -536,6 +536,8 @@ MAP_T = {
     'p_seen': 'Zabeležene cene ove mreže:', 'price': 'Cena', 'count_all': 'Punjača: {n}', 'count': 'Prikazano {n} od {all}',
     'sorted_near': 'najbliži prvi', 'none': 'Nema punjača za ovaj izbor.', 'conn': 'Priključci', 'access': 'Pristup',
     'customers': 'Samo za goste ili kupce', 'navigate': 'Navigacija', 'site': 'Sajt mreže', 'about_net': 'O mreži',
+    'nav_in': 'Otvori u:', 'share': 'Podeli', 'copied': 'Link je kopiran',
+    'p_old': 'Cena je starija od godinu dana. Proverite u aplikaciji mreže.',
     'report': 'Prijavi grešku', 'mail_subj': 'Greška na mapi', 'mail_body': 'Šta nije tačno:', 'data': 'Podaci',
     'close': 'Zatvori', 'net_known': 'Mreža', 'operator': 'Operater', 'net_unknown': 'Mreža nije poznata',
     'no_location': 'Lokacija nije dostupna.', 'load_err': 'Mapa trenutno ne može da se učita. Pokušajte ponovo.',
@@ -652,7 +654,7 @@ def render(tpl, path, **ctx):
 
 
 # ---------------------------------------------------------------- articles (Markdown)
-PROMO = {'text': 'Evolako ugrađuje punjač u zgradi ili garaži sa MID brojilom, atestom i papirima za skupštinu, uz mesečni obračun struje.',
+PROMO = {'text': 'Evolako ugrađuje punjač u zgradi ili garaži sa MID brojilom i papirima za skupštinu, uz mesečni obračun struje po ceni iz računa EPS-a.',
          'href': EVOLAKO, 'link': 'evolako.rs'}
 PROMO_ON = {'/punjenje-elektricnog-auta-u-zgradi.html', '/punjac-u-zgradi-skupstina.html', '/ko-placa-struju-za-punjenje.html',
             '/punjac-u-iznajmljenoj-garazi.html'}

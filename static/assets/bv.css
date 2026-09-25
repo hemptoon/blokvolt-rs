@@ -338,6 +338,11 @@ a.row:hover{background:#FAFAF6}
 .ccard .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 8px}
 .ccard .acts .btn{width:100%}
 .ccard .acts .btn.full{grid-column:span 2}
+.ccard .acts .nav-alt{grid-column:span 2;margin:-2px 0 2px;font-size:13px;color:var(--mut);text-align:center}
+.ccard .acts .nav-alt .lnk{font-weight:600}
+.ccard .acts button.btn{font-family:inherit;cursor:pointer}
+.cbox small.stale{color:var(--warn);font-weight:600}
+.chip-ok svg{width:15px;height:15px}
 .ccard .src{font-size:12px;margin:8px 0 0}
 .ccard .src a{color:var(--mut)}
 .map-below{padding:30px 0 10px}

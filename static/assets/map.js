@@ -23,8 +23,32 @@ const ICON = {
   flag: svg('<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>'),
   ok: svg('<path d="M20 6 9 17l-5-5"/>'),
   warn: svg('<path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v4M12 17.5v.01"/>'),
-  cam: svg('<path d="M4 8h3l2-3h6l2 3h3v11H4V8Z"/><circle cx="12" cy="13" r="3.5"/>')
+  cam: svg('<path d="M4 8h3l2-3h6l2 3h3v11H4V8Z"/><circle cx="12" cy="13" r="3.5"/>'),
+  share: svg('<path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 12v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7"/>')
 };
+// directions: Apple Maps first on Apple devices (it is the default there), Google Maps first elsewhere, Waze always
+const IS_APPLE = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent) && !/Android/.test(navigator.userAgent);
+function navLinks(s) {
+  const g = ['Google Maps', 'https://www.google.com/maps/dir/?api=1&destination=' + s.lat + ',' + s.lon, 'google'];
+  const a = ['Apple Maps', 'https://maps.apple.com/?daddr=' + s.lat + ',' + s.lon + '&dirflg=d', 'apple'];
+  const w = ['Waze', 'https://waze.com/ul?ll=' + s.lat + ',' + s.lon + '&navigate=yes', 'waze'];
+  return IS_APPLE ? [a, g, w] : [g, w];
+}
+// a price older than a year is shown with a warning. Dates in the price data: "22.09.2026", "oktobar 2021",
+// "2022 / 2024" — the newest date mentioned counts; a bare year counts as its last day
+const MONTHS_SR = ['januar', 'februar', 'mart', 'april', 'maj', 'jun', 'jul', 'avgust', 'septembar', 'oktobar', 'novembar', 'decembar'];
+function stale(ds) {
+  if (!ds) return false;
+  let t = 0;
+  const re = /(?:(\d{1,2})\.(\d{1,2})\.|([a-zčćšžđ]+)\s+)?(\d{4})/gi;
+  for (let m; (m = re.exec(ds));) {
+    const y = +m[4];
+    const mi = m[2] ? +m[2] - 1 : m[3] ? MONTHS_SR.indexOf(m[3].toLowerCase()) : -1;
+    const dt = m[1] ? new Date(y, mi, +m[1]) : mi >= 0 ? new Date(y, mi + 1, 0) : new Date(y, 11, 31);
+    t = Math.max(t, dt.getTime());
+  }
+  return t > 0 && Date.now() - t > 365 * 86400000;
+}
 const ST_LABEL = { ok: T.ci_ok, problem: T.ci_problem, broken: T.ci_broken, missing: T.ci_missing };
 const STAR = '<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.6l2.55 5.17 5.7.83-4.13 4.02.98 5.68L12 16.62l-5.1 2.68.98-5.68L3.75 9.6l5.7-.83L12 3.6Z"/></svg>';
 // usage events go through bv.js (window.bvTrack); a missing or blocked analytics script never breaks the map
@@ -38,7 +62,7 @@ function saveFav() { try { localStorage.setItem(FAV_KEY, JSON.stringify([...FAV]
 function isFav(s) { return FAV.has(s.id); }
 
 let ST = [], NETS = {}, CI = {}, map, me = null, sel = null, city = null, opened = 0;
-const state = { q: '', f: 'all', bounds: null, lim: 20 };
+const state = { q: '', f: 'all', ok: false, bounds: null, lim: 20 };
 let userMove = false;
 const $list = d.getElementById('mlist'), $count = d.getElementById('mcount'), $card = d.getElementById('mcard');
 const $q = d.getElementById('mq'), $chips = d.getElementById('mchips'), $me = d.getElementById('mme');
@@ -112,7 +136,8 @@ function match(s) {
   if (f === 'fast' && !((s.dc || 0) >= 50)) return false;
   if (f === 'ac' && !(s.ac || s.c.some(c => c[1] !== 'dc'))) return false;
   if (f === 'free' && kind(s) !== 'free') return false;
-  if (f === 'ok' && ver(s) !== 'ok') return false;
+  if (f === 'chademo' && !s.c.some(c => c[0] === 'chademo')) return false;
+  if (state.ok && ver(s) !== 'ok') return false;
   if (f === 'fav' && !FAV.has(s.id)) return false;
   if (f.indexOf('net:') === 0 && s.net !== f.slice(4)) return false;
   if (state.q) {
@@ -186,6 +211,9 @@ function priceHtml(s) {
     h += '<div>' + esc(p.text) + '</div>';
   }
   if (p.note && (p.kind === 'exact' || p.kind === 'tier' || p.kind === 'range')) h += '<small>' + esc(p.note) + '</small>';
+  const pd = p.kind === 'exact' || p.kind === 'tier' ? p.t.date : p.kind === 'range' ? p.lo.date : p.kind === 'seen' ? p.list[0].date :
+    p.kind === 'free' ? p.date : '';
+  if (stale(pd)) h += '<small class="stale">' + esc(T.p_old) + '</small>';
   const idle = cfg.idle && cfg.idle[(netOf(s) && netOf(s).via) || s.net];
   if (idle && p.kind !== 'free' && p.kind !== 'none') h += '<small>' + esc(T.idle.replace('{x}', tr(idle))) + '</small>';
   return h + '</div>';
@@ -214,7 +242,7 @@ function openCard(s, fly) {
   const netLine = netName(s) ? '<div class="net">' + logo + '<div><b>' + esc(netName(s)) + '</b><span>' + esc(n && n.page ? T.net_known : (s.opn && !n ? T.operator : T.net_unknown)) + '</span></div></div>' : '';
   const conns = s.c.length ? '<div class="cbox"><span>' + esc(T.conn) + '</span><ul>' + s.c.map(c => '<li>' + esc(connLine(c)) + '</li>').join('') + '</ul></div>' : '';
   const acc = s.acc === 'customers' ? '<div class="cbox"><span>' + esc(T.access) + '</span><div>' + esc(T.customers) + '</div></div>' : '';
-  const nav = 'https://www.google.com/maps/dir/?api=1&destination=' + s.lat + ',' + s.lon;
+  const navs = navLinks(s);
   const site = n && n.page ? n.page : (n && n.site ? n.site : '');
   const fix = '/ispravka/?stanica=' + encodeURIComponent(s.id);
   const SRC = { ocm: 'Open Charge Map', osm: 'OpenStreetMap', ps: 'JP Putevi Srbije', cg: 'Charge&GO', rm: T.src_rm, te: 'Tesla' };
@@ -222,18 +250,22 @@ function openCard(s, fly) {
   $card.innerHTML = '<div class="ccard" role="dialog" aria-label="' + esc(title(s)) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
     favBtn(s) +
     '<h2>' + esc(title(s)) + '</h2><p class="addr">' + esc(place(s)) + '</p>' + verHtml(s) + netLine + priceHtml(s) + statusHtml(s) + conns + acc +
-    '<div class="acts"><a class="btn dark full" href="' + nav + '" target="_blank" rel="noopener">' + ICON.nav + esc(T.navigate) + '</a>' +
+    '<div class="acts"><a class="btn dark full" href="' + navs[0][1] + '" target="_blank" rel="noopener" data-nav="' + navs[0][2] + '">' + ICON.nav + esc(T.navigate) + '</a>' +
+    '<p class="nav-alt">' + esc(T.nav_in) + ' ' + navs.slice(1).map(x => '<a class="lnk" href="' + x[1] + '" target="_blank" rel="noopener" data-nav="' + x[2] + '">' + x[0] + '</a>').join(' · ') + '</p>' +
     (site ? '<a class="btn" href="' + esc(site) + '"' + (site[0] === '/' ? '' : ' target="_blank" rel="noopener"') + '>' + ICON.ext + esc(n && n.page ? T.about_net : T.site) + '</a>' : '') +
-    '<a class="btn' + (site ? '' : ' full') + '" href="' + fix + '">' + ICON.flag + esc(T.report) + '</a></div>' +
+    '<a class="btn" href="' + fix + '">' + ICON.flag + esc(T.report) + '</a>' +
+    '<button class="btn' + (site ? ' full' : '') + '" type="button" data-share>' + ICON.share + esc(T.share) + '</button></div>' +
     rvHtml(s) +
     '<p class="src">' + esc(T.data) + ': ' + srcs + '</p></div>';
   $card.classList.add('is-open');
   $card.querySelector('.x').addEventListener('click', closeCard);
   $card.querySelector('.fav').addEventListener('click', () => toggleFav(s));
   $card.querySelector('.acts').addEventListener('click', e => {
+    if (e.target.closest('[data-share]')) { shareStation(s); return; }
     const a = e.target.closest('a');
     if (!a) return;
-    track(a.href.indexOf('google.com/maps') >= 0 ? 'map_navigate' : (a.href.indexOf('/ispravka/') >= 0 ? 'map_report_error' : 'map_network_link'), { station: s.id, network: s.net || '' });
+    if (a.dataset.nav) track('map_navigate', { station: s.id, network: s.net || '', app: a.dataset.nav });
+    else track(a.href.indexOf('/ispravka/') >= 0 ? 'map_report_error' : 'map_network_link', { station: s.id, network: s.net || '' });
   });
   rvBind(s);
   track('map_card_open', { station: s.id, network: s.net || '', verified: ver(s), favourite: isFav(s) });
@@ -241,6 +273,18 @@ function openCard(s, fly) {
   if (fly && map) map.flyTo({ center: [s.lon, s.lat], zoom: Math.max(map.getZoom(), 13), speed: 1.4, padding: padding() });
   history.replaceState(null, '', location.pathname + location.search + '#' + s.id);
   renderList();
+}
+function shareStation(s) {
+  const url = location.origin + location.pathname + '#' + encodeURIComponent(s.id);
+  const done = how => track('map_share', { station: s.id, network: s.net || '', how });
+  if (navigator.share) {
+    navigator.share({ title: title(s), text: [title(s), place(s)].filter(Boolean).join(' — '), url }).then(() => done('sheet'), () => {});
+    return;
+  }
+  const b = $card.querySelector('[data-share]');
+  const ok = () => { if (b) { b.lastChild.textContent = T.copied; setTimeout(() => { if (b.isConnected) b.lastChild.textContent = T.share; }, 2500); } done('copy'); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(ok, () => prompt(T.share, url));
+  else prompt(T.share, url);
 }
 function favBtn(s) {
   const on = isFav(s);
@@ -517,13 +561,28 @@ function initMap() {
 }
 
 // ---------- controls ----------
+function paintChips() {
+  [].forEach.call($chips.querySelectorAll('.chip'), c =>
+    c.setAttribute('aria-pressed', (c.dataset.f === 'ok' ? state.ok : c.dataset.f === state.f) ? 'true' : 'false'));
+}
 function setChip(f, quiet) {
   state.f = f;
-  if (!quiet) track('map_filter', { filter: f, favourites: FAV.size });
-  [].forEach.call($chips.querySelectorAll('.chip'), c => c.setAttribute('aria-pressed', c.dataset.f === f ? 'true' : 'false'));
+  if (!quiet) track('map_filter', { filter: f, confirmed_only: state.ok, favourites: FAV.size });
+  paintChips();
   refresh();
 }
-$chips.addEventListener('click', e => { const c = e.target.closest('.chip'); if (c) setChip(c.dataset.f); });
+// "Potvrđeni" is a switch that works together with any other chip (fast + confirmed, a network + confirmed …)
+function setOk(on, quiet) {
+  state.ok = on;
+  if (!quiet) track('map_filter', { filter: state.f, confirmed_only: on, favourites: FAV.size });
+  paintChips();
+  refresh();
+}
+$chips.addEventListener('click', e => {
+  const c = e.target.closest('.chip');
+  if (!c) return;
+  if (c.dataset.f === 'ok') setOk(!state.ok); else setChip(c.dataset.f);
+});
 $count.addEventListener('click', e => {
   if (!e.target.closest('[data-all]')) return;
   state.bounds = null; me = null; city = null;
@@ -557,17 +616,18 @@ $me.addEventListener('click', () => {
 });
 function alertNote(msg) { $count.textContent = msg; }
 
-// ?mreza=<net> ?grad=<city> ?q=<text> ?f=fast|ac|free|ok and #<station id>; applied before the map loads,
+// ?mreza=<net> ?grad=<city> ?q=<text> ?f=fast|ac|chademo|free|fav, ?ok=1 (or the old ?f=ok) and #<station id>; applied before the map loads,
 // so the list is right even when the map tiles cannot be loaded
 function fromUrl() {
   const p = new URLSearchParams(location.search);
   const net = p.get('mreza'), g = p.get('grad'), q = p.get('q'), f = p.get('f');
   if (q) { $q.value = q; state.q = q; }
+  if (f === 'ok' || p.get('ok') === '1') { state.ok = true; paintChips(); }
   const c = g && cfg.cities[g];
   if (c) city = { lat: c[0], lon: c[1] };
   if (net && $chips.querySelector('[data-f="net:' + net + '"]')) setChip('net:' + net, true);
   else if (net) { state.q = state.q || net.replace(/-/g, ' '); refresh(); }
-  else if (f && $chips.querySelector('[data-f="' + f + '"]')) setChip(f, true);
+  else if (f && f !== 'ok' && $chips.querySelector('[data-f="' + f + '"]')) setChip(f, true);
   else refresh();
   const id = decodeURIComponent(location.hash.slice(1));
   if (id) { const s = ST.find(x => x.id === id); if (s) openCard(s, false); }
