@@ -627,7 +627,7 @@ when a photo has no credit or a news item names an unknown photo.
 ## 4. Build and check
 
 ```bash
-bash scripts/pack.sh      # build.py + check_links.py + /mnt/user-data/outputs/blokvolt-dist.zip
+bash scripts/pack.sh      # build.py + check_links.py + /mnt/user-data/outputs/blokvolt-dist.zip (+ .cf/part-N, section 5)
 ```
 
 Local checks (the container cannot reach blokvolt.rs or the map tiles) are in `scripts/qa/`:
@@ -658,11 +658,25 @@ to sign in, stop and tell the owner — never type credentials.
    ```
    (On 23.09.2026 the direct URL `https://dash.cloudflare.com/?to=/:account/pages/view/blokvolt/deployments/new`
    rendered the upload form, with "Production" preselected; if it does not, use the button.)
-3. Label the zip input, then find it and upload the zip:
+3. Upload the zip. The `file_upload` tool takes at most 10 MB per file and the zip is bigger (12.6 MB on
+   25.09.2026, with the news photos and the APK), so `pack.sh` also cuts it into parts of at most 9 MB in
+   `/mnt/user-data/outputs/.cf/` and prints "deploy parts: N" and the zip's size and SHA-256 prefix. Add one
+   helper input per part (set `n` to N):
    ```js
-   const i=document.querySelector('input[type=file][accept*="zip"]'); i?(i.setAttribute('aria-label','bvzip upload'),'ok'):'no zip input yet'
+   const n=2; for(let k=0;k<n;k++){let i=document.getElementById('bvp'+k); if(!i){i=document.createElement('input');i.type='file';i.id='bvp'+k;i.setAttribute('aria-label','bvpart '+k);document.body.appendChild(i);}} 'ok'
    ```
-   `find` "bvzip upload" → ref → `file_upload` with `/mnt/user-data/outputs/blokvolt-dist.zip`.
+   `find` "bvpart 0" → ref → `file_upload` with `/mnt/user-data/outputs/.cf/part-0`; the same for part-1 and
+   so on, one part per call. Then join the parts in the page and hand the zip to Cloudflare's zip input:
+   ```js
+   await (async()=>{const n=2; const parts=[...Array(n).keys()].map(k=>document.getElementById('bvp'+k)?.files?.[0]);
+   if(parts.some(p=>!p)) return 'a part is missing';
+   const f=new File(parts,'blokvolt-dist.zip',{type:'application/zip'});
+   const h=[...new Uint8Array(await crypto.subtle.digest('SHA-256',await f.arrayBuffer()))].map(x=>x.toString(16).padStart(2,'0')).join('').slice(0,16);
+   const z=document.querySelector('input[type=file][accept*="zip"]'); if(!z) return 'no zip input yet';
+   const dt=new DataTransfer(); dt.items.add(f); z.files=dt.files; z.dispatchEvent(new Event('change',{bubbles:true}));
+   return f.size+' '+h;})()
+   ```
+   The size and hash must equal the ones `pack.sh` printed; if not, reload the page and upload the parts again.
 4. Wait. The status goes "Preparing upload" → "Unzipped N files." → "N/N files uploaded" and takes
    1–3 minutes for ~100 files; the "Save and deploy" button stays disabled until the end. A background
    tab is throttled, so `innerText` can lag behind the screen — poll every 10–15 s (a single JS call
@@ -737,6 +751,12 @@ to Brave drops for a few seconds now and then. If it fails again, go to section 
 Build anyway, leave `/mnt/user-data/outputs/blokvolt-dist.zip` and the payload in outputs, and tell the
 owner in the report: "open Brave (with the Claude extension) and reply 'деплой' in this session".
 Do not try other deploy routes.
+
+A scheduled run sees the browser only when its scheduled task is linked to the owner's Mac: the task needs
+"Require this computer" switched on in Claude Desktop on that Mac (on 25.09.2026 no BlokVolt task had it, and
+a run without it found neither the Claude in Chrome tools nor the remote-devices tools). If the tools are
+missing, say this in the report too: to deploy from that session the owner opens it in Claude Desktop on the
+Mac and links it to the computer before replying 'деплой'.
 
 ## 8. Report to the owner
 
