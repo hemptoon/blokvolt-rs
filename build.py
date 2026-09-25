@@ -1375,7 +1375,7 @@ CSP = '; '.join([
     '  Content-Type: application/json',
     '  Access-Control-Allow-Origin: *',
     '  Cache-Control: public, max-age=3600',
-    '/offline.html',
+    '/offline',
     '  X-Robots-Tag: noindex',
 ] + ([f'/aplikacija/{APP["apk"]}', '  Content-Type: application/vnd.android.package-archive', '  Content-Disposition: attachment',
       '  Cache-Control: public, max-age=3600'] if APP.get('apk') else [])) + '\n', encoding='utf-8')

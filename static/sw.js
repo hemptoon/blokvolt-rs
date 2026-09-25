@@ -1,9 +1,10 @@
 /* BlokVolt service worker (docs/RUNBOOK.md 3.20). Pages and the site's assets always come from the network
    first; the last 40 pages and the assets they used are kept so they open without a connection, and
-   /offline.html answers any other page. /api/, /admin/ and other sites are never touched.
+   /offline answers any other page (the URL without .html: Cloudflare Pages redirects .html, and a
+   redirected response cannot answer a navigation). /api/, /admin/ and other sites are never touched.
    To switch it off for everyone, replace this file with one that calls self.registration.unregister(). */
-const CORE = 'bv-core-1', PAGES = 'bv-pages-1', ASSETS = 'bv-assets-1';
-const CORE_FILES = ['/offline.html', '/assets/bv.css', '/assets/bv.js', '/assets/favicon.svg', '/assets/app/icon-192.png'];
+const CORE = 'bv-core-2', PAGES = 'bv-pages-1', ASSETS = 'bv-assets-1';
+const CORE_FILES = ['/offline', '/assets/bv.css', '/assets/bv.js', '/assets/favicon.svg', '/assets/app/icon-192.png'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CORE).then((c) => c.addAll(CORE_FILES)).then(() => self.skipWaiting()));
@@ -47,7 +48,7 @@ self.addEventListener('fetch', (e) => {
   if (req.method !== 'GET' || url.origin !== self.location.origin) return;
   if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/admin')) return;
   if (req.mode === 'navigate') {
-    e.respondWith(networkFirst(req, url.origin + url.pathname, PAGES, 40, '/offline.html'));
+    e.respondWith(networkFirst(req, url.origin + url.pathname, PAGES, 40, '/offline'));
   } else if (url.pathname.startsWith('/assets/')) {
     e.respondWith(networkFirst(req, req, ASSETS, 150));
   }

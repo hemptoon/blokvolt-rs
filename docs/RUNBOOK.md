@@ -590,9 +590,10 @@ when a photo has no credit or a news item names an unknown photo.
 - **Web app.** `static/manifest.webmanifest` (name, colours, icons in `static/assets/app/` drawn by
   `scripts/app_icons.py` from the favicon, three shortcuts) and `static/sw.js`, registered by `bv.js` on https. The
   service worker is network-first: when online nothing is served from its cache. It keeps the last 40 pages and the
-  assets they used, so they open without a connection; any other page gets `/offline.html` (SR/EN/RU in one file,
-  not translated by `i18n.py`). It never touches `/api/`, `/admin/` or other sites. `_headers`: `sw.js` no-cache.
-  Change the cache names (`bv-core-1` …) only when `CORE_FILES` or the offline page change. Kill switch: replace
+  assets they used, so they open without a connection; any other page gets `/offline` (`static/offline.html`, SR/EN/RU
+  in one file, not translated by `i18n.py`; always the URL without `.html` — Pages redirects `.html`, and a redirected
+  response cannot answer a navigation). It never touches `/api/`, `/admin/` or other sites. `_headers`: `sw.js` no-cache.
+  Change the cache names (`bv-core-2` …) only when `CORE_FILES` or the offline page change. Kill switch: replace
   `sw.js` with one that calls `self.registration.unregister()`.
 - **Android app** — a Trusted Web Activity, package `rs.blokvolt.app`: it opens `https://www.blokvolt.rs/?src=android`
   full screen in Chrome (or another browser with TWA support; otherwise a Custom Tab). No permissions, no data of its
