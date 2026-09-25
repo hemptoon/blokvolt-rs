@@ -25,3 +25,8 @@
 {% macro promo(text, href, link) -%}
 <div class="promo"><span class="badge feat">Izdvojeno</span><p>{{ text }} <a class="lnk" href="{{ href }}" rel="noopener">{{ link }}</a></p></div>
 {%- endmacro %}
+
+{# News cards with a photo (home, "Najnovije vesti" under a news item). items: NEWS entries #}
+{% macro news_cards(items) -%}
+<div class="ncards">{% for x in items %}<a class="ncard" href="{{ x.url }}"><img src="/assets/img/{{ x.img }}-480.webp" srcset="/assets/img/{{ x.img }}-480.webp 480w, /assets/img/{{ x.img }}-800.webp 800w" sizes="(max-width: 640px) 112px, 370px" width="480" height="270" alt="" loading="lazy" decoding="async"><div class="nc-b"><p class="news-meta"><time datetime="{{ x.iso }}">{{ x.date }}</time>{% if x.tag_label %}<span aria-hidden="true">·</span><span>{{ x.tag_label }}</span>{% endif %}</p><h3>{{ x.title }}</h3></div></a>{% endfor %}</div>
+{%- endmacro %}

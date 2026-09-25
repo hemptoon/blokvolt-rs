@@ -91,6 +91,11 @@ Serbian, Latin script, ekavica, addressing the reader as „vi“, impersonal ab
   lists of three adjectives, rhetorical questions, exclamation marks, emoji, Croatian or ijekavian forms.
 - No images from media. No names of the team. No Evolako (neutrality, RUNBOOK §0).
 
+Photo: every item gets one automatically from its tag's pool of free-licence photos, with a caption that says
+what the photo shows and who took it. Set `image:` only to a photo listed in `content/data/foto.json` that fits
+the item better (a car brand, a city, a building from the item). New photos are added only in a run with the
+owner's browser (RUNBOOK 3.19); never a photo from the media, a press release or a dealer.
+
 Good (from 09.09.2026):
 
 > Vlada je izmenila uredbu o subvencionisanoj kupovini novih električnih vozila. Izmena je objavljena u Službenom
@@ -115,6 +120,7 @@ date: 09.09.2026            # the day of the news, shown on the site
 published: 2026-09-25       # the day the item goes online (JSON-LD, RSS) — today
 modified: 2026-09-26        # only after a correction
 tag: subvencije             # subvencije | punjaci | cene | modeli | propisi | struja | statistika | region
+image: vest-punjenje-utikac # optional: a photo from content/data/foto.json; otherwise the tag's pool
 sources: Label, DD.MM.YYYY — what :: https://… | Label :: https://…
 related: /podaci/subvencije-2026/ | /podaci/cene-elektricnih-automobila/
 ---

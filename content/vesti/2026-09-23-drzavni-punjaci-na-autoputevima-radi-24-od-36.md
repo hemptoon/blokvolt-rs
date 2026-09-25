@@ -5,6 +5,7 @@ description: Od 36 državnih punjača na autoputevima 24 rade, 7 ne radi, a 5 č
 date: 23.09.2026
 published: 2026-09-25
 tag: punjaci
+image: vest-naplatna-stanica-beograd
 sources: JP „Putevi Srbije“ — električni punjači na autoputevima :: https://www.putevi-srbije.rs/index.php/en/electric-chargers | Državni punjači na BlokVoltu (stanje po lokaciji, 23.09.2026) :: https://www.blokvolt.rs/javno-punjenje/putevi-srbije/
 related: /javno-punjenje/putevi-srbije/ | /mapa/
 ---

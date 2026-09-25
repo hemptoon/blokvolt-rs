@@ -138,15 +138,39 @@ for _n, _ws in IMGS.items():
         IMG_SIZE[_n] = _im.size
 VIDEOS = json.load(open(ROOT / 'content' / 'data' / 'video.json', encoding='utf-8'))
 AI_NOTE = 'Ilustracija (AI)'
+# free-licence photos (news): author, licence, caption, alt; tag pools for news without their own photo (RUNBOOK 3.19)
+FOTO = json.load(open(ROOT / 'content' / 'data' / 'foto.json', encoding='utf-8'))
+for _n, _f in FOTO['photos'].items():
+    assert _n in IMGS and (ROOT / 'static' / 'assets' / 'og' / 'foto' / f'{_n}.jpg').exists(), f'photo {_n}: run scripts/news_photo.py'
+    assert _f['src'] in ('Unsplash', 'Wikimedia Commons') and _f.get('au') and _f.get('page') and _f.get('cap') and _f.get('alt'), f'photo {_n}: incomplete credit'
+for _t, _ns in FOTO['pools'].items():
+    assert _ns and all(x in FOTO['photos'] for x in _ns), f'photo pool {_t}: unknown photo'
+
+
+def photo_caption(name):
+    """'What the photo shows. Foto: Author / Unsplash' or '…, CC BY-SA 4.0, Wikimedia Commons, isečeno' (with links)."""
+    f = FOTO['photos'][name]
+    au = f'<a href="{escape(f["page"])}" rel="nofollow noopener" translate="no">{escape(f["au"])}</a>'
+    if f['src'] == 'Unsplash':
+        credit = f'{au} / <span translate="no">Unsplash</span>'
+    else:
+        lic = f'<a href="{escape(f["licurl"])}" rel="nofollow noopener" translate="no">{escape(f["lic"])}</a>'
+        credit = f'{au}, {lic}, <span translate="no">Wikimedia Commons</span>' + (', isečeno' if f['lic'].startswith('CC BY') else '')
+    return Markup(f'{escape(f["cap"].rstrip("."))}. Foto: {credit}')
 
 
 def fig_html(name, alt, caption=None, sizes='(max-width: 820px) 100vw, 760px', cls='', eager=False):
-    """A responsive <figure> for an illustration; caption defaults to the AI note."""
+    """A responsive <figure>; the caption defaults to the photo credit (foto.json) or to the AI note (illustrations)."""
     ws = IMGS[name]
     w, h = IMG_SIZE[name]
     srcset = ', '.join(f'/assets/img/{name}-{x}.webp {x}w' for x in ws)
     mid = next((x for x in ws if x >= 800), ws[-1])
-    cap = AI_NOTE if caption is None else caption
+    if caption is None:
+        cap = photo_caption(name) if name in FOTO['photos'] else AI_NOTE
+    else:
+        cap = caption
+    if not alt and name in FOTO['photos']:
+        alt = FOTO['photos'][name]['alt']
     img = (f'<img src="/assets/img/{name}-{mid}.webp" srcset="{srcset}" sizes="{sizes}" width="{w}" height="{h}" alt="{escape(alt)}" '
            + ('fetchpriority="high" ' if eager else 'loading="lazy" ') + 'decoding="async">')
     return Markup(f'<figure class="fig {cls}">{img}' + (f'<figcaption>{escape(cap)}</figcaption>' if cap else '') + '</figure>')
@@ -163,6 +187,15 @@ def yt_html(vid, cls=''):
                   f'<figcaption>Video: {ch}, YouTube. Učitava se tek kad pritisnete.</figcaption></figure>')
 
 
+def photo_credits_html():
+    """[[fotografije]]: every news photo with its caption and credit (the same HTML as under the photo, so the
+    EN/RU translation of a caption exists before a news item uses that photo)."""
+    items = ''.join(f'<li><img src="/assets/img/{n}-480.webp" width="96" height="54" alt="{escape(f["alt"])}" loading="lazy" decoding="async">'
+                    f'<span>{photo_caption(n)}</span></li>' for n, f in FOTO['photos'].items())
+    return ('<details class="src foto-src"><summary>Fotografije uz vesti: autori i licence</summary>'
+            f'<ul class="foto-list">{items}</ul></details>')
+
+
 env.globals['fig'] = fig_html
 env.globals['yt'] = yt_html
 
@@ -172,6 +205,7 @@ def md_to_html(text):
     # [[yt:ID]] and [[fig:name|alt]] on their own line
     h = re.sub(r'<p>\[\[yt:([\w-]+)\]\]</p>', lambda m: str(yt_html(m.group(1))), h)
     h = re.sub(r'<p>\[\[fig:([\w-]+)\|([^\]]+)\]\]</p>', lambda m: str(fig_html(m.group(1), html.unescape(m.group(2)))), h)
+    h = h.replace('<p>[[fotografije]]</p>', photo_credits_html())
     s = BeautifulSoup(h, 'html.parser')
     for t in s.find_all('table'):
         heads = [th.get_text(' ', strip=True) for th in t.find_all('th')]
@@ -805,8 +839,24 @@ for _mdf in sorted(glob.glob(str(ROOT / 'content' / 'vesti' / '*.md'))):
                  'published': _pub, 'published_sr': _sr_date(_pub), 'modified': _meta.get('modified') or _pub,
                  'tag': _meta.get('tag', ''), 'tag_label': NEWS_TAGS.get(_meta.get('tag', ''), ''),
                  'sources': sources_of(_meta), 'related': [page_link(x.strip()) for x in (_meta.get('related') or '').split(' | ') if x.strip()],
-                 'body': md_to_html(_body)})
+                 'body': md_to_html(_body), 'meta': _meta})
 assert len({n['slug'] for n in NEWS}) == len(NEWS), 'two news items share a slug'
+# photo: front matter `image:` (a name from content/data/foto.json), else one from the tag's pool. Pool photos are
+# handed out oldest item first, skipping the photos of the three items before, so older items keep theirs.
+NEWS.sort(key=lambda n: (n['iso'], n['published'], n['slug']))
+_recent = []
+for _n in NEWS:
+    _own = (_n['meta'].get('image') or '').strip()
+    if _own:
+        assert _own in FOTO['photos'], f"news {_n['slug']}: image {_own} is not in content/data/foto.json"
+        _n['img'] = _own
+    else:
+        _pool = FOTO['pools'].get(_n['tag']) or FOTO['pools']['default']
+        _k = int(hashlib.md5(_n['slug'].encode()).hexdigest(), 16) % len(_pool)
+        _n['img'] = next((_pool[(_k + j) % len(_pool)] for j in range(len(_pool)) if _pool[(_k + j) % len(_pool)] not in _recent[-3:]), _pool[_k])
+    _n['img_alt'] = (_n['meta'].get('image_alt') or '').strip() or FOTO['photos'][_n['img']]['alt']
+    _n['img_cap'] = photo_caption(_n['img'])
+    _recent.append(_n['img'])
 NEWS.sort(key=lambda n: (n['iso'], n['published'], n['slug']), reverse=True)
 for _i, _n in enumerate(NEWS):
     others = [x for x in NEWS if x is not _n]
@@ -841,7 +891,8 @@ _rss = ['<?xml version="1.0" encoding="UTF-8"?>', '<rss version="2.0" xmlns:atom
 for _n in NEWS[:30]:
     _rss += ['<item>', f"<title>{_x(_n['title'])}</title>", f"<link>{SITE}{_n['url']}</link>", f"<guid isPermaLink=\"true\">{SITE}{_n['url']}</guid>",
              f"<pubDate>{rss_date(_n['published'] if _n['published'] > _n['iso'] else _n['iso'])}</pubDate>",
-             f"<description>{_x(_n['lead'])}</description>"] + ([f"<category>{_x(_n['tag_label'])}</category>"] if _n['tag_label'] else []) + ['</item>']
+             f"<description>{_x(_n['lead'])}</description>"] + ([f"<category>{_x(_n['tag_label'])}</category>"] if _n['tag_label'] else []) \
+        + [f"<enclosure url=\"{SITE}/assets/og/foto/{_n['img']}.jpg\" length=\"{(ROOT / 'static' / 'assets' / 'og' / 'foto' / (_n['img'] + '.jpg')).stat().st_size}\" type=\"image/jpeg\"/>", '</item>']
 _rss += ['</channel>', '</rss>']
 (DIST / 'vesti').mkdir(parents=True, exist_ok=True)
 (DIST / 'vesti' / 'rss.xml').write_text('\n'.join(_rss) + '\n', encoding='utf-8')

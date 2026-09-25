@@ -5,6 +5,7 @@ description: Charge&GO naplaćuje po minutu, pa cena po kWh zavisi od automobila
 date: 22.09.2026
 published: 2026-09-25
 tag: cene
+image: vest-ccs2-tip2-utikaci
 sources: Cene javnog punjenja na BlokVoltu (aplikacije mreža i računi, 22.09.2026) :: https://www.blokvolt.rs/javno-punjenje/ | Cene struje za domaćinstva na BlokVoltu (tarife EPS-a) :: https://www.blokvolt.rs/podaci/tarife-eps/
 related: /javno-punjenje/ | /alati/kalkulator-troskova/
 ---

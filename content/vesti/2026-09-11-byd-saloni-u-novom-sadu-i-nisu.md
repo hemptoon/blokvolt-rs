@@ -5,6 +5,7 @@ description: BYD je otvorio salon sa servisom u Novom Sadu (Temerinska 106) i sa
 date: 11.09.2026
 published: 2026-09-25
 tag: modeli
+image: vest-byd-atto-3
 sources: BYD Srbija, 11.09.2026 — salon u Novom Sadu :: https://byd-auto.rs/vesti/otvoren-prvi-prodajno-servisni-byd-salon-u-novom-sadu/ | BYD Srbija, 11.09.2026 — salon u Nišu :: https://byd-auto.rs/vesti/byducnost-je-stigla-na-jug-otvoren-prvi-byd-salon-u-nisu/
 related: /podaci/cene-elektricnih-automobila/ | /podaci/servisi-za-elektricne-automobile/
 ---

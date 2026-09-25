@@ -8,7 +8,7 @@ and — for news items (content/vesti/*.md) — the front matter and the shape o
 Usage:  python3 scripts/lint_sr.py content/vesti/2026-09-25-slug.md [more files]      (exit code 1 = errors)
         python3 scripts/lint_sr.py --all-news
 Errors must be fixed before publishing; warnings are read and judged."""
-import re, sys, html, glob, statistics
+import json, re, sys, html, glob, statistics
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -145,6 +145,10 @@ def lint_news(path):
         warns.append('the file name date differs from "date" (the day of the news)')
     if meta.get('tag') and meta['tag'] not in NEWS_TAGS:
         errors.append(f'tag must be one of {sorted(NEWS_TAGS)}')
+    if meta.get('image'):
+        photos = json.loads((ROOT / 'content' / 'data' / 'foto.json').read_text(encoding='utf-8'))['photos']
+        if meta['image'] not in photos:
+            errors.append(f"image {meta['image']} is not in content/data/foto.json (leave it out and the build picks a photo by tag)")
     if len(meta.get('title', '')) > 90:
         warns.append(f"title is long ({len(meta['title'])} chars; aim for ≤ 75)")
     if len(meta.get('lead', '').split()) > 30:

@@ -15,9 +15,12 @@
 {% block content %}
 {% if items %}<div class="news-list">{% for x in items %}
 <article class="news-item">
+<a class="ni-img" href="{{ x.url }}" tabindex="-1" aria-hidden="true"><img src="/assets/img/{{ x.img }}-480.webp" srcset="/assets/img/{{ x.img }}-480.webp 480w, /assets/img/{{ x.img }}-800.webp 800w" sizes="(max-width: 640px) 100vw, 250px" width="480" height="270" alt="" {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async"></a>
+<div class="ni-b">
 <p class="news-meta"><time datetime="{{ x.iso }}">{{ x.date }}</time>{% if x.tag_label %}<span aria-hidden="true">·</span><span>{{ x.tag_label }}</span>{% endif %}</p>
 <h2><a href="{{ x.url }}">{{ x.title }}</a></h2>
 <p>{{ x.lead }}</p>
+</div>
 </article>{% endfor %}
 </div>{% else %}<p class="empty">Još nema vesti.</p>{% endif %}
 {% if pages > 1 %}<nav class="pager" aria-label="Strane">{% if prev_url %}<a class="btn sm" href="{{ prev_url }}" rel="prev">← Novije</a>{% endif %}<span>Strana {{ page_no }} od {{ pages }}</span>{% if next_url %}<a class="btn sm" href="{{ next_url }}" rel="next">Starije →</a>{% endif %}</nav>{% endif %}

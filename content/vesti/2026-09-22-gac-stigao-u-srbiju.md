@@ -5,6 +5,7 @@ description: Kineski GAC ušao je na tržište Srbije. AION V ima bateriju od 75
 date: 22.09.2026
 published: 2026-09-25
 tag: modeli
+image: vest-gac-aion-v
 sources: B92, 22.09.2026 — GAC stigao u Srbiju sa četiri modela :: https://www.b92.net/automobili/aktuelno/269763/gac-stigao-u-srbiju-sa-cetiri-modela-aion-v-aion-ut-emkoo-i-emzoom/vest
 related: /podaci/cene-elektricnih-automobila/ | /podaci/subvencije-2026/
 ---

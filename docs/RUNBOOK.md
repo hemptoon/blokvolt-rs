@@ -67,6 +67,7 @@ credentials) — commits go through the owner's browser (section 6).
 | Firms | `content/firme/<slug>.json` | `verified`, cells/verdicts, `sources`, `brands`. Leads: `"group": "L", "publish": false` (not shown). A checked lead that does not sell home chargers keeps `publish: false` and gets `excluded_reason` (one Serbian sentence) — it is then listed with the reason at the bottom of `/firme/`. |
 | Register sub-hubs by type | `content/data/firme-tipovi.json` + `TYPE_RULES` in `build.py` | Texts of `/firme/ugradnja-punjaca/`, `/firme/prodaja-punjaca/`, `/firme/distributeri-punjaca/`, `/firme/solarni-integratori/`, `/firme/elektricari/` (Jinja strings: `n`, `n_firms`, `checked`, `n_price`, `n_d`, `wb_rows`, `wb_models`, `n_brands`, filter `plural`). Who is on which page is decided in `build.py` from the firm's verdicts, group and `kind` — never by hand. |
 | News (/vesti/) | `content/vesti/YYYY-MM-DD-<slug>.md` | One file per item; rules and sources in `docs/NEWS_STYLE.md`, procedure 3.15. RSS `/vesti/rss.xml` and the three newest on the home page are built from the same files. |
+| News photos | `content/data/foto.json`, `static/assets/img/vest-*`, `static/assets/og/foto/` | Free-licence photos with author, licence, caption, alt; tag pools for items without their own photo. Procedure 3.19. |
 | Usage analytics | `content/data/site.json` → `analytics` | Cloudflare Web Analytics is switched on in the Pages project (no code); PostHog only when `posthog_key` is set. See 3.16. |
 | Security headers (CSP) | `build.py`, end of file | Written to `dist/_headers` on every build; inline-script hashes are computed automatically. See 3.17. |
 | English and Russian pages | `content/i18n/en.json`, `content/i18n/ru.json`, `content/i18n/STYLE.md` | Translation memory {Serbian segment: translation}. `/en/` and `/ru/` are generated from the Serbian pages at build time by `scripts/i18n.py` — never edit `dist/en` or `dist/ru`. See 3.9. |
@@ -445,7 +446,7 @@ Illustrations: `static/assets/img/<name>-<width>.webp` (480/800/1200/full); the 
 ones were generated in Higgsfield (gpt_image_2_5, high, 2k; about 2.75 credits each) and brought into the
 container as full-size `zoom` screenshots of the image opened in the owner's Chrome (the container cannot
 reach the CDN). A few images need no confirmation; a batch of many does (ask the owner first), and every
-generation is reported with the credit count.
+generation is reported with the credit count. News items use real photos, not illustrations (3.19).
 
 Video: `content/data/video.json` (id, title, channel, poster = an illustration name; check titles with
 YouTube oEmbed through WebFetch). `yt(id)` / `[[yt:ID]]` renders a poster; `bv.js` creates the
@@ -468,7 +469,8 @@ file format). The run:
 
 1. Setup (§1), then `ls content/vesti/` — the newest file date is where to start looking.
 2. Scan the sources of NEWS_STYLE §2 for news since then; choose at most three items; open the primary source of each.
-3. Write the files; `python3 scripts/lint_sr.py content/vesti/<new>.md` must show 0 errors.
+3. Write the files; `python3 scripts/lint_sr.py content/vesti/<new>.md` must show 0 errors. Photo: leave `image:`
+   out (the tag pool gives one) unless a photo in `content/data/foto.json` fits the item better (3.19).
 4. If a news item changes a fact stated elsewhere on the site, update that page too (the procedures above) and add
    a line to `izmene.md`.
 5. `python3 scripts/i18n.py todo` → translate (3.9) → `bash scripts/pack.sh` with 0 segments left in Serbian.
@@ -533,6 +535,37 @@ combines with any of them (`?ok=1`; the old `?f=ok` still works). Card actions: 
 Apple devices and Google Maps elsewhere, with the other apps (Google Maps, Waze) linked under it; „Podeli“ uses the
 system share sheet or copies the `/mapa/#<id>` link. A price whose date is more than a year old gets the warning
 `p_old` (the Evolako app shows the same marker).
+
+### 3.19 News photos (only in a run with the owner's browser)
+
+Every news item shows a real photo: on `/vesti/` (thumbnail), under the lead of the item (with caption and credit),
+on the home page, in „Najnovije vesti“, as `og:image` (1200×630 JPEG) and as the RSS enclosure. No AI images for
+news. Files: `static/assets/img/<name>-{480,800,1200}.webp` and `static/assets/og/foto/<name>.jpg`; credits in
+`content/data/foto.json` (`src`, `au`, `page`, `lic`, `licurl`, `cap`, `alt`, `file` for Commons). The build stops
+when a photo has no credit or a news item names an unknown photo.
+
+- **Which photo.** Front matter `image: <name>` picks one; without it the build takes a photo from the tag's pool
+  (`pools` in `foto.json`), oldest item first, never the photo of one of the three items before, so older items
+  keep theirs when new ones arrive. The scheduled news task only uses photos already in `foto.json` (it has no
+  browser): `image:` only when a listed photo fits the item better than the pool (a BYD item → `vest-byd-atto-3`).
+- **Sources.** Unsplash — free photos only, never Unsplash+ (the search API marks them `premium`/`plus`; brand
+  accounts such as charger makers are skipped for neutrality); Wikimedia Commons — CC0, CC BY, CC BY-SA. Never
+  media, press or dealer photos, never a search-engine find. Author and licence exactly as on the photo page.
+- **Honest captions.** `cap` says what the photo shows and where, only as far as the photo page or the picture
+  proves it („Brzi punjači u Innerbrazu, Vorarlberg, Austrija“, „Gradska kuća u Novom Sadu“). It never claims to be
+  the place, charger or car from the news. Unknown place → no place. CC BY / BY-SA get „isečeno“ (the crop is a
+  change the licence asks to mark). No readable number plates or recognisable faces in the frame.
+- **How (25.09.2026).** The container cannot reach Unsplash or Commons. In the owner's Chrome: on unsplash.com,
+  `fetch('/napi/search/photos?query=…&per_page=20')` (drop `premium`, `plus`, `sponsorship`); on
+  commons.wikimedia.org, the API (`generator=search&gsrnamespace=6&prop=imageinfo&iiprop=url|size|extmetadata`).
+  Show candidates as a grid of thumbnails over the page and pick from a screenshot. Then show the chosen one at
+  exactly 1200×675 CSS px (`object-fit:cover`, `object-position` to choose the crop; Unsplash `?w=2400&q=90`,
+  Commons the original file), and `zoom` the region `[0,0,1105,621]` with `save_to_disk` (the screenshot frame is
+  0.92 of CSS px) — about 1455×818 px. Look at every capture before using it.
+- **Files.** `python3 scripts/news_photo.py <capture.png> <name>` writes the three WebP sizes and the OG JPEG.
+  Add the entry to `foto.json` (and to a pool if it suits a tag), then the build: the caption+credit and the alt
+  text become translation segments (3.9); `/metodologija/#vesti` lists every photo with its credit
+  (`[[fotografije]]`), so a pool photo's caption is already translated before an item uses it.
 
 ## 4. Build and check
 

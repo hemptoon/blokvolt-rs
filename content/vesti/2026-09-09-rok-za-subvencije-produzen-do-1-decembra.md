@@ -5,6 +5,7 @@ description: Izmena uredbe u Službenom glasniku 86/2026: rok za subvencije za n
 date: 09.09.2026
 published: 2026-09-25
 tag: subvencije
+image: vest-punjenje-utikac
 sources: Službeni glasnik RS 86/2026 — Uredba o izmeni Uredbe o subvencionisanoj kupovini novih električnih vozila (Paragraf) :: https://www.paragraf.rs/glasila/rs/sluzbeni-glasnik-republike-srbije-86-2026.html | Biznis.rs, 10.09.2026 — rok produžen do 1. decembra :: https://biznis.rs/vesti/srbija/produzen-rok-za-subvencije-za-elektricna-vozila-prijave-do-1-decembra/ | Tanjug, 07.08.2026 — više od 1.000 zahteva :: https://www.tanjug.rs/ekonomija/srbija/271957/pavkov-veliko-interesovanje-za-elektricna-vozila-u-srbiji-1000-prijava-za-subvencije/vest
 related: /podaci/subvencije-2026/ | /podaci/cene-elektricnih-automobila/
 ---

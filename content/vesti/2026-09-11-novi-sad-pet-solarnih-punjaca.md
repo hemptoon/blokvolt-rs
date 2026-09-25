@@ -5,6 +5,7 @@ description: Gradonačelnik Novog Sada najavio je na sajmu EV Days pet solarnih 
 date: 11.09.2026
 published: 2026-09-25
 tag: punjaci
+image: vest-novi-sad-gradska-kuca
 sources: Grad Novi Sad, 11.09.2026 — gradonačelnik na sajmu EV Days :: https://novisad.rs/gradonachelnik-mitshin-na-ev-days-novi-sad-je-grad-koji-ne-cheka-budutshnost-vetsh-je-dochekuje-spre
 related: /gradovi/novi-sad/ | /mapa/
 ---

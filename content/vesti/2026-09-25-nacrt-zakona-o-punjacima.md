@@ -5,6 +5,7 @@ description: Šta predviđa nacrt zakona o infrastrukturi za alternativna goriva
 date: 25.09.2026
 published: 2026-09-25
 tag: propisi
+image: vest-brza-punionica-austrija
 sources: OIE.rs, 10.06.2026 — pregled nacrta zakona :: https://oie.rs/nacrt-zakona-o-uvodjenju-infrastrukture-za-alternativna-goriva-solarni-punjaci-pametno-punjenje-vodonik/ | Kurir Biznis, 10.06.2026 — Srbija dobija mrežu punjača :: https://biznis.kurir.rs/info-biz/10019006/srbija-dobija-mrezu-punjaca-za-elektricna-vozila-vodonik-i-gas | Energetski portal, 18.08.2026 — predlog NALED-a :: https://energetskiportal.rs/naled-izmena-jednog-pravilnika-ubrzala-bi-razvoj-mreze-punjaca-za-elektricne-automobile/
 related: /javno-punjenje/ | /mapa/
 ---

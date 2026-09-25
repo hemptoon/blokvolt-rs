@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import sources as src_block %}
+{% from '_macros.html' import sources as src_block, news_cards %}
 {% from '_icons.html' import ic %}
 {% block ogtype %}article{% endblock %}
+{% block ogimage %}<meta property="og:image" content="{{ SITE }}/assets/og/foto/{{ n.img }}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ n.img_alt }}">{% endblock %}
 {% block head %}<link rel="alternate" type="application/rss+xml" title="BlokVolt — vesti" href="/vesti/rss.xml">{% endblock %}
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
-  {"@type": "NewsArticle", "headline": {{ n.title|tojson }}, "description": {{ description|tojson }}, "inLanguage": "sr-Latn", "url": "{{ SITE }}{{ canon }}", "datePublished": "{{ n.published }}", "dateModified": "{{ n.modified }}", "author": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/o-sajtu/"}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/", "logo": {"@type": "ImageObject", "url": "{{ SITE }}/assets/apple-touch-icon.png"}}, "isAccessibleForFree": true{% if n.tag_label %}, "articleSection": {{ n.tag_label|tojson }}{% endif %}{% if n.sources %}, "isBasedOn": [{% for s in n.sources %}{{ s.url|tojson }}{{ ',' if not loop.last }}{% endfor %}]{% endif %}},
+  {"@type": "NewsArticle", "headline": {{ n.title|tojson }}, "description": {{ description|tojson }}, "inLanguage": "sr-Latn", "url": "{{ SITE }}{{ canon }}", "datePublished": "{{ n.published }}", "dateModified": "{{ n.modified }}", "author": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/o-sajtu/"}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/", "logo": {"@type": "ImageObject", "url": "{{ SITE }}/assets/apple-touch-icon.png"}}, "image": ["{{ SITE }}/assets/img/{{ n.img }}-1200.webp", "{{ SITE }}/assets/og/foto/{{ n.img }}.jpg"], "isAccessibleForFree": true{% if n.tag_label %}, "articleSection": {{ n.tag_label|tojson }}{% endif %}{% if n.sources %}, "isBasedOn": [{% for s in n.sources %}{{ s.url|tojson }}{{ ',' if not loop.last }}{% endfor %}]{% endif %}},
   {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Vesti", "item": "{{ SITE }}/vesti/"}, {"@type": "ListItem", "position": 3, "name": {{ n.title|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
  ]
 }</script>{% endblock %}
@@ -17,11 +21,12 @@
 {% if n.lead %}<p class="lead">{{ n.lead }}</p>{% endif %}
 </div></div>{% endblock %}
 {% block content %}<div class="prose news-body">
+{{ fig(n.img, n.img_alt, cls='art-fig news-fig', eager=True) }}
 {{ body|safe }}
 {{ src_block(sources) }}
 <p class="upd">Objavljeno {{ n.published_sr }} · <a href="/ispravka/">Prijavite grešku</a> · <a href="/metodologija/#vesti">Kako nastaju vesti</a></p>
 </div>
 {% if related %}<div class="sec"><div class="sec-head"><h2>Više o temi</h2></div><div class="tiles">{% for r in related %}<a class="tile" href="{{ r.href }}"><h3>{{ r.name }}</h3><p>{{ r.desc }}</p></a>{% endfor %}</div></div>{% endif %}
 {% if latest %}<div class="sec"><div class="sec-head"><h2>Najnovije vesti</h2><a href="/vesti/">Sve vesti →</a></div>
-<div class="rows news-rows">{% for x in latest %}<a class="row" href="{{ x.url }}"><time datetime="{{ x.iso }}">{{ x.date }}</time><div><h3>{{ x.title }}</h3></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div></div>{% endif %}
+{{ news_cards(latest) }}</div>{% endif %}
 {% endblock %}

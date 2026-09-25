@@ -12,9 +12,9 @@
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
 <meta property="og:url" content="{{ SITE }}{{ canon }}">
-<meta property="og:image" content="{{ SITE }}/assets/og/og-sr.png">
+{% block ogimage %}<meta property="og:image" content="{{ SITE }}/assets/og/og-sr.png">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:height" content="630">{% endblock %}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="google-site-verification" content="sFX9stJkfLtrkO_-R4xLC4vWI3gvlH6XlpkkoragjEw">

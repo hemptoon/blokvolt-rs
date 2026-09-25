@@ -5,6 +5,7 @@ description: ACEA: u EU je za osam meseci 2026. registrovano 1.641.333 novih ele
 date: 24.09.2026
 published: 2026-09-25
 tag: region
+image: vest-amsterdam-punjenje
 sources: ACEA, 24.09.2026 — registracije novih automobila u EU, januar–avgust 2026 :: https://www.acea.auto/pc-registrations/new-car-registrations-5-3-in-august-2026-year-to-date-battery-electric-21-7-market-share/ | Statistika električnih automobila u Srbiji na BlokVoltu :: https://www.blokvolt.rs/podaci/statistika-ev-srbija/
 related: /podaci/statistika-ev-srbija/ | /podaci/cene-elektricnih-automobila/
 ---

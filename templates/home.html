@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% from '_icons.html' import ic %}
+{% from '_macros.html' import news_cards %}
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
@@ -36,7 +37,7 @@
 
 {% if NEWS_HOME %}<div class="sec home-sec">
 <div class="sec-head"><h2>Vesti</h2><a href="/vesti/">Sve vesti →</a></div>
-<div class="rows news-rows">{% for x in NEWS_HOME %}<a class="row" href="{{ x.url }}"><time datetime="{{ x.iso }}">{{ x.date }}</time><div><h3>{{ x.title }}</h3></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
+{{ news_cards(NEWS_HOME) }}
 </div>{% endif %}
 
 <div class="sec home-sec">
