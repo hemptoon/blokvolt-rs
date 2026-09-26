@@ -1,0 +1,55 @@
+# Automatic checks of www.blokvolt.rs (docs/RUNBOOK.md 3.21). Part of the shared quality system of
+# BlokVolt and Evolako: the morning QA review reads the status badges of this workflow.
+#   build — every push to main (except the Android project) and by hand: the site builds, nothing is left
+#           untranslated, internal links resolve, the news pass the linter.
+#   live  — every night at 02:17 UTC and by hand: the live sites answer as a visitor, a phone and a mail
+#           server expect (scripts/qa/live_smoke.py).
+# A failed run is e-mailed to the owner by GitHub. Nothing here deploys or changes anything.
+name: Site checks
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['android/**', '.github/workflows/android.yml']
+  schedule:
+    - cron: '17 2 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: site-checks-${{ github.event_name }}
+  cancel-in-progress: true
+jobs:
+  build:
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install
+        run: |
+          pip install -q jinja2 markdown beautifulsoup4 pillow
+          bash scripts/fetch_fonts.sh > /dev/null
+      - name: Build
+        run: python3 build.py
+      - name: Nothing left untranslated
+        run: |
+          python3 scripts/i18n.py todo | tee todo.log
+          python3 -c "import re,sys; n={l.split()[0]: int(l.split()[1]) for l in open('todo.log') if re.match(r'^(en|ru) \d+ to translate', l)}; print(n); sys.exit(0 if n and not any(n.values()) else 1)"
+      - name: Internal links
+        run: python3 scripts/check_links.py
+      - name: News linter
+        run: python3 scripts/lint_sr.py --all-news
+  live:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Live sites
+        run: python3 scripts/qa/live_smoke.py

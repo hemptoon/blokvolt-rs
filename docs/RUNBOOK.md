@@ -636,6 +636,32 @@ hashes. The footer shows an „Android APK“ badge whenever `app.json` has an `
   worldwide in 2027: before then the owner registers as a developer, or the APK on the site stops installing on
   certified phones.
 
+### 3.21 Automatic checks (GitHub Actions) and the shared quality system
+
+Since 26.09.2026 `.github/workflows/site-checks.yml` checks the site without anyone in a chat:
+
+- **build** — on every push to `main` (except `android/**`) and by hand: `build.py`, `i18n.py todo` must print
+  `en 0` and `ru 0`, `check_links.py`, `lint_sr.py --all-news`. A red build means the last commit broke something
+  that the next deploy would publish: fix it before deploying.
+- **live** — every night at 02:17 UTC and by hand: `scripts/qa/live_smoke.py` against www.blokvolt.rs and
+  blokvolt.com — key SR/EN/RU pages and their markers, a rotating slice of the sitemap (every page about once in
+  two weeks), `/api/zdravlje` and `/api/stanice`, the APK against `app.json` (size, SHA-256), `assetlinks.json`,
+  security headers, TLS certificates, the apex redirect, the data date in the footer and the latest news date,
+  and DNS through dns.google: name servers of all four domains, SPF/DMARC/MX, the DS of blokvolt.rs. Levels:
+  FAIL fails the run (a visitor or a mail server would notice), WARN is shown only (known and pending: no DS yet,
+  DMARC `p=none` on the .com domains, no anti-spoofing records on evolako.rs, news older than 21 days, footer
+  date older than 40 days). When a pending item is done (DS added, DMARC raised), make its WARN a FAIL.
+- Run it by hand in the owner's browser: Actions → Site checks → Run workflow. Locally:
+  `python3 scripts/qa/live_smoke.py --base http://127.0.0.1:8787 --local` (pages, APK, headers of `dist/`).
+- **Status badges** (plain SVG, readable with WebFetch): `…/actions/workflows/site-checks.yml/badge.svg?event=schedule`
+  (live) and `…?event=push` (build) under `https://github.com/hemptoon/blokvolt-rs`. GitHub e-mails a failed
+  run to the owner.
+- **Shared quality system.** These checks are the BlokVolt part of the system of both projects described in the
+  project doc `claude/Evolako_BlokVolt_Sistema_Kachestva_2026-09-26.md`: nightly run on the owner's Mac (04:30),
+  the morning QA review task (08:10) that writes findings to `claude/QA_Log.md`, and the morning Telegram report
+  (Worker `evolako-report`). The morning review reads the two badges and, on red, the run summary. Do not build a
+  second report or alerting channel for BlokVolt.
+
 ## 4. Build and check
 
 ```bash
