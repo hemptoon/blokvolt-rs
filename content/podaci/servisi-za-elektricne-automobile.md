@@ -1,4 +1,5 @@
 ---
+thumb: servis-automobila
 title: Servis električnih automobila u Srbiji — ovlašćeni i nezavisni
 h1: Servisi za električne automobile
 description: BYD ima četiri ovlašćena servisa u Beogradu, Novom Sadu i Nišu, a Tesla nijedan. Nezavisni servisi u Beogradu dijagnostikuju baterije i visoki napon.

@@ -4,13 +4,19 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 25.09.2026
+updated: 26.09.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-09-25
+modified: 2026-09-26
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 26. septembar 2026
+
+- Nova početna strana: fotografija punjenja preko cele širine i predlozi za pretragu. Stranica [Aplikacija](/aplikacija/) je preuređena, sa snimcima ekrana i QR kodom za preuzimanje na telefonu; u podnožju sajta je dugme „Android APK“.
+- Svaki vodič u spisku [Vodiči](/vodici/) ima fotografiju; autori i licence su na stranici [Kako radimo](/metodologija/#vesti).
+- Vesti se objavljuju tri puta nedeljno, kad ima novosti.
+
 ## 25. septembar 2026
 
 - Nova rubrika [Vesti](/vesti/): subvencije, punjači, cene, modeli i propisi, uz izvor i datum za svaku vest; [RSS](/vesti/rss.xml). Kako nastaju vesti piše na stranici [Kako radimo](/metodologija/#vesti).

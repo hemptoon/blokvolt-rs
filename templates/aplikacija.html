@@ -1,46 +1,85 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import pagehead %}
 {% from '_icons.html' import ic %}
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
-  {"@type": "MobileApplication", "name": "BlokVolt", "operatingSystem": "Android {{ APP.min_android }}+", "applicationCategory": "TravelApplication", "inLanguage": "sr-Latn", "softwareVersion": "{{ APP.version }}", "datePublished": "{{ app_iso }}", "downloadUrl": "{{ SITE }}/aplikacija/{{ APP.apk }}", "fileSize": "{{ app_mb }} MB", "url": "{{ SITE }}{{ canon }}", "image": "{{ SITE }}/assets/app/icon-512.png", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RSD"}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "MobileApplication", "name": "BlokVolt", "operatingSystem": "Android {{ APP.min_android }}+", "applicationCategory": "TravelApplication", "inLanguage": "sr-Latn", "softwareVersion": "{{ APP.version }}", "datePublished": "{{ app_iso }}", "downloadUrl": "{{ SITE }}/aplikacija/{{ APP.apk }}", "fileSize": "{{ app_mb }} MB", "url": "{{ SITE }}{{ canon }}", "image": "{{ SITE }}/assets/app/icon-512.png", "screenshot": ["{{ SITE }}/assets/img/app-ekran-pocetna-780.webp", "{{ SITE }}/assets/img/app-ekran-punjac-780.webp", "{{ SITE }}/assets/img/app-ekran-cene-780.webp"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RSD"}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}},
   {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Aplikacija", "item": "{{ SITE }}{{ canon }}"}]}
  ]
 }</script>{% endblock %}
-{% block pagehead %}{{ pagehead('Aplikacija BlokVolt', 'Mapa punjača, cene punjenja i vesti na početnom ekranu telefona. Aplikacija otvara ovaj sajt preko celog ekrana i menja se zajedno sa njim.') }}{% endblock %}
-{% block content %}
-<div class="app-card">
-<img src="/assets/app/icon-192.png" width="72" height="72" alt="">
-<div class="app-t"><h2>BlokVolt za Android</h2><p>Verzija {{ APP.version }} · {{ app_mb }} MB · {{ APP.released }} · Android {{ APP.min_android }} ili noviji</p></div>
-<a class="btn dark app-dl" href="/aplikacija/{{ APP.apk }}" download data-bv-app-download>{{ ic('download') }}Preuzmi APK</a>
+{% macro phone(name, alt, cls='') -%}
+<div class="phone {{ cls }}"><img src="/assets/img/{{ name }}-390.webp" srcset="/assets/img/{{ name }}-390.webp 390w, /assets/img/{{ name }}-780.webp 780w" sizes="(max-width: 699px) 60vw, 260px" width="390" height="844" alt="{{ alt }}" loading="{{ 'eager' if 'mid' in cls else 'lazy' }}" decoding="async"></div>
+{%- endmacro %}
+{% block page %}
+<section class="hero app-hero" data-bv-note>
+<div class="wrap app-hero-in">
+<div class="app-hero-t">
+<nav class="crumbs" aria-label="Putanja"><a href="/">BlokVolt</a><span aria-hidden="true">/</span><span>Aplikacija</span></nav>
+<div class="app-id"><img src="/assets/app/icon-192.png" width="56" height="56" alt=""><div><b translate="no">BlokVolt</b><span>za Android · besplatno</span></div></div>
+<h1>BlokVolt na telefonu</h1>
+<p class="lead">Mapa punjača sa cenama, cene po mrežama i vesti na početnom ekranu. Otvara se jednim dodirom, a nedavno otvorene stranice rade i bez interneta.</p>
+<div class="app-cta">
+<a class="btn dark app-dl" href="/aplikacija/{{ APP.apk }}" download data-bv-app-download>{{ ic('download') }}<span>Preuzmi APK</span><small>{{ app_mb }} MB</small></a>
+<a class="btn app-alt" href="#iphone">iPhone i računar</a>
 </div>
-<div class="prose app-prose">
-<h2>Kako se instalira na Android</h2>
-<ol>
-<li>Otvorite ovu stranicu na telefonu i pritisnite „Preuzmi APK“.</li>
-<li>Otvorite preuzeti fajl. Ako telefon pita, dozvolite instalaciju iz pregledača kojim ste ga preuzeli; to podešavanje posle možete da isključite.</li>
-<li>Pritisnite „Instaliraj“. BlokVolt se pojavljuje među aplikacijama, sa prečicama za mapu, cene i vesti (dugo pritisnite ikonicu).</li>
+<ul class="app-pills"><li>{{ ic('check') }}Bez reklama</li><li>{{ ic('check') }}Bez dozvola</li><li>{{ ic('check') }}Android {{ APP.min_android }} ili noviji</li></ul>
+<div class="app-qr"><img src="/assets/app/qr-aplikacija.svg" width="96" height="96" alt="QR kod za stranicu aplikacije"><p><b>Na računaru ste?</b> Skenirajte kod kamerom telefona i preuzmite aplikaciju na telefonu.</p></div>
+</div>
+<div class="app-phones" aria-label="Snimci ekrana aplikacije">
+{{ phone('app-ekran-cene', 'Cene javnog punjenja po mrežama u aplikaciji', 'side left') }}
+{{ phone('app-ekran-pocetna', 'Početni ekran aplikacije BlokVolt sa pretragom', 'mid') }}
+{{ phone('app-ekran-punjac', 'Kartica punjača sa cenom, priključcima i navigacijom', 'side right') }}
+</div>
+</div>
+</section>
+<div class="wrap main app-main">
+
+<section class="app-sec">
+<h2 class="sr-only">Šta aplikacija radi</h2>
+<div class="app-feat">
+<div class="af">{{ ic('map') }}<h3>Mapa sa cenama</h3><p>{{ n_map }} javnih punjača, cena po mreži i snazi i navigacija do punjača.</p></div>
+<div class="af">{{ ic('bolt') }}<h3>Radi i bez interneta</h3><p>Stranice koje ste nedavno otvorili ostaju u telefonu i otvaraju se i kad nema signala.</p></div>
+<div class="af">{{ ic('shield') }}<h3>Bez dozvola i reklama</h3><p>Ne traži lokaciju, kontakte ni obaveštenja. Lokaciju za „Blizu mene“ telefon pita tek kad pritisnete to dugme.</p></div>
+<div class="af">{{ ic('news') }}<h3>Uvek sveži podaci</h3><p>Aplikacija prikazuje sajt, pa se nove cene i vesti vide odmah, bez ažuriranja aplikacije.</p></div>
+</div>
+</section>
+
+<section class="app-sec">
+<h2>Instalacija za minut</h2>
+<ol class="app-steps">
+<li><b>Preuzmite fajl</b><span>Otvorite ovu stranicu na telefonu i pritisnite „Preuzmi APK“.</span></li>
+<li><b>Dozvolite instalaciju</b><span>Ako telefon pita, dozvolite instalaciju iz pregledača kojim ste preuzeli fajl. To podešavanje posle možete da isključite.</span></li>
+<li><b>Pritisnite „Instaliraj“</b><span>Ikonica BlokVolt se pojavljuje među aplikacijama. Dugim pritiskom na nju otvarate prečice za mapu, cene i vesti.</span></li>
 </ol>
-<p>Aplikacija radi preko Chrome-a ili drugog pregledača koji podržava ovu vrstu aplikacija. Ako takvog pregledača nema, sajt se otvara u običnoj kartici pregledača.</p>
-<h2>iPhone i iPad</h2>
-<p>U App Store-u aplikacije nema, ali sajt može da radi kao aplikacija: otvorite www.blokvolt.rs u Safariju, pritisnite „Podeli“ (kvadrat sa strelicom nagore), pa „Dodaj na početni ekran“. Ikonica BlokVolt tada otvara sajt preko celog ekrana.</p>
-<h2>Na računaru</h2>
-<p>U Chrome-u ili Edge-u kliknite ikonicu za instalaciju na kraju adresne trake ili u meniju izaberite „Instaliraj BlokVolt“. Sajt se tada otvara u svom prozoru.</p>
-<h2>Šta aplikacija radi</h2>
-<ul>
-<li>To je isti sajt: iste cene, ista mapa, iste vesti. Promene na sajtu odmah se vide i u aplikaciji, pa novu verziju aplikacije retko treba instalirati.</li>
-<li>Stranice koje ste nedavno otvorili rade i bez interneta.</li>
-<li>Aplikacija ne traži dozvole i ne šalje obaveštenja. Lokaciju za „Blizu mene“ pregledač traži tek kad pritisnete to dugme. Sve o podacima je u <a href="/politika-privatnosti.html">politici privatnosti</a>.</li>
-</ul>
+<p class="app-dl2"><a class="btn dark app-dl" href="/aplikacija/{{ APP.apk }}" download data-bv-app-download>{{ ic('download') }}<span>Preuzmi APK</span><small>{{ app_mb }} MB</small></a></p>
+</section>
+
+<section class="app-sec" id="iphone">
+<h2>iPhone, iPad i računar</h2>
+<div class="app-other">
+<div class="ao"><h3>{{ ic('phone') }}iPhone i iPad</h3><p>U App Store-u aplikacije još nema, ali sajt može da radi kao aplikacija:</p>
+<ol><li>Otvorite www.blokvolt.rs u Safariju.</li><li>Pritisnite „Podeli“ (kvadrat sa strelicom nagore).</li><li>Izaberite „Dodaj na početni ekran“.</li></ol>
+<p>Ikonica BlokVolt tada otvara sajt preko celog ekrana.</p></div>
+<div class="ao"><h3>{{ ic('globe') }}Računar</h3><p>U Chrome-u ili Edge-u kliknite ikonicu za instalaciju na kraju adresne trake ili u meniju izaberite „Instaliraj BlokVolt“. Sajt se tada otvara u svom prozoru, kao program.</p></div>
+</div>
+</section>
+
+<section class="app-sec app-faq">
+<h2>Pitanja</h2>
+<details><summary>Da li je bezbedno?</summary><p>Aplikacija ne traži nijednu dozvolu i samo otvara www.blokvolt.rs preko celog ekrana. Fajl je potpisan, a svaka sledeća verzija biće potpisana istim sertifikatom, pa se instalira preko postojeće.</p></details>
+<details><summary>Šta mi treba?</summary><p>Android {{ APP.min_android }} ili noviji i Chrome ili drugi pregledač koji podržava ovu vrstu aplikacija. Ako takvog pregledača nema, sajt se otvara u običnoj kartici pregledača.</p></details>
+<details><summary>Zašto nije u Google Play prodavnici?</summary><p>Objava u Google Play je u pripremi. Do tada je fajl sa ove stranice ista aplikacija.</p></details>
+<details><summary>Kako se ažurira?</summary><p>Cene, mapa i vesti se menjaju same, zajedno sa sajtom. Novu verziju aplikacije retko treba instalirati; kad je bude, pojaviće se na ovoj stranici.</p></details>
+<details><summary>Šta aplikacija radi sa mojim podacima?</summary><p>Isto što i sajt: posete se broje bez kolačića, a omiljeni punjači ostaju samo u vašem telefonu. Sve o tome je u <a href="/politika-privatnosti">politici privatnosti</a>.</p></details>
 <details><summary>Za proveru fajla</summary>
-<ul>
+<ul class="app-hash">
 <li><span>Paket i verzija:</span> <code translate="no">{{ APP.package }} {{ APP.version }} ({{ APP.code }})</code></li>
 <li><span>SHA-256 fajla:</span> <code class="hash" translate="no">{{ APP.sha256 }}</code></li>
 <li><span>SHA-256 sertifikata kojim je potpisan:</span> <code class="hash" translate="no">{{ APP.cert_sha256 }}</code></li>
 </ul>
-<p>Svaka sledeća verzija na ovoj stranici potpisana je istim sertifikatom, pa se instalira preko postojeće.</p>
 </details>
+</section>
+
+<p class="upd">Verzija {{ APP.version }} · objavljena {{ APP.released }} · <a href="/ispravka/">Prijavite grešku</a></p>
 </div>
-<p class="upd">Objavljeno {{ APP.released }} · <a href="/ispravka/">Prijavite grešku</a></p>
 {% endblock %}

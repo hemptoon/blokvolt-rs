@@ -9,19 +9,27 @@ The procedure (build, translate, deploy, commit) is in `docs/RUNBOOK.md` §3.15;
 A short, checkable report that changes something for people who drive or plan to buy an electric car in Serbia:
 
 - subsidies (deadlines, amounts, budget, procedure);
-- public charging: new or closed chargers, networks entering or leaving, price changes, the state motorway chargers;
-- electricity for home charging: EPS/AERS price or tariff changes, rules for meters and buildings;
-- cars: a new model or brand with a Serbian importer, Serbian prices, new sales or service points;
+- public charging: new or closed chargers, networks entering or leaving, price changes, payment and apps, the state
+  motorway chargers;
+- electricity for home charging: EPS/AERS price or tariff changes, rules for meters and buildings, rooftop solar and
+  prosumers (prozjumeri) when it touches charging at home;
+- cars: a new model or brand with a Serbian importer, Serbian prices, new sales or service points, recalls of models
+  sold in Serbia, notable used-EV import rules or prices with a source;
 - rules: laws and bylaws on charging, buildings (skupština), tolls, parking, customs and taxes — drafts clearly marked;
+- cities: parking rules and benefits for electric cars, city chargers, taxi, car-sharing and rent-a-car fleets going
+  electric (tag `punjaci` or `propisi`);
 - statistics: fleet and registrations (MUP, SAUVD, RZS, ABS);
-- the region and the EU, only when it clearly matters for drivers in Serbia (at most one such item per run).
+- travel: charging on the routes Serbian drivers take to the coast and the neighbouring countries (tag `region`);
+- the region and the EU, only when it clearly matters for drivers in Serbia (at most one such item per run, travel
+  included).
 
 Not news: a press release without facts, rumours, opinions, global tech stories without a Serbian angle, anything
 about Evolako or about BlokVolt itself (site changes go to `content/podaci/izmene.md`), and anything that needs
 contacting a company (the outreach ban of RUNBOOK §3.7 holds).
 
-Volume follows reality: Serbia has roughly one or two relevant stories a week. A run publishes 0–3 items. When
-nothing new and checkable happened, publish nothing and do not deploy.
+Volume follows reality: with the topics above, Serbia has roughly two to five relevant stories a week. The task
+runs on Monday, Wednesday and Friday; a run publishes 0–3 items. When nothing new and checkable happened, publish
+nothing and do not deploy — a thin or recycled item does the site more harm than a quiet day.
 
 ## 2. Sources
 

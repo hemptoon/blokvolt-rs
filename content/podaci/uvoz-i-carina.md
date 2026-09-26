@@ -1,4 +1,5 @@
 ---
+thumb: kamion-autotransporter
 title: Uvoz električnog automobila u Srbiju — carina i PDV 2026
 h1: Uvoz i carina
 description: Carina za električni automobil: 0 % iz EU, 4,5 % za nov iz Kine, 5 % bez preferencijalnog porekla (12,5 % za benzin i hibride). Uvek i PDV 20 %.

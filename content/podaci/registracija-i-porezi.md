@@ -1,4 +1,5 @@
 ---
+thumb: registarska-tablica-srbija
 title: Registracija električnog automobila 2026 — porez i takse
 h1: Registracija i porezi
 description: Električni automobil ne plaća porez na upotrebu vozila. Tehnički pregled, AO po kW, komunalna taksa, dozvola i tablice plaćaju se kao za svaki automobil.

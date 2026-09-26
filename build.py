@@ -140,7 +140,6 @@ for _n, _ws in IMGS.items():
     with _PIL.open(IMG_DIR / f'{_n}-{_ws[-1]}.webp') as _im:
         IMG_SIZE[_n] = _im.size
 VIDEOS = json.load(open(ROOT / 'content' / 'data' / 'video.json', encoding='utf-8'))
-AI_NOTE = 'Ilustracija (AI)'
 # free-licence photos (news): author, licence, caption, alt; tag pools for news without their own photo (RUNBOOK 3.19)
 FOTO = json.load(open(ROOT / 'content' / 'data' / 'foto.json', encoding='utf-8'))
 for _n, _f in FOTO['photos'].items():
@@ -163,13 +162,13 @@ def photo_caption(name):
 
 
 def fig_html(name, alt, caption=None, sizes='(max-width: 820px) 100vw, 760px', cls='', eager=False):
-    """A responsive <figure>; the caption defaults to the photo credit (foto.json) or to the AI note (illustrations)."""
+    """A responsive <figure>; the caption defaults to the photo credit (foto.json); illustrations get none."""
     ws = IMGS[name]
     w, h = IMG_SIZE[name]
     srcset = ', '.join(f'/assets/img/{name}-{x}.webp {x}w' for x in ws)
     mid = next((x for x in ws if x >= 800), ws[-1])
     if caption is None:
-        cap = photo_caption(name) if name in FOTO['photos'] else AI_NOTE
+        cap = photo_caption(name) if name in FOTO['photos'] else None   # illustrations: no caption (26.09.2026)
     else:
         cap = caption
     if not alt and name in FOTO['photos']:
@@ -195,7 +194,7 @@ def photo_credits_html():
     EN/RU translation of a caption exists before a news item uses that photo)."""
     items = ''.join(f'<li><img src="/assets/img/{n}-480.webp" width="96" height="54" alt="{escape(f["alt"])}" loading="lazy" decoding="async">'
                     f'<span>{photo_caption(n)}</span></li>' for n, f in FOTO['photos'].items())
-    return ('<details class="src foto-src"><summary>Fotografije uz vesti: autori i licence</summary>'
+    return ('<details class="src foto-src"><summary>Fotografije na sajtu: autori i licence</summary>'
             f'<ul class="foto-list">{items}</ul></details>')
 
 
@@ -716,14 +715,14 @@ def A(path, name=None, desc=None, icon='doc'):
     a = ARTICLES.get(path)
     href = canon_of(path)
     return {'href': href, 'name': name or (a['h1'] if a else path), 'desc': desc or (clip(a['lead'], 120) if a else ''), 'icon': icon,
-            'img': (a['meta'].get('image') if a else None)}
+            'img': ((a['meta'].get('thumb') or a['meta'].get('image')) if a else None)}
 
 
 VODICI_GROUPS = [
     ('Punjač u zgradi i garaži', [
         A('/punjenje-elektricnog-auta-u-zgradi.html', icon='building'), A('/punjac-u-zgradi-skupstina.html', icon='doc'),
         A('/ko-placa-struju-za-punjenje.html', icon='coins'),
-        {'href': '/alati/racun-u-zgradi/', 'name': 'Ko koliko plaća u zgradi', 'desc': 'Kalkulator: koliko komšije plaćaju tuđe punjenje bez brojila.', 'icon': 'calc'},
+        {'href': '/alati/racun-u-zgradi/', 'name': 'Ko koliko plaća u zgradi', 'desc': 'Kalkulator: koliko komšije plaćaju tuđe punjenje bez brojila.', 'icon': 'calc', 'img': 'stambena-zgrada-balkoni'},
         A('/bezbednost-punjenja-atest.html', icon='shield'), A('/punjac-u-iznajmljenoj-garazi.html', icon='plug'),
         A('/wallbox-cena-srbija.html', icon='plug')]),
     ('Kupovina i vlasništvo', [
@@ -1182,7 +1181,7 @@ HOME_GUIDES = [
     {'href': '/punjenje-elektricnog-auta-u-zgradi', 'name': 'Punjenje u zgradi', 'desc': 'Šta je dozvoljeno, kada se pita skupština i koliko se štedi.', 'icon': 'building', 'img': 'garaza-wallbox'},
     {'href': '/punjac-u-zgradi-skupstina', 'name': 'Odluka skupštine', 'desc': 'Kojom većinom se odlučuje, sa šablonom odluke.', 'icon': 'doc', 'img': 'skupstina-stanara'},
     {'href': '/ko-placa-struju-za-punjenje', 'name': 'Ko plaća struju', 'desc': 'Brojilo i obračun po ceni sa računa, bez marže.', 'icon': 'coins', 'img': 'brojilo-ugradnja'},
-    {'href': '/podaci/tarife-eps/', 'name': 'Cena struje kod kuće', 'desc': 'Zone, tarife i kada počinje jeftinija struja.', 'icon': 'bolt'},
+    {'href': '/podaci/tarife-eps/', 'name': 'Cena struje kod kuće', 'desc': 'Zone, tarife i kada počinje jeftinija struja.', 'icon': 'bolt', 'img': 'stambeni-blokovi-sunce'},
     {'href': '/bezbednost-punjenja-atest', 'name': 'Bezbednost i atest', 'desc': 'Zašto ne produžni kabl i šta proverava atest.', 'icon': 'shield', 'img': 'elektricar-atest'},
 ]
 render('home.html', '/', HOME_GUIDES=HOME_GUIDES, NEWS_HOME=NEWS[:3], section='',

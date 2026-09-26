@@ -1,4 +1,5 @@
 ---
+thumb: salon-automobila
 title: Cene električnih automobila u Srbiji 2026: svi modeli kod uvoznika
 h1: Cene električnih automobila
 description: 66 električnih modela 17 marki sa javnom cenom kod uvoznika u Srbiji: od 17.990 € (Dacia Spring), 13 ispod 30.000 €. Cena pre i posle subvencije od 5.000 €.

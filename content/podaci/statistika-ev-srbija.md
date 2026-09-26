@@ -1,4 +1,5 @@
 ---
+thumb: vest-novi-beograd-autoput
 title: Koliko električnih automobila ima u Srbiji — statistika 2026
 h1: Statistika električnih automobila
 description: U Srbiji je registrovano 7.155 električnih automobila (MUP, april 2026). Nove registracije BEV, broj javnih punjača, subvencije i poređenje sa EU.

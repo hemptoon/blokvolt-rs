@@ -1,6 +1,6 @@
 {
- "checked": "25.09.2026",
- "note": "News photos (docs/RUNBOOK.md 3.19). Only Unsplash (free, not Unsplash+) and Wikimedia Commons (CC0, CC BY, CC BY-SA). Author and licence exactly as on the photo page. cap = what the photo shows (never claims it is the place or car from the news), alt = description for screen readers. pools = tag fallbacks for news without their own image.",
+ "checked": "26.09.2026",
+ "note": "Free-licence photos: news (docs/RUNBOOK.md 3.19), the home page hero and guide thumbnails (not in any pool). Only Unsplash (free, not Unsplash+) and Wikimedia Commons (CC0, CC BY, CC BY-SA). Author and licence exactly as on the photo page. cap = what the photo shows (never claims it is the place or car from the news), alt = description for screen readers. pools = tag fallbacks for news without their own image.",
  "photos": {
   "vest-punjenje-utikac": {"src": "Unsplash", "au": "CHUTTERSNAP", "page": "https://unsplash.com/photos/xJLsHl0hIik", "lic": "Unsplash licenca", "licurl": "https://unsplash.com/license",
    "cap": "Električni automobil na punjenju", "alt": "Utikač kabla za punjenje u priključku električnog automobila"},
@@ -44,7 +44,28 @@
    "cap": "BYD Atto 3", "alt": "Beli BYD Atto 3 parkiran na ulici"},
   "vest-gac-aion-v": {"src": "Wikimedia Commons", "au": "Alexander Migl", "page": "https://commons.wikimedia.org/wiki/File:GAC_Aion_V_(second_generation)_IAA_2025_DSC_1406.jpg",
    "file": "GAC Aion V (second generation) IAA 2025 DSC 1406.jpg", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "cap": "GAC AION V na sajmu IAA Mobility u Minhenu, 2025", "alt": "Sivi GAC AION V na sajamskom štandu"}
+   "cap": "GAC AION V na sajmu IAA Mobility u Minhenu, 2025", "alt": "Sivi GAC AION V na sajamskom štandu"},
+  "pocetna-punjenje": {"src": "Unsplash", "au": "Nik", "page": "https://unsplash.com/photos/xuOCO0yFFeQ", "lic": "Unsplash licenca", "licurl": "https://unsplash.com/license",
+   "cap": "Električni automobil na javnom punjaču (početna strana, registarska tablica zamućena)", "alt": "Svetlozeleni električni automobil priključen kablom na punjač pored travnjaka"},
+  "stambeni-blokovi-sunce": {"src": "Unsplash", "au": "Anton Luk", "page": "https://unsplash.com/photos/EGO6ebul1HE", "lic": "Unsplash licenca", "licurl": "https://unsplash.com/license",
+   "cap": "Stambene zgrade na popodnevnom suncu", "alt": "Višespratne stambene zgrade sa terasama, osvetljene popodnevnim suncem"},
+  "salon-automobila": {"src": "Unsplash", "au": "lucas clarysse", "page": "https://unsplash.com/photos/VV_F_0R_fxU", "lic": "Unsplash licenca", "licurl": "https://unsplash.com/license",
+   "cap": "Novi automobili u salonu", "alt": "Crveni električni SUV izložen u salonu automobila"},
+  "stambena-zgrada-balkoni": {"src": "Unsplash", "au": "Kato Blackmore", "page": "https://unsplash.com/photos/sfruZ_YdZSI", "lic": "Unsplash licenca", "licurl": "https://unsplash.com/license",
+   "cap": "Stambena zgrada sa terasama", "alt": "Fasada višespratne stambene zgrade od cigle sa zastakljenim terasama"},
+  "kamion-autotransporter": {"src": "Unsplash", "au": "Roger Starnes Sr", "page": "https://unsplash.com/photos/xDhuMgWBrXU", "lic": "Unsplash licenca", "licurl": "https://unsplash.com/license",
+   "cap": "Kamion koji prevozi nove automobile", "alt": "Kamion autotransporter natovaren novim automobilima pod zaštitnim navlakama"},
+  "automobil-i-novac": {"src": "Unsplash", "au": "Mehdi Mirzaie", "page": "https://unsplash.com/photos/uNFMWDAMDZc", "lic": "Unsplash licenca", "licurl": "https://unsplash.com/license",
+   "cap": "Automobil i novac, 3D prikaz", "alt": "Žuti model automobila ispod svežnjeva novčanica"},
+  "kljucevi-automobila": {"src": "Unsplash", "au": "Erik Mclean", "page": "https://unsplash.com/photos/dVEO6g0yej0", "lic": "Unsplash licenca", "licurl": "https://unsplash.com/license",
+   "cap": "Predaja ključeva automobila", "alt": "Žena pruža ključeve automobila, iza nje beli automobil"},
+  "servis-automobila": {"src": "Unsplash", "au": "Dextar Studio", "page": "https://unsplash.com/photos/XP8o9_Arwqg", "lic": "Unsplash licenca", "licurl": "https://unsplash.com/license",
+   "cap": "Automobil u servisu", "alt": "Mehaničar radi ispod otvorene haube automobila u servisnoj radionici"},
+  "ostecena-vrata-automobila": {"src": "Unsplash", "au": "Kaja Sariwating", "page": "https://unsplash.com/photos/n9M39ecNXoU", "lic": "Unsplash licenca", "licurl": "https://unsplash.com/license",
+   "cap": "Oštećena vrata automobila", "alt": "Bočna strana belog automobila sa ulubljenjem na vratima"},
+  "registarska-tablica-srbija": {"src": "Wikimedia Commons", "au": "Matej Grochal", "page": "https://commons.wikimedia.org/wiki/File:SRB_SU_018-FM.jpg",
+   "file": "SRB SU 018-FM.jpg", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "cap": "Srpska registarska tablica (broj zamućen)", "alt": "Registarska tablica Srbije na zadnjem delu automobila"}
  },
  "pools": {
   "subvencije": ["vest-punjenje-utikac", "vest-utikac-garaza"],

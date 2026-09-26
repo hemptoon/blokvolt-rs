@@ -1,4 +1,5 @@
 ---
+thumb: stambeni-blokovi-sunce
 title: Cena struje za domaćinstva u Srbiji 2026: zone, tarife, niža tarifa
 h1: Cena struje kod kuće
 description: Kilovat-sat kod kuće sa svim dažbinama: od 4,15 do 38,26 RSD, zavisno od zone i tarife. Niža tarifa traje 8 sati, a počinje različito po regionu.

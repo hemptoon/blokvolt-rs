@@ -441,8 +441,10 @@ delete its entry from `CHOICE`, rerun, rebuild (the file itself can stay; nothin
 ### 3.13 Illustrations and video
 
 Illustrations: `static/assets/img/<name>-<width>.webp` (480/800/1200/full); the build reads the sizes and
-`fig(name, alt)` (templates) or `[[fig:name|alt]]` (Markdown) makes a responsive `<figure>` with the caption
-„Ilustracija (AI)“. Article front matter `image:` / `image_alt:` puts one under the lead. The nine current
+`fig(name, alt)` (templates) or `[[fig:name|alt]]` (Markdown) makes a responsive `<figure>`. Illustrations get no
+caption (the owner dropped the „Ilustracija (AI)“ note on 26.09.2026); `/metodologija/#vesti` says in one line
+that the guide illustrations are AI-made. Article front matter `image:` / `image_alt:` puts one under the lead;
+`thumb:` sets only the small picture in the lists (`/vodici/`, the home page) without adding a figure to the page. The nine current
 ones were generated in Higgsfield (gpt_image_2_5, high, 2k; about 2.75 credits each) and brought into the
 container as full-size `zoom` screenshots of the image opened in the owner's Chrome (the container cannot
 reach the CDN). A few images need no confirmation; a batch of many does (ask the owner first), and every
@@ -462,7 +464,7 @@ data: verify first (reply to the company-domain e-mail or call the number on its
 owner's permission while the outreach rule holds), then mark the data „prema podacima firme“ with the date
 and log it in `izmene.md`. Ratings are never removed on a company's request unless they break the rules.
 
-### 3.15 News (/vesti/) — twice a week, by the scheduled news task
+### 3.15 News (/vesti/) — Monday, Wednesday and Friday, by the scheduled news task
 
 Everything about content is in `docs/NEWS_STYLE.md` (what counts as news, sources with RSS, checking, writing,
 file format). The run:
@@ -578,14 +580,24 @@ when a photo has no credit or a news item names an unknown photo.
   commons.wikimedia.org, the API (`generator=search&gsrnamespace=6&prop=imageinfo&iiprop=url|size|extmetadata`).
   Show candidates as a grid of thumbnails over the page and pick from a screenshot. Then show the chosen one at
   exactly 1200×675 CSS px (`object-fit:cover`, `object-position` to choose the crop; Unsplash `?w=2400&q=90`,
-  Commons the original file), and `zoom` the region `[0,0,1105,621]` with `save_to_disk` (the screenshot frame is
-  0.92 of CSS px) — about 1455×818 px. Look at every capture before using it.
+  Commons the original file), and `zoom` the region `[0,0,1200·r,675·r]` with `save_to_disk`, where r = screenshot
+  frame width ÷ `innerWidth` (0.92 on 25.09, 0.80 on 26.09 — check each time) — about 1455×818 px. Never pass
+  `scale` when saving. Look at every capture before using it. A larger image (the home hero) is captured in tiles:
+  show it at ~1456 CSS px wide, move it by whole CSS px between four `zoom`s of the same region and stitch them.
+- **Not only news.** The home hero (`pocetna-punjenje`, number plate blurred) and the list thumbnails (`thumb:`)
+  are in `foto.json` too, outside the pools, so they appear in the credits list on `/metodologija/`.
 - **Files.** `python3 scripts/news_photo.py <capture.png> <name>` writes the three WebP sizes and the OG JPEG.
   Add the entry to `foto.json` (and to a pool if it suits a tag), then the build: the caption+credit and the alt
   text become translation segments (3.9); `/metodologija/#vesti` lists every photo with its credit
   (`[[fotografije]]`), so a pool photo's caption is already translated before an item uses it.
 
 ### 3.20 Web app, offline pages and the Android app
+
+The page `/aplikacija/` (26.09.2026): download block with the APK size and version from `content/data/app.json`,
+three phone screenshots (`scripts/qa/app_shots.py` renders them from the local build; rerun after a visible
+change to the home page, the station card or the prices page), a QR code (`static/assets/app/qr-aplikacija.svg`,
+made once with the `qrcode` package — not a build dependency), steps, iPhone and computer, questions and the file
+hashes. The footer shows an „Android APK“ badge whenever `app.json` has an `apk`.
 
 - **Web app.** `static/manifest.webmanifest` (name, colours, icons in `static/assets/app/` drawn by
   `scripts/app_icons.py` from the favicon, three shortcuts) and `static/sw.js`, registered by `bv.js` on https. The

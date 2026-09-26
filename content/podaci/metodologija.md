@@ -61,10 +61,11 @@ Vesti prate zvanične izvore i pouzdane medije: ministarstva, Službeni glasnik,
 <details markdown="1">
 <summary>Detalji o vestima</summary>
 
-- Izvori se pregledaju dva puta nedeljno. Vest se objavljuje samo kad ima nečeg novog i proverljivog; broj vesti nije unapred zadat.
+- Izvori se pregledaju tri puta nedeljno. Vest se objavljuje samo kad ima nečeg novog i proverljivog; broj vesti nije unapred zadat.
 - Tekst je kratak i napisan svojim rečima. Citati su kratki i uz izvor.
 - Fotografije su sa Unsplasha i Wikimedia Commonsa, pod slobodnim licencama, a iz medija se ne preuzimaju. Ispod fotografije piše šta je na njoj, ko je autor i koja je licenca. Fotografija ne prikazuje uvek baš mesto ili automobil iz vesti; to se vidi iz potpisa.
 - Tekst vesti se priprema uz pomoć AI alata, po istim pravilima kao ceo sajt. Svaka brojka se pre objave proverava u izvoru.
+- Fotografija na početnoj strani je takođe sa Unsplasha, sa zamućenom registarskom tablicom. Ilustracije uz vodiče napravljene su uz pomoć AI alata i ne prikazuju stvarna mesta ni ljude.
 - Vesti koje se oslanjaju na podatke sa ovog sajta (cene punjenja, stanje državnih punjača) upućuju na stranicu sa podacima.
 - Zastarela vest se ne briše. Kad se nešto promeni, objavljuje se nova vest.
 
@@ -76,7 +77,7 @@ Vesti prate zvanične izvore i pouzdane medije: ministarstva, Službeni glasnik,
 
 - Firme i tabela cena punjača: kvartalno i posle svake prijave.
 - Cene javnog punjenja: mesečno.
-- Vesti: dva puta nedeljno, kad ima novosti.
+- Vesti: tri puta nedeljno, kad ima novosti.
 
 Datum poslednje provere stoji na svakoj stranici i uz svaku firmu.
 

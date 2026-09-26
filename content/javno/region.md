@@ -1,4 +1,5 @@
 ---
+thumb: vest-brza-punionica-austrija
 title: Punjenje električnog automobila u regionu — cene i plaćanje
 h1: Punjenje u regionu
 description: Hrvatska 0,35–0,78 €/kWh, Mađarska 279 Ft/kWh na IONITY-ju, Severna Makedonija 30/40 MKD po kWh karticom. U BiH i Crnoj Gori cenovnika skoro nema.

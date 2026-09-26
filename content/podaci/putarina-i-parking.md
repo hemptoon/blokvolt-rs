@@ -1,4 +1,5 @@
 ---
+thumb: vest-naplatna-stanica-beograd
 title: Putarina i parking za električni automobil u Srbiji 2026
 h1: Putarina i parking
 description: Električni automobil ima 10 % popusta na putarinu uz ENP i ne plaća porez na upotrebu. Besplatnog parkinga nema; Novi Sad naplaćuje 500 RSD/h kod punjača.

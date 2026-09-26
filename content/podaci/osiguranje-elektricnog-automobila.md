@@ -1,4 +1,5 @@
 ---
+thumb: ostecena-vrata-automobila
 title: Osiguranje električnog automobila 2026 — AO po kW i kasko
 h1: Osiguranje električnog automobila
 description: Autoodgovornost se računa po snazi: preko 110 kW 15.716 RSD godišnje, pre bonus-malusa. Za kasko osiguravači najavljuju više stope, ali ih ne objavljuju.

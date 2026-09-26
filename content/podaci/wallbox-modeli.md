@@ -1,4 +1,5 @@
 ---
+thumb: vest-punjac-garaza
 title: Wallbox modeli u Srbiji 2026: cene kućnih punjača kod prodavaca
 h1: Wallbox modeli i cene
 description: 61 model kućnih punjača sa javnom cenom kod 27 prodavaca u Srbiji: 11 kW od 39.800 RSD, 22 kW od 48.364,22 RSD. Cena samog uređaja, bez ugradnje.

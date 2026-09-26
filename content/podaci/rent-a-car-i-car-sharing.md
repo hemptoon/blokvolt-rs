@@ -1,4 +1,5 @@
 ---
+thumb: kljucevi-automobila
 title: Iznajmljivanje električnog automobila u Srbiji — cene i uslovi
 h1: Iznajmljivanje električnog automobila
 description: Električni automobil u Srbiji iznajmljuje pet domaćih firmi u Beogradu i Novom Sadu, od 16 €/dan. Međunarodne kuće ga ne nude, car-sharinga sa EV nema.

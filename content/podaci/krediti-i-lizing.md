@@ -1,4 +1,5 @@
 ---
+thumb: automobil-i-novac
 title: Kredit i lizing za električni automobil — kamate banaka 2026
 h1: Krediti i lizing
 description: Nižu kamatu za električne automobile javno nude Raiffeisen (fiksno 4,99 % u EUR) i Erste (EKS 7,40 % u EUR). Subvencija može biti učešće u lizingu.
