@@ -7,6 +7,8 @@ static/assets/fonts/
 content/i18n/work/
 content/i18n/todo-*.json
 dist-com/
+# raw map data, a local copy of the branch region-data (python3 scripts/region_map.py --fetch)
+content/com/region-data/
 # Android app (android/): signing keys never go into the repo; Gradle outputs are built on GitHub Actions
 *.jks
 *.keystore

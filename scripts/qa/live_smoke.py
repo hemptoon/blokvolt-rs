@@ -192,9 +192,10 @@ def check_tls_and_redirects():
         loc = h.get('location', '')
         ok = st in (301, 302, 307, 308) and loc.startswith('https://www.blokvolt.rs')
         add('OK' if ok else 'FAIL', f'redirect {url}', f'{st} -> {loc}' if not ok else '')
-    for path in ('/', '/serbia/'):
+    for path in ('/', '/serbia/', '/hr/', '/hr/karta/', '/ba/', '/me/', '/assets/region/hr/stanice.json'):
         st, h, body = fetch('https://blokvolt.com' + path)
-        add('OK' if st == 200 and b'<title>' in body else 'FAIL', f'blokvolt.com{path}', '' if st == 200 else f'HTTP {st}')
+        ok = st == 200 and (b'"stations"' in body if path.endswith('.json') else b'<title>' in body)
+        add('OK' if ok else 'FAIL', f'blokvolt.com{path}', '' if st == 200 else f'HTTP {st}')
 
 
 def dns(name, rtype):

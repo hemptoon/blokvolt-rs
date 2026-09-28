@@ -1,30 +1,106 @@
-/* blokvolt.com — additions to site.css + agg.css (same design system as www.blokvolt.rs) */
-.com .bva .w3>.com-glance{grid-template-columns:repeat(4,1fr);max-width:none;margin:0 0 30px}
-.com-glance div{display:flex;flex-direction:column;gap:6px}
-.com-glance span{font-size:15px;line-height:1.5}
-.com .bva .w3>.com-list,.com .bva .w3>.com-other{max-width:760px}
-.com-list{list-style:none;padding:0;margin:14px 0 28px}
-.com-list>li{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 18px;margin:0 0 10px;font-size:15.5px;line-height:1.55}
-.com-list>li>b{display:block;margin-bottom:4px}
-.com-list>li>span{display:block;margin-top:4px}
-.com-list>li em{font-style:normal;font-weight:700;color:var(--mut)}
-.com-gaps>li{background:transparent;border-style:dashed;color:#3F4552;font-size:14.5px}
-.com-subs>li>.com-status{float:right;margin:0 0 6px 12px}
-.com-src{display:block;font-size:12.5px;line-height:1.5;color:var(--mut);margin-top:8px}
-.com-src a{color:var(--mut);text-decoration-color:rgba(92,98,112,.45);word-break:break-word}
-.com-conf{white-space:nowrap}
-.com-conf.is-low{color:#8A5A12}
-.com-status{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:4px 10px;background:var(--paper2);color:var(--mut);vertical-align:middle}
-.com-status.is-open{background:#E4F3C2;color:#2C3B05}
-.com-status.is-closed{background:#F1E4DC;color:#6B2E14}
-.com-status.is-unconfirmed{background:var(--ice);color:#2C3240}
-.com-price{margin:0 0 10px}
-.com-price:last-child{margin-bottom:0}
-.com-price>span{color:#3F4552}
-.com-tbl td small{display:block;font-size:12.5px;line-height:1.5;color:var(--mut);margin-top:6px}
-.com-tbl td small.com-src{margin-top:4px}
-.com-cards.bva-cards .bva-card span{font-size:14px}
-.com-cards.bva-cards .bva-card b{margin-bottom:4px}
-.com-other{font-size:15px;color:var(--mut);margin-top:28px}
-@media (max-width:1100px){.com .bva .w3>.com-glance{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:760px){.com .bva .w3>.com-glance{grid-template-columns:1fr}.com-subs>li>.com-status{float:none;display:inline-block;margin:0 0 8px}}
+/* blokvolt.com — additions to the design system of www.blokvolt.rs (bv.css). Local sections /hr/ /ba/ /me/ and the English pages. */
+.logo .loc-tag{font-size:11px;font-weight:750;letter-spacing:.06em;background:var(--volt);color:var(--vink);border-radius:6px;padding:3px 6px;margin-left:2px}
+.kick{font-size:13px;font-weight:650;letter-spacing:.04em;text-transform:uppercase;color:var(--voltd);margin:0 0 8px}
+.ph .ph-chips{margin-top:14px;flex-wrap:wrap}
+.ph .ph-chips .chip{text-decoration:none}
+.ph .ph-actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
+.hub-ph h1{max-width:900px}
+
+/* long pages: text column stays readable, tables and cards use the full width */
+.prose.cwide{max-width:none}
+.prose.cwide>p,.prose.cwide>ul,.prose.cwide>ol,.prose.cwide>h2,.prose.cwide>h3,.prose.cwide>blockquote,.prose.cwide>details,.prose.cwide>.sum{max-width:760px}
+.prose.cwide>h2{scroll-margin-top:80px}
+.prose .stats,.prose .tiles,.prose .facts,.prose .grid2{margin:18px 0 22px}
+.prose .tile h3,.prose .box h3{margin:0}
+.prose a.tile,.prose a.tile:hover{text-decoration:none}
+.prose .tile p{font-size:14.5px}
+.prose .note{font-size:14px}
+
+/* prices */
+.ptab td .pv{white-space:nowrap}
+.ptab td .pv small{display:inline;color:var(--mut);font-size:12.5px;white-space:normal}
+.ptab td small.pt{display:block;font-size:13.5px;color:var(--ink2);line-height:1.45}
+.ptab td a{color:inherit}
+.pv{margin:1px 0}
+.pv+.pv{margin-top:4px}
+small.cf{display:block;color:var(--warn);font-size:12px;margin-top:4px}
+small.cf.low{color:#9a3b12}
+.ncards2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0 22px}
+.ncard2{scroll-margin-top:80px}
+.ncard2 .pl{margin:0 0 12px}
+.ncard2 .pl li span{font-size:14px}
+.ncard2 p.pt{font-size:14.5px;color:var(--ink2)}
+.ncard2 .note{font-size:13.5px;margin:8px 0 6px}
+.nd{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;margin:0 0 10px;font-size:14px;line-height:1.45}
+.nd dt{color:var(--mut);font-weight:600;white-space:nowrap}
+.nd dd{margin:0;color:var(--ink2)}
+.src1{font-size:12.5px;color:var(--mut);margin:6px 0 0}
+.src1 a{color:var(--mut)}
+.muted{color:var(--mut2)}
+
+/* subsidies */
+.subs{display:grid;gap:14px;margin:18px 0 22px}
+.sub-h{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:0 0 10px}
+.sub-h h3{font-size:17px;margin:0}
+.badge.st-open{background:var(--okbg);color:var(--ok)}
+.badge.st-closed,.badge.st-none{background:var(--surface2);color:var(--mut)}
+.badge.st-exhausted,.badge.st-paused{background:#FBE3D6;color:#9a3b12}
+.badge.st-announced{background:var(--warnbg);color:var(--warn)}
+
+/* facts with long values */
+.facts .fact.wide>b{font-weight:560;font-size:15px;line-height:1.45}
+.facts .fact small{display:block;margin-top:4px}
+.facts .fact small a{color:var(--mut)}
+
+/* bar chart */
+.bars{margin:18px 0 22px;background:#fff;border:1px solid var(--line);border-radius:var(--r2);padding:14px 10px 8px}
+.bars svg{display:block;width:100%;max-height:260px}
+.bars rect.b{fill:#C9CDD4}
+.bars rect.b-last{fill:var(--ink)}
+.bars text{font-family:inherit}
+.bars text.v{font-size:15px;font-weight:700;fill:var(--ink)}
+.bars text.l{font-size:14px;fill:var(--mut)}
+.bars figcaption{font-size:13px;color:var(--mut);padding:4px 8px 0}
+
+/* map: stations from open data are not verified one by one */
+.vf.vf-src{background:var(--surface2);color:var(--mut)}
+.vf.vf-src span{color:var(--ink2)}
+.map-below .prose.cwide{padding-top:8px}
+
+/* English pages */
+.loc-banner{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--r2);padding:16px 18px;margin:0 0 18px;box-shadow:var(--shadow)}
+.loc-banner .lg{width:48px;height:48px;border-radius:12px;flex:none;background:var(--volt);color:var(--vink);font-weight:800}
+.loc-banner b{display:block;font-size:17px}
+.loc-banner p{margin:2px 0 0;font-size:14.5px;color:var(--mut)}
+.loc-banner .btn{margin-left:auto;flex:none}
+.facts.glance{margin:0 0 14px}
+.note.disc{margin:14px 0 0}
+.en-list .row{grid-template-columns:minmax(0,1fr);gap:4px}
+.en-list .row p{margin:4px 0 0;font-size:14.5px;color:var(--ink2)}
+.en-list .row .badge{margin-right:6px}
+.en-ul{margin:0 0 16px;padding-left:20px}
+.en-ul li{margin:6px 0;font-size:15px}
+small.csrc{display:block;color:var(--mut);font-size:12.5px;margin-top:3px}
+small.csrc a{color:var(--mut)}
+.conf.is-medium{color:var(--warn)}
+.conf.is-low{color:#9a3b12}
+.box.cta{background:var(--night);color:#fff;border:0}
+.box.cta h2{color:#fff;margin:0 0 8px}
+.box.cta p{color:rgba(255,255,255,.82)}
+.box.cta .btn{margin:6px 6px 0 0}
+.box.cta .btn:not(.dark){background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.tile.big{min-height:170px}
+.tiles.loc2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tiles.loc2 .tile.big{grid-column:auto}
+
+@media (max-width:900px){
+ .ncards2{grid-template-columns:minmax(0,1fr)}
+ .loc-banner{flex-wrap:wrap}
+ .loc-banner .btn{margin-left:0;width:100%;justify-content:center}
+}
+@media (max-width:640px){
+ .tiles.loc2{grid-template-columns:minmax(0,1fr)}
+ .nd{grid-template-columns:minmax(0,1fr)}
+ .nd dt{margin-top:6px}
+ .sub-h{flex-direction:column;gap:6px}
+}

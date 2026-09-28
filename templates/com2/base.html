@@ -1,0 +1,41 @@
+{% from '_icons.html' import ic, mark %}<!DOCTYPE html>
+<html lang="{{ LOC.html }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ SITE }}{{ '/404' if canon == '/404.html' else canon }}">
+{% for code, href in alts %}<link rel="alternate" hreflang="{{ code }}" href="{{ href }}">
+{% endfor %}<meta property="og:type" content="{% block ogtype %}website{% endblock %}">
+<meta property="og:site_name" content="BlokVolt">
+<meta property="og:locale" content="{{ LOC.og }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ SITE }}{{ canon }}">
+<meta property="og:image" content="{{ SITE }}/assets/og/og-{{ LOC.key }}.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFFFFF">
+{% if noindex %}<meta name="robots" content="noindex">
+{% endif %}<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/onest-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/bv.css">
+<link rel="stylesheet" href="/assets/com.css">
+{% block head %}{% endblock %}
+{% block jsonld %}{% endblock %}
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+<a class="skip" href="#main">{{ S.skip }}</a>
+{% include '_header.html' %}
+<main id="main">
+{% block page %}{% block pagehead %}{% endblock %}<div class="wrap main">{% block content %}{% endblock %}</div>{% endblock %}
+</main>
+{% include '_footer.html' %}
+<script src="/assets/bv.js" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

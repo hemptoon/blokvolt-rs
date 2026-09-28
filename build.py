@@ -1275,6 +1275,8 @@ print(f'search index: {_n} pages, {_kb} KB')
 
 # ---------------------------------------------------------------- English and Russian (scripts/i18n.py)
 import i18n as _i18n  # noqa: E402
+import region_pages as _region  # noqa: E402
+_i18n.EXTRA_ALTS = _region.rs_alternates()   # the same topic in Croatian, Bosnian and Montenegrin on blokvolt.com
 I18N = _i18n.render_all(DIST)
 
 
@@ -1314,6 +1316,7 @@ for u, p, lm in urls:
     alts = ''
     if len(langs) > 1:
         alts = ''.join(f'<xhtml:link rel="alternate" hreflang="{_i18n.HREFLANG[l]}" href="{SITE}{_i18n.lang_url(path, l)}"/>' for l in langs)
+        alts += ''.join(f'<xhtml:link rel="alternate" hreflang="{c}" href="{h}"/>' for c, h in _i18n.EXTRA_ALTS.get(path, []))
         alts += f'<xhtml:link rel="alternate" hreflang="x-default" href="{u}"/>'
     for l in langs:
         sm.append(f'<url><loc>{SITE}{_i18n.lang_url(path, l)}</loc><lastmod>{lm}</lastmod><priority>{p}</priority>{alts}</url>')
@@ -1386,7 +1389,14 @@ CSP = '; '.join([
     '  Cache-Control: public, max-age=3600',
     '/offline',
     '  X-Robots-Tag: noindex',
+    '/app/*',
+    '  Cache-Control: public, max-age=300',
+    '  Access-Control-Allow-Origin: *',
+    '  X-Robots-Tag: noindex',
 ] + ([f'/aplikacija/{APP["apk"]}', '  Content-Type: application/vnd.android.package-archive', '  Content-Disposition: attachment',
       '  Cache-Control: public, max-age=3600'] if APP.get('apk') else [])) + '\n', encoding='utf-8')
 print(f'_headers: CSP with {len(_hashes)} inline-script hashes' + (', PostHog on' if ANALYTICS else ''))
+# the apps' content feed (/app/v1/manifest.json + /assets/app/v1/…), made from the finished pages (RUNBOOK 3.22)
+import app_feed as _app_feed  # noqa: E402
+_app_feed.build(DIST)
 print('built', len(urls), 'urls;', len(published), 'firms;', len(operators), 'networks;', MAP['n'], 'stations on the map;', len(ARTICLES), 'articles')

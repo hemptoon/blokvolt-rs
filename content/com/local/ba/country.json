@@ -1,0 +1,120 @@
+{
+ "cc": "BA",
+ "checked": "28.09.2026.",
+ "checked_iso": "2026-09-28",
+ "slugs": {"prices": "cijene/"},
+ "map": {"center": [17.75, 44.15], "zoom": 6.7},
+ "net_names": {"moon": "MOON", "epbih": "EPBiH", "tesla": "Tesla", "elen": "ELEN", "petrol": "Petrol"},
+
+ "fleet": {"series": [[2021, 75], [2022, 138], [2023, 331], [2024, 509], [2025, 704]], "phys_2025": 399, "legal_2025": 305, "growth_2025": 38,
+           "src": "https://ec.europa.eu/eurostat/databrowser/view/road_eqs_carpda/default/table?lang=en",
+           "src_label": "Eurostat, road_eqs_carpda (putnička vozila, pogon: električna energija)", "src_date": "1.9.2026."},
+ "bhas": [["januar 2025.", "0,9 %"], ["decembar 2025.", "1,1 %"], ["januar 2026.", "0,5 %"]],
+ "bhas_src": "https://bhas.gov.ba/data/Publikacije/Saopstenja/2026/TRA_05_2026_01_1_BS.pdf",
+ "bhas_2025_new": 19216,
+ "bhas_2025_src": "https://bhas.gov.ba/data/Publikacije/Saopstenja/2026/TRA_05_2025_12_1_BS.pdf",
+ "charger_counts": [
+  ["MOON POWER BiH, februar 2024.", "oko 350 instaliranih punjača, od toga 15 brzih; nisu svi javno dostupni", "https://6yka.com/bih/u-bih-svega-15-brzih-punjaca-ovo-su-cijene-punjenja-elektricnih-automobila/"],
+  ["MOON, juni 2026.", "18 brzih punjača, ukupno 1.575 kW", "https://www.automobili.ba/revolucija-na-koridoru-vc-moon-otvorio-stratesku-punionicu-koja-rjesava-najveci-strah-vozaca-elektricnih-vozila/"],
+  ["Elektroprivreda BiH", "18 lokacija: 17 AC i 1 DC", "https://www.epbih.ba/stranica/elektromobilnost"],
+  ["auto.ba, april 2022.", "131 punjač", "https://auto.ba/mapa-punjaca-za-elekticna-vozila/"]
+ ],
+
+ "networks": [
+  {"slug": "epbih", "name": "Elektroprivreda BiH", "owner": "JP Elektroprivreda BiH d.d. Sarajevo", "site": "https://www.epbih.ba/stranica/elektromobilnost", "registry": 0, "sites_text": "18 lokacija: 17 AC i 1 DC",
+   "app": {"name": "EPBiH Charge", "ios": null, "android": null},
+   "card": "Ranije izdate RFID kartice više ne rade.",
+   "adhoc": "Platna kartica kroz aplikaciju EPBiH Charge ili web charge.epbih.ba (QR kod na punjaču), uz obaveznu rezervaciju iznosa prije punjenja. Plaćanje je u „testnom radu”.",
+   "roaming": "Nije navedeno. EPBiH punjači su na mapama PlugShare, Chargemap, BIHAMK, puni.hr i polni.si.",
+   "prices": [],
+   "price_text": "EPBiH cijenu punjenja ne objavljuje na svojoj stranici; plaćanje karticom je u testnom radu. Iznos rezervacije nije objavljen.",
+   "fees": [], "valid_from": "", "src": "https://www.epbih.ba/stranica/elektromobilnost", "src_label": "Elektroprivreda BiH — elektromobilnost", "conf": "medium",
+   "conf_note": "Cijena nije objavljena.", "map_note": "EPBiH cijenu ne objavljuje; plaćanje karticom kroz aplikaciju EPBiH Charge."},
+  {"slug": "moon", "name": "MOON", "owner": "MOON POWER BiH (Porsche)", "site": "https://www.moon-power.ba/", "registry": 0, "sites_text": "18 brzih punjača (juni 2026.)",
+   "app": {"name": "", "ios": null, "android": null},
+   "card": "Nije objavljeno.", "adhoc": "Nije objavljeno.", "roaming": "Nije objavljeno.",
+   "prices": [{"seg": "HPC", "lo": 50.1, "hi": 1000, "power": "150 kW, Blažuj", "v": 0.80, "cond": "s PDV-om"}],
+   "fees": [], "valid_from": "23.08.2024.", "src": "https://www.porschesarajevo.ba/novosti/obavijest-korisnicima-moon-dc-150kw-punjaca", "src_label": "Porsche Sarajevo — obavijest o MOON DC 150 kW punjaču", "conf": "medium",
+   "conf_note": "Jedina objavljena cijena (2024.); MOON nema javni cjenovnik.",
+   "note": "Punjači: 1 × 300 kW, 4 × 150 kW, 1 × 75 kW i 12 × 50 kW. Punjač u Blažuju 2024. je radio od ponedjeljka do petka, od 8 do 18 h.",
+   "map_note": "MOON nema javni cjenovnik; u Blažuju (150 kW) 0,80 KM po kWh (2024.)."}
+ ],
+ "market": {"text": "Na AC punjačima (do 22 kW) cijene su od 0,00 do 0,50 KM po kWh, a na DC punjačima od 50 kW od 0,50 do 0,90 KM. Mnogi punjači su još u promotivnoj fazi, pa je punjenje besplatno.",
+            "src": "https://www.automobili.ba/mreza-stanica-za-punjenje-elektricnih-automobila-u-bih/", "src_label": "automobili.ba, 03.04.2026."},
+ "other_sites": [
+  ["Mostar, iza Gradske vijećnice", "2 × 22 kW, Unis telekomunikacije; na otvaranju 2021. besplatno"],
+  ["Banja Luka, Banja Luka College", "solarni punjač, dva mjesta; na otvaranju 2023. besplatno"],
+  ["Tesla", "prema Teslinom spisku u BiH nema Supercharger lokacija"],
+  ["EP HZ HB i Elektroprivreda RS", "javne mreže punjača nismo pronašli"]
+ ],
+
+ "power": {
+  "vat": 17, "oie": 0.003524,
+  "note": "Cijene su od javnih snabdjevača: EPBiH od 01.09.2025. (blok tarife po mjesečnoj potrošnji), Elektroprivreda RS od 01.02.2026., EP HZ HB od 01.01.2020. Uračunata je naknada za obnovljive izvore u FBiH i PDV 17 %; fiksne mjesečne naknade nisu.",
+  "blocks": "Kod EPBiH prvih 350 kWh mjesečno ide u zeleni blok, od 351 do 1.000 kWh u plavi, a sve preko toga u crveni. Punjenje auta obično pada u plavi blok.",
+  "nt_hours": "EPBiH: niža tarifa od 22 do 7 h i od 13 do 16 h zimi, od 23 do 8 h i od 14 do 17 h ljeti, a nedjeljom cijeli dan. Elektroprivreda RS: od 22 do 6 h zimi i od 23 do 7 h ljeti, a vikendom od petka navečer do ponedjeljka ujutro.",
+  "tariffs": [
+   {"id": "epbih_plavi_nt", "name": "EPBiH, plavi blok, niža tarifa", "allin": 0.1225, "parts": "energija 0,1012 + OIE 0,0035 KM, + PDV 17 %"},
+   {"id": "epbih_zeleni_nt", "name": "EPBiH, zeleni blok, niža tarifa", "allin": 0.1204, "parts": "energija 0,0994 + OIE 0,0035 KM, + PDV 17 %"},
+   {"id": "epbih_plavi_jt", "name": "EPBiH, plavi blok, jednotarifno", "allin": 0.1937, "parts": "energija 0,1620 + OIE 0,0035 KM, + PDV 17 %"},
+   {"id": "ers_bijela_mt", "name": "Elektroprivreda RS, bijela zona, manja tarifa", "allin": 0.0940, "parts": "energija 0,0406 + mrežarina 0,0397 KM, + PDV 17 %; bez naknade za OIE"},
+   {"id": "ers_plava_mt", "name": "Elektroprivreda RS, plava zona, manja tarifa", "allin": 0.1211, "parts": "energija 0,0638 + mrežarina 0,0397 KM, + PDV 17 %; bez naknade za OIE"},
+   {"id": "ephzhb_nt_visa", "name": "EP HZ HB, niža tarifa, viša sezona", "allin": 0.1196, "parts": "energija 0,0987 + OIE 0,0035 KM, + PDV 17 %"},
+   {"id": "ephzhb_nt_niza", "name": "EP HZ HB, niža tarifa, niža sezona", "allin": 0.0929, "parts": "energija 0,0759 + OIE 0,0035 KM, + PDV 17 %"}
+  ],
+  "sources": [
+   {"label": "EPBiH — cijene snabdijevanja od 01.09.2025. (Sl. novine FBiH 57/25)", "url": "https://mojaenergija.epbih.ba/wp-content/uploads/2025/09/Cijene-snabdijevanja-na-JS-kod-EPBiH-od-01.09.2025.-godine-Sl.-novine-FBiH-57-25-od-30.07.2025.-godine.pdf", "date": "30.07.2025."},
+   {"label": "Bloomberg Adria — zašto računi za struju u BiH nisu isti za sve (cijene po blokovima, bez PDV-a)", "url": "https://ba.bloombergadria.com/ekonomija/bih/89192/zasto-racuni-za-struju-u-bih-nisu-isti-za-sve/news", "date": "20.10.2025."},
+   {"label": "RERS — cijene energije i tarifni stavovi za javno snabdijevanje od 01.02.2026.", "url": "https://reers.ba/wp-content/uploads/2025/12/Odluka-o-izmjenama-i-dopunama-Odluke-o-odobravanju-cijene-energije-i-tarifnih-stavova-za-javno-snabdijevanje-CIR-1.pdf", "date": "22.12.2025."},
+   {"label": "EP HZ HB — cijene za kućanstva", "url": "https://ephzhb.ba/kupci/kucanstva/", "date": "28.09.2026."},
+   {"label": "Operator za OIEiEK — naknada za podsticanje 2026.", "url": "https://www.oieiek.ba/naknada-za-podsticanje/", "date": "30.12.2025."},
+   {"label": "EPBiH — sati niže tarife", "url": "https://bljesak.info/gospodarstvo/flash/elektroprivreda-bih-objavila-novi-rezim-tarifa-za-domacinstva/510477", "date": "28.03.2025."}
+  ]
+ },
+ "fuel": {"petrol": 3.31, "diesel": 3.74, "date": "22.09.2026.", "src": "https://n1info.ba/vijesti/novi-rast-cijena-goriva-u-fbih-dizel-od-pocetka-septembra-poskupio-za-31-a-benzin-za-25-feninga",
+          "src_label": "N1 BiH — prosječne cijene goriva u FBiH, 22.09.2026."},
+ "calc": {"km": 1200, "kwh100": 17, "loss": 10, "share": 20, "tariff": "epbih_plavi_nt", "pub": 0.8, "l100_petrol": 6.5, "l100_diesel": 5.5,
+          "chips": [["AC", 0.5], ["MOON DC", 0.8], ["DC", 0.9]]},
+
+ "subsidies": [
+  {"name": "JP EV 2026 — Fond za zaštitu okoliša FBiH", "status": "paused", "who": "fizička lica s prebivalištem u FBiH, pravna lica i obrti sa sjedištem u FBiH; jedno vozilo po podnosiocu",
+   "amount": "30 % cijene: do 12.000 KM za električno vozilo (M1, N1) i do 10.000 KM za plug-in hibrid (do 50 g CO₂/km); ukupno 500.000 KM",
+   "cond": "novo vozilo, kupljeno u roku od 5 mjeseci od potpisa ugovora, registrovano u FBiH, ne prodaje se 3 godine",
+   "dates": "prijave od 16.09.2026. preko e-prijava.fzofbih.org.ba; 18.09.2026. privremeno zatvoren jer su sredstva rezervisana; poziv traje do 31.12.2026. ili do utroška", "src": "https://fzofbih.org.ba/2026/09/18/privremeno-zatvaranje-javnog-poziva-za-sufinanciranje-nabave-elektricnih-vozila-za-2026-godinu-zbog-rezervacije-raspolozivih-sredstava/", "src_label": "Fond za zaštitu okoliša FBiH, 18.09.2026."},
+  {"name": "Carina 0 % na nova električna vozila", "status": "open", "who": "svi uvoznici novih vozila",
+   "amount": "carinska stopa 0 % za nova električna vozila (hibridi 5 %)",
+   "cond": "novoproizvedena vozila bez preferencijalnog statusa; PDV 17 % se plaća",
+   "dates": "do 31.12.2026. (Vijeće ministara BiH)", "src": "https://www.klix.ba/biznis/privreda/produzeno-ukidanje-carina-na-uvoz-elektricnih-vozila-u-bih-do-kraja-2026-godine/260218169", "src_label": "Klix.ba, 18.02.2026."},
+  {"name": "Poticaj za kupovinu električnih automobila — FMERI 2024.", "status": "closed", "who": "fizička lica u FBiH",
+   "amount": "do 10.000 KM za električno vozilo, do 7.000 KM za plug-in hibrid; ukupno 1.000.000 KM",
+   "cond": "program iz 2024. godine", "dates": "završen", "src": "https://fbihvlada.gov.ba/hr/za-poticaje-pri-kupovini-elektricnih-automobila-milion-km", "src_label": "Vlada FBiH, 01.08.2024."}
+ ],
+ "subsidies_none": "Za Republiku Srpsku (Fond za zaštitu životne sredine i energetsku efikasnost RS), Brčko distrikt i Kanton Sarajevo nismo pronašli program za električna vozila (28.09.2026.).",
+ "benefits": [
+  {"t": "Carina", "v": "0 % za nova električna vozila do 31.12.2026.", "src": "https://www.klix.ba/biznis/privreda/produzeno-ukidanje-carina-na-uvoz-elektricnih-vozila-u-bih-do-kraja-2026-godine/260218169"},
+  {"t": "PDV", "v": "17 %, bez olakšice za električna vozila.", "src": ""},
+  {"t": "Registracija u FBiH", "v": "Primjer iz Zenice 2023.: putarina se za električno vozilo računa po snazi (za 160 kW 262,50 KM), porez na imovinu i naknada za fond za okoliš bili su 0 KM.", "src": "https://www.zenicablog.com/istrazili-smo-registracija-vozila-i-dalje-daleko-najskuplja-u-fbih-hibridna-i-elektricna-vozila-stvaraju-konfuziju/"},
+  {"t": "Tuzlanski kanton", "v": "Prema UNDP-ovoj studiji, električna vozila su oslobođena poreza na imovinu (oko 2022.); da li i danas važi, nismo provjerili.", "src": "https://www.undp.org/sites/g/files/zskgke326/files/2025-11/e-mobility_and_market_study_in_bih_1.pdf"}
+ ],
+ "buildings": [
+  {"t": "Kanton Sarajevo", "v": "Zakon o upravljanju zajedničkim dijelovima zgrade (Sl. novine KS 19/2017): za redovno upravljanje potrebna je saglasnost etažnih vlasnika koji imaju više od polovine ukupne površine (čl. 28), a za vanredno — svih etažnih vlasnika (čl. 36). Punjači se u zakonu ne spominju, pa nije jasno u koju grupu spadaju.", "src": "https://www.paragraf.ba/propisi/kantona-sarajevo/zakon-o-upravljanju-zajednickim-dijelovima-zgrade.html"},
+  {"t": "Republika Srpska", "v": "Zakon o održavanju zgrada (Sl. glasnik RS 101/11): odlučuje skupština zajednice etažnih vlasnika. Posebno pravilo za punjače nismo našli.", "src": "https://zev.rs.ba/zakon-o-odrzavanju-zgrada"}
+ ],
+
+ "road": [
+  ["A1, odmorište Lepenica (smjer Mostar → Sarajevo)", "Elektroprivreda BiH: CCS 50 kW, CHAdeMO 50 kW, Type 2 22 kW; prvi DC punjač na A1 (februar 2022.). Samo na kolovozu prema Sarajevu."],
+  ["A1, Bobanovo Selo kod Počitelja (ulaz na A1 južno od Mostara)", "MOON HYC 50 — 50 kW ili 2 × 25 kW (otvoren juni 2026.)"],
+  ["Sarajevo, Blažuj (Mali Kiseljak 6A)", "MOON 150 kW, 0,80 KM po kWh; 2024. radio pon–pet od 8 do 18 h"],
+  ["Sarajevo, ulica Kralja Tvrtka", "MOON HYC 50"],
+  ["Uz koridor Vc (AC)", "EPBiH: Konjic, Jablanica, Mostar, Visoko, Kakanj, Zenica, Sarajevo"],
+  ["Mostar i Međugorje", "EPBiH AC u Mostaru (Adema Buća 34), punjač 2 × 22 kW iza Gradske vijećnice; DC punjač u Međugorju nismo pronašli"],
+  ["Neum, Banja Luka – Gradiška, M17 prema moru", "brzi punjač s izvorom nismo pronašli"]
+ ],
+ "road_srcs": [
+  {"label": "Autoceste FBiH i Elektroprivreda BiH — prva DC punionica na A1 (18.02.2022.)", "url": "https://www.jpautoceste.ba/autoceste-fbih-i-elektroprivreda-bih-prva-dc-punionica-za-elektricna-vozila-na-autocesti-a1/", "date": "18.02.2022."},
+  {"label": "automobili.ba — MOON otvorio punionicu na koridoru Vc", "url": "https://www.automobili.ba/revolucija-na-koridoru-vc-moon-otvorio-stratesku-punionicu-koja-rjesava-najveci-strah-vozaca-elektricnih-vozila/", "date": "03.06.2026."},
+  {"label": "Porsche Sarajevo — MOON DC 150 kW, Blažuj", "url": "https://www.porschesarajevo.ba/novosti/obavijest-korisnicima-moon-dc-150kw-punjaca", "date": "23.08.2024."}
+ ],
+ "csv": {"file": "elektricni-automobili-bih.csv", "head": ["godina", "elektricni_putnicki_automobili_eurostat"],
+         "rows": [[2021, 75], [2022, 138], [2023, 331], [2024, 509], [2025, 704]]}
+}

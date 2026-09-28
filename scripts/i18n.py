@@ -222,6 +222,9 @@ NOTE = {
 }
 OG_LOCALE = {'en': 'en_US', 'ru': 'ru_RU'}
 HREFLANG = {'sr': 'sr', 'en': 'en', 'ru': 'ru'}
+# extra members of a page's hreflang cluster on other sites: {url: [(hreflang, absolute url), …]}; build.py fills it
+# with the local-language pages of blokvolt.com (scripts/region_pages.py)
+EXTRA_ALTS = {}
 
 
 def page_url(rel):
@@ -397,6 +400,10 @@ class Renderer:
         anchor = can or head.find('meta')
         for l in ('sr', 'en', 'ru'):
             tag = soup.new_tag('link', rel='alternate', hreflang=HREFLANG[l], href=SITE + lang_url(url, l))
+            anchor.insert_after(tag)
+            anchor = tag
+        for code, href in EXTRA_ALTS.get(url, []):
+            tag = soup.new_tag('link', rel='alternate', hreflang=code, href=href)
             anchor.insert_after(tag)
             anchor = tag
         xd = soup.new_tag('link', rel='alternate', hreflang='x-default', href=SITE + url)

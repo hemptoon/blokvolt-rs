@@ -83,7 +83,8 @@
     location.reload();                                   // start again without cookies; the banner shows
   });
   // offline support and the Android app (TWA): a small service worker, network first (static/sw.js)
-  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+  // only on pages that declare the web app (www.blokvolt.rs); blokvolt.com uses this script without a service worker
+  if ('serviceWorker' in navigator && d.querySelector('link[rel="manifest"]') && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
     window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); });
   }
   d.addEventListener('click', function (e) {

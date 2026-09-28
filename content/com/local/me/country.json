@@ -1,0 +1,306 @@
+{
+ "cc": "ME",
+ "checked": "28.09.2026.",
+ "checked_iso": "2026-09-28",
+ "slugs": {
+  "prices": "cijene/"
+ },
+ "map": {
+  "center": [
+   19.25,
+   42.75
+  ],
+  "zoom": 7.6
+ },
+ "net_names": {
+  "eko": "EKO",
+  "petrol": "Petrol",
+  "tesla": "Tesla",
+  "epcg": "EPCG",
+  "greencar": "Greencar"
+ },
+ "fleet": {
+  "series": [
+   [
+    2024,
+    602
+   ],
+   [
+    2025,
+    782
+   ]
+  ],
+  "phys_2025": 214,
+  "legal_2025": 568,
+  "growth_2025": 30,
+  "cars_2025": 275036,
+  "src": "https://ec.europa.eu/eurostat/databrowser/view/road_eqs_carpda/default/table?lang=en",
+  "src_label": "Eurostat, road_eqs_carpda (putnička vozila, pogon: električna energija)",
+  "src_date": "1.9.2026."
+ },
+ "new_bev": {
+  "y2025": 129,
+  "y2025_total": 7285,
+  "share": "1,8 %",
+  "src": "https://investitor.me/2026/08/17/crna-gora-pri-evropskom-dnu-elektricni-automobili-cinili-tek-18-novih-registracija/",
+  "src_label": "Investitor.me prema Eurostatu, 17.08.2026."
+ },
+ "points": {
+  "n": 94,
+  "kw": 2235,
+  "normal_share": 88,
+  "src": "https://www.portalanalitika.me/clanak/crna-gora-bez-ultrabrzih-punjaca-za-elektricna-vozila-potrebno-najmanje-14-novih-lokacija",
+  "src_label": "Portal Analitika prema nacrtu nacionalnog okvira, 14.06.2026.",
+  "eco": "https://www.ecoportal.me/punjaci-uz-glavne-puteve-i-van-gradova-sta-donosi-novi-plan/",
+  "eco_label": "Ecoportal, 23.09.2026."
+ },
+ "networks": [
+  {
+   "slug": "eko",
+   "name": "EKO (Jugopetrol)",
+   "owner": "Jugopetrol AD Kotor",
+   "site": "https://www.jugopetrol.co.me/stanice/usluge/elektri-ni-punja-i/",
+   "registry": 0,
+   "sites_text": "7 benzinskih stanica s punjačem od 50 kW",
+   "app": {
+    "name": "",
+    "ios": null,
+    "android": null
+   },
+   "card": "Nije objavljeno.",
+   "adhoc": "Nije objavljeno.",
+   "roaming": "Nije objavljeno.",
+   "prices": [],
+   "price_text": "EKO na svojoj stranici navodi samo stanice s punjačima od 50 kW (među njima Podgorica – Stari aerodrom, Tivat – Jadranska magistrala, Herceg Novi, Žabljak i Bijelo Polje – Rasovo); cijene i način plaćanja nisu objavljeni.",
+   "fees": [],
+   "valid_from": "",
+   "src": "https://www.jugopetrol.co.me/stanice/usluge/elektri-ni-punja-i/",
+   "src_label": "Jugopetrol — električni punjači",
+   "conf": "medium",
+   "conf_note": "Cijena nije objavljena.",
+   "map_note": "EKO cijenu ne objavljuje; provjerite na stanici."
+  },
+  {
+   "slug": "tesla",
+   "name": "Tesla",
+   "owner": "Tesla",
+   "site": "https://www.tesla.com/findus/list/chargers/Montenegro",
+   "registry": 0,
+   "sites_text": "0 Supercharger lokacija, 2 Destination",
+   "app": {
+    "name": "Tesla",
+    "ios": "https://apps.apple.com/app/tesla/id582007913",
+    "android": "https://play.google.com/store/apps/details?id=com.teslamotors.tesla"
+   },
+   "card": "—",
+   "adhoc": "—",
+   "roaming": "—",
+   "prices": [],
+   "price_text": "U Crnoj Gori nema Supercharger lokacija. Destination punjači su u Porto Montenegru (Tivat) i Luštica Bay (Radovići) — za goste, uslove određuje objekat.",
+   "fees": [],
+   "valid_from": "",
+   "src": "https://www.tesla.com/findus/list/chargers/Montenegro",
+   "src_label": "Tesla — punjači u Crnoj Gori",
+   "conf": "high"
+  },
+  {
+   "slug": "autoput",
+   "name": "Autoput Bar – Boljare",
+   "owner": "operater nije poznat",
+   "site": "https://monteput.me/autoput-bar-boljare/",
+   "registry": 0,
+   "sites_text": "2 odmorišta",
+   "app": {
+    "name": "",
+    "ios": null,
+    "android": null
+   },
+   "card": "—",
+   "adhoc": "—",
+   "roaming": "—",
+   "prices": [],
+   "price_text": "Odmorište Pelev Brijeg: izgrađena stanica 4 × 50 kW. Odmorište Gornje Mrke: 4 × 60 kW u ugradnji. Operater, rad i cijene nisu poznati.",
+   "fees": [],
+   "valid_from": "",
+   "src": "https://www.portalanalitika.me/clanak/crna-gora-bez-ultrabrzih-punjaca-za-elektricna-vozila-potrebno-najmanje-14-novih-lokacija",
+   "src_label": "Portal Analitika, 14.06.2026.",
+   "conf": "medium",
+   "conf_note": "Iz medija, prema nacrtu nacionalnog okvira."
+  }
+ ],
+ "other_sites": [
+  [
+   "Opštine",
+   "Eko-fond je sufinansirao punjače u Baru (2024.) i Cetinju (prva javno dostupna punionica, projekat 94.687,98 €); broj priključaka i cijene nisu objavljeni."
+  ],
+  [
+   "Crnogorski Telekom (2019.)",
+   "punjači u Tivtu, Cetinju i Pljevljima; da li danas rade i koliko koštaju nismo provjerili."
+  ],
+  [
+   "Hoteli i marine",
+   "Porto Montenegro i Luštica Bay (Tesla Destination); ostali hoteli nisu provjereni."
+  ],
+  [
+   "EPCG i Petrol Crna Gora",
+   "javnu mrežu punjača nismo pronašli."
+  ]
+ ],
+ "power": {
+  "vat": 21,
+  "note": "EPCG ne objavljuje cijene u obliku koji se može pročitati, a cijena aktivne energije za domaćinstva nepromijenjena je od 2019. (EPCG, septembar 2026.). Zato su cijene ispod indikativne: aktivna energija iz članka iz 2022., mrežne naknade REGAGEN-a za 2026. i PDV 21 %; bez naknade za obnovljive izvore.",
+  "nt_hours": "Niža tarifa: od 23 do 7 h (prema starijim izvorima i nedjeljom cijeli dan).",
+  "tariffs": [
+   {
+    "id": "nt",
+    "name": "Dvotarifno, niža tarifa (noć)",
+    "allin": 0.0694,
+    "parts": "energija 0,0260 + mreža i gubici 0,0313 €, + PDV 21 % — indikativno"
+   },
+   {
+    "id": "vt",
+    "name": "Dvotarifno, viša tarifa (dan)",
+    "allin": 0.1387,
+    "parts": "energija 0,0520 + mreža i gubici 0,0626 €, + PDV 21 % — indikativno"
+   }
+  ],
+  "sources": [
+   {
+    "label": "REGAGEN — privremene cijene za korišćenje distributivnog sistema 2026. (CEDIS)",
+    "url": "https://regagen.co.me/wp-content/uploads/2025/11/2025.11.21_CEDIS_Privremene-cijene-2026.pdf",
+    "date": "21.11.2025."
+   },
+   {
+    "label": "REGAGEN — privremene cijene za korišćenje prenosnog sistema 2026. (CGES)",
+    "url": "https://regagen.co.me/wp-content/uploads/2025/11/2025.11.21_CGES_Privremene-cijene-2026.pdf",
+    "date": "21.11.2025."
+   },
+   {
+    "label": "Gradnja.me — cijene aktivne energije VT i NT (2022.)",
+    "url": "https://www.gradnja.me/clanak/900/potrosnja-i-cijena-elektricne-energije-u-domacinstvu",
+    "date": "22.06.2022."
+   },
+   {
+    "label": "TV Pljevlja — EPCG: cijena aktivne energije za domaćinstva nepromijenjena od 2019.",
+    "url": "https://tvpljevlja.me/2026/09/08/epcg-stabilne-cijene-veci-popusti-i-vise-redovnih-platisa/",
+    "date": "08.09.2026."
+   }
+  ]
+ },
+ "fuel": {
+  "petrol": 1.74,
+  "diesel": 1.95,
+  "date": "22.09.2026.",
+  "src": "https://investitor.me/2026/09/21/gorivo-od-utorka-poskupljuje-uprkos-nizim-akcizama-dizel-skace-na-195-eura/",
+  "src_label": "Investitor.me — maksimalne cijene goriva od 22.09.2026."
+ },
+ "calc": {
+  "km": 1200,
+  "kwh100": 17,
+  "loss": 10,
+  "share": 0,
+  "tariff": "nt",
+  "pub": 0.4,
+  "l100_petrol": 6.5,
+  "l100_diesel": 5.5,
+  "chips": [],
+  "pub_hint": "Operateri u Crnoj Gori ne objavljuju cijene javnog punjenja: upišite cijenu koju ste platili."
+ },
+ "subsidies": [
+  {
+   "name": "Eko-fond — subvencije za električna vozila (SKLAD e-mobility, saradnja sa Slovenijom)",
+   "status": "closed",
+   "who": "fizička lica, privredna društva, preduzetnici i javni sektor",
+   "amount": "u dva konkursa subvencionisana su 53 nova električna vozila; iznosi za 2026. nisu objavljeni na listi konkursa",
+   "cond": "nova električna vozila; hibridi nisu obuhvaćeni",
+   "dates": "posljednja odluka o odabiru 03.06.2026.; otvorenog konkursa za vozila nema (28.09.2026.)",
+   "src": "https://www.eko-fond.co.me/konkursi",
+   "src_label": "Eko-fond — konkursi"
+  },
+  {
+   "name": "Eko-fond — oglas za subvencije za električna vozila 2025.",
+   "status": "closed",
+   "who": "fizička lica (1 vozilo), preduzeća i preduzetnici (do 4), javni sektor (do 8)",
+   "amount": "M1: 7.200 € (cijena do 35.000 €), 6.500 € (35.000–45.000 €), 4.500 € (45.000–65.000 €); N1 4.500–6.500 €; L 300–1.500 €; ukupno 150.000 €",
+   "cond": "vozila s nultom emisijom CO₂; hibridi nisu obuhvaćeni",
+   "dates": "objavljen 20.05.2025., 45 dana ili do utroška",
+   "src": "https://bankar.me/eko-fond-raspisao-oglas-za-subvencije-za-elektricna-vozila/",
+   "src_label": "Bankar.me, 2025."
+  }
+ ],
+ "subsidies_note": "Poreske, carinske ili akcizne olakšice za električna vozila, popuste pri registraciji i besplatan parking nismo mogli potvrditi iz zvaničnog izvora (28.09.2026.).",
+ "benefits": [],
+ "road": [
+  [
+   "Autoput Bar – Boljare, dionica Smokovac – Mateševo (41 km)",
+   "Pelev Brijeg: izgrađeno 4 × 50 kW; Gornje Mrke: 4 × 60 kW u ugradnji. Operater i rad nisu potvrđeni."
+  ],
+  [
+   "Jadranska magistrala",
+   "EKO Tivat (50 kW), EKO Herceg Novi (50 kW); Tesla Destination u Porto Montenegru i Luštica Bay. Između Budve i Ulcinja brzi punjač nismo potvrdili."
+  ],
+  [
+   "Podgorica",
+   "EKO Podgorica, Bulevar Vilija Branta 1, Stari aerodrom (50 kW)"
+  ],
+  [
+   "Žabljak i sjever",
+   "EKO Žabljak (50 kW), EKO Bijelo Polje – Rasovo (50 kW); u Nikšiću brzi punjač nismo potvrdili"
+  ],
+  [
+   "Granica s Hrvatskom (Debeli Brijeg)",
+   "najbliži objavljeni brzi punjač: EKO Herceg Novi"
+  ],
+  [
+   "Granica sa Srbijom",
+   "najbliži objavljeni brzi punjač: EKO Bijelo Polje – Rasovo"
+  ],
+  [
+   "Trajekt Kamenari – Lepetane",
+   "pravila za električna vozila nismo mogli provjeriti"
+  ]
+ ],
+ "road_note": "Mreža TEN-T u Crnoj Gori ima 797 km, bez ultrabrzih punjača; nijedna lokacija ne zadovoljava razmak od 60 km iz propisa EU (AFIR). Nacrt nacionalnog okvira procjenjuje da treba najmanje 14 novih lokacija, oko 5,7 MW.",
+ "road_srcs": [
+  {
+   "label": "Jugopetrol — električni punjači",
+   "url": "https://www.jugopetrol.co.me/stanice/usluge/elektri-ni-punja-i/",
+   "date": "28.09.2026."
+  },
+  {
+   "label": "Jugopetrol — sedam novih punjača širom Crne Gore",
+   "url": "https://www.jugopetrol.co.me/novosti/sve-novosti/jugopetrol-postavlja-sedam-novih-punja-a-za-elektri-na-vozila-irom-crne-gore/",
+   "date": ""
+  },
+  {
+   "label": "Portal Analitika — Crna Gora bez ultrabrzih punjača, potrebno najmanje 14 novih lokacija",
+   "url": "https://www.portalanalitika.me/clanak/crna-gora-bez-ultrabrzih-punjaca-za-elektricna-vozila-potrebno-najmanje-14-novih-lokacija",
+   "date": "14.06.2026."
+  },
+  {
+   "label": "Tesla — punjači u Crnoj Gori",
+   "url": "https://www.tesla.com/findus/list/chargers/Montenegro",
+   "date": "28.09.2026."
+  }
+ ],
+ "csv": {
+  "file": "elektricni-automobili-crna-gora.csv",
+  "head": [
+   "godina",
+   "elektricni_putnicki_automobili_eurostat",
+   "novi_bev"
+  ],
+  "rows": [
+   [
+    2024,
+    602,
+    ""
+   ],
+   [
+    2025,
+    782,
+    129
+   ]
+  ]
+ }
+}

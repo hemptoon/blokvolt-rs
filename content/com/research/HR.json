@@ -3,12 +3,12 @@
  "name": "Croatia",
  "checked": "23.09.2026",
  "currency": "EUR",
- "summary": "Croatia's electric-car market is small but grew quickly in 2026: Eurostat counts about 7,100 battery-electric passenger cars on the road at the end of 2025, and ACEA reports 1,781 new BEVs in January–June 2026, about four and a half times the same period of 2025. Public charging is run by 32 companies, led by HEP's ELEN network, Petrol and Hrvatski Telekom, with published prices of about €0.35–0.42/kWh for AC and €0.66–0.78/kWh for fast DC without a subscription. Home wallboxes are sold by solar and electrical firms, the supplier E.ON, online shops and a DIY chain at roughly €475–1,500 for the unit; in apartment buildings, installing charging points is a co-owners' decision taken by a majority of ownership shares under the building-management law in force since 2025.",
+ "summary": "Croatia's electric-car market is small but grew quickly in 2026: Eurostat counts about 12,600 battery-electric passenger cars on the road at the end of 2025, and ACEA reports 1,781 new BEVs in January–June 2026, about four and a half times the same period of 2025. Public charging is run by 32 companies, led by HEP's ELEN network, Petrol and Hrvatski Telekom, with published prices of about €0.35–0.42/kWh for AC and €0.66–0.78/kWh for fast DC without a subscription. Home wallboxes are sold by solar and electrical firms, the supplier E.ON, online shops and a DIY chain at roughly €475–1,500 for the unit; in apartment buildings, installing charging points is a co-owners' decision taken by a majority of ownership shares under the building-management law in force since 2025.",
  "stats": [
   {
    "label": "Battery-electric passenger cars on the road",
-   "value": "7,058 (2025)",
-   "note": "Eurostat, energy type 'electricity'. Earlier years: 5,330 (2023) and 7,286 (2024); the 2025 value is lower than 2024 as published. Total passenger cars in 2025: 2,058,313, so BEVs are about 0.34% of the fleet (our calculation).",
+   "value": "12,616 (2025)",
+   "note": "Eurostat, energy type 'electricity', all owners. Earlier years: 7,058 (2023) and 10,045 (2024). In 2025, 5,330 were owned by private persons and 7,286 by companies. Total passenger cars in 2025: 2,058,313, so BEVs are about 0.61% of the fleet (our calculation).",
    "source": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/road_eqs_carpda?geo=HR&mot_nrg=ELC&unit=NR&lastTimePeriod=4",
    "source_title": "Eurostat – Passenger cars by type of motor energy (road_eqs_carpda)",
    "source_date": "dataset updated 01.09.2026",

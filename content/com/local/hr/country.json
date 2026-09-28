@@ -1,0 +1,1287 @@
+{
+ "cc": "HR",
+ "checked": "28. 9. 2026.",
+ "checked_iso": "2026-09-28",
+ "slugs": {
+  "prices": "cijene/"
+ },
+ "map": {
+  "center": [
+   16.25,
+   44.55
+  ],
+  "zoom": 6.3
+ },
+ "net_names": {
+  "elen": "ELEN",
+  "petrol": "Petrol",
+  "mol": "MOL",
+  "ht": "HT",
+  "ionity": "IONITY",
+  "tesla": "Tesla",
+  "lidl": "Lidl",
+  "kaufland": "Kaufland",
+  "electrip": "Electrip",
+  "qelo": "Qelo",
+  "greenway": "GreenWay",
+  "moon": "MOON",
+  "eon": "E.ON",
+  "ina": "INA"
+ },
+ "fleet": {
+  "series": [
+   [
+    2021,
+    2977
+   ],
+   [
+    2022,
+    4801
+   ],
+   [
+    2023,
+    7058
+   ],
+   [
+    2024,
+    10045
+   ],
+   [
+    2025,
+    12616
+   ]
+  ],
+  "phys_2025": 5330,
+  "legal_2025": 7286,
+  "growth_2025": 26,
+  "src": "https://ec.europa.eu/eurostat/databrowser/view/road_eqs_carpda/default/table?lang=en",
+  "src_label": "Eurostat, road_eqs_carpda (osobni automobili, pogon: električna energija)",
+  "src_date": "1. 9. 2026."
+ },
+ "new_bev": {
+  "y2025": 1266,
+  "y2025_change": -29.4,
+  "y2024": 1793,
+  "h1_2026": 1781,
+  "h1_2025": 396,
+  "h1_share": 4.0,
+  "jan_aug_2026": 2297,
+  "jan_aug_2025": 535,
+  "jan_aug_total": 54573,
+  "jan_aug_change": 329.3,
+  "months_2026": [
+   [
+    "lipanj",
+    344,
+    77
+   ],
+   [
+    "srpanj",
+    358,
+    69,
+    "izračun"
+   ],
+   [
+    "kolovoz",
+    158,
+    70
+   ]
+  ],
+  "src": "https://www.acea.auto/files/Press_release_car_registrations_August_2026.pdf",
+  "src_label": "ACEA — registracije novih automobila, kolovoz 2026.",
+  "src_date": "24. 9. 2026.",
+  "src_h1": "https://www.acea.auto/files/Press_release_car_registrations_June_2026.pdf",
+  "src_y2025": "https://www.acea.auto/files/Press_release_car_registrations_December_2025.pdf",
+  "cvh_h1_2026": 2807,
+  "cvh_h1_2025": 1138,
+  "cvh_src": "https://vijesti.hrt.hr/hrvatska/cvh-prosjecna-starost-voznog-parka-u-hrvatskoj-148-godina-12831150",
+  "cvh_date": "24. 7. 2026."
+ },
+ "top_models": {
+  "y2026": [
+   [
+    "BYD Dolphin Surf",
+    361
+   ],
+   [
+    "Tesla Model Y",
+    231
+   ],
+   [
+    "BYD Atto 2",
+    180
+   ],
+   [
+    "BYD Sealion 7",
+    128
+   ],
+   [
+    "Hyundai Inster",
+    123
+   ]
+  ],
+  "y2026_label": "siječanj–kolovoz 2026.",
+  "y2026_total": 2333,
+  "y2026_src": "https://autonet.bug.hr/trziste/kineski-byd-vlada-trzistem-elektricnih-automobila-uz-gotovo-trecinu-svih-62596",
+  "y2026_date": "4. 9. 2026.",
+  "y2025": [
+   [
+    "Tesla Model Y",
+    239
+   ],
+   [
+    "Tesla Model 3",
+    113
+   ],
+   [
+    "BYD Dolphin Surf",
+    89
+   ],
+   [
+    "BYD Sealion 7",
+    64
+   ],
+   [
+    "Citroën ë-C3",
+    64
+   ]
+  ],
+  "y2025_src": "https://autonet.bug.hr/trziste/pored-slabije-prodaje-povecao-se-izvoz-pa-je-slika-ev-trzista-u-hrvatskoj-jos-56946",
+  "y2025_date": "23. 1. 2026."
+ },
+ "counties_2024": {
+  "rows": [
+   [
+    "Grad Zagreb",
+    3832
+   ],
+   [
+    "Splitsko-dalmatinska",
+    1061
+   ],
+   [
+    "Zagrebačka",
+    1058
+   ],
+   [
+    "Primorsko-goranska",
+    871
+   ],
+   [
+    "Istarska",
+    466
+   ]
+  ],
+  "total": 9987,
+  "src": "https://automobiliona.hr/broj-elektricnih-automobila-po-zupanijama/",
+  "src_label": "CVH, prema automobiliona.hr",
+  "src_date": "12. 9. 2025."
+ },
+ "charging_stats": {
+  "acea_2023": {
+   "points": 1074,
+   "ac": 675,
+   "dc": 399,
+   "src": "https://www.acea.auto/files/Charging_ahead-Accelerating_the_roll-out_of_EU_electric_vehicle_charging_infrastructure.pdf"
+  },
+  "hpc_2026": {
+   "connectors": 300,
+   "src": "https://www.energetika-net.com/odrzivi-promet/ultra-brze-punionice-u-hrvatskoj-infrastruktura-raste-ali-kvaliteta-postaje-kljucni-izazov",
+   "date": "25. 3. 2026."
+  },
+  "tesla": {
+   "list": 17,
+   "spots": 120,
+   "sites": 16,
+   "src": "https://autonet.bug.hr/elektricna-vozila/tesla-znacajno-prosirila-mrezu-supercharger-punjaca-u-hrvatskoj-61720",
+   "date": "28. 7. 2026."
+  }
+ },
+ "registry": {
+  "url": "https://pametnamobilnost.hr/hr/registar-punionica/44",
+  "rows": 715,
+  "owners": [
+   [
+    "Hrvatska elektroprivreda (ELEN)",
+    238
+   ],
+   [
+    "Hrvatski Telekom",
+    128
+   ],
+   [
+    "Petrol",
+    77
+   ],
+   [
+    "Porsche Croatia (MOON)",
+    70
+   ],
+   [
+    "Kaufland Hrvatska",
+    53
+   ],
+   [
+    "Lidl Hrvatska",
+    43
+   ],
+   [
+    "Electrip",
+    26
+   ],
+   [
+    "GreenWay Hrvatska",
+    19
+   ],
+   [
+    "enasolAuto (Qelo)",
+    16
+   ],
+   [
+    "Tesla Hrvatska",
+    13
+   ],
+   [
+    "Eleport Adria",
+    9
+   ],
+   [
+    "Best in Parking",
+    6
+   ],
+   [
+    "E.ON Energija",
+    5
+   ],
+   [
+    "ostali (5 tvrtki)",
+    12
+   ]
+  ],
+  "missing": "MOL (Tifon), IONITY i INA u registru nemaju nijedan zapis"
+ },
+ "networks": [
+  {
+   "slug": "elen",
+   "name": "ELEN (HEP)",
+   "owner": "Hrvatska elektroprivreda d.d.",
+   "site": "https://elen.hep.hr/",
+   "registry": 238,
+   "app": {
+    "name": "ELEN",
+    "ios": "https://apps.apple.com/app/elen/id1481444672",
+    "android": "https://play.google.com/store/apps/details?id=hr.hep.elen"
+   },
+   "card": "RFID kartice samo za tvrtke, uz ugovor.",
+   "adhoc": "Aplikacija ELEN ili web My ELEN: skenirate QR kod na priključku i platite bankovnom karticom. Banka privremeno rezervira 33 € (AC) ili 53 € (DC), a naplaćuje se samo potrošeno.",
+   "roaming": "Roaming na ELEN punionicama uvodi se postupno. Preko Petrolove aplikacije OneCharge ELEN stoji 0,56 / 0,78 / 1,06 €/kWh, preko HT-ove aplikacije espoTs 0,74–1,29 €/kWh.",
+   "prices": [
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 22.1,
+     "power": "do 22,1 kW",
+     "v": 0.35,
+     "cond": "izvan autocesta"
+    },
+    {
+     "seg": "DC",
+     "lo": 22.2,
+     "hi": 50,
+     "power": "22,2–50 kW",
+     "v": 0.45,
+     "cond": "izvan autocesta"
+    },
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 22.1,
+     "power": "do 22,1 kW",
+     "v": 0.42,
+     "cond": "na autocestama"
+    },
+    {
+     "seg": "DC",
+     "lo": 22.2,
+     "hi": 50,
+     "power": "22,2–50 kW",
+     "v": 0.57,
+     "cond": "na autocestama"
+    },
+    {
+     "seg": "HPC",
+     "lo": 50.1,
+     "hi": 1000,
+     "power": "iznad 50 kW",
+     "v": 0.78,
+     "cond": "na autocestama"
+    }
+   ],
+   "fees": [
+    "Izvan autocesta 0,06 €/min nakon 180 min na AC i nakon 60 min na DC.",
+    "Na autocestama 0,14 €/min nakon 180 min (AC), 60 min (DC do 50 kW) i 45 min (iznad 50 kW)."
+   ],
+   "valid_from": "1. 4. 2025.",
+   "src": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
+   "src_label": "ELEN — cjenik od 1. 4. 2025. (PDF)",
+   "conf": "high",
+   "note": "Sve cijene s PDV-om. Buco.com.hr je 19. 12. 2025. pisao o poskupljenju na autocestama, ali HEP na dan provjere i dalje objavljuje cjenik od 1. 4. 2025."
+  },
+  {
+   "slug": "petrol",
+   "name": "Petrol",
+   "owner": "Petrol d.o.o.",
+   "site": "https://www.petrol.hr/mobilnost/onecharge",
+   "registry": 77,
+   "app": {
+    "name": "OneCharge HR",
+    "ios": "https://apps.apple.com/us/app/onecharge-hr/id1550899025",
+    "android": "https://play.google.com/store/apps/details?id=hr.petrol.onecharge"
+   },
+   "card": "Petrol Klub / Petrol Pay kartica ili poslovna e-mobility kartica.",
+   "adhoc": "Terminal za bankovne kartice na punionici (unaprijed birate 10–40 € ili 10–40 kWh) ili OneCharge web-aplikacija bez registracije. Na blagajni se može kupiti paket od 20 kWh za 10,20 € (do 50 kW).",
+   "roaming": "OneCharge radi i na ELEN punionicama (0,56 / 0,78 / 1,06 €/kWh) te na mrežama u inozemstvu, po cijenama iz Petrolova cjenika.",
+   "prices": [
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 22,
+     "power": "do 22 kW",
+     "v": 0.37,
+     "cond": "registrirani korisnici"
+    },
+    {
+     "seg": "DC",
+     "lo": 22.01,
+     "hi": 50,
+     "power": "22–50 kW",
+     "v": 0.47,
+     "cond": "registrirani korisnici"
+    },
+    {
+     "seg": "HPC",
+     "lo": 50.01,
+     "hi": 1000,
+     "power": "iznad 50 kW",
+     "v": 0.66,
+     "cond": "registrirani korisnici"
+    },
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 22,
+     "power": "do 22 kW",
+     "v": 0.41,
+     "cond": "bez registracije"
+    },
+    {
+     "seg": "DC",
+     "lo": 22.01,
+     "hi": 50,
+     "power": "22–50 kW",
+     "v": 0.51,
+     "cond": "bez registracije"
+    },
+    {
+     "seg": "HPC",
+     "lo": 50.01,
+     "hi": 1000,
+     "power": "iznad 50 kW",
+     "v": 0.73,
+     "cond": "bez registracije"
+    }
+   ],
+   "fees": [
+    "0,04 €/min nakon 180 min na AC (od 7 do 20 h).",
+    "0,08 €/min nakon 60 min na DC do 50 kW.",
+    "0,15 €/min nakon 40 min iznad 50 kW."
+   ],
+   "valid_from": "1. 11. 2025.",
+   "src": "https://www.petrol.hr/mobilnost/privatni-korisnici/javne-elektricne-punionice/cjenik-punjenja",
+   "src_label": "Petrol — cjenik punjenja od 1. 11. 2025.",
+   "conf": "high",
+   "note": "Sve cijene s PDV-om. Starije cijene (0,39 / 0,50 / 0,73) koje se još pojavljuju na drugim stranicama više ne vrijede."
+  },
+  {
+   "slug": "mol",
+   "name": "MOL Plugee",
+   "owner": "MOL Hrvatska (bivše Tifon postaje)",
+   "site": "https://molplugee.hr/",
+   "registry": 0,
+   "app": {
+    "name": "MOL Plugee",
+    "ios": null,
+    "android": null
+   },
+   "card": "Nije provjereno.",
+   "adhoc": "Posebna cijena bez registracije; paketi energije plaćaju se na blagajni.",
+   "roaming": "HT-ova aplikacija espoTs ne radi na MOL Plugee punionicama (HAK, 8. 6. 2024.).",
+   "prices": [
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 25,
+     "power": "AC",
+     "v": 0.45,
+     "cond": "registrirani korisnici"
+    },
+    {
+     "seg": "DC",
+     "lo": 25.1,
+     "hi": 1000,
+     "power": "DC",
+     "v": 0.66,
+     "cond": "registrirani korisnici"
+    },
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 25,
+     "power": "AC",
+     "v": 0.55,
+     "cond": "bez registracije"
+    },
+    {
+     "seg": "DC",
+     "lo": 25.1,
+     "hi": 1000,
+     "power": "DC",
+     "v": 0.76,
+     "cond": "bez registracije"
+    }
+   ],
+   "fees": [],
+   "valid_from": "",
+   "src": "https://autonet.bug.hr/automobili/dizel-od-191-eura-ili-punjac-od-07-kwh-sto-se-danas-vise-isplati-63090",
+   "src_label": "Autonet, 24. 9. 2026. (službeni cjenik nije bilo moguće otvoriti)",
+   "conf": "medium",
+   "note": "Službena stranica molplugee.hr nije se dala otvoriti, pa su cijene iz medija. Prije punjenja provjerite u aplikaciji MOL Plugee.",
+   "conf_note": "Iz medija (Autonet, 24. 9. 2026.) — službeni cjenik nije dostupan."
+  },
+  {
+   "slug": "ht",
+   "name": "Hrvatski Telekom (espoTs)",
+   "owner": "Hrvatski Telekom d.d.",
+   "site": "https://poslovni.ht.hr/e-mobilnost",
+   "registry": 128,
+   "app": {
+    "name": "espoTs",
+    "ios": "https://apps.apple.com/hr/app/espots/id1485541722",
+    "android": "https://play.google.com/store/apps/details?id=hr.tht.espots"
+   },
+   "card": "Prepaid T-RFID kartica iz odabranih T-Centara; uplaćeni iznos troši se na punjenje.",
+   "adhoc": "U aplikaciji ili na webu espoTs otvorite jednokratni račun i platite karticom, bez registracije.",
+   "roaming": "espoTs radi i na ELEN (0,74–1,29 €/kWh), Petrol (0,69–1,36 €/kWh) i IONITY punionicama te kod Hubject partnera (0,90 €/kWh).",
+   "prices": [],
+   "price_text": "Cijenu određuje vlasnik lokacije — hotel, trgovina ili općina — posebno za AC i DC: od 0,21 do 0,80 €/kWh. Primjeri iz HT-ova cjenika: Tommy brze punionice 0,35 €/kWh, Konzum 0,40–0,55 €/kWh.",
+   "fees": [],
+   "valid_from": "",
+   "src": "https://www.hrvatskitelekom.hr/ResourceManager/poslovni/Cjenik-punjenja-za-web.pdf",
+   "src_label": "Hrvatski Telekom — cjenik punjenja (PDF bez datuma)",
+   "conf": "medium",
+   "map_note": "Cijenu određuje vlasnik lokacije (0,21–0,80 €/kWh). Točnu cijenu vidite u aplikaciji espoTs.",
+   "note": "HT je platforma: punionice na njoj imaju različite vlasnike (Konzum, Tommy, hoteli, općine, zračna luka Pula…).",
+   "conf_note": "HT-ov cjenik nema datum; cijena ovisi o lokaciji."
+  },
+  {
+   "slug": "ionity",
+   "name": "IONITY",
+   "owner": "IONITY GmbH",
+   "site": "https://www.ionity.eu/",
+   "registry": 0,
+   "sites_text": "8 lokacija, do 350 kW",
+   "app": {
+    "name": "IONITY",
+    "ios": "https://apps.apple.com/us/app/ionity/id1551448692",
+    "android": "https://play.google.com/store/apps/details?id=com.cleevio.ionity.android.app"
+   },
+   "card": "IONITY kartica za punjenje (radi i bez aplikacije).",
+   "adhoc": "Cijena Direct za punjenje bez pretplate; pokretanje i QR kodom u aplikaciji.",
+   "roaming": "HT espoTs i MOON eCharge rade na IONITY punionicama.",
+   "prices": [
+    {
+     "seg": "HPC",
+     "lo": 50.01,
+     "hi": 1000,
+     "power": "do 350 kW",
+     "v": 0.74,
+     "cond": "Direct, bez registracije"
+    },
+    {
+     "seg": "HPC",
+     "lo": 50.01,
+     "hi": 1000,
+     "power": "do 350 kW",
+     "v": 0.7,
+     "cond": "u IONITY aplikaciji"
+    },
+    {
+     "seg": "HPC",
+     "lo": 50.01,
+     "hi": 1000,
+     "power": "do 350 kW",
+     "v": 0.55,
+     "cond": "pretplata Motion (5,99 €/mj.)"
+    },
+    {
+     "seg": "HPC",
+     "lo": 50.01,
+     "hi": 1000,
+     "power": "do 350 kW",
+     "v": 0.44,
+     "cond": "pretplata Power (11,99 €/mj.)"
+    }
+   ],
+   "fees": [],
+   "valid_from": "",
+   "src": "https://www.ionity.eu/subscriptions",
+   "src_label": "IONITY — pretplate i cijene za Hrvatsku",
+   "conf": "medium",
+   "note": "Cijene sa stranice IONITY za Hrvatsku; na stranici nije jasno navedeno uključuju li PDV.",
+   "conf_note": "Nije navedeno uključuju li cijene PDV."
+  },
+  {
+   "slug": "tesla",
+   "name": "Tesla Supercharger",
+   "owner": "Tesla Hrvatska d.o.o.",
+   "site": "https://www.tesla.com/findus/list/superchargers/Croatia",
+   "registry": 13,
+   "sites_text": "17 lokacija na Teslinu popisu",
+   "app": {
+    "name": "Tesla",
+    "ios": "https://apps.apple.com/app/tesla/id582007913",
+    "android": "https://play.google.com/store/apps/details?id=com.teslamotors.tesla"
+   },
+   "card": "Nema.",
+   "adhoc": "Vozila drugih marki pune kroz aplikaciju Tesla, na lokacijama otvorenima za sve.",
+   "roaming": "Nismo našli podatak da tuđe aplikacije rade na Superchargerima u Hrvatskoj.",
+   "prices": [],
+   "price_text": "Tesla ne objavljuje cijene na webu: cijenu po lokaciji i dobu dana vidite u aplikaciji. Za vozila drugih marki postoji članstvo od 11,99 €/mj. s cijenama kao za Tesline vlasnike. Kad je lokacija puna, a baterija na 80 % ili više, naplaćuje se naknada za zauzeće.",
+   "fees": [],
+   "valid_from": "",
+   "src": "https://www.tesla.com/support/charging/supercharging",
+   "src_label": "Tesla — Supercharging (podrška)",
+   "conf": "medium",
+   "map_note": "Tesla cijenu pokazuje samo u aplikaciji, po lokaciji i dobu dana.",
+   "conf_note": "Cijene su samo u Teslinoj aplikaciji."
+  },
+  {
+   "slug": "lidl",
+   "name": "Lidl",
+   "owner": "Lidl Hrvatska d.o.o. k.d.",
+   "site": "https://www.lidl.hr/c/e-punionice/s10038053",
+   "registry": 43,
+   "app": {
+    "name": "Lidl Plus",
+    "ios": "https://apps.apple.com/hr/app/lidl-plus/id1238611143",
+    "android": "https://play.google.com/store/apps/details?id=com.lidl.eci.lidlplus"
+   },
+   "card": "RFID kartica ili aplikacija vašeg pružatelja usluge e-mobilnosti, ako ima roaming prema Lidlu.",
+   "adhoc": "„Punjenje putem weba”: QR kod na punionici vodi na stranicu intercharge (Hubject), plaćanje karticom ili PayPalom.",
+   "roaming": "Web plaćanje ide preko Hubject intercharge; Lidl punionice rade i s Qelom i MOON eChargeom.",
+   "prices": [
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 43,
+     "power": "AC",
+     "v": 0.35,
+     "cond": "s Lidl Plus aplikacijom"
+    },
+    {
+     "seg": "DC",
+     "lo": 43.1,
+     "hi": 1000,
+     "power": "DC do 50 kW",
+     "v": 0.45,
+     "cond": "s Lidl Plus aplikacijom"
+    },
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 43,
+     "power": "AC",
+     "v": 0.4,
+     "cond": "bez aplikacije (web)"
+    },
+    {
+     "seg": "DC",
+     "lo": 43.1,
+     "hi": 1000,
+     "power": "DC do 50 kW",
+     "v": 0.6,
+     "cond": "bez aplikacije (web)"
+    }
+   ],
+   "fees": [],
+   "valid_from": "",
+   "src": "https://www.lidl.hr/c/e-punionice/s10038053",
+   "src_label": "Lidl Hrvatska — e-punionice",
+   "conf": "high",
+   "note": "Punionice rade u radno vrijeme trgovine; vremenskog ograničenja punjenja nema, ali vozilo nakon punjenja treba premjestiti."
+  },
+  {
+   "slug": "kaufland",
+   "name": "Kaufland",
+   "owner": "Kaufland Hrvatska k.d.",
+   "site": "https://www.kaufland.hr/usluge/e-punionice.html",
+   "registry": 53,
+   "sites_text": "48 trgovina s DC punionicom (lipanj 2024.)",
+   "app": {
+    "name": "",
+    "ios": null,
+    "android": null
+   },
+   "card": "Kartice partnera u roamingu (npr. MOON eCharge, Qelo).",
+   "adhoc": "QR kod na punionici vodi na web-platformu has.to.be (be.ENERGISED); plaćanje karticom ili PayPalom. Ugovor o plaćanju sklapate s has.to.be.",
+   "roaming": "MOON eCharge i Qelo.",
+   "prices": [
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 22,
+     "power": "AC",
+     "v": 0.35,
+     "cond": "bez registracije"
+    },
+    {
+     "seg": "DC",
+     "lo": 22.1,
+     "hi": 1000,
+     "power": "DC 50–120 kW",
+     "v": 0.45,
+     "cond": "bez registracije"
+    }
+   ],
+   "fees": [],
+   "valid_from": "svibnja 2024.",
+   "src": "https://autonet.bug.hr/elektricna-vozila/losa-vijest-za-vlasnike-elektricnih-auta-nema-vise-besplatnog-punjenja-kod-41079",
+   "src_label": "Autonet, 23. 5. 2024. (Kaufland cijene ne objavljuje na svojoj stranici)",
+   "conf": "medium",
+   "note": "Punjenje je moguće u radno vrijeme trgovine. Kaufland na svojoj stranici ne objavljuje cijene — provjerite na punionici.",
+   "conf_note": "Iz medija (svibanj 2024.) — Kaufland cijene ne objavljuje."
+  },
+  {
+   "slug": "electrip",
+   "name": "Electrip",
+   "owner": "Electrip Mobility Service d.o.o.",
+   "site": "https://electripglobal.com/hr/za-vozace",
+   "registry": 26,
+   "sites_text": "29 lokacija, 100 priključaka (lipanj 2026.)",
+   "app": {
+    "name": "Electrip EV Charging",
+    "ios": null,
+    "android": "https://play.google.com/store/apps/details?id=com.electrip.app"
+   },
+   "card": "Nije provjereno.",
+   "adhoc": "Plaćanje karticom spremljenom u aplikaciji; rezervacija i AutoCharge u aplikaciji.",
+   "roaming": "Preko platforme DCS rade usluge punjenja proizvođača Mercedes-Benz, BMW, Volvo, MINI, Hyundai, Toyota i Lexus.",
+   "prices": [
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 22,
+     "power": "AC",
+     "v": 0.41,
+     "cond": "aplikacija"
+    },
+    {
+     "seg": "DC",
+     "lo": 22.1,
+     "hi": 50,
+     "power": "DC",
+     "v": 0.49,
+     "cond": "aplikacija"
+    },
+    {
+     "seg": "HPC",
+     "lo": 50.1,
+     "hi": 1000,
+     "power": "HPC",
+     "v": 0.62,
+     "cond": "aplikacija"
+    }
+   ],
+   "fees": [
+    "Naknada za blokiranje ako rezervacija nije otkazana ili punjenje nije počelo u 15 min (iznos nije objavljen)."
+   ],
+   "valid_from": "",
+   "src": "https://electripglobal.com/hr/za-vozace",
+   "src_label": "Electrip — Za vozače",
+   "conf": "high",
+   "note": "Cijene s PDV-om, datum cjenika nije naveden."
+  },
+  {
+   "slug": "qelo",
+   "name": "Qelo",
+   "owner": "enasolAuto d.o.o.",
+   "site": "https://qelo.eu/hr/page/cjenik/",
+   "registry": 16,
+   "sites_text": "37 lokacija na Qelo karti",
+   "app": {
+    "name": "Qelo",
+    "ios": "https://apps.apple.com/hr/app/qelo/id1598936527",
+    "android": "https://play.google.com/store/apps/details?id=com.hastobe.enasol"
+   },
+   "card": "Qelo RFID kartica.",
+   "adhoc": "Tarifa AD-HOC za goste.",
+   "roaming": "Qelo je u zajednici be.ENERGISED; od svibnja 2024. radi i na Kaufland i Lidl punionicama.",
+   "prices": [
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 22,
+     "power": "AC",
+     "v": 0.33,
+     "cond": "tarifa GO, bez pretplate"
+    },
+    {
+     "seg": "DC",
+     "lo": 22.1,
+     "hi": 1000,
+     "power": "DC",
+     "v": 0.47,
+     "cond": "tarifa GO, bez pretplate"
+    },
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 22,
+     "power": "AC",
+     "v": 0.3,
+     "cond": "DRIVE, 4,99 €/mj."
+    },
+    {
+     "seg": "DC",
+     "lo": 22.1,
+     "hi": 1000,
+     "power": "DC",
+     "v": 0.42,
+     "cond": "DRIVE, 4,99 €/mj."
+    },
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 22,
+     "power": "AC",
+     "v": 0.28,
+     "cond": "FLY, 9,99 €/mj."
+    },
+    {
+     "seg": "DC",
+     "lo": 22.1,
+     "hi": 1000,
+     "power": "DC",
+     "v": 0.4,
+     "cond": "FLY, 9,99 €/mj."
+    }
+   ],
+   "fees": [],
+   "valid_from": "siječnja 2026.",
+   "src": "https://postanivozac.com/blog/cijene-punjenja-elektricnih-vozila",
+   "src_label": "postanivozac.com, siječanj 2026. (Qelov ljetni cjenik 2026. objavljen je kao slika)",
+   "conf": "low",
+   "note": "Qelo cjenik objavljuje kao sliku („ljeto 2026.”) koju nismo mogli strojno pročitati; brojke su iz siječnja 2026. i mogle su se promijeniti.",
+   "conf_note": "Iz sekundarnog izvora (siječanj 2026.); Qelov ljetni cjenik 2026. je slika."
+  },
+  {
+   "slug": "greenway",
+   "name": "GreenWay",
+   "owner": "GreenWay Hrvatska d.o.o.",
+   "site": "https://greenwaynetwork.com/hr/",
+   "registry": 19,
+   "app": {
+    "name": "GreenWay EV Charging",
+    "ios": "https://apps.apple.com/pl/app/greenway-ev-charging/id1334598455",
+    "android": "https://play.google.com/store/apps/details?id=pl.greenway.evcharge"
+   },
+   "card": "GreenWay RFID kartica.",
+   "adhoc": "Nije potvrđeno.",
+   "roaming": "Nije provjereno.",
+   "prices": [],
+   "price_text": "Tarife Energia Standard (povremeni korisnici), Energia Plus (60–260 kWh mjesečno) i Energia Max. Cjenik se učitava dinamički i nismo ga mogli pročitati.",
+   "fees": [],
+   "valid_from": "",
+   "src": "https://greenwaynetwork.com/hr/cjenik/",
+   "src_label": "GreenWay Hrvatska — cjenik",
+   "conf": "low",
+   "map_note": "Cijene su u aplikaciji GreenWay (tarife Energia).",
+   "conf_note": "Cjenik se učitava dinamički i nismo ga mogli pročitati."
+  },
+  {
+   "slug": "moon",
+   "name": "MOON (Porsche Croatia)",
+   "owner": "Porsche Croatia d.o.o.",
+   "site": "https://www.moon-power.hr/",
+   "registry": 70,
+   "app": {
+    "name": "MOON eCharge",
+    "ios": null,
+    "android": null
+   },
+   "card": "MOON eCharge kartica, za tvrtke i flote.",
+   "adhoc": "Nije pronađeno.",
+   "roaming": "MOON eCharge (za tvrtke) navodi da radi na „99 % javno dostupnih punionica u Hrvatskoj”, preko mreže charge@public.",
+   "prices": [],
+   "price_text": "MOON cijene javnog punjenja ne objavljuje.",
+   "fees": [],
+   "valid_from": "",
+   "src": "https://www.moon-power.hr/",
+   "src_label": "MOON Hrvatska",
+   "conf": "medium",
+   "map_note": "Cijene nisu objavljene.",
+   "conf_note": "MOON cijene javnog punjenja ne objavljuje."
+  }
+ ],
+ "other_operators": "U Registru punionica su još Eleport Adria (9), Best in Parking (6), E.ON Energija (5), Intis engineering (4), epunionica (3), ENNA Charge (3) i Acciona (1).",
+ "apps": [
+  {
+   "name": "OneCharge (Petrol)",
+   "covers": "Petrol; u roamingu ELEN (0,56 / 0,78 / 1,06 €/kWh) i mreže u inozemstvu",
+   "model": "Petrolov cjenik; za tuđe mreže cijena po operateru iz istog cjenika",
+   "src": "https://www.petrol.hr/mobilnost/privatni-korisnici/javne-elektricne-punionice/charging-price-list",
+   "conf": "high"
+  },
+  {
+   "name": "espoTs (Hrvatski Telekom) + T-RFID",
+   "covers": "HT platforma (Konzum, Tommy, hoteli, općine); u roamingu ELEN (0,74–1,29 €/kWh), Petrol (0,69–1,36 €/kWh), IONITY i Hubject partneri (0,90 €/kWh). Ne radi na MOL Plugee.",
+   "model": "cijena vlasnika lokacije; roaming po HT cjeniku",
+   "src": "https://www.hrvatskitelekom.hr/ResourceManager/poslovni/Cjenik-punjenja-za-web.pdf",
+   "conf": "medium"
+  },
+  {
+   "name": "Qelo + Qelo kartica",
+   "covers": "Qelo; Kaufland i Lidl (od svibnja 2024.)",
+   "model": "na tuđim punionicama prema tarifi vlasnika, prikaz u aplikaciji",
+   "src": "https://qelo.eu/hr/page/o-nama/roaming/",
+   "conf": "medium"
+  },
+  {
+   "name": "MOON eCharge (Porsche Croatia)",
+   "covers": "prema operateru „99 % javnih punionica u HR”: ELEN, IONITY, HT, Petrol, Qelo, Kaufland, Lidl",
+   "model": "ugovor s tvrtkom (za flote), cijene nisu objavljene",
+   "src": "https://www.moon-power.hr/pravne-osobe/proizvodi/naplata/MOON-eCharge-at-public",
+   "conf": "medium"
+  },
+  {
+   "name": "EnBW mobility+",
+   "covers": "Hrvatska je na popisu zemalja; koje mreže — nismo provjerili",
+   "model": "kod drugih operatera 0,56–0,89 €/kWh; blokiranje 0,10 €/min nakon 4 h",
+   "src": "https://www.enbw.com/elektromobilitaet/produkte/ladetarife",
+   "conf": "medium"
+  },
+  {
+   "name": "intercharge (Hubject), web",
+   "covers": "Lidl — punjenje bez aplikacije",
+   "model": "Lidlova cijena bez aplikacije: AC 0,40 / DC 0,60 €/kWh",
+   "src": "https://www.lidl.hr/c/e-punionice/s10038053",
+   "conf": "high"
+  },
+  {
+   "name": "Usluge proizvođača (DCS): Mercedes-Benz, BMW, Volvo, MINI, Hyundai, Toyota, Lexus",
+   "covers": "Electrip",
+   "model": "prema tarifi proizvođača",
+   "src": "https://www.index.hr/magazin/clanak/electrip-siri-mrezu-u-hrvatskoj-s-30-novih-ultrabrzih-prikljucaka-za-punjenje-eva/2803477.aspx",
+   "conf": "medium"
+  }
+ ],
+ "apps_unverified": "Chargemap Pass, Plugsurfing, Octopus Electroverse, Shell Recharge, Elli i Bonnet: u izvorima koje smo mogli otvoriti nema popisa hrvatskih mreža na kojima rade. Prije puta provjerite u samoj aplikaciji.",
+ "afir": [
+  {
+   "t": "Svaka javna punionica mora omogućiti punjenje bez ugovora (ad hoc), plaćanjem koje se široko koristi u EU."
+  },
+  {
+   "t": "Punionice od 50 kW i više puštene u rad od 13. 4. 2024. moraju imati čitač bankovnih kartica ili beskontaktni uređaj za plaćanje."
+  },
+  {
+   "t": "Punionice ispod 50 kW mogu umjesto toga imati QR kod za sigurno plaćanje preko interneta."
+  },
+  {
+   "t": "Postojeće punionice od 50 kW i više uz mrežu TEN-T moraju imati čitač kartica od 1. 1. 2027."
+  },
+  {
+   "t": "Na punionicama od 50 kW i više ad hoc cijena se računa po kWh; operater smije dodati naknadu za zauzeće po minuti."
+  }
+ ],
+ "afir_src": "https://eur-lex.europa.eu/legal-content/HR/TXT/?uri=CELEX:32023R1804",
+ "power": {
+  "supplier": "HEP Elektra (opskrba kućanstava)",
+  "regulation": "Uredba o mjerama za stabilnost domaćeg tržišta energije (NN 101/2026)",
+  "period": "1. 10. 2026. – 31. 3. 2027.",
+  "threshold": "Energija potrošena iznad 3.000 kWh u tih šest mjeseci (u prosjeku 500 kWh mjesečno) plaća se 35 % skuplje.",
+  "vat": 13,
+  "oie": 0.013239,
+  "fixed_month": 3.35,
+  "nt_hours": "Zimi od 21 do 7 h, ljeti od 22 do 8 h.",
+  "tariffs": [
+   {
+    "id": "bijeli_nt",
+    "name": "Bijeli, niža tarifa (noć)",
+    "energy": 0.047688,
+    "network": 0.028689,
+    "allin": 0.1013,
+    "allin_hi": 0.1201
+   },
+   {
+    "id": "plavi",
+    "name": "Plavi, jedinstvena tarifa",
+    "energy": 0.091324,
+    "network": 0.052324,
+    "allin": 0.1773,
+    "allin_hi": 0.2134
+   },
+   {
+    "id": "bijeli_vt",
+    "name": "Bijeli, viša tarifa (dan)",
+    "energy": 0.097189,
+    "network": 0.065702,
+    "allin": 0.199,
+    "allin_hi": 0.2375
+   }
+  ],
+  "example": {
+   "kwh": 200,
+   "night": 20.25,
+   "night_hi": 24.03,
+   "plavi": 35.46,
+   "vt": 39.81
+  },
+  "sources": [
+   {
+    "label": "Uredba o mjerama za stabilnost domaćeg tržišta energije, NN 101/2026 (cijene energije za kućanstva od 1. 10. 2026.)",
+    "url": "https://www.hep.hr/elektra/kucanstvo/tarifne-stavke-cijene/1547",
+    "date": "10. 9. 2026."
+   },
+   {
+    "label": "HEP ODS — tarifni modeli i sati više i niže tarife",
+    "url": "https://www.hep.hr/ods/korisnici/kucanstvo/tarifni-modeli/34",
+    "date": "28. 9. 2026."
+   },
+   {
+    "label": "HEP — naknada za obnovljive izvore 0,013239 €/kWh (bez PDV-a)",
+    "url": "https://www.hep.hr/elektra/kucanstvo/tarifne-stavke-cijene/1547",
+    "date": "28. 9. 2026."
+   },
+   {
+    "label": "HEP Elektra — tarifne stavke za kućanstva 2024./2025. (stopa PDV-a 13 %)",
+    "url": "https://www.hep.hr/elektra/UserDocsImages/dokumenti/tarife/kucanstvo/Tarifne_stavke_kucanstvo_od%2001-11-2024%20do%2031-10-2025.pdf",
+    "date": "1. 11. 2024."
+   }
+  ]
+ },
+ "fuel": {
+  "petrol": 1.76,
+  "diesel": 1.86,
+  "date": "29. 9. 2026.",
+  "period": "od 29. 9. 2026., 7 dana",
+  "without_measures": [
+   1.96,
+   2.18
+  ],
+  "src": "https://vlada.gov.hr/od-utorka-nize-cijene-dizelskog-goriva/47347",
+  "src_label": "Vlada RH — najviše maloprodajne cijene goriva od 29. 9. 2026."
+ },
+ "calc": {
+  "km": 1200,
+  "kwh100": 17,
+  "loss": 10,
+  "share": 20,
+  "tariff": "bijeli_nt",
+  "pub": 0.47,
+  "fuel": "petrol",
+  "l100_petrol": 6.5,
+  "l100_diesel": 5.5,
+  "chips": [
+   [
+    "ELEN AC",
+    0.35
+   ],
+   [
+    "Petrol DC",
+    0.47
+   ],
+   [
+    "Lidl DC",
+    0.45
+   ],
+   [
+    "Petrol ultrabrzo",
+    0.66
+   ],
+   [
+    "IONITY",
+    0.74
+   ]
+  ]
+ },
+ "subsidies": [
+  {
+   "name": "FZOEU — poticaji za kupnju vozila (tvrtke i obrti), EnU-4/26",
+   "status": "closed",
+   "who": "tvrtke, obrtnici i javne ustanove; ne građani",
+   "amount": "40 % cijene: do 9.000 € za osobni (M1) ili laki teretni (N1) električni automobil, do 2.500 € za L kategoriju; najviše 90.000 € po prijavi",
+   "cond": "novo vozilo, cijena do 50.000 € bez PDV-a (L i M1), zadržati 3 godine; plug-in hibridi nisu prihvatljivi",
+   "dates": "prijave od 10. 3. 2026.; proračun povećan s 3,2 na 3,55 mil. €",
+   "src": "https://www.fzoeu.hr/hr/nacionalni-javni-pozivi-i-natjecaji/1367",
+   "src_label": "FZOEU — nacionalni javni pozivi (EnU-4/26: zatvoren)"
+  },
+  {
+   "name": "Modernizacijski fond — električna vozila za taksi, dostavu i dijeljenje vozila (MF-2025-3-1)",
+   "status": "open",
+   "who": "tvrtke i obrti s djelatnošću taksija (NKD 49.33), cestovnog prijevoza robe (49.41) ili najma vozila (77.11)",
+   "amount": "do 9.000 € po vozilu: 50 % za mikro i male, 40 % za srednje, 30 % za velike poduzetnike; ukupno 45 mil. €",
+   "cond": "novi M1 s baterijom od 40 kWh ili N1 od 75 kWh; zamjenjuje se vozilo s najmanje 30.000 km godišnje",
+   "dates": "prijave do 30. 9. 2026. u 12 h ili do iskorištenja sredstava",
+   "src": "https://www.fzoeu.hr/docs/266/Poziv%20za%20dodjelu%20sredstava%20za%20nabavu%20elektri%C4%8Dnih%20vozila.pdf",
+   "src_label": "FZOEU — poziv MF-2025-3-1 (PDF)"
+  },
+  {
+   "name": "Poticaji za građane 2026. (najavljeni)",
+   "status": "announced",
+   "who": "građani (fizičke osobe)",
+   "amount": "ukupno 20 mil. € (5 mil. više nego 2024.); iznosi po vozilu još nisu objavljeni",
+   "cond": "novi električni osobni automobili (M1) i L1–L7; prvi put i kupnja i ugradnja kućnih punionica; plug-in hibridi više ne",
+   "dates": "FZOEU: poziv „na jesen”; na dan 28. 9. 2026. još nije objavljen",
+   "src": "https://www.index.hr/auto/clanak/na-jesen-novi-poticaji-za-elektricne-automobile-ali-uz-vazne-promjene/2815821.aspx",
+   "src_label": "Index.hr, 21. 7. 2026."
+  },
+  {
+   "name": "Ministarstvo turizma i sporta — Mjera E: punionice za privatne iznajmljivače",
+   "status": "open",
+   "who": "privatni iznajmljivači sa statusom „Domaćin (Local host)”",
+   "amount": "iznos nije objavljen u sažetku poziva",
+   "cond": "AC punionice od 3,6 do 22 kW za automobile, bicikle i romobile: oprema, ugradnja, softver za naplatu",
+   "dates": "prijave od 24. 9. 2026. do 13. 11. 2026. u 12 h (ili do iskorištenja), preko portala eTurizam",
+   "src": "https://mint.gov.hr/javni-pozivi-i-natjecaji-11414/t-u-r-i-z-a-m/22181",
+   "src_label": "Ministarstvo turizma i sporta, 21. 9. 2026."
+  }
+ ],
+ "benefits": [
+  {
+   "t": "Posebni porez na motorna vozila",
+   "v": "Električni automobili ga ne plaćaju (čl. 5. st. 2. Zakona o posebnom porezu na motorna vozila). Plug-in hibridima porez se umanjuje razmjerno električnom dosegu.",
+   "src": "https://www.zakon.hr/z/561/zakon-o-posebnom-porezu-na-motorna-vozila"
+  },
+  {
+   "t": "Godišnja naknada za uporabu javnih cesta",
+   "v": "Nije ukinuta: za osobni automobil na električni pogon od 1. 1. 2026. iznosi 38,40 € (40 € × koeficijent 0,96), kao za benzinac do 1.000 cm³.",
+   "src": "https://cvh.hr/gradani/propisi-i-upute/pravilnici/zakon-o-cestama/pravilnik-o-visini-godisnje-naknade-za-uporabu-javnih-cesta-sto-se-placa-pri-registraciji-motornih-i-prikljucnih-vozila/"
+  },
+  {
+   "t": "Cestarina",
+   "v": "Hrvatske autoceste ne predviđaju popust za električne automobile; skupina ovisi o vrsti vozila, osovinama i visini.",
+   "src": "https://www.hac.hr/hr/cestarina/cjenik"
+  },
+  {
+   "t": "Trajekti",
+   "v": "Posebne cijene za električne automobile nismo našli. Jadrolinija traži da pri kupnji karte navedete da je vozilo električno.",
+   "src": "https://www.jadrolinija.hr/faq"
+  },
+  {
+   "t": "Parkiranje",
+   "v": "Službenog pravila o besplatnom parkiranju električnih automobila u Zagrebu, Splitu i Osijeku nismo našli. U Rijeci se korištenje rezerviranog mjesta za punjenje naplaćuje 3,00 € na sat.",
+   "src": "https://www.rijeka-plus.hr/cesta-pitanja/"
+  }
+ ],
+ "buildings": {
+  "law": "Zakon o upravljanju i održavanju zgrada (NN 152/2024, ispravak NN 47/2026), na snazi od 1. 1. 2025.",
+  "law_src": "https://www.zakon.hr/z/3880/zakon-o-upravljanju-i-odrzavanju-zgrada",
+  "nn_src": "https://narodne-novine.nn.hr/clanci/sluzbeni/2024_12_152_2502.html",
+  "ee_law": "Zakon o energetskoj učinkovitosti u zgradarstvu (NN 155/2025), na snazi od 1. 1. 2026.",
+  "ee_src": "https://www.zakon.hr/z/3999/zakon-o-energetskoj-ucinkovitosti-u-zgradarstvu",
+  "draft_src": "https://www.energetika-net.com/odrzivi-promet/kompliciraju-se-pravila-za-postavljanje-e-punjaca-u-obiteljske-kuce"
+ },
+ "motorways": [
+  {
+   "road": "A1 Zagreb – Split – Dubrovnik",
+   "op": "HAC",
+   "n": 15,
+   "areas": "Stupnik (samo smjer Split), Desinec (samo smjer Zagreb), Draganić, Vukova Gorica, Dobra, Sokolac, Janjče, Zir, Jasenice, Nadin, Prokljan, Krka, Kozjak, Mosor, Raščane gornje",
+   "note": "Južno od Raščana gornjih (km 440) nijedno odmorište nema punionicu; Dusina je zatvorena."
+  },
+  {
+   "road": "A3 Bregana – Zagreb – Lipovac",
+   "op": "HAC",
+   "n": 7,
+   "areas": "Gradna, Novoselec, Stari Grabovac, Dragalić (samo smjer Lipovac), Sava (samo smjer Lipovac), Rastovica (samo smjer Bregana), Spačvanska šuma",
+   "note": "Najduži razmak: u smjeru Bregane 138 km (Rastovica – Stari Grabovac), u smjeru Lipovca 101 km (Dragalić – Sava)."
+  },
+  {
+   "road": "A4 Zagreb – Goričan",
+   "op": "HAC",
+   "n": 2,
+   "areas": "Ljubešćica, Sesvete",
+   "note": ""
+  },
+  {
+   "road": "A6 Rijeka – Zagreb",
+   "op": "HAC",
+   "n": 4,
+   "areas": "Kupjak, Lepenica (smjer Rijeka), Tuhobić (smjer Bosiljevo), Cernik – Čavle (smjer Bosiljevo)",
+   "note": ""
+  },
+  {
+   "road": "A7 Rupa – Križišće",
+   "op": "HAC",
+   "n": 1,
+   "areas": "Vrata Jadrana (Tesla Supercharger u oba smjera prema Tesli; HAC ikonu ima samo za smjer Rupa)",
+   "note": ""
+  },
+  {
+   "road": "A2 Zagreb – Macelj",
+   "op": "AZM",
+   "n": 1,
+   "areas": "Lepa Bukva (ELEN)",
+   "note": "Nije na HAC-ovu popisu odmorišta."
+  },
+  {
+   "road": "A8/A9 Istarski ipsilon",
+   "op": "BINA Istra",
+   "n": 2,
+   "areas": "Bačva jug i Bačva sjever (ELEN, prema Registru punionica)",
+   "note": "IONITY Kanfanar je uz čvor, ne na samoj autocesti."
+  },
+  {
+   "road": "A5, A10, A11",
+   "op": "HAC",
+   "n": 0,
+   "areas": "nijedno odmorište s oznakom punionice",
+   "note": ""
+  }
+ ],
+ "motorway_src": "https://www.hac.hr/hr/servisne-informacije/informacije-o-odmoristima?rests=1",
+ "near_motorway": [
+  {
+   "t": "IONITY Raščane gornje (A1)",
+   "v": "4 × 350 kW"
+  },
+  {
+   "t": "Tesla Janjče (A1)",
+   "v": "do 250 kW, oba smjera"
+  },
+  {
+   "t": "Tesla Gospić (izlaz Gospić s A1)",
+   "v": "osam mjesta za punjenje"
+  },
+  {
+   "t": "Tesla Zadar (Zemunik Gornji)",
+   "v": "uz izlaz Zadar"
+  }
+ ],
+ "ferry": {
+  "rule": "Ukrcaj električnih vozila je dopušten, no prilikom kupnje karte obvezni ste naznačiti da se radi o električnom vozilu.",
+  "rule_src": "https://www.jadrolinija.hr/faq",
+  "cat_rule": "Na Jadrolinijinim katamaranima zabranjen je prijevoz e-romobila, e-bicikala i odvojivih litijskih baterija bez vatrootpornih torbi.",
+  "news": "Jadrolinija je medijima rekla da električne automobile iz sigurnosnih razloga raspoređuje na palubi i da je preporuka istaknuta na prodajnim mjestima; na trajekte se nabavljaju protupožarni pokrivači.",
+  "news_src": "https://www.morski.hr/elektricni-automobili-na-trajektima-norveska-zabranila-prijevoz-njemacka-danska-i-svedska-traze-poluprazne-baterije-evo-kako-je-to-rijeseno-kod-nas/",
+  "not_found": "Ograničenje napunjenosti baterije, pravilo o punjenju na brodu ili pravilo za oštećene baterije u Jadrolinijinim pravilima nismo našli."
+ },
+ "islands": [
+  [
+   "Krk",
+   "Hrvatski Telekom, Lidl (Krk, Omišalj), Eleport Adria, Kaufland"
+  ],
+  [
+   "Cres",
+   "ELEN (parkiralište Melin), Hrvatski Telekom"
+  ],
+  [
+   "Lošinj",
+   "ELEN (Mali Lošinj, Priko), Hrvatski Telekom, MOON (Čikat)"
+  ],
+  [
+   "Pag",
+   "ELEN (Pag, Novalja), Electrip (Novalja), Hrvatski Telekom"
+  ],
+  [
+   "Brač",
+   "ELEN (Bol, Postira, Sutivan), Lidl (Supetar)"
+  ],
+  [
+   "Hvar",
+   "ELEN (Jelsa, Stari Grad)"
+  ],
+  [
+   "Korčula",
+   "Electrip (Korčula)"
+  ],
+  [
+   "Vis",
+   "ELEN (Vis)"
+  ],
+  [
+   "Ugljan",
+   "Hrvatski Telekom (Preko)"
+  ],
+  [
+   "Pašman",
+   "ELEN (Pašman)"
+  ],
+  [
+   "Rab",
+   "u Registru punionica nema zapisa"
+  ],
+  [
+   "Mljet",
+   "u Registru punionica nema zapisa"
+  ]
+ ],
+ "borders": [
+  [
+   "Bregana (Slovenija), A3",
+   "Odmorište Gradna (km 3,9), punionica u oba smjera; ELEN Gradna jug i sjever."
+  ],
+  [
+   "Macelj (Slovenija), A2",
+   "ELEN Lepa Bukva."
+  ],
+  [
+   "Goričan (Mađarska), A4",
+   "HEP punionica u Goričanu (INA, 2019.); prvo odmorište s punionicom na A4 je Ljubešćica (km 44,7)."
+  ],
+  [
+   "Bajakovo (Srbija), A3",
+   "Odmorište Spačvanska šuma (km 298), punionica u oba smjera; ELEN Spačva."
+  ]
+ ],
+ "csv": {
+  "file": "elektricni-automobili-hrvatska.csv",
+  "head": [
+   "godina",
+   "elektricni_osobni_automobili_eurostat",
+   "novi_bev_acea"
+  ],
+  "rows": [
+   [
+    2021,
+    2977,
+    ""
+   ],
+   [
+    2022,
+    4801,
+    ""
+   ],
+   [
+    2023,
+    7058,
+    ""
+   ],
+   [
+    2024,
+    10045,
+    1793
+   ],
+   [
+    2025,
+    12616,
+    1266
+   ],
+   [
+    "2026 (sij.–kol.)",
+    "",
+    2297
+   ]
+  ]
+ }
+}

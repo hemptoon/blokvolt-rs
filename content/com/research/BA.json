@@ -477,7 +477,7 @@
    "amount": "Up to 12,000 KM for a battery-electric vehicle and up to 10,000 KM for a plug-in hybrid, at most 30% of the vehicle price (about €6,135.50 / €5,112.92); call budget 500,000 KM",
    "who": "Adults resident in the Federation of BiH; legal entities and sole traders (obrti) registered in the Federation. New M1 (passenger) and N1 (light goods) vehicles only, never registered before.",
    "deadline": "Until funds are used up, at the latest 31.12.2026. Temporarily closed on 18.09.2026 after all funds were reserved; it reopens only if money remains after the submitted applications are processed.",
-   "note": "Opened 16.09.2026; applications via e-prijava.fzofbih.org.ba, handled in order of arrival. Chargers are not mentioned as eligible. Closure notice: https://fzofbih.org.ba/2026/09/18/privremeno-zatvaranje-javnog-poziva-za-sufinanciranje-nabave-elektricnih-vozila-za-2026-godinu-zbog-rezervacije-raspolozivih-sredstava/ . Oslobođenje (15.01.2024) reported Federation incentives of 10,000 KM per vehicle in 2023.",
+   "note": "Opened 16.09.2026; applications via e-prijava.fzofbih.org.ba, handled in order of arrival. Chargers are not mentioned as eligible. Closure notice: https://fzofbih.org.ba/2026/09/18/privremeno-zatvaranje-javnog-poziva-za-sufinanciranje-nabave-elektricnih-vozila-za-2026-godinu-zbog-rezervacije-raspolozivih-sredstava/. Oslobođenje (15.01.2024) reported Federation incentives of 10,000 KM per vehicle in 2023.",
    "source": "https://fzofbih.org.ba/wp-content/uploads/2026/09/JP-EV-2026_Tekst-Poziva.pdf",
    "source_title": "Fond za zaštitu okoliša FBiH – JP EV 2026, tekst poziva",
    "source_date": "16.09.2026",
@@ -486,7 +486,7 @@
   {
    "programme": "Republika Srpska – Environmental Protection and Energy Efficiency Fund (Fond za zaštitu životne sredine i energetsku efikasnost RS)",
    "status": "none",
-   "amount": "None",
+   "amount": "—",
    "who": "—",
    "deadline": "—",
    "note": "The Fund's 2026 calls page lists one call, for energy efficiency in homes (08.09.2026; windows, insulation, heat pumps, solar), with no measure for electric vehicles or chargers.",

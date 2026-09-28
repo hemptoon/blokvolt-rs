@@ -15,6 +15,9 @@ const fold = s => (s || '').toLowerCase().replace(/đ/g, 'd').normalize('NFD').r
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 // notes from the price data and idle fees, translated on /en/ and /ru/ through the page's string table
 const tr = s => (s && T['tx:' + s]) || s;
+// the same script draws the country maps of blokvolt.com: centre, zoom, currency and the correction link come from the
+// page's config (defaults = Serbia on www.blokvolt.rs)
+const C0 = cfg.center || [20.9, 44.1], Z0 = cfg.zoom || 6.3, CUR = cfg.cur || 'RSD';
 const fmt = (n, dg = 0) => Number(n).toLocaleString(LOC, { minimumFractionDigits: dg, maximumFractionDigits: dg });
 const CONN = { ccs2: 'CCS2', ccs1: 'CCS1', chademo: 'CHAdeMO', type2: 'Type 2', type1: 'Type 1', tesla: 'Tesla', schuko: T.schuko, cee: 'CEE', other: T.other };
 const svg = p => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + p + '</svg>';
@@ -134,6 +137,11 @@ function price(s) {
   const ex = exact.filter(fits)[0] || (exact.length === 1 ? exact[0] : null);
   const receipt = (n.receipts || []).filter(r => r.where.some(w => hay.indexOf(w) >= 0));
   if (ex) return { kind: 'exact', t: ex, receipt, note: tr(n.note) };
+  if (n.kwh) {
+    const fit = (n.tiers || []).filter(t => t.cur === cur && fits(t));
+    if (fit.length) return { kind: 'kwh', list: fit, note: tr(n.note) };
+    return { kind: 'none', text: tr(n.note) || T.p_unknown };
+  }
   if (s.net === 'chargego' || n === NETS.chargego) {
     const tiers = (n.tiers || []).filter(t => t.cur === cur);
     const t = tiers.filter(fits)[0];
@@ -156,6 +164,7 @@ function priceShort(s) {
   if (rc) return { t: rc + ' ' + T.per_kwh, cls: '' };
   if (p.kind === 'exact' || p.kind === 'tier') return { t: p.t.label, cls: '' };
   if (p.kind === 'range') return { t: fmt(p.lo.v, 2) + '–' + fmt(p.hi.v, 2) + ' ' + T.per_min, cls: '' };
+  if (p.kind === 'kwh') return { t: kwhSpan(p.list, '–') + ' ' + T.per_kwh, cls: '' };
   return { t: '', cls: '' };
 }
 
@@ -179,23 +188,31 @@ function realKw(P, cur) {
   return 130;
 }
 function perKwh(v, s) { const k = realKw(power(s), s.dc ? 'dc' : 'ac'); return v && k ? v * 60 / k : null; }
+// per-kWh tariffs: the lowest and the highest price of the tiers that fit (0,35–0,42)
+function kwhSpan(list, dash) {
+  const v = list.map(t => t.v).filter(x => x != null);
+  if (!v.length) return '?';
+  const lo = Math.min(...v), hi = Math.max(...v);
+  return lo === hi ? fmt(lo, 2) : fmt(lo, 2) + dash + fmt(hi, 2);
+}
 // the label next to a pin (zoom 12+): only ASCII, the map font has no other glyphs everywhere
 function pinPrice(s) {
   if (isOff(s)) return { t: '', c: '' };
   const p = price(s);
-  if (p.kind === 'free') return { t: '0 RSD', c: 'free' };
+  if (p.kind === 'free') return { t: '0 ' + CUR, c: 'free' };
   if (p.kind === 'tesla') return { t: '', c: '' };
   const rc = freshReceipts(p, '-');
-  if (rc) return { t: rc + ' RSD/kWh', c: '' };
+  if (rc) return { t: rc + ' ' + CUR + '/kWh', c: '' };
   const old = d => stale(d) ? 'old' : '';
   if ((p.kind === 'exact' || p.kind === 'tier') && p.t.v) {
     const e = perKwh(p.t.v, s);
-    if (e) return { t: '~' + Math.round(e) + ' RSD/kWh', c: old(p.t.date) };
+    if (e) return { t: '~' + Math.round(e) + ' ' + CUR + '/kWh', c: old(p.t.date) };
   }
   if (p.kind === 'range') {
     const a = perKwh(p.lo.v, s), b = perKwh(p.hi.v, s);
-    if (a && b) return { t: '~' + Math.round(Math.min(a, b)) + '-' + Math.round(Math.max(a, b)) + ' RSD/kWh', c: old(p.lo.date) };
+    if (a && b) return { t: '~' + Math.round(Math.min(a, b)) + '-' + Math.round(Math.max(a, b)) + ' ' + CUR + '/kWh', c: old(p.lo.date) };
   }
+  if (p.kind === 'kwh') { const sp = kwhSpan(p.list, '-'); return sp === '?' ? { t: '?', c: 'unk' } : { t: sp + ' ' + CUR, c: old(p.list[0].date) }; }
   return { t: '?', c: 'unk' };
 }
 
@@ -289,14 +306,19 @@ function priceHtml(s) {
     const a = perKwh(p.lo.v, s), b = perKwh(p.hi.v, s);
     if (a && b) h += '<small class="est">' + esc(T.p_est.replace('{k}', fmt(Math.round(a)) + '–' + fmt(Math.round(b))).replace('{w}', fmt(Math.round(realKw(power(s), 'dc'))))) + '</small>';
     h += '<small>' + esc(T.p_range.replace('{a}', p.lo.charger).replace('{b}', p.hi.charger)) + ' · ' + esc(p.lo.date) + '</small>';
+  } else if (p.kind === 'kwh') {
+    const t0 = p.list[0];
+    h += '<div class="price">' + esc(kwhSpan(p.list, '–') + ' ' + T.per_kwh) + '</div>';
+    if (p.list.length > 1 || t0.extra) h += '<ul>' + p.list.map(t => '<li><b>' + esc(t.label) + '</b>' + (t.extra ? ' — ' + esc(tr(t.extra)) : '') + '</li>').join('') + '</ul>';
+    h += '<small>' + esc(T.p_list.replace('{d}', t0.date || '')) + (t0.src ? ' · ' + esc(tr(t0.src)) : '') + '</small>';
   } else if (p.kind === 'seen') {
     h += '<div>' + esc(T.p_seen) + '</div><ul>' + p.list.slice(0, 3).map(t => '<li><b>' + esc(t.label) + '</b> — ' + esc(t.charger) + (t.extra ? ', ' + esc(tr(t.extra)) : '') + '</li>').join('') + '</ul>';
     h += '<small>' + esc(p.note || '') + ' · ' + esc(p.list[0].date) + '</small>';
   } else {
     h += '<div>' + esc(p.text) + '</div>';
   }
-  if (p.note && (p.kind === 'exact' || p.kind === 'tier' || p.kind === 'range')) h += '<small>' + esc(p.note) + '</small>';
-  const pd = p.kind === 'exact' || p.kind === 'tier' ? p.t.date : p.kind === 'range' ? p.lo.date : p.kind === 'seen' ? p.list[0].date :
+  if (p.note && (p.kind === 'exact' || p.kind === 'tier' || p.kind === 'range' || p.kind === 'kwh')) h += '<small>' + esc(p.note) + '</small>';
+  const pd = p.kind === 'exact' || p.kind === 'tier' ? p.t.date : p.kind === 'range' ? p.lo.date : p.kind === 'seen' || p.kind === 'kwh' ? p.list[0].date :
     p.kind === 'free' ? p.date : '';
   if (stale(pd)) h += '<small class="stale">' + esc(T.p_old) + '</small>';
   const idle = cfg.idle && cfg.idle[(netOf(s) && netOf(s).via) || s.net];
@@ -359,6 +381,7 @@ function copyLL(b) {
 }
 function verHtml(s) {
   const v = s.v || { s: 'nep', g: 'g_none' };
+  if (v.s === 'src') return '<p class="vf vf-src">' + ICON.info + '<span>' + esc(T.v_src) + '</span></p>';
   if (v.s === 'ok') {
     const by = (v.by || []).map(b => VBY()[b]).filter(Boolean).join('; ');
     return '<p class="vf">' + ICON.ok + '<span><b>' + esc(T.v_ok) + '</b> ' + esc(by) + (v.d ? ' · ' + esc(v.d) : '') + '</span></p>';
@@ -376,7 +399,7 @@ function openCard(s, fly) {
   const acc = s.acc === 'customers' ? '<div class="cbox"><span>' + esc(T.access) + '</span><div>' + esc(T.customers) + '</div></div>' : '';
   const navs = navLinks(s);
   const site = n && n.page ? n.page : (n && n.site ? n.site : '');
-  const fix = '/ispravka/?stanica=' + encodeURIComponent(s.id);
+  const fix = cfg.fix ? cfg.fix.replace('{id}', encodeURIComponent(s.id)) : '/ispravka/?stanica=' + encodeURIComponent(s.id);
   const SRC = { ocm: 'Open Charge Map', osm: 'OpenStreetMap', ps: 'JP Putevi Srbije', cg: 'Charge&GO', rm: T.src_rm, te: 'Tesla' };
   const srcs = s.src.filter(x => x.u).map(x => '<a href="' + esc(x.u) + '" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(x.upd) + ')' : '')).join(' · ');
   $card.innerHTML = '<div class="ccard" role="dialog" aria-label="' + esc(title(s)) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
@@ -398,7 +421,7 @@ function openCard(s, fly) {
     const a = e.target.closest('a');
     if (!a) return;
     if (a.dataset.nav) track('map_navigate', { station: s.id, network: s.net || '', app: a.dataset.nav });
-    else track(a.href.indexOf('/ispravka/') >= 0 ? 'map_report_error' : 'map_network_link', { station: s.id, network: s.net || '' });
+    else track(a.href.indexOf('/ispravka/') >= 0 || a.href.indexOf('mailto:') === 0 ? 'map_report_error' : 'map_network_link', { station: s.id, network: s.net || '' });
   });
   rvBind(s);
   track('map_card_open', { station: s.id, network: s.net || '', verified: ver(s), favourite: isFav(s) });
@@ -636,7 +659,7 @@ function refresh() {
 }
 function initMap() {
   map = new maplibregl.Map({
-    container: 'map', style: cfg.style, center: [20.9, 44.1], zoom: 6.3, minZoom: 5, maxZoom: 18,
+    container: 'map', style: cfg.style, center: C0, zoom: Z0, minZoom: 5, maxZoom: 18,
     attributionControl: false, cooperativeGestures: false, dragRotate: false, pitchWithRotate: false
   });
   map.touchZoomRotate.disableRotation();
@@ -733,7 +756,7 @@ $chips.addEventListener('click', e => {
 $count.addEventListener('click', e => {
   if (!e.target.closest('[data-all]')) return;
   state.bounds = null; me = null; city = null;
-  if (map) map.flyTo({ center: [20.9, 44.1], zoom: 6.3 });
+  if (map) map.flyTo({ center: C0, zoom: Z0 });
   renderList();
 });
 let qt;
@@ -771,7 +794,7 @@ function fromUrl() {
   if (q) { $q.value = q; state.q = q; }
   if (f === 'ok' || p.get('ok') === '1') { state.ok = true; paintChips(); }
   if (p.get('tesla') === '1') { TESLA = true; paintChips(); }
-  const c = g && cfg.cities[g];
+  const c = g && (cfg.cities || {})[g];
   if (c) city = { lat: c[0], lon: c[1] };
   if (net && $chips.querySelector('[data-f="net:' + net + '"]')) setChip('net:' + net, true);
   else if (net) { state.q = state.q || net.replace(/-/g, ' '); refresh(); }
@@ -782,7 +805,7 @@ function fromUrl() {
 }
 
 const getJson = u => fetch(u).then(r => { if (!r.ok) throw new Error(u); return r.json(); });
-Promise.all([getJson(cfg.stations), getJson(cfg.nets).catch(() => ({ upd: {}, add: [] })), getJson(cfg.prices),
+Promise.all([getJson(cfg.stations), cfg.nets ? getJson(cfg.nets).catch(() => ({ upd: {}, add: [] })) : { upd: {}, add: [] }, getJson(cfg.prices),
   cfg.extra ? getJson(cfg.extra).catch(() => ({ upd: {} })) : { upd: {} }]).then(([a, m, b, x]) => {
   ST = a.stations;
   const join = (layer, list) => list.forEach(s => {

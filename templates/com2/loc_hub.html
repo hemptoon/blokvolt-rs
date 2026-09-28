@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import ic %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "{{ LOC.html }}", "dateModified": "{{ C.checked_iso }}",
+   "about": {"@type": "Country", "name": {{ LOC.country|tojson }}}, "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "ItemList", "itemListElement": [{% for p in PAGES.values() if p.key != 'hub' %}{"@type": "ListItem", "position": {{ loop.index }}, "url": "{{ SITE }}{{ p.path }}", "name": {{ p.h1|tojson }}}{{ ',' if not loop.last }}{% endfor %}]}
+ ]
+}</script>{% endblock %}
+{% block pagehead %}<div class="ph hub-ph"><div class="wrap">
+<p class="kick">{{ meta.kicker }}</p>
+<h1>{{ meta.h1 }}</h1>
+{% if meta.lead %}<p class="lead">{{ meta.lead }}</p>{% endif %}
+<div class="ph-actions"><a class="btn dark" href="{{ PAGES.map.path }}">{{ ic('map') }}{{ PAGES.map.nav }}</a><a class="btn" href="{{ PAGES.prices.path }}">{{ ic('coins') }}{{ PAGES.prices.nav }}</a>{% if PAGES.home %}<a class="btn" href="{{ PAGES.home.path }}">{{ ic('calc') }}{{ PAGES.home.nav }}</a>{% endif %}</div>
+<p class="meta">{{ S.checked }} {{ C.checked }} · <a href="{{ EN_URL }}" hreflang="en" lang="en">English</a></p>
+</div></div>{% endblock %}
+{% block content %}
+<div class="prose cwide">
+{{ body }}
+</div>
+<p class="upd">{{ S.updated }} {{ C.checked }} · <a href="mailto:{{ EMAIL }}?subject={{ S.fix_subject|urlencode }}">{{ S.report }}</a></p>
+{% endblock %}

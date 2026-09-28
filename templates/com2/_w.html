@@ -1,0 +1,181 @@
+{# Widgets for the local pages of blokvolt.com (content/com/local/<dir>/*.md). Context: LOC, S, C, M, PAGES, num, money. #}
+{% from '_icons.html' import ic %}
+
+{% macro stats(items) -%}
+<div class="stats">{% for v, t in items %}<div class="stat"><b>{{ v }}</b><span>{{ t }}</span></div>{% endfor %}</div>
+{%- endmacro %}
+
+{% macro tiles(keys) -%}
+<div class="tiles">{% for k in keys %}{% set p = PAGES[k] %}<a class="tile" href="{{ p.path }}"><span class="ic">{{ ic(p.icon or 'arrow') }}</span><h3>{{ p.nav or p.h1 }}</h3><p>{{ p.card or p.lead }}</p></a>{% endfor %}</div>
+{%- endmacro %}
+
+{% macro badge(status) -%}
+<span class="badge st-{{ status }}">{{ S.status[status] }}</span>
+{%- endmacro %}
+
+{% macro conf(n) -%}
+{% if n.conf == 'medium' %}<small class="cf">{{ n.conf_note or S.conf_medium }}</small>{% elif n.conf == 'low' %}<small class="cf low">{{ n.conf_note or S.conf_low }}</small>{% endif %}
+{%- endmacro %}
+
+{% macro pcell(n, seg) -%}
+{% set rows = n.prices|selectattr('seg', 'equalto', seg)|list %}
+{% if rows %}{% for p in rows %}<div class="pv"><b>{{ num(p.v, 2) }} {{ LOC.cur_sign }}</b>{% if p.cond %} <small>{{ p.cond }}</small>{% endif %}</div>{% endfor %}{% else %}<span class="muted">—</span>{% endif %}
+{%- endmacro %}
+
+{# the networks-and-prices table: one row per network, prices per kWh as the network publishes them #}
+{% macro price_table() -%}
+<div class="tw stack ptab"><table><thead><tr><th>{{ S.net }}</th><th>{{ S.ac }}</th><th>{{ S.dc }}</th><th>{{ S.hpc }}</th><th>{{ S.price_list }}</th></tr></thead><tbody>
+{% for n in C.networks %}<tr id="t-{{ n.slug }}"><td data-label="{{ S.net }}"><b><a href="#{{ n.slug }}">{{ n.name }}</a></b>{% if n.registry %}<small>{{ n.registry }} {{ S.reg_rows }}</small>{% elif n.sites_text %}<small>{{ n.sites_text }}</small>{% endif %}</td>
+{% if n.prices %}<td data-label="{{ S.ac }}">{{ pcell(n, 'AC') }}</td><td data-label="{{ S.dc }}">{{ pcell(n, 'DC') }}</td><td data-label="{{ S.hpc }}">{{ pcell(n, 'HPC') }}</td>
+{% else %}<td colspan="3" data-label="{{ S.price }}"><small class="pt">{{ n.price_text }}</small></td>{% endif %}
+<td data-label="{{ S.price_list }}"><small>{% if n.valid_from %}{{ S.valid_from }} {{ n.valid_from }} · {% endif %}<a href="{{ n.src }}" rel="noopener nofollow">{{ n.src|domain }}</a></small>{{ conf(n) }}</td></tr>
+{% endfor %}</tbody></table></div>
+{%- endmacro %}
+
+{% macro app_links(a) -%}
+{% if a.name %}<b>{{ a.name }}</b>{% if a.ios or a.android %} — {% if a.ios %}<a href="{{ a.ios }}" rel="noopener nofollow">iPhone</a>{% endif %}{% if a.ios and a.android %} · {% endif %}{% if a.android %}<a href="{{ a.android }}" rel="noopener nofollow">Android</a>{% endif %}{% endif %}{% else %}—{% endif %}
+{%- endmacro %}
+
+{# one card per network: prices with conditions, fees, how to pay #}
+{% macro net_cards() -%}
+<div class="ncards2">{% for n in C.networks %}<section class="pcard ncard2" id="{{ n.slug }}">
+<div class="pcard-h"><span class="lg mono" aria-hidden="true" translate="no">{{ n.name|mono }}</span><div><b><a href="{{ n.site }}" rel="noopener nofollow">{{ n.name }}</a></b><span>{{ n.owner }}{% if n.registry %} · {{ n.registry }} {{ S.reg_rows }}{% elif n.sites_text %} · {{ n.sites_text }}{% endif %}</span></div></div>
+{% if n.prices %}<ul class="pl">{% for p in n.prices %}<li><span>{{ p.seg if p.seg != 'HPC' else S.hpc_short }} {{ p.power }}{% if p.cond %}, {{ p.cond }}{% endif %}</span><b>{{ num(p.v, 2) }} {{ S.per_kwh }}</b></li>{% endfor %}</ul>
+{% else %}<p class="pt">{{ n.price_text }}</p>{% endif %}
+<dl class="nd">
+{% if n.fees %}<dt>{{ S.fees }}</dt><dd>{{ n.fees|join(' ') }}</dd>{% endif %}
+<dt>{{ S.app }}</dt><dd>{{ app_links(n.app) }}</dd>
+<dt>{{ S.card }}</dt><dd>{{ n.card }}</dd>
+<dt>{{ S.adhoc }}</dt><dd>{{ n.adhoc }}</dd>
+<dt>{{ S.roaming }}</dt><dd>{{ n.roaming }}</dd>
+</dl>
+{% if n.note %}<p class="note">{{ n.note }}</p>{% endif %}
+<p class="src1">{{ S.price_list }}: <a href="{{ n.src }}" rel="noopener nofollow">{{ n.src_label }}</a>{% if n.valid_from %} · {{ S.valid_from }} {{ n.valid_from }}{% endif %} · {{ S.checked|lower }} {{ C.checked }}</p>{{ conf(n) }}
+</section>{% endfor %}</div>
+{%- endmacro %}
+
+{% macro apps_table() -%}
+<div class="tw stack"><table><thead><tr><th>{{ S.app_or_card }}</th><th>{{ S.works_on }}</th><th>{{ S.price_model }}</th></tr></thead><tbody>
+{% for a in C.apps %}<tr><td data-label="{{ S.app_or_card }}"><b>{{ a.name }}</b></td><td data-label="{{ S.works_on }}">{{ a.covers }}</td><td data-label="{{ S.price_model }}">{{ a.model }}<small><a href="{{ a.src }}" rel="noopener nofollow">{{ a.src|domain }}</a>{% if a.conf == 'medium' %} · {{ S.conf_short_medium }}{% endif %}</small></td></tr>
+{% endfor %}</tbody></table></div>
+{%- endmacro %}
+
+{% macro own_apps() -%}
+<div class="tw stack"><table><thead><tr><th>{{ S.net }}</th><th>{{ S.app }}</th><th>{{ S.card }}</th><th>{{ S.adhoc }}</th></tr></thead><tbody>
+{% for n in C.networks %}<tr><td data-label="{{ S.net }}"><b><a href="/{{ LOC.dir }}/{{ C.slugs.prices }}#{{ n.slug }}">{{ n.name }}</a></b></td><td data-label="{{ S.app }}">{{ app_links(n.app) }}</td><td data-label="{{ S.card }}">{{ n.card }}</td><td data-label="{{ S.adhoc }}">{{ n.adhoc }}</td></tr>
+{% endfor %}</tbody></table></div>
+{%- endmacro %}
+
+{% macro bullets(items, key='t') -%}
+<ul>{% for x in items %}<li>{{ x[key] }}</li>{% endfor %}</ul>
+{%- endmacro %}
+
+{% macro tariffs() -%}
+{% set P = C.power %}{% set hi = P.tariffs|selectattr('allin_hi')|list %}
+<div class="tw stack"><table><thead><tr><th>{{ S.tariff }}</th><th class="num">{{ S.allin }}</th>{% if hi %}<th class="num">{{ S.allin_hi }}</th>{% endif %}<th class="num">{{ S.per100 }}</th></tr></thead><tbody>
+{% for t in P.tariffs %}<tr><td data-label="{{ S.tariff }}"><b>{{ t.name }}</b><small>{% if t.parts %}{{ t.parts }}{% else %}{{ S.energy }} {{ num(t.energy, 4) }} + {{ S.network }} {{ num(t.network, 4) }} + OIE {{ num(P.oie, 4) }} {{ LOC.cur_sign }}, + PDV {{ P.vat }} %{% endif %}</small></td><td class="num" data-label="{{ S.allin }}"><b>{{ num(t.allin, 3) }} {{ LOC.cur_sign }}</b></td>{% if hi %}<td class="num" data-label="{{ S.allin_hi }}">{{ num(t.allin_hi, 3) }} {{ LOC.cur_sign }}</td>{% endif %}<td class="num" data-label="{{ S.per100 }}">{{ num(t.allin * C.calc.kwh100 * (1 + C.calc.loss / 100), 2) }} {{ LOC.cur_sign }}</td></tr>
+{% endfor %}</tbody></table></div>
+{%- endmacro %}
+
+{% macro sources(items, title=None) -%}
+{% if items %}<details class="src"><summary>{{ title or S.sources }} ({{ items|length }})</summary><ul>{% for s in items %}<li><a href="{{ s.url }}" rel="noopener nofollow">{{ s.label }}</a>{% if s.date %} — {{ s.date }}{% endif %}</li>{% endfor %}</ul></details>{% endif %}
+{%- endmacro %}
+
+{% macro subsidies() -%}
+<div class="subs">{% for s in C.subsidies %}<section class="box sub"><div class="sub-h"><h3>{{ s.name }}</h3>{{ badge(s.status) }}</div>
+<dl class="nd"><dt>{{ S.who }}</dt><dd>{{ s.who }}</dd><dt>{{ S.amount }}</dt><dd>{{ s.amount }}</dd><dt>{{ S.conditions }}</dt><dd>{{ s.cond }}</dd><dt>{{ S.dates }}</dt><dd>{{ s.dates }}</dd></dl>
+<p class="src1"><a href="{{ s.src }}" rel="noopener nofollow">{{ s.src_label }}</a></p></section>{% endfor %}</div>
+{%- endmacro %}
+
+{% macro facts_list(items) -%}
+<div class="facts">{% for b in items %}<div class="fact wide"><span>{{ b.t }}</span><b>{{ b.v }}</b>{% if b.src %}<small><a href="{{ b.src }}" rel="noopener nofollow">{{ b.src|domain }}</a></small>{% endif %}</div>{% endfor %}</div>
+{%- endmacro %}
+
+{% macro motorways() -%}
+<div class="tw stack"><table><thead><tr><th>{{ S.road }}</th><th class="num">{{ S.rest_n }}</th><th>{{ S.rest_areas }}</th></tr></thead><tbody>
+{% for m in C.motorways %}<tr><td data-label="{{ S.road }}"><b>{{ m.road }}</b><small>{{ m.op }}</small></td><td class="num" data-label="{{ S.rest_n }}">{{ m.n }}</td><td data-label="{{ S.rest_areas }}">{{ m.areas }}{% if m.note %}<small>{{ m.note }}</small>{% endif %}</td></tr>
+{% endfor %}</tbody></table></div>
+{%- endmacro %}
+
+{% macro pairs(rows, h1, h2) -%}
+<div class="tw stack"><table><thead><tr><th>{{ h1 }}</th><th>{{ h2 }}</th></tr></thead><tbody>
+{% for a, b in rows %}<tr><td data-label="{{ h1 }}"><b>{{ a }}</b></td><td data-label="{{ h2 }}">{{ b }}</td></tr>
+{% endfor %}</tbody></table></div>
+{%- endmacro %}
+
+{# a bar chart in plain SVG: rows [[label, value]] #}
+{% macro bars(rows, unit='', title='') -%}
+{% set mx = rows|map(attribute=1)|max %}
+<figure class="bars" role="img" aria-label="{{ title }}"><svg viewBox="0 0 {{ rows|length * 96 }} 230" preserveAspectRatio="xMidYMid meet">
+{% for lab, v in rows %}{% set h = (v / mx * 160)|round(1) %}<g transform="translate({{ loop.index0 * 96 + 18 }},0)"><rect x="0" y="{{ 190 - h }}" width="60" height="{{ h }}" rx="6" class="{{ 'b-last' if loop.last else 'b' }}"/><text x="30" y="{{ 182 - h }}" text-anchor="middle" class="v">{{ num(v) }}</text><text x="30" y="212" text-anchor="middle" class="l">{{ lab }}</text></g>{% endfor %}
+</svg>{% if title %}<figcaption>{{ title }}</figcaption>{% endif %}</figure>
+{%- endmacro %}
+
+{# the calculator: electricity at home vs public charging vs fuel, with the country's tariffs, fuel prices and currency #}
+{% macro calc() -%}
+{% set K = C.calc %}{% set P = C.power %}{% set T = S.calc %}
+<form class="calc" id="kalk" action="#" novalidate>
+<div class="calc-in">
+<div class="box"><h2>{{ T.drive }}</h2><div class="fields2">
+<div class="field"><label for="c-km">{{ T.km }}</label><input class="input" type="number" id="c-km" min="0" max="20000" step="50" value="{{ K.km }}" inputmode="numeric"></div>
+<div class="field"><label for="c-kwh100">{{ T.kwh100 }}</label><input class="input" type="number" id="c-kwh100" min="5" max="40" step="0.5" value="{{ K.kwh100 }}" inputmode="decimal"><span class="hint">{{ T.kwh100_hint }}</span></div>
+</div></div>
+<div class="box"><h2>{{ T.home }}</h2><div class="fields2">
+<div class="field"><label for="c-tariff">{{ T.tariff }}</label><select class="select" id="c-tariff">{% for t in P.tariffs %}<option value="{{ t.id }}"{% if t.id == K.tariff %} selected{% endif %}>{{ t.name }}</option>{% endfor %}<option value="custom">{{ T.custom }}</option></select></div>
+<div class="field" id="w-custom" hidden><label for="c-custom">{{ T.custom_label }}</label><input class="input" type="number" id="c-custom" min="0" max="5" step="0.001" value="{{ P.tariffs[0].allin }}" inputmode="decimal"></div>
+</div>
+<p class="note">{{ T.allin }} <b id="o-hp"></b></p>
+<details><summary>{{ T.loss }}</summary><div class="field"><label for="c-loss">{{ T.loss }}</label><input class="input" type="number" id="c-loss" min="0" max="30" step="1" value="{{ K.loss }}" inputmode="numeric"><span class="hint">{{ T.loss_hint }}</span></div></details>
+</div>
+<div class="box"><h2>{{ T.public }}</h2>
+<div class="field"><label for="c-share">{{ T.share }}: <output id="o-share" for="c-share">{{ K.share }} %</output></label><input class="range" type="range" id="c-share" min="0" max="100" step="5" value="{{ K.share }}"></div>
+{% if K.chips %}<div class="chips calc-chips" role="group" aria-label="{{ T.pub_price }}">{% for name, v in K.chips %}<button class="chip" type="button" data-v="{{ v }}" aria-pressed="{{ 'true' if v == K.pub else 'false' }}">{{ name }} · {{ num(v, 2) }}</button>{% endfor %}</div>{% endif %}
+<div class="field"><label for="c-pub">{{ T.pub_price }}</label><input class="input" type="number" id="c-pub" min="0" max="5" step="0.01" value="{{ K.pub }}" inputmode="decimal">{% if K.pub_hint %}<span class="hint">{{ K.pub_hint }}</span>{% endif %}</div>
+</div>
+<div class="box"><h2>{{ T.fuel }}</h2><div class="fields2">
+<div class="field"><label for="c-fuel">{{ T.fuel_type }}</label><select class="select" id="c-fuel"><option value="petrol">{{ S.petrol }}</option><option value="diesel">{{ S.diesel }}</option></select></div>
+<div class="field"><label for="c-l100">{{ T.l100 }}</label><input class="input" type="number" id="c-l100" min="2" max="25" step="0.1" value="{{ K.l100_petrol }}" inputmode="decimal"></div>
+</div>
+<div class="field"><label for="c-lp">{{ T.l_price }}</label><input class="input" type="number" id="c-lp" min="0.5" max="5" step="0.01" value="{{ C.fuel.petrol }}" inputmode="decimal"><span class="hint">{{ S.fuel_hint }} {{ C.fuel.date }}: {{ S.petrol }} {{ num(C.fuel.petrol, 2) }}, {{ S.diesel }} {{ num(C.fuel.diesel, 2) }} {{ LOC.cur_sign }}.</span></div>
+</div>
+</div>
+<aside class="box res" aria-live="polite">
+<div class="rbig"><span>{{ T.ev_month }}</span><b id="o-ev">—</b><small><span id="o-ev100">—</span> {{ T.per100 }}</small></div>
+<div class="rbig"><span id="o-fuelname">{{ S.petrol }}</span><b id="o-ice">—</b><small><span id="o-ice100">—</span> {{ T.per100 }}</small></div>
+<div class="rsave"><span>{{ T.diff }}</span><b id="o-save">—</b><small id="o-save-y">—</small></div>
+<div class="row2"><span>{{ T.home_kwh }}, <span id="o-homekwh">—</span> kWh</span><b id="o-homecost">—</b></div>
+<div class="row2"><span>{{ T.pub_kwh }}, <span id="o-pubkwh">—</span> kWh</span><b id="o-pubcost">—</b></div>
+</aside>
+</form>
+<noscript><p class="note">{{ T.noscript }}</p></noscript>
+<script id="calc-data" type="application/json">{{ {'tariffs': P.tariffs, 'fuel': C.fuel, 'd': K, 'cur': LOC.cur_sign, 'dec': LOC.dec, 'thou': LOC.thou, 'T': {'petrol': S.petrol, 'diesel': S.diesel, 'pm': T.per_month, 'py': T.per_year}}|tojson_safe }}</script>
+<script>
+(function(){
+ var D=JSON.parse(document.getElementById('calc-data').textContent),T=D.T,C=D.cur;
+ function $(id){return document.getElementById(id)}
+ function num(id){var v=parseFloat(String($(id).value).replace(',','.'));return isFinite(v)?v:0}
+ function fmt(x,d){d=d||0;var s=Math.abs(x).toFixed(d).split('.');s[0]=s[0].replace(/\B(?=(\d{3})+(?!\d))/g,D.thou);return (x<0?'−':'')+s[0]+(d?D.dec+s[1]:'')}
+ function tariff(){var id=$('c-tariff').value;for(var i=0;i<D.tariffs.length;i++){if(D.tariffs[i].id===id)return D.tariffs[i]}return null}
+ function hp(){var t=tariff();return t?t.allin:num('c-custom')}
+ var chips=[].slice.call(document.querySelectorAll('.calc-chips button'));
+ function calc(){
+  var km=num('c-km'),k100=num('c-kwh100'),loss=num('c-loss')/100,share=num('c-share')/100,pub=num('c-pub');
+  var need=km*k100/100,pubKwh=need*share,homeKwh=need*(1-share)*(1+loss),p=hp(),homeCost=homeKwh*p,pubCost=pubKwh*pub,ev=homeCost+pubCost;
+  var ice=km*num('c-l100')/100*num('c-lp'),save=ice-ev;
+  $('o-hp').textContent=fmt(p,3)+' '+C;$('o-share').textContent=Math.round(share*100)+' %';
+  $('o-ev').textContent=fmt(ev,2)+' '+C;$('o-ev100').textContent=km>0?fmt(ev/km*100,2):'0';
+  $('o-ice').textContent=fmt(ice,2)+' '+C;$('o-ice100').textContent=km>0?fmt(ice/km*100,2):'0';
+  $('o-fuelname').textContent=$('c-fuel').value==='diesel'?T.diesel:T.petrol;
+  $('o-save').textContent=fmt(save,2)+' '+T.pm;$('o-save-y').textContent=fmt(save*12,0)+' '+T.py;
+  $('o-homekwh').textContent=fmt(homeKwh);$('o-homecost').textContent=fmt(homeCost,2)+' '+C;
+  $('o-pubkwh').textContent=fmt(pubKwh);$('o-pubcost').textContent=fmt(pubCost,2)+' '+C;
+ }
+ $('c-tariff').addEventListener('change',function(){$('w-custom').hidden=this.value!=='custom';calc()});
+ $('c-fuel').addEventListener('change',function(){var dz=this.value==='diesel';$('c-lp').value=dz?D.fuel.diesel:D.fuel.petrol;$('c-l100').value=dz?D.d.l100_diesel:D.d.l100_petrol;calc()});
+ chips.forEach(function(b){b.addEventListener('click',function(){chips.forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');$('c-pub').value=b.getAttribute('data-v');calc()})});
+ $('c-pub').addEventListener('input',function(){chips.forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-v')===$('c-pub').value?'true':'false')})});
+ $('kalk').addEventListener('input',calc);$('kalk').addEventListener('submit',function(e){e.preventDefault()});
+ calc();
+})();
+</script>
+{%- endmacro %}

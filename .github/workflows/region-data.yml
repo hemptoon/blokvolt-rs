@@ -1,5 +1,6 @@
 # Open charging data of Serbia and its neighbours for the maps of blokvolt.com and blokvolt.rs (docs/RUNBOOK.md 3.23).
-# OpenStreetMap through Overpass and Open Charge Map from its public export, for HR BA ME MK AL XK SI RS.
+# OpenStreetMap from the Geofabrik country extracts (cut to each country's boundary with osmium; Overpass if that fails)
+# and Open Charge Map from its public export, for HR BA ME MK AL XK SI RS.
 # Result: branch region-data (a single commit, replaced on every run), read by the builds through
 # raw.githubusercontent.com/hemptoon/blokvolt-rs/region-data/<CC>/{osm,ocm}.json. Nothing here deploys anything.
 # Runs on the 3rd of every month, when this file or the script changes on main, and by hand.
@@ -25,7 +26,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Previous data (kept for a country whose Overpass query fails)
+      - name: osmium (cuts the Geofabrik extracts)
+        run: sudo apt-get update -q && sudo apt-get install -y -q osmium-tool
+      - name: Previous data (kept for a country whose OpenStreetMap download fails)
         run: |
           mkdir -p /tmp/region/prev
           if git fetch -q --depth=1 origin region-data; then git archive FETCH_HEAD | tar -x -C /tmp/region/prev; else echo "no previous data"; fi

@@ -1,7 +1,7 @@
 {
  "site": "https://blokvolt.com",
- "checked": "23.09.2026",
- "checked_iso": "2026-09-23",
+ "checked": "28.09.2026",
+ "checked_iso": "2026-09-28",
  "email": "hello@blokvolt.com",
  "countries": [
   {
@@ -22,9 +22,9 @@
    "slug": "montenegro",
    "name": "Montenegro",
    "group": "Western Balkans",
-   "nav_desc": "950 EVs registered, 94 public points",
+   "nav_desc": "782 EVs, 94 public points; guide in Montenegrin",
    "facts": [
-    "950 electric vehicles registered in 2025 (Monstat)",
+    "782 battery-electric cars at the end of 2025 (Eurostat)",
     "94 public charging points, none above 150 kW",
     "2026 purchase-grant rounds closed; no home-charger grant",
     "3 home-charger companies found, none publishes prices"
@@ -35,9 +35,9 @@
    "slug": "bosnia-and-herzegovina",
    "name": "Bosnia and Herzegovina",
    "group": "Western Balkans",
-   "nav_desc": "763 EVs, grant of up to 12,000 KM (FBiH)",
+   "nav_desc": "704 EVs; map and prices in Bosnian",
    "facts": [
-    "763 electric vehicles registered at the end of 2024 (BIHAMK)",
+    "704 battery-electric cars at the end of 2025 (Eurostat)",
     "No official count of public chargers: published figures range from 78 to about 500",
     "Federation of BiH grant of up to 12,000 KM per car: funds reserved, call paused on 18.09.2026",
     "3 home-charger sellers found, 2 with published prices"
@@ -61,11 +61,11 @@
    "slug": "croatia",
    "name": "Croatia",
    "group": "EU neighbours",
-   "nav_desc": "7,058 EVs, about 1,000 charging locations",
+   "nav_desc": "12,616 EVs; map and prices in Croatian",
    "facts": [
-    "7,058 battery-electric cars on the road at the end of 2025 (Eurostat)",
-    "About 1,000 public charging locations, about 300 ultra-fast connectors",
-    "No purchase or home-charger grant open to private individuals",
+    "12,616 battery-electric cars on the road at the end of 2025 (Eurostat)",
+    "715 stations in the national registry; about 300 ultra-fast connectors",
+    "Citizens' grant of €20 million announced for autumn 2026, now including home chargers",
     "14 home-charger sellers and installers listed"
    ]
   },
@@ -81,29 +81,108 @@
     "Borzen grants: up to €7,800 per car, 55% (max. €1,000) per home charger",
     "15 home-charger sellers and installers listed"
    ]
+  },
+  {
+   "code": "AL",
+   "slug": "albania",
+   "name": "Albania",
+   "group": "Western Balkans",
+   "nav_desc": "10,938 EVs, +91% in a year",
+   "facts": [
+    "10,938 battery-electric cars at the end of 2025 (Eurostat), +91% in a year",
+    "Public charging: VEGA 20+ sites, PlugoAL 5 × 280 kW; OSHEE plans a national network",
+    "New EVs are VAT-free and exempt from the annual vehicle tax",
+    "Home electricity 10.2 lek/kWh with VAT up to 700 kWh a month"
+   ]
+  },
+  {
+   "code": "XK",
+   "slug": "kosovo",
+   "name": "Kosovo",
+   "group": "Western Balkans",
+   "nav_desc": "1,457 EVs; ECHARGE €0.39–0.49/kWh",
+   "facts": [
+    "1,457 battery-electric cars at the end of 2025 (Eurostat)",
+    "ECHARGE: 24+ sites, DC €0.39–0.49 per kWh",
+    "No tax relief: 10% customs and 18% VAT as for other cars",
+    "Night-rate home electricity about 4.2 euro cents per kWh"
+   ]
   }
  ],
  "serbia": {
   "stats": [
-   {"b": "7,155", "t": "electric cars registered in Serbia (Ministry of Interior, April 2026), plus 55,184 hybrids"},
-   {"b": "535", "t": "new electric cars registered in the first half of 2026, 232% more than a year earlier (SAUVD)"},
-   {"b": "~220", "t": "publicly accessible chargers in Serbia; the 36 state chargers on motorways are free"}
+   {
+    "b": "7,155",
+    "t": "electric cars registered in Serbia (Ministry of Interior, April 2026), plus 55,184 hybrids"
+   },
+   {
+    "b": "535",
+    "t": "new electric cars registered in the first half of 2026, 232% more than a year earlier (SAUVD)"
+   },
+   {
+    "b": "~220",
+    "t": "publicly accessible chargers in Serbia; the 36 state chargers on motorways are free"
+   }
   ],
   "facts": [
-   ["Subsidy 2026", "€5,000 for a new battery-electric car (categories M1 and N1), €500 for a motorcycle, €250 for a moped; applications through eUprava until 1 December 2026. Budget 170 million RSD; about 600 vehicles funded by August."],
-   ["Electricity at home", "Regulated EPS household prices, with network fees, excise and VAT, range from 4.15 to 38.26 RSD per kWh depending on the consumption zone and tariff. The cheaper night tariff runs at different hours by region."],
-   ["Public charging prices", "Operators do not publish price lists; most commercial networks charge per minute. DC receipts collected by the editors work out at 43–79 RSD per kWh."],
-   ["Apartment buildings", "A charger on the common parts of a building needs a decision of the residents' assembly (skupština stambene zajednice). The guide on blokvolt.rs explains the steps and has a template decision."]
+   [
+    "Subsidy 2026",
+    "€5,000 for a new battery-electric car (categories M1 and N1), €500 for a motorcycle, €250 for a moped; applications through eUprava until 1 December 2026. Budget 170 million RSD; about 600 vehicles funded by August."
+   ],
+   [
+    "Electricity at home",
+    "Regulated EPS household prices, with network fees, excise and VAT, range from 4.15 to 38.26 RSD per kWh depending on the consumption zone and tariff. The cheaper night tariff runs at different hours by region."
+   ],
+   [
+    "Public charging prices",
+    "Operators do not publish price lists; most commercial networks charge per minute. DC receipts collected by the editors work out at 43–79 RSD per kWh."
+   ],
+   [
+    "Apartment buildings",
+    "A charger on the common parts of a building needs a decision of the residents' assembly (skupština stambene zajednice). The guide on blokvolt.rs explains the steps and has a template decision."
+   ]
   ],
   "links": [
-   ["https://www.blokvolt.rs/en/firme/", "Company register", "51 installers and sellers of home chargers, same columns for everyone"],
-   ["https://www.blokvolt.rs/en/cena-punjaca-za-elektricni-auto", "Home charger prices", "Every published price in one table"],
-   ["https://www.blokvolt.rs/en/javno-punjenje/", "Public charging", "Networks, apps and the monthly price index"],
-   ["https://www.blokvolt.rs/en/podaci/subvencije-2026/", "Subsidies 2026", "Amounts, conditions and the budget status"],
-   ["https://www.blokvolt.rs/en/podaci/tarife-eps/", "Electricity prices at home", "EPS zones, tariffs and night hours"],
-   ["https://www.blokvolt.rs/en/punjenje-elektricnog-auta-u-zgradi", "Charging in an apartment building", "From the idea to a charger in the garage"],
-   ["https://www.blokvolt.rs/en/alati/kalkulator-troskova/", "Cost calculator", "Home, public chargers, petrol and diesel"],
-   ["https://www.blokvolt.rs/en/podaci/statistika-ev-srbija/", "EV statistics", "Fleet, registrations and public chargers"]
+   [
+    "https://www.blokvolt.rs/en/firme/",
+    "Company register",
+    "51 installers and sellers of home chargers, same columns for everyone"
+   ],
+   [
+    "https://www.blokvolt.rs/en/cena-punjaca-za-elektricni-auto",
+    "Home charger prices",
+    "Every published price in one table"
+   ],
+   [
+    "https://www.blokvolt.rs/en/javno-punjenje/",
+    "Public charging",
+    "Networks, apps and the monthly price index"
+   ],
+   [
+    "https://www.blokvolt.rs/en/podaci/subvencije-2026/",
+    "Subsidies 2026",
+    "Amounts, conditions and the budget status"
+   ],
+   [
+    "https://www.blokvolt.rs/en/podaci/tarife-eps/",
+    "Electricity prices at home",
+    "EPS zones, tariffs and night hours"
+   ],
+   [
+    "https://www.blokvolt.rs/en/punjenje-elektricnog-auta-u-zgradi",
+    "Charging in an apartment building",
+    "From the idea to a charger in the garage"
+   ],
+   [
+    "https://www.blokvolt.rs/en/alati/kalkulator-troskova/",
+    "Cost calculator",
+    "Home, public chargers, petrol and diesel"
+   ],
+   [
+    "https://www.blokvolt.rs/en/podaci/statistika-ev-srbija/",
+    "EV statistics",
+    "Fleet, registrations and public chargers"
+   ]
   ]
  }
 }

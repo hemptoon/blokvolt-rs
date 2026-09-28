@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% import '_en.html' as m %}
+{% from '_icons.html' import ic %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/", "inLanguage": "en", "description": {{ description|tojson }}},
+  {"@type": "CollectionPage", "name": {{ title|tojson }}, "url": "{{ SITE }}/", "inLanguage": "en", "dateModified": "{{ CHECKED_ISO }}",
+   "mainEntity": {"@type": "ItemList", "numberOfItems": {{ COUNTRIES|length }}, "itemListElement": [{% for c in COUNTRIES %}{"@type": "ListItem", "position": {{ loop.index }}, "name": {{ ('EV charging in ' ~ c.name)|tojson }}, "url": "{{ SITE }}{{ c.url }}"}{% if not loop.last %},{% endif %}{% endfor %}]}}
+ ]
+}</script>{% endblock %}
+{% block pagehead %}{{ m.ph('Independent guide · Serbia and its neighbours · checked ' ~ CHECKED, 'EV charging in Serbia and the Western Balkans',
+  'Where to charge, what public charging costs, what a kilowatt-hour costs at home, which subsidies are open and what the rules are in apartment buildings — country by country, with a source and a check date for every figure.',
+  chips=COUNTRIES|map(attribute='url')|zip(COUNTRIES|map(attribute='name'))|list, meta=(COUNTRIES|length) ~ ' countries · ' ~ n_sources ~ ' sources') }}{% endblock %}
+{% block content %}
+<div class="sec" id="local"><div class="sec-head"><h2>Guides in your language</h2></div>
+<div class="tiles loc2">{% for h in LOCALS %}<a class="tile big" href="{{ h.path }}" hreflang="{{ h.loc.hreflang }}" lang="{{ h.loc.html }}"><span class="ic">{{ ic('map') }}</span><h3>{{ h.title }}</h3><p>{{ h.lead }}</p></a>{% endfor %}
+<a class="tile big" href="{{ RS }}/" hreflang="sr" lang="sr"><span class="ic">{{ ic('map') }}</span><h3>Punjenje električnih automobila u Srbiji</h3><p>Mapa punjača, cene, firme i vodiči — blokvolt.rs, na srpskom, engleskom i ruskom.</p></a></div></div>
+
+<div class="sec" id="countries"><div class="sec-head"><h2>Countries</h2></div>
+<div class="tiles">{% for c in COUNTRIES %}<a class="tile" href="{{ c.url }}"><h3>{{ c.name }}</h3>{% for f in c.facts %}<p>{{ f }}</p>{% endfor %}</a>{% endfor %}</div>
+<p class="note">Serbia has the most detail: a register of {{ n_rs_firms }} installers and sellers, public charging networks with a monthly price index, subsidies, EPS tariffs and guides for apartment buildings — on <a class="lnk" href="{{ RS }}/en/">blokvolt.rs</a>, in English, Serbian and Russian.</p></div>
+
+<div class="sec" id="how"><div class="sec-head"><h2>How we check</h2></div>
+<div class="grid2">
+<div class="box"><h3>Public sources only</h3><p>Operators' price lists and apps, company websites, statistics offices, regulators, funds and law texts. Where only the media or a dealer gives a figure, we mark it as medium or low reliability.</p></div>
+<div class="box"><h3>A date on everything</h3><p>Each figure shows the date on its source and the date we checked it. Markets change quickly; an old price is labelled as old.</p></div>
+<div class="box"><h3>Same rules for every company</h3><p>What a company says on its own site goes into the same columns for everyone. No ratings, no rankings, no paid placements.</p></div>
+<div class="box"><h3>Gaps are published</h3><p>Each country page lists what we could not verify, so you know where the picture is incomplete. Maps come from OpenStreetMap and Open Charge Map and say so.</p></div>
+</div>
+<p class="note disc">BlokVolt is run by the team of Evolako, a home-charger installer that works in Serbia. Outside Serbia we do not sell or install anything. Found a mistake or want a company added? Write to <a class="lnk" href="mailto:{{ EMAIL }}">{{ EMAIL }}</a> — corrections are free and follow the same rules for everyone. The full rules are in the <a class="lnk" href="{{ RS }}/en/metodologija/">methodology</a>.</p>
+</div>
+{% endblock %}

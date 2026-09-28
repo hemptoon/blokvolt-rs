@@ -1,0 +1,12 @@
+{% from '_icons.html' import ic, mark %}
+<header class="hd"><div class="wrap hd-in">
+<a class="logo" href="{{ home }}" aria-label="BlokVolt — {{ S.home }}">{{ mark() }}<span translate="no">blok<b>volt</b></span>{% if LOC.code != 'EN' %}<span class="loc-tag" translate="no">{{ LOC.code }}</span>{% endif %}</a>
+<nav class="hd-nav" id="hd-nav" aria-label="{{ S.menu }}">{% for href, name, key in NAV %}<a href="{{ href }}"{% if section == key %} aria-current="page"{% endif %}>{{ name }}</a>{% endfor %}</nav>
+<div class="hd-tools">
+<div class="lang"><button class="ib" type="button" data-lang-toggle aria-expanded="false" aria-haspopup="true" aria-label="{{ S.country_menu }}">{{ ic('globe') }}<span translate="no">{{ LOC.code }}</span></button>
+<ul data-lang-menu class="lang-menu" role="menu" hidden translate="no">
+{% for code, href, label, hl in SWITCH %}<li role="none"><a role="menuitem" hreflang="{{ hl }}" lang="{{ hl }}" href="{{ href }}"{% if code == LOC.key %} aria-current="true" class="is--on"{% endif %}>{{ label }}</a></li>
+{% endfor %}</ul></div>
+<button class="ib burger" type="button" aria-controls="hd-nav" aria-expanded="false" aria-label="{{ S.menu }}">{{ ic('menu') }}</button>
+</div>
+</div></header>

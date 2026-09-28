@@ -1,0 +1,31 @@
+{% from '_icons.html' import ic, mark %}
+<footer class="ft"><div class="wrap">
+<div class="ft-in">
+<div><a class="logo" href="{{ home }}" aria-label="BlokVolt — {{ S.home }}">{{ mark() }}<span translate="no">blok<b>volt</b></span></a>
+<p>{{ S.ft_claim }}</p>
+<a class="ft-mail" href="mailto:{{ EMAIL }}">{{ ic('mail') }}<span translate="no">{{ EMAIL }}</span></a>
+</div>
+{% if LOC.key == 'en' %}
+<div><h2>Countries</h2><ul>
+{% for c in COUNTRIES %}<li><a href="{{ c.url if c.code != 'RS' else '/serbia/' }}">{{ c.name }}</a></li>
+{% endfor %}</ul></div>
+<div><h2>In your language</h2><ul>
+{% for h in LOCALS %}<li><a href="{{ h.path }}" hreflang="{{ h.loc.hreflang }}" lang="{{ h.loc.html }}">{{ h.loc.country }}</a></li>
+{% endfor %}<li><a href="{{ RS }}/" hreflang="sr" lang="sr">Srbija — blokvolt.rs</a></li>
+<li><a href="/partners/">For companies</a></li>
+</ul></div>
+{% else %}
+<div><h2>{{ S.ft_charging }}</h2><ul>
+{% for href, name, key in NAV %}<li><a href="{{ href }}">{{ name }}</a></li>
+{% endfor %}</ul></div>
+<div><h2>BlokVolt</h2><ul>
+{% if PAGES.method %}<li><a href="{{ PAGES.method.path }}">{{ PAGES.method.nav_ft or PAGES.method.h1 }}</a></li>
+{% endif %}<li><a href="/" hreflang="en" lang="en">English — {{ S.ft_region }}</a></li>
+<li><a href="{{ RS }}/" hreflang="sr" lang="sr">Srbija — blokvolt.rs</a></li>
+{% for l in LOCALS_ALL if l.key != LOC.key %}<li><a href="/{{ l.dir }}/" hreflang="{{ l.hreflang }}" lang="{{ l.html }}">{{ l.country }}</a></li>
+{% endfor %}<li><a href="mailto:{{ EMAIL }}?subject={{ S.fix_subject|urlencode }}">{{ S.report }}</a></li>
+</ul></div>
+{% endif %}
+</div>
+<div class="ft-legal"><span>© 2026 BlokVolt · {{ S.ft_checked }} {{ C.checked if C is defined else CHECKED }}</span><span>{{ S.ft_data|safe }}</span></div>
+</div></footer>

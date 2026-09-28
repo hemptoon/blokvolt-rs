@@ -1,0 +1,21 @@
+{% macro src(o, label='Source') -%}
+{%- if o and o.source -%}
+<small class="csrc">{{ label }}: <a href="{{ o.source }}" rel="noopener nofollow">{{ o.source_title or (o.source|domain) }}</a>{% if o.source_date %} · {{ o.source_date }}{% endif %}{% if o.confidence %} · <span class="conf is-{{ o.confidence|lower }}">{{ o.confidence|lower }} reliability</span>{% endif %}</small>
+{%- elif o and o.source_date -%}
+<small class="csrc">{{ o.source_date }}{% if o.confidence %} · <span class="conf is-{{ o.confidence|lower }}">{{ o.confidence|lower }} reliability</span>{% endif %}</small>
+{%- endif -%}
+{%- endmacro %}
+
+{% macro status(s) -%}
+{% set k = s|lower %}<span class="badge st-{{ {'open': 'open', 'closed': 'closed', 'none': 'none', 'unconfirmed': 'announced'}.get(k, k) }}">{{ {'open': 'Open', 'closed': 'Closed', 'none': 'No scheme', 'unconfirmed': 'Unconfirmed', 'announced': 'Announced', 'paused': 'Paused', 'exhausted': 'Funds used up'}.get(k, s) }}</span>
+{%- endmacro %}
+
+{% macro ph(kick, h1, lead, chips=None, meta=None) -%}
+<div class="ph"><div class="wrap">
+{% if kick %}<p class="kick">{{ kick }}</p>{% endif %}
+<h1>{{ h1 }}</h1>
+{% if lead %}<p class="lead">{{ lead|lk }}</p>{% endif %}
+{% if meta %}<p class="meta">{{ meta }}</p>{% endif %}
+{% if chips %}<div class="chips ph-chips">{% for href, name in chips %}<a class="chip" href="{{ href }}">{{ name }}</a>{% endfor %}</div>{% endif %}
+</div></div>
+{%- endmacro %}

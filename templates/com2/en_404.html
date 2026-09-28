@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% import '_en.html' as m %}
+{% block pagehead %}{% set chips = [] %}{% for c in COUNTRIES %}{% set _ = chips.append((c.url, c.name)) %}{% endfor %}{% for l in LOCALS_ALL %}{% set _ = chips.append(('/' ~ l.dir ~ '/', l.country)) %}{% endfor %}{% set _ = chips.append(('/', 'Home')) %}
+{{ m.ph('404', "This page doesn't exist", 'It may have moved, or it may never have been here. The country guides are below; Serbia has its own site, blokvolt.rs.', chips=chips) }}{% endblock %}
+{% block content %}{% endblock %}

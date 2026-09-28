@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import ic %}
+{% block ogtype %}article{% endblock %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "{{ meta.schema or 'Article' }}", "headline": {{ meta.h1|tojson }}, "name": {{ title|tojson }}, "description": {{ description|tojson }}, "inLanguage": "{{ LOC.html }}", "url": "{{ SITE }}{{ canon }}",
+   "dateModified": "{{ C.checked_iso }}", "author": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"},
+   "about": {"@type": "Country", "name": {{ LOC.country|tojson }}}, "isAccessibleForFree": true},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": {{ LOC.country|tojson }}, "item": "{{ SITE }}{{ home }}"}, {"@type": "ListItem", "position": 3, "name": {{ meta.h1|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
+ ]
+}</script>{% endblock %}
+{% block pagehead %}<div class="ph"><div class="wrap">
+<nav class="crumbs" aria-label="{{ S.crumbs }}"><a href="{{ home }}">{{ LOC.country }}</a><span aria-hidden="true">›</span><span>{{ meta.nav or meta.h1 }}</span></nav>
+<h1>{{ meta.h1 }}</h1>
+{% if meta.lead %}<p class="lead">{{ meta.lead }}</p>{% endif %}
+<p class="meta">{{ S.checked }} {{ C.checked }}</p>
+</div></div>{% endblock %}
+{% block content %}
+<div class="prose cwide">
+{{ body }}
+</div>
+{% if related %}<div class="sec"><div class="sec-head"><h2>{{ S.related }}</h2></div><div class="tiles">{% for r in related %}<a class="tile" href="{{ r.path }}"><span class="ic">{{ ic(r.icon or 'arrow') }}</span><h3>{{ r.nav or r.h1 }}</h3><p>{{ r.card or r.lead }}</p></a>{% endfor %}</div></div>{% endif %}
+<p class="upd">{{ S.updated }} {{ C.checked }} · <a href="mailto:{{ EMAIL }}?subject={{ S.fix_subject|urlencode }}">{{ S.report }}</a></p>
+{% endblock %}

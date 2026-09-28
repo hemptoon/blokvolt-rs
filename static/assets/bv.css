@@ -378,7 +378,7 @@ a.row:hover{background:#FAFAF6}
 .chip-ok svg{width:15px;height:15px}
 .ccard .src{font-size:12px;margin:8px 0 0}
 .ccard .src a{color:var(--mut)}
-.map-below{padding:30px 0 10px}
+.map-below{padding-top:30px;padding-bottom:10px}
 @media (max-width:900px){
  .map-app{display:flex;flex-direction:column;height:auto;min-height:0;border-bottom:0}
  .map-side{display:contents}
@@ -546,6 +546,8 @@ a.row:hover{background:#FAFAF6}
 .ft .ft-apps{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .ft .ft-apps .ft-app{margin-top:0}
 .ft li{margin:0 0 8px}
+.ft li.ft-reg{margin-top:-4px;font-size:13.5px;color:#8C939E}
+.ft li.ft-reg a{font-size:13.5px}
 .ft a{color:#E8EAE3;text-decoration:none;font-size:14.5px}
 .ft a:hover{text-decoration:underline}
 .ft-mail{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border-radius:10px;padding:8px 12px;font-size:14px}

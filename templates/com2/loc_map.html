@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import ic %}
+{% block bodyclass %}map-page{% endblock %}
+{% block head %}<link rel="stylesheet" href="/assets/vendor/maplibre-6.11.1/maplibre-gl.css">
+<link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>{% endblock %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "{{ LOC.html }}", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "Dataset", "name": {{ meta.dataset|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "license": "https://opendatacommons.org/licenses/odbl/1-0/",
+   "distribution": {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "{{ SITE }}/assets/region/{{ LOC.cc|lower }}/stanice.json"}, "creator": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}}
+ ]
+}</script>{% endblock %}
+{% block page %}
+<div class="map-app">
+<aside class="map-side">
+<div class="map-top">
+<h1>{{ meta.h1 }}</h1>
+<p>{{ meta.lead }}</p>
+<div class="search-box">{{ ic('search') }}<label class="sr-only" for="mq">{{ meta.search_label }}</label><input class="input" id="mq" type="search" placeholder="{{ meta.search_ph }}" autocomplete="off"></div>
+<div class="chips" id="mchips">
+<button class="chip" type="button" data-f="all" aria-pressed="true">{{ meta.chip_all }}</button>
+<button class="chip chip-fav" type="button" data-f="fav" aria-pressed="false">{{ ic('star') }}{{ meta.chip_fav }} <span class="n" data-favn hidden></span></button>
+<button class="chip" type="button" data-f="fast" aria-pressed="false">{{ ic('bolt') }}{{ meta.chip_fast }}</button>
+<button class="chip" type="button" data-f="ac" aria-pressed="false">AC</button>
+<button class="chip" type="button" data-f="chademo" aria-pressed="false">CHAdeMO</button>
+{% for slug, name, n in chips %}<button class="chip" type="button" data-f="net:{{ slug }}" aria-pressed="false">{{ name }} <span class="n">{{ n }}</span></button>{% endfor %}
+</div>
+</div>
+<div class="map-count" id="mcount" aria-live="polite">…</div>
+<div class="map-list" id="mlist"><noscript><p class="empty">{{ meta.noscript }}</p></noscript></div>
+</aside>
+<div class="map-wrap">
+<div id="map" role="region" aria-label="{{ meta.h1 }}"></div>
+<div class="map-legend" aria-hidden="true"><span><i class="l-dc"></i>DC</span><span><i class="l-ac"></i>AC</span></div>
+<button class="btn sm map-me" id="mme" type="button">{{ ic('locate') }}{{ meta.near_me }}</button>
+<div class="map-attr">{{ meta.attr_map }}: <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/" rel="noopener">OpenMapTiles</a> · {{ meta.attr_data }}: © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>, <a href="https://openchargemap.org" rel="noopener">Open Charge Map</a> · {{ M.retrieved }}</div>
+<div class="card-ov" id="mcard"></div>
+</div>
+</div>
+<div class="wrap map-below">
+<div class="prose cwide">
+{{ body }}
+</div>
+</div>
+<script id="map-cfg" type="application/json">{{ map_cfg|safe }}</script>
+<script id="bv-i18n" type="application/json">{{ map_i18n|safe }}</script>
+{% endblock %}
+{% block scripts %}<script type="module" src="/assets/map.js"></script>{% endblock %}
