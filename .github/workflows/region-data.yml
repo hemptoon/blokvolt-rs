@@ -1,0 +1,40 @@
+# Open charging data of Serbia and its neighbours for the maps of blokvolt.com and blokvolt.rs (docs/RUNBOOK.md 3.23).
+# OpenStreetMap through Overpass and Open Charge Map from its public export, for HR BA ME MK AL XK SI RS.
+# Result: branch region-data (a single commit, replaced on every run), read by the builds through
+# raw.githubusercontent.com/hemptoon/blokvolt-rs/region-data/<CC>/{osm,ocm}.json. Nothing here deploys anything.
+# Runs on the 3rd of every month, when this file or the script changes on main, and by hand.
+name: Region data
+on:
+  push:
+    branches: [main]
+    paths: ['scripts/region_fetch.py', '.github/workflows/region-data.yml']
+  schedule:
+    - cron: '41 3 3 * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: region-data
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch OpenStreetMap and Open Charge Map
+        run: python3 scripts/region_fetch.py /tmp/region/out
+      - name: Replace the region-data branch
+        run: |
+          set -e
+          cd /tmp/region/out
+          git init -q -b region-data
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -qm "Region data $(date -u +%F) (main ${GITHUB_SHA::7})"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" region-data
+          cat meta.json
