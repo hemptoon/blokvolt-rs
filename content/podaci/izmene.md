@@ -4,13 +4,21 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 26.09.2026
+updated: 28.09.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-09-26
+modified: 2026-09-28
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 28. septembar 2026
+
+- [Mapa](/mapa/): pored punjača, od uvećanja 12, piše cena — „0 RSD“, cena po kWh sa računa ili procena „~“ iz cene po minutu. Kartica punjača ima blok „Gde tačno“: adresa, koordinate sa dugmetom „Kopiraj“, zapis za auto-navigaciju i Plus Code, i odakle je tačka.
+- Tesla Supercharger u Beogradu je na mestu sa spiska Tesla (AVA Shopping Park, 8 mesta do 250 kW), a u Aleksincu je 4 mesta. Novi prekidač „Imam Teslu“ ih prikazuje kao besplatne, po vozačima.
+- Na mapu su vraćena dva besplatna punjača IKEA u Beogradu. Za IKEA, Teslu, Lidl i garažu Obilićev venac dodato je radno vreme i način pristupa; za 24 punjača adresa sa kućnim brojem sa spiska mreže.
+- Nova stranica [Aplikacije i kartice za punjenje](/javno-punjenje/aplikacije-i-kartice/): koja aplikacija i RFID kartica rade na kom punjaču. [Besplatni punjači](/javno-punjenje/besplatni-punjaci/) dopunjeni su za IKEA i Teslu.
+- U podnožju sajta su dva dugmeta za aplikaciju: Android (APK) i web-aplikacija za iPhone i računar.
+
 ## 26. septembar 2026
 
 - Nova početna strana: fotografija punjenja preko cele širine i predlozi za pretragu. Stranica [Aplikacija](/aplikacija/) je preuređena, sa snimcima ekrana i QR kodom za preuzimanje na telefonu; u podnožju sajta je dugme „Android APK“.

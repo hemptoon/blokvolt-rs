@@ -604,6 +604,14 @@ MAP_T = {
     # favourites (kept only in this browser)
     'fav_add': 'Sačuvaj u omiljene', 'fav_del': 'Ukloni iz omiljenih', 'fav_sr': 'omiljeni',
     'fav_none': 'Još nema omiljenih punjača. Otvorite punjač i dodirnite zvezdicu — lista se čuva u ovom pregledaču.',
+    # prices on the pins, Tesla-only chargers, our checked facts (content/mapa/dopune.json)
+    'per_kwh': 'RSD/kWh', 'tesla_only': 'Samo Tesla', 'p_tesla_only': 'Samo za Tesla vozila', 'p_tesla_fee': '{t} — {s}.',
+    'p_tesla_hint': 'Imate Teslu? Uključite „Imam Teslu“ iznad liste punjača.', 'p_by_receipt': 'Po računima sa ovog punjača ({d})',
+    'p_est': '≈ {k} RSD po kWh ako auto puni sa {w} kW', 'v_own': 'na sajtu vlasnika lokacije',
+    'where': 'Gde tačno', 'addr_none': 'Adresa nije poznata — koristite koordinate.', 'copy': 'Kopiraj', 'copied_ll': 'Kopirano',
+    'q_net': 'Tačka je sa spiska mreže.', 'q_osm': 'Tačka je iz OpenStreetMap-a.',
+    'q_ocm': 'Tačka je iz Open Charge Map-a i može odstupati nekoliko desetina metara.',
+    'q_site': 'Približna tačka: parking ili objekat, ne sam punjač.', 'q_field': 'Tačka je proverena na licu mesta.',
 }
 # Serbian notes that come with the price data (cene.json) and the idle fees: added as 'tx:<text>' so that the
 # translation memory translates them on /en/ and /ru/ (map.js looks them up with tr())
@@ -615,6 +623,7 @@ for _n in MAP['nets'].values():
         _tx.update(x for x in (_t.get('extra'), _t.get('src')) if x)
     for _rc in _n.get('receipts', []):
         _tx.update(x for x in (_rc.get('label'),) if x and re.search('[a-zčćžšđ]{3}', x.lower()))
+_tx.update(MAP['extra_texts'])
 for _x in sorted(_tx):
     MAP_T['tx:' + _x] = _x
 CHIP_NETS = ['chargego', 'orion-emobility', 'putevi-srbije', 'tesla', 'emobility-spectra']
@@ -632,6 +641,7 @@ M = {
         'nets': '/assets/map/mreze.json?v=' + _ver(DIST / 'assets' / 'map' / 'mreze.json'),
         'api': '/api',
         'prices': '/assets/map/cene.json?v=' + _ver(DIST / 'assets' / 'map' / 'cene.json'),
+        'extra': '/assets/map/dopune.json?v=' + _ver(DIST / 'assets' / 'map' / 'dopune.json'),
         'cities': {c['slug']: list(TOWN_XY[c['name']]) for c in CITY_CFG if c['name'] in TOWN_XY},
         'idle': _IDLE,
     }, ensure_ascii=False).replace('</', '<\\/'),
@@ -732,7 +742,7 @@ VODICI_GROUPS = [
         A('/podaci/servisi-za-elektricne-automobile/', icon='car'), A('/podaci/rent-a-car-i-car-sharing/', icon='car')]),
     ('Na putu', [
         A('/podaci/putarina-i-parking/', icon='road'), A('/javno-punjenje/besplatni-punjaci/', icon='gift'),
-        A('/javno-punjenje/region/', icon='globe2')]),
+        A('/javno-punjenje/aplikacije-i-kartice/', icon='phone'), A('/javno-punjenje/region/', icon='globe2')]),
     ('Brojke', [
         A('/podaci/statistika-ev-srbija/', icon='chart'), A('/podaci/tarife-eps/', 'Cena struje kod kuće', icon='bolt'),
         A('/podaci/wallbox-modeli/', 'Wallbox modeli i cene', icon='plug')]),

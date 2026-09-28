@@ -23,6 +23,7 @@
 <div class="fact"><span>Plaćanje</span><b>{{ op.payment_short }}</b></div>
 <div class="fact"><span>Aplikacija</span><b>{{ op.app_short }}</b></div>
 </div>
+{% if op.map_note %}<p class="note">{{ op.map_note }}</p>{% endif %}
 {% if op.now_prices %}<div class="sec"><div class="sec-head"><h2>Zabeležene cene</h2></div>
 <div class="tw stack"><table><thead><tr><th>Punjač · mesto</th><th>Cena</th><th>Kada</th></tr></thead><tbody>
 {% for p in op.now_prices %}<tr><td data-label="Punjač · mesto">{{ p.what }}</td><td data-label="Cena"><b>{{ p.value }}</b></td><td data-label="Kada">{{ p.date }}<br><small class="muted"><a href="{{ p.url }}" rel="noopener nofollow">{{ p.source }}</a></small></td></tr>

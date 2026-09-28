@@ -4,12 +4,14 @@
 <div><a class="logo" href="/" aria-label="BlokVolt — početna">{{ mark() }}<span translate="no">blok<b>volt</b></span></a>
 <p>Gde napuniti električni auto u Srbiji, koliko košta i ko ugrađuje kućni punjač.</p>
 <a class="ft-mail" href="mailto:hello@blokvolt.com">{{ ic('mail') }}<span translate="no">hello@blokvolt.com</span></a>
-{% if APP.apk %}<a class="ft-app" href="/aplikacija/">{{ ic('download') }}<span><small>Preuzmite za</small><b>Android APK</b></span></a>
+{% if APP.apk %}<div class="ft-apps"><a class="ft-app" href="/aplikacija/">{{ ic('download') }}<span><small>Aplikacija za</small><b>Android (APK)</b></span></a>
+<a class="ft-app" href="/aplikacija/#iphone">{{ ic('phone') }}<span><small>Web-aplikacija za</small><b>iPhone i računar</b></span></a></div>
 {% endif %}</div>
 <div><h2>Punjenje</h2><ul>
 <li><a href="/mapa/">Mapa punjača</a></li>
 <li><a href="/javno-punjenje/">Cene javnog punjenja</a></li>
 <li><a href="/javno-punjenje/besplatni-punjaci/">Besplatni punjači</a></li>
+<li><a href="/javno-punjenje/aplikacije-i-kartice/">Aplikacije i kartice</a></li>
 <li><a href="/javno-punjenje/region/">Punjenje u regionu</a></li>
 <li><a href="/alati/kalkulator-troskova/">Kalkulator troškova</a></li>
 </ul></div>

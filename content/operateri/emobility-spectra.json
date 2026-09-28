@@ -90,5 +90,6 @@
  "network_short": "veličina nije objavljena",
  "power_short": "AC 11 – DC 180 kW",
  "billing_short": "45–60 RSD po „jedinici“ + 1,20 RSD/min.",
- "payment_short": "Novčanik u aplikaciji, RFID"
+ "payment_short": "Novčanik u aplikaciji, RFID",
+ "map_note": "Punjači ove mreže još nisu na mapi punjača: nema ih u otvorenim bazama podataka. Lokacije su u aplikaciji Emobility Spectra."
 }

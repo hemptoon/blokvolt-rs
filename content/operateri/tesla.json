@@ -11,7 +11,7 @@
  "coverage": "Beograd (AVA Shopping Park), Aleksinac (E75); Destination: Zlatibor, Beograd",
  "network": "Supercharger Beograd — AVA Shopping Park, Astrid Lindgren 23: 8 mesta, do 250 kW, 24/7. Supercharger Aleksinac — Bosphorus Hotel, Žitkovački put bb: 4 mesta, do 125 kW, 24/7. Destination Charging: Vila Đokić (Zlatibor), Crowne Plaza Belgrade, Tesla Smart Stay, Square Nine Hotel",
  "power": "DC do 250 kW (Beograd), do 125 kW (Aleksinac); Destination AC",
- "billing": "Cena po kWh za Srbiju nije prikazana na tesla.com; obračun i plaćanje idu kroz Tesla aplikaciju/nalog. Da li su Supercharger-i u Srbiji otvoreni za vozila drugih marki — nije potvrđeno.",
+ "billing": "Cena po kWh za Srbiju nije prikazana na tesla.com; obračun i plaćanje idu kroz Tesla aplikaciju/nalog. Na tesla.com lokacije u Srbiji nisu označene kao otvorene za vozila drugih marki.",
  "verdicts": {
   "cenovnik": "Nije prikazan za Srbiju",
   "naplata": "Kroz Tesla nalog",
@@ -25,6 +25,14 @@
   "idle": "ask"
  },
  "prices": [
+  {
+   "what": "Supercharger Beograd i Aleksinac, za Tesla vozila",
+   "value": "0 RSD — po vozačima",
+   "date": "2022–2024; potvrđeno u septembru 2026",
+   "source": "TFF forum (vozači Tesle)",
+   "url": "https://tff-forum.de/t/tesla-supercharger-in-serbien-und-bulgarien-kostenlos/271856",
+   "confidence": "korisnički podatak; Tesla cenu ne objavljuje"
+  },
   {
    "what": "Supercharger u Srbiji",
    "value": "„besplatno u Srbiji za Tesla vozila“ — navod korisnika",

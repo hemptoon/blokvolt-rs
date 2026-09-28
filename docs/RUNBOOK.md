@@ -428,6 +428,30 @@ owner's permission (outreach rule). Old form messages (older than 12 months) are
 Live test after a deploy: `GET /api/zdravlje` → `{"ok":true,…}`; a POST with `"hp":"x"` returns ok and
 stores nothing (use it to test routes without creating data).
 
+#### 3.11d Our checked facts per station (`content/mapa/dopune.json`, since 28.09.2026)
+
+Facts that no open database or network list has, checked by hand with a source and a date: the exact point
+and how to find the charger, the address with the house number, hours, access (Tesla only, card at the desk,
+60 minutes a day), who charges free (`fee.free`: `all` / `limited` / `tesla`), a verification override (`v.by`
+`own` = the location owner's own site: IKEA, OMV, Parking servis) and a note. Keys per station id: `n`, `a`,
+`lat`, `lon`, `net`, `opn`, `c`, `dc`, `ac` (as in punjaci.json), `loc {q, venue, find}` (`q` = `net` / `osm` /
+`ocm` / `site` / `field`), `oh {t, h24, src}`, `ax {who, how, limit, t}`, `fee {free, t, src, note}`, `v`, `al`
+(other names, used for search and to match the price table — "OMV Zemun park"), `note`, `src [{d, l, u, upd}]`.
+`map_data.dopune()` checks the ids (a station that left the map is printed) and the keys (an unknown key stops
+the build), writes `/assets/map/dopune.json` (not open data) and applies it to the station list the pages count
+with; the browser joins it after `mreze.json`. Its texts (`venue`, `find`, `t`, `src`, `note`) are translation
+segments (`tx:<text>` in the page strings), so a new or changed text needs the EN/RU todo (3.9).
+
+Rules: only facts with a source; drivers' reports are labelled „po vozačima“ with the year; free for Tesla only
+(`fee.free: tesla`) shows as free only when the reader switches on „Imam Teslu“. Keep `tesla.json` (the network
+list) and this file in step when Tesla's sites change. Re-check the entries with the monthly map refresh
+(3.11): Tesla's price policy, IKEA's hours, the OMV list (the five EasyPark pumps), Ledi MS (2024 data).
+
+Pipeline rules added on 28.09.2026 (`map_data.verify()`): a station without a network is joined to an official
+site of another current type only within 40 m (the IKEA chargers, AC, are not part of the Tesla Supercharger
+80 m away); the network's address replaces ours when it has the house number and ours does not
+(`has_house_no`, road numbers such as "E75 75" do not count); `STREET_FIX` corrects the networks' spelling.
+
 ### 3.12 Logos (when a firm or network is added, or on request)
 
 `static/assets/logos/<slug>.png` (firms) and `op-<slug>.png` (networks), max 360×160, trimmed. Source: the
@@ -556,6 +580,22 @@ Apple devices and Google Maps elsewhere, with the other apps (Google Maps, Waze)
 system share sheet or copies the `/mapa/#<id>` link. A price whose date is more than a year old gets the warning
 `p_old` (the Evolako app shows the same marker).
 
+Since 28.09.2026 the map also has:
+- **Imam Teslu** — a switch like „Potvrđeni“ (`bv:tesla` in localStorage, `?tesla=1` for one view). Off: the
+  two Superchargers are grey pins with „T“, „Samo Tesla“ in the list, and not in „Besplatni“. On: free for the
+  reader (by drivers' reports, `fee.free: tesla` in dopune.json).
+- **Prices next to the pins** from zoom 12 (`pt-pr` layer, ASCII only — the map font has no other glyphs
+  everywhere): `0 RSD`; receipts of that very charger younger than 90 days as `56-60 RSD/kWh` (they win over the
+  network's tariff for the power, also in the card); otherwise `~68 RSD/kWh` = RSD/min × 60 ÷ the power a car
+  really gets on that class (DC 30→30, 50→45, 60→50, 110–120→90, 150–180→100, 240→130 kW, interpolated
+  between; AC → 11 kW); `?` when the price is unknown. The card shows the same estimate in words.
+- **Gde tačno** in the card: address (or „Adresa nije poznata — koristite koordinate“), venue and how to find
+  the charger (dopune.json), coordinates with „Kopiraj“, DMS for car navigation, Plus Code (computed in
+  map.js), and where the point comes from (network list, OpenStreetMap, Open Charge Map, only the car park).
+- Hours and access as badges under the verification line, a note box under the price, and the owner's link
+  (with its label) in the sources line. Names from Open Charge Map lose the "Charge&GO -" prefix on screen.
+- `?qa=1` exposes `window.bvMapQa()` (the pin properties) for `scripts/qa/map_extra_test.py`.
+
 ### 3.19 News photos (only in a run with the owner's browser)
 
 Every news item shows a real photo: on `/vesti/` (thumbnail), under the lead of the item (with caption and credit),
@@ -597,7 +637,10 @@ The page `/aplikacija/` (26.09.2026): download block with the APK size and versi
 three phone screenshots (`scripts/qa/app_shots.py` renders them from the local build; rerun after a visible
 change to the home page, the station card or the prices page), a QR code (`static/assets/app/qr-aplikacija.svg`,
 made once with the `qrcode` package — not a build dependency), steps, iPhone and computer, questions and the file
-hashes. The footer shows an „Android APK“ badge whenever `app.json` has an `apk`.
+hashes. The footer shows two buttons whenever `app.json` has an `apk` (28.09.2026): „Aplikacija za Android (APK)“ →
+`/aplikacija/` and „Web-aplikacija za iPhone i računar“ → `/aplikacija/#iphone`. No App Store or Google Play badges
+until there is a store page (the stores' rules allow only their download or pre-order / pre-registration badges,
+linked to the listing).
 
 - **Web app.** `static/manifest.webmanifest` (name, colours, icons in `static/assets/app/` drawn by
   `scripts/app_icons.py` from the favicon, three shortcuts) and `static/sw.js`, registered by `bv.js` on https. The
@@ -674,6 +717,7 @@ Local checks (the container cannot reach blokvolt.rs or the map tiles) are in `s
 python3 scripts/qa/cfserve.py dist 8787 &          # like Cloudflare Pages, with dist/_headers
 python3 scripts/qa/qa_all.py sr,en,ru 360,768,1440 # every sitemap URL: JS/CSP errors, overflow, images, footer
 python3 scripts/qa/map_ui_test.py /tmp/bv-shots    # map cards, reports, photos, favourites (fake /api)
+python3 scripts/qa/map_extra_test.py /tmp/bv-shots # dopune.json facts, „Imam Teslu“, pin prices, „Gde tačno“, EN/RU
 python3 scripts/qa/vis_shots.py /,/vesti/ /tmp/bv-shots   # full-page screenshots, desktop and phone
 ```
 
@@ -698,7 +742,10 @@ to sign in, stop and tell the owner — never type credentials.
    rendered the upload form, with "Production" preselected; if it does not, use the button.)
 3. Upload the zip. The `file_upload` tool takes at most 10 MB per file and the zip is bigger (12.6 MB on
    25.09.2026, with the news photos and the APK), so `pack.sh` also cuts it into parts of at most 9 MB in
-   `/mnt/user-data/outputs/.cf/` and prints "deploy parts: N" and the zip's size and SHA-256 prefix. Add one
+   `/mnt/user-data/outputs/.cf/` and prints "deploy parts: N" and the zip's size and SHA-256 prefix. The browser's
+   `file_upload` accepts only files the session may read: if it rejects `/mnt/user-data/outputs/…` (28.09.2026 it
+   did), pack into the working area instead — `bash scripts/pack.sh /home/claude/deploy/blokvolt-dist.zip` puts the
+   parts in `/home/claude/deploy/.cf/` — and upload from there; the same for the payload of section 6. Add one
    helper input per part (set `n` to N):
    ```js
    const n=2; for(let k=0;k<n;k++){let i=document.getElementById('bvp'+k); if(!i){i=document.createElement('input');i.type='file';i.id='bvp'+k;i.setAttribute('aria-label','bvpart '+k);document.body.appendChild(i);}} 'ok'

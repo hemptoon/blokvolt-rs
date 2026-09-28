@@ -543,6 +543,8 @@ a.row:hover{background:#FAFAF6}
 .ft .ft-app b{display:block;font-size:15px;font-weight:720;letter-spacing:-.01em}
 .ft .ft-app:hover{background:var(--volt);color:var(--vink);text-decoration:none}
 .ft .ft-app:hover small{color:var(--vink)}
+.ft .ft-apps{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ft .ft-apps .ft-app{margin-top:0}
 .ft li{margin:0 0 8px}
 .ft a{color:#E8EAE3;text-decoration:none;font-size:14.5px}
 .ft a:hover{text-decoration:underline}
@@ -660,6 +662,27 @@ a.row:hover{background:#FAFAF6}
 .vf-warn small{display:block;font-size:12px;color:var(--mut);margin-top:4px}
 .vf-warn.no{background:#FBE3D6}
 .vf-warn.no>b{color:#9A3F0E}
+/* map card: Tesla-only chargers, hours and access badges, notes, the exact place (dopune.json, 28.09.2026) */
+.dot.tesla{background:#E3E5E9;color:#3A3F4A;box-shadow:inset 0 0 0 2px #5C6270}
+.map-legend .l-tesla{background:#E3E5E9;box-shadow:0 0 0 2px #5C6270 inset}
+.chip-tesla svg{width:15px;height:15px}
+.ccard .tags{display:flex;flex-wrap:wrap;gap:6px;margin:-4px 0 12px}
+.ccard .tag{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:620;line-height:1.2;padding:5px 10px;border-radius:999px;background:var(--surface2);color:var(--ink2)}
+.ccard .tag svg{width:14px;height:14px;flex:none}
+.ccard .tag.ok{background:var(--okbg);color:var(--ok)}
+.ccard .tag.warn{background:var(--warnbg);color:var(--warn)}
+.ccard .cnote{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;line-height:1.45;color:var(--ink2);background:var(--surface2);border-radius:12px;padding:9px 12px;margin:0 0 10px}
+.ccard .cnote svg{width:17px;height:17px;flex:none;margin-top:1px;color:var(--mut)}
+.cbox small.est{color:var(--ink2)}
+.where .w-adr{margin:0;font-size:14.5px;font-weight:620;line-height:1.35;color:var(--ink)}
+.where .w-adr i{font-style:normal;font-weight:500;color:var(--mut)}
+.where .w-adr small{font-weight:500}
+.where .w-find{display:flex;gap:7px;align-items:flex-start;margin:8px 0 0;font-size:13.5px;line-height:1.45;color:var(--ink2)}
+.where .w-find svg{width:16px;height:16px;flex:none;margin-top:1px;color:var(--mut)}
+.where .w-ll{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
+.where .w-ll code{font:640 14.5px/1.2 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--ink);letter-spacing:-.01em}
+.where .w-ll .btn{flex:none}
+.where .w-ll .btn svg{width:16px;height:16px}
 .rv .rv-top{margin:2px 0 6px}
 .rv-sum{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:14px}
 .rv-sum>b{font-size:20px;font-weight:760;letter-spacing:-.01em}

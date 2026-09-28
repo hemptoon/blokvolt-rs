@@ -326,6 +326,9 @@ def price_table(index, operators, logos):
 def is_free(s, nets):
     if s.get('ps') and not any(l[2] == 1 for l in s['ps']['l']):
         return False   # a state charger that does not work now
+    fee = (s.get('fee') or {}).get('free')
+    if fee:
+        return fee in ('all', 'limited')   # our checked fact (dopune.json); 'tesla' = free only for Tesla cars
     n = nets.get(s['net']) or {}
     if not n.get('free'):
         return False
@@ -435,8 +438,15 @@ def _city(c):
     return smart_case(c.title() if c.islower() or c.isupper() else c)
 
 
+# spelling in the networks' lists
+STREET_FIX = [(r'\bTransvezala\b', 'Transverzala'), (r'\bOslobodjenja\b', 'Oslobođenja'), (r'\bDjure Djakovi', 'Đure Đakovi'),
+              (r'\bSalinačka\b', 'Šalinačka')]
+
+
 def _street(s, city):
     s = re.sub(PLUS_CODE, '', latin(s or '')).replace(' --', '').strip(' ,-')
+    for pat, rep_ in STREET_FIX:
+        s = re.sub(pat, rep_, s)
     s = smart_case(s)
     if city and fold(s).endswith(fold(city)):
         s = s[:len(s) - len(city)].strip(' ,')
@@ -564,6 +574,28 @@ def _fit(st_net, site_net):
     return None
 
 
+def _compatible(s, site):
+    """A station without a network belongs to an official site only when their names or their currents agree:
+    the two IKEA chargers (AC Type 2) stand 80 m from the Tesla Supercharger in Belgrade and are not part of it."""
+    a, b = _first(s.get('n') or ''), _first(site.get('n') or '')
+    if a and b and a == b:
+        return True
+    x = {c[1] for c in s.get('c') or []}
+    y = {c[1] for c in site.get('c') or []}
+    return not x or not y or bool(x & y)
+
+
+# a street with a house number at its end: "Segedinski put 88a", "Bulevar Milutina Milankovića 5" (not "Autoput E75", "M-19")
+HOUSE_NO = re.compile(r'\s\d{1,4}[a-zA-Z]?(?:\s*[-–/]\s*\d{1,4}[a-zA-Z]?)?$')
+
+
+def has_house_no(addr):
+    street = (addr or '').split(',')[0].strip()
+    if re.match(r'(?i)^[EAM][-\s]?\d', street) or 'autoput' in fold(street) or 'auto-put' in fold(street):
+        return False   # a motorway or road number, not a house number ("E75 75")
+    return bool(HOUSE_NO.search(street)) and not re.search(r'(?i)\bbb\b', street)
+
+
 def manual_check(stations):
     """content/mapa/provera.json: remove, join duplicates, move to the right position. Returns the notes of the rest."""
     f = MAPA / 'provera.json'
@@ -619,6 +651,8 @@ def verify(stations, notes, checked):
             fit = _fit(s.get('net'), site['net'])
             if fit is None and not (s.get('ps') and site.get('putevi')):
                 continue
+            if fit == 'none' and not _compatible(s, site) and dist_m(_ll(s), _ll(site)) > SAME_SRC_M:
+                continue
             lim = MATCH_M['same'] if s.get('ps') and site.get('putevi') else MATCH_M.get(fit, 0)
             d = dist_m(_ll(s), _ll(site))
             if d <= lim and (best is None or d < best[0]):
@@ -653,6 +687,9 @@ def verify(stations, notes, checked):
             u['n'] = site['n']
             if site['a']:
                 u['a'] = site['a']
+        # the network's address when it has the house number and ours does not ("Segedinski put" -> "Segedinski put 88a")
+        elif site['k'] != 'te' and has_house_no(site['a']) and not has_house_no(keep.get('a')):
+            u['a'] = site['a']
         upd[keep['id']] = u
     stations[:] = [s for s in stations if s['id'] not in gone]
     claimed = {id(site) for site, _ in claim.values()}
@@ -683,6 +720,42 @@ def verify(stations, notes, checked):
             if n.get('note'):
                 s['v']['note'] = n['note']
     return {'upd': upd, 'add': add}
+
+
+DOPUNE_KEYS = {'n', 'a', 't', 'lat', 'lon', 'net', 'opn', 'c', 'dc', 'ac', 'loc', 'oh', 'ax', 'fee', 'v', 'al', 'note', 'src'}
+
+
+def dopune(stations):
+    """content/mapa/dopune.json: our own checked facts per station — the exact place and how to find the charger,
+    hours, access, who charges free — with source and date (docs/RUNBOOK.md §3.11d). Not open data: published as
+    /assets/map/dopune.json and joined in the browser after mreze.json. Ids that are not on the map are reported."""
+    f = MAPA / 'dopune.json'
+    if not f.exists():
+        return {'checked': '', 'upd': {}}
+    dp = json.load(open(f, encoding='utf-8'))
+    ids = {s['id'] for s in stations}
+    upd = {}
+    for sid, u in dp['stations'].items():
+        if sid not in ids:
+            print('dopune.json: station', sid, 'is not on the map any more')
+            continue
+        bad = set(u) - DOPUNE_KEYS
+        if bad:
+            raise SystemExit(f'dopune.json: {sid}: unknown fields {sorted(bad)}')
+        upd[sid] = u
+    return {'checked': dp.get('checked', ''), 'upd': upd}
+
+
+def texts(extra):
+    """Serbian texts of dopune.json shown on the map card, for the translation memory (tx:<text> in the page strings)."""
+    out = set()
+    for u in extra['upd'].values():
+        for k, fields in (('loc', ('venue', 'find')), ('oh', ('t', 'src')), ('ax', ('t', 'limit')), ('fee', ('t', 'src', 'note'))):
+            out.update(x for x in (u.get(k, {}).get(f) for f in fields) if x and re.search('[a-zčćžšđ]{3}', x.lower()))
+        if u.get('note'):
+            out.add(u['note'])
+        out.update(x['l'] for x in u.get('src', []) if x.get('l') and re.search(r'[a-zčćžšđ]{3}', x['l'].lower()))
+    return out
 
 
 def build(dist, operators, index, logos):
@@ -719,6 +792,17 @@ def build(dist, operators, index, logos):
             s.update({k: v for k, v in u.items() if k != 'src'})
             s['src'] = s['src'] + u['src']
     stations = stations + nets_layer['add']
+    # our checked facts (exact place, hours, access, free for whom): a third file, joined last
+    extra = dopune(stations)
+    (out / 'dopune.json').write_text(json.dumps({
+        'about': 'Proverene dopune mape na www.blokvolt.rs (tačno mesto, radno vreme, pristup, ko puni besplatno), sa izvorom i '
+                 'datumom. Nije deo otvorenog skupa podataka punjaci.json. CC BY 4.0, BlokVolt.',
+        'checked': extra['checked'], 'upd': extra['upd']}, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    for s in stations:
+        u = extra['upd'].get(s['id'])
+        if u:
+            s.update({k: v for k, v in u.items() if k != 'src'})
+            s['src'] = s['src'] + u.get('src', [])
     stations.sort(key=lambda x: (fold(x['n']) or 'zzz', x['id']))
     nets = price_table(index, operators, logos)
     prices = {'about': 'Cene javnog punjenja po mrežama sa www.blokvolt.rs (aplikacije mreža i računi, sa datumom). CC BY 4.0.',
@@ -730,4 +814,5 @@ def build(dist, operators, index, logos):
     fast = sum(1 for s in stations if (s['dc'] or 0) >= 50)
     free = sum(1 for s in stations if is_free(s, nets))
     return {'n': len(stations), 'fast': fast, 'free': free, 'counts': counts, 'retrieved': head['retrieved'], 'checked': checked,
-            'ocm_updated': head['ocm_updated'], 'osm_updated': head['osm_updated'], 'nets': nets, 'stations': stations, 'ps': ps}
+            'ocm_updated': head['ocm_updated'], 'osm_updated': head['osm_updated'], 'nets': nets, 'stations': stations, 'ps': ps,
+            'extra_texts': texts(extra)}

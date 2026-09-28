@@ -6,9 +6,9 @@ lead: Sajt nema naloge, oglasne piksele ni kolačiće za praćenje. Posete se br
 lead_consent: Sajt nema naloge ni oglasne piksele. Posete se broje bez kolačića, kolačić za analitiku postavlja se samo uz vašu dozvolu, a forme i prijave sa mape čuvaju samo ono što sami upišete.
 description_consent: Kako blokvolt.rs postupa sa podacima o ličnosti. Bez naloga; posete se broje bez kolačića, a kolačić za analitiku samo uz vašu dozvolu.
 kicker: Pravno
-updated: 25.09.2026
+updated: 28.09.2026
 published: 2026-09-21
-modified: 2026-09-25
+modified: 2026-09-28
 priority: 0.2
 path: /politika-privatnosti.html
 ---
@@ -33,7 +33,7 @@ Pri svakoj poseti provajder sajta (Cloudflare) obrađuje tehničke podatke: IP a
 - **Svrha i osnov:** odgovor na poruke, tačni podaci, bezbedan i ispravan rad sajta i prikaz mape (legitimni interes). Automatizovanog odlučivanja nema, a podaci se ne prodaju.
 - **Rokovi:** prepiska i poruke iz formi čuvaju se najduže 12 meseci od poslednjeg kontakta, a na zahtev se brišu i ranije, osim ako zakon traži duže čuvanje. Prijave, ocene i fotografije sa mape stoje dok je punjač na mapi ili dok ne tražite brisanje. Tehničke zapise čuva provajder po svojim pravilima.
 - **Obrađivači:** Cloudflare (hosting, baza podataka i merenje poseta) i Spacemail kompanije Spaceship (e-pošta).<!--posthog--> Korišćenje funkcija sajta meri PostHog (serveri u EU).<!--/posthog--> Podatke obrađuju i van Srbije, uz mere zaštite iz Zakona o zaštiti podataka o ličnosti: primeren nivo zaštite ili standardne ugovorne klauzule.
-- **Kolačići i memorija pregledača:** <!--noconsent-->sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. U memoriju pregledača (localStorage) upisuje se samo spisak omiljenih punjača, i to tek kad ga sami napravite. Kad bi sajt ikada uveo kolačiće za analitiku ili reklame, prvo bi tražio vašu saglasnost.<!--/noconsent--><!--consent-->bez vaše dozvole sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. Ako u baneru dozvolite kolačić za analitiku, PostHog postavlja kolačić čije ime počinje sa ph_ i u memoriju pregledača upisuje nasumični identifikator; kolačić važi godinu dana, a dozvolu možete povući bilo kada (dugme u delu „Merenje poseta“). U memoriju pregledača (localStorage) upisuju se i vaš izbor o kolačiću i spisak omiljenih punjača, kad ga sami napravite. Kolačića za reklame nema.<!--/consent-->
+- **Kolačići i memorija pregledača:** <!--noconsent-->sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. U memoriju pregledača (localStorage) upisuju se samo spisak omiljenih punjača i izbor „Imam Teslu“ na mapi, i to tek kad ih sami napravite. Kad bi sajt ikada uveo kolačiće za analitiku ili reklame, prvo bi tražio vašu saglasnost.<!--/noconsent--><!--consent-->bez vaše dozvole sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. Ako u baneru dozvolite kolačić za analitiku, PostHog postavlja kolačić čije ime počinje sa ph_ i u memoriju pregledača upisuje nasumični identifikator; kolačić važi godinu dana, a dozvolu možete povući bilo kada (dugme u delu „Merenje poseta“). U memoriju pregledača (localStorage) upisuju se i vaš izbor o kolačiću, spisak omiljenih punjača i izbor „Imam Teslu“ na mapi, kad ih sami napravite. Kolačića za reklame nema.<!--/consent-->
 
 </details>
 
@@ -56,7 +56,7 @@ Ako u baneru dozvolite kolačić, PostHog od sledeće stranice čuva nasumični 
 
 ## Omiljeni punjači
 
-Punjač koji na mapi sačuvate u omiljene upisuje se samo u vaš pregledač (localStorage). Spisak se ne šalje sajtu i nestaje kad obrišete podatke sajta u pregledaču.
+Punjač koji na mapi sačuvate u omiljene i izbor „Imam Teslu“ upisuju se samo u vaš pregledač (localStorage). Ne šalju se sajtu i nestaju kad obrišete podatke sajta u pregledaču.
 
 ## Mapa punjača
 
@@ -89,6 +89,6 @@ Sajt vodi [PRAVNI-PODACI]. Korišćenjem sajta prihvatate ove uslove.
 - Objavom prijave, komentara ili fotografije na mapi dajete BlokVoltu neisključivu, besplatnu dozvolu da ih prikazuje na sajtu; autorska prava ostaju vaša. Sadržaj koji krši [pravila](/pravila-objavljivanja/) uklanjamo.
 - Tekstovi, tabele i znak BlokVolt su zaštićeni. Citiranje uz link je dozvoljeno, a kopiranje u komercijalne svrhe bez pisane saglasnosti nije. Izuzetak su [podaci za preuzimanje](/preuzimanje/), pod licencom CC BY 4.0.
 - Sajt je dostupan „takav kakav jeste“. Vlasnik sajta ne odgovara za štetu zbog privremene nedostupnosti sajta, promene cena kod firmi ili sadržaja spoljnih linkova.
-- Važeća verzija je uvek na ovoj stranici. Prva verzija važi od 21.09.2026, dopuna o mapi punjača od 23.09.2026, dopuna o formama, prijavama sa mape i videu od 24.09.2026, a dopuna o merenju poseta i omiljenim punjačima od 25.09.2026.
+- Važeća verzija je uvek na ovoj stranici. Prva verzija važi od 21.09.2026, dopuna o mapi punjača od 23.09.2026, dopuna o formama, prijavama sa mape i videu od 24.09.2026, dopuna o merenju poseta i omiljenim punjačima od 25.09.2026, a dopuna o izboru „Imam Teslu“ od 28.09.2026.
 
 </details>

@@ -25,6 +25,7 @@
 <button class="chip" type="button" data-f="chademo" aria-pressed="false">CHAdeMO</button>
 <button class="chip" type="button" data-f="free" aria-pressed="false">Besplatni</button>
 <button class="chip chip-ok" type="button" data-f="ok" aria-pressed="false">{{ ic('check') }}Potvrđeni</button>
+<button class="chip chip-tesla" type="button" data-f="tesla" aria-pressed="false" title="Tesla Supercharger-i se prikazuju kao dostupni, a gde vozači javljaju da je punjenje besplatno — kao besplatni. Izbor se čuva samo u ovom pregledaču.">Imam Teslu</button>
 {% for slug, name, n in M.chips %}<button class="chip" type="button" data-f="net:{{ slug }}" aria-pressed="false">{{ name }} <span class="n">{{ n }}</span></button>{% endfor %}
 </div>
 </div>
@@ -33,7 +34,7 @@
 </aside>
 <div class="map-wrap">
 <div id="map" role="region" aria-label="Mapa javnih punjača"></div>
-<div class="map-legend" aria-hidden="true"><span><i class="l-dc"></i>DC</span><span><i class="l-ac"></i>AC</span><span><i class="l-free"></i>Besplatno</span><span><i class="l-off"></i>Ne radi</span><span><i class="l-nep"></i>Nije potvrđeno</span></div>
+<div class="map-legend" aria-hidden="true"><span><i class="l-dc"></i>DC</span><span><i class="l-ac"></i>AC</span><span><i class="l-free"></i>Besplatno</span><span><i class="l-off"></i>Ne radi</span><span><i class="l-tesla"></i>Samo Tesla</span><span><i class="l-nep"></i>Nije potvrđeno</span></div>
 <button class="btn sm map-me" id="mme" type="button">{{ ic('locate') }}Blizu mene</button>
 <div class="map-attr">Mapa: <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/" rel="noopener">OpenMapTiles</a> · Podaci: © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>, <a href="https://openchargemap.org" rel="noopener">Open Charge Map</a>, <a href="https://www.putevi-srbije.rs/index.php/en/electric-chargers" rel="noopener">JP Putevi Srbije</a>, mreže · {{ M.retrieved_sr }}</div>
 <div class="card-ov" id="mcard"></div>

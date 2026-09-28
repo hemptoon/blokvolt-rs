@@ -21,7 +21,7 @@
 {% with rows=index.rows %}{% include '_indeks_tabela.html' %}{% endwith %}
 </details>
 </div>
-<div class="sec"><div class="sec-head"><h2>Mreže i aplikacije</h2></div>
+<div class="sec"><div class="sec-head"><h2>Mreže i aplikacije</h2><a href="/javno-punjenje/aplikacije-i-kartice/">Aplikacije i kartice →</a></div>
 <div class="rows">{% for o in ops %}<a class="row" href="{{ o.url }}">{{ lg(o) }}<div><h3>{{ o.name }}</h3><div class="sub">{{ o.kind_label }}{% if o.card %} · {{ o.card }}{% endif %}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
 </div>
 <div class="sec"><div class="sec-head"><h2>Kako se puni na javnom punjaču</h2></div>
@@ -33,7 +33,7 @@
 <p>Zato kWh košta više kad auto puni sporije: auto koji na brzom punjaču prima 50 kW plaća po kWh duplo više od auta koji prima 100 kW.</p>
 </details>
 <details><summary>Kako se plaća?</summary>
-<p>Kroz aplikaciju mreže: platnom karticom, pripejd saldom, RFID karticom ili QR kodom na punjaču. Tačnu cenu aplikacija pokazuje pre pokretanja punjenja. Ista stanica može biti skuplja u tuđoj aplikaciji (roming) — uporedite pre punjenja.</p>
+<p>Kroz aplikaciju mreže: platnom karticom, pripejd saldom, RFID karticom ili QR kodom na punjaču. Tačnu cenu aplikacija pokazuje pre pokretanja punjenja. Ista stanica može biti skuplja u tuđoj aplikaciji (roming) — uporedite pre punjenja. Koja aplikacija i kartica rade gde: <a class="lnk" href="/javno-punjenje/aplikacije-i-kartice/">aplikacije i kartice</a>.</p>
 </details>
 <details><summary>Gde je besplatno?</summary>
 <p>Državni punjači JP „Putevi Srbije“ na autoputevima su za sada besplatni, kao i Lidl na Limanu u Novom Sadu (do 60 minuta dnevno). Spisak: <a class="lnk" href="/javno-punjenje/besplatni-punjaci/">besplatni punjači</a>.</p>
