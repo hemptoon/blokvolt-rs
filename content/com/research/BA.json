@@ -317,7 +317,7 @@
   {
    "name": "Elektroprivreda HZ HB",
    "operator": "JP Elektroprivreda HZ HB d.d. Mostar",
-   "app": "None found",
+   "app": "none found",
    "size": "No charging information on ephzhb.ba. Automobili.ba (03.04.2026) names it among operators building charging networks.",
    "prices": [
     {
@@ -335,7 +335,7 @@
   {
    "name": "Elektroprivreda Republike Srpske (ERS)",
    "operator": "MH Elektroprivreda Republike Srpske, Trebinje",
-   "app": "None found",
+   "app": "none found",
    "size": "No charging information on ers.ba. No public network operator with a price list was found in Republika Srpska.",
    "prices": [
     {

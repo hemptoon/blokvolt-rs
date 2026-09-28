@@ -16,7 +16,7 @@ name the same network, otherwise within 60 m (100 m with the same name) with the
 Networks are recognised by country-specific rules on the name, operator, brand and network fields (NETS below).
 Nothing here is verified by hand: every station carries v = {'s': 'src'} (from the open databases, not checked one by one).
 
-Usage: python3 scripts/region_map.py [--fetch] [CC ...]      (default: HR BA ME AL XK)"""
+Usage: python3 scripts/region_map.py [--fetch] [CC ...]      (default: HR BA ME AL XK MK)"""
 import json
 import math
 import re
@@ -29,7 +29,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / 'content' / 'com' / 'region-data'
 LOCAL = ROOT / 'content' / 'com' / 'local'
 RAW = 'https://raw.githubusercontent.com/hemptoon/blokvolt-rs/region-data/'
-COUNTRIES = ['HR', 'BA', 'ME', 'AL', 'XK']
+COUNTRIES = ['HR', 'BA', 'ME', 'AL', 'XK', 'MK']
 
 SAME_SRC_M = 40
 DUP_M = 60
@@ -49,12 +49,16 @@ NETS = {
            ('tesla', r'supercharger|\btesla\b'), ('greencar', r'greencar')],
     'AL': [('vega', r'\bvega\b'), ('plugo', r'plugo'), ('icharge', r'icharge'), ('oshee', r'oshee'), ('tesla', r'\btesla\b')],
     'XK': [('echarge', r'e-?charge'), ('hib', r'\bhib\b'), ('tesla', r'\btesla\b')],
+    # Macedonian open data mixes Latin and Cyrillic names ("EVN", "ЕВН Полнач", "Макпетрол")
+    'MK': [('evn', r'\bevn\b|\bевн\b'), ('makpetrol', r'makpetrol|макпетрол'), ('tesla', r'supercharger|\btesla\b|тесла'),
+           ('okta', r'\bokta\b|\bокта\b'), ('lukoil', r'lukoil|лукоил')],
 }
 NAMES = {'ionity': 'IONITY', 'tesla': 'Tesla Supercharger', 'elen': 'ELEN (HEP)', 'petrol': 'Petrol', 'mol': 'MOL Plugee',
          'ht': 'Hrvatski Telekom', 'lidl': 'Lidl', 'kaufland': 'Kaufland', 'electrip': 'Electrip', 'moon': 'MOON',
          'greenway': 'GreenWay', 'qelo': 'Qelo', 'eon': 'E.ON', 'ina': 'INA', 'epbih': 'Elektroprivreda BiH',
          'ephzhb': 'EP HZ HB', 'ers': 'Elektroprivreda RS', 'eko': 'EKO (Jugopetrol)', 'epcg': 'EPCG', 'greencar': 'Greencar',
-         'vega': 'VEGA', 'plugo': 'PlugoAL', 'icharge': 'iCharge', 'oshee': 'OSHEE', 'echarge': 'ECHARGE', 'hib': 'HIB Petrol'}
+         'vega': 'VEGA', 'plugo': 'PlugoAL', 'icharge': 'iCharge', 'oshee': 'OSHEE', 'echarge': 'ECHARGE', 'hib': 'HIB Petrol',
+         'evn': 'EVN', 'makpetrol': 'Makpetrol', 'okta': 'OKTA', 'lukoil': 'Lukoil'}
 
 # the biggest towns, for "near …" when a record has no town (lat, lon)
 TOWNS = {
@@ -76,7 +80,14 @@ TOWNS = {
            ('Elbasan', 41.1125, 20.0822), ('Fier', 40.7239, 19.5561), ('Korçë', 40.6186, 20.7808), ('Berat', 40.7058, 19.9522),
            ('Sarandë', 39.8756, 20.0053), ('Lushnjë', 40.9419, 19.7050), ('Kukës', 42.0769, 20.4219), ('Gjirokastër', 40.0758, 20.1389)],
     'XK': [('Prishtinë', 42.6629, 21.1655), ('Prizren', 42.2139, 20.7397), ('Pejë', 42.6593, 20.2887), ('Gjakovë', 42.3803, 20.4308),
-           ('Ferizaj', 42.3702, 21.1553), ('Gjilan', 42.4635, 21.4694), ('Mitrovicë', 42.8914, 20.8660), ('Podujevë', 42.9106, 21.1932)],
+           ('Ferizaj', 42.3702, 21.1553), ('Gjilan', 42.4635, 21.4694), ('Mitrovicë', 42.8914, 20.8660), ('Podujevë', 42.9106, 21.1932),
+           ('Vushtrri', 42.8231, 20.9675), ('Suharekë', 42.3589, 20.8250), ('Rahovec', 42.3992, 20.6547), ('Drenas', 42.6250, 20.8928)],
+    # the Macedonian section is written in Cyrillic, so are the town names
+    'MK': [('Скопје', 41.9973, 21.4280), ('Битола', 41.0297, 21.3292), ('Куманово', 42.1322, 21.7144), ('Прилеп', 41.3451, 21.5550),
+           ('Тетово', 42.0106, 20.9714), ('Велес', 41.7156, 21.7756), ('Охрид', 41.1231, 20.8016), ('Гостивар', 41.7958, 20.9083),
+           ('Штип', 41.7358, 22.1914), ('Струмица', 41.4375, 22.6428), ('Кавадарци', 41.4331, 22.0119), ('Кочани', 41.9164, 22.4125),
+           ('Струга', 41.1781, 20.6783), ('Кичево', 41.5128, 20.9589), ('Гевгелија', 41.1392, 22.5025), ('Неготино', 41.4833, 22.0892),
+           ('Радовиш', 41.6381, 22.4644), ('Дебар', 41.5250, 20.5272), ('Свети Николе', 41.8650, 21.9425), ('Делчево', 41.9661, 22.7747)],
 }
 
 # OSM socket keys -> (type, current)
@@ -124,7 +135,8 @@ def network(cc, name, *texts):
     of StopShop parks under the operator "Kaufland eCharge" or "Electrip" (28.09.2026)."""
     for t in (fold(name or ''), fold(' '.join(x for x in texts if x))):
         for slug, pat in NETS.get(cc, []):
-            if t and re.search(pat, t):
+            # "Tesla Taxi" in Kosovo is a taxi firm's charger, not a Supercharger (28.09.2026)
+            if t and re.search(pat, t) and not (slug == 'tesla' and re.search(r'\btaxi\b', t)):
                 return slug
     return ''
 
@@ -136,6 +148,11 @@ def near_town(cc, lat, lon):
         if d < dbest:
             best, dbest = name, d
     return best, dbest
+
+
+# which OSM name to show: the local language first (Albanian in Kosovo, Macedonian in North Macedonia)
+NAME_KEYS = {'': ('name', 'name:hr', 'name:sr-Latn', 'name:en'), 'XK': ('name:sq', 'name', 'name:en'),
+             'AL': ('name', 'name:sq', 'name:en'), 'MK': ('name:mk', 'name', 'name:en')}
 
 
 # ------------------------------------------------------------------ OpenStreetMap
@@ -177,7 +194,7 @@ def osm_records(cc, j):
                 conns.append({'type': 'other', 'current': 'dc' if p > 22.5 else 'ac', 'powerKW': p, 'count': int(t['capacity']) if str(t.get('capacity', '')).isdigit() else 1})
         street = ' '.join(x for x in (t.get('addr:street') or t.get('addr:place'), t.get('addr:housenumber')) if x)
         city = t.get('addr:city') or ''
-        name = t.get('name') or t.get('name:hr') or t.get('name:sr-Latn') or t.get('name:en') or ''
+        name = next((t.get(k) for k in NAME_KEYS.get(cc, NAME_KEYS['']) if t.get(k)), '')
         op = t.get('operator') or t.get('network') or t.get('brand') or ''
         typ = {'node': 'n', 'way': 'w', 'relation': 'r'}[e['type']]
         net = network(cc, name, t.get('operator'), t.get('network'), t.get('brand'))
@@ -334,9 +351,45 @@ CYR = dict(zip('АБВГДЂЕЖЗИЈКЛМНОПРСТЋУФХЦЧШабвгд
                ['A', 'B', 'V', 'G', 'D', 'Đ', 'E', 'Ž', 'Z', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'Ć', 'U', 'F', 'H', 'C', 'Č', 'Š',
                 'a', 'b', 'v', 'g', 'd', 'đ', 'e', 'ž', 'z', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'ć', 'u', 'f', 'h', 'c', 'č', 'š']))
 CYR.update({'Љ': 'Lj', 'Њ': 'Nj', 'Џ': 'Dž', 'љ': 'lj', 'њ': 'nj', 'џ': 'dž'})
-LATIN_CC = ('HR', 'BA', 'ME')
+LATIN_CC = ('HR', 'BA', 'ME', 'XK')   # MK stays Cyrillic: its section is written in Cyrillic
 COUNTRY_WORDS = {'montenegro', 'crna gora', 'bosnia and herzegovina', 'bosnia & herzegovina', 'bosna i hercegovina', 'bih',
-                 'croatia', 'hrvatska', 'republika hrvatska', 'republic of croatia'}
+                 'croatia', 'hrvatska', 'republika hrvatska', 'republic of croatia', 'albania', 'shqiperia', 'shqiperi',
+                 'republika e shqiperise', 'kosovo', 'kosova', 'north macedonia', 'macedonia', 'republic of north macedonia',
+                 'северна македонија', 'македонија', 'република северна македонија'}
+
+
+# town names as the local pages write them: the open data mixes English, Italian and unaccented forms (Tirana, Skutari,
+# Prishtina) and, in North Macedonia, Latin and Cyrillic (Skopje / Скопје). Keys are folded (lower case, no diacritics).
+TOWN_FIX = {
+    'AL': {'tirana': 'Tiranë', 'tirane': 'Tiranë', 'skutari': 'Shkodër', 'shkodra': 'Shkodër', 'shkoder': 'Shkodër',
+           'durres': 'Durrës', 'durresi': 'Durrës', 'vlora': 'Vlorë', 'vlore': 'Vlorë', 'korca': 'Korçë', 'korce': 'Korçë',
+           'saranda': 'Sarandë', 'sarande': 'Sarandë', 'gjirokastra': 'Gjirokastër', 'gjirokaster': 'Gjirokastër',
+           'lac': 'Laç', 'beltoje': 'Beltojë', 'kukes': 'Kukës', 'lushnja': 'Lushnjë', 'lushnje': 'Lushnjë',
+           'shengjin': 'Shëngjin', 'lezha': 'Lezhë', 'lezhe': 'Lezhë', 'kavaja': 'Kavajë', 'kavaje': 'Kavajë',
+           'kruja': 'Krujë', 'kruje': 'Krujë', 'himara': 'Himarë', 'himare': 'Himarë', 'permet': 'Përmet',
+           'tepelena': 'Tepelenë', 'tepelene': 'Tepelenë', 'elbasani': 'Elbasan', 'fieri': 'Fier', 'berati': 'Berat'},
+    'XK': {'prishtina': 'Prishtinë', 'pristina': 'Prishtinë', 'prishtine': 'Prishtinë', 'gracanica': 'Graçanicë',
+           'gracanice': 'Graçanicë', 'peja': 'Pejë', 'peje': 'Pejë', 'gjakova': 'Gjakovë', 'gjakove': 'Gjakovë',
+           'mitrovica': 'Mitrovicë', 'mitrovice': 'Mitrovicë', 'podujeva': 'Podujevë', 'podujeve': 'Podujevë',
+           'suhareka': 'Suharekë', 'suhareke': 'Suharekë', 'gjilani': 'Gjilan', 'prizreni': 'Prizren',
+           'fushe kosova': 'Fushë Kosovë', 'fushe kosove': 'Fushë Kosovë', 'drenasi': 'Drenas', 'lipjani': 'Lipjan',
+           'vushtrria': 'Vushtrri', 'malisheva': 'Malishevë', 'malisheve': 'Malishevë', 'kacanik': 'Kaçanik',
+           'decan': 'Deçan', 'klina': 'Klinë', 'kline': 'Klinë', 'skenderaj': 'Skënderaj', 'kamenica': 'Kamenicë'},
+    'MK': {'skopje': 'Скопје', 'ohrid': 'Охрид', 'bitola': 'Битола', 'kumanovo': 'Куманово', 'prilep': 'Прилеп',
+           'tetovo': 'Тетово', 'veles': 'Велес', 'stip': 'Штип', 'shtip': 'Штип', 'strumica': 'Струмица',
+           'gevgelija': 'Гевгелија', 'kavadarci': 'Кавадарци', 'struga': 'Струга', 'kocani': 'Кочани', 'kochani': 'Кочани',
+           'kicevo': 'Кичево', 'kichevo': 'Кичево', 'gostivar': 'Гостивар', 'negotino': 'Неготино', 'radovis': 'Радовиш',
+           'radovish': 'Радовиш', 'debar': 'Дебар', 'resen': 'Ресен', 'bogorodica': 'Богородица', 'sveti nikole': 'Свети Николе',
+           'kriva palanka': 'Крива Паланка', 'delcevo': 'Делчево', 'valandovo': 'Валандово', 'dojran': 'Дојран',
+           'kratovo': 'Кратово', 'berovo': 'Берово', 'probistip': 'Пробиштип', 'demir kapija': 'Демир Капија',
+           'makedonski brod': 'Македонски Брод', 'bogdanci': 'Богданци', 'petrovec': 'Петровец', 'tabanovce': 'Табановце',
+           'miladinovci': 'Миладиновци', 'ilinden': 'Илинден'},
+}
+
+
+def town_fix(cc, t):
+    t = (t or '').strip()
+    return TOWN_FIX.get(cc, {}).get(fold(t), t)
 
 
 def latin(cc, t):
@@ -351,8 +404,13 @@ def clean_addr(cc, a):
     return ', '.join(x for x in parts if x and fold(x) not in COUNTRY_WORDS)
 
 
-BUILDING = r'under construction|u izgradnji|\bu gradnji\b|coming soon|\bplanned\b|planirano'
-GENERIC_NAME = r'(?i)(charging station|punionica|punjač|punjac|elektri[cč]na punionica|ev charger|charger|e-?punionica|polnilnica|stacion karikimi)'
+BUILDING = r'under construction|u izgradnji|\bu gradnji\b|coming soon|\bplanned\b|planirano|ne ndertim|во изградба|наскоро'
+# a name that only says "charger" is no name: the card then shows the network or the street
+GENERIC_NAME = (r'(?i)(charging station|punionica|punjač|punjac|elektri[cč]na punionica|ev charger|charger|e-?punionica|polnilnica'
+                r'|stacion karikimi|karikues|pike karikimi|полнач|станица за полнење|полнење'
+                r'|(ev|electric vehicle|electrical|electric car) charging( station| point)?|electric charger|karikues elektrik'
+                r'|punja[cč] za elektri[cč]na vozila|punionica za (el\.?|elektri[cč]na) vozila'
+                r'|полнач за електрични (возила|автомобили)|станица за полнење на електрични возила)')
 
 
 def station(cc, o, s, when):
@@ -368,7 +426,7 @@ def station(cc, o, s, when):
     opn = next((x.get('operatorName') for x in recs if x.get('operatorName')), '')
     base = s if s else o
     city = next((x.get('city') for x in recs if x.get('city') and re.search(r'[^\W\d_]{2}', x.get('city'))
-                 and not re.search(r'(?i)county|županij|zupanij|kanton|municipality|opština|opstina|općina|region|qark', x.get('city'))), '')
+                 and not re.search(r'(?i)county|županij|zupanij|kanton|municipality|opština|opstina|općina|region|qark|bashkia|komuna|општина|регион', x.get('city'))), '')
     town, km = near_town(cc, base['latitude'], base['longitude'])
     dc = [c for c in conns if c.get('current') == 'dc']
     ac = [c for c in conns if c.get('current') != 'dc']
@@ -380,7 +438,7 @@ def station(cc, o, s, when):
         'id': (o or s)['id'],
         'n': latin(cc, (name or '').strip()),
         'a': clean_addr(cc, addr).strip(' ,'),
-        't': latin(cc, city) or (town if km < 25 else ''),
+        't': town_fix(cc, latin(cc, city) or (town if km < 25 else '')),
         'lat': round(base['latitude'], 5),
         'lon': round(base['longitude'], 5),
         'net': net,
@@ -392,6 +450,10 @@ def station(cc, o, s, when):
         'src': [{'d': 'ocm' if x is o else 'osm', 'u': x.get('url'), 'upd': fmt_date(x.get('updated'))} for x in recs],
         'v': {'s': 'src', 'd': when},
     }
+    # the other spellings of the town stay searchable: "Tirana" and "Prishtina" (definite forms) find Tiranë and Prishtinë
+    al = sorted(k for k, v in TOWN_FIX.get(cc, {}).items() if v == st['t'] and k != fold(st['t']))
+    if al:
+        st['al'] = al
     fee = next((x.get('fee') for x in recs if x.get('fee')), None)
     if fee == 'no':
         st['fee_osm'] = 'no'

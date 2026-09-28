@@ -15,14 +15,29 @@ const LOC = LANG === 'sr' ? 'sr-Latn-RS' : LANG;
 const LP = LANG === 'en' || LANG === 'ru' ? '/' + LANG : '';
 const lp = u => (u && u.charAt(0) === '/' ? LP + u : u);
 const fold = s => (s || '').toLowerCase().replace(/đ/g, 'd').normalize('NFD').replace(/[̀-ͯ]/g, '');
+// the search box also ignores the script and the spelling of š/č/ž, gj/kj: Cyrillic is read as Latin and sh/ch/zh as one
+// letter, so "Охрид" finds "Ohrid", "Shtip" finds "Штип" and "Kicevo" finds "Kičevo" (the open data mixes all of them).
+// Price and free-charging matching keep plain fold(): their place keys in the data are folded that way.
+const CYR = { а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', ѓ: 'g', ђ: 'd', е: 'e', ж: 'z', з: 'z', ѕ: 'dz', и: 'i', ј: 'j', к: 'k', ќ: 'k',
+  л: 'l', љ: 'lj', м: 'm', н: 'n', њ: 'nj', о: 'o', п: 'p', р: 'r', с: 's', т: 't', ћ: 'c', у: 'u', ф: 'f', х: 'h', ц: 'c', ч: 'c',
+  џ: 'dz', ш: 's', й: 'j', ы: 'y', э: 'e', ю: 'ju', я: 'ja', ё: 'e', щ: 's', ь: '', ъ: '' };
+const sfold = s => fold(String(s || '').toLowerCase().replace(/[\u0400-\u04ff]/g, c => (c in CYR ? CYR[c] : c)))
+  .replace(/([szc])h/g, '$1').replace(/([gk])j/g, '$1').replace(/dj/g, 'd');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 // notes from the price data and idle fees, translated on /en/ and /ru/ through the page's string table
 const tr = s => (s && T['tx:' + s]) || s;
 // the same script draws the country maps of blokvolt.com: centre, zoom, currency and the correction link come from the
 // page's config (defaults = Serbia on www.blokvolt.rs)
 const C0 = cfg.center || [20.9, 44.1], Z0 = cfg.zoom || 6.3, CUR = cfg.cur || 'RSD';
-const fmt = (n, dg = 0) => Number(n).toLocaleString(LOC, { minimumFractionDigits: dg, maximumFractionDigits: dg });
-const CONN = { ccs2: 'CCS2', ccs1: 'CCS1', chademo: 'CHAdeMO', type2: 'Type 2', type1: 'Type 1', tesla: 'Tesla', schuko: T.schuko, cee: 'CEE', other: T.other };
+// blokvolt.com sections pass their own separators (a browser without Albanian or Macedonian locale data would print
+// "0.39"); prices in lek and denars drop trailing zeros ("28–40 ден.", "10,2 lekë")
+const NF = cfg.num || null;
+const fmt = (n, dg = 0) => {
+  if (!NF) return Number(n).toLocaleString(LOC, { minimumFractionDigits: dg, maximumFractionDigits: dg });
+  const x = Number(n), p = Math.abs(x).toFixed(dg).split('.'), f = NF.trim ? (p[1] || '').replace(/0+$/, '') : (p[1] || '');
+  return (x < 0 && +p.join('.') > 0 ? '−' : '') + p[0].replace(/\B(?=(\d{3})+(?!\d))/g, NF.thou) + (f ? NF.dec + f : '');
+};
+const CONN = { ccs2: 'CCS2', ccs1: 'CCS1', chademo: 'CHAdeMO', type2: 'Type 2', type1: 'Type 1', tesla: 'Tesla', gbt: 'GB/T', schuko: T.schuko, cee: 'CEE', other: T.other };
 const svg = p => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + p + '</svg>';
 const ICON = {
   x: svg('<path d="M6 6l12 12M18 6 6 18"/>'),
@@ -230,8 +245,8 @@ function match(s) {
   if (f === 'fav' && !FAV.has(s.id)) return false;
   if (f.indexOf('net:') === 0 && s.net !== f.slice(4)) return false;
   if (state.q) {
-    const hay = s._q || (s._q = fold([s.n, s.a, s.t, netName(s), s.opn].concat(s.al || []).join(' ')));
-    for (const w of fold(state.q).split(/\s+/).filter(Boolean)) if (hay.indexOf(w) < 0) return false;
+    const hay = s._q || (s._q = sfold([s.n, s.a, s.t, netName(s), s.opn].concat(s.al || []).join(' ')));
+    for (const w of sfold(state.q).split(/\s+/).filter(Boolean)) if (hay.indexOf(w) < 0) return false;
   }
   return true;
 }

@@ -21,7 +21,7 @@ sources: Orion eMobility — opis aplikacije, zemlje (Google Play, 03.09.2026) :
 - Srbija, za poređenje: na računima Charge&GO brzo punjenje je izašlo **43–79 RSD** po kWh, ≈0,37–0,67 €
 </div>
 
-**Vodiči za susedne zemlje.** Za Hrvatsku, Bosnu i Hercegovinu i Crnu Goru na blokvolt.com postoje posebni vodiči na lokalnom jeziku: mapa punjača, cene mreža, kalkulator sa domaćim tarifama struje i subvencije. [Hrvatska](https://blokvolt.com/hr/) · [Bosna i Hercegovina](https://blokvolt.com/ba/) · [Crna Gora](https://blokvolt.com/me/)
+**Vodiči za susedne zemlje.** Za Hrvatsku, Bosnu i Hercegovinu, Crnu Goru, Albaniju i Severnu Makedoniju na blokvolt.com postoje posebni vodiči na lokalnom jeziku: mapa punjača, cene mreža, kalkulator sa domaćim tarifama struje, subvencije i olakšice. [Hrvatska](https://blokvolt.com/hr/) · [Bosna i Hercegovina](https://blokvolt.com/ba/) · [Crna Gora](https://blokvolt.com/me/) · [Albanija](https://blokvolt.com/al/) · [Severna Makedonija](https://blokvolt.com/mk/)
 
 ## Cene po zemljama
 

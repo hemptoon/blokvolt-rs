@@ -6,14 +6,14 @@ order: 1
 priority: 0.9
 title: Punionice i punjenje električnih automobila u Hrvatskoj — karta, cijene, poticaji | BlokVolt
 description: Karta javnih punionica u Hrvatskoj, cijene svih mreža po kWh, koliko košta punjenje kod kuće, poticaji 2026., autoceste, trajekti i otoci — s izvorima i datumom provjere.
-kicker: Neovisni vodič · Hrvatska
+kicker: Vodič · Hrvatska
 h1: Punjenje električnih automobila u Hrvatskoj
 lead: Gdje napuniti auto, koliko košta kilovatsat na svakoj mreži i kod kuće, koji poticaji vrijede i što kaže zakon za zgrade — na jednom mjestu, s izvorom i datumom provjere uz svaki podatak.
 card: Karta punionica, cijene svih mreža, kalkulator s HEP-ovim tarifama, poticaji i savjeti za put na more.
 ---
 {{ w.stats([(num(C.fleet.series[-1][1]), pl(C.fleet.series[-1][1], 'električni osobni automobil', 'električna osobna automobila', 'električnih osobnih automobila') ~ ' krajem 2025. — 26 % više nego godinu prije (Eurostat)'),
             (num(C.new_bev.jan_aug_2026), pl(C.new_bev.jan_aug_2026, 'novi električni automobil', 'nova električna automobila', 'novih električnih automobila') ~ ' od siječnja do kolovoza 2026. — 4,2 % tržišta i 4,3 puta više nego u istom razdoblju lani (ACEA)'),
-            (num(M.n), pl(M.n, 'javna punionica', 'javne punionice', 'javnih punionica') ~ ' na našoj karti, od toga ' ~ num(M.dc50) ~ ' s brzim DC punjenjem od 50 kW naviše')]) }}
+            (num(M.n), pl(M.n, 'javna punionica', 'javne punionice', 'javnih punionica') ~ ' na karti, od toga ' ~ num(M.dc50) ~ ' s brzim DC punjenjem od 50 kW naviše')]) }}
 
 ## Koliko košta 100 km
 
@@ -28,7 +28,7 @@ Električni automobil troši oko 17 kWh na 100 km. Uz cijene objavljene 28. 9. 2
 | Ultrabrza punionica (IONITY bez pretplate) | 0,74 € | 12,58 € |
 | Benzin, 6,5 l na 100 km po {{ money(C.fuel.petrol) }} | — | {{ money(6.5 * C.fuel.petrol) }} |
 
-Kod kuće noću 100 km stoji otprilike šest puta manje nego benzinom, a na ultrabrzoj punionici bez pretplate nešto više nego benzinom. Kod kuće smo uračunali 10 % gubitaka pri punjenju. Svoj izračun napravite u [kalkulatoru]({{ PAGES.home.path }}).
+Kod kuće noću 100 km stoji otprilike šest puta manje nego benzinom, a na ultrabrzoj punionici bez pretplate nešto više nego benzinom. Za punjenje kod kuće uračunato je 10 % gubitaka pri punjenju. Svoj izračun napravite u [kalkulatoru]({{ PAGES.home.path }}).
 
 ## Što ovdje nalazite
 
@@ -42,4 +42,4 @@ Kod kuće noću 100 km stoji otprilike šest puta manje nego benzinom, a na ultr
 - **Trajekti.** Električni automobil smije na Jadrolinijin trajekt, ali pri kupnji karte morate navesti da je vozilo električno.
 - **Struja kod kuće.** Od 1. 10. 2026. do 31. 3. 2027. cijene energije za kućanstva određuje nova uredba; iznad 3.000 kWh u šest mjeseci energija je 35 % skuplja.
 
-<p class="note disc">BlokVolt je neovisni vodič. Vodi ga tim srpske tvrtke Evolako, koja ugrađuje kućne punionice samo u Srbiji. U Hrvatskoj ne prodajemo ništa i nitko ne plaća za mjesto na ovim stranicama: sve mreže prikazujemo po istim pravilima. <a href="{{ PAGES.method.path }}">Kako radimo</a></p>
+<p class="note disc">Sve mreže prikazane su po istim pravilima, a mjesto na ovim stranicama nitko ne plaća. Tko stoji iza BlokVolta i odakle su podaci, piše u <a href="{{ PAGES.method.path }}">metodologiji</a>.</p>

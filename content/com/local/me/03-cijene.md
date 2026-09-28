@@ -12,7 +12,7 @@ lead: Šta mreže objavljuju o cijenama i načinu plaćanja, uz izvor i datum pr
 card: Šta objavljuju EKO, Tesla i opštine, i šta provjeriti prije punjenja.
 related: map, home, road
 ---
-Nijedan operater javnih punjača koji smo provjerili ne objavljuje cjenovnik: ni EKO (Jugopetrol), ni opštine, ni hoteli. Cijenu zato provjerite na samom punjaču ili kod operatera prije punjenja. Stanje 28.09.2026.
+Nijedan provjereni operater javnih punjača ne objavljuje cjenovnik: ni EKO (Jugopetrol), ni opštine, ni hoteli. Cijenu zato provjerite na samom punjaču ili kod operatera prije punjenja. Stanje 28.09.2026.
 
 {{ w.price_table() }}
 
@@ -26,7 +26,7 @@ Nijedan operater javnih punjača koji smo provjerili ne objavljuje cjenovnik: ni
 
 ## Prije punjenja
 
-- Pitajte za cijenu na stanici ili kod operatera — besplatno punjenje u Crnoj Gori trenutno nismo mogli potvrditi ni za jedan javni punjač.
+- Pitajte za cijenu na stanici ili kod operatera — besplatno punjenje u Crnoj Gori trenutno nije potvrđeno ni za jedan javni punjač.
 - Punjači u hotelima i marinama obično su samo za goste.
 - Za put kroz region imajte i aplikacije mreža u susjednim zemljama: [Hrvatska](/hr/aplikacije-i-kartice/){% if 'ba' in LOCALS_ALL|map(attribute='key')|list %}, [BiH](/ba/cijene/){% endif %}, [Srbija](https://www.blokvolt.rs/javno-punjenje/aplikacije-i-kartice/).
 

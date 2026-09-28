@@ -4,7 +4,7 @@
  "@context": "https://schema.org",
  "@graph": [
   {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "{{ LOC.html }}", "dateModified": "{{ C.checked_iso }}",
-   "about": {"@type": "Country", "name": {{ LOC.country|tojson }}}, "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+   "about": {"@type": "{{ LOC.place or 'Country' }}", "name": {{ LOC.country|tojson }}}, "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
   {"@type": "ItemList", "itemListElement": [{% for p in PAGES.values() if p.key != 'hub' %}{"@type": "ListItem", "position": {{ loop.index }}, "url": "{{ SITE }}{{ p.path }}", "name": {{ p.h1|tojson }}}{{ ',' if not loop.last }}{% endfor %}]}
  ]
 }</script>{% endblock %}

@@ -34,7 +34,7 @@ Jadrolinija na pitanje smije li se električni automobil ukrcati odgovara: „{{
 - {{ C.ferry.news }} ([morski.hr, 6. 11. 2025.]({{ C.ferry.news_src }}))
 - {{ C.ferry.not_found }}
 
-Na liniji Mišnjak – Stinica (Rab) prevozi Rapska plovidba; njezina pravila za električne automobile nismo mogli provjeriti.
+Na liniji Mišnjak – Stinica (Rab) prevozi Rapska plovidba; njezina pravila za električne automobile nije bilo moguće provjeriti.
 
 ## Otoci
 

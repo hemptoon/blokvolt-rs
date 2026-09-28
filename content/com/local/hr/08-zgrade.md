@@ -56,4 +56,4 @@ Zakon ne propisuje kako se plaća struja za punionicu. U praksi postoje tri rje�
 - **EPBD IV.** Direktiva (EU) 2024/1275 o energetskim svojstvima zgrada trebala je biti prenesena do 29. 5. 2026. Hrvatska ju je prenijela samo djelomično; stroža pravila o punjenju (čl. 14.) još nisu u hrvatskom zakonu.
 - **Kućne punionice.** Nacrt pravilnika o građevinama i radovima za koje nije potrebna građevinska dozvola (javno savjetovanje do 3. 9. 2026.) prvi bi put propisao uvjete i za AC punionice do 22 kW ([energetika-net.com, 18. 8. 2026.]({{ C.buildings.draft_src }})).
 
-<p class="note">Ovo je sažetak propisa, ne pravni savjet. Za odluku suvlasnika i ugovor s izvođačem obratite se upravitelju zgrade ili odvjetniku. Tekst zakona provjerili smo {{ C.checked }}.</p>
+<p class="note">Ovo je sažetak propisa, ne pravni savjet. Za odluku suvlasnika i ugovor s izvođačem obratite se upravitelju zgrade ili odvjetniku. Tekst zakona provjeren je {{ C.checked }}.</p>

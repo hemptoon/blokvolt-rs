@@ -2,30 +2,30 @@
 key: method
 slug: metodologija/
 order: 8
-nav_ft: Kako radimo
+nav_ft: Metodologija
 icon: shield
 priority: 0.4
-title: Kako radimo: izvori, provjera i pravila | BlokVolt Crna Gora
+title: Metodologija: izvori, provjera i pravila | BlokVolt Crna Gora
 description: Odakle BlokVolt uzima podatke o punjačima, cijenama, tarifama i subvencijama u Crnoj Gori, kako ih provjerava, ko stoji iza vodiča i kako prijaviti grešku.
-h1: Kako radimo
-lead: Odakle su podaci, kako ih provjeravamo, ko stoji iza vodiča i kako prijaviti grešku.
+h1: Metodologija
+lead: Odakle su podaci, kako se provjeravaju, ko stoji iza vodiča i kako prijaviti grešku.
 card: Izvori, provjera, licence i ko stoji iza BlokVolta.
 related: map, prices, stats
 ---
-## Ko smo
+## Ko stoji iza BlokVolta
 
-BlokVolt je nezavisni vodič za punjenje električnih automobila u Srbiji i susjednim zemljama. Vodi ga tim srpske firme Evolako, koja ugrađuje kućne punjače u stambenim zgradama — samo u Srbiji. U Crnoj Gori ne prodajemo ništa, nemamo partnere među operaterima ni proizvođačima i ne naplaćujemo mjesto na stranici. Srpski dio vodiča je na [blokvolt.rs](https://www.blokvolt.rs/).
+BlokVolt je vodič za punjenje električnih automobila u Srbiji i susjednim zemljama. Vodi ga tim srpske firme Evolako, koja ugrađuje kućne punjače u stambenim zgradama — samo u Srbiji. U Crnoj Gori BlokVolt ne prodaje ništa, nema partnere među operaterima ni proizvođačima i ne naplaćuje mjesto na stranici. Srpski dio vodiča je na [blokvolt.rs](https://www.blokvolt.rs/).
 
 ## Pravila
 
-1. **Samo javni izvori.** Stranice operatera, odluke REGAGEN-a, Eko-fond, ministarstva, Eurostat. Gdje brojku daju samo mediji ili stariji članci, to i pišemo i označavamo kao indikativno.
-2. **Datum uz svaki podatak.** Uz cijenu stoji datum od kojeg važi i datum naše provjere. Cijene goriva i subvencije provjeravamo češće.
+1. **Samo javni izvori.** Stranice operatera, odluke REGAGEN-a, Eko-fond, ministarstva, Eurostat. Gdje brojku daju samo mediji ili stariji članci, to piše uz podatak, s oznakom da je indikativan.
+2. **Datum uz svaki podatak.** Uz cijenu stoje datum od kojeg važi i datum provjere. Cijene goriva i subvencije provjeravaju se češće.
 3. **Ista pravila za sve.** Iste kolone i isti redoslijed podataka za sve mreže, bez ocjena, rang-lista i plaćenih mjesta.
-4. **Praznine objavljujemo.** Ako operater ne objavljuje cijenu, to piše uz mrežu.
+4. **Praznine se objavljuju.** Ako operater ne objavljuje cijenu, to piše uz mrežu.
 
 ## Mapa
 
-Punjači su iz OpenStreetMapa (ODbL 1.0) i Open Charge Mapa (CC BY 4.0). Obje baze preuzimamo jednom mjesečno; isto mjesto iz obje baze prikazujemo jednom. Punjače nismo pojedinačno provjerili, što piše i u kartici svakog punjača. Ne preuzimamo ništa iz Google mapa i ne prikazujemo trenutnu zauzetost punjača. Spojeni spisak je otvoren pod licencom ODbL: [stanice.json](/assets/region/me/stanice.json).
+Punjači su iz OpenStreetMapa (ODbL 1.0) i Open Charge Mapa (CC BY 4.0). Obje baze preuzimaju se jednom mjesečno; isto mjesto iz obje baze prikazano je jednom. Punjači nisu pojedinačno provjereni, što piše i u kartici svakog punjača. Iz Google mapa ne preuzima se ništa, a trenutna zauzetost punjača ne prikazuje se. Spojeni spisak je otvoren pod licencom ODbL: [stanice.json](/assets/region/me/stanice.json).
 
 ## Greške i ispravke
 
@@ -33,4 +33,4 @@ Našli ste grešku ili nedostaje punjač? Pišite na [hello@blokvolt.com](mailto
 
 ## Privatnost
 
-Stranice nemaju analitiku, reklame ni kolačiće. Podloga mape se učitava sa servera OpenFreeMap. Lokaciju na mapi tražimo samo kad pritisnete „Blizu mene” i ona ostaje u vašem pregledaču.
+Stranice nemaju analitiku, reklame ni kolačiće. Podloga mape se učitava sa servera OpenFreeMap. Lokacija se na mapi koristi samo kad pritisnete „Blizu mene” i ostaje u vašem pregledaču.

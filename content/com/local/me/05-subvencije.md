@@ -24,4 +24,4 @@ Eko-fond je sufinansirao i javne punjače za opštine: Bar (odluka 13.02.2024.) 
 
 {{ C.subsidies_note }}
 
-Konkurse objavljuje Eko-fond na [eko-fond.co.me/konkursi](https://www.eko-fond.co.me/konkursi). Stranicu osvježavamo kad se objavi novi konkurs.
+Konkurse objavljuje Eko-fond na [eko-fond.co.me/konkursi](https://www.eko-fond.co.me/konkursi). Stranica se osvježava kad se objavi novi konkurs.

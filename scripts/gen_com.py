@@ -18,6 +18,7 @@ cluster on the blokvolt.rs side: REGION_ALTS). x-default follows blokvolt.rs whe
 Usage: python3 scripts/gen_com.py   (writes dist-com/; exits 1 on broken internal links or a missing widget value)"""
 import hashlib
 import json
+import os
 import re
 import shutil
 import sys
@@ -31,7 +32,7 @@ from markupsafe import Markup, escape
 ROOT = Path(__file__).resolve().parent.parent
 COM = ROOT / 'content' / 'com'
 LOCAL = COM / 'local'
-OUT = ROOT / 'dist-com'
+OUT = Path(os.environ.get('BV_COM_OUT') or ROOT / 'dist-com')   # BV_COM_OUT: build elsewhere (parallel drafts)
 RS_DIST = ROOT / 'dist'
 
 cfg = json.load(open(COM / 'site.json', encoding='utf-8'))
@@ -42,11 +43,24 @@ CHECKED, CHECKED_ISO, EMAIL = cfg['checked'], cfg['checked_iso'], cfg['email']
 # ------------------------------------------------------------------ locales
 LOCALES = {
     'hr': dict(key='hr', cc='HR', dir='hr', html='hr', hreflang='hr-HR', og='hr_HR', code='HR', en='/croatia/',
-               country='Hrvatska', switch='Hrvatska', cur='EUR', cur_sign='€', dec=',', thou='.'),
+               country='Hrvatska', switch='Hrvatska', cur='EUR', cur_sign='€', dec=',', thou='.',
+               lang_en='Croatian', open_local='Otvori vodič na hrvatskom'),
     'ba': dict(key='ba', cc='BA', dir='ba', html='bs', hreflang='bs-BA', og='bs_BA', code='BA', en='/bosnia-and-herzegovina/',
-               country='Bosna i Hercegovina', switch='Bosna i Hercegovina', cur='KM', cur_sign='KM', dec=',', thou='.'),
+               country='Bosna i Hercegovina', switch='Bosna i Hercegovina', cur='KM', cur_sign='KM', dec=',', thou='.',
+               lang_en='Bosnian', open_local='Otvori vodič na bosanskom'),
     'me': dict(key='me', cc='ME', dir='me', html='sr-Latn-ME', hreflang='sr-ME', og='sr_ME', code='ME', en='/montenegro/',
-               country='Crna Gora', switch='Crna Gora', cur='EUR', cur_sign='€', dec=',', thou='.'),
+               country='Crna Gora', switch='Crna Gora', cur='EUR', cur_sign='€', dec=',', thou='.',
+               lang_en='Montenegrin', open_local='Otvori vodič na crnogorskom'),
+    # Albanian for Albania (sq-AL) and for Kosovo: "sq" alone, because Google takes ISO 3166-1 regions only and XK is not one
+    'al': dict(key='al', cc='AL', dir='al', html='sq', hreflang='sq-AL', og='sq_AL', code='AL', en='/albania/',
+               country='Shqipëria', switch='Shqipëria', cur='ALL', cur_sign='lekë', dec=',', thou='\u00a0', plural='sq', trim=True,
+               lang_en='Albanian', open_local='Hap udhëzuesin në shqip'),
+    'xk': dict(key='xk', cc='XK', dir='xk', html='sq', hreflang='sq', og='sq_AL', code='XK', en='/kosovo/',
+               country='Kosova', switch='Kosova', cur='EUR', cur_sign='€', dec=',', thou='\u00a0', plural='sq', place='Place',
+               lang_en='Albanian', open_local='Hap udhëzuesin në shqip'),
+    'mk': dict(key='mk', cc='MK', dir='mk', html='mk', hreflang='mk-MK', og='mk_MK', code='MK', en='/north-macedonia/',
+               country='Северна Македонија', switch='Северна Македонија', cur='MKD', cur_sign='ден.', dec=',', thou='.',
+               plural='mk', script='cyrl', trim=True, lang_en='Macedonian', open_local='Отвори го водичот на македонски'),
 }
 EN = dict(key='en', html='en', hreflang='en', og='en_GB', code='EN', dec='.', thou=',')
 # page keys that blokvolt.rs has too: one hreflang cluster across both domains (build.py writes the .rs side from
@@ -54,20 +68,29 @@ EN = dict(key='en', html='en', hreflang='en', og='en_GB', code='EN', dec='.', th
 from region_pages import RS_PAGES  # noqa: E402
 MD_EXT = ['extra', 'sane_lists', 'md_in_html']
 # a number never ends a line apart from its unit: 26 %, 0,35 €, 22 kW, 138 km, 3.000 kWh
-NBSP_RE = re.compile(r'(\d) (%|€|KM|kWh|kW|km|h\b|mil\.|min\b)')
+NBSP_RE = re.compile(r'(\d) (%|€|KM|kWh|kW|km|h\b|mil\.|min\b|lekë|lek\b|ден\.?|кWh|км|мин)')
 # a date written with the ordinal period ("28. 9. 2026.", "03.04.2026.") that ends a sentence takes no second period
 DOT_RE = re.compile(r'(\d{4}\.)((?:</a>|</b>|</strong>|</em>)*)\.(?!\.)')
 
 STRINGS = json.load(open(LOCAL / 'strings.json', encoding='utf-8'))
+# a section may keep its UI words next to its pages (content/com/local/<dir>/strings.json); they win over the shared file
+for _l in LOCALES.values():
+    _f = LOCAL / _l['dir'] / 'strings.json'
+    if _f.exists():
+        STRINGS[_l['key']] = json.load(open(_f, encoding='utf-8'))
 
 
 # ------------------------------------------------------------------ helpers
 def num(x, d=0, loc=None):
-    """1234.5 -> '1.234,5' (local) or '1,234.5' (English)."""
+    """1234.5 -> '1.234,5' (local) or '1,234.5' (English). Sections with prices in lek or denars (loc trim=True) drop
+    trailing zeros: 10,2 lekë, 40 lekë, 2,58 ден. — "10,200 lekë" would read as ten thousand."""
     loc = loc or EN
     if x is None:
         return ''
-    s = f'{abs(float(x)):,.{d}f}'.replace(',', '§').replace('.', loc['dec']).replace('§', loc['thou'])
+    s = f'{abs(float(x)):,.{d}f}'
+    if loc.get('trim') and '.' in s:
+        s = s.rstrip('0').rstrip('.')
+    s = s.replace(',', '§').replace('.', loc['dec']).replace('§', loc['thou'])
     return ('−' if float(x) < 0 else '') + s
 
 
@@ -101,7 +124,7 @@ env = Environment(loader=FileSystemLoader([str(ROOT / 'templates' / 'com2'), str
                   autoescape=select_autoescape(['html']), trim_blocks=True, lstrip_blocks=True)
 env.filters['domain'] = dom
 env.filters['lk'] = linkify
-env.filters['mono'] = lambda n: ''.join(w[0] for w in re.findall(r'[A-Za-zČĆŽŠĐčćžšđ0-9]+', n or '?')[:2]).upper() or '?'
+env.filters['mono'] = lambda n: ''.join(w[0] for w in re.findall(r'[^\W_]+', n or '?')[:2]).upper() or '?'
 env.filters['tojson_safe'] = lambda o: Markup(json.dumps(o, ensure_ascii=False).replace('</', '<\\/'))
 env.filters['zip'] = lambda a, b: zip(a, b)
 
@@ -114,6 +137,18 @@ def pl(n, one, few, many):
     if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14:
         return few
     return many
+
+
+def plural_for(loc):
+    """pl() of a local section. Albanian: 1 -> one, everything else plural (21 karikues/stacione). Macedonian: 1, 21, 101
+    -> one, else plural (the 'few' and 'many' forms are the same). Pages call pl(n, one, few, many) in every language;
+    in Albanian and Macedonian pass the plural twice."""
+    rule = loc.get('plural')
+    if rule == 'sq':
+        return lambda n, one, few, many=None: one if abs(int(round(float(n)))) == 1 else few
+    if rule == 'mk':
+        return lambda n, one, few, many=None: one if (abs(int(round(float(n)))) % 10 == 1 and abs(int(round(float(n)))) % 100 != 11) else few
+    return pl
 
 
 env.globals['pl'] = pl
@@ -224,7 +259,7 @@ def build_english(local_hubs):
                                                            'EPS electricity prices, the €5,000 subsidy and the rules for apartment buildings — with the full guide on blokvolt.rs.')),
            priority='0.8')
     render('en_home.html', '/', dict(en_ctx, n_companies=n_companies, n_sources=len(all_sources), n_rs_firms=n_rs, section='', alts=[],
-                                     title='EV charging in Serbia and the Western Balkans — independent guide | BlokVolt',
+                                     title='EV charging in Serbia and the Western Balkans — maps, prices, subsidies | BlokVolt',
                                      description=('Public charging networks and prices, electricity at home, subsidies and apartment-building rules in Serbia, '
                                                   'Croatia, Bosnia and Herzegovina, Montenegro, North Macedonia, Albania, Kosovo and Slovenia — with maps and local-language guides.')),
            priority='1.0')
@@ -308,7 +343,7 @@ def hreflang(key, loc, all_pages):
     if key == 'hub':
         alts.append(('en', SITE + loc['en']))
         alts.append(('x-default', SITE + loc['en']))
-    elif key in RS_PAGES:
+    elif key in RS_PAGES and loc['key'] != 'xk':   # blokvolt.rs does not list /xk/ (scripts/region_pages.py)
         rp = RS_PAGES[key]
         alts += [('sr', RS + rp), ('en', RS + '/en' + rp), ('ru', RS + '/ru' + rp), ('x-default', RS + rp)]
     if len(alts) < 2:
@@ -332,7 +367,7 @@ def build_local(loc, C, st, pages, all_pages):
         rows = ['﻿' + ';'.join(C['csv']['head'])] + [';'.join(str(x) for x in r) for r in C['csv']['rows']]
         (OUT / loc['dir']).mkdir(parents=True, exist_ok=True)
         (OUT / loc['dir'] / C['csv']['file']).write_text('\n'.join(rows) + '\n', encoding='utf-8')
-    ctx0 = dict(LOC=loc, S=S, C=C, M=M, NAV=NAV, SWITCH=SWITCH, home=f"/{loc['dir']}/", PAGES=by_key,
+    ctx0 = dict(LOC=loc, S=S, C=C, M=M, NAV=NAV, SWITCH=SWITCH, home=f"/{loc['dir']}/", PAGES=by_key, pl=plural_for(loc),
                 num=lambda x, d=0: num(x, d, loc), money=lambda x, d=2, unit=None: money(x, loc, d, unit), EN_URL=loc['en'])
     body_tpl_head = "{% import '_w.html' as w with context %}"
     for p in pages:
@@ -351,6 +386,7 @@ def build_local(loc, C, st, pages, all_pages):
                 'stations': f"/assets/region/{loc['cc'].lower()}/stanice.json?v={ver(reg / 'stanice.json')}",
                 'prices': f"/assets/region/{loc['cc'].lower()}/cijene.json?v={ver(reg / 'cijene.json')}",
                 'center': C['map']['center'], 'zoom': C['map']['zoom'], 'cur': loc['cur'],
+                'num': {'dec': loc['dec'], 'thou': loc['thou'], 'trim': bool(loc.get('trim'))},
                 'fix': 'mailto:' + EMAIL + '?subject=' + S['map_fix_subject'].replace(' ', '%20') + '%20{id}',
             }, ensure_ascii=False).replace('</', '<\\/')
             extra['map_i18n'] = json.dumps(S['map'], ensure_ascii=False)
@@ -432,7 +468,7 @@ def main():
     (OUT / 'CNAME').write_text('blokvolt.com\n', encoding='utf-8')
     (OUT / 'README.md').write_text(
         '# blokvolt.com\n\nThe regional site of BlokVolt: an English guide to EV charging in Serbia and its neighbours and local-language '
-        'sections (/hr/, /ba/, /me/). Served by GitHub Pages (custom domain blokvolt.com).\n\nThis repository holds the built site only. '
+        'sections (' + ', '.join(f"/{l['dir']}/" for l in BUILT) + '). Served by GitHub Pages (custom domain blokvolt.com).\n\nThis repository holds the built site only. '
         'Pages are generated by `scripts/gen_com.py` in [hemptoon/blokvolt-rs](https://github.com/hemptoon/blokvolt-rs) from `content/com/` — '
         'edit the data there, rebuild and upload; do not edit the HTML here by hand. Procedure: `docs/RUNBOOK.md`, sections 3.10 and 3.23.\n\n'
         'Map data: © OpenStreetMap contributors (ODbL 1.0) and Open Charge Map (CC BY 4.0); see /assets/region/<cc>/stanice.json.\n',

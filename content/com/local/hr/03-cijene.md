@@ -13,7 +13,7 @@ card: Cijene po kWh svih mreža u jednoj tablici, naknade za zauzeće i kako pla
 schema: Article
 related: apps, home, map
 ---
-Sve mreže u Hrvatskoj naplaćuju po kilovatsatu (kWh). Cijene su s PDV-om, osim gdje je naznačeno drukčije. Kod mnogih mreža cijena ovisi o tome jeste li registrirani u njihovoj aplikaciji; ELEN ima posebne, više cijene na autocestama. Tablicu smo provjerili 28. 9. 2026.
+Sve mreže u Hrvatskoj naplaćuju po kilovatsatu (kWh). Cijene su s PDV-om, osim gdje je naznačeno drukčije. Kod mnogih mreža cijena ovisi o tome jeste li registrirani u njihovoj aplikaciji; ELEN ima posebne, više cijene na autocestama. Tablica je provjerena 28. 9. 2026.
 
 {{ w.price_table() }}
 
@@ -29,7 +29,7 @@ Sve mreže u Hrvatskoj naplaćuju po kilovatsatu (kWh). Cijene su s PDV-om, osim
 
 {{ w.net_cards() }}
 
-{{ C.other_operators }} Cijene tih operatera nismo pronašli na njihovim stranicama.
+{{ C.other_operators }} Na stranicama tih operatera cijene nisu pronađene.
 
 ## Zašto se ista punionica plaća različito
 

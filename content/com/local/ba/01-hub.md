@@ -6,13 +6,13 @@ order: 1
 priority: 0.9
 title: Punjači za električne automobile u BiH — mapa, cijene, poticaji | BlokVolt
 description: Mapa javnih punjača u Bosni i Hercegovini, cijene punjenja, koliko košta punjenje kod kuće po tarifama EPBiH, ERS i EP HZ HB, poticaji FBiH i punjači na koridoru Vc — s izvorima.
-kicker: Nezavisni vodič · Bosna i Hercegovina
+kicker: Vodič · Bosna i Hercegovina
 h1: Punjenje električnih automobila u Bosni i Hercegovini
 lead: Gdje napuniti auto, koliko košta punjenje na javnim punjačima i kod kuće u oba entiteta, koji poticaji postoje i gdje se puni na putu — na jednom mjestu, s izvorom i datumom provjere.
 card: Mapa punjača, cijene, kalkulator s tarifama EPBiH, ERS i EP HZ HB, poticaji FBiH i koridor Vc.
 ---
 {{ w.stats([(num(C.fleet.series[-1][1]), pl(C.fleet.series[-1][1], 'električni putnički automobil', 'električna putnička automobila', 'električnih putničkih automobila') ~ ' krajem 2025. — 38 % više nego godinu prije (Eurostat)'),
-            (num(M.n), pl(M.n, 'javni punjač', 'javna punjača', 'javnih punjača') ~ ' na našoj mapi, od toga ' ~ num(M.dc50) ~ ' s brzim DC punjenjem od 50 kW naviše'),
+            (num(M.n), pl(M.n, 'javni punjač', 'javna punjača', 'javnih punjača') ~ ' na mapi, od toga ' ~ num(M.dc50) ~ ' s brzim DC punjenjem od 50 kW naviše'),
             ('0 %', 'carina na nova električna vozila do 31.12.2026.')]) }}
 
 ## Koliko košta 100 km
@@ -40,4 +40,4 @@ Kod kuće noću 100 km košta oko 2 KM — otprilike deset puta manje nego benzi
 - **Koridor Vc.** Na A1 su brzi punjači EPBiH na odmorištu Lepenica (samo prema Sarajevu) i MOON kod Počitelja. [Na putu]({{ PAGES.road.path }})
 - **Cijene.** Elektroprivreda BiH i MOON nemaju javne cjenovnike; na mnogim punjačima punjenje je još besplatno. [Cijene]({{ PAGES.prices.path }})
 
-<p class="note disc">BlokVolt je nezavisni vodič. Vodi ga tim srpske firme Evolako, koja ugrađuje kućne punjače samo u Srbiji. U Bosni i Hercegovini ne prodajemo ništa i niko ne plaća za mjesto na ovim stranicama. <a href="{{ PAGES.method.path }}">Kako radimo</a></p>
+<p class="note disc">Sve mreže prikazane su po istim pravilima, a mjesto na ovim stranicama niko ne plaća. Ko stoji iza BlokVolta i odakle su podaci, piše u <a href="{{ PAGES.method.path }}">metodologiji</a>.</p>

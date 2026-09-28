@@ -93,6 +93,8 @@ small.csrc a{color:var(--mut)}
 .tiles.loc2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .tiles.loc2 .tile.big{grid-column:auto}
 
+/* the tariff names are long (blocks, day/night): the select takes the whole row, the own-price field goes below it */
+.calc .fields2 .field.wide{grid-column:1/-1}
 @media (max-width:900px){
  .ncards2{grid-template-columns:minmax(0,1fr)}
  .loc-banner{flex-wrap:wrap}

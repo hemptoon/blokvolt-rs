@@ -4,7 +4,7 @@ same hreflang clusters (Google ignores a cluster unless every page lists all the
 
 - scripts/gen_com.py uses RS_PAGES for the .com side;
 - build.py uses rs_alternates() for the .rs side: the Serbian, English and Russian versions of each shared page
-  also point to /hr/…, /ba/…, /me/… on blokvolt.com.
+  also point to /hr/…, /ba/…, /me/…, /al/…, /xk/…, /mk/… on blokvolt.com.
 """
 import re
 from pathlib import Path
@@ -13,8 +13,9 @@ ROOT = Path(__file__).resolve().parent.parent
 LOCAL = ROOT / 'content' / 'com' / 'local'
 COM = 'https://blokvolt.com'
 
-# local section folder -> hreflang (Montenegrin as sr-ME: Google takes ISO 639-1 codes only, "cnr" is not one)
-LOCALES = {'hr': 'hr-HR', 'ba': 'bs-BA', 'me': 'sr-ME'}
+# local section folder -> hreflang (Montenegrin as sr-ME: Google takes ISO 639-1 codes only, "cnr" is not one; Albanian
+# for Kosovo as plain "sq": XK is not an ISO 3166-1 region, and sq-AL belongs to the Albanian section)
+LOCALES = {'hr': 'hr-HR', 'ba': 'bs-BA', 'me': 'sr-ME', 'al': 'sq-AL', 'xk': 'sq', 'mk': 'mk-MK'}
 
 # page keys that blokvolt.rs has too, and the Serbian page for each
 RS_PAGES = {'map': '/mapa/', 'prices': '/javno-punjenje/', 'apps': '/javno-punjenje/aplikacije-i-kartice/',
@@ -51,7 +52,9 @@ def rs_alternates():
     loc = local_paths()
     out = {}
     for key, rp in RS_PAGES.items():
-        alts = [(LOCALES[d], COM + pages[key]) for d, pages in loc.items() if key in pages]
+        # the Kosovo section is left out of the blokvolt.rs clusters (and blokvolt.rs out of its own): its pages are
+        # Albanian-language alternates of the other local sections only
+        alts = [(LOCALES[d], COM + pages[key]) for d, pages in loc.items() if key in pages and d != 'xk']
         if alts:
             out[rp] = alts
     return out

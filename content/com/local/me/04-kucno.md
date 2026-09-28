@@ -23,7 +23,7 @@ related: prices, subsidies, map
 
 - **Niža tarifa.** {{ C.power.nt_hours }} Noćno punjenje je upola jeftinije od dnevnog.
 - **Fiksni dio** mrežne naknade (0,84 € mjesečno s PDV-om za odobrenu snagu do 8 kW) plaćate i bez auta, pa ga kalkulator ne računa.
-- **Popusti.** EPCG redovnim platišama daje popuste na račun; uslove za 2026. nismo mogli provjeriti, pa nisu uračunati.
+- **Popusti.** EPCG redovnim platišama daje popuste na račun; uslove za 2026. nije bilo moguće provjeriti, pa nisu uračunati.
 
 <details markdown="1"><summary>Kako se računa</summary>
 

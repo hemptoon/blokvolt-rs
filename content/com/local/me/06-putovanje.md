@@ -18,7 +18,7 @@ Brzih punjača u Crnoj Gori je malo: najviše ih ima EKO (Jugopetrol), po jedan 
 
 ## Savjeti
 
-- **Primorje ljeti.** Između Budve i Ulcinja brzi punjač nismo potvrdili: napunite se u Tivtu, Herceg Novom ili Podgorici.
+- **Primorje ljeti.** Između Budve i Ulcinja brzi punjač nije potvrđen: napunite se u Tivtu, Herceg Novom ili Podgorici.
 - **Iz Hrvatske.** U Dubrovniku ELEN ima devet punionica (hrvatski Registar punionica) — [punionice u Hrvatskoj](/hr/putovanje/).
 - **Sjever.** Na putu prema Žabljaku i Bijelom Polju računajte na EKO punjače od 50 kW i punite se kad god možete.
 - **Pitajte za cijenu** na stanici: operateri cijene ne objavljuju.

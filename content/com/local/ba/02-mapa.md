@@ -27,7 +27,7 @@ related: prices, road, home
 
 Punjači su iz dvije otvorene baze: **OpenStreetMap** (licenca ODbL) i **Open Charge Map** (CC BY 4.0). Snimak je od {{ M.retrieved }}; stanje OpenStreetMapa {{ M.osm_base }}, izvoz Open Charge Mapa {{ M.ocm_export }}. Isto mjesto iz obje baze prikazano je jednom. Mapa prikazuje {{ num(M.n) }} {{ pl(M.n, 'punjač', 'punjača', 'punjača') }}, od toga {{ num(M.dc50) }} s DC punjenjem od 50 kW naviše.
 
-**Punjače nismo pojedinačno provjerili.** Otvorene baze uređuju vozači i volonteri, pa neki punjač možda više ne radi ili je samo za goste hotela. Službenog spiska javnih punjača u BiH nema: procjene se kreću od 131 (2022.) do oko 350 instaliranih punjača (2024.), od kojih nisu svi javni. Prije puta provjerite kod operatera.
+**Punjači nisu pojedinačno provjereni.** Otvorene baze uređuju vozači i volonteri, pa neki punjač možda više ne radi ili je samo za goste hotela. Službenog spiska javnih punjača u BiH nema: procjene se kreću od 131 (2022.) do oko 350 instaliranih punjača (2024.), od kojih nisu svi javni. Prije puta provjerite kod operatera.
 
 Elektroprivreda BiH i MOON cijene ne objavljuju u cjenovniku; gdje je cijena poznata, vidi se u kartici punjača. Sve o cijenama: [Cijene]({{ PAGES.prices.path }}).
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Renders the 1200×630 share images of blokvolt.com with Playwright, in the layout of the blokvolt.rs image:
 bolt, wordmark, one line of what the page is, topics, domain.
-static/com/og-en.png (English pages) and og-hr.png, og-ba.png, og-me.png (local sections, with the country tag
+static/com/og-en.png (English pages) and og-hr.png, og-ba.png, og-me.png, og-al.png, og-xk.png, og-mk.png (local sections, with the country tag
 that the header shows next to the logo)."""
 import asyncio
 import base64
@@ -26,6 +26,15 @@ IMAGES = {
     'me': dict(tag='ME', l1='Punjenje električnih automobila u Crnoj Gori',
                l2='mapa · cijene · punjenje kod kuće · subvencije',
                foot='blokvolt.com/me — svaki podatak s izvorom i datumom provjere'),
+    'al': dict(tag='AL', l1='Karikimi i makinave elektrike në Shqipëri',
+               l2='harta · çmimet · karikimi në shtëpi · lehtësitë',
+               foot='blokvolt.com/al — çdo e dhënë me burim dhe datë kontrolli'),
+    'xk': dict(tag='XK', l1='Karikimi i veturave elektrike në Kosovë',
+               l2='harta · çmimet · karikimi në shtëpi · lehtësitë',
+               foot='blokvolt.com/xk — çdo e dhënë me burim dhe datë kontrolli'),
+    'mk': dict(tag='MK', l1='Полнење електрични возила во Северна Македонија',
+               l2='мапа · цени · полнење дома · субвенции',
+               foot='blokvolt.com/mk — секој податок со извор и датум на проверка'),
 }
 
 
@@ -38,6 +47,7 @@ def html(tag, l1, l2, foot):
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face{{font-family:Onest;src:url(data:font/woff2;base64,{font('onest-latin-wght-normal.woff2')}) format('woff2');font-weight:100 900}}
 @font-face{{font-family:Onest;src:url(data:font/woff2;base64,{font('onest-latin-ext-wght-normal.woff2')}) format('woff2');font-weight:100 900;unicode-range:U+0100-024F}}
+@font-face{{font-family:Onest;src:url(data:font/woff2;base64,{font('onest-cyrillic-wght-normal.woff2')}) format('woff2');font-weight:100 900;unicode-range:U+0400-045F}}
 html,body{{margin:0;width:1200px;height:630px;background:#0B0F17;font-family:Onest,sans-serif;overflow:hidden}}
 .wrap{{position:absolute;left:80px;top:150px;display:flex;gap:26px;align-items:flex-start}}
 svg{{flex:none;margin-top:30px}}

@@ -24,4 +24,4 @@ related: home, stats, buildings
 
 Pozive Fonda za zaštitu okoliša i energetsku učinkovitost (FZOEU) objavljuje Fond na [fzoeu.hr](https://www.fzoeu.hr/hr/nacionalni-javni-pozivi-i-natjecaji/1367). Prijave idu isključivo elektronički, kroz sustav eFZOEU s prijavom preko NIAS-a. Sredstva se dodjeljuju redom prijava, a pozivi se zatvaraju kad se novac potroši — u prethodnim krugovima to je znalo biti za nekoliko dana.
 
-Poziv za građane pratimo i ovu stranicu osvježavamo čim bude objavljen: iznosi po vozilu, cjenovni limit i datum početka prijava.
+Stranica se osvježava čim poziv za građane bude objavljen: iznosi po vozilu, cjenovni limit i datum početka prijava.

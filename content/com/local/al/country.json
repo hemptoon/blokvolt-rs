@@ -1,0 +1,730 @@
+{
+  "cc": "AL",
+  "checked": "28.09.2026",
+  "checked_iso": "2026-09-28",
+  "slugs": {
+    "prices": "cmimet/"
+  },
+  "map": {
+    "center": [
+      20.0,
+      41.15
+    ],
+    "zoom": 6.9
+  },
+  "net_names": {
+    "icharge": "iCharge.app",
+    "vega": "VEGA CHARGING",
+    "plugoal": "PlugoAL",
+    "dab": "DAB Energy",
+    "oshee": "OSHEE Charge"
+  },
+  "fleet": {
+    "series": [
+      [
+        2021,
+        624
+      ],
+      [
+        2022,
+        1245
+      ],
+      [
+        2023,
+        2891
+      ],
+      [
+        2024,
+        5722
+      ],
+      [
+        2025,
+        10938
+      ]
+    ],
+    "growth_2025": 91,
+    "src": "https://ec.europa.eu/eurostat/databrowser/view/road_eqs_carpda/default/table?lang=en",
+    "src_label": "Eurostat, road_eqs_carpda (autovetura sipas llojit të energjisë: elektrike)",
+    "src_date": "01.09.2026"
+  },
+  "new_reg": {
+    "series": [
+      [
+        2019,
+        24
+      ],
+      [
+        2020,
+        239
+      ],
+      [
+        2021,
+        262
+      ],
+      [
+        2022,
+        624
+      ],
+      [
+        2023,
+        1671
+      ],
+      [
+        2024,
+        2843
+      ],
+      [
+        2025,
+        5517
+      ]
+    ],
+    "src": "https://ec.europa.eu/eurostat/databrowser/view/road_eqr_carpda/default/table?lang=en",
+    "src_label": "Eurostat, road_eqr_carpda (autovetura të reja sipas llojit të energjisë: elektrike)",
+    "src_date": "01.09.2026"
+  },
+  "instat": {
+    "vehicles": 1048092,
+    "vehicles_change": "9,3",
+    "cars_share": "80,8",
+    "diesel_share": "72,1",
+    "ev_growth": "91,2",
+    "per_1000": 361,
+    "src": "https://www.instat.gov.al/media/oqtb0y3r/characteristics-of-road-vehicles-2025.pdf",
+    "src_label": "INSTAT, mjetet rrugore 2025",
+    "date": "21.07.2026"
+  },
+  "first_reg_2026": [
+    {
+      "period": "janar–shkurt 2026",
+      "n": 1712,
+      "change": "151",
+      "share": "makinat plotësisht elektrike ishin 51,6 % e regjistrimeve të reja me zero km",
+      "src": "https://scantv.al/lajme/shqiperia/flota-e-mjeteve-elektrike-ne-rritje-ne-dy-muajt-e-pare-te-vitit--i30546",
+      "src_label": "Scan TV, 06.04.2026"
+    },
+    {
+      "period": "janar–korrik 2026",
+      "n": 6396,
+      "change": "126",
+      "share": "mjetet elektrike ishin 40,5 % e mjeteve me zero km të regjistruara",
+      "src": "https://www.oranews.tv/ekonomi/mbi-6-mije-mjete-elektrike-te-regjistruara-ne-shtate-muaj-rritje-me-126-i1344633",
+      "src_label": "Ora News, 18.08.2026"
+    }
+  ],
+  "oshee_2025": {
+    "evs": 16000,
+    "added": 4600,
+    "points": 254,
+    "src": "https://oshee.al/prezantohet-oshee-charge-shqiperia-drejt-transportit-te-gjelber-dhe-energjise-se-paster/",
+    "date": "11.11.2025"
+  },
+  "charger_counts": [
+    [
+      "OSHEE, 11.11.2025",
+      "më shumë se 254 pika karikimi në funksion",
+      "https://oshee.al/prezantohet-oshee-charge-shqiperia-drejt-transportit-te-gjelber-dhe-energjise-se-paster/"
+    ],
+    [
+      "VEGA CHARGING, lista e operatorit",
+      "20+ vendndodhje në funksion; 50+ stacione të ardhshme",
+      "https://vegagroup.al/sq/vegacharging/"
+    ],
+    [
+      "PlugoAL, faqja e operatorit",
+      "5 stacione ultra të shpejta, 280 kW",
+      "https://plugoal.com/"
+    ]
+  ],
+  "networks": [
+    {
+      "slug": "vega",
+      "name": "VEGA CHARGING",
+      "owner": "Vega Group",
+      "site": "https://vegagroup.al/sq/vegacharging/",
+      "sites_text": "20+ vendndodhje",
+      "app": {
+        "name": "",
+        "ios": null,
+        "android": null
+      },
+      "card": "Karta e karikimit VEGA. Kërkohet me formularin në vegagroup.al ose në numrin +355 69 700 1200; çmimi i kartës nuk është publikuar.",
+      "adhoc": "Nuk është publikuar. Operatori përmend ndihmën e stafit në pikat e karburantit ku ndodhen karikuesit.",
+      "roaming": "Nuk është publikuar.",
+      "prices": [],
+      "price_text": "VEGA CHARGING nuk publikon çmim për kWh në faqen e vet.",
+      "fees": [],
+      "valid_from": "",
+      "src": "https://vegagroup.al/sq/vegacharging/",
+      "src_label": "Vega Group — VEGA CHARGING",
+      "conf": "high",
+      "note": "Karikues DC 60, 120 dhe 180 kW me dy priza, GB/T dhe CCS2, me kabllo 5 m; karikues AC 22 kW. Sipas listës së operatorit ka karikues në Durrës, Tiranë/Vorë, Fier, Elbasan, Vlorë, Lukovë, Rrogozhinë, Lushnjë, Gjirokastër, Rubik dhe Shkodër; në Sarandë dhe në Korçë hapen së shpejti.",
+      "map_note": "VEGA CHARGING nuk publikon çmime."
+    },
+    {
+      "slug": "plugoal",
+      "name": "PlugoAL",
+      "owner": "RENT & GO SHPK, Tiranë",
+      "site": "https://plugoal.com/",
+      "sites_text": "5 stacione, 280 kW DC",
+      "app": {
+        "name": "Aplikacioni web PlugoAL, pa shkarkim",
+        "ios": null,
+        "android": null
+      },
+      "card": "Karta RFID vetëm për bizneset.",
+      "adhoc": "Skanoni kodin QR dhe paguani në aplikacionin web me kartë Visa ose Mastercard (Credins Bank dhe NEXI, 3-D Secure) ose me portofolin e parapaguar PlugoAL. Rimbushja minimale është 500 lekë dhe për të nisur karikimin duhen të paktën 500 lekë në portofol.",
+      "roaming": "Nuk është publikuar.",
+      "prices": [],
+      "price_text": "Çmimi për kWh caktohet për çdo stacion dhe shfaqet në aplikacion para karikimit; në faqe nuk është publikuar. Sipas PlugoAL, çmimet janë në lekë me TVSH 20 % dhe mund të ndryshojnë sipas orës, vendit dhe llojit të karikuesit.",
+      "fees": [
+        "500 lekë nëse makina mbetet e lidhur më shumë se 20 minuta pasi karikimi ka përfunduar (kushtet e përdorimit, në fuqi nga shkurti 2026)."
+      ],
+      "valid_from": "10.08.2026",
+      "src": "https://plugoal.com/payment.html",
+      "src_label": "PlugoAL — pagesa, versioni 1.0",
+      "conf": "high",
+      "note": "Stacionet janë në Tiranë, Durrës, Vlorë, Gjirokastër dhe Shkodër; adresat nuk janë në faqen kryesore. Priza CCS2. Sipas PlugoAL, çmimi që shihni në aplikacion është çmimi që paguani.",
+      "map_note": "PlugoAL e tregon çmimin vetëm në aplikacion, para karikimit."
+    },
+    {
+      "slug": "icharge",
+      "name": "iCharge.app",
+      "owner": "EV Tools Ltd, Mbretëria e Bashkuar",
+      "site": "https://www.icharge.app/en-us",
+      "sites_text": "platformë; numri i stacioneve në Shqipëri nuk është publikuar",
+      "app": {
+        "name": "iCharge.app",
+        "ios": "https://apps.apple.com/us/app/icharge-app/id6479523452",
+        "android": "https://play.google.com/store/apps/details?id=com.icharge.mobile.app"
+      },
+      "card": "Karta RFID është një nga mundësitë; karikimi niset dhe ndalet edhe vetëm me aplikacion.",
+      "adhoc": "Në aplikacion me kartë debiti ose krediti, me gjendjen e llogarisë iCharge ose me kupona të parapaguar iCharge; me para në dorë në disa pika UPay.",
+      "roaming": "Sipas iCharge, aplikacioni punon në Shqipëri, Itali, Greqi, Mal të Zi dhe Maqedoni të Veriut; rrjetet partnere nuk emërtohen.",
+      "prices": [],
+      "price_text": "Çmimi shfaqet në aplikacion para karikimit; listë publike çmimesh nuk ka.",
+      "fees": [],
+      "valid_from": "",
+      "src": "https://www.icharge.app/en-us",
+      "src_label": "iCharge.app (faqja e operatorit)",
+      "conf": "medium",
+      "conf_note": "iCharge ua shet platformën edhe pronarëve të stacioneve, prandaj stacionet me emrin iCharge mund t’u përkasin të tjerëve.",
+      "map_note": "iCharge.app e tregon çmimin vetëm në aplikacion, para karikimit."
+    },
+    {
+      "slug": "dab",
+      "name": "DAB Energy",
+      "owner": "DAB Energy",
+      "site": "https://www.dabenergy.al/",
+      "sites_text": "disa vendndodhje, numri nuk është publikuar",
+      "app": {
+        "name": "",
+        "ios": null,
+        "android": null
+      },
+      "card": "Nuk është publikuar.",
+      "adhoc": "Nuk është publikuar.",
+      "roaming": "Nuk është publikuar.",
+      "prices": [],
+      "price_text": "DAB Energy nuk publikon çmim karikimi.",
+      "fees": [],
+      "valid_from": "",
+      "src": "https://www.dabenergy.al/",
+      "src_label": "DAB Energy",
+      "conf": "low",
+      "conf_note": "Nuk është konfirmuar nëse karikuesit janë të hapur për publikun.",
+      "note": "Sipas faqes, stacionet kanë fuqi nga 80 deri në 580 kW dhe karikojnë deri në 10 makina njëkohësisht. Kompania ofron edhe servis për makina elektrike, riparim baterish dhe makina elektrike me qira.",
+      "map_note": "DAB Energy nuk publikon çmime."
+    },
+    {
+      "slug": "oshee",
+      "name": "OSHEE Charge (në plan)",
+      "owner": "OSHEE Group",
+      "site": "https://oshee.al/prezantohet-oshee-charge-shqiperia-drejt-transportit-te-gjelber-dhe-energjise-se-paster/",
+      "sites_text": "asnjë stacion në funksion nuk u gjet më 28.09.2026",
+      "app": {
+        "name": "",
+        "ios": null,
+        "android": null
+      },
+      "card": "Nuk është njoftuar.",
+      "adhoc": "Nuk është njoftuar.",
+      "roaming": "Nuk është njoftuar.",
+      "prices": [],
+      "price_text": "Çmimi i karikimit nuk është njoftuar. Kryeministri tha më 16.11.2025 se karikimi në parkimin e shtëpisë do të kushtojë sa energjia për familjet, ndërsa në stacionet publike do të ketë një çmim të rregulluar; shifër nuk u dha.",
+      "fees": [],
+      "valid_from": "",
+      "src": "https://oshee.al/prezantohet-oshee-charge-shqiperia-drejt-transportit-te-gjelber-dhe-energjise-se-paster/",
+      "src_label": "OSHEE — prezantohet OSHEE Charge, 11.11.2025",
+      "conf": "medium",
+      "conf_note": "Projekt i njoftuar; nuk u gjet asnjë njoftim për stacion në funksion.",
+      "note": "OSHEE e njoftoi më 11.11.2025 si rrjet kombëtar karikimi që do të ngrihet brenda vitit 2026. Pika e parë do të ketë 10 kulla karikimi për 20 makina njëkohësisht (deklarata të qeverisë, 10.11.2025); vendi përshkruhet si Unaza e Re (Top Channel) dhe si pranë TEG-ut, në drejtim të Farkës (ABC News). Po atë ditë qeveria përmendi 22 lekë për kWh si çmim të veçantë për flotën elektrike: kjo shifër përputhet me tarifën me të cilën stacionet blejnë energjinë, jo me çmimin për shoferët.",
+      "map_note": "OSHEE Charge nuk ka ende stacione në funksion."
+    }
+  ],
+  "market": {
+    "lo": 40,
+    "hi": 60,
+    "text": "Sipas OSHEE-së, në stacionet e karikimit energjia shitet 40–60 lekë për kWh, rreth tri herë më shumë se kostoja e blerjes, 14 lekë për kWh. Nuk thuhet nëse shifra përfshin TVSH. Është vlerësim, jo çmim i publikuar i ndonjë rrjeti.",
+    "src": "https://oshee.al/prezantohet-oshee-charge-shqiperia-drejt-transportit-te-gjelber-dhe-energjise-se-paster/",
+    "src_label": "OSHEE, 11.11.2025"
+  },
+  "station_tariff": {
+    "text": "ERE ka një tarifë të veçantë për pikat dhe stacionet e karikimit me fuqi të instaluar mbi 11 kW: 22 lekë për kWh dhe 25,3 lekë në orar pik. Orari pik është 18:00–22:00 nga 1 nëntori deri më 31 mars dhe 19:00–23:00 nga 1 prilli deri më 31 tetor. Kjo është tarifa me të cilën operatori i stacionit blen energjinë nga furnizuesi universal, jo çmimi që paguan shoferi; nuk thuhet nëse përfshin TVSH. Vlen nga 01.11.2025 (Vendimi nr. 255, 15.10.2025) dhe është edhe në tabelën për vitin 2026. Disa media e kanë paraqitur si çmimin e karikimit për shoferët.",
+    "src": "https://www.ere.gov.al/media/files/2025/11/13/Tarifat_dhe_%C3%87mimet_e_energjis%C3%AB_Elektrike_dhe_Gazit_natyror_p%C3%ABr_periudh%C3%ABn_1_Shkurt-31_Dhjetor_2025.pdf",
+    "src_label": "ERE, tarifat 1 shkurt–31 dhjetor 2025"
+  },
+  "other_sites": [
+    [
+      "E-Mobility Albania",
+      "Shpërndarës makinash elektrike dhe instalues karikuesish, jo operator rrjeti. Në listën e projekteve të saj janë një stacion publik 160 kW (CCS2) te Veliaj Petrol në Lushnjë dhe një karikues DC 80 kW te Xhangolli Hypermarket në Vaqarr."
+    ],
+    [
+      "ECHARGE",
+      "Operator nga Kosova. Thotë se ka pika karikimi edhe në Shqipëri dhe në aksin Prishtinë–Tiranë, pa i emërtuar (Radio Evropa e Lirë, 06.04.2026). Nuk thuhet nëse çmimet e tij në euro vlejnë në Shqipëri."
+    ],
+    [
+      "Tesla",
+      "Në listën e Teslës për Shqipërinë nuk ka asnjë Supercharger dhe asnjë karikues destinacioni (28.09.2026)."
+    ],
+    [
+      "Hotele dhe qendra tregtare",
+      "Në listën e VEGA CHARGING janë Delta Hotel (Durrës), Fjortes Palace (Vlorë), TEG dhe QTU; çmime të veçanta nuk publikojnë."
+    ],
+    [
+      "EkoVolt, Praslin",
+      "Emra që shfaqen në Open Charge Map; faqe operatori ose burim tjetër nuk u gjet."
+    ]
+  ],
+  "power": {
+    "vat": 20,
+    "note": "Çmimet për familjet i miraton Enti Rregullator i Energjisë (ERE) për klientët e furnizuesit universal: Vendimi nr. 322, datë 15.12.2025, në fuqi nga 01.01.2026 deri më 31.12.2026. Tabela e ERE-së nuk e përmend TVSH-në; sipas medias, këto çmime janë pa TVSH dhe mbi to shtohet TVSH 20 %.",
+    "blocks": "Kur familja konsumon deri në 700 kWh në muaj, kilovat-ora kushton 8,5 lekë pa TVSH. Nga 701 kWh e lart, çmimi 9,5 lekë vlen për të gjithë konsumin e muajit, jo vetëm për kWh mbi prag.",
+    "nt_hours": "Familjet kanë një çmim të vetëm gjatë gjithë ditës: në tabelën e ERE-së për vitin 2026 orari pik vlen vetëm për klientët jofamiljarë.",
+    "tariffs": [
+      {
+        "id": "deri700",
+        "name": "Familje, deri në 700 kWh në muaj",
+        "base": 8.5,
+        "allin": 10.2,
+        "parts": "8,5 lekë + TVSH 20 %"
+      },
+      {
+        "id": "mbi700",
+        "name": "Familje, mbi 700 kWh në muaj",
+        "base": 9.5,
+        "allin": 11.4,
+        "parts": "9,5 lekë + TVSH 20 %, për gjithë konsumin e muajit"
+      },
+      {
+        "id": "kalim700",
+        "name": "Makina kalon pragun e 700 kWh (shembull)",
+        "allin": 14.7,
+        "parts": "llogaritje: 550 kWh të shtëpisë + 200 kWh të makinës; rritja e faturës ndarë me 200 kWh"
+      }
+    ],
+    "example": {
+      "ev_kwh": 200,
+      "house": 550,
+      "total": 750,
+      "stay": 2040,
+      "before": 5610,
+      "after": 8550,
+      "diff": 2940,
+      "per_kwh": 14.7,
+      "above": 2280
+    },
+    "sources": [
+      {
+        "label": "ERE — Tarifat dhe çmimet e energjisë elektrike dhe gazit natyror për vitin 2026 (Vendimi nr. 322, 15.12.2025)",
+        "url": "https://www.ere.gov.al/media/files/2025/12/24/Tarifat_dhe_%C3%87mimet_e_energjis%C3%AB_Elektrike_dhe_Gazit_natyror_p%C3%ABr_VITIN_2026.pdf",
+        "date": "24.12.2025"
+      },
+      {
+        "label": "Panorama — 8,5 lekë/kWh pa TVSH ose 10,2 lekë/kWh me TVSH, deri në 700 kWh në muaj",
+        "url": "https://www.panorama.com.al/faturimi-nuk-do-te-behet-me-fasha-por-sipas-konsumit-nga-sot-ulet-ne-8-5-leke-cmimi-i-energjise-kush-jane-kategorite-perfituese/",
+        "date": "01.02.2025"
+      },
+      {
+        "label": "Scan TV — ERE: 8,5 lekë/kWh pa TVSH deri në 700 kWh, 9,5 lekë/kWh mbi 700 kWh",
+        "url": "https://scantv.al/lajme/shqiperia/ulet-cmimi-i-energjise-per-familjaret-ere-85-leke-kwh-pa-tvsh-pe-i21040",
+        "date": "08.01.2025"
+      },
+      {
+        "label": "OSHEE — 8,5 lekë për konsumin deri në 700 kWh",
+        "url": "https://oshee.al/vendimi-oshee-aplikon-8-5-lek-cmimin-e-energjise-elektrike-per-konsumin-deri-ne-700-kwh-perfitojne-mbi-1-mln-abonente/",
+        "date": "08.01.2025"
+      },
+      {
+        "label": "ERE — tarifa për pikat e karikimit mbi 11 kW (Vendimi nr. 255, 15.10.2025)",
+        "url": "https://www.ere.gov.al/media/files/2025/11/13/Tarifat_dhe_%C3%87mimet_e_energjis%C3%AB_Elektrike_dhe_Gazit_natyror_p%C3%ABr_periudh%C3%ABn_1_Shkurt-31_Dhjetor_2025.pdf",
+        "date": "13.11.2025"
+      },
+      {
+        "label": "Albeu — Bordi i Transparencës, çmimet maksimale të karburanteve nga 22.09.2026",
+        "url": "https://albeu.com/lajme/bordi-i-transparences-vendos-kufijte-e-rinj-te-cmimeve-per-karburantet/1022303/",
+        "date": "22.09.2026"
+      },
+      {
+        "label": "Ekofin — nafta 213 lekë, benzina 193 lekë për litër",
+        "url": "https://ekofin.al/nafta-me-pakice-213-leke-litri-benzina-193-leke-bordi-ul-cmimin-me-6-leke-per-naften/",
+        "date": "22.09.2026"
+      },
+      {
+        "label": "Ligji nr. 55/2025 „Për administrimin e bashkëpronësisë në ndërtesa“",
+        "url": "https://qeverisjavendore.gov.al/wp-content/uploads/2025/08/ligj-2025-07-03-55.pdf",
+        "date": "30.07.2025"
+      }
+    ]
+  },
+  "fuel": {
+    "petrol": 193,
+    "diesel": 213,
+    "date": "22.09.2026",
+    "src": "https://albeu.com/lajme/bordi-i-transparences-vendos-kufijte-e-rinj-te-cmimeve-per-karburantet/1022303/",
+    "src_label": "Albeu, 22.09.2026"
+  },
+  "calc": {
+    "km": 1200,
+    "kwh100": 17,
+    "loss": 10,
+    "share": 20,
+    "tariff": "deri700",
+    "pub": 60,
+    "pub_hint": "Rrjetet nuk publikojnë çmime; sipas OSHEE-së karikimi publik kushton 40–60 lekë për kWh (11.11.2025).",
+    "l100_petrol": 6.5,
+    "l100_diesel": 5.5,
+    "chips": [
+      [
+        "OSHEE, kufiri i poshtëm",
+        40
+      ],
+      [
+        "OSHEE, kufiri i sipërm",
+        60
+      ]
+    ],
+    "kwh_max": 200,
+    "kwh_step": 0.01,
+    "pub_step": 1,
+    "l_min": 50,
+    "l_max": 400,
+    "l_step": 1
+  },
+  "subsidies": [
+    {
+      "name": "Përjashtim nga TVSH-ja për makinat elektrike të reja",
+      "status": "open",
+      "who": "blerësit e makinave vetëm me motor elektrik, të reja, me zero km dhe të paregjistruara më parë në asnjë shtet; jo makinat e përdorura dhe jo hibridet",
+      "amount": "TVSH 20 % nuk paguhet në import dhe në shitjen e parë",
+      "cond": "Ligji nr. 92/2014 për TVSH-në, neni 51, shkronja p, sipas ALTAX; teksti i ligjit nuk mund të lexohej. Burimet nuk përputhen plotësisht: shihni më poshtë.",
+      "dates": "sipas Doganës, TVSH-ja në import është hequr që në vitin 2020; afat mbarimi nuk është njoftuar",
+      "src": "https://altax.al/mbi-trajtimin-e-tvsh-se-per-automjetet-elektrike-te-importuara-dhe-te-shitura-ne-territorin-shqiptar/",
+      "src_label": "ALTAX, 23.10.2024"
+    },
+    {
+      "name": "Përjashtim nga taksa vjetore e mjeteve të përdorura (TVMP)",
+      "status": "open",
+      "who": "mjetet elektrike",
+      "amount": "përjashtim i plotë nga taksa vjetore",
+      "cond": "DPSHTRR i rendit mjetet elektrike mes mjeteve të përjashtuara, pa cituar aktin ligjor. Përjashtohen edhe mjetet 0–3 vjeç.",
+      "dates": "afat mbarimi nuk është njoftuar",
+      "src": "https://www.dpshtrr.al/mjete/taksa-dhe-detyrime/perjashtohen-nga-pagesa-e-takses-vjetore-te-mjeteve-te-perdorura",
+      "src_label": "DPSHTRR — mjetet që përjashtohen nga taksa vjetore"
+    }
+  ],
+  "subsidies_none": "Për vitin 2026 nuk u gjet asnjë subvencion për blerjen e makinës elektrike dhe, në Tiranë, asnjë përfitim bashkiak si parkim falas, korsi autobusi ose lehtësi për taksitë (kontrolluar më 28.09.2026).",
+  "vat_sources": [
+    [
+      "Doganat Shqiptare (pa datë, të dhëna deri në 2022)",
+      "TVSH-ja në doganë për importin e autoveturave elektrike të reja është hequr që në vitin 2020. Në vitet 2020–2022 u importuan pa TVSH 543 makina të tilla, me 300 185 414 lekë TVSH të përjashtuar."
+    ],
+    [
+      "TV Klan, 11.11.2020",
+      "Makinat me motor elektrik përjashtohen nga detyrimet doganore dhe TVSH-ja me ndryshime ligjore; motoçikletat elektrike mbeten jashtë."
+    ],
+    [
+      "Albeu, 20.04.2022 (deklaratë qeveritare)",
+      "Njofton uljen e TVSH-së për makinat elektrike të reja nga 20 % në 6 %. Kjo nuk përputhet me burimet e tjera."
+    ],
+    [
+      "Ministria e Financave, Buletini Fiskal 2024",
+      "E vetmja pikë për mjetet elektrike është TVSH 6 % për autobusët elektrikë të transportit publik; për autoveturat nuk u gjet asnjë pikë."
+    ],
+    [
+      "ALTAX, 23.10.2024",
+      "Furnizimi i automjeteve vetëm me motor elektrik, të reja, me zero km e të paregjistruara më parë në asnjë shtet, përjashtohet nga TVSH-ja (Ligji nr. 92/2014, neni 51, shkronja p)."
+    ]
+  ],
+  "vat_links": [
+    {
+      "label": "Doganat Shqiptare — përjashtimi nga pagesa e TVSH rrit importin e makinave elektrike",
+      "url": "https://dogana.gov.al/d/172/0/0/951/perjashtimi-nga-pagesa-e-tvsh-rrit-importin-e-makinave-elektrike",
+      "date": "pa datë"
+    },
+    {
+      "label": "TV Klan — makinat elektrike përjashtohen nga taksat, harrohen motorët",
+      "url": "https://tvklan.al/makinat-elektrike-perjashtohen-nga-taksat-harrohen-motoret/",
+      "date": "11.11.2020"
+    },
+    {
+      "label": "Albeu — qeveria vendos heqjen e taksave dhe uljen e TVSH-së",
+      "url": "https://albeu.com/lajme/makinat-elektrike-ne-shqiperi-qeveria-vendos-heqjen-e-taksave-dhe-uljen-e-tvsh-se/292447/",
+      "date": "20.04.2022"
+    },
+    {
+      "label": "Ministria e Financave — Buletini Fiskal 2024 (PDF)",
+      "url": "https://financa.gov.al/wp-content/uploads/2025/03/Buletini-Fiskal-2024-Drejtoria-e-Politikave-Tatimore2-Copy.pdf",
+      "date": ""
+    },
+    {
+      "label": "ALTAX — trajtimi i TVSH-së për automjetet elektrike",
+      "url": "https://altax.al/mbi-trajtimin-e-tvsh-se-per-automjetet-elektrike-te-importuara-dhe-te-shitura-ne-territorin-shqiptar/",
+      "date": "23.10.2024"
+    }
+  ],
+  "benefits": [
+    {
+      "t": "Tarifat e regjistrimit të parë",
+      "v": "Në tetor 2019 u njoftua se DPSHTRR do t’i rimbursojë këto tarifa për mjetet elektrike dhe plug-in: kontrolli fizik 1 500, leja e qarkullimit 1 000, targat 3 000 dhe certifikata e pronësisë 2 000 lekë, gjithsej 7 500 lekë (VKM nr. 412, 19.06.2019). Sipas një raporti të vitit 2022, rimbursimi zbatohet që nga nëntori 2019. Nëse vlen edhe në vitin 2026 nuk është konfirmuar: faqja e DPSHTRR për regjistrimin nuk i përmend mjetet elektrike.",
+      "src": "https://shqiptarja.com/lajm/risia-e-dpshtrr-ne-mbrojtje-te-mjedisit-tarifa-zero-per-mjetet-elektrik"
+    },
+    {
+      "t": "Dogana dhe akciza",
+      "v": "Sipas Doganës, për autoveturat detyrimi doganor përbëhet vetëm nga TVSH-ja mbi vlerën doganore; ky rregull vlen për të gjitha autoveturat. Rregull i veçantë për akcizën e makinave elektrike nuk u gjet.",
+      "src": "https://dogana.gov.al/english/c/168/179/customs-clearance-of-vehicles"
+    },
+    {
+      "t": "Taksitë elektrike",
+      "v": "Faqja e DPSHTRR „Taksi Elektrike“ flet për taksa të reduktuara për taksitë elektrike, por nuk citon akt ligjor.",
+      "src": "https://www.dpshtrr.al/taksi-elektrike"
+    },
+    {
+      "t": "Synimi për 2030",
+      "v": "Projekti i Planit Kombëtar për Energjinë dhe Klimën synon që deri në vitin 2030, 10 % e mjeteve në qarkullim të jenë elektrike. Nëse plani është miratuar nuk është verifikuar.",
+      "src": "https://shqiptarja.com/lajm/plan-kombetar-per-kufizimin-e-perdorimit-te-makinave-javor-dhe-sipas-targes-strategjia-me-shume-automjete-elektrike-deri-me-2030"
+    },
+    {
+      "t": "Infrastruktura e karikimit",
+      "v": "Ligj për infrastrukturën e karikimit ose të karburanteve alternative nuk u gjet. Agjencia Shqiptare e Efiçencës së Energjisë hapi në qershor 2023 një tender me vlerë 83,3 milionë lekë për karikues në tetë qytete dhe pranë pikave kufitare; rezultati nuk është verifikuar.",
+      "src": "https://albanianpost.com/shqiperia-hap-tenderin-per-stacionet-e-karikimit-te-makinave-elektrike/"
+    }
+  ],
+  "buildings": [
+    {
+      "t": "Ligji",
+      "v": "Ligji nr. 55/2025 „Për administrimin e bashkëpronësisë në ndërtesa“, miratuar më 03.07.2025 (Dekreti nr. 282, 30.07.2025). Shfuqizon Ligjin nr. 10 112/2009 dhe hyn në fuqi 15 ditë pas botimit në Fletoren Zyrtare (nenet 57 dhe 58).",
+      "src": "https://qeverisjavendore.gov.al/wp-content/uploads/2025/08/ligj-2025-07-03-55.pdf"
+    },
+    {
+      "t": "Parkimi është pronë e përbashkët",
+      "v": "Përveç kur akti i pronësisë thotë ndryshe, parkimet, bodrumet, oborret e rrethuara dhe trualli janë pronë e përbashkët (neni 6, pika 2).",
+      "src": ""
+    },
+    {
+      "t": "Përmirësimet e zakonshme",
+      "v": "I vendos asambleja e bashkëpronarëve me shumicën e kuotave pjesëmarrëse (neni 39, pika 1).",
+      "src": ""
+    },
+    {
+      "t": "Përmirësimet e mëdha",
+      "v": "Sistemet e ngrohjes ose të ftohjes, ashensorët, gjeneratorët dhe „përmirësime të tjera të kësaj natyre“ kërkojnë miratimin e të paktën 75 % të kuotave pjesëmarrëse (neni 39, pika 2).",
+      "src": ""
+    },
+    {
+      "t": "Ndryshimi i pjesës së përbashkët",
+      "v": "Pronari i një njësie mund ta ndryshojë pamjen e pronës së përbashkët vetëm me miratimin paraprak me shkrim të shumicës së thjeshtë të votave të asamblesë dhe në përputhje me legjislacionin për planifikimin e territorit (neni 40, pikat 2 dhe 3).",
+      "src": ""
+    },
+    {
+      "t": "Kuorumi",
+      "v": "Në thirrjen e parë duhet të jenë të pranishëm bashkëpronarët që përfaqësojnë dy të tretat; në thirrjen e dytë, të paktën shumica e zakonshme (neni 18, pika 2).",
+      "src": ""
+    }
+  ],
+  "road": [
+    [
+      "Tiranë – Durrës",
+      "VEGA CHARGING: Gega OIL në Kënetë dhe te Ura e Dajlanit (Durrës), Prestige Industrial Park (Tiranë/Vorë dhe Durrës). PlugoAL: 280 kW në Tiranë dhe në Durrës, pa adresë të publikuar."
+    ],
+    [
+      "Durrës – Rrogozhinë – Lushnjë – Fier",
+      "VEGA CHARGING: Kompleksi Ergen (Rrogozhinë), 7K Krasniqi (Lushnjë), Kompleksi Albes (Fier). Stacion publik 160 kW te Veliaj Petrol në Lushnjë, sipas listës së projekteve të E-Mobility Albania."
+    ],
+    [
+      "Fier – Vlorë",
+      "VEGA CHARGING: Fjortes Hotel & Gas Station, dy vende në rrugën Fier–Vlorë, dhe Fjortes Palace (Vlorë). PlugoAL: Vlorë."
+    ],
+    [
+      "Vlorë – Sarandë – Gjirokastër",
+      "VEGA CHARGING: Lagjina Oil (Lukovë), 7K Krasniqi (Gjirokastër), Pit Stop (Sarandë, hapet së shpejti). PlugoAL: Gjirokastër."
+    ],
+    [
+      "Tiranë – Elbasan",
+      "VEGA CHARGING: në listën për Elbasanin janë Blu Energy dhe TEG."
+    ],
+    [
+      "Veriu, Shkodër",
+      "VEGA CHARGING: Gega Oil (Shkodër). PlugoAL: Shkodër."
+    ],
+    [
+      "A1 Rruga e Kombit (Milot – Morinë)",
+      "Karikues i shpejtë në vetë rrugën A1 nuk u konfirmua. VEGA CHARGING ka në listë Xhixha Oil në Rubik; largësia nga A1 nuk u verifikua."
+    ]
+  ],
+  "toll": {
+    "eur": 5,
+    "lek": 660,
+    "text": "Rruga e Kombit (A1, Milot – Morinë) kalon nëpër tunelin Thirrë–Kalimash, të hapur në qershor 2009. Pagesa merret pranë tunelit të Thirrës. Tarifa zyrtare për autoveturë është 5 € me TVSH; kur paguhet në lekë, shuma llogaritet me kursin zyrtar të Bankës së Shqipërisë të ditës së pagesës (ATRAKO). Për pagesën në lekë burimet japin 660 lekë për makinë (Timoni.al, 01.02.2024; tolls.eu, 13.09.2026). Timoni.al llogariste se me kursin zyrtar të 05.01.2024, 5 € bënin 523,55 lekë."
+  },
+  "borders": [
+    [
+      "Hani i Hotit, Murriqan (Mali i Zi)",
+      "Shkodër: VEGA CHARGING (Gega Oil) dhe PlugoAL."
+    ],
+    [
+      "Morinë (Kosova)",
+      "Në rrugën A1 nuk u konfirmua asnjë karikues i shpejtë. Në hartë ka një pikë në Kukës (GoGreen, OpenStreetMap, e pakontrolluar), pa të dhëna për fuqinë. Në anën tjetër pika quhet Vërmicë; aty nis autostrada R7 për në Prishtinë."
+    ],
+    [
+      "Qafë Thanë (Maqedonia e Veriut)",
+      "Elbasan: VEGA CHARGING (Blu Energy, TEG)."
+    ],
+    [
+      "Tushemisht (Maqedonia e Veriut)",
+      "Pogradeci nuk është në listat e VEGA CHARGING dhe PlugoAL. Në hartë ka një pikë iCharge.app në Pogradec (Open Charge Map, e pakontrolluar)."
+    ],
+    [
+      "Kapshticë (Greqia)",
+      "Korçë: VEGA CHARGING (Metro Terminal, hapet së shpejti). Në hartë ka një pikë iCharge.app në Bilisht (Open Charge Map, e pakontrolluar)."
+    ],
+    [
+      "Kakavijë (Greqia)",
+      "Gjirokastër: VEGA CHARGING (7K Krasniqi) dhe PlugoAL."
+    ],
+    [
+      "Qafë Botë (Greqia)",
+      "Sarandë: VEGA CHARGING (Pit Stop, hapet së shpejti). Në hartë ka një pikë iCharge.app në Sarandë (OpenStreetMap, e pakontrolluar)."
+    ],
+    [
+      "Tre Urat (Greqia)",
+      "Përmeti nuk është në listat e VEGA CHARGING dhe PlugoAL."
+    ]
+  ],
+  "ferries": [
+    [
+      "Durrës – Bari",
+      "Linjë në të dyja drejtimet më 28.09.2026, me anijet Rigel III (Pelagio Agency) dhe GNV Blu (Niki Mare), sipas Autoritetit Portual Durrës."
+    ],
+    [
+      "Vlorë – Brindisi, Durrës – Ankona, Sarandë – Korfuz",
+      "Linja që përmend Drejtoria e Përgjithshme Detare në një njoftim të marsit 2025; oraret e vjeshtës 2026 nuk janë verifikuar."
+    ]
+  ],
+  "road_srcs": [
+    {
+      "label": "ATRAKO — Rruga e Kombit, tarifat e pagesës",
+      "url": "https://atrako.gov.al/?p=1076",
+      "date": "pa datë"
+    },
+    {
+      "label": "Timoni.al — pagesa në Rrugën e Kombit dhe kursi i këmbimit",
+      "url": "https://timoni.al/si-vidhen-shqiptaret-nga-kastrati-dhe-salillari-tek-rruga-e-kombit-mbifaturim-me-kursin-e-kembimit-tek-pagesa-e-traut/",
+      "date": "01.02.2024"
+    },
+    {
+      "label": "Tolls.eu — pagesat rrugore në Shqipëri",
+      "url": "https://www.tolls.eu/albania",
+      "date": "13.09.2026"
+    },
+    {
+      "label": "Vega Group — VEGA CHARGING, lista e vendndodhjeve",
+      "url": "https://vegagroup.al/sq/vegacharging/",
+      "date": "28.09.2026"
+    },
+    {
+      "label": "PlugoAL — stacionet",
+      "url": "https://plugoal.com/",
+      "date": "28.09.2026"
+    },
+    {
+      "label": "E-Mobility Albania — projektet",
+      "url": "https://e-mobility.al/sq/projektet/",
+      "date": "28.09.2026"
+    },
+    {
+      "label": "Policia e Shtetit — njoftim për PKK Kakavijë, Tre Urat, Kapshticë dhe Qafë Botë",
+      "url": "https://asp.gov.al/policia-e-shtetit-njoftim-mbi-levizjen-ne-pkk-kakavije/",
+      "date": "26.07.2026"
+    },
+    {
+      "label": "Wikipedia — autostradat në Shqipëri dhe pikat kufitare (në anglisht)",
+      "url": "https://en.wikipedia.org/wiki/Highways_in_Albania",
+      "date": "28.09.2026"
+    },
+    {
+      "label": "Wikipedia — Rruga e Kombit (në anglisht)",
+      "url": "https://en.wikipedia.org/wiki/Rruga_e_Kombit",
+      "date": "28.09.2026"
+    },
+    {
+      "label": "Radio Evropa e Lirë — autostradat e Kosovës pa pagesë",
+      "url": "https://www.evropaelire.org/a/autostrada-kosove-pa-pagese-/31256866.html",
+      "date": "16.05.2021"
+    },
+    {
+      "label": "Autoriteti Portual Durrës — tragetet sot",
+      "url": "https://durresport.al/tragetetsot.php",
+      "date": "28.09.2026"
+    },
+    {
+      "label": "Shqiptarja — njoftimi i Drejtorisë së Përgjithshme Detare për linjat e trageteve",
+      "url": "https://shqiptarja.com/lajm/neser-mot-i-keq-pezullohet-lundrimi-i-tragetit-durresbaridurres-tre-dite-ndalim-edhe-per-mjetet-e-vogla-me-date-25-mars-rikthehen",
+      "date": "22.03.2025"
+    }
+  ],
+  "csv": {
+    "file": "makina-elektrike-shqiperi.csv",
+    "head": [
+      "viti",
+      "makina_elektrike_ne_qarkullim_eurostat",
+      "regjistrime_te_reja_eurostat"
+    ],
+    "rows": [
+      [
+        2019,
+        "",
+        24
+      ],
+      [
+        2020,
+        "",
+        239
+      ],
+      [
+        2021,
+        624,
+        262
+      ],
+      [
+        2022,
+        1245,
+        624
+      ],
+      [
+        2023,
+        2891,
+        1671
+      ],
+      [
+        2024,
+        5722,
+        2843
+      ],
+      [
+        2025,
+        10938,
+        5517
+      ]
+    ]
+  }
+}

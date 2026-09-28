@@ -15,7 +15,7 @@ related: map, subsidies, prices
 ---
 {{ w.stats([(num(C.fleet.series[-1][1]), pl(C.fleet.series[-1][1], 'električni putnički automobil', 'električna putnička automobila', 'električnih putničkih automobila') ~ ' krajem 2025. (Eurostat)'),
             ('1,1 %', 'udio električnih u novim putničkim automobilima u decembru 2025. (BHAS)'),
-            (num(M.n), pl(M.n, 'javni punjač', 'javna punjača', 'javnih punjača') ~ ' na našoj mapi')]) }}
+            (num(M.n), pl(M.n, 'javni punjač', 'javna punjača', 'javnih punjača') ~ ' na mapi')]) }}
 
 ## Koliko ih vozi
 

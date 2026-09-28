@@ -4,17 +4,17 @@
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
-  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "en", "dateModified": "{{ CHECKED_ISO }}", "about": {"@type": "Country", "name": {{ c.name|tojson }}}, "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "en", "dateModified": "{{ CHECKED_ISO }}", "about": {"@type": "{{ 'Place' if c.code == 'XK' else 'Country' }}", "name": {{ c.name|tojson }}}, "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
   {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": {{ c.name|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
  ]
 }</script>{% endblock %}
-{% block pagehead %}{{ m.ph('Country guide · ' ~ c.group ~ ' · checked ' ~ r.checked, 'EV charging in ' ~ c.name, r.summary,
+{% block pagehead %}{{ m.ph(('Guide' if c.code == 'XK' else 'Country guide') ~ ' · ' ~ c.group ~ ' · checked ' ~ r.checked, 'EV charging in ' ~ c.name, r.summary,
   chips=[('#public-charging', 'Public charging'), ('#electricity', 'Electricity at home'), ('#subsidies', 'Subsidies'), ('#buildings', 'Apartment buildings'), ('#home-charging', 'Home chargers'), ('#sources', 'Sources')],
   meta='Checked ' ~ r.checked ~ ' · ' ~ n_sources ~ ' sources') }}{% endblock %}
 {% block content %}
-{% if local %}<div class="loc-banner"><span class="lg mono" translate="no">{{ local.code }}</span><div><b lang="{{ local.html }}">{{ LOCALS|selectattr('loc.key', 'equalto', local.key)|map(attribute='title')|first }}</b><p>The full local guide, in {{ {'hr': 'Croatian', 'ba': 'Bosnian', 'me': 'Montenegrin'}[local.key] }}: a map of every public charger, prices of each network, a home-charging calculator, subsidies and travel tips.</p></div><a class="btn dark" href="/{{ local.dir }}/" hreflang="{{ local.hreflang }}" lang="{{ local.html }}">{{ {'hr': 'Otvori vodič na hrvatskom', 'ba': 'Otvori vodič na bosanskom', 'me': 'Otvori vodič na crnogorskom'}[local.key] }}</a></div>{% endif %}
+{% if local %}<div class="loc-banner"><span class="lg mono" translate="no">{{ local.code }}</span><div><b lang="{{ local.html }}">{{ LOCALS|selectattr('loc.key', 'equalto', local.key)|map(attribute='title')|first }}</b><p>The full local guide, in {{ local.lang_en }}: a map of public chargers from the open databases, network prices where they are published, a home-charging calculator, subsidies and tax benefits, and travel tips.</p></div><a class="btn dark" href="/{{ local.dir }}/" hreflang="{{ local.hreflang }}" lang="{{ local.html }}">{{ local.open_local }}</a></div>{% endif %}
 <div class="facts glance">{% for label, fact in glance %}<div class="fact"><span>{{ label }}</span><b>{{ fact }}</b></div>{% endfor %}</div>
-<p class="note disc">BlokVolt is run by the team of Evolako, a home-charger installer that works only in Serbia. In {{ c.name }} we sell nothing. Companies here are listed by the same rules as everywhere on the site: only what their own websites say, with the date we checked, no ratings and no paid placements. Every figure below has its source; where a source is weak we say so.</p>
+<p class="note disc">BlokVolt is run by the team of Evolako, a home-charger installer that works only in Serbia; in {{ c.name }} BlokVolt sells nothing. Companies here are listed by the same rules as everywhere on the site: only what their own websites say, with the date of the check, no ratings and no paid placements. Every figure below has its source, and weak sources are marked as such.</p>
 
 <div class="sec"><div class="sec-head"><h2 id="numbers">Key numbers</h2></div>
 <div class="tw stack"><table><thead><tr><th>Figure</th><th>Value</th><th>Source</th></tr></thead><tbody>
@@ -52,13 +52,13 @@
 {% if r.policy %}<div class="sec"><div class="sec-head"><h2 id="plans">National plans and EU rules</h2></div>
 <ul class="en-ul">{% for p in r.policy %}<li>{{ p.text|lk }} {{ m.src(p) }}</li>{% endfor %}</ul></div>{% endif %}
 
-{% if r.gaps %}<div class="sec"><div class="sec-head"><h2 id="gaps">What we could not verify</h2></div>
-<p class="note">Gaps we know about. If you can fill one with a public source, write to <a class="lnk" href="mailto:{{ EMAIL }}">{{ EMAIL }}</a>.</p>
+{% if r.gaps %}<div class="sec"><div class="sec-head"><h2 id="gaps">What could not be verified</h2></div>
+<p class="note">Known gaps. If you can fill one with a public source, write to <a class="lnk" href="mailto:{{ EMAIL }}">{{ EMAIL }}</a>.</p>
 <ul class="en-ul">{% for g in r.gaps %}<li>{{ g|lk }}</li>{% endfor %}</ul></div>{% endif %}
 
 <div class="sec"><div class="sec-head"><h2 id="sources">Sources</h2></div>
 <details class="src"><summary>All {{ n_sources }} sources for this page</summary><ul>{% for s in sources %}<li><a href="{{ s.url }}" rel="noopener nofollow">{{ s.title }}</a>{% if s.date %} — {{ s.date }}{% endif %}</li>{% endfor %}</ul></details></div>
 
-<p class="note">Something changed or is missing? We correct data from public sources and on request — free, by the same rules for everyone. Send the correction with a link to <a class="lnk" href="mailto:{{ EMAIL }}">{{ EMAIL }}</a>.</p>
+<p class="note">Something changed or is missing? Data is corrected from public sources and on request — free, by the same rules for everyone. Send the correction with a link to <a class="lnk" href="mailto:{{ EMAIL }}">{{ EMAIL }}</a>.</p>
 <p class="upd">Other countries: {% for o in COUNTRIES if o.slug != c.slug %}<a href="{{ o.url }}">{{ o.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
 {% endblock %}

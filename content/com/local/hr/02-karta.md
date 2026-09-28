@@ -27,7 +27,7 @@ related: prices, apps, road
 
 Punionice su iz dviju otvorenih baza: **OpenStreetMap** (licenca ODbL) i **Open Charge Map** (CC BY 4.0). Snimak je od {{ M.retrieved }}; stanje OpenStreetMapa {{ M.osm_base }}, izvoz Open Charge Mapa {{ M.ocm_export }}. Isto mjesto iz obje baze prikazano je jednom. Karta prikazuje {{ num(M.n) }} {{ pl(M.n, 'punionicu', 'punionice', 'punionica') }}: {{ num(M.dc50) }} s DC punjenjem od 50 kW naviše, od toga {{ num(M.hpc) }} s 150 kW ili više.
 
-**Punionice nismo pojedinačno provjerili.** Otvorene baze uređuju vozači i volonteri, pa neka punionica možda više ne radi ili je samo za goste hotela. Prije puta provjerite u aplikaciji mreže. Državni [Registar punionica](https://pametnamobilnost.hr/hr/registar-punionica/44) ima 715 zapisa, ali bez koordinata i snage, pa ga ne možemo izravno usporediti s kartom.
+**Punionice nisu pojedinačno provjerene.** Otvorene baze uređuju vozači i volonteri, pa neka punionica možda više ne radi ili je samo za goste hotela. Prije puta provjerite u aplikaciji mreže. Državni [Registar punionica](https://pametnamobilnost.hr/hr/registar-punionica/44) ima 715 zapisa, ali bez koordinata i snage, pa ga ne možemo izravno usporediti s kartom.
 
 Cijena u kartici punionice je **cjenik mreže** za tu vrstu punjenja — AC, DC do 50 kW ili ultrabrzo — s datumom od kojeg vrijedi. Gdje mreža ima više cijena (s registracijom i bez nje, na autocesti i izvan nje), vidite raspon i sve stavke. Cijene svih mreža na jednom mjestu: [Cijene punjenja]({{ PAGES.prices.path }}).
 

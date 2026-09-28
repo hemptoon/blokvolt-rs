@@ -3,21 +3,30 @@
  "name": "Kosovo",
  "checked": "28.09.2026",
  "currency": "EUR",
- "summary": "Kosovo had 1,457 battery-electric passenger cars at the end of 2025 (Eurostat), 51% more than a year earlier, and imports are rising fast: 780 electric cars came in during January–August 2026, 665 of them from China. Electric cars get no tax break — they pay the same 10% customs duty, 18% VAT and excise as combustion cars. The main public network, ECHARGE, publishes its prices: €0.39–0.49 per kWh on DC and €0.21 (day) / €0.19 (night) on AC. At home, night-rate electricity costs about 4.2 euro cents per kWh with VAT.",
+ "summary": "Kosovo had 1,457 battery-electric passenger cars at the end of 2025 (Eurostat), 51% more than a year earlier, and 539 new ones were registered that year. Imports are rising: 780 electric cars came in during January–August 2026, 665 of them from China. Electric cars get no tax break — they pay the same import taxes as petrol and diesel cars: 10% customs duty, 18% VAT and, on used cars, excise by age. ECHARGE is the only network that publishes prices: €0.39–0.49 per kWh on DC and €0.21 (day) / €0.19 (night) on AC, without saying whether VAT is included. At home, night-rate electricity costs about 4.2 euro cents per kWh with VAT while the household stays within 800 kWh a month.",
  "stats": [
   {
    "label": "Battery-electric passenger cars on the road",
    "value": "1,457 (2025)",
-   "note": "Eurostat, all owners. Earlier years: 56 (2021), 503 (2023), 968 (2024).",
+   "note": "Eurostat, all owners. Earlier years: 56 (2021), 503 (2023), 968 (2024); Eurostat has no value for 2020 and 2022.",
    "source": "https://ec.europa.eu/eurostat/databrowser/view/road_eqs_carpda/default/table?lang=en",
    "source_title": "Eurostat – Passenger cars by type of motor energy (road_eqs_carpda)",
    "source_date": "dataset updated 01.09.2026",
    "confidence": "high"
   },
   {
+   "label": "New battery-electric passenger cars registered, 2025",
+   "value": "539",
+   "note": "Eurostat new registrations with energy type 'electricity'. Earlier years: 20 (2021), 203 (2023), 372 (2024); no value for 2020 and 2022.",
+   "source": "https://ec.europa.eu/eurostat/databrowser/view/road_eqr_carpda/default/table?lang=en",
+   "source_title": "Eurostat – New registrations of passenger cars by type of motor energy (road_eqr_carpda)",
+   "source_date": "dataset updated 01.09.2026",
+   "confidence": "high"
+  },
+  {
    "label": "Electric cars imported, January–August 2026",
    "value": "780, of which 665 from China",
-   "note": "Kosovo Customs data as reported.",
+   "note": "Kosovo Customs data as reported. Import value €11.5 million, against €11 million in the whole of 2025.",
    "source": "https://www.gazetaexpress.com/kina-merr-timonin-ne-tregun-e-veturave-elektrike-ne-kosove/",
    "source_title": "Gazeta Express – China takes the wheel in Kosovo's EV market",
    "source_date": "27.09.2026",
@@ -28,7 +37,7 @@
  "home_price_ranges": [],
  "public_count": {
   "value": "no official count",
-  "note": "Open Charge Map lists about 20 locations and OpenStreetMap only a handful. ECHARGE alone has 24+ sites.",
+  "note": "ECHARGE states '24+' stations and names cities in Kosovo and Albania, without a list; Radio Free Europe (06.04.2026) reported 32 ECHARGE charge points in the Prishtina region, on the Prishtina–Tirana route and in Albania. RapidCharge shows 2 stations in Prishtina and HIB Petrol gives no number. The local-language map on this site showed 21 locations on 28.09.2026, merged from Open Charge Map (17 records) and OpenStreetMap (5 records) and not checked one by one.",
   "source": "https://www.echarge-ks.com/",
   "source_title": "ECHARGE",
   "source_date": "28.09.2026",
@@ -38,73 +47,77 @@
   {
    "name": "ECHARGE",
    "url": "https://www.echarge-ks.com/",
-   "operator": "ECHARGE",
+   "operator": "Electric Mobility LLC (App Store seller name)",
    "app": "ECHARGE",
-   "size": "24+ sites, DC 75–480 kW; GB/T at some sites",
+   "size": "'24+' stations (operator's figure, with cities in Kosovo and Albania; no list published); DC 75–480 kW, AC up to 22 kW; CCS2, Type 2 and GB/T at some stations",
    "prices": [
     {
      "what": "DC",
-     "price": "€0.39–0.49 per kWh"
+     "price": "€0.39–0.49 per kWh",
+     "vat": "not stated",
+     "source": "https://echarge-ks.com/cmimet",
+     "source_date": "checked 28.09.2026",
+     "confidence": "high"
     },
     {
-     "what": "AC, day",
-     "price": "€0.21 per kWh"
-    },
-    {
-     "what": "AC, night",
-     "price": "€0.19 per kWh"
+     "what": "AC, day / night",
+     "price": "€0.21 / €0.19 per kWh",
+     "vat": "not stated",
+     "source": "https://echarge-ks.com/cmimet",
+     "source_date": "checked 28.09.2026",
+     "confidence": "high"
     }
    ],
-   "payment": "App"
+   "payment": "In the ECHARGE app; payment without the app (card terminal, QR code or web) not stated"
   },
   {
    "name": "HIB Petrol",
-   "url": "https://www.hibpetrol.com/",
+   "url": "https://www.hibpetrol.com/sherbimet/",
    "operator": "HIB Petrol",
-   "app": "HIB Petrol",
-   "size": "Chargers at fuel stations (count not published)",
+   "app": "—",
+   "size": "Ultra-fast charging 'at many' of its fuel stations in Kosovo, per the operator; number not published. Equipment listed: Siemens Super D Charger 300 kW, ABB Terra 360 kW",
    "prices": [
     {
      "what": "Per kWh",
      "price": "not published"
     }
    ],
-   "payment": "App"
+   "payment": "Not stated. The HIB Petrol app on Google Play is a fuel and loyalty app; its description does not mention charging"
   },
   {
    "name": "RapidCharge",
    "url": "https://www.rapid-charge.com/",
-   "operator": "RapidCharge",
-   "app": "—",
-   "size": "2 sites",
+   "operator": "Umbo SHPK (App Store seller name)",
+   "app": "Rapid Charge (iPhone, Android)",
+   "size": "2 stations in Prishtina shown on the operator's website",
    "prices": [
     {
      "what": "Per kWh",
-     "price": "not published"
+     "price": "not published; the website's example session (22 kW, €4.80) is an illustration, not a tariff"
     }
    ],
-   "payment": "—"
+   "payment": "In the app by credit or debit card or digital payment; a session can be capped at a euro amount. Payment without the app not stated"
   },
   {
    "name": "Shell Recharge (Kosovo)",
    "url": "https://www.kosovo.shell.com/",
-   "operator": "Shell Kosovo",
-   "app": "Shell Recharge",
-   "size": "not published",
+   "operator": "Al Petrol (Shell licensee in Kosovo)",
+   "app": "Not stated",
+   "size": "Number of sites not found; the first Shell Recharge charger in Kosovo was presented in Prizren in January 2020 (Periskopi, 16.01.2020)",
    "prices": [
     {
      "what": "Per kWh",
-     "price": "not published"
+     "price": "not found"
     }
    ],
-   "payment": "—"
+   "payment": "Not stated"
   }
  ],
  "electricity": [
   {
    "what": "Households up to 800 kWh a month, day / night",
    "price": "9.05 / 3.88 euro cents per kWh without VAT (VAT 8%)",
-   "note": "Tariffs from 01.05.2025; ERO kept them unchanged in 2026. Night rate with VAT ≈ 4.19 cents (our calculation). A fixed monthly charge exists; its amount was not found.",
+   "note": "Tariffs from 01.05.2025 (ERO decision V_2703_2025); ERO left retail prices unchanged for 2026. With 8% VAT (calculated): 9.77 / 4.19 cents. The low (night) tariff applies 22:00–07:00 from 1 October to 31 March and 23:00–08:00 from 1 April to 30 September. A fixed monthly charge comes on top (see below).",
    "source": "https://buletiniekonomik.com/2026/05/zrre-aprovon-tarifat-e-reja-te-energjise-nuk-ka-shtrenjtim-te-rrymes/",
    "source_title": "Buletini Ekonomik – ERO approves tariffs without an increase",
    "source_date": "07.05.2026",
@@ -112,16 +125,26 @@
   },
   {
    "what": "Households above 800 kWh a month, day / night",
-   "price": "15.43 / 7.21–7.28 euro cents per kWh without VAT",
-   "note": "Sources differ on the night rate above 800 kWh.",
-   "source": "https://fikso.al/tarifat-e-reja-ne-fuqi-nga-1-maji-energjia-elektrike-ne-kosove-rritet-me-16-1/",
-   "source_title": "Fikso – new tariffs from 1 May",
+   "price": "15.43 / 7.28 euro cents per kWh without VAT",
+   "note": "Night rate: 7.28 according to Dukagjini (16.04.2025, the day of the decision) and four later reports, consistent with the announced 16.1% rise (checked); only Fikso (16.04.2025) gives 7.21. With 8% VAT (calculated): 16.66 / 7.86 cents. ERO and KESCO do not say whether these prices apply only to the kWh above 800.",
+   "source": "https://www.dukagjini.com/zrre-formalizoi-vendimin-nga-1-maji-rryma-shtrenjtohet-per-16-1/",
+   "source_title": "Dukagjini – ERO formalises the decision: electricity 16.1% dearer from 1 May",
    "source_date": "16.04.2025",
+   "confidence": "medium"
+  },
+  {
+   "what": "Fixed monthly charge, households",
+   "price": "€2.32 per customer per month",
+   "note": "Single source: Buletini Ekonomik reports that the April 2025 tariff decision raised it from €2.00 to €2.32. Whether the 8% VAT applies to it is not stated. It is paid with or without an electric car.",
+   "source": "https://buletiniekonomik.com/2025/10/rritja-e-fshehte-e-tarifes-fikse-trashi-fitimet-e-kesco-s-per-4-8-milione-euro-ne-vit/",
+   "source_title": "Buletini Ekonomik – the fixed charge increase",
+   "source_date": "22.10.2025",
    "confidence": "medium"
   },
   {
    "what": "Fuel for comparison (late September 2026)",
    "price": "diesel €1.94–1.95/l, petrol €1.62–1.65/l",
+   "note": "No official fuel price found. Indicative prices of one retailer (Petrol Company, 25.09.2026: diesel €1.94, petrol €1.62) and a media report (Periskopi, 27.09.2026: €1.95 and €1.65); VAT not stated.",
    "source": "https://petrolcompany.biz/cmimet",
    "source_title": "Petrol Company – prices",
    "source_date": "25.09.2026",
@@ -134,9 +157,9 @@
    "programme": "Tax relief for electric vehicles",
    "amount": "—",
    "who": "—",
-   "note": "Electric cars pay 10% customs duty, 18% VAT and excise by age like combustion cars. The Chamber of Commerce has asked to remove the duty and cut VAT to 8%; no decision so far.",
+   "note": "Electric cars pay the same import taxes as petrol and diesel cars: 10% customs duty, 18% VAT and, on used cars, a fixed excise of about €400–700 by age (Gazeta Express, 27.09.2026; Radio Free Europe, 06.04.2026). RTV21 (06.09.2025) reported €400 for an electric car and €10 for a hybrid; the customs tariff itself could not be read, so the exact excise is not confirmed. On 28.08.2024 the Government approved a zero registration tax for electric cars in the draft Law on Vehicles, but in April 2026 Radio Free Europe reported no import or registration relief. The Kosovo Chamber of Commerce has asked to remove the customs duty and cut VAT to 8%; the ministries did not answer the newspaper's questions.",
    "source": "https://www.gazetaexpress.com/kina-merr-timonin-ne-tregun-e-veturave-elektrike-ne-kosove/",
-   "source_title": "Gazeta Express",
+   "source_title": "Gazeta Express – China takes the wheel in Kosovo's EV market",
    "source_date": "27.09.2026",
    "confidence": "medium"
   },
@@ -145,34 +168,41 @@
    "programme": "Purchase grant",
    "amount": "—",
    "who": "—",
-   "note": "No purchase subsidy found.",
+   "note": "No purchase subsidy and no municipal benefit found (checked 28.09.2026).",
    "confidence": "medium"
   }
  ],
  "buildings": [
   {
    "topic": "Apartment buildings",
-   "text": "We found no EV-specific rule for chargers in apartment buildings in Kosovo."
+   "text": "The condominium law in force does not mention garages, parking or EV chargers. Ordinary decisions of the owners' association need owners holding more than 50% of the co-ownership (art. 14); works beyond regular administration, including changes to the co-owned parts, need the consent of all owners (art. 32). Which of the two applies to a charger in a shared garage is not stated.",
+   "law": "Ligji nr. 03/L-091 për shfrytëzimin, administrimin dhe mirëmbajtjen e ndërtesës në bashkëpronësi, arts. 14, 28 and 32 (adopted 12.03.2009; Official Gazette no. 51, 15.04.2009; no amendment shown)",
+   "source": "https://gzk.rks-gov.net/ActDocumentDetail.aspx?ActID=2632",
+   "source_title": "Official Gazette – Law No. 03/L-091",
+   "source_date": "checked 28.09.2026",
+   "confidence": "high"
   }
  ],
  "policy": [
   {
-   "text": "The Energy Strategy 2022–2031 sets no numeric targets for electric vehicles or charging stations.",
+   "text": "The Energy Strategy 2022–2031, as reviewed, sets no numeric target for electric vehicles or charging stations; Radio Free Europe (06.04.2026) wrote that it foresees about 15,000 electric cars by 2031. The two could not be reconciled.",
    "source": "https://me.rks-gov.net/wp-content/uploads/2023/04/Energy-Strategy-of-the-Republic-of-Kosovo-2022-2031-1-1.pdf",
    "source_date": "",
-   "confidence": "high"
+   "confidence": "medium"
   },
   {
-   "text": "Prishtina's 2021 e-taxi licensing requires DC chargers of at least 50 kW, including one public charger per operator.",
+   "text": "Prishtina's 2021 e-taxi licensing call requires each licensed operator to install two DC chargers of at least 50 kW, one of them in public space and reported as free for all citizens; whether these chargers exist and are free today was not verified.",
    "source": "https://www.prishtinaonline.com/lajmet/3392/",
    "source_date": "02.11.2021",
    "confidence": "medium"
   }
  ],
  "gaps": [
-  "ERO's tariff decision is a scanned PDF; figures come from media.",
-  "It is not stated whether ECHARGE prices include VAT or which sites get €0.39 vs €0.49.",
+  "ERO's 2025 tariff decision (V_2703_2025) publishes its tariff table as an image, so household prices come from media; the number of the 2026 decision was not found.",
+  "ERO and KESCO do not say whether the above-800 kWh prices apply only to the kWh above 800; the fixed monthly charge (€2.32) comes from a single source.",
+  "It is not stated whether ECHARGE prices include VAT, which sites get €0.39 vs €0.49, or which hours count as day and night.",
+  "The excise on imported electric cars comes from media only (€400–700 by age for used cars vs €400 per electric car); the customs tariff could not be read. Whether the Assembly passed the zero registration tax for electric cars was not checked.",
   "The share of GB/T connectors among imported Chinese EVs is not documented.",
-  "No fast charger on the R6 or R7 motorways was confirmed."
+  "No fast charger on the R6 or R7 motorways was confirmed. The latest source found on motorway tolls (Radio Free Europe, 16.05.2021) says they are toll-free; no 2025–2026 confirmation."
  ]
 }

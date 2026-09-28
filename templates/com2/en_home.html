@@ -21,13 +21,13 @@
 <div class="tiles">{% for c in COUNTRIES %}<a class="tile" href="{{ c.url }}"><h3>{{ c.name }}</h3>{% for f in c.facts %}<p>{{ f }}</p>{% endfor %}</a>{% endfor %}</div>
 <p class="note">Serbia has the most detail: a register of {{ n_rs_firms }} installers and sellers, public charging networks with a monthly price index, subsidies, EPS tariffs and guides for apartment buildings — on <a class="lnk" href="{{ RS }}/en/">blokvolt.rs</a>, in English, Serbian and Russian.</p></div>
 
-<div class="sec" id="how"><div class="sec-head"><h2>How we check</h2></div>
+<div class="sec" id="how"><div class="sec-head"><h2>How the data is checked</h2></div>
 <div class="grid2">
-<div class="box"><h3>Public sources only</h3><p>Operators' price lists and apps, company websites, statistics offices, regulators, funds and law texts. Where only the media or a dealer gives a figure, we mark it as medium or low reliability.</p></div>
-<div class="box"><h3>A date on everything</h3><p>Each figure shows the date on its source and the date we checked it. Markets change quickly; an old price is labelled as old.</p></div>
+<div class="box"><h3>Public sources only</h3><p>Operators' price lists and apps, company websites, statistics offices, regulators, funds and law texts. Where only the media or a dealer gives a figure, it is marked as medium or low reliability.</p></div>
+<div class="box"><h3>A date on everything</h3><p>Each figure shows the date on its source and the date it was checked. Markets change quickly; an old price is labelled as old.</p></div>
 <div class="box"><h3>Same rules for every company</h3><p>What a company says on its own site goes into the same columns for everyone. No ratings, no rankings, no paid placements.</p></div>
-<div class="box"><h3>Gaps are published</h3><p>Each country page lists what we could not verify, so you know where the picture is incomplete. Maps come from OpenStreetMap and Open Charge Map and say so.</p></div>
+<div class="box"><h3>Gaps are published</h3><p>Each country page lists what could not be verified, so you know where the picture is incomplete. Maps come from OpenStreetMap and Open Charge Map and say so.</p></div>
 </div>
-<p class="note disc">BlokVolt is run by the team of Evolako, a home-charger installer that works in Serbia. Outside Serbia we do not sell or install anything. Found a mistake or want a company added? Write to <a class="lnk" href="mailto:{{ EMAIL }}">{{ EMAIL }}</a> — corrections are free and follow the same rules for everyone. The full rules are in the <a class="lnk" href="{{ RS }}/en/metodologija/">methodology</a>.</p>
+<p class="note disc">BlokVolt is run by the team of Evolako, a home-charger installer that works in Serbia. Outside Serbia it does not sell or install anything. Found a mistake or want a company added? Write to <a class="lnk" href="mailto:{{ EMAIL }}">{{ EMAIL }}</a> — corrections are free and follow the same rules for everyone. The full rules are in the <a class="lnk" href="{{ RS }}/en/metodologija/">methodology</a>.</p>
 </div>
 {% endblock %}

@@ -8,7 +8,7 @@
   {
    "label": "Battery-electric passenger cars on the road",
    "value": "12,616 (2025)",
-   "note": "Eurostat, energy type 'electricity', all owners. Earlier years: 7,058 (2023) and 10,045 (2024). In 2025, 5,330 were owned by private persons and 7,286 by companies. Total passenger cars in 2025: 2,058,313, so BEVs are about 0.61% of the fleet (our calculation).",
+   "note": "Eurostat, energy type 'electricity', all owners. Earlier years: 7,058 (2023) and 10,045 (2024). In 2025, 5,330 were owned by private persons and 7,286 by companies. Total passenger cars in 2025: 2,058,313, so BEVs are about 0.61% of the fleet (calculated).",
    "source": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/road_eqs_carpda?geo=HR&mot_nrg=ELC&unit=NR&lastTimePeriod=4",
    "source_title": "Eurostat – Passenger cars by type of motor energy (road_eqs_carpda)",
    "source_date": "dataset updated 01.09.2026",
@@ -17,7 +17,7 @@
   {
    "label": "New battery-electric cars registered, 2025 (ACEA)",
    "value": "1,266",
-   "note": "2024: 1,793 (−29.4%). All new cars in 2025: 69,841 (+7.4%), so BEVs were about 1.8% of new cars (our calculation). Plug-in hybrids in 2025: 2,529 (+80.0%).",
+   "note": "2024: 1,793 (−29.4%). All new cars in 2025: 69,841 (+7.4%), so BEVs were about 1.8% of new cars (calculated). Plug-in hybrids in 2025: 2,529 (+80.0%).",
    "source": "https://www.acea.auto/files/Press_release_car_registrations_December_2025.pdf",
    "source_title": "ACEA – New car registrations, December 2025 and full year 2025",
    "source_date": "27.01.2026",
@@ -26,7 +26,7 @@
   {
    "label": "New battery-electric cars registered, 2025 (Eurostat)",
    "value": "992",
-   "note": "2024: 882. All new passenger cars in 2025: 52,917, so about 1.9% BEV (our calculation). Eurostat and ACEA publish different totals for Croatia; the reason is not stated.",
+   "note": "2024: 882. All new passenger cars in 2025: 52,917, so about 1.9% BEV (calculated). Eurostat and ACEA publish different totals for Croatia; the reason is not stated.",
    "source": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/road_eqr_carpda?geo=HR&mot_nrg=ELC&unit=NR&lastTimePeriod=4",
    "source_title": "Eurostat – New passenger cars by type of motor energy (road_eqr_carpda)",
    "source_date": "dataset updated 01.09.2026",
@@ -35,7 +35,7 @@
   {
    "label": "New battery-electric cars registered, January–June 2026",
    "value": "1,781",
-   "note": "January–June 2025: 396 (+349.7%). June 2026 alone: 344. All new cars in January–June 2026: 44,164 (+5.3%), so BEVs were about 4.0% of new cars (our calculation). Figures for later 2026 months were not found.",
+   "note": "January–June 2025: 396 (+349.7%). June 2026 alone: 344. All new cars in January–June 2026: 44,164 (+5.3%), so BEVs were about 4.0% of new cars (calculated). Figures for later 2026 months were not found.",
    "source": "https://www.acea.auto/files/Press_release_car_registrations_June_2026.pdf",
    "source_title": "ACEA – New car registrations, June 2026",
    "source_date": "23.07.2026",
@@ -619,7 +619,7 @@
   {
    "name": "Kaufland e-punionice",
    "operator": "Kaufland Hrvatska (charging service via ChargePoint Austria GmbH)",
-   "app": "None named (QR code and online registration)",
+   "app": "none named (QR code and online registration)",
    "size": "Type 2, CHAdeMO and CCS; available during store opening hours, charging for up to about one hour (kaufland.hr). See the Lidl entry for the combined count.",
    "prices": [
     {

@@ -27,7 +27,7 @@ related: prices, road, home
 
 Punjači su iz dvije otvorene baze: **OpenStreetMap** (licenca ODbL) i **Open Charge Map** (CC BY 4.0). Snimak je od {{ M.retrieved }}; stanje OpenStreetMapa {{ M.osm_base }}, izvoz Open Charge Mapa {{ M.ocm_export }}. Isto mjesto iz obje baze prikazano je jednom. Mapa prikazuje {{ num(M.n) }} {{ pl(M.n, 'punjač', 'punjača', 'punjača') }}, od toga {{ num(M.dc50) }} s DC punjenjem od 50 kW naviše.
 
-**Punjače nismo pojedinačno provjerili.** Otvorene baze uređuju vozači i volonteri, pa neki punjač možda više ne radi ili je samo za goste hotela. Prema nacrtu nacionalnog okvira Crna Gora ima {{ C.points.n }} {{ pl(C.points.n, 'javno mjesto', 'javna mjesta', 'javnih mjesta') }} za punjenje, ukupne snage {{ num(C.points.kw) }} kW; {{ C.points.normal_share }} % su punjači normalne snage ([{{ C.points.src_label }}]({{ C.points.src }})).
+**Punjači nisu pojedinačno provjereni.** Otvorene baze uređuju vozači i volonteri, pa neki punjač možda više ne radi ili je samo za goste hotela. Prema nacrtu nacionalnog okvira Crna Gora ima {{ C.points.n }} {{ pl(C.points.n, 'javno mjesto', 'javna mjesta', 'javnih mjesta') }} za punjenje, ukupne snage {{ num(C.points.kw) }} kW; {{ C.points.normal_share }} % su punjači normalne snage ([{{ C.points.src_label }}]({{ C.points.src }})).
 
 ## Kako koristiti mapu
 

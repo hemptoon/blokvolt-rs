@@ -3,22 +3,31 @@
  "name": "Albania",
  "checked": "28.09.2026",
  "currency": "ALL",
- "summary": "Albania has the fastest-growing electric-car fleet in the region: Eurostat counts 10,938 battery-electric passenger cars at the end of 2025, 91% more than a year earlier, most of them imported used cars. New electric vehicles are VAT-exempt and pay no annual vehicle tax. Public charging is young and fragmented: VEGA runs 20+ sites, PlugoAL five 280 kW sites, and the state supplier OSHEE plans a national network in 2026. No network publishes a per-kWh price on its website; OSHEE says drivers typically pay 40–60 lek per kWh. At home, a kilowatt-hour costs 10.2 lek with VAT.",
+ "summary": "Albania's electric-car fleet almost doubled in 2025: Eurostat counts 10,938 battery-electric passenger cars at the end of the year, 91% more than a year earlier, and 5,517 new registrations. New battery-electric cars are VAT-exempt according to the latest source, although sources conflict, and electric vehicles pay no annual vehicle tax. Public charging is young and fragmented: VEGA lists 20+ sites, PlugoAL five 280 kW sites, and the state supplier OSHEE announced a national network for 2026, with no station found operating on 28.09.2026. No network publishes a per-kWh price on its website; OSHEE estimated in November 2025 that charging stations sell electricity at 40–60 lek per kWh. At home, a kilowatt-hour costs 10.2 lek with VAT while the household stays within 700 kWh a month.",
  "stats": [
   {
    "label": "Battery-electric passenger cars on the road",
    "value": "10,938 (2025)",
-   "note": "Eurostat, all owners. Earlier years: 624 (2021), 1,245 (2022), 2,891 (2023), 5,722 (2024). INSTAT reports the same +91.2% growth for 2025.",
+   "note": "Eurostat, all owners. Earlier years: 624 (2021), 1,245 (2022), 2,891 (2023), 5,722 (2024). INSTAT reports the same +91.2% growth for 2025 but gives no absolute number.",
    "source": "https://ec.europa.eu/eurostat/databrowser/view/road_eqs_carpda/default/table?lang=en",
    "source_title": "Eurostat – Passenger cars by type of motor energy (road_eqs_carpda)",
    "source_date": "dataset updated 01.09.2026",
    "confidence": "high"
   },
   {
+   "label": "New battery-electric passenger cars registered, 2025",
+   "value": "5,517",
+   "note": "Eurostat new registrations with energy type 'electricity'. Earlier years: 24 (2019), 239 (2020), 262 (2021), 624 (2022), 1,671 (2023), 2,843 (2024).",
+   "source": "https://ec.europa.eu/eurostat/databrowser/view/road_eqr_carpda/default/table?lang=en",
+   "source_title": "Eurostat – New registrations of passenger cars by type of motor energy (road_eqr_carpda)",
+   "source_date": "dataset updated 01.09.2026",
+   "confidence": "high"
+  },
+  {
    "label": "Electric vehicles registered for the first time, January–July 2026",
-   "value": "over 6,000 (+126%)",
+   "value": "6,396 (+126%)",
    "note": "DPSHTRR data as reported: electric vehicles were 40.5% of all zero-kilometre vehicles registered in the first seven months.",
-   "source": "https://www.oranews.tv/ekonomi/mbi-6-mije-mjete-elektrike-te-regjistruara-ne-shtate-muaj-rritje-me-126-i134463",
+   "source": "https://www.oranews.tv/ekonomi/mbi-6-mije-mjete-elektrike-te-regjistruara-ne-shtate-muaj-rritje-me-126-i1344633",
    "source_title": "Ora News – over 6,000 electric vehicles registered in seven months",
    "source_date": "18.08.2026",
    "confidence": "medium"
@@ -36,8 +45,8 @@
  "home_companies": [],
  "home_price_ranges": [],
  "public_count": {
-  "value": "about 254 charging points (OSHEE, November 2025)",
-  "note": "No official register exists. OSHEE also says about 16,000 electric vehicles were registered at that time — a wider definition than Eurostat's battery-electric passenger cars. Open Charge Map lists 15 locations and OpenStreetMap about 75 objects.",
+  "value": "more than 254 charging points in operation (OSHEE, November 2025)",
+  "note": "No official register exists. In the same release OSHEE mentioned about 16,000 registered electric vehicles without saying what it counts; Eurostat has 10,938 battery-electric passenger cars at the end of 2025. The local-language map on this site showed 63 locations on 28.09.2026, merged from OpenStreetMap (54 records) and Open Charge Map (14 records) and not checked one by one.",
   "source": "https://oshee.al/prezantohet-oshee-charge-shqiperia-drejt-transportit-te-gjelber-dhe-energjise-se-paster/",
   "source_title": "OSHEE – OSHEE Charge presented",
   "source_date": "11.11.2025",
@@ -47,41 +56,53 @@
   {
    "name": "VEGA Charging",
    "url": "https://vegagroup.al/sq/vegacharging/",
-   "operator": "VEGA Group",
-   "app": "VEGA",
-   "size": "20+ sites, mostly at fuel stations (Gega Oil, Kastrati and others) on the Tirana–Durrës–Fier–Vlorë–Sarandë and Shkodër routes; GB/T and CCS2 connectors",
+   "operator": "Vega Group",
+   "app": "—",
+   "size": "20+ operating locations and 50+ planned, per the operator's list: fuel stations (Gega Oil, 7K Krasniqi, Lagjina Oil and others), hotels and malls in Durrës, Tirana/Vorë, Fier, Elbasan, Vlorë, Lukovë, Rrogozhinë, Lushnjë, Gjirokastër, Rubik and Shkodër; Sarandë and Korçë opening soon. DC 60–180 kW with GB/T and CCS2 sockets, AC 22 kW.",
    "prices": [
     {
      "what": "Per kWh",
      "price": "not published on the website"
     }
    ],
-   "payment": "App, RFID card"
+   "payment": "VEGA Charging card (RFID), requested through vegagroup.al or by phone; other payment methods not published"
   },
   {
    "name": "PlugoAL",
    "url": "https://plugoal.com/",
-   "operator": "PlugoAL",
-   "app": "PlugoAL",
-   "size": "5 sites with 280 kW chargers (Tirana, Durrës, Vlorë, Gjirokastër, Shkodër)",
+   "operator": "RENT & GO SHPK, Tirana",
+   "app": "PlugoAL web app (QR code, no download)",
+   "size": "5 sites with 280 kW CCS2 chargers (Tirana, Durrës, Vlorë, Gjirokastër, Shkodër); addresses not published on the homepage",
    "prices": [
     {
      "what": "Per kWh",
-     "price": "shown only in the app"
+     "price": "shown only in the app before charging; may vary by time of day, location and charger type",
+     "vat": "included (20%, per PlugoAL)",
+     "source": "https://plugoal.com/payment.html",
+     "source_date": "payment policy version 1.0, effective 10.08.2026",
+     "confidence": "high"
+    },
+    {
+     "what": "Idle fee",
+     "price": "500 lek if the car stays connected more than 20 minutes after charging ends",
+     "vat": "not stated",
+     "source": "https://plugoal.com/terms.html",
+     "source_date": "terms effective February 2026; checked 28.09.2026",
+     "confidence": "high"
     }
    ],
-   "payment": "App (payment policy version 1.0 of 10.08.2026)"
+   "payment": "Web app: Visa or Mastercard, or a prepaid PlugoAL wallet (minimum top-up 500 lek); RFID card for business customers only"
   },
   {
    "name": "OSHEE Charge (planned)",
    "url": "https://oshee.al/",
    "operator": "OSHEE Group (state electricity supplier)",
    "app": "—",
-   "size": "100–120 sites planned in the first phase, within 2026",
+   "size": "Announced on 11.11.2025 as a national network to be built within 2026; no operating station found on 28.09.2026. The first site is to have 10 charging towers for 20 cars (government statements, 10.11.2025), described as on the Unaza e Re ring road or near the TEG mall towards Farkë.",
    "prices": [
     {
      "what": "Per kWh",
-     "price": "not yet announced"
+     "price": "not announced; the Prime Minister said on 16.11.2025 that public stations will have a regulated price (no figure given)"
     }
    ],
    "payment": "—"
@@ -89,24 +110,24 @@
   {
    "name": "iCharge",
    "url": "https://www.icharge.app/en-us",
-   "operator": "iCharge (app platform)",
-   "app": "iCharge",
-   "size": "Platform used by several station owners; not a single operator",
+   "operator": "EV Tools Ltd, United Kingdom (app platform)",
+   "app": "iCharge.app",
+   "size": "Platform used by several station owners, not a single operator; no Albania-only station count published",
    "prices": [
     {
      "what": "Per kWh",
      "price": "shown in the app before charging"
     }
    ],
-   "payment": "App"
+   "payment": "In the app by debit or credit card, iCharge balance or prepaid vouchers; cash at some UPay points"
   }
  ],
  "electricity": [
   {
    "what": "Households, up to 700 kWh a month",
    "price": "8.5 lek/kWh without VAT (10.2 with 20% VAT)",
-   "note": "ERE table for 1 January–31 December 2026. One price per block, no day/night difference.",
-   "source": "https://www.ere.gov.al/",
+   "note": "ERE decision no. 322 of 15.12.2025, valid 1 January–31 December 2026. One price per block, with no day/night difference and no fixed monthly charge in the table. The ERE table does not mention VAT; media reports (Panorama, 01.02.2025) say these prices exclude VAT and 20% is added.",
+   "source": "https://www.ere.gov.al/media/files/2025/12/24/Tarifat_dhe_%C3%87mimet_e_energjis%C3%AB_Elektrike_dhe_Gazit_natyror_p%C3%ABr_VITIN_2026.pdf",
    "source_title": "ERE – electricity and gas tariffs 2026",
    "source_date": "24.12.2025",
    "confidence": "high"
@@ -114,16 +135,16 @@
   {
    "what": "Households, above 700 kWh a month",
    "price": "9.5 lek/kWh without VAT (11.4 with VAT) for the whole month's consumption",
-   "note": "An EV that pushes a household over 700 kWh makes the whole month dearer: for 200 kWh of charging this can work out at about 14.7 lek per EV kWh (our calculation).",
-   "source": "https://www.ere.gov.al/",
+   "note": "From 701 kWh the higher price applies to the whole month, not only to the kWh above the threshold. Example (calculated, VAT included): a household using 550 kWh adds 200 kWh of charging and its bill rises from 5,610 to 8,550 lek, which works out at 14.7 lek per EV kWh.",
+   "source": "https://www.ere.gov.al/media/files/2025/12/24/Tarifat_dhe_%C3%87mimet_e_energjis%C3%AB_Elektrike_dhe_Gazit_natyror_p%C3%ABr_VITIN_2026.pdf",
    "source_title": "ERE – electricity and gas tariffs 2026",
    "source_date": "24.12.2025",
    "confidence": "high"
   },
   {
-   "what": "Public charging (what drivers pay)",
+   "what": "Public charging, what drivers pay (OSHEE's estimate)",
    "price": "about 40–60 lek/kWh",
-   "note": "OSHEE's estimate; operators buy electricity for chargers above 11 kW at 22 lek/kWh (25.3 at peak) under an ERE decision from 01.11.2025.",
+   "note": "OSHEE's market estimate, about three times its 14 lek/kWh purchase cost; VAT not stated and no network publishes a price. Operators of chargers above 11 kW buy electricity at 22 lek/kWh, 25.3 at peak (18–22 h November–March, 19–23 h April–October), under ERE decision no. 255 from 01.11.2025; VAT not stated. The 22 lek/kWh the government mentioned for OSHEE Charge on 10.11.2025 is this supply tariff, not a price for drivers.",
    "source": "https://oshee.al/prezantohet-oshee-charge-shqiperia-drejt-transportit-te-gjelber-dhe-energjise-se-paster/",
    "source_title": "OSHEE – OSHEE Charge presented",
    "source_date": "11.11.2025",
@@ -132,6 +153,7 @@
   {
    "what": "Fuel for comparison (maximum prices from 22.09.2026)",
    "price": "diesel 213 lek/l, petrol 193 lek/l",
+   "note": "Maximum retail prices set by the Transparency Board, in force from 22.09.2026 12:00; the reports do not say whether VAT is included or which petrol grade is meant.",
    "source": "https://albeu.com/lajme/bordi-i-transparences-vendos-kufijte-e-rinj-te-cmimeve-per-karburantet/1022303/",
    "source_title": "Albeu – Transparency Board sets new fuel price limits",
    "source_date": "22.09.2026",
@@ -143,9 +165,9 @@
    "status": "open",
    "programme": "VAT exemption for new battery-electric vehicles",
    "amount": "20% VAT not charged at import or first sale",
-   "who": "Buyers of new, never-registered battery-electric vehicles (not used EVs or hybrids)",
-   "note": "Customs duty on cars consists only of VAT, so a new EV is imported tax-free.",
-   "source": "https://altax.al/mbi-trajtimin-e-tvsh-se-per-automjetet-elektrike-te-importuara-dhe-te-shitura-ne-territorin-s",
+   "who": "Buyers of new, zero-km battery-electric vehicles never registered in any country (not used EVs or hybrids)",
+   "note": "Latest source: ALTAX (23.10.2024), citing Law 92/2014 on VAT, art. 51(p); the law text itself could not be read. Albanian Customs says VAT on imports of new electric cars was removed in 2020 (543 cars imported VAT-free in 2020–2022). Sources conflict: a government statement reported by Albeu (20.04.2022) spoke of a cut from 20% to 6%, and the Ministry of Finance's 2024 fiscal bulletin lists only a 6% rate for electric buses. Customs duty on cars consists only of VAT; no EV-specific excise rule was found.",
+   "source": "https://altax.al/mbi-trajtimin-e-tvsh-se-per-automjetet-elektrike-te-importuara-dhe-te-shitura-ne-territorin-shqiptar/",
    "source_title": "ALTAX – VAT treatment of electric vehicles",
    "source_date": "23.10.2024",
    "confidence": "medium"
@@ -155,20 +177,21 @@
    "programme": "Exemption from the annual vehicle tax (TVMP)",
    "amount": "full exemption",
    "who": "Electric vehicles",
-   "source": "https://www.dpshtrr.al/mjete/taksa-dhe-detyrime/perjashtohen-nga-pagesa-e-takses-vjetore-te-mjeteve-te-perdoru",
+   "note": "DPSHTRR lists electric vehicles among the exempt vehicles without citing the legal act; vehicles aged 0–3 years are also exempt.",
+   "source": "https://www.dpshtrr.al/mjete/taksa-dhe-detyrime/perjashtohen-nga-pagesa-e-takses-vjetore-te-mjeteve-te-perdorura",
    "source_title": "DPSHTRR – vehicles exempt from the annual tax",
-   "source_date": "",
+   "source_date": "no date on page; checked 28.09.2026",
    "confidence": "high"
   },
   {
    "status": "unconfirmed",
    "programme": "Refund of first-registration fees",
-   "amount": "fees for inspection, circulation permit, plates and ownership certificate",
-   "who": "Electric vehicles, since November 2019",
-   "note": "We could not confirm that the refund still applies in 2026.",
-   "source": "https://businessmag.al/",
-   "source_title": "Business Magazine Albania",
-   "source_date": "21.04.2022",
+   "amount": "7,500 lek in total: physical inspection 1,500, circulation permit 1,000, standard plates 3,000, ownership certificate 2,000",
+   "who": "Electric and plug-in vehicles at first registration, since November 2019",
+   "note": "Reported on 15.10.2019; Business Magazine Albania (21.04.2022) says the refund applies from November 2019. Basis cited: Council of Ministers decision no. 412 of 19.06.2019. Not confirmed for 2026: the DPSHTRR registration page does not mention electric vehicles, and the latest source repeating the refund is a government statement of 20.04.2022.",
+   "source": "https://shqiptarja.com/lajm/risia-e-dpshtrr-ne-mbrojtje-te-mjedisit-tarifa-zero-per-mjetet-elektrik",
+   "source_title": "Shqiptarja.com – Albania removes fees for electric vehicles",
+   "source_date": "15.10.2019",
    "confidence": "low"
   },
   {
@@ -176,34 +199,50 @@
    "programme": "Purchase grant",
    "amount": "—",
    "who": "—",
-   "note": "No purchase subsidy found for 2026.",
+   "note": "No purchase subsidy found for 2026, and no municipal benefit (free parking, bus lanes, taxi relief) found in Tirana (checked 28.09.2026). A DPSHTRR page on electric taxis mentions reduced taxes without citing a legal act.",
    "confidence": "medium"
   }
  ],
  "buildings": [
   {
    "topic": "Apartment buildings",
-   "text": "We found no EV-specific rule for chargers in apartment buildings in Albania."
+   "text": "Albania's co-ownership law does not mention EV chargers, garages as such, or an owner's right to install a charger at their own cost. Parking areas and basements are common property unless the ownership act says otherwise (art. 6(2)). Ordinary improvements need a majority of participation quotas (art. 39(1)); major installations such as heating systems, lifts, generators and 'other improvements of this nature' need at least 75% (art. 39(2)); changing the look of common parts needs prior written approval by a simple majority of votes and must follow planning law (art. 40(2)–(3)). Which rule applies to a charger in a shared garage is not stated.",
+   "law": "Ligji nr. 55/2025 'Për administrimin e bashkëpronësisë në ndërtesa', adopted 03.07.2025 (Decree no. 282 of 30.07.2025); it repealed Law 10 112/2009 and enters into force 15 days after publication in the Official Journal",
+   "source": "https://qeverisjavendore.gov.al/wp-content/uploads/2025/08/ligj-2025-07-03-55.pdf",
+   "source_title": "Law no. 55/2025 on the administration of co-ownership in buildings",
+   "source_date": "30.07.2025",
+   "confidence": "high"
   }
  ],
  "policy": [
   {
-   "text": "The draft National Energy and Climate Plan aims for 10% of vehicles in circulation to be electric by 2030.",
-   "source": "https://shqiptarja.com/",
+   "text": "The draft National Energy and Climate Plan, put to public consultation, aims for 10% of vehicles in circulation to be electric by 2030 and plans chargers on national roads, at border crossings and in tourist areas; its adoption was not verified.",
+   "source": "https://shqiptarja.com/lajm/plan-kombetar-per-kufizimin-e-perdorimit-te-makinave-javor-dhe-sipas-targes-strategjia-me-shume-automjete-elektrike-deri-me-2030",
    "source_date": "04.01.2025",
    "confidence": "medium"
   },
   {
-   "text": "The Albanian Energy Efficiency Agency tendered the installation and operation of public chargers (83.3 million lek) in 2023.",
+   "text": "The Albanian Energy Efficiency Agency tendered the installation and operation of public chargers in eight cities and near border crossings (83.3 million lek) in June 2023; the outcome was not verified.",
    "source": "https://albanianpost.com/shqiperia-hap-tenderin-per-stacionet-e-karikimit-te-makinave-elektrike/",
    "source_date": "07.06.2023",
+   "confidence": "medium"
+  },
+  {
+   "text": "No Albanian law or draft law on charging or alternative-fuel infrastructure, and no act aligning with the EU AFIR regulation, was found.",
+   "source": "",
+   "source_date": "checked 28.09.2026",
    "confidence": "medium"
   }
  ],
  "gaps": [
-  "No network publishes a per-kWh price on its website; prices are in the apps.",
+  "No network publishes a per-kWh price on its website: PlugoAL and iCharge show prices only in their apps, VEGA and DAB Energy publish none, and OSHEE Charge has announced no price.",
   "Site counts per network could not be verified in Open Charge Map (API blocked).",
-  "The GB/T connector share among imported Chinese EVs is not documented; VEGA's GB/T sockets suggest demand.",
-  "No fast charger on the A1 (Rruga e Kombit) itself was confirmed."
+  "No source says how many of Albania's electric cars were imported used; INSTAT and DPSHTRR give no end-2025 total, and OSHEE's figure of about 16,000 electric vehicles (November 2025) is not reconciled with Eurostat's 10,938.",
+  "VAT on new electric cars: the text of Law 92/2014, art. 51 could not be read, and sources conflict (exemption per Customs and ALTAX; a cut from 20% to 6% per a 2022 government statement).",
+  "Household VAT: the 20% added to the ERE prices comes from media reports; the ERE table does not state it.",
+  "A1 (Rruga e Kombit) toll: the official car tariff is €5 with VAT (ATRAKO, undated), payable in lek at the Bank of Albania rate of the day; the 660 lek reported for payment in lek (Timoni.al 2024, tolls.eu 2026) is not confirmed by an official source.",
+  "VEGA's DC chargers have both GB/T and CCS2 sockets, but no source says how many cars in Albania use GB/T.",
+  "No fast charger on the A1 (Rruga e Kombit) itself was confirmed.",
+  "OSHEE Charge: no operating station was found on 28.09.2026; a first-phase figure of 100–120 stations appears only in an opinion article (Shqiptarja, 16.11.2025)."
  ]
 }

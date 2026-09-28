@@ -73,7 +73,7 @@
 {% macro tariffs() -%}
 {% set P = C.power %}{% set hi = P.tariffs|selectattr('allin_hi')|list %}
 <div class="tw stack"><table><thead><tr><th>{{ S.tariff }}</th><th class="num">{{ S.allin }}</th>{% if hi %}<th class="num">{{ S.allin_hi }}</th>{% endif %}<th class="num">{{ S.per100 }}</th></tr></thead><tbody>
-{% for t in P.tariffs %}<tr><td data-label="{{ S.tariff }}"><b>{{ t.name }}</b><small>{% if t.parts %}{{ t.parts }}{% else %}{{ S.energy }} {{ num(t.energy, 4) }} + {{ S.network }} {{ num(t.network, 4) }} + OIE {{ num(P.oie, 4) }} {{ LOC.cur_sign }}, + PDV {{ P.vat }} %{% endif %}</small></td><td class="num" data-label="{{ S.allin }}"><b>{{ num(t.allin, 3) }} {{ LOC.cur_sign }}</b></td>{% if hi %}<td class="num" data-label="{{ S.allin_hi }}">{{ num(t.allin_hi, 3) }} {{ LOC.cur_sign }}</td>{% endif %}<td class="num" data-label="{{ S.per100 }}">{{ num(t.allin * C.calc.kwh100 * (1 + C.calc.loss / 100), 2) }} {{ LOC.cur_sign }}</td></tr>
+{% for t in P.tariffs %}<tr><td data-label="{{ S.tariff }}"><b>{{ t.name }}</b><small>{% if t.parts %}{{ t.parts }}{% else %}{{ S.energy }} {{ num(t.energy, 4) }} + {{ S.network }} {{ num(t.network, 4) }} + OIE {{ num(P.oie, 4) }} {{ LOC.cur_sign }}, + PDV {{ P.vat }} %{% endif %}</small></td><td class="num" data-label="{{ S.allin }}"><b>{{ num(t.allin, 3) }} {{ LOC.cur_sign }}</b></td>{% if hi %}<td class="num" data-label="{{ S.allin_hi }}">{{ num(t.allin_hi, 3) }} {{ LOC.cur_sign }}</td>{% endif %}<td class="num" data-label="{{ S.per100 }}">{{ num(t.allin * C.calc.kwh100 * (1 + C.calc.loss / 100), 0 if LOC.trim else 2) }} {{ LOC.cur_sign }}</td></tr>
 {% endfor %}</tbody></table></div>
 {%- endmacro %}
 
@@ -121,8 +121,8 @@
 <div class="field"><label for="c-kwh100">{{ T.kwh100 }}</label><input class="input" type="number" id="c-kwh100" min="5" max="40" step="0.5" value="{{ K.kwh100 }}" inputmode="decimal"><span class="hint">{{ T.kwh100_hint }}</span></div>
 </div></div>
 <div class="box"><h2>{{ T.home }}</h2><div class="fields2">
-<div class="field"><label for="c-tariff">{{ T.tariff }}</label><select class="select" id="c-tariff">{% for t in P.tariffs %}<option value="{{ t.id }}"{% if t.id == K.tariff %} selected{% endif %}>{{ t.name }}</option>{% endfor %}<option value="custom">{{ T.custom }}</option></select></div>
-<div class="field" id="w-custom" hidden><label for="c-custom">{{ T.custom_label }}</label><input class="input" type="number" id="c-custom" min="0" max="5" step="0.001" value="{{ P.tariffs[0].allin }}" inputmode="decimal"></div>
+<div class="field wide"><label for="c-tariff">{{ T.tariff }}</label><select class="select" id="c-tariff">{% for t in P.tariffs %}<option value="{{ t.id }}"{% if t.id == K.tariff %} selected{% endif %}>{{ t.name }}</option>{% endfor %}<option value="custom">{{ T.custom }}</option></select></div>
+<div class="field" id="w-custom" hidden><label for="c-custom">{{ T.custom_label }}</label><input class="input" type="number" id="c-custom" min="0" max="{{ K.kwh_max or 5 }}" step="{{ K.kwh_step or 0.001 }}" value="{{ P.tariffs[0].allin }}" inputmode="decimal"></div>
 </div>
 <p class="note">{{ T.allin }} <b id="o-hp"></b></p>
 <details><summary>{{ T.loss }}</summary><div class="field"><label for="c-loss">{{ T.loss }}</label><input class="input" type="number" id="c-loss" min="0" max="30" step="1" value="{{ K.loss }}" inputmode="numeric"><span class="hint">{{ T.loss_hint }}</span></div></details>
@@ -130,13 +130,13 @@
 <div class="box"><h2>{{ T.public }}</h2>
 <div class="field"><label for="c-share">{{ T.share }}: <output id="o-share" for="c-share">{{ K.share }} %</output></label><input class="range" type="range" id="c-share" min="0" max="100" step="5" value="{{ K.share }}"></div>
 {% if K.chips %}<div class="chips calc-chips" role="group" aria-label="{{ T.pub_price }}">{% for name, v in K.chips %}<button class="chip" type="button" data-v="{{ v }}" aria-pressed="{{ 'true' if v == K.pub else 'false' }}">{{ name }} · {{ num(v, 2) }}</button>{% endfor %}</div>{% endif %}
-<div class="field"><label for="c-pub">{{ T.pub_price }}</label><input class="input" type="number" id="c-pub" min="0" max="5" step="0.01" value="{{ K.pub }}" inputmode="decimal">{% if K.pub_hint %}<span class="hint">{{ K.pub_hint }}</span>{% endif %}</div>
+<div class="field"><label for="c-pub">{{ T.pub_price }}</label><input class="input" type="number" id="c-pub" min="0" max="{{ K.kwh_max or 5 }}" step="{{ K.pub_step or 0.01 }}" value="{{ K.pub }}" inputmode="decimal">{% if K.pub_hint %}<span class="hint">{{ K.pub_hint }}</span>{% endif %}</div>
 </div>
 <div class="box"><h2>{{ T.fuel }}</h2><div class="fields2">
 <div class="field"><label for="c-fuel">{{ T.fuel_type }}</label><select class="select" id="c-fuel"><option value="petrol">{{ S.petrol }}</option><option value="diesel">{{ S.diesel }}</option></select></div>
 <div class="field"><label for="c-l100">{{ T.l100 }}</label><input class="input" type="number" id="c-l100" min="2" max="25" step="0.1" value="{{ K.l100_petrol }}" inputmode="decimal"></div>
 </div>
-<div class="field"><label for="c-lp">{{ T.l_price }}</label><input class="input" type="number" id="c-lp" min="0.5" max="5" step="0.01" value="{{ C.fuel.petrol }}" inputmode="decimal"><span class="hint">{{ S.fuel_hint }} {{ C.fuel.date }}: {{ S.petrol }} {{ num(C.fuel.petrol, 2) }}, {{ S.diesel }} {{ num(C.fuel.diesel, 2) }} {{ LOC.cur_sign }}.</span></div>
+<div class="field"><label for="c-lp">{{ T.l_price }}</label><input class="input" type="number" id="c-lp" min="{{ K.l_min or 0.5 }}" max="{{ K.l_max or 5 }}" step="{{ K.l_step or 0.01 }}" value="{{ C.fuel.petrol }}" inputmode="decimal"><span class="hint">{{ S.fuel_hint }} {{ C.fuel.date }}: {{ S.petrol }} {{ num(C.fuel.petrol, 2) }}, {{ S.diesel }} {{ num(C.fuel.diesel, 2) }} {{ LOC.cur_sign }}{{ '' if LOC.cur_sign.endswith('.') else '.' }}</span></div>
 </div>
 </div>
 <aside class="box res" aria-live="polite">
@@ -148,13 +148,13 @@
 </aside>
 </form>
 <noscript><p class="note">{{ T.noscript }}</p></noscript>
-<script id="calc-data" type="application/json">{{ {'tariffs': P.tariffs, 'fuel': C.fuel, 'd': K, 'cur': LOC.cur_sign, 'dec': LOC.dec, 'thou': LOC.thou, 'T': {'petrol': S.petrol, 'diesel': S.diesel, 'pm': T.per_month, 'py': T.per_year}}|tojson_safe }}</script>
+<script id="calc-data" type="application/json">{{ {'tariffs': P.tariffs, 'fuel': C.fuel, 'd': K, 'cur': LOC.cur_sign, 'dec': LOC.dec, 'thou': LOC.thou, 'trim': LOC.trim or False, 'T': {'petrol': S.petrol, 'diesel': S.diesel, 'pm': T.per_month, 'py': T.per_year}}|tojson_safe }}</script>
 <script>
 (function(){
- var D=JSON.parse(document.getElementById('calc-data').textContent),T=D.T,C=D.cur;
+ var D=JSON.parse(document.getElementById('calc-data').textContent),T=D.T,C=D.cur,M=D.trim?0:2;
  function $(id){return document.getElementById(id)}
  function num(id){var v=parseFloat(String($(id).value).replace(',','.'));return isFinite(v)?v:0}
- function fmt(x,d){d=d||0;var s=Math.abs(x).toFixed(d).split('.');s[0]=s[0].replace(/\B(?=(\d{3})+(?!\d))/g,D.thou);return (x<0?'−':'')+s[0]+(d?D.dec+s[1]:'')}
+ function fmt(x,d){d=d||0;var s=Math.abs(x).toFixed(d).split('.'),neg=x<0&&+s.join('.')>0;if(D.trim&&s[1]){s[1]=s[1].replace(/0+$/,'');if(!s[1])d=0}s[0]=s[0].replace(/\B(?=(\d{3})+(?!\d))/g,D.thou);return (neg?'−':'')+s[0]+(d?D.dec+s[1]:'')}
  function tariff(){var id=$('c-tariff').value;for(var i=0;i<D.tariffs.length;i++){if(D.tariffs[i].id===id)return D.tariffs[i]}return null}
  function hp(){var t=tariff();return t?t.allin:num('c-custom')}
  var chips=[].slice.call(document.querySelectorAll('.calc-chips button'));
@@ -163,12 +163,12 @@
   var need=km*k100/100,pubKwh=need*share,homeKwh=need*(1-share)*(1+loss),p=hp(),homeCost=homeKwh*p,pubCost=pubKwh*pub,ev=homeCost+pubCost;
   var ice=km*num('c-l100')/100*num('c-lp'),save=ice-ev;
   $('o-hp').textContent=fmt(p,3)+' '+C;$('o-share').textContent=Math.round(share*100)+' %';
-  $('o-ev').textContent=fmt(ev,2)+' '+C;$('o-ev100').textContent=km>0?fmt(ev/km*100,2):'0';
-  $('o-ice').textContent=fmt(ice,2)+' '+C;$('o-ice100').textContent=km>0?fmt(ice/km*100,2):'0';
+  $('o-ev').textContent=fmt(ev,M)+' '+C;$('o-ev100').textContent=km>0?fmt(ev/km*100,M):'0';
+  $('o-ice').textContent=fmt(ice,M)+' '+C;$('o-ice100').textContent=km>0?fmt(ice/km*100,M):'0';
   $('o-fuelname').textContent=$('c-fuel').value==='diesel'?T.diesel:T.petrol;
-  $('o-save').textContent=fmt(save,2)+' '+T.pm;$('o-save-y').textContent=fmt(save*12,0)+' '+T.py;
-  $('o-homekwh').textContent=fmt(homeKwh);$('o-homecost').textContent=fmt(homeCost,2)+' '+C;
-  $('o-pubkwh').textContent=fmt(pubKwh);$('o-pubcost').textContent=fmt(pubCost,2)+' '+C;
+  $('o-save').textContent=fmt(save,M)+' '+T.pm;$('o-save-y').textContent=fmt(save*12,0)+' '+T.py;
+  $('o-homekwh').textContent=fmt(homeKwh);$('o-homecost').textContent=fmt(homeCost,M)+' '+C;
+  $('o-pubkwh').textContent=fmt(pubKwh);$('o-pubcost').textContent=fmt(pubCost,M)+' '+C;
  }
  $('c-tariff').addEventListener('change',function(){$('w-custom').hidden=this.value!=='custom';calc()});
  $('c-fuel').addEventListener('change',function(){var dz=this.value==='diesel';$('c-lp').value=dz?D.fuel.diesel:D.fuel.petrol;$('c-l100').value=dz?D.d.l100_diesel:D.d.l100_petrol;calc()});
