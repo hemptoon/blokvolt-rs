@@ -38,7 +38,7 @@ SITE = 'https://www.blokvolt.rs'
 LANGS = ('sr', 'en', 'ru')
 SCHEMA = 'blokvolt.app/1'
 FEED = '/assets/app/v1'
-MAP_FILES = ('punjaci', 'mreze', 'cene', 'dopune')
+MAP_FILES = ('punjaci', 'mreze', 'cene', 'dopune', 'region')
 PAGES = ['/javno-punjenje/', '/javno-punjenje/aplikacije-i-kartice/', '/javno-punjenje/besplatni-punjaci/',
          '/javno-punjenje/region/', '/cena-punjaca-za-elektricni-auto', '/metodologija/', '/o-sajtu/',
          '/pravila-objavljivanja/', '/politika-privatnosti']

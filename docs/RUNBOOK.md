@@ -836,6 +836,27 @@ the footer ("Pomoć"), the text under /mapa/, /aplikacija/ and /ispravka/. Rules
   request (shown in the admin queue). Totals: `GET /api/admin/pomoc` with the owner's key.
 - English and Russian through the translation memory as usual (3.9).
 
+### 3.25 The region on /mapa/ and the map data for other sites
+
+- **Neighbouring countries.** `build.py` writes `/assets/map/region.json` from `content/com/local/<cc>/stanice.json`
+  of HR, BA, ME, AL and MK (not XK: blokvolt.rs does not list Kosovo, see 3.10) with the fields map.js reads, the
+  country (`cc`), the network's short name from `country.json` (`nn`) and, per country, the links to its map and price
+  page on blokvolt.com. A station already on the Serbian map is skipped. `cfg.region` in the /mapa/ config switches the
+  layer on; the country maps of blokvolt.com have no `cfg.region` and do not change.
+- In map.js a station with `cc` is drawn from its own source (`rg`, grey clusters, white points with a grey ring,
+  under Serbia's layers) and never takes a Serbian network's data (`netOf`, `isFree`, `price` return nothing for it).
+  The list without zoom, search or "Blizu mene" is Serbia's; the count line adds "u regionu još N" (after the filters).
+  Search, the chips "Brzi", "AC", "CHAdeMO" and favourites work across the region; "Potvrđeni", "Besplatni" and the
+  network chips are Serbian only. The card: country after the address, the network's short name, the verification box
+  "Iz otvorenih baza…", a price box linking to that country's prices on blokvolt.com, connectors, "Gde tačno",
+  navigation, "Mapa zemlje na blokvolt.com" (its map with the station open, `#<id>`) and "Podeli"; no reports, photos,
+  ratings or "Prijavi grešku" (those are for Serbian chargers). Test: `scripts/qa/map_region_test.py`.
+- **Map data for other sites.** `/assets/map/*` is served with `Access-Control-Allow-Origin: *` (like `/app/*`): the
+  data is open (ODbL / CC BY) and the Evolako charger map on evolako.rs reads it with fetch. Read the current file
+  names from `/app/v1/manifest.json` (`files.map`, versioned `?v=`; the manifest is cached 5 minutes, the files a
+  year). Renaming a map file or changing its format breaks that page: keep the fields map.js reads, or tell the
+  Evolako side first.
+
 ## 4. Build and check
 
 ```bash

@@ -536,6 +536,47 @@ shutil.copytree(ROOT / 'static', DIST, dirs_exist_ok=True)
 MAP = map_data.build(DIST, operators, price_index, {o['slug']: {'logo': o['logo'], 'dark': o['logo_dark']} for o in operators})
 MAP_COUNTS = MAP['counts']
 
+# neighbouring countries on /mapa/: the blokvolt.com sections carry the same open data (OpenStreetMap + Open Charge Map,
+# not checked one by one) for the neighbours; /mapa/ draws them as a second, quieter layer (map.js: cfg.region), without
+# prices, reports or checks, and links each one to its country's map on blokvolt.com. Kosovo is not part of
+# blokvolt.rs (scripts/region_pages.py), so /xk/ is left out. RUNBOOK 3.25.
+RG_CC = ('hr', 'ba', 'me', 'al', 'mk')
+RG_KEEP = ('id', 'n', 'a', 't', 'lat', 'lon', 'net', 'opn', 'c', 'dc', 'ac', 'acc', 'src', 'v', 'al')
+_rg_ids = {_s['id'] for _s in MAP['stations']}
+_rg_st, RG_META = [], {}
+for _cc in RG_CC:
+    _d = ROOT / 'content' / 'com' / 'local' / _cc
+    _C = json.load(open(_d / 'country.json', encoding='utf-8'))
+    _map_slug = ''
+    for _md in sorted(_d.glob('*.md')):
+        _fm = re.match(r'---\n(.*?)\n---', _md.read_text(encoding='utf-8'), re.S)
+        if _fm and re.search(r'^template:\s*map\s*$', _fm.group(1), re.M):
+            _map_slug = re.search(r'^slug:\s*(\S+)\s*$', _fm.group(1), re.M).group(1)
+    if not _map_slug:
+        raise SystemExit(f'region {_cc}: no map page')
+    RG_META[_cc] = {'map': f'https://blokvolt.com/{_cc}/{_map_slug}', 'prices': f"https://blokvolt.com/{_cc}/{_C['slugs']['prices']}", 'n': 0}
+    for _s in json.load(open(_d / 'stanice.json', encoding='utf-8'))['stations']:
+        if _s['id'] in _rg_ids:
+            continue
+        _rg_ids.add(_s['id'])
+        # map.js reads c, src and v on every station; the other fields only when they are set
+        _rs = {k: _s[k] for k in RG_KEEP if k in _s and (k in ('c', 'src', 'v') or _s[k] not in (None, '', []))}
+        _rs.setdefault('c', [])
+        _rs.setdefault('src', [])
+        _rs['cc'] = _cc
+        _nn = (_C.get('net_names') or {}).get(_s.get('net') or '')
+        if _nn:
+            _rs['nn'] = _nn
+        _rg_st.append(_rs)
+        RG_META[_cc]['n'] += 1
+(DIST / 'assets' / 'map' / 'region.json').write_text(json.dumps({
+    'about': 'Public chargers in the neighbouring countries (blokvolt.com sections): OpenStreetMap and Open Charge Map, '
+             'not checked one by one. Prices and details are on blokvolt.com.',
+    'license': 'ODbL 1.0 (OpenStreetMap), CC BY 4.0 (Open Charge Map)',
+    'cc': RG_META, 'stations': _rg_st}, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+RG_N = len(_rg_st)
+print(f'region layer: {RG_N} stations in ' + ', '.join(f"{k} {v['n']}" for k, v in RG_META.items()))
+
 # state motorway chargers: counts and the per-site status list come from content/mapa/putevi-srbije.json (map_data)
 _pv = next((o for o in operators if o['slug'] == 'putevi-srbije'), None)
 _PS = MAP.get('ps') or {}
@@ -614,6 +655,11 @@ MAP_T = {
     'q_net': 'Tačka je sa spiska mreže.', 'q_osm': 'Tačka je iz OpenStreetMap-a.',
     'q_ocm': 'Tačka je iz Open Charge Map-a i može odstupati nekoliko desetina metara.',
     'q_site': 'Približna tačka: parking ili objekat, ne sam punjač.', 'q_field': 'Tačka je proverena na licu mesta.',
+    # neighbouring countries (cfg.region, /assets/map/region.json)
+    'v_src': 'Iz otvorenih baza OpenStreetMap i Open Charge Map. Punjač nije pojedinačno proveren — pre polaska proverite u aplikaciji mreže.',
+    'cc_hr': 'Hrvatska', 'cc_ba': 'Bosna i Hercegovina', 'cc_me': 'Crna Gora', 'cc_al': 'Albanija', 'cc_mk': 'Severna Makedonija',
+    'rg_count': 'u regionu još {n}', 'rg_open': 'Mapa zemlje na blokvolt.com', 'rg_prices': 'Cene mreža: {c}',
+    'rg_note': 'Punjač je van Srbije. Cene su u valuti te zemlje, sa datumom i izvorom.',
 }
 # Serbian notes that come with the price data (cene.json) and the idle fees: added as 'tx:<text>' so that the
 # translation memory translates them on /en/ and /ru/ (map.js looks them up with tr())
@@ -636,6 +682,7 @@ M = {
     'chips': [(s, map_data.NAMES.get(s, s), MAP_COUNTS[s]) for s in CHIP_NETS if MAP_COUNTS.get(s, 0) >= 4],
     'retrieved_sr': f'{_r0[2]}.{_r0[1]}.{_r0[0]}' if len(_r0) == 3 else MAP['retrieved'],
     'checked': MAP.get('checked', ''),
+    'rg_n': RG_N,
     'cfg': json.dumps({
         'style': 'https://tiles.openfreemap.org/styles/positron',
         'font': ['Noto Sans Bold'],
@@ -645,6 +692,7 @@ M = {
         'help': '/pomoc/sta-znaci-potvrdjeno/',
         'prices': '/assets/map/cene.json?v=' + _ver(DIST / 'assets' / 'map' / 'cene.json'),
         'extra': '/assets/map/dopune.json?v=' + _ver(DIST / 'assets' / 'map' / 'dopune.json'),
+        'region': '/assets/map/region.json?v=' + _ver(DIST / 'assets' / 'map' / 'region.json'),
         'cities': {c['slug']: list(TOWN_XY[c['name']]) for c in CITY_CFG if c['name'] in TOWN_XY},
         'idle': _IDLE,
     }, ensure_ascii=False).replace('</', '<\\/'),
@@ -1449,6 +1497,9 @@ CSP = '; '.join([
     '  Cache-Control: public, max-age=300',
     '  Access-Control-Allow-Origin: *',
     '  X-Robots-Tag: noindex',
+    # the map data is open (ODbL / CC BY) and other sites read it with fetch (the Evolako charger map): same as /app/*
+    '/assets/map/*',
+    '  Access-Control-Allow-Origin: *',
 ] + ([f'/aplikacija/{APP["apk"]}', '  Content-Type: application/vnd.android.package-archive', '  Content-Disposition: attachment',
       '  Cache-Control: public, max-age=3600'] if APP.get('apk') else [])) + '\n', encoding='utf-8')
 print(f'_headers: CSP with {len(_hashes)} inline-script hashes' + (', PostHog on' if ANALYTICS else ''))

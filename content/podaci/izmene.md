@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 28.09.2026
+updated: 29.09.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-09-28
+modified: 2026-09-29
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 29. septembar 2026
+
+- [Mapa](/mapa/): na mapi su i punjači u regionu — Hrvatska, Bosna i Hercegovina, Crna Gora, Albanija i Severna Makedonija, iz otvorenih baza, bez pojedinačne provere. Kartica takvog punjača vodi na mapu te zemlje na blokvolt.com, gde su i cene mreža.
+
 ## 28. septembar 2026
 
 - Nova rubrika [Pomoć](/pomoc/): kratki odgovori o mapi, oznaci „Potvrđeno“, cenama po minutu, prijavama vozača, Android aplikaciji, privatnosti i ispravkama, uz snimke ekrana. Na dnu svakog odgovora možete da javite da li je pomogao.
