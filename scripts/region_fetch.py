@@ -98,10 +98,35 @@ def osmium(*args):
     subprocess.run(['osmium'] + list(args), check=True, capture_output=True, text=True)
 
 
+def _ring_contains(ring, x, y):
+    inside = False
+    j = len(ring) - 1
+    for i in range(len(ring)):
+        xi, yi = ring[i][0], ring[i][1]
+        xj, yj = ring[j][0], ring[j][1]
+        if (yi > y) != (yj > y) and x < (xj - xi) * (y - yi) / ((yj - yi) or 1e-12) + xi:
+            inside = not inside
+        j = i
+    return inside
+
+
+def _in_multipolygon(mp, lon, lat):
+    """GeoJSON MultiPolygon coordinates: [[outer, hole, …], …]."""
+    for poly in mp:
+        if poly and _ring_contains(poly[0], lon, lat) and not any(_ring_contains(h, lon, lat) for h in poly[1:]):
+            return True
+    return False
+
+
+def _ring_area(ring):
+    return abs(sum(ring[i][0] * ring[i - 1][1] - ring[i - 1][0] * ring[i][1] for i in range(len(ring)))) / 2
+
+
 def geofabrik(cc, work):
     """Every amenity=charging_station inside the country's boundary relation, from the Geofabrik extract, as the
     Overpass answer would give it ("out center meta": nodes with lat/lon, ways and relations with the centre of
-    their bounding box)."""
+    their bounding box). The extract reaches a few kilometres over the border on purpose, so the points are cut to
+    the country's own admin_level=2 relation (assembled by osmium export)."""
     if not shutil.which('osmium'):
         raise RuntimeError('osmium is not installed')
     work.mkdir(parents=True, exist_ok=True)
@@ -111,15 +136,26 @@ def geofabrik(cc, work):
     ts = next((ln.split('=', 1)[1].replace('\\', '') for ln in state.splitlines() if ln.startswith('timestamp=')), None)
     pbf = work / f'{cc}.osm.pbf'
     download(base + '-latest.osm.pbf', pbf)
-    # the country's own boundary: the extract reaches a few kilometres over the border on purpose
+    # the boundary: relations with admin_level=2 and this country's code, assembled into (multi)polygons
     osmium('tags-filter', '-O', '-o', str(work / f'{cc}-l2.osm.pbf'), str(pbf), 'r/admin_level=2')
-    osmium('tags-filter', '-O', '-o', str(work / f'{cc}-border.osm'), str(work / f'{cc}-l2.osm.pbf'), f'r/ISO3166-1={cc}')
-    osmium('extract', '-O', '-p', str(work / f'{cc}-border.osm'), '-o', str(work / f'{cc}-in.osm.pbf'), str(pbf))
-    osmium('tags-filter', '-O', '-o', str(work / f'{cc}-cs.osm'), str(work / f'{cc}-in.osm.pbf'), 'nwr/amenity=charging_station')
+    osmium('tags-filter', '-O', '-o', str(work / f'{cc}-border.osm.pbf'), str(work / f'{cc}-l2.osm.pbf'),
+           f'r/ISO3166-1={cc}', f'r/ISO3166-1:alpha2={cc}')
+    osmium('export', '-O', str(work / f'{cc}-border.osm.pbf'), '--geometry-types=polygon', '-a', 'type,id',
+           '-f', 'geojson', '-o', str(work / f'{cc}-border.geojson'))
+    feats = json.loads((work / f'{cc}-border.geojson').read_text(encoding='utf-8')).get('features', [])
+    rels = [f for f in feats if (f.get('properties') or {}).get('@type') == 'relation'
+            and (f.get('properties') or {}).get('admin_level') == '2']
+    if not rels:
+        raise RuntimeError(f'the boundary relation of {cc} could not be assembled from the extract '
+                           f'({len(feats)} polygons, none an admin_level=2 relation)')
+    geom = max(rels, key=lambda f: sum(_ring_area(p[0]) for p in (f['geometry']['coordinates'] if f['geometry']['type'] == 'MultiPolygon'
+                                                                     else [f['geometry']['coordinates']])))['geometry']
+    mp = geom['coordinates'] if geom['type'] == 'MultiPolygon' else [geom['coordinates']]
+    osmium('tags-filter', '-O', '-o', str(work / f'{cc}-cs.osm'), str(pbf), 'nwr/amenity=charging_station')
     root = ET.parse(work / f'{cc}-cs.osm').getroot()
     nodes = {n.get('id'): (float(n.get('lat')), float(n.get('lon'))) for n in root.iter('node') if n.get('lat')}
     ways = {w.get('id'): [nd.get('ref') for nd in w.iter('nd')] for w in root.iter('way')}
-    out = []
+    out, outside = [], 0
 
     def centre(pts):
         pts = [p for p in pts if p]
@@ -134,23 +170,26 @@ def geofabrik(cc, work):
         x = {'type': el.tag, 'id': int(el.get('id'))}
         if el.tag == 'node':
             x['lat'], x['lon'] = float(el.get('lat')), float(el.get('lon'))
-        elif el.tag == 'way':
-            c = centre([nodes.get(r) for r in ways.get(el.get('id'), [])])
-            if not c:
-                continue
-            x['center'] = c
-        elif el.tag == 'relation':
-            pts = []
-            for m in el.iter('member'):
-                if m.get('type') == 'node':
-                    pts.append(nodes.get(m.get('ref')))
-                elif m.get('type') == 'way':
-                    pts += [nodes.get(r) for r in ways.get(m.get('ref'), [])]
+            lat, lon = x['lat'], x['lon']
+        elif el.tag in ('way', 'relation'):
+            if el.tag == 'way':
+                pts = [nodes.get(r) for r in ways.get(el.get('id'), [])]
+            else:
+                pts = []
+                for m in el.iter('member'):
+                    if m.get('type') == 'node':
+                        pts.append(nodes.get(m.get('ref')))
+                    elif m.get('type') == 'way':
+                        pts += [nodes.get(r) for r in ways.get(m.get('ref'), [])]
             c = centre(pts)
             if not c:
                 continue
             x['center'] = c
+            lat, lon = c['lat'], c['lon']
         else:
+            continue
+        if not _in_multipolygon(mp, lon, lat):
+            outside += 1
             continue
         x['tags'] = tags
         if el.get('version'):
@@ -160,8 +199,9 @@ def geofabrik(cc, work):
         out.append(x)
     for f in work.glob(f'{cc}*'):
         f.unlink()
+    print(f'  geofabrik {cc}: {len(out)} inside the boundary, {outside} over the border left out', file=sys.stderr)
     if not out:
-        raise RuntimeError('no charging stations inside the boundary (boundary relation not found?)')
+        raise RuntimeError('no charging stations inside the boundary')
     return base + '-latest.osm.pbf', {'generator': 'Geofabrik extract + osmium (BlokVolt region_fetch.py)',
                                       'osm3s': {'timestamp_osm_base': ts}, 'elements': out}
 
