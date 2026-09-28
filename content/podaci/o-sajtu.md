@@ -19,7 +19,7 @@ priority: 0.4
 
 ## Odakle su podaci
 
-Podaci su sa javnih stranica firmi i mreža, iz aplikacija mreža i iz zvaničnih izvora. Uz svaki podatak stoji datum provere. Pravila su na stranici [Kako radimo](/metodologija/).
+Podaci su sa javnih stranica firmi i mreža, iz aplikacija mreža i iz zvaničnih izvora. Uz svaki podatak stoji datum provere. Pravila su na stranici [Metodologija](/metodologija/).
 
 ## Bez ocena i plaćenih pozicija
 

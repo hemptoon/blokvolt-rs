@@ -43,4 +43,4 @@ Ko uređuje sajt i sa kojom je firmom povezan, piše na stranici [O sajtu](/o-sa
 
 Tabele sa sajta su dostupne kao [CSV fajlovi](/preuzimanje/) pod licencom CC BY 4.0, pa svako može da uporedi podatke o firmama. Uz svaki red stoje izvor i datum provere.
 
-Ako mislite da je neka firma prikazana drugačije od ostalih, pošaljite [ispravku](/ispravka/) sa linkom. Greška se ispravlja u roku od nekoliko dana i beleži u [dnevniku izmena](/izmene/). Sva pravila su na stranici [Kako radimo](/metodologija/).
+Ako mislite da je neka firma prikazana drugačije od ostalih, pošaljite [ispravku](/ispravka/) sa linkom. Greška se ispravlja u roku od nekoliko dana i beleži u [dnevniku izmena](/izmene/). Sva pravila su na stranici [Metodologija](/metodologija/).

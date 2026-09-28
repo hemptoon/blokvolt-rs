@@ -6,6 +6,7 @@ description: Kako da instalirate aplikaciju BlokVolt za Android iz APK fajla (1,
 lead: Preuzmite APK sa stranice Aplikacija, dozvolite instalaciju iz pregledača i pritisnite „Instaliraj“. Pre instalacije SHA-256 fajla možete da uporedite sa brojem na sajtu.
 kicker: Pomoć
 section: aplikacija
+scope: web
 order: 1
 path: /pomoc/android-aplikacija-apk/
 updated: 28.09.2026

@@ -1,7 +1,8 @@
 // BlokVolt API — Cloudflare Pages "advanced mode" worker (copied to dist/_worker.js by build.py).
 // Only /api/* reaches it (dist/_routes.json); everything else is served as static files.
-// Binding: DB = D1 database "blokvolt" (schema: worker/schema.sql). Optional secret: ADMIN_KEY (set by the owner
-// in Pages → Settings → Variables and Secrets; without it the /api/admin/* endpoints answer 404).
+// Binding: DB = D1 database "blokvolt" (schema: worker/schema.sql; the one-row table dk is also created here on first
+// use). Optional secret: ADMIN_KEY (set by the owner in Pages → Settings → Variables and Secrets; without it the
+// /api/admin/* endpoints answer 404).
 
 const JSON_HEADERS = { 'content-type': 'application/json; charset=utf-8' };
 const STATUSES = new Set(['ok', 'problem', 'broken', 'missing']);
@@ -9,6 +10,9 @@ const KINDS = new Set(['firma', 'mreza', 'ispravka', 'stanica', 'pomoc']);
 const MAX_IMG = 950 * 1024, MAX_TH = 90 * 1024;
 const LINKY = /(https?:\/\/|www\.|\b[a-z0-9-]+\.(com|rs|net|org|info|me|io)\b)/i;
 const CONTACTY = /(\S+@\S+\.\S+|(\+?\d[\d\s\/.-]{7,}\d))/;
+// dates and times are not phone numbers: "28.09.2026", "28. 9. 2026.", "28/09", "2026-09-28", "15.30", "15h30"
+const DATEY = /\b(\d{4}-\d{2}-\d{2}|\d{1,2}[./]\s?\d{1,2}[./]?(\s?\d{4}\.?|\s?\d{2}\b)?|\d{1,2}[:.h]\d{2}\b)/g;
+const contacty = t => CONTACTY.test(String(t).replace(DATEY, ' '));
 const RUDE = /\b(jebem|jebo|jebi|pi[čc]k|kurac|kurc|govno|sranje|peder|kreten|idiot|debil|stoka|fuck|shit)/i;
 
 const json = (obj, status = 200, extra = {}) =>
@@ -24,10 +28,34 @@ function rid() {
   return [...a].map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-async function ipHash(request) {
+// A short daily fingerprint of the visitor's IP address, for rate limits and moderation. It is an HMAC with a random
+// key that lives in D1 for one day (UTC) and is then overwritten by a new one: a plain hash of the address could be
+// reversed by trying every IPv4 address, while an old fingerprint without its key cannot. Cached per isolate.
+let DAYKEY = null;
+async function dayKey(env) {
+  const d = today();
+  if (DAYKEY && DAYKEY.day === d) return DAYKEY.key;
+  let row = null;
+  try {
+    row = await env.DB.prepare('SELECT day, k FROM dk WHERE id = 1').first();
+  } catch (e) {
+    await env.DB.prepare('CREATE TABLE IF NOT EXISTS dk (id INTEGER PRIMARY KEY CHECK (id = 1), day TEXT NOT NULL, k TEXT NOT NULL)').run();
+  }
+  if (!row || row.day < d) {
+    const fresh = rid() + rid();
+    if (!row) await env.DB.prepare('INSERT OR IGNORE INTO dk (id, day, k) VALUES (1, ?1, ?2)').bind(d, fresh).run();
+    else await env.DB.prepare('UPDATE dk SET day = ?1, k = ?2 WHERE id = 1 AND day = ?3').bind(d, fresh, row.day).run();
+    row = await env.DB.prepare('SELECT day, k FROM dk WHERE id = 1').first();   // another request may have won the race
+  }
+  const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(row.k), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  DAYKEY = { day: row.day, key };
+  return key;
+}
+
+async function ipHash(request, env) {
   const ip = request.headers.get('cf-connecting-ip') || request.headers.get('x-forwarded-for') || '0';
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(ip + '|' + today() + '|blokvolt'));
-  return [...new Uint8Array(buf)].slice(0, 12).map(b => b.toString(16).padStart(2, '0')).join('');
+  const sig = await crypto.subtle.sign('HMAC', await dayKey(env), new TextEncoder().encode(ip));
+  return [...new Uint8Array(sig)].slice(0, 12).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
 // true while the key is under `max` uses today
@@ -104,10 +132,10 @@ async function postCheckin(request, env, st) {
   let r = b.r == null || b.r === '' ? null : Math.round(Number(b.r));
   if (r !== null && !(r >= 1 && r <= 5)) return bad('rating');
   const c = clean(b.c, 500) || null, n = clean(b.n, 40) || null;
-  const ip = await ipHash(request);
+  const ip = await ipHash(request, env);
   if (!(await allow(env, 'ci:' + ip, 30)) || !(await allow(env, 'cs:' + ip + ':' + st, 3))) return bad('limit', 429);
   let cs = 'none';
-  if (c) cs = (LINKY.test(c) || CONTACTY.test(c) || RUDE.test(c) || (n && (LINKY.test(n) || RUDE.test(n)))) ? 'pending' : 'ok';
+  if (c) cs = (LINKY.test(c) || contacty(c) || RUDE.test(c) || (n && (LINKY.test(n) || RUDE.test(n)))) ? 'pending' : 'ok';
   await env.DB.prepare(
     'INSERT INTO checkins (st, s, r, c, n, cs, at, lang, ip) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)'
   ).bind(st, s, r, c, n, cs, now(), clean(b.lang, 5) || null, ip).run();
@@ -132,7 +160,7 @@ async function postPhoto(request, env, st) {
     thBuf = new Uint8Array(await th.arrayBuffer());
     if (thBuf.length > MAX_TH || !(thBuf[0] === 0xff && thBuf[1] === 0xd8)) thBuf = null;
   }
-  const ip = await ipHash(request);
+  const ip = await ipHash(request, env);
   if (!(await allow(env, 'ph:' + ip, 6))) return bad('limit', 429);
   const pend = await env.DB.prepare(`SELECT COUNT(*) AS n FROM photos WHERE st = ?1 AND status = 'pending'`).bind(st).first();
   if (pend && pend.n >= 20) return bad('queue full', 429);
@@ -163,8 +191,12 @@ async function getPhoto(env, id, thumb) {
 async function postReport(request, env) {
   let b;
   try { b = await request.json(); } catch (e) { return bad('json'); }
-  const ip = await ipHash(request);
+  const ip = await ipHash(request, env);
   if (!(await allow(env, 'rp:' + ip, 20))) return bad('limit', 429);
+  // one report per item and visitor per day: "three visitors" in the rules means three different fingerprints
+  if ((b.t === 'c' && Number.isInteger(b.id)) || (b.t === 'f' && /^[0-9a-f]{32}$/.test(String(b.id)))) {
+    if (!(await allow(env, 'rx:' + b.t + ':' + b.id + ':' + ip, 1))) return json({ ok: true });
+  }
   if (b.t === 'c' && Number.isInteger(b.id)) {
     await env.DB.prepare(`UPDATE checkins SET rep = rep + 1, cs = CASE WHEN rep + 1 >= 3 AND cs = 'ok' THEN 'pending' ELSE cs END WHERE id = ?1`).bind(b.id).run();
   } else if (b.t === 'f' && /^[0-9a-f]{32}$/.test(String(b.id))) {
@@ -188,7 +220,7 @@ async function postRequest(request, env) {
   }
   const msg = (data.poruka || '') + (data.ime || '');
   if (!msg.trim()) return bad('empty');
-  const ip = await ipHash(request);
+  const ip = await ipHash(request, env);
   if (!(await allow(env, 'rq:' + ip, 6))) return bad('limit', 429);
   const email = clean(b.email || data.email, 120) || null;
   await env.DB.prepare('INSERT INTO requests (kind, slug, data, email, at, ip) VALUES (?1, ?2, ?3, ?4, ?5, ?6)')
@@ -206,7 +238,7 @@ async function postHelpful(request, env, b) {
   if (!['da', 'ne', 'komentar'].includes(v)) return bad('vote');
   const note = v === 'komentar' ? clean((b.data || {}).poruka, 1000) : '';
   if (v === 'komentar' && !note) return bad('empty');
-  const ip = await ipHash(request);
+  const ip = await ipHash(request, env);
   if (!(await allow(env, 'pm:' + ip, 40))) return bad('limit', 429);
   await env.DB.prepare('INSERT INTO requests (kind, slug, data, email, at, status, ip) VALUES (?1, ?2, ?3, NULL, ?4, ?5, ?6)')
     .bind('pomoc', page, JSON.stringify(note ? { v, poruka: note } : { v }), now(), note ? 'new' : 'vote', ip).run();
@@ -240,9 +272,10 @@ async function adminDecide(request, env) {
   try { b = await request.json(); } catch (e) { return bad('json'); }
   const ok = b.a === 'ok';
   if (b.t === 'f' && /^[0-9a-f]{32}$/.test(String(b.id))) {
-    await env.DB.prepare('UPDATE photos SET status = ?1 WHERE id = ?2').bind(ok ? 'ok' : 'no', b.id).run();
+    // an approved item starts counting reports from zero again, so the next single report does not hide it
+    await env.DB.prepare('UPDATE photos SET status = ?1, rep = CASE WHEN ?1 = \'ok\' THEN 0 ELSE rep END WHERE id = ?2').bind(ok ? 'ok' : 'no', b.id).run();
   } else if (b.t === 'c' && Number.isInteger(b.id)) {
-    await env.DB.prepare('UPDATE checkins SET cs = ?1 WHERE id = ?2').bind(ok ? 'ok' : 'hidden', b.id).run();
+    await env.DB.prepare('UPDATE checkins SET cs = ?1, rep = CASE WHEN ?1 = \'ok\' THEN 0 ELSE rep END WHERE id = ?2').bind(ok ? 'ok' : 'hidden', b.id).run();
   } else if (b.t === 'z' && Number.isInteger(b.id)) {
     await env.DB.prepare('UPDATE requests SET status = ?1 WHERE id = ?2').bind(ok ? 'done' : 'rejected', b.id).run();
   } else return bad('what');

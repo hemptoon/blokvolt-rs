@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS checkins (
   cs TEXT NOT NULL DEFAULT 'none', -- comment state: none | ok | pending | hidden
   at INTEGER NOT NULL,           -- unix seconds
   lang TEXT,
-  ip TEXT,                       -- sha-256 of ip + day (not reversible, rotates daily)
+  ip TEXT,                       -- HMAC of the IP with the day's random key (table dk); unlinkable across days
   rep INTEGER NOT NULL DEFAULT 0 -- abuse reports
 );
 CREATE INDEX IF NOT EXISTS checkins_st ON checkins (st, at);
@@ -46,7 +46,15 @@ CREATE TABLE IF NOT EXISTS requests (
 );
 CREATE INDEX IF NOT EXISTS requests_status ON requests (status);
 
--- Rate limits per key per day.
+-- The day's random key for the IP fingerprints: one row, overwritten with a new random key on the first request of each
+-- UTC day, so yesterday's fingerprints can no longer be matched to an address. The worker also creates it on first use.
+CREATE TABLE IF NOT EXISTS dk (
+  id INTEGER PRIMARY KEY CHECK (id = 1),
+  day TEXT NOT NULL,             -- YYYY-MM-DD (UTC)
+  k TEXT NOT NULL                -- 64 random hex chars
+);
+
+-- Rate limits per key per day (also one report per item and visitor per day: keys rx:<c|f>:<id>:<fingerprint>).
 CREATE TABLE IF NOT EXISTS rl (
   k TEXT NOT NULL,
   day TEXT NOT NULL,

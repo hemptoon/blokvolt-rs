@@ -41,7 +41,7 @@ Iznad liste su dugmad: Svi, Omiljeni, Brzi (DC ≥ 50 kW), AC, CHAdeMO, Besplatn
 
 „Potvrđeni“ i „Imam Teslu“ su prekidači i rade uz bilo koji filter, na primer Brzi i Potvrđeni zajedno. Izbor „Imam Teslu“ pregledač pamti i za sledeću posetu.
 
-Iznad liste piše koliko punjača odgovara izboru, na primer „Prikazano 45 od 240“. Ako piše „Nema punjača za ovaj izbor.“, izaberite „Svi“ ili isključite „Potvrđeni“.
+Iznad liste piše koliko punjača odgovara izboru i koliko ih je na mapi ukupno („Prikazano … od …“). Ako piše „Nema punjača za ovaj izbor.“, izaberite „Svi“ ili isključite „Potvrđeni“.
 
 [[shot:mapa-filteri-mobilni | Vrh mape na telefonu: pretraga i čipovi iznad liste, uključen „Brzi (DC ≥ 50 kW)“]]
 

@@ -422,8 +422,8 @@ Inputs in `content/mapa/mreze/` (dates in `izvori.json`, change them when a list
 of one site, adds official sites the open data lacks (ids `cg-…`, `rm-…`, `te-…`; state-charger roaming
 records are never added — they come from `putevi-srbije.json`), and writes two files: `punjaci.json`
 (ODbL, open data + `v` flags) and `mreze.json` (the networks' connectors/names for matched stations and the
-added stations; not open data). The browser joins them. The build's counts (240 stations, "Potvrđeno: 176")
-come from the joined list.
+added stations; not open data). The browser joins them. The build's counts (239 stations, "Potvrđeno: 179"
+on 28.09.2026) come from the joined list.
 
 Refresh (browser): open client.chargego.rs, read the element with `data-locations` (Charge&GO) and the
 response of the roaming POST `api/public/locations/locations-update` (needs the page's csrf `_token`) into a
@@ -440,6 +440,21 @@ D1 database `blokvolt` (binding `DB`, schema `worker/schema.sql`). Endpoints: `G
 `GET /api/stanica/<id>`, `GET /api/foto/<id>.jpg[?v=t]`, `POST /api/stanica/<id>/prijava`,
 `POST /api/stanica/<id>/foto`, `POST /api/prijavi`, `POST /api/zahtev` (forms of /ispravka/ and /za-firme/),
 `GET /api/zdravlje`. Comments with links/contacts/rude words and every photo wait for moderation.
+
+- **Contact filter.** `CONTACTY` looks for e-mail addresses and phone-like digit runs after dates and times are
+  taken out (`DATEY`: 28.09.2026, 28. 9. 2026., 28/09, 2026-09-28, 15.30, 15h30), so "Punio sam 28.09.2026" is
+  published at once. Test cases in the 28.09.2026 commit; keep them passing when the regexes change.
+- **IP fingerprint.** `ipHash(request, env)` = the first 12 bytes of HMAC-SHA-256 of the IP with the day's random key
+  (one-row table `dk`, created by the worker on first use, overwritten on the first request of each UTC day). A plain
+  hash of the address is reversible by trying all IPv4 addresses; an old fingerprint without its key is not. The
+  privacy policy and /pravila-objavljivanja/ describe exactly this — change the texts if the scheme changes.
+- **Reports.** One report per item and fingerprint per day (`rl` key `rx:<c|f>:<id>:<fp>`), so "three visitors"
+  in the rules is three different visitors. A comment is hidden for review at 3, a photo at 2. Approving an item in
+  moderation resets its `rep` to 0; rejecting keeps it.
+- **Errors shown to drivers** (`map.js` `errText`): 429 `too fast` → "Sačekajte nekoliko sekundi…", `queue full`
+  → "Za ovaj punjač već mnogo fotografija čeka proveru…", `limit` → "Previše prijava za danas…", a failed upload
+  → "Slanje nije uspelo…", a picture the browser cannot open → "Ova slika ne može da se pošalje…". When `/api` does
+  not answer, the card says "Prijave vozača sada ne mogu da se učitaju" instead of "Još nema prijava".
 
 Moderation: `/admin/` (noindex) works only after the **owner** sets the secret `ADMIN_KEY` (≥16 characters)
 in Cloudflare Pages → Settings → Variables and Secrets (Production) and redeploys; never type the key

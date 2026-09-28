@@ -49,4 +49,6 @@ Prijava ne menja oznaku „Potvrđeno“ ni boju tačke na mapi ([šta znači �
 
 - „Slanje nije uspelo. Pokušajte ponovo.“ Proverite vezu i pošaljite ponovo; bez interneta prijava ne može da se pošalje.
 - „Previše prijava za danas. Pokušajte sutra.“ Broj prijava sa jedne veze dnevno je ograničen, radi zaštite od zloupotrebe.
+- „Sačekajte nekoliko sekundi pa pošaljite ponovo.“ Prijava je poslata odmah posle otvaranja kartice; pošaljite je ponovo za koji trenutak.
+- „Prijave vozača sada ne mogu da se učitaju.“ Veza sa sajtom je prekinuta ili sajt trenutno ne odgovara; prijave se vide kad se veza vrati.
 - Punjač nije na mapi ili stoji na pogrešnom mestu: [dodajte ga ili pošaljite ispravku](/pomoc/dodajte-punjac/).

@@ -50,8 +50,9 @@ Objavljena fotografija stoji u kartici kao sličica, a dodir je otvara preko cel
 
 ## Ako ne pomogne
 
-- „Ova slika ne može da se pošalje. Probajte JPEG.“ Pregledač ne može da otvori taj format, na primer HEIC fotografiju sa iPhone-a na računaru. Sačuvajte je kao JPEG ili je pošaljite sa telefona. Ista poruka se pojavljuje i kad nema interneta, pa proverite i vezu.
-- „Previše prijava za danas. Pokušajte sutra.“ Broj fotografija dnevno je ograničen, kao i broj fotografija koje za jedan punjač čekaju proveru.
+- „Ova slika ne može da se pošalje. Probajte JPEG.“ Pregledač ne može da otvori taj format, na primer HEIC fotografiju sa iPhone-a na računaru. Sačuvajte je kao JPEG ili je pošaljite sa telefona.
+- „Previše prijava za danas. Pokušajte sutra.“ Broj fotografija sa jedne veze dnevno je ograničen.
+- „Za ovaj punjač već mnogo fotografija čeka proveru.“ Pokušajte ponovo za nekoliko dana, kad provera prođe.
 - „Slanje nije uspelo. Pokušajte ponovo.“ Proverite vezu i pošaljite ponovo.
 
 Za brisanje svoje fotografije pišite na hello@blokvolt.com ([kako](/pomoc/brisanje-komentara-i-fotografije/)).

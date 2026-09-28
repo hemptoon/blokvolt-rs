@@ -6,6 +6,7 @@ description: U App Store-u BlokVolta još nema, ali sajt radi kao aplikacija: u 
 lead: Otvorite www.blokvolt.rs u Safariju, pritisnite „Podeli“ i izaberite „Dodaj na početni ekran“. Na računaru BlokVolt se instalira iz Chrome-a ili Edge-a.
 kicker: Pomoć
 section: aplikacija
+scope: web
 order: 2
 path: /pomoc/iphone-i-racunar/
 updated: 28.09.2026

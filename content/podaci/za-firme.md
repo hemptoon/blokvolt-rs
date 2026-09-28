@@ -3,7 +3,7 @@ title: Za firme i mreže — ažurirajte podatke o svojoj firmi
 h1: Za firme i mreže
 description: Predstavljate firmu za ugradnju punjača ili mrežu javnog punjenja? Ispravite i dopunite podatke na BlokVoltu besplatno: cene, uslovi, lokacije, logo. Redosled se ne plaća.
 kicker: O sajtu · za firme
-lead: Podatke o firmama i mrežama prikupljamo iz javnih izvora. Ako predstavljate firmu, možete da ih ispravite i dopunite — besplatno.
+lead: Podaci o firmama i mrežama su iz javnih izvora. Ako predstavljate firmu, možete da ih ispravite i dopunite — besplatno.
 updated: 24.09.2026
 path: /za-firme/
 published: 2026-09-24
@@ -12,8 +12,8 @@ priority: 0.5
 ---
 <div class="sum" markdown="1">
 - Upis, ispravka i dopuna su **besplatni**; redosled i ocene se **ne kupuju**
-- Podatke koje pošalje firma označavamo sa **„prema podacima firme“** i datumom
-- Proveravamo da poruka zaista dolazi od firme, obično u roku od **nekoliko dana**
+- Podaci koje pošalje firma nose oznaku **„prema podacima firme“** i datum
+- Pre objave se proverava da poruka zaista dolazi od firme, obično u roku od **nekoliko dana**
 </div>
 
 ## Šta možete da pošaljete
@@ -24,11 +24,11 @@ priority: 0.5
 - **Logo:** SVG ili PNG u dobroj rezoluciji.
 - **Novu firmu** u registru ili **uklanjanje** unosa — bez objašnjenja.
 
-## Kako objavljujemo
+## Kako se podaci objavljuju
 
-Poruku proveravamo odgovorom na e-adresu na domenu firme ili pozivom na broj sa sajta firme. Posle toga podatak objavljujemo sa oznakom „prema podacima firme“ i datumom. Cenu bez javnog cenovnika prikazujemo tek kad je firma potvrdi pisano. Svaka izmena ide u [dnevnik izmena](/izmene/).
+Poruka se proverava odgovorom na e-adresu na domenu firme ili pozivom na broj sa sajta firme. Posle toga podatak se objavljuje sa oznakom „prema podacima firme“ i datumom. Cena bez javnog cenovnika prikazuje se tek kad je firma potvrdi pisano. Svaka izmena ide u [dnevnik izmena](/izmene/).
 
-Ne objavljujemo reklamne tekstove i ne menjamo način poređenja za jednu firmu. Prijave i ocene vozača na mapi ne brišemo na zahtev firme, osim kada krše [pravila](/pravila-objavljivanja/); firma može da pošalje svoje objašnjenje.
+Reklamni tekstovi se ne objavljuju, a način poređenja se ne menja zbog jedne firme. Prijave i ocene vozača na mapi ne brišu se na zahtev firme, osim kada krše [pravila](/pravila-objavljivanja/); firma može da pošalje svoje objašnjenje.
 
 ## Pošaljite podatke
 
@@ -54,7 +54,7 @@ Ne objavljujemo reklamne tekstove i ne menjamo način poređenja za jednu firmu.
 <label class="ckb1"><input type="checkbox" name="potvrda" value="da" required> <span>Predstavljam ovu firmu i imam pravo da pošaljem ove podatke.</span></label>
 <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
 <p class="bform-act"><button class="btn dark" type="submit">Pošalji</button></p>
-<p class="f-msg f-ok" role="status" hidden>Hvala! Poruka je primljena. Javićemo se sa hello@blokvolt.com radi provere.</p>
+<p class="f-msg f-ok" role="status" hidden>Hvala! Poruka je primljena. Za proveru stiže poruka sa hello@blokvolt.com.</p>
 <p class="f-msg f-need" role="alert" hidden>Popunite polja naziv, podaci, ime, e-mail i potvrdu.</p>
 <p class="f-msg f-err" role="alert" hidden>Slanje nije uspelo. Pokušajte ponovo ili pišite na hello@blokvolt.com.</p>
 <p class="f-msg f-limit" role="alert" hidden>Previše poruka danas. Pišite na hello@blokvolt.com.</p>

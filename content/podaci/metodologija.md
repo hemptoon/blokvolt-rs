@@ -1,13 +1,13 @@
 ---
 title: Metodologija — izvori podataka, provere i ispravke
-h1: Kako radimo
+h1: Metodologija
 description: Odakle su podaci o firmama, cenama javnog punjenja i vestima, koliko često se proveravaju, šta znači „Ne pominje se“ i kako se prijavljuje greška.
 kicker: O sajtu · metodologija
 lead: Podaci o firmama su sa njihovih javnih stranica, po istim pravilima za sve.
-updated: 25.09.2026
+updated: 28.09.2026
 path: /metodologija/
 published: 2026-09-22
-modified: 2026-09-25
+modified: 2026-09-28
 priority: 0.5
 disclaimer: Primedbe na pravila prijavite na
 ---
@@ -49,8 +49,8 @@ Mreže ne objavljuju cenovnike na svojim sajtovima, pa se cena vidi tek u aplika
 
 - Cena iz aplikacije se beleži snimkom ekrana sa datumom. Uz svaku cenu stoje izvor i oznaka: „primarni izvor (aplikacija)“, „primarni izvor (račun)“, „medij“ ili „korisnički podatak“.
 - Preračun cene po minutu u cenu po kWh je računica sajta, uz navedenu pretpostavku o prosečnoj snazi punjenja.
-- Podaci o punjačima na mapi su iz otvorenih baza Open Charge Map (CC BY 4.0) i OpenStreetMap (ODbL).
-- Snimak ekrana cene, sa datumom i lokacijom, može se poslati preko stranice za ispravke.
+- Lokacije punjača na mapi su iz otvorenih baza Open Charge Map (CC BY 4.0) i OpenStreetMap (ODbL), dopunjene spiskovima koje mreže same objavljuju. Svaka tačka je proverena na tim spiskovima, na Google mapama ili na sajtu vlasnika lokacije; pravilo je u [pomoći](/pomoc/sta-znaci-potvrdjeno/).
+- Snimak ekrana cene, sa datumom i lokacijom, pošaljite na hello@blokvolt.com: forma za ispravke prima samo tekst i link.
 
 </details>
 

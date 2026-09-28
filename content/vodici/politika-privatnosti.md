@@ -14,7 +14,7 @@ path: /politika-privatnosti.html
 ---
 <div class="sum" markdown="1">
 - Lični podaci stižu do sajta samo ako ih **sami upišete** — u formu, prijavu sa mape ili e-mail na **hello@blokvolt.com**
-- IP adresu vide **Cloudflare** i, na mapi punjača, **OpenFreeMap**; mi čuvamo samo njen **jednosmerni otisak** koji se menja svakog dana
+- IP adresu vide **Cloudflare** i, na mapi punjača, **OpenFreeMap**; sajt čuva samo njen **jednosmerni otisak** koji se menja svakog dana
 - Lokacija za „Blizu mene“ **ne šalje se** sajtu, a video sa YouTube-a se učitava **tek kad ga pokrenete**
 - Posete se broje **bez kolačića**, a omiljeni punjači ostaju **samo u vašem pregledaču**<!--consent-->; kolačić za analitiku postavlja se **samo uz vašu dozvolu**<!--/consent-->
 </div>
@@ -23,7 +23,7 @@ Rukovalac podacima: [PRAVNI-PODACI: poslovno ime, sedište, MB, PIB]. Kontakt: h
 
 ## Koji podaci se obrađuju
 
-Ako pišete e-mailom ili kroz formu za ispravke i firme, sajt dobija ono što upišete: poruku, ime i e-adresu ako ih navedete, a za firme i telefon. Ako na kartici punjača pošaljete prijavu, ocenu, komentar ili fotografiju, čuvamo njih, nadimak ako ga navedete i vreme. Uz svaku poruku i prijavu čuvamo i jednosmerni otisak IP adrese koji se menja svakog dana: služi samo za zaštitu od zloupotrebe, a iz njega se adresa ne može vratiti. Fotografiju pregledač pre slanja smanji i ponovo sačuva, bez podataka o lokaciji i uređaju (EXIF).
+Ako pišete e-mailom ili kroz formu za ispravke i firme, sajt dobija ono što upišete: poruku, ime i e-adresu ako ih navedete, a za firme i telefon. Ako na kartici punjača pošaljete prijavu, ocenu, komentar ili fotografiju, sajt čuva njih, nadimak ako ga navedete i vreme. Uz svaku poruku i prijavu čuva se i jednosmerni otisak IP adrese: služi samo za zaštitu od zloupotrebe. Pravi se sa nasumičnim ključem koji važi samo jedan dan, pa se posle toga iz otiska adresa ne može vratiti. Fotografiju pregledač pre slanja smanji i ponovo sačuva, bez podataka o lokaciji i uređaju (EXIF).
 
 Pri svakoj poseti provajder sajta (Cloudflare) obrađuje tehničke podatke: IP adresu, vreme zahteva, tip uređaja i pregledača. Fontovi i sav ostali sadržaj učitavaju se sa istog domena, osim podloge mape i skripti za merenje poseta.
 
@@ -58,6 +58,10 @@ Ako u baneru dozvolite kolačić, PostHog od sledeće stranice čuva nasumični 
 
 Punjač koji na mapi sačuvate u omiljene i izbor „Imam Teslu“ upisuju se samo u vaš pregledač (localStorage). Ne šalju se sajtu i nestaju kad obrišete podatke sajta u pregledaču.
 
+## Rad bez interneta
+
+Da bi sajt radio i bez veze, pregledač čuva kopije poslednjih 40 otvorenih stranica sajta i delova koje one koriste (stilovi, skripte, podaci mape, najviše 150 fajlova). Kopije ostaju na uređaju, ne šalju se nikome i nestaju kad obrišete podatke sajta u pregledaču.
+
 ## Mapa punjača
 
 Na stranici „Mapa punjača“ podloga mape učitava se sa servera OpenFreeMap (tiles.openfreemap.org), pa ti serveri vide vašu IP adresu. Podaci o punjačima su iz Open Charge Map (CC BY 4.0) i OpenStreetMap (ODbL), dopunjeni spiskovima koje mreže same objavljuju. Pravila za prijave, ocene i fotografije su na stranici [Pravila za prijave i fotografije](/pravila-objavljivanja/).
@@ -86,7 +90,7 @@ Sajt vodi [PRAVNI-PODACI]. Korišćenjem sajta prihvatate ove uslove.
 <summary>Detalji: ispravke, sadržaj, odgovornost, izmene</summary>
 
 - Netačan ili zastareo podatak o firmi prijavite kroz [formu za ispravke](/ispravka/) ili na hello@blokvolt.com. Greška se ispravlja u roku od nekoliko dana.
-- Objavom prijave, komentara ili fotografije na mapi dajete BlokVoltu neisključivu, besplatnu dozvolu da ih prikazuje na sajtu; autorska prava ostaju vaša. Sadržaj koji krši [pravila](/pravila-objavljivanja/) uklanjamo.
+- Objavom prijave, komentara ili fotografije na mapi dajete BlokVoltu neisključivu, besplatnu dozvolu da ih prikazuje na sajtu; autorska prava ostaju vaša. Sadržaj koji krši [pravila](/pravila-objavljivanja/) se uklanja.
 - Tekstovi, tabele i znak BlokVolt su zaštićeni. Citiranje uz link je dozvoljeno, a kopiranje u komercijalne svrhe bez pisane saglasnosti nije. Izuzetak su [podaci za preuzimanje](/preuzimanje/), pod licencom CC BY 4.0.
 - Sajt je dostupan „takav kakav jeste“. Vlasnik sajta ne odgovara za štetu zbog privremene nedostupnosti sajta, promene cena kod firmi ili sadržaja spoljnih linkova.
 - Važeća verzija je uvek na ovoj stranici. Prva verzija važi od 21.09.2026, dopuna o mapi punjača od 23.09.2026, dopuna o formama, prijavama sa mape i videu od 24.09.2026, dopuna o merenju poseta i omiljenim punjačima od 25.09.2026, a dopuna o izboru „Imam Teslu“ od 28.09.2026.

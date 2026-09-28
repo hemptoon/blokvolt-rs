@@ -21,6 +21,8 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 - Na mapu su vraćena dva besplatna punjača IKEA u Beogradu. Za IKEA, Teslu, Lidl i garažu Obilićev venac dodato je radno vreme i način pristupa; za 24 punjača adresa sa kućnim brojem sa spiska mreže.
 - Nova stranica [Aplikacije i kartice za punjenje](/javno-punjenje/aplikacije-i-kartice/): koja aplikacija i RFID kartica rade na kom punjaču. [Besplatni punjači](/javno-punjenje/besplatni-punjaci/) dopunjeni su za IKEA i Teslu.
 - U podnožju sajta su dva dugmeta za aplikaciju: Android (APK) i web-aplikacija za iPhone i računar.
+- [Pravila za prijave](/pravila-objavljivanja/) i [politika privatnosti](/politika-privatnosti.html): otisak IP adrese pravi se sa nasumičnim ključem koji važi jedan dan, pa se posle toga iz njega adresa ne može vratiti. Komentar se sklanja do provere tek kad ga prijave tri različita posetioca. Politika opisuje i kopije stranica koje pregledač čuva za rad bez interneta.
+- [Mapa](/mapa/): jasnije poruke kad slanje prijave ili fotografije ne uspe i kad prijave vozača ne mogu da se učitaju; uz proveru punjača je link „Šta znači oznaka?“. Sa mape je sklonjen jedan zapis iz Open Charge Map-a iz 2017. koji nosi ime osobe na stambenoj adresi i nije potvrđen: verovatno privatni punjač.
 
 ## 26. septembar 2026
 

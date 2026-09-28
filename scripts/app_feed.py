@@ -10,6 +10,7 @@ build.py calls build(DIST) at the very end, after the /en/ and /ru/ pages exist.
   dist/assets/app/v1/<lang>/networks.json   public charging networks (/javno-punjenje/<network>/)
   dist/assets/app/v1/<lang>/firms.json      the firm register (/firme/<firm>/): same fields for every firm
   dist/assets/app/v1/<lang>/pages.json      reference pages: public charging, method, about, rules, privacy
+  dist/assets/app/v1/<lang>/help.json       the help center (/pomoc/): sections, most asked, articles, contact box
   dist/assets/app/v1/data.json              numbers for the native calculators and lists (language-neutral)
 
 Everything under /assets is served with a one-year immutable cache, so the manifest lists every file with ?v=<hash>
@@ -18,7 +19,7 @@ so the apps show exactly what the site shows, translations included. A page is c
 
   h2 · h3 · p · ul · ol · summary (the grey box of key points) · img · table · details (collapsed, with blocks)
   quote · callout (the "Izdvojeno" line) · video (YouTube id) · facts (label/value tiles) · links (rows and tiles)
-  doc (a sample document) · note
+  doc (a sample document) · note · flow (a small diagram of boxes in rows) · connectors (plug types by code)
 
 Inline text is limited Markdown the apps can render directly: **bold**, *italic*, [text](absolute URL), `code`,
 and a line break as "\\n". Links stay absolute (https://www.blokvolt.rs/…); the apps open the ones they know
@@ -249,6 +250,46 @@ def prices_block(el, page_url):
     return {'t': 'prices', 'items': items} if items else None
 
 
+def flow_block(el, page_url):
+    """A small diagram of the help pages (div.flow): a title, an optional formula, rows of boxes read top to bottom
+    (an arrow between rows, boxes of one row side by side) and a note. A box's tone is ok, warn, no or absent."""
+    rows = []
+    for r in el.select('.fl-row'):
+        boxes = []
+        for x in r.select('.fl-b'):
+            t, s = x.find('b', recursive=False), x.find('span', recursive=False)
+            it = {'title': md(t, page_url) if t is not None else '', 'md': md(s, page_url) if s is not None else ''}
+            tone = [c for c in (x.get('class') or []) if c in ('ok', 'warn', 'no')]
+            if tone:
+                it['tone'] = tone[0]
+            boxes.append(it)
+        if boxes:
+            rows.append(boxes)
+    if not rows:
+        return None
+    b = {'t': 'flow', 'rows': rows}
+    for key, sel in (('title', '.fl-h'), ('formula', '.fl-f'), ('note', '.fl-note')):
+        x = el.select_one(sel)
+        if x is not None and _text(x):
+            b[key] = _text(x) if key != 'note' else md(x, page_url)
+    return b
+
+
+CONNECTORS = {'type 2': 'type2', 'ccs2': 'ccs2', 'ccs': 'ccs2', 'chademo': 'chademo', 'tesla': 'tesla', 'nacs': 'tesla',
+              'šuko': 'schuko', 'schuko': 'schuko', 'шуко': 'schuko'}
+
+
+def connectors_block(el):
+    """The plug pictures of the help pages (div.conns): a stable code the apps draw their own glyph for (type2, ccs2,
+    chademo, tesla, schuko), the name as printed and one line of text."""
+    items = []
+    for c in el.select('.conn'):
+        name, text = _text(c.find('b')), _text(c.find('span'))
+        if name:
+            items.append({'code': CONNECTORS.get(name.lower(), re.sub(r'[^a-z0-9]', '', name.lower())), 'name': name, 'text': text})
+    return {'t': 'connectors', 'items': items} if items else None
+
+
 def dl_block(el, page_url):
     items, term = [], None
     for ch in el.children:
@@ -343,6 +384,12 @@ class Page:
                 wrap.append(c.__copy__() if isinstance(c, Tag) else NavigableString(str(c)))
             return {'t': 'details', 'summary': _text(summ), 'blocks': self.blocks(wrap)}
         if name == 'div':
+            if 'flow' in cls:
+                return flow_block(el, self.url)
+            if 'conns' in cls:
+                return connectors_block(el)
+            if 'help-more' in cls:
+                return None  # the "Sva pitanja" button under a help article: the app has its own way back
             if 'sum' in cls:
                 ul = el.find(['ul', 'ol'])
                 items = list_items(ul, self.url) if ul is not None else []
@@ -372,6 +419,8 @@ class Page:
                 return links_block(el, self.url)
             return self.blocks(el)
         if name == 'section':
+            if 'helpful' in cls:
+                return None  # "Da li vam je ovo pomoglo?": the apps draw it natively and send the vote themselves
             return self.section(el) if 'sec' in cls else self.blocks(el)
         if name in ('form', 'nav', 'aside', 'input', 'select', 'label', 'canvas', 'iframe', 'button', 'hr'):
             return None
@@ -583,6 +632,46 @@ def pages(dist, lang):
     return {'items': out}
 
 
+def help_center(dist, lang):
+    """The help center (/pomoc/): the hub's sections in order (key, title, text, icon name, article paths), the most asked
+    questions, every article as a document (kind 'help'; blocks like a guide, with the "Povezana pitanja" links), the
+    contact box of the hub and webOnly: the articles about the website's own app and cookies (front matter scope: web),
+    which the native apps do not show. "Da li vam je ovo pomoglo?" is not in the blocks: the apps draw it and send the vote to
+    /api/zahtev with kind 'pomoc' and slug = the article's voteSlug (docs/RUNBOOK.md 3.24)."""
+    soup, url = parse('/pomoc/', lang, dist)
+    if soup is None:
+        return None
+    pg = Page(soup, url)
+    sections, top, contact = [], [], []
+    for sec in soup.select('main .sec'):
+        box = sec.select_one('.help-contact')
+        if box is not None:
+            contact = pg.blocks(box)
+            continue
+        paths = [re.sub(r'^/(en|ru)(?=/)', '', a.get('href') or '') for a in sec.select('a.row, a.tile')]
+        if sec.select_one('.help-top') is not None:
+            top = paths
+        elif sec.get('id'):
+            sections.append({'key': sec.get('id'), 'title': _text(sec.select_one('.sec-head h2')),
+                             'text': _text(sec.select_one('.sec-head p')), 'icon': sec.get('data-icon') or '', 'items': paths})
+    # articles about the website's own app (PWA, APK) and the site's cookies: the native apps leave them out
+    web = sorted({re.sub(r'^/(en|ru)(?=/)', '', a.get('href') or '') for a in soup.select('main a[data-scope="web"]')})
+    items = []
+    for s in sections:
+        for i, p in enumerate(s['items']):
+            d = page_doc(p, lang, dist, 'help')
+            if d is None:
+                continue
+            d.update({'path': p, 'section': s['key'], 'order': i + 1, 'voteSlug': ('' if lang == 'sr' else '/' + lang) + p})
+            if p in web:
+                d['scope'] = 'web'
+            items.append(d)
+    ph = soup.select_one('main .ph')
+    lead = ph.select_one('p.lead') if ph is not None else None
+    return {'title': _text(ph.find('h1')) if ph is not None else 'Pomoć', 'lead': md(lead, url) if lead is not None else '',
+            'url': url, 'sections': sections, 'top': top, 'items': items, 'contact': contact, 'webOnly': web}
+
+
 def data_json():
     data = ROOT / 'content' / 'data'
     load = lambda n: json.loads((data / n).read_text(encoding='utf-8'))
@@ -612,6 +701,9 @@ def build(dist, strict=False):
     for lang in LANGS:
         colls = {'guides': guides(dist, lang, guide_paths), 'news': news(dist, lang), 'networks': networks(dist, lang),
                  'firms': firms(dist, lang), 'pages': pages(dist, lang)}
+        hc = help_center(dist, lang)
+        if hc is not None:
+            colls['help'] = hc
         for kind, obj in colls.items():
             for d in obj.get('items', []):
                 if '_unknown' in d:
@@ -632,12 +724,13 @@ def build(dist, strict=False):
                 'files': files, 'counts': counts,
                 'api': {'stations': '/api/stanice', 'station': '/api/stanica/{id}', 'checkin': '/api/stanica/{id}/prijava',
                         'photo': '/api/stanica/{id}/foto', 'photoFile': '/api/foto/{photo}.jpg', 'report': '/api/prijavi',
-                        'request': '/api/zahtev'},
+                        'request': '/api/zahtev', 'helpful': '/api/zahtev'},
                 'links': {'privacy': SITE + '/politika-privatnosti', 'rules': SITE + '/pravila-objavljivanja/',
-                          'correction': SITE + '/ispravka/', 'contact': 'mailto:hello@blokvolt.com'}}
+                          'correction': SITE + '/ispravka/', 'help': SITE + '/pomoc/', 'contact': 'mailto:hello@blokvolt.com'}}
     _write(dist / 'app' / 'v1' / 'manifest.json', manifest)
     msg = (f'app feed: {counts.get("guides", 0)} guides, {counts.get("news", 0)} news, {counts.get("networks", 0)} networks, '
-           f'{counts.get("firms", 0)} firms, {counts.get("pages", 0)} pages × {len(LANGS)} languages')
+           f'{counts.get("firms", 0)} firms, {counts.get("pages", 0)} pages, {counts.get("help", 0)} help articles '
+           f'× {len(LANGS)} languages')
     if unknown:
         msg += f'; {len(unknown)} pages with unmapped elements (as text): ' + ', '.join(f'{k} {v}' for k, v in list(unknown.items())[:6])
     print(msg)

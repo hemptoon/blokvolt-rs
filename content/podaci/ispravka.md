@@ -19,7 +19,7 @@ priority: 0.4
 <div class="field"><label for="f-sta">Šta ispravljate</label><select class="select" id="f-sta" name="sta"><option value="firma">Podatak o firmi</option><option value="mreza">Mreža javnog punjenja ili cena punjenja</option><option value="stanica">Punjač na mapi (ne postoji, ne radi, pogrešno mesto)</option><option value="novi-punjac">Punjač koji nedostaje na mapi</option><option value="tekst">Tekst ili vodič</option><option value="drugo">Drugo</option></select></div>
 <div class="field"><label for="f-gde">Stranica, firma ili punjač</label><input class="input" id="f-gde" name="gde" maxlength="300" placeholder="Link na stranicu ili naziv"></div>
 <div class="field"><label for="f-poruka">Šta nije tačno ili šta se promenilo</label><textarea class="input" id="f-poruka" name="poruka" rows="5" maxlength="3000" required></textarea></div>
-<div class="field"><label for="f-izvor">Izvor (link, nije obavezno)</label><input class="input" id="f-izvor" name="izvor" maxlength="500" placeholder="https://"><span class="hint">Podatak bez javnog izvora objavljujemo tek kad ga proverimo.</span></div>
+<div class="field"><label for="f-izvor">Izvor (link, nije obavezno)</label><input class="input" id="f-izvor" name="izvor" maxlength="500" placeholder="https://"><span class="hint">Podatak bez javnog izvora objavljuje se tek posle provere.</span></div>
 <div class="field"><label for="f-mail">E-mail za odgovor (nije obavezno)</label><input class="input" id="f-mail" name="email" type="email" maxlength="120" autocomplete="email"></div>
 <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
 <p class="bform-act"><button class="btn dark" type="submit">Pošalji ispravku</button></p>

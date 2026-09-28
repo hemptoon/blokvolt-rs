@@ -11,6 +11,9 @@ const cfg = JSON.parse(d.getElementById('map-cfg').textContent);
 const T = JSON.parse(d.getElementById('bv-i18n').textContent);
 const LANG = (d.documentElement.lang || 'sr').slice(0, 2);
 const LOC = LANG === 'sr' ? 'sr-Latn-RS' : LANG;
+// blokvolt.rs pages exist in /en/ and /ru/ too: its own links built here follow the page language
+const LP = LANG === 'en' || LANG === 'ru' ? '/' + LANG : '';
+const lp = u => (u && u.charAt(0) === '/' ? LP + u : u);
 const fold = s => (s || '').toLowerCase().replace(/đ/g, 'd').normalize('NFD').replace(/[̀-ͯ]/g, '');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 // notes from the price data and idle fees, translated on /en/ and /ru/ through the page's string table
@@ -77,7 +80,7 @@ let TESLA = false;
 try { TESLA = localStorage.getItem(TESLA_KEY) === '1'; } catch (e) { TESLA = false; }
 function saveTesla() { try { localStorage.setItem(TESLA_KEY, TESLA ? '1' : '0'); } catch (e) { /* private mode: this visit only */ } }
 
-let ST = [], NETS = {}, CI = {}, map, me = null, sel = null, city = null, opened = 0;
+let ST = [], NETS = {}, CI = {}, CI_STATE = 'loading', map, me = null, sel = null, city = null, opened = 0;
 const state = { q: '', f: 'all', ok: false, bounds: null, lim: 20 };
 let userMove = false;
 const $list = d.getElementById('mlist'), $count = d.getElementById('mcount'), $card = d.getElementById('mcard');
@@ -379,15 +382,17 @@ function copyLL(b) {
   if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok, () => prompt(T.copy, txt));
   else prompt(T.copy, txt);
 }
+// "What does the label mean?" → the help article (blokvolt.rs only: cfg.help)
+function vHelp() { return cfg.help && T.v_help ? ' · <a class="vf-help" href="' + esc(lp(cfg.help)) + '">' + esc(T.v_help) + '</a>' : ''; }
 function verHtml(s) {
   const v = s.v || { s: 'nep', g: 'g_none' };
   if (v.s === 'src') return '<p class="vf vf-src">' + ICON.info + '<span>' + esc(T.v_src) + '</span></p>';
   if (v.s === 'ok') {
     const by = (v.by || []).map(b => VBY()[b]).filter(Boolean).join('; ');
-    return '<p class="vf">' + ICON.ok + '<span><b>' + esc(T.v_ok) + '</b> ' + esc(by) + (v.d ? ' · ' + esc(v.d) : '') + '</span></p>';
+    return '<p class="vf">' + ICON.ok + '<span><b>' + esc(T.v_ok) + '</b> ' + esc(by) + (v.d ? ' · ' + esc(v.d) : '') + vHelp() + '</span></p>';
   }
   const why = v.s === 'prob' ? T.v_prob : (v.g === 'test' ? T.v_test : v.g === 'g_old' ? T.v_old : T.v_none);
-  return '<div class="vf-warn' + (v.s === 'prob' ? ' no' : '') + '"><b>' + ICON.warn + esc(v.s === 'prob' ? T.v_prob_t : T.v_nep) + '</b><p>' + esc(why) + '</p><small>' + esc(T.v_checked.replace('{d}', v.d || '')) + '</small></div>';
+  return '<div class="vf-warn' + (v.s === 'prob' ? ' no' : '') + '"><b>' + ICON.warn + esc(v.s === 'prob' ? T.v_prob_t : T.v_nep) + '</b><p>' + esc(why) + '</p><small>' + esc(T.v_checked.replace('{d}', v.d || '')) + vHelp() + '</small></div>';
 }
 function openCard(s, fly) {
   sel = s;
@@ -399,7 +404,7 @@ function openCard(s, fly) {
   const acc = s.acc === 'customers' ? '<div class="cbox"><span>' + esc(T.access) + '</span><div>' + esc(T.customers) + '</div></div>' : '';
   const navs = navLinks(s);
   const site = n && n.page ? n.page : (n && n.site ? n.site : '');
-  const fix = cfg.fix ? cfg.fix.replace('{id}', encodeURIComponent(s.id)) : '/ispravka/?stanica=' + encodeURIComponent(s.id);
+  const fix = cfg.fix ? cfg.fix.replace('{id}', encodeURIComponent(s.id)) : lp('/ispravka/?stanica=') + encodeURIComponent(s.id);
   const SRC = { ocm: 'Open Charge Map', osm: 'OpenStreetMap', ps: 'JP Putevi Srbije', cg: 'Charge&GO', rm: T.src_rm, te: 'Tesla' };
   const srcs = s.src.filter(x => x.u).map(x => '<a href="' + esc(x.u) + '" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(x.upd) + ')' : '')).join(' · ');
   $card.innerHTML = '<div class="ccard" role="dialog" aria-label="' + esc(title(s)) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
@@ -491,6 +496,9 @@ function starBar(r) {
 }
 function rvSum(s) {
   const c = CI[s.id];
+  // no data yet: say nothing while loading, and do not claim "no reports" when the reports could not be loaded
+  if (!c && CI_STATE === 'loading') return '<p class="rv-empty"></p>';
+  if (!c && CI_STATE === 'off') return '<p class="rv-empty">' + esc(T.rv_off || T.rv_empty) + '</p>';
   if (!c || !c.n) return '<p class="rv-empty">' + esc(T.rv_empty) + '</p>';
   return '<div class="rv-sum">' + (c.a ? '<b>' + fmt(c.a, 1) + '</b>' + starBar(c.a) + '<span>' + esc(T.ratings.replace('{n}', c.nr)) + '</span>' : '') +
     (c.s ? '<span class="rv-last ' + esc(c.s) + '">' + esc(T.last_report) + ': <b>' + esc(ST_LABEL[c.s] || c.s) + '</b>, ' + esc(ago(c.t)) + '</span>' : '') + '</div>';
@@ -506,7 +514,7 @@ function rvHtml(s) {
     '<label class="sr-only" for="rv-n">' + esc(T.rv_name) + '</label><input class="input" id="rv-n" maxlength="40" autocomplete="nickname" placeholder="' + esc(T.rv_name) + '">' +
     '<input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">' +
     '<div class="rv-row"><button class="btn dark sm" type="submit">' + esc(T.rv_send) + '</button><button class="btn sm" type="button" data-cancel>' + esc(T.rv_cancel) + '</button></div>' +
-    '<small>' + esc(T.rv_rules) + ' <a href="/pravila-objavljivanja/">' + esc(T.rv_rules_link) + '</a></small></form>' +
+    '<small>' + esc(T.rv_rules) + ' <a href="' + esc(lp('/pravila-objavljivanja/')) + '">' + esc(T.rv_rules_link) + '</a></small></form>' +
     '<p class="rv-msg" role="status" aria-live="polite"></p><div class="rv-list"></div>' +
     '<div class="rv-ph"><div class="rv-thumbs"></div><label class="btn sm rv-add">' + ICON.cam + '<span>' + esc(T.add_photo) + '</span>' +
     '<input type="file" accept="image/*" hidden></label><small class="rv-phnote">' + esc(T.photo_note) + '</small></div></div>';
@@ -519,19 +527,28 @@ function rvItems(j) {
     (it.c ? '<button class="lnkbtn rv-rep" type="button" data-rep="' + it.id + '">' + esc(T.report_abuse) + '</button>' : '') + '</li>').join('') + '</ul>';
 }
 function rvLoad(s, box) {
+  // the reports could not be loaded (offline, server error): say so instead of "no reports yet"
+  const off = () => { if (sel === s && box.isConnected && !(CI[s.id] && CI[s.id].n)) box.querySelector('.rv-top').innerHTML = '<p class="rv-empty">' + esc(T.rv_off || T.rv_empty) + '</p>'; };
   fetch(cfg.api + '/stanica/' + encodeURIComponent(s.id)).then(r => r.ok ? r.json() : null).then(j => {
-    if (!j || !j.ok || sel !== s) return;
+    if (sel !== s) return;
+    if (!j || !j.ok) { off(); return; }
     CI[s.id] = { a: j.avg, nr: j.nr, n: j.n, s: j.items[0] && j.items[0].s, t: j.items[0] && j.items[0].at, f: j.photos.length };
     box.querySelector('.rv-top').innerHTML = rvSum(s);
     box.querySelector('.rv-list').innerHTML = rvItems(j);
     box.querySelector('.rv-thumbs').innerHTML = j.photos.map(p => '<button class="rv-th" type="button" data-full="' + cfg.api + '/foto/' + p.id + '.jpg"><img src="' + cfg.api + '/foto/' + p.id + '.jpg?v=t" alt="' + esc(p.cap || T.photo_alt) + '" loading="lazy" width="96" height="72"></button>').join('');
-  }).catch(() => {});
+  }).catch(off);
 }
 function post(url, body, isForm) {
   return fetch(url, isForm ? { method: 'POST', body } : { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
     .then(r => r.json().catch(() => ({ ok: false })).then(j => (j.status = r.status, j)));
 }
-function errText(j) { return j.status === 429 ? T.rv_limit : T.rv_err; }
+// 429 means three different things; each gets its own words
+function errText(j) {
+  if (j.status !== 429) return T.rv_err;
+  if (j.error === 'too fast') return T.rv_fast || T.rv_err;
+  if (j.error === 'queue full') return T.photo_queue || T.rv_limit;
+  return T.rv_limit;
+}
 function rvBind(s) {
   const box = $card.querySelector('.rv');
   if (!box) return;
@@ -583,13 +600,16 @@ function rvBind(s) {
     if (!f) return;
     const note = box.querySelector('.rv-phnote');
     note.textContent = T.photo_wait;
-    shrink(f).then(p => {
+    // a picture the browser cannot open (e.g. HEIC on a computer) and a failed upload are different problems
+    shrink(f).catch(() => null).then(p => {
+      if (!p) { note.textContent = T.photo_bad; return; }
       const fd = new FormData();
       fd.append('foto', p.big, 'foto.jpg');
       fd.append('thumb', p.th, 'thumb.jpg');
       fd.append('w', p.w); fd.append('h', p.h); fd.append('t', Date.now() - opened); fd.append('hp', '');
-      return post(cfg.api + '/stanica/' + encodeURIComponent(s.id) + '/foto', fd, true);
-    }).then(j => { note.textContent = j.ok ? T.photo_thanks : errText(j); if (j.ok) track('photo_sent', { station: s.id, network: s.net || '' }); }).catch(() => { note.textContent = T.photo_bad; });
+      return post(cfg.api + '/stanica/' + encodeURIComponent(s.id) + '/foto', fd, true)
+        .then(j => { note.textContent = j.ok ? T.photo_thanks : errText(j); if (j.ok) track('photo_sent', { station: s.id, network: s.net || '' }); });
+    }).catch(() => { note.textContent = T.rv_err; });
   });
   rvLoad(s, box);
 }
@@ -638,11 +658,19 @@ function lightbox(src, alt) {
 }
 function loadSummaries() {
   if (!cfg.api) return;
+  const off = () => {
+    CI_STATE = 'off';
+    const top = sel && $card.querySelector('.rv-top');
+    if (top && !CI[sel.id]) top.innerHTML = rvSum(sel);
+  };
   fetch(cfg.api + '/stanice').then(r => r.ok ? r.json() : null).then(j => {
-    if (!j || !j.ok) return;
-    CI = j.st || {};
+    if (!j || !j.ok) { off(); return; }
+    CI = Object.assign(j.st || {}, CI);
+    CI_STATE = 'ok';
     renderList();
-  }).catch(() => {});
+    const top = sel && $card.querySelector('.rv-top');
+    if (top) top.innerHTML = rvSum(sel);
+  }).catch(off);
 }
 
 // ---------- map ----------

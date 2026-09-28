@@ -6,6 +6,7 @@ description: BlokVolt nema naloge ni kolačiće za praćenje. „Blizu mene“ k
 lead: Sajt nema naloge, oglasne piksele ni kolačiće za praćenje. Lokacija se koristi samo kad pritisnete „Blizu mene“ i ne šalje se sajtu.
 kicker: Pomoć
 section: aplikacija
+scope: web
 order: 4
 path: /pomoc/privatnost/
 updated: 28.09.2026

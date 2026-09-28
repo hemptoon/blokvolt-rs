@@ -6,6 +6,7 @@ description: Kako se ažurira aplikacija BlokVolt i šta da uradite kad Android 
 lead: Cene, mapa i vesti ažuriraju se same, zajedno sa sajtom. Nova verzija APK fajla retko treba; kad je bude, pojaviće se na stranici Aplikacija i instalira se preko postojeće.
 kicker: Pomoć
 section: aplikacija
+scope: web
 order: 3
 path: /pomoc/azuriranja-i-instalacija/
 updated: 28.09.2026
