@@ -37,6 +37,8 @@ priority: 0.4
 
 Umesto forme možete pisati i na **hello@blokvolt.com**. Za punjač na mapi najbrže je da na kartici punjača javite da li radi — ta prijava se vidi odmah.
 
+Kome da se javite za šta i kada stiže odgovor, piše u [pomoći](/pomoc/kontakt/).
+
 ## Nova firma ili uklanjanje
 
 Za upis u registar pošaljite naziv, sajt i grad firme. Pravila su ista za sve. Firma može da traži uklanjanje svog unosa bez objašnjenja.

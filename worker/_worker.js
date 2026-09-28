@@ -5,7 +5,7 @@
 
 const JSON_HEADERS = { 'content-type': 'application/json; charset=utf-8' };
 const STATUSES = new Set(['ok', 'problem', 'broken', 'missing']);
-const KINDS = new Set(['firma', 'mreza', 'ispravka', 'stanica']);
+const KINDS = new Set(['firma', 'mreza', 'ispravka', 'stanica', 'pomoc']);
 const MAX_IMG = 950 * 1024, MAX_TH = 90 * 1024;
 const LINKY = /(https?:\/\/|www\.|\b[a-z0-9-]+\.(com|rs|net|org|info|me|io)\b)/i;
 const CONTACTY = /(\S+@\S+\.\S+|(\+?\d[\d\s\/.-]{7,}\d))/;
@@ -177,6 +177,7 @@ async function postRequest(request, env) {
   let b;
   try { b = await request.json(); } catch (e) { return bad('json'); }
   if (b.hp) return json({ ok: true });
+  if (b.kind === 'pomoc') return postHelpful(request, env, b);   // a vote may come a second after the page opens
   if (typeof b.t === 'number' && b.t < 3000) return bad('too fast', 429);
   const kind = String(b.kind || '');
   if (!KINDS.has(kind)) return bad('kind');
@@ -193,6 +194,31 @@ async function postRequest(request, env) {
   await env.DB.prepare('INSERT INTO requests (kind, slug, data, email, at, ip) VALUES (?1, ?2, ?3, ?4, ?5, ?6)')
     .bind(kind, clean(b.slug, 80) || null, JSON.stringify(data), email, now(), ip).run();
   return json({ ok: true });
+}
+
+// "Da li vam je ovo pomoglo?" on the help pages: one row per vote (v: da | ne) and per optional note (v: komentar).
+// Votes are stored with status 'vote' so they stay out of the moderation queue; notes are 'new' and show up there.
+// Totals: GET /api/admin/pomoc (owner's key).
+async function postHelpful(request, env, b) {
+  const page = String(b.slug || '');
+  if (!/^\/(en\/|ru\/)?pomoc\/[a-z0-9-]{0,80}\/?$/.test(page)) return bad('page');
+  const v = String((b.data || {}).v || '');
+  if (!['da', 'ne', 'komentar'].includes(v)) return bad('vote');
+  const note = v === 'komentar' ? clean((b.data || {}).poruka, 1000) : '';
+  if (v === 'komentar' && !note) return bad('empty');
+  const ip = await ipHash(request);
+  if (!(await allow(env, 'pm:' + ip, 40))) return bad('limit', 429);
+  await env.DB.prepare('INSERT INTO requests (kind, slug, data, email, at, status, ip) VALUES (?1, ?2, ?3, NULL, ?4, ?5, ?6)')
+    .bind('pomoc', page, JSON.stringify(note ? { v, poruka: note } : { v }), now(), note ? 'new' : 'vote', ip).run();
+  return json({ ok: true });
+}
+
+async function adminHelpful(env) {
+  const votes = await env.DB.prepare(`SELECT slug, json_extract(data, '$.v') AS v, COUNT(*) AS n FROM requests
+    WHERE kind = 'pomoc' AND status = 'vote' GROUP BY slug, v ORDER BY slug`).all();
+  const notes = await env.DB.prepare(`SELECT id, slug, json_extract(data, '$.poruka') AS poruka, at FROM requests
+    WHERE kind = 'pomoc' AND json_extract(data, '$.v') = 'komentar' ORDER BY at DESC LIMIT 100`).all();
+  return json({ ok: true, votes: votes.results, notes: notes.results });
 }
 
 // ---------------------------------------------------------------- admin (optional, owner's key)
@@ -260,6 +286,7 @@ async function api(request, env, ctx) {
     if (p === '/api/admin/odluka') return adminOk(request, env) ? adminDecide(request, env) : bad('not found', 404);
   }
   if (m === 'GET' && p === '/api/admin/red') return adminOk(request, env) ? adminQueue(env) : bad('not found', 404);
+  if (m === 'GET' && p === '/api/admin/pomoc') return adminOk(request, env) ? adminHelpful(env) : bad('not found', 404);
   if (m === 'GET' && p === '/api/zdravlje') {
     const r = await env.DB.prepare('SELECT COUNT(*) AS n FROM checkins').first();
     return json({ ok: true, checkins: r.n });

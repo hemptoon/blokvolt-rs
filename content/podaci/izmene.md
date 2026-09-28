@@ -13,6 +13,9 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 28. septembar 2026
 
+- Nova rubrika [Pomoć](/pomoc/): kratki odgovori o mapi, oznaci „Potvrđeno“, cenama po minutu, prijavama vozača, Android aplikaciji, privatnosti i ispravkama, uz snimke ekrana. Na dnu svakog odgovora možete da javite da li je pomogao.
+- Vodiči na lokalnom jeziku za [Hrvatsku](https://blokvolt.com/hr/), [Bosnu i Hercegovinu](https://blokvolt.com/ba/) i [Crnu Goru](https://blokvolt.com/me/): mapa punjača, cene mreža, kalkulator sa domaćim tarifama i subvencije. Linkovi su u podnožju sajta i na stranici [Punjenje u regionu](/javno-punjenje/region/).
+- [Mapa](/mapa/): u delu „Odakle su podaci na mapi“ dopunjeno je da je nekoliko punjača potvrđeno na sajtu vlasnika lokacije.
 - [Mapa](/mapa/): pored punjača, od uvećanja 12, piše cena — „0 RSD“, cena po kWh sa računa ili procena „~“ iz cene po minutu. Kartica punjača ima blok „Gde tačno“: adresa, koordinate sa dugmetom „Kopiraj“, zapis za auto-navigaciju i Plus Code, i odakle je tačka.
 - Tesla Supercharger u Beogradu je na mestu sa spiska Tesla (AVA Shopping Park, 8 mesta do 250 kW), a u Aleksincu je 4 mesta. Novi prekidač „Imam Teslu“ ih prikazuje kao besplatne, po vozačima.
 - Na mapu su vraćena dva besplatna punjača IKEA u Beogradu. Za IKEA, Teslu, Lidl i garažu Obilićev venac dodato je radno vreme i način pristupa; za 24 punjača adresa sa kućnim brojem sa spiska mreže.

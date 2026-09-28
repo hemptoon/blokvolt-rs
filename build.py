@@ -824,6 +824,59 @@ render('hub.html', '/cene/', h1='Cene', lead='Koliko košta punjenje, kućni pun
        description='Cene javnog punjenja po mrežama, kućnih punjača sa ugradnjom, wallbox uređaja, struje po tarifama EPS-a i električnih automobila kod uvoznika.')
 add_url('/cene/', '0.8')
 
+# ---------------------------------------------------------------- help (/pomoc/)
+# content/pomoc/<slug>.md, one question per file (docs/RUNBOOK.md 3.24). Front matter: id, title, h1, description, lead,
+# kicker, section (one of POMOC_SECTIONS), order, path (/pomoc/<slug>/), updated (DD.MM.YYYY), related (help paths,
+# comma-separated), shots (the pictures the text asks for), published, modified. Body: Markdown; a line
+# [[shot:<id> | <alt>]] shows static/assets/img/pomoc-<id>-<w>.webp (scripts/pomoc_shots.py) and is left out while the
+# picture does not exist. No counts or prices that change with the data: they would go stale here.
+POMOC_SECTIONS = [('mapa-i-podaci', 'Mapa i podaci', 'Kako se čita mapa, odakle su podaci i šta znače oznake.', 'map'),
+                  ('doprinos', 'Prijave, ocene i fotografije', 'Kako da javite stanje punjača i šta se objavljuje.', 'star'),
+                  ('aplikacija', 'Aplikacija i privatnost', 'Android, iPhone i računar, ažuriranja i vaši podaci.', 'phone'),
+                  ('firme-i-ispravke', 'Firme, ispravke i kontakt', 'Ispravke, podaci firmi i mreža, ko stoji iza sajta.', 'firm')]
+POMOC_TOP = ['/pomoc/kako-radi-mapa/', '/pomoc/sta-znaci-potvrdjeno/', '/pomoc/punjac-ne-radi/', '/pomoc/cene-javnog-punjenja/',
+             '/pomoc/android-aplikacija-apk/', '/pomoc/kontakt/']
+HELP = {}
+for mdf in sorted(glob.glob(str(ROOT / 'content' / 'pomoc' / '*.md'))):
+    meta, body = front_matter(mdf)
+    hp = meta['path']
+    assert re.fullmatch(r'/pomoc/[a-z0-9-]+/', hp) and meta.get('section') in {x[0] for x in POMOC_SECTIONS}, mdf
+    assert not re.search(r'\[ODLUKA|\[PROVERITI', body), f'{mdf}: an open decision marker'
+    HELP[hp] = {'meta': meta, 'body': body, 'path': hp, 'h1': meta.get('h1') or meta['title'], 'lead': meta.get('lead', ''),
+                'order': int(meta.get('order', 50))}
+_SEC_ICON = {k: icon for k, _, _, icon in POMOC_SECTIONS}
+
+
+def help_shots(h):
+    """[[shot:id | alt]] -> the screenshot at its natural size (saved at double density by scripts/pomoc_shots.py), with
+    the alt text as the caption; nothing while the picture is missing."""
+    def rep(m):
+        name, alt = 'pomoc-' + m.group(1), html.unescape(m.group(2).strip())
+        if name not in IMGS:
+            return ''
+        css = IMG_SIZE[name][0] // 2
+        f = str(fig_html(name, alt, caption=alt, sizes=f'(max-width: {css + 40}px) calc(100vw - 40px), {css}px', cls='shot'))
+        return f.replace('<figure class="fig shot">', f'<figure class="fig shot" style="max-width:{css}px">', 1)
+    return re.sub(r'<p>\[\[shot:([\w-]+)\s*\|\s*(.*?)\]\]</p>', rep, h, flags=re.S)
+
+
+for hp, a in HELP.items():
+    meta = dict(a['meta'], h1=a['h1'])
+    rel = [HELP[x.strip()] for x in meta.get('related', '').split(',') if x.strip() in HELP and x.strip() != hp]
+    sec_name = next(n for k, n, _, _ in POMOC_SECTIONS if k == meta['section'])
+    render('pomoc.html', hp, meta=meta, body=help_shots(md_to_html(a['body'])), related=rel, sec_name=sec_name, section='',
+           title=meta['title'] + ' | BlokVolt', description=meta.get('description', ''))
+    add_url(hp, '0.5', meta.get('modified', ISO_TODAY))
+_groups = [(k, n, d, icon, sorted([a for a in HELP.values() if a['meta']['section'] == k], key=lambda x: x['order']))
+           for k, n, d, icon in POMOC_SECTIONS]
+render('pomoc_hub.html', '/pomoc/', h1='Pomoć', section='',
+       lead='Kako se koristi mapa punjača, šta znače oznake, kako da javite da punjač ne radi, aplikacija i privatnost.',
+       sections=POMOC_SECTIONS, groups=_groups, all_items=[a for g in _groups for a in g[4]],
+       top=[dict(HELP[x], icon=_SEC_ICON[HELP[x]['meta']['section']]) for x in POMOC_TOP if x in HELP],
+       title='Pomoć: mapa punjača, prijave, aplikacija i ispravke | BlokVolt',
+       description='Odgovori na pitanja o mapi punjača BlokVolt: šta znači „Potvrđeno“, cene po minutu, kako da javite kvar, Android aplikacija, privatnost i ispravke.')
+add_url('/pomoc/', '0.6')
+
 # ---------------------------------------------------------------- news (/vesti/)
 # content/vesti/YYYY-MM-DD-<slug>.md, one file per news item (docs/RUNBOOK.md 3.15, docs/NEWS_STYLE.md).
 # Front matter: title, lead, description (optional, else the lead), date (DD.MM.YYYY: the day the news happened, shown),

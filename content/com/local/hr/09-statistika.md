@@ -52,7 +52,7 @@ Ukupno {{ num(C.counties_2024.total) }} {{ pl(C.counties_2024.total, 'električn
 
 - **Na našoj karti:** {{ num(M.n) }} {{ pl(M.n, 'punionica', 'punionice', 'punionica') }} iz OpenStreetMapa i Open Charge Mapa, od toga {{ num(M.dc50) }} s DC punjenjem od 50 kW naviše ([karta]({{ PAGES.map.path }})).
 - **Državni Registar punionica** (CRO IDRO) ima {{ C.registry.rows }} zapisa; jedan zapis je jedna registrirana punionica, bez snage i broja priključaka. {{ C.registry.missing }}.
-- **Krajem 2023.** bilo je 1.074 javnih mjesta za punjenje: 675 AC i 399 DC ([ACEA]({{ C.charging_stats.acea_2023.src }})).
+- **Krajem 2023.** javnih mjesta za punjenje bilo je 1.074: 675 AC i 399 DC ([ACEA]({{ C.charging_stats.acea_2023.src }})).
 - **Ultrabrze punionice:** oko 300 priključaka od 150 kW naviše; Tesla ima {{ C.charging_stats.tesla.list }} {{ pl(C.charging_stats.tesla.list, 'lokaciju', 'lokacije', 'lokacija') }} na svom popisu i, prema Autonetu, {{ C.charging_stats.tesla.spots }} {{ pl(C.charging_stats.tesla.spots, 'mjesto', 'mjesta', 'mjesta') }} za punjenje ([energetika-net.com, {{ C.charging_stats.hpc_2026.date }}]({{ C.charging_stats.hpc_2026.src }}); [Autonet, {{ C.charging_stats.tesla.date }}]({{ C.charging_stats.tesla.src }})).
 
 Zapisi u Registru punionica po vlasniku ({{ C.checked }}):

@@ -774,6 +774,34 @@ licence, private and planned or removed points are left out; Cyrillic addresses 
 pages and country names are cut from addresses. Every station is "from open data, not checked one by one".
 Then rebuild and publish blokvolt.com (3.10). The station counts in the texts follow the data by themselves.
 
+### 3.24 Help (/pomoc/)
+
+Nineteen short answers for drivers and companies, one Markdown file each in `content/pomoc/` (front matter: id, title,
+h1, description, lead, kicker, section — `mapa-i-podaci`, `doprinos`, `aplikacija`, `firme-i-ispravke` — order, path
+`/pomoc/<slug>/`, updated, related, shots, published, modified), rendered by `build.py` with `templates/pomoc.html`
+and the hub `templates/pomoc_hub.html` (sections, the six most asked questions `POMOC_TOP`, a filter box). Linked from
+the footer ("Pomoć"), the text under /mapa/, /aplikacija/ and /ispravka/. Rules:
+
+- The text describes the site as it is. A question the owner has not decided (response times, limits, what to
+  announce) is not written as a promise; write the neutral version and list the decision in the report. `build.py`
+  refuses a page with `[ODLUKA` or `[PROVERITI` left in it.
+- No counts, prices or dates that change with the data (they would go stale here); say where the reader sees the
+  current value (the map's footer line, the card). The quoted interface labels must match the site (`MAP_T` in
+  `build.py`, the forms): after changing a label, grep `content/pomoc/` for the old one.
+- Pictures: a line `[[shot:<id> | <alt>]]` shows `static/assets/img/pomoc-<id>-<w>.webp` at its natural size with the
+  alt text as the caption, and is left out while the picture is missing. `scripts/pomoc_shots.py` makes them from
+  `dist/` (cfserve on 8787): phone crops at 390 px, desktop crops at 1440 px, double density; `/api` answers with
+  invented sample data and forms are filled with invented data — mark such captions "(primer)". Retake the pictures
+  when the map card or a form changes (`python3 scripts/pomoc_shots.py <id> …`). Not made yet (need an Android
+  emulator, the iOS simulator, a real Chrome or the map tiles): android-*, ios-*, desktop-instaliraj, mapa-pregled,
+  mapa-legenda, mapa-cene-pored-tacaka, mapa-prijava-poslato, foto-dobro-lose.
+- Diagrams are HTML (`<div class="flow">`, `<div class="conns">` in the Markdown) so that they are translated with the
+  page; the connector pictograms are inline SVG without text.
+- "Da li vam je ovo pomoglo?": the vote goes to `/api/zahtev` with `kind: pomoc` (no name, no e-mail); votes are
+  stored in `requests` with status `vote` (outside the moderation queue), an optional note after "Ne" as a `new`
+  request (shown in the admin queue). Totals: `GET /api/admin/pomoc` with the owner's key.
+- English and Russian through the translation memory as usual (3.9).
+
 ## 4. Build and check
 
 ```bash

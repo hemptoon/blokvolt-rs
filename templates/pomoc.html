@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import pagehead %}
+{% from '_icons.html' import ic %}
+{% block ogtype %}article{% endblock %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "TechArticle", "headline": {{ meta.h1|tojson }}, "description": {{ description|tojson }}, "inLanguage": "sr-Latn", "url": "{{ SITE }}{{ canon }}", "datePublished": "{{ meta.published }}", "dateModified": "{{ meta.modified }}", "author": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/o-sajtu/"}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}, "isPartOf": {"@type": "CollectionPage", "name": "Pomoć", "url": "{{ SITE }}/pomoc/"}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Pomoć", "item": "{{ SITE }}/pomoc/"}, {"@type": "ListItem", "position": 3, "name": {{ sec_name|tojson }}, "item": "{{ SITE }}/pomoc/#{{ meta.section }}"}, {"@type": "ListItem", "position": 4, "name": {{ meta.h1|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
+ ]
+}</script>{% endblock %}
+{% block pagehead %}{{ pagehead(meta.h1, meta.lead, [('/pomoc/', 'Pomoć'), ('/pomoc/#' ~ meta.section, sec_name)], cls='help-ph') }}{% endblock %}
+{% block content %}<div class="prose help">
+{{ body|safe }}
+<section class="helpful" data-helpful aria-labelledby="hp-q">
+<h2 id="hp-q">Da li vam je ovo pomoglo?</h2>
+<div class="helpful-b"><button class="btn sm" type="button" data-v="da">{{ ic('check') }}<span>Da</span></button><button class="btn sm" type="button" data-v="ne">{{ ic('x') }}<span>Ne</span></button></div>
+<p class="helpful-m" data-m="da" role="status" hidden>Hvala što ste javili.</p>
+<form class="helpful-f" data-m="ne" hidden>
+<label for="hp-c">Hvala. Šta je nedostajalo ili nije bilo jasno? (neobavezno)</label>
+<textarea class="input" id="hp-c" name="poruka" maxlength="1000" rows="3"></textarea>
+<input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<button class="btn dark sm" type="submit">Pošalji</button>
+<small>Poruka je bez imena i e-adrese, pa na nju ne stiže odgovor. Za odgovor pišite na <a href="mailto:hello@blokvolt.com" translate="no">hello@blokvolt.com</a>.</small>
+</form>
+<p class="helpful-m" data-m="poslato" role="status" hidden>Poslato. Hvala.</p>
+<p class="helpful-m" data-m="greska" role="status" hidden>Slanje nije uspelo. Pišite na <a href="mailto:hello@blokvolt.com" translate="no">hello@blokvolt.com</a>.</p>
+</section>
+<p class="upd">Ažurirano {{ meta.updated }} · <a href="/ispravka/?stranica={{ canon|urlencode }}">Prijavite grešku u tekstu</a></p>
+</div>
+{% if related %}<div class="sec"><div class="sec-head"><h2>Povezana pitanja</h2></div><div class="rows">{% for r in related %}<a class="row" href="{{ r.path }}"><span class="lg mono" aria-hidden="true">{{ ic('info') }}</span><div><h3>{{ r.h1 }}</h3><div class="sub">{{ r.lead }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div></div>{% endif %}
+<div class="sec help-more"><a class="btn" href="/pomoc/">{{ ic('arrow') }}<span>Sva pitanja</span></a></div>
+{% endblock %}

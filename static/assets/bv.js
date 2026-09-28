@@ -200,6 +200,9 @@
     if (kind === 'firma' && (p.get('operator') || p.get('mreza'))) { var ko = f.querySelector('[name=vrsta]'); if (ko) ko.value = 'mreza'; }
     if (where && slug) {
       where.value = p.get('stanica') ? location.origin + '/mapa/#' + slug : location.origin + (p.get('firma') ? '/firme/' : '/javno-punjenje/') + slug + '/';
+    } else if (where && /^\/[\w\/.-]{0,120}$/.test(p.get('stranica') || '')) {
+      where.value = location.origin + p.get('stranica');    // "Prijavite grešku u tekstu" on the help pages
+      if (what && what.querySelector('option[value=tekst]')) what.value = 'tekst';
     }
     function show(cls) {
       [].forEach.call(f.querySelectorAll('.f-msg'), function (m) { m.hidden = !m.classList.contains(cls); });
@@ -228,6 +231,57 @@
         }, function () { btn.disabled = false; show('f-err'); });
     });
   });
+
+  // help pages (/pomoc/): "Da li vam je ovo pomoglo?" — the vote goes to /api/zahtev (kind pomoc, no name or e-mail);
+  // after "Ne" an optional note. The texts are in the page (translated with it); this only shows and hides them.
+  [].forEach.call(d.querySelectorAll('[data-helpful]'), function (box) {
+    var t0 = Date.now(), page = location.pathname, form = box.querySelector('form');
+    function msg(k) { [].forEach.call(box.querySelectorAll('[data-m]'), function (m) { m.hidden = m.getAttribute('data-m') !== k; }); }
+    function send(data) {
+      return fetch('/api/zahtev', { method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ kind: 'pomoc', slug: page, data: data, hp: form && form.elements.website ? form.elements.website.value : '', t: Date.now() - t0 }) })
+        .then(function (r) { return r.ok; }, function () { return false; });
+    }
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('[data-v]');
+      if (!b) return;
+      var v = b.getAttribute('data-v');
+      box.classList.add('done');
+      window.bvTrack('help_vote', { vote: v });
+      send({ v: v }).then(function (ok) {
+        if (!ok) return msg('greska');
+        msg(v);
+        if (v === 'ne' && form) form.querySelector('textarea').focus({ preventScroll: true });
+      });
+    });
+    if (form) form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var txt = form.querySelector('textarea').value.trim();
+      if (!txt) return msg('poslato');
+      form.querySelector('[type=submit]').disabled = true;
+      send({ v: 'komentar', poruka: txt }).then(function (ok) { msg(ok ? 'poslato' : 'greska'); });
+    });
+  });
+
+  // help hub: the search box filters the questions on the page
+  var hq = d.querySelector('[data-help-filter]');
+  if (hq) {
+    var fold = function (x) { return (x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd'); };
+    hq.addEventListener('input', function () {
+      var q = fold(hq.value).split(/\s+/).filter(Boolean), shown = 0;
+      [].forEach.call(d.querySelectorAll('[data-help-item]'), function (a) {
+        var t = fold(a.textContent), ok = q.every(function (w) { return t.indexOf(w) >= 0; });
+        a.hidden = !ok;
+        if (ok && a.classList.contains('row')) shown++;
+      });
+      [].forEach.call(d.querySelectorAll('.sec[id], .help-top'), function (s) {
+        var sec = s.classList.contains('help-top') ? s.parentNode : s;
+        sec.hidden = ![].some.call(s.querySelectorAll('[data-help-item]'), function (a) { return !a.hidden; });
+      });
+      var none = d.querySelector('.help-none');
+      if (none) none.hidden = shown > 0;
+    });
+  }
 
   // YouTube behind a click: the iframe (youtube-nocookie.com) is created only when the reader presses play
   d.addEventListener('click', function (e) {

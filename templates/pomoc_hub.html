@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import pagehead %}
+{% from '_icons.html' import ic %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "CollectionPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "ItemList", "itemListElement": [{% for a in all_items %}{"@type": "ListItem", "position": {{ loop.index }}, "url": "{{ SITE }}{{ a.path }}", "name": {{ a.h1|tojson }}}{{ ',' if not loop.last }}{% endfor %}]}
+ ]
+}</script>{% endblock %}
+{% block pagehead %}{% call pagehead(h1, lead, cls='help-ph') %}<div class="search-box help-q">{{ ic('search') }}<label class="sr-only" for="hq">Pretraga pomoći</label><input class="input" id="hq" type="search" placeholder="Na primer: punjač ne radi, APK, cena po minutu" autocomplete="off" data-help-filter></div>
+<div class="chips ph-chips">{% for key, name, desc, icon in sections %}<a class="chip" href="#{{ key }}">{{ name }}</a>{% endfor %}</div>{% endcall %}{% endblock %}
+{% block content %}
+<div class="sec" style="margin-top:6px"><div class="sec-head"><h2>Najčešća pitanja</h2></div>
+<div class="tiles help-top">{% for a in top %}<a class="tile" href="{{ a.path }}" data-help-item><span class="ic">{{ ic(a.icon) }}</span><h3>{{ a.h1 }}</h3><p>{{ a.lead }}</p></a>{% endfor %}</div></div>
+{% for key, name, desc, icon, items in groups %}<div class="sec" id="{{ key }}"><div class="sec-head"><h2>{{ name }}</h2><p>{{ desc }}</p></div>
+<div class="rows">{% for a in items %}<a class="row" href="{{ a.path }}" data-help-item><span class="lg mono" aria-hidden="true">{{ ic(icon) }}</span><div><h3>{{ a.h1 }}</h3><div class="sub">{{ a.lead }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div></div>
+{% endfor %}
+<p class="empty help-none" hidden>Nema pitanja sa tim rečima. Pišite na <a href="mailto:hello@blokvolt.com" translate="no">hello@blokvolt.com</a> ili pogledajte <a href="/vodici/">vodiče</a>.</p>
+<div class="sec"><div class="box help-contact"><h2>Niste našli odgovor?</h2>
+<p>Grešku na sajtu ili na mapi pošaljite kroz <a href="/ispravka/">formu za ispravke</a>. Za kvar punjača ili plaćanje javite se mreži koja vodi punjač — kontakti su na stranicama <a href="/javno-punjenje/">mreža</a>. Za sve ostalo pišite na <a href="mailto:hello@blokvolt.com" translate="no">hello@blokvolt.com</a>.</p>
+<p><a class="btn dark" href="/pomoc/kontakt/">{{ ic('mail') }}<span>Kontakt i rokovi odgovora</span></a></p></div></div>
+{% endblock %}

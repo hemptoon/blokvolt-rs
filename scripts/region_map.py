@@ -119,11 +119,13 @@ def kw(txt):
     return max(vals) if vals else None
 
 
-def network(cc, *texts):
-    t = fold(' '.join(x for x in texts if x))
-    for slug, pat in NETS.get(cc, []):
-        if re.search(pat, t):
-            return slug
+def network(cc, name, *texts):
+    """The network named in the station's own name wins over the operator field: Open Charge Map lists the Qelo sites
+    of StopShop parks under the operator "Kaufland eCharge" or "Electrip" (28.09.2026)."""
+    for t in (fold(name or ''), fold(' '.join(x for x in texts if x))):
+        for slug, pat in NETS.get(cc, []):
+            if t and re.search(pat, t):
+                return slug
     return ''
 
 
@@ -147,6 +149,9 @@ def osm_records(cc, j):
             continue
         # chargers for bicycles, scooters and motorcycles only
         if t.get('motorcar') == 'no' or (t.get('bicycle') in ('yes', 'designated') and t.get('motorcar') not in ('yes', 'designated')):
+            continue
+        # not open yet or no longer in use
+        if t.get('construction') in ('yes', 'charging_station') or t.get('disused') == 'yes' or re.search(BUILDING, fold(t.get('name') or '')):
             continue
         if t.get('access') in OSM_PRIVATE or t.get('operational_status') in ('closed', 'removed'):
             continue
@@ -175,11 +180,15 @@ def osm_records(cc, j):
         name = t.get('name') or t.get('name:hr') or t.get('name:sr-Latn') or t.get('name:en') or ''
         op = t.get('operator') or t.get('network') or t.get('brand') or ''
         typ = {'node': 'n', 'way': 'w', 'relation': 'r'}[e['type']]
+        net = network(cc, name, t.get('operator'), t.get('network'), t.get('brand'))
+        dest = net == 'tesla' and (re.search(r'destination', fold(' '.join((name, op)))) or (conns and not any(c['current'] == 'dc' for c in conns)))
+        if dest:   # Tesla Destination: the host's AC chargers for guests, not Tesla's network (as for Open Charge Map below)
+            net, op = '', 'Tesla Destination'
         out.append({
             'id': f'osm-{typ}{e["id"]}', 'name': name, 'address': ', '.join(x for x in (street, city) if x), 'city': city,
             'latitude': lat, 'longitude': lon, 'operatorName': op,
-            '_net': network(cc, name, t.get('operator'), t.get('network'), t.get('brand')),
-            'connectors': conns, 'access': 'customers' if t.get('access') in ('customers', 'permissive', 'destination') else 'public',
+            '_net': net,
+            'connectors': conns, 'access': 'customers' if dest or t.get('access') in ('customers', 'permissive', 'destination') else 'public',
             'fee': t.get('fee'), 'oh': t.get('opening_hours'),
             'url': f'https://www.openstreetmap.org/{e["type"]}/{e["id"]}', 'updated': (e.get('timestamp') or '')[:10] or None,
         })
@@ -210,6 +219,8 @@ def ocm_records(cc, pois, ref):
         if opname.startswith('('):          # (Unknown Operator), (Business Owner at Location) …
             opname = ''
         name = a.get('Title') or ''
+        if re.search(BUILDING, fold(name)):
+            continue
         net = network(cc, name, opname)
         dest = net == 'tesla' and not any(c['current'] == 'dc' for c in conns)
         if dest:
@@ -239,7 +250,7 @@ def max_kw(r):
 
 
 def names_match(a, b):
-    na, nb = fold(a.get('name')), fold(b.get('name'))
+    na, nb = (re.sub(r'[\s\-_.]+', '', fold(x.get('name'))) for x in (a, b))   # "StopShop" = "Stop Shop"
     return not na or not nb or na == nb or na in nb or nb in na
 
 
@@ -340,6 +351,7 @@ def clean_addr(cc, a):
     return ', '.join(x for x in parts if x and fold(x) not in COUNTRY_WORDS)
 
 
+BUILDING = r'under construction|u izgradnji|\bu gradnji\b|coming soon|\bplanned\b|planirano'
 GENERIC_NAME = r'(?i)(charging station|punionica|punjač|punjac|elektri[cč]na punionica|ev charger|charger|e-?punionica|polnilnica|stacion karikimi)'
 
 

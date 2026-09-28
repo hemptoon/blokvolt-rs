@@ -789,3 +789,51 @@ a.row:hover{background:#FAFAF6}
  .calc .fields2{grid-template-columns:minmax(0,1fr)}
  .bform .fields2{grid-template-columns:minmax(0,1fr)}
 }
+
+/* ---------- help (/pomoc/) ---------- */
+.help-ph .search-box.help-q{max-width:560px;margin:16px 0 0}
+.help-ph .ph-chips{margin-top:12px}
+.help-ph .ph-chips .chip{text-decoration:none}
+.sec-head p{margin:0;font-size:14.5px;color:var(--mut);max-width:560px;text-align:right}
+.help-top .tile{min-height:0}
+.help-top .tile p{font-size:14px}
+.prose.help h2{scroll-margin-top:80px}
+.prose.help .fig.shot{margin:18px auto 24px}
+.prose.help .fig.shot img{border:1px solid var(--line);background:#fff;border-radius:14px}
+.prose.help .fig.shot figcaption{text-align:center}
+.helpful{margin:34px 0 0;padding:18px 20px;background:var(--surface2);border-radius:var(--r2)}
+.helpful h2{font-size:17px;margin:0 0 10px}
+.helpful-b{display:flex;gap:8px;flex-wrap:wrap}
+.helpful-b .btn svg{width:16px;height:16px}
+.helpful-f{display:grid;gap:8px;margin-top:12px}
+.helpful-f label{font-size:14.5px;font-weight:600}
+.helpful-f small{font-size:12.5px;color:var(--mut)}
+.helpful-f .btn{justify-self:start}
+.helpful-m{margin:10px 0 0;font-size:15px}
+.helpful.done .helpful-b{display:none}
+.help-contact h2{font-size:20px;margin:0 0 8px}
+.help-contact p{margin:0 0 10px;max-width:760px}
+.help-more{display:flex;justify-content:center}
+@media (max-width:640px){.sec-head{flex-wrap:wrap}.sec-head p{text-align:left}}
+.flow{margin:18px 0 24px;padding:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r2)}
+.flow .fl-h{margin:0 0 12px;font-size:13px;font-weight:650;letter-spacing:.04em;text-transform:uppercase;color:var(--mut)}
+.flow .fl-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.flow .fl-b{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface2);font-size:14px;line-height:1.4}
+.flow .fl-b b{display:block;font-size:15px}
+.flow .fl-b span{display:block;color:var(--ink2);margin-top:2px}
+.flow .fl-b.ok{background:var(--okbg);border-color:transparent}
+.flow .fl-b.warn{background:var(--warnbg);border-color:transparent}
+.flow .fl-b.no{background:#FBE3D6;border-color:transparent}
+.flow .fl-down{height:22px;position:relative}
+.flow .fl-down::before{content:"";position:absolute;left:50%;top:3px;bottom:7px;border-left:2px solid var(--mut2)}
+.flow .fl-down::after{content:"";position:absolute;left:calc(50% - 5px);bottom:2px;border:5px solid transparent;border-top-color:var(--mut2);border-bottom:0}
+.flow .fl-note{margin:12px 0 0;font-size:13.5px;color:var(--mut)}
+.flow .fl-f{margin:0 0 12px;font-weight:650;font-size:15.5px}
+.conns{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:18px 0 24px}
+.conns .conn{background:#fff;border:1px solid var(--line);border-radius:var(--r2);padding:12px;text-align:center}
+.conns .conn svg{width:56px;height:56px;color:var(--ink)}
+.conns .conn p{margin:6px 0 0;font-size:13.5px;line-height:1.35}
+.conns .conn b{display:block;font-size:15px}
+.conns .conn span{color:var(--mut)}
+.conns .fl-note{grid-column:1/-1;margin:0;font-size:13px;color:var(--mut)}
+.prose.help code{overflow-wrap:anywhere;word-break:break-all}
