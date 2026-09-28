@@ -13,7 +13,9 @@ containers cannot reach Overpass or GitHub's API and the Actions runner can. The
     referencedata.json   OCM lookup tables (operators, connection types, statuses, providers and their licences).
     meta.json       when each file was fetched, from where, element counts and the OCM export's commit date.
 
-Usage: python3 scripts/region_fetch.py OUT_DIR [CC ...]      (default countries: see COUNTRIES)
+Usage: python3 scripts/region_fetch.py OUT_DIR [--prev PREV_DIR] [CC ...]      (default countries: see COUNTRIES)
+With --prev (the previous region-data branch), a country whose Overpass query fails on every server keeps its previous
+osm.json, and meta.json says so; without it such a run stops with an error.
 Only the standard library; polite to the public Overpass servers (one query at a time, pauses, User-Agent)."""
 import json
 import os
@@ -27,8 +29,10 @@ from pathlib import Path
 
 COUNTRIES = ['HR', 'BA', 'ME', 'MK', 'AL', 'XK', 'SI', 'RS']
 OVERPASS = ['https://overpass-api.de/api/interpreter',
-            'https://overpass.private.coffee/api/interpreter',
-            'https://overpass.kumi.systems/api/interpreter']
+            'https://overpass.kumi.systems/api/interpreter',
+            'https://overpass.private.coffee/api/interpreter']
+MAX_AGE_H = 72   # a mirror whose database is older than this is not used (28.09.2026 one mirror answered with July data
+                 # and another with an empty result for Croatia)
 UA = 'BlokVolt region data (https://blokvolt.com; hello@blokvolt.com)'
 QUERY = ('[out:json][timeout:240];area["ISO3166-1"="{cc}"][admin_level=2]->.a;'
          '(nwr["amenity"="charging_station"](area.a););out center meta;')
@@ -39,10 +43,18 @@ def now():
     return datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
 
+def db_age_hours(j):
+    ts = (j.get('osm3s') or {}).get('timestamp_osm_base')
+    if not ts:
+        return None
+    t = datetime.strptime(ts, '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=timezone.utc)
+    return (datetime.now(timezone.utc) - t).total_seconds() / 3600
+
+
 def overpass(cc):
     body = urllib.parse.urlencode({'data': QUERY.format(cc=cc)}).encode()
     last = None
-    for attempt in range(3):
+    for attempt in range(4):
         for url in OVERPASS:
             try:
                 req = urllib.request.Request(url, data=body, headers={'User-Agent': UA,
@@ -53,13 +65,18 @@ def overpass(cc):
                     raise ValueError('no elements in the answer')
                 if j.get('remark') and 'runtime error' in j['remark']:
                     raise ValueError(j['remark'])
+                if not j['elements']:
+                    raise ValueError('empty answer (every country on the list has chargers)')
+                age = db_age_hours(j)
+                if age is None or age > MAX_AGE_H:
+                    raise ValueError(f'stale database ({(j.get("osm3s") or {}).get("timestamp_osm_base")})')
                 return url, j
             except Exception as e:  # try the next server, then wait and try again
                 last = f'{url}: {e}'
                 print(f'  overpass {cc}: {last}', file=sys.stderr)
-                time.sleep(20)
-        time.sleep(60 * (attempt + 1))
-    raise SystemExit(f'Overpass failed for {cc}: {last}')
+                time.sleep(30)
+        time.sleep(90 * (attempt + 1))
+    raise RuntimeError(f'Overpass failed for {cc}: {last}')
 
 
 def clean_osm(j):
@@ -83,8 +100,17 @@ def ocm_export(workdir, countries):
 def main():
     if len(sys.argv) < 2:
         raise SystemExit(__doc__)
-    out = Path(sys.argv[1])
-    countries = [c.upper() for c in sys.argv[2:]] or COUNTRIES
+    args = sys.argv[1:]
+    prev = None
+    if '--prev' in args:
+        k = args.index('--prev')
+        prev = Path(args[k + 1])
+        del args[k:k + 2]
+    out = Path(args[0])
+    countries = [c.upper() for c in args[1:]] or COUNTRIES
+    prev_meta = {}
+    if prev and (prev / 'meta.json').exists():
+        prev_meta = json.loads((prev / 'meta.json').read_text(encoding='utf-8')).get('countries', {})
     out.mkdir(parents=True, exist_ok=True)
     meta = {'about': 'Open charging data of Serbia and its neighbours for blokvolt.com / blokvolt.rs — see README.md',
             'started': now(), 'countries': {}}
@@ -97,10 +123,25 @@ def main():
         d = out / cc
         d.mkdir(exist_ok=True)
         if i:
-            time.sleep(15)
-        url, j = overpass(cc)
-        osm = clean_osm(j)
-        (d / 'osm.json').write_text(json.dumps(osm, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+            time.sleep(30)
+        try:
+            url, j = overpass(cc)
+        except RuntimeError as e:
+            old = prev / cc / 'osm.json' if prev else None
+            if not (old and old.exists()):
+                raise SystemExit(str(e))
+            (d / 'osm.json').write_bytes(old.read_bytes())
+            osm_meta = dict((prev_meta.get(cc) or {}).get('osm') or {})
+            osm_meta['kept'] = f'previous file kept: {e}'
+            n_old = len(json.loads(old.read_text(encoding='utf-8')).get('elements', []))
+            print(f'{cc}: Overpass failed, previous osm.json kept ({n_old} elements)', file=sys.stderr)
+            url, j, osm = None, None, None
+        if j is not None:
+            osm = clean_osm(j)
+            (d / 'osm.json').write_text(json.dumps(osm, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+            osm_meta = {'fetched': now(), 'server': url,
+                        'timestamp_osm_base': (j.get('osm3s') or {}).get('timestamp_osm_base'),
+                        'elements': len(osm['elements'])}
         pois = []
         folder = data / cc
         if folder.exists():
@@ -110,11 +151,8 @@ def main():
                 except ValueError as e:
                     print(f'  ocm {cc}: {p.name}: {e}', file=sys.stderr)
         (d / 'ocm.json').write_text(json.dumps(pois, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
-        meta['countries'][cc] = {'osm': {'fetched': now(), 'server': url,
-                                         'timestamp_osm_base': (j.get('osm3s') or {}).get('timestamp_osm_base'),
-                                         'elements': len(osm['elements'])},
-                                 'ocm': {'pois': len(pois)}}
-        print(f'{cc}: OSM {len(osm["elements"])} elements, OCM {len(pois)} points')
+        meta['countries'][cc] = {'osm': osm_meta, 'ocm': {'pois': len(pois)}}
+        print(f'{cc}: OSM {osm_meta.get("elements")} elements, OCM {len(pois)} points')
     meta['finished'] = now()
     (out / 'meta.json').write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding='utf-8')
     (out / 'README.md').write_text(

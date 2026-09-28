@@ -19,14 +19,18 @@ concurrency:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Previous data (kept for a country whose Overpass query fails)
+        run: |
+          mkdir -p /tmp/region/prev
+          if git fetch -q --depth=1 origin region-data; then git archive FETCH_HEAD | tar -x -C /tmp/region/prev; else echo "no previous data"; fi
       - name: Fetch OpenStreetMap and Open Charge Map
-        run: python3 scripts/region_fetch.py /tmp/region/out
+        run: python3 scripts/region_fetch.py /tmp/region/out --prev /tmp/region/prev
       - name: Replace the region-data branch
         run: |
           set -e
