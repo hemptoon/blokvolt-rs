@@ -1436,19 +1436,36 @@ NL_CFG = json.dumps({'api': '/api', **{k: _mcfg[k] for k in ('stations', 'nets',
 render('nalog.html', '/nalog/', noindex=True, section='', NL_CFG=NL_CFG, EV_OPTS=ev_options(), CITY_OPTS=CITY_OPTS,
        title='Moj BlokVolt: omiljeni punjači, auto i podešavanja | BlokVolt',
        description='Nalog na sajtu BlokVolt: omiljeni punjači sa mape na svim uređajima, vaš auto i grad, vaše prijave sa mape. Bez lozinke, prijava kodom na e-mail.')
-# past issues: content/pregled/<YYYY-MM-DD>-<slug>.md (front matter title, date DD.MM.YYYY, lead) — the issue pages come later;
-# until then each file is shown as an article at /pregled/<slug>/ and listed newest first
+# the issues: content/pregled/<YYYY-MM-DD>-<slug>.md (format and checks: scripts/pregled.py, docs/RUNBOOK.md 3.27 "Sending
+# the issues"). Every issue is a page /pregled/<slug>/ (its sections are what the e-mail is made of, see after the
+# translation below). Public — indexable, in the sitemap and under „Prethodni brojevi“ — only with status approved and
+# the newsletter on: a draft or a preview is built (the translation memory needs its text, the team looks at it), but
+# noindex and linked from nowhere; a stopped issue too. BV_QA_PREGLED_FIXTURE=1 adds the test issue of
+# scripts/qa/fixtures/pregled/ (=<status> builds it with that status; approved takes its own hash) — QA builds only.
+import pregled as _pg  # noqa: E402
+import i18n as _i18n  # noqa: E402
+_PG_FILES = [(f, None) for f in sorted(glob.glob(str(ROOT / 'content' / 'pregled' / '*.md')))]
+_PG_QA = os.environ.get('BV_QA_PREGLED_FIXTURE', '')
+if _PG_QA not in ('', '0'):
+    _PG_FILES += [(f, _PG_QA if _PG_QA in _pg.STATUSES else None) for f in sorted(glob.glob(str(ROOT / 'scripts' / 'qa' / 'fixtures' / 'pregled' / '*.md')))]
 PG_ISSUES = []
-for _mdf in sorted(glob.glob(str(ROOT / 'content' / 'pregled' / '*.md')), reverse=True):
+for _mdf, _qa in _PG_FILES:
     _meta, _body = front_matter(_mdf)
-    _slug = re.sub(r'^\d{4}-\d{2}-\d{2}-', '', Path(_mdf).stem)
-    _ip = f'/pregled/{_slug}/'
-    PG_ISSUES.append({'path': _ip, 'title': _meta.get('title', _slug), 'date': _meta.get('date', ''), 'lead': _meta.get('lead', '')})
-    render('article.html', _ip, meta=dict(_meta, h1=_meta.get('title', _slug)), body=md_to_html(_body), crumbs=[('/pregled/', 'Nedeljni pregled')],
-           noindex=not PG['on'], section='', title=_meta.get('title', _slug) + ' | BlokVolt', description=_meta.get('lead', ''), sources=sources_of(_meta))
-    if PG['on']:
-        add_url(_ip, '0.4', iso(_meta.get('date')))
-render('pregled.html', '/pregled/', noindex=not PG['on'], section='', issues=PG_ISSUES,
+    _x = _pg.parse(_mdf, _meta, _body, ROOT, qa_status=_qa)
+    for _s in _x['sections']:
+        _s['html'] = md_to_html(_s['md'])
+        _pg.check_section(_x, _s, _i18n)
+    _x['public'] = PG['on'] and _x['status'] == 'approved'
+    PG_ISSUES.append(_x)
+assert len({x['slug'] for x in PG_ISSUES}) == len(PG_ISSUES), 'two issues of Nedeljni pregled share a slug'
+PG_ISSUES.sort(key=lambda x: (x['iso'], x['slug']), reverse=True)
+PG_PUBLIC = [x for x in PG_ISSUES if x['public']]
+for _x in PG_ISSUES:
+    render('pregled_broj.html', _x['path'], x=_x, others=[o for o in PG_PUBLIC if o is not _x][:5], noindex=not _x['public'], section='',
+           title=_x['title'] + ' | BlokVolt', description=_x['description'])
+    if _x['public']:
+        add_url(_x['path'], '0.4', _x['iso'])
+render('pregled.html', '/pregled/', noindex=not PG['on'], section='', issues=PG_PUBLIC, PG_MAIL_T=_pg.MAIL_T,
        title='Nedeljni pregled: vesti, cene javnog punjenja i novi punjači na e-mail | BlokVolt',
        description=f"Jednom nedeljno, {PG['dayi']} ujutru: najvažnije vesti o električnim automobilima u Srbiji, promene cena javnog punjenja i novi punjači na mapi. Besplatno, sa izvorima.")
 if PG['on']:
@@ -1515,8 +1532,10 @@ _dir_redirects = ['/vodici', '/firme', '/javno-punjenje', '/mapa', '/cene']
 ]) + '\n', encoding='utf-8')
 # _headers (security headers + CSP) is written at the very end, after every HTML file is final (see below)
 # API: Cloudflare Pages advanced mode (worker/_worker.js, D1 binding DB); only /api/* invokes it
-# the worker's CFG line gets the city slugs (account settings) and the newsletter's day from the content files
-_wk, _nw = re.subn(r'^const CFG = \{.*\};$', 'const CFG = ' + json.dumps({'cities': [c['slug'] for c in CITY_CFG], 'day': PG['day']}, ensure_ascii=False)
+# the worker's CFG line gets the city slugs (account settings), the newsletter's day and whether it is on (the sender
+# works only then) from the content files
+_wk, _nw = re.subn(r'^const CFG = \{.*\};$', 'const CFG = ' + json.dumps({'cities': [c['slug'] for c in CITY_CFG], 'day': PG['day'], 'pregled': PG['on']},
+                                                                        ensure_ascii=False)
                    + ';   // written by build.py from content/data/gradovi.json and site.json',
                    (ROOT / 'worker' / '_worker.js').read_text(encoding='utf-8'), count=1, flags=re.M)
 assert _nw == 1, 'worker/_worker.js: the line "const CFG = {...};" is missing'
@@ -1597,6 +1616,11 @@ for _l in _i18n.LANGS:
     _st = I18N.stats[_l]
     _n, _kb = build_search('/' + _l)
     print(f'i18n {_l}: {_st["hit"]} segments translated, {_st["miss"]} left in Serbian ({len(_st["missing"])} distinct); search {_n} pages, {_kb} KB')
+# the issue e-mails, from the finished Serbian, English and Russian issue pages (scripts/pregled.py): dist/pregled-mail/,
+# read only by the worker (env.ASSETS); noindex (_headers below), in no sitemap or search
+for _line in _pg.build(DIST, SITE, PG_ISSUES, I18N.tm, _i18n):
+    print(_line)
+print(f'pregled: {len(PG_ISSUES)} issues, {len(PG_PUBLIC)} public')
 
 # ---------------------------------------------------------------- sitemap with language alternates
 sm = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -1687,6 +1711,10 @@ CSP = '; '.join([
     # the map data is open (ODbL / CC BY) and other sites read it with fetch (the Evolako charger map): same as /app/*
     '/assets/map/*',
     '  Access-Control-Allow-Origin: *',
+    # the issue e-mails for the sender (the worker reads them through env.ASSETS; RUNBOOK 3.27): never in a search engine
+    '/pregled-mail/*',
+    '  X-Robots-Tag: noindex, nofollow',
+    '  Cache-Control: no-store',
 ] + ([f'/aplikacija/{APP["apk"]}', '  Content-Type: application/vnd.android.package-archive', '  Content-Disposition: attachment',
       '  Cache-Control: public, max-age=3600'] if APP.get('apk') else [])) + '\n', encoding='utf-8')
 print(f'_headers: CSP with {len(_hashes)} inline-script hashes' + (', PostHog on' if ANALYTICS else ''))

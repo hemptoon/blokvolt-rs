@@ -5,10 +5,12 @@
 // For the browser tests of accounts and the newsletter (scripts/qa/nalog_ui_test.py, docs/RUNBOOK.md 3.27).
 //   npm install --prefix /tmp/mf miniflare@4
 //   MINIFLARE_DIR=/tmp/mf node scripts/qa/nalog_serve.mjs [dist] [port=8788] &
-// Local-only helpers (not part of the site): GET /__dev/mail?to=<address>[&kind=code|confirm|welcome] → the newest mail
-// to that address from D1 mail_log (JSON), GET /__dev/mails → all of them without the bodies. A request header
-// x-qa-ip becomes the visitor's IP (cf-connecting-ip), so tests can stay under the rate limits. BV_SITE=https://www.blokvolt.rs
-// makes the links in the mails point to the real site (for looking at the rendered mails; the tests read only the paths).
+// Local-only helpers (not part of the site): GET /__dev/mail?to=<address>[&kind=code|confirm|welcome|preview|pregled|notice]
+// → the newest mail to that address from D1 mail_log (JSON; ?id=<n> → that mail), GET /__dev/mails → all of them without
+// the bodies, POST /__dev/tick-reset → the newsletter's tick lock is free again unless a tick runs (a real tick waits a
+// minute; for scripts/qa/pregled_ui_test.py). A request header x-qa-ip becomes the visitor's IP (cf-connecting-ip), so tests can stay
+// under the rate limits. BV_SITE=https://www.blokvolt.rs makes the links in the mails point to the real site (for looking
+// at the rendered mails; the tests read only the paths).
 import { createRequire } from 'node:module';
 import { pathToFileURL, fileURLToPath } from 'node:url';
 import http from 'node:http';
@@ -67,10 +69,17 @@ http.createServer(async (rq, rs) => {
     if (url.pathname === '/__dev/mail' || url.pathname === '/__dev/mails') {
       const out = url.pathname === '/__dev/mails'
         ? (await db.prepare('SELECT id, at, to_addr, subject, kind, hdr FROM mail_log ORDER BY id').all()).results
+        : url.searchParams.get('id') ? await db.prepare('SELECT * FROM mail_log WHERE id = ?1').bind(Number(url.searchParams.get('id'))).first()
         : await db.prepare('SELECT * FROM mail_log WHERE to_addr = ?1' + (url.searchParams.get('kind') ? ' AND kind = ?2' : '') + ' ORDER BY id DESC LIMIT 1')
           .bind(...[url.searchParams.get('to') || ''].concat(url.searchParams.get('kind') ? [url.searchParams.get('kind')] : [])).first();
       rs.writeHead(200, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' });
       return rs.end(JSON.stringify(out));
+    }
+    if (url.pathname === '/__dev/tick-reset' && rq.method === 'POST') {
+      // only a finished tick: one that runs (the background tick of the first request, say) keeps its lock
+      await db.prepare("UPDATE pg_lock SET at = 0 WHERE until <= CAST(strftime('%s', 'now') AS INTEGER)").run().catch(() => {});
+      rs.writeHead(200, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' });
+      return rs.end('{"ok":true}');
     }
     const chunks = [];
     for await (const c of rq) chunks.push(c);

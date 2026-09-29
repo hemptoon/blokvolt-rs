@@ -24,4 +24,7 @@
 {% if issues %}<div class="rows">{% for x in issues %}<a class="row" href="{{ x.path }}"><span class="lg mono" aria-hidden="true">{{ ic('news') }}</span><div><h3>{{ x.title }}</h3>{% if x.date %}<div class="sub">{{ x.date }}</div>{% endif %}</div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
 {% else %}<p class="pg-none">Prvi broj uskoro.</p>{% endif %}
 </div>
+{# the fixed texts of the issue e-mails (scripts/pregled.py MAIL_T): translated here like a page's script texts, so they
+   are always on the site and in the translation memory; build.py reads them back from /en/pregled/ and /ru/pregled/ #}
+<script id="bv-i18n-mail" type="application/json">{{ PG_MAIL_T|tojson }}</script>
 {% endblock %}

@@ -168,6 +168,68 @@ CREATE TABLE IF NOT EXISTS mail_log (
   subject TEXT,
   html TEXT,
   text TEXT,
-  kind TEXT,                     -- code | confirm | welcome
+  kind TEXT,                     -- code | confirm | welcome | preview | pregled | notice
   hdr TEXT                       -- JSON: List-Unsubscribe headers and the Idempotency-Key
+);
+
+-- ---------------------------------------------------------------- sending the issues (RUNBOOK 3.27, "Sending the issues")
+-- POST /api/posta/tick reads /pregled-mail/index.json and /pregled-mail/<slug>.json (written by build.py) and uses the
+-- tables below; the worker creates them on first use like the ones above. Documentation only.
+
+-- The previews sent to the team address: one row per issue and content hash. An issue is sent only when its
+-- approved_hash is one of these hashes and still the hash of its file.
+CREATE TABLE IF NOT EXISTS pg_previews (
+  slug TEXT NOT NULL,
+  hash TEXT NOT NULL,            -- sha256 of the issue's content (langs + links), from the file
+  at INTEGER,                    -- when the three previews (sr, en, ru) went out
+  PRIMARY KEY (slug, hash)
+);
+
+-- One row per issue once it was queued (an issue is queued once), or stopped from /api/admin/posta.
+CREATE TABLE IF NOT EXISTS pg_issues (
+  slug TEXT PRIMARY KEY,
+  hash TEXT,                     -- the hash it was queued with
+  enqueued_at INTEGER,
+  queued INTEGER,                -- rows made at that moment
+  stopped_at INTEGER             -- POST /api/admin/posta {"stop": slug}: never queued or sent again
+);
+
+-- The send queue: one row per issue and reader. The mail is made when the row is sent, in the reader's language and
+-- topics of that moment; a reader who is no longer on, whose topics no longer match or whose address was suppressed is
+-- 'cancelled'. The address is removed (NULL) 60 days after the row was sent or given up, and at once when the account
+-- is deleted.
+CREATE TABLE IF NOT EXISTS pg_queue (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  slug TEXT NOT NULL,
+  email TEXT,
+  lang TEXT,                     -- sr | en | ru (at the enqueue; the language actually sent once it is sent)
+  topics TEXT,                   -- the reader's topics at the enqueue
+  month TEXT,                    -- YYYY-MM of the issue's date: a monthly reader gets one issue a calendar month
+  status TEXT NOT NULL,          -- queued | sent | failed | cancelled
+  attempts INTEGER NOT NULL DEFAULT 0,  -- a 429, a 5xx or a timeout from Resend: +1; failed at 5
+  provider_id TEXT,              -- Resend's id of the sent mail
+  at INTEGER,                    -- queued at
+  sent_at INTEGER,               -- counts against PREGLED_DAILY_CAP (newsletter mails per UTC day, default 30)
+  note TEXT,                     -- why cancelled or failed: off | suppressed | topics | stopped | admin | obrisan | resend <status>
+  UNIQUE (slug, email)
+);
+CREATE INDEX IF NOT EXISTS pg_queue_status ON pg_queue (status, id);
+CREATE INDEX IF NOT EXISTS pg_queue_sent ON pg_queue (sent_at);
+CREATE INDEX IF NOT EXISTS pg_queue_email ON pg_queue (email, month);
+
+-- Clicks on the links of the issues (GET /api/posta/klik?i=<slug>&l=<n>): counts per issue, link and day, nothing
+-- about the reader.
+CREATE TABLE IF NOT EXISTS pg_clicks (
+  slug TEXT NOT NULL,
+  l INTEGER NOT NULL,            -- the number in the issue's link table (links in its file)
+  day TEXT NOT NULL,             -- YYYY-MM-DD (UTC)
+  n INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (slug, l, day)
+);
+
+-- One row: at most one tick at a time and one a minute (the background tick of normal requests: one every 10 minutes).
+CREATE TABLE IF NOT EXISTS pg_lock (
+  id INTEGER PRIMARY KEY CHECK (id = 1),
+  at INTEGER NOT NULL DEFAULT 0, -- when the last tick started (unix seconds)
+  until INTEGER NOT NULL DEFAULT 0  -- while a tick runs: at + 600 (a tick that died frees the lock then); 0 when done
 );

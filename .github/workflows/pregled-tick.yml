@@ -1,0 +1,25 @@
+# Nedeljni pregled — the sender's clock (docs/RUNBOOK.md 3.27, "Sending the issues"). The worker sends the previews and
+# the issues only when something asks it to: POST https://www.blokvolt.rs/api/posta/tick. This workflow asks on a
+# schedule that costs few Actions minutes (the repository may be private): every 30 minutes from 05:00 to 09:59 UTC,
+# when issues are due (send_at in the Belgrade morning), and twice more in the day; 12 runs a day. Between the runs the
+# site's own /api traffic starts a tick at most every 10 minutes. The tick is public, idempotent and runs at most once a
+# minute; it answers counts only (never an address). A failed run (the worker down, or 503 "mail_off" while the
+# newsletter is on — RESEND_API_KEY missing) is e-mailed to the owner by GitHub. Nothing here builds, deploys or reads
+# the repository.
+name: Pregled tick
+on:
+  schedule:
+    - cron: '7,37 5-9 * * *'
+    - cron: '23 13,19 * * *'
+  workflow_dispatch:
+permissions: {}
+concurrency:
+  group: pregled-tick
+  cancel-in-progress: false
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Tick
+        run: curl -fsS --max-time 100 -X POST https://www.blokvolt.rs/api/posta/tick

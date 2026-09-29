@@ -73,6 +73,7 @@ credentials) — commits go through the owner's browser (section 6).
 | English and Russian pages | `content/i18n/en.json`, `content/i18n/ru.json`, `content/i18n/STYLE.md` | Translation memory {Serbian segment: translation}. `/en/` and `/ru/` are generated from the Serbian pages at build time by `scripts/i18n.py` — never edit `dist/en` or `dist/ru`. See 3.9. |
 | Advertising: media kit and booked ads | `content/data/oglasavanje.json`, `templates/oglasavanje.html`, `templates/_oglas.html`, `static/za-firme/` | `/za-firme/oglasavanje/` (SR/EN/RU) and its PDFs are made from the JSON; an ad appears only while an entry in `oglasi` is in its dates. See 3.26. |
 | Accounts and the newsletter | `content/data/site.json` → `accounts`, `pregled`; `worker/_worker.js` | "Moj BlokVolt" (/nalog/) and "Nedeljni pregled" (/pregled/). Both off until the owner switches them on. See 3.27. |
+| Newsletter issues | `content/pregled/<YYYY-MM-DD>-<slug>.md`, `static/assets/pregled/` (covers), `scripts/pregled.py` | One file per issue; the page /pregled/<slug>/ and the e-mail in three languages come from it; the worker sends after the owner approved the preview. See 3.27 "Sending the issues". |
 
 `indeks-cena.json` row schema (one row per app + station/tariff):
 
@@ -775,6 +776,9 @@ Since 26.09.2026 `.github/workflows/site-checks.yml` checks the site without any
   date older than 40 days). When a pending item is done (DS added, DMARC raised), make its WARN a FAIL.
 - Run it by hand in the owner's browser: Actions → Site checks → Run workflow. Locally:
   `python3 scripts/qa/live_smoke.py --base http://127.0.0.1:8787 --local` (pages, APK, headers of `dist/`).
+- **Pregled tick** (`.github/workflows/pregled-tick.yml`) is not a check but the newsletter's clock: 12 times a day it posts
+  to `/api/posta/tick` (3.27, "Sending the issues"). A red run means the worker did not answer, or answered 503 (`mail_off`:
+  `RESEND_API_KEY` is missing while the newsletter is on; `no_index`: the deploy has no `/pregled-mail/index.json`).
 - **Status badges** (plain SVG, readable with WebFetch): `…/actions/workflows/site-checks.yml/badge.svg?event=schedule`
   (live) and `…?event=push` (build) under `https://github.com/hemptoon/blokvolt-rs`. GitHub e-mails a failed
   run to the owner.
@@ -959,9 +963,9 @@ account. "Nedeljni pregled" (`/pregled/`): a weekly e-mail — news, public char
 opt-in. The link in the code mail and the one in the confirmation mail open a page with one button („Prijavite se“,
 „Potvrđujem prijavu“) and nothing happens until it is pressed: mail scanners open links, and some run the page's scripts
 too. Those pages take the token out of the address bar at once (kept for the tab in sessionStorage, so a reload works).
-The six-digit code works only in the browser that asked for it (cookie `bv_n`); the link works anywhere. Writing and
-sending the issues is a later step: nothing sends them yet. `content/pregled/<date>-<slug>.md` (front matter `title`,
-`date`, `lead`) already appears under „Prethodni brojevi“ and as a page `/pregled/<slug>/`.
+The six-digit code works only in the browser that asked for it (cookie `bv_n`); the link works anywhere. The issues —
+`content/pregled/<date>-<slug>.md`, a page `/pregled/<slug>/` each, sent by the worker after the owner approved a
+preview — are described under "Sending the issues" at the end of this section.
 
 **Flags** in `content/data/site.json`: `accounts.enabled`, `pregled.enabled`, `pregled.day` (`ponedeljak` … `nedelja`;
 the texts say "stiže petkom", "u petak", and so do the e-mails), and, when switching on, `since` (DD.MM.YYYY, the day it
@@ -1009,7 +1013,10 @@ build.py writes the worker's `CFG` line (the city slugs of `gradovi.json`, the n
 | `POST /api/posta/potvrdi` · `GET /api/posta/stanje?t=` · `POST /api/posta/podesavanja` | the button on /pregled/potvrda/ (→ on, consent row `confirm-click`, welcome mail once); state; topics, frequency, language |
 | `POST /api/posta/odjava?t=` | one-click unsubscribe (RFC 8058; no origin check, idempotent); `{token}` from the page. A GET goes to `/pregled/odjava/` and changes nothing |
 | `POST /api/posta/resend` | Resend's webhook, signed by Svix (below): a hard bounce or a spam complaint → the newsletter of that address off (`bounce`, `complaint`) and the address into `suppressions`; other events are ignored. One Resend team sends for BlokVolt and Evolako and every endpoint of the team gets the events of both: only events whose `data.from` is at the domain of `MAIL_FROM` count, the rest are answered `{ignored, other_sender}` and nothing is stored |
-| `GET /api/admin/posta` | owner's key: users, subscribers on / pending / off, subscribers by language, suppressed addresses (runs the cleanup first) |
+| `GET /api/admin/posta` | owner's key: users, subscribers on / pending / off, subscribers by language, suppressed addresses (runs the cleanup first); `pregled`: the issues with their rows by status, previews and clicks per link, today's sends and the cap |
+| `POST /api/admin/posta` | owner's key, `{"stop": "<slug>"}`: the issue's queued rows are cancelled at once and it is never queued or sent again (below) |
+| `POST /api/posta/tick` | the sender (below): public, no origin check, idempotent, one at a time and one a minute (`{skipped: "busy"}`); counts only in the answer |
+| `GET /api/posta/klik?i=<slug>&l=<n>` | the links in the issues: 302 to link n of the issue's table (www.blokvolt.rs or blokvolt.com only, else /pregled/); counts per issue, link and day |
 
 Answers never tell whether an address has an account or a subscription, not even by their timing: `/nalog/kod` and
 `/posta/prijava` answer before any mail work (`ctx.waitUntil`), so a failed send is only logged ("mail not sent: …") and
@@ -1052,8 +1059,9 @@ browser.
   A suppression is lifted by hand in the D1 console: `DELETE FROM suppressions WHERE email_hash = '<hex>';` where the
   hex is `printf '%s' 'adresa@example.com' | sha256sum` (the address trimmed and in lower case).
 - Optional: `MAIL_FROM` (default `BlokVolt <obavestenja@mail.blokvolt.com>`), `MAIL_REPLY_TO` (default
-  `hello@blokvolt.com`), `SITE` (default `https://www.blokvolt.rs`). Never set `MAIL_MODE` in production (`log` is for
-  local tests: mail goes to D1 and the cookies lose the Secure flag).
+  `hello@blokvolt.com`; also the only address the previews and the sender's notices go to), `SITE` (default
+  `https://www.blokvolt.rs`), `PREGLED_DAILY_CAP` (newsletter mails per UTC day, default 30; `0` pauses the sending). Never
+  set `MAIL_MODE` in production (`log` is for local tests: mail goes to D1 and the cookies lose the Secure flag).
 - In Resend (the owner's account): add the domain `mail.blokvolt.com` in the region **Ireland (eu-west-1)** — the privacy
   policy says "EU region" — enter the DNS records Resend shows at Spaceship (blokvolt.com) without touching the
   Spacemail records of the root domain, wait for "Verified", then create an API key with sending access to that domain only.
@@ -1078,7 +1086,7 @@ python3 scripts/qa/nalog_ui_test.py /tmp/bv-nalog                     # browser 
 
 `nalog_serve.mjs` serves `dist/` with `dist/_headers` (the CSP applies) and the real worker with D1; codes and links are
 read from its `/__dev/mail` (local only). `BV_SITE=https://www.blokvolt.rs` makes the links in the mails point to the
-real site when you only want to look at them.
+real site when you only want to look at them. The sender of the issues has its own tests (see "Sending the issues").
 
 **Privacy.** Codes, links and session tokens are stored only as SHA-256; `bv_s` is HttpOnly, `bv_in` only a hint; the
 consent log (time, source, text version, the day's IP fingerprint) is append-only; after an account is deleted, and 30
@@ -1087,6 +1095,157 @@ hashes too; reports and photos stay on the map without the account. The privacy 
 this — change it when the behaviour changes. The query strings `t=` (newsletter token) and `prijava=` (sign-in link)
 never reach the analytics: the pages take them out of the address bar, and bv.js gives PostHog (3.16) a `before_send` /
 `sanitize_properties` that strips them from every URL property and from the page address in session replay.
+
+#### Sending the issues (since 29.09.2026)
+
+One Markdown file per issue, `content/pregled/<YYYY-MM-DD>-<slug>.md`, read by `scripts/pregled.py`. The slug is the page
+`/pregled/<slug>/` and keys the previews, the queue and the clicks: never change it once a preview went out (and files are
+never deleted — an issue that will not go out gets `status: stopped`).
+
+```markdown
+---
+title: Charge&GO menja cene, pet novih punjača na autoputu
+date: 02.10.2026
+lead: Jedna rečenica o nedelji — preheader mejla i uvod stranice.
+cover: /assets/pregled/2026-10-02.jpg
+cover_alt: Brzi punjač na odmorištu pored autoputa
+status: draft
+send_at: 02.10.2026 08:00
+approved_hash:
+---
+## Nedelja u tri rečenice {#uvod}
+
+Tri kratke rečenice o nedelji.
+
+## Vesti {#vesti}
+
+- [Nacrt zakona o punjačima](/vesti/nacrt-zakona-o-punjacima/): cena po kWh na punjačima od 50 kW.
+
+## Cene javnog punjenja {#cene}
+
+…
+
+## Novi punjači na mapi {#punjaci}
+
+…
+```
+
+- **Front matter.** `title` (the H1 and the e-mail's subject), `date` (DD.MM.YYYY), `lead` (under the title; the preheader),
+  `cover` (a JPEG under `static/` — WebP works too, but Outlook for Windows does not show it — at least 600 px wide, 1200
+  looks sharp on phones, under 200 KB; the build puts `?v=<hash>` on it, and a changed picture changes the approved text),
+  `cover_alt`, `status`, `send_at` (Belgrade time; needed from `preview` on), `approved_hash` (empty until the approval),
+  optional `description` (the page's meta description, default the lead). Any other key stops the build (a typo would
+  otherwise pass silently).
+- **Sections.** The body is sections only: `## <heading> {#<topic>}`. Topics: `uvod` — the intro, every reader gets it
+  (optional; first, at most once) — and the subscription topics `vesti`, `cene`, `punjaci`; a second section of one topic
+  takes a suffix (`{#vesti-2}`). A reader gets the intro plus the sections of their topics, and nothing when the issue has
+  none of them. `moji` (changes at the reader's favourite chargers, promised on /pregled/ to account holders) is not built
+  yet — it needs a different text per reader — and stops the build. Inside a section: paragraphs, `###` subheadings, lists
+  (not nested: the translation would lose the outer item), `>` quotes, bold, italics, links. Links only to
+  `https://www.blokvolt.rs/…`, `https://blokvolt.com/…` or a site path (`/mapa/`), and site links must lead to a page. No
+  pictures (the cover is the only one), tables or raw HTML. `python3 scripts/lint_sr.py content/pregled/<file>.md` checks
+  the Serbian as for news.
+- **Statuses.**
+
+  | `status` | the page `/pregled/<slug>/` | what the tick does |
+  |---|---|---|
+  | `draft` | built, noindex, linked from nowhere | nothing |
+  | `preview` | the same | once per text: the issue in sr, en and ru to `MAIL_REPLY_TO` (hello@blokvolt.com) only, subject `[PREVIEW <first 8 of the hash>] <title>`, without List-Unsubscribe |
+  | `approved` | public — indexable, in the sitemap and under „Prethodni brojevi“ — while the newsletter is on | from `send_at` on: queues every reader once and sends within the budget, but only while `approved_hash` is a previewed hash and still the hash of the file |
+  | `stopped` | noindex, unlisted | cancels the rows still queued |
+
+  The safe side for the pages: nothing the owner has not approved is listed or indexable (a draft is still reachable by its
+  address, and the repository is public anyway). The build needs the draft's page: the translation memory reads it.
+- **The hash.** The build prints `pregled <slug> (<status>): hash <64 hex>; e-mail sr … KB, en … KB, ru … KB; … links` for
+  every issue; the same hash is `hash` in `dist/pregled-mail/<slug>.json`. It is the SHA-256 of what is sent — every word in
+  the three languages, every link, the cover's address — so any change after the approval makes another one. A preview or
+  approved issue with text left in Serbian, a link to a page that does not exist, or an e-mail of 100 KB or more (Gmail
+  clips larger ones) stops the build; a draft only warns.
+
+**The run** (the main session, with the owner):
+1. Write the issue with `status: draft` and its cover in `static/assets/pregled/`. Build, `python3 scripts/i18n.py todo`,
+   translate (3.9), build again: 0 left in Serbian. The fixed texts of the mail (header, footer) are in the memory already
+   (the `bv-i18n-mail` block on /pregled/).
+2. Set `status: preview` and `send_at`, build (pack), deploy, commit. The next tick sends the three previews to
+   hello@blokvolt.com — at most 30 minutes in the morning window, about 10 minutes when the site has traffic, or at once with
+   Actions → Pregled tick → Run workflow.
+3. The owner reads the three mails and answers «ок» in the chat. Copy the full hash of that preview (the build output, or
+   `hash` in `dist/pregled-mail/<slug>.json`; its first 8 characters are in the preview's subject — they must be the same)
+   into `approved_hash`, set `status: approved`, build (the output must show the same hash), deploy, commit. Change nothing
+   else in this step: a new hash is not sent (the team gets a notice instead).
+4. From `send_at` on, the tick queues the readers and sends. With the default cap of 30 a day a larger list takes several
+   days, oldest rows first; each mail is made when it goes out, in the reader's language and topics of that moment, and a
+   reader who unsubscribed meanwhile is skipped.
+
+A change after the approval (a typo while rows still wait): sending stops and the team gets «Выпуск … не отправлен: текст
+изменился после одобрения» once a day. `status: preview` → deploy → a new preview → «ок» → its hash in `approved_hash` +
+`status: approved` → deploy; the rows still waiting go out with the new text, nobody gets the issue twice. Once every row
+is done, a correction of the page needs no new approval (the build warns that `approved_hash` differs; nothing is sent). An
+approved hash that was never previewed: «Выпуск … не отправлен: хэш одобрения не совпадает с превью».
+
+**Stopping.** `status: stopped` + deploy is the lasting way: the queued rows are cancelled and nothing more goes out. At once,
+without a deploy, the owner (with the key; never type it yourself): `curl -X POST https://www.blokvolt.rs/api/admin/posta -H
+'Authorization: Bearer <ADMIN_KEY>' -H 'content-type: application/json' -d '{"stop":"<slug>"}'` — cancels the queued rows
+and marks the issue stopped in D1 (`pg_issues.stopped_at`), so it is never queued or sent again whatever its file says.
+Undo in the D1 console: `UPDATE pg_issues SET stopped_at = NULL WHERE slug = '…';` and
+`UPDATE pg_queue SET status = 'queued' WHERE slug = '…' AND note = 'admin';`. `PREGLED_DAILY_CAP=0` pauses all sending
+(previews and notices still go out); the newsletter switched off in `site.json` makes the tick do nothing; without
+`RESEND_API_KEY` no mail goes out at all.
+
+**Budget.** `PREGLED_DAILY_CAP` (Pages variable, optional, default 30) newsletter mails per UTC day; at most 25 per tick
+(10 per background tick), about 2 a second (Resend's rate for the whole team — Evolako sends through it too), and within 45
+D1 calls and fetches per tick (the free Workers plan allows 50 per request). Resend's own quota (the free plan: 100 a day,
+3,000 a month) is shared with the sign-in codes and confirmations: keep the cap well under it. A 429, a 5xx or a timeout ends
+the tick and the row waits (failed after 5 attempts); 401 or 403 (the key or the domain) ends it without counting and tells
+the team once a day («Рассылка выпуска … остановлена: Resend отвечает 401»); any other refusal fails only that row.
+
+**The tick.** `POST /api/posta/tick` does all of it, from three sources: `.github/workflows/pregled-tick.yml` (every 30
+minutes 05:00–09:59 UTC and at 13:23 and 19:23 UTC — 12 runs a day), every normal `/api` request after its answer at most
+every 10 minutes, and by hand (`curl -X POST https://www.blokvolt.rs/api/posta/tick`, or Run workflow). The one-row table
+`pg_lock` lets one tick run at a time and one a minute; the others answer `{"ok":true,"skipped":"busy"}`. The answer:
+`{ok, issues: [{slug, action, queued, sent, cancelled, failed, reason, send_at}], sent, sent_today, cap, stop}` — actions
+`none` (draft), `preview_sent`, `previewed`, `preview_failed` or `later` (tried again next tick), `blocked` (`reason`: `not_previewed`,
+`hash_changed`), `waiting` (before `send_at`), `enqueued`, `sending`, `done`, `stopped`; `stop` is why sending ended early
+(`cap`, `budget`, `time`, `resend_429`, `resend_503`, `resend_timeout`, `resend_401`, …). No address is ever in it. Newsletter
+off: `{"ok":true,"skipped":"off"}`; no `RESEND_API_KEY`: 503 `mail_off`; the deploy without `/pregled-mail/index.json`:
+503 `no_index`.
+
+**Click counter.** Every link in an issue is `https://www.blokvolt.rs/api/posta/klik?i=<slug>&l=<n>`: n is a line of the
+issue's link table (`links` in its file, written by the build; each language's links are their own lines; the settings and
+unsubscribe links are not counted). The worker redirects only to www.blokvolt.rs and blokvolt.com (anything else to
+/pregled/) and counts per issue, link and day in `pg_clicks` — no IP, no cookie, nothing about the reader. Mail scanners that
+open links and the team's clicks in the previews count too.
+
+**After a send**, check: `GET /api/admin/posta` with the owner's key → `pregled.issues[]` — `rows` (queued / sent / failed /
+cancelled), `previews`, `enqueued_at`, `clicks` per link with its URL, and `sent_today` against `cap`; the hello@ inbox for
+notices; bounces and complaints come through the Resend webhook as before (suppressions); Resend's dashboard (tags `kind`
+`pregled` and `issue` = the slug). In the D1 console:
+`SELECT status, note, COUNT(*) FROM pg_queue WHERE slug = '…' GROUP BY status, note;` — `note` says why a row was cancelled
+(`off` = unsubscribed meanwhile, `suppressed`, `topics`, `stopped`, `admin`, `obrisan` = account deleted) or failed
+(`resend <status>`).
+
+**Files and tables.** The build writes `dist/pregled-mail/<slug>.json` — `{slug, date, month, title, send_at (UTC), status,
+approved_hash, hash, topics, links, langs: {sr|en|ru: {subject, preheader, head_html, head_text, sections: [{topic, html,
+text}], foot_html, foot_text}}}`, the reader's links as `{{PREFS}}` and `{{UNSUB}}` — and `index.json` (the same without
+`links` and `langs`), served noindex and no-store (`_headers`), in no sitemap and no search; only the worker reads them
+(`env.ASSETS`). Tables (created by the worker; `worker/schema.sql`): `pg_previews`, `pg_issues`, `pg_queue` (one row per
+issue and reader; the address is removed 60 days after the row is done and at once when the account is deleted; the
+account's export lists the issues sent to it), `pg_clicks`, `pg_lock`. Nothing in `content/podaci/izmene.md` until the
+first issue.
+
+**Tests.**
+
+```bash
+MINIFLARE_DIR=/tmp/mf node scripts/qa/pregled_sender_test.mjs       # the sender: 80 checks, issue files written by the test
+python3 scripts/qa/pregled_build_test.py                             # the build side and three builds (--quick: without builds)
+BV_QA_ACCOUNTS=1 BV_QA_PREGLED=1 BV_QA_PREGLED_FIXTURE=1 python3 build.py
+MINIFLARE_DIR=/tmp/mf node scripts/qa/nalog_serve.mjs dist 8788 &
+python3 scripts/qa/pregled_ui_test.py /tmp/bv-pregled                # end to end: previews, approval, the readers' mails, clicks
+```
+
+`BV_QA_PREGLED_FIXTURE=1` adds the test issue `scripts/qa/fixtures/pregled/2026-09-25-qa-probni-broj.md` (made of texts
+already in the translation memory) as a preview; `=approved` (or another status) builds it with that status, and approved
+takes its own hash — QA builds only. Build again without it before packing.
 
 ## 4. Build and check
 

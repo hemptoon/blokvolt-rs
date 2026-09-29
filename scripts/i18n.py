@@ -26,6 +26,9 @@ INLINE = {'a', 'b', 'strong', 'i', 'em', 'small', 'span', 'br', 'code', 'sup', '
           'mark', 'u', 's', 'del', 'ins', 'wbr', 'q', 'cite', 'kbd', 'var', 'bdi', 'bdo', 'img', 'output'}
 SKIP = {'script', 'style', 'svg', 'noscript_', 'template', 'head', 'code', 'pre'}
 ATTRS = ('alt', 'title', 'aria-label', 'placeholder', 'data-label')
+# JSON blocks of plain strings translated like running text: the page's script texts, and on /pregled/ the fixed texts
+# of the newsletter's e-mails (read back by scripts/pregled.py)
+UI_BLOCKS = ['bv-i18n', 'bv-i18n-mail']
 NUM = re.compile(r'(?<![\w.,])\d+(?:[.,]\d+)+(?![\w])')
 PH = re.compile(r'⟦(\d+)⟧')
 UNITS = {'rsd', 'kw', 'kwh', 'km', 'min', 'h', 'v', 'a', 'ma', 'eur', 'mid', 'ac', 'dc', 'x', 'ocpp', 'rfid'}
@@ -135,7 +138,7 @@ def page_units(soup):
             units.append(('meta', m))
     for s in soup.find_all('script', type='application/ld+json'):
         units.append(('ld', s))
-    for s in soup.find_all('script', id='bv-i18n'):
+    for s in soup.find_all('script', id=UI_BLOCKS):
         units.append(('ui', s))
     return units
 
@@ -323,7 +326,7 @@ class Renderer:
             except Exception:
                 continue
             sc.string = json.dumps(self.tr_ld(data, lang, where), ensure_ascii=False, indent=1)
-        for sc in soup.find_all('script', id='bv-i18n'):
+        for sc in soup.find_all('script', id=UI_BLOCKS):
             data = json.loads(sc.string or '{}')
             for k, v in data.items():
                 if isinstance(v, str):

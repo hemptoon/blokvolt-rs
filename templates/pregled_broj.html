@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import ic %}
+{% import '_pregled_box.html' as pg %}
+{# One issue of Nedeljni pregled (docs/RUNBOOK.md 3.27, "Sending the issues"): content/pregled/<date>-<slug>.md,
+   read by scripts/pregled.py. The title, the lead, the cover's alt text and the sections (data-pg-topic) are what the
+   e-mail is made of: after the English and Russian pages exist, build.py reads them back from all three, so the e-mail
+   passes the translation memory like any page. Public (indexable, in the sitemap and under „Prethodni brojevi“) only
+   with status approved and the newsletter on; drafts, previews and stopped issues are built, but noindex and unlisted. #}
+{% block ogtype %}article{% endblock %}
+{% block ogimage %}<meta property="og:image" content="{{ SITE }}{{ x.cover.url }}">
+<meta property="og:image:width" content="{{ x.cover.w }}">
+<meta property="og:image:height" content="{{ x.cover.h }}">
+<meta property="og:image:alt" content="{{ x.cover.alt }}">{% endblock %}
+{% block jsonld %}{% if not noindex %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "Article", "headline": {{ x.title|tojson }}, "description": {{ description|tojson }}, "inLanguage": "sr-Latn", "url": "{{ SITE }}{{ canon }}", "datePublished": "{{ x.iso }}", "dateModified": "{{ x.iso }}", "image": ["{{ SITE }}{{ x.cover.url }}"], "author": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/o-sajtu/"}, "publisher": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}, "isAccessibleForFree": true},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Nedeljni pregled", "item": "{{ SITE }}/pregled/"}, {"@type": "ListItem", "position": 3, "name": {{ x.title|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
+ ]
+}</script>{% endif %}{% endblock %}
+{% block pagehead %}<div class="ph news-ph" data-bv-note><div class="wrap">
+<nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a><span aria-hidden="true">›</span><a href="/pregled/">Nedeljni pregled</a></nav>
+<p class="news-meta"><time datetime="{{ x.iso }}">{{ x.date }}</time></p>
+<h1 data-pg="title">{{ x.title }}</h1>
+<p class="lead" data-pg="lead">{{ x.lead }}</p>
+</div></div>{% endblock %}
+{% block content %}<figure class="fig pg-cover"><img src="{{ x.cover.url }}" width="{{ x.cover.w }}" height="{{ x.cover.h }}" alt="{{ x.cover.alt }}" fetchpriority="high" decoding="async" data-pg="cover"></figure>
+<div class="prose pg-issue">
+{% for s in x.sections %}<section class="pg-sec" id="{{ s.id }}" data-pg-topic="{{ s.topic }}">
+<h2>{{ s.heading }}</h2>
+{{ s.html|safe }}
+</section>
+{% endfor %}</div>
+{% if PG.on %}{{ pg.box() }}
+{% endif %}{% if others %}<div class="sec"><div class="sec-head"><h2>Prethodni brojevi</h2></div>
+<div class="rows">{% for o in others %}<a class="row" href="{{ o.path }}"><span class="lg mono" aria-hidden="true">{{ ic('news') }}</span><div><h3>{{ o.title }}</h3><div class="sub">{{ o.date }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div></div>
+{% endif %}{% endblock %}

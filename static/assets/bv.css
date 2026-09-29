@@ -1295,6 +1295,12 @@ html.nl-in .nl-v-out,html:not(.nl-in) .nl-v-in{display:none!important}
 .pg-consent a{color:var(--ink2);text-underline-offset:2px}
 .pg-form .f-msg{margin:12px 0 0;overflow-wrap:anywhere}
 .pg-none{margin:0;color:var(--mut)}
+/* one issue, /pregled/<slug>/ (templates/pregled_broj.html): the cover, then the sections as in the e-mail */
+.pg-cover{max-width:740px}
+.pg-issue .pg-sec{border-top:1px solid var(--line);margin:26px 0 0;padding:2px 0 0}
+.pg-issue .pg-sec:first-child{border-top:0;margin-top:0;padding-top:0}
+.pg-issue .pg-sec h2{margin-top:22px}
+.pg-issue .pg-sec:first-child h2{margin-top:0}
 /* the box at the end of news items, on /vesti/ and /javno-punjenje/ */
 .pg-box{max-width:760px;margin:30px 0 0;padding:18px 20px;background:var(--voltbg);border:1px solid #E1F0A6;border-radius:var(--r2)}
 .pg-box-h{display:flex;gap:12px;align-items:flex-start;margin:0 0 12px}

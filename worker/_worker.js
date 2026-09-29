@@ -6,7 +6,8 @@
 // Accounts ("Moj BlokVolt", /api/nalog/*) and the newsletter (Nedeljni pregled, /api/posta/*): see the section
 // "accounts and the newsletter" below and docs/RUNBOOK.md 3.27. They need the secret RESEND_API_KEY to send mail;
 // optional: the secret RESEND_WEBHOOK_SECRET (bounces and spam complaints from Resend), the variables MAIL_FROM,
-// MAIL_REPLY_TO, SITE, and MAIL_MODE=log for local tests only.
+// MAIL_REPLY_TO, SITE, PREGLED_DAILY_CAP (newsletter mails a day, see "sending the issues"), and MAIL_MODE=log for
+// local tests only.
 
 const JSON_HEADERS = { 'content-type': 'application/json; charset=utf-8' };
 const STATUSES = new Set(['ok', 'problem', 'broken', 'missing']);
@@ -311,7 +312,8 @@ async function adminDecide(request, env) {
 // the time of the answer never tells anything about the address. MAIL_MODE=log (local tests only) writes the mail to the D1 table mail_log
 // instead and leaves the Secure flag off the cookies, so they work on http://localhost.
 // Tables are created here on first use (once per isolate), like dk: users, auth_codes, sessions, favs, subs, consents,
-// suppressions (and mail_log in log mode); checkins and photos get a uid column. Documentation: worker/schema.sql.
+// suppressions, the sender's pg_previews, pg_issues, pg_queue, pg_clicks, pg_lock (and mail_log in log mode); checkins and
+// photos get a uid column. Documentation: worker/schema.sql. Sending the issues: the section after the admin counts.
 const DAY_S = 86400;
 const SESSION_S = 90 * DAY_S;            // a session ends after 90 days without use
 const CODE_S = 15 * 60;                  // sign-in code and link
@@ -331,9 +333,9 @@ const DEFAULT_TOPICS = 'vesti,cene,punjaci';
 const DCS = new Set(['ccs2', 'chademo', 'none']);
 const CONSENT_V = 'pregled-v1';          // version of the consent sentence under the newsletter forms
 const MAIL_FROM = 'BlokVolt <obavestenja@mail.blokvolt.com>', MAIL_REPLY_TO = 'hello@blokvolt.com';
-// build.py rewrites the next line in dist/_worker.js: the city slugs of content/data/gradovi.json and the day of
-// "pregled" in content/data/site.json (the values here are the ones the tests use)
-const CFG = { cities: ['beograd', 'novi-sad', 'nis', 'subotica', 'cacak', 'kragujevac'], day: 'petak' };
+// build.py rewrites the next line in dist/_worker.js: the city slugs of content/data/gradovi.json, the day of "pregled"
+// in content/data/site.json and whether it is on (the sender works only then); the values here are the ones the tests use
+const CFG = { cities: ['beograd', 'novi-sad', 'nis', 'subotica', 'cacak', 'kragujevac'], day: 'petak', pregled: true };
 // "the first issue arrives on <day>" in the three languages
 const DAYS = {
   ponedeljak: { sr: 'u ponedeljak', en: 'on Monday', ru: 'в понедельник' }, utorak: { sr: 'u utorak', en: 'on Tuesday', ru: 'во вторник' },
@@ -433,9 +435,14 @@ function topicsOf(v) {
 }
 
 // ---------------------------------------------------------------- tables (created once per isolate)
-let SCHEMA_OK = false;
+// One run at a time per isolate: the background tick of the issues may start while a request checks the tables too.
+let SCHEMA_OK = false, SCHEMA_RUN = null;
 async function ensureSchema(env) {
   if (SCHEMA_OK) return;
+  if (!SCHEMA_RUN) SCHEMA_RUN = createTables(env).finally(() => { SCHEMA_RUN = null; });
+  return SCHEMA_RUN;
+}
+async function createTables(env) {
   // auth_codes is keyed by (address, nonce) since the codes are bound to a browser; a table of the older shape (one code
   // per address) is replaced: its rows live 15 minutes
   try { await env.DB.prepare('SELECT nonce FROM auth_codes LIMIT 1').first(); } catch (e) {
@@ -458,6 +465,17 @@ async function ensureSchema(env) {
     'CREATE INDEX IF NOT EXISTS consents_email ON consents (email)',
     'CREATE TABLE IF NOT EXISTS rl (k TEXT NOT NULL, day TEXT NOT NULL, n INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (k, day))',
     'CREATE TABLE IF NOT EXISTS suppressions (email_hash TEXT PRIMARY KEY, reason TEXT, at INTEGER)',
+    // sending the issues
+    'CREATE TABLE IF NOT EXISTS pg_previews (slug TEXT NOT NULL, hash TEXT NOT NULL, at INTEGER, PRIMARY KEY (slug, hash))',
+    'CREATE TABLE IF NOT EXISTS pg_issues (slug TEXT PRIMARY KEY, hash TEXT, enqueued_at INTEGER, queued INTEGER, stopped_at INTEGER)',
+    `CREATE TABLE IF NOT EXISTS pg_queue (id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT NOT NULL, email TEXT, lang TEXT, topics TEXT,
+      month TEXT, status TEXT NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, provider_id TEXT, at INTEGER, sent_at INTEGER, note TEXT,
+      UNIQUE (slug, email))`,
+    'CREATE INDEX IF NOT EXISTS pg_queue_status ON pg_queue (status, id)',
+    'CREATE INDEX IF NOT EXISTS pg_queue_sent ON pg_queue (sent_at)',
+    'CREATE INDEX IF NOT EXISTS pg_queue_email ON pg_queue (email, month)',
+    'CREATE TABLE IF NOT EXISTS pg_clicks (slug TEXT NOT NULL, l INTEGER NOT NULL, day TEXT NOT NULL, n INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (slug, l, day))',
+    'CREATE TABLE IF NOT EXISTS pg_lock (id INTEGER PRIMARY KEY CHECK (id = 1), at INTEGER NOT NULL DEFAULT 0, until INTEGER NOT NULL DEFAULT 0)',
   ];
   if (devMode(env)) q.push(`CREATE TABLE IF NOT EXISTS mail_log (id INTEGER PRIMARY KEY AUTOINCREMENT, at INTEGER, to_addr TEXT,
       subject TEXT, html TEXT, text TEXT, kind TEXT, hdr TEXT)`);
@@ -476,7 +494,8 @@ async function ensureSchema(env) {
 
 // on ~2 % of the requests: expired codes and sessions, consent histories 3 years after their last withdrawal, and
 // unconfirmed sign-ups older than 30 days — deleted; their consent rows stay as proof, with a row saying the sign-up
-// expired, but keep only the SHA-256 of the address (as after a deleted account). At most 50 sign-ups a run.
+// expired, but keep only the SHA-256 of the address (as after a deleted account). At most 50 sign-ups a run. The rows of
+// sent issues lose the address 60 days after they were sent (or given up): only the counts stay.
 async function housekeeping(env) {
   const t = now(), cut = t - PENDING_S;
   await env.DB.batch([
@@ -484,6 +503,7 @@ async function housekeeping(env) {
     env.DB.prepare('DELETE FROM sessions WHERE exp < ?1').bind(t),
     env.DB.prepare(`DELETE FROM consents WHERE email IN (SELECT c.email FROM consents c
       WHERE c.id = (SELECT MAX(x.id) FROM consents x WHERE x.email = c.email) AND c.granted = 0 AND c.at < ?1)`).bind(t - CONSENT_KEEP_S),
+    env.DB.prepare(`UPDATE pg_queue SET email = NULL WHERE email IS NOT NULL AND status != 'queued' AND COALESCE(sent_at, at) < ?1`).bind(t - PG_KEEP_S),
   ]);
   const old = await env.DB.prepare(`SELECT email FROM subs WHERE status = 'pending' AND created_at < ?1 LIMIT 50`).bind(cut).all();
   const q = [];
@@ -562,34 +582,46 @@ async function unsuppress(env, email, reasons) {
   const q = 'DELETE FROM suppressions WHERE email_hash = ?1 AND reason IN (' + reasons.map((_, i) => '?' + (i + 2)).join(', ') + ')';
   await env.DB.prepare(q).bind(await sha256(email), ...reasons).run();
 }
-// m: {to, subject, html, text, kind, idem, unsub}. unsub = the one-click URL of a newsletter mail: List-Unsubscribe
+// m: {to, subject, html, text, kind, idem, unsub, tags?}. unsub = the one-click URL of a newsletter mail: List-Unsubscribe
 // (RFC 8058, with a mailto for clients without one-click). idem = Idempotency-Key, so a retry never sends twice.
-// Every mail (code, confirmation, welcome, and the newsletter later) goes through here: nothing is sent to a suppressed
-// address, and the caller answers as if it had been, so the answer never tells that the address is on the list.
+// Every mail to a reader (code, confirmation, welcome, the issues) goes through a suppression check first: nothing is
+// sent to a suppressed address, and the caller answers as if it had been, so the answer never tells that the address is
+// on the list. sendMail does it for the mails of the accounts; the issues check a whole batch at once (pgSend).
 async function sendMail(env, m) {
   if (await suppressed(env, m.to, m.kind)) return true;
+  return (await deliver(env, m, false)).ok;
+}
+// one mail to Resend (or, in log mode, to mail_log): {ok, status, id}, status 0 = timeout or network error. A 5xx, a 429
+// or a timeout is tried once more with the same Idempotency-Key, unless `once` (the issues: their loop waits for the next
+// tick instead).
+async function deliver(env, m, once) {
   const hdr = m.unsub ? { 'List-Unsubscribe': '<' + m.unsub + '>, <mailto:' + replyTo(env) + '?subject=odjava>', 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' } : null;
   if (devMode(env)) {
-    await env.DB.prepare('INSERT INTO mail_log (at, to_addr, subject, html, text, kind, hdr) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)')
+    const r = await env.DB.prepare('INSERT INTO mail_log (at, to_addr, subject, html, text, kind, hdr) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)')
       .bind(now(), m.to, m.subject, m.html, m.text, m.kind, JSON.stringify({ ...(hdr || {}), 'Idempotency-Key': m.idem || '' })).run();
-    return true;
+    return { ok: true, status: 200, id: 'log-' + ((r.meta && r.meta.last_row_id) || '') };
   }
-  if (!env.RESEND_API_KEY) return false;
+  if (!env.RESEND_API_KEY) return { ok: false, status: 0, id: null };
   const payload = { from: env.MAIL_FROM || MAIL_FROM, to: [m.to], reply_to: replyTo(env), subject: m.subject, html: m.html, text: m.text,
-    tags: [{ name: 'kind', value: m.kind }] };
+    tags: m.tags || [{ name: 'kind', value: m.kind }] };
   if (hdr) payload.headers = hdr;
-  for (let i = 0; i < 2; i++) {
+  let out = { ok: false, status: 0, id: null };
+  for (let i = 0; i < (once ? 1 : 2); i++) {
     if (i) await new Promise(ok => setTimeout(ok, 700));
     try {
       const r = await fetch('https://api.resend.com/emails', {
         method: 'POST', body: JSON.stringify(payload), signal: AbortSignal.timeout(8000),
         headers: { authorization: 'Bearer ' + env.RESEND_API_KEY, 'content-type': 'application/json', ...(m.idem ? { 'idempotency-key': m.idem } : {}) },
       });
-      if (r.ok) return true;
-      if (r.status < 500 && r.status !== 429) return false;       // refused: a retry would not help
-    } catch (e) { /* timeout or network error: once more, with the same Idempotency-Key */ }
+      out = { ok: r.ok, status: r.status, id: null };
+      if (r.ok) {
+        try { out.id = String((await r.json()).id || '') || null; } catch (e) { /* sent; only the id is unknown */ }
+        return out;
+      }
+      if (r.status < 500 && r.status !== 429) return out;          // refused: a retry would not help
+    } catch (e) { out = { ok: false, status: 0, id: null }; }     // timeout or network error: once more, same Idempotency-Key
   }
-  return false;
+  return out;
 }
 
 const MAIL_T = {
@@ -891,6 +923,7 @@ async function nalogIzvoz(request, env) {
       .map(x => ({ at: x.at, seen: x.seen, exp: x.exp, kind: x.kind, this_device: x.h === s.h })),
     newsletter: await env.DB.prepare(`SELECT email, lang, topics, freq, status, src, consent_v, created_at, confirmed_at, off_at, off_reason
       FROM subs WHERE email = ?1`).bind(u.email).first(),
+    newsletter_issues: await all('SELECT slug, lang, status, at, sent_at FROM pg_queue WHERE email = ?1 ORDER BY id', u.email),
     consents: await all('SELECT kind, granted, text_v, src, at, ip FROM consents WHERE email = ?1 ORDER BY id', u.email),
     checkins: await all('SELECT id, st, s, r, c, n, cs, at, lang, ip FROM checkins WHERE uid = ?1 ORDER BY at', s.uid),
     photos: (await all('SELECT id, st, status, at, cap, w, h, mime, ip FROM photos WHERE uid = ?1 ORDER BY at', s.uid))
@@ -902,6 +935,7 @@ async function nalogIzvoz(request, env) {
 
 // deletes the account, its sessions, favourites, codes and newsletter sign-up. The consent history keeps only the
 // SHA-256 of the address (proof of past consent without the address); reports and photos stay on the map without the link.
+// The rows of the issues keep no address either, and an issue still waiting for this address is not sent.
 async function nalogObrisi(request, env, b) {
   const s = await sessionOf(request, env);
   if (!s) return bad('auth', 401);
@@ -916,7 +950,9 @@ async function nalogObrisi(request, env, b) {
     }
     q.push(env.DB.prepare('UPDATE consents SET email = ?1 WHERE email = ?2').bind('sha256:' + await sha256(u.email), u.email),
       env.DB.prepare('DELETE FROM subs WHERE email = ?1').bind(u.email),
-      env.DB.prepare('DELETE FROM auth_codes WHERE email = ?1').bind(u.email));
+      env.DB.prepare('DELETE FROM auth_codes WHERE email = ?1').bind(u.email),
+      env.DB.prepare(`UPDATE pg_queue SET email = NULL, status = CASE WHEN status = 'queued' THEN 'cancelled' ELSE status END,
+        note = CASE WHEN status = 'queued' THEN 'obrisan' ELSE note END WHERE email = ?1`).bind(u.email));
   }
   q.push(env.DB.prepare('DELETE FROM favs WHERE uid = ?1').bind(s.uid),
     env.DB.prepare('DELETE FROM sessions WHERE uid = ?1').bind(s.uid),
@@ -1147,8 +1183,9 @@ async function postaResend(request, env) {
   return json({ ok: true, suppressed: to.length });
 }
 
-// counts for the owner; the cleanup runs first, so expired sign-ups are not counted
-async function adminPosta(env) {
+// counts for the owner; the cleanup runs first, so expired sign-ups are not counted. pregled: the issues — rows by status,
+// clicks per link, previews, today's sends against the cap.
+async function adminPosta(request, env) {
   await ensureSchema(env);
   await housekeeping(env);
   const n = async sql => ((await env.DB.prepare(sql).first()) || {}).n || 0;
@@ -1156,7 +1193,361 @@ async function adminPosta(env) {
   return json({ ok: true, users: await n('SELECT COUNT(*) AS n FROM users'), subs_on: await n(`SELECT COUNT(*) AS n FROM subs WHERE status = 'on'`),
     subs_pending: await n(`SELECT COUNT(*) AS n FROM subs WHERE status = 'pending'`), subs_off: await n(`SELECT COUNT(*) AS n FROM subs WHERE status = 'off'`),
     suppressed: await n('SELECT COUNT(*) AS n FROM suppressions'),
-    by_lang: Object.fromEntries(by.results.map(r => [r.lang || '?', r.n])) });
+    by_lang: Object.fromEntries(by.results.map(r => [r.lang || '?', r.n])), pregled: await pgStats(request, env) });
+}
+
+// ================================================================ sending the issues (docs/RUNBOOK.md 3.27, "Sending the issues")
+// build.py writes every issue of content/pregled/ as /pregled-mail/<slug>.json — the e-mail in sr, en and ru: a head, the
+// sections by topic (uvod goes to everyone), a foot with {{PREFS}} and {{UNSUB}} for the reader's own links; every other
+// link goes through the click counter GET /api/posta/klik — and lists them in /pregled-mail/index.json. The worker reads
+// both through env.ASSETS. POST /api/posta/tick (a GitHub Actions schedule, .github/workflows/pregled-tick.yml; normal
+// /api requests also start one in the background, at most every 10 minutes) does the work, one tick at a time (the
+// one-row table pg_lock: a tick starts only when none runs and the last one started a minute ago), for every issue:
+//   preview  — once per content hash: the issue in sr, en and ru to the team address (MAIL_REPLY_TO) and nowhere else,
+//              subject "[PREVIEW <first 8 of the hash>] …", without List-Unsubscribe; recorded in pg_previews;
+//   approved — when approved_hash is a previewed hash and still the file's hash, and send_at has passed: one row per reader
+//              in pg_queue (newsletter on; a topic of the issue among the reader's topics; a monthly reader only while no
+//              other issue of that calendar month is queued or sent to them), once per issue (pg_issues). A hash that does
+//              not match sends nothing and the team one notice a day per issue and reason;
+//   stopped  — its rows still queued are cancelled.
+// Then the queued rows, oldest first, within the budget: PREGLED_DAILY_CAP newsletter mails per UTC day (default 30; 0
+// pauses the sending), 25 a tick (10 in the background), paced for Resend's 2 requests a second, and within 45 D1 calls and
+// fetches (the free plan allows 50 per request; 30 in the background, next to the request's own). Every mail is made at
+// the moment it is sent, for the reader's current language and topics; a reader who unsubscribed meanwhile, whose topics
+// no longer match or whose address was suppressed is skipped (cancelled). List-Unsubscribe as in the welcome mail, and an
+// Idempotency-Key per issue and address, so a tick that died after sending never sends twice (Resend keeps keys a day).
+// A 429, a 5xx or a timeout ends the tick and the row waits (failed after 5 attempts); 401 or 403 (the key or the domain)
+// ends it without counting an attempt and tells the team. The answer has counts only, never an address.
+const PG_GAP_S = 60, PG_AUTO_GAP_S = 600;          // POST /api/posta/tick: one a minute; the background tick: one every 10 minutes
+const PG_MAX = 25, PG_AUTO_MAX = 10;                // newsletter mails a tick
+const PG_SUB = 45, PG_AUTO_SUB = 30;                // D1 calls and fetches a tick may use
+const PG_CAP = 30;                                  // newsletter mails a UTC day, unless PREGLED_DAILY_CAP says otherwise
+const PG_TRIES = 5;                                 // attempts before a row is 'failed'
+const PG_PACE_MS = 550;                             // Resend: 2 requests a second for the whole team (Evolako sends too)
+const PG_HOLD_S = 600;                              // a tick that died holds the lock at most this long
+const PG_KEEP_S = 60 * DAY_S;                       // the address of a finished row is removed after 60 days (housekeeping)
+const PG_SLUG = /^[a-z0-9](?:[a-z0-9-]{0,58}[a-z0-9])?$/;
+const PG_LINK = /^https:\/\/(www\.blokvolt\.rs|blokvolt\.com)\/[^\s"<>\\]*$/;   // the same rule as scripts/pregled.py
+const PG_TOPICS = ['vesti', 'cene', 'punjaci'];     // the topics an issue has sections for; 'moji' comes later
+const PG_HASH = /^[0-9a-f]{64}$/;
+const pgCap = env => {
+  const v = String(env.PREGLED_DAILY_CAP == null ? '' : env.PREGLED_DAILY_CAP).trim();
+  return /^\d{1,6}$/.test(v) ? Number(v) : PG_CAP;
+};
+const sleep = ms => new Promise(ok => setTimeout(ok, ms));
+
+// a JSON file of the site, read through env.ASSETS; null when it is missing or broken
+async function assetJson(env, base, path) {
+  try {
+    const r = await env.ASSETS.fetch(new Request(new URL(path, base)));
+    return r.ok ? await r.json() : null;
+  } catch (e) { return null; }
+}
+
+// the background tick: normal /api requests start one after their answer, at most every 10 minutes. The time of this
+// isolate's last start is checked first, so a normal request costs nothing more; the D1 lock keeps it to one every 10
+// minutes across isolates.
+let PG_AUTO_AT = 0;
+function pgAuto(request, env, ctx, path) {
+  if (!CFG.pregled || !env.DB || !mailOn(env) || !ctx || !ctx.waitUntil || path.startsWith('/api/posta/tick')) return;
+  const t = Date.now();
+  if (t - PG_AUTO_AT < PG_AUTO_GAP_S * 1000) return;
+  PG_AUTO_AT = t;
+  ctx.waitUntil(pgTick(env, request.url, { gap: PG_AUTO_GAP_S, max: PG_AUTO_MAX, sub: PG_AUTO_SUB, ms: 20000 })
+    .then(r => { if (!r.skipped) console.log('pregled tick (background): ' + JSON.stringify(r)); })
+    .catch(e => console.log('pregled tick (background): ' + (e && e.message))));
+}
+
+// POST /api/posta/tick — public, no origin check (GitHub Actions calls it), idempotent: a second call within a minute
+// answers {skipped: "busy"}.
+async function postaTick(request, env) {
+  if (!CFG.pregled) return json({ ok: true, skipped: 'off' });
+  if (!mailOn(env)) return bad('mail_off', 503);
+  const r = await pgTick(env, request.url, { gap: PG_GAP_S, max: PG_MAX, sub: PG_SUB, ms: 60000 });
+  if (!r.skipped) console.log('pregled tick: ' + JSON.stringify(r));
+  return json(r, r.ok ? 200 : 503);
+}
+
+async function pgTick(env, base, o) {
+  const fresh = !SCHEMA_OK;
+  await ensureSchema(env);
+  const t = now();
+  const lock = await env.DB.prepare(`INSERT INTO pg_lock (id, at, until) VALUES (1, ?1, ?2)
+    ON CONFLICT (id) DO UPDATE SET at = ?1, until = ?2 WHERE pg_lock.at <= ?3 AND pg_lock.until <= ?1 RETURNING at`)
+    .bind(t, t + PG_HOLD_S, t - o.gap).first();
+  if (!lock) return { ok: true, skipped: 'busy' };
+  const w = { env, base, o, t, sub: (fresh ? 7 : 0) + 2, files: new Map(), calls: 0, end: Date.now() + o.ms };
+  try {
+    return await pgWork(w);
+  } finally {
+    // released; the next tick may start `gap` seconds after this one started
+    await env.DB.prepare('UPDATE pg_lock SET until = 0 WHERE id = 1 AND at = ?1').bind(t).run().catch(() => {});
+  }
+}
+
+async function pgWork(w) {
+  const { env, t } = w;
+  const idx = await assetJson(env, w.base, '/pregled-mail/index.json');
+  w.sub++;
+  if (!idx || !Array.isArray(idx.issues)) return { ok: false, error: 'no_index' };
+  const [pv, st, qd, sd] = (await env.DB.batch([
+    env.DB.prepare('SELECT slug, hash FROM pg_previews'),
+    env.DB.prepare('SELECT slug, enqueued_at, stopped_at FROM pg_issues'),
+    env.DB.prepare(`SELECT slug, COUNT(*) AS n FROM pg_queue WHERE status = 'queued' GROUP BY slug`),
+    env.DB.prepare(`SELECT COUNT(*) AS n FROM pg_queue WHERE status = 'sent' AND sent_at >= ?1`).bind(Math.floor(t / DAY_S) * DAY_S),
+  ])).map(r => r.results);
+  w.sub++;
+  const previewed = new Set(pv.map(r => r.slug + ' ' + r.hash)), state = new Map(st.map(r => [r.slug, r]));
+  const queued = new Map(qd.map(r => [r.slug, r.n]));
+  const out = { ok: true, issues: [], sent: 0, sent_today: (sd[0] || {}).n || 0, cap: pgCap(env) }, ready = [];
+  for (const it of idx.issues) {
+    if (!it || typeof it !== 'object' || !PG_SLUG.test(String(it.slug)) || !PG_HASH.test(String(it.hash))) continue;
+    const s = state.get(it.slug) || {}, r = { slug: it.slug, action: 'none', queued: queued.get(it.slug) || 0 };
+    out.issues.push(r);
+    if (it.status === 'preview') {
+      r.action = previewed.has(it.slug + ' ' + it.hash) ? 'previewed' : await pgPreview(w, it);
+    } else if (it.status === 'stopped') {
+      r.action = 'stopped';
+      if (r.queued) {
+        r.cancelled = (await env.DB.prepare(`UPDATE pg_queue SET status = 'cancelled', note = 'stopped' WHERE slug = ?1 AND status = 'queued'`).bind(it.slug).run()).meta.changes;
+        w.sub++;
+        r.queued = 0;
+      }
+    } else if (it.status === 'approved') {
+      if (s.stopped_at) { r.action = 'stopped'; continue; }                 // POST /api/admin/posta {stop}
+      if (s.enqueued_at && !r.queued) { r.action = 'done'; continue; }
+      const ah = String(it.approved_hash || '');
+      const why = !previewed.has(it.slug + ' ' + ah) ? 'not_previewed' : ah !== it.hash ? 'hash_changed' : '';
+      if (why) {
+        r.action = 'blocked';
+        r.reason = why;
+        const pvs = pv.filter(x => x.slug === it.slug).map(x => x.hash.slice(0, 8));
+        await pgNotice(w, it.slug, why, why === 'hash_changed'
+          ? `Выпуск ${it.slug} не отправлен: текст изменился после одобрения (approved_hash ${ah.slice(0, 8) || '—'}, сейчас ${it.hash.slice(0, 8)}). ` +
+            'Нужны новое превью и одобрение: status: preview и деплой, потом approved_hash нового превью и status: approved.'
+          : `Выпуск ${it.slug} не отправлен: хэш одобрения не совпадает с превью (approved_hash ${ah.slice(0, 8)}; превью этого выпуска: ` +
+            (pvs.length ? pvs.join(', ') : 'не было') + '). Одобрить можно только хэш из темы превью: [PREVIEW …].');
+        continue;
+      }
+      if (!s.enqueued_at) {
+        if (!(Date.parse(it.send_at) <= t * 1000)) { r.action = 'waiting'; r.send_at = it.send_at; continue; }
+        r.queued = await pgEnqueue(w, it);
+        r.action = 'enqueued';
+      } else r.action = 'sending';
+      if (r.queued) ready.push(it);
+    }
+  }
+  if (ready.length) await pgSend(w, ready, out);
+  return out;
+}
+
+// the issue's file, checked against the index (same hash, three languages); read once a tick
+async function pgIssue(w, it) {
+  if (!w.files.has(it.slug)) {
+    const f = await assetJson(w.env, w.base, '/pregled-mail/' + it.slug + '.json');
+    w.sub++;
+    const ok = f && f.hash === it.hash && f.langs && [...LANGS].every(l => f.langs[l] && Array.isArray(f.langs[l].sections));
+    w.files.set(it.slug, ok ? f : null);
+  }
+  return w.files.get(it.slug);
+}
+
+// one issue in one language for one reader: the head, the intro, the sections of the reader's topics (every section for a
+// preview: topics null) and the foot, with the reader's own links in place of {{PREFS}} and {{UNSUB}} (the same pages
+// the welcome mail links to; a preview gets /pregled/). n: how many sections of the reader's topics are in it.
+function pgMail(env, issue, lang, topics, token) {
+  const L = issue.langs[lang] || issue.langs.sr, S = siteOf(env) + lpre(lang);
+  const prefs = token ? S + '/pregled/odjava/?t=' + token + '&teme=1' : S + '/pregled/';
+  const out = token ? S + '/pregled/odjava/?t=' + token : S + '/pregled/';
+  const secs = L.sections.filter(s => s.topic === 'uvod' || !topics || topics.includes(s.topic));
+  const put = (s, e) => s.split('{{PREFS}}').join(e(prefs)).split('{{UNSUB}}').join(e(out));
+  return { subject: L.subject, html: put(L.head_html + secs.map(s => s.html).join('') + L.foot_html, esc),
+    text: put(L.head_text + secs.map(s => s.text).join('') + L.foot_text, x => x), n: secs.filter(s => s.topic !== 'uvod').length };
+}
+
+// the three previews of a new hash; recorded only when all three went out (the next tick tries again, and the
+// Idempotency-Key keeps the ones already sent from going twice)
+async function pgPreview(w, it) {
+  const to = normEmail(replyTo(w.env));
+  if (!to) return 'no_team_address';
+  if (w.sub + 8 > w.o.sub) return 'later';                              // the budget of this tick: the next one sends it
+  const issue = await pgIssue(w, it);
+  if (!issue) return 'no_file';
+  for (const lang of LANGS) {
+    if (w.calls++ && !devMode(w.env)) await sleep(PG_PACE_MS);
+    const m = pgMail(w.env, issue, lang, null, null);
+    const r = await deliver(w.env, { to, subject: '[PREVIEW ' + it.hash.slice(0, 8) + '] ' + m.subject, html: m.html, text: m.text, kind: 'preview',
+      idem: 'pregled-preview-' + it.slug + '-' + it.hash.slice(0, 16) + '-' + lang, tags: [{ name: 'kind', value: 'preview' }, { name: 'issue', value: it.slug }] }, true);
+    w.sub++;
+    if (!r.ok) return 'preview_failed';
+  }
+  await w.env.DB.prepare('INSERT OR IGNORE INTO pg_previews (slug, hash, at) VALUES (?1, ?2, ?3)').bind(it.slug, it.hash, now()).run();
+  w.sub++;
+  return 'preview_sent';
+}
+
+// one row per reader, once per issue; the number of rows
+async function pgEnqueue(w, it) {
+  const { env } = w, t = now();
+  const topics = (Array.isArray(it.topics) ? it.topics : []).filter(x => PG_TOPICS.includes(x));
+  const month = /^\d{4}-\d{2}$/.test(String(it.month)) ? it.month : String(it.date || '').slice(0, 7);
+  const q = [];
+  if (topics.length) {
+    // the reader's topics ("vesti,cene") contain one of the issue's; a monthly reader has no other issue of this month
+    const like = topics.map((_, i) => `(',' || COALESCE(s.topics, ?4) || ',') LIKE ?${i + 5}`).join(' OR ');
+    q.push(env.DB.prepare(`INSERT OR IGNORE INTO pg_queue (slug, email, lang, topics, month, status, attempts, at)
+      SELECT ?1, s.email, s.lang, s.topics, ?2, 'queued', 0, ?3 FROM subs s
+      WHERE s.status = 'on' AND (${like}) AND (COALESCE(s.freq, 'w') != 'm' OR NOT EXISTS (SELECT 1 FROM pg_queue x
+        WHERE x.email = s.email AND x.month = ?2 AND x.slug != ?1 AND x.status IN ('queued', 'sent')))`)
+      .bind(it.slug, month, t, DEFAULT_TOPICS, ...topics.map(x => '%,' + x + ',%')));
+  }
+  q.push(env.DB.prepare(`INSERT INTO pg_issues (slug, hash, enqueued_at, queued) VALUES (?1, ?2, ?3, (SELECT COUNT(*) FROM pg_queue WHERE slug = ?1))
+    ON CONFLICT (slug) DO UPDATE SET hash = ?2, enqueued_at = ?3, queued = excluded.queued`).bind(it.slug, it.hash, t));
+  const r = await env.DB.batch(q);
+  w.sub++;
+  return topics.length ? r[0].meta.changes : 0;
+}
+
+// the queued rows of the issues that may be sent, oldest first, within the budget
+async function pgSend(w, ready, out) {
+  const { env } = w, by = new Map(out.issues.map(r => [r.slug, r]));
+  const left = Math.min(w.o.max, out.cap - out.sent_today);
+  if (left <= 0) { out.stop = 'cap'; return; }
+  const slugs = ready.map(i => i.slug);
+  const rows = (await env.DB.prepare(`SELECT q.id, q.slug, q.email, q.lang AS qlang, q.attempts, s.status AS sst, s.token, s.lang AS slang, s.topics AS stopics
+    FROM pg_queue q LEFT JOIN subs s ON s.email = q.email WHERE q.status = 'queued' AND q.slug IN (${slugs.map((_, i) => '?' + (i + 2)).join(', ')})
+    ORDER BY q.id LIMIT ?1`).bind(Math.min(50, left + 20), ...slugs).all()).results;
+  w.sub++;
+  // the suppression list for the whole batch at once (SHA-256 of the address, as suppressed() looks it up)
+  const hs = await Promise.all(rows.map(r => (r.email ? sha256(r.email) : '')));
+  const sup = new Set(hs.length ? (await env.DB.prepare(`SELECT email_hash FROM suppressions WHERE email_hash IN (${hs.map((_, i) => '?' + (i + 1)).join(', ')})`)
+    .bind(...hs).all()).results.map(r => r.email_hash) : []);
+  w.sub++;
+  const upd = [], set = (sql, ...v) => upd.push(env.DB.prepare(sql).bind(...v));
+  const count = (row, k) => { const r = by.get(row.slug); r[k] = (r[k] || 0) + 1; r.queued--; };   // a row that leaves the queue
+  const cancel = (row, why) => { set(`UPDATE pg_queue SET status = 'cancelled', note = ?2 WHERE id = ?1`, row.id, why); count(row, 'cancelled'); };
+  try {
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      if (out.sent >= left) break;
+      if (w.sub + 3 > w.o.sub) { out.stop = 'budget'; break; }
+      if (Date.now() > w.end) { out.stop = 'time'; break; }
+      if (!row.email || row.sst !== 'on' || !row.token) { cancel(row, 'off'); continue; }   // unsubscribed (or deleted) since the enqueue
+      if (sup.has(hs[i])) { cancel(row, 'suppressed'); continue; }
+      const issue = await pgIssue(w, ready.find(x => x.slug === row.slug));
+      if (!issue) { out.stop = 'no_file'; break; }
+      const lang = langOf(row.slang || row.qlang);
+      const m = pgMail(env, issue, lang, (row.stopics || DEFAULT_TOPICS).split(','), row.token);
+      if (!m.n) { cancel(row, 'topics'); continue; }                         // the reader's topics changed since the enqueue
+      if (w.calls++ && !devMode(env)) await sleep(PG_PACE_MS);
+      const r = await deliver(env, { to: row.email, subject: m.subject, html: m.html, text: m.text, kind: 'pregled',
+        unsub: siteOf(env) + '/api/posta/odjava?t=' + row.token, idem: 'pregled-' + row.slug + '-' + hs[i].slice(0, 16),
+        tags: [{ name: 'kind', value: 'pregled' }, { name: 'issue', value: row.slug }] }, true);
+      w.sub++;
+      if (r.ok || r.status === 409) {                                         // 409: this Idempotency-Key was sent already
+        set(`UPDATE pg_queue SET status = 'sent', attempts = attempts + 1, sent_at = ?2, provider_id = ?3, lang = ?4, note = ?5 WHERE id = ?1`,
+          row.id, now(), r.id || null, lang, r.ok ? null : 'resend 409');
+        out.sent++;
+        count(row, 'sent');
+      } else if (r.status === 401 || r.status === 403) {                      // the key or the domain: not this reader's fault
+        out.stop = 'resend_' + r.status;
+        await pgNotice(w, row.slug, 'resend_' + r.status, `Рассылка выпуска ${row.slug} остановлена: Resend отвечает ${r.status}. ` +
+          'Проверьте ключ RESEND_API_KEY в Cloudflare Pages и домен mail.blokvolt.com в Resend. Письма ждут в очереди.');
+        break;
+      } else if (!r.status || r.status === 429 || r.status >= 500) {           // Resend is busy or down: this row waits
+        set(`UPDATE pg_queue SET attempts = attempts + 1, status = CASE WHEN attempts + 1 >= ?2 THEN 'failed' ELSE 'queued' END, note = ?3 WHERE id = ?1`,
+          row.id, PG_TRIES, 'resend ' + (r.status || 'timeout'));
+        if (row.attempts + 1 >= PG_TRIES) count(row, 'failed');
+        out.stop = 'resend_' + (r.status || 'timeout');
+        break;
+      } else {                                                                // refused (e.g. 422 for this address)
+        set(`UPDATE pg_queue SET status = 'failed', attempts = attempts + 1, note = ?2 WHERE id = ?1`, row.id, 'resend ' + r.status);
+        count(row, 'failed');
+      }
+    }
+  } finally {
+    if (upd.length) { await env.DB.batch(upd); w.sub++; }
+  }
+  out.sent_today += out.sent;
+}
+
+// one notice a day per issue and reason to the team address (in Russian: the team reads it)
+async function pgNotice(w, slug, reason, text) {
+  const to = normEmail(replyTo(w.env));
+  w.sub++;
+  if (!to || !(await allow(w.env, 'pgn:' + slug + ':' + reason, 1))) return false;
+  if (w.calls++ && !devMode(w.env)) await sleep(PG_PACE_MS);
+  const r = await deliver(w.env, { to, subject: 'BlokVolt: Nedeljni pregled ' + slug + ' — не отправлен', html: '<p>' + esc(text) + '</p>',
+    text: text + '\n', kind: 'notice', idem: 'pregled-notice-' + slug + '-' + reason + '-' + today() }, true);
+  w.sub++;
+  return r.ok;
+}
+
+// GET /api/posta/klik?i=<slug>&l=<n> — the links in the issues: 302 to link n of the issue's table when it is one of our
+// sites, else to /pregled/. Counts clicks per issue, link and day, nothing about the reader (no IP, no cookie).
+const PG_LINKS = new Map();                          // slug → {links, at}: cached per isolate for 5 minutes
+async function postaKlik(request, env, ctx, url) {
+  const slug = url.searchParams.get('i') || '', l = url.searchParams.get('l') || '';
+  let to = '';
+  if (PG_SLUG.test(slug) && /^[1-9]\d{0,3}$/.test(l)) {
+    let c = PG_LINKS.get(slug);
+    if (!c || Date.now() - c.at > 300000) {
+      const f = await assetJson(env, request.url, '/pregled-mail/' + slug + '.json');
+      if (PG_LINKS.size > 50) PG_LINKS.clear();
+      PG_LINKS.set(slug, c = { links: f && f.links && typeof f.links === 'object' ? f.links : {}, at: Date.now() });
+    }
+    const u = c.links[l];
+    if (typeof u === 'string' && PG_LINK.test(u)) to = u;
+  }
+  if (to && request.method === 'GET') {
+    ctx.waitUntil(ensureSchema(env).then(() => env.DB.prepare(`INSERT INTO pg_clicks (slug, l, day, n) VALUES (?1, ?2, ?3, 1)
+      ON CONFLICT (slug, l, day) DO UPDATE SET n = n + 1`).bind(slug, Number(l), today()).run()).catch(e => console.log('klik: ' + (e && e.message))));
+  }
+  return new Response(null, { status: 302, headers: { location: to || siteOf(env) + '/pregled/', 'cache-control': 'no-store', 'x-robots-tag': 'noindex' } });
+}
+
+// for GET /api/admin/posta: the issues of the index (newest 20) with their rows by status, previews, clicks per link
+async function pgStats(request, env) {
+  const idx = await assetJson(env, request.url, '/pregled-mail/index.json');
+  const [rows, clicks, pv, st, sd] = (await env.DB.batch([
+    env.DB.prepare('SELECT slug, status, COUNT(*) AS n FROM pg_queue GROUP BY slug, status'),
+    env.DB.prepare('SELECT slug, l, SUM(n) AS n FROM pg_clicks GROUP BY slug, l ORDER BY slug, l'),
+    env.DB.prepare('SELECT slug, hash, at FROM pg_previews ORDER BY at'),
+    env.DB.prepare('SELECT slug, hash, enqueued_at, queued, stopped_at FROM pg_issues'),
+    env.DB.prepare(`SELECT COUNT(*) AS n FROM pg_queue WHERE status = 'sent' AND sent_at >= ?1`).bind(Math.floor(now() / DAY_S) * DAY_S),
+  ])).map(r => r.results);
+  const list = ((idx && Array.isArray(idx.issues)) ? idx.issues : []).filter(it => it && PG_SLUG.test(String(it.slug))).slice(-20).reverse();
+  const issues = [];
+  for (const it of list) {
+    const s = st.find(x => x.slug === it.slug) || {}, cl = clicks.filter(x => x.slug === it.slug);
+    let links = {};
+    if (cl.length) {
+      const f = await assetJson(env, request.url, '/pregled-mail/' + it.slug + '.json');
+      links = (f && f.links) || {};
+    }
+    const n = Object.fromEntries(['queued', 'sent', 'failed', 'cancelled'].map(k => [k, (rows.find(x => x.slug === it.slug && x.status === k) || {}).n || 0]));
+    issues.push({ slug: it.slug, title: it.title, date: it.date, status: it.status, send_at: it.send_at, hash: String(it.hash || '').slice(0, 8),
+      approved_hash: String(it.approved_hash || '').slice(0, 8), previews: pv.filter(x => x.slug === it.slug).map(x => ({ hash: x.hash.slice(0, 8), at: x.at })),
+      enqueued_at: s.enqueued_at || null, stopped_at: s.stopped_at || null, rows: n,
+      clicks: cl.map(x => ({ l: x.l, n: x.n, url: links[String(x.l)] || null })) });
+  }
+  return { on: CFG.pregled, cap: pgCap(env), sent_today: (sd[0] || {}).n || 0, issues };
+}
+
+// POST /api/admin/posta {"stop": "<slug>"} (owner's key): the issue's rows still queued are cancelled at once, and the tick
+// never queues or sends that issue again. The lasting way is status: stopped in its Markdown and a deploy.
+async function adminPostaStop(request, env) {
+  if (!/^application\/json\b/i.test(request.headers.get('content-type') || '')) return bad('type', 415);
+  const b = await readBody(request);
+  const slug = b && String(b.stop || '');
+  if (!slug || !PG_SLUG.test(slug)) return bad('stop');
+  await ensureSchema(env);
+  const t = now();
+  const r = await env.DB.batch([
+    env.DB.prepare(`UPDATE pg_queue SET status = 'cancelled', note = 'admin' WHERE slug = ?1 AND status = 'queued'`).bind(slug),
+    env.DB.prepare(`INSERT INTO pg_issues (slug, stopped_at) VALUES (?1, ?2) ON CONFLICT (slug) DO UPDATE SET stopped_at = ?2`).bind(slug, t),
+  ]);
+  return json({ ok: true, slug, cancelled: r[0].meta.changes, stopped_at: t });
 }
 
 // path → [method, handler]; a known path with another method answers 405. POST handlers get the parsed JSON body.
@@ -1179,6 +1570,8 @@ const ACCOUNT_ROUTES = {
   '/api/posta/podesavanja': ['POST', postaPodesavanja],
   '/api/posta/odjava': ['POST', postaOdjava],
   '/api/posta/resend': ['POST', null],
+  '/api/posta/tick': ['POST', null],
+  '/api/posta/klik': ['GET', null],
   '/api/admin/posta': ['GET', null],
 };
 
@@ -1189,9 +1582,16 @@ async function accountApi(request, env, ctx, url, p, m) {
   if (p === '/api/posta/odjava' && m === 'GET') {
     return new Response(null, { status: 303, headers: { location: '/pregled/odjava/?t=' + encodeURIComponent((url.searchParams.get('t') || '').slice(0, 64)), 'cache-control': 'no-store' } });
   }
+  if (p === '/api/posta/klik' && m === 'HEAD') return postaKlik(request, env, ctx, url);      // link checkers: redirect, no count
+  if (p === '/api/admin/posta' && m === 'POST') {                                          // {"stop": "<slug>"}
+    if (!adminOk(request, env)) return bad('not found', 404);
+    return sameOrigin(request) ? adminPostaStop(request, env) : bad('origin', 403);
+  }
   if (m !== r[0]) return json({ ok: false, error: 'method' }, 405, { allow: r[0] });
   if (Math.random() < 0.02) ctx.waitUntil(ensureSchema(env).then(() => housekeeping(env)).catch(() => {}));
-  if (p === '/api/admin/posta') return adminOk(request, env) ? adminPosta(env) : bad('not found', 404);
+  if (p === '/api/admin/posta') return adminOk(request, env) ? adminPosta(request, env) : bad('not found', 404);
+  if (p === '/api/posta/klik') return postaKlik(request, env, ctx, url);
+  if (p === '/api/posta/tick') return postaTick(request, env);               // GitHub Actions: no origin, no body
   if (p === '/api/posta/odjava') return postaOdjava(request, env, url);
   if (p === '/api/posta/resend') return postaResend(request, env);           // server to server: signed, no origin
   if (m === 'POST') {
@@ -1253,11 +1653,14 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.pathname.startsWith('/api/')) {
+      let res;
       try {
-        return await api(request, env, ctx);
+        res = await api(request, env, ctx);
       } catch (e) {
-        return json({ ok: false, error: 'server' }, 500);
+        res = json({ ok: false, error: 'server' }, 500);
       }
+      pgAuto(request, env, ctx, url.pathname);        // after the answer is ready: the newsletter's background tick
+      return res;
     }
     return env.ASSETS.fetch(request);
   },
