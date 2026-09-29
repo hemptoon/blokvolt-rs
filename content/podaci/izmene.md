@@ -13,6 +13,8 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 29. septembar 2026
 
+- Novo: [Moj BlokVolt](/nalog/) — nalog bez lozinke, sa prijavom kodom na e-mail. U nalogu su omiljeni punjači na svim uređajima, vaš auto i grad, vaše prijave i fotografije sa mape, a podatke možete da preuzmete ili obrišete. Nalog nije obavezan: mapa i ceo sajt rade i bez njega. Ikonica naloga je u zaglavlju, pored pretrage.
+- Novo: [Nedeljni pregled](/pregled/) — jednom nedeljno, petkom ujutru: najvažnije vesti, promene cena javnog punjenja i novi punjači na mapi, bez reklama. Prijava se potvrđuje klikom u mejlu, a odjava je jednim klikom. Forma za prijavu je i ispod svake vesti. Dopunjena je [politika privatnosti](/politika-privatnosti.html).
 - Nova stranica [Oglašavanje](/za-firme/oglasavanje/): uslovi, cene i pravila za oglase. Oglas može da stoji samo na dnu stranica tri rubrike, uz oznaku „Oglas“, i ne menja podatke, redosled ni ocene. Oglasi za kućne punjače se ne primaju, a u aplikacijama oglasa nema. Dopunjene su stranice [O sajtu](/o-sajtu/), [Za firme i mreže](/za-firme/), [Metodologija](/metodologija/#oglasi), [politika privatnosti](/politika-privatnosti.html) i dva odgovora u [Pomoći](/pomoc/).
 - [Mapa](/mapa/): na mapi su i punjači u regionu — Hrvatska, Bosna i Hercegovina, Crna Gora, Albanija i Severna Makedonija, iz otvorenih baza, bez pojedinačne provere. Kartica takvog punjača vodi na mapu te zemlje na blokvolt.com, gde su i cene mreža.
 

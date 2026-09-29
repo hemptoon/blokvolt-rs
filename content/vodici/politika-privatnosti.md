@@ -23,7 +23,7 @@ path: /politika-privatnosti.html
 - Posete se broje **bez kolačića**, a omiljeni punjači ostaju <!--nonalog-->**samo u vašem pregledaču**<!--/nonalog--><!--nalog-->**u pregledaču, a ako ste prijavljeni — i u nalogu**<!--/nalog--><!--consent-->; kolačić za analitiku postavlja se **samo uz vašu dozvolu**<!--/consent-->
 </div>
 
-Rukovalac podacima: [PRAVNI-PODACI: poslovno ime, sedište, MB, PIB]. Kontakt: hello@blokvolt.com.
+Rukovalac podacima: tim BlokVolt (www.blokvolt.rs). Kontakt: hello@blokvolt.com. Poslovno ime, sedište, matični broj i PIB biće dopunjeni po upisu u registar.
 
 ## Koji podaci se obrađuju
 
@@ -108,7 +108,7 @@ Pritužbu možete podneti [Povereniku za informacije od javnog značaja i zašti
 
 ## Uslovi korišćenja
 
-Sajt vodi [PRAVNI-PODACI]. Korišćenjem sajta prihvatate ove uslove.
+Sajt vodi tim BlokVolt (kontakt: hello@blokvolt.com). Korišćenjem sajta prihvatate ove uslove.
 
 - Sadržaj je informativan i ne zamenjuje pravni savet ni pregled instalacije. Obavezujuća je samo ponuda koju vam firma izda.
 - Firme označene kao „Izdvojeno“ prikazane su po istim kolonama kao ostale.
