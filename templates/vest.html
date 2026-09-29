@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% from '_macros.html' import sources as src_block, news_cards %}
 {% from '_icons.html' import ic %}
+{% from '_oglas.html' import oglas_box %}
 {% block ogtype %}article{% endblock %}
 {% block ogimage %}<meta property="og:image" content="{{ SITE }}/assets/og/foto/{{ n.img }}.jpg">
 <meta property="og:image:width" content="1200">
@@ -25,6 +26,7 @@
 {{ body|safe }}
 {{ src_block(sources) }}
 <p class="upd">Objavljeno {{ n.published_sr }} · <a href="/ispravka/">Prijavite grešku</a> · <a href="/metodologija/#vesti">Kako nastaju vesti</a></p>
+{% if oglas %}{{ oglas_box(oglas) }}{% endif %}
 </div>
 {% if related %}<div class="sec"><div class="sec-head"><h2>Više o temi</h2></div><div class="tiles">{% for r in related %}<a class="tile" href="{{ r.href }}"><h3>{{ r.name }}</h3><p>{{ r.desc }}</p></a>{% endfor %}</div></div>{% endif %}
 {% if latest %}<div class="sec"><div class="sec-head"><h2>Najnovije vesti</h2><a href="/vesti/">Sve vesti →</a></div>

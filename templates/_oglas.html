@@ -1,0 +1,9 @@
+{# A booked ad (content/data/oglasavanje.json, docs/RUNBOOK.md 3.26): one per page, at the end of the text, labelled
+   "Oglas". The advertiser's own text is not translated by the site (translate="no"); a translated ad has one block per
+   language (data-only, kept by strip_lang_only). bv.js hides the box once 'do' has passed; bv.css hides it in the apps. #}
+{% macro oglas_box(o) -%}
+<aside class="oglas" data-od="{{ o.od }}" data-do="{{ o.do }}" data-id="{{ o.id }}" aria-label="Oglas">
+<p class="oglas-lbl"><span>Oglas</span> <span class="oglas-ko" translate="no">{{ o.oglasivac }}</span></p>
+{% for v in o.variants %}<a class="oglas-in" href="{{ o.href }}" rel="sponsored noopener" target="_blank" translate="no"{% if v.lang %} data-only="{{ v.lang }}"{% endif %} lang="{{ v.html_lang }}">{% if o.slika %}<img src="/assets/oglasi/{{ o.slika }}" width="1200" height="400" alt="{{ v.alt }}" loading="lazy" decoding="async">{% endif %}<span class="oglas-t"><b>{{ v.naslov }}</b><span>{{ v.tekst }}</span></span></a>
+{% endfor %}</aside>
+{%- endmacro %}

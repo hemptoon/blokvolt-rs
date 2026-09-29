@@ -13,6 +13,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 29. septembar 2026
 
+- Nova stranica [Oglašavanje](/za-firme/oglasavanje/): uslovi, cene i pravila za oglase. Oglas može da stoji samo na dnu stranica tri rubrike, uz oznaku „Oglas“, i ne menja podatke, redosled ni ocene. Oglasi za kućne punjače se ne primaju, a u aplikacijama oglasa nema. Dopunjene su stranice [O sajtu](/o-sajtu/), [Za firme i mreže](/za-firme/), [Metodologija](/metodologija/#oglasi), [politika privatnosti](/politika-privatnosti.html) i dva odgovora u [Pomoći](/pomoc/).
 - [Mapa](/mapa/): na mapi su i punjači u regionu — Hrvatska, Bosna i Hercegovina, Crna Gora, Albanija i Severna Makedonija, iz otvorenih baza, bez pojedinačne provere. Kartica takvog punjača vodi na mapu te zemlje na blokvolt.com, gde su i cene mreža.
 
 ## 28. septembar 2026

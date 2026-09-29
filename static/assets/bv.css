@@ -840,3 +840,83 @@ a.row:hover{background:#FAFAF6}
 .conns .conn span{color:var(--mut)}
 .conns .fl-note{grid-column:1/-1;margin:0;font-size:13px;color:var(--mut)}
 .prose.help code{overflow-wrap:anywhere;word-break:break-all}
+
+/* ---------- ads (docs/RUNBOOK.md 3.26): one per page, at the end of the text, labelled; never in the installed apps or in print */
+.oglas{margin:30px 0 0;padding:12px 14px 14px;border:1px solid var(--line);border-radius:var(--r2);background:var(--surface)}
+.oglas-lbl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 9px;font-size:13px;color:var(--mut);line-height:1.3}
+.oglas-lbl>span:first-child{font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:6px;background:var(--surface2);color:var(--ink2)}
+.oglas-in,.prose .oglas-in{display:block;text-decoration:none;color:var(--ink)}
+.oglas-in img{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:cover;border-radius:12px;background:var(--surface2);margin:0}
+.oglas-t{display:block;margin-top:10px}
+.oglas-t b{display:block;font-size:16px;font-weight:700;line-height:1.35}
+.oglas-t span{display:block;margin-top:2px;font-size:14.5px;color:var(--ink2);line-height:1.45}
+.oglas-in:hover b{text-decoration:underline;text-decoration-color:var(--volt2);text-decoration-thickness:2px;text-underline-offset:3px}
+@media (display-mode:standalone),(display-mode:fullscreen),(display-mode:minimal-ui){.oglas{display:none!important}}
+@media print{.oglas{display:none!important}}
+
+/* ---------- media kit (/za-firme/oglasavanje/, templates/oglasavanje.html) */
+.mk-sec{margin:36px 0 0}
+.mk-sec>h2{font-size:23px;margin:0 0 12px}
+.mk-sec>p{max-width:760px}
+.mk .stats{margin:4px 0 16px}
+.mk-note{font-size:14px;color:var(--mut);margin:12px 0 0;max-width:760px}
+.mk-rub{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0}
+.mk-rub .box h3,.mk-two .box h3{font-size:17px;margin:0 0 8px}
+.mk-rub .box p{margin:0;font-size:15px;color:var(--ink2)}
+.mk-rub .box small{display:block;margin-top:10px;font-size:13px;color:var(--mut);line-height:1.4}
+.mk-price{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0 0 14px}
+.mk-price .box h3{font-size:15px;margin:0;color:var(--ink2);font-weight:650}
+.mk-price .box b{display:block;font-size:28px;font-weight:760;letter-spacing:-.02em;margin:4px 0 2px}
+.mk-price .box span{display:block;font-size:14px;color:var(--mut)}
+.mk-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.mk-two .box ul{margin:0;padding-left:20px}
+.mk-two .box li{margin:6px 0;font-size:15px}
+.mk-demo{padding:12px 14px 14px;border:1px dashed var(--line2);border-radius:var(--r2);background:var(--surface);align-self:start}
+.mk-slot{display:flex;align-items:center;justify-content:center;aspect-ratio:3/1;border-radius:12px;background:var(--surface2);color:var(--mut);font-weight:650;font-size:15px}
+.mk-steps{margin:0;padding-left:22px;max-width:760px}
+.mk-steps li{margin:7px 0}
+.mk .src{margin-top:14px}
+.mk-dl{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.mk-print,.mk-print-contact{display:none}
+@media (max-width:760px){.mk-rub,.mk-price,.mk-two{grid-template-columns:1fr}}
+@media print{
+ @page{size:A4;margin:12mm 14mm 13mm}
+ body.mk-page{background:#fff;font-size:9.5pt;line-height:1.42}
+ body.mk-page .hd,body.mk-page .ft,body.mk-page .crumbs,body.mk-page .skip,body.mk-page .mk-noprint,body.mk-page .consent,body.mk-page .bv-tr-note,body.mk-page .bv-tr-wrap{display:none!important}
+ body.mk-page .ph{padding:0 0 4px;background:none;border:0}
+ body.mk-page .ph h1{font-size:22pt;margin:0 0 3px}
+ body.mk-page .ph .lead{font-size:11pt;margin:0}
+ body.mk-page .wrap{max-width:none;padding:0}
+ body.mk-page .main{padding-top:4px;padding-bottom:0}
+ body.mk-page .mk-print{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 12px;padding:0 0 7px;border-bottom:1px solid #d9d8d0;font-size:8.5pt;color:#5C6270}
+ body.mk-page .mk-print .logo{font-size:14pt;color:#0D111A}
+ body.mk-page .mk-print .logo-mark{width:19px;height:19px}
+ body.mk-page .mk-print-contact{display:block;margin:8px 0 0;font-weight:650}
+ body.mk-page .sum{margin:10px 0 0;padding:8px 12px;box-shadow:none}
+ body.mk-page .sum li{margin:0}
+ body.mk-page .mk-sec{margin:13px 0 0}
+ body.mk-page .mk-sec>h2{font-size:12.5pt;margin:0 0 5px;break-after:avoid}
+ body.mk-page .mk-sec p,body.mk-page .mk-sec li{margin-top:0;margin-bottom:4px}
+ body.mk-page .mk-note{font-size:8.5pt}
+ body.mk-page .box,body.mk-page .stat,body.mk-page .mk-demo,body.mk-page .sum,body.mk-page .mk-rub,body.mk-page .mk-price,body.mk-page .mk-two,body.mk-page .mk-steps li{break-inside:avoid}
+ body.mk-page .stats,body.mk-page .mk-rub{grid-template-columns:repeat(3,1fr);gap:8px}
+ body.mk-page .mk-price,body.mk-page .mk-two{grid-template-columns:repeat(2,1fr);gap:8px}
+ body.mk-page .stat b{font-size:15pt}
+ body.mk-page .box,body.mk-page .stat{padding:8px 11px;box-shadow:none}
+ body.mk-page .box h3{font-size:10.5pt;margin:0 0 3px}
+ body.mk-page .box p,body.mk-page .box li,body.mk-page .box span,body.mk-page .stat span{font-size:9pt}
+ body.mk-page .box>b{font-size:17pt}
+ body.mk-page .mk-demo{padding:8px 10px}
+ body.mk-page .mk-slot{aspect-ratio:auto;height:78px;font-size:10pt}
+ body.mk-page .box small{font-size:8.5pt;margin-top:4px}
+ body.mk-page .mk-demo .oglas-t b{font-size:10pt}
+ body.mk-page .mk-demo .oglas-t span{font-size:9pt}
+ body.mk-page details.src{display:block;border:0;padding:0;margin:6px 0 0}
+ body.mk-page details.src>summary{padding:0;font-weight:650;list-style:none}
+ body.mk-page details.src>summary::-webkit-details-marker{display:none}
+ body.mk-page details.src::details-content{content-visibility:visible;display:block}
+ body.mk-page details.src>*{display:block}
+ body.mk-page details.src li{font-size:8.5pt;margin:0}
+ body.mk-page a{color:inherit;text-decoration:none}
+}
+

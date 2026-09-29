@@ -71,6 +71,7 @@ credentials) — commits go through the owner's browser (section 6).
 | Usage analytics | `content/data/site.json` → `analytics` | Cloudflare Web Analytics is switched on in the Pages project (no code); PostHog only when `posthog_key` is set. See 3.16. |
 | Security headers (CSP) | `build.py`, end of file | Written to `dist/_headers` on every build; inline-script hashes are computed automatically. See 3.17. |
 | English and Russian pages | `content/i18n/en.json`, `content/i18n/ru.json`, `content/i18n/STYLE.md` | Translation memory {Serbian segment: translation}. `/en/` and `/ru/` are generated from the Serbian pages at build time by `scripts/i18n.py` — never edit `dist/en` or `dist/ru`. See 3.9. |
+| Advertising: media kit and booked ads | `content/data/oglasavanje.json`, `templates/oglasavanje.html`, `templates/_oglas.html`, `static/za-firme/` | `/za-firme/oglasavanje/` (SR/EN/RU) and its PDFs are made from the JSON; an ad appears only while an entry in `oglasi` is in its dates. See 3.26. |
 
 `indeks-cena.json` row schema (one row per app + station/tariff):
 
@@ -604,6 +605,7 @@ No messages, comments or forms to anyone — the outreach rule of 3.7 applies to
   | `checkin_sent` / `photo_sent` | drivers' reports | `station`, `network`, `status`, `rating`, `comment` |
   | `outbound_click` / `contact_phone` / `contact_email` | any link out, tel:, mailto: | `host`, `url` / — / `to` |
   | `form_sent` | /ispravka/, /za-firme/ | `form` |
+  | `ad_click` | a booked ad (`aside.oglas`) | `ad` (the booking id) |
   | `calculator_used` | first change in a calculator | `calculator` |
   | `video_play` | YouTube poster clicked | `video` |
   | `language_switch` | language menu | `to` |
@@ -856,6 +858,59 @@ the footer ("Pomoć"), the text under /mapa/, /aplikacija/ and /ispravka/. Rules
   names from `/app/v1/manifest.json` (`files.map`, versioned `?v=`; the manifest is cached 5 minutes, the files a
   year). Renaming a map file or changing its format breaks that page: keep the fields map.js reads, or tell the
   Evolako side first.
+
+### 3.26 Advertising (/za-firme/oglasavanje/): the media kit and booked ads
+
+The media kit is public since 29.09.2026 (owner's decision); an ad appears only when a booking is entered in
+`content/data/oglasavanje.json` → `oglasi`. The rules below are printed on the page — change them only with the owner.
+
+- **Where.** Three rubrics (`rubrike`, paths listed there): `vlasnistvo` (7 pages of /podaci/: subsidies,
+  registration, import, insurance, loans, servicing, rent-a-car), `na-putu` (tolls and parking, free chargers, apps
+  and cards, the region) and `vesti` (every news item and the news list). One advertiser per rubric, one ad per page,
+  at the end of the text after the „Ažurirano“ line, labelled „Oglas“. Never on the home page, the map, the register
+  of firms and networks, prices, statistics, the guides and calculators about charging at home and in buildings, in
+  the apps or on blokvolt.com (no analytics there, nothing to sell yet).
+- **Not accepted:** selling or installing home chargers and wallboxes (the site is edited by the team behind Evolako,
+  and the page says so), public charging networks in „Na putu“ or next to news about that network, gambling, alcohol
+  and tobacco, crypto and financial schemes, political ads, claims that cannot be checked. **Never for sale:** place,
+  order and labels in the register, points, statuses and ratings on the map, prices and the price index, paid
+  articles or news to order, removing drivers' ratings and reports.
+- **Prices** (`cena`): 5.000 RSD a month per rubric without VAT, at least 3 months, paid in advance; the first three
+  advertisers −50 % for 6 months. Tiers by the whole site's visits a month (≤ 5.000 → 5.000 RSD, ≤ 20.000 → 10.000,
+  above → 20.000); a new price applies from the next quarter and an advertiser keeps its price for 12 months.
+- **Enquiries** come by the form on the page (`/api/zahtev`, kind `firma` with the hidden field `vrsta=oglas`; in
+  Telegram „Запросы“ as a firm request with „vrsta: oglas“) or to hello@blokvolt.com. No reply, offer or invoice
+  without the owner's explicit yes (outreach rule, 3.7). Invoices only after the publisher (preduzetnik) is
+  registered — then fill in the invoice line on the page (business name, MB, PIB, whether VAT is charged).
+- **Booking** (owner said yes, invoice paid, image and text checked against the rules): add to `oglasi`
+  `{"id", "oglasivac", "rubrika", "od", "do", "url", "slika", "naslov", "tekst", "alt", "ne_na": [], "ne_uz": [],
+  "en": {"naslov", "tekst", "alt"}, "ru": {…}}`. `od`/`do` are YYYY-MM-DD, both days included; the image is
+  `static/assets/oglasi/<slika>`, 1200 × 400, WebP/PNG/JPG ≤ 200 KB, no animation (the text on the image follows the
+  same rules); headline ≤ 60 characters, text ≤ 120. `ne_na`: paths where the ad must not stand. `ne_uz`: words that
+  keep the ad off a news item (and a news list page) that contains them — for a network its brand and company names,
+  e.g. `["Charge&GO", "ChargeGo", "MT-KOMEX"]`. Without `en`/`ru` the Serbian text is shown on all three versions.
+  Keep the advertising declaration (who advertises, what, period and form — Zakon o oglašavanju čl. 20) and the
+  advertiser's details until 30 days after the end (čl. 45) outside the repository (it is public). Build, check a page
+  of the rubric at 390 and 1440 px, deploy, commit; remove the entry after `do` (bv.js already hides it that day).
+- **How it works.** `oglas_za()` in `build.py` picks the ad (rubric of the path, dates, `ne_na`, `ne_uz`);
+  `templates/_oglas.html` draws it: `rel="sponsored noopener"`, link with
+  `utm_source=blokvolt&utm_medium=oglas&utm_campaign=<id>`, text `translate="no"`, translated variants as `data-only`
+  blocks. Ads are left out of the site search (`build_search`), the app feed (asides are skipped) and print; the apps
+  hide them by CSS (`display-mode` standalone) and bv.js (a tab opened with `?src=android` or `?src=pwa` stays
+  without ads). The image and link are served by BlokVolt: no advertiser pixels, scripts or cookies, CSP unchanged.
+  A click sends `ad_click` (3.16).
+- **Report to the advertiser** after each month: page views of the rubric's pages in Cloudflare Web Analytics
+  (filter by path); clicks they see in their own analytics by the UTM tag.
+- **Monthly, in the first days of the month:** `posecenost` ← Cloudflare Web Analytics of the Pages project, whole
+  site, previous calendar month (`mesec` like "oktobar 2026", `posete`, `pregledi`); set `stanje` to today; build;
+  `i18n.py todo` (the visits line is new every month) → translate (3.9); `python3 scripts/medija_kit_pdf.py`; build
+  again; deploy; commit. If the visits cross a tier, tell the owner before changing `cena`.
+- **PDFs.** `scripts/medija_kit_pdf.py` prints the Serbian and English page to
+  `static/za-firme/blokvolt-medija-kit-sr.pdf` and `-en.pdf` (A4, two pages; print styles `body.mk-page` in bv.css).
+  After any change of the page text or numbers: build → PDF → build (the buttons appear only when both PDFs exist).
+- **Files for the media:** `static/za-firme/blokvolt-logo.svg`, `blokvolt-logo-beli.svg` (dark backgrounds),
+  `blokvolt-znak.svg`, `blokvolt-logo.png` (1200 × 304, transparent). Same geometry as the site logo: the 64-unit
+  tile `#0B0F17` with the lime bolt `#D9F45B`, "blok" 400 + "volt" 800.
 
 ## 4. Build and check
 

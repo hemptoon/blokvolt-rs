@@ -90,6 +90,24 @@
   d.addEventListener('click', function (e) {
     if (e.target.closest && e.target.closest('[data-bv-app-download]')) window.bvTrack('app_download', { platform: 'android' });
   }, true);
+  // ads (docs/RUNBOOK.md 3.26): a booked ad disappears the day after its last day even without a new build;
+  // a click is counted as ad_click (no personal data), the advertiser sees it by the utm tag.
+  // No ads in the apps: bv.css hides them in standalone display; this also covers an app opened in a browser tab
+  // (start URLs carry ?src=android / ?src=pwa, remembered for the tab) and an ad whose dates have passed.
+  (function () {
+    var app = d.referrer.indexOf('android-app://') === 0;
+    try {
+      if (/[?&]src=(android|pwa)(&|$)/.test(location.search)) sessionStorage.setItem('bv-app', '1');
+      app = app || sessionStorage.getItem('bv-app') === '1';
+    } catch (e) { /* storage blocked: the CSS rule still applies */ }
+    var t = new Date(), iso = t.getFullYear() + '-' + ('0' + (t.getMonth() + 1)).slice(-2) + '-' + ('0' + t.getDate()).slice(-2);
+    [].forEach.call(d.querySelectorAll('.oglas[data-do]'), function (el) {
+      if (app || iso < el.getAttribute('data-od') || iso > el.getAttribute('data-do')) el.hidden = true;
+      el.addEventListener('click', function (e) {
+        if (e.target.closest && e.target.closest('a[href]')) window.bvTrack('ad_click', { ad: el.getAttribute('data-id') || '' });
+      });
+    });
+  })();
   // links out: firm and network sites, phone numbers, e-mail addresses; language switch
   d.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href]');

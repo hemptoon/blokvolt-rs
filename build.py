@@ -11,7 +11,7 @@ Python 3 + Jinja2 + Markdown + BeautifulSoup.  Usage: python3 build.py  ->  dist
   static/                    copied as is (assets/bv.css, bv.js, map.js, vendor/, logos/, fonts/)
 
 After the Serbian pages exist, scripts/i18n.py writes /en/ and /ru/ from the translation memory."""
-import json, os, re, shutil, glob, html, sys, hashlib, unicodedata
+import json, os, re, shutil, glob, html, sys, hashlib, unicodedata, datetime
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import markdown
@@ -33,6 +33,55 @@ TODAY = SITE_META['updated']
 ISO_TODAY = '-'.join(reversed(TODAY.split('.')))
 FIRMS_CHECKED = SITE_META['firms_checked']
 EVOLAKO = 'https://www.evolako.rs/'
+
+# ---------------------------------------------------------------- advertising (docs/RUNBOOK.md 3.26)
+# content/data/oglasavanje.json: the media kit (/za-firme/oglasavanje/: prices, rubrics, last month's visits) and the
+# booked ads. One ad per page, at the end of the text, labelled "Oglas"; only on the pages of its rubric, only from
+# 'od' to 'do' (today in Belgrade; bv.js hides it again once 'do' has passed, even without a new build), never on the
+# paths in 'ne_na'. Never on the map, the register, the prices, the home-charging guides and calculators, and never in
+# the installed apps (bv.css, display-mode). Links carry rel="sponsored" and utm_source=blokvolt.
+OGL = json.load(open(ROOT / 'content' / 'data' / 'oglasavanje.json', encoding='utf-8'))
+try:
+    from zoneinfo import ZoneInfo
+    NOW_ISO = datetime.datetime.now(ZoneInfo('Europe/Belgrade')).date().isoformat()
+except Exception:                                        # no tz data: UTC is at most a couple of hours off
+    NOW_ISO = datetime.datetime.utcnow().date().isoformat()
+
+
+def rubrika_of(path):
+    for key, r in OGL['rubrike'].items():
+        if path in r.get('putanje', []) or (r.get('prefiks') and path.startswith(r['prefiks'])):
+            return key
+    return None
+
+
+def oglas_za(path, tekst=''):
+    """The ad for a page, or None. `tekst`: the page's own words (news title, lead and body); an ad whose
+    'ne_uz' words appear there is not shown, so a network's ad never stands next to news about that network."""
+    rk = rubrika_of(path)
+    if not rk:
+        return None
+    plain = html.unescape(re.sub(r'<[^>]+>', ' ', tekst)).casefold()
+    for o in OGL.get('oglasi', []):
+        if o.get('rubrika') != rk or path in o.get('ne_na', []) or not (o['od'] <= NOW_ISO <= o['do']):
+            continue
+        if any(w.casefold() in plain for w in o.get('ne_uz', []) if w.strip()):
+            continue
+        href = o['url'] + ('&' if '?' in o['url'] else '?') + 'utm_source=blokvolt&utm_medium=oglas&utm_campaign=' + o['id']
+        base = {'naslov': o['naslov'], 'tekst': o['tekst'], 'alt': o.get('alt') or o['naslov']}
+        if any(o.get(l) for l in ('en', 'ru')):     # translated ad: one block per language (strip_lang_only keeps one)
+            variants = [dict(base, lang='sr', html_lang='sr-Latn')]
+            for l in ('en', 'ru'):
+                t = o.get(l) or {}
+                own = bool(t.get('naslov'))             # no own headline = the Serbian text on that version too
+                variants.append({'naslov': t.get('naslov') or base['naslov'], 'tekst': t.get('tekst') or base['tekst'],
+                                 'alt': t.get('alt') or (t['naslov'] if own else base['alt']),
+                                 'lang': l, 'html_lang': l if own else 'sr-Latn'})
+        else:                                       # Serbian text on every language version
+            variants = [dict(base, lang=None, html_lang='sr-Latn')]
+        return dict(o, href=href, variants=variants)
+    return None
+
 
 env = Environment(loader=FileSystemLoader(str(ROOT / 'templates')), autoescape=select_autoescape(['html']), trim_blocks=True, lstrip_blocks=True)
 
@@ -104,6 +153,7 @@ def clean_src(label):
 
 env.filters['sr'] = sr_num
 env.filters['plural'] = sr_plural
+env.filters['pword'] = lambda n, one, few, many: sr_plural(n, one, few, many).split(' ', 1)[1]   # the noun only
 env.filters['mono'] = mono
 env.filters['iso'] = iso
 
@@ -852,7 +902,7 @@ for path, a in ARTICLES.items():
     meta = dict(meta, h1=a['h1'])
     render('article.html', path, meta=meta, body=md_to_html(a['body']), crumbs=crumbs, section=sec,
            title=meta.get('title', a['h1']) + ' | BlokVolt', description=meta.get('description', ''), sources=sources_of(meta),
-           promo_box=PROMO if path in PROMO_ON else None, related=related_for(path))
+           promo_box=PROMO if path in PROMO_ON else None, related=related_for(path), oglas=oglas_za(path))
     add_url(path, meta.get('priority', '0.7'), meta.get('modified', ISO_TODAY))
 
 def _numbered(groups):
@@ -998,12 +1048,13 @@ NEWS.sort(key=lambda n: (n['iso'], n['published'], n['slug']), reverse=True)
 for _i, _n in enumerate(NEWS):
     others = [x for x in NEWS if x is not _n]
     render('vest.html', _n['url'], n=_n, body=_n['body'], sources=_n['sources'], related=_n['related'], latest=others[:3], section='vesti',
+           oglas=oglas_za(_n['url'], ' '.join((_n['title'], _n['lead'], _n['body']))),
            title=f"{_n['title']} | BlokVolt", description=clip(_n['description'], 158))
     add_url(_n['url'], '0.5', _n['modified'])
 _pages = [NEWS[i:i + NEWS_PER_PAGE] for i in range(0, len(NEWS), NEWS_PER_PAGE)] or [[]]
 for _pi, _items in enumerate(_pages, start=1):
     _url = '/vesti/' if _pi == 1 else f'/vesti/strana/{_pi}/'
-    render('vesti_index.html', _url, items=_items, page_no=_pi, pages=len(_pages), section='vesti',
+    render('vesti_index.html', _url, items=_items, page_no=_pi, pages=len(_pages), section='vesti', oglas=oglas_za(_url, ' '.join(x['title'] + ' ' + x['lead'] for x in _items)),
            prev_url=(None if _pi == 1 else ('/vesti/' if _pi == 2 else f'/vesti/strana/{_pi - 1}/')),
            next_url=(f'/vesti/strana/{_pi + 1}/' if _pi < len(_pages) else None), tags=NEWS_TAGS,
            title=('Vesti o električnim automobilima u Srbiji: subvencije, punjači, cene | BlokVolt' if _pi == 1 else f'Vesti, strana {_pi} | BlokVolt'),
@@ -1302,6 +1353,16 @@ render('home.html', '/', HOME_GUIDES=HOME_GUIDES, NEWS_HOME=NEWS[:3], section=''
        title='BlokVolt: punjači, cene i firme za električne automobile u Srbiji',
        description=f"Mapa sa {MAP['n']} javnih punjača i cenama, {sr_plural(len(published), 'firma', 'firme', 'firmi')} za kućni punjač, cene struje i javnog punjenja, subvencije i vodiči za električni auto u Srbiji.")
 add_url('/', '1.0')
+# ---------------------------------------------------------------- advertising: the media kit page (RUNBOOK 3.26)
+# The PDFs (static/za-firme/blokvolt-medija-kit-sr.pdf, -en.pdf) are the printed page: scripts/medija_kit_pdf.py after a build.
+_MK_FILES = {k: (ROOT / 'static' / 'za-firme' / f).exists()
+             for k, f in (('pdf_sr', 'blokvolt-medija-kit-sr.pdf'), ('pdf_en', 'blokvolt-medija-kit-en.pdf'), ('logo', 'blokvolt-logo.svg'))}
+render('oglasavanje.html', '/za-firme/oglasavanje/', section='', crumbs=[('/za-firme/', 'Za firme i mreže')],
+       OGL=OGL, MK_FILES=_MK_FILES, n_ops=len(operators), n_region=RG_N, n_news=len(NEWS),
+       n_rub={k: len(r.get('putanje', [])) for k, r in OGL['rubrike'].items()},
+       title='Oglašavanje na BlokVoltu — medija kit, cene i pravila | BlokVolt',
+       description='Medija kit BlokVolta: ko čita sajt, gde stoji oglas, cena po rubrici i šta se ne prodaje. Oglasi su označeni i ne utiču na podatke, redosled ni ocene.')
+add_url('/za-firme/oglasavanje/', '0.4')
 render('pretraga.html', '/pretraga/', section='', title='Pretraga | BlokVolt',
        description='Pretraga sajta: punjači, firme, cene, vodiči i propisi za električne automobile u Srbiji.')
 add_url('/pretraga/', '0.3')
@@ -1361,6 +1422,8 @@ def build_search(prefix=''):
         sec = crumbs[-1].get_text(' ', strip=True) if len(crumbs) > 1 else ''
         main = soup.find('main') or soup
         for junk in main.find_all(['script', 'style', 'nav', 'noscript']):
+            junk.decompose()
+        for junk in main.select('aside.oglas'):          # ads are not page content: never in search
             junk.decompose()
         for junk in main.select('[data-only]'):
             if junk['data-only'] != (prefix.strip('/') or 'sr'):

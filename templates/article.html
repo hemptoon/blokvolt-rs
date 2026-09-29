@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% from '_macros.html' import pagehead, sources as src_block, promo %}
+{% from '_oglas.html' import oglas_box %}
 {% block ogtype %}article{% endblock %}
 {% block jsonld %}{% if not noindex %}<script type="application/ld+json">{
  "@context": "https://schema.org",
@@ -15,6 +16,7 @@
 {% if promo_box %}{{ promo(promo_box.text, promo_box.href, promo_box.link) }}{% endif %}
 {{ src_block(sources) }}
 {% if meta.updated %}<p class="upd">Ažurirano {{ meta.updated }}{% if meta.next_check %} · sledeća provera {{ meta.next_check }}{% endif %} · <a href="/ispravka/">Prijavite grešku</a></p>{% endif %}
+{% if oglas %}{{ oglas_box(oglas) }}{% endif %}
 </div>
 {% if related %}<div class="sec"><div class="sec-head"><h2>Povezano</h2></div><div class="tiles">{% for r in related %}<a class="tile" href="{{ r.path }}"><h3>{{ r.h1 or r.title }}</h3><p>{{ r.lead }}</p></a>{% endfor %}</div></div>{% endif %}
 {% endblock %}

@@ -4,10 +4,10 @@ h1: Za firme i mreže
 description: Predstavljate firmu za ugradnju punjača ili mrežu javnog punjenja? Ispravite i dopunite podatke na BlokVoltu besplatno: cene, uslovi, lokacije, logo. Redosled se ne plaća.
 kicker: O sajtu · za firme
 lead: Podaci o firmama i mrežama su iz javnih izvora. Ako predstavljate firmu, možete da ih ispravite i dopunite — besplatno.
-updated: 24.09.2026
+updated: 29.09.2026
 path: /za-firme/
 published: 2026-09-24
-modified: 2026-09-24
+modified: 2026-09-29
 priority: 0.5
 ---
 <div class="sum" markdown="1">
@@ -29,6 +29,8 @@ priority: 0.5
 Poruka se proverava odgovorom na e-adresu na domenu firme ili pozivom na broj sa sajta firme. Posle toga podatak se objavljuje sa oznakom „prema podacima firme“ i datumom. Cena bez javnog cenovnika prikazuje se tek kad je firma potvrdi pisano. Svaka izmena ide u [dnevnik izmena](/izmene/).
 
 Reklamni tekstovi se ne objavljuju, a način poređenja se ne menja zbog jedne firme. Prijave i ocene vozača na mapi ne brišu se na zahtev firme, osim kada krše [pravila](/pravila-objavljivanja/); firma može da pošalje svoje objašnjenje.
+
+Oglas je nešto drugo: jedno označeno mesto na dnu stranica tri rubrike, odvojeno od podataka. Cene i pravila su na stranici [Oglašavanje](/za-firme/oglasavanje/).
 
 ## Pošaljite podatke
 

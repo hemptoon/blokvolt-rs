@@ -8,11 +8,11 @@ kicker: Pomoć
 section: firme-i-ispravke
 order: 1
 path: /pomoc/za-firme-ispravka-podataka/
-updated: 28.09.2026
+updated: 29.09.2026
 related: /pomoc/ko-stoji-iza-blokvolta/, /pomoc/kontakt/, /pomoc/ocene-i-komentari/
 shots: za-firme-forma, ispravka-forma-firma
 published: 2026-09-28
-modified: 2026-09-28
+modified: 2026-09-29
 ---
 ## Koju formu da koristite
 
@@ -39,11 +39,12 @@ Posle slanja forma potvrđuje da je poruka primljena. Svaka izmena se beleži u 
 
 ## Pravila koja važe za sve
 
-- Upis je besplatan, redosled i ocene se ne kupuju, a plaćenih pozicija nema.
+- Upis je besplatan, a mesto u registru, redosled i ocene se ne kupuju.
 - Za svaku firmu važe iste kolone: javna cena, ugradnja, brojilo, papiri za skupštinu, usluga i garancija. „Ne pominje se“ znači samo da toga nema na stranici firme.
 - Reklamni tekstovi se ne objavljuju, a način poređenja se ne menja zbog jedne firme.
 - Firma može da traži uklanjanje svog unosa bez objašnjenja; logotip se uklanja na zahtev.
 - Prijave i ocene vozača ne brišu se na zahtev firme, osim kada krše pravila. Firma može da pošalje svoje objašnjenje.
+- Oglašavanje je odvojeno od podataka: [uslovi i cene](/za-firme/oglasavanje/).
 
 ## Šta da pošaljete
 

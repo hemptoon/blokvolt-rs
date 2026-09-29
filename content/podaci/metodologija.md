@@ -4,10 +4,10 @@ h1: Metodologija
 description: Odakle su podaci o firmama, cenama javnog punjenja i vestima, koliko često se proveravaju, šta znači „Ne pominje se“ i kako se prijavljuje greška.
 kicker: O sajtu · metodologija
 lead: Podaci o firmama su sa njihovih javnih stranica, po istim pravilima za sve.
-updated: 28.09.2026
+updated: 29.09.2026
 path: /metodologija/
 published: 2026-09-22
-modified: 2026-09-28
+modified: 2026-09-29
 priority: 0.5
 disclaimer: Primedbe na pravila prijavite na
 ---
@@ -72,6 +72,10 @@ Vesti prate zvanične izvore i pouzdane medije: ministarstva, Službeni glasnik,
 </details>
 
 [[fotografije]]
+
+## Oglasi {#oglasi}
+
+Oglas stoji samo na dnu stranica tri rubrike — Kupovina i vlasništvo, Na putu i Vesti — i uvek nosi oznaku „Oglas“. Podaci, redosled, ocene i tekstovi se ne prodaju, a oglasi za prodaju i ugradnju kućnih punjača se ne primaju. Uslovi i cene su na stranici [Oglašavanje](/za-firme/oglasavanje/).
 
 ## Ažuriranje
 

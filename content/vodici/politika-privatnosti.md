@@ -6,9 +6,9 @@ lead: Sajt nema naloge, oglasne piksele ni kolačiće za praćenje. Posete se br
 lead_consent: Sajt nema naloge ni oglasne piksele. Posete se broje bez kolačića, kolačić za analitiku postavlja se samo uz vašu dozvolu, a forme i prijave sa mape čuvaju samo ono što sami upišete.
 description_consent: Kako blokvolt.rs postupa sa podacima o ličnosti. Bez naloga; posete se broje bez kolačića, a kolačić za analitiku samo uz vašu dozvolu.
 kicker: Pravno
-updated: 28.09.2026
+updated: 29.09.2026
 published: 2026-09-21
-modified: 2026-09-28
+modified: 2026-09-29
 priority: 0.2
 path: /politika-privatnosti.html
 ---
@@ -23,7 +23,7 @@ Rukovalac podacima: [PRAVNI-PODACI: poslovno ime, sedište, MB, PIB]. Kontakt: h
 
 ## Koji podaci se obrađuju
 
-Ako pišete e-mailom ili kroz formu za ispravke i firme, sajt dobija ono što upišete: poruku, ime i e-adresu ako ih navedete, a za firme i telefon. Ako na kartici punjača pošaljete prijavu, ocenu, komentar ili fotografiju, sajt čuva njih, nadimak ako ga navedete i vreme. Uz svaku poruku i prijavu čuva se i jednosmerni otisak IP adrese: služi samo za zaštitu od zloupotrebe. Pravi se sa nasumičnim ključem koji važi samo jedan dan, pa se posle toga iz otiska adresa ne može vratiti. Fotografiju pregledač pre slanja smanji i ponovo sačuva, bez podataka o lokaciji i uređaju (EXIF).
+Ako pišete e-mailom ili kroz formu za ispravke, firme ili upit za oglašavanje, sajt dobija ono što upišete: poruku, ime i e-adresu ako ih navedete, a za firme i telefon. Ako na kartici punjača pošaljete prijavu, ocenu, komentar ili fotografiju, sajt čuva njih, nadimak ako ga navedete i vreme. Uz svaku poruku i prijavu čuva se i jednosmerni otisak IP adrese: služi samo za zaštitu od zloupotrebe. Pravi se sa nasumičnim ključem koji važi samo jedan dan, pa se posle toga iz otiska adresa ne može vratiti. Fotografiju pregledač pre slanja smanji i ponovo sačuva, bez podataka o lokaciji i uređaju (EXIF).
 
 Pri svakoj poseti provajder sajta (Cloudflare) obrađuje tehničke podatke: IP adresu, vreme zahteva, tip uređaja i pregledača. Fontovi i sav ostali sadržaj učitavaju se sa istog domena, osim podloge mape i skripti za merenje poseta.
 
@@ -72,6 +72,10 @@ Dugme „Blizu mene“ koristi vašu lokaciju samo kada ga pritisnete. Lokacija 
 
 Neke stranice imaju video sa YouTube-a (Google). Dok ne pritisnete „Pusti“, sa YouTube-a se ne učitava ništa; posle toga video se učitava sa domena youtube-nocookie.com, koji po pravilima Google-a ne postavlja kolačiće za reklame dok video ne pogledate.
 
+## Oglasi {#oglasi}
+
+Neke stranice mogu da imaju oglas: sliku i link koji se učitavaju sa servera BlokVolta, bez kolačića, piksela i skripti oglašivača. Oglašivač ne dobija podatke o vama. Kad kliknete na oglas, prelazite na sajt oglašivača; link nosi oznaku da dolazite sa BlokVolta, a dalje važi politika privatnosti tog sajta.
+
 ## Vaša prava
 
 Imate pravo na pristup, ispravku i dopunu, brisanje, ograničenje obrade, prenosivost podataka i prigovor. Zahtev pošaljite na hello@blokvolt.com. Odgovor stiže bez odlaganja, a najkasnije za 30 dana.
@@ -84,6 +88,7 @@ Sajt vodi [PRAVNI-PODACI]. Korišćenjem sajta prihvatate ove uslove.
 
 - Sadržaj je informativan i ne zamenjuje pravni savet ni pregled instalacije. Obavezujuća je samo ponuda koju vam firma izda.
 - Firme označene kao „Izdvojeno“ prikazane su po istim kolonama kao ostale.
+- Oglasi su označeni rečju „Oglas“ i ne utiču na podatke, redosled ni ocene. Za sadržaj oglasa odgovara oglašivač.
 - Primenjuje se pravo Republike Srbije. Za sporove je nadležan sud u Novom Sadu.
 
 <details markdown="1">
@@ -93,6 +98,6 @@ Sajt vodi [PRAVNI-PODACI]. Korišćenjem sajta prihvatate ove uslove.
 - Objavom prijave, komentara ili fotografije na mapi dajete BlokVoltu neisključivu, besplatnu dozvolu da ih prikazuje na sajtu; autorska prava ostaju vaša. Sadržaj koji krši [pravila](/pravila-objavljivanja/) se uklanja.
 - Tekstovi, tabele i znak BlokVolt su zaštićeni. Citiranje uz link je dozvoljeno, a kopiranje u komercijalne svrhe bez pisane saglasnosti nije. Izuzetak su [podaci za preuzimanje](/preuzimanje/), pod licencom CC BY 4.0.
 - Sajt je dostupan „takav kakav jeste“. Vlasnik sajta ne odgovara za štetu zbog privremene nedostupnosti sajta, promene cena kod firmi ili sadržaja spoljnih linkova.
-- Važeća verzija je uvek na ovoj stranici. Prva verzija važi od 21.09.2026, dopuna o mapi punjača od 23.09.2026, dopuna o formama, prijavama sa mape i videu od 24.09.2026, dopuna o merenju poseta i omiljenim punjačima od 25.09.2026, a dopuna o izboru „Imam Teslu“ od 28.09.2026.
+- Važeća verzija je uvek na ovoj stranici. Prva verzija važi od 21.09.2026, dopuna o mapi punjača od 23.09.2026, dopuna o formama, prijavama sa mape i videu od 24.09.2026, dopuna o merenju poseta i omiljenim punjačima od 25.09.2026, dopuna o izboru „Imam Teslu“ od 28.09.2026, a dopuna o oglasima od 29.09.2026.
 
 </details>

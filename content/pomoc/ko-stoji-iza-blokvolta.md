@@ -2,17 +2,17 @@
 id: B16
 title: Ko stoji iza BlokVolta i kako se finansira
 h1: Ko stoji iza BlokVolta
-description: Ko uređuje sajt BlokVolt, kako je u registru označena firma povezana sa urednicima, zašto nema ocena ni plaćenih pozicija i kako nastaje sadržaj sajta.
+description: Ko uređuje sajt BlokVolt, kako je u registru označena firma povezana sa urednicima, zašto se mesto u registru ne kupuje, gde stoje oglasi i kako nastaje sadržaj sajta.
 lead: Ko uređuje sajt piše na stranici O sajtu: tim koji stoji iza jedne firme za ugradnju kućnih punjača. Ta firma je u registru po istim pravilima kao ostale, uz oznaku „Izdvojeno“.
 kicker: Pomoć
 section: firme-i-ispravke
 order: 3
 path: /pomoc/ko-stoji-iza-blokvolta/
-updated: 28.09.2026
+updated: 29.09.2026
 related: /pomoc/za-firme-ispravka-podataka/, /pomoc/odakle-su-podaci/, /pomoc/privatnost/
 shots:
 published: 2026-09-28
-modified: 2026-09-28
+modified: 2026-09-29
 ---
 ## Ko uređuje sajt
 
@@ -27,10 +27,14 @@ Ko uređuje sajt i sa kojom je firmom povezan, piše na stranici [O sajtu](/o-sa
 ## Šta sajt ne radi
 
 - Ne ocenjuje i ne rangira firme ni mreže.
-- Nema plaćenih pozicija. Upis, ispravka i dopuna su besplatni, a redosled se ne kupuje.
+- Ne prodaje mesto u registru, na mapi i u cenama. Upis, ispravka i dopuna su besplatni, a redosled se ne kupuje.
 - Ne objavljuje ponude dobijene na upit, kao kupac.
 - Poređenje sadrži samo javne i proverljive podatke, bez vrednosnih sudova (uslovi iz čl. 14 Zakona o oglašavanju).
-- Nema reklama ni oglasnih piksela.
+- Nema oglasnih piksela ni kolačića za oglase.
+
+## Oglasi
+
+Troškove sajta snosi tim koji ga uređuje. Oglas može da stoji samo na dnu stranica tri rubrike: Kupovina i vlasništvo, Na putu i Vesti. Uvek nosi oznaku „Oglas“ i ne menja podatke, redosled ni ocene. Oglasi za prodaju i ugradnju kućnih punjača se ne primaju, a u aplikacijama oglasa nema. Uslovi su na stranici [Oglašavanje](/za-firme/oglasavanje/).
 
 ## Kako nastaje sadržaj
 

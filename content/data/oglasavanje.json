@@ -1,0 +1,64 @@
+{
+ "_doc": "Advertising on blokvolt.rs (docs/RUNBOOK.md 3.26). The media kit page /za-firme/oglasavanje/ and the PDFs are made from this file; ads from the list 'oglasi'. An ad is shown only from 'od' to 'do' (YYYY-MM-DD, both days included), on the pages of its rubric, never on the paths in 'ne_na' and never on a news item (or news list page) whose text contains one of the words in 'ne_uz' (for a network: its brand and company names). Empty 'oglasi' = no ads anywhere. Fields: id, oglasivac, rubrika (vlasnistvo | na-putu | vesti), od, do, url, slika, naslov (≤60), tekst (≤120), alt, ne_na [], ne_uz [], optional 'en'/'ru' {naslov, tekst, alt}. Image: static/assets/oglasi/<slika> (1200x400). Links get utm_source=blokvolt&utm_medium=oglas&utm_campaign=<id>.",
+ "stanje": "29.09.2026",
+ "cena": {
+  "rsd_mesec": 5000,
+  "min_meseci": 3,
+  "osnivacki_popust": 50,
+  "osnivacki_broj": 3,
+  "osnivacki_meseci": 6,
+  "stepenice": [
+   {
+    "do": 5000,
+    "rsd": 5000
+   },
+   {
+    "do": 20000,
+    "rsd": 10000
+   },
+   {
+    "do": null,
+    "rsd": 20000
+   }
+  ],
+  "zakljucano_meseci": 12
+ },
+ "posecenost": {
+  "_doc": "Filled in once a month from Cloudflare Web Analytics (Pages project blokvolt → Metrics → Web Analytics), whole site, previous calendar month. Empty = the first full month is still being counted.",
+  "mesec": "",
+  "posete": null,
+  "pregledi": null
+ },
+ "rubrike": {
+  "vlasnistvo": {
+   "naziv": "Kupovina i vlasništvo",
+   "opis": "subvencije, registracija i porezi, uvoz i carina, osiguranje, krediti i lizing, servisi, rent-a-car",
+   "putanje": [
+    "/podaci/subvencije-2026/",
+    "/podaci/registracija-i-porezi/",
+    "/podaci/uvoz-i-carina/",
+    "/podaci/osiguranje-elektricnog-automobila/",
+    "/podaci/krediti-i-lizing/",
+    "/podaci/servisi-za-elektricne-automobile/",
+    "/podaci/rent-a-car-i-car-sharing/"
+   ]
+  },
+  "na-putu": {
+   "naziv": "Na putu",
+   "opis": "putarina i parking, besplatni punjači, aplikacije i kartice za punjenje, punjenje u regionu",
+   "putanje": [
+    "/podaci/putarina-i-parking/",
+    "/javno-punjenje/besplatni-punjaci/",
+    "/javno-punjenje/aplikacije-i-kartice/",
+    "/javno-punjenje/region/"
+   ],
+   "bez_mreza": true
+  },
+  "vesti": {
+   "naziv": "Vesti",
+   "opis": "sve vesti i spisak vesti",
+   "prefiks": "/vesti/"
+  }
+ },
+ "oglasi": []
+}
