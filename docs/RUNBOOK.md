@@ -898,11 +898,16 @@ The media kit is public since 29.09.2026 (owner's decision); an ad appears only 
   and tobacco, crypto and financial schemes, political ads, claims that cannot be checked. **Never for sale:** place,
   order and labels in the register, points, statuses and ratings on the map, prices and the price index, paid
   articles or news to order, removing drivers' ratings and reports.
-- **Prices** (`cena`): 5.000 RSD a month per rubric without VAT, at least 3 months, paid in advance; the first three
-  advertisers −50 % for 6 months. Tiers by the whole site's visits a month (≤ 5.000 → 5.000 RSD, ≤ 20.000 → 10.000,
-  above → 20.000); a new price applies from the next quarter and an advertiser keeps its price for 12 months.
-- **Enquiries** come by the form on the page (`/api/zahtev`, kind `firma` with the hidden field `vrsta=oglas`; in
-  Telegram „Запросы“ as a firm request with „vrsta: oglas“) or to hello@blokvolt.com. No reply, offer or invoice
+- **Price** (`cena`, owner's decision 29.09.2026): one price for everyone — 5.000 RSD a month per rubric without VAT,
+  at least 3 months, paid in advance; the same for every rubric and every advertiser, and a booked period keeps its
+  price. No tiers by traffic and no discounts (the earlier tiers and the −50 % for the first three advertisers were
+  dropped). The page shows three worked examples (3 and 6 months, all three rubrics); they are computed from `cena`.
+  Change the price only with the owner.
+- **Enquiries** come by the form on the page (`/api/zahtev`, kind `firma` with the hidden field `vrsta=oglas` and
+  `jezik` = the page language) or to hello@blokvolt.com. The bot (evolako-bot) posts every advertising enquiry to the
+  founders' group, topic „Запросы“, as „BlokVolt · запрос на рекламу“ (firm, rubric, month, what, contact, page
+  language) and puts it into the CRM as form `oglas` (version of 29.09.2026; the version before it posted them hourly
+  as an ordinary firm request with „vrsta: oglas“). No reply, offer or invoice
   without the owner's explicit yes (outreach rule, 3.7). Invoices only after the publisher (preduzetnik) is
   registered — then fill in the invoice line on the page (business name, MB, PIB, whether VAT is charged).
 - **Booking** (owner said yes, invoice paid, image and text checked against the rules): add to `oglasi`
@@ -927,10 +932,20 @@ The media kit is public since 29.09.2026 (owner's decision); an ad appears only 
 - **Monthly, in the first days of the month:** `posecenost` ← Cloudflare Web Analytics of the Pages project, whole
   site, previous calendar month (`mesec` like "oktobar 2026", `posete`, `pregledi`); set `stanje` to today; build;
   `i18n.py todo` (the visits line is new every month) → translate (3.9); `python3 scripts/medija_kit_pdf.py`; build
-  again; deploy; commit. If the visits cross a tier, tell the owner before changing `cena`.
+  again; deploy; commit. The visits are information for advertisers; the price does not follow them.
 - **PDFs.** `scripts/medija_kit_pdf.py` prints the Serbian and English page to
-  `static/za-firme/blokvolt-medija-kit-sr.pdf` and `-en.pdf` (A4, two pages; print styles `body.mk-page` in bv.css).
-  After any change of the page text or numbers: build → PDF → build (the buttons appear only when both PDFs exist).
+  `static/za-firme/blokvolt-medija-kit-sr.pdf` and `-en.pdf` (A4, three pages: cover and audience; rubrics, the ad
+  and the price; rules, steps and press files — print styles `body.mk-page` in bv.css). It loads the lazy photos
+  first and re-encodes them as JPEG with pikepdf (about 0.7 MB a file instead of 3 MB; without pikepdf the file is
+  just bigger). After any change of the page text or numbers: build → PDF → build (the buttons appear only when both
+  PDFs exist). Look at all three pages of both files before deploying: a section must start at the top of a page.
+- **Photos** (redesign 29.09.2026): six AI-generated photos (Higgsfield, 29.09.2026; the people in them are not real
+  persons) — the hero, the audience, one per rubric and the sample ad. Originals (PNG 2048 × 1360, the ad 2688 × 1152)
+  are on the side branch `media-raw-2026-09`, folder `media-raw/` (not served); `scripts/medija_kit_img.py` makes
+  `static/assets/img/oglasavanje-<name>-<width>.webp`, the 3:1 sample ad (`oglasavanje-primer-600/1200.webp`) and the
+  og:image `static/assets/og/oglasavanje.jpg` (1200 × 630, drawn from HTML with the site font; `--og-only` redraws just
+  that). `/assets/` is cached for a year: a changed photo gets a new file name, never the old one. The sample ad on
+  the page is a mock-up (class `.mk-ad`, not `.oglas`, which print and the apps hide).
 - **Files for the media:** `static/za-firme/blokvolt-logo.svg`, `blokvolt-logo-beli.svg` (dark backgrounds),
   `blokvolt-znak.svg`, `blokvolt-logo.png` (1200 × 304, transparent). Same geometry as the site logo: the 64-unit
   tile `#0B0F17` with the lime bolt `#D9F45B`, "blok" 400 + "volt" 800.
