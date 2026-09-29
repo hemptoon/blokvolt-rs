@@ -4,8 +4,9 @@
    who charges free), drivers' reports, ratings and photos from /api (Cloudflare D1).
    On blokvolt.rs, cfg.region adds the neighbouring countries (/assets/map/region.json: open data of the blokvolt.com
    sections) as a second, quieter layer: no prices, reports or checks there, and each card links to that country's map.
-   Favourites (★) are station ids kept only in this browser (localStorage 'bv:fav'), and so is the "Imam Teslu" switch
-   ('bv:tesla'); nothing is sent anywhere. */
+   Favourites (★) are station ids kept in this browser (localStorage 'bv:fav'), and so is the "Imam Teslu" switch
+   ('bv:tesla'). Only a reader signed in to "Moj BlokVolt" (cookie bv_in) also keeps them in the account (/api/nalog/*,
+   'bv:fav-owner': whose list it is; docs/RUNBOOK.md 3.27); without the cookie nothing is sent anywhere. */
 import * as maplibregl from '/assets/vendor/maplibre-6.11.1/maplibre-gl.mjs';
 
 const d = document;
@@ -96,6 +97,44 @@ const TESLA_KEY = 'bv:tesla';
 let TESLA = false;
 try { TESLA = localStorage.getItem(TESLA_KEY) === '1'; } catch (e) { TESLA = false; }
 function saveTesla() { try { localStorage.setItem(TESLA_KEY, TESLA ? '1' : '0'); } catch (e) { /* private mode: this visit only */ } }
+
+// ---------- the account ("Moj BlokVolt"), only with the cookie bv_in=1 ----------
+// After the map data is in, /api/nalog/ja is asked once. The browser's list follows its owner ('bv:fav-owner', a short
+// hash the server gives each account): the same account → both lists joined and saved in both; another account → the
+// signed-in account's list replaces it, never mixed; a list from before any sign-in with stations the account does not
+// have → nothing changes here and nothing is sent: /nalog/ asks the reader first. Once in step, every star (and the Tesla
+// switch) is also sent to the account, fire-and-forget: localStorage stays the offline copy. A 401 removes the hint
+// cookie; the map then works as before, locally. The account's fast-charging plug (user.dc) marks the matching connector.
+const OWNER_KEY = 'bv:fav-owner';
+let ACC = false, MYDC = '';
+function accPost(path, body) {
+  return fetch(cfg.api + '/nalog/' + path, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), credentials: 'same-origin' }).catch(() => null);
+}
+function accSync() {
+  if (!cfg.api || !/(?:^|;\s*)bv_in=1(?:;|$)/.test(d.cookie)) return;
+  fetch(cfg.api + '/nalog/ja', { credentials: 'same-origin' }).then(r => {
+    if (r.status === 401) { d.cookie = 'bv_in=; Max-Age=0; Path=/; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : ''); return null; }
+    return r.ok ? r.json() : null;
+  }).then(j => {
+    if (!j || !j.ok) return;
+    MYDC = (j.user && j.user.dc) || '';
+    let owner = null;
+    try { owner = localStorage.getItem(OWNER_KEY); } catch (e) { owner = null; }
+    const key = j.user.owner, acc = new Set(j.favs || []), same = (a, b) => a.size === b.size && [...a].every(x => b.has(x));
+    if (!owner && [...FAV].some(id => !acc.has(id))) { refresh(); if (sel) openCard(sel, false); return; }   // /nalog/ asks first
+    ACC = true;
+    const ids = new Set(ST.map(s => s.id)), mine = [...acc].filter(id => ids.has(id));
+    const next = new Set((owner === key ? [...mine, ...FAV] : mine).slice(0, 300));
+    if (!same(next, FAV)) { FAV = next; saveFav(); }
+    try { localStorage.setItem(OWNER_KEY, key); } catch (e) { /* private mode */ }
+    if (!same(next, acc)) accPost('omiljeni', { replace: [...next] });
+    const tesla = !!(j.user && j.user.tesla);
+    if (tesla !== TESLA && !/[?&]tesla=1\b/.test(location.search)) setTesla(tesla, true);
+    favCount();
+    refresh();
+    if (sel) openCard(sel, false);
+  }).catch(() => { /* offline: the local lists stay */ });
+}
 
 let ST = [], NETS = {}, CI = {}, CI_STATE = 'loading', map, me = null, sel = null, city = null, opened = 0;
 // the neighbouring countries (cfg.region): their links, and how many stations are Serbian (NSR) and how many are not (NRG)
@@ -435,7 +474,8 @@ function openCard(s, fly) {
   const logo = n && n.logo ? '<span class="lg w' + (n.logo_dark ? ' dark' : '') + '"><img src="' + esc(n.logo) + '" alt=""></span>' : '<span class="lg w mono" aria-hidden="true">' + esc((netName(s) || '?').slice(0, 2).toUpperCase()) + '</span>';
   const netRole = s.cc ? (s.nn ? T.net_known : T.operator) : n && n.page ? T.net_known : (s.opn && !n ? T.operator : T.net_unknown);
   const netLine = netName(s) ? '<div class="net">' + logo + '<div><b>' + esc(netName(s)) + '</b><span>' + esc(netRole) + '</span></div></div>' : '';
-  const conns = s.c.length ? '<div class="cbox"><span>' + esc(T.conn) + '</span><ul>' + s.c.map(c => '<li>' + esc(connLine(c)) + '</li>').join('') + '</ul></div>' : '';
+  const conns = s.c.length ? '<div class="cbox"><span>' + esc(T.conn) + '</span><ul>' + s.c.map(c => '<li>' + esc(connLine(c)) +
+    (MYDC && c[0] === MYDC ? ' <b class="mine">· ' + esc(T.conn_mine) + '</b>' : '') + '</li>').join('') + '</ul></div>' : '';
   const acc = s.acc === 'customers' ? '<div class="cbox"><span>' + esc(T.access) + '</span><div>' + esc(T.customers) + '</div></div>' : '';
   const navs = navLinks(s);
   // a neighbouring country's station: the button opens it on that country's map on blokvolt.com (prices, the country's networks)
@@ -504,6 +544,7 @@ function toggleFav(s) {
     b.title = on ? T.fav_del : T.fav_add;
   }
   track(on ? 'favourite_add' : 'favourite_remove', { station: s.id, network: s.net || '', total: FAV.size });
+  if (ACC) accPost('omiljeni', on ? { add: [s.id] } : { remove: [s.id] });
   setData();
   renderList();
 }
@@ -829,6 +870,7 @@ function setTesla(on, quiet, keep) {
   TESLA = on;
   if (!keep) saveTesla();
   if (!quiet) track('map_tesla', { on });
+  if (!quiet && ACC) accPost('podesavanja', { tesla: on });
   paintChips();
   refresh();
   if (sel) openCard(sel, false);
@@ -894,6 +936,7 @@ function fromUrl() {
   if (p.get('tesla') === '1') { TESLA = true; paintChips(); }
   const c = g && (cfg.cities || {})[g];
   if (c) city = { lat: c[0], lon: c[1] };
+  paintChips();   // "Imam Teslu" kept in this browser (or the account) shows on its chip from the first paint
   if (net && $chips.querySelector('[data-f="net:' + net + '"]')) setChip('net:' + net, true);
   else if (net) { state.q = state.q || net.replace(/-/g, ' '); refresh(); }
   else if (f && f !== 'ok' && $chips.querySelector('[data-f="' + f + '"]')) setChip(f, true);
@@ -930,6 +973,7 @@ Promise.all([getJson(cfg.stations), cfg.nets ? getJson(cfg.nets).catch(() => ({ 
   favCount();
   fromUrl();
   loadSummaries();
+  accSync();
   try { initMap(); } catch (e) { d.getElementById('map').classList.add('is-off'); }
   // scripts/qa/map_extra_test.py reads the pin data (kind, power label, price label) through this, only with ?qa=1;
   // bvMapQa(true) gives the neighbouring countries' pins (scripts/qa/map_region_test.py)

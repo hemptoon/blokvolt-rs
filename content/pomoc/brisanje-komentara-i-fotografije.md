@@ -4,6 +4,8 @@ title: Kako da uklonite svoj komentar, fotografiju ili nalog
 h1: Uklanjanje komentara i fotografije
 description: Kako da uklonite svoju prijavu, komentar ili fotografiju sa mape BlokVolt i obrišete omiljene punjače. Sajt nema naloge, pa se brisanje traži e-mailom.
 lead: Naloga nema, pa se brisanje prijave, komentara ili fotografije traži e-mailom na hello@blokvolt.com, uz punjač i približno vreme objave.
+description_nalog: Kako da uklonite svoju prijavu, komentar ili fotografiju sa mape BlokVolt, obrišete omiljene punjače i nalog Moj BlokVolt.
+lead_nalog: Brisanje prijave, komentara ili fotografije traži se e-mailom na hello@blokvolt.com, uz punjač i približno vreme objave. Nalog brišete sami, na stranici naloga.
 kicker: Pomoć
 section: doprinos
 order: 6
@@ -34,13 +36,15 @@ Komentar koji tri posetioca prijave sklanja se do nove provere, a fotografija po
 ## Omiljeni punjači i „Imam Teslu“
 
 - Punjač iz omiljenih uklanjate ponovnim dodirom na zvezdicu u vrhu kartice („Ukloni iz omiljenih“).
-- Ceo spisak i izbor „Imam Teslu“ brišu se kad u pregledaču obrišete podatke sajta www.blokvolt.rs. Sajt ih nema, pa ne može da ih obriše umesto vas.
+<!--nonalog-->- Ceo spisak i izbor „Imam Teslu“ brišu se kad u pregledaču obrišete podatke sajta www.blokvolt.rs. Sajt ih nema, pa ne može da ih obriše umesto vas.<!--/nonalog-->
+<!--nalog-->- Ceo spisak i izbor „Imam Teslu“ brišu se kad u pregledaču obrišete podatke sajta www.blokvolt.rs. Ako ste prijavljeni, u nalogu ostaju dok ne obrišete nalog.<!--/nalog-->
 
 [[shot:mapa-omiljeni-zvezdica | Uključena zvezdica u vrhu kartice punjača, sa natpisom „Ukloni iz omiljenih“]]
 
 ## A nalog
 
-Sajt nema naloge ni registraciju, pa nema ni naloga za brisanje. Aplikacija za Android uklanja se kao svaka druga aplikacija, a ikonica na iPhone-u dugim pritiskom na nju.
+<!--nonalog-->Sajt nema naloge ni registraciju, pa nema ni naloga za brisanje. Aplikacija za Android uklanja se kao svaka druga aplikacija, a ikonica na iPhone-u dugim pritiskom na nju.<!--/nonalog-->
+<!--nalog-->Nalog [Moj BlokVolt](/nalog/) brišete sami: na stranici naloga izaberite „Obrišite nalog“. Brišu se nalog, omiljeni punjači i podešavanja, a vaše ocene i fotografije ostaju na mapi, bez veze sa nalogom. Aplikacija za Android uklanja se kao svaka druga aplikacija, a ikonica na iPhone-u dugim pritiskom na nju.<!--/nalog-->
 
 Poruke poslate kroz forme čuvaju se najduže 12 meseci od poslednjeg kontakta. Na zahtev se brišu i ranije, osim ako zakon traži duže čuvanje. Više u [politici privatnosti](/politika-privatnosti.html).
 

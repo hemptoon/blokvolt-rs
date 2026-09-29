@@ -59,7 +59,8 @@ Kad uvećate deo mape, lista prikazuje samo punjače na tom delu („U ovom delu
 2. Dodirnite tačku ili red u listi. Otvara se kartica: provera, cena, priključci i „Gde tačno“.
 3. Pogledajte oznaku provere i deo „Iskustva vozača“ sa poslednjom prijavom ([šta znači „Potvrđeno“](/pomoc/sta-znaci-potvrdjeno/)).
 4. Pritisnite „Navigacija“. Na Apple uređajima otvara se Apple Maps, na ostalim Google Maps. Ispod dugmeta je link za Waze, a na Apple uređajima i za Google Maps.
-5. Zvezdica u vrhu kartice čuva punjač u omiljene. Spisak je samo u ovom pregledaču, a otvara ga filter „Omiljeni“.
+<!--nonalog-->5. Zvezdica u vrhu kartice čuva punjač u omiljene. Spisak je samo u ovom pregledaču, a otvara ga filter „Omiljeni“.<!--/nonalog-->
+<!--nalog-->5. Zvezdica u vrhu kartice čuva punjač u omiljene. Spisak je u ovom pregledaču, a ako ste prijavljeni na [Moj BlokVolt](/nalog/) — i u nalogu, na svim uređajima. Otvara ga filter „Omiljeni“.<!--/nalog-->
 
 Na telefonu je mapa gore, a lista ispod nje. Kartica se otvara od dna ekrana, a „Podeli“ šalje ili kopira link na nju.
 

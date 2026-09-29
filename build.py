@@ -696,6 +696,7 @@ MAP_T = {
     'today': 'danas', 'yesterday': 'juče', 'days_ago': 'pre {n} dana',
     # favourites (kept only in this browser)
     'fav_add': 'Sačuvaj u omiljene', 'fav_del': 'Ukloni iz omiljenih', 'fav_sr': 'omiljeni',
+    'conn_mine': 'vaš auto',   # the fast-charging plug of a signed-in reader's car (Moj BlokVolt)
     'fav_none': 'Još nema omiljenih punjača. Otvorite punjač i dodirnite zvezdicu — lista se čuva u ovom pregledaču.',
     # prices on the pins, Tesla-only chargers, our checked facts (content/mapa/dopune.json)
     'per_kwh': 'RSD/kWh', 'tesla_only': 'Samo Tesla', 'p_tesla_only': 'Samo za Tesla vozila', 'p_tesla_fee': '{t} — {s}.',
@@ -787,8 +788,38 @@ if os.environ.get('BV_QA_POSTHOG_KEY'):       # QA only: build with a dummy key 
 ANALYTICS_CONSENT = bool(_AN.get('posthog_key')) and bool(_AN.get('consent'))
 ANALYTICS = json.dumps({'key': _AN['posthog_key'], 'host': _AN['posthog_host'], 'ui': _AN['posthog_ui'], 'assets': _AN['posthog_assets'],
                         'consent': ANALYTICS_CONSENT}) if _AN.get('posthog_key') else ''
+# accounts ("Moj BlokVolt", /nalog/) and the newsletter (Nedeljni pregled, /pregled/), docs/RUNBOOK.md 3.27:
+# content/data/site.json → accounts.enabled, pregled.enabled (+ pregled.day). Off, the pages are still built, but noindex,
+# out of the sitemap and not linked from anywhere. BV_QA_ACCOUNTS=1 / BV_QA_PREGLED=1 switch them on for a QA build
+# (like BV_QA_POSTHOG_KEY; '0' switches them off). "since" (DD.MM.YYYY, the day a feature goes live) dates the change in the
+# privacy policy; a real build with a feature on refuses to run without it, a QA build uses today.
+def _feature(name, env_var):
+    cfg = SITE_META.get(name) or {}
+    on, qa = bool(cfg.get('enabled')), os.environ.get(env_var) in ('0', '1')
+    if qa:
+        on = os.environ[env_var] == '1'
+    since = cfg.get('since') or (TODAY if qa else '')
+    if on and not re.fullmatch(r'\d{2}\.\d{2}\.\d{4}', since):
+        raise SystemExit(f'content/data/site.json: {name}.since (DD.MM.YYYY, the day it goes live) is needed when {name}.enabled is true')
+    return on, since
+
+
+ACCOUNTS, ACCOUNTS_SINCE = _feature('accounts', 'BV_QA_ACCOUNTS')
+_PG_ON, PREGLED_SINCE = _feature('pregled', 'BV_QA_PREGLED')
+# the newsletter's day in the two Serbian forms the texts need: "stiže petkom" and "stiže u petak"
+DAY_FORMS = {'ponedeljak': ('ponedeljkom', 'u ponedeljak'), 'utorak': ('utorkom', 'u utorak'), 'sreda': ('sredom', 'u sredu'),
+             'četvrtak': ('četvrtkom', 'u četvrtak'), 'petak': ('petkom', 'u petak'), 'subota': ('subotom', 'u subotu'),
+             'nedelja': ('nedeljom', 'u nedelju')}
+_PG_DAY = (SITE_META.get('pregled') or {}).get('day') or 'petak'
+assert _PG_DAY in DAY_FORMS, f'site.json pregled.day: one of {", ".join(DAY_FORMS)}'
+PG = {'on': _PG_ON, 'day': _PG_DAY, 'dayi': DAY_FORMS[_PG_DAY][0], 'dayu': DAY_FORMS[_PG_DAY][1]}
+print('features: accounts ' + ('on' if ACCOUNTS else 'off') + ', pregled ' + ('on' if PG['on'] else 'off'))
+if ACCOUNTS:   # the map's favourites also go to the account of a signed-in reader
+    MAP_T['fav_none'] = 'Još nema omiljenih punjača. Otvorite punjač i dodirnite zvezdicu — lista se čuva u ovom pregledaču, a ako ste prijavljeni — i u nalogu.'
+    M['i18n'] = json.dumps(MAP_T, ensure_ascii=False)
 base_ctx = dict(SITE=SITE, TODAY=TODAY, ISO_TODAY=ISO_TODAY, FIRMS_CHECKED=FIRMS_CHECKED, SITE_META=SITE_META, NAV=NAV,
-                n_firms=len(published), n_map=MAP['n'], ANALYTICS=ANALYTICS, ANALYTICS_CONSENT=ANALYTICS_CONSENT, APP=APP)
+                n_firms=len(published), n_map=MAP['n'], ANALYTICS=ANALYTICS, ANALYTICS_CONSENT=ANALYTICS_CONSENT, APP=APP,
+                ACCOUNTS=ACCOUNTS, PG=PG)
 
 urls = []
 
@@ -868,30 +899,50 @@ def related_for(path):
 
 
 AN_BLOCKS = {'posthog': bool(ANALYTICS), 'noposthog': not ANALYTICS, 'consent': ANALYTICS_CONSENT, 'noconsent': not ANALYTICS_CONSENT,
-             'cookieless': bool(ANALYTICS) and not ANALYTICS_CONSENT}
+             'cookieless': bool(ANALYTICS) and not ANALYTICS_CONSENT,
+             # accounts and the newsletter (RUNBOOK 3.27); posta = either of them (the site sends e-mail)
+             'nalog': ACCOUNTS, 'nonalog': not ACCOUNTS, 'pregled': PG['on'], 'nopregled': not PG['on'],
+             'posta': ACCOUNTS or PG['on'], 'noposta': not (ACCOUNTS or PG['on'])}
 
 
 def posthog_blocks(body):
     """Privacy-policy text that depends on the analytics mode: <!--posthog-->…<!--/posthog--> (PostHog on),
     <!--noposthog--> (off), <!--consent--> (on, with the cookie banner), <!--noconsent--> (no banner: off or
-    cookieless), <!--cookieless--> (on, no banner)."""
+    cookieless), <!--cookieless--> (on, no banner). The same for the accounts and the newsletter: <!--nalog-->,
+    <!--nonalog-->, <!--pregled-->, <!--nopregled-->, <!--posta--> (either is on), <!--noposta-->. Blocks of different
+    kinds may be nested. {{NALOG_OD}} and {{PREGLED_OD}} become the date the feature went live (site.json → since)."""
     for k, on in AN_BLOCKS.items():
         if on:
             body = body.replace(f'<!--{k}-->', '').replace(f'<!--/{k}-->', '')
         else:
             body = re.sub(rf'\n?<!--{k}-->.*?<!--/{k}-->\n?', lambda m: '\n' if m.group(0).startswith('\n') and m.group(0).endswith('\n') else '',
                           body, flags=re.S)
-    return body
+    return body.replace('{{NALOG_OD}}', ACCOUNTS_SINCE).replace('{{PREGLED_OD}}', PREGLED_SINCE)
+
+
+def _later(a, b):
+    """The later of two DD.MM.YYYY dates ('' counts as none)."""
+    return max((x for x in (a, b) if x), key=lambda x: x.split('.')[::-1], default='')
 
 
 for path, a in ARTICLES.items():
+    _raw = a['body']
     a['body'] = posthog_blocks(a['body'])
     meta = a['meta']
-    if ANALYTICS_CONSENT:          # front matter lead_consent / description_consent replace the lead and description
-        for _k in ('lead', 'description'):
-            if meta.get(_k + '_consent'):
-                meta[_k] = meta[_k + '_consent']
-        a['lead'] = meta.get('lead', a['lead'])
+    # front matter lead_consent / description_consent (cookie banner), lead_nalog / description_nalog (accounts on) and
+    # lead_consent_nalog / description_consent_nalog (both) replace the lead and description
+    _suffixes = (['_consent_nalog', '_nalog', '_consent'] if ANALYTICS_CONSENT and ACCOUNTS else ['_nalog'] if ACCOUNTS
+                 else ['_consent'] if ANALYTICS_CONSENT else [])
+    for _k in ('lead', 'description'):
+        _v = next((meta[_k + _s] for _s in _suffixes if meta.get(_k + _s)), None)
+        if _v:
+            meta[_k] = _v
+    a['lead'] = meta.get('lead', a['lead'])
+    # a page whose text changes when a feature goes live shows that date as its update (e.g. the privacy policy)
+    for _tok, _on, _since in (('{{NALOG_OD}}', ACCOUNTS, ACCOUNTS_SINCE), ('{{PREGLED_OD}}', PG['on'], PREGLED_SINCE)):
+        if _on and _tok in _raw and meta.get('updated'):
+            meta['updated'] = _later(meta['updated'], _since)
+            meta['modified'] = max(meta.get('modified') or '', iso(meta['updated']))
     sec = section_of(path)
     if path.startswith('/javno-punjenje/'):
         crumbs = [('/javno-punjenje/', 'Javno punjenje')]
@@ -943,6 +994,19 @@ for mdf in sorted(glob.glob(str(ROOT / 'content' / 'pomoc' / '*.md'))):
     hp = meta['path']
     assert re.fullmatch(r'/pomoc/[a-z0-9-]+/', hp) and meta.get('section') in {x[0] for x in POMOC_SECTIONS}, mdf
     assert not re.search(r'\[ODLUKA|\[PROVERITI', body), f'{mdf}: an open decision marker'
+    # text that depends on the accounts and the newsletter (RUNBOOK 3.27): the markers of posthog_blocks, lead_nalog and
+    # description_nalog; the page then shows the day the feature went live as its update
+    _on = {'nalog': ACCOUNTS_SINCE if ACCOUNTS else '', 'pregled': PREGLED_SINCE if PG['on'] else ''}
+    _on['posta'] = min((d for d in _on.values() if d), key=lambda x: x.split('.')[::-1], default='')
+    _since = [d for k, d in _on.items() if d and re.search(rf'<!--(no)?{k}-->', body)]
+    for _k in ('lead', 'description'):
+        if ACCOUNTS and meta.get(_k + '_nalog'):
+            meta[_k] = meta[_k + '_nalog']
+            _since.append(ACCOUNTS_SINCE)
+    body = posthog_blocks(body)
+    if _since and meta.get('updated'):
+        meta['updated'] = _later(meta['updated'], max(_since, key=lambda x: x.split('.')[::-1]))
+        meta['modified'] = max(meta.get('modified') or '', iso(meta['updated']))
     HELP[hp] = {'meta': meta, 'body': body, 'path': hp, 'h1': meta.get('h1') or meta['title'], 'lead': meta.get('lead', ''),
                 'order': int(meta.get('order', 50))}
 _SEC_ICON = {k: icon for k, _, _, icon in POMOC_SECTIONS}
@@ -1341,6 +1405,58 @@ render('preuzimanje.html', '/preuzimanje/', datasets=DATASETS, section='',
        description='CSV tabele sa sajta, besplatno uz navođenje izvora: firme za punjače, cene električnih automobila, wallbox modeli, cene javnog punjenja i mreže.')
 add_url('/preuzimanje/', '0.5')
 
+# ---------------------------------------------------------------- accounts (/nalog/) and the newsletter (/pregled/)
+# docs/RUNBOOK.md 3.27. /nalog/ is personal: always noindex, never in the sitemap; linked from the header only when
+# accounts are on. /pregled/ is indexable and in the sitemap only when the newsletter is on; /pregled/potvrda/ and
+# /pregled/odjava/ (confirmation, unsubscribing, topics) are always noindex. The data comes from /api (static/assets/nalog.js).
+# Model names for the "Moj auto" list, from ev-modeli.json, without the Serbian words some of them carry there
+EV_CLEAN = {'Električna G-Klasa (G 580 sa EQ tehnologijom)': 'G 580', 'EQE limuzina': 'EQE', 'EQS limuzina': 'EQS',
+            'Proace City Verso Electric (putnički kombi, M1)': 'Proace City Verso Electric', 'Grande Panda (električni)': 'Grande Panda',
+            'Cooper E (električni)': 'Cooper E', 'Countryman (električni)': 'Countryman E', 'iX3 (Neue Klasse)': 'iX3'}
+
+
+def ev_options():
+    """[(brand, [(stored value "Brand Model", label "Model")])] for the grouped model list."""
+    out = []
+    for b in EV_DATA['brands']:
+        first, ms = re.split(r'[\s-]', b['brand'])[0].lower(), []
+        for m in b['models']:
+            label = EV_CLEAN.get(m['model'], re.sub(r'\s*\(električn[ia]\)$', '', m['model']))
+            value = label if label.lower().startswith(first) else f"{b['brand']} {label}"
+            if value not in (x[0] for x in ms):
+                ms.append((value, label))
+        out.append((b['brand'], ms))
+    return out
+
+
+_mcfg = json.loads(M['cfg'])
+NL_CFG = json.dumps({'api': '/api', **{k: _mcfg[k] for k in ('stations', 'nets', 'extra', 'region')},
+                     'names': {k: v.get('name') for k, v in MAP['nets'].items() if v.get('name')}},
+                    ensure_ascii=False).replace('</', '<\\/')
+render('nalog.html', '/nalog/', noindex=True, section='', NL_CFG=NL_CFG, EV_OPTS=ev_options(), CITY_OPTS=CITY_OPTS,
+       title='Moj BlokVolt: omiljeni punjači, auto i podešavanja | BlokVolt',
+       description='Nalog na sajtu BlokVolt: omiljeni punjači sa mape na svim uređajima, vaš auto i grad, vaše prijave sa mape. Bez lozinke, prijava kodom na e-mail.')
+# past issues: content/pregled/<YYYY-MM-DD>-<slug>.md (front matter title, date DD.MM.YYYY, lead) — the issue pages come later;
+# until then each file is shown as an article at /pregled/<slug>/ and listed newest first
+PG_ISSUES = []
+for _mdf in sorted(glob.glob(str(ROOT / 'content' / 'pregled' / '*.md')), reverse=True):
+    _meta, _body = front_matter(_mdf)
+    _slug = re.sub(r'^\d{4}-\d{2}-\d{2}-', '', Path(_mdf).stem)
+    _ip = f'/pregled/{_slug}/'
+    PG_ISSUES.append({'path': _ip, 'title': _meta.get('title', _slug), 'date': _meta.get('date', ''), 'lead': _meta.get('lead', '')})
+    render('article.html', _ip, meta=dict(_meta, h1=_meta.get('title', _slug)), body=md_to_html(_body), crumbs=[('/pregled/', 'Nedeljni pregled')],
+           noindex=not PG['on'], section='', title=_meta.get('title', _slug) + ' | BlokVolt', description=_meta.get('lead', ''), sources=sources_of(_meta))
+    if PG['on']:
+        add_url(_ip, '0.4', iso(_meta.get('date')))
+render('pregled.html', '/pregled/', noindex=not PG['on'], section='', issues=PG_ISSUES,
+       title='Nedeljni pregled: vesti, cene javnog punjenja i novi punjači na e-mail | BlokVolt',
+       description=f"Jednom nedeljno, {PG['dayi']} ujutru: najvažnije vesti o električnim automobilima u Srbiji, promene cena javnog punjenja i novi punjači na mapi. Besplatno, sa izvorima.")
+if PG['on']:
+    add_url('/pregled/', '0.5')
+for _pp, _mode, _t in (('/pregled/potvrda/', 'potvrda', 'Potvrda prijave'), ('/pregled/odjava/', 'odjava', 'Odjava i podešavanja')):
+    render('pregled_link.html', _pp, noindex=True, section='', mode=_mode, title=f'Nedeljni pregled: {_t.lower()} | BlokVolt',
+           description='Nedeljni pregled BlokVolt: vesti, cene javnog punjenja i novi punjači na e-mail, jednom nedeljno.')
+
 # ---------------------------------------------------------------- home, search, 404
 HOME_GUIDES = [
     {'href': '/punjenje-elektricnog-auta-u-zgradi', 'name': 'Punjenje u zgradi', 'desc': 'Šta je dozvoljeno, kada se pita skupština i koliko se štedi.', 'icon': 'building', 'img': 'garaza-wallbox'},
@@ -1399,7 +1515,12 @@ _dir_redirects = ['/vodici', '/firme', '/javno-punjenje', '/mapa', '/cene']
 ]) + '\n', encoding='utf-8')
 # _headers (security headers + CSP) is written at the very end, after every HTML file is final (see below)
 # API: Cloudflare Pages advanced mode (worker/_worker.js, D1 binding DB); only /api/* invokes it
-shutil.copy2(ROOT / 'worker' / '_worker.js', DIST / '_worker.js')
+# the worker's CFG line gets the city slugs (account settings) and the newsletter's day from the content files
+_wk, _nw = re.subn(r'^const CFG = \{.*\};$', 'const CFG = ' + json.dumps({'cities': [c['slug'] for c in CITY_CFG], 'day': PG['day']}, ensure_ascii=False)
+                   + ';   // written by build.py from content/data/gradovi.json and site.json',
+                   (ROOT / 'worker' / '_worker.js').read_text(encoding='utf-8'), count=1, flags=re.M)
+assert _nw == 1, 'worker/_worker.js: the line "const CFG = {...};" is missing'
+(DIST / '_worker.js').write_text(_wk, encoding='utf-8')
 (DIST / '_routes.json').write_text(json.dumps({'version': 1, 'include': ['/api/*'], 'exclude': []}), encoding='utf-8')
 
 
@@ -1415,6 +1536,9 @@ def build_search(prefix=''):
             continue
         url = rel[:-len('index.html')] if rel.endswith('/index.html') else rel[:-5] if rel.endswith('.html') else rel
         soup = BeautifulSoup(f.read_text(encoding='utf-8'), 'html.parser')
+        # pages that search engines must not list are not in the site search either (/nalog/, /admin/, /offline, …)
+        if soup.find('meta', attrs={'name': 'robots', 'content': re.compile('noindex')}):
+            continue
         t = (soup.title.string or '').split(' | ')[0].strip() if soup.title else ''
         h1 = soup.find('h1')
         d = (soup.find('meta', attrs={'name': 'description'}) or {}).get('content', '')
@@ -1491,7 +1615,7 @@ sm.append('</urlset>')
 (DIST / 'sitemap.xml').write_text('\n'.join(sm), encoding='utf-8')
 
 # ---------------------------------------------------------------- cache busting (/assets/* is cached for a year)
-_ver_map = {a: _ver(DIST / 'assets' / a) for a in ('bv.css', 'bv.js', 'map.js')}
+_ver_map = {a: _ver(DIST / 'assets' / a) for a in ('bv.css', 'bv.js', 'map.js', 'nalog.js')}
 _search = json.dumps({'sr': '/assets/search.json?v=' + _ver(DIST / 'assets' / 'search.json'),
                       **{l: f'/assets/search-{l}.json?v=' + _ver(DIST / 'assets' / f'search-{l}.json') for l in _i18n.LANGS}})
 for _f in DIST.rglob('*.html'):

@@ -72,6 +72,7 @@ credentials) — commits go through the owner's browser (section 6).
 | Security headers (CSP) | `build.py`, end of file | Written to `dist/_headers` on every build; inline-script hashes are computed automatically. See 3.17. |
 | English and Russian pages | `content/i18n/en.json`, `content/i18n/ru.json`, `content/i18n/STYLE.md` | Translation memory {Serbian segment: translation}. `/en/` and `/ru/` are generated from the Serbian pages at build time by `scripts/i18n.py` — never edit `dist/en` or `dist/ru`. See 3.9. |
 | Advertising: media kit and booked ads | `content/data/oglasavanje.json`, `templates/oglasavanje.html`, `templates/_oglas.html`, `static/za-firme/` | `/za-firme/oglasavanje/` (SR/EN/RU) and its PDFs are made from the JSON; an ad appears only while an entry in `oglasi` is in its dates. See 3.26. |
+| Accounts and the newsletter | `content/data/site.json` → `accounts`, `pregled`; `worker/_worker.js` | "Moj BlokVolt" (/nalog/) and "Nedeljni pregled" (/pregled/). Both off until the owner switches them on. See 3.27. |
 
 `indeks-cena.json` row schema (one row per app + station/tariff):
 
@@ -628,6 +629,8 @@ No messages, comments or forms to anyone — the outreach rule of 3.7 applies to
   | `video_play` | YouTube poster clicked | `video` |
   | `language_switch` | language menu | `to` |
   | `consent_choice` | cookie banner | `choice` (`yes` / `no`) |
+  | `account_sign_in` / `account_sign_out` / `account_delete` / `account_settings` | /nalog/ (3.27) | `how` (`code` / `link`), `all`, the settings chosen |
+  | `newsletter_signup` / `newsletter_confirm` / `newsletter_on` / `newsletter_off` / `newsletter_monthly` | /pregled/, the boxes, /nalog/ | `src` (page path), `where` |
 
   With PostHog on, page views, page leaves and clicks (autocapture) are recorded as well.
 
@@ -643,10 +646,12 @@ up as console errors in `scripts/qa/qa_all.py` and `map_ui_test.py`.
 
 ### 3.18 Favourite chargers and the card actions
 
-The star on a charger card saves the station id in the reader's browser only (`localStorage` key `bv:fav`, at most
-300 ids); the chip „Omiljeni“ and `/mapa/?f=fav` show them, and the map draws a green ring around them. Nothing is
-sent to the server; ids of stations that disappear from the map are dropped quietly. The privacy policy says so.
-When user accounts exist, the list can be synced to the account.
+The star on a charger card saves the station id in the reader's browser only (`localStorage` key `bv:fav`, at most 300
+ids); the chip „Omiljeni“ and `/mapa/?f=fav` show them, and the map draws a green ring around them. Without an account
+nothing is sent to the server; ids of stations that disappear from the map are dropped quietly. The privacy policy says
+so. A reader signed in to "Moj BlokVolt" (cookie `bv_in`, 3.27) also keeps the list and „Imam Teslu“ in the account: the
+map asks `/api/nalog/ja` once and, when the browser's list belongs to that account (`bv:fav-owner`), joins both lists
+and sends every star as well; localStorage stays the offline copy. Nothing changes for readers without the cookie.
 
 Filters: one-of chips (Svi, Omiljeni, Brzi, AC, CHAdeMO, Besplatni, networks) plus the switch „Potvrđeni“, which
 combines with any of them (`?ok=1`; the old `?f=ok` still works). Card actions: „Navigacija“ opens Apple Maps on
@@ -929,6 +934,144 @@ The media kit is public since 29.09.2026 (owner's decision); an ad appears only 
 - **Files for the media:** `static/za-firme/blokvolt-logo.svg`, `blokvolt-logo-beli.svg` (dark backgrounds),
   `blokvolt-znak.svg`, `blokvolt-logo.png` (1200 × 304, transparent). Same geometry as the site logo: the 64-unit
   tile `#0B0F17` with the lime bolt `#D9F45B`, "blok" 400 + "volt" 800.
+
+### 3.27 Accounts and the newsletter (/nalog/, /pregled/)
+
+Built 29.09.2026, **off** until the owner switches it on. "Moj BlokVolt" (`/nalog/`): sign-in without a password (a
+six-digit code and a one-click link by e-mail), the map's favourites on every device, the car, its fast-charging plug,
+„Imam Teslu“ and the city, the reader's own reports and photos with their review status, data export and deleting the
+account. "Nedeljni pregled" (`/pregled/`): a weekly e-mail — news, public charging prices, new chargers — with double
+opt-in. The link in the code mail and the one in the confirmation mail open a page with one button („Prijavite se“,
+„Potvrđujem prijavu“) and nothing happens until it is pressed: mail scanners open links, and some run the page's scripts
+too. Those pages take the token out of the address bar at once (kept for the tab in sessionStorage, so a reload works).
+The six-digit code works only in the browser that asked for it (cookie `bv_n`); the link works anywhere. Writing and
+sending the issues is a later step: nothing sends them yet. `content/pregled/<date>-<slug>.md` (front matter `title`,
+`date`, `lead`) already appears under „Prethodni brojevi“ and as a page `/pregled/<slug>/`.
+
+**Flags** in `content/data/site.json`: `accounts.enabled`, `pregled.enabled`, `pregled.day` (`ponedeljak` … `nedelja`;
+the texts say "stiže petkom", "u petak", and so do the e-mails), and, when switching on, `since` (DD.MM.YYYY, the day it
+goes live) in each: the privacy policy dates the change with it (`{{NALOG_OD}}`, `{{PREGLED_OD}}`), and a build with a
+feature on and no `since` stops.
+
+- Off: the pages are still built (`/nalog/`, `/pregled/`, `/pregled/potvrda/`, `/pregled/odjava/` and their /en/, /ru/),
+  but noindex, not in the sitemap, not in the site search and not linked from anywhere. The privacy policy shows none of
+  the new text, and nothing else on the site changes.
+- On: `accounts` — a person icon in the header before search (`/nalog/`, "Moj nalog"; a dot while the non-HttpOnly
+  cookie `bv_in=1` exists; the page itself stays noindex and out of the sitemap). `pregled` — `/pregled/` indexable and
+  in the sitemap, a sign-up box (`templates/_pregled_box.html`) at the end of every news item, on `/vesti/` and on
+  `/javno-punjenje/` (topic "cene"), the opt-in checkbox at sign-in and the newsletter section in the account.
+- Privacy policy text for either state: markers `<!--nalog-->`, `<!--nonalog-->`, `<!--pregled-->`, `<!--nopregled-->`,
+  `<!--posta-->` (either feature on — the site sends e-mail) and `<!--noposta-->`, handled like the PostHog markers
+  (3.16); front matter `lead_nalog`, `description_nalog`, `lead_consent_nalog`, `description_consent_nalog`. Put a marker
+  pair inside one line or around whole lines only: the removal also eats the line break after a closing marker.
+- The same markers (and `lead_nalog`, `description_nalog`) work in `content/pomoc/*.md`: /pomoc/privatnost/,
+  /pomoc/brisanje-komentara-i-fotografije/ and /pomoc/kako-radi-mapa/ say "no accounts" / "only in this browser" while
+  accounts are off and describe the account when on; such a page then shows `since` as its update. On /mapa/ the „Imam
+  Teslu“ tooltip and the empty „Omiljeni“ text (`fav_none`) change the same way (build.py, `templates/mapa.html`). A new
+  text that says the site has no accounts or keeps something only in the browser needs the same pair.
+- QA builds: `BV_QA_ACCOUNTS=1 BV_QA_PREGLED=1 python3 build.py` (`=0` forces a feature off). The EN/RU texts of all
+  four combinations are in the translation memory (0 left in Serbian on 29.09.2026). `i18n.py prune` keeps only the
+  texts of the build in `dist/`, so prune from all four: after each QA build save its keys
+  (`python3 scripts/i18n.py keys /tmp/k-11.json`, then `k-10`, `k-01` for the builds with `=1 =0` and `=0 =1`), build
+  normally and run `python3 scripts/i18n.py prune /tmp/k-*.json`. The same works for the PostHog texts (3.16).
+
+**Backend** — `worker/_worker.js`, section "accounts and the newsletter"; every table is created by the worker on first
+use, `worker/schema.sql` documents them: `users`, `auth_codes`, `sessions`, `favs`, `subs`, `consents`, `suppressions`
+(and `mail_log` in log mode); `checkins` and `photos` get a `uid` column. The worker counts the schema as ready only
+when every statement worked (the one expected error is the `uid` column being there already); otherwise the next request
+tries again. An `auth_codes` table of the older shape (one code per address) is replaced: its rows live 15 minutes.
+build.py writes the worker's `CFG` line (the city slugs of `gradovi.json`, the newsletter's day).
+
+| Endpoint | What |
+|---|---|
+| `GET /api/nalog/status` | `{mail}` — can the site send mail (cached 60 s) |
+| `POST /api/nalog/kod` | `{email, lang, opt_in?, hp, t}`: code + link by mail, sent after the answer. The code belongs to this browser: cookie `bv_n` (random, HttpOnly, Secure, `Path=/api/nalog`, 15 minutes; the app sends `app: true` and gets `nonce` in the answer instead); asking again from the same browser replaces its code, other browsers keep theirs. Limits: 30 a day per IP fingerprint (mobile networks put many people behind one address); per address from one IP fingerprint 5 an hour and 10 a day; 30 a day per address from everywhere |
+| `POST /api/nalog/potvrdi` · `/link` | the code of this browser's `bv_n` (or the app's `nonce`; 5 attempts, then only that code is gone; from one IP fingerprint at most 30 failures a day, then 429) or the link's token → session: cookies `bv_s` (HttpOnly, `Path=/api`) and `bv_in` (hint), 90 days; `{app: true}` returns the token instead, for `Authorization: Bearer` in a native app. `/link` with `{token, peek: true}` only returns the masked address, for the card before the click |
+| `GET /api/nalog/ja` | account, favourites, newsletter, `user.owner` (a short hash of the account id for `bv:fav-owner`); renews the session (and cookies) at most once an hour |
+| `POST /api/nalog/odjava` · `/podesavanja` · `/omiljeni` · `/pregled` · `/obrisi` | sign out (`all`), car/DC/Tesla/city/language, favourites (`add`, `remove`, `replace`; only ids on /mapa/, at most 300), the newsletter from the account, delete (`confirm: "OBRISI"`) |
+| `GET /api/nalog/doprinosi` · `/izvoz` | own reports and photos; everything stored, as a JSON download. A photo waiting for review has no id in either (its id alone opens it) |
+| `POST /api/posta/prijava` | newsletter sign-up `{email, lang, topics?, src}` (or `{token}` to sign up again): answered at once; pending + confirmation mail after the answer. `src` is kept only when it is a page path (`^/[a-z0-9/-]{0,79}$`), otherwise `nepoznato`: the sources the server writes itself (`confirm-click`, `nalog`, `one-click`, …) cannot come from a request. 20 a day per IP, 3 a day per address |
+| `POST /api/posta/potvrdi` · `GET /api/posta/stanje?t=` · `POST /api/posta/podesavanja` | the button on /pregled/potvrda/ (→ on, consent row `confirm-click`, welcome mail once); state; topics, frequency, language |
+| `POST /api/posta/odjava?t=` | one-click unsubscribe (RFC 8058; no origin check, idempotent); `{token}` from the page. A GET goes to `/pregled/odjava/` and changes nothing |
+| `POST /api/posta/resend` | Resend's webhook, signed by Svix (below): a hard bounce or a spam complaint → the newsletter of that address off (`bounce`, `complaint`) and the address into `suppressions`; other events are ignored. One Resend team sends for BlokVolt and Evolako and every endpoint of the team gets the events of both: only events whose `data.from` is at the domain of `MAIL_FROM` count, the rest are answered `{ignored, other_sender}` and nothing is stored |
+| `GET /api/admin/posta` | owner's key: users, subscribers on / pending / off, subscribers by language, suppressed addresses (runs the cleanup first) |
+
+Answers never tell whether an address has an account or a subscription, not even by their timing: `/nalog/kod` and
+`/posta/prijava` answer before any mail work (`ctx.waitUntil`), so a failed send is only logged ("mail not sent: …") and
+the reader has „Pošaljite ponovo“. All POSTs except the one-click and the webhook need the site's origin and
+`content-type: application/json`; a known path with another method answers 405. On ~2 % of the requests (and on every
+`/api/admin/posta`) the worker deletes expired codes and sessions, consent histories 3 years after their last
+withdrawal, and unconfirmed sign-ups older than 30 days: their consent rows stay as proof, with a row "isteklo", but
+keep only `sha256:` of the address (at most 50 sign-ups a run).
+
+**Mail** goes through Resend (`POST https://api.resend.com/emails`, 8 s timeout, one retry with the same
+`Idempotency-Key`). Every send first looks the address up in `suppressions` (SHA-256 only): an address that bounced for
+good or marked a mail as spam gets no welcome mail and no issues, and the API answers exactly as if they had been sent;
+a sign-in code and a confirmation link, which the reader asks for, still go out. A successful sign-in lifts `bounce`; a
+confirmed sign-up and switching the newsletter on in the account (a proved address, an explicit act) lift `bounce` and
+`complaint`. Newsletter mail carries `List-Unsubscribe` (the one-click URL and
+`mailto:hello@blokvolt.com?subject=odjava`) and `List-Unsubscribe-Post`. Three templates in SR/EN/RU (code,
+confirmation, welcome): tables, inline styles, 600 px, no remote images, a text part. A `mailto` unsubscribe lands in
+hello@blokvolt.com and is handled by hand in the D1 console:
+`UPDATE subs SET status = 'off', off_at = unixepoch(), off_reason = 'mailto' WHERE email = '…';` and
+`INSERT INTO consents (email, kind, granted, text_v, src, at) VALUES ('…', 'pregled', 0, 'pregled-v1', 'mailto', unixepoch());`
+
+**Favourites in the browser.** `bv:fav` and `bv:tesla` stay the map's local copy; `bv:fav-owner` says which account the
+list belongs to (`user.owner`). On sign-in (and on the map with a session): the same owner → both lists joined; another
+owner → the signed-in account's list replaces it, never mixed; no owner and stations the account does not have → /nalog/
+asks („U ovom pregledaču ima N omiljenih punjača. Dodati ih u nalog?“ — Dodajte / Ne) and the map leaves the list alone
+until then. Signing out („Odjavite se“, „… sa svih uređaja“) and deleting the account remove all three keys from the
+browser.
+
+**Secrets and variables** — set by the **owner** in Cloudflare Pages → blokvolt → Settings → Variables and Secrets
+(Production), then a redeploy; never type them yourself:
+
+- `RESEND_API_KEY` — **Secret**. Without it every endpoint that must send mail answers 503 `mail_off` and /nalog/ says
+  „Prijava trenutno nije dostupna“: this is the backend's real off switch.
+- `RESEND_WEBHOOK_SECRET` — **Secret**, for bounces and complaints. In Resend → Webhooks → Add endpoint: URL
+  `https://www.blokvolt.rs/api/posta/resend`, events `email.bounced` and `email.complained`; copy the endpoint's signing
+  secret (`whsec_…`) into this Pages secret and redeploy. The same Resend team has Evolako's own endpoint (its Supabase
+  function `resend-webhook`); each endpoint has its own secret and ignores the other brand's mail. The worker checks the Svix signature (headers `svix-id`,
+  `svix-timestamp`, `svix-signature`; HMAC-SHA256 of `id.timestamp.body`, constant-time compare, at most 5 minutes of
+  clock difference) and answers 401 to anything else; without the secret it answers 503, and Resend retries later.
+  A suppression is lifted by hand in the D1 console: `DELETE FROM suppressions WHERE email_hash = '<hex>';` where the
+  hex is `printf '%s' 'adresa@example.com' | sha256sum` (the address trimmed and in lower case).
+- Optional: `MAIL_FROM` (default `BlokVolt <obavestenja@mail.blokvolt.com>`), `MAIL_REPLY_TO` (default
+  `hello@blokvolt.com`), `SITE` (default `https://www.blokvolt.rs`). Never set `MAIL_MODE` in production (`log` is for
+  local tests: mail goes to D1 and the cookies lose the Secure flag).
+- In Resend (the owner's account): add the domain `mail.blokvolt.com` in the region **Ireland (eu-west-1)** — the privacy
+  policy says "EU region" — enter the DNS records Resend shows at Spaceship (blokvolt.com) without touching the
+  Spacemail records of the root domain, wait for "Verified", then create an API key with sending access to that domain only.
+
+**Switching on**, in this order: (1) domain verified, key set, redeploy; `GET /api/nalog/status` → `"mail": true`;
+(2) one real sign-in by the owner (code and link arrive; a `/pregled/` sign-up, confirmation, one-click unsubscribe;
+`/api/admin/posta`); (3) in `site.json` set `"enabled": true` and `"since": "<today>"` for `accounts` and/or `pregled`;
+(4) build (0 left in Serbian), look at /nalog/, /pregled/, a news item, the privacy policy and /pomoc/privatnost/ at 390
+and 1440 px, add the line to `izmene.md`, deploy, commit. Switching off again: `"enabled": false` (the accounts keep
+working for signed-in readers who have the link); to stop everything at once remove `RESEND_API_KEY` (sign-in and
+sign-ups stop, sessions stay).
+
+**Tests** (Miniflare is not a site dependency; install it outside the repo):
+
+```bash
+npm install --prefix /tmp/mf miniflare@4
+MINIFLARE_DIR=/tmp/mf node scripts/qa/nalog_worker_test.mjs            # the worker: 191 checks, in-memory D1
+BV_QA_ACCOUNTS=1 BV_QA_PREGLED=1 python3 build.py
+MINIFLARE_DIR=/tmp/mf node scripts/qa/nalog_serve.mjs dist 8788 &    # dist like Pages + the worker, MAIL_MODE=log
+python3 scripts/qa/nalog_ui_test.py /tmp/bv-nalog                     # browser flows, screenshots, the rendered mails
+```
+
+`nalog_serve.mjs` serves `dist/` with `dist/_headers` (the CSP applies) and the real worker with D1; codes and links are
+read from its `/__dev/mail` (local only). `BV_SITE=https://www.blokvolt.rs` makes the links in the mails point to the
+real site when you only want to look at them.
+
+**Privacy.** Codes, links and session tokens are stored only as SHA-256; `bv_s` is HttpOnly, `bv_in` only a hint; the
+consent log (time, source, text version, the day's IP fingerprint) is append-only; after an account is deleted, and 30
+days after a sign-up nobody confirmed, the consent rows keep only `sha256:` of the address; `suppressions` holds only
+hashes too; reports and photos stay on the map without the account. The privacy policy (section `#nalog`) says all of
+this — change it when the behaviour changes. The query strings `t=` (newsletter token) and `prijava=` (sign-in link)
+never reach the analytics: the pages take them out of the address bar, and bv.js gives PostHog (3.16) a `before_send` /
+`sanitize_properties` that strips them from every URL property and from the page address in session replay.
 
 ## 4. Build and check
 

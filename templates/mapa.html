@@ -25,7 +25,7 @@
 <button class="chip" type="button" data-f="chademo" aria-pressed="false">CHAdeMO</button>
 <button class="chip" type="button" data-f="free" aria-pressed="false">Besplatni</button>
 <button class="chip chip-ok" type="button" data-f="ok" aria-pressed="false">{{ ic('check') }}Potvrđeni</button>
-<button class="chip chip-tesla" type="button" data-f="tesla" aria-pressed="false" title="Tesla Supercharger-i se prikazuju kao dostupni, a gde vozači javljaju da je punjenje besplatno — kao besplatni. Izbor se čuva samo u ovom pregledaču.">Imam Teslu</button>
+<button class="chip chip-tesla" type="button" data-f="tesla" aria-pressed="false" title="Tesla Supercharger-i se prikazuju kao dostupni, a gde vozači javljaju da je punjenje besplatno — kao besplatni. {% if ACCOUNTS %}Izbor se čuva u ovom pregledaču, a ako ste prijavljeni — i u nalogu.{% else %}Izbor se čuva samo u ovom pregledaču.{% endif %}">Imam Teslu</button>
 {% for slug, name, n in M.chips %}<button class="chip" type="button" data-f="net:{{ slug }}" aria-pressed="false">{{ name }} <span class="n">{{ n }}</span></button>{% endfor %}
 </div>
 </div>

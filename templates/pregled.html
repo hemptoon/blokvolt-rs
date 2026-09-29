@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import pagehead %}
+{% from '_icons.html' import ic %}
+{% import '_pregled_box.html' as pg %}
+{# /pregled/ — the newsletter (docs/RUNBOOK.md 3.27). Indexable and in the sitemap only with site.json → pregled.enabled. #}
+{% block jsonld %}{% if PG.on %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}}
+ ]
+}</script>{% endif %}{% endblock %}
+{% block pagehead %}{{ pagehead('Nedeljni pregled', 'Jednom nedeljno, ' ~ PG.dayi ~ ' ujutru: najvažnije vesti o električnim automobilima u Srbiji, promene cena javnog punjenja i novi punjači na mapi. Kratko, sa izvorima, bez reklama.', cls='pg-ph') }}{% endblock %}
+{% block content %}
+<div class="pg-grid">
+<ul class="pg-list">
+<li><span class="ic">{{ ic('news') }}</span><span>3–5 vesti nedelje, svaka sa izvorom</span></li>
+<li><span class="ic">{{ ic('coins') }}</span><span>Promene cena po mrežama, kad ih ima</span></li>
+<li><span class="ic">{{ ic('pin') }}</span><span>Novi i popravljeni punjači na mapi</span></li>
+{% if ACCOUNTS %}<li><span class="ic">{{ ic('star') }}</span><span>Sa nalogom: stanje vaših omiljenih punjača</span></li>
+{% endif %}</ul>
+<div class="nl-card pg-main">{{ pg.form('pg-mail', label=True) }}</div>
+</div>
+<div class="sec" id="brojevi"><div class="sec-head"><h2>Prethodni brojevi</h2></div>
+{% if issues %}<div class="rows">{% for x in issues %}<a class="row" href="{{ x.path }}"><span class="lg mono" aria-hidden="true">{{ ic('news') }}</span><div><h3>{{ x.title }}</h3>{% if x.date %}<div class="sub">{{ x.date }}</div>{% endif %}</div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
+{% else %}<p class="pg-none">Prvi broj uskoro.</p>{% endif %}
+</div>
+{% endblock %}

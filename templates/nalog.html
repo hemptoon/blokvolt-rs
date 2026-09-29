@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import ic %}
+{# "Moj BlokVolt" (docs/RUNBOOK.md 3.27). One static page for every state; static/assets/nalog.js shows the right one.
+   The class nl-in on <html> is set before the first paint from the cookie bv_in (a hint, not the session),
+   so the signed-in skeleton or the sign-in form is there at once, without a jump when the data arrives.
+   ?prijava=<token> (the link in the code mail) shows the card #nl-f-link: only its button signs in, because mail
+   scanners open links and some of them run the page's scripts. #}
+{% block bodyclass %}nl-page{% endblock %}
+{% block pagekey %} data-nl="nalog"{% endblock %}
+{% block page %}
+<script>if(/(?:^|;\s*)bv_in=1(?:;|$)/.test(document.cookie))document.documentElement.classList.add('nl-in')</script>
+<div class="ph nl-ph" data-bv-note><div class="wrap nl-head">
+<div class="nl-head-t"><h1 id="nl-h1" tabindex="-1">Moj BlokVolt</h1>
+<p class="lead nl-v-out">Omiljeni punjači i vaš auto na jednom mestu, na svim uređajima. Bez lozinke — šaljemo vam kod na e-mail.</p>
+<p class="nl-who nl-v-in" translate="no"><span class="nl-sk-t" data-nl-email></span></p></div>
+<button class="btn nl-v-in nl-out-btn" type="button" id="nl-out">{{ ic('logout') }}Odjavite se</button>
+</div></div>
+<div class="wrap main nl-main">
+<p class="nl-msg nl-msg-top" id="nl-msg-top" role="alert" hidden></p>
+
+<div class="nl-v-out nl-out">
+<section class="nl-card nl-login" aria-labelledby="nl-login-h">
+<form id="nl-f-mail" novalidate>
+<h2 id="nl-login-h">Prijava</h2>
+<div class="field"><label for="nl-mail">E-mail adresa</label><input class="input" id="nl-mail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" required></div>
+{% if PG.on %}<label class="nl-ck"><input type="checkbox" id="nl-optin"><span>Pošaljite mi i Nedeljni pregled — vesti, cene i novi punjači, jednom nedeljno.</span></label>
+{% endif %}<input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="nl-msg" id="nl-msg-mail" role="alert" hidden></p>
+<button class="btn dark nl-go" type="submit">Pošaljite mi kod</button>
+<p class="nl-note">Šaljemo šestocifreni kod koji važi 15 minuta. Nalog je besplatan i možete ga obrisati kad god želite. Kako čuvamo podatke: <a href="/politika-privatnosti#nalog">Politika privatnosti</a>.</p>
+</form>
+<form id="nl-f-code" novalidate hidden>
+<h2 id="nl-code-h" tabindex="-1">Upišite kod iz mejla</h2>
+<p class="nl-sent">Poslali smo kod na <b data-nl-email translate="no"></b>. Važi 15 minuta.</p>
+<label class="sr-only" for="nl-code">Šestocifreni kod</label>
+<input class="input nl-otp" id="nl-code" name="code" type="text" autocomplete="one-time-code" inputmode="numeric" pattern="[0-9]{6}" required>
+<p class="nl-msg" id="nl-msg-code" role="alert" hidden></p>
+<button class="btn dark nl-go" type="submit">Prijavite se<span class="sr-only"> kodom</span></button>
+<p class="nl-note">Niste dobili mejl? Proverite i spam.</p>
+<p class="nl-links"><button class="lnkbtn" type="button" id="nl-resend" disabled>Pošaljite ponovo</button> <span class="nl-wait" id="nl-wait" aria-live="off"></span><span aria-hidden="true">·</span> <button class="lnkbtn" type="button" id="nl-change">Promenite adresu</button></p>
+</form>
+<form id="nl-f-link" novalidate hidden>
+<h2 id="nl-link-h">Prijava na BlokVolt</h2>
+<p class="nl-sent" translate="no"><b class="nl-sk-t" data-nl-link></b></p>
+<p class="nl-msg" id="nl-msg-link" role="alert" hidden></p>
+<button class="btn dark nl-go" type="submit">Prijavite se<span class="sr-only"> na BlokVolt</span></button>
+</form>
+<noscript><p class="nl-note">Za prijavu je potreban JavaScript.</p></noscript>
+</section>
+<ul class="nl-ben">
+<li><span class="ic">{{ ic('star') }}</span><div><h3>Omiljeni punjači svuda</h3><p>Zvezdica sa mape važi i na telefonu, i na računaru, i u aplikaciji.</p></div></li>
+<li><span class="ic">{{ ic('car') }}</span><div><h3>Moj auto i grad</h3><p>Mapa zna da li imate Teslu i koji brzi priključak koristite.</p></div></li>
+{% if PG.on %}<li><span class="ic">{{ ic('news') }}</span><div><h3>Nedeljni pregled, ako želite</h3><p>Vesti, promene cena i novi punjači, jednom nedeljno. Odjava jednim klikom.</p></div></li>
+{% endif %}<li><span class="ic">{{ ic('flag') }}</span><div><h3>Vaše prijave sa mape</h3><p>Ocene, komentari i fotografije koje ste poslali, sa statusom provere.</p></div></li>
+</ul>
+</div>
+
+<section class="nl-v-in nl-card nl-ask" id="nl-ask" aria-labelledby="nl-ask-t" hidden>
+<p id="nl-ask-t"></p>
+<div class="nl-btns"><button class="btn dark" type="button" id="nl-ask-yes">Dodajte</button><button class="btn" type="button" id="nl-ask-no">Ne</button></div>
+</section>
+<div class="nl-v-in nl-grid">
+<div class="nl-col">
+<section class="nl-card nl-sec nl-s-fav" aria-labelledby="nl-fav-h">
+<div class="nl-sh"><h2 id="nl-fav-h">Omiljeni punjači <span class="nl-n" data-nl-favn></span></h2><a class="nl-more" href="/mapa/?f=fav">Na mapi →</a></div>
+<div class="nl-list" id="nl-favs" aria-busy="true"><div class="nl-sk"></div><div class="nl-sk"></div><div class="nl-sk"></div></div>
+<p class="nl-empty" id="nl-favs-none" hidden>Još nemate omiljene punjače. Na mapi otvorite punjač i dodirnite zvezdicu. <a class="lnk" href="/mapa/">Mapa punjača</a></p>
+</section>
+<section class="nl-card nl-sec nl-s-ci" aria-labelledby="nl-ci-h">
+<h2 id="nl-ci-h">Moje prijave sa mape</h2>
+<div class="nl-list" id="nl-ci" aria-busy="true"><div class="nl-sk"></div><div class="nl-sk"></div></div>
+<p class="nl-empty" id="nl-ci-none" hidden>Još niste slali ocene ni fotografije.</p>
+</section>
+<section class="nl-card nl-sec nl-s-acc" aria-labelledby="nl-acc-h">
+<h2 id="nl-acc-h">Nalog</h2>
+<p class="nl-acc"><b data-nl-email translate="no"></b><span id="nl-since"></span></p>
+<div class="nl-btns">
+<a class="btn" id="nl-export" download>{{ ic('download') }}Preuzmite svoje podatke</a>
+<button class="btn" type="button" id="nl-out-all">{{ ic('logout') }}Odjavite se sa svih uređaja</button>
+<button class="btn nl-danger" type="button" id="nl-del">{{ ic('trash') }}Obrišite nalog</button>
+</div>
+</section>
+</div>
+<div class="nl-col">
+<section class="nl-card nl-sec nl-s-car" aria-labelledby="nl-car-h">
+<h2 id="nl-car-h">Moj auto</h2>
+<form id="nl-f-car" novalidate>
+<div class="field"><label for="nl-model">Model</label>
+<select class="select" id="nl-model"><option value="">Izaberite model</option>
+{% for brand, models in EV_OPTS %}<optgroup label="{{ brand }}" translate="no">{% for v, l in models %}<option value="{{ v }}">{{ l }}</option>{% endfor %}</optgroup>
+{% endfor %}<option value="*">Drugi model</option></select></div>
+<div class="field" id="nl-other-w" hidden><label for="nl-other">Koji model</label><input class="input" id="nl-other" maxlength="80" autocomplete="off" placeholder="npr. Tesla Model 3"></div>
+<fieldset class="nl-radios"><legend>Brzo punjenje (DC)</legend>
+<label translate="no"><input type="radio" name="dc" value="ccs2"><span>CCS2</span></label>
+<label translate="no"><input type="radio" name="dc" value="chademo"><span>CHAdeMO</span></label>
+<label><input type="radio" name="dc" value="none"><span>Auto nema brzo punjenje</span></label>
+</fieldset>
+<div class="nl-swr"><label class="nl-sw" for="nl-tesla"><input type="checkbox" role="switch" id="nl-tesla" aria-describedby="nl-tesla-h"><span class="nl-sw-t">Imam Teslu</span></label>
+<p class="hint" id="nl-tesla-h">Supercharger punjači na mapi računamo kao dostupne vama.</p></div>
+<div class="field"><label for="nl-city">Grad</label>
+<select class="select" id="nl-city"><option value="">Izaberite grad</option>{% for slug, name in CITY_OPTS %}<option value="{{ slug }}">{{ name }}</option>{% endfor %}<option value="drugo">Drugo mesto</option></select></div>
+<button class="btn dark" type="submit">Sačuvajte</button>
+</form>
+</section>
+{% if PG.on %}<section class="nl-card nl-sec nl-s-pg" aria-labelledby="nl-pg-h">
+<div class="nl-sh"><h2 id="nl-pg-h">Nedeljni pregled</h2><label class="nl-sw" for="nl-pg-on"><input type="checkbox" role="switch" id="nl-pg-on" aria-describedby="nl-pg-st"><span class="sr-only">Nedeljni pregled</span></label></div>
+<p class="nl-state" id="nl-pg-st" aria-live="polite"><span data-st="on" hidden>Uključen — stiže {{ PG.dayi }} ujutru</span><span data-st="off">Isključen</span><span data-st="pending" hidden>Čeka potvrdu — kliknite link u mejlu</span></p>
+<fieldset class="nl-cks" id="nl-pg-topics"><legend>Teme</legend>
+<label><input type="checkbox" value="vesti"><span>Vesti</span></label>
+<label><input type="checkbox" value="cene"><span>Cene javnog punjenja</span></label>
+<label><input type="checkbox" value="punjaci"><span>Novi punjači u mom gradu</span></label>
+<label><input type="checkbox" value="moji"><span>Promene na mojim omiljenim punjačima</span></label>
+</fieldset>
+<fieldset class="nl-radios"><legend>Koliko često</legend>
+<label><input type="radio" name="freq" value="w"><span>Svake nedelje</span></label>
+<label><input type="radio" name="freq" value="m"><span>Jednom mesečno</span></label>
+</fieldset>
+<div class="field"><label for="nl-pg-lang">Jezik</label>
+<select class="select" id="nl-pg-lang" translate="no"><option value="sr">Srpski</option><option value="en">English</option><option value="ru">Русский</option></select></div>
+</section>
+{% endif %}</div>
+</div>
+
+<dialog class="nl-dlg" id="nl-dlg" aria-labelledby="nl-dlg-h" aria-describedby="nl-dlg-p">
+<h2 id="nl-dlg-h">Brisanje naloga</h2>
+<p id="nl-dlg-p">Obrisaćemo nalog, omiljene punjače i podešavanja. Vaše ocene i fotografije ostaju na mapi, bez veze sa nalogom. Ovo se ne može poništiti.</p>
+<div class="nl-btns"><button class="btn" type="button" id="nl-del-no">Otkažite</button><button class="btn nl-danger-f" type="button" id="nl-del-yes">Obrišite nalog</button></div>
+</dialog>
+<p class="nl-toast" id="nl-toast" role="status" aria-live="polite" hidden></p>
+</div>
+<script id="nl-cfg" type="application/json">{{ NL_CFG|safe }}</script>
+<script id="bv-i18n" type="application/json">{"err_code": "Kod nije tačan ili je istekao.", "err_tries": "Previše pokušaja. Zatražite novi kod.", "err_limit": "Previše zahteva. Pokušajte ponovo kasnije.", "err_off": "Prijava trenutno nije dostupna. Pokušajte kasnije.", "err_net": "Nema veze sa serverom. Proverite internet i pokušajte ponovo.", "err_mail": "Upišite ispravnu e-mail adresu.", "err_link": "Link za prijavu nije ispravan ili je istekao. Zatražite novi kod.", "err_save": "Čuvanje nije uspelo. Pokušajte ponovo.", "err_topics": "Izaberite bar jednu temu.", "err_auth": "Prijava je istekla. Prijavite se ponovo.", "wait": "za {s} s", "saved": "Sačuvano", "signed_out": "Odjavljeni ste.", "deleted": "Nalog je obrisan.", "since": "Nalog od {d}", "on_map": "Na mapi", "fav_del": "Uklonite iz omiljenih", "st_ok": "Radi", "st_bad": "Prijavljen kvar", "st_off": "Ne radi", "ci_ok": "Radi", "ci_problem": "Radi, uz problem", "ci_broken": "Ne radi", "ci_missing": "Nema punjača", "cs_ok": "Objavljeno", "cs_pending": "Čeka proveru", "cs_hidden": "Nije objavljeno", "photo": "Fotografija", "charger": "Punjač", "stars": "Ocena {r} od 5", "gone": "Punjač više nije na mapi", "fav_ask_one": "U ovom pregledaču ima {n} omiljeni punjač. Dodati ga u nalog?", "fav_ask_few": "U ovom pregledaču ima {n} omiljena punjača. Dodati ih u nalog?", "fav_ask_many": "U ovom pregledaču ima {n} omiljenih punjača. Dodati ih u nalog?"}</script>
+{% endblock %}
+{% block scripts %}<script src="/assets/nalog.js" defer></script>{% endblock %}

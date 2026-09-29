@@ -1,8 +1,12 @@
 // BlokVolt API — Cloudflare Pages "advanced mode" worker (copied to dist/_worker.js by build.py).
 // Only /api/* reaches it (dist/_routes.json); everything else is served as static files.
-// Binding: DB = D1 database "blokvolt" (schema: worker/schema.sql; the one-row table dk is also created here on first
-// use). Optional secret: ADMIN_KEY (set by the owner in Pages → Settings → Variables and Secrets; without it the
-// /api/admin/* endpoints answer 404).
+// Binding: DB = D1 database "blokvolt" (schema: worker/schema.sql; the one-row table dk and the tables of the accounts
+// and the newsletter are also created here on first use). Optional secret: ADMIN_KEY (set by the owner in Pages →
+// Settings → Variables and Secrets; without it the /api/admin/* endpoints answer 404).
+// Accounts ("Moj BlokVolt", /api/nalog/*) and the newsletter (Nedeljni pregled, /api/posta/*): see the section
+// "accounts and the newsletter" below and docs/RUNBOOK.md 3.27. They need the secret RESEND_API_KEY to send mail;
+// optional: the secret RESEND_WEBHOOK_SECRET (bounces and spam complaints from Resend), the variables MAIL_FROM,
+// MAIL_REPLY_TO, SITE, and MAIL_MODE=log for local tests only.
 
 const JSON_HEADERS = { 'content-type': 'application/json; charset=utf-8' };
 const STATUSES = new Set(['ok', 'problem', 'broken', 'missing']);
@@ -136,9 +140,11 @@ async function postCheckin(request, env, st) {
   if (!(await allow(env, 'ci:' + ip, 30)) || !(await allow(env, 'cs:' + ip + ':' + st, 3))) return bad('limit', 429);
   let cs = 'none';
   if (c) cs = (LINKY.test(c) || contacty(c) || RUDE.test(c) || (n && (LINKY.test(n) || RUDE.test(n)))) ? 'pending' : 'ok';
+  // a signed-in driver's report is also listed in "Moj BlokVolt" (never required)
+  const uid = await reporter(request, env);
   await env.DB.prepare(
-    'INSERT INTO checkins (st, s, r, c, n, cs, at, lang, ip) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)'
-  ).bind(st, s, r, c, n, cs, now(), clean(b.lang, 5) || null, ip).run();
+    'INSERT INTO checkins (st, s, r, c, n, cs, at, lang, ip' + (uid ? ', uid' : '') + ') VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9' + (uid ? ', ?10' : '') + ')'
+  ).bind(st, s, r, c, n, cs, now(), clean(b.lang, 5) || null, ip, ...(uid ? [uid] : [])).run();
   return json({ ok: true, pending: cs === 'pending' });
 }
 
@@ -165,10 +171,11 @@ async function postPhoto(request, env, st) {
   const pend = await env.DB.prepare(`SELECT COUNT(*) AS n FROM photos WHERE st = ?1 AND status = 'pending'`).bind(st).first();
   if (pend && pend.n >= 20) return bad('queue full', 429);
   const w = Math.min(4000, Math.max(0, Math.round(Number(fd.get('w') || 0)))), h = Math.min(4000, Math.max(0, Math.round(Number(fd.get('h') || 0))));
+  const uid = await reporter(request, env);
   await env.DB.prepare(
-    'INSERT INTO photos (id, st, status, at, cap, w, h, mime, img, th, ip) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)'
+    'INSERT INTO photos (id, st, status, at, cap, w, h, mime, img, th, ip' + (uid ? ', uid' : '') + ') VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11' + (uid ? ', ?12' : '') + ')'
   ).bind(rid(), st, 'pending', now(), clean(fd.get('opis'), 140) || null, w || null, h || null,
-    isJpeg ? 'image/jpeg' : 'image/webp', buf, thBuf, ip).run();
+    isJpeg ? 'image/jpeg' : 'image/webp', buf, thBuf, ip, ...(uid ? [uid] : [])).run();
   return json({ ok: true, pending: true });
 }
 
@@ -282,12 +289,927 @@ async function adminDecide(request, env) {
   return json({ ok: true });
 }
 
+// ================================================================ accounts and the newsletter (docs/RUNBOOK.md 3.27)
+// "Moj BlokVolt" (/nalog/): sign-in without a password. POST /api/nalog/kod mails a six-digit code and a one-click link
+// (both valid 15 minutes, stored only as SHA-256). The code belongs to the browser that asked for it (the HttpOnly
+// cookie bv_n, or the nonce returned to the app), so strangers who ask for codes of the same address, or guess at them,
+// never touch that browser's code; the link works anywhere. /potvrdi (code) or /link (the link's token, POSTed by the
+// static page /nalog/?prijava=… only when the reader presses its button: mail scanners open links, and some of them run
+// the page's scripts too) opens a session: 32 random bytes in the HttpOnly
+// cookie bv_s (Path=/api) or, for the future native app ({app: true}), returned once and sent back as
+// "Authorization: Bearer <token>". Only the SHA-256 of a token is stored. bv_in=1 (not HttpOnly) only tells the static
+// pages that someone is signed in. Answers never reveal whether an address has an account or a subscription.
+// The newsletter (Nedeljni pregled, /pregled/) is switched on only by the button on the page the confirmation mail
+// links to (double opt-in) or, for a signed-in reader whose address the sign-in code has proved, in the account. Every
+// consent and withdrawal is a row in `consents` (append-only; ZZPL art. 15: the controller must be able to prove
+// consent); the history is deleted 3 years after the last withdrawal. A sign-up nobody confirms is deleted after 30
+// days and its consent rows keep only the SHA-256 of the address.
+// Bounces and spam complaints come from Resend's webhook (POST /api/posta/resend, signed by Svix): the newsletter of
+// that address goes off and the SHA-256 of the address goes into `suppressions`, which every send checks first.
+// Mail goes through Resend (secret RESEND_API_KEY; MAIL_FROM, MAIL_REPLY_TO optional). Without the key every endpoint
+// that must send mail answers 503 mail_off. /nalog/kod and /posta/prijava answer before any mail work (ctx.waitUntil), so
+// the time of the answer never tells anything about the address. MAIL_MODE=log (local tests only) writes the mail to the D1 table mail_log
+// instead and leaves the Secure flag off the cookies, so they work on http://localhost.
+// Tables are created here on first use (once per isolate), like dk: users, auth_codes, sessions, favs, subs, consents,
+// suppressions (and mail_log in log mode); checkins and photos get a uid column. Documentation: worker/schema.sql.
+const DAY_S = 86400;
+const SESSION_S = 90 * DAY_S;            // a session ends after 90 days without use
+const CODE_S = 15 * 60;                  // sign-in code and link
+const CODE_TRIES = 5;
+const PENDING_S = 30 * DAY_S;            // unconfirmed newsletter sign-ups are deleted after 30 days
+const CONSENT_KEEP_S = 3 * 365 * DAY_S;  // consent history, counted from the last withdrawal
+const MAX_FAVS = 300;                    // the same limit as the map's localStorage list
+// rate limits, per day unless said otherwise. codeIp / subIp: per daily IP fingerprint (generous: a mobile network puts
+// many people behind one address); codeHour / codeDay: per address from one IP fingerprint, so nobody can use up the
+// codes of someone else's address; codeMail: per address from everywhere; failIp: wrong or unknown codes from one IP
+// fingerprint; subMail: newsletter sign-ups per address.
+const LIMIT = { codeIp: 30, codeHour: 5, codeDay: 10, codeMail: 30, failIp: 30, subIp: 20, subMail: 3 };
+const WEBHOOK_SKEW_S = 5 * 60;           // Svix: a signed timestamp may be this far from our clock
+const LANGS = new Set(['sr', 'en', 'ru']);
+const TOPICS = ['vesti', 'cene', 'punjaci', 'moji'];
+const DEFAULT_TOPICS = 'vesti,cene,punjaci';
+const DCS = new Set(['ccs2', 'chademo', 'none']);
+const CONSENT_V = 'pregled-v1';          // version of the consent sentence under the newsletter forms
+const MAIL_FROM = 'BlokVolt <obavestenja@mail.blokvolt.com>', MAIL_REPLY_TO = 'hello@blokvolt.com';
+// build.py rewrites the next line in dist/_worker.js: the city slugs of content/data/gradovi.json and the day of
+// "pregled" in content/data/site.json (the values here are the ones the tests use)
+const CFG = { cities: ['beograd', 'novi-sad', 'nis', 'subotica', 'cacak', 'kragujevac'], day: 'petak' };
+// "the first issue arrives on <day>" in the three languages
+const DAYS = {
+  ponedeljak: { sr: 'u ponedeljak', en: 'on Monday', ru: 'в понедельник' }, utorak: { sr: 'u utorak', en: 'on Tuesday', ru: 'во вторник' },
+  sreda: { sr: 'u sredu', en: 'on Wednesday', ru: 'в среду' }, 'četvrtak': { sr: 'u četvrtak', en: 'on Thursday', ru: 'в четверг' },
+  petak: { sr: 'u petak', en: 'on Friday', ru: 'в пятницу' }, subota: { sr: 'u subotu', en: 'on Saturday', ru: 'в субботу' },
+  nedelja: { sr: 'u nedelju', en: 'on Sunday', ru: 'в воскресенье' },
+};
+
+const enc = new TextEncoder();
+const hex = buf => [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+function randHex(bytes) {
+  const a = new Uint8Array(bytes);
+  crypto.getRandomValues(a);
+  return hex(a);
+}
+async function sha256(s) { return hex(await crypto.subtle.digest('SHA-256', enc.encode(s))); }
+// compares two hashes without stopping at the first difference
+function same(a, b) {
+  a = String(a || ''); b = String(b || '');
+  let d = a.length ^ b.length;
+  for (let i = 0; i < Math.max(a.length, b.length); i++) d |= (a.charCodeAt(i) || 0) ^ (b.charCodeAt(i) || 0);
+  return d === 0;
+}
+// six digits, every value equally likely (draws above the last full block of 1.000.000 are repeated)
+function sixDigits() {
+  const a = new Uint32Array(1), lim = Math.floor(0x100000000 / 1e6) * 1e6;
+  do crypto.getRandomValues(a); while (a[0] >= lim);
+  return String(a[0] % 1e6).padStart(6, '0');
+}
+const EMAILY = /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]{1,64}@(?=.{4,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+(?:[a-z]{2,63}|xn--[a-z0-9-]{2,59})$/;
+// trimmed and lower-cased, at most 120 characters, no control characters; null when it is not an address
+function normEmail(v) {
+  if (typeof v !== 'string') return null;
+  const e = v.trim().toLowerCase();
+  if (!e || e.length > 120 || /[\u0000-\u001f\u007f\s]/.test(e) || !EMAILY.test(e) || /^\.|\.\.|\.@/.test(e)) return null;
+  return e;
+}
+function maskEmail(e) {
+  const [u, h] = String(e).split('@');
+  return (u ? u[0] : '') + '***@' + (h || '');
+}
+const langOf = v => (LANGS.has(v) ? v : 'sr');
+const lpre = lang => (lang === 'en' || lang === 'ru' ? '/' + lang : '');
+const siteOf = env => String(env.SITE || 'https://www.blokvolt.rs').replace(/\/+$/, '');
+const mailOn = env => env.MAIL_MODE === 'log' || !!env.RESEND_API_KEY;
+const devMode = env => env.MAIL_MODE === 'log';
+const replyTo = env => env.MAIL_REPLY_TO || MAIL_REPLY_TO;
+const TOK32 = /^[0-9a-f]{32}$/, TOK64 = /^[0-9a-f]{64}$/;
+// a short key for the rate limits of one address (the address itself is not written to rl)
+const mailKey = async email => (await sha256('rl:' + email)).slice(0, 24);
+
+function cookieOf(request, name) {
+  const m = (request.headers.get('cookie') || '').match(new RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
+  return m ? m[1] : '';
+}
+// bv_s: the session (HttpOnly, only sent to /api); bv_in: a hint for the static pages. Empty token = sign out.
+function sessionCookies(env, token) {
+  const sec = devMode(env) ? '' : '; Secure', age = token ? SESSION_S : 0;
+  return ['bv_s=' + (token || '') + '; Path=/api; HttpOnly' + sec + '; SameSite=Lax; Max-Age=' + age,
+    'bv_in=' + (token ? '1' : '') + '; Path=/' + sec + '; SameSite=Lax; Max-Age=' + age];
+}
+// bv_n: the browser that asked for a sign-in code (HttpOnly, only sent to /api/nalog, as long as the code). Empty = clear.
+function nonceCookie(env, nonce) {
+  return 'bv_n=' + (nonce || '') + '; Path=/api/nalog; HttpOnly' + (devMode(env) ? '' : '; Secure') + '; SameSite=Lax; Max-Age=' + (nonce ? CODE_S : 0);
+}
+// the page a newsletter sign-up came from, as the consent's source; anything else is 'nepoznato', so the values the
+// server writes itself (confirm-click, nalog, one-click, …) can never come from a request
+const pagePath = v => (typeof v === 'string' && /^\/[a-z0-9/-]{0,79}$/.test(v) ? v : 'nepoznato');
+// work after the answer (mail): logged when it fails, never thrown
+function background(ctx, p) {
+  const q = Promise.resolve(p).catch(e => console.log('background: ' + (e && e.message)));
+  if (ctx && ctx.waitUntil) ctx.waitUntil(q);
+  return q;
+}
+// today's count of a rate-limit key, without counting
+async function used(env, key) {
+  const r = await env.DB.prepare('SELECT n FROM rl WHERE k = ?1 AND day = ?2').bind(key, today()).first();
+  return r ? r.n : 0;
+}
+function jsonC(obj, cookies) {
+  const h = new Headers({ ...JSON_HEADERS, 'cache-control': 'no-store' });
+  for (const c of cookies) h.append('set-cookie', c);
+  return new Response(JSON.stringify(obj), { status: 200, headers: h });
+}
+async function readBody(request) {
+  try {
+    const b = await request.json();
+    return b && typeof b === 'object' && !Array.isArray(b) ? b : null;
+  } catch (e) { return null; }
+}
+// topics as a list or "a,b"; undefined when not given, null when nothing valid is in it
+function topicsOf(v) {
+  if (v === undefined) return undefined;
+  const a = Array.isArray(v) ? v.map(String) : typeof v === 'string' ? v.split(',') : [];
+  const t = TOPICS.filter(x => a.some(y => y.trim() === x));
+  return t.length ? t.join(',') : null;
+}
+
+// ---------------------------------------------------------------- tables (created once per isolate)
+let SCHEMA_OK = false;
+async function ensureSchema(env) {
+  if (SCHEMA_OK) return;
+  // auth_codes is keyed by (address, nonce) since the codes are bound to a browser; a table of the older shape (one code
+  // per address) is replaced: its rows live 15 minutes
+  try { await env.DB.prepare('SELECT nonce FROM auth_codes LIMIT 1').first(); } catch (e) {
+    if (/no such column/i.test(String(e && e.message))) await env.DB.prepare('DROP TABLE auth_codes').run();
+  }
+  const q = [
+    `CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, email TEXT UNIQUE NOT NULL, lang TEXT, created_at INTEGER,
+      verified_at INTEGER, last_login_at INTEGER, car TEXT, dc TEXT, tesla INTEGER DEFAULT 0, city TEXT)`,
+    `CREATE TABLE IF NOT EXISTS auth_codes (email TEXT NOT NULL, nonce TEXT NOT NULL, code_hash TEXT, link_hash TEXT, salt TEXT,
+      exp INTEGER, tries INTEGER DEFAULT 0, at INTEGER, lang TEXT, opt_in INTEGER DEFAULT 0, PRIMARY KEY (email, nonce))`,
+    'CREATE INDEX IF NOT EXISTS auth_codes_link ON auth_codes (link_hash)',
+    'CREATE TABLE IF NOT EXISTS sessions (h TEXT PRIMARY KEY, uid TEXT NOT NULL, at INTEGER, seen INTEGER, exp INTEGER, kind TEXT)',
+    'CREATE INDEX IF NOT EXISTS sessions_uid ON sessions (uid)',
+    'CREATE TABLE IF NOT EXISTS favs (uid TEXT NOT NULL, st TEXT NOT NULL, at INTEGER, PRIMARY KEY (uid, st))',
+    `CREATE TABLE IF NOT EXISTS subs (email TEXT PRIMARY KEY, uid TEXT, lang TEXT, topics TEXT, freq TEXT, status TEXT,
+      token TEXT UNIQUE, src TEXT, consent_v TEXT, created_at INTEGER, confirmed_at INTEGER, off_at INTEGER, off_reason TEXT)`,
+    'CREATE INDEX IF NOT EXISTS subs_status ON subs (status, created_at)',
+    `CREATE TABLE IF NOT EXISTS consents (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, kind TEXT, granted INTEGER,
+      text_v TEXT, src TEXT, at INTEGER, ip TEXT)`,
+    'CREATE INDEX IF NOT EXISTS consents_email ON consents (email)',
+    'CREATE TABLE IF NOT EXISTS rl (k TEXT NOT NULL, day TEXT NOT NULL, n INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (k, day))',
+    'CREATE TABLE IF NOT EXISTS suppressions (email_hash TEXT PRIMARY KEY, reason TEXT, at INTEGER)',
+  ];
+  if (devMode(env)) q.push(`CREATE TABLE IF NOT EXISTS mail_log (id INTEGER PRIMARY KEY AUTOINCREMENT, at INTEGER, to_addr TEXT,
+      subject TEXT, html TEXT, text TEXT, kind TEXT, hdr TEXT)`);
+  await env.DB.batch(q.map(s => env.DB.prepare(s)));                  // a failure throws: not ready, tried again next time
+  // reports and photos of a signed-in driver carry the account id (NULL for everyone else). Ready only when every step
+  // worked; the one expected error is the column being there already.
+  let ok = true;
+  for (const t of ['checkins', 'photos']) {
+    try { await env.DB.prepare(`ALTER TABLE ${t} ADD COLUMN uid TEXT`).run(); } catch (e) {
+      if (!/duplicate column/i.test(String(e && e.message))) ok = false;
+    }
+    try { await env.DB.prepare(`CREATE INDEX IF NOT EXISTS ${t}_uid ON ${t} (uid)`).run(); } catch (e) { ok = false; }
+  }
+  SCHEMA_OK = ok;
+}
+
+// on ~2 % of the requests: expired codes and sessions, consent histories 3 years after their last withdrawal, and
+// unconfirmed sign-ups older than 30 days — deleted; their consent rows stay as proof, with a row saying the sign-up
+// expired, but keep only the SHA-256 of the address (as after a deleted account). At most 50 sign-ups a run.
+async function housekeeping(env) {
+  const t = now(), cut = t - PENDING_S;
+  await env.DB.batch([
+    env.DB.prepare('DELETE FROM auth_codes WHERE exp < ?1').bind(t),
+    env.DB.prepare('DELETE FROM sessions WHERE exp < ?1').bind(t),
+    env.DB.prepare(`DELETE FROM consents WHERE email IN (SELECT c.email FROM consents c
+      WHERE c.id = (SELECT MAX(x.id) FROM consents x WHERE x.email = c.email) AND c.granted = 0 AND c.at < ?1)`).bind(t - CONSENT_KEEP_S),
+  ]);
+  const old = await env.DB.prepare(`SELECT email FROM subs WHERE status = 'pending' AND created_at < ?1 LIMIT 50`).bind(cut).all();
+  const q = [];
+  for (const { email } of old.results) {
+    // one transaction per address, and each step only while the sign-up is still unconfirmed (a click may come meanwhile)
+    const h = 'sha256:' + await sha256(email), still = `EXISTS (SELECT 1 FROM subs WHERE email = ?2 AND status = 'pending' AND created_at < ?3)`;
+    q.push(env.DB.prepare(`INSERT INTO consents (email, kind, granted, text_v, src, at, ip)
+        SELECT ?1, 'pregled', 0, consent_v, 'isteklo', ?4, NULL FROM subs WHERE email = ?2 AND status = 'pending' AND created_at < ?3`).bind(h, email, cut, t),
+      env.DB.prepare(`UPDATE consents SET email = ?1 WHERE email = ?2 AND ${still}`).bind(h, email, cut),
+      env.DB.prepare(`DELETE FROM subs WHERE email = ?1 AND status = 'pending' AND created_at < ?2`).bind(email, cut));
+  }
+  if (q.length) await env.DB.batch(q);
+}
+
+// ---------------------------------------------------------------- sessions
+// the session of this request: cookie bv_s or "Authorization: Bearer <token>"; null when there is none
+async function sessionOf(request, env) {
+  const m = (request.headers.get('authorization') || '').match(/^Bearer ([0-9a-f]{64})$/);
+  const token = m ? m[1] : cookieOf(request, 'bv_s');
+  if (!TOK64.test(token)) return null;
+  await ensureSchema(env);
+  const s = await env.DB.prepare('SELECT h, uid, seen, exp, kind FROM sessions WHERE h = ?1').bind(await sha256(token)).first();
+  if (!s || s.exp < now()) return null;
+  return Object.assign(s, { token, bearer: !!m });
+}
+// the account id for a report from the map, when the driver is signed in; a broken session never stops a report
+async function reporter(request, env) {
+  if (!cookieOf(request, 'bv_s') && !/^Bearer /.test(request.headers.get('authorization') || '')) return null;
+  try { const s = await sessionOf(request, env); return s ? s.uid : null; } catch (e) { return null; }
+}
+// "seen" is written at most once an hour; each time the session runs for another 90 days
+async function touch(env, s) {
+  if (now() - (s.seen || 0) < 3600) return false;
+  await env.DB.prepare('UPDATE sessions SET seen = ?1, exp = ?2 WHERE h = ?3').bind(now(), now() + SESSION_S, s.h).run();
+  return true;
+}
+const subOut = s => ({ status: s.status, topics: (s.topics || '').split(',').filter(Boolean), freq: s.freq, lang: s.lang });
+// what /api/nalog/ja (and a successful sign-in) answers
+async function account(env, uid) {
+  const u = await env.DB.prepare('SELECT email, lang, created_at, car, dc, tesla, city FROM users WHERE id = ?1').bind(uid).first();
+  if (!u) return null;
+  const f = await env.DB.prepare('SELECT st FROM favs WHERE uid = ?1 ORDER BY at, st').bind(uid).all();
+  const sub = await env.DB.prepare('SELECT status, topics, freq, lang FROM subs WHERE email = ?1').bind(u.email).first();
+  // owner: a short hash of the account id; the pages keep it next to the browser's favourites (bv:fav-owner), so a list
+  // of another account is never joined with this one
+  return { ok: true, user: { ...u, tesla: !!u.tesla, owner: (await sha256('fav-owner:' + uid)).slice(0, 16) },
+    favs: f.results.map(r => r.st), sub: sub ? subOut(sub) : null };
+}
+
+// station ids a favourite may point to: Serbia's map (stationIds) and the neighbouring countries' layer of /mapa/.
+// An empty set (map files not readable) means "do not check".
+let MAPIDS = null, MAPIDS_AT = 0;
+async function mapIds(env, request) {
+  if (MAPIDS && Date.now() - MAPIDS_AT < 600000) return MAPIDS;
+  const own = await stationIds(env, request);
+  if (!own.size) return own;
+  let rg = {};
+  try { rg = await env.ASSETS.fetch(new Request(new URL('/assets/map/region.json', request.url))).then(r => r.json()); } catch (e) { rg = {}; }
+  MAPIDS = new Set([...own, ...(rg.stations || []).map(s => s.id)]);
+  MAPIDS_AT = Date.now();
+  return MAPIDS;
+}
+
+// ---------------------------------------------------------------- mail (Resend)
+// true when mail of this kind must not go to the address: it bounced for good or was marked as spam (Resend's webhook,
+// postaResend). A sign-in code is the reader's own request and still goes out (Resend keeps its own hard-bounce list);
+// a confirmation link too, because the click is a new, explicit consent. Everything else (welcome, newsletter) is held.
+// Lifted by: a successful sign-in → 'bounce' (the code arrived, so the mailbox works); a confirmed newsletter sign-up and
+// switching the newsletter on in the account (an explicit act with a proved address) → 'bounce' and 'complaint'.
+async function suppressed(env, email, kind) {
+  if (kind === 'code' || kind === 'confirm') return false;
+  const r = await env.DB.prepare('SELECT 1 AS x FROM suppressions WHERE email_hash = ?1').bind(await sha256(email)).first();
+  return !!r;
+}
+async function unsuppress(env, email, reasons) {
+  const q = 'DELETE FROM suppressions WHERE email_hash = ?1 AND reason IN (' + reasons.map((_, i) => '?' + (i + 2)).join(', ') + ')';
+  await env.DB.prepare(q).bind(await sha256(email), ...reasons).run();
+}
+// m: {to, subject, html, text, kind, idem, unsub}. unsub = the one-click URL of a newsletter mail: List-Unsubscribe
+// (RFC 8058, with a mailto for clients without one-click). idem = Idempotency-Key, so a retry never sends twice.
+// Every mail (code, confirmation, welcome, and the newsletter later) goes through here: nothing is sent to a suppressed
+// address, and the caller answers as if it had been, so the answer never tells that the address is on the list.
+async function sendMail(env, m) {
+  if (await suppressed(env, m.to, m.kind)) return true;
+  const hdr = m.unsub ? { 'List-Unsubscribe': '<' + m.unsub + '>, <mailto:' + replyTo(env) + '?subject=odjava>', 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' } : null;
+  if (devMode(env)) {
+    await env.DB.prepare('INSERT INTO mail_log (at, to_addr, subject, html, text, kind, hdr) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)')
+      .bind(now(), m.to, m.subject, m.html, m.text, m.kind, JSON.stringify({ ...(hdr || {}), 'Idempotency-Key': m.idem || '' })).run();
+    return true;
+  }
+  if (!env.RESEND_API_KEY) return false;
+  const payload = { from: env.MAIL_FROM || MAIL_FROM, to: [m.to], reply_to: replyTo(env), subject: m.subject, html: m.html, text: m.text,
+    tags: [{ name: 'kind', value: m.kind }] };
+  if (hdr) payload.headers = hdr;
+  for (let i = 0; i < 2; i++) {
+    if (i) await new Promise(ok => setTimeout(ok, 700));
+    try {
+      const r = await fetch('https://api.resend.com/emails', {
+        method: 'POST', body: JSON.stringify(payload), signal: AbortSignal.timeout(8000),
+        headers: { authorization: 'Bearer ' + env.RESEND_API_KEY, 'content-type': 'application/json', ...(m.idem ? { 'idempotency-key': m.idem } : {}) },
+      });
+      if (r.ok) return true;
+      if (r.status < 500 && r.status !== 429) return false;       // refused: a retry would not help
+    } catch (e) { /* timeout or network error: once more, with the same Idempotency-Key */ }
+  }
+  return false;
+}
+
+const MAIL_T = {
+  sr: {
+    code_subj: '{code} — vaš kod za BlokVolt', code_pre: 'Važi 15 minuta.', code_h: 'Vaš kod za prijavu',
+    code_p: 'Upišite ga na stranici za prijavu. Kod važi 15 minuta i može se iskoristiti samo jednom.', code_btn: 'Prijavite se jednim klikom',
+    code_small: 'Ako niste tražili kod, zanemarite ovaj mejl — bez koda niko ne može da uđe u vaš nalog.',
+    code_why: 'Mejl je poslat jer je na www.blokvolt.rs zatražen kod za prijavu na ovu adresu.',
+    conf_subj: 'Potvrdite prijavu na Nedeljni pregled', conf_pre: 'Jedan klik — i prvi broj stiže {day}.', conf_h: 'Još samo jedan korak',
+    conf_p: 'Adresa {email} je prijavljena na Nedeljni pregled BlokVolt: vesti, cene javnog punjenja i novi punjači, jednom nedeljno.',
+    conf_btn: 'Potvrđujem prijavu', conf_small: 'Ako niste vi, ignorišite ovaj mejl — bez potvrde vam ništa nećemo slati.',
+    conf_why: 'Mejl je poslat jer je ova adresa upisana u prijavu za Nedeljni pregled na www.blokvolt.rs.',
+    wel_subj: 'Prijava je potvrđena — Nedeljni pregled', wel_pre: 'Prvi broj stiže {day} ujutru.', wel_h: 'Prijava je potvrđena',
+    wel_p: 'Hvala! Prvi broj stiže {day} ujutru.', wel_in: 'U svakom broju:',
+    wel_list: ['3–5 vesti nedelje, svaka sa izvorom', 'Promene cena po mrežama, kad ih ima', 'Novi i popravljeni punjači na mapi'],
+    wel_link: 'Izaberite teme i učestalost', wel_spam: 'Da mejlovi ne završe u spamu, dodajte {from} u kontakte.',
+    wel_why: 'Mejl je poslat jer ste potvrdili prijavu na Nedeljni pregled na www.blokvolt.rs.', unsub: 'Odjavite se jednim klikom',
+  },
+  en: {
+    code_subj: '{code} — your BlokVolt code', code_pre: 'Valid for 15 minutes.', code_h: 'Your sign-in code',
+    code_p: 'Enter it on the sign-in page. The code is valid for 15 minutes and can be used only once.', code_btn: 'Sign in with one click',
+    code_small: 'If you did not ask for a code, ignore this e-mail — nobody can get into your account without the code.',
+    code_why: 'This e-mail was sent because a sign-in code for this address was requested on www.blokvolt.rs.',
+    conf_subj: 'Confirm your subscription to the Weekly Digest', conf_pre: 'One click — and the first issue arrives {day}.', conf_h: 'Just one more step',
+    conf_p: 'The address {email} has been signed up for the BlokVolt Weekly Digest: news, public charging prices and new chargers, once a week.',
+    conf_btn: 'Confirm my subscription', conf_small: 'If this was not you, ignore this e-mail — without confirmation nothing will be sent to you.',
+    conf_why: 'This e-mail was sent because this address was entered in the Weekly Digest sign-up form on www.blokvolt.rs.',
+    wel_subj: 'Subscription confirmed — Weekly Digest', wel_pre: 'The first issue arrives {day} morning.', wel_h: 'Subscription confirmed',
+    wel_p: 'Thank you! The first issue arrives {day} morning.', wel_in: 'In every issue:',
+    wel_list: ['3–5 news stories of the week, each with its source', 'Price changes by network, when there are any', 'New and repaired chargers on the map'],
+    wel_link: 'Choose topics and frequency', wel_spam: 'To keep these e-mails out of spam, add {from} to your contacts.',
+    wel_why: 'This e-mail was sent because you confirmed your subscription to the Weekly Digest on www.blokvolt.rs.', unsub: 'Unsubscribe with one click',
+  },
+  ru: {
+    code_subj: '{code} — ваш код для BlokVolt', code_pre: 'Действует 15 минут.', code_h: 'Ваш код для входа',
+    code_p: 'Введите его на странице входа. Код действует 15 минут, и использовать его можно только один раз.', code_btn: 'Войти в один клик',
+    code_small: 'Если вы не запрашивали код, не обращайте внимания на это письмо — без кода никто не войдёт в ваш аккаунт.',
+    code_why: 'Письмо отправлено, потому что на www.blokvolt.rs запросили код для входа на этот адрес.',
+    conf_subj: 'Подтвердите подписку на Еженедельный обзор', conf_pre: 'Один клик — и первый выпуск придёт {day}.', conf_h: 'Остался один шаг',
+    conf_p: 'Адрес {email} подписан на Еженедельный обзор BlokVolt: новости, цены публичной зарядки и новые зарядные станции, раз в неделю.',
+    conf_btn: 'Подтверждаю подписку', conf_small: 'Если это были не вы, не обращайте внимания на письмо — без подтверждения мы ничего не будем присылать.',
+    conf_why: 'Письмо отправлено, потому что этот адрес указали в форме подписки на Еженедельный обзор на www.blokvolt.rs.',
+    wel_subj: 'Подписка подтверждена — Еженедельный обзор', wel_pre: 'Первый выпуск придёт {day} утром.', wel_h: 'Подписка подтверждена',
+    wel_p: 'Спасибо! Первый выпуск придёт {day} утром.', wel_in: 'В каждом выпуске:',
+    wel_list: ['3–5 новостей недели, у каждой — источник', 'Изменения цен по сетям, если они есть', 'Новые и отремонтированные зарядные станции на карте'],
+    wel_link: 'Выбрать темы и периодичность', wel_spam: 'Чтобы письма не попадали в спам, добавьте {from} в контакты.',
+    wel_why: 'Письмо отправлено, потому что вы подтвердили подписку на Еженедельный обзор на www.blokvolt.rs.', unsub: 'Отписаться в один клик',
+  },
+};
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
+// e-mail-safe HTML: tables, inline styles, one 600 px column, system fonts, no remote images.
+// o: {lang, pre, h, p: [html], code, btn: [label, url], list: [text], after: [html], small, why, unsub: [label, url]}
+function mailHtml(env, o) {
+  const host = siteOf(env).replace(/^https?:\/\//, '');
+  const P = 'margin:0 0 16px;font:16px/1.55 ' + FONT + ';color:#2A2F3A';
+  let b = '<h1 style="margin:0 0 14px;font:700 24px/1.25 ' + FONT + ';color:#0D111A;letter-spacing:-.3px">' + esc(o.h) + '</h1>';
+  for (const p of o.p || []) b += '<p style="' + P + '">' + p + '</p>';
+  if (o.code) b += '<p style="margin:4px 0 20px"><span style="display:inline-block;padding:14px 20px 14px 26px;border-radius:12px;background:#F3FBD2;font:700 34px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:10px;color:#0D111A">' + esc(o.code) + '</span></p>';
+  if (o.list) b += '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px">' + o.list.map(x =>
+    '<tr><td valign="top" style="padding:3px 10px 3px 0;font:16px/1.5 ' + FONT + ';color:#6E8A12">&#9679;</td><td style="padding:3px 0;font:16px/1.5 ' + FONT + ';color:#2A2F3A">' + esc(x) + '</td></tr>').join('') + '</table>';
+  if (o.btn) b += '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 20px"><tr><td style="border-radius:12px;background:#0D111A">' +
+    '<a href="' + esc(o.btn[1]) + '" style="display:inline-block;padding:14px 22px;border-radius:12px;font:600 16px/1.2 ' + FONT + ';color:#FFFFFF;text-decoration:none">' + esc(o.btn[0]) + '</a></td></tr></table>';
+  for (const p of o.after || []) b += '<p style="' + P + '">' + p + '</p>';
+  if (o.small) b += '<p style="margin:0;font:14px/1.5 ' + FONT + ';color:#5C6270">' + esc(o.small) + '</p>';
+  const foot = esc(o.why) + (o.unsub ? ' <a href="' + esc(o.unsub[1]) + '" style="color:#5C6270">' + esc(o.unsub[0]) + '</a>' : '');
+  return '<!DOCTYPE html><html lang="' + o.lang + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' +
+    '<meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light"><title>' + esc(o.title) + '</title></head>' +
+    '<body style="margin:0;padding:0;background:#F4F3EE">' +
+    '<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:#F4F3EE">' + esc(o.pre) + '&#8199;&#65279;&#847;'.repeat(12) + '</div>' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F4F3EE"><tr><td align="center" style="padding:28px 12px 32px">' +
+    '<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px">' +
+    '<tr><td style="padding:0 6px 16px"><span style="font:22px/1 ' + FONT + ';letter-spacing:-.6px;color:#0D111A">blok<b style="font-weight:800">volt</b></span>' +
+    '<div style="width:34px;height:5px;margin-top:7px;border-radius:3px;background:#D9F45B;font-size:0;line-height:0">&nbsp;</div></td></tr>' +
+    '<tr><td style="background:#FFFFFF;border:1px solid #E6E5DC;border-radius:18px;padding:30px 30px 26px">' + b + '</td></tr>' +
+    '<tr><td style="padding:18px 8px 0;font:13px/1.55 ' + FONT + ';color:#5C6270">BlokVolt · ' + esc(host) + ' · ' + esc(replyTo(env)) + '<br>' + foot + '</td></tr>' +
+    '</table></td></tr></table></body></html>';
+}
+function mailText(env, o) {
+  const host = siteOf(env).replace(/^https?:\/\//, '');
+  const t = [o.h, ''];
+  for (const p of o.pText || []) t.push(p, '');
+  if (o.code) t.push(o.code, '');
+  if (o.list) t.push(...o.list.map(x => '• ' + x), '');
+  if (o.btn) t.push(o.btn[0] + ': ' + o.btn[1], '');
+  for (const p of o.afterText || []) t.push(p, '');
+  if (o.small) t.push(o.small, '');
+  t.push('—', 'BlokVolt · ' + host + ' · ' + replyTo(env), o.why);
+  if (o.unsub) t.push(o.unsub[0] + ': ' + o.unsub[1]);
+  return t.join('\n') + '\n';
+}
+function renderMail(env, kind, o, extra) {
+  return Object.assign({ subject: o.title, html: mailHtml(env, o), text: mailText(env, o), kind }, extra);
+}
+const dayIn = lang => (DAYS[CFG.day] || DAYS.petak)[lang];
+const fromAddr = env => ((env.MAIL_FROM || MAIL_FROM).match(/<([^>]+)>/) || [])[1] || env.MAIL_FROM || MAIL_FROM;
+
+function mailCode(env, lang, email, code, link, idem) {
+  const T = MAIL_T[lang], url = siteOf(env) + lpre(lang) + '/nalog/?prijava=' + link;
+  return renderMail(env, 'code', { lang, title: T.code_subj.replace('{code}', code), pre: T.code_pre, h: T.code_h, p: [esc(T.code_p)], pText: [T.code_p],
+    code, btn: [T.code_btn, url], small: T.code_small, why: T.code_why }, { to: email, idem });
+}
+function mailConfirm(env, lang, email, token, at) {
+  const T = MAIL_T[lang], url = siteOf(env) + lpre(lang) + '/pregled/potvrda/?t=' + token;
+  const p = T.conf_p.split('{email}');
+  return renderMail(env, 'confirm', { lang, title: T.conf_subj, pre: T.conf_pre.replace('{day}', dayIn(lang)), h: T.conf_h,
+    p: [esc(p[0]) + '<b style="color:#0D111A">' + esc(email) + '</b>' + esc(p[1])], pText: [T.conf_p.replace('{email}', email)],
+    btn: [T.conf_btn, url], small: T.conf_small, why: T.conf_why }, { to: email, idem: 'confirm-' + token + '-' + at });
+}
+function mailWelcome(env, lang, email, token) {
+  const T = MAIL_T[lang], S = siteOf(env) + lpre(lang), from = fromAddr(env);
+  const prefs = S + '/pregled/odjava/?t=' + token + '&teme=1', out = S + '/pregled/odjava/?t=' + token;
+  const spam = T.wel_spam.split('{from}');
+  return renderMail(env, 'welcome', { lang, title: T.wel_subj, pre: T.wel_pre.replace('{day}', dayIn(lang)), h: T.wel_h,
+    p: [esc(T.wel_p.replace('{day}', dayIn(lang))), esc(T.wel_in)], pText: [T.wel_p.replace('{day}', dayIn(lang)), T.wel_in], list: T.wel_list,
+    after: ['<a href="' + esc(prefs) + '" style="color:#0D111A;font-weight:600">' + esc(T.wel_link) + '</a>',
+      esc(spam[0]) + '<b style="color:#0D111A">' + esc(from) + '</b>' + esc(spam[1])],
+    afterText: [T.wel_link + ': ' + prefs, T.wel_spam.replace('{from}', from)],
+    why: T.wel_why, unsub: [T.unsub, out] }, { to: email, idem: 'welcome-' + token, unsub: siteOf(env) + '/api/posta/odjava?t=' + token });
+}
+
+// ---------------------------------------------------------------- sign-in
+// {email, lang, opt_in?, hp, t, app?, nonce?}. The code is stored for (address, nonce): the nonce comes from this
+// browser's cookie bv_n (or, for the app, from the body) and is new when there is none. Asking again from the same
+// browser replaces its code; other browsers keep theirs. The mail is sent after the answer.
+async function nalogKod(request, env, b, ctx) {
+  if (b.hp) return json({ ok: true });                                   // honeypot: looks sent, nothing happens
+  if (typeof b.t === 'number' && b.t < 1500) return bad('too fast', 429);
+  const email = normEmail(b.email);
+  if (!email) return bad('email');
+  if (!mailOn(env)) return bad('mail_off', 503);
+  await ensureSchema(env);
+  const ip = await ipHash(request, env), mk = await mailKey(email), hour = new Date().toISOString().slice(0, 13);
+  if (!(await allow(env, 'nk:' + ip, LIMIT.codeIp)) || !(await allow(env, 'nh:' + mk + ':' + ip + ':' + hour, LIMIT.codeHour)) ||
+    !(await allow(env, 'nd:' + mk + ':' + ip, LIMIT.codeDay)) || !(await allow(env, 'na:' + mk, LIMIT.codeMail))) return bad('limit', 429);
+  const app = b.app === true, given = app ? String(b.nonce || '') : cookieOf(request, 'bv_n');
+  const nonce = TOK32.test(given) ? given : randHex(16);
+  // only hashes are stored
+  const lang = langOf(b.lang), code = sixDigits(), link = randHex(32), salt = randHex(16), t = now();
+  await env.DB.prepare(`INSERT INTO auth_codes (email, nonce, code_hash, link_hash, salt, exp, tries, at, lang, opt_in)
+    VALUES (?1, ?2, ?3, ?4, ?5, ?6, 0, ?7, ?8, ?9)
+    ON CONFLICT (email, nonce) DO UPDATE SET code_hash = ?3, link_hash = ?4, salt = ?5, exp = ?6, tries = 0, at = ?7, lang = ?8, opt_in = ?9`)
+    .bind(email, nonce, await sha256(salt + code), await sha256(link), salt, t + CODE_S, t, lang, b.opt_in === true ? 1 : 0).run();
+  // after the answer: the page cannot learn about a failed send (logged; the reader has "Pošaljite ponovo")
+  const m = mailCode(env, lang, email, code, link, 'code-' + (await sha256(salt + link)).slice(0, 40));
+  background(ctx, sendMail(env, m).then(sent => { if (!sent) console.log('mail not sent: code'); }));
+  return app ? json({ ok: true, nonce }) : jsonC({ ok: true }, [nonceCookie(env, nonce)]);
+}
+
+// {email, code, app?, nonce?}: only the code of this browser's nonce (cookie bv_n, or the app's nonce) is checked.
+// Every attempt counts, the right one too; the fifth wrong one ends that code (and only that one). From one IP
+// fingerprint at most 30 failures a day, then 429 for the rest of the day.
+async function nalogPotvrdi(request, env, b) {
+  await ensureSchema(env);
+  const ip = await ipHash(request, env);
+  if ((await used(env, 'nf:' + ip)) >= LIMIT.failIp) return bad('limit', 429);
+  const fail = async (err, status) => { await allow(env, 'nf:' + ip, LIMIT.failIp); return bad(err, status); };
+  const email = normEmail(b.email), code = String(b.code == null ? '' : b.code).replace(/\D/g, '');
+  const app = b.app === true, nonce = app ? String(b.nonce || '') : cookieOf(request, 'bv_n');
+  if (!email) return fail('email');
+  if (code.length !== 6 || !TOK32.test(nonce)) return fail('code');
+  const row = await env.DB.prepare(`UPDATE auth_codes SET tries = tries + 1 WHERE email = ?1 AND nonce = ?2 AND exp >= ?3
+    RETURNING nonce, code_hash, salt, tries, lang, opt_in`).bind(email, nonce, now()).first();
+  if (!row) return fail('code');
+  const wrong = !same(await sha256(row.salt + code), row.code_hash);
+  if (row.tries > CODE_TRIES || (wrong && row.tries >= CODE_TRIES)) {
+    await env.DB.prepare('DELETE FROM auth_codes WHERE email = ?1 AND nonce = ?2').bind(email, nonce).run();
+    return fail('tries', 429);
+  }
+  if (wrong) return fail('code');
+  return signIn(request, env, email, row, app);
+}
+
+// {token}: signs in. {token, peek: true}: only which address the link is for (masked), for the page before the click;
+// nothing is spent.
+async function nalogLink(request, env, b) {
+  const token = String(b.token || '');
+  if (!TOK64.test(token)) return bad('code');
+  await ensureSchema(env);
+  const row = await env.DB.prepare('SELECT email, nonce, code_hash, lang, opt_in FROM auth_codes WHERE link_hash = ?1 AND exp >= ?2')
+    .bind(await sha256(token), now()).first();
+  if (!row) return bad('code');
+  if (b.peek === true) return json({ ok: true, email_masked: maskEmail(row.email) });
+  return signIn(request, env, row.email, row, b.app === true);
+}
+
+// the code (or link) is spent, other browsers' codes stay; the account is created on the first sign-in; a new session
+async function signIn(request, env, email, row, app) {
+  const del = await env.DB.prepare('DELETE FROM auth_codes WHERE email = ?1 AND nonce = ?2 AND code_hash = ?3').bind(email, row.nonce, row.code_hash).run();
+  if (!del.meta || !del.meta.changes) return bad('code');                // spent a moment ago by another request
+  const t = now(), lang = langOf(row.lang), token = randHex(32);
+  const u = await env.DB.prepare(`INSERT INTO users (id, email, lang, created_at, verified_at, last_login_at) VALUES (?1, ?2, ?3, ?4, ?4, ?4)
+    ON CONFLICT (email) DO UPDATE SET lang = ?3, verified_at = COALESCE(users.verified_at, ?4), last_login_at = ?4 RETURNING id`)
+    .bind(randHex(16), email, lang, t).first();
+  await env.DB.batch([
+    env.DB.prepare('INSERT INTO sessions (h, uid, at, seen, exp, kind) VALUES (?1, ?2, ?3, ?3, ?4, ?5)').bind(await sha256(token), u.id, t, t + SESSION_S, app ? 'app' : 'web'),
+    env.DB.prepare('UPDATE subs SET uid = ?1 WHERE email = ?2 AND uid IS NULL').bind(u.id, email),
+  ]);
+  await unsuppress(env, email, ['bounce']);                             // the code arrived: the mailbox works again
+  // "Pošaljite mi i Nedeljni pregled" at sign-in: pending until the click in the confirmation mail, like every sign-up
+  if (row.opt_in) await subscribe(request, env, email, { lang, uid: u.id, src: 'nalog-prijava' });
+  const out = await account(env, u.id);
+  return app ? json({ ...out, token }) : jsonC(out, sessionCookies(env, token).concat(nonceCookie(env, '')));
+}
+
+// ---------------------------------------------------------------- the account
+async function nalogJa(request, env) {
+  const s = await sessionOf(request, env);
+  const out = s && await account(env, s.uid);
+  if (!out) return bad('auth', 401);
+  // once an hour: the session and the browser's cookies run for another 90 days
+  return (await touch(env, s)) && !s.bearer ? jsonC(out, sessionCookies(env, s.token)) : json(out);
+}
+
+async function nalogOdjava(request, env, b) {
+  const s = await sessionOf(request, env);
+  if (s) await (b.all ? env.DB.prepare('DELETE FROM sessions WHERE uid = ?1').bind(s.uid) : env.DB.prepare('DELETE FROM sessions WHERE h = ?1').bind(s.h)).run();
+  return jsonC({ ok: true }, sessionCookies(env, ''));
+}
+
+async function nalogPodesavanja(request, env, b) {
+  const s = await sessionOf(request, env);
+  if (!s) return bad('auth', 401);
+  const set = {};
+  if ('lang' in b) { if (!LANGS.has(b.lang)) return bad('lang'); set.lang = b.lang; }
+  if ('car' in b) {
+    const c = clean(b.car, 1000);
+    if (c.length > 80) return bad('car');
+    set.car = c || null;
+  }
+  if ('dc' in b) { if (b.dc && !DCS.has(b.dc)) return bad('dc'); set.dc = b.dc || null; }
+  if ('tesla' in b) { if (typeof b.tesla !== 'boolean') return bad('tesla'); set.tesla = b.tesla ? 1 : 0; }
+  if ('city' in b) { if (b.city && b.city !== 'drugo' && !CFG.cities.includes(b.city)) return bad('city'); set.city = b.city || null; }
+  const keys = Object.keys(set);                                         // only the five names above
+  if (keys.length) {
+    await env.DB.prepare('UPDATE users SET ' + keys.map((k, i) => k + ' = ?' + (i + 2)).join(', ') + ' WHERE id = ?1')
+      .bind(s.uid, ...keys.map(k => set[k])).run();
+  }
+  return json(await account(env, s.uid));
+}
+
+// {add: [ids], remove: [ids], replace: [ids]} — in that order: replace, remove, add. Ids that are not on the map are
+// dropped (listed in `dropped`); above 300 favourites nothing more is added (`full`).
+async function nalogOmiljeni(request, env, b) {
+  const s = await sessionOf(request, env);
+  if (!s) return bad('auth', 401);
+  const ids = await mapIds(env, request), dropped = [];
+  const valid = list => (Array.isArray(list) ? list : []).slice(0, 2 * MAX_FAVS).map(x => String(x)).filter(x => {
+    const ok = /^[a-z0-9-]{3,60}$/.test(x) && (!ids.size || ids.has(x));
+    if (!ok) dropped.push(x.slice(0, 60));
+    return ok;
+  });
+  const rep = Array.isArray(b.replace) ? valid(b.replace) : null, rem = valid(b.remove), add = valid(b.add);
+  const have = new Set(rep ? [] : (await env.DB.prepare('SELECT st FROM favs WHERE uid = ?1').bind(s.uid).all()).results.map(r => r.st));
+  const q = [], t = now(), ins = x => q.push(env.DB.prepare('INSERT OR IGNORE INTO favs (uid, st, at) VALUES (?1, ?2, ?3)').bind(s.uid, x, t));
+  let full = false;
+  if (rep) {
+    q.push(env.DB.prepare('DELETE FROM favs WHERE uid = ?1').bind(s.uid));
+    for (const x of rep) {
+      if (have.has(x)) continue;
+      if (have.size >= MAX_FAVS) { full = true; continue; }
+      have.add(x); ins(x);
+    }
+  }
+  for (const x of rem) if (have.delete(x)) q.push(env.DB.prepare('DELETE FROM favs WHERE uid = ?1 AND st = ?2').bind(s.uid, x));
+  for (const x of add) {
+    if (have.has(x)) continue;
+    if (have.size >= MAX_FAVS) { full = true; continue; }
+    have.add(x); ins(x);
+  }
+  if (q.length) await env.DB.batch(q);
+  const f = await env.DB.prepare('SELECT st FROM favs WHERE uid = ?1 ORDER BY at, st').bind(s.uid).all();
+  return json({ ok: true, favs: f.results.map(r => r.st), dropped, full });
+}
+
+// "Moje prijave sa mape": the driver's reports and photos sent while signed in
+async function nalogDoprinosi(request, env) {
+  const s = await sessionOf(request, env);
+  if (!s) return bad('auth', 401);
+  const all = sql => env.DB.prepare(sql).bind(s.uid).all().then(r => r.results, () => []);
+  // a photo that is not approved is reachable by its id alone (moderation), so its id is never shown
+  const photos = (await all('SELECT id, st, status, at FROM photos WHERE uid = ?1 ORDER BY at DESC LIMIT 100'))
+    .map(x => (x.status === 'ok' ? x : { st: x.st, status: x.status, at: x.at }));
+  return json({ ok: true, checkins: await all('SELECT st, s, r, cs, at FROM checkins WHERE uid = ?1 ORDER BY at DESC LIMIT 200'), photos });
+}
+
+// everything stored about the account, as a JSON download (photos without the image bytes)
+async function nalogIzvoz(request, env) {
+  const s = await sessionOf(request, env);
+  const u = s && await env.DB.prepare('SELECT * FROM users WHERE id = ?1').bind(s.uid).first();
+  if (!u) return bad('auth', 401);
+  const all = (sql, v) => env.DB.prepare(sql).bind(v).all().then(r => r.results, () => []);
+  const out = {
+    about: 'BlokVolt (www.blokvolt.rs) — podaci sačuvani uz vaš nalog / data stored with your account. Vreme: Unix sekunde (UTC).',
+    exported_at: new Date().toISOString(),
+    user: { ...u, tesla: !!u.tesla },
+    favourites: await all('SELECT st, at FROM favs WHERE uid = ?1 ORDER BY at, st', s.uid),
+    sessions: (await all('SELECT h, at, seen, exp, kind FROM sessions WHERE uid = ?1 ORDER BY at', s.uid))
+      .map(x => ({ at: x.at, seen: x.seen, exp: x.exp, kind: x.kind, this_device: x.h === s.h })),
+    newsletter: await env.DB.prepare(`SELECT email, lang, topics, freq, status, src, consent_v, created_at, confirmed_at, off_at, off_reason
+      FROM subs WHERE email = ?1`).bind(u.email).first(),
+    consents: await all('SELECT kind, granted, text_v, src, at, ip FROM consents WHERE email = ?1 ORDER BY id', u.email),
+    checkins: await all('SELECT id, st, s, r, c, n, cs, at, lang, ip FROM checkins WHERE uid = ?1 ORDER BY at', s.uid),
+    photos: (await all('SELECT id, st, status, at, cap, w, h, mime, ip FROM photos WHERE uid = ?1 ORDER BY at', s.uid))
+      .map(x => { if (x.status !== 'ok') delete x.id; return x; }),         // ids only of approved photos (as doprinosi)
+  };
+  return new Response(JSON.stringify(out, null, 1), { headers: { ...JSON_HEADERS, 'cache-control': 'no-store',
+    'content-disposition': 'attachment; filename="blokvolt-nalog-' + today() + '.json"' } });
+}
+
+// deletes the account, its sessions, favourites, codes and newsletter sign-up. The consent history keeps only the
+// SHA-256 of the address (proof of past consent without the address); reports and photos stay on the map without the link.
+async function nalogObrisi(request, env, b) {
+  const s = await sessionOf(request, env);
+  if (!s) return bad('auth', 401);
+  if (b.confirm !== 'OBRISI') return bad('confirm');
+  const u = await env.DB.prepare('SELECT email FROM users WHERE id = ?1').bind(s.uid).first();
+  const q = [];
+  if (u) {
+    const sub = await env.DB.prepare('SELECT status, consent_v FROM subs WHERE email = ?1').bind(u.email).first();
+    if (sub && sub.status !== 'off') {
+      q.push(env.DB.prepare(`INSERT INTO consents (email, kind, granted, text_v, src, at, ip) VALUES (?1, 'pregled', 0, ?2, 'brisanje-naloga', ?3, ?4)`)
+        .bind(u.email, sub.consent_v || CONSENT_V, now(), await ipHash(request, env)));
+    }
+    q.push(env.DB.prepare('UPDATE consents SET email = ?1 WHERE email = ?2').bind('sha256:' + await sha256(u.email), u.email),
+      env.DB.prepare('DELETE FROM subs WHERE email = ?1').bind(u.email),
+      env.DB.prepare('DELETE FROM auth_codes WHERE email = ?1').bind(u.email));
+  }
+  q.push(env.DB.prepare('DELETE FROM favs WHERE uid = ?1').bind(s.uid),
+    env.DB.prepare('DELETE FROM sessions WHERE uid = ?1').bind(s.uid),
+    env.DB.prepare('DELETE FROM users WHERE id = ?1').bind(s.uid));
+  await env.DB.batch(q);
+  for (const t of ['checkins', 'photos']) {
+    try { await env.DB.prepare(`UPDATE ${t} SET uid = NULL WHERE uid = ?1`).bind(s.uid).run(); } catch (e) { /* no such table */ }
+  }
+  return jsonC({ ok: true }, sessionCookies(env, ''));
+}
+
+// the newsletter section of the account: the address is proved by the sign-in, so "on" needs no confirmation mail
+async function nalogPregled(request, env, b) {
+  const s = await sessionOf(request, env);
+  const u = s && await env.DB.prepare('SELECT id, email, lang FROM users WHERE id = ?1').bind(s.uid).first();
+  if (!u) return bad('auth', 401);
+  if (typeof b.on !== 'boolean') return bad('on');
+  const topics = topicsOf(b.topics);
+  if (topics === null) return bad('topics');
+  if (b.freq !== undefined && b.freq !== 'w' && b.freq !== 'm') return bad('freq');
+  if (b.lang !== undefined && !LANGS.has(b.lang)) return bad('lang');
+  const cur = await env.DB.prepare('SELECT status, token FROM subs WHERE email = ?1').bind(u.email).first();
+  const t = now(), ip = await ipHash(request, env), q = [], was = cur ? cur.status : 'off';
+  const consent = on => env.DB.prepare(`INSERT INTO consents (email, kind, granted, text_v, src, at, ip) VALUES (?1, 'pregled', ?2, ?3, 'nalog', ?4, ?5)`)
+    .bind(u.email, on ? 1 : 0, CONSENT_V, t, ip);
+  const token = (cur && cur.token) || randHex(16);
+  if (b.on) {
+    q.push(env.DB.prepare(`INSERT INTO subs (email, uid, lang, topics, freq, status, token, src, consent_v, created_at, confirmed_at)
+      VALUES (?1, ?2, COALESCE(?3, ?4), COALESCE(?5, ?6), COALESCE(?7, 'w'), 'on', ?8, 'nalog', ?9, ?10, ?10)
+      ON CONFLICT (email) DO UPDATE SET uid = ?2, lang = COALESCE(?3, subs.lang), topics = COALESCE(?5, subs.topics), freq = COALESCE(?7, subs.freq),
+        status = 'on', confirmed_at = CASE WHEN subs.status = 'on' THEN subs.confirmed_at ELSE ?10 END,
+        src = CASE WHEN subs.status = 'on' THEN subs.src ELSE 'nalog' END,
+        consent_v = CASE WHEN subs.status = 'on' THEN subs.consent_v ELSE ?9 END, off_at = NULL, off_reason = NULL`)
+      .bind(u.email, u.id, b.lang || null, u.lang || 'sr', topics || null, DEFAULT_TOPICS, b.freq || null, token, CONSENT_V, t));
+    if (was !== 'on') q.push(consent(true));
+  } else if (cur) {
+    q.push(env.DB.prepare(`UPDATE subs SET lang = COALESCE(?2, lang), topics = COALESCE(?3, topics), freq = COALESCE(?4, freq),
+      status = 'off', off_at = CASE WHEN status = 'off' THEN off_at ELSE ?5 END, off_reason = CASE WHEN status = 'off' THEN off_reason ELSE 'nalog' END
+      WHERE email = ?1`).bind(u.email, b.lang || null, topics || null, b.freq || null, t));
+    if (was !== 'off') q.push(consent(false));
+  }
+  if (q.length) await env.DB.batch(q);
+  if (b.on) await unsuppress(env, u.email, ['bounce', 'complaint']);   // an explicit act with a proved address
+  const sub = await env.DB.prepare('SELECT status, topics, freq, lang FROM subs WHERE email = ?1').bind(u.email).first();
+  if (b.on && was !== 'on' && mailOn(env)) await sendMail(env, mailWelcome(env, sub.lang, u.email, token));   // a failed welcome changes nothing
+  return json({ ok: true, sub: sub ? subOut(sub) : null });
+}
+
+// ---------------------------------------------------------------- the newsletter without an account
+// a sign-up waits for the click in the confirmation mail; one that is already on stays as it is (and nothing is sent)
+async function subscribe(request, env, email, o) {
+  const cur = await env.DB.prepare('SELECT status, token FROM subs WHERE email = ?1').bind(email).first();
+  if (cur && cur.status === 'on') return true;
+  const t = now(), token = (cur && cur.token) || randHex(16);
+  await env.DB.batch([
+    env.DB.prepare(`INSERT INTO subs (email, uid, lang, topics, freq, status, token, src, consent_v, created_at)
+      VALUES (?1, ?2, ?3, COALESCE(?4, ?5), 'w', 'pending', ?6, ?7, ?8, ?9)
+      ON CONFLICT (email) DO UPDATE SET uid = COALESCE(subs.uid, ?2), lang = ?3, topics = COALESCE(?4, subs.topics), status = 'pending',
+        src = ?7, consent_v = ?8, created_at = ?9, confirmed_at = NULL, off_at = NULL, off_reason = NULL`)
+      .bind(email, o.uid || null, o.lang, o.topics || null, DEFAULT_TOPICS, token, o.src, CONSENT_V, t),
+    env.DB.prepare(`INSERT INTO consents (email, kind, granted, text_v, src, at, ip) VALUES (?1, 'pregled', 1, ?2, ?3, ?4, ?5)`)
+      .bind(email, CONSENT_V, o.src, t, await ipHash(request, env)),
+  ]);
+  return sendMail(env, mailConfirm(env, o.lang, email, token, t));
+}
+
+// {email, lang, topics?, src, hp, t} — or {token, src} from the unsubscribe page ("Prijavite se ponovo"). The answer is
+// the same, and comes as fast, for a new address, one that is on already or one that is suppressed: the sign-up and its
+// mail are done after it. src is kept only when it is a page path.
+async function postaPrijava(request, env, b, ctx) {
+  if (b.hp) return json({ ok: true });
+  if (typeof b.t === 'number' && b.t < 1500) return bad('too fast', 429);
+  let email = normEmail(b.email), lang = langOf(b.lang);
+  if (!email && TOK32.test(String(b.token || ''))) {
+    await ensureSchema(env);
+    const row = await env.DB.prepare('SELECT email, lang FROM subs WHERE token = ?1').bind(b.token).first();
+    if (row) { email = row.email; lang = LANGS.has(b.lang) ? b.lang : langOf(row.lang); }
+  }
+  if (!email) return bad('email');
+  const topics = topicsOf(b.topics);
+  if (!mailOn(env)) return bad('mail_off', 503);
+  await ensureSchema(env);
+  const ip = await ipHash(request, env);
+  if (!(await allow(env, 'pp:' + ip, LIMIT.subIp)) || !(await allow(env, 'pe:' + await mailKey(email), LIMIT.subMail))) return bad('limit', 429);
+  background(ctx, subscribe(request, env, email, { lang, uid: null, src: pagePath(b.src), topics: topics || null })
+    .then(sent => { if (!sent) console.log('mail not sent: confirm'); }));
+  return json({ ok: true });
+}
+
+// the button "Potvrđujem prijavu" on /pregled/potvrda/ (the page itself only shows the state, so a scanner that opens
+// the link confirms nothing)
+async function postaPotvrdi(request, env, b) {
+  const token = String(b.token || '');
+  if (!TOK32.test(token)) return bad('token');
+  await ensureSchema(env);
+  const row = await env.DB.prepare('SELECT email, status, lang, consent_v FROM subs WHERE token = ?1').bind(token).first();
+  if (!row || row.status === 'off') return bad('token');                // unknown, expired, or unsubscribed since
+  if (row.status === 'pending') {
+    const t = now();
+    const up = await env.DB.prepare(`UPDATE subs SET status = 'on', confirmed_at = ?1 WHERE token = ?2 AND status = 'pending'`).bind(t, token).run();
+    if (up.meta && up.meta.changes) {
+      await env.DB.prepare(`INSERT INTO consents (email, kind, granted, text_v, src, at, ip) VALUES (?1, 'pregled', 1, ?2, 'confirm-click', ?3, ?4)`)
+        .bind(row.email, row.consent_v || CONSENT_V, t, await ipHash(request, env)).run();
+      await unsuppress(env, row.email, ['bounce', 'complaint']);       // a new, explicit consent from a working mailbox
+      if (mailOn(env)) await sendMail(env, mailWelcome(env, langOf(row.lang), row.email, token));
+    }
+  }
+  return json({ ok: true, status: 'on', email_masked: maskEmail(row.email), lang: row.lang });
+}
+
+async function postaStanje(request, env, url) {
+  const token = url.searchParams.get('t') || '';
+  if (!TOK32.test(token)) return bad('token', 404);
+  await ensureSchema(env);
+  const row = await env.DB.prepare('SELECT email, status, topics, freq, lang FROM subs WHERE token = ?1').bind(token).first();
+  if (!row) return bad('token', 404);
+  return json({ ok: true, ...subOut(row), email_masked: maskEmail(row.email) });
+}
+
+// topics, frequency and language, by the token from the mail or by the session
+async function postaPodesavanja(request, env, b) {
+  await ensureSchema(env);
+  let row = null;
+  if (b.token !== undefined) {
+    if (!TOK32.test(String(b.token))) return bad('token', 404);
+    row = await env.DB.prepare('SELECT email FROM subs WHERE token = ?1').bind(b.token).first();
+  } else {
+    const s = await sessionOf(request, env);
+    const u = s && await env.DB.prepare('SELECT email FROM users WHERE id = ?1').bind(s.uid).first();
+    if (!u) return bad('auth', 401);
+    row = await env.DB.prepare('SELECT email FROM subs WHERE email = ?1').bind(u.email).first();
+  }
+  if (!row) return bad('token', 404);
+  const topics = topicsOf(b.topics);
+  if (topics === null) return bad('topics');
+  if (b.freq !== undefined && b.freq !== 'w' && b.freq !== 'm') return bad('freq');
+  if (b.lang !== undefined && !LANGS.has(b.lang)) return bad('lang');
+  await env.DB.prepare('UPDATE subs SET topics = COALESCE(?2, topics), freq = COALESCE(?3, freq), lang = COALESCE(?4, lang) WHERE email = ?1')
+    .bind(row.email, topics || null, b.freq || null, b.lang || null).run();
+  const out = await env.DB.prepare('SELECT email, status, topics, freq, lang FROM subs WHERE email = ?1').bind(row.email).first();
+  return json({ ok: true, ...subOut(out), email_masked: maskEmail(out.email) });
+}
+
+// RFC 8058 one-click (POST ?t=…, empty body or List-Unsubscribe=One-Click; no origin check: mail providers call it) and
+// the button on /pregled/odjava/ (JSON {token}). Idempotent: 200 for every valid token.
+async function postaOdjava(request, env, url) {
+  let token = url.searchParams.get('t') || '', src = 'one-click';
+  if (/^application\/json\b/i.test(request.headers.get('content-type') || '')) {
+    const b = await readBody(request);
+    if (b && b.token) { token = String(b.token); src = 'odjava'; }
+  }
+  if (!TOK32.test(token)) return bad('token', 404);
+  await ensureSchema(env);
+  const row = await env.DB.prepare('SELECT email, status, lang, consent_v FROM subs WHERE token = ?1').bind(token).first();
+  if (!row) return bad('token', 404);
+  const t = now();
+  const up = await env.DB.prepare(`UPDATE subs SET status = 'off', off_at = ?1, off_reason = 'link' WHERE token = ?2 AND status != 'off'`).bind(t, token).run();
+  if (up.meta && up.meta.changes) {
+    await env.DB.prepare(`INSERT INTO consents (email, kind, granted, text_v, src, at, ip) VALUES (?1, 'pregled', 0, ?2, ?3, ?4, ?5)`)
+      .bind(row.email, row.consent_v || CONSENT_V, src, t, await ipHash(request, env)).run();
+  }
+  return json({ ok: true, status: 'off', email_masked: maskEmail(row.email), lang: row.lang });
+}
+
+// ---------------------------------------------------------------- Resend's webhook: bounces and spam complaints
+// Resend → Webhooks → endpoint https://www.blokvolt.rs/api/posta/resend, events email.bounced and email.complained; its
+// signing secret ("whsec_…") is the Pages secret RESEND_WEBHOOK_SECRET. Svix signs "<svix-id>.<svix-timestamp>.<body>"
+// with HMAC-SHA256 (key: the base64 after "whsec_"); svix-signature holds one or more "v1,<base64>". A timestamp more
+// than 5 minutes from our clock is refused (replays). A hard bounce (bounce.type "Permanent", or no type) and a
+// complaint switch the newsletter of the address off and put the address on the suppression list; everything else is
+// acknowledged and ignored. Handling an event twice changes nothing. One Resend team sends for BlokVolt and Evolako, and
+// every endpoint of the team receives the events of both: only mail sent from our own domain (MAIL_FROM) counts here,
+// so the other brand's recipients are neither suppressed nor stored.
+const b64bytes = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+// "BlokVolt <obavestenja@mail.blokvolt.com>" or a bare address → "mail.blokvolt.com"; anything else → ""
+const senderDomain = s => {
+  const v = String(s || '').trim(), a = (v.match(/<\s*([^<>\s]+)\s*>$/) || [])[1] || v;
+  return /^[^@\s]+@[A-Za-z0-9.-]+$/.test(a) ? a.split('@')[1].toLowerCase() : '';
+};
+const bytesB64 = a => btoa(String.fromCharCode(...new Uint8Array(a)));
+async function svixOk(request, body, secret) {
+  const id = request.headers.get('svix-id') || '', ts = request.headers.get('svix-timestamp') || '';
+  const sigs = (request.headers.get('svix-signature') || '').split(' ').filter(Boolean);
+  if (!id || id.length > 200 || !/^\d{1,12}$/.test(ts) || !sigs.length) return false;
+  if (Math.abs(now() - Number(ts)) > WEBHOOK_SKEW_S) return false;
+  const key = await crypto.subtle.importKey('raw', b64bytes(secret.slice(6)), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const want = bytesB64(await crypto.subtle.sign('HMAC', key, enc.encode(id + '.' + ts + '.' + body)));
+  let ok = false;
+  for (const x of sigs.slice(0, 10)) {                                  // every entry is compared, in constant time
+    const i = x.indexOf(',');
+    if (i > 0 && x.slice(0, i) === 'v1' && same(x.slice(i + 1), want)) ok = true;
+  }
+  return ok;
+}
+// the newsletter of this address goes off (with a closing consent row) and the address is not mailed again
+async function suppress(env, email, reason) {
+  const t = now();
+  const sub = await env.DB.prepare('SELECT status, consent_v FROM subs WHERE email = ?1').bind(email).first();
+  const q = [env.DB.prepare(`INSERT INTO suppressions (email_hash, reason, at) VALUES (?1, ?2, ?3)
+    ON CONFLICT (email_hash) DO UPDATE SET reason = ?2, at = ?3`).bind(await sha256(email), reason, t)];
+  if (sub && sub.status !== 'off') {
+    q.push(env.DB.prepare(`UPDATE subs SET status = 'off', off_at = ?2, off_reason = ?3 WHERE email = ?1 AND status != 'off'`).bind(email, t, reason),
+      env.DB.prepare(`INSERT INTO consents (email, kind, granted, text_v, src, at, ip) VALUES (?1, 'pregled', 0, ?2, ?3, ?4, NULL)`)
+        .bind(email, sub.consent_v || CONSENT_V, reason, t));
+  }
+  await env.DB.batch(q);
+}
+async function postaResend(request, env) {
+  const secret = String(env.RESEND_WEBHOOK_SECRET || '');
+  if (!/^whsec_[A-Za-z0-9+/]+={0,2}$/.test(secret)) return bad('webhook_off', 503);
+  if (Number(request.headers.get('content-length') || 0) > 262144) return bad('size', 413);
+  const body = await request.text();
+  if (body.length > 262144) return bad('size', 413);
+  let valid = false;
+  try { valid = await svixOk(request, body, secret); } catch (e) { valid = false; }
+  if (!valid) return bad('signature', 401);
+  let ev;
+  try { ev = JSON.parse(body); } catch (e) { return bad('json'); }
+  const d = (ev && ev.data) || {}, bt = d.bounce && d.bounce.type;
+  const ours = senderDomain(env.MAIL_FROM || MAIL_FROM);
+  if (!ours || senderDomain(d.from) !== ours) return json({ ok: true, ignored: true, other_sender: true });
+  const reason = ev && ev.type === 'email.complained' ? 'complaint'
+    : ev && ev.type === 'email.bounced' && (!bt || /^permanent$/i.test(String(bt))) ? 'bounce' : null;
+  if (!reason) return json({ ok: true, ignored: true });                  // soft bounces and all other events
+  await ensureSchema(env);
+  const to = [...new Set((Array.isArray(d.to) ? d.to : [d.to]).map(normEmail).filter(Boolean))].slice(0, 50);
+  for (const email of to) await suppress(env, email, reason);
+  return json({ ok: true, suppressed: to.length });
+}
+
+// counts for the owner; the cleanup runs first, so expired sign-ups are not counted
+async function adminPosta(env) {
+  await ensureSchema(env);
+  await housekeeping(env);
+  const n = async sql => ((await env.DB.prepare(sql).first()) || {}).n || 0;
+  const by = await env.DB.prepare(`SELECT lang, COUNT(*) AS n FROM subs WHERE status = 'on' GROUP BY lang`).all();
+  return json({ ok: true, users: await n('SELECT COUNT(*) AS n FROM users'), subs_on: await n(`SELECT COUNT(*) AS n FROM subs WHERE status = 'on'`),
+    subs_pending: await n(`SELECT COUNT(*) AS n FROM subs WHERE status = 'pending'`), subs_off: await n(`SELECT COUNT(*) AS n FROM subs WHERE status = 'off'`),
+    suppressed: await n('SELECT COUNT(*) AS n FROM suppressions'),
+    by_lang: Object.fromEntries(by.results.map(r => [r.lang || '?', r.n])) });
+}
+
+// path → [method, handler]; a known path with another method answers 405. POST handlers get the parsed JSON body.
+const ACCOUNT_ROUTES = {
+  '/api/nalog/status': ['GET', (rq, env) => json({ ok: true, mail: mailOn(env) }, 200, { 'cache-control': 'public, max-age=60' })],
+  '/api/nalog/kod': ['POST', nalogKod],
+  '/api/nalog/potvrdi': ['POST', nalogPotvrdi],
+  '/api/nalog/link': ['POST', nalogLink],
+  '/api/nalog/ja': ['GET', nalogJa],
+  '/api/nalog/odjava': ['POST', nalogOdjava],
+  '/api/nalog/podesavanja': ['POST', nalogPodesavanja],
+  '/api/nalog/omiljeni': ['POST', nalogOmiljeni],
+  '/api/nalog/doprinosi': ['GET', nalogDoprinosi],
+  '/api/nalog/izvoz': ['GET', nalogIzvoz],
+  '/api/nalog/obrisi': ['POST', nalogObrisi],
+  '/api/nalog/pregled': ['POST', nalogPregled],
+  '/api/posta/prijava': ['POST', postaPrijava],
+  '/api/posta/potvrdi': ['POST', postaPotvrdi],
+  '/api/posta/stanje': ['GET', postaStanje],
+  '/api/posta/podesavanja': ['POST', postaPodesavanja],
+  '/api/posta/odjava': ['POST', postaOdjava],
+  '/api/posta/resend': ['POST', null],
+  '/api/admin/posta': ['GET', null],
+};
+
+async function accountApi(request, env, ctx, url, p, m) {
+  const r = ACCOUNT_ROUTES[p];
+  if (!r) return bad('not found', 404);
+  // somebody opened the one-click address in a browser: the page with the button (a GET never unsubscribes)
+  if (p === '/api/posta/odjava' && m === 'GET') {
+    return new Response(null, { status: 303, headers: { location: '/pregled/odjava/?t=' + encodeURIComponent((url.searchParams.get('t') || '').slice(0, 64)), 'cache-control': 'no-store' } });
+  }
+  if (m !== r[0]) return json({ ok: false, error: 'method' }, 405, { allow: r[0] });
+  if (Math.random() < 0.02) ctx.waitUntil(ensureSchema(env).then(() => housekeeping(env)).catch(() => {}));
+  if (p === '/api/admin/posta') return adminOk(request, env) ? adminPosta(env) : bad('not found', 404);
+  if (p === '/api/posta/odjava') return postaOdjava(request, env, url);
+  if (p === '/api/posta/resend') return postaResend(request, env);           // server to server: signed, no origin
+  if (m === 'POST') {
+    if (!sameOrigin(request)) return bad('origin', 403);
+    if (!/^application\/json\b/i.test(request.headers.get('content-type') || '')) return bad('type', 415);
+    const b = await readBody(request);
+    return b ? r[1](request, env, b, ctx) : bad('json');
+  }
+  return r[1](request, env, url, ctx);
+}
+
 // ---------------------------------------------------------------- router
 async function api(request, env, ctx) {
   const url = new URL(request.url);
   const p = url.pathname.replace(/\/+$/, '');
   const m = request.method;
   if (!env.DB) return bad('no database', 503);
+  if (p.startsWith('/api/nalog/') || p.startsWith('/api/posta/') || p === '/api/admin/posta') return accountApi(request, env, ctx, url, p, m);
 
   if (m === 'GET' && p === '/api/stanice') {
     const cache = caches.default;

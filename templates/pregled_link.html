@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import pagehead %}
+{% from '_icons.html' import ic %}
+{# The pages the newsletter's e-mails link to (docs/RUNBOOK.md 3.27), always noindex. mode = potvrda: the link in the
+   confirmation mail (?t=token); the page shows the state, and only its button "Potvrđujem prijavu" confirms (mail
+   scanners open links, and some run the page's scripts too). mode = odjava: unsubscribing, "Radije jednom mesečno",
+   topics / frequency / language (?t=token, &teme=1 opens them). #}
+{% block pagekey %} data-nl="{{ mode }}"{% endblock %}
+{% block pagehead %}{{ pagehead('Nedeljni pregled', None, cls='pg-ph') }}{% endblock %}
+{% block content %}
+<div class="nl-card pg-state" aria-live="polite">
+{% if mode == 'potvrda' %}
+<p class="pg-wait" data-s="wait">Učitavanje…</p>
+<div data-s="ask" hidden><h2 class="pg-h">Potvrdite prijavu na Nedeljni pregled</h2>
+<p class="pg-who" translate="no"><b data-nl-email></b></p>
+<button class="btn dark pg-yes" type="button" id="pg-yes">Potvrđujem prijavu</button></div>
+<div data-s="ok" hidden><p class="pg-big"><span class="ic">{{ ic('check') }}</span><span>Prijava je potvrđena. Prvi broj stiže {{ PG.dayu }} ujutru.</span></p>
+<p><a class="btn" href="/pregled/odjava/" data-nl-prefs>Izaberite teme i učestalost</a></p></div>
+{% else %}
+<p class="pg-wait" data-s="wait">Učitavanje…</p>
+<div data-s="on" hidden>
+<p class="pg-who">Nedeljni pregled za <b data-nl-email translate="no"></b></p>
+<p class="pg-st"><span data-st="on">Uključen — stiže {{ PG.dayi }} ujutru</span><span data-st="m" hidden>Uključen — stiže jednom mesečno</span><span data-st="pending" hidden>Čeka potvrdu — kliknite link u mejlu</span></p>
+<div class="nl-btns"><button class="btn dark" type="button" id="pg-off">Odjavite se sa Nedeljnog pregleda</button><button class="btn" type="button" id="pg-month">Radije jednom mesečno</button></div>
+<details id="pg-teme"><summary>Teme, učestalost i jezik</summary>
+<form id="pg-f-teme" novalidate>
+<fieldset class="nl-cks"><legend>Teme</legend>
+<label><input type="checkbox" value="vesti"><span>Vesti</span></label>
+<label><input type="checkbox" value="cene"><span>Cene javnog punjenja</span></label>
+<label><input type="checkbox" value="punjaci"><span>Novi punjači u mom gradu</span></label>
+{% if ACCOUNTS %}<label><input type="checkbox" value="moji"><span>Promene na mojim omiljenim punjačima</span></label>
+{% endif %}</fieldset>
+<fieldset class="nl-radios"><legend>Koliko često</legend>
+<label><input type="radio" name="freq" value="w"><span>Svake nedelje</span></label>
+<label><input type="radio" name="freq" value="m"><span>Jednom mesečno</span></label>
+</fieldset>
+<div class="field"><label for="pg-lang">Jezik</label>
+<select class="select" id="pg-lang" translate="no"><option value="sr">Srpski</option><option value="en">English</option><option value="ru">Русский</option></select></div>
+<button class="btn dark" type="submit">Sačuvajte</button>
+</form></details>
+</div>
+<div data-s="off" hidden><p class="pg-big"><span class="ic">{{ ic('check') }}</span><span>Odjavljeni ste. Više vam nećemo slati Nedeljni pregled.</span></p>
+<p>Predomislili ste se? <button class="lnkbtn" type="button" id="pg-again">Prijavite se ponovo</button></p></div>
+<div data-s="again" hidden><p class="pg-big"><span class="ic">{{ ic('mail') }}</span><span>Proverite inbox: poslali smo link za potvrdu na <b data-nl-email translate="no"></b>.</span></p></div>
+{% endif %}
+<div data-s="bad" hidden><p>Link nije ispravan ili je istekao. <a class="lnk" href="/pregled/">Prijavite se ponovo</a>.</p></div>
+<p class="nl-msg" data-s="err" role="alert" hidden></p>
+</div>
+<p class="nl-toast" id="nl-toast" role="status" aria-live="polite" hidden></p>
+<script id="bv-i18n" type="application/json">{"err_net": "Nema veze sa serverom. Proverite internet i pokušajte ponovo.", "err_limit": "Previše zahteva. Pokušajte ponovo kasnije.", "err_off": "Prijava trenutno nije dostupna. Pokušajte kasnije.", "err_save": "Čuvanje nije uspelo. Pokušajte ponovo.", "err_topics": "Izaberite bar jednu temu.", "saved": "Sačuvano", "monthly": "Sačuvano: Nedeljni pregled stiže jednom mesečno."}</script>
+{% endblock %}
+{% block scripts %}<script src="/assets/nalog.js" defer></script>{% endblock %}

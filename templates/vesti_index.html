@@ -2,6 +2,7 @@
 {% from '_macros.html' import pagehead %}
 {% from '_icons.html' import ic %}
 {% from '_oglas.html' import oglas_box %}
+{% import '_pregled_box.html' as pg %}
 {% block head %}<link rel="alternate" type="application/rss+xml" title="BlokVolt — vesti" href="/vesti/rss.xml">{% if prev_url %}
 <link rel="prev" href="{{ prev_url }}">{% endif %}{% if next_url %}
 <link rel="next" href="{{ next_url }}">{% endif %}{% endblock %}
@@ -25,6 +26,7 @@
 </article>{% endfor %}
 </div>{% else %}<p class="empty">Još nema vesti.</p>{% endif %}
 {% if pages > 1 %}<nav class="pager" aria-label="Strane">{% if prev_url %}<a class="btn sm" href="{{ prev_url }}" rel="prev">← Novije</a>{% endif %}<span>Strana {{ page_no }} od {{ pages }}</span>{% if next_url %}<a class="btn sm" href="{{ next_url }}" rel="next">Starije →</a>{% endif %}</nav>{% endif %}
-{% if oglas %}{{ oglas_box(oglas) }}{% endif %}
+{% if PG.on %}{{ pg.box() }}
+{% endif %}{% if oglas %}{{ oglas_box(oglas) }}{% endif %}
 <p class="upd news-foot"><a href="/vesti/rss.xml">RSS</a> · <a href="/metodologija/#vesti">Kako nastaju vesti</a> · Primetili ste grešku? <a href="/ispravka/">Javite</a></p>
 {% endblock %}

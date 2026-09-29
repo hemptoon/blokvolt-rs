@@ -578,8 +578,16 @@ if __name__ == '__main__':
                 ok += 1
         (I18N / f'{lang}.json').write_text(json.dumps(dict(sorted(tm.items())), ensure_ascii=False, indent=1), encoding='utf-8')
         print(lang, f'added {ok}, rejected {bad}')
+    elif cmd == 'keys':
+        # the Serbian keys of the build in dist/, saved to a file for 'prune' (a build with other feature flags)
+        Path(sys.argv[2]).write_text(json.dumps(sorted(keys), ensure_ascii=False), encoding='utf-8')
+        print(len(keys), 'keys ->', sys.argv[2])
     elif cmd == 'prune':
-        # drop translations of Serbian text that is no longer on the site
+        # drop translations of Serbian text that is no longer on the site. Files written by 'keys' count as on the site
+        # too: the texts of feature flags and of PostHog exist only in the builds with them on (or off)
+        keys = set(keys)
+        for f in sys.argv[2:]:
+            keys.update(json.load(open(f, encoding='utf-8')))
         for l in LANGS:
             tm = load_tm(l)
             keep = {k: v for k, v in tm.items() if k in keys}

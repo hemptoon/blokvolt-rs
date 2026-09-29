@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% from '_macros.html' import pagehead, lg %}
 {% from '_icons.html' import ic %}
+{% import '_pregled_box.html' as pg %}
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
@@ -48,5 +49,6 @@
 <div class="sec"><div class="sec-head"><h2>Na putu kroz Srbiju</h2><a href="/javno-punjenje/besplatni-punjaci/">Besplatni punjači →</a></div>
 <div class="sec-fig">{{ fig('odmoriste-brzi-punjaci', 'Brzi punjači na odmorištu uz autoput', sizes='(max-width: 760px) 100vw, 560px') }}{{ yt('8593Y1iQY24') }}</div>
 </div>
-<div class="sec"><p class="note">Imate snimak cene iz aplikacije sa datumom i lokacijom? Pošaljite ga na <a class="lnk" href="mailto:hello@blokvolt.com">hello@blokvolt.com</a>. Punjenje u regionu: <a class="lnk" href="/javno-punjenje/region/">Hrvatska, Mađarska, BiH, Crna Gora, Makedonija</a>.</p></div>
+{% if PG.on %}<div class="sec">{{ pg.box('cene') }}</div>
+{% endif %}<div class="sec"><p class="note">Imate snimak cene iz aplikacije sa datumom i lokacijom? Pošaljite ga na <a class="lnk" href="mailto:hello@blokvolt.com">hello@blokvolt.com</a>. Punjenje u regionu: <a class="lnk" href="/javno-punjenje/region/">Hrvatska, Mađarska, BiH, Crna Gora, Makedonija</a>.</p></div>
 {% endblock %}

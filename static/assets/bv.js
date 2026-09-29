@@ -26,6 +26,27 @@
     if (PAGE) p.page = PAGE;
     if (anReady && window.posthog && window.posthog.capture) window.posthog.capture(name, p); else if (anQ.length < 50) anQ.push([name, p]);
   };
+  // the tokens of the account and newsletter links (?prijava=, ?t=) never reach the analytics, not even from a page
+  // captured before it took them out of the address bar: every URL-like property of every event (and the page address
+  // in session replay) loses them
+  function scrubUrl(u) {
+    if (typeof u !== 'string' || !/^(https?:\/\/|\/)/i.test(u) || !/[?&](t|prijava)=/.test(u)) return u;   // URLs and paths only
+    try {
+      var x = new URL(u, location.href);
+      x.searchParams.delete('t');
+      x.searchParams.delete('prijava');
+      return /^https?:/i.test(u) ? x.href : x.pathname + x.search + x.hash;
+    } catch (e) { return u.replace(/([?&])(t|prijava)=[^&#]*&?/g, '$1').replace(/[?&](#|$)/, '$1'); }
+  }
+  function scrubProps(p) {
+    if (!p || typeof p !== 'object') return p;
+    Object.keys(p).forEach(function (k) { if (typeof p[k] === 'string') p[k] = scrubUrl(p[k]); });
+    if (Array.isArray(p.$snapshot_data)) {
+      p.$snapshot_data.forEach(function (s) { if (s && s.data && typeof s.data.href === 'string') s.data.href = scrubUrl(s.data.href); });
+    }
+    return p;
+  }
+  window.bvTrack.scrub = scrubProps;                     // for the tests (scripts/qa/nalog_ui_test.py)
   function wipeAnalyticsStorage() {
     try { Object.keys(localStorage).forEach(function (k) { if (/^(ph_|__ph)/.test(k)) localStorage.removeItem(k); }); } catch (e) {}
     try { Object.keys(sessionStorage).forEach(function (k) { if (/^(ph_|__ph)/.test(k)) sessionStorage.removeItem(k); }); } catch (e) {}
@@ -43,6 +64,8 @@
     var cfg = {
       api_host: AN.host, ui_host: AN.ui, capture_pageview: true, capture_pageleave: true, autocapture: true, respect_dnt: true,
       disable_surveys: true, advanced_disable_feature_flags: true,
+      before_send: function (ev) { if (ev) { scrubProps(ev.properties); scrubProps(ev.$set); scrubProps(ev.$set_once); } return ev; },
+      sanitize_properties: function (props) { return scrubProps(props); },   // posthog-js before before_send existed
       loaded: function (inst) { anReady = true; anQ.splice(0).forEach(function (e) { inst.capture(e[0], e[1]); }); }
     };
     if (cookies) {
@@ -247,6 +270,44 @@
           if (j.ok) { show('f-ok'); f.reset(); btn.hidden = true; window.bvTrack('form_sent', { form: k }); }
           else show(j.status === 429 ? 'f-limit' : 'f-err');
         }, function () { btn.disabled = false; show('f-err'); });
+    });
+  });
+
+  // "Moj nalog" in the header (only with site.json → accounts.enabled): a dot while someone is signed in in this browser.
+  // bv_in=1 is only a hint for the static pages; the session itself is the HttpOnly cookie bv_s (docs/RUNBOOK.md 3.27).
+  var accLink = d.querySelector('[data-bv-acc]');
+  if (accLink && /(?:^|;\s*)bv_in=1(?:;|$)/.test(d.cookie)) accLink.classList.add('is-in');
+
+  // Nedeljni pregled (newsletter) sign-up: /pregled/ and the boxes under the news, /vesti/ and /javno-punjenje/ (only with
+  // site.json → pregled.enabled). Posts to /api/posta/prijava; the answer always looks the same, whether or not the address
+  // was already signed up. The texts are in the form (translated with the page); this only shows and hides them.
+  [].forEach.call(d.querySelectorAll('form[data-bv-pregled]'), function (f) {
+    var t0 = Date.now(), inp = f.querySelector('input[type=email]'), btn = f.querySelector('[type=submit]');
+    function show(k, email) {
+      [].forEach.call(f.querySelectorAll('[data-m]'), function (m) {
+        m.hidden = m.getAttribute('data-m') !== k;
+        var e = m.querySelector('[data-email]');
+        if (e && email) e.textContent = email;
+      });
+    }
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = inp.value.trim();
+      if (email.length > 120 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { show('email'); inp.focus(); return; }
+      btn.disabled = true;
+      show('');
+      // the server refuses a form sent faster than a person types (under 1,5 s): wait the rest instead
+      setTimeout(function () {
+        fetch('/api/posta/prijava', { method: 'POST', headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email: email, lang: LANG, topics: f.getAttribute('data-topics') || undefined, src: location.pathname.slice(0, 80),
+            hp: f.elements.website ? f.elements.website.value : '', t: Date.now() - t0 }) })
+          .then(function (r) { return r.json().then(function (j) { j.status = r.status; return j; }, function () { return { ok: false, status: r.status }; }); })
+          .then(function (j) {
+            btn.disabled = false;
+            if (j.ok) { show('ok', email); inp.value = ''; window.bvTrack('newsletter_signup', { src: location.pathname.slice(0, 80) }); }
+            else show(j.error === 'email' ? 'email' : j.status === 429 ? 'limit' : 'off');
+          }, function () { btn.disabled = false; show('net'); });
+      }, Math.max(0, 1600 - (Date.now() - t0)));
     });
   });
 

@@ -11,6 +11,8 @@
   "posthog_assets": "https://eu-assets.i.posthog.com",
   "note": "PostHog (EU) se uključuje kad se upiše javni ključ projekta (phc_…). Prazno = isključeno. consent: true = bez kolačića dok čitalac u baneru ne dozvoli kolačić (tada kolačić i snimci sesija bez teksta iz polja); false = samo bez kolačića, bez banera. Cloudflare Web Analytics se uključuje u Cloudflare Pages → Metrics i ne zavisi od ovoga. Videti docs/RUNBOOK.md 3.16."
  },
+ "accounts": {"enabled": false},
+ "pregled": {"enabled": false, "day": "petak"},
  "home_stats": [
   {
    "b": "7.155",

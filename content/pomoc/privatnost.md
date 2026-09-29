@@ -4,6 +4,8 @@ title: Privatnost: lokacija, merenje poseta i kolačići
 h1: Privatnost: lokacija i kolačići
 description: BlokVolt nema naloge ni kolačiće za praćenje. „Blizu mene“ koristi lokaciju samo na dugme, omiljeni punjači ostaju u pregledaču, a fotografije idu bez EXIF-a.
 lead: Sajt nema naloge, oglasne piksele ni kolačiće za praćenje. Lokacija se koristi samo kad pritisnete „Blizu mene“ i ne šalje se sajtu.
+description_nalog: BlokVolt nema kolačiće za praćenje, a nalog nije obavezan. „Blizu mene“ koristi lokaciju samo na dugme, omiljeni punjači bez naloga ostaju u pregledaču, a fotografije idu bez EXIF-a.
+lead_nalog: Nalog nije obavezan, a sajt nema oglasne piksele ni kolačiće za praćenje. Lokacija se koristi samo kad pritisnete „Blizu mene“ i ne šalje se sajtu.
 kicker: Pomoć
 section: aplikacija
 scope: web
@@ -29,8 +31,10 @@ Posete se broje uz Cloudflare Web Analytics: pregledi stranica, sa kog sajta ili
 
 ## Kolačići i memorija pregledača
 
-- Sajt ne postavlja kolačiće za praćenje. Provajder sajta, Cloudflare, može da postavi samo tehnički neophodan bezbednosni kolačić.
-- Omiljeni punjači i izbor „Imam Teslu“ upisuju se samo u vaš pregledač, tek kad ih napravite. Ne šalju se sajtu i nestaju kad obrišete podatke sajta.
+<!--nonalog-->- Sajt ne postavlja kolačiće za praćenje. Provajder sajta, Cloudflare, može da postavi samo tehnički neophodan bezbednosni kolačić.<!--/nonalog-->
+<!--nalog-->- Sajt ne postavlja kolačiće za praćenje. Kad se prijavite na [Moj BlokVolt](/nalog/), sajt postavlja dva kolačića za prijavu, na 90 dana, a dok čekate kod još jedan, na 15 minuta. Provajder sajta, Cloudflare, može da postavi i tehnički neophodan bezbednosni kolačić.<!--/nalog-->
+<!--nonalog-->- Omiljeni punjači i izbor „Imam Teslu“ upisuju se samo u vaš pregledač, tek kad ih napravite. Ne šalju se sajtu i nestaju kad obrišete podatke sajta.<!--/nonalog-->
+<!--nalog-->- Omiljeni punjači i izbor „Imam Teslu“ upisuju se u vaš pregledač, tek kad ih napravite, a ako ste prijavljeni — i u nalog. Bez naloga se ne šalju sajtu i nestaju kad obrišete podatke sajta. Odjava ih briše iz pregledača.<!--/nalog-->
 - Nedavno otvorene stranice pregledač čuva da bi radile bez interneta.
 - Video sa YouTube-a učitava se tek kad pritisnete „Pusti“, sa domena youtube-nocookie.com.
 
@@ -40,7 +44,16 @@ Posete se broje uz Cloudflare Web Analytics: pregledi stranica, sa kog sajta ili
 - Uz svaku poruku i prijavu čuva se i jednosmerni otisak IP adrese koji se menja svakog dana. Služi samo za zaštitu od zloupotrebe.
 - Fotografiju pregledač pre slanja smanji i ponovo sačuva, bez podataka o lokaciji i uređaju (EXIF).
 - Poruke iz formi čuvaju se najduže 12 meseci od poslednjeg kontakta. Prijave, ocene i fotografije stoje dok je punjač na mapi ili dok ne tražite brisanje.
-- Podaci se ne prodaju. Obrađivači su Cloudflare (hosting, baza podataka i merenje poseta) i Spacemail kompanije Spaceship (e-pošta); podaci se obrađuju i van Srbije, uz mere zaštite iz Zakona o zaštiti podataka o ličnosti.
+<!--noposta-->- Podaci se ne prodaju. Obrađivači su Cloudflare (hosting, baza podataka i merenje poseta) i Spacemail kompanije Spaceship (e-pošta); podaci se obrađuju i van Srbije, uz mere zaštite iz Zakona o zaštiti podataka o ličnosti.<!--/noposta-->
+<!--posta-->- Podaci se ne prodaju. Obrađivači su Cloudflare (hosting, baza podataka i merenje poseta), Spacemail kompanije Spaceship (e-pošta) i Resend (slanje mejlova sa sajta); podaci se obrađuju i van Srbije, uz mere zaštite iz Zakona o zaštiti podataka o ličnosti.<!--/posta-->
+
+<!--nalog-->## Nalog
+
+[Moj BlokVolt](/nalog/) nije obavezan. Prijava je kodom sa e-maila, bez lozinke. U nalogu se čuvaju e-mail adresa, jezik, omiljeni punjači, auto i grad. Podatke preuzimate i nalog brišete sami, na stranici naloga.<!--/nalog-->
+
+<!--pregled-->## Nedeljni pregled
+
+[Nedeljni pregled](/pregled/) stiže tek kad potvrdite prijavu iz mejla. Odjava je jednim klikom u svakom broju.<!--/pregled-->
 
 ## Aplikacija za Android
 

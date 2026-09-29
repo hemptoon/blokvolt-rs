@@ -1,0 +1,25 @@
+{# Nedeljni pregled (docs/RUNBOOK.md 3.27): the sign-up form (/pregled/) and the compact box used at the end of news
+   items, on /vesti/ and on /javno-punjenje/ — only when site.json → pregled.enabled. bv.js sends it to
+   /api/posta/prijava (src = the page path, topics = data-topics); the messages below are shown by it. #}
+{% from '_icons.html' import ic %}
+{% macro form(fid, topics='', label=False) -%}
+<form class="pg-form" data-bv-pregled{% if topics %} data-topics="{{ topics }}"{% endif %} novalidate>
+<label {% if not label %}class="sr-only" {% endif %}for="{{ fid }}">E-mail adresa</label>
+<div class="pg-row"><input class="input" id="{{ fid }}" type="email" name="email" autocomplete="email" inputmode="email" maxlength="120" required{% if not label %} placeholder="E-mail adresa"{% endif %}><button class="btn dark" type="submit">Prijavite se<span class="sr-only"> na Nedeljni pregled</span></button></div>
+<input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="pg-consent">Prijavom pristajete da vam šaljemo Nedeljni pregled na ovu adresu. Prvo stiže mejl za potvrdu, bez nje ne šaljemo ništa. Odjava jednim klikom u svakom broju. <a href="/politika-privatnosti#nalog">Politika privatnosti</a>.</p>
+<p class="f-msg f-ok" data-m="ok" role="status" hidden>Proverite inbox: poslali smo link za potvrdu na <b data-email translate="no"></b>.</p>
+<p class="f-msg f-err" data-m="email" role="alert" hidden>Upišite ispravnu e-mail adresu.</p>
+<p class="f-msg f-err" data-m="limit" role="alert" hidden>Previše zahteva. Pokušajte ponovo kasnije.</p>
+<p class="f-msg f-err" data-m="off" role="alert" hidden>Prijava trenutno nije dostupna. Pokušajte kasnije.</p>
+<p class="f-msg f-err" data-m="net" role="alert" hidden>Nema veze sa serverom. Proverite internet i pokušajte ponovo.</p>
+</form>
+{%- endmacro %}
+
+{% macro box(topics='') -%}
+<aside class="pg-box" aria-labelledby="pgb-h">
+<div class="pg-box-h"><span class="ic">{{ ic('mail') }}</span><div><h2 id="pgb-h">Nedeljni pregled na e-mail</h2>
+<p>{% if topics == 'cene' %}Promene cena javnog punjenja, jednom nedeljno.{% else %}Vesti, cene i novi punjači, jednom nedeljno.{% endif %}</p></div></div>
+{{ form('pgb-mail', topics) }}
+</aside>
+{%- endmacro %}
