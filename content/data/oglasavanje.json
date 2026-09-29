@@ -2,26 +2,9 @@
  "_doc": "Advertising on blokvolt.rs (docs/RUNBOOK.md 3.26). The media kit page /za-firme/oglasavanje/ and the PDFs are made from this file; ads from the list 'oglasi'. An ad is shown only from 'od' to 'do' (YYYY-MM-DD, both days included), on the pages of its rubric, never on the paths in 'ne_na' and never on a news item (or news list page) whose text contains one of the words in 'ne_uz' (for a network: its brand and company names). Empty 'oglasi' = no ads anywhere. Fields: id, oglasivac, rubrika (vlasnistvo | na-putu | vesti), od, do, url, slika, naslov (≤60), tekst (≤120), alt, ne_na [], ne_uz [], optional 'en'/'ru' {naslov, tekst, alt}. Image: static/assets/oglasi/<slika> (1200x400). Links get utm_source=blokvolt&utm_medium=oglas&utm_campaign=<id>.",
  "stanje": "29.09.2026",
  "cena": {
+  "_doc": "One price for everyone (owner, 29.09.2026): rsd_mesec a month per rubric, without VAT, at least min_meseci months, paid in advance; the same for every rubric and every advertiser, and a booked period keeps its price. No traffic tiers, no discounts.",
   "rsd_mesec": 5000,
-  "min_meseci": 3,
-  "osnivacki_popust": 50,
-  "osnivacki_broj": 3,
-  "osnivacki_meseci": 6,
-  "stepenice": [
-   {
-    "do": 5000,
-    "rsd": 5000
-   },
-   {
-    "do": 20000,
-    "rsd": 10000
-   },
-   {
-    "do": null,
-    "rsd": 20000
-   }
-  ],
-  "zakljucano_meseci": 12
+  "min_meseci": 3
  },
  "posecenost": {
   "_doc": "Filled in once a month from Cloudflare Web Analytics (Pages project blokvolt → Metrics → Web Analytics), whole site, previous calendar month. Empty = the first full month is still being counted.",

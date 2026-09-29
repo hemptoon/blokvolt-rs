@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import pagehead, sources as src_block %}
 {% from '_icons.html' import ic, mark %}
 {# PDF buttons per language (data-only blocks, kept by strip_lang_only): the Serbian page links the Serbian PDF,
    the English and Russian pages the English one; `both` = also the other language. #}
@@ -12,95 +11,164 @@
 <a class="{{ cls }}" href="/za-firme/blokvolt-medija-kit-sr.pdf" download data-only="ru" translate="no" hreflang="sr-Latn">{{ ic('download') }}Медиакит на сербском (PDF)</a>
 {% endif %}
 {%- endmacro %}
-{# Media kit: advertising terms (content/data/oglasavanje.json, docs/RUNBOOK.md 3.26). Printed to PDF by
-   scripts/medija_kit_pdf.py (print styles in bv.css: body.mk-page). #}
+{# Responsive photo of the media kit: static/assets/img/oglasavanje-<name>-<w>.webp, 2048 x 1360 originals on the branch
+   media-raw-2026-09 (Higgsfield, 29.09.2026), resized by scripts/medija_kit_img.py. #}
+{% macro photo(name, alt, sizes, widths=(480, 800, 1200), cls='', eager=False) -%}
+<img{% if cls %} class="{{ cls }}"{% endif %} src="/assets/img/oglasavanje-{{ name }}-{{ widths[1] }}.webp" srcset="{% for w in widths %}/assets/img/oglasavanje-{{ name }}-{{ w }}.webp {{ w }}w{% if not loop.last %}, {% endif %}{% endfor %}" sizes="{{ sizes }}" width="{{ widths[-1] }}" height="{{ (widths[-1] * 1360 / 2048)|round|int }}" alt="{{ alt }}"{% if eager %} fetchpriority="high"{% else %} loading="lazy"{% endif %} decoding="async">
+{%- endmacro %}
+{# Media kit: advertising terms (content/data/oglasavanje.json, docs/RUNBOOK.md 3.26). One price for everyone: C.rsd_mesec a
+   month per rubric, at least C.min_meseci months. Printed to PDF by scripts/medija_kit_pdf.py (print styles: body.mk-page). #}
 {% set C = OGL.cena %}{% set P = OGL.posecenost %}{% set R = OGL.rubrike %}
 {% block bodyclass %}mk-page{% endblock %}
+{% block ogimage %}<meta property="og:image" content="{{ SITE }}/assets/og/oglasavanje.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">{% endblock %}
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
-  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}, "primaryImageOfPage": "{{ SITE }}/assets/img/oglasavanje-hero-1200.webp"},
   {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Za firme i mreže", "item": "{{ SITE }}/za-firme/"}, {"@type": "ListItem", "position": 3, "name": "Oglašavanje", "item": "{{ SITE }}{{ canon }}"}]}
  ]
 }</script>{% endblock %}
-{% block pagehead %}<div class="wrap mk-print" aria-hidden="true"><span class="logo">{{ mark() }}<span translate="no">blok<b>volt</b></span></span><span>Medija kit · <span translate="no">www.blokvolt.rs</span> · stanje {{ OGL.stanje }}</span></div>
-{% call pagehead('Oglašavanje na BlokVoltu', 'Jedno označeno mesto za oglas po stranici, u tri rubrike sajta. Podaci, redosled i ocene nisu na prodaju.', crumbs) %}
-<div class="ph-actions mk-noprint"><a class="btn dark" href="#upit">{{ ic('mail') }}Pošaljite upit</a>{% if MK_FILES.pdf_sr and MK_FILES.pdf_en %}{{ mk_pdf('btn', True) }}{% endif %}</div>
-{% endcall %}{% endblock %}
-{% block content %}
-<div class="mk">
-
-<div class="sum"><ul>
-<li><b>{{ C.rsd_mesec|sr }} RSD</b> mesečno za jednu rubriku, najmanje {{ C.min_meseci }} {{ C.min_meseci|pword('mesec', 'meseca', 'meseci') }}</li>
-<li>Jedan oglašivač po rubrici, a oglas nosi oznaku <b>„Oglas“</b></li>
-<li>Mesto u registru, na mapi i u cenama <b>ne prodaje se</b></li>
-<li>Oglasi za prodaju i ugradnju kućnih punjača <b>ne primaju se</b></li>
-</ul></div>
-
-<section class="mk-sec" id="publika">
-<h2>Ko čita BlokVolt</h2>
-<div class="stats">
-<div class="stat"><b>{{ n_map }}</b><span>{{ n_map|pword('javni punjač na mapi Srbije', 'javna punjača na mapi Srbije', 'javnih punjača na mapi Srbije') }}</span></div>
-<div class="stat"><b>{{ n_firms }}</b><span>{{ n_firms|pword('firma za kućne punjače u registru', 'firme za kućne punjače u registru', 'firmi za kućne punjače u registru') }}</span></div>
-<div class="stat"><b>{{ n_ops }}</b><span>{{ n_ops|pword('mreža javnog punjenja sa cenama', 'mreže javnog punjenja sa cenama', 'mreža javnog punjenja sa cenama') }}</span></div>
+{% block page %}
+<div class="mk-print" aria-hidden="true"><span class="logo">{{ mark() }}<span translate="no">blok<b>volt</b></span></span><span>Medija kit · <span translate="no">www.blokvolt.rs</span> · stanje {{ OGL.stanje }}</span></div>
+<section class="hero2 mkh" data-bv-note>
+<div class="hero2-media">{{ photo('hero', 'Električni automobil na putu kroz Vojvodinu u sumrak', '(min-width: 1180px) 900px, 100vw', (800, 1200, 1600, 2048), eager=True) }}</div>
+<div class="wrap hero2-in mkh-in">
+<nav class="crumbs mkh-crumbs" aria-label="Putanja"><a href="/">Početna</a>{% for href, name in crumbs %}<span aria-hidden="true">›</span><a href="{{ href }}">{{ name }}</a>{% endfor %}</nav>
+<p class="mkh-kick"><span>Medija kit</span> <span translate="no">{{ ISO_TODAY[:4] }}</span></p>
+<h1>Oglašavanje na BlokVoltu</h1>
+<p class="lead">BlokVolt je vodič za vozače električnih automobila u Srbiji. Vaš oglas stoji na stranicama na kojima čitaoci biraju auto, osiguranje, kredit i put.</p>
+<div class="mkh-acts mk-noprint"><a class="btn volt" href="#upit">{{ ic('mail') }}Pošaljite upit</a>{% if MK_FILES.pdf_sr and MK_FILES.pdf_en %}{{ mk_pdf('btn ghost', True) }}{% endif %}</div>
+<ul class="mkh-facts">
+<li><b>{{ C.rsd_mesec|sr }} RSD</b><span>mesečno po rubrici, bez PDV-a</span></li>
+<li><b>1 oglašivač</b><span>po rubrici: vaš oglas je jedini na stranici</span></li>
+<li><b translate="no">SR · EN · RU</b><span>sve stranice na tri jezika</span></li>
+</ul>
 </div>
-<p>Sajt čitaju vozači električnih automobila i oni koji auto tek biraju. Traže punjač i cenu punjenja, subvenciju, osiguranje, kredit ili firmu za ugradnju.</p>
-<p>Sve stranice postoje na srpskom, engleskom i ruskom. Vesti izlaze ponedeljkom, sredom i petkom.</p>
+</section>
+
+<div class="wrap main mk">
+
+<section class="mk-sec mk-aud" id="publika">
+<div class="mk-aud-txt">
+<p class="mk-eyebrow">Publika</p>
+<h2>Ko čita BlokVolt</h2>
+<p class="mk-lede">Vozači električnih automobila i oni koji auto tek biraju. Ovde proveravaju gde da napune auto i koliko to košta, koju subvenciju mogu da dobiju, kako da registruju i osiguraju auto i ko ugrađuje kućni punjač.</p>
+<div class="mk-stats">
+<div class="mk-stat"><b>{{ n_map }}</b><span>{{ n_map|pword('javni punjač na mapi Srbije', 'javna punjača na mapi Srbije', 'javnih punjača na mapi Srbije') }}</span></div>
+<div class="mk-stat"><b>{{ n_firms }}</b><span>{{ n_firms|pword('firma za kućne punjače u registru', 'firme za kućne punjače u registru', 'firmi za kućne punjače u registru') }}</span></div>
+<div class="mk-stat"><b>{{ n_ops }}</b><span>{{ n_ops|pword('mreža javnog punjenja sa cenama', 'mreže javnog punjenja sa cenama', 'mreža javnog punjenja sa cenama') }}</span></div>
+<div class="mk-stat"><b>3</b><span>jezika: srpski, engleski i ruski</span></div>
+</div>
 {% if P.posete %}<p class="mk-note">Prošli mesec ({{ P.mesec }}): <b>{{ P.posete|sr }}</b> {{ P.posete|pword('poseta', 'posete', 'poseta') }} i <b>{{ P.pregledi|sr }}</b> {{ P.pregledi|pword('pregled stranice', 'pregleda stranica', 'pregleda stranica') }}. Broji se bez kolačića, alatom Cloudflare Web Analytics.</p>
 {% else %}<p class="mk-note">Posete se broje bez kolačića, alatom Cloudflare Web Analytics. Broj za prethodni mesec stoji ovde od novembra 2026: prvi pun mesec merenja je oktobar.</p>{% endif %}
+</div>
+<figure class="mk-aud-img">{{ photo('publika', 'Dvoje u električnom automobilu gledaju mapu punjača na telefonu', '(min-width: 1000px) 520px, 100vw') }}</figure>
 </section>
 
 <section class="mk-sec" id="rubrike">
-<h2>Gde stoji oglas</h2>
-<p>Oglas stoji na dnu svake stranice jedne rubrike, posle teksta. U rubrici je jedan oglašivač, a na stranici jedan oglas.</p>
+<div class="mk-head">
+<p class="mk-eyebrow">Gde stoji oglas</p>
+<h2>Tri rubrike, u svakoj jedan oglašivač</h2>
+<p class="mk-lede">Oglas stoji na dnu svake stranice rubrike, posle teksta, sa oznakom „Oglas“. U rubrici je jedan oglašivač, pa je vaš oglas jedini na stranici.</p>
+</div>
 <div class="mk-rub">
-<div class="box"><h3>{{ R.vlasnistvo.naziv }}</h3><p>Subvencije, registracija i porezi, uvoz i carina, osiguranje, krediti i lizing, servisi, rent-a-car.</p><small>{{ n_rub.vlasnistvo }} {{ n_rub.vlasnistvo|pword('stranica', 'stranice', 'stranica') }}</small></div>
-<div class="box"><h3>{{ R['na-putu'].naziv }}</h3><p>Putarina i parking, besplatni punjači, aplikacije i kartice za punjenje, punjenje u regionu.</p><small>Nije za mreže javnog punjenja: ove stranice ih porede.</small></div>
-<div class="box"><h3>{{ R.vesti.naziv }}</h3><p>Sve vesti i spisak vesti.</p><small>Oglas mreže ne stoji uz vest o toj mreži.</small></div>
+<article class="mk-card">{{ photo('vlasnistvo', 'Predaja ključeva novog električnog automobila u salonu', '(min-width: 1000px) 370px, (min-width: 700px) 50vw, 100vw', cls='mk-card-img') }}
+<div class="mk-card-b"><p class="mk-tag">{{ n_rub.vlasnistvo }} {{ n_rub.vlasnistvo|pword('stranica', 'stranice', 'stranica') }}</p><h3>{{ R.vlasnistvo.naziv }}</h3><p>Subvencije, registracija i porezi, uvoz i carina, osiguranje, krediti i lizing, servisi, rent-a-car.</p><p class="mk-fit">Za prodavce automobila, banke i lizing, osiguranje i servise.</p></div></article>
+<article class="mk-card">{{ photo('na-putu', 'Električni automobil na planinskom putu na Zlatiboru', '(min-width: 1000px) 370px, (min-width: 700px) 50vw, 100vw', cls='mk-card-img') }}
+<div class="mk-card-b"><p class="mk-tag">{{ n_rub['na-putu'] }} {{ n_rub['na-putu']|pword('stranica', 'stranice', 'stranica') }}</p><h3>{{ R['na-putu'].naziv }}</h3><p>Putarina i parking, besplatni punjači, aplikacije i kartice za punjenje, punjenje u regionu.</p><p class="mk-fit">Za putovanja, smeštaj i parking. Nije za mreže javnog punjenja: ove stranice ih porede.</p></div></article>
+<article class="mk-card">{{ photo('vesti', 'Predstavljanje novih električnih automobila', '(min-width: 1000px) 370px, (min-width: 700px) 50vw, 100vw', cls='mk-card-img') }}
+<div class="mk-card-b"><p class="mk-tag">Sve vesti</p><h3>{{ R.vesti.naziv }}</h3><p>Novi modeli, mreže punjenja, subvencije i propisi: sve vesti i spisak vesti.</p><p class="mk-fit">Za brendove koje treba da vide svi čitaoci vesti. Oglas mreže ne stoji uz vest o toj mreži.</p></div></article>
 </div>
 <p class="mk-note">Bez oglasa ostaju početna, mapa, registar firmi i mreža, cene, statistika i vodiči i kalkulatori o punjenju kod kuće i u zgradi. U aplikacijama za Android i iPhone oglasa nema.</p>
 </section>
 
-<section class="mk-sec" id="izgled">
+<section class="mk-sec mk-look" id="izgled">
+<div class="mk-look-demo" role="img" aria-label="Primer: oglas na dnu stranice rubrike, na računaru i na telefonu">
+<div class="mk-browser" aria-hidden="true">
+<div class="mk-browser-bar"><i></i><i></i><i></i><span translate="no">www.blokvolt.rs/podaci/krediti-i-lizing/</span></div>
+<div class="mk-browser-pg">
+<p class="mk-demo-kick">Finansiranje</p>
+<p class="mk-demo-h">Krediti i lizing</p>
+<span class="mk-ln"></span><span class="mk-ln"></span><span class="mk-ln s"></span>
+<div class="mk-ad"><p class="oglas-lbl"><span>Oglas</span> <span class="oglas-ko">Naziv firme</span></p><img src="/assets/img/oglasavanje-primer-1200.webp" srcset="/assets/img/oglasavanje-primer-600.webp 600w, /assets/img/oglasavanje-primer-1200.webp 1200w" sizes="(min-width: 1000px) 560px, 80vw" width="1200" height="400" alt="" loading="lazy" decoding="async"><span class="oglas-t"><b>Naslov vašeg oglasa, do 60 znakova</b><span>Kratak tekst do 120 znakova i link na vaš sajt.</span></span></div>
+</div>
+</div>
+<div class="mk-phone" aria-hidden="true">
+<div class="mk-phone-scr">
+<div class="mk-phone-hd">{{ mark() }}<span translate="no">blok<b>volt</b></span></div>
+<p class="mk-demo-kick">Finansiranje</p>
+<p class="mk-demo-h">Krediti i lizing</p>
+<span class="mk-ln"></span><span class="mk-ln"></span><span class="mk-ln s"></span>
+<div class="mk-ad"><p class="oglas-lbl"><span>Oglas</span> <span class="oglas-ko">Naziv firme</span></p><img src="/assets/img/oglasavanje-primer-600.webp" width="600" height="200" alt="" loading="lazy" decoding="async"><span class="oglas-t"><b>Naslov vašeg oglasa, do 60 znakova</b><span>Kratak tekst do 120 znakova i link na vaš sajt.</span></span></div>
+</div>
+</div>
+</div>
+<div class="mk-look-txt">
+<p class="mk-eyebrow">Format</p>
 <h2>Kako izgleda oglas</h2>
-<div class="mk-two">
-<div class="mk-demo" role="img" aria-label="Primer oglasa"><p class="oglas-lbl"><span>Oglas</span> <span class="oglas-ko">Naziv firme</span></p><div class="mk-slot">1200 × 400 px</div><span class="oglas-t"><b>Naslov do 60 znakova</b><span>Tekst do 120 znakova i jedan link na vaš sajt.</span></span></div>
-<div class="box"><h3>Šta se šalje</h3><ul>
-<li>Slika 1200 × 400 px, WebP, PNG ili JPG, do 200 KB, bez animacije.</li>
-<li>Naslov do 60 znakova i tekst do 120 znakova.</li>
-<li>Jedan link. Dobija oznaku izvora utm_source=blokvolt, pa klikove vidite u svojoj analitici.</li>
-<li>Prevod na engleski i ruski po želji. Bez prevoda oglas i na tim verzijama sajta ostaje na srpskom.</li>
-</ul></div>
+<ul class="mk-spec">
+<li>{{ ic('check') }}<div><b>Slika 1200 × 400 px</b><span>WebP, PNG ili JPG, do 200 KB, bez animacije.</span></div></li>
+<li>{{ ic('check') }}<div><b>Naslov i tekst</b><span>Naslov do 60 znakova i tekst do 120 znakova.</span></div></li>
+<li>{{ ic('check') }}<div><b>Jedan link</b><span>Sa oznakom izvora <span translate="no">utm_source=blokvolt</span>, pa klikove vidite u svojoj analitici.</span></div></li>
+<li>{{ ic('check') }}<div><b>Tri jezika</b><span>Prevod na engleski i ruski po želji. Bez prevoda oglas i na tim verzijama sajta ostaje na srpskom.</span></div></li>
+<li>{{ ic('check') }}<div><b>Telefon i računar</b><span>Isti oglas na svim ekranima, uvek sa oznakom „Oglas“.</span></div></li>
+</ul>
 </div>
 </section>
 
 <section class="mk-sec" id="cena">
-<h2>Cena</h2>
-<div class="mk-price">
-<div class="box"><h3>Jedna rubrika</h3><b>{{ C.rsd_mesec|sr }} RSD</b><span>mesečno, najmanje {{ C.min_meseci }} {{ C.min_meseci|pword('mesec', 'meseca', 'meseci') }}, plaćanje unapred</span></div>
-<div class="box"><h3>Prva tri oglašivača</h3><b>−{{ C.osnivacki_popust }} %</b><span>prvih {{ C.osnivacki_meseci }} {{ C.osnivacki_meseci|pword('mesec', 'meseca', 'meseci') }}, zatim redovna cena</span></div>
+<div class="mk-head">
+<p class="mk-eyebrow">Cena</p>
+<h2>Jedna cena za sve</h2>
 </div>
-<p>Cene su bez PDV-a. Cena prati posećenost celog sajta: do {{ C.stepenice[0].do|sr }} poseta mesečno je {{ C.stepenice[0].rsd|sr }} RSD, do {{ C.stepenice[1].do|sr }} poseta {{ C.stepenice[1].rsd|sr }} RSD, a preko toga {{ C.stepenice[2].rsd|sr }} RSD. Nova cena važi od sledećeg tromesečja, a oglašivač zadržava svoju cenu {{ C.zakljucano_meseci }} {{ C.zakljucano_meseci|pword('mesec', 'meseca', 'meseci') }}.</p>
+<div class="mk-price">
+<div class="mk-price-main">
+<p class="mk-price-lbl">Jedna rubrika</p>
+<p class="mk-price-num"><b>{{ C.rsd_mesec|sr }} RSD</b><span>mesečno, bez PDV-a</span></p>
+<ul>
+<li>{{ ic('check') }}Najmanje {{ C.min_meseci }} {{ C.min_meseci|pword('mesec', 'meseca', 'meseci') }}, plaćanje unapred</li>
+<li>{{ ic('check') }}Ista cena za sve rubrike i sve oglašivače</li>
+<li>{{ ic('check') }}Cena se ne menja tokom zakupljenog perioda</li>
+<li>{{ ic('check') }}Posle svakog meseca: izveštaj o pregledima stranica sa oglasom</li>
+</ul>
+<a class="btn volt mk-noprint" href="#upit">{{ ic('mail') }}Pošaljite upit</a>
+</div>
+<div class="mk-price-ex">
+<h3>Koliko košta</h3>
+<dl>
+<div><dt>Jedna rubrika, {{ C.min_meseci }} {{ C.min_meseci|pword('mesec', 'meseca', 'meseci') }}</dt><dd>{{ (C.rsd_mesec * C.min_meseci)|sr }} RSD</dd></div>
+<div><dt>Jedna rubrika, 6 meseci</dt><dd>{{ (C.rsd_mesec * 6)|sr }} RSD</dd></div>
+<div><dt>Sve tri rubrike, {{ C.min_meseci }} {{ C.min_meseci|pword('mesec', 'meseca', 'meseci') }}</dt><dd>{{ (C.rsd_mesec * 3 * C.min_meseci)|sr }} RSD</dd></div>
+</dl>
+<p class="mk-note">Sve cene su bez PDV-a.</p>
+</div>
+</div>
 </section>
 
 <section class="mk-sec" id="pravila">
-<h2>Pravila</h2>
+<div class="mk-head">
+<p class="mk-eyebrow">Pravila</p>
+<h2>Oglas je odvojen od podataka</h2>
+<p class="mk-lede">Mesto u registru, na mapi i u cenama ne može da se kupi, ni uz oglas. Pravila su ista za sve i objavljena su na ovoj stranici.</p>
+</div>
 <div class="mk-two">
-<div class="box"><h3>Šta se ne prodaje</h3><ul>
+<div class="mk-rule"><h3>{{ ic('x') }}Šta se ne prodaje</h3><ul>
 <li>mesto, redosled i oznake u registru firmi i mreža;</li>
 <li>tačke, statusi i ocene na mapi;</li>
 <li>cene i indeks cena;</li>
 <li>tekst: plaćeni članci se ne objavljuju, a vesti se ne pišu po narudžbini;</li>
 <li>brisanje ocena i prijava vozača.</li>
 </ul></div>
-<div class="box"><h3>Koji oglasi se ne primaju</h3><ul>
+<div class="mk-rule"><h3>{{ ic('x') }}Koji oglasi se ne primaju</h3><ul>
 <li>prodaja i ugradnja kućnih punjača i wallbox uređaja, jer sajt uređuje tim koji stoji iza kompanije Evolako, firme za ugradnju kućnih punjača;</li>
 <li>mreže javnog punjenja u rubrici „Na putu“ i uz vest o toj mreži;</li>
 <li>igre na sreću, alkohol i duvan, kripto i finansijske šeme, politički oglasi;</li>
 <li>tvrdnje koje ne mogu da se provere.</li>
 </ul></div>
 </div>
-<p class="mk-note">Oglašivač ne dobija podatke o čitaocima: oglas je slika i link sa servera BlokVolta, bez piksela, kolačića i skripti oglašivača.</p>
+<p class="mk-privacy">{{ ic('shield') }}<span>Oglašivač ne dobija podatke o čitaocima: oglas je slika i link sa servera BlokVolta, bez piksela, kolačića i skripti oglašivača.</span></p>
 <details class="src"><summary>Pravni okvir</summary><ul>
 <li>Oglas je označen rečju „Oglas“, po čl. 13 Zakona o oglašavanju; prikriveno oglašavanje zabranjuje čl. 12.</li>
 <li>Za svaki oglas čuva se deklaracija oglasa (čl. 20), a podaci o oglašivaču još 30 dana posle kraja oglašavanja (čl. 45).</li>
@@ -111,26 +179,34 @@
 </section>
 
 <section class="mk-sec" id="porudzbina">
+<div class="mk-head">
+<p class="mk-eyebrow">Postupak</p>
 <h2>Kako se naručuje</h2>
+</div>
 <ol class="mk-steps">
-<li>Pošaljite upit: rubrika, mesec početka i link na ono što oglašavate.</li>
-<li>U roku od nekoliko radnih dana stiže odgovor: da li oglas može i predračun.</li>
-<li>Posle uplate šaljete sliku, tekst i deklaraciju oglasa: ko se oglašava, šta i u kom periodu. Deklaraciju traži Zakon o oglašavanju.</li>
-<li>Oglas izlazi prvog dana dogovorenog perioda. Posle svakog meseca stiže broj pregleda stranica sa oglasom.</li>
+<li><b>Upit</b><span>Rubrika, mesec početka i link na ono što oglašavate.</span></li>
+<li><b>Odgovor i predračun</b><span>U roku od nekoliko radnih dana: da li oglas može i predračun.</span></li>
+<li><b>Materijal</b><span>Posle uplate šaljete sliku, tekst i deklaraciju oglasa: ko se oglašava, šta i u kom periodu. Deklaraciju traži Zakon o oglašavanju.</span></li>
+<li><b>Objava i izveštaj</b><span>Oglas izlazi prvog dana dogovorenog perioda. Posle svakog meseca stiže broj pregleda stranica sa oglasom.</span></li>
 </ol>
 <p class="mk-note">Račun izdaje izdavač sajta. Poslovno ime, matični broj, PIB i to da li se obračunava PDV biće ovde navedeni po upisu u registar.</p>
 </section>
 
-<section class="mk-sec mk-noprint" id="upit">
+<section class="mk-sec mk-noprint mk-ask" id="upit">
+<div class="mk-ask-txt">
+<p class="mk-eyebrow">Upit</p>
 <h2>Pošaljite upit</h2>
-<form class="bform" data-bv-form="firma" novalidate>
+<p>Napišite rubriku, mesec početka i šta oglašavate. Odgovor stiže sa <a href="mailto:hello@blokvolt.com">hello@blokvolt.com</a> u roku od nekoliko radnih dana.</p>
+<p class="mk-note">Upit ne obavezuje. Podaci iz forme koriste se samo za odgovor; više u <a href="/politika-privatnosti.html">politici privatnosti</a>.</p>
+</div>
+<form class="bform mk-form" data-bv-form="firma" novalidate>
 <input type="hidden" name="vrsta" value="oglas">
 <div class="fields2">
 <div class="field"><label for="o-firma">Naziv firme</label><input class="input" id="o-firma" name="firma" maxlength="160" required autocomplete="organization"></div>
 <div class="field"><label for="o-rub">Rubrika</label><select class="select" id="o-rub" name="rubrika"><option value="vlasnistvo">Kupovina i vlasništvo</option><option value="na-putu">Na putu</option><option value="vesti">Vesti</option><option value="ne-znam">Još ne znam</option></select></div>
 </div>
 <div class="field"><label for="o-od">Od kog meseca</label><input class="input" id="o-od" name="od" maxlength="60" placeholder="npr. novembar 2026"></div>
-<div class="field"><label for="o-poruka">Šta oglašavate</label><textarea class="input" id="o-poruka" name="poruka" rows="5" maxlength="3000" required placeholder="Proizvod ili usluga i link na vaš sajt"></textarea></div>
+<div class="field"><label for="o-poruka">Šta oglašavate</label><textarea class="input" id="o-poruka" name="poruka" rows="4" maxlength="3000" required placeholder="Proizvod ili usluga i link na vaš sajt"></textarea></div>
 <div class="fields2">
 <div class="field"><label for="o-ime">Ime i uloga u firmi</label><input class="input" id="o-ime" name="ime" maxlength="120" required autocomplete="name"></div>
 <div class="field"><label for="o-mail">Poslovni e-mail</label><input class="input" id="o-mail" name="email" type="email" maxlength="120" required autocomplete="email"></div>
@@ -138,19 +214,26 @@
 <div class="field"><label for="o-tel">Telefon (nije obavezno)</label><input class="input" id="o-tel" name="telefon" type="tel" maxlength="40" autocomplete="tel"></div>
 <label class="ckb1"><input type="checkbox" name="potvrda" value="da" required> <span>Predstavljam ovu firmu.</span></label>
 <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-<p class="bform-act"><button class="btn dark" type="submit">Pošalji upit</button></p>
+<p class="bform-act"><button class="btn volt" type="submit">Pošalji upit</button></p>
 <p class="f-msg f-ok" role="status" hidden>Hvala! Upit je primljen. Odgovor stiže sa hello@blokvolt.com.</p>
 <p class="f-msg f-need" role="alert" hidden>Popunite polja naziv firme, šta oglašavate, ime, e-mail i potvrdu.</p>
 <p class="f-msg f-err" role="alert" hidden>Slanje nije uspelo. Pokušajte ponovo ili pišite na hello@blokvolt.com.</p>
 <p class="f-msg f-limit" role="alert" hidden>Previše poruka danas. Pišite na hello@blokvolt.com.</p>
 </form>
-<p class="mk-note">Upit ne obavezuje. Možete pisati i direktno na <a href="mailto:hello@blokvolt.com">hello@blokvolt.com</a>. Podaci iz forme koriste se samo za odgovor; više u <a href="/politika-privatnosti.html">politici privatnosti</a>.</p>
 </section>
 
 <section class="mk-sec" id="mediji">
-<h2>Za medije</h2>
-<p>Podaci sa sajta mogu da se citiraju uz link na BlokVolt. Tabele su na stranici <a href="/preuzimanje/">Podaci za preuzimanje</a>, pod licencom CC BY 4.0. Kontakt: <a href="mailto:hello@blokvolt.com">hello@blokvolt.com</a>.</p>
-{% if MK_FILES.logo %}<div class="mk-dl mk-noprint"><a class="btn sm" href="/za-firme/blokvolt-logo.svg" download>{{ ic('download') }}Logo (SVG)</a><a class="btn sm" href="/za-firme/blokvolt-logo.png" download>{{ ic('download') }}Logo (PNG)</a><a class="btn sm" href="/za-firme/blokvolt-logo-beli.svg" download>{{ ic('download') }}Logo za tamnu pozadinu</a><a class="btn sm" href="/za-firme/blokvolt-znak.svg" download>{{ ic('download') }}Znak (SVG)</a>{% if MK_FILES.pdf_sr and MK_FILES.pdf_en %}{{ mk_pdf('btn sm', False) }}{% endif %}</div>{% endif %}
+<div class="mk-head">
+<p class="mk-eyebrow">Za medije</p>
+<h2>Logo i podaci za objavu</h2>
+<p class="mk-lede">Podaci sa sajta mogu da se citiraju uz link na BlokVolt. Tabele su na stranici <a href="/preuzimanje/">Podaci za preuzimanje</a>, pod licencom CC BY 4.0. Kontakt: <a href="mailto:hello@blokvolt.com">hello@blokvolt.com</a>.</p>
+</div>
+{% if MK_FILES.logo %}<div class="mk-logos">
+<div class="mk-logo"><div class="mk-logo-v"><img src="/za-firme/blokvolt-logo.svg" width="220" height="56" alt="BlokVolt logo" loading="lazy"></div><div class="mk-logo-dl mk-noprint"><a class="btn sm" href="/za-firme/blokvolt-logo.svg" download>{{ ic('download') }}<span translate="no">SVG</span></a><a class="btn sm" href="/za-firme/blokvolt-logo.png" download>{{ ic('download') }}<span translate="no">PNG</span></a></div></div>
+<div class="mk-logo"><div class="mk-logo-v dark"><img src="/za-firme/blokvolt-logo-beli.svg" width="220" height="56" alt="BlokVolt logo za tamnu pozadinu" loading="lazy"></div><div class="mk-logo-dl mk-noprint"><a class="btn sm" href="/za-firme/blokvolt-logo-beli.svg" download>{{ ic('download') }}<span translate="no">SVG</span></a></div></div>
+<div class="mk-logo"><div class="mk-logo-v"><img src="/za-firme/blokvolt-znak.svg" width="64" height="64" alt="BlokVolt znak" loading="lazy" class="mk-logo-mark"></div><div class="mk-logo-dl mk-noprint"><a class="btn sm" href="/za-firme/blokvolt-znak.svg" download>{{ ic('download') }}<span translate="no">SVG</span></a></div></div>
+</div>
+{% if MK_FILES.pdf_sr and MK_FILES.pdf_en %}<div class="mk-dl mk-noprint">{{ mk_pdf('btn sm', False) }}</div>{% endif %}{% endif %}
 <p class="mk-print-contact">Upiti: <span translate="no">hello@blokvolt.com</span> · <span translate="no">www.blokvolt.rs/za-firme/oglasavanje/</span></p>
 </section>
 </div>

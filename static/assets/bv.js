@@ -259,6 +259,7 @@
         if (el.name === 'email') { email = el.value.trim(); return; }
         if (el.value.trim()) data[el.name] = el.value.trim();
       });
+      data.jezik = (d.documentElement.lang || 'sr').slice(0, 2);   // the language to answer in (sr, en, ru)
       var k = kind === 'firma' ? (data.vrsta === 'mreza' ? 'mreza' : 'firma') : (data.sta === 'stanica' || data.sta === 'novi-punjac' ? 'stanica' : 'ispravka');
       var btn = f.querySelector('[type=submit]');
       btn.disabled = true;

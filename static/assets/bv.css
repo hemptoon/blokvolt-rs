@@ -854,70 +854,309 @@ a.row:hover{background:#FAFAF6}
 @media (display-mode:standalone),(display-mode:fullscreen),(display-mode:minimal-ui){.oglas{display:none!important}}
 @media print{.oglas{display:none!important}}
 
-/* ---------- media kit (/za-firme/oglasavanje/, templates/oglasavanje.html) */
-.mk-sec{margin:36px 0 0}
-.mk-sec>h2{font-size:23px;margin:0 0 12px}
-.mk-sec>p{max-width:760px}
-.mk .stats{margin:4px 0 16px}
-.mk-note{font-size:14px;color:var(--mut);margin:12px 0 0;max-width:760px}
-.mk-rub{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0}
-.mk-rub .box h3,.mk-two .box h3{font-size:17px;margin:0 0 8px}
-.mk-rub .box p{margin:0;font-size:15px;color:var(--ink2)}
-.mk-rub .box small{display:block;margin-top:10px;font-size:13px;color:var(--mut);line-height:1.4}
-.mk-price{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0 0 14px}
-.mk-price .box h3{font-size:15px;margin:0;color:var(--ink2);font-weight:650}
-.mk-price .box b{display:block;font-size:28px;font-weight:760;letter-spacing:-.02em;margin:4px 0 2px}
-.mk-price .box span{display:block;font-size:14px;color:var(--mut)}
-.mk-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.mk-two .box ul{margin:0;padding-left:20px}
-.mk-two .box li{margin:6px 0;font-size:15px}
-.mk-demo{padding:12px 14px 14px;border:1px dashed var(--line2);border-radius:var(--r2);background:var(--surface);align-self:start}
-.mk-slot{display:flex;align-items:center;justify-content:center;aspect-ratio:3/1;border-radius:12px;background:var(--surface2);color:var(--mut);font-weight:650;font-size:15px}
-.mk-steps{margin:0;padding-left:22px;max-width:760px}
-.mk-steps li{margin:7px 0}
-.mk .src{margin-top:14px}
-.mk-dl{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+/* ---------- media kit (/za-firme/oglasavanje/, templates/oglasavanje.html), redesign 29.09.2026 ----------
+   Hero = the home hero (.hero2) with crumbs, a kicker, two buttons and three facts; below: audience, rubrics with photos,
+   the ad on a page (browser + phone mock-up), one price, rules, steps, the enquiry form, press files.
+   The photos: static/assets/img/oglasavanje-*.webp (scripts/medija_kit_img.py). Print = the PDF (scripts/medija_kit_pdf.py). */
+.mkh .hero2-in{position:relative;min-height:clamp(600px,46vw,680px);padding-top:70px;padding-bottom:44px}
+.mkh-crumbs{position:absolute;top:22px;left:20px;right:20px;margin:0}
+.mkh-crumbs,.mkh-crumbs a{color:rgba(255,255,255,.62)}
+.mkh-crumbs a:hover{color:#fff}
+.mkh-crumbs span[aria-hidden]{color:rgba(255,255,255,.4)}
+.mkh-kick{margin:0 0 14px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--volt)}
+.mkh h1{max-width:620px}
+.mkh .lead{max-width:540px}
+.mkh-acts{display:flex;flex-wrap:wrap;gap:10px}
+.mkh-acts .btn{min-height:52px;padding:0 22px;border-radius:14px;font-size:16px;font-weight:700}
+.btn.ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.34);color:#fff}
+.btn.ghost:hover{background:rgba(255,255,255,.16);border-color:#fff}
+.mkh .btn:focus-visible,.mk-price-main .btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.mkh-facts{display:flex;flex-wrap:wrap;gap:16px 36px;margin:34px 0 0;padding:22px 0 0;list-style:none;border-top:1px solid rgba(255,255,255,.14);max-width:660px}
+.mkh-facts li{min-width:140px;max-width:220px}
+.mkh-facts b{display:block;font-size:24px;line-height:1.15;font-weight:760;letter-spacing:-.02em;color:#fff}
+.mkh-facts li:first-child b{color:var(--volt)}
+.mkh-facts span{display:block;margin-top:4px;font-size:13.5px;line-height:1.35;color:rgba(255,255,255,.66)}
+
+.mk>.mk-sec:first-child{margin-top:18px}
+.mk-sec{margin:72px 0 0}
+.mk-sec h2{font-size:clamp(26px,2.7vw,36px);line-height:1.1;letter-spacing:-.028em;margin:0 0 12px}
+.mk-head{margin:0 0 26px}
+.mk-eyebrow{margin:0 0 8px;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--voltd)}
+.mk-lede{margin:0;max-width:720px;font-size:17.5px;line-height:1.55;color:var(--ink2)}
+.mk-note{margin:16px 0 0;max-width:760px;font-size:14px;color:var(--mut)}
+
+/* audience */
+.mk-aud{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:48px;align-items:center}
+.mk-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:26px 0 0}
+.mk-stat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px 16px}
+.mk-stat b{display:block;font-size:40px;line-height:1;font-weight:780;letter-spacing:-.035em}
+.mk-stat b::after{content:'';display:block;width:26px;height:4px;margin:12px 0 0;border-radius:2px;background:var(--volt)}
+.mk-stat span{display:block;margin-top:10px;font-size:14px;line-height:1.35;color:var(--mut)}
+.mk-aud-img{margin:0;border-radius:24px;overflow:hidden;box-shadow:0 22px 60px -28px rgba(13,17,26,.5);background:var(--surface2)}
+.mk-aud-img img{display:block;width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:50% 60%}
+
+/* rubrics */
+.mk-rub{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.mk-card{display:flex;flex-direction:column;margin:0;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+.mk-card-img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;background:var(--surface2)}
+.mk-card-b{display:flex;flex-direction:column;gap:8px;flex:1;padding:18px 20px 20px}
+.mk-tag{align-self:flex-start;margin:0;padding:4px 10px;border-radius:999px;background:var(--voltbg);color:var(--ok);font-size:12.5px;font-weight:700;line-height:1.3}
+.mk-card h3{margin:2px 0 0;font-size:21px;letter-spacing:-.02em}
+.mk-card p{margin:0;font-size:15px;color:var(--ink2)}
+.mk-card .mk-fit{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:14px;color:var(--mut)}
+
+/* the ad on a page: browser + phone; the ad inside copies .oglas (not the class: .oglas is hidden in print and in the apps) */
+.mk-look{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:52px;align-items:center}
+.mk-look-demo{position:relative;padding:0 0 44px}
+.mk-browser{margin-right:112px;background:#fff;border:1px solid var(--line2);border-radius:16px;overflow:hidden;box-shadow:0 34px 80px -34px rgba(13,17,26,.5)}
+.mk-browser-bar{display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;background:var(--surface2);border-bottom:1px solid var(--line)}
+.mk-browser-bar i{flex:none;width:10px;height:10px;border-radius:50%;background:#d3d1c7}
+.mk-browser-bar span{flex:1;min-width:0;margin-left:10px;padding:3px 10px;border-radius:7px;background:#fff;font-size:11.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mk-browser-pg{padding:24px 28px 28px}
+.mk-demo-kick{margin:0 0 4px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--voltd)}
+.mk-demo-h{margin:0 0 14px;font-size:24px;font-weight:740;letter-spacing:-.02em;line-height:1.15;color:var(--ink)}
+.mk-ln{display:block;height:8px;margin:0 0 9px;border-radius:4px;background:var(--surface2)}
+.mk-ln.s{width:62%}
+.mk-ad{margin:18px 0 0;padding:11px 13px 13px;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:0 0 0 3px var(--volt)}
+.mk-ad .oglas-lbl{margin:0 0 8px}
+.mk-ad img{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:cover;border-radius:11px;background:var(--surface2)}
+.mk-ad .oglas-t{margin-top:9px}
+.mk-phone{position:absolute;right:0;bottom:0;width:206px;padding:9px;border-radius:36px;background:var(--night);box-shadow:0 30px 60px -22px rgba(13,17,26,.65)}
+.mk-phone-scr{height:414px;overflow:hidden;padding:14px 12px 0;border-radius:28px;background:var(--bg)}
+.mk-phone-hd{display:flex;align-items:center;gap:6px;margin:0 0 14px;font-size:14px;letter-spacing:-.03em;color:var(--ink)}
+.mk-phone-hd b{font-weight:800}
+.mk-phone-hd .logo-mark{width:18px;height:18px}
+.mk-phone .mk-demo-h{font-size:18px;margin-bottom:10px}
+.mk-phone .mk-ln{height:6px;margin-bottom:7px}
+.mk-phone .mk-ad{margin-top:14px;padding:7px 8px 9px;border-radius:12px;box-shadow:0 0 0 2px var(--volt)}
+.mk-phone .oglas-lbl{gap:5px;margin-bottom:6px;font-size:10px}
+.mk-phone .oglas-lbl>span:first-child{padding:2px 5px;font-size:8.5px}
+.mk-phone .mk-ad img{border-radius:7px}
+.mk-phone .oglas-t{margin-top:6px}
+.mk-phone .oglas-t b{font-size:11.5px}
+.mk-phone .oglas-t span{font-size:10.5px}
+.mk-spec{display:grid;gap:16px;margin:20px 0 0;padding:0;list-style:none}
+.mk-spec li{display:flex;gap:12px;align-items:flex-start}
+.mk-spec li>svg{flex:none;width:24px;height:24px;margin-top:1px;padding:4px;border-radius:50%;background:var(--volt);color:var(--vink);stroke-width:2.6}
+.mk-spec li>div>b{display:block;font-size:16px}
+.mk-spec li>div>span{display:block;margin-top:1px;font-size:14.5px;line-height:1.45;color:var(--mut)}
+
+/* price */
+.mk-price{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:18px;align-items:stretch}
+.mk-price-main{padding:30px 32px 32px;border-radius:24px;background:var(--night);color:#fff;border-top:6px solid var(--volt)}
+.mk-price-lbl{margin:0;font-size:14px;font-weight:650;color:rgba(255,255,255,.7)}
+.mk-price-num{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:8px 0 22px}
+.mk-price-num b{font-size:clamp(44px,5vw,62px);line-height:1;font-weight:790;letter-spacing:-.04em;color:var(--volt)}
+.mk-price-num span{font-size:16px;color:rgba(255,255,255,.75)}
+.mk-price-main ul{display:grid;gap:11px;margin:0 0 26px;padding:0;list-style:none}
+.mk-price-main li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;line-height:1.45;color:rgba(255,255,255,.92)}
+.mk-price-main li svg{flex:none;width:18px;height:18px;margin-top:2px;color:var(--volt);stroke-width:2.4}
+.mk-price-main .btn{min-height:50px;padding:0 22px;border-radius:14px;font-weight:700}
+.mk-price-ex{padding:28px 30px 26px;border:1px solid var(--line);border-radius:24px;background:#fff}
+.mk-price-ex h3{margin:0 0 8px;font-size:19px}
+.mk-price-ex dl{margin:0}
+.mk-price-ex dl>div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:15px 0;border-bottom:1px solid var(--line)}
+.mk-price-ex dt{font-size:15px;color:var(--ink2)}
+.mk-price-ex dd{margin:0;font-size:19px;font-weight:740;letter-spacing:-.015em;white-space:nowrap}
+
+/* rules */
+.mk-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.mk-rule{padding:22px 24px 16px;border:1px solid var(--line);border-radius:20px;background:#fff}
+.mk-rule h3{display:flex;align-items:center;gap:10px;margin:0 0 8px;font-size:18px}
+.mk-rule h3 svg{flex:none;width:28px;height:28px;padding:6px;border-radius:50%;background:var(--surface2);color:var(--ink);stroke-width:2.4}
+.mk-rule ul{margin:0;padding-left:20px}
+.mk-rule li{margin:7px 0;font-size:15px;color:var(--ink2)}
+.mk-privacy{display:flex;gap:12px;align-items:flex-start;margin:18px 0 0;padding:16px 20px;border-radius:16px;background:var(--voltbg);color:var(--vink);font-size:15px}
+.mk-privacy svg{flex:none;width:22px;height:22px;color:var(--ok)}
+.mk .src{margin-top:16px}
+
+/* steps */
+.mk-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:0;padding:0;list-style:none;counter-reset:mk}
+.mk-steps li{counter-increment:mk;padding:20px 20px 22px;border:1px solid var(--line);border-radius:20px;background:#fff}
+.mk-steps li::before{content:counter(mk);display:flex;align-items:center;justify-content:center;width:38px;height:38px;margin:0 0 14px;border-radius:50%;background:var(--ink);color:var(--volt);font-size:16px;font-weight:760}
+.mk-steps b{display:block;margin:0 0 6px;font-size:17px}
+.mk-steps span{display:block;font-size:14.5px;line-height:1.45;color:var(--mut)}
+
+/* enquiry */
+.mk-ask{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:40px;align-items:start;padding:36px 38px 28px;border:1px solid var(--line);border-radius:28px;background:#fff;box-shadow:var(--shadow)}
+.mk-ask-txt p{max-width:420px}
+.mk-form.bform{max-width:none;margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none}
+.mk-form .bform-act .btn{min-height:50px;padding:0 24px;border-radius:14px;font-weight:700}
+
+/* press */
+.mk-logos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.mk-logo{display:flex;flex-direction:column;gap:12px}
+.mk-logo-v{display:flex;align-items:center;justify-content:center;height:130px;padding:24px;border:1px solid var(--line);border-radius:20px;background:#fff}
+.mk-logo-v.dark{background:var(--night);border-color:var(--night)}
+.mk-logo-v img{display:block;width:auto;max-width:220px;height:auto;max-height:56px}
+.mk-logo-v img.mk-logo-mark{max-height:64px}
+.mk-logo-dl{display:flex;flex-wrap:wrap;gap:8px}
+.mk-dl{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
 .mk-print,.mk-print-contact{display:none}
-@media (max-width:760px){.mk-rub,.mk-price,.mk-two{grid-template-columns:1fr}}
+
+@media (max-width:1179px){
+ .mkh .hero2-in{min-height:0;padding-top:0;padding-bottom:36px}
+ .mkh-crumbs{position:static;margin:0 0 14px}
+}
+@media (max-width:999px){
+ .mk-sec{margin-top:56px}
+ .mk-aud,.mk-look,.mk-price,.mk-ask{grid-template-columns:1fr}
+ .mk-aud{gap:28px}
+ .mk-look{gap:26px}
+ .mk-look-txt{order:-1}
+ .mk-rub{grid-template-columns:1fr}
+ .mk-card{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+ .mk-card-img{height:100%;aspect-ratio:auto;min-height:220px}
+ .mk-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .mk-ask{gap:10px;padding:28px 26px 20px}
+}
+@media (max-width:699px){
+ .mkh-facts{gap:14px 22px;margin-top:26px;padding-top:18px}
+ .mkh-facts li{min-width:0;max-width:none;flex:1 1 40%}
+ .mkh-facts b{font-size:20px}
+ .mkh-acts .btn{flex:1 1 auto}
+ .mk-sec{margin-top:48px}
+ .mk-lede{font-size:16.5px}
+ .mk-stat{padding:14px 16px 13px}
+ .mk-stat b{font-size:32px}
+ .mk-card{display:flex}
+ .mk-card-img{height:auto;aspect-ratio:16/10;min-height:0}
+ .mk-browser{display:none}
+ .mk-look-demo{display:flex;justify-content:center;padding:0}
+ .mk-phone{position:relative;width:250px}
+ .mk-phone-scr{height:410px}
+ .mk-price-main{padding:24px 22px 26px}
+ .mk-price-ex{padding:22px 20px 18px}
+ .mk-two,.mk-steps{grid-template-columns:1fr}
+ .mk-steps{gap:10px}
+ .mk-steps li{display:grid;grid-template-columns:38px minmax(0,1fr);gap:0 14px;padding:16px 16px 17px}
+ .mk-steps li::before{grid-row:span 2;margin:0}
+ .mk-steps b{margin:7px 0 4px}
+ .mk-logos{grid-template-columns:1fr 1fr;gap:12px}
+ .mk-logo-v{height:96px;padding:16px}
+ .mk-logo-v img{max-width:100%;max-height:40px}
+ .mk-logo-v img.mk-logo-mark{max-height:48px}
+ .mk-ask{padding:24px 18px 14px;border-radius:22px}
+}
 @media print{
- @page{size:A4;margin:12mm 14mm 13mm}
- body.mk-page{background:#fff;font-size:9.5pt;line-height:1.42}
+ @page{size:A4;margin:11mm 12mm 12mm}
+ body.mk-page{background:#fff;font-size:9.4pt;line-height:1.4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
  body.mk-page .hd,body.mk-page .ft,body.mk-page .crumbs,body.mk-page .skip,body.mk-page .mk-noprint,body.mk-page .consent,body.mk-page .bv-tr-note,body.mk-page .bv-tr-wrap{display:none!important}
- body.mk-page .ph{padding:0 0 4px;background:none;border:0}
- body.mk-page .ph h1{font-size:22pt;margin:0 0 3px}
- body.mk-page .ph .lead{font-size:11pt;margin:0}
  body.mk-page .wrap{max-width:none;padding:0}
- body.mk-page .main{padding-top:4px;padding-bottom:0}
- body.mk-page .mk-print{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 12px;padding:0 0 7px;border-bottom:1px solid #d9d8d0;font-size:8.5pt;color:#5C6270}
- body.mk-page .mk-print .logo{font-size:14pt;color:#0D111A}
- body.mk-page .mk-print .logo-mark{width:19px;height:19px}
- body.mk-page .mk-print-contact{display:block;margin:8px 0 0;font-weight:650}
- body.mk-page .sum{margin:10px 0 0;padding:8px 12px;box-shadow:none}
- body.mk-page .sum li{margin:0}
- body.mk-page .mk-sec{margin:13px 0 0}
- body.mk-page .mk-sec>h2{font-size:12.5pt;margin:0 0 5px;break-after:avoid}
- body.mk-page .mk-sec p,body.mk-page .mk-sec li{margin-top:0;margin-bottom:4px}
- body.mk-page .mk-note{font-size:8.5pt}
- body.mk-page .box,body.mk-page .stat,body.mk-page .mk-demo,body.mk-page .sum,body.mk-page .mk-rub,body.mk-page .mk-price,body.mk-page .mk-two,body.mk-page .mk-steps li{break-inside:avoid}
- body.mk-page .stats,body.mk-page .mk-rub{grid-template-columns:repeat(3,1fr);gap:8px}
- body.mk-page .mk-price,body.mk-page .mk-two{grid-template-columns:repeat(2,1fr);gap:8px}
- body.mk-page .stat b{font-size:15pt}
- body.mk-page .box,body.mk-page .stat{padding:8px 11px;box-shadow:none}
- body.mk-page .box h3{font-size:10.5pt;margin:0 0 3px}
- body.mk-page .box p,body.mk-page .box li,body.mk-page .box span,body.mk-page .stat span{font-size:9pt}
- body.mk-page .box>b{font-size:17pt}
- body.mk-page .mk-demo{padding:8px 10px}
- body.mk-page .mk-slot{aspect-ratio:auto;height:78px;font-size:10pt}
- body.mk-page .box small{font-size:8.5pt;margin-top:4px}
- body.mk-page .mk-demo .oglas-t b{font-size:10pt}
- body.mk-page .mk-demo .oglas-t span{font-size:9pt}
+ body.mk-page .main{padding:0}
+ body.mk-page a{color:inherit;text-decoration:none}
+ body.mk-page .mk-print{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 9px;padding:0 0 6px;border-bottom:1px solid #d9d8d0;font-size:8.3pt;color:#5C6270}
+ body.mk-page .mk-print .logo{font-size:13.5pt;color:#0D111A}
+ body.mk-page .mk-print .logo-mark{width:18px;height:18px}
+ body.mk-page .mk-print-contact{display:block;margin:10px 0 0;padding:8px 0 0;border-top:1px solid #d9d8d0;font-weight:650;font-size:9pt}
+ /* page 1: the hero as a cover band: photo on the right, text on the left, on the night background */
+ body.mk-page .mkh{border-radius:12px;break-inside:avoid}
+ body.mk-page .mkh .hero2-media{position:absolute;top:0;right:0;bottom:0;width:58%;height:100%;aspect-ratio:auto;z-index:-1;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 38%);mask-image:linear-gradient(90deg,transparent 0,#000 38%)}
+ body.mk-page .mkh .hero2-media img{animation:none;object-position:62% 50%}
+ body.mk-page .mkh::after{display:block;background:linear-gradient(90deg,rgba(11,15,23,.95) 0,rgba(11,15,23,.55) 45%,rgba(11,15,23,0) 70%)}
+ body.mk-page .mkh .hero2-in{min-height:108mm;display:flex;flex-direction:column;justify-content:center;margin:0;padding:26px 28px 22px}
+ body.mk-page .mkh-kick{font-size:8pt;margin:0 0 8px}
+ body.mk-page .mkh h1{font-size:31pt;max-width:430px;margin:0 0 9px}
+ body.mk-page .mkh .lead{font-size:11pt;max-width:360px;margin:0}
+ body.mk-page .mkh-facts{gap:8px 20px;margin:18px 0 0;padding:12px 0 0;max-width:440px}
+ body.mk-page .mkh-facts li{min-width:0;max-width:130px}
+ body.mk-page .mkh-facts b{font-size:14pt}
+ body.mk-page .mkh-facts span{font-size:7.5pt}
+ body.mk-page .mk-sec{margin:15px 0 0}
+ body.mk-page .mk>.mk-sec:first-child{margin-top:22px}
+ body.mk-page .mk-sec h2{font-size:14pt;margin:0 0 5px;break-after:avoid}
+ /* three pages: cover + audience, rubrics + ad + price, rules + steps + press (a heading never ends a page) */
+ body.mk-page #rubrike,body.mk-page #pravila{break-before:page}
+ body.mk-page .mk-head{margin:0 0 8px}
+ body.mk-page .mk-eyebrow{font-size:6.8pt;margin:0 0 2px}
+ body.mk-page .mk-lede{font-size:9.6pt}
+ body.mk-page .mk-note{font-size:8pt;margin-top:6px}
+ body.mk-page .mk-aud{grid-template-columns:1.25fr .75fr;gap:16px}
+ body.mk-page .mk-stats{grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}
+ body.mk-page .mk-stat{padding:8px 9px;border-radius:10px}
+ body.mk-page .mk-stat b{font-size:19pt}
+ body.mk-page .mk-stat b::after{width:16px;height:3px;margin-top:5px}
+ body.mk-page .mk-stat span{font-size:7.4pt;margin-top:5px}
+ body.mk-page .mk-aud-img{border-radius:12px;box-shadow:none}
+ body.mk-page .mk-aud-img img{aspect-ratio:4/5}
+ body.mk-page .mk-rub{grid-template-columns:repeat(3,1fr);gap:8px}
+ body.mk-page .mk-card{display:flex;border-radius:12px;box-shadow:none;break-inside:avoid}
+ body.mk-page .mk-card-img{aspect-ratio:16/9;height:auto;min-height:0}
+ body.mk-page .mk-card-b{gap:4px;padding:8px 10px 10px}
+ body.mk-page .mk-tag{font-size:7pt;padding:2px 6px}
+ body.mk-page .mk-card h3{font-size:11pt}
+ body.mk-page .mk-card p{font-size:8.4pt}
+ body.mk-page .mk-card .mk-fit{font-size:7.8pt;padding-top:5px}
+ body.mk-page .mk-look{grid-template-columns:1.15fr .85fr;gap:16px;break-inside:avoid}
+ body.mk-page .mk-look-txt{order:0}
+ body.mk-page .mk-look-demo{display:block;padding:0 0 20px}
+ body.mk-page .mk-browser{display:block;margin-right:58px;border-radius:10px;box-shadow:none}
+ body.mk-page .mk-browser-bar{height:20px;padding:0 8px;gap:4px}
+ body.mk-page .mk-browser-bar i{width:6px;height:6px}
+ body.mk-page .mk-browser-bar span{font-size:6.5pt;padding:1px 6px}
+ body.mk-page .mk-browser-pg{padding:10px 12px 12px}
+ body.mk-page .mk-demo-kick{font-size:6pt}
+ body.mk-page .mk-demo-h{font-size:12pt;margin-bottom:6px}
+ body.mk-page .mk-ln{height:4px;margin-bottom:4px}
+ body.mk-page .mk-ad{margin-top:8px;padding:5px 6px 6px;border-radius:9px}
+ body.mk-page .mk-ad .oglas-lbl{font-size:6.5pt;margin-bottom:4px}
+ body.mk-page .mk-ad .oglas-lbl>span:first-child{font-size:5.5pt;padding:1px 4px}
+ body.mk-page .mk-ad img{border-radius:6px}
+ body.mk-page .mk-ad .oglas-t{margin-top:4px}
+ body.mk-page .mk-ad .oglas-t b{font-size:7.6pt}
+ body.mk-page .mk-ad .oglas-t span{font-size:7pt}
+ body.mk-page .mk-phone{position:absolute;width:104px;padding:4px;border-radius:18px;box-shadow:none}
+ body.mk-page .mk-phone-scr{height:200px;padding:7px 6px 0;border-radius:14px}
+ body.mk-page .mk-phone-hd{font-size:7pt;margin-bottom:6px}
+ body.mk-page .mk-phone-hd .logo-mark{width:9px;height:9px}
+ body.mk-page .mk-phone .mk-demo-h{font-size:8.5pt;margin-bottom:5px}
+ body.mk-page .mk-phone .mk-ln{height:3px;margin-bottom:3px}
+ body.mk-page .mk-phone .mk-ad{margin-top:6px;padding:3px 4px 4px;border-radius:6px}
+ body.mk-page .mk-phone .oglas-lbl{font-size:5pt;margin-bottom:3px}
+ body.mk-page .mk-phone .oglas-lbl>span:first-child{font-size:4.5pt;padding:1px 2px}
+ body.mk-page .mk-phone .oglas-t b{font-size:5.5pt}
+ body.mk-page .mk-phone .oglas-t span{font-size:5pt}
+ body.mk-page .mk-spec{gap:6px;margin-top:8px}
+ body.mk-page .mk-spec li>svg{width:15px;height:15px;padding:2px}
+ body.mk-page .mk-spec li>div>b{font-size:9.4pt}
+ body.mk-page .mk-spec li>div>span{font-size:8.2pt}
+ body.mk-page .mk-price{grid-template-columns:1.1fr .9fr;gap:8px;break-inside:avoid}
+ body.mk-page .mk-price-main{padding:12px 16px 14px;border-radius:12px;border-top-width:4px}
+ body.mk-page .mk-price-lbl{font-size:8.5pt}
+ body.mk-page .mk-price-num{margin:3px 0 8px}
+ body.mk-page .mk-price-num b{font-size:26pt}
+ body.mk-page .mk-price-num span{font-size:9pt}
+ body.mk-page .mk-price-main ul{gap:4px;margin:0}
+ body.mk-page .mk-price-main li{font-size:8.8pt}
+ body.mk-page .mk-price-main li svg{width:11px;height:11px}
+ body.mk-page .mk-price-ex{padding:12px 16px 10px;border-radius:12px}
+ body.mk-page .mk-price-ex h3{font-size:11pt;margin:0 0 2px}
+ body.mk-page .mk-price-ex dl>div{padding:6px 0}
+ body.mk-page .mk-price-ex dt{font-size:8.8pt}
+ body.mk-page .mk-price-ex dd{font-size:10.5pt}
+ body.mk-page .mk-two{grid-template-columns:1fr 1fr;gap:8px}
+ body.mk-page .mk-rule{padding:9px 12px 6px;border-radius:12px;break-inside:avoid}
+ body.mk-page .mk-rule h3{font-size:10.5pt;margin:0 0 3px;gap:6px}
+ body.mk-page .mk-rule h3 svg{width:18px;height:18px;padding:3px}
+ body.mk-page .mk-rule li{font-size:8.4pt;margin:2px 0}
+ body.mk-page .mk-privacy{margin-top:7px;padding:7px 11px;border-radius:10px;font-size:8.6pt}
+ body.mk-page .mk-privacy svg{width:14px;height:14px}
  body.mk-page details.src{display:block;border:0;padding:0;margin:6px 0 0}
- body.mk-page details.src>summary{padding:0;font-weight:650;list-style:none}
+ body.mk-page details.src>summary{padding:0;font-weight:650;list-style:none;font-size:9pt}
  body.mk-page details.src>summary::-webkit-details-marker{display:none}
  body.mk-page details.src::details-content{content-visibility:visible;display:block}
  body.mk-page details.src>*{display:block}
- body.mk-page details.src li{font-size:8.5pt;margin:0}
- body.mk-page a{color:inherit;text-decoration:none}
+ body.mk-page details.src ul{padding-left:16px;margin:2px 0 0}
+ body.mk-page details.src li{font-size:8pt;margin:0}
+ body.mk-page .mk-steps{grid-template-columns:repeat(4,1fr);gap:8px;break-inside:avoid}
+ body.mk-page .mk-steps li{padding:9px 10px 10px;border-radius:12px}
+ body.mk-page .mk-steps li::before{width:20px;height:20px;margin-bottom:5px;font-size:9pt}
+ body.mk-page .mk-steps b{font-size:9.6pt;margin-bottom:2px}
+ body.mk-page .mk-steps span{font-size:8pt}
+ body.mk-page .mk-logos{grid-template-columns:repeat(3,1fr);gap:8px}
+ body.mk-page .mk-logo-v{height:56px;padding:10px;border-radius:10px}
+ body.mk-page .mk-logo-v img{max-height:26px;max-width:130px}
+ body.mk-page .mk-logo-v img.mk-logo-mark{max-height:30px}
 }
 
 /* ---------- accounts (/nalog/, "Moj BlokVolt") and the newsletter (/pregled/, Nedeljni pregled), 2026-09-29 ---------- */
