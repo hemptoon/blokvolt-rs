@@ -385,6 +385,24 @@ Publish (GitHub Pages, repository `hemptoon/blokvolt-com`, branch `main`, root):
 `https://github.com/hemptoon/blokvolt-com/upload/main` with the same helper input and unpack snippet as in
 section 6 (steps 3–6), then run the verification snippet the script prints — it compares every built file with
 the repository tree. Files that exist only in the repository are not removed by an upload.
+The upload page takes fewer than 100 files ("Yowza, that's a lot of files"), and the payload holds the whole
+site (106 files on 29.09.2026). Upload only what differs from the repository: after the helper input holds the
+payload, run this instead of the unpack snippet (it compares git blob hashes with the tree of `main`):
+```js
+const f=document.getElementById('bvpay').files[0];
+const obj=JSON.parse(await new Response(f.stream().pipeThrough(new DecompressionStream('gzip'))).text());
+const j=await (await fetch('https://api.github.com/repos/hemptoon/blokvolt-com/git/trees/main?recursive=1',{credentials:'omit',cache:'no-store'})).json();
+const have=Object.fromEntries(j.tree.filter(x=>x.type==='blob').map(x=>[x.path,x.sha]));
+const hex=b=>[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');
+const dt=new DataTransfer(), changed=[];
+for (const [p,v] of Object.entries(obj)) { const bytes=('t' in v)?new TextEncoder().encode(v.t):Uint8Array.from(atob(v.b),c=>c.charCodeAt(0));
+  const head=new TextEncoder().encode('blob '+bytes.length+'\0'), all=new Uint8Array(head.length+bytes.length); all.set(head); all.set(bytes,head.length);
+  if (have[p]!==hex(await crypto.subtle.digest('SHA-1',all))) { changed.push(p); dt.items.add(new File([bytes],p)); } }
+if (changed.length<100) { const inp=document.querySelector('#upload-manifest-files-input'); inp.files=dt.files; inp.dispatchEvent(new Event('change',{bubbles:true})); }
+changed.length
+```
+With 100 or more changed files, upload `changed` in two parts. A change of `bv.css`, `bv.js` or `map.js` changes every
+page (the asset version in the links), so expect most pages in the list.
 
 DNS (Spaceship, blokvolt.com): four A records `@` → 185.199.108.153 / 109 / 110 / 111, CNAME `www` →
 `hemptoon.github.io`, TXT `_github-pages-challenge-hemptoon` (GitHub domain verification) and TXT `@`
