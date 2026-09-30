@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 29.09.2026
+updated: 30.09.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-09-29
+modified: 2026-09-30
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 30. septembar 2026
+
+- Novi vodič [Kako platiti manje na javnom punjaču](/javno-punjenje/kako-jeftinije-puniti/): zašto je kod naplate po minutu najjeftinije puniti od 10–20 % do oko 80 %, kako izabrati punjač po snazi auta i šta košta zima, roming i zauzeće posle punjenja. Link je na stranici [Javno punjenje](/javno-punjenje/) i u [Vodičima](/vodici/).
+
 ## 29. septembar 2026
 
 - Novo: [Moj BlokVolt](/nalog/) — nalog bez lozinke, sa prijavom kodom na e-mail. U nalogu su omiljeni punjači na svim uređajima, vaš auto i grad, vaše prijave i fotografije sa mape, a podatke možete da preuzmete ili obrišete. Nalog nije obavezan: mapa i ceo sajt rade i bez njega. Ikonica naloga je u zaglavlju, pored pretrage.
