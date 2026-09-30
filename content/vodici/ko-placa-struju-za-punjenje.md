@@ -4,9 +4,9 @@ h1: Ko plaća struju za punjenje
 description: Struju plaća onaj ko puni, po MID brojilu i ceni iz stvarnog računa, bez marže. Tarife EPS-a od 1.10.2025, primer obračuna i zašto to nije prodaja struje.
 lead: Nadoknada struje po MID brojilu i ceni iz računa, bez marže, nije prodaja struje i ne traži licencu.
 kicker: Vodič
-updated: 07.09.2026
+updated: 30.09.2026
 published: 2026-09-08
-modified: 2026-09-08
+modified: 2026-09-30
 priority: 0.8
 path: /ko-placa-struju-za-punjenje.html
 sources: Cenovnik EPS-a za domaćinstva od 1.10.2025 po zonama i tarifama (danas.rs) :: https://www.danas.rs/vesti/ekonomija/poskupljenje-struje-cenovnik-racuni-tarife/ | Cenovnik EPS-a za domaćinstva od 1.10.2025 (ceneizakon.rs) :: https://ceneizakon.rs/cena-struje-u-srbiji-2026/ | Izmena metodologije: plava zona do 1.200 kWh, primena do kraja 2026 (paragraf.rs) :: https://www.paragraf.rs/dnevne-vesti/250825/250825-vest6.html | Zakon o energetici, čl. 210v :: https://www.paragraf.rs/propisi/zakon_o_energetici.html | Direktiva 2014/32/EU o mernim instrumentima (MID) :: https://eur-lex.europa.eu/eli/dir/2014/32/oj | Vodič profesionalnog upravnika o punjačima u garaži: odvojeno merenje kao uslov (aleksic.xyz) :: https://www.aleksic.xyz/odrzavanje-zgrade/investiciono-odrzavanje/punjaci-elektricna-vozila-garazi/
@@ -16,8 +16,8 @@ image_alt: Električar ugrađuje brojilo za punjač u ormar zgrade
 <div class="sum" markdown="1">
 - Struju plaća onaj ko puni: **tačno koliko potroši**, po ceni iz stvarnog računa, **bez marže**
 - Pošteno i proverljivo merenje daje samo zasebno **MID brojilo** na liniji punjača
-- Noćni kilovat-sat kod kuće u plavoj zoni, sa naknadama i PDV-om: okvirno **4–7 RSD**; na javnim brzim punjačima **70–91 RSD**
-- Za **240 kWh** mesečno: **1.000–1.700 RSD** kod kuće, **17.000–22.000 RSD** na javnim punjačima
+- Noćni kilovat-sat kod kuće u plavoj zoni, sa naknadama i PDV-om: okvirno **4–7 RSD**; na javnim brzim punjačima **43–79 RSD**
+- Za **240 kWh** mesečno: **1.000–1.700 RSD** kod kuće, **10.300–19.000 RSD** na brzim javnim punjačima
 </div>
 
 ## Tri načina plaćanja

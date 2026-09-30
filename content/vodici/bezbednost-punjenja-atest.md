@@ -4,12 +4,12 @@ h1: Bezbednost punjenja i atest
 description: Zašto šuko utičnica i produžni kabl nisu za punjenje auta, šta mora da ima namenska linija (FID tip A + DC, SRPS HD 60364-7-722) i šta se meri u atestu.
 lead: Auto se bezbedno puni na namenskoj liniji sa FID zaštitom i atestom, a ne na običnoj utičnici.
 kicker: Vodič
-updated: 07.09.2026
+updated: 30.09.2026
 published: 2026-09-08
-modified: 2026-09-08
+modified: 2026-09-30
 priority: 0.8
 path: /bezbednost-punjenja-atest.html
-sources: SRPS HD 60364-7-722 — Električne instalacije niskog napona, posebni zahtevi za napajanje električnih vozila (Institut za standardizaciju Srbije) :: https://iss.rs/ | SRPS HD 60364-6 — Električne instalacije niskog napona, verifikacija (ispitivanje) (iss.rs) :: https://iss.rs/ | Pravilnik o tehničkim normativima bezbednosti garaža od požara, „Sl. glasnik RS“ 31/2024 i 59/2025 :: https://pravno-informacioni-sistem.rs/eli/rep/sgrs/ministarstva/pravilnik/2024/31/2 | Zagrevanje šuko utičnica pri dugotrajnom punjenju (emobilitysimplified.com) :: https://www.emobilitysimplified.com/2019/10/ev-charging-basics-can-you-charge-your-electric-car-using-a-household-socket.html | Vodič profesionalnog upravnika: zasebna linija, ovlašćeni izvođač, atest (aleksic.xyz) :: https://www.aleksic.xyz/odrzavanje-zgrade/investiciono-odrzavanje/punjaci-elektricna-vozila-garazi/
+sources: SRPS HD 60364-7-722 — Električne instalacije niskog napona, posebni zahtevi za napajanje električnih vozila (Institut za standardizaciju Srbije) :: https://iss.rs/ | SRPS HD 60364-6 — Električne instalacije niskog napona, verifikacija (ispitivanje) (iss.rs) :: https://iss.rs/ | Pravilnik o tehničkim normativima bezbednosti garaža od požara, „Sl. glasnik RS“ 31/2024 i 59/2025 :: https://pravno-informacioni-sistem.rs/eli/rep/sgrs/ministarstva/pravilnik/2024/31/2 | Zagrevanje šuko utičnica pri dugotrajnom punjenju (emobilitysimplified.com) :: https://www.emobilitysimplified.com/2019/10/ev-charging-basics-can-you-charge-your-electric-car-using-a-household-socket.html | Vodič profesionalnog upravnika: zasebna linija, ovlašćeni izvođač, atest (aleksic.xyz) :: https://www.aleksic.xyz/odrzavanje-zgrade/investiciono-odrzavanje/punjaci-elektricna-vozila-garazi/ | Pravilnik o tehničkim normativima za električne instalacije niskog napona, čl. 189 (ispitivanje pre predaje) :: https://www.paragraf.rs/propisi/pravilnik-o-tehnickim-normativima-elektricne-instalacije-niskog-napona.html | Pravilnik o pregledu i proveri opreme za rad i pregledu i ispitivanju električnih i gromobranskih instalacija, „Sl. glasnik RS“ 76/2024 i izmene (stručni nalaz) :: https://www.paragraf.rs/propisi/pravilnik-o-pregledu-i-proveri-opreme-za-rad-i-pregledu-elektricnih-i-gromobranskih-instalacija.html
 image: elektricar-atest
 image_alt: Električar meri instalaciju pored kućnog punjača u garaži
 ---
@@ -88,6 +88,16 @@ Ispitivanje ide po SRPS HD 60364-6. Za liniju punjača meri se i proverava:
 - otpor uzemljenja, polaritet i funkcionalni test punjača.
 
 Merenja traju 30–60 minuta i rade se odmah po ugradnji, a dokument dobijate isti dan. U njemu piše ko je ispitivao, šta, gde, kada i kojim instrumentima, sa rezultatima, zaključkom i potpisom. Bez toga nije atest, nego papir.
+
+</details>
+
+<details markdown="1">
+<summary>Detalji: izveštaj o ispitivanju ili stručni nalaz</summary>
+
+Pod rečju „atest“ obično se misli na jedan od dva dokumenta.
+
+- **Izveštaj o ispitivanju** izdaje izvođač posle radova. Pravilnik o tehničkim normativima za električne instalacije niskog napona traži ispitivanje pre predaje instalacije korisniku. Za kućni punjač to je dokument koji vam treba.
+- **Stručni nalaz** izdaje pravno lice sa licencom ministarstva nadležnog za rad. Obavezan je za električne instalacije radnih prostorija, u propisanim rokovima. Za punjač u privatnoj garaži nije propisan.
 
 </details>
 

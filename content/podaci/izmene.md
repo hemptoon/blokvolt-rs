@@ -13,6 +13,10 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 30. septembar 2026
 
+- Novi vodič [Električni auto bez garaže](/elektricni-auto-bez-garaze): koliko mesečno košta punjenje na javnim punjačima i u iznajmljenoj garaži, kada se garaža isplati i kako naći garažu sa strujom.
+- [Kalkulator troškova](/alati/kalkulator-troskova/): novo polje „Zakup garaže sa strujom“. Kalkulator pokazuje od koliko kilometara mesečno se garaža punjenjem isplati.
+- Vodiči [Punjenje auta u zgradi](/punjenje-elektricnog-auta-u-zgradi) i [Ko plaća struju](/ko-placa-struju-za-punjenje): cena na brzim javnim punjačima usklađena je sa [indeksom cena](/javno-punjenje/), 43–79 RSD po kWh po računima, umesto 70–91 RSD.
+- [Bezbednost i atest](/bezbednost-punjenja-atest): dopunjeno koja se dva dokumenta zovu „atest“ i koji je potreban za kućni punjač.
 - Novi vodič [Kako platiti manje na javnom punjaču](/javno-punjenje/kako-jeftinije-puniti/): zašto je kod naplate po minutu najjeftinije puniti od 10–20 % do oko 80 %, kako izabrati punjač po snazi auta i šta košta zima, roming i zauzeće posle punjenja. Link je na stranici [Javno punjenje](/javno-punjenje/) i u [Vodičima](/vodici/).
 
 ## 29. septembar 2026

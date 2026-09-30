@@ -2,11 +2,11 @@
 title: Punjenje električnog auta u zgradi u Srbiji: kompletan vodič
 h1: Punjenje auta u zgradi
 description: Punjenje u garaži ili na parking mestu zgrade: šta je legalno, kada se pita skupština, kako izgleda ugradnja i koliko se štedi u odnosu na javne punjače.
-lead: Punjenje u garaži zgrade je legalno, ne traži licencu, a noću je deset i više puta jeftinije od javnog punjača.
+lead: Punjenje u garaži zgrade je legalno, ne traži licencu, a noću je 6 do 20 puta jeftinije od brzog javnog punjača.
 kicker: Vodič
-updated: 21.09.2026
+updated: 30.09.2026
 published: 2026-09-08
-modified: 2026-09-21
+modified: 2026-09-30
 priority: 0.8
 path: /punjenje-elektricnog-auta-u-zgradi.html
 sources: Zakon o energetici, čl. 210v (punjenje na javnim mestima) :: https://www.paragraf.rs/propisi/zakon_o_energetici.html | Zakon o stanovanju i održavanju zgrada, čl. 12, 44 i 45 :: https://www.paragraf.rs/propisi/zakon_o_stanovanju_i_odrzavanju_zgrada.html | Pravilnik o tehničkim normativima bezbednosti garaža od požara, „Sl. glasnik RS“ 31/2024 i 59/2025 :: https://pravno-informacioni-sistem.rs/eli/rep/sgrs/ministarstva/pravilnik/2024/31/2 | Cenovnik EPS-a za domaćinstva od 1.10.2025 (ceneizakon.rs) :: https://ceneizakon.rs/cena-struje-u-srbiji-2026/
@@ -17,12 +17,12 @@ image_alt: Zidni punjač u podzemnoj garaži stambene zgrade, auto na punjenju
 - Punjenje u zgradi je **legalno** i ne traži licencu
 - Potrebni su **namenska linija sa zaštitom**, **MID brojilo** i, kad kabl prolazi kroz zajedničke delove, **odluka skupštine**
 - Ugradnja traje **jedan dan**, a sa odlukom skupštine ceo postupak **4–10 nedelja**
-- Noćni kilovat-sat kod kuće, sa svim naknadama: **oko 4–7 RSD**; na javnim punjačima **70–91 RSD**
+- Noćni kilovat-sat kod kuće, sa svim naknadama: **oko 4–7 RSD**; na brzim javnim punjačima **43–79 RSD**
 </div>
 
 ## Koliko se štedi
 
-Za 1.500 km mesečno, uz prosečnu potrošnju od 16 kWh na 100 km, autu treba oko 240 kWh. Kod kuće, po nižoj tarifi, to je **1.000–1.700 RSD** mesečno, a na javnim punjačima **17.000–22.000 RSD**. Auto se puni noću i ujutru je pun, bez čekanja na punjaču.
+Za 1.500 km mesečno, uz prosečnu potrošnju od 16 kWh na 100 km, autu treba oko 240 kWh. Kod kuće, po nižoj tarifi, to je **1.000–1.700 RSD** mesečno, a na brzim javnim punjačima **10.300–19.000 RSD**. Auto se puni noću i ujutru je pun, bez čekanja na punjaču.
 
 ## Tri situacije u zgradi
 

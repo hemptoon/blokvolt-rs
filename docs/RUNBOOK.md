@@ -100,7 +100,10 @@ grep -rn "43–79\|36 \|radi 24\|24 od 36\|7\.155\|535\|~220\|4–7 RSD" templat
 ```
 
 - DC receipt range "43–79 RSD/kWh": `templates/javno_index.html` (stat block), `content/javno/region.md`,
-  `content/data/kalkulator.json` → `public_range`.
+  `content/data/kalkulator.json` → `public_range`, and the guides `content/vodici/ko-placa-struju-za-punjenje.md`,
+  `punjenje-elektricnog-auta-u-zgradi.md` (240 kWh → "10.300–19.000 RSD", lead "6 do 20 puta") and
+  `elektricni-auto-bez-garaze.md` (160 kWh → "6.900–12.600 RSD", savings "5.900 / 11.700 RSD", break-even
+  "1.000–2.000 km" for a 100 € garage; the slow AC row "oko 91 RSD" = `public` → `ac` in `kalkulator.json`).
 - State chargers "36 / radi 24": the home stat and the /javno-punjenje/ stat are computed from
   `content/mapa/putevi-srbije.json`; by hand: `content/operateri/putevi-srbije.json` (`network`, `card`,
   `network_short`), `content/javno/indeks-cena.json` (the putevi-srbije row), `content/javno/besplatni-punjaci.md`,

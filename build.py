@@ -866,7 +866,7 @@ VODICI_GROUPS = [
         A('/ko-placa-struju-za-punjenje.html', icon='coins'),
         {'href': '/alati/racun-u-zgradi/', 'name': 'Ko koliko plaća u zgradi', 'desc': 'Kalkulator: koliko komšije plaćaju tuđe punjenje bez brojila.', 'icon': 'calc', 'img': 'stambena-zgrada-balkoni'},
         A('/bezbednost-punjenja-atest.html', icon='shield'), A('/punjac-u-iznajmljenoj-garazi.html', icon='plug'),
-        A('/wallbox-cena-srbija.html', icon='plug')]),
+        A('/elektricni-auto-bez-garaze.html', icon='car'), A('/wallbox-cena-srbija.html', icon='plug')]),
     ('Kupovina i vlasništvo', [
         A('/podaci/subvencije-2026/', icon='gift'), A('/podaci/cene-elektricnih-automobila/', 'Cene električnih automobila', icon='car'),
         A('/podaci/registracija-i-porezi/', icon='doc'), A('/podaci/uvoz-i-carina/', icon='doc'),

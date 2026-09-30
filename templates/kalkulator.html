@@ -26,6 +26,7 @@
 <div class="field" id="w-homecustom" hidden><label for="c-homecustom">Cena kWh sa računa, RSD</label><input class="input" type="number" id="c-homecustom" min="0" max="100" step="0.1" value="{{ '%.1f'|format(home_default) }}" inputmode="decimal"></div>
 </div>
 <p class="note">Kilovat-sat sa svim dažbinama: <b id="o-homeprice">{{ home_default|sr(2) }} RSD</b></p>
+<div class="field"><label for="c-rent">Zakup garaže sa strujom, RSD mesečno</label><input class="input" type="number" id="c-rent" min="0" max="200000" step="500" value="0" inputmode="numeric"><span class="hint">Samo ako garažu iznajmljujete da biste punili. 100 € ≈ 11.720 RSD.</span></div>
 <details><summary>Gubici i snaga priključka</summary>
 <div class="fields2">
 <div class="field"><label for="c-loss">Gubici pri punjenju, %</label><input class="input" type="number" id="c-loss" min="0" max="30" step="1" value="{{ d.loss }}" inputmode="numeric"><span class="hint">Deo struje ostaje u punjaču i kablu.</span></div>
@@ -55,7 +56,9 @@
 <div class="row2"><span>Kod kuće, <span id="o-homekwh">{{ ex.home_kwh|sr }}</span> kWh</span><b id="o-homecost">{{ ex.home_cost|sr }} RSD</b></div>
 <div class="row2"><span>Javni punjači, <span id="o-pubkwh">{{ ex.pub_kwh|sr }}</span> kWh</span><b id="o-pubcost">{{ ex.pub_cost|sr }} RSD</b></div>
 <div class="row2"><span>Veća snaga priključka</span><b id="o-kwcost">{{ ex.kw_cost|sr }} RSD</b></div>
+<div class="row2" id="w-rent" hidden><span>Zakup garaže</span><b id="o-rentcost">0 RSD</b></div>
 <p class="note" id="o-zone">Punjenje kod kuće dodaje oko {{ ex.home_kwh|sr }} kWh mesečno na vaš račun.</p>
+<p class="note" id="o-rent" hidden></p>
 </aside>
 </form>
 <noscript><p class="note">Kalkulatoru treba JavaScript. Iznad je primer sa podrazumevanim vrednostima.</p></noscript>
@@ -71,6 +74,7 @@
 <div class="sec faq">
 <details><summary>Kako se računa</summary>
 <p><b>Kod kuće:</b> (cena energije + {{ eps.oie|sr(3) }} RSD za obnovljive izvore + {{ eps.ee|sr(3) }} RSD za energetsku efikasnost) × akciza 7,5 % × PDV 20 %. Struja sa brojila = kilometri × potrošnja ÷ 100 × (1 + gubici).</p>
+<p><b>Zakup garaže:</b> dodaje se mesečnom trošku. Garaža se punjenjem isplati od kilometraže na kojoj je ušteda u odnosu na javne punjače jednaka zakupu.</p>
 <p><b>Javni punjači:</b> kWh koje auto primi × cena po kWh. Za brzi punjač uzeto je {{ public[0].rsd_kwh }} RSD po kWh: {{ public[0].note }}.</p>
 <p><b>Gorivo:</b> kilometri × litara na 100 km ÷ 100 × cena litra.</p>
 </details>
@@ -81,7 +85,7 @@
 {{ src_block(src_items) }}
 <p class="upd">Ažurirano {{ calc.checked }} · <a href="/ispravka/">Prijavite grešku</a></p>
 <script id="calc-data" type="application/json">{{ calc_json|safe }}</script>
-<script id="bv-i18n" type="application/json">{"dizel": "Evrodizel", "benzin": "Benzin", "mes": "RSD mesečno", "god": "RSD godišnje", "zone": "Punjenje kod kuće dodaje oko {kwh} kWh mesečno na vaš račun. Zelena zona važi do 350 kWh, plava do 1.200 kWh."}</script>
+<script id="bv-i18n" type="application/json">{"dizel": "Evrodizel", "benzin": "Benzin", "mes": "RSD mesečno", "god": "RSD godišnje", "zone": "Punjenje kod kuće dodaje oko {kwh} kWh mesečno na vaš račun. Zelena zona važi do 350 kWh, plava do 1.200 kWh.", "rent": "Bez garaže, sve na javnim punjačima po {pub} RSD/kWh: {all} RSD mesečno. Garaža se punjenjem isplati od oko {km} km mesečno.", "rentno": "Uz ove brojeve garaža se samim punjenjem ne isplati."}</script>
 <script>
 (function(){
  var D=JSON.parse(document.getElementById('calc-data').textContent),E=D.eps,T=JSON.parse(document.getElementById('bv-i18n').textContent);
@@ -95,7 +99,8 @@
  function calc(){
   var km=num('c-km'),k100=num('c-kwh100'),loss=num('c-loss')/100,share=num('c-share')/100,pub=num('c-pub'),kw=num('c-kw');
   var need=km*k100/100,pubKwh=need*share,homeKwh=need*(1-share)*(1+loss),hp=homePrice();
-  var homeCost=homeKwh*hp,pubCost=pubKwh*pub,kwCost=kw*E.snaga_rsd_kw*(1+E.akciza)*(1+E.pdv),ev=homeCost+pubCost+kwCost;
+  var rent=num('c-rent'),homeCost=homeKwh*hp,pubCost=pubKwh*pub,kwCost=kw*E.snaga_rsd_kw*(1+E.akciza)*(1+E.pdv),ev=homeCost+pubCost+kwCost+rent;
+  var gain=(pub-hp*(1+loss))*k100/100*(1-share);   // RSD saved per km by charging in the rented garage instead of on public chargers
   var ice=km*num('c-l100')/100*num('c-lp'),save=ice-ev;
   $('o-homeprice').textContent=fmt(hp,2)+' RSD';
   $('o-share').textContent=Math.round(share*100)+' %';
@@ -106,6 +111,8 @@
   $('o-homekwh').textContent=fmt(homeKwh);$('o-homecost').textContent=fmt(homeCost)+' RSD';
   $('o-pubkwh').textContent=fmt(pubKwh);$('o-pubcost').textContent=fmt(pubCost)+' RSD';$('o-kwcost').textContent=fmt(kwCost)+' RSD';
   $('o-zone').textContent=T.zone.replace('{kwh}',fmt(homeKwh));
+  $('w-rent').hidden=!(rent>0);$('o-rentcost').textContent=fmt(rent)+' RSD';$('o-rent').hidden=!(rent>0);
+  if(rent>0)$('o-rent').textContent=gain>0?T.rent.replace('{pub}',fmt(pub)).replace('{all}',fmt(need*pub)).replace('{km}',fmt(Math.max(50,Math.round(rent/gain/50)*50))):T.rentno;
  }
  $('c-zone').addEventListener('change',function(){var c=this.value==='custom';$('w-homecustom').hidden=!c;$('w-tariff').hidden=c;calc()});
  $('c-fuel').addEventListener('change',function(){var dz=this.value==='dizel';$('c-lp').value=dz?D.fuel.dizel:D.fuel.benzin;$('c-l100').value=dz?D.defaults.l100_dizel:D.defaults.l100_benzin;calc()});
