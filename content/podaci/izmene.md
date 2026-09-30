@@ -13,6 +13,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 30. septembar 2026
 
+- Ažurirana cena pretplate Evolako na [stranici firme](/firme/evolako/) i u [tabeli cena punjača](/cena-punjaca-za-elektricni-auto), prema cenovniku na evolako.rs.
 - Novi vodič [Električni auto bez garaže](/elektricni-auto-bez-garaze): koliko mesečno košta punjenje na javnim punjačima i u iznajmljenoj garaži, kada se garaža isplati i kako naći garažu sa strujom.
 - [Kalkulator troškova](/alati/kalkulator-troskova/): novo polje „Zakup garaže sa strujom“. Kalkulator pokazuje od koliko kilometara mesečno se garaža punjenjem isplati.
 - Vodiči [Punjenje auta u zgradi](/punjenje-elektricnog-auta-u-zgradi) i [Ko plaća struju](/ko-placa-struju-za-punjenje): cena na brzim javnim punjačima usklađena je sa [indeksom cena](/javno-punjenje/), 43–79 RSD po kWh po računima, umesto 70–91 RSD.
