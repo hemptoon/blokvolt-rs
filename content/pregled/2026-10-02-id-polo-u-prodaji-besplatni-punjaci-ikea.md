@@ -4,9 +4,9 @@ date: 02.10.2026
 lead: Prvi broj Nedeljnog pregleda: vesti, cene javnog punjenja i novo na mapi punjača od 25. septembra do 1. oktobra.
 cover: /assets/pregled/2026-10-02.jpg
 cover_alt: Mali električni auto na punjenju na bulevaru
-status: preview
+status: approved
 send_at: 02.10.2026 08:00
-approved_hash:
+approved_hash: 462f3c01a02d3177a0d023e6738b00a938a7ee15e48e37a05df9adee8db628bd
 ---
 ## Nedelja u tri rečenice {#uvod}
 
