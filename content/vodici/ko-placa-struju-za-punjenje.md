@@ -112,7 +112,7 @@ Iznos nadoknade: 240,0 kWh × 6,13 RSD/kWh = **1.471 RSD**
 Uplata: račun stambene zajednice [\_\_\_], poziv na broj [\_\_\_], rok 15 dana. Prilog: fotografija displeja brojila na dan očitavanja.
 </div>
 
-Vlasnik garaže dobija izveštaj mejlom, a iznos ide uz kiriju ili posebnom uplatom. Upravnik uplatu knjiži kao nadoknadu troška, ne kao prihod od prodaje.
+Izveštaj vlasniku garaže šaljete vi, mejlom, a iznos plaćate uz kiriju ili posebnom uplatom. Upravnik uplatu knjiži kao nadoknadu troška, ne kao prihod od prodaje.
 
 </details>
 

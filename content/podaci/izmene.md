@@ -13,6 +13,8 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 1. oktobar 2026
 
+- [Evolako](/firme/evolako/): u koloni „Papiri za skupštinu“ sada piše „Šabloni“ — firma daje šablone predloga odluke i tačke dnevnog reda i tehnički opis ugradnje, a papire popunjava i predaje stanar ili upravnik. Iz cene paketa ZGRADA uklonjeno je „i papirima“. Usklađeni su i tekst „Izdvojeno“ u vodičima i [tabela cena punjača](/cena-punjaca-za-elektricni-auto).
+- Vodiči [Punjenje auta u zgradi](/punjenje-elektricnog-auta-u-zgradi), [Saglasnost skupštine](/punjac-u-zgradi-skupstina), [Ko plaća struju](/ko-placa-struju-za-punjenje) i [Wallbox cena](/wallbox-cena-srbija): pojašnjeno je da papire za skupštinu i vlasnika garaže pripremate vi ili upravnik, a izvođač daje tehnički opis ugradnje i, često, šablon.
 - Novi vodič [Plug-in hibrid na javnom punjaču](/javno-punjenje/plug-in-hibrid-na-javnom-punjacu/): zašto hibrid sa ugrađenim punjačem od 3,3–6,6 kW plaća kWh 152–303 RSD na AC punjaču, kada je benzin jeftiniji i kada se javni punjač isplati. Link je na stranici [Javno punjenje](/javno-punjenje/) i u [Vodičima](/vodici/).
 
 ## 30. septembar 2026

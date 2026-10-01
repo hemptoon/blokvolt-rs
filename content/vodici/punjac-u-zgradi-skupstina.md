@@ -61,7 +61,7 @@ Skupština retko odbija sam punjač, nego nejasan račun i nejasnu odgovornost. 
 
 Sličan redosled preporučuju i profesionalni upravnici.
 
-1. **Procena na lokaciji**: gde je najbliža struja, čije je brojilo, kuda može kabl, kolika je snaga priključka i ima li trofazne struje. Traje 30 minuta i daje tačnu cenu i tekst za skupštinu.
+1. **Procena na lokaciji**: gde je najbliža struja, čije je brojilo, kuda može kabl, kolika je snaga priključka i ima li trofazne struje. Traje 30 minuta i daje tačnu cenu i tehnički opis ugradnje. Tekst odluke pišete po šablonu ispod.
 2. **Tehnička specifikacija** na jednoj strani.
 3. **Pismeni zahtev upravniku.** Mejl je dovoljan.
 4. **Sednica.** Dođite lično i odgovorite na tri pitanja.

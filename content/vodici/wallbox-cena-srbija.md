@@ -1,7 +1,7 @@
 ---
 title: Wallbox cena u Srbiji 2026: šta zaista ulazi u cenu ugradnje
 h1: Wallbox cena u Srbiji
-description: Koliko košta wallbox 11 kW sa ugradnjom u Srbiji i šta mora da uđe u ponudu: namenska linija, FID zaštita, MID brojilo, atest i papiri.
+description: Koliko košta wallbox 11 kW sa ugradnjom u Srbiji i šta mora da uđe u ponudu: namenska linija, FID zaštita, MID brojilo, atest i tehnički opis ugradnje.
 lead: Razlika između ponuda retko je u uređaju, a skoro uvek u liniji, zaštiti, brojilu i atestu.
 kicker: Vodič
 updated: 21.09.2026
@@ -25,7 +25,7 @@ image_alt: Konektor punjača uključen u električni auto
 - **FID zaštita tip A + DC**.
 - **Sertifikovano MID brojilo**.
 - **Ugradnja i atest** ovlašćenog izvođača.
-- **Papiri** za skupštinu ili vlasnika garaže.
+- **Tehnički opis ugradnje** za skupštinu ili vlasnika garaže, a često i šablon odluke ili saglasnosti.
 
 Ponuda bez atesta, FID zaštite ili brojila nije jeftinija, nego nepotpuna. Razliku plaćate kasnije: kod skupštine, osiguranja ili prvog kvara. Pre potpisa uporedite [javne cene firmi](/cena-punjaca-za-elektricni-auto).
 

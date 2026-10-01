@@ -366,6 +366,9 @@ def verdict_class(v):
         return 'no'
     if v.startswith('na upit') or 'renta' in v:
         return 'ask'
+    if v.startswith('šablon'):
+        # only templates (the client fills in and submits the papers): partial, so no "Papiri za skupštinu" badge
+        return 'ask'
     return 'yes'
 
 
@@ -838,7 +841,7 @@ def render(tpl, path, **ctx):
 
 
 # ---------------------------------------------------------------- articles (Markdown)
-PROMO = {'text': 'Evolako ugrađuje punjač u zgradi ili garaži sa MID brojilom i papirima za skupštinu, uz mesečni obračun struje po ceni iz računa EPS-a.',
+PROMO = {'text': 'Evolako ugrađuje punjač u zgradi ili garaži sa MID brojilom, uz mesečni obračun struje po ceni iz računa EPS-a i šablone za skupštinu.',
          'href': EVOLAKO, 'link': 'evolako.rs'}
 PROMO_ON = {'/punjenje-elektricnog-auta-u-zgradi.html', '/punjac-u-zgradi-skupstina.html', '/ko-placa-struju-za-punjenje.html',
             '/punjac-u-iznajmljenoj-garazi.html'}

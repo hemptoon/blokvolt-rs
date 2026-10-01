@@ -12,16 +12,16 @@
  "brands": [],
  "price_headline": "WALLBOX 11 kW: 125.000 RSD",
  "cells": {
-  "cena": "<b class=\"pr\">WALLBOX 11 kW: 125.000 RSD</b><br/>START: 59.000 RSD<br/>ZGRADA: od 96.000 RSD po mestu<small>sa PDV-om, ugradnjom, MID brojilom i papirima; standardna ugradnja: do 7 m kabla od postojeće razvodne table, na istom nivou</small>",
+  "cena": "<b class=\"pr\">WALLBOX 11 kW: 125.000 RSD</b><br/>START: 59.000 RSD<br/>ZGRADA: od 96.000 RSD po mestu<small>sa PDV-om, ugradnjom i MID brojilom; standardna ugradnja: do 7 m kabla od postojeće razvodne table, na istom nivou</small>",
   "ugradnja": "<b class=\"v\">Da</b><small>namenska linija, FID tip A + DC zaštita; procena 3.500 RSD se uračunava u cenu</small>",
   "brojilo": "<b class=\"v\">Da</b><small>MID brojilo i mesečni obračun po ceni iz računa EPS-a, bez marže</small>",
-  "skupstina": "<b class=\"v\">Da</b><small>tehnička specifikacija, predlog odluke, tačka dnevnog reda</small>",
+  "skupstina": "<b class=\"v ask\">Šabloni</b><small>predlog odluke i tačka dnevnog reda, uz tehnički opis ugradnje; papire popunjava i predaje stanar ili upravnik</small>",
   "usluga": "<b class=\"v\">Da, opciono</b><small>pretplata 990 RSD/mes (prva 2 meseca 0): obračun sa izveštajem, nadzor, servis za 48h, zimska provera, produžena garancija, prenos pri selidbi. Garancija: 2 godine na opremu; uz pretplatu — dok pretplata traje</small>"
  },
  "verdicts": {
   "ugradnja": "Da",
   "brojilo": "Da",
-  "skupstina": "Da",
+  "skupstina": "Šabloni",
   "usluga": "Da, opciono"
  },
  "contact": {

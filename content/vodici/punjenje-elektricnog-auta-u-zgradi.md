@@ -53,7 +53,7 @@ Za punjenje u privatnoj garaži ne važe obaveze operatora javnih punionica. Pau
 ## Ugradnja i cena
 
 1. **Procena na lokaciji**: instalacija, snaga i put kabla. Dobijate tačnu ponudu, ne telefonsku prognozu.
-2. **Papiri** za skupštinu, vlasnika ili samo ugovor. Priprema ih izvođač, a vi potpisujete.
+2. **Papiri** za skupštinu, vlasnika ili samo ugovor. Pripremate ih vi ili upravnik, često po šablonu koji daje izvođač.
 3. **Ugradnja za jedan radni dan**: namenska linija, FID zaštita tip A + DC, MID brojilo i atest.
 4. **Mesečni obračun** po brojilu i ceni iz računa EPS-a, bez marže.
 
