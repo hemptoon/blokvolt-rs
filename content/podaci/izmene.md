@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 30.09.2026
+updated: 01.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-09-30
+modified: 2026-10-01
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 1. oktobar 2026
+
+- Novi vodič [Plug-in hibrid na javnom punjaču](/javno-punjenje/plug-in-hibrid-na-javnom-punjacu/): zašto hibrid sa ugrađenim punjačem od 3,3–6,6 kW plaća kWh 152–303 RSD na AC punjaču, kada je benzin jeftiniji i kada se javni punjač isplati. Link je na stranici [Javno punjenje](/javno-punjenje/) i u [Vodičima](/vodici/).
+
 ## 30. septembar 2026
 
 - Ažurirana cena pretplate Evolako na [stranici firme](/firme/evolako/) i u [tabeli cena punjača](/cena-punjaca-za-elektricni-auto), prema cenovniku na evolako.rs.
