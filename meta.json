@@ -1,0 +1,108 @@
+{
+ "about": "Open charging data of Serbia and its neighbours for blokvolt.com / blokvolt.rs — see README.md",
+ "started": "2026-10-03T09:25:58Z",
+ "countries": {
+  "HR": {
+   "osm": {
+    "fetched": "2026-10-03T09:26:35Z",
+    "source": "geofabrik",
+    "server": "https://download.geofabrik.de/europe/croatia-latest.osm.pbf",
+    "timestamp_osm_base": "2026-10-02T20:21:34Z",
+    "elements": 578
+   },
+   "ocm": {
+    "pois": 285
+   }
+  },
+  "BA": {
+   "osm": {
+    "fetched": "2026-10-03T09:27:30Z",
+    "source": "geofabrik",
+    "server": "https://download.geofabrik.de/europe/bosnia-herzegovina-latest.osm.pbf",
+    "timestamp_osm_base": "2026-10-02T20:21:34Z",
+    "elements": 142
+   },
+   "ocm": {
+    "pois": 41
+   }
+  },
+  "ME": {
+   "osm": {
+    "fetched": "2026-10-03T09:28:09Z",
+    "source": "geofabrik",
+    "server": "https://download.geofabrik.de/europe/montenegro-latest.osm.pbf",
+    "timestamp_osm_base": "2026-10-02T20:21:34Z",
+    "elements": 15
+   },
+   "ocm": {
+    "pois": 32
+   }
+  },
+  "MK": {
+   "osm": {
+    "fetched": "2026-10-03T09:28:48Z",
+    "source": "geofabrik",
+    "server": "https://download.geofabrik.de/europe/macedonia-latest.osm.pbf",
+    "timestamp_osm_base": "2026-10-02T20:21:34Z",
+    "elements": 30
+   },
+   "ocm": {
+    "pois": 13
+   }
+  },
+  "AL": {
+   "osm": {
+    "fetched": "2026-10-03T09:29:30Z",
+    "source": "geofabrik",
+    "server": "https://download.geofabrik.de/europe/albania-latest.osm.pbf",
+    "timestamp_osm_base": "2026-10-02T20:21:34Z",
+    "elements": 76
+   },
+   "ocm": {
+    "pois": 15
+   }
+  },
+  "XK": {
+   "osm": {
+    "fetched": "2026-10-03T09:30:08Z",
+    "source": "geofabrik",
+    "server": "https://download.geofabrik.de/europe/kosovo-latest.osm.pbf",
+    "timestamp_osm_base": "2026-10-02T20:21:34Z",
+    "elements": 7
+   },
+   "ocm": {
+    "pois": 17
+   }
+  },
+  "SI": {
+   "osm": {
+    "fetched": "2026-10-03T09:31:23Z",
+    "source": "geofabrik",
+    "server": "https://download.geofabrik.de/europe/slovenia-latest.osm.pbf",
+    "timestamp_osm_base": "2026-10-02T20:21:34Z",
+    "elements": 498
+   },
+   "ocm": {
+    "pois": 214
+   }
+  },
+  "RS": {
+   "osm": {
+    "fetched": "2026-10-03T09:32:36Z",
+    "source": "geofabrik",
+    "server": "https://download.geofabrik.de/europe/serbia-latest.osm.pbf",
+    "timestamp_osm_base": "2026-10-01T20:22:06Z",
+    "elements": 112
+   },
+   "ocm": {
+    "pois": 116
+   }
+  }
+ },
+ "ocm_export": {
+  "repo": "https://github.com/openchargemap/ocm-export",
+  "commit": "8e3bedca48ca94807d96b2f5e7ee02cffe63ae54",
+  "date": "2026-04-22T18:59:34+08:00"
+ },
+ "finished": "2026-10-03T09:32:36Z"
+}
