@@ -13,6 +13,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 6. oktobar 2026
 
+- Novi vodič [Najam električnog automobila](/najam-elektricnog-automobila): ko u Srbiji iznajmljuje električni automobil, koliko košta nedelja ili mesec (cenovnici od 6. oktobra 2026), kako se puni auto iz najma i šta pitati pre potpisivanja. Link je u [Vodičima](/vodici/) i na stranici [rent-a-car i car-sharing](/podaci/rent-a-car-i-car-sharing/).
 - [Mapa punjača](/mapa/): novo dugme „Najbliži punjač“ — tri najbliža punjača koja rade, sa navigacijom u Google mapama, Apple mapama ili Waze-u. Lokacija ostaje na vašem uređaju.
 - [Mapa punjača](/mapa/): „Moj auto“ — izaberite auto i mapa pokazuje cenu po kilometru na svakom punjaču, uz poređenje sa benzinom i punjenjem kod kuće. Računica uzima u obzir snagu koju auto zaista prima, gubitke pri punjenju i naknadu za pokretanje.
 - [Mapa punjača](/mapa/): za Charge&GO je upisana cena svakog priključka iz aplikacije (05.10.2026), zajedno sa napomenama mreže: gde je potreban sopstveni kabl i kad je pristup ograničen. Kartica punjača ima i kratko uputstvo „Kako se puni ovde“, a vozači uz prijavu mogu da jave da li je kabl na punjaču, da li se parking plaća i kakvo je radno vreme.

@@ -48,7 +48,7 @@ U Nišu i na niškom aerodromu ponude nema.
 
 Pravilo punjenja objavljuje samo Gama Rent: automobil se preuzima sa najmanje 80 % baterije i vraća u istom stanju. Electric Blue uz automobil daje kablove i uputstvo.
 
-Pre najma pitajte koliko baterije treba pri vraćanju, ko plaća Supercharger i javne punjače, ima li kabl za kućnu utičnicu ili Type 2 i sme li se voziti van Srbije. Cene: [javno punjenje](/javno-punjenje/) i [punjenje u regionu](/javno-punjenje/region/).
+Pre najma pitajte koliko baterije treba pri vraćanju, ko plaća Supercharger i javne punjače, ima li kabl za kućnu utičnicu ili Type 2 i sme li se voziti van Srbije. Cene: [javno punjenje](/javno-punjenje/) i [punjenje u regionu](/javno-punjenje/region/). Spisak pitanja i računica za nedelju dana: [najam električnog automobila](/najam-elektricnog-automobila).
 
 ## Car-sharing i taksi
 
