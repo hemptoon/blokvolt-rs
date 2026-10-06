@@ -711,8 +711,12 @@ when a photo has no credit or a news item names an unknown photo.
   frame width ÷ `innerWidth` (0.92 on 25.09, 0.80 on 26.09 — check each time) — about 1455×818 px. Never pass
   `scale` when saving. Look at every capture before using it. A larger image (the home hero) is captured in tiles:
   show it at ~1456 CSS px wide, move it by whole CSS px between four `zoom`s of the same region and stitch them.
-- **Not only news.** The home hero (`pocetna-punjenje`, number plate blurred) and the list thumbnails (`thumb:`)
-  are in `foto.json` too, outside the pools, so they appear in the credits list on `/metodologija/`.
+- **Not only news.** The list thumbnails (`thumb:`) are in `foto.json` too, outside the pools, so they appear in
+  the credits list on `/metodologija/`. The home hero is not (since 06.10.2026): `pocetna-punjenje-v2-*.webp` is an
+  AI photo (Higgsfield GPT Image 2.5, 2k; plate reads BLOKVOLT, no real plate, no blur), cropped 2308×1520 from the
+  original on the branch `media-raw-2026-09` (`media-raw/pocetna-hero-2026-10-06.png`, crop x 380–2688); the
+  `/metodologija/#vesti` sentence about AI illustrations names it. The old Unsplash files `pocetna-punjenje-*` stay
+  in `static/` unused. Its frame is set by `.hero2-home` in `bv.css` (aspect 2308/1520, phones 3:2).
 - **Files.** `python3 scripts/news_photo.py <capture.png> <name>` writes the three WebP sizes and the OG JPEG.
   Add the entry to `foto.json` (and to a pool if it suits a tag), then the build: the caption+credit and the alt
   text become translation segments (3.9); `/metodologija/#vesti` lists every photo with its credit

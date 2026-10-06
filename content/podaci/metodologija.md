@@ -65,7 +65,7 @@ Vesti prate zvanične izvore i pouzdane medije: ministarstva, Službeni glasnik,
 - Tekst je kratak i napisan svojim rečima. Citati su kratki i uz izvor.
 - Fotografije su sa Unsplasha i Wikimedia Commonsa, pod slobodnim licencama, a iz medija se ne preuzimaju. Ispod fotografije piše šta je na njoj, ko je autor i koja je licenca. Fotografija ne prikazuje uvek baš mesto ili automobil iz vesti; to se vidi iz potpisa.
 - Tekst vesti se priprema uz pomoć AI alata, po istim pravilima kao ceo sajt. Svaka brojka se pre objave proverava u izvoru.
-- Fotografija na početnoj strani je takođe sa Unsplasha, sa zamućenom registarskom tablicom. Ilustracije uz vodiče napravljene su uz pomoć AI alata i ne prikazuju stvarna mesta ni ljude.
+- Fotografija na početnoj strani i ilustracije uz vodiče napravljene su uz pomoć AI alata i ne prikazuju stvarna mesta ni ljude.
 - Vesti koje se oslanjaju na podatke sa ovog sajta (cene punjenja, stanje državnih punjača) upućuju na stranicu sa podacima.
 - Zastarela vest se ne briše. Kad se nešto promeni, objavljuje se nova vest.
 

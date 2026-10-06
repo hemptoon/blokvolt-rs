@@ -5,9 +5,12 @@
     python3 scripts/qa/app_shots.py
 
 Renders three pages of the local build at 390x844 CSS px, DPR 3, as an Android phone, and writes
-static/assets/img/app-ekran-{pocetna,punjac,cene}-{390,780}.webp. The container cannot load the map tiles,
-so the map screenshot is the station card (it does not need tiles), not the bare map."""
+static/assets/img/app-ekran-{pocetna-v2,punjac,cene}-{390,780}.webp. The container cannot load the map tiles,
+so the map screenshot is the station card (it does not need tiles), not the bare map.
+Pass names to render only those (python3 scripts/qa/app_shots.py app-ekran-pocetna-v2). Files under /assets/
+are cached for a year: when a screenshot changes visibly, give it a new name and change templates/aplikacija.html."""
 import asyncio
+import sys
 from pathlib import Path
 from PIL import Image
 from playwright.async_api import async_playwright
@@ -15,7 +18,7 @@ from playwright.async_api import async_playwright
 ROOT = Path(__file__).resolve().parents[2]
 IMG = ROOT / 'static' / 'assets' / 'img'
 BASE = 'http://localhost:8787'
-SHOTS = {'app-ekran-pocetna': '/', 'app-ekran-punjac': '/mapa/?grad=novi-sad#cg-80', 'app-ekran-cene': '/javno-punjenje/'}
+SHOTS = {'app-ekran-pocetna-v2': '/', 'app-ekran-punjac': '/mapa/?grad=novi-sad#cg-80', 'app-ekran-cene': '/javno-punjenje/'}
 UA = 'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Mobile Safari/537.36'
 
 
@@ -23,6 +26,8 @@ async def main():
     async with async_playwright() as p:
         b = await p.chromium.launch()
         for name, path in SHOTS.items():
+            if sys.argv[1:] and name not in sys.argv[1:]:
+                continue
             ctx = await b.new_context(viewport={'width': 390, 'height': 844}, device_scale_factor=3, is_mobile=True,
                                       has_touch=True, reduced_motion='reduce', user_agent=UA)
             pg = await ctx.new_page()
