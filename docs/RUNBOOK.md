@@ -14,6 +14,10 @@ needed or handled.
   who runs the site is said only on /o-sajtu/). No ratings, rankings, affiliate links or paid placements.
   Logos only identify a company: taken from its own website, shown as-is, removed on request (note in
   /metodologija/). Missing information is written as "Ne pominje se", never as "ne".
+  Order of firms (owner's decision, 06.10.2026): the "Izdvojeno" firm is listed first in every firm list
+  (register, type hubs, cities, similar firms, price page); groups A and B are shown as one section, sorted A–Z;
+  the price page sorts by price (`list_key`, `SECTIONS`, `grouped` in build.py). /firme/ ("Kako se čita
+  spisak"), /metodologija/, /o-sajtu/ and /pomoc/ko-stoji-iza-blokvolta/ say exactly this — change them together.
   The old label "naša ponuda" and the site-wide Evolako mentions are retired (owner's decision, 23.09.2026):
   some scheduled-task prompts still quote «naša ponuda» — follow this runbook, never bring the label back.
 - Short texts: one idea per sentence, details and footnotes in `<details>` or on the source/method pages,
