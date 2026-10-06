@@ -74,7 +74,26 @@
       nr_wait: 'Tražim tvoju lokaciju…', nr_denied: 'Pregledač nema dozvolu za lokaciju. Dozvoli je za ovaj sajt u podešavanjima pregledača, pa pokušaj ponovo.',
       nr_unavail: 'Lokacija trenutno nije dostupna. Pokušaj ponovo za minut.', nr_retry: 'Pokušaj ponovo', nr_privacy: 'Lokacija ostaje na tvom uređaju.',
       nr_far: 'Na mapi su punjači u Srbiji.', nr_find: 'Pronađi najbliže',
-      nr_ask: 'Za najbliže punjače treba tvoja lokacija. Pregledač je traži tek kad pritisneš dugme i ne šalje je sajtu.'
+      nr_ask: 'Za najbliže punjače treba tvoja lokacija. Pregledač je traži tek kad pritisneš dugme i ne šalje je sajtu.',
+      // 06.10.2026: „Moj auto“ (cena po km), cena po priključku, „Kako se puni ovde“, radno vreme, kabl
+      car_btn_l: 'Moj auto:', car_pick: 'izaberi — cena po km', car_title: 'Moj auto',
+      car_intro: 'Izaberi auto i mapa pokazuje koliko te košta kilometar na svakom punjaču. Izbor važi dok je stranica otvorena.',
+      car_make: 'Marka', car_model: 'Model', car_cons: 'Potrošnja (kWh na 100 km)', car_cons_ph: 'npr. {x}', car_cab: 'Imam svoj Tip 2 kabl',
+      car_opt: 'Auto ima opcioni punjač od {k} kW', car_save: 'Primeni', car_clear: 'Bez auta', car_none: '— izaberi —',
+      car_load_err: 'Spisak auta trenutno ne može da se učita. Pokušaj ponovo za minut.', car_src: 'Podaci o autima: Open EV Data, Chargeprice, P3, ADAC i proizvođači; potrošnja je procena.',
+      per_km: 'RSD/km', cheap: 'Najjeftinije za moj auto', sorted_cheap: 'najjeftinije za tvoj auto prvo',
+      cost_t: 'Za tvoj {car}: ≈ {x} RSD/km', cost_100: '100 km ≈ {x} RSD', cost_kw: 'auto ovde prima ≈ {w} kW, ≈ {k} RSD po kWh',
+      cost_start: 'sa naknadom za pokretanje {s} RSD, raspoređenom na pola baterije', cost_winter: 'zimi je potrošnja veća ≈ {p} %',
+      cost_alt: 'Jeftinije ovde: {c} — ≈ {x} RSD/km', cost_near: 'Jeftinije u blizini: {t}, {d} — ≈ {x} RSD/km',
+      cost_near_free: 'Besplatno u blizini: {t}, {d}.', cost_cmp: 'Benzin ≈ {b} RSD/km · kod kuće noću ≈ {h} RSD/km',
+      cost_na: 'Za {car} ovde nema cene po kilometru.', cost_no_dc: '{car} ne može da puni na DC priključku ovog punjača.',
+      cost_pick: 'Izaberi auto — cena po kilometru', home_km: 'Kod kuće, noću: ≈ {h} RSD/km za tvoj auto',
+      promo_km: 'Noću ≈ {h} RSD/km za tvoj auto, sa svim naknadama. Punjač u garaži tvoje zgrade, ugradnja za jedan dan.',
+      p_station: 'Cena ovog punjača u aplikaciji mreže · {d} · {s}',
+      kako_t: 'Kako se puni ovde — {n}', kako_pay: 'Plaćanje:', kako_guest: 'Bez registracije:', kako_after: 'Posle punjenja:',
+      kako_refund: 'Povraćaj:', kako_apps: 'Aplikacija:', kako_checked: 'Provereno {d}',
+      oh_open: 'sada radi do {t}', oh_closed: 'sada zatvoreno, otvara u {t}', closed_now: 'sada zatvoreno',
+      cab_own: 'Ponesi svoj Tip 2 kabl', src_cga: 'aplikacija Charge&GO'
     },
     en: {
       search: 'City, address or network', search_l: 'Search chargers', near: 'Near me', loading: 'Loading chargers…',
@@ -116,7 +135,25 @@
       nr_wait: 'Finding your location…', nr_denied: 'Your browser doesn’t have permission to use your location. Allow it for this site in your browser settings, then try again.',
       nr_unavail: 'Your location isn’t available right now. Try again in a minute.', nr_retry: 'Try again', nr_privacy: 'Your location stays on your device.',
       nr_far: 'The map shows chargers in Serbia.', nr_find: 'Find the nearest',
-      nr_ask: 'To find the nearest chargers, the map needs your location. Your browser asks for it only when you press the button and doesn’t send it to this site.'
+      nr_ask: 'To find the nearest chargers, the map needs your location. Your browser asks for it only when you press the button and doesn’t send it to this site.',
+      car_btn_l: 'My car:', car_pick: 'choose — price per km', car_title: 'My car',
+      car_intro: 'Choose your car and the map shows what a kilometre costs at every charger. The choice lasts while this page is open.',
+      car_make: 'Make', car_model: 'Model', car_cons: 'Consumption (kWh per 100 km)', car_cons_ph: 'e.g. {x}', car_cab: 'I have my own Type 2 cable',
+      car_opt: 'The car has the optional {k} kW on-board charger', car_save: 'Apply', car_clear: 'No car', car_none: '— choose —',
+      car_load_err: 'The car list can’t load right now. Try again in a minute.', car_src: 'Car data: Open EV Data, Chargeprice, P3, ADAC and the makers; consumption is an estimate.',
+      per_km: 'RSD/km', cheap: 'Cheapest for my car', sorted_cheap: 'cheapest for your car first',
+      cost_t: 'For your {car}: ≈ {x} RSD/km', cost_100: '100 km ≈ {x} RSD', cost_kw: 'the car takes ≈ {w} kW here, ≈ {k} RSD per kWh',
+      cost_start: 'with the {s} RSD start fee spread over half the battery', cost_winter: 'in winter consumption is ≈ {p} % higher',
+      cost_alt: 'Cheaper here: {c} — ≈ {x} RSD/km', cost_near: 'Cheaper nearby: {t}, {d} — ≈ {x} RSD/km',
+      cost_near_free: 'Free nearby: {t}, {d}.', cost_cmp: 'Petrol ≈ {b} RSD/km · at home at night ≈ {h} RSD/km',
+      cost_na: 'No price per kilometre for {car} here.', cost_no_dc: '{car} can’t charge at this charger’s DC connector.',
+      cost_pick: 'Choose your car — price per kilometre', home_km: 'At home, at night: ≈ {h} RSD/km for your car',
+      promo_km: 'At night ≈ {h} RSD/km for your car, all fees included. A charger in your building’s garage, installed in one day.',
+      p_station: 'Price at this charger in the network’s app · {d} · {s}',
+      kako_t: 'How to charge here — {n}', kako_pay: 'Payment:', kako_guest: 'Without registration:', kako_after: 'After charging:',
+      kako_refund: 'Refund:', kako_apps: 'App:', kako_checked: 'Checked {d}',
+      oh_open: 'open now until {t}', oh_closed: 'closed now, opens at {t}', closed_now: 'closed now',
+      cab_own: 'Bring your own Type 2 cable', src_cga: 'Charge&GO app'
     },
     ru: {
       search: 'Город, адрес или сеть', search_l: 'Поиск зарядок', near: 'Рядом со мной', loading: 'Загружаю зарядки…',
@@ -158,7 +195,25 @@
       nr_wait: 'Определяю, где ты…', nr_denied: 'У браузера нет доступа к геолокации. Разреши его для этого сайта в настройках браузера и попробуй ещё раз.',
       nr_unavail: 'Местоположение сейчас недоступно. Попробуй ещё раз через минуту.', nr_retry: 'Попробовать ещё раз', nr_privacy: 'Местоположение остаётся на твоём устройстве.',
       nr_far: 'На карте — зарядки в Сербии.', nr_find: 'Найти ближайшие',
-      nr_ask: 'Чтобы найти ближайшие зарядки, нужна твоя геолокация. Браузер запросит её, только когда ты нажмёшь кнопку, и сайту её не передаст.'
+      nr_ask: 'Чтобы найти ближайшие зарядки, нужна твоя геолокация. Браузер запросит её, только когда ты нажмёшь кнопку, и сайту её не передаст.',
+      car_btn_l: 'Моя машина:', car_pick: 'выбери — цена за км', car_title: 'Моя машина',
+      car_intro: 'Выбери машину, и карта покажет, сколько стоит километр на каждой зарядке. Выбор действует, пока страница открыта.',
+      car_make: 'Марка', car_model: 'Модель', car_cons: 'Расход (кВт·ч на 100 км)', car_cons_ph: 'напр. {x}', car_cab: 'У меня есть свой кабель Type 2',
+      car_opt: 'У машины опциональное бортовое зарядное устройство на {k} кВт', car_save: 'Применить', car_clear: 'Без машины', car_none: '— выбери —',
+      car_load_err: 'Список машин сейчас не загружается. Попробуй ещё раз через минуту.', car_src: 'Данные о машинах: Open EV Data, Chargeprice, P3, ADAC и производители; расход — оценка.',
+      per_km: 'RSD/км', cheap: 'Дешевле всего для моей машины', sorted_cheap: 'сначала самые дешёвые для твоей машины',
+      cost_t: 'Для твоей машины {car}: ≈ {x} RSD/км', cost_100: '100 км ≈ {x} RSD', cost_kw: 'машина берёт здесь ≈ {w} кВт, ≈ {k} RSD за кВт·ч',
+      cost_start: 'с платой за старт {s} RSD, распределённой на половину батареи', cost_winter: 'зимой расход выше ≈ на {p} %',
+      cost_alt: 'Дешевле здесь: {c} — ≈ {x} RSD/км', cost_near: 'Дешевле рядом: {t}, {d} — ≈ {x} RSD/км',
+      cost_near_free: 'Бесплатно рядом: {t}, {d}.', cost_cmp: 'Бензин ≈ {b} RSD/км · дома ночью ≈ {h} RSD/км',
+      cost_na: 'Для машины {car} здесь нет цены за километр.', cost_no_dc: 'Машина {car} не может заряжаться от DC-разъёма этой зарядки.',
+      cost_pick: 'Выбери машину — цена за километр', home_km: 'Дома ночью: ≈ {h} RSD/км для твоей машины',
+      promo_km: 'Ночью ≈ {h} RSD/км для твоей машины, со всеми сборами. Зарядка в гараже твоего дома, монтаж за один день.',
+      p_station: 'Цена этой зарядки в приложении сети · {d} · {s}',
+      kako_t: 'Как здесь заряжаться — {n}', kako_pay: 'Оплата:', kako_guest: 'Без регистрации:', kako_after: 'После зарядки:',
+      kako_refund: 'Возврат:', kako_apps: 'Приложение:', kako_checked: 'Проверено {d}',
+      oh_open: 'сейчас открыто до {t}', oh_closed: 'сейчас закрыто, откроется в {t}', closed_now: 'сейчас закрыто',
+      cab_own: 'Возьми свой кабель Type 2', src_cga: 'приложение Charge&GO'
     }
   };
   // notes that come with the price data (Serbian), translated once from the same source; newer ones stay Serbian
@@ -206,7 +261,11 @@
     search: svg('<circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/>'),
     bolt: svg('<path d="M13 2.5 5 13.5h6l-1 8 8-11h-6l1-8Z"/>'),
     full: svg('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>'),
-    unfull: svg('<path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/>')
+    unfull: svg('<path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/>'),
+    car: svg('<path d="M5 16.5h14M6.5 16.5V19M17.5 16.5V19M4.5 16.5v-4l2-5.2A1.5 1.5 0 0 1 7.9 6.3h8.2a1.5 1.5 0 0 1 1.4 1l2 5.2v4"/><path d="M4.5 12.5h15"/><circle cx="8" cy="14.3" r=".6"/><circle cx="16" cy="14.3" r=".6"/>'),
+    cable: svg('<path d="M7 3v4M11 3v4M5.5 7h7v3a3.5 3.5 0 0 1-7 0V7Z"/><path d="M9 13.5V16a4 4 0 0 0 4 4h1a4 4 0 0 0 4-4V8"/>'),
+    park: svg('<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M10 16V8h3a2.5 2.5 0 0 1 0 5h-3"/>'),
+    coins: svg('<ellipse cx="12" cy="6.5" rx="6.5" ry="2.5"/><path d="M5.5 6.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5M5.5 11.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5"/>')
   };
   var CONN = { ccs2: 'CCS2', ccs1: 'CCS1', chademo: 'CHAdeMO', type2: 'Type 2', type1: 'Type 1', tesla: 'Tesla', gbt: 'GB/T', cee: 'CEE' };
   // directions: Apple Maps first on Apple devices, Google Maps elsewhere (dir_action=navigate: turn-by-turn at once in the Maps app on
@@ -251,11 +310,13 @@
   var ST = [], BYID = {}, NETS = {}, CHECKED = '', map = null, mlReady = false, dataReady = false, dataErr = false, me = null, sel = null, userMove = false;
   // „Najbliži punjač“: the last search (point, rows) and whether its panel is open; cardNear — the open card came from that panel
   var NEAR = null, nearOpen = false, cardNear = false;
-  var state = { q: '', f: 'all', ok: false, bounds: null, lim: 20 };
+  var state = { q: '', f: 'all', ok: false, cheap: false, bounds: null, lim: 20 };
   function teslaOnly(s) { return !!(s.ax && s.ax.who === 'tesla'); }
+  // a Tesla chosen in „Moj auto“ may use the Superchargers (on blokvolt.rs: „Imam Teslu“)
+  function teslaCar() { var c = carSpec(); return !!(c && c.mk === 'Tesla'); }
   function isFree(s) {
     var f = s.fee && s.fee.free;
-    if (f) return f === 'all' || f === 'limited';
+    if (f) return f === 'all' || f === 'limited' || (f === 'tesla' && teslaCar());
     var n = NETS[s.net];
     if (!n || !n.free) return false;
     if (!n.free_where) return true;
@@ -267,7 +328,7 @@
   // the pin colour, as in the Evolako app: DC dark, AC blue, grey when it does not work or is only for Tesla
   function kind(s) {
     if (isOff(s)) return 'off';
-    if (teslaOnly(s)) return 'tesla';
+    if (teslaOnly(s) && !teslaCar()) return 'tesla';
     return (s.dc || 0) > 0 ? 'dc' : 'ac';
   }
   function netOf(s) { return NETS[s.net] || null; }
@@ -306,6 +367,16 @@
     var ks = rc.map(function (r) { return r.kwh; }), lo = Math.min.apply(null, ks), hi = Math.max.apply(null, ks);
     return lo === hi ? fmt(lo) : fmt(lo) + (dash || '–') + fmt(hi);
   }
+  // one price line: v = RSD/min, k = RSD/kWh, h = RSD/hour, st = start or connection fee, ut + pm = Spectra "units" + RSD/min
+  function stationLines(s) {
+    var P = s.pr, unitT = P.u === 'kwh' ? T('per_kwh') : T('per_min');
+    return P.l.map(function (l) {
+      return { cur: l[0], kw: l[1], n: l[3], v: P.u === 'min' ? l[2] : null, k: P.u === 'kwh' ? l[2] : null, st: P.st || 0,
+        label: fmt(l[2], 2) + ' ' + unitT, date: P.d, src: P.src, charger: String(l[0]).toUpperCase() + ' ' + fmt(l[1], l[1] % 1 ? 1 : 0) + ' ' + kWu() };
+    });
+  }
+  // the price as blokvolt.rs/mapa shows it (the same data): the network's app per connector (s.pr), a price recorded at this
+  // place, the network's tariff for the power, a range between two tariffs, or the prices seen in the network
   function price(s) {
     var fee = s.fee;
     if (fee && fee.free) {
@@ -316,41 +387,132 @@
     var n = netOf(s);
     if (!n) return { kind: 'none', text: T('p_unknown') };
     if (n.via && NETS[n.via]) n = NETS[n.via];
-    if (n.free) return isFree(s) ? { kind: 'free', note: tr(n.free_note) || '', date: n.date || '' } : { kind: 'none', text: tr(n.note) || T('p_unknown') };
-    var hay = hayOf(s), cur = s.dc ? 'dc' : 'ac', P = power(s);
-    var fits = function (t) { return t.cur === cur && (t.lo == null || (P >= t.lo - 5 && P <= t.hi + 5)); };
-    var all = (n.tiers || []).concat(n.places || []);
-    var exact = all.filter(function (t) { return (t.where || []).some(function (w) { return hay.indexOf(w) >= 0; }); });
-    var ex = exact.filter(fits)[0] || (exact.length === 1 ? exact[0] : null);
+    if (n.free && isFree(s)) return { kind: 'free', note: tr(n.free_note) || '', date: n.date || '' };
+    var hay = hayOf(s);
     var receipt = (n.receipts || []).filter(function (r) { return (r.where || []).some(function (w) { return hay.indexOf(w) >= 0; }); });
+    if (s.pr && s.pr.l && s.pr.l.length) { var ls = stationLines(s); return { kind: 'station', t: ls[0], lines: ls, receipt: receipt, note: tr(n.note) }; }
+    if (n.free && !(n.tiers || []).length && !(n.places || []).length) return { kind: 'none', text: tr(n.note) || T('p_unknown') };
+    var cur = s.dc ? 'dc' : 'ac', P = power(s);
+    var fits = function (t) { return t.cur === cur && (t.lo == null || (P >= t.lo - 5 && P <= t.hi + 5)); };
+    // 'guard' copies in cene.json keep older map code right; this one never takes a price of the other current
+    var all = (n.tiers || []).concat(n.places || []).filter(function (t) { return !t.guard; });
+    var exact = all.filter(function (t) { return (t.where || []).some(function (w) { return hay.indexOf(w) >= 0; }); });
+    var ex = exact.filter(fits)[0] || (exact.length === 1 && exact[0].cur === cur ? exact[0] : null);
     if (ex) return { kind: 'exact', t: ex, receipt: receipt, note: tr(n.note) };
     if (n.kwh) {
       var fit = (n.tiers || []).filter(function (t) { return t.cur === cur && fits(t); });
-      if (fit.length) return { kind: 'kwh', list: fit, note: tr(n.note) };
-      return { kind: 'none', text: tr(n.note) || T('p_unknown') };
+      return fit.length ? { kind: 'kwh', list: fit, note: tr(n.note) } : { kind: 'none', text: tr(n.note) || T('p_unknown') };
     }
-    if (s.net === 'chargego' || n === NETS.chargego) {
-      var tiers = (n.tiers || []).filter(function (t) { return t.cur === cur; });
-      var t1 = tiers.filter(fits)[0];
-      if (t1) return { kind: 'tier', t: t1, receipt: receipt, note: tr(n.note) };
-      if (cur === 'dc' && tiers.length && P) {
-        var lower = tiers.filter(function (x) { return x.hi <= P; }).pop(), upper = tiers.filter(function (x) { return x.lo >= P; })[0];
-        if (lower && upper) return { kind: 'range', lo: lower, hi: upper, note: tr(n.note) };
-      }
+    var tiers = (n.tiers || []).filter(function (t) { return t.cur === cur; });
+    var t1 = tiers.filter(fits)[0];
+    if (t1) return { kind: 'tier', t: t1, receipt: receipt, note: tr(n.note) };
+    if (cur === 'dc' && tiers.length && P && tiers.every(function (x) { return x.v != null; })) {
+      var lower = tiers.filter(function (x) { return x.hi <= P; }).pop(), upper = tiers.filter(function (x) { return x.lo >= P; })[0];
+      if (lower && upper) return { kind: 'range', lo: lower, hi: upper, note: tr(n.note) };
     }
-    var same = (n.tiers || []).filter(function (t) { return t.cur === cur; });
+    var same = all.filter(function (x) { return x.cur === cur; });
     if (same.length) return { kind: 'seen', list: same, note: tr(n.note) };
     return { kind: 'none', text: tr(n.note) || T('p_unknown') };
   }
+
+  // ---------- cost per kWh and per km („Moj auto“) — the same engine as blokvolt.rs/mapa ----------
+  // What a car really takes: AC — the car's on-board charger, the post's phases and current (22 kW = 3 × 32 A, 11 kW = 3 × 16 A,
+  // 7,4 kW = 1 × 32 A); DC — the car's 10–80 % average, at most 88 % of the station's power. Without a car: a typical car
+  // (REAL_KW, AC 11 kW). Losses from the charger to the battery: DC 4 %, AC 8–16 % by power (ADAC 08/2026). A start fee is
+  // spread over half the battery (25 kWh without a car). Winter: the car's winter factor in December–February, half in
+  // November and March. The car is chosen for this visit only: evolako.rs keeps nothing in the browser but the language.
+  var CAR = null, CARS = null, CARS_P = null, COSTV = 0, CARS_URL = '', FUEL = null;
+  var ETA_DC = 0.96;
+  function etaAc(kw) { return kw >= 10 ? 0.92 : kw >= 6 ? 0.9 : kw >= 3.3 ? 0.88 : 0.84; }
+  function acPost(kw) { return kw >= 21 ? [3, 32] : kw >= 10.5 ? [3, 16] : kw >= 7 ? [1, 32] : [1, 16]; }
+  function winterShare() { var m = new Date().getMonth(); return m === 11 || m <= 1 ? 1 : m === 10 || m === 2 ? 0.5 : 0; }
+  function loadCars() {
+    if (CARS) return Promise.resolve(CARS);
+    if (!CARS_P) {
+      CARS_P = (CARS_URL ? fetch(FEED + CARS_URL).then(function (r) { if (!r.ok) throw new Error('cars'); return r.json(); }) : Promise.reject(new Error('cars')))
+        .then(function (j) { CARS = j.cars || []; return CARS; }, function () { CARS_P = null; return null; });
+    }
+    return CARS_P;
+  }
+  function carSpec() {
+    if (!CAR || !CARS) return null;
+    var c = null;
+    for (var i = 0; i < CARS.length; i++) if (CARS[i].id === CAR.id) { c = CARS[i]; break; }
+    if (!c) return null;
+    var o = CAR.opt && c.opt ? c.opt : c;
+    return Object.assign({}, c, { ac: o.ac, ph: o.ph, a: o.a, cons: CAR.cons && CAR.cons >= 8 && CAR.cons <= 40 ? CAR.cons : c.cons, cab: CAR.cab });
+  }
+  function carName(c) { return c ? c.mk + ' ' + c.md.replace(/\s*\(.*?\)\s*/g, ' ').trim() : ''; }
+  function carKw(car, cur, kw) {
+    if (!kw) return null;
+    if (cur === 'dc') return Math.min(car.dc, 0.88 * kw);
+    var pa = acPost(kw);
+    return Math.min(car.ac, kw, 0.23 * Math.min(pa[1], car.a) * Math.min(pa[0], car.ph));
+  }
+  // one tariff at one connector → {kw: what the car takes, kwh: RSD per kWh from the charger, km: RSD per km (with a car)}
+  function lineCost(t, cur, kw) {
+    var car = carSpec();
+    var P = car ? carKw(car, cur, kw) : realKw(kw, cur);
+    if (!P || t.ut || (t.v == null && t.k == null && t.h == null)) return null;   // Spectra "units" are not kWh
+    var eta = cur === 'dc' ? ETA_DC : etaAc(P);
+    var sess = car ? car.kwh * 0.5 / eta : 25;
+    var kwh = (t.k || 0) + (t.v ? t.v * 60 / P : 0) + (t.h ? t.h / P : 0) + (t.pm ? t.pm * 60 / P : 0) + (t.st ? t.st / sess : 0);
+    var cons = car ? car.cons * (1 + (car.wf - 1) * winterShare()) : null;
+    return { kw: P, kwh: kwh, km: car ? kwh * cons / 100 / eta : null, eta: eta };
+  }
+  // a CHAdeMO car needs a CHAdeMO plug for DC, a CCS car a CCS one (Tesla stalls: Teslas only)
+  function dcUsable(s, car) {
+    if (!car || !s.c.length) return true;
+    if (car.pl === 'chademo') return s.c.some(function (c) { return c[0] === 'chademo'; });
+    return s.c.some(function (c) { return c[1] === 'dc' && c[0] !== 'chademo' && (c[0] !== 'tesla' || car.mk === 'Tesla'); });
+  }
+  function acUsable(s) { return !s.c.length || s.c.some(function (c) { return c[1] !== 'dc'; }) || (!s.dc && s.ac); }
+  function costLines(s, p) {
+    var car = carSpec(), ls = [];
+    if (p.kind === 'station') ls = p.lines.map(function (t) { return { t: t, cur: t.cur, kw: t.kw }; });
+    else if (p.kind === 'exact' || p.kind === 'tier') {
+      ls = [{ t: p.t, cur: s.dc ? 'dc' : 'ac', kw: power(s) }];
+      var n = netOf(s);
+      if (s.dc && s.ac && n && p.kind === 'tier') {
+        var at = (n.tiers || []).filter(function (x) { return x.cur === 'ac' && (x.lo == null || (s.ac >= x.lo - 5 && s.ac <= x.hi + 5)); })[0];
+        if (at) ls.push({ t: at, cur: 'ac', kw: s.ac });
+      }
+    } else return [];
+    return ls.filter(function (l) { return !car || (l.cur === 'dc' ? dcUsable(s, car) : acUsable(s)); })
+      .map(function (l) { l.c = lineCost(l.t, l.cur, l.kw); return l; }).filter(function (l) { return l.c; });
+  }
+  // the line a driver most likely uses (the most powerful one the car can use) and a cheaper one at the same station
+  function costOf(s) {
+    if (s._cv === COSTV) return s._co;
+    var out = null;
+    if (!isOff(s)) {
+      var p = price(s);
+      var ls = p.kind === 'free' || p.kind === 'tesla' ? [] : costLines(s, p);
+      if (ls.length) {
+        var main = ls.slice().sort(function (a, b) { return b.c.kw - a.c.kw; })[0];
+        var cheap = ls.slice().sort(function (a, b) { return a.c.kwh - b.c.kwh; })[0];
+        out = { p: p, main: main, alt: cheap !== main && cheap.c.kwh < main.c.kwh * 0.8 ? cheap : null };
+      }
+    }
+    s._cv = COSTV; s._co = out;
+    return out;
+  }
+  function fmtKm(x) { return fmt(x, x < 10 ? 1 : 0); }
+  function homeKm(car) { return HOME_KWH * car.cons / 100 / 0.92; }
+  function fuelKm() { return FUEL && FUEL.b && FUEL.l ? FUEL.b * FUEL.l / 100 : null; }
   function priceShort(s) {
     if (isOff(s)) return { t: ver(s) === 'prob' ? T('v_prob_t') : T('off'), cls: 'off' };
     var p = price(s);
     if (p.kind === 'free') return { t: T('free'), cls: 'free' };
     if (p.kind === 'tesla') return { t: T('tesla_only'), cls: 'off' };
+    if (carSpec()) { var c0 = costOf(s); if (c0 && c0.main.c.km != null) return { t: '≈ ' + fmtKm(c0.main.c.km) + ' ' + T('per_km'), cls: '' }; }
     var rc = freshReceipts(p);
     if (rc) return { t: rc + ' ' + T('per_kwh'), cls: '' };
-    if ((p.kind === 'exact' || p.kind === 'tier') && p.t.v) { var e = perKwh(p.t.v, s); if (e) return { t: '≈ ' + fmt(Math.round(e)) + ' ' + T('per_kwh'), cls: '' }; }
-    if (p.kind === 'exact' || p.kind === 'tier') return { t: tr(p.t.label), cls: '' };
+    if (p.kind === 'station' || p.kind === 'exact' || p.kind === 'tier') {
+      var co = costOf(s);
+      if (co && (co.main.t.v || co.main.t.h || co.main.t.st)) return { t: '≈ ' + fmt(Math.round(co.main.c.kwh)) + ' ' + T('per_kwh'), cls: '' };
+      return { t: unit(tr(p.t.label)), cls: '' };
+    }
     if (p.kind === 'range') return { t: fmt(p.lo.v, 2) + '–' + fmt(p.hi.v, 2) + ' ' + T('per_min'), cls: '' };
     if (p.kind === 'kwh') return { t: kwhSpan(p.list, '–') + ' ' + T('per_kwh'), cls: '' };
     return { t: '', cls: '' };
@@ -361,10 +523,17 @@
     var p = price(s);
     if (p.kind === 'free') return { t: '0 RSD', c: 'free' };
     if (p.kind === 'tesla') return { t: '', c: '' };
+    var old = function (dd) { return stale(dd) ? 'old' : ''; };
+    if (carSpec()) { var c0 = costOf(s); if (c0 && c0.main.c.km != null) return { t: '~' + fmtKm(c0.main.c.km) + ' RSD/km', c: old(c0.main.t.date) }; }
     var rc = freshReceipts(p, '-');
     if (rc) return { t: rc + ' RSD/kWh', c: '' };
-    var old = function (dd) { return stale(dd) ? 'old' : ''; };
-    if ((p.kind === 'exact' || p.kind === 'tier') && p.t.v) { var e = perKwh(p.t.v, s); if (e) return { t: '~' + Math.round(e) + ' RSD/kWh', c: old(p.t.date) }; }
+    if (p.kind === 'station' || p.kind === 'exact' || p.kind === 'tier') {
+      var co = costOf(s);
+      if (co) {
+        var exact = co.main.t.k != null && !co.main.t.v && !co.main.t.h && !co.main.t.st;
+        return { t: (exact ? '' : '~') + Math.round(co.main.c.kwh) + ' RSD/kWh', c: old(co.main.t.date) };
+      }
+    }
     if (p.kind === 'range') {
       var a = perKwh(p.lo.v, s), b = perKwh(p.hi.v, s);
       if (a && b) return { t: '~' + Math.round(Math.min(a, b)) + '-' + Math.round(Math.max(a, b)) + ' RSD/kWh', c: old(p.lo.date) };
@@ -372,6 +541,28 @@
     if (p.kind === 'kwh') { var sp = kwhSpan(p.list, '-'); return sp === '?' ? { t: '', c: '' } : { t: sp + ' RSD/kWh', c: old(p.list[0].date) }; }
     return { t: '', c: '' };
   }
+
+  // ---------- hours: „sada radi“ in Serbia's time, whatever the visitor's time zone (oh.w = open windows in minutes) ----------
+  function nowMin() {
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Belgrade', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+      var h = 0, mi = 0;
+      parts.forEach(function (x) { if (x.type === 'hour') h = +x.value % 24; if (x.type === 'minute') mi = +x.value; });
+      return h * 60 + mi;
+    } catch (e) { var n = new Date(); return n.getHours() * 60 + n.getMinutes(); }
+  }
+  function hhmm(x) { return String(Math.floor(x / 60) % 24).padStart(2, '0') + ':' + String(x % 60).padStart(2, '0'); }
+  function openState(s, t) {
+    var oh = s.oh;
+    if (!oh) return null;
+    if (oh.h24) return { open: true, h24: true };
+    if (!oh.w || !oh.w.length) return null;
+    var m = t == null ? nowMin() : t, i, next = null;
+    for (i = 0; i < oh.w.length; i++) { var a = oh.w[i][0], b = oh.w[i][1]; if ((m >= a && m < b) || (m + 1440 >= a && m + 1440 < b)) return { open: true, until: b % 1440 }; }
+    for (i = 0; i < oh.w.length; i++) { var dl = ((oh.w[i][0] - m) % 1440 + 1440) % 1440; if (!next || dl < next.d) next = { d: dl, at: oh.w[i][0] % 1440 }; }
+    return { open: false, at: next ? next.at : null };
+  }
+  function closedNow(s) { var o = openState(s); return !!o && !o.open; }
 
   // ---------- filters ----------
   function matchChip(s, f) {
@@ -406,6 +597,7 @@
     '<div class="evm-top"><div class="evm-srow"><div class="evm-search">' + IC.search +
     '<label class="evm-sr" for="evm-q"></label><input id="evm-q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"></div>' +
     '<button class="evm-me" type="button">' + IC.loc + '<span></span></button></div>' +
+    '<button class="evm-car" type="button" aria-haspopup="dialog">' + IC.car + '<span class="evm-car-l"></span> <span class="evm-car-v"></span></button>' +
     '<div class="evm-chips" role="group"></div></div>' +
     '<div class="evm-count" aria-live="polite"></div><div class="evm-list" role="region"></div>' +
     '<div class="evm-mapw"><div class="evm-mapbox"><div class="evm-map" role="region"></div>' +
@@ -413,7 +605,7 @@
     '<div class="evm-legend" aria-hidden="true"></div><div class="evm-attr"></div></div>' +
     '<div class="evm-card" hidden></div></div>';
   var $q = $('#evm-q'), $chips = $('.evm-chips'), $count = $('.evm-count'), $list = $('.evm-list'), $card = $('.evm-card'), $me = $('.evm-me'), $fs = $('.evm-fs');
-  var $near = $('.evm-near');
+  var $near = $('.evm-near'), $car = $('.evm-car');
   var CHIP_NETS = ['chargego', 'orion-emobility', 'putevi-srbije', 'tesla'];
 
   function count(net) { var n = 0; ST.forEach(function (s) { if (s.net === net) n++; }); return n; }
@@ -428,9 +620,11 @@
     $chips.setAttribute('aria-label', T('filters'));
     paintFs();
     var chips = [['ok', IC.ok + esc(T('ok'))], ['all', esc(T('all'))], ['fast', IC.bolt + esc(T('fast'))], ['ac', 'AC'], ['free', esc(T('free_c'))], ['chademo', 'CHAdeMO']];
+    if (carSpec()) chips.splice(2, 0, ['cheap', IC.coins + esc(T('cheap'))]);
     CHIP_NETS.forEach(function (k) { if (NETS[k] && count(k) >= 4) chips.push(['net:' + k, esc(NETS[k].name) + ' <span class="n">' + count(k) + '</span>']); });
     $chips.innerHTML = chips.map(function (c) { return '<button class="evm-chip" type="button" data-f="' + c[0] + '" aria-pressed="false">' + c[1] + '</button>'; }).join('');
     paintChips();
+    paintCar();
     $('.evm-legend').innerHTML = [['dc', 'l_dc'], ['ac', 'l_ac'], ['off', 'l_off'], ['nep', 'l_nep']]
       .map(function (x) { return '<span><i class="lg-' + x[0] + '"></i>' + esc(T(x[1])) + '</span>'; }).join('');
     $('.evm-attr').innerHTML = esc(T('map_w')) + ': <a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> · ' +
@@ -458,7 +652,7 @@
   function paintChips() {
     [].forEach.call($chips.querySelectorAll('.evm-chip'), function (c) {
       var f = c.getAttribute('data-f');
-      c.setAttribute('aria-pressed', (f === 'ok' ? state.ok : f === state.f) ? 'true' : 'false');
+      c.setAttribute('aria-pressed', (f === 'ok' ? state.ok : f === 'cheap' ? state.cheap : f === state.f) ? 'true' : 'false');
     });
   }
   function paintFs() {
@@ -470,20 +664,26 @@
 
   // ---------- list ----------
   function promoHtml() {
+    var car = carSpec();
     return '<a class="evm-promo" href="/proveri-svoju-garazu"><span class="evm-promo-ic">' + IC.home + '</span><span><b>' + esc(T('promo_t')) + '</b>' +
-      '<small>' + esc(fill(T('promo_s'), { k: fmt(HOME_KWH) })) + '</small><em>' + esc(T('promo_a')) + ' →</em></span></a>';
+      '<small>' + esc(car ? fill(T('promo_km'), { h: fmt(homeKm(car), 1) }) : fill(T('promo_s'), { k: fmt(HOME_KWH) })) + '</small><em>' + esc(T('promo_a')) + ' →</em></span></a>';
   }
   function renderList() {
     if (!dataReady) return;
     var rows = visible().filter(inView), ref = me;
     if (ref) rows = rows.map(function (s) { s._d = distKm(ref, s); return s; }).sort(function (a, b) { return a._d - b._d; });
+    var cheap = state.cheap && !!carSpec() && !ref;
+    if (cheap) {
+      var ck = function (s) { if (isOff(s)) return Infinity; if (isFree(s)) return 0; var co = costOf(s); return co && co.main.c.km != null ? co.main.c.km : Infinity; };
+      rows = rows.map(function (s) { s._k = ck(s); return s; }).sort(function (a, b) { return a._k - b._k; });
+    }
     var txt = state.bounds ? fill(T('in_view'), { n: rows.length }) : fill(rows.length === ST.length ? T('count_all') : T('count'), { n: rows.length, all: ST.length });
-    $count.innerHTML = '<span>' + esc(txt + (ref ? ' · ' + T('sorted_near') : '')) + '</span>' +
+    $count.innerHTML = '<span>' + esc(txt + (ref ? ' · ' + T('sorted_near') : cheap ? ' · ' + T('sorted_cheap') : '')) + '</span>' +
       (state.bounds || ref ? '<button class="evm-lnk" type="button" data-all>' + esc(T('all_serbia')) + '</button>' : '');
     var lim = mobile() ? state.lim : Infinity, more = rows.length - lim;
     var html = rows.slice(0, lim).map(function (s) {
       var k = kind(s), ps = priceShort(s), pw = power(s), v = ver(s);
-      var sub = [netName(s), place(s)].filter(Boolean).join(' · ');
+      var sub = [netName(s), place(s), closedNow(s) ? T('closed_now') : ''].filter(Boolean).join(' · ');
       var dist = ref ? '<span>' + fmt(s._d, s._d < 10 ? 1 : 0) + ' ' + kmU() + '</span>' : '';
       var q = v === 'nep' ? ' <i class="evm-q" title="' + esc(T('v_nep')) + '">?</i>' : v === 'prob' ? ' <i class="evm-q no" title="' + esc(T('v_prob_t')) + '">!</i>' : '';
       return '<button class="evm-st' + (sel === s ? ' is-on' : '') + (v === 'nep' ? ' is-nep' : '') + '" type="button" data-id="' + esc(s.id) + '">' +
@@ -506,7 +706,8 @@
   }
   function homeHtml(s) {
     if (isOff(s) || isFree(s)) return '';
-    return '<a class="evm-home" href="/paketi-i-cene">' + IC.home + '<span><b>' + esc(fill(T('home_t'), { k: fmt(HOME_KWH) })) + '</b><small>' +
+    var car = carSpec();
+    return '<a class="evm-home" href="/paketi-i-cene">' + IC.home + '<span><b>' + esc(car ? fill(T('home_km'), { h: fmt(homeKm(car), 1) }) : fill(T('home_t'), { k: fmt(HOME_KWH) })) + '</b><small>' +
       esc(T('home_s')) + ' · <u>' + esc(T('home_a')) + ' →</u></small></span></a>';
   }
   var IDLE = { chargego: '5 RSD/min posle 15 min', 'orion-emobility': '5 RSD/min posle 15 min', 'emobility-spectra': '10,20 RSD/min posle 10 min (ECO)' };
@@ -516,6 +717,14 @@
       h += '<div class="evm-price free">' + esc(p.label || T('p_free')) + '</div>' + (p.src ? '<small>' + esc(p.src) + '</small>' : '') + (p.note ? '<small>' + esc(p.note) + '</small>' : '');
     } else if (p.kind === 'tesla') {
       h += '<div class="evm-price">' + esc(T('p_tesla_only')) + '</div>' + (p.label ? '<small>' + esc(fill(T('p_tesla_fee'), { t: p.label, s: p.src || '' })) + '</small>' : '') + (p.note ? '<small>' + esc(p.note) + '</small>' : '');
+    } else if (p.kind === 'station') {
+      // the network's app, connector by connector: the most powerful first
+      t = p.t; rc = freshReceipts(p);
+      if (rc) h += '<div class="evm-price">' + esc(rc + ' ' + T('per_kwh')) + '</div><small>' + esc(fill(T('p_by_receipt'), { d: p.receipt.map(function (r) { return dt(r.date); }).filter(function (x, i, a) { return a.indexOf(x) === i; }).join(', ') })) + '</small>';
+      else h += '<div class="evm-price">' + esc(t.label) + (p.lines.length > 1 ? ' <span class="evm-pc">' + esc(t.charger) + '</span>' : '') + '</div>' +
+        (carSpec() ? '' : estHtml(t.v, Object.assign({}, s, { dc: t.cur === 'dc' ? t.kw : null, ac: t.cur === 'ac' ? t.kw : null })));
+      if (p.lines.length > 1 || rc) h += '<ul class="evm-plines">' + p.lines.map(function (l) { return '<li><span>' + esc(l.charger) + (l.n > 1 ? ' × ' + l.n : '') + '</span><b>' + esc(l.label) + '</b></li>'; }).join('') + '</ul>';
+      h += '<small>' + esc(fill(T('p_station'), { d: dt(t.date), s: tr(t.src) })) + '</small>';
     } else if (p.kind === 'exact' || p.kind === 'tier') {
       t = p.t; rc = freshReceipts(p);
       tariff = (p.kind === 'exact' ? T('p_exact') : fill(T('p_tier'), { c: unit(t.charger) })) + ' · ' + dt(t.date) + (t.src ? ' · ' + tr(t.src) : '');
@@ -523,7 +732,7 @@
         h += '<div class="evm-price">' + esc(rc + ' ' + T('per_kwh')) + '</div><small>' + esc(fill(T('p_by_receipt'), { d: p.receipt.map(function (r) { return dt(r.date); }).filter(function (x, i, a) { return a.indexOf(x) === i; }).join(', ') })) + '</small>';
         h += '<small>' + esc(tariff + ': ' + tr(t.label)) + '</small>';
       } else {
-        h += '<div class="evm-price">' + esc(tr(t.label)) + '</div>' + estHtml(t.v, s) + '<small>' + esc(tariff) + '</small>';
+        h += '<div class="evm-price">' + esc(unit(tr(t.label))) + '</div>' + (carSpec() ? '' : estHtml(t.v, s)) + '<small>' + esc(tariff) + '</small>';
       }
       if (t.extra) h += '<small>' + esc(tr(t.extra)) + '</small>';
     } else if (p.kind === 'range') {
@@ -542,12 +751,64 @@
     } else {
       h += '<div class="evm-pnone">' + esc(p.text) + '</div>';
     }
-    if (p.note && (p.kind === 'exact' || p.kind === 'tier' || p.kind === 'range' || p.kind === 'kwh')) h += '<small>' + esc(p.note) + '</small>';
-    var pd = p.kind === 'exact' || p.kind === 'tier' ? p.t.date : p.kind === 'range' ? p.lo.date : p.kind === 'seen' || p.kind === 'kwh' ? p.list[0].date : p.kind === 'free' ? p.date : '';
+    if (p.note && (p.kind === 'exact' || p.kind === 'tier' || p.kind === 'range' || p.kind === 'kwh' || p.kind === 'station')) h += '<small>' + esc(p.note) + '</small>';
+    var pd = p.kind === 'exact' || p.kind === 'tier' || p.kind === 'station' ? p.t.date : p.kind === 'range' ? p.lo.date : p.kind === 'seen' || p.kind === 'kwh' ? p.list[0].date : p.kind === 'free' ? p.date : '';
     if (stale(pd)) h += '<small class="evm-stale">' + esc(T('p_old')) + '</small>';
     var idle = IDLE[(netOf(s) && netOf(s).via) || s.net];
     if (idle && p.kind !== 'free' && p.kind !== 'none') h += '<small>' + esc(fill(T('idle'), { x: tr(idle) })) + '</small>';
-    return h + homeHtml(s) + '</div>';
+    return h + costHtml(s, p) + homeHtml(s) + '</div>';
+  }
+  // „Za tvoj auto“: RSD/km for the chosen car, 100 km, what the car takes here; petrol and home at night beside it; a cheaper
+  // connector here or a much cheaper charger within 10 km. Without a car: a link that opens the car picker.
+  function costHtml(s, p) {
+    if (p.kind === 'free' || p.kind === 'tesla' || p.kind === 'none' || isOff(s)) return '';
+    var car = carSpec(), has = p.kind === 'station' || p.kind === 'exact' || p.kind === 'tier';
+    if (!car) return has && CARS_URL ? '<p class="evm-cost-pick"><button class="evm-lnk" type="button" data-car-open>' + IC.car + '<span>' + esc(T('cost_pick')) + '</span></button></p>' : '';
+    var co = costOf(s);
+    if (!co) return has ? '<div class="evm-cost na">' + IC.car + '<div><small>' + esc(fill(car.pl === 'chademo' && !dcUsable(s, car) ? T('cost_no_dc') : T('cost_na'), { car: carName(car) })) + '</small></div></div>' : '';
+    var m = co.main, km = m.c.km;
+    var h = '<div class="evm-cost">' + IC.car + '<div><b>' + esc(fill(T('cost_t'), { car: carName(car), x: fmtKm(km) })) + '</b>' +
+      '<small>' + esc(fill(T('cost_100'), { x: fmt(Math.round(km * 100)) })) + ' · ' + esc(fill(T('cost_kw'), { w: fmt(Math.round(m.c.kw)), k: fmt(Math.round(m.c.kwh)) })) +
+      (co.p.kind === 'station' && co.p.lines.length > 1 ? ' (' + esc(m.t.charger) + ')' : '') + '</small>';
+    if (m.t.st) h += '<small>' + esc(fill(T('cost_start'), { s: fmt(m.t.st) })) + '</small>';
+    if (winterShare()) h += '<small>' + esc(fill(T('cost_winter'), { p: fmt(Math.round((car.wf - 1) * winterShare() * 100)) })) + '</small>';
+    if (co.alt && co.alt.c.km != null) h += '<small class="evm-tip">' + esc(fill(T('cost_alt'), { c: co.alt.t.charger || (String(co.alt.cur).toUpperCase() + ' ' + fmt(co.alt.kw) + ' ' + kWu()), x: fmtKm(co.alt.c.km) })) + '</small>';
+    var nb = nearCheaper(s, km);
+    if (nb) {
+      var what = title(nb.s) + ' (' + (nb.s.dc ? 'DC ' + Math.round(nb.s.dc) : 'AC ' + Math.round(nb.s.ac || 0)) + ' ' + kWu() + ')';
+      h += '<small class="evm-tip">' + esc(fill(nb.km ? T('cost_near') : T('cost_near_free'), { t: what, d: fmtDist(nb.d), x: fmtKm(nb.km) })) + '</small>';
+    }
+    var fb = fuelKm();
+    h += '<small class="evm-cmp">' + esc(fb ? fill(T('cost_cmp'), { b: fmtKm(fb), h: fmt(homeKm(car), 1) }) : fill(T('home_km'), { h: fmt(homeKm(car), 1) })) + '</small>';
+    return h + '</div></div>';
+  }
+  // a charger within 10 km that costs at least 40 % less per km for the chosen car (confirmed, works, open now, usable by the car)
+  function nearCheaper(s, km) {
+    if (!km) return null;
+    var best = null;
+    ST.forEach(function (x) {
+      if (x === s || ver(x) !== 'ok' || !nearUsable(x)) return;
+      if (Math.abs(x.lat - s.lat) > 0.1 || Math.abs(x.lon - s.lon) > 0.14) return;
+      var dkm = distKm(s, x);
+      if (dkm > 10) return;
+      var co = isFree(x) ? null : costOf(x), c = isFree(x) ? 0 : co && co.main.c.km;
+      if (c == null || c === false || c > km * 0.6) return;
+      if (!best || c < best.km || (c === best.km && dkm < best.d)) best = { s: x, km: c, d: dkm };
+    });
+    return best;
+  }
+  // „Kako se puni ovde“: the network's steps, payment, without registration, after charging (cene.json: kako) — folded
+  function kakoHtml(s) {
+    var n = netOf(s), k = n && n.kako;
+    if (!k) return '';
+    var row = function (lbl, x) { return x ? '<p><b>' + esc(lbl) + '</b> ' + esc(tr(x)) + '</p>' : ''; };
+    var links = (k.apps || []).map(function (a) { return '<a href="' + esc(a.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(a.l)) + '</a>'; }).join(' · ');
+    var src = (k.src || []).map(function (a) { return '<a href="' + esc(a.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(a.l)) + '</a>'; }).join(' · ');
+    return '<details class="evm-box evm-kako"><summary>' + esc(fill(T('kako_t'), { n: n.name })) + '</summary>' +
+      (k.start && k.start.length ? '<ol>' + k.start.map(function (x) { return '<li>' + esc(tr(x)) + '</li>'; }).join('') + '</ol>' : '') +
+      row(T('kako_pay'), k.pay) + row(T('kako_guest'), k.guest) + row(T('kako_after'), k.after) + row(T('kako_refund'), k.refund) +
+      (links ? '<p class="evm-kako-apps">' + esc(T('kako_apps')) + ' ' + links + '</p>' : '') +
+      '<small>' + esc(fill(T('kako_checked'), { d: dt(k.checked || '') })) + (src ? ' · ' + src : '') + '</small></details>';
   }
   function statusHtml(s) {
     if (!s.ps) return '';
@@ -559,7 +820,13 @@
   }
   function tagsHtml(s) {
     var t = [];
-    if (s.oh && s.oh.t) t.push('<span class="evm-tag' + (s.oh.h24 ? ' ok' : '') + '">' + IC.clock + esc(tr(s.oh.t)) + '</span>');
+    if (s.oh && s.oh.t) {
+      var o = openState(s);
+      var now = o && !o.h24 ? (o.open ? fill(T('oh_open'), { t: hhmm(o.until) }) : fill(T('oh_closed'), { t: o.at != null ? hhmm(o.at) : '?' })) : '';
+      t.push('<span class="evm-tag' + (s.oh.h24 ? ' ok' : o && !o.open ? ' warn' : '') + '">' + IC.clock + esc(tr(s.oh.t)) + (now ? ' · ' + esc(now) : '') + '</span>');
+    }
+    if (s.cab && s.cab.own) { var car = carSpec(); t.push('<span class="evm-tag' + (car && !car.cab ? ' warn' : '') + '">' + IC.cable + esc(T('cab_own')) + '</span>'); }
+    if (s.park && s.park.t) t.push('<span class="evm-tag">' + IC.park + esc(tr(s.park.t)) + '</span>');
     if (s.ax && s.ax.t) t.push('<span class="evm-tag' + (s.ax.who === 'tesla' ? ' warn' : '') + '">' + esc(tr(s.ax.t)) + '</span>');
     if (s.ax && s.ax.limit) t.push('<span class="evm-tag">' + esc(tr(s.ax.limit)) + '</span>');
     return t.length ? '<div class="evm-tags">' + t.join('') + '</div>' : '';
@@ -602,7 +869,8 @@
   }
   function lock(on) { d.documentElement.classList.toggle('evm-lock', !!on); }
   function openCard(s, fly, fromNear) {
-    var wasOpen = !!sel || nearOpen;
+    var wasOpen = !!sel || nearOpen || carOpen;
+    carOpen = false;
     sel = s;
     nearOpen = false;
     cardNear = !!(fromNear && NEAR);
@@ -613,12 +881,12 @@
     var acc = s.acc === 'customers' ? '<div class="evm-box"><span class="evm-lbl">' + esc(T('access')) + '</span><div>' + esc(T('customers')) + '</div></div>' : '';
     var site = n && n.site ? n.site : '';
     var mail = 'mailto:hello@evolako.com?subject=' + encodeURIComponent(fill(T('mail_s'), { id: s.id })) + '&body=' + encodeURIComponent(title(s) + ' — ' + location.origin + location.pathname + '#' + s.id + '\n\n' + T('mail_b') + '\n');
-    var SRC = { ocm: 'Open Charge Map', osm: 'OpenStreetMap', ps: 'JP Putevi Srbije', cg: 'Charge&GO', rm: T('src_rm'), te: 'Tesla' };
+    var SRC = { ocm: 'Open Charge Map', osm: 'OpenStreetMap', ps: 'JP Putevi Srbije', cg: 'Charge&GO', rm: T('src_rm'), te: 'Tesla', cga: T('src_cga') };
     var srcs = s.src.filter(function (x) { return x.u; }).map(function (x) { return '<a href="' + esc(x.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(dt(x.upd)) + ')' : ''); }).join(' · ');
     $card.innerHTML = '<div class="evm-cc" role="dialog" aria-label="' + esc(title(s)) + '"><span class="evm-grab" aria-hidden="true"></span>' +
       '<button class="evm-x" type="button" aria-label="' + esc(T('close')) + '">' + IC.x + '</button>' +
       (cardNear ? '<button class="evm-lnk evm-nr-back" type="button" data-nr="back">← ' + esc(T('nr_title')) + '</button>' : '') +
-      '<h2>' + esc(title(s)) + '</h2><p class="evm-addr">' + esc(place(s)) + '</p>' + verHtml(s) + tagsHtml(s) + netLine + priceHtml(s) +
+      '<h2>' + esc(title(s)) + '</h2><p class="evm-addr">' + esc(place(s)) + '</p>' + verHtml(s) + tagsHtml(s) + netLine + priceHtml(s) + kakoHtml(s) +
       (s.note ? '<p class="evm-note">' + IC.info + '<span>' + esc(tr(s.note)) + '</span></p>' : '') + statusHtml(s) + conns + acc + whereHtml(s) +
       '<div class="evm-acts"><a class="evm-btn pri full" href="' + navs[0][1] + '" target="_blank" rel="noopener" data-nav="' + navs[0][2] + '">' + IC.nav + '<span>' + esc(T('navigate')) + '</span></a>' +
       '<p class="evm-navalt">' + esc(T('nav_in')) + ' ' + navs.slice(1).map(function (x) { return '<a href="' + x[1] + '" target="_blank" rel="noopener" data-nav="' + x[2] + '">' + x[0] + '</a>'; }).join(' · ') + '</p>' +
@@ -639,6 +907,7 @@
     renderList();
   }
   function closeCard() {
+    if (carOpen) { closeCar(); return; }
     if (nearOpen && !sel) { closeNear(); return; }
     if (!sel) return;
     var id = sel.id;
@@ -666,7 +935,7 @@
   // part of the map do not; never a charger that does not work or is only for Tesla vehicles; only confirmed ones unless the
   // visitor asks for the rest (or there is no confirmed one at all); the order is the straight-line distance and nothing else —
   // no network or firm is ever put first. The location stays in the browser: nothing is sent and nothing is stored.
-  function nearUsable(s) { return !isOff(s) && !teslaOnly(s) && typeof s.lat === 'number' && typeof s.lon === 'number' && isFinite(s.lat) && isFinite(s.lon); }
+  function nearUsable(s) { return !isOff(s) && (!teslaOnly(s) || teslaCar()) && !closedNow(s) && typeof s.lat === 'number' && typeof s.lon === 'number' && isFinite(s.lat) && isFinite(s.lon); }
   function nearestList(pt, withNep) {
     var all = ST.filter(function (s) { return nearUsable(s) && matchChip(s, state.f); })
       .map(function (s) { return { s: s, d: distKm(pt, s) }; })
@@ -721,7 +990,8 @@
     map.getSource('me').setData({ type: 'FeatureCollection', features: me ? [{ type: 'Feature', geometry: { type: 'Point', coordinates: [me.lon, me.lat] }, properties: {} }] : [] });
   }
   function nearPanel(o, fit) {
-    var was = nearOpen || !!sel, body;
+    var was = nearOpen || !!sel || carOpen, body;
+    carOpen = false;
     if (sel) { sel = null; try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* ignore */ } renderList(); }
     nearOpen = true;
     if (o.pt && !dataReady && dataErr) body = '<p class="evm-nr-msg" role="alert">' + esc(T('load_err')) + '</p>';
@@ -818,6 +1088,20 @@
     var nv = t.closest('a[data-nav]');
     if (nv) { NAV_PREF = nv.getAttribute('data-nav'); return; }
     if (nearClick(t)) return;
+    if (t.closest('[data-car-open]')) { openCar(); return; }
+    var cb = t.closest('button[data-car]');
+    if (cb && carOpen) {
+      var k = cb.getAttribute('data-car');
+      if (k === 'save') {
+        var md = $card.querySelector('[data-car="md"]'), cons = $card.querySelector('[data-car="cons"]'), cab = $card.querySelector('[data-car="cab"]'), opt = $card.querySelector('[data-car="opt"]');
+        if (!md || !md.value) return;
+        var cv = parseFloat(String((cons && cons.value) || '').replace(',', '.'));
+        CAR = { id: md.value, cons: cv >= 8 && cv <= 40 ? cv : null, cab: !!(cab && cab.checked), opt: !!(opt && opt.checked) };
+        carChanged();
+        closeCar();
+      } else if (k === 'clear') { CAR = null; state.cheap = false; carChanged(); closeCar(); }
+      return;
+    }
     var b = t.closest('[data-copy]');
     if (b) {
       var txt = b.getAttribute('data-copy'), lbl = b.querySelector('span');
@@ -833,7 +1117,7 @@
   function feat(s) {
     var v = ver(s), k = kind(s), p = k === 'tesla' ? 'T' : (Math.round(power(s)) || ''), pp = pinPrice(s);
     return { type: 'Feature', geometry: { type: 'Point', coordinates: [s.lon, s.lat] },
-      properties: { id: s.id, k: k, v: v, p: String(p), pl: pp.t, pc: pp.c } };
+      properties: { id: s.id, k: k, v: v, p: String(p), pl: pp.t, pc: pp.c, cl: closedNow(s) ? 1 : 0 } };
   }
   function data() { return { type: 'FeatureCollection', features: visible().map(feat) }; }
   function refresh() { state.lim = 20; if (map && map.getSource('st')) map.getSource('st').setData(data()); renderList(); }
@@ -887,7 +1171,7 @@
         paint: {
           'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 6, 11, 9, 12, 11.5, 16, 13.5],
           'circle-color': ['match', ['get', 'k'], 'dc', INK, 'ac', BLUE, SLATE],
-          'circle-opacity': ['case', nep, 0.5, 1],
+          'circle-opacity': ['case', ['==', ['get', 'cl'], 1], 0.45, nep, 0.5, 1],
           'circle-stroke-width': ['interpolate', ['linear'], ['zoom'], 6, 1.5, 12, 2.5],
           'circle-stroke-color': '#FFFFFF', 'circle-stroke-opacity': ['case', nep, 0.8, 1]
         } });
@@ -966,11 +1250,99 @@
     if (map) setTimeout(function () { map.resize(); }, 30);
   }
 
+  // ---------- „Moj auto“: the car for this visit only (evolako.rs keeps nothing in the browser but the language) ----------
+  var carOpen = false, carBack = null;
+  function paintCar() {
+    var c = carSpec();
+    $car.querySelector('.evm-car-l').textContent = T('car_btn_l');
+    $car.querySelector('.evm-car-v').textContent = c ? carName(c) : T('car_pick');
+    $car.classList.toggle('on', !!c);
+    $car.hidden = !CARS_URL && dataReady;
+  }
+  function modelOpts(list, mk, id) {
+    return list.filter(function (c) { return c.mk === mk; }).map(function (c) {
+      return '<option value="' + esc(c.id) + '"' + (c.id === id ? ' selected' : '') + '>' + esc(c.md + ' (' + c.y + ')') + '</option>';
+    }).join('');
+  }
+  function openCar() {
+    if (!carOpen) carBack = sel ? { s: sel, near: cardNear } : nearOpen ? { near: true } : null;
+    var was = !!sel || nearOpen || carOpen;
+    if (sel) { sel = null; try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* ignore */ } renderList(); }
+    nearOpen = false;
+    carOpen = true;
+    $card.innerHTML = '<div class="evm-cc evm-carp" role="dialog" aria-label="' + esc(T('car_title')) + '"><span class="evm-grab" aria-hidden="true"></span>' +
+      '<button class="evm-x" type="button" aria-label="' + esc(T('close')) + '">' + IC.x + '</button><h2>' + esc(T('car_title')) + '</h2>' +
+      '<p class="evm-addr">' + esc(T('car_intro')) + '</p><div class="evm-carf"><p class="evm-nr-wait" role="status"><span class="evm-nr-spin" aria-hidden="true"></span>' +
+      esc(T('loading')) + '</p></div></div>';
+    $card.hidden = false;
+    root.classList.add('evm-open');
+    if (mobile()) lock(true);
+    if (!was) { var x = $card.querySelector('.evm-x'); if (x && x.focus) x.focus({ preventScroll: true }); }
+    loadCars().then(function (list) { if (carOpen) carForm(list); });
+  }
+  function carForm(list) {
+    var box = $card.querySelector('.evm-carf');
+    if (!box) return;
+    if (!list || !list.length) { box.innerHTML = '<p class="evm-nr-msg" role="alert">' + esc(T('car_load_err')) + '</p>'; return; }
+    var cur = CAR ? list.filter(function (c) { return c.id === CAR.id; })[0] : null, mk = cur ? cur.mk : '', makes = [];
+    list.forEach(function (c) { if (makes.indexOf(c.mk) < 0) makes.push(c.mk); });
+    box.innerHTML = '<label class="evm-fl"><span>' + esc(T('car_make')) + '</span><select data-car="mk"><option value="">' + esc(T('car_none')) + '</option>' +
+      makes.map(function (m) { return '<option' + (m === mk ? ' selected' : '') + '>' + esc(m) + '</option>'; }).join('') + '</select></label>' +
+      '<label class="evm-fl"><span>' + esc(T('car_model')) + '</span><select data-car="md"' + (mk ? '' : ' disabled') + '>' +
+      (mk ? modelOpts(list, mk, cur && cur.id) : '<option value="">' + esc(T('car_none')) + '</option>') + '</select></label>' +
+      '<label class="evm-fl"><span>' + esc(T('car_cons')) + '</span><input data-car="cons" type="number" inputmode="decimal" min="8" max="40" step="0.1" value="' +
+      (CAR && CAR.cons ? CAR.cons : '') + '"></label><div data-car="optw"></div>' +
+      '<label class="evm-fc"><input data-car="cab" type="checkbox"' + (CAR && CAR.cab ? ' checked' : '') + '> <span>' + esc(T('car_cab')) + '</span></label>' +
+      '<div class="evm-fbtn"><button class="evm-btn pri" type="button" data-car="save">' + esc(T('car_save')) + '</button>' +
+      (CAR ? '<button class="evm-btn" type="button" data-car="clear">' + esc(T('car_clear')) + '</button>' : '') + '</div>' +
+      '<p class="evm-nr-note">' + esc(T('car_src')) + '</p>';
+    carOpt(list);
+  }
+  // the selected model: its consumption as the placeholder, and its optional on-board charger
+  function carOpt(list) {
+    var md = $card.querySelector('[data-car="md"]'), c = md ? list.filter(function (x) { return x.id === md.value; })[0] : null;
+    var cons = $card.querySelector('[data-car="cons"]'), w = $card.querySelector('[data-car="optw"]');
+    if (cons) cons.placeholder = c ? fill(T('car_cons_ph'), { x: fmt(c.cons, 1) }) : '';
+    if (w) w.innerHTML = c && c.opt ? '<label class="evm-fc"><input data-car="opt" type="checkbox"' + (CAR && CAR.id === c.id && CAR.opt ? ' checked' : '') + '> <span>' +
+      esc(fill(T('car_opt'), { k: fmt(c.opt.ac, c.opt.ac % 1 ? 1 : 0) })) + '</span></label>' : '';
+  }
+  function closeCar() {
+    carOpen = false;
+    var back = carBack;
+    carBack = null;
+    if (back && back.s) { openCard(back.s, false, back.near); return; }
+    if (back && back.near && NEAR) { nearPanel(NEAR, false); return; }
+    $card.hidden = true;
+    $card.innerHTML = '';
+    root.classList.remove('evm-open');
+    if (!root.classList.contains('evm-full')) lock(false);
+    if (!mobile() && $car.focus) $car.focus({ preventScroll: true });
+  }
+  function carChanged() {
+    COSTV++;
+    if (!carSpec()) state.cheap = false;
+    renderStatic();
+    if (map && map.getSource('st')) map.getSource('st').setData(data());
+    renderList();
+  }
+  $car.addEventListener('click', function () { openCar(); });
+  $card.addEventListener('change', function (e) {
+    var t = e.target, k = t.getAttribute ? t.getAttribute('data-car') : null;
+    if (!carOpen || !k || !CARS) return;
+    if (k === 'mk') {
+      var md = $card.querySelector('[data-car="md"]');
+      md.innerHTML = t.value ? modelOpts(CARS, t.value, '') : '<option value="">' + esc(T('car_none')) + '</option>';
+      md.disabled = !t.value;
+      carOpt(CARS);
+    } else if (k === 'md') carOpt(CARS);
+  });
+
   // ---------- controls ----------
   $chips.addEventListener('click', function (e) {
     var c = e.target.closest('.evm-chip');
     if (!c) return;
     var f = c.getAttribute('data-f');
+    if (f === 'cheap') { state.cheap = !state.cheap; paintChips(); renderList(); return; }
     if (f === 'ok') state.ok = !state.ok; else state.f = f;
     paintChips();
     refresh();
@@ -1000,7 +1372,7 @@
   $near.addEventListener('click', function () { nearGo('button'); });
   d.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
-    if (sel || nearOpen) closeCard(); else if (root.classList.contains('evm-full')) setFull(false);
+    if (carOpen) closeCar(); else if (sel || nearOpen) closeCard(); else if (root.classList.contains('evm-full')) setFull(false);
   });
   $me.addEventListener('click', function () {
     if (!navigator.geolocation) { $count.textContent = T('no_location'); return; }
@@ -1022,7 +1394,10 @@
     rt = setTimeout(function () { if (!mobile() && root.classList.contains('evm-full')) setFull(false); lock(root.classList.contains('evm-full') || ((!!sel || nearOpen) && mobile())); renderList(); }, 150);
   });
   // the site's language switch changes <html lang>: redraw everything in the new language
-  new MutationObserver(function () { renderStatic(); renderList(); if (sel) openCard(sel, false, cardNear); else if (nearOpen && NEAR) nearPanel(NEAR, false); }).observe(d.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  new MutationObserver(function () {
+    renderStatic(); renderList();
+    if (carOpen) { var b = carBack; openCar(); carBack = b; } else if (sel) openCard(sel, false, cardNear); else if (nearOpen && NEAR) nearPanel(NEAR, false);
+  }).observe(d.documentElement, { attributes: true, attributeFilter: ['lang'] });
 
   // ---------- start ----------
   renderStatic();
@@ -1031,6 +1406,11 @@
   function getJson(u) { return fetch(u).then(function (r) { if (!r.ok) throw new Error(u); return r.json(); }); }
   getJson(FEED + '/app/v1/manifest.json').then(function (man) {
     var f = man.files.map;
+    CARS_URL = f.auta || '';
+    if (man.files.data) getJson(FEED + man.files.data).then(function (dj) {
+      var c = dj.calculator || {};
+      if (c.fuel && c.fuel.benzin && c.defaults && c.defaults.l100_benzin) { FUEL = { b: c.fuel.benzin, l: c.defaults.l100_benzin }; if (sel && !carOpen) openCard(sel, false, cardNear); }
+    }, function () { /* without it the per-km block compares with home only */ });
     return Promise.all([getJson(FEED + f.punjaci), f.mreze ? getJson(FEED + f.mreze).catch(function () { return { upd: {}, add: [] }; }) : { upd: {}, add: [] },
       getJson(FEED + f.cene), f.dopune ? getJson(FEED + f.dopune).catch(function () { return { upd: {} }; }) : { upd: {} },
       f.tx ? getJson(FEED + f.tx).catch(function () { return null; }) : null]);
@@ -1073,7 +1453,11 @@
       else ask();
     }
     // „Najbliži punjač“ for a given point, as the panel would list it (only with ?qa=1: the apps and blokvolt.rs are compared with it)
-    if (/[?&]qa=1\b/.test(location.search)) window.evmNearQa = function (lat, lon, nep) { return nearestList({ lat: lat, lon: lon }, !!nep).rows.map(function (x) { return { id: x.s.id, t: title(x.s), m: Math.round(x.d * 1000) }; }); };
+    if (/[?&]qa=1\b/.test(location.search)) {
+      window.evmNearQa = function (lat, lon, nep) { return nearestList({ lat: lat, lon: lon }, !!nep).rows.map(function (x) { return { id: x.s.id, t: title(x.s), m: Math.round(x.d * 1000) }; }); };
+      // the cost engine for one station (blokvolt.rs has the same: window.bvCostQa)
+      window.evmCostQa = function (id) { var s0 = BYID[id], co = s0 && costOf(s0); return co ? { kw: co.main.c.kw, kwh: co.main.c.kwh, km: co.main.c.km } : null; };
+    }
     if (mlReady === 'err') noMap(); else startMap();
   }).catch(function () { dataErr = true; $count.textContent = T('load_err'); if (nearOpen && NEAR && NEAR.pt) nearPanel(NEAR); });
 })();

@@ -971,8 +971,24 @@ the footer ("Pomoć"), the text under /mapa/, /aplikacija/ and /ispravka/. Rules
   `claude/BlokVolt_Karta_v2_Spec_2026-10-06.md`). On 06.10.2026 this found the Lapovo price for the other current
   (now `guard`, 3.11e) and Serbian notes on the EN/RU page (now `tx.json`).
 - **The Evolako map script** (`scripts/evomap/`): `evomap.src.js` and `evomap.css` are the source of the map on
-  evolako.rs/mapa-punjaca; `page_bvq.js` holds the page's EN/RU texts. Until the hosted version is published there,
-  the live page runs the 29.09.2026 script inline in its footer (47 685 characters) and reads the data as above.
+  evolako.rs/mapa-punjaca (Webflow page `6abaf73484f6a5d61585b9e5`); `page_bvq.js` holds the page's EN/RU texts.
+  `python3 scripts/evomap/build.py` (terser 5.51.2 through npx) writes `static/assets/embed/evomap-<10 hex of
+  sha256>.js` (the same source always gives the same name), `scripts/evomap/build.json` (file, SRI) and, in
+  `/tmp/evomap/`, the footer tag (`<script src=… integrity=… crossorigin="anonymous">`) and the head `<style>` block.
+  The page's footer code = the politika loader + that tag; its head code = OG/preconnect + the `<style>` block +
+  `<script>` with `page_bvq.js` and `window.EVM_TX` (old fallback; the script prefers `files.map.tx`).
+  Since 06.10.2026 the script has the same price engine as /mapa/ (per-connector prices, guard-safe matching), „Moj
+  auto“ with RSD/km (the car is kept **in memory only** — evolako.rs's privacy policy names no browser storage but the
+  language and the referral code), „Kako se puni ovde“, hours with „sada radi“, own-cable and parking badges, closed
+  stations faded and left out of „Najbliži punjač“, a Tesla unlocks the Superchargers. It reads `files.map.auta` and
+  `files.data` (fuel price) from the feed; `/assets/app/*` and `/assets/embed/*` carry `Access-Control-Allow-Origin: *`.
+  Order of a change: source → build.py → deploy blokvolt.rs (the new file next to the old ones) → read the live
+  head/footer (`get_page_freeform_code`) and replace only the `<style>` block and the script tag → check the site's
+  `lastUpdated` against `customDomains[].lastPublished` (other people's unpublished work: drafts are not published,
+  anything else goes live with a site publish) → staging (`publish_site` with `publishToWebflowSubdomain` only) →
+  check evolako.webflow.io → production on the owner's „публикуй“ / „да“. **Never change or delete a file the live
+  page loads** (another byte = SRI fails = no map); remove old files only after the new tag is live. Test: the
+  Playwright harness in the project doc `claude/BlokVolt_Karta_v2_Spec_2026-10-06.md` (mock page + routes).
 
 ### 3.26 Advertising (/za-firme/oglasavanje/): the media kit and booked ads
 

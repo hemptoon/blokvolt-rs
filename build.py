@@ -1839,6 +1839,10 @@ CSP = '; '.join([
     # the Evolako map script (evomap, RUNBOOK 3.25): evolako.rs loads it with crossorigin + SRI
     '/assets/embed/*',
     '  Access-Control-Allow-Origin: *',
+    # the app feed's files (data.json: the fuel price for "Moj auto" on evolako.rs); the apps do not need CORS
+    '/assets/app/*',
+    '  Access-Control-Allow-Origin: *',
+    '  X-Robots-Tag: noindex',
     '/.well-known/tdmrep.json',
     '  Content-Type: application/json',
     '  Cache-Control: public, max-age=3600',
