@@ -31,12 +31,22 @@
  },
  "sources": [
   {
+   "url": "https://punjac.rs/",
+   "label": "punjac.rs — cene",
+   "date": "06.10.2026"
+  },
+  {
+   "url": "https://punjac.rs/cena-ugradnje-ev-punjaca",
+   "label": "punjac.rs/cena-ugradnje-ev-punjaca",
+   "date": "06.10.2026"
+  },
+  {
    "url": "https://punjac.rs/kucni-punjac-za-elektricni-auto",
    "label": "punjac.rs/kucni-punjac-za-elektricni-auto",
-   "date": "22.09.2026"
+   "date": "06.10.2026"
   }
  ],
- "verified": "22.09.2026",
+ "verified": "06.10.2026",
  "confidence": "visoko",
  "notes": "",
  "kind": "instalater"

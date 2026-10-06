@@ -16,7 +16,7 @@ CHOICE = {  # slug: (source, dark tile)
  'elektro-centar-nais': ('elektro-centar-nais', 0), 'elektroleum': ('shot:elektroleum', 1), 'elektromil': ('elektromil', 0),
  'elektronapon': ('elektronapon', 0), 'elmaks': ('elmaks', 0), 'elmik-inzenjering': ('elmik-inzenjering', 0),
  'emobility-d-o-o': ('emobility-d-o-o', 0), 'energy-net': ('energy-net', 0), 'ep-solutions': ('ep-solutions', 0),
- 'ev-charging-solutions': ('ev-charging-solutions', 0), 'evolako': ('evolako', 0), 'handyman': ('handyman', 0),  # evolako: a full blue square, not trimmed
+ 'ev-charging-solutions': ('ev-charging-solutions', 0), 'evolako': ('evolako', 0), 'handyman': ('handyman', 0),  # evolako: since 06.10.2026 a hand-made lockup evolako-lockup.png (logos.json), not from here
  'it-home': ('it-home', 0), 'jakov-sistem': ('jakov-sistem', 0), 'kibost-car': ('kibost-car__2', 0),
  'mda-e-technology': ('mda-e-technology', 0), 'network-shop-bazzar': ('network-shop-bazzar', 1),
  'obd2-evchargers': ('obd2-evchargers__2', 0), 'orion-emobility': ('orion-emobility__2', 1), 'pmp': ('pmp', 0),

@@ -3,24 +3,24 @@ id: B16
 title: Ko stoji iza BlokVolta i kako se finansira
 h1: Ko stoji iza BlokVolta
 description: Ko uređuje sajt BlokVolt, kako je u registru označena firma povezana sa urednicima, zašto se mesto u registru ne kupuje, gde stoje oglasi i kako nastaje sadržaj sajta.
-lead: Ko uređuje sajt piše na stranici O sajtu: tim koji stoji iza jedne firme za ugradnju kućnih punjača. Ta firma je u registru po istim pravilima kao ostale, uz oznaku „Izdvojeno“.
+lead: Ko uređuje sajt piše na stranici O sajtu: tim koji stoji iza jedne firme za ugradnju kućnih punjača. Ta firma stoji prva u registru, uz oznaku „Izdvojeno“, a njeni podaci su po istim pravilima kao za ostale.
 kicker: Pomoć
 section: firme-i-ispravke
 order: 3
 path: /pomoc/ko-stoji-iza-blokvolta/
-updated: 29.09.2026
+updated: 06.10.2026
 related: /pomoc/za-firme-ispravka-podataka/, /pomoc/odakle-su-podaci/, /pomoc/privatnost/
 shots:
 published: 2026-09-28
-modified: 2026-09-29
+modified: 2026-10-06
 ---
 ## Ko uređuje sajt
 
-Ko uređuje sajt i sa kojom je firmom povezan, piše na stranici [O sajtu](/o-sajtu/). Ta firma je u registru prikazana po istim pravilima kao ostale, uz oznaku „Izdvojeno“.
+Ko uređuje sajt i sa kojom je firmom povezan, piše na stranici [O sajtu](/o-sajtu/). Ta firma stoji prva u registru, uz oznaku „Izdvojeno“, a njeni podaci su po istim pravilima kao za ostale.
 
 ## Kako je prikazana povezana firma
 
-- Oznaka „Izdvojeno“ stoji uz tu firmu u registru i na njenoj stranici.
+- Oznaka „Izdvojeno“ stoji uz tu firmu u registru i na njenoj stranici, a u spiskovima firmi ona je prva.
 - Firma je prikazana po istim kolonama kao ostale: javna cena, ugradnja, brojilo, papiri za skupštinu, usluga i garancija.
 - Podaci su sa njene javne stranice, uz link i datum provere, kao kod svih firmi.
 

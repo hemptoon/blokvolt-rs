@@ -331,6 +331,16 @@ GROUPS = {
     'D': 'Cena na upit',
     'E': 'Električari: samo ugradnja',
 }
+# Lists show A and B as one section (since 06.10.2026): the firm marked "Izdvojeno" (is_us) first, the rest A–Z.
+# The group itself stays in the data (price note "sa ugradnjom", city coverage, price page filters).
+SECTIONS = {'A': 'AB', 'B': 'AB', 'C': 'C', 'D': 'D', 'E': 'E'}
+SECTION_LABELS = {'AB': 'Javna cena, ugradnja uključena ili na upit', 'C': GROUPS['C'], 'D': GROUPS['D'], 'E': GROUPS['E']}
+SECTION_ORDER = ['AB', 'C', 'D', 'E']
+
+
+def list_key(f):
+    """Order of firms in every list: „Izdvojeno“ first, then by section, then A–Z."""
+    return (0 if f.get('is_us') else 1, SECTION_ORDER.index(SECTIONS[f['group']]), f['name'].lower())
 KINDS = {
     'instalater': 'Prodaja i ugradnja', 'prodavnica': 'Prodavnica', 'distributer': 'Distributer',
     'solar': 'Solarni integrator', 'elektricar': 'Električar', 'operator': 'Mreža punjača', 'trag': 'Na proveri',
@@ -414,7 +424,7 @@ TYPE_RULES = {
 }
 
 firms = read_json_dir('firme')
-published = sorted([f for f in firms if f.get('publish')], key=lambda f: ('ABCDE'.index(f['group']), f['name'].lower()))
+published = sorted([f for f in firms if f.get('publish')], key=list_key)
 for f in published:
     f['kind_label'] = KINDS.get(f.get('kind', ''), '')
     f.setdefault('contact', {})
@@ -461,7 +471,8 @@ TYPE_CHIPS = [('', 'Sve')] + [(h['rule'], h['chip']) for h in TYPE_HUBS]
 
 
 def grouped(lst):
-    return [(g, GROUPS[g], [f for f in lst if f['group'] == g]) for g in GROUPS if any(f['group'] == g for f in lst)]
+    return [(sec, SECTION_LABELS[sec], [f for f in lst if SECTIONS[f['group']] == sec]) for sec in SECTION_ORDER
+            if any(SECTIONS[f['group']] == sec for f in lst)]
 
 
 # ---------------------------------------------------------------- public charging
@@ -1163,7 +1174,7 @@ for f in published:
         hub = f['hubs'][0] if f['hubs'] else None
         pool = [x for x in (hub['firms'] if hub else published) if x is not f]
         sim_title, sim_href = ('Slične firme', hub['url'] if hub else '/firme/')
-    pool.sort(key=lambda x: (0 if x['price_val'] else 1, 'ABCDE'.index(x['group']), x['name'].lower()))
+    pool.sort(key=lambda x: (0 if x.get('is_us') else 1, 0 if x['price_val'] else 1, SECTION_ORDER.index(SECTIONS[x['group']]), x['name'].lower()))
     price = f['price_val'] or 'cena na upit'
     render('firma.html', f['url'], firm=f, similar=pool[:4], similar_title=sim_title, similar_href=sim_href,
            title=f"{f['name']}: punjač za električni auto, cena i ugradnja | BlokVolt",
@@ -1226,7 +1237,7 @@ def price_num(f):
     return x
 
 
-_priced = sorted([f for f in published if f['price_val'] and f['group'] in ('A', 'B', 'C', 'E')], key=price_num)
+_priced = sorted([f for f in published if f['price_val'] and f['group'] in ('A', 'B', 'C', 'E')], key=lambda f: (0 if f.get('is_us') else 1, price_num(f)))
 _dev11 = []
 for f in published:
     if f['group'] in ('B', 'C') and '11 kW' in (f.get('price_headline') or '') and 'PDV' not in f['price_val'] and 'RSD' in f['price_val']:

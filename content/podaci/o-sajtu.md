@@ -4,10 +4,10 @@ h1: O sajtu
 description: BlokVolt je vodič kroz električne automobile u Srbiji: mapa javnih punjača sa cenama, firme za kućne punjače, cene, vodiči i kalkulator troškova.
 kicker: O sajtu
 lead: BlokVolt je vodič kroz punjenje i troškove električnog automobila u Srbiji.
-updated: 29.09.2026
+updated: 06.10.2026
 path: /o-sajtu/
 published: 2026-09-22
-modified: 2026-09-29
+modified: 2026-10-06
 priority: 0.4
 ---
 <div class="sum" markdown="1">
@@ -33,4 +33,4 @@ Netačan ili zastareo podatak prijavite na [stranici za ispravke](/ispravka/) il
 
 ## Ko uređuje sajt
 
-Sajt uređuje tim koji stoji iza kompanije Evolako (ugradnja kućnih punjača). Evolako je u registru firmi prikazan po istim pravilima kao ostale firme, uz oznaku „Izdvojeno“. Zato sajt ne prima oglase za prodaju i ugradnju kućnih punjača.
+Sajt uređuje tim koji stoji iza kompanije Evolako (ugradnja kućnih punjača). Evolako stoji prvi u registru firmi, uz oznaku „Izdvojeno“, a podaci o njemu su po istim pravilima kao za ostale firme. Zato sajt ne prima oglase za prodaju i ugradnju kućnih punjača.

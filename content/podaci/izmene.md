@@ -4,13 +4,19 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 01.10.2026
+updated: 06.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-01
+modified: 2026-10-06
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 6. oktobar 2026
+
+- [Firme za kućni punjač](/firme/): grupe „Punjač sa ugradnjom, javna cena“ i „Uređaj sa cenom, ugradnja na upit“ spojene su u jednu — „Javna cena, ugradnja uključena ili na upit“. Firma označena kao „Izdvojeno“ stoji prva, a ostale su poređane abecedno. Pravilo je opisano u [metodologiji](/metodologija/) i na stranici [O sajtu](/o-sajtu/).
+- [Evolako](/firme/evolako/): logo sa nazivom firme umesto samog znaka.
+- [STASANET](/firme/stasanet/): podaci ponovo provereni na punjac.rs; cene se nisu promenile.
+
 ## 1. oktobar 2026
 
 - [Evolako](/firme/evolako/): u koloni „Papiri za skupštinu“ sada piše „Šabloni“ — firma daje šablone predloga odluke i tačke dnevnog reda i tehnički opis ugradnje, a papire popunjava i predaje stanar ili upravnik. Iz cene paketa ZGRADA uklonjeno je „i papirima“. Usklađeni su i tekst „Izdvojeno“ u vodičima i [tabela cena punjača](/cena-punjaca-za-elektricni-auto).

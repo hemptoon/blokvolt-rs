@@ -4,10 +4,10 @@ h1: Metodologija
 description: Odakle su podaci o firmama, cenama javnog punjenja i vestima, koliko često se proveravaju, šta znači „Ne pominje se“ i kako se prijavljuje greška.
 kicker: O sajtu · metodologija
 lead: Podaci o firmama su sa njihovih javnih stranica, po istim pravilima za sve.
-updated: 29.09.2026
+updated: 06.10.2026
 path: /metodologija/
 published: 2026-09-22
-modified: 2026-09-29
+modified: 2026-10-06
 priority: 0.5
 disclaimer: Primedbe na pravila prijavite na
 ---
@@ -25,7 +25,7 @@ Podaci o firmi su prepisani sa njene javne stranice, uz link i datum provere. Za
 
 **„Ne pominje se“** znači samo da na stranici firme te informacije nema. Usluga može da postoji, pa pitajte firmu.
 
-Izdvojena firma je označena kao „Izdvojeno“ i prikazana po istim kolonama kao ostale.
+Izdvojena firma je označena kao „Izdvojeno“, stoji prva na spiskovima firmi i prikazana je po istim kolonama kao ostale. Ostale firme su poređane abecedno, a na stranici cena — po ceni.
 
 <details markdown="1">
 <summary>Detalji o firmama</summary>
