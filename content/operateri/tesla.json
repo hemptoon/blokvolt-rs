@@ -84,5 +84,24 @@
  "network_short": "2 Supercharger lokacije, 4 hotela",
  "power_short": "DC do 250 kW",
  "billing_short": "Kroz Tesla nalog; cena za Srbiju nije objavljena.",
- "payment_short": "Tesla aplikacija"
+ "payment_short": "Tesla aplikacija",
+ "kako": {
+  "checked": "06.10.2026",
+  "start": [
+   "Supercharger je samo za Tesla vozila: auto se prijavljuje sam kad priključite kabl, bez kartice i aplikacije na punjaču.",
+   "Plaćanje, kad postoji, ide preko Tesla naloga; po vozačima je punjenje u Srbiji za sada bez naplate."
+  ],
+  "apps": [
+   {
+    "l": "tesla.com",
+    "u": "https://www.tesla.com/findus/list/superchargers/Serbia"
+   }
+  ],
+  "src": [
+   {
+    "l": "tesla.com — Supercharger u Srbiji",
+    "u": "https://www.tesla.com/findus/list/superchargers/Serbia"
+   }
+  ]
+ }
 }

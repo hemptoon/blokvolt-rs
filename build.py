@@ -510,18 +510,22 @@ def _r(x):
 
 
 def kwh_text(row):
-    """≈ price per kWh for one index row, as short lines joined with <br>."""
+    """≈ price per kWh for one index row, as short lines joined with <br>. A start or connection fee (start_rsd) is not
+    in the per-kWh figure: it is shown as its own line."""
+    st = f'<br>+ {fmt_rsd(row["start_rsd"])} RSD po punjenju' if row.get('start_rsd') else ''
     if row.get('kwh'):
         return f'= {_r(row["rsd_total"] / row["kwh"])} RSD<br>stvarni račun'
     if row.get('unit_rsd'):
         return '„jedinica“ nije kWh'
+    if row.get('rsd_kwh'):
+        return f'= {fmt_rsd(row["rsd_kwh"][0])} RSD<br>cena po kWh' + st
     if row.get('rsd_hour'):
-        return '<br>'.join(f'≈{_r(row["rsd_hour"] / k)} RSD pri {k} kW' for k in row['assume_kw'])
+        return '<br>'.join(f'≈{_r(row["rsd_hour"] / k)} RSD pri {k} kW' for k in row['assume_kw']) + st
     vals, out = row['rsd_min'], []
     for k in row['assume_kw']:
         lo, hi = _r(min(vals) / (k / 60)), _r(max(vals) / (k / 60))
         out.append((f'≈{lo}' if lo == hi else f'≈{lo}–{hi}') + f' RSD pri {k} kW')
-    return '<br>'.join(out)
+    return '<br>'.join(out) + st
 
 
 for row in price_index['rows']:
@@ -551,11 +555,14 @@ def price_summary():
         c = {'name': o.get('name'), 'page': o.get('url', ''), 'logo': o.get('logo', ''), 'logo_dark': o.get('logo_dark'), 'items': [], 'sub': '', 'note': '', 'free': False}
         c.update(kw)
         cards.append(c)
-    # Charge&GO: one tariff per charger power
+    # Charge&GO: one tariff per class of charger power (rows with "sum"); exceptions in the note (rows with "exc")
     cg = [r for r in rows if r['op'] == 'chargego' and r.get('rsd_min') and not r.get('kwh')]
+    items = [(r['sum'], r['label']) for r in cg if r.get('sum')] or [(r['charger'], r['label']) for r in cg]
+    exc = [r['exc'] for r in cg if r.get('exc')]
     rc = [r['rsd_total'] / r['kwh'] for r in rows if r['op'] == 'chargego' and r.get('kwh')]
-    card('chargego', sub='po minutu, prema snazi punjača', items=[(r['charger'], r['label']) for r in cg],
-         note=(f'Po računima {_r(min(rc))}–{_r(max(rc))} RSD po kWh. ' if rc else '') + 'Posle punjenja: 5 RSD/min posle 15 min.')
+    card('chargego', sub='po minutu, prema snazi punjača', items=items,
+         note=(f'Izuzeci: {"; ".join(exc)}. ' if exc else '') + (f'Po računima {_r(min(rc))}–{_r(max(rc))} RSD po kWh. ' if rc else '')
+         + 'Posle punjenja: 5 RSD/min posle 15 min.')
     # Orion: own chargers, grouped by charger type
     orion = [r for r in rows if r['op'] == 'orion-emobility' and not r.get('where', '').startswith('punjač ') and per_min(r)]
     by = {}
@@ -566,17 +573,30 @@ def price_summary():
         lo, hi = min(by[ch]), max(by[ch])
         items.append((ch, (fmt_rsd(lo) if abs(lo - hi) < 0.01 else f'{fmt_rsd(lo)}–{fmt_rsd(hi)}') + ' RSD/min'))
     card('orion-emobility', sub='+ 50 RSD po punjenju; cena zavisi od lokacije', items=items)
-    # Spectra: per "unit" + per minute
-    sp = [r for r in rows if r['op'] == 'emobility-spectra']
-    if sp:
+    # eDrive: own chargers per kWh with a start fee
+    ed = [r for r in rows if r['op'] == 'edrive' and not r.get('where', '').startswith('punjač ')]
+    if ed:
+        card('edrive', sub='sopstveni punjači; naknada za pokretanje', items=[(r['charger'], r['label'] + (f' + {fmt_rsd(r["start_rsd"])} RSD' if r.get('start_rsd') else '')) for r in ed],
+             note='Na punjačima drugih mreža (roming) eDrive je skuplji od aplikacije te mreže.')
+    # Yesla: per kWh
+    ye = [r for r in rows if r['op'] == 'yesla']
+    if ye:
+        ks = sorted({r['rsd_kwh'][0] for r in ye})
+        card('yesla', sub='po kWh, plaćanje karticom u aplikaciji', items=[('DC', f'{fmt_rsd(ks[0])}–{fmt_rsd(ks[-1])} RSD/kWh' if len(ks) > 1 else f'{fmt_rsd(ks[0])} RSD/kWh')],
+             note=f'{fmt_rsd(ks[0])} RSD/kWh samo na punjaču ZELEZNIK-01 u Železniku.' if len(ks) > 1 else '')
+    # Spectra: per "unit" + per minute; a few chargers are free
+    sp = [r for r in rows if r['op'] == 'emobility-spectra' and not r.get('free')]
+    spf = [r for r in rows if r['op'] == 'emobility-spectra' and r.get('free')]
+    if sp or spf:
         items = []
         for cur in ('AC', 'DC'):
             u = [r['unit_rsd'] for r in sp if r['charger'].startswith(cur)]
             if u:
                 items.append((cur, (f'{min(u)}–{max(u)}' if min(u) != max(u) else f'{u[0]}') + ' RSD/jed. + 1,20 RSD/min'))
-        card('emobility-spectra', sub='„jedinica punjenja“ nije kWh', items=items)
+        card('emobility-spectra', sub='„jedinica punjenja“ nije kWh', items=items,
+             note=('Besplatno: ' + ', '.join(r['where'] for r in spf) + '.') if spf else '')
     for r in rows:
-        if r.get('free'):
+        if r.get('free') and r['op'] in ('putevi-srbije', 'lidl-echarge'):
             card(r['op'], sub=r.get('who') or '', items=[(r['where'][:1].upper() + r['where'][1:], 'Besplatno')], free=True)
     ps = next((r for r in rows if r['op'] == 'parking-servis-beograd'), None)
     if ps:
@@ -599,6 +619,7 @@ shutil.copytree(ROOT / 'static', DIST, dirs_exist_ok=True)
 # map data first: counts are used on several pages
 MAP = map_data.build(DIST, operators, price_index, {o['slug']: {'logo': o['logo'], 'dark': o['logo_dark']} for o in operators})
 MAP_COUNTS = MAP['counts']
+CARS_N = map_data.cars(DIST)   # "Moj auto": /assets/map/auta.json
 
 # neighbouring countries on /mapa/: the blokvolt.com sections carry the same open data (OpenStreetMap + Open Charge Map,
 # not checked one by one) for the neighbours; /mapa/ draws them as a second, quieter layer (map.js: cfg.region), without
@@ -725,6 +746,47 @@ MAP_T = {
     'cc_hr': 'Hrvatska', 'cc_ba': 'Bosna i Hercegovina', 'cc_me': 'Crna Gora', 'cc_al': 'Albanija', 'cc_mk': 'Severna Makedonija',
     'rg_count': 'u regionu još {n}', 'rg_open': 'Mapa zemlje na blokvolt.com', 'rg_prices': 'Cene mreža: {c}',
     'rg_note': 'Punjač je van Srbije. Cene su u valuti te zemlje, sa datumom i izvorom.',
+    'v_src_short': 'Nije pojedinačno proveren', 'loading': 'Učitavanje…', 'src_cga': 'aplikacija Charge&GO',
+    # the network's price of every connector (mreze.json: pr)
+    'p_station': 'Cena ovog punjača u aplikaciji mreže · {d} · {s}',
+    # "Najbliži punjač"
+    'nr_title': 'Najbliži punjači', 'nr_sub': 'Potvrđeni punjači koji rade · udaljenost vazdušnom linijom',
+    'nr_sub_all': 'Uključeni su i nepotvrđeni · udaljenost vazdušnom linijom', 'nr_fast': 'Samo brzi (DC)',
+    'nr_nav_to': 'Navigacija do {t}, {d}', 'nr_opens': 'Otvara se u: {a}', 'nr_change': 'Promeni', 'nr_nep': 'Prikaži i nepotvrđene',
+    'nr_unfilter': 'Ukloni filter', 'nr_wait': 'Tražim vašu lokaciju…',
+    'nr_denied': 'Pregledač nema dozvolu za lokaciju. Dozvolite je za ovaj sajt u podešavanjima pregledača, pa pokušajte ponovo.',
+    'nr_unavail': 'Lokacija trenutno nije dostupna. Pokušajte ponovo za minut.', 'nr_retry': 'Pokušajte ponovo',
+    'nr_privacy': 'Lokacija ostaje na vašem uređaju.', 'nr_far': 'Na mapi su punjači u Srbiji i susednim zemljama.', 'nr_find': 'Pronađi najbliže',
+    'nr_ask': 'Za najbliže punjače potrebna je vaša lokacija. Pregledač je traži tek kad pritisnete dugme i ne šalje je sajtu.',
+    # hours, cable, parking (mreze.json, dopune.json)
+    'oh_open': 'sada radi do {t}', 'oh_closed': 'sada zatvoreno, otvara u {t}', 'closed_now': 'sada zatvoreno',
+    'cab_own': 'Ponesite svoj Tip 2 kabl',
+    # "Moj auto" and the cost per km
+    'car_none': 'izaberite — cena po km', 'car_title': 'Moj auto',
+    'car_lead': 'Mapa tada pokazuje cenu po kilometru za vaš auto: koliko snage auto zaista prima na svakom punjaču, potrošnju i naknade.',
+    'car_make': 'Marka', 'car_model': 'Model', 'car_choose_make': 'Izaberite marku', 'car_choose_model': 'Izaberite model',
+    'car_cons': 'Potrošnja, kWh na 100 km (nije obavezno)', 'car_cons_hint': 'Procena je za mešovitu vožnju; upišite svoju sa putnog računara.',
+    'car_opt': 'Auto ima opcioni punjač od {k} kW', 'car_cab': 'Imam svoj Tip 2 kabl', 'car_save': 'Sačuvaj', 'car_del': 'Ukloni auto',
+    'car_note': 'Izbor se čuva samo u ovom pregledaču.', 'car_src': 'Podaci o autima: Open EV Data, Chargeprice, P3, ADAC i proizvođači.',
+    'car_load_err': 'Spisak automobila trenutno ne može da se učita. Pokušajte ponovo.',
+    'per_km': 'RSD/km', 'u_kw': 'kW', 'u_km': 'km', 'u_m': 'm', 'sorted_cheap': 'najjeftinije za vaš auto prvo',
+    'cost_pick': 'Izaberite auto — pokazaćemo cenu po kilometru', 'cost_t': 'Za vaš {car}: ≈ {x} RSD/km', 'cost_100': '100 km ≈ {x} RSD',
+    'cost_kw': 'auto ovde prima ≈ {w} kW, ≈ {k} RSD po kWh', 'cost_start': 'Uračunata je naknada za pokretanje od {s} RSD.',
+    'cost_winter': 'Zimska potrošnja: +{p} %.', 'cost_alt': 'Ovde je za vaš auto jeftiniji {c}: ≈ {x} RSD/km.',
+    'cost_near': 'Jeftinije u blizini: {t}, {d} — ≈ {x} RSD/km.', 'cost_near_free': 'Besplatno u blizini: {t}, {d}.', 'cost_cmp': 'Benzin ≈ {b} RSD/km · kod kuće noću ≈ {h} RSD/km',
+    'cost_na': 'Za ovu cenu ne može da se izračuna cena po kilometru.', 'cost_no_dc': 'Vaš {car} ne može da puni na DC priključku ovog punjača.',
+    # "Izdvojeno": charging at home (Evolako)
+    'promo_badge': 'Izdvojeno', 'promo_km': 'Kod kuće noću ≈ {h} RSD/km, punjačem u garaži zgrade.',
+    'promo_kwh': 'Kod kuće noću ≈ {h} RSD po kWh, punjačem u garaži zgrade.', 'promo_link': 'Evolako →',
+    # "Kako se puni ovde" (cene.json: kako)
+    'kako_t': 'Kako se puni ovde — {n}', 'kako_pay': 'Plaćanje:', 'kako_guest': 'Bez registracije:', 'kako_after': 'Posle punjenja:',
+    'kako_refund': 'Povraćaj:', 'kako_apps': 'Aplikacija:', 'kako_checked': 'Provereno {d}',
+    # drivers' short answers
+    'why_q': 'Šta nije bilo u redu? (nije obavezno)', 'why_busy': 'Mesto zauzeto', 'why_broken': 'Punjač ne radi',
+    'why_app': 'Aplikacija ili plaćanje', 'why_cable': 'Nisam imao svoj kabl', 'why_closed': 'Zatvoreno', 'why_short': 'Kabl prekratak',
+    'f_q': 'Još tri kratka pitanja (nije obavezno):', 'f_cab': 'Kabl', 'f_cab_att': 'na punjaču', 'f_cab_own': 'treba svoj',
+    'f_park': 'Parking', 'f_park_free': 'besplatan', 'f_park_paid': 'plaća se', 'f_oh': 'Radno vreme', 'f_oh_24': '0–24', 'f_oh_lim': 'ograničeno',
+    'f_by': 'po vozačima, {n}×', 'why_seen': 'Vozači javljaju (60 dana): {x}',
 }
 # Serbian notes that come with the price data (cene.json) and the idle fees: added as 'tx:<text>' so that the
 # translation memory translates them on /en/ and /ru/ (map.js looks them up with tr())
@@ -736,6 +798,9 @@ for _n in MAP['nets'].values():
         _tx.update(x for x in (_t.get('extra'), _t.get('src')) if x)
     for _rc in _n.get('receipts', []):
         _tx.update(x for x in (_rc.get('label'),) if x and re.search('[a-zčćžšđ]{3}', x.lower()))
+    _k = _n.get('kako') or {}
+    _tx.update(x for x in _k.get('start', []) + [_k.get(f) for f in ('pay', 'guest', 'after', 'refund')] if x)
+    _tx.update(x['l'] for x in _k.get('apps', []) + _k.get('src', []) if re.search('[a-zčćžšđ]{3}', x['l'].lower()))
 _tx.update(MAP['extra_texts'])
 for _x in sorted(_tx):
     MAP_T['tx:' + _x] = _x
@@ -760,6 +825,13 @@ M = {
         'region': '/assets/map/region.json?v=' + _ver(DIST / 'assets' / 'map' / 'region.json'),
         'cities': {c['slug']: list(TOWN_XY[c['name']]) for c in CITY_CFG if c['name'] in TOWN_XY},
         'idle': _IDLE,
+        # "Moj auto": the cars, home charging at night (EPS, lower tariff, green and blue zone, all fees) and fuel for the
+        # comparison per km (the calculator's numbers: content/data/kalkulator.json)
+        'cars': '/assets/map/auta.json?v=' + _ver(DIST / 'assets' / 'map' / 'auta.json'),
+        'home': [round(all_in(next(z for z in _E['zones'] if z['id'] == i)['nt']), 2) for i in ('zelena', 'plava')],
+        'fuel': {'b': CALC['fuel']['benzin'], 'd': CALC['fuel']['dizel'], 'lb': CALC['defaults']['l100_benzin'],
+                 'ld': CALC['defaults']['l100_dizel'], 'date': CALC['fuel']['date']},
+        'evo': EVOLAKO + 'proveri-svoju-garazu',
     }, ensure_ascii=False).replace('</', '<\\/'),
     'i18n': json.dumps(MAP_T, ensure_ascii=False),
 }
@@ -1284,12 +1356,16 @@ if len(ARCHIVE) >= 2:
     ARCHIVE[-1]['url'] = '/javno-punjenje/#cene'
 
     def _key(r):
+        # a row whose place list or charger label was reworded keeps its old key ("where|charger") for the comparison
+        if r.get('key'):
+            w, c = r['key'].split('|')
+            return (r['op'], w, c)
         return (r['op'], r.get('where', ''), r.get('charger', ''))
 
     def _unit(r):
         if r.get('free'):
             return 'free'
-        return next((k for k in ('rsd_min', 'rsd_hour', 'unit_rsd') if r.get(k)), None)
+        return next((k for k in ('rsd_min', 'rsd_kwh', 'rsd_hour', 'unit_rsd') if r.get(k)), None)
 
     def _val(r):
         v = r.get(_unit(r)) if _unit(r) not in (None, 'free') else None
@@ -1521,7 +1597,14 @@ render('article.html', '/404.html', crumbs=[], noindex=True, section='',
        title='Stranica nije pronađena | BlokVolt', description='', sources=[])
 
 # ---------------------------------------------------------------- robots, redirects, headers
-(DIST / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n', encoding='utf-8')
+# the pages stay open to search engines and AI; the data files of the map, the API and the apps' feed are not for crawlers
+# (punjaci.json, the open ODbL data set, stays allowed). docs/RUNBOOK.md 3.28
+(DIST / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nAllow: /assets/map/punjaci.json\nDisallow: /assets/map/\nDisallow: /api/\n'
+                                 f'Disallow: /app/\nSitemap: {SITE}/sitemap.xml\n', encoding='utf-8')
+# TDM reservation (W3C TDMRep) for the map data, with the terms as the policy
+(DIST / '.well-known').mkdir(exist_ok=True)
+(DIST / '.well-known' / 'tdmrep.json').write_text(json.dumps([{'location': '/assets/map/*', 'tdm-reservation': 1, 'tdm-policy': f'{SITE}/politika-privatnosti.html#uslovi'},
+                                                              {'location': '/api/*', 'tdm-reservation': 1, 'tdm-policy': f'{SITE}/politika-privatnosti.html#uslovi'}]), encoding='utf-8')
 _dir_redirects = ['/vodici', '/firme', '/javno-punjenje', '/mapa', '/cene']
 (DIST / '_redirects').write_text('\n'.join([
     '/paketi-i-cene https://www.evolako.rs/paketi-i-cene 301',
@@ -1602,6 +1685,30 @@ import i18n as _i18n  # noqa: E402
 import region_pages as _region  # noqa: E402
 _i18n.EXTRA_ALTS = _region.rs_alternates()   # the same topic in Croatian, Bosnian and Montenegrin on blokvolt.com
 I18N = _i18n.render_all(DIST)
+
+
+def map_tx():
+    """/assets/map/tx.json: English and Russian of the Serbian texts in the map data (notes, labels, hours, how to find
+    the charger), from the same translation memory as the map on /en/ and /ru/. The map on evolako.rs reads it through
+    files.map.tx of the app feed (RUNBOOK 3.25); without it the notes added after its script was written stay Serbian."""
+    texts = set(_tx)
+    for n in MAP['nets'].values():
+        for t in n.get('tiers', []) + n.get('places', []):
+            texts.update(x for x in (t.get('label'),) if x and re.search('[a-zčćžšđ]{3}', x.lower()))
+    out = {}
+    for lang in _i18n.LANGS:
+        tm, d = _i18n.load_tm(lang), {}
+        for s in sorted(texts):
+            key, nums = _i18n.make_key(html.escape(s, quote=False))
+            if tm.get(key) is not None:
+                d[s] = html.unescape(_i18n.fill(tm[key], nums))
+        out[lang] = d
+    (DIST / 'assets' / 'map' / 'tx.json').write_text(json.dumps(out, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    miss = len(texts) - min(len(v) for v in out.values())
+    print(f'map tx.json: {len(texts)} texts, ' + ', '.join(f'{k} {len(v)}' for k, v in out.items()) + (f' ({miss} without a translation)' if miss else ''))
+
+
+map_tx()
 
 
 def strip_lang_only():
@@ -1722,9 +1829,19 @@ CSP = '; '.join([
     '  Cache-Control: public, max-age=300',
     '  Access-Control-Allow-Origin: *',
     '  X-Robots-Tag: noindex',
-    # the map data is open (ODbL / CC BY) and other sites read it with fetch (the Evolako charger map): same as /app/*
+    # the map data: the Evolako charger map on evolako.rs reads it with fetch (same as /app/*); not for search engines,
+    # and text and data mining is reserved (TDMRep; the open part, punjaci.json, has its own ODbL licence)
     '/assets/map/*',
     '  Access-Control-Allow-Origin: *',
+    '  X-Robots-Tag: noindex',
+    '  TDM-Reservation: 1',
+    f'  TDM-Policy: {SITE}/politika-privatnosti.html#uslovi',
+    # the Evolako map script (evomap, RUNBOOK 3.25): evolako.rs loads it with crossorigin + SRI
+    '/assets/embed/*',
+    '  Access-Control-Allow-Origin: *',
+    '/.well-known/tdmrep.json',
+    '  Content-Type: application/json',
+    '  Cache-Control: public, max-age=3600',
     # the issue e-mails for the sender (the worker reads them through env.ASSETS; RUNBOOK 3.27): never in a search engine
     '/pregled-mail/*',
     '  X-Robots-Tag: noindex, nofollow',

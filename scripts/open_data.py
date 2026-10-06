@@ -88,11 +88,13 @@ def export_all(dist, site, published, operators, price_index, ev_data, wallbox, 
                      r.get('label', ''), _list(r.get('rsd_min')),
                      r.get('rsd_hour', ''), r.get('unit_rsd', ''), r.get('rsd_total', ''),
                      r.get('kwh', ''), per_kwh, _list(r.get('assume_kw')),
-                     r.get('date', ''), r.get('source', ''), r.get('conf', ''), r.get('url', '')])
+                     r.get('date', ''), r.get('source', ''), r.get('conf', ''), r.get('url', ''),
+                     _list(r.get('rsd_kwh')), r.get('start_rsd', '')])
     out.append(_write(dist, 'blokvolt-javno-punjenje-cene.csv',
                       ['mreza', 'lokacija', 'punjac', 'tarifa', 'rsd_po_minutu', 'rsd_po_satu',
                        'rsd_po_jedinici', 'racun_rsd', 'racun_kwh', 'rsd_po_kwh_racun',
-                       'pretpostavljena_snaga_kw', 'datum', 'izvor', 'pouzdanost', 'izvor_url'], rows))
+                       'pretpostavljena_snaga_kw', 'datum', 'izvor', 'pouzdanost', 'izvor_url',
+                       'rsd_po_kwh_tarifa', 'naknada_za_pokretanje_rsd'], rows))
 
     # 5. charging networks
     rows = [[o.get('legal', o['name']), o.get('kind_label', ''), o.get('coverage', ''), o.get('network', ''),

@@ -1,0 +1,2317 @@
+{
+ "about": "EV charging specs for the cost per km on the maps of blokvolt.rs and evolako.rs (06.10.2026). cons_kwh_100km — consumption from the battery (trip computer), mixed driving at 15–25 °C, an estimate; winter_factor — multiplier at about 0 °C; dc_avg_10_80_kw — average DC power from 10 to 80 % (P3 = measured, calc = from the stated time, est = estimate); ac_amps — current per phase; ac_opt — the optional factory on-board charger. Fields listed in \"est\" are estimates. Attribution when published: \"Open EV Data (https://github.com/KilowattApp/open-ev-data)\" and © 2019 Chargeprice (MIT). Do not use ev-database.org (its terms forbid automated collection).",
+ "cars": [
+  {
+   "make": "Tesla",
+   "model": "Model 3 Standard Range Plus",
+   "years": "2019-2021 (pre-Highland)",
+   "usable_kwh": 51,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 170,
+   "dc_avg_10_80_kw": 85,
+   "dc_basis": "est",
+   "cons_kwh_100km": 14.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ],
+   "note": "No heat pump before MY2021"
+  },
+  {
+   "make": "Tesla",
+   "model": "Model 3 Long Range AWD",
+   "years": "2019-2023 (pre-Highland)",
+   "usable_kwh": 75,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 250,
+   "dc_avg_10_80_kw": 146,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.2,
+   "adac_wall": 20.9,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "P3"
+   ]
+  },
+  {
+   "make": "Tesla",
+   "model": "Model 3 Performance",
+   "years": "2019-2023 (pre-Highland)",
+   "usable_kwh": 75,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 250,
+   "dc_avg_10_80_kw": 146,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Tesla",
+   "model": "Model 3 RWD (Highland)",
+   "years": "2024+",
+   "usable_kwh": 57.5,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 170,
+   "dc_avg_10_80_kw": 95,
+   "dc_basis": "est",
+   "cons_kwh_100km": 13.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Tesla",
+   "model": "Model 3 Long Range AWD (Highland)",
+   "years": "2024+",
+   "usable_kwh": 75,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 250,
+   "dc_avg_10_80_kw": 140,
+   "dc_basis": "est",
+   "cons_kwh_100km": 14.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Tesla",
+   "model": "Model Y RWD",
+   "years": "2022-2025 (pre-Juniper)",
+   "usable_kwh": 57.5,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 170,
+   "dc_avg_10_80_kw": 95,
+   "dc_basis": "est",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Tesla",
+   "model": "Model Y Long Range AWD",
+   "years": "2021-2025 (pre-Juniper)",
+   "usable_kwh": 75,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 250,
+   "dc_avg_10_80_kw": 123,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 17.0,
+   "winter_factor": 1.2,
+   "adac_wall": 22.6,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "P3"
+   ]
+  },
+  {
+   "make": "Tesla",
+   "model": "Model Y Performance",
+   "years": "2022-2025 (pre-Juniper)",
+   "usable_kwh": 75,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 250,
+   "dc_avg_10_80_kw": 123,
+   "dc_basis": "est",
+   "cons_kwh_100km": 18.0,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Tesla",
+   "model": "Model Y Long Range AWD (Juniper)",
+   "years": "2025+",
+   "usable_kwh": 75,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 250,
+   "dc_avg_10_80_kw": 125,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.0,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Tesla",
+   "model": "Model Y RWD (Juniper)",
+   "years": "2025+",
+   "usable_kwh": 60,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 170,
+   "dc_avg_10_80_kw": 95,
+   "dc_basis": "est",
+   "cons_kwh_100km": 15.0,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "usable_kwh",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Volkswagen",
+   "model": "ID.3 Pro / Pro Performance 58 kWh",
+   "years": "2020-2023",
+   "usable_kwh": 58,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 120,
+   "dc_avg_10_80_kw": 81,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.3,
+   "adac_wall": 19.3,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km"
+   ],
+   "src": [
+    "OED",
+    "P3",
+    "ADAC-W"
+   ],
+   "note": "winter_factor = ADAC 0 C field test (+30%). ID.3 Pure 45 kWh: 7.2 kW 2-phase (2x16 A) per Chargeprice 2020 data"
+  },
+  {
+   "make": "Volkswagen",
+   "model": "ID.3 Pro S 77 kWh",
+   "years": "2021-2023",
+   "usable_kwh": 77,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 135,
+   "dc_avg_10_80_kw": 90,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17.0,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km"
+   ],
+   "src": [
+    "OED",
+    "ADAC-W"
+   ],
+   "note": "2023+ facelift Pro S/GTX: 170-185 kW DC per Open EV Data"
+  },
+  {
+   "make": "Volkswagen",
+   "model": "ID.4 Pro / Pro Performance 77 kWh",
+   "years": "2021-2023",
+   "usable_kwh": 77,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 135,
+   "dc_avg_10_80_kw": 109,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 18.5,
+   "winter_factor": 1.25,
+   "adac_wall": 22.8,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "P3"
+   ],
+   "note": "ID.4 Pure 52 kWh: 7.2 kW OBC, verify phases"
+  },
+  {
+   "make": "Volkswagen",
+   "model": "ID.7 Pro 77 kWh",
+   "years": "2023+",
+   "usable_kwh": 77,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 175,
+   "dc_avg_10_80_kw": 115,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "ADAC-L"
+   ],
+   "note": "ADAC 2026: 22 kW AC not possible"
+  },
+  {
+   "make": "Volkswagen",
+   "model": "ID. Polo 37 kWh LFP",
+   "years": "2026+",
+   "usable_kwh": 37,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 88,
+   "dc_avg_10_80_kw": 67.6,
+   "dc_basis": "calc 10-80 23min",
+   "cons_kwh_100km": 14.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "VW-POLO"
+   ],
+   "note": "WLTP 13.6-13.8 kWh/100 km (grid-based)"
+  },
+  {
+   "make": "Volkswagen",
+   "model": "ID. Polo 52 kWh NMC",
+   "years": "2026+",
+   "usable_kwh": 52,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 105,
+   "dc_avg_10_80_kw": 91.0,
+   "dc_basis": "calc 10-80 24min",
+   "cons_kwh_100km": 14.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "VW-POLO"
+   ],
+   "note": "WLTP 13.3-13.4 kWh/100 km (grid-based)"
+  },
+  {
+   "make": "Skoda",
+   "model": "Enyaq iV 60 / Enyaq 60 (58 kWh)",
+   "years": "2021-2024",
+   "usable_kwh": 58,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 124,
+   "dc_avg_10_80_kw": 80,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ],
+   "note": "2025 facelift Enyaq 60: 59 kWh, 165 kW DC (Open EV Data)"
+  },
+  {
+   "make": "Skoda",
+   "model": "Enyaq 85 (RWD)",
+   "years": "2023+",
+   "usable_kwh": 77,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 135,
+   "dc_avg_10_80_kw": 110,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ],
+   "note": "85x AWD: 175 kW DC"
+  },
+  {
+   "make": "Skoda",
+   "model": "Elroq 60",
+   "years": "2024+",
+   "usable_kwh": 59,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 165,
+   "dc_avg_10_80_kw": 100,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Skoda",
+   "model": "Elroq 85",
+   "years": "2025+",
+   "usable_kwh": 77,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 175,
+   "dc_avg_10_80_kw": 115,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Cupra",
+   "model": "Born 58 kWh",
+   "years": "2021-2024",
+   "usable_kwh": 58,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 124,
+   "dc_avg_10_80_kw": 80,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ],
+   "note": "Born 45 kWh: 7.2 kW OBC"
+  },
+  {
+   "make": "Cupra",
+   "model": "Born 77 kWh",
+   "years": "2022+",
+   "usable_kwh": 77,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 175,
+   "dc_avg_10_80_kw": 105,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "BYD",
+   "model": "Atto 3 (60.5 kWh)",
+   "years": "2022-2025",
+   "usable_kwh": 60.5,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 88,
+   "dc_avg_10_80_kw": 60,
+   "dc_basis": "est",
+   "cons_kwh_100km": 18.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "ADAC-W"
+   ],
+   "note": "Open EV Data lists 89 kW DC; Green NCAP -7 C short-trip range loss 27%"
+  },
+  {
+   "make": "BYD",
+   "model": "Atto 3 EVO (74.8 kWh)",
+   "years": "2026+",
+   "usable_kwh": 74.8,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 220,
+   "dc_avg_10_80_kw": 125.7,
+   "dc_basis": "calc 10-80 25min",
+   "cons_kwh_100km": 18.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "BYD-A3EVO"
+   ],
+   "note": "AC not stated in launch release"
+  },
+  {
+   "make": "BYD",
+   "model": "Dolphin 44.9 kWh (Active/Boost)",
+   "years": "2023+",
+   "usable_kwh": 44.9,
+   "ac_kw_max": 7,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 60,
+   "dc_avg_10_80_kw": 48.1,
+   "dc_basis": "calc 30-80 28min",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "ac_phases",
+    "ac_amps",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "BYD-DOL"
+   ]
+  },
+  {
+   "make": "BYD",
+   "model": "Dolphin 60.4 kWh (Comfort/Design)",
+   "years": "2023+",
+   "usable_kwh": 60.4,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 88,
+   "dc_avg_10_80_kw": 60.4,
+   "dc_basis": "calc 30-80 30min",
+   "cons_kwh_100km": 16.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "BYD-DOL"
+   ]
+  },
+  {
+   "make": "BYD",
+   "model": "Seal 82.5 kWh (RWD Design / AWD Excellence)",
+   "years": "2023+",
+   "usable_kwh": 82.5,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 95,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "BYD",
+   "model": "Seal U 71.8 kWh (Comfort)",
+   "years": "2024+",
+   "usable_kwh": 71.8,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 115,
+   "dc_avg_10_80_kw": 75,
+   "dc_basis": "est",
+   "cons_kwh_100km": 19.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ],
+   "note": "87 kWh Design: 140 kW DC"
+  },
+  {
+   "make": "BYD",
+   "model": "Atto 2 45.1 kWh (Active/Boost)",
+   "years": "2025+",
+   "usable_kwh": 45.1,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 65,
+   "dc_avg_10_80_kw": 48,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "BYD-A2C"
+   ],
+   "note": "45.1 kWh specs not fetched; Comfort release states 3-phase 11 kW standard"
+  },
+  {
+   "make": "BYD",
+   "model": "Atto 2 Comfort 64.8 kWh",
+   "years": "2025+",
+   "usable_kwh": 64.8,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 155,
+   "dc_avg_10_80_kw": 108.9,
+   "dc_basis": "calc 10-80 25min",
+   "cons_kwh_100km": 16.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "BYD-A2C"
+   ]
+  },
+  {
+   "make": "Renault",
+   "model": "Zoe ZE50 (R110/R135)",
+   "years": "2019-2024",
+   "usable_kwh": 52,
+   "ac_kw_max": 22,
+   "ac_phases": 3,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 46,
+   "dc_avg_10_80_kw": 38,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "CP20",
+    "ADAC-W"
+   ],
+   "note": "1-phase up to 32 A (7.4 kW); CCS optional. ADAC winter: +21% (0 C field), +31% (long-term)"
+  },
+  {
+   "make": "Renault",
+   "model": "Megane E-Tech EV60 'optimum charge'",
+   "years": "2022-2023",
+   "usable_kwh": 60,
+   "ac_kw_max": 22,
+   "ac_phases": 3,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 130,
+   "dc_avg_10_80_kw": 100,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": 19.2,
+   "ac_conf": "med",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "P3",
+    "REN-MEGANE"
+   ],
+   "note": "2024+ line-up (renault.ie) shows AC 11 kW"
+  },
+  {
+   "make": "Renault",
+   "model": "Megane E-Tech EV60 'super charge'",
+   "years": "2022-2023",
+   "usable_kwh": 60,
+   "ac_kw_max": 7.4,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 130,
+   "dc_avg_10_80_kw": 100,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": 19.2,
+   "ac_conf": "med",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "P3"
+   ]
+  },
+  {
+   "make": "Renault",
+   "model": "Megane E-Tech EV40",
+   "years": "2022-2023",
+   "usable_kwh": 40,
+   "ac_kw_max": 7.4,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 85,
+   "dc_avg_10_80_kw": 60,
+   "dc_basis": "est",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Renault",
+   "model": "5 E-Tech 52 kWh",
+   "years": "2024+",
+   "usable_kwh": 52,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 67.6,
+   "dc_basis": "calc 15-80 30min",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "REN-R5",
+    "ADAC-L",
+    "OED"
+   ],
+   "note": "ADAC 2026: 22 kW AC not possible"
+  },
+  {
+   "make": "Renault",
+   "model": "5 E-Tech 40 kWh",
+   "years": "2024+",
+   "usable_kwh": 40,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 80,
+   "dc_avg_10_80_kw": 52,
+   "dc_basis": "est",
+   "cons_kwh_100km": 15.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "REN-R5",
+    "OED"
+   ]
+  },
+  {
+   "make": "Renault",
+   "model": "Scenic E-Tech 87 kWh",
+   "years": "2024+",
+   "usable_kwh": 87,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 91.7,
+   "dc_basis": "calc 15-80 37min",
+   "cons_kwh_100km": 17.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "REN-SCENIC"
+   ],
+   "note": "7.4 kW on 1-phase home points"
+  },
+  {
+   "make": "Renault",
+   "model": "Scenic E-Tech 60 kWh",
+   "years": "2024+",
+   "usable_kwh": 60,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 130,
+   "dc_avg_10_80_kw": 73.1,
+   "dc_basis": "calc 15-80 32min",
+   "cons_kwh_100km": 17.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "REN-SCENIC"
+   ],
+   "note": "7.4 kW on 1-phase home points"
+  },
+  {
+   "make": "Dacia",
+   "model": "Spring Electric",
+   "years": "2021-2023",
+   "usable_kwh": 26.8,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 30,
+   "dc_avg_10_80_kw": 29,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 14.0,
+   "winter_factor": 1.3,
+   "adac_wall": 17.9,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "P3"
+   ],
+   "note": "26.8 kWh nominal (P3 uses 27.4); DC 30 kW CCS optional"
+  },
+  {
+   "make": "Dacia",
+   "model": "Spring Electric 45/65 (facelift)",
+   "years": "2024-09/2025",
+   "usable_kwh": 26.8,
+   "ac_kw_max": 7,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 30,
+   "dc_avg_10_80_kw": 26,
+   "dc_basis": "est",
+   "cons_kwh_100km": 13.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "SPRING-M1"
+   ],
+   "note": "Open EV Data wrongly lists 11 kW 3-phase; DC 30 kW optional"
+  },
+  {
+   "make": "Dacia",
+   "model": "Spring (LFP 24.3 kWh)",
+   "years": "10/2025+",
+   "usable_kwh": 24.3,
+   "ac_kw_max": 7,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 40,
+   "dc_avg_10_80_kw": 30.2,
+   "dc_basis": "calc 20-80 29min",
+   "cons_kwh_100km": 13.0,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "SPRING-CC",
+    "SPRING-M1"
+   ],
+   "note": "AC not stated in launch coverage; WLTP 12.4 kWh/100 km"
+  },
+  {
+   "make": "Nissan",
+   "model": "Leaf 40 kWh (ZE1)",
+   "years": "2018-2024",
+   "usable_kwh": 39,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 50,
+   "dc_avg_10_80_kw": 40,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "CP20"
+   ],
+   "note": "CHAdeMO only"
+  },
+  {
+   "make": "Nissan",
+   "model": "Leaf e+ 62 kWh",
+   "years": "2019-2024",
+   "usable_kwh": 59,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 50,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "usable_kwh",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "CP20"
+   ],
+   "note": "CHAdeMO only; 62 kWh gross"
+  },
+  {
+   "make": "Nissan",
+   "model": "Leaf 75 kWh (3rd gen)",
+   "years": "2025+",
+   "usable_kwh": 75,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 90,
+   "dc_basis": "calc 20-80 30min",
+   "cons_kwh_100km": 16.0,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "LEAF3-EL",
+    "LEAF3-NBC"
+   ],
+   "note": "No 22 kW option; heat pump + battery heating"
+  },
+  {
+   "make": "Nissan",
+   "model": "Leaf 52 kWh (3rd gen)",
+   "years": "2025+",
+   "usable_kwh": 52,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 105,
+   "dc_avg_10_80_kw": 62,
+   "dc_basis": "calc 20-80 30min",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "LEAF3-EL",
+    "LEAF3-NBC"
+   ],
+   "note": "No active battery heating on 52 kWh"
+  },
+  {
+   "make": "Hyundai",
+   "model": "Kona Electric 64 kWh (7.2 kW OBC)",
+   "years": "MY2018-2019",
+   "usable_kwh": 64,
+   "ac_kw_max": 7.2,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 77,
+   "dc_avg_10_80_kw": 72,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.25,
+   "adac_wall": 16.7,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "CP20",
+    "P3"
+   ],
+   "note": "39 kWh variant: same OBC"
+  },
+  {
+   "make": "Hyundai",
+   "model": "Kona Electric 64 kWh (11 kW OBC)",
+   "years": "MY2020-2023",
+   "usable_kwh": 64,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 77,
+   "dc_avg_10_80_kw": 72,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.25,
+   "adac_wall": 16.7,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "CP20",
+    "P3"
+   ]
+  },
+  {
+   "make": "Hyundai",
+   "model": "Kona Electric 65.4 kWh (SX2)",
+   "years": "2023+",
+   "usable_kwh": 65.4,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 102,
+   "dc_avg_10_80_kw": 67.0,
+   "dc_basis": "calc 10-80 41min",
+   "cons_kwh_100km": 16.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_peak_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "KONA-AE",
+    "OED"
+   ],
+   "note": "48.4 kWh variant: also 41 min 10-80"
+  },
+  {
+   "make": "Hyundai",
+   "model": "Ioniq 5 77.4 kWh RWD",
+   "years": "2022-2024",
+   "usable_kwh": 74,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 233,
+   "dc_avg_10_80_kw": 173,
+   "dc_basis": "calc 10-80 18min",
+   "cons_kwh_100km": 18.0,
+   "winter_factor": 1.2,
+   "adac_wall": 20.9,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "P3",
+    "WIKI-IONIQ6"
+   ],
+   "note": "adac_wall and P3 measured 192 kW avg refer to the 72.6 kWh 2WD (2021)"
+  },
+  {
+   "make": "Hyundai",
+   "model": "Ioniq 6 77.4 kWh RWD",
+   "years": "2022+",
+   "usable_kwh": 74,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 233,
+   "dc_avg_10_80_kw": 173,
+   "dc_basis": "calc 10-80 18min",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "usable_kwh",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "WIKI-IONIQ6"
+   ]
+  },
+  {
+   "make": "Hyundai",
+   "model": "Inster Long Range 49 kWh",
+   "years": "2024+",
+   "usable_kwh": 46,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 85,
+   "dc_avg_10_80_kw": 64,
+   "dc_basis": "est",
+   "cons_kwh_100km": 15.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Kia",
+   "model": "e-Niro 64 kWh (7.2 kW OBC)",
+   "years": "MY2018-2019",
+   "usable_kwh": 64,
+   "ac_kw_max": 7.2,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 77,
+   "dc_avg_10_80_kw": 70,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "CP20"
+   ]
+  },
+  {
+   "make": "Kia",
+   "model": "e-Niro 64 kWh (11 kW OBC)",
+   "years": "MY2020-2021",
+   "usable_kwh": 64,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 77,
+   "dc_avg_10_80_kw": 70,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "CP20"
+   ]
+  },
+  {
+   "make": "Kia",
+   "model": "Niro EV 64.8 kWh (2nd gen)",
+   "years": "2022+",
+   "usable_kwh": 64.8,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 80,
+   "dc_avg_10_80_kw": 63,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ],
+   "note": "Open EV Data lists 68.4 kWh"
+  },
+  {
+   "make": "Kia",
+   "model": "EV3 Long Range 81.4 kWh",
+   "years": "2024+",
+   "usable_kwh": 78,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 128,
+   "dc_avg_10_80_kw": 105.7,
+   "dc_basis": "calc 10-80 31min",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "KIA-EV3",
+    "OED"
+   ],
+   "note": "81.4 kWh nominal; WLTP 14.3-16.9 kWh/100 km (grid)"
+  },
+  {
+   "make": "Kia",
+   "model": "EV3 Standard 58.3 kWh",
+   "years": "2024+",
+   "usable_kwh": 58.3,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 108,
+   "dc_avg_10_80_kw": 84.4,
+   "dc_basis": "calc 10-80 29min",
+   "cons_kwh_100km": 16.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "KIA-EV3"
+   ],
+   "note": "58.3 kWh nominal"
+  },
+  {
+   "make": "Kia",
+   "model": "EV6 77.4 kWh RWD",
+   "years": "2021-2024",
+   "usable_kwh": 74,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 233,
+   "dc_avg_10_80_kw": 203,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 17.5,
+   "winter_factor": 1.2,
+   "adac_wall": 18.6,
+   "ac_conf": "high",
+   "est": [
+    "usable_kwh",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "P3",
+    "OED"
+   ]
+  },
+  {
+   "make": "MG",
+   "model": "MG4 Standard 51 kWh (LFP)",
+   "years": "2022+",
+   "usable_kwh": 50.8,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 117,
+   "dc_avg_10_80_kw": 60,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MG4-BC",
+    "OED"
+   ]
+  },
+  {
+   "make": "MG",
+   "model": "MG4 64 kWh (Comfort/Luxury)",
+   "years": "2022+",
+   "usable_kwh": 61.7,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 135,
+   "dc_avg_10_80_kw": 75,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "MG4-BC"
+   ],
+   "note": "UK-market guide lists 6.6 kW single-phase for this battery; EU spec 11 kW 3-phase per Open EV Data"
+  },
+  {
+   "make": "MG",
+   "model": "ZS EV 44.5 kWh",
+   "years": "2019-2021",
+   "usable_kwh": 42.5,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 76,
+   "dc_avg_10_80_kw": 45,
+   "dc_basis": "est",
+   "cons_kwh_100km": 18.0,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ],
+   "note": "76 kW rated; real peak ~50 kW"
+  },
+  {
+   "make": "MG",
+   "model": "ZS EV Long Range 72.6 kWh",
+   "years": "2022+",
+   "usable_kwh": 68.3,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 94,
+   "dc_avg_10_80_kw": 60,
+   "dc_basis": "est",
+   "cons_kwh_100km": 18.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "BMW",
+   "model": "i3 / i3s 94 Ah",
+   "years": "2016-2018",
+   "usable_kwh": 27.2,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 50,
+   "dc_avg_10_80_kw": 38,
+   "dc_basis": "est",
+   "cons_kwh_100km": 15.0,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "BMW-I3",
+    "CP20"
+   ],
+   "note": "BMW 09/2017: multi-phase AC up to 11 kW. Some early cars may be 7.4 kW 1-phase - offer override"
+  },
+  {
+   "make": "BMW",
+   "model": "i3 / i3s 120 Ah",
+   "years": "2019-2022",
+   "usable_kwh": 37.9,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 50,
+   "dc_avg_10_80_kw": 42,
+   "dc_basis": "est",
+   "cons_kwh_100km": 15.0,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "CP20"
+   ]
+  },
+  {
+   "make": "BMW",
+   "model": "iX1 eDrive20 / xDrive30",
+   "years": "2022+",
+   "usable_kwh": 64.7,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 130,
+   "dc_avg_10_80_kw": 94,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "ac_opt",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ],
+   "note": "22 kW AC optional (not verified)"
+  },
+  {
+   "make": "BMW",
+   "model": "i4 eDrive40",
+   "years": "2021+",
+   "usable_kwh": 80.7,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 207,
+   "dc_avg_10_80_kw": 136,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 17.0,
+   "winter_factor": 1.2,
+   "adac_wall": 19.5,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "P3"
+   ]
+  },
+  {
+   "make": "BMW",
+   "model": "iX3 (G08)",
+   "years": "2020-2025",
+   "usable_kwh": 74,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 102,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 19.0,
+   "winter_factor": 1.25,
+   "adac_wall": 21.2,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "P3"
+   ]
+  },
+  {
+   "make": "Mini",
+   "model": "Cooper SE (F56)",
+   "years": "2020-2023",
+   "usable_kwh": 28.9,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 50,
+   "dc_avg_10_80_kw": 46,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 16.0,
+   "winter_factor": 1.25,
+   "adac_wall": 17.6,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "P3"
+   ]
+  },
+  {
+   "make": "Fiat",
+   "model": "500e 42 kWh",
+   "years": "2020+",
+   "usable_kwh": 37.3,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 85,
+   "dc_avg_10_80_kw": 62,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.25,
+   "adac_wall": 17.4,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "P3"
+   ],
+   "note": "24 kWh version: single-phase OBC (dataset 6.6 kW), 50 kW DC - verify"
+  },
+  {
+   "make": "Fiat",
+   "model": "Grande Panda Electric 44 kWh LFP (built in Kragujevac)",
+   "years": "2025+",
+   "usable_kwh": 43,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 7,
+    "phases": 1,
+    "amps": 32
+   },
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 54.7,
+   "dc_basis": "calc 10-80 33min",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "usable_kwh",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "FIAT-GP"
+   ],
+   "note": "Optional 7 kW onboard charger with integrated cable (single-phase assumed)"
+  },
+  {
+   "make": "Peugeot",
+   "model": "e-208 50 kWh (136 hp)",
+   "years": "2019-2023",
+   "usable_kwh": 46.3,
+   "ac_kw_max": 7.4,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": {
+    "kw": 11,
+    "phases": 3,
+    "amps": 16
+   },
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 65,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 16.0,
+   "winter_factor": 1.21,
+   "adac_wall": 18.7,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km"
+   ],
+   "src": [
+    "OED",
+    "CP20",
+    "PEU-E2008",
+    "P3",
+    "ADAC-W"
+   ],
+   "note": "winter_factor = ADAC 0 C field test (+21%)"
+  },
+  {
+   "make": "Peugeot",
+   "model": "e-208 51 kWh (156 hp)",
+   "years": "2023+",
+   "usable_kwh": 48.1,
+   "ac_kw_max": 7.4,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": {
+    "kw": 11,
+    "phases": 3,
+    "amps": 16
+   },
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 65,
+   "dc_basis": "est",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.21,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Peugeot",
+   "model": "e-2008 50 kWh",
+   "years": "2020-2023",
+   "usable_kwh": 46.3,
+   "ac_kw_max": 7.4,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": {
+    "kw": 11,
+    "phases": 3,
+    "amps": 16
+   },
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 60,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "PEU-E2008",
+    "OED"
+   ]
+  },
+  {
+   "make": "Opel",
+   "model": "Corsa-e 50 kWh",
+   "years": "2020-2023",
+   "usable_kwh": 46.3,
+   "ac_kw_max": 7.4,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": {
+    "kw": 11,
+    "phases": 3,
+    "amps": 16
+   },
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 65,
+   "dc_basis": "est",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "CP20"
+   ]
+  },
+  {
+   "make": "smart",
+   "model": "#1 66 kWh (Premium/Brabus; Pro+ later)",
+   "years": "2023+",
+   "usable_kwh": 62,
+   "ac_kw_max": 22,
+   "ac_phases": 3,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 86.8,
+   "dc_basis": "calc 10-80 30min",
+   "cons_kwh_100km": 18.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "SMART-AE"
+   ],
+   "note": "Early Pro+: 7.4 kW AC"
+  },
+  {
+   "make": "Volvo",
+   "model": "EX30 Single Motor (49 kWh LFP)",
+   "years": "2024+",
+   "usable_kwh": 49,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 79.2,
+   "dc_basis": "calc 10-80 26min",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "VOLVO-EX30",
+    "OED"
+   ],
+   "note": "Early MY24: 134 kW DC; Volvo lists 17 kWh/100 km"
+  },
+  {
+   "make": "Volvo",
+   "model": "EX30 Extended Range / Twin Performance (64 kWh)",
+   "years": "2024+",
+   "usable_kwh": 64,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 175,
+   "dc_avg_10_80_kw": 96,
+   "dc_basis": "calc 10-80 28min",
+   "cons_kwh_100km": 17.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "VOLVO-EX30",
+    "ADAC-L",
+    "OED"
+   ],
+   "note": "Early MY24: 153 kW DC; ADAC 2026 measured EX30 at 22 kW"
+  },
+  {
+   "make": "Volvo",
+   "model": "XC40 Recharge P8 AWD (75 kWh)",
+   "years": "2020-2022",
+   "usable_kwh": 75,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 80,
+   "dc_basis": "est",
+   "cons_kwh_100km": 22.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "EQA 250 (66.5 kWh)",
+   "years": "2021-2023",
+   "usable_kwh": 66.5,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 88,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 18.0,
+   "winter_factor": 1.25,
+   "adac_wall": 21.6,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "P3"
+   ]
+  },
+  {
+   "make": "Audi",
+   "model": "Q4 e-tron 40 (77 kWh)",
+   "years": "2021+",
+   "usable_kwh": 77,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 125,
+   "dc_avg_10_80_kw": 100,
+   "dc_basis": "est",
+   "cons_kwh_100km": 18.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ],
+   "note": "135 kW DC from MY2023; Q4 35 (52 kWh): 7.2 kW OBC"
+  },
+  {
+   "make": "Polestar",
+   "model": "2 Long Range Single Motor",
+   "years": "2021-2023",
+   "usable_kwh": 75,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 111,
+   "dc_basis": "P3",
+   "cons_kwh_100km": 17.5,
+   "winter_factor": 1.25,
+   "adac_wall": 18.5,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED",
+    "P3"
+   ]
+  },
+  {
+   "make": "Leapmotor",
+   "model": "T03",
+   "years": "2024+",
+   "usable_kwh": 37.3,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 48,
+   "dc_avg_10_80_kw": 31.1,
+   "dc_basis": "calc 30-80 36min",
+   "cons_kwh_100km": 14.0,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "T03-FN",
+    "T03-HEISE"
+   ],
+   "note": "heise: only 3.7 kW on an 11 kW 3-phase wallbox; heise lists 45 kW DC"
+  },
+  {
+   "make": "Jaguar",
+   "model": "I-Pace EV400",
+   "years": "MY2018-2020",
+   "usable_kwh": 84.7,
+   "ac_kw_max": 7,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 70,
+   "dc_basis": "est",
+   "cons_kwh_100km": 23.0,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ]
+  },
+  {
+   "make": "Jaguar",
+   "model": "I-Pace",
+   "years": "MY2021+",
+   "usable_kwh": 84.7,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 70,
+   "dc_basis": "est",
+   "cons_kwh_100km": 23.0,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OED"
+   ],
+   "note": "Open EV Data lists 11 kW 3-phase for 2020 EV320/EV400; MY boundary not verified"
+  }
+ ],
+ "sources": {
+  "OED": {
+   "url": "https://raw.githubusercontent.com/KilowattApp/open-ev-data/master/data/ev-data.json",
+   "date": "data meta 2025-04-12; repo archived 2025-05-04"
+  },
+  "CP20": {
+   "url": "https://raw.githubusercontent.com/OpenChargingCloud/open-ev-data/master/data/ev-data.json",
+   "date": "Chargeprice data snapshot 2020-07-30"
+  },
+  "P3": {
+   "url": "https://www.p3-group.com/wp-content/uploads/2024/04/P3-Charging-Index-en-220718-1.pdf",
+   "date": "2022-07-18"
+  },
+  "ADAC-L": {
+   "url": "https://www.adac.de/rund-ums-fahrzeug/elektromobilitaet/laden/ladeverluste-elektroauto-studie/",
+   "date": "2026-08-06"
+  },
+  "ADAC-W": {
+   "url": "https://www.adac.de/rund-ums-fahrzeug/elektromobilitaet/info/elektroauto-reichweite-winter",
+   "date": "2024-11-20"
+  },
+  "VW-POLO": {
+   "url": "https://www.volkswagen-newsroom.com/en/the-all-new-electric-id-polo-international-media-drive-20668/drive-system-versions-and-performance-data-20669",
+   "date": "2026-09-09"
+  },
+  "BYD-DOL": {
+   "url": "https://www.electrive.com/2023/06/22/byd-launches-dolphin-ev-in-europe-this-summer/",
+   "date": "2023-06-22 (upd. 2024-09-03)"
+  },
+  "BYD-A2C": {
+   "url": "https://press.bydauto.be/byd-launches-atto-2-comfort",
+   "date": "2025-11-16"
+  },
+  "BYD-A3EVO": {
+   "url": "https://press.bydauto.be/new-byd-atto-3-evo-redefines-electric-family-suvs-with-awd-510km-of-range-and-220kw-charging",
+   "date": "2026-02-10"
+  },
+  "FIAT-GP": {
+   "url": "https://www.electrive.net/2024/12/04/fiat-grande-panda-startet-unter-25-000-euro/",
+   "date": "2024-12-04 (upd. 2025-06-02)"
+  },
+  "PEU-E2008": {
+   "url": "https://www.e-mobileo.de/peugeot-e-2008-ladekabel-fuer-ladestationen-und-wallboxen/",
+   "date": "undated"
+  },
+  "T03-FN": {
+   "url": "https://www.fleetnews.co.uk/news/leapmotor-t03-pricing-specification-and-range",
+   "date": "undated"
+  },
+  "T03-HEISE": {
+   "url": "https://heise.de/-9954053",
+   "date": "undated"
+  },
+  "MG4-BC": {
+   "url": "https://www.bestchargers.co.uk/mg4-home-charging/",
+   "date": "upd. 2026-07-14"
+  },
+  "SMART-AE": {
+   "url": "https://www.arenaev.com/smart_1_pro+_premium_2022-specs-289.php",
+   "date": "undated"
+  },
+  "VOLVO-EX30": {
+   "url": "https://www.volvocars.com/en-sa/cars/ex30-electric/specifications/",
+   "date": "live page, accessed 2026-10-06"
+  },
+  "REN-SCENIC": {
+   "url": "https://www.renault.ie/electric-vehicles/scenic-e-tech-electric/recharge.html",
+   "date": "live page, accessed 2026-10-06"
+  },
+  "REN-R5": {
+   "url": "https://www.renault.ie/electric-vehicles/r5-e-tech-electric.html",
+   "date": "live page, accessed 2026-10-06"
+  },
+  "REN-MEGANE": {
+   "url": "https://www.renault.ie/electric-vehicles/megane-e-tech-electric.html",
+   "date": "live page, accessed 2026-10-06"
+  },
+  "LEAF3-EL": {
+   "url": "https://www.electrive.net/2025/06/17/nissan-enthuellt-seinen-neuen-leaf-mit-600-km-reichweite/",
+   "date": "2025-06-17"
+  },
+  "LEAF3-NBC": {
+   "url": "https://www.notebookcheck.com/Neuer-Nissan-Leaf-2026-Kampfpreis-ab-35-950-Euro-doch-der-Rotstift-raecht-sich-im-Winter.1229294.0.html",
+   "date": "2026-02-18"
+  },
+  "SPRING-CC": {
+   "url": "https://www.completecar.ie/car-news/article/14417/Dacia-Spring-gets-new-battery-more-power",
+   "date": "2025-10-06"
+  },
+  "SPRING-M1": {
+   "url": "https://www.motor1.com/news/774747/2026-dacia-spring-debut-specs/",
+   "date": "2025-10-06"
+  },
+  "BMW-I3": {
+   "url": "https://www.press.bmwgroup.com/asia/article/attachment/T0274634EN/394529",
+   "date": "2017-09-19"
+  },
+  "KONA-AE": {
+   "url": "https://m.arenaev.com/hyundai_kona_electric_65_4kwh-specs-411.php",
+   "date": "undated"
+  },
+  "KIA-EV3": {
+   "url": "https://www.go-electra.com/en/newsroom/kia-ev3-price-range-charging-and-full-technical-specifications-for-2025/",
+   "date": "2026-01-23"
+  },
+  "WIKI-IONIQ6": {
+   "url": "https://en.wikipedia.org/wiki/Hyundai_Ioniq_6",
+   "date": "live page, accessed 2026-10-06"
+  }
+ }
+}

@@ -38,7 +38,8 @@ SITE = 'https://www.blokvolt.rs'
 LANGS = ('sr', 'en', 'ru')
 SCHEMA = 'blokvolt.app/1'
 FEED = '/assets/app/v1'
-MAP_FILES = ('punjaci', 'mreze', 'cene', 'dopune', 'region')
+# tx: English and Russian of the texts in the map data (build.py map_tx; the map on evolako.rs reads it)
+MAP_FILES = ('punjaci', 'mreze', 'cene', 'dopune', 'region', 'tx')
 PAGES = ['/javno-punjenje/', '/javno-punjenje/aplikacije-i-kartice/', '/javno-punjenje/besplatni-punjaci/',
          '/javno-punjenje/region/', '/cena-punjaca-za-elektricni-auto', '/metodologija/', '/o-sajtu/',
          '/pravila-objavljivanja/', '/politika-privatnosti']

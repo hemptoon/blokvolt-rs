@@ -1,0 +1,150 @@
+# Charge&GO: every connector as the Charge&GO app shows it (manual charger ID), robot run 05.10.2026.
+# connector id | station name in the app (with the network's own notes) | address | power | price (VAT included)
+11|Charge&GO  - Autočačak, Konjevići|Konjevići BB|22 kW|16,67 RSD/min
+12|Charge&GO  - Autočačak, Konjevići|Konjevići BB|50 kW|58,33 RSD/min
+29|Charge&GO - HIT AUTO (no cable)|Staro Sajmište 29|22 kW|16,67 RSD/min
+30|Charge&GO - HIT AUTO (no cable)|Staro Sajmište 29|22 kW|16,67 RSD/min
+40|Charge&GO - TC Promenada Novi Sad (no cable / 2 chargers on 0 floor / 3 chargers on 2B floor)|Bulevar Oslobodjenja 119|22 kW|16,67 RSD/min
+41|Charge&GO - TC Promenada Novi Sad (no cable/ 0 floor)|Bulevar Oslobodjenja 119|22 kW|16,67 RSD/min
+42|Charge&GO - TC Promenada Novi Sad (no cable / 2B floor)|Bulevar Oslobodjenja 119|22 kW|16,67 RSD/min
+43|Charge&GO - TC Promenada Novi Sad (no cable / 2b floor)|Bulevar Oslobodjenja 119|22 kW|16,67 RSD/min
+44|Charge&GO - TC Promenada Novi Sad (no cable / 2b floor)|Bulevar Oslobodjenja 119|22 kW|16,67 RSD/min
+51|Charge&GO - BS Gazprom Sokolići|Put Igumana Vasilija 52b|50 kW|58,33 RSD/min
+52|Charge&GO - BS Gazprom Sokolići|Put Igumana Vasilija 52b|50 kW|58,33 RSD/min
+53|Charge&GO - BS Gazprom Sokolići|Put Igumana Vasilija 52b|22 kW|16,67 RSD/min
+54|Charge&GO - BS Gazprom Stari Banovci|Autoput BG-NS bb|50 kW|58,33 RSD/min
+55|Charge&GO - BS Gazprom Stari Banovci|Autoput BG-NS bb|50 kW|58,33 RSD/min
+56|Charge&GO - BS Gazprom Stari Banovci|Autoput BG-NS bb|22 kW|16,67 RSD/min
+57|Charge&GO - BS Gazprom Novi Sad 16|Autoput E75 Novi Sad, Atar broj 14|50 kW|58,33 RSD/min
+58|Charge&GO - BS Gazprom Novi Sad 16|Autoput E75 Novi Sad, Atar broj 14|50 kW|58,33 RSD/min
+59|Charge&GO - BS Gazprom Novi Sad 16|Autoput E75 Novi Sad, Atar broj 14|22 kW|16,67 RSD/min
+60|Charge&GO - BS Gazprom Velika Plana|Autput A1 BG-NIŠ|45 kW|58,33 RSD/min
+61|Charge&GO - BS Gazprom Velika Plana|Autput A1 BG-NIŠ|45 kW|58,33 RSD/min
+62|Charge&GO - BS Gazprom Velika Plana|Autput A1 BG-NIŠ|22 kW|16,67 RSD/min
+63|Charge&GO - OMV Lapovo sever|Autoput NIŠ-BG|120 kW|101,67 RSD/min
+64|Charge&GO - OMV Lapovo sever|Autoput NIŠ-BG|120 kW|101,67 RSD/min
+65|Charge&GO - OMV Martinci 1|Autoput ŠID-BG|180 kW|114,17 RSD/min
+66|Charge&GO - OMV Martinci 1|Autoput ŠID-BG|180 kW|114,17 RSD/min
+67|Charge&GO - OMV Doljevac|Autoput E75 VR-NIŠ, Čečina|140 kW|114,17 RSD/min
+68|Charge&GO - OMV Doljevac|Autoput E75 VR-NIŠ, Čečina|140 kW|114,17 RSD/min
+71|Charge&GO - OMV Bačka Topola 1|Autoput E75 SU-NS|180 kW|114,17 RSD/min
+72|Charge&GO - OMV Bačka Topola 1|Autoput E75 SU-NS|180 kW|114,17 RSD/min
+73|Charge&GO - BIG FASHION Kragujevac (no cable)|Bulevar Kraljice Marije 56|22 kW|16,67 RSD/min
+74|Charge&GO - BIG FASHION Kragujevac (no cable)|Bulevar Kraljice Marije 56|22 kW|16,67 RSD/min
+75|Charge&GO - BIG FASHION Kragujevac (no cable)|Bulevar Kraljice Marije 56|22 kW|16,67 RSD/min
+76|Charge&GO - BIG FASHION Kragujevac (no cable)|Bulevar Kraljice Marije 56|22 kW|16,67 RSD/min
+78|Charge&GO - Stop Shop Požarevac|Djure Djakovića 3a/3b|22 kW|33,33 RSD/min
+79|Charge&GO - Stop Shop Smederevo|Salinačka 58|22 kW|33,33 RSD/min
+81|Charge&GO - Stop Shop Lazarevac|Železnička bb|22 kW|33,33 RSD/min
+82|Charge&GO - Stop Shop Vršac|Bulevar Miloša Obilića bb|120 kW|101,67 RSD/min
+83|Charge&GO - Stop Shop Vršac|Bulevar Miloša Obilića bb|120 kW|101,67 RSD/min
+84|Charge&GO - Stop Shop Zaječar|Čupićeva 2|60 kW|58,33 RSD/min
+85|Charge&GO - Stop Shop Zaječar|Čupićeva 2|60 kW|58,33 RSD/min
+88|Charge&GO - Stop Shop Subotica|Segedinski put 88a|120 kW|101,67 RSD/min
+89|Charge&GO - Stop Shop Subotica|Segedinski put 88a|120 kW|101,67 RSD/min
+91|Charge&GO - Stop Shop Sombor|Štrosmajerova 28|120 kW|101,67 RSD/min
+94|Charge&GO - Stop Shop Sombor|Štrosmajerova 28|120 kW|101,67 RSD/min
+95|Charge&GO - Stop Shop Šabac|Zapadna Transvezala I 4|60 kW|58,33 RSD/min
+96|Charge&GO - Stop Shop Šabac|Zapadna Transvezala I 4|60 kW|58,33 RSD/min
+97|Charge&GO - Stop Shop Niš  restricted access 01-05h AM|Bulevar Medijana 21|120 kW|101,67 RSD/min
+98|Charge&GO - Stop Shop Niš  restricted access 01-05h AM|Bulevar Medijana 21|120 kW|101,67 RSD/min
+100|Charge&GO - Stop Shop Leskovac restricted access 01-05h AM|28. Marta 10|60 kW|58,33 RSD/min
+101|Charge&GO - Stop Shop Leskovac restricted access 01-05h AM|28. Marta 10|22 kW|16,67 RSD/min
+105|Charge&GO  - MT-Komex|Oslobođenja 22b|22 kW|16,67 RSD/min
+110|Charge&GO - Termovent (no cable)|Slobodana Penezića 25|22 kW|16,67 RSD/min
+114|Charge&GO - Termovent (no cable)|Slobodana Penezića 25|22 kW|16,67 RSD/min
+118|Charge&GO - Airport city (ulaz kod Bele reke)|Omladinskih brigada 90|30 kW|33,33 RSD/min
+119|Charge&GO - Airport city (ulaz kod Bele reke)|Omladinskih brigada 90|30 kW|33,33 RSD/min
+123|Charge&GO - Stop Shop Leskovac restricted access 01-05h AM|28. Marta 10|60 kW|58,33 RSD/min
+126|Charge&GO - OMV Kruševac|Jasički put BB|130 kW|101,67 RSD/min
+127|Charge&GO - OMV Kruševac|Jasički put BB|130 kW|101,67 RSD/min
+133|Charge&GO - Intertrans Lučani|Dositejeva 1|30 kW|33,33 RSD/min
+137|Charge&GO - OMV Vranje|Partizanski put bb|120 kW|101,67 RSD/min
+138|Charge&GO - OMV Vranje|Partizanski put bb|120 kW|101,67 RSD/min
+142|Charge&GO - OMV Zemun park|Novosadski put bb|240 kW|126,67 RSD/min
+143|Charge&GO - OMV Zemun park|Novosadski put bb|240 kW|126,67 RSD/min
+144|Charge&GO - OMV Kneževac (BS Vidikovac)|Ibarska magistrala M22|120 kW|101,67 RSD/min
+145|Charge&GO - OMV Kneževac (BS Vidikovac)|Ibarska magistrala M22|120 kW|101,67 RSD/min
+148|Charge&GO - NCR (ask for EV charging on the gate)|Španskih Boraca 75|30 kW|33,33 RSD/min
+149|Charge&GO - NCR (ask for EV charging on the gate)|Španskih Boraca 75|30 kW|33,33 RSD/min
+150|Charge&GO - OMV Zaječar|Dobrivoja Radosavljevića Bobija 57|45 kW|58,33 RSD/min
+155|Charge&GO - OMV Ada Ciganlija|Radnička 6|50 kW|33,33 RSD/min
+156|Charge&GO - OMV Ada Ciganlija|Radnička 6|50 kW|33,33 RSD/min
+158|Charge&GO - BIG Novi Sad|Sentandrejski put 11|60 kW|58,33 RSD/min
+159|Charge&GO - BIG Novi Sad|Sentandrejski put 11|60 kW|58,33 RSD/min
+160|Charge&GO - BIG Beograd Karaburma|Višnjička 84|120 kW|101,67 RSD/min
+161|Charge&GO - BIG Beograd Karaburma|Višnjička 84|120 kW|101,67 RSD/min
+162|Charge&GO - BIG Pančevo|Miloša Obrenovića 12|60 kW|58,33 RSD/min
+163|Charge&GO - BIG Pančevo|Miloša Obrenovića 12|60 kW|58,33 RSD/min
+170|Charge&GO - BIG Kruševac|Krfska 37|180 kW|114,17 RSD/min
+171|Charge&GO - BIG Kruševac|Krfska 37|180 kW|114,17 RSD/min
+173|Charge&GO - BIG Pazova|Vojački put 1a|50 kW|58,33 RSD/min
+176|Charge&GO - Kraljevi Čardaci Kopaonik (no cable)|Stefana Prvovenčanog 79|22 kW|16,67 RSD/min
+177|Charge&GO - Kraljevi Čardaci Kopaonik (no cable)|Stefana Prvovenčanog 79|22 kW|16,67 RSD/min
+178|Charge&GO - Glecher 021|Kralja Petra 1a|150 kW|114,17 RSD/min
+179|Charge&GO - Glecher 021|Kralja Petra 1a|150 kW|114,17 RSD/min
+180|Charge&GO - OMV Obilaznica Surčin 1|Beogradska obilaznica|110 kW|101,67 RSD/min
+181|Charge&GO - OMV Obilaznica Surčin 1|Beogradska obilaznica|110 kW|101,67 RSD/min
+182|Charge&GO - OMV Obilaznica Surčin 2|Dobanovci 251|130 kW|101,67 RSD/min
+183|Charge&GO - OMV Obilaznica Surčin 2|Dobanovci 251|130 kW|101,67 RSD/min
+184|Charge&GO - B2 Nova Sun Nova Crnja|Maršala Tita|60 kW|58,33 RSD/min
+185|Charge&GO - B2 Nova Sun Nova Crnja|Maršala Tita|60 kW|58,33 RSD/min
+186|Charge&GO - B2 Sun Spot Mokrin (Kikinda)|RF6F+XP9 Кикинда|22 kW|16,67 RSD/min
+187|Charge&GO - B2 Sun Spot Mokrin (Kikinda)|RF6F+XP9 Кикинда|22 kW|16,67 RSD/min
+192|Charge&GO - Penta Park Prokuplje|Vuka Stefanovića Karadžića 3i|60 kW|58,33 RSD/min
+193|Charge&GO - Penta Park Prokuplje|Vuka Stefanovića Karadžića 3i|60 kW|58,33 RSD/min
+194|Charge&GO - Super Vero Novi Sad|Industrijska|150 kW|114,17 RSD/min
+195|Charge&GO - Super Vero Novi Sad|Industrijska|150 kW|114,17 RSD/min
+200|Charge&GO - BIG Zrenjanin|Zapad 5|150 kW|114,17 RSD/min
+201|Charge&GO - BIG Zrenjanin|Zapad 5|150 kW|114,17 RSD/min
+202|Charge&GO - OMV Kragujevac|Kneza Mihaila bb|150 kW|114,17 RSD/min
+203|Charge&GO - OMV Kragujevac|Kneza Mihaila bb|150 kW|114,17 RSD/min
+204|Charge&GO - OMV Jagodina|Stefana Prvovenčanog bb|110 kW|101,67 RSD/min
+205|Charge&GO - OMV Jagodina|Stefana Prvovenčanog bb|110 kW|101,67 RSD/min
+206|Charge&GO - OMV Loznica|Magistralni put M-19|120 kW|101,67 RSD/min
+207|Charge&GO - OMV Loznica|Magistralni put M-19|120 kW|101,67 RSD/min
+208|Charge&GO - Nova Retail Park Ub|Orloviceva 80|120 kW|101,67 RSD/min
+209|Charge&GO - Nova Retail Park Ub|Orloviceva 80|120 kW|101,67 RSD/min
+212|Charge&GO - OMV Kraljevo 2|Magistralni put M-22|70 kW|80,83 RSD/min
+213|Charge&GO - OMV Kraljevo 2|Magistralni put M-22|70 kW|80,83 RSD/min
+214|Charge&GO - Super Vero Novi Beograd restricted access 22:00-07:30h|Bulevar Milutina Milankovica 86a|150 kW|114,17 RSD/min
+215|Charge&GO - Super Vero Novi Beograd restricted access 22:00-07:30h|Bulevar Milutina Milankovica 86a|150 kW|114,17 RSD/min
+232|Charge&GO - F Apartmani|Milice Miljojković 4|22 kW|16,67 RSD/min
+235|Charge&GO - OKTA Ržaničino|Ržaničino, Katlanovo-Skopje, Auto-put E-75|50 kW|50,84 RSD/min
+243|Charge&GO - Bela Palanka|Srpskih Vladara 101|75 kW|80,83 RSD/min
+244|Charge&GO - Bela Palanka|Srpskih Vladara 101|75 kW|80,83 RSD/min
+256|Charge&GO - Planet Residence|Blagoja Parovića 1P|60 kW|58,33 RSD/min
+257|Charge&GO - Planet Residence|Blagoja Parovića 1P|60 kW|58,33 RSD/min
+259|Charge&GO - Riva Park|ul. Miloša Velikog 93|120 kW|101,67 RSD/min
+260|Charge&GO - Riva Park|ul. Miloša Velikog 93|120 kW|101,67 RSD/min
+266|Charge&GO - Futura Park Paraćin restricted access 22:00-06:00h call +381638250823|Tome Živanovića 56, Paraćin|120 kW|101,67 RSD/min
+267|Charge&GO - Futura Park Paraćin restricted access 22:00-06:00h call +381638250823|Tome Živanovića 56, Paraćin|120 kW|101,67 RSD/min
+268|Charge&GO - Milkop Raška|Ibarska 77|90 kW|98,33 RSD/min
+269|Charge&GO - Milkop Raška|Ibarska 77|90 kW|98,33 RSD/min
+272|Charge&GO - Aerodrom Niš 1|Aerodrom Konstantin Veliki|24 kW|33,33 RSD/min
+273|Charge&GO - Aerodrom Niš 2|Aerodrom Konstantin Veliki|24 kW|33,33 RSD/min
+274|Charge&GO - Aerodrom Niš 3|Aerodrom Konstantin Veliki|24 kW|33,33 RSD/min
+284|Charge&GO - OMV Niš 2|Bulevar 12. februara|110 kW|101,67 RSD/min
+285|Charge&GO - OMV Niš 2|Bulevar 12. februara|110 kW|101,67 RSD/min
+293|Charge&GO - OMV Palić|Magistralni put M-22|110 kW|101,67 RSD/min
+294|Charge&GO - OMV Palić|Magistralni put M-22|110 kW|101,67 RSD/min
+297|Charge&GO - OMV Subotica|Beogradski put 88|110 kW|101,67 RSD/min
+298|Charge&GO - OMV Subotica|Beogradski put 88|110 kW|101,67 RSD/min
+299|Charge&GO - OMV Požarevac|Đure Đakovića bb|100 kW|98,33 RSD/min
+300|Charge&GO - OMV Požarevac|Đure Đakovića bb|100 kW|98,33 RSD/min
+303|Charge&GO - OMV Kovin|Železnička bb|120 kW|101,67 RSD/min
+304|Charge&GO - OMV Kovin|Železnička bb|120 kW|101,67 RSD/min
+305|Charge&GO - OMV Pančevo|Prvomajska bb|150 kW|114,17 RSD/min
+306|Charge&GO - OMV Pančevo|Prvomajska bb|150 kW|114,17 RSD/min
+312|Charge&Go - VERO JUMBO - Restricted access 22:00-07:30h|Boulevard Kocho Racin|150 kW|114,39 RSD/min
+317|Charge&GO - Stop Shop Borča - Restricted access 01-05h AM|Bratstva i Jedinstva 2g/2v|60 kW|58,33 RSD/min
+318|Charge&GO - Stop Shop Borča - Restricted access 01-05h AM|Bratstva i Jedinstva 2g/2v|60 kW|58,33 RSD/min
+319|Charge&GO - HBIS Smederevo (unavailable 10:00-13:00 and 21:00-00:00)|Carigradska 55|60 kW|58,33 RSD/min
+320|Charge&GO - HBIS Smederevo (unavailable 10:00-13:00 and 21:00-00:00)|Carigradska 55|60 kW|58,33 RSD/min
+321|Charge&GO - HBIS Smederevo (unavailable 10:00-13:00 and 21:00-00:00)|Carigradska 55|22 kW|16,67 RSD/min
+322|Charge&GO - OMV Čačak 1|Bulevar oslobodilaca Čačka|140 kW|114,17 RSD/min
+323|Charge&GO - OMV Čačak 1|Bulevar oslobodilaca Čačka|140 kW|114,17 RSD/min
+324|Charge&GO - OMV Čačak 2|Vojvode Stepe 190|130 kW|114,17 RSD/min
+325|Charge&GO - OMV Čačak 2|Vojvode Stepe 190|130 kW|114,17 RSD/min
+330|Charge&GO - DeLasol Lapovo|Patrijarha Pavla|75 kW|80,83 RSD/min
+331|Charge&GO - DeLasol Lapovo|Patrijarha Pavla|50 kW|80,83 RSD/min

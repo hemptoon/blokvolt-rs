@@ -233,3 +233,19 @@ CREATE TABLE IF NOT EXISTS pg_lock (
   at INTEGER NOT NULL DEFAULT 0, -- when the last tick started (unix seconds)
   until INTEGER NOT NULL DEFAULT 0  -- while a tick runs: at + 600 (a tick that died frees the lock then); 0 when done
 );
+
+-- Drivers' short answers on the map card (the worker also creates it on first use): what went wrong with a report
+-- (why: busy | broken | app | cable | closed | short), cable (cab: att | own), parking (park: free | paid), hours (oh: 24 | lim).
+CREATE TABLE IF NOT EXISTS facts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  st TEXT NOT NULL,
+  f TEXT NOT NULL,
+  v TEXT NOT NULL,
+  at INTEGER NOT NULL,
+  ip TEXT,                       -- day fingerprint, as in checkins
+  uid TEXT
+);
+CREATE INDEX IF NOT EXISTS facts_st ON facts (st, at);
+
+-- Hits on the hidden link of /mapa/ (/api/zamka, forbidden in robots.txt): only counted, never blocked. The worker creates it.
+CREATE TABLE IF NOT EXISTS trap (day TEXT NOT NULL, fp TEXT NOT NULL, n INTEGER NOT NULL DEFAULT 0, ua TEXT, PRIMARY KEY (day, fp));

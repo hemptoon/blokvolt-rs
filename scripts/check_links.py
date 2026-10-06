@@ -14,8 +14,8 @@ for f in glob.glob('**/*.html', recursive=True):
         if not h.startswith('/') or h.startswith('//'):
             continue
         h = h.split('#')[0].split('?')[0]
-        if h in redir or h.rstrip('/') in redir:
-            continue
+        if h in redir or h.rstrip('/') in redir or h.startswith('/api/'):
+            continue   # /api/* is answered by the worker (_worker.js), not by a file
         cand = [h.lstrip('/') + 'index.html'] if h.endswith('/') else [h.lstrip('/'), h.lstrip('/') + '.html', h.lstrip('/') + '/index.html']
         if h == '/':
             cand = ['index.html']

@@ -29,6 +29,10 @@ ATTRS = ('alt', 'title', 'aria-label', 'placeholder', 'data-label')
 # JSON blocks of plain strings translated like running text: the page's script texts, and on /pregled/ the fixed texts
 # of the newsletter's e-mails (read back by scripts/pregled.py)
 UI_BLOCKS = ['bv-i18n', 'bv-i18n-mail']
+# script strings that are only a unit never reach the translation memory (worth() is False), but Russian writes the
+# units in Cyrillic (STYLE.md): the map's price units, so a card does not mix «RSD/км» from a sentence with "RSD/km"
+UI_UNITS = {'ru': {'RSD/kWh': 'RSD/кВт·ч', 'RSD/km': 'RSD/км', 'RSD/min': 'RSD/мин', '100 km ≈ {x} RSD': '100 км ≈ {x} RSD',
+                  'kW': 'кВт', 'km': 'км'}}
 NUM = re.compile(r'(?<![\w.,])\d+(?:[.,]\d+)+(?![\w])')
 PH = re.compile(r'⟦(\d+)⟧')
 UNITS = {'rsd', 'kw', 'kwh', 'km', 'min', 'h', 'v', 'a', 'ma', 'eur', 'mid', 'ac', 'dc', 'x', 'ocpp', 'rfid'}
@@ -330,7 +334,7 @@ class Renderer:
             data = json.loads(sc.string or '{}')
             for k, v in data.items():
                 if isinstance(v, str):
-                    data[k] = self.tr_text(lang, v, where)
+                    data[k] = UI_UNITS.get(lang, {}).get(v) or self.tr_text(lang, v, where)
             sc.string = json.dumps(data, ensure_ascii=False)
         # 5. links
         for a in soup.find_all(['a', 'link', 'area']):

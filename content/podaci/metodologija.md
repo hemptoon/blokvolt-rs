@@ -35,7 +35,7 @@ Izdvojena firma je označena kao „Izdvojeno“, stoji prva na spiskovima firmi
 - Grupe u tabeli (npr. javna cena sa ugradnjom, samo uređaj) opisuju šta je objavljeno, a ne kvalitet.
 - Ponude dobijene na upit, kao kupac, ne objavljuju se.
 - Poređenje sadrži samo javne i proverljive podatke, bez vrednosnih sudova (uslovi iz čl. 14 Zakona o oglašavanju).
-- Tabele su dostupne kao [CSV za preuzimanje](/preuzimanje/), pod licencom CC BY 4.0.
+- Tabele su dostupne kao [CSV za preuzimanje](/preuzimanje/), pod licencom CC BY-NC 4.0 (mediji i istraživači ih mogu citirati i objavljivati bez posebne dozvole).
 - Logotipi su preuzeti sa sajtova firmi i mreža i služe samo da se firma lakše prepozna. Pripadaju svojim vlasnicima; na zahtev firme logotip se uklanja.
 
 </details>

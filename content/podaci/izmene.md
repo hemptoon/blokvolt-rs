@@ -13,6 +13,11 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 6. oktobar 2026
 
+- [Mapa punjača](/mapa/): novo dugme „Najbliži punjač“ — tri najbliža punjača koja rade, sa navigacijom u Google mapama, Apple mapama ili Waze-u. Lokacija ostaje na vašem uređaju.
+- [Mapa punjača](/mapa/): „Moj auto“ — izaberite auto i mapa pokazuje cenu po kilometru na svakom punjaču, uz poređenje sa benzinom i punjenjem kod kuće. Računica uzima u obzir snagu koju auto zaista prima, gubitke pri punjenju i naknadu za pokretanje.
+- [Mapa punjača](/mapa/): za Charge&GO je upisana cena svakog priključka iz aplikacije (05.10.2026), zajedno sa napomenama mreže: gde je potreban sopstveni kabl i kad je pristup ograničen. Kartica punjača ima i kratko uputstvo „Kako se puni ovde“, a vozači uz prijavu mogu da jave da li je kabl na punjaču, da li se parking plaća i kakvo je radno vreme.
+- [Cene javnog punjenja](/javno-punjenje/): cene iz aplikacija Charge&GO (05.10.2026), Orion eMobility i Emobility Spectra (04.10.2026) i eDrive (05.10.2026); nove mreže [eDrive](/javno-punjenje/edrive/) (sopstveni punjači, 48 RSD po kWh uz 199 RSD po punjenju) i [Yesla](/javno-punjenje/yesla/) (48–78 RSD po kWh). Ispravljeno: na NIS stanicama punjače vode i Charge&GO i Orion eMobility. Prag automatske dopune Charge&GO je 1.000 RSD.
+- [Podaci za preuzimanje](/preuzimanje/): tabele su od danas pod licencom CC BY-NC 4.0 — mediji i istraživači ih i dalje mogu slobodno citirati i objavljivati. Ranije preuzete verzije ostaju pod CC BY 4.0. U [uslovima korišćenja](/politika-privatnosti.html#uslovi) je dopuna o bazi punjača.
 - [Firme za kućni punjač](/firme/): grupe „Punjač sa ugradnjom, javna cena“ i „Uređaj sa cenom, ugradnja na upit“ spojene su u jednu — „Javna cena, ugradnja uključena ili na upit“. Firma označena kao „Izdvojeno“ stoji prva, a ostale su poređane abecedno. Pravilo je opisano u [metodologiji](/metodologija/) i na stranici [O sajtu](/o-sajtu/).
 - [Evolako](/firme/evolako/): logo sa nazivom firme umesto samog znaka.
 - [STASANET](/firme/stasanet/): podaci ponovo provereni na punjac.rs; cene se nisu promenile.

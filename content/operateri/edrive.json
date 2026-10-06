@@ -1,39 +1,87 @@
 {
  "slug": "edrive",
- "name": "eDrive (eMobil, Beograd)",
- "kind": "app",
- "order": 9,
- "short": "Aplikacija za punjenje (eMSP) i softver za vlasnike punjača; deo evropske eRoaming mreže. Sopstvena mreža u Srbiji i cene nisu objavljene.",
- "website": "https://edrive.co.rs/",
+ "name": "eDrive (Voltic d.o.o., Beograd)",
+ "kind": "cpo",
+ "order": 6,
+ "short": "Mreža brzih punjača i aplikacija za punjenje (CPO + eMSP) firme Voltic d.o.o.: oko deset lokacija u Srbiji (BEX Konjarnik, West End, Inđija, Valjevo, Čačak, Zrenjanin, Smederevo) i punjači drugih mreža kroz roming Hubject.",
+ "website": "https://www.edrive.co.rs/edrive",
  "domain": "edrive.co.rs",
  "app": "eDrive (iOS/Android)",
  "city": "Beograd",
- "coverage": "Srbija + eRoaming (≈50.000 punjača u Evropi u bazi, 2023)",
- "network": "Nije objavljena; 2023: oko 300 korisnika, ≈14 MWh isporučeno (Netokracija, 26.06.2023)",
- "power": "—",
- "billing": "Nije objavljeno; e-fiskalni računi na e-mail.",
+ "coverage": "Beograd, Inđija, Valjevo i Divčibare, Čačak, Zrenjanin, Smederevo, Barajevo; u romingu i punjači Charge&GO i Orion eMobility",
+ "network": "Sopstveni punjači na roming mapi Charge&GO (oznaka RS*007, 23.09.2026): 8 lokacija, najveća BEX Konjarnik sa 10 priključaka (DC 31–90 kW); u aplikaciji eDrive 05.10.2026 i Ingrap-Omni Remont (Valjevo) i OLIMP (Zrenjanin).",
+ "power": "DC 31–90 kW; AC 22 kW (Smederevo)",
+ "billing": "Na sopstvenim DC punjačima: 199 RSD za pokretanje punjenja + 48 RSD po „tokenu“, a token je u aplikaciji ≈ 1 kWh; na AC punjaču u Smederevu 99 RSD + 11 RSD/min (aplikacija, 05.10.2026). Naplata sa kartice posle svake sesije; faktura i fiskalni račun stižu na e-mail.",
  "verdicts": {
-  "cenovnik": "Nije objavljen",
-  "naplata": "Ne pominje se",
-  "kwh": "Ne pominje se",
+  "cenovnik": "Samo u aplikaciji",
+  "naplata": "Po kWh + 199 RSD po punjenju",
+  "kwh": "Da (na sopstvenim DC punjačima)",
   "idle": "Ne pominje se"
  },
  "vclass": {
-  "cenovnik": "no",
-  "naplata": "no",
-  "kwh": "no",
+  "cenovnik": "ask",
+  "naplata": "yes",
+  "kwh": "yes",
   "idle": "no"
  },
- "prices": [],
- "fees": "Nije objavljeno.",
- "payment": "Aplikacija",
- "roaming": "„Deo najveće eRoaming mreže u Evropi“ (partner nije imenovan na sajtu)",
- "support": "edrive.co.rs — kontakt",
+ "prices": [
+  {
+   "what": "DC 50–90 kW — BEX Konjarnik, West End, Monogramlux Inđija, Ingrap-Omni Remont, OLIMP Zrenjanin",
+   "value": "48 RSD/kWh + 199 RSD po punjenju",
+   "date": "05.10.2026",
+   "source": "aplikacija eDrive — snimak ekrana redakcije",
+   "url": "https://www.edrive.co.rs/edrive",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "AC 22 kW — Dragović Petrol, Smederevo",
+   "value": "11 RSD/min + 99 RSD po punjenju",
+   "date": "05.10.2026",
+   "source": "aplikacija eDrive — snimak ekrana redakcije",
+   "url": "https://www.edrive.co.rs/edrive",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "Roming, punjač Charge&GO: DC 60 kW, BIG Novi Sad (Sentandrejski put 11)",
+   "value": "83,33 RSD/min + 199 RSD (u aplikaciji Charge&GO 58,33 RSD/min)",
+   "date": "06.10.2026",
+   "source": "aplikacija eDrive — snimak ekrana redakcije",
+   "url": "https://www.edrive.co.rs/edrive",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "Roming, punjač Charge&GO: AC 22 kW, TC Promenada (BIG Fashion) Novi Sad",
+   "value": "22 RSD/min + 199 RSD (u aplikaciji Charge&GO 16,67 RSD/min)",
+   "date": "04.10.2026",
+   "source": "aplikacija eDrive — snimak ekrana redakcije",
+   "url": "https://www.edrive.co.rs/edrive",
+   "confidence": "primarni izvor (aplikacija)"
+  }
+ ],
+ "fees": "Naknada za pokretanje punjenja: 199 RSD (DC i roming), 99 RSD (AC u Smederevu). Naknada za zauzeće u aplikaciji nije navedena (05.10.2026).",
+ "payment": "Aplikacija, platna kartica na nalogu (obavezno); naplata posle sesije",
+ "roaming": "Hubject: u aplikaciji su punjači Charge&GO i Orion eMobility, uz oznaku „Roaming“ i napomenu da važe cene partnera — skuplje nego u aplikaciji te mreže (npr. BIG Novi Sad DC 60 kW: 199 RSD + 83,33 RSD/min, a u aplikaciji Charge&GO 58,33 RSD/min).",
+ "support": "064 064 0000 · support@edrive.rs (iz aplikacije)",
  "sources": [
   {
-   "url": "https://edrive.co.rs/",
-   "label": "edrive.co.rs",
-   "date": "22.09.2026"
+   "url": "https://www.edrive.co.rs/edrive",
+   "label": "edrive.co.rs — eDrive",
+   "date": "06.10.2026"
+  },
+  {
+   "url": "https://www.edrive.co.rs/uslovi-koriscenja",
+   "label": "edrive.co.rs — uslovi korišćenja: Voltic d.o.o., naplata posle usluge, račun na e-mail",
+   "date": "06.10.2026"
+  },
+  {
+   "url": "https://client.chargego.rs/",
+   "label": "client.chargego.rs — roming mapa (lokacije RS*007)",
+   "date": "23.09.2026"
+  },
+  {
+   "url": "https://www.edrive.co.rs/edrive",
+   "label": "aplikacija eDrive — cene na sopstvenim i roming punjačima (snimci ekrana redakcije)",
+   "date": "05.10.2026"
   },
   {
    "url": "https://www.netokracija.rs/edrive-aplikacija-208889",
@@ -41,16 +89,47 @@
    "date": "22.09.2026"
   }
  ],
- "verified": "22.09.2026",
- "confidence": "niska — podaci iz 2023, aktuelnost nije potvrđena",
- "notes": "U registru kućnih punjača: <a href=\"/firme/edrive/\">eDrive</a>.",
- "card": "sopstvena mreža nije objavljena",
- "kind_label": "Aplikacija za plaćanje",
+ "verified": "05.10.2026",
+ "confidence": "visoka za cene iz aplikacije (05.10.2026) · veličina mreže po roming mapi",
+ "notes": "U registru kućnih punjača: <a href=\"/firme/edrive/\">eDrive</a>. Oznaka mreže na evropskoj roming mapi je RS*007; brojevi priključaka E000xx isti su kao u aplikaciji eDrive.",
+ "card": "oko 10 lokacija · 48 RSD/kWh + 199 RSD",
+ "kind_label": "Operator mreže + aplikacija",
  "publish": true,
  "short_name": "eDrive",
- "lead": "Aplikacija za punjenje i softver za vlasnike punjača. Sopstvena mreža i cene nisu objavljeni.",
- "network_short": "nije objavljena",
- "power_short": "—",
- "billing_short": "Nije objavljeno.",
- "payment_short": "Aplikacija"
+ "lead": "Mreža brzih punjača i aplikacija firme Voltic. Na svojim punjačima naplaćuje po kWh, uz 199 RSD za pokretanje.",
+ "network_short": "oko 10 lokacija",
+ "power_short": "DC 31–90 kW, AC 22 kW",
+ "billing_short": "48 RSD/kWh + 199 RSD po punjenju (DC).",
+ "payment_short": "Kartica u aplikaciji",
+ "kako": {
+  "checked": "06.10.2026",
+  "start": [
+   "Napravite nalog u aplikaciji eDrive i dodajte platnu karticu — bez toga punjenje ne može da se pokrene.",
+   "Skenirajte QR kod priključka u aplikaciji („Scan connector QR“) ili ga izaberite na mapi, pa prevucite za start.",
+   "Posle punjenja iznos se skida sa kartice, a faktura i fiskalni račun stižu na e-mail."
+  ],
+  "pay": "Na punjačima eDrive: 199 RSD za pokretanje + 48 RSD po kWh („token“) na DC; 99 RSD + 11 RSD/min na AC punjaču u Smederevu.",
+  "guest": "Bez naloga ne može.",
+  "after": "Punjači drugih mreža u aplikaciji su u romingu: tamo važi cena partnera, uz 199 RSD po punjenju — skuplje nego u aplikaciji te mreže.",
+  "apps": [
+   {
+    "l": "Google Play",
+    "u": "https://play.google.com/store/apps/details?id=rs.emobil.edrive"
+   },
+   {
+    "l": "edrive.co.rs",
+    "u": "https://www.edrive.co.rs/edrive"
+   }
+  ],
+  "src": [
+   {
+    "l": "uslovi korišćenja",
+    "u": "https://www.edrive.co.rs/uslovi-koriscenja"
+   },
+   {
+    "l": "aplikacija eDrive (05.10.2026)",
+    "u": "https://www.edrive.co.rs/edrive"
+   }
+  ]
+ }
 }

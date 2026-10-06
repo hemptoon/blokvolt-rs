@@ -25,6 +25,7 @@ the Google Maps check). Each station gets v = {'s': 'ok' | 'nep' | 'prob', ...}.
 networks' lists, and the stations only they have, go to /assets/map/mreze.json (not ODbL); the browser joins it
 with punjaci.json. See docs/RUNBOOK.md §3.11b.
 """
+import hashlib
 import json
 import math
 import re
@@ -72,7 +73,7 @@ NAMES = {
     'chargego': 'Charge&GO', 'orion-emobility': 'Orion eMobility', 'putevi-srbije': 'Putevi Srbije',
     'tesla': 'Tesla', 'nis-gazprom': 'NIS Petrol', 'omv': 'OMV', 'lidl-echarge': 'Lidl',
     'emobility-spectra': 'Emobility Spectra', 'eps': 'EPS', 'ikea': 'IKEA', 'mol': 'MOL', 'ionity': 'IONITY',
-    'parking-servis-beograd': 'Parking servis Beograd',
+    'parking-servis-beograd': 'Parking servis Beograd', 'edrive': 'eDrive', 'yesla': 'Yesla',
 }
 DUP_M = 60          # different or unknown network: same site only when this close
 DUP_NET_M = 200     # same network: one site per 200 m
@@ -272,6 +273,25 @@ def places(where):
 GENERIC = {fold(t[0]) for t in TOWNS} | {'novi beograd', 'srbija', 'eksterno'}
 
 
+def tariff(r):
+    """The numbers of one price row, for the map and the cost per km: v = RSD/min, k = RSD/kWh, h = RSD/hour,
+    ut + pm = RSD per Spectra "unit" + RSD/min, st = start or connection fee in RSD. Only what the row says."""
+    t = {}
+    if r.get('rsd_min'):
+        t['v'] = r['rsd_min'][0]
+    if r.get('rsd_kwh'):
+        t['k'] = r['rsd_kwh'][0]
+    if r.get('rsd_hour'):
+        t['h'] = r['rsd_hour']
+    if r.get('unit_rsd'):
+        t['ut'] = r['unit_rsd']
+        if r.get('rsd_per_min'):
+            t['pm'] = r['rsd_per_min']
+    if r.get('start_rsd'):
+        t['st'] = r['start_rsd']
+    return t
+
+
 def price_table(index, operators, logos):
     """{net: {...}} for the browser. Only what the price index says, with its date; nothing invented."""
     nets = {}
@@ -280,16 +300,22 @@ def price_table(index, operators, logos):
     def base(slug):
         o = ops.get(slug, {})
         lg = logos.get(slug) or {}
-        return {'name': NAMES.get(slug, o.get('name', slug)), 'page': f'/javno-punjenje/{slug}/' if slug in ops else '',
-                'site': o.get('website', ''), 'logo': lg.get('logo', ''), 'logo_dark': bool(lg.get('dark')), 'tiers': [], 'places': [], 'receipts': []}
+        n = {'name': NAMES.get(slug, o.get('name', slug)), 'page': f'/javno-punjenje/{slug}/' if slug in ops else '',
+             'site': o.get('website', ''), 'logo': lg.get('logo', ''), 'logo_dark': bool(lg.get('dark')), 'tiers': [], 'places': [], 'receipts': []}
+        if o.get('kako'):
+            n['kako'] = o['kako']   # "Kako se puni ovde" on the map card (content/operateri/<slug>.json)
+        return n
 
     for r in index['rows']:
-        slug = {'lidl-echarge': 'lidl-echarge'}.get(r['op'], r['op'])
+        slug = r['op']
         n = nets.setdefault(slug, base(slug))
         if r.get('free'):
             n['free'] = True
             n['free_note'] = r.get('who') or ''
             n['date'] = r.get('date', '')
+            if r.get('free_where'):
+                # free only at the places this row names (Emobility Spectra: four chargers of the network are free)
+                n.setdefault('free_where', []).extend(places(r['where']))
             continue
         if r.get('rsd_total'):
             n['receipts'].append({'where': places(r.get('where')), 'label': r['label'], 'kwh': round(r['rsd_total'] / r['kwh']), 'date': r.get('date', '')})
@@ -298,10 +324,11 @@ def price_table(index, operators, logos):
             continue   # roaming price of one app on another network's charger: shown on the network page, not on the map
         cur, lo, hi = parse_charger(r.get('charger'))
         item = {'cur': cur, 'lo': lo, 'hi': hi, 'charger': r.get('charger', ''), 'label': r['label'],
-                'v': (r.get('rsd_min') or [None])[0], 'extra': r.get('who') or '', 'date': r.get('date', ''),
+                'v': None, 'extra': r.get('who') or '', 'date': r.get('date', ''),
                 'src': r.get('source', ''), 'where': places(r.get('where'))}
-        if r.get('unit_rsd'):
-            n['places'].append(item)       # per-station tariffs (Spectra): only where they were recorded
+        item.update(tariff(r))
+        if r.get('unit_rsd') or r.get('place_only'):
+            n['places'].append(item)       # per-station tariffs (Spectra, Orion): only where they were recorded
         else:
             n['tiers'].append(item)
     for slug in ('putevi-srbije', 'lidl-echarge'):
@@ -314,13 +341,71 @@ def price_table(index, operators, logos):
     # networks without a published price: say where the price is
     for slug, note in (('tesla', 'Cena je u aplikaciji Tesla.'),
                        ('omv', 'Punjač na OMV stanici vodi Charge&GO, Orion ili EasyPark — cena je u njihovoj aplikaciji.'),
-                       ('nis-gazprom', 'Punjače na NIS stanicama vodi Charge&GO — cena je u aplikaciji Charge&GO.'),
+                       ('nis-gazprom', 'Punjače na NIS stanicama vode Charge&GO (Novi Sad 16, Stari Banovci, Velika Plana, Sokolići 1) '
+                                       'i Orion eMobility (Zmaj 1, Sokolići 2, Bački Vinogradi 1, Krnješevci) — cena je u aplikaciji te mreže.'),
                        ('emobility-spectra', 'Cena je u aplikaciji Emobility Spectra.'),
                        ('orion-emobility', 'Tačna cena je u aplikaciji Orion eMobility; zavisi od lokacije.'),
-                       ('chargego', 'Cena zavisi od snage punjača; tačna cena je u aplikaciji Charge&GO.')):
+                       ('chargego', 'Cene su za registrovane korisnike aplikacije Charge&GO; bez registracije je skuplje (registrovani plaćaju 20 % manje).'),
+                       ('edrive', 'Na svojim punjačima eDrive naplaćuje po kWh, uz naknadu za pokretanje; tačna cena je u aplikaciji eDrive.'),
+                       ('yesla', 'Cena po kWh, iz aplikacije Yesla.')):
         nets.setdefault(slug, base(slug))['note'] = note
-    nets['nis-gazprom']['via'] = 'chargego'
+    for slug, o in ops.items():
+        if o.get('kako') and slug not in nets:
+            nets[slug] = base(slug)
     return nets
+
+
+def _fits(t, cur, kw):
+    return t.get('cur') == cur and (t.get('lo') is None or (kw >= t['lo'] - 5 and kw <= t['hi'] + 5))
+
+
+def guard_exact(nets, stations):
+    """Copies of prices that keep older map code right ('guard': true in places; blokvolt.rs does not read them).
+
+    The map on evolako.rs (until its script is replaced) and the apps' first versions take a price recorded at a place
+    even for the other current or another power when it is the only price recorded there. Since 05.10.2026 the
+    Charge&GO rows name every place of their power class, and one place can have several stations: DeLasol Lapovo has
+    DC 75 and 50 kW in the app (both 80,83 RSD/min) and AC 22 kW on the network's list. Such a station gets a copy
+    that fits it: the same row with its power for the same current (that place has that price), or the network's price
+    for its current and power. map.js on blokvolt.rs skips the copies and never takes a price for the other current."""
+    added = []
+    for slug, n in nets.items():
+        entries = n['tiers'] + n['places']
+        if not any(e.get('where') for e in entries):
+            continue
+        want = []
+        for s in stations:
+            if s.get('net') != slug or (s.get('fee') or {}).get('free') or (n.get('free') and is_free(s, nets)):
+                continue
+            hay = fold(' '.join([s.get('n') or '', s.get('a') or ''] + (s.get('al') or [])))
+            cur, kw = ('dc' if s.get('dc') else 'ac'), (s.get('dc') or s.get('ac') or 0)
+            exact = [e for e in entries if any(w in hay for w in e.get('where') or [])]
+            if len(exact) != 1 or _fits(exact[0], cur, kw):
+                continue
+            e = exact[0]
+            keys = [w for w in e['where'] if w in hay]
+            if e['cur'] == cur and e.get('lo') is not None:
+                g = dict(e, lo=min(e['lo'], kw), hi=max(e['hi'], kw))
+            else:
+                t = next((x for x in n['tiers'] if not x.get('where') and _fits(x, cur, kw)), None) or \
+                    next((x for x in n['tiers'] if _fits(x, cur, kw)), None)
+                if not t:
+                    print('guard_exact:', s['id'], 'has no price for', cur, kw, 'kW in', slug)
+                    continue
+                g = dict(t)
+            want.append((s, cur, kw, dict(g, where=keys, guard=True)))
+        for s, cur, kw, g in want:
+            if not any(x.get('guard') and x['cur'] == g['cur'] and x['v'] == g['v'] and x.get('k') == g.get('k') and
+                       x['where'] == g['where'] and x.get('lo') == g.get('lo') and x.get('hi') == g.get('hi') for x in n['places']):
+                n['places'].append(g)
+                added.append((slug, s['id'], g['charger'], g['label']))
+        # every station whose price changed hands must now find a fitting price at its place
+        for s, cur, kw, g in want:
+            hay = fold(' '.join([s.get('n') or '', s.get('a') or ''] + (s.get('al') or [])))
+            hit = [e for e in n['tiers'] + n['places'] if any(w in hay for w in e.get('where') or []) and _fits(e, cur, kw)]
+            if not hit or (hit[0]['v'], hit[0].get('k')) != (g['v'], g.get('k')):
+                print('guard_exact: check', s['id'], slug, '->', hit[0]['label'] if hit else None, 'expected', g['label'])
+    return added
 
 
 def is_free(s, nets):
@@ -366,6 +451,9 @@ def putevi_official(stations):
         ac = max([_ps_kw(l[1], 'AC') or 0 for l in lines]) or None
         for st in found:   # the official name, road and power instead of the mixed (and older) open data
             st['ps'] = info
+            if ac:
+                # "For AC chargers, you need to use your own cable unless otherwise indicated" (putevi-srbije.rs)
+                st['cab'] = {'own': True, 'src': 'JP Putevi Srbije', 'd': ps['checked']}
             st['net'] = 'putevi-srbije'
             st['n'] = site['name']
             st['a'] = ' · '.join([site['road']] + dirs)
@@ -382,6 +470,8 @@ def putevi_official(stations):
                         {'d': 'osm', 'u': site.get('pos', ''), 'upd': ''}],
                 'ps': info,
             })
+            if ac:
+                stations[-1]['cab'] = {'own': True, 'src': 'JP Putevi Srbije', 'd': ps['checked']}
     ch = [c for site in ps['sites'] for c in site['chargers']]
     return {'total': len(ch), 'works': sum(1 for c in ch if c['status'] == 1), 'down': sum(1 for c in ch if c['status'] == 0),
             'connecting': sum(1 for c in ch if c['status'] == -1), 'planned': ps.get('planned', 0), 'checked': ps['checked'],
@@ -414,7 +504,12 @@ CITY_FIX = {'belgrade': 'Beograd', 'unknown': '', 'vojvodina': '', 'bajina basta
             'vrnjacka banja': 'Vrnjačka Banja', 'pecinci': 'Pećinci', 'sokolici': 'Sokolići', 'jagodina 35000': 'Jagodina'}
 KEEP_UP = {'OMV', 'BIG', 'NIS', 'BEX', 'HBIS', 'NCR', 'BMW', 'ABB', 'KPM', 'MIF', 'OBD2', 'FMC', 'MIND', 'SIRIUS'}
 PLUS_CODE = r'\b[23456789CFGHJMPQRVWX]{4}\+[23456789CFGHJMPQRVWX]{2,3}\b'
-ROAM_NET = {'RS*ORI': 'orion-emobility'}   # other roaming operators (RS*007, RO*PLG): network not published
+# roaming operators of the Charge&GO roaming map: RS*ORI = Orion eMobility; RS*007 = eDrive (Voltic d.o.o.) — its EVSE
+# numbers E000xx are the ones the eDrive app shows on its own stations (05.10.2026); RO*PLG: network not published
+ROAM_NET = {'RS*ORI': 'orion-emobility', 'RS*007': 'edrive'}
+# eDrive's own names of its sites (eDrive app, 05.10.2026), by the EVSE number on the roaming map
+EVSE_NAMES = {'E00040': 'Ingrap-Omni Valjevo', 'E00050': 'Ingrap-Omni Divčibare', 'E00045': 'Monogramlux Inđija',
+              'E00004': 'Gradska plaža Čačak', 'E00003': 'West End', 'E00023': 'BEX Konjarnik', 'E00020': 'Dragović Petrol'}
 MATCH_M = {'same': 250, 'host': 150, 'none': 100}   # official site <-> open-data station, by how well the networks agree
 HOST_NETS = {'nis-gazprom', 'omv'}   # hosts whose chargers another network runs
 
@@ -521,7 +616,7 @@ def official_sites():
         if re.search(r'(?i)\btest\b', name):
             continue
         c = _city(city)
-        nm = '' if re.fullmatch(r'E\d{5}', name) else smart_case(NAME_FIX.get(name, name))
+        nm = EVSE_NAMES.get(name) or ('' if re.fullmatch(r'E\d{5}', name) else smart_case(NAME_FIX.get(name, name)))
         recs.append({'k': 'rm', 'id': 'rm-%d-%d' % (round(lat * 1e5), round(lon * 1e5)), 'lat': lat, 'lon': lon,
                      'net': ROAM_NET.get(op, ''), 'op': op, 'raw': name, 'n': nm,
                      'a': ', '.join(x for x in (_street(street, c), c) if x), 'c': _rm_conns(f[9], f[10]), 'evse': n,
@@ -550,7 +645,182 @@ def official_sites():
             same['n'] = r['n']
         same['n'] = re.sub(r'\s+\d$', '', same['n'])
         same['putevi'] = same.get('putevi') or r.get('putevi')
+    app_layer(sites, meta)
     return sites, meta
+
+
+# ------------------------------------------------------------------ the Charge&GO app: price per connector, notes per site
+# content/mapa/mreze/chargego-app.txt (meta key 'cga'): every connector as the Charge&GO app shows it, read by the robot on
+# the owner's Android phone (docs/RUNBOOK.md 3.3). The app names stations with the network's own notes ("(no cable)",
+# "restricted access 01-05h AM", "unavailable 10:00-13:00 and 21:00-00:00", "ask for EV charging on the gate"); they
+# become the station's cable, hours and "how to find it" lines. Prices are the app's (registered users), VAT included.
+APP_BRANDS = ['omv', 'stop shop', 'big', 'super vero', 'gazprom', 'nis']
+APP_GENERIC = {'charge', 'go', 'the', 'and', 'sa', 'na', 'floor', 'cable', 'no', 'restricted', 'access', 'unavailable', 'call', 'ask',
+               'for', 'ev', 'charging', 'on', 'gate', 'chargers', 'kod', 'put', 'bb', 'autoput', 'autput', 'magistralni', 'ulica', 'ul',
+               'doo', 'bulevar', 'boulevard', 'ulaz'}
+
+
+def _app_norm(s):
+    return re.sub(r'dj', 'd', fold(s or ''))
+
+
+def _app_toks(x):
+    return {w for w in re.findall(r'[a-z0-9]+', _app_norm(x)) if (len(w) >= 3 or w.isdigit()) and w not in APP_GENERIC}
+
+
+def _app_brand(x):
+    f = ' ' + _app_norm(x) + ' '
+    return {b for b in APP_BRANDS if re.search(r'\b' + b + r'\b', f)}
+
+
+def _app_core(name):
+    """'Charge&GO - Stop Shop Niš  restricted access 01-05h AM' -> 'Stop Shop Niš'."""
+    n = re.sub(r'(?i)^charge\s*&\s*go\s*-?\s*', '', name)
+    n = re.sub(r'\(.*?\)', ' ', n)
+    n = re.sub(r'(?i)\s*-?\s*restricted access.*$', '', n)
+    return re.sub(r'\s+\d$', '', re.sub(r'\s+', ' ', n).strip(' -'))
+
+
+def _hm(h, m):
+    return int(h) % 24 * 60 + int(m or 0)
+
+
+def _app_notes(names):
+    """The network's notes in the app names -> cable, closed windows [(from, to, kind) minutes; kind r = restricted access,
+    u = unavailable], how to find it."""
+    txt = ' / '.join(sorted(set(names)))
+    out = {'cable': bool(re.search(r'(?i)no cable', txt)), 'closed': [], 'find': [], 'phone': bool(re.search(r'(?i)\bcall\b', txt))}
+    for m in re.finditer(r'(?i)restricted access\s*(\d{1,2})(?::(\d{2}))?\s*-\s*(\d{1,2})(?::(\d{2}))?', txt):
+        w = (_hm(m.group(1), m.group(2)), _hm(m.group(3), m.group(4)), 'r')
+        if w not in out['closed']:
+            out['closed'].append(w)
+    m = re.search(r'(?i)unavailable\s+([\d:]+)\s*-\s*([\d:]+)(?:\s+and\s+([\d:]+)\s*-\s*([\d:]+))?', txt)
+    if m:
+        for a, b in ((m.group(1), m.group(2)), (m.group(3), m.group(4))):
+            if a and b:
+                out['closed'].append((_hm(*(a.split(':') + ['0'])[:2]), _hm(*(b.split(':') + ['0'])[:2]), 'u'))
+    if re.search(r'(?i)ask for ev charging on the gate', txt):
+        out['find'].append('Na kapiji recite da dolazite na punjenje.')
+    m = re.search(r'(?i)ulaz kod ([^)]+)\)', txt)
+    if m:
+        out['find'].append('Ulaz kod ' + m.group(1).strip() + '.')
+    if re.search(r'(?i)chargers on 0 floor', txt) and re.search(r'(?i)2b floor', txt):
+        out['find'].append('Dva punjača su na nivou 0, tri na nivou 2B garaže.')
+    return out
+
+
+def _hours_text(closed):
+    """[(1320, 450, 'r')] -> 'Ograničen pristup 22:00–07:30'; [(600, 780, 'u'), (1260, 0, 'u')] -> 'Ne radi 10–13 i 21–24 h'."""
+    full = any(a % 60 or b % 60 for a, b, _ in closed)
+
+    def t(x, end=False):
+        if end and x == 0:
+            x = 1440
+        return f'{x // 60:02d}:{x % 60:02d}' if full else f'{x // 60:02d}'
+    out = []
+    for kind, label in (('r', 'Ograničen pristup'), ('u', 'Ne radi')):
+        parts = [t(a) + '–' + t(b, True) for a, b, k in closed if k == kind]
+        if parts:
+            out.append(label + ' ' + ' i '.join(parts) + ('' if full else ' h'))
+    return '; '.join(out)
+
+
+def _open_windows(closed):
+    """Closed windows -> the daily open windows in minutes; a window may run past midnight (close > 1440)."""
+    cuts = sorted(((a, b if b > a else b + 1440) for a, b, _ in closed))
+    if len(cuts) == 1:
+        a, b = cuts[0]
+        return [[b % 1440, a + (1440 if a < b % 1440 else 0)]]
+    out, pos = [], 0
+    for a, b in cuts:
+        if a > pos:
+            out.append([pos, a])
+        pos = max(pos, b)
+    if pos < 1440:
+        out.append([pos, 1440])
+    return out
+
+
+def app_layer(sites, meta):
+    """Attach the Charge&GO app's connectors, prices and notes to the matching sites of the network's list ('app')."""
+    if 'cga' not in meta or not (MREZE / meta['cga']['file']).exists():
+        return
+    rows = [l.rstrip('\n').split('|') for l in open(MREZE / meta['cga']['file'], encoding='utf-8') if l.strip() and not l.startswith('#')]
+    groups = {}
+    for cid, name, addr, kw, price in rows:
+        if re.search(r'(?i)skopje|kocho|katlanovo', addr):
+            continue   # North Macedonia
+        groups.setdefault((_app_core(name), addr), []).append((int(cid), name, float(kw.split()[0]), _num(price.split()[0])))
+    cg = [s for s in sites if s['k'] == 'cg']
+    for (core, addr), conns in groups.items():
+        nb, nt, at = _app_brand(core), _app_toks(core), _app_toks(addr)
+        nt_wo_brand = nt - {w for b in nb for w in b.split()}
+        best = []
+        for s in cg:
+            sb = _app_brand(s['raw'])
+            if nb != sb and (nb or sb - {'nis'}):
+                continue
+            score = 2 * len(nt_wo_brand & (_app_toks(s['raw']) | _app_toks(s['a'].split(',')[-1]))) + len(at & _app_toks(s['a']))
+            skw = [c[2] for c in s['c'] if c[2]]
+            if skw and all(min(abs(k - x) for x in skw) > 8 for _, _, k, _ in conns):
+                score -= 2
+            best.append((score, s['id'], s))
+        best.sort(key=lambda x: (-x[0], x[1]))
+        if not best or best[0][0] < 2 or (len(best) > 1 and best[1][0] == best[0][0]):
+            print('chargego-app.txt: no clear site for', core, '|', addr)
+            continue
+        site = best[0][2]
+        notes = _app_notes([c[1] for c in conns])
+        ac_kw = [c[2] for c in site['c'] if c[1] == 'ac' and c[2]]
+        dc_kw = [c[2] for c in site['c'] if c[1] == 'dc' and c[2]]
+
+        def cur_of(kw):
+            # the app shows only the power: the network's list says whether that connector is AC or DC
+            near = lambda vals: vals and min(abs(kw - v) for v in vals) <= 3
+            if near(dc_kw) and not near(ac_kw):
+                return 'dc'
+            if near(ac_kw):
+                return 'ac'
+            return 'ac' if kw <= 22 and ac_kw else 'dc'
+        lines = {}
+        for cid, _, kw, v in conns:
+            k = (cur_of(kw), kw, v)
+            lines[k] = lines.get(k, 0) + 1
+        app = site.setdefault('app', {'pr': [], 'notes': {'cable': False, 'closed': [], 'find': [], 'phone': False}})
+        for (cur, kw, v), n in lines.items():
+            app['pr'].append([cur, round(kw) if kw == round(kw) else kw, v, n])
+        for k in ('cable', 'phone'):
+            app['notes'][k] = app['notes'][k] or notes[k]
+        app['notes']['closed'] += [w for w in notes['closed'] if w not in app['notes']['closed']]
+        app['notes']['find'] += [f for f in notes['find'] if f not in app['notes']['find']]
+    for s in cg:
+        if s.get('app'):
+            # one line per current, power and price; the most powerful first
+            merged = {}
+            for cur, kw, v, n in s['app']['pr']:
+                merged[(cur, kw, v)] = merged.get((cur, kw, v), 0) + n
+            s['app']['pr'] = sorted(([c, k, v, n] for (c, k, v), n in merged.items()), key=lambda x: (x[0] != 'dc', -x[1], x[2]))
+
+
+def app_fields(site, meta):
+    """The station fields the Charge&GO app gives one site: per-connector prices (pr), own cable (cab), hours (oh),
+    how to find the charger (loc.find)."""
+    app = site.get('app')
+    if not app:
+        return {}
+    src = 'aplikacija Charge&GO'
+    out = {'pr': {'d': meta['cga']['date'], 'u': 'min', 'src': src, 'l': app['pr']}}
+    nt = app['notes']
+    if nt['cable'] and any(c == 'ac' for c, *_ in app['pr']):
+        out['cab'] = {'own': True, 'src': src, 'd': meta['cga']['date']}
+    if nt['closed']:
+        t = _hours_text(nt['closed'])
+        if nt['phone']:
+            t += ' (broj za poziv je u aplikaciji Charge&GO)'
+        out['oh'] = {'t': t, 'h24': False, 'w': _open_windows(nt['closed']), 'src': src, 'd': meta['cga']['date']}
+    if nt['find']:
+        out['loc'] = {'find': ' '.join(nt['find']) + ' (aplikacija Charge&GO)'}
+    return out
 
 
 def _ll(x):
@@ -668,14 +938,20 @@ def verify(stations, notes, checked):
             if dist_m(_ll(keep), _ll(other)) <= 250 and not other.get('ps'):
                 _absorb(keep, other)
                 gone.add(other['id'])
+        # the Charge&GO app: prices per connector, own cable, hours, how to find it (also for a site in trial operation)
+        af = app_fields(site, meta)
+        af_src = [{'d': 'cga', 'l': 'aplikacija Charge&GO', 'u': meta['cga']['url'], 'upd': iso(meta['cga']['date'])}] if af else []
         if site.get('test'):
             keep['v'] = {'s': 'nep', 'g': 'test', 'd': meta[site['k']]['date']}   # the network lists it as in trial operation
+            if af:
+                upd[keep['id']] = dict(af, src=af_src)
             continue
         by = sorted(set((keep.get('v') or {}).get('by', [])) | {site['k']})
         keep['v'] = {'s': 'ok', 'by': by, 'd': meta[site['k']]['date']}
         if site.get('putevi') or keep.get('ps'):
             continue   # the state chargers keep the official list of JP "Putevi Srbije"
-        u = {'src': [{'d': site['k'], 'u': meta[site['k']]['url'], 'upd': iso(meta[site['k']]['date'])}]}
+        u = {'src': [{'d': site['k'], 'u': meta[site['k']]['url'], 'upd': iso(meta[site['k']]['date'])}] + af_src}
+        u.update({k: v for k, v in af.items()})
         if site['c'] and site['k'] != 'te':
             dc = [c[2] for c in site['c'] if c[1] == 'dc' and c[2]]
             ac = [c[2] for c in site['c'] if c[1] == 'ac' and c[2]]
@@ -699,11 +975,13 @@ def verify(stations, notes, checked):
         dc = [c[2] for c in site['c'] if c[1] == 'dc' and c[2]]
         ac = [c[2] for c in site['c'] if c[1] == 'ac' and c[2]]
         town, km = near_town(site['lat'], site['lon'])
-        add.append({'id': site['id'], 'n': site['n'], 'a': site['a'], 't': town if km < 25 else '',
-                    'lat': round(site['lat'], 5), 'lon': round(site['lon'], 5), 'net': site['net'], 'opn': '',
-                    'c': site['c'], 'dc': max(dc) if dc else None, 'ac': max(ac) if ac else None, 'acc': 'public',
-                    'src': [{'d': site['k'], 'u': meta[site['k']]['url'], 'upd': iso(meta[site['k']]['date'])}],
-                    'v': {'s': 'ok', 'by': [site['k']], 'd': meta[site['k']]['date']}})
+        af = app_fields(site, meta)
+        add.append(dict({'id': site['id'], 'n': site['n'], 'a': site['a'], 't': town if km < 25 else '',
+                         'lat': round(site['lat'], 5), 'lon': round(site['lon'], 5), 'net': site['net'], 'opn': '',
+                         'c': site['c'], 'dc': max(dc) if dc else None, 'ac': max(ac) if ac else None, 'acc': 'public',
+                         'src': [{'d': site['k'], 'u': meta[site['k']]['url'], 'upd': iso(meta[site['k']]['date'])}]
+                         + ([{'d': 'cga', 'l': 'aplikacija Charge&GO', 'u': meta['cga']['url'], 'upd': iso(meta['cga']['date'])}] if af else []),
+                         'v': {'s': 'ok', 'by': [site['k']], 'd': meta[site['k']]['date']}}, **af))
     for s in stations:
         if s.get('ps') and not s.get('v'):
             s['v'] = {'s': 'ok', 'by': ['ps'], 'd': s['ps']['d']}
@@ -722,7 +1000,15 @@ def verify(stations, notes, checked):
     return {'upd': upd, 'add': add}
 
 
-DOPUNE_KEYS = {'n', 'a', 't', 'lat', 'lon', 'net', 'opn', 'c', 'dc', 'ac', 'loc', 'oh', 'ax', 'fee', 'v', 'al', 'note', 'src'}
+DOPUNE_KEYS = {'n', 'a', 't', 'lat', 'lon', 'net', 'opn', 'c', 'dc', 'ac', 'loc', 'oh', 'ax', 'fee', 'v', 'al', 'note', 'src', 'park', 'cab'}
+
+
+def watermark(sid, v, salt):
+    """Our own checked coordinates carry a seventh decimal (at most 0,1 m, far below GPS accuracy) that depends on the
+    station and the month of the release: a copy of dopune.json shows what was taken and when (docs/RUNBOOK.md 3.28). The
+    map shows five decimals and the routes do not notice 0,1 m."""
+    h = int(hashlib.sha1(f'{sid}|{salt}'.encode()).hexdigest(), 16) % 9 + 1
+    return round(round(v, 5) + h * 1e-7, 7)
 
 
 def dopune(stations):
@@ -742,15 +1028,24 @@ def dopune(stations):
         bad = set(u) - DOPUNE_KEYS
         if bad:
             raise SystemExit(f'dopune.json: {sid}: unknown fields {sorted(bad)}')
+        u = dict(u)
+        salt = '-'.join(reversed(dp.get('checked', '').split('.')))[:7]
+        for k in ('lat', 'lon'):
+            if k in u:
+                u[k] = watermark(sid + k, u[k], salt)
         upd[sid] = u
     return {'checked': dp.get('checked', ''), 'upd': upd}
 
 
-def texts(extra):
-    """Serbian texts of dopune.json shown on the map card, for the translation memory (tx:<text> in the page strings)."""
+def texts(extra, layer=None):
+    """Serbian texts of dopune.json and of the networks' layer (the Charge&GO app's notes) shown on the map card, for the
+    translation memory (tx:<text> in the page strings)."""
     out = set()
+    for u in list((layer or {}).get('upd', {}).values()) + list((layer or {}).get('add', [])):
+        for k, fields in (('oh', ('t', 'src')), ('loc', ('find',)), ('pr', ('src',)), ('cab', ('src',))):
+            out.update(x for x in (u.get(k, {}).get(f) for f in fields) if x and re.search('[a-zčćžšđ]{3}', x.lower()))
     for u in extra['upd'].values():
-        for k, fields in (('loc', ('venue', 'find')), ('oh', ('t', 'src')), ('ax', ('t', 'limit')), ('fee', ('t', 'src', 'note'))):
+        for k, fields in (('loc', ('venue', 'find')), ('oh', ('t', 'src')), ('ax', ('t', 'limit')), ('fee', ('t', 'src', 'note')), ('park', ('t', 'src'))):
             out.update(x for x in (u.get(k, {}).get(f) for f in fields) if x and re.search('[a-zčćžšđ]{3}', x.lower()))
         if u.get('note'):
             out.add(u['note'])
@@ -767,6 +1062,12 @@ def build(dist, operators, index, logos):
     notes, checked = manual_check(stations)
     ps = putevi_official(stations)
     nets_layer = verify(stations, notes, checked)
+    # "bring your own cable" is not part of the open data set: it travels in the networks' layer (JP Putevi Srbije: their
+    # official statement for AC chargers)
+    for s in stations:
+        if 'cab' in s:
+            nets_layer['upd'].setdefault(s['id'], {'src': []}).setdefault('cab', s['cab'])
+            del s['cab']
     stations.sort(key=lambda x: (fold(x['n']) or 'zzz', x['id']))
     out = dist / 'assets' / 'map'
     out.mkdir(parents=True, exist_ok=True)
@@ -796,7 +1097,8 @@ def build(dist, operators, index, logos):
     extra = dopune(stations)
     (out / 'dopune.json').write_text(json.dumps({
         'about': 'Proverene dopune mape na www.blokvolt.rs (tačno mesto, radno vreme, pristup, ko puni besplatno), sa izvorom i '
-                 'datumom. Nije deo otvorenog skupa podataka punjaci.json. CC BY 4.0, BlokVolt.',
+                 'datumom. Nije deo otvorenog skupa podataka punjaci.json; preuzimanje uređuju uslovi korišćenja '
+                 '(https://www.blokvolt.rs/politika-privatnosti.html#uslovi). © BlokVolt.',
         'checked': extra['checked'], 'upd': extra['upd']}, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     for s in stations:
         u = extra['upd'].get(s['id'])
@@ -805,7 +1107,10 @@ def build(dist, operators, index, logos):
             s['src'] = s['src'] + u.get('src', [])
     stations.sort(key=lambda x: (fold(x['n']) or 'zzz', x['id']))
     nets = price_table(index, operators, logos)
-    prices = {'about': 'Cene javnog punjenja po mrežama sa www.blokvolt.rs (aplikacije mreža i računi, sa datumom). CC BY 4.0.',
+    for slug, sid, ch, lb in guard_exact(nets, stations):
+        print(f'cene.json: guard price for {sid} ({slug}): {ch}, {lb}')
+    prices = {'about': 'Cene javnog punjenja po mrežama sa www.blokvolt.rs (aplikacije mreža i računi, sa datumom). CC BY-NC 4.0, BlokVolt; '
+                       'uslovi: https://www.blokvolt.rs/politika-privatnosti.html#uslovi',
               'updated': index.get('updated', ''), 'nets': nets}
     (out / 'cene.json').write_text(json.dumps(prices, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     counts = {}
@@ -815,4 +1120,34 @@ def build(dist, operators, index, logos):
     free = sum(1 for s in stations if is_free(s, nets))
     return {'n': len(stations), 'fast': fast, 'free': free, 'counts': counts, 'retrieved': head['retrieved'], 'checked': checked,
             'ocm_updated': head['ocm_updated'], 'osm_updated': head['osm_updated'], 'nets': nets, 'stations': stations, 'ps': ps,
-            'extra_texts': texts(extra)}
+            'extra_texts': texts(extra, nets_layer)}
+
+
+# ------------------------------------------------------------------ cars for "Moj auto" (cost per km on the map)
+def _car_id(c):
+    return re.sub(r'[^a-z0-9]+', '-', fold(f"{c['make']} {c['model']} {c['years']}")).strip('-')[:70]
+
+
+def cars(dist):
+    """content/data/ev-specs.json -> /assets/map/auta.json: what map.js needs to compute the cost per kWh and per km for a
+    reader's car. Attribution of the open sources travels with the file."""
+    src = json.load(open(ROOT / 'content' / 'data' / 'ev-specs.json', encoding='utf-8'))
+    out = []
+    for c in src['cars']:
+        opt = c.get('ac_opt') or None
+        out.append({'id': _car_id(c), 'mk': c['make'], 'md': c['model'], 'y': c['years'].replace('-', '–'),
+                    'kwh': c['usable_kwh'], 'ac': c['ac_kw_max'], 'ph': c['ac_phases'], 'a': c['ac_amps'],
+                    'opt': {'ac': opt['kw'], 'ph': opt['phases'], 'a': opt['amps']} if opt else None,
+                    'dc': c['dc_avg_10_80_kw'], 'pl': 'chademo' if re.search(r'(?i)leaf (40|e\+)', c['model']) else 'ccs2',
+                    'cons': c['cons_kwh_100km'], 'wf': c.get('winter_factor') or 1.2})
+    ids = [c['id'] for c in out]
+    if len(ids) != len(set(ids)):
+        raise SystemExit('ev-specs.json: two cars with the same id')
+    out.sort(key=lambda c: (fold(c['mk']), fold(c['md']), c['y']))
+    (dist / 'assets' / 'map').mkdir(parents=True, exist_ok=True)
+    (dist / 'assets' / 'map' / 'auta.json').write_text(json.dumps({
+        'about': 'Električni automobili za „Moj auto“ na mapi www.blokvolt.rs: kapacitet baterije, AC i DC snaga punjenja, procena potrošnje.',
+        'attribution': ['Open EV Data (https://github.com/KilowattApp/open-ev-data), MIT', '© 2019 Chargeprice (MIT)', 'P3 Charging Index (2022)',
+                        'ADAC', 'proizvođači'],
+        'cars': out}, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    return len(out)

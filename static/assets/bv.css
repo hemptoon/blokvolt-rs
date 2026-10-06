@@ -384,6 +384,100 @@ a.row:hover{background:#FAFAF6}
 .ccard .src{font-size:12px;margin:8px 0 0}
 .ccard .src a{color:var(--mut)}
 .map-below{padding-top:30px;padding-bottom:10px}
+/* "Moj auto", "Najbliži punjač", cost per km, "Kako se puni ovde", drivers' short answers (06.10.2026) */
+.car-row{display:flex;gap:8px;margin-top:8px}
+.car-row .car-btn{flex:1;min-width:0}
+.near-m{display:none;flex:none;min-height:38px;padding:6px 12px;font-size:14px;border-radius:12px}
+.near-m svg{width:16px;height:16px;color:var(--volt)}
+@media (max-width:480px){.car-btn:not(.is-set) .car-v{display:none}.car-btn.is-set .car-l{display:none}.car-btn .car-l{white-space:nowrap}}
+.car-btn{display:flex;align-items:center;gap:7px;width:100%;min-height:38px;padding:7px 12px;border:1px dashed var(--line2);border-radius:12px;background:#fff;font:inherit;font-size:14px;color:var(--ink2);cursor:pointer;text-align:left}
+.car-btn svg{width:18px;height:18px;flex:none;color:var(--mut)}
+.car-btn .car-l{font-weight:650;color:var(--ink)}
+.car-btn .car-v{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.car-btn:hover{border-color:var(--ink);color:var(--ink)}
+.car-btn.is-set{border-style:solid;background:var(--voltbg);border-color:#E1F0A6}
+.car-btn.is-set svg{color:var(--voltd)}
+.chip-cheap svg{width:15px;height:15px}
+.chip[hidden]{display:none}
+.map-near{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);z-index:3;min-height:44px;padding:8px 18px;border-radius:999px;box-shadow:0 10px 28px -10px rgba(13,17,26,.55),0 2px 6px rgba(13,17,26,.18);font-weight:700;white-space:nowrap}
+.map-near svg{width:18px;height:18px;color:var(--volt)}
+.map-near:disabled{opacity:.8;cursor:progress}
+.trap{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
+.ccard .nr-back{display:inline-block;margin:0 84px 8px 0;font-size:13.5px;font-weight:600;text-decoration:none;color:var(--ink2)}
+.nrp h2,.carp h2{margin-right:44px}
+.nr-chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 4px}
+.nr-chips .chip{padding:6px 11px;font-size:13.5px}
+.nr-chips svg{width:15px;height:15px}
+.nrl{list-style:none;margin:8px 0 0;padding:0}
+.nr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 10px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.nr.first{grid-template-columns:minmax(0,1fr)}
+.nr-main{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;min-width:0;margin:0;padding:0;border:0;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.nr-main:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:10px}
+.nr-nm{display:block;min-width:0}
+.nr-nm>b{display:block;font-size:15px;font-weight:680;line-height:1.3}
+.nr-sb{display:block;font-size:12.5px;line-height:1.4;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nr-meta{display:block;margin-top:2px;font-size:13px;color:var(--ink2)}
+.nr-meta b{font-weight:760;color:var(--ink)}
+.dot.nep{opacity:.5}
+.nr-go svg{width:16px;height:16px}
+.nr.first .nr-go{order:2;width:100%;min-height:46px}
+.nr .tags.nr-tags{grid-column:1/-1;margin:0;padding-left:44px}
+.nr.first .tags.nr-tags{order:1}
+.nr-msg{margin:10px 0;font-size:14px;line-height:1.5;color:var(--ink2)}
+.nr-cta{display:flex;width:100%;margin:6px 0 4px}
+.nr-wait{display:flex;align-items:center;gap:10px;margin:14px 0;font-size:14.5px;color:var(--ink2)}
+.nr-spin{width:18px;height:18px;flex:none;border-radius:50%;border:2.5px solid var(--surface3);border-top-color:var(--ink);animation:nr-spin .8s linear infinite}
+@keyframes nr-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.nr-spin{animation:none}}
+.nr-more,.nr-app{margin:10px 0 0;font-size:13px;color:var(--mut)}
+.nr-apps{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+.nr-apps[hidden]{display:none}
+.nr-note{margin:12px 0 0;font-size:12px;color:var(--mut)}
+.cbox .price .pc{font-size:13px;font-weight:600;color:var(--mut);letter-spacing:0}
+.cbox ul.plines{margin:6px 0 2px}
+.cbox ul.plines li{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;margin:3px 0;padding:2px 0;border-bottom:1px dashed var(--line)}
+.cbox ul.plines li:last-child{border-bottom:0}
+.cbox ul.plines b{font-weight:650;white-space:nowrap}
+.cost{display:flex;gap:10px;align-items:flex-start;margin:10px 0 0;padding:10px 12px;border-radius:12px;background:var(--surface2)}
+.cost>svg{width:20px;height:20px;flex:none;margin-top:1px;color:var(--ink2)}
+.cost b{display:block;font-size:15.5px;line-height:1.3}
+.cost small{margin-top:3px}
+.cost small.tip{color:var(--ok);font-weight:600}
+.cost small.cmp{color:var(--ink2)}
+.cost.na small{margin:0}
+.cost-pick{margin:10px 0 0}
+.cost-pick .lnkbtn{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;text-align:left}
+.cost-pick svg{width:17px;height:17px}
+.pmini{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;padding:8px 10px;border-radius:12px;background:var(--voltbg);border:1px solid #E1F0A6;font-size:13px;line-height:1.4;color:var(--ink2);text-decoration:none}
+.pmini .badge{flex:none}
+.pmini b{color:var(--ink);font-weight:680;white-space:nowrap}
+.pmini:hover b{text-decoration:underline}
+details.kako>summary{cursor:pointer;font-size:14.5px;font-weight:650;color:var(--ink);list-style-position:outside}
+details.kako[open]>summary{margin-bottom:8px}
+details.kako ol{margin:0 0 8px;padding-left:20px}
+details.kako li{font-size:14px;line-height:1.45;margin:4px 0}
+details.kako p{margin:6px 0;font-size:14px;line-height:1.45;color:var(--ink2)}
+details.kako p b{color:var(--ink)}
+details.kako small a{color:var(--mut)}
+.rv-why{margin:0 0 10px}
+.rv-why>span,.rv-facts>p{display:block;margin:0 0 6px;font-size:13px;color:var(--mut)}
+.rv-chips{display:flex;flex-wrap:wrap;gap:6px}
+.rv-chips .chip,.rv-frow .chip{padding:5px 10px;font-size:13px}
+.rv-facts{margin:6px 0 10px;padding:10px 12px;border-radius:12px;background:var(--surface2)}
+.rv-facts[hidden]{display:none}
+.rv-frow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:6px 0 0}
+.rv-frow>span{min-width:92px;font-size:13px;font-weight:600;color:var(--ink2)}
+.rv-frow.is-done .chip[aria-pressed="false"]{opacity:.45}
+.rv-seen{list-style:none;margin:6px 0 0;padding:0}
+.rv-seen li{font-size:13px;color:var(--ink2);margin:2px 0}
+.car-form .field{margin:0 0 10px}
+.car-form .field>span{font-size:14px;font-weight:600;color:var(--ink2)}
+.car-form .field small{font-size:12.5px;color:var(--mut)}
+.car-form .check{display:flex;gap:8px;align-items:center;margin:0 0 10px;font-size:14px;cursor:pointer}
+.car-form .check[hidden]{display:none}
+.car-form .check input{width:18px;height:18px;flex:none}
+.car-acts{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 10px}
+.car-form>small{display:block;font-size:12.5px;color:var(--mut);margin-top:4px}
 @media (max-width:900px){
  .map-app{display:flex;flex-direction:column;height:auto;min-height:0;border-bottom:0}
  .map-side{display:contents}
@@ -394,6 +488,8 @@ a.row:hover{background:#FAFAF6}
  .map-count{order:3;padding:12px 16px 6px}
  .map-list{order:4;overflow:visible;max-height:none;border-top:1px solid var(--line)}
  .card-ov{position:fixed;left:0;right:0;bottom:0;top:auto;width:auto;max-width:none;z-index:80}
+ .map-near{display:none}
+ .near-m{display:inline-flex}
  .ccard{border-radius:20px 20px 0 0;max-height:78vh;max-height:78dvh;padding:20px 16px 22px;box-shadow:0 -10px 40px rgba(13,17,26,.25)}
 }
 .maplibregl-ctrl-group{border-radius:12px!important;box-shadow:var(--shadow)!important}
@@ -1330,3 +1426,12 @@ html.nl-in .nl-v-out,html:not(.nl-in) .nl-v-in{display:none!important}
 @media (max-width:760px){.pg-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:420px){.pg-row{flex-direction:column}.pg-row .btn{width:100%}}
 .pg-state [data-s] p:last-child,.pg-state p[data-s]{margin-bottom:0}
+/* network pages: "Kako se puni" (content/operateri/<slug>.json: kako) */
+.kako-box{background:#fff;border:1px solid var(--line);border-radius:var(--r2);padding:16px 18px;max-width:860px}
+.kako-steps{margin:0 0 12px;padding-left:22px}
+.kako-steps li{margin:6px 0;font-size:15.5px;line-height:1.5}
+.kako-dl{display:grid;grid-template-columns:170px minmax(0,1fr);gap:8px 16px;margin:0 0 10px;font-size:15px;line-height:1.5}
+.kako-dl dt{font-weight:650;color:var(--ink)}
+.kako-dl dd{margin:0;color:var(--ink2)}
+.kako-apps{margin:8px 0;font-size:14.5px}
+@media (max-width:640px){.kako-dl{grid-template-columns:minmax(0,1fr);gap:2px}.kako-dl dd{margin-bottom:8px}}

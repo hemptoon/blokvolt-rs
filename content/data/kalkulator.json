@@ -103,12 +103,12 @@
   }
  },
  "fuel": {
-  "date": "25.09.2026",
-  "valid_to": "02.10.2026",
+  "date": "02.10.2026",
+  "valid_to": "09.10.2026",
   "benzin": 207,
   "dizel": 236,
   "label": "najviše maloprodajne cene koje objavljuje Ministarstvo unutrašnje i spoljne trgovine; menjaju se svakog petka",
-  "url": "https://www.mojnovisad.com/objavljene-cene-goriva-koje-ce-vaziti-do-2-oktobra/"
+  "url": "https://biznis.rs/vesti/srbija/bez-promena-cena-dizela-i-benzina-u-srbiji/"
  },
  "public": [
   {

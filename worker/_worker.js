@@ -11,6 +11,9 @@
 
 const JSON_HEADERS = { 'content-type': 'application/json; charset=utf-8' };
 const STATUSES = new Set(['ok', 'problem', 'broken', 'missing']);
+// drivers' short answers on the map card (map.js: WHY, FACTS): field -> allowed values
+const FACT_VALUES = { why: new Set(['busy', 'broken', 'app', 'cable', 'closed', 'short']), cab: new Set(['att', 'own']),
+  park: new Set(['free', 'paid']), oh: new Set(['24', 'lim']) };
 const KINDS = new Set(['firma', 'mreza', 'ispravka', 'stanica', 'pomoc']);
 const MAX_IMG = 950 * 1024, MAX_TH = 90 * 1024;
 const LINKY = /(https?:\/\/|www\.|\b[a-z0-9-]+\.(com|rs|net|org|info|me|io)\b)/i;
@@ -112,6 +115,31 @@ async function summaryAll(env) {
   return out;
 }
 
+// the drivers' short answers (cable, parking, hours, what went wrong): one table, created on first use
+let FACTS_OK = false;
+async function ensureFacts(env) {
+  if (FACTS_OK) return;
+  await env.DB.batch([
+    env.DB.prepare(`CREATE TABLE IF NOT EXISTS facts (id INTEGER PRIMARY KEY AUTOINCREMENT, st TEXT NOT NULL, f TEXT NOT NULL, v TEXT NOT NULL,
+      at INTEGER NOT NULL, ip TEXT, uid TEXT)`),
+    env.DB.prepare('CREATE INDEX IF NOT EXISTS facts_st ON facts (st, at)'),
+  ]);
+  FACTS_OK = true;
+}
+async function addFact(env, st, f, v, ip, uid) {
+  await ensureFacts(env);
+  await env.DB.prepare('INSERT INTO facts (st, f, v, at, ip, uid) VALUES (?1, ?2, ?3, ?4, ?5, ?6)').bind(st, f, v, now(), ip, uid || null).run();
+}
+// answers of the last 60 days: distinct drivers (day fingerprints) per field and value
+async function factsOf(env, st) {
+  try {
+    await ensureFacts(env);
+    const r = await env.DB.prepare(`SELECT f, v, COUNT(DISTINCT ip) AS n, MAX(at) AS last FROM facts WHERE st = ?1 AND at > ?2 GROUP BY f, v`)
+      .bind(st, now() - 60 * 86400).all();
+    return r.results;
+  } catch (e) { return []; }
+}
+
 async function summaryOne(env, st) {
   const agg = await env.DB.prepare(
     `SELECT ROUND(AVG(r), 1) AS avg, COUNT(r) AS nr, COUNT(*) AS n FROM checkins WHERE st = ?1 AND cs != 'hidden'`
@@ -123,7 +151,7 @@ async function summaryOne(env, st) {
   const photos = await env.DB.prepare(
     `SELECT id, cap, w, h, at FROM photos WHERE st = ?1 AND status = 'ok' ORDER BY at DESC LIMIT 24`
   ).bind(st).all();
-  return { ok: true, st, avg: agg.avg, nr: agg.nr, n: agg.n, items: items.results, photos: photos.results };
+  return { ok: true, st, avg: agg.avg, nr: agg.nr, n: agg.n, items: items.results, photos: photos.results, facts: await factsOf(env, st) };
 }
 
 // ---------------------------------------------------------------- handlers
@@ -146,7 +174,25 @@ async function postCheckin(request, env, st) {
   await env.DB.prepare(
     'INSERT INTO checkins (st, s, r, c, n, cs, at, lang, ip' + (uid ? ', uid' : '') + ') VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9' + (uid ? ', ?10' : '') + ')'
   ).bind(st, s, r, c, n, cs, now(), clean(b.lang, 5) || null, ip, ...(uid ? [uid] : [])).run();
+  // what went wrong ("Radi, uz problem" / "Ne radi"): optional, one of FACT_VALUES.why
+  const why = String(b.why || '');
+  if ((s === 'problem' || s === 'broken') && FACT_VALUES.why.has(why)) await addFact(env, st, 'why', why, ip, uid);
   return json({ ok: true, pending: cs === 'pending' });
+}
+
+// one short answer from the map card: cable on the charger or bring your own, parking free or paid, open 0–24 or limited.
+// One answer per field, station and driver a day; at most 60 answers a day per driver.
+async function postFact(request, env, st) {
+  let b;
+  try { b = await request.json(); } catch (e) { return bad('json'); }
+  if (b.hp) return json({ ok: true });                                // honeypot: silently accept
+  if (typeof b.t === 'number' && b.t < 1500) return bad('too fast', 429);
+  const f = String(b.f || ''), v = String(b.v || '');
+  if (f === 'why' || !FACT_VALUES[f] || !FACT_VALUES[f].has(v)) return bad('value');
+  const ip = await ipHash(request, env);
+  if (!(await allow(env, 'fa:' + ip, 60)) || !(await allow(env, 'fs:' + ip + ':' + st + ':' + f, 1))) return bad('limit', 429);
+  await addFact(env, st, f, v, ip, await reporter(request, env));
+  return json({ ok: true });
 }
 
 async function postPhoto(request, env, st) {
@@ -1630,11 +1676,11 @@ async function api(request, env, ctx) {
 
   if (m === 'POST') {
     if (!sameOrigin(request)) return bad('origin', 403);
-    mm = p.match(/^\/api\/stanica\/([a-z0-9-]{3,60})\/(prijava|foto)$/);
+    mm = p.match(/^\/api\/stanica\/([a-z0-9-]{3,60})\/(prijava|foto|podatak)$/);
     if (mm) {
       const ids = await stationIds(env, request);
       if (ids.size && !ids.has(mm[1])) return bad('station', 404);
-      return mm[2] === 'prijava' ? postCheckin(request, env, mm[1]) : postPhoto(request, env, mm[1]);
+      return mm[2] === 'prijava' ? postCheckin(request, env, mm[1]) : mm[2] === 'podatak' ? postFact(request, env, mm[1]) : postPhoto(request, env, mm[1]);
     }
     if (p === '/api/prijavi') return postReport(request, env);
     if (p === '/api/zahtev') return postRequest(request, env);
@@ -1642,6 +1688,16 @@ async function api(request, env, ctx) {
   }
   if (m === 'GET' && p === '/api/admin/red') return adminOk(request, env) ? adminQueue(env) : bad('not found', 404);
   if (m === 'GET' && p === '/api/admin/pomoc') return adminOk(request, env) ? adminHelpful(env) : bad('not found', 404);
+  // the hidden link on /mapa/ (robots.txt forbids /api/, so only bots that ignore it follow it): counted per day and
+  // fingerprint, nothing else — nobody is blocked (docs/RUNBOOK.md 3.28)
+  if (m === 'GET' && p === '/api/zamka') {
+    ctx.waitUntil(ipHash(request, env).then(ip => env.DB.batch([
+      env.DB.prepare('CREATE TABLE IF NOT EXISTS trap (day TEXT NOT NULL, fp TEXT NOT NULL, n INTEGER NOT NULL DEFAULT 0, ua TEXT, PRIMARY KEY (day, fp))'),
+      env.DB.prepare('INSERT INTO trap (day, fp, n, ua) VALUES (?1, ?2, 1, ?3) ON CONFLICT (day, fp) DO UPDATE SET n = n + 1')
+        .bind(today(), ip, clean(request.headers.get('user-agent'), 120)),
+    ])).catch(() => {}));
+    return new Response('', { status: 204, headers: { 'cache-control': 'no-store', 'x-robots-tag': 'noindex, nofollow' } });
+  }
   if (m === 'GET' && p === '/api/zdravlje') {
     const r = await env.DB.prepare('SELECT COUNT(*) AS n FROM checkins').first();
     return json({ ok: true, checkins: r.n });

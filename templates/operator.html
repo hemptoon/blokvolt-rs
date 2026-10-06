@@ -34,6 +34,13 @@
 {% for s in op.ps_sites %}<tr><td data-label="Lokacija">{% if s.map %}<a class="lnk" href="/mapa/#{{ s.map }}">{{ s.name }}</a>{% else %}{{ s.name }}{% endif %} <small class="muted">{{ s.road }}</small></td><td data-label="Smer · snaga · stanje"><ul class="stl">{% for c in s.lines %}<li class="{{ 'ok' if c.st == 1 else ('no' if c.st == 0 else 'wait') }}"><i></i><span>{% if c.dir %}{{ c.dir }} · {% endif %}{{ c.power }} · <b>{% if c.st == 1 %}radi{% elif c.st == 0 %}ne radi{% else %}u priključenju{% endif %}</b>{% if c.note %} ({{ c.note }}){% endif %}{% if c.when %} ({{ c.when }}){% endif %}</span></li>{% endfor %}</ul></td></tr>
 {% endfor %}</tbody></table></div>
 <p class="note">Po spisku JP „Putevi Srbije“ od {{ op.ps_meta.checked }}. Na novim deonicama planirano je još: {{ op.ps_meta.planned }}.</p></div>{% endif %}
+{% if op.kako %}<div class="sec" id="kako"><div class="sec-head"><h2>Kako se puni</h2></div>
+<div class="kako-box">
+{% if op.kako.start %}<ol class="kako-steps">{% for x in op.kako.start %}<li>{{ x }}</li>{% endfor %}</ol>{% endif %}
+<dl class="kako-dl">{% if op.kako.pay %}<dt>Plaćanje</dt><dd>{{ op.kako.pay }}</dd>{% endif %}{% if op.kako.guest %}<dt>Bez registracije</dt><dd>{{ op.kako.guest }}</dd>{% endif %}{% if op.kako.after %}<dt>Posle punjenja</dt><dd>{{ op.kako.after }}</dd>{% endif %}{% if op.kako.refund %}<dt>Povraćaj novca</dt><dd>{{ op.kako.refund }}</dd>{% endif %}</dl>
+{% if op.kako.apps %}<p class="kako-apps">Aplikacija: {% for a in op.kako.apps %}<a class="lnk" href="{{ a.u }}" rel="noopener nofollow" target="_blank">{{ a.l }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
+<p class="note">Provereno {{ op.kako.checked }}{% if op.kako.src %} · izvori: {% for a in op.kako.src %}<a href="{{ a.u }}" rel="noopener nofollow">{{ a.l }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}. Isto uputstvo je i na kartici svakog punjača na <a class="lnk" href="/mapa/?mreza={{ op.slug }}">mapi</a>.</p>
+</div></div>{% endif %}
 {% if op.video %}<div class="sec"><div class="sec-head"><h2>Kako se koristi</h2></div>{{ yt(op.video) }}</div>{% endif %}
 <div class="sec">
 <details><summary>Naplata i naknade</summary><p>{{ op.billing }}</p>{% if op.fees and op.fees != '—' %}<p>{{ op.fees }}</p>{% endif %}</details>

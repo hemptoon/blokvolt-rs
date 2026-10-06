@@ -66,5 +66,29 @@
  "network_short": "36 punjača, radi 24",
  "power_short": "DC 40–120 kW",
  "billing_short": "Besplatno, dok se ne uredi naplata.",
- "payment_short": "Aktivacija u aplikaciji Orion eMobility"
+ "payment_short": "Aktivacija u aplikaciji Orion eMobility",
+ "kako": {
+  "checked": "06.10.2026",
+  "start": [
+   "Punjenje se pokreće u aplikaciji Orion eMobility (nalog sa e-mailom i karticom): skenirajte QR kod na punjaču ili upotrebite RFID karticu.",
+   "Na AC punjačima je potreban sopstveni kabl, osim ako na punjaču ne piše drugačije; DC punjači imaju kabl."
+  ],
+  "pay": "Punjenje je za sada besplatno.",
+  "apps": [
+   {
+    "l": "Orion eMobility — Google Play",
+    "u": "https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app"
+   },
+   {
+    "l": "App Store",
+    "u": "https://apps.apple.com/rs/app/orion-emobility/id1615624626"
+   }
+  ],
+  "src": [
+   {
+    "l": "putevi-srbije.rs",
+    "u": "https://www.putevi-srbije.rs/index.php/en/electric-chargers"
+   }
+  ]
+ }
 }

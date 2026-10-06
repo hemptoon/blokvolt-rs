@@ -9,9 +9,9 @@
  "app": "Emobility Spectra (iOS/Android)",
  "city": "Novi Sad",
  "coverage": "Novi Sad i Vojvodina (mapa punjača na sajtu)",
- "network": "Veličina mreže nije objavljena. U aplikaciji (22.09.2026) vidljivi su, između ostalih: JMEV CUBI (DC 90 kW), CITY TAXI Novi Sad (DC 180 kW), Battery Magic (DC 120 kW), GIORGIO Luxury (AC 11 kW), Salaš 265 (AC 17,2 kW).",
+ "network": "Veličina mreže nije objavljena. U aplikaciji 04.10.2026: Battery Magic (Valjevo, 2× DC 120 kW), GIORGIO Luxury (Beograd, AC 11 kW), JKP Pijace i parkinzi (Zrenjanin, 2× DC 120 kW) i tri punjača auto-kuće AK Tasić (Subotica DC 30 kW, Kragujevac DC 25 kW, Jagodina DC 30 kW). CITY TAXI Novi Sad, Salaš 265 i JMEV CUBI, vidljivi 22.09.2026, više se ne prikazuju.",
  "power": "AC 11–17,2 kW, DC 90–180 kW (punjači vidljivi u aplikaciji); punjač Battery Magic ima i kineski konektor GB/T",
- "billing": "Kombinovani obračun: cena po „jedinici punjenja“ (45–60 RSD, zavisi od punjača i tarife) + 1,20 RSD po minutu, PDV uračunat (aplikacija, 22.09.2026). Po objašnjenju u aplikaciji, jedinicu računa punjač iz snage, vremena i profila punjenja; ona nije zakonski overeno merenje i ne odgovara tačno potrošnji u kWh.",
+ "billing": "Kombinovani obračun: cena po „jedinici punjenja“ (54–60 RSD, zavisi od punjača i tarife) + 1,20 RSD po minutu, PDV uračunat (aplikacija, 04.10.2026). Po objašnjenju u aplikaciji, jedinicu računa punjač iz snage, vremena i profila punjenja; ona nije zakonski overeno merenje i ne odgovara tačno potrošnji u kWh. Tri punjača AK Tasić u aplikaciji su besplatna („Free of charge“).",
  "verdicts": {
   "cenovnik": "Nije objavljen — samo u aplikaciji",
   "naplata": "Po „jedinici“ + po minutu",
@@ -26,23 +26,47 @@
  },
  "prices": [
   {
-   "what": "DC 180 kW — CITY TAXI Novi Sad (ECO tarifa)",
-   "value": "45 RSD po jedinici + 1,20 RSD/min",
-   "date": "22.09.2026",
-   "source": "aplikacija Emobility Spectra — snimak ekrana redakcije",
-   "url": "https://emobility.rs/",
-   "confidence": "primarni izvor (aplikacija)"
-  },
-  {
-   "what": "DC 120 kW — Battery Magic",
+   "what": "DC 120 kW — Battery Magic, Valjevo",
    "value": "60 RSD po jedinici + 1,20 RSD/min",
-   "date": "22.09.2026",
+   "date": "04.10.2026",
    "source": "aplikacija Emobility Spectra — snimak ekrana redakcije",
    "url": "https://emobility.rs/",
    "confidence": "primarni izvor (aplikacija)"
   },
   {
-   "what": "AC 17,2 kW — Salaš 265 (ECO tarifa)",
+   "what": "AC 11 kW — GIORGIO Luxury, Beograd",
+   "value": "54 RSD po jedinici + 1,20 RSD/min",
+   "date": "04.10.2026",
+   "source": "aplikacija Emobility Spectra — snimak ekrana redakcije",
+   "url": "https://emobility.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "DC 30 kW — AK Tasić, Subotica",
+   "value": "besplatno („Free of charge“)",
+   "date": "04.10.2026",
+   "source": "aplikacija Emobility Spectra — snimak ekrana redakcije",
+   "url": "https://emobility.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "DC 25 kW — AK Tasić, Kragujevac",
+   "value": "besplatno („Free of charge“)",
+   "date": "04.10.2026",
+   "source": "aplikacija Emobility Spectra — snimak ekrana redakcije",
+   "url": "https://emobility.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "DC 30 kW — AK Tasić, Jagodina",
+   "value": "besplatno („Free of charge“)",
+   "date": "04.10.2026",
+   "source": "aplikacija Emobility Spectra — snimak ekrana redakcije",
+   "url": "https://emobility.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "Istorija: DC 180 kW — CITY TAXI Novi Sad (ECO tarifa; 04.10.2026 punjač se u aplikaciji ne prikazuje)",
    "value": "45 RSD po jedinici + 1,20 RSD/min",
    "date": "22.09.2026",
    "source": "aplikacija Emobility Spectra — snimak ekrana redakcije",
@@ -50,8 +74,8 @@
    "confidence": "primarni izvor (aplikacija)"
   },
   {
-   "what": "AC 11 kW — GIORGIO Luxury",
-   "value": "54 RSD po jedinici + 1,20 RSD/min",
+   "what": "Istorija: AC 17,2 kW — Salaš 265 (ECO tarifa; 04.10.2026 punjač se u aplikaciji ne prikazuje)",
+   "value": "45 RSD po jedinici + 1,20 RSD/min",
    "date": "22.09.2026",
    "source": "aplikacija Emobility Spectra — snimak ekrana redakcije",
    "url": "https://emobility.rs/",
@@ -75,21 +99,52 @@
   },
   {
    "url": "https://emobility.rs/",
-   "label": "aplikacija Emobility Spectra — cene po punjaču (snimci ekrana redakcije)",
-   "date": "22.09.2026"
+   "label": "aplikacija Emobility Spectra — cene po punjaču (snimci ekrana redakcije, 22.09. i 04.10.2026)",
+   "date": "04.10.2026"
+  },
+  {
+   "url": "https://emobility.rs/podrska/",
+   "label": "emobility.rs/podrska — kako se pokreće punjenje, preautorizacija, račun",
+   "date": "06.10.2026"
   }
  ],
- "verified": "22.09.2026",
- "confidence": "visoka za cene iz aplikacije (22.09.2026) · veličina mreže nepoznata",
+ "verified": "04.10.2026",
+ "confidence": "visoka za cene iz aplikacije (04.10.2026) · veličina mreže nepoznata",
  "notes": "Ista firma je u registru kućnih punjača: <a href=\"/firme/emobility-d-o-o/\">Emobility d.o.o.</a>",
- "card": "45–60 RSD po „jedinici“ + 1,20 RSD/min",
+ "card": "54–60 RSD po „jedinici“ + 1,20 RSD/min · 3 besplatna",
  "kind_label": "Operator mreže + aplikacija",
  "publish": true,
  "short_name": "Emobility Spectra",
  "lead": "Mreža iz Novog Sada sa sopstvenom aplikacijom. Naplata po „jedinici punjenja“ i po minutu.",
  "network_short": "veličina nije objavljena",
  "power_short": "AC 11 – DC 180 kW",
- "billing_short": "45–60 RSD po „jedinici“ + 1,20 RSD/min.",
+ "billing_short": "54–60 RSD po „jedinici“ + 1,20 RSD/min.",
  "payment_short": "Novčanik u aplikaciji, RFID",
- "map_note": "Punjači ove mreže još nisu na mapi punjača: nema ih u otvorenim bazama podataka. Lokacije su u aplikaciji Emobility Spectra."
+ "map_note": "Punjači ove mreže još nisu na mapi punjača: nema ih u otvorenim bazama podataka. Lokacije su u aplikaciji Emobility Spectra.",
+ "kako": {
+  "checked": "06.10.2026",
+  "start": [
+   "U aplikaciji Emobility Spectra izaberite lokaciju, punjač i konektor — ili prislonite RFID karticu na čitač punjača. Vozila sa AutoCharge-om samo priključite.",
+   "Konektor priključite kad aplikacija potvrdi da je punjač spreman.",
+   "Posle punjenja fiskalni račun je u aplikaciji i stiže na e-mail."
+  ],
+  "pay": "Platna kartica uz preautorizaciju (iznos nije objavljen): posle sesije naplaćuje se stvarni iznos, a ostatak banka oslobađa po svojim pravilima.",
+  "after": "Na ECO tarifi: 10 minuta posle punjenja bez naknade, zatim 10,20 RSD/min zauzeća.",
+  "apps": [
+   {
+    "l": "Google Play",
+    "u": "https://play.google.com/store/apps/details?id=rs.spectra.emobility"
+   },
+   {
+    "l": "App Store",
+    "u": "https://apps.apple.com/us/app/emobility-spectra/id6476980928"
+   }
+  ],
+  "src": [
+   {
+    "l": "emobility.rs/podrska",
+    "u": "https://emobility.rs/podrska/"
+   }
+  ]
+ }
 }

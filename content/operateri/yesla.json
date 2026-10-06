@@ -1,0 +1,112 @@
+{
+ "slug": "yesla",
+ "name": "Yesla — mreža brzih punjača",
+ "kind": "cpo",
+ "order": 7,
+ "short": "Mreža brzih punjača sa sopstvenom aplikacijom: pet lokacija u aplikaciji (Železnik, Voždovac, Obrenovac, Smederevo, Srem), naplata po kWh.",
+ "website": "https://yesla.rs/",
+ "domain": "yesla.rs",
+ "app": "Yesla (iOS/Android)",
+ "city": "Beograd",
+ "coverage": "Beograd (Železnik, Voždovac), Obrenovac, Smederevo, Srem",
+ "network": "U aplikaciji 04.10.2026: ZELEZNIK-01 (Stevana Filipovića 1V, 2× CCS2 160 kW), SC Voždovac (Crnotravska 4: CHAdeMO 50 kW, CCS2 50 kW, Type 2 43 kW), YESLA-MONETA (Aleksandra Ace Simovića 92B, 2× CCS2 160 kW), GOLD PARK 02 (Crvene armije 65, Smederevo, 2× CCS2 160 kW), YESLA-NOVA (Sremskog fronta 1, 2× CCS2 120 kW).",
+ "power": "DC 50–160 kW; AC 43 kW (SC Voždovac)",
+ "billing": "Po kWh, PDV uračunat: 48 RSD/kWh na punjaču ZELEZNIK-01, 78 RSD/kWh na ostalim (aplikacija, 04.10.2026). Pre svake sesije na kartici se rezerviše 3.000 RSD; naplaćuje se stvarni iznos, ostatak se vraća.",
+ "verdicts": {
+  "cenovnik": "Samo u aplikaciji",
+  "naplata": "Po kWh",
+  "kwh": "Da",
+  "idle": "Ne pominje se"
+ },
+ "vclass": {
+  "cenovnik": "ask",
+  "naplata": "yes",
+  "kwh": "yes",
+  "idle": "no"
+ },
+ "prices": [
+  {
+   "what": "DC 160 kW — ZELEZNIK-01, Železnik (Beograd)",
+   "value": "48 RSD/kWh",
+   "date": "04.10.2026",
+   "source": "aplikacija Yesla — snimak ekrana redakcije",
+   "url": "https://yesla.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "DC 50 kW i AC 43 kW — SC Voždovac, Beograd",
+   "value": "78 RSD/kWh",
+   "date": "04.10.2026",
+   "source": "aplikacija Yesla — snimak ekrana redakcije",
+   "url": "https://yesla.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  },
+  {
+   "what": "DC 120–160 kW — YESLA-MONETA, GOLD PARK 02 (Smederevo), YESLA-NOVA",
+   "value": "78 RSD/kWh",
+   "date": "04.10.2026",
+   "source": "aplikacija Yesla — snimak ekrana redakcije",
+   "url": "https://yesla.rs/",
+   "confidence": "primarni izvor (aplikacija)"
+  }
+ ],
+ "fees": "Naknada za pokretanje i za zauzeće u aplikaciji nisu navedene (04.10.2026). Provera kartice: 10 RSD, odmah se vraća.",
+ "payment": "Platna kartica u aplikaciji",
+ "roaming": "Nema podataka",
+ "support": "yesla.rs",
+ "sources": [
+  {
+   "url": "https://yesla.rs/instructions.html",
+   "label": "yesla.rs — uputstvo: QR kod ili ID punjača, rezervacija 3.000 RSD, fiskalni račun",
+   "date": "06.10.2026"
+  },
+  {
+   "url": "https://yesla.rs/",
+   "label": "aplikacija Yesla — cene po punjaču (snimci ekrana redakcije)",
+   "date": "04.10.2026"
+  },
+  {
+   "url": "https://play.google.com/store/apps/details?id=rs.yesla.mobile",
+   "label": "Google Play — aplikacija Yesla",
+   "date": "06.10.2026"
+  }
+ ],
+ "verified": "04.10.2026",
+ "confidence": "srednja — cene iz aplikacije (04.10.2026); mesto YESLA-NOVA i YESLA-MONETA po položaju na mapi aplikacije",
+ "notes": "Punjači Yesla još nisu na mapi ovog sajta: tačne koordinate nisu proverene.",
+ "card": "5 lokacija · 48–78 RSD/kWh",
+ "kind_label": "Operator mreže + aplikacija",
+ "publish": true,
+ "short_name": "Yesla",
+ "lead": "Nova mreža brzih punjača u Beogradu i okolini. Naplata po kWh: 78 RSD, a na jednom punjaču u Železniku 48 RSD.",
+ "network_short": "5 lokacija",
+ "power_short": "DC 50–160 kW",
+ "billing_short": "48–78 RSD/kWh.",
+ "payment_short": "Kartica u aplikaciji",
+ "kako": {
+  "checked": "06.10.2026",
+  "start": [
+   "U aplikaciji Yesla dodajte platnu karticu (provera 10 RSD se odmah vraća).",
+   "Skenirajte QR kod na konektoru ili izaberite ID punjača u aplikaciji i dodirnite „Start Session“.",
+   "Posle punjenja fiskalni račun je u aplikaciji i stiže na e-mail."
+  ],
+  "pay": "Pre svake sesije na kartici se rezerviše 3.000 RSD; naplaćuje se stvarni iznos, a ostatak se vraća.",
+  "guest": "Bez kartice u aplikaciji ne može.",
+  "apps": [
+   {
+    "l": "Google Play",
+    "u": "https://play.google.com/store/apps/details?id=rs.yesla.mobile"
+   },
+   {
+    "l": "yesla.rs",
+    "u": "https://yesla.rs/"
+   }
+  ],
+  "src": [
+   {
+    "l": "yesla.rs — uputstvo",
+    "u": "https://yesla.rs/instructions.html"
+   }
+  ]
+ }
+}

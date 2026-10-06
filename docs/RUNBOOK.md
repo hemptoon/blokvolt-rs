@@ -164,6 +164,21 @@ ones are moved into `<archive>/YYYY-MM/` inside it — never deleted).
 
 If no new screenshots arrived, keep the old values and dates; the report tells the owner.
 
+**Since 05.10.2026 the prices come from the owner's Android phone** (a robot reads the apps; method and routes in the
+project doc `claude/BlokVolt_Robot_Cene_Android.md`; raw files on the owner's Mac in `~/dev/android/robot/prices/`).
+What the site keeps:
+- `content/mapa/mreze/chargego-app.txt` — every connector of the Charge&GO app as it showed it
+  (`cid|name|address|kW|price`; `izvori.json` key `cga` = date and source). `map_data.app_layer()` gives each matching
+  site of the network's list its per-connector prices, cable, hours and "how to find" notes (3.11e).
+- Index rows (`indeks-cena.json`): `key` = "where|charger" when two rows share a charger class (the history page
+  compares by it), `sum` and `exc` (the Charge&GO summary card: where the class price applies and the exceptions),
+  `rsd_kwh` (per-kWh tariffs: eDrive, Yesla), `start_rsd` (start or connection fee), `place_only` (a per-place price:
+  goes to `places`, not to the network's tiers), `free_where` (free only at the places named in `where`).
+- Fees and "how to charge here" per network: `kako` in `content/operateri/<slug>.json` (steps, payment, without
+  registration, after charging, refund, app links, sources, `checked`); the map card and the network page show it.
+- Charge&GO tops the balance up when it falls **below 1.000 RSD** (Google Play listing, 28.08.2026; the T&C PDF still
+  says 400 — the site uses 1.000). Registered users pay 20 % less than guests; guests reserve at least 2.000 RSD.
+
 Things that can be checked without the owner: whether the state chargers on motorways are still free
 and which of them work (https://www.putevi-srbije.rs/index.php/en/electric-chargers — see 3.11), network
 sizes and news on the operators' sites (chargego.rs, oriontelekom.rs/emobility, emobility.rs, omv.co.rs,
@@ -534,6 +549,35 @@ site of another current type only within 40 m (the IKEA chargers, AC, are not pa
 80 m away); the network's address replaces ours when it has the house number and ours does not
 (`has_house_no`, road numbers such as "E75 75" do not count); `STREET_FIX` corrects the networks' spelling.
 
+Since 06.10.2026 dopune.json also has `park {t, src}` (parking terms of the host) and `cab {own, src, d}`, and `oh.w`
+(the daily open windows in minutes, `[[360, 1560]]` = 06:00–02:00; `h24: true` = always open) for "sada radi /
+zatvoreno". Coordinates in dopune.json carry a watermark in the 7th decimal (≤ 0,1 m, 3.28) — edit the 5th or 6th
+decimal as usual, the build adds it. Keep the file's hand layout: after a scripted change run
+`python3 scripts/fmt_dopune.py` (it rewrites the file in that layout and checks the round trip).
+
+#### 3.11e The networks' app layer and the price data (since 06.10.2026)
+
+- **Charge&GO app → stations.** `app_layer()` groups `chargego-app.txt` by name and address and gives each group to
+  the one site of the network's list with the best score (2 × name words + address words, −2 when no power is
+  within 8 kW); a tie or a score under 2 attaches nothing (printed). Brands must match (OMV, NIS, BIG, Stop Shop…);
+  Skopje/Kocho/Katlanovo are skipped. `app_fields()` writes into `mreze.json`: `pr {d, u: 'min', src, l: [[cur,
+  kW, RSD, n]]}` (one line per current, power and price), `cab` when the app says "bez kabla"/"sopstveni kabl",
+  `oh {t, h24: false, w, src, d}` from the app's closing notes, `loc.find` (floor, gate; the Futura Park phone number
+  is not published — "broj za poziv je u aplikaciji"). The test site Nova Crnja (`cg-74`) is not added.
+- **Roaming layer.** `ROAM_NET`: `RS*ORI` = Orion eMobility, `RS*007` = eDrive (Voltic d.o.o.); `EVSE_NAMES` names
+  the eDrive EVSEs (E00040 Ingrap-Omni Valjevo, …) because the roaming map shows only the EVSE id.
+- **Open data stays open data.** `punjaci.json` (ODbL) has only the open snapshots, the `v` flags and the state
+  chargers' status; the own-cable facts (also JP Putevi Srbije's) travel in `mreze.json`. Check after a change: the
+  `?v=` hash of punjaci.json changes only when the snapshots or the checks change.
+- **cene.json.** `price_table()`: tiers (one price list for the network, by power class) and `places` (a price
+  recorded at a place: Orion, Spectra, eDrive, per-place rows). `guard_exact()` adds `places` copies with
+  `guard: true` for older map code (the evolako.rs map until its script is replaced, the apps' first versions), which
+  takes the only price recorded at a place even for the other current: DeLasol Lapovo has DC 50 and 75 kW in the app
+  and AC 22 kW on the list, so the AC station gets a copy of the AC price. map.js skips `guard` entries and never
+  takes a place price of the other current. The build prints every guard it adds.
+- **tx.json.** English and Russian of the Serbian texts in the map data, from the translation memory (`map_tx()` in
+  build.py, after the i18n pass); listed in the app feed as `files.map.tx`. The evolako.rs map reads it.
+
 ### 3.12 Logos (when a firm or network is added, or on request)
 
 `static/assets/logos/<slug>.png` (firms) and `op-<slug>.png` (networks), max 360×160, trimmed. Source: the
@@ -682,6 +726,30 @@ Since 28.09.2026 the map also has:
 - Hours and access as badges under the verification line, a note box under the price, and the owner's link
   (with its label) in the sources line. Names from Open Charge Map lose the "Charge&GO -" prefix on screen.
 - `?qa=1` exposes `window.bvMapQa()` (the pin properties) for `scripts/qa/map_extra_test.py`.
+
+Since 06.10.2026 (test: `scripts/qa/map_v2_test.py`, with the three tests above):
+- **Najbliži punjač** — a button on the map (computer) and next to „Moj auto“ (phone): the three nearest chargers a
+  driver can use (works, not Tesla-only, not closed now, confirmed unless the reader asks for the rest; the chip filter
+  counts, the search and the visible part of the map do not), straight-line distance, a big route button for the first.
+  The location stays in the browser. `?najblizi=1` / `=brzi` opens it (asks first unless the browser already allows
+  the location). Route links: Google `dir/?api=1&destination=…&travelmode=driving&dir_action=navigate`, Apple
+  `?daddr=…&dirflg=d`, Waze `ul?ll=…&navigate=yes`; the app the reader used last is remembered (`bv:nav`).
+  `?qa=1`: `window.bvNearQa(lat, lon, nep)`.
+- **Moj auto** — the reader's car (`bv:car` = {id, cons, cab, opt}; the list is `/assets/map/auta.json` from
+  `content/data/ev-specs.json`, open sources with attribution; ev-database.org is not used — its terms forbid it).
+  With a car: RSD/km in the list, pins and card, sorting „Najjeftinije za moj auto“, what the car really takes
+  (AC: phases × current of the post, DC: the car's 10–80 % average, at most 88 % of the station), charging losses
+  (DC 96 %, AC 84–92 %), start fees spread over half the battery, winter consumption (Dec–Feb, half in Nov and Mar),
+  a cheaper connector here or a ≥ 40 % cheaper charger within 10 km, petrol (calculator's fuel price) and home at night
+  (EPS lower tariff, green/blue zone). A Tesla switches „Imam Teslu“ on. `?qa=1`: `window.bvCostQa(id)`.
+- **Card**: per-connector prices from the network's app (`pr`), „Kako se puni ovde“ (the network's `kako`), badges for
+  hours with „sada radi do … / zatvoreno, otvara u …“ (Serbian time), „Ponesite svoj Tip 2 kabl“ and parking; closed
+  stations are faded on the map and marked in the list. „Izdvojeno“: one line about charging at home at night with one
+  link to Evolako (`utm_campaign=kartica`, the page language travels as `lang=`); the map's attribution says „Mapu
+  održava tim Evolako“.
+- **Drivers' short answers**: after „Radi, uz problem“ / „Ne radi“ a reason chip (`why`); then three optional questions
+  (cable on the charger / own, parking free / paid, hours 0–24 / limited) → `POST /api/stanica/<id>/podatak`
+  (D1 table `facts`; shown as „Vozači javljaju“ when two different drivers agree within 60 days).
 
 ### 3.19 News photos (only in a run with the owner's browser)
 
@@ -892,10 +960,19 @@ the footer ("Pomoć"), the text under /mapa/, /aplikacija/ and /ispravka/. Rules
   navigation, "Mapa zemlje na blokvolt.com" (its map with the station open, `#<id>`) and "Podeli"; no reports, photos,
   ratings or "Prijavi grešku" (those are for Serbian chargers). Test: `scripts/qa/map_region_test.py`.
 - **Map data for other sites.** `/assets/map/*` is served with `Access-Control-Allow-Origin: *` (like `/app/*`): the
-  data is open (ODbL / CC BY) and the Evolako charger map on evolako.rs reads it with fetch. Read the current file
-  names from `/app/v1/manifest.json` (`files.map`, versioned `?v=`; the manifest is cached 5 minutes, the files a
-  year). Renaming a map file or changing its format breaks that page: keep the fields map.js reads, or tell the
-  Evolako side first.
+  Evolako charger map on evolako.rs reads it with fetch (licences: punjaci.json ODbL; the rest under the terms of use,
+  3.28 — the CORS header stays, nothing that real readers use may break). Read the current file names from
+  `/app/v1/manifest.json` (`files.map`, versioned `?v=`; the manifest is cached 5 minutes, the files a year).
+  Renaming a map file or changing its format breaks that page: keep the fields its script reads, or tell the
+  Evolako side first. **Before a deploy that changes the map data, run the live evolako.rs script against the new
+  data**: read the page's footer with the Webflow MCP (`get_page_freeform_code`, page `6abaf73484f6a5d61585b9e5`),
+  load it in Playwright on a mock page with `www.blokvolt.rs/**` routed to `dist/` and compare every station's list
+  price, pin and card with the current data (the 06.10.2026 harness is described in the project doc
+  `claude/BlokVolt_Karta_v2_Spec_2026-10-06.md`). On 06.10.2026 this found the Lapovo price for the other current
+  (now `guard`, 3.11e) and Serbian notes on the EN/RU page (now `tx.json`).
+- **The Evolako map script** (`scripts/evomap/`): `evomap.src.js` and `evomap.css` are the source of the map on
+  evolako.rs/mapa-punjaca; `page_bvq.js` holds the page's EN/RU texts. Until the hosted version is published there,
+  the live page runs the 29.09.2026 script inline in its footer (47 685 characters) and reads the data as above.
 
 ### 3.26 Advertising (/za-firme/oglasavanje/): the media kit and booked ads
 
@@ -1258,6 +1335,31 @@ python3 scripts/qa/pregled_ui_test.py /tmp/bv-pregled                # end to en
 already in the translation memory) as a preview; `=approved` (or another status) builds it with that status, and approved
 takes its own hash — QA builds only. Build again without it before packing.
 
+### 3.28 Protecting the map data from copying (since 06.10.2026)
+
+The owner's rule: **nothing may affect real readers in any scenario** — a measure that could touch a person, a browser
+extension, an app or another site we run is not used. Everything shown to a person can be copied (the same way the
+robot reads the networks' apps); the aim is to make bulk copying slower, provable and pointless (the data ages).
+
+In use:
+1. **Terms of use** — `/politika-privatnosti.html#uslovi`: the database (lists, prices per connector, checks, notes) is
+   protected as a database maker's right (ZASP čl. 137–140a, 15 years); systematic extraction and automated collection
+   need written consent; text and data mining is reserved for the data files. Open parts and their licences: punjaci.json
+   ODbL (OpenStreetMap's condition), the CSV downloads CC BY-NC 4.0 from 06.10.2026 (copies taken before stay CC BY).
+2. `robots.txt`: `Disallow: /assets/map/` (with `Allow: /assets/map/punjaci.json`), `/api/`, `/app/`. Pages stay open to
+   search engines and AI (llms.txt).
+3. Headers on `/assets/map/*`: `X-Robots-Tag: noindex`, `TDM-Reservation: 1`, `TDM-Policy` (the terms);
+   `/.well-known/tdmrep.json` says the same. `Access-Control-Allow-Origin: *` stays (evolako.rs reads the data; apps).
+4. **Watermark**: dopune.json coordinates get a 7th decimal from `sha1(id|YYYY-MM of checked)` (+1…9 × 1e-7°, ≤ 0,1 m;
+   shown rounded to 5 decimals): a copy shows what was taken and when. Texts of "how to find" and notes are our own words.
+5. **Trap link**: `/api/zamka` (hidden in /mapa/, `rel=nofollow`, `aria-hidden`, `tabindex=-1`, disallowed in robots)
+   only counts visits per day and fingerprint in D1 (`trap`), returns 204 and blocks nobody. Readers never see it.
+6. Write limits on `/api/*` as before; reads are not limited for people.
+
+Rejected (could touch people): CAPTCHA/Turnstile on reading, Cloudflare Bot Fight Mode (breaks native apps), blocking by
+IP/ASN/VPN (mobile carriers' CGNAT), restricting CORS to our domains (could break the apps or a page we forgot), fake
+stations or poisoned data, sign-in for the map, text as images, loading details lazily (poorer offline).
+
 ## 4. Build and check
 
 ```bash
@@ -1271,6 +1373,8 @@ python3 scripts/qa/cfserve.py dist 8787 &          # like Cloudflare Pages, with
 python3 scripts/qa/qa_all.py sr,en,ru 360,768,1440 # every sitemap URL: JS/CSP errors, overflow, images, footer
 python3 scripts/qa/map_ui_test.py /tmp/bv-shots    # map cards, reports, photos, favourites (fake /api)
 python3 scripts/qa/map_extra_test.py /tmp/bv-shots # dopune.json facts, „Imam Teslu“, pin prices, „Gde tačno“, EN/RU
+python3 scripts/qa/map_v2_test.py                 # per-connector prices, Kako se puni, Moj auto (RSD/km), Najbliži, hours, cable, EN/RU
+python3 scripts/qa/map_region_test.py             # the region layer
 python3 scripts/qa/vis_shots.py /,/vesti/ /tmp/bv-shots   # full-page screenshots, desktop and phone
 ```
 
