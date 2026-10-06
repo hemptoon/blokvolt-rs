@@ -6,7 +6,8 @@
 Writes static/assets/embed/evomap-<first 10 hex of the file's SHA-256>.js (the same source always gives the same name)
 and, for the Webflow page code (page 6abaf73484f6a5d61585b9e5, RUNBOOK 3.25):
   /tmp/evomap/footer_tag.html — the <script src=… integrity=… crossorigin> tag for the page's footer code;
-  /tmp/evomap/head_style.html — the <style> block for the page's head code (replaces the old one);
+  /tmp/evomap/head_style.html — the same styles as a <style> block, for the page's head code if it is ever rewritten (the
+                                script injects them itself, so the head's older block can stay until then);
   scripts/evomap/build.json  — file name, SRI and size of the current build (what the page should load).
 A file the live page loads is never changed or deleted: a different byte breaks its SRI and the map disappears.
 Remove an old file only after the page has been published with the new tag."""
@@ -36,7 +37,12 @@ def main():
     if r.returncode:
         sys.exit('terser failed: ' + r.stderr[:500])
     banner = '/*! Evolako — mapa javnih punjača (evomap). Izvor: github.com/hemptoon/blokvolt-rs, scripts/evomap/evomap.src.js */\n'
-    js = (banner + r.stdout.strip() + '\n').encode('utf-8')
+    css = mini_css((HERE / 'evomap.css').read_text(encoding='utf-8'))
+    # the script brings its own styles (<style id="evm-css">, added once, after the page's head code), so a change of the
+    # map never needs the page's head code: the footer tag is the only thing to replace in Webflow
+    inject = ('!function(){if(!document.getElementById("evm-css")){var s=document.createElement("style");s.id="evm-css";'
+              's.textContent=' + json.dumps(css, ensure_ascii=False) + ';document.head.appendChild(s)}}();\n')
+    js = (banner + inject + r.stdout.strip() + '\n').encode('utf-8')
     name = 'evomap-' + hashlib.sha256(js).hexdigest()[:10] + '.js'
     EMBED.mkdir(parents=True, exist_ok=True)
     f = EMBED / name
@@ -48,7 +54,6 @@ def main():
     tag = (f'<!-- Evolako — mapa javnih punjača (evomap): skripta je na blokvolt.rs. Izvor: github.com/hemptoon/blokvolt-rs, '
            f'scripts/evomap/evomap.src.js -->\n<script src="https://www.blokvolt.rs/assets/embed/{name}" integrity="{sri}" crossorigin="anonymous"></script>')
     (TMP / 'footer_tag.html').write_text(tag, encoding='utf-8')
-    css = mini_css((HERE / 'evomap.css').read_text(encoding='utf-8'))
     (TMP / 'head_style.html').write_text('<style>/* Mapa punjača — izgled (evomap) */\n' + css + '\n</style>', encoding='utf-8')
     (HERE / 'build.json').write_text(json.dumps({'file': '/assets/embed/' + name, 'sri': sri, 'bytes': len(js), 'css_chars': len(css)},
                                                 ensure_ascii=False, indent=1) + '\n', encoding='utf-8')

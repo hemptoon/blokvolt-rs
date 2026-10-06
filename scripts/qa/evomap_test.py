@@ -16,7 +16,8 @@ if not (ML / 'maplibre-gl.js').exists():
     subprocess.check_call(['npm', 'pack', 'maplibre-gl@5.24.0', '--silent'], cwd=TMP / 'ml', stdout=subprocess.DEVNULL)
     with tarfile.open(TMP / 'ml' / 'maplibre-gl-5.24.0.tgz') as t:
         t.extractall(TMP / 'ml', members=[m for m in t.getmembers() if m.name in ('package/dist/maplibre-gl.js', 'package/dist/maplibre-gl.css')])
-HEAD = ((TMP / 'head_style.html').read_text() + '\n<script>' + (ROOT / 'scripts' / 'evomap' / 'page_bvq.js').read_text() + '</script>')
+# the page's head without any map styles: the script injects its own (<style id="evm-css">)
+HEAD = '<script>' + (ROOT / 'scripts' / 'evomap' / 'page_bvq.js').read_text() + '</script>'
 FOOT = (TMP / 'footer_tag.html').read_text()
 STYLE = {"version": 8, "glyphs": "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf", "sources": {},
          "layers": [{"id": "bg", "type": "background", "paint": {"background-color": "#e9ecef"}}]}
