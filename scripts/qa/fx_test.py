@@ -171,8 +171,8 @@ async def main():
         await shot(pg, 'mreza_eur_1440.png', 'main .wrap.main')
         await go(pg, '/cena-punjaca-za-elektricni-auto')
         r = await pg.evaluate("[...document.querySelectorAll('.row .val')].slice(0, 3).map(x => x.innerText.replace(/\\s+/g, ' '))")
-        check(r and all(re.match(r'^≈ [\d.]+ € [\d.,]+ RSD', x) for x in r if 'RSD' in x) and any('€ + PDV' in x for x in r),
-              'charger prices (firm list): ≈ € first, RSD second; a price published in euros stays as published', r)
+        check(r and all(re.match(r'^(od )?≈ [\d.]+ € [\d.,]+ RSD', x) for x in r if 'RSD' in x) and any('€ + PDV' in x for x in r),
+              'charger prices (firm list): ≈ € first, RSD second (a starting price keeps its "od"); a price published in euros stays as published', r)
         await shot(pg, 'cena_punjaca_eur_1440.png', 'main .wrap.main')
         await go(pg, '/firme/stasanet/')
         fact = await pg.evaluate("document.querySelector('.fact.wide b').innerText.replace(/\\s+/g, ' ')")

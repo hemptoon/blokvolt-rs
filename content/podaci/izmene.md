@@ -15,6 +15,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 
 - [Politika privatnosti](/politika-privatnosti.html#merenje-poseta): posete od danas broji i naš sopstveni brojač, bez kolačića i bez čuvanja IP adrese, da bismo videli tačan broj ljudi umesto procene. Opisano je šta se beleži i koliko se čuva.
 - Valuta: pored izbora jezika možete izabrati da se cene prikazuju i u evrima ili dolarima, informativno po srednjem kursu NBS, uz dinarski iznos. Podrazumevano su sve cene u dinarima. Preračunavaju se cene iz podataka sajta (javno punjenje, firme, tabele, kalkulatori, mapa), a ne tekstovi vodiča i vesti.
+- [Evolako](/firme/evolako/): nova ponuda — cena paketa sa osnovnom ugradnjom pored razvodne table, kabl do mesta punjača po proceni: WALLBOX 11 kW od 94.000 RSD, START 39.000 RSD, Wallbox Plus, Wallbox Premium i samo ugradnja od 24.000 RSD; MID brojilo uz wallbox po izboru. Izvor: evolako.rs/paketi-i-cene, 07.10.2026.
 
 ## 6. oktobar 2026
 
