@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 06.10.2026
+updated: 07.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-06
+modified: 2026-10-07
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 7. oktobar 2026
+
+- [Politika privatnosti](/politika-privatnosti.html#merenje-poseta): posete od danas broji i naš sopstveni brojač, bez kolačića i bez čuvanja IP adrese, da bismo videli tačan broj ljudi umesto procene. Opisano je šta se beleži i koliko se čuva.
+
 ## 6. oktobar 2026
 
 - Novi vodič [Najam električnog automobila](/najam-elektricnog-automobila): ko u Srbiji iznajmljuje električni automobil, koliko košta nedelja ili mesec (cenovnici od 6. oktobra 2026), kako se puni auto iz najma i šta pitati pre potpisivanja. Link je u [Vodičima](/vodici/) i na stranici [rent-a-car i car-sharing](/podaci/rent-a-car-i-car-sharing/).

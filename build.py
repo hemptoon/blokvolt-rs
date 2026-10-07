@@ -1776,7 +1776,8 @@ for _f in DIST.rglob('*.html'):
 
 # ---------------------------------------------------------------- security headers (docs/RUNBOOK.md 3.17)
 # Content-Security-Policy: scripts only from this site, the hashes of our few inline scripts (computed here from the
-# final HTML, so a new inline script is allowed automatically), Cloudflare Web Analytics and, when switched on, PostHog.
+# final HTML, so a new inline script is allowed automatically), Cloudflare Web Analytics, our visit counter (connect-src,
+# 07.10.2026) and, when switched on, PostHog.
 import base64  # noqa: E402
 _INLINE = re.compile(r'<script(?![^>]*\bsrc=)(?![^>]*type="application/(?:ld\+)?json")[^>]*>(.*?)</script>', re.S)
 _hashes = set()
@@ -1791,7 +1792,8 @@ CSP = '; '.join([
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https://tiles.openfreemap.org",
     "font-src 'self'",
-    "connect-src 'self' https://tiles.openfreemap.org https://cloudflareinsights.com" + (' ' + ' '.join(_ph) if _ph else ''),
+    "connect-src 'self' https://tiles.openfreemap.org https://cloudflareinsights.com https://evolako-bot.mr-smekhov.workers.dev"
+    + (' ' + ' '.join(_ph) if _ph else ''),   # evolako-bot: our own visit counter (bv.js, RUNBOOK 3.16)
     "worker-src 'self' blob:",
     "child-src 'self' blob:",
     'frame-src https://www.youtube-nocookie.com',

@@ -10,9 +10,9 @@ description_nalog: Kako blokvolt.rs postupa sa podacima o ličnosti i pod kojim 
 lead_consent_nalog: Nalog nije obavezan, a oglasnih piksela nema. Posete se broje bez kolačića, kolačić za analitiku postavlja se samo uz vašu dozvolu, a forme, prijave sa mape i nalog čuvaju samo ono što sami upišete.
 description_consent_nalog: Kako blokvolt.rs postupa sa podacima o ličnosti. Nalog nije obavezan; posete se broje bez kolačića, a kolačić za analitiku samo uz vašu dozvolu.
 kicker: Pravno
-updated: 06.10.2026
+updated: 07.10.2026
 published: 2026-09-21
-modified: 2026-10-06
+modified: 2026-10-07
 priority: 0.2
 path: /politika-privatnosti.html
 ---
@@ -44,6 +44,8 @@ Pri svakoj poseti provajder sajta (Cloudflare) obrađuje tehničke podatke: IP a
 ## Merenje poseta {#merenje-poseta}
 
 Posete se broje uz Cloudflare Web Analytics: pregledi stranica, sa kog sajta ili pretraživača je poseta došla, zemlja, tip uređaja i brzina učitavanja. Alat ne postavlja kolačiće, ništa ne upisuje u pregledač i ne prati vas na drugim sajtovima. Rezultati su zbirni.
+
+Pored toga, posete broji i naš sopstveni brojač, na Cloudflare serverima u EU: koja stranica je otvorena (bez parametara iz adrese), sa kog sajta je poseta došla (samo naziv sajta), oznake kampanje (utm), jezik stranice, zemlja, tip uređaja i pregledač. Brojač ne postavlja kolačiće i ništa ne upisuje u pregledač. Da bi se ista osoba brojala jednom dnevno, od IP adrese i podataka o pregledaču pravi se anonimni otisak sa slučajnim ključem koji važi samo taj dan i briše se posle dva dana. IP adresa se ne čuva, a otisak ne može da se vrati na nju niti da se poveže sa drugim danima. Zapisi se ne povezuju sa imenom ni nalogom i brišu se posle godinu dana.
 
 <!--posthog-->
 Da bi sajt radio bolje, beleži se i kako se koriste njegove funkcije: kartica punjača, filteri na mapi, pretraga, klik na sajt ili telefon firme, slanje forme. To radi PostHog, na serverima u EU (Frankfurt)<!--cookieless-->, u režimu bez kolačića<!--/cookieless--><!--consent-->. Dok ne dozvolite kolačić, radi bez njega<!--/consent-->: u pregledaču se ništa ne čuva, a od IP adrese i podataka o pregledaču pravi se anonimni identifikator koji se menja svakog dana. IP adresa se ne čuva, a zapisi se ne povezuju sa imenom ni nalogom i brišu se posle najviše godinu dana. Ako pregledač šalje signal „Ne prati me“ (Do Not Track) ili Global Privacy Control, ovi zapisi se ne šalju.

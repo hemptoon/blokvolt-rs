@@ -381,3 +381,31 @@
     window.bvTrack('video_play', { video: id });
   });
 })();
+
+/* Visit counter (07.10.2026, RUNBOOK 3.16): one request per page view to our own counter (Cloudflare Worker
+   evolako-bot, database in the EU), so the founders see exact numbers of people. No cookies and nothing stored in the
+   browser for readers; sent: the page path (no query string), the referring site's host name, utm_source/medium/
+   campaign and the page language. The counter turns IP + browser into an anonymous fingerprint that changes every day
+   and does not keep the IP. Not sent from automated browsers (navigator.webdriver: our QA) or other hosts
+   (pages.dev previews). ?tim=1 marks this browser as the team's own ('evo_tim' in localStorage, ?tim=0 removes it). */
+(function () {
+  try {
+    var L = location, h = L.hostname;
+    if (!/^(www\.)?(blokvolt|evolako)\.rs$/.test(h) || navigator.webdriver) return;
+    var s = L.search, K = 'evo_tim', t = 0;
+    try {
+      if (/[?&]tim=1(&|$)/.test(s)) localStorage.setItem(K, '1');
+      if (/[?&]tim=0(&|$)/.test(s)) localStorage.removeItem(K);
+      t = localStorage.getItem(K) ? 1 : 0;
+    } catch (e) { /* storage blocked */ }
+    var r = '';
+    try { r = document.referrer ? new URL(document.referrer).hostname : ''; } catch (e) { r = ''; }
+    var q = new URLSearchParams(s), g = function (k) { return (q.get(k) || '').slice(0, 60); };
+    var b = JSON.stringify({ h: h, p: L.pathname, r: r, t: t, us: g('utm_source'), um: g('utm_medium'), uc: g('utm_campaign'),
+      l: (document.documentElement.lang || '').slice(0, 2) });
+    var u = 'https://evolako-bot.mr-smekhov.workers.dev/s/p';
+    // fetch, not sendBeacon: Brave's Shields drop cross-site beacons ("ping" requests) silently (checked 07.10.2026)
+    if (window.fetch) fetch(u, { method: 'POST', body: b, keepalive: true, mode: 'no-cors', credentials: 'omit' }).catch(function () {});
+    else if (navigator.sendBeacon) navigator.sendBeacon(u, b);
+  } catch (e) { /* never break the page */ }
+})();

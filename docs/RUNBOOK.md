@@ -636,6 +636,19 @@ No messages, comments or forms to anyone — the outreach rule of 3.7 applies to
 - **Cloudflare Web Analytics** — switched on 25.09.2026 in Pages → blokvolt → Metrics → Web Analytics. Cloudflare
   adds its beacon (`static.cloudflareinsights.com`) to every deployment; no cookies, no storage in the browser.
   Numbers: Cloudflare dashboard → Analytics → Web analytics. Page views, referrers, countries, devices, Core Web Vitals.
+- **Our visit counter** (07.10.2026, the owner's „деплой счетчика“) — the last block of `static/assets/bv.js` sends one
+  request per page view (`fetch` with `keepalive`, `no-cors`, text/plain — no preflight; not `sendBeacon`: Brave's Shields
+  drop cross-site beacons) to `https://evolako-bot.mr-smekhov.workers.dev/s/p`
+  — the founders' Telegram bot (Cloudflare Worker `evolako-bot`, source and docs in the project:
+  `claude/Evolako_CRM_Source_2026-09-29.md` → `src/counter.js`, `claude/Evolako_Bot_Telegram_2026-09-28.md`). Sent: host,
+  path (no query), referrer host, utm_source/medium/campaign, page language, team mark. Not sent on other hosts
+  (pages.dev previews) or from automated browsers (`navigator.webdriver` — Playwright QA). The worker keeps no IP:
+  a daily-salted SHA-256 of IP + browser (`vid`) and of IP (`iph`), table `hits` in D1 `evolako-crm` (EU), 365 days.
+  `?tim=1` on any page marks the browser as the team's own (`localStorage['evo_tim']`; `?tim=0` removes it); the
+  morning report in Telegram (topic Stats) then leaves out that browser and everything from the same IP that day.
+  Do Not Track / GPC are not checked: no cookies, no profile, nothing that follows a reader — like Cloudflare Web
+  Analytics. CSP: the worker host is in `connect-src` (`build.py`, 3.17). evolako.rs sends to the same address from
+  its Webflow site code. The privacy policy describes it (#merenje-poseta, second paragraph).
 - **PostHog** (EU cloud) — prepared in the code, off while `analytics.posthog_key` in `content/data/site.json` is
   empty. `analytics.consent` (true since 25.09.2026, the owner's choice) picks the mode:
   - `consent: true` — every reader is measured **without cookies** (`cookieless_mode: 'always'`, nothing written to
@@ -691,7 +704,7 @@ No messages, comments or forms to anyone — the outreach rule of 3.7 applies to
 `build.py` writes `dist/_headers` at the end of every build: HSTS, `X-Frame-Options: DENY`, COOP, a
 Permissions-Policy (geolocation only for the site itself) and a Content-Security-Policy that allows scripts only
 from the site, the SHA-256 hashes of the inline scripts found in the final HTML (calculators, search, /admin/),
-Cloudflare Web Analytics and — when switched on — PostHog. Map tiles come from `tiles.openfreemap.org`, videos
+Cloudflare Web Analytics and — when switched on — PostHog; `connect-src` also allows our visit counter (3.16). Map tiles come from `tiles.openfreemap.org`, videos
 only from `youtube-nocookie.com`. A new third-party script, iframe, font or tile host must be added to the lists in
 `build.py`, or the browser blocks it. `scripts/qa/cfserve.py` serves `dist/` with these headers, so CSP errors show
 up as console errors in `scripts/qa/qa_all.py` and `map_ui_test.py`.
