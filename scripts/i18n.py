@@ -28,7 +28,8 @@ SKIP = {'script', 'style', 'svg', 'noscript_', 'template', 'head', 'code', 'pre'
 ATTRS = ('alt', 'title', 'aria-label', 'placeholder', 'data-label')
 # JSON blocks of plain strings translated like running text: the page's script texts, and on /pregled/ the fixed texts
 # of the newsletter's e-mails (read back by scripts/pregled.py)
-UI_BLOCKS = ['bv-i18n', 'bv-i18n-mail']
+# and on every page the texts of the display-currency switcher and its footnote (bv-fx-i18n, read by assets/valuta.js)
+UI_BLOCKS = ['bv-i18n', 'bv-i18n-mail', 'bv-fx-i18n']
 # script strings that are only a unit never reach the translation memory (worth() is False), but Russian writes the
 # units in Cyrillic (STYLE.md): the map's price units, so a card does not mix «RSD/км» from a sentence with "RSD/km"
 UI_UNITS = {'ru': {'RSD/kWh': 'RSD/кВт·ч', 'RSD/km': 'RSD/км', 'RSD/min': 'RSD/мин', '100 km ≈ {x} RSD': '100 км ≈ {x} RSD',
@@ -42,9 +43,66 @@ def norm_ws(s):
     return re.sub(r'\s+', ' ', s).strip()
 
 
+# Price markup of the display currency (scripts/valuta.py, RUNBOOK 3.29): <span data-rsd="…" …>59.000 RSD</span>. It is
+# not part of a key — marking a price never makes a translated sentence untranslated — and Renderer.tr_html puts the span
+# back around the same price in the translation.
+FX_SPAN = re.compile(r'<span\s([^>]*?\bdata-rsd(?:-lo)?="[^"]*"[^>]*)>([^<]*)</span>')
+FX_NUM = re.compile(r'(?<![\w.,])\d+(?:[.,]\d+)*(?:\s*[–-]\s*\d+(?:[.,]\d+)*)?')
+
+
+def fx_split(s):
+    """HTML → (the same HTML without the price spans, [(attributes, inner text), …] in order)."""
+    spans = []
+
+    def rep(m):
+        spans.append((m.group(1), m.group(2)))
+        return m.group(2)
+    return FX_SPAN.sub(rep, s), spans
+
+
+def fx_rewrap(html, spans):
+    """Put the price spans back into a translation: around the same text, or — when the translation wrote the unit
+    differently ("RSD/мин") — around the same number followed by "RSD" and the unit. A price the translation does not
+    have stays without the markup (that language shows it in dinars only)."""
+    pos, out = 0, html
+    for attrs, inner in spans:
+        i = out.find(inner, pos)
+        while i >= 0 and out.rfind('<', 0, i) > out.rfind('>', 0, i):      # inside a tag: look further
+            i = out.find(inner, i + 1)
+        if i >= 0:
+            j = i + len(inner)
+        else:
+            n = FX_NUM.search(inner)
+            if not n:
+                continue
+            # "≈ 60 RSD/kWh" → "≈ 60 RSD/кВт·ч": the sign in front goes into the span too (else EUR shows "≈ ≈ 0,51 €")
+            pre = r'(?:[≈~=](?:\s|&nbsp;)*)?' if re.match(r'\s*[≈~=]', inner) else ''
+            m = re.compile(pre + r'(?<![\w.,])' + re.escape(n.group(0)) + r'(?:\s|&nbsp;)*RSD(?:/[^\s<,;)]+)?').search(out, pos)
+            if not m:
+                continue
+            i, j = m.start(), m.end()
+        tag = '<span ' + attrs + '>'
+        out = out[:i] + tag + out[i:j] + '</span>' + out[j:]
+        pos = j + len(tag) + len('</span>')
+    return out
+
+
+def fx_units(soup):
+    """data-unit of a marked price follows its text after translation ("/min" → "/мин", "/mes" → "/mo")."""
+    for el in soup.find_all(lambda t: t.name and (t.has_attr('data-rsd') or t.has_attr('data-rsd-lo'))):
+        m = re.search(r'RSD(\S*)\s*$', el.get_text())
+        if not m:
+            continue
+        unit = m.group(1)
+        if unit:
+            el['data-unit'] = unit
+        elif el.has_attr('data-unit'):
+            del el['data-unit']
+
+
 def make_key(s):
     """Serbian HTML/text -> (key with ⟦n⟧ placeholders, list of the numbers taken out)."""
-    s = norm_ws(s)
+    s, _ = fx_split(norm_ws(s))
     nums = []
 
     def rep(m):
@@ -69,8 +127,13 @@ def worth(key):
     return any(w not in UNITS for w in words)
 
 
+def _fx_span(t):
+    """A price marked for the display currency counts as running text: the element around it stays one segment."""
+    return isinstance(t, Tag) and t.name == 'span' and (t.has_attr('data-rsd') or t.has_attr('data-rsd-lo'))
+
+
 def _direct_text(el):
-    return any(isinstance(c, NavigableString) and not isinstance(c, Comment) and c.strip() for c in el.children)
+    return any((isinstance(c, NavigableString) and not isinstance(c, Comment) and c.strip()) or _fx_span(c) for c in el.children)
 
 
 def _icon(t, el):
@@ -267,7 +330,8 @@ class Renderer:
             st['missing'].setdefault(key, where)
             return None
         st['hit'] += 1
-        return fill(t, nums)
+        spans = fx_split(norm_ws(inner))[1]
+        return fx_rewrap(fill(t, nums), spans) if spans else fill(t, nums)
 
     def tr_text(self, lang, text, where):
         out = self.tr_html(lang, _html.escape(text, quote=False), where)
@@ -301,6 +365,7 @@ class Renderer:
             t = self.tr_html(lang, seg_html(el), where)
             if t is not None:
                 replace_segment(el, t)
+        fx_units(soup)
         # 2. attributes the reader sees
         for el in (soup.body or soup).find_all(True):
             if el.name in SKIP or el.find_parent(lambda t: t.name in SKIP or t.get('translate') == 'no'):

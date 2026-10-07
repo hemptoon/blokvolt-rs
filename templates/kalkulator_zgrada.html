@@ -29,14 +29,14 @@
 </div>
 </div>
 <aside class="box res" aria-live="polite">
-<div class="rbig"><span>Struja za punjenje, mesečno</span><b id="z-o-real">{{ ex.real|sr(0) }} RSD</b><small><span id="z-o-realy">{{ ex.real_y|sr(0) }}</span> RSD godišnje</small></div>
-<div class="rbig"><span>Bez brojila plaća svaki stan</span><b id="z-o-perflat">{{ ex.per_flat|sr(0) }} RSD</b><small><span id="z-o-perflaty">{{ ex.per_flat_y|sr(0) }}</span> RSD godišnje</small></div>
+<div class="rbig"><span>Struja za punjenje, mesečno</span><b id="z-o-real">{{ ex.real|sr(0) }} RSD</b><small><span id="z-o-realy">{{ ex.real_y|sr(0) }} RSD</span> godišnje</small></div>
+<div class="rbig"><span>Bez brojila plaća svaki stan</span><b id="z-o-perflat">{{ ex.per_flat|sr(0) }} RSD</b><small><span id="z-o-perflaty">{{ ex.per_flat_y|sr(0) }} RSD</span> godišnje</small></div>
 <div class="rsave"><span>Stanovi bez auta plate za tuđe punjenje</span><b id="z-o-others">{{ ex.others_y|sr(0) }} RSD</b><small>godišnje, zajedno</small></div>
 <div class="row2"><span>Sa paušalom ostaje nepokriveno</span><b id="z-o-gap">{{ ex.gap|sr(0) }} RSD</b></div>
 <p class="note" id="z-o-gapnote">{{ ex.gap_note }}</p>
 <div class="row2"><span>Brojilo se vrati za</span><b id="z-o-payback">{{ ex.payback }}</b></div>
-<div class="row2"><span>Vlasnik auta plaća bez brojila</span><b><span id="z-o-owner">{{ ex.owner|sr(0) }}</span> RSD</b></div>
-<div class="row2"><span>Sa brojilom plaća samo svoje</span><b><span id="z-o-fair">{{ ex.owner_fair|sr(0) }}</span> RSD</b></div>
+<div class="row2"><span>Vlasnik auta plaća bez brojila</span><b id="z-o-owner">{{ ex.owner|sr(0) }} RSD</b></div>
+<div class="row2"><span>Sa brojilom plaća samo svoje</span><b id="z-o-fair">{{ ex.owner_fair|sr(0) }} RSD</b></div>
 <span id="z-o-ownerfair" hidden>{{ ex.owner_fair|sr(0) }}</span>
 </aside>
 </form>
@@ -60,6 +60,9 @@
  function $(id){return document.getElementById(id);}
  function num(id,def){var v=parseFloat(($(id)||{}).value);return isFinite(v)?v:def;}
  function fmt(x,d){d=d||0;var s=Math.abs(x).toFixed(d).replace(/\B(?=(\d{3})+(?!\d))/g,'.');return (x<0?'−':'')+s;}
+ // a result in RSD, marked for the display currency (assets/valuta.js, docs/RUNBOOK.md 3.29): text as before, the amount in data-rsd
+ // the amount is the one shown ("2.475 RSD" → 2475): the conversion starts from the dinars on the screen
+ function put(id,v,stack){var n=fmt(v),el=$(id);el.textContent=n+' RSD';el.setAttribute('data-rsd',n.replace(/\./g,'').replace('−','-'));if(stack)el.classList.add('fx-1');}
  function calc(){
   var stanovi=Math.max(2,num('z-stanovi',D.defaults.stanovi)),auta=Math.max(1,num('z-auta',D.defaults.auta));
   var kwh=num('z-kwh',D.defaults.kwh_auto),cena=num('z-cena',D.defaults.cena_kwh),pausal=num('z-pausal',D.defaults.pausal),brojilo=num('z-brojilo',D.defaults.brojilo);
@@ -67,11 +70,12 @@
   var gap=Math.max(0,real-pausal*auta),over=Math.max(0,pausal*auta-real),ownerFair=kwh*cena,owner=perFlat+pausal,monthlyErr=real-pausal*auta,payback;
   if(monthlyErr>0.5){var m=Math.ceil(brojilo*auta/monthlyErr);payback=m<=1?T.month1:(m<24?m+' '+pl(m,tr(T.months)):(m/12).toFixed(1).replace('.',',')+' '+tr(T.years));}
   else {payback=T.covered;}
-  $('z-o-real').textContent=fmt(real)+' RSD';$('z-o-realy').textContent=fmt(real*12);
-  $('z-o-perflat').textContent=fmt(perFlat)+' RSD';$('z-o-perflaty').textContent=fmt(perFlat*12);
-  $('z-o-others').textContent=fmt(others)+' RSD';$('z-o-gap').textContent=fmt(gap)+' RSD';
+  put('z-o-real',real,1);put('z-o-realy',real*12);
+  put('z-o-perflat',perFlat,1);put('z-o-perflaty',perFlat*12);
+  put('z-o-others',others,1);put('z-o-gap',gap,1);
   $('z-o-gapnote').textContent = gap>0 ? T.rest : (over>0 ? T.over.replace('{x}',fmt(over)) : T.exact);
-  $('z-o-payback').textContent=payback;$('z-o-owner').textContent=fmt(owner);$('z-o-ownerfair').textContent=fmt(ownerFair);$('z-o-fair').textContent=fmt(ownerFair);
+  $('z-o-payback').textContent=payback;put('z-o-owner',owner,1);$('z-o-ownerfair').textContent=fmt(ownerFair);put('z-o-fair',ownerFair,1);
+  if(window.bvFx)window.bvFx.render($('kalkulator'));
  }
  ['z-stanovi','z-auta','z-kwh','z-cena','z-pausal','z-brojilo'].forEach(function(id){var el=$(id);if(el){el.addEventListener('input',calc);el.addEventListener('change',calc);}});
  $('kalkulator').addEventListener('submit',function(e){e.preventDefault()});

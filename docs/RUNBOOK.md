@@ -78,6 +78,7 @@ credentials) — commits go through the owner's browser (section 6).
 | Advertising: media kit and booked ads | `content/data/oglasavanje.json`, `templates/oglasavanje.html`, `templates/_oglas.html`, `static/za-firme/` | `/za-firme/oglasavanje/` (SR/EN/RU) and its PDFs are made from the JSON; an ad appears only while an entry in `oglasi` is in its dates. See 3.26. |
 | Accounts and the newsletter | `content/data/site.json` → `accounts`, `pregled`; `worker/_worker.js` | "Moj BlokVolt" (/nalog/) and "Nedeljni pregled" (/pregled/). Both off until the owner switches them on. See 3.27. |
 | Newsletter issues | `content/pregled/<YYYY-MM-DD>-<slug>.md`, `static/assets/pregled/` (covers), `scripts/pregled.py` | One file per issue; the page /pregled/<slug>/ and the e-mail in three languages come from it; the worker sends after the owner approved the preview. See 3.27 "Sending the issues". |
+| Display currency (RSD / EUR / USD) | `static/assets/fx.js` (core, shared with evolako.rs), `static/assets/valuta.js`, `scripts/valuta.py`, `/api/kurs` in `worker/_worker.js` | Default RSD; EUR/USD only by the reader's choice. The fallback rate is in three files that must agree (the build checks it). See 3.29. |
 
 `indeks-cena.json` row schema (one row per app + station/tariff):
 
@@ -336,6 +337,10 @@ is one segment without the icon; the icon is put back before (or after) the tran
 A block that exists in one language only (for example links to a Russian-language guide for newcomers on three
 /ru/ pages) is written in the Serbian source as `<aside … data-only="ru" lang="ru" translate="no">…</aside>` in the
 target language; after translation `build.py` removes it from the other languages (`strip_lang_only`).
+
+Prices marked for the display currency (`<span data-rsd=…>`, 3.29) are not part of a key: `i18n.py` takes the span out
+of the key and puts it back around the same price in the translation, and the span's `data-unit` follows the translated
+unit ("/min" → "/мин"). Marking a price never makes a sentence untranslated.
 
 Not segments: JavaScript texts live in `<script id="bv-i18n" type="application/json">` blocks in the
 templates (calculators, search). Plain strings there are translated like any segment; objects keyed by
@@ -693,6 +698,7 @@ No messages, comments or forms to anyone — the outreach rule of 3.7 applies to
   | `calculator_used` | first change in a calculator | `calculator` |
   | `video_play` | YouTube poster clicked | `video` |
   | `language_switch` | language menu | `to` |
+  | `currency_changed` | display currency switcher (3.29) | `from`, `to`, `surface` (`site`) |
   | `consent_choice` | cookie banner | `choice` (`yes` / `no`) |
   | `account_sign_in` / `account_sign_out` / `account_delete` / `account_settings` | /nalog/ (3.27) | `how` (`code` / `link`), `all`, the settings chosen |
   | `newsletter_signup` / `newsletter_confirm` / `newsletter_on` / `newsletter_off` / `newsletter_monthly` | /pregled/, the boxes, /nalog/ | `src` (page path), `where` |
@@ -896,7 +902,11 @@ finished Serbian, English and Russian pages:
   `video`, `facts`, `links`, `doc`, `note`) with limited Markdown inline (`**bold**`, `*italic*`, `[text](URL)`,
   `` `code` ``). Links stay absolute; the apps open the ones they know natively.
 
-The contract is `Docs/FEED.md` in the app repository; schema `blokvolt.app/1`. A change that removes or renames a
+Since 06.10.2026 the manifest's `api` has `kurs` (`/api/kurs`, the NBS rate of the display currency, 3.29) and `data.json`
+has `fx`: the fallback rate in the same format (`stale: true`) for an app that has no network yet.
+
+The contract is `Docs/FEED.md` in the app repository; schema `blokvolt.app/1` (both additions are new optional fields,
+no new version) — add them to `Docs/FEED.md` there with the next app change. A change that removes or renames a
 field, a block type or a file is a new version (`/app/v2/`) — v1 stays until the apps in the stores have moved on.
 After a build, `python3 -c "import json;print(json.load(open('dist/app/v1/manifest.json'))['files'].keys())"` is a
 quick look; the app's own tests read a snapshot of the feed (`Fixtures/`).
@@ -1389,6 +1399,86 @@ Rejected (could touch people): CAPTCHA/Turnstile on reading, Cloudflare Bot Figh
 IP/ASN/VPN (mobile carriers' CGNAT), restricting CORS to our domains (could break the apps or a page we forgot), fake
 stations or poisoned data, sign-in for the map, text as images, loading details lazily (poorer offline).
 
+### 3.29 Display currency (RSD / EUR / USD)
+
+Built 06.10.2026 (founders' decision; the shared spec for Evolako and BlokVolt is `VALUTA_SPEC_2026-10-06.md` in the
+project docs). The reader can show sums in euros or dollars; **RSD is the default, always** (no guessing by language,
+country or locale), and with RSD every page looks exactly as before. EUR and USD are only what the reader chose: the
+switcher next to the language menu (on phones under 440 px it is in the burger menu, „Valuta“), or a link with
+`?cur=eur|usd|rsd` (sets and remembers it; anything else is ignored). The choice is kept in `localStorage` `bv:cur` and,
+for a reader signed in to "Moj BlokVolt" (3.27), in the account (`users.valuta`, `POST /api/nalog/podesavanja {valuta}`);
+on sign-in /nalog/ applies the account's choice, and an account that never chose takes the browser's. Other currencies
+(ruble, KM, denar, forint) were considered and rejected — do not add them without the owner.
+
+BlokVolt sells nothing, so every converted sum is a reference sum: the chosen currency first, the dinars after it,
+quieter — „≈ 0,49 €/kWh · 58 RSD/kWh“; in tight places (list rows, pin labels) only the converted sum, the dinars in the
+tooltip and the card. Where a price is the whole content of a cell or a card line (class `fx-1`), the dinars go under it.
+Number format as everywhere on the site: Serbian on every language („≈ 1.064 €“, „≈ 8,43 €“, rates „≈ 0,50 €/min“, under
+0,10 three decimals „≈ 0,010 €/min“), `≈` always except for 0. A footnote under the page's main content (only with EUR/USD
+and only on pages with converted sums): „Iznosi u evrima i dolarima su informativni, po srednjem kursu NBS na {datum}. Na
+punjačima i u računima cene su u dinarima.“ (EN/RU from the translation memory, block `bv-fx-i18n` in `base.html`).
+
+**What converts** — only prices marked in the HTML (`data-rsd`, `data-rsd-lo/hi`, `data-unit`, `data-rate`; the core
+`static/assets/fx.js` converts them in the browser):
+- the price index and its archive (`_indeks_tabela.html`, cards `_price_summary.html` on /javno-punjenje/ and /mapa/, the
+  „43–79 RSD“ stat, the network list), the history page, the network pages (price fact, table, earlier prices);
+- firm prices: the register lists (`_firm_list.html`, /firme/, the sub-hubs, /cena-punjaca…), the firm page's price fact,
+  city pages; a price a firm publishes in euros stays as published;
+- data pages `/podaci/*`: the price cells of their tables (`valuta.fx_tables`: a cell with „<number> RSD“, or a number
+  under a header with „(RSD)“) — wallbox models, registration, insurance, tolls, rentals; the EPS tariffs table is marked by
+  `scripts/gen_tarife_eps.py`. EV prices are published in euros: nothing to convert;
+- calculators: their results (the inline scripts write `data-rsd` and call `bvFx.render`), the tariff table of the cost
+  calculator. **Input fields stay in RSD** with their „RSD“ labels and presets (they are copied from Serbian bills);
+- the map (`map.js`, a small block „display currency“): the card's price and its per-kWh estimate in full, the list and
+  the pin labels only converted (pins in ASCII: „~0,58 EUR/kWh“). The neighbouring countries' layer and the country maps
+  of blokvolt.com (their own currency, no `window.bvFx`) never change.
+
+**Never converted** (nothing there is marked): the prose of guides, news and data pages (authors' text with quoted
+sources), the media kit and the ad price (/za-firme/oglasavanje/, its PDFs), legal pages, /pregled/ and the newsletter
+e-mails, /admin/, the account page's texts, blokvolt.com (no switcher there, `valuta.js` is not loaded). In the map card
+the receipts, the idle fee and the notes stay in dinars.
+
+**How to mark a new price.** In a template `{{ value|fx }}` (every „<number> RSD[/unit]“ of a data string gets the markup;
+`fx(stack=False)` keeps it inline) or `{{ fx_num(v, rate=True, text=…) }}` for one number; in Python `valuta.fx_num`. The
+visible text never changes. Never apply it to prose, to quotes from a firm's site, or to anything in the "never" list.
+
+**The rate.** `GET /api/kurs` (worker): `{"base":"RSD","source":"NBS srednji kurs","date":"2026-10-05","rates":{"EUR":117.4948,
+"USD":105.0468},"fetchedAt":"…","stale":false}` — the middle rate of the National Bank of Serbia from kurs.resenje.org
+(`exchange_middle ÷ parity`, `/api/v1/currencies/eur|usd/rates/today`), checked EUR 100–140 and USD 80–140, kept 6 hours in
+the Cloudflare cache and as the last good value in D1 (table `kurs`, created on first use); the source down → the last good
+value with `stale: true`; nothing stored → the constants with `stale: true`. CORS `*`, `Cache-Control: public, max-age=3600`;
+evolako.rs and the BlokVolt app (manifest `api.kurs`) read it too. The browser keeps a rate 6 hours (`bv:cur:kurs`) and
+without one uses the constants. **The fallback constants (05.10.2026) are in three places**: `static/assets/fx.js`
+(`FALLBACK`), `worker/_worker.js` (`KURS_FALLBACK`), `scripts/valuta.py` (`FALLBACK`, the app feed) — `build.py` stops when
+they differ. Update them with each app release (spec §2).
+
+**The core is shared.** `static/assets/fx.js` is a copy of the core that evolako.rs uses too (`FxCore`, version in its
+first line). Its unit tests (`fx.test.js`, jsdom: the spec's table, rounding, formats, parsing, DOM) are kept with the master
+copy outside this repository; change the core there, run the tests, and copy the identical file to both sites. The BlokVolt
+side lives in `static/assets/valuta.js` (instance with `numLang: 'au'` — only the map scans text, and it mixes the page's number format with Serbian-format price data — switcher, footnote, account) and `scripts/valuta.py`.
+
+**Adding a currency later** (only on the owner's decision): add the code to `CODES`, `SYM`, the texts `TX.names` and the
+sanity bounds in `fx.js` (+ the Evolako copy and tests), to `KURS_BOUNDS`, `kursUpstream` and `kursOut` in the worker,
+`VALUTE` (account setting), `FALLBACK` in all three files, the option texts in `bv-fx-i18n` (`base.html`, then 3.9), and
+the spec. The footnote names euros and dollars — reword it with the owner.
+
+**Tests.**
+
+```bash
+node fx.test.js                                                     # the core, next to its master copy (see above)
+python3 scripts/qa/valuta_build_test.py                             # the markup and i18n keys (22 checks, no build)
+MINIFLARE_DIR=/tmp/mf node scripts/qa/kurs_worker_test.mjs          # /api/kurs: format, cache, D1, stale, constants (25)
+MINIFLARE_DIR=/tmp/mf node scripts/qa/nalog_worker_test.mjs         # includes the account's valuta
+python3 scripts/qa/cfserve.py dist 8787 &
+python3 scripts/qa/fx_test.py /tmp/bv-fx-shots [--before <server of a build without the change>]
+```
+
+`fx_test.py`: RSD by default with no conversion (and, with `--before`, the same text as the other build), EUR by the
+switcher with the `currency_changed` event, after a reload, `?cur=usd`, the price index, a network page, firm prices, data
+tables, both calculators (inputs in RSD, a new input repaints, back to RSD shows the new result), the map card, list and
+pins, the never-converted pages, the EN/RU footnote and tooltip, the switcher in the burger menu at 360 px, no horizontal
+scroll at 360/768/1440, and screenshots. cfserve has no `/api/kurs` (404): the pages must use the constants silently.
+
 ## 4. Build and check
 
 ```bash
@@ -1405,7 +1495,12 @@ python3 scripts/qa/map_extra_test.py /tmp/bv-shots # dopune.json facts, „Imam 
 python3 scripts/qa/map_v2_test.py                 # per-connector prices, Kako se puni, Moj auto (RSD/km), Najbliži, hours, cable, EN/RU
 python3 scripts/qa/map_region_test.py             # the region layer
 python3 scripts/qa/vis_shots.py /,/vesti/ /tmp/bv-shots   # full-page screenshots, desktop and phone
+python3 scripts/qa/fx_test.py /tmp/bv-fx-shots      # display currency: RSD unchanged, EUR/USD, never-converted pages (3.29)
 ```
+
+`cfserve.py` reads `dist/_headers` when it starts: restart it after a build that changed an inline script (calculators),
+or the browser blocks the script by the old CSP hashes. Stop it by its PID (`kill $!` right after starting it, or save
+`$!` to a file) — never with a pattern that could hit other servers.
 
 `build.py` also appends `?v=<hash>` to bv.css, bv.js, map.js, the search indexes, the map data and the
 logos (everything under `/assets/` is cached for a year; the MapLibre files sit in a versioned folder). Look at

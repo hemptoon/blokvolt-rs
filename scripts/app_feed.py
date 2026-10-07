@@ -11,7 +11,8 @@ build.py calls build(DIST) at the very end, after the /en/ and /ru/ pages exist.
   dist/assets/app/v1/<lang>/firms.json      the firm register (/firme/<firm>/): same fields for every firm
   dist/assets/app/v1/<lang>/pages.json      reference pages: public charging, method, about, rules, privacy
   dist/assets/app/v1/<lang>/help.json       the help center (/pomoc/): sections, most asked, articles, contact box
-  dist/assets/app/v1/data.json              numbers for the native calculators and lists (language-neutral)
+  dist/assets/app/v1/data.json              numbers for the native calculators and lists (language-neutral); `fx` is the
+                                            display currency's fallback rate (the live one: manifest api.kurs)
 
 Everything under /assets is served with a one-year immutable cache, so the manifest lists every file with ?v=<hash>
 (the map files keep their place in /assets/map/ and are listed the same way). The text comes from the finished pages,
@@ -32,6 +33,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from bs4 import BeautifulSoup, NavigableString, Tag, Comment
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import valuta  # noqa: E402  (the display currency's fallback rate, RUNBOOK 3.29)
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = 'https://www.blokvolt.rs'
@@ -226,7 +230,8 @@ def video_block(el):
 
 
 def stats_block(el):
-    items = [{'value': _text(st.find('b')), 'label': _text(st.find('span'))} for st in el.select('.stat')]
+    # the label is the stat's own <span> (a price in <b> may hold spans of the display currency, RUNBOOK 3.29)
+    items = [{'value': _text(st.find('b')), 'label': _text(st.find('span', recursive=False))} for st in el.select('.stat')]
     return {'t': 'stats', 'items': items} if items else None
 
 
@@ -678,7 +683,10 @@ def data_json():
     data = ROOT / 'content' / 'data'
     load = lambda n: json.loads((data / n).read_text(encoding='utf-8'))
     out = {'calculator': load('kalkulator.json'), 'building': load('kalkulator-zgrada.json'),
-           'evModels': load('ev-modeli.json'), 'cities': load('gradovi.json')}
+           'evModels': load('ev-modeli.json'), 'cities': load('gradovi.json'),
+           # display currency (RUNBOOK 3.29): the rate to use until /api/kurs (manifest api.kurs) answers — the spec's
+           # fallback, in the format of /api/kurs (stale: true)
+           'fx': dict(valuta.FALLBACK)}
     try:
         out['app'] = {k: v for k, v in load('app.json').items() if k in ('version', 'apk', 'size', 'sha256', 'package')}
     except Exception:
@@ -726,7 +734,7 @@ def build(dist, strict=False):
                 'files': files, 'counts': counts,
                 'api': {'stations': '/api/stanice', 'station': '/api/stanica/{id}', 'checkin': '/api/stanica/{id}/prijava',
                         'photo': '/api/stanica/{id}/foto', 'photoFile': '/api/foto/{photo}.jpg', 'report': '/api/prijavi',
-                        'request': '/api/zahtev', 'helpful': '/api/zahtev'},
+                        'request': '/api/zahtev', 'helpful': '/api/zahtev', 'kurs': '/api/kurs'},
                 'links': {'privacy': SITE + '/politika-privatnosti', 'rules': SITE + '/pravila-objavljivanja/',
                           'correction': SITE + '/ispravka/', 'help': SITE + '/pomoc/', 'contact': 'mailto:hello@blokvolt.com'}}
     _write(dist / 'app' / 'v1' / 'manifest.json', manifest)

@@ -37,7 +37,7 @@
 <div class="box">
 <h2>Javni punjači</h2>
 <div class="field"><label for="c-share">Deo punjenja na javnim punjačima: <output id="o-share" for="c-share">{{ d.public_share }} %</output></label><input class="range" type="range" id="c-share" min="0" max="100" step="5" value="{{ d.public_share }}"></div>
-<div class="chips calc-chips" role="group" aria-label="Cena javnog punjenja">{% for p in public %}<button class="chip" type="button" data-rsd="{{ p.rsd_kwh }}" aria-pressed="{{ 'true' if p.id == d.public else 'false' }}" title="{{ p.note }}">{{ p.label }} · {{ p.rsd_kwh }} RSD/kWh</button>{% endfor %}</div>
+<div class="chips calc-chips" role="group" aria-label="Cena javnog punjenja">{% for p in public %}<button class="chip" type="button" data-pub="{{ p.rsd_kwh }}" aria-pressed="{{ 'true' if p.id == d.public else 'false' }}" title="{{ p.note }}">{{ p.label }} · {{ p.rsd_kwh }} RSD/kWh</button>{% endfor %}</div>
 <div class="field"><label for="c-pub">Cena javnog punjenja, RSD po kWh</label><input class="input" type="number" id="c-pub" min="0" max="300" step="1" value="{{ public_default }}" inputmode="decimal"><span class="hint">Naplata je po minutu, pa cena po kWh zavisi od auta. Na brzim punjačima računi pokazuju {{ calc.public_range }} RSD.</span></div>
 </div>
 <div class="box">
@@ -50,8 +50,8 @@
 </div>
 </div>
 <aside class="box res" aria-live="polite">
-<div class="rbig"><span>Električni auto, mesečno</span><b id="o-ev">{{ ex.ev|sr }} RSD</b><small><span id="o-ev100">{{ ex.ev100|sr }}</span> RSD na 100 km</small></div>
-<div class="rbig"><span id="o-fuelname">Benzin</span><b id="o-ice">{{ ex.ice|sr }} RSD</b><small><span id="o-ice100">{{ ex.ice100|sr }}</span> RSD na 100 km</small></div>
+<div class="rbig"><span>Električni auto, mesečno</span><b id="o-ev">{{ ex.ev|sr }} RSD</b><small><span id="o-ev100">{{ ex.ev100|sr }} RSD</span> na 100 km</small></div>
+<div class="rbig"><span id="o-fuelname">Benzin</span><b id="o-ice">{{ ex.ice|sr }} RSD</b><small><span id="o-ice100">{{ ex.ice100|sr }} RSD</span> na 100 km</small></div>
 <div class="rsave"><span>Razlika</span><b id="o-save">{{ ex.save|sr }} RSD mesečno</b><small id="o-save-y">{{ (ex.save * 12)|sr }} RSD godišnje</small></div>
 <div class="row2"><span>Kod kuće, <span id="o-homekwh">{{ ex.home_kwh|sr }}</span> kWh</span><b id="o-homecost">{{ ex.home_cost|sr }} RSD</b></div>
 <div class="row2"><span>Javni punjači, <span id="o-pubkwh">{{ ex.pub_kwh|sr }}</span> kWh</span><b id="o-pubcost">{{ ex.pub_cost|sr }} RSD</b></div>
@@ -66,7 +66,7 @@
 <div class="sec"><div class="sec-head"><h2>Iskustvo iz prakse</h2></div>{{ yt('K8K-5Sz5py8') }}</div>
 <div class="sec"><div class="sec-head"><h2>Kilovat-sat kod kuće</h2><a href="/podaci/tarife-eps/">Tarife i zone →</a></div>
 <div class="tw stack"><table><thead><tr><th>Zona</th><th>Noć</th><th>Dan</th><th>100 km noću</th></tr></thead><tbody>
-{% for r in tariff_rows %}<tr><td data-label="Zona"><b>{{ r.name }}</b><br><small class="muted">{{ r.range }}</small></td><td data-label="Noć"><b>{{ r.nt|sr(2) }} RSD</b></td><td data-label="Dan">{{ r.vt|sr(2) }} RSD</td><td data-label="100 km noću">{{ r.per100|sr }} RSD</td></tr>
+{% for r in tariff_rows %}<tr><td data-label="Zona"><b>{{ r.name }}</b><br><small class="muted">{{ r.range }}</small></td><td data-label="Noć"><b>{{ fx_num(r.nt, rate=True, text=(r.nt|sr(2)) ~ ' RSD', stack=True) }}</b></td><td data-label="Dan">{{ fx_num(r.vt, rate=True, text=(r.vt|sr(2)) ~ ' RSD', stack=True) }}</td><td data-label="100 km noću">{{ fx_num(r.per100, text=(r.per100|sr) ~ ' RSD', stack=True) }}</td></tr>
 {% endfor %}</tbody></table></div>
 <p class="note">Cene EPS-a od {{ eps.valid_from }}, sa naknadama, akcizom i PDV-om. 100 km: {{ d.kwh100|sr(0) }} kWh + {{ d.loss }} % gubitaka.</p>
 </div>
@@ -93,6 +93,10 @@
  function num(id){var v=parseFloat(String($(id).value).replace(',','.'));return isFinite(v)?v:0}
  function fmt(x,d){d=d||0;var s=Math.abs(x).toFixed(d).split('.');s[0]=s[0].replace(/\B(?=(\d{3})+(?!\d))/g,'.');return (x<0?'−':'')+s[0]+(d?','+s[1]:'')}
  function allin(x){return (x+E.oie+E.ee)*(1+E.akciza)*(1+E.pdv)}
+ // a result in RSD, marked for the display currency (assets/valuta.js, docs/RUNBOOK.md 3.29): text as before, the amount in data-rsd
+ var MES=/^RSD/.test(T.mes)?T.mes.slice(3):'',GOD=/^RSD/.test(T.god)?T.god.slice(3):'';
+ // the amount is the one shown ("2.475 RSD" → 2475): the conversion starts from the dinars on the screen
+ function put(id,n,sfx,unit,rate,stack){var el=$(id);el.textContent=n+sfx;el.setAttribute('data-rsd',n.replace(/\./g,'').replace(',','.').replace('−','-'));if(unit)el.setAttribute('data-unit',unit);if(rate)el.setAttribute('data-rate','1');if(stack)el.classList.add('fx-1')}
  function zone(){var id=$('c-zone').value;for(var i=0;i<E.zones.length;i++){if(E.zones[i].id===id)return E.zones[i]}return null}
  function homePrice(){var z=zone();if(!z)return num('c-homecustom');return allin($('c-tariff').value==='vt'?z.vt:z.nt)}
  var chips=[].slice.call(document.querySelectorAll('.calc-chips button'));
@@ -102,22 +106,23 @@
   var rent=num('c-rent'),homeCost=homeKwh*hp,pubCost=pubKwh*pub,kwCost=kw*E.snaga_rsd_kw*(1+E.akciza)*(1+E.pdv),ev=homeCost+pubCost+kwCost+rent;
   var gain=(pub-hp*(1+loss))*k100/100*(1-share);   // RSD saved per km by charging in the rented garage instead of on public chargers
   var ice=km*num('c-l100')/100*num('c-lp'),save=ice-ev;
-  $('o-homeprice').textContent=fmt(hp,2)+' RSD';
+  put('o-homeprice',fmt(hp,2),' RSD','',1);
   $('o-share').textContent=Math.round(share*100)+' %';
-  $('o-ev').textContent=fmt(ev)+' RSD';$('o-ev100').textContent=km>0?fmt(ev/km*100):'0';
-  $('o-ice').textContent=fmt(ice)+' RSD';$('o-ice100').textContent=km>0?fmt(ice/km*100):'0';
+  put('o-ev',fmt(ev),' RSD','',0,1);put('o-ev100',km>0?fmt(ev/km*100):'0',' RSD');
+  put('o-ice',fmt(ice),' RSD','',0,1);put('o-ice100',km>0?fmt(ice/km*100):'0',' RSD');
   $('o-fuelname').textContent=$('c-fuel').value==='dizel'?T.dizel:T.benzin;
-  $('o-save').textContent=fmt(save)+' '+T.mes;$('o-save-y').textContent=fmt(save*12)+' '+T.god;
-  $('o-homekwh').textContent=fmt(homeKwh);$('o-homecost').textContent=fmt(homeCost)+' RSD';
-  $('o-pubkwh').textContent=fmt(pubKwh);$('o-pubcost').textContent=fmt(pubCost)+' RSD';$('o-kwcost').textContent=fmt(kwCost)+' RSD';
+  put('o-save',fmt(save),' '+T.mes,MES,0,1);put('o-save-y',fmt(save*12),' '+T.god,GOD);
+  $('o-homekwh').textContent=fmt(homeKwh);put('o-homecost',fmt(homeCost),' RSD','',0,1);
+  $('o-pubkwh').textContent=fmt(pubKwh);put('o-pubcost',fmt(pubCost),' RSD','',0,1);put('o-kwcost',fmt(kwCost),' RSD','',0,1);
   $('o-zone').textContent=T.zone.replace('{kwh}',fmt(homeKwh));
-  $('w-rent').hidden=!(rent>0);$('o-rentcost').textContent=fmt(rent)+' RSD';$('o-rent').hidden=!(rent>0);
+  $('w-rent').hidden=!(rent>0);put('o-rentcost',fmt(rent),' RSD','',0,1);$('o-rent').hidden=!(rent>0);
   if(rent>0)$('o-rent').textContent=gain>0?T.rent.replace('{pub}',fmt(pub)).replace('{all}',fmt(need*pub)).replace('{km}',fmt(Math.max(50,Math.round(rent/gain/50)*50))):T.rentno;
+  if(window.bvFx)window.bvFx.render($('kalkulator'));
  }
  $('c-zone').addEventListener('change',function(){var c=this.value==='custom';$('w-homecustom').hidden=!c;$('w-tariff').hidden=c;calc()});
  $('c-fuel').addEventListener('change',function(){var dz=this.value==='dizel';$('c-lp').value=dz?D.fuel.dizel:D.fuel.benzin;$('c-l100').value=dz?D.defaults.l100_dizel:D.defaults.l100_benzin;calc()});
- chips.forEach(function(b){b.addEventListener('click',function(){chips.forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');$('c-pub').value=b.getAttribute('data-rsd');calc()})});
- $('c-pub').addEventListener('input',function(){chips.forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-rsd')===$('c-pub').value?'true':'false')})});
+ chips.forEach(function(b){b.addEventListener('click',function(){chips.forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');$('c-pub').value=b.getAttribute('data-pub');calc()})});
+ $('c-pub').addEventListener('input',function(){chips.forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-pub')===$('c-pub').value?'true':'false')})});
  $('kalkulator').addEventListener('input',calc);$('kalkulator').addEventListener('submit',function(e){e.preventDefault()});
  calc();
 })();

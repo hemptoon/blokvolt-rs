@@ -17,7 +17,7 @@
 </div></div>{% endblock %}
 {% block content %}
 <div class="facts">
-<div class="fact wide"><span>Cena</span><b>{{ op.card or op.verdicts.get('cenovnik') }}</b><small>{{ op.billing_short }}</small></div>
+<div class="fact wide"><span>Cena</span><b>{{ (op.card or op.verdicts.get('cenovnik'))|fx }}</b><small>{{ op.billing_short }}</small></div>
 <div class="fact"><span>Mreža</span><b>{{ op.network_short }}</b></div>
 <div class="fact"><span>Snaga</span><b>{{ op.power_short }}</b></div>
 <div class="fact"><span>Plaćanje</span><b>{{ op.payment_short }}</b></div>
@@ -26,7 +26,7 @@
 {% if op.map_note %}<p class="note">{{ op.map_note }}</p>{% endif %}
 {% if op.now_prices %}<div class="sec"><div class="sec-head"><h2>Zabeležene cene</h2></div>
 <div class="tw stack"><table><thead><tr><th>Punjač · mesto</th><th>Cena</th><th>Kada</th></tr></thead><tbody>
-{% for p in op.now_prices %}<tr><td data-label="Punjač · mesto">{{ p.what }}</td><td data-label="Cena"><b>{{ p.value }}</b></td><td data-label="Kada">{{ p.date }}<br><small class="muted"><a href="{{ p.url }}" rel="noopener nofollow">{{ p.source }}</a></small></td></tr>
+{% for p in op.now_prices %}<tr><td data-label="Punjač · mesto">{{ p.what }}</td><td data-label="Cena"><b>{{ p.value|fx }}</b></td><td data-label="Kada">{{ p.date }}<br><small class="muted"><a href="{{ p.url }}" rel="noopener nofollow">{{ p.source }}</a></small></td></tr>
 {% endfor %}</tbody></table></div>
 <p class="note">Važi cena koju aplikacija prikaže pre pokretanja punjenja.</p></div>{% endif %}
 {% if op.ps_sites %}<div class="sec"><div class="sec-head"><h2>Punjači i stanje</h2></div>
@@ -45,7 +45,7 @@
 <div class="sec">
 <details><summary>Naplata i naknade</summary><p>{{ op.billing }}</p>{% if op.fees and op.fees != '—' %}<p>{{ op.fees }}</p>{% endif %}</details>
 <details><summary>Mreža, roming i podrška</summary><p><b>Mreža:</b> {{ op.network }}</p><p><b>Plaćanje:</b> {{ op.payment }}</p><p><b>Aplikacija:</b> {{ op.app }}</p><p><b>Snaga:</b> {{ op.power }}</p><p><b>Pokrivenost:</b> {{ op.coverage }}</p>{% if op.roaming and op.roaming != '—' %}<p><b>Roming:</b> {{ op.roaming }}</p>{% endif %}{% if op.support and op.support != '—' %}<p><b>Podrška:</b> {{ op.support }}</p>{% endif %}{% if op.notes %}<p>{{ op.notes|safe }}</p>{% endif %}</details>
-{% if op.old_prices %}<details><summary>Ranije zabeležene cene ({{ op.old_prices|length }})</summary><ul>{% for p in op.old_prices %}<li>{{ p.what|replace('Istorija: ', '') }} — <b>{{ p.value }}</b>, {{ p.date }} (<a class="lnk" href="{{ p.url }}" rel="noopener nofollow">{{ p.source }}</a>)</li>{% endfor %}</ul></details>{% endif %}
+{% if op.old_prices %}<details><summary>Ranije zabeležene cene ({{ op.old_prices|length }})</summary><ul>{% for p in op.old_prices %}<li>{{ p.what|replace('Istorija: ', '') }} — <b>{{ p.value|fx(stack=False) }}</b>, {{ p.date }} (<a class="lnk" href="{{ p.url }}" rel="noopener nofollow">{{ p.source }}</a>)</li>{% endfor %}</ul></details>{% endif %}
 {{ src_block(op.src_items) }}
 <p class="upd">Provereno {{ op.verified }} · <a href="/ispravka/?operator={{ op.slug }}">Prijavite grešku</a></p>
 </div>

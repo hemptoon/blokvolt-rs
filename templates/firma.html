@@ -17,7 +17,7 @@
 </div></div>{% endblock %}
 {% block content %}
 <div class="facts">
-<div class="fact wide"><span>Cena</span><b>{{ firm.cell.cena.head|safe }}</b>{% if firm.cell.cena.rest %}<small>{{ firm.cell.cena.rest|safe }}</small>{% endif %}</div>
+<div class="fact wide"><span>Cena</span><b>{{ firm.cell.cena.head|safe|fx }}</b>{% if firm.cell.cena.rest %}<small>{{ firm.cell.cena.rest|safe }}</small>{% endif %}</div>
 {% for key, label in [('ugradnja','Ugradnja'),('brojilo','Brojilo i obračun'),('skupstina','Papiri za skupštinu'),('usluga','Usluga i garancija')] %}
 <div class="fact"><span>{{ label }}</span><b class="{{ 'no' if firm.vclass.get(key,'no') == 'no' else '' }}">{{ firm.verdicts.get(key) or 'Ne pominje se' }}</b></div>
 {% endfor %}
@@ -34,6 +34,6 @@
 {% if firm.notes %}<p class="note">{{ firm.notes }}</p>{% endif %}
 {{ src_block(firm.src_items) }}
 <p class="upd">Provereno {{ firm.verified }} · <a href="/ispravka/?firma={{ firm.slug }}">Prijavite grešku</a></p>
-{% if similar %}<div class="sec"><div class="sec-head"><h2>{{ similar_title }}</h2><a href="{{ similar_href }}">Sve →</a></div><div class="rows">{% for f in similar %}<a class="row" href="{{ f.url }}">{{ lg(f) }}<div><h3>{{ f.name }}</h3><div class="sub">{{ f.kind_label }} · {{ f.city }}</div></div><div class="val">{% if f.price_val %}{{ f.price_val }}<small>{{ f.price_note }}</small>{% else %}<small>Cena na upit</small>{% endif %}</div></a>{% endfor %}</div></div>{% endif %}
+{% if similar %}<div class="sec"><div class="sec-head"><h2>{{ similar_title }}</h2><a href="{{ similar_href }}">Sve →</a></div><div class="rows">{% for f in similar %}<a class="row" href="{{ f.url }}">{{ lg(f) }}<div><h3>{{ f.name }}</h3><div class="sub">{{ f.kind_label }} · {{ f.city }}</div></div><div class="val">{% if f.price_val %}{{ f.price_val|fx }}<small>{{ f.price_note }}</small>{% else %}<small>Cena na upit</small>{% endif %}</div></a>{% endfor %}</div></div>{% endif %}
 {% if not firm.is_us %}<p class="claim-min"><span>Predstavljate ovu firmu?</span> <a href="/za-firme/?firma={{ firm.slug }}">Ažurirajte podatke</a></p>{% endif %}
 {% endblock %}

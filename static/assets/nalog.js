@@ -301,8 +301,10 @@
       all('[data-nl-email]').forEach(function (el) { el.textContent = j.user.email; el.classList.remove('nl-sk-t'); });
       $('nl-since').textContent = j.user.created_at ? T.since.replace('{d}', fmtDate(j.user.created_at)) : '';
       $('nl-export').href = API + '/nalog/izvoz';
-      // this browser follows the account: "Imam Teslu" for the map, and the favourites (syncFavs)
+      // this browser follows the account: "Imam Teslu" for the map, the display currency (assets/valuta.js) and the
+      // favourites (syncFavs)
       lsSet('bv:tesla', j.user.tesla ? '1' : '0');
+      if (window.bvFxAccount) window.bvFxAccount(j.user);
       syncFavs(j);
       fillCar(j.user);
       fillPregled(j.sub);

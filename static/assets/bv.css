@@ -1435,3 +1435,42 @@ html.nl-in .nl-v-out,html:not(.nl-in) .nl-v-in{display:none!important}
 .kako-dl dd{margin:0;color:var(--ink2)}
 .kako-apps{margin:8px 0;font-size:14.5px}
 @media (max-width:640px){.kako-dl{grid-template-columns:minmax(0,1fr);gap:2px}.kako-dl dd{margin-bottom:8px}}
+
+/* ---------- display currency: switcher and converted sums (assets/valuta.js + fx.js, RUNBOOK 3.29) ---------- */
+/* The switcher sits after the language menu; on narrow phones (no room in the bar) it moves into the burger menu. */
+.hd-cur{display:inline-flex;min-width:62px}
+.fx-sel{appearance:none;-webkit-appearance:none;height:38px;margin:0;padding:0 24px 0 10px;border:0;border-radius:10px;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' fill='none' stroke='%232A2F3A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 8px center/11px 11px;color:var(--ink2);font:inherit;font-size:14px;font-weight:600;line-height:38px;cursor:pointer}
+.fx-sel:hover{background-color:var(--surface2);color:var(--ink)}
+.fx-sel:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.hd-cur-m{display:none}
+.hd-cur-m[hidden]{display:none!important}
+@media (max-width:439px){
+ .hd-cur{display:none}
+ .hd-nav .hd-cur-m{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:6px 0 0;padding:12px 12px 2px;border-top:1px solid var(--line)}
+ .hd-cur-m label{font-size:17px;font-weight:560;color:var(--ink2)}
+ .hd-cur-m .fx-sel{height:44px;line-height:42px;padding:0 30px 0 14px;border:1px solid var(--line2);border-radius:12px;background-position:right 12px center;font-size:16px}
+}
+/* converted sum first, the dinars after it, quieter; "fx-1" = the price is the whole content of a cell or a card line:
+   the dinars go under it instead of after a dot */
+.fx-p{white-space:nowrap}
+.fx-s{color:var(--mut);font-weight:500}
+.fx-s .fx-sep{color:var(--mut2)}
+.fx-1 .fx-s{display:block;font-size:.86em;line-height:1.3}
+.fx-1 .fx-sep{display:none}
+.fx-note{margin:18px 0 6px}
+.row .val .fx-1 .fx-s{font-size:12.5px}
+.stat b span{font-size:inherit;color:inherit}
+.stat .fx-1 .fx-s{font-size:14px;font-weight:550;letter-spacing:0;margin-top:2px;color:var(--mut)}
+.pl li b .fx-1{display:inline-block;text-align:right}
+.pl li b:has(.fx-p){white-space:normal;text-align:right;min-width:0}
+.pl li b .fx-s{display:block;font-size:.86em;line-height:1.3}
+.pl li b .fx-sep{display:none}
+.res .fx-1 .fx-s{font-weight:550}
+.res .rbig .fx-1 .fx-s{font-size:17px;letter-spacing:0;margin-top:2px}
+.res .rsave .fx-1 .fx-s{font-size:15px;letter-spacing:0}
+/* the map: the card's price in full, the list's price only converted (the dinars are in the tooltip) */
+.cbox .price .fx-s{display:block;font-size:14px;font-weight:600;letter-spacing:0;margin-top:2px}
+.cbox .price .fx-sep{display:none}
+.st .pr .fxw{font-style:normal}
+.st .pr .fxw .fx-p{display:inline;font-weight:inherit;color:inherit}
+@media print{.hd-cur,.hd-cur-m{display:none}}

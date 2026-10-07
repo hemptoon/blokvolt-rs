@@ -259,10 +259,11 @@ function place(s) {
 function power(s) { return s.dc || s.ac || 0; }
 
 // one price line: v = RSD/min, k = RSD/kWh, h = RSD/hour, st = start or connection fee, ut + pm = Spectra "units" + RSD/min
+// (fx: the line's number and unit for the display currency, 3.29)
 function stationLines(s) {
   const P = s.pr, unit = P.u === 'kwh' ? T.per_kwh : T.per_min;
   return P.l.map(l => ({ cur: l[0], kw: l[1], n: l[3], v: P.u === 'min' ? l[2] : null, k: P.u === 'kwh' ? l[2] : null, st: P.st || 0,
-    label: fmt(l[2], 2) + ' ' + unit, date: P.d, src: P.src, charger: l[0].toUpperCase() + ' ' + fmt(l[1], l[1] % 1 ? 1 : 0) + ' ' + U.kw }));
+    label: fmt(l[2], 2) + ' ' + unit, fx: [l[2], unit.replace(/^RSD/, '')], date: P.d, src: P.src, charger: l[0].toUpperCase() + ' ' + fmt(l[1], l[1] % 1 ? 1 : 0) + ' ' + U.kw }));
 }
 function price(s) {
   if (s.cc) return { kind: 'rg' };
@@ -525,6 +526,7 @@ function renderList() {
       '<span class="nm"><b>' + (isFav(s) ? '<i class="fv">' + STAR + '<span class="sr-only">' + esc(T.fav_sr) + '</span></i>' : '') + esc(title(s)) + badge(s) + '</b><span class="sb">' + esc(sub) + '</span></span><span class="pr ' + ps.cls + '">' + esc(ps.t) + dist + '</span></button>';
   }).join('');
   $list.innerHTML = (html || '<p class="empty">' + esc(state.f === 'fav' && !FAV.size ? T.fav_none : T.none) + '</p>') + (more > 0 ? '<div class="more"><button class="btn sm" type="button" data-more>' + esc(T.more.replace('{n}', more)) + '</button></div>' : '');
+  fxList();
 }
 
 // ---------- card ----------
@@ -534,7 +536,7 @@ function connLine(c) {
 }
 function estHtml(v, s) {
   const e = perKwh(v, s);
-  return e ? '<small class="est">' + esc(T.p_est.replace('{k}', fmt(Math.round(e))).replace('{w}', fmt(Math.round(realKw(power(s), s.dc ? 'dc' : 'ac'))))) + '</small>' : '';
+  return e ? '<small class="est">' + fxt(T.p_est, { k: [e, fmt(Math.round(e))], w: [null, fmt(Math.round(realKw(power(s), s.dc ? 'dc' : 'ac')))] }) + '</small>' : '';
 }
 // the evolako.rs link of the "Izdvojeno" line: the page language travels with it (RUNBOOK 3.9)
 function evoUrl(campaign) {
@@ -559,20 +561,20 @@ function costHtml(s, p) {
     return '';
   }
   const m = co.main, km = m.c.km;
-  let h = '<div class="cost">' + ICON.car + '<div><b>' + esc(T.cost_t.replace('{car}', carName(car)).replace('{x}', fmtKm(km))) + '</b>' +
-    '<small>' + esc(T.cost_100.replace('{x}', fmt(Math.round(km * 100)))) + ' · ' +
-    esc(T.cost_kw.replace('{w}', fmt(Math.round(m.c.kw))).replace('{k}', fmt(Math.round(m.c.kwh)))) +
+  let h = '<div class="cost">' + ICON.car + '<div><b>' + fxt(T.cost_t, { car: [null, carName(car)], x: [km, fmtKm(km)] }) + '</b>' +
+    '<small>' + fxt(T.cost_100, { x: [km * 100, fmt(Math.round(km * 100))] }) + ' · ' +
+    fxt(T.cost_kw, { w: [null, fmt(Math.round(m.c.kw))], k: [m.c.kwh, fmt(Math.round(m.c.kwh))] }) +
     (co.p.kind === 'station' && co.p.lines.length > 1 ? ' (' + esc(m.t.charger) + ')' : '') + '</small>';
-  if (m.t.st) h += '<small>' + esc(T.cost_start.replace('{s}', fmt(m.t.st))) + '</small>';
+  if (m.t.st) h += '<small>' + fxt(T.cost_start, { s: [m.t.st, fmt(m.t.st)] }) + '</small>';
   if (winterShare()) h += '<small>' + esc(T.cost_winter.replace('{p}', fmt(Math.round((car.wf - 1) * winterShare() * 100)))) + '</small>';
-  if (co.alt && co.alt.c.km != null) h += '<small class="tip">' + esc(T.cost_alt.replace('{c}', co.alt.t.charger || (co.alt.cur.toUpperCase() + ' ' + fmt(co.alt.kw) + ' ' + U.kw)).replace('{x}', fmtKm(co.alt.c.km))) + '</small>';
+  if (co.alt && co.alt.c.km != null) h += '<small class="tip">' + fxt(T.cost_alt, { c: [null, co.alt.t.charger || (co.alt.cur.toUpperCase() + ' ' + fmt(co.alt.kw) + ' ' + U.kw)], x: [co.alt.c.km, fmtKm(co.alt.c.km)] }) + '</small>';
   const nb = nearCheaper(s, km);
   if (nb) {
     const what = title(nb.s) + ' (' + (nb.s.dc ? 'DC ' + Math.round(nb.s.dc) : 'AC ' + Math.round(nb.s.ac || 0)) + ' ' + U.kw + ')';
-    h += '<small class="tip">' + esc((nb.km ? T.cost_near : T.cost_near_free).replace('{t}', what).replace('{d}', fmtDist(nb.d)).replace('{x}', fmtKm(nb.km))) + '</small>';
+    h += '<small class="tip">' + fxt(nb.km ? T.cost_near : T.cost_near_free, { t: [null, what], d: [null, fmtDist(nb.d)], x: [nb.km, fmtKm(nb.km)] }) + '</small>';
   }
   const fb = fuelKm('b'), hm = homeKm(car);
-  if (fb && hm.length) h += '<small class="cmp">' + esc(T.cost_cmp.replace('{b}', fmtKm(fb)).replace('{h}', hm.length > 1 ? fmt(Math.min(...hm), 1) + '–' + fmt(Math.max(...hm), 1) : fmt(hm[0], 1))) + '</small>';
+  if (fb && hm.length) h += '<small class="cmp">' + fxt(T.cost_cmp, { b: [fb, fmtKm(fb)], h: [hm.length > 1 ? [Math.min(...hm), Math.max(...hm)] : hm[0], hm.length > 1 ? fmt(Math.min(...hm), 1) + '–' + fmt(Math.max(...hm), 1) : fmt(hm[0], 1)] }) + '</small>';
   return h + '</div></div>';
 }
 // a charger within 10 km that costs at least 40 % less per km for the reader's car (open now, works, usable by the car)
@@ -596,7 +598,7 @@ function promoHtml(s, p) {
   const car = carSpec(), hm = car ? homeKm(car) : cfg.home;
   const span = hm.length > 1 ? fmt(Math.min(...hm), 1) + '–' + fmt(Math.max(...hm), 1) : fmt(hm[0], 1);
   return '<a class="pmini" href="' + esc(evoUrl('kartica')) + '" rel="noopener" data-evo><span class="badge feat">' + esc(T.promo_badge) + '</span>' +
-    '<span>' + esc((car ? T.promo_km : T.promo_kwh).replace('{h}', span)) + ' <b>' + esc(T.promo_link) + '</b></span></a>';
+    '<span>' + fxt(car ? T.promo_km : T.promo_kwh, { h: [hm.length > 1 ? [Math.min(...hm), Math.max(...hm)] : hm[0], span] }) + ' <b>' + esc(T.promo_link) + '</b></span></a>';
 }
 function priceHtml(s) {
   const p = price(s);
@@ -616,35 +618,35 @@ function priceHtml(s) {
     // the network's app, connector by connector: the most powerful first
     const t = p.t, rc = freshReceipts(p);
     if (rc) h += '<div class="price">' + esc(rc + ' ' + T.per_kwh) + '</div><small>' + esc(T.p_by_receipt.replace('{d}', [...new Set(p.receipt.map(r => r.date))].join(', '))) + '</small>';
-    else h += '<div class="price">' + esc(t.label) + (p.lines.length > 1 ? ' <span class="pc">' + esc(t.charger) + '</span>' : '') + '</div>' + (carSpec() ? '' : estHtml(t.v, Object.assign({}, s, { dc: t.cur === 'dc' ? t.kw : null, ac: t.cur === 'ac' ? t.kw : null })));
-    if (p.lines.length > 1 || rc) h += '<ul class="plines">' + p.lines.map(l => '<li><span>' + esc(l.charger) + (l.n > 1 ? ' × ' + l.n : '') + '</span><b>' + esc(l.label) + '</b></li>').join('') + '</ul>';
+    else h += '<div class="price">' + fxl(t.label, t.fx[0], t.fx[1]) + (p.lines.length > 1 ? ' <span class="pc">' + esc(t.charger) + '</span>' : '') + '</div>' + (carSpec() ? '' : estHtml(t.v, Object.assign({}, s, { dc: t.cur === 'dc' ? t.kw : null, ac: t.cur === 'ac' ? t.kw : null })));
+    if (p.lines.length > 1 || rc) h += '<ul class="plines">' + p.lines.map(l => '<li><span>' + esc(l.charger) + (l.n > 1 ? ' × ' + l.n : '') + '</span><b>' + fxl(l.label, l.fx[0], l.fx[1]) + '</b></li>').join('') + '</ul>';
     h += '<small>' + esc(T.p_station.replace('{d}', t.date).replace('{s}', tr(t.src))) + '</small>';
-    (p.receipt || []).slice(0, 2).forEach(r => { h += '<small>' + esc(T.p_receipt.replace('{l}', tr(r.label)).replace('{k}', fmt(r.kwh))) + '</small>'; });
+    (p.receipt || []).slice(0, 2).forEach(r => { h += '<small>' + fxt(T.p_receipt, { l: [null, tr(r.label)], k: [r.kwh, fmt(r.kwh)] }) + '</small>'; });
   } else if (p.kind === 'exact' || p.kind === 'tier') {
     const t = p.t, rc = freshReceipts(p);
     const tariff = (p.kind === 'exact' ? T.p_exact : T.p_tier.replace('{c}', t.charger)) + ' · ' + t.date + (t.src ? ' · ' + tr(t.src) : '');
     if (rc) {
       // a receipt from this very charger wins over the network's tariff for the power (the tariff is shown under it)
       h += '<div class="price">' + esc(rc + ' ' + T.per_kwh) + '</div><small>' + esc(T.p_by_receipt.replace('{d}', [...new Set(p.receipt.map(r => r.date))].join(', '))) + '</small>';
-      h += '<small>' + esc(tariff + ': ' + t.label) + '</small>';
+      h += '<small>' + esc(tariff + ': ') + fxd(t.label) + '</small>';
     } else {
-      h += '<div class="price">' + esc(t.label) + '</div>' + (carSpec() ? '' : estHtml(t.v, s));
+      h += '<div class="price">' + fxd(t.label) + '</div>' + (carSpec() ? '' : estHtml(t.v, s));
       h += '<small>' + esc(tariff) + '</small>';
     }
-    if (t.extra) h += '<small>' + esc(tr(t.extra)) + '</small>';
-    (p.receipt || []).slice(0, 2).forEach(r => { h += '<small>' + esc(T.p_receipt.replace('{l}', tr(r.label)).replace('{k}', fmt(r.kwh))) + '</small>'; });
+    if (t.extra) h += '<small>' + fxd(tr(t.extra)) + '</small>';
+    (p.receipt || []).slice(0, 2).forEach(r => { h += '<small>' + fxt(T.p_receipt, { l: [null, tr(r.label)], k: [r.kwh, fmt(r.kwh)] }) + '</small>'; });
   } else if (p.kind === 'range') {
     h += '<div class="price">' + fmt(p.lo.v, 2) + '–' + fmt(p.hi.v, 2) + ' ' + esc(T.per_min) + '</div>';
     const a = perKwh(p.lo.v, s), b = perKwh(p.hi.v, s);
-    if (a && b) h += '<small class="est">' + esc(T.p_est.replace('{k}', fmt(Math.round(a)) + '–' + fmt(Math.round(b))).replace('{w}', fmt(Math.round(realKw(power(s), 'dc'))))) + '</small>';
+    if (a && b) h += '<small class="est">' + fxt(T.p_est, { k: [[Math.min(a, b), Math.max(a, b)], fmt(Math.round(a)) + '–' + fmt(Math.round(b))], w: [null, fmt(Math.round(realKw(power(s), 'dc')))] }) + '</small>';
     h += '<small>' + esc(T.p_range.replace('{a}', p.lo.charger).replace('{b}', p.hi.charger)) + ' · ' + esc(p.lo.date) + '</small>';
   } else if (p.kind === 'kwh') {
     const t0 = p.list[0];
     h += '<div class="price">' + esc(kwhSpan(p.list, '–') + ' ' + T.per_kwh) + '</div>';
-    if (p.list.length > 1 || t0.extra) h += '<ul>' + p.list.map(t => '<li><b>' + esc(t.label) + '</b>' + (t.extra ? ' — ' + esc(tr(t.extra)) : '') + '</li>').join('') + '</ul>';
+    if (p.list.length > 1 || t0.extra) h += '<ul>' + p.list.map(t => '<li><b>' + fxd(t.label) + '</b>' + (t.extra ? ' — ' + fxd(tr(t.extra)) : '') + '</li>').join('') + '</ul>';
     h += '<small>' + esc(T.p_list.replace('{d}', t0.date || '')) + (t0.src ? ' · ' + esc(tr(t0.src)) : '') + '</small>';
   } else if (p.kind === 'seen') {
-    h += '<div>' + esc(T.p_seen) + '</div><ul>' + p.list.slice(0, 3).map(t => '<li><b>' + esc(t.label) + '</b> — ' + esc(t.charger) + (t.extra ? ', ' + esc(tr(t.extra)) : '') + '</li>').join('') + '</ul>';
+    h += '<div>' + esc(T.p_seen) + '</div><ul>' + p.list.slice(0, 3).map(t => '<li><b>' + fxd(t.label) + '</b> — ' + esc(t.charger) + (t.extra ? ', ' + fxd(tr(t.extra)) : '') + '</li>').join('') + '</ul>';
     h += '<small>' + esc(p.note || '') + ' · ' + esc(p.list[0].date) + '</small>';
   } else {
     h += '<div>' + esc(p.text) + '</div>';
@@ -654,7 +656,7 @@ function priceHtml(s) {
     p.kind === 'free' ? p.date : '';
   if (stale(pd)) h += '<small class="stale">' + esc(T.p_old) + '</small>';
   const idle = cfg.idle && cfg.idle[(netOf(s) && netOf(s).via) || s.net];
-  if (idle && p.kind !== 'free' && p.kind !== 'none') h += '<small>' + esc(T.idle.replace('{x}', tr(idle))) + '</small>';
+  if (idle && p.kind !== 'free' && p.kind !== 'none') h += '<small>' + esc(T.idle).replace('{x}', fxd(tr(idle))) + '</small>';
   return h + costHtml(s, p) + promoHtml(s, p) + '</div>';
 }
 // "Kako se puni ovde": the network's steps, payment, without registration, after charging (cene.json: kako) — folded
@@ -774,6 +776,7 @@ function openCard(s, fly, fromNear) {
     rvHtml(s) +
     '<p class="src">' + esc(T.data) + ': ' + srcs + '</p></div>';
   $card.classList.add('is-open');
+  fxCard();
   $card.querySelector('.x').addEventListener('click', closeCard);
   $card.querySelector('.fav').addEventListener('click', () => toggleFav(s));
   $card.querySelector('[data-copy]').addEventListener('click', e => { copyLL(e.currentTarget); track('map_copy_coords', { station: s.id, network: s.net || '' }); });
@@ -891,7 +894,7 @@ function nearRow(x, i) {
   return '<li class="nr' + (i ? '' : ' first') + '">' +
     '<button class="nr-main" type="button" data-open="' + esc(s.id) + '"><span class="dot ' + k + (ver(s) === 'nep' ? ' nep' : '') + '">' + (pw ? Math.round(pw) : '') + '</span>' +
     '<span class="nr-nm"><b>' + esc(title(s)) + '</b><span class="nr-sb">' + esc([netName(s), place(s)].filter(Boolean).join(' · ')) + '</span>' +
-    '<span class="nr-meta"><b>' + esc(dist) + '</b>' + (ps.t ? ' · ' + esc(ps.t) : '') + '</span></span></button>' +
+    '<span class="nr-meta"><b>' + esc(dist) + '</b>' + (ps.t ? ' · <span class="nr-pr">' + esc(ps.t) + '</span>' : '') + '</span></span></button>' +
     '<a class="btn ' + (i ? 'sm' : 'dark') + ' nr-go" href="' + esc(navUrl(a, s)) + '" target="_blank" rel="noopener" data-nav="' + a + '" data-st="' + esc(s.id) + '" aria-label="' +
     esc(T.nr_nav_to.replace('{t}', title(s)).replace('{d}', dist)) + '">' + ICON.nav + '<span>' + esc(T.navigate) + '</span></a>' +
     (tags.length ? '<div class="tags nr-tags">' + tags.slice(0, 2).join('') + '</div>' : '') + '</li>';
@@ -941,6 +944,7 @@ function nearPanel(o, fit) {
   $card.innerHTML = '<div class="ccard nrp" role="dialog" aria-label="' + esc(T.nr_title) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
     '<h2>' + esc(T.nr_title) + '</h2>' + body + '</div>';
   $card.classList.add('is-open');
+  fxCard();
   if (!was) { const x = $card.querySelector('.x'); if (x) x.focus({ preventScroll: true }); }
 }
 function nearGo(source) {
@@ -1237,12 +1241,72 @@ function loadSummaries() {
   }).catch(off);
 }
 
+// ---------- display currency (blokvolt.rs only: window.bvFx from /assets/valuta.js; docs/RUNBOOK.md 3.29) ----------
+// Prices stay in RSD here; a reader who chose EUR or USD sees them converted: in the card in full (≈ € first, RSD after) —
+// the price, every connector's price, "Za vaš auto" (RSD/km, 100 km, per kWh, start fee, cheaper nearby, petrol and home),
+// the estimate, receipts, extras and idle fees; in the list, "Najbliži punjač" and the labels next to the pins only
+// converted (RSD in the tooltip and the card). The country maps of blokvolt.com (cfg.cur, their own currency, no
+// window.bvFx) and the neighbouring countries' layer are never converted: there every helper returns the plain text.
+const FX = !cfg.cur && window.bvFx ? window.bvFx : null;
+// Every price is marked as <span class="fxm"> around its text exactly as written ("≈ 8,4 RSD/km", "0,7–1,0 RSD/km",
+// "≈ 52 RSD po kWh"); fx.js reads the number from that text, so the dinars shown after the euros are the same as with
+// RSD (rounding, "≈", ranges) and a value is never converted twice (a converted span is skipped by the next scan).
+const fxOk = v => (Array.isArray(v) ? v.every(x => x != null && isFinite(x)) : v != null && isFinite(v));
+const fxm = h => '<span class="fxm">' + h + '</span>';
+// a price whose number the map knows: "16,67 RSD/min" (v = 16.67; no number → plain text)
+function fxl(text, v) {
+  return FX && fxOk(v) ? fxm(esc(text)) : esc(text);
+}
+// a translated sentence with prices in it (T.cost_t "Za vaš {car}: ≈ {x} RSD/km"): each placeholder with its "≈" and the
+// "RSD…" after it becomes one marked price. vals: {key: [number or [lo, hi] or null, text]}; null = not a price.
+// A translation that words it differently keeps the dinars (nothing breaks).
+function fxt(tpl, vals) {
+  let h = esc(tpl);
+  Object.keys(vals).forEach(k => {
+    const v = vals[k][0], txt = esc(vals[k][1]);
+    h = h.replace(new RegExp('(≈ )?\\{' + k + '\\}( RSD(?:/[^\\s.,;:)]+| po kWh| per kWh| за кВт·ч)?)?'), (m, ap, u) => {
+      const plain = (ap || '') + txt + (u || '');
+      return FX && u && fxOk(v) ? fxm(plain) : plain;
+    });
+  });
+  return h;
+}
+// a text from the price data (Serbian numbers whatever the page language: "+ 50 RSD priključenje", "1.000 RSD/sat")
+const FX_TOK = /(^|[^\w.,\-–])((?:≈ ?)?(?:\d{1,3}(?:\.\d{3})+(?:,\d+)?|\d+(?:,\d+)?)(?:\s*[–-]\s*(?:\d{1,3}(?:\.\d{3})+(?:,\d+)?|\d+(?:,\d+)?))?\s*RSD(?!\s*\/\s*(?:€|\$|EUR|USD))(?:\/(?:kWh|min|sat|h|km|кВт·ч|мин|ч|км))?)(?![\wčćšđž])/g;
+function fxd(text) {
+  const h = esc(text);
+  return FX ? h.replace(FX_TOK, (m, pre, all) => pre + fxm(all)) : h;
+}
+function fxCard() {
+  if (!FX) return;
+  FX.scan($card, { selector: '.price, .fxm' });           // ≈ € first, RSD after (.price: a line that is only a price, e.g. by receipts)
+  FX.scan($card, { selector: '.nr-pr', compact: true });  // "Najbliži punjač": converted only, as in the list
+}
+function fxList() {
+  if (!FX) return;
+  [].forEach.call($list.querySelectorAll('.st .pr'), el => {      // the price is the first text of .pr (a distance may follow)
+    const t = el.firstChild;
+    if (t && t.nodeType === 3 && t.nodeValue.indexOf('RSD') >= 0) { const w = d.createElement('i'); w.className = 'fxw'; el.insertBefore(w, t); w.appendChild(t); }
+  });
+  FX.scan($list, { selector: '.fxw', compact: true });
+}
+// a pin label (ASCII only, see pinPrice): "~68 RSD/kWh" → "~0,58 EUR/kWh", "~9,4 RSD/km" → "~0,080 EUR/km"
+function fxPin(t) {
+  if (!FX || !t || FX.get() === 'RSD') return t;
+  const m = /^(~?)(\d+(?:[.,]\d+)?)(?:-(\d+(?:[.,]\d+)?))? RSD(\/kWh|\/km)?$/.exec(t);
+  if (!m) return t;
+  const n = x => Number(x.replace(',', '.')), lo = n(m[2]), hi = m[3] ? n(m[3]) : null, o = { unit: m[4] || '', compact: true, rate: true };
+  const r = hi != null && hi !== lo ? FX.range(lo, hi, o) : FX.money(lo, o);
+  return r.primary.replace(/ /g, ' ').replace('≈ ', '~').replace('–', '-').replace('€', 'EUR').replace('$', 'USD');
+}
+if (FX) FX.on(() => { setData(); fxList(); fxCard(); });
+
 // ---------- map ----------
 function feat(s) {
   const v = ver(s), k = kind(s), p = k === 'tesla' ? 'T' : (Math.round(power(s)) || ''), pp = pinPrice(s);
   // a charger that is closed now (its hours, oh.w) is drawn faded like an unconfirmed one
   return { type: 'Feature', id: s._i, geometry: { type: 'Point', coordinates: [s.lon, s.lat] },
-    properties: { id: s.id, k, v: closedNow(s) && v !== 'nep' ? 'cl' : v, p: v === 'nep' && k !== 'tesla' ? p + '?' : p, f: FAV.has(s.id) ? 1 : 0, pl: pp.t, pc: pp.c } };
+    properties: { id: s.id, k, v: closedNow(s) && v !== 'nep' ? 'cl' : v, p: v === 'nep' && k !== 'tesla' ? p + '?' : p, f: FAV.has(s.id) ? 1 : 0, pl: fxPin(pp.t), pc: pp.c } };
 }
 // Serbia and the neighbouring countries are two sources: the neighbours are drawn quieter and cluster on their own
 function data(rg) { return { type: 'FeatureCollection', features: visible().filter(s => !s.cc === !rg).map(feat) }; }

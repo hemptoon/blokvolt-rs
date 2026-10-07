@@ -41,7 +41,10 @@
 <div class="consent-b"><button class="btn sm" type="button" data-consent="no">Odbij</button><button class="btn sm" type="button" data-consent="yes">Dozvoli</button></div>
 </div>
 {% endif %}{% if ANALYTICS %}<script id="bv-an" type="application/json">{{ ANALYTICS|safe }}</script>
-{% endif %}<script src="/assets/bv.js" defer></script>
+{% endif %}<script id="bv-fx-i18n" type="application/json">{"label": "Valuta", "RSD": "RSD — dinar", "EUR": "EUR — evro", "USD": "USD — dolar", "note": "Iznosi u evrima i dolarima su informativni, po srednjem kursu NBS na {d}. Na punjačima i u računima cene su u dinarima.", "title": "Preračunato po kursu NBS na {d}. Cena u dinarima: {rsd}."}</script>
+<script src="/assets/fx.js" defer></script>
+<script src="/assets/valuta.js" defer></script>
+<script src="/assets/bv.js" defer></script>
 {% block scripts %}{% endblock %}
 </body>
 </html>

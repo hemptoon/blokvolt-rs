@@ -13,7 +13,7 @@
 {% block content %}
 <div class="stats">
 <div class="stat"><b>{{ n_map }}</b><span>javnih punjača na mapi</span></div>
-{% if kwh_range %}<div class="stat"><b>{{ kwh_range }} RSD</b><span>po kWh na brzim punjačima, po stvarnim računima</span></div>{% endif %}
+{% if kwh_range %}<div class="stat"><b>{{ (kwh_range ~ ' RSD')|fx }}</b><span>po kWh na brzim punjačima, po stvarnim računima</span></div>{% endif %}
 <div class="stat"><b>{{ putevi_run }} od {{ putevi_n }}</b><span>državnih punjača na autoputevima {{ putevi_verb }}, besplatno</span></div>
 </div>
 <div class="sec" id="cene"><div class="sec-head"><h2>Cene po mrežama</h2>{% if hist %}<a href="/javno-punjenje/cene/">Istorija cena →</a>{% endif %}</div>
@@ -23,7 +23,7 @@
 </details>
 </div>
 <div class="sec"><div class="sec-head"><h2>Mreže i aplikacije</h2><a href="/javno-punjenje/aplikacije-i-kartice/">Aplikacije i kartice →</a></div>
-<div class="rows">{% for o in ops %}<a class="row" href="{{ o.url }}">{{ lg(o) }}<div><h3>{{ o.name }}</h3><div class="sub">{{ o.kind_label }}{% if o.card %} · {{ o.card }}{% endif %}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
+<div class="rows">{% for o in ops %}<a class="row" href="{{ o.url }}">{{ lg(o) }}<div><h3>{{ o.name }}</h3><div class="sub">{{ o.kind_label }}{% if o.card %} · {{ o.card|fx(stack=False) }}{% endif %}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
 </div>
 <div class="sec"><div class="sec-head"><h2>Kako se puni na javnom punjaču</h2><a href="/javno-punjenje/kako-jeftinije-puniti/">Kako platiti manje →</a></div>
 <div class="sec-fig">{{ yt('vLLw5ZsULYY') }}{{ yt('dK64RmDSSCI') }}</div>

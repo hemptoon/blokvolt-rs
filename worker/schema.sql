@@ -79,7 +79,8 @@ CREATE TABLE IF NOT EXISTS users (
   car TEXT,                      -- "Brand Model" (<= 80 chars) or NULL
   dc TEXT,                       -- ccs2 | chademo | none | NULL
   tesla INTEGER DEFAULT 0,       -- "Imam Teslu" on the map
-  city TEXT                      -- slug from content/data/gradovi.json, 'drugo' or NULL
+  city TEXT,                     -- slug from content/data/gradovi.json, 'drugo' or NULL
+  valuta TEXT                    -- display currency RSD | EUR | USD, NULL = never chosen (RUNBOOK 3.29; the worker adds the column)
 );
 
 -- Pending sign-ins: one per address and browser (the code is checked only in the browser that asked; the link works
@@ -249,3 +250,14 @@ CREATE INDEX IF NOT EXISTS facts_st ON facts (st, at);
 
 -- Hits on the hidden link of /mapa/ (/api/zamka, forbidden in robots.txt): only counted, never blocked. The worker creates it.
 CREATE TABLE IF NOT EXISTS trap (day TEXT NOT NULL, fp TEXT NOT NULL, n INTEGER NOT NULL DEFAULT 0, ua TEXT, PRIMARY KEY (day, fp));
+
+-- ---------------------------------------------------------------- display currency (RUNBOOK 3.29)
+-- The last good NBS middle rate behind GET /api/kurs: one row, overwritten after every successful fetch from
+-- kurs.resenje.org. Served with stale:true while the source does not answer. The worker creates it on first use.
+CREATE TABLE IF NOT EXISTS kurs (
+  id INTEGER PRIMARY KEY CHECK (id = 1),
+  date TEXT NOT NULL,            -- YYYY-MM-DD of the NBS exchange list
+  eur REAL NOT NULL,             -- RSD for 1 EUR (exchange_middle ÷ parity), 100–140
+  usd REAL NOT NULL,             -- RSD for 1 USD, 80–140
+  fetched_at TEXT NOT NULL       -- ISO time of the fetch (UTC)
+);

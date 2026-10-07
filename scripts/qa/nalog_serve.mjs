@@ -57,6 +57,9 @@ async function assets(req) {
 const mf = new Miniflare({
   modules: true, scriptPath: path.join(DIST, '_worker.js'), compatibilityDate: '2025-09-01',
   d1Databases: ['DB'], serviceBindings: { ASSETS: assets },
+  // nothing leaves the machine: the only outside call of the worker here is the display currency's rate (/api/kurs →
+  // kurs.resenje.org, RUNBOOK 3.29); it fails as if the source were down, and /api/kurs gives the fallback rate (stale)
+  outboundService: () => new Response('blocked in local tests', { status: 599 }),
   bindings: { MAIL_MODE: 'log', SITE: process.env.BV_SITE || 'http://127.0.0.1:' + PORT, ADMIN_KEY: 'dev-admin-key-0123456789' },
 });
 const db = await mf.getD1Database('DB');

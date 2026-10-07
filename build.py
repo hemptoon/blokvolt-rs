@@ -20,6 +20,7 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).parent
 sys.path.insert(0, str(ROOT / 'scripts'))
 import map_data  # noqa: E402
+import valuta  # noqa: E402  (display currency: price markup, docs/RUNBOOK.md 3.29)
 
 DIST = ROOT / 'dist'
 SITE = 'https://www.blokvolt.rs'
@@ -156,6 +157,10 @@ env.filters['plural'] = sr_plural
 env.filters['pword'] = lambda n, one, few, many: sr_plural(n, one, few, many).split(' ', 1)[1]   # the noun only
 env.filters['mono'] = mono
 env.filters['iso'] = iso
+# display currency (RUNBOOK 3.29): {{ price|fx }} marks every "<number> RSD[/unit]" of a data string for assets/fx.js;
+# fx_num(v, …) one number. The text stays as it is; only a reader who chose EUR or USD sees the conversion.
+env.filters['fx'] = valuta.fx
+env.globals['fx_num'] = valuta.fx_num
 
 
 def read_json_dir(d):
@@ -510,21 +515,29 @@ def _r(x):
 
 
 def kwh_text(row):
-    """≈ price per kWh for one index row, as short lines joined with <br>. A start or connection fee (start_rsd) is not
-    in the per-kWh figure: it is shown as its own line."""
-    st = f'<br>+ {fmt_rsd(row["start_rsd"])} RSD po punjenju' if row.get('start_rsd') else ''
+    """≈ price per kWh for one index row, as short lines joined with <br> (each sum marked for the display currency). A
+    start or connection fee (start_rsd) is not in the per-kWh figure: it is shown as its own line."""
+    st = (f'<br>+ {valuta.fx_num(row["start_rsd"], text=fmt_rsd(row["start_rsd"]) + " RSD")} po punjenju'
+          if row.get('start_rsd') else '')
     if row.get('kwh'):
-        return f'= {_r(row["rsd_total"] / row["kwh"])} RSD<br>stvarni račun'
+        v = _r(row["rsd_total"] / row["kwh"])
+        return f'{valuta.fx_num(v, rate=True, text=f"= {v} RSD")}<br>stvarni račun'
     if row.get('unit_rsd'):
         return '„jedinica“ nije kWh'
     if row.get('rsd_kwh'):
-        return f'= {fmt_rsd(row["rsd_kwh"][0])} RSD<br>cena po kWh' + st
+        v = row['rsd_kwh'][0]
+        return f'{valuta.fx_num(v, rate=True, text="= " + fmt_rsd(v) + " RSD")}<br>cena po kWh' + st
     if row.get('rsd_hour'):
-        return '<br>'.join(f'≈{_r(row["rsd_hour"] / k)} RSD pri {k} kW' for k in row['assume_kw']) + st
+        out = []
+        for k in row['assume_kw']:
+            v = _r(row['rsd_hour'] / k)
+            out.append(valuta.fx_num(v, rate=True, text=f'≈{v} RSD') + f' pri {k} kW')
+        return '<br>'.join(out) + st
     vals, out = row['rsd_min'], []
     for k in row['assume_kw']:
         lo, hi = _r(min(vals) / (k / 60)), _r(max(vals) / (k / 60))
-        out.append((f'≈{lo}' if lo == hi else f'≈{lo}–{hi}') + f' RSD pri {k} kW')
+        out.append((valuta.fx_num(lo, rate=True, text=f'≈{lo} RSD') if lo == hi else
+                    valuta.fx_range(lo, hi, rate=True, text=f'≈{lo}–{hi} RSD')) + f' pri {k} kW')
     return '<br>'.join(out) + st
 
 
@@ -1038,7 +1051,10 @@ for path, a in ARTICLES.items():
     else:
         crumbs = []
     meta = dict(meta, h1=a['h1'])
-    render('article.html', path, meta=meta, body=md_to_html(a['body']), crumbs=crumbs, section=sec,
+    _body = md_to_html(a['body'])
+    if path.startswith('/podaci/'):              # data pages: the price cells of their tables follow the display currency
+        _body = valuta.fx_tables(_body)
+    render('article.html', path, meta=meta, body=_body, crumbs=crumbs, section=sec,
            title=meta.get('title', a['h1']) + ' | BlokVolt', description=meta.get('description', ''), sources=sources_of(meta),
            promo_box=PROMO if path in PROMO_ON else None, related=related_for(path), oglas=oglas_za(path))
     add_url(path, meta.get('priority', '0.7'), meta.get('modified', ISO_TODAY))
@@ -1637,6 +1653,13 @@ _wk, _nw = re.subn(r'^const CFG = \{.*\};$', 'const CFG = ' + json.dumps({'citie
                    + ';   // written by build.py from content/data/gradovi.json and site.json',
                    (ROOT / 'worker' / '_worker.js').read_text(encoding='utf-8'), count=1, flags=re.M)
 assert _nw == 1, 'worker/_worker.js: the line "const CFG = {...};" is missing'
+# the display currency's fallback rate lives in three files (RUNBOOK 3.29): fx.js (browsers), the worker (/api/kurs) and
+# scripts/valuta.py (the app feed) — they must say the same
+_fb = valuta.FALLBACK
+_fxjs = (ROOT / 'static' / 'assets' / 'fx.js').read_text(encoding='utf-8')
+for _name, _src in (('static/assets/fx.js', _fxjs), ('worker/_worker.js', _wk)):
+    assert all(f"{_fb['rates'][c]}" in _src for c in ('EUR', 'USD')) and f"'{_fb['date']}'" in _src, \
+        f'{_name}: the fallback rate differs from scripts/valuta.py FALLBACK ({_fb["date"]}, {_fb["rates"]})'
 (DIST / '_worker.js').write_text(_wk, encoding='utf-8')
 (DIST / '_routes.json').write_text(json.dumps({'version': 1, 'include': ['/api/*'], 'exclude': []}), encoding='utf-8')
 
@@ -1761,7 +1784,7 @@ sm.append('</urlset>')
 (DIST / 'sitemap.xml').write_text('\n'.join(sm), encoding='utf-8')
 
 # ---------------------------------------------------------------- cache busting (/assets/* is cached for a year)
-_ver_map = {a: _ver(DIST / 'assets' / a) for a in ('bv.css', 'bv.js', 'map.js', 'nalog.js')}
+_ver_map = {a: _ver(DIST / 'assets' / a) for a in ('bv.css', 'bv.js', 'map.js', 'nalog.js', 'fx.js', 'valuta.js')}
 _search = json.dumps({'sr': '/assets/search.json?v=' + _ver(DIST / 'assets' / 'search.json'),
                       **{l: f'/assets/search-{l}.json?v=' + _ver(DIST / 'assets' / f'search-{l}.json') for l in _i18n.LANGS}})
 for _f in DIST.rglob('*.html'):

@@ -23,9 +23,9 @@ sources: EPS — cene električne energije za garantovano snabdevanje (odluka od
 
 | Zona | Potrošnja mesečno | Noć | Dan |
 |---|---|---|---|
-| Zelena | do 350 kWh | **4,15** | 13,45 |
-| Plava | 351–1.200 kWh | **5,70** | 19,65 |
-| Crvena | preko 1.200 kWh | **10,35** | 38,26 |
+| Zelena | do 350 kWh | **<span data-rsd="4.153" data-rate="1" class="fx-1">4,15</span>** | <span data-rsd="13.4542" data-rate="1" class="fx-1">13,45</span> |
+| Plava | 351–1.200 kWh | **<span data-rsd="5.7032" data-rate="1" class="fx-1">5,70</span>** | <span data-rsd="19.6548" data-rate="1" class="fx-1">19,65</span> |
+| Crvena | preko 1.200 kWh | **<span data-rsd="10.3538" data-rate="1" class="fx-1">10,35</span>** | <span data-rsd="38.2571" data-rate="1" class="fx-1">38,26</span> |
 
 Cene su u RSD po kWh, sa svim naknadama, akcizom i PDV-om. Zona se računa po ukupnoj mesečnoj potrošnji domaćinstva.
 

@@ -50,6 +50,9 @@ async def main():
                 elif '/api/stanica/' in u:
                     one = dict(ONE) if 'ocm-279311' in u else {"ok": True, "avg": None, "nr": 0, "n": 0, "items": [], "photos": []}
                     await route.fulfill(status=200, content_type='application/json', body=json.dumps(one))
+                elif u.endswith('/api/kurs'):        # the display currency's rate (RUNBOOK 3.29): the worker's answer without its source
+                    await route.fulfill(status=200, content_type='application/json', body=json.dumps(
+                        {"base": "RSD", "source": "NBS srednji kurs", "date": "2026-10-05", "rates": {"EUR": 117.4948, "USD": 105.0468}, "fetchedAt": None, "stale": True}))
                 elif '/api/foto/' in u:
                     await route.fulfill(status=200, content_type='image/jpeg', body=(SHOTS / ('sample_th.jpg' if 'v=t' in u else 'sample.jpg')).read_bytes())
                 else:

@@ -214,6 +214,14 @@ async def main():
         await wait_js(pg, "document.getElementById('nl-city').value === 'novi-sad'", timeout=8000)
         st = await pg.evaluate("({m: document.getElementById('nl-model').value, o: document.getElementById('nl-other').value, dc: (document.querySelector('#nl-f-car [name=dc]:checked')||{}).value, t: document.getElementById('nl-tesla').checked})")
         check(st == {'m': '*', 'o': 'Tesla Model 3 Long Range', 'dc': 'ccs2', 't': True}, f'settings kept after reload: {st}')
+        # the display currency (RUNBOOK 3.29): the header switcher keeps the choice in the account of a signed-in reader
+        await pg.select_option('.hd-cur .fx-sel', 'EUR')
+        for _ in range(40):                                  # the save is fire-and-forget: poll the account
+            ja = await pg.evaluate("fetch('/api/nalog/ja').then(r => r.json())")
+            if ja['user'].get('valuta') == 'EUR':
+                break
+            await pg.wait_for_timeout(200)
+        check(ja['user']['valuta'] == 'EUR' and ja['user']['car'] == 'Tesla Model 3 Long Range', f'display currency EUR saved in the account, the rest kept: {ja["user"].get("valuta")}')
         # the map marks the connector of the reader's car
         await pg.goto(f'{BASE}/mapa/#ocm-279311', wait_until='load')
         await pg.wait_for_selector('.ccard .cbox b.mine', timeout=8000)
@@ -288,6 +296,7 @@ async def main():
           .sort((a, b) => a[1] - b[1]).map(x => x[0]).join()''')
         check(order == 'fav,car,pg,ci,acc', f'phone: Omiljeni, Moj auto, Nedeljni pregled, Moje prijave, Nalog ({order})')
         check(sorted(json.loads(await pg2.evaluate("localStorage.getItem('bv:fav')"))) == sorted(FAVS), 'second device: the account favourites land in this browser too')
+        check(await pg2.evaluate("localStorage.getItem('bv:cur') === 'EUR' && window.bvFx.get() === 'EUR'"), 'second device: the account display currency (EUR) applied on sign-in')
         await wait_js(pg2, "document.querySelectorAll('#nl-ci .nl-ci').length >= 1", timeout=8000)
         await shot(pg2, 'nalog-sr-390-prijavljen')
         await pg2.click('#nl-del')

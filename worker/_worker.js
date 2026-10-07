@@ -377,6 +377,7 @@ const LANGS = new Set(['sr', 'en', 'ru']);
 const TOPICS = ['vesti', 'cene', 'punjaci', 'moji'];
 const DEFAULT_TOPICS = 'vesti,cene,punjaci';
 const DCS = new Set(['ccs2', 'chademo', 'none']);
+const VALUTE = new Set(['RSD', 'EUR', 'USD']);         // display currency of the account (RUNBOOK 3.29)
 const CONSENT_V = 'pregled-v1';          // version of the consent sentence under the newsletter forms
 const MAIL_FROM = 'BlokVolt <obavestenja@mail.blokvolt.com>', MAIL_REPLY_TO = 'hello@blokvolt.com';
 // build.py rewrites the next line in dist/_worker.js: the city slugs of content/data/gradovi.json, the day of "pregled"
@@ -496,7 +497,7 @@ async function createTables(env) {
   }
   const q = [
     `CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, email TEXT UNIQUE NOT NULL, lang TEXT, created_at INTEGER,
-      verified_at INTEGER, last_login_at INTEGER, car TEXT, dc TEXT, tesla INTEGER DEFAULT 0, city TEXT)`,
+      verified_at INTEGER, last_login_at INTEGER, car TEXT, dc TEXT, tesla INTEGER DEFAULT 0, city TEXT, valuta TEXT)`,
     `CREATE TABLE IF NOT EXISTS auth_codes (email TEXT NOT NULL, nonce TEXT NOT NULL, code_hash TEXT, link_hash TEXT, salt TEXT,
       exp INTEGER, tries INTEGER DEFAULT 0, at INTEGER, lang TEXT, opt_in INTEGER DEFAULT 0, PRIMARY KEY (email, nonce))`,
     'CREATE INDEX IF NOT EXISTS auth_codes_link ON auth_codes (link_hash)',
@@ -529,6 +530,10 @@ async function createTables(env) {
   // reports and photos of a signed-in driver carry the account id (NULL for everyone else). Ready only when every step
   // worked; the one expected error is the column being there already.
   let ok = true;
+  // the display currency of the account (RUNBOOK 3.29), added after the accounts were built
+  try { await env.DB.prepare('ALTER TABLE users ADD COLUMN valuta TEXT').run(); } catch (e) {
+    if (!/duplicate column/i.test(String(e && e.message))) ok = false;
+  }
   for (const t of ['checkins', 'photos']) {
     try { await env.DB.prepare(`ALTER TABLE ${t} ADD COLUMN uid TEXT`).run(); } catch (e) {
       if (!/duplicate column/i.test(String(e && e.message))) ok = false;
@@ -589,7 +594,7 @@ async function touch(env, s) {
 const subOut = s => ({ status: s.status, topics: (s.topics || '').split(',').filter(Boolean), freq: s.freq, lang: s.lang });
 // what /api/nalog/ja (and a successful sign-in) answers
 async function account(env, uid) {
-  const u = await env.DB.prepare('SELECT email, lang, created_at, car, dc, tesla, city FROM users WHERE id = ?1').bind(uid).first();
+  const u = await env.DB.prepare('SELECT email, lang, created_at, car, dc, tesla, city, valuta FROM users WHERE id = ?1').bind(uid).first();
   if (!u) return null;
   const f = await env.DB.prepare('SELECT st FROM favs WHERE uid = ?1 ORDER BY at, st').bind(uid).all();
   const sub = await env.DB.prepare('SELECT status, topics, freq, lang FROM subs WHERE email = ?1').bind(u.email).first();
@@ -901,7 +906,8 @@ async function nalogPodesavanja(request, env, b) {
   if ('dc' in b) { if (b.dc && !DCS.has(b.dc)) return bad('dc'); set.dc = b.dc || null; }
   if ('tesla' in b) { if (typeof b.tesla !== 'boolean') return bad('tesla'); set.tesla = b.tesla ? 1 : 0; }
   if ('city' in b) { if (b.city && b.city !== 'drugo' && !CFG.cities.includes(b.city)) return bad('city'); set.city = b.city || null; }
-  const keys = Object.keys(set);                                         // only the five names above
+  if ('valuta' in b) { if (b.valuta && !VALUTE.has(b.valuta)) return bad('valuta'); set.valuta = b.valuta || null; }
+  const keys = Object.keys(set);                                         // only the six names above
   if (keys.length) {
     await env.DB.prepare('UPDATE users SET ' + keys.map((k, i) => k + ' = ?' + (i + 2)).join(', ') + ' WHERE id = ?1')
       .bind(s.uid, ...keys.map(k => set[k])).run();
@@ -1649,11 +1655,97 @@ async function accountApi(request, env, ctx, url, p, m) {
   return r[1](request, env, url, ctx);
 }
 
+// ---------------------------------------------------------------- display currency: the NBS middle rate (RUNBOOK 3.29)
+// GET /api/kurs → {"base":"RSD","source":"NBS srednji kurs","date":"2026-10-05","rates":{"EUR":117.4948,"USD":105.0468},
+// "fetchedAt":"2026-10-06T06:10:00Z","stale":false} — RSD for one euro / dollar, the middle rate of the National Bank of
+// Serbia's exchange list of `date` (the last published list: on a weekend Friday's). Read by blokvolt.rs, the BlokVolt app
+// (manifest.json → api.kurs) and evolako.rs, so CORS is open. Upstream: kurs.resenje.org, an open JSON mirror of the NBS
+// list (rate = exchange_middle ÷ parity). A good answer is kept ~6 h in the Cloudflare cache and as the last good value in
+// D1 (one-row table kurs, created on first use); when the upstream fails or answers nonsense (EUR outside 100–140, USD
+// outside 80–140) the last good value goes out with stale:true, and with nothing stored the constants below (stale:true,
+// fetchedAt null). The constants are the spec's fallback (VALUTA_SPEC_2026-10-06 §2) — same as in assets/fx.js.
+const KURS_FALLBACK = { date: '2026-10-05', rates: { EUR: 117.4948, USD: 105.0468 } };
+const KURS_BOUNDS = { EUR: [100, 140], USD: [80, 140] };
+const KURS_UP = 'https://kurs.resenje.org/api/v1/currencies/';
+const KURS_CACHE_S = 6 * 3600, KURS_RETRY_S = 600;      // in the Cloudflare cache: a good answer 6 h, a stale one 10 min
+const KURS_HEADERS = { 'access-control-allow-origin': '*', 'cache-control': 'public, max-age=3600' };
+const KURS_KEY = 'https://kurs.cache.blokvolt.rs/api/kurs/v1';   // the cache key (not a real address)
+
+const kursOk = r => !!r && /^\d{4}-\d{2}-\d{2}$/.test(r.date || '') &&
+  Object.keys(KURS_BOUNDS).every(c => Number(r.rates && r.rates[c]) >= KURS_BOUNDS[c][0] && Number(r.rates && r.rates[c]) <= KURS_BOUNDS[c][1]);
+const kursOut = (r, stale, at) => ({ base: 'RSD', source: 'NBS srednji kurs', date: r.date,
+  rates: { EUR: Number(r.rates.EUR), USD: Number(r.rates.USD) }, fetchedAt: at || null, stale });
+
+async function kursUpstream() {
+  const one = async c => {
+    const ac = new AbortController(), timer = setTimeout(() => ac.abort(), 5000);
+    try {
+      const r = await fetch(KURS_UP + c.toLowerCase() + '/rates/today', { headers: { accept: 'application/json' }, signal: ac.signal });
+      if (!r.ok) return null;
+      const j = await r.json();
+      const parity = Number(j.parity) || 1, mid = Number(j.exchange_middle);
+      if (!(mid > 0) || !/^\d{4}-\d{2}-\d{2}$/.test(j.date || '')) return null;
+      return { date: j.date, rate: Math.round(mid / parity * 10000) / 10000 };
+    } catch (e) { return null; } finally { clearTimeout(timer); }
+  };
+  const [eur, usd] = await Promise.all([one('EUR'), one('USD')]);
+  if (!eur || !usd) return null;
+  const r = { date: eur.date > usd.date ? usd.date : eur.date, rates: { EUR: eur.rate, USD: usd.rate } };   // the older list if they differ
+  return kursOk(r) ? r : null;
+}
+async function kursStored(env) {
+  if (!env.DB) return null;
+  try {
+    const row = await env.DB.prepare('SELECT date, eur, usd, fetched_at FROM kurs WHERE id = 1').first();
+    return row ? { date: row.date, rates: { EUR: row.eur, USD: row.usd }, at: row.fetched_at } : null;
+  } catch (e) { return null; }                                       // no table yet: nothing stored
+}
+async function kursStore(env, r, at) {
+  if (!env.DB) return;
+  const put = () => env.DB.prepare(`INSERT INTO kurs (id, date, eur, usd, fetched_at) VALUES (1, ?1, ?2, ?3, ?4)
+    ON CONFLICT (id) DO UPDATE SET date = ?1, eur = ?2, usd = ?3, fetched_at = ?4`).bind(r.date, r.rates.EUR, r.rates.USD, at).run();
+  try { await put(); } catch (e) {
+    await env.DB.prepare(`CREATE TABLE IF NOT EXISTS kurs (id INTEGER PRIMARY KEY CHECK (id = 1), date TEXT NOT NULL,
+      eur REAL NOT NULL, usd REAL NOT NULL, fetched_at TEXT NOT NULL)`).run();
+    await put();
+  }
+}
+async function kurs(request, env, ctx) {
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: { 'access-control-allow-origin': '*', 'access-control-allow-methods': 'GET, HEAD, OPTIONS',
+      'access-control-allow-headers': 'content-type', 'access-control-max-age': '86400' } });
+  }
+  if (request.method !== 'GET' && request.method !== 'HEAD') return json({ ok: false, error: 'method' }, 405, { allow: 'GET, HEAD, OPTIONS' });
+  const send = obj => new Response(JSON.stringify(obj), { headers: { ...JSON_HEADERS, ...KURS_HEADERS } });
+  const cache = typeof caches !== 'undefined' ? caches.default : null;
+  const key = new Request(KURS_KEY);
+  if (cache) {
+    const hit = await cache.match(key).catch(() => null);
+    if (hit) return send(await hit.json());
+  }
+  let out, ttl = KURS_CACHE_S;
+  const fresh = await kursUpstream();
+  if (fresh) {
+    out = kursOut(fresh, false, new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'));
+    ctx.waitUntil(kursStore(env, fresh, out.fetchedAt).catch(e => console.log('kurs: not stored: ' + (e && e.message))));
+  } else {
+    const last = await kursStored(env);
+    out = kursOk(last) ? kursOut(last, true, last.at) : kursOut(KURS_FALLBACK, true, null);
+    ttl = KURS_RETRY_S;
+  }
+  if (cache) {
+    ctx.waitUntil(cache.put(key, new Response(JSON.stringify(out), { headers: { ...JSON_HEADERS, 'cache-control': 'public, max-age=' + ttl } }))
+      .catch(() => {}));
+  }
+  return send(out);
+}
+
 // ---------------------------------------------------------------- router
 async function api(request, env, ctx) {
   const url = new URL(request.url);
   const p = url.pathname.replace(/\/+$/, '');
   const m = request.method;
+  if (p === '/api/kurs') return kurs(request, env, ctx);              // works without the database too
   if (!env.DB) return bad('no database', 503);
   if (p.startsWith('/api/nalog/') || p.startsWith('/api/posta/') || p === '/api/admin/posta') return accountApi(request, env, ctx, url, p, m);
 

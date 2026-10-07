@@ -294,6 +294,16 @@ r = await call('POST', '/api/nalog/podesavanja', { cookie: C1, json: { car: '', 
 check(r.j.user.car === null && r.j.user.dc === 'none' && r.j.user.city === 'drugo' && r.j.user.tesla === false, 'settings: empty car, "drugo", no DC', r.j.user);
 r = await call('POST', '/api/nalog/podesavanja', { cookie: C1, json: { car: 'x'.repeat(80) } });
 check(r.status === 200 && r.j.user.car.length === 80, 'settings: car of 80 characters is fine', r.status);
+// the display currency (RUNBOOK 3.29): RSD | EUR | USD, empty = never chosen
+check(r.j.user.valuta === null, 'settings: no display currency until one is chosen', r.j.user);
+r = await call('POST', '/api/nalog/podesavanja', { cookie: C1, json: { valuta: 'RUB' } });
+check(r.status === 400 && r.j.error === 'valuta', 'settings: invalid valuta → 400', r.j);
+r = await call('POST', '/api/nalog/podesavanja', { cookie: C1, json: { valuta: 'EUR' } });
+check(r.status === 200 && r.j.user.valuta === 'EUR' && r.j.user.car.length === 80, 'settings: valuta EUR saved, the rest kept', r.j.user);
+r = await call('GET', '/api/nalog/ja', { cookie: C1 });
+check(r.j.user.valuta === 'EUR', '/ja returns the display currency', r.j.user);
+r = await call('POST', '/api/nalog/podesavanja', { cookie: C1, json: { valuta: '' } });
+check(r.status === 200 && r.j.user.valuta === null, 'settings: valuta cleared', r.j.user);
 
 console.log('— reports from the map');
 const cols = (await db.prepare("SELECT name FROM pragma_table_info('checkins')").all()).results.map(x => x.name);
@@ -704,7 +714,10 @@ console.log('— lazy migration');
 // a database with auth_codes of the older shape (one code per address) and without the photos table
 const OLD_CODES = `CREATE TABLE auth_codes (email TEXT PRIMARY KEY, code_hash TEXT, link_hash TEXT, salt TEXT, exp INTEGER,
   tries INTEGER DEFAULT 0, at INTEGER, lang TEXT, opt_in INTEGER DEFAULT 0)`;
-const D = await instance({ MAIL_MODE: 'log' }, [LEGACY[0], LEGACY[2], LEGACY[3], OLD_CODES]);
+// and a users table from before the display currency (no valuta column)
+const OLD_USERS = `CREATE TABLE users (id TEXT PRIMARY KEY, email TEXT UNIQUE NOT NULL, lang TEXT, created_at INTEGER,
+  verified_at INTEGER, last_login_at INTEGER, car TEXT, dc TEXT, tesla INTEGER DEFAULT 0, city TEXT)`;
+const D = await instance({ MAIL_MODE: 'log' }, [LEGACY[0], LEGACY[2], LEGACY[3], OLD_CODES, OLD_USERS]);
 const colsOf = async t => (await D.db.prepare(`SELECT name FROM pragma_table_info('${t}')`).all()).results.map(x => x.name);
 r = await D.call('POST', '/api/nalog/kod', { json: { email: 'mig@example.com', t: 4000 } });
 check(r.status === 200 && (await colsOf('auth_codes')).includes('nonce') && (await colsOf('checkins')).includes('uid'),
@@ -712,6 +725,7 @@ check(r.status === 200 && (await colsOf('auth_codes')).includes('nonce') && (awa
 await D.db.prepare(LEGACY[1]).run();                                     // the missing table appears
 r = await D.call('POST', '/api/nalog/kod', { json: { email: 'mig2@example.com', t: 4000 } });
 check(r.status === 200 && (await colsOf('photos')).includes('uid'), 'migration: a step that failed (no photos table) is tried again on the next request', await colsOf('photos'));
+check((await colsOf('users')).includes('valuta'), 'migration: users of the older shape got the valuta column', await colsOf('users'));
 await D.mf.dispose();
 
 console.log(`\n${oks} passed, ${fails} failed`);

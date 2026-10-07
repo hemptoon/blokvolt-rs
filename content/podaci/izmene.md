@@ -14,6 +14,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ## 7. oktobar 2026
 
 - [Politika privatnosti](/politika-privatnosti.html#merenje-poseta): posete od danas broji i naš sopstveni brojač, bez kolačića i bez čuvanja IP adrese, da bismo videli tačan broj ljudi umesto procene. Opisano je šta se beleži i koliko se čuva.
+- Valuta: pored izbora jezika možete izabrati da se cene prikazuju i u evrima ili dolarima, informativno po srednjem kursu NBS, uz dinarski iznos. Podrazumevano su sve cene u dinarima. Preračunavaju se cene iz podataka sajta (javno punjenje, firme, tabele, kalkulatori, mapa), a ne tekstovi vodiča i vesti.
 
 ## 6. oktobar 2026
 

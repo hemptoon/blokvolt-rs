@@ -1,7 +1,8 @@
 # Every URL of the sitemap (Serbian, /en/, /ru/) at several widths: JS errors, CSP violations, HTTP status,
 # horizontal overflow, broken images, gap under the footer.
 # Usage (server running, see cfserve.py): python3 scripts/qa/qa_all.py sr,en,ru 360,768,1440
-import asyncio, re, sys, json
+# BV_QA_CUR=EUR (or USD): the same with that display currency chosen (docs/RUNBOOK.md 3.29).
+import asyncio, os, re, sys, json
 from pathlib import Path
 from playwright.async_api import async_playwright
 
@@ -24,6 +25,8 @@ IGNORE = ('openfreemap', 'ERR_', 'Failed to fetch', '/api/', '404', 'cloudflarei
 async def check(b, path, w, sem, out):
     async with sem:
         pg = await b.new_page(viewport={'width': w, 'height': 844 if w < 900 else 900})
+        if os.environ.get('BV_QA_CUR'):
+            await pg.add_init_script("try { localStorage.setItem('bv:cur', %s); } catch (e) {}" % json.dumps(os.environ['BV_QA_CUR'].upper()))
         errs = []
         pg.on('pageerror', lambda e: errs.append('JS ' + str(e)[:140]))
         pg.on('console', lambda m: errs.append('CON ' + m.text[:160]) if m.type == 'error' and (not any(x in m.text for x in IGNORE) or 'Content Security Policy' in m.text) else None)

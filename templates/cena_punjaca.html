@@ -11,7 +11,7 @@
 }</script>{% endblock %}
 {% block pagehead %}{{ pagehead(h1, lead, crumbs=[('/cene/', 'Cene')]) }}{% endblock %}
 {% block content %}
-<div class="stats">{% for s in stats %}<div class="stat"><b>{{ s.b }}</b><span>{{ s.t }}</span></div>{% endfor %}</div>
+<div class="stats">{% for s in stats %}<div class="stat"><b>{{ s.b|fx }}</b><span>{{ s.t }}</span></div>{% endfor %}</div>
 <div class="sec"><div class="sec-head"><h2>Firme sa javnom cenom</h2><a href="/firme/">Sve firme →</a></div>
 {% include '_firm_list.html' %}
 </div>

@@ -4,7 +4,11 @@
 All EPS numbers live in that one file (the calculator reads the same block), so the page and the
 calculator can never drift apart. Run: python3 scripts/gen_tarife_eps.py"""
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import valuta  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 D = json.load(open(ROOT / 'content' / 'data' / 'kalkulator.json', encoding='utf-8'))
@@ -25,6 +29,10 @@ def sr(x, d=2):
     return s
 
 
+def fx_kwh(x):
+    return str(valuta.fx_num(x, rate=True, text=sr(x), stack=True))
+
+
 Z = {z['id']: z for z in E['zones']}
 snaga = E['snaga_rsd_kw'] * (1 + E['akciza']) * (1 + E['pdv'])
 # an electric car at the site's default assumptions
@@ -34,8 +42,10 @@ per100 = {zid: all_in(z['nt']) * DEF['kwh100'] * (1 + DEF['loss'] / 100) for zid
 
 rows = []
 for z in E['zones']:
+    # each price marked for the display currency (scripts/valuta.py, docs/RUNBOOK.md 3.29): RSD per kWh, converted on the page
+    # only for a reader who chose EUR or USD
     rows.append('| {name} | {range} | **{nta}** | {vta} |'.format(name=z['name'].replace(' zona', ''), range=z['range'].replace(' mesečno', ''),
-                                                            nta=sr(all_in(z['nt'])), vta=sr(all_in(z['vt']))))
+                                                            nta=fx_kwh(all_in(z['nt'])), vta=fx_kwh(all_in(z['vt']))))
 table = '\n'.join(rows)
 raw = '\n'.join('| {name} | {nt} | {vt} | {j} |'.format(name=z['name'].replace(' zona', ''), nt=sr(z['nt'], 4), vt=sr(z['vt'], 4),
                                                      j=sr(E['jednotarifno'][z['id']], 2) if E['jednotarifno'].get(z['id']) else '—') for z in E['zones'])
@@ -44,6 +54,7 @@ sources = ' | '.join(f"{s['label']} :: {s['url']}" for s in E['sources'])
 diff = (all_in(Z['plava']['vt']) - all_in(Z['plava']['nt'])) * home
 
 md = f"""---
+thumb: stambeni-blokovi-sunce
 title: Cena struje za domaćinstva u Srbiji 2026: zone, tarife, niža tarifa
 h1: Cena struje kod kuće
 description: Kilovat-sat kod kuće sa svim dažbinama: od {sr(all_in(Z['zelena']['nt']))} do {sr(all_in(Z['crvena']['vt']))} RSD, zavisno od zone i tarife. Niža tarifa traje 8 sati, a počinje različito po regionu.
