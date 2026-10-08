@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 07.10.2026
+updated: 08.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-07
+modified: 2026-10-08
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 8. oktobar 2026
+
+- Novi vodič [Cena punjenja 10–80 % po modelu](/javno-punjenje/cena-punjenja-po-modelu/): koliko 13 modela, od Dacie Spring do BYD Sealion 7, plaća punjenje od 10 do 80 % na Charge&GO punjaču od 150 kW, 45–60 kW i AC 22 kW (cene od 5. oktobra 2026) i koji punjač je kom autu jeftiniji. Link je na stranici [Javno punjenje](/javno-punjenje/) i u [Vodičima](/vodici/).
+
 ## 7. oktobar 2026
 
 - [Politika privatnosti](/politika-privatnosti.html#merenje-poseta): posete od danas broji i naš sopstveni brojač, bez kolačića i bez čuvanja IP adrese, da bismo videli tačan broj ljudi umesto procene. Opisano je šta se beleži i koliko se čuva.

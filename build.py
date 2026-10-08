@@ -973,7 +973,7 @@ VODICI_GROUPS = [
         A('/podaci/servisi-za-elektricne-automobile/', icon='car'), A('/podaci/rent-a-car-i-car-sharing/', icon='car'),
         A('/najam-elektricnog-automobila.html', icon='car')]),
     ('Na putu', [
-        A('/javno-punjenje/kako-jeftinije-puniti/', icon='coins'), A('/javno-punjenje/plug-in-hibrid-na-javnom-punjacu/', icon='bolt'), A('/podaci/putarina-i-parking/', icon='road'), A('/javno-punjenje/besplatni-punjaci/', icon='gift'),
+        A('/javno-punjenje/kako-jeftinije-puniti/', icon='coins'), A('/javno-punjenje/plug-in-hibrid-na-javnom-punjacu/', icon='bolt'), A('/javno-punjenje/cena-punjenja-po-modelu/', icon='car'), A('/podaci/putarina-i-parking/', icon='road'), A('/javno-punjenje/besplatni-punjaci/', icon='gift'),
         A('/javno-punjenje/aplikacije-i-kartice/', icon='phone'), A('/javno-punjenje/region/', icon='globe2')]),
     ('Brojke', [
         A('/podaci/statistika-ev-srbija/', icon='chart'), A('/podaci/tarife-eps/', 'Cena struje kod kuće', icon='bolt'),
