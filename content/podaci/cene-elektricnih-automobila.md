@@ -133,7 +133,7 @@ Cupra Tavascan „čeka homologaciju“, a Nissan ne prikazuje nijedan električ
 <details markdown="1">
 <summary>Šta se najviše prodaje</summary>
 
-Zvanična statistika po modelima nije objavljena. U prvoj polovini 2026. registrovano je 535 novih električnih automobila (SAUVD). BYD kao uvoznik navodi da ima polovinu tog segmenta i da je Sealion 7 najprodavaniji model. Više: [statistika](/podaci/statistika-ev-srbija/).
+Zvanična statistika po modelima nije objavljena. Od januara do septembra 2026. registrovano je 1.166 novih električnih automobila (SAUVD). BYD kao uvoznik je u julu naveo da ima polovinu tog segmenta u prvoj polovini godine i da je Sealion 7 najprodavaniji model. Više: [statistika](/podaci/statistika-ev-srbija/).
 
 </details>
 

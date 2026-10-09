@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 08.10.2026
+updated: 09.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-08
+modified: 2026-10-09
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 9. oktobar 2026
+
+- [Statistika električnih automobila](/podaci/statistika-ev-srbija/): nove registracije za januar–septembar 2026 po podacima SAUVD — 1.166 novih električnih automobila, 3,95 % novih putničkih vozila, +291 %. Isti broj je na početnoj strani i na stranici [cena električnih automobila](/podaci/cene-elektricnih-automobila/). Vest: [Za devet meseci registrovano 1.166 novih električnih automobila](/vesti/za-devet-meseci-1166-novih-elektricnih-automobila/).
+
 ## 8. oktobar 2026
 
 - Novi vodič [Cena punjenja 10–80 % po modelu](/javno-punjenje/cena-punjenja-po-modelu/): koliko 13 modela, od Dacie Spring do BYD Sealion 7, plaća punjenje od 10 do 80 % na Charge&GO punjaču od 150 kW, 45–60 kW i AC 22 kW (cene od 5. oktobra 2026) i koji punjač je kom autu jeftiniji. Link je na stranici [Javno punjenje](/javno-punjenje/) i u [Vodičima](/vodici/).

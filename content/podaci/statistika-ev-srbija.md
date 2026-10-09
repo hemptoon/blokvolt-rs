@@ -4,17 +4,17 @@ title: Koliko električnih automobila ima u Srbiji — statistika 2026
 h1: Statistika električnih automobila
 description: U Srbiji je registrovano 7.155 električnih automobila (MUP, april 2026). Nove registracije BEV, broj javnih punjača, subvencije i poređenje sa EU.
 kicker: Statistika
-lead: U Srbiji je registrovano 7.155 električnih automobila, a u prodaji novih automobila čine oko 2–3 %.
-updated: 22.09.2026
-next_check: 30.10.2026 (kvartalni podaci SAUVD za Q3)
+lead: U Srbiji je registrovano 7.155 električnih automobila, a u prodaji novih automobila čine oko 4 %.
+updated: 09.10.2026
+next_check: 15.01.2027 (podaci SAUVD za 2026)
 published: 2026-09-22
-modified: 2026-09-22
+modified: 2026-10-09
 priority: 0.9
-sources: RTS, 03.04.2026 — podaci MUP-a: 7.155 električnih i 55.184 hibridna vozila :: https://www.rts.rs/lat/vesti/ekonomija/5916187/srbija-elektricna-vozila-.html | 021.rs, 03.09.2026 — 7.237 e-automobila na kraju 2025, 220 punjača :: https://www.021.rs/info/biznis-i-ekonomija/454118/elektricna-vozila-daleko-od-vozaca-u-srbiji | Auto-moto revija, 26.07.2026 — SAUVD: tržište u prvoj polovini 2026 :: https://www.automotorevija.rs/rubrike/veliki-rast-prodaje-novih-vozila-u-srbiji | Bloomberg Adria, 12.02.2026 — SAUVD: rezultati 2025 :: https://rs.bloombergadria.com/ekonomija/srbija/97083/rekord-prodaje-novih-automobila-a-polovni-dominiraju/news | Biznis.rs, 06.04.2026 — NALED: jedan punjač na 35.000 stanovnika :: https://biznis.rs/vesti/srbija/jedan-punjac-na-35-000-stanovnika-zasto-srbija-kaska-u-razvoju-infrastrukture-za-elektricna-vozila/ | JP Putevi Srbije — električni punjači na autoputevima :: https://www.putevi-srbije.rs/index.php/en/electric-chargers | Charge&GO — brojač mreže (79 punjača, 68 lokacija) :: https://chargego.rs/ | Electromaps — stanice u Srbiji :: https://www.electromaps.com/en/charging-stations/serbia | BYD Srbija, 23.07.2026 — udeo u EV segmentu :: https://byd-auto.rs/vesti/byd-u-top-10-brendova-u-srbiji-i-apsolutni-lider-ev-segmenta/ | bif.rs / CUBE, 22.07.2026 — uvoz polovnih vozila H1 2026 :: https://bif.rs/2026/07/kupce-u-srbiji-ne-zanimaju-elektricni-polovnjaci-i-hibridi/
+sources: SAUVD, 08.10.2026 — prve registracije januar–septembar 2026: 1.166 BEV, 3,95 % :: https://www.uvoznicivozila.rs/novosti/vesti-i-saopstenja/prodaja-novih-vozila-u-srbiji-nastavlja-da-raste.html | RTS, 03.04.2026 — podaci MUP-a: 7.155 električnih i 55.184 hibridna vozila :: https://www.rts.rs/lat/vesti/ekonomija/5916187/srbija-elektricna-vozila-.html | 021.rs, 03.09.2026 — 7.237 e-automobila na kraju 2025, 220 punjača :: https://www.021.rs/info/biznis-i-ekonomija/454118/elektricna-vozila-daleko-od-vozaca-u-srbiji | Auto-moto revija, 26.07.2026 — SAUVD: tržište u prvoj polovini 2026 :: https://www.automotorevija.rs/rubrike/veliki-rast-prodaje-novih-vozila-u-srbiji | Bloomberg Adria, 12.02.2026 — SAUVD: rezultati 2025 :: https://rs.bloombergadria.com/ekonomija/srbija/97083/rekord-prodaje-novih-automobila-a-polovni-dominiraju/news | Biznis.rs, 06.04.2026 — NALED: jedan punjač na 35.000 stanovnika :: https://biznis.rs/vesti/srbija/jedan-punjac-na-35-000-stanovnika-zasto-srbija-kaska-u-razvoju-infrastrukture-za-elektricna-vozila/ | JP Putevi Srbije — električni punjači na autoputevima :: https://www.putevi-srbije.rs/index.php/en/electric-chargers | Charge&GO — brojač mreže (79 punjača, 68 lokacija) :: https://chargego.rs/ | Electromaps — stanice u Srbiji :: https://www.electromaps.com/en/charging-stations/serbia | BYD Srbija, 23.07.2026 — udeo u EV segmentu :: https://byd-auto.rs/vesti/byd-u-top-10-brendova-u-srbiji-i-apsolutni-lider-ev-segmenta/ | bif.rs / CUBE, 22.07.2026 — uvoz polovnih vozila H1 2026 :: https://bif.rs/2026/07/kupce-u-srbiji-ne-zanimaju-elektricni-polovnjaci-i-hibridi/
 ---
 <div class="sum" markdown="1">
 - **7.155** električnih automobila i **55.184** hibrida (MUP, april 2026)
-- **535** novih BEV u prvoj polovini 2026: **2,74 %** novih vozila, **+232 %**
+- **1.166** novih BEV od januara do septembra 2026: **3,95 %** novih putničkih vozila, **+291 %**
 - **220** javnih punjača (septembar 2026)
 - **Jedan punjač na 35.000 stanovnika**; u EU jedan na 450
 </div>
@@ -37,7 +37,8 @@ Ukupno je registrovano nešto više od 3,1 miliona vozila. Godine 2016. bilo je 
 | 2024 | — | 1,6 % | — |
 | 2025 | ≈666 | 2,1 % | — |
 | Q1 2026 | 138 | 1,97 % | +221 % |
-| H1 2026 | **535** | **2,74 %** | **+232 %** |
+| H1 2026 | 535 | 2,74 % | +232 % |
+| Januar–septembar 2026 | **1.166** | **3,95 %** | **+291 %** |
 
 U EU je udeo električnih u prodaji novih automobila 18,8 %.
 
@@ -45,6 +46,7 @@ U EU je udeo električnih u prodaji novih automobila 18,8 %.
 <summary>Detalji: tržište i polovni automobili</summary>
 
 - 2025: 2,1 % od 31.697 novih putničkih automobila. Prva polovina 2025: 161 novi BEV.
+- Januar–septembar 2026: 29.517 novih putničkih automobila (+23,15 %); hibridi ukupno 44,52 %, benzinci 40,41 %, dizeli 9,30 %. Među lakim dostavnim vozilima 461 električno (11,73 %).
 - Prva polovina 2026: 22.155 novih putničkih i lakih komercijalnih vozila (+17,7 %); hibridi 37 %, plug-in hibridi 6,5 %, „elektrifikovana“ ukupno 46 %.
 - BYD (uvoznik, jul 2026): 50,8 % prodaje električnih automobila u Srbiji.
 - Uvoz u prvoj polovini 2026 (021.rs): 657 e-automobila; registrovano 535.
