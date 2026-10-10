@@ -409,3 +409,24 @@
     else if (navigator.sendBeacon) navigator.sendBeacon(u, b);
   } catch (e) { /* never break the page */ }
 })();
+
+/* EV fleet counter (10.10.2026, RUNBOOK 3.30): the estimate of electric cars in Serbia grows by itself.
+   data-evc = "anchor|anchor_date|rate per day|step hours|max days": the value at the end of anchor_date (MUP fleet +
+   new registrations by SAUVD) plus the average daily growth, counted in whole steps and for at most max_days. */
+(function () {
+  function fmt(n, t) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, t || '.'); }
+  function run() {
+    var els = document.querySelectorAll('[data-evc]');
+    for (var i = 0; i < els.length; i++) {
+      var p = (els[i].getAttribute('data-evc') || '').split('|');
+      if (p.length < 5) continue;
+      var t0 = Date.parse(p[1] + 'T23:59:59Z');
+      if (isNaN(t0)) continue;
+      var h = Math.max(0, Math.min((Date.now() - t0) / 3600000, +p[4] * 24));
+      var steps = Math.floor(h / +p[3]);
+      var v = Math.floor(+p[0] + +p[2] * steps * +p[3] / 24);
+      if (v > 0) els[i].textContent = fmt(v, els[i].getAttribute('data-evc-t'));
+    }
+  }
+  try { run(); setInterval(run, 600000); } catch (e) { /* never break the page */ }
+})();

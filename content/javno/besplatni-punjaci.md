@@ -26,7 +26,7 @@ Sve lokacije su na [mapi punjača](/mapa/).
 
 ## Autoputevi
 
-Po spisku JP „Putevi Srbije“ od 23.09.2026: radi 24 punjača, 7 trenutno ne radi, 5 se priključuje, a još 3 su planirana na novim deonicama. Snaga je DC 40–120 kW, na većini lokacija i AC 22 kW. Naplata nije zakonski uređena; propisi su u pripremi.
+Po spisku JP „Putevi Srbije“ (provereno 10.10.2026): radi 24 punjača, 7 trenutno ne radi, 5 se priključuje, a još 3 su planirana na novim deonicama. Snaga je DC 40–120 kW, na većini lokacija i AC 22 kW. Naplata nije zakonski uređena; propisi su u pripremi.
 
 Stanje svakog punjača: [JP „Putevi Srbije“](/javno-punjenje/putevi-srbije/).
 

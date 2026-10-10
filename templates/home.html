@@ -43,7 +43,7 @@
 
 <div class="sec home-sec">
 <div class="sec-head"><h2>Brojke</h2><a href="/podaci/statistika-ev-srbija/">Statistika →</a></div>
-<div class="stats">{% for s in SITE_META.home_stats %}<div class="stat"><b>{{ s.b }}</b><span>{{ s.short|safe }}</span></div>{% endfor %}</div>
+<div class="stats">{% for s in SITE_META.home_stats %}<div class="stat"><b{% if s.evc %} class="evc" data-evc="{{ s.evc }}"{% endif %}>{{ s.b }}</b><span>{{ s.short|safe }}</span></div>{% endfor %}</div>
 </div>
 </div>
 {% endblock %}

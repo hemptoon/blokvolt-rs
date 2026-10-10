@@ -4,13 +4,18 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 09.10.2026
+updated: 10.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-09
+modified: 2026-10-10
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 10. oktobar 2026
+
+- Broj električnih automobila na početnoj strani i u [statistici](/podaci/statistika-ev-srbija/) je sada procena za današnji dan: poslednji broj MUP-a (7.155, april 2026) uz nove registracije po podacima SAUVD i prosečan dnevni rast od 5,62 automobila. Broj raste sam, svakih šest sati; način računanja je opisan na stranici statistike.
+- [Državni punjači na autoputevima](/javno-punjenje/putevi-srbije/): spisak JP „Putevi Srbije“ ponovo proveren 10. oktobra — i dalje radi 24 od 36 punjača, 7 trenutno ne radi, 5 se priključuje.
+
 ## 9. oktobar 2026
 
 - [Statistika električnih automobila](/podaci/statistika-ev-srbija/): nove registracije za januar–septembar 2026 po podacima SAUVD — 1.166 novih električnih automobila, 3,95 % novih putničkih vozila, +291 %. Isti broj je na početnoj strani i na stranici [cena električnih automobila](/podaci/cene-elektricnih-automobila/). Vest: [Za devet meseci registrovano 1.166 novih električnih automobila](/vesti/za-devet-meseci-1166-novih-elektricnih-automobila/).

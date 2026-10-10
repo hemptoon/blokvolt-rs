@@ -1,5 +1,5 @@
 {
- "updated": "09.10.2026",
+ "updated": "10.10.2026",
  "updated_note": "Datum poslednje izmene sadržaja: footer, početna, sitemap lastmod. Menja se pri svakom deploy-u sa izmenama sadržaja.",
  "firms_checked": "22.09.2026",
  "firms_checked_note": "Datum poslednje pune provere registra firmi (tabela cena, /firme/, gradovi). Menja se samo posle revizije svih firmi.",
@@ -11,13 +11,20 @@
   "posthog_assets": "https://eu-assets.i.posthog.com",
   "note": "PostHog (EU) se uključuje kad se upiše javni ključ projekta (phc_…). Prazno = isključeno. consent: true = bez kolačića dok čitalac u baneru ne dozvoli kolačić (tada kolačić i snimci sesija bez teksta iz polja); false = samo bez kolačića, bez banera. Cloudflare Web Analytics se uključuje u Cloudflare Pages → Metrics i ne zavisi od ovoga. Videti docs/RUNBOOK.md 3.16."
  },
- "accounts": {"enabled": true, "since": "29.09.2026"},
- "pregled": {"enabled": true, "day": "petak", "since": "29.09.2026"},
+ "accounts": {
+  "enabled": true,
+  "since": "29.09.2026"
+ },
+ "pregled": {
+  "enabled": true,
+  "day": "petak",
+  "since": "29.09.2026"
+ },
  "home_stats": [
   {
-   "b": "7.155",
-   "html": "električnih automobila u Srbiji (MUP, april 2026) — uz 55.184 hibrida",
-   "short": "električnih automobila u Srbiji (MUP, april 2026)"
+   "b": "auto:ev",
+   "html": "električnih automobila u Srbiji — procena na osnovu podataka MUP-a i SAUVD, raste svakog dana",
+   "short": "električnih automobila u Srbiji, procena na osnovu podataka MUP-a"
   },
   {
    "b": "1.166",
@@ -84,5 +91,19 @@
    "html": "Nova stranica: <a href=\"/podaci/statistika-ev-srbija/\">statistika električnih automobila u Srbiji</a> — vozni park, registracije, javni punjači."
   }
  ],
- "news_on_home": 5
+ "news_on_home": 5,
+ "ev_counter": {
+  "base": 7155,
+  "base_date": "2026-04-01",
+  "base_source": "MUP za RTS, 03.04.2026: 7.155 vozila na električni pogon",
+  "new_since_base": 1028,
+  "new_source": "SAUVD: novi BEV putnički, jan–sep 2026 1.166 minus Q1 138",
+  "anchor": 8183,
+  "anchor_date": "2026-09-30",
+  "rate_per_day": 5.62,
+  "rate_basis": "1.028 novih BEV od 1.4. do 30.9.2026 (183 dana)",
+  "step_hours": 6,
+  "max_days": 120,
+  "next_update": "SAUVD podaci za 2026 (sredina januara 2027) ili novi broj MUP-a"
+ }
 }

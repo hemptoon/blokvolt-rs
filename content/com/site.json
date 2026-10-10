@@ -11,7 +11,7 @@
    "group": "Western Balkans",
    "nav_desc": "Full guide on blokvolt.rs",
    "facts": [
-    "7,155 electric cars (Ministry of Interior, April 2026)",
+    "7,155 electric cars (Ministry of Interior, April 2026); 1,166 new ones registered in January–September 2026",
     "About 220 public chargers; 36 state chargers on motorways are free",
     "€5,000 purchase subsidy, applications until 1 December 2026",
     "51 companies in the register of installers and sellers"
@@ -112,12 +112,12 @@
  "serbia": {
   "stats": [
    {
-    "b": "7,155",
-    "t": "electric cars registered in Serbia (Ministry of Interior, April 2026), plus 55,184 hybrids"
+    "b": "auto:ev",
+    "t": "electric cars in Serbia today, an estimate based on Ministry of Interior and SAUVD data that grows every six hours"
    },
    {
-    "b": "535",
-    "t": "new electric cars registered in the first half of 2026, 232% more than a year earlier (SAUVD)"
+    "b": "1,166",
+    "t": "new electric cars registered in January–September 2026, 291% more than a year earlier (SAUVD)"
    },
    {
     "b": "~220",

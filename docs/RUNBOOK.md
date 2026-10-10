@@ -113,7 +113,8 @@ grep -rn "43–79\|36 \|radi 24\|24 od 36\|7\.155\|535\|~220\|4–7 RSD" templat
   `content/mapa/putevi-srbije.json`; by hand: `content/operateri/putevi-srbije.json` (`network`, `card`,
   `network_short`), `content/javno/indeks-cena.json` (the putevi-srbije row), `content/javno/besplatni-punjaci.md`,
   `content/podaci/statistika-ev-srbija.md`.
-- Fleet and registrations "7.155", "535": `content/podaci/statistika-ev-srbija.md`, `content/data/site.json` → `home_stats`.
+- Fleet and registrations ("7.155" MUP, "1.166" SAUVD): `content/podaci/statistika-ev-srbija.md`, `content/data/site.json` →
+  `home_stats`, and the growing fleet estimate `ev_counter` (3.30) — a new MUP or SAUVD figure changes all of them.
 - Home night tariff "kod kuće noću 4–7 RSD": `templates/javno_index.html` (follows the EPS NT prices with taxes).
 
 ## 3. Update procedures
@@ -454,7 +455,10 @@ under `/images/putarine/`) and update `content/mapa/putevi-srbije.json`: status 
 missing from both snapshots is added at `lat`/`lon` = the toll plaza or rest area in OpenStreetMap (`pos`
 = that OSM element — find it with Overpass/Nominatim from the browser, never guess). The build prints
 `putevi-srbije.json: station … is not in the open data any more` when a snapshot dropped a listed id —
-fix `ids` then. After the update: the "radi 24 od 36" sync points (2), `izmene.md`, and the EN/RU todo —
+fix `ids` then. Note: the page text says "N operational" — that is the row count of the
+"u funkciji" table, which also holds rows marked "Trenutno nije u funkciji" / "Nije u funkciji"; count the
+working chargers from the table image, never from that line (10.10.2026: text "31", table 24 working + 7 down).
+The images' Last-Modified header (same-origin fetch from the image tab) shows whether the tables changed. After the update: the "radi 24 od 36" sync points (2), `izmene.md`, and the EN/RU todo —
 counts are part of some segments ("185 javnih punjača…", "Na mapi (22)", "24 od 36"), so a new number
 means a new translation.
 
@@ -1478,6 +1482,22 @@ switcher with the `currency_changed` event, after a reload, `?cur=usd`, the pric
 tables, both calculators (inputs in RSD, a new input repaints, back to RSD shows the new result), the map card, list and
 pins, the never-converted pages, the EN/RU footnote and tooltip, the switcher in the burger menu at 360 px, no horizontal
 scroll at 360/768/1440, and screenshots. cfserve has no `/api/kurs` (404): the pages must use the constants silently.
+
+### 3.30 The growing EV fleet estimate (since 10.10.2026)
+
+The owner's decision (10.10.2026): the fleet number on the home page and on /podaci/statistika-ev-srbija/ is an
+estimate that grows by itself, not the frozen MUP figure. `content/data/site.json` → `ev_counter`:
+`anchor` = the last official fleet (`base`, MUP) + new BEV passenger-car registrations since `base_date` (SAUVD),
+valid at the end of `anchor_date`; then `rate_per_day` (average of the period base → anchor), in steps of
+`step_hours`, for at most `max_days` (then it stops). `build.py` writes the value at build time; `static/assets/bv.js`
+recomputes it from `data-evc` on every page view and every 10 minutes — no rebuild is needed for it to move.
+Home tile: `home_stats` entry with `"b": "auto:ev"`; in Markdown: `[[evc]]`.
+
+Update when SAUVD publishes a new period or MUP gives a new fleet figure: recompute `anchor`/`anchor_date`
+(e.g. SAUVD full year 2026: base + (BEV 2026 − Q1 2026)), `rate_per_day` = new BEV since `base_date` ÷ days, then
+the "Kako se računa procena" block on the statistics page (its numbers), `izmene.md`, EN/RU todo. With a new MUP
+figure: new `base`/`base_date`, `new_since_base` = 0 if MUP is newer than the last SAUVD period. Used imports, vans
+and deregistrations are not counted — the page says so; keep it that way unless a dated source gives them.
 
 ## 4. Build and check
 

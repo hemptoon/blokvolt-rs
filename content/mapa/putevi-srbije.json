@@ -1,7 +1,7 @@
 {
  "about": "Official list of the state chargers on motorways (JP Putevi Srbije), copied by hand from the three tables (images) on the source page. status: 1 = U funkciji, 0 = (trenutno) nije u funkciji, -1 = u postupku priključenja. ids = stations of punjaci-ocm/osm that are this site (their status is taken from here); lat/lon/pos only for working sites that have no station in the open data: position of the toll plaza or rest area in OpenStreetMap (pos = that OSM element; the charger is somewhere on it). Refresh with the monthly update.",
  "source": "https://www.putevi-srbije.rs/index.php/en/electric-chargers",
- "checked": "23.09.2026",
+ "checked": "10.10.2026",
  "planned": 3,
  "sites": [
   {

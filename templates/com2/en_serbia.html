@@ -11,7 +11,7 @@
   'Serbia is where BlokVolt has the most detail: a map of every public charger with prices, a register of ' ~ n_rs_firms ~ ' installers and sellers with their published prices, public charging networks, EPS electricity tariffs, subsidies and step-by-step guides for charging in an apartment building. All of it is on blokvolt.rs — in English, Serbian and Russian.',
   chips=[(RS ~ '/en/', 'Open the Serbia guide ↗'), (RS ~ '/', 'Srpski'), (RS ~ '/ru/', 'Русский')], meta='Checked ' ~ CHECKED) }}{% endblock %}
 {% block content %}
-<div class="stats">{% for s in RSX.stats %}<div class="stat"><b>{{ s.b }}</b><span>{{ s.t }}</span></div>{% endfor %}</div>
+<div class="stats">{% for s in RSX.stats %}<div class="stat"><b{% if s.evc %} class="evc" data-evc="{{ s.evc }}" data-evc-t=","{% endif %}>{{ s.b }}</b><span>{{ s.t }}</span></div>{% endfor %}</div>
 <div class="sec"><div class="sec-head"><h2 id="facts">In short</h2></div>
 <div class="facts">{% for label, text in RSX.facts %}<div class="fact wide"><span>{{ label }}</span><b>{{ text }}</b></div>{% endfor %}</div></div>
 <div class="sec"><div class="sec-head"><h2 id="guide">The Serbia guide on blokvolt.rs</h2></div>

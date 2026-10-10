@@ -253,7 +253,18 @@ def build_english(local_hubs):
                                                  sources=srcs, n_sources=len(srcs), title=title, description=desc, alts=alts,
                                                  section='countries', local=loc), priority='0.8')
         pages.append(c['url'])
-    render('en_serbia.html', '/serbia/', dict(en_ctx, RSX=cfg['serbia'], n_rs_firms=n_rs, section='serbia', alts=[],
+    # the growing EV fleet estimate of blokvolt.rs (content/data/site.json -> ev_counter, RUNBOOK 3.30): "b": "auto:ev"
+    _rsx = json.loads(json.dumps(cfg['serbia']))
+    _evc = json.load(open(ROOT / 'content' / 'data' / 'site.json', encoding='utf-8')).get('ev_counter')
+    for _st in _rsx['stats']:
+        if _st['b'] == 'auto:ev' and _evc:
+            import datetime as _dt
+            _t0 = _dt.datetime.fromisoformat(_evc['anchor_date'] + 'T23:59:59+00:00')
+            _h = max(0.0, min((_dt.datetime.now(_dt.timezone.utc) - _t0).total_seconds() / 3600, _evc['max_days'] * 24))
+            _v = int(_evc['anchor'] + _evc['rate_per_day'] * int(_h // _evc['step_hours']) * _evc['step_hours'] / 24)
+            _st['b'] = f'{_v:,}'
+            _st['evc'] = f"{_evc['anchor']}|{_evc['anchor_date']}|{_evc['rate_per_day']}|{_evc['step_hours']}|{_evc['max_days']}"
+    render('en_serbia.html', '/serbia/', dict(en_ctx, RSX=_rsx, n_rs_firms=n_rs, section='serbia', alts=[],
                                               title='EV charging in Serbia: public charging, prices, installers and subsidies | BlokVolt',
                                               description=(f'Serbia in short — {n_rs} installers and sellers of home chargers, public charging networks, '
                                                            'EPS electricity prices, the €5,000 subsidy and the rules for apartment buildings — with the full guide on blokvolt.rs.')),

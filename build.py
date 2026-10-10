@@ -33,6 +33,35 @@ APP = json.load(open(_APP_F, encoding='utf-8')) if _APP_F.exists() else {}
 TODAY = SITE_META['updated']
 ISO_TODAY = '-'.join(reversed(TODAY.split('.')))
 FIRMS_CHECKED = SITE_META['firms_checked']
+
+# ---------------------------------------------------------------- EV fleet counter (docs/RUNBOOK.md 3.30)
+# content/data/site.json -> ev_counter: an estimate of electric cars in Serbia that grows by itself in the browser.
+# anchor = MUP fleet (base) + new BEV registrations since then (SAUVD) at anchor_date; after that +rate per day,
+# in steps of step_hours, for at most max_days (then it stops until the next update). The page shows the value
+# computed at build time; static/assets/bv.js recomputes it from data-evc ("anchor|anchor_date|rate|step|max").
+EVC = SITE_META.get('ev_counter') or {}
+
+
+def evc_value(now=None):
+    if not EVC:
+        return 0
+    now = now or datetime.datetime.now(datetime.timezone.utc)
+    t0 = datetime.datetime.fromisoformat(EVC['anchor_date'] + 'T23:59:59+00:00')
+    hours = max(0.0, min((now - t0).total_seconds() / 3600, EVC['max_days'] * 24))
+    steps = int(hours // EVC['step_hours'])
+    return int(EVC['anchor'] + EVC['rate_per_day'] * steps * EVC['step_hours'] / 24)
+
+
+def evc_fmt(n):
+    return f'{n:,}'.replace(',', '.')
+
+
+def evc_attr():
+    return f"{EVC['anchor']}|{EVC['anchor_date']}|{EVC['rate_per_day']}|{EVC['step_hours']}|{EVC['max_days']}"
+
+
+def evc_html():
+    return f'<b class="evc" data-evc="{evc_attr()}">{evc_fmt(evc_value())}</b>' if EVC else ''
 EVOLAKO = 'https://www.evolako.rs/'
 
 # ---------------------------------------------------------------- advertising (docs/RUNBOOK.md 3.26)
@@ -263,6 +292,7 @@ def md_to_html(text):
     h = re.sub(r'<p>\[\[yt:([\w-]+)\]\]</p>', lambda m: str(yt_html(m.group(1))), h)
     h = re.sub(r'<p>\[\[fig:([\w-]+)\|([^\]]+)\]\]</p>', lambda m: str(fig_html(m.group(1), html.unescape(m.group(2)))), h)
     h = h.replace('<p>[[fotografije]]</p>', photo_credits_html())
+    h = h.replace('[[evc]]', evc_html())
     s = BeautifulSoup(h, 'html.parser')
     for t in s.find_all('table'):
         heads = [th.get_text(' ', strip=True) for th in t.find_all('th')]
@@ -693,6 +723,8 @@ if _PS and _pv:
                        for s in _PS['sites']]
     _pv['ps_meta'] = {k: _PS[k] for k in ('total', 'works', 'down', 'connecting', 'planned', 'checked', 'source')}
 for _s in SITE_META['home_stats']:  # "auto:putevi" = counts from the official list (content/mapa/putevi-srbije.json)
+    if _s['b'] == 'auto:ev' and EVC:  # the growing estimate of the fleet (ev_counter)
+        _s['b'], _s['evc'] = evc_fmt(evc_value()), evc_attr()
     if _s['b'] == 'auto:putevi':
         _s['b'] = f'{PUTEVI_RUN} od {PUTEVI_N}'
         _s['short'] = f'državnih punjača na autoputevima {PUTEVI_VERB}, besplatno'
