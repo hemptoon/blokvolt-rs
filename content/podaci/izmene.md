@@ -13,6 +13,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 10. oktobar 2026
 
+- [Politika privatnosti](/politika-privatnosti.html#merenje-poseta): od danas se korišćenje funkcija sajta (kartice punjača, filteri, pretraga, forme) meri i alatom PostHog, na serverima u EU. Dok u baneru ne izaberete „Dozvoli“, merenje radi bez kolačića; kolačić i snimanje kretanja po stranicama uključuju se samo uz tu dozvolu, a izbor možete promeniti u politici privatnosti. IP adresa se ne čuva.
 - Broj električnih automobila na početnoj strani i u [statistici](/podaci/statistika-ev-srbija/) je sada procena za današnji dan: poslednji broj MUP-a (7.155, april 2026) uz nove registracije po podacima SAUVD i prosečan dnevni rast od 5,62 automobila. Broj raste sam, svakih šest sati; način računanja je opisan na stranici statistike.
 - [Državni punjači na autoputevima](/javno-punjenje/putevi-srbije/): spisak JP „Putevi Srbije“ ponovo proveren 10. oktobra — i dalje radi 24 od 36 punjača, 7 trenutno ne radi, 5 se priključuje.
 

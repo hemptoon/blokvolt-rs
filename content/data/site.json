@@ -4,7 +4,7 @@
  "firms_checked": "22.09.2026",
  "firms_checked_note": "Datum poslednje pune provere registra firmi (tabela cena, /firme/, gradovi). Menja se samo posle revizije svih firmi.",
  "analytics": {
-  "posthog_key": "",
+  "posthog_key": "phc_zLuGyCxBiCuUJE7AL3dB8DXEHu4estXPvdrXLNZ2yymf",
   "consent": true,
   "posthog_host": "https://eu.i.posthog.com",
   "posthog_ui": "https://eu.posthog.com",

@@ -623,13 +623,13 @@ details.kako small a{color:var(--mut)}
 @media (hover:none){.app-qr{display:none}}
 
 /* ---------- analytics cookie banner (only with analytics.consent) ---------- */
-.consent{position:fixed;right:16px;bottom:16px;left:auto;z-index:90;width:min(460px,calc(100% - 32px));background:#fff;border:1px solid var(--line2);border-radius:var(--r2);box-shadow:0 10px 36px rgba(13,17,26,.18);padding:14px 16px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.45;color:var(--ink2)}
+.consent{position:fixed;right:16px;bottom:16px;left:auto;z-index:90;max-width:calc(100% - 32px);background:#fff;border:1px solid var(--line2);border-radius:var(--r2);box-shadow:0 10px 36px rgba(13,17,26,.18);padding:10px 12px 10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:14px;line-height:1.4;color:var(--ink2)}
 .consent[hidden]{display:none}
-.consent p{margin:0}
+.consent p{margin:0;flex:1 1 auto}
 .consent a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--volt2);text-decoration-thickness:2px;text-underline-offset:3px}
 .consent-b{display:flex;gap:8px;justify-content:flex-end}
-.consent-b .btn{min-width:112px}
-@media (max-width:640px){.consent{right:10px;bottom:10px;width:calc(100% - 20px)}.consent-b .btn{flex:1}}
+.consent-b .btn{min-width:88px}
+@media (max-width:640px){.consent{right:10px;bottom:10px;left:10px;max-width:none}.consent-b{flex:1 1 auto}.consent-b .btn{flex:1}}
 
 /* ---------- footer ---------- */
 .ft{background:var(--night);color:#E8EAE3;margin-top:24px}
