@@ -471,6 +471,63 @@ def price_lines(h):
 NO_INSTALL = re.compile(r'(?i)\bbez (ugradnje|montaže)\b')
 
 
+_PRICE_MAIN = re.compile(r'^((?:od\s+)?(?:≈\s*)?„?\d[\d.,]*(?:\s*[–-]\s*\d[\d.,]*)?“?(?:\s*(?:RSD|€))?(?:\s*\+\s*PDV)?)\s*(.*)$', re.I)
+_TAIL_MODEL = re.compile(r'^(.*?)\s*\(([^()]+)\)$')
+PDV_UNK = re.compile(r'(?i)pdv[-\w ]{0,12}\b(nije|status)|naznake pdv|bez naznake')
+PDV_NO = re.compile(r'(?i)\bbez pdv')
+PDV_YES = re.compile(r'(?i)\bsa pdv|uračunatim porezom')
+
+
+def _plain(h):
+    return re.sub(r'\s+', ' ', BeautifulSoup(h or '', 'html.parser').get_text(' ')).strip()
+
+
+def firm_preview(f):
+    """The opened card in the firm lists (_firm_list.html, RUNBOOK 3.7b), built the same way for every firm:
+    offers — one card per model or package from the price cell (title, model in brackets, price, extras);
+    terms — what the price note says about VAT and installation, as short chips;
+    info — what is left of the price note (or, for a firm that installs, the start of its installation note);
+    tiles — the four register columns as verdicts only (the full notes are on the firm page)."""
+    offers = []
+    for it in f['plines']:
+        m = _TAIL_MODEL.match(it['label'])
+        title, model = (m.group(1), m.group(2)) if m and m.group(1) else (it['label'], '')
+        pm = _PRICE_MAIN.match(it['value'] or '')
+        price, rest = (pm.group(1), pm.group(2)) if pm else (it['value'], '')
+        subs = [x for s_ in it['subs'] for x in re.split(r'\s+·\s+', s_) if x]
+        if rest:
+            subs.insert(0, rest)
+        offers.append({'title': title, 'model': model, 'price': price, 'subs': subs, 'muted': not pm})
+    if offers and f.get('price_val'):
+        offers[0]['lead'] = True
+    note = f.get('pnote') or ''
+    terms = []
+    if f['group'] == 'A':
+        terms.append(('yes', 'Ugradnja u ceni'))
+    elif NO_INSTALL.search(note):
+        terms.append(('no', 'Bez ugradnje'))
+    if PDV_UNK.search(note):
+        terms.append(('unk', 'PDV nije naznačen'))
+    elif PDV_NO.search(note):
+        terms.append(('no', 'Cene bez PDV-a'))
+    elif PDV_YES.search(note):
+        terms.append(('yes', 'Sa PDV-om'))
+    elif any(re.search(r'(?i)\+\s*PDV|bez PDV', o['price'] or '') for o in offers):
+        terms.append(('no', 'Cene bez PDV-a'))
+
+    def covered(c):
+        return len(c) <= 48 and any(r.search(c) for r in (PDV_UNK, PDV_NO, PDV_YES, NO_INSTALL))
+    info = '; '.join(c.strip() for c in note.split(';') if c.strip() and not covered(c.strip()))
+    if not info and f['vclass'].get('ugradnja') == 'yes':
+        info = ' · '.join(_plain(f['cell']['ugradnja']['rest']).split(' · ')[:2])
+    tiles = []
+    for key, label, icon in (('ugradnja', 'Ugradnja', 'tool'), ('brojilo', 'Brojilo i obračun', 'gauge'),
+                             ('skupstina', 'Papiri za skupštinu', 'doc'), ('usluga', 'Usluga i garancija', 'shield')):
+        tiles.append({'label': label, 'icon': icon, 'verdict': f['verdicts'].get(key) or 'Ne pominje se',
+                      'cls': f['vclass'].get(key, 'no'), 'note': _plain(f['cell'][key]['rest'])})
+    return {'offers': offers, 'terms': terms, 'info': info, 'tiles': tiles}
+
+
 def firm_price(f):
     h = (f.get('price_headline') or '').strip()
     if not h or re.search(r'(?i)nije objavljen|na upit|cena nije', h):
@@ -514,6 +571,7 @@ for f in published:
         f['cell'].setdefault(k, {'head': '', 'rest': ''})
     f['plines'], f['pnote'] = price_lines(f.get('cells', {}).get('cena'))
     f['price_val'], f['price_note'] = firm_price(f)
+    f['pv'] = firm_preview(f)
     pos = []
     for k, label in POS:
         if f['vclass'].get(k) == 'yes':

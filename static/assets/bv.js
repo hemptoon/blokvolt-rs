@@ -249,6 +249,32 @@
   }
   if (frows.length) { openFirmFromHash(); window.addEventListener('hashchange', openFirmFromHash); }
 
+  // the rail of offers in an opened firm card: arrows scroll one card; class "fits" (no overflow) hides the arrows
+  // and the fade, class "end" hides the fade at the last card. Swipe and trackpad scroll work without the script.
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  [].forEach.call(d.querySelectorAll('[data-offers]'), function (box) {
+    var rail = box.querySelector('.rail'), prev = box.querySelector('[data-rail-prev]'), next = box.querySelector('[data-rail-next]');
+    if (!rail) return;
+    function upd() {
+      var max = rail.scrollWidth - rail.clientWidth - 2;
+      box.classList.toggle('fits', max <= 0);
+      box.classList.toggle('end', rail.scrollLeft >= max);
+      if (prev) prev.disabled = rail.scrollLeft <= 2;
+      if (next) next.disabled = rail.scrollLeft >= max;
+    }
+    function go(dir) {
+      var c = rail.querySelector('li');
+      rail.scrollBy({ left: dir * (c ? c.getBoundingClientRect().width + 10 : 216), behavior: calm ? 'auto' : 'smooth' });
+    }
+    if (prev) prev.addEventListener('click', function () { go(-1); });
+    if (next) next.addEventListener('click', function () { go(1); });
+    rail.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('resize', upd);
+    var det = box.closest('details');
+    if (det) det.addEventListener('toggle', upd);
+    upd();
+  });
+
   // forms that post to /api/zahtev (corrections, companies): fields by name; ?firma= ?operator= ?stanica= prefill the page field
   [].forEach.call(d.querySelectorAll('form[data-bv-form]'), function (f) {
     var t0 = Date.now(), kind = f.getAttribute('data-bv-form');

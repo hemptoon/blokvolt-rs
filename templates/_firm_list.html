@@ -14,16 +14,15 @@
 <div class="rows">{% for f in items %}<details class="frow" id="firma-{{ f.slug }}" data-row data-firm="{{ f.slug }}" data-q="{{ f.q }}" data-grad="{{ f.grad }}" data-tip="{{ f.tips }}">
 <summary class="row">{{ lg(f) }}<h3>{{ f.name }}{% if f.is_us %}<span class="badge feat">Izdvojeno</span>{% endif %}</h3><span class="meta"><span class="sub">{{ f.kind_label }} · {{ f.city }}</span>{% if f.pos %}<span class="badges">{% for b in f.pos %}<span class="badge ok">{{ b }}</span>{% endfor %}</span>{% endif %}</span><span class="val">{% if f.price_val %}{{ f.price_val|fx }}<small>{{ f.price_note }}</small>{% else %}<small>Cena na upit</small>{% endif %}</span></summary>
 <div class="fmore">
-<div class="fm-prices">
-<h4 class="fm-h">Cene</h4>
-<ul class="plist">{% for it in f.plines %}<li{% if not it.value and loop.length == 1 %} class="none"{% endif %}><span class="pl">{{ it.label }}</span>{% if it.value %}<b class="pv">{{ it.value|fx(stack=False) }}</b>{% endif %}{% for s in it.subs %}<small class="ps">{{ s|fx(stack=False) }}</small>{% endfor %}</li>{% endfor %}</ul>
-{% if f.pnote %}<p class="fm-note"><span class="fm-h">Šta je u ceni</span><span>{{ f.pnote }}</span></p>{% endif %}
+{% set pv = f.pv %}{% set priced = pv.offers|rejectattr('muted')|list %}<div class="offers" data-offers>
+{% if pv.terms or priced|length > 1 %}<div class="of-head">{% if pv.terms %}<div class="of-terms">{% for cls, t in pv.terms %}<span class="term {{ cls }}">{{ ic('check' if cls == 'yes' else 'info') }}{{ t }}</span>{% endfor %}</div>{% endif %}{% if pv.offers|length > 1 %}<div class="of-nav"><span>{{ pv.offers|length|plural('ponuda', 'ponude', 'ponuda') }}</span><button type="button" class="of-prev" data-rail-prev aria-label="Prethodne ponude">{{ ic('chev') }}</button><button type="button" data-rail-next aria-label="Sledeće ponude">{{ ic('chev') }}</button></div>{% endif %}</div>{% endif %}
+{% if priced %}<div class="rail-wrap"><ul class="rail" role="list">{% for o in pv.offers %}<li class="{{ 'lead' if o.lead }}{{ ' none' if o.muted }}">{% if o.price %}<span class="of-p">{{ o.price|fx(stack=False) }}</span><b class="of-t">{{ o.title }}</b>{% if o.model %}<span class="of-m">{{ o.model }}</span>{% endif %}{% else %}<span class="of-p">{{ o.title }}</span>{% endif %}{% if o.subs %}<span class="of-x">{% for s in o.subs %}<span class="of-s">{{ s|fx(stack=False) }}</span>{% endfor %}</span>{% endif %}</li>{% endfor %}</ul></div>
+{% if pv.info %}<p class="of-info">{{ ic('info') }}<span>{{ pv.info }}</span></p>{% endif %}
+{% else %}<p class="of-empty">{{ ic('info') }}<span><b>{{ pv.offers[0].title if pv.offers else 'Cena na upit' }}</b>{% if pv.info %}<span>{{ pv.info }}</span>{% endif %}</span></p>{% endif %}
 </div>
-<dl class="fm-facts">
-{% for key, flabel in [('ugradnja','Ugradnja'),('brojilo','Brojilo i obračun'),('skupstina','Papiri za skupštinu'),('usluga','Usluga i garancija')] %}<div><dt>{{ flabel }}</dt><dd><b class="v {{ f.vclass.get(key, 'no') }}">{{ f.verdicts.get(key) or 'Ne pominje se' }}</b>{% if f.cell[key].rest %}<span>{{ f.cell[key].rest|safe }}</span>{% endif %}</dd></div>
-{% endfor %}<div><dt>Pokrivenost</dt><dd><span>{{ f.coverage or f.city }}</span></dd></div>
-</dl>
-<div class="fm-foot"><span class="fm-upd">Provereno {{ f.verified }}</span><span class="fm-act"><a class="btn" href="{{ f.website }}" rel="noopener{% if not f.is_us %} nofollow{% endif %}" target="_blank">{{ ic('ext') }}{{ f.domain }}</a><a class="btn dark" href="{{ f.url }}">Cela stranica firme{{ ic('arrow') }}</a></span></div>
+{% if pv.tiles|selectattr('cls', 'ne', 'no')|list %}<ul class="ftiles" role="list">{% for t in pv.tiles %}<li class="ftile {{ t.cls }}"{% if t.note %} title="{{ t.note }}"{% endif %}><span class="ti">{{ ic(t.icon) }}</span><span class="tx"><span>{{ t.label }}</span><b>{{ t.verdict }}</b></span></li>{% endfor %}</ul>
+{% else %}<p class="of-none">Na sajtu firme se ne pominju ugradnja, brojilo, papiri za skupštinu ni usluga.</p>{% endif %}
+<div class="fm-foot"><span class="fm-meta"><span>{{ ic('pin') }}{{ f.coverage or f.city }}</span><span>Provereno {{ f.verified }}</span></span><span class="fm-act"><a class="btn" href="{{ f.website }}" rel="noopener{% if not f.is_us %} nofollow{% endif %}" target="_blank">{{ ic('ext') }}{{ f.domain }}</a><a class="btn dark" href="{{ f.url }}">Cela stranica firme{{ ic('arrow') }}</a></span></div>
 </div>
 </details>{% endfor %}</div>
 </div>{% endfor %}

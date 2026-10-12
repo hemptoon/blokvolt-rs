@@ -292,19 +292,29 @@ explicit go-ahead from the owner (decision of 23.09.2026).
 After the full pass set `firms_checked` in `content/data/site.json`, log in `izmene.md`, add a news item.
 In the same quarterly run refresh blokvolt.com (section 3.10): the five country files, the four facts per country and the check date, then build and publish it.
 
-### 3.7b Firm cards that open in the lists (since 12.10.2026)
+### 3.7b Firm cards that open in the lists (since 12.10.2026; layout 13.10.2026)
 
 In every list built from `templates/_firm_list.html` (`/firme/`, the sub-hubs, `/cena-punjaca-za-elektricni-auto.html`)
 a firm is a `<details class="frow" id="firma-<slug>">`: closed it looks like the old row; opened it shows, for every firm
-the same way, the price cell split into one line per model or package (`price_lines()` in `build.py`: `<br>` = new line,
-„ · “ = new item, a bracketed or bare-number line belongs to the item above), the cell's `<small>` as „Šta je u ceni“,
-the four register columns with their notes, coverage, the check date, the firm's site and „Cela stranica firme“.
+the same way (`firm_preview()` in `build.py`): a swipeable rail of offers — one card per model or package from the price
+cell (`price_lines()`: `<br>` = new line, „ · “ = new item, a bracketed or bare-number line belongs to the item above),
+price first, then the name, the model from the brackets at the end of the label, and the variants at the bottom; chips
+for what the price note says about VAT and installation (`PDV_*`, `NO_INSTALL`); one line (two at most) of what is left
+of the price note, or for a firm that installs the start of its installation note; four status tiles for the register
+columns (verdict only — the full note is the tile's `title` and on the firm page; a firm with all four „Ne pominje se“
+gets one sentence instead); coverage, the check date, the firm's site and „Cela stranica firme“. A firm with no price
+gets one quiet panel instead of the rail. Arrows scroll the rail (`bv.js`, `[data-offers]`); swipe works without them.
 Nothing is entered by hand: write the price cell as before (one model or package per `<br>`, „Model: cena“) and the card
 follows. `/firme/#firma-<slug>` opens a card from a link. A new price line is a new translation segment (3.9).
 Packages or models are shown only as the firm's own site lists them — never added for one firm only.
 The closed row says „sa ugradnjom“ for group A and „bez ugradnje“ for any other firm whose price note says „bez ugradnje“
 or „bez montaže“ (`NO_INSTALL` in `build.py`; owner's decision 13.10.2026, the same rule for every firm). A firm whose site
 does not say it gets neither — never guess.
+The closed row's price (`price_headline`, the first line of the price cell) is the firm's basic home charging station —
+the 11 kW one where the firm lists it, otherwise its cheapest station — never a socket-only package or installation
+only, even when that is cheaper: the row compares stations, the same way for every firm, Evolako included (owner's
+question 13.10.2026: Evolako's START, a socket with a MID meter for 39.000, stands second in its rail, right after the
+station the row shows, not in the row).
 
 ### 3.8 Site search (/pretraga/ and the suggestions under the home search box) — since 13.10.2026
 
