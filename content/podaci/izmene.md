@@ -4,13 +4,19 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 12.10.2026
+updated: 13.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-12
+modified: 2026-10-13
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 13. oktobar 2026
+
+- [Firme](/firme/): klik na firmu u spisku sada otvara njene cene po modelu ili paketu, šta je u ceni, ugradnju, brojilo, papire za skupštinu, uslugu i pokrivenost — iste kolone za sve firme. Cela stranica firme je na linku „Cela stranica firme“. Isto važi za podstranice po vrsti firme i za stranicu [Koliko košta kućni punjač](/cena-punjaca-za-elektricni-auto.html).
+- [Evolako](/firme/evolako/): uz pakete su navedeni modeli punjača i varijante cena, kao na evolako.rs (provereno 13. oktobra). U spisku firmi uz cenu sada piše i „bez ugradnje“ kad to navodi sajt firme — isto pravilo za sve firme.
+- [Politika privatnosti](/politika-privatnosti.html#merenje-poseta): u spisak funkcija čije se korišćenje meri dodata je kartica firme u spisku.
+
 ## 12. oktobar 2026
 
 - [Ruska verzija sajta](/ru/): ispravljeno 1.125 prevedenih rečenica — tačniji termini, prirodniji ruski, isti brojevi i linkovi. Srpska i engleska verzija nisu menjane.

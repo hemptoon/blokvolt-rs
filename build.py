@@ -434,6 +434,43 @@ def split_cell(h):
     return {'head': head, 'rest': rest}
 
 
+_TRAIL_PRICE = re.compile(r'^(.*\D)\s+(\d{1,3}(?:\.\d{3})+(?:,\d+)?(?:[–-]\d{1,3}(?:\.\d{3})+(?:,\d+)?)?(?:\s*RSD)?)$')
+
+
+def price_lines(h):
+    """Register price cell -> (items, note) for the opened card in the firm lists (_firm_list.html).
+    One item per model or package, in the firm's own order and words: {'label', 'value', 'subs'}.
+    A line in brackets ("(redovno 130.000)") or a bare number line ("104.000 sa MID brojilom") belongs to the item
+    above it; „ · “ inside a line separates items. `note` is the cell's <small> — what the price includes."""
+    s = BeautifulSoup(h or '', 'html.parser')
+    note = ' '.join(sm.get_text(' ', strip=True) for sm in s.find_all('small'))
+    for sm in s.find_all('small'):
+        sm.extract()
+    for br in s.find_all('br'):
+        br.replace_with('\n')
+    items = []
+    for line in s.get_text().split('\n'):
+        line = re.sub(r'\s+', ' ', line).strip()
+        if not line:
+            continue
+        if items and (line.startswith('(') or (re.match(r'\d', line) and ':' not in line)):
+            items[-1]['subs'].append(line)
+            continue
+        for part in re.split(r'\s+·\s+', line):
+            label, sep, value = part.partition(': ')
+            m = _TRAIL_PRICE.match(part) if not sep else None
+            if sep and re.search(r'\d|upit|nije', value, re.I):
+                items.append({'label': label.strip(), 'value': value.strip(), 'subs': []})
+            elif m:
+                items.append({'label': m.group(1).strip(), 'value': m.group(2), 'subs': []})
+            else:
+                items.append({'label': part, 'value': '', 'subs': []})
+    return items, re.sub(r'\s+', ' ', note).strip()
+
+
+NO_INSTALL = re.compile(r'(?i)\bbez (ugradnje|montaže)\b')
+
+
 def firm_price(f):
     h = (f.get('price_headline') or '').strip()
     if not h or re.search(r'(?i)nije objavljen|na upit|cena nije', h):
@@ -444,6 +481,11 @@ def firm_price(f):
     model, val = model.strip(), val.strip()
     if f['group'] == 'A':
         note = f'{model}, sa ugradnjom' if model else 'sa ugradnjom'
+    elif NO_INSTALL.search(f.get('pnote') or ''):
+        # the firm's own price note says the price is without installation: the row says so too (owner's
+        # decision 13.10.2026, the same rule for every firm; RUNBOOK 3.7b)
+        short = re.sub(r'\s*\([^)]*\)', '', model).strip()        # model codes in brackets make the line too long
+        return val, (clip(short, 26) + ', bez ugradnje') if short else 'bez ugradnje'
     else:
         note = model
     return val, clip(note, 34) if note else ''
@@ -470,6 +512,7 @@ for f in published:
     f['cell'] = {k: split_cell(v) for k, v in f.get('cells', {}).items()}
     for k in ('cena', 'ugradnja', 'brojilo', 'skupstina', 'usluga'):
         f['cell'].setdefault(k, {'head': '', 'rest': ''})
+    f['plines'], f['pnote'] = price_lines(f.get('cells', {}).get('cena'))
     f['price_val'], f['price_note'] = firm_price(f)
     pos = []
     for k, label in POS:

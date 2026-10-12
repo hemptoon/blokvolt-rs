@@ -7,8 +7,25 @@
 </div>
 {% if TYPE_CHIPS %}<div class="chips" style="margin:0 0 14px">{% for key, label in TYPE_CHIPS %}<button class="chip" type="button" data-f-chip="tip:{{ key }}" aria-pressed="{{ 'true' if not key else 'false' }}">{{ label }}</button>{% endfor %}</div>{% endif %}
 <p class="list-count" data-f-count data-tpl="{{ count_tpl }}">{{ firms|length }}</p>
+{# Each firm is a card that opens in place (docs/RUNBOOK.md 3.7b): prices per model or package as the firm lists
+   them, what the price includes, the four register columns and coverage — the same fields for every firm — and the
+   link to the full firm page. #}
 {% for g, label, items in groups %}<div data-f-group class="fgroup">{% if label %}<h2 class="grp">{{ label }}</h2>{% endif %}
-<div class="rows">{% for f in items %}<a class="row" href="{{ f.url }}" data-row data-q="{{ f.q }}" data-grad="{{ f.grad }}" data-tip="{{ f.tips }}">{{ lg(f) }}<div><h3>{{ f.name }}{% if f.is_us %}<span class="badge feat">Izdvojeno</span>{% endif %}</h3><div class="sub">{{ f.kind_label }} · {{ f.city }}</div>{% if f.pos %}<div class="badges">{% for b in f.pos %}<span class="badge ok">{{ b }}</span>{% endfor %}</div>{% endif %}</div><div class="val">{% if f.price_val %}{{ f.price_val|fx }}<small>{{ f.price_note }}</small>{% else %}<small>Cena na upit</small>{% endif %}</div></a>{% endfor %}</div>
+<div class="rows">{% for f in items %}<details class="frow" id="firma-{{ f.slug }}" data-row data-firm="{{ f.slug }}" data-q="{{ f.q }}" data-grad="{{ f.grad }}" data-tip="{{ f.tips }}">
+<summary class="row">{{ lg(f) }}<h3>{{ f.name }}{% if f.is_us %}<span class="badge feat">Izdvojeno</span>{% endif %}</h3><span class="meta"><span class="sub">{{ f.kind_label }} · {{ f.city }}</span>{% if f.pos %}<span class="badges">{% for b in f.pos %}<span class="badge ok">{{ b }}</span>{% endfor %}</span>{% endif %}</span><span class="val">{% if f.price_val %}{{ f.price_val|fx }}<small>{{ f.price_note }}</small>{% else %}<small>Cena na upit</small>{% endif %}</span></summary>
+<div class="fmore">
+<div class="fm-prices">
+<h4 class="fm-h">Cene</h4>
+<ul class="plist">{% for it in f.plines %}<li{% if not it.value and loop.length == 1 %} class="none"{% endif %}><span class="pl">{{ it.label }}</span>{% if it.value %}<b class="pv">{{ it.value|fx(stack=False) }}</b>{% endif %}{% for s in it.subs %}<small class="ps">{{ s|fx(stack=False) }}</small>{% endfor %}</li>{% endfor %}</ul>
+{% if f.pnote %}<p class="fm-note"><span class="fm-h">Šta je u ceni</span><span>{{ f.pnote }}</span></p>{% endif %}
+</div>
+<dl class="fm-facts">
+{% for key, flabel in [('ugradnja','Ugradnja'),('brojilo','Brojilo i obračun'),('skupstina','Papiri za skupštinu'),('usluga','Usluga i garancija')] %}<div><dt>{{ flabel }}</dt><dd><b class="v {{ f.vclass.get(key, 'no') }}">{{ f.verdicts.get(key) or 'Ne pominje se' }}</b>{% if f.cell[key].rest %}<span>{{ f.cell[key].rest|safe }}</span>{% endif %}</dd></div>
+{% endfor %}<div><dt>Pokrivenost</dt><dd><span>{{ f.coverage or f.city }}</span></dd></div>
+</dl>
+<div class="fm-foot"><span class="fm-upd">Provereno {{ f.verified }}</span><span class="fm-act"><a class="btn" href="{{ f.website }}" rel="noopener{% if not f.is_us %} nofollow{% endif %}" target="_blank">{{ ic('ext') }}{{ f.domain }}</a><a class="btn dark" href="{{ f.url }}">Cela stranica firme{{ ic('arrow') }}</a></span></div>
+</div>
+</details>{% endfor %}</div>
 </div>{% endfor %}
 <p class="empty" data-f-empty hidden>Nema firmi za ovaj izbor.</p>
 </div>

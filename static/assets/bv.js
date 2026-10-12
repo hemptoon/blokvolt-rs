@@ -231,6 +231,24 @@
     apply();
   });
 
+  // firm cards that open in place (_firm_list.html): opening one sends firm_card_open; a link to
+  // /firme/#firma-<slug> (or the same on a sub-hub or the price page) opens that card and scrolls to it
+  var frows = d.querySelectorAll('details.frow');
+  [].forEach.call(frows, function (el) {
+    el.addEventListener('toggle', function () {
+      if (el.open) window.bvTrack('firm_card_open', { firm: el.getAttribute('data-firm') || '', list: location.pathname });
+    });
+  });
+  function openFirmFromHash() {
+    var id = (location.hash || '').slice(1);
+    if (!/^firma-[a-z0-9-]+$/.test(id)) return;
+    var el = d.getElementById(id);
+    if (!el || el.tagName !== 'DETAILS') return;
+    el.open = true;
+    el.scrollIntoView({ block: 'start' });
+  }
+  if (frows.length) { openFirmFromHash(); window.addEventListener('hashchange', openFirmFromHash); }
+
   // forms that post to /api/zahtev (corrections, companies): fields by name; ?firma= ?operator= ?stanica= prefill the page field
   [].forEach.call(d.querySelectorAll('form[data-bv-form]'), function (f) {
     var t0 = Date.now(), kind = f.getAttribute('data-bv-form');

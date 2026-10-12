@@ -291,6 +291,20 @@ explicit go-ahead from the owner (decision of 23.09.2026).
 After the full pass set `firms_checked` in `content/data/site.json`, log in `izmene.md`, add a news item.
 In the same quarterly run refresh blokvolt.com (section 3.10): the five country files, the four facts per country and the check date, then build and publish it.
 
+### 3.7b Firm cards that open in the lists (since 12.10.2026)
+
+In every list built from `templates/_firm_list.html` (`/firme/`, the sub-hubs, `/cena-punjaca-za-elektricni-auto.html`)
+a firm is a `<details class="frow" id="firma-<slug>">`: closed it looks like the old row; opened it shows, for every firm
+the same way, the price cell split into one line per model or package (`price_lines()` in `build.py`: `<br>` = new line,
+„ · “ = new item, a bracketed or bare-number line belongs to the item above), the cell's `<small>` as „Šta je u ceni“,
+the four register columns with their notes, coverage, the check date, the firm's site and „Cela stranica firme“.
+Nothing is entered by hand: write the price cell as before (one model or package per `<br>`, „Model: cena“) and the card
+follows. `/firme/#firma-<slug>` opens a card from a link. A new price line is a new translation segment (3.9).
+Packages or models are shown only as the firm's own site lists them — never added for one firm only.
+The closed row says „sa ugradnjom“ for group A and „bez ugradnje“ for any other firm whose price note says „bez ugradnje“
+or „bez montaže“ (`NO_INSTALL` in `build.py`; owner's decision 13.10.2026, the same rule for every firm). A firm whose site
+does not say it gets neither — never guess.
+
 ### 3.8 Site search index
 
 `build.py` writes `dist/assets/search.json` from the generated pages (title, description, section,
@@ -301,7 +315,7 @@ put that word in the page's description.
 ### 3.9 English and Russian versions (every run that changes text)
 
 `/en/` and `/ru/` are made by `build.py` from the finished Serbian pages (`scripts/i18n.py`). Every piece
-of running text, every visible attribute (alt, title, aria-label, placeholder), the title, the
+of running text, every visible attribute (alt, title, aria-label, placeholder, data-label, data-tpl), the title, the
 descriptions and the JSON-LD names are looked up in the translation memory `content/i18n/en.json` /
 `ru.json` ({Serbian: translation}). Numbers with separators (dates, prices, decimals) become
 placeholders `⟦0⟧`, so a new price or date needs no new translation; a changed sentence does. Text
@@ -698,6 +712,7 @@ No messages, comments or forms to anyone — the outreach rule of 3.7 applies to
   | `checkin_sent` / `photo_sent` | drivers' reports | `station`, `network`, `status`, `rating`, `comment` |
   | `outbound_click` / `contact_phone` / `contact_email` | any link out, tel:, mailto: | `host`, `url` / — / `to` |
   | `form_sent` | /ispravka/, /za-firme/ | `form` |
+  | `firm_card_open` | a firm card opened in a list (3.7b) | `firm` (slug), `list` (page path) |
   | `ad_click` | a booked ad (`aside.oglas`) | `ad` (the booking id) |
   | `calculator_used` | first change in a calculator | `calculator` |
   | `video_play` | YouTube poster clicked | `video` |

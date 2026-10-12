@@ -209,6 +209,53 @@ a.row:hover{background:#FAFAF6}
  .row .val small{display:inline;margin-left:6px}
  .row .chev{grid-column:3;grid-row:1;margin:0}
 }
+/* ---------- firm cards that open in place (_firm_list.html: /firme/, the sub-hubs, /cena-punjaca…) ---------- */
+details.frow{background:transparent;border:0;border-top:1px solid var(--line);border-radius:0;margin:0;padding:0}
+details.frow:first-child{border-top:0}
+details.frow[open]{padding-bottom:0}
+details.frow>.fmore{margin:0}
+details.frow>summary.row{grid-template-columns:auto minmax(0,1fr) auto auto;grid-template-areas:"lg name val chev" "lg meta val chev";gap:2px 14px;border-top:0;font-weight:inherit;font-size:inherit;color:var(--ink);justify-content:normal}
+details.frow>summary.row:hover,details.frow[open]>summary.row{background:#FAFAF6}
+details.frow>summary.row>.lg{grid-area:lg}
+details.frow>summary.row>h3{grid-area:name;align-self:end}
+details.frow>summary.row>.meta{grid-area:meta;align-self:start;display:block;min-width:0}
+details.frow>summary.row .sub{display:block}
+details.frow>summary.row>.val{grid-area:val;display:block}
+details.frow>summary.row::after{grid-area:chev;align-self:center}
+.fmore{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"prices facts" "foot foot";gap:16px 28px;padding:6px 16px 18px 82px;background:#FAFAF6}
+.fm-prices{grid-area:prices;min-width:0}
+.fm-h{display:block;font-size:12.5px;font-weight:650;color:var(--mut);text-transform:uppercase;letter-spacing:.04em;margin:0 0 6px}
+.plist{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.plist li{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.4}
+.plist .pl{flex:1 1 11em;min-width:0}
+.plist .pv{flex:0 1 auto;margin-left:auto;font-weight:650;text-align:right}
+.plist .ps{flex-basis:100%;color:var(--mut);font-size:13px}
+.plist li.none .pl{color:var(--mut)}
+.fm-note{margin:12px 0 0;padding:10px 12px;border-radius:12px;background:var(--surface2);font-size:14px;line-height:1.45;color:var(--ink2)}
+.fm-note .fm-h{margin:0 0 2px}
+.fm-facts{grid-area:facts;margin:0;min-width:0}
+.fm-facts>div{padding:8px 0;border-bottom:1px solid var(--line)}
+.fm-facts>div:first-child{padding-top:0}
+.fm-facts>div:last-child{border-bottom:0}
+.fm-facts dt{font-size:12.5px;font-weight:650;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+.fm-facts dd{margin:2px 0 0;font-size:14px;line-height:1.45;color:var(--mut)}
+.fm-facts .v{font-weight:680;color:var(--ink);margin-right:6px}
+.fm-facts .v.yes{color:var(--ok)}
+.fm-facts .v.ask{color:var(--warn)}
+.fm-facts .v.no{color:var(--mut);font-weight:520}
+.fm-facts dd>span:only-child{color:var(--ink2)}
+.fm-foot{grid-area:foot;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+.fm-upd{font-size:13px;color:var(--mut)}
+.fm-act{display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:640px){
+ details.frow>summary.row{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"lg name chev" "lg meta meta" "lg val val";gap:2px 12px}
+ details.frow>summary.row>h3{align-self:center}
+ details.frow>summary.row>.val{text-align:left;white-space:normal;margin-top:4px}
+ details.frow>summary.row>.val [data-rsd]{white-space:nowrap}
+ .fmore{grid-template-columns:minmax(0,1fr);grid-template-areas:"prices" "facts" "foot";padding:4px 14px 16px}
+ .fm-act{width:100%}
+ .fm-act .btn{flex:1 1 auto}
+}
 .lg{width:52px;height:52px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;overflow:hidden;flex:none}
 .lg{position:relative}
 .lg img{position:absolute;left:8%;top:8%;width:84%;height:84%;object-fit:contain}

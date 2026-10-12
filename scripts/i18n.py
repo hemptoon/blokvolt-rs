@@ -25,7 +25,7 @@ SITE = 'https://www.blokvolt.rs'
 INLINE = {'a', 'b', 'strong', 'i', 'em', 'small', 'span', 'br', 'code', 'sup', 'sub', 'abbr', 'time',
           'mark', 'u', 's', 'del', 'ins', 'wbr', 'q', 'cite', 'kbd', 'var', 'bdi', 'bdo', 'img', 'output'}
 SKIP = {'script', 'style', 'svg', 'noscript_', 'template', 'head', 'code', 'pre'}
-ATTRS = ('alt', 'title', 'aria-label', 'placeholder', 'data-label')
+ATTRS = ('alt', 'title', 'aria-label', 'placeholder', 'data-label', 'data-tpl')   # data-tpl: the "Prikazano: {n} od {all}" line of the firm lists
 # JSON blocks of plain strings translated like running text: the page's script texts, and on /pregled/ the fixed texts
 # of the newsletter's e-mails (read back by scripts/pregled.py)
 # and on every page the texts of the display-currency switcher and its footnote (bv-fx-i18n, read by assets/valuta.js)

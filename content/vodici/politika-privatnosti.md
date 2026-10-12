@@ -10,9 +10,9 @@ description_nalog: Kako blokvolt.rs postupa sa podacima o ličnosti i pod kojim 
 lead_consent_nalog: Nalog nije obavezan, a oglasnih piksela nema. Posete se broje bez kolačića, kolačić za analitiku postavlja se samo uz vašu dozvolu, a forme, prijave sa mape i nalog čuvaju samo ono što sami upišete.
 description_consent_nalog: Kako blokvolt.rs postupa sa podacima o ličnosti. Nalog nije obavezan; posete se broje bez kolačića, a kolačić za analitiku samo uz vašu dozvolu.
 kicker: Pravno
-updated: 10.10.2026
+updated: 13.10.2026
 published: 2026-09-21
-modified: 2026-10-10
+modified: 2026-10-13
 priority: 0.2
 path: /politika-privatnosti.html
 ---
@@ -48,7 +48,7 @@ Posete se broje uz Cloudflare Web Analytics: pregledi stranica, sa kog sajta ili
 Pored toga, posete broji i naš sopstveni brojač, na Cloudflare serverima u EU: koja stranica je otvorena (bez parametara iz adrese), sa kog sajta je poseta došla (samo naziv sajta), oznake kampanje (utm), jezik stranice, zemlja, tip uređaja i pregledač. Brojač ne postavlja kolačiće i ništa ne upisuje u pregledač. Da bi se ista osoba brojala jednom dnevno, od IP adrese i podataka o pregledaču pravi se anonimni otisak sa slučajnim ključem koji važi samo taj dan i briše se posle dva dana. IP adresa se ne čuva, a otisak ne može da se vrati na nju niti da se poveže sa drugim danima. Zapisi se ne povezuju sa imenom ni nalogom i brišu se posle godinu dana.
 
 <!--posthog-->
-Da bi sajt radio bolje, beleži se i kako se koriste njegove funkcije: kartica punjača, filteri na mapi, pretraga, klik na sajt ili telefon firme, slanje forme. To radi PostHog, na serverima u EU (Frankfurt)<!--cookieless-->, u režimu bez kolačića<!--/cookieless--><!--consent-->. Dok ne dozvolite kolačić, radi bez njega<!--/consent-->: u pregledaču se ništa ne čuva, a od IP adrese i podataka o pregledaču pravi se anonimni identifikator koji se menja svakog dana. IP adresa se ne čuva, a zapisi se ne povezuju sa imenom ni nalogom i brišu se posle najviše godinu dana. Ako pregledač šalje signal „Ne prati me“ (Do Not Track) ili Global Privacy Control, ovi zapisi se ne šalju.
+Da bi sajt radio bolje, beleži se i kako se koriste njegove funkcije: kartica punjača, kartica firme u spisku, filteri na mapi, pretraga, klik na sajt ili telefon firme, slanje forme. To radi PostHog, na serverima u EU (Frankfurt)<!--cookieless-->, u režimu bez kolačića<!--/cookieless--><!--consent-->. Dok ne dozvolite kolačić, radi bez njega<!--/consent-->: u pregledaču se ništa ne čuva, a od IP adrese i podataka o pregledaču pravi se anonimni identifikator koji se menja svakog dana. IP adresa se ne čuva, a zapisi se ne povezuju sa imenom ni nalogom i brišu se posle najviše godinu dana. Ako pregledač šalje signal „Ne prati me“ (Do Not Track) ili Global Privacy Control, ovi zapisi se ne šalju.
 <!--/posthog-->
 <!--consent-->
 Ako u baneru dozvolite kolačić, PostHog od sledeće stranice čuva nasumični identifikator u vašem pregledaču, pa se vide i ponovne posete, i snima kretanje po stranicama: klikove, skrolovanje i promene na ekranu. Tekst koji upisujete u polja se ne snima, a snimci se čuvaju najviše 30 dana. Dozvolu možete povući u svakom trenutku: kolačić se tada briše, a merenje se vraća u režim bez kolačića.
