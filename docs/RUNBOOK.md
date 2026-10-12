@@ -1619,6 +1619,13 @@ the changed pages in `dist/` (grep for the new numbers) before deploying, and ch
 
 ## 5. Deploy — Cloudflare Pages, project `blokvolt`, direct upload (owner's browser)
 
+0. **Main first.** A direct upload replaces the whole site, and several sessions work on it. Right before packing,
+   check that nobody committed since your clone: `git ls-remote origin main` must be your `HEAD` (or an ancestor of it).
+   If not: `git stash -u; git fetch --depth=50 origin main; git checkout -B main FETCH_HEAD; git stash pop`, resolve,
+   rebuild and re-run the checks — otherwise the deploy takes the other session's work off the site and the commit
+   (section 6 uploads whole files) overwrites it in `main`. `pack.sh` stops with "STOP: origin/main … is not in this
+   clone" in that case (13.10.2026: the search went live on top of the firm cards this way, `179e323` → `d1e26e2`).
+
 Use the Claude in Chrome tools (the owner's Brave, already signed in to Cloudflare). If Cloudflare asks
 to sign in, stop and tell the owner — never type credentials.
 
