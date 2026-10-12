@@ -18,6 +18,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 - [Politika privatnosti](/politika-privatnosti.html#merenje-poseta): u spisak funkcija čije se korišćenje meri dodata je kartica firme u spisku.
 - [Pretraga](/pretraga/) je nova: razume greške u kucanju („evolnako“ nalazi Evolako), ćirilicu („Нови Сад“), reči istog značenja (volbox = wallbox) i gradove sa mape punjača bez posebne stranice (Kraljevo, Paraćin…). Kad nema rezultata, nudi ispravljenu reč, popularne stranice, najnovije vesti i polje „Niste našli šta tražite?“. Na početnoj strani pretraga daje predloge dok kucate.
 - [Politika privatnosti](/politika-privatnosti.html#pretraga): upiti iz pretrage čuvaju se zbirno 90 dana, bez IP adrese i kolačića, da bi se videlo šta na sajtu nedostaje; opisana je i pretraga po smislu, kad bude uključena.
+- [Pretraga](/pretraga/): uključena je i pretraga po smislu. Kad reči nađu malo stranica ili je upit pitanje, ispod rezultata stoje stranice „Slično po smislu“. Upit se za to šalje modelu na serverima Cloudflare i ne čuva se ([politika privatnosti](/politika-privatnosti.html#pretraga)).
 
 ## 12. oktobar 2026
 

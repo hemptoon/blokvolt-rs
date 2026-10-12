@@ -277,14 +277,21 @@ CREATE TABLE IF NOT EXISTS pretraga (
   fix TEXT,                      -- the corrected query shown instead, when the typed words were on no page
   PRIMARY KEY (day, l, q)
 );
--- Search by meaning: which pieces of the pages (dist/assets/smisao/) are in the Vectorize index, and its state. Only used
--- once the Pages project has the AI and VEC bindings. The worker creates both on first use.
-CREATE TABLE IF NOT EXISTS sm_ids (id TEXT PRIMARY KEY, v TEXT NOT NULL);
+-- Search by meaning: the vectors of the pieces of the pages (dist/assets/smisao/) and the state of the store. Only used
+-- once the Pages project has the AI binding (Workers AI). The worker creates both on first use.
+CREATE TABLE IF NOT EXISTS sm_vec (
+  id TEXT PRIMARY KEY,           -- the piece id from the build (hash of its page and text)
+  v TEXT NOT NULL,               -- the build that added it
+  u TEXT NOT NULL,               -- the page
+  q TEXT NOT NULL,               -- bge-m3 vector, 1024 signed bytes (scaled to ±127) in base64
+  n REAL NOT NULL                -- the length of those bytes as a vector (for cosine)
+);
 CREATE TABLE IF NOT EXISTS sm_meta (
   id INTEGER PRIMARY KEY CHECK (id = 1),
-  v TEXT,                        -- the build (meta.json v) the index follows
-  done INTEGER NOT NULL DEFAULT 0, -- pieces of that build in the index (-1: pieces of removed pages still to delete)
+  v TEXT,                        -- the build (meta.json v) the store follows
+  done INTEGER NOT NULL DEFAULT 0, -- pieces of that build in the store (-1: pieces of removed pages still to delete)
   total INTEGER NOT NULL DEFAULT 0,
+  gen INTEGER NOT NULL DEFAULT 0,  -- grows with every change, so isolates reload the vectors
   lock_until INTEGER NOT NULL DEFAULT 0,
   at INTEGER,
   err TEXT                       -- the last error (cleared by the next good step)

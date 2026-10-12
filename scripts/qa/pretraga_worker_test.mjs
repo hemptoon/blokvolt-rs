@@ -1,8 +1,8 @@
 // Site search on the server (docs/RUNBOOK.md 3.8, 3.8b): the real worker/_worker.js called directly in node, with a D1
-// look-alike on node:sqlite (worker/schema.sql loaded first), the built dist/ behind env.ASSETS, and fake Workers AI and
-// Vectorize bindings (a word-hashing "embedding", cosine search in memory). Checks: the search log (folding, cleaning,
-// no IP, the owner's view), „Niste našli“ as a request, search by meaning switched off without the bindings, and with
-// them: the index filled step by step from the build's pieces, answers, a deploy that changes pages, the background step.
+// look-alike on node:sqlite (worker/schema.sql loaded first), the built dist/ behind env.ASSETS, and a fake Workers AI
+// binding (a word-hashing "embedding"). Checks: the search log (folding, cleaning, no IP, the owner's view), „Niste
+// našli“ as a request, search by meaning switched off without the binding, and with it: the vector store in D1 filled
+// step by step from the build's pieces, answers, a deploy that changes pages (the isolate reloads), the background step.
 // Run after a build: node --no-warnings scripts/qa/pretraga_worker_test.mjs
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync, existsSync } from 'node:fs';
@@ -39,7 +39,7 @@ function d1(db) {
   };
 }
 const sqlite = new DatabaseSync(':memory:');
-sqlite.exec(readFileSync(path.join(REPO, 'worker', 'schema.sql'), 'utf8').replace(/CREATE TABLE IF NOT EXISTS (pretraga|sm_ids|sm_meta)[\s\S]*?\);\n/g, ''));
+sqlite.exec(readFileSync(path.join(REPO, 'worker', 'schema.sql'), 'utf8').replace(/CREATE TABLE IF NOT EXISTS (pretraga|sm_vec|sm_meta)[\s\S]*?\);\n/g, ''));
 const DB = d1(sqlite);
 
 // ---------------------------------------------------------------- the built site behind ASSETS (with a hook to fake a new deploy)
@@ -54,7 +54,7 @@ const ASSETS = {
   },
 };
 
-// ---------------------------------------------------------------- fake Workers AI (bge-m3 shape) and Vectorize
+// ---------------------------------------------------------------- fake Workers AI (bge-m3 shape)
 const DIM = 1024;
 let aiCalls = 0, aiTexts = 0;
 function embed(text) {
@@ -67,16 +67,6 @@ function embed(text) {
   return v.map(x => x / n);
 }
 const AI = { run: async (model, inp) => { aiCalls++; aiTexts += inp.text.length; if (model !== '@cf/baai/bge-m3') throw new Error('model ' + model); return { shape: [inp.text.length, DIM], data: inp.text.map(embed) }; } };
-const VSTORE = new Map();
-const VEC = {
-  upsert: async arr => { for (const x of arr) { if (x.values.length !== DIM) throw new Error('dims'); VSTORE.set(x.id, x); } return { count: arr.length }; },
-  deleteByIds: async ids => { ids.forEach(id => VSTORE.delete(id)); return { count: ids.length }; },
-  query: async (v, o) => {
-    const m = [...VSTORE.values()].map(x => ({ id: x.id, score: x.values.reduce((s, a, i) => s + a * v[i], 0), metadata: x.metadata }));
-    return { matches: m.sort((a, b) => b.score - a.score).slice(0, o.topK) };
-  },
-};
-
 const ADMIN_KEY = 'test-admin-key-0123456789abc';
 const base = { DB, ASSETS, ADMIN_KEY };
 let pending = [];
@@ -91,6 +81,7 @@ async function call(env, p, { method = 'GET', body, headers = {}, ip = '10.0.0.1
   return { status: res.status, j };
 }
 const rows = sql => sqlite.prepare(sql).all().map(r => ({ ...r }));
+const stored = () => { try { return new Set(rows('SELECT id FROM sm_vec').map(r => r.id)); } catch (e) { return new Set(); } };
 
 // ---------------------------------------------------------------- the search log
 let r = await call(base, '/api/pretraga', { method: 'POST', body: JSON.stringify({ q: '  Evolnako ', l: 'sr', n: 7, w: 'home', f: 'Evolako' }) });
@@ -130,19 +121,19 @@ check(r.j && r.j.ok && rq.length === 1 && JSON.parse(rq[0].data).upit === 'kamp 
 r = await call(base, '/api/smisao?q=gde+da+punim&l=sr');
 check(r.status === 200 && r.j && r.j.ok === false && r.j.error === 'off', 'by meaning: off without the bindings', r);
 r = await call(base, '/api/smisao/stanje');
-check(r.j && r.j.on === false && r.j.need.join() === 'AI,VEC', 'by meaning: the state says which bindings are missing', r.j);
+check(r.j && r.j.on === false && r.j.need.join() === 'AI', 'by meaning: the state says which binding is missing', r.j);
 check(rows("SELECT name FROM sqlite_master WHERE name LIKE 'sm_%'").length === 0, 'by meaning: nothing is created while it is off');
 
 // ---------------------------------------------------------------- search by meaning, on
-const on = { ...base, AI, VEC };
+const on = { ...base, AI };
 const man = JSON.parse(readFileSync(path.join(DIST, 'assets', 'smisao', 'meta.json'), 'utf8'));
 // the background step: right after the bindings appear, any /api request starts filling the index (at most once a minute
 // per isolate, so this is the only background step of this run)
 r = await call(on, '/api/zdravlje');
-check(r.status === 200 && VSTORE.size === 20, 'by meaning: a plain /api request starts filling the index in the background', VSTORE.size);
+check(r.status === 200 && stored().size === 20, 'by meaning: a plain /api request starts filling the store in the background', stored().size);
 let st, steps = 0;
 do { st = (await call(on, '/api/smisao/stanje', { ip: '10.9.0.' + (steps % 250) })).j; steps++; } while (st.state && st.state.done !== st.state.total && steps < 80);
-check(st.on && st.state.done === man.n && st.state.total === man.n && VSTORE.size === man.n && !st.state.err, `by meaning: all ${man.n} pieces embedded in ${steps} more steps (${aiCalls} AI calls)`, st);
+check(st.on && st.state.done === man.n && st.state.total === man.n && stored().size === man.n && !st.state.err, `by meaning: all ${man.n} pieces embedded in ${steps} more steps (${aiCalls} AI calls)`, st);
 check(aiTexts === man.n, 'by meaning: every piece embedded exactly once', aiTexts);
 const piece = JSON.parse(readFileSync(path.join(DIST, 'assets', 'smisao', man.parts[0].f), 'utf8'))[3];
 r = await call(on, '/api/smisao?l=sr&q=' + encodeURIComponent(piece.x.slice(0, 150)));
@@ -160,16 +151,20 @@ assetHook = p => (p === '/assets/smisao/meta.json' ? Response.json(man2) : p ===
 const before2 = aiTexts;
 steps = 0;
 do { st = (await call(on, '/api/smisao/stanje', { ip: '10.8.0.' + steps })).j; steps++; } while ((st.state.done !== st.state.total || st.state.v !== 'deploy2') && steps < 40);
-check(st.state.v === 'deploy2' && st.state.done === man2.n && VSTORE.size === man2.n && aiTexts - before2 === p0.length,
-  `by meaning: after a deploy only the ${p0.length} changed pieces are embedded, ${dropped.ids.length + p0.length} old ones deleted`, { st: st.state, size: VSTORE.size, emb: aiTexts - before2 });
-check(!dropped.ids.some(id => VSTORE.has(id)) && rows('SELECT COUNT(*) AS n FROM sm_ids')[0].n === man2.n, 'by meaning: the index and the table agree');
+check(st.state.v === 'deploy2' && st.state.done === man2.n && stored().size === man2.n && aiTexts - before2 === p0.length,
+  `by meaning: after a deploy only the ${p0.length} changed pieces are embedded, ${dropped.ids.length + p0.length} old ones deleted`, { st: st.state, size: stored().size, emb: aiTexts - before2 });
+check(!dropped.ids.some(id => stored().has(id)) && p0.every(x => stored().has(x.id)), 'by meaning: the store holds exactly the new build');
+const q8 = rows('SELECT q FROM sm_vec LIMIT 1')[0].q;
+check(Buffer.from(q8, 'base64').length === 1024 && q8.length < 1400, 'by meaning: a vector is 1024 bytes (base64 under 1,4 KB)', q8.length);
+r = await call(on, '/api/smisao?l=sr&q=' + encodeURIComponent(p0[3].x.slice(0, 150)));
+check(r.j && r.j.ok && r.j.hits.length && r.j.hits[0].u === p0[3].u, 'by meaning: after the change the search sees the new pieces (vectors reloaded)', r.j);
 assetHook = null;
 // errors are kept in the state and back off
 const brokenAI = { run: async () => ({ shape: [1, 384], data: [new Array(384).fill(0.1)] }) };
 sqlite.exec('UPDATE sm_meta SET lock_until = 0');
-r = await call({ ...base, AI: brokenAI, VEC }, '/api/smisao/stanje');
+r = await call({ ...base, AI: brokenAI }, '/api/smisao/stanje');
 check(/384 dimensions/.test(r.j.state.err || '') && r.j.state.lock_until > Date.now() / 1000 + 200, 'by meaning: a wrong embedding size is reported and the steps pause 5 minutes', r.j.state);
-r = await call({ ...base, AI: brokenAI, VEC }, '/api/smisao?q=test&l=sr');
+r = await call({ ...base, AI: brokenAI }, '/api/smisao?q=test&l=sr');
 check(r.status === 502 && r.j.error === 'ai', 'by meaning: a wrong answer of the model is an error, not a result', r);
 
 console.log(`\nsearch worker: ${oks} ok, ${fails} failed`);

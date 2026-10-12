@@ -1905,8 +1905,8 @@ render('pretraga.html', '/pretraga/', section='', title='Pretraga | BlokVolt', P
 
 
 # ---------------------------------------------------------------- search by meaning: pieces of the Serbian pages (RUNBOOK 3.8b)
-# dist/assets/smisao/meta.json {v, n, parts: [{f, ids}]} and the parts p<k>-<hash>.json [{id, u, x}]. The worker puts them into
-# Vectorize (/api/smisao); a piece id is a hash of its page and text, so after a deploy only changed pieces are embedded.
+# dist/assets/smisao/meta.json {v, n, parts: [{f, ids}]} and the parts p<k>-<hash>.json [{id, u, x}]. The worker embeds them
+# into D1 (/api/smisao); a piece id is a hash of its page and text, so after a deploy only changed pieces are embedded.
 # One piece: "<page title> — <section heading>: <up to ~900 characters of text>"; at most 8 pieces a page.
 SM_PIECE, SM_PER_PAGE, SM_PER_PART = 900, 8, 100
 
@@ -1932,7 +1932,9 @@ def build_smisao():
     pieces = []
     for f in sorted(DIST.rglob('*.html')):
         rel = '/' + str(f.relative_to(DIST)).replace('\\', '/')
-        if rel.startswith(('/en/', '/ru/', '/pregled-mail/', '/admin/')) or rel in ('/404.html', '/pretraga/index.html', '/offline.html'):
+        # not: other languages, the newsletter digests (they repeat the news), the change log and the correction form
+        if rel.startswith(('/en/', '/ru/', '/pregled-mail/', '/pregled/', '/admin/')) or rel in (
+                '/404.html', '/pretraga/index.html', '/offline.html', '/izmene/index.html', '/ispravka/index.html'):
             continue
         soup = BeautifulSoup(f.read_text(encoding='utf-8'), 'html.parser')
         if soup.find('meta', attrs={'name': 'robots', 'content': re.compile('noindex')}):

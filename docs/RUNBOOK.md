@@ -369,33 +369,57 @@ scripts/qa/pretraga_worker_test.mjs` (the worker with a D1 look-alike: the log, 
 the home suggestions with the keyboard, no JS or CSP errors, phone and desktop screenshots). Add a case to
 `pretraga_test.mjs` for every complaint about the search.
 
-### 3.8b Search by meaning (Workers AI + Vectorize) — built 13.10.2026, switched on by two bindings
+### 3.8b Search by meaning (Workers AI, vectors in D1) — built 13.10.2026, on since 13.10.2026
 
 When the words find fewer than three pages, or the query has three or more words (reads like a question), /pretraga/
 asks `GET /api/smisao?q=…&l=…` and shows up to five more pages under „Slično po smislu“. The worker embeds the query
 with `@cf/baai/bge-m3` (one multilingual model: Serbian, English and Russian queries all compare with the Serbian
-pages) and asks Vectorize for the nearest pieces; the answer is page addresses and scores only, the query is not stored,
-nothing is generated (no text from a model reaches the page). Thresholds in the worker: `SM_MIN` 0,45 and `SM_SPREAD`
-0,12 below the best score — calibrate on real queries after it is on (they are a guess until then).
+pages) and compares it with the stored vectors of the pieces of the pages; the answer is page addresses and scores
+only, the query is not stored, nothing is generated (no text from a model reaches the page). Thresholds in the worker:
+`SM_MIN` and `SM_SPREAD` below the best score (calibrated on live queries, see the log at the end of this section).
 
-Off until the owner adds to the Pages project `blokvolt` (Settings → Bindings, Production): **Workers AI** named `AI`,
-and **Vectorize index** named `VEC` = index `blokvolt-smisao` (dimensions **1024**, metric **cosine**; created once under
-Storage & databases → Vectorize). The bindings take effect with the next deploy. Without them `/api/smisao` answers
-`{ok: false, error: "off"}`, the page stops asking, and no table is created.
+Switched on by one binding of the Pages project `blokvolt` (Settings → Bindings): **Workers AI** named `AI` (added
+13.10.2026). Bindings take effect with the next deploy. Without it `/api/smisao` answers `{ok: false, error: "off"}`,
+the page stops asking, and no table is created.
 
-The pieces: `build.py` → `build_smisao()` writes `dist/assets/smisao/meta.json` and its parts (≈600 pieces: "<title> —
+Where the vectors live: D1 `sm_vec` (one row a piece: id, build, page, the 1024 numbers as signed bytes in base64,
+their length) and `sm_meta` (build, done/total, `gen` — grows with every change, last error, lock). For a search each
+isolate loads all rows once (≈650 → 0,7 MB in memory; ~2–6 ms of CPU) and reloads only when `gen` changes; one pass
+over all pieces is ~1 ms. **Why not Vectorize:** the dashboard has no button to create a Vectorize index (only Wrangler
+or the API), and for a site this size a plain pass is enough. Past ~3 000 pieces the cold load and the pass get close
+to the 10 ms CPU of the free plan — then move to Vectorize (`npx wrangler vectorize create blokvolt-smisao
+--dimensions=1024 --metric=cosine` on the owner's computer, binding `VEC`; the worker code before 13.10 ~02:00,
+commit `07e36bd`, had that version).
+
+The pieces: `build.py` → `build_smisao()` writes `dist/assets/smisao/meta.json` and its parts (≈650 pieces: "<title> —
 <heading>: <≤ 900 characters>", at most 8 a page, Serbian pages only, without ads, „Izdvojeno“ and link cards). A piece
 id is a hash of its page and text, so after a deploy the worker embeds only new or changed pieces and deletes the gone
-ones (D1 `sm_ids`, `sm_meta`). It does this in steps of 20 pieces: in the background of any /api request (at most once a
-minute per isolate, when the index is behind) and on `GET /api/smisao/stanje` (also shows the state: build, pieces,
-done, last error). The first fill takes ~30 steps; to finish it at once, open `https://www.blokvolt.rs/api/smisao/stanje`
-in the owner's browser and call it ~35 times from the console (each answer says what the step did).
+ones. It does this in steps of 20 pieces: in the background of any /api request (at most once a minute per isolate,
+when the store is behind) and on `GET /api/smisao/stanje` (also shows the state: build, pieces, done, last error).
+The first fill takes ~33 steps; to finish it at once, open `https://www.blokvolt.rs/` in the owner's browser and call
+`/api/smisao/stanje` ~35 times from the console (each answer says what the step did; limit 300 a day per visitor).
 
 Cost: free tier. Workers AI 10 000 neurons a day for the whole account — **shared with the owner's bot** (Whisper,
-Mistral): a query ~0,03 neurons, embedding the whole site once ~400. Vectorize free: 5 M stored dimensions (≈600 × 1024
-= 0,6 M) and 30 M queried a month ≈ 28 000 searches. Limits in the worker (`SM_LIMIT`): 80 a day per visitor
-fingerprint, 900 a day in all. On the Workers Free plan nothing is billed: over a limit the calls fail and the page
-shows the word results only.
+Mistral): a query ~0,03 neurons, embedding the whole site once ~400. D1: ≈650 rows read when an isolate loads the
+vectors, 2–3 rows per search. Limits in the worker (`SM_LIMIT`): 80 searches a day per visitor fingerprint, 900 a day
+in all. On the Workers Free plan nothing is billed: over a limit the calls fail and the page shows the word results
+only.
+
+Not in the pieces: the other languages, the newsletter digests `/pregled/` (they repeat the news), the change log
+`/izmene/` and the correction form `/ispravka/` (they matched everything a little).
+
+Tests: `node --no-warnings scripts/qa/pretraga_worker_test.mjs` (fake Workers AI, the store in a D1 look-alike: fill,
+answers, a deploy that changes pages, errors).
+
+**Calibration 13.10.2026** (17 live queries from the owner's browser, `GET /api/smisao`; bge-m3 scores are compressed):
+on-topic questions score 0,56–0,76 at the top — „koliko košta struja za punjenje kod kuće“ 0,76 (who pays / price per
+kWh / calculator), „subvencija za kupovinu električnog auta“ 0,72, „da li mi treba dozvola skupštine stanara“ 0,73
+(the assembly guide first), RU „где бесплатно зарядить машину в Белграде“ 0,68 (free chargers first), EN „can I
+install a charger in my apartment building parking“ 0,60, „gde da napunim ako parkiram na ulici“ 0,57 (EV without a
+garage first); off-topic ones 0,45–0,52 („kupovina stana u Beogradu“ 0,52, a hairdresser in Novi Sad 0,47, RU weather
+0,45; „recept za sarmu“, „football results“, „xyzqwv“ below 0,45). So `SM_MIN` 0,55 and `SM_SPREAD` 0,08. Weak spot:
+„koji punjač da kupim za garažu“ leans to pages about garages rather than the wallbox prices — the word search finds
+those, the block only adds. Re-check with the search log after a month (RUNBOOK 3.8: queries with few word results).
 
 ### 3.9 English and Russian versions (every run that changes text)
 

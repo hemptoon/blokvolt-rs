@@ -1795,31 +1795,54 @@ async function adminSearch(env, url) {
 }
 
 // ---------------------------------------------------------------- search by meaning (docs/RUNBOOK.md 3.8b)
-// Off until the owner adds two bindings to the Pages project (Settings → Bindings): AI = Workers AI, and VEC = the
-// Vectorize index "blokvolt-smisao" (1024 dimensions, cosine). Until then /api/smisao answers {ok: false, error: "off"}
-// and the search page stops asking. With them: GET /api/smisao?q=…&l=sr embeds the query with @cf/baai/bge-m3 (one model
-// for Serbian, English and Russian) and asks Vectorize for the nearest pieces of the Serbian pages; the answer is page
-// addresses and scores, nothing else, and the query is not stored. Free tier: Workers AI 10 000 neurons a day (shared
-// with the owner's bot; a query costs ~0.03, embedding the whole site once a few hundred), Vectorize 30 M queried
-// dimensions a month (about 28 000 searches with ~1 000 pieces).
+// Off until the owner adds one binding to the Pages project (Settings → Bindings): AI = Workers AI. Until then
+// /api/smisao answers {ok: false, error: "off"} and the search page stops asking. With it: GET /api/smisao?q=…&l=sr embeds
+// the query with @cf/baai/bge-m3 (one model for Serbian, English and Russian) and compares it with the stored pieces of
+// the Serbian pages; the answer is page addresses and scores, nothing else, and the query is not stored.
+// The vectors live in D1 (sm_vec, one row a piece: 1024 numbers as signed bytes in base64, ~1,4 KB, and their length)
+// and, for the search, in the memory of the isolate (≈650 pieces → 0,7 MB; loading ~2–6 ms once per isolate, one pass
+// over them ~1 ms). No Vectorize: the dashboard cannot create an index, and for a site this size a plain pass is enough;
+// past ~3 000 pieces (the 10 ms CPU of the free plan) move to Vectorize.
+// Free tier: Workers AI 10 000 neurons a day (shared with the owner's bot; a query costs ~0,03, embedding the whole site
+// once ~400), D1 reads ≈650 rows when an isolate loads the vectors.
 // The pieces come from build.py (dist/assets/smisao/meta.json and its parts; a piece id is a hash of its page and text),
-// and are put into Vectorize here, SM_BATCH at a time: after a deploy only new or changed pieces are embedded and the
-// gone ones deleted. A step runs in the background of any /api request at most once a minute per isolate when the index
-// is behind (GET /api/smisao/stanje also starts one and shows the state), one at a time under a lock in D1.
-const SM_MODEL = '@cf/baai/bge-m3', SM_DIM = 1024, SM_BATCH = 20, SM_MIN = 0.45, SM_SPREAD = 0.12;
+// and are embedded here, SM_BATCH at a time: after a deploy only new or changed pieces are embedded and the gone ones
+// deleted. A step runs in the background of any /api request at most once a minute per isolate when the store is behind
+// (GET /api/smisao/stanje also starts one and shows the state), one at a time under a lock in D1.
+// SM_MIN and SM_SPREAD: calibrated 13.10.2026 on 17 live queries (RUNBOOK 3.8b): on-topic questions score 0,56–0,76 at
+// the top, off-topic ones („kupovina stana u Beogradu“, a hairdresser, the weather) 0,45–0,52
+const SM_MODEL = '@cf/baai/bge-m3', SM_DIM = 1024, SM_BATCH = 20, SM_MIN = 0.55, SM_SPREAD = 0.08;
 const SM_LIMIT = { ip: 80, all: 900 };       // searches a day: per daily fingerprint, and all visitors together
-let SM_LAST = 0;
-const smOn = env => !!(env.AI && env.VEC && env.DB);
+let SM_LAST = 0, SM_CACHE = null;            // SM_CACHE = {gen, u: [page per piece], M: Int8Array (piece k at k·1024), n: 1/length}
+const smOn = env => !!(env.AI && env.DB);
 function embOf(res) {
   // bge-m3 answers {shape, data: [[…], …]}; accept {response: […]} and bare arrays too
   const a = res && (res.data || res.response || res);
   return Array.isArray(a) ? a.map(v => (Array.isArray(v) ? v : (v && (v.embedding || v.values)) || null)) : [];
 }
+// a vector as signed bytes (scaled so the largest part is ±127) in base64 with its length; the scale does not matter for cosine
+function smPack(v) {
+  let m = 0, n = 0, s = '';
+  for (const x of v) m = Math.max(m, Math.abs(x));
+  const k = m ? 127 / m : 0;
+  for (const x of v) { const c = Math.round(x * k); n += c * c; s += String.fromCharCode(c & 255); }
+  return { q: btoa(s), n: Math.sqrt(n) };
+}
+function smUnpack(b, M, o) {                 // into M at o; native base64 where the runtime has it
+  if (Uint8Array.fromBase64) { M.set(new Int8Array(Uint8Array.fromBase64(b).buffer), o); return; }
+  const s = atob(b);
+  for (let i = 0; i < s.length; i++) M[o + i] = (s.charCodeAt(i) << 24) >> 24;
+}
+function smDot(M, o, f) {
+  let a = 0, b = 0, c = 0, d = 0;
+  for (let i = 0; i < SM_DIM; i += 4) { a += M[o + i] * f[i]; b += M[o + i + 1] * f[i + 1]; c += M[o + i + 2] * f[i + 2]; d += M[o + i + 3] * f[i + 3]; }
+  return a + b + c + d;
+}
 async function smTables(env) {
   await env.DB.batch([
-    env.DB.prepare('CREATE TABLE IF NOT EXISTS sm_ids (id TEXT PRIMARY KEY, v TEXT NOT NULL)'),
+    env.DB.prepare('CREATE TABLE IF NOT EXISTS sm_vec (id TEXT PRIMARY KEY, v TEXT NOT NULL, u TEXT NOT NULL, q TEXT NOT NULL, n REAL NOT NULL)'),
     env.DB.prepare(`CREATE TABLE IF NOT EXISTS sm_meta (id INTEGER PRIMARY KEY CHECK (id = 1), v TEXT, done INTEGER NOT NULL DEFAULT 0,
-      total INTEGER NOT NULL DEFAULT 0, lock_until INTEGER NOT NULL DEFAULT 0, at INTEGER, err TEXT)`),
+      total INTEGER NOT NULL DEFAULT 0, gen INTEGER NOT NULL DEFAULT 0, lock_until INTEGER NOT NULL DEFAULT 0, at INTEGER, err TEXT)`),
     env.DB.prepare('INSERT OR IGNORE INTO sm_meta (id) VALUES (1)'),
   ]);
 }
@@ -1830,7 +1853,7 @@ async function smManifest(env, request) {
   } catch (e) { return null; }
 }
 async function smState(env) {
-  try { return await env.DB.prepare('SELECT v, done, total, lock_until, at, err FROM sm_meta WHERE id = 1').first(); } catch (e) { return null; }
+  try { return await env.DB.prepare('SELECT v, done, total, gen, lock_until, at, err FROM sm_meta WHERE id = 1').first(); } catch (e) { return null; }
 }
 async function smStep(env, request, man) {
   man = man || await smManifest(env, request);
@@ -1840,41 +1863,43 @@ async function smStep(env, request, man) {
   const got = await env.DB.prepare('UPDATE sm_meta SET lock_until = ?1 WHERE id = 1 AND lock_until < ?2 RETURNING id').bind(t + 90, t).first();
   if (!got) return 'busy';
   try {
-    const have = new Set(((await env.DB.prepare('SELECT id FROM sm_ids').all()).results || []).map(r => r.id));
+    const have = new Set(((await env.DB.prepare('SELECT id FROM sm_vec').all()).results || []).map(r => r.id));
     const want = new Set();
     for (const p of man.parts) for (const id of p.ids) want.add(id);
     const part = man.parts.find(p => p.ids.some(id => !have.has(id)));
-    let note = 'up to date';
+    let note = 'up to date', changed = 0;
     if (part) {
       const r = await env.ASSETS.fetch(new Request(new URL('/assets/smisao/' + part.f, request.url)));
       const pieces = (await r.json()).filter(x => !have.has(x.id)).slice(0, SM_BATCH);
       const vec = embOf(await env.AI.run(SM_MODEL, { text: pieces.map(x => x.x) }));
       const ok = pieces.map((x, i) => ({ x, v: vec[i] })).filter(o => Array.isArray(o.v) && o.v.length === SM_DIM);
       if (ok.length) {
-        await env.VEC.upsert(ok.map(o => ({ id: o.x.id, values: o.v, metadata: { u: o.x.u } })));
-        await env.DB.batch(ok.map(o => env.DB.prepare('INSERT OR REPLACE INTO sm_ids (id, v) VALUES (?1, ?2)').bind(o.x.id, man.v)));
+        await env.DB.batch(ok.map(o => { const p = smPack(o.v);
+          return env.DB.prepare('INSERT OR REPLACE INTO sm_vec (id, v, u, q, n) VALUES (?1, ?2, ?3, ?4, ?5)').bind(o.x.id, man.v, o.x.u, p.q, p.n); }));
         ok.forEach(o => have.add(o.x.id));
+        changed = ok.length;
       }
       if (ok.length < pieces.length) throw new Error('embedding answer: ' + (vec[0] ? vec[0].length + ' dimensions, ' + SM_DIM + ' expected' : 'empty'));
       note = 'added ' + ok.length;
     } else {
       const gone = [...have].filter(id => !want.has(id)).slice(0, 270);
       if (gone.length) {
-        await env.VEC.deleteByIds(gone);
         const q = [];
         for (let i = 0; i < gone.length; i += 90) {
           const g = gone.slice(i, i + 90);
-          q.push(env.DB.prepare(`DELETE FROM sm_ids WHERE id IN (${g.map((_, k) => '?' + (k + 1)).join(',')})`).bind(...g));
+          q.push(env.DB.prepare(`DELETE FROM sm_vec WHERE id IN (${g.map((_, k) => '?' + (k + 1)).join(',')})`).bind(...g));
         }
         await env.DB.batch(q);
         gone.forEach(id => have.delete(id));
         note = 'deleted ' + gone.length;
+        changed = gone.length;
       }
     }
     const done = [...want].filter(id => have.has(id)).length;
-    // done = -1 while pieces of changed or removed pages still wait to be deleted, so the next request steps again
-    await env.DB.prepare('UPDATE sm_meta SET v = ?1, done = ?2, total = ?3, at = ?4, err = NULL, lock_until = 0 WHERE id = 1')
-      .bind(man.v, have.size > want.size ? -1 : done, want.size, t).run();
+    // done = -1 while pieces of changed or removed pages still wait to be deleted, so the next request steps again;
+    // gen grows with every change, so isolates know to reload the vectors
+    await env.DB.prepare('UPDATE sm_meta SET v = ?1, done = ?2, total = ?3, gen = gen + ?4, at = ?5, err = NULL, lock_until = 0 WHERE id = 1')
+      .bind(man.v, have.size > want.size ? -1 : done, want.size, changed ? 1 : 0, t).run();
     return note;
   } catch (e) {
     const msg = String((e && e.message) || e).slice(0, 300);
@@ -1882,7 +1907,7 @@ async function smStep(env, request, man) {
     return 'error: ' + msg;
   }
 }
-// in the background of /api requests: is the index behind the deployed pieces? then one step
+// in the background of /api requests: is the store behind the deployed pieces? then one step
 async function smAuto(request, env, ctx) {
   if (!smOn(env) || !ctx || !ctx.waitUntil || Date.now() - SM_LAST < 60000) return;
   SM_LAST = Date.now();
@@ -1896,7 +1921,7 @@ async function smAuto(request, env, ctx) {
   })().catch(e => console.log('smisao: ' + (e && e.message))));
 }
 async function smStatus(request, env, ctx) {
-  if (!smOn(env)) return json({ ok: true, on: false, need: ['AI', 'VEC'].filter(k => !env[k]) });
+  if (!smOn(env)) return json({ ok: true, on: false, need: ['AI'].filter(k => !env[k]) });
   const ip = await ipHash(request, env);
   if (!(await allow(env, 'smst:' + ip, 300))) return bad('limit', 429);
   const man = await smManifest(env, request);
@@ -1904,21 +1929,37 @@ async function smStatus(request, env, ctx) {
   const st = await smState(env);
   return json({ ok: true, on: true, step: note, pieces: man ? man.n : null, build: man ? man.v : null, state: st });
 }
+// the vectors of the isolate, reloaded from D1 when the store changed (gen)
+async function smVectors(env) {
+  const st = await smState(env);
+  if (!st || !st.gen) return null;
+  if (SM_CACHE && SM_CACHE.gen === st.gen) return SM_CACHE;
+  const res = ((await env.DB.prepare('SELECT u, q, n FROM sm_vec').all()).results || []);
+  const c = { gen: st.gen, u: new Array(res.length), M: new Int8Array(res.length * SM_DIM), n: new Float32Array(res.length) };
+  for (let k = 0; k < res.length; k++) { smUnpack(res[k].q, c.M, k * SM_DIM); c.u[k] = res[k].u; c.n[k] = res[k].n ? 1 / res[k].n : 0; }
+  SM_CACHE = c;
+  return c;
+}
 async function smSearch(request, env, url) {
   if (!smOn(env)) return json({ ok: false, error: 'off' });
   const q = clean(url.searchParams.get('q'), 160);
   if (q.length < 2) return bad('q');
   const ip = await ipHash(request, env);
   if (!(await allow(env, 'sm:' + ip, SM_LIMIT.ip)) || !(await allow(env, 'sm:all', SM_LIMIT.all))) return json({ ok: false, error: 'limit' }, 429);
+  let c;
+  try { c = await smVectors(env); } catch (e) { return json({ ok: false, error: 'index' }, 502); }
+  if (!c || !c.u.length) return json({ ok: true, hits: [] });          // the store is still empty: nothing to compare with
   let vec;
   try { vec = embOf(await env.AI.run(SM_MODEL, { text: [q] }))[0]; } catch (e) { return json({ ok: false, error: 'ai' }, 502); }
   if (!Array.isArray(vec) || vec.length !== SM_DIM) return json({ ok: false, error: 'ai' }, 502);
-  let r;
-  try { r = await env.VEC.query(vec, { topK: 12, returnMetadata: 'all' }); } catch (e) { return json({ ok: false, error: 'index' }, 502); }
+  const f = Float32Array.from(vec);
+  let fn = 0;
+  for (let i = 0; i < SM_DIM; i++) fn += f[i] * f[i];
+  fn = fn ? 1 / Math.sqrt(fn) : 0;
   const best = {};
-  for (const m of (r && r.matches) || []) {
-    const u = m.metadata && m.metadata.u;
-    if (u && (best[u] == null || m.score > best[u])) best[u] = m.score;
+  for (let k = 0; k < c.u.length; k++) {
+    const s = smDot(c.M, k * SM_DIM, f) * c.n[k] * fn, u = c.u[k];
+    if (best[u] === undefined || s > best[u]) best[u] = s;
   }
   let hits = Object.keys(best).map(u => ({ u, s: Math.round(best[u] * 1000) / 1000 })).sort((a, b) => b.s - a.s);
   const top = hits.length ? hits[0].s : 0;
