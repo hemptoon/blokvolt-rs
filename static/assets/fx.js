@@ -38,7 +38,7 @@
       blokvolt: {
         sr: 'Iznosi u evrima i dolarima su informativni, po srednjem kursu NBS na {d}. Na punjačima i u računima cene su u dinarima.',
         en: 'Amounts in euros and dollars are for reference, at the National Bank of Serbia middle rate on {d}. Chargers and bills charge in dinars.',
-        ru: 'Суммы в евро и долларах — справочные, по среднему курсу НБС на {d}. На зарядках и в счетах цены в динарах.'
+        ru: 'Суммы в евро и долларах — справочные, по среднему курсу НБС на {d}. На зарядках и в чеках цены указаны в динарах.'
       }
     },
     title: {

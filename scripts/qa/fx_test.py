@@ -29,7 +29,7 @@ FALLBACK_DATE = '05.10.2026'
 NOTES = {
     'sr': 'Iznosi u evrima i dolarima su informativni, po srednjem kursu NBS na 05.10.2026. Na punjačima i u računima cene su u dinarima.',
     'en': 'Amounts in euros and dollars are for reference, at the National Bank of Serbia middle rate on 05.10.2026. Chargers and bills charge in dinars.',
-    'ru': 'Суммы в евро и долларах — справочные, по среднему курсу НБС на 05.10.2026. На зарядках и в счетах цены в динарах.',
+    'ru': 'Суммы в евро и долларах — справочные, по среднему курсу НБС на 05.10.2026. На зарядках и в чеках цены указаны в динарах.',
 }
 # pages whose text must not change at all with RSD (and with EUR for the "never" group)
 KEY_PAGES = ['/javno-punjenje/', '/javno-punjenje/chargego/', '/firme/stasanet/', '/cena-punjaca-za-elektricni-auto',

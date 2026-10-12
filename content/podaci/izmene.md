@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 10.10.2026
+updated: 12.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-10
+modified: 2026-10-12
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 12. oktobar 2026
+
+- [Ruska verzija sajta](/ru/): ispravljeno 1.125 prevedenih rečenica — tačniji termini, prirodniji ruski, isti brojevi i linkovi. Srpska i engleska verzija nisu menjane.
+
 ## 10. oktobar 2026
 
 - [Politika privatnosti](/politika-privatnosti.html#merenje-poseta): od danas se korišćenje funkcija sajta (kartice punjača, filteri, pretraga, forme) meri i alatom PostHog, na serverima u EU. Dok u baneru ne izaberete „Dozvoli“, merenje radi bez kolačića; kolačić i snimanje kretanja po stranicama uključuju se samo uz tu dozvolu, a izbor možete promeniti u politici privatnosti. IP adresa se ne čuva.
