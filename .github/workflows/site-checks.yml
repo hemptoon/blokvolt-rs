@@ -1,7 +1,8 @@
 # Automatic checks of www.blokvolt.rs (docs/RUNBOOK.md 3.21). Part of the shared quality system of
 # BlokVolt and Evolako: the morning QA review reads the status badges of this workflow.
 #   build — every push to main (except the Android project) and by hand: the site builds, nothing is left
-#           untranslated, internal links resolve, blokvolt.com builds, the news pass the linter.
+#           untranslated, internal links resolve, blokvolt.com builds, the news pass the linter, the site search
+#           answers its test queries (scripts/qa/pretraga_test.mjs, pretraga_worker_test.mjs).
 #   live  — every night at 02:17 UTC and by hand: the live sites answer as a visitor, a phone and a mail
 #           server expect (scripts/qa/live_smoke.py).
 # A failed run is e-mailed to the owner by GitHub. Nothing here deploys or changes anything.
@@ -44,6 +45,13 @@ jobs:
         run: python3 scripts/gen_com.py
       - name: News linter
         run: python3 scripts/lint_sr.py --all-news
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Site search (typos, Cyrillic, towns, three languages; the search log and search by meaning on the server)
+        run: |
+          node scripts/qa/pretraga_test.mjs
+          node --no-warnings scripts/qa/pretraga_worker_test.mjs
   live:
     if: github.event_name != 'push'
     runs-on: ubuntu-latest

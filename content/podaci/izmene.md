@@ -16,6 +16,8 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 - [Firme](/firme/): klik na firmu u spisku sada otvara njene cene po modelu ili paketu, šta je u ceni, ugradnju, brojilo, papire za skupštinu, uslugu i pokrivenost — iste kolone za sve firme. Cela stranica firme je na linku „Cela stranica firme“. Isto važi za podstranice po vrsti firme i za stranicu [Koliko košta kućni punjač](/cena-punjaca-za-elektricni-auto.html).
 - [Evolako](/firme/evolako/): uz pakete su navedeni modeli punjača i varijante cena, kao na evolako.rs (provereno 13. oktobra). U spisku firmi uz cenu sada piše i „bez ugradnje“ kad to navodi sajt firme — isto pravilo za sve firme.
 - [Politika privatnosti](/politika-privatnosti.html#merenje-poseta): u spisak funkcija čije se korišćenje meri dodata je kartica firme u spisku.
+- [Pretraga](/pretraga/) je nova: razume greške u kucanju („evolnako“ nalazi Evolako), ćirilicu („Нови Сад“), reči istog značenja (volbox = wallbox) i gradove sa mape punjača bez posebne stranice (Kraljevo, Paraćin…). Kad nema rezultata, nudi ispravljenu reč, popularne stranice, najnovije vesti i polje „Niste našli šta tražite?“. Na početnoj strani pretraga daje predloge dok kucate.
+- [Politika privatnosti](/politika-privatnosti.html#pretraga): upiti iz pretrage čuvaju se zbirno 90 dana, bez IP adrese i kolačića, da bi se videlo šta na sajtu nedostaje; opisana je i pretraga po smislu, kad bude uključena.
 
 ## 12. oktobar 2026
 

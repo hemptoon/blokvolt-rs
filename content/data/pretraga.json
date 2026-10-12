@@ -1,0 +1,41 @@
+{
+  "_about": "Site search settings (docs/RUNBOOK.md 3.8). Words are written as people type them; the search folds case, diacritics and Cyrillic itself. syn: groups of words that mean the same thing on this site — a query word that is in a group also finds pages with the other words of the group (one word or a short phrase each). stop: words ignored in a query, per page language. popular: pages under „Popularno“ on /pretraga/ (empty and no-result states), refreshed with the monthly run from the visit counter and Search Console. Add a synonym when the search log (/admin/ → Pretraga) shows a query that found nothing although a page covers it.",
+  "syn": [
+    ["auto", "auta", "automobil", "automobila", "automobili", "vozilo", "kola", "car", "cars", "автомобиль", "машина", "электромобиль"],
+    ["wallbox", "volbox", "volboks", "valboks", "walbox", "wolbox", "vollbox", "zidni punjač"],
+    ["schuko", "šuko", "suko", "šuko utičnica", "obična utičnica"],
+    ["punjač", "punjači", "punjenje", "dopuniti", "napunim", "napuniti", "punim", "puniti", "charger", "chargers", "stanica za punjenje", "зарядка", "зарядки", "зарядное"],
+    ["skupština", "skupština stanara", "stambena zajednica", "upravnik zgrade", "upravnik"],
+    ["zgrada", "zgradi", "stan", "stambena zgrada", "blok", "apartment", "многоквартирный"],
+    ["garaža", "garaži", "parking", "parking mesto", "podzemna garaža", "garage", "parkiram", "parkiranje", "parkirati", "parking garaža"],
+    ["ulica", "ulici", "ulicu", "na ulici", "bez garaže", "bez parkinga", "street parking", "на улице", "без гаража"],
+    ["subvencija", "subvencije", "podsticaj", "podsticaji", "subsidy", "subsidies", "субсидия", "субсидии"],
+    ["chargego", "charge&go", "charge go", "charge and go", "čardžgo"],
+    ["tesla", "supercharger", "superčardžer", "тесла"],
+    ["eps", "elektroprivreda", "elektroprivreda srbije"],
+    ["eds", "elektrodistribucija", "elektrodistribucija srbije", "distribucija"],
+    ["brojilo", "podbrojilo", "mid brojilo", "merno brojilo", "sub-meter", "submeter", "счетчик", "счётчик"],
+    ["kalkulator", "kalkulator troškova", "računica", "calculator", "калькулятор"],
+    ["besplatno", "besplatni", "besplatan", "free", "бесплатно", "бесплатные"],
+    ["tip 2", "type 2", "type2", "mennekes"],
+    ["ccs", "ccs2", "combo"],
+    ["noćna tarifa", "niža tarifa", "jeftinija struja", "jeftina tarifa", "night tariff", "low tariff", "ночной тариф", "низкий тариф", "льготный тариф"],
+    ["evolako", "эволако"],
+    ["stasanet", "стасанет"],
+    ["struja", "električna energija", "elektricitet", "electricity", "электричество"],
+    ["registracija", "registrovanje", "tehnički pregled", "registration"],
+    ["putarina", "putarine", "toll", "tolls"],
+    ["uvoz", "carina", "import", "customs", "растаможка"],
+    ["osiguranje", "kasko", "insurance", "страховка"],
+    ["kredit", "lizing", "leasing", "loan", "кредит", "лизинг"],
+    ["najam", "rent", "rent a car", "iznajmljivanje", "аренда"],
+    ["aplikacija", "app", "apk", "приложение"],
+    ["hibrid", "plug-in hibrid", "phev", "hybrid", "гибрид"]
+  ],
+  "stop": {
+    "sr": ["i", "u", "na", "za", "od", "do", "sa", "se", "je", "su", "da", "li", "ili", "ali", "kako", "koliko", "gde", "šta", "sta", "što", "sto", "koji", "koja", "koje", "kad", "kada", "mi", "me", "moj", "moja", "moje", "ja", "ti", "vi", "o", "po", "pri", "kod", "iz", "bez", "ima", "imam", "mogu", "može", "treba", "ako", "bi", "sam", "smo", "ste", "će", "ce", "biti", "neki", "neka", "nešto", "nesto", "ovde", "tamo", "još", "jos", "samo"],
+    "en": ["a", "an", "the", "and", "or", "of", "in", "on", "at", "to", "for", "with", "from", "by", "is", "are", "be", "how", "what", "where", "which", "when", "do", "does", "can", "i", "my", "me", "you", "your", "much", "many", "if", "it", "its", "there", "should", "would", "will", "need", "want"],
+    "ru": ["и", "в", "во", "на", "с", "со", "за", "к", "ко", "по", "о", "об", "от", "до", "из", "у", "для", "как", "где", "что", "сколько", "какой", "какая", "какие", "ли", "или", "а", "но", "я", "мой", "моя", "мне", "можно", "нужно", "есть", "это", "если", "бы", "меня", "там", "здесь", "ещё", "еще", "только", "надо", "хочу"]
+  },
+  "popular": ["/mapa/", "/javno-punjenje/", "/javno-punjenje/besplatni-punjaci/", "/podaci/subvencije-2026/", "/punjenje-elektricnog-auta-u-zgradi", "/alati/kalkulator-troskova/"]
+}

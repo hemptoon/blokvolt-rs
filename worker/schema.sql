@@ -261,3 +261,31 @@ CREATE TABLE IF NOT EXISTS kurs (
   usd REAL NOT NULL,             -- RSD for 1 USD, 80–140
   fetched_at TEXT NOT NULL       -- ISO time of the fetch (UTC)
 );
+
+-- ---------------------------------------------------------------- site search (RUNBOOK 3.8, 3.8b)
+-- What people search on /pretraga/ and in the home suggestions, folded per day, language and query. No IP, fingerprint,
+-- account or cookie; e-mail addresses and runs of digits are cut out of q before it is written. Deleted after 90 days.
+-- The worker creates it on first use. Read: GET /api/admin/pretraga (owner's key) — /admin/ → Pretraga.
+CREATE TABLE IF NOT EXISTS pretraga (
+  day TEXT NOT NULL,             -- YYYY-MM-DD (UTC)
+  l TEXT NOT NULL,               -- sr | en | ru
+  q TEXT NOT NULL,               -- the query, lower case, at most 80 characters
+  n INTEGER NOT NULL DEFAULT 0,  -- pages found (the last time)
+  cnt INTEGER NOT NULL DEFAULT 0,-- searches
+  clk INTEGER NOT NULL DEFAULT 0,-- opened results
+  home INTEGER NOT NULL DEFAULT 0,-- of the searches, how many from the home suggestions
+  fix TEXT,                      -- the corrected query shown instead, when the typed words were on no page
+  PRIMARY KEY (day, l, q)
+);
+-- Search by meaning: which pieces of the pages (dist/assets/smisao/) are in the Vectorize index, and its state. Only used
+-- once the Pages project has the AI and VEC bindings. The worker creates both on first use.
+CREATE TABLE IF NOT EXISTS sm_ids (id TEXT PRIMARY KEY, v TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS sm_meta (
+  id INTEGER PRIMARY KEY CHECK (id = 1),
+  v TEXT,                        -- the build (meta.json v) the index follows
+  done INTEGER NOT NULL DEFAULT 0, -- pieces of that build in the index (-1: pieces of removed pages still to delete)
+  total INTEGER NOT NULL DEFAULT 0,
+  lock_until INTEGER NOT NULL DEFAULT 0,
+  at INTEGER,
+  err TEXT                       -- the last error (cleared by the next good step)
+);

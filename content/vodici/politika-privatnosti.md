@@ -35,8 +35,8 @@ Pri svakoj poseti provajder sajta (Cloudflare) obrađuje tehničke podatke: IP a
 <summary>Detalji: svrha, rokovi, obrađivači, kolačići</summary>
 
 - **Svrha i osnov:** odgovor na poruke, tačni podaci, bezbedan i ispravan rad sajta i prikaz mape (legitimni interes).<!--nalog--> Nalog se vodi na vaš zahtev, radi usluge koju ste tražili (ugovor).<!--/nalog--><!--pregled--> Nedeljni pregled se šalje samo uz vašu saglasnost.<!--/pregled--> Automatizovanog odlučivanja nema, a podaci se ne prodaju.
-- **Rokovi:** prepiska i poruke iz formi čuvaju se najduže 12 meseci od poslednjeg kontakta, a na zahtev se brišu i ranije, osim ako zakon traži duže čuvanje. Prijave, ocene i fotografije sa mape stoje dok je punjač na mapi ili dok ne tražite brisanje. Tehničke zapise čuva provajder po svojim pravilima.
-- **Obrađivači:** Cloudflare (hosting, baza podataka i merenje poseta) i Spacemail kompanije Spaceship (e-pošta).<!--posthog--> Korišćenje funkcija sajta meri PostHog (serveri u EU).<!--/posthog--><!--posta--> Mejlove sa sajta šalje Resend.<!--/posta--> Podatke obrađuju i van Srbije, uz mere zaštite iz Zakona o zaštiti podataka o ličnosti: primeren nivo zaštite ili standardne ugovorne klauzule.
+- **Rokovi:** prepiska i poruke iz formi čuvaju se najduže 12 meseci od poslednjeg kontakta, a na zahtev se brišu i ranije, osim ako zakon traži duže čuvanje. Upiti iz pretrage čuvaju se 90 dana. Prijave, ocene i fotografije sa mape stoje dok je punjač na mapi ili dok ne tražite brisanje. Tehničke zapise čuva provajder po svojim pravilima.
+- **Obrađivači:** Cloudflare (hosting, baza podataka, merenje poseta i pretraga po smislu) i Spacemail kompanije Spaceship (e-pošta).<!--posthog--> Korišćenje funkcija sajta meri PostHog (serveri u EU).<!--/posthog--><!--posta--> Mejlove sa sajta šalje Resend.<!--/posta--> Podatke obrađuju i van Srbije, uz mere zaštite iz Zakona o zaštiti podataka o ličnosti: primeren nivo zaštite ili standardne ugovorne klauzule.
 - **Kolačići i memorija pregledača:** <!--noconsent-->sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. U memoriju pregledača (localStorage) upisuju se samo spisak omiljenih punjača, izbor „Imam Teslu“, „Moj auto“ i aplikacija za navigaciju na mapi, i to tek kad ih sami napravite. Kad bi sajt ikada uveo kolačiće za analitiku ili reklame, prvo bi tražio vašu saglasnost.<!--/noconsent--><!--consent-->bez vaše dozvole sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. Ako u baneru dozvolite kolačić za analitiku, PostHog postavlja kolačić čije ime počinje sa ph_ i u memoriju pregledača upisuje nasumični identifikator; kolačić važi godinu dana, a dozvolu možete povući bilo kada (dugme u delu „Merenje poseta“). U memoriju pregledača (localStorage) upisuju se i vaš izbor o kolačiću, spisak omiljenih punjača, izbor „Imam Teslu“, „Moj auto“ i aplikacija za navigaciju na mapi, kad ih sami napravite. Kolačića za reklame nema.<!--/consent--><!--nalog--> Za prijavu na nalog sajt postavlja neophodne kolačiće bv_s, bv_in i bv_n, opisane u delu [Nalog](#nalog).<!--/nalog-->
 
 </details>
@@ -99,6 +99,14 @@ Na stranici „Mapa punjača“ podloga mape učitava se sa servera OpenFreeMap 
 Dugmad „Blizu mene“ i „Najbliži punjač“ koriste vašu lokaciju samo kada ih pritisnete. Lokacija se ne šalje sajtu i ne čuva se. Link na evolako.rs u atribuciji mape i u polju „Izdvojeno“ nosi oznaku da dolazite sa BlokVolta.
 
 Na stranici mape je i link koji ljudi ne vide, a robots.txt ga zabranjuje robotima. Ako ga neki program ipak otvori, beleže se samo dan, dnevni otisak IP adrese i oznaka programa (User-Agent): tako vidimo ko automatski preuzima podatke protivno uslovima. Nikome se zbog toga ne zabranjuje pristup.
+
+## Pretraga {#pretraga}
+
+Pretraga radi u vašem pregledaču. Da bi se videlo šta posetioci traže i šta na sajtu nedostaje, tekst upita se šalje sajtu i čuva zbirno po danu: upit, jezik stranice, broj pronađenih stranica i broj otvorenih rezultata. Pre upisa se iz upita brišu e-adrese i duži nizovi cifara, na primer broj telefona. Uz upit se ne čuvaju IP adresa, otisak, nalog ni kolačić, pa se ne može povezati sa osobom. Zapisi se brišu posle 90 dana.
+
+Kad je uključena pretraga po smislu, upit se šalje i modelu veštačke inteligencije na serverima Cloudflare (Workers AI). Model upit pretvara u niz brojeva koji se poredi sa delovima stranica sajta, a sajt dobija samo adrese najbližih stranica. Taj upit se ne čuva, a Cloudflare ga ne koristi za treniranje modela.
+
+Poruka iz polja „Niste našli šta tražite?“ čuva se kao i poruke iz drugih formi (gore).
 
 ## Video
 

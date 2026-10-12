@@ -47,3 +47,6 @@
 </div>
 </div>
 {% endblock %}
+{% block scripts %}<script id="s-cfg" type="application/json">__SEARCH_CFG__</script>
+<script id="bv-i18n" type="application/json">{"sug_label": "Predlozi pretrage", "sug_none": "Nema stranice za „{q}“. Pritisnite Enter za celu pretragu.", "sug_all": "Svi rezultati za {q}", "sug_fixed": "Prikazano za {q}", "q": {"sr": ["„", "“"], "en": ["“", "”"], "ru": ["«", "»"]}}</script>
+<script src="/assets/pretraga.js" defer></script>{% endblock %}

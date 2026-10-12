@@ -63,6 +63,7 @@ credentials) — commits go through the owner's browser (section 6).
 | Logos | `static/assets/logos/*.png`, `content/data/logos.json`, `scripts/logos.py` | `<slug>.png` for firms, `op-<slug>.png` for networks (a network without one uses the firm logo of the same slug). See 3.12. |
 | EPS tariffs page | `content/data/kalkulator.json` (+ `tarife_next_check`) | Then run `python3 scripts/gen_tarife_eps.py` — the page `/podaci/tarife-eps/` is generated, never edited by hand. Night-tariff hours per region and the single-tariff prices live in the same `eps` block. |
 | Wallbox model prices | `content/data/wallbox-modeli.json` | The model-level view of the firm register: re-derive it from `content/firme/*.json` at the quarterly revision, then run `python3 scripts/gen_wallbox.py`. |
+| Site search: synonyms, ignored words, „Popularno“ | `content/data/pretraga.json` | See 3.8. A query in the search log (/admin/ → Pretraga) that found nothing although a page answers it → a synonym; `popular` refreshed monthly. |
 | Building-billing calculator | `content/data/kalkulator-zgrada.json` | Defaults and the MID meter price range (taken from the register); the page `/alati/racun-u-zgradi/` is a template, no generator. |
 | New EV prices | `content/data/ev-modeli.json` | Then run `python3 scripts/gen_ev_modeli.py` (regenerates `/podaci/cene-elektricnih-automobila/`). Update `checked` and `next_check` in the JSON. `subsidy_eur` drives the "after subsidy" column. |
 | Rentals, regional charging | `content/data/rent-carsharing.json`, `content/data/region.json` + the pages `content/podaci/rent-a-car-i-car-sharing.md`, `content/javno/region.md` | The pages are hand-written from the JSON; edit both. |
@@ -305,12 +306,86 @@ The closed row says „sa ugradnjom“ for group A and „bez ugradnje“ for an
 or „bez montaže“ (`NO_INSTALL` in `build.py`; owner's decision 13.10.2026, the same rule for every firm). A firm whose site
 does not say it gets neither — never guess.
 
-### 3.8 Site search index
+### 3.8 Site search (/pretraga/ and the suggestions under the home search box) — since 13.10.2026
 
-`build.py` writes `dist/assets/search.json` from the generated pages (title, description, section,
-headings and the first 1.200 characters of body text) and `/pretraga/` searches it in the browser.
-Nothing to maintain by hand — but if a page should be findable by a word that is not in its text,
-put that word in the page's description.
+How it works. `build.py` → `build_search()` writes `dist/assets/search.json` (and `search-en.json`, `search-ru.json`
+from the translated pages): per page the title (h1), description, section (last breadcrumb), headings and the first
+1.200 characters of the main text, plus `k` (page kind: `kind_of()`) and `dt` (news date). Not in the index: pages with
+noindex, ads (`aside.oglas`), the „Izdvojeno“ box (`.promo`), and on every page except the hubs the link cards to other
+pages (Povezano, similar firms, news cards: `a.tile`, `a.row`, `a.ncard`) — their words belong to the pages they link
+to. `town_entries()` adds one result per town that has chargers on the map but no city page („Kraljevo — 1 javni punjač
+na mapi“ → `/mapa/?q=Kraljevo`, in the three languages).
+
+`static/assets/pretraga.js` is the engine and the page code (one file; the build adds `?v=`), on top of MiniSearch
+(`static/assets/vendor/minisearch-7.2.0.min.js`, MIT, licence next to it; loaded only when someone searches):
+BM25 over title ×5, URL words ×3, headings ×2, description ×2, section ×1,5, text ×1; typos (one wrong letter in
+words of 5–7 letters, two from 8) and word beginnings; case, diacritics (č = c, đ = dj) and Cyrillic do not matter
+(Serbian Cyrillic is turned into Latin; on /ru/ the Russian words stay and brand names are also tried in Latin);
+a light stemmer per language (one ending off, the stem keeps 4 letters: „subvencije“ = „subvencija“, „tesla“ ≠ „test“);
+page kinds weigh differently (guides 1,35, data and tools 1,3, city pages 1,25, networks and public charging 1,2,
+firms and help 1, news 0,8 and less with age, the home page 0,45). All words must match; if no page has all of them,
+pages with more of the words come first (with three or more words, at least two). A word that is on no page is
+corrected to the nearest word of a title or heading: with no results the results of the corrected query are shown
+(„Za „evolnako“ nema stranica“), with results „Možda ste mislili: …“ only when the correction changes the first result.
+
+**`content/data/pretraga.json`** — the only file to maintain: `syn` (groups of words that mean the same thing on this
+site; a typed word counts fully, its synonyms a third, phrase synonyms 0,8), `stop` (words a query ignores, per
+language), `popular` (six pages under „Popularno“ on /pretraga/ — when the search is empty or finds little; refresh with
+the monthly run from the visit counter and Search Console; the build fails if one of them is not in the index).
+
+When nothing is found, /pretraga/ shows: the message, „Popularno“, the three newest news, „Rubrike“ and the box
+„Niste našli šta tražite?“ (POST /api/zahtev, kind `pretraga`, with the query; the owner's bot shows it in the BlokVolt
+topic like the other requests; no name or e-mail). Under the home search box the same engine suggests up to six pages
+while typing (arrows, Enter, Escape) and „Svi rezultati za …“.
+
+**The search log** (what people look for and what is missing): every search that settles (Enter, a click, or 2,5 s
+without typing) is sent to `POST /api/pretraga` — the query, the page language, the number of pages found, the corrected
+query if one was shown, and for a click only that a result was opened. The worker cuts out e-mail addresses and runs of
+digits, folds rows per day, language and query (D1 table `pretraga`, worker/schema.sql) and deletes them after 90 days.
+No IP, fingerprint, account or cookie is stored with them (the daily fingerprint only counts calls in `rl`). The owner
+reads it on `/admin/` → „Pretraga“ (`GET /api/admin/pretraga?d=7|30|90`): searches, the share without results, the
+queries that found nothing, the most frequent ones. The privacy policy (#pretraga) says exactly this — change both
+together.
+
+What to do with it, in the monthly run (or when asked): look at „Bez rezultata“. A query that a page answers with other
+words → add a synonym group (or the word to the page's description). A topic nobody covers → a candidate for a guide
+(say it in the report). Then `node scripts/qa/pretraga_test.mjs` must stay green.
+
+Checks: `node scripts/qa/pretraga_test.mjs` (68 real queries in the three languages against the built indexes: typos,
+Cyrillic, towns, synonyms, stop words, suggestions; `--show` prints every answer), `node --no-warnings
+scripts/qa/pretraga_worker_test.mjs` (the worker with a D1 look-alike: the log, its cleaning, the owner's view,
+„Niste našli“, search by meaning off and on), both in Site checks (3.21); in a browser with a local server:
+`python3 scripts/qa/pretraga_ui_test.py /tmp/bv-search-shots` (three languages, help blocks, the question box, the log,
+the home suggestions with the keyboard, no JS or CSP errors, phone and desktop screenshots). Add a case to
+`pretraga_test.mjs` for every complaint about the search.
+
+### 3.8b Search by meaning (Workers AI + Vectorize) — built 13.10.2026, switched on by two bindings
+
+When the words find fewer than three pages, or the query has three or more words (reads like a question), /pretraga/
+asks `GET /api/smisao?q=…&l=…` and shows up to five more pages under „Slično po smislu“. The worker embeds the query
+with `@cf/baai/bge-m3` (one multilingual model: Serbian, English and Russian queries all compare with the Serbian
+pages) and asks Vectorize for the nearest pieces; the answer is page addresses and scores only, the query is not stored,
+nothing is generated (no text from a model reaches the page). Thresholds in the worker: `SM_MIN` 0,45 and `SM_SPREAD`
+0,12 below the best score — calibrate on real queries after it is on (they are a guess until then).
+
+Off until the owner adds to the Pages project `blokvolt` (Settings → Bindings, Production): **Workers AI** named `AI`,
+and **Vectorize index** named `VEC` = index `blokvolt-smisao` (dimensions **1024**, metric **cosine**; created once under
+Storage & databases → Vectorize). The bindings take effect with the next deploy. Without them `/api/smisao` answers
+`{ok: false, error: "off"}`, the page stops asking, and no table is created.
+
+The pieces: `build.py` → `build_smisao()` writes `dist/assets/smisao/meta.json` and its parts (≈600 pieces: "<title> —
+<heading>: <≤ 900 characters>", at most 8 a page, Serbian pages only, without ads, „Izdvojeno“ and link cards). A piece
+id is a hash of its page and text, so after a deploy the worker embeds only new or changed pieces and deletes the gone
+ones (D1 `sm_ids`, `sm_meta`). It does this in steps of 20 pieces: in the background of any /api request (at most once a
+minute per isolate, when the index is behind) and on `GET /api/smisao/stanje` (also shows the state: build, pieces,
+done, last error). The first fill takes ~30 steps; to finish it at once, open `https://www.blokvolt.rs/api/smisao/stanje`
+in the owner's browser and call it ~35 times from the console (each answer says what the step did).
+
+Cost: free tier. Workers AI 10 000 neurons a day for the whole account — **shared with the owner's bot** (Whisper,
+Mistral): a query ~0,03 neurons, embedding the whole site once ~400. Vectorize free: 5 M stored dimensions (≈600 × 1024
+= 0,6 M) and 30 M queried a month ≈ 28 000 searches. Limits in the worker (`SM_LIMIT`): 80 a day per visitor
+fingerprint, 900 a day in all. On the Workers Free plan nothing is billed: over a limit the calls fail and the page
+shows the word results only.
 
 ### 3.9 English and Russian versions (every run that changes text)
 

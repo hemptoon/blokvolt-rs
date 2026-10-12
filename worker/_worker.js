@@ -14,7 +14,7 @@ const STATUSES = new Set(['ok', 'problem', 'broken', 'missing']);
 // drivers' short answers on the map card (map.js: WHY, FACTS): field -> allowed values
 const FACT_VALUES = { why: new Set(['busy', 'broken', 'app', 'cable', 'closed', 'short']), cab: new Set(['att', 'own']),
   park: new Set(['free', 'paid']), oh: new Set(['24', 'lim']) };
-const KINDS = new Set(['firma', 'mreza', 'ispravka', 'stanica', 'pomoc']);
+const KINDS = new Set(['firma', 'mreza', 'ispravka', 'stanica', 'pomoc', 'pretraga']);   // pretraga: „Niste našli šta tražite?“ on /pretraga/
 const MAX_IMG = 950 * 1024, MAX_TH = 90 * 1024;
 const LINKY = /(https?:\/\/|www\.|\b[a-z0-9-]+\.(com|rs|net|org|info|me|io)\b)/i;
 const CONTACTY = /(\S+@\S+\.\S+|(\+?\d[\d\s\/.-]{7,}\d))/;
@@ -1740,6 +1740,192 @@ async function kurs(request, env, ctx) {
   return send(out);
 }
 
+// ---------------------------------------------------------------- site search log (docs/RUNBOOK.md 3.8)
+// What people look for on /pretraga/ and in the home suggestions: the query, the page language, how many pages it found,
+// and a count of opened results. Nothing that points to a person is stored with it: no IP, fingerprint, account or cookie
+// (the daily fingerprint only counts calls in rl, as for every form), and e-mail addresses and runs of digits (phone
+// numbers) are cut out before anything is written. Rows are folded per day, language and query and deleted after 90 days.
+// Read with GET /api/admin/pretraga?d=30 (owner's key) — the "Pretraga" section of /admin/.
+const SEARCH_KEEP_DAYS = 90;
+function searchClean(q) {
+  return clean(q, 120).toLowerCase()
+    .replace(/\S+@\S+/g, '[e-mail]')
+    .replace(/\+?\d[\d\s\/.()-]{5,}\d/g, '#')
+    .replace(/\d{5,}/g, '#')
+    .replace(/\s+/g, ' ').trim().slice(0, 80);
+}
+async function postSearch(request, env, ctx) {
+  let b;
+  try { b = JSON.parse(await request.text()); } catch (e) { return bad('json'); }
+  const q = searchClean(b && b.q);
+  if (q.length < 2) return json({ ok: true });
+  const l = LANGS.has(b.l) ? b.l : 'sr';
+  const n = Math.max(0, Math.min(9999, parseInt(b.n, 10) || 0));
+  const clk = Number.isInteger(b.c) && b.c > 0 && b.c < 200 ? 1 : 0;
+  const home = !clk && b.w === 'home' ? 1 : 0;
+  const fix = b.f ? searchClean(b.f) || null : null;
+  const ip = await ipHash(request, env);
+  if (!(await allow(env, 'ps:' + ip, 400))) return json({ ok: true });     // a log line is never worth an error
+  const put = () => env.DB.prepare(`INSERT INTO pretraga (day, l, q, n, cnt, clk, home, fix) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)
+    ON CONFLICT (day, l, q) DO UPDATE SET n = ?4, cnt = cnt + ?5, clk = clk + ?6, home = home + ?7, fix = COALESCE(?8, fix)`)
+    .bind(today(), l, q, n, clk ? 0 : 1, clk, home, fix).run();
+  try { await put(); } catch (e) {
+    await env.DB.prepare(`CREATE TABLE IF NOT EXISTS pretraga (day TEXT NOT NULL, l TEXT NOT NULL, q TEXT NOT NULL, n INTEGER NOT NULL DEFAULT 0,
+      cnt INTEGER NOT NULL DEFAULT 0, clk INTEGER NOT NULL DEFAULT 0, home INTEGER NOT NULL DEFAULT 0, fix TEXT, PRIMARY KEY (day, l, q))`).run();
+    await put();
+  }
+  if (Math.random() < 0.02) {
+    const cut = new Date(Date.now() - SEARCH_KEEP_DAYS * DAY_S * 1000).toISOString().slice(0, 10);
+    ctx.waitUntil(env.DB.prepare('DELETE FROM pretraga WHERE day < ?1').bind(cut).run().catch(() => {}));
+  }
+  return json({ ok: true });
+}
+async function adminSearch(env, url) {
+  const days = Math.max(1, Math.min(SEARCH_KEEP_DAYS, parseInt(url.searchParams.get('d'), 10) || 30));
+  const from = new Date(Date.now() - (days - 1) * DAY_S * 1000).toISOString().slice(0, 10);
+  try {
+    const rows = await env.DB.prepare(`SELECT l, q, SUM(cnt) AS cnt, SUM(clk) AS clk, SUM(home) AS home, MAX(n) AS n, MAX(fix) AS fix, MAX(day) AS last
+      FROM pretraga WHERE day >= ?1 GROUP BY l, q ORDER BY cnt DESC, last DESC LIMIT 400`).bind(from).all();
+    const byDay = await env.DB.prepare(`SELECT day, SUM(cnt) AS cnt, SUM(CASE WHEN n = 0 THEN cnt ELSE 0 END) AS zero, SUM(clk) AS clk
+      FROM pretraga WHERE day >= ?1 GROUP BY day ORDER BY day`).bind(from).all();
+    return json({ ok: true, from, days, rows: rows.results, by_day: byDay.results });
+  } catch (e) {
+    return json({ ok: true, from, days, rows: [], by_day: [] });      // no table yet: nobody has searched since the deploy
+  }
+}
+
+// ---------------------------------------------------------------- search by meaning (docs/RUNBOOK.md 3.8b)
+// Off until the owner adds two bindings to the Pages project (Settings → Bindings): AI = Workers AI, and VEC = the
+// Vectorize index "blokvolt-smisao" (1024 dimensions, cosine). Until then /api/smisao answers {ok: false, error: "off"}
+// and the search page stops asking. With them: GET /api/smisao?q=…&l=sr embeds the query with @cf/baai/bge-m3 (one model
+// for Serbian, English and Russian) and asks Vectorize for the nearest pieces of the Serbian pages; the answer is page
+// addresses and scores, nothing else, and the query is not stored. Free tier: Workers AI 10 000 neurons a day (shared
+// with the owner's bot; a query costs ~0.03, embedding the whole site once a few hundred), Vectorize 30 M queried
+// dimensions a month (about 28 000 searches with ~1 000 pieces).
+// The pieces come from build.py (dist/assets/smisao/meta.json and its parts; a piece id is a hash of its page and text),
+// and are put into Vectorize here, SM_BATCH at a time: after a deploy only new or changed pieces are embedded and the
+// gone ones deleted. A step runs in the background of any /api request at most once a minute per isolate when the index
+// is behind (GET /api/smisao/stanje also starts one and shows the state), one at a time under a lock in D1.
+const SM_MODEL = '@cf/baai/bge-m3', SM_DIM = 1024, SM_BATCH = 20, SM_MIN = 0.45, SM_SPREAD = 0.12;
+const SM_LIMIT = { ip: 80, all: 900 };       // searches a day: per daily fingerprint, and all visitors together
+let SM_LAST = 0;
+const smOn = env => !!(env.AI && env.VEC && env.DB);
+function embOf(res) {
+  // bge-m3 answers {shape, data: [[…], …]}; accept {response: […]} and bare arrays too
+  const a = res && (res.data || res.response || res);
+  return Array.isArray(a) ? a.map(v => (Array.isArray(v) ? v : (v && (v.embedding || v.values)) || null)) : [];
+}
+async function smTables(env) {
+  await env.DB.batch([
+    env.DB.prepare('CREATE TABLE IF NOT EXISTS sm_ids (id TEXT PRIMARY KEY, v TEXT NOT NULL)'),
+    env.DB.prepare(`CREATE TABLE IF NOT EXISTS sm_meta (id INTEGER PRIMARY KEY CHECK (id = 1), v TEXT, done INTEGER NOT NULL DEFAULT 0,
+      total INTEGER NOT NULL DEFAULT 0, lock_until INTEGER NOT NULL DEFAULT 0, at INTEGER, err TEXT)`),
+    env.DB.prepare('INSERT OR IGNORE INTO sm_meta (id) VALUES (1)'),
+  ]);
+}
+async function smManifest(env, request) {
+  try {
+    const r = await env.ASSETS.fetch(new Request(new URL('/assets/smisao/meta.json', request.url)));
+    return r.ok ? await r.json() : null;
+  } catch (e) { return null; }
+}
+async function smState(env) {
+  try { return await env.DB.prepare('SELECT v, done, total, lock_until, at, err FROM sm_meta WHERE id = 1').first(); } catch (e) { return null; }
+}
+async function smStep(env, request, man) {
+  man = man || await smManifest(env, request);
+  if (!man) return 'no manifest';
+  await smTables(env);
+  const t = now();
+  const got = await env.DB.prepare('UPDATE sm_meta SET lock_until = ?1 WHERE id = 1 AND lock_until < ?2 RETURNING id').bind(t + 90, t).first();
+  if (!got) return 'busy';
+  try {
+    const have = new Set(((await env.DB.prepare('SELECT id FROM sm_ids').all()).results || []).map(r => r.id));
+    const want = new Set();
+    for (const p of man.parts) for (const id of p.ids) want.add(id);
+    const part = man.parts.find(p => p.ids.some(id => !have.has(id)));
+    let note = 'up to date';
+    if (part) {
+      const r = await env.ASSETS.fetch(new Request(new URL('/assets/smisao/' + part.f, request.url)));
+      const pieces = (await r.json()).filter(x => !have.has(x.id)).slice(0, SM_BATCH);
+      const vec = embOf(await env.AI.run(SM_MODEL, { text: pieces.map(x => x.x) }));
+      const ok = pieces.map((x, i) => ({ x, v: vec[i] })).filter(o => Array.isArray(o.v) && o.v.length === SM_DIM);
+      if (ok.length) {
+        await env.VEC.upsert(ok.map(o => ({ id: o.x.id, values: o.v, metadata: { u: o.x.u } })));
+        await env.DB.batch(ok.map(o => env.DB.prepare('INSERT OR REPLACE INTO sm_ids (id, v) VALUES (?1, ?2)').bind(o.x.id, man.v)));
+        ok.forEach(o => have.add(o.x.id));
+      }
+      if (ok.length < pieces.length) throw new Error('embedding answer: ' + (vec[0] ? vec[0].length + ' dimensions, ' + SM_DIM + ' expected' : 'empty'));
+      note = 'added ' + ok.length;
+    } else {
+      const gone = [...have].filter(id => !want.has(id)).slice(0, 270);
+      if (gone.length) {
+        await env.VEC.deleteByIds(gone);
+        const q = [];
+        for (let i = 0; i < gone.length; i += 90) {
+          const g = gone.slice(i, i + 90);
+          q.push(env.DB.prepare(`DELETE FROM sm_ids WHERE id IN (${g.map((_, k) => '?' + (k + 1)).join(',')})`).bind(...g));
+        }
+        await env.DB.batch(q);
+        gone.forEach(id => have.delete(id));
+        note = 'deleted ' + gone.length;
+      }
+    }
+    const done = [...want].filter(id => have.has(id)).length;
+    // done = -1 while pieces of changed or removed pages still wait to be deleted, so the next request steps again
+    await env.DB.prepare('UPDATE sm_meta SET v = ?1, done = ?2, total = ?3, at = ?4, err = NULL, lock_until = 0 WHERE id = 1')
+      .bind(man.v, have.size > want.size ? -1 : done, want.size, t).run();
+    return note;
+  } catch (e) {
+    const msg = String((e && e.message) || e).slice(0, 300);
+    await env.DB.prepare('UPDATE sm_meta SET err = ?1, at = ?2, lock_until = ?3 WHERE id = 1').bind(msg, t, t + 300).run().catch(() => {});
+    return 'error: ' + msg;
+  }
+}
+// in the background of /api requests: is the index behind the deployed pieces? then one step
+async function smAuto(request, env, ctx) {
+  if (!smOn(env) || !ctx || !ctx.waitUntil || Date.now() - SM_LAST < 60000) return;
+  SM_LAST = Date.now();
+  ctx.waitUntil((async () => {
+    const man = await smManifest(env, request);
+    if (!man) return;
+    const st = await smState(env);
+    if (st && st.v === man.v && st.done === st.total && st.total === man.n && !st.err) return;
+    if (st && st.lock_until > now()) return;
+    await smStep(env, request, man);
+  })().catch(e => console.log('smisao: ' + (e && e.message))));
+}
+async function smStatus(request, env, ctx) {
+  if (!smOn(env)) return json({ ok: true, on: false, need: ['AI', 'VEC'].filter(k => !env[k]) });
+  const ip = await ipHash(request, env);
+  if (!(await allow(env, 'smst:' + ip, 300))) return bad('limit', 429);
+  const man = await smManifest(env, request);
+  const note = await smStep(env, request, man);
+  const st = await smState(env);
+  return json({ ok: true, on: true, step: note, pieces: man ? man.n : null, build: man ? man.v : null, state: st });
+}
+async function smSearch(request, env, url) {
+  if (!smOn(env)) return json({ ok: false, error: 'off' });
+  const q = clean(url.searchParams.get('q'), 160);
+  if (q.length < 2) return bad('q');
+  const ip = await ipHash(request, env);
+  if (!(await allow(env, 'sm:' + ip, SM_LIMIT.ip)) || !(await allow(env, 'sm:all', SM_LIMIT.all))) return json({ ok: false, error: 'limit' }, 429);
+  let vec;
+  try { vec = embOf(await env.AI.run(SM_MODEL, { text: [q] }))[0]; } catch (e) { return json({ ok: false, error: 'ai' }, 502); }
+  if (!Array.isArray(vec) || vec.length !== SM_DIM) return json({ ok: false, error: 'ai' }, 502);
+  let r;
+  try { r = await env.VEC.query(vec, { topK: 12, returnMetadata: 'all' }); } catch (e) { return json({ ok: false, error: 'index' }, 502); }
+  const best = {};
+  for (const m of (r && r.matches) || []) {
+    const u = m.metadata && m.metadata.u;
+    if (u && (best[u] == null || m.score > best[u])) best[u] = m.score;
+  }
+  let hits = Object.keys(best).map(u => ({ u, s: Math.round(best[u] * 1000) / 1000 })).sort((a, b) => b.s - a.s);
+  const top = hits.length ? hits[0].s : 0;
+  hits = hits.filter(h => h.s >= SM_MIN && h.s >= top - SM_SPREAD).slice(0, 6);
+  return json({ ok: true, hits });
+}
+
 // ---------------------------------------------------------------- router
 async function api(request, env, ctx) {
   const url = new URL(request.url);
@@ -1776,10 +1962,14 @@ async function api(request, env, ctx) {
     }
     if (p === '/api/prijavi') return postReport(request, env);
     if (p === '/api/zahtev') return postRequest(request, env);
+    if (p === '/api/pretraga') return postSearch(request, env, ctx);
     if (p === '/api/admin/odluka') return adminOk(request, env) ? adminDecide(request, env) : bad('not found', 404);
   }
   if (m === 'GET' && p === '/api/admin/red') return adminOk(request, env) ? adminQueue(env) : bad('not found', 404);
   if (m === 'GET' && p === '/api/admin/pomoc') return adminOk(request, env) ? adminHelpful(env) : bad('not found', 404);
+  if (m === 'GET' && p === '/api/admin/pretraga') return adminOk(request, env) ? adminSearch(env, url) : bad('not found', 404);
+  if (m === 'GET' && p === '/api/smisao') return smSearch(request, env, url);
+  if (m === 'GET' && p === '/api/smisao/stanje') return smStatus(request, env, ctx);
   // the hidden link on /mapa/ (robots.txt forbids /api/, so only bots that ignore it follow it): counted per day and
   // fingerprint, nothing else — nobody is blocked (docs/RUNBOOK.md 3.28)
   if (m === 'GET' && p === '/api/zamka') {
@@ -1808,6 +1998,7 @@ export default {
         res = json({ ok: false, error: 'server' }, 500);
       }
       pgAuto(request, env, ctx, url.pathname);        // after the answer is ready: the newsletter's background tick
+      smAuto(request, env, ctx);                      // and the search-by-meaning index, when a deploy changed the pages
       return res;
     }
     return env.ASSETS.fetch(request);

@@ -1678,9 +1678,7 @@ render('oglasavanje.html', '/za-firme/oglasavanje/', section='', crumbs=[('/za-f
        title='Oglašavanje na BlokVoltu — medija kit, cene i pravila | BlokVolt',
        description='Medija kit BlokVolta: ko čita sajt, gde stoji oglas, cena po rubrici i šta se ne prodaje. Oglasi su označeni i ne utiču na podatke, redosled ni ocene.')
 add_url('/za-firme/oglasavanje/', '0.4')
-render('pretraga.html', '/pretraga/', section='', title='Pretraga | BlokVolt',
-       description='Pretraga sajta: punjači, firme, cene, vodiči i propisi za električne automobile u Srbiji.')
-add_url('/pretraga/', '0.3')
+add_url('/pretraga/', '0.3')   # the page itself is rendered after the search index (build_search below)
 render('article.html', '/404.html', crumbs=[], noindex=True, section='',
        meta={'h1': 'Stranica nije pronađena', 'lead': 'Ta stranica ne postoji ili je premeštena.'},
        body='<p>Probajte <a href="/mapa/">mapu punjača</a>, <a href="/firme/">firme</a>, <a href="/cene/">cene</a> ili <a href="/vodici/">vodiče</a>.</p>'
@@ -1739,7 +1737,56 @@ for _name, _src in (('static/assets/fx.js', _fxjs), ('worker/_worker.js', _wk)):
 (DIST / '_routes.json').write_text(json.dumps({'version': 1, 'include': ['/api/*'], 'exclude': []}), encoding='utf-8')
 
 
-# ---------------------------------------------------------------- search index
+# ---------------------------------------------------------------- search index (docs/RUNBOOK.md 3.8)
+SEARCH = json.load(open(ROOT / 'content' / 'data' / 'pretraga.json', encoding='utf-8'))
+_OPS = {o['slug'] for o in operators}
+_NEWS_DT = {n['url']: n['iso'] for n in NEWS}
+
+
+def kind_of(url):
+    """the page kind the search weighs (static/assets/pretraga.js → KIND)"""
+    u = re.sub(r'^/(en|ru)(?=/)', '', url) or '/'
+    seg = [x for x in u.split('/') if x]
+    if not seg:
+        return 'home'
+    a = seg[0]
+    if len(seg) == 1 and u.endswith('/'):
+        return {'firme': 'hub', 'vesti': 'hub', 'vodici': 'hub', 'javno-punjenje': 'hub', 'pomoc': 'hub', 'mapa': 'alat', 'cene': 'alat',
+                'pregled': 'pregled', 'preuzimanje': 'podaci'}.get(a, 'strana')
+    if a == 'firme':
+        return 'hub' if len(seg) == 2 and seg[1] in {h['slug'] for h in TYPE_HUBS} else 'firma'
+    if a == 'javno-punjenje':
+        return 'mreza' if seg[1] in _OPS else 'javno'
+    return {'vesti': 'vest', 'gradovi': 'grad', 'podaci': 'podaci', 'alati': 'alat', 'pomoc': 'pomoc', 'pregled': 'pregled',
+            'za-firme': 'strana'}.get(a, 'vodic' if len(seg) == 1 and not u.endswith('/') else 'strana')
+
+
+# towns with chargers on the map but without a city page: a result that opens the map filtered to the town
+_TOWN_TX = {'sr': ('Mapa punjača', ('javni punjač na mapi', 'javna punjača na mapi', 'javnih punjača na mapi')),
+            'en': ('Charging map', ('public charger on the map', 'public chargers on the map', 'public chargers on the map')),
+            'ru': ('Карта зарядок', ('общественная зарядка на карте', 'общественные зарядки на карте', 'общественных зарядок на карте'))}
+
+
+def _pl(n, forms, lang):
+    if lang == 'en':
+        return forms[0] if n == 1 else forms[2]
+    l, l2 = n % 10, n % 100
+    return forms[0] if l == 1 and l2 != 11 else forms[1] if 2 <= l <= 4 and not 12 <= l2 <= 14 else forms[2]
+
+
+def town_entries(lang):
+    from collections import Counter
+    n = Counter((s.get('t') or '').strip() for s in MAP['stations'])
+    pre = '' if lang == 'sr' else '/' + lang
+    sec, forms = _TOWN_TX[lang]
+    out = []
+    for town, k in sorted(n.items()):
+        if not town or town in CITY_SLUGS:
+            continue
+        out.append({'u': f'{pre}/mapa/?q=' + town.replace(' ', '+'), 't': town, 'd': f'{k} {_pl(k, forms, lang)}', 's': sec, 'h': '', 'b': '', 'k': 'mesto'})
+    return out
+
+
 def build_search(prefix=''):
     idx = []
     base = DIST / prefix.strip('/') if prefix else DIST
@@ -1762,14 +1809,23 @@ def build_search(prefix=''):
         main = soup.find('main') or soup
         for junk in main.find_all(['script', 'style', 'nav', 'noscript']):
             junk.decompose()
-        for junk in main.select('aside.oglas'):          # ads are not page content: never in search
+        for junk in main.select('aside.oglas, .promo'):  # ads and the „Izdvojeno“ box are not page content: never in search
             junk.decompose()
         for junk in main.select('[data-only]'):
             if junk['data-only'] != (prefix.strip('/') or 'sr'):
                 junk.decompose()
-        h = ' · '.join(x.get_text(' ', strip=True) for x in main.find_all(['h2', 'h3', 'summary'])[:16])
+        # link cards to other pages (Povezano, similar firms, news cards) are those pages' words, not this page's: out,
+        # except on the hubs, whose content is the list itself (they still lose the cards' titles from the headings)
+        if kind_of(url) != 'hub':
+            for card in main.select('a.tile, a.row, a.ncard, a.hit'):
+                card.decompose()
+        h = ' · '.join(x.get_text(' ', strip=True) for x in main.find_all(['h2', 'h3', 'summary']) if not x.find_parent('a'))[:400]
         body = re.sub(r'\s+', ' ', main.get_text(' ', strip=True))
-        idx.append({'u': url, 't': h1.get_text(' ', strip=True) if h1 else t, 'd': clip(d, 200), 's': sec, 'h': h[:400], 'b': body[:1200]})
+        e = {'u': url, 't': h1.get_text(' ', strip=True) if h1 else t, 'd': clip(d, 200), 's': sec, 'h': h[:400], 'b': body[:1200], 'k': kind_of(url)}
+        if e['k'] == 'vest' and _NEWS_DT.get(re.sub(r'^/(en|ru)(?=/)', '', url)):
+            e['dt'] = _NEWS_DT[re.sub(r'^/(en|ru)(?=/)', '', url)]
+        idx.append(e)
+    idx += town_entries(prefix.strip('/') or 'sr')
     name = 'search.json' if not prefix else f'search-{prefix.strip("/")}.json'
     p = DIST / 'assets' / name
     p.write_text(json.dumps(idx, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
@@ -1778,6 +1834,95 @@ def build_search(prefix=''):
 
 _n, _kb = build_search()
 print(f'search index: {_n} pages, {_kb} KB')
+_SIDX = {x['u']: x for x in json.loads((DIST / 'assets' / 'search.json').read_text(encoding='utf-8'))}
+_POP_ICON = {'alat': 'map', 'hub': 'bolt', 'javno': 'bolt', 'podaci': 'gift', 'vodic': 'building'}
+POPULAR = []
+for _u in SEARCH['popular']:
+    assert _u in _SIDX, f'content/data/pretraga.json: popular page {_u} is not in the search index'
+    _x = _SIDX[_u]
+    # title and section only: both already have their English and Russian in the translation memory
+    POPULAR.append({'u': _u, 't': _x['t'], 'd': _x['s'], 'icon': 'calc' if _u.startswith('/alati/') else _POP_ICON.get(_x['k'], 'doc')})
+render('pretraga.html', '/pretraga/', section='', title='Pretraga | BlokVolt', POPULAR=POPULAR, NEWS_TOP=NEWS[:3],
+       description='Pretraga sajta: punjači, firme, cene, vodiči i propisi za električne automobile u Srbiji.')
+
+
+# ---------------------------------------------------------------- search by meaning: pieces of the Serbian pages (RUNBOOK 3.8b)
+# dist/assets/smisao/meta.json {v, n, parts: [{f, ids}]} and the parts p<k>-<hash>.json [{id, u, x}]. The worker puts them into
+# Vectorize (/api/smisao); a piece id is a hash of its page and text, so after a deploy only changed pieces are embedded.
+# One piece: "<page title> — <section heading>: <up to ~900 characters of text>"; at most 8 pieces a page.
+SM_PIECE, SM_PER_PAGE, SM_PER_PART = 900, 8, 100
+
+
+def _sm_split(text, size):
+    out, cur = [], ''
+    for sent in re.split(r'(?<=[.!?…])\s+', text):
+        if cur and len(cur) + 1 + len(sent) > size:
+            out.append(cur)
+            cur = sent
+        else:
+            cur = (cur + ' ' + sent).strip()
+    if cur:
+        out.append(cur)
+    return [x[:size + 300] for x in out]
+
+
+def build_smisao():
+    outdir = DIST / 'assets' / 'smisao'
+    if outdir.exists():
+        shutil.rmtree(outdir)
+    outdir.mkdir(parents=True)
+    pieces = []
+    for f in sorted(DIST.rglob('*.html')):
+        rel = '/' + str(f.relative_to(DIST)).replace('\\', '/')
+        if rel.startswith(('/en/', '/ru/', '/pregled-mail/', '/admin/')) or rel in ('/404.html', '/pretraga/index.html', '/offline.html'):
+            continue
+        soup = BeautifulSoup(f.read_text(encoding='utf-8'), 'html.parser')
+        if soup.find('meta', attrs={'name': 'robots', 'content': re.compile('noindex')}):
+            continue
+        url = rel[:-len('index.html')] if rel.endswith('/index.html') else rel[:-5] if rel.endswith('.html') else rel
+        h1 = soup.find('h1')
+        title = h1.get_text(' ', strip=True) if h1 else (soup.title.string or '').split(' | ')[0].strip()
+        main = soup.find('main') or soup
+        for junk in main.find_all(['script', 'style', 'nav', 'noscript', 'form', 'svg', 'button']):
+            junk.decompose()
+        for junk in main.select('aside.oglas, .promo, .crumbs, [data-only], a.tile, a.row, a.ncard, a.hit'):
+            junk.decompose()
+        for h in main.find_all(['h2', 'h3']):
+            h.insert_before('\n\u241e' + h.get_text(' ', strip=True) + '\u241e\n')
+            h.decompose()
+        if h1 and h1 in main.descendants:
+            h1.decompose()
+        parts = main.get_text(' ', strip=True).split('\u241e')
+        secs = [('', parts[0])] + [(parts[i], parts[i + 1] if i + 1 < len(parts) else '') for i in range(1, len(parts), 2)]
+        page = []
+        for head, text in secs:
+            text = re.sub(r'\s+', ' ', text).strip()
+            if len(text) < 60:
+                continue
+            for chunk in _sm_split(text, SM_PIECE):
+                lead = title + (' — ' + head if head else '')
+                page.append(lead + ': ' + chunk)
+        if not page:
+            d = (soup.find('meta', attrs={'name': 'description'}) or {}).get('content', '')
+            if d:
+                page = [title + ': ' + d]
+        for x in page[:SM_PER_PAGE]:
+            pieces.append({'id': hashlib.sha1((url + '\n' + x).encode('utf-8')).hexdigest()[:20], 'u': url, 'x': x})
+    parts_meta = []
+    for k in range(0, len(pieces), SM_PER_PART):
+        part = pieces[k:k + SM_PER_PART]
+        body = json.dumps(part, ensure_ascii=False, separators=(',', ':'))
+        name = f'p{k // SM_PER_PART}-{hashlib.sha1(body.encode("utf-8")).hexdigest()[:10]}.json'
+        (outdir / name).write_text(body, encoding='utf-8')
+        parts_meta.append({'f': name, 'ids': [x['id'] for x in part]})
+    v = hashlib.sha1(''.join(x['id'] for x in pieces).encode()).hexdigest()[:12]
+    (outdir / 'meta.json').write_text(json.dumps({'v': v, 'n': len(pieces), 'model': '@cf/baai/bge-m3', 'parts': parts_meta},
+                                                 separators=(',', ':')), encoding='utf-8')
+    return len(pieces), len(parts_meta), sum(len(x['x']) for x in pieces)
+
+
+_smn, _smp, _smc = build_smisao()
+print(f'search by meaning: {_smn} pieces in {_smp} parts, {_smc // 1000} k characters')
 
 # ---------------------------------------------------------------- English and Russian (scripts/i18n.py)
 import i18n as _i18n  # noqa: E402
@@ -1859,15 +2004,17 @@ sm.append('</urlset>')
 (DIST / 'sitemap.xml').write_text('\n'.join(sm), encoding='utf-8')
 
 # ---------------------------------------------------------------- cache busting (/assets/* is cached for a year)
-_ver_map = {a: _ver(DIST / 'assets' / a) for a in ('bv.css', 'bv.js', 'map.js', 'nalog.js', 'fx.js', 'valuta.js')}
+_ver_map = {a: _ver(DIST / 'assets' / a) for a in ('bv.css', 'bv.js', 'map.js', 'nalog.js', 'fx.js', 'valuta.js', 'pretraga.js')}
 _search = json.dumps({'sr': '/assets/search.json?v=' + _ver(DIST / 'assets' / 'search.json'),
                       **{l: f'/assets/search-{l}.json?v=' + _ver(DIST / 'assets' / f'search-{l}.json') for l in _i18n.LANGS}})
+_search_cfg = json.dumps({'lib': '/assets/vendor/minisearch-7.2.0.min.js', 'index': json.loads(_search), 'syn': SEARCH['syn'],
+                          'stop': SEARCH['stop'], 'today': ISO_TODAY, 'smisao': True}, ensure_ascii=False, separators=(',', ':'))
 for _f in DIST.rglob('*.html'):
     _t = _f.read_text(encoding='utf-8')
     _n = _t
     for _a, _h in _ver_map.items():
         _n = _n.replace(f'"/assets/{_a}"', f'"/assets/{_a}?v={_h}"')
-    _n = _n.replace('__SEARCH_URLS__', _search)
+    _n = _n.replace('__SEARCH_URLS__', _search).replace('__SEARCH_CFG__', _search_cfg)
     if _n != _t:
         _f.write_text(_n, encoding='utf-8')
 

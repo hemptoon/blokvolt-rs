@@ -21,7 +21,7 @@ TIMEOUT = 25
 
 # Pages every visitor path depends on; a marker is a string the page must contain.
 PAGES = [
-    ('/', ['hero2-media', 'ft-app', '/vesti/']),
+    ('/', ['hero2-media', 'ft-app', '/vesti/', '/assets/pretraga.js', 'minisearch-7.2.0']),
     ('/mapa/', ['map']),
     ('/firme/', []),
     ('/cene/', []),
@@ -32,14 +32,15 @@ PAGES = [
     ('/alati/kalkulator-troskova/', []),
     ('/metodologija/', []),
     ('/izmene/', []),
-    ('/pretraga/', []),
+    ('/pretraga/', ['/assets/pretraga.js', 'minisearch-7.2.0', 'id="s-more"', 'id="s-ask"']),
     ('/ispravka/', []),
     ('/en/', ['lang="en"']),
     ('/ru/', ['lang="ru"']),
     ('/en/mapa/', ['lang="en"']),
     ('/ru/aplikacija/', ['lang="ru"']),
 ]
-FILES = ['/sitemap.xml', '/robots.txt', '/vesti/rss.xml', '/manifest.webmanifest', '/sw.js', '/offline']
+FILES = ['/sitemap.xml', '/robots.txt', '/vesti/rss.xml', '/manifest.webmanifest', '/sw.js', '/offline',
+         '/assets/vendor/minisearch-7.2.0.min.js', '/assets/smisao/meta.json']
 HEADERS = ['content-security-policy', 'strict-transport-security', 'x-frame-options', 'x-content-type-options',
            'referrer-policy', 'permissions-policy', 'cross-origin-opener-policy']
 

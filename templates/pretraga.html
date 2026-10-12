@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import pagehead %}
+{% from '_macros.html' import pagehead, news_cards %}
 {% from '_icons.html' import ic %}
 {% block pagehead %}{% call pagehead('Pretraga') %}
 <form class="hero-form" role="search" action="/pretraga/" method="get" style="display:flex;gap:8px;max-width:640px;margin-top:14px">
@@ -10,58 +10,42 @@
 <div class="chips" style="margin-top:12px"><a class="chip" href="/pretraga/?q=subvencija">subvencija</a><a class="chip" href="/pretraga/?q=brojilo">brojilo</a><a class="chip" href="/pretraga/?q=skupština">skupština</a><a class="chip" href="/pretraga/?q=noćna+tarifa">noćna tarifa</a><a class="chip" href="/pretraga/?q=besplatno">besplatno punjenje</a></div>
 {% endcall %}{% endblock %}
 {% block content %}
-<p id="s-status" class="list-count">Učitavanje…</p>
+<p id="s-status" class="list-count" role="status" aria-live="polite">Učitavanje…</p>
 <div class="rows hits" id="s-results" hidden></div>
+<section class="s-sim" id="s-sim" hidden aria-labelledby="s-sim-h">
+<h2 id="s-sim-h">Slično po smislu</h2>
+<div class="rows hits" id="s-sim-list"></div>
+</section>
 <noscript><p>Pretraga radi uz JavaScript. Krenite od <a class="lnk" href="/mapa/">mape</a>, <a class="lnk" href="/firme/">firmi</a> ili <a class="lnk" href="/vodici/">vodiča</a>.</p></noscript>
-<script id="s-cfg" type="application/json">__SEARCH_URLS__</script>
-<script id="bv-i18n" type="application/json">{"hint": "Upišite pojam — pretražuje se {n} stranica.", "found": {"sr": ["rezultat za", "rezultata za", "rezultata za"], "en": ["result for", "results for", "results for"], "ru": ["результат по запросу", "результата по запросу", "результатов по запросу"]}, "none": "Nema rezultata za „{q}“. Probajte drugu reč.", "down": "Pretraga trenutno nije dostupna. Probajte kasnije.", "q": {"sr": ["„", "“"], "en": ["“", "”"], "ru": ["«", "»"]}}</script>
-<script>
-(function(){
- var input=document.getElementById('q'), out=document.getElementById('s-results'), status=document.getElementById('s-status'), data=null, timer=null;
- var T=JSON.parse(document.getElementById('bv-i18n').textContent), L=(document.documentElement.lang||'sr').slice(0,2), PRE=(L==='en'||L==='ru')?'/'+L:'';
- function tr(v){return (v&&typeof v==='object'&&!Array.isArray(v))?(v[L]||v.sr):v;}
- function pl(n,f){var l=n%10,l2=n%100;if(L==='en')return n===1?f[0]:f[2];return (l===1&&l2!==11)?f[0]:((l>=2&&l<=4&&(l2<12||l2>14))?f[1]:f[2]);}
- function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[đ]/g,'d').replace(/[^a-z0-9а-я ]+/g,' ').replace(/\s+/g,' ').trim();}
- function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
- function stem(w){ return w.length>=7 ? w.slice(0,-3) : (w.length>=5 ? w.slice(0,-2) : w); }
- function score(it,words){
-  var t=norm(it.t), d=norm(it.d), h=norm(it.h), s=norm(it.s), b=norm(it.b), sc=0;
-  for(var i=0;i<words.length;i++){
-   var w=words[i]; if(!w) continue;
-   var st=stem(w), hit=0;
-   if(t.indexOf(w)>=0){sc+=12;hit=1;if(t.indexOf(w)===0)sc+=5;}
-   else if(t.indexOf(st)>=0){sc+=8;hit=1;}
-   if(s.indexOf(st)>=0){sc+=3;hit=1;}
-   if(h.indexOf(w)>=0){sc+=4;hit=1;} else if(h.indexOf(st)>=0){sc+=2;hit=1;}
-   if(d.indexOf(w)>=0){sc+=3;hit=1;} else if(d.indexOf(st)>=0){sc+=2;hit=1;}
-   if(b.indexOf(w)>=0){sc+=2;hit=1;} else if(b.indexOf(st)>=0){sc+=1;hit=1;}
-   if(!hit) return 0;
-  }
-  return sc;
- }
- function run(){
-  var q=input.value.trim();
-  if(!data){return;}
-  if(!q){out.innerHTML=''; out.hidden=true; status.textContent=T.hint.replace('{n}',data.length); return;}
-  var words=norm(q).split(' ');
-  var hits=data.map(function(it){return {it:it, sc:score(it,words)};}).filter(function(x){return x.sc>0;});
-  hits.sort(function(a,b){return b.sc-a.sc;});
-  var qq=tr(T.q); status.textContent = hits.length ? (hits.length+' '+pl(hits.length,tr(T.found))+' '+qq[0]+q+qq[1]) : T.none.replace('{q}',q);
-  out.innerHTML = hits.slice(0,40).map(function(x){
-   var it=x.it;
-   return '<a class="hit" href="'+esc(it.u)+'">'+(it.s?'<small>'+esc(it.s)+'</small>':'')+'<b>'+esc(it.t)+'</b><span>'+esc(it.d)+'</span></a>';
-  }).join('');
-  out.hidden=!hits.length;
-  if(history.replaceState){history.replaceState(null,'', PRE+'/pretraga/'+(q?('?q='+encodeURIComponent(q)):''));}
- }
- fetch(JSON.parse(document.getElementById('s-cfg').textContent)[PRE?L:'sr']).then(function(r){return r.json();}).then(function(j){
-  data=j;
-  var p=new URLSearchParams(location.search).get('q');
-  if(p){input.value=p;}
-  run();
- }).catch(function(){status.textContent=T.down;});
- input.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(run,120);});
- input.form.addEventListener('submit',function(e){e.preventDefault();run();});
-})();
-</script>
+<section class="helpful s-ask" id="s-ask" hidden aria-labelledby="s-ask-h">
+<h2 id="s-ask-h">Niste našli šta tražite?</h2>
+<form class="helpful-f">
+<label for="s-ask-t">Napišite šta vam je trebalo. Poruka pomaže da se na sajt doda ono što nedostaje.</label>
+<textarea class="input" id="s-ask-t" name="poruka" maxlength="1000" rows="3"></textarea>
+<input type="hidden" name="upit" value="">
+<input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<button class="btn dark sm" type="submit">Pošalji</button>
+<small>Poruka je bez imena i e-adrese, pa na nju ne stiže odgovor. Za odgovor pišite na <a href="mailto:hello@blokvolt.com" translate="no">hello@blokvolt.com</a>.</small>
+</form>
+<p class="helpful-m" data-m="poslato" role="status" hidden>Poslato. Hvala.</p>
+<p class="helpful-m" data-m="limit" role="status" hidden>Previše poruka danas. Pišite na hello@blokvolt.com.</p>
+<p class="helpful-m" data-m="greska" role="status" hidden>Slanje nije uspelo. Pišite na <a href="mailto:hello@blokvolt.com" translate="no">hello@blokvolt.com</a>.</p>
+</section>
+<div class="s-more" id="s-more">
+<div class="sec">
+<div class="sec-head"><h2>Popularno</h2></div>
+<div class="rows">{% for p in POPULAR %}<a class="row" href="{{ p.u }}"><span class="lg mono" aria-hidden="true">{{ ic(p.icon) }}</span><div><h3>{{ p.t }}</h3>{% if p.d %}<div class="sub">{{ p.d }}</div>{% endif %}</div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
+</div>
+{% if NEWS_TOP %}<div class="sec">
+<div class="sec-head"><h2>Najnovije vesti</h2><a href="/vesti/">Sve vesti →</a></div>
+{{ news_cards(NEWS_TOP) }}
+</div>{% endif %}
+<div class="sec">
+<div class="sec-head"><h2>Rubrike</h2></div>
+<div class="chips s-rub"><a class="chip" href="/mapa/">Mapa punjača</a><a class="chip" href="/firme/">Firme za kućni punjač</a><a class="chip" href="/javno-punjenje/">Javno punjenje</a><a class="chip" href="/vodici/">Vodiči</a><a class="chip" href="/vesti/">Vesti</a><a class="chip" href="/alati/kalkulator-troskova/">Kalkulator troškova</a><a class="chip" href="/pomoc/">Pomoć</a></div>
+</div>
+</div>
+<script id="s-cfg" type="application/json">__SEARCH_CFG__</script>
+<script id="bv-i18n" type="application/json">{"loading": "Učitavanje…", "hint": "Upišite pojam — pretražuje se {n} stranica.", "found": {"sr": ["rezultat za", "rezultata za", "rezultata za"], "en": ["result for", "results for", "results for"], "ru": ["результат по запросу", "результата по запросу", "результатов по запросу"]}, "none": "Nema rezultata za „{q}“. Probajte drugu reč.", "fixed": "Za {q} nema stranica.", "maybe": "Možda ste mislili:", "cap": "Prikazano je prvih 30 od {n}.", "down": "Pretraga trenutno nije dostupna. Probajte kasnije.", "q": {"sr": ["„", "“"], "en": ["“", "”"], "ru": ["«", "»"]}}</script>
 {% endblock %}
+{% block scripts %}<script src="/assets/pretraga.js" defer></script>{% endblock %}

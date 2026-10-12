@@ -25,6 +25,11 @@ button.no{background:#fff;color:var(--no);border-color:var(--no)}
 pre{white-space:pre-wrap;word-break:break-word;background:#f7f7f4;border-radius:8px;padding:8px;font-size:13px;margin:6px 0}
 .empty{color:var(--mut)}
 #msg{margin:10px 0;color:var(--no)}
+table.st{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px;margin:6px 0 14px}
+table.st th,table.st td{text-align:left;padding:7px 10px;border-top:1px solid var(--line);vertical-align:top}
+table.st th{background:#f7f7f4;font-weight:600;border-top:0}
+table.st td.n{text-align:right;white-space:nowrap}
+select{font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:#fff}
 </style>
 </head>
 <body>
@@ -36,6 +41,10 @@ pre{white-space:pre-wrap;word-break:break-word;background:#f7f7f4;border-radius:
 <h2>Fotografije na čekanju</h2><div id="photos" class="grid"></div>
 <h2>Komentari na čekanju</h2><div id="comments"></div>
 <h2>Zahtevi firmi i ispravke</h2><div id="requests"></div>
+<h2>Pretraga</h2>
+<p class="meta">Šta ljudi traže na sajtu (stranica /pretraga/ i predlozi na početnoj): upit, jezik i koliko stranica je nađeno. Bez IP adrese, otiska i kolačića; e-adrese i duži nizovi cifara se brišu pre upisa. Čuva se 90 dana (RUNBOOK 3.8).</p>
+<div class="bar"><select id="sdays"><option value="7">7 dana</option><option value="30" selected>30 dana</option><option value="90">90 dana</option></select><button id="loadS" type="button">Učitaj pretragu</button></div>
+<div id="search"></div>
 </div>
 <script>
 (function () {
@@ -86,6 +95,29 @@ pre{white-space:pre-wrap;word-break:break-word;background:#f7f7f4;border-radius:
       });
     }).catch(function () { $('msg').textContent = 'Mreža nije dostupna.'; });
   }
+  // what people search (GET /api/admin/pretraga): totals, the queries that found nothing, the most frequent ones
+  function table(rows, cols) {
+    if (!rows.length) return '<p class="empty">Nema.</p>';
+    return '<table class="st"><tr>' + cols.map(function (c) { return '<th>' + c[0] + '</th>'; }).join('') + '</tr>' +
+      rows.map(function (r) { return '<tr>' + cols.map(function (c) { var v = c[1](r); return '<td' + (typeof v === 'number' ? ' class="n"' : '') + '>' + esc(v) + '</td>'; }).join('') + '</tr>'; }).join('') + '</table>';
+  }
+  function loadSearch() {
+    try { sessionStorage.setItem('bvkey', $('key').value.trim()); } catch (e) {}
+    $('msg').textContent = '';
+    fetch('/api/admin/pretraga?d=' + $('sdays').value, { headers: hdr() }).then(function (r) { return r.json(); }).then(function (j) {
+      if (!j.ok) { $('msg').textContent = 'Nije uspelo (' + (j.error || '') + '). Proverite ključ.'; return; }
+      var all = 0, zero = 0, clk = 0;
+      j.by_day.forEach(function (d) { all += d.cnt; zero += d.zero; clk += d.clk; });
+      var none = j.rows.filter(function (r) { return r.n === 0; }).slice(0, 80);
+      var lang = function (r) { return r.l; };
+      $('search').innerHTML = '<p class="meta">Od ' + esc(j.from) + ': pretraga ' + all + ', bez rezultata ' + zero + (all ? ' (' + Math.round(zero * 100 / all) + ' %)' : '') +
+        ', otvoren rezultat ' + clk + '.</p>' +
+        '<h3>Bez rezultata</h3>' + table(none, [['Upit', function (r) { return r.q; }], ['Jezik', lang], ['Puta', function (r) { return r.cnt; }], ['Poslednji put', function (r) { return r.last; }]]) +
+        '<h3>Najčešće</h3>' + table(j.rows.slice(0, 80), [['Upit', function (r) { return r.q + (r.fix ? ' → ' + r.fix : ''); }], ['Jezik', lang], ['Puta', function (r) { return r.cnt; }],
+          ['Nađeno', function (r) { return r.n; }], ['Otvoreno', function (r) { return r.clk; }], ['Sa početne', function (r) { return r.home; }]]);
+    }).catch(function () { $('msg').textContent = 'Mreža nije dostupna.'; });
+  }
+  $('loadS').onclick = loadSearch;
   $('load').onclick = load;
   $('key').addEventListener('keydown', function (e) { if (e.key === 'Enter') load(); });
 })();
