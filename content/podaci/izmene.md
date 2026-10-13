@@ -13,6 +13,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 13. oktobar 2026
 
+- Novi vodič [Prvo punjenje na javnom punjaču](/javno-punjenje/prvo-punjenje-na-javnom-punjacu/): aplikacija, QR kod ili RFID kartica, koji priključak, redosled koraka kod Charge&GO i Orion eMobility, kraj punjenja i račun.
 - [Firme](/firme/): klik na firmu u spisku sada otvara njene cene po modelu ili paketu, šta je u ceni, ugradnju, brojilo, papire za skupštinu, uslugu i pokrivenost — iste kolone za sve firme. Cela stranica firme je na linku „Cela stranica firme“. Isto važi za podstranice po vrsti firme i za stranicu [Koliko košta kućni punjač](/cena-punjaca-za-elektricni-auto.html).
 - [Evolako](/firme/evolako/): uz pakete su navedeni modeli punjača i varijante cena, kao na evolako.rs (provereno 13. oktobra). U spisku firmi uz cenu sada piše i „bez ugradnje“ kad to navodi sajt firme — isto pravilo za sve firme.
 - [Politika privatnosti](/politika-privatnosti.html#merenje-poseta): u spisak funkcija čije se korišćenje meri dodata je kartica firme u spisku.
