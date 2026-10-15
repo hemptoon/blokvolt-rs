@@ -553,7 +553,7 @@ def _kw(p):
     return round(float(m.group(1))) if m else None
 
 
-CG_T = {'CCS': ('ccs2', 'dc'), 'T2': ('type2', 'ac'), 'cha_de_mod': ('chademo', 'dc'), 'type_2_outlet': ('type2', 'ac')}
+CG_T = {'CCS': ('ccs2', 'dc'), 'T2': ('type2', 'ac'), 'cha_de_mo': ('chademo', 'dc'), 'type_2_outlet': ('type2', 'ac')}
 RM_T = {'CCS': ('ccs2', 'dc'), 'CHA': ('chademo', 'dc'), 'T2c': ('type2', 'ac'), 'T2o': ('type2', 'ac')}
 
 
@@ -561,7 +561,7 @@ def _cg_conns(s):
     """'CCSd120a,CCSd120a,T2a22a' -> [['ccs2', 'dc', 120, 2], ['type2', 'ac', 22, 1]] (last letter = status then, not kept)."""
     out = {}
     for x in filter(None, s.split(',')):
-        m = re.fullmatch(r'(CCS|T2|cha_de_mod|type_2_outlet)[ad](\d+(?:\.\d+)?)[a-z]', x)
+        m = re.fullmatch(r'(CCS|T2|cha_de_mo|type_2_outlet)[ad](\d+(?:\.\d+)?)[a-z]', x)
         if m:
             t, cur = CG_T[m.group(1)]
             k = (t, cur, round(float(m.group(2))))

@@ -4,13 +4,18 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 13.10.2026
+updated: 15.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-13
+modified: 2026-10-15
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 15. oktobar 2026
+
+- Novi vodič [Koji utikač ima vaš auto](/javno-punjenje/ccs2-type2-chademo-gbt/): Type 2, CCS2, CHAdeMO i GB/T, koliko brzih punjača u Srbiji ima koji priključak, adapteri.
+- [Mapa punjača](/mapa/): kod 8 lokacija Charge&GO dodat je priključak CHAdeMO, koji se ranije nije prikazivao, pa ih sada nalazi i filter CHAdeMO.
+
 ## 13. oktobar 2026
 
 - Novi vodič [Prvo punjenje na javnom punjaču](/javno-punjenje/prvo-punjenje-na-javnom-punjacu/): aplikacija, QR kod ili RFID kartica, koji priključak, redosled koraka kod Charge&GO i Orion eMobility, kraj punjenja i račun.
