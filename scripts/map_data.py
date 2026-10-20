@@ -628,11 +628,25 @@ def official_sites():
         recs.append({'k': 'te', 'id': 'te-' + re.sub(r'[^a-z0-9]+', '-', fold(s['name'])).strip('-'), 'lat': s['lat'], 'lon': s['lon'],
                      'net': 'tesla', 'raw': s['name'], 'n': s['name'], 'a': s.get('addr', ''), 'kind': s.get('kind'),
                      'c': [['tesla', 'dc', None, 1]] if s.get('kind') == 'supercharger' else [['type2', 'ac', None, 1]], 'evse': None})
+    # other lists the networks and the owners of the places publish themselves (content/mapa/mreze/ostale.json, RUNBOOK
+    # 3.11e): the Emobility Spectra and Yesla apps, Best in Parking's garages, hotels' own sites. Their facts (hours, access,
+    # who charges free, how to find it) travel with the site as 'extra'.
+    ost = MREZE / 'ostale.json'
+    if ost.exists():
+        o = json.load(open(ost, encoding='utf-8'))
+        for k, L in o['lists'].items():
+            meta[k] = {'file': 'ostale.json', 'date': L['date'], 'url': L.get('url', ''), 'label': L['label']}
+        for x in o['sites']:
+            L = o['lists'][x['k']]
+            extra = {f: x[f] for f in ('loc', 'oh', 'ax', 'fee', 'note', 'al', 'opn', 'acc', 'park') if f in x}
+            recs.append({'k': x['k'], 'id': x['id'], 'lat': x['lat'], 'lon': x['lon'], 'net': L.get('net', ''), 'raw': x['n'], 'n': x['n'],
+                         'a': x.get('a', ''), 'c': x.get('c') or [], 'evse': None, 'u': x.get('u') or L.get('url', ''),
+                         'l': x.get('l') or '', 'src2': x.get('src2'), 'extra': extra})
     # one site per network within 80 m (Crowne Plaza 1, 2, 3 and the hypercharger; SIRIUS eksterno / interno)
     sites = []
     for r in recs:
         same = next((x for x in sites if x['k'] == r['k'] and x['net'] == r['net'] and dist_m(_ll(x), _ll(r)) <= 80
-                     and _first(x['raw']) == _first(r['raw'])), None)
+                     and _first(x['raw']) == _first(r['raw']) and r['k'] not in ('own', 'bp')), None)
         if same is None:
             sites.append(dict(r, parts=1))
             continue
@@ -908,6 +922,13 @@ def verify(stations, notes, checked):
     return the network data for the map layer /assets/map/mreze.json: {'upd': {id: …}, 'add': [stations]}."""
     sites, meta = official_sites()
     iso = lambda d: '-'.join(reversed(d.split('.')))
+
+    def site_src(site):
+        # where the site is listed: the network's list, or the owner's own page (ostale.json: u, l), plus a second source
+        x = {'d': site['k'], 'u': site.get('u') or meta[site['k']]['url'], 'upd': iso(meta[site['k']]['date'])}
+        if site.get('l'):
+            x['l'] = site['l']
+        return [x] + ([site['src2']] if site.get('src2') else [])
     # roaming records of the state chargers (Orion runs them): known by name, or by a state charger next to them
     ps_at = [s for s in stations if s.get('ps')]
     for site in sites:
@@ -950,8 +971,9 @@ def verify(stations, notes, checked):
         keep['v'] = {'s': 'ok', 'by': by, 'd': meta[site['k']]['date']}
         if site.get('putevi') or keep.get('ps'):
             continue   # the state chargers keep the official list of JP "Putevi Srbije"
-        u = {'src': [{'d': site['k'], 'u': meta[site['k']]['url'], 'upd': iso(meta[site['k']]['date'])}] + af_src}
+        u = {'src': site_src(site) + af_src}
         u.update({k: v for k, v in af.items()})
+        u.update(site.get('extra') or {})
         if site['c'] and site['k'] != 'te':
             dc = [c[2] for c in site['c'] if c[1] == 'dc' and c[2]]
             ac = [c[2] for c in site['c'] if c[1] == 'ac' and c[2]]
@@ -979,9 +1001,9 @@ def verify(stations, notes, checked):
         add.append(dict({'id': site['id'], 'n': site['n'], 'a': site['a'], 't': town if km < 25 else '',
                          'lat': round(site['lat'], 5), 'lon': round(site['lon'], 5), 'net': site['net'], 'opn': '',
                          'c': site['c'], 'dc': max(dc) if dc else None, 'ac': max(ac) if ac else None, 'acc': 'public',
-                         'src': [{'d': site['k'], 'u': meta[site['k']]['url'], 'upd': iso(meta[site['k']]['date'])}]
+                         'src': site_src(site)
                          + ([{'d': 'cga', 'l': 'aplikacija Charge&GO', 'u': meta['cga']['url'], 'upd': iso(meta['cga']['date'])}] if af else []),
-                         'v': {'s': 'ok', 'by': [site['k']], 'd': meta[site['k']]['date']}}, **af))
+                         'v': {'s': 'ok', 'by': [site['k']], 'd': meta[site['k']]['date']}}, **af, **(site.get('extra') or {})))
     for s in stations:
         if s.get('ps') and not s.get('v'):
             s['v'] = {'s': 'ok', 'by': ['ps'], 'd': s['ps']['d']}
@@ -1042,8 +1064,12 @@ def texts(extra, layer=None):
     translation memory (tx:<text> in the page strings)."""
     out = set()
     for u in list((layer or {}).get('upd', {}).values()) + list((layer or {}).get('add', [])):
-        for k, fields in (('oh', ('t', 'src')), ('loc', ('find',)), ('pr', ('src',)), ('cab', ('src',))):
+        for k, fields in (('oh', ('t', 'src')), ('loc', ('venue', 'find')), ('pr', ('src',)), ('cab', ('src',)), ('ax', ('t', 'limit')),
+                          ('fee', ('t', 'src', 'note')), ('park', ('t', 'src'))):
             out.update(x for x in (u.get(k, {}).get(f) for f in fields) if x and re.search('[a-zčćžšđ]{3}', x.lower()))
+        if u.get('note'):
+            out.add(u['note'])   # the other lists' notes (ostale.json)
+        out.update(x['l'] for x in u.get('src', []) if x.get('l') and re.search(r'[a-zčćžšđ]{3}', x['l'].lower()))
     for u in extra['upd'].values():
         for k, fields in (('loc', ('venue', 'find')), ('oh', ('t', 'src')), ('ax', ('t', 'limit')), ('fee', ('t', 'src', 'note')), ('park', ('t', 'src'))):
             out.update(x for x in (u.get(k, {}).get(f) for f in fields) if x and re.search('[a-zčćžšđ]{3}', x.lower()))

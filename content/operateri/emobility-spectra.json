@@ -8,8 +8,8 @@
  "domain": "emobility.rs",
  "app": "Emobility Spectra (iOS/Android)",
  "city": "Novi Sad",
- "coverage": "Novi Sad i Vojvodina (mapa punjača na sajtu)",
- "network": "Veličina mreže nije objavljena. U aplikaciji 04.10.2026: Battery Magic (Valjevo, 2× DC 120 kW), GIORGIO Luxury (Beograd, AC 11 kW), JKP Pijace i parkinzi (Zrenjanin, 2× DC 120 kW) i tri punjača auto-kuće AK Tasić (Subotica DC 30 kW, Kragujevac DC 25 kW, Jagodina DC 30 kW). CITY TAXI Novi Sad, Salaš 265 i JMEV CUBI, vidljivi 22.09.2026, više se ne prikazuju.",
+ "coverage": "Novi Sad, Zrenjanin, Subotica, Beograd, Valjevo, Kragujevac",
+ "network": "Veličina mreže nije objavljena. U aplikaciji 20.10.2026 (sopstvene lokacije, bez roaminga): JMEV CUBI (Novi Sad, 2× DC 90 kW), Hotel Zenit (Novi Sad, AC 13,8 kW, besplatno), GIORGIO Luxury (Beograd, AC 11 kW), Battery Magic (Valjevo, 2× DC 120 kW), garaža JKP Pijace i parkinzi (Zrenjanin, 2× DC 120 kW) i dva punjača auto-kuće Tasić (Subotica DC 30 kW i Kragujevac DC 25 kW, besplatno u radno vreme). Punjači AK Tasić Jagodina (vidljiv 04.10.2026) i CITY TAXI Novi Sad više se ne prikazuju.",
  "power": "AC 11–17,2 kW, DC 90–180 kW (punjači vidljivi u aplikaciji); punjač Battery Magic ima i kineski konektor GB/T",
  "billing": "Kombinovani obračun: cena po „jedinici punjenja“ (54–60 RSD, zavisi od punjača i tarife) + 1,20 RSD po minutu, PDV uračunat (aplikacija, 04.10.2026). Po objašnjenju u aplikaciji, jedinicu računa punjač iz snage, vremena i profila punjenja; ona nije zakonski overeno merenje i ne odgovara tačno potrošnji u kWh. Tri punjača AK Tasić u aplikaciji su besplatna („Free of charge“).",
  "verdicts": {
@@ -116,11 +116,11 @@
  "publish": true,
  "short_name": "Emobility Spectra",
  "lead": "Mreža iz Novog Sada sa sopstvenom aplikacijom. Naplata po „jedinici punjenja“ i po minutu.",
- "network_short": "veličina nije objavljena",
+ "network_short": "7 lokacija u aplikaciji",
  "power_short": "AC 11 – DC 180 kW",
  "billing_short": "54–60 RSD po „jedinici“ + 1,20 RSD/min.",
  "payment_short": "Novčanik u aplikaciji, RFID",
- "map_note": "Punjači ove mreže još nisu na mapi punjača: nema ih u otvorenim bazama podataka. Lokacije su u aplikaciji Emobility Spectra.",
+ "map_note": "Na mapi punjača je 7 lokacija ove mreže iz aplikacije Emobility Spectra (20.10.2026). Tačke su postavljene po adresi iz aplikacije.",
  "kako": {
   "checked": "06.10.2026",
   "start": [

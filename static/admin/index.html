@@ -38,6 +38,9 @@ select{font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--l
 <p class="meta">Ključ (ADMIN_KEY iz podešavanja Cloudflare Pages) čuva se samo u ovoj kartici pregledača.</p>
 <div class="bar"><input id="key" type="password" placeholder="ADMIN_KEY" autocomplete="off"><button id="load" type="button">Učitaj red</button></div>
 <div id="msg"></div>
+<h2>Novi punjači od vozača</h2>
+<p class="meta">Objavljuju se kao „Nije potvrđeno“. Pre objave proverite tačku na mapi i da punjač nije već na mapi (link „na našoj mapi“). Fotografija uz punjač čeka i u redu fotografija. „Odbij“ kasnije skida i već objavljen punjač (pošaljite isti id).</p>
+<div id="novi"></div>
 <h2>Fotografije na čekanju</h2><div id="photos" class="grid"></div>
 <h2>Komentari na čekanju</h2><div id="comments"></div>
 <h2>Zahtevi firmi i ispravke</h2><div id="requests"></div>
@@ -63,6 +66,24 @@ select{font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--l
     $('msg').textContent = '';
     fetch('/api/admin/red', { headers: hdr() }).then(function (r) { return r.json(); }).then(function (j) {
       if (!j.ok) { $('msg').textContent = 'Nije uspelo (' + (j.error || '') + '). Proverite ključ.'; return; }
+      var NK = { dc: 'DC', ac: 'AC (Tip 2)', uticnica: 'utičnica', nz: 'vrsta ?' }, NA = { svi: 'svi', gosti: 'gosti/kupci', nz: 'pristup ?' }, NF = { besplatno: 'besplatno', placa: 'plaća se', nz: 'cena ?' };
+      var novi = j.novi || [];
+      $('novi').innerHTML = novi.length ? '' : '<p class="empty">Nema.</p>';
+      novi.forEach(function (n) {
+        var d = document.createElement('div'); d.className = 'card';
+        var ll = n.lat + ',' + n.lon;
+        d.innerHTML = '<div class="meta">#' + n.id + ' · ' + when(n.at) + (n.lang ? ' · ' + esc(n.lang) : '') + (n.nick ? ' · ' + esc(n.nick) : '') + '</div>' +
+          '<div><b>' + esc(n.n || '(bez naziva)') + '</b> · ' + esc(NK[n.k] || n.k) + (n.kw ? ' ' + esc(n.kw) + ' kW' : '') + (n.pl ? ' · ' + esc(n.pl) : '') + ' · ' + esc(NA[n.acc] || n.acc) + ' · ' + esc(NF[n.fee] || n.fee) + '</div>' +
+          (n.c ? '<div>' + esc(n.c) + '</div>' : '') +
+          '<div class="meta"><a href="https://www.openstreetmap.org/?mlat=' + n.lat + '&amp;mlon=' + n.lon + '#map=19/' + n.lat + '/' + n.lon + '" target="_blank" rel="noopener">OSM</a> · ' +
+          '<a href="https://www.google.com/maps/search/?api=1&amp;query=' + ll + '" target="_blank" rel="noopener">Google</a> · ' +
+          '<a href="/mapa/?ll=' + ll + '" target="_blank" rel="noopener">na našoj mapi</a> · ' + esc(ll) + '</div>' +
+          (n.foto ? '<a href="/api/foto/' + n.foto + '.jpg" target="_blank" rel="noopener"><img src="/api/foto/' + n.foto + '.jpg?v=t" alt="" style="max-width:220px;border-radius:10px;margin:6px 0"></a>' : '') +
+          '<div class="bar" style="margin-top:8px"><button class="ok" type="button">Objavi</button><button class="no" type="button">Odbij</button></div>';
+        d.querySelector('.ok').onclick = function () { decide('n', n.id, 'ok', d); };
+        d.querySelector('.no').onclick = function () { decide('n', n.id, 'no', d); };
+        $('novi').appendChild(d);
+      });
       $('photos').innerHTML = j.photos.length ? '' : '<p class="empty">Nema.</p>';
       j.photos.forEach(function (p) {
         var d = document.createElement('div'); d.className = 'card';

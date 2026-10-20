@@ -1,13 +1,13 @@
 ---
 title: Pravila za prijave, ocene i fotografije punjača
 h1: Pravila za prijave i fotografije
-description: Šta vozači mogu da objave na kartici punjača na mapi BlokVolt, šta se ne objavljuje, kako teče provera komentara i fotografija i kako se traži brisanje.
+description: Šta vozači mogu da objave na kartici punjača na mapi BlokVolt, kako se dodaje punjač koji nedostaje, šta se ne objavljuje, kako teče provera i kako se traži brisanje.
 kicker: O sajtu · pravila
 lead: Na kartici svakog punjača vozači javljaju da li radi, ocenjuju ga i šalju fotografije. Pravila su kratka i ista za sve.
-updated: 28.09.2026
+updated: 20.10.2026
 path: /pravila-objavljivanja/
 published: 2026-09-24
-modified: 2026-09-28
+modified: 2026-10-20
 priority: 0.3
 ---
 <div class="sum" markdown="1">
@@ -19,6 +19,14 @@ priority: 0.3
 ## Šta možete da objavite
 
 Stanje punjača (radi, radi uz problem, ne radi, nema punjača), ocenu od 1 do 5, kratak komentar do 500 znakova i ime ili nadimak ako želite. Fotografija treba da prikazuje punjač, priključke, cenovnik ili put do punjača.
+
+## Novi punjač na mapi {#novi-punjac}
+
+Punjač koji nedostaje dodaje se dugmetom „Dodaj punjač“ na [mapi](/mapa/): oznaka se postavi tačno na punjač, uz kratak opis — vrsta, priključci, snaga, ko može da puni, da li se plaća, kako se pronalazi — i fotografiju ako želite.
+
+- Šaljite samo punjač koji ste lično videli ili koji vlasnik mesta navodi na svom sajtu. Tačke prepisane sa drugih mapa i aplikacija se ne objavljuju.
+- Novi punjač se objavljuje tek posle provere, sa oznakom „Nije potvrđeno“ i datumom. Potvrđen postaje kad se nađe na spisku mreže, kad se proveri na licu mesta ili kad ga potvrde skorašnje prijave vozača.
+- Nadimak se ne objavljuje. Punjač koji ne postoji ili je dodat dva puta uklanja se sa mape.
 
 ## Šta se ne objavljuje
 
@@ -35,10 +43,10 @@ Prijave vozača su njihovo iskustvo u tom trenutku. Za tačno stanje punjača uv
 
 ## Šta se čuva
 
-Uz prijavu se čuvaju stanje, ocena, komentar, nadimak, vreme i jezik sajta. Radi zaštite od zloupotrebe čuva se i jednosmerni otisak IP adrese. Pravi se sa nasumičnim ključem koji važi samo jedan dan, pa se posle toga iz otiska adresa ne može vratiti. Fotografiju pregledač pre slanja smanji i ponovo sačuva, pa se ne šalju podaci o lokaciji ni o telefonu (EXIF). Više u [politici privatnosti](/politika-privatnosti.html).
+Uz prijavu se čuvaju stanje, ocena, komentar, nadimak, vreme i jezik sajta. Uz novi punjač čuvaju se tačka, opis i nadimak koje ste upisali, vreme i jezik sajta. Radi zaštite od zloupotrebe čuva se i jednosmerni otisak IP adrese. Pravi se sa nasumičnim ključem koji važi samo jedan dan, pa se posle toga iz otiska adresa ne može vratiti. Fotografiju pregledač pre slanja smanji i ponovo sačuva, pa se ne šalju podaci o lokaciji ni o telefonu (EXIF). Više u [politici privatnosti](/politika-privatnosti.html).
 
 ## Brisanje i prava
 
-Objavom dajete BlokVoltu neisključivu, besplatnu dozvolu da prijavu, komentar ili fotografiju prikazuje na sajtu; autorska prava ostaju vaša. Za brisanje svoje prijave ili fotografije pišite na hello@blokvolt.com i navedite punjač i približno vreme objave.
+Objavom dajete BlokVoltu neisključivu, besplatnu dozvolu da prijavu, komentar, fotografiju ili podatke o novom punjaču prikazuje na sajtu i u aplikacijama; autorska prava ostaju vaša. Za brisanje svoje prijave ili fotografije pišite na hello@blokvolt.com i navedite punjač i približno vreme objave.
 
 Firma ili mreža koja misli da je prijava netačna može da pošalje objašnjenje preko [strane za firme](/za-firme/). Ocene se ne brišu na zahtev firme, osim kada krše ova pravila.

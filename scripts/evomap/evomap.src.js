@@ -49,6 +49,8 @@
       v_ok: 'Potvrđeno', v_nep: 'Nije potvrđeno', v_prob_t: 'Prijavljen kvar', v_checked: 'Provereno {d}',
       v_cg: 'na spisku lokacija mreže Charge&GO', v_rm: 'na roming mapi Charge&GO', v_te: 'na zvaničnom spisku Tesla',
       v_ps: 'na spisku JP „Putevi Srbije“', v_g: 'skorašnje ocene vozača na Google mapama', v_own: 'na sajtu vlasnika lokacije',
+      v_sp: 'u aplikaciji mreže Emobility Spectra', v_ye: 'u aplikaciji mreže Yesla', v_bp: 'na sajtu operatera garaže Best in Parking',
+      src_sp: 'aplikacija Emobility Spectra', src_ye: 'aplikacija Yesla', src_own: 'sajt vlasnika lokacije',
       v_none: 'Punjač je samo u otvorenim bazama: nema ga ni na spisku mreža ni na Google mapama. Možda više ne postoji ili nije javan. Proveri pre polaska.',
       v_old: 'Punjač je u otvorenim bazama i na Google mapama, ali bez skorijih potvrda: nijedna ocena vozača iz poslednjih godinu dana. Proveri pre polaska.',
       v_prob: 'Vozači u skorašnjim recenzijama pišu da punjač ne radi. Proveri pre polaska.',
@@ -110,6 +112,8 @@
       v_ok: 'Confirmed', v_nep: 'Not confirmed', v_prob_t: 'Reported broken', v_checked: 'Checked {d}',
       v_cg: 'on the Charge&GO list of locations', v_rm: 'on the Charge&GO roaming map', v_te: 'on Tesla’s official list',
       v_ps: 'on the JP “Putevi Srbije” list', v_g: 'recent driver ratings on Google Maps', v_own: 'on the location owner’s website',
+      v_sp: 'in the Emobility Spectra network app', v_ye: 'in the Yesla network app', v_bp: 'on the garage operator Best in Parking’s website',
+      src_sp: 'Emobility Spectra app', src_ye: 'Yesla app', src_own: 'owner’s website',
       v_none: 'This charger is only in the open databases: it is neither on the networks’ lists nor on Google Maps. It may no longer exist or may not be public. Check before you set off.',
       v_old: 'This charger is in the open databases and on Google Maps, but without recent confirmation: no driver rating from the past year. Check before you set off.',
       v_prob: 'Drivers say in recent reviews that this charger doesn’t work. Check before you set off.',
@@ -170,6 +174,8 @@
       v_ok: 'Подтверждено', v_nep: 'Не подтверждено', v_prob_t: 'Сообщают о поломке', v_checked: 'Проверено {d}',
       v_cg: 'в списке локаций сети Charge&GO', v_rm: 'на роуминговой карте Charge&GO', v_te: 'в официальном списке Tesla',
       v_ps: 'в списке JP «Putevi Srbije»', v_g: 'свежие оценки водителей на Google Картах', v_own: 'на сайте владельца локации',
+      v_sp: 'в приложении сети Emobility Spectra', v_ye: 'в приложении сети Yesla', v_bp: 'на сайте оператора гаража Best in Parking',
+      src_sp: 'приложение Emobility Spectra', src_ye: 'приложение Yesla', src_own: 'сайт владельца',
       v_none: 'Эта зарядка есть только в открытых базах: её нет ни в списках сетей, ни на Google Картах. Возможно, её уже нет или она не публичная. Проверь перед поездкой.',
       v_old: 'Эта зарядка есть в открытых базах и на Google Картах, но без свежих подтверждений: ни одной оценки водителей за последний год. Проверь перед поездкой.',
       v_prob: 'Водители в недавних отзывах пишут, что зарядка не работает. Проверь перед поездкой.',
@@ -834,7 +840,7 @@
   function verHtml(s) {
     var v = s.v || { s: 'nep', g: 'g_none' };
     if (v.s === 'ok') {
-      var VBY = { cg: 'v_cg', rm: 'v_rm', te: 'v_te', ps: 'v_ps', g: 'v_g', own: 'v_own' };
+      var VBY = { cg: 'v_cg', rm: 'v_rm', te: 'v_te', ps: 'v_ps', g: 'v_g', own: 'v_own', sp: 'v_sp', ye: 'v_ye', bp: 'v_bp' };
       var by = (v.by || []).map(function (b) { return VBY[b] ? T(VBY[b]) : ''; }).filter(Boolean).join('; ');
       return '<p class="evm-vf">' + IC.ok + '<span><b>' + esc(T('v_ok')) + '</b> ' + esc(by) + (v.d ? ' · ' + esc(dt(v.d)) : '') + '</span></p>';
     }
@@ -881,7 +887,8 @@
     var acc = s.acc === 'customers' ? '<div class="evm-box"><span class="evm-lbl">' + esc(T('access')) + '</span><div>' + esc(T('customers')) + '</div></div>' : '';
     var site = n && n.site ? n.site : '';
     var mail = 'mailto:hello@evolako.com?subject=' + encodeURIComponent(fill(T('mail_s'), { id: s.id })) + '&body=' + encodeURIComponent(title(s) + ' — ' + location.origin + location.pathname + '#' + s.id + '\n\n' + T('mail_b') + '\n');
-    var SRC = { ocm: 'Open Charge Map', osm: 'OpenStreetMap', ps: 'JP Putevi Srbije', cg: 'Charge&GO', rm: T('src_rm'), te: 'Tesla', cga: T('src_cga') };
+    var SRC = { ocm: 'Open Charge Map', osm: 'OpenStreetMap', ps: 'JP Putevi Srbije', cg: 'Charge&GO', rm: T('src_rm'), te: 'Tesla', cga: T('src_cga'),
+      sp: T('src_sp'), ye: T('src_ye'), bp: 'Best in Parking', own: T('src_own') };
     var srcs = s.src.filter(function (x) { return x.u; }).map(function (x) { return '<a href="' + esc(x.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(dt(x.upd)) + ')' : ''); }).join(' · ');
     $card.innerHTML = '<div class="evm-cc" role="dialog" aria-label="' + esc(title(s)) + '"><span class="evm-grab" aria-hidden="true"></span>' +
       '<button class="evm-x" type="button" aria-label="' + esc(T('close')) + '">' + IC.x + '</button>' +
@@ -1155,30 +1162,28 @@
       var ck = capsule(INK), cb = capsule(DEEP);
       if (!map.hasImage('evm-cap-k')) map.addImage('evm-cap-k', ck.img, ck.opt);
       if (!map.hasImage('evm-cap-b')) map.addImage('evm-cap-b', cb.img, cb.opt);
-      map.addSource('st', { type: 'geojson', data: data(), cluster: true, clusterRadius: 44, clusterMaxZoom: 11 });
+      // every charger at every zoom, no number clusters (owner's decision 20.10.2026, same as /mapa/ on blokvolt.rs):
+      // small dots on the country view that grow with the zoom; working and confirmed above the faded ones, DC above AC
+      map.addSource('st', { type: 'geojson', data: data() });
       map.addSource('sel', { type: 'geojson', data: { type: 'FeatureCollection', features: sel ? [feat(sel)] : [] } });
       map.addSource('me', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
-      var nep = ['==', ['get', 'v'], 'nep'], pt = ['!', ['has', 'point_count']];
+      var nep = ['==', ['get', 'v'], 'nep'], faded = ['any', nep, ['==', ['get', 'cl'], 1]];
+      var zr = function (a, b, c, e, f) { return ['interpolate', ['linear'], ['zoom'], 5, a, 8, b, 11, c, 12, e, 16, f]; };
       map.addLayer({ id: 'me-halo', type: 'circle', source: 'me', paint: { 'circle-radius': 24, 'circle-color': 'rgba(46,107,255,.16)' } });
-      map.addLayer({ id: 'cl', type: 'circle', source: 'st', filter: ['has', 'point_count'],
-        paint: { 'circle-color': INK, 'circle-radius': ['step', ['get', 'point_count'], 15, 10, 19, 30, 23], 'circle-stroke-width': 2.5, 'circle-stroke-color': '#FFFFFF' } });
-      map.addLayer({ id: 'cl-n', type: 'symbol', source: 'st', filter: ['has', 'point_count'],
-        layout: { 'text-field': ['get', 'point_count_abbreviated'], 'text-font': FONT, 'text-size': 13, 'text-allow-overlap': true }, paint: { 'text-color': '#FFFFFF' } });
-      map.addLayer({ id: 'sel', type: 'circle', source: 'sel', paint: { 'circle-radius': 21, 'circle-color': 'rgba(46,107,255,.22)', 'circle-stroke-width': 2.5, 'circle-stroke-color': BLUE } });
-      // an invisible, larger circle takes the taps: small pins are hard to hit with a finger
-      map.addLayer({ id: 'pt-hit', type: 'circle', source: 'st', filter: pt, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 12, 12, 18, 16, 21], 'circle-opacity': 0 } });
-      map.addLayer({ id: 'pt', type: 'circle', source: 'st', filter: pt,
+      map.addLayer({ id: 'sel', type: 'circle', source: 'sel', paint: { 'circle-radius': zr(10, 13, 19, 21, 21), 'circle-color': 'rgba(46,107,255,.22)', 'circle-stroke-width': 2.5, 'circle-stroke-color': BLUE } });
+      map.addLayer({ id: 'pt', type: 'circle', source: 'st',
+        layout: { 'circle-sort-key': ['+', ['case', faded, 0, 10], ['match', ['get', 'k'], 'dc', 2, 'ac', 1, 0]] },
         paint: {
-          'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 6, 11, 9, 12, 11.5, 16, 13.5],
+          'circle-radius': zr(3, 4.5, 9, 11.5, 13.5),
           'circle-color': ['match', ['get', 'k'], 'dc', INK, 'ac', BLUE, SLATE],
           'circle-opacity': ['case', ['==', ['get', 'cl'], 1], 0.45, nep, 0.5, 1],
-          'circle-stroke-width': ['interpolate', ['linear'], ['zoom'], 6, 1.5, 12, 2.5],
+          'circle-stroke-width': zr(1, 1.3, 2.2, 2.5, 2.5),
           'circle-stroke-color': '#FFFFFF', 'circle-stroke-opacity': ['case', nep, 0.8, 1]
         } });
-      map.addLayer({ id: 'pt-kw', type: 'symbol', source: 'st', filter: pt, minzoom: 11,
+      map.addLayer({ id: 'pt-kw', type: 'symbol', source: 'st', minzoom: 11,
         layout: { 'text-field': ['get', 'p'], 'text-font': FONT, 'text-size': ['interpolate', ['linear'], ['zoom'], 11, 9, 16, 11], 'text-allow-overlap': true, 'text-ignore-placement': true },
         paint: { 'text-color': '#FFFFFF' } });
-      map.addLayer({ id: 'pt-pr', type: 'symbol', source: 'st', filter: ['all', pt, ['!=', ['get', 'pl'], '']], minzoom: 12,
+      map.addLayer({ id: 'pt-pr', type: 'symbol', source: 'st', filter: ['!=', ['get', 'pl'], ''], minzoom: 12,
         layout: { 'text-field': ['get', 'pl'], 'text-font': FONT, 'text-size': 11, 'text-anchor': 'top', 'text-offset': [0, 1.45], 'text-padding': 3,
           'icon-image': ['match', ['get', 'pc'], 'free', 'evm-cap-b', 'evm-cap-k'], 'icon-text-fit': 'both', 'icon-text-fit-padding': [3, 7, 2, 7] },
         paint: { 'text-color': ['match', ['get', 'pc'], 'old', 'rgba(255,255,255,0.62)', '#FFFFFF'] } });
@@ -1191,21 +1196,31 @@
         state.lim = 20;
         renderList();
       });
+      // a tap looks at a small box around the finger (larger on touch screens): one charger opens its card, several zoom
+      // in on them (at least two steps, at most zoom 14); from zoom 13 the dot nearest to the tap opens
       map.on('click', function (e) {
-        var hit = map.queryRenderedFeatures(e.point, { layers: ['cl', 'pt-hit'] });
+        var r = window.matchMedia && matchMedia('(pointer: coarse)').matches ? 14 : 8, p = e.point;
+        var hit = map.queryRenderedFeatures([[p.x - r, p.y - r], [p.x + r, p.y + r]], { layers: ['pt'] });
         if (!hit.length) { if (sel && !mobile()) closeCard(); return; }
-        var f = hit.filter(function (x) { return x.layer.id === 'pt-hit'; })[0] || hit[0];
-        if (f.layer.id === 'cl') {
+        var ids = {}, n = 0, z0 = map.getZoom();
+        hit.forEach(function (x) { if (!ids[x.properties.id]) { ids[x.properties.id] = 1; n++; } });
+        if (n > 1 && z0 < 13) {
+          var b = new ml.LngLatBounds();
+          hit.forEach(function (x) { b.extend(x.geometry.coordinates); });
+          var cam = map.cameraForBounds(b, { padding: 60 });
           userMove = true;
-          var src = map.getSource('st'), done = function (z) { map.easeTo({ center: f.geometry.coordinates, zoom: z + 0.3 }); };
-          var r = src.getClusterExpansionZoom(f.properties.cluster_id, function (err, z) { if (!err) done(z); });
-          if (r && r.then) r.then(done, function () {});
+          map.easeTo({ center: b.getCenter(), zoom: Math.min(14, Math.max(z0 + 2, cam && isFinite(cam.zoom) ? cam.zoom : 0)) });
           return;
         }
+        var f = hit[0], bd = Infinity;
+        hit.forEach(function (x) {
+          var q = map.project(x.geometry.coordinates), dd = (q.x - p.x) * (q.x - p.x) + (q.y - p.y) * (q.y - p.y);
+          if (dd < bd) { bd = dd; f = x; }
+        });
         var s = BYID[f.properties.id];
         if (s) openCard(s, false);
       });
-      ['cl', 'pt-hit'].forEach(function (l) {
+      ['pt'].forEach(function (l) {
         map.on('mouseenter', l, function () { map.getCanvas().style.cursor = 'pointer'; });
         map.on('mouseleave', l, function () { map.getCanvas().style.cursor = ''; });
       });

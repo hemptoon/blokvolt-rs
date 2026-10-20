@@ -48,6 +48,28 @@ CREATE TABLE IF NOT EXISTS requests (
 );
 CREATE INDEX IF NOT EXISTS requests_status ON requests (status);
 
+-- Chargers that drivers add on the map ("Dodaj punjač", RUNBOOK 3.11d). Shown only after moderation, as "Nije potvrđeno".
+-- The worker also creates it on first use.
+CREATE TABLE IF NOT EXISTS novi (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, -- on the map as station id vz-<id>
+  lat REAL NOT NULL, lon REAL NOT NULL, -- the point the driver set (Serbia only)
+  n TEXT,                        -- name of the place (<= 80 chars) or NULL
+  k TEXT NOT NULL,               -- dc | ac | uticnica | nz (do not know)
+  kw REAL,                       -- power 1..400 or NULL
+  pl TEXT,                       -- plugs: comma list of type2, ccs2, chademo, tesla, schuko
+  acc TEXT NOT NULL,             -- svi | gosti | nz
+  fee TEXT NOT NULL,             -- besplatno | placa | nz
+  c TEXT,                        -- how to find it (<= 300 chars) or NULL
+  nick TEXT,                     -- nickname (<= 40 chars, never published) or NULL
+  foto TEXT,                     -- photos.id of the optional photo (st = vz-<id>, moderated like any photo)
+  status TEXT NOT NULL DEFAULT 'pending', -- pending | ok | no
+  at INTEGER NOT NULL, ok_at INTEGER,
+  lang TEXT,
+  ip TEXT,                       -- the day's IP fingerprint, as in checkins
+  uid TEXT                       -- users.id when signed in, else NULL
+);
+CREATE INDEX IF NOT EXISTS novi_status ON novi (status, at);
+
 -- The day's random key for the IP fingerprints: one row, overwritten with a new random key on the first request of each
 -- UTC day, so yesterday's fingerprints can no longer be matched to an address. The worker also creates it on first use.
 CREATE TABLE IF NOT EXISTS dk (

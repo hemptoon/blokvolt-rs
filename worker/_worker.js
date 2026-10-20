@@ -14,7 +14,12 @@ const STATUSES = new Set(['ok', 'problem', 'broken', 'missing']);
 // drivers' short answers on the map card (map.js: WHY, FACTS): field -> allowed values
 const FACT_VALUES = { why: new Set(['busy', 'broken', 'app', 'cable', 'closed', 'short']), cab: new Set(['att', 'own']),
   park: new Set(['free', 'paid']), oh: new Set(['24', 'lim']) };
-const KINDS = new Set(['firma', 'mreza', 'ispravka', 'stanica', 'pomoc', 'pretraga']);   // pretraga: „Niste našli šta tražite?“ on /pretraga/
+const KINDS = new Set(['firma', 'mreza', 'ispravka', 'stanica', 'pomoc', 'pretraga']);
+// "Dodaj punjač": a charger a driver adds on the map (table novi, RUNBOOK 3.11d). Serbia only; every one waits for moderation.
+const NOVI_K = new Set(['dc', 'ac', 'uticnica', 'nz']);                 // DC / AC (Type 2) / ordinary socket / do not know
+const NOVI_PL = new Set(['type2', 'ccs2', 'chademo', 'tesla', 'schuko']);
+const NOVI_ACC = new Set(['svi', 'gosti', 'nz']), NOVI_FEE = new Set(['besplatno', 'placa', 'nz']);
+const SRB = { s: 41.85, n: 46.2, w: 18.8, e: 23.05 };   // pretraga: „Niste našli šta tražite?“ on /pretraga/
 const MAX_IMG = 950 * 1024, MAX_TH = 90 * 1024;
 const LINKY = /(https?:\/\/|www\.|\b[a-z0-9-]+\.(com|rs|net|org|info|me|io)\b)/i;
 const CONTACTY = /(\S+@\S+\.\S+|(\+?\d[\d\s\/.-]{7,}\d))/;
@@ -86,6 +91,15 @@ function sameOrigin(request) {
 
 // station ids that exist on the map (the static map files: open data + the networks' own lists), cached per isolate for 10 minutes
 let STATIONS = null, STATIONS_AT = 0;
+// a charger added by drivers (vz-<n>) is a station once it is approved: looked up in D1, not in the static files
+async function noviOk(env, st) {
+  const m = /^vz-(\d{1,9})$/.exec(st);
+  if (!m) return false;
+  try {
+    const r = await env.DB.prepare(`SELECT 1 AS x FROM novi WHERE id = ?1 AND status = 'ok'`).bind(Number(m[1])).first();
+    return !!r;
+  } catch (e) { return false; }
+}
 async function stationIds(env, request) {
   if (STATIONS && Date.now() - STATIONS_AT < 600000) return STATIONS;
   try {
@@ -307,6 +321,84 @@ async function adminHelpful(env) {
   return json({ ok: true, votes: votes.results, notes: notes.results });
 }
 
+// ---------------------------------------------------------------- "Dodaj punjač" (RUNBOOK 3.11d)
+// A driver adds a charger the map lacks: the point (moved onto the charger by hand), what kind it is, plugs, power,
+// who may charge and whether it is paid, how to find it, an optional photo. Nothing is published before the moderator
+// approves it (/admin/); then it is on the map as "Nije potvrđeno · dodao vozač" until a network's list, a check on the
+// spot or recent drivers' reports confirm it. The driver confirms having seen the charger or the owner's own page —
+// points copied from other maps and apps are not accepted (/pravila-objavljivanja/#novi-punjac).
+let NOVI_READY = false;
+async function ensureNovi(env) {
+  if (NOVI_READY) return;
+  await env.DB.batch([
+    env.DB.prepare(`CREATE TABLE IF NOT EXISTS novi (id INTEGER PRIMARY KEY AUTOINCREMENT, lat REAL NOT NULL, lon REAL NOT NULL,
+      n TEXT, k TEXT NOT NULL, kw REAL, pl TEXT, acc TEXT NOT NULL, fee TEXT NOT NULL, c TEXT, nick TEXT, foto TEXT,
+      status TEXT NOT NULL DEFAULT 'pending', at INTEGER NOT NULL, ok_at INTEGER, lang TEXT, ip TEXT, uid TEXT)`),
+    env.DB.prepare('CREATE INDEX IF NOT EXISTS novi_status ON novi (status, at)'),
+  ]);
+  NOVI_READY = true;
+}
+
+async function postNovi(request, env) {
+  let fd;
+  try { fd = await request.formData(); } catch (e) { return bad('form'); }
+  if (fd.get('hp')) return json({ ok: true, pending: true });                        // honeypot: silently accept
+  const t = Number(fd.get('t') || 0);
+  if (t && t < 4000) return bad('too fast', 429);
+  if (fd.get('ja') !== '1') return bad('confirm');
+  const lat = Number(fd.get('lat')), lon = Number(fd.get('lon'));
+  if (!isFinite(lat) || !isFinite(lon)) return bad('point');
+  if (lat < SRB.s || lat > SRB.n || lon < SRB.w || lon > SRB.e) return bad('outside');
+  const k = String(fd.get('k') || 'nz'), acc = String(fd.get('acc') || 'nz'), fee = String(fd.get('fee') || 'nz');
+  if (!NOVI_K.has(k) || !NOVI_ACC.has(acc) || !NOVI_FEE.has(fee)) return bad('value');
+  const pl = String(fd.get('pl') || '').split(',').map(x => x.trim()).filter(x => NOVI_PL.has(x));
+  let kw = fd.get('kw') == null || fd.get('kw') === '' ? null : Number(String(fd.get('kw')).replace(',', '.'));
+  if (kw !== null && !(kw >= 1 && kw <= 400)) return bad('kw');
+  const n = clean(fd.get('n'), 80) || null, c = clean(fd.get('c'), 300) || null, nick = clean(fd.get('nick'), 40) || null;
+  const ip = await ipHash(request, env);
+  if (!(await allow(env, 'nv:' + ip, 5))) return bad('limit', 429);
+  await ensureNovi(env);
+  const pend = await env.DB.prepare(`SELECT COUNT(*) AS n FROM novi WHERE status = 'pending'`).first();
+  if (pend && pend.n >= 300) return bad('queue full', 429);
+  // the optional photo: the same checks as a station photo; it waits in the photo queue under the new charger's id
+  const img = fd.get('foto'), th = fd.get('thumb');
+  let photo = null;
+  if (img && typeof img !== 'string') {
+    const buf = new Uint8Array(await img.arrayBuffer());
+    const isJpeg = buf[0] === 0xff && buf[1] === 0xd8 && buf[2] === 0xff;
+    if (buf.length >= 2000 && buf.length <= MAX_IMG && isJpeg) {
+      let thBuf = null;
+      if (th && typeof th !== 'string') {
+        thBuf = new Uint8Array(await th.arrayBuffer());
+        if (thBuf.length > MAX_TH || !(thBuf[0] === 0xff && thBuf[1] === 0xd8)) thBuf = null;
+      }
+      const w = Math.min(4000, Math.max(0, Math.round(Number(fd.get('w') || 0)))), h = Math.min(4000, Math.max(0, Math.round(Number(fd.get('h') || 0))));
+      photo = { id: rid(), buf, thBuf, w, h };
+    }
+  }
+  const uid = await reporter(request, env);
+  const row = await env.DB.prepare(
+    'INSERT INTO novi (lat, lon, n, k, kw, pl, acc, fee, c, nick, foto, at, lang, ip, uid) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15) RETURNING id'
+  ).bind(Math.round(lat * 1e6) / 1e6, Math.round(lon * 1e6) / 1e6, n, k, kw, pl.join(',') || null, acc, fee, c, nick,
+    photo ? photo.id : null, now(), clean(fd.get('lang'), 5) || null, ip, uid || null).first();
+  if (photo && row) {
+    await env.DB.prepare(
+      'INSERT INTO photos (id, st, status, at, cap, w, h, mime, img, th, ip' + (uid ? ', uid' : '') + ') VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11' + (uid ? ', ?12' : '') + ')'
+    ).bind(photo.id, 'vz-' + row.id, 'pending', now(), null, photo.w || null, photo.h || null, 'image/jpeg', photo.buf, photo.thBuf, ip, ...(uid ? [uid] : [])).run();
+  }
+  return json({ ok: true, pending: true });
+}
+
+// approved chargers from drivers, for the map (no fingerprint, no account, no nickname)
+async function noviList(env) {
+  try {
+    await ensureNovi(env);
+    const r = await env.DB.prepare(`SELECT id, lat, lon, n, k, kw, pl, acc, fee, c, at, ok_at FROM novi WHERE status = 'ok' ORDER BY id LIMIT 2000`).all();
+    return r.results.map(x => ({ id: 'vz-' + x.id, lat: x.lat, lon: x.lon, n: x.n || '', k: x.k, kw: x.kw, pl: x.pl ? x.pl.split(',') : [],
+      acc: x.acc, fee: x.fee, c: x.c || '', at: x.at, ok: x.ok_at || x.at }));
+  } catch (e) { return []; }
+}
+
 // ---------------------------------------------------------------- admin (optional, owner's key)
 function adminOk(request, env) {
   if (!env.ADMIN_KEY || String(env.ADMIN_KEY).length < 16) return false;
@@ -318,7 +410,9 @@ async function adminQueue(env) {
   const photos = await env.DB.prepare(`SELECT id, st, cap, at, rep, status FROM photos WHERE status = 'pending' ORDER BY at LIMIT 100`).all();
   const comments = await env.DB.prepare(`SELECT id, st, s, r, c, n, at, rep FROM checkins WHERE cs = 'pending' ORDER BY at LIMIT 200`).all();
   const requests = await env.DB.prepare(`SELECT id, kind, slug, data, email, at FROM requests WHERE status = 'new' ORDER BY at LIMIT 200`).all();
-  return json({ ok: true, photos: photos.results, comments: comments.results, requests: requests.results });
+  await ensureNovi(env);
+  const novi = await env.DB.prepare(`SELECT id, lat, lon, n, k, kw, pl, acc, fee, c, nick, foto, at, lang FROM novi WHERE status = 'pending' ORDER BY at LIMIT 200`).all();
+  return json({ ok: true, photos: photos.results, comments: comments.results, requests: requests.results, novi: novi.results });
 }
 
 async function adminDecide(request, env) {
@@ -330,6 +424,13 @@ async function adminDecide(request, env) {
     await env.DB.prepare('UPDATE photos SET status = ?1, rep = CASE WHEN ?1 = \'ok\' THEN 0 ELSE rep END WHERE id = ?2').bind(ok ? 'ok' : 'no', b.id).run();
   } else if (b.t === 'c' && Number.isInteger(b.id)) {
     await env.DB.prepare('UPDATE checkins SET cs = ?1, rep = CASE WHEN ?1 = \'ok\' THEN 0 ELSE rep END WHERE id = ?2').bind(ok ? 'ok' : 'hidden', b.id).run();
+  } else if (b.t === 'n' && Number.isInteger(b.id)) {
+    // a new charger from a driver: 'ok' puts it on the map, 'no' rejects it (also later, to take it off) with its waiting photo
+    await ensureNovi(env);
+    await env.DB.prepare('UPDATE novi SET status = ?1, ok_at = CASE WHEN ?1 = \'ok\' THEN ?2 ELSE ok_at END WHERE id = ?3').bind(ok ? 'ok' : 'no', now(), b.id).run();
+    if (!ok) await env.DB.prepare(`UPDATE photos SET status = 'no' WHERE st = ?1 AND status = 'pending'`).bind('vz-' + b.id).run();
+    // the public list is cached for the minute: drop this minute's copy so the decision shows at once
+    try { await caches.default.delete(new Request(new URL(request.url).origin + '/api/novi-punjaci?c=' + Math.floor(Date.now() / 60000))); } catch (e) { /* cache off */ }
   } else if (b.t === 'z' && Number.isInteger(b.id)) {
     await env.DB.prepare('UPDATE requests SET status = ?1 WHERE id = ?2').bind(ok ? 'done' : 'rejected', b.id).run();
   } else return bad('what');
@@ -1998,13 +2099,24 @@ async function api(request, env, ctx) {
     mm = p.match(/^\/api\/stanica\/([a-z0-9-]{3,60})\/(prijava|foto|podatak)$/);
     if (mm) {
       const ids = await stationIds(env, request);
-      if (ids.size && !ids.has(mm[1])) return bad('station', 404);
+      if (ids.size && !ids.has(mm[1]) && !(await noviOk(env, mm[1]))) return bad('station', 404);
       return mm[2] === 'prijava' ? postCheckin(request, env, mm[1]) : mm[2] === 'podatak' ? postFact(request, env, mm[1]) : postPhoto(request, env, mm[1]);
     }
+    if (p === '/api/novi-punjac') return postNovi(request, env);
     if (p === '/api/prijavi') return postReport(request, env);
     if (p === '/api/zahtev') return postRequest(request, env);
     if (p === '/api/pretraga') return postSearch(request, env, ctx);
     if (p === '/api/admin/odluka') return adminOk(request, env) ? adminDecide(request, env) : bad('not found', 404);
+  }
+  if (m === 'GET' && p === '/api/novi-punjaci') {
+    const cache = caches.default;
+    const key = new Request(url.origin + '/api/novi-punjaci?c=' + Math.floor(Date.now() / 60000));
+    let res = await cache.match(key);
+    if (!res) {
+      res = json({ ok: true, at: now(), st: await noviList(env) }, 200, { 'cache-control': 'public, max-age=60' });
+      ctx.waitUntil(cache.put(key, res.clone()));
+    }
+    return res;
   }
   if (m === 'GET' && p === '/api/admin/red') return adminOk(request, env) ? adminQueue(env) : bad('not found', 404);
   if (m === 'GET' && p === '/api/admin/pomoc') return adminOk(request, env) ? adminHelpful(env) : bad('not found', 404);

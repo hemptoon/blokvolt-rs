@@ -1576,3 +1576,34 @@ html.nl-in .nl-v-out,html:not(.nl-in) .nl-v-in{display:none!important}
 .st .pr .fxw{font-style:normal}
 .st .pr .fxw .fx-p{display:inline;font-weight:inherit;color:inherit}
 @media print{.hd-cur,.hd-cur-m{display:none}}
+/* "Dodaj punjač" on /mapa/ (map.js addStart/addForm, RUNBOOK 3.11d) */
+.maplibregl-ctrl-group.map-addctl button{width:auto!important;height:32px;padding:0 11px;display:flex!important;align-items:center;gap:5px;font-weight:600;font-size:13px;line-height:1;font-family:inherit;color:var(--ink);white-space:nowrap}
+.maplibregl-ctrl-group.map-addctl button span{font-size:17px;line-height:1;font-weight:500;margin-top:-1px}
+.add-pin{position:absolute;left:50%;top:50%;z-index:4;width:40px;height:52px;transform:translate(-50%,-100%);pointer-events:none;filter:drop-shadow(0 4px 6px rgba(13,17,26,.35))}
+.add-pin svg{display:block;width:40px;height:52px}
+.add-pin i{position:absolute;left:50%;bottom:-4px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:rgba(13,17,26,.35)}
+.add-bar{position:absolute;left:50%;bottom:34px;z-index:6;transform:translateX(-50%);width:min(480px,calc(100% - 24px));background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 14px 34px -12px rgba(13,17,26,.5),0 2px 6px rgba(13,17,26,.15)}
+.add-bar p{margin:0 0 8px;font-size:14px;line-height:1.4;color:var(--ink2)}
+.add-bar p b{color:var(--ink)}
+.add-bar .add-hint{margin:0 0 8px;font-size:13px;color:var(--warn)}
+.add-bar .add-hint:empty{display:none}
+.add-acts{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.add-acts .btn svg{width:16px;height:16px}
+.map-wrap.is-adding .map-near,.map-wrap.is-adding .map-me{display:none}
+.add-form .opts{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.add-form .opts .chip{position:relative;padding:6px 11px;font-size:13.5px;cursor:pointer}
+.add-form .opts .chip input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.add-form .opts .chip:has(input:checked){background:var(--ink);color:#fff;border-color:var(--ink)}
+.add-form .opts .chip:has(input:focus-visible){outline:2px solid var(--blue,#2E6BFF);outline-offset:2px}
+.add-form textarea.input{height:auto;min-height:64px;padding:10px 12px;resize:vertical;line-height:1.4}
+.add-form input[type=file]{display:block;margin-top:6px;font-size:13.5px;max-width:100%}
+.add-form .add-pt .w-ll{margin-top:6px}
+.add-form .check.add-ja{align-items:flex-start;line-height:1.4}
+.add-form .check.add-ja input{margin-top:2px}
+.add-msg{margin:0 0 8px;font-size:13.5px;color:var(--warn)}
+.add-msg:empty{display:none}
+.add-done{display:flex;gap:8px;align-items:flex-start;font-size:15px;line-height:1.45;margin:6px 0 12px}
+.add-done svg{width:20px;height:20px;flex:none;color:var(--ok)}
+.addp .vf-warn{margin:0 0 12px}
+.addp .vf-warn p{margin:0 0 6px}
+@media (max-width:900px){.add-bar{bottom:12px}}

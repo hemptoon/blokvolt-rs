@@ -585,6 +585,13 @@ The images' Last-Modified header (same-origin fetch from the image tab) shows wh
 counts are part of some segments ("185 javnih punjača…", "Na mapi (22)", "24 od 36"), so a new number
 means a new translation.
 
+**No clusters (owner's decision 20.10.2026).** The map draws every charger at every zoom, like PlugShare: small dots
+on the country view that grow with the zoom (`zr()` in map.js), working and confirmed chargers above the faded ones and
+DC above AC (`circle-sort-key`). A tap looks at a box around the finger (14 px on touch screens, 8 px with a mouse): one
+charger opens its card, several zoom in on them (+2 at least, zoom 14 at most; event `map_zoom_in_tap`), from zoom 13
+the nearest dot opens. The country maps of blokvolt.com use the same map.js. Test: `scripts/qa/map_nocluster_test.py`.
+Do not bring number clusters back without the owner's word.
+
 Checks after the build: `/mapa/` list count, `/mapa/?mreza=putevi-srbije`, a card with status
 (`/mapa/#<id>`), `/javno-punjenje/putevi-srbije/` table. MapLibre does not render in a hidden browser tab;
 to test the layers in the container, run Playwright with the style and glyph URLs of tiles.openfreemap.org
@@ -622,6 +629,46 @@ page variable, then copy it out in 900-character slices with `javascript_tool` (
 Google check for the `g_*` stations: search "EV charging station" at the station's coordinates (zoom 18),
 open the nearest place within ~100 m, sort reviews by newest; a review younger than 12 months = `g`.
 Do not batch more than two places per browser call; Google rate-limits fast loops.
+
+#### 3.11d "Dodaj punjač" — chargers drivers add (owner's decision 20.10.2026)
+
+A button under the zoom buttons of /mapa/ (`AddControl`, only with `cfg.add`, so not on blokvolt.com) starts the add mode:
+a pin in the middle of the map, „Ovde sam“ (the driver's own position, kept in the browser), „Dalje“ (zooms to 17 first if
+the map is further out; Serbia only). The form in the card panel: kind (DC / AC / ordinary socket / do not know), plugs,
+power, who may charge, price (free / paid / do not know), how to find it, optional photo (re-encoded like any photo),
+optional nickname (never published) and the required confirmation that the driver saw the charger or the owner's own
+site lists it — points copied from other maps and apps are not accepted (/pravila-objavljivanja/#novi-punjac). A charger
+already on the map within 60 m is offered first („Otvori karticu tog punjača“).
+
+Backend: `POST /api/novi-punjac` (multipart; honeypot `hp`, at least 4 s after opening, 5 a day per fingerprint, at most
+300 waiting) → D1 table `novi` (created on first use, `worker/schema.sql`), the photo into `photos` under `vz-<id>`.
+`GET /api/novi-punjaci` lists the approved ones (cached a minute; a decision drops the cache) and map.js adds them as
+stations `vz-<id>`: „Nije potvrđeno“ with „Dodato <date>“, the driver's price words (never drawn as free), „Kako se
+pronalazi“ in „Gde tačno“. Reports, ratings, photos and short answers work on approved ones (`noviOk`). Moderation: the
+section „Novi punjači od vozača“ on /admin/ (links: OSM, Google, `/mapa/?ll=<lat>,<lon>` — our map at zoom 17); `t: 'n'`
+in `/api/admin/odluka`, `no` also takes an approved one off later. When a network's list, a check on the spot or recent
+reports confirm a driver's charger, add it to the static data (`content/mapa/dopune.json` or a network list) and reject
+the `vz-` copy so it is not shown twice. Tests: `scripts/qa/novi_worker_test.mjs` (Miniflare), `scripts/qa/novi_ui_test.py`.
+Events: `map_add_start`, `map_add_sent`, `map_add_dup`.
+
+#### 3.11e Other lists: networks' apps, garage operators, owners' sites (`content/mapa/mreze/ostale.json`)
+
+Sites the networks and the owners of places publish themselves, beyond Charge&GO, the roaming map and Tesla: the
+Emobility Spectra app (`sp`, read by the robot on the owner's Android phone with roaming switched off in the app's
+filter: List → each location → „Location information“; never press SELECT), the Yesla app (`ye`), Best in Parking's
+garage pages (`bp`) and owners' own sites (`own`: hotels, ev-charge.rs). `lists` holds the label, URL and date of each
+list; a site has `k`, `id` (`sp-…`, `ye-…`, `bp-…`, `own-…`), `n`, `a`, `lat`, `lon`, `c` and the facts of dopune.json
+(`loc`, `oh`, `ax`, `fee`, `note`, `al`, `opn`, `acc`), and for `own` its page (`u`, `l`). `official_sites()` loads them
+like the other lists: an open-data station within the matching distance becomes that site (Hilton Belgrade =
+`osm-n5345818447`), the rest are added to mreze.json; they count as confirmed by that list (`v.by`: sp, ye, bp, own).
+Points: the network's own pin when it gives one (Yesla, Best in Parking), otherwise the listed address placed with
+OpenStreetMap's Nominatim from the owner's browser (a few requests, one a second) — `loc.q = site`. Never a point from
+Google Maps, PlugShare, Chargemap or another charger map or app (20.10.2026: PlugShare's terms forbid copying any part
+of it, a private list included; the owner set the goal of reaching its coverage through the networks' and owners' own
+sources only. A driver who sees a missing charger adds it through 3.11d).
+Never publish a person's name from an app's „owner“ field (sole proprietors are named after the owner). When a list is
+read again, change its date in `lists`, add or remove sites, and say in the report which disappeared (20.10.2026: AK
+Tasić Jagodina and CITY TAXI Novi Sad were no longer in the Spectra app).
 
 #### 3.11c Drivers' reports, ratings, photos (backend)
 
@@ -814,6 +861,8 @@ No messages, comments or forms to anyone — the outreach rule of 3.7 applies to
   |---|---|---|
   | `map_card_open` | map, a charger card opens | `station`, `network`, `verified`, `favourite` |
   | `map_filter` | map chip clicked | `filter`, `favourites` |
+  | `map_zoom_in_tap` | map, a tap on several dots at once zooms in (3.11, no clusters) | `n` (chargers under the finger) |
+  | `map_add_start` / `map_add_sent` / `map_add_dup` | „Dodaj punjač“ (3.11d): add mode opened, a charger sent, the nearby charger's card opened instead | `source`, `zoom` / `kind`, `photo`, `plugs` / `station` |
   | `map_search` | map search, 1,5 s after typing stops | `query` (≤ 60 chars), `results` |
   | `map_near_me` | „Blizu mene“ | `ok` |
   | `map_navigate` / `map_network_link` / `map_report_error` | card buttons | `station`, `network` |
@@ -1102,8 +1151,8 @@ the footer ("Pomoć"), the text under /mapa/, /aplikacija/ and /ispravka/. Rules
   country (`cc`), the network's short name from `country.json` (`nn`) and, per country, the links to its map and price
   page on blokvolt.com. A station already on the Serbian map is skipped. `cfg.region` in the /mapa/ config switches the
   layer on; the country maps of blokvolt.com have no `cfg.region` and do not change.
-- In map.js a station with `cc` is drawn from its own source (`rg`, grey clusters, white points with a grey ring,
-  under Serbia's layers) and never takes a Serbian network's data (`netOf`, `isFree`, `price` return nothing for it).
+- In map.js a station with `cc` is drawn from its own source (`rg`, smaller white points with a grey ring,
+  under Serbia's layers; no clusters, see 3.11) and never takes a Serbian network's data (`netOf`, `isFree`, `price` return nothing for it).
   The list without zoom, search or "Blizu mene" is Serbia's; the count line adds "u regionu još N" (after the filters).
   Search, the chips "Brzi", "AC", "CHAdeMO" and favourites work across the region; "Potvrđeni", "Besplatni" and the
   network chips are Serbian only. The card: country after the address, the network's short name, the verification box
@@ -1131,7 +1180,8 @@ the footer ("Pomoć"), the text under /mapa/, /aplikacija/ and /ispravka/. Rules
   Since 06.10.2026 the script has the same price engine as /mapa/ (per-connector prices, guard-safe matching), „Moj
   auto“ with RSD/km (the car is kept **in memory only** — evolako.rs's privacy policy names no browser storage but the
   language and the referral code), „Kako se puni ovde“, hours with „sada radi“, own-cable and parking badges, closed
-  stations faded and left out of „Najbliži punjač“, a Tesla unlocks the Superchargers. It reads `files.map.auta` and
+  stations faded and left out of „Najbliži punjač“, a Tesla unlocks the Superchargers. Since 20.10.2026 no number clusters, like /mapa/
+  (3.11): every charger at every zoom, a tap on several dots zooms in. It reads `files.map.auta` and
   `files.data` (fuel price) from the feed; `/assets/app/*` and `/assets/embed/*` carry `Access-Control-Allow-Origin: *`.
   Order of a change: source → build.py → deploy blokvolt.rs (the new file next to the old ones) → read the live
   head/footer (`get_page_freeform_code`) and replace only the `<style>` block and the script tag → check the site's

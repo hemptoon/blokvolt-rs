@@ -855,6 +855,8 @@ MAP_T = {
     # verification (content/mapa/provera.json, content/mapa/mreze/)
     'v_ok': 'Potvrđeno', 'v_cg': 'na spisku lokacija mreže Charge&GO', 'v_rm': 'na roming mapi Charge&GO',
     'v_te': 'na zvaničnom spisku Tesla', 'v_ps': 'na spisku JP „Putevi Srbije“', 'v_g': 'skorašnje ocene vozača na Google mapama',
+    'v_sp': 'u aplikaciji mreže Emobility Spectra', 'v_ye': 'u aplikaciji mreže Yesla', 'v_bp': 'na sajtu operatera garaže Best in Parking',
+    'src_sp': 'aplikacija Emobility Spectra', 'src_ye': 'aplikacija Yesla', 'src_own': 'sajt vlasnika lokacije',
     'v_nep': 'Nije potvrđeno', 'v_checked': 'Provereno {d}', 'v_help': 'Šta znači oznaka?',
     'v_none': 'Punjač je samo u otvorenim bazama: nema ga ni na spisku mreža ni na Google mapama. Možda više ne postoji ili nije javan. Proverite pre polaska.',
     'v_old': 'Punjač je u otvorenim bazama i na Google mapama, ali bez skorijih potvrda: nijedna ocena vozača iz poslednjih godinu dana. Proverite pre polaska.',
@@ -933,6 +935,27 @@ MAP_T = {
     'f_q': 'Još tri kratka pitanja (nije obavezno):', 'f_cab': 'Kabl', 'f_cab_att': 'na punjaču', 'f_cab_own': 'treba svoj',
     'f_park': 'Parking', 'f_park_free': 'besplatan', 'f_park_paid': 'plaća se', 'f_oh': 'Radno vreme', 'f_oh_24': '0–24', 'f_oh_lim': 'ograničeno',
     'f_by': 'po vozačima, {n}×', 'why_seen': 'Vozači javljaju (60 dana): {x}',
+    # "Dodaj punjač": chargers drivers add (map.js addStart/addForm, /api/novi-punjac; RUNBOOK 3.11d)
+    'add_btn': 'Dodaj punjač', 'add_t': 'Dodaj punjač koji nedostaje',
+    'add_step1': 'Pomerite mapu tako da oznaka bude tačno na punjaču.', 'add_here': 'Ovde sam',
+    'add_here_hint': 'Oznaka je na vašoj lokaciji. Ako punjač nije baš tu, pomerite mapu.',
+    'add_zoom': 'Mapa je uvećana. Proverite da li je oznaka tačno na punjaču, pa pritisnite „Dalje“.',
+    'add_out': 'Na mapu se za sada dodaju samo punjači u Srbiji.', 'add_next': 'Dalje', 'add_cancel': 'Otkaži',
+    'add_lead': 'Punjač će se pojaviti na mapi posle provere, sa oznakom „Nije potvrđeno“.', 'add_point': 'Mesto punjača',
+    'add_move': 'Pomeri', 'add_dup': 'Na {m} m je već punjač „{t}“. Ako je to isti punjač, javite njegovo stanje na kartici.',
+    'add_dup_open': 'Otvori karticu tog punjača', 'add_name': 'Naziv mesta (nije obavezno)',
+    'add_name_ph': 'Npr. hotel, tržni centar, auto-salon', 'add_kind': 'Vrsta punjača', 'k_dc': 'Brzi (DC)', 'k_ac': 'AC (Tip 2)',
+    'k_ut': 'Obična utičnica', 'k_nz': 'Ne znam', 'add_plugs': 'Priključci (nije obavezno)', 'add_kw': 'Snaga u kW (nije obavezno)',
+    'add_acc': 'Ko može da puni', 'acc_svi': 'Svi', 'acc_gosti': 'Samo gosti ili kupci', 'add_fee': 'Cena', 'fee_free': 'Besplatno',
+    'fee_paid': 'Plaća se', 'add_note': 'Kako se pronalazi (nije obavezno)', 'add_note_ph': 'Npr. parking iza zgrade, levo od ulaza',
+    'add_photo': 'Fotografija punjača (nije obavezno)', 'add_nick_note': 'Ne objavljuje se.',
+    'add_ja': 'Punjač sam lično video ili ga vlasnik mesta navodi na svom sajtu. Ne prepisujem ga sa drugih mapa ni aplikacija.',
+    'add_err_ja': 'Potvrdite da ste punjač videli ili da ga navodi vlasnik mesta.', 'add_err_kw': 'Snaga treba da bude broj od 1 do 400 kW.',
+    'add_send': 'Pošalji', 'add_rules': 'Bez ličnih podataka i reklama.',
+    'add_thanks': 'Hvala! Punjač će se pojaviti na mapi posle provere, sa oznakom „Nije potvrđeno“. Provera obično traje nekoliko dana.',
+    'vz_title': 'Punjač (dodao vozač)', 'v_vz_d': 'Dodato {d}', 'src_vz': 'vozači', 'q_vz': 'Tačku je postavio vozač.',
+    'v_vz': 'Punjač je dodao vozač. Još nije potvrđen ni na spisku mreže ni na licu mesta. Proverite pre polaska.',
+    'vz_free': 'Po rečima vozača punjenje je besplatno. Proverite na licu mesta.', 'vz_paid': 'Po rečima vozača punjenje se plaća. Cena nije poznata.',
 }
 # Serbian notes that come with the price data (cene.json) and the idle fees: added as 'tx:<text>' so that the
 # translation memory translates them on /en/ and /ru/ (map.js looks them up with tr())
@@ -950,7 +973,7 @@ for _n in MAP['nets'].values():
 _tx.update(MAP['extra_texts'])
 for _x in sorted(_tx):
     MAP_T['tx:' + _x] = _x
-CHIP_NETS = ['chargego', 'orion-emobility', 'putevi-srbije', 'tesla', 'emobility-spectra']
+CHIP_NETS = ['chargego', 'orion-emobility', 'putevi-srbije', 'tesla', 'emobility-spectra', 'yesla']
 _r0 = MAP['retrieved'].split('-')
 M = {
     'n': MAP['n'],
@@ -978,6 +1001,8 @@ M = {
         'fuel': {'b': CALC['fuel']['benzin'], 'd': CALC['fuel']['dizel'], 'lb': CALC['defaults']['l100_benzin'],
                  'ld': CALC['defaults']['l100_dizel'], 'date': CALC['fuel']['date']},
         'evo': EVOLAKO + 'proveri-svoju-garazu',
+        # "Dodaj punjač" (blokvolt.rs only; the country maps of blokvolt.com have no backend)
+        'add': True,
     }, ensure_ascii=False).replace('</', '<\\/'),
     'i18n': json.dumps(MAP_T, ensure_ascii=False),
 }

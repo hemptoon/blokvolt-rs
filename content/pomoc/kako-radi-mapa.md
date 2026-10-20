@@ -2,17 +2,17 @@
 id: B1
 title: Kako radi mapa punjača: boje, filteri i pretraga
 h1: Kako radi mapa: boje, filteri i pretraga
-description: Šta znače boje tačaka na mapi punjača BlokVolt i kako rade filteri Brzi, AC, CHAdeMO, Besplatni i Potvrđeni, pretraga, „Blizu mene“ i kartica punjača.
+description: Šta znače boje tačaka na mapi punjača BlokVolt, kako rade filteri, pretraga, „Blizu mene“ i kartica punjača i kako se dodaje punjač koji nedostaje.
 lead: Boja tačke pokazuje vrstu punjača, filteri iznad liste sužavaju izbor, a pretraga traži po gradu, adresi ili mreži. Dodir na tačku ili red u listi otvara karticu punjača.
 kicker: Pomoć
 section: mapa-i-podaci
 order: 1
 path: /pomoc/kako-radi-mapa/
-updated: 28.09.2026
+updated: 20.10.2026
 related: /pomoc/sta-znaci-potvrdjeno/, /pomoc/konektori-i-filteri/, /pomoc/cene-javnog-punjenja/
 shots: mapa-pregled, mapa-legenda, mapa-filteri-mobilni, mapa-kartica-mobilni
 published: 2026-09-28
-modified: 2026-09-28
+modified: 2026-10-20
 ---
 ## Boje i oznake
 
@@ -29,11 +29,15 @@ Legenda je u gornjem levom uglu mape.
 | Samo Tesla | siva tačka sa slovom „T“ |
 | Nije potvrđeno | bleda tačka, uz snagu stoji „?“ |
 
-Kad je mapa umanjena, punjači su grupisani u tamne krugove sa brojem. Dodir na krug uvećava taj deo mape. Kad mapu uvećate do nivoa grada, u tački piše snaga u kW, a pored nje cena.
+Punjači se vide na svakom uvećanju mape. Kad je mapa umanjena, tačke su male, a brzi i potvrđeni punjači su iznad ostalih. Dodir na mesto gde je više punjača uvećava taj deo mape, a dodir na jedan punjač otvara njegovu karticu. Kad mapu uvećate do nivoa grada, u tački piše snaga u kW, a pored nje cena.
 
 Zeleni prsten oko tačke označava punjač koji ste sačuvali u omiljene.
 
 [[shot:mapa-legenda | Legenda mape (DC, AC, Besplatno, Ne radi, Samo Tesla, Nije potvrđeno) i primer tačaka sa snagom i cenom pored njih]]
+
+## Punjač koji nedostaje
+
+Dugme „Dodaj punjač“ je u gornjem desnom uglu mape, ispod dugmadi za uvećanje. Pomerite mapu tako da oznaka bude tačno na punjaču, pritisnite „Dalje“ i ukratko opišite punjač. Novi punjač se objavljuje posle provere, sa oznakom „Nije potvrđeno“. Šta se šalje i šta se objavljuje piše u [pravilima](/pravila-objavljivanja/#novi-punjac).
 
 ## Filteri
 

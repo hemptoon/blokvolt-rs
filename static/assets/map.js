@@ -217,7 +217,7 @@ let ST = [], NETS = {}, CI = {}, CI_STATE = 'loading', map, me = null, sel = nul
 // the neighbouring countries (cfg.region): their links, and how many stations are Serbian (NSR) and how many are not (NRG)
 let RGC = {}, NSR = 0, NRG = 0;
 const state = { q: '', f: 'all', ok: false, cheap: false, bounds: null, lim: 20 };
-let userMove = false;
+let userMove = false, llAt = null;
 const $list = d.getElementById('mlist'), $count = d.getElementById('mcount'), $card = d.getElementById('mcard');
 const $q = d.getElementById('mq'), $chips = d.getElementById('mchips'), $me = d.getElementById('mme');
 
@@ -242,14 +242,14 @@ function kind(s) {
   if (isOff(s)) return 'off';
   if (isFree(s)) return 'free';
   if (teslaOnly(s) && !TESLA) return 'tesla';
-  return (s.dc || 0) > 0 ? 'dc' : 'ac';
+  return (s.dc || 0) > 0 || s.kd === 'dc' ? 'dc' : 'ac';
 }
 // a neighbouring country's station never takes a Serbian network's data (the same slug can mean another company there)
 function netOf(s) { return s.cc ? null : NETS[s.net] || null; }
 function netName(s) { if (s.cc) return s.nn || s.opn || ''; const n = netOf(s); return n ? n.name : (s.opn || ''); }
 // a station without a name is called by its network, else by its street
 function cleanName(n) { return (n || '').replace(/^charge\s*&\s*go\s*[-–:,]?\s*/i, '').replace(/^BS\s+(?=gazprom|nis|evoil)/i, '').trim(); }
-function title(s) { return cleanName(s.n) || netName(s) || (s.a ? s.a.split(',')[0] : T.charger); }
+function title(s) { return cleanName(s.n) || netName(s) || (s.a ? s.a.split(',')[0] : s.vz ? T.vz_title : T.charger); }
 function hayOf(s) { return fold([s.n, s.a].concat(s.al || []).join(' ')); }
 function place(s) {
   const near = s.t ? T.near.replace('{t}', s.t) : '';
@@ -267,6 +267,8 @@ function stationLines(s) {
 }
 function price(s) {
   if (s.cc) return { kind: 'rg' };
+  // a charger added by a driver: what the driver said about the price, never drawn as free (it is not checked yet)
+  if (s.vz) return { kind: 'none', text: s.vz.fee === 'besplatno' ? T.vz_free : s.vz.fee === 'placa' ? T.vz_paid : T.p_unknown };
   const fee = s.fee;
   if (fee && fee.free) {
     const lbl = { label: tr(fee.t), src: tr(fee.src), note: tr(fee.note) };
@@ -679,7 +681,7 @@ function statusHtml(s) {
     ' · <b>' + esc(l[2] === 1 ? T.st_ok : T.st_off) + '</b>' + (l[3] && T['st_' + l[3]] ? ' (' + esc(T['st_' + l[3]]) + ')' : '') + '</span></li>').join('');
   return '<div class="cbox"><span>' + esc(T.status) + '</span><ul class="stl">' + li + '</ul><small>' + esc(T.st_src.replace('{d}', s.ps.d)) + '</small></div>';
 }
-const VBY = () => ({ cg: T.v_cg, rm: T.v_rm, te: T.v_te, ps: T.v_ps, g: T.v_g, own: T.v_own });
+const VBY = () => ({ cg: T.v_cg, rm: T.v_rm, te: T.v_te, ps: T.v_ps, g: T.v_g, own: T.v_own, sp: T.v_sp, ye: T.v_ye, bp: T.v_bp });
 // hours and access in one row of badges (dopune.json)
 function tagsHtml(s) {
   const t = [], car = carSpec();
@@ -716,7 +718,7 @@ function plusCode(lat, lon) {
 function pointQ(s) {
   if (s.loc && s.loc.q) return s.loc.q;
   const pre = s.id.split('-')[0];
-  return { cg: 'net', rm: 'net', te: 'net', ps: 'site', osm: 'osm', ocm: 'ocm' }[pre] || '';
+  return { cg: 'net', rm: 'net', te: 'net', ps: 'site', osm: 'osm', ocm: 'ocm', vz: 'vz', ye: 'net', bp: 'net', sp: 'site', own: 'site' }[pre] || '';
 }
 function whereHtml(s) {
   const L = s.loc || {}, ll = (+s.lat).toFixed(5) + ', ' + (+s.lon).toFixed(5);
@@ -743,8 +745,9 @@ function verHtml(s) {
     const by = (v.by || []).map(b => VBY()[b]).filter(Boolean).join('; ');
     return '<p class="vf">' + ICON.ok + '<span><b>' + esc(T.v_ok) + '</b> ' + esc(by) + (v.d ? ' · ' + esc(v.d) : '') + vHelp() + '</span></p>';
   }
-  const why = v.s === 'prob' ? T.v_prob : (v.g === 'test' ? T.v_test : v.g === 'g_old' ? T.v_old : T.v_none);
-  return '<div class="vf-warn' + (v.s === 'prob' ? ' no' : '') + '"><b>' + ICON.warn + esc(v.s === 'prob' ? T.v_prob_t : T.v_nep) + '</b><p>' + esc(why) + '</p><small>' + esc(T.v_checked.replace('{d}', v.d || '')) + vHelp() + '</small></div>';
+  const why = v.s === 'prob' ? T.v_prob : (v.g === 'vz' ? T.v_vz : v.g === 'test' ? T.v_test : v.g === 'g_old' ? T.v_old : T.v_none);
+  const when = (v.g === 'vz' ? T.v_vz_d : T.v_checked).replace('{d}', v.d || '');
+  return '<div class="vf-warn' + (v.s === 'prob' ? ' no' : '') + '"><b>' + ICON.warn + esc(v.s === 'prob' ? T.v_prob_t : T.v_nep) + '</b><p>' + esc(why) + '</p><small>' + esc(when) + vHelp() + '</small></div>';
 }
 function openCard(s, fly, fromNear) {
   sel = s;
@@ -763,7 +766,8 @@ function openCard(s, fly, fromNear) {
   const rg = s.cc && RGC[s.cc];
   const site = rg ? rg.map + '#' + encodeURIComponent(s.id) : n && n.page ? n.page : (n && n.site ? n.site : '');
   const fix = cfg.fix ? cfg.fix.replace('{id}', encodeURIComponent(s.id)) : lp('/ispravka/?stanica=') + encodeURIComponent(s.id);
-  const SRC = { ocm: 'Open Charge Map', osm: 'OpenStreetMap', ps: 'JP Putevi Srbije', cg: 'Charge&GO', rm: T.src_rm, te: 'Tesla', cga: T.src_cga };
+  const SRC = { ocm: 'Open Charge Map', osm: 'OpenStreetMap', ps: 'JP Putevi Srbije', cg: 'Charge&GO', rm: T.src_rm, te: 'Tesla', cga: T.src_cga, vz: T.src_vz,
+    sp: T.src_sp, ye: T.src_ye, bp: 'Best in Parking', own: T.src_own };
   const srcs = s.src.filter(x => x.u).map(x => '<a href="' + esc(x.u) + '" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(x.upd) + ')' : '')).join(' · ');
   $card.innerHTML = '<div class="ccard" role="dialog" aria-label="' + esc(title(s)) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
     favBtn(s) + (cardNear ? '<button class="lnkbtn nr-back" type="button" data-nr="back">← ' + esc(T.nr_title) + '</button>' : '') +
@@ -1308,7 +1312,7 @@ function feat(s) {
   return { type: 'Feature', id: s._i, geometry: { type: 'Point', coordinates: [s.lon, s.lat] },
     properties: { id: s.id, k, v: closedNow(s) && v !== 'nep' ? 'cl' : v, p: v === 'nep' && k !== 'tesla' ? p + '?' : p, f: FAV.has(s.id) ? 1 : 0, pl: fxPin(pp.t), pc: pp.c } };
 }
-// Serbia and the neighbouring countries are two sources: the neighbours are drawn quieter and cluster on their own
+// Serbia and the neighbouring countries are two sources: the neighbours are drawn quieter, under Serbia's chargers
 function data(rg) { return { type: 'FeatureCollection', features: visible().filter(s => !s.cc === !rg).map(feat) }; }
 function setData() {
   if (map && map.getSource('st')) map.getSource('st').setData(data());
@@ -1326,66 +1330,53 @@ function initMap() {
   });
   map.touchZoomRotate.disableRotation();
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+  if (cfg.add && cfg.api) map.addControl(new AddControl(), 'top-right');
   map.on('load', () => {
     const font = cfg.font;
+    // Every charger is drawn at every zoom, no number clusters (owner's decision 20.10.2026): small dots on the
+    // country view that grow as the reader zooms in. Within a layer, working and confirmed chargers are drawn above
+    // the faded ones, and fast DC above the rest (circle-sort-key: the higher key is drawn on top).
+    const nep = ['any', ['==', ['get', 'v'], 'nep'], ['==', ['get', 'v'], 'cl']];
+    const zr = (a, b, c, e) => ['interpolate', ['linear'], ['zoom'], 5, a, 8, b, 12, c, 16, e];
     if (NRG) {
-      // the neighbouring countries under Serbia's layers: grey clusters and white points with a grey ring
-      map.addSource('rg', { type: 'geojson', data: data(true), cluster: true, clusterRadius: 42, clusterMaxZoom: 11 });
-      map.addLayer({ id: 'rg-cl', type: 'circle', source: 'rg', filter: ['has', 'point_count'],
-        paint: { 'circle-color': '#FFFFFF', 'circle-opacity': 0.92, 'circle-radius': ['step', ['get', 'point_count'], 14, 10, 18, 30, 22], 'circle-stroke-width': 2.5, 'circle-stroke-color': '#8A909B' } });
-      map.addLayer({ id: 'rg-cl-n', type: 'symbol', source: 'rg', filter: ['has', 'point_count'],
-        layout: { 'text-field': ['get', 'point_count_abbreviated'], 'text-font': font, 'text-size': 12, 'text-allow-overlap': true },
-        paint: { 'text-color': '#3A3F4A' } });
-      map.addLayer({ id: 'rg-pt', type: 'circle', source: 'rg', filter: ['!', ['has', 'point_count']],
+      // the neighbouring countries under Serbia's layers: white points with a grey ring, smaller and quieter
+      map.addSource('rg', { type: 'geojson', data: data(true) });
+      map.addLayer({ id: 'rg-pt', type: 'circle', source: 'rg',
+        layout: { 'circle-sort-key': ['match', ['get', 'k'], 'dc', 1, 0] },
         paint: {
-          'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 5, 12, 8, 16, 11],
+          'circle-radius': zr(2, 3.5, 8, 11),
           'circle-color': ['match', ['get', 'k'], 'dc', '#5C6270', '#FFFFFF'], 'circle-opacity': 0.85,
-          'circle-stroke-width': 2, 'circle-stroke-color': '#8A909B'
+          'circle-stroke-width': zr(0.8, 1.2, 2, 2), 'circle-stroke-color': '#8A909B'
         } });
-      map.addLayer({ id: 'rg-kw', type: 'symbol', source: 'rg', filter: ['!', ['has', 'point_count']], minzoom: 12,
+      map.addLayer({ id: 'rg-kw', type: 'symbol', source: 'rg', minzoom: 12,
         layout: { 'text-field': ['to-string', ['get', 'p']], 'text-font': font, 'text-size': 10, 'text-allow-overlap': true },
         paint: { 'text-color': ['match', ['get', 'k'], 'dc', '#FFFFFF', '#3A3F4A'] } });
-      map.on('click', 'rg-cl', e => {
-        userMove = true;
-        const f = e.features[0];
-        map.getSource('rg').getClusterExpansionZoom(f.properties.cluster_id).then(z => map.easeTo({ center: f.geometry.coordinates, zoom: z + 0.3 }));
-      });
-      map.on('click', 'rg-pt', e => { const s = ST.find(x => x.id === e.features[0].properties.id); if (s) openCard(s, false); });
-      ['rg-cl', 'rg-pt'].forEach(l => {
-        map.on('mouseenter', l, () => { map.getCanvas().style.cursor = 'pointer'; });
-        map.on('mouseleave', l, () => { map.getCanvas().style.cursor = ''; });
-      });
     }
-    map.addSource('st', { type: 'geojson', data: data(), cluster: true, clusterRadius: 42, clusterMaxZoom: 11 });
+    map.addSource('st', { type: 'geojson', data: data() });
     map.addSource('sel', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
     map.addSource('me', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
-    const nep = ['any', ['==', ['get', 'v'], 'nep'], ['==', ['get', 'v'], 'cl']];
-    map.addLayer({ id: 'cl', type: 'circle', source: 'st', filter: ['has', 'point_count'],
-      paint: { 'circle-color': '#0D111A', 'circle-radius': ['step', ['get', 'point_count'], 15, 10, 19, 30, 24], 'circle-stroke-width': 3, 'circle-stroke-color': 'rgba(217,244,91,.55)' } });
-    map.addLayer({ id: 'cl-n', type: 'symbol', source: 'st', filter: ['has', 'point_count'],
-      layout: { 'text-field': ['get', 'point_count_abbreviated'], 'text-font': font, 'text-size': 13, 'text-allow-overlap': true },
-      paint: { 'text-color': '#FFFFFF' } });
-    map.addLayer({ id: 'pt', type: 'circle', source: 'st', filter: ['!', ['has', 'point_count']],
+    map.addLayer({ id: 'pt', type: 'circle', source: 'st',
+      layout: { 'circle-sort-key': ['+', ['case', nep, 0, 10], ['match', ['get', 'k'], 'dc', 4, 'free', 3, 'tesla', 2, 'off', 0, 1]] },
       paint: {
-        'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 6, 12, 9, 16, 12],
+        'circle-radius': zr(3, 4.5, 9, 12),
         'circle-color': ['match', ['get', 'k'], 'dc', '#0D111A', 'free', '#D9F45B', 'off', '#E3E5E9', 'tesla', '#E3E5E9', '#FFFFFF'],
         'circle-opacity': ['case', nep, 0.5, 1],
-        'circle-stroke-width': 2.5,
+        'circle-stroke-width': zr(1.2, 1.6, 2.5, 2.5),
         'circle-stroke-opacity': ['case', nep, 0.55, 1],
         'circle-stroke-color': ['match', ['get', 'k'], 'dc', '#D9F45B', 'off', '#8A909B', 'tesla', '#5C6270', '#0D111A']
       } });
     // favourites: a ring around the point
-    map.addLayer({ id: 'pt-fav', type: 'circle', source: 'st', filter: ['all', ['!', ['has', 'point_count']], ['==', ['get', 'f'], 1]],
-      paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 6, 10, 12, 14, 16, 17], 'circle-color': 'rgba(0,0,0,0)', 'circle-stroke-width': 2.5, 'circle-stroke-color': '#6E8A12' } });
-    map.addLayer({ id: 'pt-kw', type: 'symbol', source: 'st', filter: ['!', ['has', 'point_count']], minzoom: 12,
+    map.addLayer({ id: 'pt-fav', type: 'circle', source: 'st', filter: ['==', ['get', 'f'], 1],
+      paint: { 'circle-radius': zr(6, 8, 14, 17), 'circle-color': 'rgba(0,0,0,0)', 'circle-stroke-width': zr(1.6, 2, 2.5, 2.5), 'circle-stroke-color': '#6E8A12' } });
+    map.addLayer({ id: 'pt-kw', type: 'symbol', source: 'st', minzoom: 12,
       layout: { 'text-field': ['to-string', ['get', 'p']], 'text-font': font, 'text-size': 10, 'text-allow-overlap': true },
       paint: { 'text-color': ['match', ['get', 'k'], 'dc', '#D9F45B', 'off', '#5C6270', 'tesla', '#3A3F4A', '#0D111A'] } });
     // price next to the pin from zoom 12: 0 RSD / RSD per kWh from a receipt / ~ estimate from the per-minute tariff / ?
-    map.addLayer({ id: 'pt-pr', type: 'symbol', source: 'st', filter: ['all', ['!', ['has', 'point_count']], ['!=', ['get', 'pl'], '']], minzoom: 12,
+    map.addLayer({ id: 'pt-pr', type: 'symbol', source: 'st', filter: ['!=', ['get', 'pl'], ''], minzoom: 12,
       layout: { 'text-field': ['get', 'pl'], 'text-font': font, 'text-size': 11.5, 'text-anchor': 'left', 'text-offset': [1.25, 0], 'text-padding': 2 },
       paint: { 'text-color': ['match', ['get', 'pc'], 'free', '#3F5206', 'old', '#8A909B', 'unk', '#8A909B', '#0D111A'], 'text-halo-color': '#FFFFFF', 'text-halo-width': 2.4 } });
     map.addLayer({ id: 'sel', type: 'circle', source: 'sel',
-      paint: { 'circle-radius': 16, 'circle-color': 'rgba(217,244,91,.35)', 'circle-stroke-width': 3, 'circle-stroke-color': '#0D111A' } }, 'pt');
+      paint: { 'circle-radius': zr(9, 11, 16, 16), 'circle-color': 'rgba(217,244,91,.35)', 'circle-stroke-width': 3, 'circle-stroke-color': '#0D111A' } }, 'pt');
     // the reader's own position ("Blizu mene", "Najbliži punjač"): a blue dot, never sent anywhere
     map.addLayer({ id: 'me-halo', type: 'circle', source: 'me', paint: { 'circle-radius': 22, 'circle-color': 'rgba(46,107,255,.16)' } });
     map.addLayer({ id: 'me-dot', type: 'circle', source: 'me', paint: { 'circle-radius': 7, 'circle-color': '#FFFFFF', 'circle-stroke-width': 4, 'circle-stroke-color': '#2E6BFF' } });
@@ -1403,20 +1394,41 @@ function initMap() {
       } else state.bounds = null;
       renderList();
     });
-    map.on('click', 'cl', e => {
-      userMove = true;
-      const f = e.features[0];
-      map.getSource('st').getClusterExpansionZoom(f.properties.cluster_id).then(z => map.easeTo({ center: f.geometry.coordinates, zoom: z + 0.3 }));
+    // One tap handler for Serbia and the region. The dots are small on the country view, so a tap looks at a small box
+    // around the finger (larger on touch screens): one charger there opens its card; several zoom the map in on them
+    // (at least two steps, at most zoom 14), and from zoom 13 the dot nearest to the tap opens.
+    const HIT = NRG ? ['pt', 'rg-pt'] : ['pt'];
+    map.on('click', e => {
+      const r = window.matchMedia && matchMedia('(pointer: coarse)').matches ? 14 : 8, p = e.point;
+      const hits = map.queryRenderedFeatures([[p.x - r, p.y - r], [p.x + r, p.y + r]], { layers: HIT });
+      if (!hits.length) return;
+      const ids = new Set(hits.map(f => f.properties.id)), z0 = map.getZoom();
+      if (ids.size > 1 && z0 < 13) {
+        const b = new maplibregl.LngLatBounds();
+        hits.forEach(f => b.extend(f.geometry.coordinates));
+        const cam = map.cameraForBounds(b, { padding: 60 });
+        userMove = true;
+        map.easeTo({ center: b.getCenter(), zoom: Math.min(14, Math.max(z0 + 2, cam && isFinite(cam.zoom) ? cam.zoom : 0)) });
+        track('map_zoom_in_tap', { n: ids.size });
+        return;
+      }
+      let best = hits[0], bd = Infinity;
+      hits.forEach(f => {
+        const q = map.project(f.geometry.coordinates), dd = (q.x - p.x) * (q.x - p.x) + (q.y - p.y) * (q.y - p.y);
+        if (dd < bd) { bd = dd; best = f; }
+      });
+      const s = ST.find(x => x.id === best.properties.id);
+      if (s) openCard(s, false);
     });
-    map.on('click', 'pt', e => { const s = ST.find(x => x.id === e.features[0].properties.id); if (s) openCard(s, false); });
-    ['cl', 'pt'].forEach(l => {
+    HIT.forEach(l => {
       map.on('mouseenter', l, () => { map.getCanvas().style.cursor = 'pointer'; });
       map.on('mouseleave', l, () => { map.getCanvas().style.cursor = ''; });
     });
     if (sel) {
       map.getSource('sel').setData({ type: 'FeatureCollection', features: [feat(sel)] });
       map.jumpTo({ center: [sel.lon, sel.lat], zoom: 13, padding: padding() });
-    } else if (city) map.jumpTo({ center: [city.lon, city.lat], zoom: 11.2 });
+    } else if (llAt) map.jumpTo({ center: [llAt.lon, llAt.lat], zoom: 17 });
+    else if (city) map.jumpTo({ center: [city.lon, city.lat], zoom: 11.2 });
   });
 }
 
@@ -1476,7 +1488,11 @@ $list.addEventListener('click', e => {
   if (e.target.closest('[data-more]')) { state.lim += 30; renderList(); return; }
   const b = e.target.closest('.st'); if (b) { const s = ST.find(x => x.id === b.dataset.id); if (s) openCard(s, true); }
 });
-d.addEventListener('keydown', e => { if (e.key === 'Escape' && (sel || nearOpen || carOpen) && !d.querySelector('.lb')) { if (carOpen) closeCar(); else closeCard(); } });
+d.addEventListener('keydown', e => {
+  if (e.key !== 'Escape' || d.querySelector('.lb')) return;
+  if (adding) { addEnd(); return; }
+  if (sel || nearOpen || carOpen) { if (carOpen) closeCar(); else closeCard(); }
+});
 $me.addEventListener('click', () => {
   if (!navigator.geolocation) return;
   $me.disabled = true;
@@ -1504,6 +1520,169 @@ $card.addEventListener('click', e => {
   if (t.closest('[data-car-open]')) { openCar('card'); return; }
   if (t.closest('[data-evo]')) track('map_evolako', { station: sel ? sel.id : '', network: sel ? sel.net || '' : '', car: !!CAR });
 });
+
+// ---------- "Dodaj punjač": a driver adds a charger the map lacks (POST /api/novi-punjac; RUNBOOK 3.11d) ----------
+// Step 1: a pin in the middle of the map; the driver moves the map until the pin is on the charger ("Ovde sam" centres it
+// on the driver's own position, which stays in the browser). Step 2: a short form in the card panel. Nothing is published
+// before moderation; approved chargers come back from /api/novi-punjaci as "Nije potvrđeno · dodao vozač".
+// Only on blokvolt.rs (cfg.add) and only in Serbia.
+let adding = false, addPt = null, addAt = 0;
+const $wrap = d.querySelector('.map-wrap');
+const ADD_BOX = { s: 41.85, n: 46.2, w: 18.8, e: 23.05 };
+const PIN = '<svg viewBox="0 0 40 52" aria-hidden="true"><path d="M20 50s-16-15.5-16-29a16 16 0 0 1 32 0c0 13.5-16 29-16 29Z" fill="#0D111A" stroke="#fff" stroke-width="2.5"/><circle cx="20" cy="21" r="6.5" fill="#D9F45B"/></svg>';
+const dmy = t => { const x = new Date(t * 1000); return String(x.getDate()).padStart(2, '0') + '.' + String(x.getMonth() + 1).padStart(2, '0') + '.' + x.getFullYear(); };
+const PLUGS = [['type2', 'Type 2'], ['ccs2', 'CCS2'], ['chademo', 'CHAdeMO'], ['tesla', 'Tesla'], ['schuko', T.schuko]];
+function addHint(msg) { const h = $wrap.querySelector('.add-hint'); if (h) h.textContent = msg || ''; }
+function addStart(source, at) {
+  if (!map || adding) return;
+  if (carOpen) closeCar();
+  if (sel || nearOpen) closeCard();
+  adding = true; addAt = Date.now();
+  $wrap.classList.add('is-adding');
+  const pin = d.createElement('div');
+  pin.className = 'add-pin';
+  pin.innerHTML = PIN + '<i></i>';
+  const bar = d.createElement('div');
+  bar.className = 'add-bar';
+  bar.setAttribute('role', 'dialog');
+  bar.setAttribute('aria-label', T.add_t);
+  bar.innerHTML = '<p><b>' + esc(T.add_t) + '</b> ' + esc(T.add_step1) + '</p><p class="add-hint" aria-live="polite"></p><div class="add-acts">' +
+    (navigator.geolocation ? '<button class="btn sm" type="button" data-add="here">' + ICON.pin + esc(T.add_here) + '</button>' : '') +
+    '<button class="btn sm" type="button" data-add="cancel">' + esc(T.add_cancel) + '</button>' +
+    '<button class="btn sm dark" type="button" data-add="next">' + esc(T.add_next) + ' →</button></div>';
+  $wrap.append(pin, bar);
+  bar.addEventListener('click', addBar);
+  if (at) map.jumpTo({ center: [at.lon, at.lat], zoom: Math.max(map.getZoom(), 17) });
+  bar.querySelector('[data-add="next"]').focus({ preventScroll: true });
+  if (!at) track('map_add_start', { source: source || 'button', zoom: Math.round(map.getZoom()) });
+}
+function addEnd() {
+  adding = false; addPt = null;
+  $wrap.classList.remove('is-adding');
+  $wrap.querySelectorAll('.add-pin, .add-bar').forEach(x => x.remove());
+}
+function addBar(e) {
+  const b = e.target.closest('[data-add]');
+  if (!b) return;
+  const a = b.dataset.add;
+  if (a === 'cancel') { addEnd(); return; }
+  if (a === 'here') {
+    b.disabled = true;
+    navigator.geolocation.getCurrentPosition(pos => {
+      b.disabled = false;
+      map.jumpTo({ center: [pos.coords.longitude, pos.coords.latitude], zoom: 18 });
+      addHint(T.add_here_hint);
+    }, () => { b.disabled = false; addHint(T.no_location); }, { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 });
+    return;
+  }
+  // "Dalje": the pin must sit on the charger, so a zoomed-out map is first brought close
+  if (map.getZoom() < 15) { map.easeTo({ zoom: 17 }); addHint(T.add_zoom); return; }
+  const c = map.getCenter();
+  if (c.lat < ADD_BOX.s || c.lat > ADD_BOX.n || c.lng < ADD_BOX.w || c.lng > ADD_BOX.e) { addHint(T.add_out); return; }
+  addPt = { lat: Math.round(c.lat * 1e6) / 1e6, lon: Math.round(c.lng * 1e6) / 1e6 };
+  $wrap.querySelectorAll('.add-pin, .add-bar').forEach(x => x.remove());
+  addForm();
+}
+function addRadio(name, opts, on) {
+  return '<div class="opts" role="radiogroup">' + opts.map(o => '<label class="chip"><input type="radio" name="' + name + '" value="' + o[0] + '"' + (o[0] === on ? ' checked' : '') + '> ' + esc(o[1]) + '</label>').join('') + '</div>';
+}
+function addForm() {
+  const pt = addPt;
+  if (map.getSource('sel')) map.getSource('sel').setData({ type: 'FeatureCollection', features: [{ type: 'Feature', geometry: { type: 'Point', coordinates: [pt.lon, pt.lat] }, properties: {} }] });
+  // a charger already on the map within 60 m: probably the same one, so its card is offered first
+  let dup = null, dm = Infinity;
+  ST.forEach(s => { if (s.cc) return; const m = distKm(pt, s) * 1000; if (m < dm) { dm = m; dup = s; } });
+  const dupHtml = dup && dm <= 60 ? '<div class="vf-warn"><p>' + esc(T.add_dup.replace('{m}', Math.max(1, Math.round(dm))).replace('{t}', title(dup))) + '</p><button class="lnkbtn" type="button" data-add-open="' + esc(dup.id) + '">' + esc(T.add_dup_open) + '</button></div>' : '';
+  const ll = pt.lat.toFixed(5) + ', ' + pt.lon.toFixed(5);
+  $card.innerHTML = '<div class="ccard addp" role="dialog" aria-label="' + esc(T.add_t) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
+    '<h2>' + esc(T.add_t) + '</h2><p class="addr">' + esc(T.add_lead) + '</p>' + dupHtml +
+    '<form class="car-form add-form" novalidate>' +
+    '<div class="field add-pt"><span>' + esc(T.add_point) + '</span><div class="w-ll"><code translate="no">' + ll + '</code><button class="btn sm" type="button" data-add-move>' + ICON.pin + '<span>' + esc(T.add_move) + '</span></button></div></div>' +
+    '<label class="field"><span>' + esc(T.add_name) + '</span><input class="input" name="n" type="text" maxlength="80" autocomplete="off" placeholder="' + esc(T.add_name_ph) + '"></label>' +
+    '<div class="field"><span>' + esc(T.add_kind) + '</span>' + addRadio('k', [['dc', T.k_dc], ['ac', T.k_ac], ['uticnica', T.k_ut], ['nz', T.k_nz]], 'nz') + '</div>' +
+    '<div class="field"><span>' + esc(T.add_plugs) + '</span><div class="opts">' + PLUGS.map(x => '<label class="chip"><input type="checkbox" name="pl" value="' + x[0] + '"> ' + esc(x[1]) + '</label>').join('') + '</div></div>' +
+    '<label class="field"><span>' + esc(T.add_kw) + '</span><input class="input" name="kw" type="text" inputmode="decimal" maxlength="5" autocomplete="off"></label>' +
+    '<div class="field"><span>' + esc(T.add_acc) + '</span>' + addRadio('acc', [['svi', T.acc_svi], ['gosti', T.acc_gosti], ['nz', T.k_nz]], 'nz') + '</div>' +
+    '<div class="field"><span>' + esc(T.add_fee) + '</span>' + addRadio('fee', [['besplatno', T.fee_free], ['placa', T.fee_paid], ['nz', T.k_nz]], 'nz') + '</div>' +
+    '<label class="field"><span>' + esc(T.add_note) + '</span><textarea class="input" name="c" maxlength="300" rows="2" placeholder="' + esc(T.add_note_ph) + '"></textarea></label>' +
+    '<label class="field"><span>' + esc(T.add_photo) + '</span><input name="foto" type="file" accept="image/*"><small>' + esc(T.photo_note) + '</small></label>' +
+    '<label class="field"><span>' + esc(T.rv_name) + '</span><input class="input" name="nick" type="text" maxlength="40" autocomplete="nickname"><small>' + esc(T.add_nick_note) + '</small></label>' +
+    '<label class="check add-ja"><input type="checkbox" name="ja"> <span>' + esc(T.add_ja) + '</span></label>' +
+    '<input class="hp" name="hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+    '<p class="add-msg" role="status"></p>' +
+    '<div class="car-acts"><button class="btn dark" type="submit">' + esc(T.add_send) + '</button><button class="btn" type="button" data-add-cancel>' + esc(T.add_cancel) + '</button></div>' +
+    '<small>' + esc(T.add_rules) + ' <a class="lnk" href="' + esc(lp('/pravila-objavljivanja/#novi-punjac')) + '">' + esc(T.rv_rules_link) + '</a></small></form></div>';
+  $card.classList.add('is-open');
+  const f = $card.querySelector('form'), msg = f.querySelector('.add-msg');
+  const close = () => { addEnd(); $card.classList.remove('is-open'); $card.innerHTML = ''; if (map.getSource('sel')) map.getSource('sel').setData({ type: 'FeatureCollection', features: [] }); };
+  $card.querySelector('.x').addEventListener('click', close);
+  f.querySelector('[data-add-cancel]').addEventListener('click', close);
+  f.querySelector('[data-add-move]').addEventListener('click', () => { const p = addPt; close(); addStart('move', p); });
+  const op = $card.querySelector('[data-add-open]');
+  if (op) op.addEventListener('click', () => { const s = ST.find(x => x.id === op.dataset.addOpen); close(); if (s) openCard(s, true); track('map_add_dup', { station: s ? s.id : '' }); });
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!f.elements.ja.checked) { msg.textContent = T.add_err_ja; f.elements.ja.focus(); return; }
+    const kwv = f.elements.kw.value.trim().replace(',', '.');
+    if (kwv && !(+kwv >= 1 && +kwv <= 400)) { msg.textContent = T.add_err_kw; f.elements.kw.focus(); return; }
+    const fd = new FormData();
+    fd.append('lat', pt.lat); fd.append('lon', pt.lon);
+    fd.append('n', f.elements.n.value); fd.append('k', f.elements.k.value || 'nz'); fd.append('kw', kwv);
+    fd.append('pl', [...f.querySelectorAll('input[name=pl]:checked')].map(x => x.value).join(','));
+    fd.append('acc', f.elements.acc.value || 'nz'); fd.append('fee', f.elements.fee.value || 'nz');
+    fd.append('c', f.elements.c.value); fd.append('nick', f.elements.nick.value); fd.append('ja', '1');
+    fd.append('t', Date.now() - addAt); fd.append('hp', f.elements.hp.value); fd.append('lang', LANG);
+    const btn = f.querySelector('[type=submit]'), file = f.elements.foto.files && f.elements.foto.files[0];
+    btn.disabled = true; msg.textContent = T.photo_wait;
+    (file ? shrink(file).catch(() => null) : Promise.resolve(null)).then(p => {
+      if (p) { fd.append('foto', p.big, 'foto.jpg'); fd.append('thumb', p.th, 'thumb.jpg'); fd.append('w', p.w); fd.append('h', p.h); }
+      return post(cfg.api + '/novi-punjac', fd, true);
+    }).then(j => {
+      btn.disabled = false;
+      if (!j.ok) { msg.textContent = j.error === 'outside' ? T.add_out : j.error === 'confirm' ? T.add_err_ja : errText(j); return; }
+      track('map_add_sent', { kind: f.elements.k.value || 'nz', photo: !!file, plugs: f.querySelectorAll('input[name=pl]:checked').length });
+      f.innerHTML = '<p class="add-done">' + ICON.ok + '<span>' + esc(T.add_thanks) + '</span></p><div class="car-acts"><button class="btn" type="button" data-add-cancel>' + esc(T.close) + '</button></div>';
+      f.querySelector('[data-add-cancel]').addEventListener('click', close);
+    }).catch(() => { btn.disabled = false; msg.textContent = T.rv_err; });
+  });
+}
+// approved chargers from drivers (GET /api/novi-punjaci), as map stations: id vz-<n>, "Nije potvrđeno · dodao vozač"
+function vzStation(x) {
+  const cur = x.k === 'dc' ? 'dc' : 'ac', kw = +x.kw || 0;
+  const pl = x.pl && x.pl.length ? x.pl : (x.k === 'uticnica' ? ['schuko'] : []);
+  const c = pl.map(p => [p, p === 'ccs2' || p === 'chademo' ? 'dc' : p === 'tesla' ? cur : 'ac', p === 'schuko' ? null : kw || null, 1]);
+  return { id: x.id, n: x.n || '', a: '', t: '', lat: +x.lat, lon: +x.lon, net: '', opn: '', c, kd: x.k,
+    dc: cur === 'dc' ? kw : 0, ac: cur === 'ac' ? kw : 0, acc: x.acc === 'gosti' ? 'customers' : '',
+    loc: { q: 'vz', find: x.c || '' }, src: [{ d: 'vz', l: T.src_vz, u: lp('/pravila-objavljivanja/#novi-punjac') }],
+    v: { s: 'nep', g: 'vz', d: dmy(x.ok || x.at) }, vz: { fee: x.fee, acc: x.acc } };
+}
+function loadNovi() {
+  if (!cfg.api || !cfg.add) return;
+  fetch(cfg.api + '/novi-punjaci').then(r => (r.ok ? r.json() : null)).then(j => {
+    if (!j || !j.ok || !j.st || !j.st.length) return;
+    const have = new Set(ST.map(s => s.id)), add = j.st.filter(x => !have.has(x.id) && isFinite(x.lat) && isFinite(x.lon)).map(vzStation);
+    if (!add.length) return;
+    // Serbia's stations come first in ST and the region after them (NSR counts Serbia's)
+    ST = ST.slice(0, NSR).concat(add, ST.slice(NSR));
+    NSR += add.length;
+    ST.forEach((s, i) => { s._i = i; });
+    setData();
+    renderList();
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (id && !sel && id.indexOf('vz-') === 0) { const s = ST.find(x => x.id === id); if (s) openCard(s, false); }
+  }).catch(() => { /* the map works without them */ });
+}
+// the "Dodaj punjač" button sits under the zoom buttons
+class AddControl {
+  onAdd() {
+    const w = d.createElement('div');
+    w.className = 'maplibregl-ctrl maplibregl-ctrl-group map-addctl';
+    w.innerHTML = '<button type="button" title="' + esc(T.add_t) + '"><span aria-hidden="true">+</span>' + esc(T.add_btn) + '</button>';
+    w.querySelector('button').addEventListener('click', () => addStart('button'));
+    return w;
+  }
+  onRemove() {}
+}
 
 // ---------- "Moj auto" ----------
 let carOpen = false, carBack = null;
@@ -1601,6 +1780,9 @@ function fromUrl() {
   if (p.get('tesla') === '1') { TESLA = true; paintChips(); }
   const c = g && (cfg.cities || {})[g];
   if (c) city = { lat: c[0], lon: c[1] };
+  // ?ll=<lat>,<lon>: the map opens close on that point (the moderation page links new chargers from drivers this way)
+  const ll = (p.get('ll') || '').split(',').map(Number);
+  if (ll.length === 2 && ll.every(isFinite) && Math.abs(ll[0]) <= 90 && Math.abs(ll[1]) <= 180) llAt = { lat: ll[0], lon: ll[1] };
   paintChips();   // "Imam Teslu" kept in this browser (or the account) shows on its chip from the first paint
   if (net && $chips.querySelector('[data-f="net:' + net + '"]')) setChip('net:' + net, true);
   else if (net) { state.q = state.q || net.replace(/-/g, ' '); refresh(); }
@@ -1648,6 +1830,7 @@ Promise.all([getJson(cfg.stations), cfg.nets ? getJson(cfg.nets).catch(() => ({ 
   favCount();
   fromUrl();
   loadSummaries();
+  loadNovi();
   accSync();
   try { initMap(); } catch (e) { d.getElementById('map').classList.add('is-off'); }
   // scripts/qa/map_extra_test.py reads the pin data (kind, power label, price label) through this, only with ?qa=1;
@@ -1657,5 +1840,7 @@ Promise.all([getJson(cfg.stations), cfg.nets ? getJson(cfg.nets).catch(() => ({ 
     window.bvMapQa = rg => data(rg).features.map(f => f.properties);
     window.bvNearQa = (lat, lon, nep) => nearestList({ lat, lon }, !!nep).rows.map(r => ({ id: r.s.id, t: title(r.s), m: Math.round(r.d * 1000) }));
     window.bvCostQa = id => { const s = ST.find(x => x.id === id), co = s && costOf(s); return co ? { kw: co.main.c.kw, kwh: co.main.c.kwh, km: co.main.c.km, alt: co.alt ? co.alt.c.km : null } : null; };
+    // the map itself, for scripts/qa/map_nocluster_test.py (zoom, rendered dots, taps)
+    window.bvMapObjQa = () => map;
   }
 }).catch(() => { $count.textContent = T.load_err; });

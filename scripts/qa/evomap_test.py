@@ -54,6 +54,8 @@ async def route_all(pg, lang):
     await pg.route('**/*', route)
 
 
+# the stations in the data the page reads: the open data plus the networks' added sites
+N_ST = len(json.loads((DIST / 'assets' / 'map' / 'punjaci.json').read_text())['stations']) + len(json.loads((DIST / 'assets' / 'map' / 'mreze.json').read_text()).get('add', []))
 fails = []
 def ok(c, msg, extra=''):
     print(('ok   ' if c else 'FAIL ') + msg, extra)
@@ -73,7 +75,7 @@ async def main():
             await pg.evaluate('''async () => { for (let i = 0; i < 300 && !(document.querySelectorAll('.evm-st').length > 5 && window.evmMap && window.evmCostQa); i++) await new Promise(r => setTimeout(r, 100)); }''')
             tag = f'{lang}-{w}'
             n = await pg.evaluate("document.querySelector('.evm-count').textContent")
-            ok('239' in n, f'{tag} count line', n)
+            ok(str(N_ST) in n, f'{tag} count line ({N_ST} stations in the data)', n)
             # Lapovo and per-connector prices (without a car)
             res = await pg.evaluate('''async () => {
               const q = document.getElementById('evm-q'); const look = async (t) => { q.value = t; q.dispatchEvent(new Event('input', {bubbles: true})); await new Promise(r => setTimeout(r, 400)); return [...document.querySelectorAll('.evm-st')].slice(0, 6).map(b => [b.dataset.id, b.querySelector('.evm-pr').textContent]); };

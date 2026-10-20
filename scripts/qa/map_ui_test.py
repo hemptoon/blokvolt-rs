@@ -55,6 +55,8 @@ async def main():
                         {"base": "RSD", "source": "NBS srednji kurs", "date": "2026-10-05", "rates": {"EUR": 117.4948, "USD": 105.0468}, "fetchedAt": None, "stale": True}))
                 elif '/api/foto/' in u:
                     await route.fulfill(status=200, content_type='image/jpeg', body=(SHOTS / ('sample_th.jpg' if 'v=t' in u else 'sample.jpg')).read_bytes())
+                elif u.endswith('/api/novi-punjaci'):   # chargers added by drivers (3.11d): none in this test
+                    await route.fulfill(status=200, content_type='application/json', body='{"ok":true,"at":0,"st":[]}')
                 else:
                     await route.fulfill(status=404, body='')
             await pg.route('https://tiles.openfreemap.org/styles/**', style)

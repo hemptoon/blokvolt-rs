@@ -4,13 +4,19 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 15.10.2026
+updated: 20.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-15
+modified: 2026-10-20
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 20. oktobar 2026
+
+- [Mapa punjača](/mapa/): 20 novih lokacija sa spiskova koje mreže i vlasnici lokacija sami objavljuju — 7 lokacija mreže [Emobility Spectra](/javno-punjenje/emobility-spectra/) i 5 mreže [Yesla](/javno-punjenje/yesla/) iz njihovih aplikacija, garaže Modena i Banovina u Novom Sadu (Best in Parking), punjač u Arilju i punjači za goste u šest hotela (Beograd, Kopaonik). Uz svaku lokaciju su izvor i datum.
+- [Mapa punjača](/mapa/): novo dugme „Dodaj punjač“ u uglu mape. Vozač postavi oznaku na punjač koji nedostaje i ukratko ga opiše; punjač se objavljuje posle provere, sa oznakom „Nije potvrđeno“. Pravila su na stranici [Pravila za prijave i fotografije](/pravila-objavljivanja/#novi-punjac), a šta se čuva — u [politici privatnosti](/politika-privatnosti.html).
+- [Mapa punjača](/mapa/): svi punjači se sada vide odmah, na svakom uvećanju, bez krugova sa brojem koji su se delili tek pri uvećanju. Na pregledu cele Srbije punjači su male tačke koje rastu kad se mapa uveća; brzi i potvrđeni punjači su iznad ostalih. Dodir na mesto gde je više punjača uvećava mapu, a dodir na jedan punjač otvara njegovu karticu. Isto važi za punjače u susednim zemljama.
+
 ## 15. oktobar 2026
 
 - Novi vodič [Koji utikač ima vaš auto](/javno-punjenje/ccs2-type2-chademo-gbt/): Type 2, CCS2, CHAdeMO i GB/T, koliko brzih punjača u Srbiji ima koji priključak, adapteri.
