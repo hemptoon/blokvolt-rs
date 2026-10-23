@@ -1691,6 +1691,19 @@ def ev_options():
             if value not in (x[0] for x in ms):
                 ms.append((value, label))
         out.append((b['brand'], ms))
+    # Tesla has no importer in Serbia, so it is not in ev-modeli.json; its versions come from ev-specs.json (the same cars
+    # the map's "Moj auto" uses for the cost per km), plus Model S and X, which are not there yet.
+    specs = json.load(open(ROOT / 'content' / 'data' / 'ev-specs.json', encoding='utf-8'))['cars']
+    ms = []
+    for c in specs:
+        if c['make'] != 'Tesla':
+            continue
+        yrs = re.sub(r'\s*\(.*\)$', '', c['years']).replace('-', '–')
+        label = f"{c['model']}, {yrs}"
+        ms.append((f"Tesla {label}", label))
+    ms +=[('Tesla Model S', 'Model S'), ('Tesla Model X', 'Model X')]
+    out.append(('Tesla', ms))
+    out.sort(key=lambda b: fold(b[0]))
     return out
 
 

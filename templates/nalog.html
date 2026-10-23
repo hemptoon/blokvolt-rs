@@ -89,7 +89,7 @@
 <select class="select" id="nl-model"><option value="">Izaberite model</option>
 {% for brand, models in EV_OPTS %}<optgroup label="{{ brand }}" translate="no">{% for v, l in models %}<option value="{{ v }}">{{ l }}</option>{% endfor %}</optgroup>
 {% endfor %}<option value="*">Drugi model</option></select></div>
-<div class="field" id="nl-other-w" hidden><label for="nl-other">Koji model</label><input class="input" id="nl-other" maxlength="80" autocomplete="off" placeholder="npr. Tesla Model 3"></div>
+<div class="field" id="nl-other-w" hidden><label for="nl-other">Koji model</label><input class="input" id="nl-other" maxlength="80" autocomplete="off" placeholder="npr. Nissan Leaf"></div>
 <fieldset class="nl-radios"><legend>Brzo punjenje (DC)</legend>
 <label translate="no"><input type="radio" name="dc" value="ccs2"><span>CCS2</span></label>
 <label translate="no"><input type="radio" name="dc" value="chademo"><span>CHAdeMO</span></label>

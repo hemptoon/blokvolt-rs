@@ -406,6 +406,11 @@
     model.addEventListener('change', function () {
       $('nl-other-w').hidden = model.value !== '*';
       if (model.value === '*') $('nl-other').focus();
+      // a Tesla from the list: Superchargers count as available, and a European Tesla charges fast over CCS2
+      if (/^Tesla /.test(model.value)) {
+        $('nl-tesla').checked = true;
+        if (!fCar.querySelector('[name=dc]:checked')) fCar.querySelector('[name=dc][value=ccs2]').checked = true;
+      }
     });
     fCar.addEventListener('submit', function (e) {
       e.preventDefault();

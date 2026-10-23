@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 20.10.2026
+updated: 24.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-20
+modified: 2026-10-24
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 24. oktobar 2026
+
+- [Moj BlokVolt](/nalog/): u spisku modela za „Moj auto“ sada je i Tesla — Model 3 i Model Y po verzijama i godinama, Model S i Model X. Kad izaberete Teslu, uključuje se „Imam Teslu“, a za brzo punjenje predlaže se CCS2.
+
 ## 20. oktobar 2026
 
 - Novi vodič [Zašto auto puni sporo na brzom punjaču](/javno-punjenje/zasto-auto-puni-sporo-na-brzom-punjacu/): temperatura baterije i predgrevanje, dva auta na istom stubu, napon auta, softver i šta proveriti.
