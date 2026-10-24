@@ -203,6 +203,9 @@ Go brand by brand through `content/data/ev-modeli.json` (importer site, price li
 Change only what the importer publishes; keep promotions as separate fields as they are now. Update
 `checked`, `next_check` (+~2 months), run `python3 scripts/gen_ev_modeli.py`, and check the generated
 page's stat block (cheapest model, count under 30.000 €).
+In the same pass check the brands of `/elektricni-automobili/` (3.32): `content/data/automobili.json` has its own
+`checked` / `next_check` (importer, showroom cities, new or announced brands, the classifieds counts on
+`/elektricni-automobili/polovni/` with their date).
 
 ### 3.5b Model photos (only when a model is added or a photo is wrong)
 

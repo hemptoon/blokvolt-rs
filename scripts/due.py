@@ -9,6 +9,7 @@ within --ahead days (default 10). Sources of truth:
   content/javno/indeks-cena.json                `next_check` (month name allowed, e.g. "oktobar 2026")
   content/data/kalkulator.json                  fuel.date / fuel.valid_to, public_checked, EPS source dates
   content/data/ev-modeli.json                   `next_check`
+  content/data/automobili.json                  `next_check` (EV brands, importers, showrooms — RUNBOOK 3.32)
   content/data/wallbox-modeli.json              `next_check` (device prices, mirrors the firm register)
   content/data/kalkulator-zgrada.json           `next_check` (MID meter prices, calculator defaults)
   content/data/site.json                        `firms_checked` (full firm register revision, every ~90 days)
@@ -102,6 +103,10 @@ def main():
     ev = json.load(open(ROOT / 'content' / 'data' / 'ev-modeli.json', encoding='utf-8'))
     check(parse(ev.get('next_check')), 'content/data/ev-modeli.json',
           f"EV list prices at importers, checked {ev.get('checked')}; after editing run scripts/gen_ev_modeli.py")
+    au = json.load(open(ROOT / 'content' / 'data' / 'automobili.json', encoding='utf-8'))
+    check(parse(au.get('next_check')), 'content/data/automobili.json',
+          f"EV brands on /elektricni-automobili/ ({len(au['brands'])} brand pages): importer, cities, new brands, "
+          f"classifieds counts, checked {au.get('checked')} — RUNBOOK 3.32; then run scripts/gen_ev_modeli.py")
 
     # 4b) wallbox model prices and the building calculator
     wb = json.load(open(ROOT / 'content' / 'data' / 'wallbox-modeli.json', encoding='utf-8'))
