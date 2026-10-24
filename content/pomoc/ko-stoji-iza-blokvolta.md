@@ -8,11 +8,11 @@ kicker: Pomoć
 section: firme-i-ispravke
 order: 3
 path: /pomoc/ko-stoji-iza-blokvolta/
-updated: 06.10.2026
+updated: 24.10.2026
 related: /pomoc/za-firme-ispravka-podataka/, /pomoc/odakle-su-podaci/, /pomoc/privatnost/
 shots:
 published: 2026-09-28
-modified: 2026-10-06
+modified: 2026-10-24
 ---
 ## Ko uređuje sajt
 
@@ -23,6 +23,7 @@ Ko uređuje sajt i sa kojom je firmom povezan, piše na stranici [O sajtu](/o-sa
 - Oznaka „Izdvojeno“ stoji uz tu firmu u registru i na njenoj stranici, a u spiskovima firmi ona je prva.
 - Firma je prikazana po istim kolonama kao ostale: javna cena, ugradnja, brojilo, papiri za skupštinu, usluga i garancija.
 - Podaci su sa njene javne stranice, uz link i datum provere, kao kod svih firmi.
+- Na mapi punjača, ispod naslova i u potpisu mape, piše da mapu održava tim te firme. Mapa prikazuje sve mreže po istim pravilima.
 
 ## Šta sajt ne radi
 

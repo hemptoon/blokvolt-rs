@@ -11,7 +11,8 @@ needed or handled.
   our own conversions go in parentheses (PDV 20 %, 117,2 RSD/€). If something cannot be verified,
   leave the old value, keep its old date, and mention it in the report — never guess.
 - Same columns and the same rules for every firm and network, including Evolako (marked "Izdvojeno";
-  who runs the site is said only on /o-sajtu/). No ratings, rankings, affiliate links or paid placements.
+  who runs the site is said on /o-sajtu/; on /mapa/ a line under the title and the map credits say „Mapu održava tim
+  Evolako“ — owner's decisions 06.10 and 24.10.2026, nowhere else). No ratings, rankings, affiliate links or paid placements.
   Logos only identify a company: taken from its own website, shown as-is, removed on request (note in
   /metodologija/). Missing information is written as "Ne pominje se", never as "ne".
   Order of firms (owner's decision, 06.10.2026): the "Izdvojeno" firm is listed first in every firm list
@@ -942,7 +943,10 @@ Since 06.10.2026 (test: `scripts/qa/map_v2_test.py`, with the three tests above)
   hours with „sada radi do … / zatvoreno, otvara u …“ (Serbian time), „Ponesite svoj Tip 2 kabl“ and parking; closed
   stations are faded on the map and marked in the list. „Izdvojeno“: one line about charging at home at night with one
   link to Evolako (`utm_campaign=kartica`, the page language travels as `lang=`); the map's attribution says „Mapu
-  održava tim Evolako“.
+  održava tim Evolako“. Since 24.10.2026 the same words stand under the title in the side panel (`.map-by`, the Evolako
+  mark from `/assets/logos/evolako.png`, link `utm_campaign=zaglavlje`, event `map_evolako` with `from: zaglavlje`).
+  The wording stays „Mapu održava tim Evolako“ — never „partner“ or „ljubaznošću“: both brands belong to the same
+  owner, /o-sajtu/ says so, and a „partner“ would contradict it.
 - **Drivers' short answers**: after „Radi, uz problem“ / „Ne radi“ a reason chip (`why`); then three optional questions
   (cable on the charger / own, parking free / paid, hours 0–24 / limited) → `POST /api/stanica/<id>/podatak`
   (D1 table `facts`; shown as „Vozači javljaju“ when two different drivers agree within 60 days).

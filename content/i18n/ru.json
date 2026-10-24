@@ -6187,5 +6187,8 @@
  "⟦0⟧–70 RSD/min + 50 RSD po sesiji": "⟦0⟧–70 RSD/мин + 50 RSD за сессию",
  "⟦0⟧–⟦1⟧ RSD<small>ugradnja</small>": "⟦0⟧–⟦1⟧ RSD<small>установка</small>",
  "⟦0⟧–⟦1⟧ cm³": "⟦0⟧–⟦1⟧ см³",
- "⟦0⟧–⟦1⟧ €, po lokaciji i dobu dana": "⟦0⟧–⟦1⟧ €, в зависимости от места и времени суток"
+ "⟦0⟧–⟦1⟧ €, po lokaciji i dobu dana": "⟦0⟧–⟦1⟧ €, в зависимости от места и времени суток",
+ "Mapu održava tim <a href=\"https://www.evolako.rs/?utm_source=blokvolt&amp;utm_medium=mapa&amp;utm_campaign=zaglavlje\" rel=\"noopener\">Evolako</a>": "Карту ведёт команда <a href=\"https://www.evolako.rs/?utm_source=blokvolt&amp;utm_medium=mapa&amp;utm_campaign=zaglavlje\" rel=\"noopener\">Evolako</a>",
+ "<a href=\"/mapa/\">Mapa punjača</a>: ispod naslova sada piše da mapu održava tim Evolako. Do sada je to stajalo samo u potpisu mape i na stranici <a href=\"/o-sajtu/\">O sajtu</a>. Podaci, redosled i pravila mape nisu menjani.": "<a href=\"/mapa/\">Карта зарядок</a>: под заголовком теперь написано, что карту ведёт команда Evolako. До этого это было указано только в подписи карты и на странице <a href=\"/o-sajtu/\">О сайте</a>. Данные, порядок и правила карты не менялись.",
+ "Na mapi punjača, ispod naslova i u potpisu mape, piše da mapu održava tim te firme. Mapa prikazuje sve mreže po istim pravilima.": "На карте зарядок, под заголовком и в подписи карты, указано, что карту ведёт команда этой компании. Карта показывает все сети по одним и тем же правилам."
 }

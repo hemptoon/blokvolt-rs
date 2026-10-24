@@ -1520,6 +1520,8 @@ $card.addEventListener('click', e => {
   if (t.closest('[data-car-open]')) { openCar('card'); return; }
   if (t.closest('[data-evo]')) track('map_evolako', { station: sel ? sel.id : '', network: sel ? sel.net || '' : '', car: !!CAR });
 });
+// the "Mapu održava tim Evolako" line under the title (RUNBOOK 3.18; owner's decision 24.10.2026)
+d.querySelector('.map-by a')?.addEventListener('click', () => track('map_evolako', { from: 'zaglavlje' }));
 
 // ---------- "Dodaj punjač": a driver adds a charger the map lacks (POST /api/novi-punjac; RUNBOOK 3.11d) ----------
 // Step 1: a pin in the middle of the map; the driver moves the map until the pin is on the charger ("Ovde sam" centres it

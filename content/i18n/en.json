@@ -6187,5 +6187,8 @@
  "⟦0⟧–70 RSD/min + 50 RSD po sesiji": "⟦0⟧–70 RSD/min + 50 RSD per session",
  "⟦0⟧–⟦1⟧ RSD<small>ugradnja</small>": "⟦0⟧–⟦1⟧ RSD<small>installation</small>",
  "⟦0⟧–⟦1⟧ cm³": "⟦0⟧–⟦1⟧ cm³",
- "⟦0⟧–⟦1⟧ €, po lokaciji i dobu dana": "⟦0⟧–⟦1⟧ €, depending on location and time of day"
+ "⟦0⟧–⟦1⟧ €, po lokaciji i dobu dana": "⟦0⟧–⟦1⟧ €, depending on location and time of day",
+ "Mapu održava tim <a href=\"https://www.evolako.rs/?utm_source=blokvolt&amp;utm_medium=mapa&amp;utm_campaign=zaglavlje\" rel=\"noopener\">Evolako</a>": "Map maintained by the <a href=\"https://www.evolako.rs/?utm_source=blokvolt&amp;utm_medium=mapa&amp;utm_campaign=zaglavlje\" rel=\"noopener\">Evolako</a> team",
+ "<a href=\"/mapa/\">Mapa punjača</a>: ispod naslova sada piše da mapu održava tim Evolako. Do sada je to stajalo samo u potpisu mape i na stranici <a href=\"/o-sajtu/\">O sajtu</a>. Podaci, redosled i pravila mape nisu menjani.": "<a href=\"/mapa/\">Charger map</a>: the line under the title now says that the map is maintained by the Evolako team. Until now this was stated only in the map credits and on the <a href=\"/o-sajtu/\">About</a> page. The map’s data, order and rules have not changed.",
+ "Na mapi punjača, ispod naslova i u potpisu mape, piše da mapu održava tim te firme. Mapa prikazuje sve mreže po istim pravilima.": "On the charger map, under the title and in the map credits, it says that the map is maintained by that company’s team. The map shows all networks under the same rules."
 }
