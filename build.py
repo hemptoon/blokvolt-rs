@@ -1014,7 +1014,7 @@ def near_count(lat, lon, km=15):
 
 # ---------------------------------------------------------------- navigation and page context
 NAV = [('/mapa/', 'Mapa punjača', 'mapa'), ('/firme/', 'Firme', 'firme'), ('/cene/', 'Cene', 'cene'),
-       ('/vodici/', 'Vodiči', 'vodici'), ('/vesti/', 'Vesti', 'vesti'), ('/alati/kalkulator-troskova/', 'Kalkulator', 'kalk')]
+       ('/elektricni-automobili/', 'Automobili', 'auto'), ('/vodici/', 'Vodiči', 'vodici'), ('/vesti/', 'Vesti', 'vesti'), ('/alati/kalkulator-troskova/', 'Kalkulator', 'kalk')]
 PRICE_PAGES = ('/podaci/tarife-eps/', '/podaci/wallbox-modeli/', '/podaci/cene-elektricnih-automobila/', '/cena-punjaca-za-elektricni-auto')
 
 
@@ -1023,6 +1023,8 @@ def section_of(path):
         return 'mapa'
     if path.startswith('/vesti/'):
         return 'vesti'
+    if path.startswith('/elektricni-automobili/'):
+        return 'auto'
     if path.startswith(('/firme/', '/gradovi/')):
         return 'firme'
     if path.startswith(('/javno-punjenje/', '/cene/')) or path.startswith(PRICE_PAGES):
@@ -1034,7 +1036,8 @@ def section_of(path):
     return ''
 
 
-CRUMB = {'cene': ('/cene/', 'Cene'), 'vodici': ('/vodici/', 'Vodiči'), 'firme': ('/firme/', 'Firme')}
+CRUMB = {'cene': ('/cene/', 'Cene'), 'vodici': ('/vodici/', 'Vodiči'), 'firme': ('/firme/', 'Firme'),
+         'auto': ('/elektricni-automobili/', 'Električni automobili')}
 
 # usage analytics (docs/RUNBOOK.md 3.16): PostHog only when a project key is set in site.json
 _AN = dict(SITE_META.get('analytics') or {})
@@ -1125,6 +1128,8 @@ VODICI_GROUPS = [
         A('/bezbednost-punjenja-atest.html', icon='shield'), A('/punjac-u-iznajmljenoj-garazi.html', icon='plug'),
         A('/elektricni-auto-bez-garaze.html', icon='car'), A('/wallbox-cena-srbija.html', icon='plug')]),
     ('Kupovina i vlasništvo', [
+        A('/elektricni-automobili/', 'Električni automobili u Srbiji', 'Sve marke sa zvaničnom prodajom: uvoznik, saloni, modeli i cena od.', icon='car'),
+        A('/elektricni-automobili/polovni/', icon='car'),
         A('/podaci/subvencije-2026/', icon='gift'), A('/podaci/cene-elektricnih-automobila/', 'Cene električnih automobila', icon='car'),
         A('/podaci/registracija-i-porezi/', icon='doc'), A('/podaci/uvoz-i-carina/', icon='doc'),
         A('/podaci/osiguranje-elektricnog-automobila/', icon='shield'), A('/podaci/krediti-i-lizing/', icon='coins'),
@@ -1204,7 +1209,7 @@ for path, a in ARTICLES.items():
     sec = section_of(path)
     if path.startswith('/javno-punjenje/'):
         crumbs = [('/javno-punjenje/', 'Javno punjenje')]
-    elif sec in ('cene', 'vodici') and path not in ('/politika-privatnosti.html',):
+    elif sec in ('cene', 'vodici', 'auto') and path not in ('/politika-privatnosti.html',):
         crumbs = [CRUMB[sec]]
     else:
         crumbs = []
@@ -1409,6 +1414,197 @@ for _n in NEWS[:30]:
 _rss += ['</channel>', '</rss>']
 (DIST / 'vesti').mkdir(parents=True, exist_ok=True)
 (DIST / 'vesti' / 'rss.xml').write_text('\n'.join(_rss) + '\n', encoding='utf-8')
+
+# ---------------------------------------------------------------- electric cars: brands, importers, showrooms
+# /elektricni-automobili/ (hub), /elektricni-automobili/<slug>/ (one page per brand) and the article
+# /elektricni-automobili/polovni/ (content/podaci/polovni-elektricni-automobili.md). docs/RUNBOOK.md 3.32.
+# Brand facts (status, importer, site, cities, notes, sources) live in content/data/automobili.json; models and prices in
+# content/data/ev-modeli.json, through scripts/ev_rows.py — the same rows as /podaci/cene-elektricnih-automobila/.
+# Same blocks and rules for every brand, A–Z; no brand pays for its place.
+import ev_rows  # noqa: E402
+AUTO = json.load(open(ROOT / 'content' / 'data' / 'automobili.json', encoding='utf-8'))
+_EVR = ev_rows.rows()
+AUTO_SUB = ev_rows.eur(ev_rows.SUB)
+AUTO_STATUS = ('zvanicno', 'najava', 'bez')
+
+
+def _domain(u):
+    return re.sub(r'^https?://(www\.)?', '', u or '').split('/')[0]
+
+
+def _cities_short(c, n=4):
+    return ', '.join(c[:n]) + (f' +{len(c) - n}' if len(c) > n else '')
+
+
+def _auto_news(names):
+    pat = re.compile(r'(?<![\w])(' + '|'.join(re.escape(x) for x in names) + r')(?![\w])', re.I)
+    return [x for x in NEWS if pat.search(x['title'] + ' ' + x['lead'])][:3]
+
+
+def _guide(href):
+    """A tile for one of our guides with the name and line it has on /vodici/ (already translated there)."""
+    for _, items in VODICI_GROUPS:
+        for it in items:
+            if it['href'] == canon_of(href):
+                return dict(it)
+    raise SystemExit(f'automobili: {href} is not on /vodici/')
+
+
+AUTO_BEFORE = [_guide(h) for h in ('/podaci/subvencije-2026/', '/punjenje-elektricnog-auta-u-zgradi.html',
+                                   '/javno-punjenje/cena-punjenja-po-modelu/', '/elektricni-auto-bez-garaze.html', '/podaci/registracija-i-porezi/',
+                                   '/podaci/osiguranje-elektricnog-automobila/', '/podaci/krediti-i-lizing/',
+                                   '/podaci/servisi-za-elektricne-automobile/')]
+AUTO_BEFORE_SHORT = [AUTO_BEFORE[i] for i in (0, 1, 2)]
+AUTO_BRANDS = []
+for _b in AUTO['brands']:
+    b = dict(_b)
+    assert b['status'] in AUTO_STATUS, f"automobili.json {b['slug']}: status {b['status']}"
+    assert re.fullmatch(r'[a-z0-9-]+', b['slug']) and b['slug'] != 'polovni', f"automobili.json: slug {b['slug']}"
+    b['url'] = f"/elektricni-automobili/{b['slug']}/"
+    b['page'] = True
+    b['domain'] = _domain(b.get('site'))
+    b['cities'] = b.get('cities') or []
+    b['cities_short'] = _cities_short(b['cities'])
+    ev = b.get('ev')
+    b['priced'] = []
+    for r in _EVR:
+        if ev and r['brand'] == ev:
+            r = dict(r)
+            r['date_txt'] = r['date'] + ('; PDV nije naveden' if r['vat_unknown'] else '')
+            b['priced'].append(r)
+    b['unpriced'] = []
+    for m in (ev_rows.unpriced(ev) if ev else []):
+        if m['media'] and m['media_price']:
+            price_txt, note = 'nije objavljena', f"u medijima: {ev_rows.eur(m['media_price'])}"
+        else:
+            price_txt, note = 'nije objavljena', ''
+        b['unpriced'].append({'name': m['name'], 'url': m['url'], 'price_txt': price_txt, 'price_note': note,
+                              'kind': 'mediji' if m['media'] else 'sajt uvoznika', 'date_txt': f"provereno {m['seen']}",
+                              'foto': m['foto'],
+                              'model_cell': '<span class="evm">' + ev_rows.thumb(ev, m['model'], m['name']) + '<span class="evm-t">'
+                                            + m['name'] + '</span></span>'})
+    for m in b.get('models', []):      # announced models or brands without an importer: names only, from automobili.json
+        b['unpriced'].append({'name': m['name'], 'url': m.get('url', ''), 'price_txt': m.get('price_txt', 'nije objavljena'),
+                              'price_note': m.get('note', ''), 'kind': m.get('kind', 'izvor'), 'date_txt': m.get('date_txt', ''),
+                              'foto': None, 'model_cell': '<span class="evm"><span class="evm-i evm-none" aria-hidden="true"></span>'
+                                                          '<span class="evm-t">' + m['name'] + '</span></span>'})
+    if not any(x.get('foto') for x in b['priced'] + b['unpriced']):     # no photo on the page: no empty photo slots either
+        for x in b['priced'] + b['unpriced']:
+            x['model_cell'] = x['model_cell'].replace('<span class="evm-i evm-none" aria-hidden="true"></span>', '')
+    b['all_models'] = [{'name': r['name'], 'url': r['url']} for r in b['priced']] + [{'name': m['name'], 'url': m['url']} for m in b['unpriced']]
+    b['n_models'] = len(b['all_models'])
+    b['n_priced'] = len(b['priced'])
+    cheap = min(b['priced'], key=lambda r: r['base']) if b['priced'] else None
+    b['min'] = cheap['base'] if cheap else None
+    b['min_txt'] = ev_rows.eur(cheap['base']) if cheap else ''
+    b['min_name'] = cheap['name'] if cheap else ''
+    _short = [r['name'] for r in sorted(b['priced'], key=lambda r: r['base'])] + [m['name'] for m in b['unpriced']]
+    _short = [re.sub(r'^' + re.escape(b['name']) + r'\s+', '', x) for x in _short]
+    b['models_short'] = ', '.join(_short[:4]) + (' …' if len(_short) > 4 else '')
+    b['news'] = _auto_news([b['name']] + b.get('aliases', []))
+    b['credits'] = sorted({(x['name'], x['foto']['au'], x['foto']['lic'], x['foto']['licurl'], x['foto']['page'])
+                           for x in b['priced'] + b['unpriced'] if x.get('foto')})
+    b['credits'] = [dict(zip(('name', 'au', 'lic', 'licurl', 'page'), c)) for c in b['credits']]
+    b['src_items'] = [dict(x) for x in b.get('sources', [])]   # the price sources are linked in the model table
+    AUTO_BRANDS.append(b)
+AUTO_BRANDS.sort(key=lambda x: fold(x['name']))
+# the service map (/servisi/, RUNBOOK 3.31) filtered by the brand: ?marka=<the brand as the map writes it>; Tesla: the
+# independent services that list Tesla (?f=tesla)
+from urllib.parse import quote as _quote  # noqa: E402
+_SRV_PL = json.load(open(ROOT / 'content' / 'servisi' / 'servisi.json', encoding='utf-8'))['places']
+_SRV_B = {}
+for _p in _SRV_PL:
+    for _x in _p.get('b') or []:
+        _SRV_B[_x.lower()] = _x
+for b in AUTO_BRANDS:
+    _k = _SRV_B.get(b['name'].lower())
+    if _k:
+        b['srv_url'] = '/servisi/?marka=' + _quote(_k)
+    elif b['slug'] == 'tesla' and any('Tesla' in (_p.get('m') or []) for _p in _SRV_PL):
+        b['srv_url'] = '/servisi/?f=tesla'
+assert len({x['slug'] for x in AUTO_BRANDS}) == len(AUTO_BRANDS), 'automobili.json: two brands share a slug'
+AUTO_OFFICIAL = [x for x in AUTO_BRANDS if x['status'] == 'zvanicno']
+AUTO_ANNOUNCED = [x for x in AUTO_BRANDS if x['status'] == 'najava']
+AUTO_NOIMP = [x for x in AUTO_BRANDS if x['status'] == 'bez'] + \
+    [dict(x, page=False, url='') for x in sorted(AUTO.get('bez_stranice', []), key=lambda x: fold(x['name']))]
+AUTO_NOIMP.sort(key=lambda x: (not x.get('page'), fold(x['name'])))
+AUTO_LCV = sorted(AUTO.get('dostavna', []), key=lambda x: fold(x['name']))
+for x in AUTO_LCV:
+    x['domain'] = _domain(x.get('site'))
+    x['models_short'] = ', '.join(x.get('models', []))
+_ATT = AUTO.get('texts', {})
+
+
+def _auto_lead(b):
+    n, k = b['n_models'], len(b['cities'])
+    if b['status'] == 'zvanicno':
+        if b.get('importer'):
+            parts = [f"Zvanični uvoznik: {b['importer_short']}."]
+        elif b.get('seller'):            # the brand's site names only a seller (Volvo)
+            parts = [f"Ovlašćeni prodavac: {b['seller']}."]
+        else:
+            parts = ['Uvoznik nije naveden na sajtu marke.']
+        if n:
+            parts.append(sr_plural(n, 'električni model', 'električna modela', 'električnih modela')
+                         + (f", od {b['min_txt']}" if b['min'] else '') + '.')
+        if k:
+            parts.append(f"Saloni ili ovlašćeni prodavci u {sr_plural(k, 'gradu', 'grada', 'gradova')}.")
+        return ' '.join(parts)
+    return b.get('lead') or ''
+
+
+for b in AUTO_BRANDS:
+    b['lead'] = _auto_lead(b)
+    if b['status'] == 'zvanicno':
+        b['fact_imp_label'], b['fact_imp'] = 'Uvoznik', b.get('importer') or 'nije naveden na sajtu marke'
+        b['no_cities'] = b.get('no_cities') or 'lokator na sajtu marke'
+    elif b['status'] == 'najava':
+        b['fact_imp_label'], b['fact_imp'] = 'Najavljeni uvoznik', b.get('importer') or 'nije objavljen'
+        b['no_cities'] = 'još nema'
+    else:
+        b['fact_imp_label'], b['fact_imp'] = 'Zvanični uvoznik', 'nema'
+        b['importer'] = ''
+        b['no_cities'] = 'nema'
+    b.setdefault('fact4_label', 'Na tržištu Srbije' if b.get('since') else 'Provereno')
+    b.setdefault('fact4', b.get('since') or b['verified'])
+    b.setdefault('table_note', '„Cena od“ je najniža cena koju uvoznik objavljuje, po pravilu sa PDV-om. Kada uvoznik objavi cenu '
+                               'već umanjenu za subvenciju, u tabeli je cena pre subvencije, a objavljena cena stoji ispod.' if b['priced']
+                  else 'Cene za Srbiju nisu objavljene na sajtu marke. Kada se pojave, biće u tabeli sa izvorom i datumom.')
+    b['used_url'] = b.get('used_url') or ''
+    b.setdefault('used_title', 'Polovni i uvezeni')
+    b.setdefault('used_text', _ATT.get('used_default', '').replace('{name}', f'<span translate="no">{b["name"]}</span>'))
+    b['row_sub'] = b.get('row_sub') or b['lead']
+for b in AUTO_BRANDS:
+    others = [o for o in AUTO_OFFICIAL + AUTO_ANNOUNCED + [x for x in AUTO_NOIMP if x.get('page')] if o is not b]
+    render('auto_marka.html', b['url'], b=b, others=sorted(others, key=lambda o: fold(o['name'])), before=AUTO_BEFORE_SHORT,
+           sub=AUTO_SUB, h1=b.get('h1') or f"{b['name']} u Srbiji",
+           title=b.get('title') or f"{b['name']} u Srbiji: električni modeli, cene i saloni | BlokVolt",
+           description=clip(b.get('description') or b['lead'] + ' Izvori i datum provere.', 158))
+    add_url(b['url'], '0.6', iso(b['verified']))
+
+_cheap = _EVR[0]
+_reg = (SITE_META.get('home_stats') or [{}, {}])[1]
+AUTO_FAQ = []
+for q in AUTO.get('faq', []):
+    a = q['a']
+    _u30 = sum(1 for r in _EVR if r['base'] < 30000)
+    for k, v in {'{n_marki_acc}': sr_plural(len(AUTO_OFFICIAL), 'marku', 'marke', 'marki'),
+                 '{official_names}': ', '.join(x['name'] for x in AUTO_OFFICIAL),
+                 '{announced_names}': ', '.join(x['name'] for x in AUTO_ANNOUNCED), '{cheapest_name}': _cheap['name'],
+                 '{cheapest_price}': ev_rows.eur(_cheap['base']), '{cheapest_after}': ev_rows.eur(_cheap['base'] - ev_rows.SUB),
+                 '{under30_modela}': sr_plural(_u30, 'model', 'modela', 'modela'),
+                 '{n_priced_modela}': sr_plural(len(_EVR), 'model', 'modela', 'modela')}.items():
+        a = a.replace(k, v)
+    AUTO_FAQ.append({'q': q['q'], 'a': a})
+render('auto_index.html', '/elektricni-automobili/', official=AUTO_OFFICIAL, announced=AUTO_ANNOUNCED, noimp=AUTO_NOIMP, lcv=AUTO_LCV,
+       before=AUTO_BEFORE, faq=AUTO_FAQ, checked=AUTO['checked'], next_check=AUTO['next_check'], sources=AUTO.get('sources', []),
+       cheapest={'price': ev_rows.eur(_cheap['base']), 'name': _cheap['name']}, reg=_reg, used=_ATT.get('used', {}), texts=_ATT,
+       h1='Električni automobili u Srbiji', lead=_ATT['hub_lead'],
+       title='Električni automobili u Srbiji 2026: sve marke, uvoznici, saloni i cene | BlokVolt',
+       description=clip(_ATT['hub_description'].replace('{n}', sr_plural(len(AUTO_OFFICIAL), 'marka', 'marke', 'marki')), 158))
+add_url('/elektricni-automobili/', '0.9', iso(AUTO['checked']))
+print(f'electric cars: {len(AUTO_OFFICIAL)} brands with official sales, {len(AUTO_ANNOUNCED)} announced, '
+      f"{len([x for x in AUTO_NOIMP if x.get('page')])} without an importer (page), {len(AUTO_LCV)} van-only")
 
 # ---------------------------------------------------------------- firms
 for f in published:
@@ -1845,7 +2041,7 @@ HOME_GUIDES = [
     {'href': '/podaci/tarife-eps/', 'name': 'Cena struje kod kuće', 'desc': 'Zone, tarife i kada počinje jeftinija struja.', 'icon': 'bolt', 'img': 'stambeni-blokovi-sunce'},
     {'href': '/bezbednost-punjenja-atest', 'name': 'Bezbednost i atest', 'desc': 'Zašto ne produžni kabl i šta proverava atest.', 'icon': 'shield', 'img': 'elektricar-atest'},
 ]
-render('home.html', '/', HOME_GUIDES=HOME_GUIDES, NEWS_HOME=NEWS[:3], section='',
+render('home.html', '/', HOME_GUIDES=HOME_GUIDES, NEWS_HOME=NEWS[:3], section='', n_auto=len(AUTO_OFFICIAL),
        title='BlokVolt: punjači, cene i firme za električne automobile u Srbiji',
        description=f"Mapa sa {MAP['n']} javnih punjača i cenama, {sr_plural(len(published), 'firma', 'firme', 'firmi')} za kućni punjač, cene struje i javnog punjenja, subvencije i vodiči za električni auto u Srbiji.")
 add_url('/', '1.0')
@@ -1933,11 +2129,13 @@ def kind_of(url):
     a = seg[0]
     if len(seg) == 1 and u.endswith('/'):
         return {'firme': 'hub', 'vesti': 'hub', 'vodici': 'hub', 'javno-punjenje': 'hub', 'pomoc': 'hub', 'mapa': 'alat', 'servisi': 'alat', 'cene': 'alat',
-                'pregled': 'pregled', 'preuzimanje': 'podaci'}.get(a, 'strana')
+                'pregled': 'pregled', 'preuzimanje': 'podaci', 'elektricni-automobili': 'katalog'}.get(a, 'strana')
     if a == 'firme':
         return 'hub' if len(seg) == 2 and seg[1] in {h['slug'] for h in TYPE_HUBS} else 'firma'
     if a == 'javno-punjenje':
         return 'mreza' if seg[1] in _OPS else 'javno'
+    if a == 'elektricni-automobili':
+        return 'vodic' if seg[1] == 'polovni' else 'marka'
     return {'vesti': 'vest', 'gradovi': 'grad', 'podaci': 'podaci', 'alati': 'alat', 'pomoc': 'pomoc', 'pregled': 'pregled',
             'za-firme': 'strana'}.get(a, 'vodic' if len(seg) == 1 and not u.endswith('/') else 'strana')
 

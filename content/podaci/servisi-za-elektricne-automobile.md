@@ -60,4 +60,4 @@ Pre kupovine polovnog tražite proveru baterije (SOH), dometa i istorije brzog p
 
 </details>
 
-Pravila uvoza: [uvoz i carina](/podaci/uvoz-i-carina/).
+Ovlašćeni servisi drugih marki su na [mapi servisa](/servisi/), a uvoznik, saloni i link na mrežu servisa uvoznika — na stranici svake marke: [električni automobili u Srbiji](/elektricni-automobili/). Pravila uvoza: [uvoz i carina](/podaci/uvoz-i-carina/); kupovina polovnog: [polovni i uvezeni](/elektricni-automobili/polovni/).

@@ -46,6 +46,8 @@ Norma Euro 3 za električni automobil nije primenljiva. Pre kupovine proverite s
 
 Za polovni automobil [subvencija](/podaci/subvencije-2026/) ne važi. Za marku bez ovlašćenog servisa u Srbiji pre uvoza proverite da li osiguravač prihvata [kasko](/podaci/osiguranje-elektricnog-automobila/).
 
+Oglasnici, polovni kod dilera, nezavisni uvoznici i koraci uvoza iz EU: [polovni i uvezeni električni automobili](/elektricni-automobili/polovni/).
+
 <details markdown="1">
 <summary>Detalji: pravila i tržište</summary>
 

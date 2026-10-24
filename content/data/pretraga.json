@@ -31,7 +31,11 @@
     ["kredit", "lizing", "leasing", "loan", "кредит", "лизинг"],
     ["najam", "rent", "rent a car", "iznajmljivanje", "аренда"],
     ["aplikacija", "app", "apk", "приложение"],
-    ["hibrid", "plug-in hibrid", "phev", "hybrid", "гибрид"]
+    ["hibrid", "plug-in hibrid", "phev", "hybrid", "гибрид"],
+    ["polovni", "polovan", "polovna", "polovno", "polovnjak", "polovnjaci", "korišćen", "used", "second hand", "б/у", "бу", "подержанный"],
+    ["kupovina", "kupiti", "kupim", "kupujem", "prodaja", "buy", "купить", "покупка"],
+    ["uvoznik", "uvoznici", "zastupnik", "diler", "dileri", "salon", "saloni", "dealer", "дилер", "салон"],
+    ["oglasi", "oglas", "polovni automobili", "kupujemprodajem", "kupujem prodajem", "объявления"]
   ],
   "stop": {
     "sr": ["i", "u", "na", "za", "od", "do", "sa", "se", "je", "su", "da", "li", "ili", "ali", "kako", "koliko", "gde", "šta", "sta", "što", "sto", "koji", "koja", "koje", "kad", "kada", "mi", "me", "moj", "moja", "moje", "ja", "ti", "vi", "o", "po", "pri", "kod", "iz", "bez", "ima", "imam", "mogu", "može", "treba", "ako", "bi", "sam", "smo", "ste", "će", "ce", "biti", "neki", "neka", "nešto", "nesto", "ovde", "tamo", "još", "jos", "samo"],

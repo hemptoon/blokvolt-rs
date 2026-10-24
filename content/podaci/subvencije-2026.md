@@ -27,6 +27,8 @@ Zahtev podnose fizička lica, preduzetnici i pravna lica. Usluga na eUpravi je z
 
 Vozilo mora biti novo: pre zahteva ni registrovano ni korišćeno. Subvencija može biti i učešće u finansijskom lizingu — vidi [krediti i lizing](/podaci/krediti-i-lizing/).
 
+Koje marke se zvanično prodaju u Srbiji, ko ih uvozi i od koje cene: [električni automobili u Srbiji](/elektricni-automobili/).
+
 <details markdown="1">
 <summary>Detalji: kategorije i Uredba</summary>
 

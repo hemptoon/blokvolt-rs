@@ -84,7 +84,8 @@
   }
 
   // page kinds (build.py → kind_of): how much a page of that kind weighs against the others
-  var KIND = { vodic: 1.35, podaci: 1.3, alat: 1.3, javno: 1.2, mreza: 1.2, grad: 1.25, mesto: 1.1, hub: 1.1, firma: 1, pomoc: 1,
+  // katalog: /elektricni-automobili/, the page for „električni automobili“ and „gde kupiti električni auto“
+  var KIND = { katalog: 1.45, vodic: 1.35, podaci: 1.3, alat: 1.3, javno: 1.2, mreza: 1.2, marka: 1.2, grad: 1.25, mesto: 1.1, hub: 1.1, firma: 1, pomoc: 1,
     vest: 0.8, strana: 0.6, pregled: 0.5, home: 0.45 };
   var FIELDS = ['t', 'sl', 's', 'h', 'd', 'b'];
   var BOOST = { t: 5, sl: 3, s: 1.5, h: 2, d: 2, b: 1 };

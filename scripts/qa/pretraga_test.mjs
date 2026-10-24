@@ -1,5 +1,5 @@
 // Site search regression test (docs/RUNBOOK.md 3.8): the engine of /assets/pretraga.js with MiniSearch and the built indexes
-// of dist/ answers ~60 real queries — typos, Cyrillic, towns of the map, synonyms, stop words, the three languages.
+// of dist/ answers ~80 real queries — typos, Cyrillic, towns of the map, synonyms, stop words, the three languages.
 // Run after a build: node scripts/qa/pretraga_test.mjs [--show]. Exit 1 on a failed case. No network, no browser.
 import { createRequire } from 'module';
 import { readFileSync } from 'fs';
@@ -82,6 +82,19 @@ const CASES = [
   ['en', 'free charging', '/en/javno-punjenje/besplatni-punjaci/', 2],
   ['en', 'night tariff', '/en/podaci/tarife-eps/', 2],
   ['en', 'kraljevo', '/en/mapa/?q=Kraljevo', 1],
+  // electric cars section (docs/RUNBOOK.md 3.31, 24.10.2026)
+  ['sr', 'električni automobili', '/elektricni-automobili/', 1],
+  ['sr', 'gde kupiti električni auto', ['/elektricni-automobili/', '/elektricni-automobili/polovni/'], 2],
+  ['sr', 'polovni električni automobili', '/elektricni-automobili/polovni/', 1],
+  ['sr', 'kupujemprodajem', '/elektricni-automobili/polovni/', 2],
+  ['sr', 'byd srbija', '/elektricni-automobili/byd/', 1],
+  ['sr', 'tesla srbija', ['/elektricni-automobili/tesla/', '/javno-punjenje/tesla/'], 2],
+  ['sr', 'deepal', '/elektricni-automobili/changan/', 1],
+  ['sr', 'lynk', '/elektricni-automobili/lynk-co/', 1],
+  ['en', 'used electric car', '/en/elektricni-automobili/polovni/', 2],
+  ['en', 'electric cars serbia', '/en/elektricni-automobili/', 2],
+  ['ru', 'купить электромобиль', ['/ru/elektricni-automobili/', '/ru/elektricni-automobili/polovni/'], 2],
+  ['ru', 'подержанный электромобиль', '/ru/elektricni-automobili/polovni/', 2],
 ];
 let bad = 0;
 for (const [l, q, want, n, x = {}] of CASES) {

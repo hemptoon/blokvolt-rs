@@ -67,6 +67,7 @@ credentials) — commits go through the owner's browser (section 6).
 | Site search: synonyms, ignored words, „Popularno“ | `content/data/pretraga.json` | See 3.8. A query in the search log (/admin/ → Pretraga) that found nothing although a page answers it → a synonym; `popular` refreshed monthly. |
 | Building-billing calculator | `content/data/kalkulator-zgrada.json` | Defaults and the MID meter price range (taken from the register); the page `/alati/racun-u-zgradi/` is a template, no generator. |
 | New EV prices | `content/data/ev-modeli.json` | Then run `python3 scripts/gen_ev_modeli.py` (regenerates `/podaci/cene-elektricnih-automobila/`). Update `checked` and `next_check` in the JSON. `subsidy_eur` drives the "after subsidy" column. |
+| EV brands, importers, showrooms | `content/data/automobili.json` (+ models and prices in `ev-modeli.json`) | `/elektricni-automobili/` and one page per brand, built by `build.py`; the used/import page is `content/podaci/polovni-elektricni-automobili.md`. See 3.32. |
 | Rentals, regional charging | `content/data/rent-carsharing.json`, `content/data/region.json` + the pages `content/podaci/rent-a-car-i-car-sharing.md`, `content/javno/region.md` | The pages are hand-written from the JSON; edit both. |
 | All other data pages | `content/podaci/*.md`, `content/javno/*.md` | Front matter: `updated`, `next_check`, `modified` (ISO), `sources` (`Label :: URL | Label :: URL`). |
 | City pages | `content/data/gradovi.json` | One entry per `/gradovi/<slug>/`: `aliases` matched inside a firm's `city` (a firm can belong to several cities), `regions` matched inside a firm's or operator's `coverage`, `loc`/`acc` the Serbian locative and accusative, `nt_region` one of the regions in `kalkulator.json` → `eps.nt_hours`, `note` one paragraph of local fact (HTML allowed). |
@@ -363,7 +364,7 @@ What to do with it, in the monthly run (or when asked): look at „Bez rezultata
 words → add a synonym group (or the word to the page's description). A topic nobody covers → a candidate for a guide
 (say it in the report). Then `node scripts/qa/pretraga_test.mjs` must stay green.
 
-Checks: `node scripts/qa/pretraga_test.mjs` (68 real queries in the three languages against the built indexes: typos,
+Checks: `node scripts/qa/pretraga_test.mjs` (80 real queries in the three languages against the built indexes: typos,
 Cyrillic, towns, synonyms, stop words, suggestions; `--show` prints every answer), `node --no-warnings
 scripts/qa/pretraga_worker_test.mjs` (the worker with a D1 look-alike: the log, its cleaning, the owner's view,
 „Niste našli“, search by meaning off and on), both in Site checks (3.21); in a browser with a local server:
@@ -1724,6 +1725,57 @@ Update (with the quarterly firm revision 3.7, or when a reader's correction come
 independents' own pages (a firm that no longer mentions electric cars leaves the map), new dates in `src` and `checked`,
 `izmene.md`, EN/RU todo. Events: `srv_card_open`, `srv_call`, `srv_site`, `srv_find`, `srv_navigate`, `srv_share`, `srv_report`,
 `srv_filter`, `srv_near_me`, `srv_city_list`. Test: `scripts/qa/servisi_ui_test.py`.
+
+### 3.32 Electric cars: brands, importers, showrooms (/elektricni-automobili/) — since 24.10.2026
+
+The owner asked (24.10.2026) for a full section on every EV brand that can be bought officially in Serbia and on every
+place to buy one unofficially (classifieds, the used market, imports). Pages:
+
+- `/elektricni-automobili/` — the hub (`templates/auto_index.html`): one table of the brands with official sales, A–Z,
+  same columns for every brand (importer, number of electric models, the lowest public price, showroom cities), then
+  announced brands, brands without an importer, electric-van-only brands, the routes to a used or imported car, the
+  "before buying" guides, questions.
+- `/elektricni-automobili/<slug>/` — one page per brand (`templates/auto_marka.html`): importer, models and prices,
+  showrooms, short notes, the used market, news that name the brand (title or lead), sources. Brands without an
+  importer get a page only when people search for them (Tesla); the others are a line on the hub (`bez_stranice`).
+- `/elektricni-automobili/polovni/` — the article `content/podaci/polovni-elektricni-automobili.md` (front matter `path`):
+  classifieds, dealers' used-car programmes, independent importers, import from the EU, leasing and auctions, checks.
+
+Data: `content/data/automobili.json` holds the brand facts — `status` (`zvanicno` = an official importer or distributor
+sells at least one fully electric passenger car; `najava` = entry announced with a named importer; `bez` = no official
+importer), `importer` as the official Serbian site or a reliable Serbian outlet names it (`importer_short` for the
+table, `importer_note` for how sure it is), `site`, `dealers_url`, `cities`, `notes` (short HTML lines), `sources`
+({label, url, date}), `verified`, optional `since`, `aliases` (names that find the brand in news titles), `used_url`
+(a classifieds search for the brand), `models` (names only, for brands without models in ev-modeli.json), `lead`/`fact4*`
+for announced brands and brands without an importer. Models and prices stay in `content/data/ev-modeli.json`
+(`ev` = the brand name there): `scripts/ev_rows.py` builds the price rows once for both the brand pages and
+`/podaci/cene-elektricnih-automobila/` (`scripts/gen_ev_modeli.py`, which also takes the importer table from
+automobili.json — run it after changing either file and commit the regenerated Markdown).
+
+Monthly, with the EV prices (3.5): open every brand's `site` and `dealers_url`, check the importer, the BEV lineup and the
+cities; new brands from the news (announced → `najava`, selling → `zvanicno`); prices in ev-modeli.json with their own
+`seen` date. Neutrality: no ratings, no "best", no affiliate or tracking links, the same blocks for every brand, A–Z,
+nothing paid; independent importers and classifieds are listed by facts from their own sites, all found ones, without
+judging offers. No brand logos (monograms) and no photos except the Wikimedia Commons model photos of `ev-foto.json`.
+
+Rules added with the full check of 24.10.2026 (36 brands with official sales, 84 priced models of 26 brands):
+- Price sources (`source_type` in ev-modeli.json): `official` and `pricelist_pdf` (the importer), `official_retailer`
+  (the site of an authorised dealer when the importer publishes no price — Volvo Car centar Beograd, AK Kompresor for
+  Leapmotor T03; the table says "sajt prodavca"), `media` (shown only as a note under the model, never in the price
+  table). A price that already deducts the subsidy is `price_includes_subsidy: true` (Kia EV3 and Niro EV, Lynk & Co 02,
+  JMEV Elight); the table always shows the price before the subsidy. Range-extender (REEV/EREV) and plug-in models are
+  not listed — the subsidy is only for vehicles "isključivo na električni pogon".
+- A brand whose offer cannot be read (the site blocks reading, server errors) does not enter the list until it is
+  confirmed; it is named in `texts.unverified` under the table (KGM, Alfa Romeo, DS, Honda, Subaru, Jaguar on 24.10).
+  Brands with an importer but no fully electric passenger car are named in `texts.no_bev`.
+- `used_url` is the Polovni automobili search `…/auto-oglasi/pretraga?brand=<slug>&fuel%5B%5D=electric`, set only when it
+  showed at least one ad of that brand (a wrong slug returns all 653 EV ads under the title "Pretraga automobila" —
+  check the title). `seller` (the brand's site names only a dealer) and `no_cities` (text when there are no cities)
+  are optional; `h1`/`title` override the default "<brand> u Srbiji" (Changan i Deepal).
+- What could not be read on 24.10.2026 (blocked sites, PDF price lists, dynamic dealer locators) and the brands with an
+  importer but no BEV are listed in `ev-modeli.json` → `not_found`; start the next check there. Kia Niro EV: the page
+  says the price "includes the discount and the possibility of the EKO subsidy" — read as subsidy included (as on
+  22.09); keep it unless Kia rewrites the sentence.
 
 ## 4. Build and check
 

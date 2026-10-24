@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import sources as src_block, news_cards %}
+{% from '_icons.html' import ic %}
+{# /elektricni-automobili/<slug>/ — one brand: importer, showrooms, electric models and prices (docs/RUNBOOK.md 3.32).
+   The same blocks and the same rules for every brand. #}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "dateModified": "{{ b.verified|iso }}", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}, "about": {"@type": "Brand", "name": {{ b.name|tojson }}}},
+  {% if b.all_models %}{"@type": "ItemList", "name": {{ ('Električni modeli ' ~ b.name ~ ' u Srbiji')|tojson }}, "itemListElement": [{% for m in b.all_models %}{"@type": "ListItem", "position": {{ loop.index }}, "item": {"@type": "Car", "name": {{ m.name|tojson }}, "brand": {"@type": "Brand", "name": {{ b.name|tojson }}}, "fuelType": "Electricity"{% if m.url %}, "url": {{ m.url|tojson }}{% endif %}}}{{ ',' if not loop.last }}{% endfor %}]},
+  {% endif %}{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Električni automobili", "item": "{{ SITE }}/elektricni-automobili/"}, {"@type": "ListItem", "position": 3, "name": {{ b.name|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
+ ]
+}</script>{% endblock %}
+{% block pagekey %} data-page="auto:{{ b.slug }}"{% endblock %}
+{% block pagehead %}<div class="ph" data-bv-note><div class="wrap">
+<nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a><span aria-hidden="true">›</span><a href="/elektricni-automobili/">Električni automobili</a></nav>
+<div class="ent"><span class="lg mono lg-lg" aria-hidden="true" translate="no">{{ b.name|mono }}</span><div><h1>{{ h1 }}</h1><p class="lead">{{ b.lead }}</p></div></div>
+<div class="ph-actions">{% if b.site %}<a class="btn dark" href="{{ b.site }}" rel="noopener nofollow" target="_blank">{{ ic('ext') }}<span translate="no">{{ b.domain }}</span></a>{% endif %}{% if b.dealers_url %}<a class="btn" href="{{ b.dealers_url }}" rel="noopener nofollow" target="_blank">{{ ic('pin') }}Saloni i servisi</a>{% endif %}{% if b.srv_url %}<a class="btn" href="{{ b.srv_url }}">{{ ic('tool') }}Servisi na mapi</a>{% endif %}{% if b.used_url %}<a class="btn" href="{{ b.used_url }}" rel="noopener nofollow" target="_blank">{{ ic('search') }}Polovni u oglasima</a>{% endif %}</div>
+</div></div>{% endblock %}
+{% block content %}
+<div class="facts">
+{% if b.facts %}{% for f in b.facts %}<div class="fact{% if loop.first %} wide{% endif %}"><span>{{ f.label }}</span><b>{{ f.value }}</b>{% if f.note %}<small>{{ f.note }}</small>{% endif %}</div>
+{% endfor %}{% else %}<div class="fact wide"><span>{{ b.fact_imp_label }}</span><b>{% if b.importer %}<span translate="no">{{ b.importer }}</span>{% else %}{{ b.fact_imp }}{% endif %}</b>{% if b.importer_note %}<small>{{ b.importer_note }}</small>{% endif %}</div>
+<div class="fact"><span>Električni modeli</span><b>{{ b.n_models if b.n_models else '—' }}</b>{% if b.n_priced %}<small>{{ b.n_priced }} sa javnom cenom</small>{% endif %}</div>
+<div class="fact"><span>Cena od</span><b>{% if b.min %}{{ b.min_txt }}{% else %}<span class="no">nije objavljena</span>{% endif %}</b>{% if b.min %}<small>pre subvencije, <span translate="no">{{ b.min_name }}</span></small>{% endif %}</div>
+<div class="fact"><span>Saloni</span><b>{% if b.cities %}{{ b.cities|length }}{% else %}<span class="no">{{ b.no_cities }}</span>{% endif %}</b>{% if b.cities %}<small>{{ b.cities|join(', ') }}</small>{% endif %}</div>
+<div class="fact"><span>{{ b.fact4_label }}</span><b>{{ b.fact4 }}</b>{% if b.fact4_note %}<small>{{ b.fact4_note }}</small>{% endif %}</div>
+{% endif %}</div>
+
+{% if b.all_models %}<div class="sec" id="modeli"><div class="sec-head"><h2>Električni modeli i cene</h2>{% if b.priced %}<a href="/podaci/cene-elektricnih-automobila/">Sve marke →</a>{% endif %}</div>
+<div class="tw stack"><table><thead><tr><th>Model</th><th>Cena od</th><th>Posle subvencije {{ sub }}</th><th>Izvor</th></tr></thead><tbody>
+{% for r in b.priced %}<tr><td data-label="Model">{{ r.model_cell|safe }}</td><td data-label="Cena od">{{ r.price_cell|safe }}</td><td data-label="Posle subvencije {{ sub }}">{{ r.after_cell|safe }}</td><td data-label="Izvor"><a href="{{ r.url }}" rel="noopener nofollow">{{ r.kind }}</a><small>{{ r.date_txt }}</small></td></tr>
+{% endfor %}{% for m in b.unpriced %}<tr><td data-label="Model">{{ m.model_cell|safe }}</td><td data-label="Cena od"><span class="muted">{{ m.price_txt }}</span>{% if m.price_note %}<small>{{ m.price_note }}</small>{% endif %}</td><td data-label="Posle subvencije {{ sub }}"><span class="muted">—</span></td><td data-label="Izvor">{% if m.url %}<a href="{{ m.url }}" rel="noopener nofollow">{{ m.kind }}</a>{% else %}{{ m.kind }}{% endif %}<small>{{ m.date_txt }}</small></td></tr>
+{% endfor %}</tbody></table></div>
+<p class="note">{{ b.table_note }}</p>
+</div>{% endif %}
+
+{% if b.notes %}<div class="sec" id="dobro-je-znati"><div class="sec-head"><h2>Dobro je znati</h2></div>
+<ul class="am-notes">{% for n in b.notes %}<li>{{ n|safe }}</li>{% endfor %}</ul>
+</div>{% endif %}
+
+<div class="sec" id="polovni"><div class="sec-head"><h2>{{ b.used_title }}</h2><a href="/elektricni-automobili/polovni/">Kako se kupuje polovan →</a></div>
+<p>{{ b.used_text|safe }}</p>
+</div>
+
+{% if b.news %}<div class="sec" id="vesti"><div class="sec-head"><h2>Vesti</h2><a href="/vesti/">Sve vesti →</a></div>
+{{ news_cards(b.news) }}
+</div>{% endif %}
+
+<div class="sec" id="pre-kupovine"><div class="sec-head"><h2>Pre kupovine</h2></div>
+<div class="tiles">{% for it in before %}<a class="tile" href="{{ it.href }}"><span class="ic">{{ ic(it.icon) }}</span><h3>{{ it.name }}</h3><p>{{ it.desc }}</p></a>{% endfor %}</div>
+</div>
+
+<div class="sec">
+{% if b.credits %}<details class="src"><summary>Fotografije: autori i licence ({{ b.credits|length|plural('fotografija', 'fotografije', 'fotografija') }})</summary><p>Fotografije su sa Wikimedia Commonsa, pod slobodnim licencama; pozadina je uklonjena, a veličina ujednačena. Ilustrativne su: auto na slici može biti druga verzija modela.</p>
+<ul>
+{% for c in b.credits %}<li><b>{{ c.name }}</b> — {{ c.au }}, <a href="{{ c.licurl }}" rel="nofollow noopener">{{ c.lic }}</a>, <a href="{{ c.page }}" rel="nofollow noopener">Wikimedia Commons</a></li>
+{% endfor %}</ul></details>{% endif %}
+{{ src_block(b.src_items) }}
+<p class="upd">Provereno {{ b.verified }} · <a href="/ispravka/">Prijavite grešku</a></p>
+</div>
+{% if others %}<div class="sec"><div class="sec-head"><h2>Druge marke</h2><a href="/elektricni-automobili/#marke">Sve marke →</a></div>
+<div class="chips am-others">{% for o in others %}<a class="chip" href="{{ o.url }}" translate="no">{{ o.name }}</a>{% endfor %}</div>
+</div>{% endif %}
+<p class="claim-min"><span>Predstavljate uvoznika?</span> <a href="/za-firme/">Pošaljite podatke</a></p>
+{% endblock %}

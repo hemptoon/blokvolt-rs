@@ -1,0 +1,1564 @@
+{
+ "_about": "Brand facts for /elektricni-automobili/ (docs/RUNBOOK.md 3.32): status (zvanicno | najava | bez), importer as the official Serbian site or a reliable Serbian source names it, the site, the dealer list, cities, short notes and sources with the date seen. Models and prices are in content/data/ev-modeli.json (key \"ev\" = brand name there). Same fields and rules for every brand, A–Z; nothing is paid. used_url: the Polovni automobili search for the brand with the electric filter, only when it showed at least one ad. Check monthly with ev-modeli.json.",
+ "checked": "24.10.2026",
+ "next_check": "15.11.2026",
+ "brands": [
+  {
+   "slug": "audi",
+   "name": "Audi",
+   "ev": "Audi",
+   "importer": "Porsche SCG d.o.o.",
+   "importer_short": "Porsche SCG",
+   "site": "https://www.audi.rs/",
+   "dealers_url": "https://www.audi.rs/kontakt/pretraga-partnera",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš",
+    "Čačak"
+   ],
+   "notes": [
+    "Cenovnici su na sajtu marke kao PDF dokumenti i ovde nisu preneti: <a class=\"lnk\" href=\"https://www.audi.rs/kontakt/info-materijal/cenovnici-pdf\" rel=\"noopener nofollow\">cenovnici na audi.rs</a>.",
+    "Nov model A2 e-tron je u meniju sajta, još bez cenovnika."
+   ],
+   "sources": [
+    {
+     "label": "Audi — električni modeli",
+     "url": "https://www.audi.rs/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Porsche Leasing SCG — partneri Audi (gradovi)",
+     "url": "https://www.porscheleasing.rs/partneri/audi",
+     "date": "22.09.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=audi&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "baic",
+   "name": "BAIC",
+   "ev": "BAIC",
+   "importer": "CEHV d.o.o.",
+   "importer_short": "CEHV",
+   "importer_note": "zvanični distributer BAIC INTL za Srbiju („BAIC Serbia“)",
+   "site": "https://www.baic-auto.rs/",
+   "dealers_url": "https://www.baic-auto.rs/pages/salon",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš"
+   ],
+   "notes": [
+    "Uz cenu se ne navode PDV ni subvencija.",
+    "BJ30e nije potpuno električan, pa nije na spisku."
+   ],
+   "sources": [
+    {
+     "label": "BAIC Serbia — EU5",
+     "url": "https://www.baic-auto.rs/products/eu5",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "BAIC Serbia — kontakt (CEHV d.o.o.)",
+     "url": "https://www.baic-auto.rs/pages/contact",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "BAIC Serbia — saloni",
+     "url": "https://www.baic-auto.rs/pages/salon",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=baic&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "bmw",
+   "name": "BMW",
+   "ev": "BMW",
+   "importer": "Delta Motors (Delta Auto Grupa)",
+   "importer_short": "Delta Motors",
+   "importer_note": "uvoznik nije izričito naveden na bmw.rs",
+   "site": "https://www.bmw.rs/",
+   "dealers_url": "https://www.bmw.rs/sr/fastlane/bmw-dileri.html",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš",
+    "Čačak",
+    "Novi Pazar",
+    "Vlaška"
+   ],
+   "verified": "22.09.2026",
+   "notes": [
+    "Cene su iz cenovnika od 01.07.2026; plaćanje u dinarima po srednjem kursu NBS."
+   ],
+   "sources": [
+    {
+     "label": "BMW — cenovnik",
+     "url": "https://www.bmw.rs/sr/topics/offers-and-services/bmw-cenovnik.html",
+     "date": "22.09.2026"
+    },
+    {
+     "label": "BMW — dileri",
+     "url": "https://www.bmw.rs/sr/fastlane/bmw-dileri.html",
+     "date": "22.09.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=bmw&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "byd",
+   "name": "BYD",
+   "ev": "BYD",
+   "importer": "TDV Automotive d.o.o., Beograd",
+   "importer_short": "TDV Automotive",
+   "importer_note": "generalni uvoznik i distributer za Srbiju i Crnu Goru",
+   "site": "https://byd-auto.rs/",
+   "dealers_url": "https://byd-auto.rs/distributeri/",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš"
+   ],
+   "since": "od marta 2025.",
+   "notes": [
+    "Na stranicama modela nisu navedeni PDV ni da li je subvencija uračunata.",
+    "BYD prodaje i plug-in hibride (oznaka DM-i); subvencija važi samo za potpuno električne modele."
+   ],
+   "sources": [
+    {
+     "label": "BYD Srbija — saloni i servisi",
+     "url": "https://byd-auto.rs/distributeri/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "BYD Srbija — modeli",
+     "url": "https://byd-auto.rs/modeli/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Auto Motor Revija, 18.03.2025 — BYD zvanično u Srbiji",
+     "url": "https://www.automotorevija.rs/rubrike/byd-zvanicno-u-srbiji",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=byd&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "changan",
+   "name": "Changan",
+   "ev": "Changan",
+   "aliases": [
+    "Deepal"
+   ],
+   "importer": "Crossroad Asia (OMR Grupa)",
+   "importer_short": "Crossroad Asia",
+   "importer_note": "ovlašćeni uvoznik prema B92 (20.11.2025); sajt marke vodi Changan Automobile Europe",
+   "site": "https://changanbalkans.com/rs",
+   "dealers_url": "https://changanbalkans.com/rs/dilerska-mreza/",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš",
+    "Kragujevac"
+   ],
+   "since": "od novembra 2025.",
+   "h1": "Changan i Deepal u Srbiji",
+   "title": "Changan i Deepal u Srbiji: električni modeli, cene i saloni | BlokVolt",
+   "notes": [
+    "Električni modeli se prodaju pod imenom Deepal.",
+    "Cenovnik za Deepal S05 važi od 01.10.2026. i označen je kao „radna verzija“; za S07 cena na zvaničnom sajtu nije objavljena.",
+    "Najavljen je i Deepal S05 PHEV, koji nije potpuno električan."
+   ],
+   "sources": [
+    {
+     "label": "Changan Srbija — modeli",
+     "url": "https://changanbalkans.com/rs",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Changan Srbija — dilerska mreža",
+     "url": "https://changanbalkans.com/rs/dilerska-mreza/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "B92, 20.11.2025 — Changan stigao u Srbiju",
+     "url": "https://www.b92.net/automobili/aktuelno/183233/changan-stigao-u-srbiju-ova-dva-modela-su-prva-na-nasem-trzistu/vest",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=changan&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "citroen",
+   "name": "Citroën",
+   "ev": "Citroën",
+   "importer": "Avtonova KAB d.o.o., Novi Beograd",
+   "importer_short": "Avtonova KAB",
+   "importer_note": "ekskluzivni uvoznik",
+   "site": "https://www.citroen.rs/",
+   "dealers_url": "https://www.citroen.rs/alati/pronadji-prodajno-servisni-centar.html",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš",
+    "Čačak",
+    "Bačka Topola"
+   ],
+   "verified": "22.09.2026",
+   "notes": [
+    "Cene su sa stranica modela; PDV nije naveden."
+   ],
+   "sources": [
+    {
+     "label": "Citroën — prodajno-servisni centri",
+     "url": "https://www.citroen.rs/alati/pronadji-prodajno-servisni-centar.html",
+     "date": "22.09.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=citroen&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "cupra",
+   "name": "CUPRA",
+   "ev": "CUPRA",
+   "aliases": [
+    "Cupra"
+   ],
+   "importer": "Porsche SCG d.o.o.",
+   "importer_short": "Porsche SCG",
+   "importer_note": "generalni uvoznik za Volkswagen, Audi, SEAT, CUPRA i Porsche",
+   "site": "https://www.cupraofficial.rs/",
+   "dealers_url": "",
+   "no_cities": "na sajtu marke",
+   "notes": [
+    "Cena na sajtu je preporučena maloprodajna, sa PDV-om.",
+    "Born se nudi kao ograničena serija Born Alpha, bez objavljene cene.",
+    "Tavascan na sajtu „trenutno nije dostupan za prodaju i čeka na homologaciju“."
+   ],
+   "sources": [
+    {
+     "label": "CUPRA Srbija — Raval",
+     "url": "https://www.cupraofficial.rs/raval",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "CUPRA Srbija — Tavascan",
+     "url": "https://www.cupraofficial.rs/cupra-tavascan",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "CUPRA Srbija — impresum (Porsche SCG)",
+     "url": "https://www.cupraofficial.rs/impressum-i-pravne-odredbe",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=cupra&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "dacia",
+   "name": "Dacia",
+   "ev": "Dacia",
+   "importer": "KEOS d.o.o. (Emil Frey grupa)",
+   "importer_short": "KEOS",
+   "site": "https://www.dacia.rs/",
+   "dealers_url": "https://www.dacia.rs/trgovci.html",
+   "verified": "22.09.2026",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš",
+    "Subotica",
+    "Kragujevac",
+    "Čačak",
+    "Šabac",
+    "Pančevo",
+    "Zrenjanin",
+    "Jagodina",
+    "Kraljevo",
+    "Užice",
+    "Vrnjačka Banja",
+    "Veliko Gradište",
+    "Veternik"
+   ],
+   "notes": [
+    "Cena u cenovniku ne uključuje pripremu vozila."
+   ],
+   "sources": [
+    {
+     "label": "Dacia — trgovci",
+     "url": "https://www.dacia.rs/trgovci.html",
+     "date": "22.09.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=dacia&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "dongfeng",
+   "name": "Dongfeng",
+   "ev": "Dongfeng",
+   "aliases": [
+    "Forthing",
+    "M-Hero",
+    "Nammi"
+   ],
+   "importer": "China Motor Company",
+   "importer_short": "China Motor Company",
+   "importer_note": "zvanični uvoznik vozila Dongfeng; uvozi i Forthing, M-Hero, Voyah i DFSK",
+   "site": "https://chinamotor.rs/",
+   "dealers_url": "https://chinamotor.rs/contact-us/",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš",
+    "Kragujevac",
+    "Subotica"
+   ],
+   "notes": [
+    "Na spisku su i marke Forthing i M-Hero iz grupe Dongfeng, koje uvozi isti uvoznik.",
+    "Specijalne cene važe za belu boju. Uz cenu modela E70 stoji zvezdica čije objašnjenje na sajtu nije čitljivo — uslove pitajte prodavca.",
+    "Forthing S7 REEV ima i benzinski motor koji puni bateriju (produžavač dometa), pa nije na spisku; subvencija važi samo za vozila isključivo na električni pogon.",
+    "Modeli Aeolus trenutno nisu u ponudi."
+   ],
+   "sources": [
+    {
+     "label": "China Motor Company — o uvozniku",
+     "url": "https://chinamotor.rs/about-us/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "China Motor Company — Dongfeng Box",
+     "url": "https://chinamotor.rs/dongfeng-box-bs/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "China Motor Company — dileri",
+     "url": "https://chinamotor.rs/contact-us/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Automagazin, 16.03.2026 — China Motor Company na Sajmu automobila",
+     "url": "https://www.automagazin.rs/vesti/21617/osvojite-dongfeng-auto-na-sajmu-automobila",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=dongfeng&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "fiat",
+   "name": "Fiat",
+   "ev": "Fiat",
+   "importer": "Crossroad Adria d.o.o.",
+   "importer_short": "Crossroad Adria",
+   "site": "https://www.fiat.rs/",
+   "dealers_url": "https://www.fiat.rs/alati/spisak-dilera",
+   "verified": "22.09.2026",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Kragujevac",
+    "Čačak",
+    "Subotica",
+    "Šabac",
+    "Zrenjanin"
+   ],
+   "notes": [
+    "Plaćanje u dinarskoj protivvrednosti."
+   ],
+   "sources": [
+    {
+     "label": "Fiat — spisak dilera",
+     "url": "https://www.fiat.rs/alati/spisak-dilera",
+     "date": "22.09.2026"
+    },
+    {
+     "label": "Fiat — cenovnici i brošure",
+     "url": "https://www.fiat.rs/ponude-i-kupovina/cenovnici-i-brosure",
+     "date": "22.09.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=fiat&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "ford",
+   "name": "Ford",
+   "ev": "Ford",
+   "importer": "Grand Motors Srbija",
+   "importer_short": "Grand Motors",
+   "importer_note": "zvanični ovlašćeni uvoznik i serviser",
+   "verified": "22.09.2026",
+   "site": "https://ford.rs/",
+   "dealers_url": "https://ford.rs/dealerships",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš",
+    "Subotica",
+    "Čačak",
+    "Šabac",
+    "Pančevo",
+    "Kragujevac"
+   ],
+   "notes": [
+    "Cene u cenovniku su preporučene maloprodajne, sa PDV-om. Uz neke modele stoji „akcijska cena“ niža za 5.000 €; cenovnik ne kaže da li je to subvencija."
+   ],
+   "sources": [
+    {
+     "label": "Ford — prodajna mesta",
+     "url": "https://ford.rs/dealerships",
+     "date": "22.09.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=ford&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "gac",
+   "name": "GAC",
+   "ev": "GAC",
+   "aliases": [
+    "AION",
+    "Aion"
+   ],
+   "importer": "SEEAG Group",
+   "importer_short": "SEEAG Group",
+   "importer_note": "zvanični uvoznik i distributer prema B92 (22.09.2026) i Magazin Autu (09.10.2026)",
+   "site": "",
+   "dealers_url": "",
+   "no_cities": "nisu objavljeni",
+   "since": "od septembra 2026.",
+   "notes": [
+    "Zvanični sajt za Srbiju i adrese salona nisu pronađeni; cene su objavili mediji (Magazin Auto, 09.10.2026).",
+    "GAC u Srbiji prodaje i hibrid EMKOO i benzinski EMZOOM, koji nisu na spisku."
+   ],
+   "sources": [
+    {
+     "label": "B92, 22.09.2026 — GAC stigao u Srbiju",
+     "url": "https://www.b92.net/automobili/aktuelno/269763/gac-stigao-u-srbiju-sa-cetiri-modela-aion-v-aion-ut-emkoo-i-emzoom/vest",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Magazin Auto, 09.10.2026 — GAC zvanično na srpskom tržištu",
+     "url": "https://www.magazinauto.com/gac-motor-zvanicno-na-srpskom-trzistu/",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026"
+  },
+  {
+   "slug": "geely",
+   "name": "Geely",
+   "ev": "Geely",
+   "importer": "VCAG d.o.o., Beograd-Zemun",
+   "importer_short": "VCAG",
+   "importer_note": "ovlašćeni distributer",
+   "site": "https://www.geelyauto.rs/",
+   "dealers_url": "https://www.geelyauto.rs/zastupnici",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš",
+    "Kragujevac",
+    "Požarevac",
+    "Subotica"
+   ],
+   "notes": [
+    "Konfigurator na sajtu ne prikazuje cenu, a cenovnik E5 je PDF dokument koji nije dostupan za čitanje.",
+    "E2 je na sajtu najavljen kao „uskoro dostupan“. Starray EM-i je plug-in hibrid, pa nije na spisku."
+   ],
+   "sources": [
+    {
+     "label": "Geely Srbija — E5",
+     "url": "https://www.geelyauto.rs/vozila/e5",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Geely Srbija — zastupnici",
+     "url": "https://www.geelyauto.rs/zastupnici",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=geely&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "hyundai",
+   "name": "Hyundai",
+   "ev": "Hyundai",
+   "importer": "Hyundai Srbija d.o.o.",
+   "importer_short": "Hyundai Srbija",
+   "importer_note": "ovlašćeni distributer za Srbiju i Crnu Goru",
+   "site": "https://www.hyundai.rs/",
+   "dealers_url": "https://www.hyundai.rs/prodaja-i-servis",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš",
+    "Čačak",
+    "Kraljevo",
+    "Jagodina",
+    "Zrenjanin",
+    "Šabac",
+    "Sombor",
+    "Subotica"
+   ],
+   "notes": [
+    "Kona Electric nije u ponudi.",
+    "Cenovnici IONIQ 5 i IONIQ 6 su iz septembra 2025. Plaćanje u dinarskoj protivvrednosti po srednjem kursu NBS."
+   ],
+   "sources": [
+    {
+     "label": "Hyundai — prodaja i servis",
+     "url": "https://www.hyundai.rs/prodaja-i-servis",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Hyundai — cenovnici",
+     "url": "https://www.hyundai.rs/cenovnici",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=hyundai&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "jac",
+   "name": "JAC",
+   "ev": "JAC",
+   "importer": "Mašinopromet d.o.o.",
+   "importer_short": "Mašinopromet",
+   "importer_note": "zvanični generalni zastupnik i uvoznik od 21.10.2026",
+   "site": "https://jacmotors.rs/",
+   "dealers_url": "https://jacmotors.rs/putnicka-vozila/pronadji-prodavca/",
+   "cities": [
+    "Beograd"
+   ],
+   "notes": [
+    "Za E30X i e-JS4 PDV nije naveden.",
+    "Mašinopromet je do 21.10.2026. bio prodavac, a od tada je zvanični uvoznik."
+   ],
+   "sources": [
+    {
+     "label": "JAC — cenovnik",
+     "url": "https://jacmotors.rs/putnicka-vozila/cenovnik/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Autoblog, 20.10.2026 — Mašinopromet zvanični generalni zastupnik JAC",
+     "url": "https://autoblog.rs/blog/auto/domace-trziste/2026/10/20/novo-poglavlje-za-jac-u-srbiji-masinopromet-postao-zvanicni-generalni-zastupnik-kineskog-brenda",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026"
+  },
+  {
+   "slug": "jeep",
+   "name": "Jeep",
+   "ev": "Jeep",
+   "importer": "Crossroad Adria d.o.o.",
+   "importer_short": "Crossroad Adria",
+   "importer_note": "ovlašćeni uvoznik i distributer (cenovnik)",
+   "site": "https://www.jeep.rs/",
+   "dealers_url": "https://www.jeep.rs/spisak-dilera",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Čačak",
+    "Kragujevac"
+   ],
+   "notes": [
+    "Cene u cenovnicima su sa PDV-om, a akcijske cene su niže od cenovnika. Plaćanje u dinarima po srednjem kursu NBS.",
+    "Subvencija se u cenovnicima ne pominje."
+   ],
+   "sources": [
+    {
+     "label": "Jeep — brošure i cenovnici",
+     "url": "https://www.jeep.rs/jeep-brosure-i-cenovnici",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Jeep — spisak dilera",
+     "url": "https://www.jeep.rs/spisak-dilera",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=jeep&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "jmev",
+   "name": "JMEV",
+   "ev": "JMEV",
+   "importer": "CUBI d.o.o., Novi Sad",
+   "importer_short": "CUBI",
+   "importer_note": "generalni uvoznik, distributer i serviser",
+   "site": "https://www.jmev.rs/",
+   "dealers_url": "https://www.jmev.rs/kontakt.html",
+   "cities": [
+    "Novi Sad"
+   ],
+   "notes": [
+    "PDV se na sajtu ne pominje. Za Elight uvoznik objavljuje cenu sa uračunatom subvencijom, a za EV3 i EWind bez nje."
+   ],
+   "sources": [
+    {
+     "label": "JMEV — kontakt",
+     "url": "https://www.jmev.rs/kontakt.html",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=jmev&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "kia",
+   "name": "Kia",
+   "ev": "Kia",
+   "importer": "Kia Auto d.o.o. (KMAG)",
+   "importer_short": "Kia Auto",
+   "site": "https://www.kia.rs/",
+   "dealers_url": "https://www.kia.rs/zastupnici",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš",
+    "Čačak",
+    "Subotica",
+    "Šabac",
+    "Požarevac"
+   ],
+   "notes": [
+    "Kia cenu EV3 objavljuje već umanjenu za subvenciju od 5.000 €, a uz Niro EV piše da su u cenu uključeni popust i mogućnost subvencije. U tabeli je cena pre subvencije.",
+    "Cenovnici EV2, EV4, EV6 i EV9 su PDF dokumenti koji nisu dostupni za čitanje."
+   ],
+   "sources": [
+    {
+     "label": "Kia — EV3",
+     "url": "https://www.kia.rs/ev3",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Kia — akcija (Niro EV)",
+     "url": "https://www.kia.rs/akcija",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Kia — zastupnici",
+     "url": "https://www.kia.rs/zastupnici",
+     "date": "22.09.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=kia&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "leapmotor",
+   "name": "Leapmotor",
+   "ev": "Leapmotor",
+   "importer": "Avtonova KAB d.o.o.",
+   "importer_short": "Avtonova KAB",
+   "importer_note": "ekskluzivni distributer prema medijima; isti uvoznik kao za Citroën",
+   "site": "https://www.leapmotor.net/rs",
+   "dealers_url": "",
+   "cities": [
+    "Beograd",
+    "Novi Sad"
+   ],
+   "since": "od marta 2026.",
+   "notes": [
+    "Zvanični sajt prikazuje modele bez cene. Cena T03 je sa sajta ovlašćenog prodavca AK Kompresor, a cene B10 i C10 su sajamske, iz marta 2026.",
+    "B10 i C10 u ponudi AK Kompresora (28.490 € i 34.490 €) su verzije sa produžavačem dometa, koje nisu potpuno električne."
+   ],
+   "sources": [
+    {
+     "label": "AK Kompresor (ovlašćeni prodavac) — Leapmotor T03",
+     "url": "https://www.akkompresor.rs/t03/12998-leapmotor-t03",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Automagazin, 18.03.2026 — Leapmotor stigao u Srbiju",
+     "url": "https://www.automagazin.rs/vesti/21624/leapmotor-je-stigao-u-srbiju",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=leapmotor&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "lexus",
+   "name": "Lexus",
+   "ev": "Lexus",
+   "importer": "",
+   "importer_short": "nije naveden na sajtu",
+   "importer_note": "cenovnici su na serveru Toyota Europe",
+   "site": "https://www.lexus.rs/",
+   "dealers_url": "https://www.lexus.rs/contact/dealers/lexus-partneri",
+   "cities": [
+    "Beograd"
+   ],
+   "notes": [
+    "Cene su iz cenovnika od 01.09.2026, sa PDV-om; plaćanje u dinarima po srednjem kursu NBS. Subvencija nije uračunata."
+   ],
+   "sources": [
+    {
+     "label": "Lexus — cenovnici",
+     "url": "https://www.lexus.rs/new-cars/brochures",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Lexus — partneri",
+     "url": "https://www.lexus.rs/contact/dealers/lexus-partneri",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026"
+  },
+  {
+   "slug": "lynk-co",
+   "name": "Lynk & Co",
+   "ev": "Lynk & Co",
+   "aliases": [
+    "Lynk",
+    "Lynk&Co",
+    "Lynk and Co"
+   ],
+   "importer": "VCAG d.o.o., Beograd-Zemun",
+   "importer_short": "VCAG",
+   "importer_note": "ovlašćeni distributer; isti kao za Geely",
+   "site": "https://www.lynkco-see.com/rs",
+   "dealers_url": "https://www.lynkco-see.com/rs/zastupnici",
+   "cities": [
+    "Beograd"
+   ],
+   "notes": [
+    "Objavljena cena modela 02 (26.990 €) uključuje popust od 4.000 € i subvenciju od 5.000 €; popusti važe do isteka zaliha. U tabeli je cena pre subvencije.",
+    "Modeli 01 i 08 su plug-in hibridi, pa nisu na spisku."
+   ],
+   "sources": [
+    {
+     "label": "Lynk & Co Srbija — 02",
+     "url": "https://www.lynkco-see.com/rs/vozila/02",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Lynk & Co Srbija — zastupnici",
+     "url": "https://www.lynkco-see.com/rs/zastupnici",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "B92, 28.10.2025 — najprodavaniji električni automobil u Srbiji",
+     "url": "https://www.b92.net/automobili/visoki-napon/176422/najprodavaniji-elektricni-automobil-u-srbiji/vest",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=lynk-co&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "maserati",
+   "name": "Maserati",
+   "ev": "Maserati",
+   "importer": "Delta Automoto d.o.o.",
+   "importer_short": "Delta Automoto",
+   "importer_note": "ovlašćeni prodavac na maserati.com",
+   "site": "https://www.maserati.com/rs/sr",
+   "dealers_url": "",
+   "cities": [
+    "Beograd"
+   ],
+   "notes": [
+    "Folgore, potpuno električne verzije modela GranTurismo, GranCabrio i Grecale, pominju se na srpskim stranicama modela. Cene nisu objavljene; za dostupnost pitajte prodavca."
+   ],
+   "sources": [
+    {
+     "label": "Maserati Srbija — GranTurismo",
+     "url": "https://www.maserati.com/rs/sr/dealers/delta-automoto/models/granturismo",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Maserati Srbija — Grecale",
+     "url": "https://www.maserati.com/rs/sr/dealers/delta-automoto/models/grecale",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=maserati&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "mazda",
+   "name": "Mazda",
+   "ev": "Mazda",
+   "importer": "Grand Motors d.o.o.",
+   "importer_short": "Grand Motors",
+   "importer_note": "prema svom profilu na Polovnim automobilima ovlašćeni uvoznik i serviser za Ford i Mazdu; izdavač sajta mazda.rs je Mazda Austria",
+   "site": "https://www.mazda.rs/",
+   "dealers_url": "https://www.mazda.rs/nadji-partnera",
+   "notes": [
+    "Mazda na srpskom sajtu ne objavljuje cene. CX-6e je na sajtu najavljen."
+   ],
+   "sources": [
+    {
+     "label": "Mazda — 6e",
+     "url": "https://www.mazda.rs/modeli/mazda-6e",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Grand Motors — profil prodavca",
+     "url": "https://www.polovniautomobili.com/grandmotors-srbija",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Mazda — partneri",
+     "url": "https://www.mazda.rs/nadji-partnera",
+     "date": "22.09.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=mazda&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "mercedes-benz",
+   "name": "Mercedes-Benz",
+   "ev": "Mercedes-Benz",
+   "importer": "Star Import d.o.o.",
+   "importer_short": "Star Import",
+   "importer_note": "naveden kao vlasnik sajta mercedes-benz.rs",
+   "site": "https://www.mercedes-benz.rs/",
+   "dealers_url": "https://www.mercedes-benz.rs/locate-us/",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš",
+    "Čačak",
+    "Novi Pazar"
+   ],
+   "aliases": [
+    "Mercedes"
+   ],
+   "notes": [
+    "Cene sa naslovne strane sajta uključuju PDV od 20 %.",
+    "Novi električni CLA, CLA Shooting Brake, GLA, GLB, GLC i C-Klasa su na sajtu bez cene; za električni GLC nudi se samo probna vožnja."
+   ],
+   "sources": [
+    {
+     "label": "Mercedes-Benz Srbija — modeli i cene od",
+     "url": "https://www.mercedes-benz.rs/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Mercedes-Benz — prodajna mesta",
+     "url": "https://www.mercedes-benz.rs/locate-us/",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=mercedes-benz&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "mg",
+   "name": "MG",
+   "ev": "MG",
+   "importer": "Grand Motors d.o.o., Beograd",
+   "importer_short": "Grand Motors",
+   "importer_note": "ekskluzivni uvoznik i distributer (impresum sajta)",
+   "site": "https://www.mgmotor.rs/",
+   "dealers_url": "https://www.mgmotor.rs/map",
+   "notes": [
+    "MG na sajtu ne objavljuje cene."
+   ],
+   "sources": [
+    {
+     "label": "MG Motor Srbija — modeli",
+     "url": "https://www.mgmotor.rs/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "MG Motor Srbija — impresum",
+     "url": "https://www.mgmotor.rs/impressum",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=mg&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "mini",
+   "name": "MINI",
+   "ev": "MINI",
+   "importer": "",
+   "importer_short": "nije naveden na sajtu",
+   "site": "https://www.mini.rs/",
+   "dealers_url": "",
+   "verified": "22.09.2026",
+   "notes": [
+    "Cene su iz cenovnika od 01.06.2026."
+   ],
+   "sources": [
+    {
+     "label": "MINI — cenovnik",
+     "url": "https://www.mini.rs/sr_RS/home/cenovnik.html",
+     "date": "22.09.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=mini&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "opel",
+   "name": "Opel",
+   "ev": "Opel",
+   "importer": "Opel Southeast LLC — predstavništvo Beograd",
+   "importer_short": "Opel Southeast",
+   "importer_note": "prema kontakt stranici opel.rs",
+   "site": "https://www.opel.rs/",
+   "dealers_url": "https://www.opel.rs/tools/opel-nadite-dilera.html",
+   "notes": [
+    "Cenovnici su PDF dokumenti koji nisu dostupni za čitanje, a na stranicama modela cene nisu navedene."
+   ],
+   "sources": [
+    {
+     "label": "Opel — Prosto električni",
+     "url": "https://www.opel.rs/simply-electric/overview.html",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Opel — kontakt",
+     "url": "https://www.opel.rs/tools/opel-kontakt.html",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Opel — dileri",
+     "url": "https://www.opel.rs/tools/opel-nadite-dilera.html",
+     "date": "22.09.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=opel&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "peugeot",
+   "name": "Peugeot",
+   "ev": "Peugeot",
+   "importer": "Euroimpex Autogroup d.o.o.",
+   "importer_short": "Euroimpex Autogroup",
+   "importer_note": "generalni uvoznik i distributer za Srbiju, Crnu Goru, Severnu Makedoniju, Kosovo i Albaniju",
+   "site": "https://www.peugeot.rs/",
+   "dealers_url": "https://www.peugeot.rs/about-us/network/",
+   "verified": "22.09.2026",
+   "cities": [
+    "Beograd"
+   ],
+   "notes": [
+    "Na sajtu je imenovan samo salon u Beogradu (Višnjička 53a); ostala mreža je samo na mapi."
+   ],
+   "sources": [
+    {
+     "label": "Peugeot — mreža",
+     "url": "https://www.peugeot.rs/about-us/network/",
+     "date": "22.09.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=peugeot&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "porsche",
+   "name": "Porsche",
+   "ev": "Porsche",
+   "importer": "Porsche SCG d.o.o.",
+   "importer_short": "Porsche SCG",
+   "importer_note": "generalni uvoznik; prodaje Porsche Centar Beograd",
+   "site": "https://finder.porsche.com/rs/sr-RS",
+   "dealers_url": "https://dealer.porsche.com/rs/beograd/sr-RS",
+   "cities": [
+    "Beograd"
+   ],
+   "notes": [
+    "Porsche za Srbiju ne objavljuje cenovnik. Na Porsche Finderu su nova vozila sa lagera: najjeftiniji električni Macan 4 od 113.913 €, Taycan od 144.788 € (24.10.2026, PDV nije naveden).",
+    "Stranica porsche.com/serbia ne radi (24.10.2026)."
+   ],
+   "sources": [
+    {
+     "label": "Porsche Finder Srbija — novi Taycan",
+     "url": "https://finder.porsche.com/rs/sr-RS/search/taycan?condition=new",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Porsche Finder Srbija — novi Macan",
+     "url": "https://finder.porsche.com/rs/sr-RS/search/macan?condition=new",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Porsche Centar Beograd",
+     "url": "https://dealer.porsche.com/rs/beograd/sr-RS",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=porsche&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "renault",
+   "name": "Renault",
+   "ev": "Renault",
+   "importer": "KEOS d.o.o. (Emil Frey grupa), Beograd",
+   "importer_short": "KEOS",
+   "importer_note": "generalni distributer za Renault i Dacia",
+   "site": "https://www.renault.rs/",
+   "dealers_url": "https://www.renault.rs/trgovci.html",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš",
+    "Subotica",
+    "Kragujevac",
+    "Čačak",
+    "Šabac",
+    "Pančevo",
+    "Zrenjanin",
+    "Jagodina",
+    "Kraljevo",
+    "Užice",
+    "Vrnjačka Banja",
+    "Veliko Gradište",
+    "Veternik"
+   ],
+   "notes": [
+    "Megane E-Tech i Scenic E-Tech trenutno nisu u ponudi na renault.rs."
+   ],
+   "sources": [
+    {
+     "label": "Renault — jesenja ponuda putničkih vozila",
+     "url": "https://www.renault.rs/ponude/ponuda-putnickih-vozila.html",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Renault — trgovci",
+     "url": "https://www.renault.rs/trgovci.html",
+     "date": "22.09.2026"
+    },
+    {
+     "label": "Renault u Srbiji",
+     "url": "https://www.renault.rs/renault-srbija.html",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=renault&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "skoda",
+   "name": "Škoda",
+   "ev": "Škoda",
+   "importer": "Autočačak d.o.o.",
+   "importer_short": "Autočačak",
+   "importer_note": "generalni uvoznik za Srbiju i Crnu Goru",
+   "site": "https://www.skoda-auto.rs/",
+   "dealers_url": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+   "cities": [
+    "Beograd",
+    "Čačak",
+    "Niš",
+    "Veternik (Novi Sad)",
+    "Šabac",
+    "Palić (Subotica)",
+    "Kragujevac",
+    "Zrenjanin",
+    "Valjevo",
+    "Kruševac",
+    "Novi Pazar",
+    "Paraćin"
+   ],
+   "notes": [
+    "Plaćanje u dinarskoj protivvrednosti; subvencija se u cenovniku ne pominje.",
+    "Epiq je na sajtu samo najavljen, bez cene i datuma prodaje u Srbiji."
+   ],
+   "sources": [
+    {
+     "label": "Škoda — prodajno-servisna mreža",
+     "url": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Škoda — cenovnici",
+     "url": "https://www.skoda-auto.rs/kontakti/cenovnik",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=skoda&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "suzuki",
+   "name": "Suzuki",
+   "ev": "Suzuki",
+   "importer": "Euro Sumar d.o.o.",
+   "importer_short": "Euro Sumar",
+   "importer_note": "zvanični uvoznik (Suzuki Srbija)",
+   "site": "https://suzuki-srbija.rs/",
+   "dealers_url": "https://suzuki-srbija.rs/prodajna-mreza",
+   "cities": [
+    "Beograd",
+    "Niš",
+    "Čačak"
+   ],
+   "notes": [
+    "e Vitara je na sajtu bez cene; dugme za cenovnik je prazno."
+   ],
+   "sources": [
+    {
+     "label": "Suzuki Srbija — e Vitara",
+     "url": "https://suzuki-srbija.rs/automobili/evitara",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Suzuki Srbija — prodajna mreža",
+     "url": "https://suzuki-srbija.rs/prodajna-mreza",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=suzuki&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "toyota",
+   "name": "Toyota",
+   "ev": "Toyota",
+   "importer": "Toyota Srbija d.o.o.",
+   "importer_short": "Toyota Srbija",
+   "site": "https://www.toyota.rs/",
+   "dealers_url": "https://www.toyota.rs/contact/dealers/list",
+   "notes": [
+    "Cene su iz cenovnika, sa PDV-om; subvencija od 5.000 € navodi se posebno."
+   ],
+   "sources": [
+    {
+     "label": "Toyota — cenovnici i katalozi",
+     "url": "https://www.toyota.rs/new-cars/pricelists-catalogues",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=toyota&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "volkswagen",
+   "name": "Volkswagen",
+   "ev": "Volkswagen",
+   "importer": "Porsche SCG d.o.o.",
+   "importer_short": "Porsche SCG",
+   "site": "https://www.volkswagen.rs/",
+   "dealers_url": "https://www.volkswagen.rs/volkswagen-dileri",
+   "cities": [
+    "Beograd",
+    "Novi Sad",
+    "Niš",
+    "Kragujevac",
+    "Čačak",
+    "Jagodina",
+    "Subotica",
+    "Šabac"
+   ],
+   "aliases": [
+    "VW"
+   ],
+   "notes": [
+    "ID. Polo je u pretprodaji, po posebnoj ponudi. Cena ID.3 Neo je iz provere 22.09.2026; 24.10. na sajtu nije prikazana.",
+    "ID. Buzz je na sajtu privrednih vozila, a ID.7 Tourer nije prikazan."
+   ],
+   "sources": [
+    {
+     "label": "Volkswagen — modeli i cene od",
+     "url": "https://www.volkswagen.rs/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Volkswagen — ID. Polo, pretprodaja",
+     "url": "https://www.volkswagen.rs/id-polo/idpolo/info-materijal",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Porsche Leasing SCG — partneri Volkswagen (gradovi)",
+     "url": "https://www.porscheleasing.rs/partneri/volkswagen",
+     "date": "22.09.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=volkswagen&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "volvo",
+   "name": "Volvo",
+   "ev": "Volvo",
+   "importer": "",
+   "importer_short": "Volvo Car centar Beograd (prodavac)",
+   "seller": "Volvo Car centar Beograd",
+   "importer_note": "uvoznik nije naveden na volvocars.com/rs; prodavac je MAXX AUTO SR d.o.o.",
+   "site": "https://www.volvocars.com/rs/",
+   "dealers_url": "https://beograd.volvocars.rs/",
+   "cities": [
+    "Beograd"
+   ],
+   "notes": [
+    "Cene su sa sajta prodavca Volvo Car centar Beograd; uz EX30 piše da državna subvencija nije uključena u cenu.",
+    "EX60 Cross Country je u pretprodaji, sa isporukom od sredine 2027."
+   ],
+   "sources": [
+    {
+     "label": "Volvo Car centar Beograd — EX30",
+     "url": "https://beograd.volvocars.rs/nova_vozila/view/ex30-787",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Volvo Car centar Beograd — akcijska ponuda",
+     "url": "https://beograd.volvocars.rs/akcijska_ponuda",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Volvo Cars Srbija",
+     "url": "https://www.volvocars.com/rs/",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=volvo&fuel%5B%5D=electric"
+  },
+  {
+   "slug": "voyah",
+   "name": "Voyah",
+   "ev": "Voyah",
+   "importer": "China Motor Company",
+   "importer_short": "China Motor Company",
+   "importer_note": "zvanični uvoznik; isti kao za Dongfeng",
+   "site": "https://chinamotor.rs/voyah-free-bs/",
+   "dealers_url": "https://chinamotor.rs/contact-us/",
+   "no_cities": "mreža uvoznika",
+   "notes": [
+    "Voyah Free je na sajtu uvoznika opisan kao luksuzni električni SUV, do 500 km; cena nije objavljena.",
+    "Koji dileri uvoznika prodaju Voyah, nije navedeno."
+   ],
+   "sources": [
+    {
+     "label": "China Motor Company — Voyah Free",
+     "url": "https://chinamotor.rs/voyah-free-bs/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "China Motor Company — o uvozniku",
+     "url": "https://chinamotor.rs/about-us/",
+     "date": "24.10.2026"
+    }
+   ],
+   "status": "zvanicno",
+   "verified": "24.10.2026"
+  },
+  {
+   "slug": "avatr",
+   "name": "AVATR",
+   "status": "najava",
+   "importer": "Delta Auto Grupa",
+   "importer_short": "Delta Auto Grupa",
+   "importer_note": "distributer za Srbiju i Zapadni Balkan (ugovor potpisan 24.04.2026)",
+   "site": "",
+   "dealers_url": "",
+   "lead": "Prvi modeli, SUV 07L i shooting brake 06T, najavljeni su za kraj 2026. Distributer je Delta Auto Grupa; cene još nisu objavljene.",
+   "models": [
+    {
+     "name": "AVATR 07L",
+     "kind": "Magazin Auto",
+     "url": "https://www.magazinauto.com/delta-auto-grupa-dovodi-avatr-na-trzista-srbije-i-zapadnog-balkana/",
+     "price_txt": "nije objavljena",
+     "date_txt": "najava 14.10.2026"
+    },
+    {
+     "name": "AVATR 06T",
+     "kind": "Magazin Auto",
+     "url": "https://www.magazinauto.com/delta-auto-grupa-dovodi-avatr-na-trzista-srbije-i-zapadnog-balkana/",
+     "price_txt": "nije objavljena",
+     "date_txt": "najava 14.10.2026"
+    }
+   ],
+   "fact4_label": "Početak prodaje",
+   "fact4": "najavljen do kraja 2026.",
+   "notes": [
+    "Pogon modela za Srbiju (potpuno električni ili sa produžavačem dometa) još nije objavljen."
+   ],
+   "sources": [
+    {
+     "label": "Magazin Auto, 14.10.2026 — Delta Auto Grupa dovodi AVATR",
+     "url": "https://www.magazinauto.com/delta-auto-grupa-dovodi-avatr-na-trzista-srbije-i-zapadnog-balkana/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Bizlife, 16.10.2026 — AVATR do kraja godine u Srbiji",
+     "url": "https://bizlife.rs/iz-pariza-uskoro-na-nase-puteve-upoznali-smo-avatr-koji-do-kraja-godine-stize-u-srbiju/",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Kurir, 24.04.2026 — ugovor Delta Auto Grupe i AVATR-a",
+     "url": "https://www.kurir.rs/zabava/auto/9977539/delta-auto-grupa-i-avatr-strateska-saradnja-koja-otvara-novo-poglavlje-mobilnosti-na-zapadnom-balkan",
+     "date": "16.10.2026"
+    }
+   ],
+   "verified": "24.10.2026"
+  },
+  {
+   "slug": "tesla",
+   "name": "Tesla",
+   "status": "bez",
+   "site": "https://www.tesla.com/",
+   "dealers_url": "",
+   "lead": "Tesla u Srbiji nema zvaničnog uvoznika, salon ni servis. Ima dve Supercharger lokacije, a automobili stižu uvozom.",
+   "facts": [
+    {
+     "label": "Zvanični uvoznik",
+     "value": "nema",
+     "note": "tesla.com ne navodi ni prodajni ni servisni centar u Srbiji"
+    },
+    {
+     "label": "Supercharger",
+     "value": "2 lokacije",
+     "note": "Beograd (AVA Shopping Park) i Aleksinac"
+    },
+    {
+     "label": "Najbliži Tesla servis",
+     "value": "Temišvar, Budimpešta",
+     "note": "i Zagreb, Ljubljana, Solun"
+    },
+    {
+     "label": "Polovne u oglasima",
+     "value": "61",
+     "note": "Polovni automobili, 24.10.2026"
+    },
+    {
+     "label": "Provereno",
+     "value": "24.10.2026"
+    }
+   ],
+   "notes": [
+    "Na Superchargerima u Srbiji Tesla ne prikazuje cenu; lokacije, snaga i iskustva vozača: <a class=\"lnk\" href=\"/javno-punjenje/tesla/\">Tesla na javnim punjačima</a>.",
+    "Tesla servisi najbliži Srbiji su u Temišvaru (Rumunija) i Budimpešti (Mađarska); u Bugarskoj, Bosni i Hercegovini, Crnoj Gori i Severnoj Makedoniji ih nema. U Srbiji Teslu održavaju nezavisni servisi — <a class=\"lnk\" href=\"/podaci/servisi-za-elektricne-automobile/\">servisi za električne automobile</a>.",
+    "Nove i polovne Tesle u Srbiji prodaju firme koje ih uvoze — <a class=\"lnk\" href=\"/elektricni-automobili/polovni/#uvoznici\">nezavisni uvoznici i prodavci</a>."
+   ],
+   "used_title": "Kako se kupuje Tesla",
+   "used_text": "Tesla se kupuje od firmi koje je uvoze, na oglasima — na Polovnim automobilima 24. oktobra 2026. je bio 61 oglas — ili uvozom iz EU, samostalno. Carina zavisi od porekla vozila, a PDV od 20 % plaća se uvek — <a class=\"lnk\" href=\"/elektricni-automobili/polovni/#uvoz\">kako se uvozi</a>.",
+   "sources": [
+    {
+     "label": "tesla.com — prodajni centri, Srbija (lista prazna)",
+     "url": "https://www.tesla.com/findus/list/stores/Serbia",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "tesla.com — servisni centri, Srbija (lista prazna)",
+     "url": "https://www.tesla.com/findus/list/services/Serbia",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "tesla.com — Supercharger lokacije u Srbiji",
+     "url": "https://www.tesla.com/findus/list/superchargers/Serbia",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "tesla.com — servisni centri, Rumunija",
+     "url": "https://www.tesla.com/findus/list/services/Romania",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "tesla.com — servisni centri, Mađarska",
+     "url": "https://www.tesla.com/findus/list/services/Hungary",
+     "date": "24.10.2026"
+    },
+    {
+     "label": "Polovni automobili — Tesla, električni pogon (61 oglas)",
+     "url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=tesla&fuel%5B%5D=electric",
+     "date": "24.10.2026"
+    }
+   ],
+   "verified": "24.10.2026",
+   "used_url": "https://www.polovniautomobili.com/auto-oglasi/pretraga?brand=tesla&fuel%5B%5D=electric"
+  }
+ ],
+ "dostavna": [
+  {
+   "name": "Farizon",
+   "importer_short": "Delta Auto Grupa",
+   "site": "",
+   "models": [
+    "SuperVAN",
+    "V6E",
+    "V7E"
+   ]
+  },
+  {
+   "name": "Foton",
+   "importer_short": "Foton Serbia – Ecofleet",
+   "site": "https://www.fotonserbia.rs/",
+   "models": [
+    "eView",
+    "eToano Pro",
+    "eTunland"
+   ]
+  },
+  {
+   "name": "Maxus",
+   "importer_short": "SDT Renting",
+   "site": "https://www.maxus.rs/",
+   "models": [
+    "eDeliver 5",
+    "eDeliver 9",
+    "eTerron 9"
+   ]
+  },
+  {
+   "name": "SWM",
+   "importer_short": "nije naveden (garancija ATMO Grupe)",
+   "site": "https://www.swm-auto.rs/",
+   "models": [
+    "X30L EV"
+   ]
+  }
+ ],
+ "bez_stranice": [
+  {
+   "name": "Denza",
+   "row_sub": "Model Z9 GT prikazan je u Beogradu u junu 2026; prodaja u Srbiji nije najavljena."
+  },
+  {
+   "name": "Omoda & Jaecoo",
+   "row_sub": "Ulazak na tržište najavljen je u aprilu 2026, ali uvoznik nije objavljen."
+  },
+  {
+   "name": "Polestar",
+   "row_sub": "Nema stranice za Srbiju ni uvoznika."
+  },
+  {
+   "name": "Smart",
+   "row_sub": "Nema stranice za Srbiju ni uvoznika."
+  },
+  {
+   "name": "Xpeng",
+   "row_sub": "Nema stranice za Srbiju ni uvoznika."
+  },
+  {
+   "name": "Zeekr",
+   "row_sub": "Modeli 001 i 7X prikazani su na Sajmu automobila u Beogradu u martu 2026; uvoznik za Srbiju nije objavljen."
+  }
+ ],
+ "texts": {
+  "hub_lead": "Koje marke se zvanično prodaju u Srbiji, ko ih uvozi, gde su saloni i od koje cene — i gde se kupuju polovni i uvezeni.",
+  "hub_description": "Električni automobili u Srbiji: {n} sa zvaničnom prodajom. Za svaku: uvoznik, saloni, modeli i cena od. I gde se kupuju polovni i uvezeni.",
+  "no_bev": "Zvanične uvoznike imaju i Chery, DFSK, GWM, Land Rover i Nissan, ali na srpskim sajtovima nemaju potpuno električan putnički automobil.",
+  "unverified": "Nisu potvrđeni: KGM (Torres EVX je bio u ponudi 2025, a stranice modela 24. oktobra nisu radile), Alfa Romeo, DS, Honda, Subaru i Jaguar — njihove ponude nije bilo moguće proveriti. Marka se dodaje kad se ponuda potvrdi.",
+  "used": {
+   "ads_line": "Polovni automobili, KupujemProdajem i drugi oglasnici, sa filterom za električni pogon."
+  },
+  "used_default": "Polovni automobili ove marke prodaju se na oglasima u Srbiji, u programima polovnih vozila ovlašćenih prodavaca i uvozom iz EU. Pre kupovine proverite stanje baterije, priključak za punjenje i garanciju — <a class=\"lnk\" href=\"/elektricni-automobili/polovni/#provera\">šta proveriti</a>."
+ },
+ "faq": [
+  {
+   "q": "Koliko marki električnih automobila se zvanično prodaje u Srbiji?",
+   "a": "<p>Spisak ima {n_marki_acc} sa zvaničnim uvoznikom ili distributerom: <span translate=\"no\">{official_names}</span>. Najavljen je dolazak još jedne: <span translate=\"no\">{announced_names}</span>.</p>"
+  },
+  {
+   "q": "Koji je najjeftiniji nov električni automobil u Srbiji?",
+   "a": "<p>Po javnim cenama uvoznika — <span translate=\"no\">{cheapest_name}</span>, od {cheapest_price}, a posle subvencije {cheapest_after}. Ispod 30.000 € je {under30_modela}. Svi modeli sa izvorima: <a class=\"lnk\" href=\"/podaci/cene-elektricnih-automobila/\">cene električnih automobila</a>.</p>"
+  },
+  {
+   "q": "Da li Tesla ima zvaničnog prodavca u Srbiji?",
+   "a": "<p>Nema. Tesla u Srbiji nema uvoznika, salon ni servis, a ima dve Supercharger lokacije, u Beogradu i Aleksincu. Automobil se kupuje od firmi koje ga uvoze, na oglasima ili uvozom: <a class=\"lnk\" href=\"/elektricni-automobili/tesla/\">Tesla u Srbiji</a>.</p>"
+  },
+  {
+   "q": "Važi li subvencija za polovan ili uvezen automobil?",
+   "a": "<p>Subvencija od 5.000 € je za nov automobil koji pre zahteva nije registrovan ni korišćen, uz dokumenta iz Uredbe — među njima homologaciju, COC i ovlašćenje dilera. Za polovan automobil ne važi. Uslovi i rok: <a class=\"lnk\" href=\"/podaci/subvencije-2026/\">subvencije 2026</a>.</p>"
+  },
+  {
+   "q": "Gde se kupuje polovan električni automobil?",
+   "a": "<p>Na oglasima u Srbiji — najviše na Polovnim automobilima i KupujemProdajem — kod ovlašćenih prodavaca u programima polovnih vozila, kod nezavisnih uvoznika ili uvozom iz EU. Šta gde dobijate i šta treba proveriti: <a class=\"lnk\" href=\"/elektricni-automobili/polovni/\">polovni i uvezeni električni automobili</a>.</p>"
+  },
+  {
+   "q": "Šta proveriti pre kupovine?",
+   "a": "<p>Pre svega punjenje: gde će auto stajati noću i da li tu može da se ugradi punjač. U zgradi to zavisi od garaže i saglasnosti — <a class=\"lnk\" href=\"/punjenje-elektricnog-auta-u-zgradi\">punjenje u zgradi</a>; bez garaže — <a class=\"lnk\" href=\"/elektricni-auto-bez-garaze\">električni auto bez garaže</a>. Javni punjači i cene su na <a class=\"lnk\" href=\"/mapa/\">mapi</a>.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "label": "Sajtovi i cenovnici uvoznika — linkovi su na stranici svake marke",
+   "url": "",
+   "date": "24.10.2026"
+  },
+  {
+   "label": "Uredba o subvencionisanoj kupovini novih vozila isključivo na električni pogon (Sl. glasnik RS 12/2026, 86/2026)",
+   "url": "https://www.paragraf.rs/propisi/uredba-o-uslovima-subvencionisane-kupovine-elektricnih-hibridnih-vozila.html",
+   "date": "22.09.2026"
+  },
+  {
+   "label": "SAUVD, 08.10.2026 — prve registracije januar–septembar 2026",
+   "url": "https://www.uvoznicivozila.rs/novosti/vesti-i-saopstenja/prodaja-novih-vozila-u-srbiji-nastavlja-da-raste.html",
+   "date": "09.10.2026"
+  },
+  {
+   "label": "tesla.com — prodajni centri, Srbija (lista prazna)",
+   "url": "https://www.tesla.com/findus/list/stores/Serbia",
+   "date": "24.10.2026"
+  },
+  {
+   "label": "B92, 03.2026 — Sajam automobila u Beogradu (Zeekr i drugi)",
+   "url": "https://www.b92.net/automobili/aktuelno/216760/sutra-pocinje-sajam-automobila-najezda-kineza-i-premijere-evropskih-brendova/vest",
+   "date": "24.10.2026"
+  },
+  {
+   "label": "Kurir, 26.04.2026 — dolazak kineskih automobila u Srbiju (Omoda i Jaecoo)",
+   "url": "https://www.kurir.rs/techvision/vesti/9978033/dolazak-kineskih-automobila-u-srbiju-nova-era-na-trzistu",
+   "date": "24.10.2026"
+  },
+  {
+   "label": "Mondo, 22.06.2026 — BYD u Beogradu, prikazan Denza Z9 GT",
+   "url": "https://mondo.rs/Automobili/Vesti/a2244236/byd-u-beogradu-predstavio-brzu-bateriju-za-punjenje-elektricnih-vozila.html",
+   "date": "24.10.2026"
+  },
+  {
+   "label": "Automagazin, 03.03.2025 — AutoWallis distributer KGM za Srbiju",
+   "url": "https://www.automagazin.rs/vesti/21198/autowallis-postaje-ekskluzivni-distributer-kgm-vozila-za-srbiju",
+   "date": "24.10.2026"
+  }
+ ]
+}

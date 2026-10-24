@@ -52,7 +52,7 @@ def export_all(dist, site, published, operators, price_index, ev_data, wallbox, 
     rows = []
     for b in ev_data['brands']:
         for m in b.get('models', []):
-            if m.get('source_type') not in ('official', 'pricelist_pdf'):
+            if m.get('source_type') not in ('official', 'pricelist_pdf', 'official_retailer'):
                 continue
             reg, promo = m.get('price_regular'), m.get('price_promo')
             if not reg and not promo:
@@ -64,7 +64,7 @@ def export_all(dist, site, published, operators, price_index, ev_data, wallbox, 
                 base = promo if b['brand'] not in ('Ford', 'Toyota') else reg
             rows.append([b['brand'], m['model'], m.get('version', ''), base, base - sub,
                          reg or '', promo or '', 'da' if m.get('price_includes_subsidy') else 'ne',
-                         m.get('vat', ''), m.get('source_type', ''), m.get('url', ''), ev_data['checked']])
+                         m.get('vat', ''), m.get('source_type', ''), m.get('url', ''), m.get('seen') or ev_data['checked']])
     out.append(_write(dist, 'blokvolt-cene-elektricnih-automobila.csv',
                       ['marka', 'model', 'verzija', 'cena_od_eur', 'posle_subvencije_eur',
                        'redovna_eur', 'akcijska_eur', 'cena_sadrzi_subvenciju', 'pdv',

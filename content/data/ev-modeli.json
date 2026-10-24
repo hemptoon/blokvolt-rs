@@ -2,7 +2,7 @@
   "checked": "22.09.2026",
   "next_check": "15.11.2026",
   "subsidy_eur": 5000,
-  "method_note": "Cene preuzete isključivo sa zvaničnih sajtova/cenovnika uvoznika (osim Leapmotor — mediji). Dodatna polja po modelu: 'price_includes_subsidy' (true = objavljena cena je već umanjena za državnu subvenciju 5.000 €; false = subvencija izričito nije uračunata; null = nije navedeno) i 'note'. PDF-ovi blokirani robots.txt nisu zaobilaženi. WebSearch budžet sesije iscrpljen tokom rada — brendovi 25+ provereni samo direktnim pristupom domenima.",
+  "method_note": "Od 24.10.2026: kad uvoznik ne objavljuje cenu, uzima se cena sa sajta ovlašćenog prodavca (source_type 'official_retailer': Volvo Car centar Beograd, AK Kompresor za Leapmotor T03); cene iz medija (source_type 'media': GAC, Leapmotor B10/C10) nisu u tabeli cena. Cene preuzete isključivo sa zvaničnih sajtova/cenovnika uvoznika (osim Leapmotor — mediji). Dodatna polja po modelu: 'price_includes_subsidy' (true = objavljena cena je već umanjena za državnu subvenciju 5.000 €; false = subvencija izričito nije uračunata; null = nije navedeno) i 'note'. PDF-ovi blokirani robots.txt nisu zaobilaženi. WebSearch budžet sesije iscrpljen tokom rada — brendovi 25+ provereni samo direktnim pristupom domenima.",
   "brands": [
     {
       "brand": "BYD",
@@ -198,7 +198,7 @@
           "version": "od (Trend / Style)",
           "battery_kwh": null,
           "range_wltp_km": null,
-          "price_regular": 27621,
+          "price_regular": 24995,
           "price_promo": null,
           "currency": "EUR",
           "vat": "sa PDV",
@@ -206,9 +206,9 @@
           "price_includes_subsidy": null,
           "promo_note": "",
           "source_type": "official",
-          "url": "https://www.volkswagen.rs/modeli-i-konfigurator/svi-modeli",
-          "seen": "22.09.2026",
-          "note": "Novi model. Naslovna volkswagen.rs: 'Od 23.017,17 € bez PDV-a'; stranica varijanti: https://www.volkswagen.rs/id-polo/varijante"
+          "url": "https://www.volkswagen.rs/id-polo/idpolo/info-materijal",
+          "seen": "24.10.2026",
+          "note": "Posebna ponuda u pretprodaji; naslovna: 20.829,16 € bez PDV-a. Do 22.09.2026: 27.621 €."
         },
         {
           "model": "ID.3 Neo",
@@ -241,7 +241,7 @@
           "promo_note": "",
           "source_type": "official",
           "url": "https://www.volkswagen.rs/modeli-i-konfigurator/svi-modeli",
-          "seen": "22.09.2026",
+          "seen": "24.10.2026",
           "note": "https://www.volkswagen.rs/id.4/varijante"
         },
         {
@@ -258,7 +258,7 @@
           "promo_note": "",
           "source_type": "official",
           "url": "https://www.volkswagen.rs/modeli-i-konfigurator/svi-modeli",
-          "seen": "22.09.2026",
+          "seen": "24.10.2026",
           "note": "https://www.volkswagen.rs/id.5/varijante"
         },
         {
@@ -275,7 +275,7 @@
           "promo_note": "",
           "source_type": "official",
           "url": "https://www.volkswagen.rs/modeli-i-konfigurator/svi-modeli",
-          "seen": "22.09.2026",
+          "seen": "24.10.2026",
           "note": "https://www.volkswagen.rs/id.7/varijante"
         }
       ],
@@ -394,6 +394,23 @@
           "url": "https://www.audi.rs/e-tron-gt/e-tron-gt-quattro/fascinacija",
           "seen": "22.09.2026",
           "note": "cena nije objavljena / nije dostupna za preuzimanje (cena na upit)"
+        },
+        {
+          "model": "A2 e-tron",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.audi.rs/",
+          "seen": "24.10.2026",
+          "note": "Nov model u meniju sajta, bez cenovnika."
         }
       ],
       "notes": "Cene nisu dostupne za automatsko preuzimanje: cenovnici (https://www.audi.rs/kontakt/info-materijal/cenovnici-pdf) se otvaraju samo kroz JavaScript lightbox. Proveriti ručno. Stranica e-vozila još navodi i Q8 e-tron. Lokator partnera (https://www.audi.rs/kontakt/pretraga-partnera) je dinamički — gradovi sa liste Porsche Leasing SCG."
@@ -628,8 +645,16 @@
       "brand": "Kia",
       "importer": "Kia Auto d.o.o. (KMAG; kiars@kmag.net)",
       "site": "https://www.kia.rs/",
-      "salons": [],
-      "salons_url": "https://www.kia.rs/zastupnici",
+      "salons": [
+        "Beograd",
+        "Novi Sad",
+        "Niš",
+        "Čačak",
+        "Subotica",
+        "Šabac",
+        "Požarevac"
+      ],
+      "salons_url": "https://www.kia.rs/ev6",
       "models": [
         {
           "model": "EV3",
@@ -645,7 +670,7 @@
           "promo_note": "Važi 'tokom pretprodajnog perioda, odnosno do rasprodaje zaliha'; boja se doplaćuje 0–1.000 €",
           "source_type": "official",
           "url": "https://www.kia.rs/ev3",
-          "seen": "22.09.2026",
+          "seen": "24.10.2026",
           "note": "Stranica: do 605 km (verzija 81,4 kWh). Cenovnik PDF na cdn.kmag.net blokiran (robots.txt)."
         },
         {
@@ -662,7 +687,7 @@
           "promo_note": "Uključen popust do 1.000 €; 'Sve cene i popusti važe pri kupovini u gotovini'",
           "source_type": "official",
           "url": "https://www.kia.rs/akcija",
-          "seen": "22.09.2026",
+          "seen": "24.10.2026",
           "note": "Stranica modela https://www.kia.rs/niro_ev: 'Domet od 460 km' (ciklus nije naveden)."
         },
         {
@@ -748,7 +773,7 @@
           "version": "Executive 57,7 kWh FWD (123 kW)",
           "battery_kwh": 57.7,
           "range_wltp_km": 458,
-          "price_regular": 37990,
+          "price_regular": 38990,
           "price_promo": null,
           "currency": "EUR",
           "vat": "sa PDV",
@@ -756,26 +781,26 @@
           "price_includes_subsidy": false,
           "promo_note": "",
           "source_type": "pricelist_pdf",
-          "url": "https://www.toyotaadria.com/rs/pdf/cenovnik_vozila/2026/september/CHR+_16.09.pdf",
-          "seen": "22.09.2026",
-          "note": "Važi od 14.09.2026; finansiranje 'Pola plati sada, pola na 36 mesečnih rata bez kamate'. Naslovna toyota.rs: 'Toyota C-HR+ 37.990 €'."
+          "url": "https://www.toyotaadria.com/rs/pdf/cenovnik_vozila/2026/october/CHR+_0210.pdf",
+          "seen": "24.10.2026",
+          "note": "Važi od 14.09.2026 (fajl iz oktobra); EXECUTIVE 60 FWD 57,7 kWh. Ranije 37.990 €."
         },
         {
           "model": "bZ4X",
-          "version": "od (Executive …)",
+          "version": "Executive FWD 57,7 kWh",
           "battery_kwh": null,
           "range_wltp_km": null,
-          "price_regular": 42500,
+          "price_regular": 40490,
           "price_promo": null,
           "currency": "EUR",
-          "vat": "nije navedeno",
+          "vat": "sa PDV",
           "subsidy_note": "nije navedeno",
-          "price_includes_subsidy": null,
+          "price_includes_subsidy": false,
           "promo_note": "NEUSKLAĐENO: naslovna https://www.toyota.rs/ prikazuje 'Toyota bZ4X 39.990 €' bez objašnjenja; PDF cenovnik 16.09.2026 (https://www.toyotaadria.com/rs/pdf/cenovnik_vozila/2026/september/bZ4X_16.09.pdf) nečitljiv — proveriti",
-          "source_type": "official",
-          "url": "https://www.toyota.rs/new-cars/bz4x",
-          "seen": "22.09.2026",
-          "note": "Cena sa stranice modela."
+          "source_type": "pricelist_pdf",
+          "url": "https://www.toyotaadria.com/rs/pdf/cenovnik_vozila/2026/october/bZ4X_0210.pdf",
+          "seen": "24.10.2026",
+          "note": "Važi od 01.10.2026; subvencija od 5.000 € se navodi posebno. Do 22.09.2026: 42.500 € na stranici modela."
         },
         {
           "model": "bZ4X Touring",
@@ -1055,6 +1080,40 @@
       "salons_url": "https://www.opel.rs/tools/opel-nadite-dilera.html",
       "models": [
         {
+          "model": "Corsa Electric",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.opel.rs/simply-electric/overview.html",
+          "seen": "24.10.2026",
+          "note": ""
+        },
+        {
+          "model": "Mokka Electric",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.opel.rs/simply-electric/overview.html",
+          "seen": "24.10.2026",
+          "note": ""
+        },
+        {
           "model": "Astra Electric",
           "version": "",
           "battery_kwh": null,
@@ -1123,17 +1182,17 @@
           "version": "",
           "battery_kwh": null,
           "range_wltp_km": 265,
-          "price_regular": null,
-          "price_promo": 17490,
+          "price_regular": 18690,
+          "price_promo": null,
           "currency": "EUR",
-          "vat": "nije navedeno",
+          "vat": "sa PDV",
           "subsidy_note": "nije navedeno",
           "price_includes_subsidy": null,
           "promo_note": "Sajamska cena (BG Car Show, mart 2026) 'sa uračunatim popustom' — aktuelnost na dan 22.09.2026 nije potvrđena",
-          "source_type": "media",
-          "url": "https://www.automotorevija.rs/rubrike/sajamska-akcija-leapmotor",
-          "seen": "22.09.2026",
-          "note": "Domet 265 km WLTP iz opisa zvanične stranice https://www.leapmotor.net/rs/t03 ; zvanični sajt ne prikazuje cene (JS)."
+          "source_type": "official_retailer",
+          "url": "https://www.akkompresor.rs/t03/12998-leapmotor-t03",
+          "seen": "24.10.2026",
+          "note": "AK Kompresor (ovlašćeni prodavac): 'Cena i rata su izražene sa PDV-om'. Sajamska cena (03.2026): 17.490 €."
         },
         {
           "model": "B10",
@@ -1269,61 +1328,97 @@
     },
     {
       "brand": "Volvo",
-      "importer": "nije utvrđeno (volvocars.com/rs ne navodi uvoznika)",
+      "importer": "Volvo Car centar Beograd (MAXX AUTO SR d.o.o.) — prodavac; uvoznik nije naveden",
       "site": "https://www.volvocars.com/rs/",
-      "salons": [],
-      "salons_url": "https://www.volvocars.com/rs/dealers/",
+      "salons": [
+        "Beograd"
+      ],
+      "salons_url": "https://beograd.volvocars.rs/",
       "models": [
         {
           "model": "EX30",
+          "version": "Nordic Edition, Extended Range",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 34990,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "'Državna subvencija nije uključena u cenu'",
+          "price_includes_subsidy": false,
+          "promo_note": "",
+          "source_type": "official_retailer",
+          "url": "https://beograd.volvocars.rs/nova_vozila/view/ex30-787",
+          "seen": "24.10.2026",
+          "note": "Sajt prodavca Volvo Car centar Beograd."
+        },
+        {
+          "model": "EX30 Cross Country",
           "version": "",
           "battery_kwh": null,
           "range_wltp_km": null,
-          "price_regular": null,
+          "price_regular": 41110,
           "price_promo": null,
           "currency": "EUR",
-          "vat": "nije navedeno",
+          "vat": "sa PDV",
           "subsidy_note": "nije navedeno",
-          "price_includes_subsidy": null,
+          "price_includes_subsidy": false,
           "promo_note": "",
-          "source_type": "official",
-          "url": "https://www.volvocars.com/rs/cars/ex30-electric/",
-          "seen": "22.09.2026",
-          "note": "cena nije objavljena / nije dostupna za preuzimanje (cena na upit); stranica: 475 km (P5 Long Range)."
+          "source_type": "official_retailer",
+          "url": "https://beograd.volvocars.rs/nova_vozila/view/ex30-787",
+          "seen": "24.10.2026",
+          "note": ""
         },
         {
           "model": "EX60",
           "version": "",
           "battery_kwh": null,
           "range_wltp_km": null,
-          "price_regular": null,
+          "price_regular": 62213,
           "price_promo": null,
           "currency": "EUR",
-          "vat": "nije navedeno",
+          "vat": "sa PDV",
           "subsidy_note": "nije navedeno",
           "price_includes_subsidy": null,
           "promo_note": "",
-          "source_type": "official",
-          "url": "https://www.volvocars.com/rs/",
-          "seen": "22.09.2026",
-          "note": "cena nije objavljena / nije dostupna za preuzimanje (cena na upit); prikazan na naslovnoj."
+          "source_type": "official_retailer",
+          "url": "https://beograd.volvocars.rs/nova_vozila/view/ex60-1078",
+          "seen": "24.10.2026",
+          "note": "PDV prema napomeni na sajtu prodavca. EX60 Cross Country: pretprodaja, isporuka od sredine 2027."
+        },
+        {
+          "model": "ES90",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 66140,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official_retailer",
+          "url": "https://beograd.volvocars.rs/nova_vozila/view/es90-1094",
+          "seen": "24.10.2026",
+          "note": ""
         },
         {
           "model": "EX90",
           "version": "",
           "battery_kwh": null,
           "range_wltp_km": null,
-          "price_regular": null,
+          "price_regular": 79287,
           "price_promo": null,
           "currency": "EUR",
-          "vat": "nije navedeno",
+          "vat": "sa PDV",
           "subsidy_note": "nije navedeno",
           "price_includes_subsidy": null,
           "promo_note": "",
-          "source_type": "official",
-          "url": "https://www.volvocars.com/rs/",
-          "seen": "22.09.2026",
-          "note": "cena nije objavljena / nije dostupna za preuzimanje (cena na upit); prikazan na naslovnoj."
+          "source_type": "official_retailer",
+          "url": "https://beograd.volvocars.rs/nova_vozila/view/ex90-803",
+          "seen": "24.10.2026",
+          "note": "PDV prema napomeni na sajtu prodavca."
         }
       ],
       "notes": "Volvo Srbija ne objavljuje cene na sajtu; lokator zastupnika dinamički; volvocentar.rs nije odgovorio (timeout). EX40/EC40 nisu potvrđeni na srpskom sajtu."
@@ -1544,7 +1639,7 @@
     },
     {
       "brand": "Mercedes-Benz",
-      "importer": "nije navedeno na mercedes-benz.rs",
+      "importer": "Star Import d.o.o. (naveden kao vlasnik sajta mercedes-benz.rs)",
       "site": "https://www.mercedes-benz.rs/",
       "salons": [
         "Beograd",
@@ -1563,13 +1658,13 @@
           "price_regular": 54162,
           "price_promo": null,
           "currency": "EUR",
-          "vat": "nije navedeno",
+          "vat": "sa PDV",
           "subsidy_note": "nije navedeno",
           "price_includes_subsidy": null,
           "promo_note": "",
           "source_type": "official",
           "url": "https://www.mercedes-benz.rs/models/eqa-806-2/",
-          "seen": "22.09.2026",
+          "seen": "24.10.2026",
           "note": "'Cena od 54.162 €'; baterija do 70,5 kWh (neto) po stranici."
         },
         {
@@ -1580,13 +1675,13 @@
           "price_regular": 55950,
           "price_promo": null,
           "currency": "EUR",
-          "vat": "nije navedeno",
+          "vat": "sa PDV",
           "subsidy_note": "nije navedeno",
           "price_includes_subsidy": null,
           "promo_note": "",
           "source_type": "official",
           "url": "https://www.mercedes-benz.rs/models/eqb-fl-806-2/",
-          "seen": "22.09.2026",
+          "seen": "24.10.2026",
           "note": "'Cena od 55.950 €'."
         },
         {
@@ -1594,92 +1689,109 @@
           "version": "od",
           "battery_kwh": null,
           "range_wltp_km": null,
-          "price_regular": 63942,
+          "price_regular": 69845,
           "price_promo": null,
           "currency": "EUR",
-          "vat": "nije navedeno",
+          "vat": "sa PDV",
           "subsidy_note": "nije navedeno",
           "price_includes_subsidy": null,
           "promo_note": "",
           "source_type": "official",
           "url": "https://www.mercedes-benz.rs/models/eqe-v295-806-2/",
-          "seen": "22.09.2026",
-          "note": "'Cena od' sa naslovne."
+          "seen": "24.10.2026",
+          "note": "'Cena od' sa naslovne. Do 22.09.2026: 63.942 €."
         },
         {
           "model": "EQE SUV",
           "version": "od",
           "battery_kwh": null,
           "range_wltp_km": null,
-          "price_regular": 80036,
+          "price_regular": 87068,
           "price_promo": null,
           "currency": "EUR",
-          "vat": "nije navedeno",
+          "vat": "sa PDV",
           "subsidy_note": "nije navedeno",
           "price_includes_subsidy": null,
           "promo_note": "",
           "source_type": "official",
           "url": "https://www.mercedes-benz.rs/models/eqe-suv-806-2/",
-          "seen": "22.09.2026",
-          "note": "'Cena od' sa naslovne."
+          "seen": "24.10.2026",
+          "note": "'Cena od' sa naslovne. Do 22.09.2026: 80.036 €."
         },
         {
           "model": "EQS limuzina",
           "version": "od",
           "battery_kwh": null,
           "range_wltp_km": null,
-          "price_regular": 91500,
+          "price_regular": 109217,
           "price_promo": null,
           "currency": "EUR",
-          "vat": "nije navedeno",
+          "vat": "sa PDV",
           "subsidy_note": "nije navedeno",
           "price_includes_subsidy": null,
           "promo_note": "",
           "source_type": "official",
           "url": "https://www.mercedes-benz.rs/models/eqs-v297-806-2/",
-          "seen": "22.09.2026",
-          "note": "'Cena od' sa naslovne."
+          "seen": "24.10.2026",
+          "note": "'Cena od' sa naslovne. Do 22.09.2026: 91.500 €."
         },
         {
           "model": "EQS SUV",
           "version": "od",
           "battery_kwh": null,
           "range_wltp_km": null,
-          "price_regular": 105863,
+          "price_regular": 110148,
           "price_promo": null,
           "currency": "EUR",
-          "vat": "nije navedeno",
+          "vat": "sa PDV",
           "subsidy_note": "nije navedeno",
           "price_includes_subsidy": null,
           "promo_note": "",
           "source_type": "official",
           "url": "https://www.mercedes-benz.rs/models/eqs-suv-x296-806-2/",
-          "seen": "22.09.2026",
-          "note": "'Cena od' sa naslovne."
+          "seen": "24.10.2026",
+          "note": "'Cena od' sa naslovne. Do 22.09.2026: 105.863 €."
         },
         {
           "model": "Električna G-Klasa (G 580 sa EQ tehnologijom)",
           "version": "od",
           "battery_kwh": null,
           "range_wltp_km": null,
-          "price_regular": 150960,
+          "price_regular": 153636,
           "price_promo": null,
           "currency": "EUR",
-          "vat": "nije navedeno",
+          "vat": "sa PDV",
           "subsidy_note": "nije navedeno",
           "price_includes_subsidy": null,
           "promo_note": "",
           "source_type": "official",
           "url": "https://www.mercedes-benz.rs/models/g-class-n465-24-1/",
-          "seen": "22.09.2026",
-          "note": "'Cena od' sa naslovne."
+          "seen": "24.10.2026",
+          "note": "'Cena od' sa naslovne. Do 22.09.2026: 150.960 €."
         },
         {
           "model": "Mercedes-Maybach EQS SUV",
           "version": "od",
           "battery_kwh": null,
           "range_wltp_km": null,
-          "price_regular": 186600,
+          "price_regular": 193200,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.mercedes-benz.rs/",
+          "seen": "24.10.2026",
+          "note": "'Cena od' sa naslovne. Do 22.09.2026: 186.600 €."
+        },
+        {
+          "model": "CLA (električni)",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
           "price_promo": null,
           "currency": "EUR",
           "vat": "nije navedeno",
@@ -1688,8 +1800,93 @@
           "promo_note": "",
           "source_type": "official",
           "url": "https://www.mercedes-benz.rs/",
-          "seen": "22.09.2026",
-          "note": "'Cena od' sa naslovne."
+          "seen": "24.10.2026",
+          "note": "Na naslovnoj bez cene."
+        },
+        {
+          "model": "CLA Shooting Brake (električni)",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.mercedes-benz.rs/",
+          "seen": "24.10.2026",
+          "note": "Na naslovnoj bez cene."
+        },
+        {
+          "model": "GLA (električni)",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.mercedes-benz.rs/",
+          "seen": "24.10.2026",
+          "note": "Na naslovnoj bez cene."
+        },
+        {
+          "model": "GLB (električni)",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.mercedes-benz.rs/",
+          "seen": "24.10.2026",
+          "note": "Na naslovnoj bez cene."
+        },
+        {
+          "model": "GLC (električni)",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.mercedes-benz.rs/",
+          "seen": "24.10.2026",
+          "note": "Na naslovnoj bez cene."
+        },
+        {
+          "model": "C-Klasa (električna)",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.mercedes-benz.rs/",
+          "seen": "24.10.2026",
+          "note": "Na naslovnoj bez cene."
         }
       ],
       "notes": "Cene 'Cena od … €' bez napomene o PDV-u. GLC sa EQ tehnologijom: 'Uskoro dostupan'; novi električni CLA bez cene (stranica CLA prikazuje samo benzinske verzije). PDF 'mb_cenovnik_avgust_2026_srb.pdf' nije mašinski čitljiv. Prodajni saloni: Emil Frey Auto Centar (Beograd), AK MikoM (Novi Sad), Jevtović Cars (Čačak), Biševac (Novi Pazar), Kemoimpex Auto (Niš)."
@@ -1783,7 +1980,7 @@
     },
     {
       "brand": "Mazda",
-      "importer": "nije navedeno na mazda.rs",
+      "importer": "Grand Motors d.o.o. — prema svom profilu ovlašćeni uvoznik i serviser Ford i Mazda",
       "site": "https://www.mazda.rs/",
       "salons": [],
       "salons_url": "https://www.mazda.rs/nadji-partnera",
@@ -1827,7 +2024,7 @@
     },
     {
       "brand": "JAC",
-      "importer": "nije navedeno (prodavac: Mašinopromet d.o.o.; kontakt mpgroup.rs)",
+      "importer": "Mašinopromet d.o.o. — zvanični generalni zastupnik i uvoznik od 21.10.2026 (Autoblog, 20.10.2026)",
       "site": "https://jacmotors.rs/",
       "salons": [
         "Beograd"
@@ -1933,24 +2130,573 @@
         }
       ],
       "notes": "PDV se ne pominje."
+    },
+    {
+      "brand": "BAIC",
+      "importer": "CEHV d.o.o. (BAIC Serbia, zvanični distributer BAIC INTL)",
+      "site": "https://www.baic-auto.rs/",
+      "salons": [
+        "Beograd",
+        "Novi Sad",
+        "Niš"
+      ],
+      "salons_url": "https://www.baic-auto.rs/pages/salon",
+      "models": [
+        {
+          "model": "EU5",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 27600,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.baic-auto.rs/products/eu5",
+          "seen": "24.10.2026",
+          "note": "Kategorija EV; PDV i subvencija se ne pominju."
+        }
+      ],
+      "notes": "BJ30e nije potpuno električan (nije uvršten)."
+    },
+    {
+      "brand": "Changan",
+      "importer": "Crossroad Asia (OMR Grupa) — ovlašćeni uvoznik prema B92, 20.11.2025",
+      "site": "https://changanbalkans.com/rs",
+      "salons": [
+        "Beograd",
+        "Novi Sad",
+        "Niš",
+        "Kragujevac"
+      ],
+      "salons_url": "https://changanbalkans.com/rs/dilerska-mreza/",
+      "models": [
+        {
+          "model": "Deepal S05",
+          "version": "RWD Pro, 68,8 kWh",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 33490,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "pricelist_pdf",
+          "url": "https://changanbalkans.com/rs/wp-content/uploads/2026/09/Deepal-S05-BEV-CENOVNIK-radna-verzija.pdf",
+          "seen": "24.10.2026",
+          "note": "Cenovnik važi od 01.10.2026 ('radna verzija'); RWD Max 35.490 €, AWD Max 37.990 €."
+        },
+        {
+          "model": "Deepal S07",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://changanbalkans.com/rs",
+          "seen": "24.10.2026",
+          "note": "Na zvaničnom sajtu bez cene."
+        }
+      ],
+      "notes": "Deepal S05 PHEV je najavljen (nije uvršten)."
+    },
+    {
+      "brand": "CUPRA",
+      "importer": "Porsche SCG d.o.o. (generalni uvoznik)",
+      "site": "https://www.cupraofficial.rs/",
+      "salons": [],
+      "salons_url": "",
+      "models": [
+        {
+          "model": "Raval",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 29990,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.cupraofficial.rs/raval",
+          "seen": "24.10.2026",
+          "note": "Sajt: preporučene maloprodajne cene sa PDV-om; baterija 52 kWh od 20. nedelje 2026."
+        },
+        {
+          "model": "Born",
+          "version": "ograničena serija Born Alpha",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.cupraofficial.rs/cupra-born",
+          "seen": "24.10.2026",
+          "note": "Stranica bez cene."
+        }
+      ],
+      "notes": "Tavascan: 'trenutno nije dostupan za prodaju i čeka na homologaciju' (24.10.2026)."
+    },
+    {
+      "brand": "Dongfeng",
+      "importer": "China Motor Company (zvanični uvoznik Dongfeng, Forthing, M-Hero, Voyah, DFSK)",
+      "site": "https://chinamotor.rs/",
+      "salons": [
+        "Beograd",
+        "Novi Sad",
+        "Niš",
+        "Kragujevac",
+        "Subotica"
+      ],
+      "salons_url": "https://chinamotor.rs/contact-us/",
+      "models": [
+        {
+          "model": "Box",
+          "version": "bela boja",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 28178,
+          "price_promo": 21880,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "'SPECIJALNE CENE sa PDV-om'; druge boje +500 €",
+          "source_type": "official",
+          "url": "https://chinamotor.rs/dongfeng-box-bs/",
+          "seen": "24.10.2026",
+          "note": "Nammi Box."
+        },
+        {
+          "model": "E70",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 29654,
+          "price_promo": 21000,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "specijalna cena sa zvezdicom; objašnjenje nije čitljivo",
+          "source_type": "official",
+          "url": "https://chinamotor.rs/dongfeng-e70/",
+          "seen": "24.10.2026",
+          "note": "Limuzina, do 420 km WLTP."
+        },
+        {
+          "model": "Forthing S7 EV",
+          "version": "bela boja",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 33000,
+          "price_promo": 29990,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "specijalna cena",
+          "source_type": "official",
+          "url": "https://chinamotor.rs/forthing-s7-bs/",
+          "seen": "24.10.2026",
+          "note": "56,8 kWh LFP, 425 km WLTP (cenovnik)."
+        },
+        {
+          "model": "Forthing Friday",
+          "version": "Friday 400",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 34000,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "pricelist_pdf",
+          "url": "https://chinamotor.rs/wp-content/uploads/2026/07/Forthing_Friday_Price_list-1.pdf",
+          "seen": "24.10.2026",
+          "note": "'Standardna cena sa PDV-om'; datum važenja nije naveden; 64,4 kWh, 400 km WLTP."
+        },
+        {
+          "model": "M-Hero 917",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://chinamotor.rs/",
+          "seen": "24.10.2026",
+          "note": "Na sajtu bez cene."
+        }
+      ],
+      "notes": "Forthing S7 REEV (sa produžavačem dometa) nije potpuno električan; Aeolus modeli trenutno nisu u ponudi."
+    },
+    {
+      "brand": "Jeep",
+      "importer": "Crossroad Adria d.o.o. (ovlašćeni uvoznik i distributer)",
+      "site": "https://www.jeep.rs/",
+      "salons": [
+        "Beograd",
+        "Novi Sad",
+        "Čačak",
+        "Kragujevac"
+      ],
+      "salons_url": "https://www.jeep.rs/spisak-dilera",
+      "models": [
+        {
+          "model": "Avenger Electric",
+          "version": "Longitude, 54 kWh",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 38500,
+          "price_promo": 33990,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "akcijska cena; cenovnik važi od 01.08.2026; plaćanje u dinarima po srednjem kursu NBS",
+          "source_type": "pricelist_pdf",
+          "url": "https://www.jeep.rs/content/dam/jeep/rs/price-list/Cenovniik_Jeep_Avenger_MY26.pdf",
+          "seen": "24.10.2026",
+          "note": ""
+        },
+        {
+          "model": "Compass Electric",
+          "version": "Altitude",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 47990,
+          "price_promo": 46990,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "akcijska cena; cenovnik važi od 01.10.2026",
+          "source_type": "pricelist_pdf",
+          "url": "https://www.jeep.rs/content/dam/jeep/rs/brochure/Cenovnik-Novi-Jeep-Compass-MY26.pdf",
+          "seen": "24.10.2026",
+          "note": ""
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "brand": "Lexus",
+      "importer": "nije naveden na lexus.rs (cenovnici na serveru Toyota Europe)",
+      "site": "https://www.lexus.rs/",
+      "salons": [
+        "Beograd"
+      ],
+      "salons_url": "https://www.lexus.rs/contact/dealers/lexus-partneri",
+      "models": [
+        {
+          "model": "RZ",
+          "version": "Executive FWD",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 62900,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": false,
+          "promo_note": "",
+          "source_type": "pricelist_pdf",
+          "url": "https://scene7.toyota.eu/is/content/toyotaeurope/lexus/nmsc/serbia/cross-model/cenovnici/29-9-26/01_RZ_MY26.pdf",
+          "seen": "24.10.2026",
+          "note": "Važi od 01.09.2026; plaćanje u dinarima po srednjem kursu NBS."
+        },
+        {
+          "model": "ES (električni)",
+          "version": "Executive FWD, 77 kWh",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 68900,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": false,
+          "promo_note": "",
+          "source_type": "pricelist_pdf",
+          "url": "https://scene7.toyota.eu/is/content/toyotaeurope/lexus/nmsc/serbia/cross-model/cenovnici/29-9-26/01_ES_MY26_EV.pdf",
+          "seen": "24.10.2026",
+          "note": "Važi od 01.09.2026."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "brand": "Lynk & Co",
+      "importer": "VCAG d.o.o., Beograd-Zemun (ovlašćeni distributer)",
+      "site": "https://www.lynkco-see.com/rs",
+      "salons": [
+        "Beograd"
+      ],
+      "salons_url": "https://www.lynkco-see.com/rs/zastupnici",
+      "models": [
+        {
+          "model": "02",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 26990,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "sa PDV",
+          "subsidy_note": "'uključuje popust u iznosu od 4.000 € i subvenciju za električna vozila u iznosu od 5.000 €'",
+          "price_includes_subsidy": true,
+          "promo_note": "popusti važe 'do isteka zaliha, odnosno do opoziva'",
+          "source_type": "official",
+          "url": "https://www.lynkco-see.com/rs/vozila/02",
+          "seen": "24.10.2026",
+          "note": "Do 445 km (ciklus nije naveden)."
+        }
+      ],
+      "notes": "01 i 08 su plug-in hibridi (nisu uvršteni)."
+    },
+    {
+      "brand": "Maserati",
+      "importer": "Delta Automoto d.o.o., Beograd (ovlašćeni prodavac)",
+      "site": "https://www.maserati.com/rs/sr",
+      "salons": [
+        "Beograd"
+      ],
+      "salons_url": "https://www.maserati.com/rs/sr",
+      "models": [
+        {
+          "model": "GranTurismo Folgore",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.maserati.com/rs/sr/dealers/delta-automoto/models/granturismo",
+          "seen": "24.10.2026",
+          "note": ""
+        },
+        {
+          "model": "GranCabrio Folgore",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.maserati.com/rs/sr/dealers/delta-automoto/models/grancabrio",
+          "seen": "24.10.2026",
+          "note": ""
+        },
+        {
+          "model": "Grecale Folgore",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://www.maserati.com/rs/sr/dealers/delta-automoto/models/grecale",
+          "seen": "24.10.2026",
+          "note": ""
+        }
+      ],
+      "notes": "Folgore verzije se pominju na srpskim stranicama modela; polja za cenu su prazna."
+    },
+    {
+      "brand": "Porsche",
+      "importer": "Porsche SCG d.o.o. (generalni uvoznik); prodaje Porsche Centar Beograd",
+      "site": "https://finder.porsche.com/rs/sr-RS",
+      "salons": [
+        "Beograd"
+      ],
+      "salons_url": "https://dealer.porsche.com/rs/beograd/sr-RS",
+      "models": [
+        {
+          "model": "Taycan",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://finder.porsche.com/rs/sr-RS/search/taycan?condition=new",
+          "seen": "24.10.2026",
+          "note": "Cenovnik nije objavljen; nova vozila na lageru od 144.788 € (Taycan 4 Black Edition), PDV nije naveden."
+        },
+        {
+          "model": "Macan Electric",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://finder.porsche.com/rs/sr-RS/search/macan?condition=new",
+          "seen": "24.10.2026",
+          "note": "Cenovnik nije objavljen; nova vozila na lageru od 113.913 € (Macan 4), PDV nije naveden."
+        }
+      ],
+      "notes": "porsche.com/serbia ne radi (24.10.2026); ponuda je na Porsche Finderu."
+    },
+    {
+      "brand": "Suzuki",
+      "importer": "Euro Sumar d.o.o. (zvanični uvoznik)",
+      "site": "https://suzuki-srbija.rs/",
+      "salons": [
+        "Beograd",
+        "Niš",
+        "Čačak"
+      ],
+      "salons_url": "https://suzuki-srbija.rs/prodajna-mreza",
+      "models": [
+        {
+          "model": "e Vitara",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://suzuki-srbija.rs/automobili/evitara",
+          "seen": "24.10.2026",
+          "note": "49 ili 61 kWh, do 428 km WLTP; dugme za cenovnik je prazno."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "brand": "Voyah",
+      "importer": "China Motor Company (zvanični uvoznik)",
+      "site": "https://chinamotor.rs/voyah-free-bs/",
+      "salons": [],
+      "salons_url": "https://chinamotor.rs/contact-us/",
+      "models": [
+        {
+          "model": "Free",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": null,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "official",
+          "url": "https://chinamotor.rs/voyah-free-bs/",
+          "seen": "24.10.2026",
+          "note": "'luksuzni električni SUV', do 500 km; bez cene."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "brand": "GAC",
+      "importer": "SEEAG Group (South East Europe Automotive Group) — prema medijima",
+      "site": "",
+      "salons": [],
+      "salons_url": "",
+      "models": [
+        {
+          "model": "AION V",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 35999,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "media",
+          "url": "https://www.magazinauto.com/gac-motor-zvanicno-na-srpskom-trzistu/",
+          "seen": "24.10.2026",
+          "note": "Magazin Auto, 09.10.2026; 75,3 kWh, do 510 km WLTP (B92)."
+        },
+        {
+          "model": "AION UT",
+          "version": "",
+          "battery_kwh": null,
+          "range_wltp_km": null,
+          "price_regular": 26999,
+          "price_promo": null,
+          "currency": "EUR",
+          "vat": "nije navedeno",
+          "subsidy_note": "nije navedeno",
+          "price_includes_subsidy": null,
+          "promo_note": "",
+          "source_type": "media",
+          "url": "https://www.magazinauto.com/gac-motor-zvanicno-na-srpskom-trzistu/",
+          "seen": "24.10.2026",
+          "note": "Magazin Auto, 09.10.2026."
+        }
+      ],
+      "notes": "Zvanični sajt za Srbiju i saloni nisu pronađeni (24.10.2026)."
     }
   ],
   "not_found": [
-    "Cupra: nema BEV u prodaji — Tavascan 'trenutno nije dostupan za prodaju i čeka na homologaciju' (https://www.cupraofficial.rs/cupra-tavascan/cupra-tavascan), Born se ne nudi; cupra.rs ne postoji (zvanični sajt cupraofficial.rs, uvoznik Porsche SCG)",
-    "Nissan: nissan.rs nema stranicu nijednog BEV modela (Leaf/Ariya samo istorijski pomenuti na https://www.nissan.rs/dozivite-nissan/elektrifikovana-vozila.html); nema cena",
-    "Suzuki: suzuki.rs nije dostupan (konekcija neuspešna 22.09.2026) — e Vitara nije proverena (nije dostupno)",
-    "Porsche: porsche.com/serbia vraća 404, porsche.rs nedostupan — Taycan / Macan Electric nisu provereni (nije dostupno)",
-    "Lynk & Co: lynkco.rs i lynkandco.rs ne postoje; lynkco.com/sr-rs renderuje JavaScript — modeli i cene nisu dostupni",
-    "Changan / Deepal: changan.rs 'disabled by server administrator' (privremeno); deepal.rs, changanauto.rs, changan.co.rs ne postoje — nije dostupno",
-    "Dongfeng / Voyah: dongfeng.rs, dongfeng-auto.rs, voyah.rs ne postoje, chinamotor.rs timeout — zvanični sajt nije pronađen",
-    "BAIC: baic.rs je parkiran domen (Loopia) — zvanični sajt nije pronađen",
-    "GWM / ORA: gwm.rs ne postoji — zvanični sajt nije pronađen",
-    "Chery / Omoda / Jaecoo: chery.rs vraća grešku 500, omoda.rs ne postoji — BEV u zvaničnoj prodaji nije potvrđen",
-    "Xpeng: xpeng.com/rs vraća 404 — nema zvanične prodaje u Srbiji",
-    "Zeekr: zeekr.eu/sr-rs vraća 404 — zvanična prodaja u Srbiji nije potvrđena",
-    "Polestar: polestar.com/rs vraća 404 — nema zvanične prodaje u Srbiji",
-    "Smart: smart.com/rs preusmerava na global.smart.com — nema srpskog sajta ni uvoznika",
-    "Tesla: nema zvaničnog uvoznika ni prodajnog/servisnog centra u Srbiji (https://www.tesla.com/findus/list/stores/Serbia — prazno); 2 Supercharger lokacije (Beograd, Aleksinac: https://www.tesla.com/findus/list/superchargers/Serbia); vozila stižu isključivo sivim/individualnim uvozom"
+    "Proveravano 24.10.2026. Uvoznik postoji, ali nema potpuno električnog putničkog automobila: Nissan (Renault Nissan Srbija), Chery (Grand Motors; HEV/PHEV), GWM (CENTAR S; HEV/PHEV, bez ORA), DFSK (China Motor Company; PHEV), Land Rover (British Motors).",
+    "Nije potvrđeno: KGM (AutoWallis od 03.2025, Torres EVX; stranice kgmsrbija.rs ne rade), Alfa Romeo, DS, Honda, Subaru, Jaguar (sajtovi blokiraju automatsko čitanje — proveriti ručno).",
+    "Bez zvaničnog prisustva: Tesla, Polestar, Xpeng, Smart, Zeekr (Sajam 03.2026), Denza (prikaz 06.2026), Omoda i Jaecoo (najavljen ulazak, uvoznik nije imenovan).",
+    "Samo električna dostavna vozila: Maxus (SDT Renting), Foton (Foton Serbia – Ecofleet), Farizon (Delta Auto Grupa), SWM (X30L EV)."
   ],
   "sources_extra": [
     {
@@ -1973,5 +2719,6 @@
       "url": "https://www.automagazin.rs/vesti/21624/leapmotor-je-stigao-u-srbiju",
       "date": "18.03.2026"
     }
-  ]
+  ],
+  "updated": "24.10.2026"
 }

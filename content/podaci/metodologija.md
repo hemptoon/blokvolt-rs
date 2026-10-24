@@ -58,6 +58,20 @@ Mreže ne objavljuju cenovnike na svojim sajtovima, pa se cena vidi tek u aplika
 
 Na [mapi servisa](/servisi/) su ovlašćeni servisi sa spiskova uvoznika, za marke koje u Srbiji prodaju električne automobile, i nezavisni servisi koji na svom sajtu ili svojoj stranici navode da rade električne automobile. Uz svaki servis su izvor i datum provere. Servisi nemaju ocene ni redosled po kvalitetu. Tačka na mapi je sa sajta uvoznika ili servisa ili je postavljena po adresi iz OpenStreetMap-a, nikad sa Google mapa. Spisak se proverava kvartalno, zajedno sa firmama.
 
+## Električni automobili {#automobili}
+
+Spisak marki je sastavljen sa zvaničnih srpskih sajtova marki i uvoznika, a za marku bez sajta za Srbiju — iz srpskih medija, uz datum provere. Marka je na spisku kada zvanični uvoznik ili distributer u Srbiji nudi bar jedan potpuno električni putnički automobil; najave su posebno označene. Za svaku marku važe ista polja — uvoznik, saloni, modeli i cena od — a marke su poređane abecedno.
+
+<details markdown="1">
+<summary>Detalji o markama i polovnim automobilima</summary>
+
+- Cene su iz cenovnika i sa stranica modela kod uvoznika i proveravaju se jednom mesečno, kao na stranici [cene električnih automobila](/podaci/cene-elektricnih-automobila/). Kad uvoznik ne objavljuje cenu, uzima se cena sa sajta ovlašćenog prodavca; cena iz medija stoji samo uz model, a ne u tabeli cena.
+- Marka čija ponuda nije mogla da se proveri ne ulazi na spisak dok se ponuda ne potvrdi; takve marke su navedene ispod spiska.
+- Logotipi marki se ne prikazuju; fotografije modela su sa Wikimedia Commonsa, pod slobodnim licencama, sa autorima.
+- Oglasnici, programi polovnih vozila i nezavisni uvoznici na stranici [polovni i uvezeni](/elektricni-automobili/polovni/) navedeni su po podacima sa njihovih sajtova, svi koje je provera našla. Njihove ponude se ne ocenjuju, a mesto na spisku se ne plaća.
+
+</details>
+
 ## Vesti {#vesti}
 
 Vesti prate zvanične izvore i pouzdane medije: ministarstva, Službeni glasnik, EPS, JP „Putevi Srbije“, mreže punjača i uvoznike. Svaka vest ima datum i link na izvor. Objavljuje se samo ono što piše u izvoru, a najave i predlozi su označeni kao takvi.

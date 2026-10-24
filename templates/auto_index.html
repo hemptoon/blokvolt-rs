@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import pagehead, sources as src_block %}
+{% from '_icons.html' import ic %}
+{# /elektricni-automobili/ — every brand with official sales of electric cars in Serbia (docs/RUNBOOK.md 3.32).
+   Same columns for every brand, A–Z; data: content/data/automobili.json + content/data/ev-modeli.json. #}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "CollectionPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "dateModified": "{{ checked|iso }}", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "ItemList", "name": "Marke električnih automobila sa zvaničnom prodajom u Srbiji", "numberOfItems": {{ official|length }}, "itemListElement": [{% for b in official %}{"@type": "ListItem", "position": {{ loop.index }}, "url": "{{ SITE }}{{ b.url }}", "name": {{ b.name|tojson }}}{{ ',' if not loop.last }}{% endfor %}]},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Električni automobili", "item": "{{ SITE }}{{ canon }}"}]}
+ ]
+}</script>{% endblock %}
+{% block pagekey %} data-page="auto"{% endblock %}
+{% block pagehead %}{% call pagehead(h1, lead) %}<div class="ph-actions"><a class="btn dark" href="#marke">{{ ic('car') }}Sve marke</a><a class="btn" href="/elektricni-automobili/polovni/">{{ ic('coins') }}Polovni i uvoz</a><a class="btn" href="/podaci/cene-elektricnih-automobila/">{{ ic('chart') }}Cene modela</a></div>{% endcall %}{% endblock %}
+{% block content %}
+<div class="stats">
+<div class="stat"><b>{{ official|length }}</b><span>{{ official|length|pword('marka', 'marke', 'marki') }} sa zvaničnom prodajom električnih automobila</span></div>
+<div class="stat"><b>{{ cheapest.price }}</b><span>najniža cena novog električnog automobila kod uvoznika: <span translate="no">{{ cheapest.name }}</span></span></div>
+<div class="stat"><b>{{ reg.b }}</b><span>{{ reg.short }}</span></div>
+</div>
+
+<div class="sec" id="marke"><div class="sec-head"><h2>Marke, uvoznici i saloni</h2><a href="/podaci/cene-elektricnih-automobila/">Cene svih modela →</a></div>
+<p class="note">Abecedno. „Cena od“ je najniža javna cena električnog modela kod uvoznika, pre subvencije. Saloni: gradovi sa salonom ili ovlašćenim prodavcem.</p>
+<div class="tw stack am"><table><thead><tr><th>Marka</th><th>Uvoznik</th><th class="num">Modeli</th><th class="num">Cena od</th><th>Saloni</th></tr></thead><tbody>
+{% for b in official %}<tr id="m-{{ b.slug }}"><td data-label="Marka"><a class="am-b" href="{{ b.url }}"><span class="lg mono am-lg" aria-hidden="true" translate="no">{{ b.name|mono }}</span><span><b translate="no">{{ b.name }}</b>{% if b.models_short %}<small translate="no">{{ b.models_short }}</small>{% endif %}</span></a></td><td data-label="Uvoznik">{% if b.importer %}<span translate="no">{{ b.importer_short }}</span>{% else %}{{ b.importer_short }}{% endif %}</td><td data-label="Modeli" class="num">{{ b.n_models }}</td><td data-label="Cena od" class="num">{% if b.min %}<b>{{ b.min_txt }}</b>{% else %}<span class="muted">nije objavljena</span>{% endif %}</td><td data-label="Saloni">{% if b.cities %}{{ b.cities_short }}{% else %}<span class="muted">{{ b.no_cities }}</span>{% endif %}</td></tr>
+{% endfor %}</tbody></table></div>
+<p class="note">Provereno {{ checked }}. Cene se proveravaju jednom mesečno, sa izvorom i datumom: <a class="lnk" href="/podaci/cene-elektricnih-automobila/">cene električnih automobila</a>. Marka ne plaća mesto na spisku, a redosled je abecedni.</p>
+{% if texts.no_bev %}<p class="note">{{ texts.no_bev }}</p>{% endif %}{% if texts.unverified %}<p class="note">{{ texts.unverified }}</p>{% endif %}
+</div>
+
+{% if lcv %}<div class="sec" id="dostavna"><details><summary>Marke sa samo električnim dostavnim vozilima ({{ lcv|length }})</summary>
+<div class="tw stack"><table><thead><tr><th>Marka</th><th>Uvoznik</th><th>Električni modeli</th></tr></thead><tbody>
+{% for b in lcv %}<tr><td data-label="Marka"><b translate="no">{{ b.name }}</b></td><td data-label="Uvoznik">{% if b.importer_short.startswith('nije') %}{{ b.importer_short }}{% else %}<span translate="no">{{ b.importer_short }}</span>{% endif %}{% if b.site %}<small><a href="{{ b.site }}" rel="noopener nofollow" translate="no">{{ b.domain }}</a></small>{% endif %}</td><td data-label="Električni modeli"><span translate="no">{{ b.models_short }}</span></td></tr>
+{% endfor %}</tbody></table></div>
+<p class="note">Teretna i laka dostavna vozila (kategorija N1). Električne kombije prodaju i mnoge marke sa spiska iznad.</p>
+</details></div>{% endif %}
+
+{% if announced %}<div class="sec" id="najave"><div class="sec-head"><h2>Najavljene marke</h2></div>
+<div class="rows">{% for b in announced %}<a class="row" href="{{ b.url }}"><span class="lg mono" aria-hidden="true" translate="no">{{ b.name|mono }}</span><div><h3><span translate="no">{{ b.name }}</span> <span class="badge">Najava</span></h3><div class="sub">{{ b.row_sub }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
+</div>{% endif %}
+
+<div class="sec" id="bez-uvoznika"><div class="sec-head"><h2>Bez zvaničnog uvoznika</h2></div>
+<div class="rows">{% for b in noimp %}{% if b.page %}<a class="row" href="{{ b.url }}"><span class="lg mono" aria-hidden="true" translate="no">{{ b.name|mono }}</span><div><h3 translate="no">{{ b.name }}</h3><div class="sub">{{ b.row_sub }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% else %}<div class="row"><span class="lg mono" aria-hidden="true" translate="no">{{ b.name|mono }}</span><div><h3 translate="no">{{ b.name }}</h3><div class="sub">{{ b.row_sub }}</div></div><span></span></div>{% endif %}{% endfor %}</div>
+<p class="note">Ove marke se u Srbiji kupuju samo uvozom — samostalno ili preko nezavisnog uvoznika: <a class="lnk" href="/elektricni-automobili/polovni/#uvoz">kako se uvozi</a>.</p>
+</div>
+
+<div class="sec" id="polovni"><div class="sec-head"><h2>Polovni i uvezeni</h2><a href="/elektricni-automobili/polovni/">Sve o kupovini polovnog →</a></div>
+<div class="tiles">
+<a class="tile" href="/elektricni-automobili/polovni/#oglasi"><span class="ic">{{ ic('search') }}</span><h3>Oglasi u Srbiji</h3><p>{{ used.ads_line }}</p></a>
+<a class="tile" href="/elektricni-automobili/polovni/#diler"><span class="ic">{{ ic('shield') }}</span><h3>Polovni kod ovlašćenih prodavaca</h3><p>Automobili koje prodaju dileri marki, često posle provere i sa garancijom.</p></a>
+<a class="tile" href="/elektricni-automobili/polovni/#uvoz"><span class="ic">{{ ic('globe2') }}</span><h3>Uvoz iz EU</h3><p>Carina iz EU 0 % uz dokaz o poreklu, PDV 20 %, pa ispitivanje vozila i registracija.</p></a>
+<a class="tile" href="/elektricni-automobili/polovni/#uvoznici"><span class="ic">{{ ic('firm') }}</span><h3>Nezavisni uvoznici</h3><p>Firme koje dovoze Teslu i druge marke bez zvaničnog uvoznika.</p></a>
+<a class="tile" href="/elektricni-automobili/polovni/#lizing"><span class="ic">{{ ic('coins') }}</span><h3>Lizing i licitacije</h3><p>Vozila iz povraćaja lizinga i javne prodaje.</p></a>
+<a class="tile" href="/elektricni-automobili/polovni/#provera"><span class="ic">{{ ic('check') }}</span><h3>Šta proveriti</h3><p>Baterija, priključak, garancija i servis u Srbiji.</p></a>
+</div>
+</div>
+
+<div class="sec" id="pre-kupovine"><div class="sec-head"><h2>Pre kupovine</h2><a href="/vodici/">Svi vodiči →</a></div>
+<div class="rows">
+{% for it in before %}<a class="row" href="{{ it.href }}"><span class="lg mono" aria-hidden="true">{{ ic(it.icon) }}</span><div><h3>{{ it.name }}</h3><div class="sub">{{ it.desc }}</div></div><span class="chev">{{ ic('chev') }}</span></a>
+{% endfor %}</div>
+</div>
+
+<div class="sec faq" id="pitanja"><div class="sec-head"><h2>Pitanja</h2></div>
+{% for q in faq %}<details><summary>{{ q.q }}</summary>{{ q.a|safe }}</details>
+{% endfor %}</div>
+
+<div class="sec">
+{{ src_block(sources) }}
+<p class="upd">Provereno {{ checked }} · sledeća provera {{ next_check }} · <a href="/ispravka/">Prijavite grešku</a></p>
+</div>
+<p class="claim-min"><span>Predstavljate uvoznika?</span> <a href="/za-firme/">Pošaljite podatke</a></p>
+{% endblock %}
