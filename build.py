@@ -1597,6 +1597,91 @@ render('mapa.html', '/mapa/', M=M, PRICE_SUMMARY=PRICE_SUMMARY, PRICE_DATE=PRICE
        description=f"{MAP['n']} javnih punjača u Srbiji na mapi: mreža, snaga, priključci i cena punjenja. Charge&GO, Orion eMobility, besplatni punjači na autoputevima.")
 add_url('/mapa/', '0.9')
 
+# ---------------------------------------------------------------- service map (/servisi/), docs/RUNBOOK.md 3.31
+# content/servisi/servisi.json: the authorized services of the brands that sell electric cars (the importers' own lists) and
+# the independent services that say on their own sites that they work on electric cars. Every place has a source and a date;
+# the point is the source's own pin or the address placed with OpenStreetMap's Nominatim (pos: 'src' / 'osm'). Never from
+# Google Maps or another map. The build checks the file, writes /assets/servisi/servisi.json and the page.
+SRV_SVC = ['dijagnostika_baterije', 'popravka_baterije', 'bms', 'obc', 'pogon', 'softver', 'klima', 'redovan_servis', 'limarija',
+           'gume', 'mobilni_servis', 'preuzimanje', 'provera_polovnog']
+SRV = json.loads((ROOT / 'content' / 'servisi' / 'servisi.json').read_text(encoding='utf-8'))
+
+
+def _srv_check(src):
+    ids, out = set(), []
+    for p in src['places']:
+        w = f"content/servisi/servisi.json: {p.get('id')}"
+        assert re.fullmatch(r'sv-[a-z0-9-]{2,60}', p.get('id') or ''), w + ': id must be sv-<slug>'
+        assert p['id'] not in ids, w + ': duplicate id'
+        ids.add(p['id'])
+        assert p.get('t') in ('o', 'n'), w + ': t must be o (ovlašćeni) or n (nezavisni)'
+        for k in ('n', 'g', 'a'):
+            assert (p.get(k) or '').strip(), w + f': {k} is empty'
+        assert p.get('pos') in ('src', 'osm', 'none'), w + ': pos must be src, osm or none (address not found: no point, list only)'
+        if p['pos'] == 'none':
+            assert p.get('lat') is None and p.get('lon') is None, w + ': pos none has no lat/lon'
+        else:
+            assert 41.8 < p['lat'] < 46.25 and 18.8 < p['lon'] < 23.1, w + ': the point is not in Serbia'
+        assert p.get('src') and all(x.get('u', '').startswith('http') and x.get('l') and re.fullmatch(r'\d{2}\.\d{2}\.\d{4}', x.get('d', '')) for x in p['src']), w + ': src needs l, u and d (DD.MM.YYYY)'
+        assert all(re.search(r'google\.|goo\.gl|plugshare', x['u']) is None for x in p['src']), w + ': Google Maps / PlugShare are never a source'
+        if p['t'] == 'o':
+            assert p.get('b') and all(b in src['brands'] for b in p['b']), w + ': b must name brands from "brands"'
+        assert all(s in SRV_SVC for s in p.get('s', [])), w + ': unknown service code'
+        assert p.get('evs') in (None, 'u', 's') and (not p.get('ev') or p['t'] == 'n' or p.get('evs')), w + ': evs (who says ev) must be u or s'
+        out.append({k: p[k] for k in ('id', 'n', 't', 'b', 'm', 's', 'g', 'ar', 'a', 'tel', 'tel2', 'web', 'oh', 'lat', 'lon', 'ev', 'evs', 'src', 'pos') if p.get(k) not in (None, '', [])})
+    return out
+
+
+SRV_P = _srv_check(SRV)
+SRV_BR = {b: {k: v for k, v in x.items() if k in ('name', 'ev', 'u')} for b, x in SRV['brands'].items()}
+(DIST / 'assets' / 'servisi').mkdir(parents=True, exist_ok=True)
+(DIST / 'assets' / 'servisi' / 'servisi.json').write_text(json.dumps({'checked': SRV['checked'], 'brands': SRV_BR, 'p': SRV_P},
+                                                                   ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+SRV_T = {
+    'count_all': '{n} servisa', 'count': '{n} od {all} servisa', 'in_view': '{n} servisa u ovom delu mape', 'all_serbia': 'Cela Srbija',
+    'sorted_near': 'najbliži prvi', 'none': 'Nema servisa za ovaj izbor.', 'more': 'Prikaži još {n}', 'load_err': 'Spisak servisa trenutno ne može da se učita. Osvežite stranicu.',
+    'no_location': 'Lokacija nije dostupna. Dozvolite je u pregledaču ili upišite grad u pretragu.',
+    't_o': 'Ovlašćeni servis', 't_n': 'Nezavisni servis za električne automobile', 'tag_o': 'Ovlašćeni', 'tag_n': 'Nezavisni',
+    'for_brands': 'Ovlašćeni servis za', 'ev_models': 'Električni modeli u Srbiji', 'ev_work': 'Električni automobili',
+    'imp_says': 'Uvoznik navodi', 'firm_says': 'Servis navodi',
+    'ev_none': 'Uvoznik ne navodi posebno da li ovaj servis radi popravke visokog napona. Pitajte servis pre dolaska.',
+    'services': 'Radovi koje servis navodi', 'makes': 'Marke koje servis navodi', 'not_said': 'Ne pominje se', 'hours': 'Radno vreme',
+    'call': 'Pozovi', 'navigate': 'Navigacija do servisa', 'nav_in': 'Otvori u', 'site': 'Sajt servisa', 'share': 'Podeli',
+    'copied': 'Link je kopiran', 'report': 'Prijavi grešku', 'data': 'Izvor', 'checked': 'provereno {d}', 'close': 'Zatvori',
+    'pos_osm': 'Tačka je postavljena po adresi (OpenStreetMap).', 'net_of': 'Mreža servisa marke',
+    'pos_none': 'Adresa nije pronađena u OpenStreetMap-u, pa servis nije na mapi — samo na spisku.', 'find_addr': 'Potraži adresu na mapi',
+    'same_spot': 'Na istoj lokaciji', 'tel2': 'Drugi broj',
+    's_dijagnostika_baterije': 'Dijagnostika baterije', 's_popravka_baterije': 'Popravka baterije', 's_bms': 'BMS i balansiranje ćelija',
+    's_obc': 'Punjač u vozilu (OBC)', 's_pogon': 'Motor i invertor', 's_softver': 'Softver i kodiranje', 's_klima': 'Klima i toplotna pumpa',
+    's_redovan_servis': 'Redovan servis', 's_limarija': 'Limarija', 's_gume': 'Gume', 's_mobilni_servis': 'Dolazi na adresu',
+    's_preuzimanje': 'Preuzima vozilo', 's_provera_polovnog': 'Provera pred kupovinu',
+}
+_stx = set()
+for _p in SRV_P:
+    _stx.update(x for x in (_p.get('ev'), _p.get('oh')) if x)
+    _stx.update(x['l'] for x in _p['src'] if re.search('[a-zčćžšđ]{3}', x['l'].lower()) and not re.fullmatch(r'[a-z0-9.-]+\.[a-z]{2,}', x['l']))
+for _x in sorted(_stx):
+    SRV_T['tx:' + _x] = _x
+_by_city = {}
+for _p in sorted(SRV_P, key=lambda p: (p['n'].lower(), p['id'])):
+    _by_city.setdefault(_p['g'], []).append({'id': _p['id'], 'n': _p['n'], 't': _p['t'], 'tel': _p.get('tel', ''),
+                                             'addr': ', '.join(x for x in (_p['a'], _p.get('ar') if _p.get('ar') != _p['g'] else '') if x),
+                                             'brands': ', '.join(_p.get('b') or _p.get('m') or [])})
+S = {
+    'n': len(SRV_P), 'no': sum(1 for p in SRV_P if p['t'] == 'o'), 'nn': sum(1 for p in SRV_P if p['t'] == 'n'),
+    'checked': SRV['checked'], 'iso': iso(SRV['checked']),
+    'cities': [{'name': c, 'rows': v} for c, v in sorted(_by_city.items(), key=lambda kv: (-len(kv[1]), kv[0]))],
+    'cfg': json.dumps({'style': 'https://tiles.openfreemap.org/styles/positron', 'font': ['Noto Sans Bold'], 'center': [20.9, 44.1], 'zoom': 6.3,
+                       'data': '/assets/servisi/servisi.json?v=' + _ver(DIST / 'assets' / 'servisi' / 'servisi.json')},
+                      ensure_ascii=False).replace('</', '<\\/'),
+    'i18n': json.dumps(SRV_T, ensure_ascii=False).replace('</', '<\\/'),
+}
+render('servisi.html', '/servisi/', S=S,
+       title='Servisi za električne automobile u Srbiji — mapa | BlokVolt',
+       description=f"Mapa servisa za električne automobile u Srbiji: ovlašćeni servisi marki sa električnim modelima i nezavisni servisi za baterije i Teslu, sa adresom i telefonom. Provereno {SRV['checked']}.")
+add_url('/servisi/', '0.8', iso(SRV['checked']))
+print(f"servisi: {S['n']} places ({S['no']} authorized, {S['nn']} independent) in {len(S['cities'])} towns")
+
 # ---------------------------------------------------------------- calculators
 _d = CALC['defaults']
 _k100 = _d['kwh100'] * (1 + _d['loss'] / 100)
@@ -1847,7 +1932,7 @@ def kind_of(url):
         return 'home'
     a = seg[0]
     if len(seg) == 1 and u.endswith('/'):
-        return {'firme': 'hub', 'vesti': 'hub', 'vodici': 'hub', 'javno-punjenje': 'hub', 'pomoc': 'hub', 'mapa': 'alat', 'cene': 'alat',
+        return {'firme': 'hub', 'vesti': 'hub', 'vodici': 'hub', 'javno-punjenje': 'hub', 'pomoc': 'hub', 'mapa': 'alat', 'servisi': 'alat', 'cene': 'alat',
                 'pregled': 'pregled', 'preuzimanje': 'podaci'}.get(a, 'strana')
     if a == 'firme':
         return 'hub' if len(seg) == 2 and seg[1] in {h['slug'] for h in TYPE_HUBS} else 'firma'
@@ -2102,7 +2187,7 @@ sm.append('</urlset>')
 (DIST / 'sitemap.xml').write_text('\n'.join(sm), encoding='utf-8')
 
 # ---------------------------------------------------------------- cache busting (/assets/* is cached for a year)
-_ver_map = {a: _ver(DIST / 'assets' / a) for a in ('bv.css', 'bv.js', 'map.js', 'nalog.js', 'fx.js', 'valuta.js', 'pretraga.js')}
+_ver_map = {a: _ver(DIST / 'assets' / a) for a in ('bv.css', 'bv.js', 'map.js', 'servisi.js', 'nalog.js', 'fx.js', 'valuta.js', 'pretraga.js')}
 _search = json.dumps({'sr': '/assets/search.json?v=' + _ver(DIST / 'assets' / 'search.json'),
                       **{l: f'/assets/search-{l}.json?v=' + _ver(DIST / 'assets' / f'search-{l}.json') for l in _i18n.LANGS}})
 _search_cfg = json.dumps({'lib': '/assets/vendor/minisearch-7.2.0.min.js', 'index': json.loads(_search), 'syn': SEARCH['syn'],
@@ -2182,6 +2267,9 @@ CSP = '; '.join([
     '  X-Robots-Tag: noindex',
     '  TDM-Reservation: 1',
     f'  TDM-Policy: {SITE}/politika-privatnosti.html#uslovi',
+    # the service map data (/servisi/, RUNBOOK 3.31): read by the page only, not for search engines
+    '/assets/servisi/*',
+    '  X-Robots-Tag: noindex',
     # the Evolako map script (evomap, RUNBOOK 3.25): evolako.rs loads it with crossorigin + SRI
     '/assets/embed/*',
     '  Access-Control-Allow-Origin: *',

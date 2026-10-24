@@ -80,6 +80,7 @@ credentials) — commits go through the owner's browser (section 6).
 | Advertising: media kit and booked ads | `content/data/oglasavanje.json`, `templates/oglasavanje.html`, `templates/_oglas.html`, `static/za-firme/` | `/za-firme/oglasavanje/` (SR/EN/RU) and its PDFs are made from the JSON; an ad appears only while an entry in `oglasi` is in its dates. See 3.26. |
 | Accounts and the newsletter | `content/data/site.json` → `accounts`, `pregled`; `worker/_worker.js` | "Moj BlokVolt" (/nalog/) and "Nedeljni pregled" (/pregled/). Both off until the owner switches them on. See 3.27. |
 | Newsletter issues | `content/pregled/<YYYY-MM-DD>-<slug>.md`, `static/assets/pregled/` (covers), `scripts/pregled.py` | One file per issue; the page /pregled/<slug>/ and the e-mail in three languages come from it; the worker sends after the owner approved the preview. See 3.27 "Sending the issues". |
+| Service map for electric cars (/servisi/) | `content/servisi/servisi.json`, `templates/servisi.html`, `static/assets/servisi.js` | Authorized services of the EV brands (importers' lists) and independent EV services (their own sites). See 3.31. |
 | Display currency (RSD / EUR / USD) | `static/assets/fx.js` (core, shared with evolako.rs), `static/assets/valuta.js`, `scripts/valuta.py`, `/api/kurs` in `worker/_worker.js` | Default RSD; EUR/USD only by the reader's choice. The fallback rate is in three files that must agree (the build checks it). See 3.29. |
 
 `indeks-cena.json` row schema (one row per app + station/tariff):
@@ -1676,6 +1677,53 @@ Update when SAUVD publishes a new period or MUP gives a new fleet figure: recomp
 the "Kako se računa procena" block on the statistics page (its numbers), `izmene.md`, EN/RU todo. With a new MUP
 figure: new `base`/`base_date`, `new_since_base` = 0 if MUP is newer than the last SAUVD period. Used imports, vans
 and deregistrations are not counted — the page says so; keep it that way unless a dated source gives them.
+
+### 3.31 Service map for electric cars (/servisi/) — since 24.10.2026, quarterly with the firm revision
+
+The owner's request (24.10.2026): every service in Serbia that repairs electric cars, on its own map like the chargers.
+Source file `content/servisi/servisi.json`; the build checks it (`_srv_check()` in build.py stops on a bad entry), writes
+`/assets/servisi/servisi.json` and the page `templates/servisi.html` (map + list + all services by town below the map,
+which is also what search engines and the site search read). Script: `static/assets/servisi.js` (same layout, card and
+click rules as /mapa/; no backend). The data page /podaci/servisi-za-elektricne-automobile/ stays the explainer
+(battery, warranty, used cars) and links to the map.
+
+Who is on the map — same rules for everyone:
+- `t: "o"` — **ovlašćeni**: a place the brand's Serbian importer lists as a service (not sales only), for a brand that
+  sells at least one battery-electric model in Serbia, or whose electric models are common on the road (Nissan Leaf,
+  Renault Zoe, BMW i3, VW e-Golf, Hyundai Kona/Ioniq, Kia e-Niro). Plug-in-hybrid-only brands are not on the map.
+  `b` = the brand keys (`brands` in the file: `name`, `imp` importer, `ev` the electric models on sale, `u` the importer's
+  locator). `ev` on a place = what the importer (`evs: "u"`) or the service's own site (`evs: "s"`) says about
+  electric/high-voltage work there, in a few words of ours; the card shows „Uvoznik navodi“ / „Servis navodi“. Media
+  articles and sales claims (“we sell electric models”) are not an `ev`. Empty = the card says the importer does not say
+  it and to ask the service.
+- `t: "n"` — **nezavisni**: only when the firm's own site or own social page says it works on electric cars (not only
+  hybrids). `ev` = its own claim in a few words of ours, `s` = services from the fixed vocabulary (`SRV_SVC` in build.py),
+  `m` = makes it names. Missing = „Ne pominje se“.
+- Never: ratings, reviews, rankings, "recommended", paid placement. Order = distance (Blizu mene) or name, nothing else.
+  Evolako does not service cars, so there is no „Izdvojeno“ here.
+- Facts only from the importer's or the firm's own pages (and APR); every place has `src` [{l, u, d}]. Never from Google
+  Maps, PlugShare or another map (the build refuses those URLs). The point: the source's own pin (`pos: "src"`), or the
+  published address placed with OpenStreetMap from the owner's browser — a car shop/workshop in OSM with the firm's name
+  or brand on that street, else the house number via Nominatim, one request a second (`pos: "osm"`; the card says so).
+  An address that cannot be placed to the house or the firm's own OSM object gets `pos: "none"`: the service is in the
+  list and the list by town, not on the map, and the card offers „Potraži adresu na mapi“. Never guess a point, never
+  the street's middle. Several firms on one spot (one auto centre) stay separate entries; the card lists the others
+  („Na istoj lokaciji“), because a tap on the map reaches only one.
+- Phone and website = the firm's published business contacts; no e-mails, no people's names (a sole trader's registered
+  name → the trade name). `tel` = the service desk's number when the source names one, `tel2` = one more (not sales,
+  showroom or parts).
+
+Keys of a place: `id` (`sv-<slug>`), `n`, `t`, `b`/`m`, `s`, `g` (town; Belgrade municipalities → `g: "Beograd"`,
+`ar: "Zemun"`), `ar`, `a` (street and number), `tel`, `tel2`, `web`, `oh` (the service's hours in one short form:
+`pon–pet 8–16, sub 8–12`; sales hours only when nothing else is published), `lat`, `lon`, `pos`, `ev`, `evs`, `src`
+(`l` = the source's host name, e.g. `renault.rs`). Texts in `ev` and `oh` are translation segments (`tx:<text>` in the
+page strings, 3.9). Search: a word that is a town name means that town (so „Niš“ does not find Nissan elsewhere).
+
+Update (with the quarterly firm revision 3.7, or when a reader's correction comes in — /ispravka/ has
+„Servis za električne automobile“, `?servis=<id>` prefills it): open each brand's locator, add/remove places, re-check the
+independents' own pages (a firm that no longer mentions electric cars leaves the map), new dates in `src` and `checked`,
+`izmene.md`, EN/RU todo. Events: `srv_card_open`, `srv_call`, `srv_site`, `srv_find`, `srv_navigate`, `srv_share`, `srv_report`,
+`srv_filter`, `srv_near_me`, `srv_city_list`. Test: `scripts/qa/servisi_ui_test.py`.
 
 ## 4. Build and check
 

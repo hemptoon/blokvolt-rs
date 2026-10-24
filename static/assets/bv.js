@@ -280,6 +280,10 @@
     var t0 = Date.now(), kind = f.getAttribute('data-bv-form');
     var p = new URLSearchParams(location.search), slug = p.get('firma') || p.get('operator') || p.get('mreza') || p.get('stanica') || '';
     var what = f.querySelector('select[name=sta]'), where = f.querySelector('[name=gde],[name=stranica]');
+    // ?servis=<id> from a card of the service map (/servisi/, RUNBOOK 3.31)
+    var sv = /^sv-[a-z0-9-]{2,60}$/.test(p.get('servis') || '') ? p.get('servis') : '';
+    if (what && sv) what.value = 'servis';
+    if (where && sv && !slug) where.value = location.origin + '/servisi/#' + sv;
     if (what && p.get('stanica')) what.value = 'stanica';
     else if (what && (p.get('operator') || p.get('mreza'))) what.value = 'mreza';
     if (kind === 'firma' && (p.get('operator') || p.get('mreza'))) { var ko = f.querySelector('[name=vrsta]'); if (ko) ko.value = 'mreza'; }

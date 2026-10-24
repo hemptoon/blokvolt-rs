@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import ic %}
+{# Map of service points for electric cars (docs/RUNBOOK.md 3.31). Data: content/servisi/servisi.json → /assets/servisi/servisi.json;
+   script: /assets/servisi.js. Numbers stay out of running text (plain integers are part of a translation key). #}
+{% block bodyclass %}map-page{% endblock %}
+{% block head %}<link rel="stylesheet" href="/assets/vendor/maplibre-6.11.1/maplibre-gl.css">
+<link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>{% endblock %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}/servisi/", "inLanguage": "sr-Latn", "dateModified": "{{ S.iso }}", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}}
+ ]
+}</script>{% endblock %}
+{% block page %}
+<div class="map-app">
+<aside class="map-side">
+<div class="map-top">
+<h1>Servisi za električne automobile</h1>
+<p>Ovlašćeni servisi marki koje prodaju električne automobile i nezavisni servisi koji rade električne automobile.</p>
+<div class="sv-stats"><div><b>{{ S.n }}</b><span>Ukupno</span></div><div><b>{{ S.no }}</b><span>Ovlašćeni</span></div><div><b>{{ S.nn }}</b><span>Nezavisni</span></div></div>
+<div class="search-box">{{ ic('search') }}<label class="sr-only" for="sq">Pretraga servisa</label><input class="input" id="sq" type="search" placeholder="Grad, marka ili naziv servisa" autocomplete="off"></div>
+<div class="sv-row"><label class="sr-only" for="sbrand">Marka</label><select class="select" id="sbrand"><option value="">Sve marke</option></select></div>
+<div class="chips" id="schips">
+<button class="chip" type="button" data-f="all" aria-pressed="true">Svi</button>
+<button class="chip" type="button" data-f="o" aria-pressed="false">Ovlašćeni</button>
+<button class="chip" type="button" data-f="n" aria-pressed="false">Nezavisni</button>
+<button class="chip" type="button" data-f="bat" aria-pressed="false">Baterija</button>
+<button class="chip" type="button" data-f="tesla" aria-pressed="false">Tesla</button>
+</div>
+</div>
+<div class="map-count" id="scount" aria-live="polite">Učitavanje…</div>
+<div class="map-list" id="slist"><noscript><p class="empty">Za mapu je potreban JavaScript. Svi servisi po gradovima su ispod mape.</p></noscript></div>
+</aside>
+<div class="map-wrap">
+<div id="smap" role="region" aria-label="Mapa servisa za električne automobile"></div>
+<div class="map-legend" aria-hidden="true"><span><i class="l-svo"></i>Ovlašćeni servis</span><span><i class="l-svn"></i>Nezavisni servis</span></div>
+<button class="btn sm map-me" id="sme" type="button">{{ ic('locate') }}Blizu mene</button>
+<div class="map-attr">Mapa: <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/" rel="noopener">OpenMapTiles</a> · © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> · Podaci: sajtovi uvoznika i servisa, {{ S.checked }}</div>
+<div class="card-ov" id="scard"></div>
+</div>
+</div>
+<div class="wrap map-below">
+<div class="sum">
+<ul>
+<li><b>Ovlašćeni servis</b> marke radi garancijske popravke i ima alate proizvođača. Uslove garancije na bateriju proverite kod svoje marke.</li>
+<li><b>Nezavisni servisi</b> često rade i Teslu, koja u Srbiji nema ovlašćeni servis, i starije električne automobile iz uvoza.</li>
+<li>Uvoznici uglavnom ne navode koji servis radi popravke visokog napona. Pre dolaska pitajte servis za vaš model.</li>
+<li>Pre kupovine polovnog električnog automobila tražite proveru baterije (SOH). Više: <a class="lnk" href="/podaci/servisi-za-elektricne-automobile/">servisi i baterija</a>.</li>
+</ul>
+</div>
+
+<div class="sec-head"><h2>Svi servisi po gradovima</h2></div>
+<div class="svc">
+{% for city in S.cities %}
+<details><summary translate="no">{{ city.name }}<span class="n">{{ city.rows|length }}</span></summary>
+<ul>
+{% for p in city.rows %}<li><div translate="no"><a href="#{{ p.id }}" data-sv="{{ p.id }}"><b>{{ p.n }}</b></a> · {{ p.addr }}{% if p.tel %} · {{ p.tel }}{% endif %}<br>{{ p.brands }}</div><div class="k">{{ 'Ovlašćeni servis' if p.t == 'o' else 'Nezavisni servis' }}</div></li>
+{% endfor %}</ul></details>
+{% endfor %}
+</div>
+
+<details><summary>Odakle su podaci</summary>
+<p>Ovlašćeni servisi su sa spiskova koje uvoznici objavljuju na svojim sajtovima, za marke koje u Srbiji prodaju bar jedan električni model ili čije modele već ima mnogo na putu (Nissan Leaf, Renault Zoe, BMW i3). Nezavisni servisi su na mapi samo kad na svom sajtu ili svojoj stranici navode da rade električne automobile. Uz svaki servis su izvor i datum provere.</p>
+<p>Tačka na mapi je sa sajta uvoznika ili servisa, a kad je on ne daje — postavljena je po adresi iz OpenStreetMap-a. Podaci nisu preuzeti sa Google mapa i drugih mapa. Servisi nemaju ocene ni redosled po kvalitetu; spisak je poređan po udaljenosti ili po nazivu, isto za sve.</p>
+<p>Kad sajt ne navodi nešto, piše „Ne pominje se“. Servis nedostaje ili je podatak netačan? <a class="lnk" href="/ispravka/">Pošaljite ispravku</a>. Servis može sam da pošalje podatke preko stranice <a class="lnk" href="/za-firme/">za firme</a>; objavljujemo samo ono što je javno i proverljivo.</p>
+</details>
+</div>
+<script id="srv-cfg" type="application/json">{{ S.cfg|safe }}</script>
+<script id="bv-i18n" type="application/json">{{ S.i18n|safe }}</script>
+{% endblock %}
+{% block scripts %}<script type="module" src="/assets/servisi.js"></script>{% endblock %}

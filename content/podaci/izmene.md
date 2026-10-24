@@ -13,6 +13,9 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 24. oktobar 2026
 
+- Nova [mapa servisa za električne automobile](/servisi/): 139 servisa u 26 gradova — ovlašćeni servisi marki koje u Srbiji prodaju električne modele, sa spiskova uvoznika, i nezavisni servisi koji na svom sajtu navode da rade električne automobile. Uz svaki servis su adresa, telefon, radno vreme, izvor i datum provere; tu su filteri po marki i vrsti servisa, pretraga po gradu i dugme „Blizu mene“. Servisi nemaju ocene ni redosled po kvalitetu, a pravila su u [metodologiji](/metodologija/#servisi).
+- [Servisi za električne automobile](/podaci/servisi-za-elektricne-automobile/): dodati EV Clinic Beograd i KiBOST Car i nova adresa ACIS-a u Veterniku; za Električne Automobile sajt navodi da je servis u fazi adaptacije.
+- [Prijava greške](/ispravka/): nova vrsta prijave „Servis za električne automobile“, za pogrešan podatak ili servis koji nedostaje. Dugme „Prijavi grešku“ na kartici servisa vodi pravo na nju.
 - [Moj BlokVolt](/nalog/): u spisku modela za „Moj auto“ sada je i Tesla — Model 3 i Model Y po verzijama i godinama, Model S i Model X. Kad izaberete Teslu, uključuje se „Imam Teslu“, a za brzo punjenje predlaže se CCS2.
 - [Mapa punjača](/mapa/): ispod naslova sada piše da mapu održava tim Evolako. Do sada je to stajalo samo u potpisu mape i na stranici [O sajtu](/o-sajtu/). Podaci, redosled i pravila mape nisu menjani.
 

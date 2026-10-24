@@ -4,10 +4,10 @@ h1: Metodologija
 description: Odakle su podaci o firmama, cenama javnog punjenja i vestima, koliko često se proveravaju, šta znači „Ne pominje se“ i kako se prijavljuje greška.
 kicker: O sajtu · metodologija
 lead: Podaci o firmama su sa njihovih javnih stranica, po istim pravilima za sve.
-updated: 06.10.2026
+updated: 24.10.2026
 path: /metodologija/
 published: 2026-09-22
-modified: 2026-10-06
+modified: 2026-10-24
 priority: 0.5
 disclaimer: Primedbe na pravila prijavite na
 ---
@@ -53,6 +53,10 @@ Mreže ne objavljuju cenovnike na svojim sajtovima, pa se cena vidi tek u aplika
 - Snimak ekrana cene, sa datumom i lokacijom, pošaljite na hello@blokvolt.com: forma za ispravke prima samo tekst i link.
 
 </details>
+
+## Servisi {#servisi}
+
+Na [mapi servisa](/servisi/) su ovlašćeni servisi sa spiskova uvoznika, za marke koje u Srbiji prodaju električne automobile, i nezavisni servisi koji na svom sajtu ili svojoj stranici navode da rade električne automobile. Uz svaki servis su izvor i datum provere. Servisi nemaju ocene ni redosled po kvalitetu. Tačka na mapi je sa sajta uvoznika ili servisa ili je postavljena po adresi iz OpenStreetMap-a, nikad sa Google mapa. Spisak se proverava kvartalno, zajedno sa firmama.
 
 ## Vesti {#vesti}
 

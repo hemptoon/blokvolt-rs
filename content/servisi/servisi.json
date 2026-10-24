@@ -1,0 +1,4284 @@
+{
+ "checked": "24.10.2026",
+ "brands": {
+  "Audi": {
+   "name": "Audi",
+   "imp": "Porsche SCG d.o.o.",
+   "ev": "Q4 e-tron, Q6 e-tron, A6 e-tron, e-tron GT",
+   "u": "https://www.audi.rs/kontakt/pretraga-partnera"
+  },
+  "BAIC": {
+   "name": "BAIC",
+   "imp": "nije utvrđen (baic.rs je parkiran domen, baicsrbija.rs blokira WebFetch)",
+   "ev": "EU5"
+  },
+  "BMW": {
+   "name": "BMW",
+   "imp": "Delta Motors d.o.o. (named on mini.rs contact page as 'MINI Srbija – DELTA MOTORS DOO'; bmw.rs footer links to DeltaMotorsSrbija)",
+   "ev": "iX, iX1, iX2, iX3, i4, i5, i7",
+   "u": "https://www.bmw.rs/sr/fastlane/bmw-dileri.html"
+  },
+  "BYD": {
+   "name": "BYD",
+   "imp": "TDV Automotive DOO, Beograd (Milutina Milanković 9ž, 11070 Beograd; office@byd-auto.rs)",
+   "ev": "Dolphin Surf, Atto 2, Atto 3, Seal, Sealion 7",
+   "u": "https://byd-auto.rs/distributeri/"
+  },
+  "Changan": {
+   "name": "Changan",
+   "imp": "Crossroad Asia, član OMR Group (B92, 20.11.2025)",
+   "ev": "Deepal S05, Deepal S07"
+  },
+  "Citroën": {
+   "name": "Citroën",
+   "imp": "Kompanija Avtonova KAB d.o.o., Bulevar Milutina Milankovića 3v, 11070 Novi Beograd, +381 11 3538 555, office@citroen.rs (citroen.rs/alati/o-uvozniku.html)",
+   "ev": "ë-C3, ë-C3 Aircross, ë-C4, ë-C4 X, ë-Berlingo",
+   "u": "https://www.citroen.rs/alati/pronadji-prodajno-servisni-centar.html"
+  },
+  "Cupra": {
+   "name": "Cupra",
+   "imp": "Porsche SCG d.o.o.",
+   "ev": "Born, Raval",
+   "u": "https://www.cupraofficial.rs/cupra-partneri"
+  },
+  "Dacia": {
+   "name": "Dacia",
+   "imp": "Renault Nissan Srbija (per task brief; not named on dacia.rs)",
+   "ev": "Spring",
+   "u": "https://www.dacia.rs/pronadji-distributera.html"
+  },
+  "Dongfeng": {
+   "name": "Dongfeng",
+   "imp": "nije potvrđeno (zadatak navodi China Motor Company; dongfeng.rs, dongfeng-auto.rs, forthing.rs i chinamotorcompany.rs blokiraju WebFetch)",
+   "ev": "Nammi Box, Forthing S7",
+   "u": "https://autokucaalfa.com/dongfeng/"
+  },
+  "Farizon": {
+   "name": "Farizon"
+  },
+  "Fiat": {
+   "name": "Fiat",
+   "imp": "OMR grupa (subsidiary of Crossroad Adria) – importer for Stellantis brands Fiat, Fiat Professional, Jeep, Alfa Romeo, Abarth for Serbia and Montenegro since 01.10.2023 (biznis.rs, 06.10.2023). fiat.rs itself names no importer.",
+   "ev": "Grande Panda Electric, 500e, 600e",
+   "u": "https://www.fiat.rs/alati/spisak-dilera"
+  },
+  "Ford": {
+   "name": "Ford",
+   "imp": "Grand Motors d.o.o. ('Grand Motors Srbija', Milutina Milankovića 21, Beograd; +381 11 2090610)",
+   "ev": "Puma Gen-E, Capri, Explorer, Mustang Mach-E, E-Transit",
+   "u": "https://ford.rs/dealerships"
+  },
+  "Foton": {
+   "name": "Foton",
+   "imp": "Foton Serbia – Eco Fleet (ecofleet.rs preusmerava na fotonserbia.rs)",
+   "ev": "eTunland, eView, eToano Pro",
+   "u": "https://fotonserbia.rs/"
+  },
+  "Geely": {
+   "name": "Geely",
+   "imp": "VCAG d.o.o. Beograd (Auto-put za Novi Sad 98, 11080 Beograd-Zemun; geely_rs@geely-see.com)",
+   "ev": "E5",
+   "u": "https://www.geelyauto.rs/zastupnici"
+  },
+  "Hyundai": {
+   "name": "Hyundai",
+   "imp": "Hyundai Srbija d.o.o.",
+   "ev": "Inster, Ioniq 5, Ioniq 6, Ioniq 9",
+   "u": "https://www.hyundai.rs/prodaja-i-servis"
+  },
+  "JMEV": {
+   "name": "JMEV",
+   "imp": "CUBI D.O.O., Novi Sad (generalni uvoznik, distributer i serviser, prema jmev.rs/kontakt.html)",
+   "ev": "EV3, Elight, Ewind",
+   "u": "https://jmev.rs/kontakt.html"
+  },
+  "Jaguar": {
+   "name": "Jaguar",
+   "imp": "British Motors (Land Rover importer and dealer; says it is 'ovlašćeni serviser za Jaguar vozila')",
+   "ev": "I-Pace",
+   "u": "https://www.britishmotors.rs/kontakt"
+  },
+  "Jeep": {
+   "name": "Jeep",
+   "imp": "OMR grupa / Crossroad Adria (biznis.rs 2023); jeep.rs footer shows only FCA US LLC",
+   "ev": "Avenger Electric",
+   "u": "https://www.jeep.rs/spisak-dilera"
+  },
+  "Kia": {
+   "name": "Kia",
+   "imp": "Kia Auto d.o.o. (Autoput za Novi Sad 98, 11080 Beograd-Zemun; kiars@kmag.net)",
+   "ev": "EV3, Niro EV, PV5",
+   "u": "https://www.kia.rs/zastupnici"
+  },
+  "Leapmotor": {
+   "name": "Leapmotor",
+   "imp": "nije potvrđeno (zadatak navodi Avtonova KAB; avtonova.rs blokira WebFetch, a leapmotor.net/rs je prazna ljuska)",
+   "ev": "T03, B10, C10"
+  },
+  "Lexus": {
+   "name": "Lexus",
+   "imp": "not named on fetched pages",
+   "ev": "RZ",
+   "u": "https://www.lexus.rs/contact/dealers/lexus-partneri"
+  },
+  "MG": {
+   "name": "MG",
+   "imp": "Grand Motors d.o.o. (ekskluzivni uvoznik i distributer, prema mgmotor.rs/about); Milutina Milankovića 21, 11070 Beograd",
+   "ev": "MG4 Electric, MG5 Electric, MGS5 EV",
+   "u": "https://www.mgmotor.rs/map"
+  },
+  "MINI": {
+   "name": "MINI",
+   "imp": "Delta Motors d.o.o. (mini.rs contact page)",
+   "ev": "Cooper E, Cooper SE, Aceman, Countryman E",
+   "u": "https://www.mini.rs/sr_RS/home/serv/mini-service.html"
+  },
+  "Maxus": {
+   "name": "Maxus",
+   "imp": "SDT Renting (generalni zastupnik za MAXUS komercijalna vozila)",
+   "ev": "eDeliver 5, eDeliver 9, eTerron 9"
+  },
+  "Mazda": {
+   "name": "Mazda",
+   "imp": "mazda.rs/izdavac names Mazda Austria GmbH (Klagenfurt) as publisher; no Serbian importer named",
+   "ev": "6e, CX-6e",
+   "u": "https://www.mazda.rs/nadji-partnera"
+  },
+  "Mercedes-Benz": {
+   "name": "Mercedes-Benz",
+   "imp": "Star Import d.o.o. (footer of mercedes-benz.rs)",
+   "ev": "EQA, EQB, EQE, EQS",
+   "u": "https://www.mercedes-benz.rs/locate-us/"
+  },
+  "Nissan": {
+   "name": "Nissan",
+   "imp": "Adriatic Auto (per task brief; NOT verified: nissan.rs legal/contact pages not retrievable, footer says only 'Nissan Serbia')",
+   "ev": "Ariya, Townstar",
+   "u": "https://www.nissan.rs/dealer-list.html"
+  },
+  "Opel": {
+   "name": "Opel",
+   "imp": "Euroimpex Automotive D.O.O. (named as the seller in the 2026 Astra price list PDF on opel.rs). The opel.rs privacy page names Opel Southeast LLC (Budapest), Predstavništvo Beograd, Bulevar Mihajla Pupina 165g. Euroimpex became Opel importer for Serbia after the 2020 deal (Stellantis press 10.09.2020).",
+   "ev": "Corsa Electric, Mokka Electric, Astra Electric, Frontera Electric, Grandland Electric",
+   "u": "https://www.opel.rs/tools/opel-nadite-dilera.html"
+  },
+  "Peugeot": {
+   "name": "Peugeot",
+   "imp": "Euroimpex Autogroup (subsidiary of Euroimpex, Skopje), Višnjička 53a, Beograd-Palilula; peugeot.rs contact: Višnjička 53A, 11000 Beograd, 011 20 22 333, office@euroimpex-autogroup.rs",
+   "ev": "e-208, e-2008, e-Rifter, e-Traveller",
+   "u": "https://www.peugeot.rs/about-us/network"
+  },
+  "Porsche": {
+   "name": "Porsche",
+   "imp": "Porsche SCG d.o.o. (Porsche Centar Beograd posluje 'u okviru kompanije Porsche Srbija i Crna Gora')",
+   "ev": "Taycan",
+   "u": "https://dealer.porsche.com/rs/beograd/sr-Latn-RS/about-us"
+  },
+  "Renault": {
+   "name": "Renault",
+   "imp": "Renault Nissan Srbija (per task brief; renault.rs footer names no legal entity)",
+   "ev": "Renault 5, Renault 4, Twingo",
+   "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html"
+  },
+  "Toyota": {
+   "name": "Toyota",
+   "imp": "not named on fetched pages (toyota.rs; EUROCARE line 0800 200 987)",
+   "ev": "bZ4X, C-HR+, Proace Electric",
+   "u": "https://www.toyota.rs/contact/dealers/list"
+  },
+  "VW privredna vozila": {
+   "name": "VW privredna vozila",
+   "imp": "Porsche SCG d.o.o.",
+   "ev": "ID. Buzz, ID. Buzz Cargo",
+   "u": "https://www.vw-privrednavozila.rs/volkswagen-dileri"
+  },
+  "Volkswagen": {
+   "name": "Volkswagen",
+   "imp": "Porsche SCG d.o.o., Zrenjaninski put 9A, 11210 Beograd",
+   "ev": "ID.3, ID.4, ID.5, ID.7, ID. Polo",
+   "u": "https://www.volkswagen.rs/volkswagen-dileri"
+  },
+  "Volvo": {
+   "name": "Volvo",
+   "imp": "Not named. Site brands itself 'Volvo Car centar Beograd' / 'Volvo Srbija'; footer consumer-complaints e-mail is on the maxx.rs domain",
+   "ev": "EX30, EX90, ES90",
+   "u": "https://www.volvocars.com/rs/dealers"
+  },
+  "Škoda": {
+   "name": "Škoda",
+   "imp": "Škoda Autočačak (Auto Čačak Promet / Autočačak, podrska@autocacak.co.rs)",
+   "ev": "Elroq, Enyaq, Enyaq Coupé",
+   "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza"
+  }
+ },
+ "places": [
+  {
+   "id": "sv-tdv-auto-centar-beograd",
+   "n": "TDV Auto Centar",
+   "t": "o",
+   "b": [
+    "BYD"
+   ],
+   "g": "Beograd",
+   "ar": "Palilula",
+   "a": "Zrenjaninski put 83a",
+   "tel": "+381 11 4409261",
+   "web": "https://byd-auto.rs/",
+   "oh": "pon–pet 8–16, sub 8–13",
+   "lat": 44.860858,
+   "lon": 20.478998,
+   "pos": "src",
+   "src": [
+    {
+     "l": "byd-auto.rs",
+     "u": "https://byd-auto.rs/kontakt/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-alpros-evision-beograd",
+   "n": "Alpros EVision",
+   "t": "o",
+   "b": [
+    "BYD"
+   ],
+   "g": "Beograd",
+   "ar": "Voždovac",
+   "a": "Vojvode Stepe 352",
+   "tel": "+381 62 595 290",
+   "web": "https://byd-alpros.rs/",
+   "oh": "pon–pet 8–16",
+   "lat": 44.76244,
+   "lon": 20.483725,
+   "pos": "src",
+   "src": [
+    {
+     "l": "byd-auto.rs",
+     "u": "https://byd-auto.rs/distributeri/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "byd-alpros.rs",
+     "u": "https://byd-alpros.rs/kontakt/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-acis-automotive-novi-sad",
+   "n": "ACIS Automotive",
+   "t": "o",
+   "b": [
+    "BYD"
+   ],
+   "g": "Novi Sad",
+   "ar": "Veternik",
+   "a": "Novosadski put 122, Veternik",
+   "tel": "062 796 140",
+   "web": "https://byd-acis.rs/",
+   "oh": "pon–pet 8–16",
+   "lat": 45.243886,
+   "lon": 19.778385,
+   "pos": "src",
+   "src": [
+    {
+     "l": "byd-auto.rs",
+     "u": "https://byd-auto.rs/distributeri/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "byd-acis.rs",
+     "u": "https://byd-acis.rs/kontakt/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-raavex-group-nis",
+   "n": "Raavex Group",
+   "t": "o",
+   "b": [
+    "BYD",
+    "Citroën",
+    "Geely",
+    "Toyota"
+   ],
+   "g": "Niš",
+   "a": "Bulevar Cara Konstantina bb",
+   "tel": "+381-18-259-000",
+   "web": "https://www.toyota.rs/retailers/raavex-group",
+   "oh": "pon–pet 9–17, sub 9–14",
+   "lat": 43.303363,
+   "lon": 21.97643,
+   "pos": "src",
+   "src": [
+    {
+     "l": "geelyauto.rs",
+     "u": "https://www.geelyauto.rs/prijava_za_servis",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "byd-auto.rs",
+     "u": "https://byd-auto.rs/podrska/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "kong-proxy-intranet.toyota-europe.com",
+     "u": "https://kong-proxy-intranet.toyota-europe.com/dxp/dealers/api/toyota/rs/sr/all",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-geely-centar-beograd-beograd",
+   "n": "Geely centar Beograd",
+   "t": "o",
+   "b": [
+    "Geely"
+   ],
+   "g": "Beograd",
+   "ar": "Zemun",
+   "a": "Autoput za Novi Sad 98",
+   "tel": "+381-11-31-65-496",
+   "web": "https://www.geelyauto.rs/",
+   "oh": "pon–pet 7–20, sub 7–15",
+   "lat": 44.861882,
+   "lon": 20.353225,
+   "pos": "src",
+   "src": [
+    {
+     "l": "geelyauto.rs",
+     "u": "https://www.geelyauto.rs/prijava_za_servis",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-car-vidakovic-subotica",
+   "n": "Auto Car Vidaković",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Geely",
+    "Renault"
+   ],
+   "g": "Subotica",
+   "a": "Starine Novaka 53",
+   "tel": "+381-24-566-226",
+   "web": "https://vidakovic.rs/",
+   "oh": "pon–pet 8–16:30, sub 8–12",
+   "lat": 46.065908,
+   "lon": 19.675642,
+   "pos": "src",
+   "src": [
+    {
+     "l": "geelyauto.rs",
+     "u": "https://www.geelyauto.rs/prijava_za_servis",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/ac-vidakovic/ac-vidakovic.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-nikom-auto-kragujevac",
+   "n": "Nikom Auto",
+   "t": "o",
+   "b": [
+    "Fiat",
+    "Geely",
+    "Jeep"
+   ],
+   "g": "Kragujevac",
+   "a": "Lepenički bulevar 47",
+   "tel": "+381 34 355 810",
+   "web": "https://www.nikomauto.rs/",
+   "oh": "pon–pet 8–16, sub 8–14",
+   "lat": 44.027627,
+   "lon": 20.936698,
+   "pos": "src",
+   "src": [
+    {
+     "l": "geelyauto.rs",
+     "u": "https://www.geelyauto.rs/zastupnici",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "nikomauto.rs",
+     "u": "https://www.nikomauto.rs/SERVIS/o-servisu.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "polovniautomobili.com",
+     "u": "https://www.polovniautomobili.com/nikomauto",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-bibo-car-pozarevac",
+   "n": "Bibo Car",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Geely",
+    "Renault"
+   ],
+   "g": "Požarevac",
+   "a": "Ljubičevska-naselja bb",
+   "tel": "+381 12 71 60 140",
+   "tel2": "+381 64 822 3422",
+   "web": "https://www.bibocar.rs/",
+   "oh": "pon–pet 8–17, sub 8–14",
+   "lat": 44.60297,
+   "lon": 21.123502,
+   "pos": "src",
+   "ev": "„servis električnih vozila“: tehničari obučeni za dijagnostiku i servis E-Tech pogona i baterija",
+   "evs": "s",
+   "src": [
+    {
+     "l": "geelyauto.rs",
+     "u": "https://www.geelyauto.rs/prijava_za_servis",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "bibocar.rs",
+     "u": "https://www.bibocar.rs/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-bel-car-team-novi-sad",
+   "n": "Bel Car Team",
+   "t": "o",
+   "b": [
+    "Farizon",
+    "Geely",
+    "Kia"
+   ],
+   "g": "Novi Sad",
+   "a": "Bulevar Vojvode Stepe 38a",
+   "tel": "+381-21-6402422",
+   "tel2": "063 509 132",
+   "web": "https://www.belcarteam.rs/",
+   "oh": "pon–pet 8–16, sub 8–12",
+   "lat": 45.25729,
+   "lon": 19.798413,
+   "pos": "src",
+   "ev": "ovlašćeni diler i servis za Farizon električna laka komercijalna vozila (od 2025)",
+   "evs": "s",
+   "src": [
+    {
+     "l": "geelyauto.rs",
+     "u": "https://www.geelyauto.rs/zastupnici",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "belcarteam.rs",
+     "u": "https://www.belcarteam.rs/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "kia.rs",
+     "u": "https://www.kia.rs/test_voznja",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-grand-m-grand-motors-novi-sad",
+   "n": "Grand M (Grand Motors)",
+   "t": "o",
+   "b": [
+    "Ford",
+    "MG",
+    "Mazda"
+   ],
+   "g": "Novi Sad",
+   "ar": "Veternik",
+   "a": "Novosadski put 110, Veternik (ulaz iz Obrovačke ulice)",
+   "tel": "+381 21 6542 800",
+   "tel2": "021/630-2822",
+   "web": "https://www.grandmotors.rs/",
+   "oh": "pon–pet 8–16, sub 9–14",
+   "lat": 45.244445,
+   "lon": 19.773216,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "021.rs",
+     "u": "https://www.021.rs/novi-sad/vesti/404544/grand-motors-stvara-novu-dimenziju-korisnickog-iskustva-u-novom-sadu",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "grandm.mazda.rs",
+     "u": "https://grandm.mazda.rs/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "ford.rs",
+     "u": "https://ford.rs/dealerships",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-grand-motors-beograd",
+   "n": "Grand Motors",
+   "t": "o",
+   "b": [
+    "Ford",
+    "MG"
+   ],
+   "g": "Beograd",
+   "ar": "Novi Beograd",
+   "a": "Bulevar Milutina Milankovića 21",
+   "tel": "011 20 90 653",
+   "tel2": "011 20 90 654",
+   "web": "https://www.grandmotors.rs/",
+   "oh": "pon–pet 9–18, sub 9–14",
+   "lat": 44.81569,
+   "lon": 20.401103,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "mgmotor.rs",
+     "u": "https://www.mgmotor.rs/zakazi-servis",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "grandmotors.rs",
+     "u": "https://www.grandmotors.rs/kontakt",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "ford.rs",
+     "u": "https://ford.rs/dealerships",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-ak-kompresor-beograd",
+   "n": "AK Kompresor",
+   "t": "o",
+   "b": [
+    "Changan",
+    "Citroën",
+    "Dacia",
+    "Fiat",
+    "Jeep",
+    "Leapmotor",
+    "Nissan",
+    "Renault"
+   ],
+   "g": "Beograd",
+   "ar": "Stari grad",
+   "a": "Žorža Klemansoa 19, Dorćol",
+   "tel": "011 7155 573",
+   "tel2": "011/7155 600",
+   "web": "https://www.akkompresor.rs/",
+   "oh": "pon–pet 8–16, sub 8–14, ned 10–14",
+   "lat": 44.822993,
+   "lon": 20.468134,
+   "pos": "src",
+   "src": [
+    {
+     "l": "akkompresor.rs",
+     "u": "https://www.akkompresor.rs/servis-i-odrzavanje/leapmotor",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/ak-kompresor/ak-kompresor.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-stojanov-novi-sad",
+   "n": "Stojanov",
+   "t": "o",
+   "b": [
+    "Changan",
+    "Fiat",
+    "Jeep",
+    "Opel"
+   ],
+   "g": "Novi Sad",
+   "a": "Zrenjaninski put 16",
+   "tel": "+381 21 21 00 490",
+   "web": "https://www.stojanov.rs/",
+   "oh": "pon–pet 8–16, sub 8–12:30",
+   "lat": 45.29038,
+   "lon": 19.85594,
+   "pos": "src",
+   "src": [
+    {
+     "l": "stojanov.rs",
+     "u": "https://www.stojanov.rs/servis",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "fiat.rs",
+     "u": "https://www.fiat.rs/alati/spisak-dilera",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "jeep.rs",
+     "u": "https://www.jeep.rs/spisak-dilera",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-kuca-alfa-subotica",
+   "n": "Auto kuća Alfa",
+   "t": "o",
+   "b": [
+    "Dongfeng",
+    "Kia",
+    "Mazda"
+   ],
+   "g": "Subotica",
+   "a": "Jovana Mikića 18",
+   "tel": "024/556-326",
+   "tel2": "069/1870-555",
+   "web": "https://autokucaalfa.com/",
+   "oh": "pon–pet 8–15:30, sub 8–13",
+   "lat": 46.102411,
+   "lon": 19.672967,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "autokucaalfa.com",
+     "u": "https://autokucaalfa.com/servis-i-limarija/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "polovniautomobili.com",
+     "u": "https://www.polovniautomobili.com/autokucaalfa",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "kia.rs",
+     "u": "https://www.kia.rs/test_voznja",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-kuca-alfa-beograd",
+   "n": "Auto kuća Alfa",
+   "t": "o",
+   "b": [
+    "Dongfeng"
+   ],
+   "g": "Beograd",
+   "a": "Ugrinovački put, 2. deo 32",
+   "tel": "011/7864065",
+   "web": "https://autokucaalfa.com/dongfeng/",
+   "pos": "none",
+   "src": [
+    {
+     "l": "autokucaalfa.com",
+     "u": "https://autokucaalfa.com/dongfeng/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-cubi-novi-sad",
+   "n": "Cubi",
+   "t": "o",
+   "b": [
+    "JMEV",
+    "Peugeot"
+   ],
+   "g": "Novi Sad",
+   "a": "Bulevar Vojvode Stepe 36/a",
+   "tel": "+381 21 6338 013",
+   "tel2": "+381 21 6399 140",
+   "web": "https://jmev.rs/",
+   "oh": "pon–pet 8–16, sub 8–12",
+   "lat": 45.257859,
+   "lon": 19.798136,
+   "pos": "src",
+   "ev": "„Prodaja i servis električnih automobila u Srbiji“ (JMEV prodaje samo električna vozila)",
+   "evs": "u",
+   "src": [
+    {
+     "l": "jmev.rs",
+     "u": "https://jmev.rs/kontakt.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "cubi.co.rs",
+     "u": "https://www.cubi.co.rs/kontakt.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "polovniautomobili.com",
+     "u": "https://www.polovniautomobili.com/auto-oglasi/28219540/jmev-ev3",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-centar-boban-beograd",
+   "n": "Centar Boban",
+   "t": "o",
+   "b": [
+    "JMEV"
+   ],
+   "g": "Beograd",
+   "ar": "Stari grad",
+   "a": "Dunavska 13, Dorćol",
+   "tel": "+381 66 604 2171",
+   "tel2": "011 2928-500",
+   "web": "http://www.centarboban.com/",
+   "oh": "pon–pet 9–17, sub 9–12",
+   "lat": 44.826676,
+   "lon": 20.464817,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "jmev.rs",
+     "u": "https://jmev.rs/kontakt.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "polovniautomobili.com",
+     "u": "https://www.polovniautomobili.com/centarboban",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-kuca-kole-beograd",
+   "n": "Auto kuća Kole",
+   "t": "o",
+   "b": [
+    "BAIC"
+   ],
+   "m": [
+    "BAIC",
+    "Fiat"
+   ],
+   "s": [
+    "dijagnostika_baterije",
+    "klima",
+    "obc",
+    "pogon",
+    "redovan_servis"
+   ],
+   "g": "Beograd",
+   "ar": "Zemun",
+   "a": "Cara Dušana 209",
+   "tel": "011 3168010",
+   "web": "https://www.akkole.rs/",
+   "lat": 44.859617,
+   "lon": 20.375422,
+   "pos": "osm",
+   "ev": "Servis svih električnih vozila; tim obučen za bezbedan rad sa visokonaponskim sistemima (HV); dijagnostika pogona i baterije, servis sistema punjenja AC/DC, klima specifična za EV; EV servisni partner flotama i dilerima drugih brendova",
+   "evs": "s",
+   "src": [
+    {
+     "l": "akkole.rs",
+     "u": "https://www.akkole.rs/kontakt",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "autoservisisrbije.rs",
+     "u": "https://autoservisisrbije.rs/pronadjite-servis/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-sdt-renting-beograd",
+   "n": "SDT Renting",
+   "t": "o",
+   "b": [
+    "Maxus"
+   ],
+   "g": "Beograd",
+   "ar": "Surčin",
+   "a": "Sretenjska 4, Dobanovci",
+   "tel": "+381 62 425 888",
+   "tel2": "+381 11 770 3100",
+   "web": "https://www.maxus.rs/",
+   "oh": "pon–pet 8–16",
+   "lat": 44.815323,
+   "lon": 20.238635,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "maxus.rs",
+     "u": "https://www.maxus.rs/kontakt.php",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-eco-fleet-foton-serbia-beograd",
+   "n": "Eco Fleet (Foton Serbia)",
+   "t": "o",
+   "b": [
+    "Foton"
+   ],
+   "g": "Beograd",
+   "a": "Vladimira Tomanovića 59",
+   "tel": "+381 11 6 555 211",
+   "tel2": "+381 11 6 555 212",
+   "web": "https://fotonserbia.rs/",
+   "oh": "pon–pet 9–17",
+   "lat": 44.776994,
+   "lon": 20.510865,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "fotonserbia.rs",
+     "u": "https://fotonserbia.rs/servis-i-odrzavanje",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-mig-nis",
+   "n": "Auto Mig",
+   "t": "o",
+   "b": [
+    "Foton",
+    "Mazda"
+   ],
+   "g": "Niš",
+   "ar": "Trupale",
+   "a": "Stevana Sinđelića 90",
+   "tel": "018/458-3720",
+   "tel2": "018/458-3721",
+   "web": "https://www.automig.rs/",
+   "oh": "pon–pet 8–15:30, sub 8–13",
+   "lat": 43.367379,
+   "lon": 21.838448,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "fotonserbia.rs",
+     "u": "https://fotonserbia.rs/novosti",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "automig.rs",
+     "u": "https://www.automig.rs/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "polovniautomobili.com",
+     "u": "https://www.polovniautomobili.com/auto-mg-commerce",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-porsche-sever-beograd",
+   "n": "Porsche Sever",
+   "t": "o",
+   "b": [
+    "Cupra",
+    "VW privredna vozila",
+    "Volkswagen"
+   ],
+   "g": "Beograd",
+   "a": "Zrenjaninski put 9",
+   "tel": "0800 801 811",
+   "web": "https://www.porsche-sever.rs",
+   "lat": 44.840683,
+   "lon": 20.489821,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "volkswagen.rs",
+     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "porsche-sever.rs",
+     "u": "https://www.porsche-sever.rs/kontakt",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dasweltauto.rs",
+     "u": "https://www.dasweltauto.rs/dealer-search",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-porsche-novi-sad-novi-sad",
+   "n": "Porsche Novi Sad",
+   "t": "o",
+   "b": [
+    "Audi",
+    "VW privredna vozila",
+    "Volkswagen"
+   ],
+   "g": "Novi Sad",
+   "a": "Zrenjaninski put 24",
+   "tel": "0800 801 811",
+   "web": "https://www.porsche-novisad.rs",
+   "lat": 45.294657,
+   "lon": 19.855422,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "volkswagen.rs",
+     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "porsche-novisad.rs",
+     "u": "https://www.porsche-novisad.rs/kontakt",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "odmah-dostupno.audi.rs",
+     "u": "https://odmah-dostupno.audi.rs/search?stock-cars=true&size=36",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-porsche-ada-porsche-inter-auto-beograd",
+   "n": "Porsche Ada (Porsche Inter Auto)",
+   "t": "o",
+   "b": [
+    "Audi",
+    "Cupra",
+    "Porsche"
+   ],
+   "g": "Beograd",
+   "a": "Radnička 4",
+   "tel": "0800 801 811",
+   "tel2": "+381 11 35 30 400",
+   "web": "https://www.porsche-ada.rs",
+   "oh": "pon–pet 8–16",
+   "lat": 44.785159,
+   "lon": 20.413911,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "cupraofficial.rs",
+     "u": "https://www.cupraofficial.rs/cupra-partneri",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "porsche-ada.rs",
+     "u": "https://www.porsche-ada.rs/kontakt",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "odmah-dostupno.audi.rs",
+     "u": "https://odmah-dostupno.audi.rs/search?stock-cars=true&size=36",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-bros-auto-nis",
+   "n": "Bros Auto",
+   "t": "o",
+   "b": [
+    "Audi",
+    "VW privredna vozila",
+    "Volkswagen"
+   ],
+   "g": "Niš",
+   "a": "Dimitrija Tucovića 185",
+   "tel": "+381 18 456 6800",
+   "web": "https://www.brosauto.rs",
+   "lat": 43.316594,
+   "lon": 21.842865,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "volkswagen.rs",
+     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "brosauto.rs",
+     "u": "https://www.brosauto.rs/kontakt",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "odmah-dostupno.audi.rs",
+     "u": "https://odmah-dostupno.audi.rs/search?stock-cars=true&size=36",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autokuca-tasic-subotica-subotica",
+   "n": "Autokuća Tasić Subotica",
+   "t": "o",
+   "b": [
+    "VW privredna vozila",
+    "Volkswagen"
+   ],
+   "g": "Subotica",
+   "a": "Franje Kluza 42",
+   "tel": "+381 24 415 05 00",
+   "web": "https://www.autokucatasic.rs",
+   "oh": "pon–pet 8–16, sub 8–13",
+   "lat": 46.086157,
+   "lon": 19.639925,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "volkswagen.rs",
+     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "autokucatasic.rs",
+     "u": "https://www.autokucatasic.rs/kontakt/autokuca-tasic-subotica",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autokuca-tasic-kragujevac-kragujevac",
+   "n": "Autokuća Tasić Kragujevac",
+   "t": "o",
+   "b": [
+    "VW privredna vozila",
+    "Volkswagen"
+   ],
+   "g": "Kragujevac",
+   "a": "Lepenički bulevar 45",
+   "tel": "+381 34 617 17 00",
+   "web": "https://www.autokucatasic.rs",
+   "oh": "pon–pet 8–17, sub 8–13",
+   "lat": 44.025695,
+   "lon": 20.935123,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "volkswagen.rs",
+     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "autokucatasic.rs",
+     "u": "https://www.autokucatasic.rs/kontakt/autokuca-tasic-kragujevac",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autokuca-tasic-jagodina-jagodina",
+   "n": "Autokuća Tasić Jagodina",
+   "t": "o",
+   "b": [
+    "VW privredna vozila",
+    "Volkswagen"
+   ],
+   "g": "Jagodina",
+   "a": "Slovenski put 25",
+   "tel": "+381 35 815 06 60",
+   "web": "https://www.autokucatasic.rs",
+   "oh": "pon–pet 8–16, sub 8–13",
+   "lat": 43.998473,
+   "lon": 21.264382,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "volkswagen.rs",
+     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "autokucatasic.rs",
+     "u": "https://www.autokucatasic.rs/kontakt/autokuca-tasic-jagodina",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autokomerc-komision-beograd",
+   "n": "Autokomerc Komision",
+   "t": "o",
+   "b": [
+    "VW privredna vozila",
+    "Volkswagen"
+   ],
+   "g": "Beograd",
+   "a": "Oblakovska bb",
+   "tel": "011 30 60 418",
+   "tel2": "+381 11 30 60 400",
+   "web": "https://www.autokomerckomision.rs",
+   "lat": 44.794343,
+   "lon": 20.460568,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "volkswagen.rs",
+     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "autokomerckomision.rs",
+     "u": "https://www.autokomerckomision.rs/kontakt",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "autokomerc.rs",
+     "u": "https://autokomerc.rs/kontakt",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-lakeauto-cacak",
+   "n": "Lakeauto",
+   "t": "o",
+   "b": [
+    "VW privredna vozila",
+    "Volkswagen"
+   ],
+   "g": "Čačak",
+   "a": "Bulevar Oslobodilaca Čačka 96 A",
+   "tel": "+381 32 5461 028",
+   "web": "https://www.vwlakeauto.rs",
+   "lat": 43.891572,
+   "lon": 20.385876,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "volkswagen.rs",
+     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "vwlakeauto.rs",
+     "u": "https://www.vwlakeauto.rs/kontakt",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-acp-automotive-sabac",
+   "n": "ACP Automotive",
+   "t": "o",
+   "b": [
+    "VW privredna vozila",
+    "Volkswagen"
+   ],
+   "g": "Šabac",
+   "a": "Obilazni put br.80a, Majur",
+   "tel": "+381 15 319 210",
+   "web": "https://www.vw-petrovic.rs",
+   "lat": 44.739964,
+   "lon": 19.683434,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "vw-petrovic.rs",
+     "u": "https://www.vw-petrovic.rs/kontakt",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "volkswagen.rs",
+     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "biznis.kurir.rs",
+     "u": "https://biznis.kurir.rs/amp/10032919/volkswagen-mreza-u-srbiji-bogatija-za-novi-prodajno-servisni-centar-u-sapcu",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autocentar-nr-pozarevac-pozarevac",
+   "n": "Autocentar NR Požarevac",
+   "t": "o",
+   "b": [
+    "Volkswagen"
+   ],
+   "g": "Požarevac",
+   "a": "Ljubičevska-naselje bb",
+   "tel": "+381 12 515 245",
+   "web": "https://www.vw-autocentarnr.rs",
+   "pos": "none",
+   "src": [
+    {
+     "l": "volkswagen.rs",
+     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "vw-autocentarnr.rs",
+     "u": "https://www.vw-autocentarnr.rs/kontakt",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autokomerc-centar-aerodrom-beograd",
+   "n": "Autokomerc centar Aerodrom",
+   "t": "o",
+   "b": [
+    "Audi"
+   ],
+   "g": "Beograd",
+   "ar": "Surčin",
+   "a": "Svetog Save 84/C",
+   "tel": "063 32 58 12",
+   "tel2": "+381 11 35 30 300",
+   "web": "https://www.autokomercaerodrom.rs",
+   "lat": 44.833173,
+   "lon": 20.311169,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "autokomercaerodrom.rs",
+     "u": "https://www.autokomercaerodrom.rs/kontakt",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "autokomerc.rs",
+     "u": "https://autokomerc.rs/kontakt",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "odmah-dostupno.audi.rs",
+     "u": "https://odmah-dostupno.audi.rs/search?stock-cars=true&size=36",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autocentar-manik-cacak",
+   "n": "Autocentar Manik",
+   "t": "o",
+   "b": [
+    "Audi",
+    "VW privredna vozila",
+    "Volkswagen"
+   ],
+   "g": "Čačak",
+   "a": "Ibarski put 13, Preljina",
+   "tel": "+381 32 380 190",
+   "web": "https://www.acmanik.co.rs",
+   "lat": 43.894781,
+   "lon": 20.434851,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "acmanik.co.rs",
+     "u": "https://www.acmanik.co.rs/kontakt",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autocacak-promet-pj-cacak-cacak",
+   "n": "Autočačak Promet PJ Čačak",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Čačak",
+   "a": "Konjevići BB",
+   "tel": "+381 32 303 540",
+   "tel2": "+381 32 303 541",
+   "web": "http://www.autocacak-promet.rs",
+   "oh": "pon–pet 8–16, sub 8–12",
+   "lat": 43.903306,
+   "lon": 20.398387,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autocacak-promet-pj-novi-beograd-beograd",
+   "n": "Autočačak Promet PJ Novi Beograd",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Beograd",
+   "ar": "Novi Beograd",
+   "a": "Bulevar Milutina Milankovića 9a",
+   "tel": "+381 11 3072 808",
+   "tel2": "+381 64 855 50 71",
+   "web": "http://www.autocacak-promet.rs",
+   "oh": "pon–pet 8–20, sub 8–13",
+   "lat": 44.811894,
+   "lon": 20.410732,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autocacak-promet-pj-krnjaca-beograd",
+   "n": "Autočačak Promet PJ Krnjača",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Beograd",
+   "ar": "Palilula",
+   "a": "Zrenjaninski put 83a",
+   "tel": "+381 11 3319 871",
+   "tel2": "+381 64 8555 052",
+   "web": "http://www.autocacak-promet.rs",
+   "oh": "pon–pet 8–16, sub 8–12",
+   "lat": 44.860128,
+   "lon": 20.478627,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autocacak-promet-pj-nis-nis",
+   "n": "Autočačak Promet PJ Niš",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Niš",
+   "a": "Vizantijski bulevar bb",
+   "tel": "+381 18 514 449",
+   "tel2": "+381 62 886 30 11",
+   "web": "http://www.autocacak-promet.rs",
+   "oh": "pon–pet 8–16, sub 8–12",
+   "lat": 43.324357,
+   "lon": 21.927149,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-centar-intersrem-novi-sad",
+   "n": "Auto Centar Intersrem",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Novi Sad",
+   "ar": "Veternik",
+   "a": "Novosadski put br. 112",
+   "tel": "+381 21 6851 814",
+   "tel2": "+381 62 251 109",
+   "web": "http://www.intersrem.co.rs/",
+   "oh": "pon–pet 8–16, sub 8–12",
+   "lat": 45.244499,
+   "lon": 19.774066,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "intersrem.co.rs",
+     "u": "http://www.intersrem.co.rs/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-alpros-servis-vozdovac-beograd",
+   "n": "Alpros – Servis Voždovac",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Beograd",
+   "ar": "Voždovac",
+   "a": "Vojvode Stepe 361",
+   "tel": "+381 62 595 190",
+   "tel2": "+381 11 7151 900",
+   "web": "http://www.skoda-alpros.rs/",
+   "oh": "pon–pet 8–18, svake treće subote 8–16",
+   "lat": 44.761513,
+   "lon": 20.4853,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "skoda-alpros.rs",
+     "u": "http://www.skoda-alpros.rs/kontakt",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-alpros-servis-vidikovac-beograd",
+   "n": "Alpros – Servis Vidikovac",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Beograd",
+   "a": "Pilota Mihaila Petrovića 77a",
+   "tel": "+381 11 7151 900",
+   "web": "http://www.skoda-alpros.rs/",
+   "oh": "pon–pet 8–17, svake treće subote 8–16",
+   "lat": 44.742277,
+   "lon": 20.41733,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "skoda-alpros.rs",
+     "u": "http://www.skoda-alpros.rs/kontakt",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-alpros-servis-rakovica-beograd",
+   "n": "Alpros – Servis Rakovica",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Beograd",
+   "ar": "Rakovica",
+   "a": "Milana Vujovića 5",
+   "tel": "+381 11 7151 900",
+   "web": "http://www.skoda-alpros.rs/",
+   "oh": "pon–pet 8–17, svake treće subote 8–16",
+   "lat": 44.767155,
+   "lon": 20.444118,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "skoda-alpros.rs",
+     "u": "http://www.skoda-alpros.rs/kontakt",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-centar-stojanovic-beograd",
+   "n": "Auto Centar Stojanović",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Beograd",
+   "ar": "Novi Beograd",
+   "a": "Jurija Gagarina 225",
+   "tel": "+381 11 655 76 40",
+   "tel2": "+381 11 655 76 41",
+   "web": "http://www.autocentarstojanovic.rs/",
+   "oh": "pon–pet 8–18, sub 8–15",
+   "lat": 44.799422,
+   "lon": 20.376392,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "autocentarstojanovic.rs",
+     "u": "http://www.autocentarstojanovic.rs/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-cirinac-beograd",
+   "n": "Ćirinac",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Beograd",
+   "a": "Višnjička 61V",
+   "tel": "+381 11 329 41 09",
+   "tel2": "+381 11 735 92 00",
+   "web": "https://www.skodacirinac.com/",
+   "oh": "pon–pet 9–17, sub 9–14",
+   "lat": 44.81863,
+   "lon": 20.517052,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "skodacirinac.com",
+     "u": "https://www.skodacirinac.com/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-aks-drive-sabac",
+   "n": "AKS Drive",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Šabac",
+   "a": "Obilazni put bb, Majur",
+   "tel": "+381 15 377 607",
+   "tel2": "+381 15 377 608",
+   "web": "http://www.aks-drive.co.rs/",
+   "oh": "pon–pet 9–17, sub 9–15",
+   "lat": 44.762013,
+   "lon": 19.640138,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "aks-drive.co.rs",
+     "u": "http://www.aks-drive.co.rs/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-hermes-subotica",
+   "n": "Auto-Hermes",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Subotica",
+   "ar": "Palić",
+   "a": "Horgoški put 19a",
+   "tel": "+381 24 603 603",
+   "web": "https://www.autohermes.rs/",
+   "oh": "pon–pet 8–16, sub 8–12",
+   "lat": 46.104378,
+   "lon": 19.740513,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "autohermes.rs",
+     "u": "https://www.autohermes.rs/servis/servis.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-tomic-auto-034-kragujevac",
+   "n": "Tomić auto 034",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Kragujevac",
+   "a": "Ulica Gornjomilanovačka 82a",
+   "tel": "+381 34 354 666",
+   "web": "https://www.tomicauto034.rs",
+   "oh": "pon–pet 8–16, sub 8–12",
+   "lat": 44.027262,
+   "lon": 20.854577,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-centar-cune-zrenjanin",
+   "n": "Auto centar Cune",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Zrenjanin",
+   "a": "Bagljaš zapad 7",
+   "tel": "+381 63 535 828",
+   "tel2": "+381 23 531 038",
+   "web": "https://autocentarcune.rs/",
+   "oh": "pon–pet 8–16, sub 8–14",
+   "lat": 45.383109,
+   "lon": 20.369702,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-abc-test-valjevo",
+   "n": "ABC Test",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Valjevo",
+   "a": "Ljubomira Pavlovića 13",
+   "tel": "+381 65 5220 260",
+   "tel2": "+381 14 220 250",
+   "web": "http://www.abc-test.rs",
+   "oh": "pon–pet 8–16, sub 8–13",
+   "lat": 44.272985,
+   "lon": 19.919262,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "abc-test.rs",
+     "u": "http://www.abc-test.rs",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-interauto-krusevac",
+   "n": "Interauto",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Kruševac",
+   "a": "Globoder",
+   "tel": "+381 37 3654 400",
+   "oh": "pon–pet 8–16, sub 9–15",
+   "pos": "none",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-fabo-020-novi-pazar",
+   "n": "Auto Fabo 020",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Novi Pazar",
+   "a": "Naselje Mur 5",
+   "tel": "+381 20 390 300",
+   "tel2": "+381 63 661 370",
+   "oh": "pon–pet 9–17, sub 9–15",
+   "lat": 43.122548,
+   "lon": 20.499261,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-centar-aca-paracin",
+   "n": "Auto Centar Aca",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Paraćin",
+   "a": "Tome Živanovića 46",
+   "tel": "+381 69 735 806",
+   "tel2": "+381 35 568 455",
+   "web": "https://autoaca.com/",
+   "oh": "pon–pet 8–17, sub 8–14",
+   "lat": 43.8714,
+   "lon": 21.40106,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "autoaca.com",
+     "u": "https://autoaca.com/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-servis-m-m-novi-sad",
+   "n": "Auto servis M&M",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Novi Sad",
+   "a": "Zadružna 47",
+   "tel": "+381 21 633 80 39",
+   "oh": "pon–pet 8–16, sub 8–14",
+   "lat": 45.288166,
+   "lon": 19.823203,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-servis-marcetic-pancevo",
+   "n": "Auto servis Marčetić",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Pančevo",
+   "a": "Novoseljanski put 157c",
+   "tel": "+381 13 373 344",
+   "tel2": "+381 63 218 369",
+   "oh": "pon–pet 8–16",
+   "lat": 44.8945,
+   "lon": 20.67832,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-servis-euro-car-sremska-mitrov",
+   "n": "Auto servis Euro-Car",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Sremska Mitrovica",
+   "a": "Arsenija Čarnojevića 25",
+   "tel": "+381 22 625 047",
+   "oh": "pon–pet 8–16:30, sub 8–14",
+   "lat": 44.971907,
+   "lon": 19.616591,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-centar-zoli-pozarevac",
+   "n": "Auto centar Žoli",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Požarevac",
+   "a": "Beogradski put bb",
+   "tel": "+381 12 51 51 30",
+   "oh": "pon–pet 8–18, sub 9–15",
+   "pos": "none",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-markovic-auto-arandjelovac",
+   "n": "Marković Auto",
+   "t": "o",
+   "b": [
+    "Škoda"
+   ],
+   "g": "Aranđelovac",
+   "a": "Orašački put bb",
+   "tel": "+381 34 727 660",
+   "oh": "pon–pet 8–17, sub 8–14",
+   "lat": 44.309971,
+   "lon": 20.597483,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "skoda-auto.rs",
+     "u": "https://www.skoda-auto.rs/kontakti/prodajnoservisnamreza",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-centar-banat-zrenjanin",
+   "n": "Auto centar Banat",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Renault"
+   ],
+   "g": "Zrenjanin",
+   "a": "Pere Dobrinovića 26",
+   "tel": "023/528-980",
+   "tel2": "060 6555031",
+   "web": "https://acbanat.rs/",
+   "oh": "pon–pet 8–16, sub 8–15",
+   "lat": 45.369707,
+   "lon": 20.410394,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/ac-banat/ac-banat.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "acbanat.rs",
+     "u": "https://acbanat.rs/kontakt/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-centar-krunic-nis",
+   "n": "Auto centar Krunić",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Renault"
+   ],
+   "g": "Niš",
+   "a": "Bul. Svetog Cara Konstantina 86a",
+   "tel": "018/454-2161",
+   "tel2": "018 4524532",
+   "oh": "pon–pet 8–17, sub 8–15",
+   "pos": "none",
+   "src": [
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/ac-krunic/ac-krunic.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-kuca-francuz-kragujevac",
+   "n": "Auto kuća Francuz",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Renault"
+   ],
+   "g": "Kragujevac",
+   "a": "Miodraga Vlajića Šuke 16",
+   "tel": "034/6336-235",
+   "oh": "pon–sub 9–16",
+   "lat": 44.023613,
+   "lon": 20.929697,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/ak-francuz/ak-francuz.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-kuca-francuz-jagodina",
+   "n": "Auto kuća Francuz",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Renault"
+   ],
+   "g": "Jagodina",
+   "a": "Kralja Aleksandra 28",
+   "tel": "035/8243-096",
+   "tel2": "035 8243095",
+   "oh": "pon–sub 9–16",
+   "lat": 43.963878,
+   "lon": 21.247526,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/ak-francuz/ak-francuz.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-kuca-sekulic-novi-sad",
+   "n": "Auto kuća Sekulić",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Renault"
+   ],
+   "g": "Novi Sad",
+   "ar": "Veternik",
+   "a": "Kralja Petra I 33a",
+   "tel": "021/822-062",
+   "web": "https://aksekulic.rs/",
+   "oh": "pon–pet 8–16:30",
+   "lat": 45.256397,
+   "lon": 19.764027,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/ak-sekulic/ak-sekulic.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "aksekulic.rs",
+     "u": "https://aksekulic.rs/odrzavanje.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-emil-frey-auto-centar-beograd",
+   "n": "Emil Frey Auto Centar",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Nissan",
+    "Renault"
+   ],
+   "g": "Beograd",
+   "ar": "Novi Beograd",
+   "a": "Sajmište 29",
+   "tel": "011 2018 011",
+   "tel2": "011 2018 012",
+   "web": "https://emilfreyautocentar.rs/",
+   "oh": "pon–pet 8–16, sub 9–14",
+   "lat": 44.812748,
+   "lon": 20.441345,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/emil-frey-auto-centar/emil-frey-auto-centar.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "nissan.rs",
+     "u": "https://www.nissan.rs/dealer-list.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-euro-car-stanic-vrnjacka-banja",
+   "n": "Euro Car Stanić",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Renault"
+   ],
+   "g": "Vrnjačka Banja",
+   "a": "Kneza Miloša 94",
+   "tel": "036 619 044",
+   "web": "https://eurocarstanic.rs/",
+   "oh": "pon–pet 8–16, sub 8–13",
+   "lat": 43.631943,
+   "lon": 20.904865,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/euro-car-stanic/euro-car-stanic.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "eurocarstanic.rs",
+     "u": "https://eurocarstanic.rs/kontakt/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-jevtovic-auto-cacak",
+   "n": "Jevtović Auto",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Renault"
+   ],
+   "g": "Čačak",
+   "ar": "Preljina",
+   "a": "Prislonica bb",
+   "tel": "032/301-134",
+   "tel2": "032/301-110",
+   "web": "https://jevtovicauto.rs/",
+   "oh": "pon–pet 8–16, sub 9–14",
+   "pos": "none",
+   "src": [
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/jevtovic-auto/jevtovic-auto.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "jevtovicauto.rs",
+     "u": "https://jevtovicauto.rs/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-b-auto-uzice",
+   "n": "B Auto",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Renault"
+   ],
+   "g": "Užice",
+   "ar": "Bela Zemlja",
+   "a": "Zlatiborska 71",
+   "tel": "031 57 00 18",
+   "tel2": "031 57 04 18",
+   "web": "https://www.bauto.rs/renault",
+   "oh": "pon–pet 8:30–16:30",
+   "lat": 43.821308,
+   "lon": 19.808471,
+   "pos": "osm",
+   "ev": "servis E-Tech pogona; stručnjaci imaju posebne sertifikate za dijagnostiku i servis elektromotora, baterijskih paketa i hibridnih menjača",
+   "evs": "s",
+   "src": [
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/b-auto/b-auto.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "bauto.rs",
+     "u": "https://www.bauto.rs/renault",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-psc-vukovic-sabac",
+   "n": "PSC Vuković",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Kia",
+    "Renault"
+   ],
+   "g": "Šabac",
+   "a": "Obilazni put bb",
+   "tel": "+381 15 303 303",
+   "tel2": "+381 66 8 303 303",
+   "web": "https://pscvukovic.rs/",
+   "oh": "pon–pet 8:30–17, sub 8:30–13:30",
+   "lat": 44.753513,
+   "lon": 19.661008,
+   "pos": "osm",
+   "ev": "za Renault i Dacia: specijalizovani tehničari za dijagnostiku i servis E-Tech pogonskih sistema i baterija; za Kia to ne navodi",
+   "evs": "s",
+   "src": [
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/psc-vukovic/psc-vukovic.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "kia.rs",
+     "u": "https://www.kia.rs/test_voznja",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-reno-sava-beograd",
+   "n": "Reno-Sava",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Renault"
+   ],
+   "g": "Beograd",
+   "ar": "Zvezdara",
+   "a": "Mirijevski bulevar 119",
+   "tel": "011/6557-020",
+   "tel2": "011/2085-975",
+   "web": "https://renosava.com/renault/",
+   "oh": "pon–pet 8–17, sub 8–13",
+   "lat": 44.803455,
+   "lon": 20.525427,
+   "pos": "osm",
+   "ev": "„servis električnih vozila“: tehničari osposobljeni za dijagnostiku i servis E-Tech pogonskih sistema i baterija (Renault i Dacia); sajt ne navodi na kojoj lokaciji",
+   "evs": "s",
+   "src": [
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/reno-sava/reno-sava.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "renosava.com",
+     "u": "https://renosava.com/renault/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-reno-sava-pancevo",
+   "n": "Reno-Sava",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Renault"
+   ],
+   "g": "Pančevo",
+   "a": "Novoseljanski put 62b",
+   "tel": "013/2190-190",
+   "tel2": "063/1127-104",
+   "web": "https://renosava.com/renault/",
+   "oh": "pon–pet 8–17, sub 8–13",
+   "lat": 44.894641,
+   "lon": 20.680353,
+   "pos": "osm",
+   "ev": "„servis električnih vozila“: tehničari osposobljeni za dijagnostiku i servis E-Tech pogonskih sistema i baterija (Renault i Dacia); sajt ne navodi na kojoj lokaciji",
+   "evs": "s",
+   "src": [
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/reno-sava/reno-sava.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "renosava.com",
+     "u": "https://renosava.com/renault/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-stojanov-auto-novi-sad",
+   "n": "Stojanov Auto",
+   "t": "o",
+   "b": [
+    "Dacia",
+    "Nissan",
+    "Renault"
+   ],
+   "g": "Novi Sad",
+   "a": "Zrenjaninski put 12",
+   "tel": "+381 21 21 00 488",
+   "web": "https://www.stojanovauto.rs/",
+   "oh": "pon–pet 8–16, sub 8–12:30",
+   "lat": 45.290051,
+   "lon": 19.853666,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "renault.rs",
+     "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dacia.rs",
+     "u": "https://www.dacia.rs/stojanov-auto/stojanov-auto.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "nissan.rs",
+     "u": "https://www.nissan.rs/dealer-list.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-marton-subotica",
+   "n": "Auto-Marton",
+   "t": "o",
+   "b": [
+    "Nissan"
+   ],
+   "g": "Subotica",
+   "a": "Batinska 6",
+   "web": "https://www.auto-marton.rs/",
+   "lat": 46.08483,
+   "lon": 19.636499,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "nissan.rs",
+     "u": "https://www.nissan.rs/dealer-list.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "auto-marton.rs",
+     "u": "https://www.auto-marton.rs/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-nikom-cars-kragujevac",
+   "n": "Nikom Cars",
+   "t": "o",
+   "b": [
+    "Nissan"
+   ],
+   "g": "Kragujevac",
+   "a": "Industrijska 20",
+   "tel": "+381600490959",
+   "web": "https://nikomcars.rs/",
+   "lat": 44.026403,
+   "lon": 20.945369,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "nissan.rs",
+     "u": "https://www.nissan.rs/dealer-list.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "nikomcars.rs",
+     "u": "https://www.nikomcars.rs/kontakt",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-hyundai-srbija-beograd",
+   "n": "Hyundai Srbija",
+   "t": "o",
+   "b": [
+    "Hyundai"
+   ],
+   "g": "Beograd",
+   "a": "Autoput 22F (ugao Milana Rešetara i Grmeč Nova)",
+   "tel": "+381 11 2252 401",
+   "web": "https://www.hyundai.rs/prodaja-i-servis/beograd/hyundai-srbija",
+   "oh": "pon–pet 7–18, sub 9–15",
+   "lat": 44.837092,
+   "lon": 20.359405,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "hyundai.rs",
+     "u": "https://www.hyundai.rs/prodaja-i-servis",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-ehom-auto-beograd",
+   "n": "Ehom Auto",
+   "t": "o",
+   "b": [
+    "Hyundai"
+   ],
+   "g": "Beograd",
+   "a": "Severni bulevar 6",
+   "tel": "+381 11 6752 497",
+   "web": "https://www.hyundai.rs/prodaja-i-servis/beograd/ehom-auto",
+   "oh": "pon–pet 8–17, sub 8–14",
+   "lat": 44.810994,
+   "lon": 20.492653,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "hyundai.rs",
+     "u": "https://www.hyundai.rs/prodaja-i-servis",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-ac-brajic-beograd",
+   "n": "AC Brajić",
+   "t": "o",
+   "b": [
+    "Hyundai",
+    "Opel"
+   ],
+   "g": "Beograd",
+   "a": "Ibarski put 101",
+   "tel": "+381 11 78 59 036",
+   "tel2": "+381 62 252 766",
+   "web": "https://www.hyundai.rs/prodaja-i-servis/beograd/ac-brajic-beograd",
+   "oh": "pon–pet 8–16, sub 9–14",
+   "lat": 44.709535,
+   "lon": 20.415859,
+   "pos": "src",
+   "src": [
+    {
+     "l": "hyundai.rs",
+     "u": "https://www.hyundai.rs/prodaja-i-servis/beograd/ac-brajic-beograd",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "opel.rs",
+     "u": "https://www.opel.rs/tools/opel-nadite-dilera.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-hyundai-srbija-novi-sad",
+   "n": "Hyundai Srbija",
+   "t": "o",
+   "b": [
+    "Hyundai"
+   ],
+   "g": "Novi Sad",
+   "a": "Rumenački put 6",
+   "tel": "021 2100 680",
+   "tel2": "021 2100 681",
+   "web": "https://www.hyundai.rs/prodaja-i-servis/novi-sad/hyundai-srbija",
+   "oh": "7–18",
+   "lat": 45.272419,
+   "lon": 19.806825,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "hyundai.rs",
+     "u": "https://www.hyundai.rs/prodaja-i-servis",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-ideal-auto-nis",
+   "n": "Ideal Auto",
+   "t": "o",
+   "b": [
+    "Hyundai"
+   ],
+   "g": "Niš",
+   "a": "Stari Put Beograd Niš bb",
+   "tel": "+381 18 4602 770",
+   "web": "https://www.hyundai.rs/prodaja-i-servis/nis/ideal-auto",
+   "oh": "pon–sub 8–17",
+   "pos": "none",
+   "src": [
+    {
+     "l": "hyundai.rs",
+     "u": "https://www.hyundai.rs/prodaja-i-servis",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-bavaria-team-cacak",
+   "n": "Bavaria Team",
+   "t": "o",
+   "b": [
+    "Hyundai"
+   ],
+   "g": "Čačak",
+   "ar": "Prislonica",
+   "a": "Ibarski put 30",
+   "tel": "+381 32 53 82 424",
+   "tel2": "066 800 2003",
+   "web": "https://www.hyundai.rs/prodaja-i-servis/cacak/bavaria-team-doo-cacak",
+   "oh": "pon–pet 8–16, sub 8–14",
+   "lat": 43.924736,
+   "lon": 20.408737,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "hyundai.rs",
+     "u": "https://www.hyundai.rs/prodaja-i-servis",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-maric-centar-kraljevo",
+   "n": "Marić Centar",
+   "t": "o",
+   "b": [
+    "Hyundai"
+   ],
+   "g": "Kraljevo",
+   "ar": "Kraljevo",
+   "a": "Ibarska 66-68, Progorelica",
+   "tel": "+381 36 821 204",
+   "tel2": "065 360 0001",
+   "web": "https://www.hyundai.rs/prodaja-i-servis/kraljevo/maric-centar",
+   "oh": "pon–pet 7:15–15:30, sub 7:15–14",
+   "lat": 43.684087,
+   "lon": 20.57453,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "hyundai.rs",
+     "u": "https://www.hyundai.rs/prodaja-i-servis",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-svetozarevo-promet-jagodina",
+   "n": "Svetozarevo Promet",
+   "t": "o",
+   "b": [
+    "Hyundai"
+   ],
+   "g": "Jagodina",
+   "a": "Kapetana Koče 91B",
+   "tel": "+381 35 8227 624",
+   "web": "https://www.hyundai.rs/prodaja-i-servis/jagodina/svetozarevo-promet",
+   "oh": "pon–pet 8–16:30, sub 8–15",
+   "lat": 43.987378,
+   "lon": 21.261627,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "hyundai.rs",
+     "u": "https://www.hyundai.rs/prodaja-i-servis",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-kpm-automobili-zrenjanin",
+   "n": "KPM Automobili",
+   "t": "o",
+   "b": [
+    "Hyundai"
+   ],
+   "g": "Zrenjanin",
+   "a": "Pere Dobrinovića 26",
+   "tel": "+381 23 523 427",
+   "tel2": "060 655 5086",
+   "web": "https://www.hyundai.rs/prodaja-i-servis/zrenjanin/KPM-automobili",
+   "oh": "pon–pet 8–16, sub 8–15",
+   "lat": 45.369707,
+   "lon": 20.410394,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "hyundai.rs",
+     "u": "https://www.hyundai.rs/prodaja-i-servis",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-ac-brajic-sabac",
+   "n": "AC Brajić",
+   "t": "o",
+   "b": [
+    "Hyundai"
+   ],
+   "g": "Šabac",
+   "ar": "Majur",
+   "a": "Svetog Save 84",
+   "tel": "+381 15 375 390",
+   "tel2": "+381 62 225 150",
+   "web": "https://www.hyundai.rs/prodaja-i-servis/sabac/ac-brajic-doo",
+   "oh": "pon–pet 8–16, sub 9–14",
+   "lat": 44.767318,
+   "lon": 19.663305,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "hyundai.rs",
+     "u": "https://www.hyundai.rs/prodaja-i-servis",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-d-komerc-sombor",
+   "n": "D-Komerc",
+   "t": "o",
+   "b": [
+    "Hyundai"
+   ],
+   "g": "Sombor",
+   "a": "Konjovićeva 67",
+   "tel": "+381 25 419 363",
+   "tel2": "+381 25 418 487",
+   "web": "https://www.hyundai.rs/prodaja-i-servis/sombor/dkomerc",
+   "oh": "pon–pet 8–17, sub 9–14",
+   "pos": "none",
+   "src": [
+    {
+     "l": "hyundai.rs",
+     "u": "https://www.hyundai.rs/prodaja-i-servis",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-d-motors-group-subotica",
+   "n": "D-Motors Group",
+   "t": "o",
+   "b": [
+    "Ford",
+    "Hyundai"
+   ],
+   "g": "Subotica",
+   "a": "Beogradski put 66",
+   "tel": "+381 24 642 108",
+   "oh": "pon–pet 8–16, sub 9–13",
+   "lat": 46.08786,
+   "lon": 19.66757,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "hyundai.rs",
+     "u": "https://www.hyundai.rs/prodaja-i-servis/subotica/dmotors-group-subotica",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "ford.rs",
+     "u": "https://ford.rs/dealerships",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "advalue.online",
+     "u": "https://advalue.online/serviceform/zakazite-servis/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-kia-centar-beograd-beograd",
+   "n": "Kia Centar Beograd",
+   "t": "o",
+   "b": [
+    "Kia"
+   ],
+   "g": "Beograd",
+   "ar": "Zemun",
+   "a": "Autoput za Novi Sad 98",
+   "tel": "+381 11 316 54 96",
+   "tel2": "+381 62 80 99 111",
+   "web": "https://beograd.kia.rs/",
+   "oh": "pon–pet 7–20, sub 8–15",
+   "lat": 44.862378,
+   "lon": 20.352327,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "kia.rs",
+     "u": "https://www.kia.rs/test_voznja",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "beograd.kia.rs",
+     "u": "https://beograd.kia.rs/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-petric-cacak",
+   "n": "Auto Petrić",
+   "t": "o",
+   "b": [
+    "Kia"
+   ],
+   "g": "Čačak",
+   "ar": "Ljubić",
+   "a": "Bulevar Tanaska Rajića 17",
+   "tel": "+381 32 358581",
+   "tel2": "+381 63 547744",
+   "web": "https://www.autopetric.rs/",
+   "oh": "8–17",
+   "lat": 43.903093,
+   "lon": 20.357472,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "kia.rs",
+     "u": "https://www.kia.rs/test_voznja",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "autopetric.rs",
+     "u": "https://www.autopetric.rs/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-velja-auto-nis",
+   "n": "Velja Auto",
+   "t": "o",
+   "b": [
+    "Kia"
+   ],
+   "g": "Niš",
+   "a": "Bulevar 12. Februar 64c",
+   "tel": "018 5229 18",
+   "tel2": "018 5280 25",
+   "web": "https://www.kiaveljaauto.rs/",
+   "oh": "pon–pet 8–19, sub 8–16",
+   "pos": "none",
+   "src": [
+    {
+     "l": "kia.rs",
+     "u": "https://www.kia.rs/test_voznja",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "kiaveljaauto.rs",
+     "u": "https://www.kiaveljaauto.rs/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-mtl-auto-novi-sad",
+   "n": "MTL Auto",
+   "t": "o",
+   "b": [
+    "Kia"
+   ],
+   "g": "Novi Sad",
+   "ar": "Veternik",
+   "a": "Kralja Petra I 97",
+   "tel": "+38162273083",
+   "tel2": "021/300-24-89",
+   "web": "https://www.mtlauto.rs/",
+   "oh": "pon–pet 8:30–16:30, sub 9–14",
+   "lat": 45.261155,
+   "lon": 19.770186,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "kia.rs",
+     "u": "https://www.kia.rs/test_voznja",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "mtlauto.rs",
+     "u": "https://www.mtlauto.rs/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-turing-stanojevic-beograd",
+   "n": "Auto Turing Stanojević",
+   "t": "o",
+   "b": [
+    "Toyota"
+   ],
+   "g": "Beograd",
+   "a": "Smederevski put 35",
+   "tel": "+381 11 341 0041",
+   "web": "https://www.toyota-turing.rs/",
+   "oh": "pon–pet 8–16, sub 9–14",
+   "lat": 44.768145,
+   "lon": 20.560817,
+   "pos": "src",
+   "src": [
+    {
+     "l": "toyota.rs",
+     "u": "https://www.toyota.rs/contact/dealers/list",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "kong-proxy-intranet.toyota-europe.com",
+     "u": "https://kong-proxy-intranet.toyota-europe.com/dxp/dealers/api/toyota/rs/sr/all",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-broker-bogatic",
+   "n": "Broker",
+   "t": "o",
+   "b": [
+    "Toyota"
+   ],
+   "g": "Bogatić",
+   "a": "Mike Vitomirovića 88",
+   "tel": "+381 15 778 6111",
+   "web": "https://www.toyotabroker.co.rs/",
+   "oh": "pon–pet 8–16, sub 9–14",
+   "lat": 44.846129,
+   "lon": 19.490483,
+   "pos": "src",
+   "src": [
+    {
+     "l": "toyota.rs",
+     "u": "https://www.toyota.rs/contact/dealers/list",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "kong-proxy-intranet.toyota-europe.com",
+     "u": "https://kong-proxy-intranet.toyota-europe.com/dxp/dealers/api/toyota/rs/sr/all",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-gota-car-novi-sad",
+   "n": "Gota Car",
+   "t": "o",
+   "b": [
+    "Citroën",
+    "Lexus",
+    "Toyota"
+   ],
+   "g": "Novi Sad",
+   "a": "Zrenjaninski put 6",
+   "tel": "+381 21 215 5450",
+   "web": "https://www.toyota.rs/retailers/gota-car",
+   "oh": "pon–pet 8–16, sub 8–13",
+   "lat": 45.288603,
+   "lon": 19.852697,
+   "pos": "src",
+   "src": [
+    {
+     "l": "kong-proxy-intranet.toyota-europe.com",
+     "u": "https://kong-proxy-intranet.toyota-europe.com/dxp/dealers/api/toyota/rs/sr/all",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "lexus.rs",
+     "u": "https://www.lexus.rs/contact/dealers/lexus-partneri",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "citroen.rs",
+     "u": "https://www.citroen.rs/alati/pronadji-prodajno-servisni-centar.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-gota-car-subotica",
+   "n": "Gota Car",
+   "t": "o",
+   "b": [
+    "Toyota"
+   ],
+   "g": "Subotica",
+   "a": "Senćanski put 209B",
+   "tel": "+381 65 333 8884",
+   "web": "https://www.toyotagotacar.com/",
+   "oh": "pon–pet 8–16, sub 8–13",
+   "lat": 46.070769,
+   "lon": 19.71173,
+   "pos": "src",
+   "src": [
+    {
+     "l": "kong-proxy-intranet.toyota-europe.com",
+     "u": "https://kong-proxy-intranet.toyota-europe.com/dxp/dealers/api/toyota/rs/sr/all",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-sanel-kragujevac",
+   "n": "Sanel",
+   "t": "o",
+   "b": [
+    "Toyota"
+   ],
+   "g": "Kragujevac",
+   "a": "Liparska kosa 20",
+   "tel": "+381 34 635 9459",
+   "web": "https://www.toyota.rs/retailers/sanel",
+   "oh": "pon–pet 8–16, sub 9–14",
+   "lat": 44.005455,
+   "lon": 20.953226,
+   "pos": "src",
+   "src": [
+    {
+     "l": "kong-proxy-intranet.toyota-europe.com",
+     "u": "https://kong-proxy-intranet.toyota-europe.com/dxp/dealers/api/toyota/rs/sr/all",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-techno-mk-auto-cacak",
+   "n": "Techno MK Auto",
+   "t": "o",
+   "b": [
+    "Citroën",
+    "Toyota"
+   ],
+   "g": "Čačak",
+   "a": "Bulevar Oslobodilaca bb",
+   "tel": "+381 32 545 4040",
+   "web": "https://www.toyota.rs/retailers/toyota-mk-auto",
+   "oh": "pon–pet 8–16, sub 9–13",
+   "lat": 43.89702,
+   "lon": 20.392095,
+   "pos": "src",
+   "src": [
+    {
+     "l": "kong-proxy-intranet.toyota-europe.com",
+     "u": "https://kong-proxy-intranet.toyota-europe.com/dxp/dealers/api/toyota/rs/sr/all",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "citroen.rs",
+     "u": "https://www.citroen.rs/alati/pronadji-prodajno-servisni-centar.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-toyota-centar-beograd-ada-beograd",
+   "n": "Toyota Centar Beograd Ada",
+   "t": "o",
+   "b": [
+    "Toyota"
+   ],
+   "g": "Beograd",
+   "ar": "Čukarica",
+   "a": "Radnička 22",
+   "tel": "+381 11 331 6345",
+   "web": "https://www.toyota.rs/retailers/toyota-centar-beograd-ada",
+   "oh": "pon–pet 8–17, sub 9–14",
+   "lat": 44.782955,
+   "lon": 20.410204,
+   "pos": "src",
+   "src": [
+    {
+     "l": "kong-proxy-intranet.toyota-europe.com",
+     "u": "https://kong-proxy-intranet.toyota-europe.com/dxp/dealers/api/toyota/rs/sr/all",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-toyota-centar-beograd-sever-beograd",
+   "n": "Toyota Centar Beograd Sever",
+   "t": "o",
+   "b": [
+    "Toyota"
+   ],
+   "g": "Beograd",
+   "ar": "Palilula",
+   "a": "Zrenjaninski put 28a",
+   "tel": "+381 11 331 6350",
+   "web": "https://www.toyota.rs/retailers/toyota-centar-beograd",
+   "oh": "pon–pet 8–17, sub 9–14",
+   "lat": 44.842162,
+   "lon": 20.491046,
+   "pos": "src",
+   "src": [
+    {
+     "l": "kong-proxy-intranet.toyota-europe.com",
+     "u": "https://kong-proxy-intranet.toyota-europe.com/dxp/dealers/api/toyota/rs/sr/all",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-lexus-beograd-beograd",
+   "n": "Lexus Beograd",
+   "t": "o",
+   "b": [
+    "Lexus"
+   ],
+   "g": "Beograd",
+   "ar": "Palilula",
+   "a": "Zrenjaninski put 28a",
+   "web": "https://www.lexus.rs/contact/dealers/lexus-partneri",
+   "oh": "pon–pet 8–17, sub 9–14",
+   "lat": 44.84237,
+   "lon": 20.491033,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "lexus.rs",
+     "u": "https://www.lexus.rs/contact/dealers/lexus-partneri",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "kong-proxy-intranet.toyota-europe.com",
+     "u": "https://kong-proxy-intranet.toyota-europe.com/dxp/dealers/api/lexus/rs/sr/all",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-dipem-beograd",
+   "n": "Dipem",
+   "t": "o",
+   "b": [
+    "Mazda"
+   ],
+   "g": "Beograd",
+   "ar": "Novi Beograd",
+   "a": "Đorđa Stanojevića 41",
+   "tel": "+381 11 234 11 99",
+   "tel2": "+381 11 234 01 67",
+   "web": "https://dipem.mazda.rs/",
+   "oh": "pon–pet 8–16, sub 8–14",
+   "lat": 44.811642,
+   "lon": 20.394369,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "mazda.rs",
+     "u": "https://www.mazda.rs/probna-voznja",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dipem.mazda.rs",
+     "u": "https://dipem.mazda.rs/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-dipem-cacak",
+   "n": "Dipem",
+   "t": "o",
+   "b": [
+    "Mazda"
+   ],
+   "g": "Čačak",
+   "a": "Ibarski put 88",
+   "tel": "+381 32 381 882",
+   "web": "https://dipem.mazda.rs/",
+   "oh": "pon–pet 8–17, sub 8–13",
+   "lat": 43.903844,
+   "lon": 20.411977,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "mazda.rs",
+     "u": "https://www.mazda.rs/probna-voznja",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "dipem.mazda.rs",
+     "u": "https://dipem.mazda.rs/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-grand-motors-nis",
+   "n": "Grand Motors",
+   "t": "o",
+   "b": [
+    "Ford"
+   ],
+   "g": "Niš",
+   "a": "Bulevar Nikole Tesle bb",
+   "web": "https://ford.rs/dealerships",
+   "lat": 43.335623,
+   "lon": 21.879773,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "ford.rs",
+     "u": "https://ford.rs/dealerships",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "advalue.online",
+     "u": "https://advalue.online/serviceform/zakazite-servis/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autostad-motors-cacak",
+   "n": "Autostad Motors",
+   "t": "o",
+   "b": [
+    "Ford"
+   ],
+   "g": "Čačak",
+   "a": "Bulevar Tanaska Rajića 176",
+   "lat": 43.901255,
+   "lon": 20.383303,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "ford.rs",
+     "u": "https://ford.rs/dealerships",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "advalue.online",
+     "u": "https://advalue.online/serviceform/zakazite-servis/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-market-group-ford-sabac-sabac",
+   "n": "Auto Market Group (Ford Šabac)",
+   "t": "o",
+   "b": [
+    "Ford"
+   ],
+   "g": "Šabac",
+   "a": "Obilazni put bb",
+   "web": "https://fordsabac.rs/",
+   "oh": "pon–sub 8–17",
+   "lat": 44.739838,
+   "lon": 19.679813,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "ford.rs",
+     "u": "https://ford.rs/dealerships",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "advalue.online",
+     "u": "https://advalue.online/serviceform/zakazite-servis/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "automarketgroup.rs",
+     "u": "https://www.automarketgroup.rs/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-viva-company-kragujevac",
+   "n": "Viva Company",
+   "t": "o",
+   "b": [
+    "Ford"
+   ],
+   "g": "Kragujevac",
+   "a": "Miodraga Vlajića Šuke 16",
+   "tel": "034/6-333-044",
+   "tel2": "034/6-332-188",
+   "web": "https://www.vivacompany.rs/",
+   "lat": 44.023508,
+   "lon": 20.929831,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "ford.rs",
+     "u": "https://ford.rs/dealerships",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "advalue.online",
+     "u": "https://advalue.online/serviceform/zakazite-servis/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "vivacompany.rs",
+     "u": "https://www.vivacompany.rs/kontakt",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autogarant-cacak",
+   "n": "Autogarant",
+   "t": "o",
+   "b": [
+    "BMW",
+    "Fiat",
+    "Jeep",
+    "MINI",
+    "Peugeot"
+   ],
+   "g": "Čačak",
+   "a": "Ibarski put 100",
+   "tel": "032/515-00-33",
+   "tel2": "032/380-050",
+   "web": "https://www.autogarant.rs",
+   "oh": "pon–pet 8–16:30, sub 8–13",
+   "lat": 43.903231,
+   "lon": 20.412661,
+   "pos": "src",
+   "src": [
+    {
+     "l": "bmw.rs",
+     "u": "https://www.bmw.rs/sr/fastlane/bmw-dileri/Autogarant.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "fiat.rs",
+     "u": "https://www.fiat.rs/alati/spisak-dilera",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "jeep.rs",
+     "u": "https://www.jeep.rs/spisak-dilera",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-ak-kompresor-beograd-2",
+   "n": "AK Kompresor",
+   "t": "o",
+   "b": [
+    "Citroën"
+   ],
+   "g": "Beograd",
+   "ar": "Rakovica",
+   "a": "Patrijarha Dimitrija 1-3",
+   "tel": "011 71 55 574",
+   "web": "https://www.akkompresor.rs",
+   "oh": "pon–pet 8–17, sub 8–14",
+   "lat": 44.751257,
+   "lon": 20.446534,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "citroen.rs",
+     "u": "https://www.citroen.rs/alati/kontaktirajte-citroen-servisni-centar.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "akkompresor.rs",
+     "u": "https://www.akkompresor.rs",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autopromet-beograd",
+   "n": "Autopromet",
+   "t": "o",
+   "b": [
+    "Citroën",
+    "Opel"
+   ],
+   "g": "Beograd",
+   "ar": "Novi Beograd",
+   "a": "Autoput 5",
+   "tel": "011 319 31 50",
+   "web": "https://www.autopromet.rs",
+   "oh": "pon–pet 8–16, sub 8–13",
+   "lat": 44.82717,
+   "lon": 20.384911,
+   "pos": "src",
+   "src": [
+    {
+     "l": "citroen.rs",
+     "u": "https://www.citroen.rs/alati/pronadji-prodajno-servisni-centar.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "autopromet.rs",
+     "u": "https://www.autopromet.rs",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "opel.rs",
+     "u": "https://www.opel.rs/tools/opel-nadite-dilera.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-west-beocar-beograd",
+   "n": "West Beocar",
+   "t": "o",
+   "b": [
+    "Citroën",
+    "Opel"
+   ],
+   "g": "Beograd",
+   "ar": "Zemun",
+   "a": "Autoput Beograd – Novi Sad 150d",
+   "tel": "065/ 98 72 713",
+   "oh": "pon–pet 8–16, sub 9–14",
+   "lat": 44.872367,
+   "lon": 20.334876,
+   "pos": "src",
+   "src": [
+    {
+     "l": "citroen.rs",
+     "u": "https://www.citroen.rs/alati/pronadji-prodajno-servisni-centar.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "opel.rs",
+     "u": "https://www.opel.rs/tools/opel-nadite-dilera.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-as-backa-topola",
+   "n": "Auto AS",
+   "t": "o",
+   "b": [
+    "Citroën"
+   ],
+   "g": "Bačka Topola",
+   "a": "Jovana Mikića 40",
+   "tel": "024 718 500",
+   "oh": "pon–pet 7–15",
+   "lat": 45.820422,
+   "lon": 19.631459,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "citroen.rs",
+     "u": "https://www.citroen.rs/alati/pronadji-prodajno-servisni-centar.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-dtc-beograd",
+   "n": "DTC",
+   "t": "o",
+   "b": [
+    "Citroën"
+   ],
+   "g": "Beograd",
+   "ar": "Zemun",
+   "a": "Ugrinovački put 89",
+   "tel": "011 2190 712",
+   "oh": "pon–pet 8–16, sub 8–14",
+   "lat": 44.856328,
+   "lon": 20.357505,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "citroen.rs",
+     "u": "https://www.citroen.rs/alati/pronadji-prodajno-servisni-centar.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-ms-auto-pancevo",
+   "n": "MS Auto",
+   "t": "o",
+   "b": [
+    "Citroën"
+   ],
+   "g": "Pančevo",
+   "a": "Bulevar Mihajla Pupina 1a",
+   "tel": "013 300 350",
+   "tel2": "013 345 044",
+   "web": "https://www.msauto.rs",
+   "oh": "pon–pet 9–17, sub 9–13",
+   "pos": "none",
+   "src": [
+    {
+     "l": "citroen.rs",
+     "u": "https://www.citroen.rs/alati/pronadji-prodajno-servisni-centar.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "msauto.rs",
+     "u": "https://www.msauto.rs",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-mirkos-pozarevac",
+   "n": "Auto Mirkos",
+   "t": "o",
+   "b": [
+    "Citroën",
+    "Opel"
+   ],
+   "g": "Požarevac",
+   "a": "Ljubičevska - naselje bb",
+   "tel": "012 515 220",
+   "tel2": "064 822 34 16",
+   "oh": "pon–pet 8–17, sub 8–14",
+   "pos": "none",
+   "src": [
+    {
+     "l": "citroen.rs",
+     "u": "https://www.citroen.rs/alati/pronadji-prodajno-servisni-centar.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "opel.rs",
+     "u": "https://www.opel.rs/tools/opel-nadite-dilera.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-kdd-auto-beograd",
+   "n": "KDD Auto",
+   "t": "o",
+   "b": [
+    "Opel",
+    "Peugeot"
+   ],
+   "g": "Beograd",
+   "ar": "Palilula",
+   "a": "Višnjička 53a",
+   "tel": "011/20-22-320",
+   "tel2": "011/20-22-321",
+   "web": "https://kddauto.rs",
+   "oh": "pon–pet 8–17, sub 8–13",
+   "lat": 44.817797,
+   "lon": 20.513145,
+   "pos": "src",
+   "ev": "servisira i popravlja Peugeot vozila bez obzira na vrstu pogona, uključujući električna; posebni alati i stalne obuke osoblja",
+   "evs": "s",
+   "src": [
+    {
+     "l": "kddauto.rs",
+     "u": "https://kddauto.rs/servis-i-rezervni-delovi/odrzavanje-i-servis/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "opel.rs",
+     "u": "https://www.opel.rs/tools/opel-nadite-dilera.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-nikom-auto-nis",
+   "n": "Nikom Auto",
+   "t": "o",
+   "b": [
+    "Fiat"
+   ],
+   "g": "Niš",
+   "a": "Bulevar Nikole Tesle 11",
+   "tel": "+381 60 64 33 103",
+   "oh": "pon–pet 8–16, sub 8–16",
+   "lat": 43.330229,
+   "lon": 21.896183,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "fiat.rs",
+     "u": "https://www.fiat.rs/alati/spisak-dilera",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-ada-motors-beograd",
+   "n": "Ada Motors",
+   "t": "o",
+   "b": [
+    "Fiat",
+    "Jeep"
+   ],
+   "g": "Beograd",
+   "ar": "Čukarica",
+   "a": "Radnička 22",
+   "tel": "011 69 63 737",
+   "web": "https://www.adamotors.rs",
+   "oh": "pon–pet 9–17, sub 9–14",
+   "lat": 44.782423,
+   "lon": 20.409878,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "adamotors.rs",
+     "u": "https://www.adamotors.rs",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "fiat.rs",
+     "u": "https://www.fiat.rs/alati/spisak-dilera",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "jeep.rs",
+     "u": "https://www.jeep.rs/spisak-dilera",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-aks-automotive-sabac",
+   "n": "AKS Automotive",
+   "t": "o",
+   "b": [
+    "Fiat"
+   ],
+   "g": "Šabac",
+   "a": "Obilazni put 51, Majur",
+   "tel": "+381 62 246 617",
+   "tel2": "+381 15 376 411",
+   "web": "https://aks-automotive.co.rs",
+   "oh": "pon–pet 9–17, sub 9–15",
+   "lat": 44.762013,
+   "lon": 19.640138,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "aks-automotive.co.rs",
+     "u": "https://aks-automotive.co.rs/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "fiat.rs",
+     "u": "https://www.fiat.rs/alati/spisak-dilera",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-kuca-annus-subotica",
+   "n": "Auto kuća Annus",
+   "t": "o",
+   "b": [
+    "Fiat"
+   ],
+   "s": [
+    "dijagnostika_baterije",
+    "redovan_servis"
+   ],
+   "g": "Subotica",
+   "a": "Vareška 18",
+   "tel": "+381 24 41 55 366",
+   "tel2": "+381 65 95 58 282",
+   "web": "https://annus.rs",
+   "oh": "pon–pet 8–16, sub 8–12",
+   "lat": 46.101883,
+   "lon": 19.649517,
+   "pos": "osm",
+   "ev": "tehničari imaju EVOservice sertifikat za bezbedan rad na električnim i hibridnim vozilima: dijagnostika i rad na visokonaponskim sistemima",
+   "evs": "s",
+   "src": [
+    {
+     "l": "fiat.rs",
+     "u": "https://www.fiat.rs/alati/spisak-dilera",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "annus.rs",
+     "u": "https://annus.rs/auto-kuca-annus-sertifikovana-za-servis-elektricnih-i-hibridnih-vozila/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-psc-circom-zrenjanin",
+   "n": "PSC Ćircom",
+   "t": "o",
+   "b": [
+    "Fiat",
+    "Opel"
+   ],
+   "g": "Zrenjanin",
+   "a": "Ognjeslava Kostovića 5",
+   "tel": "+381 23 315 0000",
+   "web": "https://www.opelcircom.rs",
+   "oh": "pon–pet 8–16, sub 8–14",
+   "lat": 45.351628,
+   "lon": 20.422087,
+   "pos": "src",
+   "src": [
+    {
+     "l": "opelcircom.rs",
+     "u": "https://www.opelcircom.rs/kontakt",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "fiat.rs",
+     "u": "https://www.fiat.rs/alati/spisak-dilera",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "opel.rs",
+     "u": "https://www.opel.rs/tools/opel-nadite-dilera.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-emil-frey-auto-centar-beograd-2",
+   "n": "Emil Frey Auto Centar",
+   "t": "o",
+   "b": [
+    "Mercedes-Benz"
+   ],
+   "g": "Beograd",
+   "ar": "Novi Beograd",
+   "a": "Omladinskih brigada 33",
+   "tel": "+381 11 301 9001",
+   "web": "https://www.mercedes-benz.rs/locate-us/emil-frey-auto-centar/",
+   "oh": "pon–pet 8:30–18, sub 9–14",
+   "lat": 44.81076,
+   "lon": 20.40177,
+   "pos": "src",
+   "src": [
+    {
+     "l": "mercedes-benz.rs",
+     "u": "https://www.mercedes-benz.rs/locate-us/emil-frey-auto-centar/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "vans.mercedes-benz.rs",
+     "u": "https://vans.mercedes-benz.rs/locate-us/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-ak-mikom-novi-sad",
+   "n": "AK MikoM",
+   "t": "o",
+   "b": [
+    "Mercedes-Benz"
+   ],
+   "g": "Novi Sad",
+   "a": "Temerinski put 22a",
+   "tel": "+381 21 489 5600",
+   "web": "https://www.mercedes-benz.rs/locate-us/ak-miko-m/",
+   "oh": "pon–pet 8–17, sub 9–14",
+   "lat": 45.293938,
+   "lon": 19.828245,
+   "pos": "src",
+   "src": [
+    {
+     "l": "mercedes-benz.rs",
+     "u": "https://www.mercedes-benz.rs/locate-us/ak-miko-m/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "vans.mercedes-benz.rs",
+     "u": "https://vans.mercedes-benz.rs/locate-us/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-jevtovic-cars-cacak",
+   "n": "Jevtović Cars",
+   "t": "o",
+   "b": [
+    "Mercedes-Benz"
+   ],
+   "g": "Čačak",
+   "a": "Prislonica bb",
+   "tel": "+381 32 301 100",
+   "web": "https://www.mercedes-benz.rs/locate-us/jevtovic-cars/",
+   "oh": "pon–pet 8–18, sub 8–14",
+   "lat": 43.935344,
+   "lon": 20.412229,
+   "pos": "src",
+   "src": [
+    {
+     "l": "mercedes-benz.rs",
+     "u": "https://www.mercedes-benz.rs/locate-us/jevtovic-cars/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "vans.mercedes-benz.rs",
+     "u": "https://vans.mercedes-benz.rs/locate-us/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-bisevac-novi-pazar",
+   "n": "Biševac",
+   "t": "o",
+   "b": [
+    "Mercedes-Benz"
+   ],
+   "g": "Novi Pazar",
+   "a": "Ivanca bb",
+   "tel": "+381 69 606 389",
+   "web": "https://www.mercedes-benz.rs/locate-us/bisevac/",
+   "oh": "pon–sub 9–17",
+   "lat": 43.14996,
+   "lon": 20.45679,
+   "pos": "src",
+   "src": [
+    {
+     "l": "mercedes-benz.rs",
+     "u": "https://www.mercedes-benz.rs/locate-us/bisevac/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "vans.mercedes-benz.rs",
+     "u": "https://vans.mercedes-benz.rs/locate-us/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-kemoimpex-auto-nis",
+   "n": "Kemoimpex Auto",
+   "t": "o",
+   "b": [
+    "Mercedes-Benz"
+   ],
+   "g": "Niš",
+   "a": "Vizantijski bulevar bb",
+   "tel": "+381 18 415 0206",
+   "web": "https://www.mercedes-benz.rs/locate-us/kemoimpex-auto/",
+   "oh": "pon–pet 8–18, sub 8–14",
+   "lat": 43.32176,
+   "lon": 21.93353,
+   "pos": "src",
+   "src": [
+    {
+     "l": "mercedes-benz.rs",
+     "u": "https://www.mercedes-benz.rs/locate-us/kemoimpex-auto/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "vans.mercedes-benz.rs",
+     "u": "https://vans.mercedes-benz.rs/locate-us/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-autoservis-djordje-ilic-martinci",
+   "n": "Autoservis Đorđe Ilić",
+   "t": "o",
+   "b": [
+    "Mercedes-Benz"
+   ],
+   "g": "Martinci",
+   "a": "Vojvodjanska 145",
+   "tel": "+381 22 268 064",
+   "web": "https://www.mercedes-benz.rs/locate-us/autoservis-mercedes-benz-djordje-ilic/",
+   "oh": "pon–pet 8–16, sub 8–14",
+   "lat": 45.01324,
+   "lon": 19.44211,
+   "pos": "src",
+   "src": [
+    {
+     "l": "mercedes-benz.rs",
+     "u": "https://www.mercedes-benz.rs/locate-us/autoservis-mercedes-benz-djordje-ilic/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "vans.mercedes-benz.rs",
+     "u": "https://vans.mercedes-benz.rs/locate-us/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-servis-triaska-backi-petrovac",
+   "n": "Auto Servis Triaška",
+   "t": "o",
+   "b": [
+    "Mercedes-Benz"
+   ],
+   "g": "Bački Petrovac",
+   "a": "Lenjinova 42",
+   "tel": "+381 21 780 382",
+   "web": "https://www.mercedes-benz.rs/locate-us/auto-servis-triaska/",
+   "oh": "pon–pet 7:30–17, sub 8–13",
+   "lat": 45.35562,
+   "lon": 19.58648,
+   "pos": "src",
+   "src": [
+    {
+     "l": "mercedes-benz.rs",
+     "u": "https://www.mercedes-benz.rs/locate-us/auto-servis-triaska/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "vans.mercedes-benz.rs",
+     "u": "https://vans.mercedes-benz.rs/locate-us/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-delta-motors-cukarica-beograd",
+   "n": "Delta Motors Čukarica",
+   "t": "o",
+   "b": [
+    "BMW",
+    "MINI"
+   ],
+   "g": "Beograd",
+   "ar": "Čukarica",
+   "a": "Radnička 8",
+   "tel": "011/3539-928",
+   "tel2": "011/3539-981",
+   "web": "https://www.bmw.rs/sr/fastlane/bmw-dileri/delta-motors.html",
+   "oh": "pon–pet 8:30–16:30, sub 9–14",
+   "lat": 44.783973,
+   "lon": 20.411809,
+   "pos": "src",
+   "src": [
+    {
+     "l": "bmw.rs",
+     "u": "https://www.bmw.rs/sr/fastlane/bmw-dileri/delta-motors.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "mini.rs",
+     "u": "https://www.mini.rs/sr_RS/home/footer/contact-us.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-delta-motors-novi-beograd-beograd",
+   "n": "Delta Motors Novi Beograd",
+   "t": "o",
+   "b": [
+    "BMW",
+    "MINI"
+   ],
+   "g": "Beograd",
+   "ar": "Novi Beograd",
+   "a": "Omladinskih brigada 33a",
+   "tel": "011/2010-911",
+   "web": "https://www.bmw.rs/sr/fastlane/bmw-dileri/delta-motors-novi-beograd.html",
+   "oh": "pon–pet 8–17, sub 9–14",
+   "lat": 44.80367,
+   "lon": 20.40228,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "bmw.rs",
+     "u": "https://www.bmw.rs/sr/fastlane/bmw-dileri/delta-motors-novi-beograd.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "mini.rs",
+     "u": "https://www.mini.rs/sr_RS/home/serv/mini-service.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-bmw-radulovic-beograd",
+   "n": "BMW Radulović",
+   "t": "o",
+   "b": [
+    "BMW",
+    "MINI"
+   ],
+   "g": "Beograd",
+   "a": "Dragoslava Srejovića 4b",
+   "tel": "011/208-0180",
+   "web": "https://radulovic-group.com",
+   "oh": "pon–pet 8:30–16:30, sub 8–13",
+   "lat": 44.780231,
+   "lon": 20.468426,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "bmw.rs",
+     "u": "https://www.bmw.rs/sr/fastlane/bmw-dileri/radulovic.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "mini.rs",
+     "u": "https://www.mini.rs/sr_RS/home/serv/mini-service.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-bmw-radulovic-novi-sad",
+   "n": "BMW Radulović",
+   "t": "o",
+   "b": [
+    "BMW",
+    "MINI"
+   ],
+   "g": "Novi Sad",
+   "ar": "Veternik",
+   "a": "Novosadski put 71",
+   "tel": "021/820-888",
+   "web": "https://radulovic-group.com",
+   "oh": "pon–pet 8:30–16:30, sub 8–13",
+   "lat": 45.24622,
+   "lon": 19.773693,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "bmw.rs",
+     "u": "https://www.bmw.rs/sr/fastlane/bmw-dileri/NoviSad-Radulovic.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "mini.rs",
+     "u": "https://www.mini.rs/sr_RS/home/serv/mini-service.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-stefanovic-auto-mladenovac",
+   "n": "Stefanović Auto",
+   "t": "o",
+   "b": [
+    "BMW",
+    "MINI"
+   ],
+   "g": "Mladenovac",
+   "ar": "Vlaška",
+   "a": "Beogradski put 160",
+   "tel": "011/8201-900",
+   "web": "https://bmw-stefanovic.rs",
+   "oh": "pon–sub 9–17",
+   "lat": 44.487769,
+   "lon": 20.657477,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "bmw.rs",
+     "u": "https://www.bmw.rs/sr/fastlane/bmw-dileri/Stefanovic.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "mini.rs",
+     "u": "https://www.mini.rs/sr_RS/home/serv/mini-service.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-mitic-company-nis",
+   "n": "Mitić Company",
+   "t": "o",
+   "b": [
+    "BMW",
+    "MINI"
+   ],
+   "g": "Niš",
+   "a": "Dimitrija Tucovića 173",
+   "tel": "018/451-9519",
+   "web": "https://www.bmw.rs/sr/fastlane/bmw-dileri/Mitic.html",
+   "oh": "pon–pet 9–17, sub 9–14",
+   "lat": 43.315998,
+   "lon": 21.849186,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "bmw.rs",
+     "u": "https://www.bmw.rs/sr/fastlane/bmw-dileri/Mitic.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "mini.rs",
+     "u": "https://www.mini.rs/sr_RS/home/serv/mini-service.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-elite-motors-novi-pazar",
+   "n": "Elite Motors",
+   "t": "o",
+   "b": [
+    "BMW",
+    "MINI"
+   ],
+   "g": "Novi Pazar",
+   "a": "Mihajla Pupina 5",
+   "tel": "+381 69 266 2662",
+   "web": "https://www.bmw.rs/sr/fastlane/bmw-dileri/elite-motors.html",
+   "oh": "pon–pet 9–17, sub 9–14:30",
+   "lat": 43.156477,
+   "lon": 20.528073,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "bmw.rs",
+     "u": "https://www.bmw.rs/sr/fastlane/bmw-dileri/elite-motors.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-volvo-car-centar-beograd-beograd",
+   "n": "Volvo Car centar Beograd",
+   "t": "o",
+   "b": [
+    "Volvo"
+   ],
+   "g": "Beograd",
+   "ar": "Zemun",
+   "a": "Autoput za Novi Sad 98",
+   "tel": "011-404-0351",
+   "tel2": "011-404-0352",
+   "web": "https://beograd.volvocars.rs",
+   "oh": "pon–pet 7–20, sub 8–15",
+   "lat": 44.86188165,
+   "lon": 20.353224745,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "beograd.volvocars.rs",
+     "u": "https://beograd.volvocars.rs/ovlasceni_servis",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "volvocars.com",
+     "u": "https://www.volvocars.com/rs/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-british-motors-beograd",
+   "n": "British Motors",
+   "t": "o",
+   "b": [
+    "Jaguar"
+   ],
+   "g": "Beograd",
+   "a": "Zrenjaninski put 11",
+   "tel": "+381 11 413 44 44",
+   "web": "https://www.britishmotors.rs",
+   "oh": "pon–pet 8:30–17, sub 8–13",
+   "lat": 44.841781,
+   "lon": 20.489454,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "britishmotors.rs",
+     "u": "https://www.britishmotors.rs/kontakt",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-auto-centar-elektra-beograd",
+   "n": "Auto centar Elektra",
+   "t": "n",
+   "m": [
+    "Tesla",
+    "Nissan Leaf",
+    "BMW i3",
+    "Renault Zoe",
+    "Renault Fluence",
+    "Renault Twizy",
+    "VW e-Golf",
+    "Peugeot iOn",
+    "Smart EV",
+    "Hyundai Ioniq 5",
+    "Maxus EV80"
+   ],
+   "s": [
+    "dijagnostika_baterije",
+    "popravka_baterije",
+    "bms",
+    "obc",
+    "pogon",
+    "softver"
+   ],
+   "g": "Beograd",
+   "ar": "Voždovac",
+   "a": "Vojvode Stepe 283a",
+   "tel": "065 43 43 460",
+   "web": "https://acelektra.rs/",
+   "lat": 44.768562,
+   "lon": 20.480628,
+   "pos": "src",
+   "ev": "Servis svih vrsta elektro automobila: dijagnostika visokonaponskih sistema, testiranje i servis baterija, servis OBC punjača, rad na visokonaponskim komponentama Tesla, električna komercijalna vozila",
+   "src": [
+    {
+     "l": "acelektra.rs",
+     "u": "https://acelektra.rs/Kontakt/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-ev-clinic-beograd-beograd",
+   "n": "EV Clinic Beograd",
+   "t": "n",
+   "m": [
+    "Tesla",
+    "Renault",
+    "BMW",
+    "Smart",
+    "Mercedes",
+    "Volkswagen",
+    "Fiat",
+    "Kia",
+    "Audi",
+    "Porsche"
+   ],
+   "s": [
+    "dijagnostika_baterije",
+    "popravka_baterije",
+    "bms",
+    "obc",
+    "pogon",
+    "softver",
+    "klima",
+    "redovan_servis",
+    "provera_polovnog",
+    "preuzimanje"
+   ],
+   "g": "Beograd",
+   "ar": "Palilula",
+   "a": "Crnog Bora 10",
+   "tel": "+381 64 6484 939",
+   "web": "https://evclinic-beograd.rs/",
+   "oh": "pon–pet 8–17",
+   "lat": 44.854074,
+   "lon": 20.488543,
+   "pos": "src",
+   "ev": "Sva elektrifikovana vozila, električna i hibridna: popravka VN baterija (moduli, ćelije), pogonske jedinice, OBC, DC/DC, invertor, termalni sistemi i toplotne pumpe, softver i kodiranje, provera stanja baterije i vozila pre kupovine",
+   "src": [
+    {
+     "l": "evclinic-beograd.rs",
+     "u": "https://evclinic-beograd.rs/our-services/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "evclinic.eu",
+     "u": "https://evclinic.eu/about-us/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "autoservisisrbije.rs",
+     "u": "https://autoservisisrbije.rs/pronadjite-servis/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-kibost-car-beograd",
+   "n": "KiBOST Car",
+   "t": "n",
+   "m": [
+    "Tesla"
+   ],
+   "s": [
+    "mobilni_servis",
+    "redovan_servis"
+   ],
+   "g": "Beograd",
+   "a": "Hercegovačka 19 (BW Vista)",
+   "tel": "+381 65 44 333 11",
+   "web": "https://kibostcar.com/mobilna-servisna-sluzba-tesle/",
+   "lat": 44.80775,
+   "lon": 20.450391,
+   "pos": "osm",
+   "ev": "mobilna servisna služba za Tesla vozila: tehničari dolaze na adresu klijenta",
+   "src": [
+    {
+     "l": "kibostcar.com",
+     "u": "https://kibostcar.com/mobilna-servisna-sluzba-tesle/",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-ac-brajic-sabac-2",
+   "n": "AC Brajić",
+   "t": "o",
+   "b": [
+    "Opel"
+   ],
+   "g": "Šabac",
+   "a": "Loznički put bb",
+   "tel": "+381 15 375 516",
+   "lat": 44.75423,
+   "lon": 19.699751,
+   "pos": "src",
+   "src": [
+    {
+     "l": "opel.rs",
+     "u": "https://www.opel.rs/tools/opel-nadite-dilera.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-interauto-trade-cacak",
+   "n": "Interauto Trade",
+   "t": "o",
+   "b": [
+    "Opel"
+   ],
+   "g": "Čačak",
+   "a": "Preljina",
+   "tel": "032 380 000",
+   "lat": 43.91262,
+   "lon": 20.40698,
+   "pos": "src",
+   "src": [
+    {
+     "l": "opel.rs",
+     "u": "https://www.opel.rs/tools/opel-nadite-dilera.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-car-box-nis",
+   "n": "Car Box",
+   "t": "o",
+   "b": [
+    "Opel"
+   ],
+   "g": "Niš",
+   "a": "Bulevar Cara Konstantina 80-82",
+   "tel": "+381 18 550010",
+   "lat": 43.3025,
+   "lon": 21.98287,
+   "pos": "src",
+   "src": [
+    {
+     "l": "opel.rs",
+     "u": "https://www.opel.rs/tools/opel-nadite-dilera.html",
+     "d": "24.10.2026"
+    }
+   ]
+  }
+ ]
+}

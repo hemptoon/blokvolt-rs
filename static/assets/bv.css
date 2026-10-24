@@ -412,7 +412,7 @@ details.frow>summary.row::after{grid-area:chev;align-self:center}
 .dot.ac{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
 .dot.free{background:var(--volt);color:var(--vink)}
 .map-wrap{position:relative;min-height:0}
-#map{position:absolute;inset:0;background:#E9EBE6}
+#map,#smap{position:absolute;inset:0;background:#E9EBE6}
 .map-attr{position:absolute;left:10px;bottom:8px;z-index:2;max-width:calc(100% - 110px);font-size:11px;color:var(--ink2);background:rgba(255,255,255,.88);border-radius:8px;padding:4px 8px}
 .map-attr a{color:inherit}
 .map-legend{position:absolute;left:10px;top:10px;z-index:2;display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.94);border-radius:10px;padding:6px 10px;font-size:12.5px;box-shadow:var(--shadow)}
@@ -1611,3 +1611,38 @@ html.nl-in .nl-v-out,html:not(.nl-in) .nl-v-in{display:none!important}
 .addp .vf-warn{margin:0 0 12px}
 .addp .vf-warn p{margin:0 0 6px}
 @media (max-width:900px){.add-bar{bottom:12px}}
+
+/* ---------- service map (/servisi/), docs/RUNBOOK.md 3.31 ---------- */
+.dot.sv-o{background:var(--ink);color:#fff}
+.dot.sv-n{background:var(--volt);color:var(--vink);box-shadow:inset 0 0 0 2px var(--vink)}
+.dot.sv-o svg,.dot.sv-n svg{width:15px;height:15px}
+.st.sv .pr{font-size:12px;font-weight:600;color:var(--mut)}
+.sv-row{display:flex;gap:8px;margin-top:8px}
+.sv-row .select{flex:1;height:40px;font-size:15px}
+.sv-kind{margin:0 0 12px}
+.sv-same{margin:-4px 0 12px;font-size:14px;color:var(--mut,#5b6270)}
+.sv-same .lnk{background:none;border:0;padding:0;font:inherit;color:var(--ink,#0D111A);text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.sv-pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:650;line-height:1.2;padding:5px 10px;border-radius:999px}
+.sv-pill svg{width:14px;height:14px;flex:none}
+.sv-pill.sv-o{background:var(--ink);color:#fff}
+.sv-pill.sv-n{background:var(--volt);color:var(--vink)}
+.sv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.sv-card .cbox li{margin:4px 0}
+.sv-card .cbox li small{margin-top:1px}
+.sv-card .acts .btn svg{width:17px;height:17px;flex:none}
+.map-legend .l-svo{background:var(--ink);box-shadow:0 0 0 2px #fff inset}
+.map-legend .l-svn{background:var(--volt);box-shadow:0 0 0 2px var(--ink) inset}
+.sv-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 12px}
+.sv-stats div{border:1px solid var(--line);border-radius:12px;padding:8px 10px}
+.sv-stats b{display:block;font-size:20px;font-weight:760;line-height:1.1}
+.sv-stats span{display:block;font-size:12.5px;color:var(--mut)}
+.svc{columns:2 320px;column-gap:28px;margin:8px 0 0}
+.svc details{break-inside:avoid;border-top:1px solid var(--line);padding:8px 0}
+.svc summary{cursor:pointer;font-weight:650;font-size:15.5px}
+.svc summary .n{font-weight:500;color:var(--mut);margin-left:6px;font-size:14px}
+.svc ul{list-style:none;margin:6px 0 4px;padding:0}
+.svc li{padding:6px 0;border-top:1px dashed var(--line);font-size:14px;line-height:1.4}
+.svc li:first-child{border-top:0}
+.svc li .k{font-size:12.5px;color:var(--mut)}
+.svc li a{color:var(--ink)}
+@media (max-width:900px){.sv-stats{margin-bottom:8px}.map-top .sv-stats b{font-size:18px}}

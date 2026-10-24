@@ -4,6 +4,7 @@
     ["auto", "auta", "automobil", "automobila", "automobili", "vozilo", "kola", "car", "cars", "автомобиль", "машина", "электромобиль"],
     ["wallbox", "volbox", "volboks", "valboks", "walbox", "wolbox", "vollbox", "zidni punjač"],
     ["schuko", "šuko", "suko", "šuko utičnica", "obična utičnica"],
+    ["servis", "servisi", "auto servis", "autoservis", "ovlašćeni servis", "majstor", "mehaničar", "radionica", "popravka", "service", "repair", "сервис", "автосервис", "ремонт"],
     ["punjač", "punjači", "punjenje", "dopuniti", "napunim", "napuniti", "punim", "puniti", "charger", "chargers", "stanica za punjenje", "зарядка", "зарядки", "зарядное"],
     ["skupština", "skupština stanara", "stambena zajednica", "upravnik zgrade", "upravnik"],
     ["zgrada", "zgradi", "stan", "stambena zgrada", "blok", "apartment", "многоквартирный"],
