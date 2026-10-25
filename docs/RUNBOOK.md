@@ -1828,6 +1828,9 @@ the changed pages in `dist/` (grep for the new numbers) before deploying, and ch
 `CLOUDFLARE_API_TOKEN` — Pages: Edit only — and `CLOUDFLARE_ACCOUNT_ID`, set by the owner). So: commit (section 6), then
 check the run on github.com/hemptoon/blokvolt-rs/actions and the live site (step 6 below). `[skip deploy]` in the commit
 message skips it. The manual upload below is the fallback when Actions fails; its step 0 still applies.
+After the deploy the workflow also calls the newsletter tick (`POST /api/posta/tick`), so a scheduled run never needs a
+browser tab for it. Check a run without a browser: `curl -s https://api.github.com/repos/hemptoon/blokvolt-rs/actions/runs?per_page=3`
+(needs the repo attached to the session) or WebFetch of github.com/hemptoon/blokvolt-rs/actions; the live page — WebFetch with `?nc=<date>`.
 
 0. **Main first.** A direct upload replaces the whole site, and several sessions work on it. Right before packing,
    check that nobody committed since your clone: `git ls-remote origin main` must be your `HEAD` (or an ancestor of it).
@@ -1890,6 +1893,11 @@ to sign in, stop and tell the owner — never type credentials.
    That is only the local browser cache — it says nothing about what the site serves.
 
 ## 6. Commit — GitHub `hemptoon/blokvolt-rs` via the web upload page (owner's browser)
+
+**Preferred since 25.10.2026: plain git.** When the session has write access to the repo (GitHub linked in claude.ai and the
+repo attached — `add_repo` with push access), commit in the clone and `git push origin HEAD:main` (rebase on a rejected push,
+rebuild and re-run the checks). The push starts the deploy (section 5). No browser is needed. The web upload below is the
+fallback when the session cannot push.
 
 1. In the clone: `python3 scripts/gh_payload.py /mnt/user-data/outputs/.gh/payload.json.gz` — prints the
    changed files and the expected tree hash. (Deleted files cannot be committed this way; avoid deletions.)

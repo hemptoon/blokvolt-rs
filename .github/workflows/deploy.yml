@@ -40,3 +40,6 @@ jobs:
         run: >
           npx --yes wrangler@4 pages deploy dist --project-name=blokvolt --branch=main
           --commit-hash="$GITHUB_SHA" --commit-message="$(git log -1 --pretty=%s | cut -c1-300)" --commit-dirty=true
+      - name: Newsletter tick (sends a new preview or an approved issue at once instead of at the next scheduled tick)
+        continue-on-error: true
+        run: sleep 20 && curl -fsS --max-time 100 -X POST https://www.blokvolt.rs/api/posta/tick
