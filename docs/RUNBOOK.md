@@ -908,8 +908,9 @@ map asks `/api/nalog/ja` once and, when the browser's list belongs to that accou
 and sends every star as well; localStorage stays the offline copy. Nothing changes for readers without the cookie.
 
 Filters: one-of chips (Svi, Omiljeni, Brzi, AC, CHAdeMO, Besplatni, networks) plus the switch „Potvrđeni“, which
-combines with any of them (`?ok=1`; the old `?f=ok` still works). Card actions: „Navigacija“ opens Apple Maps on
-Apple devices and Google Maps elsewhere, with the other apps (Google Maps, Waze) linked under it; „Podeli“ uses the
+combines with any of them (`?ok=1`; the old `?f=ok` still works). Card actions: „Navigacija“ opens Google Maps
+everywhere (owner's decision 25.10.2026; before that Apple Maps came first on Apple devices), with the other apps
+(Apple Maps on Apple devices, Waze) linked under it; a reader's own choice of app is kept as 'bv:nav'; „Podeli“ uses the
 system share sheet or copies the `/mapa/#<id>` link. A price whose date is more than a year old gets the warning
 `p_old` (the Evolako app shows the same marker).
 
@@ -1821,6 +1822,12 @@ the changed pages in `dist/` (grep for the new numbers) before deploying, and ch
 `i18n` lines of the build output (3.9).
 
 ## 5. Deploy — Cloudflare Pages, project `blokvolt`, direct upload (owner's browser)
+
+**Since 25.10.2026 every commit to `main` deploys itself** (`.github/workflows/deploy.yml`: GitHub Actions builds with
+`build.py` + `check_links.py` and runs `wrangler pages deploy dist --project-name=blokvolt --branch=main`; repo secrets
+`CLOUDFLARE_API_TOKEN` — Pages: Edit only — and `CLOUDFLARE_ACCOUNT_ID`, set by the owner). So: commit (section 6), then
+check the run on github.com/hemptoon/blokvolt-rs/actions and the live site (step 6 below). `[skip deploy]` in the commit
+message skips it. The manual upload below is the fallback when Actions fails; its step 0 still applies.
 
 0. **Main first.** A direct upload replaces the whole site, and several sessions work on it. Right before packing,
    check that nobody committed since your clone: `git ls-remote origin main` must be your `HEAD` (or an ancestor of it).

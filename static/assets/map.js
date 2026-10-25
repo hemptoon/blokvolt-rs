@@ -71,14 +71,14 @@ const ICON = {
   road: svg('<path d="M6 21 9 3M18 21 15 3M12 5v2.5M12 11v2.5M12 17v2.5"/>'),
   loc: svg('<circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>')
 };
-// directions: Apple Maps first on Apple devices (it is the default there), Google Maps first elsewhere, Waze always.
+// directions: Google Maps first everywhere (owner's decision 25.10.2026), Apple Maps second on Apple devices, Waze always.
 // The app a reader opens a route in comes first from then on ('bv:nav' in this browser). Google: dir_action=navigate starts
 // turn-by-turn at once in the Maps app on a phone; coordinates only, no API key.
 const IS_APPLE = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent) && !/Android/.test(navigator.userAgent);
 const NAV_KEY = 'bv:nav', NAV_NAME = { google: 'Google Maps', apple: 'Apple Maps', waze: 'Waze' };
 let NAV_PREF = '';
 try { NAV_PREF = localStorage.getItem(NAV_KEY) || ''; } catch (e) { NAV_PREF = ''; }
-function navApps() { return IS_APPLE ? ['apple', 'google', 'waze'] : ['google', 'waze']; }
+function navApps() { return IS_APPLE ? ['google', 'apple', 'waze'] : ['google', 'waze']; }
 function navPref() { return navApps().indexOf(NAV_PREF) >= 0 ? NAV_PREF : navApps()[0]; }
 function setNavPref(a) {
   if (navApps().indexOf(a) < 0 || a === NAV_PREF) return;

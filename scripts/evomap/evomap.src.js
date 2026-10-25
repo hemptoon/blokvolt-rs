@@ -322,12 +322,12 @@
     coins: svg('<ellipse cx="12" cy="6.5" rx="6.5" ry="2.5"/><path d="M5.5 6.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5M5.5 11.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5"/>')
   };
   var CONN = { ccs2: 'CCS2', ccs1: 'CCS1', chademo: 'CHAdeMO', type2: 'Type 2', type1: 'Type 1', tesla: 'Tesla', gbt: 'GB/T', cee: 'CEE' };
-  // directions: Apple Maps first on Apple devices, Google Maps elsewhere (dir_action=navigate: turn-by-turn at once in the Maps app on
+  // directions: Google Maps first everywhere (owner, 25.10.2026), Apple Maps second on Apple devices (dir_action=navigate: turn-by-turn at once in the Maps app on
   // a phone), Waze always; coordinates only, no API key. The app the visitor opens a route in comes first for the rest of the visit
   // (kept in memory only: the privacy policy of evolako.rs names no other browser storage)
   var IS_APPLE = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent) && !/Android/.test(navigator.userAgent);
   var NAV_NAME = { google: 'Google Maps', apple: 'Apple Maps', waze: 'Waze' }, NAV_PREF = '';
-  function navApps() { return IS_APPLE ? ['apple', 'google', 'waze'] : ['google', 'waze']; }
+  function navApps() { return IS_APPLE ? ['google', 'apple', 'waze'] : ['google', 'waze']; }
   function navPref() { return navApps().indexOf(NAV_PREF) >= 0 ? NAV_PREF : navApps()[0]; }
   function navUrl(a, s) {
     var ll = s.lat + ',' + s.lon;
