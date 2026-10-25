@@ -92,6 +92,14 @@
    "park": {"t": "Parking: prva 2 sata besplatno, zatim 100 RSD po satu", "src": "BIG Fashion, uslovi parkinga", "d": "10.02.2026"},
    "oh": {"t": "Garaža 06–02 h", "h24": false, "w": [[360, 1560]], "src": "BIG Fashion, uslovi parkinga"},
    "src": [{"d": "own", "l": "BIG Fashion — uslovi parkinga", "u": "https://www.bigcenters.rs/novi-sad-big-fashion/uslovi-koriscenja-parkinga/", "upd": "2026-02-10"}]
+  },
+  "ocm-296382": {
+   "a": "Miladina Pećinara 2a, Zlatibor",
+   "ax": {"who": "all", "limit": "Najviše 3 sata", "t": "Dostupno svima"},
+   "fee": {"free": "all", "t": "Besplatno", "src": "Turistička organizacija Zlatibor, 25.10.2026"},
+   "v": {"s": "ok", "by": ["to"], "d": "25.10.2026"},
+   "note": "Po spisku Turističke organizacije Zlatibor punjač je sporog tipa, besplatan i dostupan svima, najviše 3 sata.",
+   "src": [{"d": "own", "l": "Turistička organizacija Zlatibor", "u": "https://www.zlatibor.org.rs/sr/novosti/vesti/punjaci-za-elektricne-automobile-na-zlatiboru", "upd": "2026-10-25"}]
   }
  }
 }

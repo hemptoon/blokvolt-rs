@@ -53,6 +53,8 @@
       v_sp: 'u aplikaciji mreže Emobility Spectra', v_ye: 'u aplikaciji mreže Yesla', v_bp: 'na sajtu operatera garaže Best in Parking',
       src_sp: 'aplikacija Emobility Spectra', src_ye: 'aplikacija Yesla', src_own: 'sajt vlasnika lokacije',
       v_none: 'Punjač je samo u otvorenim bazama: nema ga ni na spisku mreža ni na Google mapama. Možda više ne postoji ili nije javan. Proveri pre polaska.',
+      v_tim: 'Punjač je sa radnog spiska tima. Još ga nije potvrdio spisak mreže, sajt vlasnika mesta ni prijava vozača. Proveri pre polaska.', v_tim_d: 'Na spisku tima od {d}',
+      v_to: 'na stranici turističke organizacije', v_mr: 'na stranici mreže punjača', src_tim: 'dopuna tima BlokVolt', q_tim: 'Tačka je iz dopune tima i može odstupati nekoliko desetina metara.',
       v_old: 'Punjač je u otvorenim bazama i na Google mapama, ali bez skorijih potvrda: nijedna ocena vozača iz poslednjih godinu dana. Proveri pre polaska.',
       v_prob: 'Vozači u skorašnjim recenzijama pišu da punjač ne radi. Proveri pre polaska.',
       v_test: 'Po spisku mreže punjač je u probnom radu i još nije otvoren za sve. Proveri u aplikaciji pre polaska.',
@@ -132,6 +134,8 @@
       v_sp: 'in the Emobility Spectra network app', v_ye: 'in the Yesla network app', v_bp: 'on the garage operator Best in Parking’s website',
       src_sp: 'Emobility Spectra app', src_ye: 'Yesla app', src_own: 'owner’s website',
       v_none: 'This charger is only in the open databases: it is neither on the networks’ lists nor on Google Maps. It may no longer exist or may not be public. Check before you set off.',
+      v_tim: 'This charger is from the team’s working list. It has not yet been confirmed by a network list, the venue owner’s website or a driver report. Check before you set off.', v_tim_d: 'On the team list since {d}',
+      v_to: 'on a tourist organisation page', v_mr: 'on the charging network’s page', src_tim: 'BlokVolt team addition', q_tim: 'The point comes from a team addition and may be off by a few dozen metres.',
       v_old: 'This charger is in the open databases and on Google Maps, but without recent confirmation: no driver rating from the past year. Check before you set off.',
       v_prob: 'Drivers say in recent reviews that this charger doesn’t work. Check before you set off.',
       v_test: 'According to the network’s list, this charger is in trial operation and not yet open to everyone. Check the app before you set off.',
@@ -209,6 +213,8 @@
       v_sp: 'в приложении сети Emobility Spectra', v_ye: 'в приложении сети Yesla', v_bp: 'на сайте оператора гаража Best in Parking',
       src_sp: 'приложение Emobility Spectra', src_ye: 'приложение Yesla', src_own: 'сайт владельца',
       v_none: 'Эта зарядка есть только в открытых базах: её нет ни в списках сетей, ни на Google Картах. Возможно, её уже нет или она не публичная. Проверь перед поездкой.',
+      v_tim: 'Зарядка из рабочего списка команды. Её пока не подтвердили ни список сети, ни сайт владельца места, ни отзыв водителя. Проверь перед поездкой.', v_tim_d: 'В списке команды с {d}',
+      v_to: 'на странице туристической организации', v_mr: 'на странице зарядной сети', src_tim: 'дополнение команды BlokVolt', q_tim: 'Точка из дополнения команды и может отклоняться на несколько десятков метров.',
       v_old: 'Эта зарядка есть в открытых базах и на Google Картах, но без свежих подтверждений: ни одной оценки водителей за последний год. Проверь перед поездкой.',
       v_prob: 'Водители в недавних отзывах пишут, что зарядка не работает. Проверь перед поездкой.',
       v_test: 'По списку сети зарядка в тестовом режиме и открыта ещё не для всех. Проверь в приложении перед поездкой.',
@@ -890,13 +896,13 @@
   function verHtml(s) {
     var v = s.v || { s: 'nep', g: 'g_none' };
     if (v.s === 'ok') {
-      var VBY = { cg: 'v_cg', rm: 'v_rm', te: 'v_te', ps: 'v_ps', g: 'v_g', own: 'v_own', sp: 'v_sp', ye: 'v_ye', bp: 'v_bp' };
+      var VBY = { cg: 'v_cg', rm: 'v_rm', te: 'v_te', ps: 'v_ps', g: 'v_g', own: 'v_own', sp: 'v_sp', ye: 'v_ye', bp: 'v_bp', to: 'v_to', mr: 'v_mr' };
       var by = (v.by || []).map(function (b) { return VBY[b] ? T(VBY[b]) : ''; }).filter(Boolean).join('; ');
       return '<p class="evm-vf">' + IC.ok + '<span><b>' + esc(T('v_ok')) + '</b> ' + esc(by) + (v.d ? ' · ' + esc(dt(v.d)) : '') + '</span></p>';
     }
-    var why = v.s === 'prob' ? T('v_prob') : (v.g === 'test' ? T('v_test') : v.g === 'g_old' ? T('v_old') : T('v_none'));
+    var why = v.s === 'prob' ? T('v_prob') : (v.g === 'tim' ? T('v_tim') : v.g === 'test' ? T('v_test') : v.g === 'g_old' ? T('v_old') : T('v_none'));
     return '<div class="evm-vw' + (v.s === 'prob' ? ' no' : '') + '"><b>' + IC.warn + esc(v.s === 'prob' ? T('v_prob_t') : T('v_nep')) + '</b><p>' + esc(why) + '</p>' +
-      (v.d ? '<small>' + esc(fill(T('v_checked'), { d: dt(v.d) })) + '</small>' : '') + '</div>';
+      (v.d ? '<small>' + esc(fill(T(v.g === 'tim' ? 'v_tim_d' : 'v_checked'), { d: dt(v.d) })) + '</small>' : '') + '</div>';
   }
   function dms(v, pos, neg) {
     var a = Math.abs(v), dg = Math.floor(a), m = Math.floor((a - dg) * 60), sc = Math.round(((a - dg) * 60 - m) * 600) / 10;
@@ -912,7 +918,7 @@
   }
   function pointQ(s) {
     if (s.loc && s.loc.q) return s.loc.q;
-    return { cg: 'net', rm: 'net', te: 'net', ps: 'site', osm: 'osm', ocm: 'ocm' }[s.id.split('-')[0]] || '';
+    return { cg: 'net', rm: 'net', te: 'net', ps: 'site', osm: 'osm', ocm: 'ocm', ye: 'net', bp: 'net', sp: 'site', own: 'site', tim: 'tim' }[s.id.split('-')[0]] || '';
   }
   function whereHtml(s) {
     var L0 = s.loc || {}, ll = (+s.lat).toFixed(5) + ', ' + (+s.lon).toFixed(5), q = pointQ(s);
@@ -942,8 +948,8 @@
     var site = n && n.site ? n.site : '';
     var mail = 'mailto:hello@evolako.com?subject=' + encodeURIComponent(fill(T('mail_s'), { id: s.id })) + '&body=' + encodeURIComponent(title(s) + ' — ' + location.origin + location.pathname + '#' + s.id + '\n\n' + T('mail_b') + '\n');
     var SRC = { ocm: 'Open Charge Map', osm: 'OpenStreetMap', ps: 'JP Putevi Srbije', cg: 'Charge&GO', rm: T('src_rm'), te: 'Tesla', cga: T('src_cga'),
-      sp: T('src_sp'), ye: T('src_ye'), bp: 'Best in Parking', own: T('src_own') };
-    var srcs = s.src.filter(function (x) { return x.u; }).map(function (x) { return '<a href="' + esc(x.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(dt(x.upd)) + ')' : ''); }).join(' · ');
+      sp: T('src_sp'), ye: T('src_ye'), bp: 'Best in Parking', own: T('src_own'), tim: T('src_tim') };
+    var srcs = s.src.filter(function (x) { return x.u; }).map(function (x) { return '<a href="' + esc(x.u.charAt(0) === '/' ? 'https://www.blokvolt.rs' + x.u : x.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(dt(x.upd)) + ')' : ''); }).join(' · ');
     $card.innerHTML = '<div class="evm-cc" role="dialog" aria-label="' + esc(title(s)) + '"><span class="evm-grab" aria-hidden="true"></span>' +
       '<button class="evm-x" type="button" aria-label="' + esc(T('close')) + '">' + IC.x + '</button>' +
       (cardNear ? '<button class="evm-lnk evm-nr-back" type="button" data-nr="back">← ' + esc(T('nr_title')) + '</button>' : cardRt ? '<button class="evm-lnk evm-nr-back" type="button" data-rt="back">← ' + esc(T('rt_title')) + '</button>' : '') +
