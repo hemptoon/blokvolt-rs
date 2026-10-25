@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 24.10.2026
+updated: 25.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-24
+modified: 2026-10-25
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 25. oktobar 2026
+
+- [Električni automobili u Srbiji](/elektricni-automobili/): uz svaku marku sada stoji njen logotip — u spisku marki, na stranici marke, kod marki bez zvaničnog uvoznika i kod marki koje prodaju samo dostavna vozila. Logotipi služe samo da se marka lakše prepozna ([metodologija](/metodologija/#automobili)).
+
 ## 24. oktobar 2026
 
 - Nov odeljak [Električni automobili u Srbiji](/elektricni-automobili/): 36 marki sa zvaničnom prodajom električnih automobila — za svaku uvoznik, gradovi sa salonima, električni modeli, najniža javna cena i link na mrežu salona i servisa. Svaka marka ima svoju stranicu, na primer [BYD](/elektricni-automobili/byd/) ili [Tesla](/elektricni-automobili/tesla/), sa izvorima i datumom provere. Posebno su navedene najavljene marke, marke bez zvaničnog uvoznika i marke sa samo električnim dostavnim vozilima. Redosled je abecedni, a marka ne plaća mesto na spisku. Link „Automobili“ je u glavnom meniju.

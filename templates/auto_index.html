@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% from '_macros.html' import pagehead, sources as src_block %}
 {% from '_icons.html' import ic %}
+{% macro blogo(b, cls='') %}{% if b.logo %}<span class="lg w am-logo{% if b.logo_dark %} dark{% endif %}{% if cls %} {{ cls }}{% endif %}" aria-hidden="true"><img src="{{ b.logo }}" alt="" loading="lazy" decoding="async"></span>{% else %}<span class="lg mono{% if cls %} {{ cls }}{% endif %}" aria-hidden="true" translate="no">{{ b.name|mono }}</span>{% endif %}{% endmacro %}
 {# /elektricni-automobili/ — every brand with official sales of electric cars in Serbia (docs/RUNBOOK.md 3.32).
    Same columns for every brand, A–Z; data: content/data/automobili.json + content/data/ev-modeli.json. #}
 {% block jsonld %}<script type="application/ld+json">{
@@ -23,7 +24,7 @@
 <div class="sec" id="marke"><div class="sec-head"><h2>Marke, uvoznici i saloni</h2><a href="/podaci/cene-elektricnih-automobila/">Cene svih modela →</a></div>
 <p class="note">Abecedno. „Cena od“ je najniža javna cena električnog modela kod uvoznika, pre subvencije. Saloni: gradovi sa salonom ili ovlašćenim prodavcem.</p>
 <div class="tw stack am"><table><thead><tr><th>Marka</th><th>Uvoznik</th><th class="num">Modeli</th><th class="num">Cena od</th><th>Saloni</th></tr></thead><tbody>
-{% for b in official %}<tr id="m-{{ b.slug }}"><td data-label="Marka"><a class="am-b" href="{{ b.url }}"><span class="lg mono am-lg" aria-hidden="true" translate="no">{{ b.name|mono }}</span><span><b translate="no">{{ b.name }}</b>{% if b.models_short %}<small translate="no">{{ b.models_short }}</small>{% endif %}</span></a></td><td data-label="Uvoznik">{% if b.importer %}<span translate="no">{{ b.importer_short }}</span>{% else %}{{ b.importer_short }}{% endif %}</td><td data-label="Modeli" class="num">{{ b.n_models }}</td><td data-label="Cena od" class="num">{% if b.min %}<b>{{ b.min_txt }}</b>{% else %}<span class="muted">nije objavljena</span>{% endif %}</td><td data-label="Saloni">{% if b.cities %}{{ b.cities_short }}{% else %}<span class="muted">{{ b.no_cities }}</span>{% endif %}</td></tr>
+{% for b in official %}<tr id="m-{{ b.slug }}"><td data-label="Marka"><a class="am-b" href="{{ b.url }}">{{ blogo(b, 'am-lg') }}<span><b translate="no">{{ b.name }}</b>{% if b.models_short %}<small translate="no">{{ b.models_short }}</small>{% endif %}</span></a></td><td data-label="Uvoznik">{% if b.importer %}<span translate="no">{{ b.importer_short }}</span>{% else %}{{ b.importer_short }}{% endif %}</td><td data-label="Modeli" class="num">{{ b.n_models }}</td><td data-label="Cena od" class="num">{% if b.min %}<b>{{ b.min_txt }}</b>{% else %}<span class="muted">nije objavljena</span>{% endif %}</td><td data-label="Saloni">{% if b.cities %}{{ b.cities_short }}{% else %}<span class="muted">{{ b.no_cities }}</span>{% endif %}</td></tr>
 {% endfor %}</tbody></table></div>
 <p class="note">Provereno {{ checked }}. Cene se proveravaju jednom mesečno, sa izvorom i datumom: <a class="lnk" href="/podaci/cene-elektricnih-automobila/">cene električnih automobila</a>. Marka ne plaća mesto na spisku, a redosled je abecedni.</p>
 {% if texts.no_bev %}<p class="note">{{ texts.no_bev }}</p>{% endif %}{% if texts.unverified %}<p class="note">{{ texts.unverified }}</p>{% endif %}
@@ -31,17 +32,17 @@
 
 {% if lcv %}<div class="sec" id="dostavna"><details><summary>Marke sa samo električnim dostavnim vozilima ({{ lcv|length }})</summary>
 <div class="tw stack"><table><thead><tr><th>Marka</th><th>Uvoznik</th><th>Električni modeli</th></tr></thead><tbody>
-{% for b in lcv %}<tr><td data-label="Marka"><b translate="no">{{ b.name }}</b></td><td data-label="Uvoznik">{% if b.importer_short.startswith('nije') %}{{ b.importer_short }}{% else %}<span translate="no">{{ b.importer_short }}</span>{% endif %}{% if b.site %}<small><a href="{{ b.site }}" rel="noopener nofollow" translate="no">{{ b.domain }}</a></small>{% endif %}</td><td data-label="Električni modeli"><span translate="no">{{ b.models_short }}</span></td></tr>
+{% for b in lcv %}<tr><td data-label="Marka"><span class="am-b">{{ blogo(b, 'am-lg') }}<b translate="no">{{ b.name }}</b></span></td><td data-label="Uvoznik">{% if b.importer_short.startswith('nije') %}{{ b.importer_short }}{% else %}<span translate="no">{{ b.importer_short }}</span>{% endif %}{% if b.site %}<small><a href="{{ b.site }}" rel="noopener nofollow" translate="no">{{ b.domain }}</a></small>{% endif %}</td><td data-label="Električni modeli"><span translate="no">{{ b.models_short }}</span></td></tr>
 {% endfor %}</tbody></table></div>
 <p class="note">Teretna i laka dostavna vozila (kategorija N1). Električne kombije prodaju i mnoge marke sa spiska iznad.</p>
 </details></div>{% endif %}
 
 {% if announced %}<div class="sec" id="najave"><div class="sec-head"><h2>Najavljene marke</h2></div>
-<div class="rows">{% for b in announced %}<a class="row" href="{{ b.url }}"><span class="lg mono" aria-hidden="true" translate="no">{{ b.name|mono }}</span><div><h3><span translate="no">{{ b.name }}</span> <span class="badge">Najava</span></h3><div class="sub">{{ b.row_sub }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
+<div class="rows">{% for b in announced %}<a class="row" href="{{ b.url }}">{{ blogo(b) }}<div><h3><span translate="no">{{ b.name }}</span> <span class="badge">Najava</span></h3><div class="sub">{{ b.row_sub }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
 </div>{% endif %}
 
 <div class="sec" id="bez-uvoznika"><div class="sec-head"><h2>Bez zvaničnog uvoznika</h2></div>
-<div class="rows">{% for b in noimp %}{% if b.page %}<a class="row" href="{{ b.url }}"><span class="lg mono" aria-hidden="true" translate="no">{{ b.name|mono }}</span><div><h3 translate="no">{{ b.name }}</h3><div class="sub">{{ b.row_sub }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% else %}<div class="row"><span class="lg mono" aria-hidden="true" translate="no">{{ b.name|mono }}</span><div><h3 translate="no">{{ b.name }}</h3><div class="sub">{{ b.row_sub }}</div></div><span></span></div>{% endif %}{% endfor %}</div>
+<div class="rows">{% for b in noimp %}{% if b.page %}<a class="row" href="{{ b.url }}">{{ blogo(b) }}<div><h3 translate="no">{{ b.name }}</h3><div class="sub">{{ b.row_sub }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% else %}<div class="row">{{ blogo(b) }}<div><h3 translate="no">{{ b.name }}</h3><div class="sub">{{ b.row_sub }}</div></div><span></span></div>{% endif %}{% endfor %}</div>
 <p class="note">Ove marke se u Srbiji kupuju samo uvozom — samostalno ili preko nezavisnog uvoznika: <a class="lnk" href="/elektricni-automobili/polovni/#uvoz">kako se uvozi</a>.</p>
 </div>
 

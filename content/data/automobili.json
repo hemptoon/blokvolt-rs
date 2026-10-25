@@ -78,6 +78,7 @@
   },
   {
    "slug": "bmw",
+   "logo_dark": true,
    "name": "BMW",
    "ev": "BMW",
    "importer": "Delta Motors (Delta Auto Grupa)",

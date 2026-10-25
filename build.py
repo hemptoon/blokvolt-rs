@@ -1551,6 +1551,14 @@ AUTO_LCV = sorted(AUTO.get('dostavna', []), key=lambda x: fold(x['name']))
 for x in AUTO_LCV:
     x['domain'] = _domain(x.get('site'))
     x['models_short'] = ', '.join(x.get('models', []))
+# brand logos: static/assets/marke/<slug>.png (transparent, trimmed; key = slug, else the folded name), only to recognise
+# the brand; logo_dark in automobili.json puts a light logo on the dark badge (RUNBOOK 3.32). No file = monogram.
+_LOGO_DIR = ROOT / 'static' / 'assets' / 'marke'
+for x in AUTO_BRANDS + AUTO_NOIMP + AUTO_LCV:
+    _key = x.get('slug') or re.sub(r'[^a-z0-9]+', '-', fold(x['name']).lower()).strip('-')
+    _p = _LOGO_DIR / f'{_key}.png'
+    if _p.exists():
+        x['logo'] = f"/assets/marke/{_key}.png?v={hashlib.sha1(_p.read_bytes()).hexdigest()[:10]}"
 _ATT = AUTO.get('texts', {})
 
 

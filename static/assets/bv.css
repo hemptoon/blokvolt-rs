@@ -1721,3 +1721,14 @@ html.nl-in .nl-v-out,html:not(.nl-in) .nl-v-in{display:none!important}
  .am .am-b{min-width:0}
  .am .am-lg{width:36px;height:36px;font-size:13px}
 }
+/* brand logos on /elektricni-automobili/ (RUNBOOK 3.32): wide badge, the logo kept whole */
+.lg.am-logo{width:96px;height:48px;border-radius:10px}
+.lg.am-logo img{left:9%;top:14%;width:82%;height:72%}
+.am .am-b .lg.am-logo{width:88px;height:44px}
+.lg.am-logo.am-hero{width:156px;height:78px;border-radius:16px}
+.lg.am-logo.am-hero img{left:10%;top:15%;width:80%;height:70%}
+.tw.am td .am-b b, .tw td .am-b>b{font-size:16px}
+@media (max-width:640px){.am .am-b .lg.am-logo{width:72px;height:36px}.lg.am-logo.am-hero{width:112px;height:56px;border-radius:12px}}
+.tw td .am-b{display:flex;align-items:center;gap:12px}
+td .am-b .lg.am-logo{width:88px;height:44px}
+@media (max-width:640px){td .am-b .lg.am-logo{width:72px;height:36px}}

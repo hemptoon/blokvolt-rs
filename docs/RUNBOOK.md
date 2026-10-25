@@ -1772,7 +1772,15 @@ Monthly, with the EV prices (3.5): open every brand's `site` and `dealers_url`, 
 cities; new brands from the news (announced → `najava`, selling → `zvanicno`); prices in ev-modeli.json with their own
 `seen` date. Neutrality: no ratings, no "best", no affiliate or tracking links, the same blocks for every brand, A–Z,
 nothing paid; independent importers and classifieds are listed by facts from their own sites, all found ones, without
-judging offers. No brand logos (monograms) and no photos except the Wikimedia Commons model photos of `ev-foto.json`.
+judging offers. Brand logos (since 25.10.2026, the owner asked for logos instead of monograms): `static/assets/marke/<slug>.png` — for
+rows without a page the folded name (`omoda-jaecoo`, `farizon`) — transparent, trimmed, at most 360×132 px, 96-colour
+PNG; `build.py` picks the file up by itself (`?v=` = SHA-1) and falls back to the monogram without one; `logo_dark: true`
+in automobili.json puts a light logo on the dark badge (BMW). Source order: the header logo of the brand's or the
+importer's Serbian site, else the logo in the Wikipedia/Wikimedia Commons infobox when it is the current one (not the
+group's and not a Chinese-only mark). Capture in the browser: show the logo alone at 1000×420 on a flat background,
+`zoom` with `save_to_disk`, then cut the background to transparency and trim (white logos are recoloured to ink).
+Logos are for recognition only; removed on a brand's request (methodology). No photos except the Wikimedia Commons
+model photos of `ev-foto.json`.
 
 Rules added with the full check of 24.10.2026 (36 brands with official sales, 84 priced models of 26 brands):
 - Price sources (`source_type` in ev-modeli.json): `official` and `pricelist_pdf` (the importer), `official_retailer`

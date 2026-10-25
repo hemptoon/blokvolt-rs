@@ -4,10 +4,10 @@ h1: Metodologija
 description: Odakle su podaci o firmama, cenama javnog punjenja i vestima, koliko često se proveravaju, šta znači „Ne pominje se“ i kako se prijavljuje greška.
 kicker: O sajtu · metodologija
 lead: Podaci o firmama su sa njihovih javnih stranica, po istim pravilima za sve.
-updated: 24.10.2026
+updated: 25.10.2026
 path: /metodologija/
 published: 2026-09-22
-modified: 2026-10-24
+modified: 2026-10-25
 priority: 0.5
 disclaimer: Primedbe na pravila prijavite na
 ---
@@ -67,7 +67,7 @@ Spisak marki je sastavljen sa zvaničnih srpskih sajtova marki i uvoznika, a za 
 
 - Cene su iz cenovnika i sa stranica modela kod uvoznika i proveravaju se jednom mesečno, kao na stranici [cene električnih automobila](/podaci/cene-elektricnih-automobila/). Kad uvoznik ne objavljuje cenu, uzima se cena sa sajta ovlašćenog prodavca; cena iz medija stoji samo uz model, a ne u tabeli cena.
 - Marka čija ponuda nije mogla da se proveri ne ulazi na spisak dok se ponuda ne potvrdi; takve marke su navedene ispod spiska.
-- Logotipi marki se ne prikazuju; fotografije modela su sa Wikimedia Commonsa, pod slobodnim licencama, sa autorima.
+- Logotipi marki služe samo da se marka lakše prepozna. Preuzeti su sa zvaničnih sajtova marki i uvoznika ili iz javnih zbirki logotipa, pripadaju svojim vlasnicima i na zahtev marke se uklanjaju. Fotografije modela su sa Wikimedia Commonsa, pod slobodnim licencama, sa autorima.
 - Oglasnici, programi polovnih vozila i nezavisni uvoznici na stranici [polovni i uvezeni](/elektricni-automobili/polovni/) navedeni su po podacima sa njihovih sajtova, svi koje je provera našla. Njihove ponude se ne ocenjuju, a mesto na spisku se ne plaća.
 
 </details>

@@ -6,7 +6,7 @@
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
-  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "dateModified": "{{ b.verified|iso }}", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}, "about": {"@type": "Brand", "name": {{ b.name|tojson }}}},
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "dateModified": "{{ b.verified|iso }}", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}, "about": {"@type": "Brand", "name": {{ b.name|tojson }}{% if b.logo %}, "logo": "{{ SITE }}{{ b.logo.split('?')[0] }}"{% endif %}}},
   {% if b.all_models %}{"@type": "ItemList", "name": {{ ('Električni modeli ' ~ b.name ~ ' u Srbiji')|tojson }}, "itemListElement": [{% for m in b.all_models %}{"@type": "ListItem", "position": {{ loop.index }}, "item": {"@type": "Car", "name": {{ m.name|tojson }}, "brand": {"@type": "Brand", "name": {{ b.name|tojson }}}, "fuelType": "Electricity"{% if m.url %}, "url": {{ m.url|tojson }}{% endif %}}}{{ ',' if not loop.last }}{% endfor %}]},
   {% endif %}{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Električni automobili", "item": "{{ SITE }}/elektricni-automobili/"}, {"@type": "ListItem", "position": 3, "name": {{ b.name|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
  ]
@@ -14,7 +14,7 @@
 {% block pagekey %} data-page="auto:{{ b.slug }}"{% endblock %}
 {% block pagehead %}<div class="ph" data-bv-note><div class="wrap">
 <nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a><span aria-hidden="true">›</span><a href="/elektricni-automobili/">Električni automobili</a></nav>
-<div class="ent"><span class="lg mono lg-lg" aria-hidden="true" translate="no">{{ b.name|mono }}</span><div><h1>{{ h1 }}</h1><p class="lead">{{ b.lead }}</p></div></div>
+<div class="ent">{% if b.logo %}<span class="lg w am-logo am-hero{% if b.logo_dark %} dark{% endif %}" aria-hidden="true"><img src="{{ b.logo }}" alt="" decoding="async"></span>{% else %}<span class="lg mono lg-lg" aria-hidden="true" translate="no">{{ b.name|mono }}</span>{% endif %}<div><h1>{{ h1 }}</h1><p class="lead">{{ b.lead }}</p></div></div>
 <div class="ph-actions">{% if b.site %}<a class="btn dark" href="{{ b.site }}" rel="noopener nofollow" target="_blank">{{ ic('ext') }}<span translate="no">{{ b.domain }}</span></a>{% endif %}{% if b.dealers_url %}<a class="btn" href="{{ b.dealers_url }}" rel="noopener nofollow" target="_blank">{{ ic('pin') }}Saloni i servisi</a>{% endif %}{% if b.srv_url %}<a class="btn" href="{{ b.srv_url }}">{{ ic('tool') }}Servisi na mapi</a>{% endif %}{% if b.used_url %}<a class="btn" href="{{ b.used_url }}" rel="noopener nofollow" target="_blank">{{ ic('search') }}Polovni u oglasima</a>{% endif %}</div>
 </div></div>{% endblock %}
 {% block content %}
