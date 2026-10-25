@@ -935,7 +935,7 @@ MAP_T = {
     'v_prob_t': 'Prijavljen kvar', 'v_prob': 'Vozači u skorašnjim recenzijama pišu da punjač ne radi. Proverite pre polaska.',
     'v_test': 'Po spisku mreže punjač je u probnom radu i još nije otvoren za sve. Proverite u aplikaciji pre polaska.',
     'v_tim': 'Punjač je dodao tim BlokVolta. Još ga nije potvrdio spisak mreže, sajt vlasnika mesta ni prijava vozača. Proverite pre polaska.',
-    'v_tim_d': 'Dodato {d}', 'src_tim': 'dopuna tima BlokVolt', 'q_tim': 'Tačka je iz dopune tima i može odstupati nekoliko desetina metara.',
+    'v_tim_d': 'Na spisku tima od {d}', 'src_tim': 'dopuna tima BlokVolt', 'q_tim': 'Tačka je iz dopune tima i može odstupati nekoliko desetina metara.',
     'src_rm': 'Charge&GO roming',
     # drivers' reports (/api)
     'rv_title': 'Iskustva vozača', 'rv_empty': 'Još nema prijava za ovaj punjač.', 'ratings': 'ocena: {n}', 'last_report': 'Poslednja prijava',
@@ -958,7 +958,7 @@ MAP_T = {
     # prices on the pins, Tesla-only chargers, our checked facts (content/mapa/dopune.json)
     'per_kwh': 'RSD/kWh', 'tesla_only': 'Samo Tesla', 'p_tesla_only': 'Samo za Tesla vozila', 'p_tesla_fee': '{t} — {s}.',
     'p_tesla_hint': 'Vozite Teslu? Izaberite je u „Moj auto“ iznad liste punjača.', 'p_by_receipt': 'Po računima sa ovog punjača ({d})',
-    'p_est': '≈ {k} RSD po kWh ako auto puni sa {w} kW', 'v_own': 'na sajtu vlasnika lokacije',
+    'p_est': '≈ {k} RSD po kWh ako auto puni sa {w} kW', 'v_own': 'na sajtu vlasnika lokacije', 'v_to': 'na stranici turističke organizacije', 'v_mr': 'na stranici mreže punjača',
     'where': 'Gde tačno', 'addr_none': 'Adresa nije poznata — koristite koordinate.', 'copy': 'Kopiraj', 'copied_ll': 'Kopirano',
     'q_net': 'Tačka je sa spiska mreže.', 'q_osm': 'Tačka je iz OpenStreetMap-a.',
     'q_ocm': 'Tačka je iz Open Charge Map-a i može odstupati nekoliko desetina metara.',

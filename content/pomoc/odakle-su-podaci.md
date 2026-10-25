@@ -20,7 +20,7 @@ modified: 2026-10-25
 2. **Spiskovi mreža.** Svaki punjač je proveren na spiskovima koje objavljuju Charge&GO (i njena roming mapa sa punjačima Orion eMobility), Tesla i JP „Putevi Srbije“. Punjači sa tih spiskova kojih nije bilo u bazama dodati su na mapu.
 3. **Google mape, samo za proveru.** Punjač sa ocenom vozača iz poslednjih godinu dana računa se kao potvrđen. Sa Google mapa se ne preuzimaju tekst, ocene ni fotografije.
 4. **Ručno provereni podaci** za pojedine punjače: tačna tačka, adresa sa kućnim brojem, radno vreme, pristup i ko puni besplatno. Uz svaki stoji izvor, a podatak od vozača nosi oznaku „po vozačima“ i godinu. Nekoliko punjača potvrđeno je na sajtu vlasnika lokacije.
-5. **Dopune tima.** Punjači koje je tim BlokVolta dodao sa svojih radnih spiskova, a kojih nema ni u otvorenim bazama ni na spiskovima mreža. Prikazani su kao „Nije potvrđeno“, sa datumom dodavanja, dok ih ne potvrdi spisak mreže, sajt vlasnika mesta ili prijava vozača.
+5. **Dopune tima.** Punjači koje je tim BlokVolta dodao sa svojih radnih spiskova, a kojih nema ni u otvorenim bazama ni na spiskovima mreža. Prikazani su kao „Nije potvrđeno“, sa datumom od kad su na spisku tima, dok ih ne potvrdi spisak mreže, sajt vlasnika mesta ili prijava vozača.
 6. **Cene** su iz aplikacija mreža, beležene snimkom ekrana sa datumom, i sa računa za plaćena punjenja.
 7. **Prijave vozača**: stanje, ocene i fotografije koje vozači šalju sa kartice punjača.
 

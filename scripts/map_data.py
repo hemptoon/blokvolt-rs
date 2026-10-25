@@ -642,7 +642,7 @@ def official_sites():
             extra = {f: x[f] for f in ('loc', 'oh', 'ax', 'fee', 'note', 'al', 'opn', 'acc', 'park') if f in x}
             recs.append({'k': x['k'], 'id': x['id'], 'lat': x['lat'], 'lon': x['lon'], 'net': L.get('net', ''), 'raw': x['n'], 'n': x['n'],
                          'a': x.get('a', ''), 'c': x.get('c') or [], 'evse': None, 'u': x.get('u') or L.get('url', ''),
-                         'l': x.get('l') or '', 'src2': x.get('src2'), 'extra': extra, 'dt': x.get('d')})
+                         'l': x.get('l') or '', 'src2': x.get('src2'), 'extra': extra, 'dt': x.get('d'), 'by': x.get('by')})
     # chargers the team added from its own working list (content/mapa/mreze/tim.json, owner's decision 25.10.2026, RUNBOOK
     # 3.11g): shown as „Nije potvrđeno“ (v.g = 'tim') until a network's list, the owner's site or drivers confirm them; they
     # never confirm an open-data station. A confirmed one moves to ostale.json (own, with its page).
@@ -983,7 +983,7 @@ def verify(stations, notes, checked):
             if af:
                 upd[keep['id']] = dict(af, src=af_src)
             continue
-        by = sorted(set((keep.get('v') or {}).get('by', [])) | {site['k']})
+        by = sorted(set((keep.get('v') or {}).get('by', [])) | {site.get('by') or site['k']})
         keep['v'] = {'s': 'ok', 'by': by, 'd': sdate(site)}
         if site.get('putevi') or keep.get('ps'):
             continue   # the state chargers keep the official list of JP "Putevi Srbije"
@@ -1019,7 +1019,7 @@ def verify(stations, notes, checked):
                          'c': site['c'], 'dc': max(dc) if dc else None, 'ac': max(ac) if ac else None, 'acc': 'public',
                          'src': site_src(site)
                          + ([{'d': 'cga', 'l': 'aplikacija Charge&GO', 'u': meta['cga']['url'], 'upd': iso(meta['cga']['date'])}] if af else []),
-                         'v': {'s': 'nep', 'g': 'tim', 'd': sdate(site)} if site.get('tim') else {'s': 'ok', 'by': [site['k']], 'd': sdate(site)}},
+                         'v': {'s': 'nep', 'g': 'tim', 'd': sdate(site)} if site.get('tim') else {'s': 'ok', 'by': [site.get('by') or site['k']], 'd': sdate(site)}},
                         **af, **(site.get('extra') or {})))
     for s in stations:
         if s.get('ps') and not s.get('v'):
