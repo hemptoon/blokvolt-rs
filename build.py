@@ -2097,7 +2097,7 @@ add_url('/preuzimanje/', '0.5')
 # "Moj auto" in the account (25.10.2026): the map's own list of cars (/assets/map/auta.json from ev-specs.json), so the
 # account and the map count the cost per km with the same car. Models sold in Serbia (ev-modeli.json) that the list does
 # not have yet are offered too, by name only (no cost per km for them), and so are Tesla Model S and X; "Drugi model"
-# takes any other. A model counts as on the list when its make and first word (with a one-digit number after it: "Ioniq 5",
+# takes any other. A model counts as on the list when its make and first word (with a one-character word after it: "Ioniq 5", "Model Y",
 # "Model 3", "Atto 2") match a car there. docs/RUNBOOK.md 3.27.
 EV_CLEAN = {'Električna G-Klasa (G 580 sa EQ tehnologijom)': 'G 580', 'EQE limuzina': 'EQE', 'EQS limuzina': 'EQS',
             'Proace City Verso Electric (putnički kombi, M1)': 'Proace City Verso Electric', 'Grande Panda (električni)': 'Grande Panda',
@@ -2112,7 +2112,7 @@ def _md_key(md):
     t = md.split()
     if not t:
         return ''
-    return re.sub(r'[^a-z0-9]', '', fold(t[0])) + (t[1] if len(t) > 1 and re.fullmatch(r'\d', t[1]) else '')
+    return re.sub(r'[^a-z0-9]', '', fold(t[0])) + (fold(t[1]) if len(t) > 1 and re.fullmatch(r'[0-9A-Za-z]', t[1]) else '')
 
 
 def nalog_cars():
@@ -2136,7 +2136,7 @@ def nalog_cars():
             if (k, _md_key(bare)) in have or [k, bare] in extra:
                 continue
             extra.append([k, bare])
-    extra += [['tesla', 'Model S'], ['tesla', 'Model X']]
+    extra += [['tesla', m] for m in ('Model S', 'Model X') if ('tesla', _md_key(m)) not in have]
     makes = sorted(({k for k, _ in extra} | {c['mk'] for c in cars}), key=lambda k: fold(names[k]))
     return [(k, names[k]) for k in makes], cars, extra
 
