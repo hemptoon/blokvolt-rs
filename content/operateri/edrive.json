@@ -103,6 +103,38 @@
  "payment_short": "Kartica u aplikaciji",
  "kako": {
   "checked": "06.10.2026",
+  "steps": [
+   {
+    "i": "app",
+    "t": "Nalog i kartica u eDrive"
+   },
+   {
+    "i": "qr",
+    "t": "Skenirajte QR kod konektora"
+   },
+   {
+    "i": "play",
+    "t": "Prevucite za start"
+   },
+   {
+    "i": "receipt",
+    "t": "Iznos se skida sa kartice; račun na e-mail"
+   }
+  ],
+  "facts": [
+   {
+    "i": "card",
+    "t": "DC: 199 RSD za pokretanje + 48 RSD po kWh"
+   },
+   {
+    "i": "noacc",
+    "t": "Bez naloga ne može"
+   },
+   {
+    "i": "info",
+    "t": "Punjači drugih mreža u aplikaciji su u romingu — skuplje"
+   }
+  ],
   "start": [
    "Napravite nalog u aplikaciji eDrive i dodajte platnu karticu — bez toga punjenje ne može da se pokrene.",
    "Skenirajte QR kod priključka u aplikaciji („Scan connector QR“) ili ga izaberite na mapi, pa prevucite za start.",

@@ -27,7 +27,7 @@ async def main():
     async with async_playwright() as p:
         b = await p.chromium.launch(args=['--use-gl=swiftshader', '--enable-webgl', '--ignore-gpu-blocklist'])
         # the same rows as blokvolt.rs /mapa/ for the same line (the local dist, served by cfserve.py)
-        bp = await b.new_page()
+        bp = await (await b.new_context(bypass_csp=True)).new_page()   # the local CSP forbids the string checks below
         await bp.route('https://tiles.openfreemap.org/**', lambda r: r.fulfill(status=200, content_type='application/json', body=json.dumps(STYLE)) if '/styles/' in r.request.url else r.fulfill(status=200, body=b''))
         await bp.route('**/api/**', lambda r: r.fulfill(status=200, content_type='application/json', body='{"ok":true,"st":{},"items":[],"photos":[],"facts":[]}'))
         await bp.goto(BASE + '/mapa/?qa=1', wait_until='load')

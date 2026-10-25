@@ -1022,6 +1022,16 @@ MAP_T = {
     # "Kako se puni ovde" (cene.json: kako)
     'kako_t': 'Kako se puni ovde — {n}', 'kako_pay': 'Plaćanje:', 'kako_guest': 'Bez registracije:', 'kako_after': 'Posle punjenja:',
     'kako_refund': 'Povraćaj:', 'kako_apps': 'Aplikacija:', 'kako_checked': 'Provereno {d}',
+    # the scheme on top of it (map.js howHtml, owner 25.10.2026): steps with icons, facts, a general scheme for the rest
+    'hw_t': 'Kako se puni ovde', 'hw_general': 'Opšte uputstvo', 'hw_more': 'Detaljno i izvori',
+    'hw_gen': 'Uputstvo je opšte: tačan postupak za ovo mesto nije objavljen.',
+    'hw_gen_unk': 'Mreža ovog punjača nije poznata, pa je uputstvo opšte.', 'hw_tell': 'Znate kako se ovde puni? Javite nam.',
+    'hw_g_desk': 'Uzmite karticu na info pultu', 'hw_g_tap': 'Prislonite karticu na punjač', 'hw_g_plug': 'Priključite kabl',
+    'hw_g_rfid': 'Prislonite RFID karticu na punjač', 'hw_g_start': 'Sačekajte da punjenje krene',
+    'hw_g_park': 'Parkirajte na mesto za punjenje', 'hw_g_staff': 'Javite se osoblju', 'hw_g_ask': 'Javite se recepciji ili osoblju',
+    'hw_g_help': 'Ako ne krene, pitajte osoblje', 'hw_g_look': 'Na punjaču potražite naziv mreže i QR kod',
+    'hw_g_qr': 'QR kod vodi na aplikaciju ili plaćanje', 'hw_g_plugstart': 'Priključite kabl i pokrenite punjenje',
+    'hw_g_cable': 'AC punjači često nemaju kabl — ponesite svoj Tip 2',
     # drivers' short answers
     'why_q': 'Šta nije bilo u redu? (nije obavezno)', 'why_busy': 'Mesto zauzeto', 'why_broken': 'Punjač ne radi',
     'why_app': 'Aplikacija ili plaćanje', 'why_cable': 'Nisam imao svoj kabl', 'why_closed': 'Zatvoreno', 'why_short': 'Kabl prekratak',
@@ -1062,6 +1072,7 @@ for _n in MAP['nets'].values():
         _tx.update(x for x in (_rc.get('label'),) if x and re.search('[a-zčćžšđ]{3}', x.lower()))
     _k = _n.get('kako') or {}
     _tx.update(x for x in _k.get('start', []) + [_k.get(f) for f in ('pay', 'guest', 'after', 'refund')] if x)
+    _tx.update(x['t'] for x in _k.get('steps', []) + _k.get('facts', []))
     _tx.update(x['l'] for x in _k.get('apps', []) + _k.get('src', []) if re.search('[a-zčćžšđ]{3}', x['l'].lower()))
 _tx.update(MAP['extra_texts'])
 for _x in sorted(_tx):

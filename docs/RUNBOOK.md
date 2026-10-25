@@ -994,6 +994,17 @@ Since 06.10.2026 (test: `scripts/qa/map_v2_test.py`, with the three tests above)
   Signed in, the car is the account's (`car_id`, `car_cons`, `car_cab`, `car_opt`, 3.27): the map takes it on load (a car
   not on the list = no car here), sends every change made in its dialog, and an account without a car takes this
   browser's (unless `bv:fav-owner` is another account's).
+- **„Kako se puni ovde“ as a scheme** (owner's decision 25.10.2026, `map.js` howOf/howHtml, the same in `evomap.src.js`): 2–4 steps
+  with an icon and a few words, up to three facts, the network's app links, the full `kako` text and sources folded under
+  „Detaljno i izvori“. Steps and facts are `kako.steps` / `kako.facts` (`{"i": icon, "t": text}`, icons: app, qr, plug, stop,
+  play, card, receipt, noacc, user, timer, free, ok, eye, desk, rfid, car, list, cable, park, info) in
+  `content/operateri/<slug>.json`, short versions of the dated `start`/`pay`/`guest`/`after` lines — change both together.
+  Every other charger in Serbia gets a general scheme, labelled „Opšte uputstvo“, chosen from dopune.json: `ax.how`
+  card-desk / rfid / staff, then guests or customers only, then free, else an unknown network (look for the network and
+  the QR code on the charger); an AC-only charger without `cab.own` adds „AC punjači često nemaju kabl“. Never write a
+  network's real steps into the general texts. **Priključci**: every connector has a drawing of its plug (`PLUG`, the same
+  stroke as the other icons; DC on the volt tint). Test: `scripts/qa/map_kako_test.py` (a scheme for every charger, the
+  sample of each kind, nothing wider than the card in SR/EN/RU on computer and phone) and `evomap_test.py`.
 - **Card**: per-connector prices from the network's app (`pr`), „Kako se puni ovde“ (the network's `kako`), badges for
   hours with „sada radi do … / zatvoreno, otvara u …“ (Serbian time), „Ponesite svoj Tip 2 kabl“ and parking; closed
   stations are faded on the map and marked in the list. „Izdvojeno“: one line about charging at home at night with one

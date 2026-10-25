@@ -123,6 +123,38 @@
  "map_note": "Na mapi punjača je 7 lokacija ove mreže iz aplikacije Emobility Spectra (20.10.2026). Tačke su postavljene po adresi iz aplikacije.",
  "kako": {
   "checked": "06.10.2026",
+  "steps": [
+   {
+    "i": "app",
+    "t": "Aplikacija ili RFID kartica"
+   },
+   {
+    "i": "list",
+    "t": "Izaberite punjač i konektor"
+   },
+   {
+    "i": "plug",
+    "t": "Kabl priključite kad je punjač spreman"
+   },
+   {
+    "i": "receipt",
+    "t": "Račun stiže u aplikaciju i na e-mail"
+   }
+  ],
+  "facts": [
+   {
+    "i": "card",
+    "t": "Platna kartica uz preautorizaciju; naplaćuje se stvarni iznos"
+   },
+   {
+    "i": "car",
+    "t": "Auto sa AutoCharge-om: samo priključite kabl"
+   },
+   {
+    "i": "timer",
+    "t": "ECO tarifa: posle 10 minuta 10,20 RSD/min zauzeća"
+   }
+  ],
   "start": [
    "U aplikaciji Emobility Spectra izaberite lokaciju, punjač i konektor — ili prislonite RFID karticu na čitač punjača. Vozila sa AutoCharge-om samo priključite.",
    "Konektor priključite kad aplikacija potvrdi da je punjač spreman.",

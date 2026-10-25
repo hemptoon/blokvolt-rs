@@ -60,8 +60,10 @@ async def main():
             t = await card('/mapa/?qa=1#ocm-260806', 'gazprom')
             check('58,33 RSD/min' in t and '16,67 RSD/min' in t and 'DC 50 kW' in t and 'AC 22 kW' in t, f'{tag} per-connector prices (Gazprom Sokolići)')
             check('Cena ovog punjača u aplikaciji mreže · 05.10.2026' in t, f'{tag} per-connector price source')
-            check('Kako se puni ovde — Charge&GO' in t, f'{tag} how-to summary')
-            await pg.click('.ccard details.kako summary')
+            check('kako se puni ovde' in t.lower() and await pg.evaluate("document.querySelectorAll('.ccard .hw-steps li').length") == 4, f'{tag} how-to scheme: 4 steps')
+            check('5 RSD za svaki minut zauzeća' in t, f'{tag} how-to facts under the steps')
+            check(await pg.evaluate("document.querySelectorAll('.ccard .cns .cn-ic svg').length") >= 2, f'{tag} connector icons')
+            await pg.click('.ccard details.hw-more summary')
             t = await pg.evaluate("document.querySelector('.ccard').innerText")
             check('1.000 RSD' in t and '2.000 RSD' in t and '20 %' in t, f'{tag} how-to facts (top-up 1.000, guest 2.000, 20 %)')
             check('Izaberite auto' in t, f'{tag} "choose a car" link without a car')
@@ -76,7 +78,7 @@ async def main():
             check('Ograničen pristup 01–05 h' in t and ('sada radi do 01:00' in t or 'sada zatvoreno, otvara u 05:00' in t), f'{tag} hours + open now (Stop Shop Borča)')
             t = await card('/mapa/?qa=1#rm-4479035-2042305', 'edrive')
             check('BEX Konjarnik' in t and '48 RSD/kWh' in t and '199 RSD' in t, f'{tag} eDrive own price')
-            check('eDrive' in t and 'Kako se puni ovde — eDrive' in t, f'{tag} eDrive network + how-to')
+            check('eDrive' in t and 'Prevucite za start' in t and 'Opšte uputstvo' not in t, f'{tag} eDrive network + how-to')
             f = {x['id']: x for x in await pg.evaluate('window.bvMapQa()')}
             check(f['rm-4479035-2042305']['pl'] == '~56 RSD/kWh', f"{tag} eDrive pin: {f['rm-4479035-2042305']['pl']}")
             check(f['cg-80']['pl'].startswith('~') and f['cg-80']['pl'].endswith('RSD/kWh'), f"{tag} Super Vero NS pin: {f['cg-80']['pl']}")
@@ -207,7 +209,7 @@ async def main():
             # 5. EN and RU
             for lang, needle in (('en', 'How to charge here'), ('ru', 'Как здесь заряжаться')):
                 t = await card(f'/{lang}/mapa/?qa=1#ocm-260806', 'lang_' + lang)
-                check(needle in t, f'{tag} {lang} how-to title')
+                check(needle.lower() in t.lower(), f'{tag} {lang} how-to title')
                 href = await pg.get_attribute('.ccard a[data-evo]', 'href')
                 check(href and f'lang={lang}' in href, f'{tag} {lang} Evolako link has the language: {href}')
             # 6. overflow, errors

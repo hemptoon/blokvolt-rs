@@ -97,6 +97,7 @@
       p_station: 'Cena ovog punjača u aplikaciji mreže · {d} · {s}',
       kako_t: 'Kako se puni ovde — {n}', kako_pay: 'Plaćanje:', kako_guest: 'Bez registracije:', kako_after: 'Posle punjenja:',
       kako_refund: 'Povraćaj:', kako_apps: 'Aplikacija:', kako_checked: 'Provereno {d}',
+      hw_t: 'Kako se puni ovde', hw_general: 'Opšte uputstvo', hw_more: 'Detaljno i izvori', hw_gen: 'Uputstvo je opšte: tačan postupak za ovo mesto nije objavljen.', hw_gen_unk: 'Mreža ovog punjača nije poznata, pa je uputstvo opšte.', hw_tell: 'Znate kako se ovde puni? Pišite nam.', hw_g_desk: 'Uzmite karticu na info pultu', hw_g_tap: 'Prislonite karticu na punjač', hw_g_plug: 'Priključite kabl', hw_g_rfid: 'Prislonite RFID karticu na punjač', hw_g_start: 'Sačekajte da punjenje krene', hw_g_park: 'Parkirajte na mesto za punjenje', hw_g_staff: 'Javite se osoblju', hw_g_ask: 'Javite se recepciji ili osoblju', hw_g_help: 'Ako ne krene, pitajte osoblje', hw_g_look: 'Na punjaču potražite naziv mreže i QR kod', hw_g_qr: 'QR kod vodi na aplikaciju ili plaćanje', hw_g_plugstart: 'Priključite kabl i pokrenite punjenje', hw_g_cable: 'AC punjači često nemaju kabl — ponesite svoj Tip 2',
       oh_open: 'sada radi do {t}', oh_closed: 'sada zatvoreno, otvara u {t}', closed_now: 'sada zatvoreno',
       cab_own: 'Ponesi svoj Tip 2 kabl', src_cga: 'aplikacija Charge&GO',
       // 24.10.2026: „Punjači na putu“ (Photon + OSRM/FOSSGIS)
@@ -177,6 +178,7 @@
       p_station: 'Price at this charger in the network’s app · {d} · {s}',
       kako_t: 'How to charge here — {n}', kako_pay: 'Payment:', kako_guest: 'Without registration:', kako_after: 'After charging:',
       kako_refund: 'Refund:', kako_apps: 'App:', kako_checked: 'Checked {d}',
+      hw_t: 'How to charge here', hw_general: 'General guide', hw_more: 'Details and sources', hw_gen: 'This is a general guide: the exact steps for this place are not published.', hw_gen_unk: 'The network of this charger is not known, so the guide is general.', hw_tell: 'Know how charging works here? Write to us.', hw_g_desk: 'Get a card at the info desk', hw_g_tap: 'Hold the card to the charger', hw_g_plug: 'Plug in the cable', hw_g_rfid: 'Hold an RFID card to the charger', hw_g_start: 'Wait for charging to start', hw_g_park: 'Park in the charging spot', hw_g_staff: 'Ask the staff', hw_g_ask: 'Ask at reception or the staff', hw_g_help: 'If it does not start, ask the staff', hw_g_look: 'Look for the network name and QR code on the charger', hw_g_qr: 'The QR code leads to the app or payment', hw_g_plugstart: 'Plug in and start charging', hw_g_cable: 'AC chargers often have no cable — bring your own Type 2',
       oh_open: 'open now until {t}', oh_closed: 'closed now, opens at {t}', closed_now: 'closed now',
       cab_own: 'Bring your own Type 2 cable', src_cga: 'Charge&GO app',
       rt_btn_l: 'Chargers on the way:', rt_btn_v: 'enter a destination — fast, 50 kW and up', rt_btn_set: 'to {t} · fast: {n}',
@@ -256,6 +258,7 @@
       p_station: 'Цена этой зарядки в приложении сети · {d} · {s}',
       kako_t: 'Как здесь заряжаться — {n}', kako_pay: 'Оплата:', kako_guest: 'Без регистрации:', kako_after: 'После зарядки:',
       kako_refund: 'Возврат:', kako_apps: 'Приложение:', kako_checked: 'Проверено {d}',
+      hw_t: 'Как здесь заряжаться', hw_general: 'Общая инструкция', hw_more: 'Подробно и источники', hw_gen: 'Инструкция общая: точный порядок для этого места не опубликован.', hw_gen_unk: 'Сеть этой зарядки неизвестна, поэтому инструкция общая.', hw_tell: 'Знаете, как здесь заряжаться? Напишите нам.', hw_g_desk: 'Возьмите карту на стойке информации', hw_g_tap: 'Приложите карту к зарядке', hw_g_plug: 'Подключите кабель', hw_g_rfid: 'Приложите RFID-карту к зарядке', hw_g_start: 'Дождитесь начала зарядки', hw_g_park: 'Встаньте на место для зарядки', hw_g_staff: 'Обратитесь к персоналу', hw_g_ask: 'Обратитесь на ресепшен или к персоналу', hw_g_help: 'Если не запускается — спросите персонал', hw_g_look: 'Найдите на зарядке название сети и QR-код', hw_g_qr: 'QR-код ведёт в приложение или к оплате', hw_g_plugstart: 'Подключите кабель и запустите зарядку', hw_g_cable: 'У AC-зарядок часто нет кабеля — возьмите свой Type 2',
       oh_open: 'сейчас открыто до {t}', oh_closed: 'сейчас закрыто, откроется в {t}', closed_now: 'сейчас закрыто',
       cab_own: 'Возьми свой кабель Type 2', src_cga: 'приложение Charge&GO',
       rt_btn_l: 'Зарядки по пути:', rt_btn_v: 'введи, куда едешь, — быстрые от 50 кВт', rt_btn_set: 'до {t} · быстрых: {n}',
@@ -328,6 +331,41 @@
     coins: svg('<ellipse cx="12" cy="6.5" rx="6.5" ry="2.5"/><path d="M5.5 6.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5M5.5 11.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5"/>')
   };
   var CONN = { ccs2: 'CCS2', ccs1: 'CCS1', chademo: 'CHAdeMO', type2: 'Type 2', type1: 'Type 1', tesla: 'Tesla', gbt: 'GB/T', cee: 'CEE' };
+  // the face of each plug and the icons of „Kako se puni ovde“: the same drawings as static/assets/map.js (PLUG, HI) — change both
+  function dot(x, y, r) { return '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="currentColor" stroke="none"/>'; }
+  var PLUG = {
+    type2: svg('<path d="M6.52 6h10.96A8.5 8.5 0 1 1 6.52 6Z"/>' + dot(9.6, 8.7, .95) + dot(14.4, 8.7, .95) + dot(7.9, 12.3, 1.25) + dot(12, 12.3, 1.25) + dot(16.1, 12.3, 1.25) + dot(9.9, 16.2, 1.25) + dot(14.1, 16.2, 1.25)),
+    ccs2: svg('<path d="M8.95 3.2h6.1a6.2 6.2 0 1 1-6.1 0Z"/><rect x="5.6" y="16.4" width="12.8" height="5.4" rx="2.7"/>' + dot(10.4, 5.5, .7) + dot(13.6, 5.5, .7) + dot(8.7, 8.7, .95) + dot(12, 8.7, .95) + dot(15.3, 8.7, .95) + dot(10.4, 11.9, .95) + dot(13.6, 11.9, .95) + dot(9, 19.1, 1.3) + dot(15, 19.1, 1.3)),
+    chademo: svg('<circle cx="12" cy="12.5" r="8.5"/><path d="M10.6 4.1v-1.4h2.8v1.4"/><circle cx="8.4" cy="12.7" r="2.1"/><circle cx="15.6" cy="12.7" r="2.1"/>' + dot(12, 8.3, .9) + dot(12, 17, .9)),
+    type1: svg('<circle cx="12" cy="12" r="8.5"/>' + dot(8.7, 10.2, 1.45) + dot(15.3, 10.2, 1.45) + dot(12, 16.2, 1.45) + dot(8.9, 14.7, .8) + dot(15.1, 14.7, .8)),
+    tesla: svg('<path d="M12 3.5c4.4 0 7.5 3 7.5 7.3 0 5-3.6 9.7-7.5 9.7s-7.5-4.7-7.5-9.7C4.5 6.5 7.6 3.5 12 3.5Z"/>' + dot(9.2, 10.8, 1.6) + dot(14.8, 10.8, 1.6) + dot(12, 15.7, 1.2) + dot(10.6, 6.9, .7) + dot(13.4, 6.9, .7)),
+    gbt: svg('<circle cx="12" cy="12" r="8.5"/>' + dot(9.6, 8.4, .95) + dot(14.4, 8.4, .95) + dot(7.8, 12, 1.25) + dot(12, 12, 1.25) + dot(16.2, 12, 1.25) + dot(9.9, 15.9, 1.25) + dot(14.1, 15.9, 1.25)),
+    schuko: svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v2.3M12 18.2v2.3"/>' + dot(8.6, 12, 1.35) + dot(15.4, 12, 1.35)),
+    cee: svg('<circle cx="12" cy="12.5" r="8.5"/><path d="M10.8 4.1V2.8h2.4v1.3"/>' + dot(12, 8, 1) + dot(7.6, 11.4, 1) + dot(16.4, 11.4, 1) + dot(9.2, 16.6, 1) + dot(14.8, 16.6, 1) + dot(12, 12.6, 1.2))
+  };
+  PLUG.ccs1 = PLUG.ccs2;
+  var HI = {
+    app: svg('<rect x="7" y="2.8" width="10" height="18.4" rx="2.4"/><path d="M11 17.6h2"/>'),
+    qr: svg('<path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z"/><path d="M14 14h2.5v2.5H14zM17.5 17.5H20V20h-2.5zM20 14v1.5M14 20v-1"/>'),
+    plug: svg('<path d="M9 2.8v4M15 2.8v4M6.8 6.8h10.4v3.7a5.2 5.2 0 0 1-10.4 0V6.8Z"/><path d="M12 15.7v5.5"/>'),
+    stop: svg('<circle cx="12" cy="12" r="8.5"/><rect x="9.2" y="9.2" width="5.6" height="5.6" rx="1"/>'),
+    play: svg('<circle cx="12" cy="12" r="8.5"/><path d="M10.4 8.7v6.6l5.2-3.3-5.2-3.3Z"/>'),
+    card: svg('<rect x="3" y="5.5" width="18" height="13" rx="2.2"/><path d="M3 9.8h18M6.8 14.6h3.6"/>'),
+    receipt: svg('<path d="M6 3h12v18l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4L6 21V3Z"/><path d="M9 8h6M9 11.5h6M9 15h3.5"/>'),
+    noacc: svg('<circle cx="10" cy="8" r="3.6"/><path d="M3.5 20a6.5 6.5 0 0 1 10.6-5"/><path d="m16.3 15.3 4.2 4.2M20.5 15.3l-4.2 4.2"/>'),
+    user: svg('<circle cx="12" cy="8" r="3.8"/><path d="M5 20.5a7 7 0 0 1 14 0"/>'),
+    timer: svg('<circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.6v3.9l2.6 1.6M9.6 2.8h4.8"/>'),
+    free: svg('<path d="M3.5 12.4V4.5h7.9l9.1 9.1-7.9 7.9-9.1-9.1Z"/><circle cx="7.9" cy="8.9" r="1.3"/>'),
+    ok: svg('<circle cx="12" cy="12" r="8.5"/><path d="m8.3 12.3 2.5 2.5 5-5.2"/>'),
+    eye: svg('<path d="M2.5 12s3.5-6.3 9.5-6.3 9.5 6.3 9.5 6.3-3.5 6.3-9.5 6.3S2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.8"/>'),
+    desk: svg('<path d="M3.5 19.5h17M5.5 16.5a6.5 6.5 0 0 1 13 0Z"/><path d="M12 10V8.2M10.6 8.2h2.8"/>'),
+    rfid: svg('<rect x="3" y="7" width="11" height="10" rx="1.8"/><path d="M17.3 9a4.4 4.4 0 0 1 0 6M19.8 6.8a7.6 7.6 0 0 1 0 10.4"/>'),
+    car: svg('<path d="M5 16.5h14M6.5 16.5V19M17.5 16.5V19M4.5 16.5v-4l2-5.2A1.5 1.5 0 0 1 7.9 6.3h8.2a1.5 1.5 0 0 1 1.4 1l2 5.2v4"/><path d="M4.5 12.5h15"/>'),
+    list: svg('<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>'),
+    cable: svg('<path d="M7 3v4M11 3v4M5.5 7h7v3a3.5 3.5 0 0 1-7 0V7Z"/><path d="M9 13.5V16a4 4 0 0 0 4 4h1a4 4 0 0 0 4-4V8"/>'),
+    park: IC.park, info: svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8v.01"/>'),
+    ext: svg('<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>')
+  };
   // directions: Google Maps first everywhere (owner, 25.10.2026), Apple Maps second on Apple devices (dir_action=navigate: turn-by-turn at once in the Maps app on
   // a phone), Waze always; coordinates only, no API key. The app the visitor opens a route in comes first for the rest of the visit
   // (kept in memory only: the privacy policy of evolako.rs names no other browser storage)
@@ -758,9 +796,10 @@
   }
 
   // ---------- card ----------
-  function connLine(c) {
+  function connRow(c) {
     var nm = CONN[c[0]] || (c[0] === 'schuko' ? T('schuko') : T('other'));
-    return nm + ' · ' + String(c[1]).toUpperCase() + (c[2] ? ' · ' + fmt(c[2], c[2] % 1 ? 1 : 0) + ' ' + kWu() : '') + (c[3] > 1 ? ' × ' + c[3] : '');
+    var meta = [String(c[1]).toUpperCase(), c[2] ? fmt(c[2], c[2] % 1 ? 1 : 0) + ' ' + kWu() : '', c[3] > 1 ? '× ' + c[3] : ''].filter(Boolean).join(' · ');
+    return '<li class="evm-cn"><i class="evm-cn-ic' + (c[1] === 'dc' ? ' dc' : '') + '" aria-hidden="true">' + (PLUG[c[0]] || HI.cable) + '</i><span><b>' + esc(nm) + '</b><small>' + esc(meta) + '</small></span></li>';
   }
   function estHtml(v, s) {
     var e = perKwh(v, s);
@@ -859,18 +898,50 @@
     });
     return best;
   }
-  // „Kako se puni ovde“: the network's steps, payment, without registration, after charging (cene.json: kako) — folded
-  function kakoHtml(s) {
-    var n = netOf(s), k = n && n.kako;
-    if (!k) return '';
-    var row = function (lbl, x) { return x ? '<p><b>' + esc(lbl) + '</b> ' + esc(tr(x)) + '</p>' : ''; };
-    var links = (k.apps || []).map(function (a) { return '<a href="' + esc(a.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(a.l)) + '</a>'; }).join(' · ');
-    var src = (k.src || []).map(function (a) { return '<a href="' + esc(a.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(a.l)) + '</a>'; }).join(' · ');
-    return '<details class="evm-box evm-kako"><summary>' + esc(fill(T('kako_t'), { n: n.name })) + '</summary>' +
-      (k.start && k.start.length ? '<ol>' + k.start.map(function (x) { return '<li>' + esc(tr(x)) + '</li>'; }).join('') + '</ol>' : '') +
-      row(T('kako_pay'), k.pay) + row(T('kako_guest'), k.guest) + row(T('kako_after'), k.after) + row(T('kako_refund'), k.refund) +
-      (links ? '<p class="evm-kako-apps">' + esc(T('kako_apps')) + ' ' + links + '</p>' : '') +
-      '<small>' + esc(fill(T('kako_checked'), { d: dt(k.checked || '') })) + (src ? ' · ' + src : '') + '</small></details>';
+  // „Kako se puni ovde“ as a scheme (owner, 25.10.2026): steps with icons, facts, the network's apps, the full text folded;
+  // every station gets one — the network's (kako.steps) or a general one from what is known about the place. Same as map.js howOf.
+  function howOf(s) {
+    if (s.cc) return null;
+    var n = netOf(s), k = n && n.kako, ax = s.ax || {}, fee = (s.fee && s.fee.free) || '';
+    var onlyAc = !s.dc && (s.c.length ? s.c.every(function (c) { return c[1] === 'ac'; }) : !!s.ac);
+    var acCable = onlyAc && !(s.cab && s.cab.own) ? [['cable', T('hw_g_cable')]] : [];
+    if (k && k.steps) {
+      return { k: 'net', name: n.name, steps: k.steps.map(function (x) { return [x.i, tr(x.t)]; }), facts: (k.facts || []).map(function (x) { return [x.i, tr(x.t)]; }), kako: k };
+    }
+    var g = ax.how === 'card-desk' ? 'desk' : ax.how === 'rfid' ? 'rfid' : ax.how === 'staff' ? 'staff'
+      : (ax.who === 'guests' || ax.who === 'customers' || s.acc === 'customers') ? 'guests' : fee ? 'free' : 'unk';
+    var STEPS = {
+      desk: [['desk', T('hw_g_desk')], ['rfid', T('hw_g_tap')], ['plug', T('hw_g_plug')]],
+      rfid: [['rfid', T('hw_g_rfid')], ['plug', T('hw_g_plug')], ['ok', T('hw_g_start')]],
+      staff: [['park', T('hw_g_park')], ['user', T('hw_g_staff')], ['plug', T('hw_g_plug')]],
+      guests: [['desk', T('hw_g_ask')], ['park', T('hw_g_park')], ['plug', T('hw_g_plug')]],
+      free: [['park', T('hw_g_park')], ['plug', T('hw_g_plug')], ['user', T('hw_g_help')]],
+      unk: [['eye', T('hw_g_look')], ['qr', T('hw_g_qr')], ['plug', T('hw_g_plugstart')]]
+    };
+    return { k: g, gen: true, known: !!(n || s.opn), name: n ? n.name : '', steps: STEPS[g], facts: g === 'desk' || g === 'staff' || g === 'rfid' ? [] : acCable, kako: k || null };
+  }
+  function howHtml(s, mail) {
+    var h = howOf(s);
+    if (!h) return '';
+    var steps = '<ol class="evm-hw-steps" style="--n:' + h.steps.length + '">' + h.steps.map(function (x, i) {
+      return '<li><i aria-hidden="true">' + (HI[x[0]] || HI.info) + '<b>' + (i + 1) + '</b></i><span>' + esc(x[1]) + '</span></li>';
+    }).join('') + '</ol>';
+    var facts = h.facts.length ? '<ul class="evm-hw-facts">' + h.facts.map(function (x) { return '<li>' + (HI[x[0]] || HI.info) + '<span>' + esc(x[1]) + '</span></li>'; }).join('') + '</ul>' : '';
+    var k = h.kako, more = '';
+    var apps = k && k.apps && k.apps.length ? '<p class="evm-hw-apps">' + k.apps.map(function (a) {
+      return '<a href="' + esc(a.u) + '" target="_blank" rel="noopener nofollow">' + (/play|store|aplikacij/i.test(a.l) ? HI.app : HI.ext) + '<span>' + esc(tr(a.l)) + '</span></a>';
+    }).join('') + '</p>' : '';
+    if (k) {
+      var row = function (lbl, x) { return x ? '<p><b>' + esc(lbl) + '</b> ' + esc(tr(x)) + '</p>' : ''; };
+      var src = (k.src || []).map(function (a) { return '<a href="' + esc(a.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(a.l)) + '</a>'; }).join(' · ');
+      more = '<details class="evm-hw-more"><summary>' + esc(T('hw_more')) + '</summary>' +
+        (k.start && k.start.length ? '<ol>' + k.start.map(function (x) { return '<li>' + esc(tr(x)) + '</li>'; }).join('') + '</ol>' : '') +
+        row(T('kako_pay'), k.pay) + row(T('kako_guest'), k.guest) + row(T('kako_after'), k.after) + row(T('kako_refund'), k.refund) +
+        '<small>' + esc(fill(T('kako_checked'), { d: dt(k.checked || '') })) + (src ? ' · ' + src : '') + '</small></details>';
+    }
+    var gen = h.gen ? '<p class="evm-hw-gen">' + esc(h.k === 'unk' && !h.known ? T('hw_gen_unk') : T('hw_gen')) + ' <a href="' + mail + '">' + esc(T('hw_tell')) + '</a></p>' : '';
+    return '<div class="evm-box evm-hw' + (h.gen ? ' is-gen' : '') + '"><div class="evm-hw-h"><span class="evm-lbl">' + esc(T('hw_t')) + '</span>' +
+      (h.gen ? '<em>' + esc(T('hw_general')) + '</em>' : h.name ? '<em>' + esc(h.name) + '</em>' : '') + '</div>' + steps + facts + apps + gen + more + '</div>';
   }
   function statusHtml(s) {
     if (!s.ps) return '';
@@ -943,7 +1014,7 @@
     var n = netOf(s), navs = navLinks(s);
     var logo = n && n.logo ? '<span class="evm-lg' + (n.logo_dark ? ' dark' : '') + '"><img src="' + esc(FEED + n.logo) + '" alt="" loading="lazy"></span>' : '<span class="evm-lg mono" aria-hidden="true">' + esc((netName(s) || '?').slice(0, 2).toUpperCase()) + '</span>';
     var netLine = netName(s) ? '<div class="evm-net">' + logo + '<div><b>' + esc(netName(s)) + '</b><span>' + esc(n ? T('net_known') : (s.opn ? T('operator') : T('net_unknown'))) + '</span></div></div>' : '';
-    var conns = s.c.length ? '<div class="evm-box"><span class="evm-lbl">' + esc(T('conn')) + '</span><ul class="evm-cl">' + s.c.map(function (c) { return '<li>' + esc(connLine(c)) + '</li>'; }).join('') + '</ul></div>' : '';
+    var conns = s.c.length ? '<div class="evm-box"><span class="evm-lbl">' + esc(T('conn')) + '</span><ul class="evm-cl evm-cns">' + s.c.map(connRow).join('') + '</ul></div>' : '';
     var acc = s.acc === 'customers' ? '<div class="evm-box"><span class="evm-lbl">' + esc(T('access')) + '</span><div>' + esc(T('customers')) + '</div></div>' : '';
     var site = n && n.site ? n.site : '';
     var mail = 'mailto:hello@evolako.com?subject=' + encodeURIComponent(fill(T('mail_s'), { id: s.id })) + '&body=' + encodeURIComponent(title(s) + ' — ' + location.origin + location.pathname + '#' + s.id + '\n\n' + T('mail_b') + '\n');
@@ -953,7 +1024,7 @@
     $card.innerHTML = '<div class="evm-cc" role="dialog" aria-label="' + esc(title(s)) + '"><span class="evm-grab" aria-hidden="true"></span>' +
       '<button class="evm-x" type="button" aria-label="' + esc(T('close')) + '">' + IC.x + '</button>' +
       (cardNear ? '<button class="evm-lnk evm-nr-back" type="button" data-nr="back">← ' + esc(T('nr_title')) + '</button>' : cardRt ? '<button class="evm-lnk evm-nr-back" type="button" data-rt="back">← ' + esc(T('rt_title')) + '</button>' : '') +
-      '<h2>' + esc(title(s)) + '</h2><p class="evm-addr">' + esc(place(s)) + '</p>' + verHtml(s) + tagsHtml(s) + netLine + priceHtml(s) + kakoHtml(s) +
+      '<h2>' + esc(title(s)) + '</h2><p class="evm-addr">' + esc(place(s)) + '</p>' + verHtml(s) + tagsHtml(s) + netLine + priceHtml(s) + howHtml(s, mail) +
       (s.note ? '<p class="evm-note">' + IC.info + '<span>' + esc(tr(s.note)) + '</span></p>' : '') + statusHtml(s) + conns + acc + whereHtml(s) +
       '<div class="evm-acts"><a class="evm-btn pri full" href="' + navs[0][1] + '" target="_blank" rel="noopener" data-nav="' + navs[0][2] + '">' + IC.nav + '<span>' + esc(T('navigate')) + '</span></a>' +
       '<p class="evm-navalt">' + esc(T('nav_in')) + ' ' + navs.slice(1).map(function (x) { return '<a href="' + x[1] + '" target="_blank" rel="noopener" data-nav="' + x[2] + '">' + x[0] + '</a>'; }).join(' · ') + '</p>' +
@@ -1881,6 +1952,7 @@
     }
     // „Najbliži punjač“ for a given point, as the panel would list it (only with ?qa=1: the apps and blokvolt.rs are compared with it)
     if (/[?&]qa=1\b/.test(location.search)) {
+      window.evmKakoQa = function () { return ST.map(function (s) { var h = howOf(s); return { id: s.id, how: h && { k: h.k, steps: h.steps, facts: h.facts } }; }); };
       window.evmNearQa = function (lat, lon, nep) { return nearestList({ lat: lat, lon: lon }, !!nep).rows.map(function (x) { return { id: x.s.id, t: title(x.s), m: Math.round(x.d * 1000) }; }); };
       // the cost engine for one station (blokvolt.rs has the same: window.bvCostQa)
       // „Punjači na putu“ for any line [[lon, lat], …] (blokvolt.rs: window.bvRouteLineQa) and the rows shown now

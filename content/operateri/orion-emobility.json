@@ -204,6 +204,38 @@
  "video": "vLLw5ZsULYY",
  "kako": {
   "checked": "06.10.2026",
+  "steps": [
+   {
+    "i": "app",
+    "t": "Nalog u Orion eMobility"
+   },
+   {
+    "i": "qr",
+    "t": "Skenirajte QR kod na punjaču"
+   },
+   {
+    "i": "play",
+    "t": "„Započni punjenje“"
+   },
+   {
+    "i": "stop",
+    "t": "„Zaustavi punjenje“"
+   }
+  ],
+  "facts": [
+   {
+    "i": "card",
+    "t": "Na kartici se rezerviše 2.000 RSD (AC) ili 4.000 RSD (DC)"
+   },
+   {
+    "i": "noacc",
+    "t": "Bez naloga ne može"
+   },
+   {
+    "i": "timer",
+    "t": "Jedna sesija traje najviše 120 minuta"
+   }
+  ],
   "start": [
    "Napravite nalog u aplikaciji Orion eMobility (e-mail i platna kartica) — bez naloga punjenje ne može da se pokrene.",
    "Skenirajte QR kod na punjaču ili izaberite punjač u aplikaciji, pa dodirnite „Započni punjenje“.",

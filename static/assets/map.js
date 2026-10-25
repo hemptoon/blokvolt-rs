@@ -545,9 +545,27 @@ function renderList() {
 }
 
 // ---------- card ----------
-function connLine(c) {
+// the face of each plug, drawn like the other icons (24 px grid, 1.8 stroke, pins as dots): the reader recognises the
+// socket on the charger and on the car without knowing the standard's name (owner, 25.10.2026). The same drawings are in
+// scripts/evomap/evomap.src.js (evolako.rs) — change both.
+const dot = (x, y, r) => '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="currentColor" stroke="none"/>';
+const PLUG = {
+  type2: svg('<path d="M6.52 6h10.96A8.5 8.5 0 1 1 6.52 6Z"/>' + dot(9.6, 8.7, .95) + dot(14.4, 8.7, .95) + dot(7.9, 12.3, 1.25) + dot(12, 12.3, 1.25) + dot(16.1, 12.3, 1.25) + dot(9.9, 16.2, 1.25) + dot(14.1, 16.2, 1.25)),
+  ccs2: svg('<path d="M8.95 3.2h6.1a6.2 6.2 0 1 1-6.1 0Z"/><rect x="5.6" y="16.4" width="12.8" height="5.4" rx="2.7"/>' + dot(10.4, 5.5, .7) + dot(13.6, 5.5, .7) + dot(8.7, 8.7, .95) + dot(12, 8.7, .95) + dot(15.3, 8.7, .95) + dot(10.4, 11.9, .95) + dot(13.6, 11.9, .95) + dot(9, 19.1, 1.3) + dot(15, 19.1, 1.3)),
+  chademo: svg('<circle cx="12" cy="12.5" r="8.5"/><path d="M10.6 4.1v-1.4h2.8v1.4"/><circle cx="8.4" cy="12.7" r="2.1"/><circle cx="15.6" cy="12.7" r="2.1"/>' + dot(12, 8.3, .9) + dot(12, 17, .9)),
+  type1: svg('<circle cx="12" cy="12" r="8.5"/>' + dot(8.7, 10.2, 1.45) + dot(15.3, 10.2, 1.45) + dot(12, 16.2, 1.45) + dot(8.9, 14.7, .8) + dot(15.1, 14.7, .8)),
+  tesla: svg('<path d="M12 3.5c4.4 0 7.5 3 7.5 7.3 0 5-3.6 9.7-7.5 9.7s-7.5-4.7-7.5-9.7C4.5 6.5 7.6 3.5 12 3.5Z"/>' + dot(9.2, 10.8, 1.6) + dot(14.8, 10.8, 1.6) + dot(12, 15.7, 1.2) + dot(10.6, 6.9, .7) + dot(13.4, 6.9, .7)),
+  gbt: svg('<circle cx="12" cy="12" r="8.5"/>' + dot(9.6, 8.4, .95) + dot(14.4, 8.4, .95) + dot(7.8, 12, 1.25) + dot(12, 12, 1.25) + dot(16.2, 12, 1.25) + dot(9.9, 15.9, 1.25) + dot(14.1, 15.9, 1.25)),
+  schuko: svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v2.3M12 18.2v2.3"/>' + dot(8.6, 12, 1.35) + dot(15.4, 12, 1.35)),
+  cee: svg('<circle cx="12" cy="12.5" r="8.5"/><path d="M10.8 4.1V2.8h2.4v1.3"/>' + dot(12, 8, 1) + dot(7.6, 11.4, 1) + dot(16.4, 11.4, 1) + dot(9.2, 16.6, 1) + dot(14.8, 16.6, 1) + dot(12, 12.6, 1.2))
+};
+PLUG.ccs1 = PLUG.ccs2;
+// one connector: the plug's face, its name, then current · power · how many
+function connRow(c, mine) {
   const [type, cur, kw, n] = c;
-  return (CONN[type] || type) + ' · ' + cur.toUpperCase() + (kw ? ' · ' + fmt(kw, kw % 1 ? 1 : 0) + ' ' + U.kw : '') + (n > 1 ? ' × ' + n : '');
+  const meta = [cur.toUpperCase(), kw ? fmt(kw, kw % 1 ? 1 : 0) + ' ' + U.kw : '', n > 1 ? '× ' + n : ''].filter(Boolean).join(' · ');
+  return '<li class="cn"><i class="cn-ic' + (cur === 'dc' ? ' dc' : '') + '" aria-hidden="true">' + (PLUG[type] || ICON.cable) + '</i><span><b>' + esc(CONN[type] || type) + '</b>' +
+    '<small>' + esc(meta) + (mine ? ' · <em class="mine">' + esc(T.conn_mine) + '</em>' : '') + '</small></span></li>';
 }
 function estHtml(v, s) {
   const e = perKwh(v, s);
@@ -674,19 +692,72 @@ function priceHtml(s) {
   if (idle && p.kind !== 'free' && p.kind !== 'none') h += '<small>' + esc(T.idle).replace('{x}', fxd(tr(idle))) + '</small>';
   return h + costHtml(s, p) + promoHtml(s, p) + '</div>';
 }
-// "Kako se puni ovde": the network's steps, payment, without registration, after charging (cene.json: kako) — folded
-function kakoHtml(s) {
-  if (s.cc) return '';
-  const n = netOf(s), k = n && n.kako;
-  if (!k) return '';
-  const row = (lbl, x) => (x ? '<p><b>' + esc(lbl) + '</b> ' + esc(tr(x)) + '</p>' : '');
-  const links = (k.apps || []).map(a => '<a class="lnk" href="' + esc(a.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(a.l)) + '</a>').join(' · ');
-  const src = (k.src || []).map(a => '<a href="' + esc(a.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(a.l)) + '</a>').join(' · ');
-  return '<details class="cbox kako"><summary>' + esc(T.kako_t.replace('{n}', n.name)) + '</summary>' +
-    (k.start && k.start.length ? '<ol>' + k.start.map(x => '<li>' + esc(tr(x)) + '</li>').join('') + '</ol>' : '') +
-    row(T.kako_pay, k.pay) + row(T.kako_guest, k.guest) + row(T.kako_after, k.after) + row(T.kako_refund, k.refund) +
-    (links ? '<p class="kako-apps">' + esc(T.kako_apps) + ' ' + links + '</p>' : '') +
-    '<small>' + esc(T.kako_checked.replace('{d}', k.checked || '')) + (src ? ' · ' + src : '') + '</small></details>';
+// "Kako se puni ovde" as a picture (owner, 25.10.2026): 2–4 steps with an icon and a few words, up to three facts, the
+// network's apps; the full text of the network (cene.json: kako) and its sources stay folded under "Detaljno".
+// Every station gets a scheme: its network's (kako.steps), or a general one from what is known about the place
+// (access through staff, a card at the desk, RFID, guests only, free, or an unknown network) — marked „Opšte uputstvo“.
+// The same logic is in scripts/evomap/evomap.src.js (howOf) — change both. ?qa=1: window.bvKakoQa().
+const HI = {
+  app: svg('<rect x="7" y="2.8" width="10" height="18.4" rx="2.4"/><path d="M11 17.6h2"/>'),
+  qr: svg('<path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z"/><path d="M14 14h2.5v2.5H14zM17.5 17.5H20V20h-2.5zM20 14v1.5M14 20v-1"/>'),
+  plug: svg('<path d="M9 2.8v4M15 2.8v4M6.8 6.8h10.4v3.7a5.2 5.2 0 0 1-10.4 0V6.8Z"/><path d="M12 15.7v5.5"/>'),
+  stop: svg('<circle cx="12" cy="12" r="8.5"/><rect x="9.2" y="9.2" width="5.6" height="5.6" rx="1"/>'),
+  play: svg('<circle cx="12" cy="12" r="8.5"/><path d="M10.4 8.7v6.6l5.2-3.3-5.2-3.3Z"/>'),
+  card: svg('<rect x="3" y="5.5" width="18" height="13" rx="2.2"/><path d="M3 9.8h18M6.8 14.6h3.6"/>'),
+  receipt: svg('<path d="M6 3h12v18l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4L6 21V3Z"/><path d="M9 8h6M9 11.5h6M9 15h3.5"/>'),
+  noacc: svg('<circle cx="10" cy="8" r="3.6"/><path d="M3.5 20a6.5 6.5 0 0 1 10.6-5"/><path d="m16.3 15.3 4.2 4.2M20.5 15.3l-4.2 4.2"/>'),
+  user: svg('<circle cx="12" cy="8" r="3.8"/><path d="M5 20.5a7 7 0 0 1 14 0"/>'),
+  timer: svg('<circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.6v3.9l2.6 1.6M9.6 2.8h4.8"/>'),
+  free: svg('<path d="M3.5 12.4V4.5h7.9l9.1 9.1-7.9 7.9-9.1-9.1Z"/><circle cx="7.9" cy="8.9" r="1.3"/>'),
+  ok: svg('<circle cx="12" cy="12" r="8.5"/><path d="m8.3 12.3 2.5 2.5 5-5.2"/>'),
+  eye: svg('<path d="M2.5 12s3.5-6.3 9.5-6.3 9.5 6.3 9.5 6.3-3.5 6.3-9.5 6.3S2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.8"/>'),
+  desk: svg('<path d="M3.5 19.5h17M5.5 16.5a6.5 6.5 0 0 1 13 0Z"/><path d="M12 10V8.2M10.6 8.2h2.8"/>'),
+  rfid: svg('<rect x="3" y="7" width="11" height="10" rx="1.8"/><path d="M17.3 9a4.4 4.4 0 0 1 0 6M19.8 6.8a7.6 7.6 0 0 1 0 10.4"/>'),
+  car: ICON.car, list: ICON.list, cable: ICON.cable, park: ICON.park, info: ICON.info
+};
+function howOf(s) {
+  if (s.cc) return null;
+  const n = netOf(s), k = n && n.kako, ax = s.ax || {}, fee = (s.fee && s.fee.free) || '';
+  const onlyAc = !s.dc && (s.c.length ? s.c.every(c => c[1] === 'ac') : !!s.ac);
+  const acCable = onlyAc && !(s.cab && s.cab.own) ? [['cable', T.hw_g_cable]] : [];
+  if (k && k.steps) {
+    return { k: 'net', name: n.name, steps: k.steps.map(x => [x.i, tr(x.t)]), facts: (k.facts || []).map(x => [x.i, tr(x.t)]), kako: k };
+  }
+  // what the place itself says (dopune.json: ax.how), then who may charge, then free, then nothing known
+  const g = ax.how === 'card-desk' ? 'desk' : ax.how === 'rfid' ? 'rfid' : ax.how === 'staff' ? 'staff'
+    : (ax.who === 'guests' || ax.who === 'customers' || s.acc === 'customers') ? 'guests' : fee ? 'free' : 'unk';
+  const STEPS = {
+    desk: [['desk', T.hw_g_desk], ['rfid', T.hw_g_tap], ['plug', T.hw_g_plug]],
+    rfid: [['rfid', T.hw_g_rfid], ['plug', T.hw_g_plug], ['ok', T.hw_g_start]],
+    staff: [['park', T.hw_g_park], ['user', T.hw_g_staff], ['plug', T.hw_g_plug]],
+    guests: [['desk', T.hw_g_ask], ['park', T.hw_g_park], ['plug', T.hw_g_plug]],
+    free: [['park', T.hw_g_park], ['plug', T.hw_g_plug], ['user', T.hw_g_help]],
+    unk: [['eye', T.hw_g_look], ['qr', T.hw_g_qr], ['plug', T.hw_g_plugstart]]
+  };
+  return { k: g, gen: true, known: !!(n || s.opn), name: n ? n.name : '', steps: STEPS[g], facts: g === 'desk' || g === 'staff' || g === 'rfid' ? [] : acCable, kako: k || null };
+}
+function howHtml(s) {
+  const h = howOf(s);
+  if (!h) return '';
+  const steps = '<ol class="hw-steps" style="--n:' + h.steps.length + '">' + h.steps.map((x, i) => '<li><i aria-hidden="true">' + (HI[x[0]] || HI.info) +
+    '<b>' + (i + 1) + '</b></i><span>' + esc(x[1]) + '</span></li>').join('') + '</ol>';
+  const facts = h.facts.length ? '<ul class="hw-facts">' + h.facts.map(x => '<li>' + (HI[x[0]] || HI.info) + '<span>' + esc(x[1]) + '</span></li>').join('') + '</ul>' : '';
+  const k = h.kako;
+  const apps = k && k.apps && k.apps.length ? '<p class="hw-apps">' + k.apps.map(a => '<a href="' + esc(a.u) + '" target="_blank" rel="noopener nofollow">' +
+    (/play|store|aplikacij/i.test(a.l) ? HI.app : ICON.ext) + '<span>' + esc(tr(a.l)) + '</span></a>').join('') + '</p>' : '';
+  let more = '';
+  if (k) {
+    const row = (lbl, x) => (x ? '<p><b>' + esc(lbl) + '</b> ' + esc(tr(x)) + '</p>' : '');
+    const src = (k.src || []).map(a => '<a href="' + esc(a.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(a.l)) + '</a>').join(' · ');
+    more = '<details class="hw-more"><summary>' + esc(T.hw_more) + '</summary>' +
+      (k.start && k.start.length ? '<ol>' + k.start.map(x => '<li>' + esc(tr(x)) + '</li>').join('') + '</ol>' : '') +
+      row(T.kako_pay, k.pay) + row(T.kako_guest, k.guest) + row(T.kako_after, k.after) + row(T.kako_refund, k.refund) +
+      '<small>' + esc(T.kako_checked.replace('{d}', k.checked || '')) + (src ? ' · ' + src : '') + '</small></details>';
+  }
+  const fix = cfg.fix ? cfg.fix.replace('{id}', encodeURIComponent(s.id)) : lp('/ispravka/?stanica=') + encodeURIComponent(s.id);
+  const gen = h.gen ? '<p class="hw-gen">' + esc(h.k === 'unk' && !h.known ? T.hw_gen_unk : T.hw_gen) + ' <a href="' + fix + '">' + esc(T.hw_tell) + '</a></p>' : '';
+  return '<section class="cbox hw' + (h.gen ? ' is-gen' : '') + '" aria-label="' + esc(T.hw_t) + '"><div class="hw-h"><span>' + esc(T.hw_t) + '</span>' +
+    (h.gen ? '<em>' + esc(T.hw_general) + '</em>' : h.name ? '<em>' + esc(h.name) + '</em>' : '') + '</div>' + steps + facts + apps + gen + more + '</section>';
 }
 function statusHtml(s) {
   if (!s.ps) return '';
@@ -775,8 +846,7 @@ function openCard(s, fly, fromNear) {
   const logo = n && n.logo ? '<span class="lg w' + (n.logo_dark ? ' dark' : '') + '"><img src="' + esc(n.logo) + '" alt=""></span>' : '<span class="lg w mono" aria-hidden="true">' + esc((netName(s) || '?').slice(0, 2).toUpperCase()) + '</span>';
   const netRole = s.cc ? (s.nn ? T.net_known : T.operator) : n && n.page ? T.net_known : (s.opn && !n ? T.operator : T.net_unknown);
   const netLine = netName(s) ? '<div class="net">' + logo + '<div><b>' + esc(netName(s)) + '</b><span>' + esc(netRole) + '</span></div></div>' : '';
-  const conns = s.c.length ? '<div class="cbox"><span>' + esc(T.conn) + '</span><ul>' + s.c.map(c => '<li>' + esc(connLine(c)) +
-    (MYDC && c[0] === MYDC ? ' <b class="mine">· ' + esc(T.conn_mine) + '</b>' : '') + '</li>').join('') + '</ul></div>' : '';
+  const conns = s.c.length ? '<div class="cbox"><span>' + esc(T.conn) + '</span><ul class="cns">' + s.c.map(c => connRow(c, MYDC && c[0] === MYDC)).join('') + '</ul></div>' : '';
   const acc = s.acc === 'customers' ? '<div class="cbox"><span>' + esc(T.access) + '</span><div>' + esc(T.customers) + '</div></div>' : '';
   const navs = navLinks(s);
   // a neighbouring country's station: the button opens it on that country's map on blokvolt.com (prices, the country's networks)
@@ -788,7 +858,7 @@ function openCard(s, fly, fromNear) {
   const srcs = s.src.filter(x => x.u).map(x => '<a href="' + esc(lp(x.u)) + '" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(x.upd) + ')' : '')).join(' · ');
   $card.innerHTML = '<div class="ccard" role="dialog" aria-label="' + esc(title(s)) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
     favBtn(s) + (cardNear ? '<button class="lnkbtn nr-back" type="button" data-nr="back">← ' + esc(T.nr_title) + '</button>' : cardRt ? '<button class="lnkbtn nr-back" type="button" data-rt="back">← ' + esc(T.rt_title) + '</button>' : '') +
-    '<h2>' + esc(title(s)) + '</h2><p class="addr">' + esc(place(s)) + '</p>' + verHtml(s) + tagsHtml(s) + netLine + priceHtml(s) + noteHtml(s) + kakoHtml(s) + statusHtml(s) + conns + acc + whereHtml(s) +
+    '<h2>' + esc(title(s)) + '</h2><p class="addr">' + esc(place(s)) + '</p>' + verHtml(s) + tagsHtml(s) + netLine + priceHtml(s) + noteHtml(s) + howHtml(s) + statusHtml(s) + conns + acc + whereHtml(s) +
     '<div class="acts"><a class="btn dark full" href="' + navs[0][1] + '" target="_blank" rel="noopener" data-nav="' + navs[0][2] + '">' + ICON.nav + esc(T.navigate) + '</a>' +
     '<p class="nav-alt">' + esc(T.nav_in) + ' ' + navs.slice(1).map(x => '<a class="lnk" href="' + x[1] + '" target="_blank" rel="noopener" data-nav="' + x[2] + '">' + x[0] + '</a>').join(' · ') + '</p>' +
     (site ? '<a class="btn' + (rg ? ' full' : '') + '" href="' + esc(site) + '"' + (site[0] === '/' ? '' : ' target="_blank" rel="noopener"') + '>' + ICON.ext + esc(rg ? T.rg_open : n && n.page ? T.about_net : T.site) + '</a>' : '') +
@@ -2202,6 +2272,9 @@ Promise.all([getJson(cfg.stations), cfg.nets ? getJson(cfg.nets).catch(() => ({ 
   // rows of "Najbliži punjač" for a point (the apps and evolako.rs are compared with it); bvCostQa(id) the cost lines
   if (/[?&]qa=1\b/.test(location.search)) {
     window.bvMapQa = rg => data(rg).features.map(f => f.properties);
+    // every station with its network and the "Kako se puni ovde" scheme it gets (scripts/qa/map_kako_test.py)
+    window.bvKakoQa = () => ST.map(s => { const h = howOf(s); return { id: s.id, how: h && { k: h.k, steps: h.steps, facts: h.facts } }; });
+    window.bvStQa = id => ST.find(x => x.id === id);
     window.bvNearQa = (lat, lon, nep) => nearestList({ lat, lon }, !!nep).rows.map(r => ({ id: r.s.id, t: title(r.s), m: Math.round(r.d * 1000) }));
     window.bvCostQa = id => { const s = ST.find(x => x.id === id), co = s && costOf(s); return co ? { kw: co.main.c.kw, kwh: co.main.c.kwh, km: co.main.c.km, alt: co.alt ? co.alt.c.km : null } : null; };
     // the map itself, for scripts/qa/map_nocluster_test.py (zoom, rendered dots, taps)

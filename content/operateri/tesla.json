@@ -87,6 +87,26 @@
  "payment_short": "Tesla aplikacija",
  "kako": {
   "checked": "06.10.2026",
+  "steps": [
+   {
+    "i": "car",
+    "t": "Samo za Tesla automobile"
+   },
+   {
+    "i": "plug",
+    "t": "Priključite kabl"
+   },
+   {
+    "i": "ok",
+    "t": "Auto se prijavljuje sam"
+   }
+  ],
+  "facts": [
+   {
+    "i": "card",
+    "t": "Plaćanje ide preko Tesla naloga; po vozačima je za sada bez naplate"
+   }
+  ],
   "start": [
    "Supercharger je samo za Tesla vozila: auto se prijavljuje sam kad priključite kabl, bez kartice i aplikacije na punjaču.",
    "Plaćanje, kad postoji, ide preko Tesla naloga; po vozačima je punjenje u Srbiji za sada bez naplate."

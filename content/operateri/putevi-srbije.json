@@ -69,6 +69,30 @@
  "payment_short": "Aktivacija u aplikaciji Orion eMobility",
  "kako": {
   "checked": "06.10.2026",
+  "steps": [
+   {
+    "i": "app",
+    "t": "Nalog u Orion eMobility"
+   },
+   {
+    "i": "qr",
+    "t": "QR kod na punjaču ili RFID kartica"
+   },
+   {
+    "i": "plug",
+    "t": "Priključite kabl i pokrenite"
+   }
+  ],
+  "facts": [
+   {
+    "i": "free",
+    "t": "Punjenje je za sada besplatno"
+   },
+   {
+    "i": "cable",
+    "t": "AC: ponesite svoj Tip 2 kabl; DC punjači imaju kabl"
+   }
+  ],
   "start": [
    "Punjenje se pokreće u aplikaciji Orion eMobility (nalog sa e-mailom i karticom): skenirajte QR kod na punjaču ili upotrebite RFID karticu.",
    "Na AC punjačima je potreban sopstveni kabl, osim ako na punjaču ne piše drugačije; DC punjači imaju kabl."

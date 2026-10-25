@@ -85,6 +85,34 @@
  "payment_short": "Kartica u aplikaciji",
  "kako": {
   "checked": "06.10.2026",
+  "steps": [
+   {
+    "i": "app",
+    "t": "Dodajte karticu u aplikaciji Yesla"
+   },
+   {
+    "i": "qr",
+    "t": "Skenirajte QR kod na konektoru"
+   },
+   {
+    "i": "play",
+    "t": "„Start Session“"
+   },
+   {
+    "i": "receipt",
+    "t": "Račun stiže u aplikaciju i na e-mail"
+   }
+  ],
+  "facts": [
+   {
+    "i": "card",
+    "t": "Pre sesije se rezerviše 3.000 RSD; ostatak se vraća"
+   },
+   {
+    "i": "noacc",
+    "t": "Bez kartice u aplikaciji ne može"
+   }
+  ],
   "start": [
    "U aplikaciji Yesla dodajte platnu karticu (provera 10 RSD se odmah vraća).",
    "Skenirajte QR kod na konektoru ili izaberite ID punjača u aplikaciji i dodirnite „Start Session“.",

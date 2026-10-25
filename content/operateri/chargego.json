@@ -278,6 +278,38 @@
  "video": "dK64RmDSSCI",
  "kako": {
   "checked": "06.10.2026",
+  "steps": [
+   {
+    "i": "app",
+    "t": "Otvorite aplikaciju Charge&GO"
+   },
+   {
+    "i": "qr",
+    "t": "Skenirajte QR kod na punjaču"
+   },
+   {
+    "i": "plug",
+    "t": "Kabl priključite kad aplikacija zatraži"
+   },
+   {
+    "i": "stop",
+    "t": "Zaustavite u aplikaciji"
+   }
+  ],
+  "facts": [
+   {
+    "i": "noacc",
+    "t": "Bez naloga: QR kod → e-mail i kartica; rezerviše se najmanje 2.000 RSD"
+   },
+   {
+    "i": "card",
+    "t": "Sa nalogom je 20 % jeftinije; saldo se dopunjuje po 3.000 RSD"
+   },
+   {
+    "i": "timer",
+    "t": "Posle 15 minuta: 5 RSD za svaki minut zauzeća"
+   }
+  ],
   "start": [
    "U aplikaciji Charge&GO (ili na client.chargego.rs) izaberite punjač: skenirajte QR kod na punjaču, upišite broj priključka ili ga nađite na mapi.",
    "Pokrenite punjenje u aplikaciji. Kabl priključite tek kad aplikacija to zatraži — obaveštenje stiže pri vrhu ekrana.",
