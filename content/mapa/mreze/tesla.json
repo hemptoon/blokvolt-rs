@@ -1,5 +1,5 @@
 {
- "about": "Tesla locations in Serbia from Tesla's own lists (Superchargers and Destination Charging), copied by hand. Positions: Tesla's location page (Beograd, V3 on the AVA Shopping Park car park, 28.09.2026) or the OpenStreetMap node at the site (Aleksinac: Tesla's pin is about 3 km off); Destination hotels: the open-data stations at these addresses.",
+ "about": "Tesla locations in Serbia from Tesla's own lists (Superchargers and Destination Charging), copied by hand. Positions: Tesla's location page (Beograd, V3 on the AVA Shopping Park car park, 28.09.2026) or the OpenStreetMap node at the site (Aleksinac: Tesla's pin is about 3 km off); Destination hotels: the open-data stations at these addresses; Vila Đokić (Zlatibor), which has none: Tesla's location page, 25.10.2026 (the OpenStreetMap node of the guest house is 10 m away).",
  "source": "https://www.tesla.com/sl_SI/findus/list/superchargers/Serbia",
  "source2": "https://www.tesla.com/sl_SI/findus/list/chargers/Serbia",
  "checked": "28.09.2026",
@@ -9,6 +9,6 @@
   {"name": "Hotel Crowne Plaza Belgrade", "addr": "Vladimira Popovića 10, Beograd", "kind": "destination", "lat": 44.8092, "lon": 20.43382},
   {"name": "Hotel Tesla Smart Stay", "addr": "Šumatovačka 42, Beograd", "kind": "destination", "lat": 44.79524, "lon": 20.47246},
   {"name": "Square Nine Hotel Belgrade", "addr": "Studentski trg 9, Beograd", "kind": "destination", "lat": 44.81949, "lon": 20.4563},
-  {"name": "Guest House Vila Đokić", "addr": "Gajevi 154, Zlatibor", "kind": "destination", "lat": null, "lon": null}
+  {"name": "Guest House Vila Đokić", "addr": "Gajevi 154, Zlatibor", "kind": "destination", "lat": 43.707065, "lon": 19.72482}
  ]
 }

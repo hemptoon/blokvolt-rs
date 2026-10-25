@@ -1,7 +1,8 @@
 /* BlokVolt — map of service points for electric cars (/servisi/). MapLibre GL + OpenFreeMap, the same layout and card as
    /mapa/. Places from /assets/servisi/servisi.json (built from content/servisi/servisi.json): the authorized services of the
-   brands that sell electric cars in Serbia, as the importers list them, and the independent services that say on their own
-   sites that they work on electric cars. Same fields and rules for every service; no ratings, no order but distance and name.
+   brands that sell electric cars in Serbia, as the importers list them, the independent services that say on their own
+   sites that they work on electric cars, body shops that repair them (k: limarija) and tow services that carry cars on a
+   platform (t: 'p'). Same fields and rules for every service; no ratings, no order but distance and name.
    The reader's location stays in the browser. Serbian texts of the data are translated on /en/ and /ru/ through the page's
    string table ('tx:<text>'). docs/RUNBOOK.md 3.31. */
 import * as maplibregl from '/assets/vendor/maplibre-6.11.1/maplibre-gl.mjs';
@@ -31,7 +32,8 @@ const ICON = {
   share: svg('<path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 12v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7"/>'),
   phone: svg('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1Z"/>'),
   wrench: svg('<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>'),
-  clock: svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>')
+  clock: svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+  truck: svg('<path d="M2.5 16.5V7h11v9.5M13.5 10.5h4l3 3.2v2.8h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>')
 };
 
 // directions: Apple Maps first on Apple devices, Google Maps elsewhere, Waze always; the app chosen last comes first
@@ -63,18 +65,24 @@ function distKm(a, b) {
 const $list = d.getElementById('slist'), $count = d.getElementById('scount'), $card = d.getElementById('scard');
 const $chips = d.getElementById('schips'), $q = d.getElementById('sq'), $brand = d.getElementById('sbrand'), $me = d.getElementById('sme');
 const P0 = new URLSearchParams(location.search);
-const state = { f: ['o', 'n', 'bat', 'tesla'].indexOf(P0.get('f')) >= 0 ? P0.get('f') : 'all', q: P0.get('q') || '', b: P0.get('marka') || '', bounds: null, lim: 25 };
+const FILTERS = ['o', 'n', 'bat', 'lim', 'slep', 'tesla'];
+const state = { f: FILTERS.indexOf(P0.get('f')) >= 0 ? P0.get('f') : 'all', q: P0.get('q') || '', b: P0.get('marka') || '', bounds: null, lim: 25 };
 let ALL = [], BR = {}, map = null, sel = null, me = null, userMove = false, CHECKED = '';
 
-const BAT = ['dijagnostika_baterije', 'popravka_baterije', 'bms'];
+// battery: diagnostics, repair, cell balancing, and the check before buying a used car
+const BAT = ['dijagnostika_baterije', 'popravka_baterije', 'bms', 'provera_polovnog'];
+const kindName = s => (s.t === 'o' ? T.t_o : s.t === 'p' ? T.t_p : T.t_n);
+const isLim = s => (s.k || []).indexOf('limarija') >= 0;
 function hay(s) {
-  if (!s._h) s._h = sfold([s.n, s.g, s.ar, s.a, (s.b || []).join(' '), (s.m || []).join(' '), s.t === 'o' ? T.t_o : T.t_n].join(' '));
+  if (!s._h) s._h = sfold([s.n, s.g, s.ar, s.a, (s.b || []).join(' '), (s.m || []).join(' '), kindName(s), isLim(s) ? T.lim : ''].join(' '));
   return s._h;
 }
 function pass(s) {
   if (state.f === 'o' && s.t !== 'o') return false;
   if (state.f === 'n' && s.t !== 'n') return false;
   if (state.f === 'bat' && !(s.s || []).some(x => BAT.indexOf(x) >= 0)) return false;
+  if (state.f === 'lim' && !isLim(s)) return false;
+  if (state.f === 'slep' && s.t !== 'p') return false;
   if (state.f === 'tesla' && (s.m || []).indexOf('Tesla') < 0) return false;
   if (state.b && (s.b || []).concat(s.m || []).indexOf(state.b) < 0) return false;
   if (state.q) {
@@ -98,7 +106,7 @@ const inView = s => !state.bounds || (hasPt(s) && s.lat >= state.bounds.s && s.l
 const place = s => [s.a, s.ar && s.ar !== s.g ? s.ar : '', s.g].filter(Boolean).join(', ');
 const brandsOf = s => (s.t === 'o' ? s.b : s.m) || [];
 function sub(s) {
-  const kind = s.t === 'o' ? (s.b || []).join(', ') : T.t_n;
+  const kind = s.t === 'o' ? (s.b || []).join(', ') : s.t === 'p' ? T.t_p : T.t_n;
   return [kind, s.g + (s.ar && s.ar !== s.g ? ' — ' + s.ar : '')].filter(Boolean).join(' · ');
 }
 
@@ -112,8 +120,9 @@ function renderList() {
   const lim = window.innerWidth <= 900 ? state.lim : Infinity, more = rows.length - lim;
   $list.innerHTML = rows.slice(0, lim).map(s => {
     const dist = me && isFinite(s._d) ? '<span>' + fmt(s._d, s._d < 10 ? 1 : 0) + ' km</span>' : '';
-    return '<button class="st sv' + (sel === s ? ' is-on' : '') + '" data-id="' + esc(s.id) + '"><span class="dot sv-' + s.t + '">' + ICON.wrench + '</span>' +
-      '<span class="nm"><b>' + esc(s.n) + '</b><span class="sb">' + esc(sub(s)) + '</span></span><span class="pr">' + esc(s.t === 'o' ? T.tag_o : T.tag_n) + dist + '</span></button>';
+    const tag = s.t === 'o' ? T.tag_o : s.t === 'p' ? T.tag_p : T.tag_n;
+    return '<button class="st sv' + (sel === s ? ' is-on' : '') + '" data-id="' + esc(s.id) + '"><span class="dot sv-' + s.t + '">' + (s.t === 'p' ? ICON.truck : ICON.wrench) + '</span>' +
+      '<span class="nm"><b>' + esc(s.n) + '</b><span class="sb">' + esc(sub(s)) + (isLim(s) && s.t !== 'p' ? ' · ' + esc(T.lim) : '') + '</span></span><span class="pr">' + esc(tag) + dist + '</span></button>';
   }).join('') || '<p class="empty">' + esc(T.none) + '</p>';
   if (more > 0) $list.insertAdjacentHTML('beforeend', '<div class="more"><button class="btn sm" type="button" data-more>' + esc(T.more.replace('{n}', more)) + '</button></div>');
 }
@@ -139,19 +148,27 @@ function openCard(s, fly) {
   const bi = s.t === 'o' ? (s.b || []).map(b => BR[b]).filter(Boolean) : [];
   let h = '<div class="ccard sv-card" role="dialog" aria-label="' + esc(s.n) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
     '<h2>' + esc(s.n) + '</h2><p class="addr">' + esc(place(s)) + '</p>' +
-    '<p class="sv-kind"><span class="sv-pill sv-' + s.t + '">' + ICON.wrench + esc(s.t === 'o' ? T.t_o : T.t_n) + '</span></p>';
+    '<p class="sv-kind"><span class="sv-pill sv-' + s.t + '">' + (s.t === 'p' ? ICON.truck : ICON.wrench) + esc(kindName(s)) + '</span>' +
+    (isLim(s) && s.t !== 'p' ? ' <span class="sv-pill sv-lim">' + esc(T.lim) + '</span>' : '') + '</p>';
   // other services on the same spot (one auto centre, several firms): a map tap reaches only one of them
   const same = hasPt(s) ? ALL.filter(x => x !== s && hasPt(x) && Math.abs(x.lat - s.lat) < 0.0003 && Math.abs(x.lon - s.lon) < 0.0004) : [];
   if (same.length) h += '<p class="sv-same">' + esc(T.same_spot) + ': ' + same.map(x => '<button type="button" class="lnk" data-same="' + esc(x.id) + '">' + esc(x.n) + '</button>').join(' · ') + '</p>';
-  if (s.t === 'o') {
+  if (s.t === 'p') {
+    // tow service: how it carries a car (platform), what it says about electric cars, where it goes
+    h += cbox(T.tow, s.pl ? '<div>' + esc(T.tow_says) + ': ' + esc(tr(s.pl)) + '</div>' : '<small>' + esc(T.not_said) + '</small>');
+    if (s.ev) h += cbox(T.ev_work, '<div>' + esc(T.tow_says) + ': ' + esc(tr(s.ev)) + '</div>');
+    h += cbox(T.cov, s.cov ? '<div>' + esc(tr(s.cov)) + '</div>' : '<small>' + esc(T.not_said) + '</small>');
+  } else if (s.t === 'o') {
     h += cbox(T.for_brands, '<ul>' + (s.b || []).map(b => '<li><b>' + esc(b) + '</b>' + (BR[b] && BR[b].ev ? '<small>' + esc(T.ev_models) + ': ' + esc(tr(BR[b].ev)) + '</small>' : '') + '</li>').join('') + '</ul>');
     // evs: who says it — 'u' the importer's list, 's' the service's own site
     h += cbox(T.ev_work, s.ev ? '<div>' + esc(s.evs === 's' ? T.firm_says : T.imp_says) + ': ' + esc(tr(s.ev)) + '</div>' : '<small>' + esc(T.ev_none) + '</small>');
+    if ((s.s || []).length) h += cbox(T.services, '<div class="sv-tags">' + s.s.map(x => '<span class="tag">' + esc(T['s_' + x] || x) + '</span>').join('') + '</div>');
   } else {
     if (s.ev) h += cbox(T.ev_work, '<div>' + esc(T.firm_says) + ': ' + esc(tr(s.ev)) + '</div>');
     if ((s.s || []).length) h += cbox(T.services, '<div class="sv-tags">' + s.s.map(x => '<span class="tag">' + esc(T['s_' + x] || x) + '</span>').join('') + '</div>');
     h += cbox(T.makes, (s.m || []).length ? '<div>' + esc(s.m.join(', ')) + '</div>' : '<small>' + esc(T.not_said) + '</small>');
   }
+  if (isLim(s) && s.t !== 'p') h += cbox(T.lim_box, s.lim ? '<div>' + esc(s.lims === 'u' ? T.imp_says : T.firm_says) + ': ' + esc(tr(s.lim)) + '</div>' : '<small>' + esc(T.lim_none) + '</small>');
   if (s.oh) h += cbox(T.hours, '<div>' + esc(tr(s.oh)) + '</div>');
   const navs = [navPref()].concat(navApps().filter(a => a !== navPref())), pt = hasPt(s);
   const findUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent([s.n, s.a, s.g].join(', '));
@@ -159,14 +176,17 @@ function openCard(s, fly) {
   h += '<div class="acts">' +
     (s.tel ? '<a class="btn dark full" href="' + esc(telHref(s.tel)) + '" data-act="call">' + ICON.phone + esc(T.call) + ' ' + esc(s.tel) + '</a>' : '') +
     (s.tel2 ? '<p class="nav-alt">' + esc(T.tel2) + ': <a class="lnk" href="' + esc(telHref(s.tel2)) + '" data-act="call">' + esc(s.tel2) + '</a></p>' : '') +
-    (pt ? '<a class="btn' + (s.tel ? '' : ' dark') + ' full" href="' + navUrl(navs[0], s) + '" target="_blank" rel="noopener" data-nav="' + navs[0] + '">' + ICON.nav + esc(T.navigate) + '</a>' +
+    (pt ? '<a class="btn' + (s.tel ? '' : ' dark') + ' full" href="' + navUrl(navs[0], s) + '" target="_blank" rel="noopener" data-nav="' + navs[0] + '">' + ICON.nav + esc(s.t === 'p' ? T.nav_p : T.navigate) + '</a>' +
     '<p class="nav-alt">' + esc(T.nav_in) + ' ' + navs.slice(1).map(a => '<a class="lnk" href="' + navUrl(a, s) + '" target="_blank" rel="noopener" data-nav="' + a + '">' + NAV_NAME[a] + '</a>').join(' · ') + '</p>'
-      : '<a class="btn' + (s.tel ? '' : ' dark') + ' full" href="' + findUrl + '" target="_blank" rel="noopener" data-act="find">' + ICON.nav + esc(T.find_addr) + '</a>') +
-    (s.web ? '<a class="btn" href="' + esc(s.web) + '" target="_blank" rel="noopener nofollow" data-act="site">' + ICON.ext + esc(T.site) + '</a>' : '') +
+      : s.a ? '<a class="btn' + (s.tel ? '' : ' dark') + ' full" href="' + findUrl + '" target="_blank" rel="noopener" data-act="find">' + ICON.nav + esc(T.find_addr) + '</a>' : '') +
+    (s.web ? '<a class="btn" href="' + esc(s.web) + '" target="_blank" rel="noopener nofollow" data-act="site">' + ICON.ext + esc(s.t === 'p' ? T.site_p : T.site) + '</a>' : '') +
     '<button class="btn" type="button" data-share>' + ICON.share + esc(T.share) + '</button>' +
     '<a class="btn' + (s.web ? ' full' : '') + '" href="' + fix + '" data-act="report">' + ICON.flag + esc(T.report) + '</a></div>';
   const srcs = (s.src || []).filter(x => x.u).map(x => '<a href="' + esc(x.u) + '" rel="noopener nofollow">' + esc(tr(x.l)) + '</a>').join(' · ');
-  h += '<p class="src">' + esc(T.data) + ': ' + srcs + (CHECKED ? ' · ' + esc(T.checked.replace('{d}', CHECKED)) : '') +
+  // the date of this place's newest source (each source keeps its own date)
+  const dmy = x => (x || '').split('.').reverse().join('');
+  const last = (s.src || []).map(x => x.d).filter(Boolean).sort((a, b) => dmy(b).localeCompare(dmy(a)))[0] || CHECKED;
+  h += '<p class="src">' + esc(T.data) + ': ' + srcs + (last ? ' · ' + esc(T.checked.replace('{d}', last)) : '') +
     (s.pos === 'osm' ? '<br>' + esc(T.pos_osm) : s.pos === 'none' ? '<br>' + esc(T.pos_none) : '') + '</p>';
   if (bi.length && bi.some(b => b.u)) h += '<p class="src">' + esc(T.net_of) + ': ' + bi.filter(b => b.u).map(b => '<a href="' + esc(b.u) + '" rel="noopener nofollow">' + esc(b.name) + '</a>').join(' · ') + '</p>';
   $card.innerHTML = h + '</div>';
@@ -226,12 +246,12 @@ function initMap() {
     map.addSource('sv', { type: 'geojson', data: { type: 'FeatureCollection', features: visible().filter(hasPt).map(feat) } });
     map.addSource('sel', { type: 'geojson', data: { type: 'FeatureCollection', features: sel && hasPt(sel) ? [feat(sel)] : [] } });
     map.addSource('me', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
-    // independent EV services above the authorized ones (fewer, and the reason many readers come)
+    // independent EV services above the authorized ones (fewer, and the reason many readers come); tow services orange
     map.addLayer({ id: 'sv-pt', type: 'circle', source: 'sv',
-      layout: { 'circle-sort-key': ['match', ['get', 't'], 'n', 2, 1] },
+      layout: { 'circle-sort-key': ['match', ['get', 't'], 'n', 3, 'p', 2, 1] },
       paint: {
         'circle-radius': zr(3.5, 5, 9, 12),
-        'circle-color': ['match', ['get', 't'], 'n', '#D9F45B', '#0D111A'],
+        'circle-color': ['match', ['get', 't'], 'n', '#D9F45B', 'p', '#F28C28', '#0D111A'],
         'circle-stroke-width': zr(1.2, 1.6, 2.5, 2.5),
         'circle-stroke-color': ['match', ['get', 't'], 'n', '#0D111A', '#FFFFFF']
       } });

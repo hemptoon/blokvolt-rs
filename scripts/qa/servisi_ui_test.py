@@ -14,6 +14,7 @@ STYLE = {"version": 8, "sources": {}, "glyphs": "https://tiles.openfreemap.org/f
          "layers": [{"id": "bg", "type": "background", "paint": {"background-color": "#F2F1EC"}}]}
 DATA = json.loads((Path(__file__).resolve().parents[2] / 'dist' / 'assets' / 'servisi' / 'servisi.json').read_text(encoding='utf-8'))
 N, NO = len(DATA['p']), sum(1 for p in DATA['p'] if p['t'] == 'o')
+NP, NL = sum(1 for p in DATA['p'] if p['t'] == 'p'), sum(1 for p in DATA['p'] if 'limarija' in (p.get('k') or []))
 fails = []
 
 
@@ -70,6 +71,21 @@ async def main():
             await pg.wait_for_timeout(200)
             no = await pg.evaluate('window.bvSrvQaVis().every(t => t === "o") && window.bvSrvQaVis().length === %d && document.querySelectorAll("#slist .st .dot.sv-n").length === 0' % NO)
             check(no, f'{tag}: chip Ovlašćeni shows only authorized services')
+            # tow services (t p) and body shops (k limarija), since 25.10.2026
+            await pg.click('#schips [data-f="slep"]')
+            await pg.wait_for_timeout(200)
+            sl = await pg.evaluate('window.bvSrvQaVis().every(t => t === "p") && window.bvSrvQaVis().length === %d' % NP)
+            check(NP > 0 and sl, f'{tag}: chip Šlep shows only the {NP} tow services')
+            await pg.click('#slist .st')
+            await until(pg, 'document.querySelector("#scard.is-open .ccard h2")')
+            tow = await pg.evaluate('document.querySelector("#scard .ccard").innerText')
+            check('prevoz vozila' in tow.lower() and 'gde radi' in tow.lower(), f'{tag}: a tow card shows the flatbed claim and where it works')
+            await pg.click('#scard .x')
+            await pg.wait_for_timeout(200)
+            await pg.click('#schips [data-f="lim"]')
+            await pg.wait_for_timeout(200)
+            nl = await pg.evaluate('window.bvSrvQaVis().length')
+            check(NL > 0 and nl == NL, f'{tag}: chip Limarija shows the {NL} body shops (got {nl})')
             await pg.click('#schips [data-f="all"]')
             # a town whose name is in no other town's service name or street ("Beograd" is also in "Beogradski put",
             # "Čačak" in "Autočačak Promet" in Beograd)
@@ -77,7 +93,7 @@ async def main():
             import unicodedata
             fold = lambda x: ''.join(c for c in unicodedata.normalize('NFD', (x or '').lower().replace('đ', 'd')) if unicodedata.category(c) != 'Mn')
             town = next(t for t, _ in Counter(p['g'] for p in DATA['p']).most_common()
-                        if not any(fold(t) in fold(' '.join((p['n'], p['a'], p.get('ar') or ''))) for p in DATA['p'] if p['g'] != t))
+                        if not any(fold(t) in fold(' '.join((p['n'], p.get('a', ''), p.get('ar') or ''))) for p in DATA['p'] if p['g'] != t))
             first = {'g': town}
             await pg.fill('#sq', first['g'])
             await pg.wait_for_timeout(400)
@@ -96,7 +112,7 @@ async def main():
             await pg.wait_for_timeout(200)
             check(not await pg.evaluate('document.querySelector("#scard").classList.contains("is-open")'), f'{tag}: card closes')
             # a tap on the map at a service's point
-            s = DATA['p'][-1]
+            s = [x for x in DATA["p"] if x.get("lat") is not None][-1]   # the last service with a point
             await pg.evaluate(f'window.bvSrvQa().jumpTo({{center: [{s["lon"]}, {s["lat"]}], zoom: 16}})')
             await until(pg, 'window.bvSrvQa().loaded() && !window.bvSrvQa().isMoving()')
             await pg.wait_for_timeout(400)

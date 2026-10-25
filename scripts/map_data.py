@@ -627,7 +627,8 @@ def official_sites():
             continue
         recs.append({'k': 'te', 'id': 'te-' + re.sub(r'[^a-z0-9]+', '-', fold(s['name'])).strip('-'), 'lat': s['lat'], 'lon': s['lon'],
                      'net': 'tesla', 'raw': s['name'], 'n': s['name'], 'a': s.get('addr', ''), 'kind': s.get('kind'),
-                     'c': [['tesla', 'dc', None, 1]] if s.get('kind') == 'supercharger' else [['type2', 'ac', None, 1]], 'evse': None})
+                     'c': [['tesla', 'dc', None, 1]] if s.get('kind') == 'supercharger' else [['type2', 'ac', None, 1]], 'evse': None,
+                     'u': te.get('source2', '') if s.get('kind') == 'destination' else ''})   # Destination: Tesla's chargers list
     # other lists the networks and the owners of the places publish themselves (content/mapa/mreze/ostale.json, RUNBOOK
     # 3.11e): the Emobility Spectra and Yesla apps, Best in Parking's garages, hotels' own sites. Their facts (hours, access,
     # who charges free, how to find it) travel with the site as 'extra'.
@@ -641,7 +642,7 @@ def official_sites():
             extra = {f: x[f] for f in ('loc', 'oh', 'ax', 'fee', 'note', 'al', 'opn', 'acc', 'park') if f in x}
             recs.append({'k': x['k'], 'id': x['id'], 'lat': x['lat'], 'lon': x['lon'], 'net': L.get('net', ''), 'raw': x['n'], 'n': x['n'],
                          'a': x.get('a', ''), 'c': x.get('c') or [], 'evse': None, 'u': x.get('u') or L.get('url', ''),
-                         'l': x.get('l') or '', 'src2': x.get('src2'), 'extra': extra})
+                         'l': x.get('l') or '', 'src2': x.get('src2'), 'extra': extra, 'dt': x.get('d')})
     # one site per network within 80 m (Crowne Plaza 1, 2, 3 and the hypercharger; SIRIUS eksterno / interno)
     sites = []
     for r in recs:
@@ -922,10 +923,11 @@ def verify(stations, notes, checked):
     return the network data for the map layer /assets/map/mreze.json: {'upd': {id: …}, 'add': [stations]}."""
     sites, meta = official_sites()
     iso = lambda d: '-'.join(reversed(d.split('.')))
+    sdate = lambda site: site.get('dt') or meta[site['k']]['date']   # a site checked on its own day (ostale.json: d)
 
     def site_src(site):
         # where the site is listed: the network's list, or the owner's own page (ostale.json: u, l), plus a second source
-        x = {'d': site['k'], 'u': site.get('u') or meta[site['k']]['url'], 'upd': iso(meta[site['k']]['date'])}
+        x = {'d': site['k'], 'u': site.get('u') or meta[site['k']]['url'], 'upd': iso(sdate(site))}
         if site.get('l'):
             x['l'] = site['l']
         return [x] + ([site['src2']] if site.get('src2') else [])
@@ -963,12 +965,12 @@ def verify(stations, notes, checked):
         af = app_fields(site, meta)
         af_src = [{'d': 'cga', 'l': 'aplikacija Charge&GO', 'u': meta['cga']['url'], 'upd': iso(meta['cga']['date'])}] if af else []
         if site.get('test'):
-            keep['v'] = {'s': 'nep', 'g': 'test', 'd': meta[site['k']]['date']}   # the network lists it as in trial operation
+            keep['v'] = {'s': 'nep', 'g': 'test', 'd': sdate(site)}   # the network lists it as in trial operation
             if af:
                 upd[keep['id']] = dict(af, src=af_src)
             continue
         by = sorted(set((keep.get('v') or {}).get('by', [])) | {site['k']})
-        keep['v'] = {'s': 'ok', 'by': by, 'd': meta[site['k']]['date']}
+        keep['v'] = {'s': 'ok', 'by': by, 'd': sdate(site)}
         if site.get('putevi') or keep.get('ps'):
             continue   # the state chargers keep the official list of JP "Putevi Srbije"
         u = {'src': site_src(site) + af_src}
@@ -1003,7 +1005,7 @@ def verify(stations, notes, checked):
                          'c': site['c'], 'dc': max(dc) if dc else None, 'ac': max(ac) if ac else None, 'acc': 'public',
                          'src': site_src(site)
                          + ([{'d': 'cga', 'l': 'aplikacija Charge&GO', 'u': meta['cga']['url'], 'upd': iso(meta['cga']['date'])}] if af else []),
-                         'v': {'s': 'ok', 'by': [site['k']], 'd': meta[site['k']]['date']}}, **af, **(site.get('extra') or {})))
+                         'v': {'s': 'ok', 'by': [site['k']], 'd': sdate(site)}}, **af, **(site.get('extra') or {})))
     for s in stations:
         if s.get('ps') and not s.get('v'):
             s['v'] = {'s': 'ok', 'by': ['ps'], 'd': s['ps']['d']}

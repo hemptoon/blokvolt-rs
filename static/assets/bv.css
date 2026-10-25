@@ -1663,7 +1663,8 @@ html.nl-in .nl-v-out,html:not(.nl-in) .nl-v-in{display:none!important}
 /* ---------- service map (/servisi/), docs/RUNBOOK.md 3.31 ---------- */
 .dot.sv-o{background:var(--ink);color:#fff}
 .dot.sv-n{background:var(--volt);color:var(--vink);box-shadow:inset 0 0 0 2px var(--vink)}
-.dot.sv-o svg,.dot.sv-n svg{width:15px;height:15px}
+.dot.sv-p{background:#F28C28;color:#fff}
+.dot.sv-o svg,.dot.sv-n svg,.dot.sv-p svg{width:15px;height:15px}
 .st.sv .pr{font-size:12px;font-weight:600;color:var(--mut)}
 .sv-row{display:flex;gap:8px;margin-top:8px}
 .sv-row .select{flex:1;height:40px;font-size:15px}
@@ -1674,13 +1675,16 @@ html.nl-in .nl-v-out,html:not(.nl-in) .nl-v-in{display:none!important}
 .sv-pill svg{width:14px;height:14px;flex:none}
 .sv-pill.sv-o{background:var(--ink);color:#fff}
 .sv-pill.sv-n{background:var(--volt);color:var(--vink)}
+.sv-pill.sv-p{background:#F28C28;color:#fff}
+.sv-pill.sv-lim{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line2,#C9CCD2)}
 .sv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
 .sv-card .cbox li{margin:4px 0}
 .sv-card .cbox li small{margin-top:1px}
 .sv-card .acts .btn svg{width:17px;height:17px;flex:none}
 .map-legend .l-svo{background:var(--ink);box-shadow:0 0 0 2px #fff inset}
 .map-legend .l-svn{background:var(--volt);box-shadow:0 0 0 2px var(--ink) inset}
-.sv-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 12px}
+.map-legend .l-svp{background:#F28C28;box-shadow:0 0 0 2px #fff inset}
+.sv-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 12px}
 .sv-stats div{border:1px solid var(--line);border-radius:12px;padding:8px 10px}
 .sv-stats b{display:block;font-size:20px;font-weight:760;line-height:1.1}
 .sv-stats span{display:block;font-size:12.5px;color:var(--mut)}

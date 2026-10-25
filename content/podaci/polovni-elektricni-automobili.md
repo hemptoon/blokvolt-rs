@@ -118,4 +118,6 @@ Električnih automobila 24. oktobra nije bilo u ponudama koje su javno vidljive.
 - **Osiguranje.** Za marku bez ovlašćenog servisa u Srbiji pitajte osiguravača za kasko pre kupovine — [osiguranje](/podaci/osiguranje-elektricnog-automobila/).
 - **Probna vožnja.** Probajte i punjenje na brzom punjaču: koju snagu auto primi i da li puni bez greške — [zašto auto puni sporo](/javno-punjenje/zasto-auto-puni-sporo-na-brzom-punjacu/).
 
+Kako se meri stanje baterije, šta piše u garanciji i gde u Srbiji to rade servisi: [provera baterije pre kupovine](/podaci/provera-baterije-polovnog-elektricnog-auta/).
+
 Subvencija od 5.000 € važi samo za nov automobil koji pre zahteva nije registrovan ni korišćen — [subvencije 2026](/podaci/subvencije-2026/). Nove električne automobile po markama, sa uvoznicima i cenama: [električni automobili u Srbiji](/elektricni-automobili/).

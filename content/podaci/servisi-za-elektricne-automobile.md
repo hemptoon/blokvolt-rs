@@ -5,10 +5,10 @@ h1: Servisi za električne automobile
 description: Gde se servisira električni automobil u Srbiji: ovlašćeni servisi marki sa električnim modelima na mapi, Tesla bez ovlašćenog servisa, nezavisni servisi za baterije u Beogradu.
 kicker: Servisi
 lead: Popravka baterije i visokonaponskog sistema traži servis sa obučenim ljudima i posebnom opremom.
-updated: 24.10.2026
+updated: 25.10.2026
 next_check: 15.12.2026
 published: 2026-09-22
-modified: 2026-10-24
+modified: 2026-10-25
 priority: 0.7
 sources: Tesla — servisni centri, Srbija (lista prazna) :: https://www.tesla.com/findus/list/services/Serbia | BYD Srbija — podrška, servisne tačke, pomoć na putu :: https://byd-auto.rs/podrska/ | BYD Srbija — prodajna i servisna mesta (24.10.2026) :: https://byd-auto.rs/distributeri/ | BYD Srbija — otvoren prvi BYD servis u Srbiji (15.10.2025) :: https://byd-auto.rs/vesti/otvoren-prvi-byd-servis-u-srbiji/ | BYD Srbija — prodajno-servisni salon u Novom Sadu (11.09.2026) :: https://byd-auto.rs/vesti/otvoren-prvi-prodajno-servisni-byd-salon-u-novom-sadu/ | BYD Srbija — salon u Nišu (11.09.2026) :: https://byd-auto.rs/vesti/byducnost-je-stigla-na-jug-otvoren-prvi-byd-salon-u-nisu/ | Auto centar Elektra :: https://acelektra.rs/ | Električni Automobili d.o.o. — servis električnih vozila (ažurirano 29.06.2026) :: https://elektricniautomobili.eu/servis-elektricnih-vozila-u-srbiji/ | EV Clinic Beograd — usluge :: https://evclinic-beograd.rs/our-services/ | KiBOST Car — mobilni servis Tesle :: https://kibostcar.com/mobilna-servisna-sluzba-tesle/ | EV fix :: https://evfix.rs/ | N1, 03.05.2026 — električni polovnjak: na šta paziti :: https://n1info.rs/magazin/auto/elektricni-polovnjak-cene-sta-je-vazno-gledati/
 ---
@@ -39,7 +39,7 @@ TDV Auto Centar je prvi BYD servis, otvoren 15.10.2025, sa fabričkim alatima za
 
 ## Nezavisni servisi
 
-Pre kupovine polovnog tražite proveru baterije (SOH), dometa i istorije brzog punjenja. Za Teslu proverite i da li osiguravač prihvata [kasko](/podaci/osiguranje-elektricnog-automobila/).
+Pre kupovine polovnog tražite proveru baterije (SOH), dometa i istorije brzog punjenja: kako se to radi i koliko košta — [provera baterije pre kupovine](/podaci/provera-baterije-polovnog-elektricnog-auta/). Za Teslu proverite i da li osiguravač prihvata [kasko](/podaci/osiguranje-elektricnog-automobila/).
 
 | Servis | Grad | Šta nudi |
 |---|---|---|
@@ -60,4 +60,4 @@ Pre kupovine polovnog tražite proveru baterije (SOH), dometa i istorije brzog p
 
 </details>
 
-Ovlašćeni servisi drugih marki su na [mapi servisa](/servisi/), a uvoznik, saloni i link na mrežu servisa uvoznika — na stranici svake marke: [električni automobili u Srbiji](/elektricni-automobili/). Pravila uvoza: [uvoz i carina](/podaci/uvoz-i-carina/); kupovina polovnog: [polovni i uvezeni](/elektricni-automobili/polovni/).
+Kvar ili udes na putu: [pomoć na putu i šlep](/podaci/pomoc-na-putu/). Ovlašćeni servisi drugih marki, limarije i šlep službe su na [mapi servisa](/servisi/), a uvoznik, saloni i link na mrežu servisa uvoznika — na stranici svake marke: [električni automobili u Srbiji](/elektricni-automobili/). Pravila uvoza: [uvoz i carina](/podaci/uvoz-i-carina/); kupovina polovnog: [polovni i uvezeni](/elektricni-automobili/polovni/).

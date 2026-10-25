@@ -282,6 +282,76 @@ def photo_credits_html():
             f'<ul class="foto-list">{items}</ul></details>')
 
 
+
+SMESTAJ_RE = re.compile(r'(?i)\b(hotel|hostel|motel|vila|villa|apartman\w*|konak|etno|resort|guest ?house|garni|kamp|camping|vinarij\w*|winery|lodge|pansion|salaš|dvorac|moxy|hilton|marriott|courtyard|intercontinental|metropol palace|crowne plaza|square nine)\b')
+CONN_SR = {'type2': 'Tip 2', 'ccs': 'CCS', 'ccs2': 'CCS', 'chademo': 'CHAdeMO', 'tesla': 'Tesla', 'schuko': 'Šuko', 'type1': 'Tip 1'}
+SRC_SR = {'cg': 'spisak Charge&GO', 'cga': 'aplikacija Charge&GO', 'rm': 'roming mapa Charge&GO', 'te': 'Tesla', 'tesla': 'Tesla',
+          'sp': 'aplikacija Emobility Spectra', 'ye': 'aplikacija Yesla', 'bp': 'Best in Parking'}
+
+
+def smestaj_rows():
+    """Places to stay whose chargers are on /mapa/: an owner's site or a network says the charger is for guests
+    (ax.who = guests), or the station is at a hotel by name. Read from the map files the map step has just written."""
+    mp = DIST / 'assets' / 'map'
+    st = {x['id']: x for x in json.load(open(mp / 'punjaci.json', encoding='utf-8'))['stations']}
+    mz = json.load(open(mp / 'mreze.json', encoding='utf-8'))
+    rows = []
+    def add(sid, base, ext):
+        x = dict(base or {}, **(ext or {}))
+        name = x.get('n') or (base or {}).get('n') or ''
+        guests = (x.get('ax') or {}).get('who') == 'guests'
+        if not (guests or SMESTAJ_RE.search(name)):
+            return
+        v = (x.get('v') or (base or {}).get('v') or {})
+        c = x.get('c') or []
+        conn = ', '.join(f"{CONN_SR.get(k, k)}{(' ' + f'{kw:g}'.replace('.', ',') + ' kW') if kw else ''}{f' × {n}' if n and n > 1 else ''}" for k, cur, kw, n in c)
+        src = [s for s in (x.get('src') or []) if s.get('u') and s.get('d') not in ('ocm', 'osm')]
+        rows.append({'id': sid, 'n': re.sub(r'\s*-\s*eDrive App$', '', name).strip(), 't': x.get('t') or (base or {}).get('t') or '',
+                     'a': x.get('a') or (base or {}).get('a') or '', 'conn': conn, 'note': x.get('note') or '',
+                     'ax': (x.get('ax') or {}).get('t') or '', 'ok': v.get('s') == 'ok', 'net': x.get('net') or (base or {}).get('net') or '',
+                     'src': src[:2]})
+    for sid, base in st.items():
+        add(sid, base, mz['upd'].get(sid))
+    for x in mz['add']:
+        add(x['id'], None, x)
+    seen, out = set(), []
+    for r in sorted(rows, key=lambda r: (not r['ok'], r['t'], r['n'].lower())):
+        k = (r['n'].lower(), r['t'])
+        if k not in seen:
+            seen.add(k)
+            out.append(r)
+    return out
+
+
+def smestaj_html():
+    """[[smestaj]]: the places to stay with a charger, by town, each with its source and a link to the map point."""
+    rows = smestaj_rows()
+    def li(r):
+        bits = [escape(r['a'])] if r['a'] else []
+        if r['conn']:
+            bits.append(escape(r['conn']))
+        if r['ax']:
+            bits.append(escape(r['ax']))
+        if r['note']:
+            bits.append(escape(r['note']))
+        src = ' · '.join(f'<a href="{escape(s["u"])}" rel="noopener nofollow">{escape(s.get("l") or SRC_SR.get(s.get("d")) or ("Tesla" if r["net"] == "tesla" else s["u"].split("/")[2]))}</a>' for s in r['src'])
+        return (f'<li><div><b translate="no">{escape(r["n"])}</b> — {" · ".join(bits)}</div>'
+                f'<div class="k"><a class="lnk" href="/mapa/#{escape(r["id"])}">Na mapi</a>{" · Izvor: " + src if src else ""}</div></li>')
+    by = {}
+    for r in rows:
+        if r['ok']:
+            by.setdefault(r['t'] or 'Ostalo', []).append(r)
+    towns = sorted(by.items(), key=lambda kv: (-len(kv[1]), kv[0]))
+    h = '<div class="svc smestaj">' + ''.join(
+        f'<details open><summary translate="no">{escape(t)}<span class="n">{len(v)}</span></summary><ul>{"".join(li(r) for r in v)}</ul></details>'
+        for t, v in towns) + '</div>'
+    nep = [r for r in rows if not r['ok']]
+    if nep:
+        h += ('<details class="src"><summary>Na mapi, ali nije potvrđeno</summary><p>Ovi punjači su u otvorenim bazama podataka, '
+              'ali ih vlasnik ili mreža ne navode na svom spisku. Pitajte smeštaj pre dolaska.</p><ul>'
+              + ''.join(li(r) for r in nep) + '</ul></details>')
+    return h
+
 env.globals['fig'] = fig_html
 env.globals['yt'] = yt_html
 
@@ -293,6 +363,8 @@ def md_to_html(text):
     h = re.sub(r'<p>\[\[fig:([\w-]+)\|([^\]]+)\]\]</p>', lambda m: str(fig_html(m.group(1), html.unescape(m.group(2)))), h)
     h = h.replace('<p>[[fotografije]]</p>', photo_credits_html())
     h = h.replace('[[evc]]', evc_html())
+    if '[[smestaj]]' in h:
+        h = h.replace('<p>[[smestaj]]</p>', smestaj_html())
     s = BeautifulSoup(h, 'html.parser')
     for t in s.find_all('table'):
         heads = [th.get_text(' ', strip=True) for th in t.find_all('th')]
@@ -1153,11 +1225,13 @@ VODICI_GROUPS = [
         A('/podaci/subvencije-2026/', icon='gift'), A('/podaci/cene-elektricnih-automobila/', 'Cene električnih automobila', icon='car'),
         A('/podaci/registracija-i-porezi/', icon='doc'), A('/podaci/uvoz-i-carina/', icon='doc'),
         A('/podaci/osiguranje-elektricnog-automobila/', icon='shield'), A('/podaci/krediti-i-lizing/', icon='coins'),
+        A('/podaci/provera-baterije-polovnog-elektricnog-auta/', icon='bolt'),
         A('/podaci/servisi-za-elektricne-automobile/', icon='car'), A('/podaci/rent-a-car-i-car-sharing/', icon='car'),
         A('/najam-elektricnog-automobila.html', icon='car')]),
     ('Na putu', [
         A('/javno-punjenje/prvo-punjenje-na-javnom-punjacu/', icon='phone'), A('/javno-punjenje/ccs2-type2-chademo-gbt/', icon='plug'), A('/javno-punjenje/zasto-auto-puni-sporo-na-brzom-punjacu/', icon='bolt'), A('/javno-punjenje/kako-jeftinije-puniti/', icon='coins'), A('/javno-punjenje/plug-in-hibrid-na-javnom-punjacu/', icon='bolt'), A('/javno-punjenje/cena-punjenja-po-modelu/', icon='car'), A('/podaci/putarina-i-parking/', icon='road'), A('/javno-punjenje/besplatni-punjaci/', icon='gift'),
-        A('/javno-punjenje/aplikacije-i-kartice/', icon='phone'), A('/javno-punjenje/region/', icon='globe2')]),
+        A('/javno-punjenje/aplikacije-i-kartice/', icon='phone'), A('/javno-punjenje/region/', icon='globe2'),
+        A('/podaci/pomoc-na-putu/', icon='phone'), A('/javno-punjenje/smestaj-sa-punjacem/', icon='building')]),
     ('Brojke', [
         A('/podaci/statistika-ev-srbija/', icon='chart'), A('/podaci/tarife-eps/', 'Cena struje kod kuće', icon='bolt'),
         A('/podaci/wallbox-modeli/', 'Wallbox modeli i cene', icon='plug')]),
@@ -1838,9 +1912,14 @@ def _srv_check(src):
         assert re.fullmatch(r'sv-[a-z0-9-]{2,60}', p.get('id') or ''), w + ': id must be sv-<slug>'
         assert p['id'] not in ids, w + ': duplicate id'
         ids.add(p['id'])
-        assert p.get('t') in ('o', 'n'), w + ': t must be o (ovlašćeni) or n (nezavisni)'
-        for k in ('n', 'g', 'a'):
+        assert p.get('t') in ('o', 'n', 'p'), w + ': t must be o (ovlašćeni), n (nezavisni) or p (šlep / pomoć na putu)'
+        assert all(k in ('limarija',) for k in p.get('k', [])), w + ': k may only hold "limarija"'
+        assert p.get('lims') in (None, 'u', 's') and (not p.get('lim') or 'limarija' in p.get('k', [])), w + ': lim needs k limarija; lims u or s'
+        assert p['t'] != 'p' or not p.get('b'), w + ': a tow service (p) names no brands'
+        for k in ('n', 'g'):
             assert (p.get(k) or '').strip(), w + f': {k} is empty'
+        # no published address: only a tow service or a mobile service (it comes to the car), list only
+        assert (p.get('a') or '').strip() or ((p['t'] == 'p' or 'mobilni_servis' in p.get('s', [])) and p.get('pos') == 'none'), w + ': a is empty'
         assert p.get('pos') in ('src', 'osm', 'none'), w + ': pos must be src, osm or none (address not found: no point, list only)'
         if p['pos'] == 'none':
             assert p.get('lat') is None and p.get('lon') is None, w + ': pos none has no lat/lon'
@@ -1852,7 +1931,7 @@ def _srv_check(src):
             assert p.get('b') and all(b in src['brands'] for b in p['b']), w + ': b must name brands from "brands"'
         assert all(s in SRV_SVC for s in p.get('s', [])), w + ': unknown service code'
         assert p.get('evs') in (None, 'u', 's') and (not p.get('ev') or p['t'] == 'n' or p.get('evs')), w + ': evs (who says ev) must be u or s'
-        out.append({k: p[k] for k in ('id', 'n', 't', 'b', 'm', 's', 'g', 'ar', 'a', 'tel', 'tel2', 'web', 'oh', 'lat', 'lon', 'ev', 'evs', 'src', 'pos') if p.get(k) not in (None, '', [])})
+        out.append({k: p[k] for k in ('id', 'n', 't', 'k', 'b', 'm', 's', 'g', 'ar', 'a', 'tel', 'tel2', 'web', 'oh', 'lat', 'lon', 'ev', 'evs', 'pl', 'cov', 'lim', 'lims', 'src', 'pos') if p.get(k) not in (None, '', [])})
     return out
 
 
@@ -1867,7 +1946,7 @@ SRV_T = {
     'no_location': 'Lokacija nije dostupna. Dozvolite je u pregledaču ili upišite grad u pretragu.',
     't_o': 'Ovlašćeni servis', 't_n': 'Nezavisni servis za električne automobile', 'tag_o': 'Ovlašćeni', 'tag_n': 'Nezavisni',
     'for_brands': 'Ovlašćeni servis za', 'ev_models': 'Električni modeli u Srbiji', 'ev_work': 'Električni automobili',
-    'imp_says': 'Uvoznik navodi', 'firm_says': 'Servis navodi',
+    'imp_says': 'Uvoznik navodi', 'firm_says': 'Servis navodi', 'tow_says': 'Firma navodi', 'nav_p': 'Navigacija', 'site_p': 'Sajt firme',
     'ev_none': 'Uvoznik ne navodi posebno da li ovaj servis radi popravke visokog napona. Pitajte servis pre dolaska.',
     'services': 'Radovi koje servis navodi', 'makes': 'Marke koje servis navodi', 'not_said': 'Ne pominje se', 'hours': 'Radno vreme',
     'call': 'Pozovi', 'navigate': 'Navigacija do servisa', 'nav_in': 'Otvori u', 'site': 'Sajt servisa', 'share': 'Podeli',
@@ -1875,6 +1954,8 @@ SRV_T = {
     'pos_osm': 'Tačka je postavljena po adresi (OpenStreetMap).', 'net_of': 'Mreža servisa marke',
     'pos_none': 'Adresa nije pronađena u OpenStreetMap-u, pa servis nije na mapi — samo na spisku.', 'find_addr': 'Potraži adresu na mapi',
     'same_spot': 'Na istoj lokaciji', 'tel2': 'Drugi broj',
+    't_p': 'Šlep služba', 'tag_p': 'Šlep', 'tow': 'Prevoz vozila', 'cov': 'Gde radi', 'lim': 'Limarija', 'lim_box': 'Limarija i farbara',
+    'lim_none': 'Sajt ne navodi posebno popravke električnih automobila posle udesa. Pitajte pre dolaska.',
     's_dijagnostika_baterije': 'Dijagnostika baterije', 's_popravka_baterije': 'Popravka baterije', 's_bms': 'BMS i balansiranje ćelija',
     's_obc': 'Punjač u vozilu (OBC)', 's_pogon': 'Motor i invertor', 's_softver': 'Softver i kodiranje', 's_klima': 'Klima i toplotna pumpa',
     's_redovan_servis': 'Redovan servis', 's_limarija': 'Limarija', 's_gume': 'Gume', 's_mobilni_servis': 'Dolazi na adresu',
@@ -1882,17 +1963,18 @@ SRV_T = {
 }
 _stx = set()
 for _p in SRV_P:
-    _stx.update(x for x in (_p.get('ev'), _p.get('oh')) if x)
+    _stx.update(x for x in (_p.get('ev'), _p.get('oh'), _p.get('pl'), _p.get('cov'), _p.get('lim')) if x)
     _stx.update(x['l'] for x in _p['src'] if re.search('[a-zčćžšđ]{3}', x['l'].lower()) and not re.fullmatch(r'[a-z0-9.-]+\.[a-z]{2,}', x['l']))
 for _x in sorted(_stx):
     SRV_T['tx:' + _x] = _x
 _by_city = {}
 for _p in sorted(SRV_P, key=lambda p: (p['n'].lower(), p['id'])):
-    _by_city.setdefault(_p['g'], []).append({'id': _p['id'], 'n': _p['n'], 't': _p['t'], 'tel': _p.get('tel', ''),
-                                             'addr': ', '.join(x for x in (_p['a'], _p.get('ar') if _p.get('ar') != _p['g'] else '') if x),
+    _by_city.setdefault(_p['g'], []).append({'id': _p['id'], 'n': _p['n'], 't': _p['t'], 'tel': _p.get('tel', ''), 'lim': 'limarija' in _p.get('k', []),
+                                             'addr': ', '.join(x for x in (_p.get('a', ''), _p.get('ar') if _p.get('ar') != _p['g'] else '') if x),
                                              'brands': ', '.join(_p.get('b') or _p.get('m') or [])})
 S = {
     'n': len(SRV_P), 'no': sum(1 for p in SRV_P if p['t'] == 'o'), 'nn': sum(1 for p in SRV_P if p['t'] == 'n'),
+    'np': sum(1 for p in SRV_P if p['t'] == 'p'), 'nl': sum(1 for p in SRV_P if 'limarija' in p.get('k', [])),
     'checked': SRV['checked'], 'iso': iso(SRV['checked']),
     'cities': [{'name': c, 'rows': v} for c, v in sorted(_by_city.items(), key=lambda kv: (-len(kv[1]), kv[0]))],
     'cfg': json.dumps({'style': 'https://tiles.openfreemap.org/styles/positron', 'font': ['Noto Sans Bold'], 'center': [20.9, 44.1], 'zoom': 6.3,
@@ -1901,10 +1983,10 @@ S = {
     'i18n': json.dumps(SRV_T, ensure_ascii=False).replace('</', '<\\/'),
 }
 render('servisi.html', '/servisi/', S=S,
-       title='Servisi za električne automobile u Srbiji — mapa | BlokVolt',
-       description=f"Mapa servisa za električne automobile u Srbiji: ovlašćeni servisi marki sa električnim modelima i nezavisni servisi za baterije i Teslu, sa adresom i telefonom. Provereno {SRV['checked']}.")
+       title='Servisi, limarije i šlep za električne automobile u Srbiji — mapa | BlokVolt',
+       description=f"Mapa za električne automobile u Srbiji: ovlašćeni i nezavisni servisi, provera baterije, limarije i šlep službe sa platformom, sa adresom i telefonom. Provereno {SRV['checked']}.")
 add_url('/servisi/', '0.8', iso(SRV['checked']))
-print(f"servisi: {S['n']} places ({S['no']} authorized, {S['nn']} independent) in {len(S['cities'])} towns")
+print(f"servisi: {S['n']} places ({S['no']} authorized, {S['nn']} independent, {S['np']} tow, {S['nl']} body shops) in {len(S['cities'])} towns")
 
 # ---------------------------------------------------------------- calculators
 _d = CALC['defaults']

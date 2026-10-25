@@ -1,5 +1,5 @@
 {
- "checked": "24.10.2026",
+ "checked": "25.10.2026",
  "brands": {
   "Audi": {
    "name": "Audi",
@@ -121,6 +121,12 @@
    "ev": "RZ",
    "u": "https://www.lexus.rs/contact/dealers/lexus-partneri"
   },
+  "Lynk & Co": {
+   "name": "Lynk & Co",
+   "imp": "VCAG",
+   "ev": "02",
+   "u": "https://www.lynkco-see.com/rs/zastupnici"
+  },
   "MG": {
    "name": "MG",
    "imp": "Grand Motors d.o.o. (ekskluzivni uvoznik i distributer, prema mgmotor.rs/about); Milutina Milankovića 21, 11070 Beograd",
@@ -179,6 +185,12 @@
    "imp": "Renault Nissan Srbija (per task brief; renault.rs footer names no legal entity)",
    "ev": "Renault 5, Renault 4, Twingo",
    "u": "https://www.renault.rs/prodajno-servisna-mreza/spisak-dilera.html"
+  },
+  "Suzuki": {
+   "name": "Suzuki",
+   "imp": "Euro Sumar",
+   "ev": "e Vitara",
+   "u": "https://suzuki-srbija.rs/prodajna-mreza"
   },
   "Toyota": {
    "name": "Toyota",
@@ -516,9 +528,9 @@
    "tel2": "021/630-2822",
    "web": "https://www.grandmotors.rs/",
    "oh": "pon–pet 8–16, sub 9–14",
-   "lat": 45.244445,
-   "lon": 19.773216,
-   "pos": "osm",
+   "lat": 45.246563,
+   "lon": 19.772561,
+   "pos": "src",
    "src": [
     {
      "l": "021.rs",
@@ -542,14 +554,12 @@
    "n": "Grand Motors",
    "t": "o",
    "b": [
-    "Ford",
-    "MG"
+    "Ford"
    ],
    "g": "Beograd",
    "ar": "Novi Beograd",
    "a": "Bulevar Milutina Milankovića 21",
-   "tel": "011 20 90 653",
-   "tel2": "011 20 90 654",
+   "tel": "+381 11 2090 610",
    "web": "https://www.grandmotors.rs/",
    "oh": "pon–pet 9–18, sub 9–14",
    "lat": 44.81569,
@@ -666,9 +676,9 @@
    "tel2": "069/1870-555",
    "web": "https://autokucaalfa.com/",
    "oh": "pon–pet 8–15:30, sub 8–13",
-   "lat": 46.102411,
-   "lon": 19.672967,
-   "pos": "osm",
+   "lat": 46.102542,
+   "lon": 19.672972,
+   "pos": "src",
    "src": [
     {
      "l": "autokucaalfa.com",
@@ -713,6 +723,7 @@
    "t": "o",
    "b": [
     "JMEV",
+    "Kia",
     "Peugeot"
    ],
    "g": "Novi Sad",
@@ -2204,9 +2215,9 @@
    "tel2": "+381 66 8 303 303",
    "web": "https://pscvukovic.rs/",
    "oh": "pon–pet 8:30–17, sub 8:30–13:30",
-   "lat": 44.753513,
-   "lon": 19.661008,
-   "pos": "osm",
+   "lat": 44.753621,
+   "lon": 19.661075,
+   "pos": "src",
    "ev": "za Renault i Dacia: specijalizovani tehničari za dijagnostiku i servis E-Tech pogonskih sistema i baterija; za Kia to ne navodi",
    "evs": "s",
    "src": [
@@ -2338,6 +2349,25 @@
    ]
   },
   {
+   "id": "sv-lf-auto-centar-beograd",
+   "n": "LF AUTO CENTAR",
+   "t": "o",
+   "b": [
+    "Nissan"
+   ],
+   "g": "Beograd",
+   "a": "Novosadski autoput 73a",
+   "tel": "011/314-3211",
+   "pos": "none",
+   "src": [
+    {
+     "l": "nissan.rs",
+     "u": "https://www.nissan.rs/dealer-list.html",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
    "id": "sv-auto-marton-subotica",
    "n": "Auto-Marton",
    "t": "o",
@@ -2346,6 +2376,7 @@
    ],
    "g": "Subotica",
    "a": "Batinska 6",
+   "tel": "024/4561-077",
    "web": "https://www.auto-marton.rs/",
    "lat": 46.08483,
    "lon": 19.636499,
@@ -2394,6 +2425,9 @@
    "id": "sv-hyundai-srbija-beograd",
    "n": "Hyundai Srbija",
    "t": "o",
+   "k": [
+    "limarija"
+   ],
    "b": [
     "Hyundai"
    ],
@@ -2442,9 +2476,11 @@
    "t": "o",
    "b": [
     "Hyundai",
+    "MG",
     "Opel"
    ],
    "g": "Beograd",
+   "ar": "Rakovica",
    "a": "Ibarski put 101",
    "tel": "+381 11 78 59 036",
    "tel2": "+381 62 252 766",
@@ -2462,6 +2498,11 @@
     {
      "l": "opel.rs",
      "u": "https://www.opel.rs/tools/opel-nadite-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "mgmotor.rs",
+     "u": "https://www.mgmotor.rs/map",
      "d": "24.10.2026"
     }
    ]
@@ -2494,6 +2535,9 @@
    "id": "sv-ideal-auto-nis",
    "n": "Ideal Auto",
    "t": "o",
+   "k": [
+    "limarija"
+   ],
    "b": [
     "Hyundai"
    ],
@@ -2515,6 +2559,9 @@
    "id": "sv-bavaria-team-cacak",
    "n": "Bavaria Team",
    "t": "o",
+   "k": [
+    "limarija"
+   ],
    "b": [
     "Hyundai"
    ],
@@ -2540,6 +2587,9 @@
    "id": "sv-maric-centar-kraljevo",
    "n": "Marić Centar",
    "t": "o",
+   "k": [
+    "limarija"
+   ],
    "b": [
     "Hyundai"
    ],
@@ -2565,6 +2615,9 @@
    "id": "sv-svetozarevo-promet-jagodina",
    "n": "Svetozarevo Promet",
    "t": "o",
+   "k": [
+    "limarija"
+   ],
    "b": [
     "Hyundai"
    ],
@@ -2702,9 +2755,9 @@
    "tel2": "+381 62 80 99 111",
    "web": "https://beograd.kia.rs/",
    "oh": "pon–pet 7–20, sub 8–15",
-   "lat": 44.862378,
-   "lon": 20.352327,
-   "pos": "osm",
+   "lat": 44.86248,
+   "lon": 20.352331,
+   "pos": "src",
    "src": [
     {
      "l": "kia.rs",
@@ -2732,9 +2785,9 @@
    "tel2": "+381 63 547744",
    "web": "https://www.autopetric.rs/",
    "oh": "8–17",
-   "lat": 43.903093,
-   "lon": 20.357472,
-   "pos": "osm",
+   "lat": 43.902917,
+   "lon": 20.357422,
+   "pos": "src",
    "src": [
     {
      "l": "kia.rs",
@@ -2761,7 +2814,9 @@
    "tel2": "018 5280 25",
    "web": "https://www.kiaveljaauto.rs/",
    "oh": "pon–pet 8–19, sub 8–16",
-   "pos": "none",
+   "lat": 43.329222,
+   "lon": 21.887351,
+   "pos": "src",
    "src": [
     {
      "l": "kia.rs",
@@ -2789,9 +2844,9 @@
    "tel2": "021/300-24-89",
    "web": "https://www.mtlauto.rs/",
    "oh": "pon–pet 8:30–16:30, sub 9–14",
-   "lat": 45.261155,
-   "lon": 19.770186,
-   "pos": "osm",
+   "lat": 45.2611,
+   "lon": 19.770202,
+   "pos": "src",
    "src": [
     {
      "l": "kia.rs",
@@ -3110,14 +3165,16 @@
    "n": "Grand Motors",
    "t": "o",
    "b": [
-    "Ford"
+    "Ford",
+    "MG"
    ],
    "g": "Niš",
    "a": "Bulevar Nikole Tesle bb",
+   "tel": "+381 18 585999",
    "web": "https://ford.rs/dealerships",
-   "lat": 43.335623,
-   "lon": 21.879773,
-   "pos": "osm",
+   "lat": 43.33155,
+   "lon": 21.895291,
+   "pos": "src",
    "src": [
     {
      "l": "ford.rs",
@@ -3127,6 +3184,11 @@
     {
      "l": "advalue.online",
      "u": "https://advalue.online/serviceform/zakazite-servis/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "mgmotor.rs",
+     "u": "https://www.mgmotor.rs/map",
      "d": "24.10.2026"
     }
    ]
@@ -3136,13 +3198,15 @@
    "n": "Autostad Motors",
    "t": "o",
    "b": [
-    "Ford"
+    "Ford",
+    "MG"
    ],
    "g": "Čačak",
    "a": "Bulevar Tanaska Rajića 176",
-   "lat": 43.901255,
-   "lon": 20.383303,
-   "pos": "osm",
+   "tel": "+381 32 5350420",
+   "lat": 43.901322,
+   "lon": 20.383448,
+   "pos": "src",
    "src": [
     {
      "l": "ford.rs",
@@ -3152,6 +3216,11 @@
     {
      "l": "advalue.online",
      "u": "https://advalue.online/serviceform/zakazite-servis/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "mgmotor.rs",
+     "u": "https://www.mgmotor.rs/map",
      "d": "24.10.2026"
     }
    ]
@@ -3193,16 +3262,17 @@
    "n": "Viva Company",
    "t": "o",
    "b": [
-    "Ford"
+    "Ford",
+    "MG"
    ],
    "g": "Kragujevac",
    "a": "Miodraga Vlajića Šuke 16",
    "tel": "034/6-333-044",
    "tel2": "034/6-332-188",
    "web": "https://www.vivacompany.rs/",
-   "lat": 44.023508,
-   "lon": 20.929831,
-   "pos": "osm",
+   "lat": 44.023621,
+   "lon": 20.929753,
+   "pos": "src",
    "src": [
     {
      "l": "ford.rs",
@@ -3225,6 +3295,9 @@
    "id": "sv-autogarant-cacak",
    "n": "Autogarant",
    "t": "o",
+   "k": [
+    "limarija"
+   ],
    "b": [
     "BMW",
     "Fiat",
@@ -3430,6 +3503,7 @@
    "t": "o",
    "b": [
     "Citroën",
+    "Kia",
     "Opel"
    ],
    "g": "Požarevac",
@@ -3437,7 +3511,9 @@
    "tel": "012 515 220",
    "tel2": "064 822 34 16",
    "oh": "pon–pet 8–17, sub 8–14",
-   "pos": "none",
+   "lat": 44.602839,
+   "lon": 21.118557,
+   "pos": "src",
    "src": [
     {
      "l": "citroen.rs",
@@ -3447,6 +3523,11 @@
     {
      "l": "opel.rs",
      "u": "https://www.opel.rs/tools/opel-nadite-dilera.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "kia.rs",
+     "u": "https://www.kia.rs/zastupnici",
      "d": "24.10.2026"
     }
    ]
@@ -3901,6 +3982,9 @@
    "id": "sv-bmw-radulovic-beograd",
    "n": "BMW Radulović",
    "t": "o",
+   "k": [
+    "limarija"
+   ],
    "b": [
     "BMW",
     "MINI"
@@ -3923,6 +4007,11 @@
      "l": "mini.rs",
      "u": "https://www.mini.rs/sr_RS/home/serv/mini-service.html",
      "d": "24.10.2026"
+    },
+    {
+     "l": "radulovic-group.com",
+     "u": "https://radulovic-group.com/home/bmw-servis/",
+     "d": "24.10.2026"
     }
    ]
   },
@@ -3930,6 +4019,9 @@
    "id": "sv-bmw-radulovic-novi-sad",
    "n": "BMW Radulović",
    "t": "o",
+   "k": [
+    "limarija"
+   ],
    "b": [
     "BMW",
     "MINI"
@@ -3952,6 +4044,11 @@
     {
      "l": "mini.rs",
      "u": "https://www.mini.rs/sr_RS/home/serv/mini-service.html",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "radulovic-group.com",
+     "u": "https://radulovic-group.com/",
      "d": "24.10.2026"
     }
    ]
@@ -3990,6 +4087,9 @@
    "id": "sv-mitic-company-nis",
    "n": "Mitić Company",
    "t": "o",
+   "k": [
+    "limarija"
+   ],
    "b": [
     "BMW",
     "MINI"
@@ -4044,6 +4144,7 @@
    "n": "Volvo Car centar Beograd",
    "t": "o",
    "b": [
+    "Lynk & Co",
     "Volvo"
    ],
    "g": "Beograd",
@@ -4065,6 +4166,11 @@
     {
      "l": "volvocars.com",
      "u": "https://www.volvocars.com/rs/",
+     "d": "24.10.2026"
+    },
+    {
+     "l": "lynkco-see.com",
+     "u": "https://www.lynkco-see.com/rs/zastupnici",
      "d": "24.10.2026"
     }
    ]
@@ -4277,6 +4383,349 @@
      "l": "opel.rs",
      "u": "https://www.opel.rs/tools/opel-nadite-dilera.html",
      "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-d-motors-group-subotica-2",
+   "n": "D-Motors Group",
+   "t": "o",
+   "b": [
+    "MG"
+   ],
+   "g": "Subotica",
+   "a": "Otmara Majera 22",
+   "tel": "+381 63 240556",
+   "lat": 46.077044,
+   "lon": 19.668048,
+   "pos": "src",
+   "src": [
+    {
+     "l": "mgmotor.rs",
+     "u": "https://www.mgmotor.rs/map",
+     "d": "25.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-grand-motors-beograd-2",
+   "n": "Grand Motors",
+   "t": "o",
+   "b": [
+    "MG"
+   ],
+   "g": "Beograd",
+   "ar": "Novi Beograd",
+   "a": "Stopićeva 8, Bežanijska kosa",
+   "tel": "011 20 90 653",
+   "tel2": "+381 11 2090692",
+   "lat": 44.827604,
+   "lon": 20.384155,
+   "pos": "src",
+   "src": [
+    {
+     "l": "mgmotor.rs",
+     "u": "https://www.mgmotor.rs/map",
+     "d": "25.10.2026"
+    },
+    {
+     "l": "grandmotors.rs",
+     "u": "https://www.grandmotors.rs/kontakt",
+     "d": "24.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-djordjevic-auto-beograd",
+   "n": "Đorđević Auto",
+   "t": "o",
+   "b": [
+    "Kia"
+   ],
+   "g": "Beograd",
+   "ar": "Zvezdara",
+   "a": "Zeke Buljubaše 11",
+   "tel": "+381 11 240 10 44",
+   "lat": 44.804425,
+   "lon": 20.491841,
+   "pos": "src",
+   "src": [
+    {
+     "l": "kia.rs",
+     "u": "https://www.kia.rs/zastupnici",
+     "d": "25.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-euro-sumar-beograd",
+   "n": "Euro Sumar",
+   "t": "o",
+   "b": [
+    "Suzuki"
+   ],
+   "g": "Beograd",
+   "a": "Vojislava Ilića 145",
+   "tel": "+381 11 288 47 31",
+   "tel2": "+381 11 288 87 44",
+   "web": "https://suzuki-srbija.rs/",
+   "oh": "pon–pet 8–16, sub 9–14",
+   "lat": 44.777279,
+   "lon": 20.510664,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "suzuki-srbija.rs",
+     "u": "https://suzuki-srbija.rs/prodajna-mreza",
+     "d": "25.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-euro-sumar-nis",
+   "n": "Euro Sumar",
+   "t": "o",
+   "b": [
+    "Suzuki"
+   ],
+   "g": "Niš",
+   "a": "Bulevar Svetog cara Konstantina 80-82",
+   "tel": "+381 18 588 022",
+   "web": "https://suzuki-srbija.rs/",
+   "lat": 43.308101,
+   "lon": 21.946368,
+   "pos": "osm",
+   "src": [
+    {
+     "l": "suzuki-srbija.rs",
+     "u": "https://suzuki-srbija.rs/prodajna-mreza",
+     "d": "25.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-ak-kompresor-karoserijski-centar-pancevo",
+   "n": "AK Kompresor – Karoserijski centar",
+   "t": "o",
+   "k": [
+    "limarija"
+   ],
+   "b": [
+    "Citroën",
+    "Dacia",
+    "Fiat",
+    "Jeep",
+    "Leapmotor",
+    "Nissan",
+    "Renault"
+   ],
+   "g": "Pančevo",
+   "a": "Utve Zlatokrile 9",
+   "tel": "011/71-555-67",
+   "web": "https://www.akkompresor.rs/karoserijske-usluge",
+   "lat": 44.854922,
+   "lon": 20.658504,
+   "pos": "src",
+   "src": [
+    {
+     "l": "akkompresor.rs",
+     "u": "https://www.akkompresor.rs/karoserijske-usluge",
+     "d": "25.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-slep-sluzba-zemun-beograd",
+   "n": "Šlep služba Zemun",
+   "t": "p",
+   "g": "Beograd",
+   "ar": "Zemun",
+   "a": "",
+   "tel": "063 146 1685",
+   "web": "https://www.slep-sluzba-zemun.rs/",
+   "oh": "0–24",
+   "pos": "none",
+   "ev": "električna i hibridna vozila prevozi samo na platformi",
+   "evs": "s",
+   "pl": "platforma sa vitlom, vozila do 3,5 t",
+   "cov": "Zemun, Novi Beograd, Surčin, Batajnica; Srbija i inostranstvo uz najavu",
+   "src": [
+    {
+     "l": "slep-sluzba-zemun.rs",
+     "u": "https://www.slep-sluzba-zemun.rs/",
+     "d": "25.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-slep-sluzba-novi-sad-novi-sad",
+   "n": "Šlep služba Novi Sad",
+   "t": "p",
+   "g": "Novi Sad",
+   "a": "Industrijska 18",
+   "tel": "+381 64 222 22 20",
+   "web": "https://slep-sluzba-novisad.com/",
+   "oh": "0–24",
+   "pos": "none",
+   "pl": "prevoz vozila na platformi",
+   "cov": "Novi Sad i okolina",
+   "src": [
+    {
+     "l": "slep-sluzba-novisad.com",
+     "u": "https://slep-sluzba-novisad.com/usluge/slepanje-auta/",
+     "d": "25.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-slep-sluzba-kragujevac-jova-kragujevac",
+   "n": "Šlep služba Kragujevac – Jova",
+   "t": "p",
+   "g": "Kragujevac",
+   "a": "Stojana Protića",
+   "tel": "064 16 19 123",
+   "web": "https://slepsluzbakragujevac.rs/",
+   "oh": "0–24",
+   "pos": "none",
+   "ev": "električna vozila prevozi na platformi, po preporuci proizvođača",
+   "evs": "s",
+   "pl": "prevoz na platformi, utovar vitlom ili nagibom platforme",
+   "cov": "Kragujevac i Šumadija; Srbija po dogovoru",
+   "src": [
+    {
+     "l": "slepsluzbakragujevac.rs",
+     "u": "https://slepsluzbakragujevac.rs/slep-vozila/",
+     "d": "25.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-slepster-auto-slep-cacak-cacak",
+   "n": "ŠLEPSTER – Auto šlep Čačak",
+   "t": "p",
+   "g": "Čačak",
+   "a": "",
+   "tel": "+381 60 013 4930",
+   "web": "https://slepcacak.com/",
+   "oh": "0–24",
+   "pos": "none",
+   "pl": "platforma 4,6 m, vozila do 2.200 kg",
+   "cov": "Čačak i okolina",
+   "src": [
+    {
+     "l": "slepcacak.com",
+     "u": "https://slepcacak.com/",
+     "d": "25.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-slep-sluzba-pedja-pancevo",
+   "n": "Šlep služba Peđa",
+   "t": "p",
+   "g": "Pančevo",
+   "a": "Miloša Obrenovića 67",
+   "tel": "+381 60/40-40-583",
+   "web": "https://slepsluzbapancevo.rs/",
+   "oh": "0–24",
+   "lat": 44.870683,
+   "lon": 20.664988,
+   "pos": "osm",
+   "pl": "prevoz na ravnoj platformi",
+   "cov": "Pančevo, Beograd i cela Srbija",
+   "src": [
+    {
+     "l": "slepsluzbapancevo.rs",
+     "u": "https://slepsluzbapancevo.rs/",
+     "d": "25.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-slep-sluzba-vasic-pancevo",
+   "n": "Šlep služba Vasić",
+   "t": "p",
+   "g": "Pančevo",
+   "a": "",
+   "tel": "+381 63 221 991",
+   "web": "https://slepsluzba-pancevo.rs/",
+   "oh": "0–24",
+   "pos": "none",
+   "pl": "platforma 9 m, do 15 t; i putnička vozila",
+   "cov": "Pančevo, Smederevo, Kovin, Beograd, Vršac; Srbija po dogovoru",
+   "src": [
+    {
+     "l": "slepsluzba-pancevo.rs",
+     "u": "https://slepsluzba-pancevo.rs/",
+     "d": "25.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-slep-sluzba-petrovic-novi-pazar",
+   "n": "Šlep služba Petrović",
+   "t": "p",
+   "g": "Novi Pazar",
+   "a": "Golijska 10",
+   "tel": "060 452 0704",
+   "web": "https://www.slepsluzbanovipazar.com/",
+   "oh": "0–24",
+   "lat": 43.167156,
+   "lon": 20.528886,
+   "pos": "osm",
+   "pl": "prevoz na platformi, sve četiri gume podignute",
+   "cov": "Novi Pazar, Tutin, Sjenica, Raška i cela Srbija",
+   "src": [
+    {
+     "l": "slepsluzbanovipazar.com",
+     "u": "https://www.slepsluzbanovipazar.com/slepovanje-vozila",
+     "d": "25.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-slep-sluzba-aleksinac-miletic-auto-aleksinac",
+   "n": "Šlep služba Aleksinac – Miletić Auto 777",
+   "t": "p",
+   "g": "Aleksinac",
+   "ar": "Subotinac",
+   "a": "14. brigade",
+   "web": "https://slepsluzbaaleksinac.rs/",
+   "oh": "0–24",
+   "pos": "none",
+   "ev": "navodi i električne automobile među vozilima koja prevozi",
+   "evs": "s",
+   "pl": "platforma, kolica i pojasevi za vezivanje",
+   "cov": "Aleksinac, Ražanj, Sokobanja, Niš, autoput A1; cela Srbija",
+   "src": [
+    {
+     "l": "slepsluzbaaleksinac.rs",
+     "u": "https://slepsluzbaaleksinac.rs/",
+     "d": "25.10.2026"
+    }
+   ]
+  },
+  {
+   "id": "sv-mobilni-mali-servis-beograd",
+   "n": "Mobilni mali servis",
+   "t": "n",
+   "m": [],
+   "s": [
+    "provera_polovnog",
+    "dijagnostika_baterije",
+    "mobilni_servis"
+   ],
+   "g": "Beograd",
+   "a": "",
+   "tel": "067/720-5044",
+   "web": "https://mobilnimaliservis.rs/",
+   "pos": "none",
+   "ev": "AVILOO test baterije električnih vozila sa sertifikatom; pregled pre kupovine radi na lokaciji vozila",
+   "src": [
+    {
+     "l": "mobilnimaliservis.rs",
+     "u": "https://mobilnimaliservis.rs/provera-automobila-pre-kupovine",
+     "d": "25.10.2026"
     }
    ]
   }

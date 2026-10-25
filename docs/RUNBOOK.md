@@ -676,6 +676,25 @@ Never publish a person's name from an app's „owner“ field (sole proprietors 
 read again, change its date in `lists`, add or remove sites, and say in the report which disappeared (20.10.2026: AK
 Tasić Jagodina and CITY TAXI Novi Sad were no longer in the Spectra app).
 
+#### 3.11f Places to stay with a charger (/javno-punjenje/smestaj-sa-punjacem/, since 25.10.2026)
+
+The page is `content/javno/smestaj-sa-punjacem.md`; its list is the token `[[smestaj]]`, which `smestaj_html()` in build.py
+fills from the map files just built: every station whose facts say `ax.who: "guests"` or whose name is a hotel,
+guest house, resort, villa… (`SMESTAJ_RE`), confirmed ones by town with their source and a „Na mapi“ link
+(`/mapa/#<id>`), unconfirmed ones in a closed block. A new place to stay = an `own` site in `ostale.json` (3.11e) with
+`ax: {"who": "guests", "t": "Za goste hotela"}` (or „Za goste“), its own page as `u`/`l`, a short `note` of what the
+page says (power, free or paid, on request) and `d` = the day its page was read (an `own` site with `d` counts as
+confirmed on that day; without `d` the date of the list in `lists.own` applies). Point: the listed address with
+Nominatim (3.11e); when Nominatim gives two candidates far apart, the house numbers around it decide (Hotel Helm, Niš,
+25.10.2026). Never from booking sites, Google Maps or another charger map.
+Best route to new places (25.10.2026): the tourist organisations' hotel lists (novisad.travel, vrnjackabanja.co.rs/hoteli,
+zlatibor.org.rs) give each hotel's own site; aggregators (Travelmyth, booking sites) only for names to check. Chain pages:
+Marriott's „EV charging hotels“ list for Serbia and its FAQ (St. Regis, AC Hotel Airport City and Sheraton Novi Sad answer
+„No“); Hyatt, Radisson, Accor, IHG, Best Western and Wyndham pages did not open from the fetch tool — read them in the
+owner's browser at the next quarterly check. Names seen only on third-party sites wait for that check (Hyatt Regency,
+Radisson Collection Old Mill, Mövenpick Fruške Terme, Hotel Mons Zlatibor, Zepter Vrnjačka Banja).
+Tesla Destination sites (tesla.json, kind `destination`) link to Tesla's chargers list (`source2`), Superchargers to `source`.
+
 #### 3.11c Drivers' reports, ratings, photos (backend)
 
 `worker/_worker.js` (copied to `dist/_worker.js`; `dist/_routes.json` sends only `/api/*` to it) with the
@@ -1730,9 +1749,25 @@ Who is on the map — same rules for everyone:
 - `t: "n"` — **nezavisni**: only when the firm's own site or own social page says it works on electric cars (not only
   hybrids). `ev` = its own claim in a few words of ours, `s` = services from the fixed vocabulary (`SRV_SVC` in build.py),
   `m` = makes it names. Missing = „Ne pominje se“.
+- `t: "p"` — **šlep služba** (since 25.10.2026): a tow firm whose own site or own social page says it carries cars on a
+  platform (flatbed). `pl` = that claim in a few words of ours, `ev` = what it says about electric/hybrid cars (else
+  empty), `cov` = where it works as it says (town, Serbia, abroad). No brands. Orange on the map, chip „Šlep“
+  (`?f=slep`). Electric cars are never towed on their wheels — the roadside page /podaci/pomoc-na-putu/ says why.
+- `k: ["limarija"]` (since 25.10.2026) — a body shop: an authorised service whose importer or own site lists a body shop
+  („limarija i farbara“), or an independent body shop whose own site says it repairs electric/hybrid cars. `lim` = what
+  it says about electric cars after a crash (HV disconnect, battery check) in our words, `lims` u/s like `evs`. Chip
+  „Limarija“ (`?f=lim`). Battery work and the check before buying a used car are service codes in `s`
+  (`dijagnostika_baterije`, `popravka_baterije`, `bms`, `provera_polovnog`) — chip „Baterija“ (`?f=bat`); the guide is
+  /podaci/provera-baterije-polovnog-elektricnog-auta/.
 - Never: ratings, reviews, rankings, "recommended", paid placement. Order = distance (Blizu mene) or name, nothing else.
   Evolako does not service cars, so there is no „Izdvojeno“ here.
-- Facts only from the importer's or the firm's own pages (and APR); every place has `src` [{l, u, d}]. Never from Google
+- Facts only from the importer's or the firm's own pages (and APR); every place has `src` [{l, u, d}]. A brand's official
+  locator read in the owner's browser counts as the importer's page, with its own pins (`pos: "src"`): MG
+  (mgmotor.rs/map, „Service Store“), Kia (kia.rs/zastupnici, PRODAJA/SERVIS blocks, `data-gmaps_lat/lng`), Nissan
+  (nissan.rs/pronadi-distributera.html, „Servis i održavanje“), Suzuki (suzuki-srbija.rs/prodajna-mreza), Lynk & Co
+  (lynkco-see.com/rs/zastupnici). The Porsche SCG locators (VW, Audi, VW Commercial) wait for a consent tool that Brave
+  blocks; never call their API with the key from their script (25.10.2026: refused as circumvention) — use the
+  dealers' own sites instead. The card shows the date of the place's newest source. Never from Google
   Maps, PlugShare or another map (the build refuses those URLs). The point: the source's own pin (`pos: "src"`), or the
   published address placed with OpenStreetMap from the owner's browser — a car shop/workshop in OSM with the firm's name
   or brand on that street, else the house number via Nominatim, one request a second (`pos: "osm"`; the card says so).
@@ -1755,6 +1790,19 @@ Update (with the quarterly firm revision 3.7, or when a reader's correction come
 independents' own pages (a firm that no longer mentions electric cars leaves the map), new dates in `src` and `checked`,
 `izmene.md`, EN/RU todo. Events: `srv_card_open`, `srv_call`, `srv_site`, `srv_find`, `srv_navigate`, `srv_share`, `srv_report`,
 `srv_filter`, `srv_near_me`, `srv_city_list`. Test: `scripts/qa/servisi_ui_test.py`.
+
+Two data pages go with the map (since 25.10.2026, `next_check` 15.01.2027, recheck every quarter with the map):
+- `/podaci/provera-baterije-polovnog-elektricnog-auta/` — SOH, the ADAC minimums, battery warranty by brand (only from the
+  brand's Serbian site; a brand that publishes nothing is named as such), the in-car and app checks, the services that
+  publish a battery test and its price (EV Clinic Beograd, Mobilni mali servis: recheck the prices and whether VAT is
+  stated), recalls (KBA via ADAC/electrive, NHTSA), the roadworthiness rulebook. Replaces the queued drafts
+  `content/_drafts/provera-baterije-polovnog-ev.md` (V034) — its verified facts were merged on 25.10.2026.
+- `/podaci/pomoc-na-putu/` — AMSS 1987 and the free towing on E-70/E-75/E-80/E-763, each brand's roadside number as the
+  importer publishes it (same columns for every brand; „nije objavljeno“ when the importer publishes none), why an
+  electric car goes on a flatbed (Tesla's transport instructions), the tow firms on the map (`t: "p"`). Replaces the
+  draft `content/_drafts/pomoc-na-putu-slep-elektricni-auto.md` (V054). Phone numbers: recheck every one at each
+  revision — a wrong roadside number is the worst error this page can have.
+- `/javno-punjenje/smestaj-sa-punjacem/` (3.11f) replaces the draft `content/_drafts/hoteli-sa-punjacem-u-srbiji.md`.
 
 ### 3.32 Electric cars: brands, importers, showrooms (/elektricni-automobili/) — since 24.10.2026
 
