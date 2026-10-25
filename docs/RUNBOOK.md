@@ -1422,7 +1422,11 @@ model“ (any text). A model counts as on the list when its make and first word 
 `car_opt` and `dc` (from the list: CCS2, or CHAdeMO for the Leafs); `tesla` is set by the worker from the car (an id
 `tesla-…` or a name with „Tesla“), and an old page that sends `tesla` alone is still obeyed. The car of the account goes
 to `bv:car` for the map in this browser. An older account's name („BYD Dolphin“) shows under its make as „Drugi model“
-with the rest as text, so the right version can be picked. To add a car with cost per km, add it to `ev-specs.json`.
+with the rest as text, so the right version can be picked. To add a car with cost per km, add it to `ev-specs.json`. Since 26.10.2026 every model of `ev-modeli.json` has a car there (177 in all: 94 added from
+manufacturers' pages and the motoring press, ev-database.org and the sites copying it — fleetnews.co.uk, electrly — not
+used). 18 of them (mostly Dongfeng, GAC, JAC, JMEV, BAIC, Voyah, Changan, early Volvo ES90/EX90, Audi A2, MGS5) are
+`ac_conf: "low"`: re-check them against the importer's page when it opens, and when a new model appears in
+`ev-modeli.json`, add its car the same way (the account then offers it with cost per km instead of by name).
 
 **Favourites in the browser.** `bv:fav` and `bv:car` stay the map's local copy; `bv:fav-owner` says which account the
 list belongs to (`user.owner`). On sign-in (and on the map with a session): the same owner → both lists joined; another

@@ -2202,6 +2202,2744 @@
     "OED"
    ],
    "note": "Open EV Data lists 11 kW 3-phase for 2020 EV320/EV400; MY boundary not verified"
+  },
+  {
+   "make": "BYD",
+   "model": "Sealion 7 82.5 kWh (Design RWD)",
+   "years": "2025+",
+   "usable_kwh": 82.5,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 108.3,
+   "dc_basis": "calc 10-80 32min",
+   "cons_kwh_100km": 21.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "BYD-SEAL7-FA",
+    "BYD-SEAL7-AR",
+    "BYD-SEAL7-EL",
+    "BYD-SEAL7-RS"
+   ],
+   "note": "WLTP 19.9 kWh/100km; Excellence AWD has 91.3 kWh, 230 kW, 10-80 % in 24 min"
+  },
+  {
+   "make": "Volkswagen",
+   "model": "ID.5 Pro 77 kWh",
+   "years": "2024+",
+   "usable_kwh": 77,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 175,
+   "dc_avg_10_80_kw": 115.5,
+   "dc_basis": "calc 10-80 28min",
+   "cons_kwh_100km": 18.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "VW-ID5-EVC",
+    "VW-ID5-RS"
+   ],
+   "note": "Serbian version not specified; Pro 77 kWh net assumed"
+  },
+  {
+   "make": "Audi",
+   "model": "Q6 e-tron quattro 94.9 kWh",
+   "years": "2024+",
+   "usable_kwh": 94.9,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 270,
+   "dc_avg_10_80_kw": 189.8,
+   "dc_basis": "calc 10-80 21min",
+   "cons_kwh_100km": 20.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "AUDI-PPE"
+   ],
+   "note": "WLTP 17.0-19.6 kWh/100km; 22 kW OBC announced as later option; smaller 83 kWh gross version also exists"
+  },
+  {
+   "make": "Audi",
+   "model": "Q6 Sportback e-tron quattro 94.9 kWh",
+   "years": "2024+",
+   "usable_kwh": 94.9,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 270,
+   "dc_avg_10_80_kw": 189.8,
+   "dc_basis": "calc 10-80 21min",
+   "cons_kwh_100km": 19.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "AUDI-PPE"
+   ],
+   "note": "Same PPE battery/charging as Q6 e-tron; consumption estimated slightly lower"
+  },
+  {
+   "make": "Audi",
+   "model": "A6 (Avant) e-tron 94.9 kWh",
+   "years": "2024+",
+   "usable_kwh": 94.9,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 270,
+   "dc_avg_10_80_kw": 189.8,
+   "dc_basis": "calc 10-80 21min",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "AUDI-A6-AR",
+    "AUDI-PPE"
+   ],
+   "note": "WLTP ~14.8 kWh/100km (4.2 mi/kWh); 11/22 kW listed, 22 kW assumed optional; 75.8 kWh net base version exists"
+  },
+  {
+   "make": "Audi",
+   "model": "e-tron GT quattro / RS e-tron GT 97 kWh",
+   "years": "2024+",
+   "usable_kwh": 97,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 320,
+   "dc_avg_10_80_kw": 226.3,
+   "dc_basis": "calc 10-80 18min",
+   "cons_kwh_100km": 20.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "AUDI-GT-AR"
+   ],
+   "note": "105 kWh gross / 97 net (2024 facelift); 11/22 kW listed, 22 kW assumed optional; WLTP ~18.3 kWh/100km"
+  },
+  {
+   "make": "Audi",
+   "model": "A2 e-tron 58 kWh",
+   "years": "2026+",
+   "usable_kwh": 58,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 105,
+   "dc_avg_10_80_kw": 84.0,
+   "dc_basis": "calc 10-80 26min; capped at 0.8 x peak",
+   "cons_kwh_100km": 14.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_peak_kw",
+    "cons_kwh_100km",
+    "winter_factor",
+    "dc_avg_10_80_kw"
+   ],
+   "src": [
+    "AUDI-A2-PT",
+    "AUDI-A2-AR"
+   ],
+   "note": "Preview data (61 gross/58 net, 10-80 % ~26 min, WLTP 12.8 prelim.); AC power and DC peak not confirmed; other battery sizes reported"
+  },
+  {
+   "make": "Renault",
+   "model": "Twingo E-Tech electric 27.5 kWh (Evolution 82 KS)",
+   "years": "2026+",
+   "usable_kwh": 27.5,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": {
+    "kw": 11,
+    "phases": 3,
+    "amps": 16
+   },
+   "dc_peak_kw": 50,
+   "dc_avg_10_80_kw": 38.5,
+   "dc_basis": "calc 10-80 30min",
+   "cons_kwh_100km": 13.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "RENAULT-TWINGO-EL",
+    "RENAULT-TWINGO-RS"
+   ],
+   "note": "27.5 kWh LFP; 50 kW DC and 11 kW AC only with optional Advanced Charge Pack; WLTP range 263 km; Serbian price list not opened"
+  },
+  {
+   "make": "Renault",
+   "model": "4 E-Tech electric 40 kWh (Evolution 120 KS)",
+   "years": "2025+",
+   "usable_kwh": 40,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 80,
+   "dc_avg_10_80_kw": 52.0,
+   "dc_basis": "calc 15-80 30min",
+   "cons_kwh_100km": 15.0,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_peak_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "RENAULT-R4-IE"
+   ],
+   "note": "WLTP range 322 km; 80 kW DC peak not stated on source page"
+  },
+  {
+   "make": "Hyundai",
+   "model": "IONIQ 9 110.3 kWh AWD",
+   "years": "2025+",
+   "usable_kwh": 106,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 250,
+   "dc_avg_10_80_kw": 185.5,
+   "dc_basis": "calc 10-80 24min",
+   "cons_kwh_100km": 23.0,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "HYUNDAI-IONIQ9-RS"
+   ],
+   "note": "110.3 kWh gross / ~106 net; WLTP ~20.6 kWh/100km"
+  },
+  {
+   "make": "Kia",
+   "model": "EV4 58.3 kWh (Standard Range)",
+   "years": "2025+",
+   "usable_kwh": 56,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 110,
+   "dc_avg_10_80_kw": 81.1,
+   "dc_basis": "calc 10-80 29min",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "dc_peak_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "KIA-EV4-AW"
+   ],
+   "note": "58.3 kWh gross; 81.4 kWh Long Range: 10-80 % in 31 min; DC peak not published"
+  },
+  {
+   "make": "Kia",
+   "model": "EV9 99.8 kWh",
+   "years": "2024+",
+   "usable_kwh": 96,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 210,
+   "dc_avg_10_80_kw": 168.0,
+   "dc_basis": "calc 10-80 24min",
+   "cons_kwh_100km": 23.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "KIA-EV9-FA"
+   ],
+   "note": "WLTP 20.2 kWh/100km (RWD); AWD higher"
+  },
+  {
+   "make": "Kia",
+   "model": "EV2 42.2 kWh (Standard Range)",
+   "years": "2026+",
+   "usable_kwh": 39.2,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 85,
+   "dc_avg_10_80_kw": 56.8,
+   "dc_basis": "calc 10-80 29min",
+   "cons_kwh_100km": 14.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "dc_peak_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "KIA-EV2-EL"
+   ],
+   "note": "Provisional EU data; 61 kWh Long Range 10-80 % in 30 min; DC peak TBC"
+  },
+  {
+   "make": "Toyota",
+   "model": "C-HR+ 57.7 kWh FWD",
+   "years": "2025+",
+   "usable_kwh": 54,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 81.0,
+   "dc_basis": "calc 10-80 28min",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "TOYOTA-CHRP-IFW"
+   ],
+   "note": "57.7 gross / 54 net; WLTP ~13.5 kWh/100km"
+  },
+  {
+   "make": "Toyota",
+   "model": "bZ4X 57.7 kWh FWD",
+   "years": "2026+",
+   "usable_kwh": 54,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 81.0,
+   "dc_basis": "calc 10-80 28min",
+   "cons_kwh_100km": 15.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "TOYOTA-BZ4X-PP"
+   ],
+   "note": "2026 update; 57.7 gross / 54 net"
+  },
+  {
+   "make": "Toyota",
+   "model": "bZ4X Touring 74.7 kWh FWD",
+   "years": "2026+",
+   "usable_kwh": 71,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 90,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_avg_10_80_kw",
+    "ac_kw_max",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "TOYOTA-BZ4XT-EVKX"
+   ],
+   "note": "Touring is offered with 74.7 kWh (input said 57.7 kWh, likely copied from bZ4X); AC assumed 11 kW like bZ4X"
+  },
+  {
+   "make": "Toyota",
+   "model": "Proace City Verso Electric 50 kWh",
+   "years": "2024+",
+   "usable_kwh": 48,
+   "ac_kw_max": 7.4,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": {
+    "kw": 11,
+    "phases": 3,
+    "amps": 16
+   },
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 76.8,
+   "dc_basis": "calc 0-80 30min",
+   "cons_kwh_100km": 20.0,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "TOYOTA-PCV-AF",
+    "TOYOTA-PCV-PT"
+   ],
+   "note": "7.4 kW AC standard, 11 kW optional (2024 facelift); WLTP range 330 km"
+  },
+  {
+   "make": "Fiat",
+   "model": "600e 54 kWh (RED)",
+   "years": "2024+",
+   "usable_kwh": 50.8,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 67.7,
+   "dc_basis": "calc 20-80 27min",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "FIAT-600E-FA"
+   ],
+   "note": "WLTP range 406-409 km"
+  },
+  {
+   "make": "Citroën",
+   "model": "ë-C3 44 kWh",
+   "years": "2024+",
+   "usable_kwh": 43.8,
+   "ac_kw_max": 7.4,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": {
+    "kw": 11,
+    "phases": 3,
+    "amps": 16
+   },
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 60.6,
+   "dc_basis": "calc 20-80 26min",
+   "cons_kwh_100km": 17.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "CITROEN-EC3-GCG",
+    "CITROEN-EC3A-FA"
+   ],
+   "note": "44 kWh LFP; usable taken from ë-C3 Aircross data; WLTP range 320 km"
+  },
+  {
+   "make": "Citroën",
+   "model": "ë-C3 Aircross 44 kWh",
+   "years": "2025+",
+   "usable_kwh": 43.8,
+   "ac_kw_max": 7.4,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": {
+    "kw": 11,
+    "phases": 3,
+    "amps": 16
+   },
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 60.6,
+   "dc_basis": "calc 20-80 26min",
+   "cons_kwh_100km": 19.0,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "CITROEN-EC3A-FA"
+   ],
+   "note": "WLTP 18.1 kWh/100km, range 300 km"
+  },
+  {
+   "make": "Citroën",
+   "model": "ë-C4 54 kWh (156 KS)",
+   "years": "2023+",
+   "usable_kwh": 51,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 65,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "CITROEN-EC4-AT",
+    "CITROEN-EC4-RS"
+   ],
+   "note": "WLTP 14.8 kWh/100km; 50 kWh/136 KS version also sold, similar charging"
+  },
+  {
+   "make": "Citroën",
+   "model": "ë-C4 X 54 kWh (156 KS)",
+   "years": "2023+",
+   "usable_kwh": 51,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 65,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "CITROEN-EC4-AT",
+    "CITROEN-EC4-RS"
+   ],
+   "note": "Assumed identical to ë-C4 54 kWh"
+  },
+  {
+   "make": "Peugeot",
+   "model": "E-3008 73 kWh (Allure 210 KS)",
+   "years": "2024+",
+   "usable_kwh": 73,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 160,
+   "dc_avg_10_80_kw": 87.6,
+   "dc_basis": "calc 20-80 30min",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "PEUGEOT-E3008-FA"
+   ],
+   "note": "77 gross / 73 net; WLTP 13.9 kWh/100km"
+  },
+  {
+   "make": "Peugeot",
+   "model": "E-5008 73 kWh (Allure 210 KS)",
+   "years": "2024+",
+   "usable_kwh": 73,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 160,
+   "dc_avg_10_80_kw": 87.6,
+   "dc_basis": "calc 20-80 30min",
+   "cons_kwh_100km": 17.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "PEUGEOT-E3008-FA",
+    "PEUGEOT-E5008-RS"
+   ],
+   "note": "Same STLA Medium 73 kWh pack/charging as E-3008 assumed"
+  },
+  {
+   "make": "Opel",
+   "model": "Corsa Electric 51 kWh (156 hp)",
+   "years": "2023+",
+   "usable_kwh": 48.1,
+   "ac_kw_max": 7.4,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": {
+    "kw": 11,
+    "phases": 3,
+    "amps": 16
+   },
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 69,
+   "dc_basis": "calc 20-80 25min",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OPEL-CORSA-FA",
+    "OPEL-CORSA-EL",
+    "OPEL-CORSA-RS"
+   ],
+   "note": "WLTP 14.6 kWh/100km; 7.4 kW 1ph standard, 11 kW 3ph optional (standard in some markets/trims)"
+  },
+  {
+   "make": "Opel",
+   "model": "Mokka Electric 54 kWh (156 hp)",
+   "years": "2022+",
+   "usable_kwh": 50.8,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 62,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17.2,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OPEL-MOKKA"
+   ],
+   "note": "WLTP 15.2 kWh/100km; maker: 80% in ~30 min at 100 kW; usable ~0.94x gross"
+  },
+  {
+   "make": "Opel",
+   "model": "Astra Electric 58 kWh (156 hp)",
+   "years": "2023+",
+   "usable_kwh": 55.4,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 60,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.8,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OPEL-ASTRA",
+    "OPEL-ASTRA-RS"
+   ],
+   "note": "WLTP 14.8 kWh/100km; 58.3 gross / 55.4 usable"
+  },
+  {
+   "make": "Opel",
+   "model": "Frontera Electric 44 kWh LFP",
+   "years": "2025+",
+   "usable_kwh": 43,
+   "ac_kw_max": 7.4,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": {
+    "kw": 11,
+    "phases": 3,
+    "amps": 16
+   },
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 60,
+   "dc_basis": "calc 20-80 26min",
+   "cons_kwh_100km": 20.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "usable_kwh",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OPEL-FRONTERA"
+   ],
+   "note": "WLTP 18.5 kWh/100km; 11 kW 3ph charger is a ~EUR 400 option; usable not published (LFP, ~gross)"
+  },
+  {
+   "make": "Opel",
+   "model": "Grandland Electric 73 kWh FWD",
+   "years": "2024+",
+   "usable_kwh": 73,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 160,
+   "dc_avg_10_80_kw": 91,
+   "dc_basis": "calc 20-80 29min",
+   "cons_kwh_100km": 19.8,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "ac_opt",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "OPEL-GRANDLAND-AP",
+    "OPEL-GRANDLAND-EL"
+   ],
+   "note": "WLTP 17.1-17.7 kWh/100km; 22 kW option not confirmed in source"
+  },
+  {
+   "make": "Leapmotor",
+   "model": "B10 56.2 kWh LFP (Life)",
+   "years": "2025+",
+   "usable_kwh": 56.2,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 168,
+   "dc_avg_10_80_kw": 84,
+   "dc_basis": "calc 30-80 20min",
+   "cons_kwh_100km": 18.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "dc_peak_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "LEAP-B10",
+    "LEAP-B10-RS"
+   ],
+   "note": "WLTP range 361 km (provisional); 67.1 kWh Design version also sold (434 km); 168 kW peak / ~20 min 30-80 quoted for the range generally"
+  },
+  {
+   "make": "Leapmotor",
+   "model": "C10 69.9 kWh LFP",
+   "years": "2024+",
+   "usable_kwh": 69.9,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 84,
+   "dc_avg_10_80_kw": 70,
+   "dc_basis": "calc 30-80 30min",
+   "cons_kwh_100km": 20.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "LEAP-C10-EL",
+    "LEAP-C10-FA"
+   ],
+   "note": "WLTP range 420 km; Wikipedia lists 6.6 kW AC for China, EU spec sheet 11 kW"
+  },
+  {
+   "make": "MG",
+   "model": "MG5 Electric Long Range 61 kWh",
+   "years": "2022+",
+   "usable_kwh": 57.4,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 87,
+   "dc_avg_10_80_kw": 60,
+   "dc_basis": "calc 10-80 40min",
+   "cons_kwh_100km": 19,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "ac_kw_max",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MG-MG5-DE",
+    "MG-MG5-RS"
+   ],
+   "note": "61.1 gross / 57.4 usable; 10-80 ~35-40 min; 50.3 kWh Standard Range also existed"
+  },
+  {
+   "make": "MG",
+   "model": "MGS5 EV 49 kWh (Standard Range)",
+   "years": "2025+",
+   "usable_kwh": 47.1,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 120,
+   "dc_avg_10_80_kw": 82,
+   "dc_basis": "calc 10-80 24min",
+   "cons_kwh_100km": 18.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MG-MGS5-EL",
+    "MG-MGS5-AP"
+   ],
+   "note": "WLTP 16.6 kWh/100km; automobile-propre lists 7 kW AC (1ph) - AC not confirmed; 64 kWh LR (62.1 usable, 139 kW, 10-80 28 min) also sold"
+  },
+  {
+   "make": "Geely",
+   "model": "E5 (EX5) 60.2 kWh LFP",
+   "years": "2025+",
+   "usable_kwh": 60.2,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 110,
+   "dc_avg_10_80_kw": 90,
+   "dc_basis": "calc 30-80 20min",
+   "cons_kwh_100km": 18.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_peak_kw",
+    "usable_kwh",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "GEELY-EX5-WP",
+    "GEELY-EX5-ME",
+    "GEELY-E5-RS"
+   ],
+   "note": "60.22 kWh LFP, WLTP range ~425-430 km; DC peak quoted 110-160 kW across sources"
+  },
+  {
+   "make": "Volvo",
+   "model": "EX60 P6 RWD 83 kWh",
+   "years": "2026+",
+   "usable_kwh": 80,
+   "ac_kw_max": 22,
+   "ac_phases": 3,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 320,
+   "dc_avg_10_80_kw": 210,
+   "dc_basis": "calc 10-80 16min",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "VOLVO-EX60-FA",
+    "VOLVO-EX60-EK"
+   ],
+   "note": "WLTP 14.7 kWh/100km; P10 (95 kWh) and P12 (117 kWh) also offered; 22 kW AC per EU spec sheet (US 19.2 kW)"
+  },
+  {
+   "make": "Volvo",
+   "model": "ES90 Single Motor 88 kWh",
+   "years": "2025+",
+   "usable_kwh": 88,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 300,
+   "dc_avg_10_80_kw": 168,
+   "dc_basis": "calc 10-80 22min",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "VOLVO-ES90-EL",
+    "VOLVO-ES90-IE"
+   ],
+   "note": "92 gross / 88 net, WLTP up to ~650-664 km; AC onboard not confirmed in a source (22 kW may be optional); Twin Motor 102 kWh / 350 kW"
+  },
+  {
+   "make": "Volvo",
+   "model": "EX90 Twin Motor 102 kWh (800 V, MY26)",
+   "years": "2025+",
+   "usable_kwh": 102,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 350,
+   "dc_avg_10_80_kw": 195,
+   "dc_basis": "calc 10-80 22min",
+   "cons_kwh_100km": 23,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "VOLVO-EX90-HE",
+    "VOLVO-EX90-EL"
+   ],
+   "note": "MY26 800 V update; smaller 88 kWh pack 310 kW; AC onboard not confirmed in a source"
+  },
+  {
+   "make": "BMW",
+   "model": "iX2 eDrive20 64.8 kWh",
+   "years": "2024+",
+   "usable_kwh": 64.8,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 130,
+   "dc_avg_10_80_kw": 94,
+   "dc_basis": "calc 10-80 29min",
+   "cons_kwh_100km": 17.2,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "BMW-IX2-FA",
+    "BMW-RS-PL"
+   ],
+   "note": "WLTP 15.3 kWh/100km"
+  },
+  {
+   "make": "BMW",
+   "model": "i5 eDrive40 81.2 kWh",
+   "years": "2023+",
+   "usable_kwh": 81.2,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 205,
+   "dc_avg_10_80_kw": 114,
+   "dc_basis": "calc 10-80 30min",
+   "cons_kwh_100km": 19,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "BMW-I5T-PR",
+    "BMW-RS-PL"
+   ],
+   "note": "Figures from the Touring press kit (same drivetrain); sedan WLTP ~15.9-19 kWh/100km"
+  },
+  {
+   "make": "BMW",
+   "model": "i5 eDrive40 Touring 81.2 kWh",
+   "years": "2024+",
+   "usable_kwh": 81.2,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 205,
+   "dc_avg_10_80_kw": 114,
+   "dc_basis": "calc 10-80 30min",
+   "cons_kwh_100km": 19.8,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "BMW-I5T-PR",
+    "BMW-RS-PL"
+   ],
+   "note": "WLTP 15.4-18.6 kWh/100km"
+  },
+  {
+   "make": "BMW",
+   "model": "iX xDrive45 94.8 kWh",
+   "years": "2025+",
+   "usable_kwh": 94.8,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 175,
+   "dc_avg_10_80_kw": 117,
+   "dc_basis": "calc 10-80 34min",
+   "cons_kwh_100km": 22,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "BMW-IX-PR",
+    "BMW-RS-PL"
+   ],
+   "note": "Serbian list label 'iX eDrive20 (204 KS)' matches iX1/iX2 eDrive20, not the iX; entry covers the iX base model (2025 LCI). WLTP 21.8 kWh/100km provisional"
+  },
+  {
+   "make": "BMW",
+   "model": "i7 eDrive50 101.7 kWh",
+   "years": "2023+",
+   "usable_kwh": 101.7,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 195,
+   "dc_avg_10_80_kw": 126,
+   "dc_basis": "calc 10-80 34min",
+   "cons_kwh_100km": 21.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "ac_opt",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "BMW-I7-FA",
+    "BMW-RS-PL"
+   ],
+   "note": "Serbian list 'xDrive50 (455 KS)' = 455 hp eDrive50-class; 105.7 gross / 101.7 net; WLTP 19.1 kWh/100km; spec sheet lists 22 kW AC (11 kW std / 22 kW opt assumed)"
+  },
+  {
+   "make": "Mini",
+   "model": "Aceman 42.5 kWh (E, 184 hp)",
+   "years": "2024+",
+   "usable_kwh": 38.5,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 75,
+   "dc_avg_10_80_kw": 50,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MINI-ACEMAN"
+   ],
+   "note": "42.5 kWh gross, WLTP range 310 km; maker: 10-80 under ~30 min"
+  },
+  {
+   "make": "Mini",
+   "model": "Countryman E 66.5 kWh (204 hp)",
+   "years": "2024+",
+   "usable_kwh": 64.6,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 130,
+   "dc_avg_10_80_kw": 94,
+   "dc_basis": "calc 10-80 29min",
+   "cons_kwh_100km": 17.6,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "ac_kw_max",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MINI-COUNTRYMAN"
+   ],
+   "note": "Consumption 15.7 kWh/100km; 0-100% 6h45 at 11 kW, 3h45 at 22 kW"
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "EQB 250+ 70.5 kWh",
+   "years": "2024+",
+   "usable_kwh": 70.5,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 85,
+   "dc_basis": "calc 10-80 35min",
+   "cons_kwh_100km": 18.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MB-EQB-AE",
+    "MB-EQB-AT"
+   ],
+   "note": "WLTP 15.3-17.5 kWh/100km (facelift)"
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "EQE 300 / 350+ 89 kWh",
+   "years": "2022+",
+   "usable_kwh": 89,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 170,
+   "dc_avg_10_80_kw": 110,
+   "dc_basis": "est",
+   "cons_kwh_100km": 19,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MB-EQE"
+   ],
+   "note": "WLTP 16.9 kWh/100km; 10-80 ~32 min per maker (not confirmed in source)"
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "EQE SUV 350+ 90.6 kWh",
+   "years": "2023+",
+   "usable_kwh": 90.6,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 170,
+   "dc_avg_10_80_kw": 105,
+   "dc_basis": "est",
+   "cons_kwh_100km": 21.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MB-EQESUV"
+   ],
+   "note": "Source WLTP 22.8 kWh/100km is for a high-power version; 350+ lower"
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "EQS 450+ 118 kWh",
+   "years": "2024+",
+   "usable_kwh": 118,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 200,
+   "dc_avg_10_80_kw": 160,
+   "dc_basis": "calc 10-80 31min",
+   "cons_kwh_100km": 18.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "usable_kwh",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MB-EQS-AB"
+   ],
+   "note": "Facelift (2024) 118 kWh; WLTP 16.5, AutoBild test 18.3 kWh/100km"
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "EQS SUV 450 4MATIC (118 kWh)",
+   "years": "2024+",
+   "usable_kwh": 118,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 200,
+   "dc_avg_10_80_kw": 159.9,
+   "dc_basis": "calc 10-80 31min",
+   "cons_kwh_100km": 24.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MB-EQS118",
+    "MB-EQS-ELECTRIVE",
+    "MB-EQSSUV-RS"
+   ],
+   "note": "MY2024+ net battery 118 kWh (was 108.4); 200 kW DC on 400 V; Mercedes quotes ~31 min"
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "G 580 with EQ Technology (116 kWh)",
+   "years": "2024+",
+   "usable_kwh": 116,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 200,
+   "dc_avg_10_80_kw": 162.4,
+   "dc_basis": "calc 10-80 30min",
+   "cons_kwh_100km": 31,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MB-G580-FA",
+    "MB-G-RS"
+   ],
+   "note": "WLTP 27.7 kWh/100 km (best case)"
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "Mercedes-Maybach EQS 680 SUV (118 kWh)",
+   "years": "2024+",
+   "usable_kwh": 118,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 200,
+   "dc_avg_10_80_kw": 159.9,
+   "dc_basis": "calc 10-80 31min",
+   "cons_kwh_100km": 27,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "ac_opt",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MB-MAYBACH-US",
+    "MB-EQS118",
+    "MB-EQSSUV-RS"
+   ],
+   "note": "US page shows 9.6 kW AC; EU AC 11 kW std / 22 kW opt assumed as on EQS SUV"
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "CLA 250+ with EQ Technology (85 kWh)",
+   "years": "2025+",
+   "usable_kwh": 85,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 320,
+   "dc_avg_10_80_kw": 162.3,
+   "dc_basis": "calc 10-80 22min",
+   "cons_kwh_100km": 14,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "ac_kw_max",
+    "ac_opt",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MB-CLA"
+   ],
+   "note": "800 V; WLTP 12.2-14.1 kWh/100 km; heat pump std; 58 kWh LFP CLA 200 later; AC 11/22 not stated in source"
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "CLA Shooting Brake 250+ (85 kWh)",
+   "years": "2025+",
+   "usable_kwh": 85,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 320,
+   "dc_avg_10_80_kw": 162.3,
+   "dc_basis": "calc 10-80 22min",
+   "cons_kwh_100km": 14.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "ac_kw_max",
+    "ac_opt",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MB-CLA"
+   ],
+   "note": "Same drivetrain/battery as CLA sedan; Shooting Brake figures taken from sedan"
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "GLA 250+ with EQ Technology (85 kWh)",
+   "years": "2026+",
+   "usable_kwh": 85,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 320,
+   "dc_avg_10_80_kw": 162.3,
+   "dc_basis": "calc 10-80 22min",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MB-GLA"
+   ],
+   "note": "New electric GLA (premiere 30.07.2026, deliveries from Nov 2026); GLA 200 58 kWh LFP and 71 kWh variant also exist; 400 V DC needs optional converter. Older EQA 250+ had 70.5 kWh/100 kW"
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "GLB 250+ with EQ Technology (85 kWh)",
+   "years": "2026+",
+   "usable_kwh": 85,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 320,
+   "dc_avg_10_80_kw": 162.3,
+   "dc_basis": "calc 10-80 22min",
+   "cons_kwh_100km": 17,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "ac_kw_max",
+    "usable_kwh",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MB-GLB"
+   ],
+   "note": "22 kW AC optional per source; 11 kW standard assumed"
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "GLC 400 4MATIC with EQ Technology (94 kWh)",
+   "years": "2026+",
+   "usable_kwh": 94,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 330,
+   "dc_avg_10_80_kw": 179.5,
+   "dc_basis": "calc 10-80 22min",
+   "cons_kwh_100km": 19.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MB-GLC"
+   ],
+   "note": "WLTP 14.9-18.8 kWh/100 km (provisional); 800 V"
+  },
+  {
+   "make": "Mercedes-Benz",
+   "model": "C-Klasa (C 400 4MATIC, 94.5 kWh)",
+   "years": "2026+",
+   "usable_kwh": 94.5,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 330,
+   "dc_avg_10_80_kw": 180.4,
+   "dc_basis": "calc 10-80 22min",
+   "cons_kwh_100km": 18,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MB-CKLASSE"
+   ],
+   "note": "WLTP 14.1-18.5 kWh/100 km; 800 V"
+  },
+  {
+   "make": "Ford",
+   "model": "Puma Gen-E (43 kWh)",
+   "years": "2025+",
+   "usable_kwh": 43,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 78.5,
+   "dc_basis": "calc 10-80 23min",
+   "cons_kwh_100km": 14.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "dc_peak_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "FORD-PUMA",
+    "FORD-PUMA-RS"
+   ],
+   "note": "Serbian price list: 47 kWh (gross); 13.1 kWh/100 km stated by Ford"
+  },
+  {
+   "make": "Ford",
+   "model": "Explorer EV Standard Range RWD (58 kWh LFP)",
+   "years": "2026+",
+   "usable_kwh": 56,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 110,
+   "dc_avg_10_80_kw": 84.0,
+   "dc_basis": "calc 10-80 28min",
+   "cons_kwh_100km": 17.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "dc_peak_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "FORD-MY26-IAA",
+    "FORD-MY26",
+    "FORD-EXPLORER-RS"
+   ],
+   "note": "MY26 58 kWh LFP, 190 PS; ~28 min 10-80 'at a 110 kW charger'; WLTP up to 444 km; usable ~56 assumed"
+  },
+  {
+   "make": "Ford",
+   "model": "Capri Standard Range RWD (58 kWh LFP)",
+   "years": "2026+",
+   "usable_kwh": 56,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 110,
+   "dc_avg_10_80_kw": 84.0,
+   "dc_basis": "calc 10-80 28min",
+   "cons_kwh_100km": 17,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "dc_peak_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "FORD-MY26-IAA",
+    "FORD-MY26",
+    "FORD-CAPRI-RS"
+   ],
+   "note": "MY26 58 kWh LFP, 190 PS; WLTP up to 464 km; usable ~56 assumed"
+  },
+  {
+   "make": "Ford",
+   "model": "Mustang Mach-E Standard Range RWD (70 kWh)",
+   "years": "2021+",
+   "usable_kwh": 70,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 86.5,
+   "dc_basis": "calc 10-80 34min",
+   "cons_kwh_100km": 18,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "FORD-MACHE-EVKX",
+    "FORD-MACHE-RS"
+   ],
+   "note": "WLTP 15.9 kWh/100 km; Extended Range (~91 kWh) also offered"
+  },
+  {
+   "make": "Mazda",
+   "model": "Mazda6e (68.8 kWh)",
+   "years": "2025+",
+   "usable_kwh": 68.8,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 165,
+   "dc_avg_10_80_kw": 107.0,
+   "dc_basis": "calc 10-80 27min",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "ac_kw_max",
+    "usable_kwh",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MAZDA-6E",
+    "MAZDA-6E-RS"
+   ],
+   "note": "Long Range 80 kWh version charges only ~90 kW (47 min); test long-term consumption 16.8 kWh/100 km"
+  },
+  {
+   "make": "Mazda",
+   "model": "CX-6e (78 kWh LFP)",
+   "years": "2026+",
+   "usable_kwh": 78,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 195,
+   "dc_avg_10_80_kw": 136.5,
+   "dc_basis": "calc 10-80 24min",
+   "cons_kwh_100km": 18.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "usable_kwh",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MAZDA-CX6E",
+    "MAZDA-CX6E-RS"
+   ],
+   "note": "WLTP range ~484 km (preliminary)"
+  },
+  {
+   "make": "JAC",
+   "model": "E30X Luxury (41 kWh)",
+   "years": "2025+",
+   "usable_kwh": 41,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 65,
+   "dc_avg_10_80_kw": 39,
+   "dc_basis": "est",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "JAC-E30X",
+    "JAC-RS"
+   ],
+   "note": "WLTP 14.0 kWh/100 km; AC onboard not confirmed in a source"
+  },
+  {
+   "make": "JAC",
+   "model": "e-JS4 (65 kWh)",
+   "years": "2022+",
+   "usable_kwh": 65,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 60,
+   "dc_avg_10_80_kw": 48.0,
+   "dc_basis": "calc 30-80 35min; capped at 0.8 x peak",
+   "cons_kwh_100km": 19.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_peak_kw",
+    "cons_kwh_100km",
+    "winter_factor",
+    "dc_avg_10_80_kw"
+   ],
+   "src": [
+    "JAC-EJS4",
+    "JAC-RS"
+   ],
+   "note": "WLTP 18 kWh/100 km; source says AC up to 11 kW but 9 h 15-100 % implies ~6.6 kW; DC peak given as 45 or 60 kW"
+  },
+  {
+   "make": "JMEV",
+   "model": "EV3 (30.24 kWh LFP)",
+   "years": "2025+",
+   "usable_kwh": 30.24,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 40,
+   "dc_avg_10_80_kw": 28.3,
+   "dc_basis": "calc 30-80 32min",
+   "cons_kwh_100km": 13.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_peak_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "JMEV-EV3-WIKI",
+    "JMEV-EV3-RS"
+   ],
+   "note": "AC/DC power figures not confirmed in a source; DC 30-80 32 min per Wikipedia"
+  },
+  {
+   "make": "JMEV",
+   "model": "Elight (63 kWh)",
+   "years": "2025+",
+   "usable_kwh": 63,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 90,
+   "dc_avg_10_80_kw": 54,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "usable_kwh",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "JMEV-ELIGHT",
+    "JMEV-ELIGHT-RS"
+   ],
+   "note": "WLTP 16.2 kWh/100 km; AC ~9 h, DC ~30 min (window unknown); charging power figures not confirmed in a source"
+  },
+  {
+   "make": "JMEV",
+   "model": "EWind (70.38 kWh LFP)",
+   "years": "2025+",
+   "usable_kwh": 65.5,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 90,
+   "dc_avg_10_80_kw": 54,
+   "dc_basis": "est",
+   "cons_kwh_100km": 18,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "JMEV-EWIND",
+    "JMEV-EWIND-RS"
+   ],
+   "note": "Gross 70.38 kWh LFP, WLTP 470 km; charging figures not confirmed in a source"
+  },
+  {
+   "make": "BAIC",
+   "model": "EU5 (48.3 kWh)",
+   "years": "2019+",
+   "usable_kwh": 45,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 80,
+   "dc_avg_10_80_kw": 64.0,
+   "dc_basis": "calc 0-80 30min; capped at 0.8 x peak",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_peak_kw",
+    "cons_kwh_100km",
+    "winter_factor",
+    "dc_avg_10_80_kw"
+   ],
+   "src": [
+    "BAIC-EU5",
+    "BAIC-EU5-RS"
+   ],
+   "note": "Gross 48.3 kWh CATL NMC; stated <=13.7 kWh/100 km (NEDC era); AC ~9 h; charging power figures not confirmed in a source"
+  },
+  {
+   "make": "Changan",
+   "model": "Deepal S05 RWD Pro (68.8 kWh LFP)",
+   "years": "2025+",
+   "usable_kwh": 68.8,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 200,
+   "dc_avg_10_80_kw": 137.6,
+   "dc_basis": "calc 30-80 15min",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "usable_kwh",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "CHANGAN-S05-UK",
+    "CHANGAN-S05-IAA",
+    "CHANGAN-S05-RS"
+   ],
+   "note": "WLTP range 485 km (RWD)"
+  },
+  {
+   "make": "Changan",
+   "model": "Deepal S07 (80 kWh)",
+   "years": "2024+",
+   "usable_kwh": 76,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 90,
+   "dc_avg_10_80_kw": 65.1,
+   "dc_basis": "calc 30-80 35min",
+   "cons_kwh_100km": 19,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_peak_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "CHANGAN-S07-UK"
+   ],
+   "note": "Battery 79.97 kWh (NCM), WLTP 475 km; AC/DC power not confirmed in a source"
+  },
+  {
+   "make": "Cupra",
+   "model": "Raval Endurance (52 kWh)",
+   "years": "2026+",
+   "usable_kwh": 52,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 105,
+   "dc_avg_10_80_kw": 84.0,
+   "dc_basis": "calc 10-80 24min; capped at 0.8 x peak",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor",
+    "dc_avg_10_80_kw"
+   ],
+   "src": [
+    "CUPRA-RAVAL",
+    "CUPRA-RAVAL-EL"
+   ],
+   "note": "WLTP 13.7 kWh/100 km; cheaper 37 kWh LFP versions (50/88 kW DC, 11 kW AC) also exist; Serbian version not confirmed"
+  },
+  {
+   "make": "Dongfeng",
+   "model": "Box 42.3 kWh LFP",
+   "years": "2024+",
+   "usable_kwh": 40.2,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 70,
+   "dc_avg_10_80_kw": 40,
+   "dc_basis": "est",
+   "cons_kwh_100km": 15.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "DF-BOX-IMP",
+    "DF-BOX-ARENA",
+    "DF-BOX-HR"
+   ],
+   "note": "Small LFP hatch (Nammi 01); 42.3 kWh gross, usable ~0.95x; WLTP ~310 km. A 31.4 kWh version also exists."
+  },
+  {
+   "make": "Dongfeng",
+   "model": "E70 ~57 kWh LFP",
+   "years": "2023+",
+   "usable_kwh": 54,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 60,
+   "dc_avg_10_80_kw": 36,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "DF-E70-IMP",
+    "DF-E70-CNC",
+    "DF-E70-PH"
+   ],
+   "note": "figures not confirmed in a source; Aeolus/Fengshen E70 sedan (often fleet/taxi); Chinese-spec units may have GB/T inlets - check CCS2 adapter"
+  },
+  {
+   "make": "Dongfeng",
+   "model": "Forthing S7 EV ~67 kWh LFP",
+   "years": "2024+",
+   "usable_kwh": 63.5,
+   "ac_kw_max": 6.6,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 60,
+   "dc_basis": "est",
+   "cons_kwh_100km": 17,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "DF-S7-IMP",
+    "DF-S7-CNC",
+    "DF-S7-MOTOR1"
+   ],
+   "note": "figures not confirmed in a source; BEV sedan (Xinghai/Star Ocean S7); a REEV version is also sold in Europe - this entry is the BEV"
+  },
+  {
+   "make": "Dongfeng",
+   "model": "Forthing Friday 400 (~76 kWh LFP)",
+   "years": "2025+",
+   "usable_kwh": 72,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 60,
+   "dc_basis": "est",
+   "cons_kwh_100km": 20.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "DF-FRI-IMP",
+    "DF-FRI-CNC",
+    "DF-FRI-EVW"
+   ],
+   "note": "figures not confirmed in a source; '400' assumed ~400 km WLTP; battery size inferred from range; an EREV Friday also exists"
+  },
+  {
+   "make": "Dongfeng",
+   "model": "M-Hero 917 (142.5 kWh)",
+   "years": "2023+",
+   "usable_kwh": 133,
+   "ac_kw_max": 7,
+   "ac_phases": 1,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 200,
+   "dc_avg_10_80_kw": 110,
+   "dc_basis": "est",
+   "cons_kwh_100km": 35,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "DF-MH917-WIKI",
+    "DF-MH917-CNC"
+   ],
+   "note": "figures not confirmed in a source; heavy off-road SUV, CLTC ~505 km; Chinese-market import likely GB/T inlet - DC via adapter may be limited"
+  },
+  {
+   "make": "Jeep",
+   "model": "Avenger Electric 54 kWh",
+   "years": "2023+",
+   "usable_kwh": 51,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 100,
+   "dc_avg_10_80_kw": 77,
+   "dc_basis": "calc 20-80 24min",
+   "cons_kwh_100km": 17.3,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "JEEP-AVG-IMP",
+    "JEEP-AVG-ELECTRIVE"
+   ],
+   "note": "Stellantis e-CMP2; 54 kWh gross / 51 usable"
+  },
+  {
+   "make": "Jeep",
+   "model": "Compass Electric 73 kWh (FWD)",
+   "years": "2025+",
+   "usable_kwh": 73,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 160,
+   "dc_avg_10_80_kw": 88,
+   "dc_basis": "calc 20-80 30min",
+   "cons_kwh_100km": 19,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "ac_opt",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "JEEP-CMP-IMP",
+    "JEEP-CMP-ELEC"
+   ],
+   "note": "STLA Medium; 97 kWh long-range version also exists; 22 kW OBC availability not confirmed"
+  },
+  {
+   "make": "Lexus",
+   "model": "RZ 350e 77 kWh (MY26)",
+   "years": "2025+",
+   "usable_kwh": 74.7,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 105,
+   "dc_basis": "calc 10-80 30min",
+   "cons_kwh_100km": 17.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "ac_opt",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "LEXUS-RZ-IMP",
+    "LEXUS-RZ-PRESS"
+   ],
+   "note": "MY26 refresh; 10-80 approx. 30 min (maker 'about 30 min'); 22 kW OBC optional per trim"
+  },
+  {
+   "make": "Lexus",
+   "model": "ES 350e 77 kWh",
+   "years": "2026+",
+   "usable_kwh": 74.7,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 105,
+   "dc_basis": "est",
+   "cons_kwh_100km": 18,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "ac_opt",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "LEXUS-ES-IMP",
+    "LEXUS-ES-VM"
+   ],
+   "note": "9th-gen ES BEV, shares e-TNGA tech with RZ; DC taken as RZ-like"
+  },
+  {
+   "make": "Lynk & Co",
+   "model": "02 66 kWh LFP",
+   "years": "2025+",
+   "usable_kwh": 63,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 95,
+   "dc_basis": "calc 10-80 28min",
+   "cons_kwh_100km": 18.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "LYNK-02-IMP",
+    "LYNK-02-AUTOTIJD",
+    "LYNK-02-ARENA"
+   ],
+   "note": "WLTP ~445 km"
+  },
+  {
+   "make": "Maserati",
+   "model": "GranTurismo Folgore 92.5 kWh",
+   "years": "2023+",
+   "usable_kwh": 83,
+   "ac_kw_max": 22,
+   "ac_phases": 3,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 270,
+   "dc_avg_10_80_kw": 166,
+   "dc_basis": "calc 20-80 18min",
+   "cons_kwh_100km": 24.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MAS-GT-IMP",
+    "MAS-GT-ARENA"
+   ],
+   "note": "800V; 92.5 kWh gross / 83 usable"
+  },
+  {
+   "make": "Maserati",
+   "model": "GranCabrio Folgore 92.5 kWh",
+   "years": "2024+",
+   "usable_kwh": 83,
+   "ac_kw_max": 22,
+   "ac_phases": 3,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 270,
+   "dc_avg_10_80_kw": 166,
+   "dc_basis": "calc 20-80 18min",
+   "cons_kwh_100km": 25.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MAS-GC-IMP"
+   ],
+   "note": "Same drivetrain/battery as GranTurismo Folgore"
+  },
+  {
+   "make": "Maserati",
+   "model": "Grecale Folgore 105 kWh",
+   "years": "2024+",
+   "usable_kwh": 98,
+   "ac_kw_max": 22,
+   "ac_phases": 3,
+   "ac_amps": 32,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 122,
+   "dc_basis": "calc 20-80 29min",
+   "cons_kwh_100km": 24.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MAS-GRC-IMP",
+    "MAS-GRC-FICHES",
+    "MAS-GRC-PAULTAN"
+   ],
+   "note": "400V; 105 kWh gross"
+  },
+  {
+   "make": "Porsche",
+   "model": "Taycan (Performance Battery 89 kWh)",
+   "years": "2024+",
+   "usable_kwh": 82.3,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": {
+    "kw": 22,
+    "phases": 3,
+    "amps": 32
+   },
+   "dc_peak_kw": 320,
+   "dc_avg_10_80_kw": 192,
+   "dc_basis": "calc 10-80 18min",
+   "cons_kwh_100km": 20,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "PORSCHE-TAYCAN-IMP",
+    "PORSCHE-TAYCAN-NEWS",
+    "PORSCHE-TAYCAN-EVP"
+   ],
+   "note": "2024 facelift base; Performance Battery Plus 105/97 kWh also sold; 22 kW OBC optional"
+  },
+  {
+   "make": "Porsche",
+   "model": "Macan Electric 100 kWh",
+   "years": "2024+",
+   "usable_kwh": 95,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 270,
+   "dc_avg_10_80_kw": 190,
+   "dc_basis": "calc 10-80 21min",
+   "cons_kwh_100km": 21,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "PORSCHE-MACAN-IMP",
+    "PORSCHE-MACAN-NEWS"
+   ],
+   "note": "PPE 800V; 100 kWh gross / 95 net"
+  },
+  {
+   "make": "Suzuki",
+   "model": "e Vitara 61 kWh LFP",
+   "years": "2025+",
+   "usable_kwh": 58,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 70,
+   "dc_avg_10_80_kw": 54,
+   "dc_basis": "calc 10-80 45min",
+   "cons_kwh_100km": 17,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "SUZUKI-EVIT-IMP",
+    "SUZUKI-EVIT-UK"
+   ],
+   "note": "BYD Blade LFP; 49 kWh version also exists; 10-80 ~45 min per maker"
+  },
+  {
+   "make": "Voyah",
+   "model": "Free 106 kWh",
+   "years": "2024+",
+   "usable_kwh": 99,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 150,
+   "dc_avg_10_80_kw": 90,
+   "dc_basis": "est",
+   "cons_kwh_100km": 24.5,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "VOYAH-FREE-IMP",
+    "VOYAH-FREE-VM"
+   ],
+   "note": "BEV 106 kWh (WLTP ~480 km); an EREV Free also exists - check which one the importer sells"
+  },
+  {
+   "make": "GAC",
+   "model": "AION V 75 kWh LFP",
+   "years": "2025+",
+   "usable_kwh": 72,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 180,
+   "dc_avg_10_80_kw": 100,
+   "dc_basis": "est",
+   "cons_kwh_100km": 19,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "GAC-RS",
+    "GAC-V-MONDIAL",
+    "GAC-V-MOTEUR"
+   ],
+   "note": "European AION V (WLTP ~510 km)"
+  },
+  {
+   "make": "GAC",
+   "model": "AION UT 60 kWh LFP",
+   "years": "2026+",
+   "usable_kwh": 57,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 88,
+   "dc_avg_10_80_kw": 55,
+   "dc_basis": "est",
+   "cons_kwh_100km": 16.5,
+   "winter_factor": 1.3,
+   "adac_wall": null,
+   "ac_conf": "low",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "dc_peak_kw",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "GAC-RS",
+    "GAC-UT-ELECTRIVE",
+    "GAC-UT-NEWMOB"
+   ],
+   "note": "Compact hatch, European launch April 2026, WLTP ~430 km"
+  },
+  {
+   "make": "Tesla",
+   "model": "Model S Long Range / AWD (2021+ refresh)",
+   "years": "2021+",
+   "usable_kwh": 95,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 250,
+   "dc_avg_10_80_kw": 125,
+   "dc_basis": "est",
+   "cons_kwh_100km": 18.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "usable_kwh",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "TESLA-SX-BASENOR",
+    "TESLA-SX-SPAR",
+    "TESLA-SX-EVCS"
+   ],
+   "note": "Pre-2021 cars had 16.5 kW (3ph) or dual chargers; no Serbian importer (grey/used imports)"
+  },
+  {
+   "make": "Tesla",
+   "model": "Model X Long Range / AWD (2021+ refresh)",
+   "years": "2021+",
+   "usable_kwh": 95,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 250,
+   "dc_avg_10_80_kw": 120,
+   "dc_basis": "est",
+   "cons_kwh_100km": 21.5,
+   "winter_factor": 1.2,
+   "adac_wall": null,
+   "ac_conf": "high",
+   "est": [
+    "usable_kwh",
+    "dc_avg_10_80_kw",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "TESLA-SX-BASENOR",
+    "TESLA-SX-EVCS"
+   ],
+   "note": "Pre-2021 cars had 16.5 kW (3ph) or dual chargers; no Serbian importer (grey/used imports)"
+  },
+  {
+   "make": "Mini",
+   "model": "Cooper E 40.7 kWh (J01)",
+   "years": "2024+",
+   "usable_kwh": 36.6,
+   "ac_kw_max": 11,
+   "ac_phases": 3,
+   "ac_amps": 16,
+   "ac_opt": null,
+   "dc_peak_kw": 75,
+   "dc_avg_10_80_kw": 54.9,
+   "dc_basis": "calc 10-80 28min",
+   "cons_kwh_100km": 15.0,
+   "winter_factor": 1.25,
+   "adac_wall": null,
+   "ac_conf": "med",
+   "est": [
+    "usable_kwh",
+    "ac_kw_max",
+    "ac_phases",
+    "ac_amps",
+    "cons_kwh_100km",
+    "winter_factor"
+   ],
+   "src": [
+    "MINI-COOPERE"
+   ],
+   "note": "40.7 kWh, 75 kW DC, 10-80 % in 28 min, WLTP range 305 km; usable and AC are estimates"
   }
  ],
  "sources": {
@@ -2312,6 +5050,638 @@
   "WIKI-IONIQ6": {
    "url": "https://en.wikipedia.org/wiki/Hyundai_Ioniq_6",
    "date": "live page, accessed 2026-10-06"
+  },
+  "BYD-SEAL7-FA": {
+   "url": "https://www.fiches-auto.fr/fiches-techniques/electriques/f-446-byd-sealion-7-propulsion-312-ch-84-kwh.php",
+   "date": "2026-10-26 (seen)"
+  },
+  "BYD-SEAL7-EL": {
+   "url": "https://www.electrive.com/2024/10/15/byd-sealion-7-comes-to-europe/",
+   "date": "2024-10-15"
+  },
+  "BYD-SEAL7-AR": {
+   "url": "https://www.arenaev.com/byd_sealion_7_arrives_in_the_uk_in_three_configurations-news-4110.php",
+   "date": "2026-10-26 (seen)"
+  },
+  "BYD-SEAL7-RS": {
+   "url": "https://byd-auto.rs/modeli/byd-seal/",
+   "date": "2026-10-26 (seen)"
+  },
+  "VW-ID5-EVC": {
+   "url": "https://evcentral.com.au/cars/volkswagen/id5/",
+   "date": "2026-10-26 (seen)"
+  },
+  "VW-ID5-RS": {
+   "url": "https://www.volkswagen.rs/modeli-i-konfigurator/svi-modeli",
+   "date": "2026-10-26 (seen)"
+  },
+  "AUDI-PPE": {
+   "url": "https://www.audi.com/en/press-releases/focus-on-charging-performance-the-new-premium-platform-electric-ppe-15927",
+   "date": "2026-10-26 (seen)"
+  },
+  "AUDI-A6-AR": {
+   "url": "https://m.arenaev.com/audi_a6_avant_e_tron_100kwh_2022-specs-279.php",
+   "date": "2026-10-26 (seen)"
+  },
+  "AUDI-GT-AR": {
+   "url": "https://m.arenaev.com/audi_e_tron_gt_s_2024-specs-amps-689.php",
+   "date": "2026-10-26 (seen)"
+  },
+  "AUDI-A2-PT": {
+   "url": "https://paultan.org/2026/08/11/2026-audi-a2-e-tron-previewed/",
+   "date": "2026-08-11"
+  },
+  "AUDI-A2-AR": {
+   "url": "https://m.arenaev.com/audi_a2__2026-specs-1023.php",
+   "date": "2026-10-26 (seen)"
+  },
+  "RENAULT-TWINGO-EL": {
+   "url": "https://www.go-electra.com/en/newsroom/renault-twingo-e-tech-electric-2026/",
+   "date": "2026-10-26 (seen)"
+  },
+  "RENAULT-TWINGO-RS": {
+   "url": "https://www.renault.rs/CountriesData/Serbia/images/pdf/pricelist/twingo-pricelist.pdf",
+   "date": "2026-10-26 (seen)"
+  },
+  "RENAULT-R4-IE": {
+   "url": "https://www.renault.ie/electric-vehicles/r4-e-tech-electric/motorization.html",
+   "date": "2026-10-26 (seen)"
+  },
+  "HYUNDAI-IONIQ9-RS": {
+   "url": "https://www.hyundai.rs/upload/document/ioniq_9_20260506_082327.pdf",
+   "date": "2026-10-26 (seen)"
+  },
+  "KIA-EV4-AW": {
+   "url": "https://www.automotiveworld.com/news/the-kia-ev4-europe-tuned-innovation-for-the-next-generation-of-electric-mobility/",
+   "date": "2026-10-26 (seen)"
+  },
+  "KIA-EV9-FA": {
+   "url": "https://www.fiches-auto.fr/fiches-techniques/electriques/f-380-kia-ev9-propulsion-204-ch-100-kwh.php",
+   "date": "2026-10-26 (seen)"
+  },
+  "KIA-EV2-EL": {
+   "url": "https://www.electrive.com/2026/01/09/ev2-celebrates-world-premiere-kia-targets-the-b-segment-with-new-entry-level-model",
+   "date": "2026-01-09"
+  },
+  "TOYOTA-BZ4XT-EVKX": {
+   "url": "https://evkx.net/models/toyota/bz4x/bz4x_touring_fwd/specifications/",
+   "date": "2026-10-26 (seen)"
+  },
+  "TOYOTA-PCV-AF": {
+   "url": "https://www.autofacil.es/toyota/proace-city/nuevo-toyota-proace-city-2024/700234.html",
+   "date": "2026-10-26 (seen)"
+  },
+  "TOYOTA-PCV-PT": {
+   "url": "https://paultan.org/2021/05/10/toyota-proace-city-electric-debuts/",
+   "date": "2021-05-10"
+  },
+  "FIAT-600E-FA": {
+   "url": "https://www.fiches-auto.fr/essai-600/test-736-1985-autonomie-et-recharge.php",
+   "date": "2026-10-26 (seen)"
+  },
+  "CITROEN-EC3-GCG": {
+   "url": "https://www.greencarguide.co.uk/2024/05/citroen-e-c3-prices-to-start-from-21990/",
+   "date": "2024-05"
+  },
+  "CITROEN-EC3A-FA": {
+   "url": "https://www.fiches-auto.fr/fiches-techniques/electriques/f-457-citroen-e-c3-aircross-autonomie-standard-113-ch-44-kwh.php",
+   "date": "2026-10-26 (seen)"
+  },
+  "CITROEN-EC4-AT": {
+   "url": "https://autotijd.be/en/consumption/citroen/c4/ev-54-kwh-4996",
+   "date": "2026-10-26 (seen)"
+  },
+  "CITROEN-EC4-RS": {
+   "url": "https://www.citroen.rs/modeli/novi-ec4.html",
+   "date": "2026-10-26 (seen)"
+  },
+  "PEUGEOT-E3008-FA": {
+   "url": "https://www.fiches-auto.fr/fiches-techniques/electriques/f-321-peugeot-e-3008--210-ch-77-kwh.php",
+   "date": "2026-10-26 (seen)"
+  },
+  "PEUGEOT-E5008-RS": {
+   "url": "https://peugeot.rs/Cenovnik%205008%2003.26.pdf",
+   "date": "2026-10-26 (seen)"
+  },
+  "TOYOTA-CHRP-IFW": {
+   "url": "https://internationalfleetworld.com/toyota-c-hr-land-as-all-new-electric-suv/",
+   "date": "seen 2026-10-26"
+  },
+  "TOYOTA-BZ4X-PP": {
+   "url": "https://media.toyota.co.uk/wp-content/uploads/sites/5/pdf/251208-bZ4X-Press-Pack.pdf",
+   "date": "2025-12-08"
+  },
+  "OPEL-CORSA-FA": {
+   "url": "https://www.fiches-auto.fr/fiches-techniques/electriques/f-282-opel-corsa-e-electric-156-ch-51-kwh.php",
+   "date": "seen 2026-10-26"
+  },
+  "OPEL-CORSA-EL": {
+   "url": "https://www.electrive.com/2019/09/03/opel-announces-new-charging-details-for-corsa-e",
+   "date": "2019-09-03"
+  },
+  "OPEL-CORSA-RS": {
+   "url": "https://www.opel.rs/simply-electric/overview.html",
+   "date": "seen 2026-10-26"
+  },
+  "OPEL-MOKKA": {
+   "url": "https://www.media.stellantis.com/em-en/opel/press/opel-mokka-electric-now-with-even-more-range",
+   "date": "2022 (press release)"
+  },
+  "OPEL-ASTRA": {
+   "url": "https://www.automobile-propre.com/voitures/opel-astra-electrique-2/fiche-technique/",
+   "date": "seen 2026-10-26"
+  },
+  "OPEL-ASTRA-RS": {
+   "url": "https://www.opel.rs/putnicki-automobili/astra-modeli/astra-e/overview-features.html",
+   "date": "seen 2026-10-26"
+  },
+  "OPEL-FRONTERA": {
+   "url": "https://heise.de/-10188772",
+   "date": "2024-12 (heise driving report)"
+  },
+  "OPEL-GRANDLAND-AP": {
+   "url": "https://www.automobile-propre.com/voitures/opel-grandland-electrique/fiche-technique/",
+   "date": "seen 2026-10-26"
+  },
+  "OPEL-GRANDLAND-EL": {
+   "url": "https://www.electrive.com/2025/08/07/first-drive-in-the-opel-grandland-electric-waiting-for-the-big-battery",
+   "date": "2025-08-07"
+  },
+  "LEAP-B10": {
+   "url": "https://www.electrive.com/2025/07/30/leapmotor-b10-starts-at-29900-euros-in-europe",
+   "date": "2025-07-30"
+  },
+  "LEAP-B10-RS": {
+   "url": "https://www.automotorevija.rs/rubrike/sajamska-akcija-leapmotor",
+   "date": "seen 2026-10-26"
+  },
+  "LEAP-C10-EL": {
+   "url": "https://electrive.com/2024/09/30/leapmotor-t03-and-c10-now-available-to-order-in-europe",
+   "date": "2024-09-30"
+  },
+  "LEAP-C10-FA": {
+   "url": "https://www.fiches-auto.fr/fiche-technique-leapmotor/specs-786-technique-leapmotor-c10.php",
+   "date": "seen 2026-10-26"
+  },
+  "MG-MG5-DE": {
+   "url": "https://www.drivingelectric.com/mg/5/range",
+   "date": "seen 2026-10-26"
+  },
+  "MG-MG5-RS": {
+   "url": "https://www.mgmotor.rs/model/mg5",
+   "date": "seen 2026-10-26"
+  },
+  "MG-MGS5-EL": {
+   "url": "https://www.electrive.net/2025/03/26/mg-bringt-s5-ev-als-nachfolger-des-zs-ev-nach-europa/",
+   "date": "2025-03-26"
+  },
+  "MG-MGS5-AP": {
+   "url": "https://www.automobile-propre.com/voitures/mg-s5-ev/fiche-technique/",
+   "date": "seen 2026-10-26"
+  },
+  "GEELY-EX5-WP": {
+   "url": "https://en.wikipedia.org/wiki/Geely_EX5",
+   "date": "seen 2026-10-26"
+  },
+  "GEELY-EX5-ME": {
+   "url": "https://meilleurelectrique.fr/vehicule/geely/ex5",
+   "date": "seen 2026-10-26"
+  },
+  "GEELY-E5-RS": {
+   "url": "https://www.geelyauto.rs/vozila/e5",
+   "date": "seen 2026-10-26"
+  },
+  "VOLVO-EX60-FA": {
+   "url": "https://www.fiches-auto.fr/fiches-techniques/electriques/f-733-volvo-ex60-p6-374-ch-83-kwh.php",
+   "date": "seen 2026-10-26"
+  },
+  "VOLVO-EX60-EK": {
+   "url": "https://electrek.co/2026/01/21/volvo-reveals-ex60-mid-size-suv-alongside-a-special-off-road-surprise/",
+   "date": "2026-01-21"
+  },
+  "VOLVO-ES90-EL": {
+   "url": "https://www.electrive.com/2025/03/05/world-premiere-of-the-volvo-es90-the-swedes-move-up-to-800-volts",
+   "date": "2025-03-05"
+  },
+  "VOLVO-ES90-IE": {
+   "url": "https://volvocars.com/ie/cars/es90-electric",
+   "date": "seen 2026-10-26"
+  },
+  "VOLVO-EX90-HE": {
+   "url": "https://heise.de/-10667383",
+   "date": "2025-09"
+  },
+  "VOLVO-EX90-EL": {
+   "url": "https://www.electrive.com/2025/09/23/model-year-2026-volvo-ex90-gets-800-volt-technology",
+   "date": "2025-09-23"
+  },
+  "BMW-IX2-FA": {
+   "url": "https://www.fiches-auto.fr/fiches-techniques/electriques/f-341-bmw-ix2-edrive20-204-ch-68-kwh.php",
+   "date": "seen 2026-10-26"
+  },
+  "BMW-I5T-PR": {
+   "url": "https://press.bmwgroup.com/deutschland/article/attachment/T0443471DE/629034",
+   "date": "seen 2026-10-26"
+  },
+  "BMW-IX-PR": {
+   "url": "https://www.press.bmwgroup.com/asia/article/attachment/T0447880EN/627744",
+   "date": "seen 2026-10-26"
+  },
+  "BMW-I7-FA": {
+   "url": "https://www.fiches-auto.fr/fiches-techniques/electriques/f-345-bmw-i7-edrive50-455-ch-106-kwh.php",
+   "date": "seen 2026-10-26"
+  },
+  "BMW-RS-PL": {
+   "url": "https://www.bmw.rs/content/dam/bmw/marketB4R1/bmw_rs/Topics/offers-and-services/pricelist/cenovnik-01-07-/BMW_Cenovnik_jul_2026.pdf.coredownload.pdf",
+   "date": "2026-07-01 (price list)"
+  },
+  "MINI-ACEMAN": {
+   "url": "https://www.largus.fr/actualite-automobile/mini-aceman-2025-le-petit-suv-electrique-en-detail-30033461.html",
+   "date": "seen 2026-10-26"
+  },
+  "MINI-COUNTRYMAN": {
+   "url": "https://www.autoblog.com.uy/2024/06/lanzamiento-mini-countryman-e-y-se-all4.html",
+   "date": "2024-06-25"
+  },
+  "MB-EQB-AE": {
+   "url": "https://cdn1.autoexpress.co.uk/mercedes/eqb/359708/mercedes-eqb-gain-mid-life-update-2023",
+   "date": "seen 2026-10-26"
+  },
+  "MB-EQB-AT": {
+   "url": "https://autotijd.be/en/consumption/mercedes/eqb/250plus-190-hp-4138",
+   "date": "seen 2026-10-26"
+  },
+  "MB-EQE": {
+   "url": "https://www.automobile-propre.com/voitures/mercedes-eqe/fiche-technique",
+   "date": "seen 2026-10-26"
+  },
+  "MB-EQESUV": {
+   "url": "https://www.automobile-propre.com/voitures/mercedes-eqe-suv/fiche-technique",
+   "date": "seen 2026-10-26"
+  },
+  "MB-EQS-AB": {
+   "url": "https://www.autobild.de/artikel/mercedes-eqs-450-test-28413757.html",
+   "date": "2025-11-15"
+  },
+  "MB-EQS118": {
+   "url": "https://mercedesblog.com/mercedes-eqs-suv-gets-a-larger-capacity-battery-for-model-year-2024/",
+   "date": "2024-04"
+  },
+  "MB-EQS-EVKX": {
+   "url": "https://evkx.net/models/mercedes/eqs_suv/eqs_450_4matic_suv/charging/",
+   "date": "2026-10-26"
+  },
+  "MB-EQS-ELECTRIVE": {
+   "url": "https://www.electrive.com/2024/04/11/mercedes-eqs-gets-larger-battery-and-a-new-look",
+   "date": "2024-04-11"
+  },
+  "MB-EQSSUV-RS": {
+   "url": "https://www.mercedes-benz.rs/models/eqs-suv-x296-806-2/",
+   "date": "2026-10-26"
+  },
+  "MB-MAYBACH-US": {
+   "url": "https://mbusa.com/en/vehicles/model/eqs/suv/eqs680z4",
+   "date": "2026-10-26"
+  },
+  "MB-G580-FA": {
+   "url": "https://www.fiches-auto.fr/fiches-techniques/electriques/f-572-mercedes-classe-g-580-eq-587-ch-116-kwh.php",
+   "date": "2026-10-26"
+  },
+  "MB-G-RS": {
+   "url": "https://www.mercedes-benz.rs/models/g-class-n465-24-1/",
+   "date": "2026-10-26"
+  },
+  "MB-CLA": {
+   "url": "https://www.electrive.com/2025/03/13/world-premiere-of-the-mercedes-cla-the-one-litre-car-enters-the-electric-age/",
+   "date": "2025-03-13"
+  },
+  "MB-GLA": {
+   "url": "https://newmobility.news/en/2026/07/30/new-mercedes-gla-unveiled-up-to-657-km-of-range/",
+   "date": "2026-07-30"
+  },
+  "MB-GLB": {
+   "url": "https://www.electrive.com/2025/12/08/world-premiere-of-the-mercedes-glb-the-practical-number-three",
+   "date": "2025-12-08"
+  },
+  "MB-GLC": {
+   "url": "https://www.electrive.com/2025/09/07/world-premiere-of-the-glc-eq-mercedes-electrifies-its-bestseller",
+   "date": "2025-09-07"
+  },
+  "MB-CKLASSE": {
+   "url": "https://heise.de/-11264221",
+   "date": "2026-10-26"
+  },
+  "FORD-PUMA": {
+   "url": "https://media.ford.com/content/fordmedia/feu/en/news/2025/04/12/ford-puma-gen-e-set-to-electrify-the-streets.html",
+   "date": "2025-04-12"
+  },
+  "FORD-PUMA-RS": {
+   "url": "https://ford.rs/brochures_and_pricelists/1456/download?name=Puma+Bev+Cenovnik",
+   "date": "2026-10-26"
+  },
+  "FORD-MY26": {
+   "url": "https://www.fromtheroad.ford.com/eur/en/articles/2026/whats-new-capri-and-explorer-2026",
+   "date": "2026"
+  },
+  "FORD-MY26-IAA": {
+   "url": "https://www.iaa-mobility.com/en/newsroom/news/automotive/ford-upgrades-explorer-and-capri",
+   "date": "2026-10-26"
+  },
+  "FORD-EXPLORER-RS": {
+   "url": "https://ford.rs/brochures_and_pricelists/1451/download?name=Cenovik+Explorer+EV",
+   "date": "2026-10-26"
+  },
+  "FORD-CAPRI-RS": {
+   "url": "https://ford.rs/media_assets/71f46cf3-4d53-4797-b9f9-23aa06ea7030",
+   "date": "2026-10-26"
+  },
+  "FORD-MACHE-EVKX": {
+   "url": "https://evkx.net/de/models/ford/mustang_mach-e/mustang_mach-e_standard_range_rwd/",
+   "date": "2026-10-26"
+  },
+  "FORD-MACHE-RS": {
+   "url": "https://ford.rs/mustang-mach-e",
+   "date": "2026-10-26"
+  },
+  "MAZDA-6E": {
+   "url": "https://www.electrive.com/2026/02/05/testing-the-mazda6e-more-than-just-a-stylish-saloon-alternative/",
+   "date": "2026-02-05"
+  },
+  "MAZDA-6E-RS": {
+   "url": "https://www.mazda.rs/modeli/mazda-6e",
+   "date": "2026-10-26"
+  },
+  "MAZDA-CX6E": {
+   "url": "https://www.electrive.net/2026/01/09/mazda-bringt-chinesischen-elektro-suv-im-sommer-als-cx-6e-nach-europa/",
+   "date": "2026-01-09"
+  },
+  "MAZDA-CX6E-RS": {
+   "url": "https://www.mazda.rs/modeli/mazda-cx-6e",
+   "date": "2026-10-26"
+  },
+  "JAC-E30X": {
+   "url": "https://evkx.net/models/jac/e30x/e30x_41_kwh/specifications",
+   "date": "2026-10-26"
+  },
+  "JAC-EJS4": {
+   "url": "https://www.automobile-propre.com/voitures/jac-e-js4/",
+   "date": "2026-10-26"
+  },
+  "JAC-RS": {
+   "url": "https://jacmotors.rs/putnicka-vozila/cenovnik/",
+   "date": "2026-10-26"
+  },
+  "JMEV-EV3-WIKI": {
+   "url": "https://en.wikipedia.org/wiki/JMEV_EV3",
+   "date": "2026-10-26"
+  },
+  "JMEV-EV3-RS": {
+   "url": "https://www.jmev.rs/ev3.html",
+   "date": "2026-10-26"
+  },
+  "JMEV-ELIGHT": {
+   "url": "https://www.automobile.tn/fr/neuf/jmev/elight/63-kwh-comfort",
+   "date": "2026-10-26"
+  },
+  "JMEV-ELIGHT-RS": {
+   "url": "https://www.jmev.rs/elight.html",
+   "date": "2026-10-26"
+  },
+  "JMEV-EWIND": {
+   "url": "https://www.auto-data.net/fr/jmev-ewind-70.38-kwh-224hp-electric-57609",
+   "date": "2026-10-26"
+  },
+  "JMEV-EWIND-RS": {
+   "url": "https://www.jmev.rs/ewind.html",
+   "date": "2026-10-26"
+  },
+  "BAIC-EU5": {
+   "url": "https://www.autoblog.com.uy/2023/02/lanzamiento-baic-eu5.html",
+   "date": "2023-02"
+  },
+  "BAIC-EU5-RS": {
+   "url": "https://www.baic-auto.rs/products/eu5",
+   "date": "2026-10-26"
+  },
+  "CHANGAN-S05-UK": {
+   "url": "https://www.electrive.com/2026/02/27/changan-automobile-launches-deepal-s05-electric-suv-in-the-uk/",
+   "date": "2026-02-27"
+  },
+  "CHANGAN-S05-IAA": {
+   "url": "https://www.electrive.com/2025/09/09/changan-introduces-deepal-s05-europe-iaa/",
+   "date": "2025-09-09"
+  },
+  "CHANGAN-S05-RS": {
+   "url": "https://changanbalkans.com/rs/wp-content/uploads/2026/09/Deepal-S05-BEV-CENOVNIK-radna-verzija.pdf",
+   "date": "2026-10-26"
+  },
+  "CHANGAN-S07-UK": {
+   "url": "https://www.electrive.com/2025/09/18/changan-deepal-s07-launches-in-uk-from-39990",
+   "date": "2025-09-18"
+  },
+  "CUPRA-RAVAL": {
+   "url": "https://testcoches.es/noticias/esta-es-la-autonomia-real-del-cupra-raval-con-37-kwh-y-52-kwh-cuatro-versiones-y-dos-quimicas-de-bateria/",
+   "date": "2026-10-26"
+  },
+  "CUPRA-RAVAL-EL": {
+   "url": "https://electrive.com/2026/07/15/cupra-launches-cheaper-raval-from-e30000",
+   "date": "2026-07-15"
+  },
+  "DF-BOX-IMP": {
+   "url": "https://chinamotor.rs/dongfeng-box-bs/",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "DF-BOX-ARENA": {
+   "url": "https://www.arenaev.com/dongfeng_nammi_box_42kwh_2024-specs-756.php",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "DF-BOX-HR": {
+   "url": "https://www.autohrvatska.hr/en/box-new-car.aspx",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "DF-E70-IMP": {
+   "url": "https://chinamotor.rs/dongfeng-e70/",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "DF-E70-CNC": {
+   "url": "https://data.carnewschina.com/database/dongfeng-aeolus/dongfeng-aeolus-e70/2023/params",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "DF-E70-PH": {
+   "url": "https://autocar.com.ph/dongfeng-e70-pro-taxico-launch-philippines/",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "DF-S7-IMP": {
+   "url": "https://chinamotor.rs/forthing-s7-bs/",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "DF-S7-CNC": {
+   "url": "https://data.carnewschina.com/database/dongfeng-forthing/star-ocean-s7/2026/params",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "DF-S7-MOTOR1": {
+   "url": "https://it.motor1.com/news/738089/forthing-s7-elettrica-salone-parigi/",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "DF-FRI-IMP": {
+   "url": "https://chinamotor.rs/wp-content/uploads/2026/07/Forthing_Friday_Price_list-1.pdf",
+   "date": "2026-07 (price list)"
+  },
+  "DF-FRI-CNC": {
+   "url": "https://data.carnewschina.com/database/dongfeng-forthing/dongfeng-forthing-friday",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "DF-FRI-EVW": {
+   "url": "https://electricvehicleweb.com/forthing-friday/",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "DF-MH917-WIKI": {
+   "url": "https://en.wikipedia.org/wiki/M-Hero_917",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "DF-MH917-CNC": {
+   "url": "https://data.carnewschina.com/database/m-hero/m-hero-917/2026/params",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "JEEP-AVG-IMP": {
+   "url": "https://www.jeep.rs/content/dam/jeep/rs/price-list/Cenovniik_Jeep_Avenger_MY26.pdf",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "JEEP-AVG-ELECTRIVE": {
+   "url": "https://www.electrive.net/2022/10/17/jeeps-e-suv-avenger-kommt-anfang-2023/",
+   "date": "2022-10-17"
+  },
+  "JEEP-CMP-IMP": {
+   "url": "https://www.jeep.rs/content/dam/jeep/rs/brochure/Cenovnik-Novi-Jeep-Compass-MY26.pdf",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "JEEP-CMP-ELEC": {
+   "url": "https://www.electrifying.com/reviews/jeep-reviews/compass/",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "LEXUS-RZ-IMP": {
+   "url": "https://scene7.toyota.eu/is/content/toyotaeurope/lexus/nmsc/serbia/cross-model/cenovnici/29-9-26/01_RZ_MY26.pdf",
+   "date": "2026-09-29 (price list)"
+  },
+  "LEXUS-RZ-PRESS": {
+   "url": "https://media.lexus.co.uk/?p=82597",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "LEXUS-ES-IMP": {
+   "url": "https://scene7.toyota.eu/is/content/toyotaeurope/lexus/nmsc/serbia/cross-model/cenovnici/29-9-26/01_ES_MY26_EV.pdf",
+   "date": "2026-09-29 (price list)"
+  },
+  "LEXUS-ES-VM": {
+   "url": "https://vision-mobility.de/elektroauto/obere-mittelklasse/lexus-es-350e-voll-elektrisch-59600-euro-reichweite-400-km-227-ps-bestellbar-393470.html",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "LYNK-02-IMP": {
+   "url": "https://www.lynkco-see.com/rs/vozila/02",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "LYNK-02-AUTOTIJD": {
+   "url": "https://autotijd.be/fr/fiches-techniques/lynk-and-co/02/66-kwh-200-kw-4959",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "LYNK-02-ARENA": {
+   "url": "https://m.arenaev.com/lynk_&_co_02__2024-specs-811.php",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "MAS-GT-IMP": {
+   "url": "https://www.maserati.com/rs/sr/dealers/delta-automoto/models/granturismo",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "MAS-GT-ARENA": {
+   "url": "https://m.arenaev.com/maserati_granturismo_folgore_92kwh_2023-specs-amps-362.php",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "MAS-GC-IMP": {
+   "url": "https://www.maserati.com/rs/sr/dealers/delta-automoto/models/grancabrio",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "MAS-GRC-IMP": {
+   "url": "https://www.maserati.com/rs/sr/dealers/delta-automoto/models/grecale",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "MAS-GRC-FICHES": {
+   "url": "https://www.fiches-auto.fr/fiches-techniques/electriques/f-435-maserati-grecale-folgore-550-ch-105-kwh.php",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "MAS-GRC-PAULTAN": {
+   "url": "https://paultan.org/2024/03/18/2024-maserati-grecale-folgore",
+   "date": "2024-03-18"
+  },
+  "PORSCHE-TAYCAN-IMP": {
+   "url": "https://finder.porsche.com/rs/sr-RS/search/taycan?condition=new",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "PORSCHE-TAYCAN-NEWS": {
+   "url": "https://newsroom.porsche.com/dam/jcr:9a30431f-ec72-42e3-b823-41a893db6f1a/S24_0135_fr.pdf",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "PORSCHE-TAYCAN-EVP": {
+   "url": "https://evpowered.co.uk/news/new-porsche-taycan-gets-range-acceleration-and-charging-boosts",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "PORSCHE-MACAN-IMP": {
+   "url": "https://finder.porsche.com/rs/sr-RS/search/macan?condition=new",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "PORSCHE-MACAN-NEWS": {
+   "url": "https://newsroom.porsche.com/en_AU/2024/products/product-highlights-porsche-macan-the-first-all-electric-suv-from-porsche-38004.html",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "SUZUKI-EVIT-IMP": {
+   "url": "https://suzuki-srbija.rs/automobili/evitara",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "SUZUKI-EVIT-UK": {
+   "url": "https://cars.suzuki.co.uk/new-cars/e-vitara/range-and-charging/",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "VOYAH-FREE-IMP": {
+   "url": "https://chinamotor.rs/voyah-free-bs/",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "VOYAH-FREE-VM": {
+   "url": "https://vision-mobility.de/elektroauto/obere-mittelklasse/voyah-free-106-kwh-voll-elektrisch-76990-euro-reichweite-480-km-489-ps-bestellbar-394959.html",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "GAC-RS": {
+   "url": "https://www.magazinauto.com/gac-motor-zvanicno-na-srpskom-trzistu/",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "GAC-V-MONDIAL": {
+   "url": "https://mondial.paris/actualites/auto-news/gac-aion-v-ce-que-lon-sait-du-suv-electrique-attendu-en-france-80988.html",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "GAC-V-MOTEUR": {
+   "url": "https://moteur.ma/fr/guide-achat/actualite/nouveau-gac-aion-v-le-suv-electrique-chinois-qui-veut-bousculer-le-peugeot-e-3008-1873.html",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "GAC-UT-ELECTRIVE": {
+   "url": "https://www.electrive.com/2026/04/14/gac-aion-ut-launches-in-europe-from-e27990/",
+   "date": "2026-04-14"
+  },
+  "GAC-UT-NEWMOB": {
+   "url": "https://newmobility.news/en/2026/04/16/chinese-gacs-aion-ut-enters-europes-crowded-affordable-ev-race/",
+   "date": "2026-04-16"
+  },
+  "TESLA-SX-BASENOR": {
+   "url": "https://www.basenor.com/pages/model-s-charging-specs",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "TESLA-SX-SPAR": {
+   "url": "https://www.sparneuwagen.de/news/europaeisches-tesla-model-s-plaid-mit-optionaler-anhaengerkupplung-yoke-und-250kw-laden/",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "TESLA-SX-EVCS": {
+   "url": "https://evchargingstations.com/chargingnews/tesla-updated-the-model-s-and-model-x-duo/",
+   "date": "2026-10-26 (seen in search)"
+  },
+  "MINI-COOPERE": {
+   "url": "https://wapcar.my/news/newgeneration-2024-mini-cooper-e-debuts--ecocheerful-ev-base-model-with-184-ps290-nm-and-305-km-range-77476",
+   "date": "seen 2026-10-26"
   }
  }
 }

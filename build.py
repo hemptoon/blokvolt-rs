@@ -1008,7 +1008,7 @@ MAP_T = {
     'car_make': 'Marka', 'car_model': 'Model', 'car_choose_make': 'Izaberite marku', 'car_choose_model': 'Izaberite model',
     'car_cons': 'Potrošnja, kWh na 100 km (nije obavezno)', 'car_cons_hint': 'Procena je za mešovitu vožnju; upišite svoju sa putnog računara.',
     'car_opt': 'Auto ima opcioni punjač od {k} kW', 'car_cab': 'Imam svoj Tip 2 kabl', 'car_save': 'Sačuvaj', 'car_del': 'Ukloni auto',
-    'car_note': 'Izbor se čuva samo u ovom pregledaču.', 'car_src': 'Podaci o autima: Open EV Data, Chargeprice, P3, ADAC i proizvođači.',
+    'car_note': 'Izbor se čuva samo u ovom pregledaču.', 'car_src': 'Podaci o autima: Open EV Data, Chargeprice, P3, ADAC, proizvođači i auto-mediji. Za novije modele deo podataka je procena.',
     'car_load_err': 'Spisak automobila trenutno ne može da se učita. Pokušajte ponovo.',
     'per_km': 'RSD/km', 'u_kw': 'kW', 'u_km': 'km', 'u_m': 'm', 'sorted_cheap': 'najjeftinije za vaš auto prvo',
     'cost_pick': 'Izaberite auto — pokazaćemo cenu po kilometru', 'cost_t': 'Za vaš {car}: ≈ {x} RSD/km', 'cost_100': '100 km ≈ {x} RSD',

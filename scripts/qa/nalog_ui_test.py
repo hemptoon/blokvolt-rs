@@ -215,17 +215,18 @@ async def main():
         lc = await pg.evaluate("JSON.parse(localStorage.getItem('bv:car') || 'null')")
         check(lc == {'id': dol, 'cons': 15.5, 'cab': True, 'opt': False}, f'settings: the same car in localStorage for the map: {lc}')
         check(await pg.evaluate("localStorage.getItem('bv:tesla')") is None, 'settings: no "Imam Teslu" key any more')
-        # a model sold in Serbia without the map's data: by name, the DC plug asked, no car for the map
+        # every model sold in Serbia is on the map's list (26.10.2026); "Drugi model" — a typed name, the DC plug asked, no car for the map
         sea = await pg.evaluate(pick, 'Sealion 7')
-        check(sea == 'm:Sealion 7', f'settings: a model without specs is on the list by name ({sea})')
-        await pg.select_option('#nl-model', sea)
-        check(await pg.is_visible('#nl-nokm') and await pg.is_visible('#nl-dc-w') and await pg.is_hidden('#nl-spec'), 'settings: "no cost per km" note and the DC plug')
+        check(bool(sea) and not sea.startswith('m:'), f'settings: BYD Sealion 7 is on the map list ({sea})')
+        await pg.select_option('#nl-model', '*')
+        await pg.fill('#nl-other', 'Han EV')
+        check(await pg.is_visible('#nl-nokm') and await pg.is_visible('#nl-dc-w') and await pg.is_hidden('#nl-spec'), 'settings: "Drugi model": "no cost per km" note and the DC plug')
         await pg.check('#nl-f-car [name=dc][value=ccs2]')
         await pg.click('#nl-f-car [type=submit]')
         await pg.wait_for_timeout(700)
         ja = await pg.evaluate("fetch('/api/nalog/ja').then(r => r.json())")
-        check(ja['user']['car'] == 'BYD Sealion 7' and ja['user']['car_id'] is None and ja['user']['dc'] == 'ccs2'
-              and await pg.evaluate("localStorage.getItem('bv:car')") is None, f'settings: "BYD Sealion 7" by name, no car for the map: {ja["user"].get("car")}')
+        check(ja['user']['car'] == 'BYD Han EV' and ja['user']['car_id'] is None and ja['user']['dc'] == 'ccs2'
+              and await pg.evaluate("localStorage.getItem('bv:car')") is None, f'settings: "BYD Han EV" typed, no car for the map: {ja["user"].get("car")}')
         # a Tesla: "Tesla" follows the car
         await pg.select_option('#nl-make', 'tesla')
         tid = await pg.evaluate(pick, 'Model Y Long Range AWD (Juniper)')

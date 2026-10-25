@@ -1191,6 +1191,6 @@ def cars(dist):
     (dist / 'assets' / 'map' / 'auta.json').write_text(json.dumps({
         'about': 'Električni automobili za „Moj auto“ na mapi www.blokvolt.rs: kapacitet baterije, AC i DC snaga punjenja, procena potrošnje.',
         'attribution': ['Open EV Data (https://github.com/KilowattApp/open-ev-data), MIT', '© 2019 Chargeprice (MIT)', 'P3 Charging Index (2022)',
-                        'ADAC', 'proizvođači'],
+                        'ADAC', 'proizvođači', 'auto-mediji (izvori po modelu: content/data/ev-specs.json u repozitorijumu hemptoon/blokvolt-rs)'],
         'cars': out}, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     return len(out)

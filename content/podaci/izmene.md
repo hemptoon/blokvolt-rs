@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 25.10.2026
+updated: 26.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-25
+modified: 2026-10-26
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 26. oktobar 2026
+
+- [Mapa punjača](/mapa/) i [Moj BlokVolt](/nalog/): u „Moj auto“ je sada 177 verzija električnih automobila umesto 83 — svi modeli koje uvoznici prodaju u Srbiji, među njima Toyota bZ4X i C-HR+, Kia EV4 i EV9, BYD Sealion 7, ceo Mercedes-Benz EQ i modeli Dongfeng, GAC, JAC, JMEV, Voyah i Lynk & Co. Za svaki mapa računa cenu po kilometru. Podaci o bateriji i punjenju su sa stranica proizvođača i iz auto-medija, a za novije i manje poznate modele deo je procena.
+
 ## 25. oktobar 2026
 
 - [Mapa punjača](/mapa/): 122 nova punjača iz dopune tima, najviše u hotelima, restoranima, tržnim centrima i na pumpama širom Srbije — sada 394 punjača na mapi. Za 26 je izvor sajt ili stranica vlasnika mesta, mreže ili turističke organizacije (među njima EKO Sopot, Žednik i Ćuprija na autoputu, garaža Pinki, aerodrom Nikola Tesla, Lidl Kaluđerica, Auto centar Olimp i Lesko Park sa brzim DC punjačima i više hotela); ostali imaju oznaku „Nije potvrđeno“ dok ih ne potvrdi spisak mreže, vlasnik mesta ili prijava vozača ([odakle su podaci](/pomoc/odakle-su-podaci/)).
