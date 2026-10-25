@@ -1,0 +1,28 @@
+{% from '_icons.html' import ic %}
+{# Electric cars (docs/RUNBOOK.md 3.32): the brand logo, one model card, and the brand card that opens in place on
+   /elektricni-automobili/. The same fields for every brand and every model; data from build.py (b.cards). #}
+{% macro blogo(b, cls='') %}{% if b.logo %}<span class="lg w am-logo{% if b.logo_dark %} dark{% endif %}{% if cls %} {{ cls }}{% endif %}" aria-hidden="true"><img src="{{ b.logo }}" alt="" loading="lazy" decoding="async"></span>{% else %}<span class="lg mono{% if cls %} {{ cls }}{% endif %}" aria-hidden="true" translate="no">{{ b.name|mono }}</span>{% endif %}{% endmacro %}
+
+{% macro model_card(m, b, tag='li') %}<{{ tag }} class="amc{% if m.lead %} lead{% endif %}{% if not m.price %} none{% endif %}">
+<span class="amc-ph{% if not m.img %} empty{% endif %}">{% if m.img %}{{ m.img|safe }}{% elif b.logo %}<img class="amc-lg" src="{{ b.logo }}" alt="" loading="lazy" decoding="async">{% else %}{{ ic('car') }}{% endif %}{% if m.lead %}<span class="amc-tag">Najniža cena</span>{% endif %}</span>
+<span class="amc-b"><b class="amc-n" translate="no">{{ m.name }}</b>{% if m.ver %}<span class="amc-v">{{ m.ver }}</span>{% endif %}
+{% if m.price %}<span class="amc-row"><span class="amc-l">Cena od</span><span class="amc-p">{{ m.price|safe }}</span></span>
+<span class="amc-row sub"><span class="amc-l">Posle subvencije</span><span class="amc-a">{{ m.after|safe }}</span></span>
+{% else %}<span class="amc-row"><span class="amc-l">Cena</span><span class="amc-p muted">{{ m.price_txt }}</span></span>{% if m.note %}<span class="amc-note">{{ m.note }}</span>{% endif %}{% endif %}
+<span class="amc-src">{% if m.src_url %}<a href="{{ m.src_url }}" rel="noopener nofollow" target="_blank">{{ m.src_kind }}{{ ic('ext') }}</a>{% else %}{{ m.src_kind }}{% endif %}{% if m.src_date %}<small>{{ m.src_date }}</small>{% endif %}</span></span>
+</{{ tag }}>{% endmacro %}
+
+{% macro brand_card(b) %}<details class="frow amb" id="m-{{ b.slug }}" data-row data-marka="{{ b.slug }}" data-q="{{ b.q }}" data-grad="{{ b.grad }}" data-cena="{{ b.bands }}">
+<summary class="row">{{ blogo(b, 'am-lg') }}<h3 translate="no">{{ b.name }}</h3><span class="meta"><span class="sub">{% if b.importer %}<span translate="no">{{ b.importer_short }}</span>{% else %}<span>{{ b.importer_short }}</span>{% endif %}{% if b.cities %}<span class="amb-c">{{ b.cities_short }}</span>{% endif %}</span>{% if b.models_short %}<span class="amb-m" translate="no">{{ b.models_short }}</span>{% endif %}</span><span class="val">{% if b.min %}<span class="amb-p"><small>od</small> {{ b.min_txt }}</span>{% else %}<small>cena nije objavljena</small>{% endif %}<small>{{ b.n_models|plural('model', 'modela', 'modela') }}</small></span></summary>
+<div class="fmore">
+{% if b.cards %}<div class="offers" data-offers><div class="of-head"><div class="of-terms"><span class="term">{{ ic('info') }}Cene uvoznika pre subvencije, sa izvorom i datumom</span></div>{% if b.cards|length > 1 %}<div class="of-nav"><span>{{ b.cards|length|plural('model', 'modela', 'modela') }}</span><button type="button" class="of-prev" data-rail-prev aria-label="Prethodni modeli">{{ ic('chev') }}</button><button type="button" data-rail-next aria-label="Sledeći modeli">{{ ic('chev') }}</button></div>{% endif %}</div>
+<div class="rail-wrap"><ul class="rail amc-rail" role="list">{% for m in b.cards %}{{ model_card(m, b) }}{% endfor %}</ul></div></div>{% endif %}
+<ul class="ftiles" role="list">
+<li class="ftile{{ ' yes' if b.importer else '' }}"><span class="ti">{{ ic('firm') }}</span><span class="tx"><span>{{ 'Uvoznik' if b.importer or not b.seller else 'Ovlašćeni prodavac' }}</span><b>{% if b.importer %}<span translate="no">{{ b.importer_short }}</span>{% elif b.seller %}<span translate="no">{{ b.seller }}</span>{% else %}nije naveden{% endif %}</b></span></li>
+<li class="ftile amb-ct{{ ' yes' if b.cities else '' }}"><span class="ti">{{ ic('pin') }}</span><span class="tx"><span>Saloni</span><b>{% if b.cities %}{{ b.cities|join(', ') }}{% else %}{{ b.no_cities }}{% endif %}</b></span></li>
+<li class="ftile{{ ' yes' if b.srv_url else '' }}"><span class="ti">{{ ic('tool') }}</span><span class="tx"><span>Servis</span><b>{% if b.srv_url %}<a href="{{ b.srv_url }}">na mapi servisa</a>{% elif b.dealers_url %}<a href="{{ b.dealers_url }}" rel="noopener nofollow" target="_blank">lokator na sajtu marke</a>{% else %}kod prodavca{% endif %}</b></span></li>
+<li class="ftile{{ ' yes' if b.used_url else '' }}"><span class="ti">{{ ic('search') }}</span><span class="tx"><span>Polovni</span><b>{% if b.used_url %}<a href="{{ b.used_url }}" rel="noopener nofollow" target="_blank">u oglasima</a>{% else %}<a href="/elektricni-automobili/polovni/">kako se kupuje</a>{% endif %}</b></span></li>
+</ul>
+<div class="fm-foot"><span class="fm-meta"><span>Provereno {{ b.verified }}</span></span><span class="fm-act">{% if b.site %}<a class="btn" href="{{ b.site }}" rel="noopener nofollow" target="_blank">{{ ic('ext') }}<span translate="no">{{ b.domain }}</span></a>{% endif %}<a class="btn dark" href="{{ b.url }}"><span>Sve o marki</span> <span translate="no">{{ b.name }}</span>{{ ic('arrow') }}</a></span></div>
+</div>
+</details>{% endmacro %}

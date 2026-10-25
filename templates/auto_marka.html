@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% from '_macros.html' import sources as src_block, news_cards %}
 {% from '_icons.html' import ic %}
+{% from '_auto_cards.html' import model_card %}
 {# /elektricni-automobili/<slug>/ — one brand: importer, showrooms, electric models and prices (docs/RUNBOOK.md 3.32).
    The same blocks and the same rules for every brand. #}
 {% block jsonld %}<script type="application/ld+json">{
@@ -28,10 +29,7 @@
 {% endif %}</div>
 
 {% if b.all_models %}<div class="sec" id="modeli"><div class="sec-head"><h2>Električni modeli i cene</h2>{% if b.priced %}<a href="/podaci/cene-elektricnih-automobila/">Sve marke →</a>{% endif %}</div>
-<div class="tw stack"><table><thead><tr><th>Model</th><th>Cena od</th><th>Posle subvencije {{ sub }}</th><th>Izvor</th></tr></thead><tbody>
-{% for r in b.priced %}<tr><td data-label="Model">{{ r.model_cell|safe }}</td><td data-label="Cena od">{{ r.price_cell|safe }}</td><td data-label="Posle subvencije {{ sub }}">{{ r.after_cell|safe }}</td><td data-label="Izvor"><a href="{{ r.url }}" rel="noopener nofollow">{{ r.kind }}</a><small>{{ r.date_txt }}</small></td></tr>
-{% endfor %}{% for m in b.unpriced %}<tr><td data-label="Model">{{ m.model_cell|safe }}</td><td data-label="Cena od"><span class="muted">{{ m.price_txt }}</span>{% if m.price_note %}<small>{{ m.price_note }}</small>{% endif %}</td><td data-label="Posle subvencije {{ sub }}"><span class="muted">—</span></td><td data-label="Izvor">{% if m.url %}<a href="{{ m.url }}" rel="noopener nofollow">{{ m.kind }}</a>{% else %}{{ m.kind }}{% endif %}<small>{{ m.date_txt }}</small></td></tr>
-{% endfor %}</tbody></table></div>
+<ul class="amc-grid" role="list">{% for m in b.cards %}{{ model_card(m, b) }}{% endfor %}</ul>
 <p class="note">{{ b.table_note }}</p>
 </div>{% endif %}
 

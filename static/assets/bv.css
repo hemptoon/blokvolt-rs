@@ -1736,3 +1736,56 @@ html.nl-in .nl-v-out,html:not(.nl-in) .nl-v-in{display:none!important}
 .tw td .am-b{display:flex;align-items:center;gap:12px}
 td .am-b .lg.am-logo{width:88px;height:44px}
 @media (max-width:640px){td .am-b .lg.am-logo{width:72px;height:36px}}
+/* electric cars: brand cards on /elektricni-automobili/ and model cards (templates/_auto_cards.html, RUNBOOK 3.32) */
+details.frow.amb>summary.row{grid-template-columns:auto minmax(0,1fr) auto auto;padding:14px 16px}
+details.frow.amb>summary.row>.lg.am-logo{width:88px;height:44px;align-self:center}
+.amb .meta .sub{font-size:13.5px}
+.amb-c::before{content:" · "}
+details.frow.amb>summary.row>.val>.amb-p small{display:inline;font-size:13px;font-weight:550;margin-right:2px;color:var(--mut)}
+.amb-m{display:block;font-size:13px;color:var(--mut2);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+details.frow.amb>summary.row>.val{font-size:17px;font-weight:720;letter-spacing:-.01em}
+.amb .fmore{padding-left:120px}
+.amc-rail>li.amc{flex:0 0 236px;padding:0;min-height:0;overflow:hidden}
+.amc{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:0}
+.amc.lead,.rail>li.amc.lead{background:#fff;border-color:var(--volt2);box-shadow:0 0 0 1px var(--volt2) inset}
+details.frow.amb{scroll-margin-top:72px}
+.amc-ph{position:relative;display:grid;place-items:center;aspect-ratio:360/200;background:linear-gradient(180deg,#F7F7F2,#EEEDE5);border-bottom:1px solid var(--line)}
+.amc-ph>img.evm-i{width:92%;height:auto;max-height:94%;object-fit:contain}
+.amc-ph.empty>img.amc-lg{width:44%;max-height:40%;object-fit:contain;opacity:.22;filter:grayscale(1)}
+.amc-ph.empty>svg{width:34px;height:34px;color:var(--mut2);opacity:.5}
+.amc-tag{position:absolute;left:8px;top:8px;font-size:11.5px;font-weight:680;line-height:1;padding:5px 8px;border-radius:999px;background:var(--volt);color:var(--vink)}
+.amc-b{display:flex;flex-direction:column;gap:2px;padding:11px 13px 12px;flex:1}
+.amc-n{font-size:15px;font-weight:680;line-height:1.25;color:var(--ink)}
+.amc-v{font-size:12.5px;line-height:1.35;color:var(--mut);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.amc-row{display:flex;flex-direction:column;margin-top:8px}
+.amc-row+.amc-row{margin-top:6px}
+.amc-l{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--mut2)}
+.amc-p{font-size:20px;font-weight:740;letter-spacing:-.015em;line-height:1.2;color:var(--ink)}
+.amc-p.muted{font-size:15px;font-weight:600;color:var(--mut)}
+.amc-a{font-size:16px;font-weight:700;line-height:1.25;color:var(--ok)}
+.amc-p small,.amc-a small,.amc-note{display:block;font-size:12px;font-weight:500;line-height:1.35;letter-spacing:0;color:var(--mut);margin-top:2px}
+.amc-src{margin-top:auto;padding-top:10px;font-size:12.5px;color:var(--mut)}
+.amc-src::before{content:"";display:block;height:1px;margin:0 0 8px;background:var(--line)}
+.amc-src a{color:var(--ink2);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.amc-src a:hover{text-decoration:underline}
+.amc-src a svg{width:13px;height:13px}
+.amc-src small{display:block;font-size:12px;color:var(--mut2);margin-top:1px}
+.amc-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:12px}
+.amb .ftile b a{color:inherit;text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:3px}
+.amb .ftile .tx b{overflow-wrap:anywhere}
+.amb .ftiles{grid-template-columns:minmax(0,1fr) minmax(0,2fr) minmax(0,1fr) minmax(0,1fr)}
+.amb .ftile.amb-ct .tx b{font-size:13.5px;font-weight:620;line-height:1.4}
+@media (max-width:900px){.amb .ftiles{grid-template-columns:repeat(2,minmax(0,1fr))}.amb .ftile.amb-ct{grid-column:1 / -1;order:-1}}
+.amb-list .list-count{margin-top:0}
+@media (max-width:640px){
+ details.frow.amb>summary.row{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"lg name chev" "lg meta meta" "lg val val";padding:12px 14px}
+ details.frow.amb>summary.row>.lg.am-logo{width:64px;height:32px;align-self:start;margin-top:2px}
+ .amb-m{white-space:normal}
+ details.frow.amb>summary.row>.val{font-size:16px}
+ details.frow.amb>summary.row>.val>small{display:inline;margin-left:6px}
+ .amb .fmore{padding-left:14px}
+ .amc-rail>li.amc{flex-basis:74%}
+ .amc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .amc-p{font-size:18px}
+}
+@media (max-width:350px){.amc-grid{grid-template-columns:1fr}}

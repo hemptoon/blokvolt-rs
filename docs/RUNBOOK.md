@@ -1809,11 +1809,21 @@ Two data pages go with the map (since 25.10.2026, `next_check` 15.01.2027, reche
 The owner asked (24.10.2026) for a full section on every EV brand that can be bought officially in Serbia and on every
 place to buy one unofficially (classifieds, the used market, imports). Pages:
 
-- `/elektricni-automobili/` — the hub (`templates/auto_index.html`): one table of the brands with official sales, A–Z,
-  same columns for every brand (importer, number of electric models, the lowest public price, showroom cities), then
+- `/elektricni-automobili/` — the hub (`templates/auto_index.html`): the brands with official sales, A–Z, as cards that
+  open in place (since 25.10.2026, the owner asked for "раскрывающиеся карточки по каждой марке/модели"; macros in
+  `templates/_auto_cards.html`, same pattern as the firm cards of 3.7b). Closed: logo, name, importer, showroom cities,
+  model names, "od <lowest price>" and the number of models. Open, the same blocks for every brand: a rail of model
+  cards (photo from `ev-foto.json` or the faded brand logo, name, cheapest published version, price before and after
+  the subsidy with the notes of the price table, source link and date; "Najniža cena" on the cheapest when there are
+  two or more priced models — a fact, not a rating), four tiles (importer or authorised seller, showroom cities,
+  service map or dealer locator, used ads or the used-car guide), the brand site and the brand page. Search (brand,
+  model, importer, city), a showroom-city filter (cities with 2+ brands) and price chips (a brand matches when any priced
+  model is under 30.000 €, 30.000–50.000 € or over 50.000 € before the subsidy). `#m-<slug>` opens the card
+  (`bv.js`, event `brand_card_open`); model photo credits are listed at the bottom of the hub. Then
   announced brands, brands without an importer, electric-van-only brands, the routes to a used or imported car, the
   "before buying" guides, questions.
-- `/elektricni-automobili/<slug>/` — one page per brand (`templates/auto_marka.html`): importer, models and prices,
+- `/elektricni-automobili/<slug>/` — one page per brand (`templates/auto_marka.html`): importer, models and prices (the
+  same model cards in a grid, since 25.10.2026),
   showrooms, short notes, the used market, news that name the brand (title or lead), sources. Brands without an
   importer get a page only when people search for them (Tesla); the others are a line on the hub (`bez_stranice`).
 - `/elektricni-automobili/polovni/` — the article `content/podaci/polovni-elektricni-automobili.md` (front matter `path`):

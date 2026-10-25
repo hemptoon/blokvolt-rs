@@ -1600,6 +1600,25 @@ for _b in AUTO['brands']:
                            for x in b['priced'] + b['unpriced'] if x.get('foto')})
     b['credits'] = [dict(zip(('name', 'au', 'lic', 'licurl', 'page'), c)) for c in b['credits']]
     b['src_items'] = [dict(x) for x in b.get('sources', [])]   # the price sources are linked in the model table
+    # model cards (templates/_auto_cards.html): the same fields for every model of every brand — photo if we have one,
+    # name, cheapest published version, price before and after the subsidy with the notes of the price table, source
+    b['cards'] = []
+    for r in b['priced']:
+        b['cards'].append({'img': ev_rows.thumb(r['brand'], r['model'], r['name']) if r.get('foto') else '', 'name': r['name'],
+                           'ver': r['ver'], 'price': r['price_cell'], 'after': r['after_cell'], 'src_url': r['url'],
+                           'src_kind': r['kind'], 'src_date': re.sub('^' + re.escape(r['kind']) + r',?\s+', '', r['date_txt']), 'base': r['base']})
+    for m in b['unpriced']:
+        _img = m['model_cell'].split('<span class="evm-t">')[0]
+        b['cards'].append({'img': _img[_img.find('<img'):] if '<img' in _img else '', 'name': m['name'], 'ver': '',
+                           'price': '', 'price_txt': m['price_txt'], 'note': m['price_note'], 'after': '', 'src_url': m['url'],
+                           'src_kind': m['kind'], 'src_date': m['date_txt'], 'base': None})
+    if b['cards'] and b['cards'][0]['base'] is not None and len(b['priced']) > 1:
+        b['cards'][0]['lead'] = True
+    # filters on the hub: price band of each priced model before the subsidy, showroom cities, words to search
+    b['bands'] = ' '.join(sorted({'a' if r['base'] < 30000 else 'b' if r['base'] < 50000 else 'c' for r in b['priced']}))
+    b['grad'] = ' '.join(re.sub(r'[^a-z0-9]+', '-', fold(c).lower()).strip('-') for c in b['cities'])
+    b['q'] = fold(' '.join([b['name']] + b.get('aliases', []) + [x['name'] for x in b['all_models']]
+                           + [b.get('importer') or '', b.get('seller') or ''] + b['cities'])).lower()
     AUTO_BRANDS.append(b)
 AUTO_BRANDS.sort(key=lambda x: fold(x['name']))
 # the service map (/servisi/, RUNBOOK 3.31) filtered by the brand: ?marka=<the brand as the map writes it>; Tesla: the
@@ -1670,8 +1689,9 @@ for b in AUTO_BRANDS:
     b.setdefault('fact4_label', 'Na tržištu Srbije' if b.get('since') else 'Provereno')
     b.setdefault('fact4', b.get('since') or b['verified'])
     b.setdefault('table_note', '„Cena od“ je najniža cena koju uvoznik objavljuje, po pravilu sa PDV-om. Kada uvoznik objavi cenu '
-                               'već umanjenu za subvenciju, u tabeli je cena pre subvencije, a objavljena cena stoji ispod.' if b['priced']
-                  else 'Cene za Srbiju nisu objavljene na sajtu marke. Kada se pojave, biće u tabeli sa izvorom i datumom.')
+                               'već umanjenu za subvenciju, na kartici je cena pre subvencije, a objavljena cena stoji ispod. '
+                               f"„Posle subvencije“ je ta cena umanjena za {AUTO_SUB}." if b['priced']
+                  else 'Cene za Srbiju nisu objavljene na sajtu marke. Kada se pojave, biće ovde sa izvorom i datumom.')
     b['used_url'] = b.get('used_url') or ''
     b.setdefault('used_title', 'Polovni i uvezeni')
     b.setdefault('used_text', _ATT.get('used_default', '').replace('{name}', f'<span translate="no">{b["name"]}</span>'))
@@ -1698,7 +1718,14 @@ for q in AUTO.get('faq', []):
                  '{n_priced_modela}': sr_plural(len(_EVR), 'model', 'modela', 'modela')}.items():
         a = a.replace(k, v)
     AUTO_FAQ.append({'q': q['q'], 'a': a})
-render('auto_index.html', '/elektricni-automobili/', official=AUTO_OFFICIAL, announced=AUTO_ANNOUNCED, noimp=AUTO_NOIMP, lcv=AUTO_LCV,
+_AC = {}
+for _x in AUTO_OFFICIAL:
+    for _c in _x['cities']:
+        _AC[_c] = _AC.get(_c, 0) + 1
+AUTO_CITY_OPTS = [(re.sub(r'[^a-z0-9]+', '-', fold(c).lower()).strip('-'), c) for c, n in sorted(_AC.items(), key=lambda t: (-t[1], fold(t[0]))) if n > 1]
+AUTO_CREDITS = sorted({tuple(c.items()) for _x in AUTO_OFFICIAL for c in _x['credits']}, key=lambda t: fold(dict(t)['name']))
+AUTO_CREDITS = [dict(c) for c in AUTO_CREDITS]
+render('auto_index.html', '/elektricni-automobili/', city_opts=AUTO_CITY_OPTS, credits=AUTO_CREDITS, sub=AUTO_SUB, official=AUTO_OFFICIAL, announced=AUTO_ANNOUNCED, noimp=AUTO_NOIMP, lcv=AUTO_LCV,
        before=AUTO_BEFORE, faq=AUTO_FAQ, checked=AUTO['checked'], next_check=AUTO['next_check'], sources=AUTO.get('sources', []),
        cheapest={'price': ev_rows.eur(_cheap['base']), 'name': _cheap['name']}, reg=_reg, used=_ATT.get('used', {}), texts=_ATT,
        h1='Električni automobili u Srbiji', lead=_ATT['hub_lead'],
@@ -2326,7 +2353,10 @@ def build_search(prefix=''):
         if kind_of(url) != 'hub':
             for card in main.select('a.tile, a.row, a.ncard, a.hit'):
                 card.decompose()
-        h = ' · '.join(x.get_text(' ', strip=True) for x in main.find_all(['h2', 'h3', 'summary']) if not x.find_parent('a'))[:400]
+        # the brand cards of /elektricni-automobili/ (details.amb) are list rows, not headings of the hub
+        h = ' · '.join(x.get_text(' ', strip=True) for x in main.find_all(['h2', 'h3', 'summary'])
+                     if not x.find_parent('a') and not x.find_parent('details', class_='amb')
+                     and not (x.name == 'summary' and x.parent is not None and 'amb' in (x.parent.get('class') or [])))[:400]
         body = re.sub(r'\s+', ' ', main.get_text(' ', strip=True))
         e = {'u': url, 't': h1.get_text(' ', strip=True) if h1 else t, 'd': clip(d, 200), 's': sec, 'h': h[:400], 'b': body[:1200], 'k': kind_of(url)}
         if e['k'] == 'vest' and _NEWS_DT.get(re.sub(r'^/(en|ru)(?=/)', '', url)):

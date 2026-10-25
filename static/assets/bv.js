@@ -236,12 +236,14 @@
   var frows = d.querySelectorAll('details.frow');
   [].forEach.call(frows, function (el) {
     el.addEventListener('toggle', function () {
-      if (el.open) window.bvTrack('firm_card_open', { firm: el.getAttribute('data-firm') || '', list: location.pathname });
+      if (!el.open) return;
+      if (el.hasAttribute('data-marka')) window.bvTrack('brand_card_open', { brand: el.getAttribute('data-marka'), list: location.pathname });
+      else window.bvTrack('firm_card_open', { firm: el.getAttribute('data-firm') || '', list: location.pathname });
     });
   });
   function openFirmFromHash() {
     var id = (location.hash || '').slice(1);
-    if (!/^firma-[a-z0-9-]+$/.test(id)) return;
+    if (!/^(firma|m)-[a-z0-9-]+$/.test(id)) return;   // m-<slug>: a brand card on /elektricni-automobili/
     var el = d.getElementById(id);
     if (!el || el.tagName !== 'DETAILS') return;
     el.open = true;

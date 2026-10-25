@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% from '_macros.html' import pagehead, sources as src_block %}
 {% from '_icons.html' import ic %}
-{% macro blogo(b, cls='') %}{% if b.logo %}<span class="lg w am-logo{% if b.logo_dark %} dark{% endif %}{% if cls %} {{ cls }}{% endif %}" aria-hidden="true"><img src="{{ b.logo }}" alt="" loading="lazy" decoding="async"></span>{% else %}<span class="lg mono{% if cls %} {{ cls }}{% endif %}" aria-hidden="true" translate="no">{{ b.name|mono }}</span>{% endif %}{% endmacro %}
+{% from '_auto_cards.html' import blogo, brand_card %}
 {# /elektricni-automobili/ — every brand with official sales of electric cars in Serbia (docs/RUNBOOK.md 3.32).
    Same columns for every brand, A–Z; data: content/data/automobili.json + content/data/ev-modeli.json. #}
 {% block jsonld %}<script type="application/ld+json">{
@@ -22,10 +22,18 @@
 </div>
 
 <div class="sec" id="marke"><div class="sec-head"><h2>Marke, uvoznici i saloni</h2><a href="/podaci/cene-elektricnih-automobila/">Cene svih modela →</a></div>
-<p class="note">Abecedno. „Cena od“ je najniža javna cena električnog modela kod uvoznika, pre subvencije. Saloni: gradovi sa salonom ili ovlašćenim prodavcem.</p>
-<div class="tw stack am"><table><thead><tr><th>Marka</th><th>Uvoznik</th><th class="num">Modeli</th><th class="num">Cena od</th><th>Saloni</th></tr></thead><tbody>
-{% for b in official %}<tr id="m-{{ b.slug }}"><td data-label="Marka"><a class="am-b" href="{{ b.url }}">{{ blogo(b, 'am-lg') }}<span><b translate="no">{{ b.name }}</b>{% if b.models_short %}<small translate="no">{{ b.models_short }}</small>{% endif %}</span></a></td><td data-label="Uvoznik">{% if b.importer %}<span translate="no">{{ b.importer_short }}</span>{% else %}{{ b.importer_short }}{% endif %}</td><td data-label="Modeli" class="num">{{ b.n_models }}</td><td data-label="Cena od" class="num">{% if b.min %}<b>{{ b.min_txt }}</b>{% else %}<span class="muted">nije objavljena</span>{% endif %}</td><td data-label="Saloni">{% if b.cities %}{{ b.cities_short }}{% else %}<span class="muted">{{ b.no_cities }}</span>{% endif %}</td></tr>
-{% endfor %}</tbody></table></div>
+<p class="note">Abecedno. Otvorite marku: modeli sa cenom pre i posle subvencije, izvor i datum, uvoznik, gradovi sa salonom, servis i polovni.</p>
+<div data-filter-list class="amb-list">
+<div class="list-tools">
+<div class="search-box">{{ ic('search') }}<input class="input" data-f-q type="search" placeholder="Marka, model ili uvoznik" aria-label="Pretraga marki i modela" autocomplete="off"></div>
+<select class="select" data-f-sel="grad" aria-label="Grad sa salonom"><option value="">Svi gradovi</option>{% for slug, name in city_opts %}<option value="{{ slug }}">{{ name }}</option>{% endfor %}</select>
+</div>
+<div class="chips" style="margin:0 0 14px"><button class="chip" type="button" data-f-chip="cena:" aria-pressed="true">Sve cene</button><button class="chip" type="button" data-f-chip="cena:a" aria-pressed="false">Model do 30.000 €</button><button class="chip" type="button" data-f-chip="cena:b" aria-pressed="false">30.000–50.000 €</button><button class="chip" type="button" data-f-chip="cena:c" aria-pressed="false">Preko 50.000 €</button></div>
+<p class="list-count" data-f-count data-tpl="Prikazano: {n} od {all}">{{ official|length }}</p>
+<div class="rows">{% for b in official %}{{ brand_card(b) }}
+{% endfor %}</div>
+<p class="empty" data-f-empty hidden>Nema marki za ovaj izbor.</p>
+</div>
 <p class="note">Provereno {{ checked }}. Cene se proveravaju jednom mesečno, sa izvorom i datumom: <a class="lnk" href="/podaci/cene-elektricnih-automobila/">cene električnih automobila</a>. Marka ne plaća mesto na spisku, a redosled je abecedni.</p>
 {% if texts.no_bev %}<p class="note">{{ texts.no_bev }}</p>{% endif %}{% if texts.unverified %}<p class="note">{{ texts.unverified }}</p>{% endif %}
 </div>
@@ -68,6 +76,9 @@
 {% endfor %}</div>
 
 <div class="sec">
+{% if credits %}<details class="src"><summary>Fotografije modela: autori i licence ({{ credits|length|plural('fotografija', 'fotografije', 'fotografija') }})</summary><p>Fotografije su sa Wikimedia Commonsa, pod slobodnim licencama; pozadina je uklonjena, a veličina ujednačena. Ilustrativne su: auto na slici može biti druga verzija modela.</p>
+<ul>{% for c in credits %}<li><b>{{ c.name }}</b> — {{ c.au }}, <a href="{{ c.licurl }}" rel="nofollow noopener">{{ c.lic }}</a>, <a href="{{ c.page }}" rel="nofollow noopener">Wikimedia Commons</a></li>
+{% endfor %}</ul></details>{% endif %}
 {{ src_block(sources) }}
 <p class="upd">Provereno {{ checked }} · sledeća provera {{ next_check }} · <a href="/ispravka/">Prijavite grešku</a></p>
 </div>
