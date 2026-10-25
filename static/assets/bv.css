@@ -530,6 +530,42 @@ details.frow>summary.row::after{grid-area:chev;align-self:center}
 .nr-apps{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
 .nr-apps[hidden]{display:none}
 .nr-note{margin:12px 0 0;font-size:12px;color:var(--mut)}
+/* "Punjači na putu" (24.10.2026) */
+.rt-btn{display:flex;align-items:center;gap:7px;width:100%;min-height:38px;margin-top:8px;padding:7px 12px;border:1px dashed var(--line2);border-radius:12px;background:#fff;font:inherit;font-size:14px;color:var(--ink2);cursor:pointer;text-align:left}
+.rt-btn svg{width:18px;height:18px;flex:none;color:var(--mut)}
+.rt-btn .rt-l{font-weight:650;color:var(--ink);white-space:nowrap}
+.rt-btn .rt-v{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rt-btn:hover{border-color:var(--ink);color:var(--ink)}
+.rt-btn.is-set{border-style:solid;background:var(--voltbg);border-color:#E1F0A6}
+.rt-btn.is-set svg{color:var(--voltd)}
+.rtp h2{margin-right:44px}
+.rt-form{display:grid;gap:10px;margin:4px 0 6px}
+.rt-f{position:relative}
+.rt-f label{display:block;margin:0 0 4px;font-size:13px;font-weight:650;color:var(--ink2)}
+.rt-in{position:relative}
+.rt-in .input{width:100%;padding-right:44px}
+.rt-loc{position:absolute;right:4px;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:36px;height:36px;padding:0;border:0;border-radius:10px;background:none;color:var(--mut);cursor:pointer}
+.rt-loc:hover,.rt-loc:focus-visible{color:var(--ink);background:var(--surface2)}
+.rt-loc svg{width:18px;height:18px}
+.rt-sug{position:absolute;left:0;right:0;top:100%;z-index:4;margin:4px 0 0;padding:4px;list-style:none;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px -12px rgba(13,17,26,.35)}
+.rt-sug[hidden]{display:none}
+.rt-sug button{display:flex;align-items:flex-start;gap:8px;width:100%;padding:9px 10px;border:0;border-radius:8px;background:none;font:inherit;font-size:14px;line-height:1.35;color:var(--ink);text-align:left;cursor:pointer}
+.rt-sug button:hover,.rt-sug button:focus-visible{background:var(--surface2);outline:0}
+.rt-sug svg{width:16px;height:16px;flex:none;margin-top:2px;color:var(--mut)}
+.rt-go{display:flex;width:100%}
+.rt-go svg{width:18px;height:18px;color:var(--volt)}
+.rt-sum{margin:12px 0 2px;font-size:15px;color:var(--ink2)}
+.rt-sum b{font-size:17px;color:var(--ink)}
+.rt-chips{margin:8px 0 2px}
+.rt-row{grid-template-columns:minmax(0,1fr) auto}
+.rt-gap{display:flex;gap:8px;align-items:flex-start}
+.rt-gap svg{width:18px;height:18px;flex:none;margin-top:1px;color:var(--warn)}
+.rt-dest{display:flex;width:100%;margin:12px 0 0}
+.rt-dest svg{width:16px;height:16px}
+.rt-attr a{color:var(--mut)}
+.rt-mapbtn{display:none}
+@media (max-width:900px){.rt-mapbtn{display:flex;width:100%;margin:10px 0 2px}.rt-mapbtn svg{width:18px;height:18px}}
+@media (max-width:480px){.rt-btn .rt-v{display:none}.rt-btn.is-set .rt-v{display:inline}.rt-btn.is-set .rt-l{display:none}}
 .cbox .price .pc{font-size:13px;font-weight:600;color:var(--mut);letter-spacing:0}
 .cbox ul.plines{margin:6px 0 2px}
 .cbox ul.plines li{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;margin:3px 0;padding:2px 0;border-bottom:1px dashed var(--line)}

@@ -955,6 +955,18 @@ Since 06.10.2026 (test: `scripts/qa/map_v2_test.py`, with the three tests above)
 - **Drivers' short answers**: after „Radi, uz problem“ / „Ne radi“ a reason chip (`why`); then three optional questions
   (cable on the charger / own, parking free / paid, hours 0–24 / limited) → `POST /api/stanica/<id>/podatak`
   (D1 table `facts`; shown as „Vozači javljaju“ when two different drivers agree within 60 days).
+- **„Punjači na putu“** (owner's decision 24.10.2026; `map.js` rt*, the same in `scripts/evomap/evomap.src.js`): the
+  reader types a destination (and a start, empty = their location); places come from Photon (`photon.komoot.io`, `lang=en`,
+  `default` on /ru/), the route from OSRM on the FOSSGIS server (`routing.openstreetmap.de/routed-car`, light use only,
+  attribution and „Ispravi mapu“ link required). Both hosts are in the CSP `connect-src` (build.py). Rows: DC ≥ 50 kW, not
+  „Ne radi“, not Tesla-only (unless „Imam Teslu“ / a Tesla chosen on evolako.rs), usable by the chosen car; within 2/5/10 km
+  of the route (straight line), ordered along the route; confirmed only unless the reader asks; chips and search do not
+  count. The longest stretch without a fast charger is shown from 100 km. The route stays drawn while its panel or a card
+  opened from it is open (phone: „Prikaži rutu na mapi“ hides the sheet and keeps the route); „Najbliži punjač“ and „Moj
+  auto“ clear it. Nothing is stored or sent to our servers; the privacy policy says what the two services get.
+  `?qa=1`: `window.bvRouteQa()`, `window.bvRouteLineQa(line, km, r, nep)` (evolako.rs: `evmRouteQa`, `evmRouteLineQa` — the
+  same rows for the same line). Tests: `scripts/qa/map_route_test.py`, `scripts/qa/evomap_route_test.py` (fixed Photon and
+  OSRM answers). The apps do not have it yet (owner, 24.10.2026: after the App Store review).
 
 ### 3.19 News photos (only in a run with the owner's browser)
 

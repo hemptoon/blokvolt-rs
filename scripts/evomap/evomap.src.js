@@ -2,7 +2,8 @@
    Stanice: otvoreni podaci (OpenStreetMap ODbL, Open Charge Map CC BY 4.0), spiskovi mreža i JP „Putevi Srbije“;
    cene po mreži sa datumom i izvorom. Sve to čita se iz otvorenog fida blokvolt.rs (CORS), isti tim ga vodi.
    Mapa: MapLibre GL 5 (jsDelivr, SRI) + OpenFreeMap. Ništa se ne šalje i ne čuva; lokacija („Blizu mene“, „Najbliži punjač“)
-   ostaje na uređaju. Skripta se od 30.09.2026 učitava kao fajl sa blokvolt.rs (/assets/embed/, SRI), ne iz footer koda stranice.
+   ostaje na uređaju. „Punjači na putu“ (24.10.2026): upisana mesta idu u Photon, a tačke rute u OSRM (FOSSGIS) — samo iz
+   pregledača, evolako.rs ih ne dobija. Skripta se od 30.09.2026 učitava kao fajl sa blokvolt.rs (/assets/embed/, SRI), ne iz footer koda stranice.
    Jezik: document.documentElement.lang (sr | en | ru) — prekidač jezika na sajtu menja ga, mapa se odmah precrta.
    Boje pinova kao u aplikaciji Evolako: DC — tamni, AC — plavi, ne radi / samo Tesla — sivi, nepotvrđeni — bledi. */
 (function () {
@@ -95,7 +96,23 @@
       kako_t: 'Kako se puni ovde — {n}', kako_pay: 'Plaćanje:', kako_guest: 'Bez registracije:', kako_after: 'Posle punjenja:',
       kako_refund: 'Povraćaj:', kako_apps: 'Aplikacija:', kako_checked: 'Provereno {d}',
       oh_open: 'sada radi do {t}', oh_closed: 'sada zatvoreno, otvara u {t}', closed_now: 'sada zatvoreno',
-      cab_own: 'Ponesi svoj Tip 2 kabl', src_cga: 'aplikacija Charge&GO'
+      cab_own: 'Ponesi svoj Tip 2 kabl', src_cga: 'aplikacija Charge&GO',
+      // 24.10.2026: „Punjači na putu“ (Photon + OSRM/FOSSGIS)
+      rt_btn_l: 'Punjači na putu:', rt_btn_v: 'upiši odredište — brzi od 50 kW', rt_btn_set: 'do {t} · brzih: {n}',
+      rt_title: 'Brzi punjači na putu', rt_lead: 'Upiši kuda ideš — mapa pokazuje brze punjače (DC od 50 kW) duž rute.',
+      rt_from: 'Polazak', rt_to: 'Odredište', rt_me: 'Moja lokacija', rt_to_ph: 'Grad ili adresa', rt_go: 'Prikaži punjače', rt_wait: 'Računam rutu…',
+      rt_h: '{h} h {m} min', rt_m: '{m} min', rt_map: 'Prikaži rutu na mapi',
+      rt_sub: 'Potvrđeni brzi punjači do {r} km od puta, redom od polaska.', rt_sub_all: 'Uključeni su i nepotvrđeni · brzi punjači do {r} km od puta, redom od polaska.',
+      rt_car: 'Samo oni na kojima može da puni tvoj {car}.', rt_r: 'do {r} km', rt_r_l: 'Udaljenost od puta',
+      rt_at: '{km} km od polaska', rt_off: '{d} od puta', rt_on: 'uz put',
+      rt_none: 'Na ovoj ruti nema brzih punjača do {r} km od puta.', rt_nep: 'Prikaži i nepotvrđene ({n})',
+      rt_gap: 'Najduži deo puta bez brzog punjača: {x}. Napuni pre toga.', rt_area: 'Na mapi su punjači u Srbiji; van Srbije punjači se ne prikazuju.',
+      rt_dest: 'Navigacija do odredišta', rt_need: 'Upiši odredište.', rt_nf: 'Mesto „{q}“ nije pronađeno. Probaj samo sa imenom grada.',
+      rt_denied: 'Pregledač nema dozvolu za lokaciju. Upiši polazak ili dozvoli lokaciju u podešavanjima pregledača.',
+      rt_unavail: 'Lokacija trenutno nije dostupna. Upiši polazak.', rt_noroute: 'Ruta između ova dva mesta nije pronađena.',
+      rt_same: 'Polazak i odredište su na istom mestu.', rt_err: 'Ruta trenutno ne može da se izračuna. Pokušaj ponovo za minut.',
+      rt_privacy: 'Upisana mesta i tačke rute pregledač šalje samo servisima Photon (Komoot) i OSRM (FOSSGIS), radi pretrage i rute. Evolako ih ne dobija i ne čuva.',
+      rt_attr: 'Ruta i adrese: © OpenStreetMap, OSRM · FOSSGIS, Photon', rt_fix: 'Ispravi mapu'
     },
     en: {
       search: 'City, address or network', search_l: 'Search chargers', near: 'Near me', loading: 'Loading chargers…',
@@ -157,7 +174,22 @@
       kako_t: 'How to charge here — {n}', kako_pay: 'Payment:', kako_guest: 'Without registration:', kako_after: 'After charging:',
       kako_refund: 'Refund:', kako_apps: 'App:', kako_checked: 'Checked {d}',
       oh_open: 'open now until {t}', oh_closed: 'closed now, opens at {t}', closed_now: 'closed now',
-      cab_own: 'Bring your own Type 2 cable', src_cga: 'Charge&GO app'
+      cab_own: 'Bring your own Type 2 cable', src_cga: 'Charge&GO app',
+      rt_btn_l: 'Chargers on the way:', rt_btn_v: 'enter a destination — fast, 50 kW and up', rt_btn_set: 'to {t} · fast: {n}',
+      rt_title: 'Fast chargers on the way', rt_lead: 'Type where you’re going — the map shows fast chargers (DC 50 kW and up) along the route.',
+      rt_from: 'From', rt_to: 'To', rt_me: 'My location', rt_to_ph: 'City or address', rt_go: 'Show chargers', rt_wait: 'Calculating the route…',
+      rt_h: '{h} h {m} min', rt_m: '{m} min', rt_map: 'Show the route on the map',
+      rt_sub: 'Confirmed fast chargers within {r} km of the road, in order from the start.', rt_sub_all: 'Unconfirmed ones included · fast chargers within {r} km of the road, in order from the start.',
+      rt_car: 'Only those where your {car} can charge.', rt_r: 'within {r} km', rt_r_l: 'Distance from the road',
+      rt_at: '{km} km from the start', rt_off: '{d} from the road', rt_on: 'by the road',
+      rt_none: 'There are no fast chargers within {r} km of the road on this route.', rt_nep: 'Show unconfirmed too ({n})',
+      rt_gap: 'Longest stretch without a fast charger: {x}. Charge before it.', rt_area: 'The map covers chargers in Serbia; outside Serbia no chargers are shown.',
+      rt_dest: 'Directions to destination', rt_need: 'Enter a destination.', rt_nf: '“{q}” wasn’t found. Try just the name of the town.',
+      rt_denied: 'Your browser doesn’t have permission to use your location. Enter a starting point or allow location in your browser settings.',
+      rt_unavail: 'Your location isn’t available right now. Enter a starting point.', rt_noroute: 'No route was found between these two places.',
+      rt_same: 'The start and the destination are in the same place.', rt_err: 'The route can’t be calculated right now. Try again in a minute.',
+      rt_privacy: 'Your browser sends the places you type and the route points only to Photon (Komoot) and OSRM (FOSSGIS), for the search and the route. Evolako neither receives nor keeps them.',
+      rt_attr: 'Route and addresses: © OpenStreetMap, OSRM · FOSSGIS, Photon', rt_fix: 'Fix the map'
     },
     ru: {
       search: 'Город, адрес или сеть', search_l: 'Поиск зарядок', near: 'Рядом со мной', loading: 'Загружаю зарядки…',
@@ -219,7 +251,22 @@
       kako_t: 'Как здесь заряжаться — {n}', kako_pay: 'Оплата:', kako_guest: 'Без регистрации:', kako_after: 'После зарядки:',
       kako_refund: 'Возврат:', kako_apps: 'Приложение:', kako_checked: 'Проверено {d}',
       oh_open: 'сейчас открыто до {t}', oh_closed: 'сейчас закрыто, откроется в {t}', closed_now: 'сейчас закрыто',
-      cab_own: 'Возьми свой кабель Type 2', src_cga: 'приложение Charge&GO'
+      cab_own: 'Возьми свой кабель Type 2', src_cga: 'приложение Charge&GO',
+      rt_btn_l: 'Зарядки по пути:', rt_btn_v: 'введи, куда едешь, — быстрые от 50 кВт', rt_btn_set: 'до {t} · быстрых: {n}',
+      rt_title: 'Быстрые зарядки по пути', rt_lead: 'Введи, куда едешь, — карта покажет быстрые зарядки (DC от 50 кВт) вдоль маршрута.',
+      rt_from: 'Откуда', rt_to: 'Куда', rt_me: 'Моё местоположение', rt_to_ph: 'Город или адрес', rt_go: 'Показать зарядки', rt_wait: 'Рассчитываю маршрут…',
+      rt_h: '{h} ч {m} мин', rt_m: '{m} мин', rt_map: 'Показать маршрут на карте',
+      rt_sub: 'Подтверждённые быстрые зарядки не дальше {r} км от дороги, по порядку от старта.', rt_sub_all: 'Включая неподтверждённые · быстрые зарядки не дальше {r} км от дороги, по порядку от старта.',
+      rt_car: 'Только те, где может заряжаться твоя машина {car}.', rt_r: 'до {r} км', rt_r_l: 'Расстояние от дороги',
+      rt_at: '{km} км от старта', rt_off: '{d} от дороги', rt_on: 'у дороги',
+      rt_none: 'На этом маршруте нет быстрых зарядок ближе {r} км от дороги.', rt_nep: 'Показать и неподтверждённые ({n})',
+      rt_gap: 'Самый длинный участок без быстрой зарядки: {x}. Зарядись до него.', rt_area: 'На карте — зарядки в Сербии; за её пределами зарядки не показываются.',
+      rt_dest: 'Маршрут до пункта назначения', rt_need: 'Введи, куда едешь.', rt_nf: 'Место «{q}» не найдено. Попробуй только название города.',
+      rt_denied: 'У браузера нет доступа к геолокации. Введи, откуда едешь, или разреши геолокацию в настройках браузера.',
+      rt_unavail: 'Местоположение сейчас недоступно. Введи, откуда едешь.', rt_noroute: 'Маршрут между этими местами не найден.',
+      rt_same: 'Старт и пункт назначения в одном месте.', rt_err: 'Маршрут сейчас не удаётся рассчитать. Попробуй ещё раз через минуту.',
+      rt_privacy: 'Введённые места и точки маршрута браузер отправляет только сервисам Photon (Komoot) и OSRM (FOSSGIS) — для поиска и маршрута. Evolako их не получает и не хранит.',
+      rt_attr: 'Маршрут и адреса: © OpenStreetMap, OSRM · FOSSGIS, Photon', rt_fix: 'Исправить карту'
     }
   };
   // notes that come with the price data (Serbian), translated once from the same source; newer ones stay Serbian
@@ -271,6 +318,7 @@
     car: svg('<path d="M5 16.5h14M6.5 16.5V19M17.5 16.5V19M4.5 16.5v-4l2-5.2A1.5 1.5 0 0 1 7.9 6.3h8.2a1.5 1.5 0 0 1 1.4 1l2 5.2v4"/><path d="M4.5 12.5h15"/><circle cx="8" cy="14.3" r=".6"/><circle cx="16" cy="14.3" r=".6"/>'),
     cable: svg('<path d="M7 3v4M11 3v4M5.5 7h7v3a3.5 3.5 0 0 1-7 0V7Z"/><path d="M9 13.5V16a4 4 0 0 0 4 4h1a4 4 0 0 0 4-4V8"/>'),
     park: svg('<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M10 16V8h3a2.5 2.5 0 0 1 0 5h-3"/>'),
+    road: svg('<path d="M6 21 9 3M18 21 15 3M12 5v2.5M12 11v2.5M12 17v2.5"/>'),
     coins: svg('<ellipse cx="12" cy="6.5" rx="6.5" ry="2.5"/><path d="M5.5 6.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5M5.5 11.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5"/>')
   };
   var CONN = { ccs2: 'CCS2', ccs1: 'CCS1', chademo: 'CHAdeMO', type2: 'Type 2', type1: 'Type 1', tesla: 'Tesla', gbt: 'GB/T', cee: 'CEE' };
@@ -604,6 +652,7 @@
     '<label class="evm-sr" for="evm-q"></label><input id="evm-q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"></div>' +
     '<button class="evm-me" type="button">' + IC.loc + '<span></span></button></div>' +
     '<button class="evm-car" type="button" aria-haspopup="dialog">' + IC.car + '<span class="evm-car-l"></span> <span class="evm-car-v"></span></button>' +
+    '<button class="evm-car evm-rt" type="button" aria-haspopup="dialog">' + IC.road + '<span class="evm-car-l"></span> <span class="evm-car-v"></span></button>' +
     '<div class="evm-chips" role="group"></div></div>' +
     '<div class="evm-count" aria-live="polite"></div><div class="evm-list" role="region"></div>' +
     '<div class="evm-mapw"><div class="evm-mapbox"><div class="evm-map" role="region"></div>' +
@@ -631,6 +680,7 @@
     $chips.innerHTML = chips.map(function (c) { return '<button class="evm-chip" type="button" data-f="' + c[0] + '" aria-pressed="false">' + c[1] + '</button>'; }).join('');
     paintChips();
     paintCar();
+    rtBtnPaint();
     $('.evm-legend').innerHTML = [['dc', 'l_dc'], ['ac', 'l_ac'], ['off', 'l_off'], ['nep', 'l_nep']]
       .map(function (x) { return '<span><i class="lg-' + x[0] + '"></i>' + esc(T(x[1])) + '</span>'; }).join('');
     $('.evm-attr').innerHTML = esc(T('map_w')) + ': <a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> · ' +
@@ -875,11 +925,15 @@
   }
   function lock(on) { d.documentElement.classList.toggle('evm-lock', !!on); }
   function openCard(s, fly, fromNear) {
-    var wasOpen = !!sel || nearOpen || carOpen;
+    var wasOpen = !!sel || nearOpen || carOpen || rtOpen;
     carOpen = false;
     sel = s;
     nearOpen = false;
-    cardNear = !!(fromNear && NEAR);
+    // fromNear = true: opened from „Najbliži punjač“; 'rt': from „Punjači na putu“ (or tapped on the map while the route is shown)
+    cardRt = !!RT.route && (fromNear === 'rt' || (fromNear !== true && (rtOpen || RT.min || (cardRt && RT.shown))));
+    rtOpen = false; RT.min = false;
+    cardNear = !cardRt && !!(fromNear && NEAR);
+    if (!cardRt && RT.shown) rtClear();
     var n = netOf(s), navs = navLinks(s);
     var logo = n && n.logo ? '<span class="evm-lg' + (n.logo_dark ? ' dark' : '') + '"><img src="' + esc(FEED + n.logo) + '" alt="" loading="lazy"></span>' : '<span class="evm-lg mono" aria-hidden="true">' + esc((netName(s) || '?').slice(0, 2).toUpperCase()) + '</span>';
     var netLine = netName(s) ? '<div class="evm-net">' + logo + '<div><b>' + esc(netName(s)) + '</b><span>' + esc(n ? T('net_known') : (s.opn ? T('operator') : T('net_unknown'))) + '</span></div></div>' : '';
@@ -892,7 +946,7 @@
     var srcs = s.src.filter(function (x) { return x.u; }).map(function (x) { return '<a href="' + esc(x.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(dt(x.upd)) + ')' : ''); }).join(' · ');
     $card.innerHTML = '<div class="evm-cc" role="dialog" aria-label="' + esc(title(s)) + '"><span class="evm-grab" aria-hidden="true"></span>' +
       '<button class="evm-x" type="button" aria-label="' + esc(T('close')) + '">' + IC.x + '</button>' +
-      (cardNear ? '<button class="evm-lnk evm-nr-back" type="button" data-nr="back">← ' + esc(T('nr_title')) + '</button>' : '') +
+      (cardNear ? '<button class="evm-lnk evm-nr-back" type="button" data-nr="back">← ' + esc(T('nr_title')) + '</button>' : cardRt ? '<button class="evm-lnk evm-nr-back" type="button" data-rt="back">← ' + esc(T('rt_title')) + '</button>' : '') +
       '<h2>' + esc(title(s)) + '</h2><p class="evm-addr">' + esc(place(s)) + '</p>' + verHtml(s) + tagsHtml(s) + netLine + priceHtml(s) + kakoHtml(s) +
       (s.note ? '<p class="evm-note">' + IC.info + '<span>' + esc(tr(s.note)) + '</span></p>' : '') + statusHtml(s) + conns + acc + whereHtml(s) +
       '<div class="evm-acts"><a class="evm-btn pri full" href="' + navs[0][1] + '" target="_blank" rel="noopener" data-nav="' + navs[0][2] + '">' + IC.nav + '<span>' + esc(T('navigate')) + '</span></a>' +
@@ -908,7 +962,7 @@
     root.classList.add('evm-open');
     if (mobile()) lock(true);
     if (map && map.getSource('sel')) map.getSource('sel').setData({ type: 'FeatureCollection', features: [feat(s)] });
-    if (fly && map) map.flyTo({ center: [s.lon, s.lat], zoom: Math.max(map.getZoom(), 13), speed: 1.4 });
+    if (fly && map) map.flyTo({ center: [s.lon, s.lat], zoom: Math.max(map.getZoom(), 13), speed: 1.4, padding: !mobile() ? { left: 400, top: 0, right: 0, bottom: 0 } : 0 });
     try { history.replaceState(null, '', location.pathname + location.search + '#' + s.id); } catch (e) { /* ignore */ }
     if (!wasOpen) { var x = $card.querySelector('.evm-x'); if (x && x.focus) x.focus({ preventScroll: true }); }
     renderList();
@@ -916,7 +970,10 @@
   function closeCard() {
     if (carOpen) { closeCar(); return; }
     if (nearOpen && !sel) { closeNear(); return; }
+    if (rtOpen && !sel) { rtClose(); return; }
     if (!sel) return;
+    if (cardRt) rtClear();
+    cardRt = false;
     var id = sel.id;
     sel = null;
     $card.hidden = true;
@@ -997,8 +1054,9 @@
     map.getSource('me').setData({ type: 'FeatureCollection', features: me ? [{ type: 'Feature', geometry: { type: 'Point', coordinates: [me.lon, me.lat] }, properties: {} }] : [] });
   }
   function nearPanel(o, fit) {
-    var was = nearOpen || !!sel || carOpen, body;
-    carOpen = false;
+    var was = nearOpen || !!sel || carOpen || rtOpen, body;
+    carOpen = false; rtOpen = false; cardRt = false;
+    if (RT.shown) rtClear();
     if (sel) { sel = null; try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* ignore */ } renderList(); }
     nearOpen = true;
     if (o.pt && !dataReady && dataErr) body = '<p class="evm-nr-msg" role="alert">' + esc(T('load_err')) + '</p>';
@@ -1089,11 +1147,338 @@
     }
     return true;
   }
+  // ---------- „Punjači na putu“: fast chargers along a route the visitor enters (owner's decision 24.10.2026) ----------
+  // The same rules as /mapa/ on blokvolt.rs (window.bvRouteLineQa there gives the same rows): DC ≥ 50 kW that work, never
+  // „Ne radi“ or Tesla-only (unless the chosen car is a Tesla), usable by the chosen car; within R km of the route (straight
+  // line), in order along the route; confirmed only unless the visitor asks for the rest (or none is confirmed). The chip
+  // filter and the search text do not count; no network or firm is ever put first. Places are looked up in Photon
+  // (photon.komoot.io) and the route in OSRM on the FOSSGIS server (routing.openstreetmap.de): the browser sends them only
+  // the typed text and the two points of the route; evolako.rs gets and keeps nothing (nothing is stored in the browser either).
+  var RT_GEO = 'https://photon.komoot.io/api/', RT_OSRM = 'https://routing.openstreetmap.de/routed-car/route/v1/driving/';
+  var RT_RS = [2, 5, 10], RT_MAXR = 10, VIOLET = '#7C5CFF', FC0 = { type: 'FeatureCollection', features: [] };
+  var RT = { r: 5, nep: false, from: null, to: null }, rtOpen = false, cardRt = false;
+  var LATN = { 'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'ђ': 'đ', 'ѓ': 'gj', 'е': 'e', 'ж': 'ž', 'з': 'z', 'ѕ': 'dz', 'и': 'i', 'ј': 'j', 'к': 'k', 'ќ': 'kj',
+    'л': 'l', 'љ': 'lj', 'м': 'm', 'н': 'n', 'њ': 'nj', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'ћ': 'ć', 'у': 'u', 'ф': 'f', 'х': 'h', 'ц': 'c', 'ч': 'č', 'џ': 'dž', 'ш': 'š' };
+  // Serbian Cyrillic place names from OpenStreetMap in Latin script on the Serbian and English page
+  function latn(x) {
+    x = String(x || '');
+    if (lang() === 'ru') return x;
+    return x.replace(/[Ѐ-ӿ]/g, function (c) { var l = c.toLowerCase(), t = LATN[l]; return t == null ? c : c === l ? t : t.charAt(0).toUpperCase() + t.slice(1); });
+  }
+  function rtErr(code, q) { var e = new Error(code); e.code = code; if (q) e.q = q; return e; }
+  function geoLabel(f) {
+    var a = f.properties || {}, out = [], street = a.street ? a.street + (a.housenumber ? ' ' + a.housenumber : '') : '';
+    [a.name, street, a.city || a.town || a.village || a.district, a.country].forEach(function (x) { var v = latn(x).trim(); if (v && out.indexOf(v) < 0) out.push(v); });
+    return out.join(', ');
+  }
+  var geoCtl = null;
+  // own = the search on submit, which typing does not cancel; suggestions cancel each other
+  function geoSearch(q, own) {
+    var sig;
+    if (!own && window.AbortController) { if (geoCtl) geoCtl.abort(); geoCtl = new AbortController(); sig = geoCtl.signal; }
+    var u = RT_GEO + '?q=' + encodeURIComponent(q) + '&limit=6&lang=' + (lang() === 'ru' ? 'default' : 'en') + '&lat=44.1&lon=20.9';
+    return fetch(u, { signal: sig, credentials: 'omit' }).then(function (r) { if (!r.ok) throw rtErr('net'); return r.json(); }).then(function (j) {
+      var seen = {}, out = [];
+      (j.features || []).forEach(function (f) {
+        if (!f.geometry || !f.geometry.coordinates) return;
+        var l = geoLabel(f);
+        if (!l || seen[l]) return;
+        seen[l] = 1;
+        out.push({ label: l, pt: { lon: +f.geometry.coordinates[0], lat: +f.geometry.coordinates[1] } });
+      });
+      return out.slice(0, 5);
+    });
+  }
+  function rtResolve(q) { return geoSearch(q, true).then(function (r) { if (!r.length) throw rtErr('nf', q); return r[0]; }); }
+  function rtMe() {
+    return new Promise(function (ok, no) {
+      if (!navigator.geolocation) { no(rtErr('unavail')); return; }
+      navigator.geolocation.getCurrentPosition(function (p) { ok({ label: '', pt: { lat: p.coords.latitude, lon: p.coords.longitude } }); },
+        function (e) { no(rtErr(e && e.code === 1 ? 'denied' : 'unavail')); }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 120000 });
+    });
+  }
+  function rtFetch(a, b) {
+    var ll = function (p) { return p.lon.toFixed(5) + ',' + p.lat.toFixed(5); };
+    return fetch(RT_OSRM + ll(a) + ';' + ll(b) + '?overview=full&geometries=geojson&alternatives=false&steps=false', { credentials: 'omit' })
+      .then(function (r) { return r.ok || r.status === 400 ? r.json() : null; }, function () { throw rtErr('net'); })
+      .then(function (j) {
+        if (!j) throw rtErr('net');
+        if (j.code !== 'Ok' || !j.routes || !j.routes.length) throw rtErr('noroute');
+        var x = j.routes[0];
+        return { km: x.distance / 1000, min: x.duration / 60, line: x.geometry.coordinates };
+      });
+  }
+  // the route on a flat plane in km; points closer than 150 m to the last kept one are skipped; a = along the route,
+  // scaled to the router's own length (the same as rtGeom/rtDist in map.js on blokvolt.rs)
+  function rtGeom(R) {
+    var L = R.line, lat0 = L[Math.floor(L.length / 2)][1] * Math.PI / 180, kx = 111.32 * Math.cos(lat0), ky = 110.57;
+    var P = [], bb = [Infinity, Infinity, -Infinity, -Infinity], acc = 0, prev = null;
+    L.forEach(function (c, i) {
+      var p = { x: c[0] * kx, y: c[1] * ky };
+      if (prev) {
+        var dd = Math.sqrt((p.x - prev.x) * (p.x - prev.x) + (p.y - prev.y) * (p.y - prev.y));
+        if (dd < 0.15 && i < L.length - 1) return;
+        acc += dd;
+      }
+      p.a = acc; P.push(p); prev = p;
+      bb[0] = Math.min(bb[0], p.x); bb[1] = Math.min(bb[1], p.y); bb[2] = Math.max(bb[2], p.x); bb[3] = Math.max(bb[3], p.y);
+    });
+    return { P: P, kx: kx, ky: ky, bb: bb, k: acc > 0 ? R.km / acc : 1 };
+  }
+  function rtDist(G, s) {
+    var x = s.lon * G.kx, y = s.lat * G.ky;
+    if (x < G.bb[0] - RT_MAXR || x > G.bb[2] + RT_MAXR || y < G.bb[1] - RT_MAXR || y > G.bb[3] + RT_MAXR) return null;
+    var P = G.P, best = Infinity, at = 0, i;
+    if (P.length === 1) best = (x - P[0].x) * (x - P[0].x) + (y - P[0].y) * (y - P[0].y);
+    for (i = 1; i < P.length; i++) {
+      var a = P[i - 1], b = P[i], dx = b.x - a.x, dy = b.y - a.y, l2 = dx * dx + dy * dy;
+      var t = l2 ? ((x - a.x) * dx + (y - a.y) * dy) / l2 : 0;
+      t = t < 0 ? 0 : t > 1 ? 1 : t;
+      var qx = a.x + t * dx - x, qy = a.y + t * dy - y, dd = qx * qx + qy * qy;
+      if (dd < best) { best = dd; at = a.a + t * Math.sqrt(l2); }
+    }
+    var dk = Math.sqrt(best);
+    return dk <= RT_MAXR ? { d: dk, at: at * G.k } : null;
+  }
+  function rtUsable(s) {
+    if ((s.dc || 0) < 50 || isOff(s) || (teslaOnly(s) && !teslaCar()) || typeof s.lat !== 'number' || typeof s.lon !== 'number' || !isFinite(s.lat) || !isFinite(s.lon)) return false;
+    var car = carSpec();
+    return !car || dcUsable(s, car);
+  }
+  function rtList() {
+    var all = (RT.cand || []).filter(function (x) { return x.d <= RT.r && rtUsable(x.s); }).sort(function (a, b) { return a.at - b.at || a.d - b.d; });
+    var ok = all.filter(function (x) { return ver(x.s) === 'ok'; });
+    var every = !state.ok && (RT.nep || !ok.length);
+    return { rows: every ? all : ok, every: every, more: !every && !state.ok ? all.length - ok.length : 0 };
+  }
+  function rtDur(min) {
+    var m = Math.max(1, Math.round(min / 5) * 5), h = Math.floor(m / 60);
+    return h ? fill(T('rt_h'), { h: h, m: m % 60 }) : fill(T('rt_m'), { m: m });
+  }
+  function rtGap(rows) {
+    if (!RT.route) return 0;
+    var last = 0, g = 0;
+    rows.forEach(function (x) { g = Math.max(g, x.at - last); last = x.at; });
+    return Math.max(g, RT.route.km - last);
+  }
+  function rtRow(x) {
+    var s = x.s, k = kind(s), pw = power(s), ps = priceShort(s), a = navPref(), tags = [];
+    if (ver(s) !== 'ok') tags.push('<span class="evm-tag warn">' + IC.warn + esc(T('v_nep')) + '</span>');
+    if (closedNow(s)) tags.push('<span class="evm-tag">' + IC.clock + esc(T('closed_now')) + '</span>');
+    if (s.ax && s.ax.t) tags.push('<span class="evm-tag">' + esc(tr(s.ax.t)) + '</span>');
+    else if (s.acc === 'customers') tags.push('<span class="evm-tag">' + esc(T('customers')) + '</span>');
+    var off = x.d < 0.3 ? T('rt_on') : fill(T('rt_off'), { d: fmtDist(x.d) });
+    return '<li class="evm-nr evm-rt-row">' +
+      '<button class="evm-nr-main" type="button" data-rt-open="' + esc(s.id) + '"><span class="evm-dot ' + k + (ver(s) === 'nep' ? ' nep' : '') + '">' + (pw ? Math.round(pw) : '') + '</span>' +
+      '<span class="evm-nr-nm"><b>' + esc(title(s)) + '</b><span class="evm-nr-sb">' + esc([netName(s), place(s)].filter(Boolean).join(' · ')) + '</span>' +
+      '<span class="evm-nr-meta"><b>' + esc(fill(T('rt_at'), { km: fmt(x.at, 0) })) + '</b> · ' + esc(off) + (ps.t ? ' · ' + esc(ps.t) : '') + '</span></span></button>' +
+      '<a class="evm-btn sm evm-nr-go" href="' + esc(navUrl(a, s)) + '" target="_blank" rel="noopener" data-nav="' + a + '" aria-label="' +
+      esc(fill(T('nr_nav_to'), { t: title(s), d: fmt(x.at, 0) + ' ' + kmU() })) + '">' + IC.nav + '<span>' + esc(T('navigate')) + '</span></a>' +
+      (tags.length ? '<div class="evm-tags evm-nr-tags">' + tags.slice(0, 2).join('') + '</div>' : '') + '</li>';
+  }
+  function rtDraw(rows) {
+    if (!map || !map.getSource('rt')) return;
+    var R = RT.route;
+    map.getSource('rt').setData(R ? { type: 'Feature', geometry: { type: 'LineString', coordinates: R.line }, properties: {} } : FC0);
+    map.getSource('rte').setData(R ? { type: 'FeatureCollection', features: [
+      { type: 'Feature', geometry: { type: 'Point', coordinates: R.line[0] }, properties: { e: 'a' } },
+      { type: 'Feature', geometry: { type: 'Point', coordinates: R.line[R.line.length - 1] }, properties: { e: 'b' } }] } : FC0);
+    map.getSource('rts').setData(R && rows ? { type: 'FeatureCollection', features: rows.map(function (x) { return feat(x.s); }) } : FC0);
+  }
+  function rtClear() {
+    RT.shown = false; RT.min = false;
+    if (map && map.getSource('rt')) { map.getSource('rt').setData(FC0); map.getSource('rte').setData(FC0); map.getSource('rts').setData(FC0); }
+  }
+  function rtFit() {
+    if (!map || !RT.route || !window.maplibregl) return;
+    var L = RT.route.line, b = new window.maplibregl.LngLatBounds(L[0], L[0]);
+    L.forEach(function (c) { b.extend(c); });
+    var pad = !mobile() ? { top: 76, bottom: 60, left: 440, right: 64 } : root.classList.contains('evm-full') ? { top: 150, bottom: 140, left: 40, right: 40 } : { top: 50, bottom: 76, left: 30, right: 30 };
+    map.fitBounds(b, { padding: pad, maxZoom: 13, duration: 900 });
+  }
+  function rtBtnPaint() {
+    var b = root.querySelector('.evm-rt');
+    if (!b) return;
+    var on = !!(RT.route && RT.to);
+    b.querySelector('.evm-car-l').textContent = T('rt_btn_l');
+    b.querySelector('.evm-car-v').textContent = on ? fill(T('rt_btn_set'), { t: RT.to.label.split(',')[0], n: rtList().rows.length }) : T('rt_btn_v');
+    b.classList.toggle('on', on);
+  }
+  var RT_ERR = { nf: 'rt_nf', denied: 'rt_denied', unavail: 'rt_unavail', noroute: 'rt_noroute', same: 'rt_same', need: 'rt_need', net: 'rt_err' };
+  function rtBody(fit) {
+    var box = $card.querySelector('.evm-rt-res');
+    if (!box) return;
+    var h = '';
+    if (RT.wait) h = '<p class="evm-nr-wait" role="status"><span class="evm-nr-spin" aria-hidden="true"></span>' + esc(T('rt_wait')) + '</p>';
+    else if (RT.err) h = '<p class="evm-nr-msg" role="alert">' + esc(fill(T(RT_ERR[RT.err] || 'rt_err'), { q: RT.errq || '' })) + '</p>';
+    else if (RT.route) {
+      var r = rtList(), R = RT.route, car = carSpec(), a = navPref(), gap = rtGap(r.rows);
+      var out = R.line.some(function (c) { return c[0] < SRB[0][0] - 0.1 || c[0] > SRB[1][0] + 0.1 || c[1] < SRB[0][1] - 0.1 || c[1] > SRB[1][1] + 0.1; });
+      h = '<p class="evm-rt-sum"><b>' + esc(fmt(R.km, 0) + ' ' + kmU()) + '</b> · ' + esc(rtDur(R.min)) + '</p>' +
+        '<button class="evm-btn evm-rt-mapbtn" type="button" data-rt="map">' + IC.road + '<span>' + esc(T('rt_map')) + '</span></button>' +
+        '<p class="evm-addr">' + esc(fill(T(r.every ? 'rt_sub_all' : 'rt_sub'), { r: RT.r })) + (car ? ' ' + esc(fill(T('rt_car'), { car: carName(car) })) : '') + '</p>' +
+        '<div class="evm-nr-chips" role="group" aria-label="' + esc(T('rt_r_l')) + '">' + RT_RS.map(function (x) { return '<button class="evm-chip" type="button" data-rt-r="' + x + '" aria-pressed="' + (x === RT.r) + '">' + esc(fill(T('rt_r'), { r: x })) + '</button>'; }).join('') + '</div>' +
+        (r.rows.length ? '<ol class="evm-nrl">' + r.rows.map(rtRow).join('') + '</ol>' : '<p class="evm-nr-msg">' + esc(fill(T('rt_none'), { r: RT.r })) + '</p>') +
+        (r.more ? '<p class="evm-nr-more"><button class="evm-lnk" type="button" data-rt="nep">' + esc(fill(T('rt_nep'), { n: r.more })) + '</button></p>' : '') +
+        (gap >= 100 ? '<p class="evm-nr-msg evm-rt-gap">' + IC.warn + '<span>' + esc(fill(T('rt_gap'), { x: fmt(gap, 0) + ' ' + kmU() })) + '</span></p>' : '') +
+        (out ? '<p class="evm-nr-msg">' + esc(T('rt_area')) + '</p>' : '') +
+        '<a class="evm-btn evm-rt-dest" href="' + esc(navUrl(a, RT.to.pt)) + '" target="_blank" rel="noopener" data-nav="' + a + '">' + IC.nav + '<span>' + esc(T('rt_dest')) + '</span></a>';
+      rtDraw(r.rows);
+      RT.shown = true;
+      if (fit) rtFit();
+    }
+    box.innerHTML = h + '<p class="evm-nr-note">' + esc(T('rt_privacy')) + '</p>' +
+      '<p class="evm-nr-note evm-rt-attr">' + esc(T('rt_attr')) + ' · <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noopener">' + esc(T('rt_fix')) + '</a></p>';
+    rtBtnPaint();
+  }
+  function rtField(id, lab, ph, val) {
+    return '<div class="evm-rt-f"><label for="' + id + '">' + esc(lab) + '</label><div class="evm-rt-in"><input id="' + id + '" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" placeholder="' + esc(ph) + '" value="' + esc(val) + '"' +
+      ' role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="' + id + '-l">' +
+      (id === 'evm-rt-from' ? '<button class="evm-rt-loc" type="button" data-rt="me" title="' + esc(T('rt_me')) + '" aria-label="' + esc(T('rt_me')) + '">' + IC.loc + '</button>' : '') +
+      '</div><ul class="evm-rt-sug" id="' + id + '-l" role="listbox" hidden></ul></div>';
+  }
+  function rtPanel() {
+    var was = !!sel || nearOpen || carOpen || rtOpen;
+    carOpen = false;
+    if (sel) { sel = null; try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* ignore */ } renderList(); }
+    nearOpen = false; cardNear = false; cardRt = false; rtOpen = true; RT.min = false;
+    if (map && map.getSource('sel')) map.getSource('sel').setData(FC0);
+    $card.innerHTML = '<div class="evm-cc evm-rtp" role="dialog" aria-label="' + esc(T('rt_title')) + '"><span class="evm-grab" aria-hidden="true"></span>' +
+      '<button class="evm-x" type="button" aria-label="' + esc(T('close')) + '">' + IC.x + '</button><h2>' + esc(T('rt_title')) + '</h2>' +
+      '<p class="evm-addr">' + esc(T('rt_lead')) + '</p><form class="evm-rt-form" novalidate>' +
+      rtField('evm-rt-from', T('rt_from'), T('rt_me'), RT.from ? RT.from.label : '') + rtField('evm-rt-to', T('rt_to'), T('rt_to_ph'), RT.to ? RT.to.label : '') +
+      '<button class="evm-btn pri evm-rt-go" type="submit">' + IC.road + '<span>' + esc(T('rt_go')) + '</span></button></form><div class="evm-rt-res" aria-live="polite"></div></div>';
+    $card.hidden = false;
+    root.classList.add('evm-open');
+    if (mobile()) lock(true);
+    rtBody(!!RT.route);
+    if (!was) {
+      $card.scrollTop = 0;
+      var f = $card.querySelector(RT.to || mobile() ? '.evm-x' : '#evm-rt-to');
+      if (f && f.focus) f.focus({ preventScroll: true });
+    }
+  }
+  function rtClose() {
+    rtOpen = false;
+    RT.job = null;
+    $card.hidden = true;
+    $card.innerHTML = '';
+    root.classList.remove('evm-open');
+    if (!root.classList.contains('evm-full')) lock(false);
+    rtClear();
+    var b = root.querySelector('.evm-rt');
+    if (b && !mobile() && b.focus) b.focus({ preventScroll: true });
+  }
+  function rtRun() {
+    var fin = $card.querySelector('#evm-rt-from'), tin = $card.querySelector('#evm-rt-to');
+    if (!fin || !tin) return;
+    rtSugHide();
+    var fq = fin.value.trim(), tq = tin.value.trim(), job = RT.job = {}, to, from;
+    RT.err = ''; RT.errq = '';
+    if (!tq) { RT.route = null; RT.err = 'need'; rtClear(); rtBody(); tin.focus(); return; }
+    RT.wait = true; rtBody();
+    (RT.to && RT.to.pt && RT.to.label === tq ? Promise.resolve(RT.to) : rtResolve(tq)).then(function (x) {
+      to = x;
+      return !fq ? rtMe() : RT.from && RT.from.pt && RT.from.label === fq ? RT.from : rtResolve(fq);
+    }).then(function (x) {
+      from = x;
+      if (RT.job !== job) return null;
+      if (distKm(from.pt, to.pt) < 0.3) throw rtErr('same');
+      return rtFetch(from.pt, to.pt);
+    }).then(function (R) {
+      if (!R || RT.job !== job) return;
+      var G = rtGeom(R), cand = [];
+      ST.forEach(function (s) { if ((s.dc || 0) >= 50) { var x = rtDist(G, s); if (x) cand.push({ s: s, d: x.d, at: x.at }); } });
+      RT.from = fq ? from : null; RT.to = to; RT.route = R; RT.cand = cand; RT.nep = false; RT.wait = false;
+      if (!fq) { me = from.pt; showMe(); }
+      if (tin.isConnected && tin.value.trim() === tq) tin.value = to.label;
+      if (fq && fin.isConnected && fin.value.trim() === fq) fin.value = from.label;
+      rtBody(true);
+    }).catch(function (e) {
+      if (RT.job !== job) return;
+      RT.wait = false; RT.route = null; RT.err = (e && e.code) || 'net'; RT.errq = (e && e.q) || '';
+      rtClear(); rtBody();
+    });
+  }
+  var rtT = 0;
+  function rtSugHide() {
+    [].forEach.call($card.querySelectorAll('.evm-rt-sug'), function (u) { u.hidden = true; u.innerHTML = ''; });
+    [].forEach.call($card.querySelectorAll('.evm-rt-in input'), function (i) { i.setAttribute('aria-expanded', 'false'); });
+  }
+  function rtSug(inp) {
+    clearTimeout(rtT);
+    var key = inp.id === 'evm-rt-from' ? 'from' : 'to', q = inp.value.trim(), ul = d.getElementById(inp.id + '-l');
+    if (RT[key] && RT[key].label !== q) RT[key] = null;
+    if (q.length < 3 || !ul) { if (ul) { ul.hidden = true; ul.innerHTML = ''; } return; }
+    rtT = setTimeout(function () {
+      geoSearch(q).then(function (list) {
+        if (!inp.isConnected || inp.value.trim() !== q || d.activeElement !== inp) return;
+        RT.sug = list;
+        ul.innerHTML = list.map(function (x, i) { return '<li role="option"><button type="button" data-sug="' + i + '" data-for="' + key + '">' + IC.pin + '<span>' + esc(x.label) + '</span></button></li>'; }).join('');
+        ul.hidden = !list.length;
+        inp.setAttribute('aria-expanded', String(!!list.length));
+      }, function () {});
+    }, 300);
+  }
+  function rtClick(t) {
+    if (!rtOpen) {
+      if (sel && cardRt && t.closest('[data-rt="back"]')) { rtPanel(); return true; }
+      return false;
+    }
+    var sg = t.closest('[data-sug]');
+    if (sg) {
+      var x = RT.sug && RT.sug[+sg.getAttribute('data-sug')], k0 = sg.getAttribute('data-for');
+      if (x) {
+        RT[k0] = x;
+        var inp = $card.querySelector(k0 === 'from' ? '#evm-rt-from' : '#evm-rt-to');
+        if (inp) inp.value = x.label;
+        rtSugHide();
+        var ti = $card.querySelector('#evm-rt-to');
+        if (k0 === 'to' || (ti && ti.value.trim())) rtRun(); else if (ti) ti.focus();
+      }
+      return true;
+    }
+    var op = t.closest('[data-rt-open]');
+    if (op) { var s = BYID[op.getAttribute('data-rt-open')]; if (s) openCard(s, true, 'rt'); return true; }
+    var rr = t.closest('[data-rt-r]');
+    if (rr) { RT.r = +rr.getAttribute('data-rt-r'); rtBody(false); return true; }
+    var b = t.closest('[data-rt]');
+    if (!b) { if (!t.closest('.evm-rt-f')) rtSugHide(); return false; }
+    var k = b.getAttribute('data-rt');
+    if (k === 'nep') { RT.nep = true; rtBody(false); }
+    else if (k === 'me') { var fi = $card.querySelector('#evm-rt-from'), tt = $card.querySelector('#evm-rt-to'); if (fi) { fi.value = ''; RT.from = null; } if (tt && tt.value.trim()) rtRun(); else if (tt) tt.focus(); }
+    else if (k === 'map') {
+      // phone: the sheet covers the map — hide it and keep the route; a tap on a charger opens its card with „← back“
+      rtOpen = false; RT.min = true;
+      $card.hidden = true; $card.innerHTML = '';
+      root.classList.remove('evm-open');
+      if (!root.classList.contains('evm-full')) lock(false);
+      var mb = $('.evm-mapbox');
+      if (mb && mb.scrollIntoView) mb.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      rtFit();
+    }
+    return true;
+  }
+  $card.addEventListener('submit', function (e) { if (e.target.closest('.evm-rt-form')) { e.preventDefault(); rtRun(); } });
+  $card.addEventListener('input', function (e) { if (e.target.closest && e.target.closest('.evm-rt-in')) rtSug(e.target); });
+  $card.addEventListener('keydown', function (e) {
+    var t = e.target;
+    if (e.key === 'Escape' && t.closest('.evm-rt-f') && $card.querySelector('.evm-rt-sug:not([hidden])')) { rtSugHide(); e.stopPropagation(); return; }
+    if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && t.closest('.evm-rt-f')) {
+      var box = t.closest('.evm-rt-f'), bs = [].slice.call(box.querySelectorAll('.evm-rt-sug button'));
+      if (!bs.length) return;
+      e.preventDefault();
+      var i = bs.indexOf(t), n = e.key === 'ArrowDown' ? i + 1 : i - 1;
+      if (n < 0) box.querySelector('input').focus(); else bs[Math.min(n, bs.length - 1)].focus();
+    }
+  });
+
   $card.addEventListener('click', function (e) {
     var t = e.target;
     if (t === $card || t.closest('.evm-x')) { closeCard(); return; }
     var nv = t.closest('a[data-nav]');
     if (nv) { NAV_PREF = nv.getAttribute('data-nav'); return; }
+    if (rtClick(t)) return;
     if (nearClick(t)) return;
     if (t.closest('[data-car-open]')) { openCar(); return; }
     var cb = t.closest('button[data-car]');
@@ -1127,7 +1512,11 @@
       properties: { id: s.id, k: k, v: v, p: String(p), pl: pp.t, pc: pp.c, cl: closedNow(s) ? 1 : 0 } };
   }
   function data() { return { type: 'FeatureCollection', features: visible().map(feat) }; }
-  function refresh() { state.lim = 20; if (map && map.getSource('st')) map.getSource('st').setData(data()); renderList(); }
+  function refresh() {
+    state.lim = 20; if (map && map.getSource('st')) map.getSource('st').setData(data()); renderList();
+    if (rtOpen && RT.route) rtBody(false); else if (RT.shown) rtDraw(rtList().rows);
+    rtBtnPaint();
+  }
   // the price capsule under a pin, as in the app: a rounded box that stretches around the text
   function capsule(color) {
     var r = 2, w = 32 * r, c = d.createElement('canvas'), x;
@@ -1169,7 +1558,17 @@
       map.addSource('me', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
       var nep = ['==', ['get', 'v'], 'nep'], faded = ['any', nep, ['==', ['get', 'cl'], 1]];
       var zr = function (a, b, c, e, f) { return ['interpolate', ['linear'], ['zoom'], 5, a, 8, b, 11, c, 12, e, 16, f]; };
+      // „Punjači na putu“: the route (violet, so it never reads as an AC charger) under everything, a halo under its fast chargers
+      map.addSource('rt', { type: 'geojson', data: FC0 });
+      map.addSource('rts', { type: 'geojson', data: FC0 });
+      map.addSource('rte', { type: 'geojson', data: FC0 });
+      map.addLayer({ id: 'rt-case', type: 'line', source: 'rt', layout: { 'line-join': 'round', 'line-cap': 'round' },
+        paint: { 'line-color': '#FFFFFF', 'line-width': ['interpolate', ['linear'], ['zoom'], 5, 5, 12, 10] } });
+      map.addLayer({ id: 'rt-line', type: 'line', source: 'rt', layout: { 'line-join': 'round', 'line-cap': 'round' },
+        paint: { 'line-color': VIOLET, 'line-width': ['interpolate', ['linear'], ['zoom'], 5, 3, 12, 6], 'line-opacity': 0.9 } });
       map.addLayer({ id: 'me-halo', type: 'circle', source: 'me', paint: { 'circle-radius': 24, 'circle-color': 'rgba(46,107,255,.16)' } });
+      map.addLayer({ id: 'rts', type: 'circle', source: 'rts',
+        paint: { 'circle-radius': zr(6.5, 8.5, 14, 16, 18), 'circle-color': 'rgba(124,92,255,.2)', 'circle-stroke-width': 2.2, 'circle-stroke-color': VIOLET } });
       map.addLayer({ id: 'sel', type: 'circle', source: 'sel', paint: { 'circle-radius': zr(10, 13, 19, 21, 21), 'circle-color': 'rgba(46,107,255,.22)', 'circle-stroke-width': 2.5, 'circle-stroke-color': BLUE } });
       map.addLayer({ id: 'pt', type: 'circle', source: 'st',
         layout: { 'circle-sort-key': ['+', ['case', faded, 0, 10], ['match', ['get', 'k'], 'dc', 2, 'ac', 1, 0]] },
@@ -1188,6 +1587,8 @@
           'icon-image': ['match', ['get', 'pc'], 'free', 'evm-cap-b', 'evm-cap-k'], 'icon-text-fit': 'both', 'icon-text-fit-padding': [3, 7, 2, 7] },
         paint: { 'text-color': ['match', ['get', 'pc'], 'old', 'rgba(255,255,255,0.62)', '#FFFFFF'] } });
       map.addLayer({ id: 'me-dot', type: 'circle', source: 'me', paint: { 'circle-radius': 7, 'circle-color': '#FFFFFF', 'circle-stroke-width': 4, 'circle-stroke-color': BLUE } });
+      map.addLayer({ id: 'rte', type: 'circle', source: 'rte',
+        paint: { 'circle-radius': 7, 'circle-color': ['match', ['get', 'e'], 'a', '#FFFFFF', INK], 'circle-stroke-width': 3, 'circle-stroke-color': ['match', ['get', 'e'], 'a', VIOLET, '#FFFFFF'] } });
       map.on('movestart', function (e) { if (e.originalEvent) userMove = true; });
       map.on('moveend', function () {
         if (!userMove) return;
@@ -1226,6 +1627,7 @@
       });
       if (sel) map.jumpTo({ center: [sel.lon, sel.lat], zoom: 13 });
       showMe();
+      if (RT.route && (rtOpen || cardRt || RT.min)) { rtDraw(rtList().rows); RT.shown = true; if (rtOpen) rtFit(); }
       if (nearOpen && NEAR && NEAR.rows) {
         map.getSource('sel').setData({ type: 'FeatureCollection', features: NEAR.rows.length ? [feat(NEAR.rows[0].s)] : [] });
         nearFit(NEAR.pt, NEAR.rows);
@@ -1260,7 +1662,7 @@
   }
   function setFull(on) {
     root.classList.toggle('evm-full', on);
-    lock(on || ((!!sel || nearOpen) && mobile()));
+    lock(on || ((!!sel || nearOpen || rtOpen || carOpen) && mobile()));
     paintFs();
     if (map) setTimeout(function () { map.resize(); }, 30);
   }
@@ -1280,8 +1682,9 @@
     }).join('');
   }
   function openCar() {
-    if (!carOpen) carBack = sel ? { s: sel, near: cardNear } : nearOpen ? { near: true } : null;
-    var was = !!sel || nearOpen || carOpen;
+    if (!carOpen) carBack = sel ? { s: sel, near: cardRt ? 'rt' : cardNear } : nearOpen ? { near: true } : rtOpen ? { rt: true } : null;
+    var was = !!sel || nearOpen || carOpen || rtOpen;
+    rtOpen = false;
     if (sel) { sel = null; try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* ignore */ } renderList(); }
     nearOpen = false;
     carOpen = true;
@@ -1327,6 +1730,7 @@
     carBack = null;
     if (back && back.s) { openCard(back.s, false, back.near); return; }
     if (back && back.near && NEAR) { nearPanel(NEAR, false); return; }
+    if (back && back.rt) { rtPanel(); return; }
     $card.hidden = true;
     $card.innerHTML = '';
     root.classList.remove('evm-open');
@@ -1339,8 +1743,10 @@
     renderStatic();
     if (map && map.getSource('st')) map.getSource('st').setData(data());
     renderList();
+    if (RT.shown) rtDraw(rtList().rows);
   }
   $car.addEventListener('click', function () { openCar(); });
+  root.querySelector('.evm-rt').addEventListener('click', function () { if (rtOpen) rtClose(); else rtPanel(); });
   $card.addEventListener('change', function (e) {
     var t = e.target, k = t.getAttribute ? t.getAttribute('data-car') : null;
     if (!carOpen || !k || !CARS) return;
@@ -1387,7 +1793,7 @@
   $near.addEventListener('click', function () { nearGo('button'); });
   d.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
-    if (carOpen) closeCar(); else if (sel || nearOpen) closeCard(); else if (root.classList.contains('evm-full')) setFull(false);
+    if (carOpen) closeCar(); else if (sel || nearOpen || rtOpen) closeCard(); else if (root.classList.contains('evm-full')) setFull(false);
   });
   $me.addEventListener('click', function () {
     if (!navigator.geolocation) { $count.textContent = T('no_location'); return; }
@@ -1406,12 +1812,12 @@
   var rt;
   window.addEventListener('resize', function () {
     clearTimeout(rt);
-    rt = setTimeout(function () { if (!mobile() && root.classList.contains('evm-full')) setFull(false); lock(root.classList.contains('evm-full') || ((!!sel || nearOpen) && mobile())); renderList(); }, 150);
+    rt = setTimeout(function () { if (!mobile() && root.classList.contains('evm-full')) setFull(false); lock(root.classList.contains('evm-full') || ((!!sel || nearOpen || rtOpen || carOpen) && mobile())); renderList(); }, 150);
   });
   // the site's language switch changes <html lang>: redraw everything in the new language
   new MutationObserver(function () {
     renderStatic(); renderList();
-    if (carOpen) { var b = carBack; openCar(); carBack = b; } else if (sel) openCard(sel, false, cardNear); else if (nearOpen && NEAR) nearPanel(NEAR, false);
+    if (carOpen) { var b = carBack; openCar(); carBack = b; } else if (sel) openCard(sel, false, cardRt ? 'rt' : cardNear); else if (nearOpen && NEAR) nearPanel(NEAR, false); else if (rtOpen) rtPanel();
   }).observe(d.documentElement, { attributes: true, attributeFilter: ['lang'] });
 
   // ---------- start ----------
@@ -1424,7 +1830,7 @@
     CARS_URL = f.auta || '';
     if (man.files.data) getJson(FEED + man.files.data).then(function (dj) {
       var c = dj.calculator || {};
-      if (c.fuel && c.fuel.benzin && c.defaults && c.defaults.l100_benzin) { FUEL = { b: c.fuel.benzin, l: c.defaults.l100_benzin }; if (sel && !carOpen) openCard(sel, false, cardNear); }
+      if (c.fuel && c.fuel.benzin && c.defaults && c.defaults.l100_benzin) { FUEL = { b: c.fuel.benzin, l: c.defaults.l100_benzin }; if (sel && !carOpen) openCard(sel, false, cardRt ? 'rt' : cardNear); }
     }, function () { /* without it the per-km block compares with home only */ });
     return Promise.all([getJson(FEED + f.punjaci), f.mreze ? getJson(FEED + f.mreze).catch(function () { return { upd: {}, add: [] }; }) : { upd: {}, add: [] },
       getJson(FEED + f.cene), f.dopune ? getJson(FEED + f.dopune).catch(function () { return { upd: {} }; }) : { upd: {} },
@@ -1471,6 +1877,16 @@
     if (/[?&]qa=1\b/.test(location.search)) {
       window.evmNearQa = function (lat, lon, nep) { return nearestList({ lat: lat, lon: lon }, !!nep).rows.map(function (x) { return { id: x.s.id, t: title(x.s), m: Math.round(x.d * 1000) }; }); };
       // the cost engine for one station (blokvolt.rs has the same: window.bvCostQa)
+      // „Punjači na putu“ for any line [[lon, lat], …] (blokvolt.rs: window.bvRouteLineQa) and the rows shown now
+      window.evmRouteLineQa = function (line, km, r, nep) {
+        var G = rtGeom({ km: km, line: line }), out = [];
+        ST.forEach(function (s0) { if (rtUsable(s0)) { var x = rtDist(G, s0); if (x && x.d <= r && (nep || ver(s0) === 'ok')) out.push({ id: s0.id, at: x.at, d: x.d }); } });
+        return out.sort(function (a, b) { return a.at - b.at || a.d - b.d; }).map(function (x) { return { id: x.id, at: Math.round(x.at * 10) / 10, d: Math.round(x.d * 100) / 100 }; });
+      };
+      window.evmRouteQa = function () {
+        return { shown: !!RT.shown, open: rtOpen, r: RT.r, km: RT.route ? RT.route.km : null,
+          rows: RT.route ? rtList().rows.map(function (x) { return { id: x.s.id, dc: x.s.dc, v: ver(x.s), at: Math.round(x.at * 10) / 10, d: Math.round(x.d * 100) / 100 }; }) : [] };
+      };
       window.evmCostQa = function (id) { var s0 = BYID[id], co = s0 && costOf(s0); return co ? { kw: co.main.c.kw, kwh: co.main.c.kwh, km: co.main.c.km } : null; };
     }
     if (mlReady === 'err') noMap(); else startMap();

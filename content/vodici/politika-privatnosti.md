@@ -10,9 +10,9 @@ description_nalog: Kako blokvolt.rs postupa sa podacima o ličnosti i pod kojim 
 lead_consent_nalog: Nalog nije obavezan, a oglasnih piksela nema. Posete se broje bez kolačića, kolačić za analitiku postavlja se samo uz vašu dozvolu, a forme, prijave sa mape i nalog čuvaju samo ono što sami upišete.
 description_consent_nalog: Kako blokvolt.rs postupa sa podacima o ličnosti. Nalog nije obavezan; posete se broje bez kolačića, a kolačić za analitiku samo uz vašu dozvolu.
 kicker: Pravno
-updated: 20.10.2026
+updated: 24.10.2026
 published: 2026-09-21
-modified: 2026-10-20
+modified: 2026-10-24
 priority: 0.2
 path: /politika-privatnosti.html
 ---
@@ -97,6 +97,8 @@ Da bi sajt radio i bez veze, pregledač čuva kopije poslednjih 40 otvorenih str
 Na stranici „Mapa punjača“ podloga mape učitava se sa servera OpenFreeMap (tiles.openfreemap.org), pa ti serveri vide vašu IP adresu. Podaci o punjačima su iz Open Charge Map (CC BY 4.0) i OpenStreetMap (ODbL), dopunjeni spiskovima koje mreže same objavljuju. Pravila za prijave, ocene i fotografije su na stranici [Pravila za prijave i fotografije](/pravila-objavljivanja/).
 
 Dugmad „Blizu mene“ i „Najbliži punjač“ koriste vašu lokaciju samo kada ih pritisnete. Lokacija se ne šalje sajtu i ne čuva se. Dugme „Ovde sam“ pri dodavanju punjača samo pomera mapu na vašu lokaciju; sajtu se šalje tek tačka punjača, kad pošaljete formu. Link na evolako.rs u atribuciji mape i u polju „Izdvojeno“ nosi oznaku da dolazite sa BlokVolta.
+
+„Punjači na putu“ traži mesta koja upišete u servisu Photon (photon.komoot.io, Komoot GmbH, Nemačka) i računa rutu u servisu OSRM na serveru FOSSGIS e.V. (routing.openstreetmap.de, Nemačka). Pregledač tim servisima šalje upisani tekst i dve tačke rute, a ako polazak ostavite prazan — vašu lokaciju kao polaznu tačku; oni vide i vašu IP adresu, a FOSSGIS rute beleži u svojim logovima. Sajt ništa od toga ne dobija i ne čuva. Servisi se pozivaju tek kad počnete da kucate ili pritisnete „Prikaži punjače“.
 
 Na stranici mape je i link koji ljudi ne vide, a robots.txt ga zabranjuje robotima. Ako ga neki program ipak otvori, beleže se samo dan, dnevni otisak IP adrese i oznaka programa (User-Agent): tako vidimo ko automatski preuzima podatke protivno uslovima. Nikome se zbog toga ne zabranjuje pristup.
 

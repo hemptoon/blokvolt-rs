@@ -67,7 +67,9 @@ const ICON = {
   park: svg('<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M10 16V8h3a2.5 2.5 0 0 1 0 5h-3"/>'),
   home: svg('<path d="M4 11.5 12 5l8 6.5"/><path d="M6.5 10v9h11v-9"/><path d="M12.8 12.5 11 15.5h2l-1.8 3"/>'),
   bolt: svg('<path d="M13 2.5 5 13.5h6l-1 8 8-11h-6l1-8Z"/>'),
-  list: svg('<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>')
+  list: svg('<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>'),
+  road: svg('<path d="M6 21 9 3M18 21 15 3M12 5v2.5M12 11v2.5M12 17v2.5"/>'),
+  loc: svg('<circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>')
 };
 // directions: Apple Maps first on Apple devices (it is the default there), Google Maps first elsewhere, Waze always.
 // The app a reader opens a route in comes first from then on ('bv:nav' in this browser). Google: dir_action=navigate starts
@@ -753,7 +755,11 @@ function openCard(s, fly, fromNear) {
   sel = s;
   opened = Date.now();
   nearOpen = false;
-  cardNear = !!(fromNear && NEAR);
+  // from = true: opened from "Najbliži punjač"; 'rt': from "Punjači na putu" (or tapped on the map while the route was open)
+  cardRt = !!RT.route && (fromNear === 'rt' || (fromNear !== true && (rtOpen || RT.min || (cardRt && RT.shown))));
+  rtOpen = false; RT.min = false;
+  cardNear = !cardRt && !!(fromNear && NEAR);
+  if (!cardRt && RT.shown) rtClear();
   const n = netOf(s);
   const logo = n && n.logo ? '<span class="lg w' + (n.logo_dark ? ' dark' : '') + '"><img src="' + esc(n.logo) + '" alt=""></span>' : '<span class="lg w mono" aria-hidden="true">' + esc((netName(s) || '?').slice(0, 2).toUpperCase()) + '</span>';
   const netRole = s.cc ? (s.nn ? T.net_known : T.operator) : n && n.page ? T.net_known : (s.opn && !n ? T.operator : T.net_unknown);
@@ -770,7 +776,7 @@ function openCard(s, fly, fromNear) {
     sp: T.src_sp, ye: T.src_ye, bp: 'Best in Parking', own: T.src_own };
   const srcs = s.src.filter(x => x.u).map(x => '<a href="' + esc(x.u) + '" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(x.upd) + ')' : '')).join(' · ');
   $card.innerHTML = '<div class="ccard" role="dialog" aria-label="' + esc(title(s)) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
-    favBtn(s) + (cardNear ? '<button class="lnkbtn nr-back" type="button" data-nr="back">← ' + esc(T.nr_title) + '</button>' : '') +
+    favBtn(s) + (cardNear ? '<button class="lnkbtn nr-back" type="button" data-nr="back">← ' + esc(T.nr_title) + '</button>' : cardRt ? '<button class="lnkbtn nr-back" type="button" data-rt="back">← ' + esc(T.rt_title) + '</button>' : '') +
     '<h2>' + esc(title(s)) + '</h2><p class="addr">' + esc(place(s)) + '</p>' + verHtml(s) + tagsHtml(s) + netLine + priceHtml(s) + noteHtml(s) + kakoHtml(s) + statusHtml(s) + conns + acc + whereHtml(s) +
     '<div class="acts"><a class="btn dark full" href="' + navs[0][1] + '" target="_blank" rel="noopener" data-nav="' + navs[0][2] + '">' + ICON.nav + esc(T.navigate) + '</a>' +
     '<p class="nav-alt">' + esc(T.nav_in) + ' ' + navs.slice(1).map(x => '<a class="lnk" href="' + x[1] + '" target="_blank" rel="noopener" data-nav="' + x[2] + '">' + x[0] + '</a>').join(' · ') + '</p>' +
@@ -788,7 +794,7 @@ function openCard(s, fly, fromNear) {
     if (e.target.closest('[data-share]')) { shareStation(s); return; }
     const a = e.target.closest('a');
     if (!a) return;
-    if (a.dataset.nav) { setNavPref(a.dataset.nav); track('map_navigate', { station: s.id, network: s.net || '', app: a.dataset.nav, from: cardNear ? 'nearest' : 'card' }); }
+    if (a.dataset.nav) { setNavPref(a.dataset.nav); track('map_navigate', { station: s.id, network: s.net || '', app: a.dataset.nav, from: cardNear ? 'nearest' : cardRt ? 'route' : 'card' }); }
     else track(s.cc ? 'map_region_link' : a.href.indexOf('/ispravka/') >= 0 || a.href.indexOf('mailto:') === 0 ? 'map_report_error' : 'map_network_link', { station: s.id, network: s.net || '' });
   });
   rvBind(s);
@@ -836,7 +842,9 @@ function toggleFav(s) {
 }
 function closeCard() {
   if (nearOpen && !sel) { closeNear(); return; }
-  cardNear = false;
+  if (rtOpen && !sel) { rtClose(); return; }
+  if (cardRt) rtClear();
+  cardNear = false; cardRt = false;
   sel = null;
   $card.classList.remove('is-open');
   $card.innerHTML = '';
@@ -923,7 +931,8 @@ function nearPanel(o, fit) {
   const was = nearOpen || !!sel;
   if (sel) { sel = null; history.replaceState(null, '', location.pathname + location.search); renderList(); }
   nearOpen = true;
-  cardNear = false;
+  cardNear = false; cardRt = false; rtOpen = false;
+  if (RT.shown) rtClear();
   let body;
   if (o.wait) body = '<p class="nr-wait" role="status"><span class="nr-spin" aria-hidden="true"></span>' + esc(T.nr_wait) + '</p>';
   else if (o.ask) body = '<p class="nr-msg">' + esc(T.nr_ask) + '</p><button class="btn dark nr-cta" type="button" data-nr="go">' + ICON.nav + '<span>' + esc(T.nr_find) + '</span></button>';
@@ -1008,6 +1017,328 @@ function nearClick(t) {
   }
   return true;
 }
+
+// ---------- "Punjači na putu": fast chargers along a route the reader enters (owner's decision 24.10.2026) ----------
+// The reader types where to (and where from; empty = the reader's location). The places are looked up in Photon
+// (photon.komoot.io, OpenStreetMap data) and the route in OSRM on the FOSSGIS server (routing.openstreetmap.de): the
+// browser sends them only the typed text and the two points; the site gets and stores nothing (RUNBOOK 3.18).
+// Chargers: DC ≥ 50 kW that work (never "Ne radi"), not only for Tesla (unless "Imam Teslu"), usable by the reader's car
+// when one is chosen; within R km of the route (straight line), ordered by the distance along the route. Confirmed only,
+// unless the reader asks for the rest (or none is confirmed); with "Potvrđeni" on, confirmed only. The chip filter and
+// the search text do not count: the route has its own rule. No network or firm is ever put first.
+const RT_GEO = 'https://photon.komoot.io/api/', RT_OSRM = 'https://routing.openstreetmap.de/routed-car/route/v1/driving/';
+const RT_RS = [2, 5, 10], RT_MAXR = 10;
+let RT = { r: 5, nep: false, from: null, to: null }, rtOpen = false, cardRt = false;
+const $rtBtn = d.getElementById('mroute');
+// Serbian Cyrillic place names from OpenStreetMap are shown in Latin script on the Serbian and English pages
+const LATN = { а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', ђ: 'đ', ѓ: 'gj', е: 'e', ж: 'ž', з: 'z', ѕ: 'dz', и: 'i', ј: 'j', к: 'k', ќ: 'kj',
+  л: 'l', љ: 'lj', м: 'm', н: 'n', њ: 'nj', о: 'o', п: 'p', р: 'r', с: 's', т: 't', ћ: 'ć', у: 'u', ф: 'f', х: 'h', ц: 'c', ч: 'č', џ: 'dž', ш: 'š' };
+const latn = x => (LANG === 'ru' ? String(x || '') : String(x || '').replace(/[Ѐ-ӿ]/g, c => {
+  const l = c.toLowerCase(), t = LATN[l];
+  return t == null ? c : c === l ? t : t.charAt(0).toUpperCase() + t.slice(1);
+}));
+function geoLabel(f) {
+  const a = f.properties || {}, out = [];
+  const street = a.street ? a.street + (a.housenumber ? ' ' + a.housenumber : '') : '';
+  [a.name, street, a.city || a.town || a.village || a.district, a.country].forEach(x => {
+    const v = latn(x).trim();
+    if (v && out.indexOf(v) < 0) out.push(v);
+  });
+  return out.join(', ');
+}
+let geoCtl = null;
+// own = a lookup the reader cannot cancel by typing on (the search on submit); suggestions cancel each other
+async function geoSearch(q, own) {
+  let sig;
+  if (!own) { if (geoCtl) geoCtl.abort(); geoCtl = new AbortController(); sig = geoCtl.signal; }
+  const u = RT_GEO + '?q=' + encodeURIComponent(q) + '&limit=6&lang=' + (LANG === 'ru' ? 'default' : 'en') + '&lat=' + C0[1] + '&lon=' + C0[0];
+  const r = await fetch(u, { signal: sig, credentials: 'omit' });
+  if (!r.ok) throw Object.assign(new Error('geo ' + r.status), { code: 'net' });
+  const j = await r.json(), seen = new Set();
+  return (j.features || []).filter(f => f.geometry && f.geometry.coordinates).map(f => ({
+    label: geoLabel(f), pt: { lon: +f.geometry.coordinates[0], lat: +f.geometry.coordinates[1] }
+  })).filter(x => x.label && !seen.has(x.label) && seen.add(x.label)).slice(0, 5);
+}
+async function rtResolve(q) {
+  const r = await geoSearch(q, true);
+  if (!r.length) throw Object.assign(new Error('nf'), { code: 'nf', q });
+  return r[0];
+}
+function rtMe() {
+  return new Promise((ok, no) => {
+    if (!navigator.geolocation) { no(Object.assign(new Error('unavail'), { code: 'unavail' })); return; }
+    navigator.geolocation.getCurrentPosition(p => ok({ label: '', pt: { lat: p.coords.latitude, lon: p.coords.longitude } }),
+      e => no(Object.assign(new Error('geo'), { code: e && e.code === 1 ? 'denied' : 'unavail' })),
+      { enableHighAccuracy: false, timeout: 10000, maximumAge: 120000 });
+  });
+}
+async function rtFetch(a, b) {
+  const ll = p => p.lon.toFixed(5) + ',' + p.lat.toFixed(5);
+  let r;
+  try { r = await fetch(RT_OSRM + ll(a) + ';' + ll(b) + '?overview=full&geometries=geojson&alternatives=false&steps=false', { credentials: 'omit' }); }
+  catch (e) { throw Object.assign(new Error('net'), { code: 'net' }); }
+  const j = r.ok || r.status === 400 ? await r.json().catch(() => null) : null;
+  if (!j) throw Object.assign(new Error('route ' + r.status), { code: 'net' });
+  if (j.code !== 'Ok' || !j.routes || !j.routes.length) throw Object.assign(new Error(j.code || 'noroute'), { code: 'noroute' });
+  const x = j.routes[0];
+  return { km: x.distance / 1000, min: x.duration / 60, line: x.geometry.coordinates };
+}
+// the route on a flat plane in km (good to a few per cent across the region); points closer than 150 m to the last
+// kept one are skipped. a = the distance along the route, scaled to the router's own length.
+function rtGeom(R) {
+  const L = R.line, lat0 = L[Math.floor(L.length / 2)][1] * Math.PI / 180, kx = 111.32 * Math.cos(lat0), ky = 110.57;
+  const P = [], bb = [Infinity, Infinity, -Infinity, -Infinity];
+  let acc = 0, prev = null;
+  L.forEach((c, i) => {
+    const p = { x: c[0] * kx, y: c[1] * ky };
+    if (prev) {
+      const dd = Math.hypot(p.x - prev.x, p.y - prev.y);
+      if (dd < 0.15 && i < L.length - 1) return;
+      acc += dd;
+    }
+    p.a = acc; P.push(p); prev = p;
+    bb[0] = Math.min(bb[0], p.x); bb[1] = Math.min(bb[1], p.y); bb[2] = Math.max(bb[2], p.x); bb[3] = Math.max(bb[3], p.y);
+  });
+  const k = acc > 0 ? R.km / acc : 1;
+  return { P, kx, ky, bb, k };
+}
+function rtDist(G, s) {
+  const x = s.lon * G.kx, y = s.lat * G.ky;
+  if (x < G.bb[0] - RT_MAXR || x > G.bb[2] + RT_MAXR || y < G.bb[1] - RT_MAXR || y > G.bb[3] + RT_MAXR) return null;
+  const P = G.P;
+  let best = Infinity, at = 0;
+  if (P.length === 1) best = (x - P[0].x) ** 2 + (y - P[0].y) ** 2;
+  for (let i = 1; i < P.length; i++) {
+    const a = P[i - 1], b = P[i], dx = b.x - a.x, dy = b.y - a.y, l2 = dx * dx + dy * dy;
+    let t = l2 ? ((x - a.x) * dx + (y - a.y) * dy) / l2 : 0;
+    t = t < 0 ? 0 : t > 1 ? 1 : t;
+    const qx = a.x + t * dx - x, qy = a.y + t * dy - y, dd = qx * qx + qy * qy;
+    if (dd < best) { best = dd; at = a.a + t * Math.sqrt(l2); }
+  }
+  const dk = Math.sqrt(best);
+  return dk <= RT_MAXR ? { d: dk, at: at * G.k } : null;
+}
+function rtUsable(s) {
+  if ((s.dc || 0) < 50 || isOff(s) || (teslaOnly(s) && !TESLA) || !isFinite(s.lat) || !isFinite(s.lon)) return false;
+  const car = carSpec();
+  return !car || dcUsable(s, car);
+}
+function rtList() {
+  const all = (RT.cand || []).filter(x => x.d <= RT.r && rtUsable(x.s)).sort((a, b) => a.at - b.at || a.d - b.d);
+  const ok = all.filter(x => ver(x.s) === 'ok');
+  const every = !state.ok && (RT.nep || !ok.length);
+  const rows = every ? all : ok;
+  return { rows, every, more: !every && !state.ok ? all.length - ok.length : 0 };
+}
+function rtDur(min) {
+  const m = Math.max(1, Math.round(min / 5) * 5), h = Math.floor(m / 60), r = m % 60;
+  return h ? T.rt_h.replace('{h}', h).replace('{m}', r) : T.rt_m.replace('{m}', m);
+}
+// the longest stretch without a fast charger: start → first, between two, last → destination
+function rtGap(rows) {
+  if (!RT.route) return 0;
+  let last = 0, g = 0;
+  rows.forEach(x => { g = Math.max(g, x.at - last); last = x.at; });
+  return Math.max(g, RT.route.km - last);
+}
+function rtRow(x) {
+  const s = x.s, k = kind(s), pw = power(s), ps = priceShort(s), a = navPref(), tags = [];
+  if (ver(s) !== 'ok') tags.push('<span class="tag warn">' + ICON.warn + esc(ver(s) === 'src' ? T.v_src_short : T.v_nep) + '</span>');
+  if (closedNow(s)) tags.push('<span class="tag">' + ICON.clock + esc(T.closed_now) + '</span>');
+  if (s.ax && s.ax.t) tags.push('<span class="tag">' + esc(tr(s.ax.t)) + '</span>');
+  else if (s.acc === 'customers') tags.push('<span class="tag">' + esc(T.customers) + '</span>');
+  const off = x.d < 0.3 ? T.rt_on : T.rt_off.replace('{d}', fmtDist(x.d));
+  return '<li class="nr rt-row">' +
+    '<button class="nr-main" type="button" data-rt-open="' + esc(s.id) + '"><span class="dot ' + k + (ver(s) === 'nep' ? ' nep' : '') + '">' + (pw ? Math.round(pw) : '') + '</span>' +
+    '<span class="nr-nm"><b>' + esc(title(s)) + '</b><span class="nr-sb">' + esc([netName(s), place(s)].filter(Boolean).join(' · ')) + '</span>' +
+    '<span class="nr-meta"><b>' + esc(T.rt_at.replace('{km}', fmt(x.at, 0))) + '</b> · ' + esc(off) + (ps.t ? ' · <span class="nr-pr">' + esc(ps.t) + '</span>' : '') + '</span></span></button>' +
+    '<a class="btn sm nr-go" href="' + esc(navUrl(a, s)) + '" target="_blank" rel="noopener" data-nav="' + a + '" data-st="' + esc(s.id) + '" aria-label="' +
+    esc(T.nr_nav_to.replace('{t}', title(s)).replace('{d}', fmt(x.at, 0) + ' ' + U.km)) + '">' + ICON.nav + '<span>' + esc(T.navigate) + '</span></a>' +
+    (tags.length ? '<div class="tags nr-tags">' + tags.slice(0, 2).join('') + '</div>' : '') + '</li>';
+}
+const FC0 = { type: 'FeatureCollection', features: [] };
+function rtDraw(rows) {
+  if (!map || !map.getSource('rt')) return;
+  const R = RT.route;
+  map.getSource('rt').setData(R ? { type: 'Feature', geometry: { type: 'LineString', coordinates: R.line }, properties: {} } : FC0);
+  map.getSource('rte').setData(R ? { type: 'FeatureCollection', features: [
+    { type: 'Feature', geometry: { type: 'Point', coordinates: R.line[0] }, properties: { e: 'a' } },
+    { type: 'Feature', geometry: { type: 'Point', coordinates: R.line[R.line.length - 1] }, properties: { e: 'b' } }] } : FC0);
+  map.getSource('rts').setData(R && rows ? { type: 'FeatureCollection', features: rows.map(x => feat(x.s)) } : FC0);
+}
+function rtClear() { RT.shown = false; RT.min = false; if (map && map.getSource('rt')) { map.getSource('rt').setData(FC0); map.getSource('rte').setData(FC0); map.getSource('rts').setData(FC0); } }
+function rtFit() {
+  if (!map || !RT.route) return;
+  const b = new maplibregl.LngLatBounds(RT.route.line[0], RT.route.line[0]);
+  RT.route.line.forEach(c => b.extend(c));
+  const pad = window.innerWidth > 900 ? { top: 60, bottom: 60, left: 50, right: 420 } : { top: 50, bottom: 100, left: 30, right: 30 };
+  map.fitBounds(b, { padding: pad, maxZoom: 13, duration: 900 });
+}
+function rtBtnPaint() {
+  if (!$rtBtn) return;
+  const v = $rtBtn.querySelector('[data-rtlbl]'), on = !!(RT.route && RT.to);
+  $rtBtn.classList.toggle('is-set', on);
+  if (v) v.textContent = on ? T.rt_btn_set.replace('{t}', RT.to.label.split(',')[0]).replace('{n}', rtList().rows.length) : T.rt_btn_sub;
+}
+const RT_ERR = { nf: 'rt_nf', denied: 'rt_denied', unavail: 'rt_unavail', noroute: 'rt_noroute', same: 'rt_same', need: 'rt_need', net: 'rt_err' };
+function rtBody(fit) {
+  const box = $card.querySelector('.rt-res');
+  if (!box) return;
+  let h = '';
+  if (RT.wait) h = '<p class="nr-wait" role="status"><span class="nr-spin" aria-hidden="true"></span>' + esc(T.rt_wait) + '</p>';
+  else if (RT.err) h = '<p class="nr-msg" role="alert">' + esc((T[RT_ERR[RT.err] || 'rt_err'] || '').replace('{q}', RT.errq || '')) + '</p>';
+  else if (RT.route) {
+    const r = rtList(), R = RT.route, car = carSpec(), a = navPref(), gap = rtGap(r.rows);
+    const out = R.line.some(c => c[0] < 13 || c[0] > 23.6 || c[1] < 39.5 || c[1] > 46.6);
+    h = '<p class="rt-sum"><b>' + esc(fmt(R.km, 0) + ' ' + U.km) + '</b> · ' + esc(rtDur(R.min)) + '</p>' +
+      '<p class="addr">' + esc((r.every ? T.rt_sub_all : T.rt_sub).replace('{r}', RT.r)) + (car ? ' ' + esc(T.rt_car.replace('{car}', carName(car))) : '') + '</p>' +
+      '<button class="btn rt-mapbtn" type="button" data-rt="map">' + ICON.road + '<span>' + esc(T.rt_map) + '</span></button>' +
+      '<div class="nr-chips rt-chips" role="group" aria-label="' + esc(T.rt_r_l) + '">' + RT_RS.map(x => '<button class="chip" type="button" data-rt-r="' + x + '" aria-pressed="' + (x === RT.r) + '">' + esc(T.rt_r.replace('{r}', x)) + '</button>').join('') + '</div>' +
+      (r.rows.length ? '<ol class="nrl rtl">' + r.rows.map(rtRow).join('') + '</ol>' : '<p class="nr-msg">' + esc(T.rt_none.replace('{r}', RT.r)) + '</p>') +
+      (r.more ? '<p class="nr-more"><button class="lnkbtn" type="button" data-rt="nep">' + esc(T.rt_nep.replace('{n}', r.more)) + '</button></p>' : '') +
+      (gap >= 100 ? '<p class="nr-msg rt-gap">' + ICON.warn + '<span>' + esc(T.rt_gap.replace('{x}', fmt(gap, 0) + ' ' + U.km)) + '</span></p>' : '') +
+      (out ? '<p class="nr-msg">' + esc(T.rt_area) + '</p>' : '') +
+      '<a class="btn rt-dest" href="' + esc(navUrl(a, RT.to.pt)) + '" target="_blank" rel="noopener" data-nav="' + a + '" data-st="">' + ICON.nav + '<span>' + esc(T.rt_dest) + '</span></a>';
+    rtDraw(r.rows);
+    RT.shown = true;
+    if (fit) rtFit();
+  }
+  box.innerHTML = h + '<p class="nr-note">' + esc(T.rt_privacy) + '</p>' +
+    '<p class="nr-note rt-attr">' + esc(T.rt_attr) + ' · <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noopener">' + esc(T.rt_fix) + '</a></p>';
+  fxCard();
+  rtBtnPaint();
+}
+function rtField(id, lab, ph, val) {
+  return '<div class="rt-f"><label for="' + id + '">' + esc(lab) + '</label><div class="rt-in"><input class="input" id="' + id + '" type="text" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="' + esc(ph) + '" value="' + esc(val) + '"' +
+    ' role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="' + id + '-l">' +
+    (id === 'rt-from' ? '<button class="rt-loc" type="button" data-rt="me" title="' + esc(T.rt_me) + '" aria-label="' + esc(T.rt_me) + '">' + ICON.loc + '</button>' : '') +
+    '</div><ul class="rt-sug" id="' + id + '-l" role="listbox" hidden></ul></div>';
+}
+function rtPanel(source) {
+  if (sel) { sel = null; history.replaceState(null, '', location.pathname + location.search); renderList(); }
+  nearOpen = false; cardNear = false; cardRt = false; rtOpen = true; RT.min = false;
+  carOpen = false;
+  if (map && map.getSource('sel')) map.getSource('sel').setData(FC0);
+  $card.innerHTML = '<div class="ccard rtp" role="dialog" aria-label="' + esc(T.rt_title) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
+    '<h2>' + esc(T.rt_title) + '</h2><p class="addr">' + esc(T.rt_lead) + '</p>' +
+    '<form class="rt-form" novalidate>' + rtField('rt-from', T.rt_from, T.rt_me, RT.from ? RT.from.label : '') + rtField('rt-to', T.rt_to, T.rt_to_ph, RT.to ? RT.to.label : '') +
+    '<button class="btn dark rt-go" type="submit">' + ICON.road + '<span>' + esc(T.rt_go) + '</span></button></form><div class="rt-res" aria-live="polite"></div></div>';
+  $card.classList.add('is-open');
+  rtBody(!!RT.route);
+  const f = $card.querySelector(RT.to ? '.x' : '#rt-to');
+  if (f && (window.innerWidth > 900 || RT.to)) f.focus({ preventScroll: true });
+  if (source) track('map_route_open', { source });
+}
+function rtClose() {
+  rtOpen = false;
+  RT.job = null;
+  $card.classList.remove('is-open');
+  $card.innerHTML = '';
+  rtClear();
+  if ($rtBtn && window.innerWidth > 900) $rtBtn.focus({ preventScroll: true });
+}
+async function rtRun() {
+  const fin = $card.querySelector('#rt-from'), tin = $card.querySelector('#rt-to');
+  if (!fin || !tin) return;
+  rtSugHide();
+  const fq = fin.value.trim(), tq = tin.value.trim();
+  const job = RT.job = {};
+  RT.err = ''; RT.errq = '';
+  if (!tq) { RT.route = null; RT.err = 'need'; rtClear(); rtBody(); tin.focus(); return; }
+  RT.wait = true; rtBody();
+  try {
+    const to = RT.to && RT.to.pt && RT.to.label === tq ? RT.to : await rtResolve(tq);
+    const from = !fq ? await rtMe() : RT.from && RT.from.pt && RT.from.label === fq ? RT.from : await rtResolve(fq);
+    if (RT.job !== job) return;
+    if (distKm(from.pt, to.pt) < 0.3) throw Object.assign(new Error('same'), { code: 'same' });
+    const R = await rtFetch(from.pt, to.pt);
+    if (RT.job !== job) return;
+    const G = rtGeom(R), cand = [];
+    ST.forEach(s => { if ((s.dc || 0) >= 50) { const x = rtDist(G, s); if (x) cand.push({ s, d: x.d, at: x.at }); } });
+    RT.from = fq ? from : null; RT.to = to; RT.route = R; RT.cand = cand; RT.nep = false; RT.wait = false;
+    if (!fq) { me = from.pt; showMe(); }
+    if (tin.value.trim() === tq) tin.value = to.label;
+    if (fq && fin.value.trim() === fq) fin.value = from.label;
+    rtBody(true);
+    track('map_route', { ok: true, km: Math.round(R.km), rows: rtList().rows.length, radius: RT.r, from_me: !fq, car: !!CAR, confirmed_only: state.ok });
+  } catch (e) {
+    if (RT.job !== job) return;
+    RT.wait = false; RT.route = null; RT.err = e.code || 'net'; RT.errq = e.q || '';
+    rtClear(); rtBody();
+    track('map_route', { ok: false, error: RT.err });
+  }
+}
+// address suggestions under the field being typed in (Photon), after a short pause
+let rtT = 0;
+function rtSugHide() {
+  $card.querySelectorAll('.rt-sug').forEach(u => { u.hidden = true; u.innerHTML = ''; });
+  $card.querySelectorAll('.rt-in input').forEach(i => i.setAttribute('aria-expanded', 'false'));
+}
+function rtSug(inp) {
+  clearTimeout(rtT);
+  const key = inp.id === 'rt-from' ? 'from' : 'to', q = inp.value.trim(), ul = d.getElementById(inp.id + '-l');
+  if (RT[key] && RT[key].label !== inp.value.trim()) RT[key] = null;
+  if (q.length < 3 || !ul) { if (ul) { ul.hidden = true; ul.innerHTML = ''; } return; }
+  rtT = setTimeout(() => {
+    geoSearch(q).then(list => {
+      if (!inp.isConnected || inp.value.trim() !== q || d.activeElement !== inp) return;
+      RT.sug = list;
+      ul.innerHTML = list.map((x, i) => '<li role="option"><button type="button" data-sug="' + i + '" data-for="' + key + '">' + ICON.pin + '<span>' + esc(x.label) + '</span></button></li>').join('');
+      ul.hidden = !list.length;
+      inp.setAttribute('aria-expanded', String(!!list.length));
+    }, () => {});
+  }, 300);
+}
+function rtClick(t) {
+  if (!rtOpen) {
+    if (sel && cardRt && t.closest('[data-rt="back"]')) { rtPanel(); return true; }
+    return false;
+  }
+  const sg = t.closest('[data-sug]');
+  if (sg) {
+    const x = RT.sug && RT.sug[+sg.dataset.sug];
+    if (x) {
+      RT[sg.dataset.for] = x;
+      const inp = $card.querySelector(sg.dataset.for === 'from' ? '#rt-from' : '#rt-to');
+      if (inp) inp.value = x.label;
+      rtSugHide();
+      if (sg.dataset.for === 'to' || $card.querySelector('#rt-to').value.trim()) rtRun();
+      else { const ti = $card.querySelector('#rt-to'); if (ti) ti.focus(); }
+    }
+    return true;
+  }
+  const op = t.closest('[data-rt-open]');
+  if (op) { const s = ST.find(x => x.id === op.dataset.rtOpen); if (s) openCard(s, true, 'rt'); return true; }
+  const rr = t.closest('[data-rt-r]');
+  if (rr) { RT.r = +rr.dataset.rtR; rtBody(false); track('map_route_radius', { radius: RT.r }); return true; }
+  const b = t.closest('[data-rt]');
+  if (!b) { if (!t.closest('.rt-f')) rtSugHide(); return false; }
+  const k = b.dataset.rt;
+  if (k === 'nep') { RT.nep = true; rtBody(false); }
+  else if (k === 'map') {
+    // phone: the sheet covers the map — hide it and keep the route; a tap on a charger opens its card with "← back"
+    rtOpen = false; RT.min = true;
+    $card.classList.remove('is-open'); $card.innerHTML = '';
+    const w = d.querySelector('.map-wrap'); if (w) w.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    rtFit();
+  }
+  else if (k === 'me') { const fi = $card.querySelector('#rt-from'); if (fi) { fi.value = ''; RT.from = null; } if ($card.querySelector('#rt-to').value.trim()) rtRun(); else $card.querySelector('#rt-to').focus(); }
+  return true;
+}
+if ($rtBtn) $rtBtn.addEventListener('click', () => (rtOpen ? rtClose() : rtPanel('button')));
+$card.addEventListener('submit', e => { if (e.target.closest('.rt-form')) { e.preventDefault(); rtRun(); } });
+$card.addEventListener('input', e => { if (e.target.closest('.rt-in')) rtSug(e.target); });
+$card.addEventListener('keydown', e => {
+  const t = e.target;
+  if (e.key === 'Escape' && t.closest('.rt-f') && $card.querySelector('.rt-sug:not([hidden])')) { rtSugHide(); e.stopPropagation(); return; }
+  if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && t.closest('.rt-f')) {
+    const box = t.closest('.rt-f'), bs = [...box.querySelectorAll('.rt-sug button')];
+    if (!bs.length) return;
+    e.preventDefault();
+    const i = bs.indexOf(t), n = e.key === 'ArrowDown' ? i + 1 : i - 1;
+    if (n < 0) box.querySelector('input').focus(); else bs[Math.min(n, bs.length - 1)].focus();
+  }
+});
 
 // ---------- drivers' reports, ratings and photos (/api, stored in Cloudflare D1) ----------
 function ago(t) {
@@ -1322,6 +1653,9 @@ function refresh() {
   state.lim = 20;
   setData();
   renderList();
+  if (rtOpen && RT.route) rtBody(false);
+  else if (cardRt && RT.shown) rtDraw(rtList().rows);
+  rtBtnPaint();
 }
 function initMap() {
   map = new maplibregl.Map({
@@ -1375,12 +1709,28 @@ function initMap() {
     map.addLayer({ id: 'pt-pr', type: 'symbol', source: 'st', filter: ['!=', ['get', 'pl'], ''], minzoom: 12,
       layout: { 'text-field': ['get', 'pl'], 'text-font': font, 'text-size': 11.5, 'text-anchor': 'left', 'text-offset': [1.25, 0], 'text-padding': 2 },
       paint: { 'text-color': ['match', ['get', 'pc'], 'free', '#3F5206', 'old', '#8A909B', 'unk', '#8A909B', '#0D111A'], 'text-halo-color': '#FFFFFF', 'text-halo-width': 2.4 } });
+    // "Punjači na putu": the route under the chargers, its fast chargers as larger dark points with a lime ring
+    map.addSource('rt', { type: 'geojson', data: FC0 });
+    map.addSource('rts', { type: 'geojson', data: FC0 });
+    map.addSource('rte', { type: 'geojson', data: FC0 });
+    const below = NRG ? 'rg-pt' : 'pt';
+    map.addLayer({ id: 'rt-case', type: 'line', source: 'rt', layout: { 'line-join': 'round', 'line-cap': 'round' },
+      paint: { 'line-color': '#FFFFFF', 'line-width': ['interpolate', ['linear'], ['zoom'], 5, 5, 12, 10] } }, below);
+    map.addLayer({ id: 'rt-line', type: 'line', source: 'rt', layout: { 'line-join': 'round', 'line-cap': 'round' },
+      paint: { 'line-color': '#2E6BFF', 'line-width': ['interpolate', ['linear'], ['zoom'], 5, 3, 12, 6], 'line-opacity': 0.9 } }, below);
+    // the fast chargers of the route: a blue halo (the route's colour) under their own points
+    map.addLayer({ id: 'rts', type: 'circle', source: 'rts',
+      paint: { 'circle-radius': zr(6, 8, 14, 17), 'circle-color': 'rgba(46,107,255,.2)', 'circle-stroke-width': zr(1.6, 2, 2.5, 2.5), 'circle-stroke-color': '#2E6BFF' } });
     map.addLayer({ id: 'sel', type: 'circle', source: 'sel',
       paint: { 'circle-radius': zr(9, 11, 16, 16), 'circle-color': 'rgba(217,244,91,.35)', 'circle-stroke-width': 3, 'circle-stroke-color': '#0D111A' } }, 'pt');
+    map.addLayer({ id: 'rte', type: 'circle', source: 'rte',
+      paint: { 'circle-radius': 7, 'circle-color': ['match', ['get', 'e'], 'a', '#FFFFFF', '#0D111A'], 'circle-stroke-width': 3,
+        'circle-stroke-color': ['match', ['get', 'e'], 'a', '#2E6BFF', '#FFFFFF'] } });
     // the reader's own position ("Blizu mene", "Najbliži punjač"): a blue dot, never sent anywhere
     map.addLayer({ id: 'me-halo', type: 'circle', source: 'me', paint: { 'circle-radius': 22, 'circle-color': 'rgba(46,107,255,.16)' } });
     map.addLayer({ id: 'me-dot', type: 'circle', source: 'me', paint: { 'circle-radius': 7, 'circle-color': '#FFFFFF', 'circle-stroke-width': 4, 'circle-stroke-color': '#2E6BFF' } });
     showMe();
+    if (RT.route && (rtOpen || cardRt)) { rtDraw(rtList().rows); RT.shown = true; if (rtOpen) rtFit(); }
     if (nearOpen && NEAR && NEAR.rows) {
       map.getSource('sel').setData({ type: 'FeatureCollection', features: NEAR.rows.length ? [feat(NEAR.rows[0].s)] : [] });
       nearFit(NEAR.pt, NEAR.rows);
@@ -1446,7 +1796,7 @@ function setTesla(on, quiet, keep) {
   if (!quiet && ACC) accPost('podesavanja', { tesla: on });
   paintChips();
   refresh();
-  if (sel) openCard(sel, false, cardNear);
+  if (sel) openCard(sel, false, cardRt ? 'rt' : cardNear);
 }
 function setChip(f, quiet) {
   state.f = f;
@@ -1491,7 +1841,7 @@ $list.addEventListener('click', e => {
 d.addEventListener('keydown', e => {
   if (e.key !== 'Escape' || d.querySelector('.lb')) return;
   if (adding) { addEnd(); return; }
-  if (sel || nearOpen || carOpen) { if (carOpen) closeCar(); else closeCard(); }
+  if (sel || nearOpen || carOpen || rtOpen) { if (carOpen) closeCar(); else closeCard(); }
 });
 $me.addEventListener('click', () => {
   if (!navigator.geolocation) return;
@@ -1514,6 +1864,10 @@ $card.addEventListener('click', e => {
   const t = e.target;
   if (t.closest('.nrp .x')) { closeNear(); return; }
   if (t.closest('.carp .x')) { closeCar(); return; }
+  if (t.closest('.rtp .x')) { rtClose(); return; }
+  const rv = t.closest('.rtp a[data-nav]');
+  if (rv) { setNavPref(rv.dataset.nav); track('map_navigate', { station: rv.dataset.st || '', app: rv.dataset.nav, from: rv.dataset.st ? 'route' : 'route_destination' }); return; }
+  if (rtClick(t)) return;
   const nv = t.closest('.nrp a[data-nav]');
   if (nv) { setNavPref(nv.dataset.nav); track('map_navigate', { station: nv.dataset.st || '', app: nv.dataset.nav, from: 'nearest' }); return; }
   if (nearClick(t)) return;
@@ -1703,7 +2057,8 @@ function modelOpts(list, mk, id) {
 function openCar(source) {
   carBack = sel;
   if (sel) { sel = null; history.replaceState(null, '', location.pathname + location.search); renderList(); }
-  nearOpen = false; cardNear = false; carOpen = true;
+  nearOpen = false; cardNear = false; carOpen = true; cardRt = false; rtOpen = false;
+  if (RT.shown) rtClear();
   $card.innerHTML = '<div class="ccard carp" role="dialog" aria-label="' + esc(T.car_title) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
     '<h2>' + esc(T.car_title) + '</h2><p class="addr">' + esc(T.car_lead) + '</p><div class="car-body"><p class="nr-wait" role="status"><span class="nr-spin" aria-hidden="true"></span>' + esc(T.loading) + '</p></div></div>';
   $card.classList.add('is-open');
@@ -1844,5 +2199,15 @@ Promise.all([getJson(cfg.stations), cfg.nets ? getJson(cfg.nets).catch(() => ({ 
     window.bvCostQa = id => { const s = ST.find(x => x.id === id), co = s && costOf(s); return co ? { kw: co.main.c.kw, kwh: co.main.c.kwh, km: co.main.c.km, alt: co.alt ? co.alt.c.km : null } : null; };
     // the map itself, for scripts/qa/map_nocluster_test.py (zoom, rendered dots, taps)
     window.bvMapObjQa = () => map;
+    // "Punjači na putu" (scripts/qa/map_route_test.py): the rows shown, whether the route is drawn, and the rows for any
+    // line [[lon, lat], …] and radius — evolako.rs is compared with it
+    window.bvRouteQa = () => ({ shown: !!RT.shown, open: rtOpen, r: RT.r, km: RT.route ? RT.route.km : null,
+      rows: RT.route ? rtList().rows.map(x => ({ id: x.s.id, dc: x.s.dc, v: ver(x.s), at: Math.round(x.at * 10) / 10, d: Math.round(x.d * 100) / 100 })) : [],
+      line: map && map.getSource('rt') ? ((map.getSource('rt').serialize() || {}).data || {}).type || null : null });
+    window.bvRouteLineQa = (line, km, r, nep) => {
+      const R = { km, line }, G = rtGeom(R), out = [];
+      ST.forEach(s => { if (rtUsable(s)) { const x = rtDist(G, s); if (x && x.d <= r && (nep || ver(s) === 'ok')) out.push({ id: s.id, at: x.at, d: x.d }); } });
+      return out.sort((a, b) => a.at - b.at || a.d - b.d).map(x => ({ id: x.id, at: Math.round(x.at * 10) / 10, d: Math.round(x.d * 100) / 100 }));
+    };
   }
 }).catch(() => { $count.textContent = T.load_err; });

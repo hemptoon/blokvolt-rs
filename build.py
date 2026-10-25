@@ -906,6 +906,25 @@ MAP_T = {
     'nr_unavail': 'Lokacija trenutno nije dostupna. Pokušajte ponovo za minut.', 'nr_retry': 'Pokušajte ponovo',
     'nr_privacy': 'Lokacija ostaje na vašem uređaju.', 'nr_far': 'Na mapi su punjači u Srbiji i susednim zemljama.', 'nr_find': 'Pronađi najbliže',
     'nr_ask': 'Za najbliže punjače potrebna je vaša lokacija. Pregledač je traži tek kad pritisnete dugme i ne šalje je sajtu.',
+    # "Punjači na putu" (map.js rtPanel; Photon + OSRM/FOSSGIS; RUNBOOK 3.18)
+    'rt_title': 'Brzi punjači na putu', 'rt_lead': 'Upišite kuda idete — mapa pokazuje brze punjače (DC od 50 kW) duž rute.',
+    'rt_from': 'Polazak', 'rt_to': 'Odredište', 'rt_me': 'Moja lokacija', 'rt_to_ph': 'Grad ili adresa', 'rt_go': 'Prikaži punjače',
+    'rt_wait': 'Računam rutu…', 'rt_h': '{h} h {m} min', 'rt_m': '{m} min',
+    'rt_sub': 'Potvrđeni brzi punjači do {r} km od puta, redom od polaska.',
+    'rt_sub_all': 'Uključeni su i nepotvrđeni · brzi punjači do {r} km od puta, redom od polaska.',
+    'rt_car': 'Samo oni na kojima može da puni vaš {car}.',
+    'rt_r': 'do {r} km', 'rt_r_l': 'Udaljenost od puta', 'rt_at': '{km} km od polaska', 'rt_off': '{d} od puta', 'rt_on': 'uz put',
+    'rt_none': 'Na ovoj ruti nema brzih punjača do {r} km od puta.', 'rt_nep': 'Prikaži i nepotvrđene ({n})',
+    'rt_gap': 'Najduži deo puta bez brzog punjača: {x}. Napunite pre toga.',
+    'rt_area': 'Na mapi su punjači u Srbiji i susednim zemljama; dalje od toga punjači se ne prikazuju.',
+    'rt_dest': 'Navigacija do odredišta', 'rt_need': 'Upišite odredište.',
+    'rt_nf': 'Mesto „{q}“ nije pronađeno. Probajte samo sa imenom grada.',
+    'rt_denied': 'Pregledač nema dozvolu za lokaciju. Upišite polazak ili dozvolite lokaciju u podešavanjima pregledača.',
+    'rt_unavail': 'Lokacija trenutno nije dostupna. Upišite polazak.', 'rt_noroute': 'Ruta između ova dva mesta nije pronađena.',
+    'rt_same': 'Polazak i odredište su na istom mestu.', 'rt_err': 'Ruta trenutno ne može da se izračuna. Pokušajte ponovo za minut.',
+    'rt_privacy': 'Upisana mesta i tačke rute pregledač šalje samo servisima Photon (Komoot) i OSRM (FOSSGIS), radi pretrage i rute. Sajt ih ne dobija i ne čuva.',
+    'rt_attr': 'Ruta i adrese: © OpenStreetMap, OSRM · FOSSGIS, Photon', 'rt_fix': 'Ispravi mapu',
+    'rt_map': 'Prikaži rutu na mapi', 'rt_btn_sub': 'upišite odredište — brzi od 50 kW', 'rt_btn_set': 'do {t} · brzih punjača: {n}',
     # hours, cable, parking (mreze.json, dopune.json)
     'oh_open': 'sada radi do {t}', 'oh_closed': 'sada zatvoreno, otvara u {t}', 'closed_now': 'sada zatvoreno',
     'cab_own': 'Ponesite svoj Tip 2 kabl',
@@ -2419,6 +2438,7 @@ CSP = '; '.join([
     "img-src 'self' data: blob: https://tiles.openfreemap.org",
     "font-src 'self'",
     "connect-src 'self' https://tiles.openfreemap.org https://cloudflareinsights.com https://evolako-bot.mr-smekhov.workers.dev"
+    + ' https://photon.komoot.io https://routing.openstreetmap.de'   # "Punjači na putu": places and the route (map.js)
     + (' ' + ' '.join(_ph) if _ph else ''),   # evolako-bot: our own visit counter (bv.js, RUNBOOK 3.16)
     "worker-src 'self' blob:",
     "child-src 'self' blob:",

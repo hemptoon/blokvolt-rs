@@ -22,6 +22,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 - [Prijava greške](/ispravka/): nova vrsta prijave „Servis za električne automobile“, za pogrešan podatak ili servis koji nedostaje. Dugme „Prijavi grešku“ na kartici servisa vodi pravo na nju.
 - [Moj BlokVolt](/nalog/): u spisku modela za „Moj auto“ sada je i Tesla — Model 3 i Model Y po verzijama i godinama, Model S i Model X. Kad izaberete Teslu, uključuje se „Imam Teslu“, a za brzo punjenje predlaže se CCS2.
 - [Mapa punjača](/mapa/): ispod naslova sada piše da mapu održava tim Evolako. Do sada je to stajalo samo u potpisu mape i na stranici [O sajtu](/o-sajtu/). Podaci, redosled i pravila mape nisu menjani.
+- [Mapa punjača](/mapa/): novo dugme „Punjači na putu“. Upišete odredište (i polazak, ili ostavite vašu lokaciju), a mapa nacrta rutu i pokaže brze punjače (DC od 50 kW) do 2, 5 ili 10 km od puta, redom od polaska, sa razdaljinom od polaska i od puta i najdužim delom puta bez brzog punjača. Mesta i ruta se računaju u otvorenim servisima Photon i OSRM (FOSSGIS); šta im se šalje piše u [politici privatnosti](/politika-privatnosti.html).
 
 ## 20. oktobar 2026
 
