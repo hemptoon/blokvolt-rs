@@ -1,10 +1,10 @@
 /* BlokVolt — "Moj BlokVolt" (/nalog/) and the pages the newsletter's e-mails link to (/pregled/potvrda/,
    /pregled/odjava/). No dependencies, like bv.js. The account lives on the server (/api/nalog/*, /api/posta/*, see
    worker/_worker.js); these static pages only show it. The session is the HttpOnly cookie bv_s; bv_in=1 (readable)
-   only says that someone is signed in in this browser. Favourites and "Imam Teslu" are also kept in localStorage
-   ('bv:fav', 'bv:tesla', as on the map), so the map works offline and without an account; 'bv:fav-owner' says which
+   only says that someone is signed in in this browser. Favourites and the car are also kept in localStorage
+   ('bv:fav', 'bv:car', as on the map), so the map works offline and without an account; 'bv:fav-owner' says which
    account the list belongs to (a short hash from the server), so the lists of two people on one browser are never
-   joined. Signing out and deleting the account remove all three. The sign-up forms of the newsletter (/pregled/ and
+   joined. Signing out and deleting the account remove them (and the old 'bv:tesla' of the switch removed 25.10.2026). The sign-up forms of the newsletter (/pregled/ and
    the boxes under the news) are handled by bv.js. Texts: <script id="bv-i18n">. docs/RUNBOOK.md 3.27. */
 (function () {
   'use strict';
@@ -71,7 +71,7 @@
   }
   function saveLocalFavs(a) { lsSet('bv:fav', JSON.stringify(a.slice(0, 300))); }
   // signed out or deleted: this browser keeps nothing of the account
-  function forgetLocal() { ['bv:fav', 'bv:tesla', 'bv:fav-owner'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) { /* private mode */ } }); }
+  function forgetLocal() { ['bv:fav', 'bv:car', 'bv:tesla', 'bv:fav-owner'].forEach(function (k) { try { localStorage.removeItem(k); } catch (e) { /* private mode */ } }); }
   // the plural form of the page language: 'one' | 'few' | 'many' (Serbian and Russian have all three, English two)
   function plural(n) {
     var c = 'other';
@@ -301,12 +301,12 @@
       all('[data-nl-email]').forEach(function (el) { el.textContent = j.user.email; el.classList.remove('nl-sk-t'); });
       $('nl-since').textContent = j.user.created_at ? T.since.replace('{d}', fmtDate(j.user.created_at)) : '';
       $('nl-export').href = API + '/nalog/izvoz';
-      // this browser follows the account: "Imam Teslu" for the map, the display currency (assets/valuta.js) and the
+      // this browser follows the account: the car for the map (syncCar), the display currency (assets/valuta.js) and the
       // favourites (syncFavs)
-      lsSet('bv:tesla', j.user.tesla ? '1' : '0');
       if (window.bvFxAccount) window.bvFxAccount(j.user);
       syncFavs(j);
       fillCar(j.user);
+      syncCar(j);
       fillPregled(j.sub);
       loadReports();
       if (fresh) $('nl-h1').focus();
@@ -392,39 +392,116 @@
       });
     });
 
-    // ---- 2. the car
-    var fCar = $('nl-f-car'), model = $('nl-model');
-    function fillCar(u) {
-      var car = u.car || '', known = !!car && all('option', model).some(function (o) { return o.value === car && o.value !== '*'; });
-      model.value = !car ? '' : known ? car : '*';
-      $('nl-other').value = known ? '' : car;
-      $('nl-other-w').hidden = model.value !== '*';
-      all('[name=dc]', fCar).forEach(function (r) { r.checked = r.value === u.dc; });
-      $('nl-tesla').checked = !!u.tesla;
-      $('nl-city').value = u.city || '';
+    // ---- 2. the car (25.10.2026). The map's list of cars (CFG.cars — the same cars as /assets/map/auta.json, so the
+    // map counts the cost per km with this car), models sold in Serbia that the list does not have yet (CFG.extra_cars,
+    // by name: no cost per km), or any other model typed in. The account keeps the car's id in the map's list (car_id),
+    // its name (car), the reader's own consumption, own Type 2 cable and optional on-board charger, and the fast-charging
+    // plug (from the list, or chosen here for a car not on it); "Tesla" follows the car (the server decides). This
+    // browser keeps the same car for the map ('bv:car' = {id, cons, cab, opt}).
+    var fCar = $('nl-f-car'), sMk = $('nl-make'), sMd = $('nl-model');
+    var CARS = CFG.cars || [], EXTRA = CFG.extra_cars || [], MAKES = CFG.makes || {};
+    function carById(id) { for (var i = 0; i < CARS.length; i++) if (CARS[i].id === id) return CARS[i]; return null; }
+    function num1(n) { return Number(n).toLocaleString(LOC, { maximumFractionDigits: 1 }); }
+    function localCar() {
+      try { var c = JSON.parse(lsGet('bv:car') || 'null'); return c && typeof c.id === 'string' && carById(c.id) ? c : null; } catch (e) { return null; }
     }
-    model.addEventListener('change', function () {
-      $('nl-other-w').hidden = model.value !== '*';
-      if (model.value === '*') $('nl-other').focus();
-      // a Tesla from the list: Superchargers count as available, and a European Tesla charges fast over CCS2
-      if (/^Tesla /.test(model.value)) {
-        $('nl-tesla').checked = true;
-        if (!fCar.querySelector('[name=dc]:checked')) fCar.querySelector('[name=dc][value=ccs2]').checked = true;
+    // the account's car for the map in this browser: a car from the list → 'bv:car'; any other (or none) → no car there
+    function carToLocal(u) {
+      if (u.car_id && carById(u.car_id)) lsSet('bv:car', JSON.stringify({ id: u.car_id, cons: u.car_cons || null, cab: !!u.car_cab, opt: !!u.car_opt }));
+      else { try { localStorage.removeItem('bv:car'); } catch (e) { /* private mode */ } }
+    }
+    function carBody(c, cons, cab, opt) {
+      return { car_id: c.id, car: (MAKES[c.mk] + ' ' + c.md).slice(0, 80), car_cons: cons, car_cab: cab, car_opt: !!(c.opt && opt), dc: c.pl === 'chademo' ? 'chademo' : 'ccs2' };
+    }
+    // signed in: an account without a car takes the one this browser's map already has; otherwise the account's car wins
+    function syncCar(j) {
+      var u = j.user, lc = localCar();
+      if (!u.car && !u.car_id && lc) {
+        api('POST', '/nalog/podesavanja', carBody(carById(lc.id), lc.cons && lc.cons >= 8 && lc.cons <= 40 ? lc.cons : null, !!lc.cab, !!lc.opt)).then(function (r) {
+          if (r.ok) { ACC.user = r.user; fillCar(r.user); }
+        });
+        return;
       }
+      carToLocal(u);
+    }
+    function modelOpts(mk, val) {
+      var h = '<option value="">' + esc(T.car_choose_model) + '</option>';
+      CARS.forEach(function (c) { if (c.mk === mk) h += '<option value="' + esc(c.id) + '">' + esc(c.md + ' · ' + c.y) + '</option>'; });
+      EXTRA.forEach(function (x) { if (x[0] === mk) h += '<option value="m:' + esc(x[1]) + '">' + esc(x[1]) + '</option>'; });
+      sMd.innerHTML = h + '<option value="*">' + esc(T.car_other) + '</option>';
+      sMd.disabled = !mk || mk === '*';
+      sMd.value = val || '';
+    }
+    // what the form shows for the chosen make and model
+    function paintCarForm() {
+      var mk = sMk.value, v = sMd.value, named = v.indexOf('m:') === 0, c = mk && mk !== '*' && v && !named && v !== '*' ? carById(v) : null;
+      var other = mk === '*' || v === '*';
+      $('nl-model-w').hidden = mk === '*';
+      $('nl-other-w').hidden = !other;
+      $('nl-nokm').hidden = !(named || (other && $('nl-other').value.trim()));
+      $('nl-spec').hidden = !c;
+      $('nl-dc-w').hidden = !(named || other);
+      if (c) {
+        $('nl-cons').placeholder = T.car_cons_ph.replace('{x}', num1(c.cons));
+        $('nl-opt-w').hidden = !c.opt;
+        if (c.opt) $('nl-opt-t').textContent = T.car_opt.replace('{k}', num1(c.opt));
+      }
+    }
+    function fillCar(u) {
+      var c = u.car_id && carById(u.car_id), name = u.car || '', mk = '', v = '', other = '';
+      if (c) { mk = c.mk; v = c.id; }
+      else if (name) {
+        // a model by name: one of the models sold here, or typed in (an older account's model shows here too, under its
+        // make when the name starts with one, so the right version can be picked from the list)
+        Object.keys(MAKES).forEach(function (k) { if (!mk && name.indexOf(MAKES[k] + ' ') === 0) mk = k; });
+        var rest = mk ? name.slice(MAKES[mk].length + 1) : name;
+        EXTRA.forEach(function (x) { if (!v && x[0] === mk && x[1] === rest) v = 'm:' + rest; });
+        if (!v) { v = '*'; other = rest; if (!mk) mk = '*'; }
+      }
+      sMk.value = mk;
+      modelOpts(mk, mk === '*' ? '' : v);
+      $('nl-other').value = other;
+      $('nl-cons').value = c && u.car_cons ? num1(u.car_cons) : '';
+      $('nl-cab').checked = !!(c && u.car_cab);
+      $('nl-opt').checked = !!(c && u.car_opt);
+      all('[name=dc]', fCar).forEach(function (r) { r.checked = r.value === u.dc; });
+      $('nl-city').value = u.city || '';
+      paintCarForm();
+    }
+    sMk.addEventListener('change', function () {
+      modelOpts(sMk.value, '');
+      paintCarForm();
+      if (sMk.value === '*') $('nl-other').focus(); else if (sMk.value) sMd.focus();
     });
+    sMd.addEventListener('change', function () {
+      $('nl-cons').value = ''; $('nl-opt').checked = false;
+      paintCarForm();
+      if (sMd.value === '*') $('nl-other').focus();
+    });
+    $('nl-other').addEventListener('input', paintCarForm);
     fCar.addEventListener('submit', function (e) {
       e.preventDefault();
       var btn = fCar.querySelector('[type=submit]'), dc = fCar.querySelector('[name=dc]:checked');
-      var car = model.value === '*' ? $('nl-other').value.trim() : model.value;
+      var mk = sMk.value, v = sMd.value, c = mk && mk !== '*' && v && v.indexOf('m:') !== 0 && v !== '*' ? carById(v) : null, body;
+      if (c) {
+        var raw = $('nl-cons').value.trim(), cons = raw ? parseFloat(raw.replace(',', '.')) : null;
+        if (raw && !(cons >= 8 && cons <= 40)) { toast(T.err_cons); $('nl-cons').focus(); return; }
+        body = carBody(c, cons && Math.abs(cons - c.cons) > 0.05 ? Math.round(cons * 10) / 10 : null, $('nl-cab').checked, $('nl-opt').checked);
+      } else {
+        var text = v.indexOf('m:') === 0 ? v.slice(2) : (mk === '*' || v === '*') ? $('nl-other').value.trim() : '';
+        var name = mk && mk !== '*' ? (MAKES[mk] + (text ? ' ' + text : '')) : text;
+        body = { car_id: '', car: name.slice(0, 80), car_cons: null, car_cab: false, car_opt: false, dc: dc ? dc.value : '' };
+      }
+      body.city = $('nl-city').value;
       btn.disabled = true;
-      api('POST', '/nalog/podesavanja', { car: car.slice(0, 80), dc: dc ? dc.value : '', tesla: $('nl-tesla').checked, city: $('nl-city').value }).then(function (j) {
+      api('POST', '/nalog/podesavanja', body).then(function (j) {
         btn.disabled = false;
         if (!j.ok) return fail(j);
         ACC.user = j.user;
-        lsSet('bv:tesla', j.user.tesla ? '1' : '0');
+        carToLocal(j.user);
         fillCar(j.user);
         toast(T.saved);
-        track('account_settings', { car: !!j.user.car, dc: j.user.dc || '', tesla: !!j.user.tesla, city: j.user.city || '' });
+        track('account_settings', { car: !!j.user.car, car_list: !!j.user.car_id, dc: j.user.dc || '', tesla: !!j.user.tesla, city: j.user.city || '' });
       });
     });
 

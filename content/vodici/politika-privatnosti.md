@@ -10,9 +10,9 @@ description_nalog: Kako blokvolt.rs postupa sa podacima o ličnosti i pod kojim 
 lead_consent_nalog: Nalog nije obavezan, a oglasnih piksela nema. Posete se broje bez kolačića, kolačić za analitiku postavlja se samo uz vašu dozvolu, a forme, prijave sa mape i nalog čuvaju samo ono što sami upišete.
 description_consent_nalog: Kako blokvolt.rs postupa sa podacima o ličnosti. Nalog nije obavezan; posete se broje bez kolačića, a kolačić za analitiku samo uz vašu dozvolu.
 kicker: Pravno
-updated: 24.10.2026
+updated: 25.10.2026
 published: 2026-09-21
-modified: 2026-10-24
+modified: 2026-10-25
 priority: 0.2
 path: /politika-privatnosti.html
 ---
@@ -37,7 +37,7 @@ Pri svakoj poseti provajder sajta (Cloudflare) obrađuje tehničke podatke: IP a
 - **Svrha i osnov:** odgovor na poruke, tačni podaci, bezbedan i ispravan rad sajta i prikaz mape (legitimni interes).<!--nalog--> Nalog se vodi na vaš zahtev, radi usluge koju ste tražili (ugovor).<!--/nalog--><!--pregled--> Nedeljni pregled se šalje samo uz vašu saglasnost.<!--/pregled--> Automatizovanog odlučivanja nema, a podaci se ne prodaju.
 - **Rokovi:** prepiska i poruke iz formi čuvaju se najduže 12 meseci od poslednjeg kontakta, a na zahtev se brišu i ranije, osim ako zakon traži duže čuvanje. Upiti iz pretrage čuvaju se 90 dana. Prijave, ocene i fotografije sa mape stoje dok je punjač na mapi ili dok ne tražite brisanje. Tehničke zapise čuva provajder po svojim pravilima.
 - **Obrađivači:** Cloudflare (hosting, baza podataka, merenje poseta i pretraga po smislu) i Spacemail kompanije Spaceship (e-pošta).<!--posthog--> Korišćenje funkcija sajta meri PostHog (serveri u EU).<!--/posthog--><!--posta--> Mejlove sa sajta šalje Resend.<!--/posta--> Podatke obrađuju i van Srbije, uz mere zaštite iz Zakona o zaštiti podataka o ličnosti: primeren nivo zaštite ili standardne ugovorne klauzule.
-- **Kolačići i memorija pregledača:** <!--noconsent-->sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. U memoriju pregledača (localStorage) upisuju se samo spisak omiljenih punjača, izbor „Imam Teslu“, „Moj auto“ i aplikacija za navigaciju na mapi, i to tek kad ih sami napravite. Kad bi sajt ikada uveo kolačiće za analitiku ili reklame, prvo bi tražio vašu saglasnost.<!--/noconsent--><!--consent-->bez vaše dozvole sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. Ako u baneru dozvolite kolačić za analitiku, PostHog postavlja kolačić čije ime počinje sa ph_ i u memoriju pregledača upisuje nasumični identifikator; kolačić važi godinu dana, a dozvolu možete povući bilo kada (dugme u delu „Merenje poseta“). U memoriju pregledača (localStorage) upisuju se i vaš izbor o kolačiću, spisak omiljenih punjača, izbor „Imam Teslu“, „Moj auto“ i aplikacija za navigaciju na mapi, kad ih sami napravite. Kolačića za reklame nema.<!--/consent--><!--nalog--> Za prijavu na nalog sajt postavlja neophodne kolačiće bv_s, bv_in i bv_n, opisane u delu [Nalog](#nalog).<!--/nalog-->
+- **Kolačići i memorija pregledača:** <!--noconsent-->sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. U memoriju pregledača (localStorage) upisuju se samo spisak omiljenih punjača, „Moj auto“ i aplikacija za navigaciju na mapi, i to tek kad ih sami napravite. Kad bi sajt ikada uveo kolačiće za analitiku ili reklame, prvo bi tražio vašu saglasnost.<!--/noconsent--><!--consent-->bez vaše dozvole sajt ne postavlja kolačiće za praćenje; provajder može da postavi samo tehnički neophodan bezbednosni kolačić. Ako u baneru dozvolite kolačić za analitiku, PostHog postavlja kolačić čije ime počinje sa ph_ i u memoriju pregledača upisuje nasumični identifikator; kolačić važi godinu dana, a dozvolu možete povući bilo kada (dugme u delu „Merenje poseta“). U memoriju pregledača (localStorage) upisuju se i vaš izbor o kolačiću, spisak omiljenih punjača, „Moj auto“ i aplikacija za navigaciju na mapi, kad ih sami napravite. Kolačića za reklame nema.<!--/consent--><!--nalog--> Za prijavu na nalog sajt postavlja neophodne kolačiće bv_s, bv_in i bv_n, opisane u delu [Nalog](#nalog).<!--/nalog-->
 
 </details>
 
@@ -62,15 +62,16 @@ Ako u baneru dozvolite kolačić, PostHog od sledeće stranice čuva nasumični 
 
 ## Omiljeni punjači
 
-<!--nonalog-->Punjač koji na mapi sačuvate u omiljene i izbor „Imam Teslu“ upisuju se samo u vaš pregledač (localStorage). Ne šalju se sajtu i nestaju kad obrišete podatke sajta u pregledaču.<!--/nonalog-->
+<!--nonalog-->Punjač koji na mapi sačuvate u omiljene upisuje se samo u vaš pregledač (localStorage). Ne šalje se sajtu i nestaje kad obrišete podatke sajta u pregledaču.<!--/nonalog-->
 
-„Moj auto“ na mapi (marka, model, potrošnja i da li imate svoj kabl) i aplikacija za navigaciju koju ste poslednji put izabrali čuvaju se samo u vašem pregledaču (localStorage). Ne šalju se sajtu ni u nalog i nestaju kad obrišete podatke sajta u pregledaču.
-<!--nalog-->Punjač koji na mapi sačuvate u omiljene i izbor „Imam Teslu“ čuvaju se u pregledaču (localStorage), a ako ste prijavljeni — i u nalogu. Bez naloga se ne šalju sajtu i nestaju kad obrišete podatke sajta u pregledaču. Odjava i brisanje naloga uklanjaju ih iz pregledača.<!--/nalog-->
+<!--nonalog-->„Moj auto“ na mapi (marka, model, potrošnja, da li imate svoj kabl i opcioni punjač u autu) i aplikacija za navigaciju koju ste poslednji put izabrali čuvaju se samo u vašem pregledaču (localStorage). Ne šalju se sajtu i nestaju kad obrišete podatke sajta u pregledaču.<!--/nonalog-->
+<!--nalog-->Aplikacija za navigaciju koju ste poslednji put izabrali na mapi čuva se samo u vašem pregledaču (localStorage) i ne šalje se sajtu.<!--/nalog-->
+<!--nalog-->Punjač koji na mapi sačuvate u omiljene i „Moj auto“ (marka, model, potrošnja, da li imate svoj kabl i opcioni punjač u autu) čuvaju se u pregledaču (localStorage), a ako ste prijavljeni — i u nalogu. Bez naloga se ne šalju sajtu i nestaju kad obrišete podatke sajta u pregledaču. Odjava i brisanje naloga uklanjaju ih iz pregledača.<!--/nalog-->
 
 <!--nalog-->## Nalog<!--pregled--> i Nedeljni pregled<!--/pregled--> {#nalog}<!--/nalog-->
 <!--nonalog--><!--pregled-->## Nedeljni pregled {#nalog}<!--/pregled--><!--/nonalog-->
 
-<!--nalog-->Nalog nije obavezan. Uz njega se čuvaju e-adresa i jezik, a ako ih upišete — i omiljeni punjači, auto, brzi priključak, izbor „Imam Teslu“ i grad. Čuva se i veza sa ocenama i fotografijama koje pošaljete sa mape dok ste prijavljeni. Za svaki uređaj na kome ste prijavljeni čuva se sesija: vreme prijave i poslednjeg korišćenja.<!--/nalog-->
+<!--nalog-->Nalog nije obavezan. Uz njega se čuvaju e-adresa i jezik, a ako ih upišete — i omiljeni punjači, auto (model, potrošnja, da li imate svoj kabl i opcioni punjač u autu), brzi priključak i grad. Čuva se i veza sa ocenama i fotografijama koje pošaljete sa mape dok ste prijavljeni. Za svaki uređaj na kome ste prijavljeni čuva se sesija: vreme prijave i poslednjeg korišćenja.<!--/nalog-->
 
 <!--nalog-->Prijava je bez lozinke: na e-adresu stižu šestocifreni kod i link koji važe 15 minuta i mogu se iskoristiti jednom. Sajt čuva samo njihov jednosmerni otisak, ne i sam kod.<!--/nalog-->
 
@@ -142,7 +143,7 @@ Sajt vodi tim BlokVolt (kontakt: hello@blokvolt.com). Korišćenjem sajta prihva
 - Tekstovi, tabele i znak BlokVolt su zaštićeni. Citiranje uz link je dozvoljeno, a kopiranje u komercijalne svrhe bez pisane saglasnosti nije. Izuzetak su [podaci za preuzimanje](/preuzimanje/), pod licencom CC BY-NC 4.0; verzije preuzete pre 06.10.2026. ostaju pod licencom CC BY 4.0.
 - Sajt je dostupan „takav kakav jeste“. Vlasnik sajta ne odgovara za štetu zbog privremene nedostupnosti sajta, promene cena kod firmi ili sadržaja spoljnih linkova.
 - Važeća verzija je uvek na ovoj stranici. Prva verzija važi od 21.09.2026, dopuna o mapi punjača od 23.09.2026, dopuna o formama, prijavama sa mape i videu od 24.09.2026, dopuna o merenju poseta i omiljenim punjačima od 25.09.2026, dopuna o izboru „Imam Teslu“ od 28.09.2026, dopuna o oglasima od 29.09.2026, a dopuna o „Najbližem punjaču“, „Mom autu“, kratkim odgovorima sa mape i bazi punjača od 06.10.2026.
-<!--nalog-->- Dopuna o nalogu važi od {{NALOG_OD}}.<!--/nalog-->
+<!--nalog-->- Dopuna o nalogu važi od {{NALOG_OD}}, a dopuna o „Mom autu“ u nalogu, istom kao na mapi, od 25.10.2026.<!--/nalog-->
 <!--pregled-->- Dopuna o Nedeljnom pregledu važi od {{PREGLED_OD}}.<!--/pregled-->
 
 </details>

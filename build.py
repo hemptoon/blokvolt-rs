@@ -883,7 +883,7 @@ MAP_T = {
     'fav_none': 'Još nema omiljenih punjača. Otvorite punjač i dodirnite zvezdicu — lista se čuva u ovom pregledaču.',
     # prices on the pins, Tesla-only chargers, our checked facts (content/mapa/dopune.json)
     'per_kwh': 'RSD/kWh', 'tesla_only': 'Samo Tesla', 'p_tesla_only': 'Samo za Tesla vozila', 'p_tesla_fee': '{t} — {s}.',
-    'p_tesla_hint': 'Imate Teslu? Uključite „Imam Teslu“ iznad liste punjača.', 'p_by_receipt': 'Po računima sa ovog punjača ({d})',
+    'p_tesla_hint': 'Vozite Teslu? Izaberite je u „Moj auto“ iznad liste punjača.', 'p_by_receipt': 'Po računima sa ovog punjača ({d})',
     'p_est': '≈ {k} RSD po kWh ako auto puni sa {w} kW', 'v_own': 'na sajtu vlasnika lokacije',
     'where': 'Gde tačno', 'addr_none': 'Adresa nije poznata — koristite koordinate.', 'copy': 'Kopiraj', 'copied_ll': 'Kopirano',
     'q_net': 'Tačka je sa spiska mreže.', 'q_osm': 'Tačka je iz OpenStreetMap-a.',
@@ -1095,6 +1095,7 @@ PG = {'on': _PG_ON, 'day': _PG_DAY, 'dayi': DAY_FORMS[_PG_DAY][0], 'dayu': DAY_F
 print('features: accounts ' + ('on' if ACCOUNTS else 'off') + ', pregled ' + ('on' if PG['on'] else 'off'))
 if ACCOUNTS:   # the map's favourites also go to the account of a signed-in reader
     MAP_T['fav_none'] = 'Još nema omiljenih punjača. Otvorite punjač i dodirnite zvezdicu — lista se čuva u ovom pregledaču, a ako ste prijavljeni — i u nalogu.'
+    MAP_T['car_note'] = 'Izbor se čuva u ovom pregledaču, a ako ste prijavljeni — i u nalogu, za sve uređaje.'
     M['i18n'] = json.dumps(MAP_T, ensure_ascii=False)
 base_ctx = dict(SITE=SITE, TODAY=TODAY, ISO_TODAY=ISO_TODAY, FIRMS_CHECKED=FIRMS_CHECKED, SITE_META=SITE_META, NAV=NAV,
                 n_firms=len(published), n_map=MAP['n'], ANALYTICS=ANALYTICS, ANALYTICS_CONSENT=ANALYTICS_CONSENT, APP=APP,
@@ -1982,44 +1983,62 @@ add_url('/preuzimanje/', '0.5')
 # docs/RUNBOOK.md 3.27. /nalog/ is personal: always noindex, never in the sitemap; linked from the header only when
 # accounts are on. /pregled/ is indexable and in the sitemap only when the newsletter is on; /pregled/potvrda/ and
 # /pregled/odjava/ (confirmation, unsubscribing, topics) are always noindex. The data comes from /api (static/assets/nalog.js).
-# Model names for the "Moj auto" list, from ev-modeli.json, without the Serbian words some of them carry there
+# "Moj auto" in the account (25.10.2026): the map's own list of cars (/assets/map/auta.json from ev-specs.json), so the
+# account and the map count the cost per km with the same car. Models sold in Serbia (ev-modeli.json) that the list does
+# not have yet are offered too, by name only (no cost per km for them), and so are Tesla Model S and X; "Drugi model"
+# takes any other. A model counts as on the list when its make and first word (with a one-digit number after it: "Ioniq 5",
+# "Model 3", "Atto 2") match a car there. docs/RUNBOOK.md 3.27.
 EV_CLEAN = {'Električna G-Klasa (G 580 sa EQ tehnologijom)': 'G 580', 'EQE limuzina': 'EQE', 'EQS limuzina': 'EQS',
             'Proace City Verso Electric (putnički kombi, M1)': 'Proace City Verso Electric', 'Grande Panda (električni)': 'Grande Panda',
             'Cooper E (električni)': 'Cooper E', 'Countryman (električni)': 'Countryman E', 'iX3 (Neue Klasse)': 'iX3'}
 
 
-def ev_options():
-    """[(brand, [(stored value "Brand Model", label "Model")])] for the grouped model list."""
-    out = []
+def _mk_key(m):
+    return re.sub(r'[^a-z0-9]', '', fold(m))
+
+
+def _md_key(md):
+    t = md.split()
+    if not t:
+        return ''
+    return re.sub(r'[^a-z0-9]', '', fold(t[0])) + (t[1] if len(t) > 1 and re.fullmatch(r'\d', t[1]) else '')
+
+
+def nalog_cars():
+    """(makes, cars, extra) for the account's car form: makes [(key, name)] sorted; cars — the map's list, compact;
+    extra [(make key, model)] — models without specs, by name."""
+    au = json.load(open(DIST / 'assets' / 'map' / 'auta.json', encoding='utf-8'))['cars']
+    names = {}                                   # make key -> how the site writes it (the importers' spelling first)
     for b in EV_DATA['brands']:
-        first, ms = re.split(r'[\s-]', b['brand'])[0].lower(), []
+        names.setdefault(_mk_key(b['brand']), b['brand'])
+    for c in au:
+        names.setdefault(_mk_key(c['mk']), c['mk'])
+    have = {(_mk_key(c['mk']), _md_key(c['md'])) for c in au}
+    cars = [{'id': c['id'], 'mk': _mk_key(c['mk']), 'md': c['md'], 'y': c['y'], 'cons': c['cons'], 'pl': c['pl'],
+             'opt': c['opt']['ac'] if c.get('opt') else None} for c in au]
+    extra = []
+    for b in EV_DATA['brands']:
+        k = _mk_key(b['brand'])
         for m in b['models']:
             label = EV_CLEAN.get(m['model'], re.sub(r'\s*\(električn[ia]\)$', '', m['model']))
-            value = label if label.lower().startswith(first) else f"{b['brand']} {label}"
-            if value not in (x[0] for x in ms):
-                ms.append((value, label))
-        out.append((b['brand'], ms))
-    # Tesla has no importer in Serbia, so it is not in ev-modeli.json; its versions come from ev-specs.json (the same cars
-    # the map's "Moj auto" uses for the cost per km), plus Model S and X, which are not there yet.
-    specs = json.load(open(ROOT / 'content' / 'data' / 'ev-specs.json', encoding='utf-8'))['cars']
-    ms = []
-    for c in specs:
-        if c['make'] != 'Tesla':
-            continue
-        yrs = re.sub(r'\s*\(.*\)$', '', c['years']).replace('-', '–')
-        label = f"{c['model']}, {yrs}"
-        ms.append((f"Tesla {label}", label))
-    ms +=[('Tesla Model S', 'Model S'), ('Tesla Model X', 'Model X')]
-    out.append(('Tesla', ms))
-    out.sort(key=lambda b: fold(b[0]))
-    return out
+            bare = re.sub(r'^' + re.escape(b['brand']) + r'\s+', '', label, flags=re.I)
+            if (k, _md_key(bare)) in have or [k, bare] in extra:
+                continue
+            extra.append([k, bare])
+    extra += [['tesla', 'Model S'], ['tesla', 'Model X']]
+    makes = sorted(({k for k, _ in extra} | {c['mk'] for c in cars}), key=lambda k: fold(names[k]))
+    return [(k, names[k]) for k in makes], cars, extra
+
+
+NL_MAKES, NL_CARS, NL_EXTRA = nalog_cars()
 
 
 _mcfg = json.loads(M['cfg'])
 NL_CFG = json.dumps({'api': '/api', **{k: _mcfg[k] for k in ('stations', 'nets', 'extra', 'region')},
-                     'names': {k: v.get('name') for k, v in MAP['nets'].items() if v.get('name')}},
+                     'names': {k: v.get('name') for k, v in MAP['nets'].items() if v.get('name')},
+                     'makes': dict(NL_MAKES), 'cars': NL_CARS, 'extra_cars': NL_EXTRA},
                     ensure_ascii=False).replace('</', '<\\/')
-render('nalog.html', '/nalog/', noindex=True, section='', NL_CFG=NL_CFG, EV_OPTS=ev_options(), CITY_OPTS=CITY_OPTS,
+render('nalog.html', '/nalog/', noindex=True, section='', NL_CFG=NL_CFG, CAR_MAKES=NL_MAKES, CITY_OPTS=CITY_OPTS,
        title='Moj BlokVolt: omiljeni punjači, auto i podešavanja | BlokVolt',
        description='Nalog na sajtu BlokVolt: omiljeni punjači sa mape na svim uređajima, vaš auto i grad, vaše prijave sa mape. Bez lozinke, prijava kodom na e-mail.')
 # the issues: content/pregled/<YYYY-MM-DD>-<slug>.md (format and checks: scripts/pregled.py, docs/RUNBOOK.md 3.27 "Sending

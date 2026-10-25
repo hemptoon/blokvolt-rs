@@ -60,32 +60,32 @@ async def main():
             ests = [x['pl'] for x in f.values() if x['pl'].startswith('~')]
             unk = sum(1 for x in f.values() if x['pl'] == '?')
             print(f'{tag} pins: {len(f)}; estimates {len(ests)} e.g. {ests[:6]}; unknown {unk}; free {sum(1 for x in f.values() if x["pl"] == "0 RSD")}')
-            # the switch
-            await pg.click('#mchips [data-f="tesla"]')
-            await pg.wait_for_timeout(500)
-            t = await pg.evaluate("(document.querySelector('.ccard')||{}).innerText || ''")
-            check('0 RSD za Tesla vozila' in t and 'Samo za Tesla vozila' not in t, f'{tag} tesla price with switch')
-            check(await pg.evaluate("localStorage.getItem('bv:tesla')") == '1', f'{tag} switch saved')
+            # a Tesla in "Moj auto" (no "Imam Teslu" switch since 25.10.2026)
+            check(await pg.evaluate("!document.querySelector('#mchips [data-f=tesla]')"), f'{tag} no "Imam Teslu" chip')
+            tid = await pg.evaluate("fetch('/assets/map/auta.json').then(r => r.json()).then(j => j.cars.find(c => c.mk === 'Tesla').id)")
+            await pg.evaluate("id => localStorage.setItem('bv:car', JSON.stringify({id: id, cons: null, cab: false, opt: false}))", tid)
+            t = await card('/mapa/?qa=1#ocm-150105', 'tesla_on')
+            check('0 RSD za Tesla vozila' in t and 'Samo za Tesla vozila' not in t, f'{tag} tesla price with a Tesla in "Moj auto"')
+            check(await pg.evaluate("localStorage.getItem('bv:tesla')") is None, f'{tag} no bv:tesla kept')
             f = {x['id']: x for x in await pg.evaluate('window.bvMapQa()')}
-            check(f['ocm-150105']['k'] == 'free' and f['ocm-150105']['pl'] == '0 RSD', f'{tag} tesla pin with switch: {f["ocm-150105"]}')
-            await pg.screenshot(path=str(SHOTS / f'x_tesla_on_{tag}.png'))
+            check(f['ocm-150105']['k'] == 'free' and f['ocm-150105']['pl'] == '0 RSD', f'{tag} tesla pin with a Tesla: {f["ocm-150105"]}')
             # copy coordinates
             await pg.click('.ccard [data-copy]')
             await pg.wait_for_timeout(300)
             clip = await pg.evaluate('navigator.clipboard.readText()')
             lbl = await pg.inner_text('.ccard [data-copy]')
             check(clip == '44.71253, 20.56020' and 'Kopirano' in lbl, f'{tag} copy coordinates: {clip!r} {lbl!r}')
-            # free filter with and without the switch
+            # free filter with and without a Tesla
             await pg.goto('about:blank')
             await pg.goto(BASE + '/mapa/?f=free&qa=1', wait_until='load')
             await pg.wait_for_timeout(1200)
             n_on = await pg.inner_text('#mcount')
             f_on = {x['id'] for x in await pg.evaluate('window.bvMapQa ? window.bvMapQa() : []')}
-            await pg.click('#mchips [data-f="tesla"]')
-            await pg.wait_for_timeout(400)
-            n_off = await pg.inner_text('#mcount')
+            await pg.evaluate("localStorage.removeItem('bv:car')")
+            await pg.goto('about:blank')
             await pg.goto(BASE + '/mapa/?f=free&qa=1', wait_until='load')
             await pg.wait_for_timeout(1200)
+            n_off = await pg.inner_text('#mcount')
             f_off = {x['id'] for x in await pg.evaluate('window.bvMapQa()')}
             check('ocm-150105' in f_on or not f_on, f'{tag} free filter with Tesla: {n_on}')
             check('ocm-150105' not in f_off and 'osm-n6797205414' in f_off, f'{tag} free filter without Tesla: {n_off} ({len(f_off)} pins)')

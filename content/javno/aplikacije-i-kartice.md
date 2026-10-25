@@ -72,5 +72,5 @@ Najviše punjača pokriva Charge&GO sa uključenim romingom: sopstvenu mrežu i 
 
 - Pre puta instalirajte Charge&GO i Orion eMobility i dodajte platnu karticu.
 - U aplikaciji Charge&GO cena se vidi pre pokretanja i važi za celu sesiju. Bez naloga cena može biti viša.
-- Na [mapi punjača](/mapa/) svaka kartica pokazuje mrežu i cenu. Vlasnici Tesle mogu da uključe „Imam Teslu“.
+- Na [mapi punjača](/mapa/) svaka kartica pokazuje mrežu i cenu. Vlasnici Tesle biraju je u „Moj auto“, pa mapa Supercharger-e prikazuje kao dostupne.
 - Gde se puni besplatno: [besplatni punjači](/javno-punjenje/besplatni-punjaci/).

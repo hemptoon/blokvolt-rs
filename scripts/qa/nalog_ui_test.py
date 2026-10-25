@@ -196,24 +196,58 @@ async def main():
         check('BIG Beograd Karaburma' in ci_text and 'Radi' in ci_text and 'Objavljeno' in ci_text, f'/nalog/: the report with status and comment state ({ci_text[:80]!r})')
         check(await pg.evaluate("document.querySelector('#nl-favs a.btn').getAttribute('href')") == '/mapa/#ocm-279311', '"Na mapi" opens the station on the map')
 
-        # ---- settings: car, DC, Tesla, city
-        await pg.select_option('#nl-model', 'BYD Dolphin Surf')
-        await pg.check('#nl-f-car [name=dc][value=ccs2]')
-        await pg.check('#nl-tesla')
+        # ---- settings: "Moj auto" from the map's list (25.10.2026), a model by name, a Tesla, the city
+        pick = """(t) => { const o = [...document.querySelectorAll('#nl-model option')].find(o => o.textContent.indexOf(t) === 0); return o ? o.value : null; }"""
+        await pg.select_option('#nl-make', 'byd')
+        dol = await pg.evaluate(pick, 'Dolphin 60.4')
+        check(bool(dol) and not dol.startswith('m:'), f'settings: BYD models from the map list ({dol})')
+        await pg.select_option('#nl-model', dol)
+        check(await pg.is_visible('#nl-cons') and await pg.is_hidden('#nl-dc-w') and await pg.is_hidden('#nl-nokm'),
+              'settings: a car from the list asks consumption and cable, not the DC plug')
+        ph = await pg.evaluate("document.getElementById('nl-cons').placeholder")
+        check(ph.startswith('npr. '), f'settings: the estimate as the placeholder ({ph})')
+        await pg.fill('#nl-cons', '15,5')
+        await pg.check('#nl-cab')
         await pg.select_option('#nl-city', 'novi-sad')
         await pg.click('#nl-f-car [type=submit]')
         await pg.wait_for_selector('#nl-toast:not([hidden])', timeout=5000)
         check(await pg.inner_text('#nl-toast') == 'Sačuvano', 'settings: toast "Sačuvano"')
-        check(await pg.evaluate("localStorage.getItem('bv:tesla')") == '1', 'settings: "Imam Teslu" also in localStorage for the map')
-        await pg.select_option('#nl-model', '*')
-        check(await pg.is_visible('#nl-other'), '"Drugi model" shows the text field')
-        await pg.fill('#nl-other', 'Tesla Model 3 Long Range')
+        lc = await pg.evaluate("JSON.parse(localStorage.getItem('bv:car') || 'null')")
+        check(lc == {'id': dol, 'cons': 15.5, 'cab': True, 'opt': False}, f'settings: the same car in localStorage for the map: {lc}')
+        check(await pg.evaluate("localStorage.getItem('bv:tesla')") is None, 'settings: no "Imam Teslu" key any more')
+        # a model sold in Serbia without the map's data: by name, the DC plug asked, no car for the map
+        sea = await pg.evaluate(pick, 'Sealion 7')
+        check(sea == 'm:Sealion 7', f'settings: a model without specs is on the list by name ({sea})')
+        await pg.select_option('#nl-model', sea)
+        check(await pg.is_visible('#nl-nokm') and await pg.is_visible('#nl-dc-w') and await pg.is_hidden('#nl-spec'), 'settings: "no cost per km" note and the DC plug')
+        await pg.check('#nl-f-car [name=dc][value=ccs2]')
+        await pg.click('#nl-f-car [type=submit]')
+        await pg.wait_for_timeout(700)
+        ja = await pg.evaluate("fetch('/api/nalog/ja').then(r => r.json())")
+        check(ja['user']['car'] == 'BYD Sealion 7' and ja['user']['car_id'] is None and ja['user']['dc'] == 'ccs2'
+              and await pg.evaluate("localStorage.getItem('bv:car')") is None, f'settings: "BYD Sealion 7" by name, no car for the map: {ja["user"].get("car")}')
+        # a Tesla: "Tesla" follows the car
+        await pg.select_option('#nl-make', 'tesla')
+        tid = await pg.evaluate(pick, 'Model Y Long Range AWD (Juniper)')
+        await pg.select_option('#nl-model', tid)
         await pg.click('#nl-f-car [type=submit]')
         await pg.wait_for_timeout(700)
         await pg.reload(wait_until='load')
         await wait_js(pg, "document.getElementById('nl-city').value === 'novi-sad'", timeout=8000)
-        st = await pg.evaluate("({m: document.getElementById('nl-model').value, o: document.getElementById('nl-other').value, dc: (document.querySelector('#nl-f-car [name=dc]:checked')||{}).value, t: document.getElementById('nl-tesla').checked})")
-        check(st == {'m': '*', 'o': 'Tesla Model 3 Long Range', 'dc': 'ccs2', 't': True}, f'settings kept after reload: {st}')
+        st = await pg.evaluate("({mk: document.getElementById('nl-make').value, m: document.getElementById('nl-model').value, cab: document.getElementById('nl-cab').checked})")
+        check(st == {'mk': 'tesla', 'm': tid, 'cab': False}, f'settings kept after reload: {st}')
+        ja = await pg.evaluate("fetch('/api/nalog/ja').then(r => r.json())")
+        check(ja['user']['car_id'] == tid and ja['user']['tesla'] is True and ja['user']['dc'] == 'ccs2', f'account: the Tesla, tesla on, CCS2: {ja["user"].get("car_id")}')
+        # an older account's model by name lands under its make as "Drugi model"
+        await pg.evaluate("fetch('/api/nalog/podesavanja', {method: 'POST', headers: {'content-type': 'application/json'}, body: JSON.stringify({car_id: '', car: 'Hyundai Ioniq 5 N'})})")
+        await pg.reload(wait_until='load')
+        await wait_js(pg, "document.getElementById('nl-make').value === 'hyundai'", timeout=8000)
+        st = await pg.evaluate("({m: document.getElementById('nl-model').value, o: document.getElementById('nl-other').value, v: !document.getElementById('nl-other-w').hidden})")
+        check(st == {'m': '*', 'o': 'Ioniq 5 N', 'v': True}, f'an older model by name: its make, "Drugi model" and the text: {st}')
+        await pg.select_option('#nl-make', 'tesla')
+        await pg.select_option('#nl-model', tid)
+        await pg.click('#nl-f-car [type=submit]')
+        await pg.wait_for_timeout(700)
         # the display currency (RUNBOOK 3.29): the header switcher keeps the choice in the account of a signed-in reader
         await pg.select_option('.hd-cur .fx-sel', 'EUR')
         for _ in range(40):                                  # the save is fire-and-forget: poll the account
@@ -221,12 +255,35 @@ async def main():
             if ja['user'].get('valuta') == 'EUR':
                 break
             await pg.wait_for_timeout(200)
-        check(ja['user']['valuta'] == 'EUR' and ja['user']['car'] == 'Tesla Model 3 Long Range', f'display currency EUR saved in the account, the rest kept: {ja["user"].get("valuta")}')
-        # the map marks the connector of the reader's car
+        check(ja['user']['valuta'] == 'EUR' and ja['user']['car_id'] == tid, f'display currency EUR saved in the account, the rest kept: {ja["user"].get("valuta")}')
+        # the map: the account's car, its connector marked, Tesla-only chargers usable
+        await pg.evaluate("localStorage.removeItem('bv:car')")
         await pg.goto(f'{BASE}/mapa/#ocm-279311', wait_until='load')
         await pg.wait_for_selector('.ccard .cbox b.mine', timeout=8000)
         check('vaš auto' in await pg.inner_text('.ccard .cbox b.mine'), 'map card: CCS2 marked "vaš auto"')
-        check(await pg.evaluate("document.querySelector('#mchips [data-f=tesla]').getAttribute('aria-pressed')") == 'true', 'map: "Imam Teslu" from the account')
+        await wait_js(pg, "(document.querySelector('[data-carlbl]') || {}).textContent.indexOf('Tesla Model Y') === 0", timeout=8000)
+        check(True, 'map: "Moj auto" = the account\'s Tesla in a browser that had no car')
+        check(await pg.evaluate("!document.querySelector('#mchips [data-f=tesla]')"), 'map: no "Imam Teslu" chip')
+        await pg.goto(f'{BASE}/mapa/?nc=2#ocm-150105', wait_until='load')
+        await pg.wait_for_selector('.ccard', timeout=8000)
+        card = await pg.inner_text('.ccard')
+        check('Vozite Teslu?' not in card and 'Samo za Tesla vozila' not in card, 'map: the Supercharger is usable for the account\'s Tesla')
+        # the map's "Moj auto" goes to the account
+        await pg.click('#mcar')
+        await pg.wait_for_selector('.car-form select[name=mk]', timeout=8000)
+        await pg.select_option('.car-form select[name=mk]', 'Kia')
+        kia = await pg.evaluate("[...document.querySelectorAll('.car-form select[name=id] option')].find(o => o.textContent.indexOf('EV3 Long') === 0).value")
+        await pg.select_option('.car-form select[name=id]', kia)
+        await pg.click('.car-form [type=submit]')
+        for _ in range(40):
+            ja = await pg.evaluate("fetch('/api/nalog/ja').then(r => r.json())")
+            if ja['user'].get('car_id') == kia:
+                break
+            await pg.wait_for_timeout(200)
+        check(ja['user']['car_id'] == kia and ja['user']['tesla'] is False and ja['user']['car'].startswith('Kia EV3'), f'map → account: the Kia, tesla off: {ja["user"].get("car")}')
+        await pg.goto(f'{BASE}/mapa/?nc=3#ocm-150105', wait_until='load')
+        await pg.wait_for_selector('.ccard', timeout=8000)
+        check('Vozite Teslu?' in await pg.inner_text('.ccard'), 'map: with a Kia the Supercharger card says "Vozite Teslu? Izaberite je u „Moj auto“"')
 
         # ---- the newsletter in the account
         await pg.goto(f'{BASE}/nalog/', wait_until='load')
@@ -311,8 +368,8 @@ async def main():
         await pg2.click('#nl-out')
         await pg2.wait_for_selector('html:not(.nl-in)', timeout=5000)
         check(not any(c['name'] == 'bv_in' and c['value'] for c in await ctx2.cookies()), 'sign out: bv_in removed')
-        check(await pg2.evaluate("['bv:fav', 'bv:tesla', 'bv:fav-owner'].every(k => localStorage.getItem(k) === null)"),
-              'sign out: the favourites, "Imam Teslu" and their owner are removed from this browser')
+        check(await pg2.evaluate("['bv:fav', 'bv:car', 'bv:tesla', 'bv:fav-owner'].every(k => localStorage.getItem(k) === null)"),
+              'sign out: the favourites, the car and their owner are removed from this browser')
         await pg2.goto(BASE + link, wait_until='load')
         await pg2.wait_for_selector('#nl-f-mail:not([hidden])', timeout=8000)
         check('nije ispravan' in await pg2.inner_text('#nl-msg-top') and await pg2.is_hidden('#nl-f-link'), 'a used link: "Link za prijavu nije ispravan ili je istekao…" and the form')
@@ -496,8 +553,8 @@ async def main():
         await pg.wait_for_selector('html:not(.nl-in)', timeout=8000)
         check(await pg.inner_text('#nl-toast') == 'Nalog je obrisan.', 'delete: signed out, "Nalog je obrisan."')
         check(await pg.evaluate("fetch('/api/nalog/ja').then(r => r.status)") == 401, 'delete: the session is gone')
-        check(await pg.evaluate("['bv:fav', 'bv:tesla', 'bv:fav-owner'].every(k => localStorage.getItem(k) === null)"),
-              'delete: the favourites, "Imam Teslu" and their owner are removed from this browser')
+        check(await pg.evaluate("['bv:fav', 'bv:car', 'bv:tesla', 'bv:fav-owner'].every(k => localStorage.getItem(k) === null)"),
+              'delete: the favourites, the car and their owner are removed from this browser')
         await ctx.close()
         await ctx2.close()
 

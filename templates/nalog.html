@@ -49,7 +49,7 @@
 </section>
 <ul class="nl-ben">
 <li><span class="ic">{{ ic('star') }}</span><div><h3>Omiljeni punjači svuda</h3><p>Zvezdica sa mape važi i na telefonu, i na računaru, i u aplikaciji.</p></div></li>
-<li><span class="ic">{{ ic('car') }}</span><div><h3>Moj auto i grad</h3><p>Mapa zna da li imate Teslu i koji brzi priključak koristite.</p></div></li>
+<li><span class="ic">{{ ic('car') }}</span><div><h3>Moj auto i grad</h3><p>Mapa računa cenu po kilometru za vaš auto, na svakom uređaju.</p></div></li>
 {% if PG.on %}<li><span class="ic">{{ ic('news') }}</span><div><h3>Nedeljni pregled, ako želite</h3><p>Vesti, promene cena i novi punjači, jednom nedeljno. Odjava jednim klikom.</p></div></li>
 {% endif %}<li><span class="ic">{{ ic('flag') }}</span><div><h3>Vaše prijave sa mape</h3><p>Ocene, komentari i fotografije koje ste poslali, sa statusom provere.</p></div></li>
 </ul>
@@ -84,19 +84,28 @@
 <div class="nl-col">
 <section class="nl-card nl-sec nl-s-car" aria-labelledby="nl-car-h">
 <h2 id="nl-car-h">Moj auto</h2>
+<p class="nl-note">Isti auto kao „Moj auto“ na <a href="/mapa/">mapi</a>: mapa po njemu računa cenu po kilometru na svakom punjaču, na svim uređajima na kojima ste prijavljeni.</p>
 <form id="nl-f-car" novalidate>
-<div class="field"><label for="nl-model">Model</label>
-<select class="select" id="nl-model"><option value="">Izaberite model</option>
-{% for brand, models in EV_OPTS %}<optgroup label="{{ brand }}" translate="no">{% for v, l in models %}<option value="{{ v }}">{{ l }}</option>{% endfor %}</optgroup>
-{% endfor %}<option value="*">Drugi model</option></select></div>
+<div class="field"><label for="nl-make">Marka</label>
+<select class="select" id="nl-make"><option value="">Izaberite marku</option>
+{% for k, name in CAR_MAKES %}<option value="{{ k }}" translate="no">{{ name }}</option>{% endfor %}<option value="*">Druga marka</option></select></div>
+<div class="field" id="nl-model-w"><label for="nl-model">Model</label>
+<select class="select" id="nl-model" disabled><option value="">Izaberite model</option></select></div>
 <div class="field" id="nl-other-w" hidden><label for="nl-other">Koji model</label><input class="input" id="nl-other" maxlength="80" autocomplete="off" placeholder="npr. Nissan Leaf"></div>
-<fieldset class="nl-radios"><legend>Brzo punjenje (DC)</legend>
+<p class="hint nl-nokm" id="nl-nokm" hidden>Za ovaj model mapa još ne računa cenu po kilometru: nemamo njegove podatke o bateriji i punjenju.</p>
+<div id="nl-spec" hidden>
+<div class="field"><label for="nl-cons">Potrošnja (kWh na 100 km)</label><input class="input" id="nl-cons" type="text" inputmode="decimal" autocomplete="off" maxlength="5" aria-describedby="nl-cons-h">
+<p class="hint" id="nl-cons-h">Ako je ne znate, ostavite prazno: računamo sa procenom za ovaj model.</p></div>
+<div class="nl-cks">
+<label id="nl-opt-w" hidden><input type="checkbox" id="nl-opt"><span id="nl-opt-t"></span></label>
+<label><input type="checkbox" id="nl-cab"><span>Imam svoj Tip 2 kabl</span></label>
+</div>
+</div>
+<fieldset class="nl-radios" id="nl-dc-w" hidden><legend>Brzo punjenje (DC)</legend>
 <label translate="no"><input type="radio" name="dc" value="ccs2"><span>CCS2</span></label>
 <label translate="no"><input type="radio" name="dc" value="chademo"><span>CHAdeMO</span></label>
 <label><input type="radio" name="dc" value="none"><span>Auto nema brzo punjenje</span></label>
 </fieldset>
-<div class="nl-swr"><label class="nl-sw" for="nl-tesla"><input type="checkbox" role="switch" id="nl-tesla" aria-describedby="nl-tesla-h"><span class="nl-sw-t">Imam Teslu</span></label>
-<p class="hint" id="nl-tesla-h">Supercharger punjači na mapi računamo kao dostupne vama.</p></div>
 <div class="field"><label for="nl-city">Grad</label>
 <select class="select" id="nl-city"><option value="">Izaberite grad</option>{% for slug, name in CITY_OPTS %}<option value="{{ slug }}">{{ name }}</option>{% endfor %}<option value="drugo">Drugo mesto</option></select></div>
 <button class="btn dark" type="submit">Sačuvajte</button>
@@ -129,6 +138,6 @@
 <p class="nl-toast" id="nl-toast" role="status" aria-live="polite" hidden></p>
 </div>
 <script id="nl-cfg" type="application/json">{{ NL_CFG|safe }}</script>
-<script id="bv-i18n" type="application/json">{"err_code": "Kod nije tačan ili je istekao.", "err_tries": "Previše pokušaja. Zatražite novi kod.", "err_limit": "Previše zahteva. Pokušajte ponovo kasnije.", "err_off": "Prijava trenutno nije dostupna. Pokušajte kasnije.", "err_net": "Nema veze sa serverom. Proverite internet i pokušajte ponovo.", "err_mail": "Upišite ispravnu e-mail adresu.", "err_link": "Link za prijavu nije ispravan ili je istekao. Zatražite novi kod.", "err_save": "Čuvanje nije uspelo. Pokušajte ponovo.", "err_topics": "Izaberite bar jednu temu.", "err_auth": "Prijava je istekla. Prijavite se ponovo.", "wait": "za {s} s", "saved": "Sačuvano", "signed_out": "Odjavljeni ste.", "deleted": "Nalog je obrisan.", "since": "Nalog od {d}", "on_map": "Na mapi", "fav_del": "Uklonite iz omiljenih", "st_ok": "Radi", "st_bad": "Prijavljen kvar", "st_off": "Ne radi", "ci_ok": "Radi", "ci_problem": "Radi, uz problem", "ci_broken": "Ne radi", "ci_missing": "Nema punjača", "cs_ok": "Objavljeno", "cs_pending": "Čeka proveru", "cs_hidden": "Nije objavljeno", "photo": "Fotografija", "charger": "Punjač", "stars": "Ocena {r} od 5", "gone": "Punjač više nije na mapi", "fav_ask_one": "U ovom pregledaču ima {n} omiljeni punjač. Dodati ga u nalog?", "fav_ask_few": "U ovom pregledaču ima {n} omiljena punjača. Dodati ih u nalog?", "fav_ask_many": "U ovom pregledaču ima {n} omiljenih punjača. Dodati ih u nalog?"}</script>
+<script id="bv-i18n" type="application/json">{"err_code": "Kod nije tačan ili je istekao.", "err_tries": "Previše pokušaja. Zatražite novi kod.", "err_limit": "Previše zahteva. Pokušajte ponovo kasnije.", "err_off": "Prijava trenutno nije dostupna. Pokušajte kasnije.", "err_net": "Nema veze sa serverom. Proverite internet i pokušajte ponovo.", "err_mail": "Upišite ispravnu e-mail adresu.", "err_link": "Link za prijavu nije ispravan ili je istekao. Zatražite novi kod.", "err_save": "Čuvanje nije uspelo. Pokušajte ponovo.", "err_topics": "Izaberite bar jednu temu.", "err_auth": "Prijava je istekla. Prijavite se ponovo.", "wait": "za {s} s", "saved": "Sačuvano", "signed_out": "Odjavljeni ste.", "deleted": "Nalog je obrisan.", "since": "Nalog od {d}", "on_map": "Na mapi", "fav_del": "Uklonite iz omiljenih", "st_ok": "Radi", "st_bad": "Prijavljen kvar", "st_off": "Ne radi", "ci_ok": "Radi", "ci_problem": "Radi, uz problem", "ci_broken": "Ne radi", "ci_missing": "Nema punjača", "cs_ok": "Objavljeno", "cs_pending": "Čeka proveru", "cs_hidden": "Nije objavljeno", "photo": "Fotografija", "charger": "Punjač", "stars": "Ocena {r} od 5", "gone": "Punjač više nije na mapi", "fav_ask_one": "U ovom pregledaču ima {n} omiljeni punjač. Dodati ga u nalog?", "fav_ask_few": "U ovom pregledaču ima {n} omiljena punjača. Dodati ih u nalog?", "fav_ask_many": "U ovom pregledaču ima {n} omiljenih punjača. Dodati ih u nalog?", "car_choose_model": "Izaberite model", "car_other": "Drugi model", "car_opt": "Auto ima opcioni punjač od {k} kW", "car_cons_ph": "npr. {x}", "err_cons": "Potrošnju upišite kao broj od 8 do 40, ili ostavite prazno."}</script>
 {% endblock %}
 {% block scripts %}<script src="/assets/nalog.js" defer></script>{% endblock %}

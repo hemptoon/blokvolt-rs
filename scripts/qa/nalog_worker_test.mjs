@@ -284,12 +284,22 @@ r = await call('POST', '/api/nalog/omiljeni', { json: { add: ['st-001'] } });
 check(r.status === 401, 'favourites without a session → 401', r.status);
 
 console.log('— settings');
-for (const [b, err] of [[{ car: 'x'.repeat(81) }, 'car'], [{ dc: 'type2' }, 'dc'], [{ tesla: 'da' }, 'tesla'], [{ city: 'pariz' }, 'city'], [{ lang: 'de' }, 'lang']]) {
+for (const [b, err] of [[{ car: 'x'.repeat(81) }, 'car'], [{ dc: 'type2' }, 'dc'], [{ tesla: 'da' }, 'tesla'], [{ city: 'pariz' }, 'city'], [{ lang: 'de' }, 'lang'],
+  [{ car_id: 'Tesla Model 3' }, 'car_id'], [{ car_id: 12 }, 'car_id'], [{ car_cons: 5 }, 'car_cons'], [{ car_cons: 'x' }, 'car_cons'], [{ car_cab: 1 }, 'car_cab'], [{ car_opt: 'da' }, 'car_opt']]) {
   r = await call('POST', '/api/nalog/podesavanja', { cookie: C1, json: b });
   check(r.status === 400 && r.j.error === err, 'settings: invalid ' + err + ' → 400', r.j);
 }
 r = await call('POST', '/api/nalog/podesavanja', { cookie: C1, json: { car: ' BYD  Dolphin Surf ', dc: 'ccs2', tesla: true, city: 'novi-sad', lang: 'ru' } });
-check(r.status === 200 && r.j.user.car === 'BYD Dolphin Surf' && r.j.user.dc === 'ccs2' && r.j.user.tesla === true && r.j.user.city === 'novi-sad' && r.j.user.lang === 'ru', 'settings saved', r.j.user);
+check(r.status === 200 && r.j.user.car === 'BYD Dolphin Surf' && r.j.user.dc === 'ccs2' && r.j.user.tesla === false && r.j.user.city === 'novi-sad' && r.j.user.lang === 'ru', 'settings saved; the car decides "Tesla" (a BYD: no, whatever the page sends)', r.j.user);
+// "Moj auto" from the map's list (25.10.2026): id, own consumption, cable, optional charger; a Tesla → tesla
+r = await call('POST', '/api/nalog/podesavanja', { cookie: C1, json: { car_id: 'tesla-model-y-long-range-awd-juniper-2025', car: 'Tesla Model Y Long Range AWD (Juniper)', car_cons: 15.24, car_cab: true, car_opt: false, dc: 'ccs2' } });
+check(r.status === 200 && r.j.user.car_id === 'tesla-model-y-long-range-awd-juniper-2025' && r.j.user.car_cons === 15.2 && r.j.user.car_cab === true && r.j.user.car_opt === false && r.j.user.tesla === true, 'settings: a car from the map list (id, consumption rounded, cable) — a Tesla', r.j.user);
+r = await call('POST', '/api/nalog/podesavanja', { cookie: C1, json: { car_id: '', car: 'Tesla Model S Plaid', car_cons: null, car_cab: false } });
+check(r.j.user.car_id === null && r.j.user.car_cons === null && r.j.user.car_cab === false && r.j.user.tesla === true, 'settings: a typed model naming Tesla → tesla', r.j.user);
+r = await call('POST', '/api/nalog/podesavanja', { cookie: C1, json: { car: 'BYD Dolphin Surf' } });
+check(r.j.user.tesla === false, 'settings: another car → no tesla', r.j.user);
+r = await call('POST', '/api/nalog/podesavanja', { cookie: C1, json: { tesla: true } });
+check(r.j.user.tesla === true && r.j.user.car === 'BYD Dolphin Surf', 'settings: an old page sending only tesla is obeyed', r.j.user);
 r = await call('POST', '/api/nalog/podesavanja', { cookie: C1, json: { car: '', dc: 'none', city: 'drugo', tesla: false } });
 check(r.j.user.car === null && r.j.user.dc === 'none' && r.j.user.city === 'drugo' && r.j.user.tesla === false, 'settings: empty car, "drugo", no DC', r.j.user);
 r = await call('POST', '/api/nalog/podesavanja', { cookie: C1, json: { car: 'x'.repeat(80) } });
@@ -725,7 +735,8 @@ check(r.status === 200 && (await colsOf('auth_codes')).includes('nonce') && (awa
 await D.db.prepare(LEGACY[1]).run();                                     // the missing table appears
 r = await D.call('POST', '/api/nalog/kod', { json: { email: 'mig2@example.com', t: 4000 } });
 check(r.status === 200 && (await colsOf('photos')).includes('uid'), 'migration: a step that failed (no photos table) is tried again on the next request', await colsOf('photos'));
-check((await colsOf('users')).includes('valuta'), 'migration: users of the older shape got the valuta column', await colsOf('users'));
+const uCols = await colsOf('users');
+check(['valuta', 'car_id', 'car_cons', 'car_cab', 'car_opt'].every(c => uCols.includes(c)), 'migration: users of the older shape got the valuta and car_* columns', uCols);
 await D.mf.dispose();
 
 console.log(`\n${oks} passed, ${fails} failed`);

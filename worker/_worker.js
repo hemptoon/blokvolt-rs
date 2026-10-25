@@ -598,7 +598,8 @@ async function createTables(env) {
   }
   const q = [
     `CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, email TEXT UNIQUE NOT NULL, lang TEXT, created_at INTEGER,
-      verified_at INTEGER, last_login_at INTEGER, car TEXT, dc TEXT, tesla INTEGER DEFAULT 0, city TEXT, valuta TEXT)`,
+      verified_at INTEGER, last_login_at INTEGER, car TEXT, dc TEXT, tesla INTEGER DEFAULT 0, city TEXT, valuta TEXT,
+      car_id TEXT, car_cons REAL, car_cab INTEGER DEFAULT 0, car_opt INTEGER DEFAULT 0)`,
     `CREATE TABLE IF NOT EXISTS auth_codes (email TEXT NOT NULL, nonce TEXT NOT NULL, code_hash TEXT, link_hash TEXT, salt TEXT,
       exp INTEGER, tries INTEGER DEFAULT 0, at INTEGER, lang TEXT, opt_in INTEGER DEFAULT 0, PRIMARY KEY (email, nonce))`,
     'CREATE INDEX IF NOT EXISTS auth_codes_link ON auth_codes (link_hash)',
@@ -632,8 +633,12 @@ async function createTables(env) {
   // worked; the one expected error is the column being there already.
   let ok = true;
   // the display currency of the account (RUNBOOK 3.29), added after the accounts were built
-  try { await env.DB.prepare('ALTER TABLE users ADD COLUMN valuta TEXT').run(); } catch (e) {
-    if (!/duplicate column/i.test(String(e && e.message))) ok = false;
+  // "Moj auto" from the map's list of cars (/assets/map/auta.json, 25.10.2026): the car's id there, the reader's own
+  // consumption, own Type 2 cable and the optional on-board charger — the same car the map counts the cost per km with
+  for (const c of ['valuta TEXT', 'car_id TEXT', 'car_cons REAL', 'car_cab INTEGER DEFAULT 0', 'car_opt INTEGER DEFAULT 0']) {
+    try { await env.DB.prepare('ALTER TABLE users ADD COLUMN ' + c).run(); } catch (e) {
+      if (!/duplicate column/i.test(String(e && e.message))) ok = false;
+    }
   }
   for (const t of ['checkins', 'photos']) {
     try { await env.DB.prepare(`ALTER TABLE ${t} ADD COLUMN uid TEXT`).run(); } catch (e) {
@@ -695,13 +700,13 @@ async function touch(env, s) {
 const subOut = s => ({ status: s.status, topics: (s.topics || '').split(',').filter(Boolean), freq: s.freq, lang: s.lang });
 // what /api/nalog/ja (and a successful sign-in) answers
 async function account(env, uid) {
-  const u = await env.DB.prepare('SELECT email, lang, created_at, car, dc, tesla, city, valuta FROM users WHERE id = ?1').bind(uid).first();
+  const u = await env.DB.prepare('SELECT email, lang, created_at, car, dc, tesla, city, valuta, car_id, car_cons, car_cab, car_opt FROM users WHERE id = ?1').bind(uid).first();
   if (!u) return null;
   const f = await env.DB.prepare('SELECT st FROM favs WHERE uid = ?1 ORDER BY at, st').bind(uid).all();
   const sub = await env.DB.prepare('SELECT status, topics, freq, lang FROM subs WHERE email = ?1').bind(u.email).first();
   // owner: a short hash of the account id; the pages keep it next to the browser's favourites (bv:fav-owner), so a list
   // of another account is never joined with this one
-  return { ok: true, user: { ...u, tesla: !!u.tesla, owner: (await sha256('fav-owner:' + uid)).slice(0, 16) },
+  return { ok: true, user: { ...u, tesla: !!u.tesla, car_cab: !!u.car_cab, car_opt: !!u.car_opt, owner: (await sha256('fav-owner:' + uid)).slice(0, 16) },
     favs: f.results.map(r => r.st), sub: sub ? subOut(sub) : null };
 }
 
@@ -1004,11 +1009,28 @@ async function nalogPodesavanja(request, env, b) {
     if (c.length > 80) return bad('car');
     set.car = c || null;
   }
+  if ('car_id' in b) {
+    if (b.car_id && (typeof b.car_id !== 'string' || !/^[a-z0-9-]{3,90}$/.test(b.car_id))) return bad('car_id');
+    set.car_id = b.car_id || null;
+  }
+  if ('car_cons' in b) {
+    const v = b.car_cons == null || b.car_cons === '' ? null : Number(b.car_cons);
+    if (v != null && !(v >= 8 && v <= 40)) return bad('car_cons');
+    set.car_cons = v == null ? null : Math.round(v * 10) / 10;
+  }
+  for (const k of ['car_cab', 'car_opt']) if (k in b) { if (typeof b[k] !== 'boolean') return bad(k); set[k] = b[k] ? 1 : 0; }
   if ('dc' in b) { if (b.dc && !DCS.has(b.dc)) return bad('dc'); set.dc = b.dc || null; }
   if ('tesla' in b) { if (typeof b.tesla !== 'boolean') return bad('tesla'); set.tesla = b.tesla ? 1 : 0; }
+  // the car decides "Tesla" (Tesla-only chargers count as usable): a Tesla from the map's list, or a typed model that
+  // names Tesla. There is no separate switch since 25.10.2026; an old page that still sends `tesla` alone is obeyed.
+  if ('car' in b || 'car_id' in b) {
+    const cur = await env.DB.prepare('SELECT car, car_id FROM users WHERE id = ?1').bind(s.uid).first() || {};
+    const id = 'car_id' in set ? set.car_id : cur.car_id, name = 'car' in set ? set.car : cur.car;
+    set.tesla = (id ? /^tesla-/.test(id) : /\btesla\b/i.test(name || '')) ? 1 : 0;
+  }
   if ('city' in b) { if (b.city && b.city !== 'drugo' && !CFG.cities.includes(b.city)) return bad('city'); set.city = b.city || null; }
   if ('valuta' in b) { if (b.valuta && !VALUTE.has(b.valuta)) return bad('valuta'); set.valuta = b.valuta || null; }
-  const keys = Object.keys(set);                                         // only the six names above
+  const keys = Object.keys(set);                                         // only the names above
   if (keys.length) {
     await env.DB.prepare('UPDATE users SET ' + keys.map((k, i) => k + ' = ?' + (i + 2)).join(', ') + ' WHERE id = ?1')
       .bind(s.uid, ...keys.map(k => set[k])).run();
@@ -1070,7 +1092,7 @@ async function nalogIzvoz(request, env) {
   const out = {
     about: 'BlokVolt (www.blokvolt.rs) — podaci sačuvani uz vaš nalog / data stored with your account. Vreme: Unix sekunde (UTC).',
     exported_at: new Date().toISOString(),
-    user: { ...u, tesla: !!u.tesla },
+    user: { ...u, tesla: !!u.tesla, car_cab: !!u.car_cab, car_opt: !!u.car_opt },
     favourites: await all('SELECT st, at FROM favs WHERE uid = ?1 ORDER BY at, st', s.uid),
     sessions: (await all('SELECT h, at, seen, exp, kind FROM sessions WHERE uid = ?1 ORDER BY at', s.uid))
       .map(x => ({ at: x.at, seen: x.seen, exp: x.exp, kind: x.kind, this_device: x.h === s.h })),

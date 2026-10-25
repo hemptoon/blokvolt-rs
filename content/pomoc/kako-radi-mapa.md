@@ -43,7 +43,7 @@ Dugme „Dodaj punjač“ je u gornjem desnom uglu mape, ispod dugmadi za uveća
 
 Iznad liste su dugmad: Svi, Omiljeni, Brzi (DC ≥ 50 kW), AC, CHAdeMO, Besplatni i mreže sa brojem punjača. Od njih je uključeno jedno.
 
-„Potvrđeni“ i „Imam Teslu“ su prekidači i rade uz bilo koji filter, na primer Brzi i Potvrđeni zajedno. Izbor „Imam Teslu“ pregledač pamti i za sledeću posetu.
+„Potvrđeni“ je prekidač i radi uz bilo koji filter, na primer Brzi i Potvrđeni zajedno.
 
 Iznad liste piše koliko punjača odgovara izboru i koliko ih je na mapi ukupno („Prikazano … od …“). Ako piše „Nema punjača za ovaj izbor.“, izaberite „Svi“ ili isključite „Potvrđeni“.
 
@@ -80,7 +80,7 @@ Mapa se otvara sa gotovim izborom preko linka:
 - `/mapa/?grad=novi-sad` — mapa na tom gradu, lista od najbližeg (beograd, novi-sad, nis, subotica, cacak, kragujevac);
 - `/mapa/?mreza=chargego` — samo jedna mreža;
 - `/mapa/?f=fast` — filter Brzi; isto i `ac`, `chademo`, `free`, `fav`;
-- `/mapa/?ok=1` — samo potvrđeni; `/mapa/?tesla=1` — „Imam Teslu“ samo za taj pregled;
+- `/mapa/?ok=1` — samo potvrđeni; `/mapa/?tesla=1` — Tesla punjači kao dostupni, samo za taj pregled;
 - `/mapa/#cg-80` — odmah otvara karticu tog punjača; takav link daje dugme „Podeli“.
 
 </details>

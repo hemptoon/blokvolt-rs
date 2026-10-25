@@ -725,7 +725,7 @@ with; the browser joins it after `mreze.json`. Its texts (`venue`, `find`, `t`, 
 segments (`tx:<text>` in the page strings), so a new or changed text needs the EN/RU todo (3.9).
 
 Rules: only facts with a source; drivers' reports are labelled „po vozačima“ with the year; free for Tesla only
-(`fee.free: tesla`) shows as free only when the reader switches on „Imam Teslu“. Keep `tesla.json` (the network
+(`fee.free: tesla`) shows as free only when „Moj auto“ is a Tesla (or with `?tesla=1`). Keep `tesla.json` (the network
 list) and this file in step when Tesla's sites change. Re-check the entries with the monthly map refresh
 (3.11): Tesla's price policy, IKEA's hours, the OMV list (the five EasyPark pumps), Ledi MS (2024 data).
 
@@ -903,7 +903,7 @@ up as console errors in `scripts/qa/qa_all.py` and `map_ui_test.py`.
 The star on a charger card saves the station id in the reader's browser only (`localStorage` key `bv:fav`, at most 300
 ids); the chip „Omiljeni“ and `/mapa/?f=fav` show them, and the map draws a green ring around them. Without an account
 nothing is sent to the server; ids of stations that disappear from the map are dropped quietly. The privacy policy says
-so. A reader signed in to "Moj BlokVolt" (cookie `bv_in`, 3.27) also keeps the list and „Imam Teslu“ in the account: the
+so. A reader signed in to "Moj BlokVolt" (cookie `bv_in`, 3.27) also keeps the list and „Moj auto“ in the account: the
 map asks `/api/nalog/ja` once and, when the browser's list belongs to that account (`bv:fav-owner`), joins both lists
 and sends every star as well; localStorage stays the offline copy. Nothing changes for readers without the cookie.
 
@@ -915,9 +915,10 @@ system share sheet or copies the `/mapa/#<id>` link. A price whose date is more 
 `p_old` (the Evolako app shows the same marker).
 
 Since 28.09.2026 the map also has:
-- **Imam Teslu** — a switch like „Potvrđeni“ (`bv:tesla` in localStorage, `?tesla=1` for one view). Off: the
-  two Superchargers are grey pins with „T“, „Samo Tesla“ in the list, and not in „Besplatni“. On: free for the
-  reader (by drivers' reports, `fee.free: tesla` in dopune.json).
+- **Tesla** — since 25.10.2026 no separate „Imam Teslu“ switch: a Tesla in „Moj auto“ (or `?tesla=1` for one view)
+  makes the Tesla-only chargers usable and free for the reader (by drivers' reports, `fee.free: tesla` in dopune.json),
+  as on the evolako.rs map. Without it the two Superchargers are grey pins with „T“, „Samo Tesla“ in the list, and not
+  in „Besplatni“; the card says „Vozite Teslu? Izaberite je u „Moj auto“…“. The map removes the old `bv:tesla` key.
 - **Prices next to the pins** from zoom 12 (`pt-pr` layer, ASCII only — the map font has no other glyphs
   everywhere): `0 RSD`; receipts of that very charger younger than 90 days as `56-60 RSD/kWh` (they win over the
   network's tariff for the power, also in the card); otherwise `~68 RSD/kWh` = RSD/min × 60 ÷ the power a car
@@ -944,7 +945,10 @@ Since 06.10.2026 (test: `scripts/qa/map_v2_test.py`, with the three tests above)
   (AC: phases × current of the post, DC: the car's 10–80 % average, at most 88 % of the station), charging losses
   (DC 96 %, AC 84–92 %), start fees spread over half the battery, winter consumption (Dec–Feb, half in Nov and Mar),
   a cheaper connector here or a ≥ 40 % cheaper charger within 10 km, petrol (calculator's fuel price) and home at night
-  (EPS lower tariff, green/blue zone). A Tesla switches „Imam Teslu“ on. `?qa=1`: `window.bvCostQa(id)`.
+  (EPS lower tariff, green/blue zone). A Tesla makes the Tesla-only chargers usable. `?qa=1`: `window.bvCostQa(id)`.
+  Signed in, the car is the account's (`car_id`, `car_cons`, `car_cab`, `car_opt`, 3.27): the map takes it on load (a car
+  not on the list = no car here), sends every change made in its dialog, and an account without a car takes this
+  browser's (unless `bv:fav-owner` is another account's).
 - **Card**: per-connector prices from the network's app (`pr`), „Kako se puni ovde“ (the network's `kako`), badges for
   hours with „sada radi do … / zatvoreno, otvara u …“ (Serbian time), „Ponesite svoj Tip 2 kabl“ and parking; closed
   stations are faded on the map and marked in the list. „Izdvojeno“: one line about charging at home at night with one
@@ -960,7 +964,7 @@ Since 06.10.2026 (test: `scripts/qa/map_v2_test.py`, with the three tests above)
   reader types a destination (and a start, empty = their location); places come from Photon (`photon.komoot.io`, `lang=en`,
   `default` on /ru/), the route from OSRM on the FOSSGIS server (`routing.openstreetmap.de/routed-car`, light use only,
   attribution and „Ispravi mapu“ link required). Both hosts are in the CSP `connect-src` (build.py). Rows: DC ≥ 50 kW, not
-  „Ne radi“, not Tesla-only (unless „Imam Teslu“ / a Tesla chosen on evolako.rs), usable by the chosen car; within 2/5/10 km
+  „Ne radi“, not Tesla-only (unless „Moj auto“ is a Tesla, here and on evolako.rs), usable by the chosen car; within 2/5/10 km
   of the route (straight line), ordered along the route; confirmed only unless the reader asks; chips and search do not
   count. The longest stretch without a fast charger is shown from 100 km. The route stays drawn while its panel or a card
   opened from it is open (phone: „Prikaži rutu na mapi“ hides the sheet and keeps the route); „Najbliži punjač“ and „Moj
@@ -1284,8 +1288,8 @@ The media kit is public since 29.09.2026 (owner's decision); an ad appears only 
 ### 3.27 Accounts and the newsletter (/nalog/, /pregled/)
 
 Built 29.09.2026, **off** until the owner switches it on. "Moj BlokVolt" (`/nalog/`): sign-in without a password (a
-six-digit code and a one-click link by e-mail), the map's favourites on every device, the car, its fast-charging plug,
-„Imam Teslu“ and the city, the reader's own reports and photos with their review status, data export and deleting the
+six-digit code and a one-click link by e-mail), the map's favourites on every device, „Moj auto“ (since 25.10.2026 from the map's list,
+see below) and the city, the reader's own reports and photos with their review status, data export and deleting the
 account. "Nedeljni pregled" (`/pregled/`): a weekly e-mail — news, public charging prices, new chargers — with double
 opt-in. The link in the code mail and the one in the confirmation mail open a page with one button („Prijavite se“,
 „Potvrđujem prijavu“) and nothing happens until it is pressed: mail scanners open links, and some run the page's scripts
@@ -1365,11 +1369,21 @@ hello@blokvolt.com and is handled by hand in the D1 console:
 `UPDATE subs SET status = 'off', off_at = unixepoch(), off_reason = 'mailto' WHERE email = '…';` and
 `INSERT INTO consents (email, kind, granted, text_v, src, at) VALUES ('…', 'pregled', 0, 'pregled-v1', 'mailto', unixepoch());`
 
-**Favourites in the browser.** `bv:fav` and `bv:tesla` stay the map's local copy; `bv:fav-owner` says which account the
+**„Moj auto“ in the account (25.10.2026).** The form on /nalog/ offers the map's own list (`NL_CFG.cars` = the cars of
+`/assets/map/auta.json`, grouped by make), the models of `ev-modeli.json` the list does not have (`extra_cars`, by name,
+with the DC plug asked and the note that the map has no cost per km for them; Tesla Model S and X too) and „Drugi
+model“ (any text). A model counts as on the list when its make and first word (+ a one-digit number: „Ioniq 5“) match
+(`nalog_cars()` in build.py). The account keeps `car` (the name), `car_id`, `car_cons` (8–40 or empty), `car_cab`,
+`car_opt` and `dc` (from the list: CCS2, or CHAdeMO for the Leafs); `tesla` is set by the worker from the car (an id
+`tesla-…` or a name with „Tesla“), and an old page that sends `tesla` alone is still obeyed. The car of the account goes
+to `bv:car` for the map in this browser. An older account's name („BYD Dolphin“) shows under its make as „Drugi model“
+with the rest as text, so the right version can be picked. To add a car with cost per km, add it to `ev-specs.json`.
+
+**Favourites in the browser.** `bv:fav` and `bv:car` stay the map's local copy; `bv:fav-owner` says which account the
 list belongs to (`user.owner`). On sign-in (and on the map with a session): the same owner → both lists joined; another
 owner → the signed-in account's list replaces it, never mixed; no owner and stations the account does not have → /nalog/
 asks („U ovom pregledaču ima N omiljenih punjača. Dodati ih u nalog?“ — Dodajte / Ne) and the map leaves the list alone
-until then. Signing out („Odjavite se“, „… sa svih uređaja“) and deleting the account remove all three keys from the
+until then. Signing out („Odjavite se“, „… sa svih uređaja“) and deleting the account remove these keys (and an old `bv:tesla`) from the
 browser.
 
 **Secrets and variables** — set by the **owner** in Cloudflare Pages → blokvolt → Settings → Variables and Secrets
@@ -1813,7 +1827,7 @@ Local checks (the container cannot reach blokvolt.rs or the map tiles) are in `s
 python3 scripts/qa/cfserve.py dist 8787 &          # like Cloudflare Pages, with dist/_headers
 python3 scripts/qa/qa_all.py sr,en,ru 360,768,1440 # every sitemap URL: JS/CSP errors, overflow, images, footer
 python3 scripts/qa/map_ui_test.py /tmp/bv-shots    # map cards, reports, photos, favourites (fake /api)
-python3 scripts/qa/map_extra_test.py /tmp/bv-shots # dopune.json facts, „Imam Teslu“, pin prices, „Gde tačno“, EN/RU
+python3 scripts/qa/map_extra_test.py /tmp/bv-shots # dopune.json facts, a Tesla in „Moj auto“, pin prices, „Gde tačno“, EN/RU
 python3 scripts/qa/map_v2_test.py                 # per-connector prices, Kako se puni, Moj auto (RSD/km), Najbliži, hours, cable, EN/RU
 python3 scripts/qa/map_region_test.py             # the region layer
 python3 scripts/qa/vis_shots.py /,/vesti/ /tmp/bv-shots   # full-page screenshots, desktop and phone

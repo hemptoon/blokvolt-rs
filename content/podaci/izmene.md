@@ -13,6 +13,8 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 25. oktobar 2026
 
+- [Moj BlokVolt](/nalog/): „Moj auto“ u nalogu je sada isti spisak automobila kao „Moj auto“ na [mapi](/mapa/), sa verzijom, potrošnjom, svojim kablom i opcionim punjačem u autu. Kad ste prijavljeni, mapa na svakom uređaju računa cenu po kilometru za taj auto. Modeli koji se prodaju u Srbiji, a za koje mapa još nema podatke o bateriji i punjenju, i dalje se biraju sa spiska, bez cene po kilometru.
+- [Mapa punjača](/mapa/): nema više posebnog prekidača „Imam Teslu“. Tesla Supercharger-i se prikazuju kao dostupni kad je u „Moj auto“ izabrana Tesla.
 - [Električni automobili u Srbiji](/elektricni-automobili/): uz svaku marku sada stoji njen logotip — u spisku marki, na stranici marke, kod marki bez zvaničnog uvoznika i kod marki koje prodaju samo dostavna vozila. Logotipi služe samo da se marka lakše prepozna ([metodologija](/metodologija/#automobili)).
 
 ## 24. oktobar 2026

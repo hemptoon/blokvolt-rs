@@ -33,8 +33,8 @@ Posete se broje uz Cloudflare Web Analytics: pregledi stranica, sa kog sajta ili
 
 <!--nonalog-->- Sajt ne postavlja kolačiće za praćenje. Provajder sajta, Cloudflare, može da postavi samo tehnički neophodan bezbednosni kolačić.<!--/nonalog-->
 <!--nalog-->- Sajt ne postavlja kolačiće za praćenje. Kad se prijavite na [Moj BlokVolt](/nalog/), sajt postavlja dva kolačića za prijavu, na 90 dana, a dok čekate kod još jedan, na 15 minuta. Provajder sajta, Cloudflare, može da postavi i tehnički neophodan bezbednosni kolačić.<!--/nalog-->
-<!--nonalog-->- Omiljeni punjači i izbor „Imam Teslu“ upisuju se samo u vaš pregledač, tek kad ih napravite. Ne šalju se sajtu i nestaju kad obrišete podatke sajta.<!--/nonalog-->
-<!--nalog-->- Omiljeni punjači i izbor „Imam Teslu“ upisuju se u vaš pregledač, tek kad ih napravite, a ako ste prijavljeni — i u nalog. Bez naloga se ne šalju sajtu i nestaju kad obrišete podatke sajta. Odjava ih briše iz pregledača.<!--/nalog-->
+<!--nonalog-->- Omiljeni punjači i „Moj auto“ upisuju se samo u vaš pregledač, tek kad ih napravite. Ne šalju se sajtu i nestaju kad obrišete podatke sajta.<!--/nonalog-->
+<!--nalog-->- Omiljeni punjači i „Moj auto“ upisuju se u vaš pregledač, tek kad ih napravite, a ako ste prijavljeni — i u nalog. Bez naloga se ne šalju sajtu i nestaju kad obrišete podatke sajta. Odjava ih briše iz pregledača.<!--/nalog-->
 - Nedavno otvorene stranice pregledač čuva da bi radile bez interneta.
 - Video sa YouTube-a učitava se tek kad pritisnete „Pusti“, sa domena youtube-nocookie.com.
 

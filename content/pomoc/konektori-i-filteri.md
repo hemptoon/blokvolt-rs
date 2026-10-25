@@ -2,7 +2,7 @@
 id: B8
 title: Konektori i filteri na mapi: Type 2, CCS2, CHAdeMO
 h1: Konektori: Type 2, CCS2 i CHAdeMO
-description: Koji priključak odgovara vašem autu i kako da ga nađete na mapi BlokVolt: Type 2 i filter AC, CCS2 i filter Brzi, CHAdeMO, Tesla i prekidač „Imam Teslu“.
+description: Koji priključak odgovara vašem autu i kako da ga nađete na mapi BlokVolt: Type 2 i filter AC, CCS2 i filter Brzi, CHAdeMO i Tesla.
 lead: Na kartici punjača, u delu „Priključci“, piše vrsta, struja i snaga svakog priključka. Filteri AC, Brzi (DC ≥ 50 kW) i CHAdeMO brzo sužavaju izbor.
 kicker: Pomoć
 section: mapa-i-podaci
@@ -51,12 +51,13 @@ Broj u tački je snaga punjača u kW; kad punjač ima i DC i AC, prikazana je DC
 
 Zato procena cene po kWh na mapi računa sa snagom koju auto realno dobija ([cene](/pomoc/cene-javnog-punjenja/)).
 
-## Tesla i „Imam Teslu“
+## Tesla
 
-Tesla Supercharger-i u Beogradu i Aleksincu su na mapi sive tačke sa slovom „T“ i oznakom „Samo Tesla“. Ne ulaze u filter „Besplatni“.
+Tesla Supercharger-i u Beogradu i Aleksincu su na mapi sive tačke sa slovom „T“ i oznakom „Samo Tesla“. Bez Tesle u „Moj auto“ ne ulaze u filter „Besplatni“.
 
-Ako vozite Teslu, uključite prekidač „Imam Teslu“ iznad liste. Supercharger-i se tada prikazuju kao dostupni, a pošto vozači javljaju da je punjenje besplatno, i kao besplatni. Tesla cenu za Srbiju ne objavljuje, pa punjenje može postati naplatno bez najave.
+Ako vozite Teslu, izaberite je u „Moj auto“ iznad liste. Supercharger-i se tada prikazuju kao dostupni, a pošto vozači javljaju da je punjenje besplatno, i kao besplatni. Tesla cenu za Srbiju ne objavljuje, pa punjenje može postati naplatno bez najave.
 
-Izbor „Imam Teslu“ pamti samo ovaj pregledač.
+Auto iz „Moj auto“ pamti pregledač, a ako ste prijavljeni — i nalog.
 
-[[shot:mapa-imam-teslu | Uključen prekidač „Imam Teslu“ i kartica Supercharger-a u Beogradu sa cenom „0 RSD za Tesla vozila“]]
+[[shot:mapa-imam-teslu | Kartica Supercharger-a u Beogradu sa cenom „0 RSD za Tesla vozila“, kad je u „Moj auto“ izabrana Tesla]]
+

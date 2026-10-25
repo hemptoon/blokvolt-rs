@@ -33,11 +33,11 @@ Komentar koji krši pravila prijavite linkom „Prijavi neprikladan komentar“ 
 
 Komentar koji tri posetioca prijave sklanja se do nove provere, a fotografija posle dve prijave. Pravila su na stranici [Pravila za prijave i fotografije](/pravila-objavljivanja/).
 
-## Omiljeni punjači i „Imam Teslu“
+## Omiljeni punjači i „Moj auto“
 
 - Punjač iz omiljenih uklanjate ponovnim dodirom na zvezdicu u vrhu kartice („Ukloni iz omiljenih“).
-<!--nonalog-->- Ceo spisak i izbor „Imam Teslu“ brišu se kad u pregledaču obrišete podatke sajta www.blokvolt.rs. Sajt ih nema, pa ne može da ih obriše umesto vas.<!--/nonalog-->
-<!--nalog-->- Ceo spisak i izbor „Imam Teslu“ brišu se kad u pregledaču obrišete podatke sajta www.blokvolt.rs. Ako ste prijavljeni, u nalogu ostaju dok ne obrišete nalog.<!--/nalog-->
+<!--nonalog-->- Ceo spisak i „Moj auto“ brišu se kad u pregledaču obrišete podatke sajta www.blokvolt.rs. Sajt ih nema, pa ne može da ih obriše umesto vas.<!--/nonalog-->
+<!--nalog-->- Ceo spisak i „Moj auto“ brišu se kad u pregledaču obrišete podatke sajta www.blokvolt.rs. Ako ste prijavljeni, u nalogu ostaju dok ne obrišete nalog.<!--/nalog-->
 
 [[shot:mapa-omiljeni-zvezdica | Uključena zvezdica u vrhu kartice punjača, sa natpisom „Ukloni iz omiljenih“]]
 

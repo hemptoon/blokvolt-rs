@@ -77,7 +77,7 @@
     var changed = c !== cur;
     cur = c;
     paint();
-    // a signed-in reader keeps the choice in the account (the same place as the car and "Imam Teslu"); fire and forget
+    // a signed-in reader keeps the choice in the account (the same place as the car); fire and forget
     if (changed && !applying && signedIn()) {
       fetch('/api/nalog/podesavanja', { method: 'POST', credentials: 'same-origin', headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ valuta: c }) }).catch(function () {});

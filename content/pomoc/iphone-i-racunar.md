@@ -56,6 +56,6 @@ Na iPhone-u i iPad-u ikonicu uklanjate kao i druge: dugim pritiskom na nju. Na r
 <details markdown="1">
 <summary>Detalji: omiljeni punjači na iPhone-u i iPad-u</summary>
 
-Omiljeni punjači i izbor „Imam Teslu“ čuvaju se u pregledaču. Na iPhone-u i iPad-u ikonica na početnom ekranu ima svoju memoriju, odvojenu od Safarija. Punjače koje ste sačuvali u Safariju zato ponovo označite zvezdicom u ikonici.
+Omiljeni punjači i „Moj auto“ čuvaju se u pregledaču. Na iPhone-u i iPad-u ikonica na početnom ekranu ima svoju memoriju, odvojenu od Safarija. Punjače koje ste sačuvali u Safariju zato ponovo označite zvezdicom u ikonici.
 
 </details>

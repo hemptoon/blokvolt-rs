@@ -4,14 +4,15 @@
    who charges free), drivers' reports, ratings and photos from /api (Cloudflare D1).
    On blokvolt.rs, cfg.region adds the neighbouring countries (/assets/map/region.json: open data of the blokvolt.com
    sections) as a second, quieter layer: no prices, reports or checks there, and each card links to that country's map.
-   Favourites (★) are station ids kept in this browser (localStorage 'bv:fav'), and so is the "Imam Teslu" switch
-   ('bv:tesla'). Only a reader signed in to "Moj BlokVolt" (cookie bv_in) also keeps them in the account (/api/nalog/*,
+   Favourites (★) are station ids kept in this browser (localStorage 'bv:fav'), and so is "Moj auto" ('bv:car', below).
+   Only a reader signed in to "Moj BlokVolt" (cookie bv_in) also keeps them in the account (/api/nalog/*,
    'bv:fav-owner': whose list it is; docs/RUNBOOK.md 3.27); without the cookie nothing is sent anywhere.
    Since 06.10.2026: "Najbliži punjač" (the three nearest chargers a driver can use, and a route; the navigation app chosen
    last is kept as 'bv:nav2'), "Moj auto" (the reader's car, 'bv:car', with the cars from /assets/map/auta.json: the cost per
    km at every charger, compared with petrol and with charging at home), the network's own price of every connector
    (mreze.json: pr), hours with "open now" (oh.w), own cable (cab), parking (park) and "Kako se puni ovde" (cene.json: kako).
-   The location, the car and the navigation app never leave the browser. docs/RUNBOOK.md 3.18. */
+   The location and the navigation app never leave the browser; the car only goes to the account of a signed-in reader.
+   docs/RUNBOOK.md 3.18. */
 import * as maplibregl from '/assets/vendor/maplibre-6.11.1/maplibre-gl.mjs';
 
 const d = document;
@@ -123,15 +124,17 @@ try { FAV = new Set((JSON.parse(localStorage.getItem(FAV_KEY) || '[]') || []).fi
 function saveFav() { try { localStorage.setItem(FAV_KEY, JSON.stringify([...FAV])); } catch (e) { /* private mode: kept for this visit only */ } }
 function isFav(s) { return FAV.has(s.id); }
 
-// "Imam Teslu": Tesla-only chargers (the two Superchargers) count as usable and, where drivers report it, free
-const TESLA_KEY = 'bv:tesla';
+// A Tesla in "Moj auto" (or ?tesla=1, for that view only): Tesla-only chargers (the Superchargers) count as usable and,
+// where drivers report it, free. Since 25.10.2026 there is no separate "Imam Teslu" switch: the car decides, as on the
+// Evolako map. The old switch's 'bv:tesla' is removed from this browser.
 let TESLA = false;
-try { TESLA = localStorage.getItem(TESLA_KEY) === '1'; } catch (e) { TESLA = false; }
-function saveTesla() { try { localStorage.setItem(TESLA_KEY, TESLA ? '1' : '0'); } catch (e) { /* private mode: this visit only */ } }
+const TESLA_URL = /[?&]tesla=1\b/.test(location.search);
+try { localStorage.removeItem('bv:tesla'); } catch (e) { /* private mode */ }
+function teslaNow() { const c = carSpec(); return TESLA_URL || !!(c && c.mk === 'Tesla'); }
 
 // "Moj auto": the reader's car in this browser only ('bv:car' = {id, cons, cab, opt}: the car's id in auta.json, the reader's
 // own consumption in kWh/100 km, "I have my own Type 2 cable", the optional on-board charger). With a car the map shows the
-// cost per km; a Tesla also switches "Imam Teslu" on (and another car off).
+// cost per km; a Tesla also makes the Tesla-only chargers usable. A signed-in reader's car is the account's car.
 const CAR_KEY = 'bv:car';
 let CAR = null, CARS = null, CARS_P = null, COSTV = 0;
 try {
@@ -181,9 +184,11 @@ function closedNow(s) { const o = openState(s); return !!o && !o.open; }
 // After the map data is in, /api/nalog/ja is asked once. The browser's list follows its owner ('bv:fav-owner', a short
 // hash the server gives each account): the same account → both lists joined and saved in both; another account → the
 // signed-in account's list replaces it, never mixed; a list from before any sign-in with stations the account does not
-// have → nothing changes here and nothing is sent: /nalog/ asks the reader first. Once in step, every star (and the Tesla
-// switch) is also sent to the account, fire-and-forget: localStorage stays the offline copy. A 401 removes the hint
-// cookie; the map then works as before, locally. The account's fast-charging plug (user.dc) marks the matching connector.
+// have → nothing changes here and nothing is sent: /nalog/ asks the reader first. Once in step, every star (and the car)
+// is also sent to the account, fire-and-forget: localStorage stays the offline copy. The account's car replaces this
+// browser's (a car not on the map's list means no car here); an account without a car takes this browser's, unless the
+// browser was last used by another account. A 401 removes the hint cookie; the map then works as before, locally. The
+// account's fast-charging plug (user.dc) marks the matching connector.
 const OWNER_KEY = 'bv:fav-owner';
 let ACC = false, MYDC = '';
 function accPost(path, body) {
@@ -207,8 +212,14 @@ function accSync() {
     if (!same(next, FAV)) { FAV = next; saveFav(); }
     try { localStorage.setItem(OWNER_KEY, key); } catch (e) { /* private mode */ }
     if (!same(next, acc)) accPost('omiljeni', { replace: [...next] });
-    const tesla = !!(j.user && j.user.tesla);
-    if (tesla !== TESLA && !/[?&]tesla=1\b/.test(location.search)) setTesla(tesla, true);
+    const u = j.user;
+    if (u.car_id || u.car) {
+      const next = u.car_id ? { id: u.car_id, cons: u.car_cons || null, cab: !!u.car_cab, opt: !!u.car_opt } : null;
+      if (JSON.stringify(next) !== JSON.stringify(CAR)) {
+        CAR = next; saveCar();
+        if (CAR) loadCars().then(() => { carChanged(); if (sel) openCard(sel, false); }); else carChanged();
+      }
+    } else if (CAR && (!owner || owner === key)) carToAccount();
     favCount();
     refresh();
     if (sel) openCard(sel, false);
@@ -858,7 +869,7 @@ function padding() {
 
 // ---------- "Najbliži punjač": the three nearest chargers a driver can use, and a route in a navigation app ----------
 // The same rules as the Evolako and BlokVolt apps and evolako.rs/mapa-punjaca: the chip filter counts, the search text and the
-// visible part of the map do not; never a charger that does not work, is only for Tesla vehicles (unless "Imam Teslu"), is
+// visible part of the map do not; never a charger that does not work, is only for Tesla vehicles (unless "Moj auto" is a Tesla), is
 // closed now, or that the reader's car cannot use (its DC plug; a Type 2 socket without a cable when the reader has none);
 // only confirmed ones unless the reader asks for the rest (or none is confirmed); with "Potvrđeni" on, confirmed only.
 // Order: the straight-line distance, then DC ≥ 50 kW, then the name — no network or firm is ever put first.
@@ -1022,7 +1033,7 @@ function nearClick(t) {
 // The reader types where to (and where from; empty = the reader's location). The places are looked up in Photon
 // (photon.komoot.io, OpenStreetMap data) and the route in OSRM on the FOSSGIS server (routing.openstreetmap.de): the
 // browser sends them only the typed text and the two points; the site gets and stores nothing (RUNBOOK 3.18).
-// Chargers: DC ≥ 50 kW that work (never "Ne radi"), not only for Tesla (unless "Imam Teslu"), usable by the reader's car
+// Chargers: DC ≥ 50 kW that work (never "Ne radi"), not only for Tesla (unless "Moj auto" is a Tesla), usable by the reader's car
 // when one is chosen; within R km of the route (straight line), ordered by the distance along the route. Confirmed only,
 // unless the reader asks for the rest (or none is confirmed); with "Potvrđeni" on, confirmed only. The chip filter and
 // the search text do not count: the route has its own rule. No network or firm is ever put first.
@@ -1785,18 +1796,7 @@ function initMap() {
 // ---------- controls ----------
 function paintChips() {
   [].forEach.call($chips.querySelectorAll('.chip'), c =>
-    c.setAttribute('aria-pressed', (c.dataset.f === 'ok' ? state.ok : c.dataset.f === 'tesla' ? TESLA : c.dataset.f === 'cheap' ? state.cheap : c.dataset.f === state.f) ? 'true' : 'false'));
-}
-// "Imam Teslu" is a switch like "Potvrđeni": kept in this browser, it changes which chargers are free and usable
-function setTesla(on, quiet, keep) {
-  TESLA = on;
-  COSTV++;
-  if (!keep) saveTesla();
-  if (!quiet) track('map_tesla', { on });
-  if (!quiet && ACC) accPost('podesavanja', { tesla: on });
-  paintChips();
-  refresh();
-  if (sel) openCard(sel, false, cardRt ? 'rt' : cardNear);
+    c.setAttribute('aria-pressed', (c.dataset.f === 'ok' ? state.ok : c.dataset.f === 'cheap' ? state.cheap : c.dataset.f === state.f) ? 'true' : 'false'));
 }
 function setChip(f, quiet) {
   state.f = f;
@@ -1815,7 +1815,6 @@ $chips.addEventListener('click', e => {
   const c = e.target.closest('.chip');
   if (!c) return;
   if (c.dataset.f === 'ok') setOk(!state.ok);
-  else if (c.dataset.f === 'tesla') setTesla(!TESLA);
   else if (c.dataset.f === 'cheap') { state.cheap = !state.cheap; track('map_sort', { cheapest: state.cheap }); paintChips(); refresh(); }
   else setChip(c.dataset.f);
 });
@@ -2111,18 +2110,26 @@ function carForm(list) {
     CAR = { id: c.id, cons: v >= 8 && v <= 40 && Math.abs(v - c.cons) > 0.05 ? Math.round(v * 10) / 10 : null, cab: f.elements.cab.checked, opt: !!(c.opt && f.elements.opt.checked) };
     saveCar();
     track('map_car_set', { make: c.mk, model: c.md, own_consumption: !!CAR.cons, cable: CAR.cab });
-    carChanged(c.mk === 'Tesla');
+    carChanged();
+    carToAccount();
     closeCar();
   });
   const del = f.querySelector('[data-car-del]');
-  if (del) del.addEventListener('click', () => { CAR = null; saveCar(); track('map_car_set', { removed: true }); carChanged(null); closeCar(); });
+  if (del) del.addEventListener('click', () => { CAR = null; saveCar(); track('map_car_set', { removed: true }); carChanged(); carToAccount(); closeCar(); });
 }
-// a new car: new costs everywhere; a Tesla switches "Imam Teslu" on, another car off (no car: the switch stays as it is)
-function carChanged(isTesla) {
+// a new car: new costs everywhere, and a Tesla makes the Tesla-only chargers usable
+function carChanged() {
   COSTV++;
+  TESLA = teslaNow();
   paintCar();
-  if (isTesla != null && isTesla !== TESLA) setTesla(isTesla);
-  else refresh();
+  refresh();
+}
+// the signed-in reader's car goes to the account too (the same fields as "Moj auto" on /nalog/); no car = none there
+function carToAccount() {
+  if (!ACC) return;
+  const c = CAR && CARS && CARS.find(x => x.id === CAR.id);
+  accPost('podesavanja', c ? { car_id: c.id, car: (c.mk + ' ' + c.md).slice(0, 80), car_cons: CAR.cons, car_cab: !!CAR.cab, car_opt: !!CAR.opt, dc: c.pl === 'chademo' ? 'chademo' : 'ccs2' }
+    : { car_id: '', car: '', car_cons: null, car_cab: false, car_opt: false, dc: '' });
 }
 if ($carBtn) $carBtn.addEventListener('click', () => openCar('button'));
 
@@ -2134,13 +2141,12 @@ function fromUrl() {
   const net = p.get('mreza'), g = p.get('grad'), q = p.get('q'), f = p.get('f');
   if (q) { $q.value = q; state.q = q; }
   if (f === 'ok' || p.get('ok') === '1') { state.ok = true; paintChips(); }
-  if (p.get('tesla') === '1') { TESLA = true; paintChips(); }
   const c = g && (cfg.cities || {})[g];
   if (c) city = { lat: c[0], lon: c[1] };
   // ?ll=<lat>,<lon>: the map opens close on that point (the moderation page links new chargers from drivers this way)
   const ll = (p.get('ll') || '').split(',').map(Number);
   if (ll.length === 2 && ll.every(isFinite) && Math.abs(ll[0]) <= 90 && Math.abs(ll[1]) <= 180) llAt = { lat: ll[0], lon: ll[1] };
-  paintChips();   // "Imam Teslu" kept in this browser (or the account) shows on its chip from the first paint
+  paintChips();
   if (net && $chips.querySelector('[data-f="net:' + net + '"]')) setChip('net:' + net, true);
   else if (net) { state.q = state.q || net.replace(/-/g, ' '); refresh(); }
   else if (f && f !== 'ok' && f !== 'cheap' && $chips.querySelector('[data-f="' + f + '"]')) setChip(f, true);
@@ -2180,6 +2186,7 @@ Promise.all([getJson(cfg.stations), cfg.nets ? getJson(cfg.nets).catch(() => ({ 
   NETS = b.nets;
   ST.forEach((s, i) => { s._i = i; });
   COSTV++;
+  TESLA = teslaNow();
   paintCar();
   // favourites of stations that are no longer on the map are dropped quietly
   const ids = new Set(ST.map(s => s.id));
