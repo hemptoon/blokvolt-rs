@@ -910,7 +910,7 @@ and sends every star as well; localStorage stays the offline copy. Nothing chang
 Filters: one-of chips (Svi, Omiljeni, Brzi, AC, CHAdeMO, Besplatni, networks) plus the switch „Potvrđeni“, which
 combines with any of them (`?ok=1`; the old `?f=ok` still works). Card actions: „Navigacija“ opens Google Maps
 everywhere (owner's decision 25.10.2026; before that Apple Maps came first on Apple devices), with the other apps
-(Apple Maps on Apple devices, Waze) linked under it; a reader's own choice of app is kept as 'bv:nav'; „Podeli“ uses the
+(Apple Maps on Apple devices, Waze) linked under it; a reader's own choice of app is kept as 'bv:nav2' (until 25.10.2026 'bv:nav', which also stored the old Apple Maps default, so it is ignored); „Podeli“ uses the
 system share sheet or copies the `/mapa/#<id>` link. A price whose date is more than a year old gets the warning
 `p_old` (the Evolako app shows the same marker).
 
@@ -936,7 +936,7 @@ Since 06.10.2026 (test: `scripts/qa/map_v2_test.py`, with the three tests above)
   counts, the search and the visible part of the map do not), straight-line distance, a big route button for the first.
   The location stays in the browser. `?najblizi=1` / `=brzi` opens it (asks first unless the browser already allows
   the location). Route links: Google `dir/?api=1&destination=…&travelmode=driving&dir_action=navigate`, Apple
-  `?daddr=…&dirflg=d`, Waze `ul?ll=…&navigate=yes`; the app the reader used last is remembered (`bv:nav`).
+  `?daddr=…&dirflg=d`, Waze `ul?ll=…&navigate=yes`; the app the reader used last is remembered (`bv:nav2`).
   `?qa=1`: `window.bvNearQa(lat, lon, nep)`.
 - **Moj auto** — the reader's car (`bv:car` = {id, cons, cab, opt}; the list is `/assets/map/auta.json` from
   `content/data/ev-specs.json`, open sources with attribution; ev-database.org is not used — its terms forbid it).

@@ -8,7 +8,7 @@
    ('bv:tesla'). Only a reader signed in to "Moj BlokVolt" (cookie bv_in) also keeps them in the account (/api/nalog/*,
    'bv:fav-owner': whose list it is; docs/RUNBOOK.md 3.27); without the cookie nothing is sent anywhere.
    Since 06.10.2026: "Najbliži punjač" (the three nearest chargers a driver can use, and a route; the navigation app chosen
-   last is kept as 'bv:nav'), "Moj auto" (the reader's car, 'bv:car', with the cars from /assets/map/auta.json: the cost per
+   last is kept as 'bv:nav2'), "Moj auto" (the reader's car, 'bv:car', with the cars from /assets/map/auta.json: the cost per
    km at every charger, compared with petrol and with charging at home), the network's own price of every connector
    (mreze.json: pr), hours with "open now" (oh.w), own cable (cab), parking (park) and "Kako se puni ovde" (cene.json: kako).
    The location, the car and the navigation app never leave the browser. docs/RUNBOOK.md 3.18. */
@@ -72,10 +72,10 @@ const ICON = {
   loc: svg('<circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>')
 };
 // directions: Google Maps first everywhere (owner's decision 25.10.2026), Apple Maps second on Apple devices, Waze always.
-// The app a reader opens a route in comes first from then on ('bv:nav' in this browser). Google: dir_action=navigate starts
+// The app a reader opens a route in comes first from then on ('bv:nav2' in this browser; the old 'bv:nav' is ignored: it kept the Apple Maps default of the Apple devices, 25.10.2026). Google: dir_action=navigate starts
 // turn-by-turn at once in the Maps app on a phone; coordinates only, no API key.
 const IS_APPLE = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent) && !/Android/.test(navigator.userAgent);
-const NAV_KEY = 'bv:nav', NAV_NAME = { google: 'Google Maps', apple: 'Apple Maps', waze: 'Waze' };
+const NAV_KEY = 'bv:nav2', NAV_NAME = { google: 'Google Maps', apple: 'Apple Maps', waze: 'Waze' };
 let NAV_PREF = '';
 try { NAV_PREF = localStorage.getItem(NAV_KEY) || ''; } catch (e) { NAV_PREF = ''; }
 function navApps() { return IS_APPLE ? ['google', 'apple', 'waze'] : ['google', 'waze']; }

@@ -35,17 +35,17 @@ const ICON = {
 };
 
 // directions: Apple Maps first on Apple devices, Google Maps elsewhere, Waze always; the app chosen last comes first
-// (the same 'bv:nav' key as the charger map, kept in this browser)
+// (the same 'bv:nav2' key as the charger map, kept in this browser)
 const IS_APPLE = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent) && !/Android/.test(navigator.userAgent);
 const NAV_NAME = { google: 'Google Maps', apple: 'Apple Maps', waze: 'Waze' };
 let NAV_PREF = '';
-try { NAV_PREF = localStorage.getItem('bv:nav') || ''; } catch (e) { NAV_PREF = ''; }
-const navApps = () => (IS_APPLE ? ['apple', 'google', 'waze'] : ['google', 'waze']);
+try { NAV_PREF = localStorage.getItem('bv:nav2') || ''; } catch (e) { NAV_PREF = ''; }
+const navApps = () => (IS_APPLE ? ['google', 'apple', 'waze'] : ['google', 'waze']);   // Google Maps first everywhere (owner, 25.10.2026)
 const navPref = () => (navApps().indexOf(NAV_PREF) >= 0 ? NAV_PREF : navApps()[0]);
 function setNavPref(a) {
   if (navApps().indexOf(a) < 0 || a === NAV_PREF) return;
   NAV_PREF = a;
-  try { localStorage.setItem('bv:nav', a); } catch (e) { /* private mode */ }
+  try { localStorage.setItem('bv:nav2', a); } catch (e) { /* private mode */ }
 }
 function navUrl(a, s) {
   const ll = s.lat + ',' + s.lon;

@@ -54,7 +54,7 @@ async def main():
                 return txt
 
             await pg.goto(BASE + '/mapa/', wait_until='load')
-            await pg.evaluate("localStorage.removeItem('bv:car'); localStorage.removeItem('bv:tesla'); localStorage.removeItem('bv:nav')")
+            await pg.evaluate("localStorage.removeItem('bv:car'); localStorage.removeItem('bv:tesla'); localStorage.removeItem('bv:nav2')")
 
             # 1. the network's price of every connector, own cable, "Kako se puni ovde"
             t = await card('/mapa/?qa=1#ocm-260806', 'gazprom')
@@ -165,7 +165,7 @@ async def main():
             await pg.click('.nrp [data-app="waze"]')
             await pg.wait_for_timeout(200)
             go = await pg.get_attribute('.nrp .nr.first a.nr-go', 'href')
-            check('waze.com' in go and await pg.evaluate("localStorage.getItem('bv:nav')") == 'waze', f'{tag} navigation app remembered: {go}')
+            check('waze.com' in go and await pg.evaluate("localStorage.getItem('bv:nav2')") == 'waze', f'{tag} navigation app remembered: {go}')
             # a row opens the card with "back"
             await pg.click('.nrp .nr.first .nr-main')
             await pg.wait_for_timeout(500)
@@ -186,7 +186,7 @@ async def main():
             check(fast == 'true', f'{tag} ?najblizi=brzi: fast on')
 
             # 4. drivers' short answers after a report
-            await pg.evaluate("localStorage.removeItem('bv:nav')")
+            await pg.evaluate("localStorage.removeItem('bv:nav2')")
             t = await card('/mapa/?qa=1#ocm-262055', 'report')
             await pg.click('.rv [data-ci="problem"]')
             check(await pg.is_visible('.rv-why'), f'{tag} reasons shown for "Radi, uz problem"')
