@@ -671,7 +671,8 @@ Points: the network's own pin when it gives one (Yesla, Best in Parking), otherw
 OpenStreetMap's Nominatim from the owner's browser (a few requests, one a second) — `loc.q = site`. Never a point from
 Google Maps, PlugShare, Chargemap or another charger map or app (20.10.2026: PlugShare's terms forbid copying any part
 of it, a private list included; the owner set the goal of reaching its coverage through the networks' and owners' own
-sources only. A driver who sees a missing charger adds it through 3.11d).
+sources only. A driver who sees a missing charger adds it through 3.11d). One exception: the team's list, 3.11g (owner's decision
+25.10.2026).
 Never publish a person's name from an app's „owner“ field (sole proprietors are named after the owner). When a list is
 read again, change its date in `lists`, add or remove sites, and say in the report which disappeared (20.10.2026: AK
 Tasić Jagodina and CITY TAXI Novi Sad were no longer in the Spectra app).
@@ -694,6 +695,22 @@ Marriott's „EV charging hotels“ list for Serbia and its FAQ (St. Regis, AC H
 owner's browser at the next quarterly check. Names seen only on third-party sites wait for that check (Hyatt Regency,
 Radisson Collection Old Mill, Mövenpick Fruške Terme, Hotel Mons Zlatibor, Zepter Vrnjačka Banja).
 Tesla Destination sites (tesla.json, kind `destination`) link to Tesla's chargers list (`source2`), Superchargers to `source`.
+
+#### 3.11g The team's list (`content/mapa/mreze/tim.json`, owner's decision 25.10.2026)
+
+On 25.10.2026 the owner gave a list of 251 chargers from a contact's own collection and lifted the 3.11e rule for it
+(„menjaj pravilo i beri kak est'“), with one condition: the public label is „dopuna tima BlokVolt“ — never name the list,
+its keeper or where it came from. The raw list is not committed. Sites in `tim.json`: `id` `tim-<slug>` (never an id from
+the list), `n`, `a` (Latin), `lat`/`lon` as in the list, `c`, `acc: "customers"` for restricted access, optional facts of
+dopune.json. `map_data.official_sites()` loads them with `tim: true`; `verify()` never lets them confirm or absorb an
+open-data station and adds them as „Nije potvrđeno“ (`v = {s: nep, g: tim, d}`; card text `v_tim`, „Dodato <date>“,
+point note `q_tim`, source `src_tim` linking to /pomoc/odakle-su-podaci/, item 5).
+Left out on 25.10.2026: chargers within 150 m of a map station (same site), "Coming Soon", private homes and anything
+named after a person or a phone number, staff-only workplace chargers, toll plazas (only `putevi-srbije.json`).
+Every site was also searched the same day on the owner's own site and the networks' lists: a charger an allowed source
+names is an `own` site in `ostale.json` (with `u`, `l`, `d`, a short `note`), confirmed, and is not in `tim.json`.
+Quarterly, with 3.11b: try again to confirm the `tim` sites (owner's site, network lists, drivers' reports); a confirmed
+one moves to `ostale.json`, one that is gone (owner says closed, drivers report „Nema punjača“) is removed.
 
 #### 3.11c Drivers' reports, ratings, photos (backend)
 

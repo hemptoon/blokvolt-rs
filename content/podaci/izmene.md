@@ -13,6 +13,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 25. oktobar 2026
 
+- [Mapa punjača](/mapa/): 120 novih punjača iz dopune tima, najviše u hotelima, restoranima, tržnim centrima i na pumpama širom Srbije — sada 392 punjača na mapi. Šest je potvrđeno na sajtu vlasnika mesta (Lidl Kaluđerica, Hotel Srebrno jezero, Royal Spa Hotel u Banji Koviljači, Gradska kafana u Šapcu, Paligo Palata na Paliću, Adam Petrol u Golupcu); ostali imaju oznaku „Nije potvrđeno“ i datum dodavanja dok ih ne potvrdi spisak mreže, vlasnik mesta ili prijava vozača ([odakle su podaci](/pomoc/odakle-su-podaci/)).
 - [Moj BlokVolt](/nalog/): „Moj auto“ u nalogu je sada isti spisak automobila kao „Moj auto“ na [mapi](/mapa/), sa verzijom, potrošnjom, svojim kablom i opcionim punjačem u autu. Kad ste prijavljeni, mapa na svakom uređaju računa cenu po kilometru za taj auto. Modeli koji se prodaju u Srbiji, a za koje mapa još nema podatke o bateriji i punjenju, i dalje se biraju sa spiska, bez cene po kilometru.
 - [Mapa punjača](/mapa/): nema više posebnog prekidača „Imam Teslu“. Tesla Supercharger-i se prikazuju kao dostupni kad je u „Moj auto“ izabrana Tesla.
 - [Električni automobili u Srbiji](/elektricni-automobili/): uz svaku marku sada stoji njen logotip — u spisku marki, na stranici marke, kod marki bez zvaničnog uvoznika i kod marki koje prodaju samo dostavna vozila. Logotipi služe samo da se marka lakše prepozna ([metodologija](/metodologija/#automobili)).

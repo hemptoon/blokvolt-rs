@@ -643,11 +643,23 @@ def official_sites():
             recs.append({'k': x['k'], 'id': x['id'], 'lat': x['lat'], 'lon': x['lon'], 'net': L.get('net', ''), 'raw': x['n'], 'n': x['n'],
                          'a': x.get('a', ''), 'c': x.get('c') or [], 'evse': None, 'u': x.get('u') or L.get('url', ''),
                          'l': x.get('l') or '', 'src2': x.get('src2'), 'extra': extra, 'dt': x.get('d')})
+    # chargers the team added from its own working list (content/mapa/mreze/tim.json, owner's decision 25.10.2026, RUNBOOK
+    # 3.11g): shown as „Nije potvrđeno“ (v.g = 'tim') until a network's list, the owner's site or drivers confirm them; they
+    # never confirm an open-data station. A confirmed one moves to ostale.json (own, with its page).
+    tf = MREZE / 'tim.json'
+    if tf.exists():
+        t = json.load(open(tf, encoding='utf-8'))
+        meta['tim'] = {'file': 'tim.json', 'date': t['date'], 'url': t['url'], 'label': t['label']}
+        for x in t['sites']:
+            extra = {f: x[f] for f in ('loc', 'oh', 'ax', 'fee', 'note', 'al', 'opn', 'acc', 'park') if f in x}
+            recs.append({'k': 'tim', 'id': x['id'], 'lat': x['lat'], 'lon': x['lon'], 'net': x.get('net', ''), 'raw': x['n'], 'n': x['n'],
+                         'a': x.get('a', ''), 'c': x.get('c') or [], 'evse': None, 'u': t['url'], 'l': t['label'],
+                         'src2': x.get('src2'), 'extra': extra, 'dt': x.get('d'), 'tim': True})
     # one site per network within 80 m (Crowne Plaza 1, 2, 3 and the hypercharger; SIRIUS eksterno / interno)
     sites = []
     for r in recs:
         same = next((x for x in sites if x['k'] == r['k'] and x['net'] == r['net'] and dist_m(_ll(x), _ll(r)) <= 80
-                     and _first(x['raw']) == _first(r['raw']) and r['k'] not in ('own', 'bp')), None)
+                     and _first(x['raw']) == _first(r['raw']) and r['k'] not in ('own', 'bp', 'tim')), None)
         if same is None:
             sites.append(dict(r, parts=1))
             continue
@@ -941,6 +953,8 @@ def verify(stations, notes, checked):
     for s in stations:
         best = None
         for site in sites:
+            if site.get('tim'):
+                continue   # the team's own list confirms nothing
             fit = _fit(s.get('net'), site['net'])
             if fit is None and not (s.get('ps') and site.get('putevi')):
                 continue
@@ -1005,7 +1019,8 @@ def verify(stations, notes, checked):
                          'c': site['c'], 'dc': max(dc) if dc else None, 'ac': max(ac) if ac else None, 'acc': 'public',
                          'src': site_src(site)
                          + ([{'d': 'cga', 'l': 'aplikacija Charge&GO', 'u': meta['cga']['url'], 'upd': iso(meta['cga']['date'])}] if af else []),
-                         'v': {'s': 'ok', 'by': [site['k']], 'd': sdate(site)}}, **af, **(site.get('extra') or {})))
+                         'v': {'s': 'nep', 'g': 'tim', 'd': sdate(site)} if site.get('tim') else {'s': 'ok', 'by': [site['k']], 'd': sdate(site)}},
+                        **af, **(site.get('extra') or {})))
     for s in stations:
         if s.get('ps') and not s.get('v'):
             s['v'] = {'s': 'ok', 'by': ['ps'], 'd': s['ps']['d']}

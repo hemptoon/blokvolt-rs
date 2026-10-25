@@ -284,9 +284,9 @@ def photo_credits_html():
 
 
 SMESTAJ_RE = re.compile(r'(?i)\b(hotel|hostel|motel|vila|villa|apartman\w*|konak|etno|resort|guest ?house|garni|kamp|camping|vinarij\w*|winery|lodge|pansion|salaš|dvorac|moxy|hilton|marriott|courtyard|intercontinental|metropol palace|crowne plaza|square nine)\b')
-CONN_SR = {'type2': 'Tip 2', 'ccs': 'CCS', 'ccs2': 'CCS', 'chademo': 'CHAdeMO', 'tesla': 'Tesla', 'schuko': 'Šuko', 'type1': 'Tip 1'}
+CONN_SR = {'type2': 'Tip 2', 'ccs': 'CCS', 'ccs2': 'CCS', 'chademo': 'CHAdeMO', 'tesla': 'Tesla', 'schuko': 'Šuko', 'type1': 'Tip 1', 'other': 'ostalo'}
 SRC_SR = {'cg': 'spisak Charge&GO', 'cga': 'aplikacija Charge&GO', 'rm': 'roming mapa Charge&GO', 'te': 'Tesla', 'tesla': 'Tesla',
-          'sp': 'aplikacija Emobility Spectra', 'ye': 'aplikacija Yesla', 'bp': 'Best in Parking'}
+          'sp': 'aplikacija Emobility Spectra', 'ye': 'aplikacija Yesla', 'bp': 'Best in Parking', 'tim': 'dopuna tima BlokVolt'}
 
 
 def smestaj_rows():
@@ -934,6 +934,8 @@ MAP_T = {
     'v_old': 'Punjač je u otvorenim bazama i na Google mapama, ali bez skorijih potvrda: nijedna ocena vozača iz poslednjih godinu dana. Proverite pre polaska.',
     'v_prob_t': 'Prijavljen kvar', 'v_prob': 'Vozači u skorašnjim recenzijama pišu da punjač ne radi. Proverite pre polaska.',
     'v_test': 'Po spisku mreže punjač je u probnom radu i još nije otvoren za sve. Proverite u aplikaciji pre polaska.',
+    'v_tim': 'Punjač je dodao tim BlokVolta. Još ga nije potvrdio spisak mreže, sajt vlasnika mesta ni prijava vozača. Proverite pre polaska.',
+    'v_tim_d': 'Dodato {d}', 'src_tim': 'dopuna tima BlokVolt', 'q_tim': 'Tačka je iz dopune tima i može odstupati nekoliko desetina metara.',
     'src_rm': 'Charge&GO roming',
     # drivers' reports (/api)
     'rv_title': 'Iskustva vozača', 'rv_empty': 'Još nema prijava za ovaj punjač.', 'ratings': 'ocena: {n}', 'last_report': 'Poslednja prijava',

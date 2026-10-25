@@ -8,11 +8,11 @@ kicker: Pomoć
 section: mapa-i-podaci
 order: 2
 path: /pomoc/sta-znaci-potvrdjeno/
-updated: 28.09.2026
+updated: 25.10.2026
 related: /pomoc/javite-da-li-punjac-radi/, /pomoc/odakle-su-podaci/, /pomoc/punjac-ne-radi/
 shots: svg-potvrdjeno, mapa-kartica-potvrdjeno, mapa-kartica-nije-potvrdjeno, mapa-poslednja-prijava
 published: 2026-09-28
-modified: 2026-09-28
+modified: 2026-10-25
 ---
 ## Pravilo
 
@@ -30,7 +30,7 @@ Na [mapi](/mapa/), u delu „Odakle su podaci na mapi“, opisano je pravilo pro
 <div class="fl-down" aria-hidden="true"></div>
 <div class="fl-row">
 <div class="fl-b ok"><b>Potvrđeno</b><span>punjač postoji na tom mestu</span></div>
-<div class="fl-b warn"><b>Nije potvrđeno</b><span>samo u otvorenim bazama ili bez skorašnje ocene</span></div>
+<div class="fl-b warn"><b>Nije potvrđeno</b><span>samo u otvorenim bazama, dopuna tima ili bez skorašnje ocene</span></div>
 <div class="fl-b no"><b>Prijavljen kvar</b><span>u skorašnjim recenzijama piše da ne radi</span></div>
 </div>
 <p class="fl-note"><b>Odvojeno:</b> prijava vozača na kartici pokazuje kako je bilo pri poslednjem punjenju („Poslednja prijava“). Ne menja oznaku ni boju tačke.</p>
@@ -39,7 +39,7 @@ Na [mapi](/mapa/), u delu „Odakle su podaci na mapi“, opisano je pravilo pro
 ## Šta piše na kartici
 
 - **Potvrđeno**, sa izvorom i datumom provere. Izvor je spisak mreže (Charge&GO, roming mapa Charge&GO, Tesla, JP „Putevi Srbije“), skorašnje ocene vozača na Google mapama ili sajt vlasnika lokacije.
-- **Nije potvrđeno**, sa razlogom i datumom provere. Punjač je samo u otvorenim bazama, ili je na Google mapama bez ocene iz poslednjih godinu dana, ili je po spisku mreže u probnom radu.
+- **Nije potvrđeno**, sa razlogom i datumom provere. Punjač je samo u otvorenim bazama, ili je na Google mapama bez ocene iz poslednjih godinu dana, ili je po spisku mreže u probnom radu, ili ga je dodao tim BlokVolta, a još ga niko nije potvrdio.
 - **Prijavljen kvar**: vozači u skorašnjim recenzijama pišu da punjač ne radi. Tačka je siva, a u listi stoji znak „!“.
 
 Nepotvrđen punjač je na mapi bled, sa „?“ uz snagu, a u listi ima znak „?“. Prekidač „Potvrđeni“ iznad liste prikazuje samo potvrđene, a red iznad liste tada piše koliko ih je.

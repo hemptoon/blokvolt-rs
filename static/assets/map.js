@@ -731,7 +731,7 @@ function plusCode(lat, lon) {
 function pointQ(s) {
   if (s.loc && s.loc.q) return s.loc.q;
   const pre = s.id.split('-')[0];
-  return { cg: 'net', rm: 'net', te: 'net', ps: 'site', osm: 'osm', ocm: 'ocm', vz: 'vz', ye: 'net', bp: 'net', sp: 'site', own: 'site' }[pre] || '';
+  return { cg: 'net', rm: 'net', te: 'net', ps: 'site', osm: 'osm', ocm: 'ocm', vz: 'vz', ye: 'net', bp: 'net', sp: 'site', own: 'site', tim: 'tim' }[pre] || '';
 }
 function whereHtml(s) {
   const L = s.loc || {}, ll = (+s.lat).toFixed(5) + ', ' + (+s.lon).toFixed(5);
@@ -758,8 +758,8 @@ function verHtml(s) {
     const by = (v.by || []).map(b => VBY()[b]).filter(Boolean).join('; ');
     return '<p class="vf">' + ICON.ok + '<span><b>' + esc(T.v_ok) + '</b> ' + esc(by) + (v.d ? ' · ' + esc(v.d) : '') + vHelp() + '</span></p>';
   }
-  const why = v.s === 'prob' ? T.v_prob : (v.g === 'vz' ? T.v_vz : v.g === 'test' ? T.v_test : v.g === 'g_old' ? T.v_old : T.v_none);
-  const when = (v.g === 'vz' ? T.v_vz_d : T.v_checked).replace('{d}', v.d || '');
+  const why = v.s === 'prob' ? T.v_prob : (v.g === 'vz' ? T.v_vz : v.g === 'tim' && T.v_tim ? T.v_tim : v.g === 'test' ? T.v_test : v.g === 'g_old' ? T.v_old : T.v_none);
+  const when = (v.g === 'vz' ? T.v_vz_d : v.g === 'tim' && T.v_tim_d ? T.v_tim_d : T.v_checked).replace('{d}', v.d || '');
   return '<div class="vf-warn' + (v.s === 'prob' ? ' no' : '') + '"><b>' + ICON.warn + esc(v.s === 'prob' ? T.v_prob_t : T.v_nep) + '</b><p>' + esc(why) + '</p><small>' + esc(when) + vHelp() + '</small></div>';
 }
 function openCard(s, fly, fromNear) {
@@ -784,8 +784,8 @@ function openCard(s, fly, fromNear) {
   const site = rg ? rg.map + '#' + encodeURIComponent(s.id) : n && n.page ? n.page : (n && n.site ? n.site : '');
   const fix = cfg.fix ? cfg.fix.replace('{id}', encodeURIComponent(s.id)) : lp('/ispravka/?stanica=') + encodeURIComponent(s.id);
   const SRC = { ocm: 'Open Charge Map', osm: 'OpenStreetMap', ps: 'JP Putevi Srbije', cg: 'Charge&GO', rm: T.src_rm, te: 'Tesla', cga: T.src_cga, vz: T.src_vz,
-    sp: T.src_sp, ye: T.src_ye, bp: 'Best in Parking', own: T.src_own };
-  const srcs = s.src.filter(x => x.u).map(x => '<a href="' + esc(x.u) + '" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(x.upd) + ')' : '')).join(' · ');
+    sp: T.src_sp, ye: T.src_ye, bp: 'Best in Parking', own: T.src_own, tim: T.src_tim };
+  const srcs = s.src.filter(x => x.u).map(x => '<a href="' + esc(lp(x.u)) + '" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(x.upd) + ')' : '')).join(' · ');
   $card.innerHTML = '<div class="ccard" role="dialog" aria-label="' + esc(title(s)) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
     favBtn(s) + (cardNear ? '<button class="lnkbtn nr-back" type="button" data-nr="back">← ' + esc(T.nr_title) + '</button>' : cardRt ? '<button class="lnkbtn nr-back" type="button" data-rt="back">← ' + esc(T.rt_title) + '</button>' : '') +
     '<h2>' + esc(title(s)) + '</h2><p class="addr">' + esc(place(s)) + '</p>' + verHtml(s) + tagsHtml(s) + netLine + priceHtml(s) + noteHtml(s) + kakoHtml(s) + statusHtml(s) + conns + acc + whereHtml(s) +
