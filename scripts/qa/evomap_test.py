@@ -89,7 +89,7 @@ async def main():
             card = await pg.evaluate('''async () => { const b = document.querySelector('.evm-st[data-id="cg-108"]') || null; 
               const q = document.getElementById('evm-q'); q.value = 'DeLasol'; q.dispatchEvent(new Event('input', {bubbles: true})); await new Promise(r => setTimeout(r, 400));
               document.querySelector('.evm-st[data-id="cg-108"]').click(); await new Promise(r => setTimeout(r, 200));
-              const c = document.querySelector('.evm-card .evm-cc'); return {lines: c.querySelectorAll('.evm-plines li').length, kako: c.querySelectorAll('.evm-hw-steps li').length === 4 && !!c.querySelector('.evm-hw-more summary') && c.querySelectorAll('.evm-cns .evm-cn-ic svg').length >= 1, kakoT: (c.querySelector('.evm-hw')||{}).innerText, pick: !!c.querySelector('[data-car-open]'), txt: c.innerText.slice(0, 400)}; }''')
+              const c = document.querySelector('.evm-card .evm-cc'); return {lines: c.querySelectorAll('.evm-plines li').length, kako: c.querySelectorAll('.evm-hw-steps li').length === 4 && !!c.querySelector('.evm-hw-more summary') && c.querySelectorAll('.evm-cns .evm-cn>i svg').length >= 1, kakoT: (c.querySelector('.evm-hw')||{}).innerText, pick: !!c.querySelector('[data-car-open]'), txt: c.innerText.slice(0, 400)}; }''')
             ok(card['lines'] >= 2, f'{tag} per-connector lines', card['lines'])
             ok(card['kako'], f'{tag} how-to block', card['kakoT'])
             ok(card['pick'], f'{tag} "choose your car" link in the card')
@@ -102,7 +102,7 @@ async def main():
               await new Promise(r => setTimeout(r, 200)); const c = document.querySelector('.evm-card .evm-cc'), R = c.getBoundingClientRect(), bad = [];
               c.querySelectorAll('*').forEach(e => { const r = e.getBoundingClientRect(); if (r.width && r.right > R.right + .5) bad.push(e.className); });
               const k = {}; (window.evmKakoQa ? window.evmKakoQa() : []).forEach(x => { if (x.how) k[x.how.k] = (k[x.how.k] || 0) + 1; });
-              return { gen: !!c.querySelector('.evm-hw.is-gen'), steps: c.querySelectorAll('.evm-hw-steps li').length, icons: c.querySelectorAll('.evm-cn-ic svg').length, over: bad.slice(0, 4), kinds: k }; }''')
+              return { gen: !!c.querySelector('.evm-hw.is-gen'), steps: c.querySelectorAll('.evm-hw-steps li').length, icons: c.querySelectorAll('.evm-cn>i svg').length, over: bad.slice(0, 4), kinds: k }; }''')
             ok(hw and hw['gen'] and hw['steps'] == 3 and hw['icons'] == 2 and not hw['over'], f'{tag} general scheme + plug icons (Punjač Knin)', hw)
             ok(hw and hw['kinds'].get('net', 0) > 150 and hw['kinds'].get('unk', 0) > 100, f'{tag} every charger has a scheme', hw and hw['kinds'])
             await pg.evaluate('''async () => { const q = document.getElementById('evm-q'); q.value = 'DeLasol'; q.dispatchEvent(new Event('input', {bubbles: true}));

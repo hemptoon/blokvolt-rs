@@ -1002,8 +1002,15 @@ Since 06.10.2026 (test: `scripts/qa/map_v2_test.py`, with the three tests above)
   Every other charger in Serbia gets a general scheme, labelled „Opšte uputstvo“, chosen from dopune.json: `ax.how`
   card-desk / rfid / staff, then guests or customers only, then free, else an unknown network (look for the network and
   the QR code on the charger); an AC-only charger without `cab.own` adds „AC punjači često nemaju kabl“. Never write a
-  network's real steps into the general texts. **Priključci**: every connector has a drawing of its plug (`PLUG`, the same
-  stroke as the other icons; DC on the volt tint). Test: `scripts/qa/map_kako_test.py` (a scheme for every charger, the
+  network's real steps into the general texts. Step captions at most 28 characters (the test fails above that); facts never
+  repeat the price box (price, start fee, idle fee); only App Store / Google Play are buttons (this device's store first),
+  the network's websites are under „Detaljno“. **Priključci** (owner, 26.10.2026): tiles, one per plug and current
+  („CCS2 · DC · 30–75 kW“, ×n), as many in a row as fit, each with a drawing of its plug (`PLUG`, the same stroke as the
+  other icons; DC on the volt tint). With „Moj auto“ a plug that does not fit the car is faded („ne odgovara“), a fitting one
+  says „vaš auto“ (`plugFit`: DC by the car's plug, CHAdeMO only for CHAdeMO cars, Tesla plug only for a Tesla; Type 2 AC always;
+  household sockets unmarked). Card order since 26.10.2026: title, verification, tags, network, Priključci, Cena, Kako se
+  puni ovde, „Izdvojeno“ (moved below the how-to: the driver first sees how to charge), status, Gde tačno. evolako.rs keeps
+  its own home-charging box inside the price. Test: `scripts/qa/map_kako_test.py` (a scheme for every charger, the
   sample of each kind, nothing wider than the card in SR/EN/RU on computer and phone) and `evomap_test.py`.
 - **Card**: per-connector prices from the network's app (`pr`), „Kako se puni ovde“ (the network's `kako`), badges for
   hours with „sada radi do … / zatvoreno, otvara u …“ (Serbian time), „Ponesite svoj Tip 2 kabl“ and parking; closed

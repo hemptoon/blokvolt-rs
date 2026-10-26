@@ -281,15 +281,15 @@
   "steps": [
    {
     "i": "app",
-    "t": "Otvorite aplikaciju Charge&GO"
+    "t": "Otvorite Charge&GO"
    },
    {
     "i": "qr",
-    "t": "Skenirajte QR kod na punjaču"
+    "t": "Skenirajte QR na punjaču"
    },
    {
     "i": "plug",
-    "t": "Kabl tek kad aplikacija zatraži"
+    "t": "Kabl kad aplikacija traži"
    },
    {
     "i": "stop",
@@ -303,11 +303,7 @@
    },
    {
     "i": "card",
-    "t": "Sa nalogom je 20 % jeftinije; saldo se dopunjuje po 3.000 RSD"
-   },
-   {
-    "i": "timer",
-    "t": "Posle 15 minuta: 5 RSD za svaki minut zauzeća"
+    "t": "Sa nalogom: prva uplata 3.000 RSD ide na saldo, dopuna je automatska"
    }
   ],
   "start": [
@@ -323,6 +319,10 @@
    {
     "l": "Google Play",
     "u": "https://play.google.com/store/apps/details?id=com.charge_and_go_mobile"
+   },
+   {
+    "l": "App Store",
+    "u": "https://apps.apple.com/app/id1662961378"
    },
    {
     "l": "veb-klijent",
@@ -345,6 +345,10 @@
    {
     "l": "opis aplikacije na Google Play",
     "u": "https://play.google.com/store/apps/details?id=com.charge_and_go_mobile"
+   },
+   {
+    "l": "chargego.rs — linkovi za aplikacije (26.10.2026)",
+    "u": "https://chargego.rs/"
    }
   ]
  }

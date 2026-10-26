@@ -88,11 +88,11 @@
   "steps": [
    {
     "i": "app",
-    "t": "Dodajte karticu u aplikaciji Yesla"
+    "t": "Kartica u aplikaciji Yesla"
    },
    {
     "i": "qr",
-    "t": "Skenirajte QR kod na konektoru"
+    "t": "Skenirajte QR na konektoru"
    },
    {
     "i": "play",
@@ -100,7 +100,7 @@
    },
    {
     "i": "receipt",
-    "t": "Račun stiže u aplikaciju i na e-mail"
+    "t": "Račun u aplikaciji i e-mailu"
    }
   ],
   "facts": [
@@ -124,6 +124,10 @@
    {
     "l": "Google Play",
     "u": "https://play.google.com/store/apps/details?id=rs.yesla.mobile"
+   },
+   {
+    "l": "App Store",
+    "u": "https://apps.apple.com/rs/app/yesla/id6785156788"
    },
    {
     "l": "yesla.rs",

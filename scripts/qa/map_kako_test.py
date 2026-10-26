@@ -46,6 +46,8 @@ async def main():
                 by = {r['id']: r['how'] for r in rows}
                 for i, k in SAMPLE.items():
                     check(by.get(i) and by[i]['k'] == k, f'{i}: scheme {k} (got {by.get(i) and by[i]["k"]})')
+                long = sorted({x[1] for r in rs if r['how']['k'] == 'net' for x in r['how']['steps'] if len(x[1]) > 28})
+                check(not long, f'step captions at most 28 characters: {long}')
                 empty = [r['id'] for r in rs if any(not x[1] for x in r['how']['steps'] + r['how']['facts'])]
                 check(not empty, f'no empty step or fact text: {empty[:5]}')
             for lang in ('sr', 'en', 'ru'):
@@ -60,15 +62,32 @@ async def main():
                       c.querySelectorAll('*').forEach(e => { const q = e.getBoundingClientRect(); if (q.width && q.right > R.right + .5) bad.push(e.tagName + '.' + e.className); });
                       const hw = c.querySelector('.hw');
                       return { over: bad.slice(0, 5), sw: c.scrollWidth, cw: c.clientWidth, steps: hw.querySelectorAll('.hw-steps li').length,
-                               gen: hw.classList.contains('is-gen'), icons: c.querySelectorAll('.cns .cn-ic svg').length, conns: c.querySelectorAll('.cns li').length,
+                               gen: hw.classList.contains('is-gen'), icons: c.querySelectorAll('.cns .cn>i svg').length, conns: c.querySelectorAll('.cns li').length,
+                               order: [...c.children].map(e => e.classList.contains('cbx-cn') ? 'cn' : e.classList.contains('hw') ? 'hw' : e.classList.contains('pmini') ? 'promo' : e.querySelector && e.querySelector('.price') ? 'price' : '').filter(Boolean).join(','),
+                               apps: [...hw.querySelectorAll('.hw-apps a')].map(a => a.textContent),
                                txt: hw.innerText }; }""")
                     check(not r['over'] and r['sw'] <= r['cw'], f'{tag} {lang} {i}: nothing wider than the card {r["over"]}')
                     check(r['steps'] >= 2 and r['gen'] == (k != 'net'), f'{tag} {lang} {i}: {r["steps"]} steps, general={r["gen"]}')
                     check(r['icons'] == r['conns'], f'{tag} {lang} {i}: an icon for every connector ({r["icons"]}/{r["conns"]})')
+                    o = r['order'].split(',')
+                    pos = {x: o.index(x) for x in o}
+                    check(pos.get('cn', -1) < pos['hw'] and pos.get('cn', -1) < pos.get('price', 99) and pos['hw'] < pos.get('promo', 99), f'{tag} {lang} {i}: order connectors → price → how-to → Izdvojeno ({o})')
+                    check(all(a in ('App Store', 'Google Play') for a in r['apps']), f'{tag} {lang} {i}: only store buttons {r["apps"]}')
                     if lang != 'sr':
                         check(not any(x in r['txt'] for x in ('Priključite', 'Skenirajte', 'punjač')), f'{tag} {lang} {i}: scheme translated')
                     if lang == 'sr' or i == 'cg-80':
                         await (await pg.query_selector('.card-ov')).screenshot(path=str(SHOTS / f'kako_{tag}_{lang}_{i}.png'))
+            if tag == 'd':
+                # one tile per plug and current (Lapovo: CCS2 30 kW ×2 + 75 kW = one tile ×3); a CHAdeMO car greys out CCS2
+                await pg.goto('about:blank'); await pg.goto(BASE + '/mapa/?qa=1#cg-108', wait_until='load'); await pg.wait_for_selector('.ccard .cns')
+                t = await pg.evaluate("[...document.querySelectorAll('.ccard .cns li')].map(l => l.innerText.replace(/\\n/g, ' '))")
+                check(any('CCS2' in x and '×3' in x for x in t) and sum('CCS2' in x for x in t) == 1, f'{tag} connectors grouped: {t}')
+                leaf = await pg.evaluate("fetch('/assets/map/auta.json').then(r => r.json()).then(j => j.cars.find(c => c.pl === 'chademo').id)")
+                await pg.evaluate("id => localStorage.setItem('bv:car', JSON.stringify({id, cons: null, cab: false, opt: false}))", leaf)
+                await pg.goto('about:blank'); await pg.goto(BASE + '/mapa/?qa=1#rm-4480986-2043109', wait_until='load'); await pg.wait_for_timeout(1500)
+                t = await pg.evaluate("[...document.querySelectorAll('.ccard .cns li')].map(l => l.className + ' ' + l.querySelector('b').textContent)")
+                check('cn dc no CCS2' in t and 'cn dc yes CHAdeMO' in t and 'cn yes Type 2' in t, f'{tag} Moj auto (Nissan Leaf): CCS2 greyed, CHAdeMO and Type 2 fit: {t}')
+                await pg.evaluate("localStorage.removeItem('bv:car')")
             check(not errs, f'{tag} no JS errors {errs[:3]}')
             await ctx.close()
         await b.close()

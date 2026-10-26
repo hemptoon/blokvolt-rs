@@ -110,7 +110,7 @@
    },
    {
     "i": "qr",
-    "t": "Skenirajte QR kod konektora"
+    "t": "Skenirajte QR konektora"
    },
    {
     "i": "play",
@@ -118,14 +118,10 @@
    },
    {
     "i": "receipt",
-    "t": "Iznos se skida sa kartice; račun na e-mail"
+    "t": "Naplata sa kartice"
    }
   ],
   "facts": [
-   {
-    "i": "card",
-    "t": "DC: 199 RSD za pokretanje + 48 RSD po kWh"
-   },
    {
     "i": "noacc",
     "t": "Bez naloga ne može"

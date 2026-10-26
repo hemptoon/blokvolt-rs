@@ -560,12 +560,41 @@ const PLUG = {
   cee: svg('<circle cx="12" cy="12.5" r="8.5"/><path d="M10.8 4.1V2.8h2.4v1.3"/>' + dot(12, 8, 1) + dot(7.6, 11.4, 1) + dot(16.4, 11.4, 1) + dot(9.2, 16.6, 1) + dot(14.8, 16.6, 1) + dot(12, 12.6, 1.2))
 };
 PLUG.ccs1 = PLUG.ccs2;
-// one connector: the plug's face, its name, then current · power · how many
-function connRow(c, mine) {
-  const [type, cur, kw, n] = c;
-  const meta = [cur.toUpperCase(), kw ? fmt(kw, kw % 1 ? 1 : 0) + ' ' + U.kw : '', n > 1 ? '× ' + n : ''].filter(Boolean).join(' · ');
-  return '<li class="cn"><i class="cn-ic' + (cur === 'dc' ? ' dc' : '') + '" aria-hidden="true">' + (PLUG[type] || ICON.cable) + '</i><span><b>' + esc(CONN[type] || type) + '</b>' +
-    '<small>' + esc(meta) + (mine ? ' · <em class="mine">' + esc(T.conn_mine) + '</em>' : '') + '</small></span></li>';
+// does this plug fit the reader's car („Moj auto“)? 1 yes, 0 no, null = cannot tell (a household socket, CEE).
+// Without a car: the signed-in account's fast-charging plug (MYDC) is marked, nothing is greyed out.
+function plugFit(c, car) {
+  const [type, cur] = c;
+  if (!car) return MYDC && cur === 'dc' && type === MYDC ? 1 : null;
+  if (cur === 'dc') {
+    if (!car.dc) return 0;
+    if (type === 'chademo') return car.pl === 'chademo' ? 1 : 0;
+    if (type === 'ccs2') return car.pl === 'ccs2' ? 1 : 0;
+    if (type === 'tesla') return car.mk === 'Tesla' ? 1 : 0;
+    return 0;
+  }
+  if (type === 'type2') return 1;
+  if (type === 'tesla') return car.mk === 'Tesla' ? 1 : 0;
+  if (type === 'type1' || type === 'gbt') return 0;
+  return null;
+}
+// the connectors as tiles, one per plug and current: "CCS2 · DC · 30–75 kW · ×3" (owner, 26.10.2026); as many in a row as fit
+function connTiles(s) {
+  const g = [], by = {}, car = carSpec();
+  s.c.forEach(c => {
+    const k = c[0] + '|' + c[1];
+    if (!by[k]) g.push(by[k] = { c, lo: null, hi: null, n: 0 });
+    const x = by[k];
+    if (c[2]) { x.lo = x.lo == null ? c[2] : Math.min(x.lo, c[2]); x.hi = x.hi == null ? c[2] : Math.max(x.hi, c[2]); }
+    x.n += c[3] || 1;
+  });
+  const kw = x => x.lo == null ? '' : (x.lo === x.hi ? fmt(x.lo, x.lo % 1 ? 1 : 0) : fmt(x.lo, 0) + '–' + fmt(x.hi, 0)) + ' ' + U.kw;
+  return '<ul class="cns">' + g.map(x => {
+    const [type, cur] = x.c, fit = plugFit(x.c, car);
+    return '<li class="cn' + (cur === 'dc' ? ' dc' : '') + (fit === 0 ? ' no' : fit === 1 ? ' yes' : '') + '"><i aria-hidden="true">' + (PLUG[type] || ICON.cable) + '</i>' +
+      '<b>' + esc(CONN[type] || type) + '</b><small>' + esc([cur.toUpperCase(), kw(x)].filter(Boolean).join(' · ')) + '</small>' +
+      (x.n > 1 ? '<em class="n">×' + x.n + '</em>' : '') +
+      (fit === 1 ? '<em class="fit">' + esc(T.conn_mine) + '</em>' : fit === 0 ? '<em class="fit">' + esc(T.conn_no) + '</em>' : '') + '</li>';
+  }).join('') + '</ul>';
 }
 function estHtml(v, s) {
   const e = perKwh(v, s);
@@ -630,7 +659,7 @@ function promoHtml(s, p) {
   if (s.cc || !cfg.evo || !cfg.home || p.kind === 'free' || p.kind === 'tesla' || isOff(s)) return '';
   const car = carSpec(), hm = car ? homeKm(car) : cfg.home;
   const span = hm.length > 1 ? fmt(Math.min(...hm), 1) + '–' + fmt(Math.max(...hm), 1) : fmt(hm[0], 1);
-  return '<a class="pmini" href="' + esc(evoUrl('kartica')) + '" rel="noopener" data-evo><span class="badge feat">' + esc(T.promo_badge) + '</span>' +
+  return '<a class="pmini solo" href="' + esc(evoUrl('kartica')) + '" rel="noopener" data-evo><span class="badge feat">' + esc(T.promo_badge) + '</span>' +
     '<span>' + fxt(car ? T.promo_km : T.promo_kwh, { h: [hm.length > 1 ? [Math.min(...hm), Math.max(...hm)] : hm[0], span] }) + ' <b>' + esc(T.promo_link) + '</b></span></a>';
 }
 function priceHtml(s) {
@@ -679,7 +708,8 @@ function priceHtml(s) {
     if (p.list.length > 1 || t0.extra) h += '<ul>' + p.list.map(t => '<li><b>' + fxd(t.label) + '</b>' + (t.extra ? ' — ' + fxd(tr(t.extra)) : '') + '</li>').join('') + '</ul>';
     h += '<small>' + esc(T.p_list.replace('{d}', t0.date || '')) + (t0.src ? ' · ' + esc(tr(t0.src)) : '') + '</small>';
   } else if (p.kind === 'seen') {
-    h += '<div>' + esc(T.p_seen) + '</div><ul>' + p.list.slice(0, 3).map(t => '<li><b>' + fxd(t.label) + '</b> — ' + esc(t.charger) + (t.extra ? ', ' + fxd(tr(t.extra)) : '') + '</li>').join('') + '</ul>';
+    // the same line recorded at two places of the network is shown once
+    h += '<div>' + esc(T.p_seen) + '</div><ul>' + [...new Set(p.list.map(t => '<li><b>' + fxd(t.label) + '</b> — ' + esc(t.charger) + (t.extra ? ', ' + fxd(tr(t.extra)) : '') + '</li>'))].slice(0, 3).join('') + '</ul>';
     h += '<small>' + esc(p.note || '') + ' · ' + esc(p.list[0].date) + '</small>';
   } else {
     h += '<div>' + esc(p.text) + '</div>';
@@ -690,7 +720,7 @@ function priceHtml(s) {
   if (stale(pd)) h += '<small class="stale">' + esc(T.p_old) + '</small>';
   const idle = cfg.idle && cfg.idle[(netOf(s) && netOf(s).via) || s.net];
   if (idle && p.kind !== 'free' && p.kind !== 'none') h += '<small>' + esc(T.idle).replace('{x}', fxd(tr(idle))) + '</small>';
-  return h + costHtml(s, p) + promoHtml(s, p) + '</div>';
+  return h + costHtml(s, p) + '</div>';
 }
 // "Kako se puni ovde" as a picture (owner, 25.10.2026): 2–4 steps with an icon and a few words, up to three facts, the
 // network's apps; the full text of the network (cene.json: kako) and its sources stay folded under "Detaljno".
@@ -721,7 +751,7 @@ function howOf(s) {
   const onlyAc = !s.dc && (s.c.length ? s.c.every(c => c[1] === 'ac') : !!s.ac);
   const acCable = onlyAc && !(s.cab && s.cab.own) ? [['cable', T.hw_g_cable]] : [];
   if (k && k.steps) {
-    return { k: 'net', name: n.name, steps: k.steps.map(x => [x.i, tr(x.t)]), facts: (k.facts || []).map(x => [x.i, tr(x.t)]), kako: k };
+    return { k: 'net', name: n.name, steps: k.steps.map(x => [x.i, tr(x.t)]), facts: (k.facts || []).filter(x => !(x.i === 'cable' && s.cab && s.cab.own)).map(x => [x.i, tr(x.t)]), kako: k };
   }
   // what the place itself says (dopune.json: ax.how), then who may charge, then free, then nothing known
   const g = ax.how === 'card-desk' ? 'desk' : ax.how === 'rfid' ? 'rfid' : ax.how === 'staff' ? 'staff'
@@ -743,8 +773,12 @@ function howHtml(s) {
     '<b>' + (i + 1) + '</b></i><span>' + esc(x[1]) + '</span></li>').join('') + '</ol>';
   const facts = h.facts.length ? '<ul class="hw-facts">' + h.facts.map(x => '<li>' + (HI[x[0]] || HI.info) + '<span>' + esc(x[1]) + '</span></li>').join('') + '</ul>' : '';
   const k = h.kako;
-  const apps = k && k.apps && k.apps.length ? '<p class="hw-apps">' + k.apps.map(a => '<a href="' + esc(a.u) + '" target="_blank" rel="noopener nofollow">' +
-    (/play|store|aplikacij/i.test(a.l) ? HI.app : ICON.ext) + '<span>' + esc(tr(a.l)) + '</span></a>').join('') + '</p>' : '';
+  // the app stores as buttons, this device's store first; the network's websites go under „Detaljno“
+  const all = (k && k.apps) || [], store = a => /apps\.apple\.com|play\.google\.com/.test(a.u);
+  const own = a => (/apps\.apple\.com/.test(a.u) ? IS_APPLE : /Android/.test(navigator.userAgent)) ? 0 : 1;
+  const stores = all.filter(store).sort((a, b) => own(a) - own(b)), sites = all.filter(a => !store(a));
+  const apps = stores.length ? '<p class="hw-apps">' + stores.map(a => '<a href="' + esc(a.u) + '" target="_blank" rel="noopener nofollow">' + HI.app +
+    '<span>' + esc(/apps\.apple\.com/.test(a.u) ? 'App Store' : 'Google Play') + '</span></a>').join('') + '</p>' : '';
   let more = '';
   if (k) {
     const row = (lbl, x) => (x ? '<p><b>' + esc(lbl) + '</b> ' + esc(tr(x)) + '</p>' : '');
@@ -752,6 +786,7 @@ function howHtml(s) {
     more = '<details class="hw-more"><summary>' + esc(T.hw_more) + '</summary>' +
       (k.start && k.start.length ? '<ol>' + k.start.map(x => '<li>' + esc(tr(x)) + '</li>').join('') + '</ol>' : '') +
       row(T.kako_pay, k.pay) + row(T.kako_guest, k.guest) + row(T.kako_after, k.after) + row(T.kako_refund, k.refund) +
+      (sites.length ? '<p><b>' + esc(T.hw_sites) + '</b> ' + sites.map(a => '<a href="' + esc(a.u) + '" target="_blank" rel="noopener nofollow">' + esc(tr(a.l)) + '</a>').join(' · ') + '</p>' : '') +
       '<small>' + esc(T.kako_checked.replace('{d}', k.checked || '')) + (src ? ' · ' + src : '') + '</small></details>';
   }
   const fix = cfg.fix ? cfg.fix.replace('{id}', encodeURIComponent(s.id)) : lp('/ispravka/?stanica=') + encodeURIComponent(s.id);
@@ -846,7 +881,7 @@ function openCard(s, fly, fromNear) {
   const logo = n && n.logo ? '<span class="lg w' + (n.logo_dark ? ' dark' : '') + '"><img src="' + esc(n.logo) + '" alt=""></span>' : '<span class="lg w mono" aria-hidden="true">' + esc((netName(s) || '?').slice(0, 2).toUpperCase()) + '</span>';
   const netRole = s.cc ? (s.nn ? T.net_known : T.operator) : n && n.page ? T.net_known : (s.opn && !n ? T.operator : T.net_unknown);
   const netLine = netName(s) ? '<div class="net">' + logo + '<div><b>' + esc(netName(s)) + '</b><span>' + esc(netRole) + '</span></div></div>' : '';
-  const conns = s.c.length ? '<div class="cbox"><span>' + esc(T.conn) + '</span><ul class="cns">' + s.c.map(c => connRow(c, MYDC && c[0] === MYDC)).join('') + '</ul></div>' : '';
+  const conns = s.c.length ? '<div class="cbox cbx-cn"><span>' + esc(T.conn) + '</span>' + connTiles(s) + '</div>' : '';
   const acc = s.acc === 'customers' ? '<div class="cbox"><span>' + esc(T.access) + '</span><div>' + esc(T.customers) + '</div></div>' : '';
   const navs = navLinks(s);
   // a neighbouring country's station: the button opens it on that country's map on blokvolt.com (prices, the country's networks)
@@ -858,7 +893,7 @@ function openCard(s, fly, fromNear) {
   const srcs = s.src.filter(x => x.u).map(x => '<a href="' + esc(lp(x.u)) + '" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(x.upd) + ')' : '')).join(' · ');
   $card.innerHTML = '<div class="ccard" role="dialog" aria-label="' + esc(title(s)) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
     favBtn(s) + (cardNear ? '<button class="lnkbtn nr-back" type="button" data-nr="back">← ' + esc(T.nr_title) + '</button>' : cardRt ? '<button class="lnkbtn nr-back" type="button" data-rt="back">← ' + esc(T.rt_title) + '</button>' : '') +
-    '<h2>' + esc(title(s)) + '</h2><p class="addr">' + esc(place(s)) + '</p>' + verHtml(s) + tagsHtml(s) + netLine + priceHtml(s) + noteHtml(s) + howHtml(s) + statusHtml(s) + conns + acc + whereHtml(s) +
+    '<h2>' + esc(title(s)) + '</h2><p class="addr">' + esc(place(s)) + '</p>' + verHtml(s) + tagsHtml(s) + netLine + conns + priceHtml(s) + noteHtml(s) + howHtml(s) + promoHtml(s, price(s)) + statusHtml(s) + acc + whereHtml(s) +
     '<div class="acts"><a class="btn dark full" href="' + navs[0][1] + '" target="_blank" rel="noopener" data-nav="' + navs[0][2] + '">' + ICON.nav + esc(T.navigate) + '</a>' +
     '<p class="nav-alt">' + esc(T.nav_in) + ' ' + navs.slice(1).map(x => '<a class="lnk" href="' + x[1] + '" target="_blank" rel="noopener" data-nav="' + x[2] + '">' + x[0] + '</a>').join(' · ') + '</p>' +
     (site ? '<a class="btn' + (rg ? ' full' : '') + '" href="' + esc(site) + '"' + (site[0] === '/' ? '' : ' target="_blank" rel="noopener"') + '>' + ICON.ext + esc(rg ? T.rg_open : n && n.page ? T.about_net : T.site) + '</a>' : '') +

@@ -1024,8 +1024,8 @@ MAP_T = {
     'kako_refund': 'Povraćaj:', 'kako_apps': 'Aplikacija:', 'kako_checked': 'Provereno {d}',
     # the scheme on top of it (map.js howHtml, owner 25.10.2026): steps with icons, facts, a general scheme for the rest
     'hw_t': 'Kako se puni ovde', 'hw_general': 'Opšte uputstvo', 'hw_more': 'Detaljno i izvori',
-    'hw_gen': 'Uputstvo je opšte: tačan postupak za ovo mesto nije objavljen.',
-    'hw_gen_unk': 'Mreža ovog punjača nije poznata, pa je uputstvo opšte.', 'hw_tell': 'Znate kako se ovde puni? Javite nam.',
+    'hw_gen': 'Tačan postupak za ovo mesto nije objavljen.', 'hw_sites': 'Sajt:', 'conn_no': 'ne odgovara',
+    'hw_gen_unk': 'Mreža ovog punjača nije poznata.', 'hw_tell': 'Znate kako? Javite nam.',
     'hw_g_desk': 'Uzmite karticu na info pultu', 'hw_g_tap': 'Prislonite karticu na punjač', 'hw_g_plug': 'Priključite kabl',
     'hw_g_rfid': 'Prislonite RFID karticu na punjač', 'hw_g_start': 'Sačekajte da punjenje krene',
     'hw_g_park': 'Parkirajte na mesto za punjenje', 'hw_g_staff': 'Javite se osoblju', 'hw_g_ask': 'Javite se recepciji ili osoblju',

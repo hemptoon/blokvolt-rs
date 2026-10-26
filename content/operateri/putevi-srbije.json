@@ -76,11 +76,11 @@
    },
    {
     "i": "qr",
-    "t": "QR kod na punjaču ili RFID kartica"
+    "t": "QR kod ili RFID kartica"
    },
    {
     "i": "plug",
-    "t": "Priključite kabl i pokrenite"
+    "t": "Priključite i pokrenite"
    }
   ],
   "facts": [

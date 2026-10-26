@@ -134,11 +134,11 @@
    },
    {
     "i": "plug",
-    "t": "Kabl priključite kad je punjač spreman"
+    "t": "Kabl kad je punjač spreman"
    },
    {
     "i": "receipt",
-    "t": "Račun stiže u aplikaciju i na e-mail"
+    "t": "Račun u aplikaciji i e-mailu"
    }
   ],
   "facts": [
@@ -149,10 +149,6 @@
    {
     "i": "car",
     "t": "Auto sa AutoCharge-om: samo priključite kabl"
-   },
-   {
-    "i": "timer",
-    "t": "ECO tarifa: posle 10 minuta 10,20 RSD/min zauzeća"
    }
   ],
   "start": [
