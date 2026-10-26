@@ -1004,7 +1004,7 @@ const IDP = {
     aud: env => env.GOOGLE_CLIENT_IDS || GOOGLE_CLIENT_IDS, nonceHashed: false },
 };
 // BlokVolt web (Google Cloud project "blokvolt") and the iOS client of rs.blokvolt.app; a client id is not a secret
-const GOOGLE_CLIENT_IDS = '1037847270361-3kla03ofe86t0a10ptqqqsi1jo6tkru3.apps.googleusercontent.com';
+const GOOGLE_CLIENT_IDS = '1037847270361-3kla03ofe86t0a10ptqqqsi1jo6tkru3.apps.googleusercontent.com,1037847270361-4pavong5d8ksm0dheup21fubc5hsqgje.apps.googleusercontent.com';
 const JWKS = {};
 const b64u = s => Uint8Array.from(atob(String(s).replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((String(s).length + 3) % 4)), c => c.charCodeAt(0));
 async function jwksOf(url, kid, fresh) {
