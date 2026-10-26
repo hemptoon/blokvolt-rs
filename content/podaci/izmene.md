@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 26.10.2026
+updated: 27.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-26
+modified: 2026-10-27
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 27. oktobar 2026
+
+- [Mapa punjača](/mapa/), „Punjači na putu“: odredište se sada bira i na mapi. Dodirnite ime grada ili sela, ili dugo pritisnite bilo koju tačku (na računaru desni klik), pa izaberite „Punjači na putu dovde“ ili „Polazak odavde“ — ruta i brzi punjači duž nje prikazuju se odmah. Pretraga mesta razume i imena bez kvačica: „Nis“, „Cacak“ ili „Uzice“ nude Niš, Čačak i Užice na prvom mestu. Kad se tačka izabere dugim pritiskom, njene koordinate idu servisu Photon radi imena mesta ([politika privatnosti](/politika-privatnosti)).
+
 ## 26. oktobar 2026
 
 - Nove stranice [Punjači po gradovima](/gradovi/): uz Beograd, Novi Sad, Niš, Suboticu, Čačak i Kragujevac stranicu sada ima još 30 gradova i mesta sa bar tri javna punjača na mapi — među njima Šabac, Zlatibor, Kopaonik, Zrenjanin, Pančevo, Valjevo, Kraljevo i Leskovac. Na svakoj je spisak javnih punjača sa adresom, mrežom, snagom i stanjem, mreže koje tu rade, firme za kućni punjač i sati niže tarife. Punjač se računa u mesto koje mu je najbliže, do 25 km (ranije: krug od 15 km od centra grada). Spisak gradova je i ispod [mape punjača](/mapa/).

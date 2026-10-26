@@ -869,6 +869,7 @@ function verHtml(s) {
   return '<div class="vf-warn' + (v.s === 'prob' ? ' no' : '') + '"><b>' + ICON.warn + esc(v.s === 'prob' ? T.v_prob_t : T.v_nep) + '</b><p>' + esc(why) + '</p><small>' + esc(when) + vHelp() + '</small></div>';
 }
 function openCard(s, fly, fromNear) {
+  rtPopClose();
   sel = s;
   opened = Date.now();
   nearOpen = false;
@@ -1137,7 +1138,8 @@ function nearClick(t) {
 // ---------- "Punjači na putu": fast chargers along a route the reader enters (owner's decision 24.10.2026) ----------
 // The reader types where to (and where from; empty = the reader's location). The places are looked up in Photon
 // (photon.komoot.io, OpenStreetMap data) and the route in OSRM on the FOSSGIS server (routing.openstreetmap.de): the
-// browser sends them only the typed text and the two points; the site gets and stores nothing (RUNBOOK 3.18).
+// browser sends them only the typed text, a point picked by a long press (below) and the two points; the site gets and
+// stores nothing (RUNBOOK 3.18).
 // Chargers: DC ≥ 50 kW that work (never "Ne radi"), not only for Tesla (unless "Moj auto" is a Tesla), usable by the reader's car
 // when one is chosen; within R km of the route (straight line), ordered by the distance along the route. Confirmed only,
 // unless the reader asks for the rest (or none is confirmed); with "Potvrđeni" on, confirmed only. The chip filter and
@@ -1171,9 +1173,41 @@ async function geoSearch(q, own) {
   const r = await fetch(u, { signal: sig, credentials: 'omit' });
   if (!r.ok) throw Object.assign(new Error('geo ' + r.status), { code: 'net' });
   const j = await r.json(), seen = new Set();
-  return (j.features || []).filter(f => f.geometry && f.geometry.coordinates).map(f => ({
-    label: geoLabel(f), pt: { lon: +f.geometry.coordinates[0], lat: +f.geometry.coordinates[1] }
-  })).filter(x => x.label && !seen.has(x.label) && seen.add(x.label)).slice(0, 5);
+  const all = (j.features || []).filter(f => f.geometry && f.geometry.coordinates).map((f, i) => ({
+    label: geoLabel(f), pt: { lon: +f.geometry.coordinates[0], lat: +f.geometry.coordinates[1] }, rk: geoRank(f), i
+  })).filter(x => x.label && !seen.has(x.label) && seen.add(x.label)).sort((a, b) => a.rk - b.rk || a.i - b.i);
+  return geoTowns(q, all).slice(0, 5).map(x => ({ label: x.label, pt: x.pt }));
+}
+// Photon folds "Nis" to Niš but may rank a railway station or a street above the town: places come first (city > town >
+// village > the rest), then everything else in Photon's order. On top, the towns the site lists (cfg.towns, the same as
+// scripts/map_data.py TOWNS) whose folded name is the typed text or starts with it, so "Nis", "Cacak", "Uzice" or "Ниш"
+// offer Niš, Čačak, Užice first even on a keyboard without š, č, ž (owner's request 26.10.2026).
+const GEO_RK = { city: 0, town: 1, village: 2 };
+const geoRank = f => { const a = f.properties || {}; return a.osm_key === 'place' ? (a.osm_value in GEO_RK ? GEO_RK[a.osm_value] : 3) : 4; };
+const TOWNS = Array.isArray(cfg.towns) ? cfg.towns : [];
+// Serbian Cyrillic for a town name on the Russian page (Photon's own names there are Serbian Cyrillic too)
+const CYRL = { lj: 'љ', nj: 'њ', dž: 'џ', a: 'а', b: 'б', c: 'ц', č: 'ч', ć: 'ћ', d: 'д', đ: 'ђ', e: 'е', f: 'ф', g: 'г', h: 'х', i: 'и', j: 'ј', k: 'к',
+  l: 'л', m: 'м', n: 'н', o: 'о', p: 'п', r: 'р', s: 'с', š: 'ш', t: 'т', u: 'у', v: 'в', z: 'з', ž: 'ж' };
+const townName = n => (LANG !== 'ru' ? n : n.replace(/lj|nj|dž|[a-zčćđšž]/gi, m => {
+  const l = m.toLowerCase(), t = CYRL[l];
+  return t == null ? m : m.charAt(0) === m.charAt(0).toLowerCase() ? t : t.toUpperCase();
+}));
+function townHits(q) {
+  const k = sfold(q);
+  if (k.length < 3) return [];
+  const ex = [], pre = [];
+  TOWNS.forEach(t => { const n = sfold(t[0]); if (n === k) ex.push(t); else if (n.indexOf(k) === 0) pre.push(t); });
+  return ex.concat(pre).slice(0, 3);
+}
+function geoTowns(q, list) {
+  const top = [];
+  townHits(q).forEach(t => {
+    const pt = { lat: t[1], lon: t[2] }, n = sfold(t[0]);
+    // Photon's own entry for that town (its label, e.g. "Niš, Serbia"), else the town from our list
+    const i = list.findIndex(x => (sfold(x.label.split(',')[0]) === n && distKm(x.pt, pt) < 15) || (x.rk <= 1 && distKm(x.pt, pt) < 4));
+    top.push(i >= 0 ? list.splice(i, 1)[0] : { label: townName(t[0]), pt });
+  });
+  return top.concat(list);
 }
 async function rtResolve(q) {
   const r = await geoSearch(q, true);
@@ -1331,12 +1365,13 @@ function rtField(id, lab, ph, val) {
     '</div><ul class="rt-sug" id="' + id + '-l" role="listbox" hidden></ul></div>';
 }
 function rtPanel(source) {
+  rtPopClose();
   if (sel) { sel = null; history.replaceState(null, '', location.pathname + location.search); renderList(); }
   nearOpen = false; cardNear = false; cardRt = false; rtOpen = true; RT.min = false;
   carOpen = false;
   if (map && map.getSource('sel')) map.getSource('sel').setData(FC0);
   $card.innerHTML = '<div class="ccard rtp" role="dialog" aria-label="' + esc(T.rt_title) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
-    '<h2>' + esc(T.rt_title) + '</h2><p class="addr">' + esc(T.rt_lead) + '</p>' +
+    '<h2>' + esc(T.rt_title) + '</h2><p class="addr">' + esc(T.rt_lead) + '</p><p class="nr-note rt-tip">' + esc(T.rt_tip) + '</p>' +
     '<form class="rt-form" novalidate>' + rtField('rt-from', T.rt_from, T.rt_me, RT.from ? RT.from.label : '') + rtField('rt-to', T.rt_to, T.rt_to_ph, RT.to ? RT.to.label : '') +
     '<button class="btn dark rt-go" type="submit">' + ICON.road + '<span>' + esc(T.rt_go) + '</span></button></form><div class="rt-res" aria-live="polite"></div></div>';
   $card.classList.add('is-open');
@@ -1455,6 +1490,133 @@ $card.addEventListener('keydown', e => {
     if (n < 0) box.querySelector('input').focus(); else bs[Math.min(n, bs.length - 1)].focus();
   }
 });
+
+// ---------- the destination picked on the map (owner's request 26.10.2026) ----------
+// A tap on the name of a city, town or village of the base map, a long press (touch, ~550 ms without moving) or a right
+// click anywhere opens a small popup at that place: its name, "Punjači na putu dovde" (the route from the reader's
+// location or the start already set) and "Polazak odavde". A name tapped on the map comes from the map tiles (nothing is
+// sent anywhere); a pressed point is named by Photon's reverse lookup (the browser sends Photon that point), or
+// "Izabrana tačka" when that fails. A long press on a charger opens the charger, as a tap does. Not while "Dodaj punjač"
+// places its pin, and only where the page has the route ($rtBtn: not on the country maps of blokvolt.com).
+const RT_REV = 'https://photon.komoot.io/reverse', PLACE_CLS = new Set(['city', 'town', 'village', 'hamlet', 'suburb']);
+const CYR_RE = /[Ѐ-ӿ]/;
+let rtPop = null, lpAt = 0;
+// the label's name in the page language: Latin script on the Serbian and English page, as the rest of the route panel
+function placeName(p) {
+  if (LANG === 'ru') return String(p['name:ru'] || p['name:sr'] || p.name || p['name:latin'] || '').trim();
+  let n = (LANG === 'en' && (p['name:en'] || p.name_en)) || p['name:sr-Latn'] || latn(p.name || '');
+  if (!n || CYR_RE.test(n)) n = p['name:latin'] || p.name_int || n;
+  return String(n || '').trim();
+}
+function placeAt(p) {
+  const r = matchMedia('(pointer: coarse)').matches ? 10 : 4;
+  let fs = [];
+  try { fs = map.queryRenderedFeatures([[p.x - r, p.y - r], [p.x + r, p.y + r]]); } catch (e) { return null; }
+  const f = fs.find(x => x.sourceLayer === 'place' && x.properties && PLACE_CLS.has(x.properties.class) && x.geometry && x.geometry.type === 'Point');
+  const name = f && placeName(f.properties);
+  return name ? { label: name, pt: { lon: +f.geometry.coordinates[0], lat: +f.geometry.coordinates[1] } } : null;
+}
+const ptLabel = pt => T.rt_pt + ' ' + pt.lat.toFixed(4) + ' / ' + pt.lon.toFixed(4);
+async function geoRev(pt) {
+  const u = RT_REV + '?lat=' + pt.lat.toFixed(5) + '&lon=' + pt.lon.toFixed(5) + '&limit=1&lang=' + (LANG === 'ru' ? 'default' : 'en');
+  const ctl = new AbortController(), tm = setTimeout(() => ctl.abort(), 6000);
+  try {
+    const r = await fetch(u, { signal: ctl.signal, credentials: 'omit' });
+    const j = r.ok ? await r.json() : null, f = j && (j.features || [])[0];
+    return (f && geoLabel(f)) || ptLabel(pt);
+  } catch (e) { return ptLabel(pt); } finally { clearTimeout(tm); }
+}
+function rtPopClose() { if (rtPop) { const P = rtPop; rtPop = null; P.pop.remove(); } }
+function rtPopPaint() {
+  const P = rtPop;
+  if (!P) return;
+  const t = P.el.querySelector('.rtpop-t'), go = P.el.querySelector('[data-pop="to"]');
+  t.innerHTML = P.label ? '<b>' + esc(P.label.split(',')[0]) + '</b>' + (P.label.indexOf(',') > 0 ? '<span>' + esc(P.label.slice(P.label.indexOf(',') + 1).trim()) + '</span>' : '')
+    : '<span class="nr-spin" aria-hidden="true"></span><span>' + esc(T.rt_pop_wait) + '</span>';
+  t.classList.toggle('is-wait', !P.label);
+  P.el.setAttribute('aria-label', P.label || T.rt_pop_wait);
+  go.setAttribute('aria-label', P.label ? T.rt_pop_go_l.replace('{t}', P.label.split(',')[0]) : T.rt_pop_go);
+}
+// how: 'label' (a name tapped), 'press' (long press), 'right' (right click)
+function rtPopOpen(pt, label, how) {
+  rtPopClose();
+  const el = d.createElement('div');
+  el.className = 'rtpop';
+  el.setAttribute('role', 'dialog');
+  el.innerHTML = '<button class="x" type="button" data-pop="x" aria-label="' + esc(T.close) + '">' + ICON.x + '</button><p class="rtpop-t" aria-live="polite"></p>' +
+    '<button class="btn dark sm" type="button" data-pop="to">' + ICON.road + '<span>' + esc(T.rt_pop_go) + '</span></button>' +
+    '<button class="btn sm" type="button" data-pop="from">' + ICON.pin + '<span>' + esc(T.rt_pop_from) + '</span></button>';
+  const pop = new maplibregl.Popup({ closeButton: false, closeOnClick: false, closeOnMove: false, focusAfterOpen: false, maxWidth: '280px', offset: 12, className: 'bv-pop' })
+    .setLngLat([pt.lon, pt.lat]).setDOMContent(el).addTo(map);
+  const P = rtPop = { pt, label, how, el, pop };
+  pop.on('close', () => { if (rtPop === P) rtPop = null; });
+  P.wait = label ? Promise.resolve(label) : geoRev(pt).then(l => { P.label = l; if (rtPop === P) rtPopPaint(); return l; });
+  rtPopPaint();
+  el.addEventListener('click', e => { const b = e.target.closest('[data-pop]'); if (b) rtPopPick(b.dataset.pop); });
+  el.addEventListener('keydown', e => { if (e.key === 'Escape') { e.stopPropagation(); rtPopClose(); map.getCanvas().focus(); } });
+  // the keyboard reaches the buttons at once (a tap on a phone does not move the focus, so no keyboard pops up)
+  if (!matchMedia('(pointer: coarse)').matches) el.querySelector('[data-pop="to"]').focus({ preventScroll: true });
+  track('map_pick_open', { how });
+}
+async function rtPopPick(k) {
+  const P = rtPop;
+  if (!P || k === 'x') { rtPopClose(); return; }
+  const label = P.label || await P.wait;
+  if (rtPop !== P) return;
+  rtPopClose();
+  const x = { label, pt: P.pt };
+  // a start typed in the open panel but not yet looked up is kept
+  const fin = rtOpen && $card.querySelector('#rt-from'), keep = fin && !RT.from ? fin.value.trim() : '';
+  if (k === 'to') RT.to = x; else RT.from = x;
+  rtPanel('map_' + P.how);
+  const fi = $card.querySelector('#rt-from'), ti = $card.querySelector('#rt-to');
+  if (keep && fi && k === 'to') fi.value = keep;
+  track('map_pick', { how: P.how, as: k });
+  if (k === 'to' || (ti && ti.value.trim())) rtRun();
+  else if (ti && window.innerWidth > 900) ti.focus({ preventScroll: true });
+}
+// a tap on the map that hit no charger: the name of a place under it, if any (the popup closes otherwise)
+function rtTapPlace(p) {
+  if (!$rtBtn || adding) return false;
+  const pl = placeAt(p);
+  if (pl) rtPopOpen(pl.pt, pl.label, 'label'); else rtPopClose();
+  return !!pl;
+}
+// long press (touch) and right click: a charger under it opens as with a tap; else the popup at the pressed point
+function rtPress(cx, cy, how) {
+  if (!map || Date.now() - lpAt < 800) return;   // Android sends both the long press and a contextmenu
+  lpAt = Date.now();
+  if (adding) return;
+  const b = map.getCanvas().getBoundingClientRect(), p = new maplibregl.Point(cx - b.left, cy - b.top);
+  if (mapTap(p)) return;
+  if (!$rtBtn) return;
+  const pl = placeAt(p);
+  if (pl) { rtPopOpen(pl.pt, pl.label, how); return; }
+  const ll = map.unproject(p);
+  rtPopOpen({ lon: ll.lng, lat: ll.lat }, null, how);
+}
+function pressInit() {
+  const box = map.getCanvasContainer();
+  let tm = 0, sx = 0, sy = 0, tAt = 0, fired = false;
+  const stop = () => { clearTimeout(tm); tm = 0; };
+  box.addEventListener('touchstart', e => {
+    stop();
+    tAt = Date.now(); fired = false;
+    if (e.touches.length !== 1) return;   // a pinch never opens it
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+    tm = setTimeout(() => { tm = 0; fired = true; rtPress(sx, sy, 'press'); }, 550);
+  }, { passive: true });
+  box.addEventListener('touchmove', e => {
+    if (tm && (e.touches.length !== 1 || Math.hypot(e.touches[0].clientX - sx, e.touches[0].clientY - sy) > 10)) stop();
+  }, { passive: true });
+  // a finger lifted after a long press may still send a click: it must not close the popup that just opened
+  box.addEventListener('touchend', () => { stop(); if (fired) lpAt = Date.now(); }, { passive: true });
+  box.addEventListener('touchcancel', stop, { passive: true });
+  // the browser's own menu never opens over the map (right click, and the long press of Android)
+  box.addEventListener('contextmenu', e => { e.preventDefault(); stop(); rtPress(e.clientX, e.clientY, Date.now() - tAt < 1500 ? 'press' : 'right'); });
+  map.on('dragstart', stop);
+  map.on('zoomstart', stop);
+}
 
 // ---------- drivers' reports, ratings and photos (/api, stored in Cloudflare D1) ----------
 function ago(t) {
@@ -1773,6 +1935,33 @@ function refresh() {
   else if (cardRt && RT.shown) rtDraw(rtList().rows);
   rtBtnPaint();
 }
+// One tap handler for Serbia and the region. The dots are small on the country view, so a tap looks at a small box
+// around the finger (larger on touch screens): one charger there opens its card; several zoom the map in on them
+// (at least two steps, at most zoom 14), and from zoom 13 the dot nearest to the tap opens. true = a charger was hit.
+function mapTap(p) {
+  const r = window.matchMedia && matchMedia('(pointer: coarse)').matches ? 14 : 8;
+  const hits = map.queryRenderedFeatures([[p.x - r, p.y - r], [p.x + r, p.y + r]], { layers: NRG ? ['pt', 'rg-pt'] : ['pt'] });
+  if (!hits.length) return false;
+  rtPopClose();
+  const ids = new Set(hits.map(f => f.properties.id)), z0 = map.getZoom();
+  if (ids.size > 1 && z0 < 13) {
+    const b = new maplibregl.LngLatBounds();
+    hits.forEach(f => b.extend(f.geometry.coordinates));
+    const cam = map.cameraForBounds(b, { padding: 60 });
+    userMove = true;
+    map.easeTo({ center: b.getCenter(), zoom: Math.min(14, Math.max(z0 + 2, cam && isFinite(cam.zoom) ? cam.zoom : 0)) });
+    track('map_zoom_in_tap', { n: ids.size });
+    return true;
+  }
+  let best = hits[0], bd = Infinity;
+  hits.forEach(f => {
+    const q = map.project(f.geometry.coordinates), dd = (q.x - p.x) * (q.x - p.x) + (q.y - p.y) * (q.y - p.y);
+    if (dd < bd) { bd = dd; best = f; }
+  });
+  const s = ST.find(x => x.id === best.properties.id);
+  if (s) openCard(s, false);
+  return true;
+}
 function initMap() {
   map = new maplibregl.Map({
     container: 'map', style: cfg.style, center: C0, zoom: Z0, minZoom: 5, maxZoom: 18,
@@ -1860,31 +2049,24 @@ function initMap() {
       } else state.bounds = null;
       renderList();
     });
-    // One tap handler for Serbia and the region. The dots are small on the country view, so a tap looks at a small box
-    // around the finger (larger on touch screens): one charger there opens its card; several zoom the map in on them
-    // (at least two steps, at most zoom 14), and from zoom 13 the dot nearest to the tap opens.
+    // taps: mapTap (a charger), else rtTapPlace (a place name → the route popup); long press and right click: pressInit
     const HIT = NRG ? ['pt', 'rg-pt'] : ['pt'];
     map.on('click', e => {
-      const r = window.matchMedia && matchMedia('(pointer: coarse)').matches ? 14 : 8, p = e.point;
-      const hits = map.queryRenderedFeatures([[p.x - r, p.y - r], [p.x + r, p.y + r]], { layers: HIT });
-      if (!hits.length) return;
-      const ids = new Set(hits.map(f => f.properties.id)), z0 = map.getZoom();
-      if (ids.size > 1 && z0 < 13) {
-        const b = new maplibregl.LngLatBounds();
-        hits.forEach(f => b.extend(f.geometry.coordinates));
-        const cam = map.cameraForBounds(b, { padding: 60 });
-        userMove = true;
-        map.easeTo({ center: b.getCenter(), zoom: Math.min(14, Math.max(z0 + 2, cam && isFinite(cam.zoom) ? cam.zoom : 0)) });
-        track('map_zoom_in_tap', { n: ids.size });
-        return;
-      }
-      let best = hits[0], bd = Infinity;
-      hits.forEach(f => {
-        const q = map.project(f.geometry.coordinates), dd = (q.x - p.x) * (q.x - p.x) + (q.y - p.y) * (q.y - p.y);
-        if (dd < bd) { bd = dd; best = f; }
+      if (Date.now() - lpAt < 800) return;   // the click some browsers send after a long press
+      if (!mapTap(e.point)) rtTapPlace(e.point);
+    });
+    pressInit();
+    // a pointer over a place name on a computer: it can be clicked (the route popup)
+    let hov = 0;
+    if ($rtBtn) map.on('mousemove', e => {
+      if (hov) return;
+      hov = requestAnimationFrame(() => {
+        hov = 0;
+        const c = map.getCanvas();
+        if (adding || (c.style.cursor && c.style.cursor !== 'pointer')) return;
+        const on = !!placeAt(e.point) || map.queryRenderedFeatures(e.point, { layers: HIT }).length > 0;
+        c.style.cursor = on ? 'pointer' : '';
       });
-      const s = ST.find(x => x.id === best.properties.id);
-      if (s) openCard(s, false);
     });
     HIT.forEach(l => {
       map.on('mouseenter', l, () => { map.getCanvas().style.cursor = 'pointer'; });
@@ -1944,6 +2126,7 @@ $list.addEventListener('click', e => {
 });
 d.addEventListener('keydown', e => {
   if (e.key !== 'Escape' || d.querySelector('.lb')) return;
+  if (rtPop) { rtPopClose(); return; }
   if (adding) { addEnd(); return; }
   if (sel || nearOpen || carOpen || rtOpen) { if (carOpen) closeCar(); else closeCard(); }
 });
