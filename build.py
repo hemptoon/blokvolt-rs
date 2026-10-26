@@ -1012,9 +1012,13 @@ MAP_T = {
     'rt_denied': 'Pregledač nema dozvolu za lokaciju. Upišite polazak ili dozvolite lokaciju u podešavanjima pregledača.',
     'rt_unavail': 'Lokacija trenutno nije dostupna. Upišite polazak.', 'rt_noroute': 'Ruta između ova dva mesta nije pronađena.',
     'rt_same': 'Polazak i odredište su na istom mestu.', 'rt_err': 'Ruta trenutno ne može da se izračuna. Pokušajte ponovo za minut.',
-    'rt_privacy': 'Upisana mesta i tačke rute pregledač šalje samo servisima Photon (Komoot) i OSRM (FOSSGIS), radi pretrage i rute. Sajt ih ne dobija i ne čuva.',
+    'rt_privacy': 'Upisana mesta i tačku izabranu dugim pritiskom pregledač šalje servisu Photon (Komoot), a tačke rute servisu OSRM (FOSSGIS), samo radi pretrage i rute. Sajt ih ne dobija i ne čuva.',
     'rt_attr': 'Ruta i adrese: © OpenStreetMap, OSRM · FOSSGIS, Photon', 'rt_fix': 'Ispravi mapu',
     'rt_map': 'Prikaži rutu na mapi', 'rt_btn_sub': 'upišite odredište — brzi od 50 kW', 'rt_btn_set': 'do {t} · brzih punjača: {n}',
+    # the destination picked on the map: a tapped place name, a long press or a right click (map.js rtPopOpen, 27.10.2026)
+    'rt_tip': 'Odredište možete da izaberete i na mapi: dodirnite ime mesta ili dugo pritisnite bilo koju tačku (na računaru desni klik).',
+    'rt_pop_go': 'Punjači na putu dovde', 'rt_pop_go_l': 'Punjači na putu do odredišta {t}', 'rt_pop_from': 'Polazak odavde',
+    'rt_pop_wait': 'Tražim ime mesta…', 'rt_pt': 'Izabrana tačka',
     # hours, cable, parking (mreze.json, dopune.json)
     'oh_open': 'sada radi do {t}', 'oh_closed': 'sada zatvoreno, otvara u {t}', 'closed_now': 'sada zatvoreno',
     'cab_own': 'Ponesite svoj Tip 2 kabl',
@@ -1113,6 +1117,8 @@ M = {
         'extra': '/assets/map/dopune.json?v=' + _ver(DIST / 'assets' / 'map' / 'dopune.json'),
         'region': '/assets/map/region.json?v=' + _ver(DIST / 'assets' / 'map' / 'region.json'),
         'cities': {c['slug']: list(TOWN_XY[c['name']]) for c in TOWN_CFG if c['name'] in TOWN_XY},
+        # "Punjači na putu": the towns put first when the typed text matches them without diacritics ("Nis" → Niš)
+        'towns': [[t[0], t[1], t[2]] for t in map_data.TOWNS],
         'idle': _IDLE,
         # "Moj auto": the cars, home charging at night (EPS, lower tariff, green and blue zone, all fees) and fuel for the
         # comparison per km (the calculator's numbers: content/data/kalkulator.json)
