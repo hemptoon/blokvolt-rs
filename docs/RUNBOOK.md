@@ -1938,6 +1938,8 @@ Rules added with the full check of 24.10.2026 (36 brands with official sales, 84
   suffix when the whole title is longer than 60 characters: Google shows about 60, and the brand is in `og:site_name`,
   the JSON-LD and on the page. It happens before translation, so the EN/RU title is looked up by the shortened
   Serbian key; after a change of a long title run the 3.9 todo as usual (a new long title needs its shortened key).
+  blokvolt.com follows the same rule: `scripts/gen_com.py` → `seo_title()` in its `render()` (English pages and every
+  local section; there is no translation step there).
 - Write titles the way people search: the main words first ("Cena struje u Srbiji 2026", "Tesla punjači u Srbiji",
   "Punjači za električne automobile u Šapcu"), then what the page answers (cena, lokacije, stanje). Keep a title true
   to the page: no "cena" when the page shows none. The description says the facts in one or two sentences (≤ 158).

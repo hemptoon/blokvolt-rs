@@ -167,9 +167,18 @@ def write(path, html):
     dest.write_text(html, encoding='utf-8')
 
 
+def seo_title(t):
+    """Same rule as build.py (RUNBOOK 3.33): a title longer than 60 characters drops the " | BlokVolt" suffix."""
+    if isinstance(t, str) and t.endswith(' | BlokVolt') and len(t) > 60:
+        return t[:-len(' | BlokVolt')]
+    return t
+
+
 def render(tpl, path, ctx, priority='0.7', lastmod=None, sitemap=True):
     base = dict(SITE=SITE, RS=RS, CHECKED=CHECKED, CHECKED_ISO=CHECKED_ISO, EMAIL=EMAIL, canon=path, path=path)
     base.update(ctx)
+    if 'title' in base:
+        base['title'] = seo_title(base['title'])
     html = env.get_template(tpl).render(**base)
     write(path, html)
     if sitemap and not base.get('noindex'):
