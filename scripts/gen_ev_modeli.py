@@ -146,7 +146,7 @@ Zvanična statistika po modelima nije objavljena. Od januara do septembra 2026. 
 <details markdown="1">
 <summary>Fotografije: autori i licence ({plural(n_foto, 'fotografija', 'fotografije', 'fotografija')})</summary>
 
-Fotografije su sa Wikimedia Commonsa, pod slobodnim licencama; pozadina je uklonjena, a veličina ujednačena. Ilustrativne su: auto na slici može biti druga verzija modela.
+Fotografije su sa Wikimedia Commonsa, pod slobodnim licencama; pozadina je uklonjena, veličina ujednačena, a neke su preslikane kao u ogledalu da bi sva vozila bila okrenuta na istu stranu. Ilustrativne su: auto na slici može biti druga verzija modela.
 
 <ul>
 {credit_li}

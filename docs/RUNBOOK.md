@@ -213,7 +213,7 @@ In the same pass check the brands of `/elektricni-automobili/` (3.32): `content/
 `static/assets/auto/<slug>.png` plus author, licence, licence URL, Commons file page and `v` (first 8
 hex of the PNG's SHA-1 — `/assets/*` is served `immutable`, so the `src` carries `?v=` and must change
 whenever the file does). `scripts/gen_ev_modeli.py` renders the thumbnail in the first table column
-(a grey silhouette when a model has no photo — today JMEV Elight and EWind) and the credit list under
+(a grey silhouette when a model has no photo — today JMEV Elight and EWind, Audi A2 e-tron, Mercedes-Benz GLA and C-Klasa električna: no suitable free photo on Commons yet) and the credit list under
 `## Fotografije modela`.
 
 Rules, non-negotiable: only files from Wikimedia Commons under a free licence (CC0, CC BY, CC BY-SA),
@@ -221,9 +221,12 @@ never a press photo, a dealer photo or an image found through a search engine. C
 exactly as the file page states them. The photo must show the model and generation in the table — the
 facelift if the price list is for the facelift, the EV and not the petrol or PHEV twin, not a concept,
 not an N Line when the table says N. A front three-quarter view with the whole car in frame; no rear
-views, no open doors, nothing standing in front of the car.
+views, no open doors, nothing standing in front of the car. Every car faces left (front at the left of the
+picture): a car photographed from the other side is mirrored (`mirrored: true` in ev-foto.json; the credit
+text says some photos are mirrored). Prefer the same photographers' series (Alexander Migl / Alexander-93,
+M 93) — same light, height and angle, so the cards look like one set.
 
-How it was done (23.09.2026), and how to add one:
+How it was done (23.09.2026; 58 more on 26.10.2026, all 122 checked for direction), and how to add one:
 1. Choose on commons.wikimedia.org in the browser: the Commons API (`generator=search`,
    `gsrsearch=intitle:"<model>" filetype:bitmap`, `iiprop=url|size|extmetadata`) gives candidates;
    render them as a grid of 320 px thumbnails with index numbers on a blank Commons page and pick by
@@ -232,6 +235,10 @@ How it was done (23.09.2026), and how to add one:
    `github.com/hemptoon/blokvolt-rs/upload/<branch>` from the Commons tab through a clicked
    `<a target="_blank" rel="opener">`, and `postMessage` the blobs to it; commit to a throwaway
    branch (`hemptoon-patch-2` holds the current sources and `sources*.json`), then `git archive` it here.
+   Since 26.10.2026 the simpler way: show the chosen file alone in the Commons tab at the window size
+   (2000 px thumbnail URL) and take a `zoom` screenshot with `save_to_disk` — about 1400x840 px, plenty
+   for a 360x200 thumbnail. A stand, glass barrier or name board in front of the car is painted out in
+   the source with `cv2.inpaint` (TELEA) before step 3.
 3. Cut out and compose: `python3 scripts/foto_compose.py <slug>` (IS-Net). Add a `KEEP` box, `CUT`
    region, `RED` colour cut or a larger opening `KERNEL` for that slug when something else sticks to
    the car, and look at the result at display size before publishing.

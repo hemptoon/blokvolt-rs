@@ -20,12 +20,16 @@ CAR_W, CAR_HMAX, BASE = 0.90, 0.80, 0.905
 
 # per-photo keep boxes (fractions of the frame) where a neighbour car or a stand touches ours
 KEEP = {'skoda-enyaq-coupe': (0.05, 0, 1, 1),
-        'bmw-i7': (0.12, 0, 1, 1), 'mercedes-benz-g-580': (0.03, 0, 0.93, 1)}
+        'bmw-i7': (0.12, 0, 1, 1), 'mercedes-benz-g-580': (0.03, 0, 0.93, 1),
+        'deepal-s05': (0.08, 0, 1, 1), 'maserati-grecale': (0.125, 0, 0.9, 1),
+        'lexus-es': (0, 0, 1, 0.835)}
 
 # regions to blank out (x0, y0, x1, y1 as fractions): parts of other cars or stands touching ours
+# lexus-es (glass barrier) and maserati-grancabrio-folgore (display stand, name board) are inpainted in the
+# source with cv2.INPAINT_TELEA before this step
 CUT = {}
 # a red car behind the silver IONIQ 6: remove red pixels in that corner only
-RED = {'hyundai-ioniq-6': (0.70, 0, 1, 0.35)}
+RED = {'hyundai-ioniq-6': (0.70, 0, 1, 0.35), 'dongfeng-e70': (0.10, 0, 0.72, 0.36)}
 KERNEL = {'skoda-enyaq': 17, 'mercedes-benz-eqs': 13}
 
 def car_mask(img, sess, slug=''):

@@ -179,7 +179,7 @@ Zvanična statistika po modelima nije objavljena. Od januara do septembra 2026. 
 <details markdown="1">
 <summary>Fotografije: autori i licence (64 fotografije)</summary>
 
-Fotografije su sa Wikimedia Commonsa, pod slobodnim licencama; pozadina je uklonjena, a veličina ujednačena. Ilustrativne su: auto na slici može biti druga verzija modela.
+Fotografije su sa Wikimedia Commonsa, pod slobodnim licencama; pozadina je uklonjena, veličina ujednačena, a neke su preslikane kao u ogledalu da bi sva vozila bila okrenuta na istu stranu. Ilustrativne su: auto na slici može biti druga verzija modela.
 
 <ul>
 <li><b>BMW i4</b> — Alexander Migl, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="nofollow noopener">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:BMW_i4_IMG_6695.jpg" rel="nofollow noopener">Wikimedia Commons</a></li>
