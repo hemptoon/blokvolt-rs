@@ -1,8 +1,15 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "rs.blokvolt.app",
-    "sha256_cert_fingerprints": ["AA:62:B4:08:E9:FA:69:4E:FB:89:57:99:8E:29:FF:93:4C:6F:DF:CA:71:CA:32:75:F8:B0:0D:82:EE:6A:17:21"]
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "rs.blokvolt.app",
+      "sha256_cert_fingerprints": [
+        "AA:62:B4:08:E9:FA:69:4E:FB:89:57:99:8E:29:FF:93:4C:6F:DF:CA:71:CA:32:75:F8:B0:0D:82:EE:6A:17:21",
+        "9C:7C:21:FF:A3:D6:9B:4B:74:45:39:56:30:D6:A6:00:89:3D:D9:C3:A1:CF:D0:22:3F:AA:C7:D2:B2:C4:F1:2B"
+      ]
+    }
   }
-}]
+]
