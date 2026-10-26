@@ -31,7 +31,7 @@ jobs:
           python-version: '3.13'
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: '20'
+          node-version: '22'   # wrangler 4.151+ needs Node 22 (it refuses to start on Node 20)
       - name: Install
         run: |
           pip install -q jinja2 markdown beautifulsoup4 pillow
