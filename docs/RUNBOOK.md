@@ -1813,9 +1813,13 @@ Who is on the map — same rules for everyone:
   locator read in the owner's browser counts as the importer's page, with its own pins (`pos: "src"`): MG
   (mgmotor.rs/map, „Service Store“), Kia (kia.rs/zastupnici, PRODAJA/SERVIS blocks, `data-gmaps_lat/lng`), Nissan
   (nissan.rs/pronadi-distributera.html, „Servis i održavanje“), Suzuki (suzuki-srbija.rs/prodajna-mreza), Lynk & Co
-  (lynkco-see.com/rs/zastupnici). The Porsche SCG locators (VW, Audi, VW Commercial) wait for a consent tool that Brave
-  blocks; never call their API with the key from their script (25.10.2026: refused as circumvention) — use the
-  dealers' own sites instead. The card shows the date of the place's newest source. Never from Google
+  (lynkco-see.com/rs/zastupnici). The Porsche SCG locators (volkswagen.rs/volkswagen-dileri, vw-privrednavozila.rs/volkswagen-dileri,
+  audi.rs/kontakt/pretraga-partnera) show only after Brave Shields are off for the site and the cookie consent is accepted —
+  the owner does that himself in his browser (26.10.2026). The list sits in the shadow DOM of `dealer-search-client`: each
+  card's „Detalji“ / „Partner-detalji“ opens the address, the „Servis“ hours tab and the phone; the „Planiranje rute“ link
+  holds the importer's pin. Never call their API with the key from their script (25.10.2026: refused as circumvention).
+  On 26.10.2026: VW 9 partners, VW Commercial 10 (+ Autocentar Manik, service only), Audi 5; Autocentar NR Požarevac (only
+  on the older „servisni termin“ page) left the map. The card shows the date of the place's newest source. Never from Google
   Maps, PlugShare or another map (the build refuses those URLs). The point: the source's own pin (`pos: "src"`), or the
   published address placed with OpenStreetMap from the owner's browser — a car shop/workshop in OSM with the firm's name
   or brand on that street, else the house number via Nominatim, one request a second (`pos: "osm"`; the card says so).

@@ -13,6 +13,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 26. oktobar 2026
 
+- [Mapa servisa](/servisi/): servisi marki Volkswagen, Volkswagen privredna vozila i Audi provereni su na zvaničnim pretragama partnera uvoznika — tačke i radno vreme servisa su sada sa tih spiskova. Autocentar Manik (Preljina, Čačak) je na spisku za Audi i Volkswagen privredna vozila. Autocentar NR Požarevac nije na spisku Volkswagen partnera i više nije na mapi.
 - [Mapa punjača](/mapa/) i [Moj BlokVolt](/nalog/): u „Moj auto“ je sada 177 verzija električnih automobila umesto 83 — svi modeli koje uvoznici prodaju u Srbiji, među njima Toyota bZ4X i C-HR+, Kia EV4 i EV9, BYD Sealion 7, ceo Mercedes-Benz EQ i modeli Dongfeng, GAC, JAC, JMEV, Voyah i Lynk & Co. Za svaki mapa računa cenu po kilometru. Podaci o bateriji i punjenju su sa stranica proizvođača i iz auto-medija, a za novije i manje poznate modele deo je procena.
 
 ## 25. oktobar 2026

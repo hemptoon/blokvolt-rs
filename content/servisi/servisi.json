@@ -924,23 +924,24 @@
    "a": "Zrenjaninski put 9",
    "tel": "0800 801 811",
    "web": "https://www.porsche-sever.rs",
-   "lat": 44.840683,
-   "lon": 20.489821,
-   "pos": "osm",
+   "oh": "pon–pet 8–16",
+   "lat": 44.840776,
+   "lon": 20.490107,
+   "pos": "src",
    "src": [
     {
      "l": "volkswagen.rs",
-     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
-     "d": "24.10.2026"
+     "u": "https://www.volkswagen.rs/volkswagen-dileri",
+     "d": "26.10.2026"
+    },
+    {
+     "l": "vw-privrednavozila.rs",
+     "u": "https://www.vw-privrednavozila.rs/volkswagen-dileri",
+     "d": "26.10.2026"
     },
     {
      "l": "porsche-sever.rs",
      "u": "https://www.porsche-sever.rs/kontakt",
-     "d": "24.10.2026"
-    },
-    {
-     "l": "dasweltauto.rs",
-     "u": "https://www.dasweltauto.rs/dealer-search",
      "d": "24.10.2026"
     }
    ]
@@ -958,24 +959,25 @@
    "a": "Zrenjaninski put 24",
    "tel": "0800 801 811",
    "web": "https://www.porsche-novisad.rs",
-   "lat": 45.294657,
-   "lon": 19.855422,
-   "pos": "osm",
+   "oh": "pon–pet 8–16",
+   "lat": 45.294629,
+   "lon": 19.855491,
+   "pos": "src",
    "src": [
     {
      "l": "volkswagen.rs",
-     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
-     "d": "24.10.2026"
+     "u": "https://www.volkswagen.rs/volkswagen-dileri",
+     "d": "26.10.2026"
     },
     {
-     "l": "porsche-novisad.rs",
-     "u": "https://www.porsche-novisad.rs/kontakt",
-     "d": "24.10.2026"
+     "l": "vw-privrednavozila.rs",
+     "u": "https://www.vw-privrednavozila.rs/volkswagen-dileri",
+     "d": "26.10.2026"
     },
     {
-     "l": "odmah-dostupno.audi.rs",
-     "u": "https://odmah-dostupno.audi.rs/search?stock-cars=true&size=36",
-     "d": "24.10.2026"
+     "l": "audi.rs",
+     "u": "https://www.audi.rs/kontakt/pretraga-partnera",
+     "d": "26.10.2026"
     }
    ]
   },
@@ -994,10 +996,15 @@
    "tel2": "+381 11 35 30 400",
    "web": "https://www.porsche-ada.rs",
    "oh": "pon–pet 8–16",
-   "lat": 44.785159,
-   "lon": 20.413911,
-   "pos": "osm",
+   "lat": 44.784988,
+   "lon": 20.413657,
+   "pos": "src",
    "src": [
+    {
+     "l": "audi.rs",
+     "u": "https://www.audi.rs/kontakt/pretraga-partnera",
+     "d": "24.10.2026"
+    },
     {
      "l": "cupraofficial.rs",
      "u": "https://www.cupraofficial.rs/cupra-partneri",
@@ -1006,11 +1013,6 @@
     {
      "l": "porsche-ada.rs",
      "u": "https://www.porsche-ada.rs/kontakt",
-     "d": "24.10.2026"
-    },
-    {
-     "l": "odmah-dostupno.audi.rs",
-     "u": "https://odmah-dostupno.audi.rs/search?stock-cars=true&size=36",
      "d": "24.10.2026"
     }
    ]
@@ -1028,24 +1030,25 @@
    "a": "Dimitrija Tucovića 185",
    "tel": "+381 18 456 6800",
    "web": "https://www.brosauto.rs",
-   "lat": 43.316594,
-   "lon": 21.842865,
-   "pos": "osm",
+   "oh": "pon–pet 9–17, sub 9–15",
+   "lat": 43.316657,
+   "lon": 21.842791,
+   "pos": "src",
    "src": [
     {
      "l": "volkswagen.rs",
-     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
-     "d": "24.10.2026"
+     "u": "https://www.volkswagen.rs/volkswagen-dileri",
+     "d": "26.10.2026"
     },
     {
-     "l": "brosauto.rs",
-     "u": "https://www.brosauto.rs/kontakt",
-     "d": "24.10.2026"
+     "l": "vw-privrednavozila.rs",
+     "u": "https://www.vw-privrednavozila.rs/volkswagen-dileri",
+     "d": "26.10.2026"
     },
     {
-     "l": "odmah-dostupno.audi.rs",
-     "u": "https://odmah-dostupno.audi.rs/search?stock-cars=true&size=36",
-     "d": "24.10.2026"
+     "l": "audi.rs",
+     "u": "https://www.audi.rs/kontakt/pretraga-partnera",
+     "d": "26.10.2026"
     }
    ]
   },
@@ -1062,14 +1065,19 @@
    "tel": "+381 24 415 05 00",
    "web": "https://www.autokucatasic.rs",
    "oh": "pon–pet 8–16, sub 8–13",
-   "lat": 46.086157,
-   "lon": 19.639925,
-   "pos": "osm",
+   "lat": 46.086105,
+   "lon": 19.64001,
+   "pos": "src",
    "src": [
     {
      "l": "volkswagen.rs",
-     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
-     "d": "24.10.2026"
+     "u": "https://www.volkswagen.rs/volkswagen-dileri",
+     "d": "26.10.2026"
+    },
+    {
+     "l": "vw-privrednavozila.rs",
+     "u": "https://www.vw-privrednavozila.rs/volkswagen-dileri",
+     "d": "26.10.2026"
     },
     {
      "l": "autokucatasic.rs",
@@ -1091,14 +1099,19 @@
    "tel": "+381 34 617 17 00",
    "web": "https://www.autokucatasic.rs",
    "oh": "pon–pet 8–17, sub 8–13",
-   "lat": 44.025695,
-   "lon": 20.935123,
-   "pos": "osm",
+   "lat": 44.025657,
+   "lon": 20.935769,
+   "pos": "src",
    "src": [
     {
      "l": "volkswagen.rs",
-     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
-     "d": "24.10.2026"
+     "u": "https://www.volkswagen.rs/volkswagen-dileri",
+     "d": "26.10.2026"
+    },
+    {
+     "l": "vw-privrednavozila.rs",
+     "u": "https://www.vw-privrednavozila.rs/volkswagen-dileri",
+     "d": "26.10.2026"
     },
     {
      "l": "autokucatasic.rs",
@@ -1120,14 +1133,19 @@
    "tel": "+381 35 815 06 60",
    "web": "https://www.autokucatasic.rs",
    "oh": "pon–pet 8–16, sub 8–13",
-   "lat": 43.998473,
-   "lon": 21.264382,
-   "pos": "osm",
+   "lat": 43.998128,
+   "lon": 21.264187,
+   "pos": "src",
    "src": [
     {
      "l": "volkswagen.rs",
-     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
-     "d": "24.10.2026"
+     "u": "https://www.volkswagen.rs/volkswagen-dileri",
+     "d": "26.10.2026"
+    },
+    {
+     "l": "vw-privrednavozila.rs",
+     "u": "https://www.vw-privrednavozila.rs/volkswagen-dileri",
+     "d": "26.10.2026"
     },
     {
      "l": "autokucatasic.rs",
@@ -1149,23 +1167,23 @@
    "tel": "011 30 60 418",
    "tel2": "+381 11 30 60 400",
    "web": "https://www.autokomerckomision.rs",
-   "lat": 44.794343,
-   "lon": 20.460568,
-   "pos": "osm",
+   "lat": 44.79306,
+   "lon": 20.463035,
+   "pos": "src",
    "src": [
     {
      "l": "volkswagen.rs",
-     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
-     "d": "24.10.2026"
+     "u": "https://www.volkswagen.rs/volkswagen-dileri",
+     "d": "26.10.2026"
+    },
+    {
+     "l": "vw-privrednavozila.rs",
+     "u": "https://www.vw-privrednavozila.rs/volkswagen-dileri",
+     "d": "26.10.2026"
     },
     {
      "l": "autokomerckomision.rs",
      "u": "https://www.autokomerckomision.rs/kontakt",
-     "d": "24.10.2026"
-    },
-    {
-     "l": "autokomerc.rs",
-     "u": "https://autokomerc.rs/kontakt",
      "d": "24.10.2026"
     }
    ]
@@ -1182,14 +1200,20 @@
    "a": "Bulevar Oslobodilaca Čačka 96 A",
    "tel": "+381 32 5461 028",
    "web": "https://www.vwlakeauto.rs",
-   "lat": 43.891572,
-   "lon": 20.385876,
-   "pos": "osm",
+   "oh": "pon–pet 8–16, sub 8–13",
+   "lat": 43.891808,
+   "lon": 20.38589,
+   "pos": "src",
    "src": [
     {
      "l": "volkswagen.rs",
-     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
-     "d": "24.10.2026"
+     "u": "https://www.volkswagen.rs/volkswagen-dileri",
+     "d": "26.10.2026"
+    },
+    {
+     "l": "vw-privrednavozila.rs",
+     "u": "https://www.vw-privrednavozila.rs/volkswagen-dileri",
+     "d": "26.10.2026"
     },
     {
      "l": "vwlakeauto.rs",
@@ -1210,48 +1234,24 @@
    "a": "Obilazni put br.80a, Majur",
    "tel": "+381 15 319 210",
    "web": "https://www.vw-petrovic.rs",
-   "lat": 44.739964,
-   "lon": 19.683434,
-   "pos": "osm",
+   "oh": "pon–pet 9–17, sub 8–14",
+   "lat": 44.76434,
+   "lon": 19.639169,
+   "pos": "src",
    "src": [
+    {
+     "l": "volkswagen.rs",
+     "u": "https://www.volkswagen.rs/volkswagen-dileri",
+     "d": "26.10.2026"
+    },
+    {
+     "l": "vw-privrednavozila.rs",
+     "u": "https://www.vw-privrednavozila.rs/volkswagen-dileri",
+     "d": "26.10.2026"
+    },
     {
      "l": "vw-petrovic.rs",
      "u": "https://www.vw-petrovic.rs/kontakt",
-     "d": "24.10.2026"
-    },
-    {
-     "l": "volkswagen.rs",
-     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
-     "d": "24.10.2026"
-    },
-    {
-     "l": "biznis.kurir.rs",
-     "u": "https://biznis.kurir.rs/amp/10032919/volkswagen-mreza-u-srbiji-bogatija-za-novi-prodajno-servisni-centar-u-sapcu",
-     "d": "24.10.2026"
-    }
-   ]
-  },
-  {
-   "id": "sv-autocentar-nr-pozarevac-pozarevac",
-   "n": "Autocentar NR Požarevac",
-   "t": "o",
-   "b": [
-    "Volkswagen"
-   ],
-   "g": "Požarevac",
-   "a": "Ljubičevska-naselje bb",
-   "tel": "+381 12 515 245",
-   "web": "https://www.vw-autocentarnr.rs",
-   "pos": "none",
-   "src": [
-    {
-     "l": "volkswagen.rs",
-     "u": "https://www.volkswagen.rs/servis-i-oprema/servis/ponude-i-akcije/servisni-termin-ast",
-     "d": "24.10.2026"
-    },
-    {
-     "l": "vw-autocentarnr.rs",
-     "u": "https://www.vw-autocentarnr.rs/kontakt",
      "d": "24.10.2026"
     }
    ]
@@ -1269,10 +1269,16 @@
    "tel": "063 32 58 12",
    "tel2": "+381 11 35 30 300",
    "web": "https://www.autokomercaerodrom.rs",
-   "lat": 44.833173,
-   "lon": 20.311169,
-   "pos": "osm",
+   "oh": "pon–pet 8–17, sub 9–14",
+   "lat": 44.83362,
+   "lon": 20.31105,
+   "pos": "src",
    "src": [
+    {
+     "l": "audi.rs",
+     "u": "https://www.audi.rs/kontakt/pretraga-partnera",
+     "d": "26.10.2026"
+    },
     {
      "l": "autokomercaerodrom.rs",
      "u": "https://www.autokomercaerodrom.rs/kontakt",
@@ -1281,11 +1287,6 @@
     {
      "l": "autokomerc.rs",
      "u": "https://autokomerc.rs/kontakt",
-     "d": "24.10.2026"
-    },
-    {
-     "l": "odmah-dostupno.audi.rs",
-     "u": "https://odmah-dostupno.audi.rs/search?stock-cars=true&size=36",
      "d": "24.10.2026"
     }
    ]
@@ -1296,17 +1297,27 @@
    "t": "o",
    "b": [
     "Audi",
-    "VW privredna vozila",
-    "Volkswagen"
+    "VW privredna vozila"
    ],
    "g": "Čačak",
    "a": "Ibarski put 13, Preljina",
    "tel": "+381 32 380 190",
    "web": "https://www.acmanik.co.rs",
-   "lat": 43.894781,
-   "lon": 20.434851,
-   "pos": "osm",
+   "oh": "pon–pet 8–16",
+   "lat": 43.931142,
+   "lon": 20.411303,
+   "pos": "src",
    "src": [
+    {
+     "l": "audi.rs",
+     "u": "https://www.audi.rs/kontakt/pretraga-partnera",
+     "d": "26.10.2026"
+    },
+    {
+     "l": "vw-privrednavozila.rs",
+     "u": "https://www.vw-privrednavozila.rs/volkswagen-dileri",
+     "d": "26.10.2026"
+    },
     {
      "l": "acmanik.co.rs",
      "u": "https://www.acmanik.co.rs/kontakt",
