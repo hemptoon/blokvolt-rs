@@ -52,14 +52,21 @@ raw = '\n'.join('| {name} | {nt} | {vt} | {j} |'.format(name=z['name'].replace('
 nt_rows = '\n'.join(f"| {h['region']} | {h['window']} |" for h in E['nt_hours'])
 sources = ' | '.join(f"{s['label']} :: {s['url']}" for s in E['sources'])
 diff = (all_in(Z['plava']['vt']) - all_in(Z['plava']['nt'])) * home
+J = {zid: all_in(v) for zid, v in E['jednotarifno'].items() if zid in Z and isinstance(v, (int, float))}
+# two-tariff meter pays off once this share of the month's kWh is used at night (same in every zone within a point)
+breakeven = {zid: (all_in(Z[zid]['vt']) - J[zid]) / (all_in(Z[zid]['vt']) - all_in(Z[zid]['nt'])) for zid in J}
+be_pct = round(max(breakeven.values()) * 100)
+j_rows = '\n'.join('| {name} | {range} | {j} |'.format(name=z['name'].replace(' zona', ''), range=z['range'].replace(' mesečno', ''),
+                                                       j=fx_kwh(J[z['id']])) for z in E['zones'] if z['id'] in J)
+nt_list = ', '.join(f"{h['region']} {h['window']}" for h in E['nt_hours'])
 
 md = f"""---
 thumb: stambeni-blokovi-sunce
-title: Cena struje za domaćinstva u Srbiji 2026: zone, tarife, niža tarifa
-h1: Cena struje kod kuće
-description: Kilovat-sat kod kuće sa svim dažbinama: od {sr(all_in(Z['zelena']['nt']))} do {sr(all_in(Z['crvena']['vt']))} RSD, zavisno od zone i tarife. Niža tarifa traje 8 sati, a počinje različito po regionu.
+title: Cena struje u Srbiji 2026: kilovat za domaćinstva po zonama
+h1: Cena struje za domaćinstva u Srbiji 2026
+description: Kilovat struje sa svim dažbinama: od {sr(all_in(Z['zelena']['nt']))} RSD noću u zelenoj do {sr(all_in(Z['crvena']['vt']))} RSD danju u crvenoj zoni. Jednotarifno brojilo i od koliko sati je jeftinija struja.
 kicker: Cene struje
-lead: Kilovat-sat kod kuće košta od {sr(all_in(Z['zelena']['nt']))} do {sr(all_in(Z['crvena']['vt']))} RSD sa svim dažbinama, a noću je više od tri puta jeftiniji nego danju.
+lead: Kilovat struje za domaćinstva košta od {sr(all_in(Z['zelena']['nt']))} do {sr(all_in(Z['crvena']['vt']))} RSD sa svim dažbinama, zavisno od zone i tarife. Noću je više od tri puta jeftiniji nego danju.
 updated: {CHECKED}
 next_check: {NEXT}
 published: 2026-09-23
@@ -74,13 +81,13 @@ sources: {sources}
 - Cene važe od **{E['valid_from']}**
 </div>
 
-## Cena po zonama
+## Cena kilovata struje po zonama
 
 | Zona | Potrošnja mesečno | Noć | Dan |
 |---|---|---|---|
 {table}
 
-Cene su u RSD po kWh, sa svim naknadama, akcizom i PDV-om. Zona se računa po ukupnoj mesečnoj potrošnji domaćinstva.
+Cene su u RSD po kWh, sa svim naknadama, akcizom i PDV-om. Zona se računa po ukupnoj mesečnoj potrošnji domaćinstva: zelena do 350 kWh, plava od 351 do 1.200 kWh, crvena preko 1.200 kWh.
 
 <details markdown="1">
 <summary>Detalji: kako se računa cena</summary>
@@ -97,13 +104,28 @@ Cene iz cenovnika su bez akcize i PDV-a. Jednotarifne cene su iz sekundarnog izv
 
 </details>
 
-## Kada počinje niža tarifa
+## Od koliko sati je jeftinija struja
 
 | Region | Niža tarifa |
 |---|---|
 {nt_rows}
 
 Niža tarifa važi svakog dana, i vikendom, samo uz dvotarifno brojilo. Punjenje podesite da počne tada, tajmerom u autu ili punjaču. U plavoj zoni to je oko {sr(diff, 0)} RSD mesečno manje nego danju.
+
+## Cena struje za jednotarifno brojilo
+
+| Zona | Potrošnja mesečno | Cena kWh |
+|---|---|---|
+{j_rows}
+
+Sa jednotarifnim brojilom kilovat košta isto danju i noću. Po ovim cenama dvotarifno brojilo je jeftinije čim se noću potroši više od oko {be_pct} % mesečne struje, na primer kad se auto puni noću.
+
+<details markdown="1">
+<summary>Detalji: odakle su cene za jednotarifno brojilo</summary>
+
+EPS u cenovniku za domaćinstva objavljuje cene za dvotarifno merenje. Cene za jednotarifno brojilo su iz sekundarnog izvora (vidi izvore), preračunate sa istim naknadama, akcizom i PDV-om kao gore. Zamenu brojila tražite od Elektrodistribucije Srbije.
+
+</details>
 
 ## Šta auto menja na računu
 
@@ -117,6 +139,36 @@ Tih {sr(home, 0)} kWh često prebaci domaćinstvo iz zelene u plavu zonu. Račun
 Na računu je i obračunska snaga: {sr(E['snaga_rsd_kw'], 4)} RSD po kW odobrene snage mesečno, sa dažbinama {sr(snaga)} RSD. Za 17,25 kW (3×25 A) to je oko {sr(snaga * 17.25, 0)} RSD mesečno. Punjač ne menja ovu stavku dok se ne poveća odobrena snaga.
 
 Na računu EPS-a piše da li je brojilo dvotarifno i koliko je kWh u kojoj zoni. Račune vidite na portal.eps.rs. Zamenu jednotarifnog brojila tražite od Elektrodistribucije Srbije.
+
+</details>
+
+## Česta pitanja
+
+<details markdown="1">
+<summary>Koliko košta kilovat struje u Srbiji 2026?</summary>
+
+Sa svim dažbinama: u zelenoj zoni {sr(all_in(Z['zelena']['nt']))} RSD noću i {sr(all_in(Z['zelena']['vt']))} RSD danju, u plavoj {sr(all_in(Z['plava']['nt']))} i {sr(all_in(Z['plava']['vt']))} RSD, u crvenoj {sr(all_in(Z['crvena']['nt']))} i {sr(all_in(Z['crvena']['vt']))} RSD. Cenovnik se primenjuje od {E['valid_from']}.
+
+</details>
+
+<details markdown="1">
+<summary>Od koliko sati je jeftinija struja?</summary>
+
+Niža tarifa traje osam sati: {nt_list}. Važi svakog dana, i vikendom i praznikom, samo uz dvotarifno brojilo.
+
+</details>
+
+<details markdown="1">
+<summary>Šta su zelena, plava i crvena zona?</summary>
+
+To su stepenice mesečne potrošnje domaćinstva: prvih 350 kWh plaća se po zelenoj ceni, sledećih do 1.200 kWh po plavoj, a sve preko toga po crvenoj.
+
+</details>
+
+<details markdown="1">
+<summary>Koliko struje mesečno troši električni auto?</summary>
+
+Za {sr(DEF['km'], 0)} km mesečno oko {sr(home, 0)} kWh sa brojila, sa gubicima pri punjenju. Noću u plavoj zoni to je oko {sr(home * all_in(Z['plava']['nt']), 0)} RSD. Računica za vaš auto: [kalkulator troškova](/alati/kalkulator-troskova/).
 
 </details>
 """

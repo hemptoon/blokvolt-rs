@@ -270,6 +270,8 @@
  "kind_label": "Operator mreže + aplikacija",
  "publish": true,
  "short_name": "Charge&GO",
+ "seo_title": "Charge&GO punjači: cena punjenja i lokacije u Srbiji",
+ "h1": "Charge&GO: cena punjenja i lokacije",
  "lead": "Komercijalna mreža brzih punjača, najviše na OMV, NIS, BIG i Stop Shop lokacijama. Naplata po minutu, cena zavisi od snage punjača.",
  "network_short": "87 lokacija u Srbiji",
  "power_short": "AC 22 – DC 240 kW",

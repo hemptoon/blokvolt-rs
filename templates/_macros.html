@@ -30,3 +30,11 @@
 {% macro news_cards(items) -%}
 <div class="ncards">{% for x in items %}<a class="ncard" href="{{ x.url }}"><img src="/assets/img/{{ x.img }}-480.webp" srcset="/assets/img/{{ x.img }}-480.webp 480w, /assets/img/{{ x.img }}-800.webp 800w" sizes="(max-width: 640px) 112px, 370px" width="480" height="270" alt="" loading="lazy" decoding="async"><div class="nc-b"><p class="news-meta"><time datetime="{{ x.iso }}">{{ x.date }}</time>{% if x.tag_label %}<span aria-hidden="true">·</span><span>{{ x.tag_label }}</span>{% endif %}</p><h3>{{ x.title }}</h3></div></a>{% endfor %}</div>
 {%- endmacro %}
+
+{# Public chargers as a table (town and network pages). rows: build.py station_rows(). place: add the town column; net: the network column.
+   Names, addresses, towns and power are data and stay as they are in every language (translate="no"). #}
+{% macro stations_table(rows, place=False, net=True) -%}
+<div class="tw stack"><table class="sttab"><thead><tr><th>Punjač</th>{% if place %}<th>Mesto</th>{% endif %}{% if net %}<th>Mreža</th>{% endif %}<th>Snaga</th><th>Stanje</th></tr></thead><tbody>
+{% for s in rows %}<tr><td data-label="Punjač"><a class="lnk" href="/mapa/#{{ s.id }}" translate="no">{{ s.n }}</a>{% if s.a %}<br><small class="muted" translate="no">{{ s.a }}</small>{% endif %}{% if s.guests %}<br><small class="muted">Samo za goste ili kupce</small>{% endif %}</td>{% if place %}<td data-label="Mesto">{% if s.town_url %}<a class="lnk" href="{{ s.town_url }}" translate="no">{{ s.t }}</a>{% else %}<span translate="no">{{ s.t or '—' }}</span>{% endif %}</td>{% endif %}{% if net %}<td data-label="Mreža">{% if s.net_url %}<a class="lnk" href="{{ s.net_url }}">{{ s.net }}</a>{% else %}<span translate="no">{{ s.net or '—' }}</span>{% endif %}</td>{% endif %}<td data-label="Snaga"><span translate="no">{{ s.pw }}</span>{% if s.conns %}<br><small class="muted" translate="no">{{ s.conns }}</small>{% endif %}</td><td data-label="Stanje"><span class="vst {{ s.st }}"><i aria-hidden="true"></i><span>{{ s.st_label }}</span></span></td></tr>
+{% endfor %}</tbody></table></div>
+{%- endmacro %}

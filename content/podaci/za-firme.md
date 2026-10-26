@@ -62,4 +62,4 @@ Oglas je nešto drugo: jedno označeno mesto na dnu stranica tri rubrike, odvoje
 <p class="f-msg f-limit" role="alert" hidden>Previše poruka danas. Pišite na hello@blokvolt.com.</p>
 </form>
 
-Umesto forme možete pisati i direktno na **hello@blokvolt.com**. Podatke iz forme koristimo samo za proveru i odgovor; više u [politici privatnosti](/politika-privatnosti.html).
+Umesto forme možete pisati i direktno na **hello@blokvolt.com**. Podatke iz forme koristimo samo za proveru i odgovor; više u [politici privatnosti](/politika-privatnosti).

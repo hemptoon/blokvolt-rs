@@ -1,23 +1,29 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import pagehead, lg %}
+{% from '_macros.html' import pagehead, lg, stations_table %}
 {% from '_icons.html' import ic %}
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
   {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "about": {"@type": "City", "name": {{ city|tojson }}}, "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
-  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Firme", "item": "{{ SITE }}/firme/"}, {"@type": "ListItem", "position": 3, "name": {{ city|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Gradovi", "item": "{{ SITE }}/gradovi/"}, {"@type": "ListItem", "position": 3, "name": {{ city|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
  ]
 }</script>{% endblock %}
-{% block pagehead %}{% call pagehead(city ~ ': punjači i firme', lead, crumbs=[('/firme/', 'Firme')]) %}<div class="ph-actions"><a class="btn dark" href="/mapa/?grad={{ cfg.slug }}">{{ ic('map') }}Javni punjači na mapi</a><a class="btn" href="/firme/?grad={{ cfg.slug }}">{{ ic('firm') }}Sve firme za {{ cfg.acc }}</a></div>{% endcall %}{% endblock %}
+{% block pagehead %}{% call pagehead(h1, lead, crumbs=[('/gradovi/', 'Gradovi')]) %}<div class="ph-actions"><a class="btn dark" href="/mapa/?grad={{ cfg.slug }}">{{ ic('map') }}Javni punjači na mapi</a>{% if main %}<a class="btn" href="/firme/?grad={{ cfg.slug }}">{{ ic('firm') }}Sve firme za {{ cfg.acc }}</a>{% else %}<a class="btn" href="/firme/">{{ ic('firm') }}Firme za kućni punjač</a>{% endif %}</div>{% endcall %}{% endblock %}
 {% block content %}
-<div class="stats">
-<div class="stat"><b>{{ n_map }}</b><span>javnih punjača u krugu od 15 km</span></div>
-<div class="stat"><b>{{ firms|length + covering|length }}</b><span>firmi za kućni punjač</span></div>
-<div class="stat"><b>{{ nt or '—' }}</b><span>jeftinija struja (niža tarifa EPS)</span></div>
+<div class="stats{% if nt %} s4{% endif %}">
+{% for v, label in stats %}<div class="stat"><b>{{ v }}</b><span>{{ label }}</span></div>
+{% endfor %}{% if nt %}<div class="stat"><b>{{ nt }}</b><span>jeftinija struja (niža tarifa EPS)</span></div>{% endif %}
 </div>
-{% if firms %}<div class="sec"><div class="sec-head"><h2>Firme u gradu</h2></div><div class="rows">{% for f in firms %}<a class="row" href="{{ f.url }}">{{ lg(f) }}<div><h3>{{ f.name }}{% if f.is_us %}<span class="badge feat">Izdvojeno</span>{% endif %}</h3><div class="sub">{{ f.kind_label }}</div>{% if f.pos %}<div class="badges">{% for b in f.pos %}<span class="badge ok">{{ b }}</span>{% endfor %}</div>{% endif %}</div><div class="val">{% if f.price_val %}{{ f.price_val|fx }}<small>{{ f.price_note }}</small>{% else %}<small>Cena na upit</small>{% endif %}</div></a>{% endfor %}</div></div>{% endif %}
-{% if covering %}<div class="sec"><div class="sec-head"><h2>Dolaze i u {{ cfg.acc }}</h2></div><div class="rows">{% for f in covering %}<a class="row" href="{{ f.url }}">{{ lg(f) }}<div><h3>{{ f.name }}{% if f.is_us %}<span class="badge feat">Izdvojeno</span>{% endif %}</h3><div class="sub">{{ f.kind_label }} · {{ f.city }}</div></div><div class="val">{% if f.price_val %}{{ f.price_val|fx }}<small>{{ f.price_note }}</small>{% else %}<small>Cena na upit</small>{% endif %}</div></a>{% endfor %}</div></div>{% endif %}
+{% if rows %}<div class="sec" id="punjaci"><div class="sec-head"><h2>Javni punjači {{ where }} i okolini</h2><a href="/mapa/?grad={{ cfg.slug }}">Na mapi →</a></div>
+{{ stations_table(rows) }}
+<p class="note">Spisak sa mape BlokVolt: punjači kojima je ovo najbliže mesto, do 25 km. „Potvrđeno“ znači da je punjač na spisku mreže ili ima skorašnje ocene vozača; cenu i stanje proverite u aplikaciji mreže pre polaska (<a class="lnk" href="/pomoc/sta-znaci-potvrdjeno/">šta znače oznake</a>).</p></div>{% endif %}
+{% if city_ops %}<div class="sec"><div class="sec-head"><h2>Mreže javnih punjača</h2><a href="/javno-punjenje/">Cene po mrežama →</a></div><div class="rows">{% for o in city_ops %}<a class="row" href="{{ o.url }}">{{ lg(o) }}<div><h3>{{ o.name }}</h3><div class="sub">{{ o.card }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div></div>{% endif %}
+{% if firms %}<div class="sec"><div class="sec-head"><h2>Firme {{ where }}</h2></div><div class="rows">{% for f in firms %}<a class="row" href="{{ f.url }}">{{ lg(f) }}<div><h3>{{ f.name }}{% if f.is_us %}<span class="badge feat">Izdvojeno</span>{% endif %}</h3><div class="sub">{{ f.kind_label }}</div>{% if f.pos %}<div class="badges">{% for b in f.pos %}<span class="badge ok">{{ b }}</span>{% endfor %}</div>{% endif %}</div><div class="val">{% if f.price_val %}{{ f.price_val|fx }}<small>{{ f.price_note }}</small>{% else %}<small>Cena na upit</small>{% endif %}</div></a>{% endfor %}</div></div>{% endif %}
+{% if covering %}<div class="sec"><div class="sec-head"><h2>Dolaze i {{ prep }} {{ cfg.acc }}</h2></div><div class="rows">{% for f in covering %}<a class="row" href="{{ f.url }}">{{ lg(f) }}<div><h3>{{ f.name }}{% if f.is_us %}<span class="badge feat">Izdvojeno</span>{% endif %}</h3><div class="sub">{{ f.kind_label }} · {{ f.city }}</div></div><div class="val">{% if f.price_val %}{{ f.price_val|fx }}<small>{{ f.price_note }}</small>{% else %}<small>Cena na upit</small>{% endif %}</div></a>{% endfor %}</div></div>{% endif %}
 {% if shops %}<details class="sec"><summary>Web-shopovi sa dostavom ({{ shops|length }})</summary><ul>{% for f in shops %}<li><a class="lnk" href="{{ f.url }}">{{ f.name }}</a> — {{ f.city }}{% if f.price_val %}, {{ f.price_val|fx(stack=False) }}{% endif %}</li>{% endfor %}</ul></details>{% endif %}
-{% if city_ops %}<div class="sec"><div class="sec-head"><h2>Javno punjenje</h2><a href="/javno-punjenje/">Cene po mrežama →</a></div><div class="rows">{% for o in city_ops %}<a class="row" href="{{ o.url }}">{{ lg(o) }}<div><h3>{{ o.name }}</h3><div class="sub">{{ o.card_short }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div></div>{% endif %}
 {% if cfg.note %}<div class="sec"><p class="note">{{ cfg.note|safe }}</p></div>{% endif %}
+<div class="sec"><div class="sec-head"><h2>Punjenje kod kuće</h2></div>
+<p>Kućni punjač je najjeftiniji način punjenja: noću, po nižoj tarifi EPS-a{% if nt %} ({{ nt }}){% endif %}, kilovat košta nekoliko puta manje nego na brzom javnom punjaču. Cene struje po zonama: <a class="lnk" href="/podaci/tarife-eps/">cena struje za domaćinstva</a>. Koliko košta uređaj sa ugradnjom: <a class="lnk" href="/cena-punjaca-za-elektricni-auto">cena kućnog punjača</a>.</p></div>
+{% if nearby %}<div class="sec"><div class="sec-head"><h2>Punjači u obližnjim mestima</h2><a href="/gradovi/">Svi gradovi →</a></div>
+<ul class="tlinks">{% for t in nearby %}<li><a class="lnk" href="{{ t.url }}" translate="no">{{ t.name }}</a></li>{% endfor %}</ul></div>{% endif %}
 {% endblock %}

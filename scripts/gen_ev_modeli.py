@@ -25,6 +25,9 @@ n_models = len(rows)
 brands_priced = sorted({r[5] for r in rows})
 under30 = sum(1 for r in rows if r[0] < 30000)
 cheapest = rows[0]
+# the ten cheapest models, for the "najjeftiniji" answer on top of the page (SEO 26.10.2026): name, price, price after the subsidy
+_after = lambda cell: re.match(r'[\d.]+ €', cell).group(0)
+top10 = '\n'.join(f'{i + 1}. <span translate="no">{r[6]}</span> — {eur(r[0])}, posle subvencije {_after(r[3])}' for i, r in enumerate(rows[:10]))
 
 table = ['| Model | Cena od | Posle subvencije 5.000 € | Izvor |', '|---|---|---|---|']
 for base, model_cell, price_cell, after_cell, src, brand, name, model_key in rows:
@@ -89,9 +92,9 @@ sources = [
 
 md = f"""---
 thumb: salon-automobila
-title: Cene električnih automobila u Srbiji 2026: svi modeli kod uvoznika
-h1: Cene električnih automobila
-description: {plural(n_models, 'električni model', 'električna modela', 'električnih modela')} {plural(len(brands_priced), 'marke', 'marke', 'marki')} sa javnom cenom kod uvoznika u Srbiji: od {eur(cheapest[0])} (Dacia Spring), {under30} ispod 30.000 €. Cena pre i posle subvencije od 5.000 €.
+title: Cene električnih automobila u Srbiji 2026: od {eur(cheapest[0])}
+h1: Cene električnih automobila u Srbiji 2026
+description: {plural(n_models, 'električni model', 'električna modela', 'električnih modela')} {plural(len(brands_priced), 'marke', 'marke', 'marki')} sa javnom cenom kod uvoznika u Srbiji: od {eur(cheapest[0])} ({cheapest[6]}), {under30} ispod 30.000 €. Cena pre i posle subvencije od 5.000 €.
 kicker: Modeli i cene
 lead: Najniža cena svakog električnog modela kod zvaničnih uvoznika u Srbiji, pre i posle subvencije od 5.000 €.
 updated: {UPDATED}
@@ -102,10 +105,18 @@ priority: 0.8
 sources: {' | '.join(sources)}
 ---
 <div class="sum" markdown="1">
-- Najjeftiniji: **{eur(cheapest[0])}** (Dacia Spring), posle subvencije **{eur(cheapest[0] - SUB)}**
+- Najjeftiniji: **{eur(cheapest[0])}** ({cheapest[6]}), posle subvencije **{_after(cheapest[3])}**
 - **{n_models}** modela {len(brands_priced)} marki sa javnom cenom, **{under30}** ispod 30.000 €
 - Subvencija **5.000 €** za nov automobil, prijava do **1. decembra 2026.** ([uslovi](/podaci/subvencije-2026/))
 </div>
+
+## Najjeftiniji električni automobili u Srbiji
+
+Najjeftiniji nov električni automobil kod zvaničnog uvoznika je {cheapest[6]}: {eur(cheapest[0])}, a posle državne subvencije {_after(cheapest[3])}. Deset modela sa najnižom cenom:
+
+{top10}
+
+Cene su najniže koje uvoznici objavljuju, ponegde akcijske. Sve verzije, izvori i datumi provere su u tabeli ispod.
 
 ## Modeli i cene
 

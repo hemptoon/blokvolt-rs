@@ -63,4 +63,4 @@ Aplikacija otvara sajt u Chrome-u ili drugom pregledaču. Ne traži dozvole, ne 
 
 Imate pravo na pristup, ispravku, brisanje, ograničenje obrade, prenosivost podataka i prigovor. Zahtev pošaljite na hello@blokvolt.com; odgovor stiže bez odlaganja, a najkasnije za 30 dana. Pritužbu možete podneti Povereniku za informacije od javnog značaja i zaštitu podataka o ličnosti.
 
-Ceo tekst je u [politici privatnosti](/politika-privatnosti.html).
+Ceo tekst je u [politici privatnosti](/politika-privatnosti).

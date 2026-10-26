@@ -43,7 +43,7 @@ Prijave vozača su njihovo iskustvo u tom trenutku. Za tačno stanje punjača uv
 
 ## Šta se čuva
 
-Uz prijavu se čuvaju stanje, ocena, komentar, nadimak, vreme i jezik sajta. Uz novi punjač čuvaju se tačka, opis i nadimak koje ste upisali, vreme i jezik sajta. Radi zaštite od zloupotrebe čuva se i jednosmerni otisak IP adrese. Pravi se sa nasumičnim ključem koji važi samo jedan dan, pa se posle toga iz otiska adresa ne može vratiti. Fotografiju pregledač pre slanja smanji i ponovo sačuva, pa se ne šalju podaci o lokaciji ni o telefonu (EXIF). Više u [politici privatnosti](/politika-privatnosti.html).
+Uz prijavu se čuvaju stanje, ocena, komentar, nadimak, vreme i jezik sajta. Uz novi punjač čuvaju se tačka, opis i nadimak koje ste upisali, vreme i jezik sajta. Radi zaštite od zloupotrebe čuva se i jednosmerni otisak IP adrese. Pravi se sa nasumičnim ključem koji važi samo jedan dan, pa se posle toga iz otiska adresa ne može vratiti. Fotografiju pregledač pre slanja smanji i ponovo sačuva, pa se ne šalju podaci o lokaciji ni o telefonu (EXIF). Više u [politici privatnosti](/politika-privatnosti).
 
 ## Brisanje i prava
 

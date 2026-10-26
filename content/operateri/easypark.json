@@ -43,6 +43,8 @@
  "kind_label": "Aplikacija za plaćanje",
  "publish": true,
  "short_name": "EasyPark",
+ "seo_title": "EasyPark punjenje na OMV stanicama: aplikacija i lokacije",
+ "h1": "EasyPark na OMV stanicama",
  "lead": "Aplikacija za plaćanje na šest OMV stanica. Uslovi za Srbiju nisu objavljeni.",
  "network_short": "6 OMV stanica",
  "power_short": "DC 60–75 kW",

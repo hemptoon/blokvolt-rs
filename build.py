@@ -455,6 +455,12 @@ KINDS = {
 CITY_CFG = json.load(open(ROOT / 'content' / 'data' / 'gradovi.json', encoding='utf-8'))['cities']
 CITY_SLUGS = {c['name']: c['slug'] for c in CITY_CFG}
 TOWN_XY = {t[0]: (t[1], t[2]) for t in map_data.TOWNS}
+# town pages /gradovi/<slug>/ (SEO 26.10.2026, docs/RUNBOOK.md 3.34): the six cities above (they also drive the firm filters and
+# accounts) plus the towns of content/data/mesta.json, which only get a page
+TOWN_CFG = CITY_CFG + json.load(open(ROOT / 'content' / 'data' / 'mesta.json', encoding='utf-8'))['towns']
+assert len({c['slug'] for c in TOWN_CFG}) == len(TOWN_CFG), 'duplicate town slug in gradovi.json / mesta.json'
+assert all(c['name'] in TOWN_XY for c in TOWN_CFG), 'every town page needs a point in scripts/map_data.py TOWNS'
+TOWN_URLS = {c['name']: f"/gradovi/{c['slug']}/" for c in TOWN_CFG}
 NATIONWIDE = ('cela srbija', 'citava srbija', 'čitava srbija', 'srbija i region', 'mreža instalatera')
 _WORD = 'a-zà-ž0-9čćđšž'
 
@@ -1096,7 +1102,7 @@ M = {
         'prices': '/assets/map/cene.json?v=' + _ver(DIST / 'assets' / 'map' / 'cene.json'),
         'extra': '/assets/map/dopune.json?v=' + _ver(DIST / 'assets' / 'map' / 'dopune.json'),
         'region': '/assets/map/region.json?v=' + _ver(DIST / 'assets' / 'map' / 'region.json'),
-        'cities': {c['slug']: list(TOWN_XY[c['name']]) for c in CITY_CFG if c['name'] in TOWN_XY},
+        'cities': {c['slug']: list(TOWN_XY[c['name']]) for c in TOWN_CFG if c['name'] in TOWN_XY},
         'idle': _IDLE,
         # "Moj auto": the cars, home charging at night (EPS, lower tariff, green and blue zone, all fees) and fuel for the
         # comparison per km (the calculator's numbers: content/data/kalkulator.json)
@@ -1193,9 +1199,20 @@ def add_url(path, prio='0.6', lastmod=ISO_TODAY):
     urls.append((SITE + canon_of(path), prio, lastmod))
 
 
+def seo_title(t):
+    """Search results show about 60 characters: a longer title drops its ' | BlokVolt' suffix (the brand stays in og:site_name,
+    the JSON-LD and the page). The Serbian title is final before translation, so the EN/RU title is looked up by the same
+    key (docs/RUNBOOK.md 3.33)."""
+    if isinstance(t, str) and t.endswith(' | BlokVolt') and len(t) > 60:
+        return t[:-len(' | BlokVolt')]
+    return t
+
+
 def render(tpl, path, **ctx):
     c = dict(base_ctx)
     c.update(ctx)
+    if 'title' in c:
+        c['title'] = seo_title(c['title'])
     c['path'] = path
     c['canon'] = canon_of(path)
     c.setdefault('section', section_of(path))
@@ -1782,30 +1799,94 @@ for h in TYPE_HUBS:
     add_url(h['url'], '0.7')
 
 NT_HOURS = {x['region']: x['window'] for x in _E['nt_hours']}
-for cfg in CITY_CFG:
-    city, slug = cfg['name'], cfg['slug']
-    local = [f for f in published if city in f['city_list']]
+
+# ---- public chargers as a table: town pages and network pages (SEO 26.10.2026, docs/RUNBOOK.md 3.34). Names, addresses,
+# towns and power stay in the source language on every language (translate="no"): they are data, like on the map.
+CONN_INT = {'ccs2': 'CCS2', 'ccs1': 'CCS1', 'chademo': 'CHAdeMO', 'type2': 'Type 2', 'type1': 'Type 1', 'tesla': 'Tesla', 'gbt': 'GB/T',
+            'schuko': 'Schuko', 'cee': 'CEE'}
+V_LABEL = {'ok': 'Potvrđeno', 'nep': 'Nije potvrđeno', 'prob': 'Prijavljen kvar'}   # the map's own labels (MAP_T v_ok, v_nep, v_prob_t)
+_OPS = {o['slug']: o for o in operators}
+
+
+def _kw(x):
+    return f'{x:g}'.replace('.', ',') if x else ''
+
+
+def station_rows(sts):
+    out = []
+    for s in sts:
+        o = _OPS.get(s.get('net') or '')
+        pw = ' · '.join(x for x in (f"DC {_kw(s.get('dc'))} kW" if s.get('dc') else '', f"AC {_kw(s.get('ac'))} kW" if s.get('ac') else '') if x)
+        conns = []
+        for c in s.get('c') or []:
+            lab = CONN_INT.get(c[0])
+            if lab and lab not in conns:
+                conns.append(lab)
+        st = (s.get('v') or {}).get('s') or 'nep'
+        opn = re.sub(r'\s*\(.*?\)', '', s.get('opn') or '').strip()
+        out.append({'id': s['id'], 'n': s['n'], 'a': s['a'] if fold(s['a']) != fold(s['n']) else '', 't': s.get('t') or '',
+                    'town_url': TOWN_URLS.get(s.get('t') or ''), 'net': o['name'] if o else opn, 'net_url': o['url'] if o else '',
+                    'pw': pw or '—', 'conns': ', '.join(conns), 'st': st if st in V_LABEL else 'nep', 'st_label': V_LABEL.get(st, V_LABEL['nep']),
+                    'guests': s.get('acc') == 'customers', 'dc': s.get('dc') or 0, 'ac': s.get('ac') or 0})
+    return out
+
+
+def by_power(r):
+    return (-(r['dc'] or 0), -(r['ac'] or 0), fold(r['n']))
+
+
+def sr_word(n, one, few, many):
+    """sr_plural without the number: the word that agrees with n."""
+    return sr_plural(n, one, few, many).split(' ', 1)[1]
+
+
+TOWN_PAGES = []
+for cfg in TOWN_CFG:
+    city, slug, prep = cfg['name'], cfg['slug'], cfg.get('prep', 'u')
+    main = any(cfg is c for c in CITY_CFG)
+    if main:
+        local = [f for f in published if city in f['city_list']]
+    else:
+        local = [f for f in published if any(a in (f.get('city') or '') for a in cfg['aliases'])]
     local_slugs = {f['slug'] for f in local}
     covering = [f for f in published if f['slug'] not in local_slugs and f['group'] in ('A', 'B', 'E') and covers_city(f, cfg)]
     shops = [f for f in published if f['slug'] not in local_slugs and f['group'] in ('C', 'D') and covers_city(f, cfg)]
-    xy = TOWN_XY.get(city)
-    near = [s for s in MAP['stations'] if xy and map_data.dist_m({'latitude': xy[0], 'longitude': xy[1]}, {'latitude': s['lat'], 'longitude': s['lon']}) <= 15000]
-    n_near = len(near)
-    per_net = {}
-    for s in near:
-        if s['net']:
-            per_net[s['net']] = per_net.get(s['net'], 0) + 1
-    city_ops = []
-    for o in operators:
-        if o['slug'] in per_net:
-            city_ops.append(dict(o, card_short=sr_plural(per_net[o['slug']], 'punjač', 'punjača', 'punjača') + ' na 15 km od centra'))
-    n_all = len(local) + len(covering)
-    lead = f"Javni punjači, firme za ugradnju kućnog punjača i sati jeftinije struje u {cfg['loc']}."
-    render('grad.html', f'/gradovi/{slug}/', city=city, cfg=cfg, firms=local, covering=covering, shops=shops, city_ops=city_ops,
-           n_map=n_near, nt=NT_HOURS.get(cfg['nt_region'], ''), lead=lead,
-           title=f"Punjač za električni auto u {cfg['loc']}: javni punjači i firme | BlokVolt",
-           description=f"{city}: {sr_plural(n_near, 'javni punjač', 'javna punjača', 'javnih punjača')} na mapi, {sr_plural(n_all, 'firma', 'firme', 'firmi')} za ugradnju kućnog punjača, niža tarifa EPS-a {NT_HOURS.get(cfg['nt_region'], '')}.")
-    add_url(f'/gradovi/{slug}/', '0.6')
+    sts = [s for s in MAP['stations'] if (s.get('t') or '') == city]
+    rows = sorted(station_rows(sts), key=by_power)
+    n, n_dc = len(rows), sum(1 for r in rows if r['dc'] >= 50)
+    nets_here = {s['net'] for s in sts if s.get('net')}
+    city_ops = [o for o in operators if o['slug'] in nets_here]
+    nt = NT_HOURS.get(cfg.get('nt_region') or '', '')
+    xy = TOWN_XY[city]
+    others = sorted((c for c in TOWN_CFG if c is not cfg),
+                    key=lambda c: map_data.dist_m({'latitude': xy[0], 'longitude': xy[1]}, {'latitude': TOWN_XY[c['name']][0], 'longitude': TOWN_XY[c['name']][1]}))
+    nearby = [{'name': c['name'], 'url': TOWN_URLS[c['name']]} for c in others[:5]]
+    where = f"{prep} {cfg['loc']}"
+    n_f = len(local) + len(covering)
+    stats = [(n, sr_word(n, 'javni punjač', 'javna punjača', 'javnih punjača') + ' na mapi'),
+             (n_dc, sr_word(n_dc, 'brzi punjač', 'brza punjača', 'brzih punjača') + ' (DC od 50 kW)'),
+             (n_f, sr_word(n_f, 'firma', 'firme', 'firmi') + ' za kućni punjač')]
+    lead = (f"Javni punjači {where} i okolini: adresa, mreža, snaga i stanje svakog punjača. Uz to firme za kućni punjač"
+            + (' i sati jeftinije struje.' if nt else '.'))
+    desc = (f"Javni punjači {where} i okolini, sa adresom, mrežom i snagom. Firme za ugradnju kućnog punjača"
+            + (f", niža tarifa EPS-a {nt}." if nt else '.'))
+    render('grad.html', f'/gradovi/{slug}/', city=city, cfg=cfg, prep=prep, where=where, main=main, firms=local, covering=covering, shops=shops,
+           city_ops=city_ops, rows=rows, stats=stats, nearby=nearby, nt=nt, lead=lead,
+           h1=f"Punjači za električne automobile {where}",
+           title=f"Punjači za električne automobile {where} | BlokVolt", description=desc)
+    add_url(f'/gradovi/{slug}/', '0.7' if main else '0.6')
+    TOWN_PAGES.append({'name': city, 'slug': slug, 'url': TOWN_URLS[city], 'n': n, 'n_dc': n_dc, 'n_f': n_f, 'main': main,
+                       'region': cfg.get('nt_region') or ('Beograd' if 'beograd' in cfg['regions'] else 'centralna Srbija')})
+assert all(p_['n'] for p_ in TOWN_PAGES), [p_['name'] for p_ in TOWN_PAGES if not p_['n']]
+
+# /gradovi/: every town page, by region, the most chargers first
+_REG = [('Beograd', 'Beograd i okolina'), ('Vojvodina', 'Vojvodina'), ('centralna Srbija', 'Centralna, zapadna, istočna i južna Srbija')]
+TOWN_GROUPS = [{'name': lab, 'towns': sorted([t for t in TOWN_PAGES if t['region'] == r], key=lambda t: (-t['n'], fold(t['name'])))} for r, lab in _REG]
+assert sum(len(g['towns']) for g in TOWN_GROUPS) == len(TOWN_PAGES)
+render('gradovi.html', '/gradovi/', groups=TOWN_GROUPS, n_towns=len(TOWN_PAGES), n_st=sum(t['n'] for t in TOWN_PAGES),
+       title='Punjači za električne automobile po gradovima u Srbiji | BlokVolt',
+       description=f"Javni punjači za električne automobile u {len(TOWN_PAGES)} gradova i mesta u Srbiji: spisak sa adresom, mrežom, snagom i stanjem, i firme za kućni punjač.")
+add_url('/gradovi/', '0.8')
 
 # price guide for home chargers (neutral: every firm with a published price, same rules)
 def price_num(f):
@@ -1845,9 +1926,25 @@ render('cena_punjaca.html', '/cena-punjaca-za-elektricni-auto.html', h1='Koliko 
 add_url('/cena-punjaca-za-elektricni-auto', '0.9', iso(FIRMS_CHECKED))
 
 # ---------------------------------------------------------------- public charging pages
+# hosts (fuel stations) have no network of their own: their chargers are the ones with the host's name (SEO 26.10.2026)
+OP_HOST_RX = {'omv': re.compile(r'\bOMV\b'), 'nis-gazprom': re.compile(r'\b(NIS|Gazprom)\b')}
+
+
+def lc_first(t):
+    """'Mreža i aplikacija …' -> 'mreža i aplikacija …' after the network's name; acronyms and names stay ('OMV', 'Tesla')."""
+    w = (t or '').split(' ', 1)[0]
+    if len(w) < 2 or not w[0].isupper() or not w[1:].islower() or w in {o['name'] for o in operators}:
+        return t
+    return t[0].lower() + t[1:]
+
+
 for o in operators:
-    render('operator.html', o['url'], op=o, title=f"{o['name']}: javno punjenje, cene i uslovi | BlokVolt",
-           description=clip(f"{o['name']}: {o['lead']} {o['card']}. Provereno {o['verified']}.", 158))
+    rx = OP_HOST_RX.get(o['slug'])
+    _sts = [s_ for s_ in MAP['stations'] if s_.get('net') == o['slug'] or (rx and rx.search(s_['n'] + ' ' + s_['a']))]
+    _rows = [] if o.get('ps_sites') else sorted(station_rows(_sts), key=lambda r: (fold(r['t'] or 'zzz'), -(r['dc'] or 0), fold(r['n'])))
+    render('operator.html', o['url'], op=o, st_rows=_rows, st_net=bool(rx),
+           title=f"{o.get('seo_title') or o['name'] + ': javno punjenje, cene i uslovi'} | BlokVolt",
+           description=clip(f"{o['name']}: {lc_first(o['lead'])} {o['card'][:1].upper() + o['card'][1:]}. Provereno {o['verified']}.", 158))
     add_url(o['url'], '0.6', o['verified_iso'])
 
 MONTHS_SR = ['januar', 'februar', 'mart', 'april', 'maj', 'jun', 'jul', 'avgust', 'septembar', 'oktobar', 'novembar', 'decembar']
@@ -1930,7 +2027,7 @@ render('javno_index.html', '/javno-punjenje/', ops=operators, index=price_index,
        description=f"Koliko košta javno punjenje u Srbiji: Charge&GO, Orion eMobility i druge mreže, cena po minutu i po kWh, besplatni državni punjači na autoputevima. Provereno {price_index['updated']}.")
 add_url('/javno-punjenje/', '0.9')
 
-render('mapa.html', '/mapa/', M=M, PRICE_SUMMARY=PRICE_SUMMARY, PRICE_DATE=PRICE_DATE,
+render('mapa.html', '/mapa/', M=M, PRICE_SUMMARY=PRICE_SUMMARY, PRICE_DATE=PRICE_DATE, TOWN_GROUPS=TOWN_GROUPS,
        title='Mapa punjača za električne automobile u Srbiji, sa cenama | BlokVolt',
        description=f"{MAP['n']} javnih punjača u Srbiji na mapi: mreža, snaga, priključci i cena punjenja. Charge&GO, Orion eMobility, besplatni punjači na autoputevima.")
 add_url('/mapa/', '0.9')
@@ -2223,7 +2320,7 @@ render('oglasavanje.html', '/za-firme/oglasavanje/', section='', crumbs=[('/za-f
        title='Oglašavanje na BlokVoltu — medija kit, cene i pravila | BlokVolt',
        description='Medija kit BlokVolta: ko čita sajt, gde stoji oglas, cena po rubrici i šta se ne prodaje. Oglasi su označeni i ne utiču na podatke, redosled ni ocene.')
 add_url('/za-firme/oglasavanje/', '0.4')
-add_url('/pretraga/', '0.3')   # the page itself is rendered after the search index (build_search below)
+# /pretraga/ is noindex and not in the sitemap (SEO 26.10.2026): a search page is a tool, not an answer; its results stay crawlable
 render('article.html', '/404.html', crumbs=[], noindex=True, section='',
        meta={'h1': 'Stranica nije pronađena', 'lead': 'Ta stranica ne postoji ili je premeštena.'},
        body='<p>Probajte <a href="/mapa/">mapu punjača</a>, <a href="/firme/">firme</a>, <a href="/cene/">cene</a> ili <a href="/vodici/">vodiče</a>.</p>'
@@ -2236,11 +2333,34 @@ render('article.html', '/404.html', crumbs=[], noindex=True, section='',
 # (punjaci.json, the open ODbL data set, stays allowed). docs/RUNBOOK.md 3.28
 (DIST / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nAllow: /assets/map/punjaci.json\nDisallow: /assets/map/\nDisallow: /api/\n'
                                  f'Disallow: /app/\nSitemap: {SITE}/sitemap.xml\n', encoding='utf-8')
+# /llms.txt (llmstxt.org, SEO 26.10.2026): what the site is and its main pages, for AI assistants that read it. Plain facts, no
+# ranking of firms (the same neutrality as the pages, docs/RUNBOOK.md §0).
+_LL = [('Mapa punjača', '/mapa/', f"{MAP['n']} javnih punjača u Srbiji: mreža, snaga, priključci, cena i stanje"),
+       ('Punjači po gradovima', '/gradovi/', f"spisak javnih punjača za {sr_plural(len(TOWN_PAGES), 'grad ili mesto', 'grada i mesta', 'gradova i mesta')}"),
+       ('Javno punjenje', '/javno-punjenje/', 'cene po mrežama (po minutu i po kWh) i besplatni punjači'),
+       ('Firme za kućni punjač', '/firme/', f"registar: {sr_plural(len(published), 'firma', 'firme', 'firmi')}, iste kolone za svaku, sa izvorom i datumom provere"),
+       ('Cena kućnog punjača', '/cena-punjaca-za-elektricni-auto', 'uređaj, ugradnja i javne cene firmi'),
+       ('Cena struje za domaćinstva', '/podaci/tarife-eps/', 'EPS po zonama i tarifama, sa svim dažbinama'),
+       ('Cene električnih automobila', '/podaci/cene-elektricnih-automobila/', 'svi modeli kod uvoznika, pre i posle subvencije'),
+       ('Električni automobili po markama', '/elektricni-automobili/', 'uvoznici, saloni i modeli'),
+       ('Subvencije 2026', '/podaci/subvencije-2026/', 'iznos, rok i uslovi'),
+       ('Kalkulator troškova', '/alati/kalkulator-troskova/', 'koliko košta 100 km: kuća, javni punjač, benzin'),
+       ('Vodiči', '/vodici/', 'punjenje u zgradi, na putu, kupovina i troškovi'),
+       ('Vesti', '/vesti/', 'subvencije, punjači, cene i modeli, sa izvorom'),
+       ('Podaci za preuzimanje', '/preuzimanje/', 'CSV tabele i otvoreni skup punjaci.json (ODbL)'),
+       ('Metodologija', '/metodologija/', 'izvori, provere i ispravke')]
+(DIST / 'llms.txt').write_text('# BlokVolt\n\n> Referentni sajt o električnim automobilima u Srbiji: mapa javnih punjača sa cenama, registar firmi za '
+                               'kućni punjač, cene struje i automobila, subvencije i vodiči. Svaki podatak ima izvor i datum provere. '
+                               'Jezici: srpski (latinica), engleski (/en/), ruski (/ru/).\n\n## Glavne stranice\n\n'
+                               + ''.join(f'- [{t}]({SITE}{u}): {d}\n' for t, u, d in _LL)
+                               + f'\n## Other languages\n\n- [English]({SITE}/en/): the same pages in English\n- [Русский]({SITE}/ru/): те же страницы на русском\n'
+                               + '- [blokvolt.com](https://blokvolt.com/): the region (Croatia, Bosnia and Herzegovina, Montenegro, Albania, North Macedonia)\n',
+                               encoding='utf-8')
 # TDM reservation (W3C TDMRep) for the map data, with the terms as the policy
 (DIST / '.well-known').mkdir(exist_ok=True)
 (DIST / '.well-known' / 'tdmrep.json').write_text(json.dumps([{'location': '/assets/map/*', 'tdm-reservation': 1, 'tdm-policy': f'{SITE}/politika-privatnosti.html#uslovi'},
                                                               {'location': '/api/*', 'tdm-reservation': 1, 'tdm-policy': f'{SITE}/politika-privatnosti.html#uslovi'}]), encoding='utf-8')
-_dir_redirects = ['/vodici', '/firme', '/javno-punjenje', '/mapa', '/cene']
+_dir_redirects = ['/vodici', '/firme', '/javno-punjenje', '/mapa', '/cene', '/gradovi']
 (DIST / '_redirects').write_text('\n'.join([
     '/paketi-i-cene https://www.evolako.rs/paketi-i-cene 301',
     '/proveri-svoju-garazu https://www.evolako.rs/proveri-svoju-garazu 301',
@@ -2328,7 +2448,7 @@ def town_entries(lang):
     sec, forms = _TOWN_TX[lang]
     out = []
     for town, k in sorted(n.items()):
-        if not town or town in CITY_SLUGS:
+        if not town or town in TOWN_URLS:   # a town with its own page is found through the page (SEO 26.10.2026)
             continue
         out.append({'u': f'{pre}/mapa/?q=' + town.replace(' ', '+'), 't': town, 'd': f'{k} {_pl(k, forms, lang)}', 's': sec, 'h': '', 'b': '', 'k': 'mesto'})
     return out
@@ -2392,7 +2512,7 @@ for _u in SEARCH['popular']:
     _x = _SIDX[_u]
     # title and section only: both already have their English and Russian in the translation memory
     POPULAR.append({'u': _u, 't': _x['t'], 'd': _x['s'], 'icon': 'calc' if _u.startswith('/alati/') else _POP_ICON.get(_x['k'], 'doc')})
-render('pretraga.html', '/pretraga/', section='', title='Pretraga | BlokVolt', POPULAR=POPULAR, NEWS_TOP=NEWS[:3],
+render('pretraga.html', '/pretraga/', section='', noindex=True, title='Pretraga | BlokVolt', POPULAR=POPULAR, NEWS_TOP=NEWS[:3],
        description='Pretraga sajta: punjači, firme, cene, vodiči i propisi za električne automobile u Srbiji.')
 
 

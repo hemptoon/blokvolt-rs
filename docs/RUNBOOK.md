@@ -1932,6 +1932,42 @@ Rules added with the full check of 24.10.2026 (36 brands with official sales, 84
   says the price "includes the discount and the possibility of the EKO subsidy" — read as subsidy included (as on
   22.09); keep it unless Kia rewrites the sentence.
 
+### 3.33 Titles and search snippets (since 26.10.2026)
+
+- Every page title ends with " | BlokVolt" in the code, but `build.py` → `seo_title()` (inside `render()`) drops the
+  suffix when the whole title is longer than 60 characters: Google shows about 60, and the brand is in `og:site_name`,
+  the JSON-LD and on the page. It happens before translation, so the EN/RU title is looked up by the shortened
+  Serbian key; after a change of a long title run the 3.9 todo as usual (a new long title needs its shortened key).
+- Write titles the way people search: the main words first ("Cena struje u Srbiji 2026", "Tesla punjači u Srbiji",
+  "Punjači za električne automobile u Šapcu"), then what the page answers (cena, lokacije, stanje). Keep a title true
+  to the page: no "cena" when the page shows none. The description says the facts in one or two sentences (≤ 158).
+- Network pages: `seo_title` and `h1` in `content/operateri/<slug>.json` (README there). Generated pages: the title
+  and h1 are in their generator (`scripts/gen_tarife_eps.py`, `scripts/gen_ev_modeli.py`) — edit there, not in the .md.
+- Numbers in a title or description that change with the data (counts of chargers, firms) make a new translation key
+  each time: prefer stable wording, or a number with a separator (a price like 17.990 €, a date) which becomes ⟦n⟧.
+- `/pretraga/` is `noindex` and not in the sitemap: a search results page is not an answer; the pages it finds are.
+
+### 3.34 Town pages (/gradovi/) and the charger lists (since 26.10.2026)
+
+- `/gradovi/<slug>/` exists for the six cities of `content/data/gradovi.json` (they also drive the firm filter and
+  accounts) and for the towns of `content/data/mesta.json` (page only). A charger belongs to the town in its `t` field
+  (`map_data.near_town`: the nearest of `map_data.TOWNS`, up to 25 km), the same rule for every page, network and firm.
+- Add a town to `mesta.json` when at least 3 public chargers on the map have it as `t`, with `loc`/`acc`/`prep` (the
+  locative and accusative with their preposition: u Šapcu / u Šabac, na Zlatiboru / na Zlatibor), `aliases` (firm
+  cities), `regions` (firm coverage words) and `nt_region` (empty when the EDS area is not certain — then no hours are
+  shown; Lazarevac and Mladenovac until checked). A listed town keeps its page even if the count drops later: never
+  delete one without a redirect in `_redirects` (3.12). The build checks unique slugs and a `TOWNS` point.
+- Each town page: the stations table (name → `/mapa/#id`, network, power, connectors, the map's own "Potvrđeno" /
+  "Nije potvrđeno" / "Prijavljen kvar"), the networks present, local firms and firms that come there (covers_city), the
+  low-tariff hours, a short note on home charging, and links to the five nearest town pages. `/gradovi/` lists every
+  town by region with counts; `/mapa/` links all town pages under the map; the footer links `/gradovi/`.
+- Network pages (`/javno-punjenje/<slug>/`) list the network's chargers on the map by town; hosts without a network of
+  their own (OMV, NIS Petrol i Gazprom) list the chargers with their name (`OP_HOST_RX`). Putevi Srbije keeps its
+  official status table instead.
+- Station names, addresses, towns and power are data: `translate="no"` in every language (as on the map). New town
+  pages need EN/RU for their title, h1, lead, headings and the town name (3.9); the Russian forms use the hyphenated
+  names of the translation memory (Нови-Сад, Врнячка-Баня) and decline only the last part (в Сремска-Митровице).
+
 ## 4. Build and check
 
 ```bash

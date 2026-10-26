@@ -13,6 +13,11 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 26. oktobar 2026
 
+- Nove stranice [Punjači po gradovima](/gradovi/): uz Beograd, Novi Sad, Niš, Suboticu, Čačak i Kragujevac stranicu sada ima još 30 gradova i mesta sa bar tri javna punjača na mapi — među njima Šabac, Zlatibor, Kopaonik, Zrenjanin, Pančevo, Valjevo, Kraljevo i Leskovac. Na svakoj je spisak javnih punjača sa adresom, mrežom, snagom i stanjem, mreže koje tu rade, firme za kućni punjač i sati niže tarife. Punjač se računa u mesto koje mu je najbliže, do 25 km (ranije: krug od 15 km od centra grada). Spisak gradova je i ispod [mape punjača](/mapa/).
+- Stranice mreža javnog punjenja (na primer [Charge&GO](/javno-punjenje/chargego/), [Orion eMobility](/javno-punjenje/orion-emobility/), [Tesla](/javno-punjenje/tesla/)): spisak punjača te mreže sa mape, po gradovima. Za [OMV](/javno-punjenje/omv/) i [NIS Petrol i Gazprom](/javno-punjenje/nis-gazprom/) to su punjači na njihovim stanicama.
+- [Cena struje za domaćinstva](/podaci/tarife-eps/): dodata cena kilovata za jednotarifno brojilo i kada se dvotarifno isplati, i česta pitanja (koliko košta kilovat, od koliko sati je jeftinija struja, šta su zone, koliko troši električni auto).
+- [Cene električnih automobila](/podaci/cene-elektricnih-automobila/): na vrhu je spisak deset najjeftinijih modela, pre i posle subvencije. Fotografije modela su sada iste kao na stranicama marki.
+
 - [Električni automobili](/elektricni-automobili/): fotografiju sada ima 122 od 127 modela (bilo je 64) — dodati su Audi, Kia, Opel, Volvo, MG, Leapmotor, CUPRA, Jeep, Lexus, Maserati, Porsche, novi Mercedes-Benz i kineske marke. Sve fotografije su sa Wikimedia Commonsa, pod slobodnim licencama, sa autorima; pozadina je uklonjena, a vozila okrenuta na drugu stranu preslikana su da bi sva gledala na istu stranu. Bez fotografije su još JMEV Elight i EWind, Audi A2 e-tron, Mercedes-Benz GLA i električna C-Klasa: za njih na Commonsu još nema odgovarajuće slobodne fotografije.
 - [Mapa servisa](/servisi/): servisi marki Volkswagen, Volkswagen privredna vozila i Audi provereni su na zvaničnim pretragama partnera uvoznika — tačke i radno vreme servisa su sada sa tih spiskova. Autocentar Manik (Preljina, Čačak) je na spisku za Audi i Volkswagen privredna vozila. Autocentar NR Požarevac nije na spisku Volkswagen partnera i više nije na mapi.
 - [Mapa punjača](/mapa/) i [Moj BlokVolt](/nalog/): u „Moj auto“ je sada 177 verzija električnih automobila umesto 83 — svi modeli koje uvoznici prodaju u Srbiji, među njima Toyota bZ4X i C-HR+, Kia EV4 i EV9, BYD Sealion 7, ceo Mercedes-Benz EQ i modeli Dongfeng, GAC, JAC, JMEV, Voyah i Lynk & Co. Za svaki mapa računa cenu po kilometru. Podaci o bateriji i punjenju su sa stranica proizvođača i iz auto-medija, a za novije i manje poznate modele deo je procena.
@@ -43,13 +48,13 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 - [Prijava greške](/ispravka/): nova vrsta prijave „Servis za električne automobile“, za pogrešan podatak ili servis koji nedostaje. Dugme „Prijavi grešku“ na kartici servisa vodi pravo na nju.
 - [Moj BlokVolt](/nalog/): u spisku modela za „Moj auto“ sada je i Tesla — Model 3 i Model Y po verzijama i godinama, Model S i Model X. Kad izaberete Teslu, uključuje se „Imam Teslu“, a za brzo punjenje predlaže se CCS2.
 - [Mapa punjača](/mapa/): ispod naslova sada piše da mapu održava tim Evolako. Do sada je to stajalo samo u potpisu mape i na stranici [O sajtu](/o-sajtu/). Podaci, redosled i pravila mape nisu menjani.
-- [Mapa punjača](/mapa/): novo dugme „Punjači na putu“. Upišete odredište (i polazak, ili ostavite vašu lokaciju), a mapa nacrta rutu i pokaže brze punjače (DC od 50 kW) do 2, 5 ili 10 km od puta, redom od polaska, sa razdaljinom od polaska i od puta i najdužim delom puta bez brzog punjača. Mesta i ruta se računaju u otvorenim servisima Photon i OSRM (FOSSGIS); šta im se šalje piše u [politici privatnosti](/politika-privatnosti.html).
+- [Mapa punjača](/mapa/): novo dugme „Punjači na putu“. Upišete odredište (i polazak, ili ostavite vašu lokaciju), a mapa nacrta rutu i pokaže brze punjače (DC od 50 kW) do 2, 5 ili 10 km od puta, redom od polaska, sa razdaljinom od polaska i od puta i najdužim delom puta bez brzog punjača. Mesta i ruta se računaju u otvorenim servisima Photon i OSRM (FOSSGIS); šta im se šalje piše u [politici privatnosti](/politika-privatnosti).
 
 ## 20. oktobar 2026
 
 - Novi vodič [Zašto auto puni sporo na brzom punjaču](/javno-punjenje/zasto-auto-puni-sporo-na-brzom-punjacu/): temperatura baterije i predgrevanje, dva auta na istom stubu, napon auta, softver i šta proveriti.
 - [Mapa punjača](/mapa/): 20 novih lokacija sa spiskova koje mreže i vlasnici lokacija sami objavljuju — 7 lokacija mreže [Emobility Spectra](/javno-punjenje/emobility-spectra/) i 5 mreže [Yesla](/javno-punjenje/yesla/) iz njihovih aplikacija, garaže Modena i Banovina u Novom Sadu (Best in Parking), punjač u Arilju i punjači za goste u šest hotela (Beograd, Kopaonik). Uz svaku lokaciju su izvor i datum.
-- [Mapa punjača](/mapa/): novo dugme „Dodaj punjač“ u uglu mape. Vozač postavi oznaku na punjač koji nedostaje i ukratko ga opiše; punjač se objavljuje posle provere, sa oznakom „Nije potvrđeno“. Pravila su na stranici [Pravila za prijave i fotografije](/pravila-objavljivanja/#novi-punjac), a šta se čuva — u [politici privatnosti](/politika-privatnosti.html).
+- [Mapa punjača](/mapa/): novo dugme „Dodaj punjač“ u uglu mape. Vozač postavi oznaku na punjač koji nedostaje i ukratko ga opiše; punjač se objavljuje posle provere, sa oznakom „Nije potvrđeno“. Pravila su na stranici [Pravila za prijave i fotografije](/pravila-objavljivanja/#novi-punjac), a šta se čuva — u [politici privatnosti](/politika-privatnosti).
 - [Mapa punjača](/mapa/): svi punjači se sada vide odmah, na svakom uvećanju, bez krugova sa brojem koji su se delili tek pri uvećanju. Na pregledu cele Srbije punjači su male tačke koje rastu kad se mapa uveća; brzi i potvrđeni punjači su iznad ostalih. Dodir na mesto gde je više punjača uvećava mapu, a dodir na jedan punjač otvara njegovu karticu. Isto važi za punjače u susednim zemljama.
 
 ## 15. oktobar 2026
@@ -60,12 +65,12 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ## 13. oktobar 2026
 
 - Novi vodič [Prvo punjenje na javnom punjaču](/javno-punjenje/prvo-punjenje-na-javnom-punjacu/): aplikacija, QR kod ili RFID kartica, koji priključak, redosled koraka kod Charge&GO i Orion eMobility, kraj punjenja i račun.
-- [Firme](/firme/): klik na firmu u spisku sada otvara njene cene po modelu ili paketu, šta je u ceni, ugradnju, brojilo, papire za skupštinu, uslugu i pokrivenost — iste kolone za sve firme. Cela stranica firme je na linku „Cela stranica firme“. Isto važi za podstranice po vrsti firme i za stranicu [Koliko košta kućni punjač](/cena-punjaca-za-elektricni-auto.html).
+- [Firme](/firme/): klik na firmu u spisku sada otvara njene cene po modelu ili paketu, šta je u ceni, ugradnju, brojilo, papire za skupštinu, uslugu i pokrivenost — iste kolone za sve firme. Cela stranica firme je na linku „Cela stranica firme“. Isto važi za podstranice po vrsti firme i za stranicu [Koliko košta kućni punjač](/cena-punjaca-za-elektricni-auto).
 - [Evolako](/firme/evolako/): uz pakete su navedeni modeli punjača i varijante cena, kao na evolako.rs (provereno 13. oktobra). U spisku firmi uz cenu sada piše i „bez ugradnje“ kad to navodi sajt firme — isto pravilo za sve firme.
-- [Politika privatnosti](/politika-privatnosti.html#merenje-poseta): u spisak funkcija čije se korišćenje meri dodata je kartica firme u spisku.
+- [Politika privatnosti](/politika-privatnosti#merenje-poseta): u spisak funkcija čije se korišćenje meri dodata je kartica firme u spisku.
 - [Pretraga](/pretraga/) je nova: razume greške u kucanju („evolnako“ nalazi Evolako), ćirilicu („Нови Сад“), reči istog značenja (volbox = wallbox) i gradove sa mape punjača bez posebne stranice (Kraljevo, Paraćin…). Kad nema rezultata, nudi ispravljenu reč, popularne stranice, najnovije vesti i polje „Niste našli šta tražite?“. Na početnoj strani pretraga daje predloge dok kucate.
-- [Politika privatnosti](/politika-privatnosti.html#pretraga): upiti iz pretrage čuvaju se zbirno 90 dana, bez IP adrese i kolačića, da bi se videlo šta na sajtu nedostaje; opisana je i pretraga po smislu, kad bude uključena.
-- [Pretraga](/pretraga/): uključena je i pretraga po smislu. Kad reči nađu malo stranica ili je upit pitanje, ispod rezultata stoje stranice „Slično po smislu“. Upit se za to šalje modelu na serverima Cloudflare i ne čuva se ([politika privatnosti](/politika-privatnosti.html#pretraga)).
+- [Politika privatnosti](/politika-privatnosti#pretraga): upiti iz pretrage čuvaju se zbirno 90 dana, bez IP adrese i kolačića, da bi se videlo šta na sajtu nedostaje; opisana je i pretraga po smislu, kad bude uključena.
+- [Pretraga](/pretraga/): uključena je i pretraga po smislu. Kad reči nađu malo stranica ili je upit pitanje, ispod rezultata stoje stranice „Slično po smislu“. Upit se za to šalje modelu na serverima Cloudflare i ne čuva se ([politika privatnosti](/politika-privatnosti#pretraga)).
 
 ## 12. oktobar 2026
 
@@ -73,7 +78,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 
 ## 10. oktobar 2026
 
-- [Politika privatnosti](/politika-privatnosti.html#merenje-poseta): od danas se korišćenje funkcija sajta (kartice punjača, filteri, pretraga, forme) meri i alatom PostHog, na serverima u EU. Dok u baneru ne izaberete „Dozvoli“, merenje radi bez kolačića; kolačić i snimanje kretanja po stranicama uključuju se samo uz tu dozvolu, a izbor možete promeniti u politici privatnosti. IP adresa se ne čuva.
+- [Politika privatnosti](/politika-privatnosti#merenje-poseta): od danas se korišćenje funkcija sajta (kartice punjača, filteri, pretraga, forme) meri i alatom PostHog, na serverima u EU. Dok u baneru ne izaberete „Dozvoli“, merenje radi bez kolačića; kolačić i snimanje kretanja po stranicama uključuju se samo uz tu dozvolu, a izbor možete promeniti u politici privatnosti. IP adresa se ne čuva.
 - Broj električnih automobila na početnoj strani i u [statistici](/podaci/statistika-ev-srbija/) je sada procena za današnji dan: poslednji broj MUP-a (7.155, april 2026) uz nove registracije po podacima SAUVD i prosečan dnevni rast od 5,62 automobila. Broj raste sam, svakih šest sati; način računanja je opisan na stranici statistike.
 - [Državni punjači na autoputevima](/javno-punjenje/putevi-srbije/): spisak JP „Putevi Srbije“ ponovo proveren 10. oktobra — i dalje radi 24 od 36 punjača, 7 trenutno ne radi, 5 se priključuje.
 
@@ -87,7 +92,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 
 ## 7. oktobar 2026
 
-- [Politika privatnosti](/politika-privatnosti.html#merenje-poseta): posete od danas broji i naš sopstveni brojač, bez kolačića i bez čuvanja IP adrese, da bismo videli tačan broj ljudi umesto procene. Opisano je šta se beleži i koliko se čuva.
+- [Politika privatnosti](/politika-privatnosti#merenje-poseta): posete od danas broji i naš sopstveni brojač, bez kolačića i bez čuvanja IP adrese, da bismo videli tačan broj ljudi umesto procene. Opisano je šta se beleži i koliko se čuva.
 - Valuta: pored izbora jezika možete izabrati da se cene prikazuju i u evrima ili dolarima, informativno po srednjem kursu NBS, uz dinarski iznos. Podrazumevano su sve cene u dinarima. Preračunavaju se cene iz podataka sajta (javno punjenje, firme, tabele, kalkulatori, mapa), a ne tekstovi vodiča i vesti.
 - [Evolako](/firme/evolako/): nova ponuda — cena paketa sa osnovnom ugradnjom pored razvodne table, kabl do mesta punjača po proceni: WALLBOX 11 kW od 94.000 RSD, START 39.000 RSD, Wallbox Plus, Wallbox Premium i samo ugradnja od 24.000 RSD; MID brojilo uz wallbox po izboru. Izvor: evolako.rs/paketi-i-cene, 07.10.2026.
 
@@ -98,7 +103,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 - [Mapa punjača](/mapa/): „Moj auto“ — izaberite auto i mapa pokazuje cenu po kilometru na svakom punjaču, uz poređenje sa benzinom i punjenjem kod kuće. Računica uzima u obzir snagu koju auto zaista prima, gubitke pri punjenju i naknadu za pokretanje.
 - [Mapa punjača](/mapa/): za Charge&GO je upisana cena svakog priključka iz aplikacije (05.10.2026), zajedno sa napomenama mreže: gde je potreban sopstveni kabl i kad je pristup ograničen. Kartica punjača ima i kratko uputstvo „Kako se puni ovde“, a vozači uz prijavu mogu da jave da li je kabl na punjaču, da li se parking plaća i kakvo je radno vreme.
 - [Cene javnog punjenja](/javno-punjenje/): cene iz aplikacija Charge&GO (05.10.2026), Orion eMobility i Emobility Spectra (04.10.2026) i eDrive (05.10.2026); nove mreže [eDrive](/javno-punjenje/edrive/) (sopstveni punjači, 48 RSD po kWh uz 199 RSD po punjenju) i [Yesla](/javno-punjenje/yesla/) (48–78 RSD po kWh). Ispravljeno: na NIS stanicama punjače vode i Charge&GO i Orion eMobility. Prag automatske dopune Charge&GO je 1.000 RSD.
-- [Podaci za preuzimanje](/preuzimanje/): tabele su od danas pod licencom CC BY-NC 4.0 — mediji i istraživači ih i dalje mogu slobodno citirati i objavljivati. Ranije preuzete verzije ostaju pod CC BY 4.0. U [uslovima korišćenja](/politika-privatnosti.html#uslovi) je dopuna o bazi punjača.
+- [Podaci za preuzimanje](/preuzimanje/): tabele su od danas pod licencom CC BY-NC 4.0 — mediji i istraživači ih i dalje mogu slobodno citirati i objavljivati. Ranije preuzete verzije ostaju pod CC BY 4.0. U [uslovima korišćenja](/politika-privatnosti#uslovi) je dopuna o bazi punjača.
 - [Firme za kućni punjač](/firme/): grupe „Punjač sa ugradnjom, javna cena“ i „Uređaj sa cenom, ugradnja na upit“ spojene su u jednu — „Javna cena, ugradnja uključena ili na upit“. Firma označena kao „Izdvojeno“ stoji prva, a ostale su poređane abecedno. Pravilo je opisano u [metodologiji](/metodologija/) i na stranici [O sajtu](/o-sajtu/).
 - [Evolako](/firme/evolako/): logo sa nazivom firme umesto samog znaka.
 - [STASANET](/firme/stasanet/): podaci ponovo provereni na punjac.rs; cene se nisu promenile.
@@ -121,8 +126,8 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ## 29. septembar 2026
 
 - Novo: [Moj BlokVolt](/nalog/) — nalog bez lozinke, sa prijavom kodom na e-mail. U nalogu su omiljeni punjači na svim uređajima, vaš auto i grad, vaše prijave i fotografije sa mape, a podatke možete da preuzmete ili obrišete. Nalog nije obavezan: mapa i ceo sajt rade i bez njega. Ikonica naloga je u zaglavlju, pored pretrage.
-- Novo: [Nedeljni pregled](/pregled/) — jednom nedeljno, petkom ujutru: najvažnije vesti, promene cena javnog punjenja i novi punjači na mapi, bez reklama. Prijava se potvrđuje klikom u mejlu, a odjava je jednim klikom. Forma za prijavu je i ispod svake vesti. Dopunjena je [politika privatnosti](/politika-privatnosti.html).
-- Nova stranica [Oglašavanje](/za-firme/oglasavanje/): uslovi, cene i pravila za oglase. Oglas može da stoji samo na dnu stranica tri rubrike, uz oznaku „Oglas“, i ne menja podatke, redosled ni ocene. Oglasi za kućne punjače se ne primaju, a u aplikacijama oglasa nema. Dopunjene su stranice [O sajtu](/o-sajtu/), [Za firme i mreže](/za-firme/), [Metodologija](/metodologija/#oglasi), [politika privatnosti](/politika-privatnosti.html) i dva odgovora u [Pomoći](/pomoc/).
+- Novo: [Nedeljni pregled](/pregled/) — jednom nedeljno, petkom ujutru: najvažnije vesti, promene cena javnog punjenja i novi punjači na mapi, bez reklama. Prijava se potvrđuje klikom u mejlu, a odjava je jednim klikom. Forma za prijavu je i ispod svake vesti. Dopunjena je [politika privatnosti](/politika-privatnosti).
+- Nova stranica [Oglašavanje](/za-firme/oglasavanje/): uslovi, cene i pravila za oglase. Oglas može da stoji samo na dnu stranica tri rubrike, uz oznaku „Oglas“, i ne menja podatke, redosled ni ocene. Oglasi za kućne punjače se ne primaju, a u aplikacijama oglasa nema. Dopunjene su stranice [O sajtu](/o-sajtu/), [Za firme i mreže](/za-firme/), [Metodologija](/metodologija/#oglasi), [politika privatnosti](/politika-privatnosti) i dva odgovora u [Pomoći](/pomoc/).
 - [Mapa](/mapa/): na mapi su i punjači u regionu — Hrvatska, Bosna i Hercegovina, Crna Gora, Albanija i Severna Makedonija, iz otvorenih baza, bez pojedinačne provere. Kartica takvog punjača vodi na mapu te zemlje na blokvolt.com, gde su i cene mreža.
 
 ## 28. septembar 2026
@@ -135,7 +140,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 - Na mapu su vraćena dva besplatna punjača IKEA u Beogradu. Za IKEA, Teslu, Lidl i garažu Obilićev venac dodato je radno vreme i način pristupa; za 24 punjača adresa sa kućnim brojem sa spiska mreže.
 - Nova stranica [Aplikacije i kartice za punjenje](/javno-punjenje/aplikacije-i-kartice/): koja aplikacija i RFID kartica rade na kom punjaču. [Besplatni punjači](/javno-punjenje/besplatni-punjaci/) dopunjeni su za IKEA i Teslu.
 - U podnožju sajta su dva dugmeta za aplikaciju: Android (APK) i web-aplikacija za iPhone i računar.
-- [Pravila za prijave](/pravila-objavljivanja/) i [politika privatnosti](/politika-privatnosti.html): otisak IP adrese pravi se sa nasumičnim ključem koji važi jedan dan, pa se posle toga iz njega adresa ne može vratiti. Komentar se sklanja do provere tek kad ga prijave tri različita posetioca. Politika opisuje i kopije stranica koje pregledač čuva za rad bez interneta.
+- [Pravila za prijave](/pravila-objavljivanja/) i [politika privatnosti](/politika-privatnosti): otisak IP adrese pravi se sa nasumičnim ključem koji važi jedan dan, pa se posle toga iz njega adresa ne može vratiti. Komentar se sklanja do provere tek kad ga prijave tri različita posetioca. Politika opisuje i kopije stranica koje pregledač čuva za rad bez interneta.
 - Vodiči na albanskom za [Albaniju](https://blokvolt.com/al/) i na makedonskom za [Severnu Makedoniju](https://blokvolt.com/mk/): mapa punjača, cene mreža, kalkulator sa domaćim tarifama i olakšice. Linkovi su u podnožju sajta i na stranici [Punjenje u regionu](/javno-punjenje/region/).
 - [Mapa](/mapa/): jasnije poruke kad slanje prijave ili fotografije ne uspe i kad prijave vozača ne mogu da se učitaju; uz proveru punjača je link „Šta znači oznaka?“. Sa mape je sklonjen jedan zapis iz Open Charge Map-a iz 2017. koji nosi ime osobe na stambenoj adresi i nije potvrđen: verovatno privatni punjač.
 - [Mapa](/mapa/): pretraga prepoznaje i ćirilicu — „Ниш“ i „Чачак“ nalaze isto što i „Niš“ i „Čačak“.
@@ -150,7 +155,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 
 - Nova rubrika [Vesti](/vesti/): subvencije, punjači, cene, modeli i propisi, uz izvor i datum za svaku vest; [RSS](/vesti/rss.xml). Kako nastaju vesti piše na stranici [Kako radimo](/metodologija/#vesti).
 - Na [mapi](/mapa/) punjač može da se sačuva u omiljene (zvezdica na kartici, filter „Omiljeni“); spisak se čuva samo u vašem pregledaču.
-- Posete se broje uz Cloudflare Web Analytics, bez kolačića; [politika privatnosti](/politika-privatnosti.html) je dopunjena.
+- Posete se broje uz Cloudflare Web Analytics, bez kolačića; [politika privatnosti](/politika-privatnosti) je dopunjena.
 - Na stranicama firmi i mreža poruka za firme premeštena je na dno stranice.
 - [Mapa](/mapa/): filter „Potvrđeni“ sada može da se kombinuje sa ostalima (na primer brzi i potvrđeni); novi filter CHAdeMO; navigacija i u Apple mapama i Waze-u; dugme „Podeli“ na kartici punjača; cena starija od godinu dana označena je upozorenjem.
 - Evolako: opis cene i ugradnje usklađen sa sajtom firme (standardna ugradnja do 7 m kabla, isti nivo).
@@ -160,7 +165,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ## 24. septembar 2026
 
 - Svaki punjač na [mapi](/mapa/) proveren je na spiskovima koje mreže same objavljuju (Charge&GO, roming mapa Charge&GO sa punjačima Orion eMobility, Tesla, JP „Putevi Srbije“) i na Google mapama. Potvrđeni su označeni, a ostali nose oznaku „Nije potvrđeno“ ili „Prijavljen kvar“; 67 lokacija sa spiskova mreža dodato je na mapu, a uklonjeni su punjači za bicikle, privatni punjači i duplikati.
-- Na kartici punjača vozači mogu da jave da li radi, da ga ocene, ostave komentar i pošalju fotografiju; [pravila](/pravila-objavljivanja/) i [politika privatnosti](/politika-privatnosti.html) su dopunjeni.
+- Na kartici punjača vozači mogu da jave da li radi, da ga ocene, ostave komentar i pošalju fotografiju; [pravila](/pravila-objavljivanja/) i [politika privatnosti](/politika-privatnosti) su dopunjeni.
 - Nova strana [za firme i mreže](/za-firme/) i forma za [ispravke](/ispravka/).
 - Ilustracije uz vodiče i video o punjenju, subvencijama i putovanju kroz Srbiju; video se učitava tek kad ga pokrenete.
 - Charge&GO: 87 lokacija u Srbiji po javnoj mapi mreže (ranije 68 po brojačima sa sajta).

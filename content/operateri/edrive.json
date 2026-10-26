@@ -96,6 +96,8 @@
  "kind_label": "Operator mreže + aplikacija",
  "publish": true,
  "short_name": "eDrive",
+ "seo_title": "eDrive punjači: cena po kWh i lokacije",
+ "h1": "eDrive: brzi punjači i cena po kWh",
  "lead": "Mreža brzih punjača i aplikacija firme Voltic. Na svojim punjačima naplaćuje po kWh, uz 199 RSD za pokretanje.",
  "network_short": "oko 10 lokacija",
  "power_short": "DC 31–90 kW, AC 22 kW",

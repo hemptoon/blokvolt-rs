@@ -46,7 +46,7 @@ Komentar koji tri posetioca prijave sklanja se do nove provere, a fotografija po
 <!--nonalog-->Sajt nema naloge ni registraciju, pa nema ni naloga za brisanje. Aplikacija za Android uklanja se kao svaka druga aplikacija, a ikonica na iPhone-u dugim pritiskom na nju.<!--/nonalog-->
 <!--nalog-->Nalog [Moj BlokVolt](/nalog/) brišete sami: na stranici naloga izaberite „Obrišite nalog“. Brišu se nalog, omiljeni punjači i podešavanja, a vaše ocene i fotografije ostaju na mapi, bez veze sa nalogom. Aplikacija za Android uklanja se kao svaka druga aplikacija, a ikonica na iPhone-u dugim pritiskom na nju.<!--/nalog-->
 
-Poruke poslate kroz forme čuvaju se najduže 12 meseci od poslednjeg kontakta. Na zahtev se brišu i ranije, osim ako zakon traži duže čuvanje. Više u [politici privatnosti](/politika-privatnosti.html).
+Poruke poslate kroz forme čuvaju se najduže 12 meseci od poslednjeg kontakta. Na zahtev se brišu i ranije, osim ako zakon traži duže čuvanje. Više u [politici privatnosti](/politika-privatnosti).
 
 ## Šta da pošaljete
 

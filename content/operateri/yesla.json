@@ -78,6 +78,8 @@
  "kind_label": "Operator mreže + aplikacija",
  "publish": true,
  "short_name": "Yesla",
+ "seo_title": "Yesla punjači: cena po kWh i lokacije",
+ "h1": "Yesla: brzi punjači i cena po kWh",
  "lead": "Nova mreža brzih punjača u Beogradu i okolini. Naplata po kWh: 78 RSD, a na jednom punjaču u Železniku 48 RSD.",
  "network_short": "5 lokacija",
  "power_short": "DC 50–160 kW",

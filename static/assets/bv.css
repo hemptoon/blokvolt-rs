@@ -100,6 +100,7 @@ small{font-size:13px}
 .prose h2{font-size:23px;margin:34px 0 10px}
 .prose h3{font-size:18px;margin:24px 0 8px}
 .prose ul,.prose ol{margin:0 0 16px;padding-left:22px}
+.prose ol{padding-left:30px}
 .prose li{margin:5px 0}
 .prose a,.lnk{text-decoration:underline;text-decoration-color:var(--volt2);text-decoration-thickness:2px;text-underline-offset:3px}
 .prose a:hover,.lnk:hover{text-decoration-color:var(--ink)}
@@ -1832,3 +1833,15 @@ details.frow.amb{scroll-margin-top:72px}
  .amc-p{font-size:18px}
 }
 @media (max-width:350px){.amc-grid{grid-template-columns:1fr}}
+
+/* station tables on town and network pages (SEO 26.10.2026) */
+.sttab td small{font-size:13px}
+.vst{display:inline-flex;gap:6px;align-items:baseline;font-size:13.5px;white-space:nowrap}
+.vst i{flex:none;width:8px;height:8px;border-radius:50%;background:#B9B9B0;transform:translateY(-1px)}
+.vst.ok i{background:var(--ok)}
+.vst.prob i{background:#B4531A}
+.tlinks{list-style:none;padding:0;margin:8px 0 20px;display:flex;flex-wrap:wrap;gap:8px 18px}
+.tlinks li{margin:0}
+.stats.s4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:960px){.stats.s4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.stats.s4{grid-template-columns:1fr}}

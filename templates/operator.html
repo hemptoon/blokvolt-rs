@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import lg, sources as src_block %}
+{% from '_macros.html' import lg, sources as src_block, stations_table %}
 {% from '_icons.html' import ic %}
 {% block jsonld %}<script type="application/ld+json">{
  "@context": "https://schema.org",
@@ -12,7 +12,7 @@
 {% block pagekey %} data-page="network:{{ op.slug }}"{% endblock %}
 {% block pagehead %}<div class="ph" data-bv-note><div class="wrap">
 <nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a><span aria-hidden="true">›</span><a href="/javno-punjenje/">Javno punjenje</a></nav>
-<div class="ent">{{ lg(op, 'lg-lg') }}<div><h1>{{ op.name }}</h1><p class="lead">{{ op.lead }}</p></div></div>
+<div class="ent">{{ lg(op, 'lg-lg') }}<div><h1>{{ op.h1 or op.name }}</h1><p class="lead">{{ op.lead }}</p></div></div>
 <div class="ph-actions">{% if op.on_map %}<a class="btn dark" href="/mapa/?mreza={{ op.slug }}">{{ ic('map') }}Na mapi ({{ op.on_map }})</a>{% endif %}<a class="btn" href="{{ op.website }}" rel="noopener nofollow" target="_blank">{{ ic('ext') }}{{ op.domain }}</a></div>
 </div></div>{% endblock %}
 {% block content %}
@@ -34,6 +34,9 @@
 {% for s in op.ps_sites %}<tr><td data-label="Lokacija">{% if s.map %}<a class="lnk" href="/mapa/#{{ s.map }}">{{ s.name }}</a>{% else %}{{ s.name }}{% endif %} <small class="muted">{{ s.road }}</small></td><td data-label="Smer · snaga · stanje"><ul class="stl">{% for c in s.lines %}<li class="{{ 'ok' if c.st == 1 else ('no' if c.st == 0 else 'wait') }}"><i></i><span>{% if c.dir %}{{ c.dir }} · {% endif %}{{ c.power }} · <b>{% if c.st == 1 %}radi{% elif c.st == 0 %}ne radi{% else %}u priključenju{% endif %}</b>{% if c.note %} ({{ c.note }}){% endif %}{% if c.when %} ({{ c.when }}){% endif %}</span></li>{% endfor %}</ul></td></tr>
 {% endfor %}</tbody></table></div>
 <p class="note">Po spisku JP „Putevi Srbije“ od {{ op.ps_meta.checked }}. Na novim deonicama planirano je još: {{ op.ps_meta.planned }}.</p></div>{% endif %}
+{% if st_rows %}<div class="sec" id="lokacije"><div class="sec-head"><h2><span>{{ 'Punjači na stanicama' if st_net else 'Lokacije na mapi' }}</span> <span translate="no">({{ st_rows|length }})</span></h2><a href="/mapa/?mreza={{ op.slug }}">Na mapi →</a></div>
+{{ stations_table(st_rows, place=True, net=st_net) }}
+<p class="note">Spisak sa mape BlokVolt, po gradovima. Cenu i stanje pre punjenja proverite u aplikaciji mreže (<a class="lnk" href="/pomoc/sta-znaci-potvrdjeno/">šta znače oznake</a>).</p></div>{% endif %}
 {% if op.kako %}<div class="sec" id="kako"><div class="sec-head"><h2>Kako se puni</h2></div>
 <div class="kako-box">
 {% if op.kako.start %}<ol class="kako-steps">{% for x in op.kako.start %}<li>{{ x }}</li>{% endfor %}</ol>{% endif %}

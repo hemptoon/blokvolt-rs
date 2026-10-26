@@ -62,6 +62,8 @@
  "kind_label": "Državni punjači",
  "publish": true,
  "short_name": "Putevi Srbije",
+ "seo_title": "Putevi Srbije: punjači na autoputevima, lokacije i stanje",
+ "h1": "Putevi Srbije: punjači na autoputevima",
  "lead": "Državni brzi punjači na naplatnim stanicama i odmorištima autoputeva. Punjenje je za sada besplatno.",
  "network_short": "36 punjača, radi 24",
  "power_short": "DC 40–120 kW",

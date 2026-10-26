@@ -14,7 +14,7 @@
 <div class="map-app">
 <aside class="map-side">
 <div class="map-top" data-bv-note>
-<h1>Mapa punjača</h1>
+<h1>Mapa punjača za električne automobile</h1>
 <p>{{ M.n }} javnih punjača u Srbiji, sa cenom po mreži. Potvrđeno: {{ M.ok }}.</p>
 <p class="map-by">Mapu održava tim <a href="https://www.evolako.rs/?utm_source=blokvolt&amp;utm_medium=mapa&amp;utm_campaign=zaglavlje" rel="noopener">Evolako</a></p>
 <div class="search-box">{{ ic('search') }}<label class="sr-only" for="mq">Pretraga punjača</label><input class="input" id="mq" type="search" placeholder="Grad, adresa ili mreža" autocomplete="off"></div>
@@ -48,6 +48,8 @@
 <div class="wrap map-below">
 <div class="sec-head"><h2>Cene po mrežama</h2><a href="/javno-punjenje/">Sve o javnom punjenju →</a></div>
 {% include '_price_summary.html' %}
+<div class="sec-head"><h2>Punjači po gradovima</h2><a href="/gradovi/">Svi gradovi →</a></div>
+<ul class="tlinks">{% for t in TOWN_GROUPS|map(attribute='towns')|sum(start=[])|sort(attribute='n', reverse=True) %}<li><a class="lnk" href="{{ t.url }}" translate="no">{{ t.name }} · {{ t.n }}</a></li>{% endfor %}</ul>
 <details><summary>Odakle su podaci na mapi</summary>
 <p>Lokacije su iz otvorenih baza OpenStreetMap (licenca ODbL) i Open Charge Map (CC BY 4.0), snimak od {{ M.retrieved_sr }}. Isto mesto iz obe baze prikazano je jednom. Svaki punjač je {{ M.checked }} proveren na spiskovima koje mreže same objavljuju (Charge&GO, roming mapa Charge&GO sa punjačima Orion eMobility, Tesla, JP „Putevi Srbije“). Punjači sa tih spiskova kojih nema u bazama dodati su na mapu, kao i lokacije iz aplikacija mreža Emobility Spectra i Yesla, garaže operatera Best in Parking i punjači koje hoteli i drugi vlasnici lokacija navode na svojim sajtovima. Kad spisak daje samo adresu, tačka je postavljena po adresi. Ostali su traženi na Google mapama: ako postoje i imaju ocene vozača iz poslednjih godinu dana, smatraju se potvrđenim. Nekoliko punjača potvrđeno je na sajtu vlasnika lokacije. Sve ostalo je označeno sa „Nije potvrđeno“ — takav punjač možda više ne postoji ili nije javan.</p>
 <p>Punjači u Hrvatskoj, Bosni i Hercegovini, Crnoj Gori, Albaniji i Severnoj Makedoniji su iz istih otvorenih baza, bez pojedinačne provere i bez cena na mapi. Kartica takvog punjača vodi na mapu te zemlje na blokvolt.com, gde su i cene mreža.</p>
@@ -55,7 +57,7 @@
 <p>Cene su iz aplikacija mreža i sa računa, sa datumom. Za Charge&amp;GO je zabeležena cena svakog priključka u aplikaciji, zajedno sa napomenama mreže: da li je potreban sopstveni kabl i kad je pristup ograničen. Kad cena nije zabeležena baš na tom punjaču, prikazana je cena iste mreže za istu snagu. Kartica punjača ima i kratko uputstvo „Kako se puni ovde“: kako se pokreće punjenje, koliko se rezerviše na kartici i šta važi bez registracije.</p>
 <p>„Moj auto“ računa cenu po kilometru za izabrani auto: koliko snage auto zaista prima na tom punjaču, potrošnju i gubitke pri punjenju, uz naknadu za pokretanje raspoređenu na pola baterije. Podaci o autima su iz otvorenih izvora (Open EV Data, Chargeprice, P3, ADAC i proizvođači), a potrošnju možete da upišete svoju. Izbor auta i aplikacije za navigaciju čuvaju se samo u ovom pregledaču, a lokacija za „Najbliži punjač“ ne napušta uređaj.</p>
 <p>„Punjači na putu“ pokazuje brze punjače (DC od 50 kW) do 2, 5 ili 10 km od rute, redom od polaska. Upisana mesta traže se u servisu Photon (Komoot), a ruta se računa u servisu OSRM na serveru FOSSGIS; oba koriste podatke OpenStreetMap-a. Tim servisima pregledač šalje samo upisani tekst i dve tačke rute, a sajt ih ne dobija i ne čuva. Udaljenost od puta je vazdušnom linijom, pa skretanje do punjača može biti nešto duže.</p>
-<p>Otvoreni skup podataka: <a class="lnk" href="/assets/map/punjaci.json">punjaci.json</a> (ODbL). Lokacije i priključci sa spiskova mreža, cene po priključku i naše provere nisu deo otvorenog skupa; njihovo preuzimanje uređuju <a class="lnk" href="/politika-privatnosti.html#uslovi">uslovi korišćenja</a>.</p>
+<p>Otvoreni skup podataka: <a class="lnk" href="/assets/map/punjaci.json">punjaci.json</a> (ODbL). Lokacije i priključci sa spiskova mreža, cene po priključku i naše provere nisu deo otvorenog skupa; njihovo preuzimanje uređuju <a class="lnk" href="/politika-privatnosti#uslovi">uslovi korišćenja</a>.</p>
 <p>Nema punjača na mapi? Dodajte ga dugmetom „Dodaj punjač“ u uglu mape: objavljuje se posle provere, sa oznakom „Nije potvrđeno“ (<a class="lnk" href="/pravila-objavljivanja/#novi-punjac">pravila</a>). Podatak je netačan? <a class="lnk" href="/ispravka/">Pošaljite ispravku</a> ili pišite na <a class="lnk" href="mailto:hello@blokvolt.com">hello@blokvolt.com</a>.</p>
 <p>Šta znače oznake na kartici, kako da javite kvar i kako se čita cena: <a class="lnk" href="/pomoc/">Pomoć</a>.</p>
 </details>
