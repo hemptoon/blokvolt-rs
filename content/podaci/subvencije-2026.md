@@ -1,6 +1,6 @@
 ---
 title: Subvencije za električne automobile 2026 — iznos, rok, uslovi
-h1: Subvencije 2026
+h1: Subvencije za električne automobile 2026
 description: Država daje 5.000 € za nov električni automobil, 500 € za motocikl i 250 € za moped. Samo BEV, prijava preko eUprave do 1. decembra 2026.
 kicker: Subvencije
 lead: Za nov električni automobil država 2026. daje 5.000 €, a zahtev se podnosi preko eUprave do 1. decembra.
