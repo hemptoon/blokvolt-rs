@@ -168,7 +168,7 @@ def write(path, html):
 
 
 def seo_title(t):
-    """Same rule as build.py (RUNBOOK 3.33): a title longer than 60 characters drops the " | BlokVolt" suffix."""
+    """Same rule as build.py (RUNBOOK 3.34): a title longer than 60 characters drops the " | BlokVolt" suffix."""
     if isinstance(t, str) and t.endswith(' | BlokVolt') and len(t) > 60:
         return t[:-len(' | BlokVolt')]
     return t

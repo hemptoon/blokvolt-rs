@@ -356,7 +356,17 @@ env.globals['fig'] = fig_html
 env.globals['yt'] = yt_html
 
 
+# Markdown passes raw HTML through, and the CSP below trusts every inline script it finds in the built pages. So a text
+# (an article, a news item, a help page, a newsletter issue) may not carry scripts, frames, event handlers or javascript:
+# links: the build stops instead of publishing them (RUNBOOK 3.33). Forms and plain HTML blocks stay allowed.
+_UNSAFE_MD = re.compile(r'<\s*/?\s*(script|iframe|frame|frameset|object|embed|applet|base|meta)\b|<[^>]*\son[a-z]+\s*=|'
+                        r'\{[^}\n]*\son[a-z]+\s*=|javascript\s*:|vbscript\s*:|data\s*:\s*text/html', re.I)
+
+
 def md_to_html(text):
+    _bad = _UNSAFE_MD.search(text or '')
+    if _bad:
+        sys.exit('build stopped: unsafe HTML in a text (' + repr(_bad.group(0)[:60]) + ' near ' + repr((text or '')[max(0, _bad.start() - 60):_bad.start()][-60:]) + ') — RUNBOOK 3.33')
     h = markdown.markdown(text, extensions=['tables', 'attr_list', 'md_in_html', 'sane_lists'])
     # [[yt:ID]] and [[fig:name|alt]] on their own line
     h = re.sub(r'<p>\[\[yt:([\w-]+)\]\]</p>', lambda m: str(yt_html(m.group(1))), h)
@@ -455,7 +465,7 @@ KINDS = {
 CITY_CFG = json.load(open(ROOT / 'content' / 'data' / 'gradovi.json', encoding='utf-8'))['cities']
 CITY_SLUGS = {c['name']: c['slug'] for c in CITY_CFG}
 TOWN_XY = {t[0]: (t[1], t[2]) for t in map_data.TOWNS}
-# town pages /gradovi/<slug>/ (SEO 26.10.2026, docs/RUNBOOK.md 3.34): the six cities above (they also drive the firm filters and
+# town pages /gradovi/<slug>/ (SEO 26.10.2026, docs/RUNBOOK.md 3.35): the six cities above (they also drive the firm filters and
 # accounts) plus the towns of content/data/mesta.json, which only get a page
 TOWN_CFG = CITY_CFG + json.load(open(ROOT / 'content' / 'data' / 'mesta.json', encoding='utf-8'))['towns']
 assert len({c['slug'] for c in TOWN_CFG}) == len(TOWN_CFG), 'duplicate town slug in gradovi.json / mesta.json'
@@ -1202,7 +1212,7 @@ def add_url(path, prio='0.6', lastmod=ISO_TODAY):
 def seo_title(t):
     """Search results show about 60 characters: a longer title drops its ' | BlokVolt' suffix (the brand stays in og:site_name,
     the JSON-LD and the page). The Serbian title is final before translation, so the EN/RU title is looked up by the same
-    key (docs/RUNBOOK.md 3.33)."""
+    key (docs/RUNBOOK.md 3.34)."""
     if isinstance(t, str) and t.endswith(' | BlokVolt') and len(t) > 60:
         return t[:-len(' | BlokVolt')]
     return t
@@ -1800,7 +1810,7 @@ for h in TYPE_HUBS:
 
 NT_HOURS = {x['region']: x['window'] for x in _E['nt_hours']}
 
-# ---- public chargers as a table: town pages and network pages (SEO 26.10.2026, docs/RUNBOOK.md 3.34). Names, addresses,
+# ---- public chargers as a table: town pages and network pages (SEO 26.10.2026, docs/RUNBOOK.md 3.35). Names, addresses,
 # towns and power stay in the source language on every language (translate="no"): they are data, like on the map.
 CONN_INT = {'ccs2': 'CCS2', 'ccs1': 'CCS1', 'chademo': 'CHAdeMO', 'type2': 'Type 2', 'type1': 'Type 1', 'tesla': 'Tesla', 'gbt': 'GB/T',
             'schuko': 'Schuko', 'cee': 'CEE'}
@@ -2360,6 +2370,10 @@ _LL = [('Mapa punjača', '/mapa/', f"{MAP['n']} javnih punjača u Srbiji: mreža
 (DIST / '.well-known').mkdir(exist_ok=True)
 (DIST / '.well-known' / 'tdmrep.json').write_text(json.dumps([{'location': '/assets/map/*', 'tdm-reservation': 1, 'tdm-policy': f'{SITE}/politika-privatnosti.html#uslovi'},
                                                               {'location': '/api/*', 'tdm-reservation': 1, 'tdm-policy': f'{SITE}/politika-privatnosti.html#uslovi'}]), encoding='utf-8')
+# security.txt (RFC 9116): where to report a vulnerability (RUNBOOK 3.33). Expires moves with every build, so it never lapses
+_sec_exp = (datetime.date.fromisoformat(NOW_ISO) + datetime.timedelta(days=330)).isoformat() + 'T00:00:00Z'
+(DIST / '.well-known' / 'security.txt').write_text(f'Contact: mailto:hello@blokvolt.com\nExpires: {_sec_exp}\n'
+                                                   f'Preferred-Languages: sr, en, ru\nCanonical: {SITE}/.well-known/security.txt\n', encoding='utf-8')
 _dir_redirects = ['/vodici', '/firme', '/javno-punjenje', '/mapa', '/cene', '/gradovi']
 (DIST / '_redirects').write_text('\n'.join([
     '/paketi-i-cene https://www.evolako.rs/paketi-i-cene 301',

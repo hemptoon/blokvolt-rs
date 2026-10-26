@@ -30,7 +30,7 @@ const CASES = [
   ['sr', 'subvencje', '/podaci/subvencije-2026/', 3],
   ['sr', 'punjač za stan', ['/punjenje-elektricnog-auta-u-zgradi', '/punjac-u-zgradi-skupstina', '/ko-placa-struju-za-punjenje'], 3],
   ['sr', 'punjac u zgradi', ['/punjenje-elektricnog-auta-u-zgradi', '/punjac-u-zgradi-skupstina'], 2],
-  ['sr', 'kraljevo', '/gradovi/kraljevo/', 1],   // towns with 3+ chargers have a page since 26.10.2026 (RUNBOOK 3.34)
+  ['sr', 'kraljevo', '/gradovi/kraljevo/', 1],   // towns with 3+ chargers have a page since 26.10.2026 (RUNBOOK 3.35)
   ['sr', 'Kraljevo punjač', '/gradovi/kraljevo/', 3],
   ['sr', 'Paraćin', '/gradovi/paracin/', 1],
   ['sr', 'paracin', '/gradovi/paracin/', 1],

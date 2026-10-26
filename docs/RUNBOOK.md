@@ -410,7 +410,7 @@ id is a hash of its page and text, so after a deploy the worker embeds only new 
 ones. It does this in steps of 20 pieces: in the background of any /api request (at most once a minute per isolate,
 when the store is behind) and on `GET /api/smisao/stanje` (also shows the state: build, pieces, done, last error).
 The first fill takes ~33 steps; to finish it at once, open `https://www.blokvolt.rs/` in the owner's browser and call
-`/api/smisao/stanje` ~35 times from the console (each answer says what the step did; limit 300 a day per visitor).
+`/api/smisao/stanje` ~35 times from the console (each answer says what the step did; limit 60 a day per visitor; once the store is up to date the call only reads the state).
 
 Cost: free tier. Workers AI 10 000 neurons a day for the whole account — **shared with the owner's bot** (Whisper,
 Mistral): a query ~0,03 neurons, embedding the whole site once ~400. D1: ≈650 rows read when an isolate loads the
@@ -1932,7 +1932,31 @@ Rules added with the full check of 24.10.2026 (36 brands with official sales, 84
   says the price "includes the discount and the possibility of the EKO subsidy" — read as subsidy included (as on
   22.09); keep it unless Kia rewrites the sentence.
 
-### 3.33 Titles and search snippets (since 26.10.2026)
+### 3.33 Security basics (since 26.10.2026)
+
+Free tools only; nothing here may slow the site down or add steps for visitors.
+
+- **One public address for the API.** Only `/api/*` runs the worker (`_routes.json`); on the production alias
+  `blokvolt.pages.dev` the worker answers every `/api/` request with a 301 to `https://www.blokvolt.rs`, so the
+  zone's firewall and rate-limit rules cannot be bypassed through it. The static pages on the alias are plain files
+  (free, canonical to www); a Bulk Redirect in Cloudflare can send them over too. Preview hosts
+  (`<hash>.blokvolt.pages.dev`) stay reachable for checks; never link them anywhere public.
+- **Secrets live only in the Cloudflare dashboard** (Pages project → Settings → Variables and Secrets) and in the
+  repository's Actions secrets. Never in a file, a commit, a workflow log or a chat message. The repository is
+  public: everything in it, including its history and the Actions logs, is readable by anyone.
+- **Workflows.** Every action is pinned to a commit hash (the version is in the comment) and wrangler to an exact
+  version; `deploy.yml` runs with `contents: read` and keeps no git token after checkout. Update a pin only to a
+  release that is at least a week old. A new workflow starts with `permissions: {}` or `contents: read` and gets
+  `contents: write` only if it pushes a branch (as `android.yml` and `region-data.yml` do).
+- **security.txt.** `build.py` writes `/.well-known/security.txt` (contact `hello@blokvolt.com`); its `Expires`
+  is the build date plus 330 days, so it renews with every deploy.
+- **Abuse limits.** Write endpoints keep their per-key daily limits in D1 (`allow()`); a new write endpoint gets one
+  before it ships. Zone-level rules (Security → WAF) are changed by the owner or with the owner's explicit word.
+- **If something looks wrong** (unknown deploy, changed secret, odd traffic): tell the owner at once, do not delete
+  anything, note the time. If personal data of users may have leaked, the controller has 72 hours to notify the
+  Commissioner (Poverenik, ZZPL čl. 52).
+
+### 3.34 Titles and search snippets (since 26.10.2026)
 
 - Every page title ends with " | BlokVolt" in the code, but `build.py` → `seo_title()` (inside `render()`) drops the
   suffix when the whole title is longer than 60 characters: Google shows about 60, and the brand is in `og:site_name`,
@@ -1949,7 +1973,7 @@ Rules added with the full check of 24.10.2026 (36 brands with official sales, 84
   each time: prefer stable wording, or a number with a separator (a price like 17.990 €, a date) which becomes ⟦n⟧.
 - `/pretraga/` is `noindex` and not in the sitemap: a search results page is not an answer; the pages it finds are.
 
-### 3.34 Town pages (/gradovi/) and the charger lists (since 26.10.2026)
+### 3.35 Town pages (/gradovi/) and the charger lists (since 26.10.2026)
 
 - `/gradovi/<slug>/` exists for the six cities of `content/data/gradovi.json` (they also drive the firm filter and
   accounts) and for the towns of `content/data/mesta.json` (page only). A charger belongs to the town in its `t` field

@@ -97,7 +97,8 @@ const now = () => Math.floor(Date.now() / 1000);
 const sleep = ms => new Promise(ok => setTimeout(ok, ms));
 
 // ======================================================================= MAIL_MODE=log
-const A = await instance({ MAIL_MODE: 'log', RESEND_WEBHOOK_SECRET: WHSEC });
+// MAIL_DAILY_CAP: the ceiling for everyone together is checked on its own below; here it must not get in the way
+const A = await instance({ MAIL_MODE: 'log', RESEND_WEBHOOK_SECRET: WHSEC, MAIL_DAILY_CAP: '100000' });
 const { call, db } = A;
 const lastMail = (to, kind) => db.prepare('SELECT * FROM mail_log WHERE to_addr = ?1' + (kind ? ' AND kind = ?2' : '') + ' ORDER BY id DESC LIMIT 1').bind(...(kind ? [to, kind] : [to])).first();
 const mailCount = async (to, kind) => (await db.prepare('SELECT COUNT(*) AS n FROM mail_log WHERE to_addr = ?1' + (kind ? ' AND kind = ?2' : '')).bind(...(kind ? [to, kind] : [to])).first()).n;
@@ -516,6 +517,12 @@ check(r.status === 429 && r.j.error === 'limit', 'kod: 30 a day per address from
 const sameIp = [];
 for (let i = 0; i < 31; i++) sameIp.push((await call('POST', '/api/nalog/kod', { ip: '192.0.2.77', json: { email: 'ip' + i + '@example.com', t: 4000 } })).status);
 check(sameIp.slice(0, 30).every(x => x === 200) && sameIp[30] === 429, 'kod: 30 a day per IP, the 31st → 429', sameIp);
+// the ceiling for everyone together (code and confirmation mails): once reached, no new code from anywhere today
+await db.prepare("INSERT INTO rl (k, day, n) VALUES ('mx:all', ?1, 100000) ON CONFLICT (k, day) DO UPDATE SET n = 100000").bind(new Date().toISOString().slice(0, 10)).run();
+r = await askCode('sviukupno@example.com', {}, { ip: '192.0.2.200' });
+const rp = await call('POST', '/api/posta/prijava', { ip: '192.0.2.201', json: { email: 'sviukupno2@example.com', t: 4000 } });
+check(r.status === 429 && r.j.error === 'limit' && rp.status === 429, 'mail ceiling: over MAIL_DAILY_CAP today → 429 for a code and for a newsletter sign-up from a fresh IP', [r.status, rp.status]);
+await db.prepare("DELETE FROM rl WHERE k = 'mx:all'").run();
 const guesses = [];
 for (let i = 0; i < 31; i++) guesses.push((await call('POST', '/api/nalog/potvrdi', { ip: '203.0.113.5', json: { email: 'guess' + i + '@example.com', code: '123456' } })).status);
 check(guesses.slice(0, 30).every(x => x === 400) && guesses[30] === 429, 'potvrdi: 30 failed attempts a day per IP, the 31st → 429', guesses);

@@ -21,8 +21,14 @@ const NOVI_PL = new Set(['type2', 'ccs2', 'chademo', 'tesla', 'schuko']);
 const NOVI_ACC = new Set(['svi', 'gosti', 'nz']), NOVI_FEE = new Set(['besplatno', 'placa', 'nz']);
 const SRB = { s: 41.85, n: 46.2, w: 18.8, e: 23.05 };   // pretraga: „Niste našli šta tražite?“ on /pretraga/
 const MAX_IMG = 950 * 1024, MAX_TH = 90 * 1024;
+// photos from everyone together: new ones a day and waiting ones at a time (each up to ~1 MB in D1, 500 MB a database)
+const PH_ALL_DAY = 40, PH_PENDING_MAX = 150;
+async function photoRoom(env) {
+  const r = await env.DB.prepare(`SELECT COUNT(*) AS n FROM photos WHERE status = 'pending'`).first();
+  return !(r && r.n >= PH_PENDING_MAX) && (await allow(env, 'ph:all', PH_ALL_DAY));
+}
 const LINKY = /(https?:\/\/|www\.|\b[a-z0-9-]+\.(com|rs|net|org|info|me|io)\b)/i;
-const CONTACTY = /(\S+@\S+\.\S+|(\+?\d[\d\s\/.-]{7,}\d))/;
+const CONTACTY = /([^\s@]+@[^\s@]+\.[^\s@]+|(\+?\d[\d\s\/.-]{7,}\d))/;   // no nested \S+ around @: linear time on long input
 // dates and times are not phone numbers: "28.09.2026", "28. 9. 2026.", "28/09", "2026-09-28", "15.30", "15h30"
 const DATEY = /\b(\d{4}-\d{2}-\d{2}|\d{1,2}[./]\s?\d{1,2}[./]?(\s?\d{4}\.?|\s?\d{2}\b)?|\d{1,2}[:.h]\d{2}\b)/g;
 const contacty = t => CONTACTY.test(String(t).replace(DATEY, ' '));
@@ -65,8 +71,20 @@ async function dayKey(env) {
   return key;
 }
 
+// an IPv6 address counts as its /64 (what one subscriber or one server gets), so rotating addresses inside the block
+// does not reset the daily limits; IPv4 stays the whole address
+function ipBucket(ip) {
+  ip = String(ip || '0').trim();
+  if (!ip.includes(':')) return ip;
+  if (ip.includes('.')) return ip.slice(ip.lastIndexOf(':') + 1);          // ::ffff:1.2.3.4
+  const [head, tail] = ip.split('::');
+  const h = head ? head.split(':') : [], t = tail ? tail.split(':') : [];
+  const full = tail === undefined ? h : [...h, ...Array(Math.max(0, 8 - h.length - t.length)).fill('0'), ...t];
+  return full.slice(0, 4).map(x => (parseInt(x, 16) || 0).toString(16)).join(':') + '::/64';
+}
+
 async function ipHash(request, env) {
-  const ip = request.headers.get('cf-connecting-ip') || request.headers.get('x-forwarded-for') || '0';
+  const ip = ipBucket(request.headers.get('cf-connecting-ip') || request.headers.get('x-forwarded-for') || '0');
   const sig = await crypto.subtle.sign('HMAC', await dayKey(env), new TextEncoder().encode(ip));
   return [...new Uint8Array(sig)].slice(0, 12).map(b => b.toString(16).padStart(2, '0')).join('');
 }
@@ -231,6 +249,7 @@ async function postPhoto(request, env, st) {
   if (!(await allow(env, 'ph:' + ip, 6))) return bad('limit', 429);
   const pend = await env.DB.prepare(`SELECT COUNT(*) AS n FROM photos WHERE st = ?1 AND status = 'pending'`).bind(st).first();
   if (pend && pend.n >= 20) return bad('queue full', 429);
+  if (!(await photoRoom(env))) return bad('queue full', 429);
   const w = Math.min(4000, Math.max(0, Math.round(Number(fd.get('w') || 0)))), h = Math.min(4000, Math.max(0, Math.round(Number(fd.get('h') || 0))));
   const uid = await reporter(request, env);
   await env.DB.prepare(
@@ -381,7 +400,7 @@ async function postNovi(request, env) {
     'INSERT INTO novi (lat, lon, n, k, kw, pl, acc, fee, c, nick, foto, at, lang, ip, uid) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15) RETURNING id'
   ).bind(Math.round(lat * 1e6) / 1e6, Math.round(lon * 1e6) / 1e6, n, k, kw, pl.join(',') || null, acc, fee, c, nick,
     photo ? photo.id : null, now(), clean(fd.get('lang'), 5) || null, ip, uid || null).first();
-  if (photo && row) {
+  if (photo && row && (await photoRoom(env))) {   // no room today: the charger still goes to the queue, without its photo
     await env.DB.prepare(
       'INSERT INTO photos (id, st, status, at, cap, w, h, mime, img, th, ip' + (uid ? ', uid' : '') + ') VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11' + (uid ? ', ?12' : '') + ')'
     ).bind(photo.id, 'vz-' + row.id, 'pending', now(), null, photo.w || null, photo.h || null, 'image/jpeg', photo.buf, photo.thBuf, ip, ...(uid ? [uid] : [])).run();
@@ -403,10 +422,12 @@ async function noviList(env) {
 function adminOk(request, env) {
   if (!env.ADMIN_KEY || String(env.ADMIN_KEY).length < 16) return false;
   const h = request.headers.get('authorization') || '';
-  return h === 'Bearer ' + env.ADMIN_KEY;
+  return same(h, 'Bearer ' + env.ADMIN_KEY);
 }
 
 async function adminQueue(env) {
+  // photos rejected before 26.10.2026 still hold their bytes: free them when the owner opens the queue (no-op afterwards)
+  await env.DB.prepare(`UPDATE photos SET img = X'', th = NULL WHERE status = 'no' AND length(img) > 0`).run();
   const photos = await env.DB.prepare(`SELECT id, st, cap, at, rep, status FROM photos WHERE status = 'pending' ORDER BY at LIMIT 100`).all();
   const comments = await env.DB.prepare(`SELECT id, st, s, r, c, n, at, rep FROM checkins WHERE cs = 'pending' ORDER BY at LIMIT 200`).all();
   const requests = await env.DB.prepare(`SELECT id, kind, slug, data, email, at FROM requests WHERE status = 'new' ORDER BY at LIMIT 200`).all();
@@ -421,14 +442,16 @@ async function adminDecide(request, env) {
   const ok = b.a === 'ok';
   if (b.t === 'f' && /^[0-9a-f]{32}$/.test(String(b.id))) {
     // an approved item starts counting reports from zero again, so the next single report does not hide it
-    await env.DB.prepare('UPDATE photos SET status = ?1, rep = CASE WHEN ?1 = \'ok\' THEN 0 ELSE rep END WHERE id = ?2').bind(ok ? 'ok' : 'no', b.id).run();
+    // a rejected photo keeps its row (the decision) but not its bytes
+    await env.DB.prepare('UPDATE photos SET status = ?1, rep = CASE WHEN ?1 = \'ok\' THEN 0 ELSE rep END, ' +
+      'img = CASE WHEN ?1 = \'no\' THEN X\'\' ELSE img END, th = CASE WHEN ?1 = \'no\' THEN NULL ELSE th END WHERE id = ?2').bind(ok ? 'ok' : 'no', b.id).run();
   } else if (b.t === 'c' && Number.isInteger(b.id)) {
     await env.DB.prepare('UPDATE checkins SET cs = ?1, rep = CASE WHEN ?1 = \'ok\' THEN 0 ELSE rep END WHERE id = ?2').bind(ok ? 'ok' : 'hidden', b.id).run();
   } else if (b.t === 'n' && Number.isInteger(b.id)) {
     // a new charger from a driver: 'ok' puts it on the map, 'no' rejects it (also later, to take it off) with its waiting photo
     await ensureNovi(env);
     await env.DB.prepare('UPDATE novi SET status = ?1, ok_at = CASE WHEN ?1 = \'ok\' THEN ?2 ELSE ok_at END WHERE id = ?3').bind(ok ? 'ok' : 'no', now(), b.id).run();
-    if (!ok) await env.DB.prepare(`UPDATE photos SET status = 'no' WHERE st = ?1 AND status = 'pending'`).bind('vz-' + b.id).run();
+    if (!ok) await env.DB.prepare(`UPDATE photos SET status = 'no', img = X'', th = NULL WHERE st = ?1 AND status = 'pending'`).bind('vz-' + b.id).run();
     // the public list is cached for the minute: drop this minute's copy so the decision shows at once
     try { await caches.default.delete(new Request(new URL(request.url).origin + '/api/novi-punjaci?c=' + Math.floor(Date.now() / 60000))); } catch (e) { /* cache off */ }
   } else if (b.t === 'z' && Number.isInteger(b.id)) {
@@ -472,7 +495,10 @@ const MAX_FAVS = 300;                    // the same limit as the map's localSto
 // many people behind one address); codeHour / codeDay: per address from one IP fingerprint, so nobody can use up the
 // codes of someone else's address; codeMail: per address from everywhere; failIp: wrong or unknown codes from one IP
 // fingerprint; subMail: newsletter sign-ups per address.
-const LIMIT = { codeIp: 30, codeHour: 5, codeDay: 10, codeMail: 30, failIp: 30, subIp: 20, subMail: 3 };
+const LIMIT = { codeIp: 30, codeHour: 5, codeDay: 10, codeMail: 30, failIp: 30, subIp: 20, subMail: 3, mailAll: 40 };
+// mailAll: code and confirmation mails a day from everyone together, so nobody can spend the whole Resend day
+// (100 mails on the free plan, shared with the newsletter's PREGLED_DAILY_CAP) from a few addresses; MAIL_DAILY_CAP overrides it
+const mailCap = env => { const v = Number(env.MAIL_DAILY_CAP); return Number.isFinite(v) && v > 0 ? v : LIMIT.mailAll; };
 const WEBHOOK_SKEW_S = 5 * 60;           // Svix: a signed timestamp may be this far from our clock
 const LANGS = new Set(['sr', 'en', 'ru']);
 const TOPICS = ['vesti', 'cene', 'punjaci', 'moji'];
@@ -913,7 +939,8 @@ async function nalogKod(request, env, b, ctx) {
   await ensureSchema(env);
   const ip = await ipHash(request, env), mk = await mailKey(email), hour = new Date().toISOString().slice(0, 13);
   if (!(await allow(env, 'nk:' + ip, LIMIT.codeIp)) || !(await allow(env, 'nh:' + mk + ':' + ip + ':' + hour, LIMIT.codeHour)) ||
-    !(await allow(env, 'nd:' + mk + ':' + ip, LIMIT.codeDay)) || !(await allow(env, 'na:' + mk, LIMIT.codeMail))) return bad('limit', 429);
+    !(await allow(env, 'nd:' + mk + ':' + ip, LIMIT.codeDay)) || !(await allow(env, 'na:' + mk, LIMIT.codeMail)) ||
+    !(await allow(env, 'mx:all', mailCap(env)))) return bad('limit', 429);
   const app = b.app === true, given = app ? String(b.nonce || '') : cookieOf(request, 'bv_n');
   const nonce = TOK32.test(given) ? given : randHex(16);
   // only hashes are stored
@@ -1211,7 +1238,8 @@ async function postaPrijava(request, env, b, ctx) {
   if (!mailOn(env)) return bad('mail_off', 503);
   await ensureSchema(env);
   const ip = await ipHash(request, env);
-  if (!(await allow(env, 'pp:' + ip, LIMIT.subIp)) || !(await allow(env, 'pe:' + await mailKey(email), LIMIT.subMail))) return bad('limit', 429);
+  if (!(await allow(env, 'pp:' + ip, LIMIT.subIp)) || !(await allow(env, 'pe:' + await mailKey(email), LIMIT.subMail)) ||
+    !(await allow(env, 'mx:all', mailCap(env)))) return bad('limit', 429);
   background(ctx, subscribe(request, env, email, { lang, uid: null, src: pagePath(b.src), topics: topics || null })
     .then(sent => { if (!sent) console.log('mail not sent: confirm'); }));
   return json({ ok: true });
@@ -2046,10 +2074,13 @@ async function smAuto(request, env, ctx) {
 async function smStatus(request, env, ctx) {
   if (!smOn(env)) return json({ ok: true, on: false, need: ['AI'].filter(k => !env[k]) });
   const ip = await ipHash(request, env);
-  if (!(await allow(env, 'smst:' + ip, 300))) return bad('limit', 429);
+  if (!(await allow(env, 'smst:' + ip, 60))) return bad('limit', 429);
   const man = await smManifest(env, request);
-  const note = await smStep(env, request, man);
-  const st = await smState(env);
+  const st0 = await smState(env);
+  // up to date: answer from the state, without the lock and the read of every vector id
+  const fresh = man && st0 && st0.v === man.v && st0.done === st0.total && st0.total === man.n && !st0.err;
+  const note = fresh ? 'up to date' : await smStep(env, request, man);
+  const st = fresh ? st0 : await smState(env);
   return json({ ok: true, on: true, step: note, pieces: man ? man.n : null, build: man ? man.v : null, state: st });
 }
 // the vectors of the isolate, reloaded from D1 when the store changed (gen)
@@ -2148,7 +2179,9 @@ async function api(request, env, ctx) {
   // the hidden link on /mapa/ (robots.txt forbids /api/, so only bots that ignore it follow it): counted per day and
   // fingerprint, nothing else — nobody is blocked (docs/RUNBOOK.md 3.28)
   if (m === 'GET' && p === '/api/zamka') {
-    ctx.waitUntil(ipHash(request, env).then(ip => env.DB.batch([
+    const d = today();
+    if (TRAP.day !== d) { TRAP.day = d; TRAP.n = 0; }
+    if (++TRAP.n <= 300) ctx.waitUntil(ipHash(request, env).then(ip => env.DB.batch([   // at most 300 writes an isolate a day
       env.DB.prepare('CREATE TABLE IF NOT EXISTS trap (day TEXT NOT NULL, fp TEXT NOT NULL, n INTEGER NOT NULL DEFAULT 0, ua TEXT, PRIMARY KEY (day, fp))'),
       env.DB.prepare('INSERT INTO trap (day, fp, n, ua) VALUES (?1, ?2, 1, ?3) ON CONFLICT (day, fp) DO UPDATE SET n = n + 1')
         .bind(today(), ip, clean(request.headers.get('user-agent'), 120)),
@@ -2156,15 +2189,24 @@ async function api(request, env, ctx) {
     return new Response('', { status: 204, headers: { 'cache-control': 'no-store', 'x-robots-tag': 'noindex, nofollow' } });
   }
   if (m === 'GET' && p === '/api/zdravlje') {
-    const r = await env.DB.prepare('SELECT COUNT(*) AS n FROM checkins').first();
-    return json({ ok: true, checkins: r.n });
+    if (Date.now() - HEALTH.at > 60000) HEALTH = { at: Date.now(), n: (await env.DB.prepare('SELECT COUNT(*) AS n FROM checkins').first()).n };
+    return json({ ok: true, checkins: HEALTH.n });
   }
   return bad('not found', 404);
 }
 
+// per isolate: the trap's writes today and the health check's count (one D1 read a minute at most)
+const TRAP = { day: '', n: 0 };
+let HEALTH = { at: 0, n: 0 };
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    // the API on the production alias on pages.dev would bypass the zone's firewall and rate-limit rules: send it to
+    // the real address (RUNBOOK 3.33). Only /api/* reaches the worker (_routes.json); previews stay as they are.
+    if (url.hostname === 'blokvolt.pages.dev') {
+      return Response.redirect('https://www.blokvolt.rs' + url.pathname + url.search, 301);
+    }
     if (url.pathname.startsWith('/api/')) {
       let res;
       try {
