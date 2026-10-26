@@ -415,16 +415,6 @@
       "dates": "sipas Doganës, TVSH-ja në import është hequr që në vitin 2020; afat mbarimi nuk është njoftuar",
       "src": "https://altax.al/mbi-trajtimin-e-tvsh-se-per-automjetet-elektrike-te-importuara-dhe-te-shitura-ne-territorin-shqiptar/",
       "src_label": "ALTAX, 23.10.2024"
-    },
-    {
-      "name": "Përjashtim nga taksa vjetore e mjeteve të përdorura (TVMP)",
-      "status": "open",
-      "who": "mjetet elektrike",
-      "amount": "përjashtim i plotë nga taksa vjetore",
-      "cond": "DPSHTRR i rendit mjetet elektrike mes mjeteve të përjashtuara, pa cituar aktin ligjor. Përjashtohen edhe mjetet 0–3 vjeç.",
-      "dates": "afat mbarimi nuk është njoftuar",
-      "src": "https://www.dpshtrr.al/mjete/taksa-dhe-detyrime/perjashtohen-nga-pagesa-e-takses-vjetore-te-mjeteve-te-perdorura",
-      "src_label": "DPSHTRR — mjetet që përjashtohen nga taksa vjetore"
     }
   ],
   "subsidies_none": "Për vitin 2026 nuk u gjet asnjë subvencion për blerjen e makinës elektrike dhe, në Tiranë, asnjë përfitim bashkiak si parkim falas, korsi autobusi ose lehtësi për taksitë (kontrolluar më 28.09.2026).",
@@ -478,6 +468,11 @@
     }
   ],
   "benefits": [
+    {
+      "t": "Taksa vjetore e mjeteve të përdorura (TVMP)",
+      "v": "Faqja e DPSHTRR për mjetet që përjashtohen nga taksa vjetore (përditësuar më 01.07.2026) nuk i përmend mjetet elektrike, as mjetet 0–3 vjeç. Ajo rendit vetëm mjetet e ambasadave dhe të organizatave ndërkombëtare me status diplomatik, mjetet që nuk do të qarkullojnë gjatë vitit, mjetet e bllokuara, të vjedhura ose të shkatërruara dhe disa autovetura të personave me aftësi të kufizuara e të veteranëve, pa cituar akt ligjor. Nëse mjetet elektrike përjashtohen ende nga taksa vjetore nuk është konfirmuar (kontrolluar më 27.10.2026).",
+      "src": "https://www.dpshtrr.al/mjete/taksa-dhe-detyrime/perjashtohen-nga-pagesa-e-takses-vjetore-te-mjeteve-te-perdorura"
+    },
     {
       "t": "Tarifat e regjistrimit të parë",
       "v": "Në tetor 2019 u njoftua se DPSHTRR do t’i rimbursojë këto tarifa për mjetet elektrike dhe plug-in: kontrolli fizik 1 500, leja e qarkullimit 1 000, targat 3 000 dhe certifikata e pronësisë 2 000 lekë, gjithsej 7 500 lekë (VKM nr. 412, 19.06.2019). Sipas një raporti të vitit 2022, rimbursimi zbatohet që nga nëntori 2019. Nëse vlen edhe në vitin 2026 nuk është konfirmuar: faqja e DPSHTRR për regjistrimin nuk i përmend mjetet elektrike.",

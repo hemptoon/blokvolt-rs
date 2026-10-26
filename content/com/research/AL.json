@@ -3,7 +3,7 @@
  "name": "Albania",
  "checked": "28.09.2026",
  "currency": "ALL",
- "summary": "Albania's electric-car fleet almost doubled in 2025: Eurostat counts 10,938 battery-electric passenger cars at the end of the year, 91% more than a year earlier, and 5,517 new registrations. New battery-electric cars are VAT-exempt according to the latest source, although sources conflict, and electric vehicles pay no annual vehicle tax. Public charging is young and fragmented: VEGA lists 19 operating sites, PlugoAL five 280 kW sites, and the state supplier OSHEE announced a national network for 2026, with no station found operating on 28.09.2026. No network publishes a per-kWh price on its website; OSHEE estimated in November 2025 that charging stations sell electricity at 40–60 lek per kWh. At home, a kilowatt-hour costs 10.2 lek with VAT while the household stays within 700 kWh a month.",
+ "summary": "Albania's electric-car fleet almost doubled in 2025: Eurostat counts 10,938 battery-electric passenger cars at the end of the year, 91% more than a year earlier, and 5,517 new registrations. New battery-electric cars are VAT-exempt according to the latest source, although sources conflict; an exemption of electric vehicles from the annual vehicle tax is no longer listed by the road transport agency DPSHTRR and could not be confirmed. Public charging is young and fragmented: VEGA lists 19 operating sites, PlugoAL five 280 kW sites, and the state supplier OSHEE announced a national network for 2026, with no station found operating on 28.09.2026. No network publishes a per-kWh price on its website; OSHEE estimated in November 2025 that charging stations sell electricity at 40–60 lek per kWh. At home, a kilowatt-hour costs 10.2 lek with VAT while the household stays within 700 kWh a month.",
  "stats": [
   {
    "label": "Battery-electric passenger cars on the road",
@@ -173,15 +173,15 @@
    "confidence": "medium"
   },
   {
-   "status": "open",
+   "status": "unconfirmed",
    "programme": "Exemption from the annual vehicle tax (TVMP)",
-   "amount": "full exemption",
+   "amount": "full exemption, if it still applies",
    "who": "Electric vehicles",
-   "note": "DPSHTRR lists electric vehicles among the exempt vehicles without citing the legal act; vehicles aged 0–3 years are also exempt.",
+   "note": "DPSHTRR's page on vehicles exempt from the annual tax (published 23.03.2026, modified 01.07.2026) no longer lists electric vehicles or vehicles aged 0–3 years. It lists only vehicles of embassies and international organisations with diplomatic status, vehicles declared out of circulation, blocked, stolen or destroyed vehicles, and certain cars of persons with disabilities and veterans, and cites no legal act. Whether electric vehicles are still exempt was not confirmed.",
    "source": "https://www.dpshtrr.al/mjete/taksa-dhe-detyrime/perjashtohen-nga-pagesa-e-takses-vjetore-te-mjeteve-te-perdorura",
    "source_title": "DPSHTRR – vehicles exempt from the annual tax",
-   "source_date": "no date on page; checked 28.09.2026",
-   "confidence": "high"
+   "source_date": "page modified 01.07.2026; checked 27.10.2026",
+   "confidence": "low"
   },
   {
    "status": "unconfirmed",
@@ -243,6 +243,7 @@
   "A1 (Rruga e Kombit) toll: the official car tariff is €5 with VAT (ATRAKO, undated), payable in lek at the Bank of Albania rate of the day; the 660 lek reported for payment in lek (Timoni.al 2024, tolls.eu 2026) is not confirmed by an official source.",
   "VEGA's DC chargers have both GB/T and CCS2 sockets, but no source says how many cars in Albania use GB/T.",
   "No fast charger on the A1 (Rruga e Kombit) itself was confirmed.",
-  "OSHEE Charge: no operating station was found on 28.09.2026; a first-phase figure of 100–120 stations appears only in an opinion article (Shqiptarja, 16.11.2025)."
+  "OSHEE Charge: no operating station was found on 28.09.2026; a first-phase figure of 100–120 stations appears only in an opinion article (Shqiptarja, 16.11.2025).",
+  "Annual vehicle tax (TVMP): DPSHTRR's list of exempt vehicles (modified 01.07.2026) no longer mentions electric vehicles and cites no legal act; whether electric vehicles are still exempt was not confirmed."
  ]
 }

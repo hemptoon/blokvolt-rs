@@ -35,7 +35,7 @@ Asnjë rrjet në Shqipëri nuk publikon në faqen e vet çmim për kWh, për min
 ## Si paguhet
 
 - **PlugoAL:** skanoni kodin QR dhe paguani në aplikacionin web me kartë Visa ose Mastercard, ose me portofolin e parapaguar (të paktën 500 lekë). Sipas PlugoAL, çmimet përfshijnë TVSH 20 %. Tarifa për qëndrimin pas karikimit është në [kushtet e përdorimit](https://plugoal.com/terms.html).
-- **iCharge.app:** në aplikacion me kartë, me gjendjen e llogarisë iCharge ose me kupona; me para në dorë në disa pika UPay.
+- **iCharge.app:** në aplikacion me kartë ose me gjendjen e llogarisë iCharge; llogaria rimbushet me kartë, me kupona ose në një pikë Western Union.
 - **VEGA CHARGING:** me kartën e karikimit VEGA; mënyra të tjera pagese nuk janë publikuar.
 - **OSHEE Charge:** mënyra e pagesës nuk është njoftuar.
 
