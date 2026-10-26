@@ -8,7 +8,7 @@
 //   MINIFLARE_DIR=/tmp/mf node scripts/qa/nalog_worker_test.mjs
 import { createRequire } from 'node:module';
 import { pathToFileURL, fileURLToPath } from 'node:url';
-import { createHash, createHmac, randomBytes } from 'node:crypto';
+import { createHash, createHmac, randomBytes, generateKeyPairSync, createSign } from 'node:crypto';
 import path from 'node:path';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -56,8 +56,11 @@ const LEGACY = [
 const resendCalls = [];
 let resendPlan = [];             // statuses the fake Resend API answers with, one per call (then 200)
 let resendDelay = 0;             // ms the next call takes (a slow Resend)
+// Sign in with Apple / Google: the providers' key sets are answered here, signed with keys made in this script
+const IDP_KEYS = {};
 async function outbound(req) {
   const u = new URL(req.url);
+  if (IDP_KEYS[u.href]) return new Response(JSON.stringify({ keys: IDP_KEYS[u.href] }), { headers: { 'content-type': 'application/json' } });
   if (u.hostname !== 'api.resend.com') return new Response('blocked in tests', { status: 599 });
   if (resendDelay) { const ms = resendDelay; resendDelay = 0; await new Promise(ok => setTimeout(ok, ms)); }
   const body = await req.json();
@@ -738,6 +741,63 @@ check(r.status === 200 && (await colsOf('photos')).includes('uid'), 'migration: 
 const uCols = await colsOf('users');
 check(['valuta', 'car_id', 'car_cons', 'car_cab', 'car_opt'].every(c => uCols.includes(c)), 'migration: users of the older shape got the valuta and car_* columns', uCols);
 await D.mf.dispose();
+
+// ---------------------------------------------------------------- Sign in with Apple and with Google (app 2.0)
+{
+  const b64u = b => Buffer.from(b).toString('base64').replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_');
+  const mk = kid => { const { privateKey, publicKey } = generateKeyPairSync('rsa', { modulusLength: 2048 });
+    return { kid, privateKey, jwk: { ...publicKey.export({ format: 'jwk' }), kid, alg: 'RS256', use: 'sig' } }; };
+  const ka = mk('apple-1'), kg = mk('google-1'), kx = mk('stranger');
+  IDP_KEYS['https://appleid.apple.com/auth/keys'] = [ka.jwk];
+  IDP_KEYS['https://www.googleapis.com/oauth2/v3/certs'] = [kg.jwk];
+  const jwt = (k, claims, alg = 'RS256') => {
+    const h = b64u(JSON.stringify({ alg, kid: k.kid })), c = b64u(JSON.stringify(claims));
+    const sg = createSign('RSA-SHA256'); sg.update(h + '.' + c);
+    return h + '.' + c + '.' + b64u(sg.sign(k.privateKey));
+  };
+  const T = Math.floor(Date.now() / 1000);
+  const I = await instance({ MAIL_MODE: 'log', GOOGLE_CLIENT_IDS: 'web.apps.googleusercontent.com,ios.apps.googleusercontent.com' });
+  const nonce = randomBytes(32).toString('hex');
+  const apple = (o = {}) => jwt(o.key || ka, { iss: 'https://appleid.apple.com', aud: 'rs.blokvolt.app', exp: T + 600, iat: T, sub: '001.abc',
+    email: 'vozac@privaterelay.appleid.com', email_verified: 'true', nonce: sha(nonce), ...(o.c || {}) });
+  let r = await I.call('POST', '/api/nalog/apple', { json: { id_token: apple(), nonce, app: true, lang: 'en' } });
+  let j = r.j;
+  check(r.status === 200 && /^[0-9a-f]{64}$/.test(j.token || '') && !r.cookies.join('; '), 'apple: a valid token opens an app session (Bearer, no cookie)', j);
+  const me = await I.call('GET', '/api/nalog/ja', { bearer: j.token });
+  const mj = me.j;
+  check(me.status === 200 && JSON.stringify(mj).includes('vozac@privaterelay.appleid.com'), 'apple: /api/nalog/ja with the token answers the account', mj);
+  const bad = async (what, json) => { const x = await I.call('POST', '/api/nalog/apple', { json }); check(x.status === 400, 'apple: refused — ' + what, x.txt); };
+  await bad('wrong nonce', { id_token: apple(), nonce: randomBytes(32).toString('hex'), app: true });
+  await bad('raw nonce in the token instead of its hash', { id_token: apple({ c: { nonce } }), nonce, app: true });
+  await bad('another audience', { id_token: apple({ c: { aud: 'com.evolako.app' } }), nonce, app: true });
+  await bad('another issuer', { id_token: apple({ c: { iss: 'https://evil.example' } }), nonce, app: true });
+  await bad('expired', { id_token: apple({ c: { exp: T - 3600 } }), nonce, app: true });
+  await bad('address not verified', { id_token: apple({ c: { email_verified: 'false' } }), nonce, app: true });
+  await bad('signed with an unknown key', { id_token: apple({ key: { ...kx, kid: 'apple-1' } }), nonce, app: true });
+  await bad('kid not published', { id_token: apple({ key: kx }), nonce, app: true });
+  await bad('tampered claims', { id_token: (() => { const t = apple().split('.'); t[1] = b64u(JSON.stringify({ iss: 'https://appleid.apple.com', aud: 'rs.blokvolt.app', exp: T + 600, email: 'drugi@example.com', email_verified: true, nonce: sha(nonce) })); return t.join('.'); })(), nonce, app: true });
+  await bad('no nonce', { id_token: apple(), app: true });
+  const google = (o = {}) => jwt(kg, { iss: 'https://accounts.google.com', aud: 'ios.apps.googleusercontent.com', exp: T + 600, iat: T, sub: '1234',
+    email: 'Vozac@Example.com', email_verified: true, nonce, ...(o.c || {}) });
+  r = await I.call('POST', '/api/nalog/google', { json: { id_token: google(), nonce, app: true } });
+  j = r.j;
+  check(r.status === 200 && j.token, 'google: a valid token of the iOS client opens a session', j);
+  r = await I.call('POST', '/api/nalog/google', { json: { id_token: google({ c: { aud: 'other.apps.googleusercontent.com' } }), nonce, app: true } });
+  check(r.status === 400, 'google: a client id that is not ours is refused', r.txt);
+  // the same address by e-mail code and by Google is one account
+  r = await I.call('POST', '/api/nalog/kod', { json: { email: 'vozac@example.com', t: 4000, app: true } });
+  const kn = (r.j).nonce;
+  const code = (await I.db.prepare("SELECT text FROM mail_log WHERE to_addr = 'vozac@example.com' ORDER BY id DESC LIMIT 1").first() || {}).text || '';
+  const six = (code.match(/\b\d{6}\b/) || [''])[0];
+  r = await I.call('POST', '/api/nalog/potvrdi', { json: { email: 'vozac@example.com', code: six, app: true, nonce: kn } });
+  const jc = r.j;
+  const n = (await I.db.prepare("SELECT COUNT(*) AS n FROM users WHERE email = 'vozac@example.com'").first()).n;
+  check(r.status === 200 && n === 1, 'one account per address: Google then the e-mail code', { status: r.status, n, jc });
+  // a web sign-in through the same endpoint gets the session cookie
+  r = await I.call('POST', '/api/nalog/google', { json: { id_token: google({ c: { aud: 'web.apps.googleusercontent.com' } }), nonce } });
+  check(r.status === 200 && /bv_s=/.test(r.cookies.join('; ') || ''), 'google: without app the session goes into the cookie', r.cookies.join('; '));
+  await I.mf.dispose();
+}
 
 console.log(`\n${oks} passed, ${fails} failed`);
 process.exit(fails ? 1 : 0);

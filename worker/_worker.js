@@ -969,7 +969,12 @@ async function nalogLink(request, env, b) {
 async function signIn(request, env, email, row, app) {
   const del = await env.DB.prepare('DELETE FROM auth_codes WHERE email = ?1 AND nonce = ?2 AND code_hash = ?3').bind(email, row.nonce, row.code_hash).run();
   if (!del.meta || !del.meta.changes) return bad('code');                // spent a moment ago by another request
-  const t = now(), lang = langOf(row.lang), token = randHex(32);
+  return openSession(request, env, email, langOf(row.lang), !!row.opt_in, app);
+}
+
+// one account per address, whichever way it signs in (code, link, Apple, Google): the same row of users, a new session
+async function openSession(request, env, email, lang, optIn, app) {
+  const t = now(), token = randHex(32);
   const u = await env.DB.prepare(`INSERT INTO users (id, email, lang, created_at, verified_at, last_login_at) VALUES (?1, ?2, ?3, ?4, ?4, ?4)
     ON CONFLICT (email) DO UPDATE SET lang = ?3, verified_at = COALESCE(users.verified_at, ?4), last_login_at = ?4 RETURNING id`)
     .bind(randHex(16), email, lang, t).first();
@@ -979,9 +984,76 @@ async function signIn(request, env, email, row, app) {
   ]);
   await unsuppress(env, email, ['bounce']);                             // the code arrived: the mailbox works again
   // "Pošaljite mi i Nedeljni pregled" at sign-in: pending until the click in the confirmation mail, like every sign-up
-  if (row.opt_in) await subscribe(request, env, email, { lang, uid: u.id, src: 'nalog-prijava' });
+  if (optIn) await subscribe(request, env, email, { lang, uid: u.id, src: 'nalog-prijava' });
   const out = await account(env, u.id);
   return app ? json({ ...out, token }) : jsonC(out, sessionCookies(env, token).concat(nonceCookie(env, '')));
+}
+
+// ---------------------------------------------------------------- Sign in with Apple and with Google (app 2.0, 26.10.2026)
+// {id_token, nonce, app?, lang?, opt_in?}: the identity token the app got from Apple (AuthenticationServices) or from Google
+// (ASWebAuthenticationSession + PKCE, the app exchanges the code itself; no client secret anywhere). The worker checks the
+// RS256 signature against the provider's published keys (JWKS, cached an hour), the issuer, the audience (our bundle id or
+// client ids: APPLE_AUDIENCES / GOOGLE_CLIENT_IDS, comma-separated, else the defaults below), the expiry, that the address
+// is verified, and the nonce: the app makes 32 random bytes, sends their hex here and gives the provider sha256(hex) (Apple)
+// or the hex itself (Google) — a token stolen from another sign-in has another nonce. Then the same account as the e-mail
+// code: users is keyed by the address, so signing in with Apple, Google or a code to the same address is one account. The
+// provider's subject id is not stored. Apple's "Hide My Email" address is an address like any other.
+const IDP = {
+  apple: { jwks: 'https://appleid.apple.com/auth/keys', iss: ['https://appleid.apple.com'], aud: env => env.APPLE_AUDIENCES || 'rs.blokvolt.app', nonceHashed: true },
+  google: { jwks: 'https://www.googleapis.com/oauth2/v3/certs', iss: ['https://accounts.google.com', 'accounts.google.com'],
+    aud: env => env.GOOGLE_CLIENT_IDS || GOOGLE_CLIENT_IDS, nonceHashed: false },
+};
+// BlokVolt web (Google Cloud project "blokvolt") and the iOS client of rs.blokvolt.app; a client id is not a secret
+const GOOGLE_CLIENT_IDS = '1037847270361-3kla03ofe86t0a10ptqqqsi1jo6tkru3.apps.googleusercontent.com';
+const JWKS = {};
+const b64u = s => Uint8Array.from(atob(String(s).replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((String(s).length + 3) % 4)), c => c.charCodeAt(0));
+async function jwksOf(url, kid, fresh) {
+  const c = JWKS[url];
+  if (!fresh && c && c.until > Date.now() && c.keys.some(k => k.kid === kid)) return c.keys;
+  const r = await fetch(url, { cf: { cacheTtl: 3600, cacheEverything: true } });
+  if (!r.ok) throw new Error('jwks ' + r.status);
+  const keys = (await r.json()).keys || [];
+  JWKS[url] = { keys, until: Date.now() + 3600e3 };
+  return keys;
+}
+// the verified claims of an identity token, or null
+async function idTokenClaims(env, idp, tok) {
+  const parts = String(tok || '').split('.');
+  if (parts.length !== 3 || tok.length > 6000) return null;
+  let head, claims;
+  try { head = JSON.parse(new TextDecoder().decode(b64u(parts[0]))); claims = JSON.parse(new TextDecoder().decode(b64u(parts[1]))); } catch (e) { return null; }
+  if (head.alg !== 'RS256' || !head.kid) return null;
+  let keys = await jwksOf(idp.jwks, head.kid, false), jwk = keys.find(k => k.kid === head.kid);
+  if (!jwk) { keys = await jwksOf(idp.jwks, head.kid, true); jwk = keys.find(k => k.kid === head.kid); }   // keys rotated
+  if (!jwk) return null;
+  const key = await crypto.subtle.importKey('jwk', { kty: 'RSA', n: jwk.n, e: jwk.e, alg: 'RS256', ext: true },
+    { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']);
+  const ok = await crypto.subtle.verify('RSASSA-PKCS1-v1_5', key, b64u(parts[2]), enc.encode(parts[0] + '.' + parts[1]));
+  if (!ok) return null;
+  const auds = idp.aud(env).split(',').map(x => x.trim()).filter(Boolean);
+  const aud = Array.isArray(claims.aud) ? claims.aud : [claims.aud];
+  const t = now();
+  if (!idp.iss.includes(claims.iss) || !aud.some(a => auds.includes(a)) || !(claims.exp > t - 60) || (claims.iat && claims.iat > t + 300)) return null;
+  return claims;
+}
+function nalogIdToken(kind) {
+  return async (request, env, b) => {
+    await ensureSchema(env);
+    const ip = await ipHash(request, env);
+    if ((await used(env, 'nf:' + ip)) >= LIMIT.failIp) return bad('limit', 429);
+    const fail = async err => { await allow(env, 'nf:' + ip, LIMIT.failIp); return bad(err); };
+    const nonce = String(b.nonce || '');
+    if (!TOK64.test(nonce)) return fail('nonce');
+    let c;
+    try { c = await idTokenClaims(env, IDP[kind], b.id_token); } catch (e) { return bad('provider', 503); }
+    if (!c) return fail('token');
+    const want = IDP[kind].nonceHashed ? await sha256(nonce) : nonce;
+    if (!same(String(c.nonce || ''), want)) return fail('nonce');
+    if (!(c.email_verified === true || c.email_verified === 'true')) return fail('email');
+    const email = normEmail(c.email);
+    if (!email) return fail('email');
+    return openSession(request, env, email, langOf(b.lang), b.opt_in === true, b.app === true);
+  };
 }
 
 // ---------------------------------------------------------------- the account
@@ -1727,10 +1799,12 @@ async function adminPostaStop(request, env) {
 
 // path → [method, handler]; a known path with another method answers 405. POST handlers get the parsed JSON body.
 const ACCOUNT_ROUTES = {
-  '/api/nalog/status': ['GET', (rq, env) => json({ ok: true, mail: mailOn(env) }, 200, { 'cache-control': 'public, max-age=60' })],
+  '/api/nalog/status': ['GET', (rq, env) => json({ ok: true, mail: mailOn(env), apple: true, google: true }, 200, { 'cache-control': 'public, max-age=60' })],
   '/api/nalog/kod': ['POST', nalogKod],
   '/api/nalog/potvrdi': ['POST', nalogPotvrdi],
   '/api/nalog/link': ['POST', nalogLink],
+  '/api/nalog/apple': ['POST', nalogIdToken('apple')],
+  '/api/nalog/google': ['POST', nalogIdToken('google')],
   '/api/nalog/ja': ['GET', nalogJa],
   '/api/nalog/odjava': ['POST', nalogOdjava],
   '/api/nalog/podesavanja': ['POST', nalogPodesavanja],
