@@ -356,7 +356,17 @@ env.globals['fig'] = fig_html
 env.globals['yt'] = yt_html
 
 
+# Markdown passes raw HTML through, and the CSP below trusts every inline script it finds in the built pages. So a text
+# (an article, a news item, a help page, a newsletter issue) may not carry scripts, frames, event handlers or javascript:
+# links: the build stops instead of publishing them (RUNBOOK 3.33). Forms and plain HTML blocks stay allowed.
+_UNSAFE_MD = re.compile(r'<\s*/?\s*(script|iframe|frame|frameset|object|embed|applet|base|meta)\b|<[^>]*\son[a-z]+\s*=|'
+                        r'\{[^}\n]*\son[a-z]+\s*=|javascript\s*:|vbscript\s*:|data\s*:\s*text/html', re.I)
+
+
 def md_to_html(text):
+    _bad = _UNSAFE_MD.search(text or '')
+    if _bad:
+        sys.exit('build stopped: unsafe HTML in a text (' + repr(_bad.group(0)[:60]) + ' near ' + repr((text or '')[max(0, _bad.start() - 60):_bad.start()][-60:]) + ') — RUNBOOK 3.33')
     h = markdown.markdown(text, extensions=['tables', 'attr_list', 'md_in_html', 'sane_lists'])
     # [[yt:ID]] and [[fig:name|alt]] on their own line
     h = re.sub(r'<p>\[\[yt:([\w-]+)\]\]</p>', lambda m: str(yt_html(m.group(1))), h)
@@ -2240,6 +2250,10 @@ render('article.html', '/404.html', crumbs=[], noindex=True, section='',
 (DIST / '.well-known').mkdir(exist_ok=True)
 (DIST / '.well-known' / 'tdmrep.json').write_text(json.dumps([{'location': '/assets/map/*', 'tdm-reservation': 1, 'tdm-policy': f'{SITE}/politika-privatnosti.html#uslovi'},
                                                               {'location': '/api/*', 'tdm-reservation': 1, 'tdm-policy': f'{SITE}/politika-privatnosti.html#uslovi'}]), encoding='utf-8')
+# security.txt (RFC 9116): where to report a vulnerability (RUNBOOK 3.33). Expires moves with every build, so it never lapses
+_sec_exp = (datetime.date.fromisoformat(NOW_ISO) + datetime.timedelta(days=330)).isoformat() + 'T00:00:00Z'
+(DIST / '.well-known' / 'security.txt').write_text(f'Contact: mailto:hello@blokvolt.com\nExpires: {_sec_exp}\n'
+                                                   f'Preferred-Languages: sr, en, ru\nCanonical: {SITE}/.well-known/security.txt\n', encoding='utf-8')
 _dir_redirects = ['/vodici', '/firme', '/javno-punjenje', '/mapa', '/cene']
 (DIST / '_redirects').write_text('\n'.join([
     '/paketi-i-cene https://www.evolako.rs/paketi-i-cene 301',

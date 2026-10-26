@@ -25,8 +25,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: '3.11'
       - name: Install
@@ -45,20 +47,24 @@ jobs:
         run: python3 scripts/gen_com.py
       - name: News linter
         run: python3 scripts/lint_sr.py --all-news
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22'
       - name: Site search (typos, Cyrillic, towns, three languages; the search log and search by meaning on the server)
         run: |
           node scripts/qa/pretraga_test.mjs
           node --no-warnings scripts/qa/pretraga_worker_test.mjs
+      - name: Security basics of the worker (pages.dev alias, IPv6 limits, photo ceilings, admin key; RUNBOOK 3.33)
+        run: node --no-warnings scripts/qa/zastita_worker_test.mjs
   live:
     if: github.event_name != 'push'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: '3.11'
       - name: Live sites

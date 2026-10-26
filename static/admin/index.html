@@ -78,7 +78,7 @@ select{font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--l
           '<div class="meta"><a href="https://www.openstreetmap.org/?mlat=' + n.lat + '&amp;mlon=' + n.lon + '#map=19/' + n.lat + '/' + n.lon + '" target="_blank" rel="noopener">OSM</a> · ' +
           '<a href="https://www.google.com/maps/search/?api=1&amp;query=' + ll + '" target="_blank" rel="noopener">Google</a> · ' +
           '<a href="/mapa/?ll=' + ll + '" target="_blank" rel="noopener">na našoj mapi</a> · ' + esc(ll) + '</div>' +
-          (n.foto ? '<a href="/api/foto/' + n.foto + '.jpg" target="_blank" rel="noopener"><img src="/api/foto/' + n.foto + '.jpg?v=t" alt="" style="max-width:220px;border-radius:10px;margin:6px 0"></a>' : '') +
+          (n.foto ? '<a href="/api/foto/' + n.foto + '.jpg" target="_blank" rel="noopener"><img src="/api/foto/' + n.foto + '.jpg" alt="" style="max-width:220px;border-radius:10px;margin:6px 0"></a>' : '') +
           '<div class="bar" style="margin-top:8px"><button class="ok" type="button">Objavi</button><button class="no" type="button">Odbij</button></div>';
         d.querySelector('.ok').onclick = function () { decide('n', n.id, 'ok', d); };
         d.querySelector('.no').onclick = function () { decide('n', n.id, 'no', d); };
@@ -87,7 +87,7 @@ select{font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--l
       $('photos').innerHTML = j.photos.length ? '' : '<p class="empty">Nema.</p>';
       j.photos.forEach(function (p) {
         var d = document.createElement('div'); d.className = 'card';
-        d.innerHTML = '<a href="/api/foto/' + p.id + '.jpg" target="_blank" rel="noopener"><img src="/api/foto/' + p.id + '.jpg?v=t" alt=""></a>' +
+        d.innerHTML = '<a href="/api/foto/' + p.id + '.jpg" target="_blank" rel="noopener"><img src="/api/foto/' + p.id + '.jpg" alt=""></a>' +   // the full photo, not the uploader's own thumbnail: what gets approved is what the map shows
           '<div class="meta">' + esc(p.st) + ' · ' + when(p.at) + (p.rep ? ' · prijave: ' + p.rep : '') + '</div>' + (p.cap ? '<div>' + esc(p.cap) + '</div>' : '') +
           '<div class="bar" style="margin-top:8px"><button class="ok" type="button">Objavi</button><button class="no" type="button">Odbij</button></div>';
         d.querySelector('.ok').onclick = function () { decide('f', p.id, 'ok', d); };
