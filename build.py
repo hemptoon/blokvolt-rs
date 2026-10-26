@@ -852,6 +852,11 @@ shutil.copytree(ROOT / 'static', DIST, dirs_exist_ok=True)
 MAP = map_data.build(DIST, operators, price_index, {o['slug']: {'logo': o['logo'], 'dark': o['logo_dark']} for o in operators})
 MAP_COUNTS = MAP['counts']
 CARS_N = map_data.cars(DIST)   # "Moj auto": /assets/map/auta.json
+# the map in two numbers for the regional site: scripts/gen_com.py reads them from dist/ for the Serbia page of blokvolt.com
+# (the build of blokvolt.com runs this build first; without dist/ it falls back to content/com/site.json → map_fallback)
+(DIST / 'assets' / 'map' / 'stat.json').write_text(json.dumps({
+    'n': MAP['n'], 'ok': sum(1 for _s in MAP['stations'] if (_s.get('v') or {}).get('s') == 'ok'),
+    'fast': MAP['fast'], 'free': MAP['free']}, separators=(',', ':')), encoding='utf-8')
 
 # neighbouring countries on /mapa/: the blokvolt.com sections carry the same open data (OpenStreetMap + Open Charge Map,
 # not checked one by one) for the neighbours; /mapa/ draws them as a second, quieter layer (map.js: cfg.region), without

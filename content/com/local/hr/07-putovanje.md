@@ -5,8 +5,8 @@ order: 7
 nav: Putovanje
 icon: road
 priority: 0.8
-title: Električnim autom na more: punionice na autocestama, trajekti i otoci | BlokVolt
-description: Gdje su punionice na autocestama A1, A3, A4, A6 i A7, najduži razmaci bez punionice, pravila Jadrolinije za električne automobile, punionice na otocima i uz granične prijelaze.
+title: Električnim autom na more: punionice na autocestama | BlokVolt
+description: Punionice na autocestama A1, A3, A4, A6 i A7, najduži razmaci bez punionice, pravila Jadrolinije za električne automobile i punionice na otocima.
 h1: Električnim autom na more
 lead: Punionice na odmorištima autocesta, najduži razmaci bez njih, što Jadrolinija traži od vozača električnih automobila i gdje se puni na otocima.
 card: Odmorišta s punionicama na autocestama, najduži razmaci, trajekti, otoci i granični prijelazi.

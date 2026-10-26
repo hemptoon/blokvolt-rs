@@ -1,7 +1,7 @@
 {
  "cc": "BA",
- "checked": "28.09.2026.",
- "checked_iso": "2026-09-28",
+ "checked": "27.10.2026.",
+ "checked_iso": "2026-10-27",
  "slugs": {"prices": "cijene/"},
  "map": {"center": [17.75, 44.15], "zoom": 6.7},
  "net_names": {"moon": "MOON", "epbih": "EPBiH", "tesla": "Tesla", "elen": "ELEN", "petrol": "Petrol"},
@@ -45,7 +45,7 @@
   ["Mostar, iza Gradske vijećnice", "2 × 22 kW, Unis telekomunikacije; na otvaranju 2021. besplatno"],
   ["Banja Luka, Banja Luka College", "solarni punjač, dva mjesta; na otvaranju 2023. besplatno"],
   ["Tesla", "prema Teslinom spisku u BiH nema Supercharger lokacija"],
-  ["EP HZ HB i Elektroprivreda RS", "javne mreže punjača nismo pronašli"]
+  ["EP HZ HB i Elektroprivreda RS", "javne mreže punjača nisu pronađene"]
  ],
 
  "power": {
@@ -71,8 +71,8 @@
    {"label": "EPBiH — sati niže tarife", "url": "https://bljesak.info/gospodarstvo/flash/elektroprivreda-bih-objavila-novi-rezim-tarifa-za-domacinstva/510477", "date": "28.03.2025."}
   ]
  },
- "fuel": {"petrol": 3.31, "diesel": 3.74, "date": "22.09.2026.", "src": "https://n1info.ba/vijesti/novi-rast-cijena-goriva-u-fbih-dizel-od-pocetka-septembra-poskupio-za-31-a-benzin-za-25-feninga",
-          "src_label": "N1 BiH — prosječne cijene goriva u FBiH, 22.09.2026."},
+ "fuel": {"petrol": 3.41, "diesel": 3.74, "date": "20.10.2026.", "src": "https://n1info.ba/english/news/fuel-prices-in-federation-of-bih-surge-since-early-september",
+          "src_label": "N1 BiH — prosječne cijene goriva u FBiH, 20.10.2026. (Federalno ministarstvo trgovine)"},
  "calc": {"km": 1200, "kwh100": 17, "loss": 10, "share": 20, "tariff": "epbih_plavi_nt", "pub": 0.8, "l100_petrol": 6.5, "l100_diesel": 5.5,
           "chips": [["AC", 0.5], ["MOON DC", 0.8], ["DC", 0.9]]},
 
@@ -80,7 +80,7 @@
   {"name": "JP EV 2026 — Fond za zaštitu okoliša FBiH", "status": "paused", "who": "fizička lica s prebivalištem u FBiH, pravna lica i obrti sa sjedištem u FBiH; jedno vozilo po podnosiocu",
    "amount": "30 % cijene: do 12.000 KM za električno vozilo (M1, N1) i do 10.000 KM za plug-in hibrid (do 50 g CO₂/km); ukupno 500.000 KM",
    "cond": "novo vozilo, kupljeno u roku od 5 mjeseci od potpisa ugovora, registrovano u FBiH, ne prodaje se 3 godine",
-   "dates": "prijave od 16.09.2026. preko e-prijava.fzofbih.org.ba; 18.09.2026. privremeno zatvoren jer su sredstva rezervisana; poziv traje do 31.12.2026. ili do utroška", "src": "https://fzofbih.org.ba/2026/09/18/privremeno-zatvaranje-javnog-poziva-za-sufinanciranje-nabave-elektricnih-vozila-za-2026-godinu-zbog-rezervacije-raspolozivih-sredstava/", "src_label": "Fond za zaštitu okoliša FBiH, 18.09.2026."},
+   "dates": "prijave od 16.09.2026. preko e-prijava.fzofbih.org.ba; 18.09.2026. privremeno zatvoren jer su sredstva rezervisana; 21.10.2026. objavljena odluka o dodjeli 184.000 KM za 16 podnosilaca (prvi izvještaj komisije); prijave ponovo od 30.10.2026. u 8 h, do rezervacije sredstava, a najkasnije do 31.12.2026.", "src": "https://fzofbih.org.ba/2026/10/21/obavijest-o-objavi-odluka-o-dodjeli-sredstava-i-ponovnom-otvaranju-javnih-poziva-jp-ee-ss-2026-i-jp-ev-2026/", "src_label": "Fond za zaštitu okoliša FBiH, 21.10.2026."},
   {"name": "Carina 0 % na nova električna vozila", "status": "open", "who": "svi uvoznici novih vozila",
    "amount": "carinska stopa 0 % za nova električna vozila (hibridi 5 %)",
    "cond": "novoproizvedena vozila bez preferencijalnog statusa; PDV 17 % se plaća",
@@ -89,16 +89,16 @@
    "amount": "do 10.000 KM za električno vozilo, do 7.000 KM za plug-in hibrid; ukupno 1.000.000 KM",
    "cond": "program iz 2024. godine", "dates": "završen", "src": "https://fbihvlada.gov.ba/hr/za-poticaje-pri-kupovini-elektricnih-automobila-milion-km", "src_label": "Vlada FBiH, 01.08.2024."}
  ],
- "subsidies_none": "Za Republiku Srpsku (Fond za zaštitu životne sredine i energetsku efikasnost RS), Brčko distrikt i Kanton Sarajevo nismo pronašli program za električna vozila (28.09.2026.).",
+ "subsidies_none": "Za Republiku Srpsku (Fond za zaštitu životne sredine i energetsku efikasnost RS), Brčko distrikt i Kanton Sarajevo program za električna vozila nije pronađen (28.09.2026.).",
  "benefits": [
   {"t": "Carina", "v": "0 % za nova električna vozila do 31.12.2026.", "src": "https://www.klix.ba/biznis/privreda/produzeno-ukidanje-carina-na-uvoz-elektricnih-vozila-u-bih-do-kraja-2026-godine/260218169"},
   {"t": "PDV", "v": "17 %, bez olakšice za električna vozila.", "src": ""},
   {"t": "Registracija u FBiH", "v": "Primjer iz Zenice 2023.: putarina se za električno vozilo računa po snazi (za 160 kW 262,50 KM), porez na imovinu i naknada za fond za okoliš bili su 0 KM.", "src": "https://www.zenicablog.com/istrazili-smo-registracija-vozila-i-dalje-daleko-najskuplja-u-fbih-hibridna-i-elektricna-vozila-stvaraju-konfuziju/"},
-  {"t": "Tuzlanski kanton", "v": "Prema UNDP-ovoj studiji, električna vozila su oslobođena poreza na imovinu (oko 2022.); da li i danas važi, nismo provjerili.", "src": "https://www.undp.org/sites/g/files/zskgke326/files/2025-11/e-mobility_and_market_study_in_bih_1.pdf"}
+  {"t": "Tuzlanski kanton", "v": "Prema UNDP-ovoj studiji, električna vozila su oslobođena poreza na imovinu (oko 2022.); da li i danas važi, nije provjereno.", "src": "https://www.undp.org/sites/g/files/zskgke326/files/2025-11/e-mobility_and_market_study_in_bih_1.pdf"}
  ],
  "buildings": [
   {"t": "Kanton Sarajevo", "v": "Zakon o upravljanju zajedničkim dijelovima zgrade (Sl. novine KS 19/2017): za redovno upravljanje potrebna je saglasnost etažnih vlasnika koji imaju više od polovine ukupne površine (čl. 28), a za vanredno — svih etažnih vlasnika (čl. 36). Punjači se u zakonu ne spominju, pa nije jasno u koju grupu spadaju.", "src": "https://www.paragraf.ba/propisi/kantona-sarajevo/zakon-o-upravljanju-zajednickim-dijelovima-zgrade.html"},
-  {"t": "Republika Srpska", "v": "Zakon o održavanju zgrada (Sl. glasnik RS 101/11): odlučuje skupština zajednice etažnih vlasnika. Posebno pravilo za punjače nismo našli.", "src": "https://zev.rs.ba/zakon-o-odrzavanju-zgrada"}
+  {"t": "Republika Srpska", "v": "Zakon o održavanju zgrada (Sl. glasnik RS 101/11): odlučuje skupština zajednice etažnih vlasnika. Posebno pravilo za punjače nije pronađeno.", "src": "https://zev.rs.ba/zakon-o-odrzavanju-zgrada"}
  ],
 
  "road": [
@@ -107,8 +107,8 @@
   ["Sarajevo, Blažuj (Mali Kiseljak 6A)", "MOON 150 kW, 0,80 KM po kWh; 2024. radio pon–pet od 8 do 18 h"],
   ["Sarajevo, ulica Kralja Tvrtka", "MOON HYC 50"],
   ["Uz koridor Vc (AC)", "EPBiH: Konjic, Jablanica, Mostar, Visoko, Kakanj, Zenica, Sarajevo"],
-  ["Mostar i Međugorje", "EPBiH AC u Mostaru (Adema Buća 34), punjač 2 × 22 kW iza Gradske vijećnice; DC punjač u Međugorju nismo pronašli"],
-  ["Neum, Banja Luka – Gradiška, M17 prema moru", "brzi punjač s izvorom nismo pronašli"]
+  ["Mostar i Međugorje", "EPBiH AC u Mostaru (Adema Buća 34), punjač 2 × 22 kW iza Gradske vijećnice; DC punjač u Međugorju nije pronađen"],
+  ["Neum, Banja Luka – Gradiška, M17 prema moru", "brzi punjač s izvorom nije pronađen"]
  ],
  "road_srcs": [
   {"label": "Autoceste FBiH i Elektroprivreda BiH — prva DC punionica na A1 (18.02.2022.)", "url": "https://www.jpautoceste.ba/autoceste-fbih-i-elektroprivreda-bih-prva-dc-punionica-za-elektricna-vozila-na-autocesti-a1/", "date": "18.02.2022."},

@@ -4,7 +4,7 @@ slug:
 template: hub
 order: 1
 priority: 0.9
-title: Karikimi i veturave elektrike në Kosovë — harta, çmimet, tarifat | BlokVolt
+title: Karikimi i veturave elektrike në Kosovë: harta dhe çmimet | BlokVolt
 description: Harta e karikuesve publikë në Kosovë, çmimet e karikimit, sa kushton karikimi në shtëpi me tarifat e ZRRE-së, taksat dhe autostradat — me burime.
 kicker: Udhëzues · Kosova
 h1: Karikimi i veturave elektrike në Kosovë
@@ -29,7 +29,7 @@ Një veturë elektrike konsumon rreth 17 kWh në 100 km. Me çmimet e publikuara
 | ECHARGE DC | {{ num(EC[2].v, 2) }}–{{ money(EC[3].v) }} | {{ num(EC[2].v * 17, 2) }}–{{ money(EC[3].v * 17) }} |
 | Benzinë, 6,5 l në 100 km, {{ money(C.fuel.petrol) }} për litër | — | {{ money(6.5 * C.fuel.petrol) }} |
 
-Për karikimin në shtëpi janë llogaritur TVSH 8 % dhe 10 % humbje; tarifa fikse mujore nuk është përfshirë. ECHARGE nuk shkruan nëse çmimet e saj përfshijnë TVSH-në. Çmimi i benzinës është orientues, nga Petrol Company më {{ C.fuel.date }}. Llogaritjen për veturën tuaj mund ta bëni te [kalkulatori]({{ PAGES.home.path }}).
+Për karikimin në shtëpi janë llogaritur TVSH 8 % dhe 10 % humbje; tarifa fikse mujore nuk është përfshirë. Sipas kushteve të përdorimit të ECHARGE, çmimet e saj përfshijnë TVSH-në. Çmimi i benzinës është orientues, nga Petrol Company më {{ C.fuel.date }}. Llogaritjen për veturën tuaj mund ta bëni te [kalkulatori]({{ PAGES.home.path }}).
 
 ## Çfarë gjeni këtu
 

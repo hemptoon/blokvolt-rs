@@ -5,8 +5,8 @@ order: 8
 nav: Zgrade
 icon: building
 priority: 0.8
-title: Punionica u stambenoj zgradi: tko odlučuje i koja je većina potrebna (Hrvatska 2026.) | BlokVolt
-description: Po Zakonu o upravljanju i održavanju zgrada od 2025. o mjestima za punjenje električnih vozila odlučuje natpolovična većina suvlasnika. Protupožarni uvjeti, nove zgrade, EPBD IV i nacrt pravilnika.
+title: Punionica u stambenoj zgradi: tko odlučuje (Hrvatska) | BlokVolt
+description: O punionici u stambenoj zgradi od 2025. odlučuje natpolovična većina suvlasnika. Protupožarni uvjeti, nove zgrade, EPBD IV i nacrt pravilnika.
 h1: Punionica u stambenoj zgradi
 lead: Tko odlučuje o punionici u zajedničkoj garaži ili na parkiralištu zgrade, koliko glasova treba, što vrijedi za protupožarnu zaštitu i što se mijenja s novim propisima EU.
 card: Od 2025. o mjestu za punjenje odlučuje natpolovična većina suvlasnika. Protupožarni uvjeti i novi propisi.

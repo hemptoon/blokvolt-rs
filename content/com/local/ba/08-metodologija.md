@@ -6,7 +6,7 @@ nav_ft: Metodologija
 icon: shield
 priority: 0.4
 title: Metodologija: izvori, provjera i pravila | BlokVolt BiH
-description: Odakle BlokVolt uzima podatke o punjačima, cijenama, tarifama i poticajima u Bosni i Hercegovini, kako ih provjerava, ko stoji iza vodiča i kako prijaviti grešku.
+description: Odakle BlokVolt uzima podatke o punjačima, cijenama, tarifama i poticajima u BiH, kako ih provjerava i kako prijaviti grešku.
 h1: Metodologija
 lead: Odakle su podaci, kako se provjeravaju, ko stoji iza vodiča i kako prijaviti grešku.
 card: Izvori, provjera, licence i ko stoji iza BlokVolta.

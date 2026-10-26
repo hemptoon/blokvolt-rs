@@ -1,7 +1,7 @@
 {
  "cc": "ME",
- "checked": "28.09.2026.",
- "checked_iso": "2026-09-28",
+ "checked": "27.10.2026.",
+ "checked_iso": "2026-10-27",
  "slugs": {
   "prices": "cijene/"
  },
@@ -71,7 +71,7 @@
    "adhoc": "Nije objavljeno.",
    "roaming": "Nije objavljeno.",
    "prices": [],
-   "price_text": "EKO na svojoj stranici navodi samo stanice s punjačima od 50 kW (među njima Podgorica – Stari aerodrom, Tivat – Jadranska magistrala, Herceg Novi, Žabljak i Bijelo Polje – Rasovo); cijene i način plaćanja nisu objavljeni.",
+   "price_text": "EKO na svojoj stranici navodi sedam stanica s električnim punjačem: Podgorica (Bulevar Vilija Branta 1, Stari aerodrom, Zabjelo), Tivat – Jadranska magistrala, Herceg Novi, Žabljak i Bijelo Polje – Rasovo. Snaga od 50 kW navedena je u najavi Jugopetrola; cijene i način plaćanja nisu objavljeni.",
    "fees": [],
    "valid_from": "",
    "src": "https://www.jugopetrol.co.me/stanice/usluge/elektri-ni-punja-i/",
@@ -135,7 +135,7 @@
   ],
   [
    "Crnogorski Telekom (2019.)",
-   "punjači u Tivtu, Cetinju i Pljevljima; da li danas rade i koliko koštaju nismo provjerili."
+   "punjači u Tivtu, Cetinju i Pljevljima; da li danas rade i koliko koštaju nije provjereno."
   ],
   [
    "Hoteli i marine",
@@ -143,7 +143,7 @@
   ],
   [
    "EPCG i Petrol Crna Gora",
-   "javnu mrežu punjača nismo pronašli."
+   "javna mreža punjača nije pronađena."
   ]
  ],
  "power": {
@@ -188,11 +188,11 @@
   ]
  },
  "fuel": {
-  "petrol": 1.74,
-  "diesel": 1.95,
-  "date": "22.09.2026.",
-  "src": "https://investitor.me/2026/09/21/gorivo-od-utorka-poskupljuje-uprkos-nizim-akcizama-dizel-skace-na-195-eura/",
-  "src_label": "Investitor.me — maksimalne cijene goriva od 22.09.2026."
+  "petrol": 1.83,
+  "diesel": 1.97,
+  "date": "20.10.2026.",
+  "src": "https://nafta.hr/sr/nove-zvanicne-cene-goriva-u-crnoj-gori-od-20-oktobra-2026/",
+  "src_label": "Nafta.hr — maksimalne cijene goriva od 20.10.2026."
  },
  "calc": {
   "km": 1200,
@@ -211,9 +211,9 @@
    "name": "Eko-fond — subvencije za električna vozila (SKLAD e-mobility, saradnja sa Slovenijom)",
    "status": "closed",
    "who": "fizička lica, privredna društva, preduzetnici i javni sektor",
-   "amount": "u dva konkursa subvencionisana su 53 nova električna vozila; iznosi za 2026. nisu objavljeni na listi konkursa",
+   "amount": "u dva konkursa 2025. subvencionisana su 53 nova električna vozila (ukupno 300.000 €); iznosi u konkursima 2026. nisu potvrđeni iz zvaničnog izvora",
    "cond": "nova električna vozila; hibridi nisu obuhvaćeni",
-   "dates": "posljednja odluka o odabiru 03.06.2026.; otvorenog konkursa za vozila nema (28.09.2026.)",
+   "dates": "konkursi objavljeni 27.02.2026. i 15.05.2026. su zatvoreni; posljednja odluka o odabiru 03.06.2026.; otvorenog konkursa ni za vozila ni za punjače nema (27.10.2026.)",
    "src": "https://www.eko-fond.co.me/konkursi",
    "src_label": "Eko-fond — konkursi"
   },
@@ -223,12 +223,12 @@
    "who": "fizička lica (1 vozilo), preduzeća i preduzetnici (do 4), javni sektor (do 8)",
    "amount": "M1: 7.200 € (cijena do 35.000 €), 6.500 € (35.000–45.000 €), 4.500 € (45.000–65.000 €); N1 4.500–6.500 €; L 300–1.500 €; ukupno 150.000 €",
    "cond": "vozila s nultom emisijom CO₂; hibridi nisu obuhvaćeni",
-   "dates": "objavljen 20.05.2025., 45 dana ili do utroška",
+   "dates": "objavljen 19.05.2025., 45 dana ili do utroška",
    "src": "https://bankar.me/eko-fond-raspisao-oglas-za-subvencije-za-elektricna-vozila/",
    "src_label": "Bankar.me, 2025."
   }
  ],
- "subsidies_note": "Poreske, carinske ili akcizne olakšice za električna vozila, popuste pri registraciji i besplatan parking nismo mogli potvrditi iz zvaničnog izvora (28.09.2026.).",
+ "subsidies_note": "Poreske, carinske ili akcizne olakšice za električna vozila, popusti pri registraciji i besplatan parking nisu potvrđeni iz zvaničnog izvora (28.09.2026.).",
  "benefits": [],
  "road": [
   [
@@ -237,15 +237,15 @@
   ],
   [
    "Jadranska magistrala",
-   "EKO Tivat (50 kW), EKO Herceg Novi (50 kW); Tesla Destination u Porto Montenegru i Luštica Bay. Između Budve i Ulcinja brzi punjač nismo potvrdili."
+   "EKO Tivat (50 kW), EKO Herceg Novi (50 kW); Tesla Destination u Porto Montenegru i Luštica Bay. Između Budve i Ulcinja brzi punjač nije potvrđen."
   ],
   [
    "Podgorica",
-   "EKO Podgorica, Bulevar Vilija Branta 1, Stari aerodrom (50 kW)"
+   "EKO: Bulevar Vilija Branta 1, Stari aerodrom i Zabjelo (po 50 kW)"
   ],
   [
    "Žabljak i sjever",
-   "EKO Žabljak (50 kW), EKO Bijelo Polje – Rasovo (50 kW); u Nikšiću brzi punjač nismo potvrdili"
+   "EKO Žabljak (50 kW), EKO Bijelo Polje – Rasovo (50 kW); u Nikšiću brzi punjač nije potvrđen"
   ],
   [
    "Granica s Hrvatskom (Debeli Brijeg)",
@@ -257,7 +257,7 @@
   ],
   [
    "Trajekt Kamenari – Lepetane",
-   "pravila za električna vozila nismo mogli provjeriti"
+   "pravila za električna vozila nisu provjerena"
   ]
  ],
  "road_note": "Mreža TEN-T u Crnoj Gori ima 797 km, bez ultrabrzih punjača; nijedna lokacija ne zadovoljava razmak od 60 km iz propisa EU (AFIR). Nacrt nacionalnog okvira procjenjuje da treba najmanje 14 novih lokacija, oko 5,7 MW.",
@@ -265,7 +265,7 @@
   {
    "label": "Jugopetrol — električni punjači",
    "url": "https://www.jugopetrol.co.me/stanice/usluge/elektri-ni-punja-i/",
-   "date": "28.09.2026."
+   "date": "27.10.2026."
   },
   {
    "label": "Jugopetrol — sedam novih punjača širom Crne Gore",
@@ -280,7 +280,7 @@
   {
    "label": "Tesla — punjači u Crnoj Gori",
    "url": "https://www.tesla.com/findus/list/chargers/Montenegro",
-   "date": "28.09.2026."
+   "date": "27.10.2026."
   }
  ],
  "csv": {

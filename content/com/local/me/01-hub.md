@@ -4,8 +4,8 @@ slug:
 template: hub
 order: 1
 priority: 0.9
-title: Punjači za električne automobile u Crnoj Gori — mapa, cijene, subvencije | BlokVolt
-description: Mapa javnih punjača u Crnoj Gori, šta operateri objavljuju o cijenama, koliko košta punjenje kod kuće po tarifama EPCG, subvencije Eko-fonda i punjači na primorju i autoputu — s izvorima.
+title: Punjači za električne automobile u Crnoj Gori: mapa i cijene | BlokVolt
+description: Mapa javnih punjača u Crnoj Gori, cijene koje operateri objavljuju, punjenje kod kuće po tarifama EPCG, subvencije Eko-fonda, primorje i autoput.
 kicker: Vodič · Crna Gora
 h1: Punjenje električnih automobila u Crnoj Gori
 lead: Gdje napuniti auto, šta se zna o cijenama javnog punjenja, koliko košta punjenje kod kuće, koje subvencije postoje i gdje se puni na primorju — na jednom mjestu, s izvorom i datumom provjere.
@@ -19,8 +19,8 @@ card: Mapa punjača, cijene, kalkulator s tarifama EPCG, subvencije Eko-fonda i 
 
 - **Mreža je mala.** Javnih mjesta za punjenje u Crnoj Gori je {{ C.points.n }} (nacrt nacionalnog okvira, jun 2026.), uglavnom manje snage i u gradovima. Najveća mreža brzih punjača su EKO stanice (Jugopetrol) sa 7 punjača od 50 kW. [Mapa]({{ PAGES.map.path }})
 - **Cijene nisu objavljene.** Nijedan provjereni operater ne objavljuje cjenovnik javnog punjenja. [Cijene]({{ PAGES.prices.path }})
-- **Kod kuće je jeftino.** Noću kWh sa mrežnim naknadama i PDV-om košta oko 0,07 € (indikativno), pa 100 km košta oko 1,30 €, a benzinom oko 11 €. [Kalkulator]({{ PAGES.home.path }})
-- **Subvencije.** Eko-fond je u dva konkursa, u saradnji sa Slovenijom, subvencionisao 53 električna vozila; otvorenog konkursa trenutno nema. [Subvencije]({{ PAGES.subsidies.path }})
+- **Kod kuće je jeftino.** Noću kWh sa mrežnim naknadama i PDV-om košta oko 0,07 € (indikativno), pa 100 km košta oko 1,30 €, a benzinom oko 12 €. [Kalkulator]({{ PAGES.home.path }})
+- **Subvencije.** Eko-fond je 2025. u dva konkursa, u saradnji sa Slovenijom, subvencionisao 53 električna vozila; otvorenog konkursa trenutno nema. [Subvencije]({{ PAGES.subsidies.path }})
 - **Autoput.** Na dionici Smokovac – Mateševo na odmorištu Pelev Brijeg izgrađena je stanica 4 × 50 kW, a na Gornjim Mrkama u ugradnji je 4 × 60 kW. [Na putu]({{ PAGES.road.path }})
 
 ## Šta ovdje nalazite

@@ -5,14 +5,14 @@ order: 3
 nav: Cijene
 icon: coins
 priority: 0.8
-title: Cijene punjenja električnih automobila u BiH 2026. — EPBiH, MOON i ostali | BlokVolt
-description: Koliko košta punjenje na javnim punjačima u Bosni i Hercegovini: Elektroprivreda BiH, MOON, hoteli i tržni centri; kako se plaća, aplikacija EPBiH Charge i gdje je punjenje još besplatno.
+title: Cijene punjenja električnih automobila u BiH 2026. | BlokVolt
+description: Koliko košta punjenje na javnim punjačima u BiH: Elektroprivreda BiH, MOON, hoteli i tržni centri, aplikacija EPBiH Charge i besplatno punjenje.
 h1: Cijene punjenja u Bosni i Hercegovini
 lead: Šta operateri objavljuju o cijenama, kako se plaća i gdje je punjenje još besplatno — uz izvor i datum.
 card: Šta objavljuju EPBiH i MOON, raspon cijena na tržištu i kako platiti.
 related: map, home, road
 ---
-Javno punjenje u BiH tek dobija cijene. Dvije najveće mreže — **Elektroprivreda BiH** (18 lokacija) i **MOON** (18 brzih punjača) — nemaju javni cjenovnik, a na mnogim punjačima hotela, tržnih centara i opština punjenje je još besplatno. Tabela je provjerena 28.09.2026.
+Javno punjenje u BiH tek dobija cijene. Dvije najveće mreže — **Elektroprivreda BiH** (18 lokacija) i **MOON** (18 brzih punjača) — nemaju javni cjenovnik, a na mnogim punjačima hotela, tržnih centara i opština punjenje je još besplatno. Tabela je provjerena 27.10.2026.
 
 {{ w.price_table() }}
 
@@ -26,7 +26,7 @@ Javno punjenje u BiH tek dobija cijene. Dvije najveće mreže — **Elektroprivr
 
 ## Ostali punjači
 
-{{ w.pairs(C.other_sites, 'Gdje', 'Šta znamo') }}
+{{ w.pairs(C.other_sites, 'Gdje', 'Šta je poznato') }}
 
 ## Kako se plaća
 

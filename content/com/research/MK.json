@@ -62,10 +62,10 @@
   {
    "label": "EVN public charging network (own map)",
    "value": "12 DC fast-charging sites and more than 40 AC 22 kW points in 20 towns",
-   "note": "Counted on 23.09.2026 from EVN's charger map, which shows no total and no date. DC power 50–180 kW; nine of the DC sites are at Makpetrol fuel stations, the others at Skopje airport, Lazar Ličenoski 11 in Skopje and the Ohrid quay. AC points are 22 kW with Type 2 sockets.",
+   "note": "Counted on 27.10.2026 from EVN's charger map (60 entries, one per connector type and site: 14 DC and 46 AC), which shows no total and no date. DC power 50–180 kW; nine of the DC sites are at Makpetrol fuel stations, the others at Skopje airport, Lazar Ličenoski 11 in Skopje and the Ohrid quay. AC points are 22 kW with Type 2 sockets.",
    "source": "https://emobility.evn.mk/charging-stations/ChargerMap.aspx?lang=en",
    "source_title": "ChargerMap - ELECTROMOBILITY (EVN)",
-   "source_date": "no date on page; checked 23.09.2026",
+   "source_date": "no date on page; checked 27.10.2026",
    "confidence": "medium"
   },
   {
@@ -83,7 +83,7 @@
    "note": "EVN map: Makpetrol Kumanovo 150 kW; Makpetrol Vizbegovo 150 kW; Skopje airport 150 kW; Makpetrol Kisela Voda 180 kW; Makpetrol Negotino 150 kW; Makpetrol at the Bogorodica border crossing 100 kW + 50 kW. Makpetrol's own page (Macedonian version, modified 17.04.2026: https://www.makpetrol.com.mk/%d0%bf%d0%be%d0%bb%d0%bd%d0%b0%d1%87%d0%b8-%d0%b7%d0%b0-%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%b8%d1%87%d0%bd%d0%b8-%d0%b2%d0%be%d0%b7%d0%b8%d0%bb%d0%b0/) lists Negotino as 2 × CCS 120 kW and Gevgelija with CCS, CHAdeMO and Type 2 at 100, 50 and 22 kW.",
    "source": "https://emobility.evn.mk/charging-stations/ChargerMap.aspx?lang=en",
    "source_title": "ChargerMap - ELECTROMOBILITY (EVN)",
-   "source_date": "EVN map undated, checked 23.09.2026; Makpetrol page modified 17.04.2026, checked 28.09.2026",
+   "source_date": "EVN map undated, checked 27.10.2026; Makpetrol page modified 17.04.2026, checked 27.10.2026",
    "confidence": "medium"
   },
   {
@@ -198,7 +198,7 @@
    "installation": "Not mentioned",
    "installation_note": "No installation information on the shop page or in the ad.",
    "url": "https://vozinastruja.mk/",
-   "source_date": "page modified 13.09.2026 (metadata); ad posted 20.02.2026; checked 23.09.2026",
+   "source_date": "page modified 24.09.2026 (metadata), checked 27.10.2026; ad posted 20.02.2026, checked 23.09.2026",
    "confidence": "high"
   }
  ],
@@ -232,11 +232,11 @@
   }
  ],
  "public_count": {
-  "value": "62 charging stations (Electromaps listing)",
-  "note": "No official national count was found. Electromaps is crowd-sourced; by municipality it lists Centar 12, Aerodrom 5, Karpoš 4, Delčevo 3 and Gjorče Petrov 3, and its latest addition in North Macedonia is dated 13.09.2025. EVN's own map lists 12 DC fast-charging sites and more than 40 AC 22 kW points in 20 towns (counted on 23.09.2026; the map shows no total, and some sites are listed once per connector). Older EVN material speaks of 'over 40 stations in Skopje and 17 towns'.",
+  "value": "69 charging stations (Electromaps listing)",
+  "note": "No official national count was found. Electromaps is crowd-sourced; by municipality it lists Centar 12, Aerodrom 5, Karpoš 4, Delčevo 3, Gevgelija 3 and Gjorče Petrov 3, and its latest addition in North Macedonia is dated 16.10.2026. EVN's own map lists 12 DC fast-charging sites and more than 40 AC 22 kW points in 20 towns (counted on 27.10.2026; the map shows no total, and some sites are listed once per connector). Older EVN material speaks of 'over 40 stations in Skopje and 17 towns'.",
   "source": "https://www.electromaps.com/en/charging-stations/north-macedonia",
   "source_title": "Charging stations in North Macedonia | Electromaps",
-  "source_date": "no date on page (latest listing added 13.09.2025); checked 23.09.2026",
+  "source_date": "no date on page (latest listing added 16.10.2026); checked 27.10.2026",
   "confidence": "low"
  },
  "networks": [
@@ -244,7 +244,7 @@
    "name": "EVN Electromobility (ЕВН Електромобилност)",
    "operator": "EVN Macedonia",
    "app": "none mentioned; EVN RFID charging card, or bank card via the QR code on the connector",
-   "size": "12 DC fast-charging sites (50–180 kW) and more than 40 AC 22 kW points in 20 towns, per EVN's charger map (counted 23.09.2026; no total published). Latest additions: two 180 kW DC chargers in Kisela Voda (Skopje) and Kičevo (18.06.2026); AC points in Strumica and Probištip (12.08.2026); on 20.04.2026 EVN announced upgraded chargers at two Skopje locations, including a new fast DC charger at Lazar Ličenoski 11.",
+   "size": "12 DC fast-charging sites (50–180 kW) and more than 40 AC 22 kW points in 20 towns, per EVN's charger map (counted 27.10.2026; no total published). Latest additions: a 22 kW charger at the MM Sport sports centre in Kumanovo, opened on 26.10.2026 and not yet on the map; a 22 kW charger in Saraj (Skopje), opened on 07.10.2026; two 180 kW DC chargers in Kisela Voda (Skopje) and Kičevo (18.06.2026); AC points in Strumica and Probištip (12.08.2026); on 20.04.2026 EVN announced upgraded chargers at two Skopje locations, including a new fast DC charger at Lazar Ličenoski 11.",
    "prices": [
     {
      "what": "AC, with EVN card",
@@ -283,7 +283,7 @@
      "price": "0.83 MKD per minute from the 241st minute (≈ €0.013/min, approx.)",
      "vat": "not stated",
      "source": "https://emobility.evn.mk/Tariffs.aspx",
-     "source_date": "no date on page; DC tariff in force since 01.05.2025 (as shown); checked 23.09.2026",
+     "source_date": "no date on page; DC tariff in force since 01.05.2025 (as shown); checked 27.10.2026",
      "confidence": "high"
     },
     {
@@ -291,7 +291,7 @@
      "price": "1.7 MKD per minute from the 61st minute (≈ €0.028/min, approx.)",
      "vat": "not stated",
      "source": "https://emobility.evn.mk/Tariffs.aspx",
-     "source_date": "no date on page; DC tariff in force since 01.05.2025 (as shown); checked 23.09.2026",
+     "source_date": "no date on page; DC tariff in force since 01.05.2025 (as shown); checked 27.10.2026",
      "confidence": "high"
     }
    ],
@@ -309,7 +309,7 @@
      "price": "Not published on Makpetrol's page; which tariff applies is not stated",
      "vat": "not stated",
      "source": "https://www.makpetrol.com.mk/%d0%bf%d0%be%d0%bb%d0%bd%d0%b0%d1%87%d0%b8-%d0%b7%d0%b0-%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%b8%d1%87%d0%bd%d0%b8-%d0%b2%d0%be%d0%b7%d0%b8%d0%bb%d0%b0/",
-     "source_date": "page modified 17.04.2026; checked 28.09.2026",
+     "source_date": "page modified 17.04.2026; checked 27.10.2026",
      "confidence": "high"
     }
    ],
@@ -327,7 +327,7 @@
      "price": "Not published",
      "vat": "not stated",
      "source": "https://chargego.rs/mk/pocetnata/",
-     "source_date": "no date on page; checked 23.09.2026",
+     "source_date": "no date on page; checked 27.10.2026",
      "confidence": "high"
     }
    ],
@@ -345,7 +345,7 @@
      "price": "Not published",
      "vat": "not stated",
      "source": "https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app",
-     "source_date": "app updated 03.09.2026",
+     "source_date": "app updated 21.10.2026",
      "confidence": "medium"
     }
    ],
@@ -479,7 +479,7 @@
    "amount": "—",
    "who": "—",
    "deadline": "—",
-   "note": "A specialist portal wrote that North Macedonia has no active state programme for subsidising electric vehicles, and that measures announced in earlier years, especially in 2018, were never implemented. No 2026 programme was found in the sources checked on 23.09.2026; the environment ministry's website did not load.",
+   "note": "A specialist portal wrote that North Macedonia has no active state programme for subsidising electric vehicles, and that measures announced in earlier years, especially in 2018, were never implemented. No 2026 programme was found in the sources checked on 27.10.2026: the City of Skopje's list of public calls has no call for subsidies for electric vehicles or chargers in 2026 (its last subsidy calls for citizens, for bicycles, inverter air conditioners and chimney cleaning, were for 2025 and closed on 31.10.2025), and the environment ministry's website could not be checked.",
    "source": "https://elektricniavtomobili.mk/%d0%b4%d1%80%d0%b6%d0%b0%d0%b2%d0%bd%d0%b8-%d1%81%d1%83%d0%b1%d0%b2%d0%b5%d0%bd%d1%86%d0%b8%d0%b8-%d0%b7%d0%b0-%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%b8%d1%87%d0%bd%d0%b8-%d0%b0%d0%b2%d1%82%d0%be/",
    "source_title": "Државни субвенции за електрични автомобили: Каде е Македонија во споредба со регионот и Европа?",
    "source_date": "07.05.2025 (updated 23.07.2025)",
@@ -488,13 +488,13 @@
   {
    "programme": "Subsidies for 200 electric taxis (Ministry of Environment and Physical Planning)",
    "status": "unconfirmed",
-   "amount": "Not published",
+   "amount": "15% of the vehicle price, about €840,000 in total for the first 200 vehicles (as reported; ≈ €4,200 per vehicle, calculated from the reported average price of €28,000)",
    "who": "Taxi sector only",
    "deadline": "Not published",
-   "note": "Measure announced in September 2025; the report gives no amount per vehicle, budget, eligibility rules or dates, and no call for applications was found.",
-   "source": "https://elektricniavtomobili.mk/%d0%ba%d0%b0%d0%ba%d0%b2%d0%be-%d0%b2%d0%bb%d0%b8%d1%98%d0%b0%d0%bd%d0%b8%d0%b5-%d0%b1%d0%b8-%d0%b8%d0%bc%d0%b0%d0%bb%d0%b5-%d0%bd%d0%b0%d1%98%d0%b0%d0%b2%d0%b5%d0%bd%d0%b8%d1%82%d0%b5-%d0%b4%d1%80/",
-   "source_title": "Какво влијание би имале најавените државни субвенции за 200 електрични такси возила?",
-   "source_date": "12.09.2025",
+   "note": "Announced on 06.09.2025 at a working meeting of the Ministry of Environment and Physical Planning with the Union of Taxi Associations: the ministry would cover 15% of the cost of the first 200 electric cars for taxi drivers, about €840,000 of a total of about €5.6 million. Balkan Green Energy News (12.09.2025, updated 02.06.2026: https://balkangreenenergynews.com/north-macedonia-kicks-off-project-to-replace-taxis-with-electric-vehicles/) adds that the two sides signed a memorandum of cooperation. No eligibility rules, dates or call for applications were found (checked 27.10.2026).",
+   "source": "https://plusinfo.mk/subvencii-za-200-elektrichni-vozila-za-taksistite-ministerstvoto-za-zhivotna-sredina-e-plati-15-od-cenata/",
+   "source_title": "СУБВЕНЦИИ ЗА 200 ЕЛЕКТРИЧНИ ВОЗИЛА ЗА ТАКСИСТИТЕ Министерството за животна средина ќе плати 15% од цената - plusinfo.mk",
+   "source_date": "06.09.2025",
    "confidence": "medium"
   },
   {
@@ -594,14 +594,14 @@
   "Official sites did not load: moepp.gov.mk (environment ministry, timeout), economy.gov.mk (timeout) and ea.gov.mk (Energy Agency, DNS error). 2026 subsidy calls, the National Energy and Climate Plan and any EV targets could not be checked on official pages.",
   "Registrations: no count of new battery-electric cars for 2025 or for 2026 to date was found. The State Statistical Office first-registration table has no fuel breakdown, and Eurostat (new passenger cars by motor energy, updated 01.09.2026) reports only a total of 42,159 for North Macedonia in 2025 with no fuel split; the definitions behind this total and the 'about 6,400 new cars sold' reported by trade media were not checked.",
   "EV fleet figures from the State Statistical Office are quoted from media (CARclub.mk, Denesen.mk); the MakStat table shows values only after an interactive selection that could not be made with the tools used.",
-  "Public charge points: no official national count was found. EVN's map gives no total and some sites are listed once per connector, so the EVN figures are approximate; Electromaps (62 stations) is crowd-sourced; chargemap.com is blocked by robots.txt.",
+  "Public charge points: no official national count was found. EVN's map gives no total and some sites are listed once per connector, so the EVN figures are approximate; Electromaps (69 stations) is crowd-sourced; chargemap.com is blocked by robots.txt.",
   "EVN's per-kWh prices appear only as an image on emobility.evn.mk/Tariffs.aspx; the figures (25/28 and 30/40 MKD) come from a specialist portal (29.07.2026).",
   "Makpetrol, Charge&GO MK and Orion eMobility publish no per-kWh prices for North Macedonia; whether EVN's tariff applies at Makpetrol stations is not stated.",
   "lawesgo.mk (title 'Electric chargers and cards') did not load (robots.txt timeout); its role (public chargers, cards or sales) is unknown.",
   "Home chargers: loging.mk ('chargers for electric cars' category) returned 403 and e-vozila.apptree.mk did not load; large electronics retailers and car importers' wallbox offers were not checked. Charge&GO MK sells no home chargers locally and links to its Serbian shop (elektropunjaci.com), whose delivery or installation in North Macedonia was not checked.",
   "Installation prices: no company publishes a fixed installation price; the only range (€100–300) comes from an import-advice site without a cited source.",
   "Electricity: the 2026 all-in household price per kWh is calculated from the regulated energy price, the transmission and distribution fee used by the regulator-linked bill calculator (2.0339 MKD/kWh) and 18% VAT; the calculator's page does not name its publisher, and the 2026 municipal public-lighting fee was not found.",
-  "Subsidies: no source explicitly confirms or rules out support for home chargers, and municipal schemes (e.g. City of Skopje) were not checked; the September 2025 taxi-subsidy announcement has no published amount, budget or call.",
+  "Subsidies: no source explicitly confirms or rules out support for home chargers; the City of Skopje's public calls were checked on 27.10.2026, other municipalities were not; the September 2025 taxi-subsidy announcement has a reported share (15%) and total (about €840,000), but no published rules, dates or call.",
   "Method: the web-search quota ran out during the check; the remaining items were verified by fetching known URLs only."
  ]
 }

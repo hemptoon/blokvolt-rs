@@ -5,8 +5,8 @@ order: 7
 nav: Statistika
 icon: chart
 priority: 0.6
-title: Električni automobili u BiH u brojkama — broj vozila, prodaja, punjači | BlokVolt
-description: Broj električnih automobila u Bosni i Hercegovini od 2021. (Eurostat), udio u novim registracijama (BHAS), broj javnih punjača po izvorima. Podaci za preuzimanje (CSV).
+title: Električni automobili u BiH u brojkama | BlokVolt
+description: Broj električnih automobila u Bosni i Hercegovini od 2021. (Eurostat), udio u novim registracijama (BHAS) i broj javnih punjača. Podaci u CSV-u.
 h1: Električni automobili u BiH u brojkama
 lead: Koliko električnih automobila vozi Bosnom i Hercegovinom, koliki je njihov udio u novim registracijama i koliko je javnih punjača — iz službenih izvora, s datumom.
 card: Broj vozila od 2021., udio u novim registracijama i procjene broja punjača; CSV.

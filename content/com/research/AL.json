@@ -3,7 +3,7 @@
  "name": "Albania",
  "checked": "28.09.2026",
  "currency": "ALL",
- "summary": "Albania's electric-car fleet almost doubled in 2025: Eurostat counts 10,938 battery-electric passenger cars at the end of the year, 91% more than a year earlier, and 5,517 new registrations. New battery-electric cars are VAT-exempt according to the latest source, although sources conflict, and electric vehicles pay no annual vehicle tax. Public charging is young and fragmented: VEGA lists 20+ sites, PlugoAL five 280 kW sites, and the state supplier OSHEE announced a national network for 2026, with no station found operating on 28.09.2026. No network publishes a per-kWh price on its website; OSHEE estimated in November 2025 that charging stations sell electricity at 40–60 lek per kWh. At home, a kilowatt-hour costs 10.2 lek with VAT while the household stays within 700 kWh a month.",
+ "summary": "Albania's electric-car fleet almost doubled in 2025: Eurostat counts 10,938 battery-electric passenger cars at the end of the year, 91% more than a year earlier, and 5,517 new registrations. New battery-electric cars are VAT-exempt according to the latest source, although sources conflict, and electric vehicles pay no annual vehicle tax. Public charging is young and fragmented: VEGA lists 19 operating sites, PlugoAL five 280 kW sites, and the state supplier OSHEE announced a national network for 2026, with no station found operating on 28.09.2026. No network publishes a per-kWh price on its website; OSHEE estimated in November 2025 that charging stations sell electricity at 40–60 lek per kWh. At home, a kilowatt-hour costs 10.2 lek with VAT while the household stays within 700 kWh a month.",
  "stats": [
   {
    "label": "Battery-electric passenger cars on the road",
@@ -58,7 +58,7 @@
    "url": "https://vegagroup.al/sq/vegacharging/",
    "operator": "Vega Group",
    "app": "—",
-   "size": "20+ operating locations and 50+ planned, per the operator's list: fuel stations (Gega Oil, 7K Krasniqi, Lagjina Oil and others), hotels and malls in Durrës, Tirana/Vorë, Fier, Elbasan, Vlorë, Lukovë, Rrogozhinë, Lushnjë, Gjirokastër, Rubik and Shkodër; Sarandë and Korçë opening soon. DC 60–180 kW with GB/T and CCS2 sockets, AC 22 kW.",
+   "size": "19 operating locations on the operator's list (TEG and QTU with three chargers each) and two opening soon (Sarandë, Korçë); the operator also announces '50+' upcoming stations. Sites are fuel stations (Gega Oil, 7K Krasniqi, Lagjina Oil and others), hotels and malls in Durrës, Tirana/Vorë, Fier, Elbasan, Vlorë, Lukovë, Rrogozhinë, Lushnjë, Gjirokastër, Rubik and Shkodër. DC 60–180 kW with GB/T and CCS2 sockets, AC 22 kW.",
    "prices": [
     {
      "what": "Per kWh",
@@ -119,7 +119,7 @@
      "price": "shown in the app before charging"
     }
    ],
-   "payment": "In the app by debit or credit card, iCharge balance or prepaid vouchers; cash at some UPay points"
+   "payment": "In the app by card or from the iCharge balance, which is topped up by card, iCharge coupons or at a Western Union location"
   }
  ],
  "electricity": [
@@ -151,12 +151,12 @@
    "confidence": "medium"
   },
   {
-   "what": "Fuel for comparison (maximum prices from 22.09.2026)",
-   "price": "diesel 213 lek/l, petrol 193 lek/l",
-   "note": "Maximum retail prices set by the Transparency Board, in force from 22.09.2026 12:00; the reports do not say whether VAT is included or which petrol grade is meant.",
-   "source": "https://albeu.com/lajme/bordi-i-transparences-vendos-kufijte-e-rinj-te-cmimeve-per-karburantet/1022303/",
-   "source_title": "Albeu – Transparency Board sets new fuel price limits",
-   "source_date": "22.09.2026",
+   "what": "Fuel for comparison (maximum prices from 14.10.2026)",
+   "price": "diesel 213 lek/l, petrol 190 lek/l",
+   "note": "Maximum retail prices set by the Transparency Board, in force from 14.10.2026 14:00 until its next decision; the report does not say whether VAT is included or which petrol grade is meant.",
+   "source": "https://www.balkanweb.com/bordi-i-transparences-vendos-cmimet-e-reja-te-naftes-dhe-benzines-ja-sa-do-te-shiten-nga-sot/",
+   "source_title": "BalkanWeb – Transparency Board sets new diesel and petrol prices",
+   "source_date": "14.10.2026",
    "confidence": "medium"
   }
  ],

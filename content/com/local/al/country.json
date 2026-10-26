@@ -126,7 +126,7 @@
     ],
     [
       "VEGA CHARGING, lista e operatorit",
-      "20+ vendndodhje në funksion; 50+ stacione të ardhshme",
+      "19 vendndodhje në funksion, 2 hapen së shpejti; 50+ stacione të ardhshme",
       "https://vegagroup.al/sq/vegacharging/"
     ],
     [
@@ -141,7 +141,7 @@
       "name": "VEGA CHARGING",
       "owner": "Vega Group",
       "site": "https://vegagroup.al/sq/vegacharging/",
-      "sites_text": "20+ vendndodhje",
+      "sites_text": "19 vendndodhje, 2 hapen së shpejti",
       "app": {
         "name": "",
         "ios": null,
@@ -198,7 +198,7 @@
         "android": "https://play.google.com/store/apps/details?id=com.icharge.mobile.app"
       },
       "card": "Karta RFID është një nga mundësitë; karikimi niset dhe ndalet edhe vetëm me aplikacion.",
-      "adhoc": "Në aplikacion me kartë debiti ose krediti, me gjendjen e llogarisë iCharge ose me kupona të parapaguar iCharge; me para në dorë në disa pika UPay.",
+      "adhoc": "Në aplikacion, me kartë ose me gjendjen e llogarisë iCharge; llogaria rimbushet me kartë, me kupona iCharge ose në një pikë Western Union.",
       "roaming": "Sipas iCharge, aplikacioni punon në Shqipëri, Itali, Greqi, Mal të Zi dhe Maqedoni të Veriut; rrjetet partnere nuk emërtohen.",
       "prices": [],
       "price_text": "Çmimi shfaqet në aplikacion para karikimit; listë publike çmimesh nuk ka.",
@@ -360,14 +360,9 @@
         "date": "13.11.2025"
       },
       {
-        "label": "Albeu — Bordi i Transparencës, çmimet maksimale të karburanteve nga 22.09.2026",
-        "url": "https://albeu.com/lajme/bordi-i-transparences-vendos-kufijte-e-rinj-te-cmimeve-per-karburantet/1022303/",
-        "date": "22.09.2026"
-      },
-      {
-        "label": "Ekofin — nafta 213 lekë, benzina 193 lekë për litër",
-        "url": "https://ekofin.al/nafta-me-pakice-213-leke-litri-benzina-193-leke-bordi-ul-cmimin-me-6-leke-per-naften/",
-        "date": "22.09.2026"
+        "label": "BalkanWeb — Bordi i Transparencës, çmimet maksimale të karburanteve nga 14.10.2026: nafta 213 lekë, benzina 190 lekë për litër",
+        "url": "https://www.balkanweb.com/bordi-i-transparences-vendos-cmimet-e-reja-te-naftes-dhe-benzines-ja-sa-do-te-shiten-nga-sot/",
+        "date": "14.10.2026"
       },
       {
         "label": "Ligji nr. 55/2025 „Për administrimin e bashkëpronësisë në ndërtesa“",
@@ -377,11 +372,11 @@
     ]
   },
   "fuel": {
-    "petrol": 193,
+    "petrol": 190,
     "diesel": 213,
-    "date": "22.09.2026",
-    "src": "https://albeu.com/lajme/bordi-i-transparences-vendos-kufijte-e-rinj-te-cmimeve-per-karburantet/1022303/",
-    "src_label": "Albeu, 22.09.2026"
+    "date": "14.10.2026",
+    "src": "https://www.balkanweb.com/bordi-i-transparences-vendos-cmimet-e-reja-te-naftes-dhe-benzines-ja-sa-do-te-shiten-nga-sot/",
+    "src_label": "BalkanWeb, 14.10.2026"
   },
   "calc": {
     "km": 1200,
@@ -544,7 +539,7 @@
   "road": [
     [
       "Tiranë – Durrës",
-      "VEGA CHARGING: Gega OIL në Kënetë dhe te Ura e Dajlanit (Durrës), Prestige Industrial Park (Tiranë/Vorë dhe Durrës). PlugoAL: 280 kW në Tiranë dhe në Durrës, pa adresë të publikuar."
+      "VEGA CHARGING: QTU në autostradën Tiranë–Durrës (3 stacione), Gega OIL në Kënetë dhe te Ura e Dajlanit (Durrës), Eida Marikaj 1 (Durrës) dhe Eida Marikaj 2 (autostrada Durrës, Gërdec), Prestige Industrial Park (Tiranë/Vorë dhe Durrës). PlugoAL: 280 kW në Tiranë dhe në Durrës, pa adresë të publikuar."
     ],
     [
       "Durrës – Rrogozhinë – Lushnjë – Fier",
@@ -639,7 +634,7 @@
     {
       "label": "Vega Group — VEGA CHARGING, lista e vendndodhjeve",
       "url": "https://vegagroup.al/sq/vegacharging/",
-      "date": "28.09.2026"
+      "date": "27.10.2026"
     },
     {
       "label": "PlugoAL — stacionet",

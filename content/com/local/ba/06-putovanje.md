@@ -5,8 +5,8 @@ order: 6
 nav: Na putu
 icon: road
 priority: 0.7
-title: Električnim autom kroz BiH: brzi punjači na koridoru Vc, Sarajevo, Mostar | BlokVolt
-description: Gdje su brzi punjači na autoputu A1 (koridor Vc), u Sarajevu i Mostaru, šta znamo za Neum, Banja Luku i put prema moru, i savjeti za putovanje električnim autom kroz Bosnu i Hercegovinu.
+title: Električnim autom kroz BiH: brzi punjači i koridor Vc | BlokVolt
+description: Brzi punjači na autoputu A1 (koridor Vc), u Sarajevu i Mostaru, šta je poznato za Neum i Banja Luku i savjeti za put električnim autom kroz BiH.
 h1: Električnim autom kroz Bosnu i Hercegovinu
 lead: Brzi punjači na koridoru Vc, u Sarajevu i kod Mostara, i dionice na kojima brzi punjač nije pronađen.
 card: Brzi punjači na A1 i u Sarajevu, i dionice bez njih.

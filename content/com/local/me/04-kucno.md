@@ -5,8 +5,8 @@ order: 4
 nav: Kod kuće
 icon: calc
 priority: 0.8
-title: Punjenje električnog auta kod kuće u Crnoj Gori: koliko košta (kalkulator, EPCG) | BlokVolt
-description: Kalkulator troškova punjenja kod kuće s indikativnim cijenama EPCG-a za višu i nižu tarifu, mrežnim naknadama REGAGEN-a za 2026. i poređenjem s benzinom i dizelom.
+title: Koliko košta punjenje električnog auta kod kuće (EPCG) | BlokVolt
+description: Kalkulator punjenja kod kuće s indikativnim cijenama EPCG-a za višu i nižu tarifu, mrežnim naknadama za 2026. i poređenjem s benzinom.
 h1: Punjenje kod kuće ili na javnom punjaču
 lead: Koliko mjesečno košta struja za električni auto kod kuće i koliko je to u odnosu na benzin ili dizel — s indikativnim cijenama struje i maksimalnim cijenama goriva.
 card: Kalkulator s tarifama EPCG i poređenjem s gorivom.
@@ -29,7 +29,7 @@ related: prices, subsidies, map
 
 - **Kod kuće:** (aktivna energija + korišćenje distributivnog sistema + gubici u distribuciji i prenosu + naknada operatora tržišta) × 1,21 (PDV). Struja sa zida = kilometri × potrošnja ÷ 100 × (1 + gubici).
 - **Javni punjači:** kWh koje auto primi × cijena po kWh; operateri cijene ne objavljuju, pa upišite svoju.
-- **Gorivo:** kilometri × litara na 100 km ÷ 100 × cijena litra. Zadate su maksimalne cijene od {{ C.fuel.date }}: Eurosuper 95 {{ money(C.fuel.petrol) }}, Eurodizel {{ money(C.fuel.diesel) }} ([Investitor.me]({{ C.fuel.src }})). Ministarstvo ih mijenja svake sedmice.
+- **Gorivo:** kilometri × litara na 100 km ÷ 100 × cijena litra. Zadate su maksimalne cijene od {{ C.fuel.date }}: Eurosuper 95 {{ money(C.fuel.petrol) }}, Eurodizel {{ money(C.fuel.diesel) }} ([Nafta.hr]({{ C.fuel.src }})). Ministarstvo ih mijenja svake sedmice.
 </details>
 
 {{ w.sources(C.power.sources) }}

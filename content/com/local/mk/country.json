@@ -22,9 +22,9 @@
  "new_bev": {"text": "Бројот на нови електрични автомобили во 2025 и 2026 не е пронајден: Eurostat за Северна Македонија нема податоци за новите возила по вид на гориво, а податок од увозниците или од министерство не е најден (28.09.2026).",
              "src": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/road_eqr_carpda?geo=MK&mot_nrg=ELC&unit=NR&lang=EN"},
 
- "evn_list": {"rows": 59, "dc_rows": 14, "ccs_rows": 12, "chademo_rows": 2, "ac_rows": 45, "dc_sites": 12, "makpetrol_sites": 9, "cities": 20,
-              "computed": "избројано од списокот на станици на ЕВН на 28.09.2026; еден запис е еден тип приклучок на една локација",
-              "src": "https://emobility.evn.mk/charging-stations/ChargerMap.aspx", "date": "28.09.2026"},
+ "evn_list": {"rows": 60, "dc_rows": 14, "ccs_rows": 12, "chademo_rows": 2, "ac_rows": 46, "dc_sites": 12, "makpetrol_sites": 9, "cities": 20,
+              "computed": "избројано од списокот на станици на ЕВН на 27.10.2026; еден запис е еден тип приклучок на една локација",
+              "src": "https://emobility.evn.mk/charging-stations/ChargerMap.aspx", "date": "27.10.2026"},
  "evn_prices": {"ac_adhoc": 30, "ac_card": 25, "dc_adhoc": 40, "dc_card": 28, "vat": "со ДДВ", "date": "20.01.2026",
                 "src": "https://mk.bloombergadria.com/green/pozeleno-ziveenje/95121/nema-polnaci-za-elektricnite-vozila-drzavata-podgotvuva-strategija/news",
                 "src_label": "Bloomberg Adria, 20.01.2026",
@@ -34,16 +34,16 @@
               "src": "https://emobility.evn.mk/Tariffs.aspx", "src_label": "ЕВН — Тарифи"},
 
  "charger_counts": [
-  ["ЕВН, список на станици (избројано на 28.09.2026)", "59 записи во 20 градови: 14 DC (12 CCS до 180 kW и 2 CHAdeMO од 50 kW) и 45 AC (Тип 2, 22 kW)", "https://emobility.evn.mk/charging-stations/ChargerMap.aspx"],
+  ["ЕВН, список на станици (избројано на 27.10.2026)", "60 записи во 20 градови: 14 DC (12 CCS до 180 kW и 2 CHAdeMO од 50 kW) и 46 AC (Тип 2, 22 kW)", "https://emobility.evn.mk/charging-stations/ChargerMap.aspx"],
   ["Bloomberg Adria, 20.01.2026", "околу 100 јавни полначи на крајот на 2025, од кои околу половина на ЕВН, најмногу од 22 kW", "https://mk.bloombergadria.com/green/pozeleno-ziveenje/95121/nema-polnaci-za-elektricnite-vozila-drzavata-podgotvuva-strategija/news"],
-  ["Electromaps (го уредуваат корисниците), 28.09.2026", "62 станици за полнење; последниот запис е од 13.09.2025", "https://www.electromaps.com/en/charging-stations/north-macedonia"],
+  ["Electromaps (го уредуваат корисниците), 27.10.2026", "69 станици за полнење; последниот запис е од 16.10.2026", "https://www.electromaps.com/en/charging-stations/north-macedonia"],
   ["ЕВН, 30.04.2024", "околу 40 полначи на јавни места, поставени за седум години", "https://www.makpetrol.com.mk/%D0%B5%D0%B2%D0%BD-%D0%B8-%D0%BC%D0%B0%D0%BA%D0%BF%D0%B5%D1%82%D1%80%D0%BE%D0%BB-%D1%9C%D0%B5-%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%B0%D1%82-10-%D0%B1%D1%80%D0%B7%D0%B8-%D0%BF%D0%BE%D0%BB%D0%BD/"],
   ["ЕВН, 2018", "најава при отворањето на мрежата: над 40 станици во Скопје и 17 градови", "https://elektrodistribucija.mk/Files/Elektromobilnost/Docs/Brosura-EVN-Elektromobilnost-A4_3-10_fin.aspx"]
  ],
 
  "networks": [
   {"slug": "evn", "name": "ЕВН Македонија", "owner": "ЕВН Македонија Електроснабдување ДООЕЛ Скопје", "site": "https://emobility.evn.mk/Home.aspx", "registry": 0,
-   "sites_text": "59 записи во 20 градови: 14 DC и 45 AC",
+   "sites_text": "60 записи во 20 градови: 14 DC и 46 AC",
    "app": {"name": "", "ios": null, "android": null},
    "card": "ЕВН картичка (RFID) за физички и правни лица што поседуваат електрично возило и имаат постојана адреса во Северна Македонија. Се бара на страницата на ЕВН („Пријави се за картичка“), а ЕВН во рок од неколку дена се јавува за потпишување договор. Сметката стигнува по е-пошта еднаш месечно, со рок за плаќање од 30 дена. Надоместок за картичката не е наведен.",
    "adhoc": "Со платежна картичка, по скенирање на QR-кодот на полначот.",
@@ -84,16 +84,16 @@
  "other_sites": [
   ["Хотели и трговски центри", "Полначи на ЕВН има во хотелите Хилтон и Мериот во Скопје, Принцес кај Богородица и Мајбери во Свети Николе, како и кај Сити Мол, Капитол Мол, ТЦ Алуминка, Гевгелија Мол и Symbol Retail Park во Струмица. Условите и цените на другите полначи во хотели и трговски центри не се проверени."],
   ["Charge&GO (Чарџ&ГО ДООЕЛ Скопје)", "Не се објавени ни бројот на полначи во Северна Македонија ни цените. Српски медиуми на 23.05.2026 пишуваа за полнач од 50 kW на бензинската станица ОКТА во Ржаничино."],
-  ["ОКТА", "Во пребарувачот на станици на ОКТА нема ознака за полнење на електрични возила (28.09.2026)."],
+  ["ОКТА", "Во пребарувачот на станици на ОКТА нема ознака за полнење на електрични возила (27.10.2026)."],
   ["Tesla", "На списокот на Tesla за Северна Македонија нема локации Supercharger ниту Destination (23.09.2026)."],
   ["Orion eMobility (апликација за роаминг)", "Апликацијата ја наведува Македонија меѓу земјите каде што работи; кои станици опфаќа, не е наведено."]
  ],
  "other_srcs": [
-  {"label": "ЕВН — станици за полнење (домаќини на полначите)", "url": "https://emobility.evn.mk/charging-stations/ChargerMap.aspx", "date": "28.09.2026"},
-  {"label": "Charge&GO — Северна Македонија", "url": "https://chargego.rs/mk/pocetnata/", "date": "23.09.2026"},
-  {"label": "ОКТА — пребарувач на бензински станици", "url": "https://www.okta-elpe.com/service-stations/find-a-station", "date": "28.09.2026"},
+  {"label": "ЕВН — станици за полнење (домаќини на полначите)", "url": "https://emobility.evn.mk/charging-stations/ChargerMap.aspx", "date": "27.10.2026"},
+  {"label": "Charge&GO — Северна Македонија", "url": "https://chargego.rs/mk/pocetnata/", "date": "27.10.2026"},
+  {"label": "ОКТА — пребарувач на бензински станици", "url": "https://www.okta-elpe.com/service-stations/find-a-station", "date": "27.10.2026"},
   {"label": "Tesla — Supercharger во Северна Македонија", "url": "https://www.tesla.com/findus/list/superchargers/North%20Macedonia", "date": "23.09.2026"},
-  {"label": "Orion eMobility — Google Play", "url": "https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app", "date": "03.09.2026"}
+  {"label": "Orion eMobility — Google Play", "url": "https://play.google.com/store/apps/details?id=rs.oriontelekom.emobility.cp.app", "date": "21.10.2026"}
  ],
  "free_src": "https://elektrodistribucija.mk/Files/Elektromobilnost/Docs/Brosura-EVN-Elektromobilnost-A4_3-10_fin.aspx",
 
@@ -129,11 +129,11 @@
    {"label": "Енергетика24 — РКЕ од 01.01.2026 ги намалува надоместоците за дистрибуција, пренос и пазар", "url": "https://energetika24.mk/aktuelno/rke-od-1-januari-2026-namaluva-tri-klucni-tarifi/", "date": "05.12.2025"}
   ]
  },
- "fuel": {"petrol": 100, "diesel": 100, "date": "29.09.2026", "decided": "28.09.2026", "number": "02-1465/1",
-          "src": "https://www.erc.org.mk/odluki/2026.09.28%20Odluka%20za%20ceni%20na%20ND.pdf",
-          "src_label": "РКЕ — одлука бр. 02-1465/1 од 28.09.2026, највисоки малопродажни цени на горивата од 29.09.2026",
+ "fuel": {"petrol": 96, "diesel": 99, "date": "20.10.2026", "decided": "19.10.2026", "number": "02-1596/1",
+          "src": "https://erc.org.mk/odluki/2026.10.19-Odluka%20za%20ceni%20na%20ND.pdf",
+          "src_label": "РКЕ — одлука бр. 02-1596/1 од 19.10.2026, највисоки малопродажни цени на горивата од 20.10.2026",
           "note": "Еуросупер БС-95 и Еуродизел БС, ден. за литар, со ДДВ и акцизи",
-          "before": {"petrol": 99.0, "diesel": 104.5, "from": "22.09.2026", "src": "https://lider.mk/od-polnok-novi-tseni-na-gorivata-benzinite-poevtinuvaat-dizelot-poskapuva/", "src_label": "Радио Лидер, 21.09.2026"}},
+          "before": {"petrol": 98.5, "diesel": 97.0, "from": "14.10.2026", "src": "https://erc.org.mk/odluki/2026.10.13-Odluka%20za%20ceni%20na%20ND.pdf", "src_label": "РКЕ — одлука бр. 02-1559/1 од 13.10.2026"}},
  "calc": {"km": 1200, "kwh100": 17, "loss": 10, "share": 20, "tariff": "nt", "pub": 28, "l100_petrol": 6.5, "l100_diesel": 5.5,
           "chips": [["AC, ЕВН картичка", 25], ["DC, ЕВН картичка", 28], ["AC, платежна картичка", 30], ["DC, платежна картичка", 40]],
           "kwh_max": 100, "kwh_step": 0.01, "pub_step": 0.5, "l_min": 30, "l_max": 250, "l_step": 0.5,
@@ -146,13 +146,14 @@
    "dates": "во август 2023 за неа немало пари во буџетот",
    "src": "https://plusinfo.mk/elektrichni-vozila-vo-makedoni-a-stru-a-ima-ga-tan-nema-drzhavata-dava-subvencii-ama-samo-na-harti-a/", "src_label": "Плусинфо, 30.08.2023"},
   {"name": "Субвенции за 200 електрични такси возила (Министерство за животна средина и просторно планирање)", "status": "announced", "who": "само такси превозници",
-   "amount": "не е објавен", "cond": "не се објавени",
-   "dates": "мерката е најавена во септември 2025; јавен повик не е пронајден (23.09.2026)",
-   "src": "https://elektricniavtomobili.mk/%d0%ba%d0%b0%d0%ba%d0%b2%d0%be-%d0%b2%d0%bb%d0%b8%d1%98%d0%b0%d0%bd%d0%b8%d0%b5-%d0%b1%d0%b8-%d0%b8%d0%bc%d0%b0%d0%bb%d0%b5-%d0%bd%d0%b0%d1%98%d0%b0%d0%b2%d0%b5%d0%bd%d0%b8%d1%82%d0%b5-%d0%b4%d1%80/", "src_label": "elektricniavtomobili.mk, 12.09.2025"}
+   "amount": "15 % од цената на возилата, вкупно околу 840.000 € за првите 200 возила, според медиумите (возилата вкупно чинат околу 5,6 милиони €, просечно 28.000 €; ≈ 4.200 € по возило, пресметка)", "cond": "не се објавени",
+   "dates": "мерката е најавена на 06.09.2025, на работен состанок на министерството со Унијата за здруженија на таксисти; јавен повик не е пронајден (27.10.2026)",
+   "src": "https://plusinfo.mk/subvencii-za-200-elektrichni-vozila-za-taksistite-ministerstvoto-za-zhivotna-sredina-e-plati-15-od-cenata/", "src_label": "Плусинфо, 06.09.2025"}
  ],
- "subsidies_none": "Проверени се страницата за субвенции на Град Скопје, на која има само повик за чистење оџаци за 2025, и почетната страница на Министерството за животна средина и просторно планирање. Страницата на Министерството за економија не се вчита. Специјализираниот портал elektricniavtomobili.mk во мај 2025 напиша дека активна државна програма нема, а мерките најавени во 2018 не биле спроведени.",
+ "subsidies_none": "На 27.10.2026 се проверени јавните повици на Град Скопје: за 2026 на списокот нема повик за субвенции за електрични возила или полначи, а последните повици за субвенции за граѓаните (велосипеди, инвертер клима уреди и чистење оџаци) беа за 2025 и беа отворени до 31.10.2025. Страницата на Министерството за животна средина и просторно планирање не можеше да се провери, а страницата на Министерството за економија не е проверена. Специјализираниот портал elektricniavtomobili.mk во мај 2025 напиша дека активна државна програма нема, а мерките најавени во 2018 не биле спроведени; меѓу статиите на почетната страница на порталот (од 27.07.2026 до 19.10.2026) нема статија за субвенции.",
  "subsidies_srcs": [
   {"label": "Град Скопје — субвенции", "url": "https://skopje.gov.mk/mk/apliciraj/subvencii/", "date": "28.09.2026"},
+  {"label": "Град Скопје — јавни повици", "url": "https://skopje.gov.mk/mk/apliciraj/javni-povici/", "date": "27.10.2026"},
   {"label": "Министерство за животна средина и просторно планирање", "url": "https://www.moepp.gov.mk/", "date": "28.09.2026"},
   {"label": "elektricniavtomobili.mk — државни субвенции за електрични автомобили (ажурирано на 23.07.2025)", "url": "https://elektricniavtomobili.mk/%d0%b4%d1%80%d0%b6%d0%b0%d0%b2%d0%bd%d0%b8-%d1%81%d1%83%d0%b1%d0%b2%d0%b5%d0%bd%d1%86%d0%b8%d0%b8-%d0%b7%d0%b0-%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%b8%d1%87%d0%bd%d0%b8-%d0%b0%d0%b2%d1%82%d0%be/", "date": "07.05.2025"}
  ],
@@ -190,9 +191,10 @@
  "tolls_src": "https://amsm.mk/sostojba-na-patishta/patarini-vo-republika-severna-makedonija/",
  "works": [
   {"t": "А1 Гевгелија – ГП Богородица", "v": "Од 24.09.2026 до 15.04.2027, од исклучувањето за Гевгелија до ГП Богородица, едниот коловоз на автопатот е затворен, а сообраќајот во двата правци се одвива по коловозот од ГП Богородица кон Скопје.", "src": "https://amsm.mk/sostojba-na-patishta/dnevni-informacii/"},
-  {"t": "А4, наплатна станица Преод", "v": "Од 17.08.2026 до 01.10.2026 изменет режим на сообраќај пред наплатната станица, поради санација на косина.", "src": "https://amsm.mk/sostojba-na-patishta/dnevni-informacii/"},
+  {"t": "А2 Гостивар – Кичево, мост на реката Тајмишка", "v": "Од 30.09.2026 на мостот бр. 63 на реката Тајмишка се изведуваат градежни работи и важи времен режим на сообраќај, додека не се завршат работите според договорот за санација.", "src": "https://amsm.mk/sostojba-na-patishta/dnevni-informacii/"},
   {"t": "ГП Делчево", "v": "Реконструкција и времен режим на сообраќај од 09.09.2026; преминот работи непрекинато.", "src": "https://amsm.mk/sostojba-na-patishta/dnevni-informacii/"},
-  {"t": "ГП Блаце – Скопје", "v": "На патниот правец се изведуваат градежни работи.", "src": "https://amsm.mk/sostojba-na-patishta/dnevni-informacii/"}
+  {"t": "ГП Блаце – Скопје", "v": "На патниот правец се изведуваат градежни работи.", "src": "https://amsm.mk/sostojba-na-patishta/dnevni-informacii/"},
+  {"t": "Кичево – Охрид", "v": "Поради градежни работи на повеќе делници, сообраќајот се одвива со девијации.", "src": "https://amsm.mk/sostojba-na-patishta/dnevni-informacii/"}
  ],
  "borders": [
   ["ГП Богородица (Грција)", "Макпетрол: CCS 100 kW, CHAdeMO 50 kW и Тип 2 22 kW; хотел Принцес: Тип 2 22 kW. До 15.04.2027 на А1 се изведуваат работи."],
@@ -208,13 +210,13 @@
   ["Охрид, аеродром „Св. Апостол Павле“", "ЕВН, Тип 2 22 kW"],
   ["Струга, ул. Партизанска бр. 29а", "ЕВН, Тип 2 22 kW"]
  ],
- "galicica": "Од 15 април патот Охрид – Ресен преку Националниот парк Галичица е отворен за сообраќај (АМСМ, дневни информации, 28.09.2026).",
+ "galicica": "Од 15 април патот Охрид – Ресен преку Националниот парк Галичица е отворен за сообраќај (АМСМ, дневни информации, 27.10.2026).",
  "road_srcs": [
-  {"label": "ЕВН — станици за полнење", "url": "https://emobility.evn.mk/charging-stations/ChargerMap.aspx", "date": "28.09.2026"},
+  {"label": "ЕВН — станици за полнење", "url": "https://emobility.evn.mk/charging-stations/ChargerMap.aspx", "date": "27.10.2026"},
   {"label": "Макпетрол — полначи за електрични возила", "url": "https://www.makpetrol.com.mk/%d0%bf%d0%be%d0%bb%d0%bd%d0%b0%d1%87%d0%b8-%d0%b7%d0%b0-%d0%b5%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%b8%d1%87%d0%bd%d0%b8-%d0%b2%d0%be%d0%b7%d0%b8%d0%bb%d0%b0/", "date": "17.04.2026"},
   {"label": "ЕВН — пристигнаа најмоќните полначи (180 kW во Кисела Вода и Кичево)", "url": "https://emobility.evn.mk/%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8/%D0%9F%D1%80%D0%B8%D1%81%D1%82%D0%B8%D0%B3%D0%BD%D0%B0%D0%B0-%D0%BD%D0%B0%D1%98%D0%BC%D0%BE%D0%BA%D0%BD%D0%B8%D1%82%D0%B5-%D0%BF%D0%BE%D0%BB%D0%BD%D0%B0%D1%87%D0%B8-%D0%B7%D0%B0-%D0%B5%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D1%87%D0%BD%D0%B8-%D0%B2%D0%BE%D0%B7%D0%B8%D0%BB%D0%B0.aspx", "date": "18.06.2026"},
-  {"label": "АМСМ — патарини во Северна Македонија (табела без датум)", "url": "https://amsm.mk/sostojba-na-patishta/patarini-vo-republika-severna-makedonija/", "date": "28.09.2026"},
-  {"label": "АМСМ — дневни информации за состојбата на патиштата", "url": "https://amsm.mk/sostojba-na-patishta/dnevni-informacii/", "date": "28.09.2026"}
+  {"label": "АМСМ — патарини во Северна Македонија (табела без датум)", "url": "https://amsm.mk/sostojba-na-patishta/patarini-vo-republika-severna-makedonija/", "date": "27.10.2026"},
+  {"label": "АМСМ — дневни информации за состојбата на патиштата", "url": "https://amsm.mk/sostojba-na-patishta/dnevni-informacii/", "date": "27.10.2026"}
  ],
  "csv": {"file": "elektricni-avtomobili-severna-makedonija.csv", "head": ["godina", "elektricni_patnicki_avtomobili_eurostat", "patnicki_avtomobili_vkupno_eurostat"],
          "rows": [[2013, 34, ""], [2014, 32, ""], [2015, 33, ""], [2016, 35, ""], [2017, 37, ""], [2018, 44, ""], [2019, 51, ""], [2020, 69, ""], [2021, 128, ""],

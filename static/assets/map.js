@@ -746,7 +746,9 @@ const HI = {
   car: ICON.car, list: ICON.list, cable: ICON.cable, park: ICON.park, info: ICON.info
 };
 function howOf(s) {
-  if (s.cc) return null;
+  // a neighbour's station on /mapa/, or a page without the scheme's words (the country maps of blokvolt.com: their
+  // strings cover the card, not this scheme) — no scheme rather than icons without text
+  if (s.cc || !T.hw_t) return null;
   const n = netOf(s), k = n && n.kako, ax = s.ax || {}, fee = (s.fee && s.fee.free) || '';
   const onlyAc = !s.dc && (s.c.length ? s.c.every(c => c[1] === 'ac') : !!s.ac);
   const acCable = onlyAc && !(s.cab && s.cab.own) ? [['cable', T.hw_g_cable]] : [];

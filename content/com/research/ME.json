@@ -1,7 +1,7 @@
 {
   "code": "ME",
   "name": "Montenegro",
-  "checked": "23.09.2026",
+  "checked": "27.10.2026",
   "currency": "EUR",
   "summary": "Montenegro's EV market is small but growing: Monstat counted 950 electric-only and 5,874 hybrid vehicles among 322,241 registered motor vehicles in 2025 (715 and 3,221 a year earlier), and battery-electric cars made up 1.8% of new car registrations. Public charging is sparse and mostly slow: a draft national framework counts 94 publicly accessible charging points with none above 150 kW, there are no Tesla Superchargers, and none of the operators checked publishes per-kWh prices. Only a few firms advertise home chargers and none publishes prices, while household electricity averaged 9.98 euro cents per kWh including taxes in 2025.",
   "stats": [
@@ -74,7 +74,7 @@
       "note": "tesla.com lists no Supercharger locations for Montenegro.",
       "source": "https://www.tesla.com/findus/list/superchargers/Montenegro",
       "source_title": "Tesla Superchargers in Montenegro",
-      "source_date": "no date on page; checked 23.09.2026",
+      "source_date": "no date on page; checked 27.10.2026",
       "confidence": "high"
     }
   ],
@@ -155,7 +155,7 @@
   ],
   "public_count": {
     "value": "94 publicly accessible charging points",
-    "note": "Figure from the draft National Policy Framework for alternative fuels infrastructure, as reported: 2,235 kW in total, 88% normal-power chargers, none above 150 kW. Other counts: RTCG (22.07.2026) reports 'somewhat fewer than 200' publicly accessible, mostly slow chargers; Electromaps lists 38 stations (crowd-sourced map, latest point added 12.09.2025). RTCG launched an interactive charger map on 24.08.2026 without naming its data source.",
+    "note": "Figure from the draft National Policy Framework for alternative fuels infrastructure, as reported: 2,235 kW in total, 88% normal-power chargers, none above 150 kW. Other counts: at a workshop on the framework, reported on 23.09.2026, the Ministry of Transport cited about 90 publicly accessible chargers, mostly low-power or in towns (https://rtnk.me/drustvo/nacionalni-okvir-za-alternativna-goriva-uskladice-transport-i-energetiku-sa-evropskim-standardima-i-podstaci-odrzivu-mobilnost/); RTCG (22.07.2026) reports 'somewhat fewer than 200' publicly accessible, mostly slow chargers; Electromaps lists 38 stations (crowd-sourced map, latest point added 12.09.2025). RTCG launched an interactive charger map on 24.08.2026 without naming its data source.",
     "source": "https://www.portalanalitika.me/clanak/crna-gora-bez-ultrabrzih-punjaca-za-elektricna-vozila-potrebno-najmanje-14-novih-lokacija",
     "source_title": "Crna Gora bez ultrabrzih punjača za električna vozila, potrebno najmanje 14 novih lokacija",
     "source_date": "14.06.2026",
@@ -166,19 +166,19 @@
       "name": "EKO fast chargers at Jugopetrol fuel stations",
       "operator": "Jugopetrol AD",
       "app": "Not stated",
-      "size": "Seven 50 kW DC chargers announced in December 2024: installed at three locations in Podgorica, in Bijelo Polje and in Tivat, with Žabljak and Herceg Novi planned (Investitor, 11.12.2024). The operator's website has no EV-charging section.",
+      "size": "Seven 50 kW DC chargers announced in December 2024 (Investitor, 11.12.2024). Jugopetrol's 'Električni punjači' page lists seven EKO stations with chargers: three in Podgorica (Bulevar Vilija Branta 1, Stari aerodrom, Zabjelo), Tivat (Jadranska magistrala), Herceg Novi, Žabljak and Bijelo Polje (Rasovo); it gives no power, prices or payment details.",
       "prices": [
         {
           "what": "DC 50 kW",
           "price": "Not published",
           "vat": "not stated",
-          "source": "https://www.jugopetrol.co.me/",
-          "source_date": "no date on page (© 2026); checked 23.09.2026",
+          "source": "https://www.jugopetrol.co.me/stanice/usluge/elektri-ni-punja-i/",
+          "source_date": "no date on page (© 2026); checked 27.10.2026",
           "confidence": "high"
         }
       ],
       "payment": "Not published",
-      "url": "https://www.jugopetrol.co.me/"
+      "url": "https://www.jugopetrol.co.me/stanice/usluge/elektri-ni-punja-i/"
     },
     {
       "name": "EVC Charge",
@@ -256,7 +256,7 @@
       "name": "Destination chargers (hotels, shopping centres, marinas, fuel stations)",
       "operator": "Various",
       "app": "Varies",
-      "size": "An EV dealer's guide lists chargers at hotels (Hilton, CUE, Ramada, Splendid, Mediteran, Portonovi, Porto Montenegro), shopping centres (Delta City, Capital Plaza, KIC Budo Tomović) and EKO and Petrol fuel stations. PlugShare shows Porto Montenegro (Tivat) with 3 Tesla Wall Connectors (22 kW) and 3 CEE 32 A sockets (adapter needed).",
+      "size": "An EV dealer's guide lists chargers at hotels (Hilton, CUE, Ramada, Splendid, Mediteran, Portonovi, Porto Montenegro), shopping centres (Delta City, Capital Plaza, KIC Budo Tomović) and EKO and Petrol fuel stations.",
       "prices": [
         {
           "what": "Charging",
@@ -325,10 +325,10 @@
       "amount": "Not confirmed for 2026 (the first 2025 round paid up to €7,200 per passenger car)",
       "who": "Individuals, companies, entrepreneurs and public-sector bodies",
       "deadline": "Rounds published 27.02.2026 and 15.05.2026; both marked 'ZATVOREN KONKURS' (closed)",
-      "note": "Selection decisions posted 03.06.2026. No vehicle call was open on Eko-fond's site on 23.09.2026.",
+      "note": "Selection decisions posted 03.06.2026. No vehicle or charger call was open on Eko-fond's calls page on 27.10.2026; the only open call there was an energy-efficiency call for the hotel industry. On 30.09.2026 the head of Eko-fond's environmental protection and climate change service said the fund had allocated about €2 million for vehicle purchases since 2021, supporting about 465 electric and hybrid vehicles, and that it is considering new programmes and subsidy models with the Ministry of Transport, not necessarily limited to buying vehicles; no new call was announced (CdM: https://www.cdm.me/ekonomija/za-razvoj-e-mobilnosti-potrebni-stabilno-finansiranje-i-planski-razvoj-infrastrukture/).",
       "source": "https://www.eko-fond.co.me/arhiva",
       "source_title": "EKO-FOND Fond za zaštitu životne sredine – Arhiva javnih konkursa",
-      "source_date": "no date on page; entries dated 27.02.2026 and 15.05.2026; checked 23.09.2026",
+      "source_date": "no date on page; entries dated 27.02.2026 and 15.05.2026; checked 27.10.2026",
       "confidence": "high"
     },
     {
@@ -361,10 +361,10 @@
       "amount": "—",
       "who": "—",
       "deadline": "—",
-      "note": "No Eko-fond call for household chargers appears among its current or archived calls; the only charging-station call (published 19.02.2024) was for businesses, entrepreneurs and the public sector.",
+      "note": "No Eko-fond call for household chargers appears among its current or archived calls; its two charging-station calls (09.10.2023 and 19.02.2024) were for businesses, entrepreneurs and the public sector. On 30.09.2026 Eko-fond said interest in its earlier charger calls had been too low two years ago (CdM: https://www.cdm.me/ekonomija/za-razvoj-e-mobilnosti-potrebni-stabilno-finansiranje-i-planski-razvoj-infrastrukture/).",
       "source": "https://www.eko-fond.co.me/arhiva",
       "source_title": "EKO-FOND Fond za zaštitu životne sredine – Arhiva javnih konkursa",
-      "source_date": "checked 23.09.2026",
+      "source_date": "checked 27.10.2026",
       "confidence": "medium"
     },
     {
@@ -417,7 +417,7 @@
       "confidence": "medium"
     },
     {
-      "text": "The framework, Montenegro's first aligned with AFIR (Regulation (EU) 2023/1804), is EU-funded and prepared by a consortium led by DAI Global Belgium with GIZ and ENOVA; it was presented at a stakeholder workshop in Podgorica on 16.09.2026.",
+      "text": "The framework, Montenegro's first aligned with AFIR (Regulation (EU) 2023/1804), is EU-funded and prepared by a consortium led by DAI Global Belgium with GIZ and ENOVA; it was presented at a stakeholder workshop in Podgorica on 16.09.2026. Coverage published on 23.09.2026 quotes the Ministry of Energy and Mining saying the framework is in its final drafting phase, ahead of final alignment and adoption, and that a working group has been formed to draft a law on alternative fuels infrastructure (RTNK: https://rtnk.me/drustvo/nacionalni-okvir-za-alternativna-goriva-uskladice-transport-i-energetiku-sa-evropskim-standardima-i-podstaci-odrzivu-mobilnost/).",
       "source": "https://www.evropskakuca.me/me/radionica-nacionalni-okvir-politike-za-infrastrukturu-za-alternativna-goriva-16-septembra-u-podgorici/",
       "source_date": "15.09.2026",
       "confidence": "high"

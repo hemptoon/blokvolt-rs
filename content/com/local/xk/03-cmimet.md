@@ -5,7 +5,7 @@ order: 3
 nav: Çmimet
 icon: coins
 priority: 0.8
-title: Çmimet e karikimit në Kosovë 2026 — ECHARGE dhe operatorët e tjerë | BlokVolt
+title: Çmimet e karikimit të veturave elektrike në Kosovë 2026 | BlokVolt
 description: Sa kushton karikimi në karikuesit publikë në Kosovë — ECHARGE DC 0,39–0,49 € dhe AC 0,19–0,21 € për kWh — si paguhet dhe cilët operatorë nuk publikojnë çmime.
 h1: Çmimet e karikimit në Kosovë
 lead: Çfarë publikojnë operatorët për çmimet dhe pagesën, dhe çfarë nuk publikohet — me burim dhe datë kontrolli.
@@ -13,7 +13,7 @@ card: Çmimet e ECHARGE, operatorët pa çmime të publikuara dhe si paguhet.
 related: map, home, road
 ---
 {% set EC = C.networks[0] %}{% set P = EC.packages %}
-Në Kosovë vetëm **ECHARGE** publikon çmime për kWh: {{ num(EC.prices[2].v, 2) }}–{{ money(EC.prices[3].v) }} për karikim DC, {{ money(EC.prices[0].v) }} ditën dhe {{ money(EC.prices[1].v) }} natën për AC. **HIB Petrol**, **RapidCharge** dhe **Shell** nuk publikojnë çmim. ECHARGE nuk shkruan nëse çmimet përfshijnë TVSH-në, cili stacion ka cilin çmim DC dhe cilat janë orët e ditës dhe të natës. Rrjetet janë renditur sipas alfabetit. Tabela u kontrollua më {{ C.checked }}.
+Në Kosovë vetëm **ECHARGE** publikon çmime për kWh: {{ num(EC.prices[2].v, 2) }}–{{ money(EC.prices[3].v) }} për karikim DC, {{ money(EC.prices[0].v) }} ditën dhe {{ money(EC.prices[1].v) }} natën për AC. **HIB Petrol**, **RapidCharge** dhe **Shell** nuk publikojnë çmim. Sipas kushteve të përdorimit të ECHARGE, çmimet përfshijnë TVSH-në; cili stacion ka cilin çmim DC dhe cilat janë orët e ditës dhe të natës, nuk publikohet. Rrjetet janë renditur sipas alfabetit. Tabela u kontrollua më {{ C.checked }}.
 
 {{ w.price_table() }}
 
@@ -39,7 +39,7 @@ Me 17 kWh në 100 km: te ECHARGE me AC {{ num(EC.prices[1].v * 17, 2) }}–{{ mo
 
 ## Si paguhet
 
-- **ECHARGE:** faqja e operatorit përmend aplikacionin ECHARGE; pagesa pa aplikacion (me kartelë në terminal, me kod QR ose në ueb) nuk përmendet.
+- **ECHARGE:** sipas faqes së operatorit pagesa bëhet në aplikacion me kartelë. Kushtet e përdorimit përmendin edhe pagesë me kartelë te stacioni dhe përmes portalit të operatorit, por kartelat pa kontakt nuk pranohen ende në të gjitha stacionet; cilat i pranojnë, nuk publikohet.
 - **RapidCharge:** në aplikacionin Rapid Charge, me kartelë krediti ose debiti ose me pagesë digjitale.
 - **HIB Petrol dhe Shell:** mënyra e pagesës nuk publikohet; pyetni në pikën e karburantit.
 - **Lidhësit:** ECHARGE shkruan se ka CCS2, Type 2 dhe „në disa stacione GB/T”. Nëse vetura juaj ka prizë GB/T, kontrolloni stacionin para nisjes.

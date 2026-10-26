@@ -5,7 +5,7 @@ order: 6
 nav: Udhëtimi
 icon: road
 priority: 0.7
-title: Me veturë elektrike nëpër Kosovë — autostradat dhe pikat kufitare | BlokVolt
+title: Me veturë elektrike nëpër Kosovë: autostradat | BlokVolt
 description: Autostradat R6 dhe R7 pa pagesë, ku ka karikues të shpejtë në qytetet përgjatë rrugëve kryesore, pikat kufitare dhe rruga drejt bregdetit shqiptar.
 h1: Me veturë elektrike nëpër Kosovë
 lead: Autostradat R6 dhe R7, karikuesit e shpejtë në qytete, pikat kufitare dhe rruga drejt detit.

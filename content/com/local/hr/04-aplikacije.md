@@ -5,8 +5,8 @@ order: 4
 nav: Aplikacije
 icon: phone
 priority: 0.8
-title: Aplikacije i kartice za punjenje u Hrvatskoj: što radi na kojoj mreži | BlokVolt
-description: ELEN, OneCharge, espoTs, Lidl Plus, IONITY, Tesla, Qelo, MOON eCharge: koja aplikacija i RFID kartica rade na kojoj mreži u Hrvatskoj, koliko košta roaming i kako platiti bez aplikacije.
+title: Aplikacije i kartice za punjenje u Hrvatskoj | BlokVolt
+description: Koja aplikacija i RFID kartica rade na kojoj mreži u Hrvatskoj: ELEN, OneCharge, espoTs, IONITY, Tesla, Qelo; roaming i plaćanje bez aplikacije.
 h1: Aplikacije i kartice za punjenje
 lead: Koja aplikacija ili RFID kartica radi na kojoj mreži u Hrvatskoj, koliko stoji punjenje preko tuđe aplikacije i kako platiti bez ikakve registracije.
 card: Koja aplikacija i kartica rade na kojoj mreži, koliko stoji roaming i kako platiti karticom bez registracije.

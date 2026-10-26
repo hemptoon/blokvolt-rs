@@ -1,26 +1,26 @@
 {
  "code": "BA",
  "name": "Bosnia and Herzegovina",
- "checked": "23.09.2026",
+ "checked": "27.10.2026",
  "currency": "BAM",
- "summary": "Bosnia and Herzegovina is one of Europe's smallest EV markets: 763 electric vehicles were registered at the end of 2024, and Eurostat-based figures show 71 new battery-electric cars in 2025 (0.7% of new car registrations). Public charging is split between the utility Elektroprivreda BiH, private networks such as e-GO and single chargers at hotels, malls and fuel stations; most operators publish no prices, there is no official nationwide count and no Tesla Supercharger. Only a few firms publish home-charger prices (about 670–2,900 KM per wallbox), household electricity is regulated separately in the Federation, Republika Srpska and Brčko District, and the Federation's 2026 EV purchase subsidy (up to 12,000 KM) was fully reserved within two days.",
+ "summary": "Bosnia and Herzegovina is one of Europe's smallest EV markets: BIHAMK counted 989 electric vehicles of all categories at the end of 2025 (763 a year earlier), and Eurostat-based figures show 71 new battery-electric cars in 2025 (0.7% of new car registrations). Public charging is split between the utility Elektroprivreda BiH, private networks such as e-GO and single chargers at hotels, malls and fuel stations; most operators publish no prices, there is no official nationwide count and no Tesla Supercharger. Of three home-charger sellers found, only one online shop publishes prices (about 690–3,300 KM per wallbox), household electricity is regulated separately in the Federation, Republika Srpska and Brčko District, and the Federation's 2026 EV purchase subsidy (up to 12,000 KM) was fully reserved within two days; after 184,000 KM was granted to 16 applicants, applications reopen on 30.10.2026.",
  "stats": [
   {
    "label": "Electric vehicles registered (all vehicle categories)",
-   "value": "763 (end of 2024)",
-   "note": "Fuel type 'Električni' across all categories: 0.0589% of 1,295,224 registered vehicles; 453 a year earlier. BIHAMK had not published a 2025 report by 23.09.2026 (its statistics page lists 2024 as the latest year).",
-   "source": "https://bihamk.ba/assets/files/1739351705-2024-godina.pdf",
-   "source_title": "BIHAMK – Informacija o registrovanim cestovnim motornim vozilima u BiH, januar–decembar 2024",
-   "source_date": "February 2025",
+   "value": "989 (end of 2025)",
+   "note": "Fuel type 'Električna vozila' across all categories: 0.0729% of 1,355,856 registered vehicles; 763 a year earlier. The report does not split electric vehicles by vehicle category.",
+   "source": "https://bihamk.ba/assets/storage/files/83749/Broj%20registrovanih%20motornih%20vozila%20u%20Bosni%20i%20Hercegovini%202025.pdf",
+   "source_title": "BIHAMK – Informacija o registrovanim cestovnim motornim vozilima u BiH, januar–decembar 2025",
+   "source_date": "January 2026",
    "confidence": "high"
   },
   {
    "label": "Hybrid vehicles registered",
-   "value": "4,350 petrol-electric and 1,565 diesel-electric (end of 2024)",
-   "note": "Same BIHAMK table by fuel type; plug-in and full hybrids are not shown separately.",
-   "source": "https://bihamk.ba/assets/files/1739351705-2024-godina.pdf",
-   "source_title": "BIHAMK – Informacija o registrovanim cestovnim motornim vozilima u BiH, januar–decembar 2024",
-   "source_date": "February 2025",
+   "value": "6,739 petrol-electric and 3,132 diesel-electric (end of 2025)",
+   "note": "Same BIHAMK table by fuel type (0.4970% and 0.2310% of all registered vehicles); plug-in and full hybrids are not shown separately.",
+   "source": "https://bihamk.ba/assets/storage/files/83749/Broj%20registrovanih%20motornih%20vozila%20u%20Bosni%20i%20Hercegovini%202025.pdf",
+   "source_title": "BIHAMK – Informacija o registrovanim cestovnim motornim vozilima u BiH, januar–decembar 2025",
+   "source_date": "January 2026",
    "confidence": "high"
   },
   {
@@ -100,7 +100,7 @@
   {
    "name": "e-punionice.ba (Vektra d.o.o.)",
    "city": "Grude",
-   "what": "Online shop for EV charging equipment: wall-mounted home chargers (36 models in its wallbox category), mobile chargers, commercial and DC chargers, adapters. Its business page offers installation and connection of chargers to software for monitoring and billing ('praćenje i naplatu').",
+   "what": "Online shop for EV charging equipment: wall-mounted home chargers (45 products in its wallbox category), mobile chargers, commercial and DC chargers, adapters. Its business page offers installation and connection of chargers to software for monitoring and billing ('praćenje i naplatu').",
    "brands": [
     "dé",
     "Anker SOLIX",
@@ -112,14 +112,15 @@
     "Stekerr",
     "Tesla (Wall Connector)",
     "Wallbox",
-    "Wolfbox"
+    "Wolfbox",
+    "Zaptec"
    ],
-   "price": "Wallboxes 670–2,895 KM, e.g. dé Wallbox 11 kW 845–1,190 KM, Easee Charge Core 2,279 KM, Tesla Wall Connector 22 kW 2,195 KM; twin-socket Stekerr P1 units 8,549–9,159 KM. VAT not stated.",
-   "price_eur": "€342.57–1,480.19 (dé Wallbox 11 kW €432.04–608.44)",
+   "price": "Wallboxes 690–3,299 KM, e.g. dé Wallbox 11 kW 845–1,190 KM, Easee Charge Core 2,279 KM, Tesla Wall Connector 3 1,450 KM, Zaptec Pro MID 3,299 KM; twin-socket Stekerr P1 units 8,549–9,159 KM. VAT not stated.",
+   "price_eur": "€352.79–1,686.75 (dé Wallbox 11 kW €432.04–608.44)",
    "installation": "Yes",
    "installation_note": "Business page: 'Profesionalna montaža traje svega nekoliko sati' (professional installation takes a few hours); the contact page offers help with charger installation ('ugradnju punionice'). Installation price not published.",
    "url": "https://e-punionice.ba/",
-   "source_date": "no date on page; checked 23.09.2026",
+   "source_date": "no date on page; checked 27.10.2026",
    "confidence": "high"
   },
   {
@@ -129,12 +130,12 @@
    "brands": [
     "MOON"
    ],
-   "price": "MOON Inch LITE (up to 22 kW) 1,900 KM; MOON Inch Pro 2,800 KM; POWER2Go Complete Set 2,500 KM; POWER2Go cable 3,400 KM — all 'bez PDV' (excl. VAT).",
-   "price_eur": "€971.45; €1,431.62; €1,278.23; €1,738.39 (excl. VAT)",
+   "price": "Not published: the MOON Inch LITE and MOON Inch Pro wallboxes and the POWER2Go chargers are listed as 'Cijena na upit' (price on request).",
+   "price_eur": "",
    "installation": "Yes",
    "installation_note": "Private-customer page: 'Od kupovine wallboxa do instalacije, naši partneri prate sve korake' (partner companies handle every step from purchase to installation). Installation price not published.",
    "url": "https://www.moon-power.ba/privatni-korisnici",
-   "source_date": "no date on page; checked 23.09.2026",
+   "source_date": "no date on page; checked 27.10.2026",
    "confidence": "high"
   },
   {
@@ -153,21 +154,21 @@
  ],
  "home_price_ranges": [
   {
-   "what": "Wallbox list prices at a BiH online shop (e-punionice.ba, 36 models)",
-   "range": "670–2,895 KM per wallbox (twin-socket units up to 9,159 KM)",
-   "note": "About €342.57–1,480.19. VAT not stated on the site. One retailer's catalogue, not a market survey.",
+   "what": "Wallbox list prices at a BiH online shop (e-punionice.ba, 45 products)",
+   "range": "690–3,299 KM per wallbox (twin-socket units up to 9,159 KM)",
+   "note": "About €352.79–1,686.75. VAT not stated on the site. One retailer's catalogue, not a market survey.",
    "source": "https://e-punionice.ba/product-category/wallbox/",
    "source_title": "Wallbox (zidne) punionice – e-punionice.ba",
-   "source_date": "no date on page; checked 23.09.2026",
+   "source_date": "no date on page; checked 27.10.2026",
    "confidence": "high"
   },
   {
-   "what": "MOON home wallboxes (importer list prices)",
-   "range": "1,900–2,800 KM excl. VAT",
-   "note": "About €971.45–1,431.62 excl. VAT (MOON Inch LITE and MOON Inch Pro).",
+   "what": "MOON home wallboxes (importer)",
+   "range": "Not published ('Cijena na upit', price on request)",
+   "note": "The MOON POWER BiH private-customer page lists the MOON Inch LITE and MOON Inch Pro wallboxes without prices.",
    "source": "https://www.moon-power.ba/privatni-korisnici",
    "source_title": "MOON POWER BiH – Privatni korisnici",
-   "source_date": "no date on page; checked 23.09.2026",
+   "source_date": "no date on page; checked 27.10.2026",
    "confidence": "high"
   },
   {
@@ -473,14 +474,14 @@
  "subsidies": [
   {
    "programme": "Federation of BiH – Environmental Protection Fund (Fond za zaštitu okoliša FBiH), public call JP EV 2026 for new electric vehicles",
-   "status": "closed",
+   "status": "paused",
    "amount": "Up to 12,000 KM for a battery-electric vehicle and up to 10,000 KM for a plug-in hybrid, at most 30% of the vehicle price (about €6,135.50 / €5,112.92); call budget 500,000 KM",
    "who": "Adults resident in the Federation of BiH; legal entities and sole traders (obrti) registered in the Federation. New M1 (passenger) and N1 (light goods) vehicles only, never registered before.",
-   "deadline": "Until funds are used up, at the latest 31.12.2026. Temporarily closed on 18.09.2026 after all funds were reserved; it reopens only if money remains after the submitted applications are processed.",
-   "note": "Opened 16.09.2026; applications via e-prijava.fzofbih.org.ba, handled in order of arrival. Chargers are not mentioned as eligible. Closure notice: https://fzofbih.org.ba/2026/09/18/privremeno-zatvaranje-javnog-poziva-za-sufinanciranje-nabave-elektricnih-vozila-za-2026-godinu-zbog-rezervacije-raspolozivih-sredstava/. Oslobođenje (15.01.2024) reported Federation incentives of 10,000 KM per vehicle in 2023.",
-   "source": "https://fzofbih.org.ba/wp-content/uploads/2026/09/JP-EV-2026_Tekst-Poziva.pdf",
-   "source_title": "Fond za zaštitu okoliša FBiH – JP EV 2026, tekst poziva",
-   "source_date": "16.09.2026",
+   "deadline": "Temporarily closed on 18.09.2026 after all funds were reserved; applications reopen on 30.10.2026 at 08:00 and are accepted until the available funds are reserved, at the latest 31.12.2026.",
+   "note": "Opened 16.09.2026 (call text: https://fzofbih.org.ba/wp-content/uploads/2026/09/JP-EV-2026_Tekst-Poziva.pdf); applications via e-prijava.fzofbih.org.ba, handled in order of arrival. Closure notice of 18.09.2026: https://fzofbih.org.ba/2026/09/18/privremeno-zatvaranje-javnog-poziva-za-sufinanciranje-nabave-elektricnih-vozila-za-2026-godinu-zbog-rezervacije-raspolozivih-sredstava/. On the basis of the evaluation committee's first report, grants totalling 184,000 KM (about €94,077.71) were approved for 16 applicants (notice of 21.10.2026); the notice does not say how much of the 500,000 KM remains. Chargers are not mentioned as eligible. Oslobođenje (15.01.2024) reported Federation incentives of 10,000 KM per vehicle in 2023.",
+   "source": "https://fzofbih.org.ba/2026/10/21/obavijest-o-objavi-odluka-o-dodjeli-sredstava-i-ponovnom-otvaranju-javnih-poziva-jp-ee-ss-2026-i-jp-ev-2026/",
+   "source_title": "Fond za zaštitu okoliša FBiH – Obavijest o objavi odluka o dodjeli sredstava i ponovnom otvaranju javnih poziva JP EE SS 2026 i JP EV 2026",
+   "source_date": "21.10.2026",
    "confidence": "high"
   },
   {
@@ -586,7 +587,8 @@
   "EPBiH public charging prices: announced for mojaenergija.epbih.ba/elektromobilnost/ but not published as of 23.09.2026. e-GO prices are not on its site. Whether EPBiH charging is still in a free test phase is not stated.",
   "Republika Srpska: no public charging operator with published prices found; the ERS, Elektroprivreda HZ HB, Petrol BiH, INA BiH/Energopetrol and m:tel sites have no charging information. The operator behind 'easy2charge' was not identified.",
   "No official nationwide count of public charge points. FERK's Federation register was last updated 02.04.2024; map and media figures range from 78 to about 500.",
-  "BIHAMK has not yet published its 2025 registered-vehicles report; no IDDEEA or statistics-agency series by fuel type was found.",
+  "BIHAMK's 2025 report counts electric vehicles only as one total for all vehicle categories (989); no IDDEEA or statistics-agency series by fuel type was found.",
+  "The JP EV 2026 grant decision (PDF attached to the Fund's notice of 21.10.2026) has no machine-readable text, so the split of the 16 grants between private persons and companies, and between battery-electric and plug-in hybrid vehicles, could not be read.",
   "EPBiH household tariff tables are published as images; EPBiH figures come from media, and whether they include network charges is not confirmed.",
   "Brčko District: no EV purchase or charger subsidy found.",
   "No subsidy for home chargers found in either entity; the Federation's JP EV 2026 does not list chargers as eligible.",

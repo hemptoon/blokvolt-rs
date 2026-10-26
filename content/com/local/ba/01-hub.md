@@ -4,8 +4,8 @@ slug:
 template: hub
 order: 1
 priority: 0.9
-title: Punjači za električne automobile u BiH — mapa, cijene, poticaji | BlokVolt
-description: Mapa javnih punjača u Bosni i Hercegovini, cijene punjenja, koliko košta punjenje kod kuće po tarifama EPBiH, ERS i EP HZ HB, poticaji FBiH i punjači na koridoru Vc — s izvorima.
+title: Punjači za električne automobile u BiH: mapa i cijene | BlokVolt
+description: Mapa javnih punjača u Bosni i Hercegovini, cijene punjenja, trošak punjenja kod kuće (EPBiH, ERS, EP HZ HB), poticaji FBiH i koridor Vc.
 kicker: Vodič · Bosna i Hercegovina
 h1: Punjenje električnih automobila u Bosni i Hercegovini
 lead: Gdje napuniti auto, koliko košta punjenje na javnim punjačima i kod kuće u oba entiteta, koji poticaji postoje i gdje se puni na putu — na jednom mjestu, s izvorom i datumom provjere.
@@ -17,7 +17,7 @@ card: Mapa punjača, cijene, kalkulator s tarifama EPBiH, ERS i EP HZ HB, potica
 
 ## Koliko košta 100 km
 
-Električni automobil troši oko 17 kWh na 100 km. Uz cijene objavljene do 28.09.2026.:
+Električni automobil troši oko 17 kWh na 100 km. Uz cijene objavljene do 27.10.2026.:
 
 | Gdje punite | Cijena kWh | 100 km |
 |---|---|---|
@@ -33,9 +33,9 @@ Kod kuće noću 100 km košta oko 2 KM — otprilike deset puta manje nego benzi
 
 {{ w.tiles(['map', 'prices', 'home', 'subsidies', 'road', 'stats']) }}
 
-## Ukratko, septembar 2026.
+## Ukratko, oktobar 2026.
 
-- **Poticaj FBiH.** Fond za zaštitu okoliša FBiH otvorio je 16.09.2026. poziv JP EV 2026 (do 12.000 KM po električnom vozilu), a 18.09. ga privremeno zatvorio jer su sredstva rezervisana. [Poticaji]({{ PAGES.subsidies.path }})
+- **Poticaj FBiH.** Poziv JP EV 2026 Fonda za zaštitu okoliša FBiH (do 12.000 KM po električnom vozilu) privremeno je zatvoren 18.09.2026.; 16 podnosilaca dobilo je ukupno 184.000 KM, a prijave se ponovo primaju od 30.10.2026. u 8 h. [Poticaji]({{ PAGES.subsidies.path }})
 - **Carina.** Nova električna vozila do kraja 2026. uvoze se bez carine.
 - **Koridor Vc.** Na A1 su brzi punjači EPBiH na odmorištu Lepenica (samo prema Sarajevu) i MOON kod Počitelja. [Na putu]({{ PAGES.road.path }})
 - **Cijene.** Elektroprivreda BiH i MOON nemaju javne cjenovnike; na mnogim punjačima punjenje je još besplatno. [Cijene]({{ PAGES.prices.path }})

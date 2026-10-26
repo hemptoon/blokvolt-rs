@@ -12,9 +12,9 @@
    "nav_desc": "Full guide on blokvolt.rs",
    "facts": [
     "7,155 electric cars (Ministry of Interior, April 2026); 1,166 new ones registered in January–September 2026",
-    "About 220 public chargers; 36 state chargers on motorways are free",
+    "{map_n} public chargers on the map ({map_ok} confirmed); state motorway chargers are free, {ps_ok} of {ps_n} working",
     "€5,000 purchase subsidy, applications until 1 December 2026",
-    "51 companies in the register of installers and sellers"
+    "{firms} companies in the register of installers and sellers"
    ]
   },
   {
@@ -35,12 +35,12 @@
    "slug": "bosnia-and-herzegovina",
    "name": "Bosnia and Herzegovina",
    "group": "Western Balkans",
-   "nav_desc": "704 EVs; map and prices in Bosnian",
+   "nav_desc": "704 EVs; FBiH EV grant reopens 30 October",
    "facts": [
     "704 battery-electric cars at the end of 2025 (Eurostat)",
     "No official count of public chargers: published figures range from 78 to about 500",
-    "Federation of BiH grant of up to 12,000 KM per car: funds reserved, call paused on 18.09.2026",
-    "3 home-charger sellers found, 2 with published prices"
+    "Federation of BiH grant of up to 12,000 KM per car: 16 approved, applications reopen on 30 October 2026",
+    "3 home-charger sellers found, 1 with published prices"
    ]
   },
   {
@@ -61,12 +61,12 @@
    "slug": "croatia",
    "name": "Croatia",
    "group": "EU neighbours",
-   "nav_desc": "12,616 EVs; map and prices in Croatian",
+   "nav_desc": "Grant up to €9,000 from 28 Oct; Croatian guide",
    "facts": [
-    "12,616 battery-electric cars on the road at the end of 2025 (Eurostat)",
+    "12,616 battery-electric cars on the road at the end of 2025 (Eurostat); 2,457 new in January–September 2026",
     "715 stations in the national registry; about 300 ultra-fast connectors",
-    "Citizens' grant of €20 million announced for autumn 2026, now including home chargers",
-    "14 home-charger sellers and installers listed"
+    "Citizens' grant open from 28 October 2026: up to €9,000 per electric car, €20 million",
+    "14 home-charger sellers and installers listed; no home-charger grant"
    ]
   },
   {
@@ -74,11 +74,11 @@
    "slug": "slovenia",
    "name": "Slovenia",
    "group": "EU neighbours",
-   "nav_desc": "4,600+ public points, grants up to €7,800",
+   "nav_desc": "4,600+ public points; car grants oversubscribed",
    "facts": [
-    "9,203 new battery-electric cars in January–August 2026 (19.9% of new cars)",
+    "10,457 new battery-electric cars in January–September 2026 (19.8% of new cars)",
     "Just over 4,600 public charging points at almost 1,500 locations",
-    "Borzen grants: up to €7,800 per car, 55% (max. €1,000) per home charger",
+    "Car grants up to €7,800 oversubscribed, no top-up planned; home chargers 55% (max. €1,000)",
     "15 home-charger sellers and installers listed"
    ]
   },
@@ -100,10 +100,10 @@
    "slug": "kosovo",
    "name": "Kosovo",
    "group": "Western Balkans",
-   "nav_desc": "1,457 EVs; ECHARGE €0.39–0.49/kWh",
+   "nav_desc": "1,457 EVs; ECHARGE DC €0.39–0.49/kWh incl. VAT",
    "facts": [
     "1,457 battery-electric cars at the end of 2025 (Eurostat)",
-    "ECHARGE: 24+ sites in Kosovo and Albania, DC €0.39–0.49 per kWh",
+    "ECHARGE: 24+ sites in Kosovo and Albania, DC €0.39–0.49 per kWh incl. VAT",
     "No tax relief: 10% customs and 18% VAT, as for petrol and diesel cars",
     "Night-rate home electricity about 4.2 euro cents per kWh"
    ]
@@ -120,8 +120,8 @@
     "t": "new electric cars registered in January–September 2026, 291% more than a year earlier (SAUVD)"
    },
    {
-    "b": "~220",
-    "t": "publicly accessible chargers in Serbia; the 36 state chargers on motorways are free"
+    "b": "{map_n}",
+    "t": "public chargers on the blokvolt.rs map, {map_ok} of them confirmed; the state chargers on motorways are free ({ps_ok} of {ps_n} working)"
    }
   ],
   "facts": [
@@ -135,7 +135,7 @@
    ],
    [
     "Public charging prices",
-    "Operators do not publish price lists; most commercial networks charge per minute. DC receipts collected by the editors work out at 43–79 RSD per kWh."
+    "Most commercial networks charge per minute and show prices only in their apps. On fast chargers this works out at 43–79 RSD per kWh according to receipts (price index on blokvolt.rs)."
    ],
    [
     "Apartment buildings",
@@ -146,7 +146,7 @@
    [
     "https://www.blokvolt.rs/en/firme/",
     "Company register",
-    "51 installers and sellers of home chargers, same columns for everyone"
+    "{firms} installers and sellers of home chargers, same columns for everyone"
    ],
    [
     "https://www.blokvolt.rs/en/cena-punjaca-za-elektricni-auto",
@@ -157,6 +157,31 @@
     "https://www.blokvolt.rs/en/javno-punjenje/",
     "Public charging",
     "Networks, apps and the monthly price index"
+   ],
+   [
+    "https://www.blokvolt.rs/en/mapa/",
+    "Charger map",
+    "{map_n} public chargers with network prices, each marked confirmed or not"
+   ],
+   [
+    "https://www.blokvolt.rs/en/gradovi/",
+    "Chargers by town",
+    "A list of public chargers for every town with three or more"
+   ],
+   [
+    "https://www.blokvolt.rs/en/elektricni-automobili/",
+    "Electric cars on sale",
+    "Every brand sold officially in Serbia, importers, showrooms and prices"
+   ],
+   [
+    "https://www.blokvolt.rs/en/servisi/",
+    "Service map",
+    "Authorised and independent EV services, body shops and towing"
+   ],
+   [
+    "https://www.blokvolt.rs/en/podaci/pomoc-na-putu/",
+    "Roadside assistance",
+    "Who to call with an electric car, and why only a flatbed tow"
    ],
    [
     "https://www.blokvolt.rs/en/podaci/subvencije-2026/",
@@ -184,5 +209,10 @@
     "Fleet, registrations and public chargers"
    ]
   ]
+ },
+ "map_fallback": {
+  "n": 398,
+  "ok": 245,
+  "note": "used only when dist/ (the blokvolt.rs build) is missing; numbers of 26.10.2026"
  }
 }

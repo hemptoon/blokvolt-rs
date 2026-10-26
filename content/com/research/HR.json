@@ -1,9 +1,9 @@
 {
  "code": "HR",
  "name": "Croatia",
- "checked": "23.09.2026",
+ "checked": "27.10.2026",
  "currency": "EUR",
- "summary": "Croatia's electric-car market is small but grew quickly in 2026: Eurostat counts about 12,600 battery-electric passenger cars on the road at the end of 2025, and ACEA reports 1,781 new BEVs in January–June 2026, about four and a half times the same period of 2025. Public charging is run by 32 companies, led by HEP's ELEN network, Petrol and Hrvatski Telekom, with published prices of about €0.35–0.42/kWh for AC and €0.66–0.78/kWh for fast DC without a subscription. Home wallboxes are sold by solar and electrical firms, the supplier E.ON, online shops and a DIY chain at roughly €475–1,500 for the unit; in apartment buildings, installing charging points is a co-owners' decision taken by a majority of ownership shares under the building-management law in force since 2025.",
+ "summary": "Croatia's electric-car market is small but grew quickly in 2026: Eurostat counts about 12,600 battery-electric passenger cars on the road at the end of 2025, and ACEA reports 2,457 new BEVs in January–September 2026, about three and a half times the same period of 2025. Public charging is run by 32 companies, led by HEP's ELEN network, Petrol and Hrvatski Telekom, with published prices of about €0.35–0.42/kWh for AC and €0.66–0.78/kWh for fast DC without a subscription. A €20 million FZOEU grant for private individuals (EnU-2/26: up to €9,000 per new electric car) takes applications from 28 October 2026; it does not cover home chargers. Home wallboxes are sold by solar and electrical firms, the supplier E.ON, online shops and a DIY chain at roughly €475–1,500 for the unit; in apartment buildings, installing charging points is a co-owners' decision taken by a majority of ownership shares under the building-management law in force since 2025.",
  "stats": [
   {
    "label": "Battery-electric passenger cars on the road",
@@ -33,12 +33,12 @@
    "confidence": "high"
   },
   {
-   "label": "New battery-electric cars registered, January–June 2026",
-   "value": "1,781",
-   "note": "January–June 2025: 396 (+349.7%). June 2026 alone: 344. All new cars in January–June 2026: 44,164 (+5.3%), so BEVs were about 4.0% of new cars (calculated). Figures for later 2026 months were not found.",
-   "source": "https://www.acea.auto/files/Press_release_car_registrations_June_2026.pdf",
-   "source_title": "ACEA – New car registrations, June 2026",
-   "source_date": "23.07.2026",
+   "label": "New battery-electric cars registered, January–September 2026",
+   "value": "2,457",
+   "note": "January–September 2025: 713 (+244.6%). September 2026 alone: 160 (September 2025: 178, −10.1%). All new cars in January–September 2026: 59,138 (+4.3%), so BEVs were about 4.2% of new cars (calculated). Plug-in hybrids in January–September 2026: 4,374 (2025: 1,800).",
+   "source": "https://www.acea.auto/files/Press_release_car_registrations_September_2026.pdf",
+   "source_title": "ACEA – New car registrations, September 2026",
+   "source_date": "22.10.2026",
    "confidence": "high"
   },
   {
@@ -381,7 +381,7 @@
      "price": "0,35 €/kWh",
      "vat": "incl.",
      "source": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
-     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 23.09.2026)",
+     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 27.10.2026)",
      "confidence": "high"
     },
     {
@@ -389,7 +389,7 @@
      "price": "0,45 €/kWh",
      "vat": "incl.",
      "source": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
-     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 23.09.2026)",
+     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 27.10.2026)",
      "confidence": "high"
     },
     {
@@ -397,7 +397,7 @@
      "price": "0,42 €/kWh",
      "vat": "incl.",
      "source": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
-     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 23.09.2026)",
+     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 27.10.2026)",
      "confidence": "high"
     },
     {
@@ -405,7 +405,7 @@
      "price": "0,57 €/kWh",
      "vat": "incl.",
      "source": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
-     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 23.09.2026)",
+     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 27.10.2026)",
      "confidence": "high"
     },
     {
@@ -413,7 +413,7 @@
      "price": "0,78 €/kWh",
      "vat": "incl.",
      "source": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
-     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 23.09.2026)",
+     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 27.10.2026)",
      "confidence": "high"
     },
     {
@@ -421,7 +421,7 @@
      "price": "0,06 €/min off motorways; 0,14 €/min on motorways",
      "vat": "incl.",
      "source": "https://elen.hep.hr/UserDocsImages/docs/elen_Cjenik_usluge_punjenja_EV_20250401.pdf",
-     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 23.09.2026)",
+     "source_date": "price list in force from 01.04.2025 (still listed as current on elen.hep.hr, checked 27.10.2026)",
      "confidence": "high"
     }
    ],
@@ -480,24 +480,24 @@
      "what": "IONITY Direct (ad hoc, no subscription)",
      "price": "0.74 €/kWh",
      "vat": "incl.",
-     "source": "https://www.ionity.eu/hr",
-     "source_date": "no date on page; checked 23.09.2026",
+     "source": "https://www.ionity.eu/subscriptions",
+     "source_date": "no date on page; checked 27.10.2026",
      "confidence": "high"
     },
     {
      "what": "IONITY Power 365 subscription (€11.99/month or €99.99/year)",
-     "price": "0.39–0.44 €/kWh",
+     "price": "0.42–0.44 €/kWh",
      "vat": "incl.",
-     "source": "https://www.ionity.eu/hr",
-     "source_date": "no date on page; checked 23.09.2026",
+     "source": "https://www.ionity.eu/subscriptions",
+     "source_date": "no date on page; checked 27.10.2026",
      "confidence": "medium"
     },
     {
      "what": "IONITY Motion 365 subscription (€5.99/month or €49.99/year)",
      "price": "0.53–0.55 €/kWh",
      "vat": "incl.",
-     "source": "https://www.ionity.eu/hr",
-     "source_date": "no date on page; checked 23.09.2026",
+     "source": "https://www.ionity.eu/subscriptions",
+     "source_date": "no date on page; checked 27.10.2026",
      "confidence": "medium"
     }
    ],
@@ -552,26 +552,42 @@
    "name": "MOL Plugee",
    "operator": "MOL Group (chargers at Tifon fuel stations)",
    "app": "MOL Plugee",
-   "size": "Not verified (molplugee.hr and tifon.hr did not load).",
+   "size": "Not verified.",
    "prices": [
     {
-     "what": "Registered users",
-     "price": "about 0,45 €/kWh",
+     "what": "AC (NORMAL, up to 25 kW) – registered / unregistered users",
+     "price": "0,45 €/kWh / 0,55 €/kWh",
      "vat": "not stated",
-     "source": "https://www.strujnikrug.hr/vodic-kroz-punjace-za-elektricna-vozila/",
-     "source_date": "updated 11.05.2026",
-     "confidence": "medium"
+     "source": "https://molplugee.hr/hr/cijene",
+     "source_date": "no date on page; checked 27.10.2026",
+     "confidence": "high"
     },
     {
-     "what": "Registered / unregistered users (range)",
-     "price": "0,45–0,66 €/kWh / 0,55–0,76 €/kWh",
+     "what": "DC (RAPID up to 99 kW and ULTRA 100 kW or more) – registered / unregistered users",
+     "price": "0,66 €/kWh / 0,76 €/kWh",
      "vat": "not stated",
-     "source": "https://postanivozac.com/blog/cijene-punjenja-elektricnih-vozila",
-     "source_date": "updated 05.01.2026",
-     "confidence": "medium"
+     "source": "https://molplugee.hr/hr/cijene",
+     "source_date": "no date on page; checked 27.10.2026",
+     "confidence": "high"
+    },
+    {
+     "what": "Per-minute fee",
+     "price": "0,01 €/min after the first 30 minutes",
+     "vat": "not stated",
+     "source": "https://molplugee.hr/hr/cijene",
+     "source_date": "no date on page; checked 27.10.2026",
+     "confidence": "high"
+    },
+    {
+     "what": "Energy packages paid at the cash desk",
+     "price": "10 kWh 6,50 €; 20 kWh 17,20 €; 40 kWh 34,40 €",
+     "vat": "not stated",
+     "source": "https://molplugee.hr/hr/cijene",
+     "source_date": "no date on page; checked 27.10.2026",
+     "confidence": "high"
     }
    ],
-   "payment": "Not verified with the operator.",
+   "payment": "MOL Plugee mobile app or web portal, with separate prices for registered and unregistered users; energy packages are paid at the station cash desk.",
    "url": "https://molplugee.hr/hr"
   },
   {
@@ -585,7 +601,7 @@
      "price": "0,35 €/kWh",
      "vat": "incl.",
      "source": "https://www.lidl.hr/c/e-punionice/s10038053",
-     "source_date": "no date on page; checked 23.09.2026",
+     "source_date": "no date on page; checked 27.10.2026",
      "confidence": "high"
     },
     {
@@ -593,7 +609,7 @@
      "price": "0,40 €/kWh",
      "vat": "not stated",
      "source": "https://www.lidl.hr/c/e-punionice/s10038053",
-     "source_date": "no date on page; checked 23.09.2026",
+     "source_date": "no date on page; checked 27.10.2026",
      "confidence": "high"
     },
     {
@@ -601,7 +617,7 @@
      "price": "0,45 €/kWh",
      "vat": "incl.",
      "source": "https://www.lidl.hr/c/e-punionice/s10038053",
-     "source_date": "no date on page; checked 23.09.2026",
+     "source_date": "no date on page; checked 27.10.2026",
      "confidence": "high"
     },
     {
@@ -609,7 +625,7 @@
      "price": "0,60 €/kWh",
      "vat": "not stated",
      "source": "https://www.lidl.hr/c/e-punionice/s10038053",
-     "source_date": "no date on page; checked 23.09.2026",
+     "source_date": "no date on page; checked 27.10.2026",
      "confidence": "high"
     }
    ],
@@ -642,19 +658,27 @@
    "prices": [
     {
      "what": "Tariff structure",
-     "price": "GO, DRIVE and FLY subscription tariffs plus an AD-HOC tariff; the summer 2026 price table is published only as an image",
+     "price": "GO, DRIVE and FLY subscription tariffs plus an AD-HOC tariff; the summer 2026 table on the price-list page is an image",
      "vat": "incl.",
      "source": "https://qelo.eu/hr/page/cjenik/",
      "source_date": "summer 2026 price list (image); checked 23.09.2026",
      "confidence": "high"
     },
     {
-     "what": "Range reported by a consumer site (AC and DC)",
-     "price": "0,28–0,47 €/kWh",
-     "vat": "not stated",
-     "source": "https://postanivozac.com/blog/cijene-punjenja-elektricnih-vozila",
-     "source_date": "updated 05.01.2026",
-     "confidence": "medium"
+     "what": "AC: no monthly fee / €4.99 per month / €9.99 per month",
+     "price": "0,33 / 0,30 / 0,28 €/kWh; after 180 min +0,05 / +0,04 / +0,03 €/min",
+     "vat": "incl.",
+     "source": "https://qelo.eu/couch/uploads/file/ponuda/ac_cjenik_qelo.pdf",
+     "source_date": "no date on price list; checked 27.10.2026",
+     "confidence": "high"
+    },
+    {
+     "what": "DC: no monthly fee / €4.99 per month / €9.99 per month",
+     "price": "0,47 / 0,42 / 0,40 €/kWh; after 40 min +0,15 / +0,13 / +0,13 €/min",
+     "vat": "incl.",
+     "source": "https://qelo.eu/couch/uploads/file/ponuda/dc_cjenik_qelo.pdf",
+     "source_date": "no date on price list; checked 27.10.2026",
+     "confidence": "high"
     }
    ],
    "payment": "Qelo app; 'plaćanje bankovnom karticom po AD-HOC tarifi'.",
@@ -740,7 +764,7 @@
    "note": "'u iznos nije uključen PDV'.",
    "source": "https://www.hep.hr/elektra/kucanstvo/tarifne-stavke-cijene/1547",
    "source_title": "HEP Elektra – Tarifne stavke (cijene), kućanstvo",
-   "source_date": "no date on page; checked 23.09.2026",
+   "source_date": "no date on page; checked 27.10.2026",
    "confidence": "high"
   }
  ],
@@ -751,7 +775,7 @@
    "amount": "Up to 9.000,00 € per electric M1 car (max. 40% of net cost; car price cap 50.000,00 €); up to 2.500,00 € for electric L1–L7 vehicles",
    "who": "Sole traders (obrtnici) and public or private legal entities; associations and firms mainly in taxi, freight or vehicle rental/leasing are excluded. Private individuals who are not registered sole traders are not listed as eligible.",
    "deadline": "Applications from 10.03.2026 at 09:00 (moved from 24.02.2026 by the amendment of 26.02.2026); open until the end of the year or until funds run out; projects to be completed by 31.07.2026 (a deadline-extension decision is posted but could not be read).",
-   "note": "Budget 3.200.000,00 €, raised to 3.550.000,00 € by the second amendment of 19.05.2026; applications handled 'po redoslijedu zaprimanja' (first come, first served). Shown as 'zatvoren' (closed) on FZOEU's list of calls on 23.09.2026; remaining budget not published.",
+   "note": "Budget 3.200.000,00 €, raised to 3.550.000,00 € by the second amendment of 19.05.2026; applications handled 'po redoslijedu zaprimanja' (first come, first served). Shown as 'zatvoren' (closed) on FZOEU's list of calls on 27.10.2026; remaining budget not published.",
    "source": "https://www.fzoeu.hr/hr/natjecaj/7539?nid=267",
    "source_title": "FZOEU – Javni poziv za kupnju novih vozila na alternativna goriva (EnU-4/26)",
    "source_date": "call dated 18.02.2026; amendments 26.02.2026 and 19.05.2026",
@@ -759,11 +783,11 @@
   },
   {
    "programme": "MF-2025-3-1 – electric vehicles for taxi, delivery and car-sharing providers",
-   "status": "open",
+   "status": "closed",
    "amount": "Up to 9.000,00 € per vehicle; total budget 45.000.000,00 €",
    "who": "Micro, small, medium and large companies and sole traders registered for taxi (49.33), road freight (49.41) or car-sharing (77.11) activities",
    "deadline": "From 15.01.2026 at 09:00 to 30.09.2026 at 12:00, or until funds run out",
-   "note": "New electric M1 vehicles with a battery of 40 kWh or more and N1 vehicles with 75 kWh or more; applications assessed by a selection committee. Shown as 'otvoren' (open) on FZOEU's list of calls on 23.09.2026.",
+   "note": "New electric M1 vehicles with a battery of 40 kWh or more and N1 vehicles with 75 kWh or more; applications assessed by a selection committee. Shown as 'zatvoren' (closed) on FZOEU's list of calls on 27.10.2026.",
    "source": "https://www.fzoeu.hr/hr/natjecaj/7539?nid=266",
    "source_title": "FZOEU – Nabava električnih vozila za pružatelje usluge autotaksi prijevoza, korisnike dostavnih vozila i pružatelje usluge dijeljenja vozila (MF-2025-3-1)",
    "source_date": "opened 15.01.2026",
@@ -775,23 +799,23 @@
    "amount": "Up to €9,000 per electric M1 car; up to €2,500 (max. 40% of net cost) for electric L1–L7 vehicles; budget €21,205,640",
    "who": "Sole traders and legal entities (not associations)",
    "deadline": "Applications from 15.10.2025 at 09:00; projects to be completed by 31.05.2026",
-   "note": "Funded under the National Recovery and Resilience Plan (NextGenerationEU). Shown as 'zatvoren' on FZOEU's list of calls on 23.09.2026.",
+   "note": "Funded under the National Recovery and Resilience Plan (NextGenerationEU). Shown as 'zatvoren' on FZOEU's list of calls on 27.10.2026.",
    "source": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/new-croatian-subsidy-program-zero-emission-vehicles",
    "source_title": "European Alternative Fuels Observatory – New Croatian Subsidy Program for Zero-Emission Vehicles",
    "source_date": "15.08.2025",
    "confidence": "high"
   },
   {
-   "programme": "EV purchase grant for private individuals",
-   "status": "none",
-   "amount": "—",
-   "who": "Private individuals",
-   "deadline": "—",
-   "note": "No 2026 FZOEU vehicle call open to private individuals was found: the calls listed are for sole traders, companies and other legal entities. A consumer article (LAQO, 09.03.2026) said natural persons could apply to the 2026 call, but the call text limits natural persons to registered sole traders ('fizičke osobe - obrtnici').",
-   "source": "https://www.fzoeu.hr/hr/nacionalni-javni-pozivi-i-natjecaji/1367",
-   "source_title": "FZOEU – Nacionalni javni pozivi i natječaji",
-   "source_date": "no date on page; checked 23.09.2026",
-   "confidence": "medium"
+   "programme": "FZOEU EnU-2/26 – co-financing of energy-efficient vehicles for private individuals",
+   "status": "open",
+   "amount": "Up to 9.000,00 € for a new electric M1 car priced up to 35.000,00 € incl. VAT and up to 7.000,00 € above that price (cars above 62.500,00 € incl. VAT are not eligible); up to 2.500,00 € for electric L1–L7 vehicles priced up to 35.000,00 € incl. VAT; never more than 40% of eligible costs. Total budget 20.000.000,00 €.",
+   "who": "Adult private individuals ('punoljetne fizičke osobe – građani') resident in Croatia; one vehicle per applicant.",
+   "deadline": "Applications from 28.10.2026 at 09:00 (moved from 21.10.2026, FZOEU notice of 16.10.2026), only through eFZOEU with a NIAS login, first come first served, until 31.12.2026 or until funds run out. Purchase and registration by 31.03.2028; payout request by 30.04.2028.",
+   "note": "Call dated 09.10.2026. Only the purchase of a new electric vehicle is eligible (ownership or financial leasing; operating leasing excluded; advance payments made from 01.01.2026 count); the vehicle must be kept for 2 years after payout. Only electric-drive vehicles qualify and electric bicycles are excluded, so plug-in hybrids are not covered. Home chargers are not part of the call: the words 'punionica' and 'punjač' do not appear in its text. Shown as 'otvoren' on FZOEU's list of calls on 27.10.2026, with submissions from 28.10.2026.",
+   "source": "https://www.fzoeu.hr/docs/275/Javni%20poziv%20EnU-2_26.pdf",
+   "source_title": "FZOEU – Javni poziv za sufinanciranje energetski učinkovitih vozila za fizičke osobe (EnU-2/26)",
+   "source_date": "call dated 09.10.2026; start of applications moved to 28.10.2026 (FZOEU, 16.10.2026)",
+   "confidence": "high"
   },
   {
    "programme": "Home charger (wallbox) grant",
@@ -799,10 +823,10 @@
    "amount": "—",
    "who": "—",
    "deadline": "—",
-   "note": "No FZOEU call for home or building chargers was listed on 23.09.2026. The EU Alternative Fuels Observatory mentions 'periodic co-financing schemes for private, business, and public charging infrastructure', usually opened alongside vehicle calls (page updated 18.04.2025).",
+   "note": "No FZOEU call for home or building chargers is listed on 27.10.2026. The citizens' call EnU-2/26 (09.10.2026) covers only vehicles, although a media report before it was published (Index.hr, 21.07.2026) said it would for the first time include home chargers. Separately, the Ministry of Tourism and Sport's Measure E co-finances AC chargers (3.6–22 kW) for private renters with 'Domaćin (Local host)' status, applications 24.09.–13.11.2026 (mint.gov.hr, 21.09.2026; not re-checked on 27.10.2026). The EU Alternative Fuels Observatory mentions 'periodic co-financing schemes for private, business, and public charging infrastructure', usually opened alongside vehicle calls (page updated 18.04.2025).",
    "source": "https://www.fzoeu.hr/hr/nacionalni-javni-pozivi-i-natjecaji/1367",
    "source_title": "FZOEU – Nacionalni javni pozivi i natječaji",
-   "source_date": "no date on page; checked 23.09.2026",
+   "source_date": "no date on page; checked 27.10.2026",
    "confidence": "medium"
   }
  ],
@@ -919,15 +943,15 @@
   "WebSearch quota ran out midway; later checks used only WebFetch on known URLs, so some installers and 2026 sources may be missing.",
   "Official public charger count: the EU Alternative Fuels Observatory shows Croatian figures only in interactive charts that could not be read, and the national CRO-IDRO registry was not reachable; the count used is a media figure (Lider).",
   "Home chargers: no installer based in Rijeka with its own website listing charger work was found (trebam.hr lists local providers only as a marketplace); Njuškalo was not checked.",
-  "Sites that did not load (robots.txt timeout or DNS error): aledo-tech.hr, ses-croatia.com (Soft Energy Systems, Zadar/Zagreb), re-charge.hr, chargingshop.hr, kralj.hr, ams.hr, evshop.com.hr, energycentar.hr, cee.hr, elektricna-vozila.com.hr, elektroinstalacije-sporcic.com, shop.autohrvatska.hr, zenerg.hr, molplugee.hr, tifon.hr; cvh.hr returned error 521; Petrol's home-charger page returned 404 (Petrol only mentions 'financiranje pri kupnji e-punionice').",
+  "Sites that did not load (robots.txt timeout or DNS error): aledo-tech.hr, ses-croatia.com (Soft Energy Systems, Zadar/Zagreb), re-charge.hr, chargingshop.hr, kralj.hr, ams.hr, evshop.com.hr, energycentar.hr, cee.hr, elektricna-vozila.com.hr, elektroinstalacije-sporcic.com, shop.autohrvatska.hr, zenerg.hr, tifon.hr; cvh.hr returned error 521; Petrol's home-charger page returned 404 (Petrol only mentions 'financiranje pri kupnji e-punionice').",
   "E.ON home-charger pages load via JavaScript; prices not visible. HGSPOT product pages returned no product data. No HEP home-charger offer was found on the HEP pages checked.",
-  "Electricity: HEP Elektra's universal-service tariff table in force since 01.11.2025 (energy prices and supply fee up to 30.09.2026) is published only as an image and was not read; the VAT rate on household electricity was not confirmed.",
-  "ELEN: BUCO (19.12.2025) reported new motorway prices of 0,50/0,60 €/kWh, but elen.hep.hr still lists the price list of 01.04.2025 as current (checked 23.09.2026); the official list is used here.",
-  "IONITY subscription per-kWh prices were read inconsistently from the dynamic page (Power 365: 0.39–0.44 €/kWh; Motion 365: 0.53–0.55 €/kWh) – check in the app.",
-  "Prices not published by the operator or not readable: Tesla (for other EVs), Kaufland, Hrvatski Telekom eSpots (no official page found), MOL Plugee, Qelo (image); Electrip, Eleport, GreenWay and MOON prices not checked.",
-  "EV fleet: CVH/MUP statistics by fuel type were not found; Eurostat's 2025 BEV stock (7,058) is below its 2024 value (7,286) as published. A media figure of 0.6% BEV share of the fleet (pvinformer.me, 18.08.2026) does not match the Eurostat dataset (about 0.34%) and is not used.",
-  "2026 registrations: ACEA releases after June 2026 were not found; January–June 2026 is the latest period used.",
-  "Subsidies: the EnU-4/26 deadline-extension decision (PDF) has no readable text; remaining budget not published.",
+  "Electricity: HEP Elektra's household price table (Table 1) is published only as an image labelled 'u primjeni od 01.11.2025.' and was not read (checked 27.10.2026); the energy prices used are those of the Uredba (NN 101/2026). The VAT rate on household electricity was not confirmed on HEP's pages.",
+  "ELEN: BUCO (19.12.2025) reported new motorway prices of 0,50/0,60 €/kWh, but elen.hep.hr still lists the price list of 01.04.2025 as current (checked 27.10.2026); the official list is used here.",
+  "IONITY: the page says all prices include local VAT, but its subscription per-kWh prices load dynamically and pair ambiguously with the plans (Power: 0.42–0.44 €/kWh; Motion: 0.53–0.55 €/kWh; checked 27.10.2026) – check in the app.",
+  "Prices not published by the operator or not readable: Tesla (for other EVs), Kaufland, Hrvatski Telekom eSpots (no official page found); GreenWay's pricing page shows no Croatian prices (loaded dynamically, 27.10.2026); Electrip's price page did not load on 27.10.2026; Eleport and MOON prices not checked.",
+  "EV fleet: CVH/MUP statistics by fuel type were not found; the fleet figures are Eurostat's (road_eqs_carpda).",
+  "2026 registrations: ACEA gives no country-level BEV share; the 4.2% share for January–September 2026 is calculated from ACEA's BEV and total figures.",
+  "Subsidies: the EnU-4/26 deadline-extension decision (PDF) has no readable text; remaining budget not published. EnU-2/26 (citizens): applications open on 28.10.2026 at 09:00, so no figures on applications or the remaining budget exist yet; the call PDF (09.10.2026) still gives 21.10.2026 as the start, which FZOEU moved on 16.10.2026.",
   "Buildings: Croatia's transposition of the EPBD recast charging provisions, the full text of the August 2026 draft regulation on permit-free works, HEP ODS rules and fees for a separate charger connection in a building, and the Strujni krug members-only building guide were not checked."
  ]
 }

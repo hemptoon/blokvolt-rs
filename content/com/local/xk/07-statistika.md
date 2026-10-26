@@ -5,7 +5,7 @@ order: 7
 nav: Statistika
 icon: chart
 priority: 0.6
-title: Veturat elektrike në Kosovë në shifra — numri, regjistrimet, importi | BlokVolt
+title: Veturat elektrike në Kosovë në shifra | BlokVolt
 description: Numri i veturave elektrike në Kosovë sipas Eurostatit, regjistrimet e reja, importi në janar–gusht 2026 sipas Doganës dhe karikuesit publikë, me CSV.
 h1: Veturat elektrike në Kosovë në shifra
 lead: Sa vetura elektrike qarkullojnë në Kosovë, sa regjistrohen të reja, sa importohen dhe sa karikues publikë ka — nga burime zyrtare dhe media, me datë.

@@ -5,8 +5,8 @@ order: 4
 nav: Kod kuće
 icon: calc
 priority: 0.9
-title: Punjenje električnog auta kod kuće u BiH: koliko košta (kalkulator, EPBiH, ERS, EP HZ HB) | BlokVolt
-description: Kalkulator troškova punjenja s tarifama EPBiH (blok tarife od 01.09.2025.), Elektroprivrede RS (od 01.02.2026.) i EP HZ HB, niža tarifa, javni punjači i poređenje s benzinom i dizelom.
+title: Koliko košta punjenje električnog auta kod kuće u BiH | BlokVolt
+description: Kalkulator punjenja s tarifama EPBiH (od 01.09.2025.), Elektroprivrede RS (od 01.02.2026.) i EP HZ HB, niža tarifa i poređenje s benzinom.
 h1: Punjenje kod kuće ili na javnom punjaču
 lead: Koliko mjesečno košta struja za električni auto kod kuće i na javnim punjačima i koliko je to u odnosu na benzin ili dizel — s tarifama sva tri javna snabdjevača.
 card: Kalkulator s tarifama EPBiH, ERS i EP HZ HB, javnim punjačima i poređenjem s gorivom.

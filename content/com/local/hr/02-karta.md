@@ -6,7 +6,7 @@ order: 2
 nav: Karta
 icon: map
 priority: 0.9
-title: Karta punionica za električne automobile u Hrvatskoj s cijenama | BlokVolt
+title: Karta punionica za električne automobile u Hrvatskoj | BlokVolt
 description: Sve javne punionice u Hrvatskoj na jednoj karti: ELEN, Petrol, Tesla, IONITY, Lidl, Kaufland i druge, s priključcima, snagom i cijenom mreže po kWh.
 h1: Karta punionica
 lead: Javne punionice u Hrvatskoj iz OpenStreetMapa i Open Charge Mapa, s priključcima, snagom i cjenikom mreže.

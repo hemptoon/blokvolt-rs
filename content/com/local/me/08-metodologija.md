@@ -5,7 +5,7 @@ order: 8
 nav_ft: Metodologija
 icon: shield
 priority: 0.4
-title: Metodologija: izvori, provjera i pravila | BlokVolt Crna Gora
+title: Metodologija i izvori | BlokVolt Crna Gora
 description: Odakle BlokVolt uzima podatke o punjačima, cijenama, tarifama i subvencijama u Crnoj Gori, kako ih provjerava, ko stoji iza vodiča i kako prijaviti grešku.
 h1: Metodologija
 lead: Odakle su podaci, kako se provjeravaju, ko stoji iza vodiča i kako prijaviti grešku.

@@ -5,8 +5,8 @@ order: 5
 nav: Kod kuće
 icon: calc
 priority: 0.9
-title: Punjenje električnog auta kod kuće ili na punionici: koliko košta (kalkulator, HEP 2026.) | BlokVolt
-description: Kalkulator troškova punjenja s HEP-ovim cijenama od 1. 10. 2026.: tarifni modeli Plavi i Bijeli, niža tarifa noću, javne punionice i usporedba s benzinom i dizelom.
+title: Koliko košta punjenje električnog auta kod kuće (HEP 2026.) | BlokVolt
+description: Kalkulator punjenja s HEP-ovim cijenama od 1. 10. 2026.: Plavi i Bijeli model, niža tarifa noću, javne punionice i usporedba s benzinom.
 h1: Punjenje kod kuće ili na javnoj punionici
 lead: Koliko mjesečno stoji struja za električni auto kod kuće i na javnim punionicama i koliko je to u odnosu na benzin ili dizel — s HEP-ovim cijenama od 1. listopada 2026.
 card: Kalkulator s HEP-ovim tarifama od 1. 10. 2026., javnim punionicama i usporedbom s gorivom.
@@ -41,6 +41,6 @@ Cijena automobila i [poticaji]({{ PAGES.subsidies.path }}), osiguranje, održava
 
 ## Kućna punionica
 
-Za redovito punjenje kod kuće najsigurnija je zidna punionica (wallbox) na zasebnom strujnom krugu, koju ugrađuje ovlašteni električar. Obična utičnica na produžnom kabelu nije za svakodnevno punjenje: satima radi na granici opterećenja. U stambenoj zgradi o postavljanju mjesta za punjenje odlučuju suvlasnici — [što kaže zakon]({{ PAGES.buildings.path }}). FZOEU je najavio da će poziv za građane prvi put sufinancirati i kupnju i ugradnju kućnih punionica.
+Za redovito punjenje kod kuće najsigurnija je zidna punionica (wallbox) na zasebnom strujnom krugu, koju ugrađuje ovlašteni električar. Obična utičnica na produžnom kabelu nije za svakodnevno punjenje: satima radi na granici opterećenja. U stambenoj zgradi o postavljanju mjesta za punjenje odlučuju suvlasnici — [što kaže zakon]({{ PAGES.buildings.path }}). Poziv FZOEU-a za građane EnU-2/26 (prijave od 28. 10. 2026.) sufinancira samo kupnju novog vozila; kućne punionice nisu predmet poziva.
 
-{{ w.sources(C.power.sources + [{'label': C.fuel.src_label, 'url': C.fuel.src, 'date': '28. 9. 2026.'}]) }}
+{{ w.sources(C.power.sources + [{'label': C.fuel.src_label, 'url': C.fuel.src, 'date': '26. 10. 2026.'}]) }}

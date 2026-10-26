@@ -1,7 +1,7 @@
 {
  "cc": "HR",
- "checked": "28. 9. 2026.",
- "checked_iso": "2026-09-28",
+ "checked": "27. 10. 2026.",
+ "checked_iso": "2026-10-27",
  "slugs": {
   "prices": "cijene/"
  },
@@ -69,6 +69,10 @@
   "jan_aug_2025": 535,
   "jan_aug_total": 54573,
   "jan_aug_change": 329.3,
+  "jan_sep_2026": 2457,
+  "jan_sep_2025": 713,
+  "jan_sep_total": 59138,
+  "jan_sep_change": 244.6,
   "months_2026": [
    [
     "lipanj",
@@ -85,11 +89,16 @@
     "kolovoz",
     158,
     70
+   ],
+   [
+    "rujan",
+    160,
+    178
    ]
   ],
-  "src": "https://www.acea.auto/files/Press_release_car_registrations_August_2026.pdf",
-  "src_label": "ACEA — registracije novih automobila, kolovoz 2026.",
-  "src_date": "24. 9. 2026.",
+  "src": "https://www.acea.auto/files/Press_release_car_registrations_September_2026.pdf",
+  "src_label": "ACEA — registracije novih automobila, rujan 2026.",
+  "src_date": "22. 10. 2026.",
   "src_h1": "https://www.acea.auto/files/Press_release_car_registrations_June_2026.pdf",
   "src_y2025": "https://www.acea.auto/files/Press_release_car_registrations_December_2025.pdf",
   "cvh_h1_2026": 2807,
@@ -414,14 +423,14 @@
     "android": null
    },
    "card": "Nije provjereno.",
-   "adhoc": "Posebna cijena bez registracije; paketi energije plaćaju se na blagajni.",
+   "adhoc": "Posebna cijena za neregistrirane korisnike. Na blagajni se plaćaju paketi energije: 10 kWh za 6,50 €, 20 kWh za 17,20 € i 40 kWh za 34,40 € (jedinična cijena 0,65 € odnosno 0,86 € po kWh).",
    "roaming": "HT-ova aplikacija espoTs ne radi na MOL Plugee punionicama (HAK, 8. 6. 2024.).",
    "prices": [
     {
      "seg": "AC",
      "lo": 0,
      "hi": 25,
-     "power": "AC",
+     "power": "do 25 kW",
      "v": 0.45,
      "cond": "registrirani korisnici"
     },
@@ -429,7 +438,7 @@
      "seg": "DC",
      "lo": 25.1,
      "hi": 1000,
-     "power": "DC",
+     "power": "RAPID do 99 kW i ULTRA od 100 kW",
      "v": 0.66,
      "cond": "registrirani korisnici"
     },
@@ -437,7 +446,7 @@
      "seg": "AC",
      "lo": 0,
      "hi": 25,
-     "power": "AC",
+     "power": "do 25 kW",
      "v": 0.55,
      "cond": "bez registracije"
     },
@@ -445,18 +454,20 @@
      "seg": "DC",
      "lo": 25.1,
      "hi": 1000,
-     "power": "DC",
+     "power": "RAPID do 99 kW i ULTRA od 100 kW",
      "v": 0.76,
      "cond": "bez registracije"
     }
    ],
-   "fees": [],
+   "fees": [
+    "Nakon isteka 30 minuta 0,01 €/min (MOL ne navodi za koje punionice)."
+   ],
    "valid_from": "",
-   "src": "https://autonet.bug.hr/automobili/dizel-od-191-eura-ili-punjac-od-07-kwh-sto-se-danas-vise-isplati-63090",
-   "src_label": "Autonet, 24. 9. 2026. (službeni cjenik nije bilo moguće otvoriti)",
+   "src": "https://molplugee.hr/hr/cijene",
+   "src_label": "MOL Plugee — cijene (bez datuma cjenika)",
    "conf": "medium",
-   "note": "Službena stranica molplugee.hr nije se dala otvoriti, pa su cijene iz medija. Prije punjenja provjerite u aplikaciji MOL Plugee.",
-   "conf_note": "Iz medija (Autonet, 24. 9. 2026.) — službeni cjenik nije dostupan."
+   "note": "Cijene sa službene stranice MOL Plugee; stranica ne navodi uključuju li PDV ni od kada vrijede. Prije punjenja provjerite u aplikaciji MOL Plugee.",
+   "conf_note": "Službeni cjenik ne navodi PDV ni datum."
   },
   {
    "slug": "ht",
@@ -537,8 +548,8 @@
    "src": "https://www.ionity.eu/subscriptions",
    "src_label": "IONITY — pretplate i cijene za Hrvatsku",
    "conf": "medium",
-   "note": "Cijene sa stranice IONITY za Hrvatsku; na stranici nije jasno navedeno uključuju li PDV.",
-   "conf_note": "Nije navedeno uključuju li cijene PDV."
+   "note": "Cijene sa stranice IONITY za Hrvatsku; prema stranici sve cijene uključuju PDV, a IONITY ih može promijeniti u bilo kojem trenutku.",
+   "conf_note": "Cijene pretplata stranica učitava dinamički; točnu cijenu provjerite u aplikaciji."
   },
   {
    "slug": "tesla",
@@ -554,7 +565,7 @@
    },
    "card": "Nema.",
    "adhoc": "Vozila drugih marki pune kroz aplikaciju Tesla, na lokacijama otvorenima za sve.",
-   "roaming": "Nismo našli podatak da tuđe aplikacije rade na Superchargerima u Hrvatskoj.",
+   "roaming": "Podatak da tuđe aplikacije rade na Superchargerima u Hrvatskoj nije pronađen.",
    "prices": [],
    "price_text": "Tesla ne objavljuje cijene na webu: cijenu po lokaciji i dobu dana vidite u aplikaciji. Za vozila drugih marki postoji članstvo od 11,99 €/mj. s cijenama kao za Tesline vlasnike. Kad je lokacija puna, a baterija na 80 % ili više, naplaćuje se naknada za zauzeće.",
    "fees": [],
@@ -776,13 +787,16 @@
      "cond": "FLY, 9,99 €/mj."
     }
    ],
-   "fees": [],
-   "valid_from": "siječnja 2026.",
-   "src": "https://postanivozac.com/blog/cijene-punjenja-elektricnih-vozila",
-   "src_label": "postanivozac.com, siječanj 2026. (Qelov ljetni cjenik 2026. objavljen je kao slika)",
-   "conf": "low",
-   "note": "Qelo cjenik objavljuje kao sliku („ljeto 2026.”) koju nismo mogli strojno pročitati; brojke su iz siječnja 2026. i mogle su se promijeniti.",
-   "conf_note": "Iz sekundarnog izvora (siječanj 2026.); Qelov ljetni cjenik 2026. je slika."
+   "fees": [
+    "AC: nakon 180 minuta +0,05 €/min bez mjesečne naknade, +0,04 €/min uz 4,99 €/mj., +0,03 €/min uz 9,99 €/mj.",
+    "DC: nakon 40 minuta +0,15 €/min bez mjesečne naknade, +0,13 €/min uz 4,99 ili 9,99 €/mj."
+   ],
+   "valid_from": "",
+   "src": "https://qelo.eu/couch/uploads/file/ponuda/ac_cjenik_qelo.pdf",
+   "src_label": "Qelo — cjenici za AC i DC punionice (PDF, bez datuma)",
+   "conf": "high",
+   "note": "Cijene s PDV-om, prema Qelovim cjenicima za AC i DC punionice; datum cjenika nije naveden.",
+   "conf_note": ""
   },
   {
    "slug": "greenway",
@@ -799,14 +813,14 @@
    "adhoc": "Nije potvrđeno.",
    "roaming": "Nije provjereno.",
    "prices": [],
-   "price_text": "Tarife Energia Standard (povremeni korisnici), Energia Plus (60–260 kWh mjesečno) i Energia Max. Cjenik se učitava dinamički i nismo ga mogli pročitati.",
+   "price_text": "Tarife Energia Standard (povremeni korisnici), Energia Plus (60–260 kWh mjesečno) i Energia Max. Cjenik se učitava dinamički i nije ga bilo moguće pročitati.",
    "fees": [],
    "valid_from": "",
    "src": "https://greenwaynetwork.com/hr/cjenik/",
    "src_label": "GreenWay Hrvatska — cjenik",
    "conf": "low",
    "map_note": "Cijene su u aplikaciji GreenWay (tarife Energia).",
-   "conf_note": "Cjenik se učitava dinamički i nismo ga mogli pročitati."
+   "conf_note": "Cjenik se učitava dinamički i nije ga bilo moguće pročitati."
   },
   {
    "slug": "moon",
@@ -865,7 +879,7 @@
   },
   {
    "name": "EnBW mobility+",
-   "covers": "Hrvatska je na popisu zemalja; koje mreže — nismo provjerili",
+   "covers": "Hrvatska je na popisu zemalja; koje mreže — nije provjereno",
    "model": "kod drugih operatera 0,56–0,89 €/kWh; blokiranje 0,10 €/min nakon 4 h",
    "src": "https://www.enbw.com/elektromobilitaet/produkte/ladetarife",
    "conf": "medium"
@@ -960,7 +974,7 @@
    {
     "label": "HEP — naknada za obnovljive izvore 0,013239 €/kWh (bez PDV-a)",
     "url": "https://www.hep.hr/elektra/kucanstvo/tarifne-stavke-cijene/1547",
-    "date": "28. 9. 2026."
+    "date": "27. 10. 2026."
    },
    {
     "label": "HEP Elektra — tarifne stavke za kućanstva 2024./2025. (stopa PDV-a 13 %)",
@@ -970,16 +984,16 @@
   ]
  },
  "fuel": {
-  "petrol": 1.76,
-  "diesel": 1.86,
-  "date": "29. 9. 2026.",
-  "period": "od 29. 9. 2026., 7 dana",
+  "petrol": 1.69,
+  "diesel": 1.88,
+  "date": "27. 10. 2026.",
+  "period": "od 27. 10. 2026., 7 dana",
   "without_measures": [
-   1.96,
-   2.18
+   1.83,
+   2.19
   ],
-  "src": "https://vlada.gov.hr/od-utorka-nize-cijene-dizelskog-goriva/47347",
-  "src_label": "Vlada RH — najviše maloprodajne cijene goriva od 29. 9. 2026."
+  "src": "https://vlada.gov.hr/od-utorka-nove-cijene-goriva-47486/47486",
+  "src_label": "Vlada RH — najviše maloprodajne cijene goriva od 27. 10. 2026."
  },
  "calc": {
   "km": 1200,
@@ -1027,23 +1041,23 @@
   },
   {
    "name": "Modernizacijski fond — električna vozila za taksi, dostavu i dijeljenje vozila (MF-2025-3-1)",
-   "status": "open",
+   "status": "closed",
    "who": "tvrtke i obrti s djelatnošću taksija (NKD 49.33), cestovnog prijevoza robe (49.41) ili najma vozila (77.11)",
    "amount": "do 9.000 € po vozilu: 50 % za mikro i male, 40 % za srednje, 30 % za velike poduzetnike; ukupno 45 mil. €",
    "cond": "novi M1 s baterijom od 40 kWh ili N1 od 75 kWh; zamjenjuje se vozilo s najmanje 30.000 km godišnje",
-   "dates": "prijave do 30. 9. 2026. u 12 h ili do iskorištenja sredstava",
+   "dates": "prijave su bile otvorene od 15. 1. do 30. 9. 2026. u 12 h; na popisu poziva FZOEU-a označen kao zatvoren",
    "src": "https://www.fzoeu.hr/docs/266/Poziv%20za%20dodjelu%20sredstava%20za%20nabavu%20elektri%C4%8Dnih%20vozila.pdf",
    "src_label": "FZOEU — poziv MF-2025-3-1 (PDF)"
   },
   {
-   "name": "Poticaji za građane 2026. (najavljeni)",
-   "status": "announced",
-   "who": "građani (fizičke osobe)",
-   "amount": "ukupno 20 mil. € (5 mil. više nego 2024.); iznosi po vozilu još nisu objavljeni",
-   "cond": "novi električni osobni automobili (M1) i L1–L7; prvi put i kupnja i ugradnja kućnih punionica; plug-in hibridi više ne",
-   "dates": "FZOEU: poziv „na jesen”; na dan 28. 9. 2026. još nije objavljen",
-   "src": "https://www.index.hr/auto/clanak/na-jesen-novi-poticaji-za-elektricne-automobile-ali-uz-vazne-promjene/2815821.aspx",
-   "src_label": "Index.hr, 21. 7. 2026."
+   "name": "FZOEU — energetski učinkovita vozila za građane, EnU-2/26",
+   "status": "open",
+   "who": "punoljetni građani s prebivalištem u Hrvatskoj; jedno vozilo po osobi",
+   "amount": "osobni automobil (M1) do 9.000 € ako stoji do 35.000 € s PDV-om, do 7.000 € ako je skuplji; L1–L7 do 2.500 €; uvijek najviše 40 % cijene; ukupno 20 mil. €",
+   "cond": "novo vozilo na električni pogon, prvi put registrirano u Hrvatskoj; M1 najviše 62.500 €, L1–L7 najviše 35.000 € s PDV-om; kupnja ili financijski leasing (operativni ne), predujam priznat od 1. 1. 2026.; vozilo zadržati 2 godine od isplate; plug-in hibridi i električni bicikli nisu obuhvaćeni; kućne punionice nisu predmet poziva",
+   "dates": "poziv objavljen 9. 10. 2026.; prijave od 28. 10. 2026. u 9 h (pomaknuto s 21. 10.), samo elektronički kroz eFZOEU uz NIAS, redom zaprimanja, do 31. 12. 2026. ili do iskorištenja sredstava; kupnja i registracija do 31. 3. 2028.",
+   "src": "https://www.fzoeu.hr/docs/275/Javni%20poziv%20EnU-2_26.pdf",
+   "src_label": "FZOEU — Javni poziv EnU-2/26 (PDF, 9. 10. 2026.); početak prijava 28. 10.: FZOEU, 16. 10. 2026."
   },
   {
    "name": "Ministarstvo turizma i sporta — Mjera E: punionice za privatne iznajmljivače",
@@ -1074,12 +1088,12 @@
   },
   {
    "t": "Trajekti",
-   "v": "Posebne cijene za električne automobile nismo našli. Jadrolinija traži da pri kupnji karte navedete da je vozilo električno.",
+   "v": "Posebne cijene za električne automobile nisu pronađene. Jadrolinija traži da pri kupnji karte navedete da je vozilo električno.",
    "src": "https://www.jadrolinija.hr/faq"
   },
   {
    "t": "Parkiranje",
-   "v": "Službenog pravila o besplatnom parkiranju električnih automobila u Zagrebu, Splitu i Osijeku nismo našli. U Rijeci se korištenje rezerviranog mjesta za punjenje naplaćuje 3,00 € na sat.",
+   "v": "Službeno pravilo o besplatnom parkiranju električnih automobila u Zagrebu, Splitu i Osijeku nije pronađeno. U Rijeci se korištenje rezerviranog mjesta za punjenje naplaćuje 3,00 € na sat.",
    "src": "https://www.rijeka-plus.hr/cesta-pitanja/"
   }
  ],
@@ -1174,7 +1188,7 @@
   "cat_rule": "Na Jadrolinijinim katamaranima zabranjen je prijevoz e-romobila, e-bicikala i odvojivih litijskih baterija bez vatrootpornih torbi.",
   "news": "Jadrolinija je medijima rekla da električne automobile iz sigurnosnih razloga raspoređuje na palubi i da je preporuka istaknuta na prodajnim mjestima; na trajekte se nabavljaju protupožarni pokrivači.",
   "news_src": "https://www.morski.hr/elektricni-automobili-na-trajektima-norveska-zabranila-prijevoz-njemacka-danska-i-svedska-traze-poluprazne-baterije-evo-kako-je-to-rijeseno-kod-nas/",
-  "not_found": "Ograničenje napunjenosti baterije, pravilo o punjenju na brodu ili pravilo za oštećene baterije u Jadrolinijinim pravilima nismo našli."
+  "not_found": "Ograničenje napunjenosti baterije, pravilo o punjenju na brodu ili pravilo za oštećene baterije u Jadrolinijinim pravilima nije pronađeno."
  },
  "islands": [
   [
@@ -1278,9 +1292,9 @@
     1266
    ],
    [
-    "2026 (sij.–kol.)",
+    "2026 (sij.–ruj.)",
     "",
-    2297
+    2457
    ]
   ]
  }

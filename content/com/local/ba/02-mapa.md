@@ -6,7 +6,7 @@ order: 2
 nav: Mapa
 icon: map
 priority: 0.9
-title: Mapa punjača za električne automobile u Bosni i Hercegovini | BlokVolt
+title: Mapa punjača za električne automobile u BiH | BlokVolt
 description: Svi javni punjači u BiH na jednoj mapi: Elektroprivreda BiH, MOON, hoteli i tržni centri, s priključcima, snagom i cijenom gdje je objavljena.
 h1: Mapa punjača
 lead: Javni punjači u Bosni i Hercegovini iz OpenStreetMapa i Open Charge Mapa, s priključcima i snagom.

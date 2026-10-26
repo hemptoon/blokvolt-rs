@@ -5,7 +5,7 @@ order: 4
 nav: Në shtëpi
 icon: calc
 priority: 0.9
-title: Karikimi në shtëpi në Kosovë — kalkulatori me tarifat e ZRRE-së | BlokVolt
+title: Karikimi në shtëpi në Kosovë: tarifat e ZRRE-së | BlokVolt
 description: Kalkulatori i kostos së karikimit me tarifat e ZRRE-së nga 01.05.2025 (deri dhe mbi 800 kWh, ditën e natën), çmimet e ECHARGE dhe krahasimi me karburantin.
 h1: Karikimi në shtëpi apo në karikues publik
 lead: Sa kushton në muaj karikimi i veturës elektrike në shtëpi dhe në karikuesit publikë, dhe sa kushton për të njëjtat kilometra një makinë me benzinë ose naftë.

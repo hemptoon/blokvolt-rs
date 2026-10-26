@@ -5,8 +5,8 @@ order: 9
 nav: Statistika
 icon: chart
 priority: 0.7
-title: Električni automobili u Hrvatskoj u brojkama 2026. — broj vozila, prodaja, punionice | BlokVolt
-description: Broj električnih automobila u Hrvatskoj od 2021. (Eurostat), nove registracije 2026. (ACEA), najprodavaniji modeli, županije, javne punionice po operaterima. Podaci za preuzimanje (CSV).
+title: Električni automobili u Hrvatskoj u brojkama 2026. | BlokVolt
+description: Broj električnih automobila u Hrvatskoj od 2021. (Eurostat), nove registracije 2026. (ACEA), najprodavaniji modeli i punionice. Podaci u CSV-u.
 h1: Električni automobili u Hrvatskoj u brojkama
 lead: Koliko električnih automobila vozi Hrvatskom, koliko se novih prodaje, koji su modeli najprodavaniji i koliko je javnih punionica — iz službenih izvora, s datumom.
 card: Broj vozila od 2021., nove registracije 2026., modeli, županije i punionice po operaterima; CSV za preuzimanje.
@@ -14,7 +14,7 @@ schema: Dataset
 related: map, subsidies, prices
 ---
 {{ w.stats([(num(C.fleet.series[-1][1]), pl(C.fleet.series[-1][1], 'električni osobni automobil', 'električna osobna automobila', 'električnih osobnih automobila') ~ ' krajem 2025. (Eurostat)'),
-            (num(C.new_bev.jan_aug_2026), pl(C.new_bev.jan_aug_2026, 'novi', 'nova', 'novih') ~ ' od siječnja do kolovoza 2026. (ACEA), 4,2 % svih novih'),
+            (num(C.new_bev.jan_sep_2026), pl(C.new_bev.jan_sep_2026, 'novi', 'nova', 'novih') ~ ' od siječnja do rujna 2026. (ACEA), 4,2 % svih novih'),
             ('~' ~ num(C.charging_stats.hpc_2026.connectors), pl(C.charging_stats.hpc_2026.connectors, 'ultrabrzi priključak', 'ultrabrza priključka', 'ultrabrzih priključaka') ~ ' od 150 kW naviše (ožujak 2026.)')]) }}
 
 ## Koliko ih vozi
@@ -31,8 +31,9 @@ Krajem 2025. Hrvatska je imala **{{ num(C.fleet.series[-1][1]) }}** {{ pl(C.flee
 | 2025. | {{ num(C.new_bev.y2025) }} | −29,4 % | 1,8 % |
 | siječanj–lipanj 2026. | {{ num(C.new_bev.h1_2026) }} | +349,7 % | 4,0 % |
 | siječanj–kolovoz 2026. | {{ num(C.new_bev.jan_aug_2026) }} | +329,3 % | 4,2 % |
+| siječanj–rujan 2026. | {{ num(C.new_bev.jan_sep_2026) }} | +244,6 % | 4,2 % |
 
-Po mjesecima 2026.: lipanj 344 (lani 77), srpanj 358 (lani 69), kolovoz 158 (lani 70). ACEA za srpanj nije objavila zasebno izvješće, pa je srpanj izračunat kao razlika zbrojeva. Izvor: [{{ C.new_bev.src_label }}]({{ C.new_bev.src }}), [lipanj 2026.]({{ C.new_bev.src_h1 }}), [prosinac 2025.]({{ C.new_bev.src_y2025 }}).
+Po mjesecima 2026.: lipanj 344 (lani 77), srpanj 358 (lani 69), kolovoz 158 (lani 70), rujan 160 (lani 178). ACEA za srpanj nije objavila zasebno izvješće, pa je srpanj izračunat kao razlika zbrojeva. Izvor: [{{ C.new_bev.src_label }}]({{ C.new_bev.src }}), [kolovoz 2026.](https://www.acea.auto/files/Press_release_car_registrations_August_2026.pdf), [lipanj 2026.]({{ C.new_bev.src_h1 }}), [prosinac 2025.]({{ C.new_bev.src_y2025 }}).
 
 Centar za vozila Hrvatske (CVH) za prvih šest mjeseci 2026. navodi {{ num(C.new_bev.cvh_h1_2026) }} {{ pl(C.new_bev.cvh_h1_2026, 'novoregistrirani električni automobil', 'novoregistrirana električna automobila', 'novoregistriranih električnih automobila') }} (lani {{ num(C.new_bev.cvh_h1_2025) }}). Brojka se razlikuje od ACEA-ine, a izvor ne navodi broji li CVH i rabljena uvezena vozila ([HRT, {{ C.new_bev.cvh_date }}]({{ C.new_bev.cvh_src }})).
 

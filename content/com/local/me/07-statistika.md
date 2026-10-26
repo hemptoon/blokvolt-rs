@@ -6,7 +6,7 @@ nav: Statistika
 icon: chart
 priority: 0.6
 title: Električni automobili u Crnoj Gori u brojkama | BlokVolt
-description: Broj električnih automobila u Crnoj Gori (Eurostat), nove registracije 2025., broj javnih punjača i snaga po nacrtu nacionalnog okvira. Podaci za preuzimanje (CSV).
+description: Broj električnih automobila u Crnoj Gori (Eurostat), nove registracije 2025. i javni punjači prema nacrtu nacionalnog okvira. Podaci u CSV-u.
 h1: Električni automobili u Crnoj Gori u brojkama
 lead: Koliko električnih automobila vozi Crnom Gorom, koliko ih je novih i koliko je javnih punjača — iz službenih izvora, s datumom.
 card: Broj vozila, nove registracije i punjači; CSV.
@@ -29,7 +29,7 @@ U 2025. od {{ num(C.new_bev.y2025_total) }} novih putničkih automobila elektri�
 
 ## Javni punjači
 
-Prema nacrtu nacionalnog okvira za infrastrukturu alternativnih goriva, Crna Gora ima {{ C.points.n }} {{ pl(C.points.n, 'javno mjesto', 'javna mjesta', 'javnih mjesta') }} za punjenje, ukupne snage {{ num(C.points.kw) }} kW; {{ C.points.normal_share }} % su punjači normalne snage, a nijedan nije iznad 150 kW ([{{ C.points.src_label }}]({{ C.points.src }})). Ecoportal navodi „oko 90 javno dostupnih punjača” ([{{ C.points.eco_label }}]({{ C.points.eco }})). Na našoj [mapi]({{ PAGES.map.path }}) je {{ num(M.n) }} punjača iz OpenStreetMapa i Open Charge Mapa.
+Prema nacrtu nacionalnog okvira za infrastrukturu alternativnih goriva, Crna Gora ima {{ C.points.n }} {{ pl(C.points.n, 'javno mjesto', 'javna mjesta', 'javnih mjesta') }} za punjenje, ukupne snage {{ num(C.points.kw) }} kW; {{ C.points.normal_share }} % su punjači normalne snage, a nijedan nije iznad 150 kW ([{{ C.points.src_label }}]({{ C.points.src }})). Ecoportal navodi „oko 90 javno dostupnih punjača” ([{{ C.points.eco_label }}]({{ C.points.eco }})). Na [mapi]({{ PAGES.map.path }}) ovog vodiča je {{ num(M.n) }} punjača iz OpenStreetMapa i Open Charge Mapa.
 
 ## Podaci za preuzimanje
 

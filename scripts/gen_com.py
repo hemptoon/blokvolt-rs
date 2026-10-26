@@ -187,10 +187,46 @@ def render(tpl, path, ctx, priority='0.7', lastmod=None, sitemap=True):
 
 
 # ------------------------------------------------------------------ English layer
+def rs_map_stat():
+    """Serbian numbers that change with blokvolt.rs, for the texts of site.json (the Serbia facts):
+    {map_n} stations on the map and {map_ok} confirmed — from dist/assets/map/stat.json, which build.py writes (the
+    automatic build of blokvolt.com runs build.py first; without dist/, content/com/site.json → map_fallback);
+    {ps_ok} of {ps_n} state motorway chargers working — content/mapa/putevi-srbije.json (checked monthly, RUNBOOK 3.11);
+    {firms} — published firms of the register (content/firme/, as rs_firm_count)."""
+    out = {}
+    try:
+        s = json.load(open(RS_DIST / 'assets' / 'map' / 'stat.json', encoding='utf-8'))
+    except Exception:
+        s = cfg.get('map_fallback') or {'n': 0, 'ok': 0}
+    out['map_n'], out['map_ok'] = f"{s['n']:,}", f"{s['ok']:,}"
+    ps = json.load(open(ROOT / 'content' / 'mapa' / 'putevi-srbije.json', encoding='utf-8'))
+    ch = [c for site in ps['sites'] for c in site['chargers']]
+    out['ps_n'], out['ps_ok'] = str(len(ch)), str(sum(1 for c in ch if c.get('status') == 1))
+    n = 0
+    for p in (ROOT / 'content' / 'firme').glob('*.json'):
+        f = json.load(open(p, encoding='utf-8'))
+        if f.get('publish') and f.get('group') != 'L':
+            n += 1
+    out['firms'] = str(n)
+    return out
+
+
+MAPV = rs_map_stat()
+
+
+def fill(t):
+    """{map_n}, {map_ok}, {ps_ok}, {ps_n} and {firms} in the texts of site.json (the Serbia facts) become the numbers of
+    blokvolt.rs (rs_map_stat), so the Serbia page and card of blokvolt.com never fall behind the Serbian site."""
+    for k, v in MAPV.items():
+        t = t.replace('{' + k + '}', v)
+    return t
+
+
 countries = []
 for c in cfg['countries']:
     c = dict(c)
     c['url'] = f"/{c['slug']}/"
+    c['facts'] = [fill(f) for f in c['facts']]
     countries.append(c)
 LOCAL_OF = {l['cc']: l for l in BUILT}
 
@@ -255,9 +291,13 @@ def build_english(local_hubs):
         alts = []
         if loc:
             alts = [('en', SITE + c['url']), (loc['hreflang'], SITE + f"/{loc['dir']}/"), ('x-default', SITE + c['url'])]
-        title = f"EV charging in {c['name']}: public networks, prices, home chargers and subsidies | BlokVolt"
-        desc = (f"{c['name']}: public charging networks and prices, electricity at home, subsidies and the rules for "
-                f"apartment buildings — every figure with a source, checked {r['checked']}.")
+        # RUNBOOK 3.34: the words people search first, ≤ 60 characters where the country name allows
+        title = f"EV charging in {c['name']}: networks, prices, subsidies"
+        if len(title) > 60:
+            title = f"EV charging in {c['name']}: networks and prices"
+        title += ' | BlokVolt'
+        desc = (f"{c['name']}: public charging networks and prices, home electricity, subsidies and apartment-building "
+                f"rules. Every figure has a source; checked {r['checked']}.")
         render('en_country.html', c['url'], dict(en_ctx, c=c, r=r, glance=list(zip(('EV fleet', 'Public charging', 'Subsidies', 'Home chargers'), c['facts'])),
                                                  sources=srcs, n_sources=len(srcs), title=title, description=desc, alts=alts,
                                                  section='countries', local=loc), priority='0.8')
@@ -273,15 +313,18 @@ def build_english(local_hubs):
             _v = int(_evc['anchor'] + _evc['rate_per_day'] * int(_h // _evc['step_hours']) * _evc['step_hours'] / 24)
             _st['b'] = f'{_v:,}'
             _st['evc'] = f"{_evc['anchor']}|{_evc['anchor_date']}|{_evc['rate_per_day']}|{_evc['step_hours']}|{_evc['max_days']}"
+        _st['b'], _st['t'] = fill(_st['b']), fill(_st['t'])
+    _rsx['facts'] = [[fill(a), fill(b)] for a, b in _rsx['facts']]
+    _rsx['links'] = [[u, fill(t), fill(d)] for u, t, d in _rsx['links']]
     render('en_serbia.html', '/serbia/', dict(en_ctx, RSX=_rsx, n_rs_firms=n_rs, section='serbia', alts=[],
-                                              title='EV charging in Serbia: public charging, prices, installers and subsidies | BlokVolt',
-                                              description=(f'Serbia in short — {n_rs} installers and sellers of home chargers, public charging networks, '
-                                                           'EPS electricity prices, the €5,000 subsidy and the rules for apartment buildings — with the full guide on blokvolt.rs.')),
+                                              title='EV charging in Serbia: chargers, installers, subsidies | BlokVolt',
+                                              description=(f"Serbia in short: {MAPV['map_n']} public chargers on the map, {n_rs} home-charger installers, "
+                                                           'EPS electricity prices and the €5,000 subsidy. Full guide on blokvolt.rs.')),
            priority='0.8')
     render('en_home.html', '/', dict(en_ctx, n_companies=n_companies, n_sources=len(all_sources), n_rs_firms=n_rs, section='', alts=[],
-                                     title='EV charging in Serbia and the Western Balkans — maps, prices, subsidies | BlokVolt',
-                                     description=('Public charging networks and prices, electricity at home, subsidies and apartment-building rules in Serbia, '
-                                                  'Croatia, Bosnia and Herzegovina, Montenegro, North Macedonia, Albania, Kosovo and Slovenia — with maps and local-language guides.')),
+                                     title='EV charging in Serbia and the Western Balkans | BlokVolt',
+                                     description=('Charging maps, network prices and subsidies for Serbia, Croatia, Bosnia and Herzegovina, Montenegro, '
+                                                  'North Macedonia, Albania, Kosovo and Slovenia, with local-language guides.')),
            priority='1.0')
     render('en_partners.html', '/partners/', dict(en_ctx, section='partners', alts=[], title='For companies and suppliers | BlokVolt',
                                                   description='How to get a company listed or corrected on BlokVolt — free and by the same rules for everyone — and where charging-hardware quotations go.'),
@@ -489,8 +532,9 @@ def main():
     (OUT / 'README.md').write_text(
         '# blokvolt.com\n\nThe regional site of BlokVolt: an English guide to EV charging in Serbia and its neighbours and local-language '
         'sections (' + ', '.join(f"/{l['dir']}/" for l in BUILT) + '). Served by GitHub Pages (custom domain blokvolt.com).\n\nThis repository holds the built site only. '
-        'Pages are generated by `scripts/gen_com.py` in [hemptoon/blokvolt-rs](https://github.com/hemptoon/blokvolt-rs) from `content/com/` — '
-        'edit the data there, rebuild and upload; do not edit the HTML here by hand. Procedure: `docs/RUNBOOK.md`, sections 3.10 and 3.23.\n\n'
+        'Pages are generated by `scripts/gen_com.py` in [hemptoon/blokvolt-rs](https://github.com/hemptoon/blokvolt-rs) from `content/com/`. '
+        'The workflow `.github/workflows/deploy.yml` of this repository builds and publishes the site by itself every hour when '
+        'blokvolt-rs has changed — edit the data there; do not edit the HTML here by hand. Procedure: `docs/RUNBOOK.md`, sections 3.10 and 3.23.\n\n'
         'Map data: © OpenStreetMap contributors (ODbL 1.0) and Open Charge Map (CC BY 4.0); see /assets/region/<cc>/stanice.json.\n',
         encoding='utf-8')
     (OUT / '.nojekyll').write_text('\n', encoding='utf-8')
