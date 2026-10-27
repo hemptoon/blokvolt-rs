@@ -260,8 +260,10 @@ async def main():
         # the map: the account's car, its connector marked, Tesla-only chargers usable
         await pg.evaluate("localStorage.removeItem('bv:car')")
         await pg.goto(f'{BASE}/mapa/#ocm-279311', wait_until='load')
-        await pg.wait_for_selector('.ccard .cbox b.mine', timeout=8000)
-        check('vaš auto' in await pg.inner_text('.ccard .cbox b.mine'), 'map card: CCS2 marked "vaš auto"')
+        # the connectors are tiles since 25.10.2026 (map.js connTiles): the car's plug is li.cn.yes with <em class="fit">vaš auto</em>
+        await pg.wait_for_selector('.ccard .cns li.cn.yes em.fit', timeout=8000)
+        tiles = await pg.evaluate("[...document.querySelectorAll('.ccard .cns li.cn.yes')].map(li => [li.querySelector('b').textContent, li.querySelector('em.fit').textContent])")
+        check(any(b == 'CCS2' and 'vaš auto' in f for b, f in tiles), f'map card: the CCS2 tile marked "vaš auto" {tiles}')
         await wait_js(pg, "(document.querySelector('[data-carlbl]') || {}).textContent.indexOf('Tesla Model Y') === 0", timeout=8000)
         check(True, 'map: "Moj auto" = the account\'s Tesla in a browser that had no car')
         check(await pg.evaluate("!document.querySelector('#mchips [data-f=tesla]')"), 'map: no "Imam Teslu" chip')
