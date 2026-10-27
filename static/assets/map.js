@@ -1597,25 +1597,43 @@ function rtPress(cx, cy, how) {
   const ll = map.unproject(p);
   rtPopOpen({ lon: ll.lng, lat: ll.lat }, null, how);
 }
+// One-finger zoom (a tap, then the finger down again and dragged) is MapLibre's own tapDragZoom: finger up = zoom out,
+// finger down = zoom in, as in Google Maps (owner's wish 27.10.2026; MapLibre 6.11.1 already does exactly this — checked
+// in its source and by scripts/qa/map_gesture_test.py, so it is not replaced). Such a second touch is never a long press:
+// a touch that starts within 500 ms and 30 px of a short tap (MapLibre's own limits) starts no timer and its contextmenu
+// is ignored, so holding the finger still before dragging does not open the route popup.
 function pressInit() {
   const box = map.getCanvasContainer();
-  let tm = 0, sx = 0, sy = 0, tAt = 0, fired = false;
+  let tm = 0, sx = 0, sy = 0, tAt = 0, fired = false, upAt = 0, ux = 0, uy = 0, dbl = false;
   const stop = () => { clearTimeout(tm); tm = 0; };
   box.addEventListener('touchstart', e => {
+    const short = tm !== 0;
     stop();
     tAt = Date.now(); fired = false;
-    if (e.touches.length !== 1) return;   // a pinch never opens it
+    if (e.touches.length !== 1) { dbl = false; return; }   // a pinch never opens it
     sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+    dbl = !short && tAt - upAt < 500 && Math.hypot(sx - ux, sy - uy) < 30;
+    upAt = 0;
+    if (dbl) return;   // the second touch of a double tap or of the one-finger zoom
     tm = setTimeout(() => { tm = 0; fired = true; rtPress(sx, sy, 'press'); }, 550);
   }, { passive: true });
   box.addEventListener('touchmove', e => {
     if (tm && (e.touches.length !== 1 || Math.hypot(e.touches[0].clientX - sx, e.touches[0].clientY - sy) > 10)) stop();
   }, { passive: true });
   // a finger lifted after a long press may still send a click: it must not close the popup that just opened
-  box.addEventListener('touchend', () => { stop(); if (fired) lpAt = Date.now(); }, { passive: true });
-  box.addEventListener('touchcancel', stop, { passive: true });
+  // a short tap that did not move (its timer still running) is remembered for the double-tap check above
+  box.addEventListener('touchend', e => {
+    if (tm && !e.touches.length && Date.now() - tAt < 500) { upAt = Date.now(); ux = sx; uy = sy; }
+    stop(); if (fired) lpAt = Date.now();
+  }, { passive: true });
+  box.addEventListener('touchcancel', () => { stop(); upAt = 0; }, { passive: true });
   // the browser's own menu never opens over the map (right click, and the long press of Android)
-  box.addEventListener('contextmenu', e => { e.preventDefault(); stop(); rtPress(e.clientX, e.clientY, Date.now() - tAt < 1500 ? 'press' : 'right'); });
+  box.addEventListener('contextmenu', e => {
+    e.preventDefault(); stop();
+    const touch = Date.now() - tAt < 1500;
+    if (touch && dbl) return;
+    rtPress(e.clientX, e.clientY, touch ? 'press' : 'right');
+  });
   map.on('dragstart', stop);
   map.on('zoomstart', stop);
 }
