@@ -56,9 +56,21 @@ Ako u baneru dozvolite kolačić, PostHog od sledeće stranice čuva nasumični 
 <p><button class="btn sm" type="button" data-bv-consent-reset>Promeni izbor o kolačiću</button></p>
 <!--/consent-->
 
-## Aplikacija za Android {#aplikacija}
+## Aplikacije za iPhone i Android {#aplikacija}
 
-[Aplikacija BlokVolt](/aplikacija/) otvara ovaj sajt u Chrome-u ili drugom pregledaču, preko celog ekrana. Ne traži dozvole, ne šalje obaveštenja i sama ništa ne prikuplja: stranice učitava sa sajta kao pregledač, pa za nju važi sve što piše na ovoj stranici.
+### Aplikacija za iPhone {#aplikacija-iphone}
+
+Aplikacija BlokVolt za iPhone radi i bez naloga: tada na server BlokVolta šalje samo ono što sami pošaljete — prijave stanja punjača, ocene, komentare, fotografije (pre slanja smanjene i bez EXIF i GPS podataka), predloge ispravki i novih punjača. Vaša lokacija ne napušta telefon: rutu i pretragu adresa računaju Apple Mape.
+
+Nalog „Moj BlokVolt“ je po želji. Prijavljujete se preko Apple naloga, Google naloga ili koda na e-adresu. Uz nalog se čuvaju vaša e-adresa, omiljeni punjači, izabrani auto, jezik i valuta, a prijave i fotografije poslate sa nalogom vezane su za nalog. Identifikator Apple ili Google naloga se ne čuva. Nalog i sve podatke možete da obrišete u aplikaciji (Više → Moj BlokVolt → Obriši nalog) ili na sajtu; preuzimanje podataka je na istom mestu. Aplikacija nema reklame, praćenje ni SDK trećih strana.
+
+### Aplikacija za Android {#aplikacija-android}
+
+Aplikacija BlokVolt za Android šalje podatke samo na www.blokvolt.rs, i to samo kada to sami uradite: utiske o punjaču (stanje, ocena, komentar i nadimak po želji), fotografije (umanjene, bez EXIF i GPS podataka), ispravke i predloge novih punjača, a uz nalog „Moj BlokVolt“ — e-adresu, omiljene punjače, izabrani auto, grad, jezik, valutu i prijavu na Nedeljni pregled. Lokacija telefona koristi se samo na telefonu (najbliži punjači, vidžet) i ne šalje se sajtu.
+
+Za „Punjače na putu“ aplikacija šalje upisane adrese servisu Photon (Komoot), a kad mesto izaberete dugim pritiskom na mapu — i koordinate te tačke, da bi saznala njen naziv. Tačke rute, a ako ruta kreće „od moje lokacije“ i vašu lokaciju, šalje servisu OSRM (FOSSGIS). Podlogu mape isporučuje OpenFreeMap, koji kao svaki servis mapa vidi IP adresu i deo mape koji gledate. Prijava Google nalogom ide preko Google-a; BlokVolt dobija samo potvrdu sa e-adresom. Aplikacija nema reklame, analitiku ni praćenje. Nalog možete da obrišete u aplikaciji („Moj BlokVolt → Obriši nalog“) ili na [www.blokvolt.rs/nalog/](/nalog/).
+
+Verzija 1.0 za Android koja se preuzima sa stranice [Aplikacija](/aplikacija/) (APK) samo otvara ovaj sajt u Chrome-u ili drugom pregledaču, preko celog ekrana. Ne traži dozvole, ne šalje obaveštenja i sama ništa ne prikuplja: stranice učitava sa sajta kao pregledač, pa za nju važi sve što piše na ovoj stranici.
 
 ## Omiljeni punjači
 
@@ -147,5 +159,6 @@ Sajt vodi tim BlokVolt (kontakt: hello@blokvolt.com). Korišćenjem sajta prihva
 - Važeća verzija je uvek na ovoj stranici. Prva verzija važi od 21.09.2026, dopuna o mapi punjača od 23.09.2026, dopuna o formama, prijavama sa mape i videu od 24.09.2026, dopuna o merenju poseta i omiljenim punjačima od 25.09.2026, dopuna o izboru „Imam Teslu“ od 28.09.2026, dopuna o oglasima od 29.09.2026, a dopuna o „Najbližem punjaču“, „Mom autu“, kratkim odgovorima sa mape i bazi punjača od 06.10.2026.
 <!--nalog-->- Dopuna o nalogu važi od {{NALOG_OD}}, a dopuna o „Mom autu“ u nalogu, istom kao na mapi, od 25.10.2026.<!--/nalog-->
 <!--pregled-->- Dopuna o Nedeljnom pregledu važi od {{PREGLED_OD}}.<!--/pregled-->
+- Dopuna o aplikacijama za iPhone i Android važi od 27.10.2026.
 
 </details>
