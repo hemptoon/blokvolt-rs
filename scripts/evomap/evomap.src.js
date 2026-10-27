@@ -2,7 +2,8 @@
    Stanice: otvoreni podaci (OpenStreetMap ODbL, Open Charge Map CC BY 4.0), spiskovi mreža i JP „Putevi Srbije“;
    cene po mreži sa datumom i izvorom. Sve to čita se iz otvorenog fida blokvolt.rs (CORS), isti tim ga vodi.
    Mapa: MapLibre GL 5 (jsDelivr, SRI) + OpenFreeMap. Ništa se ne šalje i ne čuva; lokacija („Blizu mene“, „Najbliži punjač“)
-   ostaje na uređaju. „Punjači na putu“ (24.10.2026): upisana mesta idu u Photon, a tačke rute u OSRM (FOSSGIS) — samo iz
+   ostaje na uređaju. „Punjači na putu“ (24.10.2026): upisana mesta (i tačka izabrana dugim pritiskom, 27.10.2026) idu u
+   Photon, a tačke rute u OSRM (FOSSGIS) — samo iz
    pregledača, evolako.rs ih ne dobija. Skripta se od 30.09.2026 učitava kao fajl sa blokvolt.rs (/assets/embed/, SRI), ne iz footer koda stranice.
    Jezik: document.documentElement.lang (sr | en | ru) — prekidač jezika na sajtu menja ga, mapa se odmah precrta.
    Boje pinova kao u aplikaciji Evolako: DC — tamni, AC — plavi, ne radi / samo Tesla — sivi, nepotvrđeni — bledi. */
@@ -114,8 +115,11 @@
       rt_denied: 'Pregledač nema dozvolu za lokaciju. Upiši polazak ili dozvoli lokaciju u podešavanjima pregledača.',
       rt_unavail: 'Lokacija trenutno nije dostupna. Upiši polazak.', rt_noroute: 'Ruta između ova dva mesta nije pronađena.',
       rt_same: 'Polazak i odredište su na istom mestu.', rt_err: 'Ruta trenutno ne može da se izračuna. Pokušaj ponovo za minut.',
-      rt_privacy: 'Upisana mesta i tačke rute pregledač šalje samo servisima Photon (Komoot) i OSRM (FOSSGIS), radi pretrage i rute. Evolako ih ne dobija i ne čuva.',
-      rt_attr: 'Ruta i adrese: © OpenStreetMap, OSRM · FOSSGIS, Photon', rt_fix: 'Ispravi mapu'
+      rt_privacy: 'Upisana mesta i tačku izabranu dugim pritiskom pregledač šalje servisu Photon (Komoot), a tačke rute servisu OSRM (FOSSGIS), samo radi pretrage i rute. Evolako ih ne dobija i ne čuva.',
+      rt_attr: 'Ruta i adrese: © OpenStreetMap, OSRM · FOSSGIS, Photon', rt_fix: 'Ispravi mapu',
+      rt_tip: 'Odredište možeš da izabereš i na mapi: dodirni ime mesta ili dugo pritisni bilo koju tačku (na računaru desni klik).',
+      rt_pop_go: 'Punjači na putu dovde', rt_pop_go_l: 'Punjači na putu do odredišta {t}', rt_pop_from: 'Polazak odavde',
+      rt_pop_wait: 'Tražim ime mesta…', rt_pt: 'Izabrana tačka'
     },
     en: {
       search: 'City, address or network', search_l: 'Search chargers', near: 'Near me', loading: 'Loading chargers…',
@@ -194,8 +198,11 @@
       rt_denied: 'Your browser doesn’t have permission to use your location. Enter a starting point or allow location in your browser settings.',
       rt_unavail: 'Your location isn’t available right now. Enter a starting point.', rt_noroute: 'No route was found between these two places.',
       rt_same: 'The start and the destination are in the same place.', rt_err: 'The route can’t be calculated right now. Try again in a minute.',
-      rt_privacy: 'Your browser sends the places you type and the route points only to Photon (Komoot) and OSRM (FOSSGIS), for the search and the route. Evolako neither receives nor keeps them.',
-      rt_attr: 'Route and addresses: © OpenStreetMap, OSRM · FOSSGIS, Photon', rt_fix: 'Fix the map'
+      rt_privacy: 'Your browser sends the places you type and a point picked by pressing and holding to Photon (Komoot), and the route points to OSRM (FOSSGIS), only for the search and the route. Evolako neither receives nor keeps them.',
+      rt_attr: 'Route and addresses: © OpenStreetMap, OSRM · FOSSGIS, Photon', rt_fix: 'Fix the map',
+      rt_tip: 'You can also pick the destination on the map: tap a place name or press and hold any point (right-click on a computer).',
+      rt_pop_go: 'Chargers on the way here', rt_pop_go_l: 'Chargers on the way to {t}', rt_pop_from: 'Start from here',
+      rt_pop_wait: 'Looking up the place name…', rt_pt: 'Selected point'
     },
     ru: {
       search: 'Город, адрес или сеть', search_l: 'Поиск зарядок', near: 'Рядом со мной', loading: 'Загружаю зарядки…',
@@ -274,8 +281,11 @@
       rt_denied: 'У браузера нет доступа к геолокации. Введи, откуда едешь, или разреши геолокацию в настройках браузера.',
       rt_unavail: 'Местоположение сейчас недоступно. Введи, откуда едешь.', rt_noroute: 'Маршрут между этими местами не найден.',
       rt_same: 'Старт и пункт назначения в одном месте.', rt_err: 'Маршрут сейчас не удаётся рассчитать. Попробуй ещё раз через минуту.',
-      rt_privacy: 'Введённые места и точки маршрута браузер отправляет только сервисам Photon (Komoot) и OSRM (FOSSGIS) — для поиска и маршрута. Evolako их не получает и не хранит.',
-      rt_attr: 'Маршрут и адреса: © OpenStreetMap, OSRM · FOSSGIS, Photon', rt_fix: 'Исправить карту'
+      rt_privacy: 'Введённые места и точку, выбранную долгим нажатием, браузер отправляет в сервис Photon (Komoot), а точки маршрута — в OSRM (FOSSGIS), только для поиска и маршрута. Evolako их не получает и не хранит.',
+      rt_attr: 'Маршрут и адреса: © OpenStreetMap, OSRM · FOSSGIS, Photon', rt_fix: 'Исправить карту',
+      rt_tip: 'Пункт назначения можно выбрать и на карте: нажми на название места или долго удерживай любую точку (на компьютере — правый клик).',
+      rt_pop_go: 'Зарядки по пути сюда', rt_pop_go_l: 'Зарядки по пути до пункта {t}', rt_pop_from: 'Старт отсюда',
+      rt_pop_wait: 'Ищу название места…', rt_pt: 'Выбранная точка'
     }
   };
   // notes that come with the price data (Serbian), translated once from the same source; newer ones stay Serbian
@@ -1037,6 +1047,7 @@
   }
   function lock(on) { d.documentElement.classList.toggle('evm-lock', !!on); }
   function openCard(s, fly, fromNear) {
+    rtPopClose();
     var wasOpen = !!sel || nearOpen || carOpen || rtOpen;
     carOpen = false;
     sel = s;
@@ -1265,7 +1276,8 @@
   // line), in order along the route; confirmed only unless the visitor asks for the rest (or none is confirmed). The chip
   // filter and the search text do not count; no network or firm is ever put first. Places are looked up in Photon
   // (photon.komoot.io) and the route in OSRM on the FOSSGIS server (routing.openstreetmap.de): the browser sends them only
-  // the typed text and the two points of the route; evolako.rs gets and keeps nothing (nothing is stored in the browser either).
+  // the typed text, a point picked by a long press (below) and the two points of the route; evolako.rs gets and keeps nothing
+  // (nothing is stored in the browser either).
   var RT_GEO = 'https://photon.komoot.io/api/', RT_OSRM = 'https://routing.openstreetmap.de/routed-car/route/v1/driving/';
   var RT_RS = [2, 5, 10], RT_MAXR = 10, VIOLET = '#7C5CFF', FC0 = { type: 'FeatureCollection', features: [] };
   var RT = { r: 5, nep: false, from: null, to: null }, rtOpen = false, cardRt = false;
@@ -1291,15 +1303,48 @@
     var u = RT_GEO + '?q=' + encodeURIComponent(q) + '&limit=6&lang=' + (lang() === 'ru' ? 'default' : 'en') + '&lat=44.1&lon=20.9';
     return fetch(u, { signal: sig, credentials: 'omit' }).then(function (r) { if (!r.ok) throw rtErr('net'); return r.json(); }).then(function (j) {
       var seen = {}, out = [];
-      (j.features || []).forEach(function (f) {
+      (j.features || []).forEach(function (f, i) {
         if (!f.geometry || !f.geometry.coordinates) return;
         var l = geoLabel(f);
         if (!l || seen[l]) return;
         seen[l] = 1;
-        out.push({ label: l, pt: { lon: +f.geometry.coordinates[0], lat: +f.geometry.coordinates[1] } });
+        out.push({ label: l, pt: { lon: +f.geometry.coordinates[0], lat: +f.geometry.coordinates[1] }, rk: geoRank(f), i: i });
       });
-      return out.slice(0, 5);
+      out.sort(function (a, b) { return a.rk - b.rk || a.i - b.i; });
+      return geoTowns(q, out).slice(0, 5).map(function (x) { return { label: x.label, pt: x.pt }; });
     });
+  }
+  // Photon folds „Nis“ to Niš but may rank a railway station or a street above the town: places first (city > town >
+  // village > the rest), then the rest in Photon's order; on top, the towns below whose folded name is the typed text or
+  // starts with it, so „Nis“, „Cacak“, „Uzice“ or „Ниш“ offer Niš, Čačak, Užice first (owner's request 26.10.2026; the
+  // same as map.js on blokvolt.rs). TOWNS = scripts/map_data.py TOWNS (evomap_route_test.py checks they are the same).
+  var GEO_RK = { city: 0, town: 1, village: 2 };
+  function geoRank(f) { var a = f.properties || {}; return a.osm_key === 'place' ? (a.osm_value in GEO_RK ? GEO_RK[a.osm_value] : 3) : 4; }
+  var TOWNS = [['Beograd', 44.8125, 20.4612], ['Novi Sad', 45.2671, 19.8335], ['Niš', 43.3209, 21.8958], ['Kragujevac', 44.0128, 20.9114], ['Subotica', 46.1003, 19.6658], ['Zrenjanin', 45.3816, 20.3906], ['Pančevo', 44.8708, 20.6403], ['Čačak', 43.8914, 20.3497], ['Novi Pazar', 43.1367, 20.5122], ['Kraljevo', 43.7258, 20.6896], ['Smederevo', 44.6628, 20.93], ['Leskovac', 42.9981, 21.9461], ['Valjevo', 44.2751, 19.8982], ['Kruševac', 43.58, 21.3339], ['Vranje', 42.5514, 21.9003], ['Šabac', 44.7489, 19.6908], ['Užice', 43.8586, 19.8488], ['Sombor', 45.7742, 19.1122], ['Požarevac', 44.6194, 21.1869], ['Pirot', 43.1531, 22.5861], ['Zaječar', 43.9036, 22.2847], ['Kikinda', 45.8297, 20.4653], ['Sremska Mitrovica', 44.9764, 19.6122], ['Jagodina', 43.9771, 21.2612], ['Vršac', 45.1167, 21.3036], ['Bor', 44.0747, 22.0959], ['Ruma', 45.008, 19.8222], ['Inđija', 45.0482, 20.0816], ['Stara Pazova', 44.9853, 20.1608], ['Bačka Palanka', 45.2508, 19.3919], ['Vrbas', 45.5717, 19.6403], ['Paraćin', 43.86, 21.4078], ['Aleksinac', 43.5417, 21.7078], ['Prokuplje', 43.2342, 21.5881], ['Loznica', 44.5339, 19.2247], ['Obrenovac', 44.655, 20.2], ['Lazarevac', 44.38, 20.2567], ['Mladenovac', 44.4378, 20.6922], ['Gornji Milanovac', 44.0253, 20.4617], ['Aranđelovac', 44.3069, 20.56], ['Zlatibor', 43.7292, 19.7003], ['Kopaonik', 43.2856, 20.8111], ['Vrnjačka Banja', 43.6231, 20.8931], ['Šid', 45.1283, 19.2264], ['Bačka Topola', 45.815, 19.635], ['Senta', 45.9275, 20.0772], ['Bečej', 45.6164, 20.0489], ['Ćuprija', 43.9275, 21.37], ['Negotin', 44.2267, 22.5308], ['Knjaževac', 43.5667, 22.2567], ['Preševo', 42.3089, 21.65], ['Ivanjica', 43.5811, 20.2297], ['Prijepolje', 43.3897, 19.6489], ['Kovin', 44.7475, 20.9761], ['Velika Plana', 44.3336, 21.0756], ['Lapovo', 44.1842, 21.1033], ['Doljevac', 43.1967, 21.8322], ['Dimitrovgrad', 43.0161, 22.7753], ['Horgoš', 46.1564, 19.9725], ['Batrovci', 45.0517, 19.1047]];
+  var CYRL = { lj: 'љ', nj: 'њ', 'dž': 'џ', a: 'а', b: 'б', c: 'ц', 'č': 'ч', 'ć': 'ћ', d: 'д', 'đ': 'ђ', e: 'е', f: 'ф', g: 'г', h: 'х', i: 'и', j: 'ј', k: 'к',
+    l: 'л', m: 'м', n: 'н', o: 'о', p: 'п', r: 'р', s: 'с', 'š': 'ш', t: 'т', u: 'у', v: 'в', z: 'з', 'ž': 'ж' };
+  // a town of the list in Serbian Cyrillic on the Russian page (Photon's own names there are Serbian Cyrillic too)
+  function townName(n) {
+    if (lang() !== 'ru') return n;
+    return n.replace(/lj|nj|dž|[a-zčćđšž]/gi, function (m) { var l = m.toLowerCase(), t = CYRL[l]; return t == null ? m : m.charAt(0) === m.charAt(0).toLowerCase() ? t : t.toUpperCase(); });
+  }
+  function townHits(q) {
+    var k = sfold(q), ex = [], pre = [];
+    if (k.length < 3) return [];
+    TOWNS.forEach(function (t) { var n = sfold(t[0]); if (n === k) ex.push(t); else if (n.indexOf(k) === 0) pre.push(t); });
+    return ex.concat(pre).slice(0, 3);
+  }
+  function geoTowns(q, list) {
+    var top = [];
+    townHits(q).forEach(function (t) {
+      var pt = { lat: t[1], lon: t[2] }, n = sfold(t[0]), at = -1;
+      for (var i = 0; i < list.length && at < 0; i++) {
+        var x = list[i];
+        if ((sfold(x.label.split(',')[0]) === n && distKm(x.pt, pt) < 15) || (x.rk <= 1 && distKm(x.pt, pt) < 4)) at = i;
+      }
+      top.push(at >= 0 ? list.splice(at, 1)[0] : { label: townName(t[0]), pt: pt });
+    });
+    return top.concat(list);
   }
   function rtResolve(q) { return geoSearch(q, true).then(function (r) { if (!r.length) throw rtErr('nf', q); return r[0]; }); }
   function rtMe() {
@@ -1450,6 +1495,7 @@
       '</div><ul class="evm-rt-sug" id="' + id + '-l" role="listbox" hidden></ul></div>';
   }
   function rtPanel() {
+    rtPopClose();
     var was = !!sel || nearOpen || carOpen || rtOpen;
     carOpen = false;
     if (sel) { sel = null; try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* ignore */ } renderList(); }
@@ -1457,7 +1503,7 @@
     if (map && map.getSource('sel')) map.getSource('sel').setData(FC0);
     $card.innerHTML = '<div class="evm-cc evm-rtp" role="dialog" aria-label="' + esc(T('rt_title')) + '"><span class="evm-grab" aria-hidden="true"></span>' +
       '<button class="evm-x" type="button" aria-label="' + esc(T('close')) + '">' + IC.x + '</button><h2>' + esc(T('rt_title')) + '</h2>' +
-      '<p class="evm-addr">' + esc(T('rt_lead')) + '</p><form class="evm-rt-form" novalidate>' +
+      '<p class="evm-addr">' + esc(T('rt_lead')) + '</p><p class="evm-nr-note evm-rt-tip">' + esc(T('rt_tip')) + '</p><form class="evm-rt-form" novalidate>' +
       rtField('evm-rt-from', T('rt_from'), T('rt_me'), RT.from ? RT.from.label : '') + rtField('evm-rt-to', T('rt_to'), T('rt_to_ph'), RT.to ? RT.to.label : '') +
       '<button class="evm-btn pri evm-rt-go" type="submit">' + IC.road + '<span>' + esc(T('rt_go')) + '</span></button></form><div class="evm-rt-res" aria-live="polite"></div></div>';
     $card.hidden = false;
@@ -1617,6 +1663,153 @@
     if (sh && sel) share(sel, sh);
   });
 
+  // ---------- the destination picked on the map (owner's request 26.10.2026; the same as map.js on blokvolt.rs) ----------
+  // A tap on the name of a city, town or village of the base map, a long press (touch, ~550 ms without moving) or a right
+  // click anywhere opens a small popup at that place: its name, „Punjači na putu dovde“ (the route from the visitor's
+  // location or the start already set) and „Polazak odavde“. A tapped name comes from the map tiles (nothing is sent); a
+  // pressed point is named by Photon's reverse lookup (the browser sends Photon that point), or „Izabrana tačka“ when that
+  // fails. A long press on a charger opens the charger, as a tap does.
+  var RT_REV = 'https://photon.komoot.io/reverse', PLACE_CLS = { city: 1, town: 1, village: 1, hamlet: 1, suburb: 1 }, CYR_RE = /[Ѐ-ӿ]/;
+  var rtPop = null, lpAt = 0;
+  function coarse() { return !!(window.matchMedia && matchMedia('(pointer: coarse)').matches); }
+  // the label's name in the page language, as labelLang() draws it: Latin script on the Serbian and English page
+  function placeName(p) {
+    if (lang() === 'ru') return String(p['name:ru'] || p['name:sr'] || p.name || p['name:latin'] || '').trim();
+    var n = (lang() === 'en' && (p['name:en'] || p.name_en)) || p['name:sr-Latn'] || latn(p.name || '');
+    if (!n || CYR_RE.test(n)) n = p['name:latin'] || p.name_int || n;
+    return String(n || '').trim();
+  }
+  function placeAt(p) {
+    var r = coarse() ? 10 : 4, fs = [], f = null;
+    try { fs = map.queryRenderedFeatures([[p.x - r, p.y - r], [p.x + r, p.y + r]]); } catch (e) { return null; }
+    for (var i = 0; i < fs.length && !f; i++) {
+      var x = fs[i];
+      if (x.sourceLayer === 'place' && x.properties && PLACE_CLS[x.properties['class']] && x.geometry && x.geometry.type === 'Point') f = x;
+    }
+    var name = f && placeName(f.properties);
+    return name ? { label: name, pt: { lon: +f.geometry.coordinates[0], lat: +f.geometry.coordinates[1] } } : null;
+  }
+  function ptLabel(pt) { return T('rt_pt') + ' ' + pt.lat.toFixed(4) + ' / ' + pt.lon.toFixed(4); }
+  function geoRev(pt) {
+    var u = RT_REV + '?lat=' + pt.lat.toFixed(5) + '&lon=' + pt.lon.toFixed(5) + '&limit=1&lang=' + (lang() === 'ru' ? 'default' : 'en');
+    var ctl = window.AbortController ? new AbortController() : null, tm = setTimeout(function () { if (ctl) ctl.abort(); }, 6000);
+    return fetch(u, { signal: ctl ? ctl.signal : undefined, credentials: 'omit' }).then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { var f = j && (j.features || [])[0]; return (f && geoLabel(f)) || ptLabel(pt); }, function () { return ptLabel(pt); })
+      .then(function (l) { clearTimeout(tm); return l; });
+  }
+  function rtPopClose() { if (rtPop) { var P = rtPop; rtPop = null; P.pop.remove(); } }
+  function rtPopPaint() {
+    var P = rtPop;
+    if (!P) return;
+    var t = P.el.querySelector('.evm-pop-t'), go = P.el.querySelector('[data-pop="to"]'), c = P.label ? P.label.indexOf(',') : -1;
+    t.innerHTML = P.label ? '<b>' + esc(c > 0 ? P.label.slice(0, c) : P.label) + '</b>' + (c > 0 ? '<span>' + esc(P.label.slice(c + 1).trim()) + '</span>' : '')
+      : '<span class="evm-nr-spin" aria-hidden="true"></span><span>' + esc(T('rt_pop_wait')) + '</span>';
+    t.className = 'evm-pop-t' + (P.label ? '' : ' is-wait');
+    P.el.setAttribute('aria-label', P.label || T('rt_pop_wait'));
+    go.setAttribute('aria-label', P.label ? fill(T('rt_pop_go_l'), { t: P.label.split(',')[0] }) : T('rt_pop_go'));
+  }
+  // how: 'label' (a name tapped), 'press' (long press), 'right' (right click)
+  function rtPopOpen(pt, label, how) {
+    rtPopClose();
+    var el = d.createElement('div');
+    el.className = 'evm-pop';
+    el.setAttribute('role', 'dialog');
+    el.innerHTML = '<button class="evm-pop-x" type="button" data-pop="x" aria-label="' + esc(T('close')) + '">' + IC.x + '</button><p class="evm-pop-t" aria-live="polite"></p>' +
+      '<button class="evm-btn pri sm" type="button" data-pop="to">' + IC.road + '<span>' + esc(T('rt_pop_go')) + '</span></button>' +
+      '<button class="evm-btn sm" type="button" data-pop="from">' + IC.pin + '<span>' + esc(T('rt_pop_from')) + '</span></button>';
+    var pop = new window.maplibregl.Popup({ closeButton: false, closeOnClick: false, closeOnMove: false, focusAfterOpen: false, maxWidth: '280px', offset: 12, className: 'evm-popup' })
+      .setLngLat([pt.lon, pt.lat]).setDOMContent(el).addTo(map);
+    var P = rtPop = { pt: pt, label: label, how: how, el: el, pop: pop };
+    pop.on('close', function () { if (rtPop === P) rtPop = null; });
+    P.wait = label ? Promise.resolve(label) : geoRev(pt).then(function (l) { P.label = l; if (rtPop === P) rtPopPaint(); return l; });
+    rtPopPaint();
+    el.addEventListener('click', function (e) { var b = e.target.closest('[data-pop]'); if (b) rtPopPick(b.getAttribute('data-pop')); });
+    el.addEventListener('keydown', function (e) { if (e.key === 'Escape') { e.stopPropagation(); rtPopClose(); map.getCanvas().focus(); } });
+    // the keyboard reaches the buttons at once (a tap on a phone does not move the focus, so no keyboard pops up)
+    if (!coarse()) el.querySelector('[data-pop="to"]').focus({ preventScroll: true });
+  }
+  function rtPopPick(k) {
+    var P = rtPop;
+    if (!P || k === 'x') { rtPopClose(); return; }
+    P.wait.then(function (label) {
+      if (rtPop !== P) return;
+      rtPopClose();
+      var x = { label: label, pt: P.pt };
+      // a start typed in the open panel but not yet looked up is kept
+      var fin = rtOpen && $card.querySelector('#evm-rt-from'), keep = fin && !RT.from ? fin.value.trim() : '';
+      if (k === 'to') RT.to = x; else RT.from = x;
+      rtPanel();
+      var fi = $card.querySelector('#evm-rt-from'), ti = $card.querySelector('#evm-rt-to');
+      if (keep && fi && k === 'to') fi.value = keep;
+      if (k === 'to' || (ti && ti.value.trim())) rtRun();
+      else if (ti && !mobile()) ti.focus({ preventScroll: true });
+    });
+  }
+  // a tap that hit no charger: the name of a place under it, if any (the popup closes otherwise)
+  function rtTapPlace(p) {
+    var pl = placeAt(p);
+    if (pl) rtPopOpen(pl.pt, pl.label, 'label'); else rtPopClose();
+    return !!pl;
+  }
+  // long press (touch) and right click: a charger under it opens as with a tap; else the popup at the pressed point
+  function rtPress(cx, cy, how) {
+    if (!map || Date.now() - lpAt < 800) return;   // Android sends both the long press and a contextmenu
+    lpAt = Date.now();
+    var b = map.getCanvas().getBoundingClientRect(), p = new window.maplibregl.Point(cx - b.left, cy - b.top);
+    if (mapTap(p)) return;
+    var pl = placeAt(p);
+    if (pl) { rtPopOpen(pl.pt, pl.label, how); return; }
+    var ll = map.unproject(p);
+    rtPopOpen({ lon: ll.lng, lat: ll.lat }, null, how);
+  }
+  function pressInit() {
+    var box = map.getCanvasContainer(), tm = 0, sx = 0, sy = 0, tAt = 0, fired = false, pas = { passive: true };
+    function stop() { clearTimeout(tm); tm = 0; }
+    box.addEventListener('touchstart', function (e) {
+      stop();
+      tAt = Date.now(); fired = false;
+      if (e.touches.length !== 1) return;   // a pinch never opens it
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+      tm = setTimeout(function () { tm = 0; fired = true; rtPress(sx, sy, 'press'); }, 550);
+    }, pas);
+    box.addEventListener('touchmove', function (e) {
+      if (tm && (e.touches.length !== 1 || Math.abs(e.touches[0].clientX - sx) + Math.abs(e.touches[0].clientY - sy) > 10)) stop();
+    }, pas);
+    // a finger lifted after a long press may still send a click: it must not close the popup that just opened
+    box.addEventListener('touchend', function () { stop(); if (fired) lpAt = Date.now(); }, pas);
+    box.addEventListener('touchcancel', stop, pas);
+    // the browser's own menu never opens over the map (right click, and the long press of Android)
+    box.addEventListener('contextmenu', function (e) { e.preventDefault(); stop(); rtPress(e.clientX, e.clientY, Date.now() - tAt < 1500 ? 'press' : 'right'); });
+    map.on('dragstart', stop);
+    map.on('zoomstart', stop);
+  }
+  // a tap looks at a small box around the finger (larger on touch screens): one charger opens its card, several zoom
+  // in on them (at least two steps, at most zoom 14); from zoom 13 the dot nearest to the tap opens. true = a charger hit.
+  function mapTap(p) {
+    var r = coarse() ? 14 : 8;
+    var hit = map.queryRenderedFeatures([[p.x - r, p.y - r], [p.x + r, p.y + r]], { layers: ['pt'] });
+    if (!hit.length) return false;
+    rtPopClose();
+    var ids = {}, n = 0, z0 = map.getZoom();
+    hit.forEach(function (x) { if (!ids[x.properties.id]) { ids[x.properties.id] = 1; n++; } });
+    if (n > 1 && z0 < 13) {
+      var b = new window.maplibregl.LngLatBounds();
+      hit.forEach(function (x) { b.extend(x.geometry.coordinates); });
+      var cam = map.cameraForBounds(b, { padding: 60 });
+      userMove = true;
+      map.easeTo({ center: b.getCenter(), zoom: Math.min(14, Math.max(z0 + 2, cam && isFinite(cam.zoom) ? cam.zoom : 0)) });
+      return true;
+    }
+    var f = hit[0], bd = Infinity;
+    hit.forEach(function (x) {
+      var q = map.project(x.geometry.coordinates), dd = (q.x - p.x) * (q.x - p.x) + (q.y - p.y) * (q.y - p.y);
+      if (dd < bd) { bd = dd; f = x; }
+    });
+    var s = BYID[f.properties.id];
+    if (s) openCard(s, false);
+    return true;
+  }
+
   // ---------- map ----------
   function feat(s) {
     var v = ver(s), k = kind(s), p = k === 'tesla' ? 'T' : (Math.round(power(s)) || ''), pp = pinPrice(s);
@@ -1712,26 +1905,21 @@
       // a tap looks at a small box around the finger (larger on touch screens): one charger opens its card, several zoom
       // in on them (at least two steps, at most zoom 14); from zoom 13 the dot nearest to the tap opens
       map.on('click', function (e) {
-        var r = window.matchMedia && matchMedia('(pointer: coarse)').matches ? 14 : 8, p = e.point;
-        var hit = map.queryRenderedFeatures([[p.x - r, p.y - r], [p.x + r, p.y + r]], { layers: ['pt'] });
-        if (!hit.length) { if (sel && !mobile()) closeCard(); return; }
-        var ids = {}, n = 0, z0 = map.getZoom();
-        hit.forEach(function (x) { if (!ids[x.properties.id]) { ids[x.properties.id] = 1; n++; } });
-        if (n > 1 && z0 < 13) {
-          var b = new ml.LngLatBounds();
-          hit.forEach(function (x) { b.extend(x.geometry.coordinates); });
-          var cam = map.cameraForBounds(b, { padding: 60 });
-          userMove = true;
-          map.easeTo({ center: b.getCenter(), zoom: Math.min(14, Math.max(z0 + 2, cam && isFinite(cam.zoom) ? cam.zoom : 0)) });
-          return;
-        }
-        var f = hit[0], bd = Infinity;
-        hit.forEach(function (x) {
-          var q = map.project(x.geometry.coordinates), dd = (q.x - p.x) * (q.x - p.x) + (q.y - p.y) * (q.y - p.y);
-          if (dd < bd) { bd = dd; f = x; }
+        if (Date.now() - lpAt < 800) return;   // the click some browsers send after a long press
+        if (mapTap(e.point)) return;
+        if (!rtTapPlace(e.point) && sel && !mobile()) closeCard();
+      });
+      pressInit();
+      // a pointer over a place name on a computer: it can be clicked (the route popup)
+      var hov = 0;
+      map.on('mousemove', function (e) {
+        if (hov) return;
+        hov = requestAnimationFrame(function () {
+          hov = 0;
+          var c = map.getCanvas();
+          if (c.style.cursor && c.style.cursor !== 'pointer') return;
+          c.style.cursor = placeAt(e.point) || map.queryRenderedFeatures(e.point, { layers: ['pt'] }).length ? 'pointer' : '';
         });
-        var s = BYID[f.properties.id];
-        if (s) openCard(s, false);
       });
       ['pt'].forEach(function (l) {
         map.on('mouseenter', l, function () { map.getCanvas().style.cursor = 'pointer'; });
@@ -1905,6 +2093,7 @@
   $near.addEventListener('click', function () { nearGo('button'); });
   d.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
+    if (rtPop) { rtPopClose(); return; }
     if (carOpen) closeCar(); else if (sel || nearOpen || rtOpen) closeCard(); else if (root.classList.contains('evm-full')) setFull(false);
   });
   $me.addEventListener('click', function () {
@@ -2000,6 +2189,7 @@
         return { shown: !!RT.shown, open: rtOpen, r: RT.r, km: RT.route ? RT.route.km : null,
           rows: RT.route ? rtList().rows.map(function (x) { return { id: x.s.id, dc: x.s.dc, v: ver(x.s), at: Math.round(x.at * 10) / 10, d: Math.round(x.d * 100) / 100 }; }) : [] };
       };
+      window.evmTownsQa = function () { return TOWNS; };
       window.evmCostQa = function (id) { var s0 = BYID[id], co = s0 && costOf(s0); return co ? { kw: co.main.c.kw, kwh: co.main.c.kwh, km: co.main.c.km } : null; };
     }
     if (mlReady === 'err') noMap(); else startMap();

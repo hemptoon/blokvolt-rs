@@ -35,7 +35,14 @@ PLACES = {
     'nis': [('Niš', None, 'Serbia', 21.8959, 43.3211), ('Nis', 'Niš', 'Serbia', 21.8773, 43.3166)],
     'beograd': [('Београд', None, 'Serbia', 20.4573, 44.8125)],
     'novi sad': [('Нови Сад', None, 'Serbia', 19.8452, 45.2551)],
+    # typed without diacritics (27.10.2026): Photon puts the railway station first — the town must come first
+    'cacak': [('Železnička stanica Čačak', 'Čačak', 'Serbia', 20.3466, 43.8937, 'railway', 'station'),
+              ('Čačak', None, 'Serbia', 20.3497, 43.8914, 'place', 'town')],
+    # only a street in Belgrade from Photon: the town comes from the site's own list (cfg.towns)
+    'zajecar': [('Zaječarska', 'Beograd', 'Serbia', 20.4801, 44.7912, 'highway', 'residential')],
 }
+# the point named by Photon's reverse lookup (a long press or a right click); REV[0] = False answers with an error
+REV = [True]
 fails = []
 
 
@@ -50,8 +57,39 @@ def photon(q):
     for k, v in PLACES.items():
         if q.startswith(k[:3]) and k.startswith(q[:3]):
             return {'type': 'FeatureCollection', 'features': [{'type': 'Feature', 'geometry': {'type': 'Point', 'coordinates': [x[3], x[4]]},
-                    'properties': {'name': x[0], 'city': x[1], 'country': x[2], 'type': 'city'}} for x in v]}
+                    'properties': dict({'name': x[0], 'city': x[1], 'country': x[2], 'type': 'city'}, **({'osm_key': x[5], 'osm_value': x[6]} if len(x) > 5 else {}))} for x in v]}
     return {'type': 'FeatureCollection', 'features': []}
+
+
+def reverse(lat, lon):
+    return {'type': 'FeatureCollection', 'features': [{'type': 'Feature', 'geometry': {'type': 'Point', 'coordinates': [lon, lat]},
+            'properties': {'name': 'Ćuprija', 'country': 'Serbia', 'osm_key': 'place', 'osm_value': 'town', 'type': 'city'}}]}
+
+
+# a place name of the base map under a pixel: the test style has no vector tiles, so queryRenderedFeatures answers a
+# 'place' feature (OpenMapTiles schema) at that one pixel, as OpenFreeMap's labels do
+MOCK_PLACE = '''([x, y, lon, lat]) => {
+  const m = window.bvMapObjQa ? window.bvMapObjQa() : window.evmMap, o = m.__qrf || m.queryRenderedFeatures.bind(m);
+  m.__qrf = o;
+  m.queryRenderedFeatures = (g, opt) => {
+    if (!opt || !opt.layers) {
+      const a = Array.isArray(g) && Array.isArray(g[0]) ? [(g[0][0] + g[1][0]) / 2, (g[0][1] + g[1][1]) / 2] : g && g.x != null ? [g.x, g.y] : null;
+      if (a && Math.abs(a[0] - x) < 3 && Math.abs(a[1] - y) < 3)
+        return [{ sourceLayer: 'place', properties: { class: 'city', name: 'Ниш', 'name:latin': 'Niš', 'name:en': 'Niš', 'name:ru': 'Ниш' }, geometry: { type: 'Point', coordinates: [lon, lat] } }];
+    }
+    return o(g, opt);
+  };
+}'''
+# empty pixels of the map (no charger within 18 px), in the map's own coordinates, away from the edges and the controls
+FREE_PX = '''() => {
+  const m = window.bvMapObjQa ? window.bvMapObjQa() : window.evmMap, c = m.getCanvas().getBoundingClientRect(), out = [];
+  const ls = ['pt', 'rg-pt'].filter(l => m.getLayer(l));
+  for (let y = 0.3; y <= 0.75 && out.length < 4; y += 0.05) for (let x = 0.2; x <= 0.7 && out.length < 4; x += 0.05) {
+    const px = Math.round(c.width * x), py = Math.round(c.height * y);
+    if (!m.queryRenderedFeatures([[px - 18, py - 18], [px + 18, py + 18]], { layers: ls }).length && !out.some(q => Math.hypot(q[0] - px, q[1] - py) < 60)) out.push([px, py]);
+  }
+  return { px: out, left: c.left, top: c.top };
+}'''
 
 
 async def main():
@@ -63,14 +101,21 @@ async def main():
             pg = await ctx.new_page()
             errs, calls = [], []
             pg.on('pageerror', lambda e: errs.append('JS ' + str(e)[:300]))
-            pg.on('console', lambda m: errs.append(m.type + ' ' + m.text[:200]) if m.type == 'error' and 'openfreemap' not in m.text else None)
+            pg.on('console', lambda m: errs.append(m.type + ' ' + m.text[:200]) if m.type == 'error' and 'openfreemap' not in m.text and 'status of 500' not in m.text else None)
             await pg.route('https://tiles.openfreemap.org/styles/**', lambda r: r.fulfill(status=200, content_type='application/json', body=json.dumps(STYLE)))
             await pg.route('https://tiles.openfreemap.org/fonts/**', lambda r: r.fulfill(status=200, content_type='application/x-protobuf', body=b''))
             await pg.route('**/api/**', lambda r: r.fulfill(status=200, content_type='application/json', body=json.dumps({'ok': True, 'st': {}, 'items': [], 'photos': [], 'facts': []})))
 
             async def geo(route):
                 from urllib.parse import urlparse, parse_qs
-                q = parse_qs(urlparse(route.request.url).query)
+                u = urlparse(route.request.url)
+                q = parse_qs(u.query)
+                if u.path.startswith('/reverse'):
+                    calls.append(('rev', q.get('lat', [''])[0], q.get('lon', [''])[0], q.get('lang', [''])[0]))
+                    if not REV[0]:
+                        return await route.fulfill(status=500, headers={'Access-Control-Allow-Origin': '*'}, body='err')
+                    return await route.fulfill(status=200, content_type='application/json', headers={'Access-Control-Allow-Origin': '*'},
+                                               body=json.dumps(reverse(float(q['lat'][0]), float(q['lon'][0]))))
                 calls.append(('photon', q.get('q', [''])[0], q.get('lang', [''])[0]))
                 await route.fulfill(status=200, content_type='application/json', headers={'Access-Control-Allow-Origin': '*'}, body=json.dumps(photon(q.get('q', [''])[0])))
 
@@ -196,6 +241,134 @@ async def main():
             await pg.wait_for_timeout(800)
             check(not (await pg.evaluate('window.bvRouteQa()'))['shown'], f'{tag} Najbliži clears the route')
             await pg.screenshot(path=str(SHOTS / f'route_near_{tag}.png'))
+            # ---- the destination picked on the map (27.10.2026): a place name tapped, a long press, a right click ----
+            await pg.goto(BASE + '/mapa/?qa=1', wait_until='load')
+            await pg.wait_for_timeout(1500)
+            await pg.evaluate("document.getElementById('map').scrollIntoView({block: 'center'})")
+            await pg.wait_for_timeout(300)
+            fr = await pg.evaluate(FREE_PX)
+            check(len(fr['px']) >= 3, f'{tag} empty map pixels for the test: {fr["px"]}')
+            P = [(fr['left'] + x, fr['top'] + y) for x, y in fr['px']]
+            await pg.evaluate(MOCK_PLACE, [fr['px'][0][0], fr['px'][0][1], 21.8959, 43.3211])
+
+            async def tap(x, y):
+                if tag == 'm':
+                    await pg.touchscreen.tap(x, y)
+                else:
+                    await pg.mouse.click(x, y)
+            # a tap on an empty spot: nothing
+            await tap(*P[1])
+            await pg.wait_for_timeout(400)
+            check(not await pg.evaluate("!!document.querySelector('.rtpop')"), f'{tag} tap on an empty spot: no popup')
+            # a tap on the place name: the popup, nothing sent anywhere
+            n_rev = len([c for c in calls if c[0] == 'rev'])
+            await tap(*P[0])
+            await pg.wait_for_timeout(500)
+            t = await pg.evaluate("(document.querySelector('.rtpop')||{}).innerText||''")
+            check('Niš' in t and 'Punjači na putu dovde' in t and 'Polazak odavde' in t, f'{tag} place name tapped → popup {t!r}')
+            check(len([c for c in calls if c[0] == 'rev']) == n_rev, f'{tag} a tapped name is not sent to Photon')
+            box = await pg.evaluate("(() => { const r = document.querySelector('.maplibregl-popup').getBoundingClientRect(); return [r.left, r.right, innerWidth, document.documentElement.scrollWidth]; })()")
+            check(box[0] >= 0 and box[1] <= box[2] and box[3] <= box[2], f'{tag} popup inside the screen {box}')
+            if tag == 'd':
+                check(await pg.evaluate("document.activeElement && document.activeElement.dataset.pop") == 'to', f'{tag} popup button has the keyboard focus')
+                await pg.keyboard.press('Tab')
+                check(await pg.evaluate("document.activeElement && document.activeElement.dataset.pop") == 'from', f'{tag} Tab reaches „Polazak odavde“')
+                await pg.keyboard.press('Shift+Tab')
+            await pg.screenshot(path=str(SHOTS / f'route_pick_{tag}.png'))
+            n_osrm = len([c for c in calls if c[0] == 'osrm'])
+            if tag == 'd':
+                await pg.keyboard.press('Enter')
+            else:
+                await pg.click('.rtpop [data-pop="to"]')
+            await pg.wait_for_timeout(1800)
+            q = await pg.evaluate('window.bvRouteQa()')
+            check(q['open'] and q['shown'] and await pg.input_value('#rt-to') == 'Niš' and await pg.input_value('#rt-from') == '', f'{tag} popup → route panel with the destination, from my location')
+            o = [c for c in calls if c[0] == 'osrm'][n_osrm:]
+            check(o and o[-1][1] == '20.45730,44.81250;21.89590,43.32110', f'{tag} route runs at once to the label point {o}')
+            check(not await pg.evaluate("!!document.querySelector('.rtpop')"), f'{tag} popup closed after the choice')
+            await pg.screenshot(path=str(SHOTS / f'route_pick_run_{tag}.png'))
+            await pg.click('.rtp .x')
+            await pg.wait_for_timeout(300)
+            if tag == 'd':
+                # right click: no browser menu, the popup at the point, named by Photon's reverse lookup
+                await pg.evaluate("document.addEventListener('contextmenu', e => { window.__cm = e.defaultPrevented; })")
+                await pg.mouse.click(*P[2], button='right')
+                await pg.wait_for_timeout(700)
+                t = await pg.evaluate("(document.querySelector('.rtpop')||{}).innerText||''")
+                check(await pg.evaluate('window.__cm') is True, f'{tag} right click: the browser menu is not opened')
+                check('Ćuprija' in t and 'Polazak odavde' in t, f'{tag} right click → popup named by reverse lookup {t!r}')
+                rv = [c for c in calls if c[0] == 'rev']
+                check(rv and rv[-1][3] == 'en', f'{tag} reverse lookup sent {rv[-1:]}')
+                n_osrm = len([c for c in calls if c[0] == 'osrm'])
+                await pg.click('.rtpop [data-pop="from"]')
+                await pg.wait_for_timeout(1500)
+                check(await pg.input_value('#rt-from') == 'Ćuprija, Serbia' and await pg.input_value('#rt-to') == 'Niš', f'{tag} „Polazak odavde“ sets the start, keeps the destination')
+                o = [c for c in calls if c[0] == 'osrm'][n_osrm:]
+                check(o and not o[-1][1].startswith('20.45730') and o[-1][1].endswith(';21.89590,43.32110'), f'{tag} route from the pressed point {o}')
+                await pg.click('.rtp .x')
+                # reverse lookup fails: "Izabrana tačka" with the coordinates; Escape closes the popup
+                REV[0] = False
+                await pg.mouse.click(*P[1], button='right')
+                await pg.wait_for_timeout(800)
+                t = await pg.evaluate("(document.querySelector('.rtpop')||{}).innerText||''")
+                check('Izabrana tačka' in t, f'{tag} reverse lookup failed → {t!r}')
+                REV[0] = True
+                await pg.keyboard.press('Escape')
+                await pg.wait_for_timeout(200)
+                check(not await pg.evaluate("!!document.querySelector('.rtpop')"), f'{tag} Escape closes the popup')
+            else:
+                cdp = await ctx.new_cdp_session(pg)
+
+                async def hold(pts, move=None, ms=800):
+                    await cdp.send('Input.dispatchTouchEvent', {'type': 'touchStart', 'touchPoints': [{'x': x, 'y': y} for x, y in pts]})
+                    if move:
+                        for k in range(1, 6):
+                            await cdp.send('Input.dispatchTouchEvent', {'type': 'touchMove', 'touchPoints': [{'x': x + move * k / 5, 'y': y} for x, y in pts]})
+                            await pg.wait_for_timeout(30)
+                    await pg.wait_for_timeout(ms)
+                    await cdp.send('Input.dispatchTouchEvent', {'type': 'touchEnd', 'touchPoints': []})
+                    await pg.wait_for_timeout(700)
+                await hold([P[2]])
+                t = await pg.evaluate("(document.querySelector('.rtpop')||{}).innerText||''")
+                check('Ćuprija' in t and 'Punjači na putu dovde' in t, f'{tag} long press → popup named by reverse lookup {t!r}')
+                await pg.screenshot(path=str(SHOTS / f'route_press_{tag}.png'))
+                await pg.click('.rtpop [data-pop="x"]')
+                await pg.wait_for_timeout(200)
+                check(not await pg.evaluate("!!document.querySelector('.rtpop')"), f'{tag} popup × closes it')
+                n_rev = len([c for c in calls if c[0] == 'rev'])
+                await hold([P[1]], move=40)
+                check(not await pg.evaluate("!!document.querySelector('.rtpop')") and len([c for c in calls if c[0] == 'rev']) == n_rev, f'{tag} a drag is not a long press')
+                await hold([P[1], (P[1][0] + 80, P[1][1] + 40)])
+                check(not await pg.evaluate("!!document.querySelector('.rtpop')"), f'{tag} two fingers are not a long press')
+                await hold([P[1]], ms=250)
+                check(not await pg.evaluate("!!document.querySelector('.rtpop')"), f'{tag} a short touch is not a long press')
+                # a long press on a charger keeps opening it, as a tap does (from zoom 13 the nearest dot)
+                await pg.evaluate("window.bvMapObjQa().jumpTo({zoom: 14, center: [20.46, 44.81]})")
+                await pg.wait_for_timeout(800)
+                st = await pg.evaluate('''() => { const m = window.bvMapObjQa(), c = m.getCanvas().getBoundingClientRect();
+                  const f = m.queryRenderedFeatures({ layers: ['pt'] }).map(f => m.project(f.geometry.coordinates)).find(p => p.x > 40 && p.y > 40 && p.x < c.width - 60 && p.y < c.height - 40);
+                  return f ? [c.left + f.x, c.top + f.y, m.getZoom()] : null; }''')
+                check(st is not None, f'{tag} a charger on the screen for the long press')
+                await hold([(st[0], st[1])])
+                z = await pg.evaluate('window.bvMapObjQa().getZoom()')
+                card = await pg.evaluate("!!document.querySelector('#mcard.is-open .ccard:not(.rtp)')")
+                check(not await pg.evaluate("!!document.querySelector('.rtpop')") and card, f'{tag} long press on a charger opens its card, no popup')
+            # search without diacritics: the town first
+            await pg.goto(BASE + '/mapa/?qa=1', wait_until='load')
+            await pg.wait_for_timeout(1200)
+            await pg.click('#mroute')
+            check('dugo pritisnite' in await pg.evaluate("document.querySelector('.rtp').innerText"), f'{tag} the panel says a destination can be picked on the map')
+            for typed, first in (('Nis', 'Niš, Serbia'), ('Cacak', 'Čačak, Serbia'), ('Zajecar', 'Zaječar'), ('Uzice', 'Užice'), ('Ниш', 'Niš')):
+                await pg.fill('#rt-to', '')
+                await pg.fill('#rt-to', typed)
+                await pg.wait_for_timeout(900)
+                sug = await pg.evaluate("[...document.querySelectorAll('#rt-to-l button')].map(b=>b.innerText)")
+                check(sug and sug[0] == first, f'{tag} „{typed}“ offers {first} first: {sug}')
+            await pg.fill('#rt-to', 'Zajecar')
+            await pg.press('#rt-to', 'Enter')
+            await pg.wait_for_timeout(1500)
+            check(await pg.input_value('#rt-to') == 'Zaječar' and any(c[0] == 'osrm' and c[1].endswith(';22.28470,43.90360') for c in calls), f'{tag} Enter on „Zajecar“ routes to Zaječar')
+            await pg.click('.rtp .x')
             # English and Russian
             for lang, word, title in (('en', 'Chargers on the way', 'Fast chargers on the road'), ('ru', 'Зарядки по пути', 'Быстрые зарядки в пути')):
                 await pg.goto(BASE + f'/{lang}/mapa/?qa=1', wait_until='load')
@@ -208,6 +381,24 @@ async def main():
                 t = await pg.evaluate("document.querySelector('.rtp').innerText")
                 check(title in t and ('km from the start' in t if lang == 'en' else 'км от старта' in t), f'{tag} {lang} panel')
                 await pg.screenshot(path=str(SHOTS / f'route_{lang}_{tag}.png'))
+                await pg.fill('#rt-to', 'Zajecar')
+                await pg.wait_for_timeout(900)
+                sug = await pg.evaluate("[...document.querySelectorAll('#rt-to-l button')].map(b=>b.innerText)")
+                check(sug and sug[0] == ('Zaječar' if lang == 'en' else 'Зајечар'), f'{tag} {lang} „Zajecar“ first: {sug[:2]}')
+                await pg.click('.rtp .x')
+                await pg.evaluate("document.getElementById('map').scrollIntoView({block: 'center'})")
+                await pg.wait_for_timeout(300)
+                fr = await pg.evaluate(FREE_PX)
+                await pg.evaluate(MOCK_PLACE, [fr['px'][0][0], fr['px'][0][1], 21.8959, 43.3211])
+                await (pg.touchscreen.tap if tag == 'm' else pg.mouse.click)(fr['left'] + fr['px'][0][0], fr['top'] + fr['px'][0][1])
+                await pg.wait_for_timeout(500)
+                t = await pg.evaluate("(document.querySelector('.rtpop')||{}).innerText||''")
+                want = ('Niš', 'Chargers on the way here', 'Start from here') if lang == 'en' else ('Ниш', 'Зарядки по пути сюда', 'Старт отсюда')
+                check(all(w in t for w in want), f'{tag} {lang} popup {t!r}')
+                await pg.screenshot(path=str(SHOTS / f'route_pick_{lang}_{tag}.png'))
+                await pg.click('.rtpop [data-pop="to"]')
+                await pg.wait_for_timeout(1500)
+                check(await pg.input_value('#rt-to') == want[0], f'{tag} {lang} destination from the popup')
             ru_lang = [c[2] for c in calls if c[0] == 'photon'][-1]
             check(ru_lang == 'default', f'{tag} Photon lang on /ru/: {ru_lang}')
             check(not errs, f'{tag} no JS/console errors {errs[:4]}')

@@ -10,9 +10,9 @@ description_nalog: Kako blokvolt.rs postupa sa podacima o ličnosti i pod kojim 
 lead_consent_nalog: Nalog nije obavezan, a oglasnih piksela nema. Posete se broje bez kolačića, kolačić za analitiku postavlja se samo uz vašu dozvolu, a forme, prijave sa mape i nalog čuvaju samo ono što sami upišete.
 description_consent_nalog: Kako blokvolt.rs postupa sa podacima o ličnosti. Nalog nije obavezan; posete se broje bez kolačića, a kolačić za analitiku samo uz vašu dozvolu.
 kicker: Pravno
-updated: 25.10.2026
+updated: 27.10.2026
 published: 2026-09-21
-modified: 2026-10-25
+modified: 2026-10-27
 priority: 0.2
 path: /politika-privatnosti.html
 ---
@@ -99,7 +99,9 @@ Na stranici „Mapa punjača“ podloga mape učitava se sa servera OpenFreeMap 
 
 Dugmad „Blizu mene“ i „Najbliži punjač“ koriste vašu lokaciju samo kada ih pritisnete. Lokacija se ne šalje sajtu i ne čuva se. Dugme „Ovde sam“ pri dodavanju punjača samo pomera mapu na vašu lokaciju; sajtu se šalje tek tačka punjača, kad pošaljete formu. Link na evolako.rs u atribuciji mape i u polju „Izdvojeno“ nosi oznaku da dolazite sa BlokVolta.
 
-„Punjači na putu“ traži mesta koja upišete u servisu Photon (photon.komoot.io, Komoot GmbH, Nemačka) i računa rutu u servisu OSRM na serveru FOSSGIS e.V. (routing.openstreetmap.de, Nemačka). Pregledač tim servisima šalje upisani tekst i dve tačke rute, a ako polazak ostavite prazan — vašu lokaciju kao polaznu tačku; oni vide i vašu IP adresu, a FOSSGIS rute beleži u svojim logovima. Sajt ništa od toga ne dobija i ne čuva. Servisi se pozivaju tek kad počnete da kucate ili pritisnete „Prikaži punjače“.
+„Punjači na putu“ traži mesta koja upišete u servisu Photon (photon.komoot.io, Komoot GmbH, Nemačka) i računa rutu u servisu OSRM na serveru FOSSGIS e.V. (routing.openstreetmap.de, Nemačka). Pregledač tim servisima šalje upisani tekst i dve tačke rute, a ako polazak ostavite prazan — vašu lokaciju kao polaznu tačku; oni vide i vašu IP adresu, a FOSSGIS rute beleži u svojim logovima. Sajt ništa od toga ne dobija i ne čuva. Servisi se pozivaju tek kad počnete da kucate, izaberete tačku na mapi ili pritisnete „Prikaži punjače“.
+
+Odredište i polazak možete da izaberete i na samoj mapi. Ime mesta koje dodirnete čita se iz podloge mape i nikome se ne šalje. Kad dugo pritisnete neku tačku mape (na računaru: desni klik), pregledač servisu Photon šalje koordinate te tačke da bi dobio ime mesta; ruta do nje računa se kao i za upisano mesto.
 
 Na stranici mape je i link koji ljudi ne vide, a robots.txt ga zabranjuje robotima. Ako ga neki program ipak otvori, beleže se samo dan, dnevni otisak IP adrese i oznaka programa (User-Agent): tako vidimo ko automatski preuzima podatke protivno uslovima. Nikome se zbog toga ne zabranjuje pristup.
 

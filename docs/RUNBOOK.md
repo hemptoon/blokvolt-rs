@@ -1060,6 +1060,28 @@ Since 06.10.2026 (test: `scripts/qa/map_v2_test.py`, with the three tests above)
   `?qa=1`: `window.bvRouteQa()`, `window.bvRouteLineQa(line, km, r, nep)` (evolako.rs: `evmRouteQa`, `evmRouteLineQa` — the
   same rows for the same line). Tests: `scripts/qa/map_route_test.py`, `scripts/qa/evomap_route_test.py` (fixed Photon and
   OSRM answers). The apps do not have it yet (owner, 24.10.2026: after the App Store review).
+- **Since 27.10.2026: the destination picked on the map** (owner's request 26.10.2026: „Niš“ could not be typed on a
+  keyboard without š, and a long press on Niš did nothing; `map.js` rtPopOpen/rtPress/placeAt, the same in `evomap.src.js`).
+  A tap on a city/town/village/hamlet/suburb name of the base map (OpenFreeMap vector tiles, source layer `place`, name in
+  the page language: `name:sr-Latn` / `latn(name)` on SR, `name:en` on EN, `name:ru` on RU), a long press (touch: 550 ms,
+  cancelled by a move over 10 px, a second finger, a drag or a zoom) and a right click (the browser's menu never opens over
+  the map) open a small popup at that place: the name, „Punjači na putu dovde“ (the panel opens with the destination filled
+  and the route runs at once from the reader's location or the start already set) and „Polazak odavde“ (sets the start; runs
+  when a destination is there). The button says „dovde“, not „do {name}“: Serbian would need the genitive („do Niša“); the
+  name is the popup's title and in the button's aria-label. A tapped name is read from the tiles and sent nowhere; a pressed
+  point is named by Photon reverse (`photon.komoot.io/reverse`, the point with 5 decimals, `lang` as the search), „Izabrana
+  tačka 44.1234 / 20.5678“ when that fails (6 s). A press or tap on a charger keeps opening the charger; nothing opens while
+  „Dodaj punjač“ places its pin or on a map without the route button (the country maps of blokvolt.com). Escape and × close
+  the popup; on a computer the focus goes to its first button. The route panel says it under the lead (`rt_tip`).
+  **Search without diacritics:** Photon's answers are re-ranked — `osm_key` place first (city > town > village > other
+  places), then the rest in Photon's order; on top the towns of `scripts/map_data.py` TOWNS (`cfg.towns`; a copy in
+  `evomap.src.js`, `evomap_route_test.py` checks it is the same) whose folded name (`sfold`: lowercase, no diacritics,
+  đ→d, Cyrillic→Latin) equals the typed text or starts with it (Photon's own entry for that town when it has one, else the
+  town from the list, Serbian Cyrillic on /ru/): „Nis“, „Cacak“, „Uzice“, „Zajecar“, „Ниш“ give Niš, Čačak, Užice,
+  Zaječar first, in the suggestions and on Enter. Privacy texts (`rt_privacy`, /mapa/ „Odakle su podaci“, the privacy
+  policy) name the pressed point. Tests: `map_route_test.py` and `evomap_route_test.py` (a `place` feature mocked under
+  one pixel, the long press through CDP touch events, right click, reverse lookup and its failure, drag / two fingers /
+  short touch do not open it, a long press on a charger opens the card, the diacritic-free search on SR/EN/RU).
 
 ### 3.19 News photos (only in a run with the owner's browser)
 
@@ -1298,7 +1320,9 @@ the footer ("Pomoć"), the text under /mapa/, /aplikacija/ and /ispravka/. Rules
   auto“ with RSD/km (the car is kept **in memory only** — evolako.rs's privacy policy names no browser storage but the
   language and the referral code), „Kako se puni ovde“, hours with „sada radi“, own-cable and parking badges, closed
   stations faded and left out of „Najbliži punjač“, a Tesla unlocks the Superchargers. Since 20.10.2026 no number clusters, like /mapa/
-  (3.11): every charger at every zoom, a tap on several dots zooms in. It reads `files.map.auta` and
+  (3.11): every charger at every zoom, a tap on several dots zooms in. Since 27.10.2026 the destination of „Punjači na putu“ can be picked
+  on the map (a tapped place name, a long press, a right click) and the place search ignores diacritics, as on /mapa/
+  (3.18); its TOWNS list is a copy of `scripts/map_data.py` TOWNS — change both together. It reads `files.map.auta` and
   `files.data` (fuel price) from the feed; `/assets/app/*` and `/assets/embed/*` carry `Access-Control-Allow-Origin: *`.
   Order of a change: source → build.py → deploy blokvolt.rs (the new file next to the old ones) → read the live
   head/footer (`get_page_freeform_code`) and replace only the `<style>` block and the script tag → check the site's

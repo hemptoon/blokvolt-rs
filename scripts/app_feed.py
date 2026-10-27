@@ -47,7 +47,13 @@ FEED = '/assets/app/v1'
 MAP_FILES = ('punjaci', 'mreze', 'cene', 'dopune', 'region', 'tx', 'auta')
 PAGES = ['/javno-punjenje/', '/javno-punjenje/aplikacije-i-kartice/', '/javno-punjenje/besplatni-punjaci/',
          '/javno-punjenje/region/', '/cena-punjaca-za-elektricni-auto', '/metodologija/', '/o-sajtu/',
-         '/pravila-objavljivanja/', '/politika-privatnosti']
+         '/pravila-objavljivanja/', '/politika-privatnosti',
+         # since 26.10.2026 (app 2.0): the pages around the service map and the electric cars
+         '/javno-punjenje/smestaj-sa-punjacem/', '/podaci/pomoc-na-putu/', '/podaci/provera-baterije-polovnog-elektricnog-auta/',
+         '/podaci/servisi-za-elektricne-automobile/', '/podaci/cene-elektricnih-automobila/', '/elektricni-automobili/polovni/',
+         '/elektricni-automobili/']
+# switches the apps read on every start (manifest 'flags'); turning one off changes the apps without a release
+FLAGS = {'brandLogos': True, 'accounts': True, 'addCharger': True, 'route': True}
 NEWS_MAX = 40
 INLINE_SKIP = {'svg', 'script', 'style', 'button', 'noscript', 'template'}
 MD_ESC = re.compile(r'([\\`*_\[\]])')
@@ -630,6 +636,102 @@ def firms(dist, lang):
     return {'items': out, 'types': tipovi}
 
 
+def _eur(t):
+    """'17.990 €' → 17990; anything else → None"""
+    m = re.search(r'(\d{1,3}(?:[.\s]\d{3})+|\d+)\s*€', t or '')
+    return int(re.sub(r'\D', '', m.group(1))) if m else None
+
+
+def cars(dist, lang):
+    """The electric cars of /elektricni-automobili/ (RUNBOOK 3.32), read from the finished page of the language so every
+    text is already translated: one item per brand card (logo, importer, showrooms, the model cards with photo, price
+    before and after the subsidy, source and date, the four facts, check date) plus the brand page as a document. The
+    photos' credits come from content/data/ev-foto.json (Wikimedia Commons; show author and licence with the photo)."""
+    soup, url = parse('/elektricni-automobili/', lang, dist)
+    if soup is None:
+        return None
+    foto = json.loads((ROOT / 'content' / 'data' / 'ev-foto.json').read_text(encoding='utf-8'))
+    by_slug = {v['slug']: v for v in foto['items'].values()}
+    out = []
+    for d in soup.select('details.amb'):
+        slug = d.get('data-marka')
+        sm = d.find('summary')
+        lg = sm.select_one('.am-logo img')
+        sub = sm.select_one('.meta .sub')
+        imp = sub.find('span') if sub is not None else None
+        b = {'id': slug, 'name': _text(sm.find('h3')),
+             'logo': _abs(lg.get('src'), url) if lg is not None else None,
+             'logoDark': lg is not None and 'dark' in (lg.find_parent('span').get('class') or []),
+             'importer': _text(imp) if imp is not None and 'amb-c' not in (imp.get('class') or []) else '',
+             'cities': [c.strip() for c in _text(d.select_one('.amb-ct b')).split(',') if c.strip()] if d.select_one('.amb-ct.yes') else [],
+             'priceFrom': _text(sm.select_one('.amb-p')).replace(' ', ' ') or None, 'count': _text(sm.select('.val small')[-1]) if sm.select('.val small') else '',
+             'filters': {'price': (d.get('data-cena') or '').split(), 'city': (d.get('data-grad') or '').split()},
+             'models': [], 'facts': []}
+        b['priceFromEUR'] = _eur(b['priceFrom'])
+        for li in d.select('li.amc'):
+            img = li.select_one('.amc-ph img.evm-i')
+            m = {'name': _text(li.select_one('.amc-n')), 'version': _text(li.select_one('.amc-v')),
+                 'lowest': 'lead' in (li.get('class') or [])}
+            rows = li.select('.amc-row')
+            if rows and li.select_one('.amc-a') is not None:
+                m['price'] = _text(li.select_one('.amc-p'))
+                m['priceEUR'] = _eur(m['price'])
+                m['after'] = _text(li.select_one('.amc-a'))
+                m['afterEUR'] = _eur(m['after'])
+                m['labels'] = [_text(r.select_one('.amc-l')) for r in rows]
+            else:
+                m['price'], m['priceEUR'] = _text(li.select_one('.amc-p')), None
+                m['labels'] = [_text(r.select_one('.amc-l')) for r in rows]
+                if li.select_one('.amc-note') is not None:
+                    m['note'] = _text(li.select_one('.amc-note'))
+            src = li.select_one('.amc-src')
+            a = src.find('a') if src is not None else None
+            m['source'] = {'label': _text(a) if a is not None else _text(src), 'url': a.get('href') if a is not None else '',
+                           'date': _text(src.find('small')) if src is not None and src.find('small') else ''}
+            if img is not None:
+                fs = re.sub(r'\.png.*$', '', img.get('src').rsplit('/', 1)[-1])
+                f = by_slug.get(fs, {})
+                m['photo'] = {'url': _abs(img.get('src'), url), 'w': int(img.get('width') or 0), 'h': int(img.get('height') or 0),
+                              'author': f.get('au', ''), 'licence': f.get('lic', ''), 'licenceUrl': f.get('licurl', ''),
+                              'page': f.get('page', ''), 'mirrored': bool(f.get('mirrored'))}
+            b['models'].append(m)
+        for t in d.select('.ftiles .ftile'):
+            tx = t.select_one('.tx')
+            sp, val = tx.find('span'), tx.find('b')
+            a = val.find('a') if val is not None else None
+            b['facts'].append({'label': _text(sp), 'value': _text(val), 'yes': 'yes' in (t.get('class') or []),
+                               'url': _abs(a.get('href'), url) if a is not None else ''})
+        b['verified'] = _text(d.select_one('.fm-meta'))
+        site = d.select_one('.fm-act a.btn:not(.dark)')
+        b['site'] = site.get('href') if site is not None else ''
+        b['domain'] = _text(site) if site is not None else ''
+        page = d.select_one('.fm-act a.btn.dark')
+        b['url'] = _abs(page.get('href'), url) if page is not None else ''
+        if page is not None:
+            doc = page_doc(re.sub(r'^/(en|ru)(?=/)', '', page.get('href')), lang, dist, 'brand')
+            if doc is not None:
+                b['doc'] = doc
+        out.append(b)
+    hub = page_doc('/elektricni-automobili/', lang, dist, 'page')
+    return {'items': out, 'title': hub['title'] if hub else '', 'lead': (hub or {}).get('lead', ''),
+            'photos': {'source': foto.get('source', ''), 'note': foto.get('note', ''), 'disclaimer': foto.get('disclaimer', '')}}
+
+
+def services_texts(dist, lang):
+    """The interface texts of the service map (/servisi/, RUNBOOK 3.31) in the language — the page's own string table
+    (bv-i18n, with 'tx:<Serbian>' for the texts of the data) and its settings (srv-cfg). The places themselves are one
+    language-neutral file, /assets/servisi/servisi.json (files.services)."""
+    soup, url = parse('/servisi/', lang, dist)
+    if soup is None:
+        return None
+    t = soup.find('script', id='bv-i18n')
+    c = soup.find('script', id='srv-cfg')
+    doc = page_doc('/servisi/', lang, dist, 'page')
+    return {'texts': json.loads(t.string) if t is not None and t.string else {},
+            'config': json.loads(c.string) if c is not None and c.string else {},
+            'title': (doc or {}).get('title', ''), 'lead': (doc or {}).get('lead', ''), 'url': url}
+
+
 def pages(dist, lang):
     out = []
     for p in PAGES:
@@ -714,6 +816,12 @@ def build(dist, strict=False):
         hc = help_center(dist, lang)
         if hc is not None:
             colls['help'] = hc
+        cr = cars(dist, lang)
+        if cr is not None:
+            colls['cars'] = cr
+        st = services_texts(dist, lang)
+        if st is not None:
+            colls['services'] = st
         for kind, obj in colls.items():
             for d in obj.get('items', []):
                 if '_unknown' in d:
@@ -730,13 +838,24 @@ def build(dist, strict=False):
         if f.exists():
             mp[m] = f'/assets/map/{m}.json?v=' + hashlib.sha256(f.read_bytes()).hexdigest()[:10]
     files['map'] = mp
+    sv = dist / 'assets' / 'servisi' / 'servisi.json'
+    if sv.exists():
+        files['servicePlaces'] = '/assets/servisi/servisi.json?v=' + hashlib.sha256(sv.read_bytes()).hexdigest()[:10]
     manifest = {'schema': SCHEMA, 'generated': now, 'site': SITE, 'langs': list(LANGS), 'minApp': {'ios': '1.0', 'android': '1.0'},
-                'files': files, 'counts': counts,
+                'files': files, 'counts': counts, 'flags': FLAGS,
                 'api': {'stations': '/api/stanice', 'station': '/api/stanica/{id}', 'checkin': '/api/stanica/{id}/prijava',
                         'photo': '/api/stanica/{id}/foto', 'photoFile': '/api/foto/{photo}.jpg', 'report': '/api/prijavi',
-                        'request': '/api/zahtev', 'helpful': '/api/zahtev', 'kurs': '/api/kurs'},
+                        'request': '/api/zahtev', 'helpful': '/api/zahtev', 'kurs': '/api/kurs',
+                        # since 26.10.2026 (app 2.0): drivers add chargers; "Moj BlokVolt" with a Bearer token ({app: true})
+                        'addCharger': '/api/novi-punjac', 'addedChargers': '/api/novi-punjaci',
+                        'account': {'status': '/api/nalog/status', 'code': '/api/nalog/kod', 'confirm': '/api/nalog/potvrdi',
+                                    'link': '/api/nalog/link', 'apple': '/api/nalog/apple', 'google': '/api/nalog/google',
+                                    'me': '/api/nalog/ja', 'signOut': '/api/nalog/odjava', 'settings': '/api/nalog/podesavanja',
+                                    'favorites': '/api/nalog/omiljeni', 'contributions': '/api/nalog/doprinosi',
+                                    'export': '/api/nalog/izvoz', 'delete': '/api/nalog/obrisi', 'newsletter': '/api/nalog/pregled'}},
                 'links': {'privacy': SITE + '/politika-privatnosti', 'rules': SITE + '/pravila-objavljivanja/',
-                          'correction': SITE + '/ispravka/', 'help': SITE + '/pomoc/', 'contact': 'mailto:hello@blokvolt.com'}}
+                          'correction': SITE + '/ispravka/', 'help': SITE + '/pomoc/', 'contact': 'mailto:hello@blokvolt.com',
+                          'services': SITE + '/servisi/', 'cars': SITE + '/elektricni-automobili/', 'account': SITE + '/nalog/'}}
     _write(dist / 'app' / 'v1' / 'manifest.json', manifest)
     msg = (f'app feed: {counts.get("guides", 0)} guides, {counts.get("news", 0)} news, {counts.get("networks", 0)} networks, '
            f'{counts.get("firms", 0)} firms, {counts.get("pages", 0)} pages, {counts.get("help", 0)} help articles '
