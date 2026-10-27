@@ -2273,6 +2273,22 @@ async function api(request, env, ctx) {
 const TRAP = { day: '', n: 0 };
 let HEALTH = { at: 0, n: 0 };
 
+// POST /api/s/p — our visit counter (static/assets/bv.js, RUNBOOK 3.16). The request goes on, as it came (method, body,
+// Origin, CF-Connecting-IP, User-Agent), to the founders' bot (Worker evolako-bot, path /s/p) through the service binding
+// BOT (Pages → blokvolt → Settings → Bindings → Service binding "BOT" → Worker "evolako-bot", production). So no worker
+// address is in the site's code, and the bot's own checks (Origin against the host in the body, limits, salted hashes)
+// work exactly as before. Without the binding, or if the bot fails, the hit is dropped quietly: the page never waits.
+async function visitHit(request, env) {
+  const drop = () => new Response(null, { status: 204, headers: { 'cache-control': 'no-store' } });
+  if (!env.BOT || typeof env.BOT.fetch !== 'function') return drop();
+  try {
+    const res = await env.BOT.fetch(new Request('https://evolako-bot.internal/s/p', request));
+    return res.status >= 500 ? drop() : res;       // a failing bot is not the site's error
+  } catch (e) {
+    return drop();
+  }
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -2281,6 +2297,7 @@ export default {
     if (url.hostname === 'blokvolt.pages.dev') {
       return Response.redirect('https://www.blokvolt.rs' + url.pathname + url.search, 301);
     }
+    if (url.pathname === '/api/s/p') return visitHit(request, env);   // one per page view: straight to the bot, no extras
     if (url.pathname.startsWith('/api/')) {
       let res;
       try {

@@ -58,6 +58,8 @@ jobs:
           node --no-warnings scripts/qa/pretraga_worker_test.mjs
       - name: Security basics of the worker (pages.dev alias, IPv6 limits, photo ceilings, admin key; RUNBOOK 3.33)
         run: node --no-warnings scripts/qa/zastita_worker_test.mjs
+      - name: Visit counter (/api/s/p → the bot through the BOT binding; RUNBOOK 3.16)
+        run: node --no-warnings scripts/qa/schet_worker_test.mjs
   live:
     if: github.event_name != 'push'
     runs-on: ubuntu-latest

@@ -2734,9 +2734,9 @@ CSP = '; '.join([
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https://tiles.openfreemap.org",
     "font-src 'self'",
-    "connect-src 'self' https://tiles.openfreemap.org https://cloudflareinsights.com https://evolako-bot.mr-smekhov.workers.dev"
+    "connect-src 'self' https://tiles.openfreemap.org https://cloudflareinsights.com"   # our visit counter: /api/s/p ('self')
     + ' https://photon.komoot.io https://routing.openstreetmap.de'   # "Punjači na putu": places and the route (map.js)
-    + (' ' + ' '.join(_ph) if _ph else ''),   # evolako-bot: our own visit counter (bv.js, RUNBOOK 3.16)
+    + (' ' + ' '.join(_ph) if _ph else ''),
     "worker-src 'self' blob:",
     "child-src 'self' blob:",
     'frame-src https://www.youtube-nocookie.com',

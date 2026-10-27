@@ -933,8 +933,11 @@ No messages, comments or forms to anyone — the outreach rule of 3.7 applies to
   Numbers: Cloudflare dashboard → Analytics → Web analytics. Page views, referrers, countries, devices, Core Web Vitals.
 - **Our visit counter** (07.10.2026, the owner's „деплой счетчика“) — the last block of `static/assets/bv.js` sends one
   request per page view (`fetch` with `keepalive`, `no-cors`, text/plain — no preflight; not `sendBeacon`: Brave's Shields
-  drop cross-site beacons) to `https://evolako-bot.mr-smekhov.workers.dev/s/p`
-  — the founders' Telegram bot (Cloudflare Worker `evolako-bot`, source and docs in the project:
+  drop cross-site beacons) to `/api/s/p` on the site itself (since 27.10.2026; before that straight to the bot's
+  workers.dev address). The site's worker (`worker/_worker.js`, `visitHit`) hands the request on unchanged through the
+  service binding `BOT` (Pages → blokvolt → Settings → Bindings → Service binding `BOT` → Worker `evolako-bot`,
+  production; without the binding the hit is dropped with 204 and nothing else changes; test:
+  `scripts/qa/schet_worker_test.mjs`) to the founders' Telegram bot (Cloudflare Worker `evolako-bot`, source and docs in the project:
   `claude/Evolako_CRM_Source_2026-09-29.md` → `src/counter.js`, `claude/Evolako_Bot_Telegram_2026-09-28.md`). Sent: host,
   path (no query), referrer host, utm_source/medium/campaign, page language, team mark. Not sent on other hosts
   (pages.dev previews) or from automated browsers (`navigator.webdriver` — Playwright QA). The worker keeps no IP:
@@ -942,8 +945,10 @@ No messages, comments or forms to anyone — the outreach rule of 3.7 applies to
   `?tim=1` on any page marks the browser as the team's own (`localStorage['evo_tim']`; `?tim=0` removes it); the
   morning report in Telegram (topic Stats) then leaves out that browser and everything from the same IP that day.
   Do Not Track / GPC are not checked: no cookies, no profile, nothing that follows a reader — like Cloudflare Web
-  Analytics. CSP: the worker host is in `connect-src` (`build.py`, 3.17). evolako.rs sends to the same address from
-  its Webflow site code. The privacy policy describes it (#merenje-poseta, second paragraph).
+  Analytics. CSP: same origin, so `connect-src 'self'` covers it (`build.py`, 3.17) — no worker address anywhere in the
+  site's code. evolako.rs sends from its Webflow site code to `https://app.evolako.rs/s/p` (a Pages Function of the app
+  `evolako-app` with the same binding, repository `hemptoon/evolako-web`, since 27.10.2026). The privacy policy
+  describes it (#merenje-poseta, second paragraph).
 - **PostHog** (EU cloud) — prepared in the code, off while `analytics.posthog_key` in `content/data/site.json` is
   empty. `analytics.consent` (true since 25.09.2026, the owner's choice) picks the mode:
   - `consent: true` — every reader is measured **without cookies** (`cookieless_mode: 'always'`, nothing written to

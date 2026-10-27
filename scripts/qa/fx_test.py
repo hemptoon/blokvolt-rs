@@ -421,7 +421,7 @@ async def main():
             hits.append(json.loads(route.request.post_data or '{}'))
             await route.fulfill(status=204, body='')
         await ctx.route('https://www.blokvolt.rs/**', site)
-        await ctx.route('https://evolako-bot.mr-smekhov.workers.dev/**', bot)
+        await ctx.route('https://www.blokvolt.rs/api/s/p', bot)   # registered last, so it wins over site()
         pg = await ctx.new_page()
         pg.on('console', lambda m: csp.append(m.text[:200]) if 'Content Security Policy' in m.text else None)
         await pg.goto('https://www.blokvolt.rs/javno-punjenje/', wait_until='load')

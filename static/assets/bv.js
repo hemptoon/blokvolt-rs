@@ -441,7 +441,7 @@
 (function () {
   try {
     var L = location, h = L.hostname;
-    if (!/^(www\.)?(blokvolt|evolako)\.rs$/.test(h) || navigator.webdriver) return;
+    if (!/^(www\.)?blokvolt\.rs$/.test(h) || navigator.webdriver) return;
     var s = L.search, K = 'evo_tim', t = 0;
     try {
       if (/[?&]tim=1(&|$)/.test(s)) localStorage.setItem(K, '1');
@@ -453,7 +453,7 @@
     var q = new URLSearchParams(s), g = function (k) { return (q.get(k) || '').slice(0, 60); };
     var b = JSON.stringify({ h: h, p: L.pathname, r: r, t: t, us: g('utm_source'), um: g('utm_medium'), uc: g('utm_campaign'),
       l: (document.documentElement.lang || '').slice(0, 2) });
-    var u = 'https://evolako-bot.mr-smekhov.workers.dev/s/p';
+    var u = '/api/s/p';   // the site's own worker hands it to the founders' bot (worker/_worker.js visitHit, 27.10.2026)
     // fetch, not sendBeacon: Brave's Shields drop cross-site beacons ("ping" requests) silently (checked 07.10.2026)
     if (window.fetch) fetch(u, { method: 'POST', body: b, keepalive: true, mode: 'no-cors', credentials: 'omit' }).catch(function () {});
     else if (navigator.sendBeacon) navigator.sendBeacon(u, b);
