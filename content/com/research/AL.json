@@ -1,9 +1,9 @@
 {
  "code": "AL",
  "name": "Albania",
- "checked": "28.09.2026",
+ "checked": "27.10.2026",
  "currency": "ALL",
- "summary": "Albania's electric-car fleet almost doubled in 2025: Eurostat counts 10,938 battery-electric passenger cars at the end of the year, 91% more than a year earlier, and 5,517 new registrations. New battery-electric cars are VAT-exempt according to the latest source, although sources conflict; an exemption of electric vehicles from the annual vehicle tax is no longer listed by the road transport agency DPSHTRR and could not be confirmed. Public charging is young and fragmented: VEGA lists 19 operating sites, PlugoAL five 280 kW sites, and the state supplier OSHEE announced a national network for 2026, with no station found operating on 28.09.2026. No network publishes a per-kWh price on its website; OSHEE estimated in November 2025 that charging stations sell electricity at 40–60 lek per kWh. At home, a kilowatt-hour costs 10.2 lek with VAT while the household stays within 700 kWh a month.",
+ "summary": "Albania's electric-car fleet almost doubled in 2025: Eurostat counts 10,938 battery-electric passenger cars at the end of the year, 91% more than a year earlier, and 5,517 new registrations. New battery-electric cars are VAT-exempt according to the latest source, although sources conflict; DPSHTRR's list of vehicles exempt from the annual vehicle tax does not mention electric vehicles, so that exemption could not be confirmed. Public charging is young and fragmented: VEGA lists 19 sites plus two opening soon, PlugoAL five 280 kW sites, and the state supplier OSHEE announced a national network for 2026, with no station found operating on 28.09.2026. No network publishes a per-kWh price on its website; OSHEE estimated in November 2025 that charging stations sell electricity at 40–60 lek per kWh. At home, a kilowatt-hour costs 10.2 lek with VAT while the household stays within 700 kWh a month.",
  "stats": [
   {
    "label": "Battery-electric passenger cars on the road",
@@ -57,8 +57,8 @@
    "name": "VEGA Charging",
    "url": "https://vegagroup.al/sq/vegacharging/",
    "operator": "Vega Group",
-   "app": "—",
-   "size": "19 operating locations on the operator's list (TEG and QTU with three chargers each) and two opening soon (Sarandë, Korçë); the operator also announces '50+' upcoming stations. Sites are fuel stations (Gega Oil, 7K Krasniqi, Lagjina Oil and others), hotels and malls in Durrës, Tirana/Vorë, Fier, Elbasan, Vlorë, Lukovë, Rrogozhinë, Lushnjë, Gjirokastër, Rubik and Shkodër. DC 60–180 kW with GB/T and CCS2 sockets, AC 22 kW.",
+   "app": "Vega Charging (iPhone app; seller VEGA GROUP SH.P.K, first released 18.03.2025; not mentioned on the operator's charging page)",
+   "size": "19 locations on the operator's list (TEG and QTU with three chargers each) plus two marked as opening soon (Sarandë, Korçë); the operator also announces '50+' upcoming stations. Sites are fuel stations (Gega Oil, 7K Krasniqi, Lagjina Oil and others), hotels and malls in Durrës, Tirana/Vorë, Fier, Elbasan, Vlorë, Lukovë, Rrogozhinë, Lushnjë, Gjirokastër, Rubik and Shkodër. DC 60–180 kW with GB/T and CCS2 sockets, AC 22 kW.",
    "prices": [
     {
      "what": "Per kWh",
@@ -177,7 +177,7 @@
    "programme": "Exemption from the annual vehicle tax (TVMP)",
    "amount": "full exemption, if it still applies",
    "who": "Electric vehicles",
-   "note": "DPSHTRR's page on vehicles exempt from the annual tax (published 23.03.2026, modified 01.07.2026) no longer lists electric vehicles or vehicles aged 0–3 years. It lists only vehicles of embassies and international organisations with diplomatic status, vehicles declared out of circulation, blocked, stolen or destroyed vehicles, and certain cars of persons with disabilities and veterans, and cites no legal act. Whether electric vehicles are still exempt was not confirmed.",
+   "note": "DPSHTRR's page on vehicles exempt from the annual tax (published 23.03.2026, modified 01.07.2026) does not list electric vehicles or vehicles aged 0–3 years. It lists only vehicles of embassies and international organisations with diplomatic status, vehicles declared out of circulation, blocked, stolen or destroyed vehicles, and certain cars of persons with disabilities and veterans, and cites no legal act. Whether electric vehicles are still exempt was not confirmed.",
    "source": "https://www.dpshtrr.al/mjete/taksa-dhe-detyrime/perjashtohen-nga-pagesa-e-takses-vjetore-te-mjeteve-te-perdorura",
    "source_title": "DPSHTRR – vehicles exempt from the annual tax",
    "source_date": "page modified 01.07.2026; checked 27.10.2026",
@@ -244,6 +244,6 @@
   "VEGA's DC chargers have both GB/T and CCS2 sockets, but no source says how many cars in Albania use GB/T.",
   "No fast charger on the A1 (Rruga e Kombit) itself was confirmed.",
   "OSHEE Charge: no operating station was found on 28.09.2026; a first-phase figure of 100–120 stations appears only in an opinion article (Shqiptarja, 16.11.2025).",
-  "Annual vehicle tax (TVMP): DPSHTRR's list of exempt vehicles (modified 01.07.2026) no longer mentions electric vehicles and cites no legal act; whether electric vehicles are still exempt was not confirmed."
+  "Annual vehicle tax (TVMP): DPSHTRR's list of exempt vehicles (modified 01.07.2026) does not mention electric vehicles and cites no legal act; whether electric vehicles are still exempt was not confirmed."
  ]
 }

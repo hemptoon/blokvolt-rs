@@ -1,7 +1,7 @@
 {
  "site": "https://blokvolt.com",
- "checked": "28.09.2026",
- "checked_iso": "2026-09-28",
+ "checked": "27.10.2026",
+ "checked_iso": "2026-10-27",
  "email": "hello@blokvolt.com",
  "countries": [
   {
@@ -90,8 +90,8 @@
    "nav_desc": "10,938 EVs, +91% in a year",
    "facts": [
     "10,938 battery-electric cars at the end of 2025 (Eurostat), +91% in a year",
-    "Public charging: VEGA 20+ sites, PlugoAL 5 × 280 kW; OSHEE plans a national network",
-    "New EVs VAT-free per the latest source (sources conflict); no annual vehicle tax",
+    "Public charging: VEGA 19 sites, PlugoAL 5 × 280 kW; OSHEE network not yet open",
+    "New EVs VAT-free per the latest source (sources conflict); annual-tax exemption unconfirmed",
     "Home electricity 10.2 lek/kWh with VAT up to 700 kWh a month"
    ]
   },

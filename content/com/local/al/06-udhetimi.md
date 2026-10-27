@@ -5,7 +5,7 @@ order: 6
 nav: Udhëtimi
 icon: road
 priority: 0.7
-title: Me makinë elektrike nëpër Shqipëri — karikuesit, kufiri, tragetet | BlokVolt
+title: Me makinë elektrike nëpër Shqipëri: karikuesit, tragetet | BlokVolt
 description: Karikuesit në rrugët Tiranë–Durrës–Fier–Vlorë, në jug dhe në veri sipas operatorëve, pagesa në Rrugën e Kombit, pikat kufitare dhe tragetet për në Itali.
 h1: Me makinë elektrike nëpër Shqipëri
 lead: Karikuesit në rrugët kryesore sipas listave të operatorëve, pagesa në Rrugën e Kombit, pikat kufitare dhe tragetet.

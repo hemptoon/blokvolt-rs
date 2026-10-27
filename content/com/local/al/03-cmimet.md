@@ -12,7 +12,7 @@ lead: Çfarë publikojnë rrjetet për çmimet dhe për pagesën, me burimin dhe
 card: Çfarë publikojnë VEGA, PlugoAL, iCharge dhe OSHEE, vlerësimi i tregut dhe si paguhet.
 related: map, home, road
 ---
-Asnjë rrjet në Shqipëri nuk publikon në faqen e vet çmim për kWh, për minutë ose për seancë. PlugoAL dhe iCharge.app e tregojnë çmimin në aplikacion para karikimit; VEGA CHARGING dhe DAB Energy nuk publikojnë çmime. E vetmja tarifë e publikuar është ajo e PlugoAL për qëndrimin pas karikimit. Tabela u kontrollua më 28.09.2026.
+Asnjë rrjet në Shqipëri nuk publikon në faqen e vet çmim për kWh, për minutë ose për seancë. PlugoAL dhe iCharge.app e tregojnë çmimin në aplikacion para karikimit; VEGA CHARGING dhe DAB Energy nuk publikojnë çmime. E vetmja tarifë e publikuar është ajo e PlugoAL për qëndrimin pas karikimit. Tabela u kontrollua më 27.10.2026.
 
 {{ w.price_table() }}
 

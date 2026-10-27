@@ -297,7 +297,7 @@ def build_english(local_hubs):
             title = f"EV charging in {c['name']}: networks and prices"
         title += ' | BlokVolt'
         desc = (f"{c['name']}: public charging networks and prices, home electricity, subsidies and apartment-building "
-                f"rules. Every figure has a source; checked {r['checked']}.")
+                f"rules, each with a source; checked {r['checked']}.")
         render('en_country.html', c['url'], dict(en_ctx, c=c, r=r, glance=list(zip(('EV fleet', 'Public charging', 'Subsidies', 'Home chargers'), c['facts'])),
                                                  sources=srcs, n_sources=len(srcs), title=title, description=desc, alts=alts,
                                                  section='countries', local=loc), priority='0.8')
@@ -323,8 +323,8 @@ def build_english(local_hubs):
            priority='0.8')
     render('en_home.html', '/', dict(en_ctx, n_companies=n_companies, n_sources=len(all_sources), n_rs_firms=n_rs, section='', alts=[],
                                      title='EV charging in Serbia and the Western Balkans | BlokVolt',
-                                     description=('Charging maps, network prices and subsidies for Serbia, Croatia, Bosnia and Herzegovina, Montenegro, '
-                                                  'North Macedonia, Albania, Kosovo and Slovenia, with local-language guides.')),
+                                     description=('Charging maps, prices and subsidies for Serbia, Croatia, Bosnia and Herzegovina, Montenegro, '
+                                                  'North Macedonia, Albania, Kosovo and Slovenia.')),
            priority='1.0')
     render('en_partners.html', '/partners/', dict(en_ctx, section='partners', alts=[], title='For companies and suppliers | BlokVolt',
                                                   description='How to get a company listed or corrected on BlokVolt — free and by the same rules for everyone — and where charging-hardware quotations go.'),

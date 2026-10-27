@@ -4,7 +4,7 @@ slug:
 template: hub
 order: 1
 priority: 0.9
-title: Karikimi i makinave elektrike në Shqipëri — harta, çmimet, tarifat | BlokVolt
+title: Karikimi i makinave elektrike në Shqipëri: harta dhe çmimet | BlokVolt
 description: Harta e karikuesve publikë në Shqipëri, çfarë dihet për çmimet, kostoja e karikimit në shtëpi me tarifat e ERE-së, lehtësitë tatimore dhe udhëtimi.
 kicker: Udhëzues · Shqipëria
 h1: Karikimi i makinave elektrike në Shqipëri
@@ -39,8 +39,8 @@ Për karikimin në shtëpi janë llogaritur edhe 10 % humbje. Në shtëpi kariki
 - **Flota.** Në vitin 2025 u regjistruan {{ num(C.new_reg.series[-1][1]) }} makina elektrike të reja dhe flota pothuajse u dyfishua (Eurostat). [Statistika]({{ PAGES.stats.path }})
 - **Çmimet.** Asnjë rrjet nuk publikon çmim për kWh. OSHEE vlerëson se në stacionet e karikimit energjia shitet {{ num(C.market.lo) }}–{{ money(C.market.hi, 0) }} për kWh. PlugoAL e tregon çmimin në aplikacion dhe faturon 500 lekë kur makina mbetet e lidhur më shumë se 20 minuta pas karikimit. [Çmimet]({{ PAGES.prices.path }})
 - **Në shtëpi.** Deri në 700 kWh në muaj kilovat-ora kushton {{ money(C.power.tariffs[0].base, 1) }} pa TVSH, {{ money(C.power.tariffs[0].allin, 1) }} me TVSH. Mbi 700 kWh, i gjithë konsumi i muajit faturohet me {{ money(C.power.tariffs[1].base, 1) }} pa TVSH. [Kalkulatori]({{ PAGES.home.path }})
-- **OSHEE Charge.** OSHEE njoftoi në nëntor 2025 një rrjet kombëtar karikimi që do të ngrihet brenda vitit 2026. Më 28.09.2026 nuk u gjet asnjë stacion në funksion.
-- **Taksat.** Sipas burimit më të ri, makinat elektrike të reja nuk paguajnë TVSH, por burimet nuk përputhen plotësisht. Përjashtimi i mjeteve elektrike nga taksa vjetore nuk konfirmohet: faqja e DPSHTRR nuk i përmend më. [Lehtësitë]({{ PAGES.subsidies.path }})
+- **OSHEE Charge.** OSHEE njoftoi në nëntor 2025 një rrjet kombëtar karikimi që do të ngrihet brenda vitit 2026. Më 27.10.2026 nuk u gjet asnjë stacion në funksion.
+- **Taksat.** Sipas burimit më të ri, makinat elektrike të reja nuk paguajnë TVSH, por burimet nuk përputhen plotësisht. Përjashtimi i mjeteve elektrike nga taksa vjetore nuk konfirmohet: faqja e DPSHTRR për përjashtimet nuk i përmend. [Lehtësitë]({{ PAGES.subsidies.path }})
 - **Rruga e Kombit.** Tarifa zyrtare për autoveturë është {{ C.toll.eur }} € me TVSH; për pagesën në lekë burimet japin {{ money(C.toll.lek, 0) }}. Në vetë rrugën A1 karikues i shpejtë nuk u konfirmua. [Udhëtimi]({{ PAGES.road.path }})
 
 <p class="note disc">Të gjitha rrjetet paraqiten me të njëjtat rregulla dhe askush nuk paguan për t’u shfaqur në këto faqe. Kush qëndron pas BlokVolt dhe nga vijnë të dhënat, shpjegohet te <a href="{{ PAGES.method.path }}">metodologjia</a>.</p>

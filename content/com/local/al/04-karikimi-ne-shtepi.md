@@ -5,7 +5,7 @@ order: 4
 nav: Në shtëpi
 icon: calc
 priority: 0.9
-title: Karikimi i makinës elektrike në shtëpi — kalkulatori, tarifat e ERE-së | BlokVolt
+title: Karikimi në shtëpi: kalkulatori dhe tarifat e ERE-së | BlokVolt
 description: Kalkulatori me tarifat e ERE-së për 2026 (8,5 dhe 9,5 lekë plus TVSH), pragu i 700 kWh, karikimi publik, krahasimi me karburantin dhe karikuesi në pallat.
 h1: Karikimi në shtëpi apo në karikues publik
 lead: Sa kushton në muaj energjia për makinën elektrike në shtëpi dhe në karikuesit publikë, krahasuar me benzinën ose naftën — me tarifat e ERE-së për vitin 2026.

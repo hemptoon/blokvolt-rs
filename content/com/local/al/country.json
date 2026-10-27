@@ -1,7 +1,7 @@
 {
   "cc": "AL",
-  "checked": "28.09.2026",
-  "checked_iso": "2026-09-28",
+  "checked": "27.10.2026",
+  "checked_iso": "2026-10-27",
   "slugs": {
     "prices": "cmimet/"
   },
@@ -126,7 +126,7 @@
     ],
     [
       "VEGA CHARGING, lista e operatorit",
-      "19 vendndodhje në funksion, 2 hapen së shpejti; 50+ stacione të ardhshme",
+      "19 vendndodhje në listë, 2 të tjera hapen së shpejti; 50+ stacione të ardhshme",
       "https://vegagroup.al/sq/vegacharging/"
     ],
     [
@@ -143,8 +143,8 @@
       "site": "https://vegagroup.al/sq/vegacharging/",
       "sites_text": "19 vendndodhje, 2 hapen së shpejti",
       "app": {
-        "name": "",
-        "ios": null,
+        "name": "Vega Charging",
+        "ios": "https://apps.apple.com/app/id6743153927",
         "android": null
       },
       "card": "Karta e karikimit VEGA. Kërkohet me formularin në vegagroup.al ose në numrin +355 69 700 1200; çmimi i kartës nuk është publikuar.",
@@ -157,7 +157,7 @@
       "src": "https://vegagroup.al/sq/vegacharging/",
       "src_label": "Vega Group — VEGA CHARGING",
       "conf": "high",
-      "note": "Karikues DC 60, 120 dhe 180 kW me dy priza, GB/T dhe CCS2, me kabllo 5 m; karikues AC 22 kW. Sipas listës së operatorit ka karikues në Durrës, Tiranë/Vorë, Fier, Elbasan, Vlorë, Lukovë, Rrogozhinë, Lushnjë, Gjirokastër, Rubik dhe Shkodër; në Sarandë dhe në Korçë hapen së shpejti.",
+      "note": "Karikues DC 60, 120 dhe 180 kW me dy priza, GB/T dhe CCS2, me kabllo 5 m; karikues AC 22 kW. Sipas listës së operatorit ka karikues në Durrës, Tiranë/Vorë, Fier, Elbasan, Vlorë, Lukovë, Rrogozhinë, Lushnjë, Gjirokastër, Rubik dhe Shkodër; në Sarandë dhe në Korçë hapen së shpejti. Aplikacioni Vega Charging për iPhone publikohet nga VEGA GROUP SH.P.K që nga 18.03.2025; faqja e karikimit e operatorit nuk e përmend.",
       "map_note": "VEGA CHARGING nuk publikon çmime."
     },
     {
@@ -603,7 +603,7 @@
   "ferries": [
     [
       "Durrës – Bari",
-      "Linjë në të dyja drejtimet më 28.09.2026, me anijet Rigel III (Pelagio Agency) dhe GNV Blu (Niki Mare), sipas Autoritetit Portual Durrës."
+      "Linjë në të dyja drejtimet më 26.10.2026, me anijet Rigel III (Pelagio Agency) dhe GNV Blu (Niki Mare), sipas Autoritetit Portual Durrës."
     ],
     [
       "Vlorë – Brindisi, Durrës – Ankona, Sarandë – Korfuz",
@@ -664,7 +664,7 @@
     {
       "label": "Autoriteti Portual Durrës — tragetet sot",
       "url": "https://durresport.al/tragetetsot.php",
-      "date": "28.09.2026"
+      "date": "26.10.2026"
     },
     {
       "label": "Shqiptarja — njoftimi i Drejtorisë së Përgjithshme Detare për linjat e trageteve",

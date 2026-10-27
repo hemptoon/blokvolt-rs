@@ -5,7 +5,7 @@ order: 8
 nav_ft: Metodologjia
 icon: shield
 priority: 0.4
-title: Metodologjia — burimet, kontrolli dhe rregullat | BlokVolt Shqipëria
+title: Metodologjia dhe burimet | BlokVolt Shqipëria
 description: Nga i merr BlokVolt të dhënat për karikuesit, çmimet dhe lehtësitë në Shqipëri, si i kontrollon, kush qëndron pas udhëzuesit dhe si njoftohet një gabim.
 h1: Metodologjia
 lead: Nga vijnë të dhënat, si kontrollohen, kush qëndron pas udhëzuesit dhe si njoftohet një gabim.

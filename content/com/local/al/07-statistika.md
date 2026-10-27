@@ -5,7 +5,7 @@ order: 7
 nav: Statistika
 icon: chart
 priority: 0.6
-title: Makinat elektrike në Shqipëri në shifra — numri dhe regjistrimet | BlokVolt
+title: Makinat elektrike në Shqipëri në shifra | BlokVolt
 description: Numri i makinave elektrike në Shqipëri nga 2021 (Eurostat), regjistrimet e reja, të dhënat e DPSHTRR për 2026 dhe karikuesit publikë. CSV për shkarkim.
 h1: Makinat elektrike në Shqipëri në shifra
 lead: Sa makina elektrike qarkullojnë në Shqipëri, sa regjistrohen çdo vit dhe sa karikues publikë ka — nga burime zyrtare, me datë.
