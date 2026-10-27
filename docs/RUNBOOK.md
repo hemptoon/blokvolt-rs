@@ -224,6 +224,11 @@ badly placed. This is a hard gate for every publication on blokvolt.rs and evola
   touching the edge. A generated picture with a broken detail (cable sinking into a wall, impossible port,
   extra fingers) is replaced, not published. If a picture fails, the article is not published until it is fixed
   or the picture is removed; scheduled tasks report it instead of publishing.
+- **How to look without a browser** (scheduled tasks never open Brave since 25.10.2026): after the build,
+  `python3 scripts/qa/cfserve.py dist 8787 &` and `python3 scripts/qa/vis_shots.py /<new page>/,/vesti/,/ /tmp/bv-shots`
+  (every page whose pictures changed, plus the list or hub that shows the new card), then open each
+  `/tmp/bv-shots/v_*_d.png` and `v_*_m.png` with Read and look at every picture as described above. In the
+  report: «Картинки: проверены (компьютер и телефон) — ок» or what was fixed.
 
 ### 3.5b Model images (only when a model is added or an image is wrong)
 
