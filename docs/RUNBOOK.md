@@ -207,43 +207,56 @@ In the same pass check the brands of `/elektricni-automobili/` (3.32): `content/
 `checked` / `next_check` (importer, showroom cities, new or announced brands, the classifieds counts on
 `/elektricni-automobili/polovni/` with their date).
 
-### 3.5b Model photos (only when a model is added or a photo is wrong)
+### 3.5b Model images (only when a model is added or an image is wrong)
 
+Since 27.10.2026 every model image is a studio illustration generated from a credited Wikimedia
+Commons photo (the cut-out photos of 23.09–26.10 looked uneven: reflections, rough edges, mixed light).
 `content/data/ev-foto.json` maps `"<brand>||<model>"` (the raw keys of `ev-modeli.json`) to
-`static/assets/auto/<slug>.png` plus author, licence, licence URL, Commons file page and `v` (first 8
-hex of the PNG's SHA-1 — `/assets/*` is served `immutable`, so the `src` carries `?v=` and must change
-whenever the file does). `scripts/gen_ev_modeli.py` renders the thumbnail in the first table column
-(a grey silhouette when a model has no photo — today JMEV Elight and EWind, Audi A2 e-tron, Mercedes-Benz GLA and C-Klasa električna: no suitable free photo on Commons yet) and the credit list under
-`## Fotografije modela`.
+`static/assets/auto/<slug>.jpg` (top-level `ext: "jpg"`; the old `.png` cut-outs are no longer
+referenced) plus author, licence, licence URL and Commons file page **of the source photo**, and `v`
+(first 8 hex of the file's SHA-1 — `/assets/*` is served `immutable`, so the `src` carries `?v=` and
+must change whenever the file does). `scripts/ev_rows.py` renders the image (cards: full frame,
+`object-fit: cover`; tables: 96 px), `scripts/gen_ev_modeli.py` the price page and the credit list.
+Models without an image today: JMEV Elight and EWind, Mercedes-Benz GLA and C-Klasa električna (no
+suitable free photo on Commons), Audi A2 e-tron (the only Commons photo shows the rear on a
+transporter — the generator would invent the front, so no image until a front photo exists).
 
-Rules, non-negotiable: only files from Wikimedia Commons under a free licence (CC0, CC BY, CC BY-SA),
-never a press photo, a dealer photo or an image found through a search engine. Copy author and licence
-exactly as the file page states them. The photo must show the model and generation in the table — the
-facelift if the price list is for the facelift, the EV and not the petrol or PHEV twin, not a concept,
-not an N Line when the table says N. A front three-quarter view with the whole car in frame; no rear
-views, no open doors, nothing standing in front of the car. Every car faces left (front at the left of the
-picture): a car photographed from the other side is mirrored (`mirrored: true` in ev-foto.json; the credit
-text says some photos are mirrored). Prefer the same photographers' series (Alexander Migl / Alexander-93,
-M 93) — same light, height and angle, so the cards look like one set.
+Rules, non-negotiable:
+- The source is a Commons file under a free licence (CC0, CC BY, CC BY-SA) — never a press, dealer or
+  search-engine image. Copy author and licence exactly; the illustration is a derivative and is shared
+  under the same licence, and the credit text on the pages says so.
+- The source must show the model and generation in the table (EV, not the petrol twin; not a concept)
+  with the front visible. The output must be the same real car: compare every result with its source
+  (shape, lights, grille, badges, wheels, colour) before publishing; a wrong car, wrong direction or
+  invented details means regenerate, not "close enough".
+- Same frame for all: front three-quarter, nose on the left, whole car at ~72 % of the width, same
+  light-grey studio background, no plate, no text, no people.
 
-How it was done (23.09.2026; 58 more on 26.10.2026, all 122 checked for direction), and how to add one:
-1. Choose on commons.wikimedia.org in the browser: the Commons API (`generator=search`,
-   `gsrsearch=intitle:"<model>" filetype:bitmap`, `iiprop=url|size|extmetadata`) gives candidates;
-   render them as a grid of 320 px thumbnails with index numbers on a blank Commons page and pick by
-   eye from a screenshot. The container cannot reach wikimedia.org (proxy 403).
-2. Transfer: re-encode the chosen files to 1024 px JPEG in the browser, open
-   `github.com/hemptoon/blokvolt-rs/upload/<branch>` from the Commons tab through a clicked
-   `<a target="_blank" rel="opener">`, and `postMessage` the blobs to it; commit to a throwaway
-   branch (`hemptoon-patch-2` holds the current sources and `sources*.json`), then `git archive` it here.
-   Since 26.10.2026 the simpler way: show the chosen file alone in the Commons tab at the window size
-   (2000 px thumbnail URL) and take a `zoom` screenshot with `save_to_disk` — about 1400x840 px, plenty
-   for a 360x200 thumbnail. A stand, glass barrier or name board in front of the car is painted out in
-   the source with `cv2.inpaint` (TELEA) before step 3.
-3. Cut out and compose: `python3 scripts/foto_compose.py <slug>` (IS-Net). Add a `KEEP` box, `CUT`
-   region, `RED` colour cut or a larger opening `KERNEL` for that slug when something else sticks to
-   the car, and look at the result at display size before publishing.
-4. Quantize to 256 colours with dithering and write to `static/assets/auto/<slug>.png` (~16 KB),
-   recompute `v`, update the entry in `ev-foto.json`, run `gen_ev_modeli.py`.
+How it is done (27.10.2026, 122 models, 2.75 credits each):
+1. Import the source into Higgsfield with `media_import_url` using the Commons 1920 px thumbnail
+   (`/wikipedia/commons/thumb/X/XY/<File>/1920px-<File>`; the original URL often answers 429; when the
+   original is narrower than 1920 px use the original). Uploading from the container is blocked.
+2. `generate_image_batch` (up to 12 per call), model `gpt_image_2_5`, `quality: high`,
+   `resolution: 2k`, `aspect_ratio: 16:9`, the source as `image_references`, this prompt with the model
+   name filled in (add "without the display stand, tablet or name board" when the source has one):
+   > Recreate the exact car from the reference photo (<Model>): same make and model, identical body
+   > shape, lights, grille, badges, wheel design and paint colour; if the reference shows the car from
+   > the rear or side, keep the real front design of this exact model. Clean professional studio
+   > catalogue photo. Front three-quarter view with the car's nose on the LEFT side of the image and its
+   > rear on the right, camera at headlight height, the whole car visible with generous empty space
+   > around it: the car takes about 72% of the frame width and is centred. Seamless soft light-grey
+   > studio background (#EEEEEA) with a subtle floor and a soft contact shadow, diffuse even studio
+   > lighting, windows with neutral dark tinted glass and only soft studio reflections, no licence
+   > plate (plain empty plate holder), no text, no people, no other objects. Photorealistic, sharp,
+   > true-to-life colours.
+3. Review: results live on the Higgsfield CDN (cloudfront), which neither the container nor the Mac
+   can download and blokvolt.rs blocks by CSP. Open one result URL in a Brave tab, then build a grid in
+   that tab with each result and its Commons source inset; check every car against its source.
+4. Capture: in the same tab place four results 2x2 and take a `zoom` screenshot of that area with
+   `save_to_disk` (no `scale`, or the saved file is small; move the mouse out of the area first) —
+   1456x820 px, each quadrant 728x410. Crop each quadrant 2 px inside, resize to 720x400 and save as
+   JPEG quality 86 (~40 KB) to `static/assets/auto/<slug>.jpg`; recompute `v` and `bytes` in
+   `ev-foto.json`, run `gen_ev_modeli.py`, build.
 
 ### 3.6 Statistics (quarterly, after SAUVD/ABS figures appear)
 

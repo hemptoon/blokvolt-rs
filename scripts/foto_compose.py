@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Model thumbnails for /podaci/cene-elektricnih-automobila/.
+"""NOT USED SINCE 27.10.2026: model images are now studio illustrations generated from the Commons
+photos (RUNBOOK 3.5b). Kept for reference.
+
+Model thumbnails for /podaci/cene-elektricnih-automobila/.
 
 Cuts each car out of a Commons photo with IS-Net (rembg 'isnet-general-use'; BiRefNet does not fit
 in this container's memory), keeps only the car, and places every one on the same 360x200 canvas:

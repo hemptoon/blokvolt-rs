@@ -14,6 +14,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ## 27. oktobar 2026
 
 - [Mapa punjača](/mapa/), „Punjači na putu“: odredište se sada bira i na mapi. Dodirnite ime grada ili sela, ili dugo pritisnite bilo koju tačku (na računaru desni klik), pa izaberite „Punjači na putu dovde“ ili „Polazak odavde“ — ruta i brzi punjači duž nje prikazuju se odmah. Pretraga mesta razume i imena bez kvačica: „Nis“, „Cacak“ ili „Uzice“ nude Niš, Čačak i Užice na prvom mestu. Kad se tačka izabere dugim pritiskom, njene koordinate idu servisu Photon radi imena mesta ([politika privatnosti](/politika-privatnosti)).
+- [Električni automobili](/elektricni-automobili/) i [cene električnih automobila](/podaci/cene-elektricnih-automobila/): umesto isečenih fotografija svi modeli sada imaju jednake studijske ilustracije — isti ugao, ista pozadina, cela slika u kartici. Ilustracije su napravljene alatom veštačke inteligencije prema fotografijama sa Wikimedia Commonsa i svaka je proverena prema izvornoj fotografiji; autori i licence izvornih fotografija su i dalje navedeni ispod spiska.
 
 ## 26. oktobar 2026
 

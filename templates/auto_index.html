@@ -76,7 +76,7 @@
 {% endfor %}</div>
 
 <div class="sec">
-{% if credits %}<details class="src"><summary>Fotografije modela: autori i licence ({{ credits|length|plural('fotografija', 'fotografije', 'fotografija') }})</summary><p>Fotografije su sa Wikimedia Commonsa, pod slobodnim licencama; pozadina je uklonjena, veličina ujednačena, a neke su preslikane kao u ogledalu da bi sva vozila bila okrenuta na istu stranu. Ilustrativne su: auto na slici može biti druga verzija modela.</p>
+{% if credits %}<details class="src"><summary>Slike modela: izvorne fotografije, autori i licence ({{ credits|length|plural('fotografija', 'fotografije', 'fotografija') }})</summary><p>Slike modela su studijske ilustracije, napravljene alatom veštačke inteligencije prema fotografijama sa Wikimedia Commonsa: za svaki model isti ugao i ista pozadina. Autori i licence izvornih fotografija su navedeni ispod, a ilustracije se dele pod istim licencama. Ilustrativne su: auto na slici može biti druga verzija modela, a sitni detalji mogu odstupati od pravog vozila.</p>
 <ul>{% for c in credits %}<li><b>{{ c.name }}</b> — {{ c.au }}, <a href="{{ c.licurl }}" rel="nofollow noopener">{{ c.lic }}</a>, <a href="{{ c.page }}" rel="nofollow noopener">Wikimedia Commons</a></li>
 {% endfor %}</ul></details>{% endif %}
 {{ src_block(sources) }}

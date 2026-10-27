@@ -21,12 +21,12 @@ KIND = {'pricelist_pdf': 'cenovnik', 'official_retailer': 'sajt prodavca'}
 
 
 def thumb(brand, model, name):
-    """Illustrative photo from Wikimedia Commons, if we have one for this model."""
+    """Studio illustration made from a Wikimedia Commons photo (credited), if we have one for this model."""
     f = FOTO_ITEMS.get(f'{brand}||{model}')
     if not f:
         # same footprint as a photo, so every name in the column starts at the same place
         return '<span class="evm-i evm-none" aria-hidden="true"></span>'
-    return (f'<img class="evm-i" src="/assets/auto/{f["slug"]}.png?v={f["v"]}" alt="" width="{FOTO["w"]}" '
+    return (f'<img class="evm-i" src="/assets/auto/{f["slug"]}.{FOTO.get("ext", "png")}?v={f["v"]}" alt="" width="{FOTO["w"]}" '
             f'height="{FOTO["h"]}" loading="lazy" decoding="async">')
 
 
