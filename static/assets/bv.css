@@ -1074,7 +1074,7 @@ details.hw-more small a{color:var(--mut)}
 .fig img{display:block;width:100%;height:auto;border-radius:var(--r2);background:var(--surface2)}
 .fig figcaption{font-size:12.5px;color:var(--mut);margin-top:6px}
 .art-fig{max-width:760px}
-.art-fig img{aspect-ratio:16/9;object-fit:cover;object-position:50% 35%}
+.art-fig img{aspect-ratio:auto;object-fit:contain} /* 27.10.2026: article and news photos are shown whole, never cropped (RUNBOOK 3.5c) */
 .yt{margin:6px 0 24px;max-width:760px}
 .yt-play,.yt-frame{display:block;position:relative;width:100%;aspect-ratio:16/9;border:0;border-radius:var(--r2);overflow:hidden;background:var(--night)}
 .yt-play{padding:0;cursor:pointer;color:#fff;text-align:left;font:inherit}
@@ -1090,13 +1090,13 @@ details.hw-more small a{color:var(--mut)}
 @media (max-width:640px){.yt-in{padding:12px 14px}.yt-t{font-size:15px}.yt-ic{width:54px;height:54px;top:-55%}.yt-ic svg{width:24px;height:24px}}
 .sec-fig{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
 .sec-fig .fig,.sec-fig .yt{margin:0;max-width:none}
-.sec-fig .fig img{aspect-ratio:16/9;object-fit:cover}
+.sec-fig .fig img{aspect-ratio:auto;object-fit:contain}
 @media (max-width:760px){.sec-fig{grid-template-columns:minmax(0,1fr)}}
 .tile.pic{padding:0;overflow:hidden}
 .tile.pic img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
 .tile.pic .tb{padding:14px 18px 18px;display:flex;flex-direction:column;gap:6px}
-.row .th{width:72px;height:54px;border-radius:10px;object-fit:cover;flex:none}
-@media (max-width:640px){.row .th{width:60px;height:45px}}
+.row .th{width:72px;height:auto;aspect-ratio:auto;border-radius:10px;object-fit:contain;flex:none} /* each thumbnail keeps its own ratio, nothing cut (27.10.2026) */
+@media (max-width:640px){.row .th{width:60px}}
 /* mobile pass (2026-09-24) */
 @media (max-width:900px){
  .map-legend{max-width:calc(100% - 64px);overflow-x:auto;white-space:nowrap;scrollbar-width:none;font-size:12px;gap:8px;padding:5px 9px}
@@ -1207,7 +1207,7 @@ details.hw-more small a{color:var(--mut)}
 .mk-stat b::after{content:'';display:block;width:26px;height:4px;margin:12px 0 0;border-radius:2px;background:var(--volt)}
 .mk-stat span{display:block;margin-top:10px;font-size:14px;line-height:1.35;color:var(--mut)}
 .mk-aud-img{margin:0;border-radius:24px;overflow:hidden;box-shadow:0 22px 60px -28px rgba(13,17,26,.5);background:var(--surface2)}
-.mk-aud-img img{display:block;width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:50% 60%}
+.mk-aud-img img{display:block;width:100%;height:auto;aspect-ratio:auto} /* shown whole (27.10.2026) */
 
 /* rubrics */
 .mk-rub{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}

@@ -34,7 +34,7 @@
 
 <div class="sec home-sec">
 <div class="sec-head"><h2>Vodiči</h2><a href="/vodici/">Svi vodiči →</a></div>
-<div class="rows">{% for g in HOME_GUIDES %}<a class="row" href="{{ g.href }}">{% if g.img %}<img class="th" src="/assets/img/{{ g.img }}-480.webp" alt="" width="72" height="54" loading="lazy" decoding="async">{% else %}<span class="lg mono" aria-hidden="true">{{ ic(g.icon) }}</span>{% endif %}<div><h3>{{ g.name }}</h3><div class="sub">{{ g.desc }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
+<div class="rows">{% for g in HOME_GUIDES %}<a class="row" href="{{ g.href }}">{% if g.img %}<img class="th" src="/assets/img/{{ g.img }}-480.webp" alt="" loading="lazy" decoding="async">{% else %}<span class="lg mono" aria-hidden="true">{{ ic(g.icon) }}</span>{% endif %}<div><h3>{{ g.name }}</h3><div class="sub">{{ g.desc }}</div></div><span class="chev">{{ ic('chev') }}</span></a>{% endfor %}</div>
 </div>
 
 {% if NEWS_HOME %}<div class="sec home-sec">

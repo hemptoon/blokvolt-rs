@@ -207,6 +207,24 @@ In the same pass check the brands of `/elektricni-automobili/` (3.32): `content/
 `checked` / `next_check` (importer, showroom cities, new or announced brands, the classifieds counts on
 `/elektricni-automobili/polovni/` with their date).
 
+### 3.5c Pictures are never cut badly — mandatory before every publication (owner's rule 27.10.2026)
+
+The owner, 27.10.2026: every picture must look right — no cut-off faces, heads or objects that make it look
+badly placed. This is a hard gate for every publication on blokvolt.rs and evolako.rs, manual or by a scheduled task.
+
+- **Article and news photos are shown whole.** `.art-fig` and `.sec-fig` keep the picture's own ratio
+  (`aspect-ratio:auto`, no `object-fit:cover`), and so do guide thumbnails (`.row .th`) and the media-kit
+  audience photo. Do not bring back a fixed-ratio box for them.
+- **Fixed-ratio boxes that remain** (news cards and `/vesti` list 16:9, picture tiles 3:2, model cards 360:200,
+  media-kit cards 16:10) get pictures of the same ratio: news photos 16:9 (1200×675), model images 16:9.
+  `scripts/check_images.py` runs in deploy and site checks after the build and fails if any picture loses more
+  than 10 % of its area in such a box.
+- **The machine check is not enough.** Before saying "published", open the page on desktop and at phone width
+  (≈390 px) and look at every picture: faces and heads whole, the car, charger or plug whole, nothing important
+  touching the edge. A generated picture with a broken detail (cable sinking into a wall, impossible port,
+  extra fingers) is replaced, not published. If a picture fails, the article is not published until it is fixed
+  or the picture is removed; scheduled tasks report it instead of publishing.
+
 ### 3.5b Model images (only when a model is added or an image is wrong)
 
 Since 27.10.2026 every model image is a studio illustration generated from a credited Wikimedia
