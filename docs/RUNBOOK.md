@@ -569,9 +569,13 @@ shrinks below 80 % or cannot be made), `build.py` (only for the link check into 
 copies `dist-com/` over its own tree (rsync without delete: files that exist only there stay, as with the old upload),
 commits that as `github-actions[bot]` and deploys the tree to GitHub Pages (Settings → Pages → Source: "GitHub Actions";
 custom domain blokvolt.com unchanged, DNS unchanged). No secrets: this repository is public and the workflow uses
-blokvolt-com's own `GITHUB_TOKEN`. So **a commit to `main` here is a release of blokvolt.com within the hour** — the same
-rule as for blokvolt.rs (commit only what may go live; a commit whose head message contains `[skip deploy]` skips only
-the blokvolt.rs deploy, not this one). The Serbia figures of blokvolt.com follow blokvolt.rs by themselves:
+blokvolt-com's own `GITHUB_TOKEN`. So **a commit to `main` here is a release of blokvolt.com** — the same rule as for
+blokvolt.rs (commit only what may go live; a commit whose head message contains `[skip deploy]` skips only the
+blokvolt.rs deploy, not this one). It goes live at the next scheduled run that GitHub actually starts: on this account
+scheduled runs start late and many slots are skipped (measured 12–26.10.2026 on this repository's own schedules: the
+02:17 UTC "Site checks" started 5–7 hours late every day, "Pregled tick" ran 2–4 times a day out of 12 slots), so count
+on **a few hours, at night up to about 7**. To publish at once: Actions of `hemptoon/blokvolt-com` → Build and deploy →
+Run workflow. The Serbia figures of blokvolt.com follow blokvolt.rs by themselves:
 `{map_n}`, `{map_ok}` (from `dist/assets/map/stat.json`, written by build.py), `{ps_ok}`/`{ps_n}` (state motorway
 chargers, `content/mapa/putevi-srbije.json`) and `{firms}` in the texts of `content/com/site.json` (`gen_com.fill`).
 Check a release: Actions of `hemptoon/blokvolt-com` (both jobs green), then the live pages with `?nc=`.
@@ -1263,8 +1267,8 @@ pages write them (`TOWN_FIX`: Tirana → Tiranë, Skutari → Shkodër, Prishtin
 other spellings stay searchable as aliases (`al`); a name that only says "charger" ("EV Charging Station",
 "Karikues elektrik", "punjač za električna vozila") counts as no name (`GENERIC_NAME`), so the card shows the
 network or the street; "Tesla Taxi" chargers in Kosovo are not Tesla's network. Every station is "from open data, not checked one by one".
-blokvolt.com takes the new data by itself within the hour after the branch moves (its workflow runs `scripts/com_maps.py`,
-3.10). The committed lists here (`content/com/local/<cc>/stanice.json`, used by the region layer of /mapa/, 3.25) are
+blokvolt.com takes the new data by itself at the next run of its workflow after the branch moves (usually within a few
+hours; its workflow runs `scripts/com_maps.py`, 3.10). The committed lists here (`content/com/local/<cc>/stanice.json`, used by the region layer of /mapa/, 3.25) are
 refreshed with the monthly update: `python3 scripts/com_maps.py`, build, commit. The station counts in the texts follow
 the data by themselves.
 
