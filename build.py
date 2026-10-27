@@ -1271,7 +1271,7 @@ VODICI_GROUPS = [
         A('/bezbednost-punjenja-atest.html', icon='shield'), A('/punjac-u-iznajmljenoj-garazi.html', icon='plug'),
         A('/elektricni-auto-bez-garaze.html', icon='car'), A('/wallbox-cena-srbija.html', icon='plug')]),
     ('Kupovina i vlasništvo', [
-        A('/elektricni-automobili/', 'Električni automobili u Srbiji', 'Sve marke sa zvaničnom prodajom: uvoznik, saloni, modeli i cena od.', icon='car'),
+        A('/elektricni-automobili/', 'Električni automobili u Srbiji', 'Sve marke sa zvaničnom prodajom: uvoznik, saloni, modeli i početna cena.', icon='car'),
         A('/elektricni-automobili/polovni/', icon='car'),
         A('/podaci/subvencije-2026/', icon='gift'), A('/podaci/cene-elektricnih-automobila/', 'Cene električnih automobila', icon='car'),
         A('/podaci/registracija-i-porezi/', icon='doc'), A('/podaci/uvoz-i-carina/', icon='doc'),

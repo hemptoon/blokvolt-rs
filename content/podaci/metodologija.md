@@ -60,7 +60,7 @@ Na [mapi servisa](/servisi/) su ovlašćeni servisi sa spiskova uvoznika, za mar
 
 ## Električni automobili {#automobili}
 
-Spisak marki je sastavljen sa zvaničnih srpskih sajtova marki i uvoznika, a za marku bez sajta za Srbiju — iz srpskih medija, uz datum provere. Marka je na spisku kada zvanični uvoznik ili distributer u Srbiji nudi bar jedan potpuno električni putnički automobil; najave su posebno označene. Za svaku marku važe ista polja — uvoznik, saloni, modeli i cena od — a marke su poređane abecedno.
+Spisak marki je sastavljen sa zvaničnih srpskih sajtova marki i uvoznika, a za marku bez sajta za Srbiju — iz srpskih medija, uz datum provere. Marka je na spisku kada zvanični uvoznik ili distributer u Srbiji nudi bar jedan potpuno električni putnički automobil; najave su posebno označene. Za svaku marku važe ista polja — uvoznik, saloni, modeli i početna cena — a marke su poređane abecedno.
 
 <details markdown="1">
 <summary>Detalji o markama i polovnim automobilima</summary>
