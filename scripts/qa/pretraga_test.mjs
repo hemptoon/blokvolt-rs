@@ -89,8 +89,13 @@ const CASES = [
   ['sr', 'kupujemprodajem', '/elektricni-automobili/polovni/', 2],
   ['sr', 'byd srbija', '/elektricni-automobili/byd/', 1],
   ['sr', 'tesla srbija', ['/elektricni-automobili/tesla/', '/javno-punjenje/tesla/'], 2],
-  ['sr', 'deepal', '/elektricni-automobili/changan/', 1],
+  ['sr', 'deepal', '/elektricni-automobili/changan/', 2],   // the Deepal S05 model page (29.10.2026) may come first
   ['sr', 'lynk', '/elektricni-automobili/lynk-co/', 1],
+  ['sr', 'dolphin surf', '/elektricni-automobili/byd/dolphin-surf/', 1],   // model pages since 29.10.2026 (RUNBOOK 3.32)
+  ['sr', 'renault 5 cena', '/elektricni-automobili/renault/renault-5-e-tech/', 1],
+  ['sr', 'bmw i5', '/elektricni-automobili/bmw/i5/', 1],
+  ['sr', 'byd', '/elektricni-automobili/byd/', 1],   // a brand name still finds the brand page first
+  ['en', 'kia ev3 price', '/en/elektricni-automobili/kia/ev3/', 1],
   ['en', 'used electric car', '/en/elektricni-automobili/polovni/', 2],
   ['en', 'electric cars serbia', '/en/elektricni-automobili/', 2],
   ['ru', 'купить электромобиль', ['/ru/elektricni-automobili/', '/ru/elektricni-automobili/polovni/'], 2],

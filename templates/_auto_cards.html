@@ -1,11 +1,12 @@
 {% from '_icons.html' import ic %}
 {# Electric cars (docs/RUNBOOK.md 3.32): the brand logo, one model card, and the brand card that opens in place on
-   /elektricni-automobili/. The same fields for every brand and every model; data from build.py (b.cards). #}
+   /elektricni-automobili/. The same fields for every brand and every model; data from build.py (b.cards). A priced model's
+   name links to its own page (m.page), stretched over the card by bv.css; the source link stays on top. #}
 {% macro blogo(b, cls='') %}{% if b.logo %}<span class="lg w am-logo{% if b.logo_dark %} dark{% endif %}{% if cls %} {{ cls }}{% endif %}" aria-hidden="true"><img src="{{ b.logo }}" alt="" loading="lazy" decoding="async"></span>{% else %}<span class="lg mono{% if cls %} {{ cls }}{% endif %}" aria-hidden="true" translate="no">{{ b.name|mono }}</span>{% endif %}{% endmacro %}
 
 {% macro model_card(m, b, tag='li') %}<{{ tag }} class="amc{% if m.lead %} lead{% endif %}{% if not m.price %} none{% endif %}">
 <span class="amc-ph{% if not m.img %} empty{% endif %}">{% if m.img %}{{ m.img|safe }}{% elif b.logo %}<img class="amc-lg" src="{{ b.logo }}" alt="" loading="lazy" decoding="async">{% else %}{{ ic('car') }}{% endif %}{% if m.lead %}<span class="amc-tag">Najniža cena</span>{% endif %}</span>
-<span class="amc-b"><b class="amc-n" translate="no">{{ m.name }}</b>{% if m.ver %}<span class="amc-v">{{ m.ver }}</span>{% endif %}
+<span class="amc-b"><b class="amc-n" translate="no">{% if m.page %}<a href="{{ m.page }}">{{ m.name }}</a>{% else %}{{ m.name }}{% endif %}</b>{% if m.ver %}<span class="amc-v">{{ m.ver }}</span>{% endif %}
 {% if m.price %}<span class="amc-row"><span class="amc-l">Cena od</span><span class="amc-p">{{ m.price|safe }}</span></span>
 <span class="amc-row sub"><span class="amc-l">Posle subvencije</span><span class="amc-a">{{ m.after|safe }}</span></span>
 {% else %}<span class="amc-row"><span class="amc-l">Cena</span><span class="amc-p muted">{{ m.price_txt }}</span></span>{% if m.note %}<span class="amc-note">{{ m.note }}</span>{% endif %}{% endif %}

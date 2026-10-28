@@ -190,6 +190,7 @@ env.filters['iso'] = iso
 # fx_num(v, …) one number. The text stays as it is; only a reader who chose EUR or USD sees the conversion.
 env.filters['fx'] = valuta.fx
 env.globals['fx_num'] = valuta.fx_num
+env.globals['fx_range'] = valuta.fx_range
 
 
 def read_json_dir(d):
@@ -1721,7 +1722,8 @@ for _b in AUTO['brands']:
     for r in b['priced']:
         b['cards'].append({'img': ev_rows.thumb(r['brand'], r['model'], r['name']) if r.get('foto') else '', 'name': r['name'],
                            'ver': r['ver'], 'price': r['price_cell'], 'after': r['after_cell'], 'src_url': r['url'],
-                           'src_kind': r['kind'], 'src_date': re.sub('^' + re.escape(r['kind']) + r',?\s+', '', r['date_txt']), 'base': r['base']})
+                           'src_kind': r['kind'], 'src_date': re.sub('^' + re.escape(r['kind']) + r',?\s+', '', r['date_txt']), 'base': r['base'],
+                           'page': r.get('page')})
     for m in b['unpriced']:
         _img = m['model_cell'].split('<span class="evm-t">')[0]
         b['cards'].append({'img': _img[_img.find('<img'):] if '<img' in _img else '', 'name': m['name'], 'ver': '',
@@ -1818,6 +1820,168 @@ for b in AUTO_BRANDS:
            title=b.get('title') or f"{b['name']} u Srbiji: električni modeli, cene i saloni | BlokVolt",
            description=clip(b.get('description') or b['lead'] + ' Izvori i datum provere.', 158))
     add_url(b['url'], '0.6', iso(b['verified']))
+
+# ---------------------------------------------------------------- electric cars: one page per priced model (29.10.2026)
+# /elektricni-automobili/<brand>/<model>/ for every model with an official price (docs/RUNBOOK.md 3.32): the price before and
+# after the subsidy with its source and date, the importer's battery and WLTP figures, charging from content/data/ev-specs.json
+# only where the entry is the priced version (scripts/ev_rows.py SPEC; a field in its "est" is not shown as a fact), the
+# time to charge at home and the cost of 100 km from the calculator's own tariffs (content/data/kalkulator.json), where to
+# buy, the four models with the nearest price, guides. A figure the data does not have is not shown; no ratings.
+EV_SPECS = json.load(open(ROOT / 'content' / 'data' / 'ev-specs.json', encoding='utf-8'))
+_SPEC = {(c['make'], c['model']): c for c in EV_SPECS['cars']}
+_CD = CALC['defaults']
+_LOSS = _CD['loss'] / 100
+_NT = all_in(next(z for z in _E['zones'] if z['id'] == _CD['zone'])['nt'])    # the night kWh at home with everything on the bill
+_DCP = next(p for p in CALC['public'] if p['id'] == 'dc')
+_DC_LO, _DC_HI = (float(x) for x in re.split(r'[–-]', CALC['public_range']))
+_BRAND_OF = {b['ev']: b for b in AUTO_BRANDS if b.get('ev')}
+_CARD_OF = {c['page']: (dict(c, lead=False), b) for b in AUTO_BRANDS for c in b['cards'] if c.get('page')}
+_PHASES = {1: 'jednofazno', 2: 'dvofazno', 3: 'trofazno'}
+# sources of ev-specs.json shown by name (the attribution Open EV Data asks for); the others by their domain
+_SPEC_SRC = {'OED': ('Open EV Data (MIT)', 'https://github.com/KilowattApp/open-ev-data'),
+             'CP20': ('© 2019 Chargeprice (MIT)', 'https://github.com/OpenChargingCloud/open-ev-data'),
+             'P3': ('P3 Charging Index', None), 'ADAC-L': ('ADAC', None), 'ADAC-W': ('ADAC', None)}
+_GUIDE_FIRME = {'href': '/firme/', 'name': 'Firme za kućni punjač', 'icon': 'plug', 'img': None,
+                'desc': 'Registar firmi koje ugrađuju punjač: cene, ugradnja i provera, iste kolone za svaku.'}
+MODEL_BEFORE = [_guide('/podaci/subvencije-2026/'), _guide('/punjenje-elektricnog-auta-u-zgradi.html'), _GUIDE_FIRME,
+                _guide('/wallbox-cena-srbija.html'), _guide('/javno-punjenje/cena-punjenja-po-modelu/'),
+                _guide('/javno-punjenje/ccs2-type2-chademo-gbt/')]
+
+
+def _num(x):
+    """64,8 · 11 (no ',0')"""
+    return sr_num(x, 0) if abs(x - round(x)) < 1e-9 else sr_num(x, 1)
+
+
+def _hours(h):
+    return f'≈ {sr_num(h, 1)} h' if round(h, 1) < 10 else f'≈ {sr_num(h, 0)} h'
+
+
+def _first_date(s):
+    m_ = re.search(r'(\d{4})-(\d{2})-(\d{2})', s or '')
+    return f'{m_.group(3)}.{m_.group(2)}.{m_.group(1)}' if m_ else ''
+
+
+def _model_spec(r):
+    """(spec entry or None, rows of the charging table, AC (kW, phases, A) or None, capacity for the times or None)."""
+    key = ev_rows.SPEC.get((r['brand'], r['model']))
+    sp = _SPEC[key] if key else None
+    hide = ev_rows.SPEC_HIDE.get((r['brand'], r['model']), set())
+    est = set(sp.get('est') or []) if sp else set()
+    rows_, ac = [], None
+    if sp and not {'ac_kw_max', 'ac_phases'} & est and 'ac' not in hide:
+        ac = (sp['ac_kw_max'], sp['ac_phases'], None if 'ac_amps' in est else sp.get('ac_amps'))
+        rows_.append({'label': 'Ugrađeni punjač (AC)', 'value': f'{_num(ac[0])} kW',
+                      'note': _PHASES[ac[1]] + (f', {ac[2]} A' + (' po fazi' if ac[1] > 1 else '') if ac[2] else '')})
+        o = sp.get('ac_opt')
+        if o and 'ac_opt' not in est:
+            rows_.append({'label': 'Fabrička opcija (AC)', 'value': f"{_num(o['kw'])} kW",
+                          'note': _PHASES[o['phases']] + f", {o['amps']} A" + (' po fazi' if o['phases'] > 1 else '')})
+    if sp and 'dc' not in hide:
+        if 'dc_peak_kw' not in est:
+            rows_.append({'label': 'Brzo punjenje (DC), najveća snaga', 'value': f"{_num(sp['dc_peak_kw'])} kW", 'note': ''})
+        if 'dc_avg_10_80_kw' not in est:
+            m_ = re.match(r'calc (\d+)-(\d+) (\d+)\s*min', sp.get('dc_basis') or '')
+            if m_:
+                rows_.append({'label': 'Brzo punjenje (DC), vreme', 'value': f'≈ {m_.group(3)} min', 'note': f'od {m_.group(1)} do {m_.group(2)} %'})
+            elif sp.get('dc_basis') == 'P3' and 'usable_kwh' not in est:
+                rows_.append({'label': 'Brzo punjenje (DC), vreme', 'value': f"≈ {round(0.7 * sp['usable_kwh'] / sp['dc_avg_10_80_kw'] * 60)} min",
+                              'note': 'od 10 do 80 %, merenje P3 Charging Index'})
+    if sp and 'usable_kwh' not in est:
+        cap = (sp['usable_kwh'], 'korisni kapacitet')
+    elif r.get('battery_kwh'):
+        cap = (r['battery_kwh'], 'kapacitet koji navodi uvoznik')
+    elif sp:
+        cap = (sp['usable_kwh'], 'procena korisnog kapaciteta')
+    else:
+        cap = None
+    return sp, rows_, ac, cap
+
+
+def _model_desc(name, base, after, bat, rng, home):
+    """The meta description (≤ 158), from parts that drop off the end when it gets too long; its English and Russian come
+    from the same pattern (3.9 todo)."""
+    head = f'{name} u Srbiji: od {base} pre subvencije, {after} posle.'
+    tail = []
+    if bat and rng:
+        tail.append(f' Baterija {bat} kWh, domet {rng} km (WLTP).')
+    elif bat:
+        tail.append(f' Baterija {bat} kWh.')
+    elif rng:
+        tail.append(f' Domet {rng} km (WLTP).')
+    if home:
+        tail.append(f' Kod kuće noću 100 km oko {home} RSD.')
+    tail.append(' Izvori i datumi.')
+    while tail and len(head + ''.join(tail)) > 158:
+        tail.pop()
+    return head + ''.join(tail)
+
+
+MODEL_PAGES = []
+for r in _EVR:
+    b = _BRAND_OF[r['brand']]
+    card, _ = _CARD_OF[r['page']]
+    sp, spec_rows, ac, cap = _model_spec(r)
+    times = []
+    if cap:
+        def _h(p, c=cap[0]):
+            return _hours(c * 0.9 * (1 + _LOSS) / p)
+        times = [{'label': 'Obična (šuko) utičnica, oko 2,3 kW', 'hours': _h(2.3), 'note': ''},
+                 {'label': 'Pojačana utičnica na namenskoj liniji, 3,7 kW', 'hours': _h(3.7), 'note': ''}]
+        if ac:
+            p11 = min(ac[0], ac[1] * 3.68)                    # 230 V × 16 A per phase
+            note = ('jednofazni ugrađeni punjač: auto prima najviše 3,7 kW' if ac[1] == 1
+                    else '' if p11 >= 10.95 else f'auto prima najviše {_num(round(p11, 1))} kW')
+            times.append({'label': 'Wallbox 11 kW (trofazni, 16 A)', 'hours': _h(p11), 'note': note})
+            if ac[1] == 1 and ac[0] >= 6 and (ac[2] or 0) >= 32:
+                p7 = min(ac[0], 7.36)                         # 230 V × 32 A
+                times.append({'label': 'Jednofazni wallbox 7,4 kW (32 A)', 'hours': _h(p7),
+                              'note': '' if p7 >= 7.3 else f'auto prima najviše {_num(p7)} kW'})
+    cost = None
+    if sp:
+        k = sp['cons_kwh_100km']
+        cost = {'cons': _num(k), 'nt': _NT, 'home': round(k * (1 + _LOSS) * _NT), 'dc': _DCP['rsd_kwh'], 'dc_lo': _DC_LO, 'dc_hi': _DC_HI,
+                'pub': round(k * _DCP['rsd_kwh'], -1), 'pub_lo': round(k * _DC_LO, -1), 'pub_hi': round(k * _DC_HI, -1), 'dc_note': _DCP['note']}
+    near = sorted((x for x in _EVR if x['page'] != r['page']), key=lambda x: (abs(x['base'] - r['base']), x['name']))[:4]
+    similar = [_CARD_OF[x['page']] for x in sorted(near, key=lambda x: (x['base'], x['name']))]
+    same = [{'name': x['name'], 'page': x['page']} for x in _EVR if x['brand'] == r['brand'] and x['page'] != r['page']]
+    _names = {r['name'], re.sub(r'\s+electric$', '', re.sub(r'\s*\(električni\)$', '', r['name']))}
+    srcs = [{'label': f"Cena: {r['kind']}", 'url': r['url'], 'date': card['src_date'], 'ext': True}]
+    if sp:
+        seen_u = set()
+        for k_ in sp.get('src') or []:
+            s_ = EV_SPECS['sources'].get(k_)
+            lab, u_ = _SPEC_SRC.get(k_, (None, None))
+            u_ = u_ or (s_ or {}).get('url')
+            if not u_ or u_ in seen_u:
+                continue
+            seen_u.add(u_)
+            srcs.append({'label': lab or _domain(u_), 'url': u_, 'date': _first_date((s_ or {}).get('date')), 'ext': True, 'nt': not lab})
+        _eps = _E['sources'][0]
+        srcs.append({'label': 'Cena struje: EPS, garantovano snabdevanje domaćinstava', 'url': _eps['url'], 'date': _eps['date'], 'ext': True})
+        srcs.append({'label': 'Javni brzi punjač: računi iz aplikacije Charge&GO', 'url': '/javno-punjenje/', 'date': CALC['public_checked']})
+    foto = r.get('foto')
+    _ext = ev_rows.FOTO.get('ext', 'png')
+    if foto:
+        with _PIL.open(ROOT / 'static' / 'assets' / 'auto' / f"{foto['slug']}.{_ext}") as _im:
+            _fw, _fh = _im.size
+    mp = {'name': r['name'], 'slug': r['slug'], 'page': r['page'], 'seen': r['seen'], 'base': r['base'], 'price': card['price'],
+         'after': card['after'], 'ver': card['ver'], 'src_url': r['url'], 'src_kind': card['src_kind'], 'src_date': card['src_date'],
+         'battery': _num(r['battery_kwh']) if r.get('battery_kwh') else '', 'range': r.get('range_wltp_km') or '',
+         'spec_rows': spec_rows, 'times': times, 'cap': _num(cap[0]) if cap else '', 'cap_note': cap[1] if cap else '', 'cost': cost,
+         'similar': similar, 'same': same, 'news': _auto_news(sorted(_names)), 'sources': srcs,
+         'img': {'src': f"/assets/auto/{foto['slug']}.{_ext}?v={foto['v']}", 'w': _fw, 'h': _fh} if foto else None,
+         'credit': dict(foto, name=r['name']) if foto else None,
+         # schema.org Offer only for a price the importer publishes as it is (not one we add the subsidy back to)
+         'offer': not r['computed_base'], 'seller': b.get('importer_short') or b.get('seller') or ''}
+    _parts = ['cena u Srbiji'] + (['domet'] if mp['range'] else []) + (['punjenje'] if spec_rows or times else [])
+    _title = f"{r['name']}: " + (', '.join(_parts[:-1]) + ' i ' + _parts[-1] if len(_parts) > 1 else _parts[0]) + ' | BlokVolt'
+    _after_eur = re.match(r'[\d.]+ €', card['after']).group(0)
+    _desc = _model_desc(r['name'], ev_rows.eur(r['base']), _after_eur, mp['battery'], mp['range'], cost['home'] if cost else None)
+    render('auto_model.html', r['page'], b=b, m=mp, sub=AUTO_SUB, before=MODEL_BEFORE, h1=r['name'], title=_title, description=_desc)
+    add_url(r['page'], '0.6', iso(r['seen']))
+    MODEL_PAGES.append({'name': r['name'], 'page': r['page'], 'base': r['base'], 'seen': r['seen'], 'spec': bool(sp)})
+print(f'electric car models: {len(MODEL_PAGES)} pages, {sum(1 for x in MODEL_PAGES if x["spec"])} with charging data')
 
 _cheap = _EVR[0]
 _reg = (SITE_META.get('home_stats') or [{}, {}])[1]
@@ -2440,6 +2604,10 @@ _LL = [('Mapa punjača', '/mapa/', f"{MAP['n']} javnih punjača u Srbiji: mreža
                                'kućni punjač, cene struje i automobila, subvencije i vodiči. Svaki podatak ima izvor i datum provere. '
                                'Jezici: srpski (latinica), engleski (/en/), ruski (/ru/).\n\n## Glavne stranice\n\n'
                                + ''.join(f'- [{t}]({SITE}{u}): {d}\n' for t, u, d in _LL)
+                               # the model pages (29.10.2026): the lowest price the importer publishes and the day it was checked
+                               + '\n## Električni modeli: cena kod uvoznika u Srbiji\n\n'
+                               + ''.join(f"- [{x['name']}]({SITE}{x['page']}): od {ev_rows.eur(x['base'])} pre subvencije, provereno {x['seen']}\n"
+                                         for x in sorted(MODEL_PAGES, key=lambda x: fold(x['name']).lower()))
                                + f'\n## Other languages\n\n- [English]({SITE}/en/): the same pages in English\n- [Русский]({SITE}/ru/): те же страницы на русском\n'
                                + '- [blokvolt.com](https://blokvolt.com/): the region (Croatia, Bosnia and Herzegovina, Montenegro, Albania, North Macedonia)\n',
                                encoding='utf-8')
@@ -2513,8 +2681,8 @@ def kind_of(url):
         return 'hub' if len(seg) == 2 and seg[1] in {h['slug'] for h in TYPE_HUBS} else 'firma'
     if a == 'javno-punjenje':
         return 'mreza' if seg[1] in _OPS else 'javno'
-    if a == 'elektricni-automobili':
-        return 'vodic' if seg[1] == 'polovni' else 'marka'
+    if a == 'elektricni-automobili':     # a model page (29.10.2026) weighs a little less than its brand: "deepal" → the brand
+        return 'vodic' if seg[1] == 'polovni' else 'model' if len(seg) > 2 else 'marka'
     return {'vesti': 'vest', 'gradovi': 'grad', 'podaci': 'podaci', 'alati': 'alat', 'pomoc': 'pomoc', 'pregled': 'pregled',
             'za-firme': 'strana'}.get(a, 'vodic' if len(seg) == 1 and not u.endswith('/') else 'strana')
 

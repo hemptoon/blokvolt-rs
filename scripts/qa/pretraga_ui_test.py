@@ -53,7 +53,7 @@ with sync_playwright() as p:
         page = ctx.new_page()
         errs = errors_of(page)
         fake_api(page)
-        cases = [('/pretraga/?q=evolnako', '/firme/evolako/'), ('/pretraga/?q=kraljevo', '/mapa/?q=Kraljevo'),
+        cases = [('/pretraga/?q=evolnako', '/firme/evolako/'), ('/pretraga/?q=kraljevo', '/gradovi/kraljevo/'),
                  ('/pretraga/?q=%D0%9D%D0%BE%D0%B2%D0%B8+%D0%A1%D0%B0%D0%B4', '/gradovi/novi-sad/'),
                  ('/ru/pretraga/?q=%D1%8D%D0%B2%D0%BE%D0%BB%D0%B0%D0%BA%D0%BE', '/ru/firme/evolako/'),
                  ('/en/pretraga/?q=volbox', '/en/wallbox-cena-srbija')]

@@ -390,8 +390,8 @@ BM25 over title ×5, URL words ×3, headings ×2, description ×2, section ×1,5
 words of 5–7 letters, two from 8) and word beginnings; case, diacritics (č = c, đ = dj) and Cyrillic do not matter
 (Serbian Cyrillic is turned into Latin; on /ru/ the Russian words stay and brand names are also tried in Latin);
 a light stemmer per language (one ending off, the stem keeps 4 letters: „subvencije“ = „subvencija“, „tesla“ ≠ „test“);
-page kinds weigh differently (guides 1,35, data and tools 1,3, city pages 1,25, networks and public charging 1,2,
-firms and help 1, news 0,8 and less with age, the home page 0,45). All words must match; if no page has all of them,
+page kinds weigh differently (guides 1,35, data and tools 1,3, city pages 1,25, networks, public charging and car brands
+1,2, car models 1,15 — a brand name finds the brand page first, 29.10.2026 — firms and help 1, news 0,8 and less with age, the home page 0,45). All words must match; if no page has all of them,
 pages with more of the words come first (with three or more words, at least two). A word that is on no page is
 corrected to the nearest word of a title or heading: with no results the results of the corrected query are shown
 („Za „evolnako“ nema stranica“), with results „Možda ste mislili: …“ only when the correction changes the first result.
@@ -2031,6 +2031,40 @@ place to buy one unofficially (classifieds, the used market, imports). Pages:
   importer get a page only when people search for them (Tesla); the others are a line on the hub (`bez_stranice`).
 - `/elektricni-automobili/polovni/` — the article `content/podaci/polovni-elektricni-automobili.md` (front matter `path`):
   classifieds, dealers' used-car programmes, independent importers, import from the EU, leasing and auctions, checks.
+- `/elektricni-automobili/<brand>/<model>/` — one page per model with an official price (since 29.10.2026, SEO plan v2.0
+  §4.2 (a); `templates/auto_model.html`, built in `build.py` right after the brand pages; 83 pages on 29.10). The model slug
+  comes from the JSON model name (`ev_rows.model_slug()`: a final "(…)" and "electric" dropped, `+` → `plus`, diacritics
+  folded; hand-written ones in `ev_rows.SLUG`); a published slug changes only with a redirect in `_redirects` (3.12).
+  The same blocks for every model, each only when the data has it:
+  - price before and after the subsidy with the notes of the price table, the source link and its date, the importer's
+    battery (kWh) and WLTP range — all from `ev-modeli.json`;
+  - charging (on-board AC in kW with phases and amps, the factory AC option, DC peak, DC time with its window) only from
+    the `ev-specs.json` entry mapped by hand in `ev_rows.SPEC`. Map an entry only when it is the priced version (same
+    battery, same on-board charger) — never a sibling version or an "od" price whose version is unclear (29 models have no
+    entry on 29.10: Spring, Dolphin Surf, INSTER, IONIQ 5/6, ID.3/4/5/7, Enyaq, EQA, i4, iX3 …). A field listed in the
+    entry's `est` is never shown; `SPEC_HIDE` hides what the priced version may lack (Twingo: DC only with the option pack);
+  - home charging from 10 to 100 % with the calculator's 10 % losses at 2,3 kW (šuko), 3,7 kW (pojačana utičnica) and on an
+    11 kW three-phase wallbox limited by the car's AC (a single-phase car takes 3,7 kW there, and gets the row of a 7,4 kW
+    single-phase wallbox too); the capacity is the entry's usable kWh (if not an estimate), else the importer's kWh, else
+    the entry's estimate — the label says which;
+  - the cost of 100 km, only with a mapped entry: its consumption (always an estimate, shown as one) × (1 + losses) × the
+    EPS night price of the calculator's default zone with everything on the bill (`all_in`), and × the calculator's public
+    DC price with its range (`kalkulator.json` → `public`);
+  - where to buy (the brand card's four tiles), the other priced models of the brand, the four models with the nearest
+    price before the subsidy (any brand — a fact, not a recommendation), news that name the model, guides
+    (`MODEL_BEFORE`), sources (the price; the entry's sources — Open EV Data and © 2019 Chargeprice by name, as their MIT
+    licence asks, the others by domain; EPS; the Charge&GO receipts) and the photo credit.
+
+  JSON-LD: WebPage, BreadcrumbList and — only when the price is published as it is (not `price_includes_subsidy`) — Car
+  with an Offer (price, EUR, source URL, seller). No ratings, no reviews. Title "<model>: cena u Srbiji[, domet][ i
+  punjenje]" — "domet" only with a WLTP figure, "punjenje" only with charging data on the page; the description is built
+  from parts that drop off the end to stay ≤ 158. Titles and descriptions are one key per model: after a price or data
+  change the 3.9 todo lists the new ones — translate them by the same pattern (the existing EN/RU in the memory show it).
+  Links to the pages: the model cards on the hub and the brand pages (the name, stretched over the whole card; the source
+  link stays clickable on top), the model cell of the price table (`gen_ev_modeli.py`, photo and name), the sitemap, the
+  site search (kind `model`, a little under the brand pages; the regression test has model queries) and `llms.txt` (every model with its lowest price and check date). Not shown, because the
+  data has no sourced value per model: connectors (the map assumes CCS2 for every car) and winter range (the winter guide
+  is still a draft in `content/_drafts/`).
 
 Data: `content/data/automobili.json` holds the brand facts — `status` (`zvanicno` = an official importer or distributor
 sells at least one fully electric passenger car; `najava` = entry announced with a named importer; `bez` = no official
