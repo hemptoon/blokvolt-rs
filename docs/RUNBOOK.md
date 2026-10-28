@@ -783,13 +783,14 @@ Second pass the same evening in the owner's Brave (Google search + the owners' p
 own social page (Instagram/Facebook post of the venue or of the network that runs the charger) counts as the owner's
 source; so does an official tourist organisation's page that names the charger at that place (TO Zlatibor list, TO
 Vojvodine, TO Srbije) — such a site carries `"by": "to"` (card: „Potvrđeno na stranici turističke organizacije“), a
-network's own post `"by": "mr"` („na stranici mreže punjača“); default `own`. Directory and aggregator sites (PlanPlus,
+network's own post `"by": "mr"` („na stranici mreže punjača“); a municipality's own news page `"by": "op"` („na stranici opštine“) and a local news report that names the charger at that place `"by": "vs"` („u vesti lokalnog medija“), both since 28.10.2026; default `own`. Directory and aggregator sites (PlanPlus,
 OnlyCar, evfix.rs lists of other people's chargers, elektricniautomobili.*, emobilnost.rs — which relies on PlugShare)
 never count. beg.aero sits behind a Cloudflare bot check — the page title found by search was taken, nothing bypassed.
 `tim.json` `date` is 19.10.2026, the day the list reached the owner (his decision 25.10.2026); the card says „Na spisku
 tima od <date>“, not „Dodato“, so the date stays true.
 Quarterly, with 3.11b: try again to confirm the `tim` sites (owner's site, network lists, drivers' reports); a confirmed
 one moves to `ostale.json`, one that is gone (owner says closed, drivers report „Nema punjača“) is removed.
+Recheck 28.10.2026 (all 96, Google in Brave + web search): 2 confirmed (Aqua Park Raj, by `op`; Narodni dom in Idvor, by `vs`); 94 stay unconfirmed. 21st century Zlatibor – Adora (TO Zlatibor list, Krfska 14) is not on the map: no house-level point in OSM or on an owner's site, and no point is taken from booking sites or the street's middle.
 
 #### 3.11c Drivers' reports, ratings, photos (backend)
 

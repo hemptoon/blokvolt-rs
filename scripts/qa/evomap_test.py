@@ -82,13 +82,13 @@ async def main():
               const r = {lap: await look('Lapovo'), vero: await look('Super Vero Novi Sad'), west: await look('West End')}; q.value = ''; q.dispatchEvent(new Event('input', {bubbles: true})); await new Promise(r => setTimeout(r, 300)); return r; }''')
             lap = dict(res['lap'])
             ok('91' in lap.get('cg-52', ''), f'{tag} Lapovo AC price', lap.get('cg-52'))
-            ok('108' in lap.get('cg-127', ''), f'{tag} Lapovo DC 50 price', lap.get('cg-127'))
+            # cg-127 (DeLasol Lapovo DC 50) left the Charge&GO map in the monthly check 28.10.2026
             ok(any('71' in x[1] for x in res['vero']), f'{tag} Super Vero NS ≈71/kWh', res['vero'])
             ok(any('56' in x[1] for x in res['west']), f'{tag} West End eDrive with start fee', res['west'])
             # a card with per-connector lines and the how-to block
             card = await pg.evaluate('''async () => { const b = document.querySelector('.evm-st[data-id="cg-108"]') || null; 
-              const q = document.getElementById('evm-q'); q.value = 'DeLasol'; q.dispatchEvent(new Event('input', {bubbles: true})); await new Promise(r => setTimeout(r, 400));
-              document.querySelector('.evm-st[data-id="cg-108"]').click(); await new Promise(r => setTimeout(r, 200));
+              const q = document.getElementById('evm-q'); q.value = 'HBIS Smederevo'; q.dispatchEvent(new Event('input', {bubbles: true})); await new Promise(r => setTimeout(r, 400));
+              document.querySelector('.evm-st[data-id="cg-128"]').click(); await new Promise(r => setTimeout(r, 200));
               const c = document.querySelector('.evm-card .evm-cc'); return {lines: c.querySelectorAll('.evm-plines li').length, kako: c.querySelectorAll('.evm-hw-steps li').length === 4 && !!c.querySelector('.evm-hw-more summary') && c.querySelectorAll('.evm-cns .evm-cn>i svg').length >= 1, kakoT: (c.querySelector('.evm-hw')||{}).innerText, pick: !!c.querySelector('[data-car-open]'), txt: c.innerText.slice(0, 400)}; }''')
             ok(card['lines'] >= 2, f'{tag} per-connector lines', card['lines'])
             ok(card['kako'], f'{tag} how-to block', card['kakoT'])
@@ -105,8 +105,8 @@ async def main():
               return { gen: !!c.querySelector('.evm-hw.is-gen'), steps: c.querySelectorAll('.evm-hw-steps li').length, icons: c.querySelectorAll('.evm-cn>i svg').length, over: bad.slice(0, 4), kinds: k }; }''')
             ok(hw and hw['gen'] and hw['steps'] == 3 and hw['icons'] == 2 and not hw['over'], f'{tag} general scheme + plug icons (Punjač Knin)', hw)
             ok(hw and hw['kinds'].get('net', 0) > 150 and hw['kinds'].get('unk', 0) > 100, f'{tag} every charger has a scheme', hw and hw['kinds'])
-            await pg.evaluate('''async () => { const q = document.getElementById('evm-q'); q.value = 'DeLasol'; q.dispatchEvent(new Event('input', {bubbles: true}));
-              await new Promise(r => setTimeout(r, 400)); document.querySelector('.evm-st[data-id="cg-108"]').click(); await new Promise(r => setTimeout(r, 200)); }''')
+            await pg.evaluate('''async () => { const q = document.getElementById('evm-q'); q.value = 'HBIS Smederevo'; q.dispatchEvent(new Event('input', {bubbles: true}));
+              await new Promise(r => setTimeout(r, 400)); document.querySelector('.evm-st[data-id="cg-128"]').click(); await new Promise(r => setTimeout(r, 200)); }''')
             # choose a car from the card link
             await pg.click('.evm-card [data-car-open]')
             await pg.wait_for_selector('.evm-carp select[data-car="mk"]', timeout=10000)
@@ -119,7 +119,7 @@ async def main():
             after = await pg.evaluate('''() => { const c = document.querySelector('.evm-card .evm-cc'); return {back: c ? c.querySelector('h2').textContent : null, cost: c && c.querySelector('.evm-cost b') ? c.querySelector('.evm-cost b').textContent : null,
               cmp: c && c.querySelector('.evm-cmp') ? c.querySelector('.evm-cmp').textContent : null, btn: document.querySelector('.evm-car-v').textContent, cheap: !!document.querySelector('.evm-chip[data-f=cheap]'),
               vero: window.evmCostQa('cg-80'), prom: window.evmCostQa('ocm-263893')}; }''')
-            ok(after['back'] and 'DeLasol' in after['back'], f'{tag} back to the card after the car', after['back'])
+            ok(after['back'] and 'HBIS' in after['back'], f'{tag} back to the card after the car', after['back'])
             ok(after['cost'] and ('RSD/km' in after['cost'] or 'RSD/км' in after['cost']), f'{tag} cost line', after['cost'])
             ok(after['cmp'] is not None, f'{tag} petrol/home comparison', after['cmp'])
             ok('Tesla' in after['btn'], f'{tag} car button label', after['btn'])

@@ -17,6 +17,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 - [Državni punjači na autoputevima](/javno-punjenje/putevi-srbije/): po spisku JP „Putevi Srbije“ od 22. oktobra radi 27 od 36 punjača (ranije 24). Ponovo rade punjač na naplatnoj stanici Stara Pazova i oba punjača na naplatnoj stanici Kruševac istok, koja je sada i na mapi.
 - [Vodiči](/vodici/) i početna strana: sve kartice vodiča imaju nove sličice u istom stilu — predmet ili umanjeni model automobila na svetloj pozadini, bez marki.
 - [Električni automobili](/elektricni-automobili/): Volkswagen ID.3 Neo, Kia EV6, Peugeot E-208, Citroën ë-C4, Škoda Enyaq i Opel Mokka Electric sada su prikazani u aktuelnoj verziji (posle osvežavanja modela), prema novijim fotografijama sa Wikimedia Commonsa.
+- [Mapa punjača](/mapa/): dva punjača iz dopune tima sada su potvrđena javnim izvorom — Aqua Park Raj u Vrnjačkoj Banji (stranica Opštine Vrnjačka Banja: solarni punjači, besplatni za sve) i punjač ispred Narodnog doma „Mihajlo I. Pupin“ u Idvoru (vest Kurir Biznisa). Kartica punjača sada navodi i kad je potvrda sa stranice opštine ili iz vesti lokalnog medija.
 - [Mapa punjača](/mapa/), valuta EUR ili USD: dva punjača mreže Emobility Spectra (Valjevo, Beograd) naplaćuju „jedinicu“ i minut. Njihova cena sada je preračunata i u spisku punjača, u „Najbliži punjač“ i u „Punjači na putu“, a ne samo u kartici punjača.
 
 ## 27. oktobar 2026
