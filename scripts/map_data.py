@@ -506,8 +506,9 @@ CITY_FIX = {'belgrade': 'Beograd', 'unknown': '', 'vojvodina': '', 'bajina basta
 KEEP_UP = {'OMV', 'BIG', 'NIS', 'BEX', 'HBIS', 'NCR', 'BMW', 'ABB', 'KPM', 'MIF', 'OBD2', 'FMC', 'MIND', 'SIRIUS'}
 PLUS_CODE = r'\b[23456789CFGHJMPQRVWX]{4}\+[23456789CFGHJMPQRVWX]{2,3}\b'
 # roaming operators of the Charge&GO roaming map: RS*ORI = Orion eMobility; RS*007 = eDrive (Voltic d.o.o.) — its EVSE
-# numbers E000xx are the ones the eDrive app shows on its own stations (05.10.2026); RO*PLG: network not published
-ROAM_NET = {'RS*ORI': 'orion-emobility', 'RS*007': 'edrive'}
+# numbers E000xx are the ones the eDrive app shows on its own stations (05.10.2026). RS*ART and RO*PLG (Ražanj): the roaming
+# record names the operator RS*007 "Voltic d.o.o. (CPO)" (28.10.2026), so these are eDrive sites too
+ROAM_NET = {'RS*ORI': 'orion-emobility', 'RS*007': 'edrive', 'RS*ART': 'edrive', 'RO*PLG': 'edrive'}
 # eDrive's own names of its sites (eDrive app, 05.10.2026), by the EVSE number on the roaming map
 EVSE_NAMES = {'E00040': 'Ingrap-Omni Valjevo', 'E00050': 'Ingrap-Omni Divčibare', 'E00045': 'Monogramlux Inđija',
               'E00004': 'Gradska plaža Čačak', 'E00003': 'West End', 'E00023': 'BEX Konjarnik', 'E00020': 'Dragović Petrol'}
@@ -624,6 +625,23 @@ def official_sites():
                      'net': ROAM_NET.get(op, ''), 'op': op, 'raw': name, 'n': nm,
                      'a': EVSE_ADDR.get(name) or ', '.join(x for x in (_street(street, c), c) if x), 'c': _rm_conns(f[9], f[10]), 'evse': n,
                      'putevi': bool(re.search(r'(?i)putevi|naplatn|odmori', name + ' ' + street))})
+    # a roaming record without a name of its own within 30 m of a named one is the same site (28.10.2026: Ražanj, two
+    # EVSE codes of one eDrive site 6 m apart): its connectors join the named record
+    rms = [r for r in recs if r['k'] == 'rm']
+    for r in [r for r in rms if not r['n']]:
+        near = [o for o in rms if o is not r and o['n'] and not o.get('_gone') and o['net'] == r['net']
+                and dist_m({'latitude': o['lat'], 'longitude': o['lon']}, {'latitude': r['lat'], 'longitude': r['lon']}) <= 30]
+        if near:
+            o = near[0]
+            for c in r['c']:
+                m = next((x for x in o['c'] if x[:3] == c[:3]), None)
+                if m:
+                    m[3] += c[3]
+                else:
+                    o['c'].append(list(c))
+            o['evse'] = (o['evse'] or 0) + (r['evse'] or 0)
+            r['_gone'] = True
+    recs[:] = [r for r in recs if not r.get('_gone')]
     te = json.load(open(MREZE / meta['te']['file'], encoding='utf-8'))
     for s in te['sites']:
         if s.get('lat') is None:
