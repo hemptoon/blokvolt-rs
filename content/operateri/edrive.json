@@ -9,7 +9,7 @@
  "app": "eDrive (iOS/Android)",
  "city": "Beograd",
  "coverage": "Beograd, Inđija, Valjevo i Divčibare, Čačak, Zrenjanin, Smederevo, Barajevo; u romingu i punjači Charge&GO i Orion eMobility",
- "network": "Sopstveni punjači na roming mapi Charge&GO (oznaka RS*007, 23.09.2026): 8 lokacija, najveća BEX Konjarnik sa 10 priključaka (DC 31–90 kW); u aplikaciji eDrive 05.10.2026 i Ingrap-Omni Remont (Valjevo) i OLIMP (Zrenjanin).",
+ "network": "Sopstveni punjači na roming mapi Charge&GO (operater Voltic d.o.o., oznake RS*007, RS*ART i RO*PLG, 28.10.2026): 10 lokacija, najveća BEX Konjarnik sa 24 priključka (DC 30–90 kW); u aplikaciji eDrive 05.10.2026 i Ingrap-Omni Remont (Valjevo) i OLIMP (Zrenjanin).",
  "power": "DC 31–90 kW; AC 22 kW (Smederevo)",
  "billing": "Na sopstvenim DC punjačima: 199 RSD za pokretanje punjenja + 48 RSD po „tokenu“, a token je u aplikaciji ≈ 1 kWh; na AC punjaču u Smederevu 99 RSD + 11 RSD/min (aplikacija, 05.10.2026). Naplata sa kartice posle svake sesije; faktura i fiskalni račun stižu na e-mail.",
  "verdicts": {
