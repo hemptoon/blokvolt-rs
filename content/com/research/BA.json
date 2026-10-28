@@ -391,21 +391,21 @@
  "electricity": [
   {
    "what": "Federation of BiH – Elektroprivreda BiH (EPBiH) households, single-rate meter, from 01.09.2025",
-   "price": "0.1590 KM/kWh (green block, 0–350 kWh a month); 0.1620 KM/kWh (blue, 351–1,000 kWh); 0.1650 KM/kWh (red, over 1,000 kWh)",
-   "note": "Excl. VAT; about €0.081–0.084 per kWh. VAT of 17% and metering and renewable-energy fees are added on the bill (TuzlaInfo, 03.07.2025, same figures). Euronews presents network charges as a separate bill item; EPBiH's own tariff tables are published as images and could not be read to confirm which components these prices include.",
-   "source": "https://euronews.ba/bosna-i-hercegovina/drustvo/39445/ko-gdje-i-koliko-placa-struju-u-bih",
-   "source_title": "Euronews BiH – Ko, gdje i koliko plaća struju u BiH?",
-   "source_date": "20.10.2025",
-   "confidence": "medium"
+   "price": "0.1590 KM/kWh (green block, the first 350 kWh a month); 0.1620 KM/kWh (blue, 351–1,000 kWh); 0.1650 KM/kWh (red, every kWh over 1,000)",
+   "note": "Supply price plus network charge from EPBiH's own bill calculator (price list from 01.09.2025, the only one it offered on 28.10.2026): 0.0908 / 0.0938 / 0.0968 + 0.0682 KM/kWh. Excl. the renewable-energy fee (0.003524 KM/kWh in 2026) and 17% VAT; with both, 0.190 / 0.194 / 0.197 KM/kWh. The blocks are steps of the month's consumption (FERK decision, Sl. novine FBiH 57/25). Euronews BiH (20.10.2025) gives the same figures.",
+   "source": "https://mojaenergija.epbih.ba/javno-snabdijevanje/cijene-elektricne-energije/kalkulator/",
+   "source_title": "EPBiH – Kalkulator (cjenovnik od 01.09.2025.)",
+   "source_date": "price list from 01.09.2025; checked 28.10.2026",
+   "confidence": "high"
   },
   {
    "what": "Federation of BiH – EPBiH households, two-rate meter (day/night), from 01.09.2025",
    "price": "Higher tariff 0.1988 / 0.2025 / 0.2063 KM/kWh; lower tariff 0.0994 / 0.1012 / 0.1031 KM/kWh (green / blue / red block)",
-   "note": "Excl. VAT; lower tariff about €0.051–0.053 per kWh. TuzlaInfo (03.07.2025) printed the proposed green-block lower tariff as 9.44 fening/kWh; Euronews gives 0.0994 KM/kWh.",
-   "source": "https://euronews.ba/bosna-i-hercegovina/drustvo/39445/ko-gdje-i-koliko-placa-struju-u-bih",
-   "source_title": "Euronews BiH – Ko, gdje i koliko plaća struju u BiH?",
-   "source_date": "20.10.2025",
-   "confidence": "medium"
+   "note": "Supply price plus network charge from EPBiH's bill calculator: higher tariff 0.1135 / 0.1172 / 0.1210 + 0.0853, lower tariff 0.0568 / 0.0586 / 0.0605 + 0.0426 KM/kWh. Excl. the renewable-energy fee and VAT; with both, the blue-block lower tariff is 0.1225 KM/kWh (≈ €0.063) and the higher tariff 0.2410 KM/kWh. Euronews BiH (20.10.2025) gives the same figures.",
+   "source": "https://mojaenergija.epbih.ba/javno-snabdijevanje/cijene-elektricne-energije/kalkulator/",
+   "source_title": "EPBiH – Kalkulator (cjenovnik od 01.09.2025.)",
+   "source_date": "price list from 01.09.2025; checked 28.10.2026",
+   "confidence": "high"
   },
   {
    "what": "Federation of BiH – EPBiH cheaper-tariff hours",
@@ -413,7 +413,7 @@
    "note": "From EPBiH's tariff-model page for public supply (prices valid from 01.09.2025).",
    "source": "https://mojaenergija.epbih.ba/javno-snabdijevanje/cijene-elektricne-energije/tarifni-modeli/",
    "source_title": "EPBiH Moja energija – Tarifni modeli",
-   "source_date": "no date on page; checked 23.09.2026",
+   "source_date": "no date on page; checked 28.10.2026",
    "confidence": "high"
   },
   {
@@ -422,7 +422,7 @@
    "note": "The table excludes the renewable-energy fee and VAT. 15.79 fening is about €0.081 per kWh. Seasons per Euronews (20.10.2025): winter 1 November–28 February, summer 1 March–31 October; Euronews gives the same per-kWh figures.",
    "source": "https://ephzhb.ba/en/kupci/kucanstva/",
    "source_title": "Elektroprivreda HZHB Mostar – Kućanstva",
-   "source_date": "no date on page (table 'from 01.01.2020'); checked 23.09.2026",
+   "source_date": "no date on page (table 'from 01.01.2020'); checked 28.10.2026",
    "confidence": "high"
   },
   {
@@ -436,11 +436,11 @@
   },
   {
    "what": "Republika Srpska – network charge, households, from 01.02.2026",
-   "price": "Higher tariff 0.0654 KM/kWh; lower tariff 0.0397 KM/kWh",
-   "note": "Excl. VAT. RERS decision of 22.12.2025 (No. 01-1430-41/25/P-157-1336). Per ERS, the lower tariff runs 22:00–06:00 on weekdays in winter time (23:00–07:00 in summer time); the decision also applies it at weekends. Media reported that electricity for households would cost 10% more from 01.02.2026 (Nezavisne novine, 22.12.2025).",
+   "price": "Single-rate 0.0654 KM/kWh; two-rate: higher tariff 0.0793, lower tariff 0.0397 KM/kWh; plus 3.4892 KM per kW of billing power a month (3.3 kW where power is not measured)",
+   "note": "Excl. VAT. RERS decision of 22.12.2025 (No. 01-1430-41/25/P-157-1336). Per ERS, the lower tariff runs 22:00–06:00 on weekdays in winter time (23:00–07:00 in summer time); the decision also applies it at weekends. Media reported that electricity for households would cost 10% more from 01.02.2026 (Nezavisne novine, 22.12.2025). The RERS public-supply decision of 22.12.2025 (No. 01-1324-23/24/P-157-1338, reers.ba, read 28.10.2026) gives the same network figures and the lower-tariff hours: 22:00–06:00 in winter time, 23:00–07:00 in summer time, and from Friday 22:00 (23:00) to Monday 06:00 (07:00) at weekends.",
    "source": "https://www.elektrokrajina.com/wp-content/uploads/2026/02/Odluka-o-TARIFAMA-za-korisnike-DISTRIBUTIVNIH-sistema-u-Republici-Srpskoj-dec-2025.pdf",
    "source_title": "RERS – Odluka o tarifama za korisnike distributivnih sistema u Republici Srpskoj (published by Elektrokrajina)",
-   "source_date": "22.12.2025",
+   "source_date": "22.12.2025; checked 28.10.2026",
    "confidence": "high"
   },
   {
@@ -449,7 +449,7 @@
    "note": "Excl. VAT. DERK decision of 21.01.2026 (No. 04-28-5-342-18/25); single-rate value read from the PDF table layout. Higher tariff 07–13 h and 16–22 h in winter time, lower tariff 13–16 h, 22–07 h and Sundays. About €0.130 / €0.065 per kWh. Media reported a 7.06% rise for households (Novi glas, 22.01.2026).",
    "source": "https://www.derk.ba/DocumentsPDFs/Tarifa-Brcko-snabdijevanje-21jan2026-h.pdf",
    "source_title": "DERK – Odluka o tarifama za snabdijevanje električnom energijom u okviru univerzalne usluge u Brčko Distriktu BiH",
-   "source_date": "21.01.2026",
+   "source_date": "21.01.2026 (applies from 01.02.2026); checked 29.10.2026",
    "confidence": "high"
   },
   {
@@ -458,8 +458,17 @@
    "note": "Excl. VAT. DERK decision of 21.01.2026; values read from the PDF table layout, so check before quoting.",
    "source": "https://www.derk.ba/DocumentsPDFs/Tarifa-Brcko-distribucija-21jan2026-h.pdf",
    "source_title": "DERK – Odluka o tarifama za usluge distribucije električne energije u Brčko Distriktu BiH",
-   "source_date": "21.01.2026",
-   "confidence": "medium"
+   "source_date": "21.01.2026 (applies from 01.02.2026); checked 29.10.2026",
+   "confidence": "high"
+  },
+  {
+   "what": "Federation of BiH – renewable-energy fee (naknada za podsticanje OIEiEK), 2026",
+   "price": "0.003524 KM/kWh, excl. VAT",
+   "note": "Set by the FBiH Government on 30.12.2025 for 2026; paid on every kWh by final customers in the Federation (EPBiH and Elektroprivreda HZ HB bills). EPBiH's bill calculator still used 0.002896 KM/kWh on 28.10.2026.",
+   "source": "https://www.oieiek.ba/naknada-za-podsticanje/",
+   "source_title": "Operator za OIEiEK – Naknada za podsticanje",
+   "source_date": "30.12.2025; checked 28.10.2026",
+   "confidence": "high"
   },
   {
    "what": "VAT on household electricity (whole country)",

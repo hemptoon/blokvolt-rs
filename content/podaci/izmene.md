@@ -14,6 +14,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ## 29. oktobar 2026
 
 - Nova stranica [Cena goriva i struje](/podaci/cena-goriva-i-struje/): najviše cene evrodizela i benzina BMB 95 za tekuću nedelju i koliko košta 100 km na gorivo, a koliko na struju kod kuće i na brzom javnom punjaču. Ispod su cene goriva po nedeljama od 21. avgusta 2026, sa izvorom za svaku nedelju. Stranica se ažurira petkom, posle svake nove odluke o cenama goriva, a sa njom i cena goriva u [kalkulatoru troškova](/alati/kalkulator-troskova/).
+- Nove stranice na blokvolt.com: cena struje za domaćinstva u [Bosni i Hercegovini](https://blokvolt.com/ba/cijena-struje/), [Crnoj Gori](https://blokvolt.com/me/cijena-struje/) i [Severnoj Makedoniji](https://blokvolt.com/mk/cena-na-struja/) — kilovat-sat noću i danju sa svim naknadama i PDV-om, sati jeftinije struje i koliko košta punjenje automobila, po cenovnicima snabdevača i odlukama regulatora (provera 28. i 29. oktobra). Za Crnu Goru kalkulator i stranica o punjenju kod kuće sada koriste zvanični cenovnik EPCG-a od 1. januara 2026. umesto okvirnih cena.
 
 ## 28. oktobar 2026
 

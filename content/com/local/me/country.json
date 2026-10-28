@@ -148,42 +148,138 @@
  ],
  "power": {
   "vat": 21,
-  "note": "EPCG ne objavljuje cijene u obliku koji se može pročitati, a cijena aktivne energije za domaćinstva nepromijenjena je od 2019. (EPCG, septembar 2026.). Zato su cijene ispod indikativne: aktivna energija iz članka iz 2022., mrežne naknade REGAGEN-a za 2026. i PDV 21 %; bez naknade za obnovljive izvore.",
-  "nt_hours": "Niža tarifa: od 23 do 7 h (prema starijim izvorima i nedjeljom cijeli dan).",
+  "note": "Cijene su iz cjenovnika EPCG-a za domaćinstva od 01.01.2026. (osnovni model): aktivna energija, angažovanje mrežnog kapaciteta, gubici u mreži i naknada za obnovljive izvore, uz PDV 21 %. Fiksna mjesečna naknada za priključnu snagu nije uračunata.",
+  "nt_hours": "Niža tarifa: od 23 do 7 h, a na novim multifunkcionalnim brojilima i nedjeljom cijeli dan; starija dvotarifna brojila s uklopnim satom po ljetnjem računanju vremena računaju je od 0 do 8 h (REGAGEN, metodologija iz jula 2026.).",
   "tariffs": [
    {
     "id": "nt",
     "name": "Dvotarifno, niža tarifa (noć)",
-    "allin": 0.0694,
-    "parts": "energija 0,0260 + mreža i gubici 0,0313 €, + PDV 21 % — indikativno"
+    "allin": 0.07271616,
+    "parts": "energija 2,6212 + mreža 2,9154 + OIE 0,4730 c€, + PDV 21 %"
    },
    {
     "id": "vt",
     "name": "Dvotarifno, viša tarifa (dan)",
-    "allin": 0.1387,
-    "parts": "energija 0,0520 + mreža i gubici 0,0626 €, + PDV 21 % — indikativno"
+    "allin": 0.13970902,
+    "parts": "energija 5,2424 + mreža 5,8308 + OIE 0,4730 c€, + PDV 21 %"
+   },
+   {
+    "id": "jt",
+    "name": "Jednotarifno brojilo",
+    "allin": 0.11522709,
+    "parts": "energija 4,2686 + mreža 4,7813 + OIE 0,4730 c€, + PDV 21 %"
    }
   ],
   "sources": [
+   {
+    "label": "EPCG — cijene za domaćinstva od 01.01.2026. (aktivna energija po modelima, mrežne usluge i naknade)",
+    "url": "https://epcg.com/cijene",
+    "date": "provjereno 28.10.2026."
+   },
    {
     "label": "REGAGEN — privremene cijene za korišćenje distributivnog sistema 2026. (CEDIS)",
     "url": "https://regagen.co.me/wp-content/uploads/2025/11/2025.11.21_CEDIS_Privremene-cijene-2026.pdf",
     "date": "21.11.2025."
    },
    {
-    "label": "REGAGEN — privremene cijene za korišćenje prenosnog sistema 2026. (CGES)",
+    "label": "REGAGEN — metodologija za distributivni sistem (Sl. list CG 97/26), čl. 27: sati niže tarife",
+    "url": "https://regagen.co.me/wp-content/uploads/2026/07/2026.07.16_Metodologije-RDP_ODS_Final.pdf",
+    "date": "06.07.2026."
+   }
+  ]
+ },
+ "electricity": {
+  "checked": "28.10.2026.",
+  "checked_iso": "2026-10-28",
+  "next_check": "20.12.2026.",
+  "computed": "Cijena kWh s PDV-om = (aktivna energija + angažovanje mrežnog kapaciteta + gubici u mreži + naknada za podsticanje OIE) × 1,21, sve iz cjenovnika EPCG-a od 01.01.2026. (c€/kWh): noću 2,6212 + 1,9589 + 0,9565 + 0,4730, danju 5,2424 + 3,9178 + 1,9130 + 0,4730, jednotarifno 4,2686 + 3,2126 + 1,5687 + 0,4730; plavi model VT150/NT150 i VT+/NT+, zeleni model + 0,2000. Gubici u prenosnom sistemu (REGAGEN, CGES: 0,2124 c€ noću, 0,4247 c€ danju) nisu uračunati jer ih cjenovnik EPCG-a za domaćinstva ne navodi. Vrijednosti nisu zaokružene.",
+  "rows": [
+   {
+    "id": "osnovni",
+    "name": "Osnovni model",
+    "range": "",
+    "nt": 0.07271616,
+    "vt": 0.13970902,
+    "jt": 0.11522709
+   },
+   {
+    "id": "plavi150",
+    "name": "Plavi model, prvih 150 kWh u tarifi",
+    "range": "jednotarifno: do 300 kWh",
+    "nt": 0.07030221,
+    "vt": 0.13488112,
+    "jt": 0.11132968
+   },
+   {
+    "id": "plavi_plus",
+    "name": "Plavi model, preko toga",
+    "range": "",
+    "nt": 0.07448034,
+    "vt": 0.14323738,
+    "jt": 0.11794475
+   },
+   {
+    "id": "zeleni",
+    "name": "Zeleni model, 100 % iz obnovljivih izvora",
+    "range": "",
+    "nt": 0.07513616,
+    "vt": 0.14212902,
+    "jt": 0.11764709
+   }
+  ],
+  "energy": {
+   "osnovni_nt": 2.6212,
+   "osnovni_vt": 5.2424,
+   "crveni": 4.4932
+  },
+  "fixed": [
+   [
+    8,
+    0.6916
+   ],
+   [
+    16,
+    1.3832
+   ],
+   [
+    34.5,
+    2.9824
+   ]
+  ],
+  "cges": {
+   "nt": 0.2124,
+   "vt": 0.4247
+  },
+  "hours": [
+   [
+    "Novo multifunkcionalno brojilo",
+    "Od 23 do 7 h svakog dana, a nedjeljom cijeli dan."
+   ],
+   [
+    "Starije dvotarifno brojilo s uklopnim satom",
+    "Od 23 do 7 h po zimskom i od 0 do 8 h po ljetnjem računanju vremena; nedjeljom cijeli dan samo ako brojilo to omogućava."
+   ]
+  ],
+  "sources": [
+   {
+    "label": "EPCG — cijene za domaćinstva od 01.01.2026.: aktivna energija po modelima (1.1) i mrežne usluge i naknade (1.2)",
+    "url": "https://epcg.com/cijene",
+    "date": "provjereno 28.10.2026."
+   },
+   {
+    "label": "REGAGEN — privremene cijene za korišćenje distributivnog sistema 2026. (CEDIS): angažovani kapacitet, gubici, fiksna naknada",
+    "url": "https://regagen.co.me/wp-content/uploads/2025/11/2025.11.21_CEDIS_Privremene-cijene-2026.pdf",
+    "date": "21.11.2025."
+   },
+   {
+    "label": "REGAGEN — privremene cijene za korišćenje prenosnog sistema 2026. (CGES): gubici u prenosnom sistemu",
     "url": "https://regagen.co.me/wp-content/uploads/2025/11/2025.11.21_CGES_Privremene-cijene-2026.pdf",
     "date": "21.11.2025."
    },
    {
-    "label": "Gradnja.me — cijene aktivne energije VT i NT (2022.)",
-    "url": "https://www.gradnja.me/clanak/900/potrosnja-i-cijena-elektricne-energije-u-domacinstvu",
-    "date": "22.06.2022."
-   },
-   {
-    "label": "TV Pljevlja — EPCG: cijena aktivne energije za domaćinstva nepromijenjena od 2019.",
-    "url": "https://tvpljevlja.me/2026/09/08/epcg-stabilne-cijene-veci-popusti-i-vise-redovnih-platisa/",
-    "date": "08.09.2026."
+    "label": "REGAGEN — metodologija za distributivni sistem (Sl. list CG 97/26), čl. 27: viša i niža dnevna tarifa",
+    "url": "https://regagen.co.me/wp-content/uploads/2026/07/2026.07.16_Metodologije-RDP_ODS_Final.pdf",
+    "date": "06.07.2026."
    }
   ]
  },

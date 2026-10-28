@@ -456,7 +456,8 @@ def build_local(loc, C, st, pages, all_pages):
             extra['chips'] = [(slug, C['net_names'].get(slug, slug), n) for slug, n in sorted(M['by_net'].items(), key=lambda x: -x[1]) if n >= 3][:7]
         render(tpl, p['path'], dict(ctx, **extra, title=p['title'], description=p['description'], meta=p, body=Markup(html),
                                     related=related, alts=hreflang(p['key'], loc, all_pages)),
-               priority=p.get('priority', '0.7'), lastmod=C.get('checked_iso'))
+               # a page checked later than the rest of its section (front matter checked / checked_iso) says so itself
+               priority=p.get('priority', '0.7'), lastmod=p.get('checked_iso') or C.get('checked_iso'))
     return M
 
 

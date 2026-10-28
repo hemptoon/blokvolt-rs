@@ -31,7 +31,7 @@ card: Мапа на полначи, цени на ЕВН, калкулатор �
 
 ## Што ќе најдете овде
 
-{{ w.tiles(['map', 'prices', 'home', 'subsidies', 'road', 'stats']) }}
+{{ w.tiles(['map', 'prices', 'home', 'electricity', 'subsidies', 'road', 'stats']) }}
 
 ## Накратко, септември 2026
 

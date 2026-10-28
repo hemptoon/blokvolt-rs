@@ -20,7 +20,7 @@ LOCALES = {'hr': 'hr-HR', 'ba': 'bs-BA', 'me': 'sr-ME', 'al': 'sq-AL', 'xk': 'sq
 # page keys that blokvolt.rs has too, and the Serbian page for each
 RS_PAGES = {'map': '/mapa/', 'prices': '/javno-punjenje/', 'apps': '/javno-punjenje/aplikacije-i-kartice/',
             'home': '/alati/kalkulator-troskova/', 'subsidies': '/podaci/subvencije-2026/', 'buildings': '/punjac-u-zgradi-skupstina',
-            'stats': '/podaci/statistika-ev-srbija/', 'method': '/metodologija/'}
+            'stats': '/podaci/statistika-ev-srbija/', 'method': '/metodologija/', 'electricity': '/podaci/tarife-eps/'}
 
 FM_RE = re.compile(r'\A---\n(.*?)\n---\n', re.S)
 

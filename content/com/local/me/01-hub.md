@@ -19,12 +19,12 @@ card: Mapa punjača, cijene, kalkulator s tarifama EPCG, subvencije Eko-fonda i 
 
 - **Mreža je mala.** Javnih mjesta za punjenje u Crnoj Gori je {{ C.points.n }} (nacrt nacionalnog okvira, jun 2026.), uglavnom manje snage i u gradovima. Najveća mreža brzih punjača su EKO stanice (Jugopetrol) sa 7 punjača od 50 kW. [Mapa]({{ PAGES.map.path }})
 - **Cijene nisu objavljene.** Nijedan provjereni operater ne objavljuje cjenovnik javnog punjenja. [Cijene]({{ PAGES.prices.path }})
-- **Kod kuće je jeftino.** Noću kWh sa mrežnim naknadama i PDV-om košta oko 0,07 € (indikativno), pa 100 km košta oko 1,30 €, a benzinom oko 12 €. [Kalkulator]({{ PAGES.home.path }})
+- **Kod kuće je jeftino.** Noću kWh kod EPCG-a sa mrežnim naknadama i PDV-om košta {{ money(C.power.tariffs[0].allin, 3) }}, pa 100 km košta oko {{ money(C.power.tariffs[0].allin * 17 * 1.1) }}, a benzinom oko 12 €. [Cijena struje]({{ PAGES.electricity.path }}) · [Kalkulator]({{ PAGES.home.path }})
 - **Subvencije.** Eko-fond je 2025. u dva konkursa, u saradnji sa Slovenijom, subvencionisao 53 električna vozila; otvorenog konkursa trenutno nema. [Subvencije]({{ PAGES.subsidies.path }})
 - **Autoput.** Na dionici Smokovac – Mateševo na odmorištu Pelev Brijeg izgrađena je stanica 4 × 50 kW, a na Gornjim Mrkama u ugradnji je 4 × 60 kW. [Na putu]({{ PAGES.road.path }})
 
 ## Šta ovdje nalazite
 
-{{ w.tiles(['map', 'prices', 'home', 'subsidies', 'road', 'stats']) }}
+{{ w.tiles(['map', 'prices', 'home', 'electricity', 'subsidies', 'road', 'stats']) }}
 
 <p class="note disc">Sve mreže prikazane su po istim pravilima, a mjesto na ovim stranicama niko ne plaća. Ko stoji iza BlokVolta i odakle su podaci, piše u <a href="{{ PAGES.method.path }}">metodologiji</a>.</p>

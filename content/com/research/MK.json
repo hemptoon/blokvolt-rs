@@ -360,7 +360,7 @@
    "note": "Regulated price of the universal supplier EVN Home for households, in force from 01.01.2026. Energy component only: the transmission and distribution fee (2.0339 MKD/kWh), the network access fee (200 MKD a month), the municipal public-lighting fee and VAT (18%) are added on the bill; see the rows below. VAT is not stated in the decision. The same rates are shown on evn.mk (checked 23.09.2026).",
    "source": "https://www.erc.org.mk/odluki/2025.12.22%20ODLUKA%20-%20EVN%20HOME%202026.pdf",
    "source_title": "Одлука за ЕВН Хоум – цени за 2026 (РКЕ, седница од 22.12.2025)",
-   "source_date": "22.12.2025 (applies from 01.01.2026)",
+   "source_date": "22.12.2025 (applies from 01.01.2026); checked 28.10.2026 on the regulator's price page",
    "confidence": "high"
   },
   {
@@ -369,7 +369,7 @@
    "note": "Energy component only; see block 1.",
    "source": "https://www.erc.org.mk/odluki/2025.12.22%20ODLUKA%20-%20EVN%20HOME%202026.pdf",
    "source_title": "Одлука за ЕВН Хоум – цени за 2026 (РКЕ, седница од 22.12.2025)",
-   "source_date": "22.12.2025 (applies from 01.01.2026)",
+   "source_date": "22.12.2025 (applies from 01.01.2026); checked 28.10.2026 on the regulator's price page",
    "confidence": "high"
   },
   {
@@ -378,7 +378,7 @@
    "note": "Energy component only; see block 1.",
    "source": "https://www.erc.org.mk/odluki/2025.12.22%20ODLUKA%20-%20EVN%20HOME%202026.pdf",
    "source_title": "Одлука за ЕВН Хоум – цени за 2026 (РКЕ, седница од 22.12.2025)",
-   "source_date": "22.12.2025 (applies from 01.01.2026)",
+   "source_date": "22.12.2025 (applies from 01.01.2026); checked 28.10.2026 on the regulator's price page",
    "confidence": "high"
   },
   {
@@ -387,7 +387,7 @@
    "note": "Energy component only; see block 1.",
    "source": "https://www.erc.org.mk/odluki/2025.12.22%20ODLUKA%20-%20EVN%20HOME%202026.pdf",
    "source_title": "Одлука за ЕВН Хоум – цени за 2026 (РКЕ, седница од 22.12.2025)",
-   "source_date": "22.12.2025 (applies from 01.01.2026)",
+   "source_date": "22.12.2025 (applies from 01.01.2026); checked 28.10.2026 on the regulator's price page",
    "confidence": "high"
   },
   {
@@ -396,16 +396,16 @@
    "note": "One lower-tariff rate, not split into blocks; energy component only (see block 1).",
    "source": "https://www.erc.org.mk/odluki/2025.12.22%20ODLUKA%20-%20EVN%20HOME%202026.pdf",
    "source_title": "Одлука за ЕВН Хоум – цени за 2026 (РКЕ, седница од 22.12.2025)",
-   "source_date": "22.12.2025 (applies from 01.01.2026)",
+   "source_date": "22.12.2025 (applies from 01.01.2026); checked 28.10.2026 on the regulator's price page",
    "confidence": "high"
   },
   {
    "what": "Transmission and distribution fee, households, 2026",
    "price": "2.0339 MKD/kWh on every kWh, in both tariffs (≈ €0.033, approx.)",
    "note": "Billed on top of the energy price: EVN's tariff-system page says the fee for using the transmission and distribution system is calculated separately, as consumed energy × the transmission and distribution tariff. The rate comes from the bill calculator that the energy regulator's website links to (https://erc.org.mk/page.aspx?id=478), with prices from 01.01.2026; its worked example charges 460 kWh × 2.0339 = 936 MKD. VAT is added. The calculator's page does not name its publisher.",
-   "source": "https://pees-feit.edu.mk/ts-us/",
-   "source_title": "Калкулатор за електрична енергија за УС (bill calculator linked from erc.org.mk as 'Калкулатор за твојата сметка')",
-   "source_date": "prices from 01.01.2026; checked 28.09.2026",
+   "source": "https://www.erc.org.mk/page.aspx?id=287",
+   "source_title": "РКЕ – цени на електричната енергија за домаќинствата (универзален снабдувач)",
+   "source_date": "prices from 01.01.2026; checked 28.10.2026",
    "confidence": "high"
   },
   {
@@ -430,9 +430,9 @@
    "what": "Lower-tariff hours",
    "price": "13:00–15:00 and 22:00–07:00 every day; at weekends from 22:00 on Saturday to 07:00 on Monday",
    "note": "As stated on EVN's price page.",
-   "source": "https://www.evn.mk/Invoices.aspx",
-   "source_title": "ЕВН Македонија - Invoices (section 'Цени')",
-   "source_date": "prices applied from 01.01.2026 (as shown); checked 23.09.2026",
+   "source": "https://www.evn.mk/faq-qa.aspx?cat=4",
+   "source_title": "ЕВН Македонија – најчесто поставувани прашања (цени и тарифи)",
+   "source_date": "no date on page; checked 28.10.2026",
    "confidence": "high"
   },
   {
@@ -459,7 +459,7 @@
    "note": "EVN's FAQ gives 18% VAT on electricity for households (the page is undated), and the bill calculator linked from the energy regulator's website applies 18% to 2026 prices. Earlier rates: a December 2022 report said VAT would be 10% from 01.01.2023, up from 5% (Alfa Vesti, 28.12.2022: https://vesti.alfa.mk/%D0%B7%D0%B0-%D0%BE%D0%BD%D0%B8%D0%B5-%D0%BA%D0%BE%D0%B8-%D1%82%D1%80%D0%BE%D1%88%D0%B0%D1%82-%D0%BC%D0%B0%D0%BB%D0%BA%D1%83-%D1%80%D0%B5%D1%87%D0%B8%D1%81%D0%B8-%D0%B8%D1%81%D1%82%D0%B8-%D1%81%D0%BC/).",
    "source": "https://www.evn.mk/faq-qa.aspx?cat=4",
    "source_title": "ЕВН Македонија – Најчесто поставувани прашања",
-   "source_date": "no date on page; checked 28.09.2026",
+   "source_date": "no date on page; checked 29.10.2026",
    "confidence": "high"
   },
   {
@@ -600,7 +600,7 @@
   "lawesgo.mk (title 'Electric chargers and cards') did not load (robots.txt timeout); its role (public chargers, cards or sales) is unknown.",
   "Home chargers: loging.mk ('chargers for electric cars' category) returned 403 and e-vozila.apptree.mk did not load; large electronics retailers and car importers' wallbox offers were not checked. Charge&GO MK sells no home chargers locally and links to its Serbian shop (elektropunjaci.com), whose delivery or installation in North Macedonia was not checked.",
   "Installation prices: no company publishes a fixed installation price; the only range (€100–300) comes from an import-advice site without a cited source.",
-  "Electricity: the 2026 all-in household price per kWh is calculated from the regulated energy price, the transmission and distribution fee used by the regulator-linked bill calculator (2.0339 MKD/kWh) and 18% VAT; the calculator's page does not name its publisher, and the 2026 municipal public-lighting fee was not found.",
+  "Electricity: the 2026 all-in household price per kWh is calculated from the regulated energy price, the transmission and distribution fee (2.0339 MKD/kWh, on the regulator's price page) and 18% VAT (EVN); the 2026 municipal public-lighting fee was not found.",
   "Subsidies: no source explicitly confirms or rules out support for home chargers; the City of Skopje's public calls were checked on 27.10.2026, other municipalities were not; the September 2025 taxi-subsidy announcement has a reported share (15%) and total (about €840,000), but no published rules, dates or call.",
   "Method: the web-search quota ran out during the check; the remaining items were verified by fetching known URLs only."
  ]

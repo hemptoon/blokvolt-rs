@@ -27,11 +27,11 @@ Električni automobil troši oko 17 kWh na 100 km. Uz cijene objavljene do 27.10
 | Javni DC punjač, MOON 150 kW (2024.) | 0,80 KM | 13,60 KM |
 | Benzin BMB 95, 6,5 l po {{ money(C.fuel.petrol) }} | — | {{ money(6.5 * C.fuel.petrol) }} |
 
-Kod kuće noću 100 km košta oko 2 KM — otprilike deset puta manje nego benzinom. Na javnim punjačima cijene su vrlo različite: od besplatnih u promotivnoj fazi do 0,90 KM po kWh. Svoj izračun napravite u [kalkulatoru]({{ PAGES.home.path }}).
+Kod kuće noću 100 km košta oko 2 KM — otprilike deset puta manje nego benzinom. Na javnim punjačima cijene su vrlo različite: od besplatnih u promotivnoj fazi do 0,90 KM po kWh. Svoj izračun napravite u [kalkulatoru]({{ PAGES.home.path }}), a kilovat-sat kod svakog snabdjevača i sate jeftinije struje vidite na stranici [Cijena struje]({{ PAGES.electricity.path }}).
 
 ## Šta ovdje nalazite
 
-{{ w.tiles(['map', 'prices', 'home', 'subsidies', 'road', 'stats']) }}
+{{ w.tiles(['map', 'prices', 'home', 'electricity', 'subsidies', 'road', 'stats']) }}
 
 ## Ukratko, oktobar 2026.
 

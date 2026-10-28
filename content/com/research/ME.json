@@ -291,6 +291,33 @@
   ],
   "electricity": [
     {
+      "what": "EPCG household energy price, 2026 (two-rate meter)",
+      "price": "Basic model: higher tariff 5.2424, lower tariff 2.6212 euro cents per kWh (energy only, excl. VAT)",
+      "note": "EPCG price list for households, published 01.01.2026 as images on epcg.com/cijene. Blue model: the first 150 kWh in each tariff 4.8434 / 2.4217, above that 5.5340 / 2.7670; red model: one rate 4.4932 all day; green model: basic + 0.2000 for 100% renewables. Single-rate meters: basic 4.2686; blue 3.9465 up to 300 kWh and 4.4932 above; green 4.2686 + 0.2000. The page does not say whether VAT is included; the network items in the same list equal REGAGEN's VAT-exclusive prices.",
+      "source": "https://epcg.com/cijene",
+      "source_title": "EPCG – Cijene (Domaćinstva, 1.1)",
+      "source_date": "01.01.2026; checked 28.10.2026",
+      "confidence": "high"
+    },
+    {
+      "what": "Network services and fees on the household bill, 2026",
+      "price": "Two-rate meter: network capacity 3.9178 (higher) / 1.9589 (lower) c€/kWh and network losses 1.9130 / 0.9565 c€/kWh; single-rate: 3.2126 and 1.5687 c€/kWh; renewable-energy fee 0.4730 c€/kWh; fixed fee €0.6916 a month up to 8 kW (€1.3832 for 8–16 kW, €2.9824 for 16–34.5 kW)",
+      "note": "Excl. VAT. EPCG price list, table 1.2; the same network figures are in REGAGEN's decision on CEDIS's provisional 2026 prices (21.11.2025, Sl. list CG 136/25). REGAGEN also sets transmission-loss prices for \"other users\" (0.2124 / 0.4247 c€/kWh, CGES decision of 21.11.2025), which EPCG's household list does not show.",
+      "source": "https://epcg.com/cijene",
+      "source_title": "EPCG – Cijene (Domaćinstva, 1.2)",
+      "source_date": "01.01.2026; checked 28.10.2026",
+      "confidence": "high"
+    },
+    {
+      "what": "All-in household price per kWh, 2026 (calculated)",
+      "price": "Basic model: 7.27 euro cents per kWh at night, 13.97 by day; single-rate meter 11.52 (incl. network, renewable-energy fee and 21% VAT)",
+      "note": "Calculated by BlokVolt: (energy + network capacity + network losses + renewable-energy fee) × 1.21, from EPCG's 2026 price list. The fixed monthly fee and EPCG's discounts for regular payers are not included; the transmission-loss charge is not included because EPCG's household list does not show it.",
+      "source": "https://epcg.com/cijene",
+      "source_title": "EPCG – Cijene (Domaćinstva)",
+      "source_date": "calculated 28.10.2026",
+      "confidence": "high"
+    },
+    {
       "what": "Average household electricity price, 2025",
       "price": "9.98 euro cents per kWh, all taxes and VAT included",
       "note": "From the regulator REGAGEN's report on the energy sector in 2025, as reported. The article adds that prices have been practically unchanged for about 15 years and that EPCG kept the same supply prices in 2025. The report itself was not yet posted on regagen.co.me (latest there: 2024 report, 31.07.2025).",
@@ -301,12 +328,12 @@
     },
     {
       "what": "Lower (cheaper) tariff hours for households",
-      "price": "23:00–07:00 Monday to Saturday; all day on Sunday",
-      "note": "Per-kWh prices for the higher and lower tariff are not given in the source. From 1 January 2026 total bills rose slightly because of a correction of transmission-system costs.",
-      "source": "https://inflacija.me/me/energetika/jeftina-struja-u-crnoj-gori-termini-ustede",
-      "source_title": "Jeftina struja i dalje ključ uštede: Evo kada su najniže tarife",
-      "source_date": "03.01.2026",
-      "confidence": "medium"
+      "price": "23:00–07:00 every day and all day on Sunday on new multifunction meters; older two-rate meters with a time switch: 23:00–07:00 in winter time and 00:00–08:00 in summer time (Sunday all day only where the meter allows it)",
+      "note": "REGAGEN methodology for the distribution system (Sl. list CG 97/26 of 08.07.2026, in force from the eighth day after publication), Article 27. Time switches stay on Central European winter time, hence the shift in summer. Inflacija.me (03.01.2026) gave 23:00–07:00 Monday to Saturday and all day Sunday.",
+      "source": "https://regagen.co.me/wp-content/uploads/2026/07/2026.07.16_Metodologije-RDP_ODS_Final.pdf",
+      "source_title": "REGAGEN – Metodologija za utvrđivanje regulatorno dozvoljenog prihoda operatora sistema i cijena za korišćenje distributivnog sistema (2026)",
+      "source_date": "06.07.2026; checked 28.10.2026",
+      "confidence": "high"
     },
     {
       "what": "Home charging cost per kWh (dealer estimate)",
@@ -439,10 +466,10 @@
     "Home chargers: only three Montenegrin sellers/installers could be verified, and none publishes device or installation prices; the only price ranges come from an EV dealer's guide.",
     "Car importers: Jadran Auto d.o.o. (Hyundai) has a wallbox information page without models, prices or an installation offer; Toyota Montenegro's charging page links to the Croatian Toyota HomeCharge page; the BMW Voli and MINI home-charging pages returned 404.",
     "Checked without an EV-charger offer: retailers Tehno Planet and Tehnomax; electrical wholesalers/contractors Electro Group, ENEL PS CG, Telemont and Vigoris Ecotech. Serbian installers Elektropunjači/Charge&GO and ElektroMil (Niš) do not name Montenegro as a service area.",
-    "Did not load: elvod.me (Elektrovod, DNS error), popovicelektrosistem.co.me (certificate error), evcmontenegro.me/products/ (server error 500), paragraf.me (403), pvportal.me (401), epcg.com tariff pages (404; the site renders via JavaScript).",
+    "Did not load: elvod.me (Elektrovod, DNS error), popovicelektrosistem.co.me (certificate error), evcmontenegro.me/products/ (server error 500), paragraf.me (403), pvportal.me (401).",
     "Public charging prices: no operator price list found for EKO/Jugopetrol, EVC Montenegro, Orion eMobility or the motorway chargers; the operator of the motorway chargers (Pelev Brijeg, Gornje Mrke) is not named in any source.",
     "Payment by bank card directly at a Montenegrin charger is not confirmed; coverage of Montenegrin chargers by roaming apps (Charge&GO, Electroverse, Shell Recharge, Plugsurfing, Chargemap) is not confirmed.",
-    "Electricity: EPCG's per-kWh prices for the higher and lower tariff were not retrieved; REGAGEN's 2025 energy-sector report (source of the 9.98 c/kWh figure) is not yet posted on regagen.co.me.",
+    "Electricity: EPCG publishes its 2026 price list as images and does not say whether VAT is included; BlokVolt treats it as excl. VAT (its network items equal REGAGEN's VAT-exclusive prices). Whether households pay the transmission-loss charge that REGAGEN sets for 'other users' is not confirmed. REGAGEN's 2025 energy-sector report (source of the 9.98 c/kWh figure) is not yet posted on regagen.co.me.",
     "Registrations: no 2026 year-to-date count of new battery-electric cars was found. Monstat's quarterly releases (Q1 2026 of 14.05.2026, Q2 2026 of 12.08.2026) contain a table by propulsion energy, but its figures could not be extracted reliably and were not used. The annual Monstat release does not split electric-only vehicles into passenger cars and other categories.",
     "Subsidies: amounts, budgets and deadlines of the 2026 SKLAD E-mobility rounds (published 27.02.2026 and 15.05.2026) were not confirmed; only their dates and closed status were seen.",
     "Apartment buildings: the text of the Law on Housing and Maintenance of Residential Buildings (Zakon o stanovanju i održavanju stambenih zgrada) was not retrieved, so rules on co-owner consent, cost sharing and sub-metering for chargers in shared garages are not confirmed. No building-specific charging rules were found in the consolidated Energy Law text checked, and the distribution operator CEDIS's website shows no guidance on connecting EV chargers.",

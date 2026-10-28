@@ -54,21 +54,54 @@
   "blocks": "Kod EPBiH prvih 350 kWh mjesečno ide u zeleni blok, od 351 do 1.000 kWh u plavi, a sve preko toga u crveni. Punjenje auta obično pada u plavi blok.",
   "nt_hours": "EPBiH: niža tarifa od 22 do 7 h i od 13 do 16 h zimi, od 23 do 8 h i od 14 do 17 h ljeti, a nedjeljom cijeli dan. Elektroprivreda RS: od 22 do 6 h zimi i od 23 do 7 h ljeti, a vikendom od petka navečer do ponedjeljka ujutro.",
   "tariffs": [
-   {"id": "epbih_plavi_nt", "name": "EPBiH, plavi blok, niža tarifa", "allin": 0.1225, "parts": "energija 0,1012 + OIE 0,0035 KM, + PDV 17 %"},
-   {"id": "epbih_zeleni_nt", "name": "EPBiH, zeleni blok, niža tarifa", "allin": 0.1204, "parts": "energija 0,0994 + OIE 0,0035 KM, + PDV 17 %"},
-   {"id": "epbih_plavi_jt", "name": "EPBiH, plavi blok, jednotarifno", "allin": 0.1937, "parts": "energija 0,1620 + OIE 0,0035 KM, + PDV 17 %"},
-   {"id": "ers_bijela_mt", "name": "Elektroprivreda RS, bijela zona, manja tarifa", "allin": 0.0940, "parts": "energija 0,0406 + mrežarina 0,0397 KM, + PDV 17 %; bez naknade za OIE"},
-   {"id": "ers_plava_mt", "name": "Elektroprivreda RS, plava zona, manja tarifa", "allin": 0.1211, "parts": "energija 0,0638 + mrežarina 0,0397 KM, + PDV 17 %; bez naknade za OIE"},
-   {"id": "ephzhb_nt_visa", "name": "EP HZ HB, niža tarifa, viša sezona", "allin": 0.1196, "parts": "energija 0,0987 + OIE 0,0035 KM, + PDV 17 %"},
-   {"id": "ephzhb_nt_niza", "name": "EP HZ HB, niža tarifa, niža sezona", "allin": 0.0929, "parts": "energija 0,0759 + OIE 0,0035 KM, + PDV 17 %"}
+   {"id": "epbih_plavi_nt", "name": "EPBiH, plavi blok, niža tarifa", "allin": 0.12252708, "parts": "energija 0,1012 + OIE 0,0035 KM, + PDV 17 %"},
+   {"id": "epbih_zeleni_nt", "name": "EPBiH, zeleni blok, niža tarifa", "allin": 0.12042108, "parts": "energija 0,0994 + OIE 0,0035 KM, + PDV 17 %"},
+   {"id": "epbih_plavi_jt", "name": "EPBiH, plavi blok, jednotarifno", "allin": 0.19366308, "parts": "energija 0,1620 + OIE 0,0035 KM, + PDV 17 %"},
+   {"id": "ers_bijela_mt", "name": "Elektroprivreda RS, bijela zona, manja tarifa", "allin": 0.093951, "parts": "energija 0,0406 + mrežarina 0,0397 KM, + PDV 17 %; bez naknade za OIE"},
+   {"id": "ers_plava_mt", "name": "Elektroprivreda RS, plava zona, manja tarifa", "allin": 0.121095, "parts": "energija 0,0638 + mrežarina 0,0397 KM, + PDV 17 %; bez naknade za OIE"},
+   {"id": "ephzhb_nt_visa", "name": "EP HZ HB, niža tarifa, viša sezona", "allin": 0.11960208, "parts": "energija 0,0987 + OIE 0,0035 KM, + PDV 17 %"},
+   {"id": "ephzhb_nt_niza", "name": "EP HZ HB, niža tarifa, niža sezona", "allin": 0.09292608, "parts": "energija 0,0759 + OIE 0,0035 KM, + PDV 17 %"}
   ],
   "sources": [
    {"label": "EPBiH — cijene snabdijevanja od 01.09.2025. (Sl. novine FBiH 57/25)", "url": "https://mojaenergija.epbih.ba/wp-content/uploads/2025/09/Cijene-snabdijevanja-na-JS-kod-EPBiH-od-01.09.2025.-godine-Sl.-novine-FBiH-57-25-od-30.07.2025.-godine.pdf", "date": "30.07.2025."},
-   {"label": "Bloomberg Adria — zašto računi za struju u BiH nisu isti za sve (cijene po blokovima, bez PDV-a)", "url": "https://ba.bloombergadria.com/ekonomija/bih/89192/zasto-racuni-za-struju-u-bih-nisu-isti-za-sve/news", "date": "20.10.2025."},
+   {"label": "EPBiH — kalkulator računa, cjenovnik od 01.09.2025. (cijena snabdijevanja i mrežarina po blokovima, bez OIE i PDV-a)", "url": "https://mojaenergija.epbih.ba/javno-snabdijevanje/cijene-elektricne-energije/kalkulator/", "date": "provjereno 28.10.2026."},
    {"label": "RERS — cijene energije i tarifni stavovi za javno snabdijevanje od 01.02.2026.", "url": "https://reers.ba/wp-content/uploads/2025/12/Odluka-o-izmjenama-i-dopunama-Odluke-o-odobravanju-cijene-energije-i-tarifnih-stavova-za-javno-snabdijevanje-CIR-1.pdf", "date": "22.12.2025."},
-   {"label": "EP HZ HB — cijene za kućanstva", "url": "https://ephzhb.ba/kupci/kucanstva/", "date": "28.09.2026."},
+   {"label": "EP HZ HB — cijene za kućanstva", "url": "https://ephzhb.ba/kupci/kucanstva/", "date": "provjereno 28.10.2026."},
    {"label": "Operator za OIEiEK — naknada za podsticanje 2026.", "url": "https://www.oieiek.ba/naknada-za-podsticanje/", "date": "30.12.2025."},
-   {"label": "EPBiH — sati niže tarife", "url": "https://bljesak.info/gospodarstvo/flash/elektroprivreda-bih-objavila-novi-rezim-tarifa-za-domacinstva/510477", "date": "28.03.2025."}
+   {"label": "EPBiH — tarifni modeli i sati niže tarife", "url": "https://mojaenergija.epbih.ba/javno-snabdijevanje/cijene-elektricne-energije/tarifni-modeli/", "date": "provjereno 28.10.2026."}
+  ]
+ },
+
+ "electricity": {
+  "checked": "29.10.2026.", "checked_iso": "2026-10-29", "next_check": "20.12.2026.",
+  "computed": "Cijena kWh s PDV-om = (energija ili cijena snabdijevanja + mrežarina + naknada za OIE) × 1,17. EPBiH: kalkulator EPBiH (cjenovnik od 01.09.2025.), OIE 0,003524 KM/kWh; ERS: odluka RERS-a (od 01.02.2026.), bez OIE; EP HZ HB: cjenovnik od 01.01.2020. (tarifa uključuje mrežu), OIE 0,003524; Brčko: DERK, snabdijevanje + distribucija (od 01.02.2026.), bez OIE. Npr. EPBiH plavi blok noću (0,0586 + 0,0426 + 0,003524) × 1,17 = 0,12252708. Vrijednosti nisu zaokružene; stranica ih zaokružuje.",
+  "rows": [
+   {"id": "epbih_zeleni", "name": "EPBiH, zeleni blok", "range": "do 350 kWh", "nt": 0.12042108, "vt": 0.23671908, "jt": 0.19015308},
+   {"id": "epbih_plavi", "name": "EPBiH, plavi blok", "range": "351–1.000 kWh", "nt": 0.12252708, "vt": 0.24104808, "jt": 0.19366308},
+   {"id": "epbih_crveni", "name": "EPBiH, crveni blok", "range": "preko 1.000 kWh", "nt": 0.12475008, "vt": 0.24549408, "jt": 0.19717308},
+   {"id": "ers_bijela", "name": "Elektroprivreda RS, bijela zona", "range": "prvih 500 kWh", "nt": 0.093951, "vt": 0.187902, "jt": 0.155493},
+   {"id": "ers_plava", "name": "Elektroprivreda RS, plava zona", "range": "sljedećih 1.000 kWh", "nt": 0.121095, "vt": 0.24219, "jt": 0.200538},
+   {"id": "ers_crvena", "name": "Elektroprivreda RS, crvena zona", "range": "preko 1.500 kWh", "nt": 0.188253, "vt": 0.376506, "jt": 0.312039},
+   {"id": "hz_visa", "name": "EP HZ HB, viša sezona", "range": "", "nt": 0.11960208, "vt": 0.23508108, "jt": 0.18886608},
+   {"id": "hz_niza", "name": "EP HZ HB, niža sezona", "range": "", "nt": 0.09292608, "vt": 0.18172908, "jt": 0.14627808},
+   {"id": "brcko", "name": "Brčko distrikt", "range": "", "nt": 0.187083, "vt": 0.374166, "jt": 0.276354}
+  ],
+  "hours": [
+   ["EPBiH", "Zimi od 22 do 7 h i od 13 do 16 h, ljeti od 23 do 8 h i od 14 do 17 h; nedjeljom cijeli dan."],
+   ["Elektroprivreda RS", "Zimi od 22 do 6 h, ljeti od 23 do 7 h; vikendom od petka u 22 h (ljeti u 23 h) do ponedjeljka u 6 h (ljeti u 7 h)."],
+   ["Brčko distrikt", "Zimi od 22 do 7 h i od 13 do 16 h, ljeti od 23 do 8 h i od 14 do 17 h; nedjeljom cijeli dan."],
+   ["EP HZ HB", "Cjenovnik ne navodi sate niže tarife ni mjesece više i niže sezone (nije potvrđeno)."]
+  ],
+  "sources": [
+   {"label": "EPBiH — kalkulator računa, cjenovnik od 01.09.2025. (cijena snabdijevanja i mrežarina po blokovima, bez OIE i PDV-a)", "url": "https://mojaenergija.epbih.ba/javno-snabdijevanje/cijene-elektricne-energije/kalkulator/", "date": "provjereno 28.10.2026."},
+   {"label": "FERK — saglasnost na cijene EPBiH od 01.09.2025.; blokovi 0–350, 351–1.000 i preko 1.000 kWh mjesečno (Sl. novine FBiH 57/25)", "url": "https://mojaenergija.epbih.ba/wp-content/uploads/2025/09/Cijene-snabdijevanja-na-JS-kod-EPBiH-od-01.09.2025.-godine-Sl.-novine-FBiH-57-25-od-30.07.2025.-godine.pdf", "date": "30.07.2025."},
+   {"label": "EPBiH — tarifni modeli i sati niže tarife", "url": "https://mojaenergija.epbih.ba/javno-snabdijevanje/cijene-elektricne-energije/tarifni-modeli/", "date": "provjereno 28.10.2026."},
+   {"label": "Operator za OIEiEK — naknada za podsticanje u FBiH za 2026.: 0,003524 KM/kWh bez PDV-a", "url": "https://www.oieiek.ba/naknada-za-podsticanje/", "date": "30.12.2025."},
+   {"label": "RERS — cijene energije i tarifni stavovi za javno snabdijevanje, primjena od 01.02.2026., i sati manje tarife", "url": "https://reers.ba/wp-content/uploads/2025/12/Odluka-o-izmjenama-i-dopunama-Odluke-o-odobravanju-cijene-energije-i-tarifnih-stavova-za-javno-snabdijevanje-CIR-1.pdf", "date": "22.12.2025."},
+   {"label": "RERS — izmjene Tarifnog sistema: prvih 500 kWh mjesečno u bijeloj zoni, sljedećih 1.000 kWh u plavoj, ostatak u crvenoj", "url": "https://reers.ba/wp-content/uploads/2024/03/Izmjene-i-dopune-Tarifnog-sistema-za-prodaju-elektricne-energije-i-koriscenje-distributivne-mreze-cirilica-1.pdf", "date": "2024."},
+   {"label": "EP HZ HB — cijene za kućanstva (saglasnost FERK-a, primjena od 01.01.2020.)", "url": "https://ephzhb.ba/kupci/kucanstva/", "date": "provjereno 28.10.2026."},
+   {"label": "DERK — tarifni stavovi za snabdijevanje kupaca u Brčko distriktu, primjena od 01.02.2026., i sati manje tarife", "url": "https://www.derk.ba/DocumentsPDFs/Tarifa-Brcko-snabdijevanje-21jan2026-h.pdf", "date": "21.01.2026."},
+   {"label": "DERK — tarifni stavovi za distribuciju u Brčko distriktu, primjena od 01.02.2026.", "url": "https://www.derk.ba/DocumentsPDFs/Tarifa-Brcko-distribucija-21jan2026-h.pdf", "date": "21.01.2026."}
   ]
  },
  "fuel": {"petrol": 3.41, "diesel": 3.74, "date": "20.10.2026.", "src": "https://n1info.ba/english/news/fuel-prices-in-federation-of-bih-surge-since-early-september",

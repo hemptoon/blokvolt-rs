@@ -11,7 +11,7 @@ h1: Punjenje kod kuće ili na javnom punjaču
 lead: Koliko mjesečno košta struja za električni auto kod kuće i na javnim punjačima i koliko je to u odnosu na benzin ili dizel — s tarifama sva tri javna snabdjevača.
 card: Kalkulator s tarifama EPBiH, ERS i EP HZ HB, javnim punjačima i poređenjem s gorivom.
 schema: WebPage
-related: prices, subsidies, map
+related: electricity, prices, subsidies
 ---
 {{ w.calc() }}
 
@@ -20,6 +20,8 @@ related: prices, subsidies, map
 {{ C.power.note }}
 
 {{ w.tariffs() }}
+
+Sve tarife — blokovi EPBiH, zone Elektroprivrede RS, EP HZ HB i Brčko distrikt, noću, danju i jednotarifno — nalaze se na stranici [Cijena struje]({{ PAGES.electricity.path }}).
 
 - **Blokovi.** {{ C.power.blocks }}
 - **Niža tarifa.** {{ C.power.nt_hours }} Noćno punjenje na dvotarifnom brojilu je 35–40 % jeftinije od jednotarifnog.
