@@ -790,7 +790,7 @@ never count. beg.aero sits behind a Cloudflare bot check — the page title foun
 tima od <date>“, not „Dodato“, so the date stays true.
 Quarterly, with 3.11b: try again to confirm the `tim` sites (owner's site, network lists, drivers' reports); a confirmed
 one moves to `ostale.json`, one that is gone (owner says closed, drivers report „Nema punjača“) is removed.
-Recheck 28.10.2026 (all 96, Google in Brave + web search): 2 confirmed (Aqua Park Raj, by `op`; Narodni dom in Idvor, by `vs`); 94 stay unconfirmed. 21st century Zlatibor – Adora (TO Zlatibor list, Krfska 14) is not on the map: no house-level point in OSM or on an owner's site, and no point is taken from booking sites or the street's middle.
+Recheck 28.10.2026 (all 96, Google in Brave + web search): 2 confirmed (Aqua Park Raj, by `op`; Narodni dom in Idvor, by `vs`); 94 stay unconfirmed. 21st century Zlatibor – Adora (TO Zlatibor list, Krfska 14): no house-level point in OSM or on an owner's site; by the owner's decision 28.10.2026 („stavi po ulici sa napomenom da je tačka približna“) it sits on Krfska near the street's start with `loc.q: "ulica"` (card: `q_ulica`, „Približna tačka na ulici…“). `ulica` is only used on the owner's word; points from booking sites are never taken.
 
 #### 3.11c Drivers' reports, ratings, photos (backend)
 

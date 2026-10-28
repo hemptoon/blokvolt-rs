@@ -983,7 +983,7 @@ MAP_T = {
     'where': 'Gde tačno', 'addr_none': 'Adresa nije poznata — koristite koordinate.', 'copy': 'Kopiraj', 'copied_ll': 'Kopirano',
     'q_net': 'Tačka je sa spiska mreže.', 'q_osm': 'Tačka je iz OpenStreetMap-a.',
     'q_ocm': 'Tačka je iz Open Charge Map-a i može odstupati nekoliko desetina metara.',
-    'q_site': 'Približna tačka: parking ili objekat, ne sam punjač.', 'q_field': 'Tačka je proverena na licu mesta.',
+    'q_site': 'Približna tačka: parking ili objekat, ne sam punjač.', 'q_ulica': 'Približna tačka na ulici: tačan ulaz nije poznat, proverite adresu.', 'q_field': 'Tačka je proverena na licu mesta.',
     # neighbouring countries (cfg.region, /assets/map/region.json)
     'v_src': 'Iz otvorenih baza OpenStreetMap i Open Charge Map. Punjač nije pojedinačno proveren — pre polaska proverite u aplikaciji mreže.',
     'cc_hr': 'Hrvatska', 'cc_ba': 'Bosna i Hercegovina', 'cc_me': 'Crna Gora', 'cc_al': 'Albanija', 'cc_mk': 'Severna Makedonija',
