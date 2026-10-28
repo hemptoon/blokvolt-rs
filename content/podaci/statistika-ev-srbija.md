@@ -69,7 +69,7 @@ U EU je udeo električnih u prodaji novih automobila 18,8 %.
 
 ## Javni punjači
 
-Većina je na autoputevima i prometnijim pumpama. Srbija ima 3–4 punjača na 100.000 stanovnika, a cilj struke je 10–15. Na državnim punjačima na autoputevima (36 postavljeno, radi 24) punjenje je besplatno. Ostali naplaćuju uglavnom po minutu, a cene objavljuju samo u aplikacijama — [indeks cena](/javno-punjenje/#cene).
+Većina je na autoputevima i prometnijim pumpama. Srbija ima 3–4 punjača na 100.000 stanovnika, a cilj struke je 10–15. Na državnim punjačima na autoputevima (36 postavljeno, radi 27) punjenje je besplatno. Ostali naplaćuju uglavnom po minutu, a cene objavljuju samo u aplikacijama — [indeks cena](/javno-punjenje/#cene).
 
 <details markdown="1">
 <summary>Detalji: kako se broj menjao</summary>

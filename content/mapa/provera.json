@@ -1,6 +1,6 @@
 {
  "about": "Ručna provera punjača koji nisu na spiskovima mreža (content/mapa/mreze/). Za svaki: ukloni (x), spoji sa drugim (dup), pomeri na tačan položaj (fix) ili napomena uz oznaku 'nije potvrđeno'. g = postoji na Google mapama sa recenzijom mlađom od 12 meseci (samo naš zaključak, bez preuzimanja sadržaja); g_old = postoji na Google mapama, ali bez novijih recenzija; g_none = nema ga na Google mapama; prob = skorašnje recenzije kažu da ne radi. Videti docs/RUNBOOK.md §3.11.",
- "checked": "24.09.2026",
+ "checked": "28.10.2026",
  "stations": {
   "osm-n11608859730": {
    "x": "punjač za bicikle"
@@ -44,7 +44,7 @@
    "why": "OCM položaj 580 m od stanice; položaj sa roming mape (NIS Bački Vinogradi)"
   },
   "osm-n10961950559": {
-   "g": "g"
+   "g": "g_old"
   },
   "ocm-264470": {
    "g": "g"
@@ -71,7 +71,7 @@
    "g": "g_old"
   },
   "osm-n5304717494": {
-   "g": "g_old",
+   "g": "g",
    "note": "card"
   },
   "ocm-274114": {
@@ -105,7 +105,7 @@
    "g": "g_old"
   },
   "ocm-296382": {
-   "g": "g_old"
+   "g": "g"
   },
   "ocm-175433": {
    "g": "g_old"
@@ -153,7 +153,7 @@
    "g": "g_none"
   },
   "ocm-265198": {
-   "g": "g_none"
+   "g": "g_old"
   },
   "osm-n9683482215": {
    "g": "g_none"
@@ -189,7 +189,7 @@
    "g": "g_none"
   },
   "ocm-117649": {
-   "g": "g_none"
+   "g": "g_old"
   },
   "osm-n10078413138": {
    "g": "g_none"
@@ -226,6 +226,15 @@
   },
   "ocm-265197": {
    "x": "isti punjač kao „ABB“ na roming mapi (Orion eMobility), 11 m"
+  },
+  "osm-n6797205414": {
+   "g": "g"
+  },
+  "ocm-260782": {
+   "g": "g"
+  },
+  "ocm-265530": {
+   "g": "g_old"
   }
  }
 }

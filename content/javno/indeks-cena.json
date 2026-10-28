@@ -757,7 +757,7 @@
   {
    "op": "putevi-srbije",
    "op_name": "JP „Putevi Srbije“",
-   "where": "autoputevi, radi 24 od 36 punjača",
+   "where": "autoputevi, radi 27 od 36 punjača",
    "charger": "DC 40–120 kW",
    "free": true,
    "label": "besplatno",

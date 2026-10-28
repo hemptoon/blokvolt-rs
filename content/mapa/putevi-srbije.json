@@ -1,7 +1,7 @@
 {
  "about": "Official list of the state chargers on motorways (JP Putevi Srbije), copied by hand from the three tables (images) on the source page. status: 1 = U funkciji, 0 = (trenutno) nije u funkciji, -1 = u postupku priključenja. ids = stations of punjaci-ocm/osm that are this site (their status is taken from here); lat/lon/pos only for working sites that have no station in the open data: position of the toll plaza or rest area in OpenStreetMap (pos = that OSM element; the charger is somewhere on it). Refresh with the monthly update.",
  "source": "https://www.putevi-srbije.rs/index.php/en/electric-chargers",
- "checked": "10.10.2026",
+ "checked": "28.10.2026",
  "planned": 3,
  "sites": [
   {
@@ -28,7 +28,7 @@
     {
      "dir": "Subotica–Beograd",
      "power": "DC 75 kW, AC 22 kW",
-     "status": 0
+     "status": 1
     }
    ]
   },
@@ -237,16 +237,18 @@
     {
      "dir": "Pojate–Kruševac",
      "power": "DC 120 kW, AC 22 kW",
-     "status": 0,
-     "note": "toll"
+     "status": 1
     },
     {
      "dir": "Pojate–Kruševac",
      "power": "DC 120 kW, AC 22 kW",
-     "status": 0,
-     "note": "toll"
+     "status": 1
     }
-   ]
+   ],
+   "lat": 43.60542,
+   "lon": 21.33404,
+   "pos": "https://www.openstreetmap.org/node/14287145352",
+   "place": "Kruševac"
   },
   {
    "name": "Naplatna stanica Kruševac zapad",

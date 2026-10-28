@@ -498,6 +498,7 @@ NAME_FIX = {
     'MILKOP DOO RAŠKA': 'Milkop Raška', 'Crowne Plaza Hypercharger': 'Crowne Plaza', 'Shell Batajnica 1': 'Shell Batajnica',
     'Shell Adaševci 1': 'Shell Adaševci', 'BEX Subotica 1': 'BEX Subotica', 'BEX Jagodina 1': 'BEX Jagodina', 'NIS Zmaj 1': 'NIS Zmaj',
     'Delta kongresni centar - Sava Centar': 'Sava Centar (Delta kongresni centar)', 'Opština Bela Palanka': 'Bela Palanka',
+    'Ražanj - E13002': 'Ražanj',
 }
 CITY_FIX = {'belgrade': 'Beograd', 'unknown': '', 'vojvodina': '', 'bajina basta': 'Bajina Bašta', 'loznica 15300': 'Loznica',
             'ub': 'Ub', 'indjija': 'Inđija', 'krusevac': 'Kruševac', 'razanj': 'Ražanj', 'cicevac': 'Ćićevac', 'kosevi': 'Koševi',
@@ -510,6 +511,8 @@ ROAM_NET = {'RS*ORI': 'orion-emobility', 'RS*007': 'edrive'}
 # eDrive's own names of its sites (eDrive app, 05.10.2026), by the EVSE number on the roaming map
 EVSE_NAMES = {'E00040': 'Ingrap-Omni Valjevo', 'E00050': 'Ingrap-Omni Divčibare', 'E00045': 'Monogramlux Inđija',
               'E00004': 'Gradska plaža Čačak', 'E00003': 'West End', 'E00023': 'BEX Konjarnik', 'E00020': 'Dragović Petrol'}
+# addresses the roaming map gets wrong (28.10.2026: E00043 stands in Valjevo — its pin and street — but the record says "Grocka")
+EVSE_ADDR = {'E00043': 'Hajduk Veljkova 30, Valjevo'}
 MATCH_M = {'same': 250, 'host': 150, 'none': 100}   # official site <-> open-data station, by how well the networks agree
 HOST_NETS = {'nis-gazprom', 'omv'}   # hosts whose chargers another network runs
 
@@ -619,7 +622,7 @@ def official_sites():
         nm = EVSE_NAMES.get(name) or ('' if re.fullmatch(r'E\d{5}', name) else smart_case(NAME_FIX.get(name, name)))
         recs.append({'k': 'rm', 'id': 'rm-%d-%d' % (round(lat * 1e5), round(lon * 1e5)), 'lat': lat, 'lon': lon,
                      'net': ROAM_NET.get(op, ''), 'op': op, 'raw': name, 'n': nm,
-                     'a': ', '.join(x for x in (_street(street, c), c) if x), 'c': _rm_conns(f[9], f[10]), 'evse': n,
+                     'a': EVSE_ADDR.get(name) or ', '.join(x for x in (_street(street, c), c) if x), 'c': _rm_conns(f[9], f[10]), 'evse': n,
                      'putevi': bool(re.search(r'(?i)putevi|naplatn|odmori', name + ' ' + street))})
     te = json.load(open(MREZE / meta['te']['file'], encoding='utf-8'))
     for s in te['sites']:
