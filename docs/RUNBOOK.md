@@ -27,7 +27,9 @@ needed or handled.
   and date. Never publish account names, e-mails, phone numbers, card digits, fiscal/receipt numbers,
   car plates or anything that shows where the owner was at what time (use the month, not the exact
   timestamp, for receipts).
-- No personal names of the team anywhere in the repo or on the site.
+- Team names may be published since 28.10.2026 (owner's decision: the earlier "no names" rule was only for the early
+  stage) — use them where a real contact person helps (press letters, media kit). Site copy itself stays impersonal
+  ("vi", no "mi"/"redakcija"); the Android signing certificate keeps "CN=BlokVolt, O=BlokVolt, C=RS".
 - Site copy is Serbian (Latin script), calm and factual.
 - Every public change gets a line in `content/podaci/izmene.md` (newest date section on top). The home
   page shows the three newest items of /vesti/ (3.15); `news` in `content/data/site.json` is only an old archive of site changes.
