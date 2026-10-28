@@ -855,32 +855,62 @@ const MAIL_T = {
   },
 };
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
-// e-mail-safe HTML: tables, inline styles, one 600 px column, system fonts, no remote images.
-// o: {lang, pre, h, p: [html], code, btn: [label, url], list: [text], after: [html], small, why, unsub: [label, url]}
+const FONT = "Onest,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
+// Colours: page #F4F3EE, card #FFFFFF, ink #0D111A, text #2A2F3A, secondary #5C6270; lime #D9F45B only as the thin
+// bar on top of the card (a background-image too, which Gmail's dark mode leaves alone) and as the button in dark
+// mode — never lime text on white, no mid-tones that turn to mud when Gmail inverts the mail.
+// Dark mode: Apple Mail / iOS Mail / Outlook.com follow the <style> block (prefers-color-scheme, [data-ogsc]);
+// Gmail ignores it and inverts the light colours itself, which this palette survives.
+const MAIL_CSS = ':root{color-scheme:light dark;supported-color-schemes:light dark}' +
+  'a[x-apple-data-detectors]{color:inherit!important;text-decoration:none!important}' +
+  '@media (max-width:480px){.bv-in{padding:26px 22px 24px!important}.bv-code{font-size:40px!important;letter-spacing:8px!important;padding-left:8px!important}}' +
+  '@media (prefers-color-scheme:dark){' +
+  '.bv-page,body{background:#0B0E14!important}.bv-card{background:#151922!important;border-color:#262B36!important}' +
+  '.bv-mark{color:#F5F6F8!important}.bv-h{color:#F5F6F8!important}.bv-p,.bv-li{color:#C9CDD5!important}.bv-s,.bv-foot,.bv-foot a{color:#9AA1AD!important}' +
+  '.bv-card b,.bv-card a{color:#F5F6F8!important}.bv-dot{color:#D9F45B!important}.bv-rule{border-color:#262B36!important}' +
+  '.bv-box{background:#1D222C!important;border-color:#2E3441!important}.bv-code{color:#FFFFFF!important}' +
+  '.bv-btn-td{background:#D9F45B!important}.bv-card a.bv-btn{color:#0D111A!important}}' +
+  '[data-ogsc] .bv-mark,[data-ogsc] .bv-h,[data-ogsc] .bv-card b,[data-ogsc] .bv-card a{color:#F5F6F8!important}' +
+  '[data-ogsc] .bv-p,[data-ogsc] .bv-li{color:#C9CDD5!important}[data-ogsc] .bv-s,[data-ogsc] .bv-foot{color:#9AA1AD!important}' +
+  '[data-ogsc] .bv-code{color:#FFFFFF!important}[data-ogsb] .bv-box{background:#1D222C!important}' +
+  '[data-ogsc] .bv-card a.bv-btn{color:#0D111A!important}[data-ogsb] .bv-btn-td{background:#D9F45B!important}';
+// e-mail-safe HTML: tables, inline styles, one 520 px column, system fonts, no remote images.
+// o: {lang, pre, h, p: [html], code, codeNote, btn: [label, url], list: [text], after: [html], small, why, unsub: [label, url]}
 function mailHtml(env, o) {
   const host = siteOf(env).replace(/^https?:\/\//, '');
-  const P = 'margin:0 0 16px;font:16px/1.55 ' + FONT + ';color:#2A2F3A';
-  let b = '<h1 style="margin:0 0 14px;font:700 24px/1.25 ' + FONT + ';color:#0D111A;letter-spacing:-.3px">' + esc(o.h) + '</h1>';
-  for (const p of o.p || []) b += '<p style="' + P + '">' + p + '</p>';
-  if (o.code) b += '<p style="margin:4px 0 20px"><span style="display:inline-block;padding:14px 20px 14px 26px;border-radius:12px;background:#F3FBD2;font:700 34px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:10px;color:#0D111A">' + esc(o.code) + '</span></p>';
-  if (o.list) b += '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px">' + o.list.map(x =>
-    '<tr><td valign="top" style="padding:3px 10px 3px 0;font:16px/1.5 ' + FONT + ';color:#6E8A12">&#9679;</td><td style="padding:3px 0;font:16px/1.5 ' + FONT + ';color:#2A2F3A">' + esc(x) + '</td></tr>').join('') + '</table>';
-  if (o.btn) b += '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 20px"><tr><td style="border-radius:12px;background:#0D111A">' +
-    '<a href="' + esc(o.btn[1]) + '" style="display:inline-block;padding:14px 22px;border-radius:12px;font:600 16px/1.2 ' + FONT + ';color:#FFFFFF;text-decoration:none">' + esc(o.btn[0]) + '</a></td></tr></table>';
-  for (const p of o.after || []) b += '<p style="' + P + '">' + p + '</p>';
-  if (o.small) b += '<p style="margin:0;font:14px/1.5 ' + FONT + ';color:#5C6270">' + esc(o.small) + '</p>';
-  const foot = esc(o.why) + (o.unsub ? ' <a href="' + esc(o.unsub[1]) + '" style="color:#5C6270">' + esc(o.unsub[0]) + '</a>' : '');
+  const T = 'role="presentation" cellpadding="0" cellspacing="0" border="0"';
+  const P = 'margin:0 0 16px;font:16px/1.6 ' + FONT + ';color:#2A2F3A';
+  let b = '<h1 class="bv-h" style="margin:0 0 12px;font:700 26px/1.25 ' + FONT + ';color:#0D111A;letter-spacing:-.4px">' + esc(o.h) + '</h1>';
+  for (const p of o.p || []) b += '<p class="bv-p" style="' + P + '">' + p + '</p>';
+  // the digits in one text run (copy gives "590924"); the spacing is letter-spacing only
+  if (o.code) b += '<table ' + T + ' width="100%" style="margin:8px 0 24px"><tr><td class="bv-box" align="center" bgcolor="#F3F3EF" ' +
+    'style="padding:24px 12px 18px;background:#F3F3EF;border:1px solid #E6E5DE;border-radius:14px">' +
+    '<div class="bv-code" style="font:700 44px/1.1 ' + FONT + ';font-variant-numeric:tabular-nums;font-feature-settings:\'tnum\';letter-spacing:10px;padding-left:10px;color:#0D111A">' + esc(o.code) + '</div>' +
+    (o.codeNote ? '<div class="bv-s" style="margin-top:10px;font:14px/1.4 ' + FONT + ';color:#5C6270">' + esc(o.codeNote) + '</div>' : '') + '</td></tr></table>';
+  if (o.list) b += '<table ' + T + ' style="margin:-4px 0 18px">' + o.list.map(x =>
+    '<tr><td class="bv-dot" valign="top" style="padding:2px 12px 2px 2px;font:700 16px/1.6 ' + FONT + ';color:#0D111A">&#8226;</td>' +
+    '<td class="bv-li" style="padding:2px 0;font:16px/1.6 ' + FONT + ';color:#2A2F3A">' + esc(x) + '</td></tr>').join('') + '</table>';
+  if (o.btn) b += '<table ' + T + ' style="margin:4px 0 24px"><tr><td class="bv-btn-td" align="center" bgcolor="#0D111A" style="border-radius:12px;background:#0D111A">' +
+    '<a class="bv-btn" href="' + esc(o.btn[1]) + '" style="display:inline-block;padding:15px 26px;border-radius:12px;font:600 16px/1.2 ' + FONT + ';color:#FFFFFF;text-decoration:none">' + esc(o.btn[0]) + '</a></td></tr></table>';
+  for (const p of o.after || []) b += '<p class="bv-p" style="' + P + '">' + p + '</p>';
+  if (!o.small && b.endsWith('</p>')) b = b.slice(0, b.lastIndexOf('margin:0 0 16px')) + 'margin:0' + b.slice(b.lastIndexOf('margin:0 0 16px') + 15);
+  if (o.small) b += '<table ' + T + ' width="100%"><tr><td class="bv-rule" style="border-top:1px solid #ECEBE4;padding-top:18px">' +
+    '<p class="bv-s" style="margin:0;font:14px/1.55 ' + FONT + ';color:#5C6270">' + esc(o.small) + '</p></td></tr></table>';
+  const foot = esc(o.why) + (o.unsub ? '<br><a href="' + esc(o.unsub[1]) + '" style="color:#5C6270;text-decoration:underline">' + esc(o.unsub[0]) + '</a>' : '');
   return '<!DOCTYPE html><html lang="' + o.lang + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' +
-    '<meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light"><title>' + esc(o.title) + '</title></head>' +
-    '<body style="margin:0;padding:0;background:#F4F3EE">' +
-    '<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:#F4F3EE">' + esc(o.pre) + '&#8199;&#65279;&#847;'.repeat(12) + '</div>' +
-    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F4F3EE"><tr><td align="center" style="padding:28px 12px 32px">' +
-    '<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px">' +
-    '<tr><td style="padding:0 6px 16px"><span style="font:22px/1 ' + FONT + ';letter-spacing:-.6px;color:#0D111A">blok<b style="font-weight:800">volt</b></span>' +
-    '<div style="width:34px;height:5px;margin-top:7px;border-radius:3px;background:#D9F45B;font-size:0;line-height:0">&nbsp;</div></td></tr>' +
-    '<tr><td style="background:#FFFFFF;border:1px solid #E6E5DC;border-radius:18px;padding:30px 30px 26px">' + b + '</td></tr>' +
-    '<tr><td style="padding:18px 8px 0;font:13px/1.55 ' + FONT + ';color:#5C6270">BlokVolt · ' + esc(host) + ' · ' + esc(replyTo(env)) + '<br>' + foot + '</td></tr>' +
+    '<meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark">' +
+    '<meta name="format-detection" content="telephone=no,date=no,address=no,email=no"><title>' + esc(o.title) + '</title>' +
+    '<style>' + MAIL_CSS + '</style></head>' +
+    '<body class="bv-page" style="margin:0;padding:0;background:#F4F3EE;-webkit-text-size-adjust:100%">' +
+    '<div style="display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all">' + esc(o.pre) + '&#8199;&#65279;&#847;'.repeat(20) + '</div>' +
+    '<table ' + T + ' width="100%" class="bv-page" bgcolor="#F4F3EE" style="background:#F4F3EE"><tr><td align="center" style="padding:32px 12px 36px">' +
+    '<table ' + T + ' width="520" style="width:100%;max-width:520px">' +
+    '<tr><td><table ' + T + ' width="100%" class="bv-card" bgcolor="#FFFFFF" style="background:#FFFFFF;border:1px solid #E7E6DF;border-radius:18px;border-collapse:separate;overflow:hidden">' +
+    '<tr><td height="5" bgcolor="#D9F45B" style="height:5px;background:#D9F45B;background-image:linear-gradient(#D9F45B,#D9F45B);font-size:0;line-height:0">&nbsp;</td></tr>' +
+    '<tr><td class="bv-in" style="padding:30px 34px 30px">' +
+    '<div class="bv-mark" style="margin:0 0 28px;font:20px/1 ' + FONT + ';letter-spacing:-.5px;color:#0D111A">blok<b style="font-weight:800">volt</b></div>' +
+    b + '</td></tr></table></td></tr>' +
+    '<tr><td class="bv-foot" style="padding:20px 12px 0;font:13px/1.6 ' + FONT + ';color:#5C6270">BlokVolt · ' + esc(host) + ' · ' + esc(replyTo(env)) + '<br>' + foot + '</td></tr>' +
     '</table></td></tr></table></body></html>';
 }
 function mailText(env, o) {
@@ -904,8 +934,8 @@ const fromAddr = env => ((env.MAIL_FROM || MAIL_FROM).match(/<([^>]+)>/) || [])[
 
 function mailCode(env, lang, email, code, link, idem) {
   const T = MAIL_T[lang], url = siteOf(env) + lpre(lang) + '/nalog/?prijava=' + link;
-  return renderMail(env, 'code', { lang, title: T.code_subj.replace('{code}', code), pre: T.code_pre, h: T.code_h, p: [esc(T.code_p)], pText: [T.code_p],
-    code, btn: [T.code_btn, url], small: T.code_small, why: T.code_why }, { to: email, idem });
+  return renderMail(env, 'code', { lang, title: T.code_subj.replace('{code}', code), pre: T.code_h + '. ' + T.code_pre, h: T.code_h, p: [esc(T.code_p)], pText: [T.code_p],
+    code, codeNote: T.code_pre, btn: [T.code_btn, url], small: T.code_small, why: T.code_why }, { to: email, idem });
 }
 function mailConfirm(env, lang, email, token, at) {
   const T = MAIL_T[lang], url = siteOf(env) + lpre(lang) + '/pregled/potvrda/?t=' + token;

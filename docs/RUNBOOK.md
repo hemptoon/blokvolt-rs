@@ -1568,7 +1568,12 @@ a sign-in code and a confirmation link, which the reader asks for, still go out.
 confirmed sign-up and switching the newsletter on in the account (a proved address, an explicit act) lift `bounce` and
 `complaint`. Newsletter mail carries `List-Unsubscribe` (the one-click URL and
 `mailto:hello@blokvolt.com?subject=odjava`) and `List-Unsubscribe-Post`. Three templates in SR/EN/RU (code,
-confirmation, welcome): tables, inline styles, 600 px, no remote images, a text part. A `mailto` unsubscribe lands in
+confirmation, welcome; `mailHtml` in the worker): tables, inline styles, one 520 px column, no remote images, a text
+part. Look (28.10.2026): white card on `#F4F3EE`, ink `#0D111A`, secondary `#5C6270`, lime `#D9F45B` only as the thin bar
+on top of the card (also a `background-image`, which Gmail's dark mode does not invert) and as the button in dark mode —
+never lime text on white, no olive (`#6E8A12` is gone from every mail, the issues too), no mid-tone backgrounds. The
+code is one text run (copy gives the six digits), spaced by `letter-spacing` only. Dark mode: `color-scheme: light dark`,
+a `prefers-color-scheme: dark` block (Apple Mail, iOS Mail) and `[data-ogsc]` rules (Outlook.com); Gmail inverts by itself. A `mailto` unsubscribe lands in
 hello@blokvolt.com and is handled by hand in the D1 console:
 `UPDATE subs SET status = 'off', off_at = unixepoch(), off_reason = 'mailto' WHERE email = '…';` and
 `INSERT INTO consents (email, kind, granted, text_v, src, at) VALUES ('…', 'pregled', 0, 'pregled-v1', 'mailto', unixepoch());`
