@@ -4,12 +4,12 @@ h1: Subvencije za električne automobile 2026
 description: Država daje 5.000 € za nov električni automobil, 500 € za motocikl i 250 € za moped. Samo BEV, prijava preko eUprave do 1. decembra 2026.
 kicker: Subvencije
 lead: Za nov električni automobil država 2026. daje 5.000 €, a zahtev se podnosi preko eUprave do 1. decembra.
-updated: 22.09.2026
-next_check: 15.10.2026
+updated: 28.10.2026
+next_check: 20.11.2026
 published: 2026-09-22
-modified: 2026-09-22
+modified: 2026-10-28
 priority: 0.9
-sources: Uredba o uslovima i načinu sprovođenja subvencionisane kupovine novih vozila koja imaju isključivo električni pogon (Sl. glasnik RS 12/2026, 86/2026) :: https://www.paragraf.rs/propisi/uredba-o-uslovima-subvencionisane-kupovine-elektricnih-hibridnih-vozila.html | eUprava — životna situacija „Električna vozila“ (usluge 01107 i 01108) :: https://euprava.gov.rs/%C5%BEivotna-oblast/18/%C5%BEivotna-situacija/184 | Najčešća pitanja i odgovori — Ministarstvo zaštite životne sredine (PDF) :: https://euprava.gov.rs/media/dokumenta/Najcesca_pitanja_odgovori_subvencija_mv.pdf | Biznis.rs, 10.09.2026 — rok produžen do 1. decembra :: https://biznis.rs/vesti/srbija/produzen-rok-za-subvencije-za-elektricna-vozila-prijave-do-1-decembra/ | 021.rs, 12.09.2026 — rok produžen, 170 miliona pre rebalansa :: https://www.021.rs/info/biznis-i-ekonomija/455006/rok-za-subvencije-za-elektricna-vozila-produzen-do-1-decembra | Tanjug, 07.08.2026 — preko 1.000 zahteva, ~600 vozila finansirano :: https://www.tanjug.rs/ekonomija/srbija/271957/pavkov-veliko-interesovanje-za-elektricna-vozila-u-srbiji-1000-prijava-za-subvencije/vest | Paragraf dnevne vesti, 12.02.2026 — 170 miliona dinara za 2026 :: https://www.paragraf.rs/dnevne-vesti/120226/120226-vest10.html | B92, 08.01.2026 — rezultati 2025: 980 odobrenih zahteva :: https://www.b92.net/automobili/visoki-napon/196442/subvencije-dale-rezultat-gotovo-1000-elektricnih-automobila-kupljeno-u-2025-pomoc-stize-i-u-2026/vest
+sources: Uredba o uslovima i načinu sprovođenja subvencionisane kupovine novih vozila koja imaju isključivo električni pogon (Sl. glasnik RS 12/2026, 86/2026) :: https://www.paragraf.rs/propisi/uredba-o-uslovima-subvencionisane-kupovine-elektricnih-hibridnih-vozila.html | eUprava — životna situacija „Električna vozila“ (usluge 01107 i 01108) :: https://euprava.gov.rs/%C5%BEivotna-oblast/18/%C5%BEivotna-situacija/184 | Najčešća pitanja i odgovori — Ministarstvo zaštite životne sredine (PDF) :: https://euprava.gov.rs/media/dokumenta/Najcesca_pitanja_odgovori_subvencija_mv.pdf | Biznis.rs, 10.09.2026 — rok produžen do 1. decembra :: https://biznis.rs/vesti/srbija/produzen-rok-za-subvencije-za-elektricna-vozila-prijave-do-1-decembra/ | 021.rs, 12.09.2026 — rok produžen, 170 miliona pre rebalansa :: https://www.021.rs/info/biznis-i-ekonomija/455006/rok-za-subvencije-za-elektricna-vozila-produzen-do-1-decembra | Tanjug, 07.08.2026 — preko 1.000 zahteva, ~600 vozila finansirano :: https://www.tanjug.rs/ekonomija/srbija/271957/pavkov-veliko-interesovanje-za-elektricna-vozila-u-srbiji-1000-prijava-za-subvencije/vest | Biznis.rs, 31.08.2026 — Skupština usvojila rebalans budžeta za 2026. :: https://biznis.rs/vesti/srbija/skupstina-srbije-usvojila-rebalans-republickog-budzeta-za-2026-godinu/ | Paragraf (Euronews), 28.09.2026 — uslovi i prekid dodele ako novac bude potrošen :: https://www.paragraf.rs/dnevne-vesti/071026/071026-vest10.html | Paragraf dnevne vesti, 12.02.2026 — 170 miliona dinara za 2026 :: https://www.paragraf.rs/dnevne-vesti/120226/120226-vest10.html | B92, 08.01.2026 — rezultati 2025: 980 odobrenih zahteva :: https://www.b92.net/automobili/visoki-napon/196442/subvencije-dale-rezultat-gotovo-1000-elektricnih-automobila-kupljeno-u-2025-pomoc-stize-i-u-2026/vest
 image: ac-punjac-bulevar
 image_alt: Mali električni auto na punjenju na bulevaru
 ---
@@ -18,7 +18,7 @@ image_alt: Mali električni auto na punjenju na bulevaru
 - **500 €** za motocikl, **250 €** za moped
 - Samo **potpuno električna vozila**; hibridi i plug-in hibridi nemaju subvenciju od 2025.
 - Prijava preko **eUprave** do **1. decembra 2026.**
-- Budžet: **170 miliona RSD** pre rebalansa
+- Budžet: **170 miliona RSD** na početku godine; novi iznos nije objavljen
 </div>
 
 ## Ko ima pravo
@@ -57,12 +57,12 @@ Prijave traju od 1. marta. Prvobitni rok, 30. septembar, produžen je uredbom u 
 
 ## Stanje budžeta
 
-Do avgusta je stiglo preko 1.000 zahteva i finansirano oko 600 vozila, za oko 3 miliona € (oko 350 miliona RSD). To je duplo više od prvobitnog budžeta: novac je dodavan, ali novi zvanični limit nije objavljen. Uredan zahtev ulazi u red, a isplata u 2026. zavisi od rebalansa.
+Do avgusta je stiglo preko 1.000 zahteva i finansirano oko 600 vozila, za oko 3 miliona € (oko 350 miliona RSD). To je duplo više od prvobitnog budžeta: novac je dodavan, ali novi zvanični limit nije objavljen ni posle rebalansa budžeta, koji je Skupština usvojila 31. avgusta. Uredan zahtev ulazi u red. Ako novac bude potrošen pre 1. decembra, dodela se prekida, a ministarstvo to objavljuje na svom sajtu. Do 28. oktobra ni mediji ni eUprava nisu objavili da je novac potrošen, a usluga na eUpravi je aktivna.
 
 <details markdown="1">
 <summary>Detalji: hronologija i 2025.</summary>
 
-Budžet od 170 miliona RSD (≈1,45 mil. €) objavljen je 6. februara. Ministarka je 2. marta najavila dodatna sredstva ako se novac potroši. 7–10. avgusta: zahteva „pet puta više nego lani“, pokrivena otprilike trećina, ministarstvo traži još novca. Status zahteva: eUprava ili ministarstvo.
+Budžet od 170 miliona RSD (≈1,45 mil. €) objavljen je 6. februara. Ministarka je 2. marta najavila dodatna sredstva ako se novac potroši. 7–10. avgusta: zahteva „pet puta više nego lani“, pokrivena otprilike trećina, ministarstvo traži još novca. 31. avgusta Skupština je usvojila rebalans budžeta; iznos za subvencije u izveštajima o rebalansu nije naveden. 10. septembra, uz produženje roka: potrebno je znatno više novca od raspoloživog, a ministarstvo traži povećanje budžeta za ovu namenu. Status zahteva: eUprava ili ministarstvo.
 
 U 2025: 980 odobrenih zahteva (207 fizičkih, 773 pravna lica), skoro 1.000 vozila. Prvobitnih 170 miliona potrošeno je do avgusta; ukupan budžet je, po medijima, premašio 450 miliona RSD. Od 2020. do kraja 2025. država je isplatila više od 1,67 milijardi RSD za preko 3.800 vozila, uključujući hibride.
 
