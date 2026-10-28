@@ -1,0 +1,54 @@
+{
+  "cover": {"image": "servisi", "alt": {"sr": "Električni auto na dizalici u servisu", "en": "An electric car on a lift in a workshop", "ru": "Электромобиль на подъёмнике в сервисе"}},
+  "sr": {
+    "brief": [
+      "Tesla u Srbiji nema ovlašćeni servis: održavaju je nezavisni servisi",
+      "BYD ima 4 ovlašćena servisa; pomoć na putu 0–24: 069/667-667",
+      "Cenu dijagnostike baterije niko ne objavljuje: pitajte unapred"
+    ],
+    "keys": [
+      {"value": "8 godina", "label": "ili 160.000 km: tipična garancija", "icon": "battery"},
+      {"value": "4", "label": "ovlašćena BYD servisa", "icon": "wrench"}
+    ],
+    "important": "Za Teslu pre kupovine proverite i da li osiguravač prihvata kasko",
+    "paths": [
+      {"title": "Mapa servisa", "text": "Svi servisi sa adresom, telefonom i izvorom", "url": "https://www.blokvolt.rs/servisi/"},
+      {"title": "Provera baterije", "text": "SOH, domet i istorija brzog punjenja pre kupovine", "url": "https://www.blokvolt.rs/podaci/provera-baterije-polovnog-elektricnog-auta/"},
+      {"title": "Pomoć na putu", "text": "Kvar ili udes na putu i šlep", "url": "https://www.blokvolt.rs/podaci/pomoc-na-putu/"}
+    ]
+  },
+  "en": {
+    "brief": [
+      "Tesla has no authorised workshop in Serbia: independent workshops service the cars",
+      "BYD has 4 authorised workshops; roadside assistance 0–24: 069/667-667",
+      "Nobody publishes the price of battery diagnostics: ask in advance"
+    ],
+    "keys": [
+      {"value": "8 years", "label": "or 160.000 km: typical warranty", "icon": "battery"},
+      {"value": "4", "label": "authorised BYD workshops", "icon": "wrench"}
+    ],
+    "important": "For a Tesla, also check before buying whether the insurer accepts comprehensive cover",
+    "paths": [
+      {"title": "Service map", "text": "All workshops with address, phone and source", "url": "https://www.blokvolt.rs/en/servisi/"},
+      {"title": "Battery check", "text": "SOH, range and fast-charging history before buying", "url": "https://www.blokvolt.rs/en/podaci/provera-baterije-polovnog-elektricnog-auta/"},
+      {"title": "Roadside assistance", "text": "A breakdown or accident on the road, and towing", "url": "https://www.blokvolt.rs/en/podaci/pomoc-na-putu/"}
+    ]
+  },
+  "ru": {
+    "brief": [
+      "У Tesla в Сербии нет официального сервиса: машины обслуживают независимые мастерские",
+      "У BYD 4 официальных сервиса; помощь на дороге 0–24: 069/667-667",
+      "Цену диагностики батареи никто не публикует: спрашивайте заранее"
+    ],
+    "keys": [
+      {"value": "8 лет", "label": "или 160.000 км: стандартная гарантия", "icon": "battery"},
+      {"value": "4", "label": "официальных сервиса BYD", "icon": "wrench"}
+    ],
+    "important": "Для Tesla до покупки проверьте и то, принимает ли страховщик каско",
+    "paths": [
+      {"title": "Карта сервисов", "text": "Все сервисы с адресом, телефоном и источником", "url": "https://www.blokvolt.rs/ru/servisi/"},
+      {"title": "Проверка батареи", "text": "SOH, запас хода и история быстрых зарядок", "url": "https://www.blokvolt.rs/ru/podaci/provera-baterije-polovnog-elektricnog-auta/"},
+      {"title": "Помощь на дороге", "text": "Поломка или авария в пути и эвакуатор", "url": "https://www.blokvolt.rs/ru/podaci/pomoc-na-putu/"}
+    ]
+  }
+}

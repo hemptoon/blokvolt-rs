@@ -1,0 +1,72 @@
+{
+  "cover": {"image": "uvoz-i-carina", "alt": {"sr": "Kamion sa automobilima na graničnom prelazu", "en": "A car transporter at a border crossing", "ru": "Автовоз с машинами на пограничном переходе"}},
+  "sr": {
+    "hero": {"value": "0 %", "label": "carina iz EU, uz EUR.1 ili izjavu o poreklu"},
+    "brief": [
+      "Uvek se plaća PDV 20 %, na carinsku vrednost uvećanu za carinu",
+      "Nov električni iz Kine: 4,5 %, polovan 4 %; bez preferencijalnog porekla 5 %",
+      "Polovni se uvoze bez starosnog ograničenja"
+    ],
+    "keys": [
+      {"value": "12,5 %", "label": "carina za benzin, dizel i hibrid", "icon": "percent"},
+      {"value": "8 godina", "label": "ili 160.000 km: tipična garancija", "icon": "battery"}
+    ],
+    "bars": {
+      "title": "Carina i PDV za auto od 30.000 €",
+      "note": "Ukupno, €; bez prevoza, špedicije i homologacije",
+      "items": [
+        {"label": "EU, uz dokaz o poreklu", "value": 6000, "display": "6.000", "accent": true},
+        {"label": "Kina, nov električni (4,5 %)", "value": 7620, "display": "7.620"},
+        {"label": "Električni (5 %)", "value": 7800, "display": "7.800"},
+        {"label": "Benzin ili hibrid (12,5 %)", "value": 10500, "display": "10.500"}
+      ]
+    },
+    "important": "Stopu za konkretno vozilo pre kupovine proverite kod carinskog posrednika"
+  },
+  "en": {
+    "hero": {"value": "0 %", "label": "duty from the EU, with EUR.1 or a declaration"},
+    "brief": [
+      "VAT of 20 % is always paid, on the customs value plus the customs duty",
+      "New electric car from China: 4,5 %, used 4 %; without preferential origin 5 %",
+      "Used cars are imported with no age limit"
+    ],
+    "keys": [
+      {"value": "12,5 %", "label": "duty on petrol, diesel and hybrid", "icon": "percent"},
+      {"value": "8 years", "label": "or 160.000 km: typical battery warranty", "icon": "battery"}
+    ],
+    "bars": {
+      "title": "Duty and VAT on a 30.000 € car",
+      "note": "Total, €; excluding transport, forwarding and homologation",
+      "items": [
+        {"label": "EU, with proof of origin", "value": 6000, "display": "6.000", "accent": true},
+        {"label": "China, new electric (4,5 %)", "value": 7620, "display": "7.620"},
+        {"label": "Electric (5 %)", "value": 7800, "display": "7.800"},
+        {"label": "Petrol or hybrid (12,5 %)", "value": 10500, "display": "10.500"}
+      ]
+    },
+    "important": "Check the rate for a specific vehicle with a customs broker before you buy"
+  },
+  "ru": {
+    "hero": {"value": "0 %", "label": "пошлина из ЕС при EUR.1 или декларации"},
+    "brief": [
+      "НДС 20 % платится всегда — на таможенную стоимость, увеличенную на пошлину",
+      "Новый электромобиль из Китая: 4,5 %, подержанный 4 %; без преференций 5 %",
+      "Подержанные автомобили ввозятся без ограничения по возрасту"
+    ],
+    "keys": [
+      {"value": "12,5 %", "label": "пошлина на бензин, дизель и гибрид", "icon": "percent"},
+      {"value": "8 лет", "label": "или 160.000 км: типичная гарантия", "icon": "battery"}
+    ],
+    "bars": {
+      "title": "Пошлина и НДС на авто за 30.000 €",
+      "note": "Итого, €; без доставки, экспедирования и гомологации",
+      "items": [
+        {"label": "ЕС, с подтверждением", "value": 6000, "display": "6.000", "accent": true},
+        {"label": "Китай, новый (4,5 %)", "value": 7620, "display": "7.620"},
+        {"label": "Электромобиль (5 %)", "value": 7800, "display": "7.800"},
+        {"label": "Бензин, гибрид (12,5 %)", "value": 10500, "display": "10.500"}
+      ]
+    },
+    "important": "Ставку для конкретного автомобиля до покупки уточните у таможенного брокера"
+  }
+}

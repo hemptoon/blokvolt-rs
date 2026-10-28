@@ -1,0 +1,60 @@
+{
+  "cover": {"image": "elektricni-automobili", "alt": {"sr": "Električni automobili u izložbenom salonu", "en": "Electric cars in a showroom", "ru": "Электромобили в автосалоне"}},
+  "sr": {
+    "hero": {"value": "36", "label": "marki sa zvaničnom prodajom u Srbiji"},
+    "brief": [
+      "Najniža cena novog kod uvoznika: Dacia Spring, od 17.990 €, posle subvencije 12.990 €",
+      "Ispod 30.000 € je 18 modela; cene se proveravaju jednom mesečno, sa izvorom i datumom",
+      "Tesla nema uvoznika, salon ni servis u Srbiji, a ima dve Supercharger lokacije"
+    ],
+    "keys": [
+      {"value": "17.990 €", "label": "Dacia Spring, najniža cena kod uvoznika", "icon": "car"},
+      {"value": "1.166", "label": "novih registrovano januar–septembar 2026", "icon": "calendar"},
+      {"value": "18", "label": "modela ispod 30.000 €", "icon": "coins"}
+    ],
+    "important": "Subvencija od 5.000 € važi samo za nov automobil; za polovan ne važi",
+    "paths": [
+      {"title": "Cene novih", "text": "Svi modeli sa cenom pre i posle subvencije", "url": "https://www.blokvolt.rs/podaci/cene-elektricnih-automobila/"},
+      {"title": "Polovni i uvezeni", "text": "Oglasi, ovlašćeni prodavci, uvoz iz EU", "url": "https://www.blokvolt.rs/elektricni-automobili/polovni/"},
+      {"title": "Subvencije 2026", "text": "Ko ima pravo, kako i do kada se podnosi", "url": "https://www.blokvolt.rs/podaci/subvencije-2026/"}
+    ]
+  },
+  "en": {
+    "hero": {"value": "36", "label": "brands with official sales in Serbia"},
+    "brief": [
+      "Lowest importer price for a new car: Dacia Spring, from 17.990 €, 12.990 € after the subsidy",
+      "18 models cost under 30.000 €; prices are checked once a month, with the source and date",
+      "Tesla has no importer, showroom or service centre in Serbia, but two Supercharger locations"
+    ],
+    "keys": [
+      {"value": "17.990 €", "label": "Dacia Spring, lowest importer price", "icon": "car"},
+      {"value": "1.166", "label": "new registrations Jan–Sep 2026", "icon": "calendar"},
+      {"value": "18", "label": "models under 30.000 €", "icon": "coins"}
+    ],
+    "important": "The 5.000 € subsidy applies only to a new car, not to a used one",
+    "paths": [
+      {"title": "New car prices", "text": "Every model with its price before and after the subsidy", "url": "https://www.blokvolt.rs/en/podaci/cene-elektricnih-automobila/"},
+      {"title": "Used and imported", "text": "Classified ads, authorised dealers, import from the EU", "url": "https://www.blokvolt.rs/en/elektricni-automobili/polovni/"},
+      {"title": "Subsidies 2026", "text": "Who is eligible, how and until when to apply", "url": "https://www.blokvolt.rs/en/podaci/subvencije-2026/"}
+    ]
+  },
+  "ru": {
+    "hero": {"value": "36", "label": "марок с официальными продажами в Сербии"},
+    "brief": [
+      "Самый дешёвый новый у импортёра: Dacia Spring, от 17.990 €, после субсидии 12.990 €",
+      "Дешевле 30.000 € — 18 моделей; цены проверяются раз в месяц, с источником и датой",
+      "У Tesla в Сербии нет импортёра, салона и сервиса, но есть две локации Supercharger"
+    ],
+    "keys": [
+      {"value": "17.990 €", "label": "Dacia Spring, самая низкая цена", "icon": "car"},
+      {"value": "1.166", "label": "новых регистраций, январь–сентябрь 2026", "icon": "calendar"},
+      {"value": "18", "label": "моделей дешевле 30.000 €", "icon": "coins"}
+    ],
+    "important": "Субсидия 5.000 € положена только на новый автомобиль, на подержанный — нет",
+    "paths": [
+      {"title": "Цены на новые", "text": "Все модели с ценой до и после субсидии", "url": "https://www.blokvolt.rs/ru/podaci/cene-elektricnih-automobila/"},
+      {"title": "Подержанные и ввезённые", "text": "Объявления, официальные дилеры, ввоз из ЕС", "url": "https://www.blokvolt.rs/ru/elektricni-automobili/polovni/"},
+      {"title": "Субсидии 2026", "text": "Кто может получить, как и до какого срока подать", "url": "https://www.blokvolt.rs/ru/podaci/subvencije-2026/"}
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "cover": {"image": "osiguranje", "alt": {"sr": "Agentka osiguranja i vozač pored električnog automobila", "en": "An insurance agent and a driver next to an electric car", "ru": "Страховой агент и водитель у электромобиля"}},
+  "sr": {
+    "hero": {"value": "15.716 RSD", "label": "autoodgovornost godišnje, preko 110 kW"},
+    "brief": [
+      "Autoodgovornost ide po snazi, a mnogi električni automobili su u najvišem razredu",
+      "Kasko se računa po višim stopama; procenat doplate niko ne objavljuje",
+      "Pomoć na putu: AMSS 1987, za BYD 069/667-667"
+    ],
+    "bars": {
+      "title": "Autoodgovornost po snazi motora",
+      "note": "Premija godišnje, RSD, sa porezom, pre bonus-malusa (cenovnik od 25.04.2024)",
+      "items": [
+        {"label": "do 22 kW", "value": 5438, "display": "5.438"},
+        {"label": "55,1–66 kW", "value": 9688, "display": "9.688"},
+        {"label": "84,1–110 kW", "value": 13235, "display": "13.235"},
+        {"label": "preko 110 kW", "value": 15716, "display": "15.716", "accent": true}
+      ]
+    },
+    "important": "Za marku bez ovlašćenog servisa u Srbiji tražite pismenu potvrdu kasko pokrića pre kupovine"
+  },
+  "en": {
+    "hero": {"value": "15.716 RSD", "label": "third-party liability a year, over 110 kW"},
+    "brief": [
+      "Third-party liability goes by power, and many electric cars are in the top band",
+      "Comprehensive cover is calculated at higher rates; nobody publishes the surcharge",
+      "Roadside assistance: AMSS 1987, for BYD 069/667-667"
+    ],
+    "bars": {
+      "title": "Third-party liability by engine power",
+      "note": "Premium a year, RSD, with tax, before bonus-malus (price list of 25.04.2024)",
+      "items": [
+        {"label": "up to 22 kW", "value": 5438, "display": "5.438"},
+        {"label": "55,1–66 kW", "value": 9688, "display": "9.688"},
+        {"label": "84,1–110 kW", "value": 13235, "display": "13.235"},
+        {"label": "over 110 kW", "value": 15716, "display": "15.716", "accent": true}
+      ]
+    },
+    "important": "For a make with no authorised workshop in Serbia, ask for written confirmation of comprehensive cover before you buy"
+  },
+  "ru": {
+    "hero": {"value": "15.716 RSD", "label": "ОСАГО в год, свыше 110 кВт"},
+    "brief": [
+      "ОСАГО зависит от мощности, и многие электромобили попадают в высшую группу",
+      "Каско рассчитывается по повышенным ставкам; процент надбавки никто не публикует",
+      "Помощь на дороге: AMSS 1987, для BYD 069/667-667"
+    ],
+    "bars": {
+      "title": "ОСАГО по мощности двигателя",
+      "note": "Премия в год, RSD, с налогом, без бонус-малуса (прайс-лист от 25.04.2024)",
+      "items": [
+        {"label": "до 22 кВт", "value": 5438, "display": "5.438"},
+        {"label": "55,1–66 kW", "value": 9688, "display": "9.688"},
+        {"label": "84,1–110 kW", "value": 13235, "display": "13.235"},
+        {"label": "свыше 110 кВт", "value": 15716, "display": "15.716", "accent": true}
+      ]
+    },
+    "important": "Если у марки нет официального сервиса в Сербии, до покупки получите письменное подтверждение каско"
+  }
+}

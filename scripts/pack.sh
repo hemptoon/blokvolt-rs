@@ -18,6 +18,7 @@ python3 -c "import jinja2, markdown, bs4" 2>/dev/null || pip install --break-sys
 [ -f static/assets/fonts/onest-latin-wght-normal.woff2 ] || bash scripts/fetch_fonts.sh >/dev/null
 python3 build.py
 python3 scripts/check_links.py
+python3 scripts/app_layer.py --strict   # the app layer of guides and news: every number still on its page (RUNBOOK 3.36)
 mkdir -p "$(dirname "$OUT")"
 rm -f "$OUT"
 python3 - "$OUT" <<'PY'

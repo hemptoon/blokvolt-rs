@@ -1,0 +1,60 @@
+{
+  "cover": {"image": "putarina-i-parking", "alt": {"sr": "Električni auto prolazi kroz naplatnu stanicu na autoputu", "en": "An electric car passing a motorway toll station", "ru": "Электромобиль проезжает пункт оплаты на автомагистрали"}},
+  "sr": {
+    "hero": {"value": "10 %", "label": "popusta na putarinu uz ENP, povrh 6 %"},
+    "brief": [
+      "Besplatnog parkinga za električne automobile nema u Beogradu, Novom Sadu ni Nišu",
+      "Novi Sad: 500 RSD na sat na parkingu sa punjačem, od 13. jula 2026",
+      "Porez na upotrebu vozila za električni automobil: 0 RSD"
+    ],
+    "bars": {
+      "title": "Putarina, I kategorija, iz Beograda",
+      "note": "Orijentacione cene u RSD od 1. januara 2026, pre popusta",
+      "items": [
+        {"label": "Beograd–Šid", "value": 520, "display": "520"},
+        {"label": "Beograd–Subotica", "value": 850, "display": "850"},
+        {"label": "Beograd–Niš", "value": 1180, "display": "1.180"},
+        {"label": "Beograd–Preševo", "value": 2060, "display": "2.060"}
+      ]
+    },
+    "important": "Uslov za popust je ugovor o ENP sa JP „Putevi Srbije“ (TAG uređaj); posle izmene iz jula 2026. proverite cenovnik"
+  },
+  "en": {
+    "hero": {"value": "10 %", "label": "toll discount with ENP, on top of 6 %"},
+    "brief": [
+      "There is no free parking for electric cars in Belgrade, Novi Sad or Niš",
+      "Novi Sad: 500 RSD an hour in a parking space with a charger",
+      "Vehicle use tax for an electric car: 0 RSD"
+    ],
+    "bars": {
+      "title": "Tolls, category I, from Belgrade",
+      "note": "Indicative prices in RSD as of 1 January 2026, before discounts",
+      "items": [
+        {"label": "Belgrade–Šid", "value": 520, "display": "520"},
+        {"label": "Belgrade–Subotica", "value": 850, "display": "850"},
+        {"label": "Belgrade–Niš", "value": 1180, "display": "1.180"},
+        {"label": "Belgrade–Preševo", "value": 2060, "display": "2.060"}
+      ]
+    },
+    "important": "The discount requires an ENP contract with JP “Putevi Srbije” (TAG device); after the July 2026 amendment, check the price list"
+  },
+  "ru": {
+    "hero": {"value": "10 %", "label": "скидка за проезд с ENP, сверх 6 %"},
+    "brief": [
+      "Бесплатной парковки для электромобилей нет ни в Белграде, ни в Нови-Саде, ни в Нише",
+      "Нови-Сад: 500 RSD в час на парковке с зарядкой",
+      "Налог на использование ТС для электромобиля: 0 RSD"
+    ],
+    "bars": {
+      "title": "Плата за проезд, I категория, из Белграда",
+      "note": "Ориентировочные цены в RSD с 1 января 2026 года, без скидок",
+      "items": [
+        {"label": "Белград–Шид", "value": 520, "display": "520"},
+        {"label": "Белград–Суботица", "value": 850, "display": "850"},
+        {"label": "Белград–Ниш", "value": 1180, "display": "1.180"},
+        {"label": "Белград–Прешево", "value": 2060, "display": "2.060"}
+      ]
+    },
+    "important": "Условие скидки — договор об ENP с JP «Putevi Srbije» (TAG-устройство); после изменений в июле 2026 года проверьте тарифы"
+  }
+}

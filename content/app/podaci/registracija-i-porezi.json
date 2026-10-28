@@ -1,0 +1,75 @@
+{
+  "cover": {"image": "registracija-i-porezi", "alt": {"sr": "Šalter za registraciju vozila sa strankama", "en": "A vehicle registration counter with people waiting", "ru": "Окно регистрации транспортных средств с посетителями"}},
+  "sr": {
+    "hero": {"value": "0 RSD", "label": "porez na upotrebu vozila, i za hibride"},
+    "brief": [
+      "Registracija ide istom procedurom kao za svaki automobil, samo bez poreza na upotrebu",
+      "Za benzinac 1.600–2.000 cm³ isti porez je 16.890 RSD (2026)",
+      "Zelenih tablica nema; jedina povlastica je 10 % popusta na putarinu uz elektronsku naplatu"
+    ],
+    "keys": [
+      {"value": "2.800 RSD", "label": "tehnički pregled, okvirno", "icon": "wrench"},
+      {"value": "1.200 RSD", "label": "saobraćajna dozvola", "icon": "doc"},
+      {"value": "15.716 RSD", "label": "autoodgovornost preko 110 kW (2024)", "icon": "shield"}
+    ],
+    "bars": {
+      "title": "Porez na upotrebu vozila",
+      "note": "RSD, 2026, za automobile proizvedene 2021–2026",
+      "items": [
+        {"label": "Električni", "value": 0, "display": "0", "accent": true},
+        {"label": "do 1.150 cm³", "value": 1910, "display": "1.910"},
+        {"label": "1.300–1.600 cm³", "value": 8230, "display": "8.230"},
+        {"label": "1.600–2.000 cm³", "value": 16890, "display": "16.890"}
+      ]
+    },
+    "important": "Iznosi nisu iz zvaničnog cenovnika: tačan račun dobijate na tehničkom pregledu"
+  },
+  "en": {
+    "hero": {"value": "0 RSD", "label": "vehicle use tax, for hybrids too"},
+    "brief": [
+      "Same registration procedure as for any car, only without the vehicle use tax",
+      "For a 1.600–2.000 cm³ petrol car the same tax is 16.890 RSD (2026)",
+      "No green plates; the only benefit is a 10 % toll discount with electronic toll collection"
+    ],
+    "keys": [
+      {"value": "2.800 RSD", "label": "technical inspection, approximate", "icon": "wrench"},
+      {"value": "1.200 RSD", "label": "registration certificate", "icon": "doc"},
+      {"value": "15.716 RSD", "label": "third-party liability over 110 kW (2024)", "icon": "shield"}
+    ],
+    "bars": {
+      "title": "Vehicle use tax",
+      "note": "RSD, 2026, for cars made in 2021–2026",
+      "items": [
+        {"label": "Electric", "value": 0, "display": "0", "accent": true},
+        {"label": "up to 1.150 cm³", "value": 1910, "display": "1.910"},
+        {"label": "1.300–1.600 cm³", "value": 8230, "display": "8.230"},
+        {"label": "1.600–2.000 cm³", "value": 16890, "display": "16.890"}
+      ]
+    },
+    "important": "The amounts are not from an official price list: you get the exact bill at the technical inspection"
+  },
+  "ru": {
+    "hero": {"value": "0 RSD", "label": "налог на использование ТС, и для гибридов"},
+    "brief": [
+      "Регистрация по той же процедуре, что и любой автомобиль, только без налога на использование",
+      "Для бензинового автомобиля 1.600–2.000 см³ тот же налог — 16.890 RSD (2026)",
+      "Зелёных номеров нет; единственная льгота — скидка 10 % на проезд при электронной оплате"
+    ],
+    "keys": [
+      {"value": "2.800 RSD", "label": "техосмотр, ориентировочно", "icon": "wrench"},
+      {"value": "1.200 RSD", "label": "свидетельство о регистрации", "icon": "doc"},
+      {"value": "15.716 RSD", "label": "ОСАГО свыше 110 кВт (2024)", "icon": "shield"}
+    ],
+    "bars": {
+      "title": "Налог на использование ТС",
+      "note": "RSD, 2026, для автомобилей 2021–2026 годов выпуска",
+      "items": [
+        {"label": "Электромобиль", "value": 0, "display": "0", "accent": true},
+        {"label": "до 1.150 см³", "value": 1910, "display": "1.910"},
+        {"label": "1.300–1.600 см³", "value": 8230, "display": "8.230"},
+        {"label": "1.600–2.000 см³", "value": 16890, "display": "16.890"}
+      ]
+    },
+    "important": "Суммы взяты не из официального прайс-листа: точный счёт вы получите на техосмотре"
+  }
+}

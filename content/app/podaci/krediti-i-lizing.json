@@ -1,0 +1,45 @@
+{
+  "cover": {"image": "krediti-i-lizing", "alt": {"sr": "Žena potpisuje papire za stolom pored prozora", "en": "A woman signing papers at a table by the window", "ru": "Женщина подписывает документы за столом у окна"}},
+  "sr": {
+    "hero": {"value": "4,99 %", "label": "Raiffeisen, fiksna kamata u EUR"},
+    "brief": [
+      "Erste „Zeleni auto kredit“: EKS 7,40 % u EUR, 8,25 % u RSD",
+      "Obični auto krediti: 6,95–8,45 % u RSD, oko 5–7,65 % u EUR",
+      "Subvencija od 5.000 € može biti učešće u lizingu"
+    ],
+    "keys": [
+      {"value": "30 %", "label": "učešće u EUR, po pravilu najmanje", "icon": "percent"},
+      {"value": "oko 20 %", "label": "učešće u lizingu za fizička lica", "icon": "percent"},
+      {"value": "13–84", "label": "meseca rok kredita Raiffeisen", "icon": "calendar"}
+    ],
+    "important": "Uredba ne propisuje obaveznih 15 % učešća uz subvenciju u finansijskom lizingu"
+  },
+  "en": {
+    "hero": {"value": "4,99 %", "label": "Raiffeisen, fixed interest rate in EUR"},
+    "brief": [
+      "Erste “Zeleni auto kredit”: EKS 7,40 % in EUR, 8,25 % in RSD",
+      "Regular car loans: 6,95–8,45 % in RSD, about 5–7,65 % in EUR",
+      "The 5.000 € subsidy can serve as the down payment on a lease"
+    ],
+    "keys": [
+      {"value": "30 %", "label": "down payment in EUR, usually at least", "icon": "percent"},
+      {"value": "about 20 %", "label": "down payment in leasing, individuals", "icon": "percent"},
+      {"value": "13–84", "label": "months, Raiffeisen loan term", "icon": "calendar"}
+    ],
+    "important": "The Decree does not require a 15 % down payment with the subsidy in financial leasing"
+  },
+  "ru": {
+    "hero": {"value": "4,99 %", "label": "Raiffeisen, фиксированная ставка в EUR"},
+    "brief": [
+      "Erste «Zeleni auto kredit»: EKS 7,40 % в EUR, 8,25 % в RSD",
+      "Обычные автокредиты: 6,95–8,45 % в RSD, около 5–7,65 % в EUR",
+      "Субсидию 5.000 € можно использовать как первоначальный взнос по лизингу"
+    ],
+    "keys": [
+      {"value": "30 %", "label": "взнос по кредиту в EUR, как правило от", "icon": "percent"},
+      {"value": "около 20 %", "label": "взнос в лизинге для физлиц", "icon": "percent"},
+      {"value": "13–84", "label": "месяца, срок кредита Raiffeisen", "icon": "calendar"}
+    ],
+    "important": "Постановление не требует обязательного взноса 15 % при субсидии в финансовом лизинге"
+  }
+}

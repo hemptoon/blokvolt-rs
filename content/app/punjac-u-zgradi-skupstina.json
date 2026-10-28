@@ -1,0 +1,78 @@
+{
+  "cover": {"image": "skupstina", "alt": {"sr": "Tri komšije razgovaraju u garaži zgrade pored punjača na zidu", "en": "Three neighbours talking in a building's garage next to a wall charger", "ru": "Трое соседей беседуют в паркинге дома у настенной зарядки"}},
+  "sr": {
+    "hero": {"value": "4–10 ned.", "label": "od zahteva do ugradnje, realno"},
+    "brief": [
+      "Odluka skupštine treba kad kabl do vašeg mesta prolazi kroz zajedničke delove zgrade",
+      "Dovoljna je obična većina glasova prisutnih",
+      "Za iznajmljenu garažu skupština ne treba, nego pismena saglasnost vlasnika"
+    ],
+    "keys": [
+      {"value": "2/3", "label": "svih glasova, samo za raspolaganje", "icon": "users"},
+      {"value": "1/3", "label": "svih glasova, kvorum ponovljene sednice", "icon": "users"},
+      {"value": "7–15 dana", "label": "traje sazivanje sednice", "icon": "calendar"},
+      {"value": "30 minuta", "label": "procena na lokaciji", "icon": "clock"}
+    ],
+    "steps": {
+      "title": "Korak po korak",
+      "items": [
+        {"title": "Procena na lokaciji", "text": "Tačna cena i tehnički opis ugradnje"},
+        {"title": "Specifikacija i zahtev", "text": "Jedna strana specifikacije i pismeni zahtev upravniku; mejl je dovoljan"},
+        {"title": "Sednica", "text": "Dođite lično i odgovorite na tri pitanja: ko plaća, ko odgovara, šta kad svi budu hteli"},
+        {"title": "Odluka i zapisnik", "text": "Tražite kopiju zapisnika: to je vaš trajni dokaz"},
+        {"title": "Ugradnja i atest", "text": "Ugradnja za jedan dan; kopiju atesta dobija upravnik"}
+      ]
+    },
+    "important": "Paušalna zabrana punjenja nema uporište u propisima, ali skupština sme da odbije konkretan zahtev"
+  },
+  "en": {
+    "hero": {"value": "4–10 wks", "label": "from request to installation, realistically"},
+    "brief": [
+      "An assembly decision is needed when the cable to your space runs through common parts",
+      "A simple majority of the votes of those present is enough",
+      "A rented garage needs the owner's written consent, not the assembly"
+    ],
+    "keys": [
+      {"value": "2/3", "label": "of all votes, only to dispose of parts", "icon": "users"},
+      {"value": "1/3", "label": "of all votes, quorum at a repeat meeting", "icon": "users"},
+      {"value": "7–15 days", "label": "to convene a meeting", "icon": "calendar"},
+      {"value": "30 minutes", "label": "on-site assessment", "icon": "clock"}
+    ],
+    "steps": {
+      "title": "Step by step",
+      "items": [
+        {"title": "On-site assessment", "text": "An exact price and a technical description of the installation"},
+        {"title": "Specification and request", "text": "A one-page specification and a written request to the manager; an email is enough"},
+        {"title": "The meeting", "text": "Come in person and answer three questions: who pays, who is liable, what if all want one"},
+        {"title": "Decision and minutes", "text": "Ask for a copy of the minutes: it is your permanent proof"},
+        {"title": "Installation and certificate", "text": "Installation in one day; the building manager gets a copy of the test certificate"}
+      ]
+    },
+    "important": "A blanket ban on charging has no basis in the regulations, but the assembly may turn down a specific request"
+  },
+  "ru": {
+    "hero": {"value": "4–10 нед.", "label": "от заявления до установки на практике"},
+    "brief": [
+      "Решение собрания нужно, когда кабель к вашему месту проходит через общие части дома",
+      "Достаточно простого большинства голосов присутствующих",
+      "Для арендованного гаража нужно не собрание, а письменное согласие владельца"
+    ],
+    "keys": [
+      {"value": "2/3", "label": "всех голосов, только для распоряжения", "icon": "users"},
+      {"value": "1/3", "label": "голосов — кворум повторного заседания", "icon": "users"},
+      {"value": "7–15 дней", "label": "занимает созыв собрания", "icon": "calendar"},
+      {"value": "30 минут", "label": "оценка на месте", "icon": "clock"}
+    ],
+    "steps": {
+      "title": "Шаг за шагом",
+      "items": [
+        {"title": "Оценка на месте", "text": "Точная цена и техническое описание установки"},
+        {"title": "Спецификация и заявление", "text": "Спецификация на одной странице и письменное заявление управляющему; хватит письма"},
+        {"title": "Собрание", "text": "Приходите лично и ответьте на три вопроса: кто платит, кто отвечает, что если захотят все"},
+        {"title": "Решение и протокол", "text": "Попросите копию протокола: это ваше доказательство на будущее"},
+        {"title": "Установка и атест", "text": "Установка за один день; копию атеста получает управляющий"}
+      ]
+    },
+    "important": "Запрет на зарядку как таковой не опирается на нормативные акты, но собрание вправе отклонить конкретную заявку"
+  }
+}

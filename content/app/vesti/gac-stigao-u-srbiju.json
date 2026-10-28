@@ -1,0 +1,23 @@
+{
+  "sr": {
+    "hero": {"value": "510 km", "label": "domet AION V po WLTP ciklusu"},
+    "brief": [
+      "GAC ulazi u Srbiju preko SEEAG Group, sa električnim modelima AION V i AION UT",
+      "Cene za Srbiju i adrese salona nisu objavljene"
+    ]
+  },
+  "en": {
+    "hero": {"value": "510 km", "label": "AION V range on the WLTP cycle"},
+    "brief": [
+      "GAC enters Serbia through SEEAG Group, with the electric AION V and AION UT",
+      "Prices for Serbia and showroom addresses have not been published"
+    ]
+  },
+  "ru": {
+    "hero": {"value": "510 км", "label": "запас хода AION V по циклу WLTP"},
+    "brief": [
+      "GAC выходит в Сербию через SEEAG Group с электрическими AION V и AION UT",
+      "Цены для Сербии и адреса салонов не опубликованы"
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "cover": {"image": "cena-po-modelu", "alt": {"sr": "Nekoliko automobila na punjačima jednog parkinga u sumrak", "en": "Several cars at the chargers of one car park at sunset", "ru": "Несколько машин на зарядках одной парковки на закате"}},
+  "sr": {
+    "brief": [
+      "Auto koji prima 80 kW i više, od 10 do 80 % na 150 kW: 2.830–3.840 RSD za 25–34 minuta",
+      "Mali auti na punjaču od 45–60 kW plaćaju 2.180–2.530 RSD",
+      "Kod kuće noću isti deo baterije srednjeg auta košta oko 170–240 RSD"
+    ],
+    "bars": {
+      "title": "Od 10 do 80 % na DC 150–180 kW",
+      "note": "Charge&GO, 114,17 RSD/min, sa PDV-om, 5. oktobar 2026",
+      "items": [
+        {"label": "BYD Sealion 7", "value": 3840, "display": "3.840 RSD"},
+        {"label": "BYD Atto 2 Comfort", "value": 2850, "display": "2.850 RSD"},
+        {"label": "Tesla Model 3 RWD", "value": 2900, "display": "2.900 RSD"},
+        {"label": "VW ID.3 Pro", "value": 3430, "display": "3.430 RSD"},
+        {"label": "Renault 5", "value": 3690, "display": "3.690 RSD"},
+        {"label": "Dacia Spring", "value": 4940, "display": "4.940 RSD"}
+      ]
+    },
+    "important": "Auto koji prima 40–60 kW na punjaču od 150 kW plaća snagu koju ne koristi"
+  },
+  "en": {
+    "brief": [
+      "A car taking 80 kW or more, 10 to 80 % at 150 kW: 2.830–3.840 RSD in 25–34 minutes",
+      "Small cars pay 2.180–2.530 RSD at a 45–60 kW charger",
+      "At home at night the same part of a mid-size car's battery costs about 170–240 RSD"
+    ],
+    "bars": {
+      "title": "10 to 80 % at DC 150–180 kW",
+      "note": "Charge&GO, 114,17 RSD/min, VAT included, 5 October 2026",
+      "items": [
+        {"label": "BYD Sealion 7", "value": 3840, "display": "3.840 RSD"},
+        {"label": "BYD Atto 2 Comfort", "value": 2850, "display": "2.850 RSD"},
+        {"label": "Tesla Model 3 RWD", "value": 2900, "display": "2.900 RSD"},
+        {"label": "VW ID.3 Pro", "value": 3430, "display": "3.430 RSD"},
+        {"label": "Renault 5", "value": 3690, "display": "3.690 RSD"},
+        {"label": "Dacia Spring", "value": 4940, "display": "4.940 RSD"}
+      ]
+    },
+    "important": "A car that takes 40–60 kW pays for power it does not use at a 150 kW charger"
+  },
+  "ru": {
+    "brief": [
+      "Машина от 80 кВт, с 10 до 80 % на станции 150 кВт: 2.830–3.840 RSD за 25–34 минуты",
+      "Маленькие машины на станции 45–60 кВт платят 2.180–2.530 RSD",
+      "Дома ночью та же часть батареи машины среднего размера стоит около 170–240 RSD"
+    ],
+    "bars": {
+      "title": "С 10 до 80 % на DC 150–180 кВт",
+      "note": "Charge&GO, 114,17 RSD/мин, с НДС, 5 октября 2026",
+      "items": [
+        {"label": "BYD Sealion 7", "value": 3840, "display": "3.840 RSD"},
+        {"label": "BYD Atto 2 Comfort", "value": 2850, "display": "2.850 RSD"},
+        {"label": "Tesla Model 3 RWD", "value": 2900, "display": "2.900 RSD"},
+        {"label": "VW ID.3 Pro", "value": 3430, "display": "3.430 RSD"},
+        {"label": "Renault 5", "value": 3690, "display": "3.690 RSD"},
+        {"label": "Dacia Spring", "value": 4940, "display": "4.940 RSD"}
+      ]
+    },
+    "important": "Машина, которая принимает 40–60 кВт, на станции 150 кВт платит за мощность, которую не использует"
+  }
+}

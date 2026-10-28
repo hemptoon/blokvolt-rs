@@ -1,0 +1,72 @@
+{
+  "cover": {"image": "pomoc-na-putu", "alt": {"sr": "Šlep vozilo odvozi električni auto sa puta", "en": "A tow truck taking an electric car off the road", "ru": "Эвакуатор увозит электромобиль с дороги"}},
+  "sr": {
+    "hero": {"value": "1987", "label": "AMSS pomoć na putu; iz Evrope +381 11 3331 200"},
+    "brief": [
+      "Električni automobil se prevozi na platformi, sa sve četiri gume podignute od tla",
+      "Automobil u garanciji: prvo zovite broj pomoći na putu marke",
+      "Na E-70, E-75, E-80 i E-763 AMSS šlepuje besplatno do prvog bezbednog isključenja"
+    ],
+    "keys": [
+      {"value": "194", "label": "hitna pomoć", "icon": "phone"},
+      {"value": "193", "label": "vatrogasci i spasioci", "icon": "phone"},
+      {"value": "192", "label": "policija", "icon": "phone"}
+    ],
+    "steps": {
+      "title": "Šta reći operateru",
+      "items": [
+        {"title": "Električni, treba platforma", "text": "Recite odmah da je automobil električni i da je potrebna platforma"},
+        {"title": "Tačna lokacija", "text": "Ulica i broj, ili deonica i smer na autoputu"},
+        {"title": "Vozilo", "text": "Marka, model i registarski broj; za pomoć marke i broj šasije"},
+        {"title": "Šta se desilo", "text": "Kvar, nezgoda ili prazna baterija"}
+      ]
+    },
+    "important": "Štetu od nepropisnog prevoza garancija ne pokriva: električni auto se ne vuče na točkovima"
+  },
+  "en": {
+    "hero": {"value": "1987", "label": "AMSS assistance; from Europe +381 11 3331 200"},
+    "brief": [
+      "An electric car is carried on a flatbed, with all four tyres off the ground",
+      "Car under warranty: first call the brand's roadside assistance number",
+      "On the E-70, E-75, E-80 and E-763 AMSS tows free of charge to the first safe exit"
+    ],
+    "keys": [
+      {"value": "194", "label": "ambulance", "icon": "phone"},
+      {"value": "193", "label": "fire and rescue", "icon": "phone"},
+      {"value": "192", "label": "police", "icon": "phone"}
+    ],
+    "steps": {
+      "title": "What to tell the operator",
+      "items": [
+        {"title": "Electric, flatbed needed", "text": "Say at once that the car is electric and a flatbed is needed"},
+        {"title": "The exact location", "text": "Street and number, or the motorway section and direction"},
+        {"title": "The car", "text": "Make, model and registration number; for the brand's assistance the chassis number"},
+        {"title": "What happened", "text": "Breakdown, accident or flat battery"}
+      ]
+    },
+    "important": "The warranty does not cover damage from improper transport: an electric car is not towed on its wheels"
+  },
+  "ru": {
+    "hero": {"value": "1987", "label": "помощь AMSS; из Европы +381 11 3331 200"},
+    "brief": [
+      "Электромобиль перевозят на платформе, все четыре колеса подняты над дорогой",
+      "Машина на гарантии: сначала звоните в помощь на дороге марки",
+      "На E-70, E-75, E-80 и E-763 AMSS эвакуирует бесплатно до первого безопасного съезда"
+    ],
+    "keys": [
+      {"value": "194", "label": "скорая помощь", "icon": "phone"},
+      {"value": "193", "label": "пожарные и спасатели", "icon": "phone"},
+      {"value": "192", "label": "полиция", "icon": "phone"}
+    ],
+    "steps": {
+      "title": "Что сказать оператору",
+      "items": [
+        {"title": "Электромобиль, нужна платформа", "text": "Сразу скажите, что машина электрическая и нужна платформа"},
+        {"title": "Точное место", "text": "Улица и номер дома или участок и направление на автомагистрали"},
+        {"title": "Машина", "text": "Марка, модель и номерной знак; для помощи марки — номер кузова (VIN)"},
+        {"title": "Что случилось", "text": "Поломка, авария или разряженная батарея"}
+      ]
+    },
+    "important": "Ущерб от неправильной перевозки гарантия не покрывает: электромобиль не буксируют на колёсах"
+  }
+}

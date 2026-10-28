@@ -1,0 +1,23 @@
+{
+  "sr": {
+    "hero": {"value": "24.990 €", "label": "promotivna cena, prema auto-portalima"},
+    "brief": [
+      "Porsche SCG je 29. septembra otvorio porudžbine; uslovi akcije nisu objavljeni",
+      "Baterije od 37 i 52 kWh neto, domet do 329 i 454 km po WLTP ciklusu"
+    ]
+  },
+  "en": {
+    "hero": {"value": "24.990 €", "label": "promotional price, according to car news sites"},
+    "brief": [
+      "Porsche SCG opened orders on 29 September; the terms of the offer are not published",
+      "Batteries of 37 and 52 kWh net, range of up to 329 and 454 km on the WLTP cycle"
+    ]
+  },
+  "ru": {
+    "hero": {"value": "24.990 €", "label": "акционная цена, по данным автопорталов"},
+    "brief": [
+      "Porsche SCG открыл заказы 29 сентября; условия акции не опубликованы",
+      "Батареи 37 и 52 кВт·ч нетто, запас хода до 329 и 454 км по WLTP"
+    ]
+  }
+}

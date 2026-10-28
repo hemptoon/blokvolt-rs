@@ -55,3 +55,12 @@ Body:
 
 Targets: the visible text (outside `<details>`) is about a third of what an old page had; everything
 together is at most about 60 %.
+
+## App layer (guides and data pages, since 29.10.2026)
+
+Every guide and data page also has a short layer for the apps in `content/app/<page path>.json`, in sr/en/ru: one
+key figure (`hero`), two or three „Ukratko“ lines (`brief`), and where the page really has them, number tiles, steps,
+a bar chart, one „Važno“ line and path cards — plus a cover photo when there is one. Same facts as the page, numbers
+written exactly as the page writes them in that language. A new page gets its app layer in the same commit, and a
+change of a fact on the page changes the app layer in the same commit. Schema, rules and the validator:
+`docs/RUNBOOK.md` §3.36; check with `python3 scripts/app_layer.py --strict`.

@@ -1,0 +1,69 @@
+{
+  "cover": {"image": "tarife-eps", "alt": {"sr": "Stambena zgrada uveče i auto parkiran ispred", "en": "An apartment block in the evening with a car parked in front", "ru": "Жилой дом вечером и машина перед ним"}},
+  "sr": {
+    "hero": {"value": "5,70 RSD", "label": "kWh noću u plavoj zoni, sa svim dažbinama"},
+    "brief": [
+      "Niža tarifa traje 8 sati: Beograd od 24.00, Vojvodina od 23.00, centralna Srbija od 22.00",
+      "Noću je kWh više od tri puta jeftiniji nego danju, samo uz dvotarifno brojilo",
+      "Za 1.250 km mesečno auto troši oko 234 kWh: noću 1.333 RSD u plavoj zoni"
+    ],
+    "keys": [
+      {"value": "107 RSD", "label": "struja za 100 km noću, plava zona", "icon": "leaf"},
+      {"value": "19,65 RSD", "label": "kWh danju u plavoj zoni", "icon": "receipt"}
+    ],
+    "bars": {
+      "title": "Noćni kWh po zonama, RSD",
+      "note": "Sa svim naknadama, akcizom i PDV-om, od 01.10.2025",
+      "items": [
+        {"label": "Zelena, do 350 kWh", "value": 4.15, "display": "4,15"},
+        {"label": "Plava, 351–1.200 kWh", "value": 5.70, "display": "5,70"},
+        {"label": "Crvena, preko 1.200 kWh", "value": 10.35, "display": "10,35"}
+      ]
+    },
+    "important": "Tih 234 kWh za auto često prebaci domaćinstvo iz zelene u plavu zonu"
+  },
+  "en": {
+    "hero": {"value": "5,70 RSD", "label": "per kWh at night, blue zone, all charges in"},
+    "brief": [
+      "Low tariff for 8 hours: Belgrade from 24.00, Vojvodina from 23.00, central Serbia from 22.00",
+      "At night a kWh is more than three times cheaper than by day, with a dual-rate meter only",
+      "For 1.250 km a month a car uses about 234 kWh: 1.333 RSD at night in the blue zone"
+    ],
+    "keys": [
+      {"value": "107 RSD", "label": "per 100 km at night, blue zone", "icon": "leaf"},
+      {"value": "19,65 RSD", "label": "per kWh by day in the blue zone", "icon": "receipt"}
+    ],
+    "bars": {
+      "title": "Night kWh by zone, RSD",
+      "note": "With all fees, excise duty and VAT, from 01.10.2025",
+      "items": [
+        {"label": "Green, up to 350 kWh", "value": 4.15, "display": "4,15"},
+        {"label": "Blue, 351–1.200 kWh", "value": 5.70, "display": "5,70"},
+        {"label": "Red, over 1.200 kWh", "value": 10.35, "display": "10,35"}
+      ]
+    },
+    "important": "Those 234 kWh for the car often push a household from the green into the blue zone"
+  },
+  "ru": {
+    "hero": {"value": "5,70 RSD", "label": "за кВт·ч ночью в синей зоне, со всеми сборами"},
+    "brief": [
+      "Низкий тариф действует 8 часов: Белград — с 24.00, Воеводина — с 23.00, центр — с 22.00",
+      "Ночью кВт·ч более чем в три раза дешевле, чем днём, но только при двухтарифном счётчике",
+      "На 1.250 км в месяц машина расходует около 234 кВт·ч: ночью 1.333 RSD в синей зоне"
+    ],
+    "keys": [
+      {"value": "107 RSD", "label": "на 100 км ночью, синяя зона", "icon": "leaf"},
+      {"value": "19,65 RSD", "label": "за кВт·ч днём в синей зоне", "icon": "receipt"}
+    ],
+    "bars": {
+      "title": "Ночной кВт·ч по зонам, RSD",
+      "note": "Со всеми сборами, акцизом и НДС, с 01.10.2025",
+      "items": [
+        {"label": "Зелёная, до 350 кВт·ч", "value": 4.15, "display": "4,15"},
+        {"label": "Синяя, 351–1.200 kWh", "value": 5.70, "display": "5,70"},
+        {"label": "Красная, свыше 1.200 кВт·ч", "value": 10.35, "display": "10,35"}
+      ]
+    },
+    "important": "Эти 234 кВт·ч на машину нередко переводят домохозяйство из зелёной зоны в синюю"
+  }
+}

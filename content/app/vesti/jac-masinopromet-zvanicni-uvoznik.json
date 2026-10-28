@@ -1,0 +1,23 @@
+{
+  "sr": {
+    "hero": {"value": "23.990 €", "label": "JAC E30X sa baterijom od 41 kWh"},
+    "brief": [
+      "Mašinopromet je zvanični uvoznik JAC-a i preuzima prodaju, servis i rezervne delove",
+      "Da li cena uključuje PDV, nije navedeno: pitajte pre kupovine"
+    ]
+  },
+  "en": {
+    "hero": {"value": "23.990 €", "label": "JAC E30X with a 41 kWh battery"},
+    "brief": [
+      "Mašinopromet is JAC's official importer and takes over sales, service and spare parts",
+      "The price list does not say whether VAT is included: ask before buying"
+    ]
+  },
+  "ru": {
+    "hero": {"value": "23.990 €", "label": "JAC E30X с батареей 41 кВт·ч"},
+    "brief": [
+      "Mašinopromet — официальный импортёр JAC: продажи, сервис и запчасти",
+      "Включён ли НДС в цену, не указано: уточните перед покупкой"
+    ]
+  }
+}

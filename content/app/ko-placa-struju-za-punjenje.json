@@ -1,0 +1,72 @@
+{
+  "cover": {"image": "ko-placa-struju", "alt": {"sr": "Ruka pokazuje na brojilo u otvorenoj razvodnoj tabli", "en": "A hand pointing at a meter in an open distribution board", "ru": "Рука указывает на счётчик в открытом электрощите"}},
+  "sr": {
+    "hero": {"value": "4–7 RSD", "label": "okvirno noćni kWh u plavoj zoni, sa PDV-om"},
+    "brief": [
+      "Struju plaća onaj ko puni: tačno koliko potroši, po ceni iz stvarnog računa, bez marže",
+      "Pošteno i proverljivo merenje daje samo zasebno MID brojilo na liniji punjača",
+      "Za 240 kWh mesečno: 1.000–1.700 RSD kod kuće, 10.300–19.000 RSD na brzim javnim punjačima"
+    ],
+    "keys": [
+      {"value": "43–79 RSD", "label": "kWh na javnim brzim punjačima", "icon": "bolt"},
+      {"value": "1.200 kWh", "label": "mesečno, gornja granica plave zone", "icon": "receipt"},
+      {"value": "7,5 %", "label": "akciza na računu, uz PDV 20 %", "icon": "percent"}
+    ],
+    "bars": {
+      "title": "EPS, niža tarifa (noć) po zonama",
+      "note": "RSD/kWh od 1. oktobra 2025, bez naknada, akcize i PDV-a",
+      "items": [
+        {"label": "Zelena, do 350 kWh", "value": 2.4034, "display": "2,4034 RSD"},
+        {"label": "Plava, 351–1.200 kWh", "value": 3.6051, "display": "3,6051 RSD"},
+        {"label": "Crvena, preko 1.200", "value": 7.2102, "display": "7,2102 RSD"}
+      ]
+    },
+    "important": "Nije dozvoljena marža na kilovat-sat ni paušalna „prodaja“ struje bez brojila"
+  },
+  "en": {
+    "hero": {"value": "4–7 RSD", "label": "roughly, a night kWh in the blue zone with VAT"},
+    "brief": [
+      "Whoever charges pays: exactly as much as they use, at the price on the actual bill, no markup",
+      "Only a separate MID-certified meter on the charger's circuit gives fair, verifiable metering",
+      "For 240 kWh a month: 1.000–1.700 RSD at home, 10.300–19.000 RSD at public fast chargers"
+    ],
+    "keys": [
+      {"value": "43–79 RSD", "label": "per kWh at public fast chargers", "icon": "bolt"},
+      {"value": "1.200 kWh", "label": "a month, upper limit of the blue zone", "icon": "receipt"},
+      {"value": "7,5 %", "label": "excise duty on the bill, plus 20 % VAT", "icon": "percent"}
+    ],
+    "bars": {
+      "title": "EPS low tariff (night) by zone",
+      "note": "RSD/kWh from 1.10.2025, without fees, excise duty and VAT",
+      "items": [
+        {"label": "Green, up to 350 kWh", "value": 2.4034, "display": "2,4034 RSD"},
+        {"label": "Blue, 351–1.200 kWh", "value": 3.6051, "display": "3,6051 RSD"},
+        {"label": "Red, over 1.200 kWh", "value": 7.2102, "display": "7,2102 RSD"}
+      ]
+    },
+    "important": "Not allowed: a markup on the kilowatt-hour or a flat-rate “sale” of electricity without a meter"
+  },
+  "ru": {
+    "hero": {"value": "4–7 RSD", "label": "ориентировочно ночной кВт·ч в синей зоне с НДС"},
+    "brief": [
+      "Платит тот, кто заряжает: ровно столько, сколько израсходовал, по цене из счёта, без наценки",
+      "Честный и проверяемый учёт даёт только отдельный счётчик MID на линии зарядки",
+      "За 240 кВт·ч в месяц: 1.000–1.700 RSD дома, 10.300–19.000 RSD на быстрых зарядках"
+    ],
+    "keys": [
+      {"value": "43–79 RSD", "label": "за кВт·ч на быстрых публичных зарядках", "icon": "bolt"},
+      {"value": "1.200 кВт·ч", "label": "в месяц, верхняя граница синей зоны", "icon": "receipt"},
+      {"value": "7,5 %", "label": "акциз в счёте, плюс НДС 20 %", "icon": "percent"}
+    ],
+    "bars": {
+      "title": "EPS, низкий (ночной) тариф по зонам",
+      "note": "RSD/kWh с 1.10.2025, без сборов, акциза и НДС",
+      "items": [
+        {"label": "Зелёная, до 350 кВт·ч", "value": 2.4034, "display": "2,4034 RSD"},
+        {"label": "Синяя, 351–1.200 кВт·ч", "value": 3.6051, "display": "3,6051 RSD"},
+        {"label": "Красная, свыше 1.200", "value": 7.2102, "display": "7,2102 RSD"}
+      ]
+    },
+    "important": "Не допускается наценка на киловатт-час и «продажа» электричества по фиксированной ставке без счётчика"
+  }
+}

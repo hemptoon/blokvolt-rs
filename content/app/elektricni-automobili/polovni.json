@@ -1,0 +1,87 @@
+{
+  "cover": {"image": "polovni", "alt": {"sr": "Kupac pregleda polovan električni auto na placu", "en": "A buyer inspecting a used electric car at a car lot", "ru": "Покупатель осматривает подержанный электромобиль на площадке"}},
+  "sr": {
+    "hero": {"value": "653", "label": "električna auta na Polovnim automobilima"},
+    "brief": [
+      "Polovni sa garancijom: programi ovlašćenih prodavaca, npr. BMW, Das WeltAuto, Toyota, Volvo",
+      "Uvoz iz EU: carina 0 % uz dokaz o poreklu, PDV 20 %, pa ispitivanje vozila i uverenje ABS",
+      "Subvencija od 5.000 € važi samo za nov automobil"
+    ],
+    "keys": [
+      {"value": "8 godina", "label": "ili 160.000 km, najčešća garancija", "icon": "battery"},
+      {"value": "3.000 RSD", "label": "naknada ABS, uz 430 RSD republičke takse", "icon": "receipt"}
+    ],
+    "steps": {
+      "title": "Uvoz iz EU",
+      "items": [
+        {"title": "Kupovina", "text": "Račun ili ugovor, strana saobraćajna dozvola, COC i dokaz o poreklu iz EU"},
+        {"title": "Prevoz", "text": "Kamionom ili vožnjom na izvoznim tablicama zemlje kupovine"},
+        {"title": "Carina", "text": "Uz dokaz o poreklu iz EU carina je 0 %, a PDV od 20 % plaća se uvek"},
+        {"title": "Ispitivanje vozila", "text": "U organizaciji koju je ovlastila ABS; posle nalaza ABS izdaje uverenje"},
+        {"title": "Registracija", "text": "Tehnički pregled, osiguranje i prva registracija u MUP-u"}
+      ]
+    },
+    "important": "Zatražite izveštaj o stanju baterije (SOH) iz servisa ili nezavisnog testa: domet iz oglasa nije dokaz",
+    "paths": [
+      {"title": "Provera baterije", "text": "Kako se meri stanje baterije i šta piše u garanciji", "url": "https://www.blokvolt.rs/podaci/provera-baterije-polovnog-elektricnog-auta/"},
+      {"title": "Uvoz i carina", "text": "Stope carine i PDV-a po poreklu vozila", "url": "https://www.blokvolt.rs/podaci/uvoz-i-carina/"},
+      {"title": "Krediti i lizing", "text": "Finansiranje novog ili polovnog automobila", "url": "https://www.blokvolt.rs/podaci/krediti-i-lizing/"}
+    ]
+  },
+  "en": {
+    "hero": {"value": "653", "label": "electric cars on Polovni automobili"},
+    "brief": [
+      "Used cars with a warranty: authorised dealer programmes, e.g. BMW, Das WeltAuto, Toyota, Volvo",
+      "EU import: 0 % duty with proof of origin, 20 % VAT, then testing and an ABS certificate",
+      "The 5.000 € subsidy applies only to a new car"
+    ],
+    "keys": [
+      {"value": "8 years", "label": "or 160.000 km: usual battery warranty", "icon": "battery"},
+      {"value": "3.000 RSD", "label": "ABS fee, plus a 430 RSD republic fee", "icon": "receipt"}
+    ],
+    "steps": {
+      "title": "Import from the EU",
+      "items": [
+        {"title": "Purchase", "text": "Invoice or contract, foreign registration certificate, COC and proof of EU origin"},
+        {"title": "Transport", "text": "By lorry, or driven on export plates of the country of purchase"},
+        {"title": "Customs", "text": "With proof of EU origin the duty is 0 %, and 20 % VAT is always paid"},
+        {"title": "Vehicle testing", "text": "At an organisation authorised by ABS; after a positive result ABS issues a certificate"},
+        {"title": "Registration", "text": "Technical inspection, insurance and first registration at MUP"}
+      ]
+    },
+    "important": "Ask for a battery health (SOH) report from a service centre or an independent test: the range in the ad is not proof",
+    "paths": [
+      {"title": "Battery check", "text": "How battery health is measured and what the warranty says", "url": "https://www.blokvolt.rs/en/podaci/provera-baterije-polovnog-elektricnog-auta/"},
+      {"title": "Import and customs", "text": "Customs duty and VAT rates by the car's origin", "url": "https://www.blokvolt.rs/en/podaci/uvoz-i-carina/"},
+      {"title": "Loans and leasing", "text": "Financing a new or used car", "url": "https://www.blokvolt.rs/en/podaci/krediti-i-lizing/"}
+    ]
+  },
+  "ru": {
+    "hero": {"value": "653", "label": "электромобиля на Polovni automobili"},
+    "brief": [
+      "Подержанные с гарантией: программы официальных дилеров, например BMW, Das WeltAuto, Toyota",
+      "Ввоз из ЕС: пошлина 0 % с подтверждением происхождения, НДС 20 %, затем свидетельство ABS",
+      "Субсидия 5.000 € положена только на новый автомобиль"
+    ],
+    "keys": [
+      {"value": "8 лет", "label": "или 160.000 км: чаще всего гарантия", "icon": "battery"},
+      {"value": "3.000 RSD", "label": "сбор ABS, плюс республиканский 430 RSD", "icon": "receipt"}
+    ],
+    "steps": {
+      "title": "Ввоз из ЕС",
+      "items": [
+        {"title": "Покупка", "text": "Счёт или договор, иностранное свидетельство о регистрации, COC, происхождение из ЕС"},
+        {"title": "Перевозка", "text": "Автовозом или своим ходом на экспортных номерах страны покупки"},
+        {"title": "Таможня", "text": "С подтверждением происхождения из ЕС пошлина 0 %, НДС 20 % платится всегда"},
+        {"title": "Проверка автомобиля", "text": "В организации, уполномоченной ABS; после проверки ABS выдаёт свидетельство"},
+        {"title": "Регистрация", "text": "Техосмотр, страховка и первая регистрация в МВД"}
+      ]
+    },
+    "important": "Попросите отчёт о состоянии батареи (SOH) от сервиса или независимого теста: запас хода из объявления — не доказательство",
+    "paths": [
+      {"title": "Проверка батареи", "text": "Как измеряют состояние батареи и что сказано в гарантии", "url": "https://www.blokvolt.rs/ru/podaci/provera-baterije-polovnog-elektricnog-auta/"},
+      {"title": "Ввоз и таможня", "text": "Ставки пошлины и НДС в зависимости от происхождения", "url": "https://www.blokvolt.rs/ru/podaci/uvoz-i-carina/"},
+      {"title": "Кредиты и лизинг", "text": "Финансирование нового или подержанного автомобиля", "url": "https://www.blokvolt.rs/ru/podaci/krediti-i-lizing/"}
+    ]
+  }
+}

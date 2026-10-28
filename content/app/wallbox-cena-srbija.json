@@ -1,0 +1,42 @@
+{
+  "cover": {"image": "wallbox-cena", "alt": {"sr": "Wallbox punjač sa kablom na zidu garaže", "en": "A wallbox charger with its cable on a garage wall", "ru": "Wallbox с кабелем на стене гаража"}},
+  "sr": {
+    "hero": {"value": "11 kW", "label": "dovoljno za kućno punjenje"},
+    "brief": [
+      "Tipične ponude za wallbox 11 kW sa ugradnjom: oko 95.000–130.000 RSD sa PDV-om",
+      "Razlika između ponuda je skoro uvek u liniji, zaštiti, brojilu, atestu i papirima",
+      "Baterija od 60–70 kWh na 11 kW se napuni za šest do sedam sati"
+    ],
+    "keys": [
+      {"value": "2,3–3,7 kW", "label": "pojačana utičnica, monofazno", "icon": "plug"},
+      {"value": "100–180 km", "label": "dometa preko noći iz takve utičnice", "icon": "road"}
+    ],
+    "important": "Ponuda bez atesta, FID zaštite ili brojila nije jeftinija, nego nepotpuna"
+  },
+  "en": {
+    "hero": {"value": "11 kW", "label": "is enough for home charging"},
+    "brief": [
+      "Typical quotes for an 11 kW wallbox with installation: around 95.000–130.000 RSD incl. VAT",
+      "The difference is almost always the circuit, protection, meter, test certificate, paperwork",
+      "A 60–70 kWh battery charges at 11 kW in six to seven hours"
+    ],
+    "keys": [
+      {"value": "2,3–3,7 kW", "label": "reinforced socket, single-phase", "icon": "plug"},
+      {"value": "100–180 km", "label": "of range overnight from such a socket", "icon": "road"}
+    ],
+    "important": "A quote without a test certificate, RCD protection or a meter is not cheaper, just incomplete"
+  },
+  "ru": {
+    "hero": {"value": "11 кВт", "label": "достаточно для домашней зарядки"},
+    "brief": [
+      "Типичные предложения на wallbox 11 кВт с установкой: около 95.000–130.000 RSD с НДС",
+      "Разница почти всегда в линии, защите, счётчике, атесте и документах",
+      "Батарея на 60–70 кВт·ч заряжается на 11 кВт за шесть-семь часов"
+    ],
+    "keys": [
+      {"value": "2,3–3,7 кВт", "label": "усиленная розетка, однофазно", "icon": "plug"},
+      {"value": "100–180 км", "label": "запаса хода за ночь от такой розетки", "icon": "road"}
+    ],
+    "important": "Предложение без атеста, УЗО или счётчика не дешевле, а просто неполное"
+  }
+}

@@ -953,8 +953,11 @@ file format). The run:
 3. Write the files; `python3 scripts/lint_sr.py content/vesti/<new>.md` must show 0 errors. Photo: leave `image:`
    out (the tag pool gives one) unless a photo in `content/data/foto.json` fits the item better (3.19).
 4. If a news item changes a fact stated elsewhere on the site, update that page too (the procedures above) and add
-   a line to `izmene.md`.
+   a line to `izmene.md`. If that page has an app layer (`content/app/<path>.json`, 3.36), update its numbers too.
 5. `python3 scripts/i18n.py todo` → translate (3.9) → `bash scripts/pack.sh` with 0 segments left in Serbian.
+   Then write the app layer of every new item — `content/app/vesti/<slug>.json`, hero (if the item has a key number)
+   and a 2-line brief in sr/en/ru, numbers exactly as on the built pages (3.36, NEWS_STYLE §5) — and run
+   `python3 scripts/app_layer.py --strict` (0 errors; `pack.sh` runs it too and stops on an error).
 6. Check the new pages in `dist/` (and `scripts/qa/` at 390 and 1440 px), deploy (§5), commit (§6).
 7. Report: one line per published item. Nothing new → say so, do not build or deploy.
 
@@ -1255,7 +1258,7 @@ linked to the listing).
 Since 26.09.2026 `.github/workflows/site-checks.yml` checks the site without anyone in a chat:
 
 - **build** — on every push to `main` (except `android/**`) and by hand: `build.py`, `i18n.py todo` must print
-  `en 0` and `ru 0`, `check_links.py`, `gen_com.py` (blokvolt.com builds, no broken link), `lint_sr.py --all-news`. A red build means the last commit broke something
+  `en 0` and `ru 0`, `check_links.py`, `gen_com.py` (blokvolt.com builds, no broken link), `lint_sr.py --all-news`, `app_layer.py --strict` and its test (3.36). A red build means the last commit broke something
   that the next deploy would publish: fix it before deploying.
 - **live** — every night at 02:17 UTC and by hand: `scripts/qa/live_smoke.py` against www.blokvolt.rs and
   blokvolt.com (home, /serbia/, /hr/, /hr/karta/, /ba/, /me/ and the Croatian map data) — key SR/EN/RU pages and their markers, a rotating slice of the sitemap (every page about once in
@@ -1291,6 +1294,7 @@ finished Serbian, English and Russian pages:
   `dist/assets/app/v1/data.json` (calculator numbers, language-neutral); the map files stay in `/assets/map/` and are
   listed in the manifest. Everything under `/assets` has a one-year immutable cache, so the apps always go through the
   manifest.
+- Guides, data pages and news also carry `app`: the short visual layer the apps show above the page (3.36).
 - A page becomes blocks (`h2`, `h3`, `p`, `ul`, `ol`, `summary`, `img`, `table`, `details`, `quote`, `callout`,
   `video`, `facts`, `links`, `doc`, `note`) with limited Markdown inline (`**bold**`, `*italic*`, `[text](URL)`,
   `` `code` ``). Links stay absolute; the apps open the ones they know natively.
@@ -2136,6 +2140,69 @@ Free tools only; nothing here may slow the site down or add steps for visitors.
   pages need EN/RU for their title, h1, lead, headings and the town name (3.9); the Russian forms use the hyphenated
   names of the translation memory (Нови-Сад, Врнячка-Баня) and decline only the last part (в Сремска-Митровице).
 
+### 3.36 App layer of guides and news (since 29.10.2026)
+
+The apps open every guide, data page and news item with a compact, visual layer; the full page follows below, folded
+by section, as „Detaljno“. The apps never invent that layer: it is written by hand, from the page, with the same facts.
+
+**Where it lives.** One file per page, `content/app/<page path>.json` (`/podaci/krediti-i-lizing/` →
+`content/app/podaci/krediti-i-lizing.json`, `/punjenje-elektricnog-auta-u-zgradi` →
+`content/app/punjenje-elektricnog-auta-u-zgradi.json`, news `/vesti/<slug>/` → `content/app/vesti/<slug>.json`), with
+the keys `sr`, `en`, `ru` and, for guides and data pages, `cover`. `scripts/app_feed.py` puts each language's object
+into the document as `app` (before `blocks`) in `guides.json` and `news.json`, and the cover also into the list items
+of `guides.json` → `groups[].items[]`. The schema string stays `blokvolt.app/1` (the field is optional and additive).
+
+```
+"cover":  {"image": "punjenje-u-zgradi", "alt": {"sr": "…", "en": "…", "ru": "…"}}   // file level, guides/data only
+"sr": {
+  "hero":   {"value": "4,99 %", "label": "…"},          // ONE key figure: value ≤ 10, label ≤ 48 chars; omit if none
+  "brief":  ["…", "…", "…"],                            // "Ukratko": 2–3 lines ≤ 95 (news: exactly 2), no full stop
+  "keys":   [{"value": "8 god.", "label": "…", "icon": "shield"}],          // 2–4 tiles, value ≤ 12, label ≤ 40
+  "steps":  {"title": "…", "items": [{"title": "…", "text": "…"}]},          // 3–5 steps, title ≤ 36, text ≤ 90
+  "bars":   {"title": "…", "note": "…", "items": [{"label": "…", "value": 4.99, "display": "4,99 %", "accent": true}]},
+            // 3–6 items in one unit, label ≤ 28, display ≤ 12, value = the number of display
+  "important": "…",                                     // one "Važno" line ≤ 160
+  "paths":  [{"title": "…", "text": "…", "url": "https://www.blokvolt.rs/…"}]   // 2–4 cards, title ≤ 36, text ≤ 90
+}
+```
+
+In the feed `cover` becomes `{"src", "thumb", "w", "h", "alt", "credit"}`: `static/assets/img/cover-<image>-1200.webp`
+and `-640.webp` (16:9) as absolute URLs with `?v=<sha1>` like every other `/assets` file, the size read from the file and
+the credit „Ilustracija: BlokVolt (AI)“ / "Illustration: BlokVolt (AI)" / «Иллюстрация: BlokVolt (ИИ)» (the apps show
+it under ⓘ). Covers are app-only: the site pages keep their own images. News keep their own photo and get no cover.
+
+Icons are a closed set the apps ship: `bolt, plug, building, users, doc, coins, percent, shield, wrench, battery, car,
+road, map, clock, calendar, alert, check, info, phone, globe, leaf, card, parking, receipt`.
+
+**Rules.**
+- Every number, price, date, percentage and name must already be on that page in that language, written the same
+  way (the site keeps Serbian number format in all three languages: „4,99 %“, „17.990 €“). No new facts, no rounding,
+  no new claims; keep the page's hedges („oko“, „najčešće“, „po pravilu“). A firm's or a network's name appears only
+  as a fact the page states, never as advice.
+- Neutrality (§0): no „najbolji“/"best", no recommendations, no „mi“/„redakcija“/"we"; Evolako is never in the app layer.
+- SR Latin, ekavica, „vi“, impersonal; EN plain American; RU «вы», impersonal — the site's own translations of terms.
+- Each brief line is one fact a person acts on. `steps` only where the page really describes a sequence, `bars` only
+  where a chart reads faster than a table, `paths` only where the page is a fork. A page without an honest single
+  number gets no hero. Long tables stay in the blocks (the apps list them with search and „Prikaži još“).
+- Tools (`/alati/…`, kind `tool`) get a brief only if the page text supports it.
+
+**When a page changes.** The app layer is part of the page: a commit that changes a fact on the page changes the app
+layer in the same commit. The validator finds a stale number — a number of the app layer that is no longer on the
+built page of that language — and fails CI.
+
+**Validator.** `scripts/app_layer.py`, called by `app_feed.build()` at the end of every `python3 build.py` (it
+prints `app layer: N/N pages; … 0 errors`, or the errors as a warning). Strict: `python3 scripts/app_layer.py
+--strict` checks the last build and exits 1 on any error; it runs in `scripts/pack.sh` and in the "Site checks"
+workflow. Checked: the fields and their lengths, item counts, icons, path links (on the site, in the page's language,
+existing), bars (one unit, value = display), cover files and alt texts, the same structure in the three languages,
+forbidden words, every number with its unit (%, €, RSD, km, kW, kWh, years, months) against the page text of that
+language, and that every guide, data page and news item has an app layer. Test: `python3 scripts/qa/app_layer_test.py`.
+
+**New pages and news.** A new guide or data page: write `content/app/<path>.json` in the same commit (and a cover
+when there is a photo for it). A new news item: hero (if any) and a 2-line brief in the three languages, written after
+the translation, when the EN/RU pages exist (NEWS_STYLE §5). Write the EN/RU lines from the built EN/RU page
+(`dist/en/…`, `dist/ru/…`), not by translating the Serbian line anew, so the numbers and terms match.
+
 ## 4. Build and check
 
 ```bash
@@ -2154,6 +2221,8 @@ python3 scripts/qa/map_region_test.py             # the region layer
 python3 scripts/qa/map_labels_test.py /tmp/bv-shots/labels   # price labels never on a pin or a label, both maps (3.11)
 python3 scripts/qa/vis_shots.py /,/vesti/ /tmp/bv-shots   # full-page screenshots, desktop and phone
 python3 scripts/qa/fx_test.py /tmp/bv-fx-shots      # display currency: RSD unchanged, EUR/USD, never-converted pages (3.29)
+python3 scripts/app_layer.py --strict              # app layer of guides and news: every number on its page (3.36)
+python3 scripts/qa/app_layer_test.py               # the validator catches invented/stale numbers, icons, lengths
 ```
 
 `cfserve.py` reads `dist/_headers` when it starts: restart it after a build that changed an inline script (calculators),

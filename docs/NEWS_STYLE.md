@@ -140,6 +140,29 @@ A correction to a published item: fix it, set `modified`, add a line to `izmene.
 
 `python3 scripts/lint_sr.py content/vesti/<file>.md` must report 0 errors; read the warnings and fix what is real.
 
+**App layer (required for every new item, since 29.10.2026).** The BlokVolt apps show each news item with a key
+number and a two-line „Ukratko“ above the text. Write it in `content/app/vesti/<slug>.json` (same slug as the URL),
+in all three languages, after the translation, so the EN and RU pages exist:
+
+```
+{
+  "sr": {"hero": {"value": "24 od 36", "label": "državnih punjača na autoputevima radi"},
+         "brief": ["Punjenje je besplatno i pokreće se u aplikaciji Orion eMobility",
+                   "7 punjača trenutno ne radi, a 5 je u postupku priključenja na mrežu"]},
+  "en": {"hero": {…}, "brief": ["…", "…"]},
+  "ru": {"hero": {…}, "brief": ["…", "…"]}
+}
+```
+
+- `hero` only when the item has one honest key number (value ≤ 10 characters, label ≤ 48); otherwise leave it out.
+  A number written in words in the item („pet punjača“) is not a hero.
+- `brief`: exactly two lines, each ≤ 95 characters, one fact each, no full stop at the end.
+- Every number exactly as on the built page of that language (`dist/vesti/<slug>/`, `dist/en/…`, `dist/ru/…`);
+  the item's hedges stay („prema pisanju“, „po podacima kompanije“, „nacrt“). Same voice rules as the item: „vi“,
+  impersonal, no Evolako.
+- `python3 scripts/app_layer.py --strict` must report 0 errors (`pack.sh` and the "Site checks" workflow run it).
+  The full schema and rules: `docs/RUNBOOK.md` §3.36.
+
 ## 6. Transparency
 
 `/metodologija/#vesti` says that news texts are prepared with the help of AI tools, under the same rules as the

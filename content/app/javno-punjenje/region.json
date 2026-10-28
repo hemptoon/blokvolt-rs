@@ -1,0 +1,45 @@
+{
+  "cover": {"image": "region", "alt": {"sr": "Auto na planinskom putu iznad zaliva", "en": "A car on a mountain road above a bay", "ru": "Машина на горной дороге над заливом"}},
+  "sr": {
+    "brief": [
+      "U Hrvatskoj i Mađarskoj važi AFIR: javni punjač mora da omogući plaćanje bez registracije",
+      "Crna Gora: cenovnik ne objavljuje nijedan operater; u BiH samo pojedinačni punjači",
+      "Roaming Charge&GO se uključuje na zahtev, mejlom pre puta"
+    ],
+    "keys": [
+      {"value": "0,35–0,78 €", "label": "po kWh u Hrvatskoj, sa PDV-om", "icon": "globe"},
+      {"value": "279 Ft", "label": "IONITY u Mađarskoj, po kWh", "icon": "globe"},
+      {"value": "30 / 40 MKD", "label": "EVN u S. Makedoniji, kWh AC / DC", "icon": "globe"},
+      {"value": "43–79 RSD", "label": "brzo punjenje u Srbiji, za poređenje", "icon": "bolt"}
+    ],
+    "important": "Cena u roamingu može biti drugačija nego kod domaćeg operatera: proverite je u aplikaciji"
+  },
+  "en": {
+    "brief": [
+      "AFIR applies in Croatia and Hungary: a public charger must allow payment without registration",
+      "Montenegro: no operator publishes a price list; in Bosnia and Herzegovina only some chargers",
+      "Charge&GO roaming is activated on request, by email before the trip"
+    ],
+    "keys": [
+      {"value": "0,35–0,78 €", "label": "per kWh in Croatia, VAT included", "icon": "globe"},
+      {"value": "279 Ft", "label": "IONITY in Hungary, per kWh", "icon": "globe"},
+      {"value": "30 / 40 MKD", "label": "EVN in North Macedonia, kWh AC / DC", "icon": "globe"},
+      {"value": "43–79 RSD", "label": "fast charging in Serbia, for comparison", "icon": "bolt"}
+    ],
+    "important": "The roaming price may differ from the local operator's price: check it in the app"
+  },
+  "ru": {
+    "brief": [
+      "В Хорватии и Венгрии действует AFIR: на публичной зарядке можно платить без регистрации",
+      "Черногория: прайс-лист не публикует ни один оператор; в БиГ — только отдельные зарядки",
+      "Роуминг Charge&GO подключается по запросу, письмом до поездки"
+    ],
+    "keys": [
+      {"value": "0,35–0,78 €", "label": "за кВт·ч в Хорватии, с НДС", "icon": "globe"},
+      {"value": "279 Ft", "label": "IONITY в Венгрии, за кВт·ч", "icon": "globe"},
+      {"value": "30 / 40 MKD", "label": "EVN в С. Македонии, кВт·ч AC / DC", "icon": "globe"},
+      {"value": "43–79 RSD", "label": "быстрая зарядка в Сербии, для сравнения", "icon": "bolt"}
+    ],
+    "important": "Цена в роуминге может отличаться от цены местного оператора: проверьте её в приложении"
+  }
+}

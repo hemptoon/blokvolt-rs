@@ -1,0 +1,42 @@
+{
+  "cover": {"image": "sporo-punjenje", "alt": {"sr": "Auto na brzom punjaču po snegu, vozač čeka u kolima", "en": "A car at a fast charger in the snow, the driver waiting inside", "ru": "Машина на быстрой зарядке в снегопад, водитель ждёт в салоне"}},
+  "sr": {
+    "hero": {"value": "20–40 °C", "label": "baterija na oko toliko puni najbrže"},
+    "brief": [
+      "Na stubu piše najveća moguća snaga, a brzinu punjenja određuje auto",
+      "Kad dva auta pune na istom stubu, snaga se obično deli na pola",
+      "Auto od 400 V preko CCS kabla prima najviše oko 200–240 kW"
+    ],
+    "keys": [
+      {"value": "40–70 %", "label": "duže na −7 °C bez predgrevanja (ADAC)", "icon": "clock"},
+      {"value": "2 × 90 kW", "label": "umesto 180 kW kad pune dva auta", "icon": "bolt"}
+    ],
+    "important": "Zimi uključite predgrevanje baterije preko navigacije do punjača, nekoliko minuta pre dolaska"
+  },
+  "en": {
+    "hero": {"value": "20–40 °C", "label": "about where a battery charges fastest"},
+    "brief": [
+      "The charger shows the maximum possible power; the car decides the charging speed",
+      "When two cars charge on the same unit, power is usually split in half",
+      "A 400 V car takes at most about 200–240 kW through a CCS cable"
+    ],
+    "keys": [
+      {"value": "40–70 %", "label": "longer at −7 °C without preconditioning", "icon": "clock"},
+      {"value": "2 × 90 kW", "label": "instead of 180 kW with two cars", "icon": "bolt"}
+    ],
+    "important": "In winter, turn on battery preconditioning by navigating to the charger, a few minutes before you arrive"
+  },
+  "ru": {
+    "hero": {"value": "20–40 °C", "label": "примерно при такой температуре зарядка быстрее"},
+    "brief": [
+      "На станции указана максимальная возможная мощность, а скорость решает машина",
+      "Когда на одной станции заряжаются две машины, мощность обычно делится пополам",
+      "Машина на 400 В через кабель CCS берёт не больше 200–240 кВт"
+    ],
+    "keys": [
+      {"value": "40–70 %", "label": "дольше при −7 °C без подогрева (ADAC)", "icon": "clock"},
+      {"value": "2 × 90 кВт", "label": "вместо 180 кВт, когда машин две", "icon": "bolt"}
+    ],
+    "important": "Зимой включайте подогрев батареи через навигацию к зарядке, за несколько минут до приезда"
+  }
+}

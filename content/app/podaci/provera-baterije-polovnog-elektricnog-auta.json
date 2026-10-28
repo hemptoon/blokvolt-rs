@@ -1,0 +1,72 @@
+{
+  "cover": {"image": "provera-baterije", "alt": {"sr": "Serviser proverava bateriju električnog auta tabletom", "en": "A mechanic checking an electric car's battery with a tablet", "ru": "Механик проверяет батарею электромобиля с планшетом"}},
+  "sr": {
+    "hero": {"value": "8 godina", "label": "ili 160.000 km: garancija baterije, većina marki"},
+    "brief": [
+      "Tehnički pregled ne proverava bateriju električnog automobila",
+      "Prosečan gubitak kapaciteta je oko 2,3 % godišnje (Geotab, podaci za 2025)",
+      "AVILOO test baterije u Beogradu: 12.000–15.000 RSD, cene sa sajtova servisa"
+    ],
+    "keys": [
+      {"value": "70 %", "label": "kapaciteta najmanje, uz garanciju", "icon": "battery"},
+      {"value": "1,5 %", "label": "godišnje uz retko brzo punjenje", "icon": "bolt"}
+    ],
+    "bars": {
+      "title": "Najmanji SOH za polovan auto, ADAC",
+      "note": "Preporuka ADAC-a (20.10.2026), po kilometraži",
+      "items": [
+        {"label": "50.000 km", "value": 92, "display": "92 %"},
+        {"label": "100.000 km", "value": 88, "display": "88 %"},
+        {"label": "150.000 km", "value": 84, "display": "84 %"},
+        {"label": "200.000 km", "value": 80, "display": "80 %"}
+      ]
+    },
+    "important": "Pre kupovine pitajte ovlašćeni servis da li je vozilo po broju šasije obuhvaćeno opozivom"
+  },
+  "en": {
+    "hero": {"value": "8 years", "label": "or 160.000 km: battery warranty, most brands"},
+    "brief": [
+      "The roadworthiness test does not check an electric car's battery",
+      "The average capacity loss is about 2,3 % a year (Geotab, data for 2025)",
+      "AVILOO battery test in Belgrade: 12.000–15.000 RSD, prices from the services' websites"
+    ],
+    "keys": [
+      {"value": "70 %", "label": "of capacity at least, under warranty", "icon": "battery"},
+      {"value": "1,5 %", "label": "a year with little fast charging", "icon": "bolt"}
+    ],
+    "bars": {
+      "title": "Minimum SOH for a used car, ADAC",
+      "note": "ADAC minimums (20.10.2026), by mileage",
+      "items": [
+        {"label": "50.000 km", "value": 92, "display": "92 %"},
+        {"label": "100.000 km", "value": 88, "display": "88 %"},
+        {"label": "150.000 km", "value": 84, "display": "84 %"},
+        {"label": "200.000 km", "value": 80, "display": "80 %"}
+      ]
+    },
+    "important": "Before buying, ask an authorised service whether the car is covered by a recall, by its chassis number"
+  },
+  "ru": {
+    "hero": {"value": "8 лет", "label": "или 160.000 км: гарантия батареи у большинства"},
+    "brief": [
+      "Техосмотр не проверяет батарею электромобиля",
+      "Средняя потеря ёмкости — около 2,3 % в год (Geotab, данные за 2025 год)",
+      "Тест батареи AVILOO в Белграде: 12.000–15.000 RSD, цены с сайтов сервисов"
+    ],
+    "keys": [
+      {"value": "70 %", "label": "ёмкости минимум по гарантии", "icon": "battery"},
+      {"value": "1,5 %", "label": "в год при редкой быстрой зарядке", "icon": "bolt"}
+    ],
+    "bars": {
+      "title": "Минимальный SOH подержанного, ADAC",
+      "note": "Рекомендация ADAC (20.10.2026), по пробегу",
+      "items": [
+        {"label": "50.000 км", "value": 92, "display": "92 %"},
+        {"label": "100.000 км", "value": 88, "display": "88 %"},
+        {"label": "150.000 км", "value": 84, "display": "84 %"},
+        {"label": "200.000 км", "value": 80, "display": "80 %"}
+      ]
+    },
+    "important": "Перед покупкой спросите официальный сервис, попадает ли машина по VIN под отзывную кампанию"
+  }
+}

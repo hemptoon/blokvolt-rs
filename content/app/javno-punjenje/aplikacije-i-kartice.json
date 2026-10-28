@@ -1,0 +1,39 @@
+{
+  "cover": {"image": "aplikacije-i-kartice", "alt": {"sr": "Kartica za punjenje i telefon ispred čitača na punjaču", "en": "A charging card and a phone in front of a charger's reader", "ru": "Карта для зарядки и телефон у считывателя зарядки"}},
+  "sr": {
+    "brief": [
+      "Najveći deo mreže pokrivaju dve aplikacije: Charge&GO i Orion eMobility",
+      "Državni punjači na autoputevima su besplatni i pokreću se samo preko Orion eMobility",
+      "Bez registracije, samo platnom karticom: na punjačima Charge&GO, preko QR koda"
+    ],
+    "keys": [
+      {"value": "2–3 dana", "label": "radna: kurirom stiže RFID kartica", "icon": "card"},
+      {"value": "15 minuta", "label": "posle punjenja, pa 5 RSD po minutu", "icon": "clock"}
+    ],
+    "important": "RFID kartica je ključ jednog naloga, a ne novčanik: ne radi u svim mrežama, a roming je obično skuplji"
+  },
+  "en": {
+    "brief": [
+      "Two apps cover most of the network: Charge&GO and Orion eMobility",
+      "State chargers on motorways are free and started only via the Orion eMobility app",
+      "Without registration, with a payment card only: at Charge&GO chargers, via the QR code"
+    ],
+    "keys": [
+      {"value": "2–3 days", "label": "working: RFID card arrives by courier", "icon": "card"},
+      {"value": "15 minutes", "label": "after charging, then 5 RSD per minute", "icon": "clock"}
+    ],
+    "important": "An RFID card is the key to one account, not a wallet: it does not work in every network, and roaming usually costs more"
+  },
+  "ru": {
+    "brief": [
+      "Большую часть сети покрывают два приложения: Charge&GO и Orion eMobility",
+      "Госзарядки на автомагистралях бесплатны и запускаются только через Orion eMobility",
+      "Без регистрации, только банковской картой: на зарядках Charge&GO, через QR-код"
+    ],
+    "keys": [
+      {"value": "2–3 дня", "label": "рабочих: RFID-карта приходит курьером", "icon": "card"},
+      {"value": "15 минут", "label": "после зарядки, затем 5 RSD за минуту", "icon": "clock"}
+    ],
+    "important": "RFID-карта — ключ к одному аккаунту, а не кошелёк: работает не во всех сетях, а роуминг обычно дороже"
+  }
+}

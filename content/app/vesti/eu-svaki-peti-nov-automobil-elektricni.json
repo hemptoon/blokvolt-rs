@@ -1,0 +1,23 @@
+{
+  "sr": {
+    "hero": {"value": "21,7 %", "label": "novih registracija u EU, januar–avgust 2026"},
+    "brief": [
+      "Potpuno električnih bilo je 1.641.333, naspram 15,8 % tržišta godinu ranije",
+      "U Srbiji je u prvoj polovini 2026. udeo bio 2,74 % novih vozila"
+    ]
+  },
+  "en": {
+    "hero": {"value": "21,7 %", "label": "of new EU registrations, January–August 2026"},
+    "brief": [
+      "There were 1.641.333 fully electric cars, against 15,8 % of the market a year earlier",
+      "In Serbia the share in the first half of 2026 was 2,74 % of new vehicles"
+    ]
+  },
+  "ru": {
+    "hero": {"value": "21,7 %", "label": "новых регистраций в ЕС, январь–август 2026"},
+    "brief": [
+      "Полностью электрических — 1.641.333, против 15,8 % рынка годом ранее",
+      "В Сербии в первой половине 2026 года доля составила 2,74 % новых машин"
+    ]
+  }
+}

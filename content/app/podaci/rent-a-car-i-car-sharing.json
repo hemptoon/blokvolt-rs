@@ -1,0 +1,42 @@
+{
+  "cover": {"image": "rent-a-car", "alt": {"sr": "Putnici sa koferima preuzimaju električni auto na aerodromu", "en": "Travellers with suitcases picking up an electric car at an airport", "ru": "Путешественники с чемоданами забирают электромобиль в аэропорту"}},
+  "sr": {
+    "hero": {"value": "5", "label": "domaćih firmi iznajmljuje električni auto"},
+    "brief": [
+      "Sve su u Beogradu i Novom Sadu; međunarodne kuće električni auto u Srbiji ne nude",
+      "Cene od 16 €/dan; Tesla Model 3 od 30 €/dan pri najmu od 30 dana",
+      "Car-sharinga sa električnim automobilima nema"
+    ],
+    "important": "Pre najma pitajte koliko baterije treba pri vraćanju i ko plaća Supercharger i javne punjače",
+    "paths": [
+      {"title": "Nedelja sa električnim autom", "text": "Računica za probu i pitanja pre potpisivanja", "url": "https://www.blokvolt.rs/najam-elektricnog-automobila"},
+      {"title": "Punjenje u regionu", "text": "Ako auto ide van Srbije", "url": "https://www.blokvolt.rs/javno-punjenje/region/"}
+    ]
+  },
+  "en": {
+    "hero": {"value": "5", "label": "local companies rent out electric cars"},
+    "brief": [
+      "All in Belgrade and Novi Sad; international firms do not offer electric cars in Serbia",
+      "Prices from 16 €/day; Tesla Model 3 from 30 €/day for a 30-day rental",
+      "There is no car sharing with electric cars"
+    ],
+    "important": "Before renting, ask how much battery is needed on return and who pays for Superchargers and public chargers",
+    "paths": [
+      {"title": "A week with an electric car", "text": "The maths of a trial and what to ask before signing", "url": "https://www.blokvolt.rs/en/najam-elektricnog-automobila"},
+      {"title": "Charging in the region", "text": "If the car leaves Serbia", "url": "https://www.blokvolt.rs/en/javno-punjenje/region/"}
+    ]
+  },
+  "ru": {
+    "hero": {"value": "5", "label": "местных компаний сдают электромобили"},
+    "brief": [
+      "Все в Белграде и Нови-Саде; международные компании электромобили в Сербии не предлагают",
+      "Цены от 16 €/сутки; Tesla Model 3 — от 30 €/сутки при аренде на 30 дней",
+      "Каршеринга на электромобилях нет"
+    ],
+    "important": "Перед арендой спросите, с каким зарядом возвращать машину и кто платит за Supercharger и публичные зарядки",
+    "paths": [
+      {"title": "Неделя на электромобиле", "text": "Расчёт пробной аренды и вопросы перед подписанием", "url": "https://www.blokvolt.rs/ru/najam-elektricnog-automobila"},
+      {"title": "Зарядка в регионе", "text": "Если машина поедет за пределы Сербии", "url": "https://www.blokvolt.rs/ru/javno-punjenje/region/"}
+    ]
+  }
+}

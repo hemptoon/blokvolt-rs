@@ -1,0 +1,23 @@
+{
+  "sr": {
+    "hero": {"value": "5.000 €", "label": "za nov električni auto, zahtev do 1. decembra"},
+    "brief": [
+      "Rok je produžen sa 30. septembra; izmena je objavljena u Službenom glasniku 86/2026",
+      "Duži rok ne znači da će novca biti do decembra: zahtev podnesite čim imate papire"
+    ]
+  },
+  "en": {
+    "hero": {"value": "5.000 €", "label": "for a new electric car, apply by 1 December"},
+    "brief": [
+      "The deadline was extended from 30 September; the change is in the Official Gazette 86/2026",
+      "A longer deadline does not mean the money will last: apply as soon as you have the papers"
+    ]
+  },
+  "ru": {
+    "hero": {"value": "5.000 €", "label": "на новый электромобиль, заявка до 1 декабря"},
+    "brief": [
+      "Срок продлён с 30 сентября; изменение опубликовано в Službeni glasnik 86/2026",
+      "Долгий срок не значит, что денег хватит: подавайте заявку, как только будут документы"
+    ]
+  }
+}

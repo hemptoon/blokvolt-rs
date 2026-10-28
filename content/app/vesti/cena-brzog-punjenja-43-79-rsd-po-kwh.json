@@ -1,0 +1,23 @@
+{
+  "sr": {
+    "hero": {"value": "43–79 RSD", "label": "kWh na računima sa brzih punjača Charge&GO"},
+    "brief": [
+      "Charge&GO naplaćuje minut: od 16,67 RSD/min (AC 22 kW) do 126,67 RSD/min (DC 240 kW)",
+      "Kod kuće noću kWh košta oko 4–7 RSD sa svim naknadama i porezima"
+    ]
+  },
+  "en": {
+    "hero": {"value": "43–79 RSD", "label": "per kWh on Charge&GO fast-charger receipts"},
+    "brief": [
+      "Charge&GO bills by the minute: from 16,67 RSD/min (AC 22 kW) to 126,67 RSD/min (DC 240 kW)",
+      "At home at night a kWh costs about 4–7 RSD with all fees and taxes"
+    ]
+  },
+  "ru": {
+    "hero": {"value": "43–79", "label": "динаров за кВт·ч, быстрые зарядки Charge&GO"},
+    "brief": [
+      "Charge&GO берёт плату за минуту: от 16,67 RSD/мин (AC 22 кВт) до 126,67 RSD/мин (DC 240 кВт)",
+      "Дома ночью кВт·ч стоит около 4–7 RSD со всеми сборами и налогами"
+    ]
+  }
+}

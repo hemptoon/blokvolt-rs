@@ -1,0 +1,60 @@
+{
+  "cover": {"image": "plug-in-hibrid", "alt": {"sr": "Plug-in hibrid na uličnom punjaču, vozač vadi kabl iz prtljažnika", "en": "A plug-in hybrid at a street charger, the driver taking a cable from the boot", "ru": "Плагин-гибрид у уличной зарядки, водитель достаёт кабель из багажника"}},
+  "sr": {
+    "hero": {"value": "303 RSD", "label": "kWh za hibrid od 3,3 kW na Charge&GO AC"},
+    "brief": [
+      "Javni AC punjač naplaćuje vreme: Charge&GO AC 22 kW košta 1.000 RSD na sat",
+      "To je više od litra benzina (207 RSD); kod kuće noću kWh je okvirno 4–7 RSD",
+      "Isplati se hibrid koji prima 11 kW AC ili ima DC priključak, i besplatni punjači"
+    ],
+    "bars": {
+      "title": "Cena kWh po snazi punjača u autu",
+      "note": "Charge&GO AC 22 kW, 1.000 RSD na sat",
+      "items": [
+        {"label": "3,3 kW", "value": 303, "display": "303 RSD/kWh", "accent": true},
+        {"label": "3,7 kW", "value": 270, "display": "270 RSD/kWh"},
+        {"label": "6,6 kW", "value": 152, "display": "152 RSD/kWh"},
+        {"label": "11 kW", "value": 91, "display": "91 RSD/kWh"}
+      ]
+    },
+    "important": "Posle punjenja imate 15 minuta, zatim zauzeće košta 5 RSD po minutu"
+  },
+  "en": {
+    "hero": {"value": "303 RSD", "label": "per kWh, 3,3 kW hybrid on Charge&GO AC"},
+    "brief": [
+      "A public AC charger bills time: Charge&GO AC 22 kW costs 1.000 RSD per hour",
+      "That is more than a litre of petrol (207 RSD); at home at night a kWh is roughly 4–7 RSD",
+      "It pays off for a hybrid that takes 11 kW AC or has a DC inlet, and at free chargers"
+    ],
+    "bars": {
+      "title": "kWh price by the car's on-board charger",
+      "note": "Charge&GO AC 22 kW, 1.000 RSD per hour",
+      "items": [
+        {"label": "3,3 kW", "value": 303, "display": "303 RSD/kWh", "accent": true},
+        {"label": "3,7 kW", "value": 270, "display": "270 RSD/kWh"},
+        {"label": "6,6 kW", "value": 152, "display": "152 RSD/kWh"},
+        {"label": "11 kW", "value": 91, "display": "91 RSD/kWh"}
+      ]
+    },
+    "important": "After charging you have 15 minutes, then occupying the charger costs 5 RSD per minute"
+  },
+  "ru": {
+    "hero": {"value": "303 RSD", "label": "за кВт·ч, гибрид на 3,3 кВт на Charge&GO AC"},
+    "brief": [
+      "Публичная AC-зарядка берёт плату за время: Charge&GO AC 22 кВт стоит 1.000 RSD в час",
+      "Это больше, чем литр бензина (207 RSD); дома ночью кВт·ч стоит примерно 4–7 RSD",
+      "Выгодно, если гибрид принимает 11 кВт AC или у него есть разъём DC, и на бесплатных"
+    ],
+    "bars": {
+      "title": "Цена кВт·ч по бортовой зарядке машины",
+      "note": "Charge&GO AC 22 кВт, 1.000 RSD в час",
+      "items": [
+        {"label": "3,3 kW", "value": 303, "display": "303 RSD/kWh", "accent": true},
+        {"label": "3,7 kW", "value": 270, "display": "270 RSD/kWh"},
+        {"label": "6,6 kW", "value": 152, "display": "152 RSD/kWh"},
+        {"label": "11 kW", "value": 91, "display": "91 RSD/kWh"}
+      ]
+    },
+    "important": "После зарядки у вас есть 15 минут, затем простой стоит 5 RSD в минуту"
+  }
+}

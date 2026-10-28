@@ -1,0 +1,60 @@
+{
+  "cover": {"image": "bez-garaze", "alt": {"sr": "Električni auto na uličnom punjaču ispred stambene zgrade uveče", "en": "An electric car at a street charger in front of an apartment block at dusk", "ru": "Электромобиль у уличной зарядки перед жилым домом вечером"}},
+  "sr": {
+    "hero": {"value": "160 kWh", "label": "mesečno za 1.000 km, uz 16 kWh na 100 km"},
+    "brief": [
+      "Za 1.000 km: noću u garaži 650–1.100 RSD, na brzim javnim punjačima 6.900–12.600 RSD",
+      "Garaža od 100 € mesečno isplati se samim punjenjem tek od oko 1.000–2.000 km",
+      "U tuđoj garaži trebaju pismena saglasnost vlasnika i zasebno MID brojilo"
+    ],
+    "keys": [
+      {"value": "oko 91 RSD", "label": "kWh na sporom punjaču, naplata po minutu", "icon": "clock"},
+      {"value": "127 od 514", "label": "oglasa za garaže sa filterom „Struja“", "icon": "parking"},
+      {"value": "oko 110 km", "label": "za 8 sati iz obične utičnice od 2,3 kW", "icon": "plug"}
+    ],
+    "important": "Zajedničku struju zgrade plaćaju svi stanari: punjenje iz nje traži odluku skupštine i zasebno brojilo",
+    "paths": [
+      {"title": "Garaža sa strujom", "text": "Pismena saglasnost vlasnika i MID brojilo", "url": "https://www.blokvolt.rs/punjac-u-iznajmljenoj-garazi"},
+      {"title": "Javni punjači", "text": "Kako platiti manje po kilovat-satu", "url": "https://www.blokvolt.rs/javno-punjenje/kako-jeftinije-puniti/"},
+      {"title": "Besplatni punjači", "text": "Malo ih je, vezani su za radno vreme i pravila lokacije", "url": "https://www.blokvolt.rs/javno-punjenje/besplatni-punjaci/"}
+    ]
+  },
+  "en": {
+    "hero": {"value": "160 kWh", "label": "a month for 1.000 km, at 16 kWh per 100 km"},
+    "brief": [
+      "For 1.000 km: 650–1.100 RSD in a garage at night, 6.900–12.600 RSD at public fast chargers",
+      "A garage at 100 € a month pays off through charging alone only from about 1.000–2.000 km",
+      "In someone else's garage you need the owner's written consent and a separate MID meter"
+    ],
+    "keys": [
+      {"value": "about 91 RSD", "label": "per kWh at a slow, per-minute charger", "icon": "clock"},
+      {"value": "127 of 514", "label": "garage listings with the “Struja” filter", "icon": "parking"},
+      {"value": "about 110 km", "label": "in 8 hours from a plain 2,3 kW socket", "icon": "plug"}
+    ],
+    "important": "All residents pay for a building's shared electricity: charging from it needs an assembly decision and a meter",
+    "paths": [
+      {"title": "A garage with electricity", "text": "The owner's written consent and a MID-certified meter", "url": "https://www.blokvolt.rs/en/punjac-u-iznajmljenoj-garazi"},
+      {"title": "Public chargers", "text": "How to pay less per kilowatt-hour", "url": "https://www.blokvolt.rs/en/javno-punjenje/kako-jeftinije-puniti/"},
+      {"title": "Free chargers", "text": "Few of them, tied to opening hours and the location's rules", "url": "https://www.blokvolt.rs/en/javno-punjenje/besplatni-punjaci/"}
+    ]
+  },
+  "ru": {
+    "hero": {"value": "160 кВт·ч", "label": "в месяц на 1.000 км при 16 кВт·ч на 100 км"},
+    "brief": [
+      "На 1.000 км: в гараже ночью 650–1.100 RSD, на быстрых публичных зарядках 6.900–12.600 RSD",
+      "Гараж за 100 € в месяц окупается одной зарядкой примерно от 1.000–2.000 км в месяц",
+      "В чужом гараже нужны письменное согласие владельца и отдельный счётчик MID"
+    ],
+    "keys": [
+      {"value": "около 91 RSD", "label": "за кВт·ч на медленной поминутной зарядке", "icon": "clock"},
+      {"value": "127 из 514", "label": "объявлений о гаражах с фильтром «Struja»", "icon": "parking"},
+      {"value": "около 110 км", "label": "за 8 часов от обычной розетки 2,3 кВт", "icon": "plug"}
+    ],
+    "important": "Общедомовое электричество оплачивают все жильцы: зарядка от него требует решения собрания и отдельного счётчика",
+    "paths": [
+      {"title": "Гараж с электричеством", "text": "Письменное согласие владельца и счётчик MID", "url": "https://www.blokvolt.rs/ru/punjac-u-iznajmljenoj-garazi"},
+      {"title": "Публичные зарядки", "text": "Как платить меньше за киловатт-час", "url": "https://www.blokvolt.rs/ru/javno-punjenje/kako-jeftinije-puniti/"},
+      {"title": "Бесплатные зарядки", "text": "Их мало, они зависят от часов работы и правил площадки", "url": "https://www.blokvolt.rs/ru/javno-punjenje/besplatni-punjaci/"}
+    ]
+  }
+}

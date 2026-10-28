@@ -1,0 +1,45 @@
+{
+  "cover": {"image": "najam", "alt": {"sr": "Predaja ključeva električnog automobila na parkingu", "en": "Handing over the keys of an electric car in a car park", "ru": "Передача ключей от электромобиля на парковке"}},
+  "sr": {
+    "hero": {"value": "490 €", "label": "nedelja Tesla Model 3 po jednom cenovniku"},
+    "brief": [
+      "Električni auto iznajmljuje nekoliko domaćih firmi, u Beogradu i Novom Sadu",
+      "Najniža objavljena cena po danu je od 16 €, za Renault Zoe",
+      "Depozit i punjenje nisu uračunati u cenu najma"
+    ],
+    "keys": [
+      {"value": "1.000 RSD", "label": "sat na Charge&GO AC 22 kW", "icon": "clock"},
+      {"value": "33,33 RSD", "label": "po minutu na DC 50 kW, OMV Ada Ciganlija", "icon": "bolt"},
+      {"value": "oko 108 km", "label": "za 8 sati iz šuko utičnice", "icon": "plug"}
+    ],
+    "important": "Pre potpisivanja pitajte sa koliko baterije vraćate auto i ko plaća punjenje"
+  },
+  "en": {
+    "hero": {"value": "490 €", "label": "a week with a Tesla Model 3, one price list"},
+    "brief": [
+      "Several local companies rent out electric cars, in Belgrade and Novi Sad",
+      "The lowest published daily price is from 16 €, for a Renault Zoe",
+      "The deposit and charging are not included in the rental price"
+    ],
+    "keys": [
+      {"value": "1.000 RSD", "label": "an hour on Charge&GO AC 22 kW", "icon": "clock"},
+      {"value": "33,33 RSD", "label": "per minute, DC 50 kW, OMV Ada Ciganlija", "icon": "bolt"},
+      {"value": "about 108 km", "label": "in 8 hours from a šuko socket", "icon": "plug"}
+    ],
+    "important": "Before signing, ask with how much battery you return the car and who pays for charging"
+  },
+  "ru": {
+    "hero": {"value": "490 €", "label": "неделя на Tesla Model 3 по одному прайсу"},
+    "brief": [
+      "Электромобили сдают в аренду несколько местных компаний в Белграде и Нови-Саде",
+      "Самая низкая опубликованная цена за сутки — от 16 €, у Renault Zoe",
+      "Залог и зарядка в цену аренды не входят"
+    ],
+    "keys": [
+      {"value": "1.000 RSD", "label": "час на Charge&GO AC 22 кВт", "icon": "clock"},
+      {"value": "33,33 RSD", "label": "за минуту, DC 50 кВт, OMV Ada Ciganlija", "icon": "bolt"},
+      {"value": "около 108 км", "label": "за 8 часов от розетки Schuko", "icon": "plug"}
+    ],
+    "important": "Перед подписанием спросите, с каким зарядом возвращать машину и кто платит за зарядку"
+  }
+}

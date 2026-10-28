@@ -22,6 +22,10 @@ so the apps show exactly what the site shows, translations included. A page is c
   quote · callout (the "Izdvojeno" line) · video (YouTube id) · facts (label/value tiles) · links (rows and tiles)
   doc (a sample document) · note · flow (a small diagram of boxes in rows) · connectors (plug types by code)
 
+Guides, data pages and news also carry `app`: the hand-written short layer the apps show above the page (hero,
+"Ukratko", tiles, steps, bars, "Važno", paths, cover), from content/app/<path>.json, checked by scripts/app_layer.py
+(RUNBOOK 3.36).
+
 Inline text is limited Markdown the apps can render directly: **bold**, *italic*, [text](absolute URL), `code`,
 and a line break as "\\n". Links stay absolute (https://www.blokvolt.rs/…); the apps open the ones they know
 natively (map, guides, networks, firms) and the rest in the browser."""
@@ -36,6 +40,7 @@ from bs4 import BeautifulSoup, NavigableString, Tag, Comment
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import valuta  # noqa: E402  (the display currency's fallback rate, RUNBOOK 3.29)
+import app_layer  # noqa: E402  (the app layer of guides and news, RUNBOOK 3.36)
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = 'https://www.blokvolt.rs'
@@ -551,6 +556,24 @@ def page_doc(path, lang, dist, kind):
     return doc
 
 
+def with_app(doc, lang):
+    """The page's app layer (content/app/<path>.json, RUNBOOK 3.36) as `app`, placed before the blocks."""
+    data = app_layer.load(doc['id'])
+    if not data or not isinstance(data.get(lang), dict):
+        return doc
+    app = data[lang]
+    cv = app_layer.cover(data, lang)
+    if cv:
+        app = dict(cover=cv, **app)
+    out = {}
+    for k, v in doc.items():
+        if k == 'blocks':
+            out['app'] = app
+        out[k] = v
+    out.setdefault('app', app)
+    return out
+
+
 # ---------------------------------------------------------------- collections
 def guide_groups(dist, lang):
     soup, url = parse('/vodici/', lang, dist)
@@ -567,6 +590,9 @@ def guide_groups(dist, lang):
             img = a.find('img')
             if img is not None and img.get('src'):
                 it['img'] = _abs(img.get('src'), url)
+            cv = app_layer.cover(app_layer.load(path), lang)  # the app's cover photo for the list card (RUNBOOK 3.36)
+            if cv:
+                it['cover'] = cv
             items.append(it)
         if items:
             groups.append({'title': _text(h), 'items': items})
@@ -580,11 +606,11 @@ def guides(dist, lang, paths_sr):
         kind = 'tool' if p.startswith('/alati/') else ('data' if p.startswith('/podaci/') else 'guide')
         if kind == 'tool':
             soup, url = parse(p, lang, dist)
-            docs.append({'id': p, 'kind': 'tool', 'url': url, 'title': _text(soup.find('h1')) if soup is not None else p})
+            docs.append(with_app({'id': p, 'kind': 'tool', 'url': url, 'title': _text(soup.find('h1')) if soup is not None else p}, lang))
             continue
         d = page_doc(p, lang, dist, kind)
         if d is not None:
-            docs.append(d)
+            docs.append(with_app(d, lang))
     return {'groups': groups, 'items': docs}
 
 
@@ -595,7 +621,7 @@ def news(dist, lang):
         d = page_doc(f'/vesti/{slug}/', lang, dist, 'news')
         if d is not None:
             d['slug'] = slug
-            items.append(d)
+            items.append(with_app(d, lang))
     items.sort(key=lambda d: d.get('date', ''), reverse=True)
     return {'items': items}
 
@@ -804,10 +830,12 @@ def _write(path, obj):
     return hashlib.sha256(raw.encode('utf-8')).hexdigest()[:10], len(raw.encode('utf-8'))
 
 
-def build(dist, strict=False):
+def build(dist, strict=False, strict_app=False):
+    """strict: unmapped page elements stop the build; strict_app: so do errors of the app layer (RUNBOOK 3.36) —
+    otherwise they are printed as a warning and `python3 scripts/app_layer.py --strict` (CI, pack.sh) fails on them."""
     dist = Path(dist)
     now = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
-    files, counts, unknown = {}, {}, {}
+    files, counts, unknown, app_docs = {}, {}, {}, {}
     sr_groups = guide_groups(dist, 'sr')
     guide_paths = [it['path'] for g in sr_groups for it in g['items']]
     for lang in LANGS:
@@ -822,6 +850,7 @@ def build(dist, strict=False):
         st = services_texts(dist, lang)
         if st is not None:
             colls['services'] = st
+        app_docs[lang] = colls['guides']['items'] + colls['news']['items']
         for kind, obj in colls.items():
             for d in obj.get('items', []):
                 if '_unknown' in d:
@@ -865,8 +894,18 @@ def build(dist, strict=False):
     print(msg)
     if strict and unknown:
         raise SystemExit('app feed: unmapped elements')
+    pages_txt = {}
+
+    def text_of(doc_id, lang):
+        if (doc_id, lang) not in pages_txt:
+            pages_txt[(doc_id, lang)] = app_layer.page_text(parse(doc_id, lang, dist)[0])
+        return pages_txt[(doc_id, lang)]
+    errs, st = app_layer.check(app_docs, text_of, app_layer.page_exists(dist))
+    if not app_layer.report(errs, st, strict=strict_app) and strict_app:
+        raise SystemExit('app feed: app layer errors')
     return manifest
 
 
 if __name__ == '__main__':
-    build(Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / 'dist', strict='--strict' in sys.argv)
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    build(Path(args[0]) if args else ROOT / 'dist', strict='--strict' in sys.argv, strict_app='--strict' in sys.argv)

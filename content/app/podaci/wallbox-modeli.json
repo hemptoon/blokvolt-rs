@@ -1,0 +1,42 @@
+{
+  "cover": {"image": "wallbox-modeli", "alt": {"sr": "Tri različita wallbox punjača na zidu", "en": "Three different wallbox chargers on a wall", "ru": "Три разных wallbox на стене"}},
+  "sr": {
+    "hero": {"value": "64", "label": "objavljene cene kod 27 prodavaca"},
+    "brief": [
+      "Cena je za sam uređaj; ugradnja, kabl do table i zaštita plaćaju se posebno",
+      "Isti model kod drugog prodavca može da košta i 30 % više",
+      "Većina automobila prima najviše 11 kW naizmenične struje"
+    ],
+    "keys": [
+      {"value": "38.000 RSD", "label": "najniža cena za 7–7,4 kW", "icon": "plug"},
+      {"value": "39.800 RSD", "label": "najniža cena za 11 kW", "icon": "plug"}
+    ],
+    "important": "Za zajedničku garažu treba overeno MID merenje; ugrađeno MID brojilo navodi 1 model"
+  },
+  "en": {
+    "hero": {"value": "64", "label": "published prices from 27 sellers"},
+    "brief": [
+      "The price is for the device alone; installation, cable to the board and protection are extra",
+      "The same model can cost up to 30 % more at another seller",
+      "Most cars accept at most 11 kW of alternating current"
+    ],
+    "keys": [
+      {"value": "38.000 RSD", "label": "lowest price for 7–7,4 kW", "icon": "plug"},
+      {"value": "39.800 RSD", "label": "lowest price for 11 kW", "icon": "plug"}
+    ],
+    "important": "A shared garage needs certified MID metering; 1 model lists a built-in MID-certified meter"
+  },
+  "ru": {
+    "hero": {"value": "64", "label": "опубликованные цены у 27 продавцов"},
+    "brief": [
+      "Цена только за устройство; установка, кабель до щита и защита оплачиваются отдельно",
+      "Та же модель у другого продавца может стоить и на 30 % дороже",
+      "Большинство автомобилей принимают не более 11 кВт переменного тока"
+    ],
+    "keys": [
+      {"value": "38.000 RSD", "label": "самая низкая цена за 7–7,4 кВт", "icon": "plug"},
+      {"value": "39.800 RSD", "label": "самая низкая цена за 11 кВт", "icon": "plug"}
+    ],
+    "important": "Для общего паркинга нужен поверенный счётчик MID; встроенный заявлен у 1 модели"
+  }
+}
