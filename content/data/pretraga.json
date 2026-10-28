@@ -28,6 +28,8 @@
     ["evolako", "эволако"],
     ["stasanet", "стасанет"],
     ["struja", "električna energija", "elektricitet", "electricity", "электричество"],
+    ["gorivo", "goriva", "benzin", "benzina", "nafta", "derivati nafte", "fuel", "petrol", "gasoline", "топливо", "бензин"],
+    ["dizel", "dizela", "evrodizel", "evrodizela", "eurodizel", "diesel", "дизель", "евродизель"],
     ["registracija", "registrovanje", "tehnički pregled", "registration"],
     ["putarina", "putarine", "toll", "tolls"],
     ["uvoz", "carina", "import", "customs", "растаможка"],

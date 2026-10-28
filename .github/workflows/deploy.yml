@@ -7,6 +7,8 @@
 # a poisoned npm release cannot reach the Cloudflare token. To update: take a release at least a week old
 # (npm view wrangler time; git ls-remote --tags https://github.com/actions/<name>) and change the pins here.
 # A commit whose message contains [skip deploy] is not deployed. Manual run: Actions → Deploy → Run workflow.
+# After the deploy, IndexNow gets the URLs whose sitemap lastmod changed (scripts/indexnow.py, RUNBOOK 3.37); that step
+# and the live-sitemap download before the deploy may fail without failing the deploy.
 name: Deploy
 on:
   push:
@@ -41,6 +43,9 @@ jobs:
           python3 build.py
           python3 scripts/check_links.py
           python3 scripts/check_images.py
+      - name: Live sitemap before the deploy (IndexNow compares it with the new one)
+        continue-on-error: true
+        run: curl -fsS --max-time 60 -o "$RUNNER_TEMP/live-sitemap.xml" https://www.blokvolt.rs/sitemap.xml
       - name: Deploy to Cloudflare Pages (production)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -48,6 +53,9 @@ jobs:
         run: >
           npx --yes wrangler@4.151.0 pages deploy dist --project-name=blokvolt --branch=main
           --commit-hash="$GITHUB_SHA" --commit-message="$(git log -1 --pretty=%s | cut -c1-300)" --commit-dirty=true
+      - name: IndexNow (new and changed URLs by sitemap lastmod → Bing, Yandex, Seznam; RUNBOOK 3.37)
+        continue-on-error: true
+        run: python3 scripts/indexnow.py "$RUNNER_TEMP/live-sitemap.xml" dist/sitemap.xml
       - name: Newsletter tick (sends a new preview or an approved issue at once instead of at the next scheduled tick)
         continue-on-error: true
         run: sleep 20 && curl -fsS --max-time 100 -X POST https://www.blokvolt.rs/api/posta/tick

@@ -54,7 +54,7 @@ credentials) — commits go through the owner's browser (section 6).
 | Last content update date | `content/data/site.json` → `updated` | Set to today (DD.MM.YYYY) on every deploy that changes content. Footer, home, sitemap `lastmod`. |
 | Firm register revision date | `content/data/site.json` → `firms_checked` | Only after a full revision of all published firms. Price table, /firme/, city pages. |
 | Home stats | `content/data/site.json` → `home_stats` | The first two mirror /podaci/statistika-ev-srbija/; the third (`"b": "auto:putevi"`) is filled in by `build.py` from `content/mapa/putevi-srbije.json`. |
-| Fuel prices (calculator) | `content/data/kalkulator.json` → `fuel` | `date` = first day the prices apply, `valid_to`, `benzin` (BMB 95), `dizel` (evrodizel), `url`. |
+| Fuel prices (calculator, map, apps, /podaci/cena-goriva-i-struje/) | `content/data/gorivo.json` → `weeks` | Since 29.10.2026 the only place of the fuel prices: one entry per weekly decision, newest first — `from` (the Friday the prices apply from), `to`, `dizel` (evrodizel), `benzin` (BMB 95), `source`, `url`. `scripts/gorivo.py` gives the newest week to the calculator, „Moj auto“ and the apps' `data.json` (the old `fuel` shape) and makes the page at build time. 3.1, 3.36. |
 | EPS tariffs, fees, taxes | `content/data/kalkulator.json` → `eps`, `checked` | Zones VT/NT without taxes, `oie`, `ee`, `akciza`, `pdv`, `snaga_rsd_kw`, `sources` (+date). |
 | Public charging price for the calculator | `content/data/kalkulator.json` → `public`, `public_checked`, `public_basis`, `public_range` | `dc` = average RSD/kWh of recent DC receipts; `ac` = Charge&GO AC 22 kW per-minute price × 60 ÷ 11 kW; `public_range` = min–max RSD/kWh of the DC receipts. |
 | Public charging price index | `content/javno/indeks-cena.json` | `updated`, `next_check` (a month name is fine), `rows` (schema below). |
@@ -131,12 +131,14 @@ page's `sources`, search for news since the page's `updated` date, fix what chan
 re-checked without changes also gets the new `updated`/`next_check` dates (that is the truth: it was
 checked). Log real changes in `izmene.md`.
 
-### 3.1 Fuel (every run)
+### 3.1 Fuel (every Friday, by the scheduled task; any run may do it)
 
-The Ministarstvo unutrašnje i spoljne trgovine publishes new maximum retail prices every Friday.
-Find the latest announcement (search "cene goriva od petka" / "najviše maloprodajne cene"; RTS, N1,
-Blic, 021.rs, mojnovisad.com all repeat it). Update `fuel.date`, `fuel.valid_to`, `benzin` (BMB 95),
-`dizel` (evrodizel), `url`. Keep `label` unless the source changes.
+The Ministarstvo unutrašnje i spoljne trgovine publishes new maximum retail prices every Friday (valid from 15.00 for
+seven days). Find the latest announcement (search "cene goriva od petka" / "najviše maloprodajne cene"; Biznis.rs quotes
+the ministry, RTS, N1, Novosti, Kurir, 021.rs, mojnovisad.com repeat it). Add it as a new first entry of
+`content/data/gorivo.json` → `weeks`: `from`, `to`, `dizel`, `benzin`, `source` (outlet and date), `url` — one entry
+per decision, never edit an older one except to fix it against its source; a missed week is added too, with its own
+source. No new decision yet → change nothing. The build checks the order and the numbers and makes the page; then 3.36.
 
 ### 3.2 EPS household tariffs (monthly)
 
@@ -2136,6 +2138,41 @@ Free tools only; nothing here may slow the site down or add steps for visitors.
   pages need EN/RU for their title, h1, lead, headings and the town name (3.9); the Russian forms use the hyphenated
   names of the translation memory (Нови-Сад, Врнячка-Баня) and decline only the last part (в Сремска-Митровице).
 
+### 3.36 Fuel and electricity: /podaci/cena-goriva-i-struje/ (since 29.10.2026, every Friday)
+
+- The page answers "cena goriva danas" and "koliko košta 100 km": the maximum fuel prices of the week, 100 km on
+  evrodizel, benzin, home electricity at night (blue zone, low tariff, all fees) and a public fast charger (the average
+  of the DC receipts of the price index — `kalkulator.json` → `public`), the weekly history with a source per week, an
+  interpretation, assumptions and three questions. Listed in /vodici/ (Brojke, thumbnail `vd-gorivo`), linked from the
+  calculator (the fuel hint), `/podaci/tarife-eps/` and `llms.txt`.
+- It has no .md file: `scripts/gorivo.py` → `page()` writes it at build time from `content/data/gorivo.json` and
+  `content/data/kalkulator.json` (EPS zones, fees, consumption defaults — the calculator's 17 kWh + 10 % losses, 5,5 l,
+  6,5 l). Text changes go into `scripts/gorivo.py`; `python3 scripts/gorivo.py` prints the page. Neutral like every
+  data page: no firm, no "mi", no savings percentage — only amounts derived from the tariffs and prices shown.
+- Translation: every number that changes with the fuel prices is in a table cell of its own or carries a separator
+  (dates, 1.298, 236,00 in sentences — the ministry's own format), so an ordinary week needs no new EN/RU text. A week
+  with changed prices shows "Nedelju ranije: …" instead of "Cene goriva su iste od …" (its translation is in the memory);
+  any other new sentence goes through 3.9 as usual. `i18n.py todo` must be 0 before the commit.
+- Every Friday the scheduled task «BlokVolt: цена топлива и струи (пт)» (16:47 Belgrade) adds the new decision (3.1),
+  rebuilds, runs the checks of section 4, commits to `main` with the owner's standing permission for SEO pages after
+  full checks (29.10.2026) and checks the Deploy run. No decision found → it changes nothing and says so.
+- `due.py` reports the fuel by `weeks[0].to`. The EPS block, the public DC price and the consumption defaults are not
+  this task's: they follow 3.2 and 3.3 (the page follows them by itself).
+
+### 3.37 IndexNow (since 29.10.2026)
+
+- After every deploy the Deploy workflow sends the new and changed URLs to IndexNow (api.indexnow.org: Bing, Yandex,
+  Seznam, Naver and the other engines of the protocol). "Changed" = the URL's
+  `<lastmod>` in the new `dist/sitemap.xml` differs from the live sitemap downloaded just before the deploy, or the URL
+  is new. Pages whose `lastmod` is `site.json` → `updated` (hubs, town pages, firms) are sent on the first content
+  deploy of a day. Nothing changed, or the live sitemap could not be downloaded → nothing is sent.
+- `scripts/indexnow.py <old sitemap> <new sitemap> [--dry-run]`; the step and the sitemap download are
+  `continue-on-error` — a failed ping never fails a deploy. The log line: `IndexNow: sent N URLs → HTTP 200|202`.
+- The key is the name of `static/<32 hex>.txt` (the file holds the key) and is served at
+  `https://www.blokvolt.rs/<key>.txt`. A new key = a new file; the old one is removed by the owner. No account is
+  needed; Bing Webmaster Tools → IndexNow shows what arrived.
+- Search Console has no IndexNow: Google still gets the sitemap and, for important pages, a manual indexing request.
+
 ## 4. Build and check
 
 ```bash
@@ -2173,7 +2210,7 @@ the changed pages in `dist/` (grep for the new numbers) before deploying, and ch
 check the run on github.com/hemptoon/blokvolt-rs/actions and the live site (step 6 below). `[skip deploy]` in the commit
 message skips it. The manual upload below is the fallback when Actions fails; its step 0 still applies.
 After the deploy the workflow also calls the newsletter tick (`POST /api/posta/tick`), so a scheduled run never needs a
-browser tab for it. Check a run without a browser: `curl -s https://api.github.com/repos/hemptoon/blokvolt-rs/actions/runs?per_page=3`
+browser tab for it, and sends the new and changed URLs to IndexNow (3.37; the log of the step "IndexNow" says how many). Check a run without a browser: `curl -s https://api.github.com/repos/hemptoon/blokvolt-rs/actions/runs?per_page=3`
 (needs the repo attached to the session) or WebFetch of github.com/hemptoon/blokvolt-rs/actions; the live page — WebFetch with `?nc=<date>`.
 
 0. **Main first.** A direct upload replaces the whole site, and several sessions work on it. Right before packing,

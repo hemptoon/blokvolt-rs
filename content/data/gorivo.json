@@ -1,0 +1,23 @@
+{
+ "note": "Najviše maloprodajne cene goriva: jedna stavka po nedeljnoj odluci, najnovija prva. Jedino mesto cena goriva na sajtu: kalkulator, /podaci/cena-goriva-i-struje/, Moj auto na mapi i feed aplikacija čitaju odavde (scripts/gorivo.py). Nova odluka: nova stavka na vrh, sa izvorom (docs/RUNBOOK.md 3.1).",
+ "label": "najviše maloprodajne cene koje objavljuje Ministarstvo unutrašnje i spoljne trgovine; menjaju se svakog petka",
+ "published": "2026-10-29",
+ "regime": {
+  "margin_rsd": 21,
+  "valid_until": "31.12.2026",
+  "source": "Paragraf (eKapija, 17.10.2026) — Uredba o ograničenju visine cena derivata nafte produžena do 31.12.2026, „Sl. glasnik RS“ br. 98/2026",
+  "url": "https://www.paragraf.rs/dnevne-vesti/191026/191026-vest7.html"
+ },
+ "weeks": [
+  {"from": "23.10.2026", "to": "30.10.2026", "dizel": 236, "benzin": 207, "source": "Biznis.rs, 23.10.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://biznis.rs/vesti/dizel-i-benzin-do-sledeceg-petka-po-nepromenjenim-cenama/"},
+  {"from": "16.10.2026", "to": "23.10.2026", "dizel": 236, "benzin": 207, "source": "Biznis.rs, 16.10.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://biznis.rs/vesti/srbija/i-dalje-bez-promene-cena-goriva/"},
+  {"from": "09.10.2026", "to": "16.10.2026", "dizel": 236, "benzin": 207, "source": "Biznis.rs, 09.10.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://biznis.rs/vesti/srbija/bez-promena-cena-goriva/"},
+  {"from": "02.10.2026", "to": "09.10.2026", "dizel": 236, "benzin": 207, "source": "Novosti, 02.10.2026", "url": "https://www.novosti.rs/ekonomija/vesti/1655160/nove-cene-goriva"},
+  {"from": "25.09.2026", "to": "02.10.2026", "dizel": 236, "benzin": 207, "source": "Moj Novi Sad, 25.09.2026", "url": "https://www.mojnovisad.com/objavljene-cene-goriva-koje-ce-vaziti-do-2-oktobra/"},
+  {"from": "18.09.2026", "to": "25.09.2026", "dizel": 236, "benzin": 207, "source": "Kurir Biznis, 18.09.2026", "url": "https://biznis.kurir.rs/amp/10107753/ovo-su-nove-cene-goriva-na-pumpama-u-srbiji"},
+  {"from": "11.09.2026", "to": "18.09.2026", "dizel": 234, "benzin": 205, "source": "Biznis.rs, 11.09.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://biznis.rs/vesti/srbija/cene-goriva-bez-promena/"},
+  {"from": "04.09.2026", "to": "11.09.2026", "dizel": 234, "benzin": 205, "source": "Kurir Biznis, 04.09.2026", "url": "https://biznis.kurir.rs/novcanik/10095027/objavljene-nove-cene-goriva-u-srbiji"},
+  {"from": "28.08.2026", "to": "04.09.2026", "dizel": 232, "benzin": 203, "source": "Biznis.rs, 28.08.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://biznis.rs/vesti/gorivo-poskupelo-dinar-po-litru-3/"},
+  {"from": "21.08.2026", "to": "28.08.2026", "dizel": 231, "benzin": 202, "source": "Biznis.rs, 21.08.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://biznis.rs/vesti/srbija/ponovo-poskupelo-gorivo-u-srbiji/"}
+ ]
+}

@@ -102,14 +102,6 @@
    "conf": "sekundarni izvor (servisinfo.com); EPS jednotarifne cene ne objavljuje na stranici sa cenama, a odluka je skenirana"
   }
  },
- "fuel": {
-  "date": "02.10.2026",
-  "valid_to": "09.10.2026",
-  "benzin": 207,
-  "dizel": 236,
-  "label": "najviše maloprodajne cene koje objavljuje Ministarstvo unutrašnje i spoljne trgovine; menjaju se svakog petka",
-  "url": "https://biznis.rs/vesti/srbija/bez-promena-cena-dizela-i-benzina-u-srbiji/"
- },
  "public": [
   {
    "id": "dc",

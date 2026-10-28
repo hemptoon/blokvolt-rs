@@ -36,6 +36,7 @@ from bs4 import BeautifulSoup, NavigableString, Tag, Comment
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import valuta  # noqa: E402  (the display currency's fallback rate, RUNBOOK 3.29)
+import gorivo  # noqa: E402  (fuel prices, content/data/gorivo.json)
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = 'https://www.blokvolt.rs'
@@ -784,7 +785,9 @@ def help_center(dist, lang):
 def data_json():
     data = ROOT / 'content' / 'data'
     load = lambda n: json.loads((data / n).read_text(encoding='utf-8'))
-    out = {'calculator': load('kalkulator.json'), 'building': load('kalkulator-zgrada.json'),
+    calc = load('kalkulator.json')
+    calc['fuel'] = gorivo.current()        # fuel prices live in content/data/gorivo.json (scripts/gorivo.py); same shape as before
+    out = {'calculator': calc, 'building': load('kalkulator-zgrada.json'),
            'evModels': load('ev-modeli.json'), 'cities': load('gradovi.json'),
            # display currency (RUNBOOK 3.29): the rate to use until /api/kurs (manifest api.kurs) answers — the spec's
            # fallback, in the format of /api/kurs (stale: true)

@@ -702,6 +702,13 @@ def grouped(lst):
 # ---------------------------------------------------------------- public charging
 CALC = json.load(open(ROOT / 'content' / 'data' / 'kalkulator.json', encoding='utf-8'))
 _E = CALC['eps']
+# fuel prices: content/data/gorivo.json, one entry per weekly decision (scripts/gorivo.py, RUNBOOK 3.1 and 3.36). The newest
+# week is the calculator's, the map's ("Moj auto") and the apps' fuel price; the history makes /podaci/cena-goriva-i-struje/
+import gorivo as _gorivo  # noqa: E402
+GORIVO = _gorivo.load()
+for _gap in _gorivo.check(GORIVO):
+    print('NOTE content/data/gorivo.json: no decision recorded for', _gap)
+CALC['fuel'] = _gorivo.current(GORIVO)
 
 
 def all_in(x):
@@ -1126,7 +1133,7 @@ M = {
         'towns': [[t[0], t[1], t[2]] for t in map_data.TOWNS],
         'idle': _IDLE,
         # "Moj auto": the cars, home charging at night (EPS, lower tariff, green and blue zone, all fees) and fuel for the
-        # comparison per km (the calculator's numbers: content/data/kalkulator.json)
+        # comparison per km (the calculator's numbers: content/data/kalkulator.json; fuel from content/data/gorivo.json)
         'cars': '/assets/map/auta.json?v=' + _ver(DIST / 'assets' / 'map' / 'auta.json'),
         'home': [round(all_in(next(z for z in _E['zones'] if z['id'] == i)['nt']), 2) for i in ('zelena', 'plava')],
         'fuel': {'b': CALC['fuel']['benzin'], 'd': CALC['fuel']['dizel'], 'lb': CALC['defaults']['l100_benzin'],
@@ -1254,6 +1261,11 @@ for mdf in sorted(glob.glob(str(ROOT / 'content' / 'podaci' / '*.md'))) + sorted
     ARTICLES[path] = {'meta': meta, 'body': body, 'path': path, 'canon': canon_of(path), 'slug': slug,
                       'h1': meta.get('h1') or meta.get('title', '').split(' — ')[0].split(':')[0],
                       'lead': meta.get('lead', ''), 'title': meta.get('title', '')}
+# /podaci/cena-goriva-i-struje/ is written here, from content/data/gorivo.json and kalkulator.json (scripts/gorivo.py,
+# RUNBOOK 3.36): there is no .md file for it, so the Friday fuel task changes only the JSON
+_gm, _gb = _gorivo.page(GORIVO, CALC)
+ARTICLES[_gorivo.PATH] = {'meta': _gm, 'body': _gb, 'path': _gorivo.PATH, 'canon': canon_of(_gorivo.PATH), 'slug': 'cena-goriva-i-struje',
+                          'h1': _gm['h1'], 'lead': _gm['lead'], 'title': _gm['title']}
 
 # the two hubs; each entry: (href, name, description, icon)
 def A(path, name=None, desc=None, icon='doc'):
@@ -1285,6 +1297,7 @@ VODICI_GROUPS = [
         A('/podaci/pomoc-na-putu/', icon='phone'), A('/javno-punjenje/smestaj-sa-punjacem/', icon='building')]),
     ('Brojke', [
         A('/podaci/statistika-ev-srbija/', icon='chart'), A('/podaci/tarife-eps/', 'Cena struje kod kuće', icon='bolt'),
+        A('/podaci/cena-goriva-i-struje/', 'Cena goriva i struje', 'Koliko košta 100 km na gorivo, a koliko na struju kod kuće i na javnom punjaču.', icon='coins'),
         A('/podaci/wallbox-modeli/', 'Wallbox modeli i cene', icon='plug')]),
 ]
 # one set of guide-card thumbnails in the same studio style (28.10.2026, RUNBOOK 3.13): static/assets/img/vd-<name>-480.webp
@@ -1323,6 +1336,7 @@ CARD_IMG = {
     "/javno-punjenje/smestaj-sa-punjacem/": "vd-smestaj",
     "/podaci/statistika-ev-srbija/": "vd-statistika",
     "/podaci/tarife-eps/": "vd-tarife",
+    "/podaci/cena-goriva-i-struje/": "vd-gorivo",
     "/podaci/wallbox-modeli/": "vd-wallbox-modeli"
 }
 
@@ -2413,6 +2427,7 @@ _LL = [('Mapa punjača', '/mapa/', f"{MAP['n']} javnih punjača u Srbiji: mreža
        ('Firme za kućni punjač', '/firme/', f"registar: {sr_plural(len(published), 'firma', 'firme', 'firmi')}, iste kolone za svaku, sa izvorom i datumom provere"),
        ('Cena kućnog punjača', '/cena-punjaca-za-elektricni-auto', 'uređaj, ugradnja i javne cene firmi'),
        ('Cena struje za domaćinstva', '/podaci/tarife-eps/', 'EPS po zonama i tarifama, sa svim dažbinama'),
+       ('Cena goriva i struje', '/podaci/cena-goriva-i-struje/', 'najviše cene goriva po nedeljama i koliko košta 100 km na gorivo i na struju'),
        ('Cene električnih automobila', '/podaci/cene-elektricnih-automobila/', 'svi modeli kod uvoznika, pre i posle subvencije'),
        ('Električni automobili po markama', '/elektricni-automobili/', 'uvoznici, saloni i modeli'),
        ('Subvencije 2026', '/podaci/subvencije-2026/', 'iznos, rok i uslovi'),

@@ -7,7 +7,8 @@ Reads the check dates that already live in the content files and prints what is 
 within --ahead days (default 10). Sources of truth:
   content/podaci/*.md, content/javno/*.md      front matter `next_check` (+ `updated`)
   content/javno/indeks-cena.json                `next_check` (month name allowed, e.g. "oktobar 2026")
-  content/data/kalkulator.json                  fuel.date / fuel.valid_to, public_checked, EPS source dates
+  content/data/gorivo.json                      weeks[0].to (fuel; new max prices every Friday — scheduled task)
+  content/data/kalkulator.json                  public_checked, EPS source dates
   content/data/ev-modeli.json                   `next_check`
   content/data/automobili.json                  `next_check` (EV brands, importers, showrooms — RUNBOOK 3.32)
   content/data/wallbox-modeli.json              `next_check` (device prices, mirrors the firm register)
@@ -87,11 +88,12 @@ def main():
     check(parse(idx.get('next_check')), 'content/javno/indeks-cena.json',
           f"public charging price index, updated {idx.get('updated')} — app screenshots/receipts from the user + public sources")
 
-    # 3) calculator data
+    # 3) calculator data; the fuel prices are in content/data/gorivo.json (newest week first; the Friday task adds a week)
     c = json.load(open(ROOT / 'content' / 'data' / 'kalkulator.json', encoding='utf-8'))
-    fd = parse(c['fuel'].get('date'))
-    check(fd + dt.timedelta(days=14) if fd else None, 'content/data/kalkulator.json fuel',
-          f"fuel prices from {c['fuel'].get('date')} (benzin {c['fuel'].get('benzin')}, dizel {c['fuel'].get('dizel')}); new max prices every Friday")
+    fw = json.load(open(ROOT / 'content' / 'data' / 'gorivo.json', encoding='utf-8'))['weeks'][0]
+    fd = parse(fw.get('from'))
+    check(parse(fw.get('to')), 'content/data/gorivo.json (fuel; the page /podaci/cena-goriva-i-struje/ follows it)',
+          f"fuel prices from {fw.get('from')} to {fw.get('to')} (benzin {fw.get('benzin')}, dizel {fw.get('dizel')}); new max prices every Friday")
     pc = parse(c.get('public_checked'))
     check(pc + dt.timedelta(days=35) if pc else None, 'content/data/kalkulator.json public',
           f"public charging prices for the calculator (dc/ac), checked {c.get('public_checked')} — follow indeks-cena.json")
