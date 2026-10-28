@@ -668,6 +668,26 @@ charger opens its card, several zoom in on them (+2 at least, zoom 14 at most; e
 the nearest dot opens. The country maps of blokvolt.com use the same map.js. Test: `scripts/qa/map_nocluster_test.py`.
 Do not bring number clusters back without the owner's word.
 
+**Price labels never cover a pin or another label (owner's request 28.10.2026; /mapa/, blokvolt.com and the evolako.rs
+map, 3.25).** From zoom 12 every pin is a cross of two invisible bars in MapLibre's collision index (layers `pt-box-h`,
+`pt-box-v`; `rg-box-h/-v` for the region; half-sizes L × 0.725 L, L = circle radius + stroke + 0.5 px, a favourite's ring
+on /mapa/): the cross holds the round pin and leaves its corners free. These layers are the top symbol layers, so MapLibre
+places them before any label, and the street and place names of the base map avoid the pins too. The label (`pt-pr`)
+takes the first free place around its own pin (`text-variable-anchor-offset`, made by `places()` in map.js and
+`capPlaces()` in evomap.src.js): /mapa/ right (as before), upper right, lower right, left, upper left, lower left, below,
+above; evolako.rs under the pin (as before), right, left, lower right, lower left, above, upper right, upper left. Labels
+avoid each other (`text-padding`; the evolako.rs capsule `icon-padding`). When no place is free the label waits for a
+closer zoom — the pin and its power are always drawn. Who gets a place first (`symbol-sort-key`): working and confirmed
+chargers, fast DC first, `?` last. MapLibre keeps a label on the side it had while that side stays free (it does not jump
+back to the right when zooming in). The offsets of zoom z are computed from L at zoom z + 1 (MapLibre lays a tile out with
+the offsets of its zoom and the pins' boxes of the next one) and the text size, and give back MapLibre's baseline shift of
+`top…`/`bottom…` places (7/24 em): change a pin's radius, the text size or the capsule's padding and the offsets follow
+from the same functions (their L stops), never by hand. Two pins that would overlap at zoom 16 (closer than 32 px, about
+27 m; evolako.rs 35 px) are drawn apart by `spread()` with a thin line to the real place (`pt-leg`, from zoom 14): only the
+drawing moves (`s._p`), on the country view by less than a pixel; distances, the card, navigation and the lists keep the
+real place. Test: `scripts/qa/map_labels_test.py` (pixels: each label drawn in its own colour, the map font from
+`scripts/qa/fixtures/glyphs`, Noto Sans Bold 0–255, OFL), about 12 minutes, not in the Site checks workflow.
+
 Checks after the build: `/mapa/` list count, `/mapa/?mreza=putevi-srbije`, a card with status
 (`/mapa/#<id>`), `/javno-punjenje/putevi-srbije/` table. MapLibre does not render in a hidden browser tab;
 to test the layers in the container, run Playwright with the style and glyph URLs of tiles.openfreemap.org
@@ -1047,7 +1067,7 @@ Since 28.09.2026 the map also has:
   as on the evolako.rs map. Without it the two Superchargers are grey pins with „T“, „Samo Tesla“ in the list, and not
   in „Besplatni“; the card says „Vozite Teslu? Izaberite je u „Moj auto“…“. The map removes the old `bv:tesla` key.
 - **Prices next to the pins** from zoom 12 (`pt-pr` layer, ASCII only — the map font has no other glyphs
-  everywhere): `0 RSD`; receipts of that very charger younger than 90 days as `56-60 RSD/kWh` (they win over the
+  everywhere; placed around the pin, never over a pin or another label, 3.11): `0 RSD`; receipts of that very charger younger than 90 days as `56-60 RSD/kWh` (they win over the
   network's tariff for the power, also in the card); otherwise `~68 RSD/kWh` = RSD/min × 60 ÷ the power a car
   really gets on that class (DC 30→30, 50→45, 60→50, 110–120→90, 150–180→100, 240→130 kW, interpolated
   between; AC → 11 kW); `?` when the price is unknown. The card shows the same estimate in words.
@@ -1377,7 +1397,8 @@ the footer ("Pomoć"), the text under /mapa/, /aplikacija/ and /ispravka/. Rules
   auto“ with RSD/km (the car is kept **in memory only** — evolako.rs's privacy policy names no browser storage but the
   language and the referral code), „Kako se puni ovde“, hours with „sada radi“, own-cable and parking badges, closed
   stations faded and left out of „Najbliži punjač“, a Tesla unlocks the Superchargers. Since 20.10.2026 no number clusters, like /mapa/
-  (3.11): every charger at every zoom, a tap on several dots zooms in. Since 27.10.2026 the destination of „Punjači na putu“ can be picked
+  (3.11): every charger at every zoom, a tap on several dots zooms in. Since 28.10.2026 the price capsules never cover a pin or
+  another capsule, and pins at one place are drawn apart from zoom 16 (3.11; `scripts/qa/map_labels_test.py`). Since 27.10.2026 the destination of „Punjači na putu“ can be picked
   on the map (a tapped place name, a long press, a right click) and the place search ignores diacritics, as on /mapa/
   (3.18); its TOWNS list is a copy of `scripts/map_data.py` TOWNS — change both together. It reads `files.map.auta` and
   `files.data` (fuel price) from the feed; `/assets/app/*` and `/assets/embed/*` carry `Access-Control-Allow-Origin: *`.
@@ -2115,6 +2136,7 @@ python3 scripts/qa/map_ui_test.py /tmp/bv-shots    # map cards, reports, photos,
 python3 scripts/qa/map_extra_test.py /tmp/bv-shots # dopune.json facts, a Tesla in „Moj auto“, pin prices, „Gde tačno“, EN/RU
 python3 scripts/qa/map_v2_test.py                 # per-connector prices, Kako se puni, Moj auto (RSD/km), Najbliži, hours, cable, EN/RU
 python3 scripts/qa/map_region_test.py             # the region layer
+python3 scripts/qa/map_labels_test.py /tmp/bv-shots/labels   # price labels never on a pin or a label, both maps (3.11)
 python3 scripts/qa/vis_shots.py /,/vesti/ /tmp/bv-shots   # full-page screenshots, desktop and phone
 python3 scripts/qa/fx_test.py /tmp/bv-fx-shots      # display currency: RSD unchanged, EUR/USD, never-converted pages (3.29)
 ```

@@ -1960,15 +1960,81 @@ if (FX) FX.on(() => { setData(); fxList(); fxCard(); });
 // ---------- map ----------
 function feat(s) {
   const v = ver(s), k = kind(s), p = k === 'tesla' ? 'T' : (Math.round(power(s)) || ''), pp = pinPrice(s);
-  // a charger that is closed now (its hours, oh.w) is drawn faded like an unconfirmed one
-  return { type: 'Feature', id: s._i, geometry: { type: 'Point', coordinates: [s.lon, s.lat] },
+  // a charger that is closed now (its hours, oh.w) is drawn faded like an unconfirmed one; s._p: the pin moved apart (spread)
+  return { type: 'Feature', id: s._i, geometry: { type: 'Point', coordinates: s._p || [s.lon, s.lat] },
     properties: { id: s.id, k, v: closedNow(s) && v !== 'nep' ? 'cl' : v, p: v === 'nep' && k !== 'tesla' ? p + '?' : p, f: FAV.has(s.id) ? 1 : 0, pl: fxPin(pp.t), pc: pp.c } };
+}
+// Pins that would overlap at street zoom (two chargers at one car park, one place in two lists, a driver's addition next to
+// a known charger) are drawn a little apart, each with a thin line to its real place (layer pt-leg), so every pin, its power
+// and its price can be seen and tapped (28.10.2026). Two pins end up at least SEP pixels apart, centre to centre, at zoom 16
+// (the pin is 29 px across there): about 27 m at Serbia's latitude, less than a pixel on the country view. Only the drawing
+// moves (s._p); distances, the card, navigation and the lists use the real place.
+const SEP = 32, M_PX16 = 40075016.7 / (512 * 65536), LAT_M = 110574, LON_M = 111320;   // M_PX16: metres per pixel, zoom 16, equator
+function spread(list) {
+  ST.forEach(s => { s._p = null; });
+  const pts = list.map(s => ({ s, lon: s.lon, lat: s.lat }));
+  // a pair's distance in metres in its own local frame (the scale of a degree of longitude changes with the latitude)
+  const vec = (a, b) => { const c = Math.cos((a.lat + b.lat) * Math.PI / 360); return [(b.lon - a.lon) * LON_M * c, (b.lat - a.lat) * LAT_M, c]; };
+  const G = new Map(), CELL = 0.001, key = (a, b) => a + ',' + b;   // about 80 × 110 m: a pair that could touch is in neighbouring cells
+  pts.forEach((p, i) => { const k = key(Math.floor(p.lon / CELL), Math.floor(p.lat / CELL)); if (!G.has(k)) G.set(k, []); G.get(k).push(i); });
+  const pairs = [];
+  pts.forEach((p, i) => {
+    const gx = Math.floor(p.lon / CELL), gy = Math.floor(p.lat / CELL);
+    for (let a = gx - 1; a <= gx + 1; a++) for (let b = gy - 1; b <= gy + 1; b++) (G.get(key(a, b)) || []).forEach(j => {
+      if (j <= i) return;
+      const v = vec(p, pts[j]);
+      if (Math.hypot(v[0], v[1]) < 2 * SEP * M_PX16 * v[2]) pairs.push([i, j]);
+    });
+  });
+  if (!pairs.length) return;
+  // push the pairs that are too close apart until none is (always in the same order, so the drawing never jumps)
+  for (let it = 0; it < 200; it++) {
+    let moved = false;
+    pairs.forEach(([i, j], n) => {
+      const a = pts[i], b = pts[j], v = vec(a, b), D = SEP * M_PX16 * v[2];
+      let ux = v[0], uy = v[1], dd = Math.hypot(ux, uy);
+      if (dd >= D - 0.01) return;
+      if (dd < 0.01) { const t = (n * 2.39996 + 0.7) % (2 * Math.PI); ux = Math.cos(t); uy = Math.sin(t); } else { ux /= dd; uy /= dd; }   // one place: any direction
+      const m = (D - dd) / 2 + 0.01, dlon = ux * m / (LON_M * v[2]), dlat = uy * m / LAT_M;
+      a.lon -= dlon; a.lat -= dlat; b.lon += dlon; b.lat += dlat;
+      moved = true;
+    });
+    if (!moved) break;
+  }
+  pts.forEach(p => { const v = vec(p.s, p); if (Math.hypot(v[0], v[1]) > 0.3) p.s._p = [p.lon, p.lat]; });
+}
+// the thin lines from a moved pin to its real place
+function legs() {
+  return { type: 'FeatureCollection', features: ST.filter(s => s._p).map(s => ({ type: 'Feature', geometry: { type: 'LineString', coordinates: [[s.lon, s.lat], s._p] }, properties: {} })) };
+}
+// A pin in MapLibre's collision index (from zoom 12): two invisible bars, a wide and a tall one, half-sizes L × 0.725 L,
+// L = the pin's radius + its stroke + 0.5 px. The cross holds the round pin (0.725 > cos 45°) and leaves its corners free,
+// so a label can sit diagonally at the pin. Images: 40 × 29 and 29 × 40, half-sizes 20 × 14.5 at icon-size 1 (L / 20).
+function pinBars(m) {
+  if (!m.hasImage('bv-pin-h')) m.addImage('bv-pin-h', { width: 40, height: 29, data: new Uint8Array(40 * 29 * 4) });
+  if (!m.hasImage('bv-pin-v')) m.addImage('bv-pin-v', { width: 29, height: 40, data: new Uint8Array(29 * 40 * 4) });
+}
+function bars(m, id, src, size) {
+  ['h', 'v'].forEach(k => m.addLayer({ id: id + '-' + k, type: 'symbol', source: src, minzoom: 12,
+    layout: { 'icon-image': 'bv-pin-' + k, 'icon-size': size, 'icon-allow-overlap': true, 'icon-padding': 0 }, paint: { 'icon-opacity': 0 } }));
+}
+// The places a label may take around its pin (text-variable-anchor-offset), each 0.3 px clear of the pin's cross (L, as
+// above): right, upper right, lower right, left, upper left, lower left, below, above. Offsets are in ems of the px-sized
+// text and reach the edge of the label's padded box. MapLibre moves a 'top…' label up and a 'bottom…' label down by 7/24 em
+// (its baseline correction); the vertical offsets give that back. MapLibre lays a tile of zoom z out with the offsets of z
+// and the pins' boxes of z + 1, so the offsets of zoom z are made for L at z + 1 (L grows linearly from zoom 12 to 16).
+function places(L, px) {
+  const S = 0.725 * L, b = 7 / 24, e = v => Math.round(v / px * 1000) / 1000;
+  const x = e(L + 0.3), y = e(L + 0.3) + b, dx = e(S + 0.3), dy = e(S + 0.3) + b;
+  return ['left', [x, 0], 'bottom-left', [dx, -dy], 'top-left', [dx, dy], 'right', [-x, 0], 'bottom-right', [-dx, -dy], 'top-right', [-dx, dy], 'top', [0, y], 'bottom', [0, -y]];
 }
 // Serbia and the neighbouring countries are two sources: the neighbours are drawn quieter, under Serbia's chargers
 function data(rg) { return { type: 'FeatureCollection', features: visible().filter(s => !s.cc === !rg).map(feat) }; }
 function setData() {
+  spread(visible());
   if (map && map.getSource('st')) map.getSource('st').setData(data());
   if (map && map.getSource('rg')) map.getSource('rg').setData(data(true));
+  if (map && map.getSource('leg')) map.getSource('leg').setData(legs());
 }
 function refresh() {
   state.lim = 20;
@@ -2034,9 +2100,14 @@ function initMap() {
         layout: { 'text-field': ['to-string', ['get', 'p']], 'text-font': font, 'text-size': 10, 'text-allow-overlap': true },
         paint: { 'text-color': ['match', ['get', 'k'], 'dc', '#FFFFFF', '#3A3F4A'] } });
     }
+    spread(visible());
     map.addSource('st', { type: 'geojson', data: data() });
     map.addSource('sel', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
     map.addSource('me', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+    // a pin moved apart from another one (spread): a thin line to its real place, under the pins
+    map.addSource('leg', { type: 'geojson', data: legs() });
+    map.addLayer({ id: 'pt-leg', type: 'line', source: 'leg', minzoom: 14, layout: { 'line-cap': 'round' },
+      paint: { 'line-color': '#5C6270', 'line-width': 1.5, 'line-opacity': 0.75 } });
     map.addLayer({ id: 'pt', type: 'circle', source: 'st',
       layout: { 'circle-sort-key': ['+', ['case', nep, 0, 10], ['match', ['get', 'k'], 'dc', 4, 'free', 3, 'tesla', 2, 'off', 0, 1]] },
       paint: {
@@ -2054,9 +2125,25 @@ function initMap() {
       layout: { 'text-field': ['to-string', ['get', 'p']], 'text-font': font, 'text-size': 10, 'text-allow-overlap': true },
       paint: { 'text-color': ['match', ['get', 'k'], 'dc', '#D9F45B', 'off', '#5C6270', 'tesla', '#3A3F4A', '#0D111A'] } });
     // price next to the pin from zoom 12: 0 RSD / RSD per kWh from a receipt / ~ estimate from the per-minute tariff / ?
+    // A label never covers a pin or another label (28.10.2026): it takes the first free place around its own pin — right
+    // (as before), upper right, lower right, left, upper left, lower left, below, above — and when none is free it waits
+    // for the next zoom step (the pin and its power stay). Free places are MapLibre's collision index: the labels avoid each
+    // other (text-padding) and the pins' shapes (layers pt-box-h, pt-box-v below). The first labels to take a place: working
+    // and confirmed chargers, fast DC first; '?' last.
     map.addLayer({ id: 'pt-pr', type: 'symbol', source: 'st', filter: ['!=', ['get', 'pl'], ''], minzoom: 12,
-      layout: { 'text-field': ['get', 'pl'], 'text-font': font, 'text-size': 11.5, 'text-anchor': 'left', 'text-offset': [1.25, 0], 'text-padding': 2 },
+      layout: { 'text-field': ['get', 'pl'], 'text-font': font, 'text-size': 11.5, 'text-padding': 2,
+        'text-variable-anchor-offset': ['interpolate', ['linear'], ['zoom'], 12, ['case', ['==', ['get', 'f'], 1], ['literal', places(17.75, 11.5)], ['literal', places(12.75, 11.5)]],
+          15, ['case', ['==', ['get', 'f'], 1], ['literal', places(20, 11.5)], ['literal', places(15, 11.5)]]],
+        'symbol-sort-key': ['+', ['case', nep, 10, 0], ['match', ['get', 'pc'], 'unk', 20, 'old', 5, 0], ['match', ['get', 'k'], 'dc', 0, 'free', 1, 2]] },
       paint: { 'text-color': ['match', ['get', 'pc'], 'free', '#3F5206', 'old', '#8A909B', 'unk', '#8A909B', '#0D111A'], 'text-halo-color': '#FFFFFF', 'text-halo-width': 2.4 } });
+    // Every pin's shape in the collision index from zoom 12: two invisible bars, a wide and a tall one, a cross that holds
+    // the round pin with its ring (L = radius + stroke + 0.5 px, the short side 0.725 L) and leaves its corners free for a
+    // label. These layers are on top, so MapLibre places them first and the labels go around the pins; the map's own street
+    // and place names avoid the pins too. A favourite's cross holds its green ring (L 20 px from zoom 16, the pin's 15).
+    pinBars(map);
+    const fav = (a, b) => ['case', ['==', ['get', 'f'], 1], a / 20, b / 20];
+    bars(map, 'pt-box', 'st', ['interpolate', ['linear'], ['zoom'], 12, fav(17, 12), 16, fav(20, 15)]);
+    if (NRG) bars(map, 'rg-box', 'rg', ['interpolate', ['linear'], ['zoom'], 12, 10.5 / 20, 16, 13.5 / 20]);
     // "Punjači na putu": the route under the chargers, its fast chargers as larger dark points with a lime ring
     map.addSource('rt', { type: 'geojson', data: FC0 });
     map.addSource('rts', { type: 'geojson', data: FC0 });

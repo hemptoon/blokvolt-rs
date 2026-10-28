@@ -1830,12 +1830,60 @@
   // ---------- map ----------
   function feat(s) {
     var v = ver(s), k = kind(s), p = k === 'tesla' ? 'T' : (Math.round(power(s)) || ''), pp = pinPrice(s);
-    return { type: 'Feature', geometry: { type: 'Point', coordinates: [s.lon, s.lat] },
+    // s._p: the pin moved apart from another one (spread)
+    return { type: 'Feature', geometry: { type: 'Point', coordinates: s._p || [s.lon, s.lat] },
       properties: { id: s.id, k: k, v: v, p: String(p), pl: pp.t, pc: pp.c, cl: closedNow(s) ? 1 : 0 } };
   }
+  // Pins that would overlap at street zoom (two chargers at one car park, one place in two lists) are drawn a little apart,
+  // each with a thin line to its real place (layer pt-leg), so that every pin, its power and its price can be seen and tapped
+  // (28.10.2026, as on blokvolt.rs/mapa). Two pins end up at least SEP pixels apart, centre to centre, at zoom 16 (the pin is
+  // 32 px across there): about 30 m at Serbia's latitude, less than a pixel on the country view. Only the drawing moves (s._p);
+  // distances, the card, navigation and the list use the real place.
+  var SEP = 35, M_PX16 = 40075016.7 / (512 * 65536), LAT_M = 110574, LON_M = 111320;   // M_PX16: metres per pixel, zoom 16, equator
+  function spread(list) {
+    ST.forEach(function (s) { s._p = null; });
+    var pts = list.map(function (s) { return { s: s, lon: s.lon, lat: s.lat }; });
+    // a pair's distance in metres in its own local frame (the scale of a degree of longitude changes with the latitude)
+    var vec = function (a, b) { var c = Math.cos((a.lat + b.lat) * Math.PI / 360); return [(b.lon - a.lon) * LON_M * c, (b.lat - a.lat) * LAT_M, c]; };
+    var G = {}, CELL = 0.001, pairs = [], it, moved;   // cells of about 80 × 110 m: a pair that could touch is in neighbouring cells
+    pts.forEach(function (p, i) { var k = Math.floor(p.lon / CELL) + ',' + Math.floor(p.lat / CELL); (G[k] = G[k] || []).push(i); });
+    pts.forEach(function (p, i) {
+      var gx = Math.floor(p.lon / CELL), gy = Math.floor(p.lat / CELL), a, b;
+      for (a = gx - 1; a <= gx + 1; a++) for (b = gy - 1; b <= gy + 1; b++) (G[a + ',' + b] || []).forEach(function (j) {
+        if (j <= i) return;
+        var v = vec(p, pts[j]);
+        if (Math.sqrt(v[0] * v[0] + v[1] * v[1]) < 2 * SEP * M_PX16 * v[2]) pairs.push([i, j]);
+      });
+    });
+    if (!pairs.length) return;
+    // push the pairs that are too close apart until none is (always in the same order, so the drawing never jumps)
+    for (it = 0; it < 200; it++) {
+      moved = false;
+      pairs.forEach(function (q, n) {
+        var a = pts[q[0]], b = pts[q[1]], v = vec(a, b), D = SEP * M_PX16 * v[2], ux = v[0], uy = v[1], dd = Math.sqrt(ux * ux + uy * uy), t, m;
+        if (dd >= D - 0.01) return;
+        if (dd < 0.01) { t = (n * 2.39996 + 0.7) % (2 * Math.PI); ux = Math.cos(t); uy = Math.sin(t); } else { ux /= dd; uy /= dd; }   // one place: any direction
+        m = (D - dd) / 2 + 0.01;
+        a.lon -= ux * m / (LON_M * v[2]); a.lat -= uy * m / LAT_M; b.lon += ux * m / (LON_M * v[2]); b.lat += uy * m / LAT_M;
+        moved = true;
+      });
+      if (!moved) break;
+    }
+    pts.forEach(function (p) { var v = vec(p.s, p); if (Math.sqrt(v[0] * v[0] + v[1] * v[1]) > 0.3) p.s._p = [p.lon, p.lat]; });
+  }
+  // the thin lines from a moved pin to its real place
+  function legs() {
+    return { type: 'FeatureCollection', features: ST.filter(function (s) { return s._p; }).map(function (s) {
+      return { type: 'Feature', geometry: { type: 'LineString', coordinates: [[s.lon, s.lat], s._p] }, properties: {} }; }) };
+  }
   function data() { return { type: 'FeatureCollection', features: visible().map(feat) }; }
+  function setSt() {
+    spread(visible());
+    if (map && map.getSource('st')) map.getSource('st').setData(data());
+    if (map && map.getSource('leg')) map.getSource('leg').setData(legs());
+  }
   function refresh() {
-    state.lim = 20; if (map && map.getSource('st')) map.getSource('st').setData(data()); renderList();
+    state.lim = 20; setSt(); renderList();
     if (rtOpen && RT.route) rtBody(false); else if (RT.shown) rtDraw(rtList().rows);
     rtBtnPaint();
   }
@@ -1849,6 +1897,20 @@
     if (x.roundRect) x.roundRect(0, 0, w, w, 8 * r); else x.rect(0, 0, w, w);
     x.fill();
     return { img: x.getImageData(0, 0, w, w), opt: { pixelRatio: r, stretchX: [[8 * r, 24 * r]], stretchY: [[8 * r, 24 * r]] } };
+  }
+  // the capsule reaches beyond its text 3 px up, 7 px to each side and 2 px down (icon-text-fit-padding: top, right, bottom, left)
+  var CAP = [3, 7, 2, 7];
+  // The places a capsule may take around its pin (text-variable-anchor-offset, in ems of the px-sized text), each 0.3 px clear
+  // of the pin's cross (layers pt-box-h/-v, L as there): under, right, left, lower right, lower left, above, upper right, upper
+  // left. An offset reaches the edge of the text's padded box; with text-padding = icon-padding = 1 px the capsule's box is
+  // that box + CAP. MapLibre moves a 'top…' label up and a 'bottom…' label down by 7/24 em (its baseline correction); the
+  // vertical offsets give that back. MapLibre lays a tile of zoom z out with the offsets of z and the pins' boxes of z + 1,
+  // so the offsets of zoom z are made for L at z + 1 (L grows linearly from zoom 12 to 16).
+  function capPlaces(L, px) {
+    var S = 0.725 * L, b = 7 / 24, e = function (v) { return Math.round(v / px * 1000) / 1000; };
+    var x = e(L + 0.3 + CAP[1]), ys = e(L + 0.3 + CAP[0]) + b, yn = e(L + 0.3 + CAP[2]) + b;
+    var dx = e(S + 0.3 + CAP[1]), dys = e(S + 0.3 + CAP[0]) + b, dyn = e(S + 0.3 + CAP[2]) + b;
+    return ['top', [0, ys], 'left', [x, 0], 'right', [-x, 0], 'top-left', [dx, dys], 'top-right', [-dx, dys], 'bottom', [0, -yn], 'bottom-left', [dx, -dyn], 'bottom-right', [-dx, -dyn]];
   }
   function srbBounds() { return new window.maplibregl.LngLatBounds(SRB[0], SRB[1]); }
   function initMap() {
@@ -1875,7 +1937,9 @@
       if (!map.hasImage('evm-cap-b')) map.addImage('evm-cap-b', cb.img, cb.opt);
       // every charger at every zoom, no number clusters (owner's decision 20.10.2026, same as /mapa/ on blokvolt.rs):
       // small dots on the country view that grow with the zoom; working and confirmed above the faded ones, DC above AC
+      spread(visible());
       map.addSource('st', { type: 'geojson', data: data() });
+      map.addSource('leg', { type: 'geojson', data: legs() });
       map.addSource('sel', { type: 'geojson', data: { type: 'FeatureCollection', features: sel ? [feat(sel)] : [] } });
       map.addSource('me', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
       var nep = ['==', ['get', 'v'], 'nep'], faded = ['any', nep, ['==', ['get', 'cl'], 1]];
@@ -1892,6 +1956,9 @@
       map.addLayer({ id: 'rts', type: 'circle', source: 'rts',
         paint: { 'circle-radius': zr(6.5, 8.5, 14, 16, 18), 'circle-color': 'rgba(124,92,255,.2)', 'circle-stroke-width': 2.2, 'circle-stroke-color': VIOLET } });
       map.addLayer({ id: 'sel', type: 'circle', source: 'sel', paint: { 'circle-radius': zr(10, 13, 19, 21, 21), 'circle-color': 'rgba(46,107,255,.22)', 'circle-stroke-width': 2.5, 'circle-stroke-color': BLUE } });
+      // a pin moved apart from another one (spread): a thin line to its real place, under the pins
+      map.addLayer({ id: 'pt-leg', type: 'line', source: 'leg', minzoom: 14, layout: { 'line-cap': 'round' },
+        paint: { 'line-color': SLATE, 'line-width': 1.5, 'line-opacity': 0.8 } });
       map.addLayer({ id: 'pt', type: 'circle', source: 'st',
         layout: { 'circle-sort-key': ['+', ['case', faded, 0, 10], ['match', ['get', 'k'], 'dc', 2, 'ac', 1, 0]] },
         paint: {
@@ -1904,10 +1971,28 @@
       map.addLayer({ id: 'pt-kw', type: 'symbol', source: 'st', minzoom: 11,
         layout: { 'text-field': ['get', 'p'], 'text-font': FONT, 'text-size': ['interpolate', ['linear'], ['zoom'], 11, 9, 16, 11], 'text-allow-overlap': true, 'text-ignore-placement': true },
         paint: { 'text-color': '#FFFFFF' } });
+      // The price capsule never covers a pin or another capsule (28.10.2026, as on blokvolt.rs/mapa): it takes the first free
+      // place around its own pin — under it (as before), right, left, lower right, lower left, above, upper right, upper left —
+      // and when none is free it waits for the next zoom step (the pin and its power stay). Free places are MapLibre's
+      // collision index: capsules avoid each other (icon-padding) and the pins' shapes (layers pt-box-h, pt-box-v below). The
+      // first capsules to take a place: working and confirmed chargers, fast DC first.
       map.addLayer({ id: 'pt-pr', type: 'symbol', source: 'st', filter: ['!=', ['get', 'pl'], ''], minzoom: 12,
-        layout: { 'text-field': ['get', 'pl'], 'text-font': FONT, 'text-size': 11, 'text-anchor': 'top', 'text-offset': [0, 1.45], 'text-padding': 3,
-          'icon-image': ['match', ['get', 'pc'], 'free', 'evm-cap-b', 'evm-cap-k'], 'icon-text-fit': 'both', 'icon-text-fit-padding': [3, 7, 2, 7] },
+        layout: { 'text-field': ['get', 'pl'], 'text-font': FONT, 'text-size': 11, 'text-padding': 1,
+          'text-variable-anchor-offset': ['interpolate', ['linear'], ['zoom'], 12, ['literal', capPlaces(15, 11)], 15, ['literal', capPlaces(16.5, 11)]],
+          'symbol-sort-key': ['+', ['case', faded, 10, 0], ['match', ['get', 'pc'], 'old', 5, 0], ['match', ['get', 'k'], 'dc', 0, 'ac', 1, 2]],
+          'icon-image': ['match', ['get', 'pc'], 'free', 'evm-cap-b', 'evm-cap-k'], 'icon-text-fit': 'both', 'icon-text-fit-padding': CAP, 'icon-padding': 1 },
         paint: { 'text-color': ['match', ['get', 'pc'], 'old', 'rgba(255,255,255,0.62)', '#FFFFFF'] } });
+      // Every pin's shape in the collision index from zoom 12: two invisible bars, a wide and a tall one, a cross that holds
+      // the round pin with its white ring (L = radius + ring + 0.5 px: 14.5 px at zoom 12, 16.5 px from zoom 16; the short
+      // side 0.725 L) and leaves its corners free for a capsule. These layers are on top, so MapLibre places them first and
+      // the capsules go around the pins; the map's own street and place names avoid the pins too.
+      if (!map.hasImage('evm-pin-h')) map.addImage('evm-pin-h', { width: 40, height: 29, data: new Uint8Array(40 * 29 * 4) });
+      if (!map.hasImage('evm-pin-v')) map.addImage('evm-pin-v', { width: 29, height: 40, data: new Uint8Array(29 * 40 * 4) });
+      ['h', 'v'].forEach(function (k) {
+        map.addLayer({ id: 'pt-box-' + k, type: 'symbol', source: 'st', minzoom: 12,
+          layout: { 'icon-image': 'evm-pin-' + k, 'icon-size': ['interpolate', ['linear'], ['zoom'], 12, 14.5 / 20, 16, 16.5 / 20], 'icon-allow-overlap': true, 'icon-padding': 0 },
+          paint: { 'icon-opacity': 0 } });
+      });
       map.addLayer({ id: 'me-dot', type: 'circle', source: 'me', paint: { 'circle-radius': 7, 'circle-color': '#FFFFFF', 'circle-stroke-width': 4, 'circle-stroke-color': BLUE } });
       map.addLayer({ id: 'rte', type: 'circle', source: 'rte',
         paint: { 'circle-radius': 7, 'circle-color': ['match', ['get', 'e'], 'a', '#FFFFFF', INK], 'circle-stroke-width': 3, 'circle-stroke-color': ['match', ['get', 'e'], 'a', VIOLET, '#FFFFFF'] } });
@@ -2058,7 +2143,7 @@
     COSTV++;
     if (!carSpec()) state.cheap = false;
     renderStatic();
-    if (map && map.getSource('st')) map.getSource('st').setData(data());
+    setSt();
     renderList();
     if (RT.shown) rtDraw(rtList().rows);
   }
