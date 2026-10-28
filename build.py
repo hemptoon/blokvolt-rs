@@ -1287,6 +1287,55 @@ VODICI_GROUPS = [
         A('/podaci/statistika-ev-srbija/', icon='chart'), A('/podaci/tarife-eps/', 'Cena struje kod kuće', icon='bolt'),
         A('/podaci/wallbox-modeli/', 'Wallbox modeli i cene', icon='plug')]),
 ]
+# one set of guide-card thumbnails in the same studio style (28.10.2026, RUNBOOK 3.13): static/assets/img/vd-<name>-480.webp
+CARD_IMG = {
+    "/punjenje-elektricnog-auta-u-zgradi": "vd-zgrada",
+    "/punjac-u-zgradi-skupstina": "vd-skupstina",
+    "/ko-placa-struju-za-punjenje": "vd-ko-placa",
+    "/alati/racun-u-zgradi/": "vd-racun-zgrada",
+    "/bezbednost-punjenja-atest": "vd-bezbednost",
+    "/punjac-u-iznajmljenoj-garazi": "vd-iznajmljena-garaza",
+    "/elektricni-auto-bez-garaze": "vd-bez-garaze",
+    "/wallbox-cena-srbija": "vd-wallbox-cena",
+    "/elektricni-automobili/": "vd-ev-hub",
+    "/elektricni-automobili/polovni/": "vd-polovni",
+    "/podaci/subvencije-2026/": "vd-subvencije",
+    "/podaci/cene-elektricnih-automobila/": "vd-cene-ev",
+    "/podaci/registracija-i-porezi/": "vd-registracija",
+    "/podaci/uvoz-i-carina/": "vd-uvoz",
+    "/podaci/osiguranje-elektricnog-automobila/": "vd-osiguranje",
+    "/podaci/krediti-i-lizing/": "vd-krediti",
+    "/podaci/provera-baterije-polovnog-elektricnog-auta/": "vd-baterija",
+    "/podaci/servisi-za-elektricne-automobile/": "vd-servisi",
+    "/podaci/rent-a-car-i-car-sharing/": "vd-rent",
+    "/najam-elektricnog-automobila": "vd-najam",
+    "/javno-punjenje/prvo-punjenje-na-javnom-punjacu/": "vd-prvo-punjenje",
+    "/javno-punjenje/ccs2-type2-chademo-gbt/": "vd-utikac",
+    "/javno-punjenje/zasto-auto-puni-sporo-na-brzom-punjacu/": "vd-sporo",
+    "/javno-punjenje/kako-jeftinije-puniti/": "vd-jeftinije",
+    "/javno-punjenje/plug-in-hibrid-na-javnom-punjacu/": "vd-phev",
+    "/javno-punjenje/cena-punjenja-po-modelu/": "vd-cena-po-modelu",
+    "/podaci/putarina-i-parking/": "vd-putarina",
+    "/javno-punjenje/besplatni-punjaci/": "vd-besplatni",
+    "/javno-punjenje/aplikacije-i-kartice/": "vd-aplikacije",
+    "/javno-punjenje/region/": "vd-region",
+    "/podaci/pomoc-na-putu/": "vd-pomoc",
+    "/javno-punjenje/smestaj-sa-punjacem/": "vd-smestaj",
+    "/podaci/statistika-ev-srbija/": "vd-statistika",
+    "/podaci/tarife-eps/": "vd-tarife",
+    "/podaci/wallbox-modeli/": "vd-wallbox-modeli"
+}
+
+
+def card_imgs(items):
+    for it in items:
+        if it.get('href') in CARD_IMG:
+            it['img'] = CARD_IMG[it['href']]
+    return items
+
+
+for _, _items in VODICI_GROUPS:
+    card_imgs(_items)
 CENE_TILES = [
     {'href': '/javno-punjenje/', 'name': 'Javno punjenje', 'desc': 'Cene po mrežama, po minutu i po kWh, i besplatni punjači.', 'icon': 'bolt'},
     {'href': '/cena-punjaca-za-elektricni-auto', 'name': 'Kućni punjač sa ugradnjom', 'desc': 'Koliko traže firme i šta ulazi u ugradnju.', 'icon': 'plug'},
@@ -2327,6 +2376,7 @@ HOME_GUIDES = [
     {'href': '/podaci/tarife-eps/', 'name': 'Cena struje kod kuće', 'desc': 'Zone, tarife i kada počinje jeftinija struja.', 'icon': 'bolt', 'img': 'stambeni-blokovi-sunce'},
     {'href': '/bezbednost-punjenja-atest', 'name': 'Bezbednost i atest', 'desc': 'Zašto ne produžni kabl i šta proverava atest.', 'icon': 'shield', 'img': 'elektricar-atest'},
 ]
+card_imgs(HOME_GUIDES)
 render('home.html', '/', HOME_GUIDES=HOME_GUIDES, NEWS_HOME=NEWS[:3], section='', n_auto=len(AUTO_OFFICIAL),
        title='BlokVolt: punjači, cene i firme za električne automobile u Srbiji',
        description=f"Mapa sa {MAP['n']} javnih punjača i cenama, {sr_plural(len(published), 'firma', 'firme', 'firmi')} za kućni punjač, cene struje i javnog punjenja, subvencije i vodiči za električni auto u Srbiji.")

@@ -255,6 +255,11 @@ Rules, non-negotiable:
 - Same frame for all: front three-quarter, nose on the left, whole car at ~72 % of the width, same
   light-grey studio background, no plate, no text, no people.
 
+When Commons has no photo of the current version (facelift), the owner allows (28.10.2026) a photo from the
+manufacturer's or importer's own website as the reference; the credit then names that page instead of a Commons
+file. Prefer Commons whenever it has the current version (28.10: ID.3 Neo, EV6, E-208, ë-C4, Enyaq were found
+there; IONIQ 5 stays — hyundai.rs itself still shows the pre-facelift car).
+
 How it is done (27.10.2026, 122 models, 2.75 credits each):
 1. Import the source into Higgsfield with `media_import_url` using the Commons 1920 px thumbnail
    (`/wikipedia/commons/thumb/X/XY/<File>/1920px-<File>`; the original URL often answers 429; when the
@@ -899,6 +904,12 @@ Video: `content/data/video.json` (id, title, channel, poster = an illustration n
 YouTube oEmbed through WebFetch). `yt(id)` / `[[yt:ID]]` renders a poster; `bv.js` creates the
 youtube-nocookie iframe only after a click (privacy policy promise — never embed a live iframe).
 
+
+Guide cards (/vodici/, home "Vodiči", 28.10.2026): one set of thumbnails `static/assets/img/vd-<name>-480.webp`
+(480x360, 4:3), mapped by URL in `CARD_IMG` in `build.py` (it overrides `thumb:`/`image:` for the card only; the
+article keeps its own hero image). Style — studio still life on a light-grey background, an object or the same
+generic white scale-model car (no brand look-alikes: generate with the existing model car as `image_references`),
+no text, no logos. A new guide on a hub gets its own `vd-` thumbnail in the same style.
 ### 3.14 Company updates (/za-firme/) and corrections (/ispravka/)
 
 Both forms post to `/api/zahtev` (stored in D1 `requests`). Readers come first and companies last (owner's decision,

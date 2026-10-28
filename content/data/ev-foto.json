@@ -1,5 +1,5 @@
 {
- "checked": "27.10.2026",
+ "checked": "28.10.2026",
  "source": "Wikimedia Commons",
  "w": 360,
  "h": 200,
@@ -268,13 +268,13 @@
   },
   "Citroën||ë-C4": {
    "slug": "citroen-e-c4",
-   "au": "© M 93",
-   "lic": "CC BY-SA 3.0 de",
-   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
-   "page": "https://commons.wikimedia.org/wiki/File:Citro%C3%ABn_%C3%AB-C4_Feel_(III)_%E2%80%93_f_14042024.jpg",
-   "file": "Citroën ë-C4 Feel (III) – f 14042024.jpg",
-   "bytes": 38103,
-   "v": "d6db1ec1"
+   "au": "Matti Blume",
+   "lic": "CC BY-SA 4.0",
+   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Citroen_e-C4,_Auto_2025,_Zurich_(20251029-P1074554).jpg",
+   "file": "Citroen e-C4, Auto 2025, Zurich (20251029-P1074554).jpg",
+   "bytes": 35100,
+   "v": "8a204b01"
   },
   "Citroën||ë-C4 X": {
    "slug": "citroen-e-c4-x",
@@ -578,13 +578,13 @@
   },
   "Kia||EV6": {
    "slug": "kia-ev6",
-   "au": "Alexander Migl",
-   "lic": "CC BY-SA 4.0",
-   "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Kia_EV6_Automesse_Ludwigsburg_2022_1X7A5931.jpg",
-   "file": "Kia EV6 Automesse Ludwigsburg 2022 1X7A5931.jpg",
-   "bytes": 38135,
-   "v": "cf465ad0"
+   "au": "M 93",
+   "lic": "CC BY-SA 3.0 de",
+   "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File:Kia_EV6_GT-line_(Facelift)_–_f_27072025.jpg",
+   "file": "Kia EV6 GT-line (Facelift) – f 27072025.jpg",
+   "bytes": 36270,
+   "v": "2daeea1c"
   },
   "Kia||EV9": {
    "slug": "kia-ev9",
@@ -943,8 +943,8 @@
    "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
    "page": "https://commons.wikimedia.org/wiki/File:Opel_Mokka_Electric_Edition_(B,_Facelift)_–_f_12102025.jpg",
    "file": "Opel Mokka Electric Edition (B, Facelift) – f 12102025.jpg",
-   "bytes": 46185,
-   "v": "dd3e65c6"
+   "bytes": 40051,
+   "v": "d0fff0aa"
   },
   "Peugeot||E-2008": {
    "slug": "peugeot-e-2008",
@@ -958,13 +958,13 @@
   },
   "Peugeot||E-208": {
    "slug": "peugeot-e-208",
-   "au": "Vauxford",
+   "au": "Alexander-93",
    "lic": "CC BY-SA 4.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:2020_Peugeot_e-208_Allure_Front.jpg",
-   "file": "2020 Peugeot e-208 Allure Front.jpg",
-   "bytes": 41369,
-   "v": "f519d0ec"
+   "page": "https://commons.wikimedia.org/wiki/File:Peugeot_e-208_facelift_1X7A2502.jpg",
+   "file": "Peugeot e-208 facelift 1X7A2502.jpg",
+   "bytes": 44005,
+   "v": "0d2731e3"
   },
   "Peugeot||E-3008": {
    "slug": "peugeot-e-3008",
@@ -1098,13 +1098,13 @@
   },
   "Volkswagen||ID.3 Neo": {
    "slug": "volkswagen-id-3",
-   "au": "Alexander-93",
+   "au": "Alexander Migl",
    "lic": "CC BY-SA 4.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Volkswagen_ID.3_(2023)_IMG_7972.jpg",
-   "file": "Volkswagen ID.3 (2023) IMG 7972.jpg",
-   "bytes": 36875,
-   "v": "d5ff6843"
+   "page": "https://commons.wikimedia.org/wiki/File:Volkswagen_ID.3_Neo_IMG_7255.jpg",
+   "file": "Volkswagen ID.3 Neo IMG 7255.jpg",
+   "bytes": 34966,
+   "v": "a3a67876"
   },
   "Volkswagen||ID.4": {
    "slug": "volkswagen-id-4",
@@ -1208,13 +1208,13 @@
   },
   "Škoda||Enyaq": {
    "slug": "skoda-enyaq",
-   "au": "Alexander-93",
+   "au": "Ssu",
    "lic": "CC BY-SA 4.0",
    "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "page": "https://commons.wikimedia.org/wiki/File:%C5%A0koda_Enyaq_IMG_1190.jpg",
-   "file": "Škoda Enyaq IMG 1190.jpg",
-   "bytes": 39219,
-   "v": "49ccb131"
+   "page": "https://commons.wikimedia.org/wiki/File:2025_Skoda_Enyaq_sportline_(facelift)_-_front.jpg",
+   "file": "2025 Skoda Enyaq sportline (facelift) - front.jpg",
+   "bytes": 33053,
+   "v": "fa097149"
   },
   "Škoda||Enyaq Coupé": {
    "slug": "skoda-enyaq-coupe",
