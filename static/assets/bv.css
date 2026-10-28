@@ -1685,7 +1685,7 @@ html.nl-in .nl-v-out,html:not(.nl-in) .nl-v-in{display:none!important}
 /* the map: the card's price in full, the list's price only converted (the dinars are in the tooltip) */
 .cbox .price .fx-s{display:block;font-size:14px;font-weight:600;letter-spacing:0;margin-top:2px}
 .cbox .price .fx-sep{display:none}
-.st .pr .fxw{font-style:normal}
+.st .pr .fxw,.nr-pr .fxw{font-style:normal}
 .st .pr .fxw .fx-p{display:inline;font-weight:inherit;color:inherit}
 @media print{.hd-cur,.hd-cur-m{display:none}}
 /* "Dodaj punjač" on /mapa/ (map.js addStart/addForm, RUNBOOK 3.11d) */

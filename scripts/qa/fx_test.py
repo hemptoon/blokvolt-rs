@@ -345,10 +345,13 @@ async def main():
                       f'map {tag}: pins per km, ASCII', [f.get('cg-80'), f.get('ocm-263893'), f.get('rm-4479035-2042305')])
                 lst = await pg.evaluate("[...document.querySelectorAll('#mlist .st .pr')].map(e => [e.innerText.replace(/\\s+/g, ' ').trim(), (e.querySelector('.fxw') || {}).title || '']).filter(x => x[0])")
                 if cur == 'RSD':
-                    ok = lst and any('RSD' + km_u[lang] in x[0] for x in lst) and not any(re.search(r'[€$]', x[0]) for x in lst)
+                    bad = [x for x in lst if re.search(r'[€$]', x[0])]
+                    ok = lst and any('RSD' + km_u[lang] in x[0] for x in lst) and not bad
                 else:
-                    ok = lst and not any('RSD' in x[0] for x in lst) and any(sym[cur] + km_u[lang] in x[0] and 'RSD' in x[1] for x in lst)
-                check(ok, f'map {tag}: list per km {"in RSD" if cur == "RSD" else "converted only (RSD in the tooltip)"}', lst[:3])
+                    bad = [x for x in lst if 'RSD' in x[0]]
+                    ok = lst and not bad and any(sym[cur] + km_u[lang] in x[0] and 'RSD' in x[1] for x in lst)
+                # the detail shows the rows at fault first (only the first three rows hid them until 28.10.2026)
+                check(ok, f'map {tag}: list per km {"in RSD" if cur == "RSD" else "converted only (RSD in the tooltip)"}', bad[:3] or lst[:3])
                 # "Najbliži punjač" (fixed location in Novi Sad)
                 await pg.evaluate("localStorage.removeItem('bv:car')")
                 await pg.goto('about:blank')
@@ -370,6 +373,61 @@ async def main():
             check(await pg.evaluate(card_txt) == base['gz'] and await pg.evaluate("document.querySelectorAll('.ccard .fx-p, .ccard .fx-s').length") == 0,
                   f'map {lang}: EUR → RSD on an open card restores the dinars exactly')
             check(not errs, f'map {lang}: no JS errors', errs[:5])
+            await ctx.close()
+
+        # ------------------------------------------------------------------ 5c. two sums in one short price
+        # Emobility Spectra's unit tariff is one text with two sums („60 RSD po „jedinici“ + 1,20 RSD/min“). In the list and in
+        # "Najbliži punjač" (and "Punjači na putu", the same code) each sum is converted on its own, RSD in its tooltip, the
+        # words between them unchanged; back to RSD gives the same text. Until 28.10.2026 the whole text stayed in dinars.
+        print('— two sums in one short price')
+        two = ('sp-battery-magic-valjevo', 'sp-giorgio-luxury')
+        row_js = """id => { const e = document.querySelector('#mlist .st[data-id="' + id + '"] .pr'); if (!e) return null; const c = e.cloneNode(true);
+            c.querySelectorAll(':scope > span').forEach(x => x.remove()); return [c.innerText.replace(/\\s+/g, ' ').trim(), [...e.querySelectorAll('.fxw')].map(x => x.title)]; }"""
+        near_js = """() => { const e = document.querySelector('.nrp .nr .nr-pr'); if (!e) return null;
+            return [e.closest('.nr').querySelector('[data-open]').dataset.open, e.innerText.replace(/\\s+/g, ' ').trim(), [...e.querySelectorAll('.fxw')].map(x => x.title)]; }"""
+        sums_rsd = lambda t: re.findall(r'\d[\d.,]* RSD(?:/\S+)?', t)
+
+        def two_ok(rsd, got, sym_):
+            # got = [visible text, tooltips]: no dinars visible, one ≈ sum per dinar sum, each tooltip names its dinar sum,
+            # the words between the sums as with RSD
+            if not rsd or not got:
+                return False
+            src = sums_rsd(rsd)
+            conv = re.findall(r'≈ [\d,]+ ' + re.escape(sym_), got[0])
+            tips = [re.search(r': (.+)\.$', x).group(1) if re.search(r': (.+)\.$', x) else '' for x in got[1]]
+            rest = lambda t, rx: re.sub(rx, '#', t)
+            return (len(src) == 2 and 'RSD' not in got[0] and len(conv) == 2 and tips == src
+                    and rest(got[0], r'≈ [\d,]+ ' + re.escape(sym_)) == rest(rsd, r'\d[\d.,]* RSD'))
+        for lang, cur in (('sr', 'EUR'), ('en', 'USD'), ('ru', 'EUR')):
+            pre = '' if lang == 'sr' else '/' + lang
+            ctx = await new_ctx(b)
+            await ctx.grant_permissions(['geolocation'])
+            await ctx.set_geolocation({'latitude': 44.28292, 'longitude': 19.93795})     # at Battery Magic, Valjevo
+            pg = await ctx.new_page()
+            errs = watch(pg)
+            await go(pg, pre + '/mapa/?qa=1', 1200)
+            rsd = {i: await pg.evaluate(row_js, i) for i in two}
+            check(all(rsd[i] and len(sums_rsd(rsd[i][0])) == 2 and not re.search(r'[€$]', rsd[i][0]) for i in two),
+                  f'map {lang} RSD: the two Spectra rows show both sums in dinars', rsd)
+            await pg.evaluate(f"localStorage.setItem('bv:cur', '{cur}')")
+            await pg.goto('about:blank')
+            await go(pg, pre + '/mapa/?qa=1', 1200)
+            got = {i: await pg.evaluate(row_js, i) for i in two}
+            check(all(two_ok(rsd[i] and rsd[i][0], got[i], sym[cur]) for i in two), f'map {lang} {cur}: list, two sums converted one by one (RSD in each tooltip)', got)
+            await pg.goto('about:blank')
+            await go(pg, pre + '/mapa/?najblizi=1&qa=1', 300)
+            await pg.wait_for_selector('.nrp .nrl', timeout=8000)
+            await pg.wait_for_timeout(400)
+            nr = await pg.evaluate(near_js)
+            check(nr and nr[0] == two[0] and two_ok(rsd[two[0]][0], nr[1:], sym[cur]), f'map {lang} {cur}: "Najbliži punjač", two sums converted one by one', nr)
+            await pg.evaluate("bvFx.set('RSD')")
+            await pg.wait_for_timeout(250)
+            back_nr = await pg.evaluate(near_js)
+            back_row = await pg.evaluate(row_js, two[0])
+            check(back_nr and back_nr[1] == rsd[two[0]][0] and back_row and back_row[0] == rsd[two[0]][0]
+                  and await pg.evaluate("document.querySelectorAll('#mlist .fx-p, .nrp .fx-p').length") == 0,
+                  f'map {lang}: {cur} → RSD gives back the same two-sum text (list and "Najbliži punjač")', [back_nr, back_row])
+            check(not errs, f'map {lang}: no JS errors (two sums)', errs[:5])
             await ctx.close()
 
         # ------------------------------------------------------------------ 6. phones and tablets: header, menu, no overflow

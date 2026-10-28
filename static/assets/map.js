@@ -1910,16 +1910,39 @@ function fxd(text) {
   const h = esc(text);
   return FX ? h.replace(FX_TOK, (m, pre, all) => pre + fxm(all)) : h;
 }
+// The short price of a list row, of "Najbliži punjač" and of "Punjači na putu" (priceShort) is converted only. FX.scan
+// converts an element only when its whole text is one price, and a tariff can have two sums in one text (Emobility
+// Spectra: „60 RSD po „jedinici“ + 1,20 RSD/min“). Such a text node becomes one <i class="fxw"> per sum (FX_TOK, as in the
+// card), the words between stay text; a text with one sum is left as it is. true = split.
+function fxSplit(t) {
+  const s = t.nodeValue, at = [];
+  s.replace(FX_TOK, (m, pre, all, i) => { at.push([i + pre.length, all]); return m; });
+  if (at.length < 2) return false;
+  const p = t.parentNode, put = n => p.insertBefore(n, t);
+  let k = 0;
+  at.forEach(([i, all]) => {
+    if (i > k) put(d.createTextNode(s.slice(k, i)));
+    const w = d.createElement('i'); w.className = 'fxw'; w.textContent = all; put(w);
+    k = i + all.length;
+  });
+  if (k < s.length) put(d.createTextNode(s.slice(k)));
+  p.removeChild(t);
+  return true;
+}
 function fxCard() {
   if (!FX) return;
   FX.scan($card, { selector: '.price, .fxm' });           // ≈ € first, RSD after (.price: a line that is only a price, e.g. by receipts)
-  FX.scan($card, { selector: '.nr-pr', compact: true });  // "Najbliži punjač": converted only, as in the list
+  [].forEach.call($card.querySelectorAll('.nr-pr'), el => {
+    const t = el.firstChild;
+    if (t && t.nodeType === 3 && t.nodeValue.indexOf('RSD') >= 0) fxSplit(t);
+  });
+  FX.scan($card, { selector: '.nr-pr, .nr-pr .fxw', compact: true });  // "Najbliži punjač", "Punjači na putu": converted only, as in the list
 }
 function fxList() {
   if (!FX) return;
   [].forEach.call($list.querySelectorAll('.st .pr'), el => {      // the price is the first text of .pr (a distance may follow)
     const t = el.firstChild;
-    if (t && t.nodeType === 3 && t.nodeValue.indexOf('RSD') >= 0) { const w = d.createElement('i'); w.className = 'fxw'; el.insertBefore(w, t); w.appendChild(t); }
+    if (t && t.nodeType === 3 && t.nodeValue.indexOf('RSD') >= 0 && !fxSplit(t)) { const w = d.createElement('i'); w.className = 'fxw'; el.insertBefore(w, t); w.appendChild(t); }
   });
   FX.scan($list, { selector: '.fxw', compact: true });
 }

@@ -1808,8 +1808,10 @@ punjačima i u računima cene su u dinarima.“ (EN/RU from the translation memo
 - calculators: their results (the inline scripts write `data-rsd` and call `bvFx.render`), the tariff table of the cost
   calculator. **Input fields stay in RSD** with their „RSD“ labels and presets (they are copied from Serbian bills);
 - the map (`map.js`, a small block „display currency“): the card's price and its per-kWh estimate in full, the list and
-  the pin labels only converted (pins in ASCII: „~0,58 EUR/kWh“). The neighbouring countries' layer and the country maps
-  of blokvolt.com (their own currency, no `window.bvFx`) never change.
+  the pin labels only converted (pins in ASCII: „~0,58 EUR/kWh“). A short price with two sums (Emobility Spectra's unit
+  tariff „60 RSD po „jedinici“ + 1,20 RSD/min“) is converted sum by sum in the list, „Najbliži punjač“ and „Punjači na
+  putu“ (`fxSplit`; `FX.scan` converts only an element whose whole text is one price). The neighbouring countries' layer
+  and the country maps of blokvolt.com (their own currency, no `window.bvFx`) never change.
 
 **Never converted** (nothing there is marked): the prose of guides, news and data pages (authors' text with quoted
 sources), the media kit and the ad price (/za-firme/oglasavanje/, its PDFs), legal pages, /pregled/ and the newsletter
@@ -1854,8 +1856,9 @@ python3 scripts/qa/fx_test.py /tmp/bv-fx-shots [--before <server of a build with
 `fx_test.py`: RSD by default with no conversion (and, with `--before`, the same text as the other build), EUR by the
 switcher with the `currency_changed` event, after a reload, `?cur=usd`, the price index, a network page, firm prices, data
 tables, both calculators (inputs in RSD, a new input repaints, back to RSD shows the new result), the map card, list and
-pins, the never-converted pages, the EN/RU footnote and tooltip, the switcher in the burger menu at 360 px, no horizontal
-scroll at 360/768/1440, and screenshots. cfserve has no `/api/kurs` (404): the pages must use the constants silently.
+pins (the two-sum Spectra price in the list and „Najbliži punjač“), the never-converted pages, the EN/RU footnote and
+tooltip, the switcher in the burger menu at 360 px, no horizontal scroll at 360/768/1440, and screenshots. cfserve has no
+`/api/kurs` (404): the pages must use the constants silently.
 
 ### 3.30 The growing EV fleet estimate (since 10.10.2026)
 

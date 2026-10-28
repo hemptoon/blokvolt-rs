@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 27.10.2026
+updated: 28.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-27
+modified: 2026-10-28
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 28. oktobar 2026
+
+- [Mapa punjača](/mapa/), valuta EUR ili USD: dva punjača mreže Emobility Spectra (Valjevo, Beograd) naplaćuju „jedinicu“ i minut. Njihova cena sada je preračunata i u spisku punjača, u „Najbliži punjač“ i u „Punjači na putu“, a ne samo u kartici punjača.
+
 ## 27. oktobar 2026
 
 - [Politika privatnosti](/politika-privatnosti#aplikacija): novi deo o aplikacijama BlokVolt za iPhone i Android — šta aplikacije šalju i kome, šta se čuva uz nalog „Moj BlokVolt“ (prijava preko Apple ili Google naloga ili koda na e-adresu) i gde se nalog briše. Aplikacije nemaju reklame ni praćenje.
