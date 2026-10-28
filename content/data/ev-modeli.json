@@ -2045,28 +2045,11 @@
           "promo_note": "",
           "source_type": "official",
           "url": "https://jacmotors.rs/putnicka-vozila/cenovnik/",
-          "seen": "22.09.2026",
+          "seen": "28.10.2026",
           "note": "51,5 kWh (Flagship) 25.990 €. Stranica modela: 'Do 520 km' uz WLTP, a tabela CLTC 405/505 km — nepouzdano, range=null."
-        },
-        {
-          "model": "e-JS4",
-          "version": "od",
-          "battery_kwh": null,
-          "range_wltp_km": null,
-          "price_regular": 29900,
-          "price_promo": null,
-          "currency": "EUR",
-          "vat": "nije navedeno",
-          "subsidy_note": "nije navedeno",
-          "price_includes_subsidy": null,
-          "promo_note": "",
-          "source_type": "official",
-          "url": "https://jacmotors.rs/putnicka-vozila/cenovnik/",
-          "seen": "22.09.2026",
-          "note": "Stranica modela nedostupna (404)."
         }
       ],
-      "notes": "PDV nije naveden za E30X i e-JS4 (za M3 EV izričito 'Cene su bez PDV-a'). Isključeni: M3 EV (28.008 € bez PDV, kategorija nejasna) i T9 EV (pikap, 49.900 €). Jedini prodavac: Mašinopromet d.o.o., Auto put Beograd–Zagreb 300F, Beograd."
+      "notes": "PDV nije naveden za E30X. Na cenovniku 28.10.2026: E30X 41 kWh 23.990 €, 51 kWh 25.990 €, T9 EV (pikap, isključen) 38.325 € + PDV; e-JS4 (ranije 29.900 €) i M3 EV (ranije 28.008 € bez PDV) više nisu na cenovniku. Jedini prodavac: Mašinopromet d.o.o., Auto put Beograd–Zagreb 300F, Beograd."
     },
     {
       "brand": "JMEV",
@@ -2720,5 +2703,5 @@
       "date": "18.03.2026"
     }
   ],
-  "updated": "24.10.2026"
+  "updated": "28.10.2026"
 }

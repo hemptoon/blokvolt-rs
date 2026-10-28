@@ -1515,7 +1515,8 @@ PAGE_NAMES = {'/mapa/': ('Mapa punjača', 'Javni punjači u Srbiji, sa cenom i s
               '/firme/': ('Firme za kućni punjač', 'Ko prodaje i ugrađuje punjač i po kojoj ceni.'),
               '/alati/kalkulator-troskova/': ('Kalkulator troškova', 'Koliko košta 100 km: kuća, javni punjač, benzin.'),
               '/gradovi/novi-sad/': ('Punjači u Novom Sadu', 'Javni punjači i firme za ugradnju u Novom Sadu.'),
-              '/gradovi/nis/': ('Punjači u Nišu', 'Javni punjači i firme za ugradnju u Nišu.')}
+              '/gradovi/nis/': ('Punjači u Nišu', 'Javni punjači i firme za ugradnju u Nišu.'),
+              '/elektricni-automobili/': ('Električni automobili u Srbiji', 'Marke, uvoznici, modeli i cene pre subvencije.')}
 NEWS_PER_PAGE = 20
 
 
