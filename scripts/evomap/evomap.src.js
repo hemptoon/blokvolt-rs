@@ -55,7 +55,7 @@
       src_sp: 'aplikacija Emobility Spectra', src_ye: 'aplikacija Yesla', src_own: 'sajt vlasnika lokacije',
       v_none: 'Punjač je samo u otvorenim bazama: nema ga ni na spisku mreža ni na Google mapama. Možda više ne postoji ili nije javan. Proveri pre polaska.',
       v_tim: 'Punjač je sa radnog spiska tima. Još ga nije potvrdio spisak mreže, sajt vlasnika mesta ni prijava vozača. Proveri pre polaska.', v_tim_d: 'Na spisku tima od {d}',
-      v_to: 'na stranici turističke organizacije', v_mr: 'na stranici mreže punjača', src_tim: 'dopuna tima BlokVolt', q_tim: 'Tačka je iz dopune tima i može odstupati nekoliko desetina metara.',
+      v_to: 'na stranici turističke organizacije', v_mr: 'na stranici mreže punjača', v_op: 'na stranici opštine', v_vs: 'u vesti lokalnog medija', src_tim: 'dopuna tima BlokVolt', q_tim: 'Tačka je iz dopune tima i može odstupati nekoliko desetina metara.',
       v_old: 'Punjač je u otvorenim bazama i na Google mapama, ali bez skorijih potvrda: nijedna ocena vozača iz poslednjih godinu dana. Proveri pre polaska.',
       v_prob: 'Vozači u skorašnjim recenzijama pišu da punjač ne radi. Proveri pre polaska.',
       v_test: 'Po spisku mreže punjač je u probnom radu i još nije otvoren za sve. Proveri u aplikaciji pre polaska.',
@@ -140,7 +140,7 @@
       src_sp: 'Emobility Spectra app', src_ye: 'Yesla app', src_own: 'owner’s website',
       v_none: 'This charger is only in the open databases: it is neither on the networks’ lists nor on Google Maps. It may no longer exist or may not be public. Check before you set off.',
       v_tim: 'This charger is from the team’s working list. It has not yet been confirmed by a network list, the venue owner’s website or a driver report. Check before you set off.', v_tim_d: 'On the team list since {d}',
-      v_to: 'on a tourist organisation page', v_mr: 'on the charging network’s page', src_tim: 'BlokVolt team addition', q_tim: 'The point comes from a team addition and may be off by a few dozen metres.',
+      v_to: 'on a tourist organisation page', v_mr: 'on the charging network’s page', v_op: 'on the municipality’s page', v_vs: 'in a local news report', src_tim: 'BlokVolt team addition', q_tim: 'The point comes from a team addition and may be off by a few dozen metres.',
       v_old: 'This charger is in the open databases and on Google Maps, but without recent confirmation: no driver rating from the past year. Check before you set off.',
       v_prob: 'Drivers say in recent reviews that this charger doesn’t work. Check before you set off.',
       v_test: 'According to the network’s list, this charger is in trial operation and not yet open to everyone. Check the app before you set off.',
@@ -223,7 +223,7 @@
       src_sp: 'приложение Emobility Spectra', src_ye: 'приложение Yesla', src_own: 'сайт владельца',
       v_none: 'Эта зарядка есть только в открытых базах: её нет ни в списках сетей, ни на Google Картах. Возможно, её уже нет или она не публичная. Проверь перед поездкой.',
       v_tim: 'Зарядка из рабочего списка команды. Её пока не подтвердили ни список сети, ни сайт владельца места, ни отзыв водителя. Проверь перед поездкой.', v_tim_d: 'В списке команды с {d}',
-      v_to: 'на странице туристической организации', v_mr: 'на странице зарядной сети', src_tim: 'дополнение команды BlokVolt', q_tim: 'Точка из дополнения команды и может отклоняться на несколько десятков метров.',
+      v_to: 'на странице туристической организации', v_mr: 'на странице зарядной сети', v_op: 'на странице общины', v_vs: 'в новости местного СМИ', src_tim: 'дополнение команды BlokVolt', q_tim: 'Точка из дополнения команды и может отклоняться на несколько десятков метров.',
       v_old: 'Эта зарядка есть в открытых базах и на Google Картах, но без свежих подтверждений: ни одной оценки водителей за последний год. Проверь перед поездкой.',
       v_prob: 'Водители в недавних отзывах пишут, что зарядка не работает. Проверь перед поездкой.',
       v_test: 'По списку сети зарядка в тестовом режиме и открыта ещё не для всех. Проверь в приложении перед поездкой.',
@@ -1012,7 +1012,7 @@
   function verHtml(s) {
     var v = s.v || { s: 'nep', g: 'g_none' };
     if (v.s === 'ok') {
-      var VBY = { cg: 'v_cg', rm: 'v_rm', te: 'v_te', ps: 'v_ps', g: 'v_g', own: 'v_own', sp: 'v_sp', ye: 'v_ye', bp: 'v_bp', to: 'v_to', mr: 'v_mr' };
+      var VBY = { cg: 'v_cg', rm: 'v_rm', te: 'v_te', ps: 'v_ps', g: 'v_g', own: 'v_own', sp: 'v_sp', ye: 'v_ye', bp: 'v_bp', to: 'v_to', mr: 'v_mr', op: 'v_op', vs: 'v_vs' };
       var by = (v.by || []).map(function (b) { return VBY[b] ? T(VBY[b]) : ''; }).filter(Boolean).join('; ');
       return '<p class="evm-vf">' + IC.ok + '<span><b>' + esc(T('v_ok')) + '</b> ' + esc(by) + (v.d ? ' · ' + esc(dt(v.d)) : '') + '</span></p>';
     }

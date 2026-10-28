@@ -979,7 +979,7 @@ MAP_T = {
     # prices on the pins, Tesla-only chargers, our checked facts (content/mapa/dopune.json)
     'per_kwh': 'RSD/kWh', 'tesla_only': 'Samo Tesla', 'p_tesla_only': 'Samo za Tesla vozila', 'p_tesla_fee': '{t} — {s}.',
     'p_tesla_hint': 'Vozite Teslu? Izaberite je u „Moj auto“ iznad liste punjača.', 'p_by_receipt': 'Po računima sa ovog punjača ({d})',
-    'p_est': '≈ {k} RSD po kWh ako auto puni sa {w} kW', 'v_own': 'na sajtu vlasnika lokacije', 'v_to': 'na stranici turističke organizacije', 'v_mr': 'na stranici mreže punjača',
+    'p_est': '≈ {k} RSD po kWh ako auto puni sa {w} kW', 'v_own': 'na sajtu vlasnika lokacije', 'v_to': 'na stranici turističke organizacije', 'v_mr': 'na stranici mreže punjača', 'v_op': 'na stranici opštine', 'v_vs': 'u vesti lokalnog medija',
     'where': 'Gde tačno', 'addr_none': 'Adresa nije poznata — koristite koordinate.', 'copy': 'Kopiraj', 'copied_ll': 'Kopirano',
     'q_net': 'Tačka je sa spiska mreže.', 'q_osm': 'Tačka je iz OpenStreetMap-a.',
     'q_ocm': 'Tačka je iz Open Charge Map-a i može odstupati nekoliko desetina metara.',

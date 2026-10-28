@@ -802,7 +802,7 @@ function statusHtml(s) {
     ' · <b>' + esc(l[2] === 1 ? T.st_ok : T.st_off) + '</b>' + (l[3] && T['st_' + l[3]] ? ' (' + esc(T['st_' + l[3]]) + ')' : '') + '</span></li>').join('');
   return '<div class="cbox"><span>' + esc(T.status) + '</span><ul class="stl">' + li + '</ul><small>' + esc(T.st_src.replace('{d}', s.ps.d)) + '</small></div>';
 }
-const VBY = () => ({ cg: T.v_cg, rm: T.v_rm, te: T.v_te, ps: T.v_ps, g: T.v_g, own: T.v_own, sp: T.v_sp, ye: T.v_ye, bp: T.v_bp, to: T.v_to, mr: T.v_mr });
+const VBY = () => ({ cg: T.v_cg, rm: T.v_rm, te: T.v_te, ps: T.v_ps, g: T.v_g, own: T.v_own, sp: T.v_sp, ye: T.v_ye, bp: T.v_bp, to: T.v_to, mr: T.v_mr, op: T.v_op, vs: T.v_vs });
 // hours and access in one row of badges (dopune.json)
 function tagsHtml(s) {
   const t = [], car = carSpec();
