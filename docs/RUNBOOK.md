@@ -1374,7 +1374,8 @@ the footer ("Pomoć"), the text under /mapa/, /aplikacija/ and /ispravka/. Rules
   `lastUpdated` against `customDomains[].lastPublished` (other people's unpublished work: drafts are not published,
   anything else goes live with a site publish) → staging (`publish_site` with `publishToWebflowSubdomain` only) →
   check evolako.webflow.io → production on the owner's „публикуй“ / „да“. **Never change or delete a file the live
-  page loads** (another byte = SRI fails = no map); remove old files only after the new tag is live. Test: the
+  page loads** (another byte = SRI fails = no map); remove old files only after the new tag is live. Keep the live build and the one before it (rollback);
+  older builds go in one commit once the live tag is checked (28.10.2026: ten builds removed, `2e49e6f753` live, `702837fd45` kept). Test: the
   Playwright harness in the project doc `claude/BlokVolt_Karta_v2_Spec_2026-10-06.md` (mock page + routes).
 
 ### 3.26 Advertising (/za-firme/oglasavanje/): the media kit and booked ads
