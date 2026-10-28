@@ -980,8 +980,9 @@ No messages, comments or forms to anyone — the outreach rule of 3.7 applies to
   morning report in Telegram (topic Stats) then leaves out that browser and everything from the same IP that day.
   Do Not Track / GPC are not checked: no cookies, no profile, nothing that follows a reader — like Cloudflare Web
   Analytics. CSP: same origin, so `connect-src 'self'` covers it (`build.py`, 3.17) — no worker address anywhere in the
-  site's code. evolako.rs sends from its Webflow site code to `https://app.evolako.rs/s/p` (a Pages Function of the app
-  `evolako-app` with the same binding, repository `hemptoon/evolako-web`, since 27.10.2026). The privacy policy
+  site's code. evolako.rs sends from its site code (since 28.10.2026 its own static build, repository
+  `hemptoon/evolako-web`, branch `site-migration`; before that Webflow) to `https://app.evolako.rs/s/p` (a Pages
+  Function of the app `evolako-app` with the same binding, same repository, since 27.10.2026). The privacy policy
   describes it (#merenje-poseta, second paragraph).
 - **PostHog** (EU cloud) — prepared in the code, off while `analytics.posthog_key` in `content/data/site.json` is
   empty. `analytics.consent` (true since 25.09.2026, the owner's choice) picks the mode:
@@ -1383,18 +1384,22 @@ the footer ("Pomoć"), the text under /mapa/, /aplikacija/ and /ispravka/. Rules
   `/app/v1/manifest.json` (`files.map`, versioned `?v=`; the manifest is cached 5 minutes, the files a year).
   Renaming a map file or changing its format breaks that page: keep the fields its script reads, or tell the
   Evolako side first. **Before a deploy that changes the map data, run the live evolako.rs script against the new
-  data**: read the page's footer with the Webflow MCP (`get_page_freeform_code`, page `6abaf73484f6a5d61585b9e5`),
-  load it in Playwright on a mock page with `www.blokvolt.rs/**` routed to `dist/` and compare every station's list
+  data**: take the live script tag from `site/snapshot/pages/mapa-punjaca.html` in `hemptoon/evolako-web` (branch
+  `site-migration`; Webflow is no longer used since 28.10.2026), load it in Playwright on a mock page with `www.blokvolt.rs/**` routed to `dist/` and compare every station's list
   price, pin and card with the current data (the 06.10.2026 harness is described in the project doc
   `claude/BlokVolt_Karta_v2_Spec_2026-10-06.md`). On 06.10.2026 this found the Lapovo price for the other current
   (now `guard`, 3.11e) and Serbian notes on the EN/RU page (now `tx.json`).
 - **The Evolako map script** (`scripts/evomap/`): `evomap.src.js` and `evomap.css` are the source of the map on
-  evolako.rs/mapa-punjaca (Webflow page `6abaf73484f6a5d61585b9e5`); `page_bvq.js` holds the page's EN/RU texts.
+  www.evolako.rs/mapa-punjaca; `page_bvq.js` holds the page's EN/RU texts. Since 28.10.2026 (15:36–15:45) evolako.rs
+  is not Webflow but its own static build: repository `hemptoon/evolako-web` (public), branch `site-migration`, folder
+  `site/`, Cloudflare Pages project `evolako-site`; the page is `site/snapshot/pages/mapa-punjaca.html` (`/en/` and
+  `/ru/` are built from it; its CSP allows `https://www.blokvolt.rs` as a host, so a new file name needs no CSP change).
   `python3 scripts/evomap/build.py` (terser 5.51.2 through npx) writes `static/assets/embed/evomap-<10 hex of
   sha256>.js` (the same source always gives the same name), `scripts/evomap/build.json` (file, SRI) and, in
   `/tmp/evomap/`, the footer tag (`<script src=… integrity=… crossorigin="anonymous">`) and the head `<style>` block.
-  The page's footer code = the politika loader + that tag; its head code = OG/preconnect + the `<style>` block +
-  `<script>` with `page_bvq.js` and `window.EVM_TX` (old fallback; the script prefers `files.map.tx`).
+  In that page the end of the body has the politika loader + the comment „Evolako — mapa javnih punjača (evomap)“ +
+  that tag; the head has OG/preconnect + the `<style>` block („Mapa punjača — izgled (evomap)“) + `<script>` with
+  `page_bvq.js` and `window.EVM_TX` (old fallback; the script prefers `files.map.tx`).
   Since 06.10.2026 the script has the same price engine as /mapa/ (per-connector prices, guard-safe matching), „Moj
   auto“ with RSD/km (the car is kept **in memory only** — evolako.rs's privacy policy names no browser storage but the
   language and the referral code), „Kako se puni ovde“, hours with „sada radi“, own-cable and parking badges, closed
@@ -1404,12 +1409,15 @@ the footer ("Pomoć"), the text under /mapa/, /aplikacija/ and /ispravka/. Rules
   on the map (a tapped place name, a long press, a right click) and the place search ignores diacritics, as on /mapa/
   (3.18); its TOWNS list is a copy of `scripts/map_data.py` TOWNS — change both together. It reads `files.map.auta` and
   `files.data` (fuel price) from the feed; `/assets/app/*` and `/assets/embed/*` carry `Access-Control-Allow-Origin: *`.
-  Order of a change: source → build.py → deploy blokvolt.rs (the new file next to the old ones) → read the live
-  head/footer (`get_page_freeform_code`) and replace only the `<style>` block and the script tag → check the site's
-  `lastUpdated` against `customDomains[].lastPublished` (other people's unpublished work: drafts are not published,
-  anything else goes live with a site publish) → staging (`publish_site` with `publishToWebflowSubdomain` only) →
-  check evolako.webflow.io → production on the owner's „публикуй“ / „да“. **Never change or delete a file the live
-  page loads** (another byte = SRI fails = no map); remove old files only after the new tag is live. Keep the live build and the one before it (rollback);
+  Order of a change: source → build.py → deploy blokvolt.rs (the new file next to the old ones) → in
+  `hemptoon/evolako-web`, branch `site-migration`, replace only the script tag (`src` and `integrity`) in
+  `site/snapshot/pages/mapa-punjaca.html` (the head `<style>` block only if `evomap.css` changed) → `python3
+  site/build.py` (no `BUILD ERROR`) and `python3 site/tools/qa_dist.py --shots /tmp/evo-shots --pages mapa-punjaca
+  --no-reference` (0 issues) → a line in `site/deploy.request` (date, what, the owner's words) → commit and push to
+  `site-migration` only on the owner's „деплой эволако“ / „публикуй эволако“ (the push is the production deploy: the
+  workflow „Site preview“ builds, deploys and checks www.evolako.rs) → check the live tag and SRI on
+  www.evolako.rs/mapa-punjaca. Webflow (`get_page_freeform_code`, `publish_site`, evolako.webflow.io) is not used
+  any more. **Never change or delete a file the live page loads** (another byte = SRI fails = no map); remove old files only after the new tag is live. Keep the live build and the one before it (rollback);
   older builds go in one commit once the live tag is checked (28.10.2026: ten builds removed, `2e49e6f753` live, `702837fd45` kept). Test: the
   Playwright harness in the project doc `claude/BlokVolt_Karta_v2_Spec_2026-10-06.md` (mock page + routes).
 
