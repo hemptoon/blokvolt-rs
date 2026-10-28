@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 28.10.2026
+updated: 29.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-28
+modified: 2026-10-29
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 29. oktobar 2026
+
+- [Evolako](/firme/evolako/): prema sajtu firme 29. oktobra cene su konačne — Evolako (preduzetnik) nije u sistemu PDV-a, pa uz cene više ne piše „sa PDV-om“. Prioritetni servis uz pretplatu je 72 sata u Beogradu, Novom Sadu i Vojvodini; u ostalim mestima termin se dogovara porukom.
+
 ## 28. oktobar 2026
 
 - [Evolako](/firme/evolako/): područje rada je sada cela Srbija (do sada Vojvodina i Beograd). Prema sajtu firme 28. oktobra: procena na licu mesta košta 2.990 RSD i u celosti se uračunava u cenu ugradnje (ovde je pisalo 3.500 RSD), a okvirna procena po fotografijama je besplatna; pretplata je bez ugovorne obaveze i uključuje prioritetni servis za 72 sata (ovde je pisalo 48 sati); uz šablone za skupštinu idu i saglasnost za vlasnika iznajmljene garaže i čeklista. Struja se obračunava po ceni iz računa EPS-a, bez marže: uz pretplatu mesečno sa izveštajem, a bez nje brojilo očitava korisnik.
