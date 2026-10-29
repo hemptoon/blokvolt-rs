@@ -62,6 +62,12 @@ PAGES = ['/javno-punjenje/', '/javno-punjenje/aplikacije-i-kartice/', '/javno-pu
 FLAGS = {'brandLogos': True, 'accounts': True, 'addCharger': True, 'route': True}
 NEWS_MAX = 40
 INLINE_SKIP = {'svg', 'script', 'style', 'button', 'noscript', 'template'}
+# Containers that CSS lays out as separate pieces (model cards, table cells with a link under the name, the date in
+# <small>): their text is fenced with FIELD marks that become one space between two words, so the feed doesn't glue
+# fields together ("Audi Q4 e-tronCenanije objavljena…", "[cenovnik](…)cenovnik 01.09.2026"), and nothing next to a
+# space, an opening bracket or punctuation (the text around stays as it was).
+FIELD_TAGS = {'span', 'small', 'div', 'p', 'time', 'label'}
+FIELD = '\x00'
 MD_ESC = re.compile(r'([\\`*_\[\]])')
 WS = re.compile(r'[ \t\r\f\v]+')
 
@@ -119,9 +125,16 @@ def md(el, page_url):
             continue
         elif ch.name in ('ul', 'ol', 'table', 'figure', 'details'):
             continue  # block content inside inline context is handled by the block walker
+        elif ch.name in FIELD_TAGS:
+            inner = md(ch, page_url)
+            out.append(f'{FIELD}{inner}{FIELD}' if inner else '')
         else:
             out.append(md(ch, page_url))
     s = ''.join(out)
+    s = re.sub(FIELD + '+', FIELD, s)
+    s = re.sub(r'(^|[\s(\[„«“‘])' + FIELD, r'\1', s)
+    s = re.sub(FIELD + r'(?=$|[\s.,;:!?)\]“”»’])', '', s)
+    s = s.replace(FIELD, ' ')
     s = re.sub(r' *\n *', '\n', s)
     s = re.sub(r' {2,}', ' ', s)
     s = re.sub(r'\*\*\s*\*\*', '', s)
