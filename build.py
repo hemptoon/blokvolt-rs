@@ -1293,7 +1293,7 @@ VODICI_GROUPS = [
         A('/podaci/servisi-za-elektricne-automobile/', icon='car'), A('/podaci/rent-a-car-i-car-sharing/', icon='car'),
         A('/najam-elektricnog-automobila.html', icon='car')]),
     ('Na putu', [
-        A('/javno-punjenje/prvo-punjenje-na-javnom-punjacu/', icon='phone'), A('/javno-punjenje/ccs2-type2-chademo-gbt/', icon='plug'), A('/javno-punjenje/zasto-auto-puni-sporo-na-brzom-punjacu/', icon='bolt'), A('/domet-elektricnog-auta-zimi.html', icon='car'), A('/javno-punjenje/kako-jeftinije-puniti/', icon='coins'), A('/javno-punjenje/plug-in-hibrid-na-javnom-punjacu/', icon='bolt'), A('/javno-punjenje/cena-punjenja-po-modelu/', icon='car'), A('/podaci/putarina-i-parking/', icon='road'), A('/javno-punjenje/besplatni-punjaci/', icon='gift'),
+        A('/javno-punjenje/prvo-punjenje-na-javnom-punjacu/', icon='phone'), A('/javno-punjenje/ccs2-type2-chademo-gbt/', icon='plug'), A('/javno-punjenje/zasto-auto-puni-sporo-na-brzom-punjacu/', icon='bolt'), A('/domet-elektricnog-auta-zimi.html', icon='car'), A('/javno-punjenje/predgrevanje-baterije-pred-brzo-punjenje/', icon='bolt'), A('/javno-punjenje/kako-jeftinije-puniti/', icon='coins'), A('/javno-punjenje/plug-in-hibrid-na-javnom-punjacu/', icon='bolt'), A('/javno-punjenje/cena-punjenja-po-modelu/', icon='car'), A('/podaci/putarina-i-parking/', icon='road'), A('/javno-punjenje/besplatni-punjaci/', icon='gift'),
         A('/javno-punjenje/aplikacije-i-kartice/', icon='phone'), A('/javno-punjenje/region/', icon='globe2'),
         A('/podaci/pomoc-na-putu/', icon='phone'), A('/javno-punjenje/smestaj-sa-punjacem/', icon='building')]),
     ('Brojke', [
@@ -1327,6 +1327,7 @@ CARD_IMG = {
     "/javno-punjenje/ccs2-type2-chademo-gbt/": "vd-utikac",
     "/javno-punjenje/zasto-auto-puni-sporo-na-brzom-punjacu/": "vd-sporo",
     "/domet-elektricnog-auta-zimi": "vd-zima",
+    "/javno-punjenje/predgrevanje-baterije-pred-brzo-punjenje/": "vd-predgrevanje",
     "/javno-punjenje/kako-jeftinije-puniti/": "vd-jeftinije",
     "/javno-punjenje/plug-in-hibrid-na-javnom-punjacu/": "vd-phev",
     "/javno-punjenje/cena-punjenja-po-modelu/": "vd-cena-po-modelu",

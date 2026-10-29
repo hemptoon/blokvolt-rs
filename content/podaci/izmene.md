@@ -13,6 +13,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 29. oktobar 2026
 
+- Novi vodič [Predgrevanje baterije pred brzo punjenje](/javno-punjenje/predgrevanje-baterije-pred-brzo-punjenje/): kako se grejanje baterije uključuje kod Tesle, VW-a, Škode, Hyundaija, Kie i Renaulta, koji stariji modeli ga nemaju i zašto zimi topla baterija na punjačima sa naplatom po minutu znači jeftiniji kilovat-sat.
 - [Mapa punjača](/mapa/): kod punjača sa spiska Turističke organizacije Zlatibor (hoteli Mons, Zlatibor Resort, Grand hotel Tornik, Buket, Queen of Zlatibor i 21st century Zlatibor – Adora) cena koju spisak navodi sada stoji u delu „Cena“ kartice, sa izvorom, a ne samo u napomeni.
 - Novi vodič [Domet električnog auta zimi](/domet-elektricnog-auta-zimi.html): koliko dometa auto zadrži na 0 °C (u proseku 78 %), koliko troši grejanje, šta pomaže toplotna pumpa i kako puniti na javnom punjaču zimi.
 - Nova stranica [Cena goriva i struje](/podaci/cena-goriva-i-struje/): najviše cene evrodizela i benzina BMB 95 za tekuću nedelju i koliko košta 100 km na gorivo, a koliko na struju kod kuće i na brzom javnom punjaču. Ispod su cene goriva po nedeljama od 21. avgusta 2026, sa izvorom za svaku nedelju. Stranica se ažurira petkom, posle svake nove odluke o cenama goriva, a sa njom i cena goriva u [kalkulatoru troškova](/alati/kalkulator-troskova/).
