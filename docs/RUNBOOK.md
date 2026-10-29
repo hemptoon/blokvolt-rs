@@ -450,7 +450,10 @@ to the 10 ms CPU of the free plan — then move to Vectorize (`npx wrangler vect
 commit `07e36bd`, had that version).
 
 The pieces: `build.py` → `build_smisao()` writes `dist/assets/smisao/meta.json` and its parts (≈650 pieces: "<title> —
-<heading>: <≤ 900 characters>", at most 8 a page, Serbian pages only, without ads, „Izdvojeno“ and link cards). A piece
+<heading>: <≤ 900 characters>", at most 8 a page, Serbian pages only, without ads, „Izdvojeno“ and link cards; ≈1 340
+pieces on 29.10.2026). A model page (`/elektricni-automobili/<brand>/<model>/`, 3.32) gives two pieces only — its facts
+and its charging section, without the general notes marked `.am-gen` — so 83 pages with the same blocks do not crowd the
+answers (`SM_PER_MODEL`; with 8 pieces each the first fill also outgrew the 80 steps of `pretraga_worker_test.mjs`). A piece
 id is a hash of its page and text, so after a deploy the worker embeds only new or changed pieces and deletes the gone
 ones. It does this in steps of 20 pieces: in the background of any /api request (at most once a minute per isolate,
 when the store is behind) and on `GET /api/smisao/stanje` (also shows the state: build, pieces, done, last error).
@@ -2053,7 +2056,8 @@ place to buy one unofficially (classifieds, the used market, imports). Pages:
   - where to buy (the brand card's four tiles), the other priced models of the brand, the four models with the nearest
     price before the subsidy (any brand — a fact, not a recommendation), news that name the model, guides
     (`MODEL_BEFORE`), sources (the price; the entry's sources — Open EV Data and © 2019 Chargeprice by name, as their MIT
-    licence asks, the others by domain; EPS; the Charge&GO receipts) and the photo credit.
+    licence asks, the others by domain; EPS; the Charge&GO receipts) and the photo credit. The general notes carry the
+    class `am-gen`: search by meaning skips them and takes two pieces per model page (3.8b).
 
   JSON-LD: WebPage, BreadcrumbList and — only when the price is published as it is (not `price_includes_subsidy`) — Car
   with an Offer (price, EUR, source URL, seller). No ratings, no reviews. Title "<model>: cena u Srbiji[, domet][ i

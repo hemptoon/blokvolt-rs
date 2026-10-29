@@ -24,7 +24,7 @@
 <nav class="crumbs" aria-label="Putanja"><a href="/">Početna</a><span aria-hidden="true">›</span><a href="/elektricni-automobili/">Električni automobili</a><span aria-hidden="true">›</span><a href="{{ b.url }}" translate="no">{{ b.name }}</a></nav>
 <div class="amh{% if m.img %} has-ph{% endif %}"><div class="amh-t">
 <h1 translate="no">{{ m.name }}</h1>
-<p class="lead">{% if m.cost %}Cena u Srbiji, punjenje kod kuće i na brzom punjaču i trošak 100 km. Uz svaki podatak su izvor i datum.{% elif m.times %}Cena u Srbiji i koliko traje punjenje kod kuće. Uz svaki podatak su izvor i datum.{% else %}Cena u Srbiji, pre i posle subvencije, i gde se auto kupuje. Uz svaki podatak su izvor i datum.{% endif %}</p>
+<p class="lead am-gen">{% if m.cost %}Cena u Srbiji, punjenje kod kuće i na brzom punjaču i trošak 100 km. Uz svaki podatak su izvor i datum.{% elif m.times %}Cena u Srbiji i koliko traje punjenje kod kuće. Uz svaki podatak su izvor i datum.{% else %}Cena u Srbiji, pre i posle subvencije, i gde se auto kupuje. Uz svaki podatak su izvor i datum.{% endif %}</p>
 <div class="ph-actions"><a class="btn dark" href="{{ m.src_url }}" rel="noopener nofollow" target="_blank">{{ ic('ext') }}<span>{{ 'Cena kod prodavca' if m.src_kind == 'sajt prodavca' else 'Cena kod uvoznika' }}</span></a><a class="btn" href="{{ b.url }}"><span>Sve o marki</span> <span translate="no">{{ b.name }}</span>{{ ic('arrow') }}</a></div>
 </div>{% if m.img %}
 <figure class="amh-ph"><img src="{{ m.img.src }}" width="{{ m.img.w }}" height="{{ m.img.h }}" alt="{{ m.name }}" decoding="async" fetchpriority="high"><figcaption><a href="#slike">Ilustracija</a></figcaption></figure>{% endif %}
@@ -39,24 +39,24 @@
 {% endif %}<div class="fact"><span>{{ 'Uvoznik' if b.importer or not b.seller else 'Ovlašćeni prodavac' }}</span><b>{% if b.importer %}<span translate="no">{{ b.importer_short }}</span>{% elif b.seller %}<span translate="no">{{ b.seller }}</span>{% else %}nije naveden{% endif %}</b></div>
 </div>
 <div class="am-src"><span>Izvor cene</span> <a href="{{ m.src_url }}" rel="noopener nofollow" target="_blank">{{ m.src_kind }}{{ ic('ext') }}</a> <small>{{ m.src_date }}</small></div>
-<p class="note">„Cena od“ je najniža cena koju uvoznik ili prodavac objavljuje za ovaj model, po pravilu sa PDV-om. Kada je objavljena cena već umanjena za subvenciju, ovde je cena pre subvencije, a objavljena stoji ispod nje. Konačnu cenu i uslove proverite kod prodavca.</p>
-<p class="note">Subvencija za nov električni automobil u 2026. iznosi {{ sub }}. <a href="/podaci/subvencije-2026/">Ko ima pravo, rok i postupak</a></p>
+<p class="note am-gen">„Cena od“ je najniža cena koju uvoznik ili prodavac objavljuje za ovaj model, po pravilu sa PDV-om. Kada je objavljena cena već umanjena za subvenciju, ovde je cena pre subvencije, a objavljena stoji ispod nje. Konačnu cenu i uslove proverite kod prodavca.</p>
+<p class="note am-gen">Subvencija za nov električni automobil u 2026. iznosi {{ sub }}. <a href="/podaci/subvencije-2026/">Ko ima pravo, rok i postupak</a></p>
 
 {% if m.spec_rows or m.times %}<div class="sec" id="punjenje"><div class="sec-head"><h2>Punjenje</h2><a href="/javno-punjenje/cena-punjenja-po-modelu/">Cena punjenja po modelu →</a></div>
 {% if m.spec_rows %}<div class="tw"><table class="am-spec"><tbody>{% for s in m.spec_rows %}<tr><td class="am-k">{{ s.label }}</td><td><b>{{ s.value }}</b>{% if s.note %}<small>{{ s.note }}</small>{% endif %}</td></tr>{% endfor %}</tbody></table></div>
-<p class="note">Podaci o punjenju: Open EV Data (MIT), © 2019 Chargeprice (MIT), proizvođači i auto-mediji, spisak je u izvorima ispod. Važe za verziju sa cenom iznad; vrednosti bez pouzdanog izvora nisu prikazane.</p>
-{% else %}<p class="note">Snaga punjenja ove verzije (AC i DC) nije u podacima sajta. Proverite je u specifikaciji kod uvoznika.</p>
+<p class="note am-gen">Podaci o punjenju: Open EV Data (MIT), © 2019 Chargeprice (MIT), proizvođači i auto-mediji, spisak je u izvorima ispod. Važe za verziju sa cenom iznad; vrednosti bez pouzdanog izvora nisu prikazane.</p>
+{% else %}<p class="note am-gen">Snaga punjenja ove verzije (AC i DC) nije u podacima sajta. Proverite je u specifikaciji kod uvoznika.</p>
 {% endif %}{% if m.times %}<h3 class="am-h3">Koliko traje punjenje kod kuće</h3>
 <div class="am-cap"><span>Računica za bateriju od</span> <b>{{ m.cap }} kWh</b> <small>{{ m.cap_note }}</small></div>
 <div class="tw"><table class="am-spec"><tbody>{% for t in m.times %}<tr><td class="am-k">{{ t.label }}</td><td><b>{{ t.hours }}</b>{% if t.note %}<small>{{ t.note }}</small>{% endif %}</td></tr>{% endfor %}</tbody></table></div>
-<p class="note">Od 10 do 100 % baterije, sa 10 % gubitaka pri punjenju. Zimi i pred kraj punjenja traje duže. Za wallbox je potrebna namenska linija: <a href="/firme/">firme za ugradnju</a> i <a href="/wallbox-cena-srbija">cene wallboxa</a>.</p>
+<p class="note am-gen">Od 10 do 100 % baterije, sa 10 % gubitaka pri punjenju. Zimi i pred kraj punjenja traje duže. Za wallbox je potrebna namenska linija: <a href="/firme/">firme za ugradnju</a> i <a href="/wallbox-cena-srbija">cene wallboxa</a>.</p>
 {% endif %}{% if m.cost %}<h3 class="am-h3" id="troskovi">Koliko košta 100 km</h3>
 <div class="am-cap"><span>Potrošnja (procena)</span> <b>{{ m.cost.cons }} kWh/100 km</b> <small>mešovita vožnja na 15–25 °C, ista procena kao u „Moj auto“ na mapi</small></div>
 <div class="tw stack"><table class="am-spec am-cost"><thead><tr><th>Gde punite</th><th>Cena kWh</th><th>100 km</th></tr></thead><tbody>
 <tr><td class="am-k">Kod kuće noću<small>plava zona, niža tarifa EPS-a</small></td><td data-label="Cena kWh">{{ fx_num(m.cost.nt, rate=True, text=(m.cost.nt|sr(2)) ~ ' RSD') }}</td><td data-label="100 km"><b>{{ fx_num(m.cost.home, text='≈ ' ~ (m.cost.home|sr) ~ ' RSD') }}</b></td></tr>
 <tr><td class="am-k">Javni brzi punjač (DC)<small>prosek računa iz aplikacije Charge&amp;GO</small></td><td data-label="Cena kWh">{{ fx_num(m.cost.dc, rate=True, text=(m.cost.dc|sr) ~ ' RSD') }}<small>{{ fx_range(m.cost.dc_lo, m.cost.dc_hi, rate=True, text=(m.cost.dc_lo|sr) ~ '–' ~ (m.cost.dc_hi|sr) ~ ' RSD') }}</small></td><td data-label="100 km"><b>{{ fx_num(m.cost.pub, text='≈ ' ~ (m.cost.pub|sr) ~ ' RSD') }}</b><small>{{ fx_range(m.cost.pub_lo, m.cost.pub_hi, text=(m.cost.pub_lo|sr) ~ '–' ~ (m.cost.pub_hi|sr) ~ ' RSD') }}</small></td></tr>
 </tbody></table></div>
-<p class="note">Kod kuće: cena EPS-a sa naknadama, akcizom i PDV-om, uz 10 % gubitaka pri punjenju. Javni punjač: {{ m.cost.dc_note }}. Zimi je potrošnja veća. <a href="/alati/kalkulator-troskova/">Kalkulator troškova</a> računa za vašu kilometražu.</p>
+<p class="note am-gen">Kod kuće: cena EPS-a sa naknadama, akcizom i PDV-om, uz 10 % gubitaka pri punjenju. Javni punjač: {{ m.cost.dc_note }}. Zimi je potrošnja veća. <a href="/alati/kalkulator-troskova/">Kalkulator troškova</a> računa za vašu kilometražu.</p>
 {% endif %}</div>{% endif %}
 
 <div class="sec" id="gde-kupiti"><div class="sec-head"><h2>Gde se kupuje</h2><a href="{{ b.url }}">Uvoznik, saloni i svi modeli →</a></div>
@@ -72,7 +72,7 @@
 
 {% if m.similar %}<div class="sec" id="slicni"><div class="sec-head"><h2>U sličnom cenovnom rangu</h2><a href="/podaci/cene-elektricnih-automobila/">Svi modeli i cene →</a></div>
 <ul class="amc-grid" role="list">{% for c, cb in m.similar %}{{ model_card(c, cb) }}{% endfor %}</ul>
-<p class="note">Četiri modela sa najbližom cenom pre subvencije, bez obzira na marku.</p>
+<p class="note am-gen">Četiri modela sa najbližom cenom pre subvencije, bez obzira na marku.</p>
 </div>{% endif %}
 
 {% if m.news %}<div class="sec" id="vesti"><div class="sec-head"><h2>Vesti</h2><a href="/vesti/">Sve vesti →</a></div>

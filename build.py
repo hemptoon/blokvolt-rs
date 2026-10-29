@@ -2780,6 +2780,10 @@ render('pretraga.html', '/pretraga/', section='', noindex=True, title='Pretraga 
 # into D1 (/api/smisao); a piece id is a hash of its page and text, so after a deploy only changed pieces are embedded.
 # One piece: "<page title> — <section heading>: <up to ~900 characters of text>"; at most 8 pieces a page.
 SM_PIECE, SM_PER_PAGE, SM_PER_PART = 900, 8, 100
+# a model page (/elektricni-automobili/<brand>/<model>/, 29.10.2026) gives its facts and its charging section only: the rest
+# (where to buy, similar models, guides) and its general notes (.am-gen) repeat on 83 pages and would crowd the answers
+SM_PER_MODEL = 2
+_SM_MODEL = re.compile(r'/elektricni-automobili/[^/]+/[^/]+/')
 
 
 def _sm_split(text, size):
@@ -2816,9 +2820,10 @@ def build_smisao():
         main = soup.find('main') or soup
         for junk in main.find_all(['script', 'style', 'nav', 'noscript', 'form', 'svg', 'button']):
             junk.decompose()
-        for junk in main.select('aside.oglas, .promo, .crumbs, [data-only], a.tile, a.row, a.ncard, a.hit'):
+        for junk in main.select('aside.oglas, .promo, .crumbs, [data-only], a.tile, a.row, a.ncard, a.hit, .am-gen'):
             junk.decompose()
-        for h in main.find_all(['h2', 'h3']):
+        is_model = bool(_SM_MODEL.fullmatch(url))
+        for h in main.find_all(['h2'] if is_model else ['h2', 'h3']):
             h.insert_before('\n\u241e' + h.get_text(' ', strip=True) + '\u241e\n')
             h.decompose()
         if h1 and h1 in main.descendants:
@@ -2837,7 +2842,7 @@ def build_smisao():
             d = (soup.find('meta', attrs={'name': 'description'}) or {}).get('content', '')
             if d:
                 page = [title + ': ' + d]
-        for x in page[:SM_PER_PAGE]:
+        for x in page[:SM_PER_MODEL if is_model else SM_PER_PAGE]:
             pieces.append({'id': hashlib.sha1((url + '\n' + x).encode('utf-8')).hexdigest()[:20], 'u': url, 'x': x})
     parts_meta = []
     for k in range(0, len(pieces), SM_PER_PART):
