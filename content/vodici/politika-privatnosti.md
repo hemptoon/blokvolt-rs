@@ -23,7 +23,7 @@ path: /politika-privatnosti.html
 - Posete se broje **bez kolačića**, a omiljeni punjači ostaju <!--nonalog-->**samo u vašem pregledaču**<!--/nonalog--><!--nalog-->**u pregledaču, a ako ste prijavljeni — i u nalogu**<!--/nalog--><!--consent-->; kolačić za analitiku postavlja se **samo uz vašu dozvolu**<!--/consent-->
 </div>
 
-Rukovalac podacima: tim BlokVolt (www.blokvolt.rs). Kontakt: hello@blokvolt.com. Poslovno ime, sedište, matični broj i PIB biće dopunjeni po upisu u registar.
+Rukovalac podacima: ANDREI SMEKHOV PR NOVI SAD, Kopernikova 56, 21000 Novi Sad, Srbija. Matični broj 68853834, PIB 116047038. Kontakt: hello@blokvolt.com.
 
 ## Koji podaci se obrađuju
 
