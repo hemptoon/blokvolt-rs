@@ -43,7 +43,7 @@ jobs:
           python3 -c "import re,sys; n={l.split()[0]: int(l.split()[1]) for l in open('todo.log') if re.match(r'^(en|ru) \d+ to translate', l)}; print(n); sys.exit(0 if n and not any(n.values()) else 1)"
       - name: Internal links
         run: python3 scripts/check_links.py
-      - name: App layer of guides and news (RUNBOOK 3.36)
+      - name: App layer of guides and news (RUNBOOK 3.38)
         run: |
           python3 scripts/app_layer.py --strict
           python3 scripts/qa/app_layer_test.py

@@ -133,6 +133,8 @@ Za {sr(DEF['km'], 0)} km mesečno auto troši oko **{sr(home, 0)} kWh** sa broji
 
 Tih {sr(home, 0)} kWh često prebaci domaćinstvo iz zelene u plavu zonu. Računica za vaš auto: [kalkulator troškova](/alati/kalkulator-troskova/).
 
+Koliko je to u odnosu na benzin i dizel, po cenama goriva ove nedelje: [cena goriva i struje](/podaci/cena-goriva-i-struje/).
+
 <details markdown="1">
 <summary>Detalji: obračunska snaga i provera računa</summary>
 

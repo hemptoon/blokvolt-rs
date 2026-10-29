@@ -95,6 +95,13 @@ const CASES = [
   ['en', 'electric cars serbia', '/en/elektricni-automobili/', 2],
   ['ru', 'купить электромобиль', ['/ru/elektricni-automobili/', '/ru/elektricni-automobili/polovni/'], 2],
   ['ru', 'подержанный электромобиль', '/ru/elektricni-automobili/polovni/', 2],
+  // fuel and electricity (docs/RUNBOOK.md 3.36, 29.10.2026)
+  ['sr', 'cena goriva', '/podaci/cena-goriva-i-struje/', 2],
+  ['sr', 'cena goriva danas', '/podaci/cena-goriva-i-struje/', 2],
+  ['sr', 'cena dizela', '/podaci/cena-goriva-i-struje/', 3],
+  ['sr', 'koliko kosta 100 km', ['/podaci/cena-goriva-i-struje/', '/alati/kalkulator-troskova/'], 3],
+  ['en', 'fuel prices', '/en/podaci/cena-goriva-i-struje/', 3],
+  ['ru', 'цены на бензин', '/ru/podaci/cena-goriva-i-struje/', 3],
 ];
 let bad = 0;
 for (const [l, q, want, n, x = {}] of CASES) {

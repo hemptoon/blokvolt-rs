@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""The app layer of guides, data pages and news (docs/RUNBOOK.md 3.36): the short, visual top of a page in the BlokVolt
+"""The app layer of guides, data pages and news (docs/RUNBOOK.md 3.38): the short, visual top of a page in the BlokVolt
 apps — one key figure, two or three "Ukratko" lines, number tiles, steps, a bar chart, one "Važno" line, path cards —
 written by hand from the page itself, in Serbian, English and Russian. The full page stays below it as "Detaljno".
 
@@ -404,7 +404,7 @@ def report(errors, stats, strict, out=print):
     if not errors:
         out(head + '; 0 errors')
         return True
-    out(head + f'; {len(errors)} errors (docs/RUNBOOK.md 3.36)' + ('' if strict else ' — warning only; CI and pack.sh fail on them'))
+    out(head + f'; {len(errors)} errors (docs/RUNBOOK.md 3.38)' + ('' if strict else ' — warning only; CI and pack.sh fail on them'))
     for e in errors[:60 if strict else 12]:
         out('  ' + e)
     if len(errors) > (60 if strict else 12):

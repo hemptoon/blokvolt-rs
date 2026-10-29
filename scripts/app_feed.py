@@ -24,7 +24,7 @@ so the apps show exactly what the site shows, translations included. A page is c
 
 Guides, data pages and news also carry `app`: the hand-written short layer the apps show above the page (hero,
 "Ukratko", tiles, steps, bars, "Važno", paths, cover), from content/app/<path>.json, checked by scripts/app_layer.py
-(RUNBOOK 3.36).
+(RUNBOOK 3.38).
 
 Inline text is limited Markdown the apps can render directly: **bold**, *italic*, [text](absolute URL), `code`,
 and a line break as "\\n". Links stay absolute (https://www.blokvolt.rs/…); the apps open the ones they know
@@ -40,7 +40,8 @@ from bs4 import BeautifulSoup, NavigableString, Tag, Comment
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import valuta  # noqa: E402  (the display currency's fallback rate, RUNBOOK 3.29)
-import app_layer  # noqa: E402  (the app layer of guides and news, RUNBOOK 3.36)
+import app_layer  # noqa: E402  (the app layer of guides and news, RUNBOOK 3.38)
+import gorivo  # noqa: E402  (fuel prices, content/data/gorivo.json)
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = 'https://www.blokvolt.rs'
@@ -557,7 +558,7 @@ def page_doc(path, lang, dist, kind):
 
 
 def with_app(doc, lang):
-    """The page's app layer (content/app/<path>.json, RUNBOOK 3.36) as `app`, placed before the blocks."""
+    """The page's app layer (content/app/<path>.json, RUNBOOK 3.38) as `app`, placed before the blocks."""
     data = app_layer.load(doc['id'])
     if not data or not isinstance(data.get(lang), dict):
         return doc
@@ -590,7 +591,7 @@ def guide_groups(dist, lang):
             img = a.find('img')
             if img is not None and img.get('src'):
                 it['img'] = _abs(img.get('src'), url)
-            cv = app_layer.cover(app_layer.load(path), lang)  # the app's cover photo for the list card (RUNBOOK 3.36)
+            cv = app_layer.cover(app_layer.load(path), lang)  # the app's cover photo for the list card (RUNBOOK 3.38)
             if cv:
                 it['cover'] = cv
             items.append(it)
@@ -810,7 +811,9 @@ def help_center(dist, lang):
 def data_json():
     data = ROOT / 'content' / 'data'
     load = lambda n: json.loads((data / n).read_text(encoding='utf-8'))
-    out = {'calculator': load('kalkulator.json'), 'building': load('kalkulator-zgrada.json'),
+    calc = load('kalkulator.json')
+    calc['fuel'] = gorivo.current()        # fuel prices live in content/data/gorivo.json (scripts/gorivo.py); same shape as before
+    out = {'calculator': calc, 'building': load('kalkulator-zgrada.json'),
            'evModels': load('ev-modeli.json'), 'cities': load('gradovi.json'),
            # display currency (RUNBOOK 3.29): the rate to use until /api/kurs (manifest api.kurs) answers — the spec's
            # fallback, in the format of /api/kurs (stale: true)
@@ -831,7 +834,7 @@ def _write(path, obj):
 
 
 def build(dist, strict=False, strict_app=False):
-    """strict: unmapped page elements stop the build; strict_app: so do errors of the app layer (RUNBOOK 3.36) —
+    """strict: unmapped page elements stop the build; strict_app: so do errors of the app layer (RUNBOOK 3.38) —
     otherwise they are printed as a warning and `python3 scripts/app_layer.py --strict` (CI, pack.sh) fails on them."""
     dist = Path(dist)
     now = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')

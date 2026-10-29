@@ -1,4 +1,4 @@
-# The app layer of guides and news (docs/RUNBOOK.md 3.36): the validator in scripts/app_layer.py must accept a correct
+# The app layer of guides and news (docs/RUNBOOK.md 3.38): the validator in scripts/app_layer.py must accept a correct
 # object and catch an invented number, a stale number, a wrong unit, a wrong icon, a too long line, the wrong item count,
 # first person and a firm name. No build needed for the unit cases; with a built dist/ it also checks every page.
 # Usage: python3 scripts/qa/app_layer_test.py

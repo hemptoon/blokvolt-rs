@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 28.10.2026
+updated: 29.10.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-28
+modified: 2026-10-29
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 29. oktobar 2026
+
+- Nova stranica [Cena goriva i struje](/podaci/cena-goriva-i-struje/): najviše cene evrodizela i benzina BMB 95 za tekuću nedelju i koliko košta 100 km na gorivo, a koliko na struju kod kuće i na brzom javnom punjaču. Ispod su cene goriva po nedeljama od 21. avgusta 2026, sa izvorom za svaku nedelju. Stranica se ažurira petkom, posle svake nove odluke o cenama goriva, a sa njom i cena goriva u [kalkulatoru troškova](/alati/kalkulator-troskova/).
+
 ## 28. oktobar 2026
 
 - [Evolako](/firme/evolako/): područje rada je sada cela Srbija (do sada Vojvodina i Beograd). Prema sajtu firme 28. oktobra: procena na licu mesta košta 2.990 RSD i u celosti se uračunava u cenu ugradnje (ovde je pisalo 3.500 RSD), a okvirna procena po fotografijama je besplatna; pretplata je bez ugovorne obaveze i uključuje prioritetni servis za 72 sata (ovde je pisalo 48 sati); uz šablone za skupštinu idu i saglasnost za vlasnika iznajmljene garaže i čeklista. Struja se obračunava po ceni iz računa EPS-a, bez marže: uz pretplatu mesečno sa izveštajem, a bez nje brojilo očitava korisnik.

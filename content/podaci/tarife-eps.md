@@ -79,6 +79,8 @@ Za 1.250 km mesečno auto troši oko **234 kWh** sa brojila (17 kWh na 100 km i 
 
 Tih 234 kWh često prebaci domaćinstvo iz zelene u plavu zonu. Računica za vaš auto: [kalkulator troškova](/alati/kalkulator-troskova/).
 
+Koliko je to u odnosu na benzin i dizel, po cenama goriva ove nedelje: [cena goriva i struje](/podaci/cena-goriva-i-struje/).
+
 <details markdown="1">
 <summary>Detalji: obračunska snaga i provera računa</summary>
 

@@ -161,7 +161,7 @@ in all three languages, after the translation, so the EN and RU pages exist:
   the item's hedges stay („prema pisanju“, „po podacima kompanije“, „nacrt“). Same voice rules as the item: „vi“,
   impersonal, no Evolako.
 - `python3 scripts/app_layer.py --strict` must report 0 errors (`pack.sh` and the "Site checks" workflow run it).
-  The full schema and rules: `docs/RUNBOOK.md` §3.36.
+  The full schema and rules: `docs/RUNBOOK.md` §3.38.
 
 ## 6. Transparency
 
