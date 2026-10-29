@@ -940,7 +940,7 @@ def _ver(p):
 
 MAP_T = {
     'schuko': 'Šuko', 'other': 'Ostalo', 'charger': 'Punjač', 'near': 'okolina: {t}', 'per_min': 'RSD/min', 'free': 'Besplatno',
-    'p_unknown': 'Cena nije poznata. Proverite u aplikaciji mreže.', 'p_free': 'Besplatno', 'p_exact': 'Cena na ovom punjaču',
+    'p_unknown': 'Cena nije poznata. Proverite u aplikaciji mreže.', 'p_venue': 'Cena po navodu: {s}', 'p_free': 'Besplatno', 'p_exact': 'Cena na ovom punjaču',
     'p_tier': 'Cena mreže za {c}', 'p_receipt': 'Račun: {l}, {k} RSD po kWh', 'p_range': 'Između cena za {a} i {b}',
     'p_seen': 'Zabeležene cene ove mreže:', 'price': 'Cena', 'count_all': 'Punjača: {n}', 'count': 'Prikazano {n} od {all}',
     'sorted_near': 'najbliži prvi', 'none': 'Nema punjača za ovaj izbor.', 'conn': 'Priključci', 'access': 'Pristup',

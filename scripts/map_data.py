@@ -814,6 +814,12 @@ def app_layer(sites, meta):
                 score -= 2
             best.append((score, s['id'], s))
         best.sort(key=lambda x: (-x[0], x[1]))
+        if len(best) > 1 and best[0][0] >= 2 and best[1][0] == best[0][0] and all(c[2] > 22 for c in conns):
+            # a tie between an AC and a DC site of one place (DeLasol Lapovo: "DelAsol AC" and the DC site; 28.10.2026 the
+            # network dropped its second DC site): app powers above 22 kW can only be the DC one
+            tied = [b for b in best if b[0] == best[0][0] and any(c[1] == 'dc' for c in b[2]['c'])]
+            if len(tied) == 1:
+                best = tied
         if not best or best[0][0] < 2 or (len(best) > 1 and best[1][0] == best[0][0]):
             print('chargego-app.txt: no clear site for', core, '|', addr)
             continue

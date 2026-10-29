@@ -288,6 +288,8 @@ function price(s) {
     if (isFree(s)) return Object.assign({ kind: 'free', text: T.p_free, date: '' }, lbl);
     if (fee.free === 'tesla') return Object.assign({ kind: 'tesla', text: T.p_tesla_only }, lbl);
   }
+  // a price the venue or a tourist organisation publishes for this place (no network app): shown as written, with its source
+  if (fee && fee.paid && fee.t) return { kind: 'venue', label: tr(fee.t), src: tr(fee.src), note: tr(fee.note) };
   let n = netOf(s);
   if (!n) return { kind: 'none', text: T.p_unknown };
   if (n.via && NETS[n.via]) n = NETS[n.via];
@@ -676,6 +678,8 @@ function priceHtml(s) {
   } else if (p.kind === 'tesla') {
     h += '<div class="price">' + esc(T.p_tesla_only) + '</div>' + (p.label ? '<small>' + esc(T.p_tesla_fee.replace('{t}', p.label).replace('{s}', p.src || '')) + '</small>' : '') +
       (p.note ? '<small>' + esc(p.note) + '</small>' : '') + '<small>' + esc(T.p_tesla_hint) + '</small>';
+  } else if (p.kind === 'venue') {
+    h += '<div class="price">' + fxd(p.label) + '</div>' + (p.src ? '<small>' + esc(T.p_venue.replace('{s}', p.src)) + '</small>' : '') + (p.note ? '<small>' + esc(p.note) + '</small>' : '');
   } else if (p.kind === 'station') {
     // the network's app, connector by connector: the most powerful first
     const t = p.t, rc = freshReceipts(p);

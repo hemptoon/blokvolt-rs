@@ -66,7 +66,7 @@
       p_tier: 'Cena mreže za {c}', p_receipt: 'Račun: {l}, {k} RSD po kWh', p_range: 'Između cena za {a} i {b}',
       p_seen: 'Zabeležene cene ove mreže:', p_old: 'Cena je starija od godinu dana. Proveri u aplikaciji mreže.',
       p_list: 'Cenovnik mreže, {d}', p_est: '≈ {k} RSD po kWh ako auto puni sa {w} kW', p_by_receipt: 'Po računima sa ovog punjača ({d})',
-      idle: 'Zauzeće posle punjenja: {x}', p_tesla_only: 'Samo za Tesla vozila', p_tesla_fee: '{t} — {s}.',
+      idle: 'Zauzeće posle punjenja: {x}', p_tesla_only: 'Samo za Tesla vozila', p_venue: 'Cena po navodu: {s}', p_tesla_fee: '{t} — {s}.',
       home_t: 'Kod kuće, noću: ≈ {k} RSD po kWh', home_s: 'sa svim naknadama, kao u kalkulatoru na sajtu', home_a: 'Pogledaj pakete',
       promo_t: 'Najjeftinije je kod kuće', promo_s: 'Noću ≈ {k} RSD po kWh, sa svim naknadama. Punjač u garaži tvoje zgrade, ugradnja za jedan dan.',
       promo_a: 'Proveri svoju garažu', near_t: 'okolina: {t}', charger: 'Punjač', schuko: 'Šuko', other: 'Ostalo',
@@ -151,7 +151,7 @@
       p_tier: 'Network price for {c}', p_receipt: 'Receipt: {l}, {k} RSD per kWh', p_range: 'Between the prices for {a} and {b}',
       p_seen: 'Recorded prices of this network:', p_old: 'This price is more than a year old. Check it in the network’s app.',
       p_list: 'Network price list, {d}', p_est: '≈ {k} RSD per kWh if the car charges at {w} kW', p_by_receipt: 'From receipts at this charger ({d})',
-      idle: 'Idle fee after charging: {x}', p_tesla_only: 'Tesla vehicles only', p_tesla_fee: '{t} — {s}.',
+      idle: 'Idle fee after charging: {x}', p_tesla_only: 'Tesla vehicles only', p_venue: 'Price as stated by: {s}', p_tesla_fee: '{t} — {s}.',
       home_t: 'At home, at night: ≈ {k} RSD per kWh', home_s: 'all fees included, as in the calculator on this site', home_a: 'See the kits',
       promo_t: 'Charging at home is cheapest', promo_s: 'At night ≈ {k} RSD per kWh, all fees included. A charger in your building’s garage, installed in one day.',
       promo_a: 'Check your garage', near_t: 'near {t}', charger: 'Charger', schuko: 'Schuko', other: 'Other',
@@ -234,7 +234,7 @@
       p_tier: 'Цена сети для {c}', p_receipt: 'Чек: {l}, {k} RSD за кВт·ч', p_range: 'Между ценами для {a} и {b}',
       p_seen: 'Записанные цены этой сети:', p_old: 'Цене больше года. Проверь её в приложении сети.',
       p_list: 'Прайс-лист сети, {d}', p_est: '≈ {k} RSD за кВт·ч, если машина заряжается на {w} кВт', p_by_receipt: 'По чекам с этой зарядки ({d})',
-      idle: 'Плата за простой после зарядки: {x}', p_tesla_only: 'Только для автомобилей Tesla', p_tesla_fee: '{t} — {s}.',
+      idle: 'Плата за простой после зарядки: {x}', p_tesla_only: 'Только для автомобилей Tesla', p_venue: 'Цена по данным: {s}', p_tesla_fee: '{t} — {s}.',
       home_t: 'Дома ночью: ≈ {k} RSD за кВт·ч', home_s: 'со всеми сборами, как в калькуляторе на сайте', home_a: 'Посмотреть комплекты',
       promo_t: 'Дешевле всего — дома', promo_s: 'Ночью ≈ {k} RSD за кВт·ч, со всеми сборами. Зарядка в гараже твоего дома, монтаж за один день.',
       promo_a: 'Проверь свой гараж', near_t: 'рядом: {t}', charger: 'Зарядка', schuko: 'Шуко', other: 'Другое',
@@ -492,6 +492,7 @@
       if (isFree(s)) return Object.assign({ kind: 'free', date: '' }, lbl);
       if (fee.free === 'tesla') return Object.assign({ kind: 'tesla' }, lbl);
     }
+    if (fee && fee.paid && fee.t) return { kind: 'venue', label: tr(fee.t), src: tr(fee.src), note: tr(fee.note) };
     var n = netOf(s);
     if (!n) return { kind: 'none', text: T('p_unknown') };
     if (n.via && NETS[n.via]) n = NETS[n.via];
@@ -858,6 +859,8 @@
       h += '<div class="evm-price free">' + esc(p.label || T('p_free')) + '</div>' + (p.src ? '<small>' + esc(p.src) + '</small>' : '') + (p.note ? '<small>' + esc(p.note) + '</small>' : '');
     } else if (p.kind === 'tesla') {
       h += '<div class="evm-price">' + esc(T('p_tesla_only')) + '</div>' + (p.label ? '<small>' + esc(fill(T('p_tesla_fee'), { t: p.label, s: p.src || '' })) + '</small>' : '') + (p.note ? '<small>' + esc(p.note) + '</small>' : '');
+    } else if (p.kind === 'venue') {
+      h += '<div class="evm-price">' + esc(p.label) + '</div>' + (p.src ? '<small>' + esc(fill(T('p_venue'), { s: p.src })) + '</small>' : '') + (p.note ? '<small>' + esc(p.note) + '</small>' : '');
     } else if (p.kind === 'station') {
       // the network's app, connector by connector: the most powerful first
       t = p.t; rc = freshReceipts(p);
