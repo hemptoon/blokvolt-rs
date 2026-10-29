@@ -129,7 +129,9 @@ Always start with `python3 scripts/due.py --ahead 15`. For every item it lists: 
 page's `sources`, search for news since the page's `updated` date, fix what changed, then set
 `updated` (DD.MM.YYYY), `modified` (YYYY-MM-DD) and a sensible `next_check`. A page that was fully
 re-checked without changes also gets the new `updated`/`next_check` dates (that is the truth: it was
-checked). Log real changes in `izmene.md`.
+checked). Log real changes in `izmene.md`. A changed number on a guide or data page changes its app layer
+(`content/app/<path>.json`, all three languages) in the same commit: after the build, `python3 scripts/app_layer.py
+--strict` names every app-layer number that is no longer on its page (3.38).
 
 ### 3.1 Fuel (every Friday, by the scheduled task; any run may do it)
 
@@ -2160,6 +2162,11 @@ Free tools only; nothing here may slow the site down or add steps for visitors.
 - Every Friday the scheduled task «BlokVolt: цена топлива и струи (пт)» (16:47 Belgrade) adds the new decision (3.1),
   rebuilds, runs the checks of section 4, commits to `main` with the owner's standing permission for SEO pages after
   full checks (29.10.2026) and checks the Deploy run. No decision found → it changes nothing and says so.
+- The page's app layer (`content/app/podaci/cena-goriva-i-struje.json`, 3.38) on purpose has no fuel price and no
+  number of the week (no 236, 1.298, dates of the week): only the home-electricity, fast-charger and consumption
+  numbers, so an ordinary Friday needs no change there. A Friday run still ends with `python3 scripts/app_layer.py
+  --strict` (0 errors); when the EPS block, the public DC price or the consumption defaults change (3.2, 3.3), the
+  validator names the app-layer numbers to update in the same commit.
 - `due.py` reports the fuel by `weeks[0].to`. The EPS block, the public DC price and the consumption defaults are not
   this task's: they follow 3.2 and 3.3 (the page follows them by itself).
 

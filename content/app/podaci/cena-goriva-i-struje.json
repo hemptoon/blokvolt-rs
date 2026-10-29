@@ -1,0 +1,74 @@
+{
+  "sr": {
+    "hero": {"value": "107 RSD", "label": "100 km strujom kod kuće noću, plava zona"},
+    "brief": [
+      "Danju, po višoj tarifi, isto punjenje kod kuće košta oko 368 RSD",
+      "Na brzom javnom punjaču kWh po računima košta 43–79 RSD, pa 100 km košta 731–1.343 RSD",
+      "Niža tarifa važi samo uz dvotarifno brojilo, a zona zavisi od ukupne mesečne potrošnje"
+    ],
+    "keys": [
+      {"value": "17 kWh", "label": "potrošnja auta na 100 km, pretpostavka", "icon": "battery"},
+      {"value": "10 %", "label": "gubici pri punjenju kod kuće", "icon": "bolt"},
+      {"value": "Svaki petak", "label": "cene goriva mogu da se promene", "icon": "calendar"},
+      {"value": "01.10.2025", "label": "od tada važi cena struje kod kuće", "icon": "clock"}
+    ],
+    "bars": {
+      "title": "100 km kod kuće noću po zonama, RSD",
+      "note": "Niža tarifa, sa svim naknadama, akcizom i PDV-om, uz 10 % gubitaka pri punjenju",
+      "items": [
+        {"label": "Zelena", "value": 78, "display": "78"},
+        {"label": "Plava", "value": 107, "display": "107", "accent": true},
+        {"label": "Crvena", "value": 194, "display": "194"}
+      ]
+    },
+    "important": "U iznosima nisu cena auta, kućni punjač, održavanje ni putarina"
+  },
+  "en": {
+    "hero": {"value": "107 RSD", "label": "100 km on home electricity at night, blue zone"},
+    "brief": [
+      "During the day, at the high tariff, the same charging at home costs about 368 RSD",
+      "At a public fast charger a kWh costs 43–79 RSD by receipts, so 100 km costs 731–1.343 RSD",
+      "The low tariff needs a dual-tariff meter; the zone depends on total monthly consumption"
+    ],
+    "keys": [
+      {"value": "17 kWh", "label": "car consumption per 100 km, assumed", "icon": "battery"},
+      {"value": "10 %", "label": "charging losses at home", "icon": "bolt"},
+      {"value": "Fridays", "label": "fuel prices can change", "icon": "calendar"},
+      {"value": "01.10.2025", "label": "home electricity price applies since", "icon": "clock"}
+    ],
+    "bars": {
+      "title": "100 km at home at night by zone, RSD",
+      "note": "Low tariff, with all fees, excise duty and VAT, plus 10 % charging losses",
+      "items": [
+        {"label": "Green", "value": 78, "display": "78"},
+        {"label": "Blue", "value": 107, "display": "107", "accent": true},
+        {"label": "Red", "value": 194, "display": "194"}
+      ]
+    },
+    "important": "The amounts do not include the price of the car, a home charger, maintenance or motorway tolls"
+  },
+  "ru": {
+    "hero": {"value": "107 RSD", "label": "100 км на электричестве дома ночью, синяя зона"},
+    "brief": [
+      "Днём, по высокому тарифу, та же зарядка дома стоит около 368 RSD",
+      "На публичной быстрой зарядке кВт·ч по чекам стоит 43–79 RSD, 100 км — 731–1.343 RSD",
+      "Низкий тариф — только с двухтарифным счётчиком; зона зависит от месячного потребления"
+    ],
+    "keys": [
+      {"value": "17 кВт·ч", "label": "расход на 100 км, допущение", "icon": "battery"},
+      {"value": "10 %", "label": "потери при зарядке дома", "icon": "bolt"},
+      {"value": "По пятницам", "label": "могут меняться цены на топливо", "icon": "calendar"},
+      {"value": "01.10.2025", "label": "с этой даты действует цена дома", "icon": "clock"}
+    ],
+    "bars": {
+      "title": "100 км дома ночью по зонам, RSD",
+      "note": "Низкий тариф, со всеми сборами, акцизом и НДС, плюс 10 % потерь при зарядке",
+      "items": [
+        {"label": "Зелёная", "value": 78, "display": "78"},
+        {"label": "Синяя", "value": 107, "display": "107", "accent": true},
+        {"label": "Красная", "value": 194, "display": "194"}
+      ]
+    },
+    "important": "В суммы не входят цена автомобиля, домашнее зарядное устройство, обслуживание и плата за проезд"
+  }
+}
