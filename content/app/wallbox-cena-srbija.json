@@ -17,7 +17,7 @@
     "hero": {"value": "11 kW", "label": "is enough for home charging"},
     "brief": [
       "Typical quotes for an 11 kW wallbox with installation: around 95.000–130.000 RSD incl. VAT",
-      "The difference is almost always the circuit, protection, meter, test certificate, paperwork",
+      "The difference is almost always the circuit, protection, meter, test certificate and paperwork",
       "A 60–70 kWh battery charges at 11 kW in six to seven hours"
     ],
     "keys": [

@@ -24,7 +24,7 @@
     "important": "Nije dozvoljena marža na kilovat-sat ni paušalna „prodaja“ struje bez brojila"
   },
   "en": {
-    "hero": {"value": "4–7 RSD", "label": "roughly, a night kWh in the blue zone with VAT"},
+    "hero": {"value": "4–7 RSD", "label": "night kWh at home, blue zone, with VAT, roughly"},
     "brief": [
       "Whoever charges pays: exactly as much as they use, at the price on the actual bill, no markup",
       "Only a separate MID-certified meter on the charger's circuit gives fair, verifiable metering",

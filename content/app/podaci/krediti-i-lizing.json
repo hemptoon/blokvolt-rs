@@ -8,7 +8,7 @@
       "Subvencija od 5.000 € može biti učešće u lizingu"
     ],
     "keys": [
-      {"value": "30 %", "label": "učešće u EUR, po pravilu najmanje", "icon": "percent"},
+      {"value": "30 %", "label": "najmanje učešće u EUR, po pravilu", "icon": "percent"},
       {"value": "oko 20 %", "label": "učešće u lizingu za fizička lica", "icon": "percent"},
       {"value": "13–84", "label": "meseca rok kredita Raiffeisen", "icon": "calendar"}
     ],
@@ -22,7 +22,7 @@
       "The 5.000 € subsidy can serve as the down payment on a lease"
     ],
     "keys": [
-      {"value": "30 %", "label": "down payment in EUR, usually at least", "icon": "percent"},
+      {"value": "30 %", "label": "usual minimum down payment in EUR", "icon": "percent"},
       {"value": "about 20 %", "label": "down payment in leasing, individuals", "icon": "percent"},
       {"value": "13–84", "label": "months, Raiffeisen loan term", "icon": "calendar"}
     ],
@@ -36,7 +36,7 @@
       "Субсидию 5.000 € можно использовать как первоначальный взнос по лизингу"
     ],
     "keys": [
-      {"value": "30 %", "label": "взнос по кредиту в EUR, как правило от", "icon": "percent"},
+      {"value": "30 %", "label": "минимальный взнос в EUR, как правило", "icon": "percent"},
       {"value": "около 20 %", "label": "взнос в лизинге для физлиц", "icon": "percent"},
       {"value": "13–84", "label": "месяца, срок кредита Raiffeisen", "icon": "calendar"}
     ],

@@ -1,7 +1,7 @@
 {
   "cover": {"image": "polovni", "alt": {"sr": "Kupac pregleda polovan električni auto na placu", "en": "A buyer inspecting a used electric car at a car lot", "ru": "Покупатель осматривает подержанный электромобиль на площадке"}},
   "sr": {
-    "hero": {"value": "653", "label": "električna auta na Polovnim automobilima"},
+    "hero": {"value": "653", "label": "oglasa, Polovni automobili, 24. oktobar 2026"},
     "brief": [
       "Polovni sa garancijom: programi ovlašćenih prodavaca, npr. BMW, Das WeltAuto, Toyota, Volvo",
       "Uvoz iz EU: carina 0 % uz dokaz o poreklu, PDV 20 %, pa ispitivanje vozila i uverenje ABS",
@@ -29,7 +29,7 @@
     ]
   },
   "en": {
-    "hero": {"value": "653", "label": "electric cars on Polovni automobili"},
+    "hero": {"value": "653", "label": "ads, Polovni automobili, 24 October 2026"},
     "brief": [
       "Used cars with a warranty: authorised dealer programmes, e.g. BMW, Das WeltAuto, Toyota, Volvo",
       "EU import: 0 % duty with proof of origin, 20 % VAT, then testing and an ABS certificate",
@@ -57,7 +57,7 @@
     ]
   },
   "ru": {
-    "hero": {"value": "653", "label": "электромобиля на Polovni automobili"},
+    "hero": {"value": "653", "label": "объявления, Polovni automobili, 24 октября 2026"},
     "brief": [
       "Подержанные с гарантией: программы официальных дилеров, например BMW, Das WeltAuto, Toyota",
       "Ввоз из ЕС: пошлина 0 % с подтверждением происхождения, НДС 20 %, затем свидетельство ABS",
