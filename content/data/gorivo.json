@@ -9,6 +9,7 @@
   "url": "https://www.paragraf.rs/dnevne-vesti/191026/191026-vest7.html"
  },
  "weeks": [
+  {"from": "30.10.2026", "to": "06.11.2026", "dizel": 236, "benzin": 207, "source": "Srbija Danas, 30.10.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://www.sd.rs/biz/vesti/objavljene-nove-cene-goriva-u-srbiji-2026-10-30"},
   {"from": "23.10.2026", "to": "30.10.2026", "dizel": 236, "benzin": 207, "source": "Biznis.rs, 23.10.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://biznis.rs/vesti/dizel-i-benzin-do-sledeceg-petka-po-nepromenjenim-cenama/"},
   {"from": "16.10.2026", "to": "23.10.2026", "dizel": 236, "benzin": 207, "source": "Biznis.rs, 16.10.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://biznis.rs/vesti/srbija/i-dalje-bez-promene-cena-goriva/"},
   {"from": "09.10.2026", "to": "16.10.2026", "dizel": 236, "benzin": 207, "source": "Biznis.rs, 09.10.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://biznis.rs/vesti/srbija/bez-promena-cena-goriva/"},
