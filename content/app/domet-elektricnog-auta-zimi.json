@@ -1,0 +1,191 @@
+{
+  "sr": {
+    "hero": {
+      "value": "78 %",
+      "label": "dometa u proseku zadrži auto na 0 °C"
+    },
+    "brief": [
+      "Najviše dometa odnosi grejanje kabine, a hladna baterija se sporije puni",
+      "Grejana sedišta i volan troše oko 75 W, grejanje vazduha 3.000–5.000 W",
+      "Toplotna pumpa na 0 °C daje oko 10 % više dometa"
+    ],
+    "keys": [
+      {
+        "value": "0,4 °C",
+        "label": "prosek januara u Beogradu",
+        "icon": "calendar"
+      },
+      {
+        "value": "57 %",
+        "label": "potrošnja na autoputu iznad WLTP, 0 °C",
+        "icon": "road"
+      }
+    ],
+    "bars": {
+      "title": "Domet na 0 °C, od najvećeg",
+      "note": "Prosek 34 modela i raspon među modelima",
+      "items": [
+        {
+          "label": "Najviše među modelima",
+          "value": 88,
+          "display": "88 %"
+        },
+        {
+          "label": "Prosek",
+          "value": 78,
+          "display": "78 %",
+          "accent": true
+        },
+        {
+          "label": "Najmanje među modelima",
+          "value": 69,
+          "display": "69 %"
+        }
+      ]
+    },
+    "steps": {
+      "title": "Brzo punjenje zimi",
+      "items": [
+        {
+          "title": "Punite posle vožnje",
+          "text": "Dok je baterija topla"
+        },
+        {
+          "title": "Punjač kao cilj u navigaciji auta",
+          "text": "Navigacija na telefonu ne pokreće grejanje baterije"
+        },
+        {
+          "title": "Kabinu grejte dok punite",
+          "text": "Toplota tada dolazi iz mreže, ne iz baterije"
+        }
+      ]
+    },
+    "important": "Ostavite veću rezervu: ADAC savetuje da se rezerva posle upozorenja koristi samo u nuždi"
+  },
+  "en": {
+    "hero": {
+      "value": "78 %",
+      "label": "of its range a car keeps on average at 0 °C"
+    },
+    "brief": [
+      "Cabin heating takes the most range, and a cold battery charges more slowly",
+      "Heated seats and steering wheel use about 75 W, cabin air heating 3.000–5.000 W",
+      "A heat pump gives about 10 % more range at 0 °C"
+    ],
+    "keys": [
+      {
+        "value": "0,4 °C",
+        "label": "January average in Belgrade",
+        "icon": "calendar"
+      },
+      {
+        "value": "57 %",
+        "label": "motorway use above WLTP at 0 °C",
+        "icon": "road"
+      }
+    ],
+    "bars": {
+      "title": "Range at 0 °C, share of maximum",
+      "note": "Average of 34 models and the range between models",
+      "items": [
+        {
+          "label": "Highest among models",
+          "value": 88,
+          "display": "88 %"
+        },
+        {
+          "label": "Average",
+          "value": 78,
+          "display": "78 %",
+          "accent": true
+        },
+        {
+          "label": "Lowest among models",
+          "value": 69,
+          "display": "69 %"
+        }
+      ]
+    },
+    "steps": {
+      "title": "Fast charging in winter",
+      "items": [
+        {
+          "title": "Charge after driving",
+          "text": "While the battery is warm"
+        },
+        {
+          "title": "Charger as the car's destination",
+          "text": "Navigation on a phone does not start battery heating"
+        },
+        {
+          "title": "Heat the cabin while charging",
+          "text": "The heat then comes from the grid, not from the battery"
+        }
+      ]
+    },
+    "important": "Keep a bigger reserve: ADAC advises using the reserve after the warning only in an emergency"
+  },
+  "ru": {
+    "hero": {
+      "value": "78 %",
+      "label": "запаса хода в среднем сохраняет авто при 0 °C"
+    },
+    "brief": [
+      "Больше всего запаса хода съедает обогрев салона, а холодная батарея заряжается медленнее",
+      "Подогрев сидений и руля — около 75 Вт, обогрев воздуха — 3.000–5.000 Вт",
+      "Тепловой насос при 0 °C даёт примерно на 10 % больше запаса хода"
+    ],
+    "keys": [
+      {
+        "value": "0,4 °C",
+        "label": "средняя температура января в Белграде",
+        "icon": "calendar"
+      },
+      {
+        "value": "57 %",
+        "label": "расход на трассе выше WLTP при 0 °C",
+        "icon": "road"
+      }
+    ],
+    "bars": {
+      "title": "Запас хода при 0 °C, от максимума",
+      "note": "Среднее по 34 моделям и разброс между моделями",
+      "items": [
+        {
+          "label": "Максимум среди моделей",
+          "value": 88,
+          "display": "88 %"
+        },
+        {
+          "label": "Среднее",
+          "value": 78,
+          "display": "78 %",
+          "accent": true
+        },
+        {
+          "label": "Минимум среди моделей",
+          "value": 69,
+          "display": "69 %"
+        }
+      ]
+    },
+    "steps": {
+      "title": "Быстрая зарядка зимой",
+      "items": [
+        {
+          "title": "Заряжайтесь после поездки",
+          "text": "Пока батарея тёплая"
+        },
+        {
+          "title": "Зарядка — цель в навигации авто",
+          "text": "Навигация в телефоне не включает подогрев батареи"
+        },
+        {
+          "title": "Грейте салон во время зарядки",
+          "text": "Тепло тогда берётся из сети, а не из батареи"
+        }
+      ]
+    },
+    "important": "Оставляйте больший запас: ADAC советует использовать резерв после предупреждения только в крайнем случае"
+  }
+}

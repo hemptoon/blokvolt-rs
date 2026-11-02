@@ -1,0 +1,74 @@
+{
+  "sr": {
+    "hero": {
+      "value": "20–40 °C",
+      "label": "baterija tada prima najveću snagu"
+    },
+    "brief": [
+      "Kod većine auta grejanje kreće samo kad je brzi punjač cilj u navigaciji automobila",
+      "Tesla savetuje da navigaciju do punjača uključite 30–45 minuta pre dolaska",
+      "VW ID, Škoda Enyaq i Cupra Born iz 2021. – početka 2024. nemaju predgrevanje"
+    ],
+    "important": "Grejanje troši struju iz baterije: pre punjenja ostavite rezervu",
+    "keys": [
+      {
+        "value": "68,5 RSD",
+        "label": "kWh kad auto prima 100 kW",
+        "icon": "coins"
+      },
+      {
+        "value": "137 RSD",
+        "label": "kWh kad auto prima 50 kW",
+        "icon": "coins"
+      }
+    ]
+  },
+  "en": {
+    "hero": {
+      "value": "20–40 °C",
+      "label": "when the battery takes the most power"
+    },
+    "brief": [
+      "In most cars heating starts only when a fast charger is the destination in the car's navigation",
+      "Tesla advises starting navigation to the charger 30–45 minutes before arrival",
+      "VW ID, Škoda Enyaq and Cupra Born from 2021 to early 2024 cannot preheat"
+    ],
+    "important": "Heating uses power from the battery: keep a reserve before charging",
+    "keys": [
+      {
+        "value": "68,5 RSD",
+        "label": "per kWh when the car draws 100 kW",
+        "icon": "coins"
+      },
+      {
+        "value": "137 RSD",
+        "label": "per kWh when the car draws 50 kW",
+        "icon": "coins"
+      }
+    ]
+  },
+  "ru": {
+    "hero": {
+      "value": "20–40 °C",
+      "label": "тогда батарея принимает наибольшую мощность"
+    },
+    "brief": [
+      "У большинства авто подогрев включается, только если быстрая зарядка — цель в навигации",
+      "Tesla советует включить навигацию до зарядки за 30–45 минут до прибытия",
+      "У VW ID, Škoda Enyaq и Cupra Born 2021 – начала 2024 года нет подогрева"
+    ],
+    "important": "Подогрев тратит энергию батареи: перед зарядкой оставьте запас",
+    "keys": [
+      {
+        "value": "68,5 RSD",
+        "label": "за кВт·ч, если машина берёт 100 kW",
+        "icon": "coins"
+      },
+      {
+        "value": "137 RSD",
+        "label": "за кВт·ч, если машина берёт 50 kW",
+        "icon": "coins"
+      }
+    ]
+  }
+}
