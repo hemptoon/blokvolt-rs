@@ -1,0 +1,66 @@
+{
+  "cover": {"image": "konektori", "alt": {"sr": "Tri utikača na javnom punjaču, izbliza", "en": "Three connectors on a public charger, close up", "ru": "Три разъёма на публичной зарядке крупным планом"}},
+  "sr": {
+    "hero": {"value": "138 od 140", "label": "brzih DC punjača na mapi ima CCS2"},
+    "brief": [
+      "Type 2 je evropski standard za AC punjenje; na javnom AC stubu kabl često nosite sami",
+      "CHAdeMO ima 30 od 140 DC punjača, a od 54 punjača od 100 kW naviše samo 2",
+      "Auti kupljeni direktno u Kini imaju GB/T i traže adapter od skoro 1.000 dolara"
+    ],
+    "bars": {
+      "title": "DC punjači na mapi po mreži",
+      "note": "Stanje mape 15.10.2026",
+      "items": [
+        {"label": "Charge&GO", "value": 79, "display": "79"},
+        {"label": "Orion eMobility", "value": 29, "display": "29"},
+        {"label": "Putevi Srbije", "value": 15, "display": "15"},
+        {"label": "eDrive", "value": 7, "display": "7"},
+        {"label": "Lidl eCharge", "value": 2, "display": "2"},
+        {"label": "Tesla Supercharger", "value": 2, "display": "2"}
+      ]
+    },
+    "important": "Auto sa CCS2 puni i na običnom Type 2 stubu, ali ne puni na CHAdeMO priključku"
+  },
+  "en": {
+    "hero": {"value": "138 of 140", "label": "fast DC chargers on the map have CCS2"},
+    "brief": [
+      "Type 2 is the European standard for AC charging; at a public AC post you often bring your cable",
+      "CHAdeMO is on 30 of 140 DC chargers, and on only 2 of the 54 chargers of 100 kW and above",
+      "Cars bought directly from China have GB/T and need an adapter costing almost 1.000 dollars"
+    ],
+    "bars": {
+      "title": "DC chargers on the map by network",
+      "note": "Map as of 15.10.2026",
+      "items": [
+        {"label": "Charge&GO", "value": 79, "display": "79"},
+        {"label": "Orion eMobility", "value": 29, "display": "29"},
+        {"label": "Putevi Srbije", "value": 15, "display": "15"},
+        {"label": "eDrive", "value": 7, "display": "7"},
+        {"label": "Lidl eCharge", "value": 2, "display": "2"},
+        {"label": "Tesla Supercharger", "value": 2, "display": "2"}
+      ]
+    },
+    "important": "A CCS2 car also charges at an ordinary Type 2 post, but it cannot charge at a CHAdeMO connector"
+  },
+  "ru": {
+    "hero": {"value": "138 из 140", "label": "быстрых DC-зарядок на карте имеют CCS2"},
+    "brief": [
+      "Type 2 — европейский стандарт для зарядки AC; на публичной AC-стойке кабель часто нужен свой",
+      "CHAdeMO есть у 30 из 140 DC-зарядок, а из 54 зарядок от 100 кВт — только у 2",
+      "Машины, купленные напрямую в Китае, имеют GB/T, им нужен переходник почти за 1.000 долларов"
+    ],
+    "bars": {
+      "title": "DC-зарядки на карте по сетям",
+      "note": "Состояние карты на 15.10.2026",
+      "items": [
+        {"label": "Charge&GO", "value": 79, "display": "79"},
+        {"label": "Orion eMobility", "value": 29, "display": "29"},
+        {"label": "Putevi Srbije", "value": 15, "display": "15"},
+        {"label": "eDrive", "value": 7, "display": "7"},
+        {"label": "Lidl eCharge", "value": 2, "display": "2"},
+        {"label": "Tesla Supercharger", "value": 2, "display": "2"}
+      ]
+    },
+    "important": "Машина с CCS2 заряжается и на обычной стойке Type 2, но не от разъёма CHAdeMO"
+  }
+}

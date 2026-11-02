@@ -1,0 +1,75 @@
+{
+  "cover": {"image": "cene-automobila", "alt": {"sr": "Red novih električnih automobila ispred salona", "en": "A row of new electric cars outside a showroom", "ru": "Ряд новых электромобилей у автосалона"}},
+  "sr": {
+    "hero": {"value": "17.990 €", "label": "najjeftiniji nov: Dacia Spring"},
+    "brief": [
+      "Posle subvencije od 5.000 € Dacia Spring košta 12.990 €",
+      "83 modela 26 marki imaju javnu cenu, 18 je ispod 30.000 €",
+      "„Cena od“ je najniža cena uvoznika, po pravilu sa PDV-om, ponegde akcijska"
+    ],
+    "keys": [
+      {"value": "83", "label": "modela sa javnom cenom", "icon": "car"},
+      {"value": "18", "label": "modela ispod 30.000 €", "icon": "coins"}
+    ],
+    "bars": {
+      "title": "Najjeftiniji novi, cena od",
+      "note": "Najniža cena koju uvoznik objavljuje, ponegde akcijska; pre subvencije",
+      "items": [
+        {"label": "Dacia Spring", "value": 17990, "display": "17.990 €"},
+        {"label": "JMEV EV3", "value": 18000, "display": "18.000 €"},
+        {"label": "Leapmotor T03", "value": 18690, "display": "18.690 €"},
+        {"label": "Renault Twingo E-Tech", "value": 19990, "display": "19.990 €"},
+        {"label": "Dongfeng E70", "value": 21000, "display": "21.000 €"}
+      ]
+    },
+    "important": "Proverite da li „akcijska cena“ već sadrži subvenciju"
+  },
+  "en": {
+    "hero": {"value": "17.990 €", "label": "cheapest new car: Dacia Spring"},
+    "brief": [
+      "After the 5.000 € subsidy the Dacia Spring costs 12.990 €",
+      "83 models from 26 brands have a public price, 18 cost under 30.000 €",
+      "“Price from” is the importer's lowest price, as a rule incl. VAT, some promotional"
+    ],
+    "keys": [
+      {"value": "83", "label": "models with a public price", "icon": "car"},
+      {"value": "18", "label": "models under 30.000 €", "icon": "coins"}
+    ],
+    "bars": {
+      "title": "Cheapest new cars, price from",
+      "note": "The lowest price the importer publishes, some promotional; before the subsidy",
+      "items": [
+        {"label": "Dacia Spring", "value": 17990, "display": "17.990 €"},
+        {"label": "JMEV EV3", "value": 18000, "display": "18.000 €"},
+        {"label": "Leapmotor T03", "value": 18690, "display": "18.690 €"},
+        {"label": "Renault Twingo E-Tech", "value": 19990, "display": "19.990 €"},
+        {"label": "Dongfeng E70", "value": 21000, "display": "21.000 €"}
+      ]
+    },
+    "important": "Check whether the “sale price” already includes the subsidy"
+  },
+  "ru": {
+    "hero": {"value": "17.990 €", "label": "самый дешёвый новый: Dacia Spring"},
+    "brief": [
+      "После субсидии 5.000 € Dacia Spring стоит 12.990 €",
+      "Публичная цена есть у 83 моделей 26 марок, 18 — дешевле 30.000 €",
+      "«Цена от» — самая низкая цена импортёра, как правило с НДС, местами акционная"
+    ],
+    "keys": [
+      {"value": "83", "label": "модели с публичной ценой", "icon": "car"},
+      {"value": "18", "label": "моделей дешевле 30.000 €", "icon": "coins"}
+    ],
+    "bars": {
+      "title": "Самые дешёвые новые, цена от",
+      "note": "Самая низкая цена, которую публикует импортёр, местами акционная; до субсидии",
+      "items": [
+        {"label": "Dacia Spring", "value": 17990, "display": "17.990 €"},
+        {"label": "JMEV EV3", "value": 18000, "display": "18.000 €"},
+        {"label": "Leapmotor T03", "value": 18690, "display": "18.690 €"},
+        {"label": "Renault Twingo E-Tech", "value": 19990, "display": "19.990 €"},
+        {"label": "Dongfeng E70", "value": 21000, "display": "21.000 €"}
+      ]
+    },
+    "important": "Проверьте, не включает ли «акционная цена» уже субсидию"
+  }
+}

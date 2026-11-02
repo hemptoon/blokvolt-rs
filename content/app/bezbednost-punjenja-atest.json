@@ -1,0 +1,45 @@
+{
+  "cover": {"image": "bezbednost-punjenja", "alt": {"sr": "Električar meri instalaciju punjača na zidu garaže", "en": "An electrician testing a charger installation on a garage wall", "ru": "Электрик проверяет установку зарядки на стене гаража"}},
+  "sr": {
+    "hero": {"value": "~100 °C", "label": "šuko utičnica posle pola sata na 16 A"},
+    "brief": [
+      "Opasno nije punjenje, nego obična šuko utičnica",
+      "Bezbedna linija: zaseban krug, pravi presek kabla, FID tip A sa DC detekcijom ili tip B",
+      "Atest je izveštaj o ispitivanju instalacije; tražite ga od svakog ko ugrađuje punjač"
+    ],
+    "keys": [
+      {"value": "6 mA", "label": "DC detekcija uz FID tip A od 30 mA", "icon": "shield"},
+      {"value": "IP44", "label": "ili više: industrijska utičnica, wallbox", "icon": "plug"},
+      {"value": "30–60 min", "label": "traju merenja posle ugradnje", "icon": "clock"}
+    ],
+    "important": "Obična FID sklopka tip AC ne vidi DC struju curenja iz punjača i nije prihvatljiva"
+  },
+  "en": {
+    "hero": {"value": "~100 °C", "label": "a Schuko socket after half an hour at 16 A"},
+    "brief": [
+      "The danger is not charging itself but an ordinary Schuko socket",
+      "A safe circuit: dedicated, right cable cross-section, type A RCD with DC detection or type B",
+      "The test certificate is a test report on the installation; ask anyone installing for it"
+    ],
+    "keys": [
+      {"value": "6 mA", "label": "DC detection with a 30 mA type A RCD", "icon": "shield"},
+      {"value": "IP44", "label": "or higher: industrial socket, wallbox", "icon": "plug"},
+      {"value": "30–60 min", "label": "of measurements after installation", "icon": "clock"}
+    ],
+    "important": "An ordinary type AC RCD does not see DC leakage current from the charger and is not acceptable"
+  },
+  "ru": {
+    "hero": {"value": "~100 °C", "label": "розетка Schuko через полчаса на 16 A"},
+    "brief": [
+      "Опасна не сама зарядка, а обычная розетка Schuko",
+      "Безопасная линия: отдельная, нужное сечение кабеля, УЗО типа A с детекцией DC или типа B",
+      "Атест — протокол испытаний электроустановки; требуйте его у любого установщика"
+    ],
+    "keys": [
+      {"value": "6 мА", "label": "детекция DC при УЗО типа A на 30 мА", "icon": "shield"},
+      {"value": "IP44", "label": "или выше: промышленная розетка, wallbox", "icon": "plug"},
+      {"value": "30–60 мин", "label": "занимают измерения после установки", "icon": "clock"}
+    ],
+    "important": "Обычное УЗО типа AC не видит постоянный ток утечки от зарядки и не подходит"
+  }
+}

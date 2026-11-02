@@ -1,0 +1,23 @@
+{
+  "sr": {
+    "hero": {"value": "1.166", "label": "novih električnih, januar–septembar 2026"},
+    "brief": [
+      "To je 3,95 % novih putničkih vozila, rast od 291,28 %",
+      "Od jula do septembra stiglo je oko 630, više nego za prvih šest meseci"
+    ]
+  },
+  "en": {
+    "hero": {"value": "1.166", "label": "new electric cars, January–September 2026"},
+    "brief": [
+      "That is 3,95 % of new passenger cars, an increase of 291,28 %",
+      "About 630 arrived from July to September, more than in the first six months"
+    ]
+  },
+  "ru": {
+    "hero": {"value": "1.166", "label": "новых электромобилей, январь–сентябрь 2026"},
+    "brief": [
+      "Это 3,95 % новых легковых автомобилей, рост на 291,28 %",
+      "С июля по сентябрь — около 630, больше, чем за первые шесть месяцев"
+    ]
+  }
+}

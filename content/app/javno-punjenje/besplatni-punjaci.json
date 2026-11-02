@@ -1,0 +1,42 @@
+{
+  "cover": {"image": "besplatni-punjaci", "alt": {"sr": "Porodica puni auto na punjaču ispred prodavnice", "en": "A family charging their car at a charger outside a shop", "ru": "Семья заряжает машину у зарядки перед магазином"}},
+  "sr": {
+    "hero": {"value": "27 od 36", "label": "državnih punjača na autoputevima radi, besplatno"},
+    "brief": [
+      "Državni punjači se pokreću uz aplikaciju Orion eMobility",
+      "IKEA Beograd: 2 punjača AC 22 kW, besplatno, kartica na info pultu od 10 do 21",
+      "Lidl na Limanu (Novi Sad): besplatno 08–22, najviše 60 minuta dnevno"
+    ],
+    "keys": [
+      {"value": "DC 40–120 kW", "label": "snaga državnih punjača", "icon": "bolt"},
+      {"value": "4", "label": "državna punjača trenutno ne radi", "icon": "alert"}
+    ],
+    "important": "Naplata na autoputevima nije zakonski uređena; propisi su u pripremi"
+  },
+  "en": {
+    "hero": {"value": "27 of 36", "label": "state chargers on motorways work, free"},
+    "brief": [
+      "State-owned chargers are started with the Orion eMobility app",
+      "IKEA Belgrade: 2 AC 22 kW chargers, free, card at the information desk from 10 to 21",
+      "Lidl in Liman (Novi Sad): free 08–22, at most 60 minutes a day"
+    ],
+    "keys": [
+      {"value": "DC 40–120 kW", "label": "power of the state chargers", "icon": "bolt"},
+      {"value": "4", "label": "state chargers currently out of service", "icon": "alert"}
+    ],
+    "important": "Charging fees on motorways are not regulated by law; rules are being prepared"
+  },
+  "ru": {
+    "hero": {"value": "27 из 36", "label": "госзарядок на автомагистралях работают бесплатно"},
+    "brief": [
+      "Государственные зарядки запускаются через приложение Orion eMobility",
+      "IKEA в Белграде: 2 зарядки AC 22 кВт, бесплатно, карта на стойке информации с 10 до 21",
+      "Lidl на Лимане (Нови-Сад): бесплатно 08–22, не более 60 минут в день"
+    ],
+    "keys": [
+      {"value": "40–120 кВт", "label": "мощность DC на госзарядках", "icon": "bolt"},
+      {"value": "4", "label": "госзарядки временно не работают", "icon": "alert"}
+    ],
+    "important": "Плата за зарядку на автомагистралях законом не урегулирована; правила готовятся"
+  }
+}

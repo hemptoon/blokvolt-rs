@@ -1,0 +1,23 @@
+{
+  "sr": {
+    "hero": {"value": "80 %", "label": "najviše punjenja do provere u servisu"},
+    "brief": [
+      "Mogu biti pogođeni ID.3, ID.4, ID.7, ID. Buzz i Cupra Born proizvedeni 2023–2025",
+      "Vlasnik može da proveri broj šasije u ovlašćenom servisu"
+    ]
+  },
+  "en": {
+    "hero": {"value": "80 %", "label": "maximum charge until the service check"},
+    "brief": [
+      "The ID.3, ID.4, ID.7, ID. Buzz and Cupra Born built in 2023–2025 may be affected",
+      "Owners can have the chassis number checked at an authorised service centre"
+    ]
+  },
+  "ru": {
+    "hero": {"value": "80 %", "label": "максимум зарядки до проверки в сервисе"},
+    "brief": [
+      "Могут быть затронуты ID.3, ID.4, ID.7, ID. Buzz и Cupra Born 2023–2025 годов",
+      "Владелец может проверить номер кузова в официальном сервисе"
+    ]
+  }
+}

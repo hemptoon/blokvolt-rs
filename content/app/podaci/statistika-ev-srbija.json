@@ -1,0 +1,72 @@
+{
+  "cover": {"image": "statistika", "alt": {"sr": "Pogled na grad i bulevar u sumrak", "en": "A view over the city and a boulevard at dusk", "ru": "Вид на город и бульвар в сумерках"}},
+  "sr": {
+    "hero": {"value": "7.155", "label": "električnih automobila (MUP, april 2026)"},
+    "brief": [
+      "1.166 novih BEV od januara do septembra 2026: 3,95 % novih putničkih vozila",
+      "220 javnih punjača: jedan na 35.000 stanovnika, u EU jedan na 450",
+      "U EU je udeo električnih u prodaji novih automobila 18,8 %"
+    ],
+    "keys": [
+      {"value": "+291 %", "label": "novih BEV, januar–septembar 2026", "icon": "car"},
+      {"value": "55.184", "label": "hibridna vozila (MUP, april 2026)", "icon": "leaf"}
+    ],
+    "bars": {
+      "title": "Udeo BEV u novim putničkim vozilima",
+      "note": "Nove registracije, Srbija",
+      "items": [
+        {"label": "2024", "value": 1.6, "display": "1,6 %"},
+        {"label": "2025", "value": 2.1, "display": "2,1 %"},
+        {"label": "Q1 2026", "value": 1.97, "display": "1,97 %"},
+        {"label": "H1 2026", "value": 2.74, "display": "2,74 %"},
+        {"label": "Januar–septembar 2026", "value": 3.95, "display": "3,95 %", "accent": true}
+      ]
+    }
+  },
+  "en": {
+    "hero": {"value": "7.155", "label": "electric cars (MUP, April 2026)"},
+    "brief": [
+      "1.166 new BEVs from January to September 2026: 3,95 % of new passenger cars",
+      "220 public chargers: one per 35.000 inhabitants, in the EU one per 450",
+      "In the EU, electric cars account for 18,8 % of new car sales"
+    ],
+    "keys": [
+      {"value": "+291 %", "label": "new BEVs, January–September 2026", "icon": "car"},
+      {"value": "55.184", "label": "hybrid vehicles (MUP, April 2026)", "icon": "leaf"}
+    ],
+    "bars": {
+      "title": "BEV share of new passenger cars",
+      "note": "New registrations, Serbia",
+      "items": [
+        {"label": "2024", "value": 1.6, "display": "1,6 %"},
+        {"label": "2025", "value": 2.1, "display": "2,1 %"},
+        {"label": "Q1 2026", "value": 1.97, "display": "1,97 %"},
+        {"label": "H1 2026", "value": 2.74, "display": "2,74 %"},
+        {"label": "January–September 2026", "value": 3.95, "display": "3,95 %", "accent": true}
+      ]
+    }
+  },
+  "ru": {
+    "hero": {"value": "7.155", "label": "электромобилей (MUP, апрель 2026)"},
+    "brief": [
+      "1.166 новых BEV с января по сентябрь 2026: 3,95 % новых легковых автомобилей",
+      "220 публичных зарядок: одна на 35.000 жителей, в ЕС — одна на 450",
+      "В ЕС доля электромобилей в продажах новых автомобилей — 18,8 %"
+    ],
+    "keys": [
+      {"value": "+291 %", "label": "новых BEV, январь–сентябрь 2026", "icon": "car"},
+      {"value": "55.184", "label": "гибридных автомобилей (MUP, апрель 2026)", "icon": "leaf"}
+    ],
+    "bars": {
+      "title": "Доля BEV среди новых легковых",
+      "note": "Новые регистрации, Сербия",
+      "items": [
+        {"label": "2024", "value": 1.6, "display": "1,6 %"},
+        {"label": "2025", "value": 2.1, "display": "2,1 %"},
+        {"label": "Q1 2026", "value": 1.97, "display": "1,97 %"},
+        {"label": "H1 2026", "value": 2.74, "display": "2,74 %"},
+        {"label": "Январь–сентябрь 2026", "value": 3.95, "display": "3,95 %", "accent": true}
+      ]
+    }
+  }
+}

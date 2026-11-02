@@ -1,0 +1,72 @@
+{
+  "cover": {"image": "prvo-punjenje", "alt": {"sr": "Vozačica uključuje kabl javnog punjača uz telefon u ruci", "en": "A driver plugging in at a public charger, phone in hand", "ru": "Водитель подключает кабель публичной зарядки, в руке телефон"}},
+  "sr": {
+    "brief": [
+      "Za prvo punjenje RFID kartica nije potrebna: dovoljni su aplikacija ili QR kod na punjaču",
+      "Brzi DC punjači imaju svoj kabl; za mnoge javne AC punjače ponesite sopstveni Type 2 kabl",
+      "Nalog otvorite kod kuće, pre prvog dolaska na punjač"
+    ],
+    "keys": [
+      {"value": "2.000 RSD", "label": "Orion rezerviše na kartici za AC", "icon": "card"},
+      {"value": "4.000 RSD", "label": "Orion rezerviše na kartici za DC", "icon": "card"},
+      {"value": "15 minuta", "label": "Charge&GO posle punjenja, pa 5 RSD/min", "icon": "clock"}
+    ],
+    "steps": {
+      "title": "Prvo punjenje",
+      "items": [
+        {"title": "Nalog ili QR kod", "text": "Aplikacija mreže ili QR kod iznad priključka i platna kartica"},
+        {"title": "Pravi priključak", "text": "Type 2 za AC, CCS2 ili CHAdeMO za brzo DC punjenje"},
+        {"title": "Pokretanje", "text": "Charge&GO: prvo potvrda, pa kabl. Orion: prvo kabl, pa „Započni punjenje“"},
+        {"title": "Kraj i račun", "text": "Zaustavite punjenje u aplikaciji; račun stiže na e-adresu"},
+        {"title": "Oslobodite mesto", "text": "Otključajte auto, izvadite kabl i pomerite auto"}
+      ]
+    },
+    "important": "Kod Charge&GO kabl priključite tek kad aplikacija to zatraži; ako ga priključite pre potvrde, postupak ponavljate"
+  },
+  "en": {
+    "brief": [
+      "No RFID card is needed for your first charge: the app or the QR code on the charger is enough",
+      "Fast DC chargers have their own cable; for many public AC chargers bring your own Type 2 cable",
+      "Open the account at home, before you first arrive at the charger"
+    ],
+    "keys": [
+      {"value": "2.000 RSD", "label": "Orion reserves on your card for AC", "icon": "card"},
+      {"value": "4.000 RSD", "label": "Orion reserves on your card for DC", "icon": "card"},
+      {"value": "15 minutes", "label": "Charge&GO after charging, then 5 RSD/min", "icon": "clock"}
+    ],
+    "steps": {
+      "title": "Your first charge",
+      "items": [
+        {"title": "Account or QR code", "text": "The network's app or the QR code above the connector, and a payment card"},
+        {"title": "The right connector", "text": "Type 2 for AC, CCS2 or CHAdeMO for fast DC charging"},
+        {"title": "Starting", "text": "Charge&GO: confirm first, then the cable. Orion: cable first, then “Start charging”"},
+        {"title": "Stop and receipt", "text": "Stop charging in the app; the receipt arrives by email"},
+        {"title": "Free the space", "text": "Unlock the car, unplug the cable and move the car"}
+      ]
+    },
+    "important": "With Charge&GO, plug in only when the app asks; if you plug in before confirming, you have to repeat the process"
+  },
+  "ru": {
+    "brief": [
+      "Для первой зарядки RFID-карта не нужна: достаточно приложения или QR-кода на станции",
+      "У быстрых DC-станций свой кабель; для многих публичных AC-станций возите свой кабель Type 2",
+      "Аккаунт откройте дома, до первого приезда на станцию"
+    ],
+    "keys": [
+      {"value": "2.000 RSD", "label": "Orion блокирует на карте за AC", "icon": "card"},
+      {"value": "4.000 RSD", "label": "Orion блокирует на карте за DC", "icon": "card"},
+      {"value": "15 минут", "label": "Charge&GO после зарядки, затем 5 RSD/мин", "icon": "clock"}
+    ],
+    "steps": {
+      "title": "Первая зарядка",
+      "items": [
+        {"title": "Аккаунт или QR-код", "text": "Приложение сети или QR-код над разъёмом и платёжная карта"},
+        {"title": "Нужный разъём", "text": "Type 2 для AC, CCS2 или CHAdeMO для быстрой зарядки DC"},
+        {"title": "Запуск", "text": "Charge&GO: подтверждение, потом кабель. Orion: кабель, потом «Начать зарядку»"},
+        {"title": "Конец и чек", "text": "Остановите зарядку в приложении; чек придёт на e-mail"},
+        {"title": "Освободите место", "text": "Откройте машину, выньте кабель и отъезжайте"}
+      ]
+    },
+    "important": "У Charge&GO подключайте кабель, только когда попросит приложение; если подключить до подтверждения, всё придётся повторить"
+  }
+}

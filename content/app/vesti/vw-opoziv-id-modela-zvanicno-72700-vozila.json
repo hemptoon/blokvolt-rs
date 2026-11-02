@@ -1,0 +1,23 @@
+{
+  "sr": {
+    "hero": {"value": "72.700", "label": "vozila u svetu, oko 10.000 u Nemačkoj"},
+    "brief": [
+      "KBA vodi tri opoziva: za ID.3, ID.4, ID.7, ID. Buzz i Cupra Born",
+      "Do provere u servisu punite bateriju najviše do 80 %"
+    ]
+  },
+  "en": {
+    "hero": {"value": "72.700", "label": "vehicles worldwide, about 10.000 in Germany"},
+    "brief": [
+      "The KBA is running three recalls: ID.3, ID.4, ID.7, ID. Buzz and Cupra Born",
+      "Until the workshop check, charge the battery to 80 % at most"
+    ]
+  },
+  "ru": {
+    "hero": {"value": "72.700", "label": "машин в мире, около 10.000 в Германии"},
+    "brief": [
+      "KBA ведёт три отзывные кампании: ID.3, ID.4, ID.7, ID. Buzz и Cupra Born",
+      "До проверки в сервисе заряжайте батарею не выше 80 %"
+    ]
+  }
+}

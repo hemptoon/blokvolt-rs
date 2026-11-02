@@ -1,0 +1,23 @@
+{
+  "sr": {
+    "hero": {"value": "60 km", "label": "najviše između punjača na glavnim putevima"},
+    "brief": [
+      "Nacrt predviđa naplatu po isporučenom kWh na punjačima od 50 kW i više",
+      "To je nacrt: obaveze počinju tek kad zakon bude usvojen i objavljen"
+    ]
+  },
+  "en": {
+    "hero": {"value": "60 km", "label": "at most between chargers on main roads"},
+    "brief": [
+      "The draft provides for billing per kWh delivered on chargers of 50 kW and above",
+      "It is a draft: the obligations begin only once the law is adopted and published"
+    ]
+  },
+  "ru": {
+    "hero": {"value": "60 км", "label": "максимум между зарядками на основных дорогах"},
+    "brief": [
+      "Законопроект предусматривает оплату за кВт·ч на зарядках от 50 кВт",
+      "Это проект: обязанности начнутся только после принятия и публикации закона"
+    ]
+  }
+}

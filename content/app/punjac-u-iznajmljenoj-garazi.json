@@ -1,0 +1,45 @@
+{
+  "cover": {"image": "iznajmljena-garaza", "alt": {"sr": "Vlasnik i zakupka razgovaraju ispred otvorene garaže u dvorištu", "en": "An owner and a tenant talking in front of an open courtyard garage", "ru": "Владелец и арендатор беседуют у открытого гаража во дворе"}},
+  "sr": {
+    "hero": {"value": "0 RSD", "label": "košta punjač vlasnika garaže"},
+    "brief": [
+      "Dovoljna je pismena saglasnost vlasnika, kao aneks ugovora o zakupu",
+      "Struja se meri MID brojilom i nadoknađuje po ceni iz vlasnikovog računa, bez marže",
+      "Od razgovora sa vlasnikom do prvog punjenja realno 1–2 nedelje, ugradnja jedan dan"
+    ],
+    "keys": [
+      {"value": "16 A", "label": "monofazno: dovoljno u većini garaža", "icon": "building"},
+      {"value": "100–180 km", "label": "dometa preko noći, utičnica 2,3–3,7 kW", "icon": "plug"},
+      {"value": "11 kW", "label": "wallbox uz trofaznu struju", "icon": "bolt"}
+    ],
+    "important": "Skupština treba samo ako kabl prolazi kroz zajedničke delove zgrade; tada računajte 4–10 nedelja"
+  },
+  "en": {
+    "hero": {"value": "0 RSD", "label": "is what the charger costs the garage owner"},
+    "brief": [
+      "The owner's written consent, as an addendum to the lease agreement, is enough",
+      "A MID-certified meter measures the electricity; it is paid at the owner's bill price, no markup",
+      "From talking to the owner to the first charge: realistically 1–2 weeks, installation one day"
+    ],
+    "keys": [
+      {"value": "16 A", "label": "single-phase: enough in most garages", "icon": "building"},
+      {"value": "100–180 km", "label": "of range overnight, 2,3–3,7 kW socket", "icon": "plug"},
+      {"value": "11 kW", "label": "wallbox with three-phase power", "icon": "bolt"}
+    ],
+    "important": "The assembly is needed only if the cable passes through common parts of the building; then allow 4–10 weeks"
+  },
+  "ru": {
+    "hero": {"value": "0 RSD", "label": "обходится зарядка владельцу гаража"},
+    "brief": [
+      "Достаточно письменного согласия владельца — допсоглашения к договору аренды",
+      "Электричество учитывает счётчик MID, оплата по цене из счёта владельца, без наценки",
+      "От разговора с владельцем до первой зарядки — 1–2 недели, установка — один день"
+    ],
+    "keys": [
+      {"value": "16 A", "label": "однофазно: хватает в большинстве гаражей", "icon": "building"},
+      {"value": "100–180 км", "label": "запаса хода за ночь, розетка 2,3–3,7 кВт", "icon": "plug"},
+      {"value": "11 кВт", "label": "wallbox при трёхфазном подключении", "icon": "bolt"}
+    ],
+    "important": "Собрание жильцов нужно, только если кабель проходит через общие части здания; тогда закладывайте 4–10 недель"
+  }
+}

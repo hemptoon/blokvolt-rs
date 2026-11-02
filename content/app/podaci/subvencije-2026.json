@@ -1,0 +1,72 @@
+{
+  "cover": {"image": "subvencije", "alt": {"sr": "Par za stolom u salonu prima ključeve novog automobila", "en": "A couple at a dealership desk receiving the keys to a new car", "ru": "Пара за столом в автосалоне получает ключи от нового автомобиля"}},
+  "sr": {
+    "hero": {"value": "5.000 €", "label": "za nov električni automobil, oko 586.000 RSD"},
+    "brief": [
+      "Prijava preko eUprave do 1. decembra 2026, po redosledu urednih zahteva, dok ima sredstava",
+      "Samo potpuno električna vozila; hibridi i plug-in hibridi nemaju subvenciju od 2025",
+      "Budžet je bio 170 miliona RSD na početku godine; novi iznos nije objavljen"
+    ],
+    "keys": [
+      {"value": "500 €", "label": "za motocikl", "icon": "road"},
+      {"value": "250 €", "label": "za moped", "icon": "road"},
+      {"value": "16 stavki", "label": "dokumenata iz Uredbe", "icon": "doc"}
+    ],
+    "steps": {
+      "title": "Kako se podnosi",
+      "items": [
+        {"title": "Prijava na eUpravu", "text": "ConsentID ili kvalifikovani sertifikat; usluga 01107 za građane, 01108 za firme"},
+        {"title": "Dokumenta iz Uredbe", "text": "Homologacija, COC, predugovor ili predračun, ovlašćenje dilera, podaci o računu"},
+        {"title": "Obrada", "text": "Po redosledu prijema urednih zahteva, dok ima sredstava"},
+        {"title": "Isplata", "text": "Novac ide prodavcu ili lizing kući"}
+      ]
+    },
+    "important": "Usluga na eUpravi je za državljane Srbije; stranac sa boravkom ne može da je koristi"
+  },
+  "en": {
+    "hero": {"value": "5.000 €", "label": "for a new electric car, about 586.000 RSD"},
+    "brief": [
+      "Apply via eUprava until 1 December 2026; complete applications in order, while funds last",
+      "Fully electric vehicles only; hybrids and plug-in hybrids have had no subsidy since 2025",
+      "The budget was 170 million RSD at the start of the year; no new amount has been published"
+    ],
+    "keys": [
+      {"value": "500 €", "label": "for a motorcycle", "icon": "road"},
+      {"value": "250 €", "label": "for a moped", "icon": "road"},
+      {"value": "16 items", "label": "of documents under the Decree", "icon": "doc"}
+    ],
+    "steps": {
+      "title": "How to apply",
+      "items": [
+        {"title": "Log in to eUprava", "text": "ConsentID or a qualified certificate; service 01107 for citizens, 01108 for companies"},
+        {"title": "Documents under the Decree", "text": "Homologation, COC, preliminary contract or pro forma, dealer's authorisation, account"},
+        {"title": "Processing", "text": "Complete applications in the order received, as long as funds last"},
+        {"title": "Payment", "text": "The money goes to the seller or the leasing company"}
+      ]
+    },
+    "important": "The eUprava service is for Serbian citizens; a foreigner with residence cannot use it"
+  },
+  "ru": {
+    "hero": {"value": "5.000 €", "label": "на новый электромобиль, около 586.000 RSD"},
+    "brief": [
+      "Заявка через eUprava до 1 декабря 2026, в порядке очереди, пока есть средства",
+      "Только полностью электрические; гибриды и плагин-гибриды с 2025 года субсидию не получают",
+      "Бюджет на начало года — 170 миллионов RSD; новая сумма не объявлена"
+    ],
+    "keys": [
+      {"value": "500 €", "label": "на мотоцикл", "icon": "road"},
+      {"value": "250 €", "label": "на мопед", "icon": "road"},
+      {"value": "16 позиций", "label": "документов по постановлению", "icon": "doc"}
+    ],
+    "steps": {
+      "title": "Как подать заявку",
+      "items": [
+        {"title": "Вход на eUprava", "text": "ConsentID или квалифицированный сертификат; услуга 01107 для граждан, 01108 для фирм"},
+        {"title": "Документы", "text": "Омологация, COC, предварительный договор или проформа, полномочия дилера, реквизиты"},
+        {"title": "Рассмотрение", "text": "Правильно оформленные заявки — по очереди поступления, пока есть средства"},
+        {"title": "Выплата", "text": "Деньги получает продавец или лизинговая компания"}
+      ]
+    },
+    "important": "Услуга на eUprava — для граждан Сербии; иностранец с видом на жительство воспользоваться ею не может"
+  }
+}

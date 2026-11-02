@@ -1,0 +1,57 @@
+{
+  "cover": {"image": "smestaj-sa-punjacem", "alt": {"sr": "Gosti stižu u kamenu kuću za odmor, auto pored punjača", "en": "Guests arriving at a stone guesthouse, the car next to a charger", "ru": "Гости приезжают в каменный гостевой дом, машина у зарядки"}},
+  "sr": {
+    "brief": [
+      "Punjač je obično samo za goste i često postoji samo jedan: najavite se pri rezervaciji",
+      "Ponesite kabl Tip 2: na mnogim mestima postoji samo utičnica, bez kabla",
+      "Na spisku su samo mesta za koja sajt smeštaja ili mreža punjača kaže da gosti mogu da pune"
+    ],
+    "bars": {
+      "title": "Smeštaj sa punjačem po mestima",
+      "note": "Mesta sa najviše smeštaja na spisku",
+      "items": [
+        {"label": "Beograd", "value": 13, "display": "13"},
+        {"label": "Novi Sad", "value": 8, "display": "8"},
+        {"label": "Zlatibor", "value": 7, "display": "7"},
+        {"label": "Kopaonik", "value": 2, "display": "2"}
+      ]
+    },
+    "important": "Kad sajt ne navodi cenu punjenja, pitajte smeštaj i da li će punjač biti slobodan"
+  },
+  "en": {
+    "brief": [
+      "The charger is usually for guests only and often there is just one: tell them when you book",
+      "Bring a Type 2 cable: many places have only a socket, without a cable",
+      "Listed are only places whose website or charging network says guests can charge"
+    ],
+    "bars": {
+      "title": "Places to stay with a charger, by town",
+      "note": "The towns with the most places on the list",
+      "items": [
+        {"label": "Belgrade", "value": 13, "display": "13"},
+        {"label": "Novi Sad", "value": 8, "display": "8"},
+        {"label": "Zlatibor", "value": 7, "display": "7"},
+        {"label": "Kopaonik", "value": 2, "display": "2"}
+      ]
+    },
+    "important": "When the website gives no charging price, ask the property, and whether the charger will be free"
+  },
+  "ru": {
+    "brief": [
+      "Зарядка обычно только для гостей и часто всего одна: предупредите при бронировании",
+      "Возьмите кабель Type 2: во многих местах есть только розетка, без кабеля",
+      "В списке только места, где сайт жилья или зарядная сеть пишет, что гости могут заряжаться"
+    ],
+    "bars": {
+      "title": "Жильё с зарядкой по городам",
+      "note": "Города, где в списке больше всего мест",
+      "items": [
+        {"label": "Белград", "value": 13, "display": "13"},
+        {"label": "Novi Sad", "value": 8, "display": "8"},
+        {"label": "Zlatibor", "value": 7, "display": "7"},
+        {"label": "Kopaonik", "value": 2, "display": "2"}
+      ]
+    },
+    "important": "Если на сайте нет цены зарядки, спросите у жилья — и будет ли зарядка свободна"
+  }
+}

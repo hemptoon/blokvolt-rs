@@ -1,0 +1,84 @@
+{
+  "cover": {"image": "jeftinije-punjenje", "alt": {"sr": "Auto se puni u kućnoj garaži uveče", "en": "A car charging in a home garage in the evening", "ru": "Автомобиль заряжается в домашнем гараже вечером"}},
+  "sr": {
+    "hero": {"value": "2–4 puta", "label": "skuplji je kWh iznad 80 % baterije"},
+    "brief": [
+      "Charge&GO i Orion naplaćuju vreme: minut košta isto i na 100 kW i na 20 kW",
+      "Najjeftiniji kWh je od 10–20 % do oko 50 % baterije; do 80 % se još isplati",
+      "Punjač birajte po snazi svog auta: brži punjač je skuplji po minutu"
+    ],
+    "bars": {
+      "title": "VW ID.3 Pro, cena kWh po delu baterije",
+      "note": "Okvirno, na punjaču od 114,17 RSD/min, bez gubitaka pri punjenju",
+      "items": [
+        {"label": "10 → 50 %", "value": 53, "display": "53 RSD"},
+        {"label": "50 → 80 %", "value": 86, "display": "86 RSD"},
+        {"label": "80 → 100 %", "value": 171, "display": "171 RSD", "accent": true}
+      ]
+    },
+    "steps": {
+      "title": "Kada stati",
+      "items": [
+        {"title": "Dolazite sa 10–20 %", "text": "Tada je snaga najveća"},
+        {"title": "U gradu do 50–60 %", "text": "Posle polovine baterije snaga kod mnogih modela osetno pada"},
+        {"title": "Na putu: dve kraće stanice", "text": "Dve stanice do 60–70 % jeftinije su i brže od jedne do 100 %"},
+        {"title": "Do 100 % pred deonicu bez punjača", "text": "Iznad 80 % punjenje je i najsporije i najskuplje"}
+      ]
+    },
+    "important": "Posle kraja punjenja Charge&GO i Orion daju 15 minuta, a zatim naplaćuju 5 RSD po minutu"
+  },
+  "en": {
+    "hero": {"value": "2–4 times", "label": "more per kWh above 80 % of the battery"},
+    "brief": [
+      "Charge&GO and Orion charge for time: a minute costs the same at 100 kW and at 20 kW",
+      "The cheapest kWh is from 10–20 % to about 50 % of the battery; up to 80 % still pays",
+      "Choose a charger by the power of your car: a faster charger costs more per minute"
+    ],
+    "bars": {
+      "title": "VW ID.3 Pro, kWh price by battery part",
+      "note": "Approximate, at a 114,17 RSD/min charger, charging losses not included",
+      "items": [
+        {"label": "10 → 50 %", "value": 53, "display": "53 RSD"},
+        {"label": "50 → 80 %", "value": 86, "display": "86 RSD"},
+        {"label": "80 → 100 %", "value": 171, "display": "171 RSD", "accent": true}
+      ]
+    },
+    "steps": {
+      "title": "When to stop",
+      "items": [
+        {"title": "Arrive with 10–20 %", "text": "That is when the power is highest"},
+        {"title": "In town, up to 50–60 %", "text": "Past the middle of the battery, power drops noticeably on many models"},
+        {"title": "On a trip: two shorter stops", "text": "Two stops to 60–70 % are cheaper and faster than one to 100 %"},
+        {"title": "100 % only when needed", "text": "Only before a stretch without chargers; above 80 % is slowest and dearest"}
+      ]
+    },
+    "important": "After charging ends, Charge&GO and Orion give you 15 minutes and then charge 5 RSD per minute"
+  },
+  "ru": {
+    "hero": {"value": "в 2–4 раза", "label": "дороже кВт·ч выше 80 % батареи"},
+    "brief": [
+      "Charge&GO и Orion берут плату за время: минута стоит одинаково и на 100 кВт, и на 20 кВт",
+      "Самый дешёвый кВт·ч — от 10–20 % примерно до 50 % батареи; до 80 % ещё выгодно",
+      "Зарядку выбирайте по мощности своей машины: быстрая станция дороже за минуту"
+    ],
+    "bars": {
+      "title": "VW ID.3 Pro, цена кВт·ч по части батареи",
+      "note": "Ориентировочно, на станции 114,17 RSD/мин, без потерь при зарядке",
+      "items": [
+        {"label": "10 → 50 %", "value": 53, "display": "53 RSD"},
+        {"label": "50 → 80 %", "value": 86, "display": "86 RSD"},
+        {"label": "80 → 100 %", "value": 171, "display": "171 RSD", "accent": true}
+      ]
+    },
+    "steps": {
+      "title": "Когда остановиться",
+      "items": [
+        {"title": "Приезжайте с 10–20 %", "text": "Тогда мощность самая высокая"},
+        {"title": "В городе до 50–60 %", "text": "После половины батареи мощность у многих моделей заметно падает"},
+        {"title": "В поездке — две остановки", "text": "Две короткие зарядки до 60–70 % дешевле и быстрее, чем одна до 100 %"},
+        {"title": "До 100 % — только при нужде", "text": "Перед участком без зарядок; выше 80 % зарядка самая медленная и дорогая"}
+      ]
+    },
+    "important": "После окончания зарядки Charge&GO и Orion дают 15 минут, а затем берут 5 RSD за минуту"
+  }
+}

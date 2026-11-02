@@ -1,0 +1,23 @@
+{
+  "sr": {
+    "hero": {"value": "24 od 36", "label": "državnih punjača na autoputevima radi"},
+    "brief": [
+      "Punjenje je besplatno i pokreće se u aplikaciji Orion eMobility",
+      "7 punjača trenutno ne radi, a 5 je u postupku priključenja na mrežu"
+    ]
+  },
+  "en": {
+    "hero": {"value": "24 of 36", "label": "state chargers on motorways are working"},
+    "brief": [
+      "Charging is free and is started in the Orion eMobility app",
+      "7 chargers are currently out of service and 5 are being connected to the grid"
+    ]
+  },
+  "ru": {
+    "hero": {"value": "24 из 36", "label": "госзарядок на автомагистралях работают"},
+    "brief": [
+      "Зарядка бесплатная и запускается в приложении Orion eMobility",
+      "7 зарядок временно не работают, а 5 подключаются к сети"
+    ]
+  }
+}

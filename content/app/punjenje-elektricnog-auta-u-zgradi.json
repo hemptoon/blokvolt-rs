@@ -1,0 +1,87 @@
+{
+  "cover": {"image": "punjenje-u-zgradi", "alt": {"sr": "Beli električni auto se puni u podzemnoj garaži zgrade", "en": "A white electric car charging in a building's underground garage", "ru": "Белый электромобиль заряжается в подземном паркинге дома"}},
+  "sr": {
+    "hero": {"value": "4–7 RSD", "label": "oko toliko košta noćni kWh kod kuće"},
+    "brief": [
+      "Punjenje u garaži zgrade je legalno i ne traži licencu",
+      "Treba namenska linija sa zaštitom, MID brojilo i, za zajedničke delove, odluka skupštine",
+      "Ugradnja traje jedan dan, a sa odlukom skupštine ceo postupak 4–10 nedelja"
+    ],
+    "keys": [
+      {"value": "43–79 RSD", "label": "kWh na brzim javnim punjačima", "icon": "bolt"},
+      {"value": "100–180 km", "label": "dometa preko noći iz pojačane utičnice", "icon": "plug"},
+      {"value": "11 kW", "label": "wallbox, traži trofazni priključak", "icon": "bolt"}
+    ],
+    "steps": {
+      "title": "Od procene do punjenja",
+      "items": [
+        {"title": "Procena na lokaciji", "text": "Instalacija, snaga i put kabla; dobijate tačnu ponudu"},
+        {"title": "Papiri", "text": "Za skupštinu, vlasnika ili samo ugovor, često po šablonu izvođača"},
+        {"title": "Ugradnja za jedan radni dan", "text": "Namenska linija, FID zaštita tip A + DC, MID brojilo i atest"},
+        {"title": "Mesečni obračun", "text": "Po brojilu i ceni iz računa EPS-a, bez marže"}
+      ]
+    },
+    "important": "Ne punite preko produžnog kabla: šuko utičnica nije pravljena za sate neprekidnog opterećenja",
+    "paths": [
+      {"title": "Mesto u zgradi", "text": "Linija kroz zajedničke delove: treba odluka skupštine", "url": "https://www.blokvolt.rs/punjac-u-zgradi-skupstina"},
+      {"title": "Iznajmljena garaža", "text": "Dovoljna je pisana saglasnost vlasnika", "url": "https://www.blokvolt.rs/punjac-u-iznajmljenoj-garazi"},
+      {"title": "Ko plaća struju", "text": "Nadoknada po MID brojilu i ceni iz računa EPS-a, bez marže", "url": "https://www.blokvolt.rs/ko-placa-struju-za-punjenje"}
+    ]
+  },
+  "en": {
+    "hero": {"value": "4–7 RSD", "label": "about what a night-time kWh costs at home"},
+    "brief": [
+      "Charging in a building's garage is legal and requires no licence",
+      "You need a dedicated circuit, a MID-certified meter and, for common parts, an assembly decision",
+      "Installation takes one day; with an assembly decision the whole process takes 4–10 weeks"
+    ],
+    "keys": [
+      {"value": "43–79 RSD", "label": "per kWh at public fast chargers", "icon": "bolt"},
+      {"value": "100–180 km", "label": "of range overnight, reinforced socket", "icon": "plug"},
+      {"value": "11 kW", "label": "wallbox, needs a three-phase connection", "icon": "bolt"}
+    ],
+    "steps": {
+      "title": "From assessment to charging",
+      "items": [
+        {"title": "On-site assessment", "text": "The installation, the power and the cable route; you get an exact quote"},
+        {"title": "Paperwork", "text": "For the assembly, the owner or just a contract, often from the installer's template"},
+        {"title": "Installation in one working day", "text": "Dedicated circuit, type A + DC RCD protection, MID-certified meter, test certificate"},
+        {"title": "Monthly billing", "text": "By the meter at the price on the EPS bill, with no markup"}
+      ]
+    },
+    "important": "Do not charge through an extension cord: a Schuko socket is not made for hours of continuous load",
+    "paths": [
+      {"title": "A space in the building", "text": "Circuit through common parts: an assembly decision is needed", "url": "https://www.blokvolt.rs/en/punjac-u-zgradi-skupstina"},
+      {"title": "A rented garage", "text": "The owner's written consent is enough", "url": "https://www.blokvolt.rs/en/punjac-u-iznajmljenoj-garazi"},
+      {"title": "Who pays for the electricity", "text": "Reimbursed by the MID-certified meter at the EPS bill price, no markup", "url": "https://www.blokvolt.rs/en/ko-placa-struju-za-punjenje"}
+    ]
+  },
+  "ru": {
+    "hero": {"value": "4–7 RSD", "label": "примерно столько стоит ночной кВт·ч дома"},
+    "brief": [
+      "Зарядка в паркинге многоквартирного дома законна и не требует лицензии",
+      "Нужны отдельная линия с защитой, счётчик MID и, для общих частей, решение собрания жильцов",
+      "Установка занимает один день, а с решением собрания вся процедура — 4–10 недель"
+    ],
+    "keys": [
+      {"value": "43–79 RSD", "label": "за кВт·ч на быстрых публичных зарядках", "icon": "bolt"},
+      {"value": "100–180 км", "label": "запаса хода за ночь от усиленной розетки", "icon": "plug"},
+      {"value": "11 кВт", "label": "wallbox, нужно трёхфазное подключение", "icon": "bolt"}
+    ],
+    "steps": {
+      "title": "От осмотра до зарядки",
+      "items": [
+        {"title": "Осмотр на месте", "text": "Проводка, мощность и трасса кабеля; вы получаете точный расчёт"},
+        {"title": "Документы", "text": "Для собрания, владельца или просто договор, часто по шаблону подрядчика"},
+        {"title": "Установка за один рабочий день", "text": "Отдельная линия, УЗО типа A + DC, счётчик MID и атест"},
+        {"title": "Ежемесячный расчёт", "text": "По счётчику и по цене из счёта EPS, без наценки"}
+      ]
+    },
+    "important": "Не заряжайте через удлинитель: розетка Schuko не рассчитана на многочасовую непрерывную нагрузку",
+    "paths": [
+      {"title": "Место в доме", "text": "Линия через общие части: нужно решение собрания жильцов", "url": "https://www.blokvolt.rs/ru/punjac-u-zgradi-skupstina"},
+      {"title": "Арендованный гараж", "text": "Достаточно письменного согласия владельца", "url": "https://www.blokvolt.rs/ru/punjac-u-iznajmljenoj-garazi"},
+      {"title": "Кто платит за электричество", "text": "Возмещение по счётчику MID и цене из счёта EPS, без наценки", "url": "https://www.blokvolt.rs/ru/ko-placa-struju-za-punjenje"}
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "cover": {"image": "racun-u-zgradi", "alt": {"sr": "Dvoje komšija u ulazu zgrade gledaju račun i telefon", "en": "Two neighbours in a building entrance looking at a bill and a phone", "ru": "Двое соседей в подъезде смотрят на счёт и телефон"}},
+  "sr": {
+    "brief": [
+      "Kad je punjač na zajedničkom brojilu, struju za tuđi auto plaća cela zgrada",
+      "Overeno MID brojilo meri samo to mesto; vlasnik auta plaća po ceni sa računa, bez marže"
+    ]
+  },
+  "en": {
+    "brief": [
+      "When a charger runs off the shared meter, the whole building pays for someone else's car",
+      "A certified MID meter measures only that point; the owner pays at the bill price, no markup"
+    ]
+  },
+  "ru": {
+    "brief": [
+      "Когда зарядка подключена к общему счётчику, за чужой автомобиль платит весь дом",
+      "Счётчик MID учитывает только это место; владелец платит по цене из счёта, без наценки"
+    ]
+  }
+}
