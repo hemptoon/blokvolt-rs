@@ -34,7 +34,9 @@ def is_plural_en(v):
 
 
 def sig(s):
-    return (sorted(PH.findall(s)), sorted(TAG.findall(s)), sorted(ENT.findall(s)))
+    # pool 4 (10.11.2026): {city_u}/{country_u} may replace {city}/{country} in any language
+    ph = [p.replace('{city_u}', '{city}').replace('{country_u}', '{country}') for p in PH.findall(s)]
+    return (sorted(ph), sorted(TAG.findall(s)), sorted(ENT.findall(s)))
 
 
 def cmp_text(where, en, tr):
@@ -95,11 +97,12 @@ def walk(where, en, tr):
 p = HERE / 'texts.json'
 if p.exists():
     t = json.loads(p.read_text())
-    if set(t) != {'about_data', 'download', 'sources_pages'}:
-        errors.append('texts.json: top keys must be about_data, download, sources_pages')
+    # pool 3, 23:55: sources_pages.json is not translated; texts.json = about_data + download
+    if set(t) != {'about_data', 'download'}:
+        errors.append('texts.json: top keys must be about_data, download')
     for n in ('about_data', 'download'):
         walk(f'texts.{n}', json.loads((WORLD / f'{n}.json').read_text())['en'], t.get(n))
-    walk('texts.sources_pages', json.loads((WORLD / 'sources_pages.json').read_text()), t.get('sources_pages'))
+    if False: walk('texts.sources_pages', json.loads((WORLD / 'sources_pages.json').read_text()), t.get('sources_pages'))
 else:
     errors.append('texts.json missing')
 

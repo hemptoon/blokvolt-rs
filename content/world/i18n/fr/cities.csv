@@ -847,7 +847,7 @@ geonameid,name,in_phrase,decl_ok,note
 3037157,Arcueil,à Arcueil,1,
 3038712,Achères,à Achères,1,
 2950159,Berlin,à Berlin,1,
-2758401,Bréda,à Bréda,1,exonyme FR
+2758401,Breda,à Breda,1,exonyme FR; R-FR: forme moderne
 2747373,La Haye,à La Haye,1,exonyme FR; article conservé
 2756253,Eindhoven,à Eindhoven,1,
 2747891,Rotterdam,à Rotterdam,1,
@@ -857,7 +857,7 @@ geonameid,name,in_phrase,decl_ok,note
 2643743,Londres,à Londres,1,exonyme FR
 2743477,Zwolle,à Zwolle,1,
 2745912,Utrecht,à Utrecht,1,
-2746301,Tilbourg,à Tilbourg,1,exonyme FR
+2746301,Tilburg,à Tilburg,1,exonyme FR; R-FR: forme moderne
 2758012,Capelle aan den IJssel,à Capelle aan den IJssel,1,
 593116,Vilnius,à Vilnius,1,
 2750053,Nimègue,à Nimègue,1,exonyme FR
@@ -878,7 +878,7 @@ geonameid,name,in_phrase,decl_ok,note
 2886242,Cologne,à Cologne,1,exonyme FR
 2756669,Dordrecht,à Dordrecht,1,
 2747596,Schiedam,à Schiedam,1,
-2748000,Ruremonde,à Ruremonde,1,exonyme FR
+2748000,Roermond,à Roermond,1,exonyme FR; R-FR: forme moderne
 2879139,Leipzig,à Leipzig,1,
 2756987,Deventer,à Deventer,1,
 2755420,Gouda,à Gouda,1,
@@ -1063,7 +1063,7 @@ geonameid,name,in_phrase,decl_ok,note
 2877648,Limbourg-sur-la-Lahn,à Limbourg-sur-la-Lahn,1,exonyme FR
 2949186,Bielefeld,à Bielefeld,1,
 2890158,Kitzingen,à Kitzingen,1,
-2892518,Cassel,à Cassel,1,exonyme FR
+2892518,Kassel,à Kassel,1,exonyme FR; R-FR: forme moderne
 3143244,Oslo,à Oslo,1,
 2952984,Bamberg,à Bamberg,1,
 2874545,Magdebourg,à Magdebourg,1,exonyme FR
@@ -1228,7 +1228,7 @@ geonameid,name,in_phrase,decl_ok,note
 2873759,Marbourg,à Marbourg,1,exonyme FR
 2895569,Itzehoe,à Itzehoe,1,
 2754073,Hillegom,à Hillegom,1,
-2875392,Ludwigsbourg,à Ludwigsbourg,1,exonyme FR
+2875392,Ludwigsburg,à Ludwigsburg,1,exonyme FR; R-FR: forme moderne
 2936871,Dinslaken,à Dinslaken,1,
 2947444,Böblingen,à Böblingen,1,
 3104499,Vitoria,à Vitoria,1,exonyme FR
