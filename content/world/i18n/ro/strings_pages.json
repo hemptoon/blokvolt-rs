@@ -65,7 +65,7 @@
  "p6": "AC, putere nespecificată",
  "p7": "DC, putere nespecificată",
  "p_ac": "Încărcătoare AC: {ac}. Nu sunt enumerate aici unul câte unul; harta le arată pe toate.",
- "p_city_cmp": "Încărcătoare rapide DC de la 50 kW la fiecare 10 locații publice: {city} aici, față de {country} în medie în {country_name}.",
+ "p_city_cmp": "Încărcătoare rapide DC de la 50 kW la fiecare 10 locații publice: {city} aici, față de media de {country} din {country_name}.",
  "p_dc": "Încărcare rapidă DC de la 50 kW: {dc} ({pct_dc}); 150 kW sau mai mult: {hpc}.",
  "p_gnet": "Rețeaua {net} este prezentă în {n_countries}.",
  "p_hub": "Țările cu cel puțin 100 de locații publice cu fiabilitate medie sau ridicată au o pagină. Balcanii de Vest sunt acoperiți de paginile BlokVolt ale fiecărei țări.",

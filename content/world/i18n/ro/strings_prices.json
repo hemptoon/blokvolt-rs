@@ -25,7 +25,7 @@
  "chart_desc": "Grafic cu bare, EUR pe kWh: indicele DC 50–149 kW și prețul energiei electrice pentru gospodării în fiecare țară cu indice. Aceleași cifre se află în tabelul de mai jos.",
  "chart_eur": "EUR pe kWh, la cursul BCE din {date}",
  "lg_dc": "DC public, ad-hoc",
- "lg_home": "Energie acasă",
+ "lg_home": "Curent acasă",
  "h_table": "Prețuri pe țări",
  "th_country": "Țară",
  "th_ac": "AC",
