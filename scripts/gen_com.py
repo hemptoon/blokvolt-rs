@@ -557,6 +557,7 @@ def main():
     __import__('world_prices').run(sys.modules[__name__], wc)  # G3: price index and price pages (with the world layer only)
     __import__('world_pay').run(sys.modules[__name__], wc)  # G4: how to pay + routes (with the world layer only)
     __import__('world_press').run(sys.modules[__name__], wc)  # G7: monthly issue of the index, /press/, embeds, archive CSV
+    import world_b2b; world_b2b.run(sys.modules[__name__], wc)  # G10: /data-for-business/ (EN/SR/RU) with the request form
     bad = link_check()
     files = [p for p in OUT.rglob('*') if p.is_file()]
     print(f'blokvolt.com: {len(URLS)} pages in the sitemap, {len(files)} files, {n_companies} companies, {n_sources} English sources; broken links: {len(bad)}')

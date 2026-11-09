@@ -63,7 +63,7 @@ def footer(l):
     T = load_strings()[l]
     return {'h': T['ft_h'], 'links': [(ABOUT_DATA[l], T['ft_about_data']), (DOWNLOAD[l], T['ft_download']),
                                       (SHELL['sources'][l], T['ft_sources']), (SHELL['methodology'][l], T['ft_method']),
-                                      (SHELL['about'][l], T['ft_about'])] + ([PRESS[l]] if PRESS else [])}
+                                      (SHELL['about'][l], T['ft_about'])] + ([PRESS[l]] if PRESS else []) + __import__('world_b2b').footer_link(l)}
 
 
 def run(G, c):
