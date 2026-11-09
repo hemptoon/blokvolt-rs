@@ -1,0 +1,140 @@
+# R-FI — вычитка финского мирового слоя (10.11.2026, пул 4)
+
+База `origin/l-fi` (1746b12), ветка `r-fi`. Редактор — независимая сессия.
+
+## Итог
+- Строки: просмотрены все 403. Исправлено **30**.
+- Страны: просмотрены все 150 (`name`, `in_phrase`). Исправлений нет: инессив/адессив верны (острова и Venäjä — адессив; Bosnia ja Hertsegovinassa, Trinidad ja Tobagossa — норма Kotus).
+- Города: все 80 финских и первые 520 из `stage = month` (порядок файла; в `places-2026-11-09.json` нет счётчиков мест). Исправлено **71** строк, `decl_ok=1` стало 3 516 (было 3 449).
+- Слаги: естественные, ASCII, пересечений с `content/com/local/*` и EN/SR/RU нет (`/fi/` занят только миром). Без изменений.
+- `check.py`: 0 ошибок. В `sig()` добавлено: `{city_u}`/`{country_u}` равны `{city}`/`{country}` (решение основной сессии 00:12).
+
+## Что и почему в строках
+- «data from {d}» → «Tilanne {d}»: «Tiedot 9.11.2026» по-фински не читается.
+- `sources_n` → «Lähteitä: {n}» (было «{n} lähdettä» — ломается при n = 1; контракт требует нейтральную конструкцию).
+- «from 50 kW» → «vähintään 50 kW»: «DC 50 kW:sta» без «alkaen» в чипах и таблицах читается как «из 50 кВт».
+- `d_city` → `{city_u}`: «Julkiset latauspaikat Helsingissä…» вместо тире.
+- `p_city_cmp`: убран номинатив после «maassa» («maassa Saksa»).
+- `p_hub`: порядок слов давал смысл «страны покрывают страницы».
+- `about_p`: «maksettuja näkyvyyksiä» неестественно → «maksullista näkyvyyttä»; «pisteytyksiä» → «luokituksia» (ближе к «ratings»).
+- Кнопки/чипы длиннее EN × 1,4 укорочены: «Verkko», «Suodatus», «Nollaa suodattimet», «ilman alv:tä».
+- Прочее: `no_map` («ladata» = и «зарядить»), `th_month`, `too_few`, `pr_mixed` («sekalainen» = «беспорядочный»).
+
+## Города
+- Французские и многословные названия с надёжной формой переведены из «kaupungissa X» в склонение: Perpignanissa, Angers'ssa, Poitiers'ssa, Béziers'ssä (апостроф по Kotus для немого конца), Le Mansissa, 's-Hertogenboschissa, Mülheim an der Ruhrissa и т. п.
+- Rhodes → экзоним **Rodos**, «Rodoksen kaupungissa» (Rodoksella = на острове).
+- Гармония: Eupenissa, Cambridgessa, Venrayssa, Veveyssä. Голландские ui/eu считаются передними (Huizenissä, Leuvenissä) — оставлено.
+
+## Спорное (оставлено как есть)
+- Длиннее EN × 1,4 без хорошей короткой замены: «Käyttöoikeus», «Lisäasetukset», «Viimeksi vahvistettu», «Kaupunki», «Paikallinen», «Kertahinta». Финские сложные слова длиннее; вёрстке нужен перенос (`hyphens: auto`, `lang="fi"`).
+- Обращение: безличный пассив + императив в кнопках — оставлено, это норма финских интерфейсов.
+- Немые французские окончания (Limoges, Nîmes, Troyes, Vannes, Amiens) — оставлены на «kaupungissa X», `decl_ok = 0`.
+
+## Полный список правок
+- `strings_map.no_map`: Karttaa ei voi ladata tässä selaimessa. → **Karttaa ei voi näyttää tässä selaimessa.**
+- `strings_map.sources_n`: {n} lähdettä → **Lähteitä: {n}**
+- `strings_map.data_date`: Tiedot {d} → **Tilanne {d}**
+- `strings_map.c_price_note`: Hinta {d}; tämän paikan hinta voi poiketa — tarkista sovelluksesta tai laturista. → **Hinta tarkistettu {d}; tämän paikan hinta voi poiketa — tarkista sovelluksesta tai laturista.**
+- `strings_pages.d_city`: Julkiset latauspaikat avoimesta datasta – {city}: DC-pikalaturit tehoineen ja liittimineen, latausverkot, lähikaupungit. → **Julkiset latauspaikat {city_u} avoimesta datasta: DC-pikalaturit tehoineen ja liittimineen, latausverkot, lähikaupungit.**
+- `strings_pages.data_from`: Tiedot {date} mukaan → **Tilanne {date}**
+- `strings_pages.ft_checked`: tiedot → **tilanne**
+- `strings_pages.st_dc50`: DC 50 kW:sta → **DC vähintään 50 kW**
+- `strings_pages.th_dc50`: DC 50 kW:sta → **DC vähintään 50 kW**
+- `strings_pages.p_dc`: DC-pikalataus 50 kW:sta: {dc} ({pct_dc}); 150 kW tai enemmän: {hpc}. → **DC-pikalataus vähintään 50 kW:n teholla: {dc} ({pct_dc}); 150 kW tai enemmän: {hpc}.**
+- `strings_pages.p_city_cmp`: DC-pikalatureita 50 kW:sta 10:tä julkista latauspaikkaa kohden: täällä {city}, maassa {country_name} keskimäärin {country}. → **Vähintään 50 kW:n DC-pikalatureita 10:tä julkista latauspaikkaa kohden: täällä {city}, koko maassa ({country_name}) keskimäärin {country}.**
+- `strings_pages.p_hub`: Sivu on niillä mailla, joissa on vähintään 100 julkista latauspaikkaa, joiden luotettavuus on keskitasoa tai korkea. Länsi-Balkanin maat kattavat kunkin maan BlokVolt-sivut. → **Sivu on niillä mailla, joissa on vähintään 100 julkista latauspaikkaa, joiden luotettavuus on keskitasoa tai korkea. Länsi-Balkanin maista kerrotaan kunkin maan omilla BlokVolt-sivuilla.**
+- `strings_shell.about_p`: BlokVolt on riippumaton sähköautojen latausta käsittelevä tietolähde, jota sen perustajat Andrei ja Danila ylläpitävät Novi Sadissa Serbiassa. Ei maksettuja näkyvyyksiä eikä latausverkkojen pisteytyksiä. → **BlokVolt on riippumaton sähköautojen latausta käsittelevä tietolähde, jota sen perustajat Andrei ja Danila ylläpitävät Novi Sadissa, Serbiassa. Ei maksullista näkyvyyttä eikä latausverkkojen luokituksia.**
+- `strings_prices.st_hpc`: HPC 150 kW:sta, per kWh → **HPC vähintään 150 kW, per kWh**
+- `strings_prices.m2`: Luokat: AC; DC 50–149 kW; HPC 150 kW:sta. Latausverkko, jolla on yksi hinta kaikelle DC-lataukselle, otetaan mukaan sekä DC- että HPC-luokkaan. Jos verkon ylin luokka alkaa 50 tai 60 kW:sta, hinta lasketaan vain DC-luokkaan. → **Luokat: AC; DC 50–149 kW; HPC vähintään 150 kW. Latausverkko, jolla on yksi hinta kaikelle DC-lataukselle, otetaan mukaan sekä DC- että HPC-luokkaan. Jos verkon ylin luokka alkaa 50 tai 60 kW:sta, hinta lasketaan vain DC-luokkaan.**
+- `strings_prices.n_places`: Julkiset paikat BlokVoltin kartalla: {all}; DC 50 kW:sta: {dc}; 150 kW:sta: {hpc}. → **Julkiset paikat BlokVoltin kartalla: {all}; DC vähintään 50 kW: {dc}; vähintään 150 kW: {hpc}.**
+- `strings_prices.too_few`: Liian vähän latausverkkoja, joilla on julkaistu kertahinta, indeksiin — katso maasivu → **Indeksiin ei ole tarpeeksi latausverkkoja, joilla on julkaistu kertahinta — katso maasivu**
+- `strings_prices.th_month`: Kuukaudessa → **Kuukausimaksu**
+- `strings_prices.pr_mixed`: Sekalainen → **Yhdistelmä**
+- `strings_prices.profiles_note`: Auto: {car}, {cons} kWh / 100 km (arvio, leuto sää, akusta otettu energia; latauksen aikaisia häviöitä ei ole laskettu mukaan). Latauksen osuudet: ”kotilaturi” {p1}; ”sekalainen” {p2}; ”ei kotilaturia” {p3}. Maiden hinnat yllä olevasta taulukosta. → **Auto: {car}, {cons} kWh / 100 km (arvio, leuto sää, akusta otettu energia; latauksen aikaisia häviöitä ei ole laskettu mukaan). Latauksen osuudet: ”kotilaturi” {p1}; ”yhdistelmä” {p2}; ”ei kotilaturia” {p3}. Maiden hinnat yllä olevasta taulukosta.**
+- `2758012`: Capelle aan den IJssel | kaupungissa Capelle aan den IJssel | 0 → **Capelle aan den IJsselissä**
+- `2759879`: Almere Stad | kaupungissa Almere Stad | 0 → **Almere Stadissa**
+- `3345437`: Camden Town | kaupungissa Camden Town | 0 → **Camden Townissa**
+- `2633655`: Woodford Green | kaupungissa Woodford Green | 0 → **Woodford Greenissä**
+- `2747351`: 's-Hertogenbosch | kaupungissa 's-Hertogenbosch | 0 → **'s-Hertogenboschissa**
+- `2759145`: Bergen op Zoom | kaupungissa Bergen op Zoom | 0 → **Bergen op Zoomissa**
+- `2759875`: Alphen aan den Rijn | kaupungissa Alphen aan den Rijn | 0 → **Alphen aan den Rijnissä**
+- `2925177`: Freiburg im Breisgau | kaupungissa Freiburg im Breisgau | 0 → **Freiburg im Breisgaussa**
+- `2745634`: Venray | Venrayssä | 1 → **Venrayssa**
+- `2987914`: Perpignan | kaupungissa Perpignan | 0 → **Perpignanissa**
+- `2749182`: Oud-Beijerland | kaupungissa Oud-Beijerland | 0 → **Oud-Beijerlandissa**
+- `3037656`: Angers | kaupungissa Angers | 0 → **Angers'ssa**
+- `6929992`: Berkel en Rodenrijs | kaupungissa Berkel en Rodenrijs | 0 → **Berkel en Rodenrijsissa**
+- `2986495`: Poitiers | kaupungissa Poitiers | 0 → **Poitiers'ssa**
+- `2747364`: 's-Gravenzande | kaupungissa 's-Gravenzande | 0 → **'s-Gravenzandessa**
+- `2994160`: Metz | kaupungissa Metz | 0 → **Metzissä**
+- `3029241`: Caen | kaupungissa Caen | 0 → **Caenissa**
+- `2752264`: Krimpen aan den IJssel | kaupungissa Krimpen aan den IJssel | 0 → **Krimpen aan den IJsselissä**
+- `3032833`: Béziers | kaupungissa Béziers | 0 → **Béziers'ssä**
+- `2750121`: Nieuw-Vennep | kaupungissa Nieuw-Vennep | 0 → **Nieuw-Vennepissä**
+- `2879185`: Leinfelden-Echterdingen | kaupungissa Leinfelden-Echterdingen | 0 → **Leinfelden-Echterdingenissä**
+- `2753010`: Katwijk aan Zee | kaupungissa Katwijk aan Zee | 0 → **Katwijk aan Zeessä**
+- `2980291`: Saint-Étienne | kaupungissa Saint-Étienne | 0 → **Saint-Étiennessä**
+- `2877648`: Limburg an der Lahn | kaupungissa Limburg an der Lahn | 0 → **Limburg an der Lahnissa**
+- `2993002`: Montauban | kaupungissa Montauban | 0 → **Montaubanissa**
+- `2950349`: Bergisch Gladbach | kaupungissa Bergisch Gladbach | 0 → **Bergisch Gladbachissa**
+- `2978640`: Saint-Malo | kaupungissa Saint-Malo | 0 → **Saint-Malossa**
+- `2867838`: Mülheim an der Ruhr | kaupungissa Mülheim an der Ruhr | 0 → **Mülheim an der Ruhrissa**
+- `3033123`: Besançon | kaupungissa Besançon | 0 → **Besançonissa**
+- `3038261`: Albi | kaupungissa Albi | 0 → **Albissa**
+- `2988358`: Pau | kaupungissa Pau | 0 → **Paussa**
+- `2940231`: Castrop-Rauxel | kaupungissa Castrop-Rauxel | 0 → **Castrop-Rauxelissa**
+- `3036784`: Arras | kaupungissa Arras | 0 → **Arrasissa**
+- `2798573`: Eupen | Eupenissä | 1 → **Eupenissa**
+- `2992703`: Montélimar | kaupungissa Montélimar | 0 → **Montélimarissa**
+- `2749812`: Noordwijk-Binnen | kaupungissa Noordwijk-Binnen | 0 → **Noordwijk-Binnenissä**
+- `2881646`: Landau in der Pfalz | kaupungissa Landau in der Pfalz | 0 → **Landau in der Pfalzissa**
+- `2813040`: Weiden in der Oberpfalz | kaupungissa Weiden in der Oberpfalz | 0 → **Weiden in der Oberpfalzissa**
+- `2751456`: Loon op Zand | kaupungissa Loon op Zand | 0 → **Loon op Zandissa**
+- `2787889`: Roeselare | kaupungissa Roeselare | 0 → **Roeselaressa**
+- `3030300`: Brest | kaupungissa Brest | 0 → **Brestissä**
+- `2754408`: Hendrik-Ido-Ambacht | kaupungissa Hendrik-Ido-Ambacht | 0 → **Hendrik-Ido-Ambachtissa**
+- `2880144`: Lauf an der Pegnitz | kaupungissa Lauf an der Pegnitz | 0 → **Lauf an der Pegnitzissä**
+- `2814791`: Waldshut-Tiengen | kaupungissa Waldshut-Tiengen | 0 → **Waldshut-Tiengenissä**
+- `2881509`: Landsberg am Lech | kaupungissa Landsberg am Lech | 0 → **Landsberg am Lechissä**
+- `2757220`: Den Helder | kaupungissa Den Helder | 0 → **Den Helderissä**
+- `2817202`: Vilshofen an der Donau | kaupungissa Vilshofen an der Donau | 0 → **Vilshofen an der Donaussa**
+- `2991214`: Mulhouse | kaupungissa Mulhouse | 0 → **Mulhousessa**
+- `3021670`: Dax | kaupungissa Dax | 0 → **Daxissa**
+- `2842884`: Rüsselsheim am Main | kaupungissa Rüsselsheim am Main | 0 → **Rüsselsheim am Mainissa**
+- `2864549`: Neumarkt in der Oberpfalz | kaupungissa Neumarkt in der Oberpfalz | 0 → **Neumarkt in der Oberpfalzissa**
+- `2868506`: Mühldorf am Inn | kaupungissa Mühldorf am Inn | 0 → **Mühldorf am Innissä**
+- `3006787`: La Rochelle | kaupungissa La Rochelle | 0 → **La Rochellessa**
+- `2817220`: Villingen-Schwenningen | kaupungissa Villingen-Schwenningen | 0 → **Villingen-Schwenningenissä**
+- `2747227`: Sint-Oedenrode | kaupungissa Sint-Oedenrode | 0 → **Sint-Oedenrodessa**
+- `255683`: Patras | kaupungissa Patras | 0 → **Patrasissa**
+- `3104499`: Vitoria-Gasteiz | kaupungissa Vitoria-Gasteiz | 0 → **Vitoria-Gasteizissa**
+- `2953324`: Bad Tölz | kaupungissa Bad Tölz | 0 → **Bad Tölzissä**
+- `3003603`: Le Mans | kaupungissa Le Mans | 0 → **Le Mansissa**
+- `598098`: Klaipėda | kaupungissa Klaipėda | 0 → **Klaipėdassa**
+- `2953416`: Bad Kreuznach | kaupungissa Bad Kreuznach | 0 → **Bad Kreuznachissa**
+- `2864034`: Neustadt in Holstein | kaupungissa Neustadt in Holstein | 0 → **Neustadt in Holsteinissa**
+- `2922530`: Garmisch-Partenkirchen | kaupungissa Garmisch-Partenkirchen | 0 → **Garmisch-Partenkirchenissä**
+- `3024297`: Colmar | kaupungissa Colmar | 0 → **Colmarissa**
+- `3032797`: Biarritz | kaupungissa Biarritz | 0 → **Biarritzissa**
+- `2642465`: Milton Keynes | kaupungissa Milton Keynes | 0 → **Milton Keynesissä**
+- `400666`: Rhodes | kaupungissa Rhodes → **Rodos | Rodoksen kaupungissa**
+- `2653941`: Cambridge | Cambridgessä | 1 → **Cambridgessa**
+- `2658145`: Vevey | Veveyssa | 1 → **Veveyssä**
+- `4931972`: Cambridge | kaupungissa Cambridge | 0 → **Cambridgessa**
+- `5913695`: Cambridge | kaupungissa Cambridge | 0 → **Cambridgessa**
+- `strings_map.f_net`: Latausverkko → **Verkko**
+- `strings_map.c_net`: Latausverkko → **Verkko**
+- `strings_map.reset`: Tyhjennä suodattimet → **Nollaa suodattimet**
+- `strings_map.filters`: Suodattimet → **Suodatus**
+- `strings_map.filters_show`: Näytä suodattimet → **Näytä suodatus**
+- `strings_pages.k_network`: Latausverkko → **Verkko**
+- `strings_pages.th_net`: Latausverkko → **Verkko**
+- `strings_prices.th_net`: Latausverkko → **Verkko**
+- `strings_prices.th_nets`: Latausverkot → **Verkot**
+- `strings_prices.vat_no`: ilman arvonlisäveroa → **ilman alv:tä**
+
+## Обратный перевод
+Отдельный агент перевёл 40 изменённых строк обратно в EN: смысловых расхождений 0. Найдена 1 ошибка гармонии (Berkel en Rodenrijsissa), она исправлена. Добавлена запятая в `about_p` («Novi Sadissa, Serbiassa»).
+
+## Замечание
+В `texts.json` есть `sources_pages`, хотя по уточнению 23:55 его не переводят. Ветка оставляет его как есть: движку K8 стоит этот блок игнорировать.

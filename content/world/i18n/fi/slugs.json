@@ -1,0 +1,13 @@
+{
+ "home": "/fi/",
+ "map": "/fi/kartta/",
+ "hub": "/fi/latausasemat/",
+ "net": "verkko",
+ "about": "tietoa-datasta",
+ "download": "lataa-data",
+ "gnet": "/fi/latausverkot/",
+ "prices": "/fi/lataushinnat/",
+ "shell_about": "/fi/tietoa/",
+ "sources": "/fi/lahteet/",
+ "methodology": "/fi/menetelmat/"
+}
