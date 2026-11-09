@@ -945,11 +945,11 @@
   // every station gets one — the network's (kako.steps) or a general one from what is known about the place. Same as map.js howOf.
   function howOf(s) {
     if (s.cc) return null;
-    var n = netOf(s), k = n && n.kako, ax = s.ax || {}, fee = (s.fee && s.fee.free) || '';
+    var n = netOf(s), k = (n && n.kako) || s.kako, ax = s.ax || {}, fee = (s.fee && s.fee.free) || '';
     var onlyAc = !s.dc && (s.c.length ? s.c.every(function (c) { return c[1] === 'ac'; }) : !!s.ac);
     var acCable = onlyAc && !(s.cab && s.cab.own) ? [['cable', T('hw_g_cable')]] : [];
     if (k && k.steps) {
-      return { k: 'net', name: n.name, steps: k.steps.map(function (x) { return [x.i, tr(x.t)]; }), facts: (k.facts || []).filter(function (x) { return !(x.i === 'cable' && s.cab && s.cab.own); }).map(function (x) { return [x.i, tr(x.t)]; }), kako: k };
+      return { k: 'net', name: n && n.kako ? n.name : (s.opn || ''), steps: k.steps.map(function (x) { return [x.i, tr(x.t)]; }), facts: (k.facts || []).filter(function (x) { return !(x.i === 'cable' && s.cab && s.cab.own); }).map(function (x) { return [x.i, tr(x.t)]; }), kako: k };
     }
     var g = ax.how === 'card-desk' ? 'desk' : ax.how === 'rfid' ? 'rfid' : ax.how === 'staff' ? 'staff'
       : (ax.who === 'guests' || ax.who === 'customers' || s.acc === 'customers') ? 'guests' : fee ? 'free' : 'unk';

@@ -753,11 +753,11 @@ function howOf(s) {
   // a neighbour's station on /mapa/, or a page without the scheme's words (the country maps of blokvolt.com: their
   // strings cover the card, not this scheme) — no scheme rather than icons without text
   if (s.cc || !T.hw_t) return null;
-  const n = netOf(s), k = n && n.kako, ax = s.ax || {}, fee = (s.fee && s.fee.free) || '';
+  const n = netOf(s), k = (n && n.kako) || s.kako, ax = s.ax || {}, fee = (s.fee && s.fee.free) || '';   // s.kako: a list without a network (Best in Parking)
   const onlyAc = !s.dc && (s.c.length ? s.c.every(c => c[1] === 'ac') : !!s.ac);
   const acCable = onlyAc && !(s.cab && s.cab.own) ? [['cable', T.hw_g_cable]] : [];
   if (k && k.steps) {
-    return { k: 'net', name: n.name, steps: k.steps.map(x => [x.i, tr(x.t)]), facts: (k.facts || []).filter(x => !(x.i === 'cable' && s.cab && s.cab.own)).map(x => [x.i, tr(x.t)]), kako: k };
+    return { k: 'net', name: n && n.kako ? n.name : (s.opn || ''), steps: k.steps.map(x => [x.i, tr(x.t)]), facts: (k.facts || []).filter(x => !(x.i === 'cable' && s.cab && s.cab.own)).map(x => [x.i, tr(x.t)]), kako: k };
   }
   // what the place itself says (dopune.json: ax.how), then who may charge, then free, then nothing known
   const g = ax.how === 'card-desk' ? 'desk' : ax.how === 'rfid' ? 'rfid' : ax.how === 'staff' ? 'staff'

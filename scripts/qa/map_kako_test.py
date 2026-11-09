@@ -10,9 +10,9 @@ SHOTS.mkdir(parents=True, exist_ok=True)
 BASE = 'http://127.0.0.1:8787'
 STYLE = {"version": 8, "sources": {}, "layers": [{"id": "bg", "type": "background", "paint": {"background-color": "#e9ecef"}}]}
 # one charger of every kind of scheme: network, Tesla, card at the desk (IKEA), staff (Obilićev venac), RFID (Lidl Liman),
-# hotel guests, unknown network with a known operator (Best in Parking), unknown network
+# hotel guests, a list's own scheme without a network (Best in Parking garages, since 09.11.2026), unknown network
 SAMPLE = {'cg-80': 'net', 'rm-4479035-2042305': 'net', 'ocm-150105': 'net', 'osm-n6797205414': 'desk', 'ocm-125797': 'staff',
-          'osm-n10961949709': 'rfid', 'own-garni-hotel-element-novi-sad': 'guests', 'bp-garaza-banovina-novi-sad': 'unk',
+          'osm-n10961949709': 'rfid', 'own-garni-hotel-element-novi-sad': 'guests', 'bp-garaza-banovina-novi-sad': 'net',
           'tim-punjac-knin-novi-sad': 'unk'}
 fails = []
 

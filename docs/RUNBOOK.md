@@ -775,6 +775,11 @@ Google Maps, PlugShare, Chargemap or another charger map or app (20.10.2026: Plu
 of it, a private list included; the owner set the goal of reaching its coverage through the networks' and owners' own
 sources only. A driver who sees a missing charger adds it through 3.11d). One exception: the team's list, 3.11g (owner's decision
 25.10.2026).
+A list without a network can carry its own „Kako se puni ovde“: `kako` in its `lists` entry (same fields as
+`content/operateri/<slug>.json`: steps ≤ 28 characters, facts, start, pay, after, src) goes to every site of the list,
+a site's own `kako` wins; map.js/evomap use it when the network has none (Best in Parking: from the price list and
+instructions in the Modena garage, owner's photos 02.11.2026). A site's `cab` (own cable) is carried too. Modena's point
+is the owner's on-site one (`loc.q = field`, 09.11.2026), not the operator's pin.
 Never publish a person's name from an app's „owner“ field (sole proprietors are named after the owner). When a list is
 read again, change its date in `lists`, add or remove sites, and say in the report which disappeared (20.10.2026: AK
 Tasić Jagodina and CITY TAXI Novi Sad were no longer in the Spectra app).

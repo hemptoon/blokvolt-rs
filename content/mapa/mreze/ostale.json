@@ -3,7 +3,8 @@
  "lists": {
   "sp": {"label": "aplikacija Emobility Spectra", "url": "https://emobility.rs/", "date": "20.10.2026", "net": "emobility-spectra"},
   "ye": {"label": "aplikacija Yesla", "url": "https://yesla.rs/", "date": "04.10.2026", "net": "yesla"},
-  "bp": {"label": "Best in Parking", "url": "https://www.bestinparking.com/en/rs", "date": "20.10.2026", "net": ""},
+  "bp": {"label": "Best in Parking", "url": "https://www.bestinparking.com/en/rs", "date": "20.10.2026", "net": "",
+         "kako": {"checked": "02.11.2026", "steps": [{"i": "plug", "t": "Priključite svoj Tip 2 kabl"}, {"i": "card", "t": "Kartica na e-selektor"}, {"i": "receipt", "t": "Platite na blagajni"}, {"i": "stop", "t": "Isključite kabl"}], "facts": [{"i": "cable", "t": "Na punjaču nema kabla"}, {"i": "park", "t": "Mesto je samo za vreme punjenja"}], "start": ["Priključite kabl za punjenje na punjač (punjač ima samo utičnicu Tip 2, kabl je vaš).", "Aktivirajte punjač na „e-selektoru“ parking karticom koju ste dobili na ulazu u garažu i pratite uputstvo na ekranu.", "Kad završite, platite punjenje na blagajni garaže pre izlaska, zajedno sa parkingom, pa isključite kabl sa punjača."], "pay": "60 RSD/kWh sa PDV-om, po isporučenim kWh; plaća se na blagajni garaže pre izlaska, zajedno sa parkingom. Za dugoročne korisnike garaže na cenovniku važi posebna oznaka — pitajte na blagajni.", "after": "Mesto za punjenje sme da se koristi samo tokom punjenja: odmah posle punjenja premestite auto na slobodno parking mesto. Punjenje vozila sa olovnim (kiselinskim) baterijama nije dozvoljeno.", "src": [{"l": "Cenovnik i uputstvo u garaži Modena", "u": "https://www.bestinparking.com/en/rs/garage/garage-modena"}], "apps": []}},
   "own": {"label": "sajt vlasnika lokacije", "url": "", "date": "20.10.2026", "net": ""}
  },
  "sites": [
@@ -44,8 +45,8 @@
   {"k": "ye", "id": "ye-nova-sid", "n": "YESLA-NOVA", "a": "Sremskog fronta 1, Šid", "lat": 45.133452, "lon": 19.216899,
    "c": [["ccs2", "dc", 120, 2]], "loc": {"q": "net"}},
 
-  {"k": "bp", "id": "bp-garaza-modena-novi-sad", "n": "Garaža Modena", "a": "Modene bb, Novi Sad", "lat": 45.254008, "lon": 19.847813, "opn": "Best in Parking",
-   "c": [["type2", "ac", null, 8]], "loc": {"q": "net", "venue": "Javna garaža Modena", "find": "Nivo -1: osam punjača u nizu uz zid, mesta su obeležena zelenom bojom."},
+  {"k": "bp", "id": "bp-garaza-modena-novi-sad", "n": "Garaža Modena", "a": "Modene bb, Novi Sad", "lat": 45.25456, "lon": 19.8465, "opn": "Best in Parking",
+   "c": [["type2", "ac", null, 8]], "loc": {"q": "field", "venue": "Javna garaža Modena", "find": "Nivo -1: osam punjača u nizu uz zid, mesta su obeležena zelenom bojom."},
    "u": "https://www.bestinparking.com/en/rs/garage/garage-modena",
    "ax": {"who": "all", "how": "card-desk", "t": "Pokreće se parking karticom na e-selektoru"},
    "cab": {"own": true, "src": "provera na licu mesta", "d": "02.11.2026"},

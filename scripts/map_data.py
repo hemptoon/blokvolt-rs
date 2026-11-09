@@ -661,6 +661,10 @@ def official_sites():
         for x in o['sites']:
             L = o['lists'][x['k']]
             extra = {f: x[f] for f in ('loc', 'oh', 'ax', 'fee', 'note', 'al', 'opn', 'acc', 'park', 'cab') if f in x}   # cab: own cable, e.g. a check on the spot (Modena, 02.11.2026)
+            if L.get('kako') and 'kako' not in x:
+                extra['kako'] = L['kako']   # how to charge at every site of a list without a network (Best in Parking garages, 09.11.2026)
+            elif x.get('kako'):
+                extra['kako'] = x['kako']
             recs.append({'k': x['k'], 'id': x['id'], 'lat': x['lat'], 'lon': x['lon'], 'net': L.get('net', ''), 'raw': x['n'], 'n': x['n'],
                          'a': x.get('a', ''), 'c': x.get('c') or [], 'evse': None, 'u': x.get('u') or L.get('url', ''),
                          'l': x.get('l') or '', 'src2': x.get('src2'), 'extra': extra, 'dt': x.get('d'), 'by': x.get('by')})
@@ -1113,6 +1117,10 @@ def texts(extra, layer=None):
             out.update(x for x in (u.get(k, {}).get(f) for f in fields) if x and re.search('[a-zčćžšđ]{3}', x.lower()))
         if u.get('note'):
             out.add(u['note'])   # the other lists' notes (ostale.json)
+        k = u.get('kako') or {}
+        out.update(x for x in k.get('start', []) + [k.get(f) for f in ('pay', 'guest', 'after', 'refund')] if x)
+        out.update(x['t'] for x in k.get('steps', []) + k.get('facts', []))
+        out.update(x['l'] for x in k.get('apps', []) + k.get('src', []) if re.search(r'[a-zčćžšđ]{3}', x['l'].lower()))
         out.update(x['l'] for x in u.get('src', []) if x.get('l') and re.search(r'[a-zčćžšđ]{3}', x['l'].lower()))
     for u in extra['upd'].values():
         for k, fields in (('loc', ('venue', 'find')), ('oh', ('t', 'src')), ('ax', ('t', 'limit')), ('fee', ('t', 'src', 'note')), ('park', ('t', 'src'))):
