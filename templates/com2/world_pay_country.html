@@ -1,0 +1,25 @@
+{% extends 'world_pay_base.html' %}
+{% block pagehead %}{{ pm.head(kick, h1, None, crumbs, checked, last) }}{% endblock %}
+{% block content %}
+<div class="sec"><div class="sec-head"><h2 id="card">{{ T.h_afir }}</h2></div>
+<div class="prose"><p>{{ afir_head }}</p>{% if afir_points %}<ul>{% for p in afir_points %}<li>{{ p }}</li>{% endfor %}</ul>{% endif %}
+<p><small><a class="lnk" href="{{ afir_url }}" rel="noopener">{{ afir_src }}</a></small></p></div></div>
+{% if nets %}<div class="sec"><div class="sec-head"><h2 id="networks">{{ T.h_nets }}</h2></div>
+<p class="note">{{ T.nets_note }}</p>
+<div class="tw"><table class="wpay-t"><thead><tr><th scope="col">{{ T.th_net }}</th><th scope="col" class="num">{{ T.th_dc }}</th><th scope="col">{{ T.th_prices }}</th><th scope="col">{{ T.th_page }}</th></tr></thead><tbody>
+{% for n in nets %}<tr><th scope="row" translate="no">{{ n.name }}</th><td class="num">{{ n.dc }}</td><td>{% if n.purl %}<a class="lnk" href="{{ n.purl }}">{{ T.lnk_prices }}</a>{% else %}<span class="muted">—</span>{% endif %}</td><td>{% if n.page %}<a class="lnk" href="{{ n.page }}">{{ T.lnk_page }}</a>{% else %}<span class="muted">—</span>{% endif %}</td></tr>
+{% endfor %}</tbody></table></div></div>{% endif %}
+<div class="sec"><div class="sec-head"><h2 id="apps">{{ T.h_apps }}</h2></div>
+<p class="note">{{ T.apps_note }}</p>
+<div class="tw"><table class="wpay-t"><thead><tr><th scope="col">{{ T.th_app }}</th><th scope="col">{{ T.th_cover }}</th><th scope="col">{{ T.th_src }}</th><th scope="col">{{ T.th_checked }}</th></tr></thead><tbody>
+{% for a in apps %}<tr><th scope="row" translate="no">{{ a.name }}</th><td>{% if a.yes %}<span class="wpay-y">{{ T.cov_yes }}</span>{% elif a.unk %}<span class="muted">{{ T.cov_unk }}</span>{% else %}{{ T.cov_no }}{% endif %}</td><td><a class="lnk" href="{{ a.url }}" rel="noopener nofollow">{{ T.road_src }}</a></td><td>{{ a.checked }}</td></tr>
+{% endfor %}</tbody></table></div></div>
+<div class="sec"><div class="sec-head"><h2 id="prices">{{ T.h_typical }}</h2></div>
+<p>{{ typ }}</p>{% if price_url %}<div class="chips"><a class="chip" href="{{ price_url }}">{{ T.typ_more }}</a></div>{% endif %}</div>
+<div class="sec"><div class="sec-head"><h2 id="tolls">{{ T.h_road }}</h2></div><p>{{ pm.road(road) }}</p></div>
+<div class="sec"><div class="sec-head"><h2 id="connectors">{{ T.h_conn }}</h2></div>
+<p>{{ conn_txt }}</p><div class="chips"><a class="chip" href="{{ conn_url }}">{{ conn_lnk }}</a></div></div>
+{% if routes %}<div class="sec"><div class="sec-head"><h2 id="routes">{{ T.nav_routes }}</h2></div>
+<div class="chips">{% for n, u in routes %}<a class="chip" href="{{ u }}" translate="no">{{ n }}</a>{% endfor %}</div></div>{% endif %}
+<p class="note disc">{{ T.pay_disc }}</p>
+{% endblock %}

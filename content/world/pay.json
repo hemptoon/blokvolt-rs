@@ -1,0 +1,295 @@
+{
+ "v": 1,
+ "updated": "2026-11-09",
+ "about": "G4: official sources only. apps[].countries = exactly the countries the official coverage page names; list_complete=false when the page gives no full list. No partner links.",
+ "afir": {
+  "url": "https://eur-lex.europa.eu/eli/reg/2023/1804/oj/eng",
+  "url_consolidated": "https://eur-lex.europa.eu/eli/reg/2023/1804/2026-01-08/eng",
+  "checked": "2026-11-09",
+  "verification": "PARTIAL 09.11.2026: EUR-Lex URLs confirmed, page text not opened from the sandbox; re-read Art. 2 and Art. 5 in the consolidated text before 'релиз G4'.",
+  "points": [
+   {
+    "para": "Art. 2",
+    "en": "Ad hoc charging: you can charge without registering or signing a contract with the operator.",
+    "sr": "Punjenje bez registracije (ad hoc): punite bez registracije i bez ugovora sa operaterom.",
+    "ru": "Разовая зарядка (ad hoc): можно заряжаться без регистрации и без договора с оператором."
+   },
+   {
+    "para": "Art. 5(2)",
+    "en": "Operators of public chargers must offer ad hoc charging with a payment method widely used in the EU.",
+    "sr": "Operateri javnih punjača moraju da omoguće punjenje bez registracije, plaćanjem sredstvom koje je široko u upotrebi u EU.",
+    "ru": "Операторы публичных зарядок обязаны давать разовую зарядку с оплатой способом, широко распространённым в ЕС."
+   },
+   {
+    "para": "Art. 5(2)(a)",
+    "en": "New public chargers of 50 kW and more installed from 13 April 2024 must take bank cards through a card reader or a contactless device.",
+    "sr": "Novi javni punjači od 50 kW i više, postavljeni od 13. aprila 2024, moraju da primaju bankovne kartice preko čitača ili beskontaktnog uređaja.",
+    "ru": "Новые публичные зарядки от 50 кВт, установленные с 13 апреля 2024 года, должны принимать банковские карты через считыватель или бесконтактное устройство."
+   },
+   {
+    "para": "Art. 5(2)(b)",
+    "en": "New public chargers below 50 kW may instead offer online payment, for example a QR code of the charger.",
+    "sr": "Novi javni punjači ispod 50 kW mogu umesto toga da nude plaćanje preko interneta, na primer QR kodom punjača.",
+    "ru": "Новые публичные зарядки до 50 кВт могут вместо этого предлагать оплату онлайн, например по QR-коду зарядки."
+   },
+   {
+    "para": "Art. 5(2), retrofit",
+    "en": "From 1 January 2027 this also applies to existing stations of 50 kW and more on the TEN-T road network and in safe and secure parking areas.",
+    "sr": "Od 1. januara 2027. ovo važi i za postojeće stanice od 50 kW i više na putnoj mreži TEN-T i na bezbednim parkiralištima.",
+    "ru": "С 1 января 2027 года это касается и существующих станций от 50 кВт на дорожной сети TEN-T и на охраняемых парковках."
+   },
+   {
+    "para": "Art. 5(3)",
+    "en": "The ad hoc price and its parts must be shown at the station before the session starts.",
+    "sr": "Cena punjenja bez registracije i njeni delovi moraju biti prikazani na stanici pre početka punjenja.",
+    "ru": "Разовая цена и её составляющие должны быть показаны на станции до начала зарядки."
+   }
+  ]
+ },
+ "apps": [
+  {
+   "id": "enbw",
+   "name": "EnBW mobility+",
+   "maker": "EnBW",
+   "url": "https://www.enbw.com/elektromobilitaet/unterwegs-laden",
+   "url2": "https://www.enbw.com/service/faq/e-mobilitaet/",
+   "checked": "2026-11-09",
+   "list_complete": true,
+   "countries": [
+    "AT",
+    "BE",
+    "CH",
+    "CZ",
+    "DE",
+    "DK",
+    "ES",
+    "FR",
+    "HR",
+    "IT",
+    "LI",
+    "LU",
+    "NL",
+    "PL",
+    "SE",
+    "SI",
+    "SK"
+   ],
+   "note": "Two official EnBW pages name the same 17 countries of the EnBW HyperNetz.",
+   "note_sr": "Dve zvanične stranice EnBW navode istih 17 zemalja mreže EnBW HyperNetz.",
+   "note_ru": "Две официальные страницы EnBW называют одни и те же 17 стран сети EnBW HyperNetz."
+  },
+  {
+   "id": "plugsurfing",
+   "name": "Plugsurfing",
+   "maker": "Plugsurfing (Fortum)",
+   "url": "https://plugsurfing.com/what-does-plugsurfing-do/",
+   "checked": "2026-11-09",
+   "list_complete": false,
+   "countries": [
+    "ES",
+    "PT"
+   ],
+   "note": "Official pages give 26–28 countries without naming them; only countries named on official pages are marked (Portugal launch 15.06.2026, Spain).",
+   "note_sr": "Zvanične stranice navode 26–28 zemalja bez imena; označene su samo zemlje imenovane na zvaničnim stranicama (Portugal od 15.06.2026, Španija).",
+   "note_ru": "Официальные страницы называют 26–28 стран без списка; отмечены только страны, названные на официальных страницах (Португалия с 15.06.2026, Испания)."
+  },
+  {
+   "id": "electroverse",
+   "name": "Electroverse",
+   "maker": "Octopus Energy",
+   "url": "https://octopus.energy/press/Octopus-Electroverse-becomes-Europe-largest-consumer-electric-car-charging-platform/",
+   "checked": "2026-11-09",
+   "list_complete": false,
+   "countries": [],
+   "note": "Official press release (27.08.2024) gives a count of 40 countries without a list.",
+   "note_sr": "Zvanično saopštenje (27.08.2024) navodi 40 zemalja bez spiska.",
+   "note_ru": "Официальный пресс-релиз (27.08.2024) называет 40 стран без списка."
+  },
+  {
+   "id": "chargemap-pass",
+   "name": "Chargemap Pass",
+   "maker": "Chargemap",
+   "url": "https://chargemap.com/en-gb/pass",
+   "checked": "2026-11-09",
+   "list_complete": false,
+   "countries": [],
+   "note": "Official page not read on the check date; country list to be added.",
+   "note_sr": "Zvanična stranica nije pročitana na dan provere; spisak zemalja sledi.",
+   "note_ru": "Официальная страница в день проверки не прочитана; список стран будет добавлен."
+  },
+  {
+   "id": "shell-recharge",
+   "name": "Shell Recharge",
+   "maker": "Shell",
+   "url": "https://shellrecharge.com/",
+   "checked": "2026-11-09",
+   "list_complete": false,
+   "countries": [],
+   "note": "The former official country list (Shell support) now redirects elsewhere; no current list found.",
+   "note_sr": "Raniji zvanični spisak zemalja (Shell podrška) sada vodi drugde; aktuelni spisak nije pronađen.",
+   "note_ru": "Прежний официальный список стран (поддержка Shell) теперь перенаправляет в другой раздел; актуальный список не найден."
+  },
+  {
+   "id": "tesla-other-evs",
+   "name": "Tesla Supercharger (other EVs)",
+   "maker": "Tesla",
+   "url": "https://www.tesla.com/en_ie/support/supercharging-other-evs",
+   "checked": "2026-11-09",
+   "list_complete": false,
+   "countries": [],
+   "note": "Tesla says sites are open to other EVs in selected markets through the Tesla app; the countries are only on the interactive Find Us map.",
+   "note_sr": "Tesla navodi da su lokacije otvorene za druge automobile na odabranim tržištima kroz Tesla aplikaciju; zemlje su samo na interaktivnoj mapi Find Us.",
+   "note_ru": "Tesla пишет, что станции открыты для других электромобилей на отдельных рынках через приложение Tesla; страны — только на интерактивной карте Find Us."
+  }
+ ],
+ "tolls": {
+  "DE": {
+   "system": "none",
+   "url": "https://www.toll-collect.de/en/toll_collect/rund_um_die_maut/mautpflichtige_fahrzeuge/mautpflichtige_fahrzeuge.html",
+   "operator": "Toll Collect",
+   "checked": "2026-11-09",
+   "note": "No motorway toll for passenger cars. The federal truck toll applies to vehicles over 3.5 t. Some private crossings charge a toll (e.g. Warnow tunnel, Herren tunnel).",
+   "note_en": "The Toll Collect toll is for trucks over 3.5 t only.",
+   "note_sr": "Naplata Toll Collect važi samo za kamione preko 3,5 t.",
+   "note_ru": "Сбор Toll Collect — только для грузовиков тяжелее 3,5 т."
+  },
+  "AT": {
+   "system": "vignette",
+   "url": "https://www.asfinag.at/en/toll/vignette/digital-vignette/",
+   "operator": "ASFINAG",
+   "checked": "2026-11-09",
+   "note": "Motorway vignette, sold as a digital vignette (1-day, 10-day, 2-month and annual). Separate section tolls on A9 Pyhrn, A10 Tauern, A11 Karawanken, A13 Brenner and S16 Arlberg. Shop: https://shop.asfinag.at/en/",
+   "note_en": "Plus separate section tolls (e.g. A9, A10, A13, S16).",
+   "note_sr": "Plus posebne putarine za pojedine deonice (npr. A9, A10, A13, S16).",
+   "note_ru": "Плюс отдельная плата за участки (например A9, A10, A13, S16)."
+  },
+  "CH": {
+   "system": "vignette",
+   "url": "https://www.bazg.admin.ch/de/elektronische-vignette-via-portal-kaufen",
+   "operator": "BAZG (Federal Office for Customs and Border Security)",
+   "checked": "2026-11-09",
+   "note": "Annual motorway charge (national roads levy) only, as an e-vignette or a sticker. Citizen info: https://www.ch.ch/de/fahrzeuge-und-verkehr/autos-und-andere-fahrzeuge/autobahnvignette/ . Some tunnels charge separately (e.g. Great St Bernard)."
+  },
+  "SI": {
+   "system": "vignette",
+   "url": "https://www.dars.si/Vinjetni_sistem/E-vinjeta",
+   "operator": "DARS d.d.",
+   "checked": "2026-11-09",
+   "note": "E-vignette (e-vinjeta) linked to the licence plate. Shop: evinjeta.dars.si. The Karawanken tunnel toll is charged separately.",
+   "note_en": "The Karawanken tunnel is tolled separately.",
+   "note_sr": "Tunel Karavanke se plaća posebno.",
+   "note_ru": "Туннель Караванке оплачивается отдельно."
+  },
+  "HR": {
+   "system": "distance",
+   "url": "https://www.hac.hr/hr/cestarina",
+   "operator": "Hrvatske autoceste (HAC)",
+   "checked": "2026-11-09",
+   "note": "Toll by distance through closed toll plazas; ENC tag available (https://www.hac.hr/hr/cestarina/enc). HAC is building a new electronic free-flow toll system. Other concessionaires: BINA-Istra, Autocesta Zagreb-Macelj."
+  },
+  "HU": {
+   "system": "vignette",
+   "url": "https://nemzetiutdij.hu/api/uploads/e_matrica_arak_2026_pdf_611db0ecc1.pdf",
+   "operator": "Nemzeti Útdíjfizetési Szolgáltató Zrt. (NÚSZ)",
+   "checked": "2026-11-09",
+   "note": "E-matrica: national (weekly, monthly, annual) and county annual. Link is NÚSZ's official 2026 price list PDF. Prices were not read because the fetch was unavailable. Main site: nemzetiutdij.hu"
+  },
+  "CZ": {
+   "system": "vignette",
+   "url": "https://edalnice.cz/en/how-to-buy-an-electronic-vignette/index.html",
+   "operator": "State Fund for Transport Infrastructure / Ministry of Transport (eDalnice)",
+   "checked": "2026-11-09",
+   "note": "Electronic motorway vignette (10-day, 30-day, annual) bought at the official e-shop edalnice.cz. The e-shop warns about unofficial resellers."
+  },
+  "SK": {
+   "system": "vignette",
+   "url": "https://eznamka.sk/en/evignettes/faq",
+   "operator": "NDS (Národná diaľničná spoločnosť)",
+   "checked": "2026-11-09",
+   "note": "Electronic motorway vignette (eznamka.sk). A new 2026 edition was announced on the site."
+  },
+  "RS": {
+   "system": "distance",
+   "url": "https://www.putevi-srbije.rs/index.php/sr/putarine",
+   "operator": "JP Putevi Srbije",
+   "checked": "2026-11-09",
+   "note": "Toll by distance at toll plazas (cash, card, ENP tag: https://www.putevi-srbije.rs/index.php/sr/enp). Tags work with Montenegro, North Macedonia and Republika Srpska under interoperability agreements. The Koridori Srbije and Moravski koridor sections are also tolled."
+  },
+  "BA": {
+   "system": "distance",
+   "url": "https://www.jpautoceste.ba/en/electronic-access-road-acc/",
+   "operator": "JP Autoceste FBiH (Federation); Autoputevi Republike Srpske (RS: https://autoputevirs.com/lat/)",
+   "checked": "2026-11-09",
+   "note": "Toll by distance at plazas on the A1 (FBiH) and on RS motorways. The ACC/ENP tags work across BiH ('one tag for all of BiH') and are being linked with HAC (Croatia)."
+  },
+  "ME": {
+   "system": "mixed",
+   "url": "https://monteput.me/portfolio/tunel-sozina/",
+   "operator": "Monteput d.o.o.",
+   "checked": "2026-11-09",
+   "note": "No general vignette. Point tolls on the Sozina tunnel and on the Smokovac-Mateševac motorway section (Bar-Boljare A1), with electronic toll tags (https://monteput.me/elektronska-naplata-putarine-niza-cijena-tag-uredaja-i-nizi-iznos-minimalne-uplate/). Tags work with Serbia.",
+   "note_en": "Sozina tunnel and the Smokovac–Mateševac motorway section.",
+   "note_sr": "Tunel Sozina i deonica autoputa Smokovac–Mateševac.",
+   "note_ru": "Туннель Созина и участок автомагистрали Смоковац — Матешевац."
+  },
+  "MK": {
+   "system": "distance",
+   "url": "https://roads.org.mk/en/toll-system/toll-payment-methods/",
+   "operator": "Public Enterprise for State Roads (ЈП за државни патишта)",
+   "checked": "2026-11-09",
+   "note": "Toll plazas on motorways (cash, card, M-tag). The system is moving towards open-road (free-flow) tolling; see the 27.05.2026 notice to toll users."
+  },
+  "AL": {
+   "system": "distance",
+   "url": "https://atrako.gov.al/?p=1076",
+   "operator": "Concession on Rruga e Kombit (Milot-Morinë, A1); concession agency ATRAKO",
+   "checked": "2026-11-09",
+   "note": "A single toll point (near Kalimash) on the A1 Milot-Morinë 'Rruga e Kombit'. Other roads have no car toll. The Milot-Fier PPP corridor is planned with tolls. No operator e-shop page was found. LOW confidence on the URL: it is a government concession page, not a toll-operator page.",
+   "note_en": "One toll point on the A1 Milot–Morinë; source is the concession agency page.",
+   "note_sr": "Jedna naplatna stanica na A1 Milot–Morinë; izvor je stranica agencije za koncesije.",
+   "note_ru": "Один пункт оплаты на A1 Милот — Морине; источник — страница агентства концессий."
+  },
+  "GR": {
+   "system": "distance",
+   "url": "https://www.aodos.gr/en/diodia-e-pass/dialeitourgikotita/",
+   "operator": "Several concessionaires: Attiki Odos, Egnatia Odos, Olympia Odos, Nea Odos/Kentriki Odos, Moreas, Aegean Motorway, Gefyra (Rio-Antirrio)",
+   "checked": "2026-11-09",
+   "note": "Toll plazas run by each operator. One interoperable e-pass works across operators. The linked page is Attiki Odos's interoperability page. Rio-Antirrio bridge: https://gefyra.gr/en/prices/Dialeitourgikothta-GRITS/"
+  },
+  "BG": {
+   "system": "vignette",
+   "url": "https://bgtoll.bg/en/e-vignette",
+   "operator": "National Toll Administration (BG Toll)",
+   "checked": "2026-11-09",
+   "note": "E-vignette (weekend, weekly, monthly, quarterly, annual). Prices changed from 1 May (see the bgtoll.bg news). Danube bridges at Ruse and Vidin charge separate fees.",
+   "note_en": "Danube bridges at Ruse and Vidin are tolled separately.",
+   "note_sr": "Mostovi na Dunavu kod Rusea i Vidina se plaćaju posebno.",
+   "note_ru": "Мосты через Дунай у Русе и Видина оплачиваются отдельно."
+  },
+  "RO": {
+   "system": "vignette",
+   "url": "https://www.cnadnr.ro/ro/comunicare/comunicate-de-presa/interes-general/de-la-1-octombrie-2026-ora-0000-rovinieta-%C8%99i-tariful",
+   "operator": "CNAIR (Compania Națională de Administrare a Infrastructurii Rutiere)",
+   "checked": "2026-11-09",
+   "note": "Rovinieta (time-based e-vignette) is required on national roads and motorways. From 1 Oct 2026 the rovinieta and the new TollRo tariff are paid only through the official channels of the new electronic road-charging system. The CNAIR page says the older erovinieta.ro/SMS channels are no longer valid. TollRo is understood to be distance-based for heavy vehicles; this was not checked for cars. Bridge tolls (peaj) are separate: Fetești-Cernavodă on the A2 and Giurgiu-Ruse. Note: roviniete.ro is a private reseller, not CNAIR.",
+   "note_en": "From 1 October 2026 the rovinieta is sold only through the new official system; bridge tolls are separate.",
+   "note_sr": "Od 1. oktobra 2026. rovinieta se kupuje samo kroz novi zvanični sistem; mostovi se plaćaju posebno.",
+   "note_ru": "С 1 октября 2026 года ровиньета продаётся только через новую официальную систему; мосты оплачиваются отдельно."
+  },
+  "TR": {
+   "system": "distance",
+   "url": "https://www.kgm.gov.tr/Sayfalar/KGM/SiteTr/Otoyollar/HGS.aspx",
+   "operator": "KGM (Karayolları Genel Müdürlüğü)",
+   "checked": "2026-11-09",
+   "note": "Barrier-free electronic toll by distance on motorways and bridges via an HGS sticker or OGS tag; no cash. Toll tables: https://www.kgm.gov.tr/Sayfalar/KGM/SiteTr/Otoyollar/OtoyolKopruUcret/KopruGecisUcret.aspx . Foreign-plated vehicles: https://www.kgm.gov.tr/Sayfalar/KGM/SiteTr/Otoyollar/YabanciPlakaliAraclar.aspx"
+  },
+  "IT": {
+   "system": "distance",
+   "url": "https://www.autostrade.it/en/servizi-al-cliente/pedaggio/metodi-di-pagamento",
+   "operator": "Autostrade per l'Italia (plus other concessionaires)",
+   "checked": "2026-11-09",
+   "note": "Toll by distance and vehicle class, mostly at closed toll barriers (cash, card, Telepass/EETS tags). Some open-barrier and free-flow sections exist. How it is calculated: https://www.autostrade.it/en/servizi-al-cliente/pedaggio/come-si-calcola-il-pedaggio"
+  }
+ },
+ "tolls_note": "URLs from searches limited to the official domains on 09.11.2026; pages were not opened from the sandbox, no prices given. Re-open before 'релиз G4'."
+}

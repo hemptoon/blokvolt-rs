@@ -1,0 +1,16 @@
+{% extends 'world_pay_base.html' %}
+{% block pagehead %}{{ pm.head(kick, h1, lead, crumbs, checked) }}{% endblock %}
+{% block content %}
+<div class="sec"><div class="sec-head"><h2 id="card">{{ T.h_afir }}</h2></div>
+<div class="prose"><ul>{% for p in afir_points %}<li>{{ p }}</li>{% endfor %}</ul>
+<p><small><a class="lnk" href="{{ afir_url }}" rel="noopener">{{ afir_src }}</a></small></p></div></div>
+<div class="sec"><div class="sec-head"><h2 id="countries">{{ T.h_countries }}</h2></div>
+<div class="chips">{% for r in rows %}<a class="chip" href="{{ r.url }}" translate="no">{{ r.name }}</a>{% endfor %}</div></div>
+<div class="sec"><div class="sec-head"><h2 id="apps">{{ T.h_apps_all }}</h2></div>
+<p class="note">{{ T.apps_note }}</p>
+<div class="tw"><table class="wpay-t"><thead><tr><th scope="col">{{ T.th_app }}</th><th scope="col">{{ T.th_cover }}</th><th scope="col">{{ T.th_src }}</th><th scope="col">{{ T.th_checked }}</th></tr></thead><tbody>
+{% for a in apps %}<tr><th scope="row" translate="no">{{ a.name }}{% if a.maker %} <small class="muted">({{ a.maker }})</small>{% endif %}</th><td>{{ a.n }}{% if a.note %}<br><small class="muted">{{ a.note }}</small>{% endif %}</td><td><a class="lnk" href="{{ a.url }}" rel="noopener nofollow">{{ T.road_src }}</a></td><td>{{ a.checked }}</td></tr>
+{% endfor %}</tbody></table></div></div>
+<div class="sec"><div class="chips"><a class="chip" href="{{ routes_url }}">{{ T.nav_routes }}</a></div></div>
+<p class="note disc">{{ T.pay_disc }}</p>
+{% endblock %}

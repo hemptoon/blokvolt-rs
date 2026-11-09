@@ -42,6 +42,7 @@ def active():
     return bool(os.environ.get('BV_WORLD_PAGES'))
 
 
+EXTRA = []      # G4: [(urls {lang: url}, labels {lang: label}, key)] — set by world_pay.prepare() (How to pay · Routes)
 PRICES = None   # G3: {'hub': {lang: url}, 'nav': {lang: label}} — set by world_prices.prepare() when the price pages are built
 
 
@@ -51,6 +52,8 @@ def nav(l):
     out = [(MAP[l], T['nav_map'], 'map'), (HUB[l], T['nav_stations'], 'hub'), (ABOUT_DATA[l], T['nav_open'], 'about')]
     if PRICES:
         out.insert(2, (PRICES['hub'][l], PRICES['nav'][l], 'prices'))
+    for urls, labels, key in EXTRA:
+        out.insert(len(out) - 1, (urls[l], labels[l], key))
     return out
 
 
