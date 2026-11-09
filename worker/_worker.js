@@ -2340,6 +2340,7 @@ async function api(request, env, ctx) {
   if (!env.DB) return bad('no database', 503);
   if (p.startsWith('/api/nalog/') || p.startsWith('/api/posta/') || p === '/api/admin/posta') return accountApi(request, env, ctx, url, p, m);
   if (p.startsWith('/api/outbox/')) return outboxApi(request, env, p, m);   // GitHub Actions with an OIDC token (RUNBOOK 3.39)
+  if (p === '/api/svet/prijava' || p === '/api/admin/svet') return svetApi(request, env, p, m, url);   // world map reports (K6)
 
   if (m === 'GET' && p === '/api/stanice') {
     const cache = caches.default;
@@ -2449,3 +2450,258 @@ export default {
     return env.ASSETS.fetch(request);
   },
 };
+
+// ================================================================ world map: „Prijavi grešku“ (K6, P1 §2.4–2.5)
+// Reports about chargers on the world map of blokvolt.com (/map/, /sr/mapa/, /ru/karta/). A place is named by its public
+// id `pid` (stable between the weekly builds of the world layer). Nothing changes on the map here: the weekly script
+// scripts/world_reports.py reads the reports (GET /api/admin/svet?view=export), applies the automatic rules, writes its
+// decisions back (POST {auto}) and builds overrides.csv for the next build; the owner decides the rest on /admin/svet/.
+// No CAPTCHA, no blocking (RUNBOOK 3.28): a hidden field, 5 reports a day per fingerprint, one per place and fingerprint a
+// day. The e-mail address is optional and erased 90 days after the report, 30 days after the decision or when the
+// owner marks the place „Odgovoreno“. Balkan places (pid ≥ 900 000 000) stay with the /mapa/ process.
+const SV_TYPES = new Set(['ne_postoji', 'ne_radi', 'lokacija', 'snaga', 'nije_javni', 'drugo']);
+const SV_ACTIONS = new Set(['hide', 'unhide', 'move', 'access', 'none']);
+const SV_AUTO = new Set(['auto_hidden', 'auto_moved', 'accepted', 'rejected']);
+const SV_DAY = 5, SV_OPEN_MAX = 5000, SV_TEXT = 300;
+const SV_MAIL_KEEP_S = 90 * 86400, SV_MAIL_DECIDED_S = 30 * 86400, SV_AUTO_SHOW_S = 14 * 86400;
+const SV_DEFAULT_ACTION = { ne_postoji: 'hide', ne_radi: 'hide', lokacija: 'move', nije_javni: 'access', snaga: 'none', drugo: 'none' };
+const SV_ACCESS = 'restricted_reported';
+const SV_TABLE = [
+  `CREATE TABLE IF NOT EXISTS world_reports (id INTEGER PRIMARY KEY AUTOINCREMENT, pid INTEGER NOT NULL, type TEXT NOT NULL,
+    text TEXT, lat REAL, lon REAL, email TEXT, lang TEXT NOT NULL, ip_hash TEXT NOT NULL, created_at INTEGER NOT NULL,
+    status TEXT NOT NULL DEFAULT 'new', decided_at INTEGER, decided_by TEXT, rule TEXT, action TEXT, access TEXT,
+    alat REAL, alon REAL, cc TEXT, g TEXT)`,
+  'CREATE INDEX IF NOT EXISTS world_reports_status ON world_reports (status, created_at)',
+  'CREATE INDEX IF NOT EXISTS world_reports_pid ON world_reports (pid)',
+];
+let SV_READY = false;
+async function svEnsure(env) {
+  if (SV_READY) return;
+  await env.DB.batch(SV_TABLE.map(s => env.DB.prepare(s)));
+  SV_READY = true;
+}
+
+// blokvolt.com (the world map), our own hosts and localhost (tests); other origins get no CORS headers and a 403
+function svOrigin(request) {
+  const o = request.headers.get('origin');
+  if (!o) return { ok: true, allow: null };
+  let u;
+  try { u = new URL(o); } catch (e) { return { ok: false, allow: null }; }
+  const h = u.hostname;
+  const ok = ((h === 'blokvolt.com' || h === 'www.blokvolt.com') && u.protocol === 'https:') ||
+    ((h === 'localhost' || h === '127.0.0.1') && /^https?:$/.test(u.protocol)) || (sameOrigin(request) && u.protocol === 'https:');
+  return { ok, allow: ok ? o : null };
+}
+const svCors = allow => (allow ? { 'access-control-allow-origin': allow, vary: 'origin' } : { vary: 'origin' });
+
+// the checks of a report, without the database (exported for the tests through globalThis.SVET_TEST)
+function svParse(b) {
+  if (!b || typeof b !== 'object' || Array.isArray(b)) return { error: 'json' };
+  if (b.hp) return { trap: true };
+  const pid = typeof b.pid === 'string' && /^\d{1,10}$/.test(b.pid) ? Number(b.pid) : b.pid;
+  if (!Number.isInteger(pid) || pid < 1 || pid > 2000000000) return { error: 'pid' };
+  const type = String(b.type || '');
+  if (!SV_TYPES.has(type)) return { error: 'type' };
+  let lat = null, lon = null;
+  if (type === 'lokacija') {
+    lat = Number(b.lat); lon = Number(b.lon);
+    if (b.lat == null || b.lon == null || b.lat === '' || b.lon === '' || !isFinite(lat) || !isFinite(lon) ||
+      lat < -90 || lat > 90 || lon < -180 || lon > 180) return { error: 'point' };
+    lat = Math.round(lat * 1e6) / 1e6; lon = Math.round(lon * 1e6) / 1e6;
+  }
+  if (b.text != null && typeof b.text !== 'string') return { error: 'text' };
+  const text = clean(b.text, 1000);
+  if (text.length > SV_TEXT) return { error: 'text' };
+  let email = null;
+  if (b.email != null && String(b.email).trim() !== '') {
+    email = normEmail(String(b.email));
+    if (!email) return { error: 'email' };
+  }
+  const lang = b.lang == null || b.lang === '' ? 'en' : String(b.lang);
+  if (!LANGS.has(lang)) return { error: 'lang' };
+  const cc = typeof b.cc === 'string' && /^[A-Z]{2}$/.test(b.cc) ? b.cc : null;
+  const g = typeof b.g === 'string' && /^[0-9b-hjkmnp-z]{1,9}$/.test(b.g) ? b.g : null;
+  const spam = !!text && (LINKY.test(text) || RUDE.test(text));
+  return { pid, type, lat, lon, text: text || null, email, lang, cc, g, spam };
+}
+
+async function svPost(request, env, allow) {
+  const H = svCors(allow);
+  const err = (msg, st = 400) => json({ ok: false, error: msg }, st, H);
+  let b;
+  try { b = await request.json(); } catch (e) { return err('json'); }
+  const r = svParse(b);
+  if (r.trap) return json({ ok: true }, 200, H);
+  if (r.error) return err(r.error);
+  const ip = await ipHash(request, env);
+  if (!(await allow_(env, 'sv:' + ip, SV_DAY))) return err('limit', 429);
+  if (!(await allow_(env, 'svp:' + r.pid + ':' + ip, 1))) return json({ ok: true }, 200, H);   // the same place again today
+  await svEnsure(env);
+  const open = await env.DB.prepare(`SELECT COUNT(*) AS n FROM world_reports WHERE status = 'new'`).first();
+  if (open && open.n >= SV_OPEN_MAX) return err('limit', 429);
+  const t = now();
+  await env.DB.prepare(`INSERT INTO world_reports (pid, type, text, lat, lon, email, lang, ip_hash, created_at, status,
+      decided_at, decided_by, rule, action, cc, g) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16)`)
+    .bind(r.pid, r.type, r.text, r.lat, r.lon, r.spam ? null : r.email, r.lang, ip, t, r.spam ? 'rejected' : 'new',
+      r.spam ? t : null, r.spam ? 'auto' : null, r.spam ? 'spam_insert' : null, r.spam ? 'none' : null, r.cc, r.g).run();
+  return json({ ok: true }, 200, H);
+}
+// `allow` of the other forms, under another name so this block does not depend on its signature staying the same
+const allow_ = (env, key, max) => allow(env, key, max);
+
+// e-mail addresses are kept only while they can still be needed for an answer
+async function svMailCleanup(env) {
+  const t = now();
+  await env.DB.prepare(`UPDATE world_reports SET email = NULL WHERE email IS NOT NULL AND
+    (created_at < ?1 OR (decided_at IS NOT NULL AND decided_at < ?2))`).bind(t - SV_MAIL_KEEP_S, t - SV_MAIL_DECIDED_S).run();
+}
+
+function svGroup(rows) {
+  const by = new Map();
+  for (const r of rows) {
+    let g = by.get(r.pid);
+    if (!g) { g = { pid: r.pid, cc: null, g: null, n: 0, types: {}, first: r.created_at, last: r.created_at, reports: [] }; by.set(r.pid, g); }
+    g.n++;
+    g.types[r.type] = (g.types[r.type] || 0) + 1;
+    g.cc = g.cc || r.cc || null; g.g = g.g || r.g || null;
+    g.first = Math.min(g.first, r.created_at); g.last = Math.max(g.last, r.created_at);
+    g.reports.push({ id: r.id, type: r.type, text: r.text, lat: r.lat, lon: r.lon, email: r.email || null, lang: r.lang,
+      created_at: r.created_at, status: r.status, rule: r.rule || null, action: r.action || null, decided_at: r.decided_at || null });
+  }
+  return [...by.values()];
+}
+
+async function svAdminGet(env, url) {
+  await svEnsure(env);
+  const view = url.searchParams.get('view') || 'queue';
+  if (view === 'export') {
+    const since = Math.max(0, Math.floor(Number(url.searchParams.get('since')) || 0));
+    const r = await env.DB.prepare(`SELECT id, pid, type, text, lat, lon, lang, ip_hash, created_at, status, decided_at,
+        decided_by, rule, action, access, alat, alon, cc, g FROM world_reports WHERE created_at >= ?1 OR decided_at >= ?1
+        ORDER BY id LIMIT 20000`).bind(since).all();
+    return json({ ok: true, now: now(), reports: r.results });
+  }
+  if (view === 'stats') {
+    const days = Math.min(366, Math.max(1, Math.floor(Number(url.searchParams.get('days')) || 7)));
+    const to = now(), from = to - days * 86400;
+    const q = (sql, ...a) => env.DB.prepare(sql).bind(from, ...a).all().then(x => x.results);
+    const [ty, st, co, la, by, hid] = await Promise.all([
+      q('SELECT type AS k, COUNT(*) AS n FROM world_reports WHERE created_at >= ?1 GROUP BY type'),
+      q('SELECT status AS k, COUNT(*) AS n FROM world_reports WHERE created_at >= ?1 GROUP BY status'),
+      q(`SELECT COALESCE(cc, '??') AS cc, COUNT(*) AS n FROM world_reports WHERE created_at >= ?1 GROUP BY cc ORDER BY n DESC LIMIT 50`),
+      q('SELECT lang AS k, COUNT(*) AS n FROM world_reports WHERE created_at >= ?1 GROUP BY lang'),
+      q('SELECT decided_by AS k, COUNT(*) AS n FROM world_reports WHERE decided_at >= ?1 AND decided_by IS NOT NULL GROUP BY decided_by'),
+      q(`SELECT pid, MAX(cc) AS cc, MAX(decided_at) AS decided_at, COUNT(*) AS n FROM world_reports
+         WHERE status = 'auto_hidden' AND decided_at >= ?1 GROUP BY pid ORDER BY decided_at DESC LIMIT 500`),
+    ]);
+    const obj = rows => Object.fromEntries(rows.map(x => [x.k, x.n]));
+    return json({ ok: true, from, to, days, total: ty.reduce((s, x) => s + x.n, 0), by_type: obj(ty), by_status: obj(st),
+      by_country: co, by_lang: obj(la), decided_by: obj(by), auto_hidden: hid });
+  }
+  if (view !== 'queue') return bad('view');
+  await svMailCleanup(env);
+  const open = await env.DB.prepare(`SELECT id, pid, type, text, lat, lon, email, lang, created_at, status, cc, g FROM world_reports
+      WHERE status IN ('new', 'postponed') ORDER BY created_at LIMIT 3000`).all();
+  const auto = await env.DB.prepare(`SELECT id, pid, type, text, lat, lon, email, lang, created_at, status, rule, action, decided_at,
+      cc, g FROM world_reports WHERE decided_by = 'auto' AND status IN ('auto_hidden', 'auto_moved', 'accepted') AND decided_at >= ?1
+      ORDER BY decided_at DESC LIMIT 1000`).bind(now() - SV_AUTO_SHOW_S).all();
+  const groups = svGroup(open.results).sort((a, b) => b.n - a.n || b.last - a.last).slice(0, 300);
+  return json({ ok: true, open: open.results.length, groups, auto: svGroup(auto.results).slice(0, 200) });
+}
+
+// the action a human acceptance has when the owner does not choose one: the most frequent report type of the place
+function svMajority(rows) {
+  const c = {};
+  for (const r of rows) c[r.type] = (c[r.type] || 0) + 1;
+  const top = Object.entries(c).sort((a, b) => b[1] - a[1] || (SV_DEFAULT_ACTION[a[0]] === 'none') - (SV_DEFAULT_ACTION[b[0]] === 'none'))[0];
+  return top ? SV_DEFAULT_ACTION[top[0]] : 'none';
+}
+const svMedian = a => { const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+
+async function svAdminPost(request, env) {
+  let b;
+  try { b = await request.json(); } catch (e) { return bad('json'); }
+  await svEnsure(env);
+  const t = now();
+  if (Array.isArray(b.auto)) {
+    // the weekly script's decisions: only reports that are still new change, a human decision is never overwritten
+    if (b.auto.length > 2000) return bad('too many');
+    const st = [];
+    for (const d of b.auto) {
+      if (!d || !Number.isInteger(d.id) || !SV_AUTO.has(d.status)) return bad('auto');
+      const action = SV_ACTIONS.has(d.action) ? d.action : 'none';
+      const rule = clean(d.rule, 40) || 'auto';
+      const access = action === 'access' ? (/^(public|restricted|private)[a-z_]{0,30}$/.test(String(d.access || '')) ? d.access : SV_ACCESS) : null;
+      const alat = action === 'move' && isFinite(d.alat) && Math.abs(d.alat) <= 90 ? Math.round(d.alat * 1e6) / 1e6 : null;
+      const alon = action === 'move' && isFinite(d.alon) && Math.abs(d.alon) <= 180 ? Math.round(d.alon * 1e6) / 1e6 : null;
+      if (action === 'move' && (alat === null || alon === null)) return bad('point');
+      st.push(env.DB.prepare(`UPDATE world_reports SET status = ?1, decided_at = ?2, decided_by = 'auto', rule = ?3, action = ?4,
+          access = ?5, alat = ?6, alon = ?7 WHERE id = ?8 AND status = 'new'`).bind(d.status, t, rule, action, access, alat, alon, d.id));
+    }
+    let n = 0;
+    for (let i = 0; i < st.length; i += 100) for (const r of await env.DB.batch(st.slice(i, i + 100))) n += (r.meta && r.meta.changes) || 0;
+    return json({ ok: true, n });
+  }
+  const pid = Number(b.pid);
+  if (!Number.isInteger(pid) || pid < 1) return bad('pid');
+  const a = String(b.a || '');
+  let res;
+  if (a === 'answered') {
+    res = await env.DB.prepare('UPDATE world_reports SET email = NULL WHERE pid = ?1 AND email IS NOT NULL').bind(pid).run();
+  } else if (a === 'postpone') {
+    res = await env.DB.prepare(`UPDATE world_reports SET status = 'postponed' WHERE pid = ?1 AND status = 'new'`).bind(pid).run();
+  } else if (a === 'reject') {
+    res = await env.DB.prepare(`UPDATE world_reports SET status = 'rejected', decided_at = ?1, decided_by = 'admin', rule = 'admin',
+        action = 'none' WHERE pid = ?2 AND status IN ('new', 'postponed')`).bind(t, pid).run();
+  } else if (a === 'undo') {
+    // the automatic decision was wrong: a hidden place comes back (unhide), a move or an access change is dropped
+    res = await env.DB.prepare(`UPDATE world_reports SET status = 'rejected', decided_at = ?1, decided_by = 'admin', rule = 'undo',
+        action = CASE WHEN action = 'hide' THEN 'unhide' ELSE 'none' END
+        WHERE pid = ?2 AND decided_by = 'auto' AND status IN ('auto_hidden', 'auto_moved', 'accepted')`).bind(t, pid).run();
+  } else if (a === 'accept') {
+    const rows = (await env.DB.prepare(`SELECT id, type, lat, lon FROM world_reports WHERE pid = ?1 AND status IN ('new', 'postponed')`)
+      .bind(pid).all()).results;
+    if (!rows.length) return json({ ok: true, n: 0 });
+    const action = b.action == null || b.action === '' ? svMajority(rows) : String(b.action);
+    if (!SV_ACTIONS.has(action)) return bad('action');
+    let alat = null, alon = null, access = null;
+    if (action === 'move') {
+      if (b.lat != null && b.lon != null && isFinite(b.lat) && isFinite(b.lon) && Math.abs(b.lat) <= 90 && Math.abs(b.lon) <= 180) {
+        alat = Number(b.lat); alon = Number(b.lon);
+      } else {
+        const pts = rows.filter(r => r.type === 'lokacija' && r.lat != null && r.lon != null);
+        if (!pts.length) return bad('point');
+        alat = svMedian(pts.map(r => r.lat)); alon = svMedian(pts.map(r => r.lon));
+      }
+      alat = Math.round(alat * 1e6) / 1e6; alon = Math.round(alon * 1e6) / 1e6;
+    }
+    if (action === 'access') access = /^(public|restricted|private)[a-z_]{0,30}$/.test(String(b.access || '')) ? b.access : SV_ACCESS;
+    res = await env.DB.prepare(`UPDATE world_reports SET status = 'accepted', decided_at = ?1, decided_by = 'admin', rule = 'admin',
+        action = ?2, access = ?3, alat = ?4, alon = ?5 WHERE pid = ?6 AND status IN ('new', 'postponed')`)
+      .bind(t, action, access, alat, alon, pid).run();
+  } else return bad('what');
+  return json({ ok: true, n: (res && res.meta && res.meta.changes) || 0 });
+}
+
+// the router's one entry for this block (a line in api(), next to the outbox)
+async function svetApi(request, env, p, m, url) {
+  if (p === '/api/svet/prijava') {
+    const o = svOrigin(request);
+    if (m === 'OPTIONS') {
+      if (!o.ok) return new Response(null, { status: 403, headers: { vary: 'origin' } });
+      return new Response(null, { status: 204, headers: { ...svCors(o.allow), 'access-control-allow-methods': 'POST, OPTIONS',
+        'access-control-allow-headers': 'content-type', 'access-control-max-age': '86400', 'cache-control': 'no-store' } });
+    }
+    if (!o.ok) return bad('origin', 403);
+    if (m !== 'POST') return json({ ok: false, error: 'method' }, 405, { ...svCors(o.allow), allow: 'POST, OPTIONS' });
+    return svPost(request, env, o.allow);
+  }
+  if (p === '/api/admin/svet') {
+    if (!adminOk(request, env)) return bad('not found', 404);
+    if (m === 'GET') return svAdminGet(env, url);
+    if (m === 'POST') return svAdminPost(request, env);
+    return json({ ok: false, error: 'method' }, 405, { allow: 'GET, POST' });
+  }
+  return bad('not found', 404);
+}
+if (globalThis.SVET_TEST) Object.assign(globalThis.SVET_TEST, { parse: svParse, majority: svMajority });

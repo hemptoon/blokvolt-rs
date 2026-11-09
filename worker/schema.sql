@@ -318,3 +318,28 @@ CREATE TABLE IF NOT EXISTS sm_meta (
   at INTEGER,
   err TEXT                       -- the last error (cleared by the next good step)
 );
+-- World map „Prijavi grešku“ (blokvolt.com /map/, K6, P1 §2.4–2.5): reports about places of the world layer, by their public
+-- id pid. The worker creates the table on first use (CREATE TABLE IF NOT EXISTS); no manual migration is needed.
+-- The weekly script scripts/world_reports.py applies the automatic rules and turns decisions into overrides.csv.
+CREATE TABLE IF NOT EXISTS world_reports (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  pid INTEGER NOT NULL,          -- public id of the place (stable between the weekly builds)
+  type TEXT NOT NULL,            -- ne_postoji | ne_radi | lokacija | snaga | nije_javni | drugo
+  text TEXT,                     -- optional, at most 300 characters
+  lat REAL, lon REAL,            -- only for lokacija: the point the reporter proposes
+  email TEXT,                    -- optional; erased 90 days after the report, 30 days after the decision, or on „Odgovoreno“
+  lang TEXT NOT NULL,            -- en | sr | ru
+  ip_hash TEXT NOT NULL,         -- fingerprint: HMAC of the IP with the day's random key (table dk)
+  created_at INTEGER NOT NULL,   -- unix seconds
+  status TEXT NOT NULL DEFAULT 'new', -- new | auto_hidden | auto_moved | accepted | rejected | postponed
+  decided_at INTEGER,
+  decided_by TEXT,               -- auto | admin
+  rule TEXT,                     -- the automatic rule (hide_2_reports, move_2_agree, access_reported, spam_*), admin, undo
+  action TEXT,                   -- effect on the map: hide | unhide | move | access | none
+  access TEXT,                   -- for access: the new access class (restricted_reported)
+  alat REAL, alon REAL,          -- for move: the accepted point
+  cc TEXT,                       -- optional hint from the map: the place's country
+  g TEXT                         -- optional hint from the map: geohash of the place (to find its card)
+);
+CREATE INDEX IF NOT EXISTS world_reports_status ON world_reports (status, created_at);
+CREATE INDEX IF NOT EXISTS world_reports_pid ON world_reports (pid);
