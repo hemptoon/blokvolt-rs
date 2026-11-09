@@ -821,11 +821,18 @@ def run(G, local_hubs):
     return c
 
 
-def search_index(c):
+def search_index(c, ls=None, name='search-index.json'):
     """Static search index for the home page of blokvolt.com (bvcom G0/G2): every country and city page and the Balkan
     countries (their own BlokVolt pages), with names in EN/SR/RU, other spellings and the page URL per language (null
     where the language has no page). /assets/world/search-index.json, ≤ 300 KB in gzip (checked in the build)."""
     import gzip
+    if ls is None:   # K8: the base index (en/sr/ru, layout unchanged) + one file per extra language: search-index-<code>.json
+        res = search_index(c, tuple(l for l in LANGS if l in I.BASE))
+        for l in LANGS:
+            if l not in I.BASE:
+                search_index(c, I.BASE + (l,), f'search-index-{l}.json')
+        return res
+    LANGS_ = ls
     site, N, G = c.site, c.N, c.G
     items = []
     for p in sorted(site.pages, key=lambda p: p['key']):
@@ -836,17 +843,17 @@ def search_index(c):
             cc = p['cc']
             alt = sorted({v for k, v in N.c[cc].items() if k.startswith('name_') and v and v not in
                           (N.country(cc, 'en'), N.country(cc, 'sr'), N.country(cc, 'ru'))})[:12]
-            if len(LANGS) > 3:   # K8: names of the extra languages join the other names (base layout of the index unchanged)
-                alt = sorted(set(alt) | {N.country(cc, l) for l in LANGS if l not in I.BASE} - {N.country(cc, x) for x in I.BASE})
+            if len(LANGS_) > 3:   # K8: names of the extra languages join the other names (base layout of the index unchanged)
+                alt = sorted(set(alt) | {N.country(cc, l) for l in LANGS_ if l not in I.BASE} - {N.country(cc, x) for x in I.BASE})
             items.append(['c', cc, N.country(cc, 'en'), N.country(cc, 'sr'), N.country(cc, 'ru'), alt,
-                          [site.url(p, l) if l in langs else None for l in LANGS], p['n']])
+                          [site.url(p, l) if l in langs else None for l in LANGS_], p['n']])
         else:
             info = p['data']['city']
             r = N.city.get(info['gid']) or {}
             names3 = [N.city_name(info, l) for l in I.BASE]   # columns name_en/sr/ru stay fixed; extra languages → other names
             alt = sorted({x for x in (r.get('name_local'), info.get('name'), info.get('ascii'),
-                                      *[N.city_name(info, l) for l in LANGS if l not in I.BASE]) if x and x not in names3})
-            items.append(['t', p['cc'], *names3, alt, [site.url(p, l) if l in langs else None for l in LANGS], p['n']])
+                                      *[N.city_name(info, l) for l in LANGS_ if l not in I.BASE]) if x and x not in names3})
+            items.append(['t', p['cc'], *names3, alt, [site.url(p, l) if l in langs else None for l in LANGS_], p['n']])
     en_slug = {x['code']: x['url'] for x in G.countries}
     built = {x['key'] for x in G.BUILT}
     for cc in BALKAN:
@@ -857,19 +864,19 @@ def search_index(c):
         else:
             loc = f'/{BALKAN_LOCAL[cc]}/' if BALKAN_LOCAL.get(cc) in built else en_slug.get(cc, '/')
             urls = [en_slug.get(cc, '/'), loc, loc]
-        urls += [loc if cc != 'RS' else G.RS + '/en/gradovi/' for _ in LANGS[3:]]   # K8: extra languages → the local section
+        urls += [loc if cc != 'RS' else G.RS + '/en/gradovi/' for _ in LANGS_[3:]]   # K8: extra languages → the local section
         items.append(['b', cc, N.country(cc, 'en'), N.country(cc, 'sr'), N.country(cc, 'ru'), [], urls, None])
-    doc = {'v': 1, 'date': c.date, 'langs': list(LANGS),
+    doc = {'v': 1, 'date': c.date, 'langs': list(LANGS_),
            'fields': ['kind (c country, t city, b Balkan country on its own BlokVolt pages)', 'cc', 'name_en', 'name_sr',
                       'name_ru', 'other names', 'url per language (en, sr, ru; null = no page)', 'public places'],
            'items': items}
     raw = json.dumps(doc, ensure_ascii=False, separators=(',', ':')).encode()
-    dst = G.OUT / 'assets' / 'world' / 'search-index.json'
+    dst = G.OUT / 'assets' / 'world' / name
     dst.parent.mkdir(parents=True, exist_ok=True)
     dst.write_bytes(raw)
     gz = len(gzip.compress(raw, 9, mtime=0))
     if gz > 300 * 1024:
-        raise SystemExit(f'world_pages: search index {gz} bytes in gzip > 300 KB')
+        raise SystemExit(f'world_pages: search index {name} {gz} bytes in gzip > 300 KB')
     return len(items), len(raw), gz
 
 

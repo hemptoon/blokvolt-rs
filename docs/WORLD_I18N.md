@@ -29,7 +29,10 @@ new languages are prepared in `content/world/i18n/<code>/` (L-tasks) and switche
   (Babel; `world_i18n selftest` checks that Babel and the old rule agree for sr/ru on 0…1999).
 - City slugs and network slugs are shared by all languages (P1); country slug, section slugs and names are per language.
 - hreflang clusters, the switcher and per-language sitemaps cover the enabled languages only.
-- Search index keeps its `name_en/sr/ru` columns; names of extra languages go to "other names", URLs follow `langs`.
+- Search index: `search-index.json` stays en/sr/ru (unchanged); each extra language gets `search-index-<code>.json`
+  (`langs` = en, sr, ru, <code>; its names go to "other names") and its home page loads that file. One index with all
+  24 languages would be 365 KB gzip, over the 300 KB limit.
+- An extra language whose path collides with an existing page (regional `/hr/`, `/mk/` …) stops the build.
 - Extra languages follow Serbian's coverage (Europe) by default; `"scope": "all"` gives them every page.
 
 ## Local test (never push)
@@ -44,7 +47,8 @@ python3 scripts/world_i18n.py check de [folder]         # an i18n folder against
 
 1. Merge its `l-<code>` folder; `python3 scripts/world_i18n.py check <code>` → OK.
 2. Add the code to `langs_enabled`; drop the "exactly en, sr, ru" check in `world_i18n.selftest`.
-3. `static/com/world-map.js`: read `cfg.intl` for the number/date locale (today it maps sr/ru/en only; other languages
+3. `static/com/world-home.js`: take the URL column from `doc.langs.indexOf(lang)` (today `{en:0, sr:1, ru:2}`, other
+   languages get English URLs). `static/com/world-map.js`: read `cfg.intl` for the number/date locale (today it maps sr/ru/en only; other languages
    fall back to en-GB numbers). Changing the JS changes its version hash on every map page — do it with the first language.
 4. `pip install babel` in `deploy.yml` (preview already has it).
 5. Watch the Cloudflare Pages limit: one extra Europe-scoped language adds ≈3 100 files (dist-com 15 494 → 18 604 with one).
