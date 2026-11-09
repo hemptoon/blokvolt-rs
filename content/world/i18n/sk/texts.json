@@ -6,7 +6,7 @@
   "lead": "Mapa vychádza z otvorených údajov a pri každom bode je uvedené, odkiaľ pochádza.",
   "intro": "Mapa spája otvorené údaje z mnohých zdrojov: oficiálnych registrov, otvorených údajov štátnej správy, OpenStreetMap, Open Charge Map a vlastných stránok prevádzkovateľov so zoznamom miest. Záznamy sa zlučujú, čistia a upravujú, takže bod na mape sa môže líšiť od pôvodného záznamu. Pre všetky siete platia rovnaké pravidlá. Mapa nehodnotí siete ani prevádzkovateľov.",
   "osm_h": "OpenStreetMap a ODbL",
-  "osm_p": "Údaje © prispievatelia OpenStreetMap, dostupné pod licenciou Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Zlúčená databáza bodov, ktorá obsahuje údaje OpenStreetMap, je dostupná pod rovnakou licenciou na stránke „Stiahnuť otvorené údaje“: {download_url}.",
+  "osm_p": "Údaje © prispievatelia OpenStreetMap, dostupné pod licenciou Open Database License (ODbL) 1.0 – www.openstreetmap.org/copyright. Zlúčená databáza bodov, ktorá obsahuje údaje OpenStreetMap, je dostupná pod rovnakou licenciou na stránke „Stiahnuť otvorené údaje“: {download_url}.",
   "sources_h": "Zdroje a licencie",
   "sources_note": "Uvádzajú sa iba zdroje, ktoré sa v aktuálnych údajoch skutočne vyskytujú, každý s licenciou a požadovaným uvedením autorstva.",
   "conf_h": "Ako sa počíta spoľahlivosť",
@@ -134,7 +134,7 @@
    ],
    [
     "dc",
-    "1, ak je k dispozícii rýchlonabíjanie DC, inak 0"
+    "1, ak je k dispozícii rýchle nabíjanie DC, inak 0"
    ],
    [
     "power_class",

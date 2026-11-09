@@ -7,7 +7,7 @@ geonameid,name,in_phrase,decl_ok,note
 2747891,Rotterdam,v Rotterdame,1,
 2911298,Hamburg,v Hamburgu,1,
 8063096,Earlsfield,v meste Earlsfield,0,
-2755251,Groningen,v meste Groningen,0,
+2755251,Groningen,v Groningene,1,R-SK
 2643743,Londýn,v Londýne,1,exonym
 2743477,Zwolle,v meste Zwolle,0,
 2745912,Utrecht,v Utrechte,1,
@@ -29,7 +29,7 @@ geonameid,name,in_phrase,decl_ok,note
 3345437,Camden Town,v meste Camden Town,0,
 2746932,Spijkenisse,v meste Spijkenisse,0,
 2759426,Barendrecht,v meste Barendrecht,0,
-2886242,Kolín,v Kolíne,1,exonym
+2886242,Kolín nad Rýnom,v Kolíne nad Rýnom,1,exonym; R-SK
 2756669,Dordrecht,v meste Dordrecht,0,
 2747596,Schiedam,v Schiedame,1,rule -dam
 2748000,Roermond,v meste Roermond,0,
@@ -70,7 +70,7 @@ geonameid,name,in_phrase,decl_ok,note
 8581595,Harringay,v meste Harringay,0,
 2751792,Leeuwarden,v meste Leeuwarden,0,
 2743493,Zwijndrecht,v meste Zwijndrecht,0,
-2945024,Braunschweig,v meste Braunschweig,0,
+2945024,Braunschweig,v Braunschweigu,1,R-SK
 2759040,Best,v meste Best,0,
 2925177,Freiburg im Breisgau,vo Freiburgu im Breisgau,1,
 2935517,Dortmund,v Dortmunde,1,rule -mund
@@ -87,7 +87,7 @@ geonameid,name,in_phrase,decl_ok,note
 2861650,Norimberg,v Norimbergu,1,exonym
 2754394,Hengelo,v meste Hengelo,0,
 2823567,Teltow,v meste Teltow,0,
-2987914,Perpignan,v meste Perpignan,0,
+2987914,Perpignan,v Perpignane,1,R-SK
 2750523,Naaldwijk,v meste Naaldwijk,0,
 2759407,Barneveld,v meste Barneveld,0,
 2791744,Marche-en-Famenne,v meste Marche-en-Famenne,0,
@@ -129,7 +129,7 @@ geonameid,name,in_phrase,decl_ok,note
 598316,Kaunas,v Kaunase,1,
 2746504,Tegelen,v meste Tegelen,0,
 3128760,Barcelona,v Barcelone,1,
-2751773,Leiden,v meste Leiden,0,
+2751773,Leiden,v Leidene,1,R-SK
 2755584,Gennep,v meste Gennep,0,
 2925533,Frankfurt nad Mohanom,vo Frankfurte nad Mohanom,1,exonym
 2656295,Barnet,v meste Barnet,0,
@@ -148,7 +148,7 @@ geonameid,name,in_phrase,decl_ok,note
 2746766,Steenwijk,v meste Steenwijk,0,
 2756342,Eersel,v meste Eersel,0,
 3013403,Hérouville-Saint-Clair,v meste Hérouville-Saint-Clair,0,
-3029241,Caen,v meste Caen,0,
+3029241,Caen,v Caene,1,R-SK
 2745154,Vught,v meste Vught,0,
 2755669,Geertruidenberg,v Geertruidenbergu,1,rule -berg
 2748413,Purmerend,v meste Purmerend,0,
@@ -169,8 +169,8 @@ geonameid,name,in_phrase,decl_ok,note
 2754064,Hilversum,v meste Hilversum,0,
 2919880,Glinde,v meste Glinde,0,
 2750947,Meppel,v meste Meppel,0,
-2881485,Landshut,v meste Landshut,0,
-2869894,Mönchengladbach,v meste Mönchengladbach,0,
+2881485,Landshut,v Landshute,1,R-SK
+2869894,Mönchengladbach,v Mönchengladbachu,1,R-SK
 2935022,Drážďany,v Drážďanoch,1,exonym
 3037538,Annemasse,v meste Annemasse,0,
 2756644,Drachten,v meste Drachten,0,
@@ -188,7 +188,7 @@ geonameid,name,in_phrase,decl_ok,note
 2759887,Almelo,v meste Almelo,0,
 2848845,Reinbek,v meste Reinbek,0,
 2759178,Benthuizen,v meste Benthuizen,0,
-2947416,Bochum,v meste Bochum,0,
+2947416,Bochum,v Bochume,1,R-SK
 3247449,Cáchy,v Cáchach,1,exonym
 2988507,Paríž,v Paríži,1,exonym
 2926271,Flensburg,vo Flensburgu,1,rule -burg
@@ -225,13 +225,13 @@ geonameid,name,in_phrase,decl_ok,note
 2980291,Saint-Étienne,v meste Saint-Étienne,0,
 2746804,Steenbergen,v meste Steenbergen,0,
 2758177,Brummen,v meste Brummen,0,
-2855745,Paderborn,v meste Paderborn,0,
+2855745,Paderborn,v Paderborne,1,R-SK
 2856883,Osnabrück,v Osnabrücku,1,rule -brück
 2990355,Niort,v meste Niort,0,
 6690866,Surbiton,v meste Surbiton,0,
 2757872,Culemborg,v meste Culemborg,0,
 2959083,Ahrensburg,v Ahrensburgu,1,rule -burg
-643492,Oulu,v meste Oulu,0,
+643492,Oulu,v Oulu,1,R-SK
 3037854,Amiens,v meste Amiens,0,
 2755003,Haarlem,v Haarleme,1,
 2873891,Mannheim,v Mannheime,1,rule -heim
@@ -254,15 +254,15 @@ geonameid,name,in_phrase,decl_ok,note
 2744549,Wierden,v meste Wierden,0,
 2745726,Veghel,v meste Veghel,0,
 2756723,Dongen,v meste Dongen,0,
-2907669,Heilbronn,v meste Heilbronn,0,
+2907669,Heilbronn,v Heilbronne,1,R-SK
 2978640,Saint-Malo,v meste Saint-Malo,0,
 2992402,Montigny-lès-Metz,v meste Montigny-lès-Metz,0,
 2757340,Delfzijl,v meste Delfzijl,0,
 2807240,Wittlich,v meste Wittlich,0,
 2867838,Mülheim an der Ruhr,v meste Mülheim an der Ruhr,0,
-660158,Espoo,v meste Espoo,0,
-3033123,Besançon,v meste Besançon,0,
-2639577,Reading,v meste Reading,0,
+660158,Espoo,v Espoo,1,R-SK
+3033123,Besançon,v Besançone,1,R-SK
+2639577,Reading,v Readingu,1,R-SK
 2750815,Mijdrecht,v meste Mijdrecht,0,
 2751687,Leusden,v meste Leusden,0,
 2945756,Bottrop,v meste Bottrop,0,
@@ -286,7 +286,7 @@ geonameid,name,in_phrase,decl_ok,note
 2634579,Welling,v meste Welling,0,
 2756507,Duiven,v meste Duiven,0,
 2831088,Sonthofen,v meste Sonthofen,0,
-2921466,Gelsenkirchen,v meste Gelsenkirchen,0,
+2921466,Gelsenkirchen,v Gelsenkirchene,1,R-SK
 2940231,Castrop-Rauxel,v meste Castrop-Rauxel,0,
 3017253,Fréjus,v meste Fréjus,0,
 2750039,Nijverdal,v meste Nijverdal,0,
@@ -295,7 +295,7 @@ geonameid,name,in_phrase,decl_ok,note
 2745392,Vlissingen,v meste Vlissingen,0,
 2751738,Lelystad,v meste Lelystad,0,
 2874225,Mohuč,v Mohuči,1,exonym
-2923544,Fürth,v meste Fürth,0,
+2923544,Fürth,vo Fürthe,1,R-SK
 3020035,Épinal,v meste Épinal,0,
 3026613,Charleville-Mézières,v meste Charleville-Mézières,0,
 2755605,Gemert,v meste Gemert,0,
@@ -318,8 +318,8 @@ geonameid,name,in_phrase,decl_ok,note
 2955272,Aschaffenburg,v Aschaffenburgu,1,rule -burg
 2990919,Narbonne,v meste Narbonne,0,
 2992703,Montélimar,v meste Montélimar,0,
-2821164,Trier,v meste Trier,0,
-634963,Tampere,v meste Tampere,0,
+2821164,Trier,v Trieri,1,R-SK
+634963,Tampere,v Tampere,1,R-SK
 3003796,Le Havre,v Le Havre,1,
 2655603,Birmingham,v Birminghame,1,
 2746839,Staphorst,v meste Staphorst,0,
@@ -361,7 +361,7 @@ geonameid,name,in_phrase,decl_ok,note
 2787889,Roeselare,v meste Roeselare,0,
 2835297,Schwandorf,v Schwandorfe,1,rule -dorf
 2904789,Hildesheim,v Hildesheime,1,rule -heim
-3030300,Brest,v meste Brest,0,
+3030300,Brest,v Breste,1,R-SK
 2892794,Karlsruhe,v Karlsruhe,1,
 2904795,Hilden,v meste Hilden,0,
 3025053,Cholet,v meste Cholet,0,
@@ -379,7 +379,7 @@ geonameid,name,in_phrase,decl_ok,note
 2758598,Borne,v meste Borne,0,
 2783310,Zaventem,v meste Zaventem,0,
 2833564,Seevetal,v meste Seevetal,0,
-3114711,Oviedo,v meste Oviedo,0,
+3114711,Oviedo,v Oviede,1,R-SK
 2977921,Saint-Nazaire,v meste Saint-Nazaire,0,
 2983362,Roanne,v meste Roanne,0,
 3035843,Auxerre,v meste Auxerre,0,
@@ -390,7 +390,7 @@ geonameid,name,in_phrase,decl_ok,note
 2892080,Kaufbeuren,v meste Kaufbeuren,0,
 2940213,Celle,v meste Celle,0,
 2947421,Bocholt,v meste Bocholt,0,
-2951825,Bayreuth,v meste Bayreuth,0,
+2951825,Bayreuth,v Bayreuthe,1,R-SK
 3038789,Abbeville,v meste Abbeville,0,
 2744904,Weesp,v meste Weesp,0,
 2864475,Neumünster,v meste Neumünster,0,
@@ -417,14 +417,14 @@ geonameid,name,in_phrase,decl_ok,note
 2821515,Traunstein,v meste Traunstein,0,
 2939797,Crailsheim,v Crailsheime,1,rule -heim
 3032469,Blagnac,v meste Blagnac,0,
-2991214,Mulhouse,v meste Mulhouse,0,
+2991214,Mulhouse,v Mulhouse,1,R-SK
 3021670,Dax,v meste Dax,0,
 2842884,Rüsselsheim am Main,v meste Rüsselsheim am Main,0,
 2864549,Neumarkt in der Oberpfalz,v meste Neumarkt in der Oberpfalz,0,
 2868506,Mühldorf am Inn,v meste Mühldorf am Inn,0,
 9238414,Kröpeliner-Tor-Vorstadt,v meste Kröpeliner-Tor-Vorstadt,0,
 2996882,Mâcon,v meste Mâcon,0,
-3006787,La Rochelle,v meste La Rochelle,0,
+3006787,La Rochelle,v La Rochelle,1,R-SK
 3013619,Hazebrouck,v meste Hazebrouck,0,
 3020392,Écully,v meste Écully,0,
 2509954,Valencia,vo Valencii,1,exonym
@@ -462,7 +462,7 @@ geonameid,name,in_phrase,decl_ok,note
 3028263,Castres,v meste Castres,0,
 255683,Patras,v Patrase,1,exonym
 2794981,Jambes,v meste Jambes,0,
-2805753,Wuppertal,v meste Wuppertal,0,
+2805753,Wuppertal,vo Wuppertale,1,R-SK
 2873759,Marburg,v Marburgu,1,rule -burg
 2895569,Itzehoe,v meste Itzehoe,0,
 2754073,Hillegom,v meste Hillegom,0,
@@ -479,7 +479,7 @@ geonameid,name,in_phrase,decl_ok,note
 3003603,Le Mans,v Le Mans,1,
 2743997,Zeewolde,v meste Zeewolde,0,
 2744344,Winschoten,v meste Winschoten,0,
-2820860,Tübingen,v meste Tübingen,0,
+2820860,Tübingen,v Tübingene,1,R-SK
 2853572,Pirna,v meste Pirna,0,
 2913537,Gunzenhausen,v meste Gunzenhausen,0,
 3007609,Lannion,v meste Lannion,0,
@@ -492,10 +492,10 @@ geonameid,name,in_phrase,decl_ok,note
 2913555,Günzburg,v Günzburgu,1,rule -burg
 2940383,Calw,v meste Calw,0,
 2953416,Bad Kreuznach,v meste Bad Kreuznach,0,
-2834282,Schwerin,v meste Schwerin,0,
+2834282,Schwerin,vo Schwerine,1,R-SK
 2851746,Pulheim,v Pulheime,1,rule -heim
 2864034,Neustadt in Holstein,v meste Neustadt in Holstein,0,
-2886946,Koblenz,v meste Koblenz,0,
+2886946,Koblenz,v Koblenzi,1,R-SK
 2895669,Iserlohn,v meste Iserlohn,0,
 2922530,Garmisch-Partenkirchen,v meste Garmisch-Partenkirchen,0,
 2971053,Valence,v meste Valence,0,

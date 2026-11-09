@@ -23,8 +23,13 @@ TAG = re.compile(r'</?[a-zA-Z][^>]*>')
 ENT = re.compile(r'&[a-zA-Z#0-9]+;')
 
 
+def _norm_ph(x):
+    # pool 4 (10.11.2026): {city_u}/{country_u} may replace {city}/{country}
+    return {'{city_u}': '{city}', '{country_u}': '{country}'}.get(x, x)
+
+
 def sig(s):
-    return sorted(PH.findall(s)), sorted(TAG.findall(s)), sorted(ENT.findall(s))
+    return sorted(_norm_ph(x) for x in PH.findall(s)), sorted(TAG.findall(s)), sorted(ENT.findall(s))
 
 
 def plural_tags():
