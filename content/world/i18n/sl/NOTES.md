@@ -31,11 +31,17 @@
 ## Названия
 - countries.csv: имена из CLDR (`name_sl`), сокращены HK «Hongkong», MO «Macao», MM «Mjanmar» (в CLDR длинная форма). in_phrase — «v»/«na» по норме: na Hrvaškem, na Nizozemskem, na Japonskem, na Kitajskem, na Islandiji, na Kosovu, na Dunaju (город).
 - Слаги стран — ASCII от словенского имени (nemcija, nizozemska, zdruzeno-kraljestvo).
-- cities.csv: все 5 605 городов. 297 — с проверенным экзонимом/падежом (`decl_ok = 1`: Dunaj, Gradec, Celovec, Beljak, Trst, Videm, Benetke, Pariz, Bruselj, Varšava, Budimpešta, Reka, Novi Sad → v Novem Sadu и т. д.). Остальные — местное латинское название, кириллица — словенская транслитерация (47), греческое/иное письмо — `name_en` (114), `in_phrase = "v kraju X"`, `decl_ok = 0`.
+- cities.csv: все 5 605 городов. 297 — с проверенным экзонимом/падежом (`decl_ok = 1`: Dunaj, Gradec, Celovec, Beljak, Trst, Videm, Benetke, Pariz, Bruselj, Varšava, Budimpešta, Reka, Novi Sad → v Novem Sadu и т. д.). Ещё 182 немецких/австрийских/швейцарских названия на -burg/-berg/-dorf/-heim/-stadt/-feld/-bach/-furt/-hof/-tal склонены по правилу (+u: v Bielefeldu, v Flensburgu), `decl_ok = 1`, пометка в `note`. Итого `decl_ok = 1` — 479. Остальные — местное латинское название, кириллица — словенская транслитерация (47), греческое/иное письмо — `name_en` (114), `in_phrase = "v kraju X"`, `decl_ok = 0`.
 - Греческие города без экзонима (Ioannina, Chania…) идут по `name_en` — словенская норма передаёт их по-гречески (Hanja и т. п.); на проверку носителю.
 
 ## Что осталось
 - Вычитка носителем (главное — заголовки, `p_*` страницы стран, цены).
-- Расширить `decl_ok = 1` для крупных городов DE/FR/NL/ES/US (сейчас только ~300).
+- Расширить `decl_ok = 1` для крупных городов DE/FR/NL/ES/US (сейчас 479).
 - `p_hub_na`: предполагается, что словенские страницы покрывают Европу (как SR). Если K8 решит иначе — поправить строку.
 - Обратный перевод 60 строк — см. раздел ниже.
+
+## Обратный перевод (60 случайных строк, слепой, отдельный агент)
+- 57 из 60 — смысл совпадает, везде «vi», нет «mi/naš», числа и термины верны.
+- Исправлено: `strings_pages.p_gnet` → «Omrežje {net} je prisotno v {n_countries}.» (род прилагательного не зависел от названия бренда); `strings_prices.m3` → «je uteženo s številom» вместо кальки «šteje s».
+- Проверка для K8: `t_city` = «Polnilne postaje za električna vozila {city_u}» — `{city_u}` должен приходить как «v Ljubljani» (in_phrase), как в SR.
+- Мелочь: кавычки — в texts ASCII "…", в `strings_prices.cars_note` словенские »…«. Унифицировать при вычитке.

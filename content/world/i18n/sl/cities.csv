@@ -158,7 +158,7 @@ geonameid,name,in_phrase,decl_ok,note
 2755669,Geertruidenberg,v kraju Geertruidenberg,0,
 2748413,Purmerend,v kraju Purmerend,0,
 2970777,Vannes,v kraju Vannes,0,
-2834498,Schweinfurt,v kraju Schweinfurt,0,
+2834498,Schweinfurt,v Schweinfurtu,1,sklon po pravilu (-u)
 2748172,Ridderkerk,v kraju Ridderkerk,0,
 2753996,Hoensbroek,v kraju Hoensbroek,0,
 2755476,Goes,v kraju Goes,0,
@@ -168,14 +168,14 @@ geonameid,name,in_phrase,decl_ok,note
 2753801,Hoofddorp,v kraju Hoofddorp,0,
 2911408,Halstenbek,v kraju Halstenbek,0,
 2940132,Chemnitz,v kraju Chemnitz,0,
-2853969,Pforzheim,v kraju Pforzheim,0,
+2853969,Pforzheim,v Pforzheimu,1,sklon po pravilu (-u)
 2752264,Krimpen aan den IJssel,v kraju Krimpen aan den IJssel,0,
 2750896,Middelburg,v kraju Middelburg,0,
 2754064,Hilversum,v kraju Hilversum,0,
 2919880,Glinde,v kraju Glinde,0,
 2750947,Meppel,v kraju Meppel,0,
 2881485,Landshut,v kraju Landshut,0,
-2869894,Mönchengladbach,v kraju Mönchengladbach,0,
+2869894,Mönchengladbach,v Mönchengladbachu,1,sklon po pravilu (-u)
 2935022,Dresden,v Dresdnu,1,
 3037538,Annemasse,v kraju Annemasse,0,
 2756644,Drachten,v kraju Drachten,0,
@@ -196,7 +196,7 @@ geonameid,name,in_phrase,decl_ok,note
 2947416,Bochum,v Bochumu,1,
 3247449,Aachen,v Aachnu,1,
 2988507,Pariz,v Parizu,1,
-2926271,Flensburg,v kraju Flensburg,0,
+2926271,Flensburg,v Flensburgu,1,sklon po pravilu (-u)
 2756888,Diemen,v kraju Diemen,0,
 2746860,Stadskanaal,v kraju Stadskanaal,0,
 2760134,Aalsmeer,v kraju Aalsmeer,0,
@@ -235,7 +235,7 @@ geonameid,name,in_phrase,decl_ok,note
 2990355,Niort,v kraju Niort,0,
 6690866,Surbiton,v kraju Surbiton,0,
 2757872,Culemborg,v kraju Culemborg,0,
-2959083,Ahrensburg,v kraju Ahrensburg,0,
+2959083,Ahrensburg,v Ahrensburgu,1,sklon po pravilu (-u)
 643492,Oulu,v kraju Oulu,0,
 3037854,Amiens,v kraju Amiens,0,
 2755003,Haarlem,v kraju Haarlem,0,
@@ -244,11 +244,11 @@ geonameid,name,in_phrase,decl_ok,note
 2993002,Montauban,v kraju Montauban,0,
 3013627,Hayange,v kraju Hayange,0,
 3035204,Balma,v kraju Balma,0,
-2949186,Bielefeld,v kraju Bielefeld,0,
+2949186,Bielefeld,v Bielefeldu,1,sklon po pravilu (-u)
 2890158,Kitzingen,v kraju Kitzingen,0,
 2892518,Kassel,v kraju Kassel,0,
 3143244,Oslo,v Oslu,1,
-2952984,Bamberg,v kraju Bamberg,0,
+2952984,Bamberg,v Bambergu,1,sklon po pravilu (-u)
 3028641,Carcassonne,v kraju Carcassonne,0,
 2799365,Dilbeek,v kraju Dilbeek,0,
 2874545,Magdeburg,v Magdeburgu,1,
@@ -273,7 +273,7 @@ geonameid,name,in_phrase,decl_ok,note
 2945756,Bottrop,v kraju Bottrop,0,
 2747034,Soest,v kraju Soest,0,
 2911240,Hamm,v kraju Hamm,0,
-2938540,Deggendorf,v kraju Deggendorf,0,
+2938540,Deggendorf,v Deggendorfu,1,sklon po pravilu (-u)
 2512989,Palma,v Palmi,1,
 2981280,Saint-Brieuc,v kraju Saint-Brieuc,0,
 3027422,Chambéry,v kraju Chambéry,0,
@@ -295,8 +295,8 @@ geonameid,name,in_phrase,decl_ok,note
 2940231,Castrop-Rauxel,v kraju Castrop-Rauxel,0,
 3017253,Fréjus,v kraju Fréjus,0,
 2750039,Nijverdal,v kraju Nijverdal,0,
-2844988,Rosenheim,v kraju Rosenheim,0,
-2875115,Lüneburg,v kraju Lüneburg,0,
+2844988,Rosenheim,v Rosenheimu,1,sklon po pravilu (-u)
+2875115,Lüneburg,v Lüneburgu,1,sklon po pravilu (-u)
 2745392,Vlissingen,v kraju Vlissingen,0,
 2751738,Lelystad,v kraju Lelystad,0,
 2874225,Mainz,v Mainzu,1,
@@ -316,11 +316,11 @@ geonameid,name,in_phrase,decl_ok,note
 2878234,Leverkusen,v kraju Leverkusen,0,
 2934486,Düren,v kraju Düren,0,
 2798573,Eupen,v kraju Eupen,0,
-2939969,Cloppenburg,v kraju Cloppenburg,0,
+2939969,Cloppenburg,v Cloppenburgu,1,sklon po pravilu (-u)
 2753638,Hoorn,v kraju Hoorn,0,
 2882087,Laatzen,v kraju Laatzen,0,
 2920512,Gießen,v kraju Gießen,0,
-2955272,Aschaffenburg,v kraju Aschaffenburg,0,
+2955272,Aschaffenburg,v Aschaffenburgu,1,sklon po pravilu (-u)
 2990919,Narbonne,v kraju Narbonne,0,
 2992703,Montélimar,v kraju Montélimar,0,
 2821164,Trier,v kraju Trier,0,
@@ -341,7 +341,7 @@ geonameid,name,in_phrase,decl_ok,note
 2826099,Straubing,v kraju Straubing,0,
 3104324,Zaragoza,v Zaragozi,1,
 2753706,Hoogezand,v kraju Hoogezand,0,
-2906331,Hennigsdorf,v kraju Hennigsdorf,0,
+2906331,Hennigsdorf,v Hennigsdorfu,1,sklon po pravilu (-u)
 2749812,Noordwijk-Binnen,v kraju Noordwijk-Binnen,0,
 2929567,Erlangen,v kraju Erlangen,0,
 3038634,Agen,v kraju Agen,0,
@@ -364,8 +364,8 @@ geonameid,name,in_phrase,decl_ok,note
 2751456,Loon op Zand,v kraju Loon op Zand,0,
 2267057,Lizbona,v Lizboni,1,
 2787889,Roeselare,v kraju Roeselare,0,
-2835297,Schwandorf,v kraju Schwandorf,0,
-2904789,Hildesheim,v kraju Hildesheim,0,
+2835297,Schwandorf,v Schwandorfu,1,sklon po pravilu (-u)
+2904789,Hildesheim,v Hildesheimu,1,sklon po pravilu (-u)
 3030300,Brest,v kraju Brest,0,
 2892794,Karlsruhe,v Karlsruheju,1,
 2904795,Hilden,v kraju Hilden,0,
@@ -383,7 +383,7 @@ geonameid,name,in_phrase,decl_ok,note
 2998224,Lingolsheim,v kraju Lingolsheim,0,
 2758598,Borne,v kraju Borne,0,
 2783310,Zaventem,v kraju Zaventem,0,
-2833564,Seevetal,v kraju Seevetal,0,
+2833564,Seevetal,v Seevetalu,1,sklon po pravilu (-u)
 3114711,Oviedo,v kraju Oviedo,0,
 2977921,Saint-Nazaire,v kraju Saint-Nazaire,0,
 2983362,Roanne,v kraju Roanne,0,
@@ -399,19 +399,19 @@ geonameid,name,in_phrase,decl_ok,note
 3038789,Abbeville,v kraju Abbeville,0,
 2744904,Weesp,v kraju Weesp,0,
 2864475,Neumünster,v kraju Neumünster,0,
-2891834,Kelheim,v kraju Kelheim,0,
+2891834,Kelheim,v Kelheimu,1,sklon po pravilu (-u)
 2929670,Erfurt,v Erfurtu,1,
 3029974,Brive-la-Gaillarde,v kraju Brive-la-Gaillarde,0,
 2647550,Hampton,v kraju Hampton,0,
 2758174,Brunssum,v kraju Brunssum,0,
 727011,Sofija,v Sofiji,1,
 2814791,Waldshut-Tiengen,v kraju Waldshut-Tiengen,0,
-2848245,Rendsburg,v kraju Rendsburg,0,
+2848245,Rendsburg,v Rendsburgu,1,sklon po pravilu (-u)
 2881509,Landsberg am Lech,v kraju Landsberg am Lech,0,
 2897132,Husum,v kraju Husum,0,
 2902768,Hof,v kraju Hof,0,
 2908032,Heide,v kraju Heide,0,
-2951923,Baunatal,v kraju Baunatal,0,
+2951923,Baunatal,v Baunatalu,1,sklon po pravilu (-u)
 2972315,Toulouse,v Toulousu,1,
 2984114,Reims,v kraju Reims,0,
 2757220,Den Helder,v kraju Den Helder,0,
@@ -420,7 +420,7 @@ geonameid,name,in_phrase,decl_ok,note
 2797656,Gent,v Gentu,1,
 2817202,Vilshofen an der Donau,v kraju Vilshofen an der Donau,0,
 2821515,Traunstein,v kraju Traunstein,0,
-2939797,Crailsheim,v kraju Crailsheim,0,
+2939797,Crailsheim,v Crailsheimu,1,sklon po pravilu (-u)
 3032469,Blagnac,v kraju Blagnac,0,
 2991214,Mulhouse,v kraju Mulhouse,0,
 3021670,Dax,v kraju Dax,0,
@@ -435,7 +435,7 @@ geonameid,name,in_phrase,decl_ok,note
 2509954,Valencia,v Valencii,1,
 2755030,Haaksbergen,v kraju Haaksbergen,0,
 2885734,Königswinter,v kraju Königswinter,0,
-2927268,Fellbach,v kraju Fellbach,0,
+2927268,Fellbach,v Fellbachu,1,sklon po pravilu (-u)
 650224,Kuopio,v kraju Kuopio,0,
 3034475,Bayonne,v kraju Bayonne,0,
 3034483,Bayeux,v kraju Bayeux,0,
@@ -444,7 +444,7 @@ geonameid,name,in_phrase,decl_ok,note
 2817220,Villingen-Schwenningen,v kraju Villingen-Schwenningen,0,
 2881885,Lahr/Schwarzwald,v kraju Lahr/Schwarzwald,0,
 2913192,Haar,v kraju Haar,0,
-2955936,Ansbach,v kraju Ansbach,0,
+2955936,Ansbach,v Ansbachu,1,sklon po pravilu (-u)
 659180,Hämeenlinna,v kraju Hämeenlinna,0,
 2987967,Périgueux,v kraju Périgueux,0,
 2756896,Didam,v kraju Didam,0,
@@ -456,22 +456,22 @@ geonameid,name,in_phrase,decl_ok,note
 2803160,Ans,v kraju Ans,0,
 2852458,Potsdam,v Potsdamu,1,
 2873289,Marktredwitz,v kraju Marktredwitz,0,
-2925910,Forchheim,v kraju Forchheim,0,
+2925910,Forchheim,v Forchheimu,1,sklon po pravilu (-u)
 2514256,Málaga,v Málagi,1,
 2747227,Sint-Oedenrode,v kraju Sint-Oedenrode,0,
 2756295,Eibergen,v kraju Eibergen,0,
-2812174,Weinheim,v kraju Weinheim,0,
+2812174,Weinheim,v Weinheimu,1,sklon po pravilu (-u)
 2826595,Stolberg (Rhld.),v kraju Stolberg (Rhld.),0,
 640999,Pori,v kraju Pori,0,
 2968771,Villefontaine,v kraju Villefontaine,0,
 3028263,Castres,v kraju Castres,0,
 255683,Patras,v Patrasu,1,
 2794981,Jambes,v kraju Jambes,0,
-2805753,Wuppertal,v kraju Wuppertal,0,
-2873759,Marburg,v kraju Marburg,0,
+2805753,Wuppertal,v Wuppertalu,1,sklon po pravilu (-u)
+2873759,Marburg,v Marburgu,1,sklon po pravilu (-u)
 2895569,Itzehoe,v kraju Itzehoe,0,
 2754073,Hillegom,v kraju Hillegom,0,
-2875392,Ludwigsburg,v kraju Ludwigsburg,0,
+2875392,Ludwigsburg,v Ludwigsburgu,1,sklon po pravilu (-u)
 2936871,Dinslaken,v kraju Dinslaken,0,
 2973385,Tarbes,v kraju Tarbes,0,
 2947444,Böblingen,v kraju Böblingen,0,
@@ -479,7 +479,7 @@ geonameid,name,in_phrase,decl_ok,note
 2978758,Saint-Lô,v kraju Saint-Lô,0,
 3006283,La Teste-de-Buch,v kraju La Teste-de-Buch,0,
 3014856,Grasse,v kraju Grasse,0,
-2857458,Oldenburg,v kraju Oldenburg,0,
+2857458,Oldenburg,v Oldenburgu,1,sklon po pravilu (-u)
 2953324,Bad Tölz,v kraju Bad Tölz,0,
 3003603,Le Mans,v kraju Le Mans,0,
 2743997,Zeewolde,v kraju Zeewolde,0,
@@ -492,13 +492,13 @@ geonameid,name,in_phrase,decl_ok,note
 598098,Klaipeda,v Klaipedi,1,
 2960596,Esch-sur-Alzette,v kraju Esch-sur-Alzette,0,
 2844437,Rotenburg (Wümme),v kraju Rotenburg (Wümme),0,
-2855525,Papenburg,v kraju Papenburg,0,
-2857798,Offenburg,v kraju Offenburg,0,
-2913555,Günzburg,v kraju Günzburg,0,
+2855525,Papenburg,v Papenburgu,1,sklon po pravilu (-u)
+2857798,Offenburg,v Offenburgu,1,sklon po pravilu (-u)
+2913555,Günzburg,v Günzburgu,1,sklon po pravilu (-u)
 2940383,Calw,v kraju Calw,0,
 2953416,Bad Kreuznach,v kraju Bad Kreuznach,0,
 2834282,Schwerin,v kraju Schwerin,0,
-2851746,Pulheim,v kraju Pulheim,0,
+2851746,Pulheim,v Pulheimu,1,sklon po pravilu (-u)
 2864034,Neustadt in Holstein,v kraju Neustadt in Holstein,0,
 2886946,Koblenz,v kraju Koblenz,0,
 2895669,Iserlohn,v kraju Iserlohn,0,
@@ -508,14 +508,14 @@ geonameid,name,in_phrase,decl_ok,note
 3032797,Biarritz,v kraju Biarritz,0,
 2778067,Gradec,v Gradcu,1,
 2847645,Rheine,v kraju Rheine,0,
-2867770,Müllheim,v kraju Müllheim,0,
+2867770,Müllheim,v Müllheimu,1,sklon po pravilu (-u)
 2872611,Mechernich,v kraju Mechernich,0,
 2975050,Sens,v kraju Sens,0,
 3026204,Châteauroux,v kraju Châteauroux,0,
 2642465,Milton Keynes,v kraju Milton Keynes,0,
 2784189,Walcourt,v kraju Walcourt,0,
 2924585,Friedrichshafen,v kraju Friedrichshafen,0,
-2951111,Bendorf,v kraju Bendorf,0,
+2951111,Bendorf,v Bendorfu,1,sklon po pravilu (-u)
 3118514,Lleida,v kraju Lleida,0,
 650859,Kouvola,v kraju Kouvola,0,
 2984513,Rambouillet,v kraju Rambouillet,0,
@@ -534,7 +534,7 @@ geonameid,name,in_phrase,decl_ok,note
 2271071,Barreiro,v kraju Barreiro,0,
 2797713,Gembloux,v kraju Gembloux,0,
 2803560,Zwickau,v kraju Zwickau,0,
-2810716,Wertheim,v kraju Wertheim,0,
+2810716,Wertheim,v Wertheimu,1,sklon po pravilu (-u)
 2826287,Stralsund,v kraju Stralsund,0,
 2835482,Schwäbisch Gmünd,v kraju Schwäbisch Gmünd,0,
 2513416,Murcia,v Murcii,1,
@@ -564,8 +564,8 @@ geonameid,name,in_phrase,decl_ok,note
 3038354,Aix-en-Provence,v kraju Aix-en-Provence,0,
 2640275,Pinner,v kraju Pinner,0,
 2745340,Volendam,v kraju Volendam,0,
-2814874,Waldkraiburg,v kraju Waldkraiburg,0,
-2854923,Penzberg,v kraju Penzberg,0,
+2814874,Waldkraiburg,v Waldkraiburgu,1,sklon po pravilu (-u)
+2854923,Penzberg,v Penzbergu,1,sklon po pravilu (-u)
 638936,Rovaniemi,v kraju Rovaniemi,0,
 3029825,Bruay-la-Buissière,v kraju Bruay-la-Buissière,0,
 3034126,Beaune,v kraju Beaune,0,
@@ -598,7 +598,7 @@ geonameid,name,in_phrase,decl_ok,note
 2647793,Guildford,v kraju Guildford,0,
 2805761,Wunstorf,v kraju Wunstorf,0,
 2812482,Weimar,v kraju Weimar,0,
-2836203,Schramberg,v kraju Schramberg,0,
+2836203,Schramberg,v Schrambergu,1,sklon po pravilu (-u)
 2844265,Roth,v kraju Roth,0,
 2877088,Lingen (Ems),v kraju Lingen (Ems),0,
 2920891,Gersthofen,v kraju Gersthofen,0,
@@ -645,12 +645,12 @@ geonameid,name,in_phrase,decl_ok,note
 2790595,Mouscron,v kraju Mouscron,0,
 2831948,Sindelfingen,v kraju Sindelfingen,0,
 2835481,Schwäbisch Hall,v kraju Schwäbisch Hall,0,
-2836320,Schorndorf,v kraju Schorndorf,0,
+2836320,Schorndorf,v Schorndorfu,1,sklon po pravilu (-u)
 2838634,Schleswig,v kraju Schleswig,0,
 2850235,Ratekau,v kraju Ratekau,0,
 2854386,Pfaffenhofen an der Ilm,v kraju Pfaffenhofen an der Ilm,0,
 2866758,Neckarsulm,v kraju Neckarsulm,0,
-2950978,Bensheim,v kraju Bensheim,0,
+2950978,Bensheim,v Bensheimu,1,sklon po pravilu (-u)
 2953402,Bad Mergentheim,v kraju Bad Mergentheim,0,
 2516452,Inca,v kraju Inca,0,
 2983154,Rodez,v kraju Rodez,0,
@@ -671,7 +671,7 @@ geonameid,name,in_phrase,decl_ok,note
 3037514,Annonay,v kraju Annonay,0,
 2756077,Enkhuizen,v kraju Enkhuizen,0,
 2771335,Mödling,v kraju Mödling,0,
-2849802,Ravensburg,v kraju Ravensburg,0,
+2849802,Ravensburg,v Ravensburgu,1,sklon po pravilu (-u)
 2930821,Elmshorn,v kraju Elmshorn,0,
 2953341,Bad Segeberg,v kraju Bad Segeberg,0,
 2953522,Bad Dürkheim,v kraju Bad Dürkheim,0,
@@ -680,12 +680,12 @@ geonameid,name,in_phrase,decl_ok,note
 2760123,Aalten,v kraju Aalten,0,
 2790471,Namur,v kraju Namur,0,
 2820577,Überlingen,v kraju Überlingen,0,
-2821029,Troisdorf,v kraju Troisdorf,0,
+2821029,Troisdorf,v Troisdorfu,1,sklon po pravilu (-u)
 2882439,Künzelsau,v kraju Künzelsau,0,
 2913366,Gütersloh,v kraju Gütersloh,0,
 2919054,Göppingen,v kraju Göppingen,0,
-2938913,Darmstadt,v kraju Darmstadt,0,
-2939951,Coburg,v kraju Coburg,0,
+2938913,Darmstadt,v Darmstadtu,1,sklon po pravilu (-u)
+2939951,Coburg,v Coburgu,1,sklon po pravilu (-u)
 637219,Seinäjoki,v kraju Seinäjoki,0,
 2967318,Wittenheim,v kraju Wittenheim,0,
 2971041,Valenciennes,v kraju Valenciennes,0,
@@ -743,7 +743,7 @@ geonameid,name,in_phrase,decl_ok,note
 2923507,Füssen,v kraju Füssen,0,
 2936253,Donauwörth,v kraju Donauwörth,0,
 2946366,Boppard,v kraju Boppard,0,
-3336891,Filderstadt,v kraju Filderstadt,0,
+3336891,Filderstadt,v Filderstadtu,1,sklon po pravilu (-u)
 3107775,Torrelavega,v kraju Torrelavega,0,
 2991772,Morlaix,v kraju Morlaix,0,
 2995121,Mauguio,v kraju Mauguio,0,
@@ -757,11 +757,11 @@ geonameid,name,in_phrase,decl_ok,note
 2803073,Arlon,v kraju Arlon,0,
 3068799,Ostrava,v Ostravi,1,
 3077916,České Budějovice,v kraju České Budějovice,0,
-2829457,Starnberg,v kraju Starnberg,0,
+2829457,Starnberg,v Starnbergu,1,sklon po pravilu (-u)
 2844588,Rostock,v Rostocku,1,
 2853928,Pfullingen,v kraju Pfullingen,0,
 2862620,Nienburg/Weser,v kraju Nienburg/Weser,0,
-2871284,Michelstadt,v kraju Michelstadt,0,
+2871284,Michelstadt,v Michelstadtu,1,sklon po pravilu (-u)
 2871845,Meppen,v kraju Meppen,0,
 2885732,Königs Wusterhausen,v kraju Königs Wusterhausen,0,
 2885908,Königsbrunn,v kraju Königsbrunn,0,
@@ -783,7 +783,7 @@ geonameid,name,in_phrase,decl_ok,note
 2847524,Ribnitz-Damgarten,v kraju Ribnitz-Damgarten,0,
 2861914,Nördlingen,v kraju Nördlingen,0,
 2868788,Mühlacker,v kraju Mühlacker,0,
-2876865,Lippstadt,v kraju Lippstadt,0,
+2876865,Lippstadt,v Lippstadtu,1,sklon po pravilu (-u)
 2919625,Goch,v kraju Goch,0,
 2921653,Geislingen an der Steige,v kraju Geislingen an der Steige,0,
 2945474,Bramsche,v kraju Bramsche,0,
@@ -809,7 +809,7 @@ geonameid,name,in_phrase,decl_ok,note
 2732513,Vilar,v kraju Vilar,0,
 2813464,Wedel,v kraju Wedel,0,
 2814131,Waren (Müritz),v kraju Waren (Müritz),0,
-2833242,Seligenstadt,v kraju Seligenstadt,0,
+2833242,Seligenstadt,v Seligenstadtu,1,sklon po pravilu (-u)
 2850257,Rastatt,v kraju Rastatt,0,
 2869449,Moosburg an der Isar,v kraju Moosburg an der Isar,0,
 2887835,Kleve,v kraju Kleve,0,
@@ -826,7 +826,7 @@ geonameid,name,in_phrase,decl_ok,note
 3038350,Aix-les-Bains,v kraju Aix-les-Bains,0,
 2265788,Montijo,v kraju Montijo,0,
 2860080,Oberkirch,v kraju Oberkirch,0,
-2935414,Dotzheim,v kraju Dotzheim,0,
+2935414,Dotzheim,v Dotzheimu,1,sklon po pravilu (-u)
 2937959,Dessau-Roßlau,v kraju Dessau-Roßlau,0,
 2942634,Buchen (Odenwald),v kraju Buchen (Odenwald),0,
 2956710,Alzey,v kraju Alzey,0,
@@ -881,11 +881,11 @@ geonameid,name,in_phrase,decl_ok,note
 11952858,Petershausen-West,v kraju Petershausen-West,0,
 2855047,Peine,v kraju Peine,0,
 2879697,Leer,v kraju Leer,0,
-2885408,Kornwestheim,v kraju Kornwestheim,0,
+2885408,Kornwestheim,v Kornwestheimu,1,sklon po pravilu (-u)
 2924360,Friesoythe,v kraju Friesoythe,0,
 2945358,Brandenburg an der Havel,v kraju Brandenburg an der Havel,0,
 2956005,Annaberg-Buchholz,v kraju Annaberg-Buchholz,0,
-2956656,Amberg,v kraju Amberg,0,
+2956656,Amberg,v Ambergu,1,sklon po pravilu (-u)
 2519240,Córdoba,v kraju Córdoba,0,
 3110983,Salt,v kraju Salt,0,
 3022988,Cournon-d'Auvergne,v kraju Cournon-d'Auvergne,0,
@@ -897,13 +897,13 @@ geonameid,name,in_phrase,decl_ok,note
 2794860,Jumet,v kraju Jumet,0,
 2810808,Wernigerode,v kraju Wernigerode,0,
 2820256,Ulm,v kraju Ulm,0,
-2861402,Oberasbach,v kraju Oberasbach,0,
+2861402,Oberasbach,v Oberasbachu,1,sklon po pravilu (-u)
 2861632,Nürtingen,v kraju Nürtingen,0,
 2861982,Nordhausen,v kraju Nordhausen,0,
-2881085,Langenfeld,v kraju Langenfeld,0,
+2881085,Langenfeld,v Langenfeldu,1,sklon po pravilu (-u)
 2899101,Horb am Neckar,v kraju Horb am Neckar,0,
 2918752,Gotha,v kraju Gotha,0,
-2934728,Duderstadt,v kraju Duderstadt,0,
+2934728,Duderstadt,v Duderstadtu,1,sklon po pravilu (-u)
 2939811,Cottbus,v kraju Cottbus,0,
 2949012,Bietigheim-Bissingen,v kraju Bietigheim-Bissingen,0,
 2959279,Ahaus,v kraju Ahaus,0,
@@ -940,12 +940,12 @@ geonameid,name,in_phrase,decl_ok,note
 524901,Moskva,v Moskvi,1,
 2811909,Weißenburg in Bayern,v kraju Weißenburg in Bayern,0,
 2817599,Verden,v kraju Verden,0,
-2818766,Unterschleißheim,v kraju Unterschleißheim,0,
+2818766,Unterschleißheim,v Unterschleißheimu,1,sklon po pravilu (-u)
 2823812,Taufkirchen,v kraju Taufkirchen,0,
 2841125,Bad Saulgau,v kraju Bad Saulgau,0,
 2864054,Neustadt an der Weinstraße,v kraju Neustadt an der Weinstraße,0,
 2917138,Gronau (Westf.),v kraju Gronau (Westf.),0,
-2958128,Alsfeld,v kraju Alsfeld,0,
+2958128,Alsfeld,v Alsfeldu,1,sklon po pravilu (-u)
 3130583,Alcobendas,v kraju Alcobendas,0,
 2968515,Villeneuve-sur-Lot,v kraju Villeneuve-sur-Lot,0,
 2973258,Taverny,v kraju Taverny,0,
@@ -961,14 +961,14 @@ geonameid,name,in_phrase,decl_ok,note
 2790101,Nivelles,v kraju Nivelles,0,
 2808720,Wilhelmshaven,v kraju Wilhelmshaven,0,
 2811292,Wendelstein,v kraju Wendelstein,0,
-2817324,Viernheim,v kraju Viernheim,0,
+2817324,Viernheim,v Viernheimu,1,sklon po pravilu (-u)
 2820693,Tuttlingen,v kraju Tuttlingen,0,
 2850954,Radolfzell,v kraju Radolfzell,0,
 2863716,Nidda,v kraju Nidda,0,
 2899538,Holzwickede,v kraju Holzwickede,0,
 2907545,Heilbad Heiligenstadt,v kraju Heilbad Heiligenstadt,0,
 2921473,Gelnhausen,v kraju Gelnhausen,0,
-2945591,Brackenheim,v kraju Brackenheim,0,
+2945591,Brackenheim,v Brackenheimu,1,sklon po pravilu (-u)
 2949423,Biberach an der Riß,v kraju Biberach an der Riß,0,
 2620425,Herning,v kraju Herning,0,
 2518878,Dénia,v kraju Dénia,0,
@@ -985,11 +985,11 @@ geonameid,name,in_phrase,decl_ok,note
 2757991,Castricum,v kraju Castricum,0,
 2269594,Cascais,v Cascaisu,1,
 2829777,Stadthagen,v kraju Stadthagen,0,
-2831250,Sonneberg,v kraju Sonneberg,0,
-2851079,Radeberg,v kraju Radeberg,0,
+2831250,Sonneberg,v Sonnebergu,1,sklon po pravilu (-u)
+2851079,Radeberg,v Radebergu,1,sklon po pravilu (-u)
 2863840,Neuwied,v kraju Neuwied,0,
 2867164,Nagold,v kraju Nagold,0,
-2871736,Merseburg,v kraju Merseburg,0,
+2871736,Merseburg,v Merseburgu,1,sklon po pravilu (-u)
 2896736,Idstein,v kraju Idstein,0,
 2953568,Backnang,v kraju Backnang,0,
 2518559,Elche,v kraju Elche,0,
@@ -1006,18 +1006,18 @@ geonameid,name,in_phrase,decl_ok,note
 2798297,Fleurus,v kraju Fleurus,0,
 2660718,Fribourg,v kraju Fribourg,0,
 2820973,Trossingen,v kraju Trossingen,0,
-2835345,Schwalmstadt,v kraju Schwalmstadt,0,
+2835345,Schwalmstadt,v Schwalmstadtu,1,sklon po pravilu (-u)
 2844862,Rösrath,v kraju Rösrath,0,
-2866135,Neubrandenburg,v kraju Neubrandenburg,0,
-2869120,Mosbach,v kraju Mosbach,0,
+2866135,Neubrandenburg,v Neubrandenburgu,1,sklon po pravilu (-u)
+2869120,Mosbach,v Mosbachu,1,sklon po pravilu (-u)
 2877709,Lilienthal,v kraju Lilienthal,0,
 2878074,Lichtenfels,v kraju Lichtenfels,0,
 2878270,Leutkirch,v kraju Leutkirch,0,
 2879241,Leimen,v kraju Leimen,0,
 2893544,Kaltenkirchen,v kraju Kaltenkirchen,0,
-2905826,Herrenberg,v kraju Herrenberg,0,
+2905826,Herrenberg,v Herrenbergu,1,sklon po pravilu (-u)
 2917788,Greifswald,v kraju Greifswald,0,
-2925192,Freiberg,v kraju Freiberg,0,
+2925192,Freiberg,v Freibergu,1,sklon po pravilu (-u)
 2516479,Eivissa,v kraju Eivissa,0,
 631707,Vihti,v kraju Vihti,0,
 651943,Kokkola,v kraju Kokkola,0,
@@ -1032,9 +1032,9 @@ geonameid,name,in_phrase,decl_ok,note
 3173577,Meran,v Meranu,1,
 2266319,Moita,v kraju Moita,0,
 2766429,St. Pölten,v St. Pöltnu,1,
-11611400,Eselsberg,v kraju Eselsberg,0,
+11611400,Eselsberg,v Eselsbergu,1,sklon po pravilu (-u)
 2820456,Uelzen,v kraju Uelzen,0,
-2828105,Steinfurt,v kraju Steinfurt,0,
+2828105,Steinfurt,v Steinfurtu,1,sklon po pravilu (-u)
 2841693,Sangerhausen,v kraju Sangerhausen,0,
 2857900,Oerlinghausen,v kraju Oerlinghausen,0,
 2922586,Garbsen,v kraju Garbsen,0,
@@ -1057,15 +1057,15 @@ geonameid,name,in_phrase,decl_ok,note
 2795930,Herstal,v kraju Herstal,0,
 2803204,Andenne,v kraju Andenne,0,
 2807845,Winsen (Luhe),v kraju Winsen (Luhe),0,
-2835537,Schwabach,v kraju Schwabach,0,
-2845222,Ronnenberg,v kraju Ronnenberg,0,
+2835537,Schwabach,v Schwabachu,1,sklon po pravilu (-u)
+2845222,Ronnenberg,v Ronnenbergu,1,sklon po pravilu (-u)
 2887716,Klingenstein,v kraju Klingenstein,0,
 2895664,Isernhagen Farster Bauerschaft,v kraju Isernhagen Farster Bauerschaft,0,
-2915196,Großostheim,v kraju Großostheim,0,
+2915196,Großostheim,v Großostheimu,1,sklon po pravilu (-u)
 2917540,Grevenbroich,v kraju Grevenbroich,0,
-2919095,Gonsenheim,v kraju Gonsenheim,0,
+2919095,Gonsenheim,v Gonsenheimu,1,sklon po pravilu (-u)
 2920329,Ginsheim-Gustavsburg,v kraju Ginsheim-Gustavsburg,0,
-2939945,Coesfeld,v kraju Coesfeld,0,
+2939945,Coesfeld,v Coesfeldu,1,sklon po pravilu (-u)
 2954006,Aurich,v kraju Aurich,0,
 3106050,Vic,v kraju Vic,0,
 2990264,Nogent-sur-Oise,v kraju Nogent-sur-Oise,0,
@@ -1087,7 +1087,7 @@ geonameid,name,in_phrase,decl_ok,note
 2849548,Rees,v kraju Rees,0,
 2871486,Metzingen,v kraju Metzingen,0,
 2901420,Hohenstein-Ernstthal,v kraju Hohenstein-Ernstthal,0,
-2924894,Freudenstadt,v kraju Freudenstadt,0,
+2924894,Freudenstadt,v Freudenstadtu,1,sklon po pravilu (-u)
 2947449,Bobingen,v kraju Bobingen,0,
 2511174,Santa Cruz de Tenerife,v kraju Santa Cruz de Tenerife,0,
 2520493,Calvià,v kraju Calvià,0,
@@ -1110,7 +1110,7 @@ geonameid,name,in_phrase,decl_ok,note
 2812145,Weinstadt-Endersbach,v kraju Weinstadt-Endersbach,0,
 2843636,Rottweil,v kraju Rottweil,0,
 2863223,Niederkassel,v kraju Niederkassel,0,
-2899449,Homburg,v kraju Homburg,0,
+2899449,Homburg,v Homburgu,1,sklon po pravilu (-u)
 2907887,Heidenau,v kraju Heidenau,0,
 2920620,Giengen an der Brenz,v kraju Giengen an der Brenz,0,
 2924802,Friedberg (Hessen),v kraju Friedberg (Hessen),0,
@@ -1167,19 +1167,19 @@ geonameid,name,in_phrase,decl_ok,note
 2806142,Worms,v kraju Worms,0,
 2817537,Versmold,v kraju Versmold,0,
 2825422,Stuhr,v kraju Stuhr,0,
-2831872,Sinsheim,v kraju Sinsheim,0,
+2831872,Sinsheim,v Sinsheimu,1,sklon po pravilu (-u)
 2832232,Sigmaringen,v kraju Sigmaringen,0,
-2839335,Schifferstadt,v kraju Schifferstadt,0,
+2839335,Schifferstadt,v Schifferstadtu,1,sklon po pravilu (-u)
 2848273,Remscheid,v kraju Remscheid,0,
 2853292,Plauen,v kraju Plauen,0,
 2855794,Oyten,v kraju Oyten,0,
-2857291,Olsberg,v kraju Olsberg,0,
-2873291,Marktoberdorf,v kraju Marktoberdorf,0,
+2857291,Olsberg,v Olsbergu,1,sklon po pravilu (-u)
+2873291,Marktoberdorf,v Marktoberdorfu,1,sklon po pravilu (-u)
 2875107,Lünen,v kraju Lünen,0,
 2875623,Lübbenau/Spreewald,v kraju Lübbenau/Spreewald,0,
-2897436,Hünfeld,v kraju Hünfeld,0,
+2897436,Hünfeld,v Hünfeldu,1,sklon po pravilu (-u)
 2929622,Erkelenz,v kraju Erkelenz,0,
-2937591,Dieburg,v kraju Dieburg,0,
+2937591,Dieburg,v Dieburgu,1,sklon po pravilu (-u)
 2958516,Alfter,v kraju Alfter,0,
 2510409,Toledo,v kraju Toledo,0,
 2514984,Llucmajor,v kraju Llucmajor,0,
@@ -1201,16 +1201,16 @@ geonameid,name,in_phrase,decl_ok,note
 2706767,Helsingborg,v kraju Helsingborg,0,
 2807218,Wittmund,v kraju Wittmund,0,
 2819465,Unterhaching,v kraju Unterhaching,0,
-2826082,Strausberg,v kraju Strausberg,0,
+2826082,Strausberg,v Strausbergu,1,sklon po pravilu (-u)
 2833080,Senden,v kraju Senden,0,
 2833296,Selb,v kraju Selb,0,
 2841386,Sarstedt,v kraju Sarstedt,0,
-2842688,Saalfeld,v kraju Saalfeld,0,
+2842688,Saalfeld,v Saalfeldu,1,sklon po pravilu (-u)
 2853574,Pirmasens,v kraju Pirmasens,0,
-2857129,Oranienburg,v kraju Oranienburg,0,
+2857129,Oranienburg,v Oranienburgu,1,sklon po pravilu (-u)
 2864276,Neuruppin,v kraju Neuruppin,0,
 2875457,Lüdenscheid,v kraju Lüdenscheid,0,
-2882588,Kulmbach,v kraju Kulmbach,0,
+2882588,Kulmbach,v Kulmbachu,1,sklon po pravilu (-u)
 2891524,Kerpen,v kraju Kerpen,0,
 2893437,Kamenz,v kraju Kamenz,0,
 2896817,Ibbenbüren,v kraju Ibbenbüren,0,
@@ -1251,12 +1251,12 @@ geonameid,name,in_phrase,decl_ok,note
 2824801,Sulzbach-Rosenberg,v kraju Sulzbach-Rosenberg,0,
 2831852,Sinzig,v kraju Sinzig,0,
 2857565,Öhringen,v kraju Öhringen,0,
-2861814,Northeim,v kraju Northeim,0,
+2861814,Northeim,v Northeimu,1,sklon po pravilu (-u)
 2896514,Ilmenau,v kraju Ilmenau,0,
 2911395,Haltern am See,v kraju Haltern am See,0,
 2923362,Gaggenau,v kraju Gaggenau,0,
-2925017,Freital,v kraju Freital,0,
-2937040,Dietzenbach,v kraju Dietzenbach,0,
+2925017,Freital,v Freitalu,1,sklon po pravilu (-u)
+2937040,Dietzenbach,v Dietzenbachu,1,sklon po pravilu (-u)
 2941976,Bühl,v kraju Bühl,0,
 2953089,Balingen,v kraju Balingen,0,
 2956206,Andernach,v kraju Andernach,0,
@@ -1290,7 +1290,7 @@ geonameid,name,in_phrase,decl_ok,note
 2877550,Lindau,v kraju Lindau,0,
 2897216,Hürth,v kraju Hürth,0,
 2906121,Herford,v kraju Herford,0,
-2909240,Hattersheim,v kraju Hattersheim,0,
+2909240,Hattersheim,v Hattersheimu,1,sklon po pravilu (-u)
 2911271,Hameln,v kraju Hameln,0,
 2918987,Görlitz,v kraju Görlitz,0,
 2920433,Gilching,v kraju Gilching,0,
@@ -1321,15 +1321,15 @@ geonameid,name,in_phrase,decl_ok,note
 2823590,Telgte,v kraju Telgte,0,
 2834372,Schwelm,v kraju Schwelm,0,
 2836282,Schortens,v kraju Schortens,0,
-2836413,Schopfheim,v kraju Schopfheim,0,
-2838053,Schmallenberg,v kraju Schmallenberg,0,
+2836413,Schopfheim,v Schopfheimu,1,sklon po pravilu (-u)
+2838053,Schmallenberg,v Schmallenbergu,1,sklon po pravilu (-u)
 2873776,Marbach am Neckar,v kraju Marbach am Neckar,0,
 2906152,Herdecke,v kraju Herdecke,0,
-2907201,Heinsberg,v kraju Heinsberg,0,
+2907201,Heinsberg,v Heinsbergu,1,sklon po pravilu (-u)
 2925080,Freilassing,v kraju Freilassing,0,
 2933959,Ebersbach an der Fils,v kraju Ebersbach an der Fils,0,
 2938323,Delmenhorst,v kraju Delmenhorst,0,
-2940512,Butzbach,v kraju Butzbach,0,
+2940512,Butzbach,v Butzbachu,1,sklon po pravilu (-u)
 2953317,Bad Wildungen,v kraju Bad Wildungen,0,
 2953436,Bad Homburg vor der Höhe,v kraju Bad Homburg vor der Höhe,0,
 3117814,Lugo,v kraju Lugo,0,
@@ -1358,13 +1358,13 @@ geonameid,name,in_phrase,decl_ok,note
 2659613,Monthey,v kraju Monthey,0,
 2812204,Weingarten,v kraju Weingarten,0,
 2812625,Weil der Stadt,v kraju Weil der Stadt,0,
-2814127,Warendorf,v kraju Warendorf,0,
+2814127,Warendorf,v Warendorfu,1,sklon po pravilu (-u)
 2816630,Völklingen,v kraju Völklingen,0,
 2867996,Mühlhausen,v kraju Mühlhausen,0,
 2871039,Minden,v kraju Minden,0,
 2876147,Lohr am Main,v kraju Lohr am Main,0,
 2881279,Langen,v kraju Langen,0,
-2892874,Karlsfeld,v kraju Karlsfeld,0,
+2892874,Karlsfeld,v Karlsfeldu,1,sklon po pravilu (-u)
 2899676,Holzkirchen,v kraju Holzkirchen,0,
 2952252,Bassum,v kraju Bassum,0,
 2953320,Bad Waldsee,v kraju Bad Waldsee,0,
@@ -1387,11 +1387,11 @@ geonameid,name,in_phrase,decl_ok,note
 2660365,Herisau,v kraju Herisau,0,
 3078837,Brandýs nad Labem-Stará Boleslav,v kraju Brandýs nad Labem-Stará Boleslav,0,
 2836084,Schrobenhausen,v kraju Schrobenhausen,0,
-2866906,Naumburg,v kraju Naumburg,0,
+2866906,Naumburg,v Naumburgu,1,sklon po pravilu (-u)
 2869791,Monheim am Rhein,v kraju Monheim am Rhein,0,
 2885237,Köthen,v kraju Köthen,0,
 2885397,Korschenbroich,v kraju Korschenbroich,0,
-2892786,Karlstadt,v kraju Karlstadt,0,
+2892786,Karlstadt,v Karlstadtu,1,sklon po pravilu (-u)
 2894375,Kaarst,v kraju Kaarst,0,
 2894553,Jülich,v kraju Jülich,0,
 2894637,Jüchen,v kraju Jüchen,0,
@@ -1401,7 +1401,7 @@ geonameid,name,in_phrase,decl_ok,note
 2946172,Borna,v kraju Borna,0,
 2953391,Bad Neuenahr-Ahrweiler,v kraju Bad Neuenahr-Ahrweiler,0,
 2953552,Bad Bentheim,v kraju Bad Bentheim,0,
-2958595,Albstadt,v kraju Albstadt,0,
+2958595,Albstadt,v Albstadtu,1,sklon po pravilu (-u)
 2518505,Elda,v kraju Elda,0,
 3121437,Getafe,v kraju Getafe,0,
 3124794,Collado-Villalba,v kraju Collado-Villalba,0,
@@ -1429,20 +1429,20 @@ geonameid,name,in_phrase,decl_ok,note
 2659748,Martigny-Ville,v kraju Martigny-Ville,0,
 2807344,Wittenberge,v kraju Wittenberge,0,
 2810678,Wesel,v kraju Wesel,0,
-2814153,Warburg,v kraju Warburg,0,
+2814153,Warburg,v Warburgu,1,sklon po pravilu (-u)
 2814362,Waltrop,v kraju Waltrop,0,
 2839050,Schkeuditz,v kraju Schkeuditz,0,
 2848175,Renningen,v kraju Renningen,0,
-2873632,Marienberg,v kraju Marienberg,0,
+2873632,Marienberg,v Marienbergu,1,sklon po pravilu (-u)
 2875019,Lusan,v kraju Lusan,0,
 2875881,Lörrach,v kraju Lörrach,0,
 2878943,Lemgo,v kraju Lemgo,0,
 2883784,Kronach,v kraju Kronach,0,
-2885536,Korbach,v kraju Korbach,0,
+2885536,Korbach,v Korbachu,1,sklon po pravilu (-u)
 2891258,Kevelaer,v kraju Kevelaer,0,
 2906199,Herborn,v kraju Herborn,0,
-2948071,Blankenburg,v kraju Blankenburg,0,
-3272941,Riedstadt,v kraju Riedstadt,0,
+2948071,Blankenburg,v Blankenburgu,1,sklon po pravilu (-u)
+3272941,Riedstadt,v Riedstadtu,1,sklon po pravilu (-u)
 2516548,Huelva,v kraju Huelva,0,
 3114531,Palencia,v kraju Palencia,0,
 3114567,Palafrugell,v kraju Palafrugell,0,
@@ -1472,7 +1472,7 @@ geonameid,name,in_phrase,decl_ok,note
 2804008,Zittau,v kraju Zittau,0,
 2808559,Willich,v kraju Willich,0,
 2833170,Selm,v kraju Selm,0,
-2834978,Schwarzenberg,v kraju Schwarzenberg,0,
+2834978,Schwarzenberg,v Schwarzenbergu,1,sklon po pravilu (-u)
 2842112,Salzwedel,v kraju Salzwedel,0,
 2847690,Rheda-Wiedenbrück,v kraju Rheda-Wiedenbrück,0,
 2852280,Preetz,v kraju Preetz,0,
@@ -1488,7 +1488,7 @@ geonameid,name,in_phrase,decl_ok,note
 2907585,Heiligenhaus,v kraju Heiligenhaus,0,
 2918840,Goslar,v kraju Goslar,0,
 2936658,Döbeln,v kraju Döbeln,0,
-2947641,Blomberg,v kraju Blomberg,0,
+2947641,Blomberg,v Blombergu,1,sklon po pravilu (-u)
 2953357,Bad Salzungen,v kraju Bad Salzungen,0,
 3274966,Lauda-Königshofen,v kraju Lauda-Königshofen,0,
 3336892,Ostfildern,v kraju Ostfildern,0,
@@ -1519,16 +1519,16 @@ geonameid,name,in_phrase,decl_ok,note
 2272215,Alcabideche,v kraju Alcabideche,0,
 665087,Temišvar,v Temišvarju,1,
 2784068,Waregem,v kraju Waregem,0,
-2804034,Zirndorf,v kraju Zirndorf,0,
+2804034,Zirndorf,v Zirndorfu,1,sklon po pravilu (-u)
 2806914,Wolfenbüttel,v kraju Wolfenbüttel,0,
-2808461,Wilnsdorf,v kraju Wilnsdorf,0,
+2808461,Wilnsdorf,v Wilnsdorfu,1,sklon po pravilu (-u)
 2815487,Waghäusel,v kraju Waghäusel,0,
 2855441,Parchim,v kraju Parchim,0,
 2857659,Ohligs,v kraju Ohligs,0,
 2866280,Neu-Anspach,v kraju Neu-Anspach,0,
 2875626,Lübbecke,v kraju Lübbecke,0,
-2880077,Laupheim,v kraju Laupheim,0,
-2884509,Krefeld,v kraju Krefeld,0,
+2880077,Laupheim,v Laupheimu,1,sklon po pravilu (-u)
+2884509,Krefeld,v Krefeldu,1,sklon po pravilu (-u)
 2917325,Grimma,v kraju Grimma,0,
 2935825,Dormagen,v kraju Dormagen,0,
 2936705,Ditzingen,v kraju Ditzingen,0,
@@ -1563,7 +1563,7 @@ geonameid,name,in_phrase,decl_ok,note
 726050,Varna,v Varni,1,
 2661881,Aarau,v kraju Aarau,0,
 2806919,Wolfen,v kraju Wolfen,0,
-2813390,Wegberg,v kraju Wegberg,0,
+2813390,Wegberg,v Wegbergu,1,sklon po pravilu (-u)
 2815565,Wadern,v kraju Wadern,0,
 2831486,Soltau,v kraju Soltau,0,
 2842632,Saarlouis,v kraju Saarlouis,0,
@@ -1573,12 +1573,12 @@ geonameid,name,in_phrase,decl_ok,note
 2864005,Neustrelitz,v kraju Neustrelitz,0,
 2866110,Neubrück,v kraju Neubrück,0,
 2875379,Ludwigsfelde,v kraju Ludwigsfelde,0,
-2878695,Leonberg,v kraju Leonberg,0,
-2891832,Kelkheim,v kraju Kelkheim,0,
+2878695,Leonberg,v Leonbergu,1,sklon po pravilu (-u)
+2891832,Kelkheim,v Kelkheimu,1,sklon po pravilu (-u)
 2917544,Greven,v kraju Greven,0,
 2939995,Clausthal-Zellerfeld,v kraju Clausthal-Zellerfeld,0,
 2953379,Bad Pyrmont,v kraju Bad Pyrmont,0,
-2955439,Arnstadt,v kraju Arnstadt,0,
+2955439,Arnstadt,v Arnstadtu,1,sklon po pravilu (-u)
 2959686,Achern,v kraju Achern,0,
 2516345,Xàtiva,v kraju Xàtiva,0,
 2517117,Cambrils,v kraju Cambrils,0,
@@ -1618,7 +1618,7 @@ geonameid,name,in_phrase,decl_ok,note
 2903175,Hochheim am Main,v kraju Hochheim am Main,0,
 2914929,Groß-Umstadt,v kraju Groß-Umstadt,0,
 2920842,Gescher,v kraju Gescher,0,
-2924803,Friedberg,v kraju Friedberg,0,
+2924803,Friedberg,v Friedbergu,1,sklon po pravilu (-u)
 2953358,Bad Salzuflen,v kraju Bad Salzuflen,0,
 2953374,Bad Rappenau,v kraju Bad Rappenau,0,
 2953525,Bad Driburg,v kraju Bad Driburg,0,
@@ -1653,7 +1653,7 @@ geonameid,name,in_phrase,decl_ok,note
 2906530,Hemmingen,v kraju Hemmingen,0,
 2911584,Haldensleben,v kraju Haldensleben,0,
 2920020,Glauchau,v kraju Glauchau,0,
-2921034,Germersheim,v kraju Germersheim,0,
+2921034,Germersheim,v Germersheimu,1,sklon po pravilu (-u)
 2930646,Eltville,v kraju Eltville,0,
 2933101,Eggenstein-Leopoldshafen,v kraju Eggenstein-Leopoldshafen,0,
 2951654,Beckum,v kraju Beckum,0,
@@ -1692,7 +1692,7 @@ geonameid,name,in_phrase,decl_ok,note
 2661646,Baden,v kraju Baden,0,
 3068582,Pardubice,v kraju Pardubice,0,
 2812636,Weil am Rhein,v kraju Weil am Rhein,0,
-2813786,Wassenberg,v kraju Wassenberg,0,
+2813786,Wassenberg,v Wassenbergu,1,sklon po pravilu (-u)
 2820087,Unna,v kraju Unna,0,
 2824655,Sundern,v kraju Sundern,0,
 2826304,Straelen,v kraju Straelen,0,
@@ -1708,7 +1708,7 @@ geonameid,name,in_phrase,decl_ok,note
 2911964,Haiger,v kraju Haiger,0,
 2921242,Georgsmarienhütte,v kraju Georgsmarienhütte,0,
 2928396,Euskirchen,v kraju Euskirchen,0,
-2941405,Burgdorf,v kraju Burgdorf,0,
+2941405,Burgdorf,v Burgdorfu,1,sklon po pravilu (-u)
 2941570,Büren,v kraju Büren,0,
 2943320,Brühl,v kraju Brühl,0,
 2943573,Bruchköbel,v kraju Bruchköbel,0,
@@ -1752,21 +1752,21 @@ geonameid,name,in_phrase,decl_ok,note
 2817576,Verl,v kraju Verl,0,
 2817813,Vechelde,v kraju Vechelde,0,
 2833641,Seelze,v kraju Seelze,0,
-2835342,Schwalmtal,v kraju Schwalmtal,0,
-2837470,Schneeberg,v kraju Schneeberg,0,
-2843355,Rudolstadt,v kraju Rudolstadt,0,
+2835342,Schwalmtal,v Schwalmtalu,1,sklon po pravilu (-u)
+2837470,Schneeberg,v Schneebergu,1,sklon po pravilu (-u)
+2843355,Rudolstadt,v Rudolstadtu,1,sklon po pravilu (-u)
 2846939,Riesa,v kraju Riesa,0,
 2858738,Oberursel,v kraju Oberursel,0,
-2866650,Neheim,v kraju Neheim,0,
+2866650,Neheim,v Neheimu,1,sklon po pravilu (-u)
 2871675,Merzig,v kraju Merzig,0,
-2884050,Kreuztal,v kraju Kreuztal,0,
+2884050,Kreuztal,v Kreuztalu,1,sklon po pravilu (-u)
 2885672,Konz,v kraju Konz,0,
 2902559,Hofgeismar,v kraju Hofgeismar,0,
 2911384,Halver,v kraju Halver,0,
 2921837,Geilenkirchen,v kraju Geilenkirchen,0,
-2924915,Freudenberg,v kraju Freudenberg,0,
+2924915,Freudenberg,v Freudenbergu,1,sklon po pravilu (-u)
 2929831,Eppingen,v kraju Eppingen,0,
-2934020,Eberbach,v kraju Eberbach,0,
+2934020,Eberbach,v Eberbachu,1,sklon po pravilu (-u)
 2624886,Aalborg,v Aalborgu,1,
 2510271,Torre-Pacheco,v kraju Torre-Pacheco,0,
 2511250,San Pedro de Alcántara,v kraju San Pedro de Alcántara,0,
@@ -1816,11 +1816,11 @@ geonameid,name,in_phrase,decl_ok,note
 2915613,Groß-Gerau,v kraju Groß-Gerau,0,
 2928967,Eschwege,v kraju Eschwege,0,
 2930509,Emmerich,v kraju Emmerich,0,
-2936985,Dillenburg,v kraju Dillenburg,0,
-2950073,Bernburg,v kraju Bernburg,0,
+2936985,Dillenburg,v Dillenburgu,1,sklon po pravilu (-u)
+2950073,Bernburg,v Bernburgu,1,sklon po pravilu (-u)
 2953321,Bad Vilbel,v kraju Bad Vilbel,0,
 2953385,Bad Oldesloe,v kraju Bad Oldesloe,0,
-2957773,Altenburg,v kraju Altenburg,0,
+2957773,Altenburg,v Altenburgu,1,sklon po pravilu (-u)
 3205924,Neukirchen-Vluyn,v kraju Neukirchen-Vluyn,0,
 2610613,Vejle,v kraju Vejle,0,
 2622447,Esbjerg,v kraju Esbjerg,0,
@@ -1867,12 +1867,12 @@ geonameid,name,in_phrase,decl_ok,note
 3078773,Břeclav,v kraju Břeclav,0,
 2803870,Zossen,v kraju Zossen,0,
 2818094,Uslar,v kraju Uslar,0,
-2832521,Siegburg,v kraju Siegburg,0,
-2833073,Senftenberg,v kraju Senftenberg,0,
+2832521,Siegburg,v Siegburgu,1,sklon po pravilu (-u)
+2833073,Senftenberg,v Senftenbergu,1,sklon po pravilu (-u)
 2841648,Sankt Augustin,v kraju Sankt Augustin,0,
-2847666,Rheinbach,v kraju Rheinbach,0,
+2847666,Rheinbach,v Rheinbachu,1,sklon po pravilu (-u)
 2859380,Ober-Ramstadt,v kraju Ober-Ramstadt,0,
-2866333,Nettetal,v kraju Nettetal,0,
+2866333,Nettetal,v Nettetalu,1,sklon po pravilu (-u)
 2867613,Hann. Münden,v kraju Hann. Münden,0,
 2871668,Meschede,v kraju Meschede,0,
 2872079,Melle,v kraju Melle,0,
@@ -1881,7 +1881,7 @@ geonameid,name,in_phrase,decl_ok,note
 2905455,Herzogenrath,v kraju Herzogenrath,0,
 2908495,Hechingen,v kraju Hechingen,0,
 2911051,Hamminkeln,v kraju Hamminkeln,0,
-2913761,Gummersbach,v kraju Gummersbach,0,
+2913761,Gummersbach,v Gummersbachu,1,sklon po pravilu (-u)
 2925189,Freiberg am Neckar,v kraju Freiberg am Neckar,0,
 2959681,Achim,v kraju Achim,0,
 2511619,Sagunto,v kraju Sagunto,0,
@@ -1946,14 +1946,14 @@ geonameid,name,in_phrase,decl_ok,note
 2817927,Vaihingen an der Enz,v kraju Vaihingen an der Enz,0,
 2821807,Torgau,v kraju Torgau,0,
 2821899,Tönisvorst,v kraju Tönisvorst,0,
-2829804,Stadtallendorf,v kraju Stadtallendorf,0,
+2829804,Stadtallendorf,v Stadtallendorfu,1,sklon po pravilu (-u)
 2833592,Seesen,v kraju Seesen,0,
-2853658,Pinneberg,v kraju Pinneberg,0,
+2853658,Pinneberg,v Pinnebergu,1,sklon po pravilu (-u)
 2857943,Oelde,v kraju Oelde,0,
 2871983,Menden,v kraju Menden,0,
 2937317,Diepholz,v kraju Diepholz,0,
-2942159,Bückeburg,v kraju Bückeburg,0,
-2950438,Bergheim,v kraju Bergheim,0,
+2942159,Bückeburg,v Bückeburgu,1,sklon po pravilu (-u)
+2950438,Bergheim,v Bergheimu,1,sklon po pravilu (-u)
 2623188,Charlottenlund,v kraju Charlottenlund,0,
 2511880,Riba-roja de Túria,v kraju Riba-roja de Túria,0,
 2513811,Mislata,v kraju Mislata,0,
@@ -2005,15 +2005,15 @@ geonameid,name,in_phrase,decl_ok,note
 2659869,Locarno,v kraju Locarno,0,
 2661513,Biel/Bienne,v kraju Biel/Bienne,0,
 2805385,Xanten,v kraju Xanten,0,
-2811644,Weiterstadt,v kraju Weiterstadt,0,
+2811644,Weiterstadt,v Weiterstadtu,1,sklon po pravilu (-u)
 2817783,Vegesack,v kraju Vegesack,0,
 2846523,Rinteln,v kraju Rinteln,0,
 2847639,Rheinfelden,v kraju Rheinfelden,0,
-2848762,Reinheim,v kraju Reinheim,0,
-2902852,Hockenheim,v kraju Hockenheim,0,
+2848762,Reinheim,v Reinheimu,1,sklon po pravilu (-u)
+2902852,Hockenheim,v Hockenheimu,1,sklon po pravilu (-u)
 2910278,Harsewinkel,v kraju Harsewinkel,0,
 2953197,Baiersbronn,v kraju Baiersbronn,0,
-2958533,Alfeld,v kraju Alfeld,0,
+2958533,Alfeld,v Alfeldu,1,sklon po pravilu (-u)
 7303020,Lutherstadt Wittenberg,v kraju Lutherstadt Wittenberg,0,
 2510279,Torrent,v kraju Torrent,0,
 2511752,Rojales,v kraju Rojales,0,
@@ -2071,16 +2071,16 @@ geonameid,name,in_phrase,decl_ok,note
 3079508,Benešov,v kraju Benešov,0,
 2811698,Weißwasser,v kraju Weißwasser,0,
 2823533,Templin,v kraju Templin,0,
-2846843,Rietberg,v kraju Rietberg,0,
+2846843,Rietberg,v Rietbergu,1,sklon po pravilu (-u)
 2850995,Radevormwald,v kraju Radevormwald,0,
 2858763,Obertshausen,v kraju Obertshausen,0,
 2862104,Nordenham,v kraju Nordenham,0,
-2878784,Lennestadt,v kraju Lennestadt,0,
-2881695,Lampertheim,v kraju Lampertheim,0,
+2878784,Lennestadt,v Lennestadtu,1,sklon po pravilu (-u)
+2881695,Lampertheim,v Lampertheimu,1,sklon po pravilu (-u)
 2891643,Kempen,v kraju Kempen,0,
 2898603,Hörstel,v kraju Hörstel,0,
-2911665,Halberstadt,v kraju Halberstadt,0,
-2924625,Friedrichsdorf,v kraju Friedrichsdorf,0,
+2911665,Halberstadt,v Halberstadtu,1,sklon po pravilu (-u)
+2924625,Friedrichsdorf,v Friedrichsdorfu,1,sklon po pravilu (-u)
 2941501,Burg,v kraju Burg,0,
 2944079,Brilon,v kraju Brilon,0,
 2948164,Bitterfeld-Wolfen,v kraju Bitterfeld-Wolfen,0,
@@ -2131,21 +2131,21 @@ geonameid,name,in_phrase,decl_ok,note
 2818067,Uetersen,v kraju Uetersen,0,
 2831403,Sömmerda,v kraju Sömmerda,0,
 2842131,Salzkotten,v kraju Salzkotten,0,
-2847662,Rheinberg,v kraju Rheinberg,0,
+2847662,Rheinberg,v Rheinbergu,1,sklon po pravilu (-u)
 2848335,Remagen,v kraju Remagen,0,
-2851782,Puchheim,v kraju Puchheim,0,
-2853924,Pfungstadt,v kraju Pfungstadt,0,
+2851782,Puchheim,v Puchheimu,1,sklon po pravilu (-u)
+2853924,Pfungstadt,v Pfungstadtu,1,sklon po pravilu (-u)
 2864058,Neustadt am Rübenberge,v kraju Neustadt am Rübenberge,0,
 2864820,Neu-Isenburg,v kraju Neu-Isenburg,0,
 2869019,Mössingen,v kraju Mössingen,0,
-2874230,Maintal,v kraju Maintal,0,
+2874230,Maintal,v Maintalu,1,sklon po pravilu (-u)
 2880221,Lauchhammer,v kraju Lauchhammer,0,
-2904808,Hilchenbach,v kraju Hilchenbach,0,
+2904808,Hilchenbach,v Hilchenbachu,1,sklon po pravilu (-u)
 2917221,Gröbenzell,v kraju Gröbenzell,0,
 2922230,Gauting,v kraju Gauting,0,
-2924206,Fröndenberg,v kraju Fröndenberg,0,
-2926120,Flörsheim,v kraju Flörsheim,0,
-2929671,Erftstadt,v kraju Erftstadt,0,
+2924206,Fröndenberg,v Fröndenbergu,1,sklon po pravilu (-u)
+2926120,Flörsheim,v Flörsheimu,1,sklon po pravilu (-u)
+2929671,Erftstadt,v Erftstadtu,1,sklon po pravilu (-u)
 2935220,Dreieich,v kraju Dreieich,0,
 2942073,Büdingen,v kraju Büdingen,0,
 2959223,Ahlen,v kraju Ahlen,0,
@@ -2185,7 +2185,7 @@ geonameid,name,in_phrase,decl_ok,note
 2686657,Örebro,v kraju Örebro,0,
 3059050,Liptovský Mikuláš,v kraju Liptovský Mikuláš,0,
 723819,Prešov,v kraju Prešov,0,
-2773913,Klosterneuburg,v kraju Klosterneuburg,0,
+2773913,Klosterneuburg,v Klosterneuburgu,1,sklon po pravilu (-u)
 2786578,Sint-Niklaas,v kraju Sint-Niklaas,0,
 2787356,Saint-Nicolas,v kraju Saint-Nicolas,0,
 2789471,Oupeye,v kraju Oupeye,0,
@@ -2271,15 +2271,15 @@ geonameid,name,in_phrase,decl_ok,note
 2795398,Hoogstraten,v kraju Hoogstraten,0,
 2798301,Fléron,v kraju Fléron,0,
 2659587,Morges,v kraju Morges,0,
-2810706,Petersberg,v kraju Petersberg,0,
+2810706,Petersberg,v Petersbergu,1,sklon po pravilu (-u)
 2810919,Werdohl,v kraju Werdohl,0,
-2814146,Wardenburg,v kraju Wardenburg,0,
+2814146,Wardenburg,v Wardenburgu,1,sklon po pravilu (-u)
 2817065,Voerde,v kraju Voerde,0,
 2838059,Schmalkalden,v kraju Schmalkalden,0,
 2855859,Overath,v kraju Overath,0,
 2858103,Odenthal,v kraju Odenthal,0,
 2866930,Nauen,v kraju Nauen,0,
-2873211,Marsberg,v kraju Marsberg,0,
+2873211,Marsberg,v Marsbergu,1,sklon po pravilu (-u)
 2875484,Luckenwalde,v kraju Luckenwalde,0,
 2875645,Loxstedt,v kraju Loxstedt,0,
 2893438,Kamen,v kraju Kamen,0,
@@ -2287,7 +2287,7 @@ geonameid,name,in_phrase,decl_ok,note
 2921061,Gerlingen,v kraju Gerlingen,0,
 2931804,Einbeck,v kraju Einbeck,0,
 2945545,Brake (Unterweser),v kraju Brake (Unterweser),0,
-2951648,Bedburg,v kraju Bedburg,0,
+2951648,Bedburg,v Bedburgu,1,sklon po pravilu (-u)
 2614030,Silkeborg,v kraju Silkeborg,0,
 2616933,Middelfart,v kraju Middelfart,0,
 2624112,Birkerød,v kraju Birkerød,0,
@@ -3405,11 +3405,11 @@ geonameid,name,in_phrase,decl_ok,note
 2805910,Wülfrath,v kraju Wülfrath,0,
 2813433,Weener,v kraju Weener,0,
 2835260,Schwanewede,v kraju Schwanewede,0,
-2851465,Quedlinburg,v kraju Quedlinburg,0,
+2851465,Quedlinburg,v Quedlinburgu,1,sklon po pravilu (-u)
 2856930,Oschersleben,v kraju Oschersleben,0,
 2864435,Neunkirchen,v kraju Neunkirchen,0,
 2881956,Lage,v kraju Lage,0,
-2917412,Griesheim,v kraju Griesheim,0,
+2917412,Griesheim,v Griesheimu,1,sklon po pravilu (-u)
 2933364,Edewecht,v kraju Edewecht,0,
 2953413,Bad Langensalza,v kraju Bad Langensalza,0,
 2516395,Jaén,v kraju Jaén,0,
@@ -3534,15 +3534,15 @@ geonameid,name,in_phrase,decl_ok,note
 3064104,Třebíč,v kraju Třebíč,0,
 3064454,Svitavy,v kraju Svitavy,0,
 3068293,Písek,v kraju Písek,0,
-11951298,Sachsenheim,v kraju Sachsenheim,0,
+11951298,Sachsenheim,v Sachsenheimu,1,sklon po pravilu (-u)
 2803723,Zülpich,v kraju Zülpich,0,
 2815559,Wadgassen,v kraju Wadgassen,0,
 2828050,Steinhagen,v kraju Steinhagen,0,
 2885800,Königslutter am Elm,v kraju Königslutter am Elm,0,
-2898364,Hövelhof,v kraju Hövelhof,0,
-2935042,Drensteinfurt,v kraju Drensteinfurt,0,
+2898364,Hövelhof,v Hövelhofu,1,sklon po pravilu (-u)
+2935042,Drensteinfurt,v Drensteinfurtu,1,sklon po pravilu (-u)
 2938784,Datteln,v kraju Datteln,0,
-2940938,Bürstadt,v kraju Bürstadt,0,
+2940938,Bürstadt,v Bürstadtu,1,sklon po pravilu (-u)
 2949475,Beverungen,v kraju Beverungen,0,
 2953405,Bad Lippspringe,v kraju Bad Lippspringe,0,
 2953449,Bad Harzburg,v kraju Bad Harzburg,0,
@@ -3678,15 +3678,15 @@ geonameid,name,in_phrase,decl_ok,note
 2810833,Werne,v kraju Werne,0,
 2814305,Wandlitz,v kraju Wandlitz,0,
 2815824,Vreden,v kraju Vreden,0,
-2824841,Sulzbach,v kraju Sulzbach,0,
-2826861,Stockelsdorf,v kraju Stockelsdorf,0,
+2824841,Sulzbach,v Sulzbachu,1,sklon po pravilu (-u)
+2826861,Stockelsdorf,v Stockelsdorfu,1,sklon po pravilu (-u)
 2837291,Schneverdingen,v kraju Schneverdingen,0,
 2851343,Quickborn,v kraju Quickborn,0,
 2854655,Petershagen,v kraju Petershagen,0,
 2857904,Oer-Erkenschwick,v kraju Oer-Erkenschwick,0,
 2920834,Geseke,v kraju Geseke,0,
 2930030,Ennigerloh,v kraju Ennigerloh,0,
-2931871,Eilenburg,v kraju Eilenburg,0,
+2931871,Eilenburg,v Eilenburgu,1,sklon po pravilu (-u)
 2938389,Delbrück,v kraju Delbrück,0,
 2955421,Bad Arolsen,v kraju Bad Arolsen,0,
 2620964,Haderslev,v kraju Haderslev,0,
@@ -3832,7 +3832,7 @@ geonameid,name,in_phrase,decl_ok,note
 3063548,Ústí nad Labem,v kraju Ústí nad Labem,0,
 3076127,Frýdek-Místek,v kraju Frýdek-Místek,0,
 3079273,Blansko,v kraju Blansko,0,
-2829422,Staßfurt,v kraju Staßfurt,0,
+2829422,Staßfurt,v Staßfurtu,1,sklon po pravilu (-u)
 2830637,Spenge,v kraju Spenge,0,
 2833475,Sehnde,v kraju Sehnde,0,
 2867985,Mühlheim am Main,v kraju Mühlheim am Main,0,
@@ -4009,7 +4009,7 @@ geonameid,name,in_phrase,decl_ok,note
 2892980,Karben,v kraju Karben,0,
 2938376,Delitzsch,v kraju Delitzsch,0,
 2947739,Blieskastel,v kraju Blieskastel,0,
-2958141,Alsdorf,v kraju Alsdorf,0,
+2958141,Alsdorf,v Alsdorfu,1,sklon po pravilu (-u)
 2616235,Nørresundby,v kraju Nørresundby,0,
 2621356,Glostrup,v kraju Glostrup,0,
 2509553,Villanueva de la Serena,v kraju Villanueva de la Serena,0,
@@ -4202,7 +4202,7 @@ geonameid,name,in_phrase,decl_ok,note
 6156855,Stittsville,v kraju Stittsville,0,
 7871320,Fergus,v kraju Fergus,0,
 8285452,Ancaster,v kraju Ancaster,0,
-2661321,Burgdorf,v kraju Burgdorf,0,
+2661321,Burgdorf,v Burgdorfu,1,sklon po pravilu (-u)
 3688689,Bogotá,v kraju Bogotá,0,
 3061695,Žďár nad Sázavou,v kraju Žďár nad Sázavou,0,
 3065617,Sokolov,v kraju Sokolov,0,
@@ -4215,11 +4215,11 @@ geonameid,name,in_phrase,decl_ok,note
 2885760,Königstein im Taunus,v kraju Königstein im Taunus,0,
 2906595,Hemer,v kraju Hemer,0,
 2930216,Engelskirchen,v kraju Engelskirchen,0,
-2931481,Eisenhüttenstadt,v kraju Eisenhüttenstadt,0,
-2946111,Bornheim,v kraju Bornheim,0,
-2949470,Bexbach,v kraju Bexbach,0,
+2931481,Eisenhüttenstadt,v Eisenhüttenstadtu,1,sklon po pravilu (-u)
+2946111,Bornheim,v Bornheimu,1,sklon po pravilu (-u)
+2949470,Bexbach,v Bexbachu,1,sklon po pravilu (-u)
 2950344,Bergkamen,v kraju Bergkamen,0,
-2955224,Ascheberg,v kraju Ascheberg,0,
+2955224,Ascheberg,v Aschebergu,1,sklon po pravilu (-u)
 2956093,Angermünde,v kraju Angermünde,0,
 2612045,Svendborg,v kraju Svendborg,0,
 2620046,Holstebro,v kraju Holstebro,0,
@@ -4405,14 +4405,14 @@ geonameid,name,in_phrase,decl_ok,note
 3075919,Havlíčkův Brod,v kraju Havlíčkův Brod,0,
 2809984,Wetter,v kraju Wetter,0,
 2817105,Vlotho,v kraju Vlotho,0,
-2872582,Meckenheim,v kraju Meckenheim,0,
+2872582,Meckenheim,v Meckenheimu,1,sklon po pravilu (-u)
 2913922,Guben,v kraju Guben,0,
 2917816,Grefrath,v kraju Grefrath,0,
 2925832,Forst,v kraju Forst,0,
-2950294,Bergneustadt,v kraju Bergneustadt,0,
+2950294,Bergneustadt,v Bergneustadtu,1,sklon po pravilu (-u)
 2953347,Bad Schwartau,v kraju Bad Schwartau,0,
 2953545,Bad Berleburg,v kraju Bad Berleburg,0,
-2955471,Arnsberg,v kraju Arnsberg,0,
+2955471,Arnsberg,v Arnsbergu,1,sklon po pravilu (-u)
 2610020,Vordingborg,v kraju Vordingborg,0,
 2620147,Holbæk,v kraju Holbæk,0,
 2621951,Fredericia,v kraju Fredericia,0,
@@ -4650,7 +4650,7 @@ geonameid,name,in_phrase,decl_ok,note
 2659127,Pully,v kraju Pully,0,
 2660104,Kriens,v kraju Kriens,0,
 2660512,Grenchen,v kraju Grenchen,0,
-2660971,Dübendorf,v kraju Dübendorf,0,
+2660971,Dübendorf,v Dübendorfu,1,sklon po pravilu (-u)
 1784853,Zhaoqing,v kraju Zhaoqing,0,name_en (izvirna pisava ni latinica)
 1793771,Suqian,v kraju Suqian,0,name_en (izvirna pisava ni latinica)
 3061370,Zlín,v kraju Zlín,0,
@@ -4663,7 +4663,7 @@ geonameid,name,in_phrase,decl_ok,note
 2878673,Leopoldshöhe,v kraju Leopoldshöhe,0,
 2893152,Kapellen,v kraju Kapellen,0,
 2904725,Hille,v kraju Hille,0,
-2920757,Gevelsberg,v kraju Gevelsberg,0,
+2920757,Gevelsberg,v Gevelsbergu,1,sklon po pravilu (-u)
 2940942,Burscheid,v kraju Burscheid,0,
 2946478,Bönen,v kraju Bönen,0,
 2947214,Bockum,v kraju Bockum,0,
@@ -4940,7 +4940,7 @@ geonameid,name,in_phrase,decl_ok,note
 3075654,Hodonín,v kraju Hodonín,0,
 3077539,Chrudim,v kraju Chrudim,0,
 2812522,Weilerswist,v kraju Weilerswist,0,
-2815678,Wachtberg,v kraju Wachtberg,0,
+2815678,Wachtberg,v Wachtbergu,1,sklon po pravilu (-u)
 2858245,Ochtrup,v kraju Ochtrup,0,
 2868936,Much,v kraju Much,0,
 2896538,Illingen,v kraju Illingen,0,
@@ -5207,7 +5207,7 @@ geonameid,name,in_phrase,decl_ok,note
 3072649,Kroměříž,v kraju Kroměříž,0,
 2837954,Schmelz,v kraju Schmelz,0,
 2839316,Schiffweiler,v kraju Schiffweiler,0,
-2853209,Plettenberg,v kraju Plettenberg,0,
+2853209,Plettenberg,v Plettenbergu,1,sklon po pravilu (-u)
 2861677,Nümbrecht,v kraju Nümbrecht,0,
 2866375,Netphen,v kraju Netphen,0,
 2872237,Meinerzhagen,v kraju Meinerzhagen,0,

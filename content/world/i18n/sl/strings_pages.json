@@ -67,7 +67,7 @@
  "p_ac": "Polnilniki AC: {ac}. Tu niso navedeni posamično; zemljevid jih prikazuje vse.",
  "p_city_cmp": "Hitri polnilniki DC od 50 kW na 10 javnih lokacij: tukaj {city}, povprečje za državo ({country_name}) {country}.",
  "p_dc": "Hitro polnjenje DC od 50 kW: {dc} ({pct_dc}); 150 kW ali več: {hpc}.",
- "p_gnet": "{net} je prisotno v {n_countries}.",
+ "p_gnet": "Omrežje {net} je prisotno v {n_countries}.",
  "p_hub": "Stran ima vsaka država z najmanj 100 javnimi lokacijami srednje ali visoke zanesljivosti. Zahodni Balkan pokrivajo strani BlokVolt posameznih držav.",
  "p_hub_na": "Združene države in Kanada so na voljo v angleščini in ruščini; strani v slovenščini pokrivajo Evropo.",
  "p_multi": "Delež lokacij, ki jih potrjujeta dva ali več virov: {pct_multi}; nazadnje potrjenih v letu 2025 ali 2026: {pct_recent}.",
