@@ -1,0 +1,587 @@
+{
+ "nav_prices": {
+  "en": "Prices",
+  "sr": "Cene",
+  "ru": "Цены"
+ },
+ "kick_index": {
+  "en": "Price index",
+  "sr": "Indeks cena",
+  "ru": "Индекс цен"
+ },
+ "kick_country": {
+  "en": "Charging prices",
+  "sr": "Cene punjenja",
+  "ru": "Цены на зарядку"
+ },
+ "t_hub": {
+  "en": "European EV Charging Price Index",
+  "sr": "Evropski indeks cena javnog punjenja",
+  "ru": "Европейский индекс цен на зарядку электромобилей"
+ },
+ "h1_hub": {
+  "en": "European EV Charging Price Index — {month}",
+  "sr": "Evropski indeks cena javnog punjenja — {month}",
+  "ru": "Европейский индекс цен на зарядку — {month}"
+ },
+ "d_hub": {
+  "en": "What public EV charging costs across Europe: ad hoc prices of the networks by country, AC, DC and HPC, against household electricity. Every price with its source and date.",
+  "sr": "Koliko košta javno punjenje električnog automobila u Evropi: cene mreža bez ugovora po zemljama, AC, DC i HPC, u poređenju sa strujom u domaćinstvu. Svaka cena sa izvorom i datumom.",
+  "ru": "Сколько стоит публичная зарядка электромобиля в Европе: разовые цены сетей по странам, AC, DC и HPC, в сравнении с домашним электричеством. У каждой цены — источник и дата."
+ },
+ "lead_hub": {
+  "en": "Ad hoc prices — what a driver pays without a contract — of {nets} networks in {countries} countries, weighted by the number of each network's chargers in the country, next to the household electricity price. The method is open and the data can be downloaded.",
+  "sr": "Cene bez ugovora — ono što vozač plaća bez pretplate — za {nets} mreža u {countries} zemalja, ponderisane brojem punjača svake mreže u zemlji, uz cenu struje u domaćinstvu. Metodologija je otvorena, a podaci se mogu preuzeti.",
+  "ru": "Разовые цены — то, что водитель платит без договора, — {nets} сетей в {countries} странах, взвешенные по числу зарядок каждой сети в стране, рядом с ценой домашнего электричества. Методика открыта, данные можно скачать."
+ },
+ "t_country": {
+  "en": "EV charging prices {country_u}",
+  "sr": "Cene punjenja električnih automobila {country_u}",
+  "ru": "Цены на зарядку электромобилей {country_u}"
+ },
+ "d_country": {
+  "en": "Public EV charging prices {country_u} by network: AC, DC and HPC, ad hoc and with a plan, household electricity, the cost of 100 km. Sources and dates for every price.",
+  "sr": "Cene javnog punjenja {country_u} po mrežama: AC, DC i HPC, bez ugovora i uz pretplatu, struja u domaćinstvu, cena 100 km. Izvor i datum za svaku cenu.",
+  "ru": "Цены на публичную зарядку {country_u} по сетям: AC, DC и HPC, разово и по подписке, домашнее электричество, стоимость 100 км. Источник и дата у каждой цены."
+ },
+ "t_net": {
+  "en": "{net} charging prices {country_u}",
+  "sr": "Cene punjenja {net} {country_u}",
+  "ru": "Цены на зарядку {net} {country_u}"
+ },
+ "d_net": {
+  "en": "{net} {country_u}: published tariffs, ad hoc and with a plan, fees, the cost of 100 km and how it compares with the country and with home charging.",
+  "sr": "{net} {country_u}: objavljene tarife, bez ugovora i uz pretplatu, naknade, cena 100 km i poređenje sa zemljom i punjenjem kod kuće.",
+  "ru": "{net} {country_u}: опубликованные тарифы, разово и по подписке, сборы, стоимость 100 км и сравнение со страной и с домашней зарядкой."
+ },
+ "prices_checked": {
+  "en": "Prices checked {date}",
+  "sr": "Cene proverene {date}",
+  "ru": "Цены проверены {date}"
+ },
+ "cur_label": {
+  "en": "Currency",
+  "sr": "Valuta",
+  "ru": "Валюта"
+ },
+ "cur_local": {
+  "en": "Local",
+  "sr": "Lokalna",
+  "ru": "Местная"
+ },
+ "fx_note": {
+  "en": "Sums in another currency are for reference, at the ECB reference rate of {date}. At the charger you pay in the local currency.",
+  "sr": "Iznosi u drugoj valuti su informativni, po referentnom kursu ECB na dan {date}. Na punjaču se plaća u lokalnoj valuti.",
+  "ru": "Суммы в другой валюте — справочные, по курсу ЕЦБ на {date}. На зарядке платят в местной валюте."
+ },
+ "st_ac": {
+  "en": "AC, per kWh",
+  "sr": "AC, po kWh",
+  "ru": "AC, за кВт·ч"
+ },
+ "st_dc": {
+  "en": "DC 50–149 kW, per kWh",
+  "sr": "DC 50–149 kW, po kWh",
+  "ru": "DC 50–149 кВт, за кВт·ч"
+ },
+ "st_hpc": {
+  "en": "HPC from 150 kW, per kWh",
+  "sr": "HPC od 150 kW, po kWh",
+  "ru": "HPC от 150 кВт, за кВт·ч"
+ },
+ "st_home": {
+  "en": "Home electricity, per kWh",
+  "sr": "Struja u domaćinstvu, po kWh",
+  "ru": "Домашнее электричество, за кВт·ч"
+ },
+ "st_countries": {
+  "en": "Countries with an index",
+  "sr": "Zemalja sa indeksom",
+  "ru": "Стран с индексом"
+ },
+ "st_nets": {
+  "en": "Networks with prices",
+  "sr": "Mreža sa cenama",
+  "ru": "Сетей с ценами"
+ },
+ "europe_label": {
+  "en": "Europe, weighted average of the networks with prices",
+  "sr": "Evropa, ponderisani prosek mreža sa cenama",
+  "ru": "Европа, взвешенное среднее сетей с ценами"
+ },
+ "h_chart": {
+  "en": "Fast charging and home electricity by country",
+  "sr": "Brzo punjenje i struja u domaćinstvu po zemljama",
+  "ru": "Быстрая зарядка и домашнее электричество по странам"
+ },
+ "chart_desc": {
+  "en": "Bar chart, EUR per kWh: the DC 50–149 kW index and the household electricity price for each country with an index. The same numbers are in the table below.",
+  "sr": "Grafikon, evra po kWh: DC indeks 50–149 kW i cena struje u domaćinstvu za svaku zemlju sa indeksom. Isti brojevi su u tabeli ispod.",
+  "ru": "Диаграмма, евро за кВт·ч: индекс DC 50–149 кВт и цена домашнего электричества для каждой страны с индексом. Те же числа — в таблице ниже."
+ },
+ "chart_eur": {
+  "en": "EUR per kWh, at the ECB rate of {date}",
+  "sr": "Evra po kWh, po kursu ECB na dan {date}",
+  "ru": "Евро за кВт·ч, по курсу ЕЦБ на {date}"
+ },
+ "lg_dc": {
+  "en": "Public DC, ad hoc",
+  "sr": "Javni DC, bez ugovora",
+  "ru": "Публичная DC, разово"
+ },
+ "lg_home": {
+  "en": "Home electricity",
+  "sr": "Struja u domaćinstvu",
+  "ru": "Домашнее электричество"
+ },
+ "h_table": {
+  "en": "Prices by country",
+  "sr": "Cene po zemljama",
+  "ru": "Цены по странам"
+ },
+ "th_country": {
+  "en": "Country",
+  "sr": "Zemlja",
+  "ru": "Страна"
+ },
+ "th_ac": {
+  "en": "AC",
+  "sr": "AC",
+  "ru": "AC"
+ },
+ "th_dc": {
+  "en": "DC",
+  "sr": "DC",
+  "ru": "DC"
+ },
+ "th_hpc": {
+  "en": "HPC",
+  "sr": "HPC",
+  "ru": "HPC"
+ },
+ "th_home": {
+  "en": "Home",
+  "sr": "Kod kuće",
+  "ru": "Дома"
+ },
+ "th_ratio": {
+  "en": "DC vs home",
+  "sr": "DC prema kući",
+  "ru": "DC к дому"
+ },
+ "th_nets": {
+  "en": "Networks",
+  "sr": "Mreža",
+  "ru": "Сетей"
+ },
+ "th_cover": {
+  "en": "DC coverage",
+  "sr": "Pokrivenost DC",
+  "ru": "Охват DC"
+ },
+ "table_note": {
+  "en": "Ad hoc prices with VAT, per kWh. {u} — a median of the networks, not weighted: networks with a known price hold fewer than 10 % of the country's chargers whose network is known. — no index: fewer than two networks with a price.",
+  "sr": "Cene bez ugovora sa PDV-om, po kWh. {u} — medijana mreža, bez pondera: mreže sa poznatom cenom imaju manje od 10 % punjača u zemlji čija je mreža poznata. — nema indeksa: manje od dve mreže sa cenom.",
+  "ru": "Разовые цены с НДС, за кВт·ч. {u} — медиана сетей без весов: сетям с известной ценой принадлежит меньше 10 % зарядок страны, у которых известна сеть. — индекса нет: меньше двух сетей с ценой."
+ },
+ "mark_median": {
+  "en": "median",
+  "sr": "medijana",
+  "ru": "медиана"
+ },
+ "no_prices": {
+  "en": "No published prices found",
+  "sr": "Objavljene cene nisu pronađene",
+  "ru": "Опубликованных цен не найдено"
+ },
+ "no_prices_n": {
+  "en": "{n} networks checked, prices only in apps or set by each site owner",
+  "sr": "Provereno mreža: {n}; cene samo u aplikacijama ili ih određuje vlasnik lokacije",
+  "ru": "Проверено сетей: {n}; цены только в приложениях или их назначает владелец точки"
+ },
+ "serbia_note": {
+  "en": "Serbia and the region: prices taken from the networks' apps every month, in dinars — the price index of blokvolt.rs.",
+  "sr": "Srbija i region: cene iz aplikacija mreža svakog meseca, u dinarima — indeks cena na blokvolt.rs.",
+  "ru": "Сербия и регион: цены из приложений сетей каждый месяц, в динарах, — индекс цен на blokvolt.rs."
+ },
+ "serbia_link": {
+  "en": "Price index of Serbia",
+  "sr": "Indeks cena Srbije",
+  "ru": "Индекс цен Сербии"
+ },
+ "h_profiles": {
+  "en": "What 100 km cost, three kinds of driver",
+  "sr": "Koliko košta 100 km, tri vrste vozača",
+  "ru": "Сколько стоят 100 км: три типа водителей"
+ },
+ "profiles_note": {
+  "en": "Car: {car}, {cons} kWh per 100 km (estimate, mild weather, energy from the battery; losses while charging not included). Shares of charging: “home charger” {p1}; “mixed” {p2}; “no home charger” {p3}. Country prices from the table above.",
+  "sr": "Automobil: {car}, {cons} kWh na 100 km (procena, umereno vreme, energija iz baterije; gubici pri punjenju nisu uračunati). Udeo punjenja: „punjač kod kuće“ {p1}; „mešovito“ {p2}; „bez punjača kod kuće“ {p3}. Cene zemalja iz tabele iznad.",
+  "ru": "Машина: {car}, {cons} кВт·ч на 100 км (оценка, мягкая погода, энергия из батареи; потери при зарядке не учтены). Доли зарядки: «зарядка дома» {p1}; «смешанно» {p2}; «без домашней зарядки» {p3}. Цены стран — из таблицы выше."
+ },
+ "pr_home": {
+  "en": "Home charger",
+  "sr": "Punjač kod kuće",
+  "ru": "Зарядка дома"
+ },
+ "pr_mixed": {
+  "en": "Mixed",
+  "sr": "Mešovito",
+  "ru": "Смешанно"
+ },
+ "pr_street": {
+  "en": "No home charger",
+  "sr": "Bez punjača kod kuće",
+  "ru": "Без домашней зарядки"
+ },
+ "share_home": {
+  "en": "home {x}",
+  "sr": "kuća {x}",
+  "ru": "дом {x}"
+ },
+ "share_ac": {
+  "en": "public AC {x}",
+  "sr": "javni AC {x}",
+  "ru": "публичная AC {x}"
+ },
+ "share_dc": {
+  "en": "public DC {x}",
+  "sr": "javni DC {x}",
+  "ru": "публичная DC {x}"
+ },
+ "h_method": {
+  "en": "How the index is made",
+  "sr": "Kako se računa indeks",
+  "ru": "Как считается индекс"
+ },
+ "m1": {
+  "en": "Prices: the ad hoc tariff of each network — what anyone pays without a contract or a subscription — from the operator's own price page or, where the operator publishes none, from a dated news report quoting it. Prices with VAT, per kWh. Prices per minute or per session, prices older than 12 months and prices whose source is unclear are shown on the country pages but stay out of the index.",
+  "sr": "Cene: tarifa bez ugovora svake mreže — ono što svako plaća bez pretplate — sa cenovnika operatera ili, kad ga operater ne objavljuje, iz datiranog novinskog teksta koji ga citira. Cene sa PDV-om, po kWh. Cene po minutu ili po sesiji, cene starije od 12 meseci i cene sa nejasnim izvorom prikazane su na stranicama zemalja, ali ne ulaze u indeks.",
+  "ru": "Цены: разовый тариф каждой сети — то, что любой платит без договора и подписки, — со страницы цен оператора, а если оператор её не публикует, из датированной новости, где он цитируется. Цены с НДС, за кВт·ч. Поминутные цены и цены за сессию, цены старше 12 месяцев и цены с неясным источником показаны на страницах стран, но в индекс не входят."
+ },
+ "m2": {
+  "en": "Classes: AC; DC 50–149 kW; HPC from 150 kW. A network that charges one price for all DC enters both DC and HPC. Where a network's top class starts at 50 or 60 kW, that price counts as DC only.",
+  "sr": "Klase: AC; DC 50–149 kW; HPC od 150 kW. Mreža sa jednom cenom za ceo DC ulazi i u DC i u HPC. Kad najviša klasa mreže počinje od 50 ili 60 kW, ta cena se računa samo kao DC.",
+  "ru": "Классы: AC; DC 50–149 кВт; HPC от 150 кВт. Сеть с одной ценой на любой DC входит и в DC, и в HPC. Если старший класс сети начинается с 50 или 60 кВт, эта цена считается только как DC."
+ },
+ "m3": {
+  "en": "Weights: each network counts with the number of its public chargers of that class in the country (AC chargers for AC, DC from 50 kW for DC, from 150 kW for HPC), from the BlokVolt open layer of {layer}. A country gets a weighted average when networks with prices hold at least 10 % of its chargers of the class whose network is known (in open data many chargers carry no network name), otherwise a median of at least two networks. The European figure pools all weighted networks.",
+  "sr": "Ponderi: svaka mreža se računa brojem svojih javnih punjača te klase u zemlji (AC punjači za AC, DC od 50 kW za DC, od 150 kW za HPC), iz otvorenog sloja BlokVolt od {layer}. Zemlja dobija ponderisani prosek kad mreže sa cenama imaju bar 10 % njenih punjača te klase čija je mreža poznata (u otvorenim podacima mnogi punjači nemaju naziv mreže), inače medijanu od najmanje dve mreže. Evropska vrednost obuhvata sve ponderisane mreže.",
+  "ru": "Веса: каждая сеть входит с числом своих публичных зарядок этого класса в стране (AC-зарядки для AC, DC от 50 кВт для DC, от 150 кВт для HPC) по открытому слою BlokVolt от {layer}. Страна получает взвешенное среднее, если сетям с ценами принадлежит не меньше 10 % её зарядок класса с известной сетью (в открытых данных у многих зарядок сеть не указана), иначе — медиану не менее чем двух сетей. Европейское значение объединяет все взвешенные сети."
+ },
+ "m4": {
+  "en": "Home electricity: Eurostat, household consumers 2,500–4,999 kWh a year, all taxes, {period}; United Kingdom: the Ofgem price cap. Exchange rates: ECB reference rates of {fx}. No ranking of networks: the tables are sorted by price, the same columns for everyone.",
+  "sr": "Struja u domaćinstvu: Eurostat, domaćinstva sa 2.500–4.999 kWh godišnje, sa svim porezima, {period}; Ujedinjeno Kraljevstvo: cenovni limit Ofgem. Kursevi: referentni kursevi ECB od {fx}. Mreže se ne rangiraju: tabele su poređane po ceni, iste kolone za sve.",
+  "ru": "Домашнее электричество: Eurostat, домохозяйства с потреблением 2 500–4 999 кВт·ч в год, со всеми налогами, {period}; Великобритания — ценовой потолок Ofgem. Курсы: справочные курсы ЕЦБ на {fx}. Рейтингов сетей нет: таблицы отсортированы по цене, колонки у всех одинаковые."
+ },
+ "h_data": {
+  "en": "Data and citation",
+  "sr": "Podaci i citiranje",
+  "ru": "Данные и цитирование"
+ },
+ "data_p": {
+  "en": "Download the index and every tariff with its source as CSV. Licence: CC BY-NC 4.0 — free for non-commercial use with a link. Cite as: “BlokVolt, European EV Charging Price Index, {month}, blokvolt.com”. For commercial use write to {email}.",
+  "sr": "Preuzmite indeks i svaku tarifu sa izvorom u CSV formatu. Licenca: CC BY-NC 4.0 — besplatno za nekomercijalnu upotrebu uz link. Citiranje: „BlokVolt, European EV Charging Price Index, {month}, blokvolt.com“. Za komercijalnu upotrebu pišite na {email}.",
+  "ru": "Скачайте индекс и все тарифы с источниками в CSV. Лицензия: CC BY-NC 4.0 — бесплатно для некоммерческого использования со ссылкой. Как цитировать: «BlokVolt, European EV Charging Price Index, {month}, blokvolt.com». Для коммерческого использования пишите на {email}."
+ },
+ "dl_index": {
+  "en": "Index by country (CSV)",
+  "sr": "Indeks po zemljama (CSV)",
+  "ru": "Индекс по странам (CSV)"
+ },
+ "dl_tariffs": {
+  "en": "All tariffs with sources (CSV)",
+  "sr": "Sve tarife sa izvorima (CSV)",
+  "ru": "Все тарифы с источниками (CSV)"
+ },
+ "h_sources": {
+  "en": "Sources",
+  "sr": "Izvori",
+  "ru": "Источники"
+ },
+ "src_ops": {
+  "en": "Price pages of {n} operators and {m} dated news reports quoting operators; every link is next to its price on the country pages.",
+  "sr": "Cenovnici {n} operatera i {m} datiranih novinskih tekstova koji citiraju operatere; svaki link stoji uz svoju cenu na stranicama zemalja.",
+  "ru": "Страницы цен {n} операторов и {m} датированных новостей с цитатами операторов; каждая ссылка — рядом со своей ценой на страницах стран."
+ },
+ "disc": {
+  "en": "Prices change, and a site may differ from the network's list price. Check the price in the network's app or on the charger before you charge.",
+  "sr": "Cene se menjaju, a na pojedinoj lokaciji cena može da se razlikuje od cenovnika mreže. Pre punjenja proverite cenu u aplikaciji mreže ili na punjaču.",
+  "ru": "Цены меняются, а на отдельной точке цена может отличаться от прайса сети. Перед зарядкой проверьте цену в приложении сети или на зарядке."
+ },
+ "h_c_index": {
+  "en": "Index {country_u}",
+  "sr": "Indeks {country_u}",
+  "ru": "Индекс {country_u}"
+ },
+ "c_lead": {
+  "en": "Prices of {n} networks with a published tariff, ad hoc and with a plan, next to household electricity.",
+  "sr": "Cene {n} mreža sa objavljenom tarifom, bez ugovora i uz pretplatu, uz cenu struje u domaćinstvu.",
+  "ru": "Цены {n} сетей с опубликованным тарифом, разово и по подписке, рядом с домашним электричеством."
+ },
+ "c_noindex": {
+  "en": "Not enough networks with prices for a country index; the prices of each network are below.",
+  "sr": "Nema dovoljno mreža sa cenama za indeks zemlje; cene svake mreže su ispod.",
+  "ru": "Сетей с ценами слишком мало для индекса страны; цены каждой сети — ниже."
+ },
+ "h_nets": {
+  "en": "Networks and plans",
+  "sr": "Mreže i planovi",
+  "ru": "Сети и тарифы"
+ },
+ "th_net": {
+  "en": "Network",
+  "sr": "Mreža",
+  "ru": "Сеть"
+ },
+ "th_plan": {
+  "en": "Plan",
+  "sr": "Plan",
+  "ru": "Тариф"
+ },
+ "th_month": {
+  "en": "Per month",
+  "sr": "Mesečno",
+  "ru": "В месяц"
+ },
+ "th_from": {
+  "en": "Price from",
+  "sr": "Cena od",
+  "ru": "Цена с"
+ },
+ "th_src": {
+  "en": "Source",
+  "sr": "Izvor",
+  "ru": "Источник"
+ },
+ "th_fees": {
+  "en": "Other fees",
+  "sr": "Ostale naknade",
+  "ru": "Прочие сборы"
+ },
+ "plan_adhoc": {
+  "en": "Ad hoc",
+  "sr": "Bez ugovora",
+  "ru": "Разово"
+ },
+ "plan_sub": {
+  "en": "Plan",
+  "sr": "Pretplata",
+  "ru": "Подписка"
+ },
+ "home_row": {
+  "en": "Household electricity",
+  "sr": "Struja u domaćinstvu",
+  "ru": "Домашнее электричество"
+ },
+ "src_op": {
+  "en": "operator",
+  "sr": "operater",
+  "ru": "оператор"
+ },
+ "src_news": {
+  "en": "news",
+  "sr": "vest",
+  "ru": "новость"
+ },
+ "checked": {
+  "en": "checked {date}",
+  "sr": "provereno {date}",
+  "ru": "проверено {date}"
+ },
+ "fees_en": {
+  "en": "in English",
+  "sr": "na engleskom",
+  "ru": "на английском"
+ },
+ "out_stale": {
+  "en": "price older than 12 months",
+  "sr": "cena starija od 12 meseci",
+  "ru": "цена старше 12 месяцев"
+ },
+ "out_unit": {
+  "en": "not per kWh",
+  "sr": "nije po kWh",
+  "ru": "не за кВт·ч"
+ },
+ "out_excl": {
+  "en": "not in the index",
+  "sr": "nije u indeksu",
+  "ru": "не в индексе"
+ },
+ "hpc_note": {
+  "en": "HPC column: the network's top power class, which starts below 150 kW (from 50, 60 or 100 kW); where the DC column is a class under 50 kW, this price is the DC price of the index",
+  "sr": "Kolona HPC: najviša klasa snage mreže, koja počinje ispod 150 kW (od 50, 60 ili 100 kW); kad je kolona DC klasa ispod 50 kW, ova cena je DC cena indeksa",
+  "ru": "Колонка HPC: старший класс мощности сети, он начинается ниже 150 кВт (с 50, 60 или 100 кВт); если колонка DC — класс до 50 кВт, эта цена идёт в индекс как DC"
+ },
+ "h_100": {
+  "en": "What 100 km cost",
+  "sr": "Koliko košta 100 km",
+  "ru": "Сколько стоят 100 км"
+ },
+ "th_car": {
+  "en": "Car",
+  "sr": "Automobil",
+  "ru": "Машина"
+ },
+ "th_pub_ac": {
+  "en": "Public AC",
+  "sr": "Javni AC",
+  "ru": "Публичная AC"
+ },
+ "th_pub_dc": {
+  "en": "Public DC",
+  "sr": "Javni DC",
+  "ru": "Публичная DC"
+ },
+ "cars_note": {
+  "en": "Consumption from the battery in mild weather, an estimate (Open EV Data, © 2019 Chargeprice, MIT); in winter about 20–30 % more. Losses while charging not included. Public prices: the country index; where there is none — “—”.",
+  "sr": "Potrošnja iz baterije pri umerenom vremenu, procena (Open EV Data, © 2019 Chargeprice, MIT); zimi oko 20–30 % više. Gubici pri punjenju nisu uračunati. Javne cene: indeks zemlje; gde ga nema — „—“.",
+  "ru": "Расход из батареи в мягкую погоду, оценка (Open EV Data, © 2019 Chargeprice, MIT); зимой примерно на 20–30 % больше. Потери при зарядке не учтены. Публичные цены — индекс страны; где его нет — «—»."
+ },
+ "cars_note_net": {
+  "en": "Consumption from the battery in mild weather, an estimate (Open EV Data, © 2019 Chargeprice, MIT); in winter about 20–30 % more. Losses while charging not included. Prices: the network's ad hoc tariff.",
+  "sr": "Potrošnja iz baterije pri umerenom vremenu, procena (Open EV Data, © 2019 Chargeprice, MIT); zimi oko 20–30 % više. Gubici pri punjenju nisu uračunati. Cene: tarifa mreže bez ugovora.",
+  "ru": "Расход из батареи в мягкую погоду, оценка (Open EV Data, © 2019 Chargeprice, MIT); зимой примерно на 20–30 % больше. Потери при зарядке не учтены. Цены — разовый тариф сети."
+ },
+ "h_pay": {
+  "en": "How to pay, in short",
+  "sr": "Kako se plaća, ukratko",
+  "ru": "Как платить, коротко"
+ },
+ "pay_adhoc": {
+  "en": "Without a contract (ad hoc price published): {list}.",
+  "sr": "Bez ugovora (objavljena cena bez pretplate): {list}.",
+  "ru": "Без договора (опубликована разовая цена): {list}."
+ },
+ "pay_sub": {
+  "en": "Plans: {list}.",
+  "sr": "Pretplate: {list}.",
+  "ru": "Подписки: {list}."
+ },
+ "pay_free": {
+  "en": "no monthly fee",
+  "sr": "bez mesečne naknade",
+  "ru": "без абонплаты"
+ },
+ "pay_note": {
+  "en": "How exactly to pay — app, card at the charger or QR code — is on the network's price page linked in the table.",
+  "sr": "Kako tačno platiti — aplikacijom, karticom na punjaču ili QR kodom — piše na cenovniku mreže, link je u tabeli.",
+  "ru": "Как именно платить — приложением, картой на зарядке или по QR-коду — указано на странице цен сети, ссылка в таблице."
+ },
+ "h_noprice": {
+  "en": "Networks without a published price",
+  "sr": "Mreže bez objavljene cene",
+  "ru": "Сети без опубликованной цены"
+ },
+ "noprice_p": {
+  "en": "Their prices are shown only in the app, at the charger or are set by each site owner: {list}.",
+  "sr": "Njihove cene se vide samo u aplikaciji, na punjaču ili ih određuje vlasnik lokacije: {list}.",
+  "ru": "Их цены видны только в приложении, на зарядке или их назначает владелец точки: {list}."
+ },
+ "h_more": {
+  "en": "More {country_u}",
+  "sr": "Još {country_u}",
+  "ru": "Ещё {country_u}"
+ },
+ "more_stations": {
+  "en": "Charging stations {country_u}",
+  "sr": "Punjači {country_u}",
+  "ru": "Зарядки {country_u}"
+ },
+ "more_local": {
+  "en": "Local section",
+  "sr": "Lokalni odeljak",
+  "ru": "Местный раздел"
+ },
+ "more_map": {
+  "en": "Open the map",
+  "sr": "Otvori mapu",
+  "ru": "Открыть карту"
+ },
+ "more_index": {
+  "en": "European index",
+  "sr": "Evropski indeks",
+  "ru": "Европейский индекс"
+ },
+ "h_n_plans": {
+  "en": "Tariffs",
+  "sr": "Tarife",
+  "ru": "Тарифы"
+ },
+ "h_n_compare": {
+  "en": "Compared with the country and with home",
+  "sr": "Poređenje sa zemljom i sa kućom",
+  "ru": "Сравнение со страной и с домом"
+ },
+ "th_this": {
+  "en": "{net}, ad hoc",
+  "sr": "{net}, bez ugovora",
+  "ru": "{net}, разово"
+ },
+ "th_cindex": {
+  "en": "Country index",
+  "sr": "Indeks zemlje",
+  "ru": "Индекс страны"
+ },
+ "h_n_places": {
+  "en": "Chargers of the network {country_u}",
+  "sr": "Punjači mreže {country_u}",
+  "ru": "Зарядки сети {country_u}"
+ },
+ "n_places": {
+  "en": "Public places on the BlokVolt map: {all}; DC from 50 kW: {dc}; from 150 kW: {hpc}.",
+  "sr": "Javnih lokacija na mapi BlokVolt: {all}; DC od 50 kW: {dc}; od 150 kW: {hpc}.",
+  "ru": "Публичных мест на карте BlokVolt: {all}; DC от 50 кВт: {dc}; от 150 кВт: {hpc}."
+ },
+ "n_places_none": {
+  "en": "The network's places carry no network name in the open data of this country yet.",
+  "sr": "Lokacije mreže u otvorenim podacima ove zemlje još nemaju naziv mreže.",
+  "ru": "У мест этой сети в открытых данных страны пока нет названия сети."
+ },
+ "n_station_page": {
+  "en": "All {net} chargers {country_u}",
+  "sr": "Svi punjači {net} {country_u}",
+  "ru": "Все зарядки {net} {country_u}"
+ },
+ "notes_h": {
+  "en": "Notes from the price check",
+  "sr": "Napomene iz provere cena",
+  "ru": "Заметки проверки цен"
+ },
+ "per_kwh": {
+  "en": "/kWh",
+  "sr": "/kWh",
+  "ru": "/кВт·ч"
+ },
+ "per_min": {
+  "en": "/min",
+  "sr": "/min",
+  "ru": "/мин"
+ },
+ "per_session": {
+  "en": "/session",
+  "sr": "/sesija",
+  "ru": "/сессия"
+ },
+ "per_100": {
+  "en": "per 100 km",
+  "sr": "za 100 km",
+  "ru": "за 100 км"
+ },
+ "vat_no": {
+  "en": "without VAT",
+  "sr": "bez PDV-a",
+  "ru": "без НДС"
+ },
+ "dash_none": {
+  "en": "no price",
+  "sr": "nema cene",
+  "ru": "нет цены"
+ },
+ "too_few": {
+  "en": "Too few networks with a published ad hoc price for an index — see the country page",
+  "sr": "Premalo mreža sa objavljenom cenom bez ugovora za indeks — pogledajte stranicu zemlje",
+  "ru": "Сетей с опубликованной разовой ценой мало для индекса — см. страницу страны"
+ }
+}

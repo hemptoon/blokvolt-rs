@@ -1,0 +1,152 @@
+{
+ "period": "2026-S1",
+ "about": "Household electricity price with all taxes and levies, EUR per kWh. EU/EEA/CH: Eurostat nrg_pc_204, band DC (2 500–4 999 kWh a year), first half of 2026, published 30.10.2026. UK is not in Eurostat: Ofgem price cap.",
+ "source": {
+  "eurostat": {
+   "name": "Eurostat, nrg_pc_204 (band DC, all taxes), 2026-S1",
+   "url": "https://ec.europa.eu/eurostat/databrowser/view/nrg_pc_204/default/table?lang=en",
+   "licence": "CC BY 4.0 (Eurostat reuse policy)",
+   "read": "2026-11-09",
+   "via": "values read from euenergyprices.eu, a mirror of nrg_pc_204, with 0.1 ct precision; IE 0.39, DE 0.36, BE 0.36 checked against Eurostat news of 30.10.2026. Refresh straight from the Eurostat API: world_prices_data.py home (RUNBOOK 3.42)"
+  },
+  "ofgem": {
+   "name": "Ofgem, energy price cap 1 October – 31 December 2026",
+   "url": "https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-october-and-31-december-2026",
+   "licence": "Open Government Licence v3.0",
+   "read": "2026-11-09"
+  }
+ },
+ "values": {
+  "IE": {
+   "eur": 0.387,
+   "src": "eurostat"
+  },
+  "DE": {
+   "eur": 0.362,
+   "src": "eurostat"
+  },
+  "BE": {
+   "eur": 0.358,
+   "src": "eurostat"
+  },
+  "AT": {
+   "eur": 0.326,
+   "src": "eurostat"
+  },
+  "CH": {
+   "eur": 0.324,
+   "src": "eurostat"
+  },
+  "IT": {
+   "eur": 0.314,
+   "src": "eurostat"
+  },
+  "SE": {
+   "eur": 0.306,
+   "src": "eurostat"
+  },
+  "PL": {
+   "eur": 0.3,
+   "src": "eurostat"
+  },
+  "LI": {
+   "eur": 0.299,
+   "src": "eurostat"
+  },
+  "CZ": {
+   "eur": 0.288,
+   "src": "eurostat"
+  },
+  "RO": {
+   "eur": 0.284,
+   "src": "eurostat"
+  },
+  "FI": {
+   "eur": 0.269,
+   "src": "eurostat"
+  },
+  "CY": {
+   "eur": 0.269,
+   "src": "eurostat"
+  },
+  "ES": {
+   "eur": 0.251,
+   "src": "eurostat"
+  },
+  "FR": {
+   "eur": 0.249,
+   "src": "eurostat"
+  },
+  "NL": {
+   "eur": 0.244,
+   "src": "eurostat"
+  },
+  "LV": {
+   "eur": 0.241,
+   "src": "eurostat"
+  },
+  "GR": {
+   "eur": 0.24,
+   "src": "eurostat"
+  },
+  "DK": {
+   "eur": 0.238,
+   "src": "eurostat"
+  },
+  "PT": {
+   "eur": 0.237,
+   "src": "eurostat"
+  },
+  "LT": {
+   "eur": 0.216,
+   "src": "eurostat"
+  },
+  "EE": {
+   "eur": 0.212,
+   "src": "eurostat"
+  },
+  "SI": {
+   "eur": 0.212,
+   "src": "eurostat"
+  },
+  "IS": {
+   "eur": 0.208,
+   "src": "eurostat"
+  },
+  "LU": {
+   "eur": 0.202,
+   "src": "eurostat"
+  },
+  "NO": {
+   "eur": 0.199,
+   "src": "eurostat"
+  },
+  "SK": {
+   "eur": 0.199,
+   "src": "eurostat"
+  },
+  "HR": {
+   "eur": 0.182,
+   "src": "eurostat"
+  },
+  "BG": {
+   "eur": 0.134,
+   "src": "eurostat"
+  },
+  "MT": {
+   "eur": 0.127,
+   "src": "eurostat"
+  },
+  "HU": {
+   "eur": 0.114,
+   "src": "eurostat"
+  },
+  "GB": {
+   "eur": 0.3155,
+   "local": 0.2632,
+   "currency": "GBP",
+   "src": "ofgem",
+   "note": "Ofgem price cap 01.10–31.12.2026, Direct Debit, average of England, Scotland and Wales; VAT on household electricity is 0 % from 01.10.2026 to 31.03.2027; standing charge 54.83 p/day not included"
+  }
+ }
+}

@@ -1,0 +1,20 @@
+{% extends 'world_prices_base.html' %}
+{% block pagehead %}{{ pm.head(kick, h1, None, crumbs, checked, last) }}{% endblock %}
+{% block content %}
+<div class="sec"><div class="sec-head"><h2 id="tariffs">{{ P.h_n_plans }}</h2></div>
+{{ pm.plans(plans, False) }}
+{{ pm.fxnote() }}</div>
+<div class="sec"><div class="sec-head"><h2 id="compare">{{ P.h_n_compare }}</h2></div>
+<div class="tw"><table class="wp-t"><thead><tr><th></th><th class="num" translate="no">{{ th_this }}</th><th class="num">{{ P.th_cindex }}</th></tr></thead><tbody>
+{% for n, a, b in cmp %}<tr><th scope="row">{{ n }}</th><td class="num">{{ a|safe }}</td><td class="num">{{ b|safe }}</td></tr>
+{% endfor %}</tbody></table></div>
+<p class="note"><a class="lnk" href="{{ country_url }}">{{ cname }}</a></p></div>
+{% if cars %}<div class="sec"><div class="sec-head"><h2 id="km100">{{ P.h_100 }}</h2></div>
+{{ pm.cars(cars, P.cars_note_net) }}</div>{% endif %}
+<div class="sec"><div class="sec-head"><h2 id="places">{{ h_places }}</h2></div>
+<p>{{ places }}</p>
+<div class="chips">{% if station %}<a class="chip" href="{{ station[0] }}">{{ station[1] }}</a>{% endif %}<a class="chip" href="{{ map_link }}" rel="nofollow">{{ P.more_map }}</a></div></div>
+{% if notes %}<div class="sec"><div class="sec-head"><h2 id="notes">{{ P.notes_h }}</h2></div>
+<div class="prose">{% for n in notes %}<p><small>{{ n }}</small></p>{% endfor %}</div></div>{% endif %}
+<p class="note disc">{{ P.disc }}</p>
+{% endblock %}

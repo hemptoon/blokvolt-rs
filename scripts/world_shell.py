@@ -42,10 +42,16 @@ def active():
     return bool(os.environ.get('BV_WORLD_PAGES'))
 
 
+PRICES = None   # G3: {'hub': {lang: url}, 'nav': {lang: label}} — set by world_prices.prepare() when the price pages are built
+
+
 def nav(l):
-    """The world menu: Map · Charging stations · Open data (section keys match world_pages / world_map)."""
+    """The world menu: Map · Charging stations · [Prices] · Open data (section keys match world_pages / world_map)."""
     T = load_strings()[l]
-    return [(MAP[l], T['nav_map'], 'map'), (HUB[l], T['nav_stations'], 'hub'), (ABOUT_DATA[l], T['nav_open'], 'about')]
+    out = [(MAP[l], T['nav_map'], 'map'), (HUB[l], T['nav_stations'], 'hub'), (ABOUT_DATA[l], T['nav_open'], 'about')]
+    if PRICES:
+        out.insert(2, (PRICES['hub'][l], PRICES['nav'][l], 'prices'))
+    return out
 
 
 def footer(l):

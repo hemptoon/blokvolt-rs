@@ -1,0 +1,18 @@
+/* blokvolt.com price pages (G3). Uses the variables of com.css / bv.css; no glow, no backdrop effects. */
+.wp-cur{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin-top:.75rem;font-size:.9rem}
+.wp-cur .chip{min-height:44px;min-width:44px;cursor:pointer}
+.wp-cur .chip[aria-pressed="true"]{background:var(--ink,#0B1220);color:#fff;border-color:var(--ink,#0B1220)}
+.wp-t td,.wp-t th{vertical-align:top}
+.wp-t .num{white-space:nowrap}
+.wp-t .pz{font-variant-numeric:tabular-nums}
+.wp-fees td{padding-top:0;border-top:0}
+.wp-fig{margin:0;overflow-x:auto}
+.wp-chart{min-width:560px;max-width:760px;display:block}
+.wp-chart .wp-grid{stroke:var(--line,#dfe3ea);stroke-width:1}
+.wp-chart .wp-ax,.wp-chart .wp-v{fill:var(--muted,#5b6472);font-size:11px}
+.wp-chart .wp-lb{fill:currentColor}
+.wp-chart .wp-dc{fill:#2E6BFF}
+.wp-chart .wp-home{fill:#9AA3AF}
+.wp-key{display:inline-block;width:.8em;height:.8em;border-radius:2px;margin-right:.3em;vertical-align:-.05em}
+.wp-key-dc{background:#2E6BFF}.wp-key-home{background:#9AA3AF}
+@media (prefers-color-scheme:dark){.wp-chart .wp-home{fill:#6b7480}}

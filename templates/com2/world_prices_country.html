@@ -1,0 +1,19 @@
+{% extends 'world_prices_base.html' %}
+{% block pagehead %}{{ pm.head(kick, h1, lead, crumbs, checked, last) }}{% endblock %}
+{% block content %}
+{{ pm.tiles(tiles) }}
+{% if not indexed %}<p class="note">{{ P.c_noindex }}</p>{% endif %}
+<div class="sec"><div class="sec-head"><h2 id="networks">{{ P.h_nets }}</h2></div>
+<div class="tw"><table class="wp-t"><tbody><tr><th scope="row">{{ P.home_row }}</th><td class="num">{{ home|safe }}</td><td>{% if home_src %}<a href="{{ home_src.url }}" rel="noopener nofollow">{{ home_src.name }}</a>{% endif %}</td></tr></tbody></table></div>
+{{ pm.plans(plans) }}
+{{ pm.fxnote() }}</div>
+<div class="sec"><div class="sec-head"><h2 id="km100">{{ P.h_100 }}</h2></div>
+{{ pm.cars(cars, P.cars_note) }}
+{% if prof %}<p class="note">{% for n, v in prof %}{{ n }}: {{ v|safe }}{% if not loop.last %} · {% endif %}{% endfor %} ({{ P.per_100 }}, {{ cars[1].name }})</p>{% endif %}</div>
+<div class="sec"><div class="sec-head"><h2 id="pay">{{ P.h_pay }}</h2></div>
+<div class="prose">{% if pay_adhoc %}<p translate="no">{{ pay_adhoc }}</p>{% endif %}{% if pay_sub %}<p translate="no">{{ pay_sub }}</p>{% endif %}<p>{{ P.pay_note }}</p></div></div>
+{% if noprice %}<div class="sec"><div class="sec-head"><h2 id="no-price">{{ P.h_noprice }}</h2></div><p class="note">{{ noprice }}</p></div>{% endif %}
+<div class="sec"><div class="sec-head"><h2 id="more">{{ h_more }}</h2></div>
+<div class="chips">{% for u, n in more %}<a class="chip" href="{{ u }}"{% if '?' in u %} rel="nofollow"{% endif %}>{{ n }}</a>{% endfor %}</div></div>
+<p class="note disc">{{ P.disc }}</p>
+{% endblock %}

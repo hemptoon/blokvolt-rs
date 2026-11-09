@@ -1,0 +1,36 @@
+{% extends 'world_prices_base.html' %}
+{% block pagehead %}{{ pm.head(kick, h1, lead, None, checked) }}{% endblock %}
+{% block content %}
+{{ pm.tiles(tiles) }}
+<p class="note">{{ P.europe_label }}</p>
+{% if chart %}<div class="sec"><div class="sec-head"><h2 id="chart">{{ P.h_chart }}</h2></div>
+<figure class="wp-fig">{{ chart|safe }}<figcaption class="note"><span class="wp-key wp-key-dc"></span>{{ P.lg_dc }} · <span class="wp-key wp-key-home"></span>{{ P.lg_home }} · {{ P.chart_eur.format(date=fx_date) }}</figcaption></figure></div>{% endif %}
+<div class="sec"><div class="sec-head"><h2 id="countries">{{ P.h_table }}</h2></div>
+<div class="tw"><table class="wp-t"><thead><tr><th>{{ P.th_country }}</th><th class="num">{{ P.th_ac }}</th><th class="num">{{ P.th_dc }}</th><th class="num">{{ P.th_hpc }}</th><th class="num">{{ P.th_home }}</th><th class="num">{{ P.th_ratio }}</th><th class="num">{{ P.th_nets }}</th><th class="num">{{ P.th_cover }}</th></tr></thead><tbody>
+{% for r in rows %}<tr><td><a href="{{ r.url }}">{{ r.name }}</a></td>{% for c in r.cells %}<td class="num">{{ c|safe }}</td>{% endfor %}<td class="num">{{ r.home|safe }}</td><td class="num">{{ r.ratio }}</td><td class="num">{{ r.nets }}</td><td class="num">{{ r.cover }}</td></tr>
+{% endfor %}
+{% for r in empty %}<tr><td>{% if r.url %}<a href="{{ r.url }}">{{ r.name }}</a>{% else %}{{ r.name }}{% endif %}</td><td colspan="3"><small class="muted">{{ r.text }}</small></td><td class="num">{{ r.home|safe }}</td><td></td><td></td><td></td></tr>
+{% endfor %}</tbody></table></div>
+<p class="note">{{ table_note }}</p>
+<p class="note">{{ P.serbia_note }} <a class="lnk" href="{{ rs_index }}" hreflang="sr">{{ P.serbia_link }}</a></p>
+{{ pm.fxnote() }}</div>
+{% if prof %}<div class="sec"><div class="sec-head"><h2 id="profiles">{{ P.h_profiles }}</h2></div>
+<div class="tw"><table class="wp-t"><thead><tr><th>{{ P.th_country }}</th><th class="num">{{ P.pr_home }}</th><th class="num">{{ P.pr_mixed }}</th><th class="num">{{ P.pr_street }}</th></tr></thead><tbody>
+{% for r in prof %}<tr><td><a href="{{ r.url }}">{{ r.name }}</a></td>{% for c in r.cells %}<td class="num">{{ c|safe }}</td>{% endfor %}</tr>
+{% endfor %}</tbody></table></div>
+<p class="note">{{ P.per_100 }} · {{ prof_note }}</p></div>{% endif %}
+<div class="sec"><div class="sec-head"><h2 id="method">{{ P.h_method }}</h2></div>
+<div class="prose"><p>{{ P.m1 }}</p><p>{{ P.m2 }}</p><p>{{ m3 }}</p><p>{{ m4 }}</p></div></div>
+<div class="sec"><div class="sec-head"><h2 id="data">{{ P.h_data }}</h2></div>
+<p>{{ data_p }}</p>
+<div class="chips">{% for u, n in csvs %}<a class="chip" href="{{ u }}" download>{{ n }}</a>{% endfor %}</div></div>
+<div class="sec"><div class="sec-head"><h2 id="sources">{{ P.h_sources }}</h2></div>
+<ul class="prose">
+<li><a href="{{ home_src.eurostat.url }}" rel="noopener nofollow">{{ home_src.eurostat.name }}</a> · {{ home_src.eurostat.licence }}</li>
+<li><a href="{{ home_src.ofgem.url }}" rel="noopener nofollow">{{ home_src.ofgem.name }}</a> · {{ home_src.ofgem.licence }}</li>
+<li>ECB · {{ fx_date }}</li>
+<li>{{ src_ops }}</li>
+<li><a href="{{ W.site.about(l) }}">BlokVolt — {{ S.nav_about }}</a></li>
+</ul></div>
+<p class="note disc">{{ P.disc }}</p>
+{% endblock %}

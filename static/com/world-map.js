@@ -387,6 +387,38 @@ const CONN = { TYPE2: 'Type 2', TYPE1: 'Type 1', CCS2: 'CCS2', CCS1: 'CCS1', CCS
 const connName = c => CONN[String(c).toUpperCase()] || (/^other$/i.test(c) ? t('conn_other') : String(c));
 
 // ------------------------------------------------------------------ card
+// G3: ad hoc price of the network in this country (cfg.prices = /assets/world/prices-<hash>.json); never on the pin (RUNBOOK 3.11)
+let PR = null, PRV = null;
+function loadPrices() {
+  if (!cfg.prices) return Promise.resolve(null);
+  if (!PR) PR = getJson(cfg.prices).catch(() => ({ nets: {} })).then(v => (PRV = v));
+  return PR;
+}
+const PSYM = { EUR: '€', USD: '$', GBP: '£', SEK: 'kr', NOK: 'kr', DKK: 'kr', CZK: 'Kč', PLN: 'zł', HUF: 'Ft', RON: 'lei', CHF: 'CHF' };
+function pmoney(x, c) {
+  const d = Math.abs(x) < 0.1 ? 3 : 2, n = Number(x).toLocaleString(LOC, { minimumFractionDigits: d, maximumFractionDigits: d }), s = PSYM[c] || c;
+  return LANG === 'en' && (c === 'EUR' || c === 'USD' || c === 'GBP') ? s + n : n + '\u00a0' + s;
+}
+function priceRow(c, P) {
+  if (!P || !P.nets) return '';
+  const name = c.net || (cur && cur.props && M.networks[cur.props.o]) || '';
+  const e = name && P.nets[c.cc + '|' + name];
+  if (!e) return '';
+  let wc = 'eur';
+  try { wc = localStorage.getItem('bv:wcur') || 'eur'; } catch (err) { /* private mode */ }
+  const parts = [['AC', 0, e.ac], ['DC', 1, e.dc], ['HPC', 2, e.hpc]].filter(x => x[2] != null).map(([k, i, v]) => {
+    let s = pmoney(v, 'EUR');
+    if (wc === 'usd' && P.rates && P.rates.USD) s = '≈\u00a0' + pmoney(v * P.rates.USD, 'USD');
+    else if (wc === 'loc' && e.l && e.l[i] != null) s = pmoney(e.l[i], e.cur);
+    return `${k} ${esc(s)}`;
+  });
+  if (!parts.length) return '';
+  const u = e.u && e.u[LANG];
+  let h = `${parts.join(' · ')} <small>${esc(t('c_price_kwh'))}</small><br><small>${esc(t('c_price_note', { d: fmtDate(e.d) }))}</small>`;
+  if (e.old) h += `<br><small class="wm-old">${esc(t('c_price_old'))}</small>`;
+  if (u) h += `<br><a href="${esc(u)}">${esc(t('c_price_more'))}</a>`;
+  return `<div><dt>${esc(t('c_price'))}</dt><dd>${h}</dd></div>`;
+}
 const box = $('wm-card');
 let cur = null;           // {pid, ll, card}
 let marker = null;        // draggable marker of a "wrong location" report
@@ -413,6 +445,7 @@ async function openCard(pid, ll, props) {
   let c = null;
   let g = '';
   try { const r = await findCard(pid, ll[0], ll[1]); if (r) { c = r.card; g = r.g; } } catch (e) { c = null; }
+  try { await loadPrices(); } catch (e) { /* the card works without prices */ }
   if (!cur || cur.pid !== pid) return;
   if (!c) { shell(`<h2 id="wm-ct">${esc(t('c_unnamed'))}</h2><p class="wm-err">${esc(t('card_err'))}</p>`); return; }
   cur.card = c;
@@ -446,6 +479,7 @@ function renderCard(c) {
     return;
   }
   h += row(t('c_conn'), conn);
+  h += priceRow(c, PRV);
   h += row(t('c_pts'), c.pts ? esc(nf(c.pts)) : '');
   h += row(t('c_acc'), esc(acc));
   h += row(t('c_lc'), esc(c.lc ? fmtMonth(c.lc) : t('c_lc_none')));

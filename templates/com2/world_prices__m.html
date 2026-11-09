@@ -1,0 +1,36 @@
+{# Macros of the price pages (G3). P = content/world/strings_prices.json; prices are spans the currency switch rewrites. #}
+{% macro head(kick, h1, lead, crumbs, checked, last=None) -%}
+<div class="ph"><div class="wrap">
+{% if crumbs %}<nav class="crumbs" aria-label="{{ S.crumbs }}">{% for n, u in crumbs %}<a href="{{ u }}">{{ n }}</a><span aria-hidden="true">›</span>{% endfor %}<span translate="no">{{ last or h1 }}</span></nav>{% elif kick %}<p class="kick">{{ kick }}</p>{% endif %}
+<h1>{{ h1 }}</h1>
+{% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
+<p class="meta">{{ checked }}</p>
+<div class="wp-cur" role="group" aria-label="{{ P.cur_label }}"><span>{{ P.cur_label }}:</span>
+<button type="button" class="chip" data-wcur="eur" aria-pressed="true">EUR</button><button type="button" class="chip" data-wcur="usd" aria-pressed="false">USD</button>{% if local_cur and local_cur != 'EUR' %}<button type="button" class="chip" data-wcur="loc" aria-pressed="false">{{ P.cur_local }} · {{ local_cur }}</button>{% endif %}</div>
+</div></div>
+{%- endmacro %}
+
+{% macro tiles(tiles) -%}
+<div class="facts glance w-tiles">{% for v, label in tiles %}<div class="fact"><span>{{ label }}</span><b>{{ v|safe }}</b></div>{% endfor %}</div>
+{%- endmacro %}
+
+{% macro plans(rows, show_net=True) -%}
+<div class="tw"><table class="wp-t"><thead><tr>{% if show_net %}<th>{{ P.th_net }}</th>{% endif %}<th>{{ P.th_plan }}</th><th class="num">{{ P.th_ac }}</th><th class="num">{{ P.th_dc }}</th><th class="num">{{ P.th_hpc }}</th><th class="num">{{ P.th_month }}</th><th>{{ P.th_from }}</th><th>{{ P.th_src }}</th></tr></thead><tbody>
+{% for r in rows %}<tr>{% if show_net %}<td><a href="{{ r.url }}" translate="no">{{ r.net }}</a></td>{% endif %}<td>{{ r.plan }}{% if r.why %}<br><small class="muted">{{ r.why }}</small>{% endif %}</td>
+{% for c in r.cells %}<td class="num">{{ c|safe }}{% if loop.last and r.hpcx %}<sup title="{{ P.hpc_note }}">*</sup>{% endif %}</td>{% endfor %}<td class="num">{{ r.sub }}</td><td>{{ r.date }}</td>
+<td>{% if r.src %}<a href="{{ r.src }}" rel="noopener nofollow">{{ r.kind }}</a>{% endif %}<br><small class="muted">{{ P.checked.format(date=r.checked) }}</small>{% if r.vat %}<br><small class="muted">{{ P.vat_no }}</small>{% endif %}</td></tr>
+{% if r.fees %}<tr class="wp-fees"><td colspan="{{ 8 if show_net else 7 }}"><small><b>{{ P.th_fees }}</b> <span class="muted">({{ P.fees_en }})</span>: <span lang="en">{{ r.fees }}</span></small></td></tr>{% endif %}
+{% endfor %}</tbody></table></div>
+{% if rows|selectattr('hpcx')|list %}<p class="note">* {{ P.hpc_note }}</p>{% endif %}
+{%- endmacro %}
+
+{% macro cars(rows, note) -%}
+<div class="tw"><table class="wp-t"><thead><tr><th>{{ P.th_car }}</th><th class="num">kWh/100 km</th><th class="num">{{ P.th_home }}</th><th class="num">{{ P.th_pub_ac }}</th><th class="num">{{ P.th_pub_dc }}</th><th class="num">{{ P.th_hpc }}</th></tr></thead><tbody>
+{% for r in rows %}<tr><td translate="no">{{ r.name }}</td><td class="num">{{ r.cons }}</td>{% for c in r.cells %}<td class="num">{{ c|safe }}</td>{% endfor %}</tr>
+{% endfor %}</tbody></table></div>
+<p class="note">{{ P.per_100 }} · {{ note }}</p>
+{%- endmacro %}
+
+{% macro fxnote() -%}
+<p class="note wp-fxn" hidden>{{ P.fx_note.format(date=fx_date) }}</p>
+{%- endmacro %}
