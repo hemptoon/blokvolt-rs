@@ -983,6 +983,110 @@
    }
   ]
  },
+ "electricity": {
+  "checked": "9. 11. 2026.",
+  "checked_iso": "2026-11-09",
+  "next_check": "25. 3. 2027. (prije isteka uredbe 31. 3. 2027.)",
+  "period": "1. 10. 2026. – 31. 3. 2027.",
+  "computed": "Cijena kWh s PDV-om = (radna energija + distribucija + prijenos + naknada za OIE 0,013239) × 1,13. Radna energija iz Uredbe NN 101/2026 (1. 10. 2026. – 31. 3. 2027.): Bijeli VT 0,097189, NT 0,047688, Plavi 0,091324 €/kWh; iznad 3.000 kWh u šest mjeseci energija × 1,35 (samo za razliku iznad praga). Distribucija (HERA, NN 150/2025, od 1. 1. 2026., kućanstvo): Bijeli VT 0,044446, NT 0,020514, Plavi 0,037608; prijenos (NN 150/2025): Bijeli VT 0,021256, NT 0,008175, Plavi 0,014716 €/kWh. Npr. Bijeli noću (0,047688 + 0,020514 + 0,008175 + 0,013239) × 1,13 = 0,10126608. Vrijednosti nisu zaokružene; stranica ih zaokružuje.",
+  "energy": {
+   "bijeli_vt": 0.097189,
+   "bijeli_nt": 0.047688,
+   "plavi": 0.091324,
+   "hi_factor": 1.35,
+   "threshold_kwh": 3000
+  },
+  "network": {
+   "dist_vt": 0.044446,
+   "dist_nt": 0.020514,
+   "dist_jt": 0.037608,
+   "tr_vt": 0.021256,
+   "tr_nt": 0.008175,
+   "tr_jt": 0.014716,
+   "meter_month": 1.983
+  },
+  "rows": [
+   {
+    "id": "bijeli",
+    "name": "Bijeli (dvotarifno brojilo)",
+    "range": "do 3.000 kWh u šest mjeseci",
+    "nt": 0.10126608,
+    "vt": 0.1990269,
+    "jt": null
+   },
+   {
+    "id": "bijeli_hi",
+    "name": "Bijeli (dvotarifno brojilo)",
+    "range": "iznad 3.000 kWh u šest mjeseci",
+    "nt": 0.12012668,
+    "vt": 0.23746515,
+    "jt": null
+   },
+   {
+    "id": "plavi",
+    "name": "Plavi (jednotarifno brojilo)",
+    "range": "do 3.000 kWh u šest mjeseci",
+    "nt": null,
+    "vt": null,
+    "jt": 0.17728231
+   },
+   {
+    "id": "plavi_hi",
+    "name": "Plavi (jednotarifno brojilo)",
+    "range": "iznad 3.000 kWh u šest mjeseci",
+    "nt": null,
+    "vt": null,
+    "jt": 0.21340095
+   }
+  ],
+  "hours": [
+   [
+    "Zimsko računanje vremena",
+    "Niža tarifa od 21 do 7 h, viša od 7 do 21 h."
+   ],
+   [
+    "Ljetno računanje vremena",
+    "Niža tarifa od 22 do 8 h, viša od 8 do 22 h."
+   ]
+  ],
+  "sources": [
+   {
+    "label": "Uredba o mjerama za stabilnost domaćeg tržišta energije, NN 101/2026, čl. 2: radna energija za kućanstva od 1. 10. 2026. do 31. 3. 2027. (JT 0,091324, VT 0,097189, NT 0,047688 €/kWh do 3.000 kWh u šest mjeseci, iznad toga + 35 %)",
+    "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2026_09_101_1209.html",
+    "date": "11. 9. 2026."
+   },
+   {
+    "label": "HERA — Odluka o iznosu tarifnih stavki za distribuciju električne energije, NN 150/2025, od 1. 1. 2026.",
+    "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2025_12_150_2241.html",
+    "date": "12. 12. 2025."
+   },
+   {
+    "label": "HERA — Odluka o iznosu tarifnih stavki za prijenos električne energije, NN 150/2025, od 1. 1. 2026.",
+    "url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2025_12_150_2240.html",
+    "date": "12. 12. 2025."
+   },
+   {
+    "label": "HERA — obavijest o novim mrežnim naknadama za 2026. (distribucija + 15 %, prijenos + 10 %)",
+    "url": "https://www.hera.hr/hr/docs/2025/Obavijest_2025-12-12.pdf",
+    "date": "12. 12. 2025."
+   },
+   {
+    "label": "Odluka o naknadi za obnovljive izvore energije i visokoučinkovitu kogeneraciju, NN 31/2023 i 24/2024: 0,013239 €/kWh bez PDV-a",
+    "url": "https://www.zakon.hr/cms.htm?id=59812",
+    "date": "provjereno 9. 11. 2026."
+   },
+   {
+    "label": "HEP Elektra — tarifne stavke za kućanstva (naknada za OIE 0,013239 €/kWh bez PDV-a, PDV 13 %, raspored više i niže tarife)",
+    "url": "https://www.hep.hr/elektra/kucanstvo/tarifne-stavke-cijene/1547",
+    "date": "provjereno 27. 10. 2026."
+   },
+   {
+    "label": "HEP ODS — tarifni modeli za kućanstva",
+    "url": "https://www.hep.hr/ods/korisnici/kucanstvo/tarifni-modeli/34",
+    "date": "provjereno 28. 9. 2026."
+   }
+  ]
+ },
  "fuel": {
   "petrol": 1.69,
   "diesel": 1.88,
