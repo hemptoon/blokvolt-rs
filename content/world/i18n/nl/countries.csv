@@ -1,0 +1,151 @@
+cc,name,slug,in_phrase,note
+AD,Andorra,andorra,in Andorra,CLDR 47
+AE,Verenigde Arabische Emiraten,verenigde-arabische-emiraten,in de Verenigde Arabische Emiraten,CLDR 47; met lidwoord «de»
+AL,Albanië,albanie,in Albanië,CLDR 47
+AM,Armenië,armenie,in Armenië,CLDR 47
+AR,Argentinië,argentinie,in Argentinië,CLDR 47
+AT,Oostenrijk,oostenrijk,in Oostenrijk,CLDR 47
+AU,Australië,australie,in Australië,CLDR 47
+AW,Aruba,aruba,op Aruba,CLDR 47; eiland: «op»
+AX,Åland,aland,op Åland,CLDR 47; eiland: «op»
+AZ,Azerbeidzjan,azerbeidzjan,in Azerbeidzjan,CLDR 47
+BA,Bosnië en Herzegovina,bosnie-en-herzegovina,in Bosnië en Herzegovina,CLDR 47
+BB,Barbados,barbados,op Barbados,CLDR 47; eiland: «op»
+BE,België,belgie,in België,CLDR 47
+BG,Bulgarije,bulgarije,in Bulgarije,CLDR 47
+BH,Bahrein,bahrein,in Bahrein,CLDR 47
+BO,Bolivia,bolivia,in Bolivia,CLDR 47
+BR,Brazilië,brazilie,in Brazilië,CLDR 47
+BW,Botswana,botswana,in Botswana,CLDR 47
+BY,Belarus,belarus,in Belarus,CLDR 47
+BZ,Belize,belize,in Belize,CLDR 47
+CA,Canada,canada,in Canada,CLDR 47
+CH,Zwitserland,zwitserland,in Zwitserland,CLDR 47
+CL,Chili,chili,in Chili,CLDR 47
+CN,China,china,in China,CLDR 47
+CO,Colombia,colombia,in Colombia,CLDR 47
+CR,Costa Rica,costa-rica,in Costa Rica,CLDR 47
+CU,Cuba,cuba,op Cuba,CLDR 47; eiland: «op»
+CY,Cyprus,cyprus,op Cyprus,CLDR 47; eiland: «op»
+CZ,Tsjechië,tsjechie,in Tsjechië,CLDR 47
+DE,Duitsland,duitsland,in Duitsland,CLDR 47
+DK,Denemarken,denemarken,in Denemarken,CLDR 47
+DO,Dominicaanse Republiek,dominicaanse-republiek,in de Dominicaanse Republiek,CLDR 47; met lidwoord «de»
+DZ,Algerije,algerije,in Algerije,CLDR 47
+EC,Ecuador,ecuador,in Ecuador,CLDR 47
+EE,Estland,estland,in Estland,CLDR 47
+EG,Egypte,egypte,in Egypte,CLDR 47
+ES,Spanje,spanje,in Spanje,CLDR 47
+ET,Ethiopië,ethiopie,in Ethiopië,CLDR 47
+FI,Finland,finland,in Finland,CLDR 47
+FJ,Fiji,fiji,op Fiji,CLDR 47; eiland: «op»
+FO,Faeröer,faeroer,op de Faeröer,CLDR 47; eiland: «op»; met lidwoord «de»
+FR,Frankrijk,frankrijk,in Frankrijk,CLDR 47
+GB,Verenigd Koninkrijk,verenigd-koninkrijk,in het Verenigd Koninkrijk,CLDR 47; met lidwoord «het»
+GE,Georgië,georgie,in Georgië,CLDR 47
+GG,Guernsey,guernsey,op Guernsey,CLDR 47; eiland: «op»
+GH,Ghana,ghana,in Ghana,CLDR 47
+GI,Gibraltar,gibraltar,in Gibraltar,CLDR 47
+GR,Griekenland,griekenland,in Griekenland,CLDR 47
+GT,Guatemala,guatemala,in Guatemala,CLDR 47
+GY,Guyana,guyana,in Guyana,CLDR 47
+HK,Hongkong,hongkong,in Hongkong,CLDR: Hongkong SAR van China; korte vorm zoals in EN
+HR,Kroatië,kroatie,in Kroatië,CLDR 47
+HT,Haïti,haiti,in Haïti,CLDR 47
+HU,Hongarije,hongarije,in Hongarije,CLDR 47
+ID,Indonesië,indonesie,in Indonesië,CLDR 47
+IE,Ierland,ierland,in Ierland,CLDR 47
+IL,Israël,israel,in Israël,CLDR 47
+IM,Isle of Man,isle-of-man,op Isle of Man,CLDR 47; eiland: «op»
+IN,India,india,in India,CLDR 47
+IQ,Irak,irak,in Irak,CLDR 47
+IR,Iran,iran,in Iran,CLDR 47
+IS,IJsland,ijsland,op IJsland,CLDR 47; eiland: «op»
+IT,Italië,italie,in Italië,CLDR 47
+JE,Jersey,jersey,op Jersey,CLDR 47; eiland: «op»
+JM,Jamaica,jamaica,op Jamaica,CLDR 47; eiland: «op»
+JO,Jordanië,jordanie,in Jordanië,CLDR 47
+JP,Japan,japan,in Japan,CLDR 47
+KE,Kenia,kenia,in Kenia,CLDR 47
+KG,Kirgizië,kirgizie,in Kirgizië,CLDR 47
+KH,Cambodja,cambodja,in Cambodja,CLDR 47
+KR,Zuid-Korea,zuid-korea,in Zuid-Korea,CLDR 47
+KW,Koeweit,koeweit,in Koeweit,CLDR 47
+KY,Kaaimaneilanden,kaaimaneilanden,op de Kaaimaneilanden,CLDR 47; eiland: «op»; met lidwoord «de»
+KZ,Kazachstan,kazachstan,in Kazachstan,CLDR 47
+LB,Libanon,libanon,in Libanon,CLDR 47
+LC,Saint Lucia,saint-lucia,op Saint Lucia,CLDR 47; eiland: «op»
+LI,Liechtenstein,liechtenstein,in Liechtenstein,CLDR 47
+LK,Sri Lanka,sri-lanka,in Sri Lanka,CLDR 47
+LT,Litouwen,litouwen,in Litouwen,CLDR 47
+LU,Luxemburg,luxemburg,in Luxemburg,CLDR 47
+LV,Letland,letland,in Letland,CLDR 47
+MA,Marokko,marokko,in Marokko,CLDR 47
+MC,Monaco,monaco,in Monaco,CLDR 47
+MD,Moldavië,moldavie,in Moldavië,CLDR 47
+ME,Montenegro,montenegro,in Montenegro,CLDR 47
+MF,Saint-Martin,saint-martin,op Saint-Martin,CLDR 47; eiland: «op»
+MK,Noord-Macedonië,noord-macedonie,in Noord-Macedonië,CLDR 47
+MM,Myanmar,myanmar,in Myanmar,CLDR: Myanmar (Birma); korte vorm zoals in EN
+MN,Mongolië,mongolie,in Mongolië,CLDR 47
+MO,Macau,macau,in Macau,CLDR: Macau SAR van China; korte vorm zoals in EN
+MT,Malta,malta,op Malta,CLDR 47; eiland: «op»
+MU,Mauritius,mauritius,op Mauritius,CLDR 47; eiland: «op»
+MX,Mexico,mexico,in Mexico,CLDR 47
+MY,Maleisië,maleisie,in Maleisië,CLDR 47
+NA,Namibië,namibie,in Namibië,CLDR 47
+NC,Nieuw-Caledonië,nieuw-caledonie,in Nieuw-Caledonië,CLDR 47
+NG,Nigeria,nigeria,in Nigeria,CLDR 47
+NI,Nicaragua,nicaragua,in Nicaragua,CLDR 47
+NL,Nederland,nederland,in Nederland,CLDR 47
+NO,Noorwegen,noorwegen,in Noorwegen,CLDR 47
+NP,Nepal,nepal,in Nepal,CLDR 47
+NZ,Nieuw-Zeeland,nieuw-zeeland,in Nieuw-Zeeland,CLDR 47
+OM,Oman,oman,in Oman,CLDR 47
+PA,Panama,panama,in Panama,CLDR 47
+PE,Peru,peru,in Peru,CLDR 47
+PF,Frans-Polynesië,frans-polynesie,in Frans-Polynesië,CLDR 47
+PH,Filipijnen,filipijnen,in de Filipijnen,CLDR 47; met lidwoord «de»
+PK,Pakistan,pakistan,in Pakistan,CLDR 47
+PL,Polen,polen,in Polen,CLDR 47
+PR,Puerto Rico,puerto-rico,in Puerto Rico,CLDR 47
+PS,Palestijnse gebieden,palestijnse-gebieden,in de Palestijnse gebieden,CLDR 47; met lidwoord «de»
+PT,Portugal,portugal,in Portugal,CLDR 47
+PY,Paraguay,paraguay,in Paraguay,CLDR 47
+QA,Qatar,qatar,in Qatar,CLDR 47
+RE,Réunion,reunion,op Réunion,CLDR 47; eiland: «op»
+RO,Roemenië,roemenie,in Roemenië,CLDR 47
+RS,Servië,servie,in Servië,CLDR 47
+RU,Rusland,rusland,in Rusland,CLDR 47
+RW,Rwanda,rwanda,in Rwanda,CLDR 47
+SA,Saoedi-Arabië,saoedi-arabie,in Saoedi-Arabië,CLDR 47
+SD,Soedan,soedan,in Soedan,CLDR 47
+SE,Zweden,zweden,in Zweden,CLDR 47
+SG,Singapore,singapore,in Singapore,CLDR 47
+SI,Slovenië,slovenie,in Slovenië,CLDR 47
+SJ,Spitsbergen en Jan Mayen,spitsbergen-en-jan-mayen,op Spitsbergen en Jan Mayen,CLDR 47; eiland: «op»
+SK,Slowakije,slowakije,in Slowakije,CLDR 47
+SM,San Marino,san-marino,in San Marino,CLDR 47
+SO,Somalië,somalie,in Somalië,CLDR 47
+SR,Suriname,suriname,in Suriname,CLDR 47
+SV,El Salvador,el-salvador,in El Salvador,CLDR 47
+SY,Syrië,syrie,in Syrië,CLDR 47
+SZ,Eswatini,eswatini,in Eswatini,CLDR 47
+TH,Thailand,thailand,in Thailand,CLDR 47
+TJ,Tadzjikistan,tadzjikistan,in Tadzjikistan,CLDR 47
+TN,Tunesië,tunesie,in Tunesië,CLDR 47
+TO,Tonga,tonga,in Tonga,CLDR 47
+TR,Turkije,turkije,in Turkije,CLDR 47
+TT,Trinidad en Tobago,trinidad-en-tobago,in Trinidad en Tobago,CLDR 47
+TW,Taiwan,taiwan,in Taiwan,CLDR 47
+UA,Oekraïne,oekraine,in Oekraïne,CLDR 47
+UG,Oeganda,oeganda,in Oeganda,CLDR 47
+US,Verenigde Staten,verenigde-staten,in de Verenigde Staten,CLDR 47; met lidwoord «de»
+UY,Uruguay,uruguay,in Uruguay,CLDR 47
+UZ,Oezbekistan,oezbekistan,in Oezbekistan,CLDR 47
+VC,Saint Vincent en de Grenadines,saint-vincent-en-de-grenadines,in Saint Vincent en de Grenadines,CLDR 47
+VE,Venezuela,venezuela,in Venezuela,CLDR 47
+VN,Vietnam,vietnam,in Vietnam,CLDR 47
+WS,Samoa,samoa,in Samoa,CLDR 47
+XK,Kosovo,kosovo,in Kosovo,CLDR 47
+ZA,Zuid-Afrika,zuid-afrika,in Zuid-Afrika,CLDR 47

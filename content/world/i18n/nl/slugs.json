@@ -1,0 +1,13 @@
+{
+ "home": "/nl/",
+ "map": "/nl/kaart/",
+ "hub": "/nl/laadstations/",
+ "net": "netwerk",
+ "about": "over-de-data",
+ "download": "downloaden",
+ "gnet": "/nl/laadnetwerken/",
+ "prices": "/nl/laadprijzen/",
+ "shell_about": "/nl/over/",
+ "sources": "/nl/bronnen/",
+ "methodology": "/nl/methodologie/"
+}
