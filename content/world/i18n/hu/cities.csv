@@ -1,36 +1,36 @@
 geonameid,name,in_phrase,decl_ok,note
-3054643,Budapest,Budapesten,1,hu: kézi
-3054646,Budaörs,Budaörsön,1,hu: kézi
-721472,Debrecen,Debrecenben,1,hu: kézi
-3053485,Dunaharaszti,Dunaharasztin,1,hu: kézi
-3053476,Dunakeszi,Dunakeszin,1,hu: kézi
-721239,Eger,Egerben,1,hu: kézi
-3052542,Fót,Fóton,1,hu: kézi
-3052101,Gyál,Gyálon,1,hu: kézi
-3052009,Győr,Győrben,1,hu: kézi
-3051621,Hatvan,Hatvanban,1,hu: kézi
-719965,Hódmezővásárhely,Hódmezővásárhelyen,1,hu: kézi
-3050616,Kaposvár,Kaposváron,1,hu: kézi
-3050434,Kecskemét,Kecskeméten,1,hu: kézi
-3050212,Keszthely,Keszthelyen,1,hu: kézi
-717582,Miskolc,Miskolcon,1,hu: kézi
-3047679,Nagykanizsa,Nagykanizsán,1,hu: kézi
-716935,Nyíregyháza,Nyíregyházán,1,hu: kézi
-3046446,Pest,Pesten,1,hu: kézi
-3046526,Pécs,Pécsett,1,hu: kézi
-3045332,Siófok,Siófokon,1,hu: kézi
-3045190,Sopron,Sopronban,1,hu: kézi
-715429,Szeged,Szegeden,1,hu: kézi
-3044760,Szekszárd,Szekszárdon,1,hu: kézi
-3044475,Szigetszentmiklós,Szigetszentmiklóson,1,hu: kézi
-715126,Szolnok,Szolnokon,1,hu: kézi
-3044310,Szombathely,Szombathelyen,1,hu: kézi
-3044774,Székesfehérvár,Székesfehérváron,1,hu: kézi
-3044141,Tapolca,Tapolcán,1,hu: kézi
-3044082,Tatabánya,Tatabányán,1,hu: kézi
-3043019,Vecsés,Vecsésen,1,hu: kézi
-3042929,Veszprém,Veszprémben,1,hu: kézi
-3053281,Érd,Érden,1,hu: kézi
+3054643,Budapest,Budapesten,1,hu: kézi; rev: ok
+3054646,Budaörs,Budaörsön,1,hu: kézi; rev: ok
+721472,Debrecen,Debrecenben,1,hu: kézi; rev: ok
+3053485,Dunaharaszti,Dunaharasztin,1,hu: kézi; rev: ok
+3053476,Dunakeszi,Dunakeszin,1,hu: kézi; rev: ok
+721239,Eger,Egerben,1,hu: kézi; rev: ok
+3052542,Fót,Fóton,1,hu: kézi; rev: ok
+3052101,Gyál,Gyálon,1,hu: kézi; rev: ok
+3052009,Győr,Győrben,1,hu: kézi; rev: ok
+3051621,Hatvan,Hatvanban,1,hu: kézi; rev: ok
+719965,Hódmezővásárhely,Hódmezővásárhelyen,1,hu: kézi; rev: ok
+3050616,Kaposvár,Kaposváron,1,hu: kézi; rev: ok
+3050434,Kecskemét,Kecskeméten,1,hu: kézi; rev: ok
+3050212,Keszthely,Keszthelyen,1,hu: kézi; rev: ok
+717582,Miskolc,Miskolcon,1,hu: kézi; rev: ok
+3047679,Nagykanizsa,Nagykanizsán,1,hu: kézi; rev: ok
+716935,Nyíregyháza,Nyíregyházán,1,hu: kézi; rev: ok
+3046446,Pest,Pesten,1,hu: kézi; rev: ok
+3046526,Pécs,Pécsett,1,hu: kézi; rev: ok
+3045332,Siófok,Siófokon,1,hu: kézi; rev: ok
+3045190,Sopron,Sopronban,1,hu: kézi; rev: ok
+715429,Szeged,Szegeden,1,hu: kézi; rev: ok
+3044760,Szekszárd,Szekszárdon,1,hu: kézi; rev: ok
+3044475,Szigetszentmiklós,Szigetszentmiklóson,1,hu: kézi; rev: ok
+715126,Szolnok,Szolnokon,1,hu: kézi; rev: ok
+3044310,Szombathely,Szombathelyen,1,hu: kézi; rev: ok
+3044774,Székesfehérvár,Székesfehérváron,1,hu: kézi; rev: ok
+3044141,Tapolca,Tapolcán,1,hu: kézi; rev: ok
+3044082,Tatabánya,Tatabányán,1,hu: kézi; rev: ok
+3043019,Vecsés,Vecsésen,1,hu: kézi; rev: ok
+3042929,Veszprém,Veszprémben,1,hu: kézi; rev: ok
+3053281,Érd,Érden,1,hu: kézi; rev: ok
 783263,Elbasan,Elbasan városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
 3185672,Fier,Fier városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
 3185638,Fushë-Krujë,Fushë-Krujë városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
@@ -45,27 +45,27 @@ geonameid,name,in_phrase,decl_ok,note
 3184081,Shkodër,Shkodër városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
 3183875,Tirana,Tiranában,1,"hu: exonima, kézi"
 3183719,Vlorë,Vlorë városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2782555,Amstetten,Amstettenben,1,"auto: -ban/-ben, hangrend"
-2782480,Ansfelden,Ansfeldenben,1,"auto: -ban/-ben, hangrend"
-2782067,Baden,Badenben,1,"auto: -ban/-ben, hangrend"
-2781680,Bludenz,Bludenzben,1,"auto: -ban/-ben, hangrend"
-2781503,Bregenz,Bregenzben,1,"auto: -ban/-ben, hangrend"
-2780741,Dornbirn,Dornbirnban,1,"auto: -ban/-ben, hangrend"
-2780180,Eisenzicken,Eisenzickenben,1,"auto: -ban/-ben, hangrend"
-2778067,Graz,Grazban,1,"auto: -ban/-ben, hangrend"
-2775742,Hohenems,Hohenemsben,1,"auto: -ban/-ben, hangrend"
-2775220,Innsbruck,Innsbruckban,1,"auto: -ban/-ben, hangrend"
-2774326,Klagenfurt,Klagenfurtban,1,"hu: exonima, kézi"
-2773913,Klosterneuburg,Klosterneuburgban,1,"auto: -ban/-ben, hangrend"
-2772400,Linz,Linzben,1,"auto: -ban/-ben, hangrend"
-2771335,Mödling,Mödlingben,1,"auto: -ban/-ben, hangrend"
-2766824,Salzburg,Salzburgban,1,"auto: -ban/-ben, hangrend"
-2766429,Sankt Pölten,Sankt Pöltenben,1,"auto: -ban/-ben, hangrend"
-2764279,Stockerau,Stockerauban,1,"auto: -ban/-ben, hangrend"
-2762372,Villach,Villachban,1,"auto: -ban/-ben, hangrend"
-2761524,Wels,Welsben,1,"auto: -ban/-ben, hangrend"
-2761369,Bécs,Bécsben,1,"hu: exonima, kézi"
-2761353,Bécsújhely,Bécsújhelyen,1,"hu: exonima, kézi"
+2782555,Amstetten,Amstettenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2782480,Ansfelden,Ansfeldenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2782067,Baden,Badenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2781680,Bludenz,Bludenzben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2781503,Bregenz,Bregenzben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2780741,Dornbirn,Dornbirnban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2780180,Eisenzicken,Eisenzickenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2778067,Graz,Grazban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2775742,Hohenems,Hohenemsben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2775220,Innsbruck,Innsbruckban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2774326,Klagenfurt,Klagenfurtban,1,"hu: exonima, kézi; rev: ok"
+2773913,Klosterneuburg,Klosterneuburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2772400,Linz,Linzben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2771335,Mödling,Mödlingben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2766824,Salzburg,Salzburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2766429,Sankt Pölten,Sankt Pöltenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2764279,Stockerau,Stockerauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2762372,Villach,Villachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2761524,Wels,Welsben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2761369,Bécs,Bécsben,1,"hu: exonima, kézi; rev: ok"
+2761353,Bécsújhely,Bécsújhelyen,1,"hu: exonima, kézi; rev: ok"
 3204541,Banja Luka,Banja Lukában,1,"auto: -ban/-ben, hangrend"
 3204222,Bihać,Bihaćban,1,"auto: -ban/-ben, hangrend"
 3204186,Bijeljina,Bijeljinában,1,"auto: -ban/-ben, hangrend"
@@ -85,485 +85,485 @@ geonameid,name,in_phrase,decl_ok,note
 3188582,Tuzla,Tuzlában,1,"auto: -ban/-ben, hangrend"
 3187609,Visoko,Visokóban,1,"auto: -ban/-ben, hangrend"
 3186573,Zenica,Zenicában,1,"auto: -ban/-ben, hangrend"
-2803448,Aalst,Aalst városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2803443,Aalter,Aalter városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2803204,Andenne,Andenne városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2803160,Ans,Ans városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2803138,Antwerpen,Antwerpenben,1,hu: kézi
-2803073,Arlon,Arlon városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2803010,Ath,Ath városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2802433,Beersel,Beersel városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2801922,Binche,Binche városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2801858,Blankenberge,Blankenberge városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2801494,Boom,Boom városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
+2803448,Aalst,Aalstban,1,rev
+2803443,Aalter,Aalterben,1,rev
+2803204,Andenne,Andenne-ban,1,rev
+2803160,Ans,Ansban,1,rev
+2803138,Antwerpen,Antwerpenben,1,hu: kézi; rev: ok
+2803073,Arlon,Arlonban,1,rev
+2803010,Ath,Athban,1,rev
+2802433,Beersel,Beerselben,1,rev
+2801922,Binche,Binche-ben,1,rev
+2801858,Blankenberge,Blankenbergében,1,rev
+2801494,Boom,Boomban,1,rev
 2801154,Braine-l'Alleud,Braine-l'Alleud városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2800931,Brugge,Brugge-ben,1,hu: kézi
-2800866,Brüsszel,Brüsszelben,1,"hu: exonima, kézi"
-2800438,Chaudfontaine,Chaudfontaine városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2800448,Châtelet,Châtelet városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2799397,Diest,Diest városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2799365,Dilbeek,Dilbeek városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2798573,Eupen,Eupen városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2798297,Fleurus,Fleurus városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
+2800931,Brugge,Brugge-ben,1,hu: kézi; rev: ok
+2800866,Brüsszel,Brüsszelben,1,"hu: exonima, kézi; rev: ok"
+2800438,Chaudfontaine,Chaudfontaine-ben,1,rev
+2800448,Châtelet,Châtelet-ben,1,rev
+2799397,Diest,Diestben,1,rev
+2799365,Dilbeek,Dilbeekben,1,rev
+2798573,Eupen,Eupenben,1,rev
+2798297,Fleurus,Fleurusben,1,rev
 2798307,Flémalle-Haute,Flémalle-Haute városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2798301,Fléron,Fléron városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2797779,Geel,Geel városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2797713,Gembloux,Gembloux városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2797656,Gent,Gentben,1,hu: kézi
-2797652,Gentbrugge,Gentbrugge városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2797638,Geraardsbergen,Geraardsbergen városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2797114,Grimbergen,Grimbergen városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2797096,Grivegnée,Grivegnée városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2796696,Halle,Halle városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2796542,Harelbeke,Harelbeke városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2796491,Hasselt,Hasselt városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2795930,Herstal,Herstal városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2795912,Herve,Herve városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
+2798301,Fléron,Fléronban,1,rev
+2797779,Geel,Geelben,1,rev
+2797713,Gembloux,Gembloux-ban,1,rev
+2797656,Gent,Gentben,1,hu: kézi; rev: ok
+2797652,Gentbrugge,Gentbruggében,1,rev
+2797638,Geraardsbergen,Geraardsbergenben,1,rev
+2797114,Grimbergen,Grimbergenben,1,rev
+2797096,Grivegnée,Grivegnée-ben,1,rev
+2796696,Halle,Hallében,1,rev
+2796542,Harelbeke,Harelbekében,1,rev
+2796491,Hasselt,Hasseltben,1,rev
+2795930,Herstal,Herstalban,1,rev
+2795912,Herve,Herve-ben,1,rev
 2795795,Heusy,Heusy városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2795783,Heverlee,Heverlee városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2795398,Hoogstraten,Hoogstraten városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
+2795783,Heverlee,Heverleeben,1,rev
+2795398,Hoogstraten,Hoogstratenben,1,rev
 2795113,Huy,Huy városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2795009,Izegem,Izegem városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2794981,Jambes,Jambes városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2794860,Jumet,Jumet városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2794166,Koksijde,Koksijde városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2794055,Kortrijk,Kortrijk városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2793508,La Louvière,La Louvière városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2792567,Lessines,Lessines városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2792413,Liège,Liège-ben,1,hu: kézi
+2795009,Izegem,Izegemben,1,rev
+2794981,Jambes,Jambes-ban,1,rev
+2794860,Jumet,Jumet-ben,1,rev
+2794166,Koksijde,Koksijdében,1,rev
+2794055,Kortrijk,Kortrijkban,1,rev
+2793508,La Louvière,La Louvière-ben,1,rev
+2792567,Lessines,Lessines-ben,1,rev
+2792413,Liège,Liège-ben,1,hu: kézi; rev: ok
 2792073,Louvain-la-Neuve,Louvain-la-Neuve városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
 2791744,Marche-en-Famenne,Marche-en-Famenne városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
 2791735,Marchienne-au-Pont,Marchienne-au-Pont városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2791726,Marcinelle,Marcinelle városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2791537,Mechelen,Mechelen városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2790869,Mons,Mons városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2790595,Mouscron,Mouscron városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2790471,Namur,Namur városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2790101,Nivelles,Nivelles városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
+2791726,Marcinelle,Marcinelle-ben,1,rev
+2791537,Mechelen,Mechelenben,1,rev
+2790869,Mons,Monsban,1,rev
+2790595,Mouscron,Mouscronban,1,rev
+2790471,Namur,Namurban,1,rev
+2790101,Nivelles,Nivelles-ben,1,rev
 2789471,Oupeye,Oupeye városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2789232,Peer,Peer városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
+2789232,Peer,Peerben,1,rev
 2789162,Péruwelz,Péruwelz városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2787989,Rixensart,Rixensart városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2787889,Roeselare,Roeselare városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2787769,Ronse,Ronse városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2787416,Saint-Ghislain,Saint-Ghislain városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2787356,Saint-Nicolas,Saint-Nicolas városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2786963,Schoten,Schoten városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2786824,Seraing,Seraing városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2786743,Sint-Amandsberg,Sint-Amandsberg városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2786700,Sint-Genesius-Rode,Sint-Genesius-Rode városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2786578,Sint-Niklaas,Sint-Niklaas városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2786545,Sint-Truiden,Sint-Truiden városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2785622,Tervuren,Tervuren városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2785476,Tielt,Tielt városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2785470,Tienen,Tienen városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2785389,Tongeren,Tongeren városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2785341,Tournai,Tournai városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2785169,Tubize,Tubize városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2785141,Turnhout,Turnhout városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2784821,Verviers,Verviers városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2784604,Vilvoorde,Vilvoorde városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2784548,Visé,Visé városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2784189,Walcourt,Walcourt városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2784068,Waregem,Waregem városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2783985,Waterloo,Waterloo városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2783941,Wavre,Wavre városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2783820,Wervik,Wervik városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2783801,Westerlo,Westerlo városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2783763,Wetteren,Wetteren városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2783310,Zaventem,Zaventem városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-732770,Burgasz,Burgaszban,1,"hu: exonima, kézi"
-726050,Várna,Várnában,1,"hu: exonima, kézi"
-728193,Plovdiv,Plovdivban,1,"hu: exonima, kézi"
-727523,Ruse,Ruse városában,0,"auto: biztonságos szerkezet (nem latin írás, angol alak)"
-727011,Szófia,Szófiában,1,"hu: exonima, kézi"
-625144,Minszk,Minszkben,1,"hu: exonima, kézi"
-2661881,Aarau,Aarauban,1,"auto: -ban/-ben, hangrend"
-2661861,Adliswil,Adliswilban,1,"auto: -ban/-ben, hangrend"
-2661646,Baden,Badenben,1,"auto: -ban/-ben, hangrend"
-2661567,Bellinzona,Bellinzonában,1,"auto: -ban/-ben, hangrend"
-2661552,Bern,Bernben,1,hu: kézi
+2787989,Rixensart,Rixensartban,1,rev
+2787889,Roeselare,Roeselarében,1,rev
+2787769,Ronse,Ronséban,1,rev
+2787416,Saint-Ghislain,Saint-Ghislainben,1,rev
+2787356,Saint-Nicolas,Saint-Nicolas-ban,1,rev
+2786963,Schoten,Schotenben,1,rev
+2786824,Seraing,Seraingben,1,rev
+2786743,Sint-Amandsberg,Sint-Amandsbergben,1,rev
+2786700,Sint-Genesius-Rode,Sint-Genesius-Rodében,1,rev
+2786578,Sint-Niklaas,Sint-Niklaasban,1,rev
+2786545,Sint-Truiden,Sint-Truidenben,1,rev
+2785622,Tervuren,Tervurenben,1,rev
+2785476,Tielt,Tieltben,1,rev
+2785470,Tienen,Tienenben,1,rev
+2785389,Tongeren,Tongerenben,1,rev
+2785341,Tournai,Tournai-ben,1,rev
+2785169,Tubize,Tubize-ben,1,rev
+2785141,Turnhout,Turnhoutban,1,rev
+2784821,Verviers,Verviers-ben,1,rev
+2784604,Vilvoorde,Vilvoordében,1,rev
+2784548,Visé,Visében,1,rev
+2784189,Walcourt,Walcourt-ban,1,rev
+2784068,Waregem,Waregemben,1,rev
+2783985,Waterloo,Waterlooban,1,rev
+2783941,Wavre,Wavre-ban,1,rev
+2783820,Wervik,Wervikben,1,rev
+2783801,Westerlo,Westerlóban,1,rev
+2783763,Wetteren,Wetterenben,1,rev
+2783310,Zaventem,Zaventemben,1,rev
+732770,Burgasz,Burgaszban,1,"hu: exonima, kézi; rev: ok"
+726050,Várna,Várnában,1,"hu: exonima, kézi; rev: ok"
+728193,Plovdiv,Plovdivban,1,"hu: exonima, kézi; rev: ok"
+727523,Rusze,Ruszéban,1,rev: magyar exonima
+727011,Szófia,Szófiában,1,"hu: exonima, kézi; rev: ok"
+625144,Minszk,Minszkben,1,"hu: exonima, kézi; rev: ok"
+2661881,Aarau,Aarauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2661861,Adliswil,Adliswilban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2661646,Baden,Badenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2661567,Bellinzona,Bellinzonában,1,"auto: -ban/-ben, hangrend; rev: ok"
+2661552,Bern,Bernben,1,hu: kézi; rev: ok
 2661513,Biel/Bienne,Biel/Bienne városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2661337,Bulle,Bulle városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2661169,Chur,Churban,1,"auto: -ban/-ben, hangrend"
-2661015,Dietikon,Dietikonban,1,"auto: -ban/-ben, hangrend"
-2660911,Emmen,Emmenben,1,"auto: -ban/-ben, hangrend"
-2660718,Fribourg,Fribourgban,1,"auto: -ban/-ben, hangrend"
-2660365,Herisau,Herisauban,1,"auto: -ban/-ben, hangrend"
-2660221,Jona,Jonában,1,"auto: -ban/-ben, hangrend"
-2660108,Kreuzlingen,Kreuzlingenben,1,"auto: -ban/-ben, hangrend"
-2659869,Locarno,Locarnóban,1,"auto: -ban/-ben, hangrend"
-2659836,Lugano,Luganóban,1,"auto: -ban/-ben, hangrend"
+2661337,Bulle,Bulle-ben,1,rev
+2661169,Chur,Churban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2661015,Dietikon,Dietikonban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2660911,Emmen,Emmenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2660718,Fribourg,Fribourgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2660365,Herisau,Herisauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2660221,Jona,Jonában,1,"auto: -ban/-ben, hangrend; rev: ok"
+2660108,Kreuzlingen,Kreuzlingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2659869,Locarno,Locarnóban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2659836,Lugano,Luganóban,1,"auto: -ban/-ben, hangrend; rev: ok"
 2659748,Martigny-Ville,Martigny-Ville városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2659613,Monthey,Montheyben,1,"auto: -ban/-ben, hangrend"
-2659601,Montreux,Montreux városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2659587,Morges,Morgesben,1,"auto: -ban/-ben, hangrend"
-2659496,Neuchâtel,Neuchâtel városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2659422,Nyon,Nyonban,1,"auto: -ban/-ben, hangrend"
-2659297,Olten,Oltenben,1,"auto: -ban/-ben, hangrend"
-2659070,Renens,Renensben,1,"auto: -ban/-ben, hangrend"
-2658665,Schwyz,Schwyzben,1,"auto: -ban/-ben, hangrend"
-2658606,Sierre,Sierre városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2658576,Sion,Sionban,1,"auto: -ban/-ben, hangrend"
-2658564,Solothurn,Solothurnban,1,"auto: -ban/-ben, hangrend"
-2658822,St. Gallen,St. Gallenben,1,"auto: -ban/-ben, hangrend"
-2658145,Vevey,Veveyben,1,"auto: -ban/-ben, hangrend"
-2657996,Wil,Wilben,1,"auto: -ban/-ben, hangrend"
+2659613,Monthey,Montheyben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2659601,Montreux,Montreux-ben,1,rev
+2659587,Morges,Morges-ban,1,rev
+2659496,Neuchâtel,Neuchâtelben,1,rev
+2659422,Nyon,Nyonban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2659297,Olten,Oltenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2659070,Renens,Renens-ben,1,rev
+2658665,Schwyz,Schwyzben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2658606,Sierre,Sierre-ben,1,rev
+2658576,Sion,Sionban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2658564,Solothurn,Solothurnban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2658822,St. Gallen,St. Gallenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2658145,Vevey,Veveyben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2657996,Wil,Wilben,1,"auto: -ban/-ben, hangrend; rev: ok"
 2657941,Yverdon-les-Bains,Yverdon-les-Bains városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2657896,Zürich,Zürichben,1,hu: kézi
-3079508,Benešov,Benešovban,1,"auto: -ban/-ben, hangrend"
-3079467,Beroun,Berounban,1,"auto: -ban/-ben, hangrend"
-3078837,Brandýs nad Labem-Stará Boleslav,Brandýs nad Labem-Stará Boleslavban,1,"auto: -ban/-ben, hangrend"
-3078610,Brno,Brnóban,1,"auto: -ban/-ben, hangrend"
-3078773,Břeclav,Břeclavban,1,"auto: -ban/-ben, hangrend"
-3074967,Hradec Králové,Hradec Královében,1,"auto: -ban/-ben, hangrend"
-3074603,Jablonec nad Nisou,Jablonec nad Nisouban,1,"auto: -ban/-ben, hangrend"
-3074199,Jihlava,Jihlavában,1,"auto: -ban/-ben, hangrend"
-3071961,Liberec,Liberecben,1,"auto: -ban/-ben, hangrend"
-3070544,Mladá Boleslav,Mladá Boleslavban,1,"auto: -ban/-ben, hangrend"
-3070122,Náchod,Náchodban,1,"auto: -ban/-ben, hangrend"
-3069011,Olomouc,Olomoucban,1,"auto: -ban/-ben, hangrend"
-3068799,Ostrava,Ostravában,1,"auto: -ban/-ben, hangrend"
-3068582,Pardubice,Pardubicében,1,"auto: -ban/-ben, hangrend"
-3068160,Plzeň,Plzeňben,1,"auto: -ban/-ben, hangrend"
-3067696,Prága,Prágában,1,"hu: exonima, kézi"
-3063907,Trutnov,Trutnovban,1,"auto: -ban/-ben, hangrend"
-3077916,České Budějovice,České Budějovicében,1,"auto: -ban/-ben, hangrend"
-3066878,Říčany,Říčanyben,1,"auto: -ban/-ben, hangrend"
-3247449,Aachen,Aachenben,1,hu: kézi
-2959927,Aalen,Aalenben,1,"auto: -ban/-ben, hangrend"
-2959686,Achern,Achernben,1,"auto: -ban/-ben, hangrend"
-2959681,Achim,Achimban,1,"auto: -ban/-ben, hangrend"
-2959279,Ahaus,Ahausban,1,"auto: -ban/-ben, hangrend"
-2959223,Ahlen,Ahlenben,1,"auto: -ban/-ben, hangrend"
-2959083,Ahrensburg,Ahrensburgban,1,"auto: -ban/-ben, hangrend"
-2958975,Aichach,Aichachban,1,"auto: -ban/-ben, hangrend"
-2958595,Albstadt,Albstadtban,1,"auto: -ban/-ben, hangrend"
-2958533,Alfeld,Alfeldben,1,"auto: -ban/-ben, hangrend"
-2958516,Alfter,Alfterben,1,"auto: -ban/-ben, hangrend"
-2958128,Alsfeld,Alsfeldben,1,"auto: -ban/-ben, hangrend"
-2958024,Altdorf bei Nürnberg,Altdorf bei Nürnbergben,1,"auto: -ban/-ben, hangrend"
-2957773,Altenburg,Altenburgban,1,"auto: -ban/-ben, hangrend"
-2956715,Alzenau,Alzenauban,1,"auto: -ban/-ben, hangrend"
-2956710,Alzey,Alzeyben,1,"auto: -ban/-ben, hangrend"
-2956656,Amberg,Ambergben,1,"auto: -ban/-ben, hangrend"
-2956206,Andernach,Andernachban,1,"auto: -ban/-ben, hangrend"
-2956005,Annaberg-Buchholz,Annaberg-Buchholzban,1,"auto: -ban/-ben, hangrend"
-2955936,Ansbach,Ansbachban,1,"auto: -ban/-ben, hangrend"
-2955770,Apolda,Apoldában,1,"auto: -ban/-ben, hangrend"
-2955599,Arheilgen,Arheilgenben,1,"auto: -ban/-ben, hangrend"
-2955439,Arnstadt,Arnstadtban,1,"auto: -ban/-ben, hangrend"
-2955272,Aschaffenburg,Aschaffenburgban,1,"auto: -ban/-ben, hangrend"
-2955168,Aschersleben,Ascherslebenben,1,"auto: -ban/-ben, hangrend"
+2657896,Zürich,Zürichben,1,hu: kézi; rev: ok
+3079508,Benešov,Benešovban,1,"auto: -ban/-ben, hangrend; rev: ok"
+3079467,Beroun,Berounban,1,"auto: -ban/-ben, hangrend; rev: ok"
+3078837,Brandýs nad Labem-Stará Boleslav,Brandýs nad Labem-Stará Boleslavban,1,"auto: -ban/-ben, hangrend; rev: ok"
+3078610,Brno,Brnóban,1,"auto: -ban/-ben, hangrend; rev: ok"
+3078773,Břeclav,Břeclavban,1,"auto: -ban/-ben, hangrend; rev: ok"
+3074967,Hradec Králové,Hradec Královében,1,"auto: -ban/-ben, hangrend; rev: ok"
+3074603,Jablonec nad Nisou,Jablonec nad Nisouban,1,"auto: -ban/-ben, hangrend; rev: ok"
+3074199,Jihlava,Jihlavában,1,"auto: -ban/-ben, hangrend; rev: ok"
+3071961,Liberec,Liberecben,1,"auto: -ban/-ben, hangrend; rev: ok"
+3070544,Mladá Boleslav,Mladá Boleslavban,1,"auto: -ban/-ben, hangrend; rev: ok"
+3070122,Náchod,Náchodban,1,"auto: -ban/-ben, hangrend; rev: ok"
+3069011,Olomouc,Olomoucban,1,"auto: -ban/-ben, hangrend; rev: ok"
+3068799,Ostrava,Ostravában,1,"auto: -ban/-ben, hangrend; rev: ok"
+3068582,Pardubice,Pardubicében,1,"auto: -ban/-ben, hangrend; rev: ok"
+3068160,Plzeň,Plzeňben,1,"auto: -ban/-ben, hangrend; rev: ok"
+3067696,Prága,Prágában,1,"hu: exonima, kézi; rev: ok"
+3063907,Trutnov,Trutnovban,1,"auto: -ban/-ben, hangrend; rev: ok"
+3077916,České Budějovice,České Budějovicében,1,"auto: -ban/-ben, hangrend; rev: ok"
+3066878,Říčany,Říčanyban,1,rev
+3247449,Aachen,Aachenben,1,hu: kézi; rev: ok
+2959927,Aalen,Aalenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2959686,Achern,Achernben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2959681,Achim,Achimban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2959279,Ahaus,Ahausban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2959223,Ahlen,Ahlenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2959083,Ahrensburg,Ahrensburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2958975,Aichach,Aichachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2958595,Albstadt,Albstadtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2958533,Alfeld,Alfeldben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2958516,Alfter,Alfterben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2958128,Alsfeld,Alsfeldben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2958024,Altdorf bei Nürnberg,Altdorf bei Nürnbergben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2957773,Altenburg,Altenburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2956715,Alzenau,Alzenauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2956710,Alzey,Alzeyben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2956656,Amberg,Ambergben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2956206,Andernach,Andernachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2956005,Annaberg-Buchholz,Annaberg-Buchholzban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2955936,Ansbach,Ansbachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2955770,Apolda,Apoldában,1,"auto: -ban/-ben, hangrend; rev: ok"
+2955599,Arheilgen,Arheilgenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2955439,Arnstadt,Arnstadtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2955272,Aschaffenburg,Aschaffenburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2955168,Aschersleben,Ascherslebenben,1,"auto: -ban/-ben, hangrend; rev: ok"
 2954602,Auerbach/Vogtl.,Auerbach/Vogtl. városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2954172,Augsburg,Augsburgban,1,"auto: -ban/-ben, hangrend"
-2954006,Aurich,Aurichban,1,"auto: -ban/-ben, hangrend"
-2953568,Backnang,Backnangban,1,"auto: -ban/-ben, hangrend"
-2953558,Bad Aibling,Bad Aiblingban,1,"auto: -ban/-ben, hangrend"
-2953552,Bad Bentheim,Bad Bentheimben,1,"auto: -ban/-ben, hangrend"
-2953525,Bad Driburg,Bad Driburgban,1,"auto: -ban/-ben, hangrend"
-2953522,Bad Dürkheim,Bad Dürkheimben,1,"auto: -ban/-ben, hangrend"
-2953464,Bad Essen,Bad Essenben,1,"auto: -ban/-ben, hangrend"
-2953439,Bad Hersfeld,Bad Hersfeldben,1,"auto: -ban/-ben, hangrend"
-2953436,Bad Homburg vor der Höhe,Bad Homburg vor der Höhében,1,"auto: -ban/-ben, hangrend"
-2953435,Bad Honnef,Bad Honnefben,1,"auto: -ban/-ben, hangrend"
-2953424,Bad Kissingen,Bad Kissingenben,1,"auto: -ban/-ben, hangrend"
-2953416,Bad Kreuznach,Bad Kreuznachban,1,"auto: -ban/-ben, hangrend"
-2882091,Bad Laasphe,Bad Laasphében,1,"auto: -ban/-ben, hangrend"
-2953402,Bad Mergentheim,Bad Mergentheimben,1,"auto: -ban/-ben, hangrend"
-2953400,Bad Münder am Deister,Bad Münder am Deisterben,1,"auto: -ban/-ben, hangrend"
-2953395,Bad Nauheim,Bad Nauheimben,1,"auto: -ban/-ben, hangrend"
-2953391,Bad Neuenahr-Ahrweiler,Bad Neuenahr-Ahrweilerben,1,"auto: -ban/-ben, hangrend"
-2953389,Bad Neustadt an der Saale,Bad Neustadt an der Saalében,1,"auto: -ban/-ben, hangrend"
-2953386,Bad Oeynhausen,Bad Oeynhausenben,1,"auto: -ban/-ben, hangrend"
-2953385,Bad Oldesloe,Bad Oldesloében,1,"auto: -ban/-ben, hangrend"
-2953379,Bad Pyrmont,Bad Pyrmontban,1,"auto: -ban/-ben, hangrend"
-2953374,Bad Rappenau,Bad Rappenauban,1,"auto: -ban/-ben, hangrend"
-2953371,Bad Reichenhall,Bad Reichenhallban,1,"auto: -ban/-ben, hangrend"
-2953358,Bad Salzuflen,Bad Salzuflenben,1,"auto: -ban/-ben, hangrend"
-2953357,Bad Salzungen,Bad Salzungenben,1,"auto: -ban/-ben, hangrend"
-2841125,Bad Saulgau,Bad Saulgauban,1,"auto: -ban/-ben, hangrend"
-2953341,Bad Segeberg,Bad Segebergben,1,"auto: -ban/-ben, hangrend"
-2953339,Bad Soden am Taunus,Bad Soden am Taunusban,1,"auto: -ban/-ben, hangrend"
-2953363,Bad Säckingen,Bad Säckingenben,1,"auto: -ban/-ben, hangrend"
-2953324,Bad Tölz,Bad Tölzben,1,"auto: -ban/-ben, hangrend"
-2953321,Bad Vilbel,Bad Vilbelben,1,"auto: -ban/-ben, hangrend"
-2953320,Bad Waldsee,Bad Waldseeben,1,"auto: -ban/-ben, hangrend"
-2953317,Bad Wildungen,Bad Wildungenben,1,"auto: -ban/-ben, hangrend"
-2953310,Bad Zwischenahn,Bad Zwischenahnban,1,"auto: -ban/-ben, hangrend"
-2953504,Baden-Baden,Baden-Badenben,1,"auto: -ban/-ben, hangrend"
-2953302,Baesweiler,Baesweilerben,1,"auto: -ban/-ben, hangrend"
-2953197,Baiersbronn,Baiersbronnban,1,"auto: -ban/-ben, hangrend"
-2953089,Balingen,Balingenben,1,"auto: -ban/-ben, hangrend"
-2952984,Bamberg,Bambergben,1,"auto: -ban/-ben, hangrend"
-2952252,Bassum,Bassumban,1,"auto: -ban/-ben, hangrend"
-2951923,Baunatal,Baunatalban,1,"auto: -ban/-ben, hangrend"
-2951881,Bautzen,Bautzenben,1,"auto: -ban/-ben, hangrend"
-2951825,Bayreuth,Bayreuthban,1,"auto: -ban/-ben, hangrend"
-2951654,Beckum,Beckumban,1,"auto: -ban/-ben, hangrend"
-2951648,Bedburg,Bedburgban,1,"auto: -ban/-ben, hangrend"
-2951111,Bendorf,Bendorfban,1,"auto: -ban/-ben, hangrend"
-2950978,Bensheim,Bensheimben,1,"auto: -ban/-ben, hangrend"
-2950438,Bergheim,Bergheimben,1,"auto: -ban/-ben, hangrend"
-2950349,Bergisch Gladbach,Bergisch Gladbachban,1,"auto: -ban/-ben, hangrend"
-2950159,Berlin,Berlinben,1,"auto: -ban/-ben, hangrend"
-2950096,Bernau bei Berlin,Bernau bei Berlinben,1,"auto: -ban/-ben, hangrend"
-2950073,Bernburg,Bernburgban,1,"auto: -ban/-ben, hangrend"
-2949423,Biberach an der Riß,Biberach an der Rißben,1,"auto: -ban/-ben, hangrend"
-2949235,Biebrich,Biebrichben,1,"auto: -ban/-ben, hangrend"
-2949186,Bielefeld,Bielefeldben,1,"auto: -ban/-ben, hangrend"
-2949012,Bietigheim-Bissingen,Bietigheim-Bissingenben,1,"auto: -ban/-ben, hangrend"
-2948825,Bingen am Rhein,Bingen am Rheinben,1,"auto: -ban/-ben, hangrend"
-2948164,Bitterfeld-Wolfen,Bitterfeld-Wolfenben,1,"auto: -ban/-ben, hangrend"
-2948071,Blankenburg,Blankenburgban,1,"auto: -ban/-ben, hangrend"
-13526830,Blankenfelde-Mahlow,Blankenfelde-Mahlow városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2947641,Blomberg,Blombergben,1,"auto: -ban/-ben, hangrend"
-2947449,Bobingen,Bobingenben,1,"auto: -ban/-ben, hangrend"
-2947421,Bocholt,Bocholtban,1,"auto: -ban/-ben, hangrend"
-2947416,Bochum,Bochumban,1,"auto: -ban/-ben, hangrend"
-2946447,Bonn,Bonnban,1,"auto: -ban/-ben, hangrend"
-2946366,Boppard,Boppardban,1,"auto: -ban/-ben, hangrend"
-2946228,Borken,Borkenben,1,"auto: -ban/-ben, hangrend"
-2946172,Borna,Bornában,1,"auto: -ban/-ben, hangrend"
-2945756,Bottrop,Bottropban,1,"auto: -ban/-ben, hangrend"
-2945591,Brackenheim,Brackenheimben,1,"auto: -ban/-ben, hangrend"
+2954172,Augsburg,Augsburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2954006,Aurich,Aurichban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953568,Backnang,Backnangban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953558,Bad Aibling,Bad Aiblingban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953552,Bad Bentheim,Bad Bentheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953525,Bad Driburg,Bad Driburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953522,Bad Dürkheim,Bad Dürkheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953464,Bad Essen,Bad Essenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953439,Bad Hersfeld,Bad Hersfeldben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953436,Bad Homburg vor der Höhe,Bad Homburg vor der Höhében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953435,Bad Honnef,Bad Honnefben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953424,Bad Kissingen,Bad Kissingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953416,Bad Kreuznach,Bad Kreuznachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2882091,Bad Laasphe,Bad Laasphében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953402,Bad Mergentheim,Bad Mergentheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953400,Bad Münder am Deister,Bad Münder am Deisterben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953395,Bad Nauheim,Bad Nauheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953391,Bad Neuenahr-Ahrweiler,Bad Neuenahr-Ahrweilerben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953389,Bad Neustadt an der Saale,Bad Neustadt an der Saalében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953386,Bad Oeynhausen,Bad Oeynhausenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953385,Bad Oldesloe,Bad Oldesloében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953379,Bad Pyrmont,Bad Pyrmontban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953374,Bad Rappenau,Bad Rappenauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953371,Bad Reichenhall,Bad Reichenhallban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953358,Bad Salzuflen,Bad Salzuflenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953357,Bad Salzungen,Bad Salzungenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2841125,Bad Saulgau,Bad Saulgauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953341,Bad Segeberg,Bad Segebergben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953339,Bad Soden am Taunus,Bad Soden am Taunusban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953363,Bad Säckingen,Bad Säckingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953324,Bad Tölz,Bad Tölzben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953321,Bad Vilbel,Bad Vilbelben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953320,Bad Waldsee,Bad Waldseeben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953317,Bad Wildungen,Bad Wildungenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953310,Bad Zwischenahn,Bad Zwischenahnban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953504,Baden-Baden,Baden-Badenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953302,Baesweiler,Baesweilerben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953197,Baiersbronn,Baiersbronnban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2953089,Balingen,Balingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2952984,Bamberg,Bambergben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2952252,Bassum,Bassumban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2951923,Baunatal,Baunatalban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2951881,Bautzen,Bautzenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2951825,Bayreuth,Bayreuthban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2951654,Beckum,Beckumban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2951648,Bedburg,Bedburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2951111,Bendorf,Bendorfban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2950978,Bensheim,Bensheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2950438,Bergheim,Bergheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2950349,Bergisch Gladbach,Bergisch Gladbachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2950159,Berlin,Berlinben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2950096,Bernau bei Berlin,Bernau bei Berlinben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2950073,Bernburg,Bernburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2949423,Biberach an der Riß,Biberach an der Rißben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2949235,Biebrich,Biebrichben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2949186,Bielefeld,Bielefeldben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2949012,Bietigheim-Bissingen,Bietigheim-Bissingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2948825,Bingen am Rhein,Bingen am Rheinben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2948164,Bitterfeld-Wolfen,Bitterfeld-Wolfenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2948071,Blankenburg,Blankenburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+13526830,Blankenfelde-Mahlow,Blankenfelde-Mahlowban,1,rev
+2947641,Blomberg,Blombergben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2947449,Bobingen,Bobingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2947421,Bocholt,Bocholtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2947416,Bochum,Bochumban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2946447,Bonn,Bonnban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2946366,Boppard,Boppardban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2946228,Borken,Borkenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2946172,Borna,Bornában,1,"auto: -ban/-ben, hangrend; rev: ok"
+2945756,Bottrop,Bottropban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2945591,Brackenheim,Brackenheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
 2945545,Brake (Unterweser),Brake (Unterweser) városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2945542,Brakel,Brakelben,1,"auto: -ban/-ben, hangrend"
-2945474,Bramsche,Bramschében,1,"auto: -ban/-ben, hangrend"
-2945358,Brandenburg an der Havel,Brandenburg an der Havelben,1,"auto: -ban/-ben, hangrend"
-2945024,Braunschweig,Braunschweigben,1,"auto: -ban/-ben, hangrend"
-2944388,Bremen,Bremenben,1,"auto: -ban/-ben, hangrend"
-2944368,Bremerhaven,Bremerhavenben,1,"auto: -ban/-ben, hangrend"
-2944354,Bremervörde,Bremervördében,1,"auto: -ban/-ben, hangrend"
-2944200,Bretten,Brettenben,1,"auto: -ban/-ben, hangrend"
-2944079,Brilon,Brilonban,1,"auto: -ban/-ben, hangrend"
-2943573,Bruchköbel,Bruchköbelben,1,"auto: -ban/-ben, hangrend"
-2943560,Bruchsal,Bruchsalban,1,"auto: -ban/-ben, hangrend"
-2943408,Bruckmühl,Bruckmühlben,1,"auto: -ban/-ben, hangrend"
-2943336,Brüggen,Brüggenben,1,"auto: -ban/-ben, hangrend"
-2943320,Brühl,Brühlben,1,"auto: -ban/-ben, hangrend"
+2945542,Brakel,Brakelben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2945474,Bramsche,Bramschében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2945358,Brandenburg an der Havel,Brandenburg an der Havelben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2945024,Braunschweig,Braunschweigben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2944388,Bremen,Bremenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2944368,Bremerhaven,Bremerhavenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2944354,Bremervörde,Bremervördében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2944200,Bretten,Brettenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2944079,Brilon,Brilonban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2943573,Bruchköbel,Bruchköbelben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2943560,Bruchsal,Bruchsalban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2943408,Bruckmühl,Bruckmühlben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2943336,Brüggen,Brüggenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2943320,Brühl,Brühlben,1,"auto: -ban/-ben, hangrend; rev: ok"
 2942634,Buchen (Odenwald),Buchen (Odenwald) városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2942323,Buchholz in der Nordheide,Buchholz in der Nordheidében,1,"auto: -ban/-ben, hangrend"
-2942056,Buer,Buerben,1,"auto: -ban/-ben, hangrend"
-2941501,Burg,Burgban,1,"auto: -ban/-ben, hangrend"
-2941405,Burgdorf,Burgdorfban,1,"auto: -ban/-ben, hangrend"
-2941279,Burghausen,Burghausenben,1,"auto: -ban/-ben, hangrend"
-11594317,Burglesum,Burglesumban,1,"auto: -ban/-ben, hangrend"
-2940512,Butzbach,Butzbachban,1,"auto: -ban/-ben, hangrend"
-2940451,Buxtehude,Buxtehudében,1,"auto: -ban/-ben, hangrend"
-2947444,Böblingen,Böblingenben,1,"auto: -ban/-ben, hangrend"
-2942159,Bückeburg,Bückeburgban,1,"auto: -ban/-ben, hangrend"
-2942073,Büdingen,Büdingenben,1,"auto: -ban/-ben, hangrend"
-2941976,Bühl,Bühlben,1,"auto: -ban/-ben, hangrend"
-2941694,Bünde,Bündében,1,"auto: -ban/-ben, hangrend"
-2941570,Büren,Bürenben,1,"auto: -ban/-ben, hangrend"
-2940383,Calw,Calwban,1,"auto: -ban/-ben, hangrend"
-2940231,Castrop-Rauxel,Castrop-Rauxelben,1,"auto: -ban/-ben, hangrend"
-2940213,Celle,Cellében,1,"auto: -ban/-ben, hangrend"
-2940204,Cham,Chamban,1,"auto: -ban/-ben, hangrend"
-2940132,Chemnitz,Chemnitzben,1,"auto: -ban/-ben, hangrend"
-2939995,Clausthal-Zellerfeld,Clausthal-Zellerfeldben,1,"auto: -ban/-ben, hangrend"
-2939969,Cloppenburg,Cloppenburgban,1,"auto: -ban/-ben, hangrend"
-2939951,Coburg,Coburgban,1,"auto: -ban/-ben, hangrend"
-2939945,Coesfeld,Coesfeldben,1,"auto: -ban/-ben, hangrend"
-2939820,Coswig,Coswigban,1,"auto: -ban/-ben, hangrend"
-2939811,Cottbus,Cottbusban,1,"auto: -ban/-ben, hangrend"
-2939797,Crailsheim,Crailsheimben,1,"auto: -ban/-ben, hangrend"
-2939658,Cuxhaven,Cuxhavenben,1,"auto: -ban/-ben, hangrend"
-2939623,Dachau,Dachauban,1,"auto: -ban/-ben, hangrend"
-2939167,Damme,Dammében,1,"auto: -ban/-ben, hangrend"
-2938913,Darmstadt,Darmstadtban,1,"auto: -ban/-ben, hangrend"
-2938540,Deggendorf,Deggendorfban,1,"auto: -ban/-ben, hangrend"
-2938323,Delmenhorst,Delmenhorstban,1,"auto: -ban/-ben, hangrend"
-2937959,Dessau-Roßlau,Dessau-Roßlauban,1,"auto: -ban/-ben, hangrend"
-2937936,Detmold,Detmoldban,1,"auto: -ban/-ben, hangrend"
-2937591,Dieburg,Dieburgban,1,"auto: -ban/-ben, hangrend"
-2937317,Diepholz,Diepholzban,1,"auto: -ban/-ben, hangrend"
-2937040,Dietzenbach,Dietzenbachban,1,"auto: -ban/-ben, hangrend"
-2936985,Dillenburg,Dillenburgban,1,"auto: -ban/-ben, hangrend"
-2936977,Dillingen,Dillingenben,1,"auto: -ban/-ben, hangrend"
-2936974,Dillingen an der Donau,Dillingen an der Donauban,1,"auto: -ban/-ben, hangrend"
-2936909,Dingolfing,Dingolfingban,1,"auto: -ban/-ben, hangrend"
-2936871,Dinslaken,Dinslakenben,1,"auto: -ban/-ben, hangrend"
-2936705,Ditzingen,Ditzingenben,1,"auto: -ban/-ben, hangrend"
-2936267,Donaueschingen,Donaueschingenben,1,"auto: -ban/-ben, hangrend"
-2936253,Donauwörth,Donauwörthben,1,"auto: -ban/-ben, hangrend"
-2935825,Dormagen,Dormagenben,1,"auto: -ban/-ben, hangrend"
-2935530,Dorsten,Dorstenben,1,"auto: -ban/-ben, hangrend"
-2935517,Dortmund,Dortmundban,1,"auto: -ban/-ben, hangrend"
-2935414,Dotzheim,Dotzheimben,1,"auto: -ban/-ben, hangrend"
-2935220,Dreieich,Dreieichben,1,"auto: -ban/-ben, hangrend"
-2935022,Dresden,Dresdenben,1,"auto: -ban/-ben, hangrend"
-2934728,Duderstadt,Duderstadtban,1,"auto: -ban/-ben, hangrend"
-2934691,Duisburg,Duisburgban,1,"auto: -ban/-ben, hangrend"
-2936658,Döbeln,Döbelnben,1,"auto: -ban/-ben, hangrend"
-2934662,Dülmen,Dülmenben,1,"auto: -ban/-ben, hangrend"
-2934486,Düren,Dürenben,1,"auto: -ban/-ben, hangrend"
-2934246,Düsseldorf,Düsseldorfban,1,"auto: -ban/-ben, hangrend"
-2934020,Eberbach,Eberbachban,1,"auto: -ban/-ben, hangrend"
-2933959,Ebersbach an der Fils,Ebersbach an der Filsben,1,"auto: -ban/-ben, hangrend"
-2933882,Eberswalde,Eberswaldében,1,"auto: -ban/-ben, hangrend"
-2933627,Eckernförde,Eckernfördében,1,"auto: -ban/-ben, hangrend"
-2933101,Eggenstein-Leopoldshafen,Eggenstein-Leopoldshafenben,1,"auto: -ban/-ben, hangrend"
+2942323,Buchholz in der Nordheide,Buchholz in der Nordheidében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2942056,Buer,Buerben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2941501,Burg,Burgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2941405,Burgdorf,Burgdorfban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2941279,Burghausen,Burghausenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+11594317,Burglesum,Burglesumban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2940512,Butzbach,Butzbachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2940451,Buxtehude,Buxtehudében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2947444,Böblingen,Böblingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2942159,Bückeburg,Bückeburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2942073,Büdingen,Büdingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2941976,Bühl,Bühlben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2941694,Bünde,Bündében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2941570,Büren,Bürenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2940383,Calw,Calwban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2940231,Castrop-Rauxel,Castrop-Rauxelben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2940213,Celle,Cellében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2940204,Cham,Chamban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2940132,Chemnitz,Chemnitzben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2939995,Clausthal-Zellerfeld,Clausthal-Zellerfeldben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2939969,Cloppenburg,Cloppenburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2939951,Coburg,Coburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2939945,Coesfeld,Coesfeldben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2939820,Coswig,Coswigban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2939811,Cottbus,Cottbusban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2939797,Crailsheim,Crailsheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2939658,Cuxhaven,Cuxhavenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2939623,Dachau,Dachauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2939167,Damme,Dammében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2938913,Darmstadt,Darmstadtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2938540,Deggendorf,Deggendorfban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2938323,Delmenhorst,Delmenhorstban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2937959,Dessau-Roßlau,Dessau-Roßlauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2937936,Detmold,Detmoldban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2937591,Dieburg,Dieburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2937317,Diepholz,Diepholzban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2937040,Dietzenbach,Dietzenbachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2936985,Dillenburg,Dillenburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2936977,Dillingen,Dillingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2936974,Dillingen an der Donau,Dillingen an der Donauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2936909,Dingolfing,Dingolfingban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2936871,Dinslaken,Dinslakenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2936705,Ditzingen,Ditzingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2936267,Donaueschingen,Donaueschingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2936253,Donauwörth,Donauwörthben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2935825,Dormagen,Dormagenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2935530,Dorsten,Dorstenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2935517,Dortmund,Dortmundban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2935414,Dotzheim,Dotzheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2935220,Dreieich,Dreieichben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2935022,Dresden,Dresdenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2934728,Duderstadt,Duderstadtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2934691,Duisburg,Duisburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2936658,Döbeln,Döbelnben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2934662,Dülmen,Dülmenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2934486,Düren,Dürenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2934246,Düsseldorf,Düsseldorfban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2934020,Eberbach,Eberbachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2933959,Ebersbach an der Fils,Ebersbach an der Filsben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2933882,Eberswalde,Eberswaldében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2933627,Eckernförde,Eckernfördében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2933101,Eggenstein-Leopoldshafen,Eggenstein-Leopoldshafenben,1,"auto: -ban/-ben, hangrend; rev: ok"
 2932924,Ehingen (Donau),Ehingen (Donau) városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2931804,Einbeck,Einbeckben,1,"auto: -ban/-ben, hangrend"
-2931574,Eisenach,Eisenachban,1,"auto: -ban/-ben, hangrend"
-2931414,Eislingen,Eislingenben,1,"auto: -ban/-ben, hangrend"
-2931361,Eitorf,Eitorfban,1,"auto: -ban/-ben, hangrend"
-2930889,Ellwangen,Ellwangenben,1,"auto: -ban/-ben, hangrend"
-2930826,Elmschenhagen,Elmschenhagenben,1,"auto: -ban/-ben, hangrend"
-2930821,Elmshorn,Elmshornban,1,"auto: -ban/-ben, hangrend"
-2930646,Eltville,Eltville városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2930596,Emden,Emdenben,1,"auto: -ban/-ben, hangrend"
-2930523,Emmendingen,Emmendingenben,1,"auto: -ban/-ben, hangrend"
-2930509,Emmerich,Emmerichben,1,"auto: -ban/-ben, hangrend"
-2930449,Emsdetten,Emsdettenben,1,"auto: -ban/-ben, hangrend"
-2929831,Eppingen,Eppingenben,1,"auto: -ban/-ben, hangrend"
-2929715,Erding,Erdingben,1,"auto: -ban/-ben, hangrend"
-2929671,Erftstadt,Erftstadtban,1,"auto: -ban/-ben, hangrend"
-2929670,Erfurt,Erfurtban,1,"auto: -ban/-ben, hangrend"
-2929622,Erkelenz,Erkelenzben,1,"auto: -ban/-ben, hangrend"
-2929600,Erkrath,Erkrathban,1,"auto: -ban/-ben, hangrend"
-2929567,Erlangen,Erlangenben,1,"auto: -ban/-ben, hangrend"
-2929134,Eschborn,Eschbornban,1,"auto: -ban/-ben, hangrend"
-2928967,Eschwege,Eschwegében,1,"auto: -ban/-ben, hangrend"
-2928963,Eschweiler,Eschweilerben,1,"auto: -ban/-ben, hangrend"
-11611400,Eselsberg,Eselsbergben,1,"auto: -ban/-ben, hangrend"
-2928810,Essen,Essenben,1,"auto: -ban/-ben, hangrend"
-2928751,Esslingen am Neckar,Esslingen am Neckarban,1,"auto: -ban/-ben, hangrend"
-2928615,Ettlingen,Ettlingenben,1,"auto: -ban/-ben, hangrend"
-2928396,Euskirchen,Euskirchenben,1,"auto: -ban/-ben, hangrend"
-2928381,Eutin,Eutinban,1,"auto: -ban/-ben, hangrend"
-2927930,Falkensee,Falkenseeben,1,"auto: -ban/-ben, hangrend"
-2927268,Fellbach,Fellbachban,1,"auto: -ban/-ben, hangrend"
-3336891,Filderstadt,Filderstadtban,1,"auto: -ban/-ben, hangrend"
-2926670,Finsterwalde,Finsterwaldében,1,"auto: -ban/-ben, hangrend"
-2926565,Fischeln,Fischelnben,1,"auto: -ban/-ben, hangrend"
-2926271,Flensburg,Flensburgban,1,"auto: -ban/-ben, hangrend"
-2926120,Flörsheim,Flörsheimben,1,"auto: -ban/-ben, hangrend"
-2925910,Forchheim,Forchheimben,1,"auto: -ban/-ben, hangrend"
+2931804,Einbeck,Einbeckben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2931574,Eisenach,Eisenachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2931414,Eislingen,Eislingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2931361,Eitorf,Eitorfban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2930889,Ellwangen,Ellwangenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2930826,Elmschenhagen,Elmschenhagenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2930821,Elmshorn,Elmshornban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2930646,Eltville,Eltvillében,1,rev
+2930596,Emden,Emdenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2930523,Emmendingen,Emmendingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2930509,Emmerich,Emmerichben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2930449,Emsdetten,Emsdettenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2929831,Eppingen,Eppingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2929715,Erding,Erdingben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2929671,Erftstadt,Erftstadtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2929670,Erfurt,Erfurtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2929622,Erkelenz,Erkelenzben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2929600,Erkrath,Erkrathban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2929567,Erlangen,Erlangenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2929134,Eschborn,Eschbornban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2928967,Eschwege,Eschwegében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2928963,Eschweiler,Eschweilerben,1,"auto: -ban/-ben, hangrend; rev: ok"
+11611400,Eselsberg,Eselsbergben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2928810,Essen,Essenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2928751,Esslingen am Neckar,Esslingen am Neckarban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2928615,Ettlingen,Ettlingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2928396,Euskirchen,Euskirchenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2928381,Eutin,Eutinban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2927930,Falkensee,Falkenseeben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2927268,Fellbach,Fellbachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+3336891,Filderstadt,Filderstadtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2926670,Finsterwalde,Finsterwaldében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2926565,Fischeln,Fischelnben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2926271,Flensburg,Flensburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2926120,Flörsheim,Flörsheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2925910,Forchheim,Forchheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
 2925629,Frankenberg (Eder),Frankenberg (Eder) városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2925550,Frankenthal,Frankenthalban,1,"auto: -ban/-ben, hangrend"
+2925550,Frankenthal,Frankenthalban,1,"auto: -ban/-ben, hangrend; rev: ok"
 2925535,Frankfurt (Oder),Frankfurt (Oder) városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2925533,Frankfurt am Main,Frankfurt am Mainban,1,hu: kézi
-2925259,Frechen,Frechenben,1,"auto: -ban/-ben, hangrend"
-2925192,Freiberg,Freibergben,1,"auto: -ban/-ben, hangrend"
-2925189,Freiberg am Neckar,Freiberg am Neckarban,1,"auto: -ban/-ben, hangrend"
-2925177,Freiburg im Breisgau,Freiburg im Breisgauban,1,"auto: -ban/-ben, hangrend"
-2925080,Freilassing,Freilassingban,1,"auto: -ban/-ben, hangrend"
-2925034,Freising,Freisingben,1,"auto: -ban/-ben, hangrend"
-2925017,Freital,Freitalban,1,"auto: -ban/-ben, hangrend"
-2924915,Freudenberg,Freudenbergben,1,"auto: -ban/-ben, hangrend"
-2924894,Freudenstadt,Freudenstadtban,1,"auto: -ban/-ben, hangrend"
-2924803,Friedberg,Friedbergben,1,"auto: -ban/-ben, hangrend"
+2925533,Frankfurt am Main,Frankfurt am Mainban,1,hu: kézi; rev: ok
+2925259,Frechen,Frechenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2925192,Freiberg,Freibergben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2925189,Freiberg am Neckar,Freiberg am Neckarban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2925177,Freiburg im Breisgau,Freiburg im Breisgauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2925080,Freilassing,Freilassingban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2925034,Freising,Freisingben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2925017,Freital,Freitalban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2924915,Freudenberg,Freudenbergben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2924894,Freudenstadt,Freudenstadtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2924803,Friedberg,Friedbergben,1,"auto: -ban/-ben, hangrend; rev: ok"
 2924802,Friedberg (Hessen),Friedberg (Hessen) városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2924625,Friedrichsdorf,Friedrichsdorfban,1,"auto: -ban/-ben, hangrend"
-2924585,Friedrichshafen,Friedrichshafenben,1,"auto: -ban/-ben, hangrend"
-2924360,Friesoythe,Friesoythében,1,"auto: -ban/-ben, hangrend"
-2924206,Fröndenberg,Fröndenbergben,1,"auto: -ban/-ben, hangrend"
-2923822,Fulda,Fuldában,1,"auto: -ban/-ben, hangrend"
-2923625,Fürstenfeldbruck,Fürstenfeldbruckban,1,"auto: -ban/-ben, hangrend"
-2923588,Fürstenwalde,Fürstenwaldében,1,"auto: -ban/-ben, hangrend"
-2923544,Fürth,Fürthben,1,"auto: -ban/-ben, hangrend"
-2923507,Füssen,Füssenben,1,"auto: -ban/-ben, hangrend"
-2923362,Gaggenau,Gaggenauban,1,"auto: -ban/-ben, hangrend"
-2922586,Garbsen,Garbsenben,1,"auto: -ban/-ben, hangrend"
-2922582,Garching bei München,Garching bei Münchenben,1,"auto: -ban/-ben, hangrend"
-2922530,Garmisch-Partenkirchen,Garmisch-Partenkirchenben,1,"auto: -ban/-ben, hangrend"
-2922230,Gauting,Gautingban,1,"auto: -ban/-ben, hangrend"
-2922102,Geesthacht,Geesthachtban,1,"auto: -ban/-ben, hangrend"
-2921837,Geilenkirchen,Geilenkirchenben,1,"auto: -ban/-ben, hangrend"
-2921653,Geislingen an der Steige,Geislingen an der Steigében,1,"auto: -ban/-ben, hangrend"
-2921528,Geldern,Geldernben,1,"auto: -ban/-ben, hangrend"
-2921473,Gelnhausen,Gelnhausenben,1,"auto: -ban/-ben, hangrend"
-2921466,Gelsenkirchen,Gelsenkirchenben,1,"auto: -ban/-ben, hangrend"
-2921242,Georgsmarienhütte,Georgsmarienhüttében,1,"auto: -ban/-ben, hangrend"
-2921232,Gera,Gerában,1,"auto: -ban/-ben, hangrend"
-2921139,Geretsried,Geretsriedben,1,"auto: -ban/-ben, hangrend"
-2921061,Gerlingen,Gerlingenben,1,"auto: -ban/-ben, hangrend"
-2921039,Germering,Germeringben,1,"auto: -ban/-ben, hangrend"
-2921034,Germersheim,Germersheimben,1,"auto: -ban/-ben, hangrend"
-2920891,Gersthofen,Gersthofenben,1,"auto: -ban/-ben, hangrend"
-2920842,Gescher,Gescherben,1,"auto: -ban/-ben, hangrend"
-2920620,Giengen an der Brenz,Giengen an der Brenzben,1,"auto: -ban/-ben, hangrend"
-2920512,Gießen,Gießenben,1,"auto: -ban/-ben, hangrend"
-2920478,Gifhorn,Gifhornban,1,"auto: -ban/-ben, hangrend"
-2920433,Gilching,Gilchingben,1,"auto: -ban/-ben, hangrend"
-2920329,Ginsheim-Gustavsburg,Ginsheim-Gustavsburgban,1,"auto: -ban/-ben, hangrend"
-2920236,Gladbeck,Gladbeckben,1,"auto: -ban/-ben, hangrend"
-2920020,Glauchau,Glauchauban,1,"auto: -ban/-ben, hangrend"
-2919880,Glinde,Glindében,1,"auto: -ban/-ben, hangrend"
-2919625,Goch,Gochban,1,"auto: -ban/-ben, hangrend"
-2919095,Gonsenheim,Gonsenheimben,1,"auto: -ban/-ben, hangrend"
-2918840,Goslar,Goslarban,1,"auto: -ban/-ben, hangrend"
-2918752,Gotha,Gothában,1,"auto: -ban/-ben, hangrend"
-2917788,Greifswald,Greifswaldban,1,"auto: -ban/-ben, hangrend"
-2917544,Greven,Grevenben,1,"auto: -ban/-ben, hangrend"
-2917540,Grevenbroich,Grevenbroichban,1,"auto: -ban/-ben, hangrend"
-2917325,Grimma,Grimmában,1,"auto: -ban/-ben, hangrend"
+2924625,Friedrichsdorf,Friedrichsdorfban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2924585,Friedrichshafen,Friedrichshafenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2924360,Friesoythe,Friesoythében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2924206,Fröndenberg,Fröndenbergben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2923822,Fulda,Fuldában,1,"auto: -ban/-ben, hangrend; rev: ok"
+2923625,Fürstenfeldbruck,Fürstenfeldbruckban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2923588,Fürstenwalde,Fürstenwaldében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2923544,Fürth,Fürthben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2923507,Füssen,Füssenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2923362,Gaggenau,Gaggenauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2922586,Garbsen,Garbsenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2922582,Garching bei München,Garching bei Münchenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2922530,Garmisch-Partenkirchen,Garmisch-Partenkirchenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2922230,Gauting,Gautingban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2922102,Geesthacht,Geesthachtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2921837,Geilenkirchen,Geilenkirchenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2921653,Geislingen an der Steige,Geislingen an der Steigében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2921528,Geldern,Geldernben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2921473,Gelnhausen,Gelnhausenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2921466,Gelsenkirchen,Gelsenkirchenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2921242,Georgsmarienhütte,Georgsmarienhüttében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2921232,Gera,Gerában,1,"auto: -ban/-ben, hangrend; rev: ok"
+2921139,Geretsried,Geretsriedben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2921061,Gerlingen,Gerlingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2921039,Germering,Germeringben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2921034,Germersheim,Germersheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2920891,Gersthofen,Gersthofenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2920842,Gescher,Gescherben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2920620,Giengen an der Brenz,Giengen an der Brenzben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2920512,Gießen,Gießenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2920478,Gifhorn,Gifhornban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2920433,Gilching,Gilchingben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2920329,Ginsheim-Gustavsburg,Ginsheim-Gustavsburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2920236,Gladbeck,Gladbeckben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2920020,Glauchau,Glauchauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2919880,Glinde,Glindében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2919625,Goch,Gochban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2919095,Gonsenheim,Gonsenheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2918840,Goslar,Goslarban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2918752,Gotha,Gothában,1,"auto: -ban/-ben, hangrend; rev: ok"
+2917788,Greifswald,Greifswaldban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2917544,Greven,Grevenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2917540,Grevenbroich,Grevenbroichban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2917325,Grimma,Grimmában,1,"auto: -ban/-ben, hangrend; rev: ok"
 2917138,Gronau (Westf.),Gronau (Westf.) városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2915613,Groß-Gerau,Groß-Gerauban,1,"auto: -ban/-ben, hangrend"
-2914929,Groß-Umstadt,Groß-Umstadtban,1,"auto: -ban/-ben, hangrend"
-2916630,Großenhain,Großenhainban,1,"auto: -ban/-ben, hangrend"
-2915196,Großostheim,Großostheimben,1,"auto: -ban/-ben, hangrend"
-2917221,Gröbenzell,Gröbenzellben,1,"auto: -ban/-ben, hangrend"
-2913761,Gummersbach,Gummersbachban,1,"auto: -ban/-ben, hangrend"
-2913537,Gunzenhausen,Gunzenhausenben,1,"auto: -ban/-ben, hangrend"
-2919054,Göppingen,Göppingenben,1,"auto: -ban/-ben, hangrend"
-2918987,Görlitz,Görlitzben,1,"auto: -ban/-ben, hangrend"
-2918632,Göttingen,Göttingenben,1,"auto: -ban/-ben, hangrend"
-2913555,Günzburg,Günzburgban,1,"auto: -ban/-ben, hangrend"
-2913433,Güstrow,Güstrow városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2913366,Gütersloh,Güterslohban,1,"auto: -ban/-ben, hangrend"
-2913195,Haan,Haanban,1,"auto: -ban/-ben, hangrend"
-2913192,Haar,Haarban,1,"auto: -ban/-ben, hangrend"
-2912621,Hagen,Hagenben,1,"auto: -ban/-ben, hangrend"
-2911964,Haiger,Haigerben,1,"auto: -ban/-ben, hangrend"
-2911665,Halberstadt,Halberstadtban,1,"auto: -ban/-ben, hangrend"
-2911584,Haldensleben,Haldenslebenben,1,"auto: -ban/-ben, hangrend"
+2915613,Groß-Gerau,Groß-Gerauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2914929,Groß-Umstadt,Groß-Umstadtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2916630,Großenhain,Großenhainban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2915196,Großostheim,Großostheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2917221,Gröbenzell,Gröbenzellben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2913761,Gummersbach,Gummersbachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2913537,Gunzenhausen,Gunzenhausenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2919054,Göppingen,Göppingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2918987,Görlitz,Görlitzben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2918632,Göttingen,Göttingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2913555,Günzburg,Günzburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2913433,Güstrow,Güstrowban,1,rev
+2913366,Gütersloh,Güterslohban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2913195,Haan,Haanban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2913192,Haar,Haarban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2912621,Hagen,Hagenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2911964,Haiger,Haigerben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2911665,Halberstadt,Halberstadtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2911584,Haldensleben,Haldenslebenben,1,"auto: -ban/-ben, hangrend; rev: ok"
 2911522,Halle (Saale),Halle (Saale) városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
 2911520,Halle (Westf.),Halle (Westf.) városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-7289614,Halle-Neustadt,Halle-Neustadtban,1,"auto: -ban/-ben, hangrend"
-2911408,Halstenbek,Halstenbekben,1,"auto: -ban/-ben, hangrend"
-2911395,Haltern am See,Haltern am Seeben,1,"auto: -ban/-ben, hangrend"
-2911384,Halver,Halverben,1,"auto: -ban/-ben, hangrend"
-2911298,Hamburg,Hamburgban,1,"auto: -ban/-ben, hangrend"
-2911271,Hameln,Hamelnben,1,"auto: -ban/-ben, hangrend"
-2911240,Hamm,Hammban,1,"auto: -ban/-ben, hangrend"
-2911051,Hamminkeln,Hamminkelnben,1,"auto: -ban/-ben, hangrend"
-2911007,Hanau,Hanauban,1,"auto: -ban/-ben, hangrend"
-2867613,Hann. Münden,Hann. Mündenben,1,"auto: -ban/-ben, hangrend"
-2910831,Hannover,Hannoverben,1,"auto: -ban/-ben, hangrend"
-2910514,Haren,Harenben,1,"auto: -ban/-ben, hangrend"
-2910278,Harsewinkel,Harsewinkelben,1,"auto: -ban/-ben, hangrend"
-2909240,Hattersheim,Hattersheimben,1,"auto: -ban/-ben, hangrend"
-2909230,Hattingen,Hattingenben,1,"auto: -ban/-ben, hangrend"
-2909313,Haßloch,Haßlochban,1,"auto: -ban/-ben, hangrend"
-2908495,Hechingen,Hechingenben,1,"auto: -ban/-ben, hangrend"
-2908032,Heide,Heidében,1,"auto: -ban/-ben, hangrend"
-2907911,Heidelberg,Heidelbergben,1,"auto: -ban/-ben, hangrend"
-2907887,Heidenau,Heidenauban,1,"auto: -ban/-ben, hangrend"
-2907851,Heidenheim an der Brenz,Heidenheim an der Brenzben,1,"auto: -ban/-ben, hangrend"
-2907545,Heilbad Heiligenstadt,Heilbad Heiligenstadtban,1,"auto: -ban/-ben, hangrend"
-2907669,Heilbronn,Heilbronnban,1,"auto: -ban/-ben, hangrend"
-2907585,Heiligenhaus,Heiligenhausban,1,"auto: -ban/-ben, hangrend"
-2907201,Heinsberg,Heinsbergben,1,"auto: -ban/-ben, hangrend"
-2906676,Helmstedt,Helmstedtben,1,"auto: -ban/-ben, hangrend"
-2906530,Hemmingen,Hemmingenben,1,"auto: -ban/-ben, hangrend"
+7289614,Halle-Neustadt,Halle-Neustadtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2911408,Halstenbek,Halstenbekben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2911395,Haltern am See,Haltern am Seeben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2911384,Halver,Halverben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2911298,Hamburg,Hamburgban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2911271,Hameln,Hamelnben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2911240,Hamm,Hammban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2911051,Hamminkeln,Hamminkelnben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2911007,Hanau,Hanauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2867613,Hann. Münden,Hann. Mündenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2910831,Hannover,Hannoverben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2910514,Haren,Harenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2910278,Harsewinkel,Harsewinkelben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2909240,Hattersheim,Hattersheimben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2909230,Hattingen,Hattingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2909313,Haßloch,Haßlochban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2908495,Hechingen,Hechingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2908032,Heide,Heidében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2907911,Heidelberg,Heidelbergben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2907887,Heidenau,Heidenauban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2907851,Heidenheim an der Brenz,Heidenheim an der Brenzben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2907545,Heilbad Heiligenstadt,Heilbad Heiligenstadtban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2907669,Heilbronn,Heilbronnban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2907585,Heiligenhaus,Heiligenhausban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2907201,Heinsberg,Heinsbergben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2906676,Helmstedt,Helmstedtben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2906530,Hemmingen,Hemmingenben,1,"auto: -ban/-ben, hangrend; rev: ok"
 2906376,Hennef (Sieg),Hennef (Sieg) városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2906331,Hennigsdorf,Hennigsdorfban,1,"auto: -ban/-ben, hangrend"
+2906331,Hennigsdorf,Hennigsdorfban,1,"auto: -ban/-ben, hangrend; rev: ok"
 2906268,Heppenheim (Bergstraße),Heppenheim (Bergstraße) városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
-2906199,Herborn,Herbornban,1,"auto: -ban/-ben, hangrend"
-2906152,Herdecke,Herdeckében,1,"auto: -ban/-ben, hangrend"
-2906121,Herford,Herfordban,1,"auto: -ban/-ben, hangrend"
-2905891,Herne,Hernében,1,"auto: -ban/-ben, hangrend"
-2905826,Herrenberg,Herrenbergben,1,"auto: -ban/-ben, hangrend"
-2905560,Herten,Hertenben,1,"auto: -ban/-ben, hangrend"
-2905457,Herzogenaurach,Herzogenaurachban,1,"auto: -ban/-ben, hangrend"
-2905455,Herzogenrath,Herzogenrathban,1,"auto: -ban/-ben, hangrend"
-2904992,Heusenstamm,Heusenstammban,1,"auto: -ban/-ben, hangrend"
-2904808,Hilchenbach,Hilchenbachban,1,"auto: -ban/-ben, hangrend"
-2904795,Hilden,Hildenben,1,"auto: -ban/-ben, hangrend"
+2906199,Herborn,Herbornban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2906152,Herdecke,Herdeckében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2906121,Herford,Herfordban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2905891,Herne,Hernében,1,"auto: -ban/-ben, hangrend; rev: ok"
+2905826,Herrenberg,Herrenbergben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2905560,Herten,Hertenben,1,"auto: -ban/-ben, hangrend; rev: ok"
+2905457,Herzogenaurach,Herzogenaurachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2905455,Herzogenrath,Herzogenrathban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2904992,Heusenstamm,Heusenstammban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2904808,Hilchenbach,Hilchenbachban,1,"auto: -ban/-ben, hangrend; rev: ok"
+2904795,Hilden,Hildenben,1,"auto: -ban/-ben, hangrend; rev: ok"
 2904789,Hildesheim,Hildesheimben,1,"auto: -ban/-ben, hangrend"
 2903175,Hochheim am Main,Hochheim am Mainban,1,"auto: -ban/-ben, hangrend"
 2902852,Hockenheim,Hockenheimben,1,"auto: -ban/-ben, hangrend"
