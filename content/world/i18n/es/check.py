@@ -62,7 +62,7 @@ for f in ('map', 'pages', 'shell', 'prices'):
             errs.append(f'{p.name}: extra key {k}')
 
 # 2. texts.json — same structure as EN parts
-SRC = {'about_data': 'about_data.json', 'download': 'download.json', 'sources_pages': 'sources_pages.json'}
+SRC = {'about_data': 'about_data.json', 'download': 'download.json'}  # sources_pages is shared across languages (pool 3 rule 23:55)
 texts = json.load(open(HERE / 'texts.json', encoding='utf-8'))
 
 

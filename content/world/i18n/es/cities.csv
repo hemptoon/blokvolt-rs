@@ -577,7 +577,7 @@ geonameid,name,in_phrase,decl_ok,note
 2745641,Venlo,en Venlo,1,
 2754669,Heerenveen,en Heerenveen,1,
 2990363,Nîmes,en Nîmes,1,
-2918632,Göttingen,en Göttingen,1,
+2918632,Gotinga,en Gotinga,1,традиционный экзоним
 2745580,Vianen,en Vianen,1,
 2759899,Alkmaar,en Alkmaar,1,
 3032833,Béziers,en Béziers,1,
@@ -623,7 +623,7 @@ geonameid,name,in_phrase,decl_ok,note
 2799365,Dilbeek,en Dilbeek,1,
 2874545,Magdeburgo,en Magdeburgo,1,экзоним
 2950349,Bergisch Gladbach,en Bergisch Gladbach,1,
-588409,Tallinn,en Tallinn,1,
+588409,Tallin,en Tallin,1,экзоним Fundéu
 2744118,Zaandam,en Zaandam,1,
 2744324,Wisch,en Wisch,1,
 2744549,Wierden,en Wierden,1,
@@ -803,7 +803,7 @@ geonameid,name,in_phrase,decl_ok,note
 2885734,Königswinter,en Königswinter,1,
 2927268,Fellbach,en Fellbach,1,
 650224,Kuopio,en Kuopio,1,
-3034475,Bayonne,en Bayonne,1,
+3034475,Bayona,en Bayona,1,испанский экзоним
 3034483,Bayeux,en Bayeux,1,
 2749756,Nunspeet,en Nunspeet,1,
 2814270,Wangen im Allgäu,en Wangen im Allgäu,1,
@@ -848,7 +848,7 @@ geonameid,name,in_phrase,decl_ok,note
 3003603,Le Mans,en Le Mans,1,
 2743997,Zeewolde,en Zeewolde,1,
 2744344,Winschoten,en Winschoten,1,
-2820860,Tübingen,en Tübingen,1,
+2820860,Tubinga,en Tubinga,1,традиционный экзоним
 2853572,Pirna,en Pirna,1,
 2913537,Gunzenhausen,en Gunzenhausen,1,
 3007609,Lannion,en Lannion,1,
@@ -1197,7 +1197,7 @@ geonameid,name,in_phrase,decl_ok,note
 2711537,Gotemburgo,en Gotemburgo,1,экзоним
 2862118,Norden,en Norden,1,
 2923588,Fürstenwalde,en Fürstenwalde,1,
-2925535,Frankfurt (Oder),en Frankfurt (Oder),1,
+2925535,Fráncfort del Óder,en Fráncfort del Óder,1,экзоним Fundéu
 2925550,Frankenthal,en Frankenthal,1,
 2933882,Eberswalde,en Eberswalde,1,
 2972811,Thionville,en Thionville,1,
@@ -1414,7 +1414,7 @@ geonameid,name,in_phrase,decl_ok,note
 2739723,Santa Maria da Feira,en Santa Maria da Feira,1,
 728193,Plovdiv,en Plovdiv,1,латиница из name_en
 2658606,Sierre,en Sierre,1,
-3068160,Plzeň,en Plzeň,1,
+3068160,Pilsen,en Pilsen,1,принятая испанская форма
 2841463,Sankt Wendel,en Sankt Wendel,1,
 2849548,Rees,en Rees,1,
 2871486,Metzingen,en Metzingen,1,
@@ -4646,7 +4646,7 @@ geonameid,name,in_phrase,decl_ok,note
 658120,Hervanta,en Hervanta,1,
 2967856,Vitry-le-François,en Vitry-le-François,1,
 2972237,Tournefeuille,en Tournefeuille,1,
-2989317,Orléans,en Orléans,1,
+2989317,Orleans,en Orleans,1,экзоним RAE/Fundéu
 2997620,Loos,en Loos,1,
 2998324,Lille,en Lille,1,
 3008379,La Madeleine,en La Madeleine,1,
