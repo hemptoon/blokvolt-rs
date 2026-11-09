@@ -161,6 +161,8 @@ function pFilter() {
   return f.length > 1 ? f : true;
 }
 const zr = (a, b, c, e) => ['interpolate', ['linear'], ['zoom'], 3, a, 7, b, 12, c, 16, e];
+// zoom must be the outer expression: the 150 kW+ points get larger values at every stop
+const zrb = (big, x, y) => ['interpolate', ['linear'], ['zoom'], ...[3, 7, 12, 16].flatMap((z, k) => [z, ['case', big, x[k], y[k]]])];
 // colours: the same language as /mapa/ — DC dark with the lime ring, AC white with the dark ring; 150 kW+ is a larger
 // dark point with a thicker lime ring; unknown power is grey (dark grey when it is known to be DC)
 const P_COLOR = ['match', ['get', 'p'], [3, 4, 5], '#0D111A', 7, '#5C6270', 0, '#E3E5E9', '#FFFFFF'];
@@ -173,10 +175,10 @@ function addLayers() {
     id: LYR, type: 'circle', source: SRC, 'source-layer': 'sites', filter: pFilter(),
     layout: { 'circle-sort-key': ['match', ['get', 'p'], 5, 4, [3, 4], 3, [1, 2], 2, 7, 1, 0] },
     paint: {
-      'circle-radius': ['case', big, zr(2.6, 4.2, 9, 12.5), zr(1.8, 3.2, 7.5, 11)],
+      'circle-radius': zrb(big, [2.6, 4.2, 9, 12.5], [1.8, 3.2, 7.5, 11]),
       'circle-color': P_COLOR,
       'circle-stroke-color': P_STROKE,
-      'circle-stroke-width': ['case', big, zr(1, 1.6, 3, 3.2), zr(0.7, 1.1, 2, 2.4)],
+      'circle-stroke-width': zrb(big, [1, 1.6, 3, 3.2], [0.7, 1.1, 2, 2.4]),
       // restricted places (only with "Prikaži i ostale") are drawn faded
       'circle-opacity': ['case', ['==', ['get', 'a'], 1], 0.45, 1],
       'circle-stroke-opacity': ['case', ['==', ['get', 'a'], 1], 0.55, 1]
@@ -224,6 +226,7 @@ function initMap() {
   map.on('error', e => {
     // a missing or unreachable tile file: say it once on the map (MapLibre logs the details itself only in dev)
     if (e && e.sourceId === SRC) msg(t('data_err'));
+    else if (e && e.error) console.warn('map:', e.error.message || e.error);
   });
 }
 // a tap looks at a small box around the finger: one place opens its card, several zoom in (as on /mapa/)
@@ -588,6 +591,8 @@ function openFromUrl() {
 readUrl();
 paintFilters();
 initMap();
+// for debugging and scripts/qa/world_map_test.py (read only by tests; nothing on the page depends on it)
+window.BVWorldMap = { get map() { return map; }, get ready() { return ready; }, get manifest() { return M; }, state: st, openCard };
 loadManifest().then(() => {
   NETS.forEach(n => NETS_BY_O.set(n.i, n.slug));
   attribution();
