@@ -111,3 +111,18 @@
  .wm-attr.is-min{background:none;box-shadow:none;padding:0}
  .wm-attr.is-min .wm-attr-full{display:none}
 }
+/* G6: drivers' check-ins */
+.wm-ci{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+.wm-ci h3{font-size:14px;font-weight:650;margin:0 0 4px}
+.wm-cis{font-size:13px;color:var(--mut);margin:0 0 6px;min-height:1em}
+.wm-cis:empty{display:none}
+.wm-ci .wm-acts{margin-top:6px}
+.wm-ci button[aria-pressed="true"]{outline:2px solid var(--volt,#c6f432);outline-offset:1px}
+.wm-ci form{position:relative}
+.wm-prow{display:inline-block;vertical-align:top;margin-right:8px}
+.wm-prow .input{font:inherit;font-size:15px;box-sizing:border-box;min-height:40px}
+.wm-prow input.input{width:7.5em}
+.wm-rules{margin-top:8px;font-size:12.5px;color:var(--mut)}
+.wm-rules summary{cursor:pointer;font-weight:600}
+.wm-rules p{margin:6px 0 0}
+@media (pointer:coarse){.wm-ci .btn{min-height:44px}.wm-prow .input{min-height:44px}}

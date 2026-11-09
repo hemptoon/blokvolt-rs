@@ -54,6 +54,10 @@ label.lbl{color:var(--mut);font-size:14px}
 <h2>Automatske odluke (14 dana)</h2>
 <p class="meta">Proverite nasumično ~5 sakrivenih mesta nedeljno. „Poništi“ vraća mesto na mapu pri sledećoj izradi podataka.</p>
 <div id="auto"></div>
+<h2>Cene vozača (provere)</h2>
+<p class="meta">Cene koje su vozači uneli u kartici („Koliko ste platili“), a nedeljna skripta world_checkins.py ih je našla daleko od cenovnika mreže (0,6–1,6 × je u redu, ispod 0,25 × i iznad 4 × se skriva samo). Prihvati = cena može da uđe u kandidate za indeks; Odbij = ne računa se. Sakrij = cela provera nestaje iz kartice.</p>
+<div class="bar"><button id="loadC" type="button">Učitaj cene vozača</button></div>
+<div id="ci"></div>
 <h2>Brojke</h2>
 <div class="bar"><select id="sdays"><option value="7" selected>7 dana</option><option value="30">30 dana</option></select><button id="loadS" type="button">Učitaj brojke</button></div>
 <div id="stats"></div>
@@ -234,6 +238,40 @@ label.lbl{color:var(--mut);font-size:14px}
           ['Prijava', function (r) { return +r.n || 0; }], ['Kada', function (r) { return when(r.decided_at); }]]);
     }).catch(function () { $('msg').textContent = 'Mreža nije dostupna.'; });
   }
+  // G6: drivers' prices far from the list price, and the last automatic hides (/api/admin/svet/stanje)
+  function postCi(body) {
+    return fetch('/api/admin/svet/stanje', { method: 'POST', headers: hdr(), body: JSON.stringify(body) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) { if (!j.ok) $('msg').textContent = 'Greška: ' + (j.error || '?'); return j; })
+      .catch(function () { $('msg').textContent = 'Mreža nije dostupna.'; return { ok: false }; });
+  }
+  function ciItem(r, auto) {
+    var d = document.createElement('div'); d.className = 'card';
+    d.innerHTML = '<div class="meta">#' + esc(r.id) + ' · pid <b>' + esc(r.pid) + '</b>' + (r.cc ? ' · ' + esc(r.cc) : '') + (r.net ? ' · ' + esc(r.net) : '') +
+        (r.cls ? ' · ' + esc(r.cls.toUpperCase()) : '') + ' · ' + esc(when(auto ? r.decided_at : r.created_at)) + ' · ' + mapLink(r.pid) + '</div>' +
+      '<div><span class="tag">' + esc(r.amt) + ' ' + esc(r.cur) + ' / ' + esc(r.unit) + '</span><span class="tag">' + esc(r.ym) + '</span>' +
+        '<span class="tag">' + esc(r.rule || r.price_status) + '</span></div>' +
+      '<div class="bar" style="margin-top:8px">' + (auto ? '<button class="ok" type="button">Ipak prihvati</button>' :
+        '<button class="ok" type="button">Prihvati</button><button class="no" type="button">Odbij</button>') +
+        '<button class="hide" type="button">Sakrij proveru</button></div>';
+    d.querySelector('.ok').onclick = function () { postCi({ id: r.id, a: 'accept' }).then(function (j) { if (j.ok) done(d); }); };
+    var no = d.querySelector('.no');
+    if (no) no.onclick = function () { postCi({ id: r.id, a: 'reject' }).then(function (j) { if (j.ok) done(d); }); };
+    d.querySelector('.hide').onclick = function () { postCi({ id: r.id, a: 'hide' }).then(function (j) { if (j.ok) done(d); }); };
+    return d;
+  }
+  function loadCi() {
+    keep();
+    fetch('/api/admin/svet/stanje?view=queue', { headers: hdr() }).then(function (r) { return r.json(); }).then(function (j) {
+      if (!j.ok) { $('msg').textContent = 'Nije uspelo (' + (j.error || '') + '). Proverite ključ.'; return; }
+      var c = $('ci');
+      c.innerHTML = '<p class="meta">Provera za 7 dana: ' + esc(j.week || 0) + ' · cena za pregled: ' + (j.off || []).length + '</p>';
+      (j.off || []).forEach(function (r) { c.appendChild(ciItem(r, false)); });
+      if ((j.auto || []).length) { var h = document.createElement('h3'); h.textContent = 'Automatski sakrivene cene (14 dana)'; c.appendChild(h); }
+      (j.auto || []).forEach(function (r) { c.appendChild(ciItem(r, true)); });
+    }).catch(function () { $('msg').textContent = 'Mreža nije dostupna.'; });
+  }
+  $('loadC').onclick = loadCi;
   $('loadS').onclick = loadStats;
   $('load').onclick = load;
   $('key').addEventListener('keydown', function (e) { if (e.key === 'Enter') load(); });

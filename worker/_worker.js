@@ -2341,6 +2341,7 @@ async function api(request, env, ctx) {
   if (p.startsWith('/api/nalog/') || p.startsWith('/api/posta/') || p === '/api/admin/posta') return accountApi(request, env, ctx, url, p, m);
   if (p.startsWith('/api/outbox/')) return outboxApi(request, env, p, m);   // GitHub Actions with an OIDC token (RUNBOOK 3.39)
   if (p === '/api/svet/prijava' || p === '/api/admin/svet') return svetApi(request, env, p, m, url);   // world map reports (K6)
+  if (p === '/api/svet/stanje' || p === '/api/admin/svet/stanje') return stanjeApi(request, env, p, m, url);   // world map check-ins (G6)
 
   if (m === 'GET' && p === '/api/stanice') {
     const cache = caches.default;
@@ -2705,3 +2706,190 @@ async function svetApi(request, env, p, m, url) {
   return bad('not found', 404);
 }
 if (globalThis.SVET_TEST) Object.assign(globalThis.SVET_TEST, { parse: svParse, majority: svMajority });
+
+// ================================================================ world map: drivers' check-ins (G6)
+// „Radi / Ne radi / Zauzeto“ and „Koliko si platio“ in the card of the world map of blokvolt.com. A place is its public
+// id `pid`, as in world_reports (K6). No account, no CAPTCHA, no blocking (RUNBOOK 3.28): a hidden field, 20 check-ins a
+// day per fingerprint (HMAC of the IP bucket with the day key) and one per place and fingerprint a day; a second one the
+// same day is answered „ok“ and not stored. The fingerprint changes every day, so it cannot follow a driver.
+// The price a driver paid is stored as given (amount, unit, currency, month). The weekly script scripts/world_checkins.py
+// compares it with the published tariff of the network (G3, content/world/tariffs.json), hides the impossible ones and
+// turns two independent matching prices into a candidate for the index; nothing here changes a price on the site.
+// GET /api/svet/stanje?pid= gives the card „confirmed N days ago“. Balkan places (pid ≥ 900 000 000) stay with /mapa/.
+const SC_STATES = new Set(['radi', 'ne_radi', 'zauzeto']);
+const SC_UNITS = new Set(['kwh', 'min', 'session']);
+const SC_CLS = new Set(['ac', 'dc', 'hpc']);
+const SC_PRICE = new Set(['new', 'match', 'off', 'no_ref', 'auto_hidden', 'accepted', 'rejected']);
+const SC_DAY = 20, SC_SHOW_S = 90 * 86400, SC_D30 = 30 * 86400, SC_AMT_MAX = 100000;
+const SC_TABLE = [
+  `CREATE TABLE IF NOT EXISTS world_checkins (id INTEGER PRIMARY KEY AUTOINCREMENT, pid INTEGER NOT NULL, s TEXT,
+    cls TEXT, amt REAL, unit TEXT, cur TEXT, ym TEXT, net TEXT, cc TEXT, g TEXT, lang TEXT NOT NULL, ip_hash TEXT NOT NULL,
+    created_at INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'ok', price_status TEXT, decided_at INTEGER, decided_by TEXT,
+    rule TEXT)`,
+  'CREATE INDEX IF NOT EXISTS world_checkins_pid ON world_checkins (pid, created_at)',
+  'CREATE INDEX IF NOT EXISTS world_checkins_price ON world_checkins (price_status, created_at)',
+];
+let SC_READY = false;
+async function scEnsure(env) {
+  if (SC_READY) return;
+  await env.DB.batch(SC_TABLE.map(s => env.DB.prepare(s)));
+  SC_READY = true;
+}
+// the month a price was paid: YYYY-MM, not in the future, at most 12 months back (by the server's clock)
+function scMonthOk(ym, t) {
+  const m = /^(\d{4})-(0[1-9]|1[0-2])$/.exec(ym || '');
+  if (!m) return false;
+  const d = new Date(t * 1000), cur = d.getUTCFullYear() * 12 + d.getUTCMonth(), v = Number(m[1]) * 12 + Number(m[2]) - 1;
+  return v <= cur && v >= cur - 12;
+}
+// the checks of a check-in, without the database (exported for the tests through globalThis.SVET_TEST)
+function scParse(b, t) {
+  if (!b || typeof b !== 'object' || Array.isArray(b)) return { error: 'json' };
+  if (b.hp) return { trap: true };
+  const pid = typeof b.pid === 'string' && /^\d{1,10}$/.test(b.pid) ? Number(b.pid) : b.pid;
+  if (!Number.isInteger(pid) || pid < 1 || pid > 2000000000) return { error: 'pid' };
+  if (pid >= 900000000) return { error: 'balkan' };
+  const s = b.s == null || b.s === '' ? null : String(b.s);
+  if (s !== null && !SC_STATES.has(s)) return { error: 'state' };
+  let amt = null, unit = null, cur = null, ym = null;
+  if (b.amt != null && b.amt !== '') {
+    amt = Number(b.amt);
+    if (!isFinite(amt) || amt <= 0 || amt > SC_AMT_MAX) return { error: 'amount' };
+    amt = Math.round(amt * 1000) / 1000;
+    unit = String(b.unit || '');
+    if (!SC_UNITS.has(unit)) return { error: 'unit' };
+    cur = String(b.cur || '').toUpperCase();
+    if (!/^[A-Z]{3}$/.test(cur)) return { error: 'currency' };
+    ym = String(b.ym || '');
+    if (!scMonthOk(ym, t || now())) return { error: 'month' };
+  }
+  if (s === null && amt === null) return { error: 'empty' };
+  const cls = b.cls != null && SC_CLS.has(String(b.cls)) ? String(b.cls) : null;
+  const lang = b.lang == null || b.lang === '' ? 'en' : String(b.lang);
+  if (!LANGS.has(lang)) return { error: 'lang' };
+  const cc = typeof b.cc === 'string' && /^[A-Z]{2}$/.test(b.cc) ? b.cc : null;
+  const g = typeof b.g === 'string' && /^[0-9b-hjkmnp-z]{1,9}$/.test(b.g) ? b.g : null;
+  let net = typeof b.net === 'string' ? clean(b.net, 80) : '';
+  if (net && (LINKY.test(net) || RUDE.test(net))) net = '';
+  return { pid, s, amt, unit, cur, ym, cls, lang, cc, g, net: net || null };
+}
+
+async function scPost(request, env, allowO) {
+  const H = svCors(allowO);
+  const err = (msg, st = 400) => json({ ok: false, error: msg }, st, H);
+  let b;
+  try { b = await request.json(); } catch (e) { return err('json'); }
+  const t = now();
+  const r = scParse(b, t);
+  if (r.trap) return json({ ok: true }, 200, H);
+  if (r.error) return err(r.error);
+  const ip = await ipHash(request, env);
+  if (!(await allow_(env, 'sc:' + ip, SC_DAY))) return err('limit', 429);
+  if (!(await allow_(env, 'scp:' + r.pid + ':' + ip, 1))) return json({ ok: true }, 200, H);   // the same place again today
+  await scEnsure(env);
+  await env.DB.prepare(`INSERT INTO world_checkins (pid, s, cls, amt, unit, cur, ym, net, cc, g, lang, ip_hash, created_at, status,
+      price_status) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, 'ok', ?14)`)
+    .bind(r.pid, r.s, r.cls, r.amt, r.unit, r.cur, r.ym, r.net, r.cc, r.g, r.lang, ip, t, r.amt === null ? null : 'new').run();
+  return json({ ok: true }, 200, H);
+}
+
+// what the card shows: the last „radi“ and the last state in 90 days, distinct drivers (day fingerprints) of 30 days
+async function scGet(env, url, allowO) {
+  const H = { ...svCors(allowO), 'cache-control': 'public, max-age=60' };
+  const pid = Number(url.searchParams.get('pid'));
+  if (!Number.isInteger(pid) || pid < 1 || pid > 2000000000) return json({ ok: false, error: 'pid' }, 400, H);
+  await scEnsure(env);
+  const t = now();
+  const rows = (await env.DB.prepare(`SELECT s, created_at, ip_hash FROM world_checkins WHERE pid = ?1 AND status = 'ok' AND s IS NOT NULL
+      AND created_at >= ?2 ORDER BY created_at DESC LIMIT 500`).bind(pid, t - SC_SHOW_S).all()).results;
+  return json({ ok: true, ...scSummary(rows, t) }, 200, H);
+}
+function scSummary(rows, t) {
+  let last_ok = null, last = null;
+  const d30 = { radi: new Set(), ne_radi: new Set(), zauzeto: new Set() };
+  for (const r of rows) {
+    if (!last || r.created_at > last.at) last = { s: r.s, at: r.created_at };
+    if (r.s === 'radi' && (last_ok === null || r.created_at > last_ok)) last_ok = r.created_at;
+    if (r.created_at >= t - SC_D30 && d30[r.s]) d30[r.s].add(r.ip_hash);
+  }
+  return { now: t, last_ok, last, d30: { radi: d30.radi.size, ne_radi: d30.ne_radi.size, zauzeto: d30.zauzeto.size } };
+}
+
+async function scAdminGet(env, url) {
+  await scEnsure(env);
+  const view = url.searchParams.get('view') || 'queue';
+  if (view === 'export') {
+    const since = Math.max(0, Math.floor(Number(url.searchParams.get('since')) || 0));
+    const r = await env.DB.prepare(`SELECT id, pid, s, cls, amt, unit, cur, ym, net, cc, g, lang, ip_hash, created_at, status,
+        price_status, decided_at, decided_by, rule FROM world_checkins WHERE created_at >= ?1 OR decided_at >= ?1 ORDER BY id LIMIT 50000`)
+      .bind(since).all();
+    return json({ ok: true, now: now(), checkins: r.results });
+  }
+  if (view !== 'queue') return bad('view');
+  // the human queue: prices the script found far from the tariff, and the last automatic hides (14 days, with undo)
+  const off = await env.DB.prepare(`SELECT id, pid, s, cls, amt, unit, cur, ym, net, cc, g, lang, created_at, price_status, rule
+      FROM world_checkins WHERE price_status = 'off' AND status = 'ok' ORDER BY created_at LIMIT 500`).all();
+  const auto = await env.DB.prepare(`SELECT id, pid, cls, amt, unit, cur, ym, net, cc, created_at, price_status, rule, decided_at
+      FROM world_checkins WHERE decided_by = 'auto' AND price_status = 'auto_hidden' AND decided_at >= ?1 ORDER BY decided_at DESC LIMIT 300`)
+    .bind(now() - 14 * 86400).all();
+  const n = await env.DB.prepare(`SELECT COUNT(*) AS n FROM world_checkins WHERE created_at >= ?1`).bind(now() - 7 * 86400).first();
+  return json({ ok: true, week: (n && n.n) || 0, off: off.results, auto: auto.results });
+}
+
+async function scAdminPost(request, env) {
+  let b;
+  try { b = await request.json(); } catch (e) { return bad('json'); }
+  await scEnsure(env);
+  const t = now();
+  if (Array.isArray(b.auto)) {
+    // the weekly script: only prices that are still „new“ change, a human decision is never overwritten
+    if (b.auto.length > 5000) return bad('too many');
+    const st = [];
+    for (const d of b.auto) {
+      if (!d || !Number.isInteger(d.id) || !['match', 'off', 'no_ref', 'auto_hidden'].includes(d.price_status)) return bad('auto');
+      st.push(env.DB.prepare(`UPDATE world_checkins SET price_status = ?1, decided_at = ?2, decided_by = 'auto', rule = ?3
+          WHERE id = ?4 AND price_status = 'new'`).bind(d.price_status, t, clean(d.rule, 40) || 'auto', d.id));
+    }
+    let n = 0;
+    for (let i = 0; i < st.length; i += 100) for (const r of await env.DB.batch(st.slice(i, i + 100))) n += (r.meta && r.meta.changes) || 0;
+    return json({ ok: true, n });
+  }
+  const id = Number(b.id);
+  if (!Number.isInteger(id) || id < 1) return bad('id');
+  const a = String(b.a || '');
+  let res;
+  if (a === 'accept' || a === 'reject') {
+    // a price far from the tariff: the owner keeps it (accepted, it may count for a candidate) or drops it
+    res = await env.DB.prepare(`UPDATE world_checkins SET price_status = ?1, decided_at = ?2, decided_by = 'admin', rule = 'admin'
+        WHERE id = ?3 AND amt IS NOT NULL`).bind(a === 'accept' ? 'accepted' : 'rejected', t, id).run();
+  } else if (a === 'hide' || a === 'show') {
+    // the whole check-in (state too) out of the card, or back
+    res = await env.DB.prepare(`UPDATE world_checkins SET status = ?1, decided_at = ?2, decided_by = 'admin', rule = 'admin' WHERE id = ?3`)
+      .bind(a === 'hide' ? 'hidden' : 'ok', t, id).run();
+  } else return bad('what');
+  return json({ ok: true, n: (res && res.meta && res.meta.changes) || 0 });
+}
+
+// the router's entry for this block (one line in api(), next to the reports)
+async function stanjeApi(request, env, p, m, url) {
+  if (p === '/api/svet/stanje') {
+    const o = svOrigin(request);
+    if (m === 'OPTIONS') {
+      if (!o.ok) return new Response(null, { status: 403, headers: { vary: 'origin' } });
+      return new Response(null, { status: 204, headers: { ...svCors(o.allow), 'access-control-allow-methods': 'GET, POST, OPTIONS',
+        'access-control-allow-headers': 'content-type', 'access-control-max-age': '86400', 'cache-control': 'no-store' } });
+    }
+    if (!o.ok) return bad('origin', 403);
+    if (m === 'GET') return scGet(env, url, o.allow);
+    if (m === 'POST') return scPost(request, env, o.allow);
+    return json({ ok: false, error: 'method' }, 405, { ...svCors(o.allow), allow: 'GET, POST, OPTIONS' });
+  }
+  if (p === '/api/admin/svet/stanje') {
+    if (!adminOk(request, env)) return bad('not found', 404);
+    if (m === 'GET') return scAdminGet(env, url);
+    if (m === 'POST') return scAdminPost(request, env);
+    return json({ ok: false, error: 'method' }, 405, { allow: 'GET, POST' });
+  }
+  return bad('not found', 404);
+}
+if (globalThis.SVET_TEST) Object.assign(globalThis.SVET_TEST, { scParse, scSummary, scMonthOk });

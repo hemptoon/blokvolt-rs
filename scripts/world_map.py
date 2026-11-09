@@ -51,7 +51,8 @@ VIEW = {'center': [12.0, 50.0], 'zoom': 3.4}                # Europe when the li
 # keys the script builds at run time ('acc_' + access_class, 'r_' + report type)
 DYN_KEYS = ['acc_' + a for a in ('public', 'public_membership', 'public_pay_at_location', 'public_notice_required',
                                   'restricted_customers_staff', 'restricted_private', 'private_notice_required', 'unknown')] + \
-           ['r_' + x for x in ('ne_postoji', 'ne_radi', 'lokacija', 'snaga', 'nije_javni', 'drugo')]
+           ['r_' + x for x in ('ne_postoji', 'ne_radi', 'lokacija', 'snaga', 'nije_javni', 'drugo')] + \
+           ['ci_' + x for x in ('radi', 'ne_radi', 'zauzeto', 'u_kwh', 'u_min', 'u_session', 'last_ne_radi', 'last_zauzeto')]   # G6
 CHROME = ('skip', 'home', 'menu', 'country_menu', 'ft_claim', 'ft_checked', 'ft_data', 'report', 'fix_subject', 'ft_charging', 'ft_region')
 FORBIDDEN = [r'\bodmah\b', r'24/7', r'evolako', r'\bredakcij', r'\bmi\s', r'proverili smo', r'računamo', r'javimo']
 
@@ -83,7 +84,7 @@ def load_strings():
 
 
 def load_config():
-    """content/world/config.json (contract §9); BV_WORLD_DATA / BV_WORLD_REPORTS override it for a local test build."""
+    """content/world/config.json (contract §9); BV_WORLD_DATA / BV_WORLD_REPORTS / BV_WORLD_CHECKINS override it for a local test build."""
     p = WORLD / 'config.json'
     if not p.exists():
         raise SystemExit('content/world/config.json is missing (contract §9)')
@@ -95,6 +96,12 @@ def load_config():
         c['data_base'] = os.environ['BV_WORLD_DATA']
     if 'BV_WORLD_REPORTS' in os.environ:
         c['reports_api'] = os.environ['BV_WORLD_REPORTS']
+    # G6: drivers' check-ins — a URL of /api/svet/stanje, "demo" (dev previews: the form works, nothing is sent) or "" (no block)
+    c['checkins_api'] = c.get('checkins_api', '')
+    if not isinstance(c['checkins_api'], str):
+        raise SystemExit('content/world/config.json: "checkins_api" must be a string (URL, "demo" or "")')
+    if 'BV_WORLD_CHECKINS' in os.environ:
+        c['checkins_api'] = os.environ['BV_WORLD_CHECKINS']
     if not c['data_base'].endswith('/'):
         c['data_base'] += '/'
     return c
@@ -145,7 +152,7 @@ def build(G):
         WFT = None
         if world_shell.active():
             NAV, WFT = world_shell.nav(lang), world_shell.footer(lang)
-        wm_cfg = {'lang': lang, 'data_base': cfg['data_base'], 'reports_api': cfg['reports_api'], 'style': STYLE,
+        wm_cfg = {'lang': lang, 'data_base': cfg['data_base'], 'reports_api': cfg['reports_api'], 'checkins_api': cfg['checkins_api'], 'style': STYLE,
                   'center': VIEW['center'], 'zoom': VIEW['zoom'], 'font': FONT, 'about': ABOUT[lang], 'download': DOWNLOAD[lang], 'pages': PAGES,
                   'prices': (getattr(G, 'WORLD_PRICES', None) or {}).get('map_json', '')}   # G3: price line of the card
         ctx = dict(WORLD_FT=WFT, LOC=LOCS[lang], S=S, NAV=NAV, SWITCH=SWITCH, home=PAGES[lang] if lang != 'en' else '/', section='map',

@@ -623,5 +623,145 @@
   "en": "All tariffs of the network",
   "sr": "Sve tarife mreže",
   "ru": "Все тарифы сети"
+ },
+ "ci_h": {
+  "en": "Is it working?",
+  "sr": "Da li radi?",
+  "ru": "Работает?"
+ },
+ "ci_radi": {
+  "en": "Working",
+  "sr": "Radi",
+  "ru": "Работает"
+ },
+ "ci_ne_radi": {
+  "en": "Not working",
+  "sr": "Ne radi",
+  "ru": "Не работает"
+ },
+ "ci_zauzeto": {
+  "en": "Occupied",
+  "sr": "Zauzeto",
+  "ru": "Занято"
+ },
+ "ci_last_ok": {
+  "en": "Drivers confirmed it works: {d}",
+  "sr": "Vozači su potvrdili da radi: {d}",
+  "ru": "Водители подтвердили, что работает: {d}"
+ },
+ "ci_last_ne_radi": {
+  "en": "Latest check-in: not working, {d}",
+  "sr": "Poslednja provera: ne radi, {d}",
+  "ru": "Последняя отметка: не работает, {d}"
+ },
+ "ci_last_zauzeto": {
+  "en": "Latest check-in: occupied, {d}",
+  "sr": "Poslednja provera: zauzeto, {d}",
+  "ru": "Последняя отметка: занято, {d}"
+ },
+ "ci_n30": {
+  "en": "Check-ins in the last 30 days: {n}",
+  "sr": "Provera u poslednjih 30 dana: {n}",
+  "ru": "Отметок за 30 дней: {n}"
+ },
+ "ci_thanks": {
+  "en": "Thank you. Your answer is shown in the card for other drivers.",
+  "sr": "Hvala. Vaš odgovor vide i drugi vozači u kartici.",
+  "ru": "Спасибо. Ваш ответ увидят другие водители в карточке."
+ },
+ "ci_once": {
+  "en": "Your answer for this place is already saved today.",
+  "sr": "Vaš odgovor za ovu lokaciju je danas već sačuvan.",
+  "ru": "Ваш ответ по этой точке сегодня уже сохранён."
+ },
+ "ci_paid": {
+  "en": "How much did you pay?",
+  "sr": "Koliko ste platili?",
+  "ru": "Сколько вы заплатили?"
+ },
+ "ci_amt": {
+  "en": "Amount",
+  "sr": "Iznos",
+  "ru": "Сумма"
+ },
+ "ci_cur": {
+  "en": "Currency",
+  "sr": "Valuta",
+  "ru": "Валюта"
+ },
+ "ci_unit": {
+  "en": "Price per",
+  "sr": "Cena po",
+  "ru": "Цена за"
+ },
+ "ci_u_kwh": {
+  "en": "kWh",
+  "sr": "kWh",
+  "ru": "кВт·ч"
+ },
+ "ci_u_min": {
+  "en": "minute",
+  "sr": "minutu",
+  "ru": "минуту"
+ },
+ "ci_u_session": {
+  "en": "charging session",
+  "sr": "punjenje",
+  "ru": "сессию зарядки"
+ },
+ "ci_month": {
+  "en": "Month",
+  "sr": "Mesec",
+  "ru": "Месяц"
+ },
+ "ci_need_amt": {
+  "en": "Enter the amount, for example 0.59.",
+  "sr": "Unesite iznos, na primer 0,59.",
+  "ru": "Введите сумму, например 0,59."
+ },
+ "ci_far": {
+  "en": "This is far from the network's list price ({p} per kWh). Check the amount, currency and unit; press Send again to confirm.",
+  "sr": "Ovo je daleko od cenovnika mreže ({p} po kWh). Proverite iznos, valutu i jedinicu; pritisnite Pošalji ponovo da potvrdite.",
+  "ru": "Это далеко от прайса сети ({p} за кВт·ч). Проверьте сумму, валюту и единицу; нажмите «Отправить» ещё раз, чтобы подтвердить."
+ },
+ "ci_paid_ok": {
+  "en": "Thank you. Prices from drivers are compared with the network's published tariff once a week.",
+  "sr": "Hvala. Cene koje prijave vozači porede se sa objavljenim cenovnikom mreže jednom nedeljno.",
+  "ru": "Спасибо. Цены от водителей раз в неделю сверяются с опубликованным тарифом сети."
+ },
+ "ci_err": {
+  "en": "The answer was not sent. Try again.",
+  "sr": "Odgovor nije poslat. Pokušajte ponovo.",
+  "ru": "Ответ не отправлен. Попробуйте ещё раз."
+ },
+ "ci_err_limit": {
+  "en": "Too many answers from this address today. Try again tomorrow.",
+  "sr": "Sa ove adrese je danas poslato previše odgovora. Pokušajte ponovo sutra.",
+  "ru": "С этого адреса сегодня отправлено слишком много ответов. Попробуйте завтра."
+ },
+ "ci_demo": {
+  "en": "Preview version: nothing was saved.",
+  "sr": "Probna verzija: ništa nije sačuvano.",
+  "ru": "Пробная версия: ничего не сохранено."
+ },
+ "ci_demo_note": {
+  "en": "Preview version: answers are not saved.",
+  "sr": "Probna verzija: odgovori se ne čuvaju.",
+  "ru": "Пробная версия: ответы не сохраняются."
+ },
+ "ci_rules_h": {
+  "en": "Rules and privacy",
+  "sr": "Pravila i privatnost",
+  "ru": "Правила и приватность"
+ },
+ "ci_rules": {
+  "en": "No account is needed. Answers count only from different drivers. A price is checked against the network's published tariff; it can become a candidate for the price index only when two drivers independently report the same price, and prices that cannot be right are hidden. Answers with advertising, links or personal data are removed. The same rules apply to every network.",
+  "sr": "Nalog nije potreban. Računaju se samo odgovori različitih vozača. Cena se poredi sa objavljenim cenovnikom mreže; kandidat za indeks cena postaje tek kada dva različita vozača prijave istu cenu, a cene koje ne mogu biti tačne se skrivaju. Odgovori sa reklamom, linkovima ili ličnim podacima se uklanjaju. Ista pravila važe za sve mreže.",
+  "ru": "Аккаунт не нужен. Учитываются только ответы разных водителей. Цена сверяется с опубликованным тарифом сети; кандидатом в индекс цен она становится, только когда два водителя независимо сообщат одну и ту же цену, а невозможные цены скрываются. Ответы с рекламой, ссылками или личными данными удаляются. Правила одинаковы для всех сетей."
+ },
+ "ci_privacy": {
+  "en": "Stored: the place, your answer, the price if given, the language and a daily fingerprint of the connection — a keyed hash that changes every day, not the IP address. No cookies, no e-mail. Only totals are shown: the last confirmation and the number of check-ins.",
+  "sr": "Čuva se: lokacija, vaš odgovor, cena ako je unesena, jezik i dnevni otisak veze — šifrovani zapis koji se menja svaki dan, a ne IP adresa. Bez kolačića i bez e-mail adrese. Prikazuju se samo zbirni podaci: poslednja potvrda i broj provera.",
+  "ru": "Сохраняются: точка, ваш ответ, цена, если указана, язык и суточный отпечаток подключения — хеш с ключом, который меняется каждый день, а не IP-адрес. Без cookie и без e-mail. Показываются только итоги: последнее подтверждение и число отметок."
  }
 }
