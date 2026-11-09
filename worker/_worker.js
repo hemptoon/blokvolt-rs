@@ -15,7 +15,8 @@ const STATUSES = new Set(['ok', 'problem', 'broken', 'missing']);
 const FACT_VALUES = { why: new Set(['busy', 'broken', 'app', 'cable', 'closed', 'short']), cab: new Set(['att', 'own']),
   park: new Set(['free', 'paid']), oh: new Set(['24', 'lim']) };
 // 'api': a request for data beyond the open set (/za-programere/, RUNBOOK 3.40)
-const KINDS = new Set(['firma', 'mreza', 'ispravka', 'stanica', 'pomoc', 'pretraga', 'api']);
+// 'b2b': a data request from blokvolt.com /data-for-business/ (G10); posted cross-origin as text/plain, CORS below
+const KINDS = new Set(['firma', 'mreza', 'ispravka', 'stanica', 'pomoc', 'pretraga', 'api', 'b2b']);
 // "Dodaj punjač": a charger a driver adds on the map (table novi, RUNBOOK 3.11d). Serbia only; every one waits for moderation.
 const NOVI_K = new Set(['dc', 'ac', 'uticnica', 'nz']);                 // DC / AC (Type 2) / ordinary socket / do not know
 const NOVI_PL = new Set(['type2', 'ccs2', 'chademo', 'tesla', 'schuko']);
@@ -2358,6 +2359,20 @@ async function api(request, env, ctx) {
   }
   mm = p.match(/^\/api\/foto\/([0-9a-f]{32})(\.jpg)?$/);
   if (m === 'GET' && mm) return getPhoto(env, mm[1], url.searchParams.get('v') === 't');
+
+  // G10: the blokvolt.com form (/data-for-business/) posts a b2b request cross-origin (text/plain, no preflight);
+  // only from blokvolt.com (svOrigin) and only kind b2b, with the same checks and limits as every request (postRequest)
+  if (m === 'POST' && p === '/api/zahtev' && !sameOrigin(request)) {
+    const o = svOrigin(request);
+    if (!o.ok || !o.allow) return bad('origin', 403);
+    let b;
+    try { b = JSON.parse(await request.text()); } catch (e) { return bad('json'); }
+    if (!b || b.kind !== 'b2b') return bad('kind');
+    const r = await postRequest(new Request(request.url, { method: 'POST', headers: request.headers, body: JSON.stringify(b) }), env);
+    const h = new Headers(r.headers);
+    for (const [k, v] of Object.entries(svCors(o.allow))) h.set(k, v);
+    return new Response(r.body, { status: r.status, headers: h });
+  }
 
   if (m === 'POST') {
     if (!sameOrigin(request)) return bad('origin', 403);

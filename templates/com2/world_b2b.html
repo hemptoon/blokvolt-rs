@@ -1,0 +1,43 @@
+{% extends 'world_base.html' %}
+{% block pagehead %}<div class="ph"><div class="wrap"><h1>{{ h1 }}</h1></div></div>{% endblock %}
+{% block content %}
+<style>
+.b2b-form{display:grid;gap:12px;max-width:560px;margin:14px 0 8px}
+.b2b-form label{display:grid;gap:4px;font-size:14.5px;font-weight:600}
+.b2b-form input[type=text],.b2b-form input[type=email],.b2b-form select,.b2b-form textarea{font:inherit;font-weight:400;padding:10px 12px;border:1px solid currentColor;border-radius:8px;background:transparent;color:inherit;width:100%;min-height:44px}
+.b2b-form label.ck{display:flex;gap:10px;align-items:flex-start;font-weight:400}
+.b2b-form label.ck input{width:20px;height:20px;margin-top:2px;flex:none}
+.b2b-form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.b2b-form button{justify-self:start;min-height:44px}
+.b2b-form .f-msg{margin:0;font-weight:600}
+</style>
+<div class="prose cwide">
+<p>{{ T.lead }}</p>
+<h2>{{ T.what_h }}</h2>
+<ul><li>{{ T.what_cov|safe }}</li><li>{{ T.what_price|safe }}</li><li>{{ T.what_cmp|safe }}</li></ul>
+<p>{{ T.focus }}</p>
+<h2>{{ T.lic_h }}</h2>
+<p>{{ T.lic_p }}</p>
+<p><a href="{{ download }}">{{ T.lic_dl }}</a> (ODbL)</p>
+<p class="note">{{ T.neutral }}</p>
+<h2 id="request">{{ T.form_h }}</h2>
+<p>{{ T.form_p }}</p>
+<form class="b2b-form" data-b2b-form data-api="{{ api }}" novalidate>
+<label>{{ T.f_name }}<input type="text" name="ime" autocomplete="name" maxlength="120" required></label>
+<label>{{ T.f_company }}<input type="text" name="firma" autocomplete="organization" maxlength="160"></label>
+<label>{{ T.f_email }}<input type="email" name="email" autocomplete="email" maxlength="120" required></label>
+<label>{{ T.f_what }}<select name="sta"><option value="pokrivenost">{{ T.f_w_cov }}</option><option value="cene">{{ T.f_w_price }}</option><option value="oba" selected>{{ T.f_w_both }}</option><option value="drugo">{{ T.f_w_other }}</option></select></label>
+<label>{{ T.f_countries }}<input type="text" name="drzave" maxlength="300"></label>
+<label>{{ T.f_msg }}<textarea name="poruka" rows="5" maxlength="3000" required></textarea></label>
+<label class="hp" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+<label class="ck"><input type="checkbox" name="saglasnost" required> <span>{{ T.f_ok_box }}</span></label>
+<button type="submit" class="btn">{{ T.f_send }}</button>
+<p class="f-msg f-ok" role="status" hidden>{{ T.m_ok }}</p>
+<p class="f-msg f-demo" role="status" hidden>{{ T.m_demo }}</p>
+<p class="f-msg f-need" role="alert" hidden>{{ T.m_need }}</p>
+<p class="f-msg f-err" role="alert" hidden>{{ T.m_err }}</p>
+<p class="f-msg f-limit" role="alert" hidden>{{ T.m_limit }}</p>
+</form>
+</div>
+<script src="{{ js }}" defer></script>
+{% endblock %}
