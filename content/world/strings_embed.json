@@ -1,0 +1,327 @@
+{
+ "emb_title": {
+  "en": "EV charging map — BlokVolt",
+  "sr": "Mapa punjača za električne automobile — BlokVolt",
+  "ru": "Карта зарядок для электромобилей — BlokVolt"
+ },
+ "emb_full": {
+  "en": "Open the full map",
+  "sr": "Otvori veliku mapu",
+  "ru": "Открыть большую карту"
+ },
+ "cf_title": {
+  "en": "EV charging map for your website: free widget | BlokVolt",
+  "sr": "Mapa punjača za vaš sajt: besplatan vidžet | BlokVolt",
+  "ru": "Карта зарядок для вашего сайта: бесплатный виджет | BlokVolt"
+ },
+ "cf_h1": {
+  "en": "Charging map for your website",
+  "sr": "Mapa punjača za vaš sajt",
+  "ru": "Карта зарядок для вашего сайта"
+ },
+ "cf_desc": {
+  "en": "A free world map of public EV chargers for any website: choose the country, network, power, language and theme, then copy the code. No sign-up.",
+  "sr": "Besplatna mapa javnih punjača u svetu za bilo koji sajt: izaberite zemlju, mrežu, snagu, jezik i temu, pa kopirajte kod. Bez registracije.",
+  "ru": "Бесплатная карта публичных зарядок мира для любого сайта: выберите страну, сеть, мощность, язык и тему и скопируйте код. Без регистрации."
+ },
+ "cf_lead": {
+  "en": "The same open data as the BlokVolt map, in an iframe on your page. The data updates by itself every week.",
+  "sr": "Isti otvoreni podaci kao na mapi BlokVolta, u okviru (iframe) na vašoj stranici. Podaci se ažuriraju sami svake nedelje.",
+  "ru": "Те же открытые данные, что и на карте BlokVolt, во фрейме (iframe) на вашей странице. Данные обновляются сами каждую неделю."
+ },
+ "cf_country": {
+  "en": "Country",
+  "sr": "Zemlja",
+  "ru": "Страна"
+ },
+ "cf_country_any": {
+  "en": "Whole world (or the view below)",
+  "sr": "Ceo svet (ili prikaz ispod)",
+  "ru": "Весь мир (или вид ниже)"
+ },
+ "cf_view": {
+  "en": "City or exact view",
+  "sr": "Grad ili tačan prikaz",
+  "ru": "Город или точный вид"
+ },
+ "cf_view_help": {
+  "en": "Open the full map, move it to the city you want and paste the address of that page here.",
+  "sr": "Otvorite veliku mapu, pomerite je na željeni grad i ovde nalepite adresu te stranice.",
+  "ru": "Откройте большую карту, переместите её к нужному городу и вставьте сюда адрес этой страницы."
+ },
+ "cf_view_bad": {
+  "en": "This is not an address of the BlokVolt map.",
+  "sr": "Ovo nije adresa mape BlokVolta.",
+  "ru": "Это не адрес карты BlokVolt."
+ },
+ "cf_net": {
+  "en": "Network",
+  "sr": "Mreža",
+  "ru": "Сеть"
+ },
+ "cf_net_any": {
+  "en": "All networks",
+  "sr": "Sve mreže",
+  "ru": "Все сети"
+ },
+ "cf_power": {
+  "en": "Power",
+  "sr": "Snaga",
+  "ru": "Мощность"
+ },
+ "cf_lang": {
+  "en": "Language",
+  "sr": "Jezik",
+  "ru": "Язык"
+ },
+ "cf_theme": {
+  "en": "Theme",
+  "sr": "Tema",
+  "ru": "Тема"
+ },
+ "cf_light": {
+  "en": "Light",
+  "sr": "Svetla",
+  "ru": "Светлая"
+ },
+ "cf_dark": {
+  "en": "Dark",
+  "sr": "Tamna",
+  "ru": "Тёмная"
+ },
+ "cf_height": {
+  "en": "Height, px",
+  "sr": "Visina, px",
+  "ru": "Высота, px"
+ },
+ "cf_preview": {
+  "en": "Preview",
+  "sr": "Pregled",
+  "ru": "Предпросмотр"
+ },
+ "cf_code": {
+  "en": "Code for your page",
+  "sr": "Kod za vašu stranicu",
+  "ru": "Код для вашей страницы"
+ },
+ "cf_copy": {
+  "en": "Copy code",
+  "sr": "Kopiraj kod",
+  "ru": "Скопировать код"
+ },
+ "cf_copied": {
+  "en": "Copied",
+  "sr": "Kopirano",
+  "ru": "Скопировано"
+ },
+ "cf_rules_h": {
+  "en": "Terms",
+  "sr": "Uslovi",
+  "ru": "Условия"
+ },
+ "cf_rules": {
+  "en": "The widget is free, including on commercial sites. Keep the attribution line and the link to BlokVolt visible. No sign-up, no cookies, no advertising in the widget. The widget counts only how many times it is shown on each website (the site's name, nothing about the reader).",
+  "sr": "Vidžet je besplatan, i na komercijalnim sajtovima. Red sa izvorima i link ka BlokVoltu moraju ostati vidljivi. Bez registracije, bez kolačića, bez reklama u vidžetu. Vidžet broji samo koliko puta je prikazan na svakom sajtu (ime sajta, ništa o čitaocu).",
+  "ru": "Виджет бесплатный, в том числе на коммерческих сайтах. Строка с источниками и ссылка на BlokVolt должны оставаться видимыми. Без регистрации, без cookie, без рекламы в виджете. Виджет считает только число показов на каждом сайте (имя сайта, ничего о читателе)."
+ },
+ "cf_more": {
+  "en": "Open data and API requests",
+  "sr": "Otvoreni podaci i zahtevi za API",
+  "ru": "Открытые данные и запросы API"
+ },
+ "cf_frame_title": {
+  "en": "EV charging map — BlokVolt",
+  "sr": "Mapa punjača — BlokVolt",
+  "ru": "Карта зарядок — BlokVolt"
+ },
+ "cf_src": {
+  "en": "Source:",
+  "sr": "Izvor:",
+  "ru": "Источник:"
+ },
+ "cf_link": {
+  "en": "BlokVolt charging map",
+  "sr": "Mapa punjača BlokVolt",
+  "ru": "Карта зарядок BlokVolt"
+ },
+ "dv_title": {
+  "en": "Charging data for developers and media: widget, open data | BlokVolt",
+  "sr": "Podaci o punjačima za programere i medije: vidžet, otvoreni podaci | BlokVolt",
+  "ru": "Данные о зарядках для разработчиков и СМИ: виджет, открытые данные | BlokVolt"
+ },
+ "dv_h1": {
+  "en": "For developers",
+  "sr": "Za programere",
+  "ru": "Разработчикам"
+ },
+ "dv_desc": {
+  "en": "Map widget for websites, weekly open data on public charging points (ODbL), Balkan data files and requests for more data.",
+  "sr": "Vidžet mape za sajtove, nedeljni otvoreni podaci o javnim punjačima (ODbL), fajlovi za Balkan i zahtevi za dodatne podatke.",
+  "ru": "Виджет карты для сайтов, еженедельные открытые данные о публичных зарядках (ODbL), файлы по Балканам и запросы на дополнительные данные."
+ },
+ "dv_lead": {
+  "en": "Everything that is open is free and needs no key. For anything beyond it, send a request.",
+  "sr": "Sve što je otvoreno besplatno je i ne traži ključ. Za sve preko toga pošaljite zahtev.",
+  "ru": "Всё открытое бесплатно и не требует ключа. Для всего сверх этого отправьте запрос."
+ },
+ "dv_widget_h": {
+  "en": "Map widget",
+  "sr": "Vidžet mape",
+  "ru": "Виджет карты"
+ },
+ "dv_widget_p": {
+  "en": "An iframe with the world map: country, city, network, power, language and theme are set in the address.",
+  "sr": "Okvir (iframe) sa mapom sveta: zemlja, grad, mreža, snaga, jezik i tema zadaju se u adresi.",
+  "ru": "Фрейм (iframe) с картой мира: страна, город, сеть, мощность, язык и тема задаются в адресе."
+ },
+ "dv_widget_btn": {
+  "en": "Make the code",
+  "sr": "Napravite kod",
+  "ru": "Сделать код"
+ },
+ "dv_params_h": {
+  "en": "Widget parameters",
+  "sr": "Parametri vidžeta",
+  "ru": "Параметры виджета"
+ },
+ "dv_p_zemlja": {
+  "en": "Country, ISO 3166-1 alpha-2 code (DE, FR …)",
+  "sr": "Zemlja, kod ISO 3166-1 alpha-2 (DE, FR …)",
+  "ru": "Страна, код ISO 3166-1 alpha-2 (DE, FR …)"
+ },
+ "dv_p_grad": {
+  "en": "City, GeoNames ID (taken from a link of the full map)",
+  "sr": "Grad, GeoNames ID (iz linka velike mape)",
+  "ru": "Город, GeoNames ID (из ссылки большой карты)"
+ },
+ "dv_p_mreza": {
+  "en": "Network slug, several separated by commas",
+  "sr": "Slug mreže, više njih odvojenih zarezom",
+  "ru": "Slug сети, несколько — через запятую"
+ },
+ "dv_p_snaga": {
+  "en": "Power classes: ac, dc, hpc, nepoznato (unknown)",
+  "sr": "Klase snage: ac, dc, hpc, nepoznato",
+  "ru": "Классы мощности: ac, dc, hpc, nepoznato (неизвестно)"
+ },
+ "dv_p_tema": {
+  "en": "tamna = dark base map",
+  "sr": "tamna = tamna podloga",
+  "ru": "tamna = тёмная подложка"
+ },
+ "dv_p_lang": {
+  "en": "Language: the address of the widget (EN, SR, RU)",
+  "sr": "Jezik: adresa vidžeta (EN, SR, RU)",
+  "ru": "Язык: адрес виджета (EN, SR, RU)"
+ },
+ "dv_p_hash": {
+  "en": "Exact view: #zoom/latitude/longitude at the end of the address",
+  "sr": "Tačan prikaz: #zum/širina/dužina na kraju adrese",
+  "ru": "Точный вид: #масштаб/широта/долгота в конце адреса"
+ },
+ "dv_open_h": {
+  "en": "Open data of the world map",
+  "sr": "Otvoreni podaci mape sveta",
+  "ru": "Открытые данные карты мира"
+ },
+ "dv_open_p": {
+  "en": "A weekly CSV file of the public layer, ODbL 1.0, columns: {n}.",
+  "sr": "Nedeljni CSV fajl javnog sloja, ODbL 1.0, kolone: {n}.",
+  "ru": "Еженедельный CSV-файл публичного слоя, ODbL 1.0, колонок: {n}."
+ },
+ "dv_open_btn": {
+  "en": "Download and columns",
+  "sr": "Preuzimanje i kolone",
+  "ru": "Скачать и колонки"
+ },
+ "dv_freq_h": {
+  "en": "How often it updates",
+  "sr": "Koliko često se ažurira",
+  "ru": "Как часто обновляется"
+ },
+ "dv_freq_p": {
+  "en": "The world layer, the widget and the CSV file: once a week. The date of the data is on the map and in the file.",
+  "sr": "Sloj sveta, vidžet i CSV fajl: jednom nedeljno. Datum podataka piše na mapi i u fajlu.",
+  "ru": "Слой мира, виджет и CSV-файл: раз в неделю. Дата данных указана на карте и в файле."
+ },
+ "dv_balkan_h": {
+  "en": "Serbia and the Balkans",
+  "sr": "Srbija i Balkan",
+  "ru": "Сербия и Балканы"
+ },
+ "dv_balkan_p": {
+  "en": "Stations of the regional sections as JSON files (OpenStreetMap ODbL, Open Charge Map CC BY 4.0):",
+  "sr": "Stanice regionalnih odeljaka kao JSON fajlovi (OpenStreetMap ODbL, Open Charge Map CC BY 4.0):",
+  "ru": "Станции региональных разделов в виде JSON-файлов (OpenStreetMap ODbL, Open Charge Map CC BY 4.0):"
+ },
+ "dv_balkan_rs": {
+  "en": "Serbia: open JSON, price tables in CSV and the Serbian widget on blokvolt.rs",
+  "sr": "Srbija: otvoreni JSON, CSV tabele cena i vidžet za Srbiju na blokvolt.rs",
+  "ru": "Сербия: открытый JSON, CSV-таблицы цен и виджет по Сербии на blokvolt.rs"
+ },
+ "dv_attr_h": {
+  "en": "How to credit",
+  "sr": "Kako navesti izvor",
+  "ru": "Как указать источник"
+ },
+ "dv_req_h": {
+  "en": "Request access",
+  "sr": "Zahtev za pristup",
+  "ru": "Запрос доступа"
+ },
+ "dv_req_p": {
+  "en": "API, more fields, other formats or a licence for use outside the ODbL: describe the project. The answer comes by e-mail within 48 hours.",
+  "sr": "API, više polja, drugi formati ili licenca za upotrebu van ODbL: opišite projekat. Odgovor stiže e-poštom u roku od 48 sati.",
+  "ru": "API, больше полей, другие форматы или лицензия на использование вне ODbL: опишите проект. Ответ придёт по e-mail в течение 48 часов."
+ },
+ "dv_f_name": {
+  "en": "Name or company",
+  "sr": "Ime ili firma",
+  "ru": "Имя или компания"
+ },
+ "dv_f_email": {
+  "en": "E-mail",
+  "sr": "E-pošta",
+  "ru": "E-mail"
+ },
+ "dv_f_site": {
+  "en": "Website or app (optional)",
+  "sr": "Sajt ili aplikacija (nije obavezno)",
+  "ru": "Сайт или приложение (необязательно)"
+ },
+ "dv_f_msg": {
+  "en": "What data and for what",
+  "sr": "Koji podaci i za šta",
+  "ru": "Какие данные и для чего"
+ },
+ "dv_f_send": {
+  "en": "Send request",
+  "sr": "Pošalji zahtev",
+  "ru": "Отправить запрос"
+ },
+ "dv_f_ok": {
+  "en": "Request sent. The answer comes by e-mail.",
+  "sr": "Zahtev je poslat. Odgovor stiže e-poštom.",
+  "ru": "Запрос отправлен. Ответ придёт по e-mail."
+ },
+ "dv_f_err": {
+  "en": "The request was not sent. Please try again or write to the address below.",
+  "sr": "Zahtev nije poslat. Pokušajte ponovo ili pišite na adresu ispod.",
+  "ru": "Запрос не отправлен. Попробуйте ещё раз или напишите на адрес ниже."
+ },
+ "dv_f_demo": {
+  "en": "Preview: the form does not send anything here. Write to the address below.",
+  "sr": "Pregled: ovde forma ne šalje ništa. Pišite na adresu ispod.",
+  "ru": "Предпросмотр: здесь форма ничего не отправляет. Напишите на адрес ниже."
+ },
+ "dv_f_need": {
+  "en": "Fill in the e-mail and the description.",
+  "sr": "Popunite e-poštu i opis.",
+  "ru": "Заполните e-mail и описание."
+ },
+ "dv_contact": {
+  "en": "Or write to",
+  "sr": "Ili pišite na",
+  "ru": "Или напишите на"
+ }
+}

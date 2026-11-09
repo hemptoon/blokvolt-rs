@@ -598,5 +598,10 @@
   "en": "Region (English)",
   "sr": "Region (na engleskom)",
   "ru": "Регион (на английском)"
+ },
+ "emb_open": {
+  "en": "Open on BlokVolt",
+  "sr": "Otvori na BlokVoltu",
+  "ru": "Открыть на BlokVolt"
  }
 }

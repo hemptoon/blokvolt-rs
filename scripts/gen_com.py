@@ -550,6 +550,7 @@ def main():
     (OUT / 'sitemap.xml').write_text('\n'.join(sm) + '\n', encoding='utf-8')
     import world_pages; wc = world_pages.run(sys.modules[__name__], local_hubs)  # K3: world pages when BV_WORLD_PAGES is set
     import world_shell; world_shell.run(sys.modules[__name__], wc)  # G0: world menu/footer pages, search index, dev home
+    import world_embed; world_embed.run(sys.modules[__name__], wc)  # G5: /embed/map/, /map-for-your-site/, /developers/
     bad = link_check()
     files = [p for p in OUT.rglob('*') if p.is_file()]
     print(f'blokvolt.com: {len(URLS)} pages in the sitemap, {len(files)} files, {n_companies} companies, {n_sources} English sources; broken links: {len(bad)}')

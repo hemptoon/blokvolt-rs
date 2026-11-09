@@ -1,0 +1,40 @@
+/* BlokVolt — world map widget (/embed/map/ …) and its configurator / developers pages (G5, RUNBOOK 3.41) */
+html, body.wme { height: 100%; margin: 0; }
+body.wme { font-family: Onest, system-ui, -apple-system, "Segoe UI", sans-serif; background: #fff; color: #0D111A; overflow: hidden; }
+.wme-app, .wme-wrap { position: relative; height: 100%; }
+.wme-wrap { display: flex; flex-direction: column; }
+.wme-wrap #map { position: relative; flex: 1 1 auto; min-height: 0; }
+.wme .wm-legend { position: absolute; left: 8px; top: 8px; z-index: 2; display: flex; gap: 10px; padding: 5px 9px; font-size: 12px;
+  background: rgba(255,255,255,.92); border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+.wme .wm-sw { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; box-sizing: border-box; }
+.wme-by { position: absolute; right: 52px; top: 10px; z-index: 3; display: inline-flex; gap: 6px; align-items: baseline;
+  background: #0D111A; color: #fff; text-decoration: none; padding: 7px 11px; border-radius: 999px; font-size: 12px; line-height: 1.2; box-shadow: 0 1px 4px rgba(0,0,0,.25); }
+.wme-by b { color: #D9F45B; font-weight: 700; }
+.wme-by:focus-visible { outline: 3px solid #D9F45B; outline-offset: 2px; }
+.wme .wm-attr { position: static; flex: none; max-width: none; z-index: 2; padding: 4px 8px; font-size: 11px; line-height: 1.45;
+  background: #fff; color: #3D4350; border-top: 1px solid #E3E5E9; }
+.wme .wm-attr a, .wme .wm-attr .lnkbtn { color: inherit; }
+.wme .wm-attr .lnkbtn { background: none; border: 0; padding: 0; font: inherit; text-decoration: underline; cursor: pointer; }
+.wme .wm-msg { position: absolute; left: 50%; top: 48px; transform: translateX(-50%); z-index: 3; background: #fff; padding: 6px 10px; border-radius: 8px; font-size: 13px; box-shadow: 0 1px 4px rgba(0,0,0,.2); }
+.wme .wm-card { z-index: 4; }
+.wm-dark .wme .wm-legend, .wm-dark .wme .wm-attr, .wm-dark .wme .wm-msg { background: rgba(13,17,26,.92); color: #E3E5E9; border-color: #2A303B; }
+.wm-dark body.wme { background: #0D111A; }
+@media (max-width: 480px) { .wme .wm-legend { display: none; } .wme-by span { display: none; } .wme-by { right: auto; left: 8px; } }
+/* configurator */
+.wz { display: grid; grid-template-columns: minmax(260px, 340px) 1fr; gap: 24px; align-items: start; margin: 16px 0 24px; }
+.wz-form { display: grid; gap: 14px; }
+.wz-f { display: grid; gap: 6px; border: 0; padding: 0; margin: 0; min-width: 0; }
+.wz-f > span, .wz-f > legend { font-weight: 600; font-size: 14px; }
+.wz-f small { color: #5C6270; font-size: 13px; }
+.wz-bad { color: #B42318 !important; }
+.wz-chk { cursor: pointer; }
+.wz-chk input { margin: 0 4px 0 0; accent-color: #0D111A; }
+.wz-out h2 { font-size: 18px; margin: 0 0 8px; }
+.wz-prev { border: 1px solid #E3E5E9; border-radius: 12px; overflow: hidden; background: #F5F6F8; margin-bottom: 16px; }
+.wz-prev iframe { display: block; width: 100%; border: 0; }
+.wz-code { width: 100%; height: auto; min-height: 136px; font: 13px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace; resize: vertical; box-sizing: border-box; }
+.wz-ok { color: #1F7A3D; font-weight: 600; min-height: 1.4em; }
+.wz-req { display: grid; gap: 12px; max-width: 560px; }
+.wz-req textarea { width: 100%; box-sizing: border-box; }
+.wz-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+@media (max-width: 860px) { .wz { grid-template-columns: 1fr; } }

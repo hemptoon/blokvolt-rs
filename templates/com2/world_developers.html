@@ -1,0 +1,47 @@
+{% extends 'world_base.html' %}
+{# For developers (G5, scripts/world_embed.py): /developers/, /sr/za-programere/, /ru/razrabotchikam/ #}
+{% block head %}{{ super() }}<link rel="stylesheet" href="{{ css }}">{% endblock %}
+{% block pagehead %}<div class="ph"><div class="wrap"><h1>{{ h1 }}</h1><p class="lead">{{ T.dv_lead }}</p></div></div>{% endblock %}
+{% block content %}
+<div class="prose cwide">
+<h2 id="widget">{{ T.dv_widget_h }}</h2>
+<p>{{ T.dv_widget_p }}</p>
+<p><a class="btn dark" href="{{ conf_url }}">{{ T.dv_widget_btn }}</a></p>
+<h3 id="params">{{ T.dv_params_h }}</h3>
+<p><code translate="no">{{ SITE }}{{ embed_url }}?zemlja=DE&amp;snaga=dc,hpc</code></p>
+<div class="tw"><table><tbody>
+<tr><td translate="no"><code>zemlja</code></td><td>{{ T.dv_p_zemlja }}</td></tr>
+<tr><td translate="no"><code>grad</code></td><td>{{ T.dv_p_grad }}</td></tr>
+<tr><td translate="no"><code>mreza</code></td><td>{{ T.dv_p_mreza }}</td></tr>
+<tr><td translate="no"><code>snaga</code></td><td>{{ T.dv_p_snaga }}</td></tr>
+<tr><td translate="no"><code>tema</code></td><td>{{ T.dv_p_tema }}</td></tr>
+<tr><td translate="no"><code>/embed/map/ · /sr/embed/mapa/ · /ru/embed/karta/</code></td><td>{{ T.dv_p_lang }}</td></tr>
+<tr><td translate="no"><code>#z/lat/lon</code></td><td>{{ T.dv_p_hash }}</td></tr>
+</tbody></table></div>
+<h2 id="open">{{ T.dv_open_h }}</h2>
+<p>{{ open_p }}</p>
+<p><a class="btn" href="{{ download }}">{{ T.dv_open_btn }}</a></p>
+<h2 id="freq">{{ T.dv_freq_h }}</h2>
+<p>{{ T.dv_freq_p }}</p>
+<h2 id="balkan">{{ T.dv_balkan_h }}</h2>
+<p>{{ T.dv_balkan_p }}</p>
+<ul>{% for cc, name, u in balkan %}<li><a href="{{ u }}" translate="no">{{ u }}</a> — {{ name }}</li>{% endfor %}</ul>
+<p><a href="{{ rs_dev }}" rel="noopener">{{ T.dv_balkan_rs }}</a></p>
+<h2 id="attribution">{{ T.dv_attr_h }}</h2>
+<p>{{ attribution }}</p>
+<h2 id="request">{{ T.dv_req_h }}</h2>
+<p>{{ T.dv_req_p }}</p>
+<form class="bform wz-req" id="dv-form" action="#" novalidate data-api="{{ requests_api }}" data-lang="{{ l }}"
+ data-ok="{{ T.dv_f_ok }}" data-err="{{ T.dv_f_err }}" data-demo="{{ T.dv_f_demo }}" data-need="{{ T.dv_f_need }}">
+<label class="wz-f"><span>{{ T.dv_f_name }}</span><input class="input" name="ime" maxlength="120" autocomplete="organization"></label>
+<label class="wz-f"><span>{{ T.dv_f_email }}</span><input class="input" name="email" type="email" maxlength="120" required autocomplete="email"></label>
+<label class="wz-f"><span>{{ T.dv_f_site }}</span><input class="input" name="sajt" maxlength="200" inputmode="url"></label>
+<label class="wz-f"><span>{{ T.dv_f_msg }}</span><textarea class="input" name="poruka" rows="5" maxlength="3000" required></textarea></label>
+<div class="wz-hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+<p><button class="btn dark" type="submit">{{ T.dv_f_send }}</button></p>
+<p class="wz-ok" id="dv-msg" role="status"></p>
+</form>
+<p>{{ T.dv_contact }} <a href="mailto:{{ EMAIL }}" translate="no">{{ EMAIL }}</a></p>
+</div>
+<script src="{{ js }}" defer></script>
+{% endblock %}

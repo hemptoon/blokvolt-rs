@@ -2341,6 +2341,7 @@ async function api(request, env, ctx) {
   if (p.startsWith('/api/nalog/') || p.startsWith('/api/posta/') || p === '/api/admin/posta') return accountApi(request, env, ctx, url, p, m);
   if (p.startsWith('/api/outbox/')) return outboxApi(request, env, p, m);   // GitHub Actions with an OIDC token (RUNBOOK 3.39)
   if (p === '/api/svet/prijava' || p === '/api/admin/svet') return svetApi(request, env, p, m, url);   // world map reports (K6)
+  if (p === '/api/svet/vidzet' || p === '/api/svet/zahtev' || p === '/api/admin/vidzet') return svWidgetApi(request, env, p, m);   // G5: world widget views, data requests from blokvolt.com
 
   if (m === 'GET' && p === '/api/stanice') {
     const cache = caches.default;
@@ -2705,3 +2706,77 @@ async function svetApi(request, env, p, m, url) {
   return bad('not found', 404);
 }
 if (globalThis.SVET_TEST) Object.assign(globalThis.SVET_TEST, { parse: svParse, majority: svMajority });
+
+// ---------------------------------------------------------------- world widgets of blokvolt.com (G5, RUNBOOK 3.41)
+// POST /api/svet/vidzet {h, k, l}: one view of /embed/map/ on another site. h = the host site's name, taken by the widget
+// from document.referrer (the page that holds the iframe); nothing personal is stored: no IP, no full address, no
+// cookie — one counter per day, host, widget and language. One count per host and fingerprint a day (the fingerprint is
+// the daily HMAC of the IP, as for the reports, and lives only in the rl table for that day).
+// POST /api/svet/zahtev: the "Request access" form of /developers/ (kind 'api' in requests → the bot's „Zahtevi“ topic).
+// GET /api/admin/vidzet (owner's key): views of the last 90 days by host.
+const VZ_TABLE = 'CREATE TABLE IF NOT EXISTS world_widget_views (day TEXT NOT NULL, host TEXT NOT NULL, k TEXT NOT NULL, l TEXT NOT NULL, n INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (day, host, k, l))';
+const VZ_KINDS = new Set(['map']);
+const VZ_HOST = /^(?=.{1,80}$)([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z][a-z0-9-]{0,62}$/;
+function vzParse(b) {
+  if (!b || typeof b !== 'object' || Array.isArray(b)) return { error: 'json' };
+  let h = String(b.h == null ? '' : b.h).trim().toLowerCase().replace(/^www\./, '');
+  if (h === '') h = '(direct)';
+  else if (h === 'localhost' || /^\d{1,3}(\.\d{1,3}){3}$/.test(h)) h = '(local)';
+  else if (!VZ_HOST.test(h)) return { error: 'host' };
+  const k = String(b.k || 'map');
+  if (!VZ_KINDS.has(k)) return { error: 'kind' };
+  const l = b.l == null || b.l === '' ? 'en' : String(b.l);
+  if (!LANGS.has(l)) return { error: 'lang' };
+  return { h, k, l };
+}
+async function svWidgetApi(request, env, p, m) {
+  if (p === '/api/admin/vidzet') {
+    if (!adminOk(request, env)) return bad('not found', 404);
+    await env.DB.prepare(VZ_TABLE).run();
+    const since = new Date(Date.now() - 90 * 86400000).toISOString().slice(0, 10);
+    const r = await env.DB.prepare(`SELECT host, k, SUM(n) AS n, MIN(day) AS first, MAX(day) AS last FROM world_widget_views
+      WHERE day >= ?1 GROUP BY host, k ORDER BY n DESC LIMIT 500`).bind(since).all();
+    return json({ ok: true, since, hosts: r.results });
+  }
+  const o = svOrigin(request);
+  if (m === 'OPTIONS') {
+    if (!o.ok) return new Response(null, { status: 403, headers: { vary: 'origin' } });
+    return new Response(null, { status: 204, headers: { ...svCors(o.allow), 'access-control-allow-methods': 'POST, OPTIONS',
+      'access-control-allow-headers': 'content-type', 'access-control-max-age': '86400', 'cache-control': 'no-store' } });
+  }
+  if (!o.ok) return bad('origin', 403);
+  const H = svCors(o.allow);
+  if (m !== 'POST') return json({ ok: false, error: 'method' }, 405, { ...H, allow: 'POST, OPTIONS' });
+  let b;
+  try { b = JSON.parse(await request.text()); } catch (e) { return json({ ok: false, error: 'json' }, 400, H); }
+  const ip = await ipHash(request, env);
+  if (p === '/api/svet/zahtev') {
+    if (!b || typeof b !== 'object') return json({ ok: false, error: 'json' }, 400, H);
+    if (b.hp) return json({ ok: true }, 200, H);
+    if (typeof b.t === 'number' && b.t < 3000) return json({ ok: false, error: 'too fast' }, 429, H);
+    const data = {};
+    for (const [k, v] of Object.entries(b.data || {})) {
+      if (Object.keys(data).length >= 12) break;
+      data[clean(k, 40)] = clean(v, 3000);
+    }
+    if (!String(data.poruka || '').trim()) return json({ ok: false, error: 'empty' }, 400, H);
+    const email = normEmail(String(b.email || data.email || ''));
+    if (!email) return json({ ok: false, error: 'email' }, 400, H);
+    if (!(await allow_(env, 'rq:' + ip, 6))) return json({ ok: false, error: 'limit' }, 429, H);
+    const lang = LANGS.has(String(b.lang)) ? String(b.lang) : 'en';
+    data.sajt = 'blokvolt.com';
+    data.jezik = lang;
+    await env.DB.prepare('INSERT INTO requests (kind, slug, data, email, at, ip) VALUES (?1, ?2, ?3, ?4, ?5, ?6)')
+      .bind('api', clean(b.slug, 80) || '/developers/', JSON.stringify(data), email, now(), ip).run();
+    return json({ ok: true }, 200, H);
+  }
+  const r = vzParse(b);
+  if (r.error) return json({ ok: false, error: r.error }, 400, H);
+  if (!(await allow_(env, 'vz:' + r.h + ':' + ip, 1))) return json({ ok: true }, 200, H);   // this reader on this site today
+  const day = new Date().toISOString().slice(0, 10);
+  await env.DB.prepare(VZ_TABLE).run();
+  await env.DB.prepare(`INSERT INTO world_widget_views (day, host, k, l, n) VALUES (?1, ?2, ?3, ?4, 1)
+    ON CONFLICT (day, host, k, l) DO UPDATE SET n = n + 1`).bind(day, r.h, r.k, r.l).run();
+  return json({ ok: true }, 200, H);
+}
+if (globalThis.SVET_TEST) Object.assign(globalThis.SVET_TEST, { vzParse });
