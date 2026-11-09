@@ -1,0 +1,13 @@
+{
+ "home": "/pt/",
+ "map": "/pt/mapa/",
+ "hub": "/pt/postos-de-carregamento/",
+ "net": "rede",
+ "about": "sobre-os-dados",
+ "download": "descarregar",
+ "gnet": "/pt/redes-de-carregamento/",
+ "prices": "/pt/precos-de-carregamento/",
+ "shell_about": "/pt/sobre/",
+ "sources": "/pt/fontes/",
+ "methodology": "/pt/metodologia/"
+}
