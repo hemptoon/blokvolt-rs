@@ -51,10 +51,11 @@ jobs:
           python3 scripts/world_pages.py selftest
           python3 scripts/world_shell.py selftest
           python3 content/world/names/check_names.py
-          BV_WORLD_HOME=1 BV_WORLD_PAGES="$PAGES" BV_WORLD_MANIFEST="$MANIFEST" BV_WORLD_DATA=/world-data/ python3 scripts/gen_com.py
+          BV_WORLD_HOME=1 BV_WORLD_PREVIEW=1 BV_WORLD_PAGES="$PAGES" BV_WORLD_MANIFEST="$MANIFEST" BV_WORLD_DATA=/world-data/ python3 scripts/gen_com.py
           mkdir -p dist-com/world-data
           cp -r "$CARDS" dist-com/world-data/
           cp "$MANIFEST" dist-com/world-data/
+          if [ -n "$PLACES" ]; then cp "$PLACES" dist-com/world-data/; fi
           printf '{"manifest": "%s"}' "$(basename "$MANIFEST")" > dist-com/world-data/latest.json
           python3 scripts/qa/world_pages_check.py dist-com "$PAGES" --report "$RUNNER_TEMP/world_pages_check.json"
           rm -f dist-com/CNAME

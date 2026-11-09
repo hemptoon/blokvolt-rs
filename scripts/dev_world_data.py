@@ -1,5 +1,5 @@
 """Fetch the world data of a dev build from the tiles host (hemptoon/blokvolt-tiles on GitHub Pages) and prepare it:
-pages bundle (K3), cards and manifest (K1). The manifest gets absolute URLs for the tiles and the ODbL dump (they stay on
+pages bundle (K3), cards, manifest and the country/city frames `places` (K1). The manifest gets absolute URLs for the tiles and the ODbL dump (they stay on
 the tiles host: GitHub Pages answers Range requests, Cloudflare Pages does not), the cards are served next to the site.
 
     python3 scripts/dev_world_data.py <tiles base URL> <work dir>   → prints shell lines: D=…, PAGES=…, MANIFEST=…, CARDS=…
@@ -38,11 +38,14 @@ def main(base, work):
         m['odbl_dump'] = f"{dd}/{m['odbl_dump']}"
     m['dev_note'] = 'dev build: tiles and ODbL dump on the tiles host, cards next to the site'
     json.dump(m, open(work / f'manifest-{d}.json', 'w', encoding='utf-8'), ensure_ascii=False)
+    if m.get('places'):
+        get(f"{dd}/{m['places']}", work / m['places'])
     pages = next(work.glob('pages-*/index.json')).parent
     print(f'D={d}')
     print(f'PAGES={pages}')
     print(f'MANIFEST={work}/manifest-{d}.json')
     print(f'CARDS={work}/{m["cards_base"].rstrip("/")}')
+    print(f"PLACES={work}/{m['places']}" if m.get('places') else 'PLACES=')
 
 
 if __name__ == '__main__':

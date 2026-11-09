@@ -1,6 +1,6 @@
 """Frame of the world layer of blokvolt.com (G0): one menu and one footer block for the world map and the world pages,
-the short pages /about/, /sources/, /methodology/ (EN, SR, RU) that lead to "About the data", the static search index
-of countries and cities, and — only with BV_WORLD_HOME=1 (dev builds) — a world home page at /, /sr/, /ru/.
+the short pages /about/, /sources/, /methodology/ (EN, SR, RU) that lead to "About the data", the home search (K3's static index of
+countries and cities), and — only with BV_WORLD_HOME=1 (dev builds) — a world home page at /, /sr/, /ru/.
 
 Runs only together with the world pages (BV_WORLD_PAGES, scripts/world_pages.py); without them blokvolt.com builds
 exactly as before. Strings: content/world/strings_shell.json ({key: {en, sr, ru}}); the build stops on a missing
@@ -56,24 +56,6 @@ def footer(l):
                                       (SHELL['about'][l], T['ft_about'])]}
 
 
-def search_index(c):
-    """Countries and cities with a page: [[kind, cc, en, sr, ru, local, url_en, url_sr, url_ru], …] (kind c/t)."""
-    W = sys.modules['world_pages']
-    N, site = c.N, c.site
-    rows = []
-    for cc in sorted(site.country_pages):
-        rows.append(['c', cc] + [N.country(cc, l) for l in LANGS] + [''] + [site.country(cc, l) for l in LANGS])
-    for p in site.pages:
-        if p['type'] != 'city':
-            continue
-        info = p['data']['city']
-        names = [N.city_name(info, l) for l in LANGS]
-        local = info.get('name') or ''
-        rows.append(['t', p['cc']] + names + ([local] if local not in names else ['']) +
-                    [site.city(p['cc'], p['gid'], l) for l in LANGS])
-    return rows
-
-
 def run(G, c):
     """Called by gen_com.main() after world_pages.run() (c = its context). Writes the shell pages and the index."""
     if c is None:
@@ -83,14 +65,12 @@ def run(G, c):
     out = []
     mp = os.environ.get('BV_WORLD_MANIFEST')
     manifest = json.load(open(mp, encoding='utf-8')) if mp and Path(mp).exists() else None
-    # search index (static, cached; the home page loads it on first focus)
-    rows = search_index(c)
-    data = json.dumps(rows, ensure_ascii=False, separators=(',', ':'))
-    a = G.OUT / 'assets' / 'world'
-    a.mkdir(parents=True, exist_ok=True)
-    (a / 'search.json').write_text(data, encoding='utf-8')
+    # search index: K3's /assets/world/search-index.json (world_pages.search_index); the home page loads it on first focus
     import hashlib
-    sver = hashlib.sha1(data.encode()).hexdigest()[:10]
+    a = G.OUT / 'assets' / 'world'
+    idx = a / 'search-index.json'
+    sver = hashlib.sha1(idx.read_bytes()).hexdigest()[:10] if idx.exists() else '0'
+    n_idx = len(json.load(open(idx, encoding='utf-8'))['items']) if idx.exists() else 0
     shutil_copy(ROOT / 'static' / 'com' / 'world-home.js', a / 'world-home.js')
     hver = hashlib.sha1((a / 'world-home.js').read_bytes()).hexdigest()[:10]
     n_sources = len([k for k in (manifest or {}).get('sources', {}) if not k.startswith('ocm:')]) if manifest else 0
@@ -114,18 +94,17 @@ def run(G, c):
                 n = W.fmt_num(counts['sites'], W.L[l]) + ' ' + W.pl_form(counts['sites'], t['pl_loc'], l)
                 k = W.fmt_num(counts['countries'], W.L[l]) + ' ' + W.pl_form(counts['countries'], t['pl_cc'], l)
                 lead = t['home_lead'].format(n=n, c=k)
-            countries = sorted(((c.N.country(cc, l), c.site.country(cc, l)) for cc in c.site.country_pages),
-                               key=lambda x: x[0])
+            countries = sorted(((c.N.country(p['cc'], l), c.site.country(p['cc'], l)) for p in c.site.pages
+                                if p['type'] == 'country' and l in c.site.langs(p)), key=lambda x: x[0])
             locals_ = [dict(path=h['path'], name=h['loc']['country'], hl=h['loc']['hreflang'], lang=h['loc']['html'])
                        for h in c.local_hubs]
             W.write_page(c, l, 'world_home.html', HOME[l], HOME, dict(
                 title=t['home_title'].replace(' | BlokVolt', ''), h1=t['home_h1'], description=t['home_desc'], T=t,
                 lead=lead, crumbs=None, kick=t['home_kick'], jsonld=None, data_date=W.fmt_date(c.date),
                 countries=countries, regional=locals_, map_url=MAP[l], hub_url=HUB[l],
-                search_url=f'/assets/world/search.json?v={sver}', home_js=f'/assets/world/world-home.js?v={hver}'), 'home')
+                search_url=f'/assets/world/search-index.json?v={sver}', home_js=f'/assets/world/world-home.js?v={hver}'), 'home')
             out.append(HOME[l])
-    print(f"world shell: {len(out)} pages ({', '.join(out[:3])} …), search index {len(rows)} places, "
-          f"{len(data.encode()) // 1024} KB; home {'on' if os.environ.get('BV_WORLD_HOME') == '1' else 'off'}")
+    print(f"world shell: {len(out)} pages ({', '.join(out[:3])} …), search index {n_idx} places; home {'on' if os.environ.get('BV_WORLD_HOME') == '1' else 'off'}")
 
 
 def shutil_copy(a, b):
