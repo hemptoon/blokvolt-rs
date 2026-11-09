@@ -440,6 +440,9 @@ class R:
     def period(self, l):
         p = self.M.H['period']   # 2026-S1
         y, s = p.split('-S')
+        if l not in I.BASE:   # K8: "Januar–Juni 2026" from the CLDR months of the language
+            m = I.months(l)
+            return f'{m[0]}–{m[5]} {y}' if s == '1' else f'{m[6]}–{m[11]} {y}'
         return {'en': f'{"first" if s == "1" else "second"} half of {y}', 'sr': f'{s}. polugodište {y}.',
                 'ru': f'{"первое" if s == "1" else "второе"} полугодие {y}'}[l]
 

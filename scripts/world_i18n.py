@@ -205,9 +205,17 @@ def cities(lang):
     return {int(r['geonameid']): r for r in read_csv(p) if (r.get('geonameid') or '').isdigit()} if p.exists() else {}
 
 
+_SEEN = set()
+
+
 def fallback(lang, kind, key):
+    """Counts each (language, kind, key) once — a name is looked up many times in one build."""
+    if (lang, kind, key) in _SEEN:
+        return
+    _SEEN.add((lang, kind, key))
     FALLBACK[(lang, kind)] += 1
-    FALLBACK_EX.setdefault((lang, kind), []).append(key) if len(FALLBACK_EX.get((lang, kind), [])) < 5 else None
+    if len(FALLBACK_EX.setdefault((lang, kind), [])) < 5:
+        FALLBACK_EX[(lang, kind)].append(key)
 
 
 def fallback_report():
@@ -259,6 +267,10 @@ PH = re.compile(r'\{[^{}]*\}')
 TAG = re.compile(r'</?[a-zA-Z][^>]*>|&[a-z#0-9]+;')
 
 
+def _ph_group(ph):
+    return re.sub(r'^\{(city|country)_[uv]\}$', r'{\1}', ph)
+
+
 def check_folder(lang, folder=None):
     folder = Path(folder) if folder else i18n_dir(lang)
     errs = []
@@ -289,7 +301,11 @@ def check_folder(lang, folder=None):
             if not isinstance(t, str):
                 errs.append(f'{part}.{k}: must be a string')
                 continue
-            if sorted(PH.findall(en)) != sorted(PH.findall(t)):
+            # placeholders: the same as EN, with the case variants the engine also passes ({city}/{city_u}/{city_v},
+            # {country}/{country_u}/{country_v}); a group may be left out only where SR or RU leave it out too
+            base_ph = [set(map(_ph_group, PH.findall(str(v.get(x) or '')))) for x in BASE]
+            tg = set(map(_ph_group, PH.findall(t)))
+            if not tg <= set.union(*base_ph) or not set.intersection(*base_ph) <= tg:
                 errs.append(f'{part}.{k}: placeholders {PH.findall(en)} != {PH.findall(t)}')
             if sorted(TAG.findall(en)) != sorted(TAG.findall(t)):
                 errs.append(f'{part}.{k}: tags/entities differ')

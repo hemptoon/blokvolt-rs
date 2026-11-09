@@ -620,8 +620,9 @@ def render_hub(c, p, urls, l):
     d, S, site, N, G = p['data'], c.S[l], c.site, c.N, c.G
     stage = c.site.idx['stage']
     title = S['t_hub_' + ('month' if stage.startswith('month') else stage)]
-    if l == 'sr' and 'stats_eu' in d:   # the Serbian layer covers Europe only (bvcom §0)
-        d = dict(d, stats=d['stats_eu'], countries=[r for r in d['countries'] if site.has(r[0], 'sr')],
+    eu_only = l == 'sr' or (l not in I.BASE and I.scope(l) == 'europe')   # K8: extra languages follow Serbian by default
+    if eu_only and 'stats_eu' in d:   # the Serbian layer covers Europe only (bvcom §0)
+        d = dict(d, stats=d['stats_eu'], countries=[r for r in d['countries'] if site.has(r[0], l)],
                  countries_below=[r for r in d['countries_below'] if len(r) < 3 or r[2] == 'EU'])
     elif stage == 'month' and d.get('countries') and any(not site.has(r[0], 'sr') for r in d['countries']):
         title = S['t_hub_month_na']
@@ -634,7 +635,7 @@ def render_hub(c, p, urls, l):
     built = {x['key'] for x in G.BUILT}
     for cc in d['balkan']:
         if cc == 'RS':
-            u = G.RS + {'en': '/en/gradovi/', 'sr': '/gradovi/', 'ru': '/ru/gradovi/'}[l]
+            u = G.RS + {'en': '/en/gradovi/', 'sr': '/gradovi/', 'ru': '/ru/gradovi/'}.get(l, '/en/gradovi/')   # K8: extra languages → EN
         elif l != 'en' and BALKAN_LOCAL.get(cc) in built:
             u = f'/{BALKAN_LOCAL[cc]}/'
         else:
@@ -648,7 +649,7 @@ def render_hub(c, p, urls, l):
              crumbs_ld(c, [('BlokVolt', urls[l])])]
     return write_page(c, l, 'world_hub.html', urls[l], urls, dict(
         title=title, h1=title, description=S['d_hub'], kick=S['k_hub'], crumbs=[], jsonld=ld(graph), b=b, rows=rows,
-        balkan=balkan, below=below, hub_p=S['p_hub'] + ((' ' + S['p_hub_na']) if l != 'sr' and any(not site.has(r[0], 'sr') for r in d['countries']) else ''),
+        balkan=balkan, below=below, hub_p=S['p_hub'] + ((' ' + S['p_hub_na']) if not eu_only and any(not site.has(r[0], 'sr') for r in d['countries']) else ''),
         map_link=c.map_url(l), data_date=fmt_date(c.lastmod(urls[l]))), 'hub')
 
 
@@ -834,13 +835,16 @@ def search_index(c):
             cc = p['cc']
             alt = sorted({v for k, v in N.c[cc].items() if k.startswith('name_') and v and v not in
                           (N.country(cc, 'en'), N.country(cc, 'sr'), N.country(cc, 'ru'))})[:12]
+            if len(LANGS) > 3:   # K8: names of the extra languages join the other names (base layout of the index unchanged)
+                alt = sorted(set(alt) | {N.country(cc, l) for l in LANGS if l not in I.BASE} - {N.country(cc, x) for x in I.BASE})
             items.append(['c', cc, N.country(cc, 'en'), N.country(cc, 'sr'), N.country(cc, 'ru'), alt,
                           [site.url(p, l) if l in langs else None for l in LANGS], p['n']])
         else:
             info = p['data']['city']
             r = N.city.get(info['gid']) or {}
-            names3 = [N.city_name(info, l) for l in LANGS]
-            alt = sorted({x for x in (r.get('name_local'), info.get('name'), info.get('ascii')) if x and x not in names3})
+            names3 = [N.city_name(info, l) for l in I.BASE]   # columns name_en/sr/ru stay fixed; extra languages → other names
+            alt = sorted({x for x in (r.get('name_local'), info.get('name'), info.get('ascii'),
+                                      *[N.city_name(info, l) for l in LANGS if l not in I.BASE]) if x and x not in names3})
             items.append(['t', p['cc'], *names3, alt, [site.url(p, l) if l in langs else None for l in LANGS], p['n']])
     en_slug = {x['code']: x['url'] for x in G.countries}
     built = {x['key'] for x in G.BUILT}
@@ -852,6 +856,7 @@ def search_index(c):
         else:
             loc = f'/{BALKAN_LOCAL[cc]}/' if BALKAN_LOCAL.get(cc) in built else en_slug.get(cc, '/')
             urls = [en_slug.get(cc, '/'), loc, loc]
+        urls += [loc if cc != 'RS' else G.RS + '/en/gradovi/' for _ in LANGS[3:]]   # K8: extra languages → the local section
         items.append(['b', cc, N.country(cc, 'en'), N.country(cc, 'sr'), N.country(cc, 'ru'), [], urls, None])
     doc = {'v': 1, 'date': c.date, 'langs': list(LANGS),
            'fields': ['kind (c country, t city, b Balkan country on its own BlokVolt pages)', 'cc', 'name_en', 'name_sr',
