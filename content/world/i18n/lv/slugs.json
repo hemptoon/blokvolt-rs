@@ -1,0 +1,13 @@
+{
+ "home": "/lv/",
+ "map": "/lv/karte/",
+ "hub": "/lv/uzlades-stacijas/",
+ "net": "tikls",
+ "about": "par-datiem",
+ "download": "lejupielade",
+ "gnet": "/lv/uzlades-tikli/",
+ "prices": "/lv/uzlades-cenas/",
+ "shell_about": "/lv/par-vietni/",
+ "sources": "/lv/avoti/",
+ "methodology": "/lv/metodologija/"
+}

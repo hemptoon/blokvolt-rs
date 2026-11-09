@@ -1,0 +1,175 @@
+{
+ "about_data": {
+  "h1": "Par kartes datiem",
+  "title": "Uzlādes kartes dati: avoti, licences, uzticamība | BlokVolt",
+  "description": "No kurienes nāk uzlādes kartes dati, ar kādām licencēm tie tiek izmantoti un kā tiek aprēķināta katra punkta uzticamība.",
+  "lead": "Karte ir veidota no atvērtajiem datiem, un pie katra punkta ir norādīts tā avots.",
+  "intro": "Kartē apvienoti atvērtie dati no daudziem avotiem: oficiālajiem reģistriem, valsts atvērtajiem datiem, OpenStreetMap, Open Charge Map un operatoru pašu atrašanās vietu lapām. Ieraksti tiek apvienoti, attīrīti un pārveidoti, tāpēc punkts kartē var atšķirties no sākotnējā ieraksta. Visiem uzlādes tīkliem piemēro vienus un tos pašus noteikumus. Karte nevērtē uzlādes tīklus vai operatorus.",
+  "osm_h": "OpenStreetMap un ODbL",
+  "osm_p": "Dati © OpenStreetMap contributors, pieejami saskaņā ar Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Apvienotā punktu datu kopa, kas satur OpenStreetMap datus, ir pieejama ar to pašu licenci lapā \"Lejupielādēt atvērtos datus\": {download_url}.",
+  "sources_h": "Avoti un licences",
+  "sources_note": "Uzskaitīti tikai tie avoti, kas faktiski ir pašreizējos datos, katram norādot licenci un obligāto atsauci.",
+  "conf_h": "Kā tiek aprēķināta uzticamība",
+  "conf_p": "Katram punktam tiek piešķirts uzticamības novērtējums no 0 līdz 100. Visiem uzlādes tīkliem piemēro vienu un to pašu formulu. Novērtējums attiecas uz datiem par vietu, nevis uz uzlādes tīklu vai tā pakalpojumu.",
+  "conf_rows": [
+   [
+    "Bāzes vērtējums pēc labākā avota veida",
+    "Oficiālais reģistrs vai valsts atvērtie dati 70; BlokVolt pārbaude 65; OpenStreetMap 50; All The Places 45; Open Charge Map 40; Overture (no All The Places) 40; citi 25"
+   ],
+   [
+    "Neatkarīga pārbaude",
+    "Ja starp avotiem nav reģistra, neatkarīga automatizēta ieraksta pārbaude var paaugstināt bāzes vērtējumu, bet ne augstāk par pārbaudes doto vērtību"
+   ],
+   [
+    "Avotu saskaņa",
+    "+10, ja divi vai vairāki avoti sakrīt par vietu; vēl +5, ja sakrīt trīs vai vairāk"
+   ],
+   [
+    "Aktualitāte",
+    "+10, ja pēdējais apstiprinājums ir pēdējo 12 mēnešu laikā; −15, ja tas ir vecāks par 3 gadiem"
+   ],
+   [
+    "Valsts neatbilstība",
+    "−10, ja avoti nesakrīt par valsti"
+   ],
+   [
+    "Nedarbojas vai aizdomīgas koordinātas",
+    "Ne vairāk kā 20"
+   ],
+   [
+    "Diapazons",
+    "Novērtējums tiek ierobežots robežās 0–100; vietas ar vērtējumu zem 40 netiek rādītas kartē un lapās"
+   ]
+  ],
+  "conf_levels": [
+   [
+    "Augsta",
+    "70–100",
+    "Apstiprināta oficiālā avotā vai vairākos avotos, nesen atjaunināta"
+   ],
+   [
+    "Vidēja",
+    "50–69",
+    "Ticama, bet apstiprināta mazākā skaitā avotu vai sen"
+   ],
+   [
+    "Zema",
+    "40–49",
+    "Viens vai vecāks avots; pirms brauciena pārbaudiet informāciju pie operatora"
+   ]
+  ],
+  "notes_h": "Piezīmes",
+  "notes": [
+   "Dati tiek sniegti \"kā ir\", bez jebkādām garantijām par precizitāti, pieejamību, cenu vai saderību. Pirms brauciena pārbaudiet informāciju pie operatora vai uz vietas.",
+   "Katra punkta kartītē ir norādīts avots, licence un pēdējās atjaunināšanas datums.",
+   "Uzlādes tīklu nosaukumi un preču zīmes pieder to īpašniekiem.",
+   "BlokVolt nav saistīts ar operatoriem vai iestādēm, kas publicē datus, un tie neatbalsta šo karti.",
+   "Privātpersonu vārdi netiek rādīti; privātās mājas uzlādes ierīces kartē nav iekļautas.",
+   "Lai ziņotu par kļūdu vai pieprasītu labojumu vai dzēšanu, izmantojiet pogu \"Ziņot par kļūdu\" punkta kartītē vai rakstiet uz {email}. Atbilde tiks sniegta 30 dienu laikā."
+  ],
+  "licence_texts_h": "Licenču teksti",
+  "licence_texts": [
+   [
+    "CC BY 4.0",
+    "https://creativecommons.org/licenses/by/4.0/"
+   ],
+   [
+    "CC0 1.0",
+    "https://creativecommons.org/publicdomain/zero/1.0/"
+   ],
+   [
+    "ODbL 1.0",
+    "https://opendatacommons.org/licenses/odbl/1-0/"
+   ],
+   [
+    "Licence Ouverte 2.0",
+    "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+   ],
+   [
+    "CDLA Permissive 2.0",
+    "https://cdla.dev/permissive-2-0/"
+   ],
+   [
+    "Open Government Licence v2.0",
+    "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+   ]
+  ]
+ },
+ "download": {
+  "h1": "Lejupielādēt atvērtos datus",
+  "title": "Lejupielādēt atvērtos uzlādes punktu datus | BlokVolt",
+  "description": "Iknedēļas CSV fails ar publiskajiem uzlādes punktiem: koordinātas, uzlādes tīkls, jauda, savienotāji un avoti. Bez maksas saskaņā ar ODbL licenci.",
+  "lead": "Kartes publiskais slānis ir pieejams kā bezmaksas CSV fails, kas tiek atjaunināts katru nedēļu.",
+  "what_h": "Ko satur fails",
+  "what_p": "Iknedēļas kartes publiskā slāņa CSV izgāztne: katras vietas koordinātas, uzlādes tīkls, jauda, savienotāji un avoti. Tā satur OpenStreetMap datus, tāpēc tiek publicēta saskaņā ar Open Database License (ODbL) 1.0. Cenas, komandas pārbaudes un BlokVolt labojumi Balkāniem failā nav iekļauti.",
+  "fields_h": "Kolonnas",
+  "fields": [
+   [
+    "pid",
+    "Vietas pastāvīgais ID"
+   ],
+   [
+    "lat",
+    "Platums (WGS 84)"
+   ],
+   [
+    "lon",
+    "Garums (WGS 84)"
+   ],
+   [
+    "country",
+    "Valsts kods (ISO 3166-1 alpha-2)"
+   ],
+   [
+    "name",
+    "Vietas nosaukums"
+   ],
+   [
+    "network",
+    "Uzlādes tīkla vai operatora nosaukums"
+   ],
+   [
+    "max_kw",
+    "Lielākā jauda vietā, kW"
+   ],
+   [
+    "dc",
+    "1, ja ir pieejama DC ātrā uzlāde, 0, ja nav"
+   ],
+   [
+    "power_class",
+    "Vietas jaudas klase"
+   ],
+   [
+    "connectors",
+    "Savienotāju veidi, atdalīti ar komatu"
+   ],
+   [
+    "points",
+    "Aptuvenais uzlādes punktu skaits"
+   ],
+   [
+    "access",
+    "Piekļuves veids (publiska, ierobežota u. c.)"
+   ],
+   [
+    "sources",
+    "Avotu atslēgas, atdalītas ar komatu (skatiet lapu \"Par datiem\")"
+   ],
+   [
+    "last_confirmed",
+    "Pēdējā apstiprinājuma datums jebkurā avotā"
+   ],
+   [
+    "confidence",
+    "Uzticamības novērtējums 0–100"
+   ]
+  ],
+  "licence_h": "Licence",
+  "licence_p": "Fails ir pieejams saskaņā ar ODbL 1.0. Jūs drīkstat koplietot datus, veidot uz tiem balstītus darbus un tos pielāgot, ja norādāt atsauci \"© OpenStreetMap contributors, BlokVolt\" un jebkuru pielāgoto datu kopu koplietojat ar to pašu licenci. Saglabājiet datus atvērtus: nepiemērojiet tehniskus ierobežojumus, kas ierobežo šīs tiesības. Pilns teksts: https://opendatacommons.org/licenses/odbl/1-0/",
+  "file_h": "Fails",
+  "file_missing": "Šīs nedēļas fails tiek gatavots. Lūdzu, pārbaudiet vēlāk.",
+  "attribution_h": "Kā norādīt atsauci",
+  "attribution_p": "Izmantojot datus, norādiet \"© OpenStreetMap contributors, BlokVolt\" ar saiti uz www.openstreetmap.org/copyright un uz šo lapu, kā arī norādiet licenci ODbL 1.0. Datiem no citiem avotiem saglabājas to pašu atsauces, kas uzskaitītas lapā \"Par datiem\"."
+ }
+}
