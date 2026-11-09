@@ -1,4 +1,4 @@
-# R-HR — vičitka hrvatskog prijevoda (pool 4, 10.11.2026)
+# R-HR — lektura hrvatskog prijevoda (pool 4, 10.11.2026)
 
 Baza `origin/l-hr` (c7438af), grana `r-hr`. Neovisni urednik; prijevod je radila sesija L-HR.
 
