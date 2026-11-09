@@ -18,7 +18,7 @@
  "search_none": "Selle koha lehte veel ei ole. Avage selle asemel kaart.",
  "map_h": "Kaart",
  "map_p": "Kõik avalikud laadimiskohad avatud registritest, Open Charge Mapist ja OpenStreetMapist — ilma klastriteta, filtritega võimsuse, laadimisvõrgu ja andmete usaldusväärsuse järgi.",
- "map_btn": "Ava kaart",
+ "map_btn": "Avage kaart",
  "countries_h": "Riigid",
  "all_btn": "Kõik riigid",
  "region_h": "Serbia ja Balkan",
@@ -38,6 +38,12 @@
  "method_h1": "Metoodika",
  "method_desc": "Kuidas kohti ühendatakse, kui usaldusväärne iga koht on ja millised lehed on olemas.",
  "method_p": "Eri allikate kirjed, mis kirjeldavad sama kohta, ühendatakse üheks. Iga koht saab andmete usaldusväärsuse hinde 0–100 (allika tüüp, teine allikas, värskus). Riigi lehe jaoks on vaja vähemalt 100 avalikku kohta usaldusväärsusega 50 või rohkem, linna lehe jaoks vähemalt 20. Valem ja lävendid on selgitatud siin:",
- "pl_loc": {"one": "laadimiskoht", "other": "laadimiskohta"},
- "pl_cc": {"one": "riigis", "other": "riigis"}
+ "pl_loc": {
+  "one": "laadimiskoht",
+  "other": "laadimiskohta"
+ },
+ "pl_cc": {
+  "one": "riigis",
+  "other": "riigis"
+ }
 }

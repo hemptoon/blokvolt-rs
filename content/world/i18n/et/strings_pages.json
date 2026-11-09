@@ -14,7 +14,7 @@
  "dataset_desc": "Elektriautode avalike laadimisjaamade asukohad {country_u}, koondatud avatud allikatest (OpenStreetMap, Open Charge Map, riiklikud registrid jt), koos võimsuse, pistikute, laadimisvõrgu, allikate ja usaldusväärsuse hindega.",
  "dataset_name": "Elektriautode avalikud laadimiskohad {country_u} (avaandmed, ODbL)",
  "disc": "Andmed on esitatud nii, nagu need on, ilma täpsuse ega kättesaadavuse garantiita. Enne teeleasumist tasub operaatoriga üle kontrollida. Kuidas usaldusväärsust arvutatakse ja milliseid allikaid kasutatakse:",
- "download_link": "Laadi avaandmed alla (ODbL)",
+ "download_link": "Laadige avaandmed alla (ODbL)",
  "fallback_u": "asukohas {x}",
  "fast_more": "Näidatud {shown} kiirlaadijat {total}-st; kaardil on kõik.",
  "file_link": "Avaliku kihi iganädalane fail",
@@ -53,7 +53,7 @@
  "net_page": "laadimisvõrgu leht",
  "no_name": "Andmetes nimi puudub",
  "on_map": "kaardil",
- "open_map": "Ava kaardil",
+ "open_map": "Avage kaardil",
  "open_map_ac": "Vahelduvvoolulaadijad kaardil",
  "open_map_dc": "Kiirlaadijad kaardil",
  "p0": "Võimsus märkimata",
@@ -75,19 +75,46 @@
  "p_nonet": "Teadaoleva laadimisvõrguta: {nonet}.",
  "p_shown": "Näidatud: {n} avatud allikatest, mitte kõik olemasolevad laadijad. Punktid usaldusväärsusega alla 40 ja eralaadijad ei ole kaasatud.",
  "pct": "{x}%",
- "pl_city": {"one": "linn", "other": "linna"},
- "pl_city_in": {"one": "linnas", "other": "linnas"},
- "pl_country": {"one": "riik", "other": "riiki"},
- "pl_country_in": {"one": "riigis", "other": "riigis"},
- "pl_loc": {"one": "laadimiskoht", "other": "laadimiskohta"},
- "pl_net": {"one": "laadimisvõrk", "other": "laadimisvõrku"},
- "pl_place": {"one": "asukoht", "other": "asukohta"},
- "pl_point": {"one": "laadimispunkt", "other": "laadimispunkti"},
- "pl_publoc": {"one": "avalik laadimiskoht", "other": "avalikku laadimiskohta"},
+ "pl_city": {
+  "one": "linn",
+  "other": "linna"
+ },
+ "pl_city_in": {
+  "one": "linnas",
+  "other": "linnas"
+ },
+ "pl_country": {
+  "one": "riik",
+  "other": "riiki"
+ },
+ "pl_country_in": {
+  "one": "riigis",
+  "other": "riigis"
+ },
+ "pl_loc": {
+  "one": "laadimiskoht",
+  "other": "laadimiskohta"
+ },
+ "pl_net": {
+  "one": "laadimisvõrk",
+  "other": "laadimisvõrku"
+ },
+ "pl_place": {
+  "one": "asukoht",
+  "other": "asukohta"
+ },
+ "pl_point": {
+  "one": "laadimispunkt",
+  "other": "laadimispunkti"
+ },
+ "pl_publoc": {
+  "one": "avalik laadimiskoht",
+  "other": "avalikku laadimiskohta"
+ },
  "regional_guide": "Piirkondlik teejuht ({country}): laadimisvõrgud, hinnad, toetused",
- "report": "Teata veast",
+ "report": "Teatage veast",
  "report_map": "Laadimiskoha veast saab teatada kaardil selle kaardi nupuga „Teata veast“.",
- "skip": "Liigu sisu juurde",
+ "skip": "Liikuge sisu juurde",
  "sources_note": "Iga laadimiskoha juures on säilitatud andmete allikas; iga allika litsents on toodud siin. Laadimisvõrkude nimed kuuluvad nende omanikele.",
  "st_countries": "riiki oma lehega",
  "st_dc50": "alalisvooluga alates 50 kW",
