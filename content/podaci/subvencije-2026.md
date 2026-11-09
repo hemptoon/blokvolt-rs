@@ -7,7 +7,7 @@ lead: Za nov električni automobil država 2026. daje 5.000 €, a zahtev se pod
 updated: 28.10.2026
 next_check: 20.11.2026
 published: 2026-09-22
-modified: 2026-10-28
+modified: 2026-11-10
 priority: 0.9
 sources: Uredba o uslovima i načinu sprovođenja subvencionisane kupovine novih vozila koja imaju isključivo električni pogon (Sl. glasnik RS 12/2026, 86/2026) :: https://www.paragraf.rs/propisi/uredba-o-uslovima-subvencionisane-kupovine-elektricnih-hibridnih-vozila.html | eUprava — životna situacija „Električna vozila“ (usluge 01107 i 01108) :: https://euprava.gov.rs/%C5%BEivotna-oblast/18/%C5%BEivotna-situacija/184 | Najčešća pitanja i odgovori — Ministarstvo zaštite životne sredine (PDF) :: https://euprava.gov.rs/media/dokumenta/Najcesca_pitanja_odgovori_subvencija_mv.pdf | Biznis.rs, 10.09.2026 — rok produžen do 1. decembra :: https://biznis.rs/vesti/srbija/produzen-rok-za-subvencije-za-elektricna-vozila-prijave-do-1-decembra/ | 021.rs, 12.09.2026 — rok produžen, 170 miliona pre rebalansa :: https://www.021.rs/info/biznis-i-ekonomija/455006/rok-za-subvencije-za-elektricna-vozila-produzen-do-1-decembra | Tanjug, 07.08.2026 — preko 1.000 zahteva, ~600 vozila finansirano :: https://www.tanjug.rs/ekonomija/srbija/271957/pavkov-veliko-interesovanje-za-elektricna-vozila-u-srbiji-1000-prijava-za-subvencije/vest | Biznis.rs, 31.08.2026 — Skupština usvojila rebalans budžeta za 2026. :: https://biznis.rs/vesti/srbija/skupstina-srbije-usvojila-rebalans-republickog-budzeta-za-2026-godinu/ | Paragraf (Euronews), 28.09.2026 — uslovi i prekid dodele ako novac bude potrošen :: https://www.paragraf.rs/dnevne-vesti/071026/071026-vest10.html | Paragraf dnevne vesti, 12.02.2026 — 170 miliona dinara za 2026 :: https://www.paragraf.rs/dnevne-vesti/120226/120226-vest10.html | B92, 08.01.2026 — rezultati 2025: 980 odobrenih zahteva :: https://www.b92.net/automobili/visoki-napon/196442/subvencije-dale-rezultat-gotovo-1000-elektricnih-automobila-kupljeno-u-2025-pomoc-stize-i-u-2026/vest
 image: ac-punjac-bulevar
@@ -35,7 +35,8 @@ Koje marke se zvanično prodaju u Srbiji, ko ih uvozi i od koje cene: [električ
 - Automobil: putnički (M1) ili laki komercijalni (N1, do 3,5 t). Motocikl: L3–L7, uz teške tricikle. Moped: L1 i L2, uz lake tricikle.
 - Isplata u dinarima, po srednjem kursu NBS na dan isplate.
 - Podnosioce određuje čl. 2, način korišćenja čl. 5 Uredbe. U jednom zahtevu može biti više vozila istog tipa i načina finansiranja.
-- Uredba nema gornju granicu cene, zabranu prodaje u roku od godinu dana, ograničenje „jedno vozilo po podnosiocu“ ni „minimum 15 % učešća kod lizinga“.
+- Uredba nema gornju granicu cene, zabranu prodaje u roku od godinu dana ni ograničenje „jedno vozilo po podnosiocu“.
+- Kod finansijskog lizinga kupac pre isplate subvencije uplaćuje davaocu lizinga najmanje 15 % kupoprodajne cene (čl. 5 st. 2).
 
 </details>
 

@@ -5321,7 +5321,7 @@
  "OTP Leasing — predmeti lizinga u ponudi": "OTP Leasing — leasing items on offer",
  "OTP banka — auto kredit u auto salonu (reprezentativni primer ⟦0⟧)": "OTP banka — car loan at the dealership (representative example ⟦0⟧)",
  "OTP, kredit u auto salonu (primer): EUR fiksna NKS ⟦0⟧ %, EKS ⟦1⟧ %, 13–84 meseca, naknada ⟦2⟧ %; u RSD akcija ⟦3⟧ % do ⟦4⟧ RSD, bez naknade.": "OTP, loan at the car dealership (example): EUR fixed NKS ⟦0⟧ %, EKS ⟦1⟧ %, 13–84 months, fee ⟦2⟧ %; in RSD a promotional ⟦3⟧ % up to ⟦4⟧ RSD, with no fee.",
- "Obaveznih 15 % učešća uz subvenciju u finansijskom lizingu Uredba ne propisuje — vidi <a href=\"/podaci/subvencije-2026/\">subvencije 2026</a>. Porsche Leasing i Intesa Leasing posebne programe ni kamate za električne automobile ne objavljuju.": "The Decree does not require a 15 % down payment with the subsidy in financial leasing — see <a href=\"/podaci/subvencije-2026/\">subsidies 2026</a>. Porsche Leasing and Intesa Leasing publish no special programmes or rates for electric cars.",
+ "Uz subvenciju u finansijskom lizingu Uredba traži da kupac davaocu lizinga uplati najmanje 15 % kupoprodajne cene (čl. 5 st. 2) — vidi <a href=\"/podaci/subvencije-2026/\">subvencije 2026</a>. Porsche Leasing i Intesa Leasing posebne programe ni kamate za električne automobile ne objavljuju.": "With the subsidy in financial leasing, the Decree requires the buyer to pay the lessor at least 15 % of the purchase price (Art. 5(2)) — see <a href=\"/podaci/subvencije-2026/\">subsidies 2026</a>. Porsche Leasing and Intesa Leasing publish no special programmes or rates for electric cars.",
  "Obična (šuko) utičnica, oko ⟦0⟧ kW": "Ordinary (Schuko) socket, about ⟦0⟧ kW",
  "Obična utičnica": "Ordinary socket",
  "Obična šuko utičnica na 16 A pregreje se do ~100 °C za pola sata neprekidnog rada: <a href=\"/bezbednost-punjenja-atest\">bezbednost i atest</a>.": "An ordinary Schuko socket at 16 A overheats to ~100 °C after half an hour of continuous use: <a href=\"/bezbednost-punjenja-atest\">safety and test certificate</a>.",
@@ -7563,7 +7563,8 @@
  "Uputstvo je opšte: tačan postupak za ovo mesto nije objavljen.": "This is a general guide: the exact steps for this place are not published.",
  "Uputstvo korak po korak i rešenja za česte poruke telefona su u <a href=\"/pomoc/android-aplikacija-apk/\">pomoći</a>. Za iPhone i računar: <a href=\"/pomoc/iphone-i-racunar/\">dodavanje na početni ekran</a>.": "Step-by-step instructions and solutions for common phone messages are in <a href=\"/pomoc/android-aplikacija-apk/\">Help</a>. For iPhone and computer: <a href=\"/pomoc/iphone-i-racunar/\">adding to the home screen</a>.",
  "Uračunata je naknada za pokretanje od {s} RSD.": "The start fee of {s} RSD is included.",
- "Uredba nema gornju granicu cene, zabranu prodaje u roku od godinu dana, ograničenje „jedno vozilo po podnosiocu“ ni „minimum 15 % učešća kod lizinga“.": "The Decree has no upper price limit, no ban on selling within a year, no “one vehicle per applicant” restriction and no “minimum 15 % down payment for leasing”.",
+ "Uredba nema gornju granicu cene, zabranu prodaje u roku od godinu dana ni ograničenje „jedno vozilo po podnosiocu“.": "The Decree has no upper price limit, no ban on selling within a year and no “one vehicle per applicant” restriction.",
+ "Kod finansijskog lizinga kupac pre isplate subvencije uplaćuje davaocu lizinga najmanje 15 % kupoprodajne cene (čl. 5 st. 2).": "With financial leasing, the buyer pays the lessor at least 15 % of the purchase price before the subsidy is paid (Art. 5(2)).",
  "Uredba o subvencionisanoj kupovini električnih vozila (Sl. glasnik 12/2026 i 86/2026)": "Decree on the Subsidised Purchase of Electric Vehicles (Official Gazette 12/2026 and 86/2026)",
  "Uredba o subvencionisanoj kupovini novih električnih vozila, čl. 5 — subvencija kao učešće u finansijskom lizingu": "Decree on the subsidised purchase of new electric vehicles, Article 5 — the subsidy as the down payment in financial leasing",
  "Uredba o subvencionisanoj kupovini novih vozila isključivo na električni pogon (Sl. glasnik 12/2026 i 86/2026)": "Decree on the subsidised purchase of new vehicles with exclusively electric drive (Official Gazette 12/2026 and 86/2026)",
@@ -9279,5 +9280,7 @@
  "⟦0⟧–70 RSD/min + 50 RSD po sesiji": "⟦0⟧–70 RSD/min + 50 RSD per session",
  "⟦0⟧–⟦1⟧ RSD<small>ugradnja</small>": "⟦0⟧–⟦1⟧ RSD<small>installation</small>",
  "⟦0⟧–⟦1⟧ cm³": "⟦0⟧–⟦1⟧ cm³",
- "⟦0⟧–⟦1⟧ €, po lokaciji i dobu dana": "⟦0⟧–⟦1⟧ €, depending on location and time of day"
+ "⟦0⟧–⟦1⟧ €, po lokaciji i dobu dana": "⟦0⟧–⟦1⟧ €, depending on location and time of day",
+ "10. novembar 2026": "10 November 2026",
+ "<a href=\"/podaci/subvencije-2026/\">Subvencije 2026</a> i <a href=\"/podaci/krediti-i-lizing/\">Krediti i lizing</a>: ispravka. Uredba (čl. 5 st. 2) ipak traži da kupac uz subvenciju u finansijskom lizingu davaocu lizinga uplati najmanje 15 % kupoprodajne cene; ranije je pisalo da taj uslov ne postoji.": "<a href=\"/podaci/subvencije-2026/\">Subsidies 2026</a> and <a href=\"/podaci/krediti-i-lizing/\">Loans and leasing</a>: correction. The Decree (Art. 5(2)) does require the buyer using the subsidy in financial leasing to pay the lessor at least 15 % of the purchase price; the pages previously said there was no such condition."
 }

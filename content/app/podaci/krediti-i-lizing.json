@@ -12,7 +12,7 @@
       {"value": "oko 20 %", "label": "učešće u lizingu za fizička lica", "icon": "percent"},
       {"value": "13–84", "label": "meseca rok kredita Raiffeisen", "icon": "calendar"}
     ],
-    "important": "Uredba ne propisuje obaveznih 15 % učešća uz subvenciju u finansijskom lizingu"
+    "important": "Uz subvenciju u lizingu Uredba traži najmanje 15 % učešća"
   },
   "en": {
     "hero": {"value": "4,99 %", "label": "Raiffeisen, fixed interest rate in EUR"},
@@ -26,7 +26,7 @@
       {"value": "about 20 %", "label": "down payment in leasing, individuals", "icon": "percent"},
       {"value": "13–84", "label": "months, Raiffeisen loan term", "icon": "calendar"}
     ],
-    "important": "The Decree does not require a 15 % down payment with the subsidy in financial leasing"
+    "important": "With the subsidy in leasing, the Decree requires at least 15 % down"
   },
   "ru": {
     "hero": {"value": "4,99 %", "label": "Raiffeisen, фиксированная ставка в EUR"},
@@ -40,6 +40,6 @@
       {"value": "около 20 %", "label": "взнос в лизинге для физлиц", "icon": "percent"},
       {"value": "13–84", "label": "месяца, срок кредита Raiffeisen", "icon": "calendar"}
     ],
-    "important": "Постановление не требует обязательного взноса 15 % при субсидии в финансовом лизинге"
+    "important": "При субсидии в лизинге постановление требует взнос не менее 15 %"
   }
 }
