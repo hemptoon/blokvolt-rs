@@ -12,7 +12,8 @@ GeoNames is CC BY 4.0: every page that shows these city names credits "GeoNames"
   the next languages `name_hr … name_tr` (hr, bs, sl, mk, sq, de, fr, it, es, pt, nl, pl, cs, sk, hu, ro, bg, el, tr),
   `note`. All 150 countries of the snapshot.
 - `cities.csv`: `geonameid, cc, name_local, name_en, name_sr, name_ru, slug, sr_u, ru_v, decl_ok, note` (contract)
-  plus `stage` (month / quarter / balkan), `decl_ok_sr`, `decl_ok_ru`. Order: month, quarter, balkan; inside a stage by
+  plus `stage` (month / quarter / balkan), `decl_ok_sr`, `decl_ok_ru`. v2 adds 32 cities without a GeoNames stage that K1 uses as agglomeration targets (Marseille, Warszawa, Porto,
+  Napoli…); their `stage` is month in Europe, quarter elsewhere. Order: month, quarter, balkan; inside a stage by
   public chargers with confidence ≥ 50, most first.
 - `networks.csv`: `network` (exactly `operator_canonical`), `name_display`, `slug`, `note` (contract) plus `kind`.
 - `glossary.csv`: `key` and the terms in en, sr, ru, hr, bs, sr_me, sl, mk, sq, de, fr, it, es, pl, `note`.
@@ -97,6 +98,10 @@ build.py), "дубль канона: слить с …", "плейсхолдер
 merged or hidden here.
 
 ## Glossary
+
+v2 (09.11.2026, decision 13): ultra-fast / HPC = 150 kW and up everywhere (`ultra_fast_label`). The Balkan
+sections replace "Ultrabrzo (iznad/preko 50 kW)" with `fast_50_label` ("Brzo (od 50 kW)" in the local form of each
+language) and `hpc_short` with `fast_50_short`.
 
 About 60 terms that the map and the pages share. hr, bs, sr_me (Montenegrin, neutral ijekavian), sq and mk are
 taken from the strings of the blokvolt.com sections (`content/com/local/…`) so the terms match what the site already

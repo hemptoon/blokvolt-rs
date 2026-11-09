@@ -2327,6 +2327,31 @@ geonameid,cc,name_local,name_en,name_sr,name_ru,slug,sr_u,ru_v,decl_ok,note,stag
 2666670,SE,Uddevalla,Uddevalla,Uddevalla,Уддевалла,uddevalla,u gradu Uddevalla,в Уддевалле,0,,month,0,1
 602150,SE,Umeå,Umeå,Umeå,Умео,umea,u gradu Umeå,в Умео,0,,month,0,1
 3056508,SK,Žilina,Žilina,Žilina,Жилина,zilina,u Žilini,в Жилине,1,,month,1,1
+3020686,FR,Dunkerque,Dunkirk,Denkerk,Дюнкерк,dunkerque,u Denkerku,в Дюнкерке,1,"NL: Duinkerke; добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
+2520058,ES,Cartagena,Cartagena,Cartagena,Картахена,cartagena,u gradu Cartagena,в Картахене,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,1
+3133895,NO,Tromsø,Tromsø,Tromsø,Тромсё,tromso,u gradu Tromsø,в Тромсё,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,1
+2267827,PT,Funchal,Funchal,Funchal,Фуншал,funchal,u Funchalu,в Фуншале,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
+2883754,DE,Kronberg im Taunus,Kronberg im Taunus,Kronberg im Taunus,Кронберг-им-Таунус,kronberg-im-taunus,u Kronbergu im Taunus,в Кронберге-им-Таунус,1,"GeoNames: Kronberg; добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
+2732544,PT,Vila Nova de Gaia,Vila Nova de Gaia,Vila Nova de Gaia,Вила-Нова-ди-Гая,vila-nova-de-gaia,u gradu Vila Nova de Gaia,в городе Вила-Нова-ди-Гая,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,0
+2735943,PT,Porto,Porto,Porto,Порту,porto,u gradu Porto,в Порту,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,1
+2509769,ES,Vélez-Málaga,Vélez-Málaga,Vélez-Málaga,Велес-Малага,velez-malaga,u gradu Vélez-Málaga,в Велес-Малаге,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,1
+2521139,ES,Benalmádena,Benalmádena,Benalmádena,Бенальмадена,benalmadena,u gradu Benalmádena,в Бенальмадене,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,1
+3171728,IT,Padova,Padua,Padova,Падуя,padova,u Padovi,в Падуе,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
+3114472,ES,Pamplona,Pamplona,Pamplona,Памплона,pamplona,u gradu Pamplona,в Памплоне,0,"EU: Iruña; добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,1
+2641673,GB,Newcastle upon Tyne,Newcastle upon Tyne,Njukasl,Ньюкасл-апон-Тайн,newcastle-upon-tyne,u Njukaslu,в Ньюкасле-апон-Тайн,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
+3182351,IT,Bari,Bari,Bari,Бари,bari,u gradu Bari,в Бари,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,1
+2775220,AT,Innsbruck,Innsbruck,Insbruk,Инсбрук,innsbruck,u Insbruku,в Инсбруке,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
+2995469,FR,Marseille,Marseille,Marselj,Марсель,marseille,u Marselju,в Марселе,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
+3167096,IT,Sassari,Sassari,Sassari,Сассари,sassari,u gradu Sassari,в Сассари,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,1
+3172394,IT,Napoli,Naples,Napulj,Неаполь,napoli,u Napulju,в Неаполе,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
+3173775,IT,Massa,Massa,Massa,Масса,massa,u gradu Massa,в Массе,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,1
+3179806,IT,Casoria,Casoria,Casoria,Казория,casoria,u gradu Casoria,в Казории,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,1
+6534228,IT,Guidonia Montecelio,Guidonia Montecelio,Guidonia Montecelio,Гвидония-Монтечелио,guidonia-montecelio,u gradu Guidonia Montecelio,в городе Гвидония-Монтечелио,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,0
+2774326,AT,Klagenfurt am Wörthersee,Klagenfurt,Klagenfurt,Клагенфурт,klagenfurt-am-worthersee,u Klagenfurtu,в Клагенфурте,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
+3164603,IT,Venezia,Venice,Venecija,Венеция,venezia,u Veneciji,в Венеции,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
+3180423,IT,Carrara,Carrara,Karara,Каррара,carrara,u Karari,в Карраре,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
+6534232,IT,Lamezia Terme,Lamezia Terme,Lamezia Terme,Ламеция-Терме,lamezia-terme,u gradu Lamezia Terme,в городе Ламеция-Терме,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,0
+756135,PL,Warszawa,Warsaw,Varšava,Варшава,warszawa,u Varšavi,в Варшаве,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
 1880252,SG,Singapore,Singapore,Singapur,Сингапур,singapore,u Singapuru,в Сингапуре,1,,quarter,1,1
 6167865,CA,Toronto,Toronto,Toronto,Торонто,toronto,u Torontu,в Торонто,1,,quarter,1,1
 1819609,HK,九龍,Kowloon,Kaulun,Коулун,kowloon,u gradu Kaulun,в Коулуне,0,"area of Hong Kong, not a separate city; transkripcija",quarter,0,1
@@ -5439,6 +5464,13 @@ geonameid,cc,name_local,name_en,name_sr,name_ru,slug,sr_u,ru_v,decl_ok,note,stag
 5821086,US,Cheyenne,Cheyenne,Cheyenne,Шайенн,cheyenne,u gradu Cheyenne,в Шайенне,0,state capital of Wyoming,quarter,0,1
 7257540,US,Braintree,Braintree,Braintree,Брейнтри,braintree,u gradu Braintree,в Брейнтри,0,town,quarter,0,1
 1513157,UZ,Namangan,Namangan,Namangan,Наманган,namangan,u Namanganu,в Намангане,1,,quarter,1,1
+5809402,US,Sammamish,Sammamish,Sammamish,Саммамиш,sammamish,u gradu Sammamish,в Саммамише,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",quarter,0,1
+323777,TR,Antalya,Antalya,Antalija,Анталья,antalya,u Antaliji,в Анталье,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",quarter,1,1
+745044,TR,İstanbul,Istanbul,Istanbul,Стамбул,istanbul,u Istanbulu,в Стамбуле,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",quarter,1,1
+1692192,PH,Quezon City,Quezon City,Quezon City,Кесон-Сити,quezon-city,u gradu Quezon City,в Кесон-Сити,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",quarter,0,1
+5927690,CA,Coquitlam,Coquitlam,Coquitlam,Кокуитлам,coquitlam,u Coquitlamu,в Кокуитламе,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",quarter,1,1
+12908892,TW,新北,New Taipei City,Novi Tajpej,Новый Тайбэй,new-taipei-city,u Novom Tajpeju,в Новом Тайбэе,1,"transkripcija; добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",quarter,1,1
+3530597,MX,Ciudad de México,Mexico City,Meksiko Siti,Мехико,ciudad-de-mexico,u gradu Meksiko Siti,в Мехико,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",quarter,0,1
 3191648,HR,Rijeka,Rijeka,Rijeka,Риека,rijeka,u Rijeci,в Риеке,1,,balkan,1,1
 3191281,BA,Sarajevo,Sarajevo,Sarajevo,Сараево,sarajevo,u Sarajevu,в Сараеве,1,,balkan,1,1
 3186886,HR,Zagreb,Zagreb,Zagreb,Загреб,zagreb,u Zagrebu,в Загребе,1,,balkan,1,1
