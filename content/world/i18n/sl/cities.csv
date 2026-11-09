@@ -11,7 +11,7 @@ geonameid,name,in_phrase,decl_ok,note
 2756253,Eindhoven,v Eindhovnu,1,
 2747891,Rotterdam,v Rotterdamu,1,
 2911298,Hamburg,v Hamburgu,1,
-8063096,Earlsfield,v kraju Earlsfield,0,
+8063096,Earlsfield,v Earlsfieldu,1,R-SL rule
 2755251,Groningen,v Groningenu,1,
 2643743,London,v Londonu,1,
 2743477,Zwolle,v kraju Zwolle,0,
@@ -21,33 +21,33 @@ geonameid,name,in_phrase,decl_ok,note
 593116,Vilna,v Vilni,1,
 2750053,Nijmegen,v Nijmegenu,1,
 2751283,Maastricht,v Maastrichtu,1,
-2745321,Voorburg,v kraju Voorburg,0,
-2759706,Apeldoorn,v kraju Apeldoorn,0,
-2657697,Acton,v kraju Acton,0,
+2745321,Voorburg,v Voorburgu,1,R-SL rule
+2759706,Apeldoorn,v Apeldoornu,1,R-SL rule
+2657697,Acton,v Actonu,1,R-SL rule
 3067696,Praga,v Pragi,1,
-2759821,Amersfoort,v kraju Amersfoort,0,
-2748076,Rijswijk,v kraju Rijswijk,0,
-2754447,Helmond,v kraju Helmond,0,
-2747930,Roosendaal,v kraju Roosendaal,0,
+2759821,Amersfoort,v Amersfoortu,1,R-SL rule
+2748076,Rijswijk,v Rijswijku,1,R-SL rule
+2754447,Helmond,v Helmondu,1,R-SL rule
+2747930,Roosendaal,v Roosendaalu,1,R-SL rule
 2759879,Almere Stad,v kraju Almere Stad,0,
 2867714,München,v Münchnu,1,
 3345437,Camden Town,v kraju Camden Town,0,
 2746932,Spijkenisse,v kraju Spijkenisse,0,
-2759426,Barendrecht,v kraju Barendrecht,0,
+2759426,Barendrecht,v Barendrechtu,1,R-SL rule
 2886242,Köln,v Kölnu,1,
-2756669,Dordrecht,v kraju Dordrecht,0,
-2747596,Schiedam,v kraju Schiedam,0,
-2748000,Roermond,v kraju Roermond,0,
+2756669,Dordrecht,v Dordrechtu,1,R-SL rule
+2747596,Schiedam,v Schiedamu,1,R-SL rule
+2748000,Roermond,v Roermondu,1,R-SL rule
 2879139,Leipzig,v Leipzigu,1,
 2756987,Deventer,v kraju Deventer,0,
-2755420,Gouda,v kraju Gouda,0,
+2755420,Gouda,v Goudi,1,R-SL rule
 2934246,Düsseldorf,v Düsseldorfu,1,
-2757345,Delft,v kraju Delft,0,
+2757345,Delft,v Delftu,1,R-SL rule
 2633655,Woodford Green,v kraju Woodford Green,0,
-2745123,Waalwijk,v kraju Waalwijk,0,
+2745123,Waalwijk,v Waalwijku,1,R-SL rule
 2759798,Amstelveen,v kraju Amstelveen,0,
 2756071,Enschede,v kraju Enschede,0,
-2642414,Mitcham,v kraju Mitcham,0,
+2642414,Mitcham,v Mitchamu,1,R-SL rule
 2747351,'s-Hertogenbosch,v kraju 's-Hertogenbosch,0,
 2759145,Bergen op Zoom,v kraju Bergen op Zoom,0,
 2910831,Hannover,v Hannovru,1,
@@ -55,56 +55,56 @@ geonameid,name,in_phrase,decl_ok,note
 2652221,Coventry,v Coventryju,1,
 2759875,Alphen aan den Rijn,v kraju Alphen aan den Rijn,0,
 2754652,Heerlen,v kraju Heerlen,0,
-6947041,Blackheath,v kraju Blackheath,0,
-2749234,Oss,v kraju Oss,0,
+6947041,Blackheath,v Blackheathu,1,R-SL rule
+2749234,Oss,v Ossu,1,R-SL rule
 2756429,Ede,v kraju Ede,0,
 2751316,Maarssen,v kraju Maarssen,0,
 2759633,Assen,v kraju Assen,0,
-13535632,Maaspoort,v kraju Maaspoort,0,
+13535632,Maaspoort,v Maaspoortu,1,R-SL rule
 2865716,Neuenhagen bei Berlin,v kraju Neuenhagen bei Berlin,0,
 658225,Helsinki,v Helsinkih,1,
-2759661,Arnhem,v kraju Arnhem,0,
+2759661,Arnhem,v Arnhemu,1,R-SL rule
 2928810,Essen,v Essnu,1,
-2751285,Maassluis,v kraju Maassluis,0,
-2759113,Bergschenhoek,v kraju Bergschenhoek,0,
-2750325,Nieuwegein,v kraju Nieuwegein,0,
+2751285,Maassluis,v Maassluisu,1,R-SL rule
+2759113,Bergschenhoek,v Bergschenhoeku,1,R-SL rule
+2750325,Nieuwegein,v Nieuwegeinu,1,R-SL rule
 2849483,Regensburg,v Regensburgu,1,
-2755434,Gorinchem,v kraju Gorinchem,0,
+2755434,Gorinchem,v Gorinchemu,1,R-SL rule
 2743856,Zoetermeer,v kraju Zoetermeer,0,
 2748130,Rijen,v kraju Rijen,0,
 8581595,Harringay,v kraju Harringay,0,
 2751792,Leeuwarden,v kraju Leeuwarden,0,
-2743493,Zwijndrecht,v kraju Zwijndrecht,0,
+2743493,Zwijndrecht,v Zwijndrechtu,1,R-SL rule
 2945024,Braunschweig,v Braunschweigu,1,
-2759040,Best,v kraju Best,0,
+2759040,Best,v Bestu,1,R-SL rule
 2925177,Freiburg im Breisgau,v Freiburgu im Breisgau,1,
 2935517,Dortmund,v Dortmundu,1,
 2745634,Venray,v kraju Venray,0,
 2744514,Wijchen,v kraju Wijchen,0,
-2745774,Veenendaal,v kraju Veenendaal,0,
+2745774,Veenendaal,v Veenendaalu,1,R-SL rule
 2960316,Luxembourg,v Luxembourgu,1,
-2646003,Islington,v kraju Islington,0,
+2646003,Islington,v Islingtonu,1,R-SL rule
 2743608,Zutphen,v kraju Zutphen,0,
-6941548,Ypenburg,v kraju Ypenburg,0,
+6941548,Ypenburg,v Ypenburgu,1,R-SL rule
 2654710,Brighton,v Brightonu,1,
-2756161,Elst,v kraju Elst,0,
+2756161,Elst,v Elstu,1,R-SL rule
 2745467,Vlaardingen,v kraju Vlaardingen,0,
 2861650,Nürnberg,v Nürnbergu,1,
-2754394,Hengelo,v kraju Hengelo,0,
-2823567,Teltow,v kraju Teltow,0,
+2754394,Hengelo,v Hengelu,1,R-SL rule
+2823567,Teltow,v Teltowu,1,R-SL rule
 2987914,Perpignan,v kraju Perpignan,0,
-2750523,Naaldwijk,v kraju Naaldwijk,0,
-2759407,Barneveld,v kraju Barneveld,0,
+2750523,Naaldwijk,v Naaldwijku,1,R-SL rule
+2759407,Barneveld,v Barneveldu,1,R-SL rule
 2791744,Marche-en-Famenne,v kraju Marche-en-Famenne,0,
 2747599,Scheveningen,v kraju Scheveningen,0,
-2744911,Weert,v kraju Weert,0,
-2749450,Oosterhout,v kraju Oosterhout,0,
-2754454,Hellevoetsluis,v kraju Hellevoetsluis,0,
-2756767,Doetinchem,v kraju Doetinchem,0,
+2744911,Weert,v Weertu,1,R-SL rule
+2749450,Oosterhout,v Oosterhoutu,1,R-SL rule
+2754454,Hellevoetsluis,v Hellevoetsluisu,1,R-SL rule
+2756767,Doetinchem,v Doetinchemu,1,R-SL rule
 2744248,Woerden,v kraju Woerden,0,
-2751834,Leek,v kraju Leek,0,
+2751834,Leek,v Leeku,1,R-SL rule
 2946447,Bonn,v Bonnu,1,
-2754848,Harderwijk,v kraju Harderwijk,0,
+2754848,Harderwijk,v Harderwijku,1,R-SL rule
 2805615,Würzburg,v Würzburgu,1,
 2749182,Oud-Beijerland,v kraju Oud-Beijerland,0,
 2753106,Kampen,v kraju Kampen,0,
@@ -112,20 +112,20 @@ geonameid,name,in_phrase,decl_ok,note
 2934691,Duisburg,v Duisburgu,1,
 2860410,Oberhausen,v kraju Oberhausen,0,
 2748083,Rijssen,v kraju Rijssen,0,
-2747169,Sliedrecht,v kraju Sliedrecht,0,
+2747169,Sliedrecht,v Sliedrechtu,1,R-SL rule
 2759794,Amsterdam,v Amsterdamu,1,
 2752923,Kerkrade,v kraju Kerkrade,0,
 2755616,Geleen,v kraju Geleen,0,
-2750065,Nijkerk,v kraju Nijkerk,0,
-2754861,Hardenberg,v kraju Hardenberg,0,
+2750065,Nijkerk,v Nijkerku,1,R-SL rule
+2754861,Hardenberg,v Hardenbergu,1,R-SL rule
 2510911,Sevilla,v Sevilli,1,
-2743977,Zeist,v kraju Zeist,0,
+2743977,Zeist,v Zeistu,1,R-SL rule
 2746005,Uden,v kraju Uden,0,
-2747203,Sittard,v kraju Sittard,0,
+2747203,Sittard,v Sittardu,1,R-SL rule
 2755464,Goirle,v kraju Goirle,0,
 3037656,Angers,v kraju Angers,0,
-2748178,Rhoon,v kraju Rhoon,0,
-2749680,Oisterwijk,v kraju Oisterwijk,0,
+2748178,Rhoon,v Rhoonu,1,R-SL rule
+2749680,Oisterwijk,v Oisterwijku,1,R-SL rule
 2746331,Tiel,v kraju Tiel,0,
 6929992,Berkel en Rodenrijs,v kraju Berkel en Rodenrijs,0,
 2986495,Poitiers,v kraju Poitiers,0,
@@ -135,90 +135,90 @@ geonameid,name,in_phrase,decl_ok,note
 2746504,Tegelen,v kraju Tegelen,0,
 3128760,Barcelona,v Barceloni,1,
 2751773,Leiden,v kraju Leiden,0,
-2755584,Gennep,v kraju Gennep,0,
+2755584,Gennep,v Gennepu,1,R-SL rule
 2925533,Frankfurt na Majni,v Frankfurtu na Majni,1,
-2656295,Barnet,v kraju Barnet,0,
+2656295,Barnet,v Barnetu,1,R-SL rule
 2747364,'s-Gravenzande,v kraju 's-Gravenzande,0,
-2749723,Oegstgeest,v kraju Oegstgeest,0,
-2646004,Isleworth,v kraju Isleworth,0,
-2755619,Geldrop,v kraju Geldrop,0,
+2749723,Oegstgeest,v Oegstgeestu,1,R-SL rule
+2646004,Isleworth,v Isleworthu,1,R-SL rule
+2755619,Geldrop,v Geldropu,1,R-SL rule
 2927930,Falkensee,v kraju Falkensee,0,
-2656333,Barking,v kraju Barking,0,
+2656333,Barking,v Barkingu,1,R-SL rule
 2990440,Nica,v Nici,1,
 2748392,Putten,v kraju Putten,0,
-2755272,Groesbeek,v kraju Groesbeek,0,
+2755272,Groesbeek,v Groesbeeku,1,R-SL rule
 2895992,Ingolstadt,v Ingolstadtu,1,
 2994160,Metz,v Metzu,1,
 2998286,Limoges,v kraju Limoges,0,
-2746766,Steenwijk,v kraju Steenwijk,0,
+2746766,Steenwijk,v Steenwijku,1,R-SL rule
 2756342,Eersel,v kraju Eersel,0,
 3013403,Hérouville-Saint-Clair,v kraju Hérouville-Saint-Clair,0,
-3029241,Caen,v kraju Caen,0,
-2745154,Vught,v kraju Vught,0,
-2755669,Geertruidenberg,v kraju Geertruidenberg,0,
-2748413,Purmerend,v kraju Purmerend,0,
+3029241,Caen,v Caenu,1,R-SL
+2745154,Vught,v Vughtu,1,R-SL rule
+2755669,Geertruidenberg,v Geertruidenbergu,1,R-SL rule
+2748413,Purmerend,v Purmerendu,1,R-SL rule
 2970777,Vannes,v kraju Vannes,0,
 2834498,Schweinfurt,v Schweinfurtu,1,sklon po pravilu (-u)
-2748172,Ridderkerk,v kraju Ridderkerk,0,
-2753996,Hoensbroek,v kraju Hoensbroek,0,
-2755476,Goes,v kraju Goes,0,
+2748172,Ridderkerk,v Ridderkerku,1,R-SL rule
+2753996,Hoensbroek,v Hoensbroeku,1,R-SL rule
+2755476,Goes,v Goesu,1,R-SL rule
 2855328,Passau,v kraju Passau,0,
 2745096,Waddinxveen,v kraju Waddinxveen,0,
 2867543,Münster,v Münstru,1,
-2753801,Hoofddorp,v kraju Hoofddorp,0,
-2911408,Halstenbek,v kraju Halstenbek,0,
-2940132,Chemnitz,v kraju Chemnitz,0,
+2753801,Hoofddorp,v Hoofddorpu,1,R-SL rule
+2911408,Halstenbek,v Halstenbeku,1,R-SL rule
+2940132,Chemnitz,v Chemnitzu,1,R-SL rule
 2853969,Pforzheim,v Pforzheimu,1,sklon po pravilu (-u)
 2752264,Krimpen aan den IJssel,v kraju Krimpen aan den IJssel,0,
-2750896,Middelburg,v kraju Middelburg,0,
-2754064,Hilversum,v kraju Hilversum,0,
+2750896,Middelburg,v Middelburgu,1,R-SL rule
+2754064,Hilversum,v Hilversumu,1,R-SL rule
 2919880,Glinde,v kraju Glinde,0,
 2750947,Meppel,v kraju Meppel,0,
-2881485,Landshut,v kraju Landshut,0,
+2881485,Landshut,v Landshutu,1,R-SL rule
 2869894,Mönchengladbach,v Mönchengladbachu,1,sklon po pravilu (-u)
 2935022,Dresden,v Dresdnu,1,
 3037538,Annemasse,v kraju Annemasse,0,
 2756644,Drachten,v kraju Drachten,0,
-2758831,Blerick,v kraju Blerick,0,
+2758831,Blerick,v Blericku,1,R-SL rule
 2944388,Bremen,v Bremnu,1,
-2751771,Leiderdorp,v kraju Leiderdorp,0,
-2862026,Norderstedt,v kraju Norderstedt,0,
+2751771,Leiderdorp,v Leiderdorpu,1,R-SL rule
+2862026,Norderstedt,v Norderstedtu,1,R-SL rule
 2745088,Wageningen,v kraju Wageningen,0,
-2754659,Heerhugowaard,v kraju Heerhugowaard,0,
+2754659,Heerhugowaard,v Heerhugowaardu,1,R-SL rule
 2744102,Zaltbommel,v kraju Zaltbommel,0,
 2749780,Nuenen,v kraju Nuenen,0,
 2754692,Heemstede,v kraju Heemstede,0,
 2891122,Kiel,v Kielu,1,
-2745677,Velp,v kraju Velp,0,
-2759887,Almelo,v kraju Almelo,0,
-2848845,Reinbek,v kraju Reinbek,0,
+2745677,Velp,v Velpu,1,R-SL rule
+2759887,Almelo,v Almelu,1,R-SL rule
+2848845,Reinbek,v Reinbeku,1,R-SL rule
 2759178,Benthuizen,v kraju Benthuizen,0,
 2947416,Bochum,v Bochumu,1,
 3247449,Aachen,v Aachnu,1,
 2988507,Pariz,v Parizu,1,
 2926271,Flensburg,v Flensburgu,1,sklon po pravilu (-u)
 2756888,Diemen,v kraju Diemen,0,
-2746860,Stadskanaal,v kraju Stadskanaal,0,
+2746860,Stadskanaal,v Stadskanaalu,1,R-SL rule
 2760134,Aalsmeer,v kraju Aalsmeer,0,
 3117735,Madrid,v Madridu,1,
 2748371,Raalte,v kraju Raalte,0,
 3078610,Brno,v Brnu,1,
 2971549,Troyes,v kraju Troyes,0,
-2745641,Venlo,v kraju Venlo,0,
+2745641,Venlo,v Venlu,1,R-SL rule
 2754669,Heerenveen,v kraju Heerenveen,0,
 2990363,Nîmes,v kraju Nîmes,0,
 2918632,Göttingen,v kraju Göttingen,0,
 2745580,Vianen,v kraju Vianen,0,
-2759899,Alkmaar,v kraju Alkmaar,0,
+2759899,Alkmaar,v Alkmaaru,1,R-SL rule
 3032833,Béziers,v kraju Béziers,0,
 2748185,Rhenen,v kraju Rhenen,0,
-2749644,Oldenzaal,v kraju Oldenzaal,0,
+2749644,Oldenzaal,v Oldenzaalu,1,R-SL rule
 2750121,Nieuw-Vennep,v kraju Nieuw-Vennep,0,
 2756059,Epe,v kraju Epe,0,
 13526830,Blankenfelde-Mahlow,v kraju Blankenfelde-Mahlow,0,
 2907911,Heidelberg,v Heidelbergu,1,
-2894003,Kaiserslautern,v kraju Kaiserslautern,0,
-2748729,Papendrecht,v kraju Papendrecht,0,
+2894003,Kaiserslautern,v Kaiserslauternu,1,R-SL rule
+2748729,Papendrecht,v Papendrechtu,1,R-SL rule
 2879185,Leinfelden-Echterdingen,v kraju Leinfelden-Echterdingen,0,
 3037598,Angoulême,v kraju Angoulême,0,
 2753010,Katwijk aan Zee,v kraju Katwijk aan Zee,0,
@@ -230,15 +230,15 @@ geonameid,name,in_phrase,decl_ok,note
 2980291,Saint-Étienne,v kraju Saint-Étienne,0,
 2746804,Steenbergen,v kraju Steenbergen,0,
 2758177,Brummen,v kraju Brummen,0,
-2855745,Paderborn,v kraju Paderborn,0,
-2856883,Osnabrück,v kraju Osnabrück,0,
+2855745,Paderborn,v Paderbornu,1,R-SL rule
+2856883,Osnabrück,v Osnabrücku,1,R-SL rule
 2990355,Niort,v kraju Niort,0,
-6690866,Surbiton,v kraju Surbiton,0,
-2757872,Culemborg,v kraju Culemborg,0,
+6690866,Surbiton,v Surbitonu,1,R-SL rule
+2757872,Culemborg,v Culemborgu,1,R-SL rule
 2959083,Ahrensburg,v Ahrensburgu,1,sklon po pravilu (-u)
-643492,Oulu,v kraju Oulu,0,
+643492,Oulu,v Ouluju,1,R-SL
 3037854,Amiens,v kraju Amiens,0,
-2755003,Haarlem,v kraju Haarlem,0,
+2755003,Haarlem,v Haarlemu,1,R-SL rule
 2873891,Mannheim,v Mannheimu,1,
 2877648,Limburg an der Lahn,v kraju Limburg an der Lahn,0,
 2993002,Montauban,v kraju Montauban,0,
@@ -250,61 +250,61 @@ geonameid,name,in_phrase,decl_ok,note
 3143244,Oslo,v Oslu,1,
 2952984,Bamberg,v Bambergu,1,sklon po pravilu (-u)
 3028641,Carcassonne,v kraju Carcassonne,0,
-2799365,Dilbeek,v kraju Dilbeek,0,
+2799365,Dilbeek,v Dilbeeku,1,R-SL rule
 2874545,Magdeburg,v Magdeburgu,1,
 2950349,Bergisch Gladbach,v kraju Bergisch Gladbach,0,
 588409,Talin,v Talinu,1,
-2744118,Zaandam,v kraju Zaandam,0,
-2744324,Wisch,v kraju Wisch,0,
+2744118,Zaandam,v Zaandamu,1,R-SL rule
+2744324,Wisch,v Wischu,1,R-SL rule
 2744549,Wierden,v kraju Wierden,0,
 2745726,Veghel,v kraju Veghel,0,
 2756723,Dongen,v kraju Dongen,0,
-2907669,Heilbronn,v kraju Heilbronn,0,
+2907669,Heilbronn,v Heilbronnu,1,R-SL rule
 2978640,Saint-Malo,v kraju Saint-Malo,0,
 2992402,Montigny-lès-Metz,v kraju Montigny-lès-Metz,0,
-2757340,Delfzijl,v kraju Delfzijl,0,
-2807240,Wittlich,v kraju Wittlich,0,
+2757340,Delfzijl,v Delfzijlu,1,R-SL rule
+2807240,Wittlich,v Wittlichu,1,R-SL rule
 2867838,Mülheim an der Ruhr,v kraju Mülheim an der Ruhr,0,
 660158,Espoo,v Espooju,1,
 3033123,Besançon,v kraju Besançon,0,
 2639577,Reading,v Readingu,1,
-2750815,Mijdrecht,v kraju Mijdrecht,0,
+2750815,Mijdrecht,v Mijdrechtu,1,R-SL rule
 2751687,Leusden,v kraju Leusden,0,
-2945756,Bottrop,v kraju Bottrop,0,
-2747034,Soest,v kraju Soest,0,
-2911240,Hamm,v kraju Hamm,0,
+2945756,Bottrop,v Bottropu,1,R-SL rule
+2747034,Soest,v Soestu,1,R-SL rule
+2911240,Hamm,v Hammu,1,R-SL rule
 2938540,Deggendorf,v Deggendorfu,1,sklon po pravilu (-u)
 2512989,Palma,v Palmi,1,
 2981280,Saint-Brieuc,v kraju Saint-Brieuc,0,
 3027422,Chambéry,v kraju Chambéry,0,
-2745860,Valkenswaard,v kraju Valkenswaard,0,
+2745860,Valkenswaard,v Valkenswaardu,1,R-SL rule
 633679,Turku,v Turkuju,1,
 3038261,Albi,v kraju Albi,0,
 2747584,Schijndel,v kraju Schijndel,0,
 2968748,Villefranche-sur-Saône,v kraju Villefranche-sur-Saône,0,
-2656065,Beckenham,v kraju Beckenham,0,
+2656065,Beckenham,v Beckenhamu,1,R-SL rule
 2745301,Voorschoten,v kraju Voorschoten,0,
-2750884,Middelharnis,v kraju Middelharnis,0,
+2750884,Middelharnis,v Middelharnisu,1,R-SL rule
 2875601,Lübeck,v Lübecku,1,
 2988358,Pau,v kraju Pau,0,
 3027484,Chalon-sur-Saône,v kraju Chalon-sur-Saône,0,
-2634579,Welling,v kraju Welling,0,
+2634579,Welling,v Wellingu,1,R-SL rule
 2756507,Duiven,v kraju Duiven,0,
 2831088,Sonthofen,v kraju Sonthofen,0,
 2921466,Gelsenkirchen,v kraju Gelsenkirchen,0,
 2940231,Castrop-Rauxel,v kraju Castrop-Rauxel,0,
 3017253,Fréjus,v kraju Fréjus,0,
-2750039,Nijverdal,v kraju Nijverdal,0,
+2750039,Nijverdal,v Nijverdalu,1,R-SL rule
 2844988,Rosenheim,v Rosenheimu,1,sklon po pravilu (-u)
 2875115,Lüneburg,v Lüneburgu,1,sklon po pravilu (-u)
 2745392,Vlissingen,v kraju Vlissingen,0,
-2751738,Lelystad,v kraju Lelystad,0,
+2751738,Lelystad,v Lelystadu,1,R-SL rule
 2874225,Mainz,v Mainzu,1,
-2923544,Fürth,v kraju Fürth,0,
+2923544,Fürth,v Fürthu,1,R-SL rule
 3020035,Épinal,v kraju Épinal,0,
 3026613,Charleville-Mézières,v kraju Charleville-Mézières,0,
-2755605,Gemert,v kraju Gemert,0,
-2940204,Cham,v kraju Cham,0,
+2755605,Gemert,v Gemertu,1,R-SL rule
+2940204,Cham,v Chamu,1,R-SL rule
 847506,Suutarila,v kraju Suutarila,0,
 3034006,Beauvais,v kraju Beauvais,0,
 3036784,Arras,v kraju Arras,0,
@@ -312,12 +312,12 @@ geonameid,name,in_phrase,decl_ok,note
 2806654,Wolfsburg,v Wolfsburgu,1,
 2881062,Langenhagen,v kraju Langenhagen,0,
 2994798,Meaux,v kraju Meaux,0,
-2756232,Elburg,v kraju Elburg,0,
+2756232,Elburg,v Elburgu,1,R-SL rule
 2878234,Leverkusen,v kraju Leverkusen,0,
 2934486,Düren,v kraju Düren,0,
 2798573,Eupen,v kraju Eupen,0,
 2939969,Cloppenburg,v Cloppenburgu,1,sklon po pravilu (-u)
-2753638,Hoorn,v kraju Hoorn,0,
+2753638,Hoorn,v Hoornu,1,R-SL rule
 2882087,Laatzen,v kraju Laatzen,0,
 2920512,Gießen,v kraju Gießen,0,
 2955272,Aschaffenburg,v Aschaffenburgu,1,sklon po pravilu (-u)
@@ -325,22 +325,22 @@ geonameid,name,in_phrase,decl_ok,note
 2992703,Montélimar,v kraju Montélimar,0,
 2821164,Trier,v kraju Trier,0,
 634963,Tampere,v Tampereju,1,
-3003796,Le Havre,v kraju Le Havre,0,
+3003796,Le Havre,v Le Havru,1,R-SL
 2655603,Birmingham,v Birminghamu,1,
-2746839,Staphorst,v kraju Staphorst,0,
+2746839,Staphorst,v Staphorstu,1,R-SL rule
 2753468,Huizen,v kraju Huizen,0,
 2954172,Augsburg,v Augsburgu,1,
 655194,Jyväskylä,v kraju Jyväskylä,0,
-2743949,Zevenaar,v kraju Zevenaar,0,
-2744991,Wassenaar,v kraju Wassenaar,0,
+2743949,Zevenaar,v Zevenaaru,1,R-SL rule
+2744991,Wassenaar,v Wassenaaru,1,R-SL rule
 2755633,Geldermalsen,v kraju Geldermalsen,0,
-2905457,Herzogenaurach,v kraju Herzogenaurach,0,
+2905457,Herzogenaurach,v Herzogenaurachu,1,R-SL rule
 2998150,Lisieux,v kraju Lisieux,0,
 2785622,Tervuren,v kraju Tervuren,0,
 2817818,Vaterstetten,v kraju Vaterstetten,0,
-2826099,Straubing,v kraju Straubing,0,
+2826099,Straubing,v Straubingu,1,R-SL rule
 3104324,Zaragoza,v Zaragozi,1,
-2753706,Hoogezand,v kraju Hoogezand,0,
+2753706,Hoogezand,v Hoogezandu,1,R-SL rule
 2906331,Hennigsdorf,v Hennigsdorfu,1,sklon po pravilu (-u)
 2749812,Noordwijk-Binnen,v kraju Noordwijk-Binnen,0,
 2929567,Erlangen,v kraju Erlangen,0,
@@ -348,14 +348,14 @@ geonameid,name,in_phrase,decl_ok,note
 2881646,Landau in der Pfalz,v kraju Landau in der Pfalz,0,
 2973783,Strasbourg,v Strasbourgu,1,
 3014078,Haguenau,v kraju Haguenau,0,
-2751808,Leerdam,v kraju Leerdam,0,
-2759544,Baarn,v kraju Baarn,0,
+2751808,Leerdam,v Leerdamu,1,R-SL rule
+2759544,Baarn,v Baarnu,1,R-SL rule
 2761369,Dunaj,na Dunaju,1,
 2802433,Beersel,v kraju Beersel,0,
-2864118,Neuss,v kraju Neuss,0,
-2747751,Sassenheim,v kraju Sassenheim,0,
+2864118,Neuss,v Neussu,1,R-SL rule
+2747751,Sassenheim,v Sassenheimu,1,R-SL rule
 2872649,Mayen,v kraju Mayen,0,
-2936909,Dingolfing,v kraju Dingolfing,0,
+2936909,Dingolfing,v Dingolfingu,1,R-SL rule
 261745,Heraklion,v Heraklionu,1,
 2751651,Lichtenvoorde,v kraju Lichtenvoorde,0,
 2772400,Linz,v Linzu,1,
@@ -366,15 +366,15 @@ geonameid,name,in_phrase,decl_ok,note
 2787889,Roeselare,v kraju Roeselare,0,
 2835297,Schwandorf,v Schwandorfu,1,sklon po pravilu (-u)
 2904789,Hildesheim,v Hildesheimu,1,sklon po pravilu (-u)
-3030300,Brest,v kraju Brest,0,
+3030300,Brest,v Brestu,1,R-SL
 2892794,Karlsruhe,v Karlsruheju,1,
 2904795,Hilden,v kraju Hilden,0,
 3025053,Cholet,v kraju Cholet,0,
 2748591,Pijnacker,v kraju Pijnacker,0,
 2998517,Libourne,v kraju Libourne,0,
-3035681,Avignon,v kraju Avignon,0,
-2745973,Uithoorn,v kraju Uithoorn,0,
-2747063,Sneek,v kraju Sneek,0,
+3035681,Avignon,v Avignonu,1,R-SL
+2745973,Uithoorn,v Uithoornu,1,R-SL rule
+2747063,Sneek,v Sneeku,1,R-SL rule
 2754408,Hendrik-Ido-Ambacht,v kraju Hendrik-Ido-Ambacht,0,
 2795795,Heusy,v kraju Heusy,0,
 2809346,Wiesbaden,v Wiesbadnu,1,
@@ -382,44 +382,44 @@ geonameid,name,in_phrase,decl_ok,note
 2880144,Lauf an der Pegnitz,v kraju Lauf an der Pegnitz,0,
 2998224,Lingolsheim,v kraju Lingolsheim,0,
 2758598,Borne,v kraju Borne,0,
-2783310,Zaventem,v kraju Zaventem,0,
+2783310,Zaventem,v Zaventemu,1,R-SL rule
 2833564,Seevetal,v Seevetalu,1,sklon po pravilu (-u)
-3114711,Oviedo,v kraju Oviedo,0,
+3114711,Oviedo,v Oviedu,1,R-SL
 2977921,Saint-Nazaire,v kraju Saint-Nazaire,0,
 2983362,Roanne,v kraju Roanne,0,
 3035843,Auxerre,v kraju Auxerre,0,
 2751547,Lisse,v kraju Lisse,0,
-2756139,Emmeloord,v kraju Emmeloord,0,
-2759915,Alblasserdam,v kraju Alblasserdam,0,
+2756139,Emmeloord,v Emmeloordu,1,R-SL rule
+2759915,Alblasserdam,v Alblasserdamu,1,R-SL rule
 2871992,Memmingen,v kraju Memmingen,0,
 2892080,Kaufbeuren,v kraju Kaufbeuren,0,
 2940213,Celle,v kraju Celle,0,
-2947421,Bocholt,v kraju Bocholt,0,
-2951825,Bayreuth,v kraju Bayreuth,0,
+2947421,Bocholt,v Bocholtu,1,R-SL rule
+2951825,Bayreuth,v Bayreuthu,1,R-SL rule
 3038789,Abbeville,v kraju Abbeville,0,
-2744904,Weesp,v kraju Weesp,0,
+2744904,Weesp,v Weespu,1,R-SL rule
 2864475,Neumünster,v kraju Neumünster,0,
 2891834,Kelheim,v Kelheimu,1,sklon po pravilu (-u)
 2929670,Erfurt,v Erfurtu,1,
 3029974,Brive-la-Gaillarde,v kraju Brive-la-Gaillarde,0,
-2647550,Hampton,v kraju Hampton,0,
-2758174,Brunssum,v kraju Brunssum,0,
+2647550,Hampton,v Hamptonu,1,R-SL rule
+2758174,Brunssum,v Brunssumu,1,R-SL rule
 727011,Sofija,v Sofiji,1,
 2814791,Waldshut-Tiengen,v kraju Waldshut-Tiengen,0,
 2848245,Rendsburg,v Rendsburgu,1,sklon po pravilu (-u)
 2881509,Landsberg am Lech,v kraju Landsberg am Lech,0,
-2897132,Husum,v kraju Husum,0,
-2902768,Hof,v kraju Hof,0,
+2897132,Husum,v Husumu,1,R-SL rule
+2902768,Hof,v Hofu,1,R-SL rule
 2908032,Heide,v kraju Heide,0,
 2951923,Baunatal,v Baunatalu,1,sklon po pravilu (-u)
 2972315,Toulouse,v Toulousu,1,
-2984114,Reims,v kraju Reims,0,
+2984114,Reims,v Reimsu,1,R-SL
 2757220,Den Helder,v kraju Den Helder,0,
 2757850,Dalfsen,v kraju Dalfsen,0,
 2758460,Boxtel,v kraju Boxtel,0,
 2797656,Gent,v Gentu,1,
 2817202,Vilshofen an der Donau,v kraju Vilshofen an der Donau,0,
-2821515,Traunstein,v kraju Traunstein,0,
+2821515,Traunstein,v Traunsteinu,1,R-SL rule
 2939797,Crailsheim,v Crailsheimu,1,sklon po pravilu (-u)
 3032469,Blagnac,v kraju Blagnac,0,
 2991214,Mulhouse,v kraju Mulhouse,0,
@@ -436,33 +436,33 @@ geonameid,name,in_phrase,decl_ok,note
 2755030,Haaksbergen,v kraju Haaksbergen,0,
 2885734,Königswinter,v kraju Königswinter,0,
 2927268,Fellbach,v Fellbachu,1,sklon po pravilu (-u)
-650224,Kuopio,v kraju Kuopio,0,
+650224,Kuopio,v Kuopiu,1,R-SL
 3034475,Bayonne,v kraju Bayonne,0,
 3034483,Bayeux,v kraju Bayeux,0,
-2749756,Nunspeet,v kraju Nunspeet,0,
+2749756,Nunspeet,v Nunspeetu,1,R-SL rule
 2814270,Wangen im Allgäu,v kraju Wangen im Allgäu,0,
 2817220,Villingen-Schwenningen,v kraju Villingen-Schwenningen,0,
 2881885,Lahr/Schwarzwald,v kraju Lahr/Schwarzwald,0,
-2913192,Haar,v kraju Haar,0,
+2913192,Haar,v Haaru,1,R-SL rule
 2955936,Ansbach,v Ansbachu,1,sklon po pravilu (-u)
 659180,Hämeenlinna,v kraju Hämeenlinna,0,
 2987967,Périgueux,v kraju Périgueux,0,
-2756896,Didam,v kraju Didam,0,
-2870221,Moers,v kraju Moers,0,
+2756896,Didam,v Didamu,1,R-SL rule
+2870221,Moers,v Moersu,1,R-SL rule
 2975758,Saumur,v kraju Saumur,0,
 3038224,Alès,v kraju Alès,0,
 2655775,Bexley,v kraju Bexley,0,
-2753355,IJsselstein,v kraju IJsselstein,0,
+2753355,IJsselstein,v IJsselsteinu,1,R-SL rule
 2803160,Ans,v kraju Ans,0,
 2852458,Potsdam,v Potsdamu,1,
-2873289,Marktredwitz,v kraju Marktredwitz,0,
+2873289,Marktredwitz,v Marktredwitzu,1,R-SL rule
 2925910,Forchheim,v Forchheimu,1,sklon po pravilu (-u)
 2514256,Málaga,v Málagi,1,
 2747227,Sint-Oedenrode,v kraju Sint-Oedenrode,0,
 2756295,Eibergen,v kraju Eibergen,0,
 2812174,Weinheim,v Weinheimu,1,sklon po pravilu (-u)
 2826595,Stolberg (Rhld.),v kraju Stolberg (Rhld.),0,
-640999,Pori,v kraju Pori,0,
+640999,Pori,v Poriju,1,R-SL
 2968771,Villefontaine,v kraju Villefontaine,0,
 3028263,Castres,v kraju Castres,0,
 255683,Patras,v Patrasu,1,
@@ -470,7 +470,7 @@ geonameid,name,in_phrase,decl_ok,note
 2805753,Wuppertal,v Wuppertalu,1,sklon po pravilu (-u)
 2873759,Marburg,v Marburgu,1,sklon po pravilu (-u)
 2895569,Itzehoe,v kraju Itzehoe,0,
-2754073,Hillegom,v kraju Hillegom,0,
+2754073,Hillegom,v Hillegomu,1,R-SL rule
 2875392,Ludwigsburg,v Ludwigsburgu,1,sklon po pravilu (-u)
 2936871,Dinslaken,v kraju Dinslaken,0,
 2973385,Tarbes,v kraju Tarbes,0,
@@ -481,11 +481,11 @@ geonameid,name,in_phrase,decl_ok,note
 3014856,Grasse,v kraju Grasse,0,
 2857458,Oldenburg,v Oldenburgu,1,sklon po pravilu (-u)
 2953324,Bad Tölz,v kraju Bad Tölz,0,
-3003603,Le Mans,v kraju Le Mans,0,
+3003603,Le Mans,v Le Mansu,1,R-SL
 2743997,Zeewolde,v kraju Zeewolde,0,
 2744344,Winschoten,v kraju Winschoten,0,
 2820860,Tübingen,v kraju Tübingen,0,
-2853572,Pirna,v kraju Pirna,0,
+2853572,Pirna,v Pirni,1,R-SL rule
 2913537,Gunzenhausen,v kraju Gunzenhausen,0,
 3007609,Lannion,v kraju Lannion,0,
 2930523,Emmendingen,v kraju Emmendingen,0,
@@ -495,13 +495,13 @@ geonameid,name,in_phrase,decl_ok,note
 2855525,Papenburg,v Papenburgu,1,sklon po pravilu (-u)
 2857798,Offenburg,v Offenburgu,1,sklon po pravilu (-u)
 2913555,Günzburg,v Günzburgu,1,sklon po pravilu (-u)
-2940383,Calw,v kraju Calw,0,
+2940383,Calw,v Calwu,1,R-SL rule
 2953416,Bad Kreuznach,v kraju Bad Kreuznach,0,
-2834282,Schwerin,v kraju Schwerin,0,
+2834282,Schwerin,v Schwerinu,1,R-SL rule
 2851746,Pulheim,v Pulheimu,1,sklon po pravilu (-u)
 2864034,Neustadt in Holstein,v kraju Neustadt in Holstein,0,
-2886946,Koblenz,v kraju Koblenz,0,
-2895669,Iserlohn,v kraju Iserlohn,0,
+2886946,Koblenz,v Koblenzu,1,R-SL rule
+2895669,Iserlohn,v Iserlohnu,1,R-SL rule
 2922530,Garmisch-Partenkirchen,v kraju Garmisch-Partenkirchen,0,
 2971053,Valence,v kraju Valence,0,
 3024297,Colmar,v kraju Colmar,0,

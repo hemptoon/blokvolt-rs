@@ -6,7 +6,7 @@
   "lead": "Zemljevid temelji na odprtih podatkih, pri vsaki točki pa je navedeno, od kod izvira.",
   "intro": "Zemljevid združuje odprte podatke iz številnih virov: uradnih registrov, odprtih podatkov državnih organov, OpenStreetMap, Open Charge Map in strani z lokacijami samih operaterjev. Zapisi so združeni, očiščeni in spremenjeni, zato se točka na zemljevidu lahko razlikuje od izvirnega zapisa. Za vsa omrežja veljajo enaka pravila. Zemljevid ne ocenjuje omrežij ali operaterjev.",
   "osm_h": "OpenStreetMap in ODbL",
-  "osm_p": "Podatki © sodelavci OpenStreetMap, na voljo pod licenco Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Združena zbirka točk, ki vsebuje podatke OpenStreetMap, je pod isto licenco na voljo na strani \"Prenos odprtih podatkov\": {download_url}.",
+  "osm_p": "Podatki © sodelavci OpenStreetMap, na voljo pod licenco Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Združena zbirka točk, ki vsebuje podatke OpenStreetMap, je pod isto licenco na voljo na strani »Prenos odprtih podatkov«: {download_url}.",
   "sources_h": "Viri in licence",
   "sources_note": "Navedeni so samo viri, ki se dejansko pojavljajo v trenutnih podatkih, vsak s svojo licenco in zahtevano navedbo avtorstva.",
   "conf_h": "Kako se izračuna zanesljivost",
@@ -65,7 +65,7 @@
    "Imena omrežij in blagovne znamke pripadajo njihovim lastnikom.",
    "BlokVolt ni povezan z operaterji ali z ustanovami, ki objavljajo podatke, in ti tega zemljevida ne podpirajo.",
    "Imena zasebnih oseb niso prikazana; zasebni domači polnilniki niso na zemljevidu.",
-   "Za prijavo napake ali zahtevo za popravek ali odstranitev uporabite gumb \"Prijavite napako\" na kartici točke ali pišite na {email}. Odgovor boste prejeli v 30 dneh."
+   "Za prijavo napake ali zahtevo za popravek ali odstranitev uporabite gumb »Prijavite napako« na kartici točke ali pišite na {email}. Odgovor boste prejeli v 30 dneh."
   ],
   "licence_texts_h": "Besedila licenc",
   "licence_texts": [
@@ -154,7 +154,7 @@
    ],
    [
     "sources",
-    "Ključi virov, ločeni z vejico (glejte stran \"O podatkih\")"
+    "Ključi virov, ločeni z vejico (glejte stran »O podatkih«)"
    ],
    [
     "last_confirmed",
@@ -166,10 +166,10 @@
    ]
   ],
   "licence_h": "Licenca",
-  "licence_p": "Datoteka je na voljo pod licenco ODbL 1.0. Podatke lahko delite, iz njih ustvarjate dela in jih prilagajate, pod pogojem, da navedete \"© OpenStreetMap contributors, BlokVolt\" in vsako prilagojeno podatkovno zbirko delite pod isto licenco. Ohranite jo odprto: ne uporabljajte tehničnih omejitev, ki bi omejevale te pravice. Celotno besedilo: https://opendatacommons.org/licenses/odbl/1-0/",
+  "licence_p": "Datoteka je na voljo pod licenco ODbL 1.0. Podatke lahko delite, iz njih ustvarjate dela in jih prilagajate, pod pogojem, da navedete »© OpenStreetMap contributors, BlokVolt« in vsako prilagojeno podatkovno zbirko delite pod isto licenco. Ohranite jo odprto: ne uporabljajte tehničnih omejitev, ki bi omejevale te pravice. Celotno besedilo: https://opendatacommons.org/licenses/odbl/1-0/",
   "file_h": "Datoteka",
   "file_missing": "Datoteka za ta teden je v pripravi. Preverite znova pozneje.",
   "attribution_h": "Kako navesti vir",
-  "attribution_p": "Ko uporabljate podatke, prikažite \"© OpenStreetMap contributors, BlokVolt\" s povezavo na www.openstreetmap.org/copyright in na to stran ter navedite licenco ODbL 1.0. Podatki iz drugih virov ohranijo lastno navedbo avtorstva, ki je navedena na strani \"O podatkih\"."
+  "attribution_p": "Ko uporabljate podatke, prikažite »© OpenStreetMap contributors, BlokVolt« s povezavo na www.openstreetmap.org/copyright in na to stran ter navedite licenco ODbL 1.0. Podatki iz drugih virov ohranijo lastno navedbo avtorstva, ki je navedena na strani »O podatkih«."
  }
 }
