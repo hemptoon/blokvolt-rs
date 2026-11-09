@@ -1,0 +1,13 @@
+{
+ "home": "/sv/",
+ "map": "/sv/karta/",
+ "hub": "/sv/laddstationer/",
+ "net": "natverk",
+ "about": "om-data",
+ "download": "ladda-ner",
+ "gnet": "/sv/laddnatverk/",
+ "prices": "/sv/laddpriser/",
+ "shell_about": "/sv/om/",
+ "sources": "/sv/kallor/",
+ "methodology": "/sv/metod/"
+}

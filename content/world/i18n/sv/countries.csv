@@ -1,0 +1,151 @@
+cc,name,slug,in_phrase,note
+AD,Andorra,andorra,i Andorra,
+AE,Förenade Arabemiraten,forenade-arabemiraten,i Förenade Arabemiraten,
+AL,Albanien,albanien,i Albanien,
+AM,Armenien,armenien,i Armenien,
+AR,Argentina,argentina,i Argentina,
+AT,Österrike,osterrike,i Österrike,
+AU,Australien,australien,i Australien,
+AW,Aruba,aruba,på Aruba,prep på
+AX,Åland,aland,på Åland,prep på
+AZ,Azerbajdzjan,azerbajdzjan,i Azerbajdzjan,
+BA,Bosnien och Hercegovina,bosnien-och-hercegovina,i Bosnien och Hercegovina,
+BB,Barbados,barbados,på Barbados,prep på
+BE,Belgien,belgien,i Belgien,
+BG,Bulgarien,bulgarien,i Bulgarien,
+BH,Bahrain,bahrain,i Bahrain,
+BO,Bolivia,bolivia,i Bolivia,
+BR,Brasilien,brasilien,i Brasilien,
+BW,Botswana,botswana,i Botswana,
+BY,Belarus,belarus,i Belarus,
+BZ,Belize,belize,i Belize,
+CA,Kanada,kanada,i Kanada,
+CH,Schweiz,schweiz,i Schweiz,
+CL,Chile,chile,i Chile,
+CN,Kina,kina,i Kina,
+CO,Colombia,colombia,i Colombia,
+CR,Costa Rica,costa-rica,i Costa Rica,
+CU,Kuba,kuba,på Kuba,prep på
+CY,Cypern,cypern,på Cypern,prep på
+CZ,Tjeckien,tjeckien,i Tjeckien,
+DE,Tyskland,tyskland,i Tyskland,
+DK,Danmark,danmark,i Danmark,
+DO,Dominikanska republiken,dominikanska-republiken,i Dominikanska republiken,
+DZ,Algeriet,algeriet,i Algeriet,
+EC,Ecuador,ecuador,i Ecuador,
+EE,Estland,estland,i Estland,
+EG,Egypten,egypten,i Egypten,
+ES,Spanien,spanien,i Spanien,
+ET,Etiopien,etiopien,i Etiopien,
+FI,Finland,finland,i Finland,
+FJ,Fiji,fiji,på Fiji,prep på
+FO,Färöarna,faroarna,på Färöarna,prep på
+FR,Frankrike,frankrike,i Frankrike,
+GB,Storbritannien,storbritannien,i Storbritannien,
+GE,Georgien,georgien,i Georgien,
+GG,Guernsey,guernsey,på Guernsey,prep på
+GH,Ghana,ghana,i Ghana,
+GI,Gibraltar,gibraltar,i Gibraltar,
+GR,Grekland,grekland,i Grekland,
+GT,Guatemala,guatemala,i Guatemala,
+GY,Guyana,guyana,i Guyana,
+HK,Hongkong,hongkong,i Hongkong,"short form, CLDR: Hongkong SAR"
+HR,Kroatien,kroatien,i Kroatien,
+HT,Haiti,haiti,på Haiti,prep på
+HU,Ungern,ungern,i Ungern,
+ID,Indonesien,indonesien,i Indonesien,
+IE,Irland,irland,i Irland,
+IL,Israel,israel,i Israel,
+IM,Isle of Man,isle-of-man,på Isle of Man,prep på
+IN,Indien,indien,i Indien,
+IQ,Irak,irak,i Irak,
+IR,Iran,iran,i Iran,
+IS,Island,island,på Island,prep på
+IT,Italien,italien,i Italien,
+JE,Jersey,jersey,på Jersey,prep på
+JM,Jamaica,jamaica,på Jamaica,prep på
+JO,Jordanien,jordanien,i Jordanien,
+JP,Japan,japan,i Japan,
+KE,Kenya,kenya,i Kenya,
+KG,Kirgizistan,kirgizistan,i Kirgizistan,
+KH,Kambodja,kambodja,i Kambodja,
+KR,Sydkorea,sydkorea,i Sydkorea,
+KW,Kuwait,kuwait,i Kuwait,
+KY,Caymanöarna,caymanoarna,på Caymanöarna,prep på
+KZ,Kazakstan,kazakstan,i Kazakstan,
+LB,Libanon,libanon,i Libanon,
+LC,S:t Lucia,st-lucia,på S:t Lucia,prep på
+LI,Liechtenstein,liechtenstein,i Liechtenstein,
+LK,Sri Lanka,sri-lanka,på Sri Lanka,prep på
+LT,Litauen,litauen,i Litauen,
+LU,Luxemburg,luxemburg,i Luxemburg,
+LV,Lettland,lettland,i Lettland,
+MA,Marocko,marocko,i Marocko,
+MC,Monaco,monaco,i Monaco,
+MD,Moldavien,moldavien,i Moldavien,
+ME,Montenegro,montenegro,i Montenegro,
+MF,Saint-Martin,saint-martin,på Saint-Martin,prep på
+MK,Nordmakedonien,nordmakedonien,i Nordmakedonien,
+MM,Myanmar,myanmar,i Myanmar,"short form, CLDR: Myanmar (Burma)"
+MN,Mongoliet,mongoliet,i Mongoliet,
+MO,Macao,macao,i Macao,"short form, CLDR: Macao SAR"
+MT,Malta,malta,på Malta,prep på
+MU,Mauritius,mauritius,på Mauritius,prep på
+MX,Mexiko,mexiko,i Mexiko,
+MY,Malaysia,malaysia,i Malaysia,
+NA,Namibia,namibia,i Namibia,
+NC,Nya Kaledonien,nya-kaledonien,på Nya Kaledonien,prep på
+NG,Nigeria,nigeria,i Nigeria,
+NI,Nicaragua,nicaragua,i Nicaragua,
+NL,Nederländerna,nederlanderna,i Nederländerna,
+NO,Norge,norge,i Norge,
+NP,Nepal,nepal,i Nepal,
+NZ,Nya Zeeland,nya-zeeland,i Nya Zeeland,
+OM,Oman,oman,i Oman,
+PA,Panama,panama,i Panama,
+PE,Peru,peru,i Peru,
+PF,Franska Polynesien,franska-polynesien,i Franska Polynesien,
+PH,Filippinerna,filippinerna,på Filippinerna,prep på
+PK,Pakistan,pakistan,i Pakistan,
+PL,Polen,polen,i Polen,
+PR,Puerto Rico,puerto-rico,på Puerto Rico,prep på
+PS,Palestinska territorierna,palestinska-territorierna,i Palestinska territorierna,
+PT,Portugal,portugal,i Portugal,
+PY,Paraguay,paraguay,i Paraguay,
+QA,Qatar,qatar,i Qatar,
+RE,Réunion,reunion,på Réunion,prep på
+RO,Rumänien,rumanien,i Rumänien,
+RS,Serbien,serbien,i Serbien,
+RU,Ryssland,ryssland,i Ryssland,
+RW,Rwanda,rwanda,i Rwanda,
+SA,Saudiarabien,saudiarabien,i Saudiarabien,
+SD,Sudan,sudan,i Sudan,
+SE,Sverige,sverige,i Sverige,
+SG,Singapore,singapore,i Singapore,
+SI,Slovenien,slovenien,i Slovenien,
+SJ,Svalbard och Jan Mayen,svalbard-och-jan-mayen,på Svalbard och Jan Mayen,prep på
+SK,Slovakien,slovakien,i Slovakien,
+SM,San Marino,san-marino,i San Marino,
+SO,Somalia,somalia,i Somalia,
+SR,Surinam,surinam,i Surinam,
+SV,El Salvador,el-salvador,i El Salvador,
+SY,Syrien,syrien,i Syrien,
+SZ,Eswatini,eswatini,i Eswatini,
+TH,Thailand,thailand,i Thailand,
+TJ,Tadzjikistan,tadzjikistan,i Tadzjikistan,
+TN,Tunisien,tunisien,i Tunisien,
+TO,Tonga,tonga,på Tonga,prep på
+TR,Turkiet,turkiet,i Turkiet,
+TT,Trinidad och Tobago,trinidad-och-tobago,på Trinidad och Tobago,prep på
+TW,Taiwan,taiwan,på Taiwan,prep på
+UA,Ukraina,ukraina,i Ukraina,
+UG,Uganda,uganda,i Uganda,
+US,USA,usa,i USA,
+UY,Uruguay,uruguay,i Uruguay,
+UZ,Uzbekistan,uzbekistan,i Uzbekistan,
+VC,S:t Vincent och Grenadinerna,st-vincent-och-grenadinerna,på S:t Vincent och Grenadinerna,prep på
+VE,Venezuela,venezuela,i Venezuela,
+VN,Vietnam,vietnam,i Vietnam,
+WS,Samoa,samoa,på Samoa,prep på
+XK,Kosovo,kosovo,i Kosovo,
+ZA,Sydafrika,sydafrika,i Sydafrika,
