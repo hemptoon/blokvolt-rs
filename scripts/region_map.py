@@ -34,7 +34,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / 'content' / 'com' / 'region-data'
 LOCAL = ROOT / 'content' / 'com' / 'local'
 RAW = 'https://raw.githubusercontent.com/hemptoon/blokvolt-rs/region-data/'
-COUNTRIES = ['HR', 'BA', 'ME', 'AL', 'XK', 'MK']
+COUNTRIES = ['HR', 'BA', 'ME', 'AL', 'XK', 'MK', 'SI']
 FIXES = ROOT / 'content' / 'region' / 'ispravke.json'
 FIX_KEYS = {'n', 'a', 't', 'lat', 'lon', 'net', 'opn', 'c', 'dc', 'ac', 'acc', 'v', 'al'}
 
@@ -59,13 +59,18 @@ NETS = {
     # Macedonian open data mixes Latin and Cyrillic names ("EVN", "ЕВН Полнач", "Макпетрол")
     'MK': [('evn', r'\bevn\b|\bевн\b'), ('makpetrol', r'makpetrol|макпетрол'), ('tesla', r'supercharger|\btesla\b|тесла'),
            ('okta', r'\bokta\b|\bокта\b'), ('lukoil', r'lukoil|лукоил')],
+    # Slovenia (SI1 09.11.2026): Gremo na elektriko = Elektro Ljubljana; Petrol; MOONcharge = Porsche Slovenija
+    'SI': [('ionity', r'ionity'), ('tesla', r'supercharger'), ('gremo', r'gremo na elektriko|elektro ljubljana'),
+           ('petrol', r'\bpetrol\b|onecharge'), ('moon', r'\bmoon\b|porsche'), ('megatel', r'megatel'),
+           ('efrend', r'efrend'), ('mol', r'\bmol\b'), ('lidl', r'\blidl\b'), ('tesla', r'\btesla\b')],
 }
 NAMES = {'ionity': 'IONITY', 'tesla': 'Tesla Supercharger', 'elen': 'ELEN (HEP)', 'petrol': 'Petrol', 'mol': 'MOL Plugee',
          'ht': 'Hrvatski Telekom', 'lidl': 'Lidl', 'kaufland': 'Kaufland', 'electrip': 'Electrip', 'moon': 'MOON',
          'greenway': 'GreenWay', 'qelo': 'Qelo', 'eon': 'E.ON', 'ina': 'INA', 'epbih': 'Elektroprivreda BiH',
          'ephzhb': 'EP HZ HB', 'ers': 'Elektroprivreda RS', 'eko': 'EKO (Jugopetrol)', 'epcg': 'EPCG', 'greencar': 'Greencar',
          'vega': 'VEGA', 'plugo': 'PlugoAL', 'icharge': 'iCharge', 'oshee': 'OSHEE', 'echarge': 'ECHARGE', 'hib': 'HIB Petrol',
-         'evn': 'EVN', 'makpetrol': 'Makpetrol', 'okta': 'OKTA', 'lukoil': 'Lukoil'}
+         'evn': 'EVN', 'makpetrol': 'Makpetrol', 'okta': 'OKTA', 'lukoil': 'Lukoil',
+         'gremo': 'Gremo na elektriko', 'megatel': 'MegaTel', 'efrend': 'eFrend'}
 
 # the biggest towns, for "near …" when a record has no town (lat, lon)
 TOWNS = {
@@ -89,6 +94,11 @@ TOWNS = {
     'XK': [('Prishtinë', 42.6629, 21.1655), ('Prizren', 42.2139, 20.7397), ('Pejë', 42.6593, 20.2887), ('Gjakovë', 42.3803, 20.4308),
            ('Ferizaj', 42.3702, 21.1553), ('Gjilan', 42.4635, 21.4694), ('Mitrovicë', 42.8914, 20.8660), ('Podujevë', 42.9106, 21.1932),
            ('Vushtrri', 42.8231, 20.9675), ('Suharekë', 42.3589, 20.8250), ('Rahovec', 42.3992, 20.6547), ('Drenas', 42.6250, 20.8928)],
+    'SI': [('Ljubljana', 46.0511, 14.5051), ('Maribor', 46.5547, 15.6459), ('Celje', 46.2309, 15.2604), ('Kranj', 46.2389, 14.3556),
+           ('Koper', 45.5481, 13.7302), ('Velenje', 46.3592, 15.1103), ('Novo mesto', 45.8040, 15.1689), ('Ptuj', 46.4200, 15.8700),
+           ('Murska Sobota', 46.6625, 16.1664), ('Nova Gorica', 45.9558, 13.6483), ('Kamnik', 46.2259, 14.6121), ('Jesenice', 46.4364, 14.0526),
+           ('Domžale', 46.1378, 14.5940), ('Škofja Loka', 46.1655, 14.3064), ('Postojna', 45.7743, 14.2153), ('Bled', 46.3683, 14.1146),
+           ('Piran', 45.5283, 13.5683), ('Brežice', 45.9033, 15.5911), ('Slovenj Gradec', 46.5103, 15.0806), ('Kočevje', 45.6428, 14.8633)],
     # the Macedonian section is written in Cyrillic, so are the town names
     'MK': [('Скопје', 41.9973, 21.4280), ('Битола', 41.0297, 21.3292), ('Куманово', 42.1322, 21.7144), ('Прилеп', 41.3451, 21.5550),
            ('Тетово', 42.0106, 20.9714), ('Велес', 41.7156, 21.7756), ('Охрид', 41.1231, 20.8016), ('Гостивар', 41.7958, 20.9083),
@@ -362,12 +372,15 @@ LATIN_CC = ('HR', 'BA', 'ME', 'XK')   # MK stays Cyrillic: its section is writte
 COUNTRY_WORDS = {'montenegro', 'crna gora', 'bosnia and herzegovina', 'bosnia & herzegovina', 'bosna i hercegovina', 'bih',
                  'croatia', 'hrvatska', 'republika hrvatska', 'republic of croatia', 'albania', 'shqiperia', 'shqiperi',
                  'republika e shqiperise', 'kosovo', 'kosova', 'north macedonia', 'macedonia', 'republic of north macedonia',
-                 'северна македонија', 'македонија', 'република северна македонија'}
+                 'северна македонија', 'македонија', 'република северна македонија',
+                 'slovenia', 'slovenija', 'republika slovenija'}
 
 
 # town names as the local pages write them: the open data mixes English, Italian and unaccented forms (Tirana, Skutari,
 # Prishtina) and, in North Macedonia, Latin and Cyrillic (Skopje / Скопје). Keys are folded (lower case, no diacritics).
 TOWN_FIX = {
+    'SI': {'ljubljana': 'Ljubljana', 'laibach': 'Ljubljana', 'marburg': 'Maribor', 'capodistria': 'Koper', 'pirano': 'Piran',
+           'isola': 'Izola', 'skofja loka': 'Škofja Loka', 'domzale': 'Domžale', 'brezice': 'Brežice', 'krsko': 'Krško'},
     'AL': {'tirana': 'Tiranë', 'tirane': 'Tiranë', 'skutari': 'Shkodër', 'shkodra': 'Shkodër', 'shkoder': 'Shkodër',
            'durres': 'Durrës', 'durresi': 'Durrës', 'vlora': 'Vlorë', 'vlore': 'Vlorë', 'korca': 'Korçë', 'korce': 'Korçë',
            'saranda': 'Sarandë', 'sarande': 'Sarandë', 'gjirokastra': 'Gjirokastër', 'gjirokaster': 'Gjirokastër',

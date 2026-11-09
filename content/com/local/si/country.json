@@ -1,0 +1,653 @@
+{
+ "cc": "SI",
+ "checked": "27. 10. 2026",
+ "checked_iso": "2026-10-27",
+ "slugs": {
+  "prices": "cene/"
+ },
+ "map": {
+  "center": [
+   14.85,
+   46.12
+  ],
+  "zoom": 7.3
+ },
+ "net_names": {
+  "petrol": "Petrol",
+  "gremo": "Gremo na elektriko",
+  "lidl": "Lidl",
+  "moon": "MOONcharge",
+  "mol": "MOL",
+  "ionity": "IONITY",
+  "tesla": "Tesla",
+  "megatel": "MegaTel",
+  "efrend": "eFrend"
+ },
+ "new_bev": {
+  "series": [
+   [
+    2024,
+    3142
+   ],
+   [
+    2025,
+    6387
+   ]
+  ],
+  "y2025": 6387,
+  "y2025_total": 57557,
+  "share": "11,1 %",
+  "src": "https://www.amzs.si/motorevija/v-zarometu/avto-moto/2026-01-26-slovenski-avtomobilski-trg-v-letu-2025",
+  "src_label": "AMZS — Slovenski avtomobilski trg v letu 2025",
+  "src_date": "26. 1. 2026",
+  "alt": "Drugi viri za leto 2025 navajajo 6.419 (Lider, 16. 8. 2026) in 6.430 (Eurostat prek STA, Avto magazin, 2. 8. 2026)."
+ },
+ "acea": {
+  "y2026_9m": 10457,
+  "y2025_9m": 4424,
+  "growth": "136,4",
+  "all_9m": 52717,
+  "share": "19,8 %",
+  "sep": 1224,
+  "sep_share": "23,2 %",
+  "phev": 2020,
+  "hev": 9281,
+  "src": "https://www.acea.auto/files/Press_release_car_registrations_September_2026.pdf",
+  "src_label": "ACEA — registracije novih avtomobilov, september 2026",
+  "src_date": "22. 10. 2026"
+ },
+ "fleet": {
+  "approx": 24000,
+  "share": "2 %",
+  "src": "https://forbes.n1info.si/zeleni-prehod/rekordna-prodaja-elektricnih-vozil-v-sloveniji-kako-jih-bomo-polnili/",
+  "src_label": "Forbes Slovenija, 18. 7. 2026",
+  "share_src": "https://lider.si/slovenija-je-junija-dosegla-26-odstotni-delez-elektricnih-avtomobilov-v-voznem-parku-jih-ima-dva-odstotka/",
+  "share_label": "Lider, 16. 8. 2026"
+ },
+ "points": {
+  "dems": "nekaj več kot 4.600 polnilnih točk na skoraj 1.500 lokacijah",
+  "dems_src": "https://dems.si/kje-je-najblizja-polnilnica-dems-predstavlja-nov-zemljevid-javnih-polnilnih-mest-za-ev-v-sloveniji/",
+  "dems_label": "DeMS, 28. 8. 2026 (po uradnem registru NAP / Prometej)",
+  "eafo": "okoli 2.545 javno dostopnih točk decembra 2025 (2.041 AC in 504 DC), sredi leta 2026 več kot 3.000",
+  "eafo_src": "https://forbes.n1info.si/zeleni-prehod/rekordna-prodaja-elektricnih-vozil-v-sloveniji-kako-jih-bomo-polnili/",
+  "eafo_label": "EAFO, kot ga navaja Forbes Slovenija, 18. 7. 2026",
+  "top2": "Petrol okoli 1.100, Elektro Ljubljana okoli 1.000 polnilnih točk (Forbes Slovenija, 18. 7. 2026); Gremo na elektriko na svoji strani navaja več kot 1.200."
+ },
+ "networks": [
+  {
+   "slug": "gremo",
+   "name": "Gremo na elektriko",
+   "owner": "Elektro Ljubljana d.d.",
+   "site": "https://www.gremonaelektriko.si/vozniki",
+   "registry": 0,
+   "sites_text": "več kot 1.200 polnilnih točk (po navedbi operaterja)",
+   "app": {
+    "name": "Gremo na elektriko",
+    "ios": null,
+    "android": null
+   },
+   "card": "RFID-kartica (izdelava 5,00 €).",
+   "adhoc": "»Polni in plačaj« — plačilo po polnjenju za občasne uporabnike; tudi aplikacija ali spletna aplikacija s plačilno kartico in predplačniški račun.",
+   "roaming": "Polnilnice so dostopne tudi z aplikacijo MOONcharge (gostovanje).",
+   "prices": [
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 22,
+     "power": "do 22 kW",
+     "v": 0.35,
+     "cond": "z DDV"
+    },
+    {
+     "seg": "AC",
+     "lo": 0,
+     "hi": 22,
+     "power": "»eko« polnjenje",
+     "v": 0.22,
+     "cond": "z DDV; ob konicah z manjšo močjo"
+    },
+    {
+     "seg": "DC",
+     "lo": 22.1,
+     "hi": 1000,
+     "power": "",
+     "v": 0.45,
+     "cond": "z DDV"
+    }
+   ],
+   "price_text": "",
+   "fees": [
+    "Pristojbina za polnjenje: 0,50 € (AC), 1,00 € (DC).",
+    "Časovni dodatek: 0,03 € na minuto za AC po 180 minutah (samo od 6. do 19. ure) in za DC po 60 minutah.",
+    "V plačljivih conah se lahko plača še parkirnina."
+   ],
+   "valid_from": "1. 7. 2023",
+   "src": "https://www.gremonaelektriko.si/vozniki",
+   "src_label": "Gremo na elektriko — vozniki",
+   "conf": "high",
+   "map_note": "Gremo na elektriko: AC 0,35 €/kWh, DC 0,45 €/kWh, plus pristojbina za polnjenje (cenik od 1. 7. 2023)."
+  },
+  {
+   "slug": "petrol",
+   "name": "Petrol",
+   "owner": "Petrol d.d.",
+   "site": "https://www.petrol.si/mobilnost/zasebni-uporabniki/javne-elektricne-polnilnice",
+   "registry": 0,
+   "sites_text": "več kot 100 lokacij (Petrol); okoli 1.100 polnilnih točk (Forbes Slovenija)",
+   "app": {
+    "name": "OneCharge",
+    "ios": null,
+    "android": null
+   },
+   "card": "Ni bilo mogoče preveriti.",
+   "adhoc": "Ni bilo mogoče preveriti.",
+   "roaming": "Polnilnice so dostopne tudi z aplikacijo MOONcharge (gostovanje).",
+   "prices": [],
+   "price_text": "Petrolov cenik javnega polnjenja se ob preverjanju ni prikazal. Primerjalna stran brez datuma navaja za registrirane uporabnike kartice 0,39 €/kWh na AC do 22 kW, 0,50 €/kWh na DC 22–50 kW in 0,70 €/kWh nad 50 kW (DDV ni naveden) — ni preverjeno pri Petrolu. Odjemalci Petrolove elektrike imajo 50 % nižjo ceno javnega polnjenja za prvih 10.000 km na leto (akcija, objavljena marca 2026).",
+   "fees": [],
+   "valid_from": "",
+   "src": "https://www.petrol.si/akcije/2026/03/polnite-e-vozilo-50-ugodneje.html",
+   "src_label": "Petrol — akcija za odjemalce elektrike (2026/03); cene: primerjam.si, brez datuma",
+   "conf": "low",
+   "conf_note": "Cene kWh niso preverjene pri Petrolu.",
+   "map_note": "Petrol cenika ni prikazal; preverite ceno v aplikaciji ali na polnilnici."
+  },
+  {
+   "slug": "ionity",
+   "name": "IONITY",
+   "owner": "IONITY GmbH",
+   "site": "https://www.ionity.eu/network/access-and-payments",
+   "registry": 0,
+   "sites_text": "število lokacij v Sloveniji ni objavljeno",
+   "app": {
+    "name": "IONITY",
+    "ios": null,
+    "android": null
+   },
+   "card": "RFID-kartice in žetoni; pogodbe ponudnikov storitev e-mobilnosti.",
+   "adhoc": "QR-koda na polnilnici; samodejno plačilo ob priklopu (Plug & Charge) za podprta vozila.",
+   "roaming": "Da, prek ponudnikov storitev e-mobilnosti.",
+   "prices": [
+    {
+     "seg": "HPC",
+     "lo": 50.1,
+     "hi": 1000,
+     "power": "brez naročnine",
+     "v": 0.73,
+     "cond": "z DDV, najnižja prikazana cena"
+    },
+    {
+     "seg": "HPC",
+     "lo": 50.1,
+     "hi": 1000,
+     "power": "paket Go",
+     "v": 0.69,
+     "cond": "z DDV"
+    },
+    {
+     "seg": "HPC",
+     "lo": 50.1,
+     "hi": 1000,
+     "power": "Motion (5,99 € na mesec)",
+     "v": 0.54,
+     "cond": "z DDV"
+    },
+    {
+     "seg": "HPC",
+     "lo": 50.1,
+     "hi": 1000,
+     "power": "Power (11,99 € na mesec)",
+     "v": 0.43,
+     "cond": "z DDV"
+    }
+   ],
+   "price_text": "",
+   "fees": [
+    "Letni paketi: Motion 59,99 € (znižano 49,99 €), Power 119,99 € (znižano 99,99 €)."
+   ],
+   "valid_from": "",
+   "src": "https://www.ionity.eu/subscriptions",
+   "src_label": "IONITY — naročnine (preverjeno 23. 9. 2026)",
+   "conf": "high",
+   "note": "IONITY opozarja, da se cene lahko razlikujejo po polnilnicah in so lahko višje od prikazane najnižje cene.",
+   "map_note": "IONITY: brez naročnine od 0,73 €/kWh (najnižja prikazana cena)."
+  },
+  {
+   "slug": "tesla",
+   "name": "Tesla Supercharger",
+   "owner": "Tesla",
+   "site": "https://www.tesla.com/sl_si/support/charging/supercharger/fees",
+   "registry": 0,
+   "sites_text": "število lokacij ni objavljeno na preverjeni strani",
+   "app": {
+    "name": "Tesla",
+    "ios": "https://apps.apple.com/app/tesla/id582007913",
+    "android": "https://play.google.com/store/apps/details?id=com.teslamotors.tesla"
+   },
+   "card": "Ni navedeno.",
+   "adhoc": "Ni navedeno.",
+   "roaming": "Ni navedeno.",
+   "prices": [],
+   "price_text": "Cena kWh na strani s pristojbinami ni objavljena. Pristojbina za zasedenost: 0,50 € na minuto, ko je postaja polno zasedena in avto ostane priklopljen po koncu polnjenja ali nad 80 % (5 minut odloga).",
+   "fees": [],
+   "valid_from": "",
+   "src": "https://www.tesla.com/sl_si/support/charging/supercharger/fees",
+   "src_label": "Tesla — pristojbine Supercharger (preverjeno 23. 9. 2026)",
+   "conf": "high",
+   "map_note": "Tesla cene kWh ne objavlja na strani s pristojbinami; cena je v aplikaciji Tesla."
+  },
+  {
+   "slug": "moon",
+   "name": "MOONcharge",
+   "owner": "Porsche Slovenija d.o.o.",
+   "site": "https://www.moon-energija.si/podjetja/produkti/moon-charge",
+   "registry": 0,
+   "sites_text": "število lokacij ni objavljeno",
+   "app": {
+    "name": "MOONcharge",
+    "ios": null,
+    "android": null
+   },
+   "card": "Za podjetja mesečni račun s Porsche Group Card.",
+   "adhoc": "Visa ali Mastercard v aplikaciji.",
+   "roaming": "Dostop do polnilnic Gremo na elektriko, MegaTel, Petrol, eFrend in IONITY Slovenija.",
+   "prices": [],
+   "price_text": "Cena na strani ni prikazana. Obračun je po kWh z osnovno ceno za prvih 180 minut (AC) oziroma 60 minut (DC), nato se zaračunajo dodatne pristojbine.",
+   "fees": [],
+   "valid_from": "",
+   "src": "https://www.moon-energija.si/podjetja/produkti/moon-charge",
+   "src_label": "MOON — MOONcharge (preverjeno 23. 9. 2026)",
+   "conf": "high",
+   "map_note": "MOONcharge cene ne objavlja na spletni strani; cena je v aplikaciji."
+  },
+  {
+   "slug": "geni",
+   "name": "GEN-I Charge",
+   "owner": "GEN-I (ponudnik storitve, ne operater polnilnic)",
+   "site": "https://gen-i.si/dom/trajnostne-resitve/e-mobilnost/",
+   "registry": 0,
+   "sites_text": "dostop do več kot 250.000 javnih točk v 28 evropskih državah",
+   "app": {
+    "name": "Moj GEN-I Charge",
+    "ios": null,
+    "android": null
+   },
+   "card": "Kartica GEN-I Charge (izdaja brezplačna), 1,22 € na mesec za kartico.",
+   "adhoc": "—",
+   "roaming": "Da, to je storitev gostovanja pri drugih operaterjih.",
+   "prices": [],
+   "price_text": "Mesečno nadomestilo 1,22 € za uporabniško kartico (DDV ni naveden). Cena kWh je cena posameznega operaterja polnilnice.",
+   "fees": [],
+   "valid_from": "",
+   "src": "https://gen-i.si/dom/trajnostne-resitve/e-mobilnost/",
+   "src_label": "GEN-I — e-mobilnost (preverjeno 23. 9. 2026)",
+   "conf": "high"
+  }
+ ],
+ "other_sites": [
+  [
+   "MOL",
+   "Spletna stran molplugee.si se ob preverjanju ni odzvala; velikost mreže in cene v Sloveniji niso preverjene."
+  ],
+  [
+   "Energija plus",
+   "Strani energijaplus.si so vračale napako strežnika; cene javnega polnjenja niso preverjene."
+  ],
+  [
+   "Eleport",
+   "Forbes Slovenija ga navaja kot operaterja, eleport.com pa podatkov za Slovenijo ne prikazuje."
+  ],
+  [
+   "Lidl, MegaTel, eFrend",
+   "Polnilnice so na zemljevidu iz odprtih podatkov; ceniki v tem preverjanju niso bili zbrani."
+  ]
+ ],
+ "power": {
+  "vat": 22,
+  "note": "Cena elektrike za gospodinjstva v Sloveniji ni več regulirana (zadnja uredba je veljala do 28. 2. 2025). Račun sestavljajo energija (pri dobavitelju), omrežnina, prispevki, trošarina in DDV 22 %. Spodaj so cene samo za energijo po rednem ceniku GEN-I z DDV in groba ocena skupne cene; omrežnina se obračunava tudi po dogovorjeni moči, zato skupne cene kWh ni mogoče natančno izračunati za vse.",
+  "nt_hours": "",
+  "tariffs": [
+   {
+    "id": "ocena",
+    "name": "Groba ocena skupaj z omrežnino in dajatvami",
+    "allin": 0.17,
+    "parts": "ocena primerjalne strani primerjam.si, brez datuma — nizka zanesljivost"
+   },
+   {
+    "id": "geni_mt",
+    "name": "GEN-I, manjša tarifa (MT), samo energija",
+    "allin": 0.11944,
+    "parts": "energija 0,09790 €, + DDV 22 %; brez omrežnine in prispevkov"
+   },
+   {
+    "id": "geni_et",
+    "name": "GEN-I, enotna tarifa (ET), samo energija",
+    "allin": 0.13286,
+    "parts": "energija 0,10890 €, + DDV 22 %; brez omrežnine in prispevkov"
+   },
+   {
+    "id": "geni_vt",
+    "name": "GEN-I, višja tarifa (VT), samo energija",
+    "allin": 0.14628,
+    "parts": "energija 0,11990 €, + DDV 22 %; brez omrežnine in prispevkov"
+   }
+  ],
+  "sources": [
+   {
+    "label": "GEN-I — redni cenik električne energije za gospodinjske odjemalce (velja od 1. 3. 2025)",
+    "url": "https://gen-i.si/dom/elektricna-energija/ceniki-in-akcije/redni-cenik-elektricne-energije-za-gospodinjske-odjemalce/",
+    "date": "preverjeno 23. 9. 2026"
+   },
+   {
+    "label": "primerjam.si — koliko stane polnjenje električnega avtomobila (ocena okoli 0,17 €/kWh)",
+    "url": "https://www.primerjam.si/nasveti/elektricne-polnilnice/cena-polnjenja-elektricnega-avtomobila",
+    "date": "brez datuma"
+   },
+   {
+    "label": "Portal Energetika — zadnja regulirana cena elektrike (Uradni list RS, št. 96/2024)",
+    "url": "https://www.energetika-portal.si/podrocja/energetika/ukrepi-za-omilitev-draginje-na-podrocju-energetike/elektricna-energija/",
+    "date": "preverjeno 23. 9. 2026"
+   }
+  ]
+ },
+ "electricity": {
+  "checked": "27. 10. 2026",
+  "checked_iso": "2026-10-27",
+  "geni": {
+   "vt": 0.1199,
+   "mt": 0.0979,
+   "et": 0.1089,
+   "vt_v": 0.14628,
+   "mt_v": 0.11944,
+   "et_v": 0.13286,
+   "fee": 1.99,
+   "fee_v": 2.43,
+   "fee_e": 0.99,
+   "src": "https://gen-i.si/dom/elektricna-energija/ceniki-in-akcije/redni-cenik-elektricne-energije-za-gospodinjske-odjemalce/",
+   "src_label": "GEN-I — redni cenik za gospodinjske odjemalce",
+   "valid": "1. 3. 2025",
+   "until": "31. 12. 2027"
+  },
+  "range": {
+   "vt": "0,11490–0,13190",
+   "vt_avg": "0,12373",
+   "mt": "0,09595–0,12790",
+   "mt_avg": "0,10364",
+   "et": "0,10190–0,12990",
+   "et_avg": "0,11315",
+   "src": "https://elektrika.tarifnik.si/cena-elektrike",
+   "src_label": "Tarifnik — cena elektrike v Sloveniji 2026 (september 2026)"
+  },
+  "regulated": {
+   "vt": "0,08400",
+   "mt": "0,07000",
+   "et": "0,07700",
+   "period": "od 1. 11. 2024 do 28. 2. 2025",
+   "src": "https://www.energetika-portal.si/podrocja/energetika/ukrepi-za-omilitev-draginje-na-podrocju-energetike/elektricna-energija/"
+  },
+  "sources": [
+   {
+    "label": "GEN-I — redni cenik električne energije za gospodinjske odjemalce (velja od 1. 3. 2025)",
+    "url": "https://gen-i.si/dom/elektricna-energija/ceniki-in-akcije/redni-cenik-elektricne-energije-za-gospodinjske-odjemalce/",
+    "date": "preverjeno 23. 9. 2026"
+   },
+   {
+    "label": "Tarifnik — razpon cen energije pri dobaviteljih (samo energija, brez DDV)",
+    "url": "https://elektrika.tarifnik.si/cena-elektrike",
+    "date": "september 2026"
+   },
+   {
+    "label": "Portal Energetika — uredba o cenah elektrike (Uradni list RS, št. 96/2024), veljala do 28. 2. 2025",
+    "url": "https://www.energetika-portal.si/podrocja/energetika/ukrepi-za-omilitev-draginje-na-podrocju-energetike/elektricna-energija/",
+    "date": "preverjeno 23. 9. 2026"
+   },
+   {
+    "label": "RTV SLO — vlada z marcem 2025 ne podaljša regulacije cen elektrike",
+    "url": "https://www.rtvslo.si/slovenija/kumer-vlada-z-marcem-ne-namerava-podaljsati-regulacije-cen-elektrike/736059",
+    "date": "9. 2. 2025"
+   },
+   {
+    "label": "Agencija za energijo — dopolnitve metodologije za obračun omrežnine (prehod 2025–2027)",
+    "url": "https://www.uro.si/w/svet-agencije-obravnaval-in-potrdil-dopolnitve",
+    "date": "1. 10. 2025"
+   },
+   {
+    "label": "Lider — omrežnina v januarju 2026 s polovičnimi tarifami v najdražjem bloku",
+    "url": "https://lider.si/omreznina-v-januarju-2026-se-s-polovicnimi-tarifami-v-najdrazjem-bloku/",
+    "date": "26. 1. 2026"
+   },
+   {
+    "label": "ZPS — pregled cen električne energije (prispevek OVE+SPTE)",
+    "url": "https://www.zps.si/aktualne-vsebine/trzni-pregledi/pregled-cen-elektricne-energije-in-zemeljskega-plina-152",
+    "date": "11. 9. 2026"
+   }
+  ]
+ },
+ "fuel": {
+  "petrol": 1.626,
+  "diesel": 1.949,
+  "date": "3. 11. 2026",
+  "src": "https://www.gov.si/novice/2026-11-02-od-jutri-nekoliko-nizje-cene-bencina-ter-visje-cene-dizla-in-kurilnega-olja/",
+  "src_label": "Vlada RS — najvišje dovoljene cene goriv zunaj avtocest od 3. 11. 2026 (veljajo en teden)"
+ },
+ "calc": {
+  "km": 1200,
+  "kwh100": 17,
+  "loss": 10,
+  "share": 20,
+  "tariff": "ocena",
+  "pub": 0.45,
+  "l100_petrol": 6.5,
+  "l100_diesel": 5.5,
+  "chips": [
+   [
+    "Gremo AC",
+    0.35
+   ],
+   [
+    "Gremo DC",
+    0.45
+   ],
+   [
+    "IONITY",
+    0.73
+   ]
+  ]
+ },
+ "subsidies": [
+  {
+   "name": "Borzen JP SUB-EV26 — subvencije za električna vozila (Podnebni sklad)",
+   "status": "exhausted",
+   "who": "sklop A: polnoletne osebe s stalnim prebivališčem v Sloveniji (ne samostojni podjetniki); sklop B: podjetja, samostojni podjetniki in osebe javnega prava",
+   "amount": "sklop A, nova vozila M1 po skupni ceni z DDV: 7.800 € (do 25.000 €), 7.200 € (do 35.000 €), 6.500 € (do 45.000 €), 4.500 € (do 65.000 €); rabljena ali testna M1/N1: 3.000 € (do 45.000 €), 2.000 € (do 65.000 €); vozila L: 300–1.500 €. Sredstva: 25.604.648,00 € (A) in 8.000.000,00 € (B).",
+   "cond": "vozilo kupljeno od 1. 1. 2026 in prvič registrirano v Sloveniji; za vozila nad 45.000 € (sklop A) so veljale le vloge, oddane do 31. 8. 2026",
+   "dates": "vloge od 18. 6. 2026; zaprošeni zneski že presegajo sredstva pri obeh sklopih (Borzen; vlada, 12. 8. 2026), zato so poznejše vloge lahko zavrnjene. Ministrstvo je 5. 8. 2026 sporočilo, da sredstev ne bo povečalo; nadaljnji pozivi so odvisni od nove uredbe o Podnebnem skladu. 27. 10. 2026 je bil poziv še na seznamu odprtih pozivov; obvestila o zaprtju ni bilo.",
+   "src": "https://borzen.si/sl-si/podpore-za-mobilnost/subvencije-za-nakup-elektricnih-vozil/subvencije-za-e-vozila-fizicnih-in-pravnih-oseb-2026",
+   "src_label": "Borzen — subvencije za e-vozila 2026"
+  },
+  {
+   "name": "Borzen JP SZPI 2026 — subvencije za zasebne polnilnice",
+   "status": "exhausted",
+   "who": "sklop A: polnoletne osebe s stalnim prebivališčem v Sloveniji in davčno številko; sklop B: samostojni podjetniki in pravne osebe",
+   "amount": "55 % upravičenih stroškov nakupa in vgradnje: do 1.000 € na polnilno mesto, največ 2 mesti (sklop A); do 1.300 € na mesto (sklop B). Sredstva 4.000.000 € za 2026–2027.",
+   "cond": "nova AC-polnilnica 3,7–22 kW, Type 2, z dinamičnim upravljanjem obremenitve, vgrajena po 1. 10. 2025 na naslovu stalnega prebivališča ali na lastni nepremičnini; lastništvo vsaj 5 let; za fizične osebe je DDV upravičen strošek",
+   "dates": "vloge od 14. 5. 2026; zaprošeni zneski že presegajo sredstva, predvidena za leto 2026. 27. 10. 2026 je bil poziv še na seznamu odprtih pozivov.",
+   "src": "https://borzen.si/sl-si/podpore-za-mobilnost/subvencije-za-nakup-elektricnih-polnilnih-mest-za-ev-2026",
+   "src_label": "Borzen — subvencije za polnilna mesta 2026"
+  },
+  {
+   "name": "Eko sklad — električna vozila",
+   "status": "unconfirmed",
+   "who": "ni preverjeno",
+   "amount": "ni preverjeno",
+   "cond": "ni preverjeno",
+   "dates": "spletna stran Eko sklada se 23. 9. 2026 ni naložila (napaka certifikata); subvencije za vozila in polnilnice v letu 2026 izvaja Borzen",
+   "src": "https://www.ekosklad.si/prebivalstvo/pridobite-spodbudo/seznam-spodbud/elektricna-vozila-3/elektricna-vozila-subvencija-3",
+   "src_label": "Eko sklad (stran se ni naložila)"
+  }
+ ],
+ "policy": [
+  {
+   "t": "ZIAG",
+   "v": "Zakon o infrastrukturi za alternativna goriva in spodbujanju prehoda na alternativna goriva v prometu (Uradni list RS, št. 62/2023, 6. 6. 2023).",
+   "src": "https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2023-01-1911/zakon-o-infrastrukturi-za-alternativna-goriva-in-spodbujanju-prehoda-na-alternativna-goriva-v-prometu-ziag"
+  },
+  {
+   "t": "AFIR",
+   "v": "Po evropski uredbi AFIR mora vsak registrirani baterijski električni avto imeti vsaj 1,3 kW javno dostopne polnilne moči, vsak priključni hibrid pa vsaj 0,8 kW; EAFO spremlja doseganje cilja za Slovenijo.",
+   "src": "https://alternative-fuels-observatory.ec.europa.eu/transport-mode/road/slovenia/target-tracker"
+  },
+  {
+   "t": "NEPN",
+   "v": "Po navedbi Forbes Slovenija nacionalni energetski in podnebni načrt predvideva okoli 93.000 novih električnih vozil v letih 2026–2030.",
+   "src": "https://forbes.n1info.si/zeleni-prehod/rekordna-prodaja-elektricnih-vozil-v-sloveniji-kako-jih-bomo-polnili/"
+  },
+  {
+   "t": "Javne polnilnice zunaj TEN-T",
+   "v": "Javni razpis JRPM IZVEN-TEN-T-2026 (15 milijonov €, Podnebni sklad, objavljen 6. 3. 2026): do 100 % upravičenih stroškov, do 10.000 € za AC-točko 11–22 kW, 25.000 € za DC 50–150 kW in 40.000 € za DC nad 150 kW; vsaj 10 točk na projekt in vsaj 16 ur javnega dostopa na dan. Vloge do 31. 7. 2026, projekti do 30. 10. 2027.",
+   "src": "https://www.energetika-portal.si/javne-objave/arhiv-energetika/javni-razpisi/r/javni-razpis-za-vzpostavitev-javno-dostopne-polnilne-infrastrukture-izven-cestnega-omrezja-ten-t-jrpm-izven-ten-t-2026-1439/"
+  }
+ ],
+ "buildings": [
+  {
+   "t": "Lastna polnilnica, kabel skozi skupne dele",
+   "v": "Če dela v lastnem stanovanju posegajo tudi v skupne dele stavbe, jih lastnik ne sme začeti brez soglasja etažnih lastnikov z več kot polovico solastniških deležev; dela morajo biti v skladu s predpisi in strokovno nadzorovana (SZ-1, 15. člen).",
+   "src": "https://www.racunovodstvo.net/zakonodaja/sz-1/15-clen"
+  },
+  {
+   "t": "Mnenje ministrstva (2017)",
+   "v": "Ministrstvo za okolje in prostor je pri polnilnici v bloku uporabilo 15. člen SZ-1: za zasebno polnilnico ni pravne podlage za zahtevo po soglasju vseh lastnikov.",
+   "src": "https://predlagam.vladi.si/predlog/8683"
+  },
+  {
+   "t": "Gradbena dela na skupnih delih",
+   "v": "O gradbenih delih na skupnih delih, za katera je potrebno gradbeno dovoljenje, odločajo etažni lastniki z več kot tremi četrtinami solastniških deležev (SZ-1, 29. člen, po SZ-1E).",
+   "src": "https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2021-01-1868"
+  },
+  {
+   "t": "Sprememba namembnosti skupnih delov",
+   "v": "Za spremembo namembnosti skupnih delov in posebne omejitve njihove rabe je potrebno soglasje vseh etažnih lastnikov (SZ-1, 29. člen).",
+   "src": "https://www.racunovodstvo.net/zakonodaja/sz-1/29-clen"
+  },
+  {
+   "t": "Skupna polnilna postaja v zakonu",
+   "v": "Novela SZ-1G (Uradni list RS, št. 57/2025) skupno polnilno postajo navaja med skupnimi deli stavbe (103. člen); velja od 1. 12. 2025. »Pravica do priklopa« za stanovalce v letu 2026 ni bila potrjena.",
+   "src": "https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/2025-01-2313/zakon-o-spremembah-in-dopolnitvah-stanovanjskega-zakona-sz-1g"
+  },
+  {
+   "t": "Subvencija in bloki",
+   "v": "Borzenov poziv za domače polnilnice nima posebnih določb za večstanovanjske stavbe, soglasje lastnikov ali upravnika; polnilnica mora biti na naslovu stalnega prebivališča ali na lastni nepremičnini.",
+   "src": "https://borzen.si/sl-si/podpore-za-mobilnost/subvencije-za-nakup-elektricnih-polnilnih-mest-za-ev-2026"
+  }
+ ],
+ "home_prices": [
+  [
+   "Polnilnica z osnovno vgradnjo (ceniki podjetij)",
+   "899,99 € – 2.298,00 €; pri več prodajalcih z znižano stopnjo DDV 9,5 %"
+  ],
+  [
+   "Polnilnica brez vgradnje",
+   "516,06 € – 999,00 € (obravnava DDV je različna)"
+  ],
+  [
+   "Samo vgradnja (cenik inštalaterja)",
+   "279,00 € (osnovna) – od 399,00 € (razširjena), z DDV 9,5 %"
+  ]
+ ],
+ "home_prices_src": "https://elektro-pozun.si/elektricne-polnilnice/",
+ "road": [
+  [
+   "Ljubljana",
+   "Petrol (2), Eleport; do 400 kW"
+  ],
+  [
+   "Koper",
+   "IONITY, Petrol, Tesla Supercharger; do 350 kW"
+  ],
+  [
+   "Maribor",
+   "Petrol (2); do 250 kW"
+  ],
+  [
+   "Pesnica pri Mariboru",
+   "IONITY (2); do 350 kW"
+  ],
+  [
+   "Radovljica",
+   "IONITY (2); do 350 kW"
+  ],
+  [
+   "Ajdovščina",
+   "Eleport; do 300 kW"
+  ],
+  [
+   "Ilirska Bistrica",
+   "IONITY; do 350 kW"
+  ],
+  [
+   "Leskovec pri Krškem",
+   "Tesla Supercharger; do 250 kW"
+  ],
+  [
+   "Novo mesto",
+   "Tesla Supercharger; do 250 kW"
+  ],
+  [
+   "Raka",
+   "IONITY; do 350 kW"
+  ],
+  [
+   "Slovenska Bistrica",
+   "Tesla Supercharger; do 250 kW"
+  ],
+  [
+   "Žalec",
+   "IONITY; do 350 kW"
+  ],
+  [
+   "Žirovnica",
+   "Tesla Supercharger; do 250 kW"
+  ],
+  [
+   "Lendava",
+   "MOL; do 161 kW"
+  ]
+ ],
+ "road_srcs": [
+  {
+   "label": "OpenStreetMap in Open Charge Map — zemljevid BlokVolt (polnilnice niso posamično preverjene)",
+   "url": "https://www.openstreetmap.org/copyright",
+   "date": "3. 11. 2026"
+  },
+  {
+   "label": "Javni razpis JRPM IZVEN-TEN-T-2026 (polnilnice zunaj omrežja TEN-T)",
+   "url": "https://www.energetika-portal.si/javne-objave/arhiv-energetika/javni-razpisi/r/javni-razpis-za-vzpostavitev-javno-dostopne-polnilne-infrastrukture-izven-cestnega-omrezja-ten-t-jrpm-izven-ten-t-2026-1439/",
+   "date": "6. 3. 2026"
+  }
+ ],
+ "csv": {
+  "file": "elektricni-avtomobili-slovenija.csv",
+  "head": [
+   "leto",
+   "novi_baterijski_elektricni_avtomobili",
+   "vir"
+  ],
+  "rows": [
+   [
+    2024,
+    3142,
+    "AMZS"
+   ],
+   [
+    2025,
+    6387,
+    "AMZS"
+   ],
+   [
+    "2026 (jan.–sep.)",
+    10457,
+    "ACEA"
+   ]
+  ]
+ }
+}
