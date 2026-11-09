@@ -19,7 +19,8 @@ def cats():
 CATS = cats()
 
 def same(a, b, where):
-    if sorted(PH.findall(a)) != sorted(PH.findall(b)):
+    norm = lambda t: sorted(re.sub(r'\{(city|country)_[uv]\}', r'{\1}', x) for x in PH.findall(t))   # pool 4: {city_u}/{country_u} may replace {city}/{country}
+    if norm(a) != norm(b):
         err.append(f'{where}: placeholders {PH.findall(a)} vs {PH.findall(b)}')
     if sorted(TAG.findall(a)) != sorted(TAG.findall(b)):
         err.append(f'{where}: tags/entities differ')

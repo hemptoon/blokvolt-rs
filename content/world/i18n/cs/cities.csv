@@ -63,7 +63,7 @@ geonameid,name,in_phrase,decl_ok,note
 3067421,Prostějov,v Prostějově,1,
 3072649,Kroměříž,v Kroměříži,1,
 2950159,Berlín,v Berlíně,1,
-2758401,Breda,ve městě Breda,0,
+2758401,Breda,v Bredě,1,R-CS
 2800866,Brusel,v Bruselu,1,
 2747373,Haag,v Haagu,1,
 2756253,Eindhoven,v Eindhovenu,1,
@@ -72,17 +72,17 @@ geonameid,name,in_phrase,decl_ok,note
 8063096,Earlsfield,ve městě Earlsfield,0,
 2755251,Groningen,v Groningenu,1,
 2643743,Londýn,v Londýně,1,
-2743477,Zwolle,ve městě Zwolle,0,
+2743477,Zwolle,ve Zwolle,1,R-CS
 2745912,Utrecht,v Utrechtu,1,
-2746301,Tilburg,ve městě Tilburg,0,
+2746301,Tilburg,v Tilburgu,1,R-CS
 2758012,Capelle aan den IJssel,ve městě Capelle aan den IJssel,0,
 593116,Vilnius,ve Vilniusu,1,
-2750053,Nijmegen,ve městě Nijmegen,0,
+2750053,Nijmegen,v Nijmegenu,1,R-CS
 2751283,Maastricht,v Maastrichtu,1,
 2745321,Voorburg,ve městě Voorburg,0,
-2759706,Apeldoorn,ve městě Apeldoorn,0,
+2759706,Apeldoorn,v Apeldoornu,1,R-CS
 2657697,Acton,ve městě Acton,0,
-2759821,Amersfoort,ve městě Amersfoort,0,
+2759821,Amersfoort,v Amersfoortu,1,R-CS
 2748076,Rijswijk,ve městě Rijswijk,0,
 2754447,Helmond,ve městě Helmond,0,
 2747930,Roosendaal,ve městě Roosendaal,0,
@@ -92,24 +92,24 @@ geonameid,name,in_phrase,decl_ok,note
 2746932,Spijkenisse,ve městě Spijkenisse,0,
 2759426,Barendrecht,ve městě Barendrecht,0,
 2886242,Kolín nad Rýnem,v Kolíně nad Rýnem,1,
-2756669,Dordrecht,ve městě Dordrecht,0,
+2756669,Dordrecht,v Dordrechtu,1,R-CS
 2747596,Schiedam,ve městě Schiedam,0,
 2748000,Roermond,ve městě Roermond,0,
 2879139,Lipsko,v Lipsku,1,
 2756987,Deventer,ve městě Deventer,0,
-2755420,Gouda,ve městě Gouda,0,
+2755420,Gouda,v Goudě,1,R-CS
 2934246,Düsseldorf,v Düsseldorfu,1,
-2757345,Delft,ve městě Delft,0,
+2757345,Delft,v Delftu,1,R-CS
 2633655,Woodford Green,ve městě Woodford Green,0,
 2745123,Waalwijk,ve městě Waalwijk,0,
 2759798,Amstelveen,ve městě Amstelveen,0,
-2756071,Enschede,ve městě Enschede,0,
+2756071,Enschede,v Enschede,1,R-CS
 2642414,Mitcham,ve městě Mitcham,0,
 2747351,'s-Hertogenbosch,ve městě 's-Hertogenbosch,0,
 2759145,Bergen op Zoom,ve městě Bergen op Zoom,0,
 2910831,Hannover,v Hannoveru,1,
 2756136,Emmen,ve městě Emmen,0,
-2652221,Coventry,ve městě Coventry,0,
+2652221,Coventry,v Coventry,1,R-CS
 2759875,Alphen aan den Rijn,ve městě Alphen aan den Rijn,0,
 2754652,Heerlen,ve městě Heerlen,0,
 6947041,Blackheath,ve městě Blackheath,0,
@@ -120,7 +120,7 @@ geonameid,name,in_phrase,decl_ok,note
 13535632,Maaspoort,ve městě Maaspoort,0,
 2865716,Neuenhagen bei Berlin,ve městě Neuenhagen bei Berlin,0,
 658225,Helsinky,v Helsinkách,1,
-2759661,Arnhem,ve městě Arnhem,0,
+2759661,Arnhem,v Arnhemu,1,R-CS
 2928810,Essen,v Essenu,1,
 2751285,Maassluis,ve městě Maassluis,0,
 2759113,Bergschenhoek,ve městě Bergschenhoek,0,
@@ -130,9 +130,9 @@ geonameid,name,in_phrase,decl_ok,note
 2743856,Zoetermeer,ve městě Zoetermeer,0,
 2748130,Rijen,ve městě Rijen,0,
 8581595,Harringay,ve městě Harringay,0,
-2751792,Leeuwarden,ve městě Leeuwarden,0,
+2751792,Leeuwarden,v Leeuwardenu,1,R-CS
 2743493,Zwijndrecht,ve městě Zwijndrecht,0,
-2945024,Brunšvik,v Brunšviku,1,
+2945024,Braunschweig,v Braunschweigu,1,R-CS
 2759040,Best,ve městě Best,0,
 2925177,Freiburg,ve Freiburgu,1,
 2935517,Dortmund,v Dortmundu,1,
@@ -143,7 +143,7 @@ geonameid,name,in_phrase,decl_ok,note
 2646003,Islington,ve městě Islington,0,
 2743608,Zutphen,ve městě Zutphen,0,
 6941548,Ypenburg,ve městě Ypenburg,0,
-2654710,Brighton,ve městě Brighton,0,
+2654710,Brighton,v Brightonu,1,R-CS
 2756161,Elst,ve městě Elst,0,
 2745467,Vlaardingen,ve městě Vlaardingen,0,
 2861650,Norimberk,v Norimberku,1,
@@ -166,8 +166,8 @@ geonameid,name,in_phrase,decl_ok,note
 2749182,Oud-Beijerland,ve městě Oud-Beijerland,0,
 2753106,Kampen,ve městě Kampen,0,
 2825297,Stuttgart,ve Stuttgartu,1,
-2934691,Duisburg,ve městě Duisburg,0,
-2860410,Oberhausen,ve městě Oberhausen,0,
+2934691,Duisburg,v Duisburgu,1,R-CS
+2860410,Oberhausen,v Oberhausenu,1,R-CS
 2748083,Rijssen,ve městě Rijssen,0,
 2747169,Sliedrecht,ve městě Sliedrecht,0,
 2759794,Amsterdam,v Amsterdamu,1,
@@ -191,7 +191,7 @@ geonameid,name,in_phrase,decl_ok,note
 598316,Kaunas,v Kaunasu,1,
 2746504,Tegelen,ve městě Tegelen,0,
 3128760,Barcelona,v Barceloně,1,
-2751773,Leiden,ve městě Leiden,0,
+2751773,Leiden,v Leidenu,1,R-CS
 2755584,Gennep,ve městě Gennep,0,
 2925533,Frankfurt nad Mohanem,ve Frankfurtu nad Mohanem,1,
 2656295,Barnet,ve městě Barnet,0,
@@ -201,7 +201,7 @@ geonameid,name,in_phrase,decl_ok,note
 2755619,Geldrop,ve městě Geldrop,0,
 2927930,Falkensee,ve městě Falkensee,0,
 2656333,Barking,ve městě Barking,0,
-2990440,Nice,ve městě Nice,0,nesklonné/nejisté
+2990440,Nice,v Nice,1,nesklonné/nejisté R-CS
 2748392,Putten,ve městě Putten,0,
 2755272,Groesbeek,ve městě Groesbeek,0,
 2895992,Ingolstadt,v Ingolstadtu,1,
@@ -221,18 +221,18 @@ geonameid,name,in_phrase,decl_ok,note
 2755476,Goes,ve městě Goes,0,
 2855328,Pasov,v Pasově,1,
 2745096,Waddinxveen,ve městě Waddinxveen,0,
-2867543,Münster,ve městě Münster,0,
+2867543,Münster,v Münsteru,1,R-CS
 2753801,Hoofddorp,ve městě Hoofddorp,0,
 2911408,Halstenbek,ve městě Halstenbek,0,
 2940132,Saská Kamenice,v Saské Kamenici,1,
-2853969,Pforzheim,ve městě Pforzheim,0,
+2853969,Pforzheim,v Pforzheimu,1,R-CS
 2752264,Krimpen aan den IJssel,ve městě Krimpen aan den IJssel,0,
 2750896,Middelburg,ve městě Middelburg,0,
 2754064,Hilversum,ve městě Hilversum,0,
 2919880,Glinde,ve městě Glinde,0,
 2750947,Meppel,ve městě Meppel,0,
-2881485,Landshut,ve městě Landshut,0,
-2869894,Mönchengladbach,ve městě Mönchengladbach,0,
+2881485,Landshut,v Landshutu,1,R-CS
+2869894,Mönchengladbach,v Mönchengladbachu,1,R-CS
 2935022,Drážďany,v Drážďanech,1,
 3037538,Annemasse,ve městě Annemasse,0,
 2756644,Drachten,ve městě Drachten,0,
@@ -250,22 +250,22 @@ geonameid,name,in_phrase,decl_ok,note
 2759887,Almelo,ve městě Almelo,0,
 2848845,Reinbek,ve městě Reinbek,0,
 2759178,Benthuizen,ve městě Benthuizen,0,
-2947416,Bochum,ve městě Bochum,0,
+2947416,Bochum,v Bochumi,1,R-CS
 3247449,Cáchy,v Cáchách,1,
 2988507,Paříž,v Paříži,1,
-2926271,Flensburg,ve městě Flensburg,0,
+2926271,Flensburg,ve Flensburgu,1,R-CS
 2756888,Diemen,ve městě Diemen,0,
 2746860,Stadskanaal,ve městě Stadskanaal,0,
 2760134,Aalsmeer,ve městě Aalsmeer,0,
 3117735,Madrid,v Madridu,1,
 2748371,Raalte,ve městě Raalte,0,
 2971549,Troyes,ve městě Troyes,0,
-2745641,Venlo,ve městě Venlo,0,
+2745641,Venlo,ve Venlu,1,R-CS
 2754669,Heerenveen,ve městě Heerenveen,0,
 2990363,Nîmes,ve městě Nîmes,0,
-2918632,Göttingen,ve městě Göttingen,0,
+2918632,Göttingen,v Göttingenu,1,R-CS
 2745580,Vianen,ve městě Vianen,0,
-2759899,Alkmaar,ve městě Alkmaar,0,
+2759899,Alkmaar,v Alkmaaru,1,R-CS
 3032833,Béziers,ve městě Béziers,0,
 2748185,Rhenen,ve městě Rhenen,0,
 2749644,Oldenzaal,ve městě Oldenzaal,0,
@@ -273,36 +273,36 @@ geonameid,name,in_phrase,decl_ok,note
 2756059,Epe,ve městě Epe,0,
 13526830,Blankenfelde-Mahlow,ve městě Blankenfelde-Mahlow,0,
 2907911,Heidelberg,v Heidelbergu,1,
-2894003,Kaiserslautern,ve městě Kaiserslautern,0,
+2894003,Kaiserslautern,v Kaiserslauternu,1,R-CS
 2748729,Papendrecht,ve městě Papendrecht,0,
 2879185,Leinfelden-Echterdingen,ve městě Leinfelden-Echterdingen,0,
 3037598,Angoulême,ve městě Angoulême,0,
 2753010,Katwijk aan Zee,ve městě Katwijk aan Zee,0,
 2759016,Beuningen,ve městě Beuningen,0,
 2891621,Kempten (Allgäu),ve městě Kempten (Allgäu),0,
-2983990,Rennes,ve městě Rennes,0,
+2983990,Rennes,v Rennes,1,R-CS
 2758765,Bodegraven,ve městě Bodegraven,0,
 2807363,Witten,ve městě Witten,0,
 2980291,Saint-Étienne,ve městě Saint-Étienne,0,
 2746804,Steenbergen,ve městě Steenbergen,0,
 2758177,Brummen,ve městě Brummen,0,
-2855745,Paderborn,ve městě Paderborn,0,
-2856883,Osnabrück,ve městě Osnabrück,0,
+2855745,Paderborn,v Paderbornu,1,R-CS
+2856883,Osnabrück,v Osnabrücku,1,R-CS
 2990355,Niort,ve městě Niort,0,
 6690866,Surbiton,ve městě Surbiton,0,
 2757872,Culemborg,ve městě Culemborg,0,
 2959083,Ahrensburg,ve městě Ahrensburg,0,
-643492,Oulu,ve městě Oulu,0,
+643492,Oulu,v Oulu,1,R-CS
 3037854,Amiens,ve městě Amiens,0,
-2755003,Haarlem,ve městě Haarlem,0,
+2755003,Haarlem,v Haarlemu,1,R-CS
 2873891,Mannheim,v Mannheimu,1,
 2877648,Limburg an der Lahn,ve městě Limburg an der Lahn,0,
 2993002,Montauban,ve městě Montauban,0,
 3013627,Hayange,ve městě Hayange,0,
 3035204,Balma,ve městě Balma,0,
-2949186,Bielefeld,ve městě Bielefeld,0,
+2949186,Bielefeld,v Bielefeldu,1,R-CS
 2890158,Kitzingen,ve městě Kitzingen,0,
-2892518,Kassel,ve městě Kassel,0,
+2892518,Kassel,v Kasselu,1,R-CS
 3143244,Oslo,v Oslu,1,
 2952984,Bamberk,v Bamberku,1,
 3028641,Carcassonne,ve městě Carcassonne,0,
@@ -315,26 +315,26 @@ geonameid,name,in_phrase,decl_ok,note
 2744549,Wierden,ve městě Wierden,0,
 2745726,Veghel,ve městě Veghel,0,
 2756723,Dongen,ve městě Dongen,0,
-2907669,Heilbronn,ve městě Heilbronn,0,
+2907669,Heilbronn,v Heilbronnu,1,R-CS
 2978640,Saint-Malo,ve městě Saint-Malo,0,
 2992402,Montigny-lès-Metz,ve městě Montigny-lès-Metz,0,
 2757340,Delfzijl,ve městě Delfzijl,0,
 2807240,Wittlich,ve městě Wittlich,0,
 2867838,Mülheim an der Ruhr,ve městě Mülheim an der Ruhr,0,
-660158,Espoo,ve městě Espoo,0,
+660158,Espoo,v Espoo,1,R-CS
 3033123,Besançon,ve městě Besançon,0,
-2639577,Reading,ve městě Reading,0,
+2639577,Reading,v Readingu,1,R-CS
 2750815,Mijdrecht,ve městě Mijdrecht,0,
 2751687,Leusden,ve městě Leusden,0,
 2945756,Bottrop,ve městě Bottrop,0,
 2747034,Soest,ve městě Soest,0,
 2911240,Hamm,ve městě Hamm,0,
 2938540,Deggendorf,ve městě Deggendorf,0,
-2512989,Palma,ve městě Palma,0,
+2512989,Palma,v Palmě,1,R-CS
 2981280,Saint-Brieuc,ve městě Saint-Brieuc,0,
 3027422,Chambéry,ve městě Chambéry,0,
 2745860,Valkenswaard,ve městě Valkenswaard,0,
-633679,Turku,ve městě Turku,0,nesklonné/nejisté
+633679,Turku,v Turku,1,nesklonné/nejisté R-CS
 3038261,Albi,ve městě Albi,0,
 2747584,Schijndel,ve městě Schijndel,0,
 2968748,Villefranche-sur-Saône,ve městě Villefranche-sur-Saône,0,
@@ -347,11 +347,11 @@ geonameid,name,in_phrase,decl_ok,note
 2634579,Welling,ve městě Welling,0,
 2756507,Duiven,ve městě Duiven,0,
 2831088,Sonthofen,ve městě Sonthofen,0,
-2921466,Gelsenkirchen,ve městě Gelsenkirchen,0,
+2921466,Gelsenkirchen,v Gelsenkirchenu,1,R-CS
 2940231,Castrop-Rauxel,ve městě Castrop-Rauxel,0,
 3017253,Fréjus,ve městě Fréjus,0,
 2750039,Nijverdal,ve městě Nijverdal,0,
-2844988,Rosenheim,ve městě Rosenheim,0,
+2844988,Rosenheim,v Rosenheimu,1,R-CS
 2875115,Lüneburg,ve městě Lüneburg,0,
 2745392,Vlissingen,ve městě Vlissingen,0,
 2751738,Lelystad,ve městě Lelystad,0,
@@ -369,7 +369,7 @@ geonameid,name,in_phrase,decl_ok,note
 2881062,Langenhagen,ve městě Langenhagen,0,
 2994798,Meaux,ve městě Meaux,0,
 2756232,Elburg,ve městě Elburg,0,
-2878234,Leverkusen,ve městě Leverkusen,0,
+2878234,Leverkusen,v Leverkusenu,1,R-CS
 2934486,Düren,ve městě Düren,0,
 2798573,Eupen,ve městě Eupen,0,
 2939969,Cloppenburg,ve městě Cloppenburg,0,
@@ -380,7 +380,7 @@ geonameid,name,in_phrase,decl_ok,note
 2990919,Narbonne,ve městě Narbonne,0,
 2992703,Montélimar,ve městě Montélimar,0,
 2821164,Trevír,v Trevíru,1,
-634963,Tampere,ve městě Tampere,0,nesklonné/nejisté
+634963,Tampere,v Tampere,1,nesklonné/nejisté R-CS
 3003796,Le Havre,ve městě Le Havre,0,
 2655603,Birmingham,v Birminghamu,1,
 2746839,Staphorst,ve městě Staphorst,0,
@@ -399,7 +399,7 @@ geonameid,name,in_phrase,decl_ok,note
 2753706,Hoogezand,ve městě Hoogezand,0,
 2906331,Hennigsdorf,ve městě Hennigsdorf,0,
 2749812,Noordwijk-Binnen,ve městě Noordwijk-Binnen,0,
-2929567,Erlangen,ve městě Erlangen,0,
+2929567,Erlangen,v Erlangenu,1,R-CS
 3038634,Agen,ve městě Agen,0,
 2881646,Landau in der Pfalz,ve městě Landau in der Pfalz,0,
 2973783,Štrasburk,ve Štrasburku,1,
@@ -412,7 +412,7 @@ geonameid,name,in_phrase,decl_ok,note
 2747751,Sassenheim,ve městě Sassenheim,0,
 2872649,Mayen,ve městě Mayen,0,
 2936909,Dingolfing,ve městě Dingolfing,0,
-261745,Heraklion,ve městě Heraklion,0,
+261745,Heraklion,v Heraklionu,1,R-CS
 2751651,Lichtenvoorde,ve městě Lichtenvoorde,0,
 2772400,Linec,v Linci,1,
 2813040,Weiden in der Oberpfalz,ve městě Weiden in der Oberpfalz,0,
@@ -422,13 +422,13 @@ geonameid,name,in_phrase,decl_ok,note
 2787889,Roeselare,ve městě Roeselare,0,
 2835297,Schwandorf,ve městě Schwandorf,0,
 2904789,Hildesheim,ve městě Hildesheim,0,
-3030300,Brest,ve městě Brest,0,
-2892794,Karlsruhe,ve městě Karlsruhe,0,nesklonné/nejisté
+3030300,Brest,v Brestu,1,R-CS
+2892794,Karlsruhe,v Karlsruhe,1,nesklonné/nejisté R-CS
 2904795,Hilden,ve městě Hilden,0,
 3025053,Cholet,ve městě Cholet,0,
 2748591,Pijnacker,ve městě Pijnacker,0,
 2998517,Libourne,ve městě Libourne,0,
-3035681,Avignon,ve městě Avignon,0,
+3035681,Avignon,v Avignonu,1,R-CS
 2745973,Uithoorn,ve městě Uithoorn,0,
 2747063,Sneek,ve městě Sneek,0,
 2754408,Hendrik-Ido-Ambacht,ve městě Hendrik-Ido-Ambacht,0,
@@ -440,7 +440,7 @@ geonameid,name,in_phrase,decl_ok,note
 2758598,Borne,ve městě Borne,0,
 2783310,Zaventem,ve městě Zaventem,0,
 2833564,Seevetal,ve městě Seevetal,0,
-3114711,Oviedo,ve městě Oviedo,0,
+3114711,Oviedo,v Oviedu,1,R-CS
 2977921,Saint-Nazaire,ve městě Saint-Nazaire,0,
 2983362,Roanne,ve městě Roanne,0,
 3035843,Auxerre,ve městě Auxerre,0,
@@ -468,8 +468,8 @@ geonameid,name,in_phrase,decl_ok,note
 2902768,Hof,ve městě Hof,0,
 2908032,Heide,ve městě Heide,0,
 2951923,Baunatal,ve městě Baunatal,0,
-2972315,Toulouse,ve městě Toulouse,0,nesklonné/nejisté
-2984114,Reims,ve městě Reims,0,
+2972315,Toulouse,v Toulouse,1,nesklonné/nejisté R-CS
+2984114,Remeš,v Remeši,1,R-CS
 2757220,Den Helder,ve městě Den Helder,0,
 2757850,Dalfsen,ve městě Dalfsen,0,
 2758460,Boxtel,ve městě Boxtel,0,
@@ -523,11 +523,11 @@ geonameid,name,in_phrase,decl_ok,note
 3028263,Castres,ve městě Castres,0,
 255683,Patras,ve městě Patras,0,
 2794981,Jambes,ve městě Jambes,0,
-2805753,Wuppertal,ve městě Wuppertal,0,
-2873759,Marburg,ve městě Marburg,0,
+2805753,Wuppertal,ve Wuppertalu,1,R-CS
+2873759,Marburg,v Marburgu,1,R-CS
 2895569,Itzehoe,ve městě Itzehoe,0,
 2754073,Hillegom,ve městě Hillegom,0,
-2875392,Ludwigsburg,ve městě Ludwigsburg,0,
+2875392,Ludwigsburg,v Ludwigsburgu,1,R-CS
 2936871,Dinslaken,ve městě Dinslaken,0,
 2973385,Tarbes,ve městě Tarbes,0,
 2947444,Böblingen,ve městě Böblingen,0,
@@ -535,17 +535,17 @@ geonameid,name,in_phrase,decl_ok,note
 2978758,Saint-Lô,ve městě Saint-Lô,0,
 3006283,La Teste-de-Buch,ve městě La Teste-de-Buch,0,
 3014856,Grasse,ve městě Grasse,0,
-2857458,Oldenburg,ve městě Oldenburg,0,
+2857458,Oldenburg,v Oldenburgu,1,R-CS
 2953324,Bad Tölz,ve městě Bad Tölz,0,
 3003603,Le Mans,ve městě Le Mans,0,
 2743997,Zeewolde,ve městě Zeewolde,0,
 2744344,Winschoten,ve městě Winschoten,0,
-2820860,Tübingen,ve městě Tübingen,0,
+2820860,Tübingen,v Tübingenu,1,R-CS
 2853572,Pirna,ve městě Pirna,0,
 2913537,Gunzenhausen,ve městě Gunzenhausen,0,
 3007609,Lannion,ve městě Lannion,0,
 2930523,Emmendingen,ve městě Emmendingen,0,
-598098,Klaipėda,ve městě Klaipėda,0,
+598098,Klaipėda,v Klaipėdě,1,R-CS
 2960596,Esch-sur-Alzette,ve městě Esch-sur-Alzette,0,
 2844437,Rotenburg (Wümme),ve městě Rotenburg (Wümme),0,
 2855525,Papenburg,ve městě Papenburg,0,
@@ -553,10 +553,10 @@ geonameid,name,in_phrase,decl_ok,note
 2913555,Günzburg,ve městě Günzburg,0,
 2940383,Calw,ve městě Calw,0,
 2953416,Bad Kreuznach,ve městě Bad Kreuznach,0,
-2834282,Schwerin,ve městě Schwerin,0,
+2834282,Schwerin,ve Schwerinu,1,R-CS
 2851746,Pulheim,ve městě Pulheim,0,
 2864034,Neustadt in Holstein,ve městě Neustadt in Holstein,0,
-2886946,Koblenz,ve městě Koblenz,0,
+2886946,Koblenz,v Koblenzi,1,R-CS
 2895669,Iserlohn,ve městě Iserlohn,0,
 2922530,Garmisch-Partenkirchen,ve městě Garmisch-Partenkirchen,0,
 2971053,Valence,ve městě Valence,0,

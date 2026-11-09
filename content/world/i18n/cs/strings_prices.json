@@ -5,10 +5,10 @@
   "t_hub": "Evropský cenový index nabíjení elektromobilů",
   "h1_hub": "Evropský cenový index nabíjení — {month}",
   "d_hub": "Kolik stojí veřejné nabíjení elektromobilu v Evropě: ceny ad hoc jednotlivých sítí podle zemí, AC, DC a HPC, ve srovnání s cenou elektřiny pro domácnosti. U každé ceny je uveden zdroj a datum.",
-  "lead_hub": "Ceny ad hoc — tedy to, co řidič zaplatí bez smlouvy — u sítí (počet: {nets}) v zemích (počet: {countries}), vážené počtem nabíjecích stanic každé sítě v dané zemi, vedle ceny elektřiny pro domácnosti. Metodika je otevřená a data jsou ke stažení.",
+  "lead_hub": "Ceny ad hoc — tedy to, co řidič zaplatí bez smlouvy — jednotlivých sítí podle zemí (sítě: {nets}, země: {countries}), vážené počtem nabíjecích stanic každé sítě v dané zemi, vedle ceny elektřiny pro domácnosti. Metodika je otevřená a data jsou ke stažení.",
   "t_country": "Ceny nabíjení elektromobilů {country_u}",
-  "d_country": "Ceny veřejného nabíjení elektromobilů {country_u} podle sítí: AC, DC a HPC, ad hoc i s tarifem, elektřina pro domácnosti, cena za 100 km. U každé ceny zdroj a datum.",
-  "t_net": "Ceny nabíjení {net} {country_u}",
+  "d_country": "Ceny veřejného nabíjení elektromobilů {country_u} podle sítí: AC, DC a HPC, ad hoc i s předplatným, elektřina pro domácnosti, cena za 100 km. U každé ceny zdroj a datum.",
+  "t_net": "Ceny nabíjení sítě {net} {country_u}",
   "d_net": "{net} {country_u}: zveřejněné tarify, ad hoc i s předplatným, poplatky, cena za 100 km a srovnání se zemí a s nabíjením doma.",
   "prices_checked": "Ceny ověřeny {date}",
   "cur_label": "Měna",
@@ -95,7 +95,7 @@
   "pay_note": "Jak přesně platit — aplikací, kartou na nabíječce nebo QR kódem — je uvedeno na ceníku sítě, odkaz je v tabulce.",
   "h_noprice": "Sítě bez zveřejněné ceny",
   "noprice_p": "Jejich ceny jsou vidět jen v aplikaci nebo na nabíječce, případně je určuje provozovatel místa: {list}.",
-  "h_more": "Další informace o nabíjení {country_u}",
+  "h_more": "Více o nabíjení {country_u}",
   "more_stations": "Nabíjecí stanice {country_u}",
   "more_local": "Místní sekce",
   "more_map": "Otevřít mapu",
@@ -107,7 +107,7 @@
   "h_n_places": "Nabíjecí stanice sítě {country_u}",
   "n_places": "Veřejná místa na mapě BlokVolt: {all}; DC od 50 kW: {dc}; od 150 kW: {hpc}.",
   "n_places_none": "Místa této sítě zatím v otevřených datech této země nemají uvedený název sítě.",
-  "n_station_page": "Všechny nabíjecí stanice {net} {country_u}",
+  "n_station_page": "Všechny nabíjecí stanice sítě {net} {country_u}",
   "notes_h": "Poznámky z ověření cen",
   "per_kwh": "/kWh",
   "per_min": "/min",
@@ -115,5 +115,5 @@
   "per_100": "za 100 km",
   "vat_no": "bez DPH",
   "dash_none": "bez ceny",
-  "too_few": "Sítí se zveřejněnou cenou ad hoc je pro index málo — viz stránku země"
+  "too_few": "Sítí se zveřejněnou cenou ad hoc je pro index málo — viz stránka země"
 }
