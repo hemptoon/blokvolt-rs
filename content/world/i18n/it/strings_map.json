@@ -47,7 +47,7 @@
  "sources_n": "{n} fonti",
  "about": "Informazioni sui dati",
  "attr_map": "Mappa",
- "odbl_note": "I dati uniti dei punti sono disponibili con licenza ODbL.",
+ "odbl_note": "I dati aggregati dei punti sono disponibili con licenza ODbL.",
  "close": "Chiudi",
  "download": "Scarica i dati",
  "attr_show": "Dati della mappa e licenze",
@@ -70,7 +70,7 @@
  "nav": "Indicazioni",
  "share": "Condividi",
  "copied": "Link copiato",
- "osm_fix": "Correggere anche in OpenStreetMap",
+ "osm_fix": "Correggi anche su OpenStreetMap",
  "more": "Dettagli sulla mappa BlokVolt",
  "bv_note": "I punti in Serbia e nella regione provengono dalle mappe regionali di BlokVolt.",
  "card_err": "Non è stato possibile caricare i dettagli di questo punto.",
@@ -121,7 +121,7 @@
  "ch_nav_region": "Regione (in inglese)",
  "c_price": "Prezzo, ad hoc",
  "c_price_kwh": "al kWh, prezzo di listino della rete",
- "c_price_note": "Prezzo del {d}; in questo sito può essere diverso: verificare nell'app o sulla colonnina.",
+ "c_price_note": "Prezzo del {d}; in questa stazione può essere diverso: verificare nell'app o sulla colonnina.",
  "c_price_old": "Prezzo più vecchio di 12 mesi",
  "c_price_more": "Tutte le tariffe della rete"
 }

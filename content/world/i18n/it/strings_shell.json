@@ -8,7 +8,7 @@
  "ft_sources": "Fonti e licenze",
  "ft_method": "Metodologia",
  "ft_about": "Informazioni",
- "home_title": "Stazioni di ricarica in Europa e nel mondo — mappa e dati aperti | BlokVolt",
+ "home_title": "Stazioni di ricarica per auto elettriche in Europa e nel mondo — mappa e dati aperti | BlokVolt",
  "home_desc": "Dove ricaricare un'auto elettrica: una mappa delle stazioni di ricarica pubbliche e pagine per Paesi, città e reti, da dati aperti con fonte e data.",
  "home_kick": "BlokVolt · mondo",
  "home_h1": "Dove ricaricare un'auto elettrica — in ogni Paese, città e rete",
@@ -37,7 +37,7 @@
  "method_title": "Metodologia | BlokVolt",
  "method_h1": "Metodologia",
  "method_desc": "Come vengono uniti i siti, quanto è affidabile ciascuno e quali pagine esistono.",
- "method_p": "I record di fonti diverse che descrivono lo stesso sito vengono uniti in uno solo. A ogni sito viene assegnata un'affidabilità dei dati da 0 a 100 (tipo di fonte, seconda fonte, aggiornamento). Una pagina di Paese richiede almeno 100 siti pubblici con affidabilità pari o superiore a 50, una pagina di città almeno 20. La formula e le soglie sono spiegate qui:",
+ "method_p": "I record di fonti diverse che descrivono lo stesso sito vengono uniti in uno solo. A ogni sito viene assegnata un'affidabilità dei dati da 0 a 100 (tipo di fonte, seconda fonte, data dell'ultima conferma). Una pagina di Paese richiede almeno 100 siti pubblici con affidabilità pari o superiore a 50, una pagina di città almeno 20. La formula e le soglie sono spiegate qui:",
  "pl_loc": {
   "one": "sito di ricarica",
   "many": "di siti di ricarica",
