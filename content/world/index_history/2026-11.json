@@ -1,0 +1,182 @@
+{
+ "v": 1,
+ "month": "2026-11",
+ "tariffs_updated": "2026-11-09",
+ "weights_layer": "2026-11-09",
+ "fx_date": "2026-11-06",
+ "home_period": "2026-S1",
+ "europe": {
+  "ac": 0.495101,
+  "dc": 0.68195,
+  "hpc": 0.764666
+ },
+ "europe_n": {
+  "ac": 20,
+  "dc": 31,
+  "hpc": 18
+ },
+ "networks_indexed": 50,
+ "countries": {
+  "DE": {
+   "ac": 0.503115,
+   "dc": 0.61265,
+   "hpc": 0.72822,
+   "m": {
+    "ac": "w",
+    "dc": "w",
+    "hpc": "w"
+   },
+   "home": 0.362,
+   "home_src": "eurostat",
+   "ratio": 1.692404,
+   "nets": 13,
+   "cover_dc": 0.2529,
+   "n_dc": 7
+  },
+  "ES": {
+   "ac": 0.355,
+   "dc": 0.518728,
+   "hpc": 0.635125,
+   "m": {
+    "ac": "m",
+    "dc": "w",
+    "hpc": "w"
+   },
+   "home": 0.251,
+   "home_src": "eurostat",
+   "ratio": 2.066644,
+   "nets": 6,
+   "cover_dc": 0.282,
+   "n_dc": 3
+  },
+  "FR": {
+   "ac": 0.433,
+   "dc": 0.507717,
+   "hpc": 0.55,
+   "m": {
+    "ac": "m",
+    "dc": "w",
+    "hpc": "m"
+   },
+   "home": 0.249,
+   "home_src": "eurostat",
+   "ratio": 2.039024,
+   "nets": 10,
+   "cover_dc": 0.1752,
+   "n_dc": 7
+  },
+  "GB": {
+   "ac": 0.728176,
+   "dc": 1.006419,
+   "hpc": 1.001713,
+   "m": {
+    "ac": "w",
+    "dc": "w",
+    "hpc": "w"
+   },
+   "home": 0.3155,
+   "home_src": "ofgem",
+   "ratio": 3.189916,
+   "nets": 9,
+   "cover_dc": 0.4254,
+   "n_dc": 6
+  },
+  "HR": {
+   "ac": 0.41,
+   "dc": 0.51,
+   "hpc": null,
+   "m": {
+    "ac": "m",
+    "dc": "m",
+    "hpc": null
+   },
+   "home": 0.182,
+   "home_src": "eurostat",
+   "ratio": 2.802198,
+   "nets": 7,
+   "cover_dc": 0,
+   "n_dc": 5
+  },
+  "IE": {
+   "ac": 0.62488,
+   "dc": 0.675102,
+   "hpc": 0.80871,
+   "m": {
+    "ac": "w",
+    "dc": "w",
+    "hpc": "w"
+   },
+   "home": 0.387,
+   "home_src": "eurostat",
+   "ratio": 1.74445,
+   "nets": 2,
+   "cover_dc": 0.7033,
+   "n_dc": 2
+  },
+  "IT": {
+   "ac": 0.673529,
+   "dc": 0.789178,
+   "hpc": 0.86,
+   "m": {
+    "ac": "w",
+    "dc": "w",
+    "hpc": "m"
+   },
+   "home": 0.314,
+   "home_src": "eurostat",
+   "ratio": 2.513306,
+   "nets": 4,
+   "cover_dc": 0.271,
+   "n_dc": 2
+  },
+  "NL": {
+   "ac": 0.454746,
+   "dc": 0.695829,
+   "hpc": 0.7822,
+   "m": {
+    "ac": "w",
+    "dc": "w",
+    "hpc": "m"
+   },
+   "home": 0.244,
+   "home_src": "eurostat",
+   "ratio": 2.851757,
+   "nets": 2,
+   "cover_dc": 0.1762,
+   "n_dc": 2
+  },
+  "SE": {
+   "ac": 0.5198,
+   "dc": 0.600411,
+   "hpc": 0.628059,
+   "m": {
+    "ac": "w",
+    "dc": "w",
+    "hpc": "w"
+   },
+   "home": 0.306,
+   "home_src": "eurostat",
+   "ratio": 1.962128,
+   "nets": 2,
+   "cover_dc": 0.261,
+   "n_dc": 2
+  },
+  "SI": {
+   "ac": 0.4,
+   "dc": 0.61,
+   "hpc": 0.65,
+   "m": {
+    "ac": "m",
+    "dc": "m",
+    "hpc": "m"
+   },
+   "home": 0.212,
+   "home_src": "eurostat",
+   "ratio": 2.877358,
+   "nets": 6,
+   "cover_dc": 0.0185,
+   "n_dc": 3
+  }
+ },
+ "frozen": "2026-11-09"
+}

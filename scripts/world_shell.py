@@ -42,6 +42,7 @@ def active():
     return bool(os.environ.get('BV_WORLD_PAGES'))
 
 
+PRESS = None    # G7: {lang: (url, label)} — set by world_press.prepare() when an index issue exists
 PRICES = None   # G3: {'hub': {lang: url}, 'nav': {lang: label}} — set by world_prices.prepare() when the price pages are built
 
 
@@ -59,7 +60,7 @@ def footer(l):
     T = load_strings()[l]
     return {'h': T['ft_h'], 'links': [(ABOUT_DATA[l], T['ft_about_data']), (DOWNLOAD[l], T['ft_download']),
                                       (SHELL['sources'][l], T['ft_sources']), (SHELL['methodology'][l], T['ft_method']),
-                                      (SHELL['about'][l], T['ft_about'])]}
+                                      (SHELL['about'][l], T['ft_about'])] + ([PRESS[l]] if PRESS else [])}
 
 
 def run(G, c):

@@ -1,0 +1,272 @@
+{
+ "nav_press": {
+  "en": "For media",
+  "sr": "Za medije",
+  "ru": "Для СМИ"
+ },
+ "ft_press": {
+  "en": "For media: price index",
+  "sr": "Za medije: indeks cena",
+  "ru": "Для СМИ: индекс цен"
+ },
+ "t_press": {
+  "en": "European EV Charging Price Index — for media | BlokVolt",
+  "sr": "Evropski indeks cena punjenja — za medije | BlokVolt",
+  "ru": "Европейский индекс цен зарядки — для СМИ | BlokVolt"
+ },
+ "d_press": {
+  "en": "Monthly European EV Charging Price Index: key figures, charts to embed, citation rules and contact for journalists.",
+  "sr": "Mesečni evropski indeks cena punjenja električnih automobila: ključni brojevi, grafikoni za ugradnju, pravila citiranja i kontakt za novinare.",
+  "ru": "Ежемесячный европейский индекс цен зарядки электромобилей: главные цифры, графики для встраивания, правила цитирования и контакт для журналистов."
+ },
+ "kick_press": {
+  "en": "For media",
+  "sr": "Za medije",
+  "ru": "Для СМИ"
+ },
+ "h1_press": {
+  "en": "European EV Charging Price Index for media",
+  "sr": "Evropski indeks cena punjenja za medije",
+  "ru": "Европейский индекс цен зарядки для СМИ"
+ },
+ "lead_press": {
+  "en": "Every month: what public charging costs in Europe, country by country, next to the price of electricity at home. Figures, charts and data may be used freely with a credit and a link.",
+  "sr": "Svakog meseca: koliko košta javno punjenje u Evropi, po zemljama, pored cene struje kod kuće. Brojevi, grafikoni i podaci smeju se slobodno koristiti uz navođenje izvora i link.",
+  "ru": "Каждый месяц: сколько стоит публичная зарядка в Европе по странам — рядом с ценой электричества дома. Цифры, графики и данные можно свободно использовать со ссылкой на источник."
+ },
+ "issue_of": {
+  "en": "Issue of {date}",
+  "sr": "Izdanje od {date}",
+  "ru": "Выпуск от {date}"
+ },
+ "h_latest": {
+  "en": "Latest issue: {month}",
+  "sr": "Najnovije izdanje: {month}",
+  "ru": "Последний выпуск: {month}"
+ },
+ "read_issue": {
+  "en": "Read the full issue",
+  "sr": "Celo izdanje",
+  "ru": "Весь выпуск"
+ },
+ "h_key": {
+  "en": "Key figures",
+  "sr": "Ključni brojevi",
+  "ru": "Главные цифры"
+ },
+ "h_charts": {
+  "en": "Charts to embed",
+  "sr": "Grafikoni za ugradnju",
+  "ru": "Графики для встраивания"
+ },
+ "charts_p": {
+  "en": "The embedded chart always shows the latest issue. For print or a fixed month, take the SVG file of that month.",
+  "sr": "Ugrađeni grafikon uvek prikazuje najnovije izdanje. Za štampu ili određeni mesec uzmite SVG fajl tog meseca.",
+  "ru": "Встроенный график всегда показывает последний выпуск. Для печати или конкретного месяца берите SVG-файл этого месяца."
+ },
+ "embed_code": {
+  "en": "Embed code",
+  "sr": "Kod za ugradnju",
+  "ru": "Код для встраивания"
+ },
+ "svg_file": {
+  "en": "SVG file, {month}",
+  "sr": "SVG fajl, {month}",
+  "ru": "SVG-файл, {month}"
+ },
+ "ch_dc_home": {
+  "en": "Fast charging (DC) vs electricity at home, €/kWh",
+  "sr": "Brzo punjenje (DC) i struja kod kuće, €/kWh",
+  "ru": "Быстрая зарядка (DC) и электричество дома, €/кВт·ч"
+ },
+ "ch_dc_home_d": {
+  "en": "Average ad hoc price of DC charging 50 kW and more in each country next to the household electricity price, euro per kWh with VAT.",
+  "sr": "Prosečna cena brzog punjenja (DC, 50 kW i više) bez pretplate u svakoj zemlji pored cene struje za domaćinstva, evra po kWh sa PDV-om.",
+  "ru": "Средняя разовая цена быстрой зарядки (DC от 50 кВт) в каждой стране рядом с ценой электричества для домохозяйств, евро за кВт·ч с НДС."
+ },
+ "ch_europe": {
+  "en": "Europe: average ad hoc price by charging class, €/kWh",
+  "sr": "Evropa: prosečna cena bez pretplate po klasi punjenja, €/kWh",
+  "ru": "Европа: средняя разовая цена по классу зарядки, €/кВт·ч"
+ },
+ "ch_europe_d": {
+  "en": "Weighted average ad hoc price per kWh with VAT across the countries of the index: AC, DC 50–149 kW and HPC 150 kW and more.",
+  "sr": "Ponderisana prosečna cena po kWh sa PDV-om bez pretplate u zemljama indeksa: AC, DC 50–149 kW i HPC od 150 kW.",
+  "ru": "Средневзвешенная разовая цена за кВт·ч с НДС по странам индекса: AC, DC 50–149 кВт и HPC от 150 кВт."
+ },
+ "lg_dc": {
+  "en": "DC charging",
+  "sr": "DC punjenje",
+  "ru": "Зарядка DC"
+ },
+ "lg_home": {
+  "en": "Electricity at home",
+  "sr": "Struja kod kuće",
+  "ru": "Электричество дома"
+ },
+ "cls_ac": {
+  "en": "AC",
+  "sr": "AC",
+  "ru": "AC"
+ },
+ "cls_dc": {
+  "en": "DC 50–149 kW",
+  "sr": "DC 50–149 kW",
+  "ru": "DC 50–149 кВт"
+ },
+ "cls_hpc": {
+  "en": "HPC ≥ 150 kW",
+  "sr": "HPC ≥ 150 kW",
+  "ru": "HPC ≥ 150 кВт"
+ },
+ "credit": {
+  "en": "Source: BlokVolt, European EV Charging Price Index, {month}",
+  "sr": "Izvor: BlokVolt, Evropski indeks cena punjenja, {month}",
+  "ru": "Источник: BlokVolt, Европейский индекс цен зарядки, {month}"
+ },
+ "h_cite": {
+  "en": "How to cite",
+  "sr": "Kako citirati",
+  "ru": "Как цитировать"
+ },
+ "cite_1": {
+  "en": "Credit the index and the month and link to the price page, for example:",
+  "sr": "Navedite indeks i mesec i stavite link na stranicu cena, na primer:",
+  "ru": "Укажите индекс и месяц и поставьте ссылку на страницу цен, например:"
+ },
+ "cite_2": {
+  "en": "Figures and charts may be quoted, reproduced and embedded in editorial content without asking, with that credit. The CSV files are under CC BY-NC 4.0: free for non-commercial use with a credit; commercial use of the data (products, paid reports, resale) needs a written agreement.",
+  "sr": "Brojevi i grafikoni smeju se citirati, prenositi i ugrađivati u novinarske tekstove bez pitanja, uz to navođenje izvora. CSV fajlovi su pod licencom CC BY-NC 4.0: slobodno za nekomercijalnu upotrebu uz navođenje izvora; komercijalna upotreba podataka (proizvodi, plaćeni izveštaji, preprodaja) traži pisani dogovor.",
+  "ru": "Цифры и графики можно цитировать, перепечатывать и встраивать в журналистские материалы без запроса, с такой ссылкой. CSV-файлы — под лицензией CC BY-NC 4.0: свободно для некоммерческого использования со ссылкой; коммерческое использование данных (продукты, платные отчёты, перепродажа) — по письменной договорённости."
+ },
+ "cite_3": {
+  "en": "Please quote prices as averages of ad hoc prices from the networks' own price lists, not as what every driver pays: subscriptions and roaming apps can be cheaper or dearer.",
+  "sr": "Molimo da cene navodite kao proseke cena bez pretplate iz cenovnika samih mreža, a ne kao iznos koji plaća svaki vozač: pretplate i roming aplikacije mogu biti jeftinije ili skuplje.",
+  "ru": "Пожалуйста, подавайте цены как средние разовые цены из прайс-листов самих сетей, а не как то, что платит каждый водитель: подписки и роуминговые приложения бывают дешевле или дороже."
+ },
+ "h_contact": {
+  "en": "Contact",
+  "sr": "Kontakt",
+  "ru": "Контакт"
+ },
+ "contact_p": {
+  "en": "Questions about the figures, the method or a country: {email}. Replies within 48 hours. The release date of the next issue is in the first days of the month.",
+  "sr": "Pitanja o brojevima, metodologiji ili nekoj zemlji: {email}. Odgovor u roku od 48 sati. Sledeće izdanje izlazi prvih dana meseca.",
+  "ru": "Вопросы о цифрах, методике или стране: {email}. Ответ в течение 48 часов. Следующий выпуск — в первые дни месяца."
+ },
+ "h_archive": {
+  "en": "All issues",
+  "sr": "Sva izdanja",
+  "ru": "Все выпуски"
+ },
+ "h_data": {
+  "en": "Data and method",
+  "sr": "Podaci i metodologija",
+  "ru": "Данные и методика"
+ },
+ "data_csv": {
+  "en": "Index of the month, CSV",
+  "sr": "Indeks meseca, CSV",
+  "ru": "Индекс месяца, CSV"
+ },
+ "method_link": {
+  "en": "How the index is calculated",
+  "sr": "Kako se indeks računa",
+  "ru": "Как считается индекс"
+ },
+ "prices_link": {
+  "en": "Prices by country and network",
+  "sr": "Cene po zemljama i mrežama",
+  "ru": "Цены по странам и сетям"
+ },
+ "t_issue": {
+  "en": "European EV Charging Price Index — {month} | BlokVolt",
+  "sr": "Evropski indeks cena punjenja — {month} | BlokVolt",
+  "ru": "Европейский индекс цен зарядки — {month} | BlokVolt"
+ },
+ "h1_issue": {
+  "en": "European EV Charging Price Index — {month}",
+  "sr": "Evropski indeks cena punjenja — {month}",
+  "ru": "Европейский индекс цен зарядки — {month}"
+ },
+ "d_issue": {
+  "en": "What public EV charging cost in Europe in {month}: ad hoc AC, DC and HPC prices by country, compared with electricity at home.",
+  "sr": "Koliko je koštalo javno punjenje u Evropi u periodu {month}: cene AC, DC i HPC punjenja bez pretplate po zemljama, u poređenju sa strujom kod kuće.",
+  "ru": "Сколько стоила публичная зарядка в Европе ({month}): разовые цены AC, DC и HPC по странам в сравнении с электричеством дома."
+ },
+ "kick_issue": {
+  "en": "Monthly issue",
+  "sr": "Mesečno izdanje",
+  "ru": "Ежемесячный выпуск"
+ },
+ "lead_issue": {
+  "en": "Ad hoc prices of {nets} networks in {countries} countries, from the networks' own price lists, weighted by the number of chargers.",
+  "sr": "Cene bez pretplate {nets} mreža u {countries} zemalja, iz cenovnika samih mreža, ponderisane brojem punjača.",
+  "ru": "Разовые цены сетей: {nets}, стран: {countries}; из прайс-листов самих сетей, с весом по числу зарядок."
+ },
+ "f_europe": {
+  "en": "Fast charging (DC 50–149 kW) cost {dc} per kWh on average across the index; ultra-fast (HPC, 150 kW and more) {hpc}; AC {ac}.",
+  "sr": "Brzo punjenje (DC 50–149 kW) koštalo je u proseku indeksa {dc} po kWh; ultrabrzo (HPC, od 150 kW) {hpc}; AC {ac}.",
+  "ru": "Быстрая зарядка (DC 50–149 кВт) в среднем по индексу стоила {dc} за кВт·ч; сверхбыстрая (HPC, от 150 кВт) — {hpc}; AC — {ac}."
+ },
+ "f_range": {
+  "en": "DC charging was cheapest {lo} ({lo_v}) and dearest {hi} ({hi_v}).",
+  "sr": "DC punjenje bilo je najjeftinije {lo} ({lo_v}), a najskuplje {hi} ({hi_v}).",
+  "ru": "Дешевле всего DC-зарядка была {lo} ({lo_v}), дороже всего — {hi} ({hi_v})."
+ },
+ "f_home": {
+  "en": "A public DC charger cost from {lo_r} times ({lo}) to {hi_r} times ({hi}) the price of household electricity.",
+  "sr": "Javni DC punjač bio je od {lo_r} puta ({lo}) do {hi_r} puta ({hi}) skuplji od struje za domaćinstva.",
+  "ru": "Публичная DC-зарядка стоила дороже электричества для домохозяйств в {lo_r} ({lo}) – {hi_r} раза ({hi})."
+ },
+ "f_mom": {
+  "en": "Compared with {prev}, the European DC average moved by {d} ({p}).",
+  "sr": "U odnosu na period {prev}, evropski prosek za DC promenio se za {d} ({p}).",
+  "ru": "По сравнению с выпуском «{prev}» средняя цена DC в Европе изменилась на {d} ({p})."
+ },
+ "f_mom_n": {
+  "en": "Countries with the largest change in the DC value: {list}.",
+  "sr": "Zemlje sa najvećom promenom DC vrednosti: {list}.",
+  "ru": "Страны с наибольшим изменением цены DC: {list}."
+ },
+ "f_first": {
+  "en": "This is the first issue; month-on-month changes start with the next one.",
+  "sr": "Ovo je prvo izdanje; promene iz meseca u mesec prikazuju se od sledećeg.",
+  "ru": "Это первый выпуск; изменения к прошлому месяцу — со следующего."
+ },
+ "f_checkins": {
+  "en": "Drivers confirmed {n} prices paid at chargers this month (two matching reports needed for a price to count).",
+  "sr": "Vozači su ovog meseca potvrdili {n} plaćenih cena na punjačima (cena se računa posle dve nezavisne potvrde).",
+  "ru": "Водители подтвердили {n} оплаченных цен на станциях за месяц (цена учитывается после двух независимых совпадений)."
+ },
+ "th_country": {
+  "en": "Country",
+  "sr": "Zemlja",
+  "ru": "Страна"
+ },
+ "th_change": {
+  "en": "DC change",
+  "sr": "Promena DC",
+  "ru": "Изменение DC"
+ },
+ "h_table_i": {
+  "en": "Prices by country",
+  "sr": "Cene po zemljama",
+  "ru": "Цены по странам"
+ },
+ "issue_note": {
+  "en": "Prices with VAT, euro per kWh at the ECB rate of {fx}. Tariffs checked up to {checked}; weights from the public layer of {layer}; electricity at home: {home}.",
+  "sr": "Cene sa PDV-om, evra po kWh po kursu ECB od {fx}. Tarife proverene do {checked}; ponderi iz javnog sloja od {layer}; struja kod kuće: {home}.",
+  "ru": "Цены с НДС, евро за кВт·ч по курсу ЕЦБ на {fx}. Тарифы проверены по {checked}; веса — из публичного слоя на {layer}; электричество дома: {home}."
+ },
+ "embed_title": {
+  "en": "BlokVolt chart",
+  "sr": "BlokVolt grafikon",
+  "ru": "График BlokVolt"
+ },
+ "for_media_link": {
+  "en": "Charts, citation rules and contact for media",
+  "sr": "Grafikoni, pravila citiranja i kontakt za medije",
+  "ru": "Графики, правила цитирования и контакт для СМИ"
+ }
+}

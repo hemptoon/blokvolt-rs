@@ -52,6 +52,7 @@ jobs:
           python3 scripts/world_shell.py selftest
           python3 scripts/world_prices_data.py validate
           python3 scripts/world_prices.py selftest
+          python3 scripts/world_press.py selftest
           python3 content/world/names/check_names.py
           BV_WORLD_HOME=1 BV_WORLD_PREVIEW=1 BV_WORLD_PAGES="$PAGES" BV_WORLD_MANIFEST="$MANIFEST" BV_WORLD_DATA=/world-data/ python3 scripts/gen_com.py
           mkdir -p dist-com/world-data
