@@ -1,0 +1,368 @@
+network,name_display,slug,note,kind
+ChargePoint,ChargePoint,chargepoint,,cpo
+Tesla,Tesla,tesla,,cpo
+Vattenfall,Vattenfall InCharge,vattenfall-incharge,,utility
+Allego,Allego,allego,,cpo
+Blink Charging,Blink,blink,,cpo
+Shell Recharge,Shell Recharge,shell-recharge,,cpo
+Enel X Way,Enel X Way,enel-x-way,,cpo
+FLO,FLO,flo,,cpo
+ubitricity,ubitricity,ubitricity,,cpo
+Pod Point,Pod Point,pod-point,,cpo
+EV Connect,EV Connect,ev-connect,,cpo
+Circuit électrique,Circuit électrique,circuit-electrique,,cpo
+Iberdrola bp pulse,Iberdrola | bp pulse,iberdrola-bp-pulse,"СП Iberdrola и bp, отдельно от bp pulse",cpo
+Char.gy,char.gy,char-gy,,cpo
+bp pulse,bp pulse,bp-pulse,,cpo
+Lidl,Lidl,lidl,"хост, а не сеть",retail
+Innogy,innogy,innogy,дубль канона: слить с E.ON; innogy eMobility поглощена E.ON (2020),cpo
+Connected Kerb,Connected Kerb,connected-kerb,,cpo
+Freshmile,Freshmile,freshmile,,cpo
+EVgo,EVgo,evgo,,cpo
+Endesa,Endesa X Way,endesa-x-way,,utility
+E.ON,E.ON,e-on,,cpo
+MOBI.E,MOBI.E,mobi-e,"ПО/производитель/роуминг, не оператор; национальная управляющая платформа Португалии; реальные операторы — Galp, EDP, Powerdot и др.",municipality
+TotalEnergies,TotalEnergies,totalenergies,,cpo
+Repsol Ibil,Repsol,repsol,,retail
+Izivia,Izivia,izivia,,cpo
+ALDI,ALDI,aldi,"хост, а не сеть",retail
+PLN,PLN,pln,"Latin: PT PLN (Perusahaan Listrik Negara), сеть SPKLU",utility
+ladenetz.de,ladenetz.de,ladenetz-de,"ПО/производитель/роуминг, не оператор; роуминговое объединение штадтверке",utility
+Power Dot,Powerdot,powerdot,,cpo
+AmpUp,AmpUp,ampup,,cpo
+EDP,EDP,edp,,utility
+Greenway,GreenWay,greenway,,cpo
+Chargeplace Scotland,ChargePlace Scotland,chargeplace-scotland,,municipality
+Eneco,Eneco,eneco,,utility
+Electrify America,Electrify America,electrify-america,,cpo
+Mercadona,Mercadona,mercadona,"хост, а не сеть",retail
+Be Charge,Be Charge,be-charge,,cpo
+Loop,Loop,loop,,cpo
+SWTCH,SWTCH,swtch,,cpo
+MER,Mer,mer,,cpo
+Chargefox,Chargefox,chargefox,,cpo
+Révéo,Révéo,reveo,,utility
+EnBW,EnBW,enbw,,cpo
+Ionity,IONITY,ionity,,cpo
+InstaVolt,InstaVolt,instavolt,,cpo
+PPC blue,PPC blue,ppc-blue,,utility
+CLEVER,Clever,clever,,cpo
+Electromaps,Electromaps,electromaps,"ПО/производитель/роуминг, не оператор; приложение/агрегатор",unknown
+Chargelab,ChargeLab,chargelab,,cpo
+Zunder,Zunder,zunder,,cpo
+GeniePoint,GeniePoint,geniepoint,,cpo
+MObiVE,MObiVE,mobive,,municipality
+Monta,Monta,monta,"ПО/производитель/роуминг, не оператор; платформа CPMS/приложение, точки принадлежат хостам",cpo
+eTecnic,eTecnic,etecnic,,cpo
+Believ,Believ,believ,,cpo
+VIRTA,Virta,virta,,cpo
+SemaConnect,SemaConnect,semaconnect,дубль канона: слить с Blink Charging; куплена Blink в 2022,cpo
+EnerCity,enercity,enercity,,utility
+Charge Your Car,Charge Your Car,charge-your-car,,cpo
+Red E Charge,Red E Charge,red-e-charge,,cpo
+e-totem,e-totem,e-totem,"ПО/производитель/роуминг, не оператор; производитель зарядных станций",unknown
+OpConnect,OpConnect,opconnect,,cpo
+ESB ecars,ESB ecars,esb-ecars,,cpo
+Atlante,Atlante,atlante,,cpo
+EZ-Charge,EZ-Charge,ez-charge,,cpo
+Electra,Electra,electra,,cpo
+EVGateway,EVGateway,evgateway,,cpo
+Punkt-E,Punkt-E,punkt-e,,cpo
+eborn,eborn,eborn,,cpo
+Qovoltis,Qovoltis,qovoltis,,cpo
+SureCharge,SureCharge,surecharge,,cpo
+Pfalzwerke,Pfalzwerke,pfalzwerke,,utility
+Lynkwell,Lynkwell,lynkwell,,cpo
+Stromnetz Hamburg,Stromnetz Hamburg,stromnetz-hamburg,,utility
+Acciona,Acciona,acciona,,utility
+EZO,EZO,ezo,,cpo
+PowerGo,PowerGo,powergo,,cpo
+Stations-e,Stations-e,stations-e,,cpo
+EVBox,EVBox,evbox,"ПО/производитель/роуминг, не оператор; производитель зарядных станций",unknown
+Plugit,Plugit,plugit,,cpo
+N-ERGIE,N-ERGIE,n-ergie,,utility
+ČEZ,ČEZ,cez,,utility
+EVN,EVN,evn,,utility
+MELIB,MELIB,melib,,municipality
+Inbalance grid,Inbalance grid,inbalance-grid,,cpo
+Fastned,Fastned,fastned,,cpo
+Zero Carbon World,Zero Carbon World,zero-carbon-world,благотворительная программа: зарядки у хостов (отели и т.п.),unknown
+Evergo,Evergo,evergo,,cpo
+Engie,Engie,engie,,cpo
+Circle K,Circle K,circle-k,,retail
+Stadtwerke Düsseldorf,Stadtwerke Düsseldorf,stadtwerke-dusseldorf,,utility
+Galp,Galp,galp,,retail
+MOL Plugee,MOL Plugee,mol-plugee,,retail
+Osprey Charging,Osprey Charging,osprey-charging,,cpo
+Neogy,Neogy,neogy,,utility
+EWE Go,EWE Go,ewe-go,,cpo
+ChargeSini,ChargeSini,chargesini,,cpo
+Wenea,Wenea,wenea,,cpo
+Eranovum,Eranovum,eranovum,,cpo
+Otopriz,Otopriz,otopriz,,cpo
+Exploren,Exploren,exploren,,cpo
+Smappee,Smappee,smappee,"ПО/производитель/роуминг, не оператор; производитель зарядных станций",unknown
+Joltie,Joltie,joltie,,cpo
+Place To Plug,Place To Plug,place-to-plug,"ПО/производитель/роуминг, не оператор; платформа CPMS",cpo
+ChargeNet NZ,ChargeNet,chargenet,,cpo
+Kople,Kople,kople,,cpo
+Voltrelli,Voltrelli,voltrelli,,cpo
+ZES,ZES,zes,,cpo
+Qwello,Qwello,qwello,,cpo
+MFG EV Power,MFG EV Power,mfg-ev-power,,retail
+Noodoe EV,Noodoe EV,noodoe-ev,,cpo
+Eldrive,Eldrive,eldrive,,cpo
+ZEF Energy,ZEF Energy,zef-energy,,cpo
+ChargeUp,ChargeUp,chargeup,,cpo
+ChargeMod,ChargeMod,chargemod,,cpo
+Universal EV Charging,Universal EV Charging,universal-ev-charging,,cpo
+InCharge,InCharge,incharge,"смешанный канон: SE — Vattenfall InCharge, US — In-Charge Energy, GR — incharge (nrg); проверить разделение",cpo
+Comfortcharge,Comfortcharge,comfortcharge,,cpo
+PlugSurfing,Plugsurfing,plugsurfing,"ПО/производитель/роуминг, не оператор; роуминг/приложение (e-MSP)",unknown
+EVCS,EVCS,evcs,,cpo
+ChargeSmart EV,ChargeSmart EV,chargesmart-ev,,cpo
+Kaufland,Kaufland,kaufland,"хост, а не сеть",retail
+Fines Charging,Fines Charging,fines-charging,,cpo
+Eşarj,Eşarj,esarj,,cpo
+E-Wald,E-Wald,e-wald,,cpo
+pass pass électrique,pass pass électrique,pass-pass-electrique,,municipality
+SMATRICS Netz,SMATRICS,smatrics,,cpo
+Ecotap,Ecotap,ecotap,"ПО/производитель/роуминг, не оператор; производитель зарядных станций",unknown
+Evie,Evie Networks,evie-networks,,cpo
+ElpeFuture,ElpeFuture,elpefuture,,retail
+RheinEnergie,RheinEnergie,rheinenergie,,cpo
+Entega,Entega,entega,,utility
+Jolt,Jolt,jolt,,cpo
+Joju,Joju,joju,,cpo
+Evolt Network,Evolt Network,evolt-network,сеть Swarco E.Connect,cpo
+Infinity EV,Infinity EV,infinity-ev,,cpo
+ePower,ePower,epower,,cpo
+evyve,evyve,evyve,,cpo
+be emobil,be emobil,be-emobil,,municipality
+GoCharge,GoCharge,gocharge,,cpo
+Rivian Waypoints L2 Network,Rivian Waypoints L2 Network,rivian-waypoints-l2-network,,automaker
+Powerflex,Powerflex,powerflex,,cpo
+Ewiva,Ewiva,ewiva,,cpo
+Be Energised,Be Energised,be-energised,"ПО/производитель/роуминг, не оператор; ПО has·to·be",unknown
+ZapGrid,ZapGrid,zapgrid,,cpo
+Greenflux,GreenFlux,greenflux,"ПО/производитель/роуминг, не оператор; платформа CPMS",unknown
+Энергия Москвы,Энергия Москвы,energiya-moskvy,Latin: Energiya Moskvy,utility
+REWAG,REWAG,rewag,,utility
+Tata Power,Tata Power,tata-power,,utility
+EV Loader,EV Loader,ev-loader,,cpo
+Alizé Liberté,Alizé Liberté,alize-liberte,,municipality
+GO EC,GO EC,go-ec,,cpo
+Sydego,Sydego,sydego,,municipality
+Rosseti,Rosseti,rosseti,кириллица бренда: Россети,utility
+РусГидро,РусГидро,rushydro,"Latin: RusHydro; точки в BY (Белоруснефть) — другой оператор, отделить",utility
+E-Mobi,E-Mobi,e-mobi,,municipality
+Renault,Renault,renault,"хост, а не сеть; зарядки у дилеров; сеть Renault — Mobilize",automaker
+Park & Charge,Park & Charge,park-charge,объединение частных/ассоциативных точек (LEMnet),cpo
+Roam Charging,Roam,roam,,cpo
+SWB / EWE,SWB / EWE,swb-ewe,дубль канона: слить с EWE Go; swb — дочка EWE,utility
+Plenoil,Plenoil,plenoil,"хост, а не сеть",retail
+E-moving,E-moving,e-moving,,utility
+EcoCharge77,EcoCharge77,ecocharge77,,municipality
+Trugo,Trugo,trugo,,cpo
+Zeon Charging,Zeon Charging,zeon-charging,,cpo
+Sun Country Highway,Sun Country Highway,sun-country-highway,,cpo
+Go ToU,GO TO-U,go-to-u,,cpo
+IONNA,IONNA,ionna,,cpo
+MVM Mobiliti,MVM Mobiliti,mvm-mobiliti,,utility
+ALDI SÜD,ALDI SÜD,aldi-sud,"хост, а не сеть; дубль канона: слить с ALDI",retail
+ELEN,ELEN,elen,сеть HEP,utility
+Финес Енерджи ООД,Финес Енерджи,fines-energy,Latin: Fines Energy; дубль канона: слить с Fines Charging,cpo
+GE WattStation,GE WattStation,ge-wattstation,"ПО/производитель/роуминг, не оператор; оборудование GE, сеть не активна",unknown
+BC Hydro,BC Hydro,bc-hydro,,utility
+Duferco Energie,Duferco Energie,duferco-energie,,utility
+AC Mobility,AC Mobility,ac-mobility,,cpo
+Francis Energy,Francis Energy,francis-energy,,cpo
+Porsche,Porsche,porsche,"хост, а не сеть; Porsche Destination Charging у дилеров и отелей",automaker
+Electrip,Electrip,electrip,,cpo
+K Lataus,K-Lataus,k-lataus,,retail
+We Drive Solar,We Drive Solar,we-drive-solar,,cpo
+ELMO,ELMO,elmo,,cpo
+Graviti Energy,Graviti Energy,graviti-energy,,cpo
+Toka Energy,TOKA,toka,,cpo
+Chargezone,Chargezone,chargezone,,cpo
+Yellotmob,Yellotmob,yellotmob,,cpo
+Sitronics Electro,Sitronics Electro,sitronics-electro,,cpo
+Fenie Energía,Fenie Energía,fenie-energia,,utility
+Nuon,Nuon,nuon,дубль канона: слить с Vattenfall; Nuon переименован в Vattenfall (2019),utility
+Walmart,Walmart,walmart,собственная сеть Walmart (не только хост) — проверить,retail
+CEPSA,Moeve,moeve,"бывш. CEPSA, ребрендинг в Moeve (2024)",retail
+TurnOnGreen,TurnOnGreen,turnongreen,,cpo
+Belib’,Belib’,belib,,municipality
+UTE,UTE,ute,,utility
+Naturenergie,Naturenergie,naturenergie,,utility
+NRMA,NRMA,nrma,,unknown
+Blue Corner,Blue Corner,blue-corner,,cpo
+Statiq,Statiq,statiq,,cpo
+Mainova,Mainova,mainova,,utility
+Orka Náttúrunnar,Orka náttúrunnar,orka-natturunnar,,utility
+Weev,Weev,weev,,cpo
+Nissan DE Freistrom,Nissan DE Freistrom,nissan-de-freistrom,"хост, а не сеть; бесплатные зарядки у дилеров Nissan",automaker
+da emobil,da emobil,da-emobil,,cpo
+GridCars,GridCars,gridcars,,cpo
+EVnetNL,EVnetNL,evnetnl,,cpo
+Orlen,ORLEN Charge,orlen-charge,,retail
+Salzburg,Salzburg AG,salzburg-ag,,utility
+EcoFactor Network,EcoFactor,ecofactor,,cpo
+Recharge,Recharge,recharge,,cpo
+EAM,EAM,eam,,utility
+Flash Charging,FLASH,flash,,parking
+Nissan UK Dealer Network,Nissan UK Dealer Network,nissan-uk-dealer-network,"хост, а не сеть",automaker
+KiWhi Pass,KiWhi Pass,kiwhi-pass,"ПО/производитель/роуминг, не оператор; дубль канона: слить с Izivia; карта доступа Izivia (бывш. Sodetrel)",cpo
+ChargeIT mobility,ChargeIT mobility,chargeit-mobility,"ПО/производитель/роуминг, не оператор; бэкенд для штадтверке",unknown
+Telepark,Telepark,telepark,"хост, а не сеть",parking
+AMB,AMB,amb,,municipality
+Rivian Adventure Network,Rivian Adventure Network,rivian-adventure-network,,automaker
+IVY,Ivy,ivy,,utility
+Stadtwerke Göttingen,Stadtwerke Göttingen,stadtwerke-gottingen,,utility
+Tank & Rast,Tank & Rast,tank-rast,"хост, а не сеть; АЗС на автобанах; зарядки EnBW/E.ON и др.",retail
+BeCharged,BeCharged,becharged,"смешанный канон: CA eCharge Network, DE becharged, IT Plenitude — проверить",cpo
+Electro.Cars,Electro.Cars,electro-cars,,cpo
+Voltron,Voltron,voltron,,cpo
+مپنا - empana,مپنا,mapna,Latin: MAPNA (empana),utility
+Electric Highway,Electric Highway,electric-highway,дубль канона: слить с GridServe; Ecotricity Electric Highway куплена Gridserve (2021),cpo
+SDEY,SDEY,sdey,,municipality
+Free To X,Free To X,free-to-x,,cpo
+REMO Mobility,REMO,remo,,cpo
+Powerşarj,Powerşarj,powersarj,,cpo
+Toger,Toger,toger,,cpo
+ejoin,ejoin,ejoin,,cpo
+chargEV,chargEV,chargev,,cpo
+it Charge,it Charge,it-charge,,cpo
+Charge & Drive,Charge & Drive,charge-drive,дубль канона: слить с Recharge; Fortum Charge & Drive переименован в Recharge,cpo
+ChargeNow,ChargeNow,chargenow,"ПО/производитель/роуминг, не оператор; роуминговый сервис BMW (DCS)",unknown
+CHARGE+,CHARGE+,charge,,cpo
+B:SM,B:SM,b-sm,,municipality
+FORTISIS,Fortisis,fortisis,,cpo
+Petrol,Petrol,petrol,,retail
+ESB Energy,ESB Energy,esb-energy,,utility
+Evway,Evway,evway,,cpo
+TANKE Wien Energie,TANKE Wien Energie,tanke-wien-energie,,utility
+TEA Mobilitás,TEA Mobilitás,tea-mobilitas,,cpo
+GridServe,GRIDSERVE,gridserve,,cpo
+Bump,Bump,bump,,cpo
+Dream Energy,Dream Energy,dream-energy,,cpo
+POWY,Powy,powy,,cpo
+Clenergy,Clenergy,clenergy,,cpo
+Greems,Greems,greems,,cpo
+SM Supermalls,SM Supermalls,sm-supermalls,"хост, а не сеть",retail
+Last Mile Solutions,Last Mile Solutions,last-mile-solutions,"ПО/производитель/роуминг, не оператор; платформа CPMS",unknown
+JIO BP Pulse,Jio-bp pulse,jio-bp-pulse,,retail
+Stadtwerke Münster,Stadtwerke Münster,stadtwerke-munster,,utility
+Ouest Charge,Ouest Charge,ouest-charge,,municipality
+Aral pulse,Aral pulse,aral-pulse,,cpo
+Avacon,Avacon,avacon,,utility
+EZVolt,EZVolt,ezvolt,,cpo
+Volta Charging,Volta,volta,дубль канона: слить с Shell Recharge; Volta куплена Shell (2023),cpo
+Applegreen Electric,Applegreen Electric,applegreen-electric,,retail
+ThePluginCompany,ThePluginCompany,theplugincompany,,cpo
+e-Charge,e-Charge,e-charge,,cpo
+Schwabencard,Schwabencard,schwabencard,"ПО/производитель/роуминг, не оператор; карта доступа штадтверке",utility
+Umbrella eMobility,Umbrella eMobility,umbrella-emobility,,cpo
+E-Flux,E-Flux,e-flux,"ПО/производитель/роуминг, не оператор; e-MSP/CPMS Road; точки принадлежат хостам",cpo
+Mobilize,Mobilize,mobilize,бренд зарядки Renault,automaker
+LSW Energie,LSW Energie,lsw-energie,,utility
+Fuuse,Fuuse,fuuse,"ПО/производитель/роуминг, не оператор; платформа CPMS",unknown
+Stadtwerke Leipzig SWL,Stadtwerke Leipzig SWL,stadtwerke-leipzig-swl,,utility
+BarterGo,BarterGo,bartergo,,cpo
+Zero,Zero,zero,"Meridian Energy, NZ",utility
+BR Super Carga,BR Super Carga,br-super-carga,,retail
+Z Energy,Z Energy,z-energy,,retail
+PRIOE,PRIO,prio,,retail
+EV Match,EVmatch,evmatch,,cpo
+Autel,Autel,autel,"ПО/производитель/роуминг, не оператор; производитель зарядных станций",unknown
+Plug n Roll,Plug'n Roll,plugn-roll,,utility
+Electrify Canada,Electrify Canada,electrify-canada,,cpo
+NEXTCHARGE,Nextcharge,nextcharge,,cpo
+EWB,EWB,ewb,,utility
+OVAG Energie,OVAG Energie,ovag-energie,,utility
+IKEA,IKEA,ikea,"хост, а не сеть",retail
+EO Charging,EO Charging,eo-charging,"ПО/производитель/роуминг, не оператор; производитель/ПО для автопарков",cpo
+e-motum,e-motum,e-motum,,cpo
+IECharge,IECharge,iecharge,,cpo
+Elsewedy Plug,Elsewedy Plug,elsewedy-plug,,cpo
+Stadtwerke Rostock,Stadtwerke Rostock,stadtwerke-rostock,,utility
+Charge & Fuel,Charge&Fuel,charge-fuel,"ПО/производитель/роуминг, не оператор; карта доступа VW Financial Services",unknown
+Fastvolt,FastVolt,fastvolt,,retail
+iVolt,iVolt,ivolt,,cpo
+Westfalen Weser Netz,Westfalen Weser Netz,westfalen-weser-netz,,cpo
+AENA EV,AENA EV,aena-ev,"хост, а не сеть; аэропорты AENA",unknown
+Carrefour,Carrefour,carrefour,"хост, а не сеть",retail
+BonpreuEsclat,BonpreuEsclat,bonpreuesclat,"хост, а не сеть",retail
+EV Energy Group,EV Energy Group,ev-energy-group,дубль канона: слить с Francis Energy; тот же FCN (Francis Charging Network),cpo
+Nissan US Dealer Network,Nissan US Dealer Network,nissan-us-dealer-network,"хост, а не сеть",automaker
+Eleport,Eleport,eleport,,cpo
+Interparking,Interparking,interparking,"хост, а не сеть",parking
+Jule,Jule,jule,,cpo
+Petro-Canada,Petro-Canada,petro-canada,,retail
+PEA Volta,PEA Volta,pea-volta,,utility
+PRE,PRE,pre,,utility
+Auto Bleue,Auto Bleue,auto-bleue,,municipality
+ChargeGo,Charge&GO,charge-go,,cpo
+WAT Mobilite,WAT Mobilite,wat-mobilite,,cpo
+Orion eMobility,Orion eMobility,orion-emobility,,cpo
+Be.EV,Be.EV,be-ev,,cpo
+Voltspot,Voltspot,voltspot,,cpo
+GC Movilidad Electrica,GC Movilidad Electrica,gc-movilidad-electrica,,municipality
+Electric Era,Electric Era,electric-era,,cpo
+7-Charge,7-Charge,7-charge,сеть 7-Eleven,retail
+emovili Fast,emovili Fast,emovili-fast,,cpo
+Terpel Voltex,Terpel Voltex,terpel-voltex,,retail
+Jom Charge,JomCharge,jomcharge,,cpo
+eins,eins,eins,,utility
+BP EV Charging,bp,bp,BP в Новой Зеландии; возможно слить с bp pulse — проверить,retail
+Gentari Go,Gentari Go,gentari-go,,cpo
+StromTicket,StromTicket,stromticket,,utility
+ElectroDrive/Mark-E,ElectroDrive/Mark-E,electrodrive-mark-e,,utility
+a2a emoving,a2a emoving,a2a-emoving,дубль канона: слить с E-moving; E-moving — бренд A2A,utility
+eBike,eBike,ebike,велосипеды/двухколёсные,unknown
+Queensland Electric Super Highway,Queensland Electric Super Highway,queensland-electric-super-highway,,municipality
+En Yakıt,En Yakıt,en-yakit,,retail
+Leap24,Leap24,leap24,,cpo
+E-lektra,E-lektra,e-lektra,,cpo
+Mercedes-Benz,Mercedes-Benz,mercedes-benz,,automaker
+OKQ8,OKQ8,okq8,,retail
+Qelo,Qelo,qelo,,cpo
+Syane,Syane,syane,,municipality
+Stadtwerke Lübeck,Stadtwerke Lübeck,stadtwerke-lubeck,,utility
+IKARUS,IKARUS,ikarus,,cpo
+Everty,Everty,everty,"ПО/производитель/роуминг, не оператор; платформа CPMS",unknown
+Effia,Effia,effia,"хост, а не сеть",parking
+Touch Station,Touch Station,touch-station,,cpo
+Electric 55 Charging,Electric 55 Charging,electric-55-charging,,cpo
+Ladefoxx,Ladefoxx,ladefoxx,,utility
+EWP : Energie und Wasser Potsdam,EWP,ewp,Energie und Wasser Potsdam,utility
+Revolta Egypt,Revolta Egypt,revolta-egypt,точки в US — проверить сопоставление,cpo
+GGEW,GGEW,ggew,,utility
+MOVE,MOVE,move,,cpo
+e-Vadea,e-Vadea,e-vadea,,municipality
+Digavel,Digavel,digavel,,cpo
+Solarius,Solarius,solarius,,cpo
+Astor Şarj,Astor Şarj,astor-sarj,,cpo
+Pavapark,Pavapark,pavapark,"хост, а не сеть",parking
+Tap Electric,Tap Electric,tap-electric,"ПО/производитель/роуминг, не оператор; платформа CPMS/приложение",unknown
+Vilalta Greenergy,Vilalta Greenergy,vilalta-greenergy,,cpo
+Métropolis,Métropolis,metropolis,,unknown
+Stadtwerke Elmshorn,Stadtwerke Elmshorn,stadtwerke-elmshorn,,utility
+Pogo Charge,Pogo Charge,pogo-charge,,cpo
+Azerishig VEP,Azerishig VEP,azerishig-vep,,utility
+ZEAG Energie,ZEAG Energie,zeag-energie,,utility
+Ampol AmpCharge,AmpCharge,ampcharge,,retail
+ELMŰ,ELMŰ,elmu,,utility
+TEA,TEA,tea,дубль канона: слить с TEA Mobilitás,cpo
+OESTE Movilidad,OESTE Movilidad,oeste-movilidad,,cpo
+YPF,YPF,ypf,,retail
+emma,emma,emma,,utility
+EWR gmbh e-mobile,EWR,ewr,,utility
+RhönEnergie,RhönEnergie,rhonenergie,,utility
+TOK,TOK,tok,,cpo
+CEL TODA Navarra,CEL TODA Navarra,cel-toda-navarra,,cpo
+Harz Energie,Harz Energie,harz-energie,,utility
+WEL Networks,WEL Networks,wel-networks,,utility
+TNB Electron,TNB Electron,tnb-electron,,utility
+Chargebox,Chargebox,chargebox,,cpo
+ENEWA,enewa,enewa,,utility
