@@ -6,10 +6,10 @@ Base `origin/l-da` (cc101b8), branch `r-da`. Independent native-style review of 
 
 The L-DA translation is solid: correct grammar, consistent impersonal style (no "vi", no "De"; "du" only in short UI imperatives), terms consistent with NOTES.md. No broken placeholders, no forbidden words (24/7, ratings, Evolako). Danish does not decline names, so `i X` is always grammatical — no `{city_u}` fixes needed.
 
-## What was changed (403 strings reviewed, 35 changed; texts 5; countries 3; cities 17; check.py 1 line)
+## What was changed (403 strings reviewed, 34 changed; texts 5; countries 3; cities 17; check.py 1 line)
 
 Strings (35):
-- Length of labels/chips (≤ EN × 1.4): `f_net`, `c_net`, `k_network`, `th_net` (map/pages/prices) "Ladenetværk" → "Netværk"; `legend` "Signaturforklaring" → "Forklaring"; `copied` → "Link kopieret"; `acc_public_pay_at_location` → "Offentlig, betal på stedet"; `acc_public_notice_required` / `acc_private_notice_required` → "…, efter aftale"; `ch_ft_checked` → "tjekket"; `net_page` → "netværkets side"; `h_nets` → "Netværk og abonnementer"; `pr_home`/`pr_street` → "Hjemmelader" / "Ingen hjemmelader" (also in `profiles_note`).
+- Length of labels/chips (≤ EN × 1.4): `f_net`, `c_net`, `k_network`, `th_net` (map/pages/prices) "Ladenetværk" → "Netværk"; `copied` → "Link kopieret"; `acc_public_pay_at_location` → "Offentlig, betal på stedet"; `acc_public_notice_required` / `acc_private_notice_required` → "…, efter aftale"; `ch_ft_checked` → "tjekket"; `net_page` → "netværkets side"; `h_nets` → "Netværk og abonnementer"; `pr_home`/`pr_street` → "Hjemmelader" / "Ingen hjemmelader" (also in `profiles_note`).
 - Naturalness: "Middel" → "Mellem" for the reliability level (`conf_mid`, `c50`, `p_hub`, texts `conf_levels`); "websites" → "hjemmesider" (`src_net`); `th_ratio` → "DC vs. hjemme"; `h_n_compare` → "…og hjemmeopladning"; `h_pay` → "Betaling i korte træk"; `disc` "inden afgang" → "før turen"; `sources_p` → "fra {n} åbne kilder" (n is always > 1).
 - Network names with spaces: hyphen compounds "{net}-ladesteder/-ladestationer" and "{net} ladepriser" replaced by "… fra {net}" / "Ladepriser hos {net}" (`d_gnet`, `d_network`, `t_gnet`, `t_network`, `t_net`, `n_station_page`). Works for "Allego GmbH", "Clever", "IONITY" alike.
 - Quotation marks: Danish »…« instead of „…“ / “…” / "…" (`report_map`, `profiles_note`, `data_p`, `cars_note`, texts).
@@ -21,6 +21,10 @@ Countries (3): TT and VC "i" → "på" (island states); PS "i De palæstinensisk
 
 Cities (18): Danish exonyms/transliteration — Rhodos, Korinth, Korfu, Piræus, Theben, Jekaterinburg, Nisjnij Novgorod, Rostov ved Don, Rjasan, Tjumen, Sjusjary, Teheran, Malmø, Riga, Rendsborg, Egernførde; city Hongkong/Macao spelled as the country names.
 Checked and kept: København + all 31 DK; Flensborg, Slesvig, Hamborg, Prag, Lissabon, Athen, Moskva, Sankt Petersborg, Venedig, Bukarest; local forms München, Köln, Nürnberg, Wien, Bruxelles, Antwerpen, Gent, Brugge, Milano, Napoli, Torino, Warszawa, Kraków, Göteborg, Helsingborg, Zürich, Beograd, Den Haag. `decl_ok = 1` stays everywhere (Danish has no case on names).
+
+## Back-translation (40 changed strings, blind, second agent)
+
+13 flags; accepted 8: `legend` reverted to "Signaturforklaring" (standard map term; heading, not a chip — length exception), `p_hub` "Landene på Vestbalkan …", `d_network` "byer, med kilder", `disc` last clause, `h_n_compare` "landeindekset", `cars_note` "hvor der ikke er et indeks", texts "Kildekoder, adskilt med komma", `attribution_p` as an obligation ("skal vises … skal angives"). Not accepted: `{country_u}` flags (the engine inserts "i Tyskland" per decision 10.11 00:12), `ch_ft_checked` "tjekket" (fine), `n_station_page` "ladestandere" (= EN "chargers"). Full report: `REVIEW_backtranslation.md`.
 
 ## Slugs
 

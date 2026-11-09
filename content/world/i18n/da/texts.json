@@ -154,7 +154,7 @@
    ],
    [
     "sources",
-    "Kildenøgler, kommasepareret (se siden »Om dataene«)"
+    "Kildekoder, adskilt med komma (se siden »Om dataene«)"
    ],
    [
     "last_confirmed",
@@ -170,6 +170,6 @@
   "file_h": "Fil",
   "file_missing": "Filen for denne uge er under udarbejdelse. Prøv igen senere.",
   "attribution_h": "Sådan angives kilden",
-  "attribution_p": "Ved brug af data vises »© OpenStreetMap contributors, BlokVolt« med link til www.openstreetmap.org/copyright og til denne side, og licensen ODbL 1.0 angives. Data fra andre kilder bevarer deres egen kildeangivelse, som står på siden »Om dataene«."
+  "attribution_p": "Ved brug af data skal »© OpenStreetMap contributors, BlokVolt« vises med link til www.openstreetmap.org/copyright og til denne side, og licensen ODbL 1.0 skal angives. Data fra andre kilder bevarer deres egen kildeangivelse, som står på siden »Om dataene«."
  }
 }
