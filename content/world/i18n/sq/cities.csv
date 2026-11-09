@@ -1499,7 +1499,7 @@ geonameid,name,in_phrase,decl_ok,note
 3044774,Székesfehérvár,në Székesfehérvár,1,auto
 3133880,Trondheim,në Trondheim,1,auto
 2739590,Figueira da Foz,në Figueira da Foz,1,auto
-498817,Shën Petersburg,në Shën Petersburg,1,ekzonim
+498817,Shën Petërburg,në Shën Petërburg,1,R-SQ: ekzonim
 2725901,Ängelholm,në Ängelholm,1,auto
 2761524,Wels,në Wels,1,auto
 2797779,Geel,në Geel,1,auto
@@ -2516,7 +2516,7 @@ geonameid,name,in_phrase,decl_ok,note
 6325494,Québec,në Québec,1,auto
 5913490,Calgary,në Calgary,1,auto
 5391811,San Diego,në San Diego,1,auto
-6058560,Londër,në Londër,1,ekzonim
+6058560,London,në London,1,"R-SQ: emri vendas, jo ekzonimi evropian"
 5140405,Syracuse,në Syracuse,1,auto
 6183235,Winnipeg,në Winnipeg,1,auto
 6178582,West End,në West End,1,auto
@@ -2616,7 +2616,7 @@ geonameid,name,in_phrase,decl_ok,note
 2155472,Newcastle,në Newcastle,1,auto
 5911592,Burlington,në Burlington,1,auto
 5359777,Irvine,në Irvine,1,auto
-5405841,Venecia,në Venecia,1,ekzonim
+5405841,Venice,në Venice,1,"R-SQ: emri vendas, jo ekzonimi evropian"
 6325521,Lévis,në Lévis,1,auto
 5133279,Queensbury,në Queensbury,1,auto
 2156813,Mosman,në Mosman,1,auto
@@ -2866,7 +2866,7 @@ geonameid,name,in_phrase,decl_ok,note
 8299576,Bridgewater,në Bridgewater,1,auto
 6182962,Windsor,në Windsor,1,auto
 7701384,Karabağlar,në Karabağlar,1,auto
-4180386,Athinë,në Athinë,1,ekzonim
+4180386,Athens,në Athens,1,"R-SQ: emri vendas, jo ekzonimi evropian"
 4192289,Duluth,në Duluth,1,auto
 4221333,Sandy Springs,në Sandy Springs,1,auto
 4363843,North Bethesda,në qytetin North Bethesda,0,"auto: emri mbaron me -a, formë e sigurt"
@@ -3138,7 +3138,7 @@ geonameid,name,in_phrase,decl_ok,note
 4068590,Huntsville,në Huntsville,1,auto
 4143861,Newark,në Newark,1,auto
 4174402,Sunrise,në Sunrise,1,auto
-4176380,Venecia,në Venecia,1,ekzonim
+4176380,Venice,në Venice,1,"R-SQ: emri vendas, jo ekzonimi evropian"
 4177727,Wesley Chapel,në Wesley Chapel,1,auto
 4184845,Brunswick,në Brunswick,1,auto
 4285268,Bowling Green,në Bowling Green,1,auto
@@ -3321,7 +3321,7 @@ geonameid,name,in_phrase,decl_ok,note
 5006250,Portage,në Portage,1,auto
 5043193,Richfield,në Richfield,1,auto
 5089178,Manchester,në Manchester,1,auto
-5134295,Romë,në Romë,1,ekzonim
+5134295,Rome,në Rome,1,"R-SQ: emri vendas, jo ekzonimi evropian"
 5281730,Avon,në Avon,1,auto
 5282804,Bridgeport,në Bridgeport,1,auto
 5343858,Downey,në Downey,1,auto
@@ -3349,7 +3349,7 @@ geonameid,name,in_phrase,decl_ok,note
 4110486,Fayetteville,në Fayetteville,1,auto
 4145805,Allapattah,në Allapattah,1,auto
 4148677,Boynton Beach,në Boynton Beach,1,auto
-4165565,Napoli,në Napoli,1,ekzonim
+4165565,Naples,në Naples,1,"R-SQ: emri vendas, jo ekzonimi evropian"
 4167519,Palm Beach Gardens,në Palm Beach Gardens,1,auto
 4174383,Sunny Isles Beach,në Sunny Isles Beach,1,auto
 4208442,McDonough,në McDonough,1,auto
@@ -4062,7 +4062,7 @@ geonameid,name,in_phrase,decl_ok,note
 4470778,Hickory,në Hickory,1,auto
 4500546,Atlantic City,në Atlantic City,1,auto
 4501198,Cherry Hill,në Cherry Hill,1,auto
-4578737,Firence,në Firence,1,ekzonim
+4578737,Florence,në Florence,1,"R-SQ: emri vendas, jo ekzonimi evropian"
 4580098,Goose Creek,në Goose Creek,1,auto
 4581832,Hilton Head Island,në Hilton Head Island,1,auto
 4635031,La Vergne,në La Vergne,1,auto
@@ -4937,7 +4937,7 @@ geonameid,name,in_phrase,decl_ok,note
 4373349,Wheaton,në Wheaton,1,auto
 4381072,Chesterfield,në Chesterfield,1,auto
 4472687,Indian Trail,në Indian Trail,1,auto
-4505542,Athinë,në Athinë,1,ekzonim
+4505542,Athens,në Athens,1,"R-SQ: emri vendas, jo ekzonimi evropian"
 4525304,Springboro,në Springboro,1,auto
 4528291,Whitehall,në Whitehall,1,auto
 4571722,Bluffton,në Bluffton,1,auto
@@ -5442,7 +5442,7 @@ geonameid,name,in_phrase,decl_ok,note
 3174922,Legnago,në Legnago,1,auto
 3179235,Cecina,në qytetin Cecina,0,"auto: emri mbaron me -a, formë e sigurt"
 3179560,Castel Maggiore,në Castel Maggiore,1,auto
-3181928,Bologna,në qytetin Bologna,0,"auto: emri mbaron me -a, formë e sigurt"
+3181928,Bolonjë,në Bolonjë,1,R-SQ: ekzonim
 3182714,Asti,në Asti,1,auto
 1897000,Seongnam,në Seongnam,1,auto
 1821274,Macau,në Macau,1,auto

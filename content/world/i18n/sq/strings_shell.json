@@ -12,7 +12,7 @@
  "home_desc": "Ku të karikoni makinën elektrike: harta e karikuesve publikë dhe faqe për vendet, qytetet dhe rrjetet, nga të dhëna të hapura me burim dhe datë.",
  "home_kick": "BlokVolt · bota",
  "home_h1": "Ku të karikoni makinën elektrike — në çdo vend, qytet dhe rrjet",
- "home_lead": "Një hartë: {n} në {c}, nga të dhëna të hapura. Për çdo vend shihet nga vijnë të dhënat dhe kur u konfirmuan së fundi.",
+ "home_lead": "Një hartë: {n} në {c}, nga të dhëna të hapura. Për çdo vend karikimi shihet nga vijnë të dhënat dhe kur u konfirmuan së fundi.",
  "search_label": "Kërkoni një vend ose qytet",
  "search_ph": "p.sh. Mynih, Gjermani, Lion",
  "search_none": "Ende nuk ka faqe për këtë vend. Hapni hartën.",
@@ -27,7 +27,7 @@
  "about_title": "Rreth BlokVolt | BlokVolt",
  "about_h1": "Rreth BlokVolt",
  "about_desc": "Kush e drejton BlokVolt dhe si mund të kontaktohet.",
- "about_p": "BlokVolt është një burim i pavarur informacioni për karikimin e automjeteve elektrike, i drejtuar nga themeluesit e tij, Andrei dhe Danila, në Novi Sad, Serbi. Pa vendosje me pagesë dhe pa vlerësime të rrjeteve.",
+ "about_p": "BlokVolt është një burim i pavarur informacioni për karikimin e automjeteve elektrike, i drejtuar nga themeluesit e tij, Andrei dhe Danila, në Novi Sad, Serbi. Pa pozicionime të paguara dhe pa vlerësime të rrjeteve.",
  "about_more": "Si mblidhen dhe kontrollohen të dhënat",
  "contact": "Kontakti",
  "sources_title": "Burimet dhe licencat | BlokVolt",
@@ -37,13 +37,13 @@
  "method_title": "Metodologjia | BlokVolt",
  "method_h1": "Metodologjia",
  "method_desc": "Si bashkohen vendet, sa i besueshëm është secili dhe cilat faqe ekzistojnë.",
- "method_p": "Të dhënat nga burime të ndryshme që përshkruajnë të njëjtin vend bashkohen në një. Çdo vend merr një besueshmëri të dhënash nga 0 deri në 100 (lloji i burimit, një burim i dytë, aktualiteti). Faqja e një vendi kërkon të paktën 100 vende publike me besueshmëri 50 ose më shumë, faqja e një qyteti të paktën 20. Formula dhe pragjet shpjegohen këtu:",
+ "method_p": "Të dhënat nga burime të ndryshme që përshkruajnë të njëjtin vend karikimi bashkohen në një. Çdo vend karikimi merr një vlerësim besueshmërie nga 0 deri në 100 (lloji i burimit, një burim i dytë, aktualiteti). Faqja e një shteti kërkon të paktën 100 vende publike me besueshmëri 50 ose më shumë, faqja e një qyteti të paktën 20. Formula dhe pragjet shpjegohen këtu:",
  "pl_loc": {
   "one": "vend karikimi",
   "other": "vende karikimi"
  },
  "pl_cc": {
-  "one": "vend",
-  "other": "vende"
+  "one": "shtet",
+  "other": "shtete"
  }
 }

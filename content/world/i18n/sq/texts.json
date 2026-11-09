@@ -106,7 +106,7 @@
   "fields": [
    [
     "pid",
-    "ID e qëndrueshme e vendit"
+    "ID-ja e qëndrueshme e vendit të karikimit"
    ],
    [
     "lat",
@@ -118,11 +118,11 @@
    ],
    [
     "country",
-    "Kodi i vendit (ISO 3166-1 alpha-2)"
+    "Kodi i shtetit (ISO 3166-1 alpha-2)"
    ],
    [
     "name",
-    "Emri i vendit"
+    "Emri i vendit të karikimit"
    ],
    [
     "network",
@@ -130,7 +130,7 @@
    ],
    [
     "max_kw",
-    "Fuqia më e lartë në vend, kW"
+    "Fuqia më e lartë në vendin e karikimit, kW"
    ],
    [
     "dc",
@@ -138,7 +138,7 @@
    ],
    [
     "power_class",
-    "Klasa e fuqisë së vendit"
+    "Klasa e fuqisë së vendit të karikimit"
    ],
    [
     "connectors",

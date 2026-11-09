@@ -120,8 +120,8 @@
  "ch_nav_rs": "Serbia — blokvolt.rs",
  "ch_nav_region": "Rajoni (anglisht)",
  "c_price": "Çmimi, ad hoc",
- "c_price_kwh": "për kWh, çmimi i listës së rrjetit",
- "c_price_note": "Çmim nga {d}; në këtë vend mund të ndryshojë — kontrolloni në aplikacion ose në karikues.",
+ "c_price_kwh": "për kWh, çmimi zyrtar i rrjetit",
+ "c_price_note": "Çmimi nga {d}; në këtë vend karikimi mund të jetë ndryshe — kontrolloni në aplikacion ose te karikuesi.",
  "c_price_old": "Çmim më i vjetër se 12 muaj",
  "c_price_more": "Të gjitha tarifat e rrjetit"
 }

@@ -7,7 +7,7 @@
  "crumbs": "Ku ndodheni",
  "d_city": "Vende publike karikimi në {city} nga të dhëna të hapura: karikues të shpejtë DC me fuqinë dhe prizat, rrjetet, qytetet përreth.",
  "d_country": "Vende publike karikimi {country_u} nga të dhëna të hapura: karikues të shpejtë DC, rrjete, qytete, priza, burime dhe licenca.",
- "d_gnet": "Vendet e karikimit të {net} sipas vendit, nga të dhëna të hapura: fuqia, prizat dhe burimet.",
+ "d_gnet": "Vendet e karikimit të {net} sipas shtetit, nga të dhëna të hapura: fuqia, prizat dhe burimet.",
  "d_hub": "Vende publike karikimi nga të dhëna të hapura, sipas vendit: karikues të shpejtë DC, rrjete, priza, burime dhe licenca.",
  "d_network": "Vendet e karikimit të {net} {country_u} nga të dhëna të hapura: fuqia, prizat dhe qytetet, me burime.",
  "data_from": "Të dhënat deri më {date}",
@@ -20,7 +20,7 @@
  "file_link": "Skedari javor i shtresës publike",
  "fix_subject": "Korrigjim (harta botërore)",
  "ft_charging": "Karikuesit",
- "ft_checked": "të dhënat më",
+ "ft_checked": "të dhënat nga",
  "ft_claim": "Ku të karikoni makinën elektrike, nga të dhëna të hapura: vende, qytete dhe rrjete.",
  "ft_data": "Të dhënat: © <a href=\"https://www.openstreetmap.org/copyright\" rel=\"noopener\">OpenStreetMap</a> (ODbL), Open Charge Map (CC BY 4.0) dhe burime të tjera të hapura · emrat e qyteteve: GeoNames (CC BY 4.0)",
  "ft_region": "Serbia dhe rajoni",
@@ -31,7 +31,7 @@
  "h_countries": "Vendet",
  "h_fast": "Karikues të shpejtë (DC nga 50 kW)",
  "h_map": "Harta",
- "h_more": "Vende të tjera në të dhëna",
+ "h_more": "Shtete të tjera në të dhëna",
  "h_near": "Qytete përreth",
  "h_nets": "Rrjetet",
  "h_power": "Vendet e karikimit sipas fuqisë maksimale",
@@ -46,7 +46,7 @@
  "menu": "Menyja",
  "mini_alt": "Harta e vendeve të karikimit: gri — AC ose fuqia nuk tregohet, blu — DC",
  "moved": "Kjo faqe është zhvendosur te",
- "nav_about": "Rreth të dhënave",
+ "nav_about": "Për të dhënat",
  "nav_download": "Shkarkimi",
  "nav_hub": "Karikuesit",
  "nav_map": "Harta",
@@ -65,13 +65,13 @@
  "p6": "AC, fuqia nuk tregohet",
  "p7": "DC, fuqia nuk tregohet",
  "p_ac": "Karikues AC: {ac}. Këtu nuk renditen një nga një; harta i shfaq të gjithë.",
- "p_city_cmp": "Karikues të shpejtë DC nga 50 kW për çdo 10 vende publike karikimi: {city} këtu, {country} mesatarisht në {country_name}.",
+ "p_city_cmp": "Karikues të shpejtë DC nga 50 kW për çdo 10 vende publike karikimi: {city} këtu; mesatarja për {country_name}: {country}.",
  "p_dc": "Karikim i shpejtë DC nga 50 kW: {dc} ({pct_dc}); 150 kW e më shumë: {hpc}.",
  "p_gnet": "{net} gjendet në {n_countries}.",
  "p_hub": "Faqe të veçanta kanë shtetet me të paktën 100 vende publike karikimi me besueshmëri mesatare ose të lartë. Ballkani Perëndimor mbulohet nga faqet BlokVolt të secilit shtet.",
  "p_hub_na": "Shtetet e Bashkuara dhe Kanadaja mbulohen në anglisht dhe rusisht; faqet në serbisht mbulojnë Evropën.",
  "p_multi": "{pct_multi} e vendeve të karikimit konfirmohen nga dy ose më shumë burime; {pct_recent} u konfirmuan për herë të fundit në 2025 ose 2026.",
- "p_net_share": "Rrjeti është i pranishëm në {n_cities} {country_u}; ai përbën {share} të vendeve publike të karikimit në këtë vend që shfaqen këtu.",
+ "p_net_share": "Rrjeti është i pranishëm në {n_cities} {country_u}; ai përbën {share} të vendeve publike të karikimit të këtij shteti që shfaqen këtu.",
  "p_nonet": "Pa rrjet të njohur: {nonet}.",
  "p_shown": "Shfaqen: {n} nga burime të hapura, jo çdo karikues që ekziston. Pikat me besueshmëri nën 40 dhe karikuesit privatë nuk përfshihen.",
  "pct": "{x}%",
@@ -84,12 +84,12 @@
   "other": "qytete"
  },
  "pl_country": {
-  "one": "vend",
-  "other": "vende"
+  "one": "shtet",
+  "other": "shtete"
  },
  "pl_country_in": {
-  "one": "vend",
-  "other": "vende"
+  "one": "shtet",
+  "other": "shtete"
  },
  "pl_loc": {
   "one": "vend karikimi",
@@ -116,7 +116,7 @@
  "report_map": "Një gabim në të dhënat e një vendi karikimi mund të njoftohet me butonin “Njoftoni një gabim” në kartën e tij në hartë.",
  "skip": "Kalo te përmbajtja",
  "sources_note": "Çdo vend karikimi ruan burimin e të dhënave të tij; licenca e secilit burim jepet këtu. Emrat e rrjeteve u përkasin pronarëve të tyre.",
- "st_countries": "vende me faqe",
+ "st_countries": "shtete me faqe",
  "st_dc50": "me DC nga 50 kW",
  "st_hpc": "me 150 kW e më shumë",
  "st_n": "vende publike karikimi",
