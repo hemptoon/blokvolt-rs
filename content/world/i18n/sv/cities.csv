@@ -542,7 +542,7 @@ geonameid,name,in_phrase,decl_ok,note
 3006787,La Rochelle,i La Rochelle,1,
 3013619,Hazebrouck,i Hazebrouck,1,
 3020392,Écully,i Écully,1,
-2509954,València,i València,1,
+2509954,Valencia,i Valencia,1,R-SV: sv usage
 2755030,Haaksbergen,i Haaksbergen,1,
 2885734,Königswinter,i Königswinter,1,
 2927268,Fellbach,i Fellbach,1,
@@ -2406,7 +2406,7 @@ geonameid,name,in_phrase,decl_ok,note
 4180439,Atlanta,i Atlanta,1,
 4726206,San Antonio,i San Antonio,1,
 1819729,Hongkong,i Hongkong,1,sv exonym
-5128581,New York City,i New York City,1,
+5128581,New York,i New York,1,R-SV: sv usage
 4347778,Baltimore,i Baltimore,1,
 5574991,Boulder,i Boulder,1,
 4460243,Charlotte,i Charlotte,1,
@@ -3922,7 +3922,7 @@ geonameid,name,in_phrase,decl_ok,note
 3177090,Ferrara,i Ferrara,1,
 3178229,Como,i Como,1,
 3182164,Bergamo,i Bergamo,1,
-456172,Rīga,i Rīga,1,
+456172,Riga,i Riga,1,R-SV: sv usage
 1749822,Puchong,i Puchong,1,
 3147474,Lillehammer,i Lillehammer,1,
 3155573,Gjøvik,i Gjøvik,1,
@@ -5466,7 +5466,7 @@ geonameid,name,in_phrase,decl_ok,note
 1513157,Namangan,i Namangan,1,
 5809402,Sammamish,i Sammamish,1,
 323777,Antalya,i Antalya,1,
-745044,İstanbul,i İstanbul,1,
+745044,Istanbul,i Istanbul,1,R-SV: sv usage
 1692192,Quezon City,i Quezon City,1,
 5927690,Coquitlam,i Coquitlam,1,
 12908892,New Taipei City,i New Taipei City,1,local non-Latin → EN
@@ -5499,7 +5499,7 @@ geonameid,name,in_phrase,decl_ok,note
 787615,Nova Pazova,i Nova Pazova,1,
 789128,Kragujevac,i Kragujevac,1,
 792078,Čačak,i Čačak,1,
-3183875,Tiranë,i Tiranë,1,
+3183875,Tirana,i Tirana,1,R-SV: sv usage
 3186781,Zaprešić,i Zaprešić,1,
 3188244,Velika Gorica,i Velika Gorica,1,
 3192224,Pula,i Pula,1,
@@ -5520,7 +5520,7 @@ geonameid,name,in_phrase,decl_ok,note
 788709,Leskovac,i Leskovac,1,
 790015,Inđija,i Inđija,1,
 791678,Ćuprija,i Ćuprija,1,
-789228,Fushë Kosovë,i Fushë Kosovë,1,
+789228,Fushë Kosova,i Fushë Kosova,1,R-SV: sv usage
 3186573,Zenica,i Zenica,1,
 3187609,Visoko,i Visoko,1,
 3188582,Tuzla,i Tuzla,1,
@@ -5537,7 +5537,7 @@ geonameid,name,in_phrase,decl_ok,note
 784024,Zaječar,i Zaječar,1,
 787237,Pančevo,i Pančevo,1,
 789518,Kikinda,i Kikinda,1,
-785238,Suharekë,i Suharekë,1,
+785238,Suhareka,i Suhareka,1,R-SV: sv usage
 3184081,Shkodër,i Shkodër,1,
 3184935,Lezhë,i Lezhë,1,
 781988,Pogradec,i Pogradec,1,
@@ -5569,8 +5569,8 @@ geonameid,name,in_phrase,decl_ok,note
 789107,Kraljevo,i Kraljevo,1,
 789923,Jagodina,i Jagodina,1,
 793111,Aranđelovac,i Aranđelovac,1,
-786714,Prishtinë,i Prishtinë,1,
-787157,Pejë,i Pejë,1,
+786714,Pristina,i Pristina,1,R-SV: sv usage
+787157,Peja,i Peja,1,R-SV: sv usage
 3183719,Vlorë,i Vlorë,1,
 3184517,Patos Fshat,i Patos Fshat,1,
 3184862,Lushnjë,i Lushnjë,1,
@@ -5601,6 +5601,6 @@ geonameid,name,in_phrase,decl_ok,note
 784136,Vršac,i Vršac,1,
 784372,Viti,i Viti,1,
 786712,Prizren,i Prizren,1,
-786950,Podujevë,i Podujevë,1,
+786950,Podujeva,i Podujeva,1,R-SV: sv usage
 788470,Llazicë,i Llazicë,1,
 790674,Gjilan,i Gjilan,1,

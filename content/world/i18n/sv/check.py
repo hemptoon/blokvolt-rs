@@ -41,8 +41,8 @@ for name in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices']:
 # texts.json
 tx = json.load(open(HERE / 'texts.json', encoding='utf-8'))
 src = {'about_data': json.load(open(WORLD / 'about_data.json', encoding='utf-8'))['en'],
-       'download': json.load(open(WORLD / 'download.json', encoding='utf-8'))['en'],
-       'sources_pages': json.load(open(WORLD / 'sources_pages.json', encoding='utf-8'))}
+       'download': json.load(open(WORLD / 'download.json', encoding='utf-8'))['en']}
+# sources_pages.json is shared by all languages and not translated (pool 3 clarification 23:55)
 
 def walk(a, b, p):
     if isinstance(a, dict):
