@@ -2329,7 +2329,7 @@ runs the checks (here: build, i18n todo 0, links, images, app layer, news linter
 `GITHUB_TOKEN` does not start workflows — and reports to `POST /api/outbox/done`. A failed check means no commit, status
 `failed`, the log in `result`; the next item goes on. An item stuck in `taken` comes back after two hours.
 
-**Cadence** is set by `publish_after`: a task takes the next free slot of its kind (guides at least 3 days apart per site,
+**Cadence** is set by `publish_after`: a task takes the next free slot of its kind (guides at least 2 days apart per site — three a week,
 B2B guides 7 days, news, fuel prices, the index and letters at once). Before enqueueing, a task checks the queue for the
 same slug (`status IN ('draft','queued','taken')`) and for a `failed` row of its kind in the last 7 days — a failed row is
 reported to the owner, not re-queued blindly.
