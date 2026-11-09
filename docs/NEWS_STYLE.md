@@ -103,6 +103,8 @@ Photo: every item gets one automatically from its tag's pool of free-licence pho
 what the photo shows and who took it. Set `image:` only to a photo listed in `content/data/foto.json` that fits
 the item better (a car brand, a city, a building from the item). New photos are added only in a run with the
 owner's browser (RUNBOOK 3.19); never a photo from the media, a press release or a dealer.
+The caption is also the photo's description for screen readers, so it says what is in the picture, not what the
+item is about. A number lives in the text, never only in a picture (RUNBOOK 3.40).
 
 Good (from 09.09.2026):
 
