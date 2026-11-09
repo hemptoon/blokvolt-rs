@@ -187,5 +187,54 @@
   {"label": "ASKdata — transporti, treguesit vjetorë", "url": "https://askdata.rks-gov.net/pxweb/sq/ASKdata/ASKdata__Transport__Annual%20indicators/", "date": "28.09.2026"}
  ],
  "csv": {"file": "vetura-elektrike-kosova.csv", "head": ["viti", "vetura_elektrike_eurostat", "regjistrime_te_reja_eurostat"],
-         "rows": [[2017, 4, 2], [2018, 15, 1], [2019, 22, 0], [2020, "", ""], [2021, 56, 20], [2022, "", ""], [2023, 503, 203], [2024, 968, 372], [2025, 1457, 539]]}
+         "rows": [[2017, 4, 2], [2018, 15, 1], [2019, 22, 0], [2020, "", ""], [2021, 56, 20], [2022, "", ""], [2023, 503, 203], [2024, 968, 372], [2025, 1457, 539]]},
+
+ "electricity": {
+  "checked": "10.11.2026",
+  "checked_iso": "2026-11-10",
+  "next_check": "01.04.2027 (ZRRE-ja i shqyrton tarifat çdo vit për periudhën nga prilli)",
+  "computed": "Faqja përdor power.tariffs: çmimi me TVSH = çmimi pa TVSH × 1,08. 100 kWh = allin × 100; 44 kWh nga matësi (40 kWh në bateri + 10 % humbje) = allin × 44; 100 km = 17 kWh × 1,1 = 18,7 kWh; 1.200 km në muaj = 224,4 kWh. Tarifa fikse mujore (power.fixed) nuk hyn në çmimin e kWh. Çmimet pa TVSH janë nga mediat, sepse tabela e vendimit të ZRRE-së është imazh.",
+  "sources": [
+   {
+    "label": "ZRRE — vendimi V_2703_2025 për tarifat me pakicë të furnizuesit me shërbim universal, në fuqi nga 01.05.2025 (tabela si imazh)",
+    "url": "https://www.ero-ks.org/zrre/sites/default/files/Publikimet/Vendimet/Vendimet%202025/3.%20Decision%20on%20Tariffs_2025_USS-FINAL.pdf",
+    "date": "16.04.2025"
+   },
+   {
+    "label": "KESCO — si lexohet fatura: orët e tarifës së lartë dhe të ulët, TVSH 8 %",
+    "url": "https://fatura.kesco-energy.com/Static/how-to-read-my-bill",
+    "date": "kontrolluar 28.09.2026"
+   },
+   {
+    "label": "KESCO — pyetjet e shpeshta (tarifa fikse)",
+    "url": "https://www.kesco-energy.com/shq/qendra-e-ndihmes/pyetjet-e-shpeshta/",
+    "date": "kontrolluar 28.09.2026"
+   },
+   {
+    "label": "Zëri — ZRRE-ja miratoi tarifat për KOSTT-in, KEDS-in dhe KESCO-n pa ndryshime në çmimin e energjisë për vitin 2026",
+    "url": "https://zeri.info/ekonomia/621834/zrre-ja-miraton-tarifat-per-kostt-in-keds-in-dhe-kesco-n-pa-ndryshime-ne-cmimin-e-energjise-per-vitin-2026/",
+    "date": "07.05.2026"
+   },
+   {
+    "label": "Periskopi — ZRRE-ja la të pandryshuara tarifat e KESCO-s për vitin 2026",
+    "url": "https://periskopi.com/en/2026/5/zere-approves-tariffs-costt-keds-kesco-2026",
+    "date": "07.05.2026"
+   },
+   {
+    "label": "Dukagjini — tarifat nga 1 maji 2025: 9,05 / 3,88 centë deri në 800 kWh dhe 15,43 / 7,28 centë mbi 800 kWh, pa TVSH",
+    "url": "https://www.dukagjini.com/zrre-formalizoi-vendimin-nga-1-maji-rryma-shtrenjtohet-per-16-1/",
+    "date": "16.04.2025"
+   },
+   {
+    "label": "Fikso — 7,21 centë për natën mbi 800 kWh (shifër që ndryshon nga burimet e tjera)",
+    "url": "https://fikso.al/tarifat-e-reja-ne-fuqi-nga-1-maji-energjia-elektrike-ne-kosove-rritet-me-16-1/",
+    "date": "16.04.2025"
+   },
+   {
+    "label": "Buletini Ekonomik — tarifa fikse 2,32 € në muaj",
+    "url": "https://buletiniekonomik.com/2025/10/rritja-e-fshehte-e-tarifes-fikse-trashi-fitimet-e-kesco-s-per-4-8-milione-euro-ne-vit/",
+    "date": "22.10.2025"
+   }
+  ]
+ }
 }
