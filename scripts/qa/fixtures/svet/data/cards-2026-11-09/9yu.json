@@ -1,0 +1,1 @@
+{"v": 1, "date": "2026-11-09", "sites": {"308923": {"n": "LAW_HYUNDAI_24 LAW HYUNDAI S", "net": "ChargePoint", "kw": 62.5, "dc": true, "p": 4, "conn": [["CHADEMO", 1, 62.5]], "pts": null, "acc": "public", "cc": "US", "city": null, "src": [{"k": "ocm", "u": null}], "lc": "2026-02", "conf": 75, "osm": null, "more": null}}}

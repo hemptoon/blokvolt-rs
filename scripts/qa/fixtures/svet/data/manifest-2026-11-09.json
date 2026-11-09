@@ -1,0 +1,75 @@
+{
+ "v": 1,
+ "date": "2026-11-09",
+ "sites": 41,
+ "cards_base": "cards-2026-11-09",
+ "cards_split": [
+  "u33"
+ ],
+ "cards_files": 14,
+ "layer": "public_sites.geojsonseq",
+ "sources": [
+  {
+   "k": "bnetza",
+   "name": "Bundesnetzagentur Ladesäulenregister",
+   "gov": true
+  },
+  {
+   "k": "afdc",
+   "name": "US DOE AFDC",
+   "gov": true
+  },
+  {
+   "k": "irve",
+   "name": "data.gouv.fr IRVE",
+   "gov": true
+  },
+  {
+   "k": "ndw",
+   "name": "NDW (NL)",
+   "gov": true
+  },
+  {
+   "k": "osm",
+   "name": "OpenStreetMap",
+   "gov": false
+  },
+  {
+   "k": "ocm",
+   "name": "Open Charge Map",
+   "gov": false
+  },
+  {
+   "k": "atp",
+   "name": "All the Places",
+   "gov": false
+  },
+  {
+   "k": "ovt",
+   "name": "Overture",
+   "gov": false
+  },
+  {
+   "k": "ovt_atp",
+   "name": "Overture (ATP)",
+   "gov": false
+  }
+ ],
+ "networks": [
+  null,
+  "Allego",
+  "Blink Charging",
+  "ChargePoint",
+  "EV Connect",
+  "EVgo",
+  "Innogy",
+  "Monta",
+  "Nuon",
+  "PowerGo",
+  "SemaConnect",
+  "Tesla",
+  "Vattenfall",
+  "be emobil",
+  "ubitricity"
+ ]
+}

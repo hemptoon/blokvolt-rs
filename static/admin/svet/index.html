@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>BlokVolt — Svet: prijave grešaka</title>
+<style>
+:root{--ink:#0D111A;--mut:#5C6270;--line:rgba(13,17,26,.12);--ok:#3F6A0B;--no:#B4531A;--bg:#F4F3EE}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+.wrap{max-width:1000px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:22px;margin:0 0 14px}
+h2{font-size:17px;margin:26px 0 10px}
+h3{font-size:15px;margin:14px 0 6px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,button,textarea{font:inherit}
+input[type=password]{flex:1;min-width:0;width:100%;max-width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px}
+.bar input[type=password]{flex-basis:220px}
+button{padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;cursor:pointer}
+button.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+button.no{background:#fff;color:var(--no);border-color:var(--no)}
+button:disabled{cursor:default}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 10px;overflow-wrap:anywhere}
+.meta{color:var(--mut);font-size:13px;margin:6px 0}
+.empty{color:var(--mut)}
+#msg{margin:10px 0;color:var(--no)}
+table.st{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px;margin:6px 0 14px}
+table.st th,table.st td{text-align:left;padding:7px 10px;border-top:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}
+table.st th{background:#f7f7f4;font-weight:600;border-top:0}
+table.st td.n{text-align:right;white-space:nowrap}
+select{font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:#fff;max-width:100%}
+.reps{list-style:none;margin:8px 0;padding:0}
+.reps li{border-top:1px solid var(--line);padding:6px 0}
+.txt{white-space:pre-wrap}
+.mail{display:inline-block;background:#FFF4D6;border-radius:6px;padding:0 6px}
+.kart{background:#f7f7f4;border-radius:8px;padding:6px 8px;font-size:13px;margin:6px 0}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 8px;font-size:13px;margin:2px 4px 2px 0}
+label.lbl{color:var(--mut);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>BlokVolt — Svet: prijave grešaka</h1>
+<p class="meta"><a href="/admin/">← Moderacija</a></p>
+<p class="meta">Prijave stižu sa mape sveta na blokvolt.com. Automatska pravila se pokreću jednom nedeljno, pre izrade podataka. Odluke odavde ulaze u overrides.csv i važe od sledeće izrade podataka. Odgovor se šalje samo kada je osoba ostavila e-adresu, bez rokova; posle odgovora e-adresa se briše dugmetom „Odgovoreno“.</p>
+<p class="meta">Ključ (ADMIN_KEY iz podešavanja Cloudflare Pages) čuva se samo u ovoj kartici pregledača.</p>
+<div class="bar"><input id="key" type="password" placeholder="ADMIN_KEY" autocomplete="off"><button id="load" type="button">Učitaj prijave</button></div>
+<div id="msg"></div>
+<h2>Otvorene prijave</h2>
+<p class="meta">Grupisano po mestu (pid). „Na mapi“ je predlog prema većini prijava; „Pomeri“ uzima srednju tačku predloženih lokacija.</p>
+<div id="open"></div>
+<div id="queue"></div>
+<h2>Automatske odluke (14 dana)</h2>
+<p class="meta">Proverite nasumično ~5 sakrivenih mesta nedeljno. „Poništi“ vraća mesto na mapu pri sledećoj izradi podataka.</p>
+<div id="auto"></div>
+<h2>Brojke</h2>
+<div class="bar"><select id="sdays"><option value="7" selected>7 dana</option><option value="30">30 dana</option></select><button id="loadS" type="button">Učitaj brojke</button></div>
+<div id="stats"></div>
+</div>
+<script>
+(function () {
+  var DATA = 'https://tiles.blokvolt.rs/world/';   // world data base (contract §9): latest.json → manifest → cards
+  var MAPURL = 'https://blokvolt.com/map/?id=';
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var when = function (t) { return t ? new Date(t * 1000).toLocaleString('sr-Latn-RS') : ''; };
+  var TYPES = ['ne_postoji', 'ne_radi', 'lokacija', 'snaga', 'nije_javni', 'drugo'];
+  var TL = { ne_postoji: 'Ne postoji', ne_radi: 'Ne radi', lokacija: 'Pogrešna lokacija', snaga: 'Pogrešna snaga', nije_javni: 'Nije javni', drugo: 'Drugo' };
+  var ACT = [['hide', 'Sakrij'], ['move', 'Pomeri'], ['access', 'Ograničen pristup'], ['none', 'Bez izmene']];
+  var DEF = { ne_postoji: 'hide', ne_radi: 'hide', lokacija: 'move', nije_javni: 'access' };
+  var ST = { 'new': 'nova', postponed: 'odložena', auto_hidden: 'automatski sakriveno', auto_moved: 'automatski pomereno', accepted: 'prihvaćeno', rejected: 'odbijeno' };
+  try { $('key').value = sessionStorage.getItem('bvkey') || ''; } catch (e) {}
+  function hdr() { return { 'authorization': 'Bearer ' + $('key').value.trim(), 'content-type': 'application/json' }; }
+  function keep() { try { sessionStorage.setItem('bvkey', $('key').value.trim()); } catch (e) {} $('msg').textContent = ''; }
+  function num(v) { v = Number(v); return isFinite(v) ? v : null; }
+  function mapLink(pid) { return '<a href="' + MAPURL + encodeURIComponent(pid) + '" target="_blank" rel="noopener">Otvori na mapi</a>'; }
+  function osm(lat, lon) {
+    lat = num(lat); lon = num(lon);
+    if (lat === null || lon === null) return '';
+    return '<a href="https://www.openstreetmap.org/?mlat=' + lat + '&amp;mlon=' + lon + '#map=19/' + lat + '/' + lon + '" target="_blank" rel="noopener">OSM</a> ' + esc(lat + ',' + lon);
+  }
+  // the majority type of a group → the preselected effect on the map (ties: order of TYPES)
+  function majority(types) {
+    var best = null, bn = 0;
+    TYPES.forEach(function (t) { var n = +(types && types[t]) || 0; if (n > bn) { bn = n; best = t; } });
+    return best;
+  }
+
+  // ---- short card from the world data (contract §4/§5): lazy, the manifest is fetched once
+  var MAN = null;
+  function abs(u) { return /^https?:\/\//.test(u) ? u : DATA + String(u).replace(/^\.?\//, ''); }
+  function getJSON(u) { return fetch(u).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
+  function manifest() {
+    if (MAN) return MAN;
+    MAN = getJSON(DATA + 'latest.json').then(function (l) {
+      if (l && (l.cards_split || l.cards_base)) return l;           // latest.json is the manifest itself
+      var m = l && (l.manifest || l.url);
+      if (!m) throw new Error('latest');
+      return getJSON(abs(m));
+    });
+    MAN.catch(function () { MAN = null; });                         // a later card may try again
+    return MAN;
+  }
+  function inSplit(split, p) {
+    if (!split) return false;
+    if (Array.isArray(split)) return split.indexOf(p) >= 0;
+    return Object.prototype.hasOwnProperty.call(split, p);
+  }
+  function cardFor(pid, g) {
+    if (!g || !/^[0-9b-hjkmnp-z]{3,}$/.test(g)) return Promise.reject(new Error('g'));
+    return manifest().then(function (m) {
+      var g5 = g.slice(0, 5), L = 3;
+      while (L < g5.length && inSplit(m.cards_split, g5.slice(0, L))) L++;
+      var base = m.cards_base || '';
+      var u = /^https?:\/\//.test(base) ? base.replace(/\/$/, '') + '/' + g5.slice(0, L) + '.json' : abs((base ? base.replace(/\/$/, '') + '/' : '') + g5.slice(0, L) + '.json');
+      return getJSON(u);
+    }).then(function (f) {
+      var s = f && (f.sites || f)[String(pid)];
+      if (!s) throw new Error('pid');
+      return s;
+    });
+  }
+  function cardHtml(s) {
+    var parts = [];
+    var add = function (k, v) { if (v != null && v !== '') parts.push('<span class="tag">' + esc(k) + ': ' + esc(typeof v === 'object' ? JSON.stringify(v) : v) + '</span>'); };
+    add('n', s.n); add('net', s.net); add('kW', s.kw); add('DC', s.dc); add('pristup', s.acc); add('conf', s.conf);
+    var src = (s.src || []).map(function (x) { return x && typeof x === 'object' ? x.k : x; }).filter(function (x) { return x; });
+    if (src.length) add('izvori', src.join(', '));
+    return parts.length ? parts.join('') : 'Kartica je prazna.';
+  }
+
+  function post(body) {
+    return fetch('/api/admin/svet', { method: 'POST', headers: hdr(), body: JSON.stringify(body) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) { if (!j.ok) $('msg').textContent = 'Greška: ' + (j.error || '?'); return j; })
+      .catch(function () { $('msg').textContent = 'Mreža nije dostupna.'; return { ok: false }; });
+  }
+  function done(el) { el.style.opacity = .35; el.querySelectorAll('button,select').forEach(function (b) { b.disabled = true; }); }
+
+  function group(gr) {
+    var d = document.createElement('div'); d.className = 'card';
+    var reps = gr.reports || [];
+    var hasMail = reps.some(function (r) { return r.email; });
+    var types = Object.keys(gr.types || {}).map(function (t) { return '<span class="tag">' + esc(TL[t] || t) + ' × ' + esc(gr.types[t]) + '</span>'; }).join('');
+    var pre = DEF[majority(gr.types)] || 'none';
+    d.innerHTML = '<div class="meta">pid <b>' + esc(gr.pid) + '</b>' + (gr.cc ? ' · ' + esc(gr.cc) : '') + ' · prijava: ' + esc(gr.n) +
+        ' · ' + esc(when(gr.first)) + (gr.last && gr.last !== gr.first ? ' – ' + esc(when(gr.last)) : '') + ' · ' + mapLink(gr.pid) + '</div>' +
+      '<div>' + types + '</div>' +
+      '<div class="kart">Kartica se učitava…</div>' +
+      '<ul class="reps">' + reps.map(function (r) {
+        return '<li><div class="meta">' + esc(TL[r.type] || r.type) + ' · ' + esc(r.lang || '') + ' · ' + esc(when(r.created_at)) +
+          (r.status && r.status !== 'new' ? ' · ' + esc(ST[r.status] || r.status) : '') +
+          (r.type === 'lokacija' && r.lat != null ? ' · predlog: ' + osm(r.lat, r.lon) : '') + '</div>' +
+          (r.text ? '<div class="txt">' + esc(r.text) + '</div>' : '') +
+          (r.email ? '<div class="meta">e-adresa (ostavljena za odgovor): <span class="mail">' + esc(r.email) + '</span></div>' : '') + '</li>';
+      }).join('') + '</ul>' +
+      '<div class="bar"><label class="lbl">Na mapi: <select class="act">' + ACT.map(function (a) { return '<option value="' + a[0] + '"' + (a[0] === pre ? ' selected' : '') + '>' + a[1] + '</option>'; }).join('') + '</select></label></div>' +
+      '<div class="bar" style="margin-top:8px"><button class="ok" type="button">Prihvati</button><button class="no" type="button">Odbij</button><button class="later" type="button">Odloži</button>' +
+      (hasMail ? '<button class="ans" type="button">Odgovoreno (obriši e-adresu)</button>' : '') + '</div>';
+    var pid = gr.pid;
+    d.querySelector('.ok').onclick = function () { post({ pid: pid, a: 'accept', action: d.querySelector('.act').value }).then(function (j) { if (j.ok) done(d); }); };
+    d.querySelector('.no').onclick = function () { post({ pid: pid, a: 'reject' }).then(function (j) { if (j.ok) done(d); }); };
+    d.querySelector('.later').onclick = function () { post({ pid: pid, a: 'postpone' }).then(function (j) { if (j.ok) done(d); }); };
+    var ans = d.querySelector('.ans');
+    if (ans) ans.onclick = function () {
+      post({ pid: pid, a: 'answered' }).then(function (j) {
+        if (!j.ok) return;
+        ans.disabled = true; ans.textContent = 'E-adresa obrisana';
+        d.querySelectorAll('.mail').forEach(function (m) { m.textContent = 'obrisano'; });
+      });
+    };
+    // the short card is loaded only when the group comes into view
+    var kart = d.querySelector('.kart');
+    var fill = function () {
+      cardFor(pid, gr.g).then(function (s) { kart.innerHTML = cardHtml(s); })
+        .catch(function () { kart.textContent = 'Kartica nije dostupna (otvorite mapu)'; });
+    };
+    if (window.IntersectionObserver) {
+      var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); fill(); } });
+      io.observe(kart);
+    } else fill();
+    return d;
+  }
+
+  function autoItem(it) {
+    var d = document.createElement('div'); d.className = 'card';
+    var reps = it.reports || [];
+    var sr = {};
+    (reps.length ? reps : [it]).forEach(function (r) { var k = (ST[r.status] || r.status || '?') + (r.rule || it.rule ? ' (' + (r.rule || it.rule) + ')' : ''); sr[k] = (sr[k] || 0) + 1; });
+    d.innerHTML = '<div class="meta">pid <b>' + esc(it.pid) + '</b>' + (it.cc ? ' · ' + esc(it.cc) : '') + (it.n ? ' · prijava: ' + esc(it.n) : '') +
+        (it.last ? ' · ' + esc(when(it.last)) : '') + ' · ' + mapLink(it.pid) + '</div>' +
+      '<div>' + Object.keys(sr).map(function (k) { return '<span class="tag">' + esc(k) + (sr[k] > 1 ? ' × ' + sr[k] : '') + '</span>'; }).join('') + '</div>' +
+      '<div class="bar" style="margin-top:8px"><button class="no" type="button">Poništi</button></div>';
+    d.querySelector('.no').onclick = function () { post({ pid: it.pid, a: 'undo' }).then(function (j) { if (j.ok) done(d); }); };
+    return d;
+  }
+
+  function load() {
+    keep();
+    fetch('/api/admin/svet?view=queue', { headers: hdr() }).then(function (r) { return r.json(); }).then(function (j) {
+      if (!j.ok) { $('msg').textContent = 'Nije uspelo (' + (j.error || '') + '). Proverite ključ.'; return; }
+      var gs = j.groups || [], au = j.auto || [];
+      $('open').innerHTML = '<p class="meta">Otvorenih prijava: ' + esc(j.open != null ? j.open : '?') + ' · mesta: ' + gs.length + '</p>';
+      $('queue').innerHTML = gs.length ? '' : '<p class="empty">Nema.</p>';
+      gs.forEach(function (g) { $('queue').appendChild(group(g)); });
+      $('auto').innerHTML = au.length ? '' : '<p class="empty">Nema.</p>';
+      au.forEach(function (a) { $('auto').appendChild(autoItem(a)); });
+    }).catch(function () { $('msg').textContent = 'Mreža nije dostupna.'; });
+  }
+
+  function table(rows, cols) {
+    if (!rows.length) return '<p class="empty">Nema.</p>';
+    return '<table class="st"><tr>' + cols.map(function (c) { return '<th>' + c[0] + '</th>'; }).join('') + '</tr>' +
+      rows.map(function (r) { return '<tr>' + cols.map(function (c) { var v = c[1](r); return '<td' + (typeof v === 'number' ? ' class="n"' : '') + '>' + esc(v) + '</td>'; }).join('') + '</tr>'; }).join('') + '</table>';
+  }
+  function obj(o, names) {
+    var rows = Object.keys(o || {}).map(function (k) { return { k: names && names[k] || k, n: +o[k] || 0 }; }).sort(function (a, b) { return b.n - a.n; });
+    return table(rows, [['', function (r) { return r.k; }], ['Broj', function (r) { return r.n; }]]);
+  }
+  function loadStats() {
+    keep();
+    fetch('/api/admin/svet?view=stats&days=' + $('sdays').value, { headers: hdr() }).then(function (r) { return r.json(); }).then(function (j) {
+      if (!j.ok) { $('msg').textContent = 'Nije uspelo (' + (j.error || '') + '). Proverite ključ.'; return; }
+      var ah = j.auto_hidden || [];
+      $('stats').innerHTML = '<p class="meta">' + (j.from ? 'Od ' + esc(when(j.from)) + ' do ' + esc(when(j.to)) + ': ' : '') + 'prijava ' + esc(j.total || 0) +
+          ', automatski sakriveno mesta ' + ah.length + '.</p>' +
+        '<h3>Po vrsti</h3>' + obj(j.by_type, TL) +
+        '<h3>Po statusu</h3>' + obj(j.by_status, ST) +
+        '<h3>Po zemlji (prvih 15)</h3>' + table((j.by_country || []).slice(0, 15), [['Zemlja', function (r) { return r.cc || '?'; }], ['Broj', function (r) { return +r.n || 0; }]]) +
+        '<h3>Po jeziku</h3>' + obj(j.by_lang) +
+        '<h3>Ko je odlučio</h3>' + obj(j.decided_by, { auto: 'automatski', admin: 'čovek' }) +
+        '<h3>Automatski sakriveno</h3>' + table(ah.slice(0, 50), [['pid', function (r) { return +r.pid; }], ['Zemlja', function (r) { return r.cc || ''; }],
+          ['Prijava', function (r) { return +r.n || 0; }], ['Kada', function (r) { return when(r.decided_at); }]]);
+    }).catch(function () { $('msg').textContent = 'Mreža nije dostupna.'; });
+  }
+  $('loadS').onclick = loadStats;
+  $('load').onclick = load;
+  $('key').addEventListener('keydown', function (e) { if (e.key === 'Enter') load(); });
+  if ($('key').value) load();
+})();
+</script>
+</body>
+</html>

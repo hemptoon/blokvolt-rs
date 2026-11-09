@@ -1,0 +1,1 @@
+{"v": 1, "date": "2026-11-09", "sites": {"228233": {"n": null, "net": "Vattenfall", "kw": 11.04, "dc": false, "p": 2, "conn": [["TYPE2", 2, 11.04]], "pts": 2, "acc": "public", "cc": "NL", "city": null, "src": [{"k": "ndw", "u": null}], "lc": "2026-11", "conf": 20, "osm": null, "more": null}}}

@@ -1,0 +1,1 @@
+{"v": 1, "date": "2026-11-09", "sites": {"318176": {"n": "TRU KNOXVILLE N TRU KNOXVILLE 2", "net": "ChargePoint", "kw": 3.7, "dc": false, "p": 1, "conn": [["TYPE1", 2, 3.7]], "pts": null, "acc": "public", "cc": "US", "city": null, "src": [{"k": "ocm", "u": null}], "lc": "2026-02", "conf": 76, "osm": null, "more": null}}}

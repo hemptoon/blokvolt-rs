@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="sr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Test: Prijavi grešku</title></head>
+<body>
+<!-- A stand-in for the world map's report form (K2), for scripts/qa/svet_e2e_test.py only: served from another localhost
+     port, it posts to the worker cross-origin, exactly as blokvolt.com will post to www.blokvolt.rs (contract §10). -->
+<form id="f">
+  <input name="pid" id="pid" value="">
+  <select name="type" id="type">
+    <option value="ne_postoji">Ne postoji</option><option value="ne_radi">Ne radi</option><option value="lokacija">Pogrešna lokacija</option>
+    <option value="snaga">Pogrešna snaga</option><option value="nije_javni">Nije javni</option><option value="drugo">Drugo</option>
+  </select>
+  <input name="lat" id="lat"><input name="lon" id="lon">
+  <textarea name="text" id="text" maxlength="300"></textarea>
+  <input name="email" id="email" type="email">
+  <input name="hp" id="hp" value="" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+  <button type="submit" id="send">Pošalji</button>
+</form>
+<p id="out"></p>
+<script>
+var API = new URLSearchParams(location.search).get('api');
+document.getElementById('f').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var v = function (id) { return document.getElementById(id).value; };
+  var body = { pid: Number(v('pid')), type: v('type'), text: v('text'), email: v('email'), lang: 'sr', hp: v('hp') };
+  if (body.type === 'lokacija') { if (v('lat') !== '') body.lat = Number(v('lat')); if (v('lon') !== '') body.lon = Number(v('lon')); }
+  fetch(API + '/api/svet/prijava', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
+    .then(function (r) { return r.json().then(function (j) { return [r.status, j]; }); })
+    .then(function (a) { document.getElementById('out').textContent = a[1].ok ? 'Hvala. Prijave pregledamo jednom nedeljno; ispravka se vidi posle sledećeg osvežavanja podataka.' : 'Greška ' + a[0] + ': ' + a[1].error; })
+    .catch(function (err) { document.getElementById('out').textContent = 'Mreža: ' + err; });
+});
+</script>
+</body>
+</html>
