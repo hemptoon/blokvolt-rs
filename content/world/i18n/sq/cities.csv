@@ -116,7 +116,7 @@ geonameid,name,in_phrase,decl_ok,note
 2745634,Venray,në Venray,1,auto
 2744514,Wijchen,në Wijchen,1,auto
 2745774,Veenendaal,në Veenendaal,1,auto
-2960316,Luxembourg,në Luxembourg,1,auto
+2960316,Luksemburg,në Luksemburg,1,R-SQ: ekzonim
 2646003,Islington,në Islington,1,auto
 2743608,Zutphen,në Zutphen,1,auto
 6941548,Ypenburg,në Ypenburg,1,auto
@@ -152,7 +152,7 @@ geonameid,name,in_phrase,decl_ok,note
 2755616,Geleen,në Geleen,1,auto
 2750065,Nijkerk,në Nijkerk,1,auto
 2754861,Hardenberg,në Hardenberg,1,auto
-2510911,Sevilla,në qytetin Sevilla,0,"auto: emri mbaron me -a, formë e sigurt"
+2510911,Seviljë,në Seviljë,1,R-SQ: ekzonim
 2743977,Zeist,në Zeist,1,auto
 2746005,Uden,në Uden,1,auto
 2747203,Sittard,në Sittard,1,auto
@@ -373,14 +373,14 @@ geonameid,name,in_phrase,decl_ok,note
 2785622,Tervuren,në Tervuren,1,auto
 2817818,Vaterstetten,në Vaterstetten,1,auto
 2826099,Straubing,në Straubing,1,auto
-3104324,Zaragoza,në qytetin Zaragoza,0,"auto: emri mbaron me -a, formë e sigurt"
+3104324,Saragosë,në Saragosë,1,R-SQ: ekzonim
 2753706,Hoogezand,në Hoogezand,1,auto
 2906331,Hennigsdorf,në Hennigsdorf,1,auto
 2749812,Noordwijk-Binnen,në Noordwijk-Binnen,1,auto
 2929567,Erlangen,në Erlangen,1,auto
 3038634,Agen,në Agen,1,auto
 2881646,Landau in der Pfalz,në Landau in der Pfalz,1,auto
-2973783,Strasbourg,në Strasbourg,1,auto
+2973783,Strasburg,në Strasburg,1,R-SQ: ekzonim
 3014078,Haguenau,në Haguenau,1,auto
 2751808,Leerdam,në Leerdam,1,auto
 2759544,Baarn,në Baarn,1,auto
@@ -491,7 +491,7 @@ geonameid,name,in_phrase,decl_ok,note
 2852458,Potsdam,në Potsdam,1,auto
 2873289,Marktredwitz,në Marktredwitz,1,auto
 2925910,Forchheim,në Forchheim,1,auto
-2514256,Málaga,në qytetin Málaga,0,"auto: emri mbaron me -a, formë e sigurt"
+2514256,Malagë,në Malagë,1,R-SQ: ekzonim
 2747227,Sint-Oedenrode,në Sint-Oedenrode,1,auto
 2756295,Eibergen,në Eibergen,1,auto
 2812174,Weinheim,në Weinheim,1,auto
