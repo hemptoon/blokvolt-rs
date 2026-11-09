@@ -100,3 +100,14 @@
  .wm-attr{font-size:10.5px;bottom:6px}
  .wm-dl>div{grid-template-columns:110px minmax(0,1fr)}
 }
+/* v2: the attribution folds into "(i)" on screens ≤ 480 px after 5 s (decision 6, 09.11.2026); the button opens it again */
+.wm-attr-i{display:none}
+@media (max-width:480px){
+ .wm-attr{display:flex;align-items:flex-end;gap:4px}
+ .wm-attr-i{display:inline-grid;place-items:center;flex:none;width:44px;height:44px;margin:-10px -8px -8px 0;padding:0;border:0;background:none;cursor:pointer;font:700 12px/1 Georgia,serif;color:var(--ink)}
+ .wm-attr-i::before{content:"";position:absolute;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1.5px var(--ink)}
+ .wm-attr-i{position:relative;z-index:0}
+ .wm-attr-i::before{z-index:-1}
+ .wm-attr.is-min{background:none;box-shadow:none;padding:0}
+ .wm-attr.is-min .wm-attr-full{display:none}
+}

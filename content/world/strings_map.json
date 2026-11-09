@@ -249,6 +249,16 @@
   "sr": "Zatvori",
   "ru": "Закрыть"
  },
+ "download": {
+  "en": "Download data",
+  "sr": "Preuzimanje podataka",
+  "ru": "Скачать данные"
+ },
+ "attr_show": {
+  "en": "Map data and licences",
+  "sr": "Podaci mape i licence",
+  "ru": "Данные карты и лицензии"
+ },
  "c_unnamed": {
   "en": "EV charging station",
   "sr": "Punjač za električne automobile",

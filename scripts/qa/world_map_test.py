@@ -36,8 +36,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 PAGES = {'en': '/map/', 'sr': '/sr/mapa/', 'ru': '/ru/karta/'}
+ABOUT = {'en': '/charging-stations/about-data/', 'sr': '/sr/punjaci/o-podacima/', 'ru': '/ru/zaryadki/o-dannyh/'}
+DOWNLOAD = {'en': '/charging-stations/download/', 'sr': '/sr/punjaci/preuzimanje/', 'ru': '/ru/zaryadki/skachat/'}
 FAKE_API = 'https://reports.test.invalid/api/svet/prijava'
-STUB_STYLE = {'version': 8, 'name': 'stub', 'sources': {}, 'layers': [{'id': 'bg', 'type': 'background', 'paint': {'background-color': '#E9EBE6'}}]}
+STUB_STYLE = {'version': 8, 'name': 'stub', 'sources': {}, 'glyphs': 'https://qa-glyphs.invalid/{fontstack}/{range}.pbf', 'layers': [{'id': 'bg', 'type': 'background', 'paint': {'background-color': '#E9EBE6'}}]}
 
 
 # ------------------------------------------------------------------ Range-capable static server
@@ -202,6 +204,14 @@ def one(ctx, base, lang, w, out, args, man):
     page.on('console', lambda m: errors.append(f'console {m.type}: {m.text}') if m.type == 'error' or m.text.startswith('map:') else None)
     page.on('pageerror', lambda e: errors.append(f'pageerror: {e}'))
     ctx.route(re.compile(r'https://tiles\.openfreemap\.org/.*'), lambda route: route.fulfill(status=200, content_type='application/json', body=json.dumps(STUB_STYLE)))
+
+    def glyphs(route):
+        # glyphs for the kW labels: from --glyphs (a folder <fontstack>/<range>.pbf, e.g. openmaptiles/fonts) or an empty answer
+        from urllib.parse import unquote
+        m = re.search(r'qa-glyphs\.invalid/([^/]+)/([0-9]+-[0-9]+)\.pbf', route.request.url)
+        f = Path(args.glyphs or '/nonexistent') / unquote(m.group(1)).split(',')[0] / (m.group(2) + '.pbf') if m else None
+        route.fulfill(status=200, content_type='application/x-protobuf', body=f.read_bytes() if f and f.exists() else b'')
+    ctx.route(re.compile(r'https://qa-glyphs\.invalid/.*'), glyphs)
     mode = {'v': 'ok'}
 
     def api(route):
@@ -237,6 +247,22 @@ def one(ctx, base, lang, w, out, args, man):
     info['attr'] = attr[:160]
     if 'OpenStreetMap' not in attr or 'GeoNames' not in attr or not re.search(r'\d', attr):
         fails.append('attribution incomplete: ' + attr[:120])
+    hrefs = page.eval_on_selector_all('#wm-attr a', 'as => as.map(a => a.getAttribute("href"))')
+    for need in (ABOUT[lang], DOWNLOAD[lang]):
+        if need not in hrefs:
+            fails.append(f'attribution has no link {need}')
+    if w <= 480:
+        page.wait_for_function("document.getElementById('wm-attr').classList.contains('is-min')", timeout=9000)
+        if page.locator('#wm-attr .wm-attr-full').is_visible():
+            fails.append('attribution did not fold after 5 s')
+        page.click('#wm-attr .wm-attr-i')
+        if not page.locator('#wm-attr .wm-attr-full').is_visible():
+            fails.append('(i) did not open the attribution')
+        page.screenshot(path=str(out / f'{lang}-{w}-attr-open.png'))
+        page.click('#wm-attr .wm-attr-i')
+        info['attr_fold'] = 'ok'
+    elif page.locator('#wm-attr .wm-attr-i').is_visible():
+        fails.append('(i) visible on a wide screen')
     # --- filters change the drawn points
     n0 = count(page)
     info['points_view'] = n0
@@ -434,11 +460,30 @@ def one(ctx, base, lang, w, out, args, man):
                 fails.append(f'report field {k}: {last.get(k)!r} != {v!r}')
         if not isinstance(last.get('lat'), (int, float)) or not isinstance(last.get('lon'), (int, float)):
             fails.append('report: no lat/lon for lokacija')
-        if set(last) - {'pid', 'type', 'lat', 'lon', 'text', 'email', 'lang', 'hp'}:
+        if not re.fullmatch(r'[A-Z]{2}', str(last.get('cc', ''))) or not re.fullmatch(r'[0-9b-hjkmnp-z]{5}', str(last.get('g', ''))):
+            fails.append(f"report: cc/g hints missing ({last.get('cc')!r}, {last.get('g')!r})")
+        if set(last) - {'pid', 'type', 'lat', 'lon', 'text', 'email', 'lang', 'hp', 'cc', 'g'}:
             fails.append(f'report: extra fields {set(last)}')
         page.screenshot(path=str(out / f'{lang}-{w}-report-sent.png'))
+    # kW labels inside the points from zoom 12 (decision 6): only where the tile has k
+    page.evaluate("BVWorldMap.map.jumpTo({zoom: 13, center: [%f, %f]})" % tuple(uniq[pick[0]]))
+    idle(page)
+    has_k = page.evaluate("BVWorldMap.map.queryRenderedFeatures({layers:['wm-pt']}).some(f => f.properties.k != null)")
+    nk = page.evaluate("BVWorldMap.map.queryRenderedFeatures({layers:['wm-kw']}).length")
+    info['kw_labels'] = nk if has_k else 'tiles have no k'
+    if has_k and not nk:
+        fails.append('kW labels missing at z13')
+    page.evaluate("BVWorldMap.map.jumpTo({zoom: 11.5})")
+    idle(page)
+    if page.evaluate("BVWorldMap.map.queryRenderedFeatures({layers:['wm-kw']}).length"):
+        fails.append('kW labels below z12')
+    if has_k and w == 1440:
+        page.evaluate("BVWorldMap.map.jumpTo({zoom: 14})")
+        idle(page)
+        page.evaluate("document.getElementById('wm-card').classList.remove('is-open')")
+        page.screenshot(path=str(out / f'{lang}-{w}-kw-z14.png'))
     # sources dialog
-    page.locator('#wm-data [data-sources]').first.click() if w >= 900 else page.locator('#wm-attr [data-sources]').first.click()
+    page.locator('#wm-data [data-sources]').first.click()
     page.wait_for_selector('#wm-src[open]', timeout=4000)
     nsrc = page.locator('#wm-src-body li').count()
     info['sources_listed'] = nsrc
@@ -447,6 +492,31 @@ def one(ctx, base, lang, w, out, args, man):
     if w == 1440:
         page.screenshot(path=str(out / f'{lang}-{w}-sources.png'))
     page.keyboard.press('Escape')
+    # zemlja / grad: the view fits the frame from manifest.places; without the file the parameter is ignored quietly
+    if man.get('places') and w == 1440:
+        P = json.load(open(Path(args.data) / man['places']))
+        cc = 'HR' if 'HR' in P.get('cc', {}) else sorted(P['cc'])[0]
+        b = P['cc'][cc]
+        page.goto(url + '?zemlja=' + cc, wait_until='load')
+        wait_ready(page)
+        page.wait_for_timeout(500)
+        c = page.evaluate("(() => { const c = BVWorldMap.map.getCenter(); return [c.lng, c.lat, BVWorldMap.map.getZoom()]; })()")
+        if not (b[0] <= c[0] <= b[2] and b[1] <= c[1] <= b[3]):
+            fails.append(f'zemlja={cc}: centre {c} outside {b}')
+        g, cb = max(P.get('city', {}).items(), key=lambda kv: (kv[1][2] - kv[1][0]) * (kv[1][3] - kv[1][1]))
+        page.goto(url + '?grad=' + g, wait_until='load')
+        wait_ready(page)
+        page.wait_for_timeout(500)
+        c2 = page.evaluate("(() => { const c = BVWorldMap.map.getCenter(); return [c.lng, c.lat, BVWorldMap.map.getZoom()]; })()")
+        if not (cb[0] <= c2[0] <= cb[2] and cb[1] <= c2[1] <= cb[3]) or c2[2] < c[2]:
+            fails.append(f'grad={g}: view {c2} not on {cb}')
+        if 'grad=' + g not in page.evaluate('location.search'):
+            fails.append('grad lost from the URL')
+        info['places'] = f'{cc} z{c[2]:.1f}, city {g} z{c2[2]:.1f}'
+    elif w == 1440:
+        page.goto(url + '?zemlja=DE&grad=2867714', wait_until='load')
+        wait_ready(page)
+        info['places'] = 'no places file: ignored'
     if errors:
         fails.append(f'{len(errors)} console/page error(s): ' + ' | '.join(errors[:3]))
     page.close()
@@ -491,4 +561,5 @@ if __name__ == '__main__':
     ap.add_argument('--langs', default='en,sr,ru')
     ap.add_argument('--sizes', default='360,768,1440')
     ap.add_argument('--cards', type=int, default=20)
+    ap.add_argument('--glyphs', default='', help='folder <fontstack>/<range>.pbf for the kW labels (optional)')
     sys.exit(run(ap.parse_args()))

@@ -11,6 +11,8 @@
 import * as maplibregl from '/assets/vendor/maplibre-6.11.1/maplibre-gl.mjs';
 
 const d = document;
+// read before MapLibre (hash: true) writes its own #z/lat/lon: a link with a view keeps it, zemlja/grad then do not move it
+const HAD_HASH = /^#\d/.test(location.hash);
 const cfg = JSON.parse(d.getElementById('wm-cfg').textContent);
 const T = JSON.parse(d.getElementById('wm-i18n').textContent);
 const LANG = cfg.lang;
@@ -23,7 +25,8 @@ const t = (k, v) => {
 const $ = id => d.getElementById(id);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fold = s => String(s || '').toLowerCase().replace(/đ/g, 'd').normalize('NFD').replace(/[̀-ͯ]/g, '');
-// network slug = ASCII, lowercase, hyphens (contract §7; K4 will own the real list in content/world/names/networks.csv)
+// network slug = ASCII, lowercase, hyphens (contract §7). The real slugs come from manifest.networks_slug (K1 from K4's
+// networks.csv); this function is only the fallback for a manifest without them
 const slug = s => fold(s).replace(/ß/g, 'ss').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 const IS_TOUCH = window.matchMedia && matchMedia('(pointer: coarse)').matches;
 const UA = navigator.userAgent;
@@ -81,7 +84,7 @@ async function loadManifest() {
   SPLIT = new Set(M.cards_split || []);
   (M.networks || []).forEach((n, i) => {
     if (!i || !n) return;
-    const s = slug(n);
+    const s = (M.networks_slug && M.networks_slug[i]) || slug(n);
     NETS.push({ i, name: n, slug: s, k: fold(n) });
     if (!BY_SLUG.has(s)) BY_SLUG.set(s, []);
     BY_SLUG.get(s).push(i);
@@ -121,15 +124,15 @@ function loadCards(prefix) {
 async function findCard(pid, lon, lat) {
   const g = geohash(lat, lon, 5), first = cardFile(g);
   const f = await loadCards(first);
-  if (f.sites && f.sites[pid]) return f.sites[pid];
+  if (f.sites && f.sites[pid]) return { card: f.sites[pid], g };
   const dLat = 180 / 2 ** 12, dLon = 360 / 2 ** 13;     // size of a 5-character cell
   const seen = new Set([first]);
   for (const [a, b] of [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]]) {
-    const pre = cardFile(geohash(Math.max(-89.99, Math.min(89.99, lat + a * dLat)), ((lon + b * dLon + 540) % 360) - 180, 5));
+    const gn = geohash(Math.max(-89.99, Math.min(89.99, lat + a * dLat)), ((lon + b * dLon + 540) % 360) - 180, 5), pre = cardFile(gn);
     if (seen.has(pre)) continue;
     seen.add(pre);
     const x = await loadCards(pre);
-    if (x.sites && x.sites[pid]) return x.sites[pid];
+    if (x.sites && x.sites[pid]) return { card: x.sites[pid], g: gn };
   }
   return null;
 }
@@ -184,14 +187,26 @@ function addLayers() {
       'circle-stroke-opacity': ['case', ['==', ['get', 'a'], 1], 0.55, 1]
     }
   });
+  // max kW inside the point from zoom 12, as on /mapa/ (tile attribute k; a point without k simply has no number)
+  map.addLayer({
+    id: 'wm-kw', type: 'symbol', source: SRC, 'source-layer': 'sites', minzoom: 12, filter: kwFilter(),
+    layout: { 'text-field': ['to-string', ['get', 'k']], 'text-font': cfg.font, 'text-size': 10, 'text-allow-overlap': true, 'text-ignore-placement': true,
+      'symbol-sort-key': ['match', ['get', 'p'], 5, 4, [3, 4], 3, [1, 2], 2, 7, 1, 0] },
+    paint: { 'text-color': ['match', ['get', 'p'], [3, 4, 5], '#D9F45B', 7, '#FFFFFF', [0, 6], '#5C6270', '#0D111A'],
+      'text-opacity': ['case', ['==', ['get', 'a'], 1], 0.6, 1] }
+  });
   map.addSource('wm-sel', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addLayer({ id: 'wm-sel', type: 'circle', source: 'wm-sel',
     paint: { 'circle-radius': zr(8, 10, 15, 18), 'circle-color': 'rgba(217,244,91,.35)', 'circle-stroke-width': 3, 'circle-stroke-color': '#0D111A' } });
   ready = true;
   map.once('idle', () => { topNets(); if (st.id) openFromUrl(); });
 }
+function kwFilter() {
+  const f = pFilter();
+  return f === true ? ['has', 'k'] : ['all', ['has', 'k'], f];
+}
 function applyFilter() {
-  if (ready) map.setFilter(LYR, pFilter());
+  if (ready) { map.setFilter(LYR, pFilter()); map.setFilter('wm-kw', kwFilter()); }
   writeUrl();
   paintFilters();
 }
@@ -394,10 +409,12 @@ async function openCard(pid, ll, props) {
   selPoint(ll);
   shell(`<h2 id="wm-ct">${esc(t('loading'))}</h2><div class="wm-skel" aria-hidden="true"></div>`);
   let c = null;
-  try { c = await findCard(pid, ll[0], ll[1]); } catch (e) { c = null; }
+  let g = '';
+  try { const r = await findCard(pid, ll[0], ll[1]); if (r) { c = r.card; g = r.g; } } catch (e) { c = null; }
   if (!cur || cur.pid !== pid) return;
   if (!c) { shell(`<h2 id="wm-ct">${esc(t('c_unnamed'))}</h2><p class="wm-err">${esc(t('card_err'))}</p>`); return; }
   cur.card = c;
+  cur.g = g;
   renderCard(c);
 }
 function confWord(v) { return v >= 70 ? t('conf_hi') : v >= 50 ? t('conf_mid') : t('conf_lo'); }
@@ -506,6 +523,9 @@ async function sendReport(e) {
   const type = (f.querySelector('input[name="type"]:checked') || {}).value;
   if (!type) { out.textContent = t('r_need_type'); return; }
   const body = { pid: Number(cur.pid), type, text: f.text.value.trim().slice(0, 300), email: f.email.value.trim(), lang: LANG, hp: f.hp.value };
+  // optional hints for /admin/svet/ (K6): the country and the geohash cell whose card file holds the place
+  if (cur.card && /^[A-Z]{2}$/.test(cur.card.cc || '')) body.cc = cur.card.cc;
+  if (cur.g) body.g = cur.g;
   if (type === 'lokacija') {
     const p = marker ? marker.getLngLat() : { lng: cur.ll[0], lat: cur.ll[1] };
     body.lat = +p.lat.toFixed(6);
@@ -548,11 +568,17 @@ function attribution() {
   const n = Object.keys(S).length;
   parts.push(`<button class="lnkbtn" type="button" data-sources>${esc(t('sources_btn'))}${n ? ' (' + n + ')' : ''}</button>`);
   parts.push(`<a href="${esc(cfg.about)}">${esc(t('about'))}</a>`);
+  if (cfg.download) parts.push(`<a href="${esc(cfg.download)}">${esc(t('download'))}</a>`);
   parts.push(esc(t('data_date', { d: fmtDate(M.date) })));
-  $('wm-attr').innerHTML = parts.join(' · ');
+  const at = $('wm-attr');
+  at.innerHTML = `<span class="wm-attr-full">${parts.join(' · ')}</span><button class="wm-attr-i" type="button" aria-expanded="true" aria-controls="wm-attr" aria-label="${esc(t('attr_show'))}">i</button>`;
+  // ≤ 480 px: after 5 seconds the line folds into "(i)" (decision 6, 09.11; L1 §2: not earlier than 5 s); a tap opens it again
+  if (window.matchMedia && matchMedia('(max-width: 480px)').matches) {
+    setTimeout(() => { at.classList.add('is-min'); at.querySelector('.wm-attr-i').setAttribute('aria-expanded', 'false'); }, 5000);
+  }
   $('wm-data').innerHTML = `<p><b>${esc(t('data_date', { d: fmtDate(M.date) }))}</b> · ${esc(t('sources_n', { n: String(n) }))}</p>` +
     `<p><button class="lnkbtn" type="button" data-sources>${esc(t('sources_btn'))}</button> · <a href="${esc(cfg.about)}">${esc(t('about'))}</a>` +
-    (cfg.download ? ` · <a href="${esc(cfg.download)}">ODbL</a>` : '') + `</p><p class="wm-small">${esc(t('odbl_note'))}</p>`;
+    (cfg.download ? ` · <a href="${esc(cfg.download)}">${esc(t('download'))}</a>` : '') + `</p><p class="wm-small">${esc(t('odbl_note'))}</p>`;
 }
 function sourcesDialog() {
   const S = M.sources || {};
@@ -567,6 +593,12 @@ function sourcesDialog() {
   if (dl.showModal) dl.showModal(); else dl.setAttribute('open', '');
 }
 d.addEventListener('click', e => {
+  const i = e.target.closest('.wm-attr-i');
+  if (i) {
+    const at = $('wm-attr'), min = at.classList.toggle('is-min');
+    i.setAttribute('aria-expanded', String(!min));
+    return;
+  }
   const b = e.target.closest('[data-sources]');
   if (b && M) sourcesDialog();
 });
@@ -593,9 +625,19 @@ paintFilters();
 initMap();
 // for debugging and scripts/qa/world_map_test.py (read only by tests; nothing on the page depends on it)
 window.BVWorldMap = { get map() { return map; }, get ready() { return ready; }, get manifest() { return M; }, state: st, openCard };
+async function fitPlace() {
+  if (!(st.zemlja || st.grad) || HAD_HASH || !M || !M.places) return;
+  let P = null;
+  try { P = await getJson(base + M.places); } catch (e) { return; }
+  const c = st.grad && P.city && P.city[st.grad], b = c || (st.zemlja && P.cc && P.cc[st.zemlja]);
+  if (!b || b.length < 4 || !map) return;
+  const go = () => map.fitBounds([[b[0], b[1]], [b[2], b[3]]], { padding: 30, maxZoom: c ? 13 : 9, duration: 0 });
+  if (mapLoaded) go(); else map.once('load', go);
+}
 loadManifest().then(() => {
   NETS.forEach(n => NETS_BY_O.set(n.i, n.slug));
   attribution();
   paintFilters();
   if (map) addLayers();
+  fitPlace();
 }).catch(() => msg(t('data_err')));

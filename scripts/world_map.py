@@ -46,6 +46,7 @@ LOCS = {
 }
 SWITCH = [('en', PAGES['en'], 'English', 'en'), ('sr', PAGES['sr'], 'Srpski', 'sr'), ('ru', PAGES['ru'], 'Русский', 'ru')]
 STYLE = 'https://tiles.openfreemap.org/styles/positron'     # the same base map as /mapa/ (OpenFreeMap, no key)
+FONT = ['Noto Sans Bold']                                   # the label font of the positron style (as /mapa/)
 VIEW = {'center': [12.0, 50.0], 'zoom': 3.4}                # Europe when the link has no #z/lat/lon
 # keys the script builds at run time ('acc_' + access_class, 'r_' + report type)
 DYN_KEYS = ['acc_' + a for a in ('public', 'public_membership', 'public_pay_at_location', 'public_notice_required',
@@ -141,7 +142,7 @@ def build(G):
         T = STR[lang]
         S, NAV = chrome(lang, T, G)
         wm_cfg = {'lang': lang, 'data_base': cfg['data_base'], 'reports_api': cfg['reports_api'], 'style': STYLE,
-                  'center': VIEW['center'], 'zoom': VIEW['zoom'], 'about': ABOUT[lang], 'download': DOWNLOAD[lang], 'pages': PAGES}
+                  'center': VIEW['center'], 'zoom': VIEW['zoom'], 'font': FONT, 'about': ABOUT[lang], 'download': DOWNLOAD[lang], 'pages': PAGES}
         ctx = dict(LOC=LOCS[lang], S=S, NAV=NAV, SWITCH=SWITCH, home=PAGES[lang] if lang != 'en' else '/', section='map',
                    COUNTRIES=G.countries, LOCALS=locals_, PAGES={'method': None}, T=T, title=T['title'],
                    description=T['description'], alts=alts, public=cfg['public'], noindex=False,
