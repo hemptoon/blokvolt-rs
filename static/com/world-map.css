@@ -83,7 +83,7 @@
 .wm-srcl li{margin:0 0 6px}
 /* touch: every target at least 44 px */
 @media (pointer:coarse){
- .wm-page .chip,.wm-page .btn.sm,.wm-page .lnkbtn,.wm-cc .x{min-height:44px}
+ .wm-page .chip,.wm-page .btn.sm,.wm-page .lnkbtn,.wm-cc .x{min-height:44px;min-width:44px;justify-content:center}
  .wm-cc .x{width:44px}
  .wm-attr .lnkbtn,.wm-attr a{display:inline-block;min-height:24px}
  .wm-radio{min-height:44px;padding:0}
