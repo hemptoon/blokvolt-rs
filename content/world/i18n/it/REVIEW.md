@@ -47,4 +47,4 @@
 4. «Sito»/«siti» для location — из глоссария; в одиночку («Siti», «Siti pubblici») может читаться как «сайты». Альтернатива — «punti di ricarica» нельзя (это charging point). Оставлено по глоссарию.
 
 ## Проверка
-`python3 content/world/i18n/it/check.py` — 0 ошибок, 3 предупреждения (строки, совпадающие с EN, нормально).
+`python3 content/world/i18n/it/check.py` — 0 ошибок, 3 предупреждения. check.py обновлён: `{city_u}`/`{country_u}` засчитываются вместо `{city}`/`{country}`/`{country_name}` (уточнение пула 4).

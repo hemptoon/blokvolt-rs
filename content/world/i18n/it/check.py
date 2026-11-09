@@ -8,7 +8,10 @@ LANG = sys.argv[1] if len(sys.argv) > 1 else HERE.name
 WORLD = HERE.parent.parent
 errs, warns = [], []
 PH = re.compile(r'\{[^{}]*\}'); TAG = re.compile(r'</?[a-zA-Z][^>]*>|&[a-zA-Z#0-9]+;')
-def toks(s, rx): return sorted(rx.findall(s))
+# pool 4 (10.11.2026): {city_u}/{country_u} may replace {city}/{country}/{country_name} where a preposition+case is needed
+_U = {'{city_u}': '{city}', '{country_u}': '{country}'}
+def toks(s, rx): return sorted(_U.get(t, t) for t in rx.findall(s))
+def toks_en(s, rx): return sorted({'{country_name}': '{country}'}.get(t, t) for t in toks(s, rx))
 try:
     from babel import Locale
     CATS = set(Locale(LANG).plural_form.tags) | {'other'}
@@ -34,7 +37,7 @@ for name in ('map', 'pages', 'shell', 'prices'):
             if any(not str(x).strip() for x in v.values()): errs.append(f'{p.name}:{k}: empty plural form')
             continue
         if not isinstance(v, str) or not v.strip(): errs.append(f'{p.name}:{k}: empty or not a string'); continue
-        if toks(v, PH) != toks(en, PH): errs.append(f'{p.name}:{k}: placeholders {toks(v,PH)} != {toks(en,PH)}')
+        if toks_en(v, PH) != toks_en(en, PH): errs.append(f'{p.name}:{k}: placeholders {toks(v,PH)} != {toks(en,PH)}')
         if toks(v, TAG) != toks(en, TAG): errs.append(f'{p.name}:{k}: tags/entities differ')
         if v.strip() == en.strip() and len(en) > 12: warns.append(f'{p.name}:{k}: identical to EN')
 
