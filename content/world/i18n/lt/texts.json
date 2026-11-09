@@ -1,0 +1,175 @@
+{
+  "about_data": {
+    "h1": "Apie žemėlapio duomenis",
+    "title": "Įkrovimo žemėlapio duomenys: šaltiniai, licencijos, patikimumas | BlokVolt",
+    "description": "Iš kur gaunami įkrovimo žemėlapio duomenys, pagal kokias licencijas jie naudojami ir kaip apskaičiuojamas kiekvieno taško patikimumas.",
+    "lead": "Žemėlapis sudarytas iš atvirųjų duomenų, o prie kiekvieno taško nurodyta, iš kur jis gautas.",
+    "intro": "Žemėlapyje sujungiami atvirieji duomenys iš daugelio šaltinių: oficialių registrų, valstybės atvirųjų duomenų, OpenStreetMap, Open Charge Map ir pačių operatorių vietų puslapių. Įrašai sujungiami, išvalomi ir pakeičiami, todėl taškas žemėlapyje gali skirtis nuo pradinio įrašo. Visiems tinklams taikomos tos pačios taisyklės. Žemėlapis nevertina tinklų ar operatorių.",
+    "osm_h": "OpenStreetMap ir ODbL licencija",
+    "osm_p": "Duomenys © OpenStreetMap contributors, prieinami pagal Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Sujungta taškų duomenų bazė, kurioje yra OpenStreetMap duomenų, prieinama pagal tą pačią licenciją puslapyje „Atsisiųsti atviruosius duomenis“: {download_url}.",
+    "sources_h": "Šaltiniai ir licencijos",
+    "sources_note": "Nurodomi tik tie šaltiniai, kurie iš tikrųjų yra dabartiniuose duomenyse, kartu su jų licencija ir privaloma nuoroda į šaltinį.",
+    "conf_h": "Kaip apskaičiuojamas patikimumas",
+    "conf_p": "Kiekvienam taškui suteikiamas patikimumo balas nuo 0 iki 100. Visiems tinklams taikoma ta pati formulė. Balas vertina duomenis apie vietą, o ne tinklą ar jo paslaugas.",
+    "conf_rows": [
+      [
+        "Bazinis balas pagal geriausią šaltinio tipą",
+        "Oficialus registras arba valstybės atvirieji duomenys 70; BlokVolt patikrinimas 65; OpenStreetMap 50; All The Places 45; Open Charge Map 40; Overture (iš All The Places) 40; kiti 25"
+      ],
+      [
+        "Nepriklausomas patikrinimas",
+        "Jei tarp šaltinių nėra registro, nepriklausomas automatinis įrašo patikrinimas gali padidinti bazinį balą, bet ne daugiau, nei rodo tas patikrinimas"
+      ],
+      [
+        "Šaltinių sutapimas",
+        "+10, kai du ar daugiau šaltinių sutampa dėl vietos; dar +5, kai sutampa trys ar daugiau"
+      ],
+      [
+        "Naujumas",
+        "+10, kai paskutinis patvirtinimas gautas per pastaruosius 12 mėnesių; −15, kai jis senesnis nei 3 metai"
+      ],
+      [
+        "Šalies neatitikimas",
+        "−10, kai šaltiniai nurodo skirtingas šalis"
+      ],
+      [
+        "Neveikiantis taškas arba įtartinos koordinatės",
+        "Ne daugiau kaip 20"
+      ],
+      [
+        "Intervalas",
+        "Balas apribojamas intervalu 0–100; vietos, kurių balas mažesnis nei 40, nerodomos nei žemėlapyje, nei puslapiuose"
+      ]
+    ],
+    "conf_levels": [
+      [
+        "Aukštas",
+        "70–100",
+        "Patvirtinta oficialaus šaltinio arba kelių šaltinių, neseniai atnaujinta"
+      ],
+      [
+        "Vidutinis",
+        "50–69",
+        "Tikėtina, tačiau patvirtinta mažiau šaltinių arba seniau"
+      ],
+      [
+        "Žemas",
+        "40–49",
+        "Vienas arba senesnis šaltinis; prieš vykstant pasitikrinkite pas operatorių"
+      ]
+    ],
+    "notes_h": "Pastabos",
+    "notes": [
+      "Duomenys teikiami tokie, kokie yra, be jokių garantijų dėl tikslumo, prieinamumo, kainos ar suderinamumo. Prieš vykstant pasitikrinkite pas operatorių arba vietoje.",
+      "Kiekvieno taško kortelėje nurodomas šaltinis, licencija ir paskutinio atnaujinimo data.",
+      "Tinklų pavadinimai ir prekių ženklai priklauso jų savininkams.",
+      "BlokVolt nėra susijęs su operatoriais ar duomenis skelbiančiomis institucijomis, ir jos šio žemėlapio nepatvirtina bei neremia.",
+      "Privačių asmenų vardai nerodomi; privatūs namų įkrovikliai žemėlapyje nepateikiami.",
+      "Norėdami pranešti apie klaidą arba paprašyti ją ištaisyti ar pašalinti įrašą, spauskite mygtuką „Pranešti apie klaidą“ taško kortelėje arba rašykite adresu {email}. Atsakymą gausite per 30 dienų."
+    ],
+    "licence_texts_h": "Licencijų tekstai",
+    "licence_texts": [
+      [
+        "CC BY 4.0",
+        "https://creativecommons.org/licenses/by/4.0/"
+      ],
+      [
+        "CC0 1.0",
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      [
+        "ODbL 1.0",
+        "https://opendatacommons.org/licenses/odbl/1-0/"
+      ],
+      [
+        "Licence Ouverte 2.0",
+        "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+      ],
+      [
+        "CDLA Permissive 2.0",
+        "https://cdla.dev/permissive-2-0/"
+      ],
+      [
+        "Open Government Licence v2.0",
+        "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+      ]
+    ]
+  },
+  "download": {
+    "h1": "Atsisiųsti atviruosius duomenis",
+    "title": "Atsisiųsti atviruosius įkrovimo taškų duomenis | BlokVolt",
+    "description": "Kas savaitę atnaujinamas CSV failas su viešaisiais įkrovimo taškais: koordinatės, tinklas, galia, jungtys ir šaltiniai. Nemokamai pagal ODbL licenciją.",
+    "lead": "Viešasis žemėlapio sluoksnis prieinamas kaip nemokamas CSV failas, atnaujinamas kas savaitę.",
+    "what_h": "Kas yra faile",
+    "what_p": "Kas savaitę sudaromas viešojo žemėlapio sluoksnio CSV failas: kiekvienos vietos koordinatės, tinklas, galia, jungtys ir šaltiniai. Jame yra OpenStreetMap duomenų, todėl jis skelbiamas pagal Open Database License (ODbL) 1.0. Kainos, komandos patikrinimai ir BlokVolt pataisymai Balkanų šalims į failą neįtraukti.",
+    "fields_h": "Stulpeliai",
+    "fields": [
+      [
+        "pid",
+        "Pastovus vietos identifikatorius"
+      ],
+      [
+        "lat",
+        "Platuma (WGS 84)"
+      ],
+      [
+        "lon",
+        "Ilguma (WGS 84)"
+      ],
+      [
+        "country",
+        "Šalies kodas (ISO 3166-1 alpha-2)"
+      ],
+      [
+        "name",
+        "Vietos pavadinimas"
+      ],
+      [
+        "network",
+        "Tinklo arba operatoriaus pavadinimas"
+      ],
+      [
+        "max_kw",
+        "Didžiausia galia vietoje, kW"
+      ],
+      [
+        "dc",
+        "1, jei yra greitasis DC įkrovimas, 0 – jei nėra"
+      ],
+      [
+        "power_class",
+        "Vietos galios klasė"
+      ],
+      [
+        "connectors",
+        "Jungčių tipai, atskirti kableliais"
+      ],
+      [
+        "points",
+        "Apytikslis įkrovimo taškų skaičius"
+      ],
+      [
+        "access",
+        "Prieigos tipas (vieša, ribota ir pan.)"
+      ],
+      [
+        "sources",
+        "Šaltinių raktai, atskirti kableliais (žr. puslapį „Apie duomenis“)"
+      ],
+      [
+        "last_confirmed",
+        "Paskutinio bet kurio šaltinio patvirtinimo data"
+      ],
+      [
+        "confidence",
+        "Patikimumo balas 0–100"
+      ]
+    ],
+    "licence_h": "Licencija",
+    "licence_p": "Failas prieinamas pagal ODbL 1.0. Duomenis galima platinti, kurti jų pagrindu kūrinius ir juos adaptuoti, jei nurodomas šaltinis „© OpenStreetMap contributors, BlokVolt“, o kiekviena adaptuota duomenų bazė platinama pagal tą pačią licenciją. Duomenys turi likti atviri: negalima taikyti techninių apribojimų, varžančių šias teises. Visas tekstas: https://opendatacommons.org/licenses/odbl/1-0/",
+    "file_h": "Failas",
+    "file_missing": "Šios savaitės failas dar rengiamas. Patikrinkite vėliau.",
+    "attribution_h": "Kaip nurodyti šaltinį",
+    "attribution_p": "Naudodami duomenis, nurodykite „© OpenStreetMap contributors, BlokVolt“ su nuoroda į www.openstreetmap.org/copyright ir į šį puslapį bei nurodykite ODbL 1.0 licenciją. Kitų šaltinių duomenims taikomas jų pačių šaltinio nurodymas, pateiktas puslapyje „Apie duomenis“."
+  }
+}
