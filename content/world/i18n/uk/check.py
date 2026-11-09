@@ -47,7 +47,9 @@ def cmp_string(label, en, tr):
     if not isinstance(tr, str) or not tr.strip():
         err(f'{label}: empty or not a string')
         return
-    same(label, PH.findall(en), PH.findall(tr), 'placeholders')
+    # pool 4 (10.11.2026): {city_u}/{country_u} may stand for {city}/{country}; the engine fills in_phrase
+    norm = lambda xs: [x.replace('_u}', '}') for x in xs]
+    same(label, norm(PH.findall(en)), norm(PH.findall(tr)), 'placeholders')
     same(label, TAG.findall(en), TAG.findall(tr), 'HTML tags')
     same(label, ENT.findall(en), ENT.findall(tr), 'entities')
     same(label, URL.findall(en), URL.findall(tr), 'URLs')
