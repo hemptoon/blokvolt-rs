@@ -258,6 +258,18 @@ def country_in(row, lang):
     return country_name(row, lang)
 
 
+UNIVERSAL_FORBIDDEN = (r'24/7', r'evolako')
+BCMS = ('sr', 'hr', 'bs', 'sl')   # the Serbian word lists ("mi", "odmah", "redakcija", "popust" …) apply to these only
+
+
+def forbidden(patterns, lang):
+    """The forbidden-word patterns that apply to a language: all of them for en/sr/ru (as before) and the BCMS
+    languages; for other languages only the language-neutral ones (Hungarian "Mi a hiba?" is not Serbian "mi")."""
+    if lang in BASE or lang in BCMS:
+        return patterns
+    return [p for p in patterns if p in UNIVERSAL_FORBIDDEN]
+
+
 def months(lang):
     return reg(lang)['months']
 

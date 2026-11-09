@@ -73,7 +73,7 @@ def load_strings():
         raise SystemExit('content/world/strings_map.json: keys used by the map but missing — ' + ', '.join(missing))
     for k, v in raw.items():
         for lang in LANGS:
-            for pat in FORBIDDEN:
+            for pat in I.forbidden(FORBIDDEN, lang):
                 if re.search(pat, v[lang], re.I) and not k.startswith('ch_ft_data'):
                     raise SystemExit(f'content/world/strings_map.json: "{k}" ({lang}) has a forbidden word ({pat}): {v[lang]}')
     if re.search(r'\d', ''.join(raw['title'][lang] for lang in LANGS)):

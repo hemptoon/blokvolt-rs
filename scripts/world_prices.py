@@ -64,7 +64,7 @@ def load_strings():
         raise SystemExit('content/world/strings_prices.json: missing translations — ' + ', '.join(bad[:20]))
     for k, v in raw.items():
         for l in LANGS:
-            for pat in FORBIDDEN:
+            for pat in I.forbidden(FORBIDDEN, l):
                 if re.search(pat, v[l], re.I):
                     raise SystemExit(f'strings_prices.json: "{k}" ({l}) has a forbidden word ({pat})')
     for k in ('t_hub', 't_country', 't_net'):
