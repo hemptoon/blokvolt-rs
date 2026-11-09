@@ -2279,7 +2279,8 @@ const OUTBOX_DDL = [
      created_by TEXT, taken_at TEXT, done_at TEXT, commit_sha TEXT, result TEXT, note TEXT)`,
   'CREATE INDEX IF NOT EXISTS outbox_due ON outbox (repo, status, publish_after)',
   `CREATE TABLE IF NOT EXISTS outbox_files (item_id INTEGER NOT NULL, path TEXT NOT NULL, op TEXT NOT NULL DEFAULT 'write',
-     enc TEXT NOT NULL DEFAULT 'text', body TEXT NOT NULL, sha256 TEXT, PRIMARY KEY (item_id, path, op))`,
+     enc TEXT NOT NULL DEFAULT 'text', body TEXT NOT NULL, sha256 TEXT)`,   // several rows per path allowed (izmene lines)
+  'CREATE INDEX IF NOT EXISTS outbox_files_item ON outbox_files (item_id)',
 ];
 async function outboxApi(request, env, p, m) {
   let claims;
