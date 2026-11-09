@@ -168,7 +168,7 @@
     "licence_h": "Licenca",
     "licence_p": "Datoteka je dostupna pod licencom ODbL 1.0. Podatke smijete dijeliti, koristiti za izradu novih djela i prilagođavati, uz navođenje „© OpenStreetMap contributors, BlokVolt” i objavu svake prilagođene baze pod istom licencom. Podaci moraju ostati otvoreni: ne uvodite tehnička ograničenja koja sužavaju ta prava. Cijeli tekst: https://opendatacommons.org/licenses/odbl/1-0/",
     "file_h": "Datoteka",
-    "file_missing": "Datoteka za ovaj tjedan još se priprema. Molimo, provjerite ponovno kasnije.",
+    "file_missing": "Datoteka za ovaj tjedan još se priprema. Provjerite ponovno kasnije.",
     "attribution_h": "Kako navesti izvor",
     "attribution_p": "Kada koristite podatke, navedite „© OpenStreetMap contributors, BlokVolt” s poveznicom na www.openstreetmap.org/copyright i na ovu stranicu te navedite licencu ODbL 1.0. Podaci iz drugih izvora zadržavaju vlastito navođenje, opisano na stranici „O podacima”."
   }

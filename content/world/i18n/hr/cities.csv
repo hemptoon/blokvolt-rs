@@ -5,7 +5,7 @@ geonameid,name,in_phrase,decl_ok,note
 3188383,Varaždin,u Varaždinu,1,
 3190966,Sesvete,u Sesvetama,1,
 3191316,Samobor,u Samoboru,1,
-3204541,Banja Luka,u Banja Luci,1,
+3204541,Banja Luka,u Banjoj Luci,1,R-HR
 3186952,Zadar,u Zadru,1,
 3187719,Vinkovci,u Vinkovcima,1,
 3190941,Šibenik,u Šibeniku,1,
@@ -51,7 +51,7 @@ geonameid,name,in_phrase,decl_ok,note
 3202641,Cetinje,u Cetinju,1,
 3204176,Bijelo Polje,u Bijelom Polju,1,
 2950159,Berlin,u Berlinu,1,
-2758401,Breda,u gradu Breda,0,
+2758401,Breda,u Bredi,1,R-HR lokativ
 2800866,Bruxelles,u Bruxellesu,1,hr egzonim/oblik ručno
 2747373,Haag,u Haagu,1,hr egzonim/oblik ručno
 2756253,Eindhoven,u Eindhovenu,1,
@@ -66,7 +66,7 @@ geonameid,name,in_phrase,decl_ok,note
 2758012,Capelle aan den IJssel,u gradu Capelle aan den IJssel,0,
 593116,Vilnius,u Vilniusu,1,hr egzonim/oblik ručno
 2750053,Nijmegen,u Nijmegenu,1,
-2751283,Maastricht,u gradu Maastricht,0,
+2751283,Maastricht,u Maastrichtu,1,R-HR lokativ
 2745321,Voorburg,u Voorburgu,1,
 2759706,Apeldoorn,u Apeldoornu,1,
 2657697,Acton,u Actonu,1,
@@ -86,7 +86,7 @@ geonameid,name,in_phrase,decl_ok,note
 2748000,Roermond,u Roermondu,1,
 2879139,Leipzig,u Leipzigu,1,hr egzonim/oblik ručno
 2756987,Deventer,u Deventeru,1,
-2755420,Gouda,u gradu Gouda,0,
+2755420,Gouda,u Goudi,1,R-HR lokativ
 2934246,Düsseldorf,u Düsseldorfu,1,hr egzonim/oblik ručno
 2757345,Delft,u Delftu,1,
 2633655,Woodford Green,u gradu Woodford Green,0,
@@ -95,11 +95,11 @@ geonameid,name,in_phrase,decl_ok,note
 2756071,Enschede,u gradu Enschede,0,
 2642414,Mitcham,u Mitchamu,1,
 2747351,'s-Hertogenbosch,u gradu 's-Hertogenbosch,0,
-2759145,Bergen op Zoom,u gradu Bergen op Zoom,0,
+2759145,Bergen op Zoom,u Bergenu op Zoom,1,R-HR lokativ
 2910831,Hannover,u Hannoveru,1,hr egzonim/oblik ručno
 2756136,Emmen,u Emmenu,1,
-2652221,Coventry,u gradu Coventry,0,
-2759875,Alphen aan den Rijn,u gradu Alphen aan den Rijn,0,
+2652221,Coventry,u Coventryju,1,R-HR lokativ
+2759875,Alphen aan den Rijn,u Alphenu aan den Rijn,1,R-HR lokativ
 2754652,Heerlen,u Heerlenu,1,
 6947041,Blackheath,u Blackheathu,1,
 2749234,Oss,u Ossu,1,
@@ -107,10 +107,10 @@ geonameid,name,in_phrase,decl_ok,note
 2751316,Maarssen,u Maarssenu,1,
 2759633,Assen,u Assenu,1,
 13535632,Maaspoort,u Maaspoortu,1,
-2865716,Neuenhagen bei Berlin,u gradu Neuenhagen bei Berlin,0,
+2865716,Neuenhagen bei Berlin,u Neuenhagenu bei Berlin,1,R-HR lokativ
 658225,Helsinki,u Helsinkiju,1,hr egzonim/oblik ručno
 2759661,Arnhem,u Arnhemu,1,
-2928810,Essen,u gradu Essen,0,
+2928810,Essen,u Essenu,1,R-HR lokativ
 2751285,Maassluis,u Maassluisu,1,
 2759113,Bergschenhoek,u Bergschenhoeku,1,
 2750325,Nieuwegein,u Nieuwegeinu,1,
@@ -123,9 +123,9 @@ geonameid,name,in_phrase,decl_ok,note
 2743493,Zwijndrecht,u Zwijndrechtu,1,
 2945024,Braunschweig,u Braunschweigu,1,
 2759040,Best,u Bestu,1,
-2925177,Freiburg im Breisgau,u gradu Freiburg im Breisgau,0,
+2925177,Freiburg im Breisgau,u Freiburgu im Breisgau,1,R-HR lokativ
 2935517,Dortmund,u Dortmundu,1,
-2745634,Venray,u gradu Venray,0,
+2745634,Venray,u Venrayu,1,R-HR lokativ
 2744514,Wijchen,u Wijchenu,1,
 2745774,Veenendaal,u Veenendaalu,1,
 2960316,Luxembourg,u Luxembourgu,1,hr egzonim/oblik ručno
@@ -136,20 +136,20 @@ geonameid,name,in_phrase,decl_ok,note
 2756161,Elst,u Elstu,1,
 2745467,Vlaardingen,u Vlaardingenu,1,
 2861650,Nürnberg,u Nürnbergu,1,hr egzonim/oblik ručno
-2754394,Hengelo,u gradu Hengelo,0,
-2823567,Teltow,u gradu Teltow,0,
-2987914,Perpignan,u gradu Perpignan,0,
+2754394,Hengelo,u Hengelu,1,R-HR lokativ
+2823567,Teltow,u Teltowu,1,R-HR lokativ
+2987914,Perpignan,u Perpignanu,1,R-HR lokativ
 2750523,Naaldwijk,u Naaldwijku,1,
 2759407,Barneveld,u Barneveldu,1,
 2791744,Marche-en-Famenne,u gradu Marche-en-Famenne,0,
 2747599,Scheveningen,u Scheveningenu,1,
 2744911,Weert,u Weertu,1,
 2749450,Oosterhout,u Oosterhoutu,1,
-2754454,Hellevoetsluis,u gradu Hellevoetsluis,0,
+2754454,Hellevoetsluis,u Hellevoetsluisu,1,R-HR lokativ
 2756767,Doetinchem,u Doetinchemu,1,
 2744248,Woerden,u Woerdenu,1,
 2751834,Leek,u Leeku,1,
-2946447,Bonn,u gradu Bonn,0,
+2946447,Bonn,u Bonnu,1,R-HR lokativ
 2754848,Harderwijk,u Harderwijku,1,
 2805615,Würzburg,u Würzburgu,1,
 2749182,Oud-Beijerland,u Oud-Beijerlandu,1,
@@ -169,12 +169,12 @@ geonameid,name,in_phrase,decl_ok,note
 2746005,Uden,u Udenu,1,
 2747203,Sittard,u Sittardu,1,
 2755464,Goirle,u gradu Goirle,0,
-3037656,Angers,u gradu Angers,0,
+3037656,Angers,u Angersu,1,R-HR lokativ
 2748178,Rhoon,u Rhoonu,1,
 2749680,Oisterwijk,u Oisterwijku,1,
 2746331,Tiel,u Tielu,1,
 6929992,Berkel en Rodenrijs,u gradu Berkel en Rodenrijs,0,
-2986495,Poitiers,u gradu Poitiers,0,
+2986495,Poitiers,u Poitiersu,1,R-HR lokativ
 2753504,Huissen,u Huissenu,1,
 2753719,Hoogeveen,u Hoogeveenu,1,
 598316,Kaunas,u Kaunasu,1,
@@ -186,7 +186,7 @@ geonameid,name,in_phrase,decl_ok,note
 2656295,Barnet,u Barnetu,1,
 2747364,'s-Gravenzande,u gradu 's-Gravenzande,0,
 2749723,Oegstgeest,u Oegstgeestu,1,
-2646004,Isleworth,u gradu Isleworth,0,
+2646004,Isleworth,u Isleworthu,1,R-HR lokativ
 2755619,Geldrop,u Geldropu,1,
 2927930,Falkensee,u gradu Falkensee,0,
 2656333,Barking,u Barkingu,1,
@@ -194,12 +194,12 @@ geonameid,name,in_phrase,decl_ok,note
 2748392,Putten,u Puttenu,1,
 2755272,Groesbeek,u Groesbeeku,1,
 2895992,Ingolstadt,u Ingolstadtu,1,
-2994160,Metz,u gradu Metz,0,
-2998286,Limoges,u gradu Limoges,0,
+2994160,Metz,u Metzu,1,R-HR lokativ
+2998286,Limoges,u Limogesu,1,R-HR lokativ
 2746766,Steenwijk,u Steenwijku,1,
 2756342,Eersel,u Eerselu,1,
 3013403,Hérouville-Saint-Clair,u gradu Hérouville-Saint-Clair,0,
-3029241,Caen,u gradu Caen,0,
+3029241,Caen,u Caenu,1,R-HR lokativ
 2745154,Vught,u Vughtu,1,
 2755669,Geertruidenberg,u Geertruidenbergu,1,
 2748413,Purmerend,u Purmerendu,1,
@@ -207,7 +207,7 @@ geonameid,name,in_phrase,decl_ok,note
 2834498,Schweinfurt,u Schweinfurtu,1,
 2748172,Ridderkerk,u Ridderkerku,1,
 2753996,Hoensbroek,u Hoensbroeku,1,
-2755476,Goes,u gradu Goes,0,
+2755476,Goes,u Goesu,1,R-HR lokativ
 2855328,Passau,u gradu Passau,0,
 2745096,Waddinxveen,u Waddinxveenu,1,
 2867543,Münster,u Münsteru,1,
@@ -215,7 +215,7 @@ geonameid,name,in_phrase,decl_ok,note
 2911408,Halstenbek,u Halstenbeku,1,
 2940132,Chemnitz,u Chemnitzu,1,
 2853969,Pforzheim,u Pforzheimu,1,
-2752264,Krimpen aan den IJssel,u gradu Krimpen aan den IJssel,0,
+2752264,Krimpen aan den IJssel,u Krimpenu aan den IJssel,1,R-HR lokativ
 2750896,Middelburg,u Middelburgu,1,
 2754064,Hilversum,u Hilversumu,1,
 2919880,Glinde,u gradu Glinde,0,
@@ -234,13 +234,13 @@ geonameid,name,in_phrase,decl_ok,note
 2744102,Zaltbommel,u Zaltbommelu,1,
 2749780,Nuenen,u Nuenenu,1,
 2754692,Heemstede,u gradu Heemstede,0,
-2891122,Kiel,u gradu Kiel,0,
+2891122,Kiel,u Kielu,1,R-HR lokativ
 2745677,Velp,u Velpu,1,
-2759887,Almelo,u gradu Almelo,0,
+2759887,Almelo,u Almelu,1,R-HR lokativ
 2848845,Reinbek,u Reinbeku,1,
 2759178,Benthuizen,u Benthuizenu,1,
 2947416,Bochum,u Bochumu,1,
-3247449,Aachen,u gradu Aachen,0,
+3247449,Aachen,u Aachenu,1,R-HR lokativ
 2988507,Pariz,u Parizu,1,hr egzonim/oblik ručno
 2926271,Flensburg,u Flensburgu,1,
 2756888,Diemen,u Diemenu,1,
@@ -249,28 +249,28 @@ geonameid,name,in_phrase,decl_ok,note
 3117735,Madrid,u Madridu,1,hr egzonim/oblik ručno
 2748371,Raalte,u gradu Raalte,0,
 3078610,Brno,u Brnu,1,
-2971549,Troyes,u gradu Troyes,0,
-2745641,Venlo,u gradu Venlo,0,
+2971549,Troyes,u Troyesu,1,R-HR lokativ
+2745641,Venlo,u Venlu,1,R-HR lokativ
 2754669,Heerenveen,u Heerenveenu,1,
-2990363,Nîmes,u gradu Nîmes,0,
+2990363,Nîmes,u Nîmesu,1,R-HR lokativ
 2918632,Göttingen,u Göttingenu,1,
 2745580,Vianen,u Vianenu,1,
 2759899,Alkmaar,u Alkmaaru,1,
-3032833,Béziers,u gradu Béziers,0,
+3032833,Béziers,u Béziersu,1,R-HR lokativ
 2748185,Rhenen,u Rhenenu,1,
 2749644,Oldenzaal,u Oldenzaalu,1,
 2750121,Nieuw-Vennep,u Nieuw-Vennepu,1,
 2756059,Epe,u gradu Epe,0,
-13526830,Blankenfelde-Mahlow,u gradu Blankenfelde-Mahlow,0,
-2907911,Heidelberg,u gradu Heidelberg,0,
+13526830,Blankenfelde-Mahlow,u Blankenfelde-Mahlowu,1,R-HR lokativ
+2907911,Heidelberg,u Heidelbergu,1,R-HR lokativ
 2894003,Kaiserslautern,u Kaiserslauternu,1,
 2748729,Papendrecht,u Papendrechtu,1,
 2879185,Leinfelden-Echterdingen,u Leinfelden-Echterdingenu,1,
 3037598,Angoulême,u gradu Angoulême,0,
-2753010,Katwijk aan Zee,u gradu Katwijk aan Zee,0,
+2753010,Katwijk aan Zee,u Katwijku aan Zee,1,R-HR lokativ
 2759016,Beuningen,u Beuningenu,1,
 2891621,Kempten (Allgäu),u gradu Kempten (Allgäu),0,
-2983990,Rennes,u gradu Rennes,0,
+2983990,Rennes,u Rennesu,1,R-HR lokativ
 2758765,Bodegraven,u Bodegravenu,1,
 2807363,Witten,u Wittenu,1,
 2980291,Saint-Étienne,u gradu Saint-Étienne,0,
@@ -278,18 +278,18 @@ geonameid,name,in_phrase,decl_ok,note
 2758177,Brummen,u Brummenu,1,
 2855745,Paderborn,u Paderbornu,1,
 2856883,Osnabrück,u Osnabrücku,1,
-2990355,Niort,u gradu Niort,0,
+2990355,Niort,u Niortu,1,R-HR lokativ
 6690866,Surbiton,u Surbitonu,1,
 2757872,Culemborg,u Culemborgu,1,
 2959083,Ahrensburg,u Ahrensburgu,1,
 643492,Oulu,u gradu Oulu,0,
-3037854,Amiens,u gradu Amiens,0,
+3037854,Amiens,u Amiensu,1,R-HR lokativ
 2755003,Haarlem,u Haarlemu,1,
 2873891,Mannheim,u Mannheimu,1,
-2877648,Limburg an der Lahn,u gradu Limburg an der Lahn,0,
-2993002,Montauban,u gradu Montauban,0,
+2877648,Limburg an der Lahn,u Limburgu an der Lahn,1,R-HR lokativ
+2993002,Montauban,u Montaubanu,1,R-HR lokativ
 3013627,Hayange,u gradu Hayange,0,
-3035204,Balma,u gradu Balma,0,
+3035204,Balma,u Balmi,1,R-HR lokativ
 2949186,Bielefeld,u Bielefeldu,1,
 2890158,Kitzingen,u Kitzingenu,1,
 2892518,Kassel,u Kasselu,1,
@@ -298,21 +298,21 @@ geonameid,name,in_phrase,decl_ok,note
 3028641,Carcassonne,u gradu Carcassonne,0,
 2799365,Dilbeek,u Dilbeeku,1,
 2874545,Magdeburg,u Magdeburgu,1,
-2950349,Bergisch Gladbach,u gradu Bergisch Gladbach,0,
+2950349,Bergisch Gladbach,u Bergisch Gladbachu,1,R-HR lokativ
 588409,Tallinn,u Tallinnu,1,hr egzonim/oblik ručno
 2744118,Zaandam,u Zaandamu,1,
-2744324,Wisch,u gradu Wisch,0,
+2744324,Wisch,u Wischu,1,R-HR lokativ
 2744549,Wierden,u Wierdenu,1,
 2745726,Veghel,u Veghelu,1,
 2756723,Dongen,u Dongenu,1,
 2907669,Heilbronn,u Heilbronnu,1,
-2978640,Saint-Malo,u gradu Saint-Malo,0,
+2978640,Saint-Malo,u Saint-Malou,1,R-HR lokativ
 2992402,Montigny-lès-Metz,u gradu Montigny-lès-Metz,0,
 2757340,Delfzijl,u Delfzijlu,1,
 2807240,Wittlich,u Wittlichu,1,
-2867838,Mülheim an der Ruhr,u gradu Mülheim an der Ruhr,0,
+2867838,Mülheim an der Ruhr,u Mülheimu an der Ruhr,1,R-HR lokativ
 660158,Espoo,u gradu Espoo,0,
-3033123,Besançon,u gradu Besançon,0,
+3033123,Besançon,u Besançonu,1,R-HR lokativ
 2639577,Reading,u Readingu,1,
 2750815,Mijdrecht,u Mijdrechtu,1,
 2751687,Leusden,u Leusdenu,1,
@@ -321,17 +321,17 @@ geonameid,name,in_phrase,decl_ok,note
 2911240,Hamm,u Hammu,1,
 2938540,Deggendorf,u Deggendorfu,1,
 2512989,Palma,u Palmi,1,
-2981280,Saint-Brieuc,u gradu Saint-Brieuc,0,
-3027422,Chambéry,u gradu Chambéry,0,
+2981280,Saint-Brieuc,u Saint-Brieucu,1,R-HR lokativ
+3027422,Chambéry,u Chambéryju,1,R-HR lokativ
 2745860,Valkenswaard,u Valkenswaardu,1,
 633679,Turku,u gradu Turku,0,
-3038261,Albi,u gradu Albi,0,
+3038261,Albi,u Albiju,1,R-HR lokativ
 2747584,Schijndel,u Schijndelu,1,
 2968748,Villefranche-sur-Saône,u gradu Villefranche-sur-Saône,0,
-2656065,Beckenham,u gradu Beckenham,0,
+2656065,Beckenham,u Beckenhamu,1,R-HR lokativ
 2745301,Voorschoten,u Voorschotenu,1,
-2750884,Middelharnis,u gradu Middelharnis,0,
-2875601,Lübeck,u gradu Lübeck,0,
+2750884,Middelharnis,u Middelharnisu,1,R-HR lokativ
+2875601,Lübeck,u Lübecku,1,R-HR lokativ
 2988358,Pau,u gradu Pau,0,
 3027484,Chalon-sur-Saône,u gradu Chalon-sur-Saône,0,
 2634579,Welling,u Wellingu,1,
@@ -339,22 +339,22 @@ geonameid,name,in_phrase,decl_ok,note
 2831088,Sonthofen,u Sonthofenu,1,
 2921466,Gelsenkirchen,u Gelsenkirchenu,1,
 2940231,Castrop-Rauxel,u Castrop-Rauxelu,1,
-3017253,Fréjus,u gradu Fréjus,0,
+3017253,Fréjus,u Fréjusu,1,R-HR lokativ
 2750039,Nijverdal,u Nijverdalu,1,
 2844988,Rosenheim,u Rosenheimu,1,
 2875115,Lüneburg,u Lüneburgu,1,
 2745392,Vlissingen,u Vlissingenu,1,
 2751738,Lelystad,u Lelystadu,1,
-2874225,Mainz,u gradu Mainz,0,
+2874225,Mainz,u Mainzu,1,R-HR lokativ
 2923544,Fürth,u Fürthu,1,
-3020035,Épinal,u gradu Épinal,0,
+3020035,Épinal,u Épinalu,1,R-HR lokativ
 3026613,Charleville-Mézières,u gradu Charleville-Mézières,0,
 2755605,Gemert,u Gemertu,1,
 2940204,Cham,u Chamu,1,
 847506,Suutarila,u gradu Suutarila,0,
-3034006,Beauvais,u gradu Beauvais,0,
-3036784,Arras,u gradu Arras,0,
-2644210,Liverpool,u gradu Liverpool,0,
+3034006,Beauvais,u Beauvaisu,1,R-HR lokativ
+3036784,Arras,u Arrasu,1,R-HR lokativ
+2644210,Liverpool,u Liverpoolu,1,R-HR lokativ
 2806654,Wolfsburg,u Wolfsburgu,1,
 2881062,Langenhagen,u Langenhagenu,1,
 2994798,Meaux,u gradu Meaux,0,
@@ -368,14 +368,14 @@ geonameid,name,in_phrase,decl_ok,note
 2920512,Gießen,u Gießenu,1,
 2955272,Aschaffenburg,u Aschaffenburgu,1,
 2990919,Narbonne,u gradu Narbonne,0,
-2992703,Montélimar,u gradu Montélimar,0,
-2821164,Trier,u gradu Trier,0,
+2992703,Montélimar,u Montélimaru,1,R-HR lokativ
+2821164,Trier,u Trieru,1,R-HR lokativ
 634963,Tampere,u gradu Tampere,0,
 3003796,Le Havre,u gradu Le Havre,0,
-2655603,Birmingham,u gradu Birmingham,0,
+2655603,Birmingham,u Birminghamu,1,R-HR lokativ
 2746839,Staphorst,u Staphorstu,1,
 2753468,Huizen,u Huizenu,1,
-2954172,Augsburg,u gradu Augsburg,0,
+2954172,Augsburg,u Augsburgu,1,R-HR lokativ
 655194,Jyväskylä,u gradu Jyväskylä,0,
 2743949,Zevenaar,u Zevenaaru,1,
 2744991,Wassenaar,u Wassenaaru,1,
@@ -390,7 +390,7 @@ geonameid,name,in_phrase,decl_ok,note
 2906331,Hennigsdorf,u Hennigsdorfu,1,
 2749812,Noordwijk-Binnen,u gradu Noordwijk-Binnen,0,
 2929567,Erlangen,u Erlangenu,1,
-3038634,Agen,u gradu Agen,0,
+3038634,Agen,u Agenu,1,R-HR lokativ
 2881646,Landau in der Pfalz,u gradu Landau in der Pfalz,0,
 2973783,Strasbourg,u Strasbourgu,1,hr egzonim/oblik ručno
 3014078,Haguenau,u gradu Haguenau,0,
@@ -402,11 +402,11 @@ geonameid,name,in_phrase,decl_ok,note
 2747751,Sassenheim,u Sassenheimu,1,
 2872649,Mayen,u Mayenu,1,
 2936909,Dingolfing,u Dingolfingu,1,
-261745,Iraklion,u Iraklionu,1,"latinica prema sr transkripciji, provjeriti"
+261745,Heraklion,u Heraklionu,1,"latinica prema sr transkripciji, provjeriti; R-HR"
 2751651,Lichtenvoorde,u gradu Lichtenvoorde,0,
 2772400,Linz,u Linzu,1,hr egzonim/oblik ručno
-2813040,Weiden in der Oberpfalz,u gradu Weiden in der Oberpfalz,0,
-2977845,Saint-Omer,u gradu Saint-Omer,0,
+2813040,Weiden in der Oberpfalz,u Weidenu in der Oberpfalz,1,R-HR lokativ
+2977845,Saint-Omer,u Saint-Omeru,1,R-HR lokativ
 2751456,Loon op Zand,u gradu Loon op Zand,0,
 2267057,Lisabon,u Lisabonu,1,hr egzonim/oblik ručno
 2787889,Roeselare,u gradu Roeselare,0,
@@ -415,17 +415,17 @@ geonameid,name,in_phrase,decl_ok,note
 3030300,Brest,u Brestu,1,
 2892794,Karlsruhe,u gradu Karlsruhe,0,
 2904795,Hilden,u Hildenu,1,
-3025053,Cholet,u gradu Cholet,0,
+3025053,Cholet,u Choletu,1,R-HR lokativ
 2748591,Pijnacker,u Pijnackeru,1,
 2998517,Libourne,u gradu Libourne,0,
-3035681,Avignon,u gradu Avignon,0,
+3035681,Avignon,u Avignonu,1,R-HR lokativ
 2745973,Uithoorn,u Uithoornu,1,
 2747063,Sneek,u Sneeku,1,
-2754408,Hendrik-Ido-Ambacht,u gradu Hendrik-Ido-Ambacht,0,
+2754408,Hendrik-Ido-Ambacht,u Hendrik-Ido-Ambachtu,1,R-HR lokativ
 2795795,Heusy,u gradu Heusy,0,
 2809346,Wiesbaden,u Wiesbadenu,1,
 2834265,Schwerte,u gradu Schwerte,0,
-2880144,Lauf an der Pegnitz,u gradu Lauf an der Pegnitz,0,
+2880144,Lauf an der Pegnitz,u Laufu an der Pegnitz,1,R-HR lokativ
 2998224,Lingolsheim,u Lingolsheimu,1,
 2758598,Borne,u gradu Borne,0,
 2783310,Zaventem,u Zaventemu,1,
@@ -453,53 +453,53 @@ geonameid,name,in_phrase,decl_ok,note
 727011,Sofija,u Sofiji,1,hr egzonim/oblik ručno
 2814791,Waldshut-Tiengen,u Waldshut-Tiengenu,1,
 2848245,Rendsburg,u Rendsburgu,1,
-2881509,Landsberg am Lech,u gradu Landsberg am Lech,0,
+2881509,Landsberg am Lech,u Landsbergu am Lech,1,R-HR lokativ
 2897132,Husum,u Husumu,1,
 2902768,Hof,u Hofu,1,
 2908032,Heide,u gradu Heide,0,
 2951923,Baunatal,u Baunatalu,1,
 2972315,Toulouse,u Toulouseu,1,hr egzonim/oblik ručno
-2984114,Reims,u gradu Reims,0,
+2984114,Reims,u Reimsu,1,R-HR lokativ
 2757220,Den Helder,u gradu Den Helder,0,
 2757850,Dalfsen,u Dalfsenu,1,
 2758460,Boxtel,u Boxtelu,1,
 2797656,Gent,u Gentu,1,
-2817202,Vilshofen an der Donau,u gradu Vilshofen an der Donau,0,
+2817202,Vilshofen an der Donau,u Vilshofenu an der Donau,1,R-HR lokativ
 2821515,Traunstein,u Traunsteinu,1,
 2939797,Crailsheim,u Crailsheimu,1,
-3032469,Blagnac,u gradu Blagnac,0,
+3032469,Blagnac,u Blagnacu,1,R-HR lokativ
 2991214,Mulhouse,u gradu Mulhouse,0,
 3021670,Dax,u Daxu,1,
-2842884,Rüsselsheim am Main,u gradu Rüsselsheim am Main,0,
-2864549,Neumarkt in der Oberpfalz,u gradu Neumarkt in der Oberpfalz,0,
-2868506,Mühldorf am Inn,u gradu Mühldorf am Inn,0,
+2842884,Rüsselsheim am Main,u Rüsselsheimu am Main,1,R-HR lokativ
+2864549,Neumarkt in der Oberpfalz,u Neumarktu in der Oberpfalz,1,R-HR lokativ
+2868506,Mühldorf am Inn,u Mühldorfu am Inn,1,R-HR lokativ
 9238414,Kröpeliner-Tor-Vorstadt,u Kröpeliner-Tor-Vorstadtu,1,
-2996882,Mâcon,u gradu Mâcon,0,
+2996882,Mâcon,u Mâconu,1,R-HR lokativ
 3006787,La Rochelle,u gradu La Rochelle,0,
-3013619,Hazebrouck,u gradu Hazebrouck,0,
+3013619,Hazebrouck,u Hazebroucku,1,R-HR lokativ
 3020392,Écully,u gradu Écully,0,
-2509954,València,u gradu València,0,
+2509954,Valencija,u Valenciji,1,R-HR
 2755030,Haaksbergen,u Haaksbergenu,1,
 2885734,Königswinter,u Königswinteru,1,
 2927268,Fellbach,u Fellbachu,1,
-650224,Kuopio,u gradu Kuopio,0,
+650224,Kuopio,u Kuopiju,1,R-HR lokativ
 3034475,Bayonne,u gradu Bayonne,0,
 3034483,Bayeux,u gradu Bayeux,0,
 2749756,Nunspeet,u Nunspeetu,1,
-2814270,Wangen im Allgäu,u gradu Wangen im Allgäu,0,
+2814270,Wangen im Allgäu,u Wangenu im Allgäu,1,R-HR lokativ
 2817220,Villingen-Schwenningen,u Villingen-Schwenningenu,1,
 2881885,Lahr/Schwarzwald,u gradu Lahr/Schwarzwald,0,
 2913192,Haar,u Haaru,1,
 2955936,Ansbach,u Ansbachu,1,
-659180,Hämeenlinna,u gradu Hämeenlinna,0,
+659180,Hämeenlinna,u Hämeenlinni,1,R-HR lokativ
 2987967,Périgueux,u gradu Périgueux,0,
 2756896,Didam,u Didamu,1,
 2870221,Moers,u Moersu,1,
-2975758,Saumur,u gradu Saumur,0,
-3038224,Alès,u gradu Alès,0,
-2655775,Bexley,u gradu Bexley,0,
+2975758,Saumur,u Saumuru,1,R-HR lokativ
+3038224,Alès,u Alèsu,1,R-HR lokativ
+2655775,Bexley,u Bexleyju,1,R-HR lokativ
 2753355,IJsselstein,u IJsselsteinu,1,
-2803160,Ans,u gradu Ans,0,
+2803160,Ans,u Ansu,1,R-HR lokativ
 2852458,Potsdam,u Potsdamu,1,
 2873289,Marktredwitz,u Marktredwitzu,1,
 2925910,Forchheim,u Forchheimu,1,
@@ -508,9 +508,9 @@ geonameid,name,in_phrase,decl_ok,note
 2756295,Eibergen,u Eibergenu,1,
 2812174,Weinheim,u Weinheimu,1,
 2826595,Stolberg (Rhld.),u gradu Stolberg (Rhld.),0,
-640999,Pori,u gradu Pori,0,
+640999,Pori,u Poriju,1,R-HR lokativ
 2968771,Villefontaine,u gradu Villefontaine,0,
-3028263,Castres,u gradu Castres,0,
+3028263,Castres,u Castresu,1,R-HR lokativ
 255683,Patras,u Patrasu,1,hr egzonim/oblik ručno
 2794981,Jambes,u gradu Jambes,0,
 2805753,Wuppertal,u Wuppertalu,1,
@@ -519,34 +519,34 @@ geonameid,name,in_phrase,decl_ok,note
 2754073,Hillegom,u Hillegomu,1,
 2875392,Ludwigsburg,u Ludwigsburgu,1,
 2936871,Dinslaken,u Dinslakenu,1,
-2973385,Tarbes,u gradu Tarbes,0,
+2973385,Tarbes,u Tarbesu,1,R-HR lokativ
 2947444,Böblingen,u Böblingenu,1,
 3104499,Vitoria-Gasteiz,u gradu Vitoria-Gasteiz,0,
 2978758,Saint-Lô,u gradu Saint-Lô,0,
 3006283,La Teste-de-Buch,u gradu La Teste-de-Buch,0,
 3014856,Grasse,u gradu Grasse,0,
 2857458,Oldenburg,u Oldenburgu,1,
-2953324,Bad Tölz,u gradu Bad Tölz,0,
-3003603,Le Mans,u gradu Le Mans,0,
+2953324,Bad Tölz,u Bad Tölzu,1,R-HR lokativ
+3003603,Le Mans,u Le Mansu,1,R-HR lokativ
 2743997,Zeewolde,u gradu Zeewolde,0,
 2744344,Winschoten,u Winschotenu,1,
 2820860,Tübingen,u Tübingenu,1,
-2853572,Pirna,u gradu Pirna,0,
+2853572,Pirna,u Pirni,1,R-HR lokativ
 2913537,Gunzenhausen,u Gunzenhausenu,1,
-3007609,Lannion,u gradu Lannion,0,
+3007609,Lannion,u Lannionu,1,R-HR lokativ
 2930523,Emmendingen,u Emmendingenu,1,
-598098,Klaipėda,u gradu Klaipėda,0,
+598098,Klaipėda,u Klaipėdi,1,R-HR lokativ
 2960596,Esch-sur-Alzette,u gradu Esch-sur-Alzette,0,
 2844437,Rotenburg (Wümme),u gradu Rotenburg (Wümme),0,
 2855525,Papenburg,u Papenburgu,1,
 2857798,Offenburg,u Offenburgu,1,
 2913555,Günzburg,u Günzburgu,1,
-2940383,Calw,u gradu Calw,0,
-2953416,Bad Kreuznach,u gradu Bad Kreuznach,0,
+2940383,Calw,u Calwu,1,R-HR lokativ
+2953416,Bad Kreuznach,u Bad Kreuznachu,1,R-HR lokativ
 2834282,Schwerin,u Schwerinu,1,
 2851746,Pulheim,u Pulheimu,1,
-2864034,Neustadt in Holstein,u gradu Neustadt in Holstein,0,
-2886946,Koblenz,u gradu Koblenz,0,
+2864034,Neustadt in Holstein,u Neustadtu in Holstein,1,R-HR lokativ
+2886946,Koblenz,u Koblenzu,1,R-HR lokativ
 2895669,Iserlohn,u Iserlohnu,1,
 2922530,Garmisch-Partenkirchen,u Garmisch-Partenkirchenu,1,
 2971053,Valence,u gradu Valence,0,
@@ -3310,7 +3310,7 @@ geonameid,name,in_phrase,decl_ok,note
 6064365,Maillardville,u gradu Maillardville,0,
 7303786,Jonquière,u gradu Jonquière,0,
 1258980,Raipur,u gradu Raipur,0,
-4049979,Birmingham,u gradu Birmingham,0,
+4049979,Birmingham,u Birminghamu,1,R-HR lokativ
 4152772,Dania Beach,u gradu Dania Beach,0,
 4172094,Santa Rosa Beach,u gradu Santa Rosa Beach,0,
 4177872,West Melbourne,u gradu West Melbourne,0,
@@ -3676,7 +3676,7 @@ geonameid,name,in_phrase,decl_ok,note
 4938836,Hanover,u Hanoveru,1,
 4950898,Shrewsbury,u gradu Shrewsbury,0,
 4952629,Taunton,u Tauntonu,1,
-4986172,Birmingham,u gradu Birmingham,0,
+4986172,Birmingham,u Birminghamu,1,R-HR lokativ
 4994871,Grosse Pointe Woods,u gradu Grosse Pointe Woods,0,
 5052658,White Bear Lake,u gradu White Bear Lake,0,
 5090046,Nashua,u gradu Nashua,0,

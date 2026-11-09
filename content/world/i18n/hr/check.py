@@ -19,7 +19,8 @@ CATS = cats()
 
 def same(a, b, where):
     for rx, what in ((PH, 'placeholders'), (TAG, 'tags/entities')):
-        if sorted(rx.findall(a)) != sorted(rx.findall(b)):
+        norm = (lambda xs: sorted(x.replace('_u}', '}') for x in xs)) if rx is PH else sorted   # pool 4: {city_u}/{country_u} may replace {city}/{country}
+        if norm(rx.findall(a)) != norm(rx.findall(b)):
             err.append(f'{where}: {what} differ: EN {sorted(rx.findall(a))} vs {sorted(rx.findall(b))}')
 
 for f in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
