@@ -6,7 +6,7 @@
   "lead": "Kortet bygger på åbne data, og hvert punkt viser, hvor det kommer fra.",
   "intro": "Kortet samler åbne data fra mange kilder: officielle registre, myndigheders åbne data, OpenStreetMap, Open Charge Map og operatørernes egne lokationssider. Posterne flettes, renses og bearbejdes, så et punkt på kortet kan afvige fra den oprindelige post. De samme regler gælder for alle ladenetværk. Kortet bedømmer ikke ladenetværk eller operatører.",
   "osm_h": "OpenStreetMap og ODbL",
-  "osm_p": "Data © OpenStreetMap-bidragydere, tilgængelige under Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Den samlede database over punkter, som indeholder OpenStreetMap-data, er tilgængelig under samme licens på siden \"Download åbne data\": {download_url}.",
+  "osm_p": "Data © OpenStreetMap-bidragydere, tilgængelige under Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Den samlede database over punkter, som indeholder OpenStreetMap-data, er tilgængelig under samme licens på siden »Download åbne data«: {download_url}.",
   "sources_h": "Kilder og licenser",
   "sources_note": "Kun kilder, der faktisk indgår i de aktuelle data, er med på listen – hver med sin licens og den krævede kildeangivelse.",
   "conf_h": "Sådan beregnes pålideligheden",
@@ -48,7 +48,7 @@
     "Bekræftet af en officiel kilde eller af flere kilder, opdateret for nylig"
    ],
    [
-    "Middel",
+    "Mellem",
     "50–69",
     "Sandsynlig, men bekræftet af færre kilder eller ikke for nylig"
    ],
@@ -61,11 +61,11 @@
   "notes_h": "Bemærkninger",
   "notes": [
    "Data leveres, som de er, uden garanti for nøjagtighed, tilgængelighed, pris eller kompatibilitet. Tjek hos operatøren eller på stedet inden turen.",
-   "Hvert punkts kort viser kilde, licens og dato for seneste opdatering.",
+   "Hvert punkts infoboks på kortet viser kilde, licens og dato for seneste opdatering.",
    "Navne og varemærker for ladenetværk tilhører deres ejere.",
    "BlokVolt er ikke tilknyttet operatørerne eller de institutioner, der offentliggør data, og de står ikke bag dette kort.",
    "Navne på privatpersoner vises ikke; private hjemmeladere er ikke på kortet.",
-   "Fejl, ønsker om rettelse eller fjernelse kan indberettes med knappen \"Rapportér en fejl\" på punktets kort eller på {email}. Svar gives inden for 30 dage."
+   "Fejl, ønsker om rettelse eller fjernelse kan indberettes med knappen »Meld en fejl« i punktets infoboks eller på {email}. Svar gives inden for 30 dage."
   ],
   "licence_texts_h": "Licenstekster",
   "licence_texts": [
@@ -154,7 +154,7 @@
    ],
    [
     "sources",
-    "Kildenøgler, kommasepareret (se siden \"Om data\")"
+    "Kildenøgler, kommasepareret (se siden »Om dataene«)"
    ],
    [
     "last_confirmed",
@@ -166,10 +166,10 @@
    ]
   ],
   "licence_h": "Licens",
-  "licence_p": "Filen er tilgængelig under ODbL 1.0. Dataene må deles, bruges til nye værker og tilpasses, forudsat at der krediteres \"© OpenStreetMap contributors, BlokVolt\", og at enhver tilpasset database deles under samme licens. Dataene skal forblive åbne: der må ikke anvendes tekniske begrænsninger, som indskrænker disse rettigheder. Fuld tekst: https://opendatacommons.org/licenses/odbl/1-0/",
+  "licence_p": "Filen er tilgængelig under ODbL 1.0. Dataene må deles, bruges til nye værker og tilpasses, forudsat at der krediteres »© OpenStreetMap contributors, BlokVolt«, og at enhver tilpasset database deles under samme licens. Dataene skal forblive åbne: der må ikke anvendes tekniske begrænsninger, som indskrænker disse rettigheder. Fuld tekst: https://opendatacommons.org/licenses/odbl/1-0/",
   "file_h": "Fil",
   "file_missing": "Filen for denne uge er under udarbejdelse. Prøv igen senere.",
   "attribution_h": "Sådan angives kilden",
-  "attribution_p": "Ved brug af data vises \"© OpenStreetMap contributors, BlokVolt\" med link til www.openstreetmap.org/copyright og til denne side, og licensen ODbL 1.0 angives. Data fra andre kilder bevarer deres egen kildeangivelse, som står på siden \"Om data\"."
+  "attribution_p": "Ved brug af data vises »© OpenStreetMap contributors, BlokVolt« med link til www.openstreetmap.org/copyright og til denne side, og licensen ODbL 1.0 angives. Data fra andre kilder bevarer deres egen kildeangivelse, som står på siden »Om dataene«."
  }
 }

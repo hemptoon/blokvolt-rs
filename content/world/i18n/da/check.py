@@ -70,7 +70,7 @@ if {r['cc'] for r in cc} != src_cc: err.append(f'countries.csv: cc set differs (
 slugs = [r['slug'] for r in cc]
 if len(set(slugs)) != len(slugs): err.append('countries.csv: duplicate slugs')
 for r in cc:
-    if not r['name'] or not r['in_phrase'] or r['name'] not in r['in_phrase']: err.append(f"country {r['cc']}: name/in_phrase")
+    if not r['name'] or not r['in_phrase'] or r['name'].lower() not in r['in_phrase'].lower(): err.append(f"country {r['cc']}: name/in_phrase")
     if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', r['slug']): err.append(f"country {r['cc']}: slug {r['slug']}")
 
 src_g = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities.csv'))}

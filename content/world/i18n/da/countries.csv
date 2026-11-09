@@ -109,7 +109,7 @@ PH,Filippinerne,filippinerne,på Filippinerne,ø: «på»
 PK,Pakistan,pakistan,i Pakistan,
 PL,Polen,polen,i Polen,
 PR,Puerto Rico,puerto-rico,i Puerto Rico,
-PS,De palæstinensiske områder,de-palaestinensiske-omraader,i De palæstinensiske områder,CLDR-navn
+PS,De palæstinensiske områder,de-palaestinensiske-omraader,i de palæstinensiske områder,R-DA: lille »de« efter præposition
 PT,Portugal,portugal,i Portugal,
 PY,Paraguay,paraguay,i Paraguay,
 QA,Qatar,qatar,i Qatar,
@@ -136,14 +136,14 @@ TJ,Tadsjikistan,tadsjikistan,i Tadsjikistan,
 TN,Tunesien,tunesien,i Tunesien,
 TO,Tonga,tonga,på Tonga,ø: «på»
 TR,Tyrkiet,tyrkiet,i Tyrkiet,
-TT,Trinidad og Tobago,trinidad-og-tobago,i Trinidad og Tobago,
+TT,Trinidad og Tobago,trinidad-og-tobago,på Trinidad og Tobago,"R-DA: ø-stat, »på«"
 TW,Taiwan,taiwan,i Taiwan,
 UA,Ukraine,ukraine,i Ukraine,
 UG,Uganda,uganda,i Uganda,
 US,USA,usa,i USA,
 UY,Uruguay,uruguay,i Uruguay,
 UZ,Usbekistan,usbekistan,i Usbekistan,
-VC,Saint Vincent og Grenadinerne,saint-vincent-og-grenadinerne,i Saint Vincent og Grenadinerne,
+VC,Saint Vincent og Grenadinerne,saint-vincent-og-grenadinerne,på Saint Vincent og Grenadinerne,"R-DA: ø-stat, »på«"
 VE,Venezuela,venezuela,i Venezuela,
 VN,Vietnam,vietnam,i Vietnam,
 WS,Samoa,samoa,på Samoa,ø: «på»

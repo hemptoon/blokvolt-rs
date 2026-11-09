@@ -33,7 +33,7 @@
  "sources_title": "Kilder og licenser | BlokVolt",
  "sources_h1": "Kilder og licenser",
  "sources_desc": "Hvor BlokVolts ladedata kommer fra, og under hvilke licenser.",
- "sources_p": "Dataene kommer fra åbne kilder (i alt: {n}): officielle registre, Open Charge Map, OpenStreetMap og ladenetværkenes egne åbne data. Den fulde liste med licenser og kildeangivelser findes på én side:",
+ "sources_p": "Dataene kommer fra {n} åbne kilder: officielle registre, Open Charge Map, OpenStreetMap og ladenetværkenes egne åbne data. Den fulde liste med licenser og kildeangivelser findes på én side:",
  "method_title": "Metode | BlokVolt",
  "method_h1": "Metode",
  "method_desc": "Hvordan steder slås sammen, hvor pålidelige de enkelte steder er, og hvilke sider der findes.",

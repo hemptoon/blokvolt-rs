@@ -432,7 +432,7 @@ geonameid,name,in_phrase,decl_ok,note
 2758174,Brunssum,i Brunssum,1,
 727011,Sofia,i Sofia,1,dansk eksonym
 2814791,Waldshut-Tiengen,i Waldshut-Tiengen,1,
-2848245,Rendsburg,i Rendsburg,1,
+2848245,Rendsborg,i Rendsborg,1,R-DA: dansk eksonym
 2881509,Landsberg am Lech,i Landsberg am Lech,1,
 2897132,Husum,i Husum,1,
 2902768,Hof,i Hof,1,
@@ -547,7 +547,7 @@ geonameid,name,in_phrase,decl_ok,note
 2984513,Rambouillet,i Rambouillet,1,
 3020850,Draguignan,i Draguignan,1,
 3024532,Cluses,i Cluses,1,
-400666,Rhodes,i Rhodes,1,latinsk form fra name_en
+400666,Rhodos,i Rhodos,1,R-DA: dansk eksonym
 2809138,Wiesloch,i Wiesloch,1,
 2827479,Stendal,i Stendal,1,
 2861934,Nordhorn,i Nordhorn,1,
@@ -603,7 +603,7 @@ geonameid,name,in_phrase,decl_ok,note
 2785341,Tournai,i Tournai,1,
 2901588,Hohen Neuendorf,i Hohen Neuendorf,1,
 2909230,Hattingen,i Hattingen,1,
-2933627,Eckernförde,i Eckernförde,1,
+2933627,Egernførde,i Egernførde,1,R-DA: dansk eksonym
 2948825,Bingen am Rhein,i Bingen am Rhein,1,
 2969392,Vichy,i Vichy,1,
 2970797,Vandœuvre-lès-Nancy,i Vandœuvre-lès-Nancy,1,
@@ -758,7 +758,7 @@ geonameid,name,in_phrase,decl_ok,note
 2988888,Oyonnax,i Oyonnax,1,
 2994393,Mérignac,i Mérignac,1,
 3012829,Illzach,i Illzach,1,
-259289,Corinth,i Corinth,1,latinsk form fra name_en
+259289,Korinth,i Korinth,1,R-DA: dansk eksonym
 9881926,Eppan an der Weinstraße,i Eppan an der Weinstraße,1,
 2754817,Harlingen,i Harlingen,1,
 724443,Košice,i Košice,1,
@@ -885,7 +885,7 @@ geonameid,name,in_phrase,decl_ok,note
 3030985,Bourg-lès-Valence,i Bourg-lès-Valence,1,
 3038266,Albertville,i Albertville,1,
 2740313,Covilhã,i Covilhã,1,
-2692969,Malmö,i Malmö,1,
+2692969,Malmø,i Malmø,1,R-DA: dansk eksonym
 2855935,Ottobrunn,i Ottobrunn,1,
 2857185,Opladen,i Opladen,1,
 2882440,Künzell,i Künzell,1,
@@ -1123,7 +1123,7 @@ geonameid,name,in_phrase,decl_ok,note
 3020996,Douarnenez,i Douarnenez,1,
 3031133,Boulogne-sur-Mer,i Boulogne-sur-Mer,1,
 2653822,Cardiff,i Cardiff,1,
-2463679,Corfu,i Corfu,1,latinsk form fra name_en
+2463679,Korfu,i Korfu,1,R-DA: dansk eksonym
 259245,Kos,i Kos,1,latinsk form fra name_en
 261604,Kalamata,i Kalamata,1,latinsk form fra name_en
 3169272,Riva del Garda,i Riva del Garda,1,
@@ -2260,7 +2260,7 @@ geonameid,name,in_phrase,decl_ok,note
 2646557,Horsham,i Horsham,1,
 2653755,Carmarthen,i Carmarthen,1,
 253394,Sparta,i Sparta,1,latinsk form fra name_en
-255274,Piraeus,i Piraeus,1,latinsk form fra name_en
+255274,Piræus,i Piræus,1,R-DA: dansk eksonym
 256598,Nea Makri,i Nea Makri,1,latinsk form fra name_en
 258463,Livadeia,i Livadeia,1,latinsk form fra name_en
 265252,Amaliada,i Amaliada,1,latinsk form fra name_en
@@ -2389,7 +2389,7 @@ geonameid,name,in_phrase,decl_ok,note
 5391959,San Francisco,i San Francisco,1,
 4180439,Atlanta,i Atlanta,1,
 4726206,San Antonio,i San Antonio,1,
-1819729,Hong Kong,i Hong Kong,1,latinsk form fra name_en
+1819729,Hongkong,i Hongkong,1,R-DA: som landenavnet
 5128581,New York City,i New York City,1,
 4347778,Baltimore,i Baltimore,1,
 5574991,Boulder,i Boulder,1,
@@ -3016,7 +3016,7 @@ geonameid,name,in_phrase,decl_ok,note
 5925975,Collingwood,i Collingwood,1,
 6139289,Salaberry-de-Valleyfield,i Salaberry-de-Valleyfield,1,
 6166142,Thunder Bay,i Thunder Bay,1,
-112931,Tehran,i Tehran,1,latinsk form fra name_en
+112931,Teheran,i Teheran,1,R-DA: dansk eksonym
 2187404,Manukau City,i Manukau City,1,
 4068590,Huntsville,i Huntsville,1,
 4143861,Newark,i Newark,1,
@@ -3467,8 +3467,8 @@ geonameid,name,in_phrase,decl_ok,note
 598818,Jonava,i Jonava,1,
 1735227,Kuantan,i Kuantan,1,
 3153623,Haugesund,i Haugesund,1,
-1486209,Yekaterinburg,i Yekaterinburg,1,latinsk form fra name_en
-500096,Ryazan,i Ryazan,1,latinsk form fra name_en
+1486209,Jekaterinburg,i Jekaterinburg,1,R-DA: dansk translitteration
+500096,Rjasan,i Rjasan,1,R-DA: dansk translitteration
 542374,Krasnogorsk,i Krasnogorsk,1,latinsk form fra name_en
 4076598,Mobile,i Mobile,1,
 4154568,Estero,i Estero,1,
@@ -3911,7 +3911,7 @@ geonameid,name,in_phrase,decl_ok,note
 3177090,Ferrara,i Ferrara,1,
 3178229,Como,i Como,1,
 3182164,Bergamo,i Bergamo,1,
-456172,Rīga,i Rīga,1,
+456172,Riga,i Riga,1,R-DA: dansk eksonym
 1749822,Puchong,i Puchong,1,
 3147474,Lillehammer,i Lillehammer,1,
 3155573,Gjøvik,i Gjøvik,1,
@@ -4282,7 +4282,7 @@ geonameid,name,in_phrase,decl_ok,note
 2654730,Bridgwater,i Bridgwater,1,
 2656406,Banbury,i Banbury,1,
 2656946,Ashington,i Ashington,1,
-252910,Thebes,i Thebes,1,latinsk form fra name_en
+252910,Theben,i Theben,1,R-DA: dansk eksonym
 260183,Chaidari,i Chaidari,1,latinsk form fra name_en
 265488,Acharnes,i Acharnes,1,latinsk form fra name_en
 3046526,Pécs,i Pécs,1,
@@ -4512,7 +4512,7 @@ geonameid,name,in_phrase,decl_ok,note
 2740174,Custóias,i Custóias,1,
 2742493,Bairro Novo,i Bairro Novo,1,
 2742611,Aveiro,i Aveiro,1,
-501175,Rostov-on-Don,i Rostov-on-Don,1,latinsk form fra name_en
+501175,Rostov ved Don,i Rostov ved Don,1,R-DA: dansk eksonym
 542420,Krasnodar,i Krasnodar,1,latinsk form fra name_en
 2677234,Skövde,i Skövde,1,
 3056459,Zvolen,i Zvolen,1,
@@ -5069,7 +5069,7 @@ geonameid,name,in_phrase,decl_ok,note
 2739788,Fafe,i Fafe,1,
 2742804,Arcos de Valdevez,i Arcos de Valdevez,1,
 662476,Voluntari,i Voluntari,1,
-520555,Nizhny Novgorod,i Nizhny Novgorod,1,latinsk form fra name_en
+520555,Nisjnij Novgorod,i Nisjnij Novgorod,1,R-DA: dansk translitteration
 3202781,Celje,i Celje,1,
 3057124,Trnava,i Trnava,1,
 3077170,Devínska Nová Ves,i Devínska Nová Ves,1,
@@ -5312,7 +5312,7 @@ geonameid,name,in_phrase,decl_ok,note
 3181928,Bologna,i Bologna,1,
 3182714,Asti,i Asti,1,
 1897000,Seongnam,i Seongnam,1,latinsk form fra name_en
-1821274,Macau,i Macau,1,latinsk form fra name_en
+1821274,Macao,i Macao,1,R-DA: som landenavnet
 1734634,Ipoh,i Ipoh,1,
 3147698,Levanger,i Levanger,1,
 2184155,Pukekohe East,i Pukekohe East,1,
@@ -5325,8 +5325,8 @@ geonameid,name,in_phrase,decl_ok,note
 2271772,Amadora,i Amadora,1,
 2732978,Valongo,i Valongo,1,
 2738348,Leça da Palmeira,i Leça da Palmeira,1,
-1488754,Tyumen,i Tyumen,1,latinsk form fra name_en
-493316,Shushary,i Shushary,1,latinsk form fra name_en
+1488754,Tjumen,i Tjumen,1,R-DA: dansk translitteration
+493316,Sjusjary,i Sjusjary,1,R-DA: dansk translitteration
 511565,Penza,i Penza,1,latinsk form fra name_en
 548602,Kingisepp,i Kingisepp,1,latinsk form fra name_en
 551487,Kazan,i Kazan,1,latinsk form fra name_en
