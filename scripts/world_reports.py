@@ -7,8 +7,9 @@ in the D1 table world_reports. This script is the daily decision step:
   2. take the reports still 'new', look up their sites in the K1 layer (pid -> point, confidence, gov bit) and cards
      (contract §4: number of sources, country, name, network)
   3. apply_rules(): spam -> rejected; Balkan/unknown pids -> left for a human; 2 independent "ne postoji/ne radi" on a
-     weak single-source site -> auto_hidden; 2 agreeing points within 150 m -> auto_moved; "nije javni" -> access
-     restricted; everything else stays 'new' with a queue reason
+     weak single-source site -> auto_hidden; 2 agreeing points within 150 m -> auto_moved; 2 independent "nije javni"
+     -> access restricted; a state-registry or confidence >= 70 site is never hidden, moved or restricted automatically;
+     everything else stays 'new' with a queue reason. Thresholds: DEFAULTS, overridable with --config rules.json
   4. POST the automatic decisions to /api/admin/svet {"auto": [...]} (skipped with --dry-run / --fixture-reports;
      only rows still 'new' change server-side, a human decision is never overwritten)
   5. write <out>/overrides.csv (pid,action,lat,lon,access,reason,decided_at — the latest decision per pid, merged with
@@ -16,7 +17,7 @@ in the D1 table world_reports. This script is the daily decision step:
 
   ADMIN_KEY=… python3 scripts/world_reports.py --api https://www.blokvolt.rs \
       --layer out/<date>/public_sites.geojsonseq --data out/<date>/ --out work/K6/run-<date>/ [--prev overrides.csv]
-      [--since <unix>] [--dry-run]
+      [--since <unix>] [--dry-run] [--config rules.json]
   python3 scripts/world_reports.py --fixture-reports scripts/qa/fixtures/svet/reports.json \
       --layer scripts/qa/fixtures/svet/layer.geojsonseq --data scripts/qa/fixtures/svet/data --out /tmp/k6
   python3 scripts/world_reports.py --selftest
@@ -38,8 +39,10 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+# thresholds (decision 18, 09.11.2026); override with --config rules.json, e.g. {"HIDE_MIN": 3}
 DEFAULTS = {'HIDE_MIN': 2, 'PROTECT_CONF': 70, 'MOVE_MAX_M': 150, 'MOVE_AGREE_M': 50, 'MOVE_MIN': 2,
-            'ACCESS_MIN': 1, 'SPAM_REPEAT': 3}
+            'ACCESS_MIN': 2, 'SPAM_REPEAT': 3,
+            'MOVE_PROTECTED': False}   # automatic moves of state-registry / confidence ≥ 70 places: never (to the queue)
 BALKAN_PID = 900_000_000
 HIDE_TYPES = ('ne_postoji', 'ne_radi')
 TYPES = ('ne_postoji', 'ne_radi', 'lokacija', 'snaga', 'nije_javni', 'drugo')
@@ -171,6 +174,26 @@ def _agreeing_points(rows, site, cfg):
     return best, any_far
 
 
+def load_config(path=None):
+    """DEFAULTS, overridden by a JSON file {"KEY": value}; unknown keys or wrong types stop the run."""
+    cfg = dict(DEFAULTS)
+    if path:
+        with open(path, encoding='utf-8') as f:
+            extra = json.load(f)
+        for k, v in extra.items():
+            if k not in DEFAULTS:
+                raise SystemExit(f'--config: unknown key {k}')
+            want = DEFAULTS[k]
+            if isinstance(want, bool):
+                ok = isinstance(v, bool)
+            else:
+                ok = isinstance(v, (int, float)) and not isinstance(v, bool)
+            if not ok:
+                raise SystemExit(f'--config: {k} must be {type(DEFAULTS[k]).__name__}')
+            cfg[k] = v
+    return cfg
+
+
 def apply_rules(reports, sites, cfg=None):
     """reports: export rows with status 'new'. sites: pid -> {conf, nsrc, gov, lat, lon, cc, n, net} (missing = unknown).
     Returns one decision per report: status None means it stays 'new' and goes to the queue with `reason`."""
@@ -238,7 +261,11 @@ def apply_rules(reports, sites, cfg=None):
         loc = [r for r in rows if r.get('type') == 'lokacija']
         if loc:
             members, any_far = ([], False) if s.get('lat') is None else _agreeing_points(loc, s, cfg)
-            if len(members) >= cfg['MOVE_MIN']:
+            if protected and not cfg['MOVE_PROTECTED']:
+                # decision 18: a state-registry or confidence ≥ 70 place is never moved automatically
+                for r in loc:
+                    out[r['id']] = _decision(r, reason='gov_registry')
+            elif len(members) >= cfg['MOVE_MIN']:
                 alat = round(sum(float(m['lat']) for m in members) / len(members), 6)
                 alon = round(sum(float(m['lon']) for m in members) / len(members), 6)
                 ids = {m['id'] for m in members}
@@ -596,7 +623,9 @@ def run(args, env=None):
     sites = site_info(layer, cards, cards_obj.gov_sources if cards_obj else ())
     log(f'new reports: {len(new_rows)} on {len(pids)} pids; in layer {len(layer)}, with card {len(cards)}')
 
-    decisions = apply_rules(new_rows, sites, None)
+    cfg = load_config(getattr(args, 'config', None))
+    log('rules: ' + ', '.join(f'{k}={v}' for k, v in sorted(cfg.items())))
+    decisions = apply_rules(new_rows, sites, cfg)
     items = auto_items(decisions)
     if items and not dry:
         n = post_auto(args.api, key, items)
@@ -667,6 +696,7 @@ def main(argv=None):
     ap.add_argument('--since', type=int, default=0, help='export rows created or decided since this unix time')
     ap.add_argument('--dry-run', action='store_true', help='compute and write files, do not POST')
     ap.add_argument('--fixture-reports', help='export JSON {"reports": [...]} instead of the API (implies --dry-run)')
+    ap.add_argument('--config', help='JSON file overriding rule thresholds (keys of DEFAULTS)')
     ap.add_argument('--selftest', action='store_true')
     a = ap.parse_args(argv)
     if a.selftest:

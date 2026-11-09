@@ -153,7 +153,7 @@ def main():
         'admin_move': pid('DE', 'lo1', 3), 'conf70': pid('DE', 'hi1', 0), 'gov': pid('NL', 'gov1', 0),
         'multi': pid('DE', 'multi', 0),
         'move': pid('FR', 'lo1', 0), 'move_disagree': pid('FR', 'lo1', 1), 'move_far': pid('FR', 'lo1', 2),
-        'move_single': pid('FR', 'hi1', 0),
+        'move_single': pid('FR', 'lo1', 3),
         'access': pid('NL', 'lo1', 0), 'access_protected': pid('NL', 'hi1', 0), 'snaga': pid('NL', 'lo1', 1),
         'drugo': pid('NL', 'multi', 0), 'undo_access': pid('NL', 'lo1', 2), 'old_spam': pid('NL', 'hi1', 1),
         'spam_link': pid('US', 'lo1', 0), 'spam_rude_sr': pid('US', 'lo1', 1), 'spam_rude_ru': pid('US', 'lo1', 2),
@@ -211,6 +211,11 @@ def main():
     p1 = off(roles['move_single'], 20, 20)
     add(roles['move_single'], 'lokacija', ip(16), lat=p1[0], lon=p1[1])
     add(roles['access'], 'nije_javni', ip(17), text='Alleen voor bewoners van de garage', lang='en')
+    add(roles['access'], 'nije_javni', ip(41))                      # decision 18: access needs 2 independent reports
+    add(roles['snaga'], 'nije_javni', ip(42))                       # a single one waits
+    p1, p2 = off(roles['conf70'], 40, 0), off(roles['conf70'], 45, 6)
+    add(roles['conf70'], 'lokacija', ip(43), lat=p1[0], lon=p1[1])  # decision 18: agreeing points on a protected
+    add(roles['conf70'], 'lokacija', ip(44), lat=p2[0], lon=p2[1])  # place still go to the queue
     add(roles['access_protected'], 'nije_javni', ip(18))
     add(roles['snaga'], 'snaga', ip(19), text='Only 11 kW, not 22')
     add(roles['drugo'], 'drugo', ip(20), text='Kabl je oštećen', lang='sr')

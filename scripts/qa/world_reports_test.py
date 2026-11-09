@@ -143,10 +143,47 @@ class Rules(unittest.TestCase):
 
     # --- access, human
     def test_nije_javni_access(self):
+        # decision 18 (09.11): two independent reports, one is not enough
+        a, b = rep(1, 'nije_javni', 'a'), rep(1, 'nije_javni', 'b')
+        d = self.run_rules([a, b], {1: site()})
+        self.assertTrue(all((x['status'], x['rule'], x['action'], x['access']) ==
+                            ('accepted', 'access_reported', 'access', 'restricted_reported') for x in d.values()))
+
+    def test_nije_javni_single_waits(self):
         a = rep(1, 'nije_javni', 'a')
         x = self.run_rules([a], {1: site()})[a['id']]
-        self.assertEqual((x['status'], x['rule'], x['action'], x['access']),
-                         ('accepted', 'access_reported', 'access', 'restricted_reported'))
+        self.assertEqual((x['status'], x['reason']), (None, 'waiting'))
+        a2 = rep(1, 'nije_javni', 'a')            # the same fingerprint twice is still one person
+        d = self.run_rules([a, a2], {1: site()})
+        self.assertTrue(all(x['status'] is None and x['reason'] == 'waiting' for x in d.values()))
+
+    def test_move_protected_never_auto(self):
+        # decision 18: state registry or confidence >= 70 -> agreeing points still go to the queue
+        p1, p2 = off(40, 0), off(45, 5)
+        for s in (site(conf=70), site(gov=True)):
+            a, b = rep(1, 'lokacija', 'a', lat=p1[0], lon=p1[1]), rep(1, 'lokacija', 'b', lat=p2[0], lon=p2[1])
+            d = self.run_rules([a, b], {1: s})
+            self.assertTrue(all(x['status'] is None and x['reason'] == 'gov_registry' for x in d.values()), d)
+        # switchable in the config
+        a, b = rep(1, 'lokacija', 'a', lat=p1[0], lon=p1[1]), rep(1, 'lokacija', 'b', lat=p2[0], lon=p2[1])
+        d = wr.apply_rules([a, b], {1: site(conf=80)}, {'MOVE_PROTECTED': True})
+        self.assertTrue(all(x['status'] == 'auto_moved' for x in d))
+
+    def test_config_file(self):
+        import tempfile as _t
+        with _t.NamedTemporaryFile('w', suffix='.json', delete=False) as f:
+            json.dump({'HIDE_MIN': 3, 'ACCESS_MIN': 3}, f)
+        cfg = wr.load_config(f.name)
+        self.assertEqual((cfg['HIDE_MIN'], cfg['ACCESS_MIN'], cfg['MOVE_PROTECTED']), (3, 3, False))
+        self.assertEqual(wr.load_config(None), wr.DEFAULTS)
+        for bad in ({'NOPE': 1}, {'HIDE_MIN': 'two'}, {'MOVE_PROTECTED': 1}):
+            with open(f.name, 'w') as g:
+                json.dump(bad, g)
+            with self.assertRaises(SystemExit):
+                wr.load_config(f.name)
+        a, b = rep(1, 'ne_postoji', 'a'), rep(1, 'ne_radi', 'b')
+        d = wr.apply_rules([a, b], {1: site()}, {'HIDE_MIN': 3})
+        self.assertTrue(all(x['status'] is None and x['reason'] == 'waiting' for x in d))
 
     def test_nije_javni_protected(self):
         a = rep(1, 'nije_javni', 'a')
@@ -224,11 +261,11 @@ class Rules(unittest.TestCase):
     def test_auto_items_shape(self):
         p1, p2 = off(40, 0), off(45, 0)
         rows = [rep(1, 'lokacija', 'a', lat=p1[0], lon=p1[1]), rep(1, 'lokacija', 'b', lat=p2[0], lon=p2[1]),
-                rep(2, 'nije_javni', 'c'), rep(3, 'drugo', 'd')]
+                rep(2, 'nije_javni', 'c'), rep(2, 'nije_javni', 'e'), rep(3, 'drugo', 'd')]
         items = wr.auto_items(wr.apply_rules(rows, {1: site(), 2: site(), 3: site()}))
-        self.assertEqual(len(items), 3)
+        self.assertEqual(len(items), 4)
         self.assertEqual(set(items[0]), {'id', 'status', 'rule', 'action', 'alat', 'alon'})
-        self.assertEqual(items[2]['access'], 'restricted_reported')
+        self.assertEqual((items[2]['access'], items[3]['access']), ('restricted_reported', 'restricted_reported'))
 
 
 def drow(id_, pid, action, rule, decided_at, status='accepted', **kw):
@@ -387,6 +424,9 @@ class Cli(unittest.TestCase):
         for role, why in expect.items():
             self.assertIn(why, reasons.get(roles[role], []), role)
         self.assertIn('postponed', reasons[roles['drugo']])
+        self.assertIn('waiting', reasons[roles['snaga']])            # one "nije javni" waits (decision 18)
+        ov = {int(r['pid']): r for r in csv.DictReader((self.out / 'overrides.csv').open(encoding='utf-8'))}
+        self.assertNotIn(roles['conf70'], ov)                         # no automatic move of a protected place
         for role in ('hide', 'move', 'access', 'spam_link', 'spam_rude_sr', 'spam_rude_ru', 'spam_rude_en',
                      'repeat_a', 'repeat_b', 'repeat_c', 'ip_text_a', 'ip_text_b'):
             self.assertNotIn(roles[role], reasons, role)
@@ -396,7 +436,7 @@ class Cli(unittest.TestCase):
         st = json.loads((self.out / 'stats.json').read_text(encoding='utf-8'))
         self.assertEqual(st['by_status']['auto_hidden'], 2)
         self.assertEqual(st['by_status']['auto_moved'], 2)
-        self.assertEqual(st['by_status']['accepted'], 1)
+        self.assertEqual(st['by_status']['accepted'], 2)   # two independent "nije javni" (decision 18)
         self.assertEqual(sum(v for k, v in st['by_rule'].items() if k.startswith('spam_')), 9)
         self.assertEqual([x['pid'] for x in st['auto_hidden']], [roles['hide']])
         self.assertTrue({'DE', 'FR', 'NL', 'US'} <= set(st['by_country']))

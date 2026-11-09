@@ -100,6 +100,10 @@ try:
             return http_json('POST', API + '/api/svet/prijava', dict({'lang': 'en', 'hp': ''}, **body), {'x-qa-ip': ip})
         check(api_rep('10.20.0.2', {'pid': H, 'type': 'ne_radi'})[0] == 200, 'second, independent report for the weak place')
         check(api_rep('10.20.0.3', {'pid': A, 'type': 'nije_javni', 'text': 'Only for hotel guests.'})[0] == 200, 'nije_javni report')
+        check(api_rep('10.20.0.9', {'pid': A, 'type': 'nije_javni'})[0] == 200, 'second, independent nije_javni (decision 18: 2 needed)')
+        sg = sites[G]
+        for ip, d in (('10.20.0.10', 0.0003), ('10.20.0.11', 0.00033)):   # agreeing points on a protected place
+            api_rep(ip, {'pid': G, 'type': 'lokacija', 'lat': round(sg['lat'] + d, 6), 'lon': sg['lon']})
         sa = sites[AM]
         for ip, d in (('10.20.0.4', 0.0003), ('10.20.0.5', 0.00032)):
             api_rep(ip, {'pid': AM, 'type': 'lokacija', 'lat': round(sa['lat'] + d, 6), 'lon': sa['lon']})
@@ -108,7 +112,7 @@ try:
         api_rep('10.20.0.8', {'pid': H, 'type': 'drugo', 'text': 'Pogledajte www.example-shop.com'})
         st, ex = http_json('GET', API + '/api/admin/svet?view=export', headers={'authorization': 'Bearer ' + KEY})
         n_rows = len(ex['reports'])
-        check(st == 200 and n_rows == 9, 'D1 holds the 9 stored reports (spam among them, rejected)', n_rows)
+        check(st == 200 and n_rows == 12, 'D1 holds the 12 stored reports (spam among them, rejected)', n_rows)
 
         # 3. the owner on /admin/svet/ (served with the site's real CSP): accept the owner-move place
         adm = br.new_page(viewport={'width': 1440, 'height': 900})
@@ -148,7 +152,7 @@ try:
         check(ov.get(M, {}).get('action') == 'move' and ov[M]['lat'] and ov[M]['lon'], 'overrides: the owner move', ov.get(M))
         check(ov.get(A, {}).get('action') == 'access' and ov[A]['access'] == 'restricted_reported', 'overrides: access restricted', ov.get(A))
         check(ov.get(AM, {}).get('action') == 'move' and abs(float(ov[AM]['lat']) - (sa['lat'] + 0.00031)) < 2e-6, 'overrides: auto move to the mean point', ov.get(AM))
-        check(G not in ov, 'overrides: the protected place is not hidden')
+        check(G not in ov, 'overrides: the protected place is neither hidden nor moved (decision 18)')
         q = json.load(open(OUT / 'run1' / 'queue.json'))
         qtxt = json.dumps(q)
         check(str(G) in qtxt and 'gov_registry' in qtxt, 'queue: the protected place waits for the owner (gov_registry)')
