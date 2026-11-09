@@ -2334,6 +2334,8 @@ B2B guides 7 days, news, fuel prices, the index and letters at once). Before enq
 same slug (`status IN ('draft','queued','taken')`) and for a `failed` row of its kind in the last 7 days — a failed row is
 reported to the owner, not re-queued blindly.
 
+**Instructions for the tasks** (Russian, step by step): `docs/OUTBOX.md` (the same file in evolako-web).
+
 **Status for people.** `SELECT id, repo, kind, slug, publish_after, status, commit_sha, substr(result, -300) FROM outbox
 ORDER BY id DESC LIMIT 20` — the morning QA review reads it and reports failed rows.
 
