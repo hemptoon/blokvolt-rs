@@ -598,5 +598,30 @@
   "en": "Region (English)",
   "sr": "Region (na engleskom)",
   "ru": "Регион (на английском)"
+ },
+ "c_price": {
+  "en": "Price, ad hoc",
+  "sr": "Cena bez ugovora",
+  "ru": "Цена разово"
+ },
+ "c_price_kwh": {
+  "en": "per kWh, network list price",
+  "sr": "po kWh, cenovnik mreže",
+  "ru": "за кВт·ч, прайс сети"
+ },
+ "c_price_note": {
+  "en": "Price from {d}; this site may differ — check in the app or on the charger.",
+  "sr": "Cena od {d}; na ovoj lokaciji može da se razlikuje — proverite u aplikaciji ili na punjaču.",
+  "ru": "Цена от {d}; на этой точке может отличаться — проверьте в приложении или на зарядке."
+ },
+ "c_price_old": {
+  "en": "Price older than 12 months",
+  "sr": "Cena starija od 12 meseci",
+  "ru": "Цена старше 12 месяцев"
+ },
+ "c_price_more": {
+  "en": "All tariffs of the network",
+  "sr": "Sve tarife mreže",
+  "ru": "Все тарифы сети"
  }
 }

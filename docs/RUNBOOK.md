@@ -2444,6 +2444,40 @@ to `main`:
   it, so production is unchanged until a release of the world layer.
 - **Look at a preview:** the run summary lists the URLs; `curl -sI https://dev.blokvolt-com.pages.dev/ | grep -i robots`
   must show `noindex`. A preview differs from production in: noindex, demo API, tiles from GitHub Pages, the dev home page.
+### 3.42 World charging prices of blokvolt.com: index, price pages, map card (G3, since 09.11.2026)
+
+The price layer of the world .com (task G3 of the pool `claude/bvcom_tasks/`): the "European EV Charging Price Index",
+a page per country (`/charging-prices/<country>/`, SR `/sr/cene-punjenja/…`, RU `/ru/tseny-zaryadki/…`) and per network
+in a country, two CSV files (CC BY-NC 4.0, like the .rs CSV of 3.28) and the price line in the card of the world map
+(never on the pin, 3.11). Built by `gen_com.py` together with the world layer (`BV_WORLD_PAGES` set); noindex and out of
+the sitemap while `content/world/config.json` `public` is false. Code: `scripts/world_prices.py` (pages, index, CSV,
+map file), `scripts/world_prices_data.py` (data, validator). Strings: `content/world/strings_prices.json`.
+
+**Data (small, committed, edited by hand):**
+- `content/world/tariffs.json` — one row per network × country × plan (ad hoc / subscription): AC, DC, HPC, unit,
+  currency, `*_eur` (= price / `fx.json`), fees, monthly fee, VAT, `valid_from`, `source` (https), `source_kind`
+  (operator / news), `checked`, `verified_live`, `notes` (English, shown only on EN pages), `layer` (network keys of the
+  public layer, for the weights), `hpc_150`, `dc_is_hpc_col`, `exclude` (reason). First filled from T1 (evdb pool, 09.11).
+- `content/world/price_weights.json` — public places (confidence ≥ 50) per country and network key by class
+  (ac / dc50 / hpc), from the K1 layer `odbl-<date>.csv.gz`: `python3 scripts/world_prices_data.py weights <csv.gz>`
+  after every layer build (weekly, with K1 `run_public.sh`).
+- `content/world/home_electricity.json` — Eurostat nrg_pc_204 band DC, all taxes, latest semester (published end of
+  April and end of October); UK — Ofgem price cap (quarterly). `content/world/fx.json` — ECB reference rates of one day.
+
+**Method (shown on the hub, keep in sync):** ad hoc price per kWh with VAT; rows per minute/session, subscriptions,
+`exclude` rows and prices older than 12 months (`valid_from` or the date in a news URL) stay out of the index but stay on
+the pages. Classes AC / DC 50–149 / HPC ≥ 150 kW. Country value = average weighted by the network's places of the class
+when networks with a price hold ≥ 10 % of the class places whose network is known, else the median of ≥ 2 networks,
+else none. Europe = all weighted networks pooled. No ranking of networks; same columns for everyone (RUNBOOK §0).
+
+**Monthly update (first days of the month; the index carries the month of `tariffs.json` `updated`):**
+1. Re-check the tariffs: operator price pages first, news only when the operator publishes nothing. Change the row,
+   set `checked` (and `verified_live`), keep the old values in `notes` if they changed. Never from Google Maps,
+   PlugShare, Chargemap, Electromaps, ABRP or Zapmap (bvcom README §1.4).
+2. New ECB rates into `fx.json`; recompute `*_eur` (the validator stops the build when they differ by > 1 %).
+3. Home electricity: new Eurostat semester / new Ofgem quarter.
+4. `python3 scripts/world_prices_data.py validate` and `python3 scripts/world_prices.py selftest`, build, look at the hub.
+5. Old CSV files are not kept in the build: the month is in the file name; an archive of past months comes with G7.
 
 ## 4. Build and check
 

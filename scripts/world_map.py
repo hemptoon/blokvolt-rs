@@ -146,7 +146,8 @@ def build(G):
         if world_shell.active():
             NAV, WFT = world_shell.nav(lang), world_shell.footer(lang)
         wm_cfg = {'lang': lang, 'data_base': cfg['data_base'], 'reports_api': cfg['reports_api'], 'style': STYLE,
-                  'center': VIEW['center'], 'zoom': VIEW['zoom'], 'font': FONT, 'about': ABOUT[lang], 'download': DOWNLOAD[lang], 'pages': PAGES}
+                  'center': VIEW['center'], 'zoom': VIEW['zoom'], 'font': FONT, 'about': ABOUT[lang], 'download': DOWNLOAD[lang], 'pages': PAGES,
+                  'prices': (getattr(G, 'WORLD_PRICES', None) or {}).get('map_json', '')}   # G3: price line of the card
         ctx = dict(WORLD_FT=WFT, LOC=LOCS[lang], S=S, NAV=NAV, SWITCH=SWITCH, home=PAGES[lang] if lang != 'en' else '/', section='map',
                    COUNTRIES=G.countries, LOCALS=locals_, PAGES={'method': None}, T=T, title=T['title'],
                    description=T['description'], alts=alts, public=cfg['public'], noindex=False,

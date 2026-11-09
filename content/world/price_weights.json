@@ -1,0 +1,1068 @@
+{
+ "v": 1,
+ "about": "Public places (access public*, confidence ≥ 50) per country and per network key of the public layer, by power class: ac, dc50 (DC ≥ 50 kW), hpc (≥ 150 kW). Weights of the price index.",
+ "layer": "odbl-2026-11-09.csv.gz",
+ "date": "2026-11-09",
+ "totals": {
+  "NL": {
+   "all": 46528,
+   "ac": 44712,
+   "dc50": 1144,
+   "hpc": 801,
+   "nonet_ac": 21547,
+   "nonet_dc50": 395,
+   "nonet_hpc": 295
+  },
+  "BE": {
+   "all": 6695,
+   "ac": 4732,
+   "dc50": 618,
+   "hpc": 368,
+   "nonet_ac": 2935,
+   "nonet_dc50": 229,
+   "nonet_hpc": 128
+  },
+  "FR": {
+   "all": 32771,
+   "ac": 21180,
+   "dc50": 8228,
+   "hpc": 4486,
+   "nonet_ac": 14308,
+   "nonet_dc50": 4477,
+   "nonet_hpc": 1972
+  },
+  "DE": {
+   "all": 54601,
+   "ac": 40097,
+   "dc50": 12321,
+   "hpc": 7600,
+   "nonet_ac": 30220,
+   "nonet_dc50": 8114,
+   "nonet_hpc": 4992
+  },
+  "GB": {
+   "all": 14652,
+   "ac": 8856,
+   "dc50": 3121,
+   "hpc": 760,
+   "nonet_ac": 377,
+   "nonet_dc50": 164,
+   "nonet_hpc": 35
+  },
+  "LU": {
+   "all": 501,
+   "ac": 473,
+   "dc50": 17,
+   "hpc": 17,
+   "nonet_ac": 453,
+   "nonet_dc50": 12,
+   "nonet_hpc": 12
+  },
+  "ES": {
+   "all": 11780,
+   "ac": 6284,
+   "dc50": 5204,
+   "hpc": 1027,
+   "nonet_ac": 752,
+   "nonet_dc50": 77,
+   "nonet_hpc": 19
+  },
+  "SE": {
+   "all": 1703,
+   "ac": 1012,
+   "dc50": 573,
+   "hpc": 314,
+   "nonet_ac": 707,
+   "nonet_dc50": 232,
+   "nonet_hpc": 126
+  },
+  "AT": {
+   "all": 1793,
+   "ac": 845,
+   "dc50": 450,
+   "hpc": 298,
+   "nonet_ac": 578,
+   "nonet_dc50": 201,
+   "nonet_hpc": 129
+  },
+  "DK": {
+   "all": 991,
+   "ac": 487,
+   "dc50": 282,
+   "hpc": 211,
+   "nonet_ac": 97,
+   "nonet_dc50": 78,
+   "nonet_hpc": 50
+  },
+  "PL": {
+   "all": 1228,
+   "ac": 84,
+   "dc50": 167,
+   "hpc": 59,
+   "nonet_ac": 24,
+   "nonet_dc50": 19,
+   "nonet_hpc": 4
+  },
+  "NO": {
+   "all": 1551,
+   "ac": 283,
+   "dc50": 1206,
+   "hpc": 965,
+   "nonet_ac": 189,
+   "nonet_dc50": 556,
+   "nonet_hpc": 438
+  },
+  "IT": {
+   "all": 3104,
+   "ac": 795,
+   "dc50": 902,
+   "hpc": 419,
+   "nonet_ac": 281,
+   "nonet_dc50": 94,
+   "nonet_hpc": 28
+  },
+  "FI": {
+   "all": 4699,
+   "ac": 3499,
+   "dc50": 1168,
+   "hpc": 724,
+   "nonet_ac": 2879,
+   "nonet_dc50": 684,
+   "nonet_hpc": 475
+  },
+  "SI": {
+   "all": 215,
+   "ac": 100,
+   "dc50": 56,
+   "hpc": 23,
+   "nonet_ac": 19,
+   "nonet_dc50": 2,
+   "nonet_hpc": 0
+  },
+  "CH": {
+   "all": 1625,
+   "ac": 771,
+   "dc50": 319,
+   "hpc": 163,
+   "nonet_ac": 584,
+   "nonet_dc50": 182,
+   "nonet_hpc": 93
+  },
+  "IE": {
+   "all": 1202,
+   "ac": 720,
+   "dc50": 418,
+   "hpc": 144,
+   "nonet_ac": 9,
+   "nonet_dc50": 0,
+   "nonet_hpc": 0
+  },
+  "BG": {
+   "all": 668,
+   "ac": 155,
+   "dc50": 431,
+   "hpc": 216,
+   "nonet_ac": 1,
+   "nonet_dc50": 3,
+   "nonet_hpc": 0
+  },
+  "SK": {
+   "all": 531,
+   "ac": 98,
+   "dc50": 199,
+   "hpc": 109,
+   "nonet_ac": 38,
+   "nonet_dc50": 51,
+   "nonet_hpc": 36
+  },
+  "CZ": {
+   "all": 2041,
+   "ac": 915,
+   "dc50": 503,
+   "hpc": 55,
+   "nonet_ac": 737,
+   "nonet_dc50": 124,
+   "nonet_hpc": 17
+  },
+  "HU": {
+   "all": 915,
+   "ac": 431,
+   "dc50": 357,
+   "hpc": 128,
+   "nonet_ac": 45,
+   "nonet_dc50": 14,
+   "nonet_hpc": 2
+  },
+  "PT": {
+   "all": 3257,
+   "ac": 1489,
+   "dc50": 1088,
+   "hpc": 216,
+   "nonet_ac": 962,
+   "nonet_dc50": 417,
+   "nonet_hpc": 70
+  },
+  "LT": {
+   "all": 1428,
+   "ac": 720,
+   "dc50": 515,
+   "hpc": 315,
+   "nonet_ac": 310,
+   "nonet_dc50": 390,
+   "nonet_hpc": 249
+  },
+  "LV": {
+   "all": 95,
+   "ac": 4,
+   "dc50": 14,
+   "hpc": 7,
+   "nonet_ac": 2,
+   "nonet_dc50": 5,
+   "nonet_hpc": 3
+  },
+  "EE": {
+   "all": 196,
+   "ac": 43,
+   "dc50": 103,
+   "hpc": 49,
+   "nonet_ac": 39,
+   "nonet_dc50": 67,
+   "nonet_hpc": 34
+  },
+  "GR": {
+   "all": 3707,
+   "ac": 2825,
+   "dc50": 651,
+   "hpc": 157,
+   "nonet_ac": 1716,
+   "nonet_dc50": 358,
+   "nonet_hpc": 88
+  },
+  "IS": {
+   "all": 177,
+   "ac": 111,
+   "dc50": 59,
+   "hpc": 30,
+   "nonet_ac": 33,
+   "nonet_dc50": 25,
+   "nonet_hpc": 18
+  },
+  "CY": {
+   "all": 42,
+   "ac": 37,
+   "dc50": 5,
+   "hpc": 0,
+   "nonet_ac": 9,
+   "nonet_dc50": 0,
+   "nonet_hpc": 0
+  },
+  "RO": {
+   "all": 494,
+   "ac": 182,
+   "dc50": 172,
+   "hpc": 42,
+   "nonet_ac": 6,
+   "nonet_dc50": 15,
+   "nonet_hpc": 8
+  },
+  "MT": {
+   "all": 3,
+   "ac": 1,
+   "dc50": 0,
+   "hpc": 0,
+   "nonet_ac": 0,
+   "nonet_dc50": 0,
+   "nonet_hpc": 0
+  },
+  "LI": {
+   "all": 10,
+   "ac": 4,
+   "dc50": 5,
+   "hpc": 2,
+   "nonet_ac": 1,
+   "nonet_dc50": 1,
+   "nonet_hpc": 1
+  },
+  "HR": {
+   "all": 483,
+   "ac": 118,
+   "dc50": 145,
+   "hpc": 34,
+   "nonet_ac": 118,
+   "nonet_dc50": 145,
+   "nonet_hpc": 34
+  }
+ },
+ "networks": {
+  "NL": {
+   "Allego": {
+    "all": 6944,
+    "ac": 6863,
+    "dc50": 41,
+    "hpc": 33
+   },
+   "Vattenfall": {
+    "all": 14245,
+    "ac": 14145,
+    "dc50": 90,
+    "hpc": 8
+   },
+   "Eneco": {
+    "all": 947,
+    "ac": 866,
+    "dc50": 78,
+    "hpc": 51
+   },
+   "Tesla": {
+    "all": 72,
+    "ac": 35,
+    "dc50": 37,
+    "hpc": 37
+   },
+   "EVnetNL": {
+    "all": 47,
+    "ac": 45,
+    "dc50": 1,
+    "hpc": 0
+   },
+   "EVBox": {
+    "all": 77,
+    "ac": 68,
+    "dc50": 4,
+    "hpc": 3
+   },
+   "Shell Recharge": {
+    "all": 239,
+    "ac": 74,
+    "dc50": 134,
+    "hpc": 116
+   },
+   "ChargePoint": {
+    "all": 72,
+    "ac": 64,
+    "dc50": 5,
+    "hpc": 4
+   },
+   "InCharge": {
+    "all": 1,
+    "ac": 0,
+    "dc50": 1,
+    "hpc": 0
+   },
+   "TotalEnergies": {
+    "all": 1,
+    "ac": 1,
+    "dc50": 0,
+    "hpc": 0
+   }
+  },
+  "BE": {
+   "Allego": {
+    "all": 1354,
+    "ac": 531,
+    "dc50": 60,
+    "hpc": 40
+   },
+   "Electra": {
+    "all": 63,
+    "ac": 0,
+    "dc50": 54,
+    "hpc": 47
+   },
+   "TotalEnergies": {
+    "all": 9,
+    "ac": 5,
+    "dc50": 4,
+    "hpc": 4
+   }
+  },
+  "DE": {
+   "Allego": {
+    "all": 795,
+    "ac": 333,
+    "dc50": 453,
+    "hpc": 358
+   },
+   "Tesla": {
+    "all": 422,
+    "ac": 162,
+    "dc50": 255,
+    "hpc": 231
+   },
+   "ladenetz.de": {
+    "all": 1126,
+    "ac": 1006,
+    "dc50": 114,
+    "hpc": 41
+   },
+   "Shell Recharge": {
+    "all": 688,
+    "ac": 286,
+    "dc50": 385,
+    "hpc": 343
+   },
+   "Ionity": {
+    "all": 102,
+    "ac": 8,
+    "dc50": 80,
+    "hpc": 54
+   },
+   "Innogy": {
+    "all": 1301,
+    "ac": 1176,
+    "dc50": 119,
+    "hpc": 55
+   },
+   "Stromnetz Hamburg": {
+    "all": 471,
+    "ac": 431,
+    "dc50": 40,
+    "hpc": 37
+   },
+   "Vattenfall": {
+    "all": 44,
+    "ac": 18,
+    "dc50": 25,
+    "hpc": 23
+   },
+   "E.ON": {
+    "all": 508,
+    "ac": 360,
+    "dc50": 146,
+    "hpc": 58
+   },
+   "Aral pulse": {
+    "all": 75,
+    "ac": 1,
+    "dc50": 73,
+    "hpc": 73
+   },
+   "EnBW": {
+    "all": 806,
+    "ac": 426,
+    "dc50": 373,
+    "hpc": 226
+   },
+   "Pfalzwerke": {
+    "all": 490,
+    "ac": 101,
+    "dc50": 388,
+    "hpc": 279
+   },
+   "EnerCity": {
+    "all": 643,
+    "ac": 588,
+    "dc50": 53,
+    "hpc": 18
+   },
+   "Lidl": {
+    "all": 361,
+    "ac": 95,
+    "dc50": 234,
+    "hpc": 17
+   },
+   "ubitricity": {
+    "all": 667,
+    "ac": 623,
+    "dc50": 2,
+    "hpc": 0
+   },
+   "MER": {
+    "all": 74,
+    "ac": 22,
+    "dc50": 48,
+    "hpc": 42
+   },
+   "ALDI SÜD": {
+    "all": 10,
+    "ac": 4,
+    "dc50": 6,
+    "hpc": 6
+   }
+  },
+  "FR": {
+   "Tesla": {
+    "all": 303,
+    "ac": 67,
+    "dc50": 228,
+    "hpc": 211
+   },
+   "Electra": {
+    "all": 21,
+    "ac": 4,
+    "dc50": 16,
+    "hpc": 15
+   },
+   "Ionity": {
+    "all": 114,
+    "ac": 1,
+    "dc50": 110,
+    "hpc": 109
+   },
+   "Atlante": {
+    "all": 134,
+    "ac": 0,
+    "dc50": 134,
+    "hpc": 131
+   },
+   "Freshmile": {
+    "all": 1418,
+    "ac": 1010,
+    "dc50": 236,
+    "hpc": 38
+   },
+   "Qovoltis": {
+    "all": 583,
+    "ac": 524,
+    "dc50": 35,
+    "hpc": 14
+   },
+   "Izivia": {
+    "all": 1128,
+    "ac": 901,
+    "dc50": 97,
+    "hpc": 45
+   },
+   "e-totem": {
+    "all": 597,
+    "ac": 371,
+    "dc50": 220,
+    "hpc": 184
+   },
+   "TotalEnergies": {
+    "all": 256,
+    "ac": 4,
+    "dc50": 251,
+    "hpc": 242
+   },
+   "eborn": {
+    "all": 577,
+    "ac": 478,
+    "dc50": 56,
+    "hpc": 2
+   },
+   "ubitricity": {
+    "all": 8,
+    "ac": 8,
+    "dc50": 0,
+    "hpc": 0
+   },
+   "Zunder": {
+    "all": 169,
+    "ac": 124,
+    "dc50": 34,
+    "hpc": 27
+   },
+   "Révéo": {
+    "all": 835,
+    "ac": 720,
+    "dc50": 86,
+    "hpc": 27
+   },
+   "MObiVE": {
+    "all": 710,
+    "ac": 598,
+    "dc50": 30,
+    "hpc": 5
+   },
+   "Lidl": {
+    "all": 143,
+    "ac": 19,
+    "dc50": 124,
+    "hpc": 20
+   },
+   "bp pulse": {
+    "all": 3,
+    "ac": 0,
+    "dc50": 3,
+    "hpc": 3
+   }
+  },
+  "GB": {
+   "Pod Point": {
+    "all": 367,
+    "ac": 246,
+    "dc50": 121,
+    "hpc": 16
+   },
+   "GeniePoint": {
+    "all": 488,
+    "ac": 69,
+    "dc50": 406,
+    "hpc": 35
+   },
+   "Chargeplace Scotland": {
+    "all": 149,
+    "ac": 60,
+    "dc50": 65,
+    "hpc": 0
+   },
+   "Shell Recharge": {
+    "all": 1841,
+    "ac": 1763,
+    "dc50": 27,
+    "hpc": 8
+   },
+   "ubitricity": {
+    "all": 1232,
+    "ac": 9,
+    "dc50": 0,
+    "hpc": 0
+   },
+   "Believ": {
+    "all": 206,
+    "ac": 166,
+    "dc50": 2,
+    "hpc": 0
+   },
+   "MER": {
+    "all": 260,
+    "ac": 201,
+    "dc50": 44,
+    "hpc": 5
+   },
+   "InstaVolt": {
+    "all": 559,
+    "ac": 6,
+    "dc50": 342,
+    "hpc": 45
+   },
+   "Charge Your Car": {
+    "all": 213,
+    "ac": 171,
+    "dc50": 40,
+    "hpc": 0
+   },
+   "bp pulse": {
+    "all": 862,
+    "ac": 395,
+    "dc50": 466,
+    "hpc": 76
+   },
+   "Tesla": {
+    "all": 98,
+    "ac": 25,
+    "dc50": 70,
+    "hpc": 67
+   },
+   "Char.gy": {
+    "all": 2167,
+    "ac": 2167,
+    "dc50": 0,
+    "hpc": 0
+   },
+   "SureCharge": {
+    "all": 287,
+    "ac": 286,
+    "dc50": 1,
+    "hpc": 0
+   },
+   "Connected Kerb": {
+    "all": 1580,
+    "ac": 1566,
+    "dc50": 11,
+    "hpc": 0
+   },
+   "ESB ecars": {
+    "all": 130,
+    "ac": 117,
+    "dc50": 12,
+    "hpc": 0
+   },
+   "Ionity": {
+    "all": 83,
+    "ac": 0,
+    "dc50": 30,
+    "hpc": 25
+   },
+   "Lidl": {
+    "all": 24,
+    "ac": 1,
+    "dc50": 21,
+    "hpc": 0
+   },
+   "EZO": {
+    "all": 36,
+    "ac": 11,
+    "dc50": 24,
+    "hpc": 3
+   }
+  },
+  "SE": {
+   "MER": {
+    "all": 209,
+    "ac": 154,
+    "dc50": 48,
+    "hpc": 7
+   },
+   "Vattenfall": {
+    "all": 41,
+    "ac": 14,
+    "dc50": 22,
+    "hpc": 11
+   },
+   "E.ON": {
+    "all": 97,
+    "ac": 53,
+    "dc50": 41,
+    "hpc": 15
+   },
+   "InCharge": {
+    "all": 60,
+    "ac": 21,
+    "dc50": 38,
+    "hpc": 16
+   }
+  },
+  "DK": {
+   "E.ON": {
+    "all": 77,
+    "ac": 22,
+    "dc50": 24,
+    "hpc": 14
+   },
+   "CLEVER": {
+    "all": 157,
+    "ac": 56,
+    "dc50": 43,
+    "hpc": 37
+   },
+   "Monta": {
+    "all": 12,
+    "ac": 7,
+    "dc50": 5,
+    "hpc": 4
+   }
+  },
+  "IT": {
+   "Enel X Way": {
+    "all": 401,
+    "ac": 100,
+    "dc50": 148,
+    "hpc": 19
+   },
+   "Electra": {
+    "all": 28,
+    "ac": 0,
+    "dc50": 26,
+    "hpc": 25
+   },
+   "Be Charge": {
+    "all": 140,
+    "ac": 70,
+    "dc50": 69,
+    "hpc": 5
+   },
+   "Atlante": {
+    "all": 38,
+    "ac": 2,
+    "dc50": 24,
+    "hpc": 10
+   },
+   "BeCharged": {
+    "all": 2,
+    "ac": 0,
+    "dc50": 2,
+    "hpc": 1
+   },
+   "EnBW": {
+    "all": 1,
+    "ac": 0,
+    "dc50": 1,
+    "hpc": 1
+   }
+  },
+  "SI": {
+   "Allego": {
+    "all": 2,
+    "ac": 0,
+    "dc50": 0,
+    "hpc": 0
+   },
+   "Ionity": {
+    "all": 7,
+    "ac": 0,
+    "dc50": 7,
+    "hpc": 7
+   },
+   "SODO": {
+    "all": 19,
+    "ac": 0,
+    "dc50": 19,
+    "hpc": 1
+   },
+   "Gremo na elektriko": {
+    "all": 16,
+    "ac": 13,
+    "dc50": 1,
+    "hpc": 0
+   },
+   "Tesla": {
+    "all": 11,
+    "ac": 3,
+    "dc50": 8,
+    "hpc": 8
+   },
+   "MOL Plugee": {
+    "all": 1,
+    "ac": 0,
+    "dc50": 1,
+    "hpc": 0
+   },
+   "Energija+": {
+    "all": 5,
+    "ac": 4,
+    "dc50": 1,
+    "hpc": 0
+   },
+   "Petrol": {
+    "all": 36,
+    "ac": 20,
+    "dc50": 8,
+    "hpc": 7
+   },
+   "Elevat/MasterCharge": {
+    "all": 12,
+    "ac": 9,
+    "dc50": 2,
+    "hpc": 0
+   },
+   "Elevat/Imperla": {
+    "all": 1,
+    "ac": 1,
+    "dc50": 0,
+    "hpc": 0
+   },
+   "Lidl": {
+    "all": 10,
+    "ac": 0,
+    "dc50": 7,
+    "hpc": 0
+   },
+   "Elevat": {
+    "all": 6,
+    "ac": 3,
+    "dc50": 0,
+    "hpc": 0
+   },
+   "justCharge": {
+    "all": 1,
+    "ac": 1,
+    "dc50": 0,
+    "hpc": 0
+   },
+   "Elektro Ljubljana": {
+    "all": 4,
+    "ac": 3,
+    "dc50": 0,
+    "hpc": 0
+   },
+   "Gremonaelektriko.si": {
+    "all": 1,
+    "ac": 1,
+    "dc50": 0,
+    "hpc": 0
+   },
+   "Megatel": {
+    "all": 7,
+    "ac": 5,
+    "dc50": 0,
+    "hpc": 0
+   }
+  },
+  "IE": {
+   "ESB ecars": {
+    "all": 447,
+    "ac": 291,
+    "dc50": 156,
+    "hpc": 58
+   },
+   "EZO": {
+    "all": 304,
+    "ac": 125,
+    "dc50": 138,
+    "hpc": 4
+   },
+   "InstaVolt": {
+    "all": 6,
+    "ac": 1,
+    "dc50": 5,
+    "hpc": 4
+   }
+  },
+  "NO": {
+   "MER": {
+    "all": 177,
+    "ac": 21,
+    "dc50": 150,
+    "hpc": 103
+   }
+  },
+  "PL": {
+   "Greenway": {
+    "all": 828,
+    "ac": 30,
+    "dc50": 81,
+    "hpc": 15
+   },
+   "Greenway Polska": {
+    "all": 15,
+    "ac": 4,
+    "dc50": 8,
+    "hpc": 3
+   }
+  },
+  "SK": {
+   "Greenway": {
+    "all": 236,
+    "ac": 35,
+    "dc50": 96,
+    "hpc": 44
+   }
+  },
+  "FI": {
+   "VIRTA": {
+    "all": 250,
+    "ac": 201,
+    "dc50": 46,
+    "hpc": 16
+   }
+  },
+  "ES": {
+   "Acciona": {
+    "all": 404,
+    "ac": 103,
+    "dc50": 290,
+    "hpc": 20
+   },
+   "Mercadona": {
+    "all": 1037,
+    "ac": 1014,
+    "dc50": 23,
+    "hpc": 6
+   },
+   "Iberdrola bp pulse": {
+    "all": 2016,
+    "ac": 910,
+    "dc50": 1097,
+    "hpc": 258
+   },
+   "Zunder": {
+    "all": 451,
+    "ac": 265,
+    "dc50": 170,
+    "hpc": 94
+   },
+   "Repsol Ibil": {
+    "all": 1146,
+    "ac": 121,
+    "dc50": 986,
+    "hpc": 46
+   },
+   "eTecnic": {
+    "all": 566,
+    "ac": 428,
+    "dc50": 127,
+    "hpc": 11
+   },
+   "Electromaps": {
+    "all": 349,
+    "ac": 278,
+    "dc50": 68,
+    "hpc": 4
+   },
+   "EDP": {
+    "all": 363,
+    "ac": 286,
+    "dc50": 71,
+    "hpc": 32
+   },
+   "Endesa": {
+    "all": 1348,
+    "ac": 646,
+    "dc50": 685,
+    "hpc": 131
+   },
+   "Atlante": {
+    "all": 71,
+    "ac": 3,
+    "dc50": 67,
+    "hpc": 28
+   },
+   "InstaVolt": {
+    "all": 3,
+    "ac": 0,
+    "dc50": 3,
+    "hpc": 3
+   },
+   "Be Charge": {
+    "all": 3,
+    "ac": 2,
+    "dc50": 1,
+    "hpc": 0
+   }
+  },
+  "PT": {
+   "MOBI.E": {
+    "all": 355,
+    "ac": 236,
+    "dc50": 115,
+    "hpc": 21
+   },
+   "EDP": {
+    "all": 460,
+    "ac": 239,
+    "dc50": 112,
+    "hpc": 0
+   },
+   "Power Dot": {
+    "all": 104,
+    "ac": 8,
+    "dc50": 96,
+    "hpc": 16
+   },
+   "Iberdrola bp pulse": {
+    "all": 57,
+    "ac": 5,
+    "dc50": 52,
+    "hpc": 47
+   },
+   "Repsol Ibil": {
+    "all": 4,
+    "ac": 1,
+    "dc50": 3,
+    "hpc": 1
+   }
+  },
+  "AT": {
+   "SMATRICS Netz": {
+    "all": 63,
+    "ac": 45,
+    "dc50": 18,
+    "hpc": 8
+   },
+   "Innogy": {
+    "all": 1,
+    "ac": 1,
+    "dc50": 0,
+    "hpc": 0
+   }
+  },
+  "CZ": {
+   "Innogy": {
+    "all": 5,
+    "ac": 4,
+    "dc50": 1,
+    "hpc": 0
+   }
+  },
+  "GR": {
+   "PPC blue": {
+    "all": 801,
+    "ac": 571,
+    "dc50": 159,
+    "hpc": 42
+   }
+  }
+ }
+}
