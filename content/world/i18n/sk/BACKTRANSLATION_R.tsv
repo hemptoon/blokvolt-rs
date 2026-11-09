@@ -1,0 +1,40 @@
+strings_map.r_ok	Thanks for the report. Reports are checked once a week; the fix will show up after the next data update.	
+strings_map.ch_home	home / introduction	lowercase "úvod" (= intro/home page); fine as a nav crumb
+strings_map.odbl_note	The merged point data is available under the ODbL license.	
+strings_map.ch_nav_rs	Serbia – blokvolt.rs	
+strings_map.c_price_note	Price as of {d}; at this station it may differ – check it in the app or at the charging station.	"Cena z {d}" literally "price from {d}"; understandable as a date, but "Cena k {d}" would be more natural
+strings_shell.ft_about	About the project	
+strings_shell.about_title	About BlokVolt | BlokVolt	
+strings_shell.about_h1	About BlokVolt	
+strings_shell.about_p	BlokVolt is an independent information portal about EV charging, run by its founders Andrei and Danila in Novi Sad, Serbia. No paid placements and no rating of networks.	
+strings_shell.home_title	Charging stations in Europe and worldwide – map and open data | BlokVolt	
+strings_shell.home_h1	Where to charge an EV – in every country, city and network	
+strings_shell.map_p	All public charging locations from open registers, Open Charge Map and OpenStreetMap – without clustering, with filters by power, network and data reliability.	
+strings_shell.rs_card	Serbia – blokvolt.rs	
+strings_pages.d_city	Public charging locations {city_u} from open data: fast DC charging stations with power and connectors, networks, nearby towns.	
+strings_pages.t_city	EV charging stations {city_u}, {country}	identical to t_city_cc
+strings_pages.t_city_cc	EV charging stations {city_u}, {country}	identical to t_city
+strings_pages.p_city_cmp	Fast DC charging stations from 50 kW per 10 public locations: here {city}, national average ({country_name}) {country}.	terse and slightly awkward; "na 10 verejných miest" reads as "per 10 public locations" but could be misread as "at 10 public locations"
+strings_pages.mini_alt	Map of charging locations: grey dots – AC or unspecified power, blue – DC	
+strings_pages.nav_download	Download	
+strings_pages.t_near	 (nearby: {x})	leading space kept
+strings_pages.p_hub	Every country with at least 100 public locations of medium or high reliability has a page. The Western Balkans are covered by separate BlokVolt sites for each country.	
+strings_pages.pct	{x} %	
+strings_prices.h_chart	Fast charging and household electricity by country	
+strings_prices.no_prices_n	Number of verified networks: {n}; prices only in the apps or set by the owner of each location	
+strings_prices.h_more	More about charging {country_u}	
+strings_prices.lead_hub	Ad hoc prices – what a driver pays without a contract – of charging networks (networks: {nets}, countries: {countries}), weighted by the number of charging stations of each network in the country, next to the household electricity price. The methodology is open and the data can be downloaded.	grammatical but heavy: long dash insertion plus parenthetical before "weighted"
+strings_prices.h1_hub	European EV charging price index – {month}	
+strings_prices.table_note	Ad hoc prices incl. VAT, per kWh. {u} – median of networks, unweighted: networks with a known price have less than 10 % of the charging stations in the country whose network is known. – no index: fewer than two networks with a price.	convoluted: the clause "ktorých sieť je známa" (whose network is known) after "krajine" is hard to parse; the "– bez indexu" fragment only works if a "–" symbol is the legend key, otherwise reads as a stray dash
+strings_prices.serbia_note	Serbia and the region: prices from network apps every month, in dinars – price index on blokvolt.rs.	
+strings_prices.m1	Prices: the ad hoc price list of each network – what anyone pays without a contract or subscription – from the price list on the operator's own website, or, if the operator does not publish it, from a dated report that cites it. Prices incl. VAT, per kWh. Per-minute or per-session prices, prices older than 12 months and prices with an unclear source are shown on the country pages but are not counted in the index.	
+strings_prices.data_p	The index and each price list with its source can be downloaded as CSV. License: CC BY-NC 4.0 – free for non-commercial use with a link. Cite as: "BlokVolt, European EV Charging Price Index, {month}, blokvolt.com". For commercial use write to {email}.	
+strings_prices.cars_note	Consumption from the battery in mild weather, estimate (Open EV Data, © 2019 Chargeprice, MIT); in winter about 20–30 % more. Charging losses are not included. Public prices: country index; where there is none – "—".	
+strings_prices.pay_note	Exactly how to pay – by app, by card at the charging station or by QR code – is stated in the network's price list; the link is in the table.	
+strings_prices.too_few	Too few networks with a published ad hoc price for an index – see the country page	
+strings_map.h1	Charging map	
+strings_map.c_unnamed	Charging station	
+strings_map.copied	Copied	
+strings_map.acc_public_notice_required	Public, after notification	ambiguous: "po ohlásení" can read as "after it has been announced"; if meaning is "advance notice required", "po predchádzajúcom ohlásení" / "nutné vopred ohlásiť" is clearer
+strings_map.acc_private_notice_required	Private, after notification	same ambiguity as public variant
+strings_prices.th_home	At home	"Doma" = "at home" (adverb); fine as a column header if column means home charging/household electricity; "Domácnosť" would be more explicit for household tariff

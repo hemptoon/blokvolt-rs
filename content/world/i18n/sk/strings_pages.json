@@ -65,7 +65,7 @@
  "p6": "AC, výkon neuvedený",
  "p7": "DC, výkon neuvedený",
  "p_ac": "AC nabíjacie stanice: {ac}. Nie sú tu uvedené jednotlivo; mapa zobrazuje všetky.",
- "p_city_cmp": "Rýchle DC nabíjacie stanice od 50 kW na 10 verejných miest: tu {city}, celoštátny priemer ({country_name}) {country}.",
+ "p_city_cmp": "Rýchle DC nabíjacie stanice od 50 kW na každých 10 verejných miest: tu {city}, celoštátny priemer ({country_name}) {country}.",
  "p_dc": "Rýchle DC nabíjanie od 50 kW: {dc} ({pct_dc}); 150 kW a viac: {hpc}.",
  "p_gnet": "Sieť {net} je prítomná v {n_countries}.",
  "p_hub": "Stránku má každá krajina s najmenej 100 verejnými miestami strednej alebo vysokej spoľahlivosti. Západný Balkán pokrývajú samostatné stránky BlokVolt pre každú krajinu.",

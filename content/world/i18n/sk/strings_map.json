@@ -78,10 +78,10 @@
  "acc_public": "Verejné",
  "acc_public_membership": "Verejné, s kartou alebo aplikáciou",
  "acc_public_pay_at_location": "Verejné, platba na mieste",
- "acc_public_notice_required": "Verejné, po ohlásení",
+ "acc_public_notice_required": "Verejné, s ohlásením vopred",
  "acc_restricted_customers_staff": "Pre zákazníkov a zamestnancov",
  "acc_restricted_private": "Súkromné",
- "acc_private_notice_required": "Súkromné, po ohlásení",
+ "acc_private_notice_required": "Súkromné, s ohlásením vopred",
  "acc_unknown": "Prístup neznámy",
  "conn_other": "iný",
  "rep": "Nahlásiť chybu",
@@ -121,7 +121,7 @@
  "ch_nav_region": "Región (anglicky)",
  "c_price": "Cena, ad hoc",
  "c_price_kwh": "za kWh, cenníková cena siete",
- "c_price_note": "Cena z {d}; na tejto stanici sa môže líšiť – overte si ju v aplikácii alebo na nabíjacej stanici.",
+ "c_price_note": "Cena k {d}; na tejto stanici sa môže líšiť – overte si ju v aplikácii alebo na nabíjacej stanici.",
  "c_price_old": "Cena staršia ako 12 mesiacov",
  "c_price_more": "Všetky tarify siete"
 }
