@@ -1,0 +1,482 @@
+[
+ {
+  "file": "shell",
+  "key": "about_title",
+  "en": "About BlokVolt | BlokVolt",
+  "nb_checked": "Om BlokVolt | BlokVolt",
+  "back_en": "About BlokVolt | BlokVolt",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "zoom_note",
+  "en": "Zoomed out, the densest areas show only part of the points; zoom in to see all.",
+  "nb_checked": "Når kartet er zoomet ut, vises bare en del av punktene i de tetteste områdene; zoom inn for å se alle.",
+  "back_en": "When the map is zoomed out, only some of the points in the densest areas are shown; zoom in to see all.",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "data_err",
+  "en": "Map data could not be loaded. Try again later.",
+  "nb_checked": "Kartdataene kunne ikke lastes. Prøv igjen senere.",
+  "back_en": "The map data could not be loaded. Try again later.",
+  "remark": ""
+ },
+ {
+  "file": "prices",
+  "key": "europe_label",
+  "en": "Europe, weighted average of the networks with prices",
+  "nb_checked": "Europa, vektet gjennomsnitt av ladenettverkene med priser",
+  "back_en": "Europe, weighted average of the charging networks with prices",
+  "remark": "Ambiguous: 'ladenettverkene med priser' can read as 'networks that have prices' or 'average of the networks, with prices'; terse heading."
+ },
+ {
+  "file": "map",
+  "key": "ch_report",
+  "en": "Report a mistake",
+  "nb_checked": "Meld fra om en feil",
+  "back_en": "Report an error",
+  "remark": "Inconsistent with ids 22/26 'Meld fra om feil' (no 'en') for the same action."
+ },
+ {
+  "file": "map",
+  "key": "r_need_type",
+  "en": "Choose what is wrong.",
+  "nb_checked": "Velg hva som er feil.",
+  "back_en": "Choose what is wrong.",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "r_text",
+  "en": "Comment (optional)",
+  "nb_checked": "Kommentar (valgfritt)",
+  "back_en": "Comment (optional)",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "c_conf",
+  "en": "Data reliability",
+  "nb_checked": "Datapålitelighet",
+  "back_en": "Data reliability",
+  "remark": ""
+ },
+ {
+  "file": "prices",
+  "key": "st_nets",
+  "en": "Networks with prices",
+  "nb_checked": "Ladenettverk med priser",
+  "back_en": "Charging networks with prices",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "legend",
+  "en": "Legend",
+  "nb_checked": "Tegnforklaring",
+  "back_en": "Legend",
+  "remark": ""
+ },
+ {
+  "file": "shell",
+  "key": "method_p",
+  "en": "Records from different sources that describe one place are merged into one. Each place gets a data reliability from 0 to 100 (source type, a second source, freshness). A country page needs at least 100 public places with reliability 50 or more, a city page at least 20. The formula and the thresholds are explained here:",
+  "nb_checked": "Oppføringer fra ulike kilder som beskriver samme sted, slås sammen til én. Hvert sted får en datapålitelighet fra 0 til 100 (kildetype, en ekstra kilde, ferskhet). En landside krever minst 100 offentlige steder med pålitelighet 50 eller mer, en byside minst 20. Formelen og tersklene forklares her:",
+  "back_en": "Entries from different sources that describe the same location are merged into one. Each location gets a data reliability from 0 to 100 (source type, an extra source, freshness). A country page requires at least 100 public locations with reliability 50 or more, a city page at least 20. The formula and the thresholds are explained here:",
+  "remark": "'(kildetype, en ekstra kilde, ferskhet)' is a telegraphic list; 'en ekstra kilde' reads oddly as a factor name. 'får en datapålitelighet' slightly awkward (better 'en pålitelighetsscore')."
+ },
+ {
+  "file": "prices",
+  "key": "n_places_none",
+  "en": "The network's places carry no network name in the open data of this country yet.",
+  "nb_checked": "Nettverkets ladesteder har ennå ikke nettverksnavn i de åpne dataene for dette landet.",
+  "back_en": "The network's charging locations do not yet have network names in the open data for this country.",
+  "remark": "Tautological/contradictory: 'the network's sites have no network names'."
+ },
+ {
+  "file": "prices",
+  "key": "cars_note",
+  "en": "Consumption from the battery in mild weather, an estimate (Open EV Data, © 2019 Chargeprice, MIT); in winter about 20–30 % more. Losses while charging not included. Public prices: the country index; where there is none — “—”.",
+  "nb_checked": "Forbruk fra batteriet i mildt vær, et anslag (Open EV Data, © 2019 Chargeprice, MIT); om vinteren omtrent 20–30 % mer. Tap under lading er ikke medregnet. Offentlige priser: landsindeksen; der den mangler — «—».",
+  "back_en": "Consumption from the battery in mild weather, an estimate (Open EV Data, © 2019 Chargeprice, MIT); in winter about 20–30 % more. Losses during charging are not included. Public prices: the country index; where it is missing — «—».",
+  "remark": "Last sentence is telegraphic ('der den mangler — «—»'); meaning (a dash is shown) is only implied."
+ },
+ {
+  "file": "pages",
+  "key": "t_country",
+  "en": "EV charging stations {country_u}",
+  "nb_checked": "Ladestasjoner for elbil {country_u}",
+  "back_en": "Charging stations for electric cars {country_u}",
+  "remark": "Placeholder {country_u} must carry its own preposition (e.g. 'i Norge'); otherwise ungrammatical."
+ },
+ {
+  "file": "map",
+  "key": "src_com",
+  "en": "Community (OSM, OCM)",
+  "nb_checked": "Fellesskap (OSM, OCM)",
+  "back_en": "Community (OSM, OCM)",
+  "remark": "Bare 'Fellesskap' as a source label is slightly unnatural; 'Fellesskapsdata' would be clearer."
+ },
+ {
+  "file": "shell",
+  "key": "home_title",
+  "en": "EV charging stations in Europe and the world — map and open data | BlokVolt",
+  "nb_checked": "Ladestasjoner for elbil i Europa og verden — kart og åpne data | BlokVolt",
+  "back_en": "Charging stations for electric cars in Europe and the world — map and open data | BlokVolt",
+  "remark": ""
+ },
+ {
+  "file": "pages",
+  "key": "open_map",
+  "en": "Open on the map",
+  "nb_checked": "Åpne på kartet",
+  "back_en": "Open on the map",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "t_dc",
+  "en": "DC up to 149 kW",
+  "nb_checked": "DC opptil 149 kW",
+  "back_en": "DC up to 149 kW",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "t_ac",
+  "en": "AC up to 22 kW",
+  "nb_checked": "AC opptil 22 kW",
+  "back_en": "AC up to 22 kW",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "src_net",
+  "en": "Networks' websites",
+  "nb_checked": "Nettverkenes nettsider",
+  "back_en": "The networks' websites",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "r_nije_javni",
+  "en": "Not public",
+  "nb_checked": "Ikke offentlig",
+  "back_en": "Not public",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "r_email",
+  "en": "E-mail (optional)",
+  "nb_checked": "E-post (valgfritt)",
+  "back_en": "Email (optional)",
+  "remark": ""
+ },
+ {
+  "file": "pages",
+  "key": "report_map",
+  "en": "A mistake in a location can be reported with the “Report an error” button on its card on the map.",
+  "nb_checked": "En feil ved et ladested kan meldes med knappen «Meld fra om feil» på kortet i kartet.",
+  "back_en": "An error at a charging location can be reported with the button «Report error» on the card in the map.",
+  "remark": "Button name quoted here ('Meld fra om feil') differs from id 4 ('Meld fra om en feil'); 'på kortet i kartet' slightly odd ('på kartet' more usual)."
+ },
+ {
+  "file": "shell",
+  "key": "home_h1",
+  "en": "Where to charge an electric car — in every country, city and network",
+  "nb_checked": "Hvor du kan lade elbilen — i hvert land, hver by og hvert nettverk",
+  "back_en": "Where you can charge the electric car — in every country, every city and every network",
+  "remark": ""
+ },
+ {
+  "file": "prices",
+  "key": "n_station_page",
+  "en": "All {net} chargers {country_u}",
+  "nb_checked": "Alle ladestasjoner fra {net} {country_u}",
+  "back_en": "All charging stations from {net} {country_u}",
+  "remark": "'fra {net}' unnatural for a network's stations ('til {net}' or 'i {net}-nettverket' expected). Placeholder {country_u} must carry its own preposition (e.g. 'i Norge'); otherwise ungrammatical."
+ },
+ {
+  "file": "pages",
+  "key": "t_hub_quarter",
+  "en": "EV charging stations worldwide by country",
+  "nb_checked": "Ladestasjoner for elbil i hele verden etter land",
+  "back_en": "Charging stations for electric cars in the whole world by country",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "rep",
+  "en": "Report an error",
+  "nb_checked": "Meld fra om feil",
+  "back_en": "Report error",
+  "remark": ""
+ },
+ {
+  "file": "prices",
+  "key": "fx_note",
+  "en": "Sums in another currency are for reference, at the ECB reference rate of {date}. At the charger you pay in the local currency.",
+  "nb_checked": "Beløp i annen valuta er veiledende, etter ECBs referansekurs per {date}. Ved laderen betales det i lokal valuta.",
+  "back_en": "Amounts in other currencies are indicative, according to the ECB's reference rate as of {date}. At the charger, payment is made in local currency.",
+  "remark": ""
+ },
+ {
+  "file": "shell",
+  "key": "about_more",
+  "en": "How the data is collected and checked",
+  "nb_checked": "Slik samles og kontrolleres dataene",
+  "back_en": "How the data is collected and checked",
+  "remark": ""
+ },
+ {
+  "file": "prices",
+  "key": "d_country",
+  "en": "Public EV charging prices {country_u} by network: AC, DC and HPC, ad hoc and with a plan, household electricity, the cost of 100 km. Sources and dates for every price.",
+  "nb_checked": "Priser for offentlig elbillading {country_u} per ladenettverk: AC, DC og HPC, ad hoc og med abonnement, strømpris for husholdninger, kostnad per 100 km. Kilder og datoer for hver pris.",
+  "back_en": "Prices for public EV charging {country_u} per charging network: AC, DC and HPC, ad hoc and with subscription, electricity price for households, cost per 100 km. Sources and dates for each price.",
+  "remark": "Placeholder {country_u} must carry its own preposition (e.g. 'i Norge'); otherwise ungrammatical."
+ },
+ {
+  "file": "prices",
+  "key": "h_noprice",
+  "en": "Networks without a published price",
+  "nb_checked": "Ladenettverk uten publisert pris",
+  "back_en": "Charging networks without a published price",
+  "remark": ""
+ },
+ {
+  "file": "pages",
+  "key": "no_name",
+  "en": "No name in the data",
+  "nb_checked": "Ingen navn i dataene",
+  "back_en": "No name in the data",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "r_loc_hint",
+  "en": "Drag the marker to the right place on the map.",
+  "nb_checked": "Dra markøren til riktig sted på kartet.",
+  "back_en": "Drag the marker to the correct place on the map.",
+  "remark": ""
+ },
+ {
+  "file": "pages",
+  "key": "p5",
+  "en": "150 kW and more",
+  "nb_checked": "150 kW og mer",
+  "back_en": "150 kW and more",
+  "remark": ""
+ },
+ {
+  "file": "shell",
+  "key": "ft_sources",
+  "en": "Sources & licences",
+  "nb_checked": "Kilder og lisenser",
+  "back_en": "Sources and licences",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "ch_nav_rs",
+  "en": "Serbia — blokvolt.rs",
+  "nb_checked": "Serbia — blokvolt.rs",
+  "back_en": "Serbia — blokvolt.rs",
+  "remark": ""
+ },
+ {
+  "file": "prices",
+  "key": "m1",
+  "en": "Prices: the ad hoc tariff of each network — what anyone pays without a contract or a subscription — from the operator's own price page or, where the operator publishes none, from a dated news report quoting it. Prices with VAT, per kWh. Prices per minute or per session, prices older than 12 months and prices whose source is unclear are shown on the country pages but stay out of the index.",
+  "nb_checked": "Priser: ad hoc-tariffen til hvert ladenettverk — det alle betaler uten avtale eller abonnement — fra operatørens egen prisside eller, der operatøren ikke publiserer noen, fra en datert nyhetsartikkel som siterer den. Priser inkl. mva., per kWh. Priser per minutt eller per økt, priser eldre enn 12 måneder og priser med uklar kilde vises på landsidene, men holdes utenfor indeksen.",
+  "back_en": "Prices: the ad hoc tariff of each charging network — what everyone pays without an agreement or subscription — from the operator's own price page or, where the operator does not publish one, from a dated news article that cites it. Prices incl. VAT, per kWh. Per-minute or per-session prices, prices older than 12 months and prices with an unclear source are shown on the country pages but kept out of the index.",
+  "remark": "Minor ambiguity: 'som siterer den' — 'den' could refer to the tariff or the price page (intended: tariff)."
+ },
+ {
+  "file": "map",
+  "key": "description",
+  "en": "Public charging stations for electric cars across Europe and the world, from open data: power, networks, connectors and the source of every point.",
+  "nb_checked": "Offentlige ladestasjoner for elbil i Europa og resten av verden, fra åpne data: effekt, nettverk, kontakter og kilden til hvert punkt.",
+  "back_en": "Public charging stations for electric cars in Europe and the rest of the world, from open data: power, network, connectors and the source of each point.",
+  "remark": ""
+ },
+ {
+  "file": "prices",
+  "key": "h_table",
+  "en": "Prices by country",
+  "nb_checked": "Priser per land",
+  "back_en": "Prices per country",
+  "remark": ""
+ },
+ {
+  "file": "prices",
+  "key": "h_method",
+  "en": "How the index is made",
+  "nb_checked": "Slik lages indeksen",
+  "back_en": "How the index is made",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "osm_fix",
+  "en": "Correct it in OpenStreetMap too",
+  "nb_checked": "Rett det også i OpenStreetMap",
+  "back_en": "Correct it in OpenStreetMap too",
+  "remark": ""
+ },
+ {
+  "file": "prices",
+  "key": "t_country",
+  "en": "EV charging prices {country_u}",
+  "nb_checked": "Priser for elbillading {country_u}",
+  "back_en": "Prices for EV charging {country_u}",
+  "remark": "Placeholder {country_u} must carry its own preposition (e.g. 'i Norge'); otherwise ungrammatical."
+ },
+ {
+  "file": "prices",
+  "key": "pay_sub",
+  "en": "Plans: {list}.",
+  "nb_checked": "Abonnementer: {list}.",
+  "back_en": "Subscriptions: {list}.",
+  "remark": ""
+ },
+ {
+  "file": "pages",
+  "key": "dataset_desc",
+  "en": "Locations of public charging stations for electric vehicles {country_u}, merged from open sources (OpenStreetMap, Open Charge Map, national registries and others), with power, connectors, network, sources and a reliability score.",
+  "nb_checked": "Offentlige ladestasjoner for elbiler {country_u}, slått sammen fra åpne kilder (OpenStreetMap, Open Charge Map, nasjonale registre og andre), med effekt, kontakter, nettverk, kilder og en pålitelighetsscore.",
+  "back_en": "Public charging stations for electric cars {country_u}, merged from open sources (OpenStreetMap, Open Charge Map, national registers and others), with power, connectors, network, sources and a reliability score.",
+  "remark": "Placeholder {country_u} must carry its own preposition (e.g. 'i Norge'); otherwise ungrammatical."
+ },
+ {
+  "file": "prices",
+  "key": "dl_index",
+  "en": "Index by country (CSV)",
+  "nb_checked": "Indeks per land (CSV)",
+  "back_en": "Index per country (CSV)",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "copied",
+  "en": "Link copied",
+  "nb_checked": "Lenken er kopiert",
+  "back_en": "The link has been copied",
+  "remark": ""
+ },
+ {
+  "file": "prices",
+  "key": "noprice_p",
+  "en": "Their prices are shown only in the app, at the charger or are set by each site owner: {list}.",
+  "nb_checked": "Prisene deres vises bare i appen, ved laderen eller fastsettes av hver enkelt eier av ladestedet: {list}.",
+  "back_en": "Their prices are shown only in the app, at the charger, or are set by each individual owner of the charging location: {list}.",
+  "remark": "Broken parallelism: 'vises bare i appen, ved laderen eller fastsettes av...' mixes two verbs in one list; reads ungrammatical."
+ },
+ {
+  "file": "prices",
+  "key": "th_ratio",
+  "en": "DC vs home",
+  "nb_checked": "DC mot hjemme",
+  "back_en": "DC versus home",
+  "remark": "Very terse; 'mot' as 'vs.' is understandable but 'DC kontra hjemme' / 'DC vs. hjemmelading' would be clearer."
+ },
+ {
+  "file": "pages",
+  "key": "data_from",
+  "en": "Data as of {date}",
+  "nb_checked": "Data per {date}",
+  "back_en": "Data as of {date}",
+  "remark": ""
+ },
+ {
+  "file": "prices",
+  "key": "more_local",
+  "en": "Local section",
+  "nb_checked": "Lokal seksjon",
+  "back_en": "Local section",
+  "remark": "'Lokal seksjon' is an anglicism for a site section; 'Lokal side/del' more natural."
+ },
+ {
+  "file": "prices",
+  "key": "cars_note_net",
+  "en": "Consumption from the battery in mild weather, an estimate (Open EV Data, © 2019 Chargeprice, MIT); in winter about 20–30 % more. Losses while charging not included. Prices: the network's ad hoc tariff.",
+  "nb_checked": "Forbruk fra batteriet i mildt vær, et anslag (Open EV Data, © 2019 Chargeprice, MIT); om vinteren omtrent 20–30 % mer. Tap under lading er ikke medregnet. Priser: nettverkets ad hoc-tariff.",
+  "back_en": "Consumption from the battery in mild weather, an estimate (Open EV Data, © 2019 Chargeprice, MIT); in winter about 20–30 % more. Losses during charging are not included. Prices: the network's ad hoc tariff.",
+  "remark": ""
+ },
+ {
+  "file": "pages",
+  "key": "ft_region",
+  "en": "Serbia and the region",
+  "nb_checked": "Serbia og regionen",
+  "back_en": "Serbia and the region",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "src_bv",
+  "en": "BlokVolt (region)",
+  "nb_checked": "BlokVolt (regionen)",
+  "back_en": "BlokVolt (the region)",
+  "remark": ""
+ },
+ {
+  "file": "pages",
+  "key": "fast_more",
+  "en": "Showing {shown} of {total} fast chargers; the map shows all.",
+  "nb_checked": "Viser {shown} av {total} hurtigladere; kartet viser alle.",
+  "back_en": "Showing {shown} of {total} fast chargers; the map shows all.",
+  "remark": ""
+ },
+ {
+  "file": "pages",
+  "key": "dataset_name",
+  "en": "Public EV charging locations {country_u} (open data, ODbL)",
+  "nb_checked": "Offentlige ladesteder for elbil {country_u} (åpne data, ODbL)",
+  "back_en": "Public charging locations for electric cars {country_u} (open data, ODbL)",
+  "remark": "Placeholder {country_u} must carry its own preposition (e.g. 'i Norge'); otherwise ungrammatical."
+ },
+ {
+  "file": "prices",
+  "key": "out_excl",
+  "en": "not in the index",
+  "nb_checked": "ikke i indeksen",
+  "back_en": "not in the index",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "ch_country_menu",
+  "en": "Country and language",
+  "nb_checked": "Land og språk",
+  "back_en": "Country and language",
+  "remark": ""
+ },
+ {
+  "file": "map",
+  "key": "net_search",
+  "en": "Find a network",
+  "nb_checked": "Finn et nettverk",
+  "back_en": "Find a network",
+  "remark": ""
+ },
+ {
+  "file": "prices",
+  "key": "st_home",
+  "en": "Home electricity, per kWh",
+  "nb_checked": "Strøm hjemme, per kWh",
+  "back_en": "Electricity at home, per kWh",
+  "remark": ""
+ },
+ {
+  "file": "pages",
+  "key": "p_ac",
+  "en": "AC chargers: {ac}. They are not listed one by one here; the map shows them all.",
+  "nb_checked": "AC-ladere: {ac}. De listes ikke opp enkeltvis her; kartet viser alle.",
+  "back_en": "AC chargers: {ac}. They are not listed individually here; the map shows all.",
+  "remark": ""
+ }
+]
