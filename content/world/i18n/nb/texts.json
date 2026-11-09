@@ -1,0 +1,175 @@
+{
+ "about_data": {
+  "h1": "Om kartdataene",
+  "title": "Data for ladekartet: kilder, lisenser, pålitelighet | BlokVolt",
+  "description": "Hvor dataene i ladekartet kommer fra, hvilke lisenser de brukes under, og hvordan påliteligheten til hvert punkt beregnes.",
+  "lead": "Kartet bygger på åpne data, og hvert punkt viser hvor det kommer fra.",
+  "intro": "Kartet kombinerer åpne data fra mange kilder: offisielle registre, offentlige åpne data, OpenStreetMap, Open Charge Map og operatørenes egne sider med ladesteder. Oppføringene slås sammen, renses og endres, så et punkt på kartet kan avvike fra den opprinnelige oppføringen. De samme reglene gjelder for alle ladenettverk. Kartet rangerer ikke ladenettverk eller operatører.",
+  "osm_h": "OpenStreetMap og ODbL",
+  "osm_p": "Data © OpenStreetMap contributors, tilgjengelig under Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Den sammenslåtte databasen med punkter som inneholder data fra OpenStreetMap, er tilgjengelig under samme lisens på siden «Last ned åpne data»: {download_url}.",
+  "sources_h": "Kilder og lisenser",
+  "sources_note": "Bare kilder som faktisk finnes i de gjeldende dataene, er oppført, hver med sin lisens og påkrevde kildehenvisning.",
+  "conf_h": "Slik beregnes påliteligheten",
+  "conf_p": "Hvert punkt får en pålitelighetsverdi fra 0 til 100. Den samme formelen gjelder for alle ladenettverk. Verdien vurderer dataene om et sted, ikke ladenettverket eller tjenesten.",
+  "conf_rows": [
+   [
+    "Grunnverdi etter beste kildetype",
+    "Offisielt register eller offentlige åpne data 70; BlokVolts egen kontroll 65; OpenStreetMap 50; All The Places 45; Open Charge Map 40; Overture (fra All The Places) 40; annet 25"
+   ],
+   [
+    "Uavhengig kontroll",
+    "Hvis ingen av kildene er et register, kan en uavhengig automatisk kontroll av oppføringen heve grunnverdien, men aldri over det kontrollen gir"
+   ],
+   [
+    "Samsvar mellom kilder",
+    "+10 når to eller flere kilder er enige om stedet; ytterligere +5 med tre eller flere"
+   ],
+   [
+    "Ferskhet",
+    "+10 når siste bekreftelse er fra de siste 12 månedene; −15 når den er eldre enn 3 år"
+   ],
+   [
+    "Uenighet om land",
+    "−10 når kildene er uenige om landet"
+   ],
+   [
+    "Ikke i drift eller mistenkelige koordinater",
+    "Høyst 20"
+   ],
+   [
+    "Område",
+    "Verdien begrenses til 0–100; steder under 40 vises ikke på kartet eller sidene"
+   ]
+  ],
+  "conf_levels": [
+   [
+    "Høy",
+    "70–100",
+    "Bekreftet av en offisiell kilde eller av flere kilder, nylig oppdatert"
+   ],
+   [
+    "Middels",
+    "50–69",
+    "Sannsynlig, men bekreftet av færre kilder eller ikke nylig"
+   ],
+   [
+    "Lav",
+    "40–49",
+    "Én kilde eller eldre kilde; sjekk med operatøren før avreise"
+   ]
+  ],
+  "notes_h": "Merknader",
+  "notes": [
+   "Dataene leveres som de er, uten noen garanti for nøyaktighet, tilgjengelighet, pris eller kompatibilitet. Sjekk med operatøren eller på stedet før avreise.",
+   "Kortet for hvert punkt viser kilde, lisens og dato for siste oppdatering.",
+   "Navn på ladenettverk og varemerker tilhører sine eiere.",
+   "BlokVolt er ikke tilknyttet operatørene eller institusjonene som publiserer dataene, og de står ikke bak dette kartet.",
+   "Navn på privatpersoner vises ikke; private hjemmeladere er ikke på kartet.",
+   "Feil og ønske om retting eller fjerning kan meldes med knappen «Meld fra om feil» på punktets kort eller på e-post til {email}. Svar gis innen 30 dager."
+  ],
+  "licence_texts_h": "Lisenstekster",
+  "licence_texts": [
+   [
+    "CC BY 4.0",
+    "https://creativecommons.org/licenses/by/4.0/"
+   ],
+   [
+    "CC0 1.0",
+    "https://creativecommons.org/publicdomain/zero/1.0/"
+   ],
+   [
+    "ODbL 1.0",
+    "https://opendatacommons.org/licenses/odbl/1-0/"
+   ],
+   [
+    "Licence Ouverte 2.0",
+    "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+   ],
+   [
+    "CDLA Permissive 2.0",
+    "https://cdla.dev/permissive-2-0/"
+   ],
+   [
+    "Open Government Licence v2.0",
+    "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+   ]
+  ]
+ },
+ "download": {
+  "h1": "Last ned åpne data",
+  "title": "Last ned åpne data om ladepunkter | BlokVolt",
+  "description": "Ukentlig CSV-fil med offentlige ladepunkter: koordinater, ladenettverk, effekt, kontakter og kilder. Gratis under ODbL-lisensen.",
+  "lead": "Det offentlige laget av kartet er tilgjengelig som en gratis CSV-fil som oppdateres hver uke.",
+  "what_h": "Hva filen inneholder",
+  "what_p": "En ukentlig CSV-eksport av det offentlige laget av kartet: koordinater, ladenettverk, effekt, kontakter og kilder for hvert sted. Den inneholder data fra OpenStreetMap og publiseres derfor under Open Database License (ODbL) 1.0. Priser, kontroller gjort av teamet og BlokVolts rettelser for Balkan er ikke med i filen.",
+  "fields_h": "Kolonner",
+  "fields": [
+   [
+    "pid",
+    "Stabil ID for stedet"
+   ],
+   [
+    "lat",
+    "Breddegrad (WGS 84)"
+   ],
+   [
+    "lon",
+    "Lengdegrad (WGS 84)"
+   ],
+   [
+    "country",
+    "Landkode (ISO 3166-1 alpha-2)"
+   ],
+   [
+    "name",
+    "Navn på stedet"
+   ],
+   [
+    "network",
+    "Navn på ladenettverk eller operatør"
+   ],
+   [
+    "max_kw",
+    "Høyeste effekt på stedet, kW"
+   ],
+   [
+    "dc",
+    "1 hvis DC-hurtiglading er tilgjengelig, 0 hvis ikke"
+   ],
+   [
+    "power_class",
+    "Effektklasse for stedet"
+   ],
+   [
+    "connectors",
+    "Kontakttyper, kommaseparert"
+   ],
+   [
+    "points",
+    "Anslått antall ladepunkter"
+   ],
+   [
+    "access",
+    "Tilgangstype (offentlig, begrenset og lignende)"
+   ],
+   [
+    "sources",
+    "Kildenøkler, kommaseparert (se siden «Om dataene»)"
+   ],
+   [
+    "last_confirmed",
+    "Dato for siste bekreftelse fra en kilde"
+   ],
+   [
+    "confidence",
+    "Pålitelighetsverdi 0–100"
+   ]
+  ],
+  "licence_h": "Lisens",
+  "licence_p": "Filen er tilgjengelig under ODbL 1.0. Dataene kan deles, brukes til nye verk og tilpasses, forutsatt at «© OpenStreetMap contributors, BlokVolt» oppgis som kilde, og at en tilpasset database deles under samme lisens. Dataene skal forbli åpne: tekniske begrensninger som innskrenker disse rettighetene, skal ikke brukes. Fullstendig tekst: https://opendatacommons.org/licenses/odbl/1-0/",
+  "file_h": "Fil",
+  "file_missing": "Filen for denne uken er under klargjøring. Sjekk igjen senere.",
+  "attribution_h": "Slik oppgis kilden",
+  "attribution_p": "Ved bruk av dataene skal «© OpenStreetMap contributors, BlokVolt» vises med lenke til www.openstreetmap.org/copyright og til denne siden, og ODbL 1.0-lisensen skal oppgis. Data fra andre kilder beholder sin egen kildehenvisning, som er oppført på siden «Om dataene»."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "home": "/nb/",
+ "map": "/nb/kart/",
+ "hub": "/nb/ladestasjoner/",
+ "net": "nettverk",
+ "about": "om-dataene",
+ "download": "nedlasting",
+ "gnet": "/nb/ladenettverk/",
+ "prices": "/nb/ladepriser/",
+ "shell_about": "/nb/om/",
+ "sources": "/nb/kilder/",
+ "methodology": "/nb/metode/"
+}
