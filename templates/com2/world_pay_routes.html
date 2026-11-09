@@ -1,0 +1,10 @@
+{% extends 'world_pay_base.html' %}
+{% block pagehead %}{{ pm.head(kick, h1, lead, crumbs, checked) }}{% endblock %}
+{% block content %}
+<div class="sec"><div class="tw"><table class="wpay-t"><thead><tr><th scope="col">{{ T.th_route }}</th><th scope="col" class="num">{{ T.th_km }}</th><th scope="col" class="num">{{ T.th_fast }}</th><th scope="col" class="num">{{ T.th_gaps }}</th></tr></thead><tbody>
+{% for r in rows %}<tr><th scope="row"><a class="lnk" href="{{ r.url }}" translate="no">{{ r.name }}</a></th><td class="num">{{ r.km }}</td><td class="num">{{ r.n }}</td><td class="num">{{ r.gaps or '—' }}</td></tr>
+{% endfor %}</tbody></table></div></div>
+<div class="sec"><div class="sec-head"><h2 id="method">{{ T.h_method }}</h2></div><p class="note">{{ method }}</p></div>
+<div class="sec"><div class="chips"><a class="chip" href="{{ pay_url }}">{{ T.pay_more }}</a></div></div>
+<p class="note disc">{{ T.pay_disc }}</p>
+{% endblock %}

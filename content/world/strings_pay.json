@@ -1,0 +1,467 @@
+{
+ "nav_pay": {
+  "en": "How to pay",
+  "sr": "Kako platiti",
+  "ru": "Как платить"
+ },
+ "nav_routes": {
+  "en": "Routes",
+  "sr": "Rute",
+  "ru": "Маршруты"
+ },
+ "kick_pay": {
+  "en": "How to pay",
+  "sr": "Kako platiti",
+  "ru": "Как платить"
+ },
+ "kick_routes": {
+  "en": "Routes",
+  "sr": "Rute",
+  "ru": "Маршруты"
+ },
+ "t_pay_hub": {
+  "en": "How to pay for EV charging in Europe",
+  "sr": "Kako se plaća punjenje električnog automobila u Evropi",
+  "ru": "Как платить за зарядку электромобиля в Европе"
+ },
+ "h1_pay_hub": {
+  "en": "How to pay for EV charging in Europe",
+  "sr": "Kako se plaća punjenje u Evropi",
+  "ru": "Как платить за зарядку в Европе"
+ },
+ "d_pay_hub": {
+  "en": "Ad hoc card payment under EU rules, network apps and roaming apps and cards by country, with official coverage pages and the date they were checked.",
+  "sr": "Plaćanje karticom bez registracije po pravilima EU, aplikacije mreža i aplikacije i kartice za roming po zemljama, sa zvaničnim stranicama pokrivenosti i datumom provere.",
+  "ru": "Оплата картой без регистрации по правилам ЕС, приложения сетей, роуминговые приложения и карты по странам — с официальными страницами покрытия и датой проверки."
+ },
+ "lead_pay_hub": {
+  "en": "Three ways to pay: a bank card at the charger (ad hoc), the network's own app, or a roaming app or card that works across many networks. Coverage below comes only from the official pages of each app, with the date they were checked.",
+  "sr": "Tri načina plaćanja: bankovna kartica na punjaču (bez registracije), aplikacija same mreže ili aplikacija ili kartica za roming koja radi u više mreža. Pokrivenost ispod potiče samo sa zvaničnih stranica svake aplikacije, sa datumom provere.",
+  "ru": "Три способа оплаты: банковская карта прямо на зарядке (без регистрации), собственное приложение сети или роуминговое приложение или карта, которые работают во многих сетях. Покрытие ниже — только с официальных страниц каждого приложения, с датой проверки."
+ },
+ "t_pay_country": {
+  "en": "How to pay for EV charging {cu}",
+  "sr": "Kako se plaća punjenje {cu}",
+  "ru": "Как платить за зарядку {cu}"
+ },
+ "d_pay_country": {
+  "en": "Card payment at the charger, network apps, roaming apps and cards that work {cu}, typical prices and road tolls — with sources.",
+  "sr": "Plaćanje karticom na punjaču, aplikacije mreža, aplikacije i kartice za roming koje rade {cu}, tipične cene i putarine — sa izvorima.",
+  "ru": "Оплата картой на зарядке, приложения сетей, роуминговые приложения и карты, которые работают {cu}, типичные цены и платные дороги — с источниками."
+ },
+ "h_afir": {
+  "en": "Paying with a bank card (EU rule)",
+  "sr": "Plaćanje bankovnom karticom (pravilo EU)",
+  "ru": "Оплата банковской картой (правило ЕС)"
+ },
+ "afir_eu": {
+  "en": "{name} is in the EU, so the Alternative Fuels Infrastructure Regulation (AFIR) applies to public chargers there.",
+  "sr": "{name} je u EU, pa se na javne punjače primenjuje Uredba o infrastrukturi za alternativna goriva (AFIR).",
+  "ru": "{name} — страна ЕС, поэтому к публичным зарядкам там применяется регламент об инфраструктуре альтернативного топлива (AFIR)."
+ },
+ "afir_non": {
+  "en": "{name} is not an EU member: AFIR is EU law, and the rules below may not apply there. Check the network's own terms.",
+  "sr": "{name} nije članica EU: AFIR je propis EU i pravila ispod tamo možda ne važe. Proverite uslove same mreže.",
+  "ru": "{name} не входит в ЕС: AFIR — закон ЕС, и правила ниже там могут не действовать. Условия смотрите у самой сети."
+ },
+ "afir_src": {
+  "en": "Source: Regulation (EU) 2023/1804 on EUR-Lex, as of {date}.",
+  "sr": "Izvor: Uredba (EU) 2023/1804 na EUR-Lex, stanje na {date}.",
+  "ru": "Источник: регламент (ЕС) 2023/1804 на EUR-Lex, на {date}."
+ },
+ "h_nets": {
+  "en": "Largest networks and their apps",
+  "sr": "Najveće mreže i njihove aplikacije",
+  "ru": "Крупнейшие сети и их приложения"
+ },
+ "nets_note": {
+  "en": "Networks ordered by the number of DC places of 50 kW and more in the public layer. Most networks have their own app; the price page shows the ad hoc and app prices with sources.",
+  "sr": "Mreže su poređane po broju DC mesta od 50 kW i više u javnom sloju. Većina mreža ima svoju aplikaciju; stranica cena prikazuje cene bez registracije i u aplikaciji, sa izvorima.",
+  "ru": "Сети упорядочены по числу DC-мест от 50 кВт в публичном слое. У большинства сетей есть своё приложение; на странице цен — разовые цены и цены в приложении, с источниками."
+ },
+ "th_net": {
+  "en": "Network",
+  "sr": "Mreža",
+  "ru": "Сеть"
+ },
+ "th_dc": {
+  "en": "DC places ≥ 50 kW",
+  "sr": "DC mesta ≥ 50 kW",
+  "ru": "DC-мест ≥ 50 кВт"
+ },
+ "th_prices": {
+  "en": "Prices",
+  "sr": "Cene",
+  "ru": "Цены"
+ },
+ "th_page": {
+  "en": "Network page",
+  "sr": "Stranica mreže",
+  "ru": "Страница сети"
+ },
+ "lnk_prices": {
+  "en": "prices",
+  "sr": "cene",
+  "ru": "цены"
+ },
+ "lnk_page": {
+  "en": "places",
+  "sr": "mesta",
+  "ru": "места"
+ },
+ "h_apps": {
+  "en": "Roaming apps and cards",
+  "sr": "Aplikacije i kartice za roming",
+  "ru": "Роуминговые приложения и карты"
+ },
+ "apps_note": {
+  "en": "Same columns for every app. “Listed” means the app's own coverage page names the country; it does not mean every charger accepts it. No partner links.",
+  "sr": "Iste kolone za svaku aplikaciju. „Navedena” znači da zvanična stranica pokrivenosti aplikacije navodi zemlju; to ne znači da je prihvata svaki punjač. Bez partnerskih linkova.",
+  "ru": "Одинаковые колонки для всех приложений. «Указана» значит, что страна названа на официальной странице покрытия приложения; это не значит, что его принимает каждая зарядка. Партнёрских ссылок нет."
+ },
+ "th_app": {
+  "en": "App or card",
+  "sr": "Aplikacija ili kartica",
+  "ru": "Приложение или карта"
+ },
+ "th_cover": {
+  "en": "Country on the official coverage page",
+  "sr": "Zemlja na zvaničnoj stranici pokrivenosti",
+  "ru": "Страна на официальной странице покрытия"
+ },
+ "th_src": {
+  "en": "Source",
+  "sr": "Izvor",
+  "ru": "Источник"
+ },
+ "th_checked": {
+  "en": "Checked",
+  "sr": "Provereno",
+  "ru": "Проверено"
+ },
+ "cov_yes": {
+  "en": "Listed",
+  "sr": "Navedena",
+  "ru": "Указана"
+ },
+ "cov_no": {
+  "en": "Not listed",
+  "sr": "Nije navedena",
+  "ru": "Не указана"
+ },
+ "h_typical": {
+  "en": "Typical prices",
+  "sr": "Tipične cene",
+  "ru": "Типичные цены"
+ },
+ "typ_line": {
+  "en": "Price index for this country: AC {ac}, DC {dc}, HPC {hpc} per kWh (ad hoc, EUR).",
+  "sr": "Indeks cena za ovu zemlju: AC {ac}, DC {dc}, HPC {hpc} po kWh (bez registracije, EUR).",
+  "ru": "Индекс цен по стране: AC {ac}, DC {dc}, HPC {hpc} за кВт·ч (разово, EUR)."
+ },
+ "typ_none": {
+  "en": "Not enough official prices yet for an index of this country.",
+  "sr": "Za ovu zemlju još nema dovoljno zvaničnih cena za indeks.",
+  "ru": "Для индекса по этой стране пока мало официальных цен."
+ },
+ "typ_more": {
+  "en": "All prices and sources",
+  "sr": "Sve cene i izvori",
+  "ru": "Все цены и источники"
+ },
+ "h_road": {
+  "en": "Motorway tolls and vignettes",
+  "sr": "Putarine i vinjete",
+  "ru": "Платные дороги и виньетки"
+ },
+ "sys_vignette": {
+  "en": "Vignette (time-based) for motorways.",
+  "sr": "Vinjeta (vremenska) za autoputeve.",
+  "ru": "Виньетка (на срок) для автомагистралей."
+ },
+ "sys_distance": {
+  "en": "Toll by distance (toll stations or electronic toll).",
+  "sr": "Putarina po pređenom putu (naplatne stanice ili elektronska naplata).",
+  "ru": "Плата за проезд по расстоянию (пункты оплаты или электронная оплата)."
+ },
+ "sys_none": {
+  "en": "No motorway toll for cars.",
+  "sr": "Nema putarine za automobile na autoputevima.",
+  "ru": "Платы за автомагистрали для легковых нет."
+ },
+ "sys_mixed": {
+  "en": "Vignette and section tolls.",
+  "sr": "Vinjeta i putarine za pojedine deonice.",
+  "ru": "Виньетка и оплата отдельных участков."
+ },
+ "road_src": {
+  "en": "Official page",
+  "sr": "Zvanična stranica",
+  "ru": "Официальная страница"
+ },
+ "road_none": {
+  "en": "Not checked yet.",
+  "sr": "Još nije provereno.",
+  "ru": "Пока не проверено."
+ },
+ "h_conn": {
+  "en": "Connectors and places",
+  "sr": "Konektori i mesta",
+  "ru": "Разъёмы и места"
+ },
+ "conn_txt": {
+  "en": "Connector counts, fast chargers and networks of {name} are on the country page.",
+  "sr": "Broj konektora, brzi punjači i mreže — na stranici zemlje {name}.",
+  "ru": "Разъёмы, быстрые зарядки и сети — на странице страны {name}."
+ },
+ "conn_lnk": {
+  "en": "Charging stations in {name}",
+  "sr": "Punjači — {name}",
+  "ru": "Зарядки — {name}"
+ },
+ "pay_disc": {
+  "en": "Coverage of apps changes often. Before a trip, check the app itself. BlokVolt does not sell charging or cards and takes no money from apps or networks.",
+  "sr": "Pokrivenost aplikacija se često menja. Pre puta proverite u samoj aplikaciji. BlokVolt ne prodaje punjenje ni kartice i ne prima novac od aplikacija ni mreža.",
+  "ru": "Покрытие приложений часто меняется. Перед поездкой проверьте в самом приложении. BlokVolt не продаёт зарядку и карты и не получает денег от приложений и сетей."
+ },
+ "h_countries": {
+  "en": "Countries",
+  "sr": "Zemlje",
+  "ru": "Страны"
+ },
+ "h_apps_all": {
+  "en": "Apps and cards: official coverage",
+  "sr": "Aplikacije i kartice: zvanična pokrivenost",
+  "ru": "Приложения и карты: официальное покрытие"
+ },
+ "apps_n": {
+  "en": "countries listed: {n}",
+  "sr": "navedenih zemalja: {n}",
+  "ru": "указано стран: {n}"
+ },
+ "t_routes": {
+  "en": "EV road trips across the Balkans: fast chargers by route",
+  "sr": "Putovanje električnim automobilom kroz Balkan: brzi punjači po rutama",
+  "ru": "Поездки на электромобиле по Балканам: быстрые зарядки по маршрутам"
+ },
+ "h1_routes": {
+  "en": "EV routes across the Balkans",
+  "sr": "Rute električnim automobilom kroz Balkan",
+  "ru": "Маршруты на электромобиле по Балканам"
+ },
+ "d_routes": {
+  "en": "Fast chargers of 50 kW and more along popular routes to and across the Balkans, stops every 150 km or less, networks, apps, tolls and trip cost.",
+  "sr": "Brzi punjači od 50 kW i više duž popularnih ruta ka Balkanu i kroz Balkan, stanice na najviše 150 km, mreže, aplikacije, putarine i cena puta.",
+  "ru": "Быстрые зарядки от 50 кВт на популярных маршрутах на Балканы и по Балканам, остановки не реже чем через 150 км, сети, приложения, платные дороги и стоимость поездки."
+ },
+ "lead_routes": {
+  "en": "For each route: fast chargers (DC, 50 kW and more, reliability 70+) within {c} km of the road, a stop list with a step of at most {s} km, and the stretches where the data shows no such charger.",
+  "sr": "Za svaku rutu: brzi punjači (DC, 50 kW i više, pouzdanost 70+) do {c} km od puta, spisak stanica na najviše {s} km jedna od druge i deonice na kojima podaci ne pokazuju takav punjač.",
+  "ru": "Для каждого маршрута: быстрые зарядки (DC, от 50 кВт, надёжность 70+) не дальше {c} км от дороги, список остановок с шагом не больше {s} км и участки, где в данных такой зарядки нет."
+ },
+ "th_route": {
+  "en": "Route",
+  "sr": "Ruta",
+  "ru": "Маршрут"
+ },
+ "th_km": {
+  "en": "≈ km",
+  "sr": "≈ km",
+  "ru": "≈ км"
+ },
+ "th_fast": {
+  "en": "Fast chargers",
+  "sr": "Brzih punjača",
+  "ru": "Быстрых зарядок"
+ },
+ "th_gaps": {
+  "en": "Gaps > 150 km",
+  "sr": "Praznine > 150 km",
+  "ru": "Разрывы > 150 км"
+ },
+ "t_route": {
+  "en": "{a} to {b} by EV: fast chargers, tolls, cost",
+  "sr": "{a} — {b} električnim automobilom: brzi punjači, putarine, cena",
+  "ru": "{a} — {b} на электромобиле: быстрые зарядки, дороги, стоимость"
+ },
+ "h1_route": {
+  "en": "{a} — {b} by electric car",
+  "sr": "{a} — {b} električnim automobilom",
+  "ru": "{a} — {b} на электромобиле"
+ },
+ "d_route": {
+  "en": "Fast chargers along the {a} — {b} route, a stop every 150 km or less, networks and apps by country, tolls and the cost of the trip for three cars.",
+  "sr": "Brzi punjači na ruti {a} — {b}, stanica na najviše 150 km, mreže i aplikacije po zemljama, putarine i cena puta za tri automobila.",
+  "ru": "Быстрые зарядки на маршруте {a} — {b}, остановка не реже чем через 150 км, сети и приложения по странам, платные дороги и стоимость поездки для трёх машин."
+ },
+ "lead_route": {
+  "en": "About {km} km via {via}. Fast chargers within {c} km of the road: {n} (of them 150 kW and more: {h}).",
+  "sr": "Oko {km} km preko: {via}. Brzih punjača do {c} km od puta: {n} (od toga 150 kW i više: {h}).",
+  "ru": "Около {km} км через: {via}. Быстрых зарядок не дальше {c} км от дороги: {n} (из них от 150 кВт: {h})."
+ },
+ "h_stops": {
+  "en": "Suggested stops (at most 150 km apart)",
+  "sr": "Predložene stanice (najviše 150 km razmaka)",
+  "ru": "Остановки (не больше 150 км между ними)"
+ },
+ "stops_note": {
+  "en": "The farthest fast charger within 150 km of the previous stop, the more powerful one when two are close. Kilometres are an estimate along the route. Check the place on the map before you go.",
+  "sr": "Najdalji brzi punjač do 150 km od prethodne stanice, a kad su dva blizu — jači. Kilometri su procena duž rute. Proverite mesto na mapi pre polaska.",
+  "ru": "Самая дальняя быстрая зарядка в пределах 150 км от предыдущей остановки, а если две рядом — мощнее. Километры — оценка вдоль маршрута. Перед выездом проверьте место на карте."
+ },
+ "th_stop_km": {
+  "en": "km",
+  "sr": "km",
+  "ru": "км"
+ },
+ "th_place": {
+  "en": "Place",
+  "sr": "Mesto",
+  "ru": "Место"
+ },
+ "th_kw": {
+  "en": "kW",
+  "sr": "kW",
+  "ru": "кВт"
+ },
+ "th_pts": {
+  "en": "Points",
+  "sr": "Mesta za punjenje",
+  "ru": "Точек"
+ },
+ "th_map": {
+  "en": "Map",
+  "sr": "Mapa",
+  "ru": "Карта"
+ },
+ "lnk_map": {
+  "en": "on the map",
+  "sr": "na mapi",
+  "ru": "на карте"
+ },
+ "h_gaps": {
+  "en": "Stretches without a fast charger in the data",
+  "sr": "Deonice bez brzog punjača u podacima",
+  "ru": "Участки без быстрой зарядки в данных"
+ },
+ "gap_line": {
+  "en": "km {a} – {b}: no fast charger with reliability 70+ within {c} km of the road in the public layer.",
+  "sr": "km {a} – {b}: u javnom sloju nema brzog punjača pouzdanosti 70+ do {c} km od puta.",
+  "ru": "км {a} – {b}: в публичном слое нет быстрой зарядки с надёжностью 70+ ближе {c} км от дороги."
+ },
+ "gap_note": {
+  "en": "This is a gap in the data, not proof that there is no charger: chargers with lower reliability or a little farther from the road are on the map. Plan to arrive at this stretch with a full battery.",
+  "sr": "Ovo je praznina u podacima, a ne dokaz da punjača nema: punjači manje pouzdanosti ili malo dalje od puta su na mapi. Planirajte da na ovu deonicu stignete sa punom baterijom.",
+  "ru": "Это пробел в данных, а не доказательство, что зарядок нет: зарядки с меньшей надёжностью или чуть дальше от дороги есть на карте. Планируйте въезжать на этот участок с полной батареей."
+ },
+ "no_gaps": {
+  "en": "On this route the data shows a fast charger at least every 150 km.",
+  "sr": "Na ovoj ruti podaci pokazuju brzi punjač najmanje na svakih 150 km.",
+  "ru": "На этом маршруте в данных быстрая зарядка есть как минимум каждые 150 км."
+ },
+ "h_by_country": {
+  "en": "Networks, apps and tolls by country",
+  "sr": "Mreže, aplikacije i putarine po zemljama",
+  "ru": "Сети, приложения и дороги по странам"
+ },
+ "th_country": {
+  "en": "Country",
+  "sr": "Zemlja",
+  "ru": "Страна"
+ },
+ "th_top_nets": {
+  "en": "Networks on the route",
+  "sr": "Mreže na ruti",
+  "ru": "Сети на маршруте"
+ },
+ "th_apps_c": {
+  "en": "Roaming apps listing the country",
+  "sr": "Aplikacije za roming koje navode zemlju",
+  "ru": "Роуминговые приложения, где указана страна"
+ },
+ "th_road": {
+  "en": "Tolls",
+  "sr": "Putarine",
+  "ru": "Дороги"
+ },
+ "h_cost": {
+  "en": "Cost of the trip",
+  "sr": "Cena puta",
+  "ru": "Стоимость поездки"
+ },
+ "cost_note": {
+  "en": "All charging at public DC chargers at the country's DC index price, charging losses not counted. Where a country has no index yet, the European DC average ({eu}) is used: {miss}.",
+  "sr": "Celo punjenje na javnim DC punjačima po DC indeksu cena zemlje, bez gubitaka pri punjenju. Gde zemlja još nema indeks, uzima se evropski DC prosek ({eu}): {miss}.",
+  "ru": "Вся зарядка — на публичных DC-станциях по DC-индексу цен страны, без потерь при зарядке. Где у страны индекса пока нет, берётся средняя DC по Европе ({eu}): {miss}."
+ },
+ "cost_all": {
+  "en": "every country of the route has an index",
+  "sr": "sve zemlje rute imaju indeks",
+  "ru": "у всех стран маршрута индекс есть"
+ },
+ "th_car": {
+  "en": "Car",
+  "sr": "Automobil",
+  "ru": "Машина"
+ },
+ "th_cons": {
+  "en": "kWh / 100 km",
+  "sr": "kWh / 100 km",
+  "ru": "кВт·ч / 100 км"
+ },
+ "th_trip": {
+  "en": "Trip, EUR",
+  "sr": "Put, EUR",
+  "ru": "Поездка, EUR"
+ },
+ "h_season": {
+  "en": "Winter and summer",
+  "sr": "Zima i leto",
+  "ru": "Зима и лето"
+ },
+ "season": {
+  "en": "In winter the range drops and DC charging is slower with a cold battery: plan shorter steps, precondition the battery before a fast charger if the car can, and arrive at mountain passes with a reserve. In summer, the coast routes are busiest on weekends of July and August: chargers on the motorway can have queues, so a charger a few kilometres off the road can save time.",
+  "sr": "Zimi domet opada, a DC punjenje je sporije sa hladnom baterijom: planirajte kraće deonice, zagrejte bateriju pred brzi punjač ako auto to može i na planinske prevoje stižite sa rezervom. Leti su rute ka moru najopterećenije vikendom u julu i avgustu: na punjačima uz autoput moguće su gužve, pa punjač nekoliko kilometara od puta može da uštedi vreme.",
+  "ru": "Зимой запас хода падает, а DC-зарядка с холодной батареей медленнее: планируйте шаг короче, прогревайте батарею перед быстрой зарядкой, если машина это умеет, и подъезжайте к перевалам с запасом. Летом маршруты к морю загружены по выходным в июле и августе: на зарядках у трассы бывают очереди, и зарядка в нескольких километрах от дороги может сэкономить время."
+ },
+ "h_method": {
+  "en": "How this is calculated",
+  "sr": "Kako je izračunato",
+  "ru": "Как посчитано"
+ },
+ "method": {
+  "en": "The route is a chain of motorway towns; the distance is the straight segments between them plus {f} %, an estimate. Chargers come from the public layer of {date}: DC 50 kW and more, reliability 70 and more, public access, within {c} km of the route line. No live availability.",
+  "sr": "Ruta je niz gradova na autoputu; razdaljina je zbir pravih deonica između njih plus {f} %, procena. Punjači su iz javnog sloja od {date}: DC 50 kW i više, pouzdanost 70 i više, javni pristup, do {c} km od linije rute. Bez dostupnosti uživo.",
+  "ru": "Маршрут — цепочка городов на трассе; расстояние — сумма прямых отрезков между ними плюс {f} %, это оценка. Зарядки — из публичного слоя от {date}: DC от 50 кВт, надёжность от 70, публичный доступ, не дальше {c} км от линии маршрута. Живой занятости нет."
+ },
+ "routes_more": {
+  "en": "All routes",
+  "sr": "Sve rute",
+  "ru": "Все маршруты"
+ },
+ "pay_more": {
+  "en": "How to pay",
+  "sr": "Kako platiti",
+  "ru": "Как платить"
+ },
+ "checked": {
+  "en": "Data as of {date}",
+  "sr": "Podaci od {date}",
+  "ru": "Данные на {date}"
+ },
+ "via": {
+  "en": ", ",
+  "sr": ", ",
+  "ru": ", "
+ },
+ "cov_unk": {
+  "en": "Country list not published",
+  "sr": "Spisak zemalja nije objavljen",
+  "ru": "Список стран не опубликован"
+ },
+ "apps_unk": {
+  "en": "the official page names no country list",
+  "sr": "zvanična stranica ne navodi spisak zemalja",
+  "ru": "на официальной странице нет списка стран"
+ }
+}

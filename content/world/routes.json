@@ -1,0 +1,3339 @@
+{
+"v": 1,
+"layer_date": "2026-11-09",
+"rule": {
+"corridor_km": 5.0,
+"step_km": 150.0,
+"min_conf": 70,
+"power": "DC >= 50 kW",
+"road_factor": 1.15
+},
+"routes": [
+{
+"id": "munich-belgrade",
+"waypoints": [
+[
+"München",
+48.137,
+11.575
+],
+[
+"Salzburg",
+47.809,
+13.055
+],
+[
+"Villach",
+46.61,
+13.855
+],
+[
+"Ljubljana",
+46.056,
+14.506
+],
+[
+"Zagreb",
+45.815,
+15.982
+],
+[
+"Slavonski Brod",
+45.16,
+18.016
+],
+[
+"Beograd",
+44.787,
+20.457
+]
+],
+"km": 954,
+"km_straight": 830,
+"n_fast": 142,
+"n_hpc": 61,
+"gaps": [
+[
+551,
+728
+]
+],
+"stops": [
+{
+"pid": 418649,
+"km": 149.8,
+"off_km": 2.7,
+"lat": 47.68231,
+"lon": 13.10055,
+"cls": 5,
+"conf": 70,
+"net": null,
+"name": "Turmstrom Charging Station",
+"kw": 150.0,
+"cc": "AT",
+"pts": 2,
+"city": {
+"en": "Salzburg",
+"sr": "Salcburg",
+"ru": "Зальцбург"
+}
+},
+{
+"pid": 388665,
+"km": 295.6,
+"off_km": 3.0,
+"lat": 46.66546,
+"lon": 13.86078,
+"cls": 5,
+"conf": 70,
+"net": "Kelag",
+"name": "Kelag Charging Station",
+"kw": 160.0,
+"cc": "AT",
+"pts": 4,
+"city": {
+"en": "Villach",
+"sr": "Villach",
+"ru": "Филлах"
+}
+},
+{
+"pid": 326258,
+"km": 393.0,
+"off_km": 3.7,
+"lat": 46.02873,
+"lon": 14.47899,
+"cls": 5,
+"conf": 70,
+"net": "Petrol",
+"name": "Petrol Barje Jug",
+"kw": 250.0,
+"cc": "SI",
+"pts": 10,
+"city": {
+"en": "Ljubljana",
+"sr": "Ljubljana",
+"ru": "Любляна"
+}
+},
+{
+"pid": 900000348,
+"km": 532.1,
+"off_km": 3.8,
+"lat": 45.77044,
+"lon": 16.00382,
+"cls": 5,
+"conf": 70,
+"net": "Hrvatski Telekom (espoTs)",
+"name": "Konzum centar Sarajevska",
+"kw": 150.0,
+"cc": "HR",
+"pts": 2,
+"city": {
+"en": "Zagreb",
+"sr": "Zagreb",
+"ru": "Загреб"
+}
+},
+{
+"pid": 900000341,
+"km": 543.3,
+"off_km": 2.3,
+"lat": 45.78354,
+"lon": 16.15155,
+"cls": 5,
+"conf": 70,
+"net": "IONITY",
+"name": "Ionity Sop",
+"kw": 350.0,
+"cc": "HR",
+"pts": 4,
+"city": {
+"en": "Sesvete",
+"sr": "Sesvete",
+"ru": "Сесвете"
+}
+},
+{
+"pid": 900000506,
+"km": 550.9,
+"off_km": 3.3,
+"lat": 45.76709,
+"lon": 16.23363,
+"cls": 4,
+"conf": 70,
+"net": "Tesla Supercharger",
+"name": "Zagreb Supercharger",
+"kw": 120.0,
+"cc": "HR",
+"pts": 6,
+"city": {
+"en": "Sesvete",
+"sr": "Sesvete",
+"ru": "Сесвете"
+}
+},
+{
+"pid": 900000544,
+"km": 727.8,
+"off_km": 0.1,
+"lat": 45.16283,
+"lon": 18.00908,
+"cls": 5,
+"conf": 70,
+"net": null,
+"name": null,
+"kw": 150.0,
+"cc": "HR",
+"pts": 1,
+"city": {
+"en": "Slavonski Brod",
+"sr": "Slavonski Brod",
+"ru": "Славонски-Брод"
+}
+},
+{
+"pid": 900000365,
+"km": 818.5,
+"off_km": 3.9,
+"lat": 45.04533,
+"lon": 18.99974,
+"cls": 4,
+"conf": 70,
+"net": "ELEN (HEP)",
+"name": "ELEN Odmorište Spačva",
+"kw": 50.0,
+"cc": "HR",
+"pts": 6,
+"city": null
+}
+],
+"countries": [
+{
+"cc": "DE",
+"n": 74,
+"hpc": 37,
+"nets": [
+[
+"Comfortcharge",
+3
+],
+[
+"innogy",
+2
+],
+[
+"Tesla",
+2
+],
+[
+"Jolt",
+2
+],
+[
+"ladenetz.de",
+2
+],
+[
+"ALDI",
+2
+]
+]
+},
+{
+"cc": "AT",
+"n": 9,
+"hpc": 8,
+"nets": [
+[
+"IONITY",
+2
+],
+[
+"Tesla",
+2
+],
+[
+"Kelag",
+2
+],
+[
+"Mer",
+1
+],
+[
+"SMATRICS",
+1
+]
+]
+},
+{
+"cc": "SI",
+"n": 7,
+"hpc": 7,
+"nets": [
+[
+"Tesla",
+3
+],
+[
+"IONITY",
+2
+],
+[
+"Petrol",
+2
+]
+]
+},
+{
+"cc": "HR",
+"n": 32,
+"hpc": 7,
+"nets": [
+[
+"ELEN (HEP)",
+9
+],
+[
+"Petrol",
+4
+],
+[
+"MOL Plugee",
+2
+],
+[
+"Hrvatski Telekom (espoTs)",
+2
+],
+[
+"Tesla Supercharger",
+2
+],
+[
+"Monta",
+1
+]
+]
+},
+{
+"cc": "RS",
+"n": 20,
+"hpc": 2,
+"nets": [
+[
+"Orion eMobility",
+9
+],
+[
+"Charge&GO",
+6
+],
+[
+"Putevi Srbije",
+2
+],
+[
+"eDrive",
+2
+],
+[
+"Yesla",
+1
+]
+]
+}
+]
+},
+{
+"id": "vienna-belgrade",
+"waypoints": [
+[
+"Wien",
+48.208,
+16.373
+],
+[
+"Győr",
+47.687,
+17.65
+],
+[
+"Budapest",
+47.498,
+19.04
+],
+[
+"Kecskemét",
+46.906,
+19.692
+],
+[
+"Szeged",
+46.253,
+20.148
+],
+[
+"Subotica",
+46.1,
+19.667
+],
+[
+"Novi Sad",
+45.267,
+19.833
+],
+[
+"Beograd",
+44.787,
+20.457
+]
+],
+"km": 675,
+"km_straight": 587,
+"n_fast": 69,
+"n_hpc": 28,
+"gaps": [],
+"stops": [
+{
+"pid": 95106,
+"km": 121.5,
+"off_km": 4.8,
+"lat": 47.67664,
+"lon": 17.55306,
+"cls": 5,
+"conf": 75,
+"net": "IONITY",
+"name": "IONITY Győr",
+"kw": 400.0,
+"cc": "HU",
+"pts": 6,
+"city": {
+"en": "Győr",
+"sr": "Đer",
+"ru": "Дьёр"
+}
+},
+{
+"pid": 289292,
+"km": 258.8,
+"off_km": 3.3,
+"lat": 47.4626,
+"lon": 19.13254,
+"cls": 5,
+"conf": 85,
+"net": "Shell Recharge",
+"name": "Shell Recharge",
+"kw": 300.0,
+"cc": "HU",
+"pts": 4,
+"city": {
+"en": "Budapest",
+"sr": "Budimpešta",
+"ru": "Будапешт"
+}
+},
+{
+"pid": 295846,
+"km": 376.4,
+"off_km": 2.3,
+"lat": 46.67525,
+"lon": 19.8203,
+"cls": 4,
+"conf": 70,
+"net": "Tesla",
+"name": "AllElectric",
+"kw": 75.0,
+"cc": "HU",
+"pts": 12,
+"city": null
+},
+{
+"pid": 900001051,
+"km": 523.6,
+"off_km": 2.7,
+"lat": 45.79266,
+"lon": 19.69316,
+"cls": 5,
+"conf": 70,
+"net": "Charge&GO",
+"name": "OMV Bačka Topola 1",
+"kw": 180.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Bačka Topola",
+"sr": "Bačka Topola",
+"ru": "Бачка-Топола"
+}
+},
+{
+"pid": 900001274,
+"km": 671.6,
+"off_km": 0.7,
+"lat": 44.81229,
+"lon": 20.4356,
+"cls": 5,
+"conf": 70,
+"net": "Orion eMobility",
+"name": "Hyatt Regency Belgrade",
+"kw": 240.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Belgrade",
+"sr": "Beograd",
+"ru": "Белград"
+}
+}
+],
+"countries": [
+{
+"cc": "AT",
+"n": 9,
+"hpc": 7,
+"nets": [
+[
+"IONITY",
+2
+],
+[
+"TANKE Wien Energie",
+1
+],
+[
+"SMATRICS",
+1
+],
+[
+"Electra",
+1
+],
+[
+"Tesla",
+1
+],
+[
+"McDonald's",
+1
+]
+]
+},
+{
+"cc": "HU",
+"n": 26,
+"hpc": 14,
+"nets": [
+[
+"TEA Mobilitás",
+9
+],
+[
+"E.ON",
+8
+],
+[
+"Shell Recharge",
+4
+],
+[
+"Tesla",
+3
+],
+[
+"IONITY",
+2
+]
+]
+},
+{
+"cc": "RS",
+"n": 34,
+"hpc": 7,
+"nets": [
+[
+"Charge&GO",
+14
+],
+[
+"Orion eMobility",
+12
+],
+[
+"eDrive",
+3
+],
+[
+"Putevi Srbije",
+2
+],
+[
+"Emobility Spectra",
+1
+],
+[
+"Yesla",
+1
+]
+]
+}
+]
+},
+{
+"id": "budapest-belgrade",
+"waypoints": [
+[
+"Budapest",
+47.498,
+19.04
+],
+[
+"Kecskemét",
+46.906,
+19.692
+],
+[
+"Szeged",
+46.253,
+20.148
+],
+[
+"Subotica",
+46.1,
+19.667
+],
+[
+"Novi Sad",
+45.267,
+19.833
+],
+[
+"Beograd",
+44.787,
+20.457
+]
+],
+"km": 425,
+"km_straight": 370,
+"n_fast": 47,
+"n_hpc": 15,
+"gaps": [],
+"stops": [
+{
+"pid": 295846,
+"km": 126.0,
+"off_km": 2.3,
+"lat": 46.67525,
+"lon": 19.8203,
+"cls": 4,
+"conf": 70,
+"net": "Tesla",
+"name": "AllElectric",
+"kw": 75.0,
+"cc": "HU",
+"pts": 12,
+"city": null
+},
+{
+"pid": 900001051,
+"km": 273.3,
+"off_km": 2.7,
+"lat": 45.79266,
+"lon": 19.69316,
+"cls": 5,
+"conf": 70,
+"net": "Charge&GO",
+"name": "OMV Bačka Topola 1",
+"kw": 180.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Bačka Topola",
+"sr": "Bačka Topola",
+"ru": "Бачка-Топола"
+}
+},
+{
+"pid": 900001274,
+"km": 421.2,
+"off_km": 0.7,
+"lat": 44.81229,
+"lon": 20.4356,
+"cls": 5,
+"conf": 70,
+"net": "Orion eMobility",
+"name": "Hyatt Regency Belgrade",
+"kw": 240.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Belgrade",
+"sr": "Beograd",
+"ru": "Белград"
+}
+}
+],
+"countries": [
+{
+"cc": "HU",
+"n": 13,
+"hpc": 8,
+"nets": [
+[
+"TEA Mobilitás",
+5
+],
+[
+"E.ON",
+3
+],
+[
+"Tesla",
+3
+],
+[
+"Shell Recharge",
+2
+]
+]
+},
+{
+"cc": "RS",
+"n": 34,
+"hpc": 7,
+"nets": [
+[
+"Charge&GO",
+14
+],
+[
+"Orion eMobility",
+12
+],
+[
+"eDrive",
+3
+],
+[
+"Putevi Srbije",
+2
+],
+[
+"Emobility Spectra",
+1
+],
+[
+"Yesla",
+1
+]
+]
+}
+]
+},
+{
+"id": "belgrade-zagreb",
+"waypoints": [
+[
+"Beograd",
+44.787,
+20.457
+],
+[
+"Slavonski Brod",
+45.16,
+18.016
+],
+[
+"Zagreb",
+45.815,
+15.982
+]
+],
+"km": 427,
+"km_straight": 371,
+"n_fast": 41,
+"n_hpc": 6,
+"gaps": [
+[
+227,
+404
+]
+],
+"stops": [
+{
+"pid": 900000365,
+"km": 135.8,
+"off_km": 3.9,
+"lat": 45.04533,
+"lon": 18.99974,
+"cls": 4,
+"conf": 70,
+"net": "ELEN (HEP)",
+"name": "ELEN Odmorište Spačva",
+"kw": 50.0,
+"cc": "HR",
+"pts": 6,
+"city": null
+},
+{
+"pid": 900000544,
+"km": 226.6,
+"off_km": 0.1,
+"lat": 45.16283,
+"lon": 18.00908,
+"cls": 5,
+"conf": 70,
+"net": null,
+"name": null,
+"kw": 150.0,
+"cc": "HR",
+"pts": 1,
+"city": {
+"en": "Slavonski Brod",
+"sr": "Slavonski Brod",
+"ru": "Славонски-Брод"
+}
+},
+{
+"pid": 900000506,
+"km": 403.5,
+"off_km": 3.3,
+"lat": 45.76709,
+"lon": 16.23363,
+"cls": 4,
+"conf": 70,
+"net": "Tesla Supercharger",
+"name": "Zagreb Supercharger",
+"kw": 120.0,
+"cc": "HR",
+"pts": 6,
+"city": {
+"en": "Sesvete",
+"sr": "Sesvete",
+"ru": "Сесвете"
+}
+}
+],
+"countries": [
+{
+"cc": "RS",
+"n": 20,
+"hpc": 2,
+"nets": [
+[
+"Orion eMobility",
+9
+],
+[
+"Charge&GO",
+6
+],
+[
+"eDrive",
+2
+],
+[
+"Putevi Srbije",
+2
+],
+[
+"Yesla",
+1
+]
+]
+},
+{
+"cc": "HR",
+"n": 21,
+"hpc": 4,
+"nets": [
+[
+"ELEN (HEP)",
+6
+],
+[
+"Petrol",
+3
+],
+[
+"Tesla Supercharger",
+2
+],
+[
+"Hrvatski Telekom (espoTs)",
+2
+],
+[
+"Qelo",
+1
+],
+[
+"IONITY",
+1
+]
+]
+}
+]
+},
+{
+"id": "belgrade-thessaloniki",
+"waypoints": [
+[
+"Beograd",
+44.787,
+20.457
+],
+[
+"Jagodina",
+43.977,
+21.261
+],
+[
+"Niš",
+43.321,
+21.896
+],
+[
+"Vranje",
+42.551,
+21.9
+],
+[
+"Kumanovo",
+42.132,
+21.714
+],
+[
+"Skopje",
+41.998,
+21.425
+],
+[
+"Veles",
+41.716,
+21.775
+],
+[
+"Gevgelija",
+41.141,
+22.502
+],
+[
+"Thessaloniki",
+40.64,
+22.944
+]
+],
+"km": 644,
+"km_straight": 560,
+"n_fast": 56,
+"n_hpc": 5,
+"gaps": [],
+"stops": [
+{
+"pid": 900000997,
+"km": 145.4,
+"off_km": 2.6,
+"lat": 43.87278,
+"lon": 21.40068,
+"cls": 4,
+"conf": 70,
+"net": "Charge&GO",
+"name": "Futura Park Paraćin",
+"kw": 120.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Ćuprija",
+"sr": "Ćuprija",
+"ru": "Чуприя"
+}
+},
+{
+"pid": 900001088,
+"km": 270.4,
+"off_km": 4.5,
+"lat": 43.00032,
+"lon": 21.95201,
+"cls": 4,
+"conf": 70,
+"net": "Charge&GO",
+"name": "Stop Shop Leskovac",
+"kw": 60.0,
+"cc": "RS",
+"pts": 3,
+"city": {
+"en": "Leskovac",
+"sr": "Leskovac",
+"ru": "Лесковац"
+}
+},
+{
+"pid": 900000963,
+"km": 414.1,
+"off_km": 2.2,
+"lat": 42.02488,
+"lon": 21.43319,
+"cls": 5,
+"conf": 70,
+"net": null,
+"name": "Porsche Makedonija",
+"kw": 160.0,
+"cc": "MK",
+"pts": 2,
+"city": {
+"en": "Čair",
+"sr": "Čair",
+"ru": "Чаир"
+}
+},
+{
+"pid": 900000974,
+"km": 507.2,
+"off_km": 3.0,
+"lat": 41.49919,
+"lon": 22.09958,
+"cls": 5,
+"conf": 70,
+"net": "ЕВН Македонија",
+"name": "EVN Станица за полнење",
+"kw": 150.0,
+"cc": "MK",
+"pts": 1,
+"city": {
+"en": "Negotino",
+"sr": "Negotino",
+"ru": "Неготино"
+}
+}
+],
+"countries": [
+{
+"cc": "RS",
+"n": 32,
+"hpc": 2,
+"nets": [
+[
+"Charge&GO",
+15
+],
+[
+"Orion eMobility",
+10
+],
+[
+"Tesla",
+2
+],
+[
+"Putevi Srbije",
+2
+],
+[
+"eDrive",
+1
+],
+[
+"Yesla",
+1
+]
+]
+},
+{
+"cc": "MK",
+"n": 5,
+"hpc": 3,
+"nets": [
+[
+"ЕВН Македонија",
+3
+],
+[
+"Макпетрол",
+1
+]
+]
+},
+{
+"cc": "GR",
+"n": 19,
+"hpc": 0,
+"nets": [
+[
+"ElpeFuture",
+5
+],
+[
+"PPC blue",
+5
+],
+[
+"Shell Recharge",
+1
+],
+[
+"NRGincharge",
+1
+]
+]
+}
+]
+},
+{
+"id": "belgrade-istanbul",
+"waypoints": [
+[
+"Beograd",
+44.787,
+20.457
+],
+[
+"Jagodina",
+43.977,
+21.261
+],
+[
+"Niš",
+43.321,
+21.896
+],
+[
+"Pirot",
+43.153,
+22.586
+],
+[
+"Sofia",
+42.698,
+23.322
+],
+[
+"Plovdiv",
+42.142,
+24.75
+],
+[
+"Haskovo",
+41.934,
+25.555
+],
+[
+"Edirne",
+41.677,
+26.556
+],
+[
+"Lüleburgaz",
+41.405,
+27.356
+],
+[
+"İstanbul",
+41.015,
+28.979
+]
+],
+"km": 970,
+"km_straight": 843,
+"n_fast": 41,
+"n_hpc": 5,
+"gaps": [
+[
+537,
+932
+]
+],
+"stops": [
+{
+"pid": 900000997,
+"km": 145.4,
+"off_km": 2.6,
+"lat": 43.87278,
+"lon": 21.40068,
+"cls": 4,
+"conf": 70,
+"net": "Charge&GO",
+"name": "Futura Park Paraćin",
+"kw": 120.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Ćuprija",
+"sr": "Ćuprija",
+"ru": "Чуприя"
+}
+},
+{
+"pid": 900001162,
+"km": 269.7,
+"off_km": 0.1,
+"lat": 43.22011,
+"lon": 22.30613,
+"cls": 4,
+"conf": 70,
+"net": "Charge&GO",
+"name": "Bela Palanka",
+"kw": 75.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Pirot",
+"sr": "Pirot",
+"ru": "Пирот"
+}
+},
+{
+"pid": 329695,
+"km": 389.1,
+"off_km": 4.3,
+"lat": 42.65782,
+"lon": 23.3137,
+"cls": 5,
+"conf": 80,
+"net": "Tesla",
+"name": "Sofia Supercharger",
+"kw": 250.0,
+"cc": "BG",
+"pts": 6,
+"city": {
+"en": "Sofia",
+"sr": "Sofija",
+"ru": "София"
+}
+},
+{
+"pid": 279744,
+"km": 537.3,
+"off_km": 1.2,
+"lat": 42.14136,
+"lon": 24.71962,
+"cls": 4,
+"conf": 80,
+"net": "Voltspot",
+"name": "Mall Plovdiv",
+"kw": 140.0,
+"cc": "BG",
+"pts": 2,
+"city": {
+"en": "Plovdiv",
+"sr": "Plovdiv",
+"ru": "Пловдив"
+}
+},
+{
+"pid": 347443,
+"km": 932.5,
+"off_km": 2.8,
+"lat": 41.0795,
+"lon": 28.60061,
+"cls": 5,
+"conf": 70,
+"net": "Otopriz",
+"name": "Brand Vadi, Büyükçekmece - DC",
+"kw": 360.0,
+"cc": "TR",
+"pts": null,
+"city": null
+}
+],
+"countries": [
+{
+"cc": "RS",
+"n": 33,
+"hpc": 2,
+"nets": [
+[
+"Charge&GO",
+14
+],
+[
+"Orion eMobility",
+10
+],
+[
+"Putevi Srbije",
+5
+],
+[
+"Tesla",
+2
+],
+[
+"eDrive",
+1
+],
+[
+"Yesla",
+1
+]
+]
+},
+{
+"cc": "BG",
+"n": 4,
+"hpc": 1,
+"nets": [
+[
+"Tesla",
+1
+],
+[
+"EV-Point",
+1
+],
+[
+"Екарс БГ ЕООД",
+1
+],
+[
+"Voltspot",
+1
+]
+]
+},
+{
+"cc": "TR",
+"n": 4,
+"hpc": 2,
+"nets": [
+[
+"Otopriz",
+4
+]
+]
+}
+]
+},
+{
+"id": "belgrade-podgorica-budva",
+"waypoints": [
+[
+"Beograd",
+44.787,
+20.457
+],
+[
+"Čačak",
+43.891,
+20.35
+],
+[
+"Užice",
+43.858,
+19.848
+],
+[
+"Prijepolje",
+43.39,
+19.648
+],
+[
+"Bijelo Polje",
+43.038,
+19.747
+],
+[
+"Kolašin",
+42.822,
+19.517
+],
+[
+"Podgorica",
+42.441,
+19.263
+],
+[
+"Budva",
+42.286,
+18.84
+]
+],
+"km": 404,
+"km_straight": 351,
+"n_fast": 27,
+"n_hpc": 2,
+"gaps": [
+[
+117,
+270
+]
+],
+"stops": [
+{
+"pid": 900001012,
+"km": 115.0,
+"off_km": 2.2,
+"lat": 43.88101,
+"lon": 20.37316,
+"cls": 4,
+"conf": 70,
+"net": "Charge&GO",
+"name": "OMV Čačak 1",
+"kw": 140.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Čačak",
+"sr": "Čačak",
+"ru": "Чачак"
+}
+},
+{
+"pid": 900001013,
+"km": 116.5,
+"off_km": 0.1,
+"lat": 43.89055,
+"lon": 20.33368,
+"cls": 4,
+"conf": 70,
+"net": "Charge&GO",
+"name": "OMV Čačak 2",
+"kw": 130.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Čačak",
+"sr": "Čačak",
+"ru": "Чачак"
+}
+},
+{
+"pid": 900001084,
+"km": 116.8,
+"off_km": 0.7,
+"lat": 43.88367,
+"lon": 20.33104,
+"cls": 4,
+"conf": 70,
+"net": "Charge&GO",
+"name": "Stop Shop Čačak",
+"kw": 120.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Čačak",
+"sr": "Čačak",
+"ru": "Чачак"
+}
+},
+{
+"pid": 900000941,
+"km": 269.9,
+"off_km": 2.0,
+"lat": 43.04234,
+"lon": 19.77076,
+"cls": 4,
+"conf": 70,
+"net": "EKO (Jugopetrol)",
+"name": "EKO Bijelo Polje 2",
+"kw": 50.0,
+"cc": "ME",
+"pts": 3,
+"city": {
+"en": "Bijelo Polje",
+"sr": "Bijelo Polje",
+"ru": "Биело-Поле"
+}
+}
+],
+"countries": [
+{
+"cc": "RS",
+"n": 22,
+"hpc": 2,
+"nets": [
+[
+"Charge&GO",
+10
+],
+[
+"Orion eMobility",
+8
+],
+[
+"eDrive",
+2
+],
+[
+"Yesla",
+1
+]
+]
+},
+{
+"cc": "ME",
+"n": 5,
+"hpc": 0,
+"nets": [
+[
+"EKO (Jugopetrol)",
+2
+],
+[
+"Greencar",
+1
+],
+[
+"Petrol",
+1
+]
+]
+}
+]
+},
+{
+"id": "belgrade-sarajevo",
+"waypoints": [
+[
+"Beograd",
+44.787,
+20.457
+],
+[
+"Šabac",
+44.756,
+19.69
+],
+[
+"Loznica",
+44.534,
+19.223
+],
+[
+"Zvornik",
+44.386,
+19.102
+],
+[
+"Vlasenica",
+44.182,
+18.94
+],
+[
+"Sarajevo",
+43.856,
+18.413
+]
+],
+"km": 237,
+"km_straight": 206,
+"n_fast": 18,
+"n_hpc": 2,
+"gaps": [],
+"stops": [
+{
+"pid": 900001024,
+"km": 116.6,
+"off_km": 2.9,
+"lat": 44.57431,
+"lon": 19.24172,
+"cls": 4,
+"conf": 70,
+"net": "Charge&GO",
+"name": "OMV Loznica",
+"kw": 120.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Loznica",
+"sr": "Loznica",
+"ru": "Лозница"
+}
+}
+],
+"countries": [
+{
+"cc": "RS",
+"n": 18,
+"hpc": 2,
+"nets": [
+[
+"Orion eMobility",
+8
+],
+[
+"Charge&GO",
+7
+],
+[
+"eDrive",
+2
+],
+[
+"Yesla",
+1
+]
+]
+}
+]
+},
+{
+"id": "zagreb-sarajevo",
+"waypoints": [
+[
+"Zagreb",
+45.815,
+15.982
+],
+[
+"Slavonski Brod",
+45.16,
+18.016
+],
+[
+"Doboj",
+44.732,
+18.084
+],
+[
+"Zenica",
+44.202,
+17.908
+],
+[
+"Sarajevo",
+43.856,
+18.413
+]
+],
+"km": 390,
+"km_straight": 339,
+"n_fast": 20,
+"n_hpc": 5,
+"gaps": [
+[
+23,
+200
+]
+],
+"stops": [
+{
+"pid": 900000341,
+"km": 15.5,
+"off_km": 2.3,
+"lat": 45.78354,
+"lon": 16.15155,
+"cls": 5,
+"conf": 70,
+"net": "IONITY",
+"name": "Ionity Sop",
+"kw": 350.0,
+"cc": "HR",
+"pts": 4,
+"city": {
+"en": "Sesvete",
+"sr": "Sesvete",
+"ru": "Сесвете"
+}
+},
+{
+"pid": 900000506,
+"km": 23.1,
+"off_km": 3.4,
+"lat": 45.76709,
+"lon": 16.23363,
+"cls": 4,
+"conf": 70,
+"net": "Tesla Supercharger",
+"name": "Zagreb Supercharger",
+"kw": 120.0,
+"cc": "HR",
+"pts": 6,
+"city": {
+"en": "Sesvete",
+"sr": "Sesvete",
+"ru": "Сесвете"
+}
+},
+{
+"pid": 900000544,
+"km": 199.9,
+"off_km": 0.1,
+"lat": 45.16283,
+"lon": 18.00908,
+"cls": 5,
+"conf": 70,
+"net": null,
+"name": null,
+"kw": 150.0,
+"cc": "HR",
+"pts": 1,
+"city": {
+"en": "Slavonski Brod",
+"sr": "Slavonski Brod",
+"ru": "Славонски-Брод"
+}
+},
+{
+"pid": 900000102,
+"km": 255.7,
+"off_km": 1.0,
+"lat": 44.73334,
+"lon": 18.09667,
+"cls": 5,
+"conf": 70,
+"net": "Monta",
+"name": "Buvlja Pijaca",
+"kw": 160.0,
+"cc": "BA",
+"pts": 2,
+"city": {
+"en": "Doboj",
+"sr": "Doboj",
+"ru": "Добой"
+}
+}
+],
+"countries": [
+{
+"cc": "HR",
+"n": 18,
+"hpc": 3,
+"nets": [
+[
+"ELEN (HEP)",
+4
+],
+[
+"Petrol",
+3
+],
+[
+"Hrvatski Telekom (espoTs)",
+2
+],
+[
+"Tesla Supercharger",
+2
+],
+[
+"Siemens",
+1
+],
+[
+"DBT",
+1
+]
+]
+},
+{
+"cc": "BA",
+"n": 2,
+"hpc": 2,
+"nets": [
+[
+"Monta",
+1
+],
+[
+"MOON",
+1
+]
+]
+}
+]
+},
+{
+"id": "ljubljana-split",
+"waypoints": [
+[
+"Ljubljana",
+46.056,
+14.506
+],
+[
+"Novo mesto",
+45.804,
+15.169
+],
+[
+"Zagreb",
+45.815,
+15.982
+],
+[
+"Karlovac",
+45.487,
+15.548
+],
+[
+"Gospić",
+44.546,
+15.375
+],
+[
+"Zadar",
+44.119,
+15.231
+],
+[
+"Šibenik",
+43.735,
+15.89
+],
+[
+"Split",
+43.508,
+16.44
+]
+],
+"km": 511,
+"km_straight": 444,
+"n_fast": 55,
+"n_hpc": 17,
+"gaps": [],
+"stops": [
+{
+"pid": 900000392,
+"km": 144.6,
+"off_km": 4.2,
+"lat": 45.76067,
+"lon": 15.98363,
+"cls": 5,
+"conf": 70,
+"net": "MOON (Porsche Croatia)",
+"name": "Porsche Moon Zagreb",
+"kw": 150.0,
+"cc": "HR",
+"pts": 3,
+"city": {
+"en": "Zagreb",
+"sr": "Zagreb",
+"ru": "Загреб"
+}
+},
+{
+"pid": 900000437,
+"km": 292.2,
+"off_km": 3.1,
+"lat": 44.75108,
+"lon": 15.37341,
+"cls": 5,
+"conf": 70,
+"net": "Tesla Supercharger",
+"name": "Janjče West Supercharger",
+"kw": 250.0,
+"cc": "HR",
+"pts": 4,
+"city": null
+},
+{
+"pid": 900000551,
+"km": 403.9,
+"off_km": 5.0,
+"lat": 43.93928,
+"lon": 15.44047,
+"cls": 4,
+"conf": 70,
+"net": "ELEN (HEP)",
+"name": "Biograd na moru",
+"kw": 50.0,
+"cc": "HR",
+"pts": 3,
+"city": null
+}
+],
+"countries": [
+{
+"cc": "SI",
+"n": 3,
+"hpc": 3,
+"nets": [
+[
+"Petrol",
+2
+],
+[
+"Tesla",
+1
+]
+]
+},
+{
+"cc": "HR",
+"n": 52,
+"hpc": 14,
+"nets": [
+[
+"ELEN (HEP)",
+12
+],
+[
+"Petrol",
+6
+],
+[
+"MOL Plugee",
+5
+],
+[
+"Hrvatski Telekom (espoTs)",
+4
+],
+[
+"Tesla Supercharger",
+4
+],
+[
+"GreenWay",
+3
+]
+]
+}
+]
+},
+{
+"id": "budapest-split",
+"waypoints": [
+[
+"Budapest",
+47.498,
+19.04
+],
+[
+"Siófok",
+46.904,
+18.058
+],
+[
+"Nagykanizsa",
+46.453,
+16.991
+],
+[
+"Varaždin",
+46.305,
+16.338
+],
+[
+"Zagreb",
+45.815,
+15.982
+],
+[
+"Karlovac",
+45.487,
+15.548
+],
+[
+"Gospić",
+44.546,
+15.375
+],
+[
+"Zadar",
+44.119,
+15.231
+],
+[
+"Šibenik",
+43.735,
+15.89
+],
+[
+"Split",
+43.508,
+16.44
+]
+],
+"km": 726,
+"km_straight": 632,
+"n_fast": 70,
+"n_hpc": 22,
+"gaps": [],
+"stops": [
+{
+"pid": 290750,
+"km": 115.0,
+"off_km": 1.2,
+"lat": 46.89205,
+"lon": 18.0583,
+"cls": 5,
+"conf": 85,
+"net": "E.ON",
+"name": "E.ON Drive",
+"kw": 400.0,
+"cc": "HU",
+"pts": 6,
+"city": {
+"en": "Siófok",
+"sr": "Siófok",
+"ru": "Шиофок"
+}
+},
+{
+"pid": 900000313,
+"km": 259.8,
+"off_km": 3.4,
+"lat": 46.33724,
+"lon": 16.62053,
+"cls": 4,
+"conf": 70,
+"net": "ELEN (HEP)",
+"name": "ELEN Prelog",
+"kw": 50.0,
+"cc": "HR",
+"pts": 3,
+"city": {
+"en": "Čakovec",
+"sr": "Čakovec",
+"ru": "Чаковец"
+}
+},
+{
+"pid": 900000404,
+"km": 409.1,
+"off_km": 2.7,
+"lat": 45.52068,
+"lon": 15.54533,
+"cls": 5,
+"conf": 70,
+"net": "Be Energised (has-to-be)",
+"name": "Ilovac",
+"kw": 150.0,
+"cc": "HR",
+"pts": 5,
+"city": {
+"en": "Karlovac",
+"sr": "Karlovac",
+"ru": "Карловац"
+}
+},
+{
+"pid": 900000414,
+"km": 529.3,
+"off_km": 0.9,
+"lat": 44.57697,
+"lon": 15.39292,
+"cls": 5,
+"conf": 70,
+"net": "IONITY",
+"name": "Ionity Gospic",
+"kw": 350.0,
+"cc": "HR",
+"pts": 6,
+"city": null
+},
+{
+"pid": 900000686,
+"km": 670.9,
+"off_km": 1.6,
+"lat": 43.71028,
+"lon": 15.90983,
+"cls": 4,
+"conf": 70,
+"net": "Lidl",
+"name": null,
+"kw": 50.0,
+"cc": "HR",
+"pts": 3,
+"city": {
+"en": "Šibenik",
+"sr": "Šibenik",
+"ru": "Шибеник"
+}
+}
+],
+"countries": [
+{
+"cc": "HU",
+"n": 19,
+"hpc": 11,
+"nets": [
+[
+"TEA Mobilitás",
+5
+],
+[
+"E.ON",
+5
+],
+[
+"IONITY",
+4
+],
+[
+"MOL Plugee",
+2
+],
+[
+"Shell Recharge",
+2
+],
+[
+"Tesla",
+1
+]
+]
+},
+{
+"cc": "HR",
+"n": 51,
+"hpc": 11,
+"nets": [
+[
+"ELEN (HEP)",
+13
+],
+[
+"Petrol",
+5
+],
+[
+"Tesla Supercharger",
+5
+],
+[
+"Hrvatski Telekom (espoTs)",
+4
+],
+[
+"Kaufland",
+4
+],
+[
+"MOL Plugee",
+4
+]
+]
+}
+]
+},
+{
+"id": "vienna-zagreb-split",
+"waypoints": [
+[
+"Wien",
+48.208,
+16.373
+],
+[
+"Graz",
+47.071,
+15.439
+],
+[
+"Maribor",
+46.554,
+15.646
+],
+[
+"Zagreb",
+45.815,
+15.982
+],
+[
+"Karlovac",
+45.487,
+15.548
+],
+[
+"Gospić",
+44.546,
+15.375
+],
+[
+"Zadar",
+44.119,
+15.231
+],
+[
+"Šibenik",
+43.735,
+15.89
+],
+[
+"Split",
+43.508,
+16.44
+]
+],
+"km": 705,
+"km_straight": 613,
+"n_fast": 64,
+"n_hpc": 27,
+"gaps": [],
+"stops": [
+{
+"pid": 387312,
+"km": 13.7,
+"off_km": 0.4,
+"lat": 48.1124,
+"lon": 16.30017,
+"cls": 5,
+"conf": 70,
+"net": null,
+"name": "SMATRICS EnBW",
+"kw": 400.0,
+"cc": "AT",
+"pts": 8,
+"city": {
+"en": "Mödling",
+"sr": "Mödling",
+"ru": "Мёдлинг"
+}
+},
+{
+"pid": 97924,
+"km": 22.3,
+"off_km": 3.3,
+"lat": 48.04079,
+"lon": 16.28431,
+"cls": 5,
+"conf": 75,
+"net": "TANKE Wien Energie",
+"name": "Shell Recharge",
+"kw": 150.0,
+"cc": "AT",
+"pts": 4,
+"city": {
+"en": "Mödling",
+"sr": "Mödling",
+"ru": "Мёдлинг"
+}
+},
+{
+"pid": 383114,
+"km": 169.8,
+"off_km": 4.2,
+"lat": 47.03322,
+"lon": 15.39843,
+"cls": 5,
+"conf": 70,
+"net": "OMV eMotion",
+"name": "OMV eMotion Charging Station",
+"kw": 300.0,
+"cc": "AT",
+"pts": 4,
+"city": {
+"en": "Graz",
+"sr": "Grac",
+"ru": "Грац"
+}
+},
+{
+"pid": 900000407,
+"km": 298.8,
+"off_km": 4.0,
+"lat": 46.08682,
+"lon": 15.91241,
+"cls": 5,
+"conf": 70,
+"net": "IONITY",
+"name": "Ionity Vrankovec",
+"kw": 350.0,
+"cc": "HR",
+"pts": 6,
+"city": null
+},
+{
+"pid": 900000404,
+"km": 387.9,
+"off_km": 2.7,
+"lat": 45.52068,
+"lon": 15.54533,
+"cls": 5,
+"conf": 70,
+"net": "Be Energised (has-to-be)",
+"name": "Ilovac",
+"kw": 150.0,
+"cc": "HR",
+"pts": 5,
+"city": {
+"en": "Karlovac",
+"sr": "Karlovac",
+"ru": "Карловац"
+}
+},
+{
+"pid": 900000414,
+"km": 508.1,
+"off_km": 0.9,
+"lat": 44.57697,
+"lon": 15.39292,
+"cls": 5,
+"conf": 70,
+"net": "IONITY",
+"name": "Ionity Gospic",
+"kw": 350.0,
+"cc": "HR",
+"pts": 6,
+"city": null
+},
+{
+"pid": 900000686,
+"km": 649.7,
+"off_km": 1.6,
+"lat": 43.71028,
+"lon": 15.90983,
+"cls": 4,
+"conf": 70,
+"net": "Lidl",
+"name": null,
+"kw": 50.0,
+"cc": "HR",
+"pts": 3,
+"city": {
+"en": "Šibenik",
+"sr": "Šibenik",
+"ru": "Шибеник"
+}
+}
+],
+"countries": [
+{
+"cc": "AT",
+"n": 16,
+"hpc": 14,
+"nets": [
+[
+"SMATRICS",
+2
+],
+[
+"TANKE Wien Energie",
+2
+],
+[
+"Mer",
+2
+],
+[
+"OMV",
+1
+],
+[
+"Shell Recharge",
+1
+],
+[
+"Electra",
+1
+]
+]
+},
+{
+"cc": "SI",
+"n": 6,
+"hpc": 3,
+"nets": [
+[
+"IONITY",
+1
+],
+[
+"SODO",
+1
+],
+[
+"Elevat/MasterCharge",
+1
+],
+[
+"Petrol",
+1
+],
+[
+"Lidl",
+1
+],
+[
+"Energija+",
+1
+]
+]
+},
+{
+"cc": "HR",
+"n": 42,
+"hpc": 10,
+"nets": [
+[
+"ELEN (HEP)",
+10
+],
+[
+"Petrol",
+4
+],
+[
+"MOL Plugee",
+4
+],
+[
+"Tesla Supercharger",
+4
+],
+[
+"Hrvatski Telekom (espoTs)",
+3
+],
+[
+"Kaufland",
+3
+]
+]
+}
+]
+},
+{
+"id": "zagreb-dubrovnik",
+"waypoints": [
+[
+"Zagreb",
+45.815,
+15.982
+],
+[
+"Karlovac",
+45.487,
+15.548
+],
+[
+"Gospić",
+44.546,
+15.375
+],
+[
+"Zadar",
+44.119,
+15.231
+],
+[
+"Split",
+43.508,
+16.44
+],
+[
+"Makarska",
+43.297,
+17.017
+],
+[
+"Ploče",
+43.053,
+17.433
+],
+[
+"Dubrovnik",
+42.65,
+18.094
+]
+],
+"km": 561,
+"km_straight": 488,
+"n_fast": 44,
+"n_hpc": 12,
+"gaps": [],
+"stops": [
+{
+"pid": 900000404,
+"km": 54.2,
+"off_km": 2.7,
+"lat": 45.52068,
+"lon": 15.54533,
+"cls": 5,
+"conf": 70,
+"net": "Be Energised (has-to-be)",
+"name": "Ilovac",
+"kw": 150.0,
+"cc": "HR",
+"pts": 5,
+"city": {
+"en": "Karlovac",
+"sr": "Karlovac",
+"ru": "Карловац"
+}
+},
+{
+"pid": 900000414,
+"km": 174.3,
+"off_km": 1.0,
+"lat": 44.57697,
+"lon": 15.39292,
+"cls": 5,
+"conf": 70,
+"net": "IONITY",
+"name": "Ionity Gospic",
+"kw": 350.0,
+"cc": "HR",
+"pts": 6,
+"city": null
+},
+{
+"pid": 900000403,
+"km": 309.5,
+"off_km": 2.9,
+"lat": 43.80502,
+"lon": 15.91638,
+"cls": 5,
+"conf": 70,
+"net": "Petrol",
+"name": "Odmorište Krka Zapad",
+"kw": 200.0,
+"cc": "HR",
+"pts": 2,
+"city": {
+"en": "Šibenik",
+"sr": "Šibenik",
+"ru": "Шибеник"
+}
+},
+{
+"pid": 900000691,
+"km": 432.1,
+"off_km": 0.3,
+"lat": 43.28872,
+"lon": 17.02456,
+"cls": 4,
+"conf": 70,
+"net": "Lidl",
+"name": null,
+"kw": 50.0,
+"cc": "HR",
+"pts": 3,
+"city": null
+}
+],
+"countries": [
+{
+"cc": "HR",
+"n": 44,
+"hpc": 12,
+"nets": [
+[
+"ELEN (HEP)",
+13
+],
+[
+"Petrol",
+6
+],
+[
+"MOL Plugee",
+4
+],
+[
+"Tesla Supercharger",
+4
+],
+[
+"Hrvatski Telekom (espoTs)",
+3
+],
+[
+"Kaufland",
+2
+]
+]
+}
+]
+},
+{
+"id": "belgrade-skopje-ohrid",
+"waypoints": [
+[
+"Beograd",
+44.787,
+20.457
+],
+[
+"Jagodina",
+43.977,
+21.261
+],
+[
+"Niš",
+43.321,
+21.896
+],
+[
+"Vranje",
+42.551,
+21.9
+],
+[
+"Kumanovo",
+42.132,
+21.714
+],
+[
+"Skopje",
+41.998,
+21.425
+],
+[
+"Tetovo",
+42.01,
+20.971
+],
+[
+"Gostivar",
+41.796,
+20.908
+],
+[
+"Kičevo",
+41.512,
+20.959
+],
+[
+"Ohrid",
+41.117,
+20.802
+]
+],
+"km": 577,
+"km_straight": 502,
+"n_fast": 35,
+"n_hpc": 5,
+"gaps": [
+[
+414,
+577
+]
+],
+"stops": [
+{
+"pid": 900000997,
+"km": 145.4,
+"off_km": 2.6,
+"lat": 43.87278,
+"lon": 21.40068,
+"cls": 4,
+"conf": 70,
+"net": "Charge&GO",
+"name": "Futura Park Paraćin",
+"kw": 120.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Ćuprija",
+"sr": "Ćuprija",
+"ru": "Чуприя"
+}
+},
+{
+"pid": 900001088,
+"km": 270.4,
+"off_km": 4.5,
+"lat": 43.00032,
+"lon": 21.95201,
+"cls": 4,
+"conf": 70,
+"net": "Charge&GO",
+"name": "Stop Shop Leskovac",
+"kw": 60.0,
+"cc": "RS",
+"pts": 3,
+"city": {
+"en": "Leskovac",
+"sr": "Leskovac",
+"ru": "Лесковац"
+}
+},
+{
+"pid": 900000963,
+"km": 414.1,
+"off_km": 2.2,
+"lat": 42.02488,
+"lon": 21.43319,
+"cls": 5,
+"conf": 70,
+"net": null,
+"name": "Porsche Makedonija",
+"kw": 160.0,
+"cc": "MK",
+"pts": 2,
+"city": {
+"en": "Čair",
+"sr": "Čair",
+"ru": "Чаир"
+}
+},
+{
+"pid": 900000968,
+"km": 577.1,
+"off_km": 1.4,
+"lat": 41.10527,
+"lon": 20.80823,
+"cls": 5,
+"conf": 70,
+"net": "ЕВН Македонија",
+"name": "Кеј Македонија",
+"kw": 150.0,
+"cc": "MK",
+"pts": 2,
+"city": {
+"en": "Ohrid",
+"sr": "Ohrid",
+"ru": "Охрид"
+}
+}
+],
+"countries": [
+{
+"cc": "RS",
+"n": 32,
+"hpc": 2,
+"nets": [
+[
+"Charge&GO",
+15
+],
+[
+"Orion eMobility",
+10
+],
+[
+"Tesla",
+2
+],
+[
+"Putevi Srbije",
+2
+],
+[
+"eDrive",
+1
+],
+[
+"Yesla",
+1
+]
+]
+},
+{
+"cc": "MK",
+"n": 3,
+"hpc": 3,
+"nets": [
+[
+"ЕВН Македонија",
+2
+]
+]
+}
+]
+},
+{
+"id": "belgrade-sofia-varna",
+"waypoints": [
+[
+"Beograd",
+44.787,
+20.457
+],
+[
+"Jagodina",
+43.977,
+21.261
+],
+[
+"Niš",
+43.321,
+21.896
+],
+[
+"Pirot",
+43.153,
+22.586
+],
+[
+"Sofia",
+42.698,
+23.322
+],
+[
+"Botevgrad",
+42.907,
+23.791
+],
+[
+"Pleven",
+43.417,
+24.617
+],
+[
+"Veliko Tarnovo",
+43.076,
+25.617
+],
+[
+"Shumen",
+43.271,
+26.936
+],
+[
+"Varna",
+43.214,
+27.914
+]
+],
+"km": 860,
+"km_straight": 747,
+"n_fast": 37,
+"n_hpc": 4,
+"gaps": [
+[
+640,
+860
+]
+],
+"stops": [
+{
+"pid": 900000997,
+"km": 145.3,
+"off_km": 2.6,
+"lat": 43.87278,
+"lon": 21.40068,
+"cls": 4,
+"conf": 70,
+"net": "Charge&GO",
+"name": "Futura Park Paraćin",
+"kw": 120.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Ćuprija",
+"sr": "Ćuprija",
+"ru": "Чуприя"
+}
+},
+{
+"pid": 900001162,
+"km": 269.7,
+"off_km": 0.1,
+"lat": 43.22011,
+"lon": 22.30613,
+"cls": 4,
+"conf": 70,
+"net": "Charge&GO",
+"name": "Bela Palanka",
+"kw": 75.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Pirot",
+"sr": "Pirot",
+"ru": "Пирот"
+}
+},
+{
+"pid": 329695,
+"km": 387.4,
+"off_km": 4.5,
+"lat": 42.65782,
+"lon": 23.3137,
+"cls": 5,
+"conf": 80,
+"net": "Tesla",
+"name": "Sofia Supercharger",
+"kw": 250.0,
+"cc": "BG",
+"pts": 6,
+"city": {
+"en": "Sofia",
+"sr": "Sofija",
+"ru": "София"
+}
+},
+{
+"pid": 353819,
+"km": 485.1,
+"off_km": 2.6,
+"lat": 43.15861,
+"lon": 24.14797,
+"cls": 4,
+"conf": 70,
+"net": "Voltspot",
+"name": "Furnata",
+"kw": 90.0,
+"cc": "BG",
+"pts": null,
+"city": null
+},
+{
+"pid": 353826,
+"km": 539.8,
+"off_km": 3.0,
+"lat": 43.44025,
+"lon": 24.59877,
+"cls": 4,
+"conf": 70,
+"net": "Voltspot",
+"name": "AutoBOX Ray",
+"kw": 80.0,
+"cc": "BG",
+"pts": null,
+"city": {
+"en": "Pleven",
+"sr": "Pleven",
+"ru": "Плевен"
+}
+},
+{
+"pid": 348319,
+"km": 640.3,
+"off_km": 0.2,
+"lat": 43.08216,
+"lon": 25.59347,
+"cls": 5,
+"conf": 85,
+"net": "TremolEV",
+"name": "Tremol Charging Stations",
+"kw": 360.0,
+"cc": "BG",
+"pts": 12,
+"city": {
+"en": "Veliko Tarnovo",
+"sr": "Veliko Trnovo",
+"ru": "Велико-Тырново"
+}
+}
+],
+"countries": [
+{
+"cc": "RS",
+"n": 33,
+"hpc": 2,
+"nets": [
+[
+"Charge&GO",
+14
+],
+[
+"Orion eMobility",
+10
+],
+[
+"Putevi Srbije",
+5
+],
+[
+"Tesla",
+2
+],
+[
+"eDrive",
+1
+],
+[
+"Yesla",
+1
+]
+]
+},
+{
+"cc": "BG",
+"n": 4,
+"hpc": 2,
+"nets": [
+[
+"Voltspot",
+2
+],
+[
+"Tesla",
+1
+],
+[
+"TremolEV",
+1
+]
+]
+}
+]
+},
+{
+"id": "belgrade-bucharest",
+"waypoints": [
+[
+"Beograd",
+44.787,
+20.457
+],
+[
+"Vršac",
+45.117,
+21.3
+],
+[
+"Timișoara",
+45.748,
+21.208
+],
+[
+"Lugoj",
+45.689,
+21.904
+],
+[
+"Deva",
+45.877,
+22.912
+],
+[
+"Sibiu",
+45.798,
+24.125
+],
+[
+"Pitești",
+44.857,
+24.869
+],
+[
+"București",
+44.427,
+26.103
+]
+],
+"km": 695,
+"km_straight": 604,
+"n_fast": 35,
+"n_hpc": 5,
+"gaps": [
+[
+231,
+433
+]
+],
+"stops": [
+{
+"pid": 900001070,
+"km": 89.2,
+"off_km": 0.9,
+"lat": 45.13173,
+"lon": 21.2862,
+"cls": 4,
+"conf": 70,
+"net": "Charge&GO",
+"name": "Stop Shop Vršac",
+"kw": 120.0,
+"cc": "RS",
+"pts": 2,
+"city": {
+"en": "Vršac",
+"sr": "Vršac",
+"ru": "Вршац"
+}
+},
+{
+"pid": 293452,
+"km": 230.9,
+"off_km": 1.2,
+"lat": 45.67797,
+"lon": 21.90509,
+"cls": 4,
+"conf": 85,
+"net": "E.ON",
+"name": "Penny Market Lugoj",
+"kw": 50.0,
+"cc": "RO",
+"pts": 2,
+"city": null
+},
+{
+"pid": 364514,
+"km": 433.3,
+"off_km": 0.4,
+"lat": 45.79383,
+"lon": 24.13351,
+"cls": 4,
+"conf": 85,
+"net": "e-Charge",
+"name": "Stație Încărcare Mașini Electrice Kaufland",
+"kw": 50.0,
+"cc": "RO",
+"pts": 3,
+"city": {
+"en": "Sibiu",
+"sr": "Sibiu",
+"ru": "Сибиу"
+}
+},
+{
+"pid": 328794,
+"km": 578.1,
+"off_km": 1.4,
+"lat": 44.81809,
+"lon": 24.93978,
+"cls": 5,
+"conf": 75,
+"net": "Eldrive",
+"name": "Eldrive - Supernova Pitești",
+"kw": 600.0,
+"cc": "RO",
+"pts": 14,
+"city": null
+}
+],
+"countries": [
+{
+"cc": "RS",
+"n": 20,
+"hpc": 3,
+"nets": [
+[
+"Orion eMobility",
+9
+],
+[
+"Charge&GO",
+8
+],
+[
+"eDrive",
+1
+],
+[
+"Yesla",
+1
+]
+]
+},
+{
+"cc": "RO",
+"n": 15,
+"hpc": 2,
+"nets": [
+[
+"e-Charge",
+3
+],
+[
+"Kaufland",
+2
+],
+[
+"E.ON",
+2
+],
+[
+"Citylimo",
+1
+],
+[
+"Primăria Timișoara",
+1
+],
+[
+"Renovatio e-charge",
+1
+]
+]
+}
+]
+},
+{
+"id": "ljubljana-belgrade",
+"waypoints": [
+[
+"Ljubljana",
+46.056,
+14.506
+],
+[
+"Novo mesto",
+45.804,
+15.169
+],
+[
+"Zagreb",
+45.815,
+15.982
+],
+[
+"Slavonski Brod",
+45.16,
+18.016
+],
+[
+"Beograd",
+44.787,
+20.457
+]
+],
+"km": 566,
+"km_straight": 492,
+"n_fast": 60,
+"n_hpc": 14,
+"gaps": [
+[
+163,
+340
+]
+],
+"stops": [
+{
+"pid": 900000348,
+"km": 143.8,
+"off_km": 3.8,
+"lat": 45.77044,
+"lon": 16.00382,
+"cls": 5,
+"conf": 70,
+"net": "Hrvatski Telekom (espoTs)",
+"name": "Konzum centar Sarajevska",
+"kw": 150.0,
+"cc": "HR",
+"pts": 2,
+"city": {
+"en": "Zagreb",
+"sr": "Zagreb",
+"ru": "Загреб"
+}
+},
+{
+"pid": 900000341,
+"km": 155.2,
+"off_km": 2.3,
+"lat": 45.78354,
+"lon": 16.15155,
+"cls": 5,
+"conf": 70,
+"net": "IONITY",
+"name": "Ionity Sop",
+"kw": 350.0,
+"cc": "HR",
+"pts": 4,
+"city": {
+"en": "Sesvete",
+"sr": "Sesvete",
+"ru": "Сесвете"
+}
+},
+{
+"pid": 900000506,
+"km": 162.7,
+"off_km": 3.3,
+"lat": 45.76709,
+"lon": 16.23363,
+"cls": 4,
+"conf": 70,
+"net": "Tesla Supercharger",
+"name": "Zagreb Supercharger",
+"kw": 120.0,
+"cc": "HR",
+"pts": 6,
+"city": {
+"en": "Sesvete",
+"sr": "Sesvete",
+"ru": "Сесвете"
+}
+},
+{
+"pid": 900000544,
+"km": 339.6,
+"off_km": 0.1,
+"lat": 45.16283,
+"lon": 18.00908,
+"cls": 5,
+"conf": 70,
+"net": null,
+"name": null,
+"kw": 150.0,
+"cc": "HR",
+"pts": 1,
+"city": {
+"en": "Slavonski Brod",
+"sr": "Slavonski Brod",
+"ru": "Славонски-Брод"
+}
+},
+{
+"pid": 900000365,
+"km": 430.4,
+"off_km": 3.9,
+"lat": 45.04533,
+"lon": 18.99974,
+"cls": 4,
+"conf": 70,
+"net": "ELEN (HEP)",
+"name": "ELEN Odmorište Spačva",
+"kw": 50.0,
+"cc": "HR",
+"pts": 6,
+"city": null
+}
+],
+"countries": [
+{
+"cc": "SI",
+"n": 3,
+"hpc": 3,
+"nets": [
+[
+"Petrol",
+2
+],
+[
+"Tesla",
+1
+]
+]
+},
+{
+"cc": "HR",
+"n": 37,
+"hpc": 9,
+"nets": [
+[
+"ELEN (HEP)",
+11
+],
+[
+"Petrol",
+5
+],
+[
+"Hrvatski Telekom (espoTs)",
+3
+],
+[
+"GreenWay",
+2
+],
+[
+"MOL Plugee",
+2
+],
+[
+"Tesla Supercharger",
+2
+]
+]
+},
+{
+"cc": "RS",
+"n": 20,
+"hpc": 2,
+"nets": [
+[
+"Orion eMobility",
+9
+],
+[
+"Charge&GO",
+6
+],
+[
+"Putevi Srbije",
+2
+],
+[
+"eDrive",
+2
+],
+[
+"Yesla",
+1
+]
+]
+}
+]
+}
+]
+}

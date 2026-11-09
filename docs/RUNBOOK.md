@@ -2453,6 +2453,24 @@ else none. Europe = all weighted networks pooled. No ranking of networks; same c
 4. `python3 scripts/world_prices_data.py validate` and `python3 scripts/world_prices.py selftest`, build, look at the hub.
 5. Old CSV files are not kept in the build: the month is in the file name; an archive of past months comes with G7.
 
+### 3.43 "How to pay" and routes of blokvolt.com (G4, since 10.11.2026; dev only until "релиз G4")
+
+- Code: `scripts/world_pay.py` (hook in `gen_com.py` after `world_prices.run`; menu entries "How to pay · Routes" via
+  `world_shell.EXTRA`), templates `templates/com2/world_pay_*.html`, strings `content/world/strings_pay.json` (EN/SR/RU,
+  the build stops on a missing language or a forbidden word). Pages: `/how-to-pay/` + `/how-to-pay/<country>/` (countries of the
+  world country pages in the G3 scope; SR/RU paths `/sr/kako-platiti/`, `/ru/kak-platit/`) and `/routes/` + `/routes/<id>/`
+  (`/sr/rute/`, `/ru/marshruty/`). Same noindex switch as the world layer.
+- Data `content/world/pay.json`: AFIR points (EUR-Lex), roaming apps and tolls. Every coverage fact = the official page of the
+  app (`url`, `checked`); `countries` holds only the countries that page names; `list_complete: false` when the page has no full
+  list (the page then says "Country list not published", never "not listed"). Same columns for every app, no partner links
+  (`affiliate` fails the validator). Tolls: system + official page, no prices.
+- Data `content/world/routes.json`: on the mac `python3 scripts/world_routes_calc.py <K1 out dir> routes_g4.json` (public layer:
+  DC >= 50 kW, reliability >= 70, public, <= 5 km from the waypoint line; greedy stops <= 150 km; gaps listed), then
+  `python3 scripts/world_routes_slim.py routes_g4.json content/world/routes.json`. Distance = straight segments + 15 % (stated
+  on the page). Trip cost = G3 DC index per country, European DC average where a country has none (named on the page).
+- Update: after a new public layer — rerun both scripts; after a new check of an app page — edit `pay.json` (`checked`).
+- Check: `python3 scripts/world_pay.py selftest` (also in preview.yml).
+
 ## 4. Build and check
 
 ```bash

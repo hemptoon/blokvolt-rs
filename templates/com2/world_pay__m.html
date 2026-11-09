@@ -1,0 +1,10 @@
+{# Macros of the G4 pages (how to pay, routes). T = content/world/strings_pay.json #}
+{% macro head(kick, h1, lead, crumbs, checked, last=None) -%}
+<div class="ph"><div class="wrap">
+{% if crumbs %}<nav class="crumbs" aria-label="{{ S.crumbs }}">{% for n, u in crumbs %}<a href="{{ u }}">{{ n }}</a><span aria-hidden="true">›</span>{% endfor %}<span translate="no">{{ last or h1 }}</span></nav>{% elif kick %}<p class="kick">{{ kick }}</p>{% endif %}
+<h1>{{ h1 }}</h1>
+{% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
+<p class="meta">{{ checked }}</p>
+</div></div>
+{%- endmacro %}
+{% macro road(r) -%}{% if r %}{{ r.text }} <a class="lnk" href="{{ r.url }}" rel="noopener nofollow">{{ r.op or T.road_src }}</a> <small class="muted">({{ T.th_checked|lower }} {{ r.checked }})</small>{% if r.note %} <small class="muted">{{ r.note }}</small>{% endif %}{% else %}<span class="muted">{{ T.road_none }}</span>{% endif %}{%- endmacro %}

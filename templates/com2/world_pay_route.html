@@ -1,0 +1,23 @@
+{% extends 'world_pay_base.html' %}
+{% block pagehead %}{{ pm.head(kick, h1, lead, crumbs, checked, last) }}{% endblock %}
+{% block content %}
+<div class="sec"><div class="sec-head"><h2 id="stops">{{ T.h_stops }}</h2></div>
+<p class="note">{{ T.stops_note }}</p>
+<div class="tw"><table class="wpay-t"><thead><tr><th scope="col" class="num">{{ T.th_stop_km }}</th><th scope="col">{{ T.th_place }}</th><th scope="col">{{ T.th_country }}</th><th scope="col" class="num">{{ T.th_kw }}</th><th scope="col" class="num">{{ T.th_pts }}</th><th scope="col">{{ T.th_map }}</th></tr></thead><tbody>
+{% for s in stops %}<tr><td class="num">{{ s.km }}</td><th scope="row" translate="no">{{ s.name }}{% if s.net and s.net != s.name %} <small class="muted">· {{ s.net }}</small>{% endif %}{% if s.city %}<br><small class="muted">{{ s.city }}</small>{% endif %}</th><td>{{ s.cc }}</td><td class="num">{{ s.kw }}</td><td class="num">{{ s.pts }}</td><td><a class="lnk" href="{{ s.map }}" rel="nofollow">{{ T.lnk_map }}</a></td></tr>
+{% endfor %}</tbody></table></div></div>
+<div class="sec"><div class="sec-head"><h2 id="gaps">{{ T.h_gaps }}</h2></div>
+{% if gaps %}{% for g in gaps %}<p class="wpay-gap">{{ g }}</p>{% endfor %}<p class="note">{{ T.gap_note }}</p>{% else %}<p>{{ T.no_gaps }}</p>{% endif %}</div>
+<div class="sec"><div class="sec-head"><h2 id="countries">{{ T.h_by_country }}</h2></div>
+<div class="tw"><table class="wpay-t"><thead><tr><th scope="col">{{ T.th_country }}</th><th scope="col" class="num">{{ T.th_fast }}</th><th scope="col">{{ T.th_top_nets }}</th><th scope="col">{{ T.th_apps_c }}</th><th scope="col">{{ T.th_road }}</th></tr></thead><tbody>
+{% for c in byc %}<tr><th scope="row">{% if c.pay %}<a class="lnk" href="{{ c.pay }}">{{ c.name }}</a>{% else %}{{ c.name }}{% endif %}</th><td class="num">{{ c.n }}</td><td translate="no">{{ c.nets or '—' }}</td><td translate="no">{{ c.apps }}</td><td>{{ pm.road(c.road) }}</td></tr>
+{% endfor %}</tbody></table></div></div>
+<div class="sec"><div class="sec-head"><h2 id="cost">{{ T.h_cost }}</h2></div>
+<div class="tw"><table class="wpay-t"><thead><tr><th scope="col">{{ T.th_car }}</th><th scope="col" class="num">{{ T.th_cons }}</th><th scope="col" class="num">{{ T.th_trip }}</th></tr></thead><tbody>
+{% for c in cars %}<tr><th scope="row" translate="no">{{ c.name }}</th><td class="num">{{ c.cons }}</td><td class="num">{{ c.cost }}</td></tr>
+{% endfor %}</tbody></table></div><p class="note">{{ cost_note }}</p></div>
+<div class="sec"><div class="sec-head"><h2 id="season">{{ T.h_season }}</h2></div><p>{{ T.season }}</p></div>
+<div class="sec"><div class="sec-head"><h2 id="method">{{ T.h_method }}</h2></div><p class="note">{{ method }}</p>
+<div class="chips"><a class="chip" href="{{ ROUTESH[l] }}">{{ T.routes_more }}</a><a class="chip" href="{{ PAYH[l] }}">{{ T.pay_more }}</a></div></div>
+<p class="note disc">{{ T.pay_disc }}</p>
+{% endblock %}

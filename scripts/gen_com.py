@@ -529,6 +529,8 @@ def main():
         print(f"/{LOCALES[key]['dir']}/: {len(pages)} pages, map {M['n']} stations (DC ≥ 50 kW {M['dc50']})")
     import loc_towns; loc_towns.build(sys.modules[__name__], loaded)   # town pages of the local sections (scripts/loc_towns.py)
     copy_assets()
+    if os.environ.get('BV_WORLD_PAGES'):
+        __import__('world_pay').prepare()   # G4: menu entries How to pay · Routes (scripts/world_pay.py)
     __import__('world_prices').prepare(sys.modules[__name__])   # G3: price file of the map card + URLs (scripts/world_prices.py)
     __import__('world_map').build(sys.modules[__name__])   # world map /map/ /sr/mapa/ /ru/karta/ (K2, scripts/world_map.py)
     bust()
@@ -552,6 +554,7 @@ def main():
     import world_pages; wc = world_pages.run(sys.modules[__name__], local_hubs)  # K3: world pages when BV_WORLD_PAGES is set
     import world_shell; world_shell.run(sys.modules[__name__], wc)  # G0: world menu/footer pages, search index, dev home
     __import__('world_prices').run(sys.modules[__name__], wc)  # G3: price index and price pages (with the world layer only)
+    __import__('world_pay').run(sys.modules[__name__], wc)  # G4: how to pay + routes (with the world layer only)
     bad = link_check()
     files = [p for p in OUT.rglob('*') if p.is_file()]
     print(f'blokvolt.com: {len(URLS)} pages in the sitemap, {len(files)} files, {n_companies} companies, {n_sources} English sources; broken links: {len(bad)}')
