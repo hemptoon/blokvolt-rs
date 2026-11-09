@@ -1362,6 +1362,32 @@ hours; its workflow runs `scripts/com_maps.py`, 3.10). The committed lists here 
 refreshed with the monthly update: `python3 scripts/com_maps.py`, build, commit. The station counts in the texts follow
 the data by themselves.
 
+#### 3.23b Hand corrections of the region's stations (`content/region/ispravke.json`, since 09.11.2026)
+
+The open data of the neighbours has duplicates, dead records and stations that a network's own list confirms. Checked
+corrections live in `content/region/ispravke.json`, one entry per line: `{cc, id, action, set | src | dup_of | station,
+source_url, checked, note}`. `scripts/region_map.py` applies them every time it writes `content/com/local/<cc>/stanice.json`
+— the monthly refresh (3.23), `com_maps.py` in the hourly build of blokvolt.com (3.10) and `--fixes-only` (applies the file
+to the committed lists without the region-data cache). So a correction survives both.
+
+- `remove` — only with proof: closed or removed; not on the network's own list **and** deleted in OpenStreetMap; not a
+  car charger (bicycles); a record that cannot exist (address in another country); or a duplicate (`dup_of` = the record
+  that keeps the site; the removal is skipped when that record is gone, and is a no-op when the merge already joined
+  them). "No confirmation found" is never a reason.
+- `patch` — fields `n a t lat lon net opn c dc ac acc v al` (`set`) and sources to add (`src`, as in stanice.json). `v` =
+  `{"s": "ok", "by": ["mr" | "te" | "own"], "d": …}` only with the network's or owner's own list or page (3.11b): never from
+  news, blogs, OSM/OCM edits or the closed aggregators (Google Maps, PlugShare, Chargemap). No `prob` in the region.
+- `add` — a station with an official source (`station` in the stanice.json format). When the id is already in the data
+  it becomes a patch of that station (except the point); a station within 60 m of another one is not added (warning).
+- An id is found by the station's own id or any OSM/OCM record merged into it (from its `src` URLs). A correction whose
+  station is not in the data prints `<CC>: ispravke.json: … (skipped)` — a warning, never an error; look at it at the next
+  monthly refresh and remove the entry when the source has fixed itself. Each run prints
+  `<CC>: hand corrections: removed N, changed N, added N, warnings N`.
+- An unknown key or a missing `source_url`/`checked` stops the script. New entries: the same rules for every network.
+  Log a real change in `izmene.md`. The first set (270 entries: B1–B3 checks, MAPFIX 09.11.2026) matched the region-data
+  of 03.11.2026 without a warning. The words "Potvrđeno … na stranici mreže" of the blokvolt.com cards are `v_mr`, `v_te`,
+  `v_own` in the section strings.
+
 ### 3.24 Help (/pomoc/)
 
 Nineteen short answers for drivers and companies, one Markdown file each in `content/pomoc/` (front matter: id, title,

@@ -496,7 +496,7 @@ function matchChip(s, f) {
 }
 function match(s) {
   if (!matchChip(s, state.f)) return false;
-  if (state.ok && ver(s) !== 'ok') return false;
+  if (state.ok && (s.cc || ver(s) !== 'ok')) return false;   // "Potvrđeni" stays Serbian (3.25): a neighbour's ok is from ispravke.json (3.23b)
   if (state.q) {
     const hay = s._q || (s._q = sfold([s.n, s.a, s.t, netName(s), s.opn].concat(s.al || []).join(' ')));
     for (const w of sfold(state.q).split(/\s+/).filter(Boolean)) if (hay.indexOf(w) < 0) return false;

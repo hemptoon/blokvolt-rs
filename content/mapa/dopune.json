@@ -100,6 +100,51 @@
    "v": {"s": "ok", "by": ["to"], "d": "25.10.2026"},
    "note": "Po spisku Turističke organizacije Zlatibor punjač je sporog tipa, besplatan i dostupan svima, najviše 3 sata.",
    "src": [{"d": "own", "l": "Turistička organizacija Zlatibor", "u": "https://www.zlatibor.org.rs/sr/novosti/vesti/punjaci-za-elektricne-automobile-na-zlatiboru", "upd": "2026-10-25"}]
+  },
+  "osm-n9630355880": {
+   "c": [["type2", "ac", 22, 1]], "dc": null, "ac": 22,
+   "src": [{"d": "osm", "u": "https://www.openstreetmap.org/node/9630355880", "upd": "2026-11-09"}]
+  },
+  "ocm-264471": {
+   "a": "A1, NIS/Gazprom Bački Vinogradi 1 (Bački Vinogradi salaši 26)",
+   "src": [{"d": "own", "l": "NIS Gazprom", "u": "https://www.nisgazprom.rs/en/?p=77199", "upd": "2026-11-09"}]
+  },
+  "ocm-264472": {
+   "a": "A3, NIS/Gazprom Krnješevci",
+   "src": [{"d": "own", "l": "NIS Gazprom", "u": "https://www.nisgazprom.rs/en/?p=77199", "upd": "2026-11-09"}]
+  },
+  "ocm-264474": {
+   "a": "Autoput Beograd-Zagreb, NIS/Gazprom Zmaj 1, Zemun",
+   "src": [{"d": "own", "l": "NIS Gazprom", "u": "https://www.nisgazprom.rs/en/?p=77199", "upd": "2026-11-09"}]
+  },
+  "ocm-265531": {
+   "n": "Mercedes-Benz Martinci",
+   "src": [{"d": "ocm", "u": "https://openchargemap.org/site/poi/details/265531", "upd": "2026-11-09"}]
+  },
+  "osm-n10713611582": {
+   "c": [["other", "ac", 22, 1]], "dc": null, "ac": 22,
+   "src": [{"d": "osm", "u": "https://www.openstreetmap.org/node/10713611582", "upd": "2026-11-09"}]
+  },
+  "own-hotel-fruske-terme": {
+   "n": "Mövenpick Resort & Spa Fruške Terme",
+   "src": [{"d": "own", "l": "Turistička organizacija Vojvodine", "u": "https://vojvodina.travel/en/accommodation/movenpick-resort-and-spa-fruske-terme-vrdnik", "upd": "2026-11-09"}]
+  },
+  "tim-zgrada-dositeja-obradovica-38-cuprija": {
+   "n": "Duo-Pro",
+   "src": [{"d": "ocm", "u": "https://openchargemap.org/site/poi/details/265794", "upd": "2026-11-09"}]
+  },
+  "tim-hotel-o2-tornik-jablanica-zlatibor": {
+   "c": [["type2", "ac", 11, 2]], "dc": null, "ac": 11,
+   "src": [{"d": "ocm", "u": "https://openchargemap.org/site/poi/details/499981", "upd": "2026-11-09"}]
+  },
+  "tim-mihajlovic-pumpa-donja-mutnica-paracin": {
+   "n": "Mihajlović punjač e-vozila",
+   "src": [{"d": "ocm", "u": "https://openchargemap.org/site/poi/details/513680", "upd": "2026-11-09"}]
+  },
+  "tim-petrol-obrenovacki-put-beograd-beograd": {
+   "n": "Petrol BS Beograd Ada",
+   "a": "Obrenovački put 1a, Beograd (Čukarica)",
+   "src": [{"d": "own", "l": "Petrol", "u": "https://www.petrol.eu/publications/2021/09/petrol-is-developing-and-expanding-the-electric-charging-network-in-serbia.html", "upd": "2026-11-09"}]
   }
  }
 }
