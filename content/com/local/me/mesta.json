@@ -1,0 +1,294 @@
+{
+ "note": "Town list of this section for the town pages /me/gradovi/ (scripts/loc_towns.py, K5 09.11.2026). A station belongs to the nearest town of this list within 25 km; a town has a page with at least 3 public stations or when `page` is true (pinned: a town that has a page keeps it — unpin only with a redirect). Reference: GeoNames towns from 5,000 inhabitants plus resorts and transit towns from 1,000 (CC BY 4.0, attribution on the pages), only towns that had a station on 26.10.2026; every row checked by hand. Fields: name (local official), slug, gid (GeoNames id), lat/lon (GeoNames), pop, loc (locative with preposition), region, aliases, page, note.",
+ "towns": [
+  {
+   "name": "Podgorica",
+   "slug": "podgorica",
+   "gid": 3193044,
+   "lat": 42.44124,
+   "lon": 19.26309,
+   "pop": 236852,
+   "loc": "u Podgorici",
+   "region": "Središnji region",
+   "aliases": [
+    "Подгорица"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Bar",
+   "slug": "bar",
+   "gid": 3204509,
+   "lat": 42.0937,
+   "lon": 19.09841,
+   "pop": 17727,
+   "loc": "u Baru",
+   "region": "Primorski region",
+   "aliases": [
+    "Бар"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Budva",
+   "slug": "budva",
+   "gid": 3203106,
+   "lat": 42.28721,
+   "lon": 18.83922,
+   "pop": 18000,
+   "loc": "u Budvi",
+   "region": "Primorski region",
+   "aliases": [
+    "Будва"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Tivat",
+   "slug": "tivat",
+   "gid": 3189073,
+   "lat": 42.43623,
+   "lon": 18.69361,
+   "pop": 6280,
+   "loc": "u Tivtu",
+   "region": "Primorski region",
+   "aliases": [
+    "Тиват"
+   ],
+   "page": true,
+   "note": "Locative drops the a: 'u Tivtu'. One station in Radovići (Luštica)."
+  },
+  {
+   "name": "Herceg Novi",
+   "slug": "herceg-novi",
+   "gid": 3199394,
+   "lat": 42.45306,
+   "lon": 18.5375,
+   "pop": 19536,
+   "loc": "u Herceg Novom",
+   "region": "Primorski region",
+   "aliases": [
+    "Херцег Нови",
+    "Herceg-Novi"
+   ],
+   "page": true,
+   "note": "First part does not decline: 'u Herceg Novom'."
+  },
+  {
+   "name": "Pljevlja",
+   "slug": "pljevlja",
+   "gid": 3193161,
+   "lat": 43.3567,
+   "lon": 19.35843,
+   "pop": 19489,
+   "loc": "u Pljevljima",
+   "region": "Sjeverni region",
+   "aliases": [
+    "Пљевља"
+   ],
+   "page": false,
+   "note": "Plural (u Pljevljima)."
+  },
+  {
+   "name": "Ulcinj",
+   "slug": "ulcinj",
+   "gid": 3188516,
+   "lat": 41.92936,
+   "lon": 19.22436,
+   "pop": 10828,
+   "loc": "u Ulcinju",
+   "region": "Primorski region",
+   "aliases": [
+    "Улцињ",
+    "Ulqin",
+    "Ulqini"
+   ],
+   "page": false,
+   "note": "Ulqin is the Albanian form, in official use in the municipality."
+  },
+  {
+   "name": "Žabljak",
+   "slug": "zabljak",
+   "gid": 3186999,
+   "lat": 43.15423,
+   "lon": 19.12325,
+   "pop": 1937,
+   "loc": "na Žabljaku",
+   "region": "Sjeverni region",
+   "aliases": [
+    "Жабљак"
+   ],
+   "page": false,
+   "note": "Usual locative 'na Žabljaku' ('u Žabljaku' also used)."
+  },
+  {
+   "name": "Bijela",
+   "slug": "bijela",
+   "gid": 3204214,
+   "lat": 42.45333,
+   "lon": 18.65556,
+   "pop": 2395,
+   "loc": "u Bijeloj",
+   "region": "Primorski region",
+   "aliases": [
+    "Бијела"
+   ],
+   "page": false,
+   "note": "Settlement in Herceg Novi municipality (shipyard); separate place, not a municipality seat."
+  },
+  {
+   "name": "Andrijevica",
+   "slug": "andrijevica",
+   "gid": 3204816,
+   "lat": 42.73389,
+   "lon": 19.79194,
+   "pop": 1073,
+   "loc": "u Andrijevici",
+   "region": "Sjeverni region",
+   "aliases": [
+    "Андријевица"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Berane",
+   "slug": "berane",
+   "gid": 3199071,
+   "lat": 42.84333,
+   "lon": 19.87281,
+   "pop": 11073,
+   "loc": "u Beranama",
+   "region": "Sjeverni region",
+   "aliases": [
+    "Беране"
+   ],
+   "page": false,
+   "note": "Plural (u Beranama)."
+  },
+  {
+   "name": "Bijelo Polje",
+   "slug": "bijelo-polje",
+   "gid": 3204176,
+   "lat": 43.03834,
+   "lon": 19.74758,
+   "pop": 15400,
+   "loc": "u Bijelom Polju",
+   "region": "Sjeverni region",
+   "aliases": [
+    "Бијело Поље"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Cetinje",
+   "slug": "cetinje",
+   "gid": 3202641,
+   "lat": 42.39063,
+   "lon": 18.91417,
+   "pop": 15137,
+   "loc": "na Cetinju",
+   "region": "Središnji region",
+   "aliases": [
+    "Цетиње"
+   ],
+   "page": false,
+   "note": "Standard locative 'na Cetinju'."
+  },
+  {
+   "name": "Golubovci",
+   "slug": "golubovci",
+   "gid": 3200422,
+   "lat": 42.3352,
+   "lon": 19.23104,
+   "pop": 3110,
+   "loc": "u Golubovcima",
+   "region": "Središnji region",
+   "aliases": [
+    "Голубовци"
+   ],
+   "page": false,
+   "note": "Seat of Zeta municipality (separate from Podgorica since 2022); station address says 'Podgorica'."
+  },
+  {
+   "name": "Kolašin",
+   "slug": "kolasin",
+   "gid": 3197896,
+   "lat": 42.82229,
+   "lon": 19.51653,
+   "pop": 2989,
+   "loc": "u Kolašinu",
+   "region": "Sjeverni region",
+   "aliases": [
+    "Колашин"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Mojkovac",
+   "slug": "mojkovac",
+   "gid": 3194926,
+   "lat": 42.96044,
+   "lon": 19.5833,
+   "pop": 4120,
+   "loc": "u Mojkovcu",
+   "region": "Sjeverni region",
+   "aliases": [
+    "Мојковац"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Nikšić",
+   "slug": "niksic",
+   "gid": 3194494,
+   "lat": 42.7731,
+   "lon": 18.94446,
+   "pop": 58212,
+   "loc": "u Nikšiću",
+   "region": "Središnji region",
+   "aliases": [
+    "Никшић"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Plav",
+   "slug": "plav",
+   "gid": 3193228,
+   "lat": 42.5969,
+   "lon": 19.94415,
+   "pop": 3615,
+   "loc": "u Plavu",
+   "region": "Sjeverni region",
+   "aliases": [
+    "Плав",
+    "Plavë"
+   ],
+   "page": false,
+   "note": "Plavë is the Albanian form."
+  },
+  {
+   "name": "Plužine",
+   "slug": "pluzine",
+   "gid": 3193131,
+   "lat": 43.15211,
+   "lon": 18.83902,
+   "pop": 1494,
+   "loc": "u Plužinama",
+   "region": "Sjeverni region",
+   "aliases": [
+    "Плужине"
+   ],
+   "page": false,
+   "note": "Plural (u Plužinama). Station address says 'Žabljak' — check coordinates."
+  }
+ ]
+}

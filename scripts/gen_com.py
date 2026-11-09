@@ -527,6 +527,7 @@ def main():
     for key, (C, st, pages) in loaded.items():
         M = build_local(LOCALES[key], C, st, pages, all_pages)
         print(f"/{LOCALES[key]['dir']}/: {len(pages)} pages, map {M['n']} stations (DC ≥ 50 kW {M['dc50']})")
+    import loc_towns; loc_towns.build(sys.modules[__name__], loaded)   # town pages of the local sections (scripts/loc_towns.py)
     copy_assets()
     bust()
     (OUT / 'CNAME').write_text('blokvolt.com\n', encoding='utf-8')

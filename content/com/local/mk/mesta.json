@@ -1,0 +1,199 @@
+{
+ "note": "Town list of this section for the town pages /mk/gradovi/ (scripts/loc_towns.py, K5 09.11.2026). A station belongs to the nearest town of this list within 25 km; a town has a page with at least 3 public stations or when `page` is true (pinned: a town that has a page keeps it — unpin only with a redirect). Reference: GeoNames towns from 5,000 inhabitants plus resorts and transit towns from 1,000 (CC BY 4.0, attribution on the pages), only towns that had a station on 26.10.2026; every row checked by hand. Fields: name (local official), slug, gid (GeoNames id), lat/lon (GeoNames), pop, loc (locative with preposition), region, aliases, page, note.",
+ "towns": [
+  {
+   "name": "Скопје",
+   "slug": "skopje",
+   "gid": 785842,
+   "lat": 41.99646,
+   "lon": 21.43141,
+   "pop": 474889,
+   "loc": "во Скопје",
+   "region": "Скопски регион",
+   "aliases": [
+    "Skopje",
+    "Shkup",
+    "Shkupi"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Гевгелија",
+   "slug": "gevgelija",
+   "gid": 790744,
+   "lat": 41.14289,
+   "lon": 22.50108,
+   "pop": 20664,
+   "loc": "во Гевгелија",
+   "region": "Југоисточен регион",
+   "aliases": [
+    "Gevgelija",
+    "Gjevgjeli"
+   ],
+   "page": true,
+   "note": "One of 5 stations has address village Bogorodica (border area); assignment fine."
+  },
+  {
+   "name": "Охрид",
+   "slug": "ohrid",
+   "gid": 787487,
+   "lat": 41.11701,
+   "lon": 20.80175,
+   "pop": 42033,
+   "loc": "во Охрид",
+   "region": "Југозападен регион",
+   "aliases": [
+    "Ohrid",
+    "Ohër",
+    "Ohri"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Гостивар",
+   "slug": "gostivar",
+   "gid": 790295,
+   "lat": 41.79627,
+   "lon": 20.90799,
+   "pop": 50974,
+   "loc": "во Гостивар",
+   "region": "Полошки регион",
+   "aliases": [
+    "Gostivar",
+    "Gostivari"
+   ],
+   "page": false,
+   "note": "Bilingual town (mk/sq); Albanian name is the same (Gostivar)."
+  },
+  {
+   "name": "Кавадарци",
+   "slug": "kavadarci",
+   "gid": 789541,
+   "lat": 41.43344,
+   "lon": 22.01218,
+   "pop": 38799,
+   "loc": "во Кавадарци",
+   "region": "Вардарски регион",
+   "aliases": [
+    "Kavadarci",
+    "Kavadar"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Кочани",
+   "slug": "kocani",
+   "gid": 789403,
+   "lat": 41.91639,
+   "lon": 22.41278,
+   "pop": 34258,
+   "loc": "во Кочани",
+   "region": "Источен регион",
+   "aliases": [
+    "Kočani",
+    "Kochani",
+    "Koçani"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Крива Паланка",
+   "slug": "kriva-palanka",
+   "gid": 789045,
+   "lat": 42.20197,
+   "lon": 22.33385,
+   "pop": 20820,
+   "loc": "во Крива Паланка",
+   "region": "Североисточен регион",
+   "aliases": [
+    "Kriva Palanka"
+   ],
+   "page": false,
+   "note": "Station address had no town field; check the station really is in/near Kriva Palanka."
+  },
+  {
+   "name": "Куманово",
+   "slug": "kumanovo",
+   "gid": 788886,
+   "lat": 42.13279,
+   "lon": 21.71585,
+   "pop": 75051,
+   "loc": "во Куманово",
+   "region": "Североисточен регион",
+   "aliases": [
+    "Kumanovo",
+    "Kumanovë",
+    "Kumanova"
+   ],
+   "page": false,
+   "note": "Bilingual town (mk/sq)."
+  },
+  {
+   "name": "Неготино",
+   "slug": "negotino",
+   "gid": 787716,
+   "lat": 41.48456,
+   "lon": 22.09056,
+   "pop": 19515,
+   "loc": "во Неготино",
+   "region": "Вардарски регион",
+   "aliases": [
+    "Negotino"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Прилеп",
+   "slug": "prilep",
+   "gid": 786735,
+   "lat": 41.34558,
+   "lon": 21.5537,
+   "pop": 73814,
+   "loc": "во Прилеп",
+   "region": "Пелагониски регион",
+   "aliases": [
+    "Prilep"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Штип",
+   "slug": "stip",
+   "gid": 785482,
+   "lat": 41.74583,
+   "lon": 22.19583,
+   "pop": 48279,
+   "loc": "во Штип",
+   "region": "Источен регион",
+   "aliases": [
+    "Štip",
+    "Shtip",
+    "Shtipi"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Велес",
+   "slug": "veles",
+   "gid": 785058,
+   "lat": 41.71719,
+   "lon": 21.77196,
+   "pop": 57873,
+   "loc": "во Велес",
+   "region": "Вардарски регион",
+   "aliases": [
+    "Veles",
+    "Velesi"
+   ],
+   "page": false,
+   "note": ""
+  }
+ ]
+}

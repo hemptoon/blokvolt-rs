@@ -34,6 +34,8 @@ Kod kuće noću 100 km stoji otprilike šest puta manje nego benzinom, a na ultr
 
 {{ w.tiles(['map', 'prices', 'apps', 'home', 'subsidies', 'road', 'buildings', 'stats']) }}
 
+**[Punionice po gradovima](/hr/gradovi/)**: popis gradova s brojem punionica i poveznicom na kartu.
+
 ## Ukratko, listopad 2026.
 
 - **Poticaji za građane.** FZOEU je 9. 10. 2026. objavio poziv EnU-2/26 od 20 milijuna eura: do 9.000 € za novi električni automobil, prijave od 28. 10. 2026. u 9 sati kroz sustav eFZOEU. Kućne punionice nisu predmet poziva, a plug-in hibridi nisu obuhvaćeni. Pozivi za tvrtke su zatvoreni. [Svi poticaji]({{ PAGES.subsidies.path }})

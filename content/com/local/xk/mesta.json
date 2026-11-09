@@ -1,0 +1,172 @@
+{
+ "note": "Town list of this section for the town pages /xk/qytetet/ (scripts/loc_towns.py, K5 09.11.2026). A station belongs to the nearest town of this list within 25 km; a town has a page with at least 3 public stations or when `page` is true (pinned: a town that has a page keeps it — unpin only with a redirect). Reference: GeoNames towns from 5,000 inhabitants plus resorts and transit towns from 1,000 (CC BY 4.0, attribution on the pages), only towns that had a station on 26.10.2026; every row checked by hand. Fields: name (local official), slug, gid (GeoNames id), lat/lon (GeoNames), pop, loc (locative with preposition), region, aliases, page, note.",
+ "towns": [
+  {
+   "name": "Prishtinë",
+   "slug": "prishtine",
+   "gid": 786714,
+   "lat": 42.67272,
+   "lon": 21.16688,
+   "pop": 550000,
+   "loc": "në Prishtinë",
+   "region": "Rajoni i Prishtinës",
+   "aliases": [
+    "Prishtina",
+    "Priština",
+    "Pristina",
+    "Приштина"
+   ],
+   "page": true,
+   "note": "GeoNames pop 550000 is a metro estimate, not a census figure. One station is in Graçanicë and one in Çagllavicë (assigned here as nearest town)."
+  },
+  {
+   "name": "Fushë Kosovë",
+   "slug": "fushe-kosove",
+   "gid": 789228,
+   "lat": 42.66394,
+   "lon": 21.09611,
+   "pop": 16154,
+   "loc": "në Fushë Kosovë",
+   "region": "Rajoni i Prishtinës",
+   "aliases": [
+    "Fushë Kosova",
+    "Kosovo Polje",
+    "Косово Поље"
+   ],
+   "page": true,
+   "note": "Separate municipality adjacent to Prishtinë (~6 km). Of its 3 stations one is addressed 'Prishtinë' and one 'Lipjan' (Lipjan is not in the list) — check before publishing as its own page."
+  },
+  {
+   "name": "Pejë",
+   "slug": "peje",
+   "gid": 787157,
+   "lat": 42.65913,
+   "lon": 20.28828,
+   "pop": 48962,
+   "loc": "në Pejë",
+   "region": "Rajoni i Pejës",
+   "aliases": [
+    "Peja",
+    "Peć",
+    "Пећ"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Prizren",
+   "slug": "prizren",
+   "gid": 786712,
+   "lat": 42.21389,
+   "lon": 20.73972,
+   "pop": 171464,
+   "loc": "në Prizren",
+   "region": "Rajoni i Prizrenit",
+   "aliases": [
+    "Prizreni",
+    "Призрен"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Suharekë",
+   "slug": "suhareke",
+   "gid": 785238,
+   "lat": 42.35861,
+   "lon": 20.825,
+   "pop": 72229,
+   "loc": "në Suharekë",
+   "region": "Rajoni i Prizrenit",
+   "aliases": [
+    "Suhareka",
+    "Suva Reka",
+    "Сува Река"
+   ],
+   "page": false,
+   "note": "GeoNames name is the Serbian form; Albanian official form Suharekë."
+  },
+  {
+   "name": "Gjilan",
+   "slug": "gjilan",
+   "gid": 790674,
+   "lat": 42.46045,
+   "lon": 21.46986,
+   "pop": 51912,
+   "loc": "në Gjilan",
+   "region": "Rajoni i Gjilanit",
+   "aliases": [
+    "Gjilani",
+    "Gnjilane",
+    "Гњилане"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Hani i Elezit",
+   "slug": "hani-i-elezit",
+   "gid": 791539,
+   "lat": 42.15,
+   "lon": 21.29667,
+   "pop": 9389,
+   "loc": "në Han të Elezit",
+   "region": "Rajoni i Ferizajt",
+   "aliases": [
+    "Han i Elezit",
+    "Elez Han",
+    "Đeneral Janković"
+   ],
+   "page": false,
+   "note": "Locative: normative 'në Han të Elezit'; colloquially 'në Hani i Elezit' is common — native check."
+  },
+  {
+   "name": "Podujevë",
+   "slug": "podujeve",
+   "gid": 786950,
+   "lat": 42.91056,
+   "lon": 21.19306,
+   "pop": 35000,
+   "loc": "në Podujevë",
+   "region": "Rajoni i Prishtinës",
+   "aliases": [
+    "Podujeva",
+    "Podujevo"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Drenas",
+   "slug": "drenas",
+   "gid": 790701,
+   "lat": 42.62833,
+   "lon": 20.89389,
+   "pop": 58579,
+   "loc": "në Drenas",
+   "region": "Rajoni i Prishtinës",
+   "aliases": [
+    "Gllogoc",
+    "Glogovac"
+   ],
+   "page": false,
+   "note": "K5 lead: added instead of Llazicë (GeoNames point mislabelled; stations addressed Drenas/Malishevë)"
+  },
+  {
+   "name": "Malishevë",
+   "slug": "malisheve",
+   "gid": 788239,
+   "lat": 42.48222,
+   "lon": 20.74583,
+   "pop": 2300,
+   "loc": "në Malishevë",
+   "region": "Rajoni i Prizrenit",
+   "aliases": [
+    "Malisheva",
+    "Mališevo"
+   ],
+   "page": false,
+   "note": "K5 lead: added instead of Llazicë (GeoNames point mislabelled; stations addressed Drenas/Malishevë)"
+  }
+ ]
+}

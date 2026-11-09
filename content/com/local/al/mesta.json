@@ -1,0 +1,311 @@
+{
+ "note": "Town list of this section for the town pages /al/qytetet/ (scripts/loc_towns.py, K5 09.11.2026). A station belongs to the nearest town of this list within 25 km; a town has a page with at least 3 public stations or when `page` is true (pinned: a town that has a page keeps it — unpin only with a redirect). Reference: GeoNames towns from 5,000 inhabitants plus resorts and transit towns from 1,000 (CC BY 4.0, attribution on the pages), only towns that had a station on 26.10.2026; every row checked by hand. Fields: name (local official), slug, gid (GeoNames id), lat/lon (GeoNames), pop, loc (locative with preposition), region, aliases, page, note.",
+ "towns": [
+  {
+   "name": "Tiranë",
+   "slug": "tirane",
+   "gid": 3183875,
+   "lat": 41.32744,
+   "lon": 19.81866,
+   "pop": 418495,
+   "loc": "në Tiranë",
+   "region": "Qarku i Tiranës",
+   "aliases": [
+    "Tirana"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Shkodër",
+   "slug": "shkoder",
+   "gid": 3184081,
+   "lat": 42.06828,
+   "lon": 19.51258,
+   "pop": 95553,
+   "loc": "në Shkodër",
+   "region": "Qarku i Shkodrës",
+   "aliases": [
+    "Shkodra",
+    "Scutari",
+    "Skadar"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Korçë",
+   "slug": "korce",
+   "gid": 782756,
+   "lat": 40.61861,
+   "lon": 20.78083,
+   "pop": 58259,
+   "loc": "në Korçë",
+   "region": "Qarku i Korçës",
+   "aliases": [
+    "Korça",
+    "Koritsa"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Gjirokastër",
+   "slug": "gjirokaster",
+   "gid": 783148,
+   "lat": 40.07583,
+   "lon": 20.13889,
+   "pop": 23437,
+   "loc": "në Gjirokastër",
+   "region": "Qarku i Gjirokastrës",
+   "aliases": [
+    "Gjirokastra",
+    "Argirokastro"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Bilisht",
+   "slug": "bilisht",
+   "gid": 783606,
+   "lat": 40.6275,
+   "lon": 20.99,
+   "pop": 7287,
+   "loc": "në Bilisht",
+   "region": "Qarku i Korçës",
+   "aliases": [
+    "Bilishti"
+   ],
+   "page": false,
+   "note": "Small town (Devoll municipality seat); one of its 2 stations is addressed 'Korçë'."
+  },
+  {
+   "name": "Kamëz",
+   "slug": "kamez",
+   "gid": 3185270,
+   "lat": 41.38167,
+   "lon": 19.76028,
+   "pop": 11026,
+   "loc": "në Kamëz",
+   "region": "Qarku i Tiranës",
+   "aliases": [
+    "Kamza"
+   ],
+   "page": false,
+   "note": "Separate municipality but a contiguous suburb of Tirana; both stations are addressed 'Tiranë'."
+  },
+  {
+   "name": "Lushnjë",
+   "slug": "lushnje",
+   "gid": 3184862,
+   "lat": 40.94194,
+   "lon": 19.705,
+   "pop": 63135,
+   "loc": "në Lushnjë",
+   "region": "Qarku i Fierit",
+   "aliases": [
+    "Lushnja"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Sarandë",
+   "slug": "sarande",
+   "gid": 363243,
+   "lat": 39.87534,
+   "lon": 20.00477,
+   "pop": 22613,
+   "loc": "në Sarandë",
+   "region": "Qarku i Vlorës",
+   "aliases": [
+    "Saranda"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Vlorë",
+   "slug": "vlore",
+   "gid": 3183719,
+   "lat": 40.4696,
+   "lon": 19.48379,
+   "pop": 115261,
+   "loc": "në Vlorë",
+   "region": "Qarku i Vlorës",
+   "aliases": [
+    "Vlora",
+    "Valona"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Shëngjin",
+   "slug": "shengjin",
+   "gid": 3184136,
+   "lat": 41.81361,
+   "lon": 19.59389,
+   "pop": 6963,
+   "loc": "në Shëngjin",
+   "region": "Qarku i Lezhës",
+   "aliases": [
+    "Shëngjini",
+    "San Giovanni di Medua"
+   ],
+   "page": false,
+   "note": "Small coastal town/resort in Lezhë municipality; one station addressed 'Shkodër'."
+  },
+  {
+   "name": "Ballsh",
+   "slug": "ballsh",
+   "gid": 3186145,
+   "lat": 40.59889,
+   "lon": 19.73472,
+   "pop": 4944,
+   "loc": "në Ballsh",
+   "region": "Qarku i Fierit",
+   "aliases": [
+    "Ballshi"
+   ],
+   "page": false,
+   "note": "Station address says 'Vlorë' — check the point; Ballsh is in Mallakastër, Fier county."
+  },
+  {
+   "name": "Elbasan",
+   "slug": "elbasan",
+   "gid": 783263,
+   "lat": 41.11138,
+   "lon": 20.08224,
+   "pop": 100903,
+   "loc": "në Elbasan",
+   "region": "Qarku i Elbasanit",
+   "aliases": [
+    "Elbasani"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Fier",
+   "slug": "fier",
+   "gid": 3185672,
+   "lat": 40.7251,
+   "lon": 19.55823,
+   "pop": 56297,
+   "loc": "në Fier",
+   "region": "Qarku i Fierit",
+   "aliases": [
+    "Fieri"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Ksamil",
+   "slug": "ksamil",
+   "gid": 2595331,
+   "lat": 39.76889,
+   "lon": 19.99972,
+   "pop": 2994,
+   "loc": "në Ksamil",
+   "region": "Qarku i Vlorës",
+   "aliases": [
+    "Ksamili"
+   ],
+   "page": false,
+   "note": "Village/resort in Sarandë municipality; station addressed 'Sarandë'."
+  },
+  {
+   "name": "Kukës",
+   "slug": "kukes",
+   "gid": 782661,
+   "lat": 42.07694,
+   "lon": 20.42194,
+   "pop": 36125,
+   "loc": "në Kukës",
+   "region": "Qarku i Kukësit",
+   "aliases": [
+    "Kukësi"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Laç",
+   "slug": "lac",
+   "gid": 3185012,
+   "lat": 41.63556,
+   "lon": 19.71306,
+   "pop": 12854,
+   "loc": "në Laç",
+   "region": "Qarku i Lezhës",
+   "aliases": [
+    "Laçi"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Peshkopi",
+   "slug": "peshkopi",
+   "gid": 782061,
+   "lat": 41.685,
+   "lon": 20.42858,
+   "pop": 14710,
+   "loc": "në Peshkopi",
+   "region": "Qarku i Dibrës",
+   "aliases": [
+    "Peshkopia"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Pogradec",
+   "slug": "pogradec",
+   "gid": 781988,
+   "lat": 40.9025,
+   "lon": 20.6525,
+   "pop": 46070,
+   "loc": "në Pogradec",
+   "region": "Qarku i Korçës",
+   "aliases": [
+    "Pogradeci"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Tepelenë",
+   "slug": "tepelene",
+   "gid": 781443,
+   "lat": 40.29583,
+   "lon": 20.01917,
+   "pop": 11955,
+   "loc": "në Tepelenë",
+   "region": "Qarku i Gjirokastrës",
+   "aliases": [
+    "Tepelena"
+   ],
+   "page": false,
+   "note": "Station addressed 'Gjirokastër' — check."
+  },
+  {
+   "name": "Vorë",
+   "slug": "vore",
+   "gid": 3183708,
+   "lat": 41.39083,
+   "lon": 19.655,
+   "pop": 4973,
+   "loc": "në Vorë",
+   "region": "Qarku i Tiranës",
+   "aliases": [
+    "Vora"
+   ],
+   "page": false,
+   "note": "Small town/municipality next to Tirana; station addressed 'Tiranë'."
+  }
+ ]
+}

@@ -41,3 +41,5 @@ Elektroprivreda BiH i MOON cijene ne objavljuju u cjenovniku; gdje je cijena poz
 Punjač nedostaje ili je podatak pogrešan? Pišite na [hello@blokvolt.com](mailto:hello@blokvolt.com?subject=Ispravka%20mape%20BA) — ili ga unesite u [OpenStreetMap](https://www.openstreetmap.org), pa će se pojaviti na mapi nakon sljedećeg mjesečnog osvježavanja.
 
 Otvoreni podaci: [stanice.json](/assets/region/ba/stanice.json) (ODbL 1.0, © OpenStreetMap i Open Charge Map).
+
+**[Punjači po gradovima](/ba/gradovi/)**: spisak gradova s brojem punjača i linkom na mapu.

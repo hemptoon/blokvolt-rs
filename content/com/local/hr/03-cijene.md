@@ -21,7 +21,7 @@ Sve mreže u Hrvatskoj naplaćuju po kilovatsatu (kWh). Cijene su s PDV-om, osim
 
 - **Najniža objavljena cijena na AC punionici** je 0,33 € (Qelo bez mjesečne naknade), a zatim 0,35 € — ELEN izvan autocesta i Lidl s aplikacijom Lidl Plus.
 - **Brzo DC punjenje do 50 kW** stoji 0,45–0,51 € kod ELEN-a izvan autocesta, Petrola i Kauflanda te 0,45 € kod Lidla s aplikacijom (0,60 € bez nje). Na autocestama ELEN naplaćuje 0,57 €.
-- **Ultrabrzo punjenje** (iznad 50 kW) stoji 0,62 € (Electrip), 0,66–0,73 € (Petrol) i 0,78 € (ELEN na autocestama). IONITY bez pretplate naplaćuje 0,74 €, a s pretplatom Power od 11,99 € mjesečno 0,44 €.
+- **Brzo punjenje** (od 50 kW) stoji 0,62 € (Electrip), 0,66–0,73 € (Petrol) i 0,78 € (ELEN na autocestama). IONITY bez pretplate naplaćuje 0,74 €, a s pretplatom Power od 11,99 € mjesečno 0,44 €.
 - **Registracija se isplati**: kod Petrola štedi 4–7 centi po kWh, kod Lidla 5–15 centi, kod MOL-a 10 centi.
 - **Naknada za zauzeće**: ELEN i Petrol naplaćuju svaku minutu nakon isteka slobodnog vremena (40–180 minuta, ovisno o snazi). Auto maknite čim se napuni.
 
@@ -36,7 +36,7 @@ Sve mreže u Hrvatskoj naplaćuju po kilovatsatu (kWh). Cijene su s PDV-om, osim
 - **Registracija ili ad hoc.** Bez registracije (terminal za kartice, QR kod, web) mreže naplaćuju više. Od 2024. propisi EU traže da se na svakoj javnoj punionici može platiti bez ugovora — vidi [Aplikacije i kartice]({{ PAGES.apps.path }}).
 - **Autocesta.** ELEN na odmorištima naplaćuje 0,07–0,12 € više po kWh nego u gradu.
 - **Tuđa aplikacija (roaming).** Ista punionica preko aplikacije druge mreže obično je skuplja: ELEN preko Petrolove aplikacije OneCharge stoji 0,56–1,06 €, preko HT-ove espoTs 0,74–1,29 € po kWh.
-- **Snaga.** Ultrabrzo punjenje je najskuplje. Ako ne žurite, AC punjenje je upola jeftinije, a DC do 50 kW za trećinu.
+- **Snaga.** Brzo punjenje (od 50 kW) je najskuplje. Ako ne žurite, AC punjenje je upola jeftinije, a DC do 50 kW za trećinu.
 
 ## Koliko je to za 100 km
 

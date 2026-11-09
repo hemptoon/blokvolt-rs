@@ -41,3 +41,5 @@ Në bazat e hapura karikuesit e VEGA CHARGING dhe PlugoAL nuk shënohen me emrin
 Nëse mungon një karikues ose një e dhënë është e gabuar, shkruani te [hello@blokvolt.com](mailto:hello@blokvolt.com?subject=Korrigjim%20harte%20AL) ose bëjeni vetë ndryshimin në [OpenStreetMap](https://www.openstreetmap.org): ai shfaqet në hartë pas përditësimit të ardhshëm mujor.
 
 Të dhëna të hapura: [stanice.json](/assets/region/al/stanice.json) (ODbL 1.0, © OpenStreetMap dhe Open Charge Map).
+
+**[Karikuesit sipas qyteteve](/al/qytetet/)**: lista e qyteteve me numrin e karikuesve dhe lidhjen te harta.

@@ -41,3 +41,5 @@ Karikuesit janë nga dy baza të hapura: **OpenStreetMap** (licenca ODbL) dhe **
 Nëse mungon një karikues ose një e dhënë është e gabuar, shkruani në [hello@blokvolt.com](mailto:hello@blokvolt.com?subject=Korrigjim%20i%20hart%C3%ABs%20XK) — ose shtojeni karikuesin në [OpenStreetMap](https://www.openstreetmap.org); do të shfaqet në hartë pas freskimit të ardhshëm mujor.
 
 Të dhëna të hapura: [stanice.json](/assets/region/xk/stanice.json) (ODbL 1.0, © OpenStreetMap dhe Open Charge Map).
+
+**[Karikuesit sipas qyteteve](/xk/qytetet/)**: lista e qyteteve me numrin e karikuesve dhe lidhjen te harta.

@@ -590,6 +590,14 @@ ignores them).
   `static/com/com.css`; templates in `templates/com2/`. Share images: `python3 scripts/og_com.py` renders
   `static/com/og-en.png`, `og-hr.png`, `og-ba.png`, `og-me.png`, `og-al.png`, `og-xk.png`, `og-mk.png` (Cyrillic
   font for mk). The English layer and the local sections are impersonal (no "we"/"our" about the site).
+- **Town pages (since 09.11.2026, K5).** `/<dir>/gradovi/<slug>/` (hr, ba, me, mk; `qytetet` for al, xk) and an index per
+  section, from `content/com/local/<dir>/mesta.json` (GeoNames ≥ 5,000 inhabitants plus listed resorts) and
+  `scripts/loc_towns.py` (each station → nearest listed town within 25 km, at build time; `stanice.json` is not changed). A
+  town gets a page at ≥ 3 public stations and is then pinned (`page: true`) — the build only prints new towns, pin them in
+  `mesta.json` with the next commit; unpin only with a redirect. No hreflang on town pages; all are in the sitemap.
+  Self-check: `python3 scripts/loc_towns.py`. Speed label (owner's decision 09.11.2026): "ultrabrzo / HPC" means 150 kW and
+  more everywhere; the segment from 50 kW in the local sections is "Brzo (od 50 kW)" (sq "I shpejtë (nga 50 kW)", mk
+  "Брзо (од 50 kW)"), strings `hpc` / `hpc_short`.
 - **Rules.** No Evolako offer outside the Serbia page; no live statuses of Charge&GO; nothing from Google Maps;
   companies and operators are not contacted from this work.
 

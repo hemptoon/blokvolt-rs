@@ -38,3 +38,5 @@ Punjači su iz dvije otvorene baze: **OpenStreetMap** (licenca ODbL) i **Open Ch
 Punjač nedostaje ili je podatak pogrešan? Pišite na [hello@blokvolt.com](mailto:hello@blokvolt.com?subject=Ispravka%20mape%20ME) — ili ga unesite u [OpenStreetMap](https://www.openstreetmap.org), pa će se pojaviti na mapi nakon sljedećeg mjesečnog osvježavanja.
 
 Otvoreni podaci: [stanice.json](/assets/region/me/stanice.json) (ODbL 1.0, © OpenStreetMap i Open Charge Map).
+
+**[Punjači po gradovima](/me/gradovi/)**: spisak gradova sa brojem punjača i linkom na mapu.

@@ -41,3 +41,5 @@ related: prices, road, home
 Ако недостасува полнач или податокот е погрешен, пишете на [hello@blokvolt.com](mailto:hello@blokvolt.com?subject=%D0%98%D1%81%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%BC%D0%B0%D0%BF%D0%B0%D1%82%D0%B0%20MK) или внесете го во [OpenStreetMap](https://www.openstreetmap.org), па ќе се појави на мапата по следното месечно освежување.
 
 Отворени податоци: [stanice.json](/assets/region/mk/stanice.json) (ODbL 1.0, © OpenStreetMap и Open Charge Map).
+
+**[Полначи по градови](/mk/gradovi/)**: список на градовите со бројот на полначи и врска до мапата.

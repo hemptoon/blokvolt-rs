@@ -27,4 +27,6 @@ card: Mapa punjača, cijene, kalkulator s tarifama EPCG, subvencije Eko-fonda i 
 
 {{ w.tiles(['map', 'prices', 'home', 'electricity', 'subsidies', 'road', 'stats']) }}
 
+**[Punjači po gradovima](/me/gradovi/)**: spisak gradova sa brojem punjača i linkom na mapu.
+
 <p class="note disc">Sve mreže prikazane su po istim pravilima, a mjesto na ovim stranicama niko ne plaća. Ko stoji iza BlokVolta i odakle su podaci, piše u <a href="{{ PAGES.method.path }}">metodologiji</a>.</p>

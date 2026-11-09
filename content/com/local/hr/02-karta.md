@@ -29,7 +29,7 @@ Punionice su iz dviju otvorenih baza: **OpenStreetMap** (licenca ODbL) i **Open 
 
 **Punionice nisu pojedinačno provjerene.** Otvorene baze uređuju vozači i volonteri, pa neka punionica možda više ne radi ili je samo za goste hotela. Prije puta provjerite u aplikaciji mreže. Državni [Registar punionica](https://pametnamobilnost.hr/hr/registar-punionica/44) ima 715 zapisa, ali bez koordinata i snage, pa ga ne možemo izravno usporediti s kartom.
 
-Cijena u kartici punionice je **cjenik mreže** za tu vrstu punjenja — AC, DC do 50 kW ili ultrabrzo — s datumom od kojeg vrijedi. Gdje mreža ima više cijena (s registracijom i bez nje, na autocesti i izvan nje), vidite raspon i sve stavke. Cijene svih mreža na jednom mjestu: [Cijene punjenja]({{ PAGES.prices.path }}).
+Cijena u kartici punionice je **cjenik mreže** za tu vrstu punjenja — AC, DC do 50 kW ili brzo (od 50 kW) — s datumom od kojeg vrijedi. Gdje mreža ima više cijena (s registracijom i bez nje, na autocesti i izvan nje), vidite raspon i sve stavke. Cijene svih mreža na jednom mjestu: [Cijene punjenja]({{ PAGES.prices.path }}).
 
 ## Kako koristiti kartu
 
@@ -42,3 +42,5 @@ Cijena u kartici punionice je **cjenik mreže** za tu vrstu punjenja — AC, DC 
 Punionica nedostaje ili je podatak pogrešan? Pošaljite ispravku na [hello@blokvolt.com](mailto:hello@blokvolt.com?subject=Ispravka%20karte%20HR) — ili je sami unesite u [OpenStreetMap](https://www.openstreetmap.org), pa će se pojaviti na karti nakon sljedećeg mjesečnog osvježavanja.
 
 Otvoreni skup podataka: [stanice.json](/assets/region/hr/stanice.json) (ODbL 1.0, © OpenStreetMap i Open Charge Map).
+
+**[Punionice po gradovima](/hr/gradovi/)**: popis gradova s brojem punionica i poveznicom na kartu.

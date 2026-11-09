@@ -34,6 +34,8 @@ Për karikimin në shtëpi janë llogaritur edhe 10 % humbje. Në shtëpi kariki
 
 {{ w.tiles(['map', 'prices', 'home', 'subsidies', 'road', 'stats']) }}
 
+**[Karikuesit sipas qyteteve](/al/qytetet/)**: lista e qyteteve me numrin e karikuesve dhe lidhjen te harta.
+
 ## Përmbledhje, shtator 2026
 
 - **Flota.** Në vitin 2025 u regjistruan {{ num(C.new_reg.series[-1][1]) }} makina elektrike të reja dhe flota pothuajse u dyfishua (Eurostat). [Statistika]({{ PAGES.stats.path }})

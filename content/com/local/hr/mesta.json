@@ -1,0 +1,1673 @@
+{
+ "note": "Town list of this section for the town pages /hr/gradovi/ (scripts/loc_towns.py, K5 09.11.2026). A station belongs to the nearest town of this list within 25 km; a town has a page with at least 3 public stations or when `page` is true (pinned: a town that has a page keeps it — unpin only with a redirect). Reference: GeoNames towns from 5,000 inhabitants plus resorts and transit towns from 1,000 (CC BY 4.0, attribution on the pages), only towns that had a station on 26.10.2026; every row checked by hand. Fields: name (local official), slug, gid (GeoNames id), lat/lon (GeoNames), pop, loc (locative with preposition), region, aliases, page, note.",
+ "towns": [
+  {
+   "name": "Zagreb",
+   "slug": "zagreb",
+   "gid": 3186886,
+   "lat": 45.81444,
+   "lon": 15.97798,
+   "pop": 663592,
+   "loc": "u Zagrebu",
+   "region": "Grad Zagreb",
+   "aliases": [
+    "Agram"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Osijek",
+   "slug": "osijek",
+   "gid": 3193935,
+   "lat": 45.55066,
+   "lon": 18.6942,
+   "pop": 75535,
+   "loc": "u Osijeku",
+   "region": "Osječko-baranjska županija",
+   "aliases": [
+    "Esseg",
+    "Eszék"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Šibenik",
+   "slug": "sibenik",
+   "gid": 3190941,
+   "lat": 43.73429,
+   "lon": 15.8942,
+   "pop": 31115,
+   "loc": "u Šibeniku",
+   "region": "Šibensko-kninska županija",
+   "aliases": [
+    "Sebenico"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Rijeka",
+   "slug": "rijeka",
+   "gid": 3191648,
+   "lat": 45.32673,
+   "lon": 14.44241,
+   "pop": 107964,
+   "loc": "u Rijeci",
+   "region": "Primorsko-goranska županija",
+   "aliases": [
+    "Fiume"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Rovinj",
+   "slug": "rovinj",
+   "gid": 3191518,
+   "lat": 45.08268,
+   "lon": 13.63457,
+   "pop": 11629,
+   "loc": "u Rovinju",
+   "region": "Istarska županija",
+   "aliases": [
+    "Rovigno"
+   ],
+   "page": true,
+   "note": "Bilingual town (Rovinj-Rovigno)."
+  },
+  {
+   "name": "Zadar",
+   "slug": "zadar",
+   "gid": 3186952,
+   "lat": 44.11578,
+   "lon": 15.22514,
+   "pop": 67309,
+   "loc": "u Zadru",
+   "region": "Zadarska županija",
+   "aliases": [
+    "Zara"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Sveta Nedelja",
+   "slug": "sveta-nedelja",
+   "gid": 3189386,
+   "lat": 45.79833,
+   "lon": 15.78056,
+   "pop": 1363,
+   "loc": "u Svetoj Nedelji",
+   "region": "Zagrebačka županija",
+   "aliases": [
+    "Sveta Nedjelja"
+   ],
+   "page": true,
+   "note": "Official name is the kajkavian 'Sveta Nedelja' (Grad Sveta Nedelja, Zagreb County), not 'Nedjelja'; slug changed to sveta-nedelja. 8 of 11 stations have 'Zagreb' in address: likely western Zagreb edge (Jankomir/Lučko) captured by nearest-town rule."
+  },
+  {
+   "name": "Bjelovar",
+   "slug": "bjelovar",
+   "gid": 3203982,
+   "lat": 45.89789,
+   "lon": 16.85071,
+   "pop": 24392,
+   "loc": "u Bjelovaru",
+   "region": "Bjelovarsko-bilogorska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Karlovac",
+   "slug": "karlovac",
+   "gid": 3345300,
+   "lat": 45.49167,
+   "lon": 15.55,
+   "pop": 41869,
+   "loc": "u Karlovcu",
+   "region": "Karlovačka županija",
+   "aliases": [
+    "Karlstadt"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Samobor",
+   "slug": "samobor",
+   "gid": 3191316,
+   "lat": 45.80306,
+   "lon": 15.71806,
+   "pop": 16911,
+   "loc": "u Samoboru",
+   "region": "Zagrebačka županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Solin",
+   "slug": "solin",
+   "gid": 3190359,
+   "lat": 43.5432,
+   "lon": 16.49314,
+   "pop": 20996,
+   "loc": "u Solinu",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [
+    "Salona"
+   ],
+   "page": true,
+   "note": "Separate town but contiguous with Split; 7 of 10 stations have 'Split' in address (likely Split's northern edge, e.g. around City Center one)."
+  },
+  {
+   "name": "Dugo Selo",
+   "slug": "dugo-selo",
+   "gid": 3201009,
+   "lat": 45.80611,
+   "lon": 16.24444,
+   "pop": 11097,
+   "loc": "u Dugom Selu",
+   "region": "Zagrebačka županija",
+   "aliases": [],
+   "page": true,
+   "note": "Addresses (Lužan, Otok Svibovski, Ivanja Reka, Velika Gorica) suggest stations on Zagreb's eastern edge (Sesvete/Ivanja Reka are in Grad Zagreb) assigned here; check."
+  },
+  {
+   "name": "Otočac",
+   "slug": "otocac",
+   "gid": 3193788,
+   "lat": 44.86944,
+   "lon": 15.2375,
+   "pop": 3852,
+   "loc": "u Otočcu",
+   "region": "Ličko-senjska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Varaždin",
+   "slug": "varazdin",
+   "gid": 3188383,
+   "lat": 46.30444,
+   "lon": 16.33778,
+   "pop": 36187,
+   "loc": "u Varaždinu",
+   "region": "Varaždinska županija",
+   "aliases": [
+    "Varasdin"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Pula",
+   "slug": "pula",
+   "gid": 3192224,
+   "lat": 44.86833,
+   "lon": 13.84806,
+   "pop": 52220,
+   "loc": "u Puli",
+   "region": "Istarska županija",
+   "aliases": [
+    "Pola"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Gospić",
+   "slug": "gospic",
+   "gid": 3199873,
+   "lat": 44.54611,
+   "lon": 15.37472,
+   "pop": 6362,
+   "loc": "u Gospiću",
+   "region": "Ličko-senjska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Velika Gorica",
+   "slug": "velika-gorica",
+   "gid": 3188244,
+   "lat": 45.7125,
+   "lon": 16.07556,
+   "pop": 30036,
+   "loc": "u Velikoj Gorici",
+   "region": "Zagrebačka županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Čakovec",
+   "slug": "cakovec",
+   "gid": 3202888,
+   "lat": 46.38444,
+   "lon": 16.43389,
+   "pop": 15078,
+   "loc": "u Čakovcu",
+   "region": "Međimurska županija",
+   "aliases": [
+    "Csáktornya"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Punat",
+   "slug": "punat",
+   "gid": 3192219,
+   "lat": 45.01472,
+   "lon": 14.62889,
+   "pop": 1784,
+   "loc": "u Puntu",
+   "region": "Primorsko-goranska županija",
+   "aliases": [],
+   "page": true,
+   "note": "Municipality seat on island Krk (općina, not a town). Gen. Punta, loc. 'u Puntu'. Stations with address Senj (2) and Rab (1) are across the sea — check the 25 km rule ignores water."
+  },
+  {
+   "name": "Lovran",
+   "slug": "lovran",
+   "gid": 3196175,
+   "lat": 45.29194,
+   "lon": 14.27417,
+   "pop": 2859,
+   "loc": "u Lovranu",
+   "region": "Primorsko-goranska županija",
+   "aliases": [
+    "Laurana"
+   ],
+   "page": true,
+   "note": "Municipality seat (općina). 7 stations with address 'Rijeka' assigned here — odd; Opatija (bigger, 4 km away) has only 1 public. Check coordinates / consider Opatija as the page."
+  },
+  {
+   "name": "Pazin",
+   "slug": "pazin",
+   "gid": 3193561,
+   "lat": 45.23917,
+   "lon": 13.93945,
+   "pop": 3981,
+   "loc": "u Pazinu",
+   "region": "Istarska županija",
+   "aliases": [
+    "Pisino"
+   ],
+   "page": true,
+   "note": "Stations scattered over central Istria (Poreč, Kanfanar, Motovun addresses)."
+  },
+  {
+   "name": "Delnice",
+   "slug": "delnice",
+   "gid": 3202104,
+   "lat": 45.40083,
+   "lon": 14.79972,
+   "pop": 3861,
+   "loc": "u Delnicama",
+   "region": "Primorsko-goranska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Kastav",
+   "slug": "kastav",
+   "gid": 3198227,
+   "lat": 45.37528,
+   "lon": 14.34861,
+   "pop": 10202,
+   "loc": "u Kastvu",
+   "region": "Primorsko-goranska županija",
+   "aliases": [
+    "Castua"
+   ],
+   "page": true,
+   "note": "Separate town but suburb-like to Rijeka; all 7 stations have 'Rijeka' in address. Gen. Kastva, loc. 'u Kastvu'."
+  },
+  {
+   "name": "Krk",
+   "slug": "krk",
+   "gid": 3197208,
+   "lat": 45.02744,
+   "lon": 14.57542,
+   "pop": 3935,
+   "loc": "u Krku",
+   "region": "Primorsko-goranska županija",
+   "aliases": [
+    "Veglia"
+   ],
+   "page": true,
+   "note": "Town Krk: chose 'u Krku' (town). 'na Krku' = whole island, but Punat, Njivice, Omišalj have own pages, so 'na Krku' would overpromise. Switch to 'na Krku' only if SEO for the island matters more."
+  },
+  {
+   "name": "Vinkovci",
+   "slug": "vinkovci",
+   "gid": 3187719,
+   "lat": 45.28833,
+   "lon": 18.80472,
+   "pop": 28111,
+   "loc": "u Vinkovcima",
+   "region": "Vukovarsko-srijemska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Đakovo",
+   "slug": "djakovo",
+   "gid": 3202220,
+   "lat": 45.30833,
+   "lon": 18.41056,
+   "pop": 16875,
+   "loc": "u Đakovu",
+   "region": "Osječko-baranjska županija",
+   "aliases": [
+    "Djakovo",
+    "Diakovár"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Umag",
+   "slug": "umag",
+   "gid": 3188498,
+   "lat": 45.43139,
+   "lon": 13.52389,
+   "pop": 6751,
+   "loc": "u Umagu",
+   "region": "Istarska županija",
+   "aliases": [
+    "Umago"
+   ],
+   "page": true,
+   "note": "Bilingual town (Umag-Umago)."
+  },
+  {
+   "name": "Njivice",
+   "slug": "njivice",
+   "gid": 3194475,
+   "lat": 45.15806,
+   "lon": 14.53861,
+   "pop": 1115,
+   "loc": "u Njivicama",
+   "region": "Primorsko-goranska županija",
+   "aliases": [],
+   "page": true,
+   "note": "VILLAGE: settlement in Općina Omišalj on Krk, not a town or municipality seat. Pluralia tantum: 'u Njivicama'."
+  },
+  {
+   "name": "Slavonski Brod",
+   "slug": "slavonski-brod",
+   "gid": 3190586,
+   "lat": 45.16158,
+   "lon": 18.0163,
+   "pop": 45005,
+   "loc": "u Slavonskom Brodu",
+   "region": "Brodsko-posavska županija",
+   "aliases": [
+    "Brod"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Mali Lošinj",
+   "slug": "mali-losinj",
+   "gid": 3195674,
+   "lat": 44.53056,
+   "lon": 14.46861,
+   "pop": 5561,
+   "loc": "u Malom Lošinju",
+   "region": "Primorsko-goranska županija",
+   "aliases": [
+    "Lussinpiccolo"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Novigrad",
+   "slug": "novigrad",
+   "gid": 3194379,
+   "lat": 45.315,
+   "lon": 13.55806,
+   "pop": 2292,
+   "loc": "u Novigradu",
+   "region": "Istarska županija",
+   "aliases": [
+    "Cittanova",
+    "Novigrad Istarski"
+   ],
+   "page": true,
+   "note": "Istrian Novigrad (Novigrad-Cittanova); another Novigrad exists in Zadar County — page text should make the county visible."
+  },
+  {
+   "name": "Poreč",
+   "slug": "porec",
+   "gid": 3192699,
+   "lat": 45.22567,
+   "lon": 13.59511,
+   "pop": 8841,
+   "loc": "u Poreču",
+   "region": "Istarska županija",
+   "aliases": [
+    "Parenzo"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Vodice",
+   "slug": "vodice",
+   "gid": 3187489,
+   "lat": 43.76083,
+   "lon": 15.78278,
+   "pop": 6592,
+   "loc": "u Vodicama",
+   "region": "Šibensko-kninska županija",
+   "aliases": [],
+   "page": true,
+   "note": "Plural: 'u Vodicama'."
+  },
+  {
+   "name": "Krapinske Toplice",
+   "slug": "krapinske-toplice",
+   "gid": 3197364,
+   "lat": 46.09333,
+   "lon": 15.84333,
+   "pop": 1257,
+   "loc": "u Krapinskim Toplicama",
+   "region": "Krapinsko-zagorska županija",
+   "aliases": [],
+   "page": true,
+   "note": "Municipality seat (općina), spa settlement, not a town."
+  },
+  {
+   "name": "Ogulin",
+   "slug": "ogulin",
+   "gid": 3194183,
+   "lat": 45.26611,
+   "lon": 15.22861,
+   "pop": 7374,
+   "loc": "u Ogulinu",
+   "region": "Karlovačka županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Omišalj",
+   "slug": "omisalj",
+   "gid": 3194112,
+   "lat": 45.21134,
+   "lon": 14.55495,
+   "pop": 1877,
+   "loc": "u Omišlju",
+   "region": "Primorsko-goranska županija",
+   "aliases": [
+    "Castelmuschio"
+   ],
+   "page": true,
+   "note": "Municipality seat on Krk (općina). Gen. Omišlja, loc. 'u Omišlju'. Stations have address 'Rijeka' — probably Rijeka Airport area (airport is in Omišalj municipality); fine."
+  },
+  {
+   "name": "Prelog",
+   "slug": "prelog",
+   "gid": 3192532,
+   "lat": 46.335,
+   "lon": 16.61556,
+   "pop": 4042,
+   "loc": "u Prelogu",
+   "region": "Međimurska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Slunj",
+   "slug": "slunj",
+   "gid": 3190523,
+   "lat": 45.11456,
+   "lon": 15.5843,
+   "pop": 1576,
+   "loc": "u Slunju",
+   "region": "Karlovačka županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Dubrovnik",
+   "slug": "dubrovnik",
+   "gid": 3201047,
+   "lat": 42.64125,
+   "lon": 18.10909,
+   "pop": 26922,
+   "loc": "u Dubrovniku",
+   "region": "Dubrovačko-neretvanska županija",
+   "aliases": [
+    "Ragusa"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Split",
+   "slug": "split",
+   "gid": 3190261,
+   "lat": 43.50891,
+   "lon": 16.43915,
+   "pop": 149830,
+   "loc": "u Splitu",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [
+    "Spalato"
+   ],
+   "page": true,
+   "note": "Only 4 public stations for Croatia's 2nd city looks low (Solin, Podstrana, Kaštela, Dugopolje take the edges); data issue rather than name."
+  },
+  {
+   "name": "Biograd na Moru",
+   "slug": "biograd-na-moru",
+   "gid": 3204121,
+   "lat": 43.94333,
+   "lon": 15.45194,
+   "pop": 5601,
+   "loc": "u Biogradu na Moru",
+   "region": "Zadarska županija",
+   "aliases": [
+    "Biograd"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Cres",
+   "slug": "cres",
+   "gid": 3202523,
+   "lat": 44.96092,
+   "lon": 14.41246,
+   "pop": 2185,
+   "loc": "u Cresu",
+   "region": "Primorsko-goranska županija",
+   "aliases": [
+    "Cherso"
+   ],
+   "page": true,
+   "note": "Town Cres: 'u Cresu' (town); 'na Cresu' = island. 3 stations with address 'Krk' are across the sea (Krk island) — check."
+  },
+  {
+   "name": "Dugopolje",
+   "slug": "dugopolje",
+   "gid": 3201011,
+   "lat": 43.58056,
+   "lon": 16.60278,
+   "pop": 3248,
+   "loc": "u Dugopolju",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [],
+   "page": true,
+   "note": "Municipality seat (općina) near Split, not a town."
+  },
+  {
+   "name": "Fažana",
+   "slug": "fazana",
+   "gid": 3200862,
+   "lat": 44.92742,
+   "lon": 13.80349,
+   "pop": 1788,
+   "loc": "u Fažani",
+   "region": "Istarska županija",
+   "aliases": [
+    "Fasana"
+   ],
+   "page": true,
+   "note": "Municipality seat (općina), not a town."
+  },
+  {
+   "name": "Labin",
+   "slug": "labin",
+   "gid": 3196834,
+   "lat": 45.095,
+   "lon": 14.11972,
+   "pop": 5806,
+   "loc": "u Labinu",
+   "region": "Istarska županija",
+   "aliases": [
+    "Albona"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Trogir",
+   "slug": "trogir",
+   "gid": 3188763,
+   "lat": 43.5125,
+   "lon": 16.25167,
+   "pop": 10107,
+   "loc": "u Trogiru",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [
+    "Traù"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Duga Resa",
+   "slug": "duga-resa",
+   "gid": 3201030,
+   "lat": 45.44614,
+   "lon": 15.49871,
+   "pop": 5380,
+   "loc": "u Dugoj Resi",
+   "region": "Karlovačka županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Ivanec",
+   "slug": "ivanec",
+   "gid": 3199076,
+   "lat": 46.22306,
+   "lon": 16.12,
+   "pop": 4997,
+   "loc": "u Ivancu",
+   "region": "Varaždinska županija",
+   "aliases": [],
+   "page": true,
+   "note": "Gen. Ivanca, loc. 'u Ivancu'."
+  },
+  {
+   "name": "Jastrebarsko",
+   "slug": "jastrebarsko",
+   "gid": 3198799,
+   "lat": 45.66833,
+   "lon": 15.64861,
+   "pop": 5312,
+   "loc": "u Jastrebarskom",
+   "region": "Zagrebačka županija",
+   "aliases": [
+    "Jaska"
+   ],
+   "page": true,
+   "note": "Adjectival noun: 'u Jastrebarskom'."
+  },
+  {
+   "name": "Koprivnica",
+   "slug": "koprivnica",
+   "gid": 3197728,
+   "lat": 46.16364,
+   "lon": 16.8297,
+   "pop": 22262,
+   "loc": "u Koprivnici",
+   "region": "Koprivničko-križevačka županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Korenica",
+   "slug": "korenica",
+   "gid": 3189076,
+   "lat": 44.74389,
+   "lon": 15.70972,
+   "pop": 1563,
+   "loc": "u Korenici",
+   "region": "Ličko-senjska županija",
+   "aliases": [
+    "Plitvička Jezera",
+    "Titova Korenica"
+   ],
+   "page": true,
+   "note": "Seat of Općina Plitvička Jezera, not a town; 'Plitvička Jezera' added as alias (municipality name) — 'Titova Korenica' is the pre-1991 name, drop if unwanted."
+  },
+  {
+   "name": "Makarska",
+   "slug": "makarska",
+   "gid": 3195890,
+   "lat": 43.29694,
+   "lon": 17.01778,
+   "pop": 12809,
+   "loc": "u Makarskoj",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Nova Gradiška",
+   "slug": "nova-gradiska",
+   "gid": 3194449,
+   "lat": 45.255,
+   "lon": 17.38306,
+   "pop": 9820,
+   "loc": "u Novoj Gradiški",
+   "region": "Brodsko-posavska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Novi Marof",
+   "slug": "novi-marof",
+   "gid": 3194367,
+   "lat": 46.16194,
+   "lon": 16.33028,
+   "pop": 1810,
+   "loc": "u Novom Marofu",
+   "region": "Varaždinska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Omiš",
+   "slug": "omis",
+   "gid": 3194114,
+   "lat": 43.44472,
+   "lon": 16.68861,
+   "pop": 5985,
+   "loc": "u Omišu",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [
+    "Almissa"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Vukovar",
+   "slug": "vukovar",
+   "gid": 3187047,
+   "lat": 45.35161,
+   "lon": 19.00225,
+   "pop": 22255,
+   "loc": "u Vukovaru",
+   "region": "Vukovarsko-srijemska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Zaprešić",
+   "slug": "zapresic",
+   "gid": 3186781,
+   "lat": 45.85639,
+   "lon": 15.80778,
+   "pop": 18768,
+   "loc": "u Zaprešiću",
+   "region": "Zagrebačka županija",
+   "aliases": [],
+   "page": true,
+   "note": "All 4 stations have 'Zagreb' in address — may be Zagreb's western edge (Podsused)."
+  },
+  {
+   "name": "Đurđevac",
+   "slug": "djurdjevac",
+   "gid": 3200961,
+   "lat": 46.04111,
+   "lon": 17.06972,
+   "pop": 5834,
+   "loc": "u Đurđevcu",
+   "region": "Koprivničko-križevačka županija",
+   "aliases": [
+    "Djurdjevac"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Županja",
+   "slug": "zupanja",
+   "gid": 3186294,
+   "lat": 45.0775,
+   "lon": 18.6975,
+   "pop": 9153,
+   "loc": "u Županji",
+   "region": "Vukovarsko-srijemska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Medulin",
+   "slug": "medulin",
+   "gid": 3195307,
+   "lat": 44.8225,
+   "lon": 13.935,
+   "pop": 2830,
+   "loc": "u Medulinu",
+   "region": "Istarska županija",
+   "aliases": [
+    "Medolino"
+   ],
+   "page": true,
+   "note": "Municipality seat (općina), not a town."
+  },
+  {
+   "name": "Crikvenica",
+   "slug": "crikvenica",
+   "gid": 3202507,
+   "lat": 45.17722,
+   "lon": 14.69278,
+   "pop": 6239,
+   "loc": "u Crikvenici",
+   "region": "Primorsko-goranska županija",
+   "aliases": [],
+   "page": true,
+   "note": "3 stations with address 'Krk' are across the sea — check."
+  },
+  {
+   "name": "Novalja",
+   "slug": "novalja",
+   "gid": 3194422,
+   "lat": 44.55778,
+   "lon": 14.88667,
+   "pop": 2415,
+   "loc": "u Novalji",
+   "region": "Ličko-senjska županija",
+   "aliases": [],
+   "page": true,
+   "note": "Town on island Pag. A station with address 'Rab' (across the sea) assigned here — check."
+  },
+  {
+   "name": "Starigrad",
+   "slug": "starigrad",
+   "gid": 3189964,
+   "lat": 44.29601,
+   "lon": 15.43865,
+   "pop": 1051,
+   "loc": "u Starigradu",
+   "region": "Zadarska županija",
+   "aliases": [
+    "Starigrad Paklenica",
+    "Starigrad-Paklenica"
+   ],
+   "page": true,
+   "note": "Starigrad (Paklenica), Zadar County — municipality seat, not a town. Do not confuse with Stari Grad on Hvar (separate row, slug stari-grad)."
+  },
+  {
+   "name": "Vrsar",
+   "slug": "vrsar",
+   "gid": 3187145,
+   "lat": 45.14917,
+   "lon": 13.60528,
+   "pop": 1535,
+   "loc": "u Vrsaru",
+   "region": "Istarska županija",
+   "aliases": [
+    "Orsera"
+   ],
+   "page": true,
+   "note": "Municipality seat (općina), not a town."
+  },
+  {
+   "name": "Bol",
+   "slug": "bol",
+   "gid": 3203765,
+   "lat": 43.26194,
+   "lon": 16.655,
+   "pop": 1656,
+   "loc": "u Bolu",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [],
+   "page": true,
+   "note": "Municipality seat on Brač (općina). 'u Bolu' (town), not 'na Braču'."
+  },
+  {
+   "name": "Drniš",
+   "slug": "drnis",
+   "gid": 3201162,
+   "lat": 43.8625,
+   "lon": 16.15556,
+   "pop": 2752,
+   "loc": "u Drnišu",
+   "region": "Šibensko-kninska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Metković",
+   "slug": "metkovic",
+   "gid": 3195222,
+   "lat": 43.05417,
+   "lon": 17.64833,
+   "pop": 13971,
+   "loc": "u Metkoviću",
+   "region": "Dubrovačko-neretvanska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Novska",
+   "slug": "novska",
+   "gid": 3194319,
+   "lat": 45.34056,
+   "lon": 16.97694,
+   "pop": 5922,
+   "loc": "u Novskoj",
+   "region": "Sisačko-moslavačka županija",
+   "aliases": [],
+   "page": true,
+   "note": "Adjectival: 'u Novskoj'."
+  },
+  {
+   "name": "Slatina",
+   "slug": "slatina",
+   "gid": 3192932,
+   "lat": 45.70333,
+   "lon": 17.70278,
+   "pop": 8722,
+   "loc": "u Slatini",
+   "region": "Virovitičko-podravska županija",
+   "aliases": [
+    "Podravska Slatina"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Virovitica",
+   "slug": "virovitica",
+   "gid": 3187694,
+   "lat": 45.83448,
+   "lon": 17.38555,
+   "pop": 13486,
+   "loc": "u Virovitici",
+   "region": "Virovitičko-podravska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Zabok",
+   "slug": "zabok",
+   "gid": 3186984,
+   "lat": 46.02626,
+   "lon": 15.90391,
+   "pop": 3408,
+   "loc": "u Zaboku",
+   "region": "Krapinsko-zagorska županija",
+   "aliases": [],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Primošten",
+   "slug": "primosten",
+   "gid": 3192383,
+   "lat": 43.58632,
+   "lon": 15.92302,
+   "pop": 1555,
+   "loc": "u Primoštenu",
+   "region": "Šibensko-kninska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Municipality seat (općina)."
+  },
+  {
+   "name": "Nin",
+   "slug": "nin",
+   "gid": 3216446,
+   "lat": 44.24139,
+   "lon": 15.17833,
+   "pop": 1101,
+   "loc": "u Ninu",
+   "region": "Zadarska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Podstrana",
+   "slug": "podstrana",
+   "gid": 3192910,
+   "lat": 43.48668,
+   "lon": 16.55013,
+   "pop": 9129,
+   "loc": "u Podstrani",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Municipality (općina) adjoining Split; suburb-like."
+  },
+  {
+   "name": "Tučepi",
+   "slug": "tucepi",
+   "gid": 3188675,
+   "lat": 43.27222,
+   "lon": 17.05444,
+   "pop": 1819,
+   "loc": "u Tučepima",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Municipality seat (općina); plural 'u Tučepima'."
+  },
+  {
+   "name": "Pakoštane",
+   "slug": "pakostane",
+   "gid": 3193710,
+   "lat": 43.91222,
+   "lon": 15.50889,
+   "pop": 2180,
+   "loc": "u Pakoštanima",
+   "region": "Zadarska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Municipality seat (općina); plural 'u Pakoštanima'."
+  },
+  {
+   "name": "Supetar",
+   "slug": "supetar",
+   "gid": 3189492,
+   "lat": 43.38417,
+   "lon": 16.55083,
+   "pop": 3415,
+   "loc": "u Supetru",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Town on Brač; gen. Supetra, loc. 'u Supetru'."
+  },
+  {
+   "name": "Sveti Ivan Zelina",
+   "slug": "sveti-ivan-zelina",
+   "gid": 3186604,
+   "lat": 45.95985,
+   "lon": 16.24327,
+   "pop": 2583,
+   "loc": "u Svetom Ivanu Zelini",
+   "region": "Zagrebačka županija",
+   "aliases": [
+    "Zelina"
+   ],
+   "page": false,
+   "note": "Locally often just 'u Zelini'."
+  },
+  {
+   "name": "Benkovac",
+   "slug": "benkovac",
+   "gid": 3204293,
+   "lat": 44.03444,
+   "lon": 15.61278,
+   "pop": 2484,
+   "loc": "u Benkovcu",
+   "region": "Zadarska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Daruvar",
+   "slug": "daruvar",
+   "gid": 3202184,
+   "lat": 45.59056,
+   "lon": 17.225,
+   "pop": 7440,
+   "loc": "u Daruvaru",
+   "region": "Bjelovarsko-bilogorska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Imotski",
+   "slug": "imotski",
+   "gid": 3199111,
+   "lat": 43.44667,
+   "lon": 17.21667,
+   "pop": 4008,
+   "loc": "u Imotskom",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Adjectival: 'u Imotskom'."
+  },
+  {
+   "name": "Ivanić-Grad",
+   "slug": "ivanic-grad",
+   "gid": 3199069,
+   "lat": 45.70833,
+   "lon": 16.39694,
+   "pop": 8452,
+   "loc": "u Ivanić-Gradu",
+   "region": "Zagrebačka županija",
+   "aliases": [
+    "Ivanić Grad"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Knin",
+   "slug": "knin",
+   "gid": 3197986,
+   "lat": 44.04063,
+   "lon": 16.19662,
+   "pop": 8262,
+   "loc": "u Kninu",
+   "region": "Šibensko-kninska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Kutina",
+   "slug": "kutina",
+   "gid": 3196864,
+   "lat": 45.475,
+   "lon": 16.78194,
+   "pop": 12012,
+   "loc": "u Kutini",
+   "region": "Sisačko-moslavačka županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Ludbreg",
+   "slug": "ludbreg",
+   "gid": 3196120,
+   "lat": 46.25194,
+   "lon": 16.61472,
+   "pop": 3463,
+   "loc": "u Ludbregu",
+   "region": "Varaždinska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Mursko Središće",
+   "slug": "mursko-sredisce",
+   "gid": 3194626,
+   "lat": 46.5121,
+   "lon": 16.43938,
+   "pop": 3321,
+   "loc": "u Murskom Središću",
+   "region": "Međimurska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Murter",
+   "slug": "murter",
+   "gid": 3194643,
+   "lat": 43.82043,
+   "lon": 15.58988,
+   "pop": 1920,
+   "loc": "u Murteru",
+   "region": "Šibensko-kninska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Settlement/municipality seat (Općina Murter-Kornati) on island Murter; 'na Murteru' is also very common colloquially. Not a town."
+  },
+  {
+   "name": "Našice",
+   "slug": "nasice",
+   "gid": 3194581,
+   "lat": 45.48861,
+   "lon": 18.08778,
+   "pop": 7307,
+   "loc": "u Našicama",
+   "region": "Osječko-baranjska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Plural: 'u Našicama'."
+  },
+  {
+   "name": "Novi Vinodolski",
+   "slug": "novi-vinodolski",
+   "gid": 3194355,
+   "lat": 45.12806,
+   "lon": 14.78889,
+   "pop": 3336,
+   "loc": "u Novom Vinodolskom",
+   "region": "Primorsko-goranska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Orebić",
+   "slug": "orebic",
+   "gid": 3194029,
+   "lat": 42.9767,
+   "lon": 17.18619,
+   "pop": 1794,
+   "loc": "u Orebiću",
+   "region": "Dubrovačko-neretvanska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Municipality seat (općina) on Pelješac."
+  },
+  {
+   "name": "Oroslavje",
+   "slug": "oroslavje",
+   "gid": 3193962,
+   "lat": 45.99672,
+   "lon": 15.91507,
+   "pop": 3253,
+   "loc": "u Oroslavju",
+   "region": "Krapinsko-zagorska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Ploče",
+   "slug": "ploce",
+   "gid": 3193150,
+   "lat": 43.05611,
+   "lon": 17.43278,
+   "pop": 4711,
+   "loc": "u Pločama",
+   "region": "Dubrovačko-neretvanska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Plural: 'u Pločama'."
+  },
+  {
+   "name": "Požega",
+   "slug": "pozega",
+   "gid": 3190589,
+   "lat": 45.34028,
+   "lon": 17.68528,
+   "pop": 16867,
+   "loc": "u Požegi",
+   "region": "Požeško-slavonska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Pregrada",
+   "slug": "pregrada",
+   "gid": 3192545,
+   "lat": 46.16417,
+   "lon": 15.75083,
+   "pop": 1870,
+   "loc": "u Pregradi",
+   "region": "Krapinsko-zagorska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Sinj",
+   "slug": "sinj",
+   "gid": 3190865,
+   "lat": 43.70361,
+   "lon": 16.63944,
+   "pop": 10771,
+   "loc": "u Sinju",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Valpovo",
+   "slug": "valpovo",
+   "gid": 3188395,
+   "lat": 45.66083,
+   "lon": 18.41861,
+   "pop": 6332,
+   "loc": "u Valpovu",
+   "region": "Osječko-baranjska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Opatija",
+   "slug": "opatija",
+   "gid": 3194099,
+   "lat": 45.33658,
+   "lon": 14.30782,
+   "pop": 5701,
+   "loc": "u Opatiji",
+   "region": "Primorsko-goranska županija",
+   "aliases": [
+    "Abbazia"
+   ],
+   "page": false,
+   "note": "Well-known town with only 1 public station while Lovran (4 km) has 7 — check assignment."
+  },
+  {
+   "name": "Senj",
+   "slug": "senj",
+   "gid": 3191055,
+   "lat": 44.98944,
+   "lon": 14.90583,
+   "pop": 4164,
+   "loc": "u Senju",
+   "region": "Ličko-senjska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Brela",
+   "slug": "brela",
+   "gid": 3201712,
+   "lat": 43.36889,
+   "lon": 16.93417,
+   "pop": 1472,
+   "loc": "u Brelima",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Municipality seat (općina); neuter plural: 'u Brelima'."
+  },
+  {
+   "name": "Jelsa",
+   "slug": "jelsa",
+   "gid": 3198673,
+   "lat": 43.16139,
+   "lon": 16.69306,
+   "pop": 1753,
+   "loc": "u Jelsi",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Municipality seat on Hvar (općina)."
+  },
+  {
+   "name": "Kaštela",
+   "slug": "kastela",
+   "gid": null,
+   "lat": 43.5536,
+   "lon": 16.3653,
+   "pop": 38667,
+   "loc": "u Kaštelima",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [],
+   "page": false,
+   "note": "No GeoNames id (gid null): Kaštela is a town made of seven settlements (Kaštel Sućurac … Kaštel Štafilić). Neuter plural: 'u Kaštelima'. Coordinates are a centroid — check."
+  },
+  {
+   "name": "Pag",
+   "slug": "pag",
+   "gid": 3193726,
+   "lat": 44.445,
+   "lon": 15.0575,
+   "pop": 2322,
+   "loc": "u Pagu",
+   "region": "Zadarska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Town Pag: 'u Pagu'; 'na Pagu' = island."
+  },
+  {
+   "name": "Baška Voda",
+   "slug": "baska-voda",
+   "gid": 3204439,
+   "lat": 43.35694,
+   "lon": 16.95028,
+   "pop": 1766,
+   "loc": "u Baškoj Vodi",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Municipality seat (općina)."
+  },
+  {
+   "name": "Beli Manastir",
+   "slug": "beli-manastir",
+   "gid": 3204320,
+   "lat": 45.77,
+   "lon": 18.60361,
+   "pop": 6327,
+   "loc": "u Belom Manastiru",
+   "region": "Osječko-baranjska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Official name keeps 'Beli' (not 'Bijeli')."
+  },
+  {
+   "name": "Belišće",
+   "slug": "belisce",
+   "gid": 3204317,
+   "lat": 45.68028,
+   "lon": 18.40583,
+   "pop": 5354,
+   "loc": "u Belišću",
+   "region": "Osječko-baranjska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Buzet",
+   "slug": "buzet",
+   "gid": 3202942,
+   "lat": 45.40944,
+   "lon": 13.96667,
+   "pop": 2339,
+   "loc": "u Buzetu",
+   "region": "Istarska županija",
+   "aliases": [
+    "Pinguente"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Cavtat",
+   "slug": "cavtat",
+   "gid": 3202825,
+   "lat": 42.58111,
+   "lon": 18.21806,
+   "pop": 2189,
+   "loc": "u Cavtatu",
+   "region": "Dubrovačko-neretvanska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Seat of Općina Konavle, not a town."
+  },
+  {
+   "name": "Donji Miholjac",
+   "slug": "donji-miholjac",
+   "gid": 3201432,
+   "lat": 45.76083,
+   "lon": 18.16722,
+   "pop": 5330,
+   "loc": "u Donjem Miholjcu",
+   "region": "Osječko-baranjska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Hvar",
+   "slug": "hvar",
+   "gid": 3199180,
+   "lat": 43.1725,
+   "lon": 16.44278,
+   "pop": 3519,
+   "loc": "u Hvaru",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [
+    "Lesina"
+   ],
+   "page": false,
+   "note": "Town Hvar: 'u Hvaru'; 'na Hvaru' = island."
+  },
+  {
+   "name": "Križevci",
+   "slug": "krizevci",
+   "gid": 3197230,
+   "lat": 46.02194,
+   "lon": 16.5425,
+   "pop": 10522,
+   "loc": "u Križevcima",
+   "region": "Koprivničko-križevačka županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Lepoglava",
+   "slug": "lepoglava",
+   "gid": 3196657,
+   "lat": 46.21056,
+   "lon": 16.03556,
+   "pop": 3400,
+   "loc": "u Lepoglavi",
+   "region": "Varaždinska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Lipik",
+   "slug": "lipik",
+   "gid": 3196534,
+   "lat": 45.41139,
+   "lon": 17.15222,
+   "pop": 1967,
+   "loc": "u Lipiku",
+   "region": "Požeško-slavonska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Pakrac",
+   "slug": "pakrac",
+   "gid": 3193706,
+   "lat": 45.43639,
+   "lon": 17.18889,
+   "pop": 4151,
+   "loc": "u Pakracu",
+   "region": "Požeško-slavonska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Sisak",
+   "slug": "sisak",
+   "gid": 3190813,
+   "lat": 45.46608,
+   "lon": 16.37748,
+   "pop": 27859,
+   "loc": "u Sisku",
+   "region": "Sisačko-moslavačka županija",
+   "aliases": [],
+   "page": false,
+   "note": "Only 1 public station for a county seat of ~28k — likely missing data."
+  },
+  {
+   "name": "Stari Grad",
+   "slug": "stari-grad",
+   "gid": 3189965,
+   "lat": 43.18387,
+   "lon": 16.59784,
+   "pop": 1921,
+   "loc": "u Starom Gradu",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [
+    "Starigrad"
+   ],
+   "page": false,
+   "note": "Town on Hvar; do not confuse with Starigrad (Paklenica), slug starigrad."
+  },
+  {
+   "name": "Varaždinske Toplice",
+   "slug": "varazdinske-toplice",
+   "gid": 3188380,
+   "lat": 46.20917,
+   "lon": 16.41917,
+   "pop": 1606,
+   "loc": "u Varaždinskim Toplicama",
+   "region": "Varaždinska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Vrgorac",
+   "slug": "vrgorac",
+   "gid": 3187230,
+   "lat": 43.20583,
+   "lon": 17.37111,
+   "pop": 2132,
+   "loc": "u Vrgorcu",
+   "region": "Splitsko-dalmatinska županija",
+   "aliases": [],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Korčula",
+   "slug": "korcula",
+   "gid": 3197710,
+   "lat": 42.96038,
+   "lon": 17.13525,
+   "pop": 2659,
+   "loc": "u Korčuli",
+   "region": "Dubrovačko-neretvanska županija",
+   "aliases": [
+    "Curzola"
+   ],
+   "page": false,
+   "note": "Town Korčula: 'u Korčuli'; 'na Korčuli' = island."
+  },
+  {
+   "name": "Marija Bistrica",
+   "slug": "marija-bistrica",
+   "gid": 3195499,
+   "lat": 46.00611,
+   "lon": 16.11111,
+   "pop": 1045,
+   "loc": "u Mariji Bistrici",
+   "region": "Krapinsko-zagorska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Municipality seat (općina), not a town."
+  },
+  {
+   "name": "Tisno",
+   "slug": "tisno",
+   "gid": 3189120,
+   "lat": 43.80417,
+   "lon": 15.64333,
+   "pop": 1192,
+   "loc": "u Tisnom",
+   "region": "Šibensko-kninska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Municipality seat (općina); adjectival: 'u Tisnom'."
+  },
+  {
+   "name": "Čepin",
+   "slug": "cepin",
+   "gid": 3202743,
+   "lat": 45.52403,
+   "lon": 18.57762,
+   "pop": 8001,
+   "loc": "u Čepinu",
+   "region": "Osječko-baranjska županija",
+   "aliases": [],
+   "page": false,
+   "note": "Municipality seat (općina) and suburb of Osijek (~8 km)."
+  }
+ ]
+}

@@ -33,6 +33,8 @@ Kod kuće noću 100 km košta oko 2 KM — otprilike deset puta manje nego benzi
 
 {{ w.tiles(['map', 'prices', 'home', 'electricity', 'subsidies', 'road', 'stats']) }}
 
+**[Punjači po gradovima](/ba/gradovi/)**: spisak gradova s brojem punjača i linkom na mapu.
+
 ## Ukratko, oktobar 2026.
 
 - **Poticaj FBiH.** Poziv JP EV 2026 Fonda za zaštitu okoliša FBiH (do 12.000 KM po električnom vozilu) privremeno je zatvoren 18.09.2026.; 16 podnosilaca dobilo je ukupno 184.000 KM, a prijave se ponovo primaju od 30.10.2026. u 8 h. [Poticaji]({{ PAGES.subsidies.path }})

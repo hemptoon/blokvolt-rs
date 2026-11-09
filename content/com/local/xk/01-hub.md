@@ -35,6 +35,8 @@ Për karikimin në shtëpi janë llogaritur TVSH 8 % dhe 10 % humbje; tarifa fik
 
 {{ w.tiles(['map', 'prices', 'home', 'subsidies', 'road', 'stats']) }}
 
+**[Karikuesit sipas qyteteve](/xk/qytetet/)**: lista e qyteteve me numrin e karikuesve dhe lidhjen te harta.
+
 ## Gjendja në shtator 2026
 
 - **Importi rritet.** Sipas Doganës së Kosovës, në janar–gusht 2026 u importuan {{ num(C.imports.n) }} vetura elektrike, {{ num(C.imports.china) }} prej tyre nga Kina. [Statistika]({{ PAGES.stats.path }})

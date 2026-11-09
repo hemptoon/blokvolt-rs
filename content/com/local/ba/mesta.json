@@ -1,0 +1,624 @@
+{
+ "note": "Town list of this section for the town pages /ba/gradovi/ (scripts/loc_towns.py, K5 09.11.2026). A station belongs to the nearest town of this list within 25 km; a town has a page with at least 3 public stations or when `page` is true (pinned: a town that has a page keeps it — unpin only with a redirect). Reference: GeoNames towns from 5,000 inhabitants plus resorts and transit towns from 1,000 (CC BY 4.0, attribution on the pages), only towns that had a station on 26.10.2026; every row checked by hand. Fields: name (local official), slug, gid (GeoNames id), lat/lon (GeoNames), pop, loc (locative with preposition), region, aliases, page, note.",
+ "towns": [
+  {
+   "name": "Sarajevo",
+   "slug": "sarajevo",
+   "gid": 3191281,
+   "lat": 43.84864,
+   "lon": 18.35644,
+   "pop": 696731,
+   "loc": "u Sarajevu",
+   "region": "Kanton Sarajevo",
+   "aliases": [
+    "Сарајево"
+   ],
+   "page": true,
+   "note": "City of Sarajevo = 4 municipalities (Centar, Stari Grad, Novo Sarajevo, Novi Grad); Ilidža and Vogošća rows split its urban area, see notes."
+  },
+  {
+   "name": "Banja Luka",
+   "slug": "banja-luka",
+   "gid": 3204541,
+   "lat": 44.77879,
+   "lon": 17.20629,
+   "pop": 221106,
+   "loc": "u Banjoj Luci",
+   "region": "Republika Srpska",
+   "aliases": [
+    "Бања Лука",
+    "Banjaluka",
+    "Бањалука"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Mostar",
+   "slug": "mostar",
+   "gid": 3194828,
+   "lat": 43.34333,
+   "lon": 17.80806,
+   "pop": 104518,
+   "loc": "u Mostaru",
+   "region": "Hercegovačko-neretvanski kanton",
+   "aliases": [
+    "Мостар"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Bihać",
+   "slug": "bihac",
+   "gid": 3204222,
+   "lat": 44.81694,
+   "lon": 15.87083,
+   "pop": 75641,
+   "loc": "u Bihaću",
+   "region": "Unsko-sanski kanton",
+   "aliases": [
+    "Бихаћ"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Hadžići",
+   "slug": "hadzici",
+   "gid": 3199438,
+   "lat": 43.82222,
+   "lon": 18.20667,
+   "pop": 7173,
+   "loc": "u Hadžićima",
+   "region": "Kanton Sarajevo",
+   "aliases": [
+    "Хаџићи"
+   ],
+   "page": true,
+   "note": "Plural town name (u Hadžićima). Separate town ~13 km west of Sarajevo; 5 of 6 stations have 'Sarajevo' in address, 1 is Tarčin — check they are really around Hadžići and not western Sarajevo/Ilidža."
+  },
+  {
+   "name": "Zenica",
+   "slug": "zenica",
+   "gid": 3186573,
+   "lat": 44.20169,
+   "lon": 17.90397,
+   "pop": 164423,
+   "loc": "u Zenici",
+   "region": "Zeničko-dobojski kanton",
+   "aliases": [
+    "Зеница"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Gračanica",
+   "slug": "gracanica",
+   "gid": 3199779,
+   "lat": 44.70307,
+   "lon": 18.3101,
+   "pop": 15758,
+   "loc": "u Gračanici",
+   "region": "Tuzlanski kanton",
+   "aliases": [
+    "Грачаница"
+   ],
+   "page": true,
+   "note": "All 5 stations have 'Doboj' in their address although Doboj is ~18 km away — check coordinates (Doboj Istok? geocoding error?). Same name also exists in Kosovo/Serbia; unique within /ba/."
+  },
+  {
+   "name": "Travnik",
+   "slug": "travnik",
+   "gid": 3188924,
+   "lat": 44.22637,
+   "lon": 17.66583,
+   "pop": 31127,
+   "loc": "u Travniku",
+   "region": "Srednjobosanski kanton",
+   "aliases": [
+    "Травник"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Tuzla",
+   "slug": "tuzla",
+   "gid": 3188582,
+   "lat": 44.53842,
+   "lon": 18.66709,
+   "pop": 142486,
+   "loc": "u Tuzli",
+   "region": "Tuzlanski kanton",
+   "aliases": [
+    "Тузла"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Laktaši",
+   "slug": "laktasi",
+   "gid": 3196792,
+   "lat": 44.90857,
+   "lon": 17.30135,
+   "pop": 6464,
+   "loc": "u Laktašima",
+   "region": "Republika Srpska",
+   "aliases": [
+    "Лакташи"
+   ],
+   "page": true,
+   "note": "Plural town name (u Laktašima). Real town ~16 km from Banja Luka; the 3 stations say 'Banja Luka' in address (airport/M-16 area?) — fine to keep."
+  },
+  {
+   "name": "Ljubuški",
+   "slug": "ljubuski",
+   "gid": 3196324,
+   "lat": 43.19694,
+   "lon": 17.545,
+   "pop": 9987,
+   "loc": "u Ljubuškom",
+   "region": "Zapadnohercegovački kanton",
+   "aliases": [
+    "Љубушки"
+   ],
+   "page": true,
+   "note": "Adjectival name: locative 'u Ljubuškom'."
+  },
+  {
+   "name": "Mrkonjić Grad",
+   "slug": "mrkonjic-grad",
+   "gid": 3194724,
+   "lat": 44.41729,
+   "lon": 17.08288,
+   "pop": 14737,
+   "loc": "u Mrkonjić Gradu",
+   "region": "Republika Srpska",
+   "aliases": [
+    "Мркоњић Град",
+    "Mrkonjić-Grad"
+   ],
+   "page": true,
+   "note": "First part does not decline: 'u Mrkonjić Gradu'. Stations are in villages Dabrac and Rogolji (along the M5), still nearest to the town."
+  },
+  {
+   "name": "Bugojno",
+   "slug": "bugojno",
+   "gid": 3203099,
+   "lat": 44.05722,
+   "lon": 17.45083,
+   "pop": 41378,
+   "loc": "u Bugojnu",
+   "region": "Srednjobosanski kanton",
+   "aliases": [
+    "Бугојно"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Cazin",
+   "slug": "cazin",
+   "gid": 3202822,
+   "lat": 44.96694,
+   "lon": 15.94306,
+   "pop": 21741,
+   "loc": "u Cazinu",
+   "region": "Unsko-sanski kanton",
+   "aliases": [
+    "Цазин"
+   ],
+   "page": true,
+   "note": ""
+  },
+  {
+   "name": "Doboj",
+   "slug": "doboj",
+   "gid": 3201984,
+   "lat": 44.73179,
+   "lon": 18.08698,
+   "pop": 27235,
+   "loc": "u Doboju",
+   "region": "Republika Srpska",
+   "aliases": [
+    "Добој"
+   ],
+   "page": false,
+   "note": "See Gračanica: 5 stations with a 'Doboj' address were assigned there."
+  },
+  {
+   "name": "Gradiška",
+   "slug": "gradiska",
+   "gid": 3203656,
+   "lat": 45.14484,
+   "lon": 17.25453,
+   "pop": 13346,
+   "loc": "u Gradišci",
+   "region": "Republika Srpska",
+   "aliases": [
+    "Градишка",
+    "Bosanska Gradiška"
+   ],
+   "page": false,
+   "note": "Alias 'Bosanska Gradiška' is the former name still used in search; drop it if any doubt."
+  },
+  {
+   "name": "Kakanj",
+   "slug": "kakanj",
+   "gid": 3198490,
+   "lat": 44.13311,
+   "lon": 18.12292,
+   "pop": 12406,
+   "loc": "u Kaknju",
+   "region": "Zeničko-dobojski kanton",
+   "aliases": [
+    "Какањ"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Odžak",
+   "slug": "odzak",
+   "gid": 3194199,
+   "lat": 45.02461,
+   "lon": 18.32107,
+   "pop": 11621,
+   "loc": "u Odžaku",
+   "region": "Posavski kanton",
+   "aliases": [
+    "Оџак"
+   ],
+   "page": false,
+   "note": "GeoNames alt 'Vukosavlje' is a different (neighbouring) municipality — not used as alias."
+  },
+  {
+   "name": "Živinice",
+   "slug": "zivinice",
+   "gid": 3186423,
+   "lat": 44.44929,
+   "lon": 18.64978,
+   "pop": 13641,
+   "loc": "u Živinicama",
+   "region": "Tuzlanski kanton",
+   "aliases": [
+    "Живинице"
+   ],
+   "page": false,
+   "note": "Plural town name (u Živinicama)."
+  },
+  {
+   "name": "Gradačac",
+   "slug": "gradacac",
+   "gid": 3199744,
+   "lat": 44.87851,
+   "lon": 18.42764,
+   "pop": 15659,
+   "loc": "u Gradačcu",
+   "region": "Tuzlanski kanton",
+   "aliases": [
+    "Градачац"
+   ],
+   "page": false,
+   "note": "Locative drops the a: 'u Gradačcu'."
+  },
+  {
+   "name": "Olovo",
+   "slug": "olovo",
+   "gid": 3194133,
+   "lat": 44.1277,
+   "lon": 18.58065,
+   "pop": 3305,
+   "loc": "u Olovu",
+   "region": "Zeničko-dobojski kanton",
+   "aliases": [
+    "Олово"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Bijeljina",
+   "slug": "bijeljina",
+   "gid": 3204186,
+   "lat": 44.75874,
+   "lon": 19.21437,
+   "pop": 37692,
+   "loc": "u Bijeljini",
+   "region": "Republika Srpska",
+   "aliases": [
+    "Бијељина"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Derventa",
+   "slug": "derventa",
+   "gid": 3202081,
+   "lat": 44.97839,
+   "lon": 17.90779,
+   "pop": 9773,
+   "loc": "u Derventi",
+   "region": "Republika Srpska",
+   "aliases": [
+    "Дервента"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Drvar",
+   "slug": "drvar",
+   "gid": 3201136,
+   "lat": 44.37389,
+   "lon": 16.38083,
+   "pop": 3730,
+   "loc": "u Drvaru",
+   "region": "Kanton 10",
+   "aliases": [
+    "Дрвар"
+   ],
+   "page": false,
+   "note": "'Kanton 10' is the official name; also known as Livanjski kanton / Hercegbosanska županija."
+  },
+  {
+   "name": "Goražde",
+   "slug": "gorazde",
+   "gid": 3200396,
+   "lat": 43.66795,
+   "lon": 18.97564,
+   "pop": 17650,
+   "loc": "u Goraždu",
+   "region": "Bosansko-podrinjski kanton Goražde",
+   "aliases": [
+    "Горажде"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Jajce",
+   "slug": "jajce",
+   "gid": 3198934,
+   "lat": 44.34203,
+   "lon": 17.27059,
+   "pop": 9763,
+   "loc": "u Jajcu",
+   "region": "Srednjobosanski kanton",
+   "aliases": [
+    "Јајце"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Kiseljak",
+   "slug": "kiseljak",
+   "gid": 3198138,
+   "lat": 43.94295,
+   "lon": 18.08132,
+   "pop": 8475,
+   "loc": "u Kiseljaku",
+   "region": "Srednjobosanski kanton",
+   "aliases": [
+    "Кисељак"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Kladanj",
+   "slug": "kladanj",
+   "gid": 3198126,
+   "lat": 44.22669,
+   "lon": 18.69274,
+   "pop": 6783,
+   "loc": "u Kladnju",
+   "region": "Tuzlanski kanton",
+   "aliases": [
+    "Кладањ"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Ključ",
+   "slug": "kljuc",
+   "gid": 3198050,
+   "lat": 44.53251,
+   "lon": 16.77682,
+   "pop": 7245,
+   "loc": "u Ključu",
+   "region": "Unsko-sanski kanton",
+   "aliases": [
+    "Кључ"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Konjic",
+   "slug": "konjic",
+   "gid": 3337476,
+   "lat": 43.65126,
+   "lon": 17.96082,
+   "pop": 15950,
+   "loc": "u Konjicu",
+   "region": "Hercegovačko-neretvanski kanton",
+   "aliases": [
+    "Коњиц"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Pale",
+   "slug": "pale",
+   "gid": 3193692,
+   "lat": 43.81664,
+   "lon": 18.56949,
+   "pop": 7458,
+   "loc": "na Palama",
+   "region": "Republika Srpska",
+   "aliases": [
+    "Пале"
+   ],
+   "page": false,
+   "note": "Plural; usual locative 'na Palama' ('u Palama' also heard). The only station is on Jahorina (ski resort), not in the town."
+  },
+  {
+   "name": "Prnjavor",
+   "slug": "prnjavor",
+   "gid": 3192327,
+   "lat": 44.87021,
+   "lon": 17.66256,
+   "pop": 7099,
+   "loc": "u Prnjavoru",
+   "region": "Republika Srpska",
+   "aliases": [
+    "Прњавор"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Sanski Most",
+   "slug": "sanski-most",
+   "gid": 3191297,
+   "lat": 44.7667,
+   "lon": 16.667,
+   "pop": 13551,
+   "loc": "u Sanskom Mostu",
+   "region": "Unsko-sanski kanton",
+   "aliases": [
+    "Сански Мост"
+   ],
+   "page": false,
+   "note": "Station address says 'Prijedor' — check coordinates."
+  },
+  {
+   "name": "Trebinje",
+   "slug": "trebinje",
+   "gid": 3188893,
+   "lat": 42.71197,
+   "lon": 18.34362,
+   "pop": 33178,
+   "loc": "u Trebinju",
+   "region": "Republika Srpska",
+   "aliases": [
+    "Требиње"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Visoko",
+   "slug": "visoko",
+   "gid": 3187609,
+   "lat": 43.98889,
+   "lon": 18.17806,
+   "pop": 17890,
+   "loc": "u Visokom",
+   "region": "Zeničko-dobojski kanton",
+   "aliases": [
+    "Високо"
+   ],
+   "page": false,
+   "note": "Adjectival name: locative 'u Visokom'. Station address says 'Sarajevo'."
+  },
+  {
+   "name": "Višegrad",
+   "slug": "visegrad",
+   "gid": 3187681,
+   "lat": 43.7826,
+   "lon": 19.29256,
+   "pop": 6087,
+   "loc": "u Višegradu",
+   "region": "Republika Srpska",
+   "aliases": [
+    "Вишеград"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Čapljina",
+   "slug": "capljina",
+   "gid": 3202873,
+   "lat": 43.12139,
+   "lon": 17.68444,
+   "pop": 7923,
+   "loc": "u Čapljini",
+   "region": "Hercegovačko-neretvanski kanton",
+   "aliases": [
+    "Чапљина"
+   ],
+   "page": false,
+   "note": "Station is in Tasovčići, a village next to Čapljina."
+  },
+  {
+   "name": "Šekovići",
+   "slug": "sekovici",
+   "gid": 3191156,
+   "lat": 44.29896,
+   "lon": 18.85532,
+   "pop": 6315,
+   "loc": "u Šekovićima",
+   "region": "Republika Srpska",
+   "aliases": [
+    "Шековићи"
+   ],
+   "page": false,
+   "note": "Plural town name."
+  },
+  {
+   "name": "Široki Brijeg",
+   "slug": "siroki-brijeg",
+   "gid": 3196428,
+   "lat": 43.3829,
+   "lon": 17.59416,
+   "pop": 9370,
+   "loc": "u Širokom Brijegu",
+   "region": "Zapadnohercegovački kanton",
+   "aliases": [
+    "Широки Бријег"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Livno",
+   "slug": "livno",
+   "gid": 3196410,
+   "lat": 43.82695,
+   "lon": 17.00746,
+   "pop": 11748,
+   "loc": "u Livnu",
+   "region": "Kanton 10",
+   "aliases": [
+    "Ливно"
+   ],
+   "page": false,
+   "note": ""
+  },
+  {
+   "name": "Lukavac",
+   "slug": "lukavac",
+   "gid": 3196079,
+   "lat": 44.54245,
+   "lon": 18.52618,
+   "pop": 44520,
+   "loc": "u Lukavcu",
+   "region": "Tuzlanski kanton",
+   "aliases": [
+    "Лукавац"
+   ],
+   "page": false,
+   "note": "GeoNames pop is the municipality."
+  }
+ ]
+}

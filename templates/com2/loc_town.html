@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import ic %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "{{ LOC.html }}",
+   "about": {"@type": "{{ 'Place' if LOC.place else 'City' }}", "name": {{ t.name|tojson }}, "geo": {"@type": "GeoCoordinates", "latitude": {{ t.lat }}, "longitude": {{ t.lon }}}},
+   "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": {{ LOC.country|tojson }}, "item": "{{ SITE }}{{ home }}"}, {"@type": "ListItem", "position": 2, "name": {{ T.nav|tojson }}, "item": "{{ SITE }}{{ idx_path }}"}, {"@type": "ListItem", "position": 3, "name": {{ t.name|tojson }}, "item": "{{ SITE }}{{ canon }}"}]}
+ ]
+}</script>{% endblock %}
+{% block pagehead %}<div class="ph"><div class="wrap">
+<nav class="crumbs" aria-label="{{ S.crumbs }}"><a href="{{ home }}">{{ LOC.country }}</a><span aria-hidden="true">›</span><a href="{{ idx_path }}">{{ T.nav }}</a><span aria-hidden="true">›</span><span translate="no">{{ t.name }}</span></nav>
+<h1>{{ h1 }}</h1>
+<p class="lead">{{ lead }}</p>
+<div class="ph-actions"><a class="btn dark" href="{{ map_path }}?grad={{ t.slug }}">{{ ic('map') }}{{ T.btn_map }}</a></div>
+<p class="meta">{{ fill(T.data_date, d=when) }}</p>
+</div></div>{% endblock %}
+{% block content %}
+<div class="stats">
+{% for v, label in stats %}<div class="stat"><b>{{ v }}</b><span>{{ label }}</span></div>
+{% endfor %}</div>
+<div class="sec" id="punionice"><div class="sec-head"><h2>{{ fill(T.h2_list, loc=t.loc, name=t.name) }}</h2><a href="{{ map_path }}?grad={{ t.slug }}">{{ T.map_link }}</a></div>
+{% if rows %}<div class="tw stack"><table class="sttab"><thead><tr><th>{{ T.th_name }}</th><th>{{ T.th_net }}</th><th>{{ T.th_power }}</th><th>{{ T.th_conn }}</th></tr></thead><tbody>
+{% for s in rows %}<tr><td data-label="{{ T.th_name }}"><a class="lnk" href="{{ s.url }}" translate="no">{{ s.name }}</a>{% if s.addr %}<br><small class="muted" translate="no">{{ s.addr }}</small>{% endif %}{% if s.guests %}<br><small class="muted">{{ T.customers }}</small>{% endif %}</td><td data-label="{{ T.th_net }}">{% if s.net_url %}<a class="lnk" href="{{ s.net_url }}" translate="no">{{ s.net }}</a>{% else %}<span translate="no">{{ s.net or '—' }}</span>{% endif %}</td><td data-label="{{ T.th_power }}"><span translate="no">{{ s.pw }}</span></td><td data-label="{{ T.th_conn }}"><span translate="no">{{ s.conns or '—' }}</span></td></tr>
+{% endfor %}</tbody></table></div>
+<p class="note">{{ T.open_data }}</p>{% else %}<p class="note">{{ T.none_now }}</p>{% endif %}
+</div>
+{% if nets %}<div class="sec"><div class="sec-head"><h2>{{ fill(T.h2_nets, loc=t.loc, name=t.name) }}</h2><a href="/{{ LOC.dir }}/{{ C.slugs.prices }}">{{ T.nets_prices }}</a></div>
+<ul class="tlinks">{% for n in nets %}<li>{% if n.url %}<a class="lnk" href="{{ n.url }}" translate="no">{{ n.name }}</a>{% else %}<span translate="no">{{ n.name }}</span> <small class="muted">{{ T.net_no_page }}</small>{% endif %} <small class="muted">({{ num(n.n) }})</small></li>{% endfor %}</ul></div>{% endif %}
+{% if home_line %}<div class="sec"><div class="sec-head"><h2>{{ T.h2_home }}</h2><a href="{{ home_line.url }}">{{ T.home_more }}</a></div>
+<p>{{ home_line.text }}</p></div>{% endif %}
+{% if near %}<div class="sec"><div class="sec-head"><h2>{{ T.h2_near }}</h2><a href="{{ idx_path }}">{{ T.all_towns }}</a></div>
+<ul class="tlinks">{% for o in near %}<li><a class="lnk" href="{{ o.url }}" translate="no">{{ o.name }}</a></li>{% endfor %}</ul></div>{% endif %}
+<p class="upd">{{ T.attr }} · <a href="mailto:{{ EMAIL }}?subject={{ S.fix_subject|urlencode }}">{{ S.report }}</a></p>
+{% endblock %}
