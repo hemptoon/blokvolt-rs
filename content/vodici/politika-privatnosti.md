@@ -10,7 +10,7 @@ description_nalog: Kako blokvolt.rs postupa sa podacima o ličnosti i pod kojim 
 lead_consent_nalog: Nalog nije obavezan, a oglasnih piksela nema. Posete se broje bez kolačića, kolačić za analitiku postavlja se samo uz vašu dozvolu, a forme, prijave sa mape i nalog čuvaju samo ono što sami upišete.
 description_consent_nalog: Kako blokvolt.rs postupa sa podacima o ličnosti. Nalog nije obavezan; posete se broje bez kolačića, a kolačić za analitiku samo uz vašu dozvolu.
 kicker: Pravno
-updated: 27.10.2026
+updated: 09.11.2026
 published: 2026-09-21
 modified: 2026-10-27
 priority: 0.2
@@ -23,7 +23,7 @@ path: /politika-privatnosti.html
 - Posete se broje **bez kolačića**, a omiljeni punjači ostaju <!--nonalog-->**samo u vašem pregledaču**<!--/nonalog--><!--nalog-->**u pregledaču, a ako ste prijavljeni — i u nalogu**<!--/nalog--><!--consent-->; kolačić za analitiku postavlja se **samo uz vašu dozvolu**<!--/consent-->
 </div>
 
-Rukovalac podacima: ANDREI SMEKHOV PR NOVI SAD, Kopernikova 56, 21000 Novi Sad, Srbija. Matični broj 68853834, PIB 116047038. Kontakt: hello@blokvolt.com.
+Rukovalac podacima: ANDREI SMEKHOV PR NOVI SAD, Katolička porta 6/3, 21000 Novi Sad, Srbija. Matični broj 68853834, PIB 116047038. Kontakt: hello@blokvolt.com.
 
 ## Koji podaci se obrađuju
 
