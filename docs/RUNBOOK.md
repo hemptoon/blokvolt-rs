@@ -2285,6 +2285,58 @@ when there is a photo for it). A new news item: hero (if any) and a 2-line brief
 the translation, when the EN/RU pages exist (NEWS_STYLE §5). Write the EN/RU lines from the built EN/RU page
 (`dist/en/…`, `dist/ru/…`), not by translating the Serbian line anew, so the numbers and terms match.
 
+### 3.39 Publishing queue (outbox) for the scheduled tasks (since 09.11.2026)
+
+The sessions of the scheduled tasks cannot push to GitHub (the git proxy gives them read access only, and `add_repo` is
+not available there). Since 09.11.2026 a task does not push: it puts the finished files into a queue, and GitHub
+publishes them. The main chat can still push directly.
+
+**Queue.** D1 database `blokvolt` (id `4714b7cb-6138-4ac8-ab32-0ceb80c40957`, Cloudflare connector), tables:
+
+- `outbox` — one row per publication: `repo` (`hemptoon/blokvolt-rs` or `hemptoon/evolako-web`), `branch` (`main`;
+  for evolako-web `site-migration` for the site, `main` for Evolako pismo), `kind` (`vodic`, `vest`, `b2b`, `novost`,
+  `pismo`, `gorivo`, `indeks`, `mesecno`, `pregled`, …), `slug`, `title`, `publish_after` (UTC, `YYYY-MM-DDTHH:MM:SSZ`),
+  `status` (`draft` → `queued` → `taken` → `published` / `failed`), `commit_msg` (English, with the session's
+  attribution lines), `author` (`BlokVolt <hello@blokvolt.com>` / `Evolako <hello@evolako.com>`), `created_by` (task
+  name), and after the run `commit_sha`, `result` (end of the log), `done_at`.
+- `outbox_files` — `item_id`, `path`, `op`, `enc` (`text` / `base64`), `body`, `sha256` (of the body exactly as the task
+  wrote it; computed in the task's container with `sha256sum`, checked before anything is written).
+
+**How a task enqueues** (Cloudflare connector, `d1_database_query`, parameters always bound with `?1…`, never pasted into
+the SQL):
+1. `INSERT INTO outbox (repo, branch, kind, slug, title, publish_after, status, commit_msg, author, created_by) VALUES
+   (?1, ?2, ?3, ?4, ?5, ?6, 'draft', ?7, ?8, ?9) RETURNING id`.
+2. One `INSERT INTO outbox_files (item_id, path, op, enc, body, sha256) VALUES (?1, ?2, ?3, 'text', ?4, ?5)` per file.
+3. Check: `SELECT path, length(body), sha256 FROM outbox_files WHERE item_id = ?1` — every file there, lengths as in the
+   container. Then `UPDATE outbox SET status = 'queued' WHERE id = ?1`. A row left in `draft` is never published.
+
+**File ops** (`scripts/outbox.py`, the same file in both repositories): `write` (whole file), `patch` (unified diff, `git
+apply --3way`; blokvolt-rs: `build.py`, `templates/*.html`, `content/**`), `i18n-en` / `i18n-ru` (blokvolt-rs: the JSON
+for `scripts/i18n.py add`, keys exactly as `i18n.py todo` lists them after a build with the new files), `izmene`
+(blokvolt-rs: one list line for /izmene/; the script puts it under the publish day's heading, adds the heading's EN/RU,
+sets the dates of /izmene/ and `content/data/site.json`; the line's own EN/RU go in `i18n-en`/`i18n-ru`). Placeholders in
+`write` bodies get the publish day (Belgrade): `@PUBISO@` → `2026-11-11`, `@PUBDATE@` → `11.11.2026`, `@NEXT30@` →
+30 days later as `DD.MM.YYYY` — use them for `published`, `modified`, `updated`, `next_check` and `meta.json` dates, so
+a guide that waits in the queue carries the day it really went out. Paths outside the allowed ones (code, workflows,
+`worker/`, `scripts/`, `content/_drafts/`) are refused.
+
+**Publishing.** `.github/workflows/outbox.yml` (here at :41, in evolako-web at :23 every hour) gets a GitHub OIDC token
+(audience `outbox.blokvolt.rs`), asks `POST /api/outbox/next` (worker, `outboxApi`; accepts only `outbox.yml` on the
+default branch of the two repositories — test `scripts/qa/outbox_auth_test.mjs`), applies up to 3 due items one by one,
+runs the checks (here: build, i18n todo 0, links, images, app layer, news linter, gen_com; evolako-web site:
+`site/content.py check`, `site/build.py`, content self-test; Evolako pismo: `npm test`), commits, pushes with
+`GITHUB_TOKEN`, starts Deploy + Site checks (evolako-web: Site preview or Deploy) by `workflow_dispatch` — a push made with
+`GITHUB_TOKEN` does not start workflows — and reports to `POST /api/outbox/done`. A failed check means no commit, status
+`failed`, the log in `result`; the next item goes on. An item stuck in `taken` comes back after two hours.
+
+**Cadence** is set by `publish_after`: a task takes the next free slot of its kind (guides at least 3 days apart per site,
+B2B guides 7 days, news, fuel prices, the index and letters at once). Before enqueueing, a task checks the queue for the
+same slug (`status IN ('draft','queued','taken')`) and for a `failed` row of its kind in the last 7 days — a failed row is
+reported to the owner, not re-queued blindly.
+
+**Status for people.** `SELECT id, repo, kind, slug, publish_after, status, commit_sha, substr(result, -300) FROM outbox
+ORDER BY id DESC LIMIT 20` — the morning QA review reads it and reports failed rows.
+
 ## 4. Build and check
 
 ```bash

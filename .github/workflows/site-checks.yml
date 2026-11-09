@@ -64,6 +64,10 @@ jobs:
         run: node --no-warnings scripts/qa/zastita_worker_test.mjs
       - name: Visit counter (/api/s/p → the bot through the BOT binding; RUNBOOK 3.16)
         run: node --no-warnings scripts/qa/schet_worker_test.mjs
+      - name: Publishing queue (/api/outbox/* only for outbox.yml of the two repositories; outbox.py path rules; RUNBOOK 3.39)
+        run: |
+          node --no-warnings scripts/qa/outbox_auth_test.mjs
+          python3 scripts/outbox.py selftest
   live:
     if: github.event_name != 'push'
     runs-on: ubuntu-latest

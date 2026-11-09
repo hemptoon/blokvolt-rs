@@ -1,0 +1,38 @@
+# The publishing queue (docs/RUNBOOK.md 3.39): every hour, publish what the scheduled tasks left in the D1 queue for this
+# repository. The job proves who it is to https://www.blokvolt.rs/api/outbox/* with its own GitHub OIDC token
+# (audience outbox.blokvolt.rs; the worker accepts only this file on the default branch), so no secret is involved.
+# scripts/outbox.py applies each due item, runs the site's checks, commits and pushes with GITHUB_TOKEN and then starts
+# Deploy and Site checks by hand (a push made with GITHUB_TOKEN does not start them). A failed item is not committed:
+# it is marked 'failed' in the queue with the end of the log. Manual run: Actions → Outbox → Run workflow.
+# The same workflow and script live in hemptoon/evolako-web.
+name: Outbox
+on:
+  schedule:
+    - cron: '41 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write    # commit the queued files
+  actions: write     # start Deploy and Site checks after the push
+  id-token: write    # the OIDC token for /api/outbox/*
+concurrency:
+  group: outbox
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          fetch-depth: 50
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.13'
+      - name: Install
+        run: |
+          pip install -q jinja2 markdown beautifulsoup4 pillow
+          bash scripts/fetch_fonts.sh > /dev/null
+      - name: Publish due items
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/outbox.py run --max 3

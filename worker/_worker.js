@@ -2225,6 +2225,96 @@ async function smSearch(request, env, url) {
   return json({ ok: true, hits });
 }
 
+// ---------------------------------------------------------------- outbox (RUNBOOK 3.39)
+// The publishing queue of the scheduled tasks. A task cannot push to GitHub from its session, so it writes the finished
+// files into the D1 tables outbox / outbox_files (Cloudflare connector), status 'queued' and publish_after. The workflow
+// .github/workflows/outbox.yml of hemptoon/blokvolt-rs and hemptoon/evolako-web asks here every hour for its due items,
+// commits them after the site's own checks and reports back. The workflow proves who it is with its GitHub Actions OIDC
+// token (no shared secret): signed by GitHub, audience outbox.blokvolt.rs, the repository on the list below and the
+// workflow file outbox.yml on the default branch. Nothing else can read or change the queue through this API.
+const OUTBOX_AUD = 'outbox.blokvolt.rs';
+const OUTBOX_REPOS = { 'hemptoon/blokvolt-rs': 'main', 'hemptoon/evolako-web': 'main' };   // repo → its default branch
+const GH_ISS = 'https://token.actions.githubusercontent.com';
+let GH_KEYS = null, GH_KEYS_AT = 0;
+const b64uBytes = s => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((s.length + 3) % 4)), c => c.charCodeAt(0));
+async function ghKeys(force) {
+  if (!force && GH_KEYS && Date.now() - GH_KEYS_AT < 3600e3) return GH_KEYS;
+  const r = await fetch(GH_ISS + '/.well-known/jwks', { cf: { cacheTtl: 600 } });
+  if (!r.ok) throw new Error('jwks');
+  GH_KEYS = (await r.json()).keys || [];
+  GH_KEYS_AT = Date.now();
+  return GH_KEYS;
+}
+// returns the token's claims or null; exported for the unit test through globalThis when OUTBOX_TEST is set
+async function outboxAuth(request, keysFn = ghKeys, nowS = now()) {
+  const h = request.headers.get('authorization') || '';
+  const m = h.match(/^Bearer ([A-Za-z0-9_-]+)\.([A-Za-z0-9_-]+)\.([A-Za-z0-9_-]+)$/);
+  if (!m) return null;
+  let head, claims;
+  try {
+    head = JSON.parse(new TextDecoder().decode(b64uBytes(m[1])));
+    claims = JSON.parse(new TextDecoder().decode(b64uBytes(m[2])));
+  } catch (e) { return null; }
+  if (!head || head.alg !== 'RS256' || !head.kid) return null;
+  let jwk = (await keysFn(false)).find(k => k.kid === head.kid);
+  if (!jwk) jwk = (await keysFn(true)).find(k => k.kid === head.kid);       // GitHub rotated its keys
+  if (!jwk) return null;
+  const key = await crypto.subtle.importKey('jwk', { kty: jwk.kty, n: jwk.n, e: jwk.e, alg: 'RS256', ext: true },
+    { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']);
+  const ok = await crypto.subtle.verify('RSASSA-PKCS1-v1_5', key, b64uBytes(m[3]), new TextEncoder().encode(m[1] + '.' + m[2]));
+  if (!ok) return null;
+  const aud = Array.isArray(claims.aud) ? claims.aud : [claims.aud];
+  if (claims.iss !== GH_ISS || !aud.includes(OUTBOX_AUD)) return null;
+  if (!(claims.exp > nowS) || (claims.nbf && claims.nbf > nowS + 60)) return null;
+  const def = OUTBOX_REPOS[claims.repository];
+  if (!def) return null;
+  if (claims.job_workflow_ref !== `${claims.repository}/.github/workflows/outbox.yml@refs/heads/${def}`) return null;
+  if (claims.ref !== `refs/heads/${def}`) return null;
+  return claims;
+}
+const OUTBOX_DDL = [
+  `CREATE TABLE IF NOT EXISTS outbox (id INTEGER PRIMARY KEY AUTOINCREMENT, repo TEXT NOT NULL, branch TEXT NOT NULL,
+     kind TEXT NOT NULL, slug TEXT NOT NULL, title TEXT, publish_after TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'draft',
+     commit_msg TEXT NOT NULL, author TEXT, created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%SZ','now')),
+     created_by TEXT, taken_at TEXT, done_at TEXT, commit_sha TEXT, result TEXT, note TEXT)`,
+  'CREATE INDEX IF NOT EXISTS outbox_due ON outbox (repo, status, publish_after)',
+  `CREATE TABLE IF NOT EXISTS outbox_files (item_id INTEGER NOT NULL, path TEXT NOT NULL, op TEXT NOT NULL DEFAULT 'write',
+     enc TEXT NOT NULL DEFAULT 'text', body TEXT NOT NULL, sha256 TEXT, PRIMARY KEY (item_id, path, op))`,
+];
+async function outboxApi(request, env, p, m) {
+  let claims;
+  try { claims = await outboxAuth(request); } catch (e) { return bad('auth unavailable', 503); }
+  if (!claims) return bad('not found', 404);
+  const repo = claims.repository;
+  await env.DB.batch(OUTBOX_DDL.map(q => env.DB.prepare(q)));
+  const iso = "strftime('%Y-%m-%dT%H:%M:%SZ','now')";
+  if (p === '/api/outbox/next' && m === 'POST') {
+    // a 'taken' item whose run died without an answer comes back after two hours
+    const row = await env.DB.prepare(`SELECT id, branch, kind, slug, title, publish_after, commit_msg, author FROM outbox
+      WHERE repo = ?1 AND publish_after <= ${iso}
+        AND (status = 'queued' OR (status = 'taken' AND taken_at < strftime('%Y-%m-%dT%H:%M:%SZ','now','-2 hours')))
+      ORDER BY publish_after, id LIMIT 1`).bind(repo).first();
+    if (!row) return json({ ok: true, item: null });
+    await env.DB.prepare(`UPDATE outbox SET status = 'taken', taken_at = ${iso} WHERE id = ?1`).bind(row.id).run();
+    const files = await env.DB.prepare('SELECT path, op, enc, body, sha256 FROM outbox_files WHERE item_id = ?1 ORDER BY rowid')
+      .bind(row.id).all();
+    return json({ ok: true, item: { ...row, files: files.results || [] } });
+  }
+  if (p === '/api/outbox/done' && m === 'POST') {
+    let b;
+    try { b = await request.json(); } catch (e) { return bad('json'); }
+    const id = Number(b && b.id);
+    if (!Number.isInteger(id)) return bad('id');
+    const status = b.ok ? 'published' : (b.retry ? 'queued' : 'failed');
+    const r = await env.DB.prepare(`UPDATE outbox SET status = ?1, done_at = ${iso}, commit_sha = ?2, result = ?3
+      WHERE id = ?4 AND repo = ?5 AND status = 'taken'`)
+      .bind(status, b.sha ? String(b.sha).slice(0, 40) : null, String(b.log || '').slice(-4000), id, repo).run();
+    return json({ ok: true, changed: (r.meta && r.meta.changes) || 0 });
+  }
+  return bad('not found', 404);
+}
+if (globalThis.OUTBOX_TEST) globalThis.OUTBOX_TEST.auth = outboxAuth;
+
 // ---------------------------------------------------------------- router
 async function api(request, env, ctx) {
   const url = new URL(request.url);
@@ -2233,6 +2323,7 @@ async function api(request, env, ctx) {
   if (p === '/api/kurs') return kurs(request, env, ctx);              // works without the database too
   if (!env.DB) return bad('no database', 503);
   if (p.startsWith('/api/nalog/') || p.startsWith('/api/posta/') || p === '/api/admin/posta') return accountApi(request, env, ctx, url, p, m);
+  if (p.startsWith('/api/outbox/')) return outboxApi(request, env, p, m);   // GitHub Actions with an OIDC token (RUNBOOK 3.39)
 
   if (m === 'GET' && p === '/api/stanice') {
     const cache = caches.default;
