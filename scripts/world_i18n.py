@@ -258,6 +258,22 @@ def country_in(row, lang):
     return country_name(row, lang)
 
 
+def check_collisions(out):
+    """Stops the build when a page path of an extra language is already taken by another page of blokvolt.com
+    (e.g. /hr/ = the Croatian regional section). Called after the regional sections and before the world pages."""
+    out = Path(out)
+    bad = []
+    for l in langs():
+        if l in BASE:
+            continue
+        for k in SLUG_PATHS:
+            f = out / slugs(l)[k].strip('/') / 'index.html'
+            if f.exists() and not (k == 'map' and 'world-map.js' in f.read_text(encoding='utf-8', errors='ignore')):
+                bad.append(f'{l}.{k} = {slugs(l)[k]}')
+    if bad:
+        raise SystemExit('world_i18n: paths of extra languages collide with existing pages — ' + ', '.join(bad))
+
+
 UNIVERSAL_FORBIDDEN = (r'24/7', r'evolako')
 BCMS = ('sr', 'hr', 'bs', 'sl')   # the Serbian word lists ("mi", "odmah", "redakcija", "popust" …) apply to these only
 

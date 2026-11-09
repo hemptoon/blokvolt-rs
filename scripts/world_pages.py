@@ -750,6 +750,7 @@ def run(G, local_hubs):
     t0 = time.time()
     S = load_strings()
     cfg = load_config()
+    I.check_collisions(G.OUT)   # K8: an extra language must not take a path of the regional sections (/hr/, /mk/ …)
     idx, pages = load_bundle(bdir)
     names = Names(bdir)
     site = Site(names, idx, pages)
