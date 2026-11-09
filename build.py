@@ -1237,6 +1237,16 @@ def add_url(path, prio='0.6', lastmod=ISO_TODAY):
     urls.append((SITE + canon_of(path), prio, lastmod))
 
 
+# Data pages that show the same table as a CSV on /preuzimanje/ (docs/RUNBOOK.md 3.6d): the page links its CSV and
+# carries a Dataset block in its JSON-LD. DL_META below takes the same titles and descriptions.
+DL_TEXT = {
+    'blokvolt-cene-elektricnih-automobila.csv': ('Cene električnih automobila', 'Modeli sa cenom koju uvoznik objavljuje, cena posle subvencije i link na cenovnik.'),
+    'blokvolt-wallbox-modeli.csv': ('Wallbox modeli i cene', 'Cene uređaja kod prodavaca u Srbiji, po modelu i snazi, sa linkom na proizvod.'),
+}
+DL_PAGE = {'/podaci/cene-elektricnih-automobila/': 'blokvolt-cene-elektricnih-automobila.csv',
+           '/podaci/wallbox-modeli/': 'blokvolt-wallbox-modeli.csv'}
+
+
 def seo_title(t):
     """Search results show about 60 characters: a longer title drops its ' | BlokVolt' suffix (the brand stays in og:site_name,
     the JSON-LD and the page). The Serbian title is final before translation, so the EN/RU title is looked up by the same
@@ -1437,9 +1447,11 @@ for path, a in ARTICLES.items():
     _body = md_to_html(a['body'])
     if path.startswith('/podaci/'):              # data pages: the price cells of their tables follow the display currency
         _body = valuta.fx_tables(_body)
+    _dl = DL_PAGE.get(path)                     # a data page whose table is also a CSV on /preuzimanje/ (RUNBOOK 3.6d)
     render('article.html', path, meta=meta, body=_body, crumbs=crumbs, section=sec,
            title=meta.get('title', a['h1']) + ' | BlokVolt', description=meta.get('description', ''), sources=sources_of(meta),
-           promo_box=PROMO if path in PROMO_ON else None, related=related_for(path), oglas=oglas_za(path))
+           promo_box=PROMO if path in PROMO_ON else None, related=related_for(path), oglas=oglas_za(path),
+           dl={'file': _dl, 'title': DL_TEXT[_dl][0], 'desc': DL_TEXT[_dl][1]} if _dl else None)
     add_url(path, meta.get('priority', '0.7'), meta.get('modified', ISO_TODAY))
 
 def _numbered(groups):
@@ -2488,11 +2500,11 @@ EV_DATA = json.load(open(ROOT / 'content' / 'data' / 'ev-modeli.json', encoding=
 DATASETS = open_data.export_all(DIST, SITE, published, operators, price_index, EV_DATA, _WB, FIRMS_CHECKED)
 DL_META = {
     'blokvolt-firme.csv': ('Firme za kućne punjače', f'{sr_plural(len(published), "firma", "firme", "firmi")}: sedište, pokrivenost, brendovi, javna cena, ugradnja, brojilo, sajt i datum provere.'),
-    'blokvolt-cene-elektricnih-automobila.csv': ('Cene električnih automobila', 'Modeli sa cenom koju uvoznik objavljuje, cena posle subvencije i link na cenovnik.'),
-    'blokvolt-wallbox-modeli.csv': ('Wallbox modeli i cene', 'Cene uređaja kod prodavaca u Srbiji, po modelu i snazi, sa linkom na proizvod.'),
+    **DL_TEXT,
     'blokvolt-javno-punjenje-cene.csv': ('Cene javnog punjenja', 'Tarife i računi sa javnih punjača: po minutu, satu ili „jedinici“, snaga, datum i izvor.'),
     'blokvolt-mreze-javnog-punjenja.csv': ('Mreže javnog punjenja', 'Mreže, aplikacije i domaćini: pokrivenost, plaćanje, roming i podrška.'),
 }
+assert set(DL_PAGE.values()) <= {d['name'] for d in DATASETS}, 'DL_PAGE names a CSV that open_data.py does not write'
 for d in DATASETS:
     d['title'], d['desc'] = DL_META[d['name']]
     d['kb'] = round(d['bytes'] / 1024, 1)

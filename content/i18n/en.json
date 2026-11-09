@@ -2218,6 +2218,8 @@
  "Carina, €": "Customs duty, €",
  "Cela Srbija": "All of Serbia",
  "Cela stranica firme": "Full company page",
+ "Cela tabela u CSV formatu: <a download=\"\" href=\"/preuzimanje/blokvolt-cene-elektricnih-automobila.csv\">Cene električnih automobila</a> · <a href=\"/preuzimanje/\">svi podaci za preuzimanje</a>": "The whole table as CSV: <a download=\"\" href=\"/preuzimanje/blokvolt-cene-elektricnih-automobila.csv\">Electric car prices</a> · <a href=\"/preuzimanje/\">all downloadable data</a>",
+ "Cela tabela u CSV formatu: <a download=\"\" href=\"/preuzimanje/blokvolt-wallbox-modeli.csv\">Wallbox modeli i cene</a> · <a href=\"/preuzimanje/\">svi podaci za preuzimanje</a>": "The whole table as CSV: <a download=\"\" href=\"/preuzimanje/blokvolt-wallbox-modeli.csv\">Wallbox models and prices</a> · <a href=\"/preuzimanje/\">all downloadable data</a>",
  "Cena": "Price",
  "Cena (RSD)": "Price (RSD)",
  "Cena 11 kW je niža od cene 7 kW — proveriti specifikaciju pre kupovine.": "The 11 kW price is lower than the 7 kW price — check the specifications before buying.",

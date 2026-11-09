@@ -5,8 +5,8 @@ order: 5
 nav: Subvencije
 icon: gift
 priority: 0.7
-title: Subvencije za električne automobile u Crnoj Gori 2026. — Eko-fond | BlokVolt
-description: Subvencije Eko-fonda za kupovinu električnih vozila: iznosi iz 2025. (do 7.200 €), program SKLAD e-mobility sa Slovenijom, punjači za opštine i šta još nije potvrđeno.
+title: Subvencije za električne automobile u Crnoj Gori 2026 | BlokVolt
+description: Subvencije Eko-fonda za električna vozila: iznosi iz 2025. (do 7.200 €), program SKLAD e-mobility sa Slovenijom, punjači za opštine i šta nije potvrđeno.
 h1: Subvencije za električne automobile
 lead: Šta je Eko-fond do sada subvencionisao, ima li trenutno otvoren konkurs i šta se zna o poreskim olakšicama.
 card: Eko-fond: do 7.200 € po vozilu u 2025., SKLAD e-mobility; otvorenog konkursa trenutno nema.

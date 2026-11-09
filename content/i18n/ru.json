@@ -2217,6 +2217,8 @@
  "Carina, €": "Пошлина, €",
  "Cela Srbija": "Вся Сербия",
  "Cela stranica firme": "Полная страница компании",
+ "Cela tabela u CSV formatu: <a download=\"\" href=\"/preuzimanje/blokvolt-cene-elektricnih-automobila.csv\">Cene električnih automobila</a> · <a href=\"/preuzimanje/\">svi podaci za preuzimanje</a>": "Вся таблица в формате CSV: <a download=\"\" href=\"/preuzimanje/blokvolt-cene-elektricnih-automobila.csv\">Цены электромобилей</a> · <a href=\"/preuzimanje/\">все данные для скачивания</a>",
+ "Cela tabela u CSV formatu: <a download=\"\" href=\"/preuzimanje/blokvolt-wallbox-modeli.csv\">Wallbox modeli i cene</a> · <a href=\"/preuzimanje/\">svi podaci za preuzimanje</a>": "Вся таблица в формате CSV: <a download=\"\" href=\"/preuzimanje/blokvolt-wallbox-modeli.csv\">Модели wallbox и цены</a> · <a href=\"/preuzimanje/\">все данные для скачивания</a>",
  "Cena": "Цена",
  "Cena (RSD)": "Цена (RSD)",
  "Cena 11 kW je niža od cene 7 kW — proveriti specifikaciju pre kupovine.": "Версия на 11 кВт стоит дешевле версии на 7 кВт — перед покупкой проверьте характеристики.",

@@ -306,6 +306,14 @@ def page_url(rel):
     return rel
 
 
+def seo_title(t, suffix=' | BlokVolt'):
+    """The rule of build.py seo_title() applied once more after translation: the Serbian title may fit in 60 characters
+    while its English or Russian translation does not (docs/RUNBOOK.md 3.34)."""
+    if t.endswith(suffix) and len(t) > 60:
+        return t[:-len(suffix)]
+    return t
+
+
 def lang_url(url, lang):
     return url if lang == 'sr' else f'/{lang}{url}'
 
@@ -375,7 +383,7 @@ class Renderer:
                     el[a] = self.tr_text(lang, el[a], where)
         # 3. head
         if soup.title and soup.title.string:
-            soup.title.string = self.tr_text(lang, soup.title.string, where)
+            soup.title.string = seo_title(self.tr_text(lang, soup.title.string, where))
         for m in soup.find_all('meta'):
             if m.get('name') == 'description' or m.get('property') in ('og:title', 'og:description', 'og:image:alt'):
                 m['content'] = self.tr_text(lang, m['content'], where)
