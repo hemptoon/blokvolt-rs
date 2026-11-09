@@ -5,6 +5,7 @@ the tiles host: GitHub Pages answers Range requests, Cloudflare Pages does not),
     python3 scripts/dev_world_data.py <tiles base URL> <work dir>   → prints shell lines: D=…, PAGES=…, MANIFEST=…, CARDS=…
 """
 import json
+import os
 import subprocess
 import sys
 import tarfile
@@ -33,7 +34,9 @@ def main(base, work):
         with tarfile.open(work / name) as t:
             t.extractall(work, filter='data')
     m = json.load(open(work / f'manifest-{d}.json', encoding='utf-8'))
-    m['tiles'] = f"{base}/{latest['tiles']}"
+    # BV_TILES_PATH: a task branch may point its own preview at another tiles folder of the host (K7: world/2026-11-09-k7/)
+    # without touching latest.json, so the previews of dev and the other branches stay as they are
+    m['tiles'] = f"{base}/{os.environ.get('BV_TILES_PATH') or latest['tiles']}"
     if m.get('odbl_dump') and not str(m['odbl_dump']).startswith('http'):
         m['odbl_dump'] = f"{dd}/{m['odbl_dump']}"
     m['dev_note'] = 'dev build: tiles and ODbL dump on the tiles host, cards next to the site'

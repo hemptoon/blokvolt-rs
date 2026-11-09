@@ -172,6 +172,12 @@ const zrb = (big, x, y) => ['interpolate', ['linear'], ['zoom'], ...[3, 7, 12, 1
 // dark point with a thicker lime ring; unknown power is grey (dark grey when it is known to be DC)
 const P_COLOR = ['match', ['get', 'p'], [3, 4, 5], '#0D111A', 7, '#5C6270', 0, '#E3E5E9', '#FFFFFF'];
 const P_STROKE = ['match', ['get', 'p'], [3, 4, 5], '#D9F45B', [0, 6, 7], '#8A909B', '#0D111A'];
+// K7: small zooms show the even grain of the tiles (z0–5 thinned by spacing, z6–9 thinner still, all points from z10):
+// tiny dots without a ring, slightly transparent; AC points are dark there (a white dot without a ring is invisible on the
+// base map) and turn white with the dark ring by zoom 8. From zoom 10 the sizes are the ones before K7.
+const zrl = (big, x, y) => ['interpolate', ['linear'], ['zoom'], ...[2, 5, 8, 10, 12, 16].flatMap((z, k) => [z, ['case', big, x[k], y[k]]])];
+const P_LOW = ['match', ['get', 'p'], [3, 4, 5], '#0D111A', 7, '#5C6270', 0, '#8A909B', '#2B3240'];
+const restricted = ['==', ['get', 'a'], 1];
 function addLayers() {
   if (!M || !mapLoaded || map.getSource(SRC)) return;
   map.addSource(SRC, { type: 'vector', url: 'pmtiles://' + at(M.tiles), attribution: '' });
@@ -180,13 +186,13 @@ function addLayers() {
     id: LYR, type: 'circle', source: SRC, 'source-layer': 'sites', filter: pFilter(),
     layout: { 'circle-sort-key': ['match', ['get', 'p'], 5, 4, [3, 4], 3, [1, 2], 2, 7, 1, 0] },
     paint: {
-      'circle-radius': zrb(big, [1.8, 4, 9, 12.5], [1.2, 3, 7.5, 11]),
-      'circle-color': P_COLOR,
+      'circle-radius': zrl(big, [1.8, 3, 4.5, 7, 9, 12.5], [1.5, 2.5, 3.5, 5.7, 7.5, 11]),
+      'circle-color': ['interpolate', ['linear'], ['zoom'], 5, P_LOW, 8, P_COLOR],
       'circle-stroke-color': P_STROKE,
-      'circle-stroke-width': zrb(big, [0.7, 1.5, 3, 3.2], [0.4, 1, 2, 2.4]),
-      // restricted places (only with "Prikaži i ostale") are drawn faded
-      'circle-opacity': ['case', ['==', ['get', 'a'], 1], 0.45, 1],
-      'circle-stroke-opacity': ['case', ['==', ['get', 'a'], 1], 0.55, 1]
+      'circle-stroke-width': zrl(big, [0, 0.6, 1.2, 2.4, 3, 3.2], [0, 0.4, 0.8, 1.6, 2, 2.4]),
+      // restricted places (only with "Prikaži i ostale") are drawn faded; everything is a little lighter below zoom 7
+      'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, ['case', restricted, 0.35, 0.7], 5, ['case', restricted, 0.4, 0.85], 7, ['case', restricted, 0.45, 1]],
+      'circle-stroke-opacity': ['case', restricted, 0.55, 1]
     }
   });
   // max kW inside the point from zoom 12, as on /mapa/ (tile attribute k; a point without k simply has no number)
