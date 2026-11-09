@@ -32,7 +32,7 @@ Kod kuće noću 100 km stoji otprilike šest puta manje nego benzinom, a na ultr
 
 ## Što ovdje nalazite
 
-{{ w.tiles(['map', 'prices', 'apps', 'home', 'subsidies', 'road', 'buildings', 'stats']) }}
+{{ w.tiles(['map', 'prices', 'apps', 'home', 'electricity', 'subsidies', 'road', 'buildings', 'stats']) }}
 
 **[Punionice po gradovima](/hr/gradovi/)**: popis gradova s brojem punionica i poveznicom na kartu.
 
@@ -42,6 +42,6 @@ Kod kuće noću 100 km stoji otprilike šest puta manje nego benzinom, a na ultr
 - **Zgrade.** Od 1. 1. 2025. o postavljanju mjesta za punjenje u zgradi odlučuje natpolovična većina suvlasnika — ne jednoglasno i ne 80 %. [Što kaže zakon]({{ PAGES.buildings.path }})
 - **Autoceste.** Na A1 punionicu ima 15 odmorišta, ali južno od Raščana gornjih nijedno. Na A5, A10 i A11 nema nijedne. [Put na more]({{ PAGES.road.path }})
 - **Trajekti.** Električni automobil smije na Jadrolinijin trajekt, ali pri kupnji karte morate navesti da je vozilo električno.
-- **Struja kod kuće.** Od 1. 10. 2026. do 31. 3. 2027. cijene energije za kućanstva određuje nova uredba; iznad 3.000 kWh u šest mjeseci energija je 35 % skuplja.
+- **Struja kod kuće.** Od 1. 10. 2026. do 31. 3. 2027. cijene energije za kućanstva određuje nova uredba; iznad 3.000 kWh u šest mjeseci energija je 35 % skuplja. [Cijena struje]({{ PAGES.electricity.path }})
 
 <p class="note disc">Sve mreže prikazane su po istim pravilima, a mjesto na ovim stranicama nitko ne plaća. Tko stoji iza BlokVolta i odakle su podaci, piše u <a href="{{ PAGES.method.path }}">metodologiji</a>.</p>

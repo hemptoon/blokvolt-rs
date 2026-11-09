@@ -21,6 +21,8 @@ Cijene energije za kućanstva od **{{ C.power.period }}** određuje {{ C.power.r
 
 {{ w.tariffs() }}
 
+Sve stavke, sati niže tarife i prag od 3.000 kWh: [cijena struje u Hrvatskoj]({{ PAGES.electricity.path }}).
+
 - **Niža tarifa.** {{ C.power.nt_hours }} Noćno punjenje na tarifnom modelu Bijeli gotovo je dvostruko jeftinije od jedinstvene tarife.
 - **Prag od 3.000 kWh.** {{ C.power.threshold }} Kućanstvo koje već troši više od 300 kWh mjesečno s punjenjem auta lako prijeđe prag — tada vrijedi desni stupac.
 - **Fiksne naknade** (mjerno mjesto i opskrba, oko {{ money(C.power.fixed_month) }} mjesečno s PDV-om) plaćate i bez auta, pa ih kalkulator ne računa.
