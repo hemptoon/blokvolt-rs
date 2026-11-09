@@ -33,7 +33,7 @@
  "sources_title": "Surse și licențe | BlokVolt",
  "sources_h1": "Surse și licențe",
  "sources_desc": "De unde provin datele despre încărcare ale BlokVolt și sub ce licențe.",
- "sources_p": "Datele provin din surse deschise (surse: {n}): registre oficiale, Open Charge Map, OpenStreetMap și datele deschise ale rețelelor. Lista completă, cu licențe și atribuiri, se află pe o singură pagină:",
+ "sources_p": "Datele provin din surse deschise ({n} în total): registre oficiale, Open Charge Map, OpenStreetMap și datele deschise ale rețelelor. Lista completă, cu licențe și atribuiri, se află pe o singură pagină:",
  "method_title": "Metodologie | BlokVolt",
  "method_h1": "Metodologie",
  "method_desc": "Cum sunt combinate locurile, cât de fiabil este fiecare și ce pagini există.",
