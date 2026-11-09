@@ -1,0 +1,13 @@
+{
+ "home": "/pl/",
+ "map": "/pl/mapa/",
+ "hub": "/pl/stacje-ladowania/",
+ "net": "siec",
+ "about": "o-danych",
+ "download": "pobierz",
+ "gnet": "/pl/sieci-ladowania/",
+ "prices": "/pl/ceny-ladowania/",
+ "shell_about": "/pl/o-serwisie/",
+ "sources": "/pl/zrodla/",
+ "methodology": "/pl/metodologia/"
+}
