@@ -1,0 +1,13 @@
+{
+ "home": "/de/",
+ "map": "/de/karte/",
+ "hub": "/de/ladestationen/",
+ "net": "netz",
+ "about": "ueber-die-daten",
+ "download": "download",
+ "gnet": "/de/ladenetze/",
+ "prices": "/de/ladepreise/",
+ "shell_about": "/de/ueber/",
+ "sources": "/de/quellen/",
+ "methodology": "/de/methodik/"
+}
