@@ -1,5 +1,5 @@
 /* BlokVolt — world widget configurator (/map-for-your-site/ …) and the "Request access" form of /developers/ (G5,
-   RUNBOOK 3.41). The configurator only builds an address and an <iframe> code; nothing is stored or sent from it.
+   RUNBOOK 3.42). The configurator only builds an address and an <iframe> code; nothing is stored or sent from it.
    The request form posts to data-api (the blokvolt.rs worker, /api/svet/zahtev); empty data-api = preview (demo). */
 (function () {
   'use strict';

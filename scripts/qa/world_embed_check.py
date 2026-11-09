@@ -1,4 +1,4 @@
-# G5 checks (RUNBOOK 3.41): the world widget pages, the configurator and /developers/ in a built dist-com.
+# G5 checks (RUNBOOK 3.42): the world widget pages, the configurator and /developers/ in a built dist-com.
 #   python3 scripts/qa/world_embed_check.py --strings-only          strings only (used by world_embed.py selftest)
 #   python3 scripts/qa/world_embed_check.py dist-com                 static checks of the built pages and _headers
 #   python3 scripts/qa/world_embed_check.py dist-com --browser       + Playwright: the widget inside an iframe of another

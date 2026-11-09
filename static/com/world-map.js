@@ -31,7 +31,7 @@ const slug = s => fold(s).replace(/ß/g, 'ss').replace(/[^a-z0-9]+/g, '-').repla
 const IS_TOUCH = window.matchMedia && matchMedia('(pointer: coarse)').matches;
 const UA = navigator.userAgent;
 const IS_ANDROID = /Android/i.test(UA), IS_IOS = /iPhone|iPad|iPod/i.test(UA);
-// widget for other sites (/embed/map/, G5, RUNBOOK 3.41): cfg.embed = {open, utm}. Two-finger gestures so the host page
+// widget for other sites (/embed/map/, G5, RUNBOOK 3.42): cfg.embed = {open, utm}. Two-finger gestures so the host page
 // still scrolls, no reports, the card's button opens the place on blokvolt.com; &tema=tamna picks the dark base map.
 const EMB = cfg.embed || null;
 const TEMA = EMB && /^(tamna|dark)$/.test(new URLSearchParams(location.search).get('tema') || '') ? 'tamna' : '';

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""World widgets and open data of blokvolt.com (task G5 of the bvcom pool, RUNBOOK 3.41).
+"""World widgets and open data of blokvolt.com (task G5 of the bvcom pool, RUNBOOK 3.42).
 
 Pages (EN, SR, RU):
   /embed/map/ · /sr/embed/mapa/ · /ru/embed/karta/          the world map (static/com/world-map.js, cfg.embed) for an iframe on
@@ -84,7 +84,7 @@ def networks():
 
 def headers(OUT):
     """_headers for Cloudflare Pages: the widget paths may be framed by any site, the rest of the world layer only by itself."""
-    lines = ['# G5 (RUNBOOK 3.41): widgets may sit in an iframe on any site; other pages only on blokvolt.com itself',
+    lines = ['# G5 (RUNBOOK 3.42): widgets may sit in an iframe on any site; other pages only on blokvolt.com itself',
              '# (the same pattern as /embed/* of blokvolt.rs: X-Frame-Options for all, detached for the widget paths)',
              '/*', '  X-Frame-Options: SAMEORIGIN', '  X-Content-Type-Options: nosniff']
     for p in EMBED.values():

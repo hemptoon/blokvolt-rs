@@ -2707,7 +2707,7 @@ async function svetApi(request, env, p, m, url) {
 }
 if (globalThis.SVET_TEST) Object.assign(globalThis.SVET_TEST, { parse: svParse, majority: svMajority });
 
-// ---------------------------------------------------------------- world widgets of blokvolt.com (G5, RUNBOOK 3.41)
+// ---------------------------------------------------------------- world widgets of blokvolt.com (G5, RUNBOOK 3.42)
 // POST /api/svet/vidzet {h, k, l}: one view of /embed/map/ on another site. h = the host site's name, taken by the widget
 // from document.referrer (the page that holds the iframe); nothing personal is stored: no IP, no full address, no
 // cookie — one counter per day, host, widget and language. One count per host and fingerprint a day (the fingerprint is
