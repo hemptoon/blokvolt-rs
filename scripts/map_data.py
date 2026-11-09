@@ -660,7 +660,7 @@ def official_sites():
             meta[k] = {'file': 'ostale.json', 'date': L['date'], 'url': L.get('url', ''), 'label': L['label']}
         for x in o['sites']:
             L = o['lists'][x['k']]
-            extra = {f: x[f] for f in ('loc', 'oh', 'ax', 'fee', 'note', 'al', 'opn', 'acc', 'park') if f in x}
+            extra = {f: x[f] for f in ('loc', 'oh', 'ax', 'fee', 'note', 'al', 'opn', 'acc', 'park', 'cab') if f in x}   # cab: own cable, e.g. a check on the spot (Modena, 02.11.2026)
             recs.append({'k': x['k'], 'id': x['id'], 'lat': x['lat'], 'lon': x['lon'], 'net': L.get('net', ''), 'raw': x['n'], 'n': x['n'],
                          'a': x.get('a', ''), 'c': x.get('c') or [], 'evse': None, 'u': x.get('u') or L.get('url', ''),
                          'l': x.get('l') or '', 'src2': x.get('src2'), 'extra': extra, 'dt': x.get('d'), 'by': x.get('by')})

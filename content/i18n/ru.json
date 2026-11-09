@@ -9122,5 +9122,13 @@
  "⟦0⟧–70 RSD/min + 50 RSD po sesiji": "⟦0⟧–70 RSD/мин + 50 RSD за сессию",
  "⟦0⟧–⟦1⟧ RSD<small>ugradnja</small>": "⟦0⟧–⟦1⟧ RSD<small>установка</small>",
  "⟦0⟧–⟦1⟧ cm³": "⟦0⟧–⟦1⟧ см³",
- "⟦0⟧–⟦1⟧ €, po lokaciji i dobu dana": "⟦0⟧–⟦1⟧ €, в зависимости от места и времени суток"
+ "⟦0⟧–⟦1⟧ €, po lokaciji i dobu dana": "⟦0⟧–⟦1⟧ €, в зависимости от места и времени суток",
+ "Osam punjača u nizu uz zid, mesta su obeležena zelenom bojom.": "Восемь зарядок в ряд вдоль стены, места отмечены зелёной краской.",
+ "Pokreće se parking karticom na e-selektoru": "Запуск парковочной картой через e-selektor",
+ "provera na licu mesta": "проверка на месте",
+ "8 punjača Tip 2, utičnica bez kabla. Punjenje se obračunava po isporučenim kWh i plaća na blagajni pre izlaska, zajedno sa parkingom (100 RSD po započetom satu, sajt operatera garaže, ⟦0⟧). Tehnički problemi: 021 38 60 402.": "8 зарядок Type 2, розетка без кабеля. Зарядка считается по отпущенным kWh и оплачивается в кассе перед выездом вместе с парковкой (100 RSD за каждый начатый час, сайт оператора гаража, ⟦0⟧). Технические проблемы: 021 38 60 402.",
+ "60 RSD/kWh sa PDV-om": "60 RSD/kWh с НДС",
+ "cenovnik u garaži, ⟦0⟧": "прайс в гараже, ⟦0⟧",
+ "sajt operatera garaže, ⟦0⟧": "сайт оператора гаража, ⟦0⟧",
+ "60 RSD/kWh": "60 RSD/kWh"
 }
