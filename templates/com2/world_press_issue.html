@@ -1,0 +1,23 @@
+{% extends 'world_prices_base.html' %}
+{# G7: one monthly issue of the European EV Charging Price Index (scripts/world_press.py), frozen from content/world/index_history/ #}
+{% block pagehead %}{{ pm.head(kick, h1, lead, crumbs, checked, last) }}{% endblock %}
+{% block content %}
+{{ pm.tiles(tiles) }}
+<div class="sec"><div class="sec-head"><h2 id="key">{{ P.h_key }}</h2></div>
+<ul class="prose">{% for f in facts %}<li>{{ f }}</li>{% endfor %}</ul></div>
+<div class="sec"><div class="sec-head"><h2 id="chart">{{ P.ch_dc_home }}</h2></div>
+<figure class="wp-fig">{{ chart|safe }}</figure>
+<div class="chips">{% for u, n in svgs %}<a class="chip" style="white-space:normal;height:auto" href="{{ u }}" download>SVG · {{ n }}</a>{% endfor %}</div></div>
+<div class="sec"><div class="sec-head"><h2 id="countries">{{ P.h_table_i }}</h2></div>
+<div class="tw"><table class="wp-t"><thead><tr><th>{{ P.th_country }}</th><th class="num">{{ P.th_ac }}</th><th class="num">{{ P.th_dc }}</th><th class="num">{{ P.th_hpc }}</th><th class="num">{{ P.th_home }}</th><th class="num">{{ P.th_ratio }}</th>{% if has_prev %}<th class="num">{{ P.th_change }}</th>{% endif %}</tr></thead><tbody>
+{% for r in rows %}<tr><td>{% if r.url %}<a href="{{ r.url }}">{{ r.name }}</a>{% else %}{{ r.name }}{% endif %}</td>{% for c in r.cells %}<td class="num">{{ c|safe }}</td>{% endfor %}<td class="num">{{ r.home|safe }}</td><td class="num">{{ r.ratio }}</td>{% if has_prev %}<td class="num">{{ r.change }}</td>{% endif %}</tr>
+{% endfor %}</tbody></table></div>
+<p class="note">{{ note }}</p>
+{{ pm.fxnote() }}</div>
+<div class="sec"><div class="sec-head"><h2 id="data">{{ P.h_data }}</h2></div>
+<div class="chips"><a class="chip" href="{{ csv[0] }}" download>{{ csv[1] }}</a><a class="chip" href="{{ method_url }}">{{ P.method_link }}</a><a class="chip" href="{{ hub_url }}">{{ P.prices_link }}</a></div></div>
+<div class="sec"><div class="sec-head"><h2 id="cite">{{ P.h_cite }}</h2></div>
+<p class="prose">{{ credit }}, <a href="{{ SITE }}{{ hub_url }}">{{ SITE }}{{ hub_url }}</a></p>
+<p class="note"><a class="lnk" href="{{ press_url }}">{{ P.for_media_link }}</a></p></div>
+<p class="note disc">{{ P.disc }}</p>
+{% endblock %}

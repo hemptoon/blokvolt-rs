@@ -532,6 +532,7 @@ def main():
     if os.environ.get('BV_WORLD_PAGES'):
         __import__('world_pay').prepare()   # G4: menu entries How to pay · Routes (scripts/world_pay.py)
     __import__('world_prices').prepare(sys.modules[__name__])   # G3: price file of the map card + URLs (scripts/world_prices.py)
+    __import__('world_press').prepare(sys.modules[__name__])   # G7: footer link to /press/ (scripts/world_press.py)
     __import__('world_map').build(sys.modules[__name__])   # world map /map/ /sr/mapa/ /ru/karta/ (K2, scripts/world_map.py)
     bust()
     (OUT / 'CNAME').write_text('blokvolt.com\n', encoding='utf-8')
@@ -555,6 +556,7 @@ def main():
     import world_shell; world_shell.run(sys.modules[__name__], wc)  # G0: world menu/footer pages, search index, dev home
     __import__('world_prices').run(sys.modules[__name__], wc)  # G3: price index and price pages (with the world layer only)
     __import__('world_pay').run(sys.modules[__name__], wc)  # G4: how to pay + routes (with the world layer only)
+    __import__('world_press').run(sys.modules[__name__], wc)  # G7: monthly issue of the index, /press/, embeds, archive CSV
     bad = link_check()
     files = [p for p in OUT.rglob('*') if p.is_file()]
     print(f'blokvolt.com: {len(URLS)} pages in the sitemap, {len(files)} files, {n_companies} companies, {n_sources} English sources; broken links: {len(bad)}')

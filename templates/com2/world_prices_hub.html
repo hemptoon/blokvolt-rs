@@ -23,7 +23,8 @@
 <div class="prose"><p>{{ P.m1 }}</p><p>{{ P.m2 }}</p><p>{{ m3 }}</p><p>{{ m4 }}</p></div></div>
 <div class="sec"><div class="sec-head"><h2 id="data">{{ P.h_data }}</h2></div>
 <p>{{ data_p }}</p>
-<div class="chips">{% for u, n in csvs %}<a class="chip" href="{{ u }}" download>{{ n }}</a>{% endfor %}</div></div>
+<div class="chips">{% for u, n in csvs %}<a class="chip" href="{{ u }}" download>{{ n }}</a>{% endfor %}</div>
+{% if PRESS_LINK %}<p class="note"><a class="lnk" href="{{ PRESS_LINK[l][0] }}">{{ PRESS_LINK[l][1] }}</a></p>{% endif %}</div>
 <div class="sec"><div class="sec-head"><h2 id="sources">{{ P.h_sources }}</h2></div>
 <ul class="prose">
 <li><a href="{{ home_src.eurostat.url }}" rel="noopener nofollow">{{ home_src.eurostat.name }}</a> · {{ home_src.eurostat.licence }}</li>

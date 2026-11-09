@@ -2544,6 +2544,35 @@ price and never rank networks.
 `python3 scripts/qa/world_checkins_test.py` (rules, candidates, CLI), `python3 scripts/world_checkins.py --selftest`
 (rules on the real tariffs), `python3 scripts/qa/world_checkins_ui_test.py --data <K1 output>` (card in Chromium:
 EN/SR/RU × 390/1440, live and demo mode, Balkan card without the block).
+### 3.45 The monthly issue of the European EV Charging Price Index and the page for media (G7, since 09.11.2026)
+
+The index of 3.42 becomes a monthly issue that does not change afterwards. Code: `scripts/world_press.py`, templates
+`templates/com2/world_press.html` and `world_press_issue.html`, strings `content/world/strings_press.json` (EN/SR/RU).
+Built by `gen_com.py` with the world layer, right after the price pages; noindex like the rest of the world layer while
+`config.json` `public` is false.
+
+- **Snapshot** `content/world/index_history/<YYYY-MM>.json` (committed): the index of the month frozen from the G3 model
+  (Europe, every indexed country, methods, home electricity, ratio, cover, dates of tariffs / weights / FX). Issue
+  pages, archive CSV and charts are built from snapshots only, so a published issue keeps its numbers.
+- **Pages:** `/press/` (`/sr/za-medije/`, `/ru/dlya-smi/`) — latest issue in key sentences, two charts with iframe
+  code, SVG files, how to cite, CSV, contact `hello@blokvolt.com`, archive; `<press>/<YYYY-MM>/` — the issue (tiles, key
+  figures, chart, table with the DC change against the previous issue); `<press>/embed/dc-vs-home/` and
+  `/embed/europe/` — chart only, noindex, credit link, always the latest issue; `/press/charts/<YYYY-MM>-<chart>-<lang>.svg`;
+  past months' index CSV under `/charging-prices/data/` (G3 writes the current month).
+- **Key sentences** are generated, never typed: Europe AC/DC/HPC, cheapest and dearest country for DC, DC against home
+  electricity, change against the previous issue (Europe and the three countries that moved most), driver check-ins of G6
+  when `content/world/checkins_month.json` exists. No ranking of networks (§0).
+  `python3 scripts/world_press.py facts <YYYY-MM> <en|sr|ru|de|fr>` prints them for the press release.
+- Footer link "For media" in the whole world layer and a link from the price hub appear once a snapshot exists.
+
+**Monthly (after 3.42 steps 1–4, first days of the month):**
+1. `python3 scripts/world_press.py snapshot` — freezes the month of `tariffs.json` `updated`. It refuses to overwrite a
+   different existing snapshot; `--force` only before the issue is announced.
+2. `python3 scripts/world_press.py selftest`, build, look at `/press/` and the new issue at 390 and 1440 px.
+3. Press release: take `facts` in EN/DE/FR/SR/RU into the drafts (templates kept outside the repo, `~/dev/evdb/work/G7/`).
+   Sending to any outlet — only after Andrei's "да" for that letter (project rules). The issue goes out with "релиз G7"
+   or, after it, through the publishing queue of 3.39.
+4. A scheduled task for steps 1–3 is created only on Andrei's "да"; its prompt is in `~/dev/evdb/work/G7/SCHEDULED_PROMPT.md`.
 
 ## 4. Build and check
 
