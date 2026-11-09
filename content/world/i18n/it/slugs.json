@@ -1,0 +1,13 @@
+{
+ "home": "/it/",
+ "map": "/it/mappa/",
+ "hub": "/it/stazioni-di-ricarica/",
+ "net": "rete",
+ "about": "informazioni-sui-dati",
+ "download": "download",
+ "gnet": "/it/reti-di-ricarica/",
+ "prices": "/it/prezzi-ricarica/",
+ "shell_about": "/it/informazioni/",
+ "sources": "/it/fonti/",
+ "methodology": "/it/metodologia/"
+}
