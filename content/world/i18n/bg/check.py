@@ -41,8 +41,13 @@ def plural_cats():
     return tags | {'other'}
 
 
+def _norm_ph(x):
+    # {city_u}/{country_u} are allowed in every language (pool 4, 00:12): engine puts the language's in_phrase there
+    return re.sub(r'\{(city|country)_u\}', r'{\1}', x)
+
+
 def sig(s):
-    return (sorted(PH.findall(s)), sorted(t.lower() for t in TAG.findall(s)), sorted(ENT.findall(s)))
+    return (sorted(_norm_ph(x) for x in PH.findall(s)), sorted(t.lower() for t in TAG.findall(s)), sorted(ENT.findall(s)))
 
 
 def check_text(where, en, bg):
