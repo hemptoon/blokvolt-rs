@@ -64,7 +64,7 @@
  "h_c_index": "Indice {country_u}",
  "c_lead": "Prezzi di {n} reti con una tariffa pubblicata, ad hoc e con abbonamento, accanto all'elettricità domestica.",
  "c_noindex": "Non ci sono abbastanza reti con prezzi per un indice del Paese; i prezzi di ciascuna rete sono qui sotto.",
- "h_nets": "Reti e abbonamenti",
+ "h_nets": "Reti e piani tariffari",
  "th_net": "Rete",
  "th_plan": "Piano",
  "th_month": "Al mese",

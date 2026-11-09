@@ -42,3 +42,6 @@ See section at the end (60 random strings).
 ## Open / left
 - Questions for Andrei: (1) "Repubblica Ceca" vs CLDR "Cechia"; (2) "Kiev" vs "Kyiv" (Italian media are split; kept "Kiev" with a note).
 - The `name` fields of sources_pages (e.g. "BlokVolt own check") stay in English by the contract (source names); can be translated later if wanted.
+
+### Back-translation result (separate agent, 60 random strings, blind)
+56 of 60 equivalent, 4 minor, 0 major. Fixed: `pages.t_country` (and for consistency `t_city`, `t_city_cc`, `t_hub_*`) now say "Stazioni di ricarica per auto elettriche" (EN "EV charging stations"); `prices.h_nets` "Reti e piani tariffari" ("plans" is broader than "abbonamenti"); `pages.st_dc50`, `p_dc`, `p_city_cmp` — "da 50 kW in su" to avoid reading "exactly 50 kW". No "noi", "24/7", "subito" or network ratings found.
