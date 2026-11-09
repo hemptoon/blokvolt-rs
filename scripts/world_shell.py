@@ -115,9 +115,18 @@ def run(G, c):
                 title=t['home_title'].replace(' | BlokVolt', ''), h1=t['home_h1'], description=t['home_desc'], T=t,
                 lead=lead, crumbs=None, kick=t['home_kick'], jsonld=None, data_date=W.fmt_date(c.date),
                 countries=countries, regional=locals_, map_url=MAP[l], hub_url=HUB[l],
-                search_url=f'/assets/world/search-index.json?v={sver}', home_js=f'/assets/world/world-home.js?v={hver}'), 'home')
+                search_url=search_url(a, l, sver), home_js=f'/assets/world/world-home.js?v={hver}'), 'home')
             out.append(HOME[l])
     print(f"world shell: {len(out)} pages ({', '.join(out[:3])} …), search index {n_idx} places; home {'on' if os.environ.get('BV_WORLD_HOME') == '1' else 'off'}")
+
+
+def search_url(a, l, sver):
+    """K8: an extra language searches its own index (search-index-<code>.json: en, sr, ru + that language)."""
+    if l in I.BASE:
+        return f'/assets/world/search-index.json?v={sver}'
+    import hashlib
+    f = a / f'search-index-{l}.json'
+    return f'/assets/world/{f.name}?v={hashlib.sha1(f.read_bytes()).hexdigest()[:10]}'
 
 
 def shutil_copy(a, b):
