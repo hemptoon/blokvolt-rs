@@ -321,6 +321,10 @@ the page: without a local firm, a local operator or a local fact, it repeats the
 Nothing to maintain: `scripts/open_data.py` rebuilds the five CSV files from the same objects the
 pages use, on every build. When a dataset gains a column, add it there and to `DL_META` in `build.py`
 (title, description, update cadence) — the page, the JSON-LD `Dataset` blocks and the sitemap follow.
+A data page that shows the same table (since 09.11.2026: `/podaci/cene-elektricnih-automobila/`, `/podaci/wallbox-modeli/`)
+is listed in `DL_PAGE` in `build.py` (its title and description in `DL_TEXT`, shared with `DL_META`): the page gets a line
+"Cela tabela u CSV formatu: …" above its sources and a `Dataset` block in its own JSON-LD, so Google's dataset search finds
+the table where it is read. The build stops if `DL_PAGE` names a CSV that `open_data.py` does not write.
 Keep the promise the page makes: every row carries its source URL and check date, an unpublished
 value stays empty rather than estimated, and numbers are written with a comma decimal mark because
 the delimiter is a semicolon (Serbian Excel opens that without an import wizard).
@@ -1918,7 +1922,8 @@ punjačima i u računima cene su u dinarima.“ (EN/RU from the translation memo
 **Never converted** (nothing there is marked): the prose of guides, news and data pages (authors' text with quoted
 sources), the media kit and the ad price (/za-firme/oglasavanje/, its PDFs), legal pages, /pregled/ and the newsletter
 e-mails, /admin/, the account page's texts, blokvolt.com (no switcher there, `valuta.js` is not loaded). In the map card
-the receipts, the idle fee and the notes stay in dinars.
+the receipt lines (`.price`) and the idle fee are converted like the card price (`fxd`, `FX.scan`; `fx_test.py` expects
+it); only the free-text notes (`p.note`) stay as written, in dinars.
 
 **How to mark a new price.** In a template `{{ value|fx }}` (every „<number> RSD[/unit]“ of a data string gets the markup;
 `fx(stack=False)` keeps it inline) or `{{ fx_num(v, rate=True, text=…) }}` for one number; in Python `valuta.fx_num`. The
@@ -2194,6 +2199,10 @@ Free tools only; nothing here may slow the site down or add steps for visitors.
   Serbian key; after a change of a long title run the 3.9 todo as usual (a new long title needs its shortened key).
   blokvolt.com follows the same rule: `scripts/gen_com.py` → `seo_title()` in its `render()` (English pages and every
   local section; there is no translation step there).
+- The same rule runs once more after translation (`scripts/i18n.py` → `seo_title()`): a Serbian title that fits in 60
+  characters may grow in English or Russian ("Audi u Srbiji: …" → "Audi in Serbia: … | BlokVolt", 64), and then the
+  EN/RU page drops the suffix by itself. Since 09.11.2026 no page of either site has a title over 60 that still ends
+  with " | BlokVolt".
 - Write titles the way people search: the main words first ("Cena struje u Srbiji 2026", "Tesla punjači u Srbiji",
   "Punjači za električne automobile u Šapcu"), then what the page answers (cena, lokacije, stanje). Keep a title true
   to the page: no "cena" when the page shows none. The description says the facts in one or two sentences (≤ 158).
