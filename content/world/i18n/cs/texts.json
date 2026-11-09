@@ -1,0 +1,175 @@
+{
+  "about_data": {
+    "h1": "O datech mapy",
+    "title": "Data mapy nabíjení: zdroje, licence, spolehlivost | BlokVolt",
+    "description": "Odkud pocházejí data mapy nabíjení, pod jakými licencemi se používají a jak se počítá spolehlivost jednotlivých bodů.",
+    "lead": "Mapa vychází z otevřených dat a u každého bodu je uvedeno, odkud pochází.",
+    "intro": "Mapa spojuje otevřená data z mnoha zdrojů: oficiálních registrů, otevřených dat státní správy, OpenStreetMap, Open Charge Map a stránek provozovatelů se seznamem jejich míst. Záznamy se slučují, čistí a upravují, takže bod na mapě se může od původního záznamu lišit. Pro všechny sítě platí stejná pravidla. Mapa sítě ani provozovatele nehodnotí.",
+    "osm_h": "OpenStreetMap a licence ODbL",
+    "osm_p": "Data © přispěvatelé OpenStreetMap, k dispozici pod licencí Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Sloučená databáze bodů, která obsahuje data OpenStreetMap, je pod stejnou licencí k dispozici na stránce „Stažení otevřených dat“: {download_url}.",
+    "sources_h": "Zdroje a licence",
+    "sources_note": "Uvedeny jsou jen zdroje, které se v aktuálních datech skutečně vyskytují, vždy s licencí a požadovaným uvedením autorství.",
+    "conf_h": "Jak se počítá spolehlivost",
+    "conf_p": "Každý bod dostává skóre spolehlivosti od 0 do 100. Pro všechny sítě platí jeden vzorec. Skóre hodnotí data o místě, nikoli síť ani její služby.",
+    "conf_rows": [
+      [
+        "Základní skóre podle nejlepšího typu zdroje",
+        "Oficiální registr nebo otevřená data státní správy 70; vlastní kontrola BlokVolt 65; OpenStreetMap 50; All The Places 45; Open Charge Map 40; Overture (z All The Places) 40; ostatní 25"
+      ],
+      [
+        "Nezávislá kontrola",
+        "Pokud mezi zdroji není registr, může nezávislá automatická kontrola záznamu základ zvýšit, nikdy však nad hodnotu, kterou kontrola dává"
+      ],
+      [
+        "Shoda zdrojů",
+        "+10, pokud se na místě shodují dva nebo více zdrojů; dalších +5 při třech a více"
+      ],
+      [
+        "Aktuálnost",
+        "+10, pokud je poslední potvrzení z posledních 12 měsíců; −15, pokud je starší než 3 roky"
+      ],
+      [
+        "Rozpor v zemi",
+        "−10, pokud se zdroje neshodují v tom, o kterou zemi jde"
+      ],
+      [
+        "Mimo provoz nebo podezřelé souřadnice",
+        "Nejvýše 20"
+      ],
+      [
+        "Rozsah",
+        "Skóre se omezuje na 0–100; místa pod 40 se na mapě ani na stránkách nezobrazují"
+      ]
+    ],
+    "conf_levels": [
+      [
+        "Vysoká",
+        "70–100",
+        "Potvrzeno oficiálním zdrojem nebo více zdroji, nedávno aktualizováno"
+      ],
+      [
+        "Střední",
+        "50–69",
+        "Věrohodné, ale potvrzeno menším počtem zdrojů nebo ne nedávno"
+      ],
+      [
+        "Nízká",
+        "40–49",
+        "Jediný nebo starší zdroj; před cestou je vhodné ověřit u provozovatele"
+      ]
+    ],
+    "notes_h": "Poznámky",
+    "notes": [
+      "Data jsou poskytována tak, jak jsou, bez jakékoli záruky přesnosti, dostupnosti, ceny nebo kompatibility. Před cestou je vhodné vše ověřit u provozovatele nebo na místě.",
+      "Karta každého bodu uvádí zdroj, licenci a datum poslední aktualizace.",
+      "Názvy sítí a ochranné známky patří jejich vlastníkům.",
+      "BlokVolt není propojen s provozovateli ani s institucemi, které data zveřejňují, a ti tuto mapu nepodporují.",
+      "Jména soukromých osob se nezobrazují; soukromé domácí nabíječky na mapě nejsou.",
+      "Chybu lze nahlásit nebo o opravu či odstranění požádat tlačítkem „Nahlásit chybu“ na kartě bodu nebo e-mailem na {email}. Odpověď přijde do 30 dnů."
+    ],
+    "licence_texts_h": "Texty licencí",
+    "licence_texts": [
+      [
+        "CC BY 4.0",
+        "https://creativecommons.org/licenses/by/4.0/"
+      ],
+      [
+        "CC0 1.0",
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      [
+        "ODbL 1.0",
+        "https://opendatacommons.org/licenses/odbl/1-0/"
+      ],
+      [
+        "Licence Ouverte 2.0",
+        "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+      ],
+      [
+        "CDLA Permissive 2.0",
+        "https://cdla.dev/permissive-2-0/"
+      ],
+      [
+        "Open Government Licence v2.0",
+        "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+      ]
+    ]
+  },
+  "download": {
+    "h1": "Stažení otevřených dat",
+    "title": "Stažení otevřených dat o nabíjecích bodech | BlokVolt",
+    "description": "Týdenní soubor CSV s veřejnými nabíjecími body: souřadnice, síť, výkon, konektory a zdroje. Zdarma pod licencí ODbL.",
+    "lead": "Veřejná vrstva mapy je k dispozici jako bezplatný soubor CSV, aktualizovaný každý týden.",
+    "what_h": "Co soubor obsahuje",
+    "what_p": "Týdenní export veřejné vrstvy mapy ve formátu CSV: souřadnice, síť, výkon, konektory a zdroje každého místa. Obsahuje data OpenStreetMap, proto je zveřejněn pod licencí Open Database License (ODbL) 1.0. Ceny, kontroly týmu a opravy BlokVolt pro Balkán součástí souboru nejsou.",
+    "fields_h": "Sloupce",
+    "fields": [
+      [
+        "pid",
+        "Stálý identifikátor místa"
+      ],
+      [
+        "lat",
+        "Zeměpisná šířka (WGS 84)"
+      ],
+      [
+        "lon",
+        "Zeměpisná délka (WGS 84)"
+      ],
+      [
+        "country",
+        "Kód země (ISO 3166-1 alpha-2)"
+      ],
+      [
+        "name",
+        "Název místa"
+      ],
+      [
+        "network",
+        "Název sítě nebo provozovatele"
+      ],
+      [
+        "max_kw",
+        "Nejvyšší výkon v místě, kW"
+      ],
+      [
+        "dc",
+        "1, pokud je k dispozici rychlonabíjení DC, jinak 0"
+      ],
+      [
+        "power_class",
+        "Výkonová třída místa"
+      ],
+      [
+        "connectors",
+        "Typy konektorů oddělené čárkou"
+      ],
+      [
+        "points",
+        "Odhadovaný počet nabíjecích bodů"
+      ],
+      [
+        "access",
+        "Typ přístupu (veřejný, omezený apod.)"
+      ],
+      [
+        "sources",
+        "Klíče zdrojů oddělené čárkou (viz stránka „O datech“)"
+      ],
+      [
+        "last_confirmed",
+        "Datum posledního potvrzení kterýmkoli zdrojem"
+      ],
+      [
+        "confidence",
+        "Skóre spolehlivosti 0–100"
+      ]
+    ],
+    "licence_h": "Licence",
+    "licence_p": "Soubor je k dispozici pod licencí ODbL 1.0. Data je možné sdílet, vytvářet z nich díla a upravovat je, pokud je uvedeno „© přispěvatelé OpenStreetMap, BlokVolt“ a každá upravená databáze je sdílena pod stejnou licencí. Data musí zůstat otevřená: nelze uplatňovat technická omezení, která tato práva omezují. Plné znění: https://opendatacommons.org/licenses/odbl/1-0/",
+    "file_h": "Soubor",
+    "file_missing": "Soubor pro tento týden se připravuje. Zkuste to prosím později.",
+    "attribution_h": "Jak uvádět zdroj",
+    "attribution_p": "Při použití dat je třeba uvést „© přispěvatelé OpenStreetMap, BlokVolt“ s odkazem na www.openstreetmap.org/copyright a na tuto stránku a uvést licenci ODbL 1.0. Data z jiných zdrojů si ponechávají vlastní uvedení autorství, které je uvedeno na stránce „O datech“."
+  }
+}

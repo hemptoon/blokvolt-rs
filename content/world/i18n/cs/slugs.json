@@ -1,0 +1,13 @@
+{
+  "home": "/cs/",
+  "map": "/cs/mapa/",
+  "hub": "/cs/nabijeci-stanice/",
+  "net": "sit",
+  "about": "o-datech",
+  "download": "ke-stazeni",
+  "gnet": "/cs/nabijeci-site/",
+  "prices": "/cs/ceny-nabijeni/",
+  "shell_about": "/cs/o-projektu/",
+  "sources": "/cs/zdroje/",
+  "methodology": "/cs/metodika/"
+}
