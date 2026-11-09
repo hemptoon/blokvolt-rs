@@ -366,3 +366,432 @@ WEL Networks,WEL Networks,wel-networks,,utility
 TNB Electron,TNB Electron,tnb-electron,,utility
 Chargebox,Chargebox,chargebox,,cpo
 ENEWA,enewa,enewa,,utility
+Equans,Equans,equans,"группа Bouygues (бывш. Engie); в NL ведёт публичные зарядки по муниципальным концессиям; смешанный канон NL/FR — проверить, что FR-точки тоже Equans; NL-бизнес e-mobility Equans выделен в Velian (2025–2026) — проверить, не слить ли NL-точки с Velian",cpo
+50five,50five,50five,"NL/BE/FR/GB; установщик и оператор зарядок (домашние, бизнес, публичные); в 2023 купил частные зарядки Shell в NL",cpo
+Gemeente Den Haag,Gemeente Den Haag,gemeente-den-haag,"муниципалитет Гааги, NL; публичные зарядки по концессии города, эксплуатирует подрядчик — проверить реального CPO",municipality
+Easy Charge,EasyCharge,easycharge,"оператор EasyCharge Services, FR (издатель IRVE-датасета на data.gouv); написание бренда на собственном сайте не проверено",cpo
+Laadnet,Laadnet,laadnet,"ПО/производитель/роуминг, не оператор; онлайн-платформа управления зарядками для владельцев и монтажников, часть Rexel Nederland, NL",unknown
+Velian,Velian,velian,"бывш. e-mobility Equans Infra & Mobility (NL), с 2025 под DigitalBridge/Aberdeen; не подтверждено офсайтом",cpo
+Wirelane,Wirelane,wirelane,"CPO, Мюнхен, DE",cpo
+YES55,YES55,yes55,"FR; оператор IRVE (opérateur по data.gouv), собственный сайт не найден; возможно связан с дистрибьютором YESSS Électrique — проверить; не подтверждено офсайтом",cpo
+Driveco,Driveco,driveco,"FR, CPO (концессии городов/синдикатов, ритейл-парковки)",cpo
+Citeos,Citeos,citeos,"бренд VINCI Energies, FR; часто эксплуатирует муниципальные сети по контракту — проверить пересечения с городскими сетями; не подтверждено офсайтом",cpo
+eze.network,eze.network,eze-network,"бывш. ladenetz.de — сеть-объединение Stadtwerke (smartlab, Аахен), DE; на сайте также «EZE.Network»; не подтверждено офсайтом",utility
+SP Mobility,SP Mobility,sp-mobility,"EV-подразделение SP Group (Singapore Power), SG; купили ChargEco",utility
+EVzen,EVzen,evzen,"CPO, FR (зарядки для бизнеса и автопарков); не подтверждено офсайтом",cpo
+EnergyVision,EnergyVision,energyvision,"BE; CPO и поставщик энергии, сеть зарядок у вокзалов NMBS/SNCB",cpo
+nrg incharge,nrg incharge,nrg-incharge,"сеть зарядок поставщика электроэнергии NRG (группа Motor Oil), GR",utility
+CityCharging,CityCharging,citycharging,NL (точки в т.ч. Эйндховен); официальный сайт не найден — проверить; не подтверждено офсайтом,unknown
+True Kare,True Kare,true-kare,"официальный сайт не найден; PT, проверить; не подтверждено офсайтом",unknown
+Load Stations,Load Stations,load-stations,"оператор зарядки на сайтах своей вывески Load Stations, FR (по data.gouv)",cpo
+Berliner Stadtwerke,Berliner Stadtwerke,berliner-stadtwerke,"Stadtwerke Берлина, DE (городская сеть публичных зарядок)",utility
+Samenwerkende Gemeenten Zuid-Holland,Samenwerkende Gemeenten Zuid-Holland,samenwerkende-gemeenten-zuid-holland,"плейсхолдер, не оператор; объединение муниципалитетов Зюйд-Холланда по концессии на публичные зарядки, фактический CPO — держатель концессии, проверить; не подтверждено офсайтом",municipality
+Chargy,Chargy,chargy,"национальная публичная сеть Люксембурга, оператор Creos (сетевая компания), LU",utility
+Pluq,Pluq,pluq,"CPO, NL/BE/DE (публичные и полупубличные зарядки); не подтверждено офсайтом",cpo
+CDG ENGIE,CDG ENGIE,cdg-engie,"СП ComfortDelGro и ENGIE, Сингапур; ComfortDelGro запустил бренд CDG Energy — проверить переименование; не подтверждено офсайтом",cpo
+Energie Südbayern,Energie Südbayern,energie-sudbayern,"ESB, региональный энергосбыт, Бавария, DE; не подтверждено офсайтом",utility
+deer,deer,deer,"deer GmbH (Calw, BW, DE) — электрокаршеринг со своими публичными зарядками; не подтверждено офсайтом",cpo
+eParking.fi,eParking,eparking,"FI; eParking Oy — сервис оплаты парковки и зарядки (приложение eParking.fi); оператор зарядных точек на парковках — проверить, не только ли платформа; не подтверждено офсайтом",parking
+SPIE CityNetworks,SPIE CityNetworks,spie-citynetworks,"дочка SPIE France; эксплуатирует муниципальные сети по концессиям/подрядам, FR",cpo
+Waat,WAAT,waat,FR; зарядка в жилых домах и копропертях; в прессе пишется WAAT; не подтверждено офсайтом,cpo
+HOCHTIEF Ladepartner,HOCHTIEF Ladepartner,hochtief-ladepartner,"HOCHTIEF Ladepartner GmbH, дочка HOCHTIEF, DE; строит Deutschlandnetz вместе с EWE Go; не подтверждено офсайтом",cpo
+E.Leclerc,E.Leclerc,e-leclerc,"сеть гипермаркетов, FR; станции на парковках магазинов под брендом E.Leclerc — проверить, кто оператор; не подтверждено офсайтом",retail
+Opcharge,OpCharge,opcharge,"OpCharge B.V., NL — публичные зарядки по договорам с муниципалитетами",cpo
+Hamburger Energiewerke,Hamburger Energiewerke,hamburger-energiewerke,"городская энергокомпания Гамбурга, DE; ведёт публичные зарядки города (бывш. Stromnetz Hamburg)",utility
+Ford,Ford,ford,"автопроизводитель; зарядки у дилеров Ford (US/CA), не публичная сеть Ford как CPO — проверить реального оператора",automaker
+Eviny,Eviny,eviny,"энергокомпания из Бергена, NO; зарядный бизнес Eviny Elektrifisering (NO/SE/DK); не подтверждено офсайтом",utility
+NEW,NEW,new,"NEW AG (Niederrhein Energie und Wasser), Мёнхенгладбах, DE; короткое имя — неоднозначно; не подтверждено офсайтом",utility
+ABC,ABC,abc,"сеть АЗС ABC кооператива S-ryhmä (SOK), FI; зарядка ABC-lataus — собственная; не подтверждено офсайтом",retail
+Westenergie,Westenergie,westenergie,"дочка E.ON, DE (NRW)",utility
+RegioLaden,RegioLaden,regioladen,"DE; дочка Thüga (с 2025), оператор зарядок для Stadtwerke группы",cpo
+EVPass,evpass,evpass,"CH, сеть Green Motion SA (группа Romande Energie); бренд пишется строчными",cpo
+DAEN Mobility,DAEN Mobility,daen-mobility,NL (Naarden); официальный сайт не найден — проверить; не подтверждено офсайтом,cpo
+TEAG,TEAG,teag,"Thüringer Energie AG, Тюрингия, DE; не подтверждено офсайтом",utility
+Repower,Repower,repower,"Repower AG (CH); в Италии — Repower Italia, e-mobility; не подтверждено офсайтом",utility
+Rotterdam Elektrisch,Rotterdam Elektrisch,rotterdam-elektrisch,"программа муниципалитета Роттердама (Gemeente Rotterdam), NL; точки ставят концессионеры; не подтверждено офсайтом",municipality
+Stadtwerke Bonn,Stadtwerke Bonn,stadtwerke-bonn,"Stadtwerke, DE",utility
+Stadtwerke Stuttgart,Stadtwerke Stuttgart,stadtwerke-stuttgart,"Stadtwerke, DE",utility
+Watt+Volt,Watt+Volt,watt-volt,"энергосбытовая компания, GR; не подтверждено офсайтом",utility
+Rossini Energy,Rossini Energy,rossini-energy,"французский стартап-оператор зарядок (площадки у бизнеса-хоста), FR; не подтверждено офсайтом",cpo
+EDEKA,EDEKA,edeka,"хост, а не сеть; сеть супермаркетов DE, зарядки ставят региональные EDEKA/партнёры — проверить оператора; не подтверждено офсайтом",retail
+EVoke Systems,EVoke,evoke,"ПО/производитель/роуминг, не оператор; EVoke Systems, US — CPMS/сетевой сервис, станции принадлежат площадкам; не подтверждено офсайтом",cpo
+Heijmans,Heijmans,heijmans,"NL; строительная компания, ставит и обслуживает публичные зарядки по муниципальным концессиям — проверить, кто CPO; не подтверждено офсайтом",cpo
+Energielösung,Energielösung,energielosung,"Energielösung GmbH, Бавария, DE — установщик и оператор зарядной инфраструктуры (CEO Florian Kulzer)",cpo
+Sorégies,Sorégies,soregies,"энергосбыт департамента Vienne, FR; возможно сеть Alterbase — проверить; не подтверждено офсайтом",utility
+Pradella Sistemi,Pradella Sistemi,pradella-sistemi,"итальянская компания (системы/монтаж), IT; роль оператора не подтверждена; не подтверждено офсайтом",unknown
+ESWE,ESWE Versorgung,eswe-versorgung,"ESWE Versorgungs AG, Stadtwerke Висбадена, DE; не подтверждено офсайтом",utility
+VinFast,VinFast,vinfast,"автопроизводитель, VN (Vingroup); зарядки сейчас ведёт V-GREEN — проверить, не слить ли",automaker
+Séolis,Séolis,seolis,"энергокомпания департамента Deux-Sèvres, FR; сеть называется Réseau AlterBase",utility
+SDEA (Aube),SDEA,sdea,"Syndicat Départemental d'Énergie de l'Aube (деп. 10), FR; сеть эксплуатирует Freshmile по договору; не подтверждено офсайтом",municipality
+Citywatt,Citywatt,citywatt,DE; юрлицо CITYWATT GmbH (на сайте логотип капсом),cpo
+EnBW ODR,EnBW ODR,enbw-odr,"EnBW Ostwürttemberg DonauRies AG, региональная энергокомпания, дочка EnBW, DE; не подтверждено офсайтом",utility
+DEW21,DEW21,dew21,"Dortmunder Energie- und Wasserversorgung, Stadtwerke Дортмунда, DE; не подтверждено офсайтом",utility
+FDE 80,FDE 80,fde-80,"Fédération Départementale d'Énergie de la Somme, FR — департаментский энергосиндикат; не подтверждено офсайтом",municipality
+SachsenEnergie,SachsenEnergie,sachsenenergie,"региональная энергокомпания Дрездена/Саксонии, DE",utility
+Stadtwerke Duisburg,Stadtwerke Duisburg,stadtwerke-duisburg,"Stadtwerke, DE",utility
+BS|ENERGY,BS|ENERGY,bs-energy,"Braunschweiger Versorgungs AG, Stadtwerke Брауншвейга, DE; не подтверждено офсайтом",utility
+Den Hartog Charging,Den Hartog Charging,den-hartog-charging,"Den Hartog Charging B.V., NL; связана с монтажной компанией Den Hartog B.V. (Groot-Ammers); не подтверждено офсайтом",cpo
+Protergia,Protergia,protergia,"энергосбыт группы Metlen (бывш. Mytilineos), GR; не подтверждено офсайтом",utility
+MVV Energie,MVV Energie,mvv-energie,"городская энергокомпания Мангейма, DE",utility
+Continente Plug&Charge,Continente Plug&Charge,continente-plug-charge,PT; собственная сеть зарядок сети супермаркетов Continente (Sonae MC),retail
+Wattery,Wattery,wattery,"FI, зарядный сервис-провайдер (жилые дома/компании + публичные точки); не подтверждено офсайтом",cpo
+Q-Park,Q-Park,q-park,"хост, а не сеть; парковочный оператор (NL/DE/NO/SE) — проверить, сам ли оперирует зарядками в NL; не подтверждено офсайтом",parking
+DATS 24,DATS 24,dats-24,"сеть АЗС группы Colruyt, BE; сама эксплуатирует быстрые зарядки; не подтверждено офсайтом",retail
+CUBOS,CUBOS,cubos,"CPO, DE; купили ChargeOne, B2B-сеть TotalEnergies DE и Scapo (2026); не подтверждено офсайтом",cpo
+AB Vassilopoulos,AB Vassilopoulos,ab-vassilopoulos,"хост, а не сеть; сеть супермаркетов, GR (Ahold Delhaize)",retail
+e-charge50,e-charge50,e-charge50,FR; сеть SDEM50 — энергосиндикат департамента Манш,municipality
+GP Joule Connect,GP JOULE CONNECT,gp-joule-connect,"дочка GP JOULE (DE), CPO и подрядчик для Stadtwerke",cpo
+amperio,amperio,amperio,DE; официальный сайт не проверен; не подтверждено офсайтом,unknown
+Greenspot,Greenspot,greenspot,"французский оператор зарядных станций (привлёк €30 млн в 2024), FR; не подтверждено офсайтом",cpo
+Enviem,Enviem,enviem,"NL; точки подписаны «Enviem Retail» у торговых объектов — официальный сайт не найден, проверить (возможно, хост/девелопер ритейла); не подтверждено офсайтом",unknown
+Mobiflow,Mobiflow,mobiflow,"BE — зарядные решения для бизнеса, публичный доступ к точкам клиентов",cpo
+QuickCharge,QuickCharge,quickcharge,"US (NY и Новая Англия); сеть компании Integra Energy (Олбани, NY); не подтверждено офсайтом",cpo
+R3,R3,r3,"R3 — «Réseau Recharge Rapide», FR; создан DBT, Amundi Transition Énergétique и Banque des Territoires; быстрые зарядки у ритейла (Norauto и др.); не подтверждено офсайтом",cpo
+Mick-E,Mick-E,mick-e,NL; официальный сайт не найден — проверить; не подтверждено офсайтом,unknown
+SWARCO,SWARCO,swarco,"SWARCO Smart Charging (бывш. eVolt), GB; группа SWARCO (AT) — также производитель; не подтверждено офсайтом",cpo
+GLS Mobility,GLS Mobility,gls-mobility,"дочка GLS Bank, DE; зарядки с терминалами Direct Payment; не подтверждено офсайтом",cpo
+enviaM,enviaM,enviam,"envia Mitteldeutsche Energie AG, DE (группа E.ON)",utility
+ZEborne,ZEborne,zeborne,FR (+BE); оператор зарядок,cpo
+LEW,LEW,lew,"Lechwerke AG, Аугсбург, DE (группа E.ON)",utility
+Wattif,Wattif,wattif,"Wattif EV, NL/BE; точки в DE — проверить; не подтверждено офсайтом",cpo
+STAWAG,STAWAG,stawag,"Stadtwerke Aachen AG, DE; не подтверждено офсайтом",utility
+illwerke vkw,illwerke vkw,illwerke-vkw,"энергокомпания Форарльберга, AT; бренд зарядки VLOTTE; не подтверждено офсайтом",utility
+ELE Emscher Lippe Energie,ELE,ele,"Emscher Lippe Energie GmbH, Гельзенкирхен, DE",utility
+SIEGE 27,SIEGE 27,siege-27,FR; Syndicat Intercommunal d'Electricité et de Gaz de l'Eure (департамент Эр),municipality
+bike-energy,bike energy,bike-energy,"велосипеды/двухколёсные; ПО/производитель/роуминг, не оператор; австрийский производитель зарядных станций для e-bike",unknown
+synergEV,synergEV,synergev,US; официальный сайт не найден — проверить; не подтверждено офсайтом,unknown
+StellaPower,StellaPower,stellapower,"NL (Дордрехт/Алфен-ан-ден-Рейн); официальный сайт не найден, проверить; не подтверждено офсайтом",unknown
+Team-Emobility,Team Emobility,team-emobility,"CPO, DE; в 2026 перешли на платформу Monta; не подтверждено офсайтом",cpo
+PLUS ES,PLUS ES,plus-es,"дочка Ausgrid (нерегулируемая), AU — зарядки на опорах освещения в Сиднее",utility
+cocharge,cocharge,cocharge,DE (Гамбург); cocharge GmbH — ставит и оперирует зарядки у отелей/бизнесов; не подтверждено офсайтом,cpo
+SDE 82,SDE 82,sde-82,"Syndicat Départemental d'Énergie de Tarn-et-Garonne (деп. 82), FR; сеть эксплуатирует Freshmile; не подтверждено офсайтом",municipality
+Stadtwerke München,SWM,swm,"Stadtwerke München, DE; не подтверждено офсайтом",utility
+Stadtwerke Ludwigsburg-Kornwestheim,Stadtwerke Ludwigsburg-Kornwestheim,stadtwerke-ludwigsburg-kornwestheim,"Stadtwerke, DE (SWLB); не подтверждено офсайтом",utility
+FPL EVolution,FPL EVolution,fpl-evolution,"программа зарядки Florida Power & Light (NextEra), US; не подтверждено офсайтом",utility
+ZEENCO,Zeenco,zeenco,"CPO, FR — зарядки при отелях/бизнесе; не подтверждено офсайтом",cpo
+EnviroSpark,EnviroSpark,envirospark,US (Атланта); оператор зарядок,cpo
+Stadtwerke Würzburg,WVV,wvv,"Würzburger Versorgungs- und Verkehrs-GmbH (WVV) — городская Stadtwerke Вюрцбурга, DE; проверить, под каким именем показывать; не подтверждено офсайтом",utility
+TEVGO,TEVGO,tevgo,FR; официальный сайт не найден — проверить; не подтверждено офсайтом,unknown
+nonoxx pro,nonoxx pro,nonoxx-pro,"nonoxx pro GmbH, Ноймюнстер (Шлезвиг-Гольштейн), DE; ставит зарядки у муниципалитетов; не подтверждено офсайтом",cpo
+Ignitis ON,Ignitis ON,ignitis-on,"e-mobility бренд Ignitis Group, LT/LV/EE; не подтверждено офсайтом",utility
+Lanova Laadpalen,Lanova Laadpalen,lanova-laadpalen,NL — производитель/установщик и оператор зарядок; проверить роль; не подтверждено офсайтом,cpo
+Chargelec 36,Chargelec 36,chargelec-36,FR; сеть SDEI — энергосиндикат департамента Эндр,municipality
+Plenitude,Plenitude,plenitude,Eni Plenitude (IT); собственная CPO-сеть Be Charge — проверить дубль канона: слить с Be Charge,utility
+Ladestationen Südwest,Ladestationen Südwest,ladestationen-sudwest,DE; оператор не идентифицирован — проверить; не подтверждено офсайтом,unknown
+Spirii,Spirii,spirii,"ПО/производитель/роуминг, не оператор; датская CPMS-платформа, также оператор части сетей, DK; не подтверждено офсайтом",cpo
+EVX,EVX,evx,"австралийский оператор зарядки на бордюрах (kerbside), AU; не подтверждено офсайтом",cpo
+RhönEnergie Fulda,RhönEnergie Fulda,rhonenergie-fulda,"региональная энергокомпания Фульды, DE",utility
+evo Oberhausen,evo,evo-oberhausen,"Energieversorgung Oberhausen AG, Stadtwerke, DE",utility
+GETEC mobility solutions,GETEC mobility solutions,getec-mobility-solutions,"мобилити-подразделение GETEC (энергосервис, DE); в 2024 приняло клиентов Parkstrom; не подтверждено офсайтом",cpo
+Optiload,Optiload,optiload,BE; официальный сайт не найден — проверить; не подтверждено офсайтом,unknown
+Linz AG,LINZ AG,linz-ag,"городская энергокомпания Линца, AT; не подтверждено офсайтом",utility
+Stadtwerke Bochum,Stadtwerke Bochum,stadtwerke-bochum,"Stadtwerke, DE; не подтверждено офсайтом",utility
+OK,OK,ok,"OK a.m.b.a., DK — топливо/энергия, своя сеть зарядок; 1 точка в NL — вероятно чужой «OK», проверить",retail
+ÜZ Mainfranken,ÜZ Mainfranken,uz-mainfranken,"Überlandwerk/ÜZ Mainfranken eG, региональная энергокооперация, Бавария, DE; не подтверждено офсайтом",utility
+Backcharge,BACKCHARGE,backcharge,"Backcharge GmbH (Schmees), Барнсторф, Нижняя Саксония, DE — зарядки у пекарен/ритейла; написание бренда не подтверждено на офиц. сайте; не подтверждено офсайтом",cpo
+Stadtwerke Heidelberg,Stadtwerke Heidelberg,stadtwerke-heidelberg,"Stadtwerke, DE; не подтверждено офсайтом",utility
+EV Start,EV Start,ev-start,"CA; официальный сайт не подтверждён (возможно EVStart), проверить; не подтверждено офсайтом",unknown
+Sowatt Solutions,Sowatt,sowatt,"Sowatt Solutions, FR; хабы быстрой зарядки; не подтверждено офсайтом",cpo
+OZECAR,OZECAR,ozecar,"OZECAR SAS, Корсика, FR; не подтверждено офсайтом",cpo
+Stadtwerke Pforzheim,Stadtwerke Pforzheim,stadtwerke-pforzheim,"Stadtwerke, DE",utility
+Enerstock,Enerstock,enerstock,"FR, сеть быстрых зарядок у супермаркетов (Intermarché и др.), есть своё приложение; сайт не подтверждён; не подтверждено офсайтом",cpo
+Energie AG,Energie AG,energie-ag,"Energie AG Oberösterreich, AT; не подтверждено офсайтом",utility
+Zephyre,Zephyre,zephyre,"французский оператор зарядок в жилых комплексах/копропрьете, FR; не подтверждено офсайтом",cpo
+GOFAST,GOFAST,gofast,"сеть быстрой зарядки, CH; не подтверждено офсайтом",cpo
+Evenli,Evenli,evenli,"Evenli Oy, FI — зарядки для жилых и коммерческих объектов; не подтверждено офсайтом",cpo
+Westfalen,Westfalen,westfalen,"Westfalen AG (Мюнстер), сеть АЗС и газы, DE; сама оперирует зарядки на своих АЗС",retail
+Guangdong Communication Group,广东省交通集团,guangdong-communication-group,"госгруппа транспорта/автодорог провинции Гуандун, CN; зарядки на сервисных зонах трасс; Latin: Guangdong Communication Group; не подтверждено офсайтом",unknown
+Stadtwerke Castrop-Rauxel,Stadtwerke Castrop-Rauxel,stadtwerke-castrop-rauxel,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Agrisnellaad,AgriSnellaad,agrisnellaad,"быстрые зарядки 30 кВт на сельхоз/местных площадках, NL (Зеландия); не подтверждено офсайтом",cpo
+Ze-Watt,ZE-WATT,ze-watt,FR; производитель и супервизор зарядок (в т.ч. для Orange) — частично ПО/производитель; не подтверждено офсайтом,cpo
+infra fürth,infra fürth,infra-furth,"Stadtwerke Fürth (infra fürth gmbh), DE",utility
+Stadtwerke Schwerte,Stadtwerke Schwerte,stadtwerke-schwerte,"Stadtwerke, DE",utility
+Teplárny Brno,Teplárny Brno,teplarny-brno,"городская теплоэнергетическая компания Брно, CZ",utility
+W:I (Comelec),W:I,w-i,"FR; Comelec — вероятно электромонтажная фирма; проверить, кто оператор; не подтверждено офсайтом",unknown
+Süwag,Süwag,suwag,"Süwag Energie AG, Франкфурт-Хёхст, DE (группа Westenergie/E.ON); не подтверждено офсайтом",utility
+Charging Together,Charging Together,charging-together,"PT; официальный сайт не найден, проверить; не подтверждено офсайтом",unknown
+ecowerk e-charge,ecowerk e-charge,ecowerk-e-charge,"ecowerk e-charge GmbH, BW, DE — есть своё приложение; сайт не подтверждён; не подтверждено офсайтом",cpo
+Helexia,Helexia,helexia,"PT; энергосервисная компания (группа Voltalia), в 2025 купила PT-оператора Bluecharge; не подтверждено офсайтом",cpo
+PRÄG,PRÄG,prag,"PRÄG Energie, Кемптен, DE — топливо/энергосбыт и АЗС; проверить, оператор или хост; не подтверждено офсайтом",retail
+Stadtwerke Iserlohn,Stadtwerke Iserlohn,stadtwerke-iserlohn,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Energie Steiermark,Energie Steiermark,energie-steiermark,"региональная энергокомпания Штирии, AT; не подтверждено офсайтом",utility
+Evota,Evota,evota,"FR; станции на парковках отелей и т.п., официальный сайт не найден — проверить; не подтверждено офсайтом",cpo
+DTE,DTE,dte,PT; расшифровку и официальный сайт найти не удалось — проверить; не подтверждено офсайтом,unknown
+WEMAG,WEMAG,wemag,"региональная энергокомпания Мекленбург-Передняя Померания (Шверин), DE",utility
+ZSE Drive,ZSE Drive,zse-drive,"сеть зарядок ZSE (Západoslovenská energetika, группа E.ON), SK",utility
+Stadtwerke Neuss,Stadtwerke Neuss,stadtwerke-neuss,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Tanx,Tanx,tanx,"хост, а не сеть; сеть безлюдных АЗС, NL — проверить, кто оператор зарядок; не подтверждено офсайтом",retail
+Aimo Park,Aimo Park,aimo-park,"оператор парковок (FI/SE), зарядка Aimo Charge на своих парковках; не подтверждено офсайтом",parking
+17er Oberlandenergie,17er Oberlandenergie,17er-oberlandenergie,"региональная энергокомпания баварского Оберланда, DE; не подтверждено офсайтом",utility
+Osnabrücker Parkstätten,Osnabrücker Parkstätten,osnabrucker-parkstatten,"хост, а не сеть; муниципальный оператор парковок Оснабрюка (Stadtwerke Osnabrück), зарядки в паркингах — проверить, кто CPO; не подтверждено офсайтом",parking
+SGA Industries,SGA Industries,sga-industries,"FR (код FR*SGA), публикует данные IRVE на data.gouv.fr; официальный сайт не найден; не подтверждено офсайтом",cpo
+EWV,EWV,ewv,"EWV Energie- und Wasser-Versorgung GmbH, Штольберг, DE; не подтверждено офсайтом",utility
+Morbihan énergies,Morbihan énergies,morbihan-energies,"департаментский энергосиндикат Морбиан (56), FR; не подтверждено офсайтом",municipality
+VIOCON,VIOCON,viocon,"CPO, DE (Бавария); в 2025 перенял точки на площадках AVP; не подтверждено офсайтом",cpo
+Stadtwerke Witten,Stadtwerke Witten,stadtwerke-witten,"Stadtwerke, DE",utility
+E-Werk Mittelbaden,E-Werk Mittelbaden,e-werk-mittelbaden,"региональная энергокомпания (Лар, Баден), DE",utility
+MAINGAU Energie,MAINGAU Energie,maingau-energie,"энергосбыт, Оберсхаузен, DE; также известен роуминговым тарифом",utility
+Keppel Volt,Keppel Volt,keppel-volt,"зарядный бренд Keppel (Keppel Electric), SG; не подтверждено офсайтом",cpo
+SPBR1,SPBR1,spbr1,"плейсхолдер, не оператор; похоже на технический ID/код станции, а не бренд, FR — проверить по data.gouv (IRVE); не подтверждено офсайтом",unknown
+reev,reev,reev,"ПО/производитель/роуминг, не оператор; reev GmbH (Регенсбург, DE) — CPMS-платформа, станции принадлежат её клиентам; не подтверждено офсайтом",cpo
+Spelsberg,Spelsberg,spelsberg,"ПО/производитель/роуминг, не оператор; Günther Spelsberg GmbH — производитель электрокорпусов и зарядного оборудования, DE",unknown
+Alva Charging Services,Alva Charging Services,alva-charging-services,NL; оператор зарядок (точки у Praxis и др.); не путать с моделью wallbox Alva от V2C; не подтверждено офсайтом,cpo
+Yusco,Yusco,yusco,"FR, CPO — дочка Voltalia (Voltalia Mobility); зарядки на парковках Auchan/Decathlon/Leroy Merlin; не подтверждено офсайтом",cpo
+Enefit Volt,Enefit Volt,enefit-volt,"дочка Eesti Energia (Enefit), EE/LV/LT/PL; RU:1 — проверить точку; не подтверждено офсайтом",utility
+Mota-Engil,Mota-Engil,mota-engil,"португальская строительная группа, эксплуатирует зарядки в сети MOBI.E, PT; не подтверждено офсайтом",cpo
+e-regio,e-regio,e-regio,"региональная энергокомпания, Ойскирхен, DE; не подтверждено офсайтом",utility
+Eiffage Énergie Systèmes,Eiffage Énergie Systèmes,eiffage-energie-systemes,"группа Eiffage, FR — подрядчик-интегратор, эксплуатирует зарядки по контрактам с коммунами/синдикатами",cpo
+Sainsbury's,Sainsbury's Smart Charge,sainsburys-smart-charge,"хост, а не сеть; GB, супермаркеты; собственная сеть быстрых зарядок Sainsbury's Smart Charge, часть точек — других CPO (Pod Point/Instavolt) — проверить; не подтверждено офсайтом",retail
+GaraGeeks,GaraGeeks,garageeks,"IT, стартап из Испры (Варезе), зарядная инфраструктура для городов; не подтверждено офсайтом",cpo
+Stadtwerke Bielefeld,Stadtwerke Bielefeld,stadtwerke-bielefeld,"Stadtwerke, DE; не подтверждено офсайтом",utility
+OIKEN,OIKEN,oiken,"энергокомпания региона Сьон (Вале), CH; не подтверждено офсайтом",utility
+Eoliberty,éo liberty,eo-liberty,"FR; написание бренда на картах «éo liberty» — офиц. сайт не найден, проверить; не подтверждено офсайтом",unknown
+Uno-X,Uno-X,uno-x,сеть АЗС NO/DK со своими быстрыми зарядками (не просто хост),retail
+EVOLV Charging,EVOLV Charging,evolv-charging,US; есть одноимённое приложение; компания и сайт не подтверждены — проверить; не подтверждено офсайтом,cpo
+e-VOLTT,e-VOLTT,e-voltt,"e-VOLTT Nederland, NL — зарядки на парковках/у бизнеса; не подтверждено офсайтом",cpo
+Stadtwerke Solingen,Stadtwerke Solingen,stadtwerke-solingen,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Parera Mobilité,Parera Mobilité,parera-mobilite,"подразделение компании Parera (Жер), FR; не подтверждено офсайтом",cpo
+AmpCharge,AmpCharge,ampcharge-au,"сеть зарядки топливной компании Ampol, AU; слаг ampcharge-au: ampcharge уже занят; не подтверждено офсайтом",retail
+Cut! Energy,CUT! Energy,cut-energy,"CUT! Energy GmbH, Мюнстерланд (Ahaus/Dülmen), DE; не путать с CutPower; не подтверждено офсайтом",cpo
+SDEG (Gers),SDEG,sdeg,FR; Syndicat Départemental d'Énergies du Gers; не подтверждено офсайтом,municipality
+HomE of Mobility,Home of Mobility,home-of-mobility,"DE, точки в Бюргштадте (Нижняя Франкония); оператор не подтверждён, написание «HomE» не подтверждено — проверить; не подтверждено офсайтом",unknown
+Borneco,Borneco,borneco,FR; официальный сайт не проверен; не подтверждено офсайтом,cpo
+energis,energis,energis,"energis GmbH, Саарбрюккен, DE; не подтверждено офсайтом",utility
+Swisscharge,Swisscharge,swisscharge,"сеть/приложение зарядки, CH; не подтверждено офсайтом",cpo
+Bosch,Bosch,bosch,"ПО/производитель/роуминг, не оператор; Robert Bosch GmbH — точки, вероятно, на объектах Bosch (хост); не подтверждено офсайтом",unknown
+Bilkraft,Bilkraft,bilkraft,DE; не найдено официальных данных — проверить; не подтверждено офсайтом,unknown
+Energieservice Rhein-Main,Energieservice Rhein-Main,energieservice-rhein-main,"DE (регион Рейн-Майн); официальный сайт не найден, возможна связь с Mainova — проверить; не подтверждено офсайтом",unknown
+ChargeFacile,ChargeFacile,chargefacile,FR; официальный сайт не найден — проверить; не подтверждено офсайтом,unknown
+Fleet Charge Services,Fleet Charge Services,fleet-charge-services,"NL; официальный сайт не найден, проверить; не подтверждено офсайтом",unknown
+Stadtwerke Ulm/Neu-Ulm,SWU,swu,"Stadtwerke Ulm/Neu-Ulm, DE; не подтверждено офсайтом",utility
+Reload-Solution,Reload-Solution,reload-solution,"DE (Hamm/Möhnesee, NRW); сайт не открыт — проверить; не подтверждено офсайтом",cpo
+Stadtwerke SH,Stadtwerke SH,stadtwerke-sh,"Stadtwerke SH GmbH & Co. KG (Шлезвиг), DE; не подтверждено офсайтом",utility
+BEW Bocholt,BEW,bew,"Bocholter Energie- und Wasserversorgung GmbH, Stadtwerke Бохольта, DE; не подтверждено офсайтом",utility
+St1,St1,st1,"сеть АЗС, FI/NO/SE; сама оперирует зарядками; не подтверждено офсайтом",retail
+smopi,smopi,smopi,"ПО/производитель/роуминг, не оператор; smopi® – Multi Chargepoint Solution GmbH — система многоточечной AC-зарядки для парковок, DE; не подтверждено офсайтом",cpo
+StromSpeicherMarkt,Strom Speicher Markt,strom-speicher-markt,"хост, а не сеть; продавец солнечных систем/накопителей во Фрайбурге, DE — проверить; не подтверждено офсайтом",unknown
+SEVDEC,SEVDEC,sevdec,"вероятно энергосиндикат (в data.gouv как «Bornes IRVE FRSEV SEVDEC»), FR — расшифровку проверить; не подтверждено офсайтом",municipality
+Stadtwerke Düren,Stadtwerke Düren,stadtwerke-duren,"Stadtwerke, DE",utility
+Bosch eBike Systems,Bosch eBike Systems,bosch-ebike-systems,"велосипеды/двухколёсные; ПО/производитель/роуминг, не оператор; зарядные станции для e-bike (Bosch)",unknown
+Albwerk,ALBWERK,albwerk,"ALBWERK GmbH & Co. KG, Гайслинген, DE; не подтверждено офсайтом",utility
+AÜW,AÜW,auw,"Allgäuer Überlandwerk GmbH, Кемптен, DE; не подтверждено офсайтом",utility
+Delmonicos,Delmonicos,delmonicos,"ПО/производитель/роуминг, не оператор; FR/LU — платформа идентификации, оплаты и роуминга («Delmonicos Inside»), станции принадлежат хостам",unknown
+Stadtwerke Kiel,Stadtwerke Kiel,stadtwerke-kiel,"Stadtwerke, DE",utility
+Georg Jos. Kaes,Georg Jos. Kaes,georg-jos-kaes,"хост, а не сеть?; DE, торговец топливом/АЗС (Kaes) — проверить; не подтверждено офсайтом",retail
+Mainzer Stadtwerke,Mainzer Stadtwerke,mainzer-stadtwerke,"Stadtwerke, DE",utility
+Volkswagen,Volkswagen,volkswagen,"смешанный канон: зарядки у дилеров/объектов VW, проверить; возможен дубль с Elli; не подтверждено офсайтом",automaker
+EA EnergieArchitektur Dresden,EA EnergieArchitektur,ea-energiearchitektur,"EA EnergieArchitektur GmbH, Дрезден, DE; строит и эксплуатирует зарядки; не подтверждено офсайтом",cpo
+On Charge,On Charge,on-charge,"дубль канона: слить с Wirelane; On Charge GmbH куплена Wirelane в 2023, DE; не подтверждено офсайтом",cpo
+Wuppertaler Stadtwerke,WSW Wuppertaler Stadtwerke,wsw-wuppertaler-stadtwerke,"Stadtwerke Вупперталя, DE (бренд WSW)",utility
+Q1,Q1,q1,"Q1 Energie AG (Оснабрюк), сеть АЗС, сама оперирует HPC; дочка Autostrom plus строит Deutschlandnetz",retail
+Städtische Werke Kassel,Städtische Werke Kassel,stadtische-werke-kassel,"Städtische Werke AG, Кассель, DE",utility
+Norlys,Norlys,norlys,"энергокомпания, DK; не подтверждено офсайтом",utility
+badenova,badenova,badenova,"региональная энергокомпания, Фрайбург, DE; не подтверждено офсайтом",utility
+evm,evm,evm,"Energieversorgung Mittelrhein, Кобленц, DE; не подтверждено офсайтом",utility
+Stadtwerke Stendal,Stadtwerke Stendal,stadtwerke-stendal,"Stadtwerke, DE",utility
+Stadtwerke Stralsund,Stadtwerke Stralsund,stadtwerke-stralsund,"Stadtwerke (SWS), DE",utility
+SEGMA,SEGMA,segma,PT; оператор не идентифицирован по официальным источникам — проверить; не подтверждено офсайтом,unknown
+EnergieZukunft Hildesheim,EnergieZukunft Hildesheim,energiezukunft-hildesheim,DE; вероятно связано с EVI Energieversorgung Hildesheim — проверить; не подтверждено офсайтом,unknown
+Inselwerke,Inselwerke,inselwerke,"Inselwerke eG — энергокооператив на острове Узедом, DE; не подтверждено офсайтом",utility
+Kreiswerke Barnim,Kreiswerke Barnim,kreiswerke-barnim,"коммунальное предприятие округа Барним, DE; не подтверждено офсайтом",utility
+China Southern Power Grid,中国南方电网,china-southern-power-grid,"Latin: China Southern Power Grid; госсетевая компания юга Китая, CN",utility
+E-Merge Mobility,E-Merge Mobility,e-merge-mobility,DE; официальных данных не найдено — проверить; не подтверждено офсайтом,unknown
+Fuzed,Fuzed,fuzed,"FR (Иль-де-Франс), солнечные навесы + зарядка, код оператора FR*FZD; не подтверждено офсайтом",cpo
+Erneuerbare für Marburg-Biedenkopf,Erneuerbare für Marburg-Biedenkopf,erneuerbare-fur-marburg-biedenkopf,DE; вероятно региональная энергокомпания/кооператив — проверить; не подтверждено офсайтом,unknown
+M-Charge,M-Charge,m-charge,"сеть зарядок Migros (оператор Migrol), CH; не подтверждено офсайтом",retail
+HanseWerk,HanseWerk,hansewerk,"региональная энергокомпания, группа E.ON, Северная Германия, DE; не подтверждено офсайтом",utility
+Stadtwerke Husum,Stadtwerke Husum,stadtwerke-husum,"Stadtwerke, DE",utility
+Numbat,Numbat,numbat,"DE (Кемптен); производитель быстрых зарядок со встроенной батареей, сам оперирует станции у ритейла",cpo
+PureCharged,PureCharged,purecharged,NL; официальный сайт не найден — проверить; не подтверждено офсайтом,unknown
+Stadtwerke Soest,Stadtwerke Soest,stadtwerke-soest,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Netto Marken-Discount,Netto Marken-Discount,netto-marken-discount,"хост, а не сеть; сеть дискаунтеров, DE — зарядки на парковках магазинов; не подтверждено офсайтом",retail
+PBW Parkraumgesellschaft,PBW,pbw,"Parkraumgesellschaft Baden-Württemberg, оператор парковок, DE; зарядки в своих паркингах; не подтверждено офсайтом",parking
+Stadtwerke Speyer,Stadtwerke Speyer,stadtwerke-speyer,"Stadtwerke, DE",utility
+Energieversorgung Gera,Energieversorgung Gera,energieversorgung-gera,"Stadtwerke Геры, DE",utility
+eCarUp,eCarUp,ecarup,"ПО/производитель/роуминг, не оператор; швейцарская платформа (Smart Energy Link AG) для шеринга частных зарядок — точки принадлежат хостам",cpo
+ESEL.CAB,ESEL.CAB,esel-cab,DE; официальный сайт не найден — проверить; не подтверждено офсайтом,unknown
+öPA Verkehrsgesellschaft,öPA Verkehrsgesellschaft,opa-verkehrsgesellschaft,"öPA Verkehrsgesellschaft mbH, Тройсдорф, DE — муниципальная транспортно-парковочная компания; не подтверждено офсайтом",municipality
+GFC,GFC,gfc,"смешанный канон: аббревиатура, DE — оператор не установлен, проверить; не подтверждено офсайтом",unknown
+Fraunhofer-Gesellschaft,Fraunhofer-Gesellschaft,fraunhofer-gesellschaft,"хост, а не сеть; исследовательская организация, зарядки на территории институтов, DE",unknown
+emotì,emotì,emoti,CH (Тичино); сеть зарядок тичинских энергокомпаний — проверить состав; не подтверждено офсайтом,utility
+NXT Charging Solutions,NXT Charging Solutions,nxt-charging-solutions,NL; возможно связан с NXT Mobility — проверить; не подтверждено офсайтом,cpo
+Neue Energien Hilden,Neue Energien Hilden,neue-energien-hilden,DE; вероятно дочка Stadtwerke Hilden — проверить; не подтверждено офсайтом,utility
+IP Charging,IP Charging,ip-charging,"NL; официальный сайт не найден, проверить; не подтверждено офсайтом",unknown
+Stadtwerke Weinheim,Stadtwerke Weinheim,stadtwerke-weinheim,"Stadtwerke, DE; не подтверждено офсайтом",utility
+DirtRoad,DirtRoad,dirtroad,US (Миннесота) — сеть со своим приложением DirtRoad; не подтверждено офсайтом,cpo
+ENNI,ENNI,enni,"ENNI Energie & Umwelt Niederrhein (Мёрс), Stadtwerke, DE",utility
+KWEV,KWEV,kwev,"US, провайдер зарядки (EVSP в программе CALeVIP), своё приложение KWEV; не подтверждено офсайтом",cpo
+SCHARR,SCHARR,scharr,"Friedrich Scharr KG, Штутгарт — торговля топливом/энергией, DE; проверить; не подтверждено офсайтом",retail
+RAIDEN,RAIDEN,raiden,"французский оператор быстрой зарядки (публикует IRVE на data.gouv), FR; не подтверждено офсайтом",cpo
+STADTWERK MOBILITY PLUS,STADTWERK MOBILITY PLUS,stadtwerk-mobility-plus,"STADTWERK MOBILITY PLUS GmbH & Co (KG), DE — e-mobility-дочка Stadtwerke (точки Überlingen/Hagnau/Augsburg), чья именно — проверить; не подтверждено офсайтом",cpo
+SDED 52,SDED 52,sded-52,"Syndicat Départemental d'Énergie et des Déchets de la Haute-Marne, FR; не подтверждено офсайтом",municipality
+ABM,ABM,abm,"US; ABM Industries — фасилити-сервис, с 2023 собственная брендированная сеть зарядок",cpo
+C4Energies,C4Energies,c4energies,"FR, публикует данные IRVE на data.gouv.fr; сайт не подтверждён; не подтверждено офсайтом",cpo
+Shaoguan Jinshun New Energy,Shaoguan Jinshun New Energy,shaoguan-jinshun-new-energy,CN (Шаогуань); оригинальное написание иероглифами не проверено; не подтверждено офсайтом,unknown
+Mennekes,MENNEKES,mennekes,"ПО/производитель/роуминг, не оператор; производитель разъёмов и зарядных станций, DE; не подтверждено офсайтом",unknown
+Ladesonne,Ladesonne,ladesonne,"DE (Нойштадт-ам-Рюбенберге, Нижняя Саксония); официальный сайт не найден — проверить; не подтверждено офсайтом",unknown
+mwenergy,mwenergy,mwenergy,"DE (Willich, NRW) — бренд «mw autostrom», связь со Stadtwerke Willich — проверить; не подтверждено офсайтом",cpo
+Erlanger Stadtwerke,Erlanger Stadtwerke,erlanger-stadtwerke,"Stadtwerke Эрлангена (ESTW), DE",utility
+EV MAP,EV MAP,ev-map,"FR (Лотарингия, деп. 54); похоже на название приложения/сервиса — проверить, реальный ли это оператор; не подтверждено офсайтом",unknown
+Meridian Energy,Meridian Energy,meridian-energy,"энергокомпания, NZ; не подтверждено офсайтом",utility
+Stadtwerke Goch,Stadtwerke Goch,stadtwerke-goch,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Stadtwerke Rüsselsheim,Stadtwerke Rüsselsheim,stadtwerke-russelsheim,"Stadtwerke, DE; не подтверждено офсайтом",utility
+EVZIIIN,EVziiin,evziiin,GR — платформа/приложение + установка и удалённое управление зарядками бизнеса; частично ПО — проверить роль; не подтверждено офсайтом,cpo
+eliso,eliso,eliso,DE; оператор зарядок для автопарков и публичных хабов — проверить; не подтверждено офсайтом,cpo
+Audi,Audi,audi,"автопроизводитель; зарядки у дилеров/Audi charging hub, DE",automaker
+Leitungstiefbau Dithmarschen,Leitungstiefbau Dithmarschen,leitungstiefbau-dithmarschen,"DE; похоже на строительного подрядчика — проверить, оператор ли; не подтверждено офсайтом",unknown
+Stadtwerke Hamm,Stadtwerke Hamm,stadtwerke-hamm,"Stadtwerke, DE; не подтверждено офсайтом",utility
+AggerEnergie,AggerEnergie,aggerenergie,"региональный энергосбыт, Гуммерсбах, DE; не подтверждено офсайтом",utility
+GEEVE,GEEVE,geeve,FR; официальный сайт не найден — проверить; не подтверждено офсайтом,unknown
+EcoInside,EcoInside,ecoinside,"PT; энергосервисная/солнечная компания, ставит и оперирует зарядки — проверить; не подтверждено офсайтом",cpo
+Picoty,Picoty,picoty,"топливный дистрибьютор (АЗС AVIA Picoty), FR; зарядки на собственных АЗС — проверить, кто CPO; не подтверждено офсайтом",retail
+team,team,team,"вероятно team energie GmbH & Co. KG (Фленсбург, АЗС/энергия), DE — проверить; не подтверждено офсайтом",retail
+AreaCharge,AreaCharge,areacharge,"DE; официальный сайт не найден, проверить; не подтверждено офсайтом",unknown
+Poste Italiane,Poste Italiane,poste-italiane,"почта Италии; колонки у почтовых отделений по проекту Polis — кто CPO, проверить; не подтверждено офсайтом",unknown
+Frankfurter Volksbank,Frankfurter Volksbank,frankfurter-volksbank,"хост, а не сеть; банк, зарядки у отделений, DE",unknown
+ELEKTRO-PROJEKCE,ELEKTRO-PROJEKCE,elektro-projekce,"CZ; электромонтажная фирма ELEKTRO-PROJEKCE s.r.o. — проверить, оператор ли; не подтверждено офсайтом",unknown
+G-MOB,G-MOB,g-mob,"FR, организация G-MOB публикует IRVE на data.gouv.fr; сайт не найден; не подтверждено офсайтом",cpo
+Technische Werke Schussental,TWS,tws,"Technische Werke Schussental, Равенсбург, DE; не подтверждено офсайтом",utility
+Eulektro,Eulektro,eulektro,"стартап-оператор зарядок, Бремен, DE; не подтверждено офсайтом",cpo
+EVUp,EVUp,evup,AU; официальный сайт не найден — проверить; не подтверждено офсайтом,cpo
+EM1,EM1,em1,"DE (Бавария, Оберланд); расшифровка и сайт не найдены — проверить; не подтверждено офсайтом",unknown
+EV Range,EV Range,ev-range,US (CA/NV); оператор быстрых зарядок и ПО для автопарков,cpo
+Stadtwerke Langenfeld,Stadtwerke Langenfeld,stadtwerke-langenfeld,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Fred Pfennings,Fred Pfennings,fred-pfennings,"частное лицо — не показывать имя; проверить, не фирма ли; не подтверждено офсайтом",unknown
+Charge Unix,Charge Unix,charge-unix,"FR; официальный сайт не найден, проверить; не подтверждено офсайтом",unknown
+Autostrom plus,Autostrom Plus,autostrom-plus,"Autostrom Plus GmbH, DE — СП (в т.ч. Q1 Energie), HPC-парки на автобанах в рамках Deutschlandnetz; не подтверждено офсайтом",cpo
+Oslo kommune,Oslo kommune,oslo-kommune,"муниципалитет Осло, NO",municipality
+City Concept E-Ladestationen,City Concept,city-concept,"DE (Лейпциг, Котбус, Цойтен); официальных данных не найдено — проверить; не подтверждено офсайтом",unknown
+ChargePlus,ChargePlus,chargeplus,"GR, сеть компании ENERES CPM; не подтверждено офсайтом",cpo
+EW Eichsfeldgas,EW Eichsfeldgas,ew-eichsfeldgas,"региональная энергокомпания, Тюрингия, DE; не подтверждено офсайтом",utility
+T-Electric,T-Electric,t-electric,"NL; зарядки в т.ч. на АЗС Shell; официальный сайт не найден, проверить; не подтверждено офсайтом",unknown
+Kreiswerke Main-Kinzig,Kreiswerke Main-Kinzig,kreiswerke-main-kinzig,"коммунальное предприятие округа Майн-Кинциг, DE; не подтверждено офсайтом",utility
+Stadtwerke Steinburg,Stadtwerke Steinburg,stadtwerke-steinburg,"Stadtwerke (Итцехоэ), DE",utility
+EWII,EWII,ewii,DK; энергетическая компания (Южная Дания),utility
+Parkering Göteborg,Parkering Göteborg,parkering-goteborg,"муниципальная парковочная компания Гётеборга, SE; зарядки на своих парковках",parking
+Nayax,Nayax,nayax,"ПО/производитель/роуминг, не оператор; платёжные терминалы/ПО; не подтверждено офсайтом",unknown
+BEG Freisinger Land,BEG Freisinger Land,beg-freisinger-land,"Bürgerenergiegenossenschaft Freisinger Land eG — гражданский энергокооператив, Бавария, DE; не подтверждено офсайтом",utility
+nvb Nordhorn,nvb Nordhorn,nvb-nordhorn,"Nordhorner Versorgungsbetriebe (Stadtwerke Нордхорна), DE; не подтверждено офсайтом",utility
+Parkgaragengesellschaft Baden-Baden,Parkgaragengesellschaft Baden-Baden,parkgaragengesellschaft-baden-baden,"хост, а не сеть; муниципальные паркинги Баден-Бадена, DE; не подтверждено офсайтом",parking
+LUMI'IN,LUMI'iN,lumiin,FR; оператор IRVE (так пишется в data.gouv) — написание проверить; не подтверждено офсайтом,cpo
+RheiNet,RheiNet,rheinet,"DE; оператор не идентифицирован (не путать с RheinNetz, Кёльн) — проверить; не подтверждено офсайтом",unknown
+Stadtwerke Dachau,Stadtwerke Dachau,stadtwerke-dachau,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Alexela,Alexela,alexela,"сеть АЗС, EE; эксплуатирует свои зарядки; точка RU — вероятно ошибка геоданных; не подтверждено офсайтом",retail
+Stadtwerke Leinfelden-Echterdingen,Stadtwerke Leinfelden-Echterdingen,stadtwerke-leinfelden-echterdingen,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Köthen Energie,Köthen Energie,kothen-energie,"Stadtwerke Кётена, DE",utility
+VWEW-energie,VWEW-energie,vwew-energie,"региональная энергокомпания (Кауфбойрен, Бавария), DE; не подтверждено офсайтом",utility
+SÜC Coburg,SÜC,suc,"SÜC Energie und H2O GmbH, Stadtwerke Кобурга, DE; не подтверждено офсайтом",utility
+Stadtwerke Gronau,Stadtwerke Gronau,stadtwerke-gronau,"Stadtwerke, DE; не подтверждено офсайтом",utility
+AVU,AVU,avu,"AVU AG für Versorgungs-Unternehmen, Гевельсберг, DE; не подтверждено офсайтом",utility
+Energieversorgung Landsberg,Energieversorgung Landsberg,energieversorgung-landsberg,"городская энергокомпания Ландсберга-на-Лехе, DE; не подтверждено офсайтом",utility
+Umbria Energy,Umbria Energy,umbria-energy,"энергосбыт, Терни, IT (группа ASM Terni/Acea); не подтверждено офсайтом",utility
+Urban Fox,Urban Fox,urban-fox,"GB; уличные выдвижные зарядки, бренд Balfour Beatty",cpo
+Белтелеком,Белтелеком,beltelecom,гос. телеком-оператор BY; зарядная сеть под брендом Evika! — дубль канона: слить с Evika!; Latin: Beltelecom,utility
+Chargewell,Chargewell,chargewell,NL/BE; официальный сайт не найден — проверить; не подтверждено офсайтом,unknown
+Stadtwerke Pirna,Stadtwerke Pirna,stadtwerke-pirna,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Stadtwerke Konstanz,Stadtwerke Konstanz,stadtwerke-konstanz,"Stadtwerke, DE; не подтверждено офсайтом",utility
+On the Run EV,On the Run EV,on-the-run-ev,"сеть быстрых зарядок при АЗС/магазинах On the Run, CA (Parkland, теперь Sunoco); не подтверждено офсайтом",retail
+Stadtwerke Trier,Stadtwerke Trier,stadtwerke-trier,"Stadtwerke (SWT), DE",utility
+EWR,EWR,ewr-de,"смешанный канон: EWR AG (Вормс) или EWR GmbH (Ремшайд) — проверить; Stadtwerke, DE; слаг ewr-de: ewr уже занят; не подтверждено офсайтом",utility
+NEG Neue Energien Mainfranken,NEG Neue Energien Mainfranken,neg-neue-energien-mainfranken,DE; не проверено; не подтверждено офсайтом,unknown
+Neste,Neste,neste,"нефтяная компания и сеть АЗС, FI; зарядки на своих станциях; не подтверждено офсайтом",retail
+Charge Green OnSite,Charge Green OnSite,charge-green-onsite,"Charge Green OnSite GmbH, DE (Верхняя Бавария: Eichenau, Olching, Puchheim) — официальный сайт не найден; не подтверждено офсайтом",cpo
+Copec Voltex,Copec Voltex,copec-voltex,"EV-направление Copec (сеть АЗС), CL",retail
+Vereinigte Stadtwerke,Vereinigte Stadtwerke,vereinigte-stadtwerke,"Stadtwerke (Бад-Ольдесло/Мёльн/Ратцебург, Шлезвиг-Гольштейн), DE; не подтверждено офсайтом",utility
+Белоруснефть,Белоруснефть,belorusneft,гос. нефтяной концерн BY; зарядная сеть под брендом «Маланка» (Malanka) — дубль канона: слить с Malanka; Latin: Belorusneft; не подтверждено офсайтом,utility
+Lippstädter Ladesäulen,Lippstädter Ladesäulen,lippstadter-ladesaulen,DE; вероятно Stadtwerke Lippstadt — проверить; не подтверждено офсайтом,unknown
+Energie SaarLorLux,Energie SaarLorLux,energie-saarlorlux,"Energie SaarLorLux AG — сбытовая компания Stadtwerke Saarbrücken (с ENGIE), DE; родственна energis — не дубль; не подтверждено офсайтом",utility
+Stadtwerke Schweinfurt,Stadtwerke Schweinfurt,stadtwerke-schweinfurt,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Stadtwerke Bamberg,Stadtwerke Bamberg,stadtwerke-bamberg,"Stadtwerke, DE",utility
+Stadtwerke Schwäbisch Hall,Stadtwerke Schwäbisch Hall,stadtwerke-schwabisch-hall,"Stadtwerke, DE",utility
+BayWa Mobility Solutions,BayWa Mobility Solutions,baywa-mobility-solutions,"дочка BayWa AG (Мюнхен), DE; не подтверждено офсайтом",cpo
+Smart Charge,Smart Charge,smart-charge,смешанный канон: AU и GB под одним общим названием — проверить; возможно плейсхолдер; не подтверждено офсайтом,unknown
+Stadtwerke Schwedt,Stadtwerke Schwedt,stadtwerke-schwedt,"Stadtwerke Schwedt/Oder, DE; не подтверждено офсайтом",utility
+rhenag,rhenag,rhenag,"Rheinische Energie AG, Кёльн, DE (группа RheinEnergie); не подтверждено офсайтом",utility
+Ladelösungen Fürstenfeldbruck,Ladelösungen Fürstenfeldbruck,ladelosungen-furstenfeldbruck,"DE; вероятно Stadtwerke Fürstenfeldbruck — проверить, не слить ли; не подтверждено офсайтом",unknown
+E.DIS,E.DIS,e-dis,"E.DIS AG, региональная энергосеть (группа E.ON), Бранденбург/МВ, DE",utility
+Stadtwerke Forchheim,Stadtwerke Forchheim,stadtwerke-forchheim,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Regionalwerk Bodensee,Regionalwerk Bodensee,regionalwerk-bodensee,"региональная энергокомпания, DE; не подтверждено офсайтом",utility
+Stadtwerke Schwarzenberg,Stadtwerke Schwarzenberg,stadtwerke-schwarzenberg,"Stadtwerke, Саксония, DE; не подтверждено офсайтом",utility
+Neue Energien,Neue Energien,neue-energien,"плейсхолдер, не оператор; общее название, DE — возможно, обрезанное имя юрлица (… Neue Energien GmbH), проверить; не подтверждено офсайтом",unknown
+WELLER,Weller,weller,"хост, а не сеть; вероятно автодилерская группа Weller (Toyota/BMW), DE — проверить; не подтверждено офсайтом",retail
+SVO,SVO,svo,"SVO Energie (Целле), региональная энергокомпания, DE — проверить; не подтверждено офсайтом",utility
+Stadtwerke Neumünster,SWN Stadtwerke Neumünster,swn-stadtwerke-neumunster,"Stadtwerke, DE; не подтверждено офсайтом",utility
+BEG Kraichgau,BEG Kraichgau,beg-kraichgau,"вероятно Bürgerenergiegenossenschaft Kraichgau eG (кооператив), DE — проверить; не подтверждено офсайтом",cpo
+Bidirex,Bidirex,bidirex,"DE; официальный сайт не найден (торговая марка BIDIREX зарегистрирована) — проверить, возможно двунаправленная зарядка/производитель; не подтверждено офсайтом",unknown
+E-Werk Tegernsee,E-Werk Tegernsee,e-werk-tegernsee,"местная энергокомпания, Тегернзее, DE; не подтверждено офсайтом",utility
+Dayser,Dayser,dayser,DE — зарядки для грузовиков (переняла 71 точку Park Your Truck); не подтверждено офсайтом,cpo
+Electrocharge,Electrocharge,electrocharge,"BG; сеть зарядок Electrohold (бывш. ЧЕЗ България, группа Eurohold); не подтверждено офсайтом",utility
+Stadtwerke Gütersloh,Stadtwerke Gütersloh,stadtwerke-gutersloh,"Stadtwerke, DE; не подтверждено офсайтом",utility
+e-con,e-con,e-con,DE; не идентифицировано — проверить; не подтверждено офсайтом,unknown
+State Grid,国家电网,state-grid,"Latin: State Grid; State Grid Corporation of China, CN; не подтверждено офсайтом",utility
+Stadtwerke Olching,Stadtwerke Olching,stadtwerke-olching,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Stadtwerke Mühlacker,Stadtwerke Mühlacker,stadtwerke-muhlacker,"Stadtwerke, DE",utility
+OMS Prüfservice,OMS Prüfservice,oms-prufservice,"DE; сервис электропроверок, зарядки через дочку OMS E-Mobility — проверить, CPO ли; не подтверждено офсайтом",unknown
+Städtische Werke Lauf,Städtische Werke Lauf,stadtische-werke-lauf,"Stadtwerke, Лауф-ан-дер-Пегниц, DE; не подтверждено офсайтом",utility
+Revnet,Revnet,revnet,PL; не проверено; не подтверждено офсайтом,unknown
+FairEnergie,FairEnergie,fairenergie,"FairEnergie GmbH — Stadtwerke Reutlingen, DE; не подтверждено офсайтом",utility
+Elektro Jahn,Elektro Jahn,elektro-jahn,"электромонтажная фирма, DE — вероятно, монтажник/хост, проверить; не подтверждено офсайтом",unknown
+Greenchoice,Greenchoice,greenchoice,"энергосбыт, NL",utility
+Compleo,Compleo,compleo,"ПО/производитель/роуминг, не оператор; производитель зарядок Compleo Charging Solutions (Дортмунд), DE — проверить, кто CPO точек",unknown
+Novowatt,Novowatt,novowatt,"Novowatt Pte Ltd, SG; не подтверждено офсайтом",cpo
+Energie und Wasser Wahlstedt/Bad Segeberg,Energie und Wasser Wahlstedt/Bad Segeberg,energie-und-wasser-wahlstedt-bad-segeberg,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Stadtwerke Ostmünsterland,Stadtwerke Ostmünsterland,stadtwerke-ostmunsterland,"Stadtwerke, DE; не подтверждено офсайтом",utility
+go2zero,go2zero,go2zero,DE; официальный сайт не найден — проверить; не подтверждено офсайтом,unknown
+PowerPump,PowerPump,powerpump,US — сервис зарядки (EVSP в CALeVIP); возможно ПО/сетевой сервис — проверить; не подтверждено офсайтом,cpo
+EVO Offenbach,EVO,evo-offenbach,"Energieversorgung Offenbach AG, DE; не путать с evo Oberhausen",utility
+Stadtwerke Blankenburg,Stadtwerke Blankenburg,stadtwerke-blankenburg,"Stadtwerke, Бланкенбург (Гарц), DE; не подтверждено офсайтом",utility
+medl,medl,medl,"Stadtwerke Мюльхайм-ан-дер-Рур, DE; не подтверждено офсайтом",utility
+Überlandwerk Groß-Gerau,Überlandwerk Groß-Gerau,uberlandwerk-gross-gerau,"региональная энергокомпания, Гессен, DE; не подтверждено офсайтом",utility
+EMB Energie Brandenburg,EMB Energie Brandenburg,emb-energie-brandenburg,"EMB Energie Brandenburg GmbH (Михендорф), DE; группа GASAG; не подтверждено офсайтом",utility
+Sandviken Energi,Sandviken Energi,sandviken-energi,"муниципальная энергокомпания, SE",utility
+Rhegio Natur,Rhegio Natur,rhegio-natur,"DE (Реде, NRW); связана со Stadtwerke Rhede — проверить; не подтверждено офсайтом",utility
+ZukunftsEnergie Nordostbayern,ZukunftsEnergie Nordostbayern,zukunftsenergie-nordostbayern,"ZukunftsEnergie Nordostbayern GmbH (ZENOB), Марктредвиц, DE — совместная компания Stadtwerke региона; не подтверждено офсайтом",utility
+Ísorka,Ísorka,isorka,"CPO, IS; не подтверждено офсайтом",cpo
+Kwik Charge,Kwik Charge,kwik-charge,"программа быстрой зарядки сети магазинов-АЗС Kwik Trip / Kwik Star, US (Висконсин и Средний Запад)",retail
+PlugEV,PlugEV,plugev,CA; официальный сайт не найден — проверить; не подтверждено офсайтом,unknown
+Servicewerke Westfalen,Servicewerke Westfalen,servicewerke-westfalen,DE; официальный сайт не найден — проверить; не подтверждено офсайтом,unknown
+Technische Werke Ludwigshafen,Technische Werke Ludwigshafen,technische-werke-ludwigshafen,"TWL, Stadtwerke Людвигсхафена, DE",utility
+Stadtwerke Langen,Stadtwerke Langen,stadtwerke-langen,"Stadtwerke, Ланген (Гессен), DE; не подтверждено офсайтом",utility
+Elocity,Elocity,elocity,PL/SK; не проверено; не подтверждено офсайтом,unknown
+EVE Australia,EVE Australia,eve-australia,"смешанный канон: EVE Australia (поставщик/монтаж зарядок) или Evie Networks — проверить, AU; не подтверждено офсайтом",unknown
+DVV Dessau,DVV Dessau,dvv-dessau,"Dessauer Versorgungs- und Verkehrsgesellschaft (Stadtwerke Дессау), DE; не подтверждено офсайтом",utility
+Sparki,Sparki,sparki,"сеть быстрых зарядок, BE",cpo
+Hexagonal Ocean,Hexagonal Ocean,hexagonal-ocean,PT; официальных данных не найдено — проверить; не подтверждено офсайтом,unknown
+Mann Naturenergie,MANN Naturenergie,mann-naturenergie,"энергосбыт, Лангенбах (Вестервальд), DE; не подтверждено офсайтом",utility
+Evry,Evry,evry,DE; не идентифицировано — проверить; не подтверждено офсайтом,unknown
+Energie 360°,Energie 360°,energie-360,"энергокомпания города Цюриха, CH; не подтверждено офсайтом",utility
+Stadtwerke Erfurt,SWE Stadtwerke Erfurt,swe-stadtwerke-erfurt,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Stadtwerke Stade,Stadtwerke Stade,stadtwerke-stade,"Stadtwerke, DE",utility
+Gemeindewerke Wendelstein,Gemeindewerke Wendelstein,gemeindewerke-wendelstein,"коммунальные Gemeindewerke, Бавария, DE; не подтверждено офсайтом",utility
+Allgäuer Kraftwerke,Allgäuer Kraftwerke,allgauer-kraftwerke,"Allgäuer Kraftwerke GmbH, Зонтхофен, DE (группа AÜW / AllgäuStrom); не подтверждено офсайтом",utility
+Pariamus,Pariamus,pariamus,DE; не идентифицировано — проверить; не подтверждено офсайтом,unknown
+Xiaoju Charging,小桔充电,xiaoju-chongdian,"Latin: Xiaoju Chongdian; сеть зарядок группы DiDi, CN; не подтверждено офсайтом",cpo
+Glinicke,Glinicke,glinicke,"хост, а не сеть; группа автодилеров (Кассель и др.), DE — зарядки у автосалонов; не подтверждено офсайтом",retail
+Flensburger Ladeinfrastrukturgesellschaft,Flensburger Ladeinfrastrukturgesellschaft,flensburger-ladeinfrastrukturgesellschaft,"DE; вероятно связана со Stadtwerke Flensburg — проверить, не слить ли; не подтверждено офсайтом",utility
+CHARGEUNITY,CHARGEUNITY,chargeunity,"DE (Кёльн); стартап, публичные зарядки на частном финансировании; не подтверждено офсайтом",cpo
+Hertener Stadtwerke,Hertener Stadtwerke,hertener-stadtwerke,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Stadtwerke Neumarkt,Stadtwerke Neumarkt,stadtwerke-neumarkt,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Tango electric,Tango electric,tango-electric,"зарядный бренд сети АЗС Tango (Kuwait Petroleum/Q8), NL; в 2026 Q8 вернулся как зарядный бренд — проверить переименование",retail
+Herzo Werke,Herzo Werke,herzo-werke,"Stadtwerke Херцогенаураха, DE; не подтверждено офсайтом",utility
+Stadtwerke Bad Salzuflen,Stadtwerke Bad Salzuflen,stadtwerke-bad-salzuflen,"Stadtwerke, DE",utility
+Stadtwerke Krefeld,Stadtwerke Krefeld,stadtwerke-krefeld,"Stadtwerke (SWK), DE",utility
+EVIUM,EVIUM,evium,"US (Калифорния), EVIUM Charging — своё приложение; не подтверждено офсайтом",cpo
+MNL Solutions,MNL Solutions,mnl-solutions,SG; не проверено; не подтверждено офсайтом,unknown
+Stadtwerke Ingolstadt,Stadtwerke Ingolstadt,stadtwerke-ingolstadt,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Autostrom Einert,Autostrom Einert,autostrom-einert,"Autostrom Einert GmbH & Co. KG, Саксония (Stolpen/Radeberg), DE — офиц. сайт не найден; не подтверждено офсайтом",cpo
+Stadtwerke Jena,Stadtwerke Jena,stadtwerke-jena,"Stadtwerke, DE",utility
+SolarLoader+,SolarLoader+,solarloader,DE (Хаген); SolarLoader+ GmbH — проверить; не подтверждено офсайтом,cpo
+Chargemaker,Chargemaker,chargemaker,"Chargemaker GmbH, Берлин, DE — оператор зарядок в недвижимости (в т.ч. 300 точек Lufthansa, 2026); не подтверждено офсайтом",cpo
+Stadtwerke Amberg,Stadtwerke Amberg,stadtwerke-amberg,"Stadtwerke, DE; не подтверждено офсайтом",utility
+ServiceSTADTwerke,ServiceSTADTwerke,servicestadtwerke,"DE; официальный сайт не найден — возможно бренд малых Stadtwerke, проверить; не подтверждено офсайтом",unknown
+Stadtwerke Völklingen,Stadtwerke Völklingen,stadtwerke-volklingen,"Stadtwerke, DE; не подтверждено офсайтом",utility
+Stadtwerke Lingen,Stadtwerke Lingen,stadtwerke-lingen,"Stadtwerke, DE",utility
+Epic Charging,Epic Charging,epic-charging,US; оператор и ПО управления зарядками для жилых домов/парковок; купил BlueDot; не подтверждено офсайтом,cpo
+Stay-N-Charge,Stay-N-Charge,stay-n-charge,"US, сеть зарядок для отелей (оператор/сервис для гостиниц); не подтверждено офсайтом",cpo
+InCharge Energy (US),InCharge Energy,incharge-energy,"ПО/производитель/роуминг, не оператор; производитель/интегратор зарядок для автопарков, US; не подтверждено офсайтом",unknown
+EVIO,EVIO,evio,"ПО/производитель/роуминг, не оператор; португальская платформа/приложение (EMSP), также CPO в MOBI.E, PT; не подтверждено офсайтом",cpo
+Chaevi,CHAEVI,chaevi,"корейский CPO и производитель зарядок (채비), KR; в US — офис/небольшая сеть. Latin: CHAEVI; не подтверждено офсайтом",cpo
+EcoFactor,ECOFACTOR,ecofactor-ua,"сеть зарядок, UA; слаг ecofactor-ua: ecofactor уже занят",cpo
+IONITY,IONITY,ionity-2,"дубль канона: слить с Ionity (тот же бренд, другой регистр в operator_canonical); СП автопроизводителей (BMW, Mercedes-Benz, Ford, VW Group, Hyundai/Kia и др.); строка без точек (total пуст), slug ionity-2 — вероятно дубль канона, проверить; слаг ionity-2: ionity уже занят",cpo
+GreenWay,GreenWay,greenway-2,дубль канона: слить с Greenway (другой регистр); total пустой; смешанный канон: GreenWay Slovakia / GreenWay Polska — проверить; слаг greenway-2: greenway уже занят; не подтверждено офсайтом,cpo

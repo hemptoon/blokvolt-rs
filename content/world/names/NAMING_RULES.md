@@ -97,6 +97,11 @@ build.py), "дубль канона: слить с …", "плейсхолдер
 "велосипеды/двухколёсные", "частное лицо — не показывать имя". The flags are proposals for K1/KI; nothing is
 merged or hidden here.
 
+N1 (09–10.11.2026): +429 networks that I1 (operator_map) gave pages or ≥20 public sites in a country / ≥100 worldwide
+after the I1 database (796 rows in total). Only 111 of the 429 are confirmed on an official page (web limits of the
+session); the other rows carry "не подтверждено офсайтом" in `note` — check them before the world release. The
+working list with sites and counts is `~/dev/evdb/work/N1-networks/n1_review.csv`.
+
 ## Glossary
 
 v2 (09.11.2026, decision 13): ultra-fast / HPC = 150 kW and up everywhere (`ultra_fast_label`). The Balkan
