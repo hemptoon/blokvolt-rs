@@ -128,7 +128,9 @@ for r in rows:
         errs.append(f"countries.csv {r['cc']}: empty name or in_phrase")
     if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', r['slug']):
         errs.append(f"countries.csv {r['cc']}: slug not ASCII: {r['slug']}")
-    if r['name'] not in r['in_phrase']:
+    # mk: plural/compound names take the definite article after a preposition
+    # (во Обединетите Арапски Емирати) — accept when every word's stem is present
+    if r['name'] not in r['in_phrase'] and not all(w[:-2] in r['in_phrase'] for w in r['name'].split()):
         warns.append(f"countries.csv {r['cc']}: name not inside in_phrase")
 
 # cities.csv
