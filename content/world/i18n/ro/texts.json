@@ -1,0 +1,175 @@
+{
+ "about_data": {
+  "h1": "Despre datele hărții",
+  "title": "Datele hărții de încărcare: surse, licențe, fiabilitate | BlokVolt",
+  "description": "De unde provin datele hărții de încărcare, sub ce licențe sunt folosite și cum se calculează fiabilitatea fiecărui punct.",
+  "lead": "Harta este construită din date deschise, iar fiecare punct arată de unde provine.",
+  "intro": "Harta combină date deschise din numeroase surse: registre oficiale, date deschise guvernamentale, OpenStreetMap, Open Charge Map și paginile de locații ale operatorilor. Înregistrările sunt combinate, curățate și modificate, așa că un punct de pe hartă poate diferi de înregistrarea originală. Aceleași reguli se aplică tuturor rețelelor. Harta nu evaluează rețelele sau operatorii.",
+  "osm_h": "OpenStreetMap și licența ODbL",
+  "osm_p": "Date © contribuitorii OpenStreetMap, disponibile sub Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Baza de date combinată a punctelor, care conține date OpenStreetMap, este disponibilă sub aceeași licență pe pagina „Descărcare date deschise”: {download_url}.",
+  "sources_h": "Surse și licențe",
+  "sources_note": "Sunt enumerate doar sursele care apar efectiv în datele actuale, fiecare cu licența și atribuirea obligatorie.",
+  "conf_h": "Cum se calculează fiabilitatea",
+  "conf_p": "Fiecare punct primește un scor de fiabilitate de la 0 la 100. Aceeași formulă se aplică tuturor rețelelor. Scorul evaluează datele despre un loc, nu rețeaua sau serviciul acesteia.",
+  "conf_rows": [
+   [
+    "Scor de bază după cel mai bun tip de sursă",
+    "Registru oficial sau date deschise guvernamentale 70; verificare proprie BlokVolt 65; OpenStreetMap 50; All The Places 45; Open Charge Map 40; Overture (din All The Places) 40; altele 25"
+   ],
+   [
+    "Verificare independentă",
+    "Dacă printre surse nu există un registru, o verificare automată independentă a înregistrării poate ridica scorul de bază, dar niciodată peste valoarea dată de verificare"
+   ],
+   [
+    "Concordanța între surse",
+    "+10 când două sau mai multe surse concordă asupra locului; încă +5 la trei sau mai multe"
+   ],
+   [
+    "Actualitate",
+    "+10 când ultima confirmare este din ultimele 12 luni; −15 când este mai veche de 3 ani"
+   ],
+   [
+    "Conflict privind țara",
+    "−10 când sursele indică țări diferite"
+   ],
+   [
+    "Nefuncțional sau coordonate suspecte",
+    "Cel mult 20"
+   ],
+   [
+    "Interval",
+    "Scorul este limitat la 0–100; locurile sub 40 nu sunt afișate pe hartă sau pe pagini"
+   ]
+  ],
+  "conf_levels": [
+   [
+    "Ridicată",
+    "70–100",
+    "Confirmat de o sursă oficială sau de mai multe surse, actualizat recent"
+   ],
+   [
+    "Medie",
+    "50–69",
+    "Plauzibil, dar confirmat de mai puține surse sau nu recent"
+   ],
+   [
+    "Scăzută",
+    "40–49",
+    "O singură sursă sau o sursă mai veche; verificați la operator înainte de drum"
+   ]
+  ],
+  "notes_h": "Note",
+  "notes": [
+   "Datele sunt furnizate ca atare, fără nicio garanție privind exactitatea, disponibilitatea, prețul sau compatibilitatea. Verificați la operator sau la fața locului înainte de drum.",
+   "Fișa fiecărui punct arată sursa, licența și data ultimei actualizări.",
+   "Denumirile rețelelor și mărcile comerciale aparțin proprietarilor lor.",
+   "BlokVolt nu este afiliat operatorilor sau instituțiilor care publică datele, iar aceștia nu susțin această hartă.",
+   "Numele persoanelor fizice nu sunt afișate; punctele de încărcare private de acasă nu apar pe hartă.",
+   "Pentru a raporta o eroare sau a cere o corectare ori o eliminare, folosiți butonul „Raportați o eroare” de pe fișa punctului sau scrieți la {email}. Veți primi un răspuns în cel mult 30 de zile."
+  ],
+  "licence_texts_h": "Textele licențelor",
+  "licence_texts": [
+   [
+    "CC BY 4.0",
+    "https://creativecommons.org/licenses/by/4.0/"
+   ],
+   [
+    "CC0 1.0",
+    "https://creativecommons.org/publicdomain/zero/1.0/"
+   ],
+   [
+    "ODbL 1.0",
+    "https://opendatacommons.org/licenses/odbl/1-0/"
+   ],
+   [
+    "Licence Ouverte 2.0",
+    "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+   ],
+   [
+    "CDLA Permissive 2.0",
+    "https://cdla.dev/permissive-2-0/"
+   ],
+   [
+    "Open Government Licence v2.0",
+    "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+   ]
+  ]
+ },
+ "download": {
+  "h1": "Descărcare date deschise",
+  "title": "Descărcați datele deschise despre punctele de încărcare | BlokVolt",
+  "description": "Fișier CSV săptămânal cu punctele de încărcare publice: coordonate, rețea, putere, conectori și surse. Gratuit, sub licența ODbL.",
+  "lead": "Stratul public al hărții este disponibil ca fișier CSV gratuit, actualizat în fiecare săptămână.",
+  "what_h": "Ce conține fișierul",
+  "what_p": "Un export CSV săptămânal al stratului public al hărții: coordonatele, rețeaua, puterea, conectorii și sursele fiecărui loc. Conține date OpenStreetMap, de aceea este publicat sub Open Database License (ODbL) 1.0. Prețurile, verificările echipei și corecțiile BlokVolt pentru Balcani nu fac parte din fișier.",
+  "fields_h": "Coloane",
+  "fields": [
+   [
+    "pid",
+    "ID stabil al locului"
+   ],
+   [
+    "lat",
+    "Latitudine (WGS 84)"
+   ],
+   [
+    "lon",
+    "Longitudine (WGS 84)"
+   ],
+   [
+    "country",
+    "Codul țării (ISO 3166-1 alpha-2)"
+   ],
+   [
+    "name",
+    "Denumirea locului"
+   ],
+   [
+    "network",
+    "Denumirea rețelei sau a operatorului"
+   ],
+   [
+    "max_kw",
+    "Puterea maximă în locul respectiv, kW"
+   ],
+   [
+    "dc",
+    "1 dacă există încărcare rapidă DC, 0 dacă nu"
+   ],
+   [
+    "power_class",
+    "Clasa de putere a locului"
+   ],
+   [
+    "connectors",
+    "Tipuri de conectori, separate prin virgulă"
+   ],
+   [
+    "points",
+    "Numărul estimat de puncte de încărcare"
+   ],
+   [
+    "access",
+    "Tipul de acces (public, restricționat și altele similare)"
+   ],
+   [
+    "sources",
+    "Cheile surselor, separate prin virgulă (vezi pagina „Despre date”)"
+   ],
+   [
+    "last_confirmed",
+    "Data ultimei confirmări de către oricare sursă"
+   ],
+   [
+    "confidence",
+    "Scor de fiabilitate 0–100"
+   ]
+  ],
+  "licence_h": "Licență",
+  "licence_p": "Fișierul este disponibil sub licența ODbL 1.0. Datele pot fi distribuite, folosite pentru lucrări derivate și adaptate, cu condiția menționării „© contribuitorii OpenStreetMap, BlokVolt” și a distribuirii oricărei baze de date adaptate sub aceeași licență. Datele trebuie să rămână deschise: nu aplicați restricții tehnice care limitează aceste drepturi. Textul complet: https://opendatacommons.org/licenses/odbl/1-0/",
+  "file_h": "Fișier",
+  "file_missing": "Fișierul pentru această săptămână este în pregătire. Reveniți mai târziu.",
+  "attribution_h": "Cum se face atribuirea",
+  "attribution_p": "La folosirea datelor, afișați „© contribuitorii OpenStreetMap, BlokVolt” cu un link către www.openstreetmap.org/copyright și către această pagină și menționați licența ODbL 1.0. Datele din alte surse își păstrează propria atribuire, indicată pe pagina „Despre date”."
+ }
+}
