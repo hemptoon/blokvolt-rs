@@ -1,0 +1,13 @@
+{
+ "home": "/da/",
+ "map": "/da/kort/",
+ "hub": "/da/ladestationer/",
+ "net": "netvaerk",
+ "about": "om-dataene",
+ "download": "download",
+ "gnet": "/da/ladenetvaerk/",
+ "prices": "/da/ladepriser/",
+ "shell_about": "/da/om/",
+ "sources": "/da/kilder/",
+ "methodology": "/da/metode/"
+}
