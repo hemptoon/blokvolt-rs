@@ -1,0 +1,37 @@
+{% extends 'world_base.html' %}
+{# Configurator of the world map widget (G5, scripts/world_embed.py): /map-for-your-site/, /sr/mapa-za-vas-sajt/, /ru/karta-dlya-sajta/ #}
+{% block head %}{{ super() }}<link rel="stylesheet" href="{{ css }}">{% endblock %}
+{% block pagehead %}<div class="ph"><div class="wrap"><h1>{{ h1 }}</h1><p class="lead">{{ T.cf_lead }}</p></div></div>{% endblock %}
+{% block content %}
+<div class="wz" id="wz">
+<form class="wz-form" id="wz-form" action="#" autocomplete="off">
+<label class="wz-f"><span>{{ T.cf_country }}</span><select class="input" name="zemlja"><option value="">{{ T.cf_country_any }}</option>{% for cc, n in COUNTRIES_ALL %}<option value="{{ cc }}">{{ n }}</option>{% endfor %}</select></label>
+<label class="wz-f"><span>{{ T.cf_view }}</span><input class="input" name="view" type="url" inputmode="url" placeholder="{{ SITE }}{{ map_url }}#10/48.13700/11.57500" aria-describedby="wz-vh"><small id="wz-vh">{{ T.cf_view_help }} <a href="{{ map_url }}" target="_blank" rel="noopener">{{ MT.title.replace(' | BlokVolt', '') }}</a></small><small class="wz-bad" id="wz-vbad" role="alert" hidden>{{ T.cf_view_bad }}</small></label>
+<label class="wz-f"><span>{{ T.cf_net }}</span><select class="input" name="mreza"><option value="">{{ T.cf_net_any }}</option>{% for s, n in NETS %}<option value="{{ s }}" translate="no">{{ n }}</option>{% endfor %}</select></label>
+<fieldset class="wz-f"><legend>{{ T.cf_power }}</legend><div class="chips">
+{% for k, lbl in (('ac', MT.t_ac), ('dc', MT.t_dc), ('hpc', MT.t_hpc), ('nepoznato', MT.t_unk)) %}<label class="chip wz-chk"><input type="checkbox" name="snaga" value="{{ k }}" checked> {{ lbl }}</label>{% endfor %}
+</div></fieldset>
+<fieldset class="wz-f"><legend>{{ T.cf_lang }}</legend><div class="chips">
+{% for k, lbl in (('en', 'English'), ('sr', 'Srpski'), ('ru', 'Русский')) %}<label class="chip wz-chk"><input type="radio" name="lang" value="{{ k }}"{% if k == l %} checked{% endif %}> {{ lbl }}</label>{% endfor %}
+</div></fieldset>
+<fieldset class="wz-f"><legend>{{ T.cf_theme }}</legend><div class="chips">
+<label class="chip wz-chk"><input type="radio" name="tema" value="" checked> {{ T.cf_light }}</label><label class="chip wz-chk"><input type="radio" name="tema" value="tamna"> {{ T.cf_dark }}</label>
+</div></fieldset>
+<label class="wz-f"><span>{{ T.cf_height }}</span><input class="input" name="h" type="number" min="300" max="1200" step="10" value="520"></label>
+</form>
+<div class="wz-out">
+<h2>{{ T.cf_preview }}</h2>
+<div class="wz-prev" id="wz-prev"><iframe id="wz-frame" src="{{ preview_src }}" title="{{ T.cf_frame_title }}" loading="lazy" style="height:520px"></iframe></div>
+<h2>{{ T.cf_code }}</h2>
+<textarea class="input wz-code" id="wz-code" rows="6" readonly spellcheck="false" aria-label="{{ T.cf_code }}"></textarea>
+<p><button class="btn dark" type="button" id="wz-copy">{{ T.cf_copy }}</button> <span class="wz-ok" id="wz-ok" role="status"></span></p>
+</div>
+</div>
+<div class="prose cwide">
+<h2>{{ T.cf_rules_h }}</h2>
+<p>{{ T.cf_rules }}</p>
+<p><a href="{{ dev_url }}">{{ T.cf_more }}</a></p>
+</div>
+<script id="wz-cfg" type="application/json">{{ vz|safe }}</script>
+<script src="{{ js }}" defer></script>
+{% endblock %}

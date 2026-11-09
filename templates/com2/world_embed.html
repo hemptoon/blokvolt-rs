@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{# World map widget for other sites (G5, scripts/world_embed.py, RUNBOOK 3.42): /embed/map/, /sr/embed/mapa/, /ru/embed/karta/.
+   The same world-map.js as /map/ with cfg.embed; the filter panel is in the page (the script needs it) but hidden, the
+   filters come from the address (?zemlja= &grad= &mreza= &snaga= &tema=). No header or footer; noindex. #}
+<html lang="{{ LOC.html }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="{{ CSP }}">
+<title>{{ E.emb_title }}</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{{ SITE }}{{ canon }}">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+{% if LOC.script == 'cyrl' %}<link rel="preload" href="/assets/fonts/onest-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+{% endif %}<link rel="stylesheet" href="/assets/bv.css">
+<link rel="stylesheet" href="/assets/com.css">
+<link rel="stylesheet" href="/assets/vendor/maplibre-6.11.1/maplibre-gl.css">
+<link rel="stylesheet" href="/assets/world/world-map.css?v={{ v['world-map.css'] }}">
+<link rel="stylesheet" href="/assets/world/world-embed.css?v={{ v['world-embed.css'] }}">
+<link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>
+<link rel="preconnect" href="{{ data_origin }}" crossorigin>
+<base target="_blank">
+</head>
+<body class="wme map-page wm-page">
+<div class="wme-app">
+<form class="wm-filters" id="wm-filters" action="#" hidden aria-hidden="true">
+<button type="button" id="wm-ft" hidden></button><span id="wm-fn" hidden></span>
+<input id="wm-q" type="search" hidden><div id="wm-qres"></div><div id="wm-selh" hidden></div><div id="wm-sel"></div><div id="wm-top"></div>
+<details id="wm-adv"></details><button type="button" id="wm-reset" hidden></button>
+</form>
+<div class="wm-data" id="wm-data" hidden></div>
+<div class="map-wrap wm-wrap wme-wrap">
+<div id="map" role="region" aria-label="{{ T.map_label }}"></div>
+<div class="map-legend wm-legend" role="group" aria-label="{{ T.legend }}"><span><i class="wm-sw sw-ac"></i>{{ T.lg_ac }}</span><span><i class="wm-sw sw-dc"></i>{{ T.lg_dc }}</span><span><i class="wm-sw sw-hpc"></i>{{ T.lg_hpc }}</span><span><i class="wm-sw sw-unk"></i>{{ T.lg_unk }}</span></div>
+<a class="wme-by" href="{{ full }}" data-emb-full><b translate="no">BlokVolt</b><span>{{ E.emb_full }}</span></a>
+<div class="map-attr wm-attr" id="wm-attr">{{ T.attr_map }}: <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/" rel="noopener">OpenMapTiles</a> · © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> (ODbL)</div>
+<div class="wm-msg" id="wm-msg" role="status" hidden></div>
+<div class="card-ov wm-card" id="wm-card" aria-live="polite"></div>
+</div>
+</div>
+<dialog class="wm-dlg" id="wm-src" aria-labelledby="wm-src-h"><div class="wm-dlg-in"><button class="x" type="button" data-close aria-label="{{ T.close }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<h2 id="wm-src-h">{{ T.sources_btn }}</h2><div id="wm-src-body"></div></div></dialog>
+<script id="wm-cfg" type="application/json">{{ wm_cfg|safe }}</script>
+<script id="wm-i18n" type="application/json">{{ wm_i18n|safe }}</script>
+<script src="/assets/vendor/pmtiles-{{ pmtiles_ver }}/pmtiles.js" defer></script>
+<script type="module" src="/assets/world/world-map.js?v={{ v['world-map.js'] }}"></script>
+</body>
+</html>

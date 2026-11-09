@@ -2583,6 +2583,15 @@ Built by `gen_com.py` with the world layer, right after the price pages; noindex
    or, after it, through the publishing queue of 3.39.
 4. A scheduled task for steps 1–3 is created only on Andrei's "да"; its prompt is in `~/dev/evdb/work/G7/SCHEDULED_PROMPT.md`.
 
+### 3.42 World map widget, configurator and /developers/ on blokvolt.com (G5, since 10.11.2026; dev only until "релиз G5")
+
+- **Pages** (`scripts/world_embed.py`, called by `gen_com.py` after `world_shell`, only with the world pages): `/embed/map/`, `/sr/embed/mapa/`, `/ru/embed/karta/` — the world map (`static/com/world-map.js` with `cfg.embed`) for an iframe on any site; configurator `/map-for-your-site/`, `/sr/mapa-za-vas-sajt/`, `/ru/karta-dlya-sajta/`; `/developers/`, `/sr/za-programere/`, `/ru/razrabotchikam/`. Words: `content/world/strings_embed.json` (+ `emb_open` in `strings_map.json`).
+- **Widget address:** `?zemlja=<cc>&grad=<geonameid>&mreza=<slug,…>&snaga=ac,dc,hpc,nepoznato&tema=tamna`, view in `#z/lat/lon`; the language is the path. The widget has no reports, two-finger gestures (the host page keeps scrolling), the card button and the corner badge open the same view on blokvolt.com with `utm_source=<host>&utm_medium=widget`. Attribution line is always visible. noindex, never in the sitemap.
+- **Framing:** `dist-com/_headers` (Cloudflare Pages): `/*` X-Frame-Options SAMEORIGIN; the three widget paths detach it and send `frame-ancestors *`. The page CSP is a `<meta>` (no frame-ancestors). GitHub Pages ignores `_headers`.
+- **View count:** POST `/api/svet/vidzet` `{h, k, l}` on the blokvolt.rs worker → D1 `world_widget_views (day, host, k, l, n)`; host name from `document.referrer` only, no IP, no cookie; one count per host and daily IP fingerprint (`rl`). Totals: GET `/api/admin/vidzet` (owner's key). **Request access** on /developers/: POST `/api/svet/zahtev` → `requests` kind `api` (the bot's request topic, as /za-programere/). Both routes accept only blokvolt.com origins (`svOrigin`).
+- **Demo mode:** `content/world/config.json` `widget_api` and `requests_api` stay empty until "релиз G5": the widget sends nothing, the form says it is a preview. At the release: deploy the worker, then set `"widget_api": "https://www.blokvolt.rs/api/svet/vidzet"`, `"requests_api": "https://www.blokvolt.rs/api/svet/zahtev"`.
+- **Checks:** `python3 scripts/world_embed.py selftest`; after a build `python3 scripts/qa/world_embed_check.py dist-com [--browser]` (iframe on a mock foreign origin, one count with the host only, link back with utm, configurator code, 360/768/1440 without horizontal scroll); `node scripts/qa/vidzet_world_test.mjs` (field checks of the count).
+
 ## 4. Build and check
 
 ```bash

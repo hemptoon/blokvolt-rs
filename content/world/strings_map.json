@@ -763,5 +763,10 @@
   "en": "Stored: the place, your answer, the price if given, the language and a daily fingerprint of the connection — a keyed hash that changes every day, not the IP address. No cookies, no e-mail. Only totals are shown: the last confirmation and the number of check-ins.",
   "sr": "Čuva se: lokacija, vaš odgovor, cena ako je unesena, jezik i dnevni otisak veze — šifrovani zapis koji se menja svaki dan, a ne IP adresa. Bez kolačića i bez e-mail adrese. Prikazuju se samo zbirni podaci: poslednja potvrda i broj provera.",
   "ru": "Сохраняются: точка, ваш ответ, цена, если указана, язык и суточный отпечаток подключения — хеш с ключом, который меняется каждый день, а не IP-адрес. Без cookie и без e-mail. Показываются только итоги: последнее подтверждение и число отметок."
+ },
+ "emb_open": {
+  "en": "Open on BlokVolt",
+  "sr": "Otvori na BlokVoltu",
+  "ru": "Открыть на BlokVolt"
  }
 }

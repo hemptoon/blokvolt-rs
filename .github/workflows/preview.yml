@@ -59,6 +59,8 @@ jobs:
           python3 scripts/world_pay.py selftest
           python3 scripts/world_checkins.py --selftest
           python3 scripts/world_press.py selftest
+          python3 scripts/world_embed.py selftest
+          node scripts/qa/vidzet_world_test.mjs
           python3 content/world/names/check_names.py
           BV_WORLD_HOME=1 BV_WORLD_PREVIEW=1 BV_WORLD_PAGES="$PAGES" BV_WORLD_MANIFEST="$MANIFEST" BV_WORLD_DATA=/world-data/ python3 scripts/gen_com.py
           mkdir -p dist-com/world-data
@@ -67,6 +69,7 @@ jobs:
           if [ -n "$PLACES" ]; then cp "$PLACES" dist-com/world-data/; fi
           printf '{"manifest": "%s"}' "$(basename "$MANIFEST")" > dist-com/world-data/latest.json
           python3 scripts/qa/world_pages_check.py dist-com "$PAGES" --report "$RUNNER_TEMP/world_pages_check.json"
+          python3 scripts/qa/world_embed_check.py dist-com
           rm -f dist-com/CNAME
           echo "blokvolt.com files: $(find dist-com -type f | wc -l) (Cloudflare Pages Free: 20000)"
       - name: noindex for both previews

@@ -31,6 +31,11 @@ const slug = s => fold(s).replace(/ß/g, 'ss').replace(/[^a-z0-9]+/g, '-').repla
 const IS_TOUCH = window.matchMedia && matchMedia('(pointer: coarse)').matches;
 const UA = navigator.userAgent;
 const IS_ANDROID = /Android/i.test(UA), IS_IOS = /iPhone|iPad|iPod/i.test(UA);
+// widget for other sites (/embed/map/, G5, RUNBOOK 3.42): cfg.embed = {open, utm}. Two-finger gestures so the host page
+// still scrolls, no reports, the card's button opens the place on blokvolt.com; &tema=tamna picks the dark base map.
+const EMB = cfg.embed || null;
+const TEMA = EMB && /^(tamna|dark)$/.test(new URLSearchParams(location.search).get('tema') || '') ? 'tamna' : '';
+if (TEMA) d.documentElement.classList.add('wm-dark');
 
 // ------------------------------------------------------------------ state <-> URL
 const SNAGA = ['ac', 'dc', 'hpc', 'nepoznato'];
@@ -62,6 +67,7 @@ function writeUrl() {
   if (st.zemlja) q.set('zemlja', st.zemlja);
   if (st.grad) q.set('grad', st.grad);
   if (st.id) q.set('id', st.id);
+  if (TEMA) q.set('tema', TEMA);
   const s = q.toString().replace(/%2C/g, ',');
   history.replaceState(history.state, '', location.pathname + (s ? '?' + s : '') + location.hash);
 }
@@ -228,8 +234,8 @@ function initMap() {
   maplibregl.addProtocol('pmtiles', proto.tile);
   try {
     map = new maplibregl.Map({
-      container: 'map', style: cfg.style, center: cfg.center, zoom: cfg.zoom, minZoom: 1.5, maxZoom: 18, hash: true,
-      attributionControl: false, dragRotate: false, pitchWithRotate: false, cooperativeGestures: false
+      container: 'map', style: TEMA && cfg.style_dark ? cfg.style_dark : cfg.style, center: cfg.center, zoom: cfg.zoom, minZoom: 1.5, maxZoom: 18, hash: true,
+      attributionControl: false, dragRotate: false, pitchWithRotate: false, cooperativeGestures: !!EMB
     });
   } catch (e) {
     msg(t('no_map'));
@@ -499,8 +505,9 @@ function renderCard(c) {
   h += srcs ? `<div><dt>${esc(t('c_src'))}</dt><dd><ul class="wm-src">${srcs}</ul></dd></div>` : '';
   h += '</dl><div class="wm-acts">';
   h += `<a class="btn sm dark" href="${esc(navHref(lat, lon))}" rel="noopener">${esc(t('nav'))}</a>`;
-  h += `<button class="btn sm" type="button" data-share>${esc(t('share'))}</button>`;
-  if (cfg.reports_api) h += `<button class="btn sm" type="button" data-report aria-expanded="false">${esc(t('rep'))}</button>`;
+  if (EMB) h += `<a class="btn sm" href="${esc(fullUrl(cur.pid))}" target="_blank" rel="noopener">${esc(t('emb_open'))}</a>`;
+  else h += `<button class="btn sm" type="button" data-share>${esc(t('share'))}</button>`;
+  if (cfg.reports_api && !EMB) h += `<button class="btn sm" type="button" data-report aria-expanded="false">${esc(t('rep'))}</button>`;
   h += '</div><p class="wm-copied" role="status" hidden></p>';
   if (c.osm) h += `<p class="wm-osm"><a href="${esc(c.osm)}" rel="noopener nofollow">${esc(t('osm_fix'))}</a></p>`;
   h += ciBlock(c);
@@ -519,6 +526,18 @@ box.addEventListener('click', e => {
   if (b.hasAttribute('data-paid')) { ciPaid(b); return; }
 });
 d.addEventListener('keydown', e => { if (e.key === 'Escape' && box.classList.contains('is-open') && !$('wm-src').open) closeCard(); });
+// the same view and filters on the full map of blokvolt.com, with the host site as utm_source (widget only)
+function fullUrl(pid) {
+  const u = new URL(EMB.open, location.href), q = new URLSearchParams(location.search);
+  q.delete('tema');
+  if (pid) q.set('id', pid); else q.delete('id');
+  q.set('utm_source', HOST || 'widget'); q.set('utm_medium', 'widget'); q.set('utm_campaign', EMB.utm || 'world-map');
+  u.search = q.toString().replace(/%2C/g, ',');
+  if (map) { const c = map.getCenter(); u.hash = '#' + Math.round(map.getZoom() * 100) / 100 + '/' + c.lat.toFixed(5) + '/' + c.lng.toFixed(5); }
+  return u.toString();
+}
+let HOST = '';
+try { HOST = d.referrer ? new URL(d.referrer).hostname.replace(/^www\./, '').slice(0, 80) : ''; } catch (e) { HOST = ''; }
 function shareUrl() {
   const [lon, lat] = cur.ll;
   const u = new URL(location.href);
@@ -811,10 +830,29 @@ function openFromUrl() {
   openCard(pid, near ? near.geometry.coordinates : [c.lng, c.lat], near ? near.properties : null);
 }
 
+// ------------------------------------------------------------------ widget: links back and one view count a load
+function embedInit() {
+  d.querySelectorAll('[data-emb-full]').forEach(a => {
+    const go = () => { a.href = fullUrl(cur && cur.pid); };
+    go();
+    a.addEventListener('pointerdown', go);
+    a.addEventListener('focus', go);
+  });
+  // the view count (host name only, no cookie): only when the API is set — empty until "релиз G5" (demo mode)
+  if (EMB.views && HOST !== location.hostname.replace(/^www\./, '')) {
+    const body = JSON.stringify({ h: HOST, k: 'map', l: LANG });
+    try {
+      if (!(navigator.sendBeacon && navigator.sendBeacon(EMB.views, new Blob([body], { type: 'text/plain' }))))
+        fetch(EMB.views, { method: 'POST', body, mode: 'cors', keepalive: true }).catch(() => {});
+    } catch (e) { /* a widget never fails because of the count */ }
+  }
+}
+
 // ------------------------------------------------------------------ start
 readUrl();
 paintFilters();
 initMap();
+if (EMB) embedInit();
 // for debugging and scripts/qa/world_map_test.py (read only by tests; nothing on the page depends on it)
 window.BVWorldMap = { get map() { return map; }, get ready() { return ready; }, get manifest() { return M; }, state: st, openCard };
 async function fitPlace() {
