@@ -99,7 +99,7 @@
    "g": "g_old"
   },
   "ocm-190761": {
-   "g": "g_old"
+   "dup": "ocm-190760"
   },
   "osm-n8278064838": {
    "g": "g_old"
@@ -235,6 +235,12 @@
   },
   "ocm-265530": {
    "g": "g_old"
+  },
+  "ocm-287962": {
+   "dup": "osm-n13320386075"
+  },
+  "ocm-31458": {
+   "x": "pogrešan ili nepostojeći zapis, provera 09.11.2026: https://openchargemap.org/site/poi/details/31458"
   }
  }
 }
