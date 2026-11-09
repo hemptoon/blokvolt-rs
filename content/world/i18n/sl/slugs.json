@@ -1,0 +1,13 @@
+{
+ "home": "/sl/",
+ "map": "/sl/zemljevid/",
+ "hub": "/sl/polnilne-postaje/",
+ "net": "omrezje",
+ "about": "o-podatkih",
+ "download": "prenos",
+ "gnet": "/sl/polnilna-omrezja/",
+ "prices": "/sl/cene-polnjenja/",
+ "shell_about": "/sl/o-strani/",
+ "sources": "/sl/viri/",
+ "methodology": "/sl/metodologija/"
+}
