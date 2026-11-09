@@ -40,22 +40,14 @@ ROOT = Path(__file__).resolve().parent.parent
 WORLD = ROOT / 'content' / 'world'
 STATE = WORLD / 'state' / 'pages_state.json'
 REDIRECTS = WORLD / 'state' / 'redirects_world.txt'
-LANGS = ('en', 'sr', 'ru')
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import world_i18n as I   # noqa: E402  K8-i18n: registry of languages (content/world/config.json "langs")
+LANGS = I.langs()        # enabled languages: en, sr, ru until gate G8 (BV_WORLD_LANGS for a local test build)
 GRACE_DAYS = 56          # 8 weeks noindex,follow before the stub (P1 §3.3)
 RETURN_FACTOR = 1.2      # a page below the threshold comes back at +20 %
 SITEMAP_MAX = 50000
 
-L = {
-    'en': dict(key='en', html='en', hreflang='en', og='en_GB', code='EN', dec='.', thou=',', pct='{x}%',
-               hub='/charging-stations/', net='network', about='about-data', download='download',
-               gnet='/charging-networks/', map='/map/'),
-    'sr': dict(key='sr', html='sr-Latn', hreflang='sr', og='sr_RS', code='SR', dec=',', thou='.', pct='{x} %',
-               hub='/sr/punjaci/', net='mreza', about='o-podacima', download='preuzimanje',
-               gnet='/sr/mreze-punjaca/', map='/sr/mapa/'),
-    'ru': dict(key='ru', html='ru', hreflang='ru', og='ru_RU', code='RU', dec=',', thou=' ', pct='{x} %',
-               script='cyrl', hub='/ru/zaryadki/', net='set', about='o-dannyh', download='skachat',
-               gnet='/ru/seti-zaryadok/', map='/ru/karta/'),
-}
+L = {l: I.loc(l) for l in LANGS}   # K8: formats and section paths from the registry + slugs.json
 CONN_LABEL = {'TYPE2': 'Type 2', 'TYPE1': 'Type 1', 'TYPE3': 'Type 3', 'CCS2': 'CCS2', 'CCS1': 'CCS1',
               'CHADEMO': 'CHAdeMO', 'NACS_TESLA': 'Tesla (NACS)', 'SCHUKO': 'Schuko', 'CEE_INDUSTRIAL': 'CEE',
               'GBT_DC': 'GB/T DC', 'GBT_AC': 'GB/T AC', 'BS1363': 'BS 1363', 'NEMA': 'NEMA'}
@@ -110,16 +102,7 @@ def fmt_month(ym):
     return f'{m}.{y}'
 
 
-def pl_form(n, forms, lang):
-    one, few, many = forms.split('|')
-    n = abs(int(round(float(n))))
-    if lang == 'en':
-        return one if n == 1 else few
-    if n % 10 == 1 and n % 100 != 11:
-        return one
-    if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14:
-        return few
-    return many
+pl_form = I.pl_form   # "one|few|many" for en/sr/ru (old rule), {CLDR category: text} for other languages
 
 
 def seo_title(t):
@@ -129,10 +112,10 @@ def seo_title(t):
 
 def load_strings():
     S = json.load(open(WORLD / 'strings_pages.json', encoding='utf-8'))
-    missing = [(k, l) for k, v in S.items() for l in LANGS if not (isinstance(v, dict) and v.get(l))]
+    missing = [(k, l) for k, v in S.items() for l in LANGS if l in I.BASE and not (isinstance(v, dict) and v.get(l))]
     if missing:
         raise SystemExit(f'world_pages: strings_pages.json misses {len(missing)} translations, e.g. {missing[:5]}')
-    return {l: {k: v[l] for k, v in S.items()} for l in LANGS}
+    return I.load('pages', LANGS)   # other languages: content/world/i18n/<code>/strings_pages.json (stops on a missing key)
 
 
 def load_config():
@@ -175,18 +158,46 @@ class Names:
         r = self.c.get(cc)
         if not r:
             raise SystemExit(f'world_pages: no country name for {cc} (content/world/names*/countries.csv)')
+        if lang not in I.BASE:   # K8: i18n/<code>/countries.csv, then the CLDR column of names/, then English (counted)
+            x = I.countries(lang).get(cc)
+            if x and x.get('name'):
+                return x['name']
+            if r.get(f'name_{lang}'):
+                return r[f'name_{lang}']
+            I.fallback(lang, 'country_name', cc)
+            return r['name_en']
         return r[f'name_{lang}']
 
     def country_slug(self, cc, lang):
+        if lang not in I.BASE:
+            x = I.countries(lang).get(cc)
+            if x and x.get('slug'):
+                return x['slug']
+            I.fallback(lang, 'country_slug', cc)
+            return self.c[cc]['slug_en']
         return self.c[cc][f'slug_{lang}']
 
     def country_u(self, cc, lang):
         r = self.c[cc]
+        if lang not in I.BASE:
+            x = I.countries(lang).get(cc)
+            if x and x.get('in_phrase'):
+                return x['in_phrase']
+            I.fallback(lang, 'country_in', cc)
+            return self.country(cc, lang)
         return {'en': 'in ' + ('the ' if cc in ('US', 'GB', 'NL', 'PH', 'AE') else '') + r['name_en'],
                 'sr': r['sr_u'], 'ru': r['ru_v']}[lang]
 
     def city_name(self, info, lang):
         r = self.city.get(info['gid'])
+        if lang not in I.BASE:
+            x = I.cities(lang).get(info['gid'])
+            if x and x.get('name'):
+                return x['name']
+            if r and r.get(f'name_{lang}'):
+                return r[f'name_{lang}']
+            I.fallback(lang, 'city_name', info['gid'])
+            return self.city_name(info, 'en')
         if r and r.get(f'name_{lang}'):
             return r[f'name_{lang}']
         nm = info['name'] or info['ascii']
@@ -196,6 +207,11 @@ class Names:
 
     def city_u(self, info, lang, S):
         r = self.city.get(info['gid'])
+        if lang not in I.BASE:   # K8: in_phrase of i18n/<code>/cities.csv (safe construction when decl_ok = 0)
+            x = I.cities(lang).get(info['gid'])
+            if x and x.get('in_phrase'):
+                return x['in_phrase']
+            return S[lang]['fallback_u'].format(x=self.city_name(info, lang))
         if lang == 'en':
             return 'in ' + self.city_name(info, 'en')
         ok = (r or {}).get(f'decl_ok_{lang}')
@@ -220,7 +236,7 @@ class Names:
     def net_name(self, net, lang=None):
         r = self.net.get(net)
         nm = (r or {}).get('name_display') or net
-        if lang in ('en', 'sr') and re.search(r'[\u0400-\u04FF]', nm):   # Latin script on en/sr pages
+        if lang and lang != 'ru' and I.latin(lang) and re.search(r'[\u0400-\u04FF]', nm):   # Latin script on Latin pages
             nm = translit(nm, CYR_SR if lang == 'sr' else CYR)
         return nm
 
@@ -259,10 +275,10 @@ class Site:
         self.net_pages = {(p['cc'], p['net']) for p in pages if p['type'] == 'network'}
         self.gnet_pages = {p['net'] for p in pages if p['type'] == 'network_global'}
         # v2: SR pages exist only for Europe (bvcom §0); every page JSON names its languages
-        self.cc_langs = {p['cc']: tuple(p.get('langs') or LANGS) for p in pages if p['type'] == 'country'}
+        self.cc_langs = {p['cc']: I.page_langs(p.get('langs')) for p in pages if p['type'] == 'country'}
 
     def langs(self, p):
-        return tuple(p.get('langs') or p['data'].get('langs') or LANGS)
+        return I.page_langs(p.get('langs') or p['data'].get('langs'))
 
     def has(self, cc, l):
         return l in self.cc_langs.get(cc, LANGS)
@@ -425,7 +441,7 @@ def nav(c, l):
 
 
 def switch(c, urls, l):
-    return [(x, urls[x], c.S[x]['lang_label'], L[x]['hreflang']) for x in LANGS if x in urls]
+    return [(x, urls[x], c.S[x]['lang_label'] if x in I.BASE else I.label(x), L[x]['hreflang']) for x in LANGS if x in urls]
 
 
 def write_page(c, l, tpl, url, urls, ctx, ptype, robots=None, indexable=True):
@@ -638,7 +654,7 @@ def render_hub(c, p, urls, l):
 
 def render_about(c, l, sources_used):
     S, site = c.S[l], c.site
-    A = json.load(open(WORLD / 'about_data.json', encoding='utf-8'))[l]
+    A = I.texts(l, 'about_data')
     urls = {x: site.about(x) for x in LANGS}
     rows = []
     for k in sources_used:
@@ -659,7 +675,7 @@ def render_about(c, l, sources_used):
 
 def render_download(c, l, manifest):
     S, site = c.S[l], c.site
-    D = json.load(open(WORLD / 'download.json', encoding='utf-8'))[l]
+    D = I.texts(l, 'download')
     urls = {x: site.download(x) for x in LANGS}
     f = None
     if manifest and manifest.get('odbl_dump'):
@@ -717,7 +733,10 @@ def view_of(places, kind, key, center, zoom):
 
 
 def lang_of(url):
-    return 'sr' if url.startswith('/sr/') else 'ru' if url.startswith('/ru/') else 'en'
+    for l in LANGS[1:]:   # K8: the language whose home prefix (/sr/, /ru/, /de/ …) starts the URL
+        if url.startswith(I.slugs(l)['home']):
+            return l
+    return 'en'
 
 
 def run(G, local_hubs):
@@ -782,7 +801,7 @@ def run(G, local_hubs):
         render_below(c, u, state[u], lang_of(u))
         n += 1
     og = G.OUT / 'assets' / 'og'
-    for l in ('sr', 'ru'):     # share image of the world pages: the English card until KI draws its own
+    for l in LANGS[1:]:     # share image of the world pages: the English card until KI draws its own
         if (og / 'og-en.png').exists() and not (og / f'og-{l}.png').exists():
             (og / f'og-{l}.png').write_bytes((og / 'og-en.png').read_bytes())
     if c.public:
@@ -793,6 +812,10 @@ def run(G, local_hubs):
           f"{len(site.gnet_pages)} global networks; SR only for Europe; below threshold {len(below_urls)}); "
           f"search index {si[0]} entries, {si[2] // 1024} KB gzip; llms.txt {'written' if ll else 'not written (not public)'}; public={c.public}; "
           f"names: {names.src}; {time.time() - t0:.1f} s")
+    if len(LANGS) > 3 or tuple(LANGS) != I.BASE:   # K8: English fallbacks of country/city names per extra language
+        print(f"world pages: languages {', '.join(LANGS)}")
+        for line in I.fallback_report():
+            print(line)
     return c
 
 
