@@ -13,6 +13,7 @@ root, so it is served at https://www.blokvolt.rs/<key>.txt — the keyLocation t
 (and the old one taken out by the owner).
 """
 import json
+import os
 import re
 import sys
 import urllib.error
@@ -21,7 +22,7 @@ from pathlib import Path
 from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parent.parent
-HOST = 'www.blokvolt.rs'
+HOST = os.environ.get('INDEXNOW_HOST', 'www.blokvolt.rs')   # blokvolt.com: its workflow sets INDEXNOW_HOST (bvcom README §3)
 SITE = 'https://' + HOST
 ENDPOINT = 'https://api.indexnow.org/indexnow'
 LIMIT = 10000                       # the protocol's maximum per request

@@ -4,6 +4,6 @@
 <div class="prose cwide">
 <p>{{ T.about_p }}</p>
 <p>{{ T.contact }}: <a href="mailto:{{ EMAIL }}" translate="no">{{ EMAIL }}</a></p>
-<p><a href="{{ about_data }}">{{ T.about_more }}</a> · <a href="{{ RS }}/" hreflang="sr" lang="sr">{{ T.rs_card }}</a></p>
+<p><a href="{{ about_data }}">{{ T.about_more }}</a> · <a href="{{ RS }}{{ {'en': '/en/', 'ru': '/ru/'}.get(l, '/') }}" hreflang="{{ l }}">{{ T.rs_card }}</a></p>
 </div>
 {% endblock %}

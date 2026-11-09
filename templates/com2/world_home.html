@@ -34,6 +34,6 @@
 <p><a class="btn" href="{{ hub_url }}">{{ T.all_btn }}</a></p></div>
 <div class="sec"><div class="sec-head"><h2 id="region">{{ T.region_h }}</h2></div>
 <p class="note">{{ T.region_p }}</p>
-<div class="chips"><a class="chip" href="{{ RS }}/" hreflang="sr" lang="sr">{{ T.rs_card }}</a>{% for r in regional %}<a class="chip" href="{{ r.path }}" hreflang="{{ r.hl }}" lang="{{ r.lang }}">{{ r.name }}</a>{% endfor %}</div></div>
+<div class="chips"><a class="chip" href="{{ RS }}{{ {'en': '/en/', 'ru': '/ru/'}.get(l, '/') }}" hreflang="{{ l }}">{{ T.rs_card }}</a>{% for r in regional %}<a class="chip" href="{{ r.path }}" hreflang="{{ r.hl }}" lang="{{ r.lang }}">{{ r.name }}</a>{% endfor %}</div></div>
 {% endblock %}
 {% block scripts %}<script src="{{ home_js }}" defer></script>{% endblock %}
