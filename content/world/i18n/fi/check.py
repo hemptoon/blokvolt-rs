@@ -10,7 +10,8 @@ errs = []
 def err(m): errs.append(m)
 PH = re.compile(r'\{[^{}]*\}')
 TAG = re.compile(r'<[^>]+>|&[a-z#0-9]+;')
-def sig(s): return sorted(PH.findall(s)), sorted(TAG.findall(s))
+# R-FI 10.11: {city_u}/{country_u} count as {city}/{country} (pool-4 decision 00:12)
+def sig(s): return sorted(p.replace('{city_u}','{city}').replace('{country_u}','{country}') for p in PH.findall(s)), sorted(TAG.findall(s))
 try:
     from babel import Locale
     cats = set(Locale(LANG).plural_form.tags) | {'other'}

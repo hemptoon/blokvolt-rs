@@ -92,7 +92,7 @@ geonameid,name,in_phrase,decl_ok,note
 2743477,Zwolle,Zwollessa,1,sääntö: vokaali
 2745912,Utrecht,Utrechtissa,1,eksonyymi/käsin
 2746301,Tilburg,Tilburgissa,1,sääntö: konsonantti
-2758012,Capelle aan den IJssel,kaupungissa Capelle aan den IJssel,0,turvamuoto
+2758012,Capelle aan den IJssel,Capelle aan den IJsselissä,1,R-FI
 593116,Vilna,Vilnassa,1,eksonyymi/käsin
 2750053,Nijmegen,Nijmegenissä,1,sääntö: konsonantti
 2751283,Maastricht,Maastrichtissa,1,sääntö: konsonantti
@@ -104,9 +104,9 @@ geonameid,name,in_phrase,decl_ok,note
 2748076,Rijswijk,Rijswijkissä,1,sääntö: konsonantti
 2754447,Helmond,Helmondissa,1,sääntö: konsonantti
 2747930,Roosendaal,Roosendaalissa,1,sääntö: konsonantti
-2759879,Almere Stad,kaupungissa Almere Stad,0,turvamuoto
+2759879,Almere Stad,Almere Stadissa,1,R-FI
 2867714,München,Münchenissä,1,eksonyymi/käsin
-3345437,Camden Town,kaupungissa Camden Town,0,turvamuoto
+3345437,Camden Town,Camden Townissa,1,R-FI
 2746932,Spijkenisse,Spijkenissessä,1,sääntö: vokaali
 2759426,Barendrecht,Barendrechtissa,1,sääntö: konsonantti
 2886242,Köln,Kölnissä,1,eksonyymi/käsin
@@ -118,17 +118,17 @@ geonameid,name,in_phrase,decl_ok,note
 2755420,Gouda,Goudassa,1,sääntö: vokaali
 2934246,Düsseldorf,Düsseldorfissa,1,eksonyymi/käsin
 2757345,Delft,Delftissä,1,sääntö: konsonantti
-2633655,Woodford Green,kaupungissa Woodford Green,0,turvamuoto
+2633655,Woodford Green,Woodford Greenissä,1,R-FI
 2745123,Waalwijk,Waalwijkissa,1,sääntö: konsonantti
 2759798,Amstelveen,Amstelveenissa,1,sääntö: konsonantti
 2756071,Enschede,Enschedessä,1,sääntö: vokaali
 2642414,Mitcham,Mitchamissa,1,sääntö: konsonantti
-2747351,'s-Hertogenbosch,kaupungissa 's-Hertogenbosch,0,turvamuoto
-2759145,Bergen op Zoom,kaupungissa Bergen op Zoom,0,turvamuoto
+2747351,'s-Hertogenbosch,'s-Hertogenboschissa,1,R-FI
+2759145,Bergen op Zoom,Bergen op Zoomissa,1,R-FI
 2910831,Hannover,Hannoverissa,1,eksonyymi/käsin
 2756136,Emmen,Emmenissä,1,sääntö: konsonantti
 2652221,Coventry,Coventryssä,1,sääntö: vokaali
-2759875,Alphen aan den Rijn,kaupungissa Alphen aan den Rijn,0,turvamuoto
+2759875,Alphen aan den Rijn,Alphen aan den Rijnissä,1,R-FI
 2754652,Heerlen,Heerlenissä,1,sääntö: konsonantti
 6947041,Blackheath,Blackheathissa,1,sääntö: konsonantti
 2749234,Oss,Ossissa,1,sääntö: konsonantti
@@ -151,9 +151,9 @@ geonameid,name,in_phrase,decl_ok,note
 2743493,Zwijndrecht,Zwijndrechtissä,1,sääntö: konsonantti
 2945024,Braunschweig,Braunschweigissa,1,sääntö: konsonantti
 2759040,Best,Bestissä,1,sääntö: konsonantti
-2925177,Freiburg im Breisgau,kaupungissa Freiburg im Breisgau,0,turvamuoto
+2925177,Freiburg im Breisgau,Freiburg im Breisgaussa,1,R-FI
 2935517,Dortmund,Dortmundissa,1,sääntö: konsonantti
-2745634,Venray,Venrayssä,1,sääntö: vokaali
+2745634,Venray,Venrayssa,1,R-FI
 2744514,Wijchen,Wijchenissä,1,sääntö: konsonantti
 2745774,Veenendaal,Veenendaalissa,1,sääntö: konsonantti
 2960316,Luxemburg,Luxemburgissa,1,eksonyymi/käsin
@@ -166,7 +166,7 @@ geonameid,name,in_phrase,decl_ok,note
 2861650,Nürnberg,Nürnbergissä,1,eksonyymi/käsin
 2754394,Hengelo,Hengelossa,1,sääntö: vokaali
 2823567,Teltow,Teltowissa,1,sääntö: konsonantti
-2987914,Perpignan,kaupungissa Perpignan,0,turvamuoto: ranskan äänneasu
+2987914,Perpignan,Perpignanissa,1,R-FI
 2750523,Naaldwijk,Naaldwijkissa,1,sääntö: konsonantti
 2759407,Barneveld,Barneveldissa,1,sääntö: konsonantti
 2791744,Marche-en-Famenne,kaupungissa Marche-en-Famenne,0,turvamuoto
@@ -180,7 +180,7 @@ geonameid,name,in_phrase,decl_ok,note
 2946447,Bonn,Bonnissa,1,sääntö: konsonantti
 2754848,Harderwijk,Harderwijkissa,1,sääntö: konsonantti
 2805615,Würzburg,Würzburgissa,1,sääntö: konsonantti
-2749182,Oud-Beijerland,kaupungissa Oud-Beijerland,0,turvamuoto
+2749182,Oud-Beijerland,Oud-Beijerlandissa,1,R-FI
 2753106,Kampen,Kampenissa,1,sääntö: konsonantti
 2825297,Stuttgart,Stuttgartissa,1,eksonyymi/käsin
 2934691,Duisburg,Duisburgissa,1,sääntö: konsonantti
@@ -197,12 +197,12 @@ geonameid,name,in_phrase,decl_ok,note
 2746005,Uden,Udenissa,1,sääntö: konsonantti
 2747203,Sittard,Sittardissa,1,sääntö: konsonantti
 2755464,Goirle,Goirlessa,1,sääntö: vokaali
-3037656,Angers,kaupungissa Angers,0,turvamuoto: ranskan äänneasu
+3037656,Angers,Angers'ssa,1,R-FI
 2748178,Rhoon,Rhoonissa,1,sääntö: konsonantti
 2749680,Oisterwijk,Oisterwijkissa,1,sääntö: konsonantti
 2746331,Tiel,Tielissä,1,sääntö: konsonantti
-6929992,Berkel en Rodenrijs,kaupungissa Berkel en Rodenrijs,0,turvamuoto
-2986495,Poitiers,kaupungissa Poitiers,0,turvamuoto: ranskan äänneasu
+6929992,Berkel en Rodenrijs,Berkel en Rodenrijsissä,1,R-FI
+2986495,Poitiers,Poitiers'ssa,1,R-FI
 2753504,Huissen,Huissenissä,1,sääntö: konsonantti
 2753719,Hoogeveen,Hoogeveenissa,1,sääntö: konsonantti
 598316,Kaunas,Kaunasissa,1,eksonyymi/käsin
@@ -212,7 +212,7 @@ geonameid,name,in_phrase,decl_ok,note
 2755584,Gennep,Gennepissä,1,sääntö: konsonantti
 2925533,Frankfurt am Main,Frankfurt am Mainissa,1,eksonyymi/käsin
 2656295,Barnet,Barnetissa,1,sääntö: konsonantti
-2747364,'s-Gravenzande,kaupungissa 's-Gravenzande,0,turvamuoto
+2747364,'s-Gravenzande,'s-Gravenzandessa,1,R-FI
 2749723,Oegstgeest,Oegstgeestissa,1,sääntö: konsonantti
 2646004,Isleworth,Isleworthissa,1,sääntö: konsonantti
 2755619,Geldrop,Geldropissa,1,sääntö: konsonantti
@@ -222,12 +222,12 @@ geonameid,name,in_phrase,decl_ok,note
 2748392,Putten,Puttenissa,1,sääntö: konsonantti
 2755272,Groesbeek,Groesbeekissa,1,sääntö: konsonantti
 2895992,Ingolstadt,Ingolstadtissa,1,sääntö: konsonantti
-2994160,Metz,kaupungissa Metz,0,turvamuoto: ranskan äänneasu
+2994160,Metz,Metzissä,1,R-FI
 2998286,Limoges,kaupungissa Limoges,0,turvamuoto: ranskan äänneasu
 2746766,Steenwijk,Steenwijkissä,1,sääntö: konsonantti
 2756342,Eersel,Eerselissä,1,sääntö: konsonantti
 3013403,Hérouville-Saint-Clair,kaupungissa Hérouville-Saint-Clair,0,turvamuoto
-3029241,Caen,kaupungissa Caen,0,turvamuoto: ranskan äänneasu
+3029241,Caen,Caenissa,1,R-FI
 2745154,Vught,Vughtissa,1,sääntö: konsonantti
 2755669,Geertruidenberg,Geertruidenbergissä,1,sääntö: konsonantti
 2748413,Purmerend,Purmerendissa,1,sääntö: konsonantti
@@ -243,7 +243,7 @@ geonameid,name,in_phrase,decl_ok,note
 2911408,Halstenbek,Halstenbekissa,1,sääntö: konsonantti
 2940132,Chemnitz,Chemnitzissä,1,sääntö: konsonantti
 2853969,Pforzheim,Pforzheimissa,1,sääntö: konsonantti
-2752264,Krimpen aan den IJssel,kaupungissa Krimpen aan den IJssel,0,turvamuoto
+2752264,Krimpen aan den IJssel,Krimpen aan den IJsselissä,1,R-FI
 2750896,Middelburg,Middelburgissa,1,sääntö: konsonantti
 2754064,Hilversum,Hilversumissa,1,sääntö: konsonantti
 2919880,Glinde,Glindessä,1,sääntö: vokaali
@@ -284,24 +284,24 @@ geonameid,name,in_phrase,decl_ok,note
 2918632,Göttingen,Göttingenissä,1,sääntö: konsonantti
 2745580,Vianen,Vianenissa,1,sääntö: konsonantti
 2759899,Alkmaar,Alkmaarissa,1,sääntö: konsonantti
-3032833,Béziers,kaupungissa Béziers,0,turvamuoto: ranskan äänneasu
+3032833,Béziers,Béziers'ssä,1,R-FI
 2748185,Rhenen,Rhenenissä,1,sääntö: konsonantti
 2749644,Oldenzaal,Oldenzaalissa,1,sääntö: konsonantti
-2750121,Nieuw-Vennep,kaupungissa Nieuw-Vennep,0,turvamuoto
+2750121,Nieuw-Vennep,Nieuw-Vennepissä,1,R-FI
 2756059,Epe,Epessä,1,sääntö: vokaali
 13526830,Blankenfelde-Mahlow,kaupungissa Blankenfelde-Mahlow,0,turvamuoto
 2907911,Heidelberg,Heidelbergissa,1,sääntö: konsonantti
 2894003,Kaiserslautern,Kaiserslauternissa,1,sääntö: konsonantti
 2748729,Papendrecht,Papendrechtissa,1,sääntö: konsonantti
-2879185,Leinfelden-Echterdingen,kaupungissa Leinfelden-Echterdingen,0,turvamuoto
+2879185,Leinfelden-Echterdingen,Leinfelden-Echterdingenissä,1,R-FI
 3037598,Angoulême,kaupungissa Angoulême,0,turvamuoto: ranskan äänneasu
-2753010,Katwijk aan Zee,kaupungissa Katwijk aan Zee,0,turvamuoto
+2753010,Katwijk aan Zee,Katwijk aan Zeessä,1,R-FI
 2759016,Beuningen,Beuningenissä,1,sääntö: konsonantti
 2891621,Kempten,Kemptenissä,1,sääntö: konsonantti
 2983990,Rennes,Rennesissä,1,eksonyymi/käsin
 2758765,Bodegraven,Bodegravenissa,1,sääntö: konsonantti
 2807363,Witten,Wittenissä,1,sääntö: konsonantti
-2980291,Saint-Étienne,kaupungissa Saint-Étienne,0,turvamuoto
+2980291,Saint-Étienne,Saint-Étiennessä,1,R-FI
 2746804,Steenbergen,Steenbergenissä,1,sääntö: konsonantti
 2758177,Brummen,Brummenissa,1,sääntö: konsonantti
 2855745,Paderborn,Paderbornissa,1,sääntö: konsonantti
@@ -313,8 +313,8 @@ geonameid,name,in_phrase,decl_ok,note
 3037854,Amiens,kaupungissa Amiens,0,turvamuoto: ranskan äänneasu
 2755003,Haarlem,Haarlemissa,1,sääntö: konsonantti
 2873891,Mannheim,Mannheimissa,1,sääntö: konsonantti
-2877648,Limburg an der Lahn,kaupungissa Limburg an der Lahn,0,turvamuoto
-2993002,Montauban,kaupungissa Montauban,0,turvamuoto: ranskan äänneasu
+2877648,Limburg an der Lahn,Limburg an der Lahnissa,1,R-FI
+2993002,Montauban,Montaubanissa,1,R-FI
 3013627,Hayange,kaupungissa Hayange,0,turvamuoto: ranskan äänneasu
 3035204,Balma,kaupungissa Balma,0,turvamuoto: ranskan äänneasu
 2949186,Bielefeld,Bielefeldissä,1,sääntö: konsonantti
@@ -325,7 +325,7 @@ geonameid,name,in_phrase,decl_ok,note
 3028641,Carcassonne,kaupungissa Carcassonne,0,turvamuoto: ranskan äänneasu
 2799365,Dilbeek,Dilbeekissä,1,sääntö: konsonantti
 2874545,Magdeburg,Magdeburgissa,1,sääntö: konsonantti
-2950349,Bergisch Gladbach,kaupungissa Bergisch Gladbach,0,turvamuoto
+2950349,Bergisch Gladbach,Bergisch Gladbachissa,1,R-FI
 588409,Tallinna,Tallinnassa,1,eksonyymi/käsin
 2744118,Zaandam,Zaandamissa,1,sääntö: konsonantti
 2744324,Wisch,Wischissä,1,sääntö: konsonantti
@@ -333,12 +333,12 @@ geonameid,name,in_phrase,decl_ok,note
 2745726,Veghel,Veghelissä,1,sääntö: konsonantti
 2756723,Dongen,Dongenissa,1,sääntö: konsonantti
 2907669,Heilbronn,Heilbronnissa,1,sääntö: konsonantti
-2978640,Saint-Malo,kaupungissa Saint-Malo,0,turvamuoto
+2978640,Saint-Malo,Saint-Malossa,1,R-FI
 2992402,Montigny-lès-Metz,kaupungissa Montigny-lès-Metz,0,turvamuoto
 2757340,Delfzijl,Delfzijlissä,1,sääntö: konsonantti
 2807240,Wittlich,Wittlichissä,1,sääntö: konsonantti
-2867838,Mülheim an der Ruhr,kaupungissa Mülheim an der Ruhr,0,turvamuoto
-3033123,Besançon,kaupungissa Besançon,0,turvamuoto: ranskan äänneasu
+2867838,Mülheim an der Ruhr,Mülheim an der Ruhrissa,1,R-FI
+3033123,Besançon,Besançonissa,1,R-FI
 2639577,Reading,Readingissa,1,sääntö: konsonantti
 2750815,Mijdrecht,Mijdrechtissä,1,sääntö: konsonantti
 2751687,Leusden,Leusdenissä,1,sääntö: konsonantti
@@ -350,20 +350,20 @@ geonameid,name,in_phrase,decl_ok,note
 2981280,Saint-Brieuc,kaupungissa Saint-Brieuc,0,turvamuoto
 3027422,Chambéry,kaupungissa Chambéry,0,turvamuoto: ranskan äänneasu
 2745860,Valkenswaard,Valkenswaardissa,1,sääntö: konsonantti
-3038261,Albi,kaupungissa Albi,0,turvamuoto: ranskan äänneasu
+3038261,Albi,Albissa,1,R-FI
 2747584,Schijndel,Schijndelissä,1,sääntö: konsonantti
 2968748,Villefranche-sur-Saône,kaupungissa Villefranche-sur-Saône,0,turvamuoto
 2656065,Beckenham,Beckenhamissa,1,sääntö: konsonantti
 2745301,Voorschoten,Voorschotenissa,1,sääntö: konsonantti
 2750884,Middelharnis,Middelharnisissa,1,sääntö: konsonantti
 2875601,Lyypekki,Lyypekissä,1,eksonyymi/käsin
-2988358,Pau,kaupungissa Pau,0,turvamuoto: ranskan äänneasu
+2988358,Pau,Paussa,1,R-FI
 3027484,Chalon-sur-Saône,kaupungissa Chalon-sur-Saône,0,turvamuoto
 2634579,Welling,Wellingissä,1,sääntö: konsonantti
 2756507,Duiven,Duivenissä,1,sääntö: konsonantti
 2831088,Sonthofen,Sonthofenissa,1,sääntö: konsonantti
 2921466,Gelsenkirchen,Gelsenkirchenissä,1,sääntö: konsonantti
-2940231,Castrop-Rauxel,kaupungissa Castrop-Rauxel,0,turvamuoto
+2940231,Castrop-Rauxel,Castrop-Rauxelissa,1,R-FI
 3017253,Fréjus,kaupungissa Fréjus,0,turvamuoto: ranskan äänneasu
 2750039,Nijverdal,Nijverdalissa,1,sääntö: konsonantti
 2844988,Rosenheim,Rosenheimissa,1,sääntö: konsonantti
@@ -377,7 +377,7 @@ geonameid,name,in_phrase,decl_ok,note
 2755605,Gemert,Gemertissä,1,sääntö: konsonantti
 2940204,Cham,Chamissa,1,sääntö: konsonantti
 3034006,Beauvais,kaupungissa Beauvais,0,turvamuoto: ranskan äänneasu
-3036784,Arras,kaupungissa Arras,0,turvamuoto: ranskan äänneasu
+3036784,Arras,Arrasissa,1,R-FI
 2644210,Liverpool,Liverpoolissa,1,eksonyymi/käsin
 2806654,Wolfsburg,Wolfsburgissa,1,sääntö: konsonantti
 2881062,Langenhagen,Langenhagenissa,1,sääntö: konsonantti
@@ -385,14 +385,14 @@ geonameid,name,in_phrase,decl_ok,note
 2756232,Elburg,Elburgissa,1,sääntö: konsonantti
 2878234,Leverkusen,Leverkusenissa,1,sääntö: konsonantti
 2934486,Düren,Dürenissä,1,sääntö: konsonantti
-2798573,Eupen,Eupenissä,1,sääntö: konsonantti
+2798573,Eupen,Eupenissa,1,R-FI
 2939969,Cloppenburg,Cloppenburgissa,1,sääntö: konsonantti
 2753638,Hoorn,Hoornissa,1,sääntö: konsonantti
 2882087,Laatzen,Laatzenissa,1,sääntö: konsonantti
 2920512,Gießen,Gießenissä,1,sääntö: konsonantti
 2955272,Aschaffenburg,Aschaffenburgissa,1,sääntö: konsonantti
 2990919,Narbonne,kaupungissa Narbonne,0,turvamuoto: ranskan äänneasu
-2992703,Montélimar,kaupungissa Montélimar,0,turvamuoto: ranskan äänneasu
+2992703,Montélimar,Montélimarissa,1,R-FI
 2821164,Trier,Trierissä,1,sääntö: konsonantti
 3003796,Le Havre,Le Havressa,1,eksonyymi/käsin
 2655603,Birmingham,Birminghamissa,1,eksonyymi/käsin
@@ -410,10 +410,10 @@ geonameid,name,in_phrase,decl_ok,note
 3104324,Zaragoza,Zaragozassa,1,eksonyymi/käsin
 2753706,Hoogezand,Hoogezandissa,1,sääntö: konsonantti
 2906331,Hennigsdorf,Hennigsdorfissa,1,sääntö: konsonantti
-2749812,Noordwijk-Binnen,kaupungissa Noordwijk-Binnen,0,turvamuoto
+2749812,Noordwijk-Binnen,Noordwijk-Binnenissä,1,R-FI
 2929567,Erlangen,Erlangenissa,1,sääntö: konsonantti
 3038634,Agen,kaupungissa Agen,0,turvamuoto: ranskan äänneasu
-2881646,Landau in der Pfalz,kaupungissa Landau in der Pfalz,0,turvamuoto
+2881646,Landau in der Pfalz,Landau in der Pfalzissa,1,R-FI
 2973783,Strasbourg,Strasbourgissa,1,eksonyymi/käsin
 3014078,Haguenau,kaupungissa Haguenau,0,turvamuoto: ranskan äänneasu
 2751808,Leerdam,Leerdamissa,1,sääntö: konsonantti
@@ -427,14 +427,14 @@ geonameid,name,in_phrase,decl_ok,note
 261745,Heraklion,Heraklionissa,1,sääntö: konsonantti
 2751651,Lichtenvoorde,Lichtenvoordessa,1,sääntö: vokaali
 2772400,Linz,Linzissä,1,eksonyymi/käsin
-2813040,Weiden in der Oberpfalz,kaupungissa Weiden in der Oberpfalz,0,turvamuoto
+2813040,Weiden in der Oberpfalz,Weiden in der Oberpfalzissa,1,R-FI
 2977845,Saint-Omer,kaupungissa Saint-Omer,0,turvamuoto
-2751456,Loon op Zand,kaupungissa Loon op Zand,0,turvamuoto
+2751456,Loon op Zand,Loon op Zandissa,1,R-FI
 2267057,Lissabon,Lissabonissa,1,eksonyymi/käsin
-2787889,Roeselare,kaupungissa Roeselare,0,turvamuoto: mahdollinen äänetön e
+2787889,Roeselare,Roeselaressa,1,R-FI
 2835297,Schwandorf,Schwandorfissa,1,sääntö: konsonantti
 2904789,Hildesheim,Hildesheimissa,1,sääntö: konsonantti
-3030300,Brest,kaupungissa Brest,0,turvamuoto: ranskan äänneasu
+3030300,Brest,Brestissä,1,R-FI
 2892794,Karlsruhe,Karlsruhessa,1,sääntö: vokaali
 2904795,Hilden,Hildenissä,1,sääntö: konsonantti
 3025053,Cholet,kaupungissa Cholet,0,turvamuoto: ranskan äänneasu
@@ -443,11 +443,11 @@ geonameid,name,in_phrase,decl_ok,note
 3035681,Avignon,Avignonissa,1,eksonyymi/käsin
 2745973,Uithoorn,Uithoornissa,1,sääntö: konsonantti
 2747063,Sneek,Sneekissä,1,sääntö: konsonantti
-2754408,Hendrik-Ido-Ambacht,kaupungissa Hendrik-Ido-Ambacht,0,turvamuoto
+2754408,Hendrik-Ido-Ambacht,Hendrik-Ido-Ambachtissa,1,R-FI
 2795795,Heusy,Heusyssä,1,sääntö: vokaali
 2809346,Wiesbaden,Wiesbadenissa,1,sääntö: konsonantti
 2834265,Schwerte,Schwertessä,1,sääntö: vokaali
-2880144,Lauf an der Pegnitz,kaupungissa Lauf an der Pegnitz,0,turvamuoto
+2880144,Lauf an der Pegnitz,Lauf an der Pegnitzissä,1,R-FI
 2998224,Lingolsheim,kaupungissa Lingolsheim,0,turvamuoto: ranskan äänneasu
 2758598,Borne,Bornessa,1,sääntö: vokaali
 2783310,Zaventem,Zaventemissa,1,sääntö: konsonantti
@@ -473,31 +473,31 @@ geonameid,name,in_phrase,decl_ok,note
 2647550,Hampton,Hamptonissa,1,sääntö: konsonantti
 2758174,Brunssum,Brunssumissa,1,sääntö: konsonantti
 727011,Sofia,Sofiassa,1,eksonyymi/käsin
-2814791,Waldshut-Tiengen,kaupungissa Waldshut-Tiengen,0,turvamuoto
+2814791,Waldshut-Tiengen,Waldshut-Tiengenissä,1,R-FI
 2848245,Rendsburg,Rendsburgissa,1,sääntö: konsonantti
-2881509,Landsberg am Lech,kaupungissa Landsberg am Lech,0,turvamuoto
+2881509,Landsberg am Lech,Landsberg am Lechissä,1,R-FI
 2897132,Husum,Husumissa,1,sääntö: konsonantti
 2902768,Hof,Hofissa,1,sääntö: konsonantti
 2908032,Heide,Heidessa,1,sääntö: vokaali
 2951923,Baunatal,Baunatalissa,1,sääntö: konsonantti
 2972315,Toulouse,Toulousessa,1,eksonyymi/käsin
 2984114,Reims,Reimsissä,1,eksonyymi/käsin
-2757220,Den Helder,kaupungissa Den Helder,0,turvamuoto
+2757220,Den Helder,Den Helderissä,1,R-FI
 2757850,Dalfsen,Dalfsenissa,1,sääntö: konsonantti
 2758460,Boxtel,Boxtelissa,1,sääntö: konsonantti
 2797656,Gent,Gentissä,1,eksonyymi/käsin
-2817202,Vilshofen an der Donau,kaupungissa Vilshofen an der Donau,0,turvamuoto
+2817202,Vilshofen an der Donau,Vilshofen an der Donaussa,1,R-FI
 2821515,Traunstein,Traunsteinissa,1,sääntö: konsonantti
 2939797,Crailsheim,Crailsheimissa,1,sääntö: konsonantti
 3032469,Blagnac,kaupungissa Blagnac,0,turvamuoto: ranskan äänneasu
-2991214,Mulhouse,kaupungissa Mulhouse,0,turvamuoto: ranskan äänneasu
-3021670,Dax,kaupungissa Dax,0,turvamuoto: ranskan äänneasu
-2842884,Rüsselsheim am Main,kaupungissa Rüsselsheim am Main,0,turvamuoto
-2864549,Neumarkt in der Oberpfalz,kaupungissa Neumarkt in der Oberpfalz,0,turvamuoto
-2868506,Mühldorf am Inn,kaupungissa Mühldorf am Inn,0,turvamuoto
+2991214,Mulhouse,Mulhousessa,1,R-FI
+3021670,Dax,Daxissa,1,R-FI
+2842884,Rüsselsheim am Main,Rüsselsheim am Mainissa,1,R-FI
+2864549,Neumarkt in der Oberpfalz,Neumarkt in der Oberpfalzissa,1,R-FI
+2868506,Mühldorf am Inn,Mühldorf am Innissä,1,R-FI
 9238414,Kröpeliner-Tor-Vorstadt,kaupungissa Kröpeliner-Tor-Vorstadt,0,turvamuoto
 2996882,Mâcon,kaupungissa Mâcon,0,turvamuoto: ranskan äänneasu
-3006787,La Rochelle,kaupungissa La Rochelle,0,turvamuoto
+3006787,La Rochelle,La Rochellessa,1,R-FI
 3013619,Hazebrouck,kaupungissa Hazebrouck,0,turvamuoto: ranskan äänneasu
 3020392,Écully,kaupungissa Écully,0,turvamuoto: ranskan äänneasu
 2509954,Valencia,Valenciassa,1,eksonyymi/käsin
@@ -508,7 +508,7 @@ geonameid,name,in_phrase,decl_ok,note
 3034483,Bayeux,kaupungissa Bayeux,0,turvamuoto: ranskan äänneasu
 2749756,Nunspeet,Nunspeetissa,1,sääntö: konsonantti
 2814270,Wangen im Allgäu,kaupungissa Wangen im Allgäu,0,turvamuoto
-2817220,Villingen-Schwenningen,kaupungissa Villingen-Schwenningen,0,turvamuoto
+2817220,Villingen-Schwenningen,Villingen-Schwenningenissä,1,R-FI
 2881885,Lahr/Schwarzwald,kaupungissa Lahr/Schwarzwald,0,turvamuoto
 2913192,Haar,Haarissa,1,sääntö: konsonantti
 2955936,Ansbach,Ansbachissa,1,sääntö: konsonantti
@@ -524,13 +524,13 @@ geonameid,name,in_phrase,decl_ok,note
 2873289,Marktredwitz,Marktredwitzissa,1,sääntö: konsonantti
 2925910,Forchheim,Forchheimissa,1,sääntö: konsonantti
 2514256,Málaga,Málagassa,1,eksonyymi/käsin
-2747227,Sint-Oedenrode,kaupungissa Sint-Oedenrode,0,turvamuoto
+2747227,Sint-Oedenrode,Sint-Oedenrodessa,1,R-FI
 2756295,Eibergen,Eibergenissä,1,sääntö: konsonantti
 2812174,Weinheim,Weinheimissa,1,sääntö: konsonantti
 2826595,Stolberg (Rhld.),kaupungissa Stolberg (Rhld.),0,turvamuoto
 2968771,Villefontaine,kaupungissa Villefontaine,0,turvamuoto: ranskan äänneasu
 3028263,Castres,kaupungissa Castres,0,turvamuoto: ranskan äänneasu
-255683,Patras,kaupungissa Patras,0,turvamuoto: kreikan -s
+255683,Patras,Patrasissa,1,R-FI
 2794981,Jambes,kaupungissa Jambes,0,turvamuoto: mahdollinen äänetön loppukonsonantti
 2805753,Wuppertal,Wuppertalissa,1,sääntö: konsonantti
 2873759,Marburg,Marburgissa,1,sääntö: konsonantti
@@ -540,13 +540,13 @@ geonameid,name,in_phrase,decl_ok,note
 2936871,Dinslaken,Dinslakenissa,1,sääntö: konsonantti
 2973385,Tarbes,kaupungissa Tarbes,0,turvamuoto: ranskan äänneasu
 2947444,Böblingen,Böblingenissä,1,sääntö: konsonantti
-3104499,Vitoria-Gasteiz,kaupungissa Vitoria-Gasteiz,0,turvamuoto
+3104499,Vitoria-Gasteiz,Vitoria-Gasteizissa,1,R-FI
 2978758,Saint-Lô,kaupungissa Saint-Lô,0,turvamuoto
 3006283,La Teste-de-Buch,kaupungissa La Teste-de-Buch,0,turvamuoto
 3014856,Grasse,kaupungissa Grasse,0,turvamuoto: ranskan äänneasu
 2857458,Oldenburg,Oldenburgissa,1,sääntö: konsonantti
-2953324,Bad Tölz,kaupungissa Bad Tölz,0,turvamuoto
-3003603,Le Mans,kaupungissa Le Mans,0,turvamuoto
+2953324,Bad Tölz,Bad Tölzissä,1,R-FI
+3003603,Le Mans,Le Mansissa,1,R-FI
 2743997,Zeewolde,Zeewoldessa,1,sääntö: vokaali
 2744344,Winschoten,Winschotenissa,1,sääntö: konsonantti
 2820860,Tübingen,Tübingenissä,1,sääntö: konsonantti
@@ -554,30 +554,30 @@ geonameid,name,in_phrase,decl_ok,note
 2913537,Gunzenhausen,Gunzenhausenissa,1,sääntö: konsonantti
 3007609,Lannion,kaupungissa Lannion,0,turvamuoto: ranskan äänneasu
 2930523,Emmendingen,Emmendingenissä,1,sääntö: konsonantti
-598098,Klaipėda,kaupungissa Klaipėda,0,turvamuoto: baltian nimet
+598098,Klaipėda,Klaipėdassa,1,R-FI
 2960596,Esch-sur-Alzette,kaupungissa Esch-sur-Alzette,0,turvamuoto
 2844437,Rotenburg (Wümme),kaupungissa Rotenburg (Wümme),0,turvamuoto
 2855525,Papenburg,Papenburgissa,1,sääntö: konsonantti
 2857798,Offenburg,Offenburgissa,1,sääntö: konsonantti
 2913555,Günzburg,Günzburgissa,1,sääntö: konsonantti
 2940383,Calw,Calwissa,1,sääntö: konsonantti
-2953416,Bad Kreuznach,kaupungissa Bad Kreuznach,0,turvamuoto
+2953416,Bad Kreuznach,Bad Kreuznachissa,1,R-FI
 2834282,Schwerin,Schwerinissä,1,sääntö: konsonantti
 2851746,Pulheim,Pulheimissa,1,sääntö: konsonantti
-2864034,Neustadt in Holstein,kaupungissa Neustadt in Holstein,0,turvamuoto
+2864034,Neustadt in Holstein,Neustadt in Holsteinissa,1,R-FI
 2886946,Koblenz,Koblenzissa,1,sääntö: konsonantti
 2895669,Iserlohn,Iserlohnissa,1,sääntö: konsonantti
-2922530,Garmisch-Partenkirchen,kaupungissa Garmisch-Partenkirchen,0,turvamuoto
+2922530,Garmisch-Partenkirchen,Garmisch-Partenkirchenissä,1,R-FI
 2971053,Valence,kaupungissa Valence,0,turvamuoto: ranskan äänneasu
-3024297,Colmar,kaupungissa Colmar,0,turvamuoto: ranskan äänneasu
-3032797,Biarritz,kaupungissa Biarritz,0,turvamuoto: ranskan äänneasu
+3024297,Colmar,Colmarissa,1,R-FI
+3032797,Biarritz,Biarritzissa,1,R-FI
 2778067,Graz,Grazissa,1,eksonyymi/käsin
 2847645,Rheine,Rheinessa,1,sääntö: vokaali
 2867770,Müllheim,Müllheimissa,1,sääntö: konsonantti
 2872611,Mechernich,Mechernichissä,1,sääntö: konsonantti
 2975050,Sens,kaupungissa Sens,0,turvamuoto: ranskan äänneasu
 3026204,Châteauroux,kaupungissa Châteauroux,0,turvamuoto: ranskan äänneasu
-2642465,Milton Keynes,kaupungissa Milton Keynes,0,turvamuoto
+2642465,Milton Keynes,Milton Keynesissä,1,R-FI
 2784189,Walcourt,kaupungissa Walcourt,0,turvamuoto: mahdollinen äänetön loppukonsonantti
 2924585,Friedrichshafen,Friedrichshafenissa,1,sääntö: konsonantti
 2951111,Bendorf,Bendorfissa,1,sääntö: konsonantti
@@ -585,7 +585,7 @@ geonameid,name,in_phrase,decl_ok,note
 2984513,Rambouillet,kaupungissa Rambouillet,0,turvamuoto: ranskan äänneasu
 3020850,Draguignan,kaupungissa Draguignan,0,turvamuoto: ranskan äänneasu
 3024532,Cluses,kaupungissa Cluses,0,turvamuoto: ranskan äänneasu
-400666,Rhodes,kaupungissa Rhodes,0,turvamuoto: kreikan -s
+400666,Rodos,Rodoksen kaupungissa,1,R-FI
 2809138,Wiesloch,Wieslochissa,1,sääntö: konsonantti
 2827479,Stendal,Stendalissa,1,sääntö: konsonantti
 2861934,Nordhorn,Nordhornissa,1,sääntö: konsonantti
@@ -1384,7 +1384,7 @@ geonameid,name,in_phrase,decl_ok,note
 2639069,Rottingdean,Rottingdeanissa,1,sääntö: konsonantti
 2641170,Nottingham,Nottinghamissa,1,eksonyymi/käsin
 2649258,Folkestone,kaupungissa Folkestone,0,turvamuoto: mahdollinen äänetön e
-2653941,Cambridge,Cambridgessä,1,eksonyymi/käsin
+2653941,Cambridge,Cambridgessa,1,R-FI
 2960992,Waterford,Waterfordissa,1,sääntö: konsonantti
 2962943,Limerick,Limerickissä,1,sääntö: konsonantti
 3171168,Pescara,Pescarassa,1,sääntö: vokaali
@@ -2137,7 +2137,7 @@ geonameid,name,in_phrase,decl_ok,note
 2701713,Karlskrona,Karlskronassa,1,sääntö: vokaali
 3057789,Ružomberok,Ružomberokissa,1,sääntö: konsonantti
 2797096,Grivegnée,kaupungissa Grivegnée,0,turvamuoto: mahdollinen äänetön e
-2658145,Vevey,Veveyssa,1,sääntö: vokaali
+2658145,Vevey,Veveyssä,1,R-FI
 2659601,Montreux,kaupungissa Montreux,0,turvamuoto: mahdollinen äänetön loppukonsonantti
 3063907,Trutnov,Trutnovissa,1,sääntö: konsonantti
 3074199,Jihlava,Jihlavassa,1,sääntö: vokaali
@@ -2581,7 +2581,7 @@ geonameid,name,in_phrase,decl_ok,note
 6163012,Terrebonne,kaupungissa Terrebonne,0,turvamuoto: mahdollinen äänetön e
 6620953,Saint-Georges,kaupungissa Saint-Georges,0,turvamuoto
 4790534,Tysons,Tysonsissa,1,sääntö: konsonantti
-4931972,Cambridge,kaupungissa Cambridge,0,turvamuoto: mahdollinen äänetön e
+4931972,Cambridge,Cambridgessa,1,R-FI
 4947459,Pittsfield,Pittsfieldissä,1,sääntö: konsonantti
 5725846,Eugene,kaupungissa Eugene,0,turvamuoto: mahdollinen äänetön e
 2171845,Cessnock,Cessnockissa,1,sääntö: konsonantti
@@ -4638,7 +4638,7 @@ geonameid,name,in_phrase,decl_ok,note
 13546321,Pierrefonds-Roxboro,kaupungissa Pierrefonds-Roxboro,0,turvamuoto
 5882799,Airdrie,kaupungissa Airdrie,0,turvamuoto: mahdollinen äänetön e
 5884588,Amos,Amosissa,1,sääntö: konsonantti
-5913695,Cambridge,kaupungissa Cambridge,0,turvamuoto: mahdollinen äänetön e
+5913695,Cambridge,Cambridgessa,1,R-FI
 5923101,Clarence-Rockland,kaupungissa Clarence-Rockland,0,turvamuoto
 5949512,Esquimalt,Esquimaltissa,1,sääntö: konsonantti
 5963453,Gordon Head,kaupungissa Gordon Head,0,turvamuoto
