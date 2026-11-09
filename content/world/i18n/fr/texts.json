@@ -1,0 +1,175 @@
+{
+ "about_data": {
+  "h1": "À propos des données de la carte",
+  "title": "Données de la carte de recharge : sources, licences, fiabilité | BlokVolt",
+  "description": "Origine des données de la carte de recharge, licences sous lesquelles elles sont utilisées et méthode de calcul de la fiabilité de chaque point.",
+  "lead": "La carte est construite à partir de données ouvertes, et chaque point indique son origine.",
+  "intro": "La carte combine des données ouvertes issues de nombreuses sources : registres officiels, données ouvertes publiques, OpenStreetMap, Open Charge Map et pages des sites de recharge publiées par les opérateurs eux-mêmes. Les enregistrements sont fusionnés, nettoyés et modifiés ; un point sur la carte peut donc différer de l’enregistrement d’origine. Les mêmes règles s’appliquent à chaque réseau. La carte ne note ni les réseaux ni les opérateurs.",
+  "osm_h": "OpenStreetMap et l’ODbL",
+  "osm_p": "Données © contributeurs OpenStreetMap, disponibles sous licence Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. La base fusionnée des points qui contient des données OpenStreetMap est disponible sous la même licence sur la page « Télécharger les données ouvertes » : {download_url}.",
+  "sources_h": "Sources et licences",
+  "sources_note": "Seules les sources réellement présentes dans les données actuelles sont listées, chacune avec sa licence et l’attribution requise.",
+  "conf_h": "Calcul de la fiabilité",
+  "conf_p": "Chaque point reçoit un score de fiabilité de 0 à 100. La même formule s’applique à tous les réseaux. Le score évalue les données sur un lieu, pas le réseau ni son service.",
+  "conf_rows": [
+   [
+    "Score de base selon le meilleur type de source",
+    "Registre officiel ou données ouvertes publiques 70 ; vérification propre de BlokVolt 65 ; OpenStreetMap 50 ; All The Places 45 ; Open Charge Map 40 ; Overture (issu d’All The Places) 40 ; autres 25"
+   ],
+   [
+    "Vérification indépendante",
+    "Si aucun registre ne figure parmi les sources, une vérification automatique indépendante de l’enregistrement peut relever la base, mais jamais au-delà de ce qu’indique cette vérification"
+   ],
+   [
+    "Concordance des sources",
+    "+10 lorsque deux sources ou plus concordent sur le lieu ; +5 de plus avec trois sources ou plus"
+   ],
+   [
+    "Fraîcheur",
+    "+10 lorsque la dernière confirmation date de moins de 12 mois ; −15 lorsqu’elle date de plus de 3 ans"
+   ],
+   [
+    "Conflit de pays",
+    "−10 lorsque les sources divergent sur le pays"
+   ],
+   [
+    "Hors service ou coordonnées suspectes",
+    "20 au maximum"
+   ],
+   [
+    "Plage",
+    "Le score est limité à 0–100 ; les lieux en dessous de 40 ne sont affichés ni sur la carte ni sur les pages"
+   ]
+  ],
+  "conf_levels": [
+   [
+    "Élevée",
+    "70–100",
+    "Confirmé par une source officielle ou par plusieurs sources, mis à jour récemment"
+   ],
+   [
+    "Moyenne",
+    "50–69",
+    "Plausible, mais confirmé par moins de sources ou pas récemment"
+   ],
+   [
+    "Faible",
+    "40–49",
+    "Source unique ou ancienne ; vérifiez auprès de l’opérateur avant de partir"
+   ]
+  ],
+  "notes_h": "Remarques",
+  "notes": [
+   "Les données sont fournies en l’état, sans aucune garantie d’exactitude, de disponibilité, de prix ou de compatibilité. Vérifiez auprès de l’opérateur ou sur place avant de partir.",
+   "La fiche de chaque point indique la source, la licence et la date de dernière mise à jour.",
+   "Les noms de réseaux et les marques appartiennent à leurs propriétaires.",
+   "BlokVolt n’est affilié ni aux opérateurs ni aux institutions qui publient les données, et ceux-ci ne cautionnent pas cette carte.",
+   "Les noms de particuliers ne sont pas affichés ; les bornes de recharge privées à domicile ne figurent pas sur la carte.",
+   "Pour signaler une erreur ou demander une correction ou une suppression, utilisez le bouton « Signaler une erreur » sur la fiche du point ou écrivez à {email}. Vous recevrez une réponse sous 30 jours."
+  ],
+  "licence_texts_h": "Textes des licences",
+  "licence_texts": [
+   [
+    "CC BY 4.0",
+    "https://creativecommons.org/licenses/by/4.0/"
+   ],
+   [
+    "CC0 1.0",
+    "https://creativecommons.org/publicdomain/zero/1.0/"
+   ],
+   [
+    "ODbL 1.0",
+    "https://opendatacommons.org/licenses/odbl/1-0/"
+   ],
+   [
+    "Licence Ouverte 2.0",
+    "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+   ],
+   [
+    "CDLA Permissive 2.0",
+    "https://cdla.dev/permissive-2-0/"
+   ],
+   [
+    "Open Government Licence v2.0",
+    "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+   ]
+  ]
+ },
+ "download": {
+  "h1": "Télécharger les données ouvertes",
+  "title": "Télécharger les données ouvertes des points de charge | BlokVolt",
+  "description": "Fichier CSV hebdomadaire des points de charge publics : coordonnées, réseau, puissance, prises et sources. Gratuit sous licence ODbL.",
+  "lead": "La couche publique de la carte est disponible sous forme de fichier CSV gratuit, mis à jour chaque semaine.",
+  "what_h": "Contenu du fichier",
+  "what_p": "Un export CSV hebdomadaire de la couche publique de la carte : coordonnées, réseau, puissance, prises et sources de chaque site. Il contient des données OpenStreetMap et est donc publié sous licence Open Database License (ODbL) 1.0. Les prix, les vérifications de l’équipe et les corrections de BlokVolt pour les Balkans ne font pas partie du fichier.",
+  "fields_h": "Colonnes",
+  "fields": [
+   [
+    "pid",
+    "Identifiant stable du site"
+   ],
+   [
+    "lat",
+    "Latitude (WGS 84)"
+   ],
+   [
+    "lon",
+    "Longitude (WGS 84)"
+   ],
+   [
+    "country",
+    "Code pays (ISO 3166-1 alpha-2)"
+   ],
+   [
+    "name",
+    "Nom du site"
+   ],
+   [
+    "network",
+    "Nom du réseau ou de l’opérateur"
+   ],
+   [
+    "max_kw",
+    "Puissance la plus élevée du site, kW"
+   ],
+   [
+    "dc",
+    "1 si la recharge rapide DC est disponible, 0 sinon"
+   ],
+   [
+    "power_class",
+    "Classe de puissance du site"
+   ],
+   [
+    "connectors",
+    "Types de prises, séparés par des virgules"
+   ],
+   [
+    "points",
+    "Nombre estimé de points de charge"
+   ],
+   [
+    "access",
+    "Type d’accès (public, restreint, etc.)"
+   ],
+   [
+    "sources",
+    "Clés des sources, séparées par des virgules (voir la page « À propos des données »)"
+   ],
+   [
+    "last_confirmed",
+    "Date de la dernière confirmation, toutes sources confondues"
+   ],
+   [
+    "confidence",
+    "Score de fiabilité 0–100"
+   ]
+  ],
+  "licence_h": "Licence",
+  "licence_p": "Le fichier est disponible sous licence ODbL 1.0. Vous pouvez partager les données, créer des œuvres à partir de celles-ci et les adapter, à condition de mentionner « © OpenStreetMap contributors, BlokVolt » et de partager toute base de données adaptée sous la même licence. Maintenez-la ouverte : n’appliquez pas de restrictions techniques qui limitent ces droits. Texte intégral : https://opendatacommons.org/licenses/odbl/1-0/",
+  "file_h": "Fichier",
+  "file_missing": "Le fichier de cette semaine est en cours de préparation. Veuillez revenir plus tard.",
+  "attribution_h": "Comment citer la source",
+  "attribution_p": "Lorsque vous utilisez les données, affichez « © OpenStreetMap contributors, BlokVolt » avec un lien vers www.openstreetmap.org/copyright et vers cette page, et indiquez la licence ODbL 1.0. Les données issues d’autres sources conservent leur propre attribution, indiquée sur la page « À propos des données »."
+ }
+}

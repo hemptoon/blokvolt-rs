@@ -1,0 +1,13 @@
+{
+ "home": "/fr/",
+ "map": "/fr/carte/",
+ "hub": "/fr/bornes-de-recharge/",
+ "net": "reseau",
+ "about": "a-propos-des-donnees",
+ "download": "telechargement",
+ "gnet": "/fr/reseaux-de-recharge/",
+ "prices": "/fr/prix-de-la-recharge/",
+ "shell_about": "/fr/a-propos/",
+ "sources": "/fr/sources/",
+ "methodology": "/fr/methodologie/"
+}
