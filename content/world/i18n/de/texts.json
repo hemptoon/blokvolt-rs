@@ -1,0 +1,416 @@
+{
+ "about_data": {
+  "h1": "Über die Kartendaten",
+  "title": "Ladekarten-Daten: Quellen, Lizenzen, Zuverlässigkeit | BlokVolt",
+  "description": "Woher die Daten der Ladekarte stammen, unter welchen Lizenzen sie genutzt werden und wie die Zuverlässigkeit jedes Punkts berechnet wird.",
+  "lead": "Die Karte basiert auf offenen Daten, und jeder Punkt zeigt, woher er stammt.",
+  "intro": "Die Karte kombiniert offene Daten aus vielen Quellen: amtliche Register, offene Verwaltungsdaten, OpenStreetMap, Open Charge Map und die Standortseiten der Betreiber. Die Datensätze werden zusammengeführt, bereinigt und verändert, daher kann ein Punkt auf der Karte vom ursprünglichen Datensatz abweichen. Für jedes Ladenetz gelten dieselben Regeln. Die Karte bewertet weder Ladenetze noch Betreiber.",
+  "osm_h": "OpenStreetMap und die ODbL",
+  "osm_p": "Daten © OpenStreetMap contributors, verfügbar unter der Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Die zusammengeführte Datenbank der Punkte, die OpenStreetMap-Daten enthält, ist unter derselben Lizenz auf der Seite „Offene Daten herunterladen“ verfügbar: {download_url}.",
+  "sources_h": "Quellen und Lizenzen",
+  "sources_note": "Aufgeführt sind nur Quellen, die in den aktuellen Daten tatsächlich vorkommen, jeweils mit Lizenz und vorgeschriebener Namensnennung.",
+  "conf_h": "Wie die Zuverlässigkeit berechnet wird",
+  "conf_p": "Jeder Punkt erhält einen Zuverlässigkeitswert von 0 bis 100. Für jedes Ladenetz gilt dieselbe Formel. Der Wert bewertet die Daten zu einem Standort, nicht das Ladenetz oder dessen Service.",
+  "conf_rows": [
+   [
+    "Basiswert nach dem besten Quelltyp",
+    "Amtliches Register oder offene Verwaltungsdaten 70; eigene Prüfung von BlokVolt 65; OpenStreetMap 50; All The Places 45; Open Charge Map 40; Overture (aus All The Places) 40; sonstige 25"
+   ],
+   [
+    "Externe Prüfung",
+    "Ist kein Register unter den Quellen, kann eine externe automatische Prüfung des Datensatzes den Basiswert anheben, jedoch nie über den Wert, den die Prüfung ergibt"
+   ],
+   [
+    "Übereinstimmung der Quellen",
+    "+10, wenn zwei oder mehr Quellen beim Standort übereinstimmen; weitere +5 bei drei oder mehr"
+   ],
+   [
+    "Aktualität",
+    "+10, wenn die letzte Bestätigung in den letzten 12 Monaten liegt; −15, wenn sie älter als 3 Jahre ist"
+   ],
+   [
+    "Länderkonflikt",
+    "−10, wenn die Quellen beim Land voneinander abweichen"
+   ],
+   [
+    "Außer Betrieb oder verdächtige Koordinaten",
+    "Höchstens 20"
+   ],
+   [
+    "Spanne",
+    "Der Wert wird auf 0–100 begrenzt; Standorte unter 40 werden weder auf der Karte noch auf den Seiten angezeigt"
+   ]
+  ],
+  "conf_levels": [
+   [
+    "Hoch",
+    "70–100",
+    "Von einer amtlichen Quelle oder mehreren Quellen bestätigt, kürzlich aktualisiert"
+   ],
+   [
+    "Mittel",
+    "50–69",
+    "Plausibel, aber von weniger Quellen oder nicht kürzlich bestätigt"
+   ],
+   [
+    "Niedrig",
+    "40–49",
+    "Einzelne oder ältere Quelle; vor der Fahrt beim Betreiber nachfragen"
+   ]
+  ],
+  "notes_h": "Hinweise",
+  "notes": [
+   "Die Daten werden ohne Gewähr bereitgestellt, ohne Garantie für Richtigkeit, Verfügbarkeit, Preis oder Kompatibilität. Prüfen Sie die Angaben vor der Fahrt beim Betreiber oder vor Ort.",
+   "Jede Punktkarte zeigt Quelle, Lizenz und Datum der letzten Aktualisierung.",
+   "Namen von Ladenetzen und Marken gehören ihren Inhabern.",
+   "BlokVolt ist weder mit den Betreibern noch mit den Institutionen verbunden, die die Daten veröffentlichen, und diese unterstützen diese Karte nicht.",
+   "Namen von Privatpersonen werden nicht angezeigt; private Wallboxen zu Hause sind nicht auf der Karte.",
+   "Um einen Fehler zu melden oder eine Korrektur oder Entfernung zu beantragen, nutzen Sie die Schaltfläche „Fehler melden“ auf der Punktkarte oder schreiben Sie an {email}. Sie erhalten innerhalb von 30 Tagen eine Antwort."
+  ],
+  "licence_texts_h": "Lizenztexte",
+  "licence_texts": [
+   [
+    "CC BY 4.0",
+    "https://creativecommons.org/licenses/by/4.0/"
+   ],
+   [
+    "CC0 1.0",
+    "https://creativecommons.org/publicdomain/zero/1.0/"
+   ],
+   [
+    "ODbL 1.0",
+    "https://opendatacommons.org/licenses/odbl/1-0/"
+   ],
+   [
+    "Licence Ouverte 2.0",
+    "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+   ],
+   [
+    "CDLA Permissive 2.0",
+    "https://cdla.dev/permissive-2-0/"
+   ],
+   [
+    "Open Government Licence v2.0",
+    "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+   ]
+  ]
+ },
+ "download": {
+  "h1": "Offene Daten herunterladen",
+  "title": "Offene Daten zu Ladepunkten herunterladen | BlokVolt",
+  "description": "Wöchentliche CSV-Datei mit öffentlichen Ladepunkten: Koordinaten, Ladenetz, Leistung, Stecker und Quellen. Kostenlos unter der ODbL-Lizenz.",
+  "lead": "Die öffentliche Ebene der Karte steht als kostenlose CSV-Datei zur Verfügung, die jede Woche aktualisiert wird.",
+  "what_h": "Was die Datei enthält",
+  "what_p": "Ein wöchentlicher CSV-Export der öffentlichen Ebene der Karte: Koordinaten, Ladenetz, Leistung, Stecker und Quellen jedes Standorts. Die Datei enthält OpenStreetMap-Daten und wird daher unter der Open Database License (ODbL) 1.0 veröffentlicht. Preise, eigene Prüfungen und die Korrekturen von BlokVolt für den Balkan sind nicht Teil der Datei.",
+  "fields_h": "Spalten",
+  "fields": [
+   [
+    "pid",
+    "Stabile ID des Standorts"
+   ],
+   [
+    "lat",
+    "Breitengrad (WGS 84)"
+   ],
+   [
+    "lon",
+    "Längengrad (WGS 84)"
+   ],
+   [
+    "country",
+    "Ländercode (ISO 3166-1 alpha-2)"
+   ],
+   [
+    "name",
+    "Name des Standorts"
+   ],
+   [
+    "network",
+    "Name des Ladenetzes oder Betreibers"
+   ],
+   [
+    "max_kw",
+    "Höchste Leistung am Standort, kW"
+   ],
+   [
+    "dc",
+    "1, wenn DC-Schnellladen verfügbar ist, sonst 0"
+   ],
+   [
+    "power_class",
+    "Leistungsklasse des Standorts"
+   ],
+   [
+    "connectors",
+    "Steckertypen, durch Komma getrennt"
+   ],
+   [
+    "points",
+    "Geschätzte Anzahl der Ladepunkte"
+   ],
+   [
+    "access",
+    "Zugangsart (öffentlich, eingeschränkt und Ähnliches)"
+   ],
+   [
+    "sources",
+    "Quellenschlüssel, durch Komma getrennt (siehe Seite „Über die Daten“)"
+   ],
+   [
+    "last_confirmed",
+    "Datum der letzten Bestätigung durch eine beliebige Quelle"
+   ],
+   [
+    "confidence",
+    "Zuverlässigkeitswert 0–100"
+   ]
+  ],
+  "licence_h": "Lizenz",
+  "licence_p": "Die Datei ist unter der ODbL 1.0 verfügbar. Sie dürfen die Daten teilen, daraus Werke erstellen und sie anpassen, sofern Sie „© OpenStreetMap contributors, BlokVolt“ nennen und jede angepasste Datenbank unter derselben Lizenz weitergeben. Halten Sie sie offen: Wenden Sie keine technischen Beschränkungen an, die diese Rechte einschränken. Volltext: https://opendatacommons.org/licenses/odbl/1-0/",
+  "file_h": "Datei",
+  "file_missing": "Die Datei für diese Woche wird gerade vorbereitet. Bitte schauen Sie später noch einmal nach.",
+  "attribution_h": "Namensnennung",
+  "attribution_p": "Wenn Sie die Daten nutzen, zeigen Sie „© OpenStreetMap contributors, BlokVolt“ mit einem Link auf www.openstreetmap.org/copyright und auf diese Seite an und nennen Sie die Lizenz ODbL 1.0. Daten aus anderen Quellen behalten ihre eigene Namensnennung, die auf der Seite „Über die Daten“ aufgeführt ist."
+ },
+ "sources_pages": {
+  "ocm": {
+   "name": "Open Charge Map",
+   "licence": "CC BY 4.0 (Lizenz des Anbieters auf der Punktkarte angegeben)",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Open Charge Map (openchargemap.org), CC BY 4.0",
+   "url": "https://openchargemap.org",
+   "kind": "community"
+  },
+  "osm": {
+   "name": "OpenStreetMap",
+   "licence": "ODbL 1.0",
+   "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+   "attribution": "© OpenStreetMap contributors",
+   "url": "https://www.openstreetmap.org/copyright",
+   "kind": "community"
+  },
+  "afdc": {
+   "name": "U.S. DOE Alternative Fuels Data Center",
+   "licence": "Daten der US-Regierung, für jeden Zweck nutzbar (data.gov: CC0)",
+   "licence_url": "https://afdc.energy.gov/data_download",
+   "attribution": "U.S. Department of Energy, Alternative Fuels Data Center (afdc.energy.gov). Use of this data does not imply endorsement by DOE or NLR.",
+   "url": "https://afdc.energy.gov",
+   "kind": "registry"
+  },
+  "bnetza": {
+   "name": "Bundesnetzagentur — Ladesäulenregister",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Bundesnetzagentur.de (data changed)",
+   "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/E-Mobilitaet/Ladesaeulenkarte/start.html",
+   "kind": "registry"
+  },
+  "atp": {
+   "name": "All The Places",
+   "licence": "CC0 1.0",
+   "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "attribution": "All The Places (alltheplaces.xyz), CC0 1.0",
+   "url": "https://alltheplaces.xyz",
+   "kind": "network_sites"
+  },
+  "ndw": {
+   "name": "NDW — Nationaal Dataportaal Wegverkeer",
+   "licence": "CC0 1.0",
+   "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "attribution": "Bron: NDW (DOT-NL)",
+   "url": "https://opendata.ndw.nu/",
+   "kind": "registry"
+  },
+  "ovt": {
+   "name": "Overture Maps Foundation (Orte)",
+   "licence": "CDLA Permissive 2.0",
+   "licence_url": "https://cdla.dev/permissive-2-0/",
+   "attribution": "Overture Maps Foundation (overturemaps.org); data from Microsoft, PinMeTo, DAC, BrightQuery, Uberall",
+   "url": "https://overturemaps.org",
+   "kind": "network_sites"
+  },
+  "irve": {
+   "name": "Base nationale des IRVE (data.gouv.fr)",
+   "licence": "Licence Ouverte 2.0 (Etalab)",
+   "licence_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+   "attribution": "data.gouv.fr — Base nationale des IRVE (mise à jour : {date})",
+   "url": "https://transport.data.gouv.fr/datasets/base-nationale-des-irve-data-gouv-infrastructures-de-recharge-pour-vehicules-electriques-donnees-statiques",
+   "kind": "registry"
+  },
+  "ovt_atp": {
+   "name": "All The Places über Overture Maps Foundation",
+   "licence": "CC0 1.0 (über Overture Maps Foundation)",
+   "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "attribution": "Data from AllThePlaces via Overture Maps Foundation",
+   "url": "https://docs.overturemaps.org/attribution/",
+   "kind": "network_sites"
+  },
+  "miteco": {
+   "name": "MITECO — puntos de recarga",
+   "licence": "Nutzungsbedingungen von MITECO (nicht CC BY)",
+   "licence_url": "https://www.datosabiertos.miteco.gob.es/en/aviso-legal.html",
+   "attribution": "Origen de los datos: Ministerio para la Transición Ecológica y el Reto Demográfico (actualización: {date})",
+   "url": "https://catalogo.datosabiertos.miteco.gob.es/",
+   "kind": "registry"
+  },
+  "gb": {
+   "name": "Offene Daten britischer Ladepunktbetreiber (Public Charge Point Regulations 2023)",
+   "licence": "Offene Daten gemäß The Public Charge Point Regulations 2023, Reg. 10",
+   "licence_url": "https://www.legislation.gov.uk/uksi/2023/1168/regulation/10",
+   "attribution": "Open data published under The Public Charge Point Regulations 2023 by Char.gy, Monta, Connected Kerb, MFG EV Power, GeniePoint, Mer",
+   "url": "https://www.legislation.gov.uk/uksi/2023/1168/regulation/10",
+   "kind": "registry"
+  },
+  "kr": {
+   "name": "KEPCO — 전기차충전소위경도 (data.go.kr)",
+   "licence": "공공데이터포털 이용허락범위 제한 없음 (keine Einschränkung)",
+   "licence_url": "https://www.data.go.kr/data/15102458/fileData.do",
+   "attribution": "출처: 한국전력공사 (KEPCO), 공공데이터포털 (data.go.kr)",
+   "url": "https://www.data.go.kr/data/15102458/fileData.do",
+   "kind": "registry"
+  },
+  "digitraffic": {
+   "name": "Fintraffic / Digitraffic AFIR",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Source: Fintraffic / digitraffic.fi, license CC 4.0 BY",
+   "url": "https://afir.digitraffic.fi/",
+   "kind": "registry"
+  },
+  "be_wal": {
+   "name": "SPW Mobilité et Infrastructures — bornes de recharge en Wallonie",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Service public de Wallonie (SPW), CC BY 4.0",
+   "url": "https://geoportail.wallonie.be/catalogue/c731a282-e378-49f3-8ab6-f9a90e7a5683.html",
+   "kind": "registry",
+   "licence_from": "db"
+  },
+  "gr": {
+   "name": "Ministerium für Infrastruktur und Verkehr (MYFAH), data.gov.gr",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Υπουργείο Υποδομών και Μεταφορών (ΜΥΦΑΗ), data.gov.gr, CC BY 4.0",
+   "url": "https://data.gov.gr/dataset/dimosios-prosvasima-simeia-fortisis",
+   "kind": "registry"
+  },
+  "lta": {
+   "name": "Land Transport Authority — DataMall",
+   "licence": "Singapore Open Data Licence v1.0",
+   "licence_url": "https://data.gov.sg/open-data-licence",
+   "attribution": "Contains information from EV Charging Points accessed on {date} from LTA DataMall which is made available under the terms of the Singapore Open Data Licence version 1.0",
+   "url": "https://datamall.lta.gov.sg/",
+   "kind": "registry"
+  },
+  "cz_mpo": {
+   "name": "Register des MPO ČR (Statutární město Brno, data.gov.cz)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Statutární město Brno, CC BY 4.0",
+   "url": "https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2F44992785%2F86ea2ee70870ed560996b293d8472369",
+   "kind": "registry"
+  },
+  "au_nsw": {
+   "name": "Transport for NSW — EV Charging Locations",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Source: Transport for NSW, CC BY 4.0",
+   "url": "https://opendata.transport.nsw.gov.au/data/dataset/ev-charging-locations",
+   "kind": "registry"
+  },
+  "be_bxl": {
+   "name": "Ville de Bruxelles — bornes de recharge (opendata.brussels.be)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Ville de Bruxelles / Data Management, CC BY 4.0",
+   "url": "https://opendata.brussels.be/explore/dataset/bornes-de-recharge-pour-voitures-electriques-rbc/",
+   "kind": "registry",
+   "licence_from": "db"
+  },
+  "lt": {
+   "name": "AB Via Lietuva — nationales Register der Ladepunkte",
+   "licence": "CC BY 4.0 / ODC-BY 1.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "AB Via Lietuva (ev.vialietuva.lt), CC BY 4.0",
+   "url": "https://ev.vialietuva.lt/en/data-provision",
+   "kind": "registry",
+   "licence_from": "db"
+  },
+  "hk": {
+   "name": "Environmental Protection Department, HKSAR (DATA.GOV.HK)",
+   "licence": "DATA.GOV.HK Terms and Conditions v1.2",
+   "licence_url": "https://data.gov.hk/en/terms-and-conditions",
+   "attribution": "Source: Environmental Protection Department, HKSAR Government, via DATA.GOV.HK",
+   "url": "https://data.gov.hk/en-data/dataset/hk-epd-evcpateam-evc-1",
+   "kind": "registry"
+  },
+  "it_odh": {
+   "name": "Open Data Hub (NOI Techpark, South Tyrol)",
+   "licence": "CC0 1.0",
+   "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "attribution": "Open Data Hub (opendatahub.com), CC0 1.0",
+   "url": "https://opendatahub.com/",
+   "kind": "registry",
+   "licence_from": "db"
+  },
+  "nz": {
+   "name": "Waka Kotahi NZ Transport Agency — EVRoam",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Waka Kotahi NZ Transport Agency (EVRoam), CC BY 4.0",
+   "url": "https://catalogue.data.govt.nz/dataset/ev-roam-charging-stations3",
+   "kind": "registry"
+  },
+  "lu": {
+   "name": "Géoportail Luxembourg — Ladestationen (Chargy)",
+   "licence": "CC0 1.0",
+   "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "attribution": "Administration du cadastre et de la topographie (Géoportail Luxembourg), CC0 1.0",
+   "url": "https://data.public.lu/en/datasets/inspire-annex-i-theme-transport-networks-roads-roadnode-electrical-charging-stations/",
+   "kind": "registry",
+   "licence_from": "db"
+  },
+  "ie": {
+   "name": "ESB ecars — öffentliches Ladenetz (data.gov.ie)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Source: ESB, data.gov.ie, CC BY 4.0",
+   "url": "https://data.gov.ie/dataset/esb-ev-public-charging-network",
+   "kind": "registry"
+  },
+  "au_vic": {
+   "name": "Victoria DEECA — staatlich geförderte öffentliche Ladesäulen",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "© State of Victoria (DEECA), CC BY 4.0",
+   "url": "https://discover.data.vic.gov.au/dataset/government-funded-public-ev-chargers",
+   "kind": "registry"
+  },
+  "mobie": {
+   "name": "Câmara Municipal de Lisboa — postos de carregamento Mobi.E (dados.gov.pt)",
+   "licence": "siehe Quelle",
+   "licence_url": "https://dados.gov.pt/datasets/postos-de-carregamento-mobi-e",
+   "attribution": "Fonte: Câmara Municipal de Lisboa",
+   "url": "https://dados.gov.pt/datasets/postos-de-carregamento-mobi-e",
+   "kind": "registry",
+   "unverified": true
+  },
+  "au_qld": {
+   "name": "Queensland Department of Transport and Main Roads",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "© State of Queensland (Department of Transport and Main Roads), CC BY 4.0",
+   "url": "https://www.data.qld.gov.au/dataset/find-a-charging-station-electric-vehicle",
+   "kind": "registry"
+  },
+  "blokvolt": {
+   "name": "Eigene Prüfung von BlokVolt",
+   "licence": "siehe Quelle",
+   "licence_url": "https://www.blokvolt.rs/mapa/",
+   "attribution": "BlokVolt",
+   "url": "https://www.blokvolt.rs/mapa/",
+   "kind": "own",
+   "unverified": true
+  }
+ }
+}
