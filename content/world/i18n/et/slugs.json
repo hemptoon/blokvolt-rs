@@ -1,0 +1,13 @@
+{
+ "home": "/et/",
+ "map": "/et/kaart/",
+ "hub": "/et/laadimisjaamad/",
+ "net": "vork",
+ "about": "andmetest",
+ "download": "laadi-alla",
+ "gnet": "/et/laadimisvorgud/",
+ "prices": "/et/laadimishinnad/",
+ "shell_about": "/et/teave/",
+ "sources": "/et/allikad/",
+ "methodology": "/et/metoodika/"
+}
