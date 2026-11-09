@@ -341,14 +341,22 @@ async def copies(pg, evo, tag, mob):
     lon, lat = pos[DUP]
     pins = f'''(() => {{ const m = {M(evo)}, o = {{}}; m.queryRenderedFeatures({{layers: ['pt']}}).forEach(f => {{
         if ({js_ids}.includes(f.properties.id)) {{ const p = m.project(f.geometry.coordinates); o[f.properties.id] = [p.x, p.y]; }} }}); return o; }})()'''
+    ctr = None
     for z in (12, 16, 17, 18):
         # the group in the middle of the view (the country view's tiles round the coordinates, so centre on the drawn pins)
         await pg.evaluate(f'{M(evo)}.jumpTo({{center: [{lon}, {lat}], zoom: {z}}})')
         await settle(pg, evo)
         xy = await pg.evaluate(pins)
+        if len(xy) < 3 and ctr:
+            # the direction two copies at one point are pushed apart depends on the pair's index in the whole list (spread() in
+            # map.js), so a charger added or removed anywhere turns it; when a copy is out of view, centre on the group's middle
+            # from the previous zoom (MAPFIX 09.11.2026)
+            await pg.evaluate(f'{M(evo)}.jumpTo({{center: [{ctr[0]}, {ctr[1]}], zoom: {z}}})')
+            await settle(pg, evo)
+            xy = await pg.evaluate(pins)
         if len(xy) == 3:
             cx, cy = sum(v[0] for v in xy.values()) / 3, sum(v[1] for v in xy.values()) / 3
-            await pg.evaluate(f'(() => {{ const m = {M(evo)}; m.jumpTo({{center: m.unproject([{cx}, {cy}]), zoom: {z}}}); }})()')
+            ctr = await pg.evaluate(f'(() => {{ const m = {M(evo)}, c = m.unproject([{cx}, {cy}]); m.jumpTo({{center: c, zoom: {z}}}); return [c.lng, c.lat]; }})()')
             await settle(pg, evo)
             xy = await pg.evaluate(pins)
         if z == 12:

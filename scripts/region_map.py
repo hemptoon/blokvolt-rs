@@ -16,7 +16,12 @@ name the same network, otherwise within 60 m (100 m with the same name) with the
 Networks are recognised by country-specific rules on the name, operator, brand and network fields (NETS below).
 Nothing here is verified by hand: every station carries v = {'s': 'src'} (from the open databases, not checked one by one).
 
-Usage: python3 scripts/region_map.py [--fetch] [CC ...]      (default: HR BA ME AL XK MK)"""
+Hand corrections (RUNBOOK 3.23b): content/region/ispravke.json is applied to every list this script writes — remove /
+patch / add, each with its source and date. They survive the monthly refresh of region-data and the hourly build of
+blokvolt.com. A correction whose station is not in the new data prints a warning and is skipped, never an error.
+
+Usage: python3 scripts/region_map.py [--fetch] [CC ...]      (default: HR BA ME AL XK MK)
+       python3 scripts/region_map.py --fixes-only [CC ...]   apply ispravke.json to the committed lists, no merge (no cache needed)"""
 import json
 import math
 import re
@@ -30,6 +35,8 @@ CACHE = ROOT / 'content' / 'com' / 'region-data'
 LOCAL = ROOT / 'content' / 'com' / 'local'
 RAW = 'https://raw.githubusercontent.com/hemptoon/blokvolt-rs/region-data/'
 COUNTRIES = ['HR', 'BA', 'ME', 'AL', 'XK', 'MK']
+FIXES = ROOT / 'content' / 'region' / 'ispravke.json'
+FIX_KEYS = {'n', 'a', 't', 'lat', 'lon', 'net', 'opn', 'c', 'dc', 'ac', 'acc', 'v', 'al'}
 
 SAME_SRC_M = 40
 DUP_M = 60
@@ -465,6 +472,86 @@ def station(cc, o, s, when):
     return st
 
 
+def rec_ids(st):
+    """The station's own id and the ids of every record merged into it (from its source URLs): a correction written for
+    an OSM node still finds the site after a monthly merge has named it by its OCM record, and the other way round."""
+    ids = {st['id']}
+    for x in st.get('src') or []:
+        u = x.get('u') or ''
+        m = re.search(r'openstreetmap\.org/(node|way|relation)/(\d+)', u)
+        if m:
+            ids.add(f'osm-{m.group(1)[0]}{m.group(2)}')
+        m = re.search(r'openchargemap\.org/site/poi/details/(\d+)', u)
+        if m:
+            ids.add(f'ocm-{m.group(1)}')
+    return ids
+
+
+def load_fixes():
+    if not FIXES.exists():
+        return []
+    fixes = json.loads(FIXES.read_text(encoding='utf-8'))['fixes']
+    for f in fixes:
+        bad = set(f.get('set', {})) - FIX_KEYS
+        if f.get('action') not in ('remove', 'patch', 'add') or bad or not f.get('source_url') or not f.get('checked'):
+            raise SystemExit(f'ispravke.json: bad entry {f.get("cc")} {f.get("id")} (action, keys {sorted(bad)}, source_url, checked)')
+    return fixes
+
+
+def apply_fixes(cc, stations, fixes=None):
+    """Applies content/region/ispravke.json to one country's list in place order; returns (stations, counts)."""
+    fixes = [f for f in (load_fixes() if fixes is None else fixes) if f['cc'] == cc]
+    n = {'remove': 0, 'patch': 0, 'add': 0, 'warn': 0}
+    if not fixes:
+        return stations, n
+
+    def find(sid):
+        return next((s for s in stations if sid in rec_ids(s)), None)
+
+    for f in fixes:
+        st = find(f['id'])
+        if f['action'] == 'remove':
+            if not st:
+                n['warn'] += 1
+                print(f'{cc}: ispravke.json: remove {f["id"]} — station not in the data any more (skipped)')
+                continue
+            if f.get('dup_of'):
+                keep = find(f['dup_of'])
+                if not keep:
+                    n['warn'] += 1
+                    print(f'{cc}: ispravke.json: remove {f["id"]} — the record it duplicates ({f["dup_of"]}) is gone, kept (skipped)')
+                    continue
+                if keep is st:   # the monthly merge already joined them
+                    continue
+            stations = [s for s in stations if s is not st]
+            n['remove'] += 1
+        elif f['action'] == 'patch' or (f['action'] == 'add' and st):
+            if not st:
+                n['warn'] += 1
+                print(f'{cc}: ispravke.json: patch {f["id"]} — station not in the data any more (skipped)')
+                continue
+            sets = f.get('set') if f['action'] == 'patch' else {k: v for k, v in f['station'].items() if k in FIX_KEYS - {'lat', 'lon'}}
+            for k, v in sets.items():
+                st[k] = json.loads(json.dumps(v))
+            have = {json.dumps(x, sort_keys=True) for x in st.get('src') or []}
+            for x in (f.get('src') or []) + ([y for y in f['station'].get('src', []) if y.get('d') not in ('osm', 'ocm')] if f['action'] == 'add' else []):
+                if json.dumps(x, sort_keys=True) not in have:
+                    st.setdefault('src', []).append(x)
+            n['patch'] += 1
+        else:   # add: never next to a site already on the list (that one is kept; check the correction by hand)
+            new = f['station']
+            pt = {'latitude': new['lat'], 'longitude': new['lon']}
+            gap = lambda s: dist_m({'latitude': s['lat'], 'longitude': s['lon']}, pt)
+            near = min(stations, key=gap, default=None)
+            if near and gap(near) < DUP_M:
+                n['warn'] += 1
+                print(f'{cc}: ispravke.json: add {f["id"]} — {near["id"]} is within {DUP_M} m (skipped)')
+                continue
+            stations.append(json.loads(json.dumps(new)))
+            n['add'] += 1
+    return stations, n
+
+
 def fmt_date(iso):
     if not iso or len(iso) < 10:
         return None
@@ -493,6 +580,7 @@ def build(cc):
     osm, ocm = osm_records(cc, osm_j), ocm_records(cc, ocm_j, ref)
     pairs = merge(ocm, osm)
     stations = [station(cc, o, s, when) for o, s in pairs]
+    stations, nfix = apply_fixes(cc, stations)
     stations.sort(key=lambda x: (fold(x['t']), fold(x['n']), x['id']))
     out = {
         'about': f'Public EV chargers in {cc}: OpenStreetMap and Open Charge Map merged by BlokVolt (scripts/region_map.py). '
@@ -510,6 +598,7 @@ def build(cc):
     for s in stations:
         by_net[s['net'] or '-'] = by_net.get(s['net'] or '-', 0) + 1
     fast = sum(1 for s in stations if (s['dc'] or 0) >= 50)
+    print(f'{cc}: hand corrections: removed {nfix["remove"]}, changed {nfix["patch"]}, added {nfix["add"]}, warnings {nfix["warn"]}')
     print(f'{cc}: {len(stations)} stations (OSM {len(osm)}, OCM {len(ocm)}; DC ≥ 50 kW {fast}); networks {dict(sorted(by_net.items(), key=lambda x: -x[1]))}')
     return out
 
@@ -517,6 +606,18 @@ def build(cc):
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith('--')]
     countries = [a.upper() for a in args] or COUNTRIES
+    if '--fixes-only' in sys.argv:
+        for cc in countries:
+            path = LOCAL / cc.lower() / 'stanice.json'
+            d = json.loads(path.read_text(encoding='utf-8'))
+            before = len(d['stations'])
+            d['stations'], nfix = apply_fixes(cc, d['stations'])
+            d['stations'].sort(key=lambda x: (fold(x['t']), fold(x['n']), x['id']))
+            d['counts']['stations'] = len(d['stations'])
+            path.write_text(json.dumps(d, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+            print(f'{cc}: {before} → {len(d["stations"])} stations; hand corrections: removed {nfix["remove"]}, changed {nfix["patch"]}, '
+                  f'added {nfix["add"]}, warnings {nfix["warn"]}')
+        return
     if '--fetch' in sys.argv:
         for cc in countries:
             fetch(cc)
