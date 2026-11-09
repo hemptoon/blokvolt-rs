@@ -447,6 +447,20 @@ async function adminDecide(request, env) {
       'img = CASE WHEN ?1 = \'no\' THEN X\'\' ELSE img END, th = CASE WHEN ?1 = \'no\' THEN NULL ELSE th END WHERE id = ?2').bind(ok ? 'ok' : 'no', b.id).run();
   } else if (b.t === 'c' && Number.isInteger(b.id)) {
     await env.DB.prepare('UPDATE checkins SET cs = ?1, rep = CASE WHEN ?1 = \'ok\' THEN 0 ELSE rep END WHERE id = ?2').bind(ok ? 'ok' : 'hidden', b.id).run();
+  } else if (b.t === 'n' && Number.isInteger(b.id) && b.a === 'spoji') {
+    // a driver's charger that is already on the map under another id (RUNBOOK 3.11d, 09.11.2026): its photo, reports and
+    // facts move to that station and the photo is published there; the driver's copy is not shown (status 'spojen')
+    const to = String(b.to || '');
+    if (!/^[a-z0-9-]{3,80}$/.test(to) || to.startsWith('vz-') || !(await stationIds(env, request)).has(to)) return bad('to');
+    await ensureNovi(env);
+    const vz = 'vz-' + b.id;
+    await env.DB.batch([
+      env.DB.prepare(`UPDATE photos SET st = ?1, status = 'ok', rep = 0 WHERE st = ?2 AND status IN ('pending', 'ok')`).bind(to, vz),
+      env.DB.prepare('UPDATE checkins SET st = ?1 WHERE st = ?2').bind(to, vz),
+      env.DB.prepare(`UPDATE novi SET status = 'spojen', ok_at = ?1 WHERE id = ?2`).bind(now(), b.id),
+    ]);
+    try { await env.DB.prepare('UPDATE facts SET st = ?1 WHERE st = ?2').bind(to, vz).run(); } catch (e) { /* no facts table yet */ }
+    try { await caches.default.delete(new Request(new URL(request.url).origin + '/api/novi-punjaci?c=' + Math.floor(Date.now() / 60000))); } catch (e) { /* cache off */ }
   } else if (b.t === 'n' && Number.isInteger(b.id)) {
     // a new charger from a driver: 'ok' puts it on the map, 'no' rejects it (also later, to take it off) with its waiting photo
     await ensureNovi(env);

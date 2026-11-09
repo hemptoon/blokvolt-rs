@@ -11,6 +11,10 @@ modified: 2026-10-29
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 9. novembar 2026
+
+- [Mapa punjača](/mapa/): kartica [Garaža Modena](/mapa/#bp-garaza-modena-novi-sad) u Novom Sadu sada ima priključke i cenu: osam punjača Tip 2 na nivou -1, utičnica bez kabla (ponesite svoj kabl), 60 RSD/kWh sa PDV-om po cenovniku u garaži (provera na licu mesta 2. novembra). Punjenje se pokreće parking karticom na „e-selektoru“, a plaća na blagajni pre izlaska, zajedno sa parkingom. I kod garaže Banovina cena 60 RSD/kWh sada stoji u delu „Cena“ kartice.
+
 ## 29. oktobar 2026
 
 - Novi vodič [Predgrevanje baterije pred brzo punjenje](/javno-punjenje/predgrevanje-baterije-pred-brzo-punjenje/): kako se grejanje baterije uključuje kod Tesle, VW-a, Škode, Hyundaija, Kie i Renaulta, koji stariji modeli ga nemaju i zašto zimi topla baterija na punjačima sa naplatom po minutu znači jeftiniji kilovat-sat.

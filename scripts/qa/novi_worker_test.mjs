@@ -151,6 +151,27 @@ const after = await db.prepare('SELECT status FROM novi WHERE id = ?1').bind(row
 const phAfter = await db.prepare('SELECT status FROM photos WHERE id = ?1').bind(row.foto).first();
 check(after.status === 'no' && phAfter.status === 'no', 'rejecting it later takes it off and rejects its waiting photo', [after, phAfter]);
 
+// a driver's charger that is already on the map (09.11.2026): „Spoji sa…“ moves its photo and reports to that station and
+// publishes the photo there; the driver's copy never shows as a second point
+const f2 = form({ n: 'Garaža duplikat' });
+f2.append('foto', new Blob([jpeg(5000)], { type: 'image/jpeg' }), 'foto.jpg');
+f2.append('thumb', new Blob([jpeg(800)], { type: 'image/jpeg' }), 'thumb.jpg');
+r = await call('POST', '/api/novi-punjac', { form: f2, ip: '10.8.8.8' });
+const dup = await db.prepare('SELECT * FROM novi ORDER BY id DESC LIMIT 1').first();
+r = await call('POST', '/api/admin/odluka', { json: { t: 'n', id: dup.id, a: 'spoji', to: 'nema-takvog' }, bearer: ADMIN });
+check(r.status === 400, 'merge into a station that is not on the map: refused', r);
+r = await call('POST', '/api/admin/odluka', { json: { t: 'n', id: dup.id, a: 'spoji', to: 'vz-' + row.id }, bearer: ADMIN });
+check(r.status === 400, 'merge into another driver charger: refused', r);
+r = await call('POST', '/api/admin/odluka', { json: { t: 'n', id: dup.id, a: 'spoji', to: 'cg-65' }, bearer: ADMIN });
+check(r.status === 200 && r.j.ok, 'merge into a map station', r);
+const mrg = await db.prepare('SELECT status FROM novi WHERE id = ?1').bind(dup.id).first();
+const mph = await db.prepare('SELECT st, status FROM photos WHERE id = ?1').bind(dup.foto).first();
+check(mrg.status === 'spojen' && mph.st === 'cg-65' && mph.status === 'ok', 'the copy is merged, its photo is published on the station', [mrg, mph]);
+r = await call('GET', '/api/novi-punjaci?x=2');
+check(!r.j.st.some(x => x.id === 'vz-' + dup.id), 'the merged copy is not in the public list');
+r = await call('GET', '/api/stanica/cg-65');
+check(r.status === 200 && r.j && (r.j.photos || r.j.ph || []).some(p => p.id === dup.foto), 'the station card lists the driver photo', r.j);
+
 await mf.dispose();
 console.log(`\n${oks} ok, ${fails} FAIL`);
 process.exit(fails ? 1 : 0);

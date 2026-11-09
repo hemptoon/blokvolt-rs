@@ -39,7 +39,7 @@ select{font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--l
 <div class="bar"><input id="key" type="password" placeholder="ADMIN_KEY" autocomplete="off"><button id="load" type="button">Učitaj red</button></div>
 <div id="msg"></div>
 <h2>Novi punjači od vozača</h2>
-<p class="meta">Objavljuju se kao „Nije potvrđeno“. Pre objave proverite tačku na mapi i da punjač nije već na mapi (link „na našoj mapi“). Fotografija uz punjač čeka i u redu fotografija. „Odbij“ kasnije skida i već objavljen punjač (pošaljite isti id).</p>
+<p class="meta">Objavljuju se kao „Nije potvrđeno“. Pre objave proverite tačku na mapi i da punjač nije već na mapi (link „na našoj mapi“). Fotografija uz punjač čeka i u redu fotografija. „Odbij“ kasnije skida i već objavljen punjač (pošaljite isti id). Ako je punjač već na mapi, „Spoji sa…“ prebacuje fotografiju i prijave vozača na taj punjač i objavljuje fotografiju tamo, bez drugog punjača na mapi.</p>
 <div id="novi"></div>
 <h2>Fotografije na čekanju</h2><div id="photos" class="grid"></div>
 <h2>Komentari na čekanju</h2><div id="comments"></div>
@@ -56,8 +56,22 @@ select{font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--l
   var when = function (t) { return new Date(t * 1000).toLocaleString('sr-Latn-RS'); };
   try { $('key').value = sessionStorage.getItem('bvkey') || ''; } catch (e) {}
   function hdr() { return { 'authorization': 'Bearer ' + $('key').value.trim(), 'content-type': 'application/json' }; }
-  function decide(t, id, a, el) {
-    fetch('/api/admin/odluka', { method: 'POST', headers: hdr(), body: JSON.stringify({ t: t, id: id, a: a }) })
+  // stations of the map, for „Spoji sa…“: a driver's charger that is already on the map within 400 m
+  var MAP = null;
+  function mapStations() {
+    if (MAP) return MAP;
+    MAP = Promise.all(['/assets/map/punjaci.json', '/assets/map/mreze.json'].map(function (u) { return fetch(u).then(function (r) { return r.json(); }).catch(function () { return {}; }); }))
+      .then(function (a) { return (a[0].stations || []).concat(a[1].add || []); });
+    return MAP;
+  }
+  function near(list, lat, lon) {
+    return list.map(function (s) {
+      var dy = (s.lat - lat) * 111195, dx = (s.lon - lon) * 111195 * Math.cos(lat * Math.PI / 180);
+      return { s: s, m: Math.round(Math.sqrt(dx * dx + dy * dy)) };
+    }).filter(function (x) { return x.m <= 400; }).sort(function (a, b) { return a.m - b.m; }).slice(0, 3);
+  }
+  function decide(t, id, a, el, to) {
+    fetch('/api/admin/odluka', { method: 'POST', headers: hdr(), body: JSON.stringify({ t: t, id: id, a: a, to: to }) })
       .then(function (r) { return r.json(); })
       .then(function (j) { if (j.ok) { el.style.opacity = .35; el.querySelectorAll('button').forEach(function (b) { b.disabled = true; }); } else $('msg').textContent = 'Greška: ' + j.error; });
   }
@@ -82,6 +96,17 @@ select{font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--l
           '<div class="bar" style="margin-top:8px"><button class="ok" type="button">Objavi</button><button class="no" type="button">Odbij</button></div>';
         d.querySelector('.ok').onclick = function () { decide('n', n.id, 'ok', d); };
         d.querySelector('.no').onclick = function () { decide('n', n.id, 'no', d); };
+        // already on the map nearby: merge into that station (the photo is published there, no second point)
+        mapStations().then(function (list) {
+          var bar = d.querySelector('.bar');
+          near(list, n.lat, n.lon).forEach(function (x) {
+            var b = document.createElement('button'); b.type = 'button';
+            b.textContent = 'Spoji sa: ' + (x.s.n || x.s.id) + ' (' + x.m + ' m)';
+            b.title = x.s.id + ' — fotografija i prijave prelaze na taj punjač, drugi punjač se ne prikazuje';
+            b.onclick = function () { decide('n', n.id, 'spoji', d, x.s.id); };
+            bar.appendChild(b);
+          });
+        });
         $('novi').appendChild(d);
       });
       $('photos').innerHTML = j.photos.length ? '' : '<p class="empty">Nema.</p>';

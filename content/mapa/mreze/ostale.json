@@ -45,7 +45,7 @@
    "c": [["ccs2", "dc", 120, 2]], "loc": {"q": "net"}},
 
   {"k": "bp", "id": "bp-garaza-modena-novi-sad", "n": "Garaža Modena", "a": "Modene bb, Novi Sad", "lat": 45.254008, "lon": 19.847813, "opn": "Best in Parking",
-   "c": [["type2", "ac", null, 8]], "loc": {"q": "net", "venue": "Javna garaža Modena", "find": "Osam punjača u nizu uz zid, mesta su obeležena zelenom bojom."},
+   "c": [["type2", "ac", null, 8]], "loc": {"q": "net", "venue": "Javna garaža Modena", "find": "Nivo -1: osam punjača u nizu uz zid, mesta su obeležena zelenom bojom."},
    "u": "https://www.bestinparking.com/en/rs/garage/garage-modena",
    "ax": {"who": "all", "how": "card-desk", "t": "Pokreće se parking karticom na e-selektoru"},
    "cab": {"own": true, "src": "provera na licu mesta", "d": "02.11.2026"},

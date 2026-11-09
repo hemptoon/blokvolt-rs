@@ -752,8 +752,11 @@ stations `vz-<id>`: „Nije potvrđeno“ with „Dodato <date>“, the driver's
 pronalazi“ in „Gde tačno“. Reports, ratings, photos and short answers work on approved ones (`noviOk`). Moderation: the
 section „Novi punjači od vozača“ on /admin/ (links: OSM, Google, `/mapa/?ll=<lat>,<lon>` — our map at zoom 17); `t: 'n'`
 in `/api/admin/odluka`, `no` also takes an approved one off later. When a network's list, a check on the spot or recent
-reports confirm a driver's charger, add it to the static data (`content/mapa/dopune.json` or a network list) and reject
-the `vz-` copy so it is not shown twice. Tests: `scripts/qa/novi_worker_test.mjs` (Miniflare), `scripts/qa/novi_ui_test.py`.
+reports confirm a driver's charger, add it to the static data (`content/mapa/dopune.json` or a network list) and merge
+the `vz-` copy into that station with „Spoji sa: <station> (<m> m)“ (offered for map stations within 400 m; since
+09.11.2026): `{t: 'n', a: 'spoji', to: <station id>}` moves its photo (published), reports and facts to the station and
+sets the copy to `spojen`, so the driver's contribution stays visible and the place is not shown twice. „Odbij“ is only
+for a wrong or fake charger: it deletes the waiting photo. Tests: `scripts/qa/novi_worker_test.mjs` (Miniflare), `scripts/qa/novi_ui_test.py`.
 Events: `map_add_start`, `map_add_sent`, `map_add_dup`.
 
 #### 3.11e Other lists: networks' apps, garage operators, owners' sites (`content/mapa/mreze/ostale.json`)
