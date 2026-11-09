@@ -1,0 +1,13 @@
+{
+ "home": "/bg/",
+ "map": "/bg/karta/",
+ "hub": "/bg/zaryadni-stantsii/",
+ "net": "mrezha",
+ "about": "za-dannite",
+ "download": "izteglyane",
+ "gnet": "/bg/zaryadni-mrezhi/",
+ "prices": "/bg/tseni-za-zaryazhdane/",
+ "shell_about": "/bg/za-blokvolt/",
+ "sources": "/bg/iztochnitsi/",
+ "methodology": "/bg/metodologiya/"
+}
