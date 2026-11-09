@@ -1,6 +1,6 @@
 /* blokvolt.com — additions to the design system of www.blokvolt.rs (bv.css). Local sections /hr/ /ba/ /me/ and the English pages. */
 .logo .loc-tag{font-size:11px;font-weight:750;letter-spacing:.06em;background:var(--volt);color:var(--vink);border-radius:6px;padding:3px 6px;margin-left:2px}
-.kick{font-size:13px;font-weight:650;letter-spacing:.04em;text-transform:uppercase;color:var(--voltd);margin:0 0 8px}
+.kick{font-size:13px;font-weight:650;letter-spacing:.04em;text-transform:uppercase;color:#58700D;margin:0 0 8px}
 .ph .ph-chips{margin-top:14px;flex-wrap:wrap}
 .ph .ph-chips .chip{text-decoration:none}
 .ph .ph-actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
