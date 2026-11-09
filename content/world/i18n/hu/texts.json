@@ -1,0 +1,175 @@
+{
+ "about_data": {
+  "h1": "A térkép adatairól",
+  "title": "A töltőtérkép adatai: források, licencek, megbízhatóság | BlokVolt",
+  "description": "Honnan származnak a töltőtérkép adatai, milyen licencek alapján használhatók, és hogyan számítható ki az egyes pontok megbízhatósága.",
+  "lead": "A térkép nyílt adatokból készül, és minden pontnál látható, honnan származik.",
+  "intro": "A térkép számos forrás nyílt adatait egyesíti: hivatalos nyilvántartásokat, kormányzati nyílt adatokat, az OpenStreetMapet, az Open Charge Mapet és az üzemeltetők saját helyszínoldalait. A rekordok összevonásra, tisztításra és módosításra kerülnek, ezért egy pont a térképen eltérhet az eredeti rekordtól. Minden hálózatra ugyanazok a szabályok vonatkoznak. A térkép nem értékeli a hálózatokat és az üzemeltetőket.",
+  "osm_h": "Az OpenStreetMap és az ODbL",
+  "osm_p": "Adatok © az OpenStreetMap közreműködői, az Open Database License (ODbL) 1.0 alapján — www.openstreetmap.org/copyright. A pontok OpenStreetMap-adatokat tartalmazó, összevont adatbázisa ugyanezen licenc alapján érhető el a „Nyílt adatok letöltése” oldalon: {download_url}.",
+  "sources_h": "Források és licencek",
+  "sources_note": "Csak azok a források szerepelnek itt, amelyek ténylegesen megjelennek az aktuális adatokban, mindegyik a licencével és a kötelező forrásmegjelöléssel.",
+  "conf_h": "Hogyan számítható ki a megbízhatóság",
+  "conf_p": "Minden pont 0 és 100 közötti megbízhatósági értéket kap. Minden hálózatra ugyanaz a képlet vonatkozik. Az érték a helyszínre vonatkozó adatokat minősíti, nem a hálózatot vagy annak szolgáltatását.",
+  "conf_rows": [
+   [
+    "Alapérték a legjobb forrástípus szerint",
+    "Hivatalos nyilvántartás vagy kormányzati nyílt adat 70; a BlokVolt saját ellenőrzése 65; OpenStreetMap 50; All The Places 45; Open Charge Map 40; Overture (az All The Places alapján) 40; egyéb 25"
+   ],
+   [
+    "Független ellenőrzés",
+    "Ha a források között nincs nyilvántartás, a rekord független automatikus ellenőrzése megemelheti az alapértéket, de soha nem az ellenőrzés által adott érték fölé"
+   ],
+   [
+    "Források egyezése",
+    "+10, ha két vagy több forrás egyezik a helyszínt illetően; további +5 három vagy több forrás esetén"
+   ],
+   [
+    "Frissesség",
+    "+10, ha az utolsó megerősítés az elmúlt 12 hónapon belül történt; −15, ha 3 évnél régebbi"
+   ],
+   [
+    "Országeltérés",
+    "−10, ha a források nem egyeznek az ország tekintetében"
+   ],
+   [
+    "Nem működik, vagy gyanúsak a koordináták",
+    "Legfeljebb 20"
+   ],
+   [
+    "Tartomány",
+    "Az érték 0–100 közé van korlátozva; a 40 alatti helyszínek nem jelennek meg a térképen és az oldalakon"
+   ]
+  ],
+  "conf_levels": [
+   [
+    "Magas",
+    "70–100",
+    "Hivatalos forrás vagy több forrás erősíti meg, nemrég frissült"
+   ],
+   [
+    "Közepes",
+    "50–69",
+    "Valószínű, de kevesebb forrás erősíti meg, vagy nem a közelmúltban"
+   ],
+   [
+    "Alacsony",
+    "40–49",
+    "Egyetlen vagy régebbi forrás; indulás előtt érdemes egyeztetni az üzemeltetővel"
+   ]
+  ],
+  "notes_h": "Megjegyzések",
+  "notes": [
+   "Az adatok a jelenlegi formájukban, a pontosságra, elérhetőségre, árra vagy kompatibilitásra vonatkozó bármiféle garancia nélkül állnak rendelkezésre. Indulás előtt érdemes ellenőrizni az üzemeltetőnél vagy a helyszínen.",
+   "Minden pont adatlapja feltünteti a forrást, a licencet és az utolsó frissítés dátumát.",
+   "A hálózatok nevei és védjegyei tulajdonosaikat illetik.",
+   "A BlokVolt nem áll kapcsolatban az üzemeltetőkkel, sem az adatokat közzétevő intézményekkel, és ezek nem támogatják ezt a térképet.",
+   "Magánszemélyek nevei nem jelennek meg; a magáncélú otthoni töltők nem szerepelnek a térképen.",
+   "Hiba bejelentéséhez, illetve javítás vagy eltávolítás kéréséhez használja a pont adatlapján a „Hiba bejelentése” gombot, vagy írjon a(z) {email} címre. A válasz 30 napon belül érkezik."
+  ],
+  "licence_texts_h": "A licencek szövege",
+  "licence_texts": [
+   [
+    "CC BY 4.0",
+    "https://creativecommons.org/licenses/by/4.0/"
+   ],
+   [
+    "CC0 1.0",
+    "https://creativecommons.org/publicdomain/zero/1.0/"
+   ],
+   [
+    "ODbL 1.0",
+    "https://opendatacommons.org/licenses/odbl/1-0/"
+   ],
+   [
+    "Licence Ouverte 2.0",
+    "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+   ],
+   [
+    "CDLA Permissive 2.0",
+    "https://cdla.dev/permissive-2-0/"
+   ],
+   [
+    "Open Government Licence v2.0",
+    "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+   ]
+  ]
+ },
+ "download": {
+  "h1": "Nyílt adatok letöltése",
+  "title": "Nyílt adatok letöltése a töltőpontokról | BlokVolt",
+  "description": "Hetente frissülő CSV-fájl a nyilvános töltőpontokról: koordináták, hálózat, teljesítmény, csatlakozók és források. Ingyenes, ODbL licenc alapján.",
+  "lead": "A térkép nyilvános rétege ingyenes, hetente frissülő CSV-fájlként érhető el.",
+  "what_h": "Mit tartalmaz a fájl",
+  "what_p": "A térkép nyilvános rétegének heti CSV-kivonata: minden helyszín koordinátái, hálózata, teljesítménye, csatlakozói és forrásai. OpenStreetMap-adatokat tartalmaz, ezért az Open Database License (ODbL) 1.0 alapján jelenik meg. Az árak, a csapat ellenőrzései és a BlokVolt balkáni javításai nem részei a fájlnak.",
+  "fields_h": "Oszlopok",
+  "fields": [
+   [
+    "pid",
+    "A helyszín állandó azonosítója"
+   ],
+   [
+    "lat",
+    "Szélesség (WGS 84)"
+   ],
+   [
+    "lon",
+    "Hosszúság (WGS 84)"
+   ],
+   [
+    "country",
+    "Országkód (ISO 3166-1 alpha-2)"
+   ],
+   [
+    "name",
+    "A helyszín neve"
+   ],
+   [
+    "network",
+    "A hálózat vagy az üzemeltető neve"
+   ],
+   [
+    "max_kw",
+    "A helyszín legnagyobb teljesítménye, kW"
+   ],
+   [
+    "dc",
+    "1, ha van DC gyorstöltés, 0, ha nincs"
+   ],
+   [
+    "power_class",
+    "A helyszín teljesítményosztálya"
+   ],
+   [
+    "connectors",
+    "Csatlakozótípusok, vesszővel elválasztva"
+   ],
+   [
+    "points",
+    "A töltőpontok becsült száma"
+   ],
+   [
+    "access",
+    "Hozzáférés típusa (nyilvános, korlátozott és hasonlók)"
+   ],
+   [
+    "sources",
+    "Forráskulcsok, vesszővel elválasztva (lásd „Az adatokról” oldalt)"
+   ],
+   [
+    "last_confirmed",
+    "Bármely forrás általi utolsó megerősítés dátuma"
+   ],
+   [
+    "confidence",
+    "Megbízhatósági érték 0–100"
+   ]
+  ],
+  "licence_h": "Licenc",
+  "licence_p": "A fájl az ODbL 1.0 alapján érhető el. Az adatok megoszthatók, belőlük művek hozhatók létre, és átdolgozhatók, feltéve hogy a forrás így van feltüntetve: \"© OpenStreetMap contributors, BlokVolt\", és minden átdolgozott adatbázis ugyanezen licenc alapján kerül megosztásra. Az adatoknak nyíltnak kell maradniuk: nem alkalmazhatók olyan technikai korlátozások, amelyek ezeket a jogokat szűkítik. Teljes szöveg: https://opendatacommons.org/licenses/odbl/1-0/",
+  "file_h": "Fájl",
+  "file_missing": "Az e heti fájl előkészítés alatt áll. Kérjük, nézzen vissza később.",
+  "attribution_h": "Hogyan kell feltüntetni a forrást",
+  "attribution_p": "Az adatok felhasználásakor tüntesse fel ezt: „© OpenStreetMap contributors, BlokVolt”, hivatkozással a www.openstreetmap.org/copyright oldalra és erre az oldalra, valamint nevezze meg az ODbL 1.0 licencet. A más forrásokból származó adatok saját forrásmegjelölésüket megtartják; ezek „Az adatokról” oldalon szerepelnek."
+ }
+}
