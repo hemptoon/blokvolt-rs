@@ -32,7 +32,9 @@ for f in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
             elif not all(isinstance(x, str) and x.strip() for x in t.values()): err.append(f'{f}.{k}: empty plural form')
             continue
         if not isinstance(t, str) or not t.strip(): err.append(f'{f}.{k}: empty'); continue
-        if sorted(PH.findall(e)) != sorted(PH.findall(t)): err.append(f'{f}.{k}: placeholders {PH.findall(e)} vs {PH.findall(t)}')
+        nph = lambda x: sorted(re.sub(r'\{(city|country)_u\}', r'{\1}', y) for y in PH.findall(x))   # R-BS: {city_u}/{country_u} allowed for {city}/{country} (pool 4, 00:12)
+        if nph(e) != nph(t): err.append(f'{f}.{k}: placeholders {PH.findall(e)} vs {PH.findall(t)}')
+        if len(e) <= 25 and '{' not in e and len(t) > max(len(e) * 1.4, len(e) + 4): warn.append(f'{f}.{k}: short UI string longer than EN x1.4: {t!r} vs {e!r}')
         if sorted(TAG.findall(e)) != sorted(TAG.findall(t)): err.append(f'{f}.{k}: html/entities differ')
         if e.endswith(' | BlokVolt') and not t.endswith(' | BlokVolt'): err.append(f'{f}.{k}: title tail')
         if BAD.search(t): err.append(f'{f}.{k}: forbidden word/script: {BAD.search(t).group(0)}')

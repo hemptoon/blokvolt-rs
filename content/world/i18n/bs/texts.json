@@ -98,10 +98,10 @@
  "download": {
   "h1": "Preuzmite otvorene podatke",
   "title": "Preuzmite otvorene podatke o punjačima | BlokVolt",
-  "description": "Sedmična CSV datoteka s javnim punjačima: koordinate, mreža, snaga, konektori i izvori. Besplatno, pod licencom ODbL.",
+  "description": "Sedmična CSV datoteka s javnim punjačima: koordinate, mreža, snaga, priključci i izvori. Besplatno, pod licencom ODbL.",
   "lead": "Javni sloj mape dostupan je kao besplatna CSV datoteka koja se ažurira svake sedmice.",
   "what_h": "Šta sadrži datoteka",
-  "what_p": "Sedmični CSV izvoz javnog sloja mape: koordinate, mreža, snaga, konektori i izvori za svaku lokaciju. Sadrži podatke OpenStreetMapa, pa se objavljuje pod licencom Open Database License (ODbL) 1.0. Cijene, provjere BlokVolta i ispravke za Balkan nisu dio datoteke.",
+  "what_p": "Sedmični CSV izvoz javnog sloja mape: koordinate, mreža, snaga, priključci i izvori za svaku lokaciju. Sadrži podatke OpenStreetMapa, pa se objavljuje pod licencom Open Database License (ODbL) 1.0. Cijene, provjere BlokVolta i ispravke za Balkan nisu dio datoteke.",
   "fields_h": "Kolone",
   "fields": [
    [
@@ -142,7 +142,7 @@
    ],
    [
     "connectors",
-    "Tipovi konektora, odvojeni zarezom"
+    "Tipovi priključaka, odvojeni zarezom"
    ],
    [
     "points",
