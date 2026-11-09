@@ -43,7 +43,7 @@
 - `strings_pages.p_dc`: DC-pikalataus 50 kW:sta: {dc} ({pct_dc}); 150 kW tai enemmän: {hpc}. → **DC-pikalataus vähintään 50 kW:n teholla: {dc} ({pct_dc}); 150 kW tai enemmän: {hpc}.**
 - `strings_pages.p_city_cmp`: DC-pikalatureita 50 kW:sta 10:tä julkista latauspaikkaa kohden: täällä {city}, maassa {country_name} keskimäärin {country}. → **Vähintään 50 kW:n DC-pikalatureita 10:tä julkista latauspaikkaa kohden: täällä {city}, koko maassa ({country_name}) keskimäärin {country}.**
 - `strings_pages.p_hub`: Sivu on niillä mailla, joissa on vähintään 100 julkista latauspaikkaa, joiden luotettavuus on keskitasoa tai korkea. Länsi-Balkanin maat kattavat kunkin maan BlokVolt-sivut. → **Sivu on niillä mailla, joissa on vähintään 100 julkista latauspaikkaa, joiden luotettavuus on keskitasoa tai korkea. Länsi-Balkanin maista kerrotaan kunkin maan omilla BlokVolt-sivuilla.**
-- `strings_shell.about_p`: BlokVolt on riippumaton sähköautojen latausta käsittelevä tietolähde, jota sen perustajat Andrei ja Danila ylläpitävät Novi Sadissa Serbiassa. Ei maksettuja näkyvyyksiä eikä latausverkkojen pisteytyksiä. → **BlokVolt on riippumaton sähköautojen latausta käsittelevä tietolähde, jota sen perustajat Andrei ja Danila ylläpitävät Novi Sadissa Serbiassa. Ei maksullista näkyvyyttä eikä latausverkkojen luokituksia.**
+- `strings_shell.about_p`: BlokVolt on riippumaton sähköautojen latausta käsittelevä tietolähde, jota sen perustajat Andrei ja Danila ylläpitävät Novi Sadissa Serbiassa. Ei maksettuja näkyvyyksiä eikä latausverkkojen pisteytyksiä. → **BlokVolt on riippumaton sähköautojen latausta käsittelevä tietolähde, jota sen perustajat Andrei ja Danila ylläpitävät Novi Sadissa, Serbiassa. Ei maksullista näkyvyyttä eikä latausverkkojen luokituksia.**
 - `strings_prices.st_hpc`: HPC 150 kW:sta, per kWh → **HPC vähintään 150 kW, per kWh**
 - `strings_prices.m2`: Luokat: AC; DC 50–149 kW; HPC 150 kW:sta. Latausverkko, jolla on yksi hinta kaikelle DC-lataukselle, otetaan mukaan sekä DC- että HPC-luokkaan. Jos verkon ylin luokka alkaa 50 tai 60 kW:sta, hinta lasketaan vain DC-luokkaan. → **Luokat: AC; DC 50–149 kW; HPC vähintään 150 kW. Latausverkko, jolla on yksi hinta kaikelle DC-lataukselle, otetaan mukaan sekä DC- että HPC-luokkaan. Jos verkon ylin luokka alkaa 50 tai 60 kW:sta, hinta lasketaan vain DC-luokkaan.**
 - `strings_prices.n_places`: Julkiset paikat BlokVoltin kartalla: {all}; DC 50 kW:sta: {dc}; 150 kW:sta: {hpc}. → **Julkiset paikat BlokVoltin kartalla: {all}; DC vähintään 50 kW: {dc}; vähintään 150 kW: {hpc}.**
@@ -63,7 +63,7 @@
 - `2987914`: Perpignan | kaupungissa Perpignan | 0 → **Perpignanissa**
 - `2749182`: Oud-Beijerland | kaupungissa Oud-Beijerland | 0 → **Oud-Beijerlandissa**
 - `3037656`: Angers | kaupungissa Angers | 0 → **Angers'ssa**
-- `6929992`: Berkel en Rodenrijs | kaupungissa Berkel en Rodenrijs | 0 → **Berkel en Rodenrijsissä**
+- `6929992`: Berkel en Rodenrijs | kaupungissa Berkel en Rodenrijs | 0 → **Berkel en Rodenrijsissa**
 - `2986495`: Poitiers | kaupungissa Poitiers | 0 → **Poitiers'ssa**
 - `2747364`: 's-Gravenzande | kaupungissa 's-Gravenzande | 0 → **'s-Gravenzandessa**
 - `2994160`: Metz | kaupungissa Metz | 0 → **Metzissä**
@@ -132,3 +132,9 @@
 - `strings_prices.th_net`: Latausverkko → **Verkko**
 - `strings_prices.th_nets`: Latausverkot → **Verkot**
 - `strings_prices.vat_no`: ilman arvonlisäveroa → **ilman alv:tä**
+
+## Обратный перевод
+Отдельный агент перевёл 40 изменённых строк обратно в EN: смысловых расхождений 0. Найдена 1 ошибка гармонии (Berkel en Rodenrijsissa), она исправлена. Добавлена запятая в `about_p` («Novi Sadissa, Serbiassa»).
+
+## Замечание
+В `texts.json` есть `sources_pages`, хотя по уточнению 23:55 его не переводят. Ветка оставляет его как есть: движку K8 стоит этот блок игнорировать.
