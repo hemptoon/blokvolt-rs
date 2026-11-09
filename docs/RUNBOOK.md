@@ -2496,6 +2496,54 @@ else none. Europe = all weighted networks pooled. No ranking of networks; same c
   on the page). Trip cost = G3 DC index per country, European DC average where a country has none (named on the page).
 - Update: after a new public layer — rerun both scripts; after a new check of an app page — edit `pay.json` (`checked`).
 - Check: `python3 scripts/world_pay.py selftest` (also in preview.yml).
+### 3.44 Drivers' check-ins on the world map: „works / occupied / how much I paid“ (G6, since 10.11.2026)
+
+The card of the world map of blokvolt.com (/map/, /sr/mapa/, /ru/karta/) has a block „Is it working?“ — Working /
+Not working / Occupied — and „How much did you pay?“ (amount, currency, price per kWh / minute / session, month). Places
+of the Balkans (cards with `more`) keep the full /mapa/ card and have no block. Code: `static/com/world-map.js`
+(`ci*` functions), strings `ci_*` in `content/world/strings_map.json` (EN/SR/RU, also the rules and privacy texts),
+worker block „drivers' check-ins (G6)“ in `worker/_worker.js`, table `world_checkins` (`worker/schema.sql`, created by
+the worker on first use), weekly script `scripts/world_checkins.py`, owner queue on `/admin/svet/` („Cene vozača“).
+
+**Address of the API — `content/world/config.json` `checkins_api`:** `"demo"` on dev and previews (the form works,
+nothing leaves the browser, the card says „Preview version“; previews have no D1, 3.41); the URL
+`https://www.blokvolt.rs/api/svet/stanje` only in the release „релиз G6“ together with the worker deploy; `""` = no
+block. `BV_WORLD_CHECKINS` overrides it for one local build (tests).
+
+**API (`/api/svet/stanje`, CORS for blokvolt.com and localhost like the reports of K6):**
+- `POST {pid, s?, amt?, unit?, cur?, ym?, cls?, cc?, g?, net?, lang, hp}` — a state, a price or both. No account, no
+  CAPTCHA, nothing blocks a reader (3.28): honeypot `hp`; 20 check-ins a day per fingerprint (HMAC of the IP bucket with
+  the day key — the same `ipHash` as everywhere, the IP itself is never stored); one per place and fingerprint a day,
+  a second one is answered ok and not stored. Price: 0 < amount ≤ 100 000, ISO currency, month YYYY-MM not in the future
+  and ≤ 12 months back. pid ≥ 900 000 000 (Balkans) → 400 `balkan`.
+- `GET ?pid=` — `last_ok` (last „radi“), `last` (last state), `d30` (distinct drivers per state in 30 days), 90 days
+  back, hidden rows excluded, `cache-control: max-age=60`. The card shows „Drivers confirmed it works: 3 days ago ·
+  Check-ins in the last 30 days: 5“ (relative date in the page language).
+- Admin (`ADMIN_KEY`): `GET /api/admin/svet/stanje?view=export|queue`, `POST {auto:[{id, price_status, rule}]}` (the
+  script; changes only prices still `new`, never a human decision), `POST {id, a: accept|reject|hide|show}`.
+
+**Rules for prices (weekly, before the price index; thresholds in `RULES` of the script):** the script compares every
+new price with the network's ad hoc list price of `tariffs.json` (3.42; the same row and column choice as the map card)
+through `fx.json`: per kWh 0.6–1.6 × the list price → `match`; below 0.25 × or above 4 × → `auto_hidden`; outside
+0.03–3.00 EUR/kWh for any network → `auto_hidden`; between → `off` → owner queue on /admin/svet/ (Prihvati / Odbij);
+per minute / session, unknown currency or no tariff → `no_ref` (kept, not compared). The card warns the driver once when
+a per-kWh price is outside 0.5–2 × the list price; the decision is always the script's.
+
+**Candidates for the index:** the same country, network, class, unit and currency, last 6 months, ≥ 2 different
+fingerprints whose prices agree within 3 % (prices `match`, `no_ref` or `accepted`) → one row in
+`content/world/checkin_prices.json` with the median, the drivers, the months and the ratio to the list price, status
+`candidate`. Nothing on the site uses them yet: a candidate goes into `tariffs.json` / the index only by the owner's
+decision and with the methodology text of the index saying so (G7). Drivers' prices are never shown instead of a list
+price and never rank networks.
+
+**Weekly run (with the K6 reports, before the layer build):**
+`ADMIN_KEY=… python3 scripts/world_checkins.py --api https://www.blokvolt.rs --out <dir> --write-content`, then look at
+`queue.md`, decide on /admin/svet/, commit `checkin_prices.json` if it changed. Dry run on a file: `--fixture`.
+
+**Tests:** `MINIFLARE_DIR=/tmp/mf node scripts/qa/svet_stanje_worker_test.mjs` (worker + D1),
+`python3 scripts/qa/world_checkins_test.py` (rules, candidates, CLI), `python3 scripts/world_checkins.py --selftest`
+(rules on the real tariffs), `python3 scripts/qa/world_checkins_ui_test.py --data <K1 output>` (card in Chromium:
+EN/SR/RU × 390/1440, live and demo mode, Balkan card without the block).
 
 ## 4. Build and check
 

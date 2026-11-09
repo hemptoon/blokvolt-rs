@@ -343,3 +343,26 @@ CREATE TABLE IF NOT EXISTS world_reports (
 );
 CREATE INDEX IF NOT EXISTS world_reports_status ON world_reports (status, created_at);
 CREATE INDEX IF NOT EXISTS world_reports_pid ON world_reports (pid);
+-- World map check-ins (blokvolt.com /map/, G6): „Radi / Ne radi / Zauzeto“ and „Koliko si platio“ by pid. The worker creates
+-- the table on first use; no manual migration is needed. scripts/world_checkins.py compares the prices with the tariffs (G3),
+-- hides the impossible ones and makes two independent matching prices a candidate for the index.
+CREATE TABLE IF NOT EXISTS world_checkins (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  pid INTEGER NOT NULL,          -- public id of the place (pid < 900 000 000; the Balkans stay with /mapa/)
+  s TEXT,                        -- radi | ne_radi | zauzeto, or NULL when only a price was given
+  cls TEXT,                      -- ac | dc | hpc: power class of the place, from the card
+  amt REAL, unit TEXT, cur TEXT, -- the price as the driver gave it: amount, kwh | min | session, ISO 4217
+  ym TEXT,                       -- the month it was paid, YYYY-MM (≤ 12 months back)
+  net TEXT,                      -- network name shown in the card (hint for the script)
+  cc TEXT, g TEXT,               -- hints: country, geohash
+  lang TEXT NOT NULL,            -- en | sr | ru
+  ip_hash TEXT NOT NULL,         -- fingerprint: HMAC of the IP with the day's random key (table dk)
+  created_at INTEGER NOT NULL,   -- unix seconds
+  status TEXT NOT NULL DEFAULT 'ok',  -- ok | hidden (the owner took it out of the card)
+  price_status TEXT,             -- NULL (no price) | new | match | off | no_ref | auto_hidden | accepted | rejected
+  decided_at INTEGER,
+  decided_by TEXT,               -- auto | admin
+  rule TEXT                      -- the rule of the script (tariff_match, tariff_off, tariff_impossible, no_tariff) or admin
+);
+CREATE INDEX IF NOT EXISTS world_checkins_pid ON world_checkins (pid, created_at);
+CREATE INDEX IF NOT EXISTS world_checkins_price ON world_checkins (price_status, created_at);

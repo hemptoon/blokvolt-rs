@@ -497,8 +497,10 @@ function renderCard(c) {
   if (cfg.reports_api) h += `<button class="btn sm" type="button" data-report aria-expanded="false">${esc(t('rep'))}</button>`;
   h += '</div><p class="wm-copied" role="status" hidden></p>';
   if (c.osm) h += `<p class="wm-osm"><a href="${esc(c.osm)}" rel="noopener nofollow">${esc(t('osm_fix'))}</a></p>`;
+  h += ciBlock(c);
   h += '<div class="wm-rep" id="wm-rep" hidden></div>';
   shell(h);
+  ciLoad(cur.pid);
 }
 box.addEventListener('click', e => {
   const b = e.target.closest('button');
@@ -507,6 +509,8 @@ box.addEventListener('click', e => {
   if (b.hasAttribute('data-share')) { share(); return; }
   if (b.hasAttribute('data-report')) { toggleReport(b); return; }
   if (b.hasAttribute('data-rcancel')) { const btn = box.querySelector('[data-report]'); if (btn) toggleReport(btn, false); }
+  if (b.hasAttribute('data-ci')) { ciState(b); return; }
+  if (b.hasAttribute('data-paid')) { ciPaid(b); return; }
 });
 d.addEventListener('keydown', e => { if (e.key === 'Escape' && box.classList.contains('is-open') && !$('wm-src').open) closeCard(); });
 function shareUrl() {
@@ -590,6 +594,152 @@ async function sendReport(e) {
     return;
   }
   out.textContent = r.status === 429 ? t('r_err_limit') : t('r_err');
+  btn.disabled = false;
+}
+
+// ------------------------------------------------------------------ drivers' check-ins (G6)
+// „Radi / Ne radi / Zauzeto“ and „Koliko ste platili“ go to cfg.checkins_api (/api/svet/stanje of blokvolt.rs). With
+// checkins_api = "demo" (dev previews: no D1 there) the form works and nothing leaves the browser; empty = no block.
+// The price is checked against the network's list price (G3) only to warn the driver; the weekly script decides.
+const CI_API = cfg.checkins_api || '', CI_DEMO = CI_API === 'demo';
+const CI_STATES = ['radi', 'ne_radi', 'zauzeto'];
+const CI_CUR = ['EUR', 'USD', 'GBP', 'CHF', 'SEK', 'NOK', 'DKK', 'PLN', 'CZK', 'HUF', 'RON', 'BGN', 'TRY', 'CAD', 'AUD'];
+let ciSent = {};          // pid → true once a state was sent from this page (one a day per place is stored anyway)
+function ciCls(c) { return c.kw >= 150 ? 'hpc' : c.dc ? 'dc' : c.kw ? 'ac' : null; }
+function ciRef(c) {
+  // the network's ad hoc list price for this power class: [EUR, local, currency]
+  const name = c.net || (cur && cur.props && M.networks[cur.props.o]) || '';
+  const e = PRV && PRV.nets && name && PRV.nets[c.cc + '|' + name];
+  if (!e) return null;
+  const i = { ac: 0, dc: 1, hpc: 2 }[ciCls(c)];
+  if (i == null) return null;
+  const eur = [e.ac, e.dc, e.hpc][i] != null ? [e.ac, e.dc, e.hpc][i] : i === 2 ? e.dc : null;
+  if (eur == null) return null;
+  const loc = e.l ? (e.l[i] != null ? e.l[i] : i === 2 ? e.l[1] : null) : null;
+  return { eur, loc, cur: e.cur || 'EUR' };
+}
+function ciBlock(c) {
+  if (!CI_API) return '';
+  const btns = CI_STATES.map(k => `<button class="btn sm" type="button" data-ci="${k}">${esc(t('ci_' + k))}</button>`).join('');
+  return `<section class="wm-ci" aria-labelledby="wm-cih"><h3 id="wm-cih">${esc(t('ci_h'))}</h3><p class="wm-cis" id="wm-cis" role="status" aria-live="polite">${CI_DEMO ? esc(t('ci_demo_note')) : ''}</p>` +
+    `<div class="wm-acts">${btns}</div><p class="wm-acts"><button class="btn sm" type="button" data-paid aria-expanded="false">${esc(t('ci_paid'))}</button></p>` +
+    `<div id="wm-pf" hidden></div><details class="wm-rules"><summary>${esc(t('ci_rules_h'))}</summary><p>${esc(t('ci_rules'))}</p><p>${esc(t('ci_privacy'))}</p></details></section>`;
+}
+const ago = s => {
+  const days = Math.max(0, Math.floor((Date.now() / 1000 - s) / 86400));
+  try { return new Intl.RelativeTimeFormat(LOC, { numeric: 'auto' }).format(-days, 'day'); } catch (e) { return fmtDate(new Date(s * 1000).toISOString().slice(0, 10)); }
+};
+async function ciLoad(pid) {
+  if (!CI_API || CI_DEMO) return;
+  let j = null;
+  try { const r = await fetch(CI_API + '?pid=' + encodeURIComponent(pid), { mode: 'cors' }); j = await r.json(); } catch (e) { return; }
+  if (!cur || String(cur.pid) !== String(pid) || !j || !j.ok) return;
+  const out = $('wm-cis');
+  if (!out) return;
+  const parts = [];
+  if (j.last_ok) parts.push(t('ci_last_ok', { d: ago(j.last_ok) }));
+  if (j.last && j.last.s !== 'radi' && (!j.last_ok || j.last.at > j.last_ok)) parts.push(t('ci_last_' + j.last.s, { d: ago(j.last.at) }));
+  const n = (j.d30 && (j.d30.radi + j.d30.ne_radi + j.d30.zauzeto)) || 0;
+  if (n) parts.push(t('ci_n30', { n: nf(n) }));
+  out.textContent = parts.join(' · ');
+}
+async function ciPost(body) {
+  if (CI_DEMO) return { ok: true, demo: true };
+  try {
+    const r = await fetch(CI_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), mode: 'cors' });
+    let j = null;
+    try { j = await r.json(); } catch (e) { j = null; }
+    if (r.ok && j && j.ok) return { ok: true };
+    return { ok: false, msg: r.status === 429 ? t('ci_err_limit') : t('ci_err') };
+  } catch (e) { return { ok: false, msg: t('r_err_net') }; }
+}
+function ciBase() {
+  const c = cur.card, b = { pid: Number(cur.pid), lang: LANG, hp: '' };
+  if (/^[A-Z]{2}$/.test(c.cc || '')) b.cc = c.cc;
+  if (cur.g) b.g = cur.g;
+  const cl = ciCls(c);
+  if (cl) b.cls = cl;
+  const name = c.net || (cur.props && M.networks[cur.props.o]) || '';
+  if (name) b.net = String(name).slice(0, 80);
+  return b;
+}
+async function ciState(btn) {
+  const out = $('wm-cis'), s = btn.getAttribute('data-ci');
+  if (ciSent[cur.pid]) { out.textContent = t('ci_once'); return; }
+  box.querySelectorAll('[data-ci]').forEach(x => { x.disabled = true; });
+  out.textContent = t('r_sending');
+  const r = await ciPost(Object.assign(ciBase(), { s }));
+  if (r.ok) {
+    ciSent[cur.pid] = true;
+    btn.setAttribute('aria-pressed', 'true');
+    out.textContent = r.demo ? t('ci_demo') : t('ci_thanks');
+  } else {
+    out.textContent = r.msg;
+    box.querySelectorAll('[data-ci]').forEach(x => { x.disabled = false; });
+  }
+}
+function ciMonths() {
+  const d = new Date(), out = [];
+  for (let i = 0; i < 12; i++) {
+    const x = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() - i, 1)), v = x.toISOString().slice(0, 7);
+    out.push(`<option value="${v}">${esc(fmtMonth(v))}</option>`);
+  }
+  return out.join('');
+}
+function ciPaid(btn) {
+  const f = $('wm-pf');
+  const open = f.hidden;
+  btn.setAttribute('aria-expanded', String(open));
+  if (!open) { f.hidden = true; f.innerHTML = ''; return; }
+  const ref = ciRef(cur.card);
+  const curs = [...new Set([ref && ref.cur, 'EUR', ...CI_CUR].filter(Boolean))];
+  f.hidden = false;
+  f.innerHTML = `<form id="wm-pff" novalidate><div class="wm-prow"><label class="wm-lbl" for="wm-pa">${esc(t('ci_amt'))}</label>` +
+    `<input class="input" id="wm-pa" name="amt" inputmode="decimal" autocomplete="off" required></div>` +
+    `<div class="wm-prow"><label class="wm-lbl" for="wm-pc">${esc(t('ci_cur'))}</label><select class="input" id="wm-pc" name="cur">${curs.map(x => `<option>${esc(x)}</option>`).join('')}</select></div>` +
+    `<div class="wm-prow"><label class="wm-lbl" for="wm-pu">${esc(t('ci_unit'))}</label><select class="input" id="wm-pu" name="unit">` +
+    ['kwh', 'min', 'session'].map(u => `<option value="${u}">${esc(t('ci_u_' + u))}</option>`).join('') + `</select></div>` +
+    `<div class="wm-prow"><label class="wm-lbl" for="wm-pm">${esc(t('ci_month'))}</label><select class="input" id="wm-pm" name="ym">${ciMonths()}</select></div>` +
+    `<div class="wm-hp" aria-hidden="true"><label>Website <input name="hp" type="text" tabindex="-1" autocomplete="off"></label></div>` +
+    `<p class="wm-rmsg" role="status" aria-live="polite"></p><div class="wm-acts"><button class="btn sm dark" type="submit">${esc(t('r_send'))}</button></div></form>`;
+  const form = $('wm-pff');
+  form.addEventListener('input', () => { form.dataset.warned = ''; });
+  form.addEventListener('submit', ciSendPrice);
+  $('wm-pa').focus();
+}
+// how far a per-kWh price is from the list price: null when it cannot be compared
+function ciFar(amt, unit, cu, ref) {
+  if (!ref || unit !== 'kwh') return null;
+  let base = null;
+  if (cu === 'EUR') base = ref.eur;
+  else if (cu === ref.cur && ref.loc != null) base = ref.loc;
+  else if (cu === 'USD' && PRV && PRV.rates && PRV.rates.USD) base = ref.eur * PRV.rates.USD;
+  if (!base) return null;
+  const k = amt / base;
+  return k < 0.5 || k > 2 ? base : null;
+}
+async function ciSendPrice(e) {
+  e.preventDefault();
+  const f = e.currentTarget, out = f.querySelector('.wm-rmsg'), btn = f.querySelector('button[type="submit"]');
+  const amt = Number(String(f.amt.value).trim().replace(/\s/g, '').replace(',', '.'));
+  if (!isFinite(amt) || amt <= 0 || amt > 100000) { out.textContent = t('ci_need_amt'); return; }
+  const unit = f.unit.value, cu = f.cur.value, ym = f.ym.value;
+  const ref = ciRef(cur.card), far = ciFar(amt, unit, cu, ref);
+  if (far != null && !f.dataset.warned) {
+    f.dataset.warned = '1';
+    out.textContent = t('ci_far', { p: pmoney(far, cu) });
+    return;
+  }
+  btn.disabled = true;
+  out.textContent = t('r_sending');
+  const r = await ciPost(Object.assign(ciBase(), { amt, unit, cur: cu, ym, hp: f.hp.value }));
+  if (r.ok) {
+    $('wm-pf').innerHTML = `<p class="wm-ok" role="status">${esc(r.demo ? t('ci_demo') : t('ci_paid_ok'))}</p>`;
+    const b = box.querySelector('[data-paid]');
+    if (b) { b.disabled = true; b.setAttribute('aria-expanded', 'false'); }
+    return;
+  }
+  out.textContent = r.msg;
   btn.disabled = false;
 }
 

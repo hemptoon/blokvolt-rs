@@ -1,3 +1,4 @@
 {"public": false,
  "data_base": "https://tiles.blokvolt.rs/world/",
- "reports_api": "https://www.blokvolt.rs/api/svet/prijava"}
+ "reports_api": "https://www.blokvolt.rs/api/svet/prijava",
+ "checkins_api": "demo"}
