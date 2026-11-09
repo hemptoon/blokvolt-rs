@@ -113,8 +113,8 @@ def strings_of(S, d):
     if miss:
         raise SystemExit(f'strings: section {d} lacks towns.{miss}')
     for k in ('n_forms', 'net_forms'):
-        if not (isinstance(T[k], list) and len(T[k]) == 3):
-            raise SystemExit(f'strings: {d} towns.{k} must be [one, few, many]')
+        if not (isinstance(T[k], list) and len(T[k]) in (3, 4)):   # 4 = Slovenian [one, two, few, many]
+            raise SystemExit(f'strings: {d} towns.{k} must be [one, few, many] (Slovenian: [one, two, few, many])')
     return T
 
 

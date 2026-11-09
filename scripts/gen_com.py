@@ -5,7 +5,7 @@ Two layers, one design (the design system of www.blokvolt.rs: bv.css, bv.js, the
 
 1. English: the hub `/`, one page per country (`/croatia/` …, from content/com/research/<CODE>.json), `/serbia/`
    (a summary that leads to blokvolt.rs), `/partners/`, `/404.html`.
-2. Local sections in the country's language — `/hr/` (Croatian), `/ba/` (Bosnian), `/me/` (Montenegrin) — made of
+2. Local sections in the country's language — `/hr/` (Croatian), `/ba/` (Bosnian), `/me/` (Montenegrin), `/al/`, `/xk/`, `/mk/`, `/si/` (Slovenian, SI1) — made of
    Markdown pages in content/com/local/<dir>/*.md (front matter + Jinja widgets from templates/com2/_w.html) with the
    facts of content/com/local/<dir>/country.json and the station list content/com/local/<cc>/stanice.json
    (scripts/region_map.py). UI words: content/com/local/strings.json.
@@ -61,6 +61,10 @@ LOCALES = {
     'mk': dict(key='mk', cc='MK', dir='mk', html='mk', hreflang='mk-MK', og='mk_MK', code='MK', en='/north-macedonia/',
                country='Северна Македонија', switch='Северна Македонија', cur='MKD', cur_sign='ден.', dec=',', thou='.',
                plural='mk', script='cyrl', trim=True, lang_en='Macedonian', open_local='Отвори го водичот на македонски'),
+    # Slovenian (SI1 09.11.2026): four noun forms — 1, 101 one; 2, 102 dual; 3–4, 103–104 few; else many
+    'si': dict(key='si', cc='SI', dir='si', html='sl', hreflang='sl-SI', og='sl_SI', code='SI', en='/slovenia/',
+               country='Slovenija', switch='Slovenija', cur='EUR', cur_sign='€', dec=',', thou='.', plural='sl',
+               lang_en='Slovenian', open_local='Odpri vodnik v slovenščini'),
 }
 EN = dict(key='en', html='en', hreflang='en', og='en_GB', code='EN', dec='.', thou=',')
 # page keys that blokvolt.rs has too: one hreflang cluster across both domains (build.py writes the .rs side from
@@ -146,6 +150,13 @@ def plural_for(loc):
     rule = loc.get('plural')
     if rule == 'sq':
         return lambda n, one, few, many=None: one if abs(int(round(float(n)))) == 1 else few
+    if rule == 'sl':
+        def sl(n, one, *forms):
+            # pl(n, one, few, many) or pl(n, one, two, few, many): the dual falls back to `few` when not given
+            two, few, many = (forms if len(forms) == 3 else (forms[0],) + tuple(forms))
+            m = abs(int(round(float(n)))) % 100
+            return one if m == 1 else two if m == 2 else few if m in (3, 4) else many
+        return sl
     if rule == 'mk':
         return lambda n, one, few, many=None: one if (abs(int(round(float(n)))) % 10 == 1 and abs(int(round(float(n)))) % 100 != 11) else few
     return pl

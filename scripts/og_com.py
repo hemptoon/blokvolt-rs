@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """Renders the 1200×630 share images of blokvolt.com with Playwright, in the layout of the blokvolt.rs image:
 bolt, wordmark, one line of what the page is, topics, domain.
-static/com/og-en.png (English pages) and og-hr.png, og-ba.png, og-me.png, og-al.png, og-xk.png, og-mk.png (local sections, with the country tag
+static/com/og-en.png (English pages) and og-hr.png, og-ba.png, og-me.png, og-al.png, og-xk.png, og-mk.png, og-si.png (local sections, with the country tag
 that the header shows next to the logo)."""
 import asyncio
+import sys
 import base64
 from pathlib import Path
 
@@ -35,6 +36,9 @@ IMAGES = {
     'mk': dict(tag='MK', l1='Полнење електрични возила во Северна Македонија',
                l2='мапа · цени · полнење дома · субвенции',
                foot='blokvolt.com/mk — секој податок со извор и датум на проверка'),
+    'si': dict(tag='SI', l1='Polnjenje električnih avtomobilov v Sloveniji',
+               l2='zemljevid · cene · polnjenje doma · subvencije',
+               foot='blokvolt.com/si — vsak podatek z virom in datumom preverjanja'),
 }
 
 
@@ -66,7 +70,10 @@ async def main():
     async with async_playwright() as p:
         b = await p.chromium.launch()
         pg = await b.new_page(viewport={'width': 1200, 'height': 630})
+        only = set(sys.argv[1:])   # e.g. `python3 scripts/og_com.py si` renders og-si.png only
         for key, v in IMAGES.items():
+            if only and key not in only:
+                continue
             await pg.set_content(html(**v))
             await pg.wait_for_timeout(300)
             # nothing may run past the right edge (80 px margin)
