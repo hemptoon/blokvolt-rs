@@ -2583,7 +2583,7 @@ Built by `gen_com.py` with the world layer, right after the price pages; noindex
    or, after it, through the publishing queue of 3.39.
 4. A scheduled task for steps 1–3 is created only on Andrei's "да"; its prompt is in `~/dev/evdb/work/G7/SCHEDULED_PROMPT.md`.
 
-### 3.42 World map widget, configurator and /developers/ on blokvolt.com (G5, since 10.11.2026; dev only until "релиз G5")
+### 3.46 World map widget, configurator and /developers/ on blokvolt.com (G5, since 10.11.2026; dev only until "релиз G5")
 
 - **Pages** (`scripts/world_embed.py`, called by `gen_com.py` after `world_shell`, only with the world pages): `/embed/map/`, `/sr/embed/mapa/`, `/ru/embed/karta/` — the world map (`static/com/world-map.js` with `cfg.embed`) for an iframe on any site; configurator `/map-for-your-site/`, `/sr/mapa-za-vas-sajt/`, `/ru/karta-dlya-sajta/`; `/developers/`, `/sr/za-programere/`, `/ru/razrabotchikam/`. Words: `content/world/strings_embed.json` (+ `emb_open` in `strings_map.json`).
 - **Widget address:** `?zemlja=<cc>&grad=<geonameid>&mreza=<slug,…>&snaga=ac,dc,hpc,nepoznato&tema=tamna`, view in `#z/lat/lon`; the language is the path. The widget has no reports, two-finger gestures (the host page keeps scrolling), the card button and the corner badge open the same view on blokvolt.com with `utm_source=<host>&utm_medium=widget`. Attribution line is always visible. noindex, never in the sitemap.
