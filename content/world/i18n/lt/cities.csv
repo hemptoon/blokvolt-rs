@@ -18,7 +18,7 @@ geonameid,name,in_phrase,decl_ok,note
 595689,Plungė,Plungėje,1,
 595449,Radviliškis,Radviliškyje,1,
 2950159,Berlynas,Berlyne,1,exonym
-2758401,Breda,mieste Breda,0,
+2758401,Breda,Bredoje,1,auto_lt
 2800866,Briuselis,Briuselyje,1,exonym
 2747373,Haga,Hagoje,1,exonym
 2756253,Eindhovenas,Eindhovene,1,exonym
@@ -29,10 +29,10 @@ geonameid,name,in_phrase,decl_ok,note
 2643743,Londonas,Londone,1,exonym
 2743477,Zwolle,mieste Zwolle,0,
 2745912,Utrechtas,Utrechte,1,exonym
-2746301,Tilburg,mieste Tilburg,0,
+2746301,Tilburgas,Tilburge,1,auto_lt
 2758012,Capelle aan den IJssel,mieste Capelle aan den IJssel,0,
 2750053,Nijmegen,mieste Nijmegen,0,
-2751283,Maastricht,mieste Maastricht,0,
+2751283,Mastrichtas,Mastrichte,1,auto_lt
 2745321,Voorburg,mieste Voorburg,0,
 2759706,Apeldoorn,mieste Apeldoorn,0,
 2657697,Acton,mieste Acton,0,
@@ -47,14 +47,14 @@ geonameid,name,in_phrase,decl_ok,note
 2746932,Spijkenisse,mieste Spijkenisse,0,
 2759426,Barendrecht,mieste Barendrecht,0,
 2886242,Kelnas,Kelne,1,exonym
-2756669,Dordrecht,mieste Dordrecht,0,
+2756669,Dordrechtas,Dordrechte,1,auto_lt
 2747596,Schiedam,mieste Schiedam,0,
 2748000,Roermond,mieste Roermond,0,
 2879139,Leipcigas,Leipcige,1,exonym
 2756987,Deventer,mieste Deventer,0,
 2755420,Gouda,mieste Gouda,0,
 2934246,Diuseldorfas,Diuseldorfe,1,exonym
-2757345,Delft,mieste Delft,0,
+2757345,Delftas,Delfte,1,auto_lt
 2633655,Woodford Green,mieste Woodford Green,0,
 2745123,Waalwijk,mieste Waalwijk,0,
 2759798,Amstelveen,mieste Amstelveen,0,
@@ -64,7 +64,7 @@ geonameid,name,in_phrase,decl_ok,note
 2759145,Bergen op Zoom,mieste Bergen op Zoom,0,
 2910831,Hanoveris,Hanoveryje,1,exonym
 2756136,Emmen,mieste Emmen,0,
-2652221,Coventry,mieste Coventry,0,
+2652221,Koventris,Koventryje,1,auto_lt
 2759875,Alphen aan den Rijn,mieste Alphen aan den Rijn,0,
 2754652,Heerlen,mieste Heerlen,0,
 6947041,Blackheath,mieste Blackheath,0,
@@ -75,7 +75,7 @@ geonameid,name,in_phrase,decl_ok,note
 13535632,Maaspoort,mieste Maaspoort,0,
 2865716,Neuenhagen bei Berlin,mieste Neuenhagen bei Berlin,0,
 658225,Helsinkis,Helsinkyje,1,exonym
-2759661,Arnhem,mieste Arnhem,0,
+2759661,Arnhemas,Arnheme,1,auto_lt
 2928810,Esenas,Esene,1,exonym
 2751285,Maassluis,mieste Maassluis,0,
 2759113,Bergschenhoek,mieste Bergschenhoek,0,
@@ -87,7 +87,7 @@ geonameid,name,in_phrase,decl_ok,note
 8581595,Harringay,mieste Harringay,0,
 2751792,Leeuwarden,mieste Leeuwarden,0,
 2743493,Zwijndrecht,mieste Zwijndrecht,0,
-2945024,Braunschweig,mieste Braunschweig,0,
+2945024,Braunšveigas,Braunšveige,1,auto_lt
 2759040,Best,mieste Best,0,
 2925177,Freiburgas,Freiburge,1,exonym
 2935517,Dortmundas,Dortmunde,1,exonym
@@ -98,13 +98,13 @@ geonameid,name,in_phrase,decl_ok,note
 2646003,Islington,mieste Islington,0,
 2743608,Zutphen,mieste Zutphen,0,
 6941548,Ypenburg,mieste Ypenburg,0,
-2654710,Brighton,mieste Brighton,0,
+2654710,Braitonas,Braitone,1,auto_lt
 2756161,Elst,mieste Elst,0,
 2745467,Vlaardingen,mieste Vlaardingen,0,
 2861650,Niurnbergas,Niurnberge,1,exonym
-2754394,Hengelo,mieste Hengelo,0,
+2754394,Hengelo,Hengelo,1,auto_lt
 2823567,Teltow,mieste Teltow,0,
-2987914,Perpignan,mieste Perpignan,0,
+2987914,Perpinjanas,Perpinjane,1,auto_lt
 2750523,Naaldwijk,mieste Naaldwijk,0,
 2759407,Barneveld,mieste Barneveld,0,
 2791744,Marche-en-Famenne,mieste Marche-en-Famenne,0,
@@ -117,12 +117,12 @@ geonameid,name,in_phrase,decl_ok,note
 2751834,Leek,mieste Leek,0,
 2946447,Bona,Bonoje,1,exonym
 2754848,Harderwijk,mieste Harderwijk,0,
-2805615,Würzburg,mieste Würzburg,0,
+2805615,Viurcburgas,Viurcburge,1,auto_lt
 2749182,Oud-Beijerland,mieste Oud-Beijerland,0,
 2753106,Kampen,mieste Kampen,0,
 2825297,Štutgartas,Štutgarte,1,exonym
-2934691,Duisburg,mieste Duisburg,0,
-2860410,Oberhausen,mieste Oberhausen,0,
+2934691,Duisburgas,Duisburge,1,auto_lt
+2860410,Oberhauzenas,Oberhauzene,1,auto_lt
 2748083,Rijssen,mieste Rijssen,0,
 2747169,Sliedrecht,mieste Sliedrecht,0,
 2759794,Amsterdamas,Amsterdame,1,exonym
@@ -145,7 +145,7 @@ geonameid,name,in_phrase,decl_ok,note
 2753719,Hoogeveen,mieste Hoogeveen,0,
 2746504,Tegelen,mieste Tegelen,0,
 3128760,Barselona,Barselonoje,1,exonym
-2751773,Leiden,mieste Leiden,0,
+2751773,Leidenas,Leidene,1,auto_lt
 2755584,Gennep,mieste Gennep,0,
 2925533,Frankfurtas,Frankfurte,1,exonym
 2656295,Barnet,mieste Barnet,0,
@@ -158,22 +158,22 @@ geonameid,name,in_phrase,decl_ok,note
 2990440,Nica,Nicoje,1,exonym
 2748392,Putten,mieste Putten,0,
 2755272,Groesbeek,mieste Groesbeek,0,
-2895992,Ingolstadt,mieste Ingolstadt,0,
-2994160,Metz,mieste Metz,0,
-2998286,Limoges,mieste Limoges,0,
+2895992,Ingolštatas,Ingolštate,1,auto_lt
+2994160,Mecas,Mece,1,auto_lt
+2998286,Limožas,Limože,1,auto_lt
 2746766,Steenwijk,mieste Steenwijk,0,
 2756342,Eersel,mieste Eersel,0,
 3013403,Hérouville-Saint-Clair,mieste Hérouville-Saint-Clair,0,
-3029241,Caen,mieste Caen,0,
+3029241,Kanas,Kane,1,auto_lt
 2745154,Vught,mieste Vught,0,
 2755669,Geertruidenberg,mieste Geertruidenberg,0,
 2748413,Purmerend,mieste Purmerend,0,
-2970777,Vannes,mieste Vannes,0,
-2834498,Schweinfurt,mieste Schweinfurt,0,
+2970777,Vanas,Vane,1,auto_lt
+2834498,Švainfurtas,Švainfurte,1,auto_lt
 2748172,Ridderkerk,mieste Ridderkerk,0,
 2753996,Hoensbroek,mieste Hoensbroek,0,
 2755476,Goes,mieste Goes,0,
-2855328,Passau,mieste Passau,0,
+2855328,Pasau,Pasau,1,auto_lt
 2745096,Waddinxveen,mieste Waddinxveen,0,
 2867543,Miunsteris,Miunsteryje,1,exonym
 2753801,Hoofddorp,mieste Hoofddorp,0,
@@ -185,7 +185,7 @@ geonameid,name,in_phrase,decl_ok,note
 2754064,Hilversum,mieste Hilversum,0,
 2919880,Glinde,mieste Glinde,0,
 2750947,Meppel,mieste Meppel,0,
-2881485,Landshut,mieste Landshut,0,
+2881485,Landshutas,Landshute,1,auto_lt
 2869894,Mönchengladbach,mieste Mönchengladbach,0,
 2935022,Drezdenas,Drezdene,1,exonym
 3037538,Annemasse,mieste Annemasse,0,
@@ -201,13 +201,13 @@ geonameid,name,in_phrase,decl_ok,note
 2754692,Heemstede,mieste Heemstede,0,
 2891122,Kylis,Kylyje,1,exonym
 2745677,Velp,mieste Velp,0,
-2759887,Almelo,mieste Almelo,0,
+2759887,Almelo,Almelo,1,auto_lt
 2848845,Reinbek,mieste Reinbek,0,
 2759178,Benthuizen,mieste Benthuizen,0,
-2947416,Bochum,mieste Bochum,0,
+2947416,Bochumas,Bochume,1,auto_lt
 3247449,Achenas,Achene,1,exonym
 2988507,Paryžius,Paryžiuje,1,exonym
-2926271,Flensburg,mieste Flensburg,0,
+2926271,Flensburgas,Flensburge,1,auto_lt
 2756888,Diemen,mieste Diemen,0,
 2746860,Stadskanaal,mieste Stadskanaal,0,
 2760134,Aalsmeer,mieste Aalsmeer,0,
@@ -215,10 +215,10 @@ geonameid,name,in_phrase,decl_ok,note
 2748371,Raalte,mieste Raalte,0,
 3078610,Brno,Brno,1,
 2971549,Troyes,mieste Troyes,0,
-2745641,Venlo,mieste Venlo,0,
+2745641,Venlo,Venlo,1,auto_lt
 2754669,Heerenveen,mieste Heerenveen,0,
-2990363,Nîmes,mieste Nîmes,0,
-2918632,Göttingen,mieste Göttingen,0,
+2990363,Nimas,Nime,1,auto_lt
+2918632,Getingenas,Getingene,1,auto_lt
 2745580,Vianen,mieste Vianen,0,
 2759899,Alkmaar,mieste Alkmaar,0,
 3032833,Béziers,mieste Béziers,0,
@@ -228,39 +228,39 @@ geonameid,name,in_phrase,decl_ok,note
 2756059,Epe,mieste Epe,0,
 13526830,Blankenfelde-Mahlow,mieste Blankenfelde-Mahlow,0,
 2907911,Heidelbergas,Heidelberge,1,exonym
-2894003,Kaiserslautern,mieste Kaiserslautern,0,
+2894003,Kaizerslauternas,Kaizerslauterne,1,auto_lt
 2748729,Papendrecht,mieste Papendrecht,0,
 2879185,Leinfelden-Echterdingen,mieste Leinfelden-Echterdingen,0,
-3037598,Angoulême,mieste Angoulême,0,
+3037598,Angulemas,Anguleme,1,auto_lt
 2753010,Katwijk aan Zee,mieste Katwijk aan Zee,0,
 2759016,Beuningen,mieste Beuningen,0,
-2891621,Kempten (Allgäu),mieste Kempten (Allgäu),0,
+2891621,Kemptenas,Kemptene,1,auto_lt
 2983990,Renas,Rene,1,exonym
 2758765,Bodegraven,mieste Bodegraven,0,
 2807363,Witten,mieste Witten,0,
-2980291,Saint-Étienne,mieste Saint-Étienne,0,
+2980291,Sent Etjenas,Sent Etjene,1,auto_lt
 2746804,Steenbergen,mieste Steenbergen,0,
 2758177,Brummen,mieste Brummen,0,
-2855745,Paderborn,mieste Paderborn,0,
-2856883,Osnabrück,mieste Osnabrück,0,
+2855745,Paderbornas,Paderborne,1,auto_lt
+2856883,Osnabriukas,Osnabriuke,1,auto_lt
 2990355,Niort,mieste Niort,0,
 6690866,Surbiton,mieste Surbiton,0,
 2757872,Culemborg,mieste Culemborg,0,
 2959083,Ahrensburg,mieste Ahrensburg,0,
-643492,Oulu,mieste Oulu,0,
-3037854,Amiens,mieste Amiens,0,
-2755003,Haarlem,mieste Haarlem,0,
+643492,Oulu,Oulu,1,auto_lt
+3037854,Amjenas,Amjene,1,auto_lt
+2755003,Harlemas,Harleme,1,auto_lt
 2873891,Manheimas,Manheime,1,exonym
 2877648,Limburg an der Lahn,mieste Limburg an der Lahn,0,
-2993002,Montauban,mieste Montauban,0,
+2993002,Montobanas,Montobane,1,auto_lt
 3013627,Hayange,mieste Hayange,0,
 3035204,Balma,mieste Balma,0,
 2949186,Bielefeld,mieste Bielefeld,0,
 2890158,Kitzingen,mieste Kitzingen,0,
-2892518,Kassel,mieste Kassel,0,
+2892518,Kaselis,Kaselyje,1,auto_lt
 3143244,Oslas,Osle,1,exonym
-2952984,Bamberg,mieste Bamberg,0,
-3028641,Carcassonne,mieste Carcassonne,0,
+2952984,Bambergas,Bamberge,1,auto_lt
+3028641,Karkasonas,Karkasone,1,auto_lt
 2799365,Dilbeek,mieste Dilbeek,0,
 2874545,Magdeburgas,Magdeburge,1,exonym
 2950349,Bergisch Gladbach,mieste Bergisch Gladbach,0,
@@ -271,21 +271,21 @@ geonameid,name,in_phrase,decl_ok,note
 2745726,Veghel,mieste Veghel,0,
 2756723,Dongen,mieste Dongen,0,
 2907669,Heilbronn,mieste Heilbronn,0,
-2978640,Saint-Malo,mieste Saint-Malo,0,
+2978640,Sen Malo,Sen Malo,1,auto_lt
 2992402,Montigny-lès-Metz,mieste Montigny-lès-Metz,0,
 2757340,Delfzijl,mieste Delfzijl,0,
 2807240,Wittlich,mieste Wittlich,0,
 2867838,Mülheim an der Ruhr,mieste Mülheim an der Ruhr,0,
 660158,Espas,Espe,1,exonym
-3033123,Besançon,mieste Besançon,0,
-2639577,Reading,mieste Reading,0,
+3033123,Bezansonas,Bezansone,1,auto_lt
+2639577,Redingas,Redinge,1,auto_lt
 2750815,Mijdrecht,mieste Mijdrecht,0,
 2751687,Leusden,mieste Leusden,0,
 2945756,Bottrop,mieste Bottrop,0,
 2747034,Soest,mieste Soest,0,
-2911240,Hamm,mieste Hamm,0,
+2911240,Hamas,Hame,1,auto_lt
 2938540,Deggendorf,mieste Deggendorf,0,
-2512989,Palma,mieste Palma,0,
+2512989,Palma,Palmoje,1,auto_lt
 2981280,Saint-Brieuc,mieste Saint-Brieuc,0,
 3027422,Chambéry,mieste Chambéry,0,
 2745860,Valkenswaard,mieste Valkenswaard,0,
@@ -302,17 +302,17 @@ geonameid,name,in_phrase,decl_ok,note
 2634579,Welling,mieste Welling,0,
 2756507,Duiven,mieste Duiven,0,
 2831088,Sonthofen,mieste Sonthofen,0,
-2921466,Gelsenkirchen,mieste Gelsenkirchen,0,
+2921466,Gelzenkirchenas,Gelzenkirchene,1,auto_lt
 2940231,Castrop-Rauxel,mieste Castrop-Rauxel,0,
 3017253,Fréjus,mieste Fréjus,0,
 2750039,Nijverdal,mieste Nijverdal,0,
 2844988,Rosenheim,mieste Rosenheim,0,
-2875115,Lüneburg,mieste Lüneburg,0,
+2875115,Liuneburgas,Liuneburge,1,auto_lt
 2745392,Vlissingen,mieste Vlissingen,0,
 2751738,Lelystad,mieste Lelystad,0,
 2874225,Maincas,Maince,1,exonym
-2923544,Fürth,mieste Fürth,0,
-3020035,Épinal,mieste Épinal,0,
+2923544,Fiurtas,Fiurte,1,auto_lt
+3020035,Epinalis,Epinalyje,1,auto_lt
 3026613,Charleville-Mézières,mieste Charleville-Mézières,0,
 2755605,Gemert,mieste Gemert,0,
 2940204,Cham,mieste Cham,0,
@@ -320,28 +320,28 @@ geonameid,name,in_phrase,decl_ok,note
 3034006,Beauvais,mieste Beauvais,0,
 3036784,Arras,mieste Arras,0,
 2644210,Liverpulis,Liverpulyje,1,exonym
-2806654,Wolfsburg,mieste Wolfsburg,0,
+2806654,Volfsburgas,Volfsburge,1,auto_lt
 2881062,Langenhagen,mieste Langenhagen,0,
-2994798,Meaux,mieste Meaux,0,
+2994798,Mo,Mo,1,auto_lt
 2756232,Elburg,mieste Elburg,0,
-2878234,Leverkusen,mieste Leverkusen,0,
+2878234,Leverkuzenas,Leverkuzene,1,auto_lt
 2934486,Düren,mieste Düren,0,
 2798573,Eupen,mieste Eupen,0,
 2939969,Cloppenburg,mieste Cloppenburg,0,
 2753638,Hoorn,mieste Hoorn,0,
 2882087,Laatzen,mieste Laatzen,0,
 2920512,Gießen,mieste Gießen,0,
-2955272,Aschaffenburg,mieste Aschaffenburg,0,
-2990919,Narbonne,mieste Narbonne,0,
+2955272,Ašafenburgas,Ašafenburge,1,auto_lt
+2990919,Narbona,Narbonoje,1,auto_lt
 2992703,Montélimar,mieste Montélimar,0,
-2821164,Trier,mieste Trier,0,
+2821164,Tryras,Tryre,1,auto_lt
 634963,Tamperė,Tamperėje,1,exonym
-3003796,Le Havre,mieste Le Havre,0,
+3003796,Havras,Havre,1,auto_lt
 2655603,Birmingemas,Birmingeme,1,exonym
 2746839,Staphorst,mieste Staphorst,0,
 2753468,Huizen,mieste Huizen,0,
 2954172,Augsburgas,Augsburge,1,exonym
-655194,Jyväskylä,mieste Jyväskylä,0,
+655194,Jyveskiulė,Jyveskiulėje,1,auto_lt
 2743949,Zevenaar,mieste Zevenaar,0,
 2744991,Wassenaar,mieste Wassenaar,0,
 2755633,Geldermalsen,mieste Geldermalsen,0,
@@ -354,7 +354,7 @@ geonameid,name,in_phrase,decl_ok,note
 2753706,Hoogezand,mieste Hoogezand,0,
 2906331,Hennigsdorf,mieste Hennigsdorf,0,
 2749812,Noordwijk-Binnen,mieste Noordwijk-Binnen,0,
-2929567,Erlangen,mieste Erlangen,0,
+2929567,Erlangenas,Erlangene,1,auto_lt
 3038634,Agen,mieste Agen,0,
 2881646,Landau in der Pfalz,mieste Landau in der Pfalz,0,
 2973783,Strasbūras,Strasbūre,1,exonym
@@ -367,7 +367,7 @@ geonameid,name,in_phrase,decl_ok,note
 2747751,Sassenheim,mieste Sassenheim,0,
 2872649,Mayen,mieste Mayen,0,
 2936909,Dingolfing,mieste Dingolfing,0,
-261745,Heraklion,mieste Heraklion,0,translit_en
+261745,Heraklionas,Heraklione,1,auto_lt
 2751651,Lichtenvoorde,mieste Lichtenvoorde,0,
 2772400,Lincas,Lince,1,exonym
 2813040,Weiden in der Oberpfalz,mieste Weiden in der Oberpfalz,0,
@@ -376,14 +376,14 @@ geonameid,name,in_phrase,decl_ok,note
 2267057,Lisabona,Lisabonoje,1,exonym
 2787889,Roeselare,mieste Roeselare,0,
 2835297,Schwandorf,mieste Schwandorf,0,
-2904789,Hildesheim,mieste Hildesheim,0,
-3030300,Brest,mieste Brest,0,
+2904789,Hildesheimas,Hildesheime,1,auto_lt
+3030300,Brestas,Breste,1,auto_lt
 2892794,Karlsrūjė,Karlsrūjėje,1,exonym
 2904795,Hilden,mieste Hilden,0,
 3025053,Cholet,mieste Cholet,0,
 2748591,Pijnacker,mieste Pijnacker,0,
 2998517,Libourne,mieste Libourne,0,
-3035681,Avignon,mieste Avignon,0,
+3035681,Avinjonas,Avinjone,1,auto_lt
 2745973,Uithoorn,mieste Uithoorn,0,
 2747063,Sneek,mieste Sneek,0,
 2754408,Hendrik-Ido-Ambacht,mieste Hendrik-Ido-Ambacht,0,
@@ -395,7 +395,7 @@ geonameid,name,in_phrase,decl_ok,note
 2758598,Borne,mieste Borne,0,
 2783310,Zaventem,mieste Zaventem,0,
 2833564,Seevetal,mieste Seevetal,0,
-3114711,Oviedo,mieste Oviedo,0,
+3114711,Ovjedas,Ovjede,1,auto_lt
 2977921,Saint-Nazaire,mieste Saint-Nazaire,0,
 2983362,Roanne,mieste Roanne,0,
 3035843,Auxerre,mieste Auxerre,0,
@@ -404,9 +404,9 @@ geonameid,name,in_phrase,decl_ok,note
 2759915,Alblasserdam,mieste Alblasserdam,0,
 2871992,Memmingen,mieste Memmingen,0,
 2892080,Kaufbeuren,mieste Kaufbeuren,0,
-2940213,Celle,mieste Celle,0,
+2940213,Celė,Celėje,1,auto_lt
 2947421,Bocholt,mieste Bocholt,0,
-2951825,Bayreuth,mieste Bayreuth,0,
+2951825,Bairoitas,Bairoite,1,auto_lt
 3038789,Abbeville,mieste Abbeville,0,
 2744904,Weesp,mieste Weesp,0,
 2864475,Neumünster,mieste Neumünster,0,
@@ -433,22 +433,22 @@ geonameid,name,in_phrase,decl_ok,note
 2821515,Traunstein,mieste Traunstein,0,
 2939797,Crailsheim,mieste Crailsheim,0,
 3032469,Blagnac,mieste Blagnac,0,
-2991214,Mulhouse,mieste Mulhouse,0,
+2991214,Miulūzas,Miulūze,1,auto_lt
 3021670,Dax,mieste Dax,0,
 2842884,Rüsselsheim am Main,mieste Rüsselsheim am Main,0,
 2864549,Neumarkt in der Oberpfalz,mieste Neumarkt in der Oberpfalz,0,
 2868506,Mühldorf am Inn,mieste Mühldorf am Inn,0,
 9238414,Kröpeliner-Tor-Vorstadt,mieste Kröpeliner-Tor-Vorstadt,0,
 2996882,Mâcon,mieste Mâcon,0,
-3006787,La Rochelle,mieste La Rochelle,0,
+3006787,La Rošelis,La Rošelyje,1,auto_lt
 3013619,Hazebrouck,mieste Hazebrouck,0,
 3020392,Écully,mieste Écully,0,
 2509954,Valensija,Valensijoje,1,exonym
 2755030,Haaksbergen,mieste Haaksbergen,0,
 2885734,Königswinter,mieste Königswinter,0,
 2927268,Fellbach,mieste Fellbach,0,
-650224,Kuopio,mieste Kuopio,0,
-3034475,Bayonne,mieste Bayonne,0,
+650224,Kuopio,Kuopio,1,auto_lt
+3034475,Bajona,Bajonoje,1,auto_lt
 3034483,Bayeux,mieste Bayeux,0,
 2749756,Nunspeet,mieste Nunspeet,0,
 2814270,Wangen im Allgäu,mieste Wangen im Allgäu,0,
@@ -476,13 +476,13 @@ geonameid,name,in_phrase,decl_ok,note
 640999,Pori,mieste Pori,0,
 2968771,Villefontaine,mieste Villefontaine,0,
 3028263,Castres,mieste Castres,0,
-255683,Patras,mieste Patras,0,translit_en
+255683,Patrai,Patruose,1,auto_lt
 2794981,Jambes,mieste Jambes,0,
-2805753,Wuppertal,mieste Wuppertal,0,
-2873759,Marburg,mieste Marburg,0,
+2805753,Vupertalis,Vupertalyje,1,auto_lt
+2873759,Marburgas,Marburge,1,auto_lt
 2895569,Itzehoe,mieste Itzehoe,0,
 2754073,Hillegom,mieste Hillegom,0,
-2875392,Ludwigsburg,mieste Ludwigsburg,0,
+2875392,Liudvigsburgas,Liudvigsburge,1,auto_lt
 2936871,Dinslaken,mieste Dinslaken,0,
 2973385,Tarbes,mieste Tarbes,0,
 2947444,Böblingen,mieste Böblingen,0,
@@ -490,13 +490,13 @@ geonameid,name,in_phrase,decl_ok,note
 2978758,Saint-Lô,mieste Saint-Lô,0,
 3006283,La Teste-de-Buch,mieste La Teste-de-Buch,0,
 3014856,Grasse,mieste Grasse,0,
-2857458,Oldenburg,mieste Oldenburg,0,
+2857458,Oldenburgas,Oldenburge,1,auto_lt
 2953324,Bad Tölz,mieste Bad Tölz,0,
-3003603,Le Mans,mieste Le Mans,0,
+3003603,Le Manas,Le Mane,1,auto_lt
 2743997,Zeewolde,mieste Zeewolde,0,
 2744344,Winschoten,mieste Winschoten,0,
-2820860,Tübingen,mieste Tübingen,0,
-2853572,Pirna,mieste Pirna,0,
+2820860,Tiubingenas,Tiubingene,1,auto_lt
+2853572,Pirna,Pirnoje,1,auto_lt
 2913537,Gunzenhausen,mieste Gunzenhausen,0,
 3007609,Lannion,mieste Lannion,0,
 2930523,Emmendingen,mieste Emmendingen,0,
@@ -507,14 +507,14 @@ geonameid,name,in_phrase,decl_ok,note
 2913555,Günzburg,mieste Günzburg,0,
 2940383,Calw,mieste Calw,0,
 2953416,Bad Kreuznach,mieste Bad Kreuznach,0,
-2834282,Schwerin,mieste Schwerin,0,
+2834282,Šverinas,Šverine,1,auto_lt
 2851746,Pulheim,mieste Pulheim,0,
 2864034,Neustadt in Holstein,mieste Neustadt in Holstein,0,
-2886946,Koblenz,mieste Koblenz,0,
+2886946,Koblencas,Koblence,1,auto_lt
 2895669,Iserlohn,mieste Iserlohn,0,
 2922530,Garmisch-Partenkirchen,mieste Garmisch-Partenkirchen,0,
 2971053,Valence,mieste Valence,0,
-3024297,Colmar,mieste Colmar,0,
+3024297,Kolmaras,Kolmare,1,auto_lt
 3032797,Biarritz,mieste Biarritz,0,
 2778067,Gracas,Grace,1,exonym
 2847645,Rheine,mieste Rheine,0,
@@ -524,53 +524,53 @@ geonameid,name,in_phrase,decl_ok,note
 3026204,Châteauroux,mieste Châteauroux,0,
 2642465,Milton Keynes,mieste Milton Keynes,0,
 2784189,Walcourt,mieste Walcourt,0,
-2924585,Friedrichshafen,mieste Friedrichshafen,0,
+2924585,Frydrichshafenas,Frydrichshafene,1,auto_lt
 2951111,Bendorf,mieste Bendorf,0,
 3118514,Lleida,mieste Lleida,0,
-650859,Kouvola,mieste Kouvola,0,
+650859,Kouvola,Kouvoloje,1,auto_lt
 2984513,Rambouillet,mieste Rambouillet,0,
 3020850,Draguignan,mieste Draguignan,0,
 3024532,Cluses,mieste Cluses,0,
-400666,Rhodes,mieste Rhodes,0,translit_en
+400666,Rodas,Rode,1,auto_lt
 2809138,Wiesloch,mieste Wiesloch,0,
 2827479,Stendal,mieste Stendal,0,
 2861934,Nordhorn,mieste Nordhorn,0,
 2888523,Kleinmachnow,mieste Kleinmachnow,0,
-2895044,Jena,mieste Jena,0,
+2895044,Jena,Jenoje,1,auto_lt
 3024066,Compiègne,mieste Compiègne,0,
 2746420,Terneuzen,mieste Terneuzen,0,
 2750939,Merenwijk,mieste Merenwijk,0,
 2264526,Pontinha,mieste Pontinha,0,
 2271071,Barreiro,mieste Barreiro,0,
 2797713,Gembloux,mieste Gembloux,0,
-2803560,Zwickau,mieste Zwickau,0,
+2803560,Cvikau,Cvikau,1,auto_lt
 2810716,Wertheim,mieste Wertheim,0,
-2826287,Stralsund,mieste Stralsund,0,
+2826287,Štralzundas,Štralzunde,1,auto_lt
 2835482,Schwäbisch Gmünd,mieste Schwäbisch Gmünd,0,
-2513416,Murcia,mieste Murcia,0,
+2513416,Mursija,Mursijoje,1,auto_lt
 2970148,Vence,mieste Vence,0,
 3023240,Coulommiers,mieste Coulommiers,0,
 3029030,Cambrai,mieste Cambrai,0,
 261779,Ioannina,mieste Ioannina,0,translit_en
 3046446,Pest,mieste Pest,0,
-2790869,Mons,mieste Mons,0,
+2790869,Monsas,Monse,1,auto_lt
 2795113,Huy,mieste Huy,0,
-2659836,Lugano,mieste Lugano,0,
-2831580,Solingen,mieste Solingen,0,
+2659836,Lugano,Lugano,1,auto_lt
+2831580,Zolingenas,Zolingene,1,auto_lt
 2842150,Salzgitter,mieste Salzgitter,0,
 2943560,Bruchsal,mieste Bruchsal,0,
 2946228,Borken,mieste Borken,0,
 2953439,Bad Hersfeld,mieste Bad Hersfeld,0,
-3106672,Valladolid,mieste Valladolid,0,
+3106672,Valjadolidas,Valjadolide,1,auto_lt
 2984701,Quimper,mieste Quimper,0,
 2744114,Zaanstad,mieste Zaanstad,0,
-2782067,Baden,mieste Baden,0,
+2782067,Badenas,Badene,1,auto_lt
 2817724,Velbert,mieste Velbert,0,
 2936267,Donaueschingen,mieste Donaueschingen,0,
 3125239,Chamartín,mieste Chamartín,0,
 2997556,Lormont,mieste Lormont,0,
 3021000,Douai,mieste Douai,0,
-3021372,Dijon,mieste Dijon,0,
+3021372,Dižonas,Dižone,1,auto_lt
 3038354,Aix-en-Provence,mieste Aix-en-Provence,0,
 2640275,Pinner,mieste Pinner,0,
 2745340,Volendam,mieste Volendam,0,
