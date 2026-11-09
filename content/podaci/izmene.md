@@ -4,15 +4,16 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 29.10.2026
+updated: 09.11.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-10-29
+modified: 2026-11-09
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 9. novembar 2026
 
+- Nova stranica [Mapa punjača za vaš sajt](/mapa-za-vas-sajt/): besplatan vidžet sa mapom punjača ili cenama javnog punjenja za druge sajtove i aplikacije. Bira se grad, mreža ili sopstvena lokacija (hotel, salon), filter i jezik, a kod se kopira jednim klikom. Uz nju je i stranica [Podaci za programere](/za-programere/) sa otvorenim skupom lokacija punjača i formom za ostale podatke.
 - [Mapa punjača](/mapa/): kartica [Garaža Modena](/mapa/#bp-garaza-modena-novi-sad) u Novom Sadu sada ima priključke i cenu: osam punjača Tip 2 na nivou -1, utičnica bez kabla (ponesite svoj kabl), 60 RSD/kWh sa PDV-om po cenovniku u garaži (provera na licu mesta 2. novembra). Punjenje se pokreće parking karticom na „e-selektoru“, a plaća na blagajni pre izlaska, zajedno sa parkingom. I kod garaže Banovina cena 60 RSD/kWh sada stoji u delu „Cena“ kartice. Tačka garaže Modena pomerena je na mesto podzemne garaže, gde su punjači, a kartice garaža Best in Parking (Modena i Banovina) u delu „Kako se puni ovde“ sada imaju postupak sa cenovnika u garaži: kabl, parking kartica na e-selektoru, plaćanje na blagajni.
 
 ## 29. oktobar 2026

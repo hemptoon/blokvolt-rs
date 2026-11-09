@@ -2347,6 +2347,40 @@ reported to the owner, not re-queued blindly.
 **Status for people.** `SELECT id, repo, kind, slug, publish_after, status, commit_sha, substr(result, -300) FROM outbox
 ORDER BY id DESC LIMIT 20` — the morning QA review reads it and reports failed rows.
 
+### 3.40 Widgets for other sites (/embed/), the configurator and data for developers (since 09.11.2026)
+
+Owner's decision 09.11.2026: free widgets, no keys or sign-up, as marketing for BlokVolt (like PlugShare's free
+embedded map); the open API is a showcase (/za-programere/) — no paid API until there is demand (gate: ≥ 5 sites with the
+widget or ≥ 3 serious data requests in 12 weeks; the plan is the project doc `claude/BlokVolt_Vidzet_Karte_Plan_2026-11-09.md`).
+Points from the team's working list (source `tim`) are shown in widgets too (confirmed by the owner 09.11.2026) — shown
+only, never handed out as data (not in `punjaci.json`, not in answers to data requests without the owner's word).
+
+- **Pages.** `/embed/mapa/` (`templates/embed_mapa.html`) and `/embed/cene/` (`templates/embed_cene.html`), with
+  `/en/` and `/ru/` made by i18n like any page. No header or footer, `noindex`, canonical to /mapa/ and /javno-punjenje/,
+  not in the sitemap, `<base target="_blank">` (every link opens a new tab, never inside the host's frame).
+  `/mapa-za-vas-sajt/` (`templates/vidzet.html` + `static/assets/vidzet.js`) builds the code; `/za-programere/`
+  (`templates/za_programere.html`) documents `punjaci.json` (ODbL, CORS) and has the request form (kind `api` →
+  `/api/zahtev`, table `requests`, /admin/ queue). Footer links both; /mapa/ links the configurator in "Odakle su podaci".
+- **The map widget is map.js** with `cfg.embed = {open: '/mapa/'}` (`M['cfg_embed']` in build.py: the site's config without
+  `api`, `add`, `evo`): no reports, ratings, photos, "Dodaj punjač", favourites, "Moj auto" or Evolako line; the card's
+  last button is „Otvori na BlokVoltu" (the station on /mapa/, `utm_source=<host>&utm_medium=vidzet`); cooperative
+  gestures (Ctrl/⌘ + wheel, two fingers — the host page keeps scrolling); breakpoint 700 px of the frame (`WIDE`), the card
+  covers the side list (`CW = 0`). Elements map.js needs but the widget hides (car row, route button, cheap/fav chips) stay
+  in the template with `hidden` — removing them breaks map.js. URL: `?grad=<slug>`, `?mreza=<chip net>`, `?f=fast|free`,
+  `?ok=1`, `?mesto=<lat>,<lon>&naziv=<text>` (the host's own place: a dark pin with its name, the list ordered by distance).
+  `static/assets/embed.css` (layout, scoped to `body.emb`) and `embed.js` (narrow layout's list sheet, host name in the
+  signature links). A change of map.js or the map data is a change of every widget on other sites: run the test below.
+- **Headers.** `_headers` detaches `X-Frame-Options` and `Content-Security-Policy` for `/embed/*`, `/en/embed/*`,
+  `/ru/embed/*` (`! Name`, Cloudflare Pages); those pages carry their CSP as `<meta http-equiv>` (`EMBED_CSP` in build.py,
+  everything but `frame-ancestors`, which a meta cannot set — so any site may frame them). No inline scripts there. The
+  site CSP has `frame-src 'self'` for the configurator's preview. `scripts/qa/cfserve.py` understands `! Name`.
+- **Counting.** bv.js's visit counter runs in the widget: path `/embed/mapa/` with the host site as the referrer — the
+  morning report shows who embeds. No cookies; the widget keeps nothing in the browser (no favourites, no car).
+- **Never put in a widget:** ads (3.26 does not apply), paid places, the Evolako promo, ratings. Same rules as /mapa/ (§0).
+- **Test:** `python3 scripts/qa/embed_test.py /tmp/emb-shots` (with cfserve on 8787): the frame on another origin, no JS/CSP
+  errors, wide and narrow layouts, list sheet, card, host pin, network chip, RU, the price widget, the configurator's code
+  and preview, no overflow on a phone. Look at the screenshots.
+
 ## 4. Build and check
 
 ```bash

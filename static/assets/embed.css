@@ -1,0 +1,172 @@
+/* BlokVolt — widgets for other sites (/embed/…, RUNBOOK 3.40). Loaded after bv.css, only on the widget pages.
+   Everything is scoped to body.emb, so it wins over the map page's own rules (bv.css, .map-* at ≤ 900 px) without !important.
+   The frame is the viewport: the breakpoint is the frame's width, not the host page's.
+   Wide (≥ 700 px): list on the left (320 px, 360 px from 1000 px), map on the right; a charger card replaces the list.
+   Narrow: the map fills the frame; search and filters float on top; the list is a sheet from the bottom ("Lista");
+   the card is the map page's bottom sheet. */
+
+html:has(body.emb){height:100%;background:#fff}
+body.emb{display:block;height:100%;min-height:0;margin:0;overflow:hidden;background:#fff;font-size:15px}
+.emb .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- map widget: shared ---------- */
+.emb .map-app{position:fixed;inset:0;display:grid;grid-template-columns:320px minmax(0,1fr);height:auto;min-height:0;border:0;background:#fff}
+.emb .map-side{position:relative;display:flex;flex-direction:column;min-height:0;border-right:1px solid var(--line);background:#fff}
+.emb .map-top{order:0;padding:12px 12px 10px;border-bottom:1px solid var(--line)}
+.emb .map-top .search-box .input{height:40px;border-radius:12px;font-size:15px;background:#F6F6F2;border-color:transparent}
+.emb .map-top .search-box .input:focus{background:#fff;border-color:var(--ink);outline:none;box-shadow:0 0 0 3px rgba(217,244,91,.55)}
+.emb .map-top .chips{margin-top:9px;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:1px;
+  -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent)}
+.emb .map-top .chips::-webkit-scrollbar{display:none}
+.emb .map-top .chip{padding:5px 11px;font-size:13px;min-height:30px}
+.emb .map-top .chip svg{width:14px;height:14px}
+.emb .chip:focus-visible,.emb .st:focus-visible,.emb button:focus-visible,.emb a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+.emb-sheet{display:flex;flex-direction:column;flex:1 1 auto;min-height:0}
+.emb-sheet-h{display:flex;align-items:center;gap:8px;min-height:36px}
+.emb-grab,.emb-x{display:none}
+.emb .map-count{order:0;flex:1;min-width:0;padding:9px 14px 6px;font-size:12.5px;color:var(--mut)}
+.emb .map-list{order:0;flex:1 1 auto;min-height:0;max-height:none;overflow:auto;overscroll-behavior:contain;border-top:0}
+.emb .map-list .st{grid-template-columns:30px minmax(0,1fr) auto;gap:10px;padding:10px 14px}
+.emb .map-list .st .nm b{font-size:14px}
+.emb .map-list .st .sb{font-size:12.5px}
+.emb .map-list .dot{width:28px;height:28px;font-size:10.5px}
+.emb .map-list .more{padding:10px 14px 14px}
+
+/* the signature: who made the map, and the way to the full one */
+.emb-foot{display:flex;align-items:center;gap:10px;padding:9px 14px;border-top:1px solid var(--line);background:#FAFAF7;color:var(--ink);text-decoration:none;font-size:13px;line-height:1.25}
+.emb-foot:hover{background:#F3F3EE}
+.emb-foot>span{display:flex;flex-direction:column;flex:1;min-width:0}
+.emb-foot b{font-weight:750;letter-spacing:-.01em}
+.emb-foot small{font-size:12px;color:var(--mut)}
+.emb-foot .i{width:16px;height:16px;color:var(--mut2);flex:none}
+.emb-mark{width:26px;height:26px;flex:none}
+
+.emb .map-wrap{position:relative;order:0;height:auto;min-height:0}
+.emb #map{background:#ECEDE8}
+.emb .map-legend{left:10px;top:10px;gap:9px;padding:5px 9px;font-size:12px}
+.emb .map-me{display:none}
+.emb-dock{position:absolute;left:50%;bottom:34px;z-index:3;display:flex;gap:8px;transform:translateX(-50%);white-space:nowrap}
+.emb .map-near{position:static;display:inline-flex;transform:none;min-height:42px;padding:8px 16px;font-size:14.5px}
+.emb-listbtn{display:none}
+.emb-dock svg{flex:none}
+.emb .map-attr{left:8px;right:8px;bottom:6px;max-width:none;width:max-content;max-width:calc(100% - 16px);display:flex;align-items:center;gap:8px;padding:3px 8px;font-size:11px;line-height:1.35;border-radius:7px}
+.emb .map-attr a{text-decoration:none}
+.emb .map-attr .emb-src a:hover{text-decoration:underline}
+.emb-by{display:none;align-items:center;gap:5px;font-size:11.5px;color:var(--ink);letter-spacing:-.01em}
+.emb-by b{font-weight:800}
+.emb-mark-s{width:15px;height:15px}
+.emb-src-s{display:none}
+
+/* the card takes the side column's place (the map stays in view) */
+.emb .card-ov{position:absolute;top:0;bottom:0;left:-320px;right:auto;width:320px;max-width:none;z-index:6}
+.emb .card-ov .ccard{height:100%;max-height:none;border-radius:0;box-shadow:none;border-right:1px solid var(--line);padding:16px 14px 18px}
+.emb .ccard h2{font-size:17.5px;margin-right:44px}
+.emb .ccard .acts{gap:7px}
+.emb .ccard .acts .btn{min-height:40px;font-size:14px}
+.emb .ccard .emb-open .i,.emb .ccard .emb-open svg{width:16px;height:16px}
+
+@media (min-width:1000px){
+  .emb .map-app{grid-template-columns:360px minmax(0,1fr)}
+  .emb .card-ov{left:-360px;width:360px}
+}
+
+/* the host's own place (?mesto=…&naziv=…): its name above a dark pin with a lime core */
+.host-pin{display:flex;flex-direction:column-reverse;align-items:center;gap:6px;pointer-events:none}
+.host-dot{width:16px;height:16px;border-radius:50%;background:var(--volt);box-shadow:0 0 0 3px var(--ink),0 0 0 8px rgba(217,244,91,.35),0 4px 12px rgba(13,17,26,.35)}
+.host-n{position:relative;max-width:200px;overflow:hidden;text-overflow:ellipsis;padding:6px 10px;border-radius:9px;background:var(--ink);color:#fff;font:650 12.5px/1.2 'Onest',system-ui,sans-serif;white-space:nowrap;box-shadow:0 6px 18px -6px rgba(13,17,26,.6)}
+
+/* ---------- map widget: narrow frames ---------- */
+@media (max-width:699.98px){
+  .emb .map-app{display:block}
+  .emb .map-side{display:contents}
+  .emb .map-wrap{position:absolute;inset:0;height:auto}
+  .emb .map-top{position:absolute;z-index:5;left:0;right:0;top:0;padding:10px 10px 0;border:0;background:none;pointer-events:none}
+  .emb .map-top>*{pointer-events:auto}
+  .emb .map-top .search-box .input{height:44px;border:0;border-radius:14px;background:#fff;box-shadow:0 0 0 1px var(--line),0 6px 18px -6px rgba(13,17,26,.28)}
+  .emb .map-top .chips{margin-top:8px;padding:0 0 8px;width:calc(100% + 10px);margin-right:-10px}
+  .emb .map-top .chip{border-color:transparent;box-shadow:0 0 0 1px var(--line),0 3px 10px -4px rgba(13,17,26,.25)}
+  .emb .map-top .chip[aria-pressed="true"]{box-shadow:0 3px 10px -4px rgba(13,17,26,.4)}
+  .emb .maplibregl-ctrl-top-right{top:96px}
+  .emb .map-legend{display:none}
+
+  .emb-sheet{position:absolute;z-index:7;left:0;right:0;bottom:0;height:min(68%,480px);background:#fff;border-radius:18px 18px 0 0;
+    box-shadow:0 -12px 40px -8px rgba(13,17,26,.3);transform:translateY(calc(100% + 20px));visibility:hidden;
+    transition:transform .26s cubic-bezier(.2,.8,.2,1),visibility 0s .26s}
+  .emb-list-open .emb-sheet{transform:none;visibility:visible;transition:transform .26s cubic-bezier(.2,.8,.2,1)}
+  .emb-sheet-h{position:relative;padding:12px 8px 2px 2px;border-bottom:1px solid var(--line)}
+  .emb-grab{display:block;position:absolute;left:50%;top:6px;width:36px;height:4px;border-radius:2px;background:var(--line2);transform:translateX(-50%)}
+  .emb .map-count{padding:6px 12px 8px;font-size:13px}
+  .emb-x{display:grid;place-items:center;width:34px;height:34px;flex:none;border:0;border-radius:10px;background:var(--surface2);color:var(--ink);cursor:pointer}
+  .emb-x svg{width:18px;height:18px}
+  .emb .map-list .st:first-child{border-top:0}
+
+  .emb-dock{bottom:30px}
+  .emb-listbtn{display:inline-flex;align-items:center;gap:7px;min-height:42px;padding:8px 15px;border:0;border-radius:999px;background:#fff;color:var(--ink);
+    font:inherit;font-size:14.5px;font-weight:650;cursor:pointer;box-shadow:0 0 0 1px var(--line),0 10px 28px -10px rgba(13,17,26,.45)}
+  .emb-listbtn svg{width:17px;height:17px;flex:none}
+  .emb-listbtn .n{font-weight:500;color:var(--mut)}
+  .emb .map-near{border-radius:999px}
+  .emb-foot{display:none}
+  .emb-by{display:inline-flex}
+  .emb .map-attr{font-size:10.5px;gap:7px}
+
+  .emb .card-ov{position:fixed;left:0;right:0;top:auto;bottom:0;width:auto;z-index:80}
+  .emb .card-ov .ccard{height:auto;max-height:82%;max-height:82vh;border-right:0;border-radius:20px 20px 0 0;box-shadow:0 -12px 40px rgba(13,17,26,.28);padding:18px 14px 20px}
+}
+@media (max-width:380px){
+  .emb .map-near span{font-size:14px}
+  .emb-listbtn,.emb .map-near{padding-left:13px;padding-right:13px}
+  .emb .emb-src{display:none}
+  .emb .emb-src-s{display:inline}
+}
+/* a very low frame: the list sheet takes more of it */
+@media (max-width:699.98px) and (max-height:460px){
+  .emb-sheet{height:calc(100% - 64px)}
+  .emb .map-top .chips{display:none}
+  .emb .maplibregl-ctrl-top-right{top:58px}
+}
+@media (prefers-reduced-motion:reduce){
+  .emb-sheet,.emb-list-open .emb-sheet{transition:none}
+}
+
+/* ---------- price widget (/embed/cene/) ---------- */
+body.emb-cene{overflow:auto;background:#fff}
+.ew{display:flex;flex-direction:column;min-height:100%;padding:16px 16px 0}
+.ew-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 4px}
+.ew-h h1{margin:0;font-size:18px;letter-spacing:-.02em}
+.ew-h time{font-size:12.5px;color:var(--mut);white-space:nowrap}
+.ew-lead{margin:0 0 12px;font-size:13px;color:var(--mut);line-height:1.45}
+.ew-rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.ew-row{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.ew-row .lg{width:36px;height:36px;border-radius:10px}
+.ew-row .ew-n{min-width:0}
+.ew-row .ew-n b{display:block;font-size:14.5px;font-weight:680;line-height:1.25}
+.ew-row .ew-n a{color:inherit;text-decoration:none}
+.ew-row .ew-n a:hover{text-decoration:underline;text-underline-offset:2px}
+.ew-row .ew-n span{display:block;font-size:12.5px;color:var(--mut);line-height:1.35}
+.ew-p{display:grid;gap:2px;text-align:right;font-variant-numeric:tabular-nums}
+.ew-p div{display:flex;justify-content:flex-end;align-items:baseline;gap:7px;white-space:nowrap}
+.ew-p small{font-size:11.5px;color:var(--mut)}
+.ew-p b{font-size:14px;font-weight:700}
+.ew-p b.free{color:var(--ok)}
+.ew-note{margin:10px 0 0;font-size:12px;color:var(--mut);line-height:1.45}
+.ew-foot{display:flex;align-items:center;gap:10px;margin:14px -16px 0;padding:10px 16px;border-top:1px solid var(--line);background:#FAFAF7;color:var(--ink);text-decoration:none;font-size:13px;margin-top:auto}
+.ew-foot:hover{background:#F3F3EE}
+.ew-foot>span{display:flex;flex-direction:column;flex:1;line-height:1.25}
+.ew-foot b{font-weight:750}
+.ew-foot small{font-size:12px;color:var(--mut)}
+.ew-foot .i{width:16px;height:16px;color:var(--mut2)}
+.ew-rows+.ew-note{margin-bottom:0}
+@media (max-width:560px){
+  .ew-row{grid-template-columns:36px minmax(0,1fr);row-gap:8px;align-items:start}
+  .ew-p{grid-column:2;gap:4px;text-align:left}
+  .ew-p div{justify-content:space-between;gap:12px;padding:5px 9px;border-radius:8px;background:#F6F6F2}
+  .ew-p b{font-size:13.5px;white-space:normal;text-align:right}
+}
+@media (max-width:420px){
+  .ew{padding:14px 12px 0}
+  .ew-foot{margin-left:-12px;margin-right:-12px;padding-left:12px;padding-right:12px}
+  .ew-row{grid-template-columns:30px minmax(0,1fr) auto;gap:10px}
+  .ew-row .lg{width:30px;height:30px;border-radius:8px}
+}

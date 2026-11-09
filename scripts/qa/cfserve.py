@@ -18,6 +18,9 @@ def load_headers():
         if not line.startswith((' ', '\t')):
             cur = (re.compile('^' + re.escape(line.strip()).replace(r'\*', '.*') + '$'), [])
             rules.append(cur)
+        elif cur and line.strip().startswith('!'):
+            # "! Name": detach a header a more general rule set (Cloudflare Pages; used by /embed/*, RUNBOOK 3.40)
+            cur[1].append(('!', line.strip()[1:].strip()))
         elif cur and ':' in line:
             k, v = line.strip().split(':', 1)
             cur[1].append((k.strip(), v.strip()))
@@ -30,10 +33,17 @@ RULES = load_headers()
 class H(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
         path = self.path.split('?', 1)[0]
+        out, drop = [], set()
         for rx, hs in RULES:
             if rx.match(path):
                 for k, v in hs:
-                    self.send_header(k, v)
+                    if k == '!':
+                        drop.add(v.lower())
+                    else:
+                        out.append((k, v))
+        for k, v in out:
+            if k.lower() not in drop:
+                self.send_header(k, v)
         super().end_headers()
 
     def send_head(self):

@@ -939,6 +939,10 @@ def _ver(p):
 
 
 MAP_T = {
+    # the widget for other sites (/embed/mapa/, RUNBOOK 3.40): the card's last button and the map's gesture hints
+    'emb_open': 'Otvori na BlokVoltu', 'host_pin': 'Vaše mesto',
+    'coop_w': 'Za zumiranje mape držite Ctrl i skrolujte', 'coop_m': 'Za zumiranje mape držite ⌘ i skrolujte',
+    'coop_t': 'Mapu pomerate sa dva prsta',
     'schuko': 'Šuko', 'other': 'Ostalo', 'charger': 'Punjač', 'near': 'okolina: {t}', 'per_min': 'RSD/min', 'free': 'Besplatno',
     'p_unknown': 'Cena nije poznata. Proverite u aplikaciji mreže.', 'p_venue': 'Cena po navodu: {s}', 'p_free': 'Besplatno', 'p_exact': 'Cena na ovom punjaču',
     'p_tier': 'Cena mreže za {c}', 'p_receipt': 'Račun: {l}, {k} RSD po kWh', 'p_range': 'Između cena za {a} i {b}',
@@ -1145,6 +1149,11 @@ M = {
     }, ensure_ascii=False).replace('</', '<\\/'),
     'i18n': json.dumps(MAP_T, ensure_ascii=False),
 }
+_mc = json.loads(M['cfg'].replace('<\\/', '</'))
+for _k in ('api', 'add', 'evo'):
+    _mc.pop(_k, None)
+_mc['embed'] = {'open': '/mapa/'}
+M['cfg_embed'] = json.dumps(_mc, ensure_ascii=False).replace('</', '<\\/')
 
 
 def near_count(lat, lon, km=15):
@@ -2283,6 +2292,55 @@ render('mapa.html', '/mapa/', M=M, PRICE_SUMMARY=PRICE_SUMMARY, PRICE_DATE=PRICE
        description=f"{MAP['n']} javnih punjača u Srbiji na mapi: mreža, snaga, priključci i cena punjenja. Charge&GO, Orion eMobility, besplatni punjači na autoputevima.")
 add_url('/mapa/', '0.9')
 
+# ---------------------------------------------------------------- widgets for other sites, docs/RUNBOOK.md 3.40
+# /embed/mapa/ (the map, map.js with cfg.embed) and /embed/cene/ (public charging prices): pages made to sit in an
+# iframe on any site. No header or footer, noindex, not in the sitemap; _headers takes X-Frame-Options and the CSP header
+# off for /embed/* (frame-ancestors would block other sites), so the pages carry their CSP in a <meta> (everything but
+# frame-ancestors). /mapa-za-vas-sajt/ builds the code; /za-programere/ has the open data and the request form.
+EMBED_CSP = '; '.join([
+    "default-src 'self'",
+    "script-src 'self' https://static.cloudflareinsights.com",
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: blob: https://tiles.openfreemap.org",
+    "font-src 'self'",
+    "connect-src 'self' https://tiles.openfreemap.org https://cloudflareinsights.com https://photon.komoot.io https://routing.openstreetmap.de",
+    "worker-src 'self' blob:",
+    "child-src 'self' blob:",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    'upgrade-insecure-requests',
+])
+_pd = PRICE_DATE.split('.')
+render('embed_mapa.html', '/embed/mapa/', M=M, EMBED_CSP=EMBED_CSP, noindex=True,
+       title='Mapa punjača za električne automobile — BlokVolt', description='Mapa javnih punjača u Srbiji sa cenama.')
+render('embed_cene.html', '/embed/cene/', PRICE_SUMMARY=PRICE_SUMMARY, PRICE_DATE=PRICE_DATE, EMBED_CSP=EMBED_CSP, noindex=True,
+       PRICE_ISO=f'{_pd[2]}-{_pd[1]}-{_pd[0]}' if len(_pd) == 3 else '',
+       title='Cene javnog punjenja u Srbiji — BlokVolt', description='Cene javnog punjenja po mrežama u Srbiji.')
+VZ_CITIES = sorted({(c['slug'], c['name']) for c in TOWN_CFG if c['name'] in TOWN_XY}, key=lambda x: (x[0] not in ('beograd', 'novi-sad', 'nis', 'kragujevac'), x[1].replace('Č', 'Cz').replace('Š', 'Sz').replace('Ž', 'Zz')))
+VZ_CFG = json.dumps({
+    'site': SITE,
+    # the code's texts follow the widget's language
+    'txt': {
+        'sr': {'title_map': 'Mapa punjača za električne automobile — BlokVolt', 'title_cene': 'Cene javnog punjenja u Srbiji — BlokVolt',
+               'src': 'Izvor:', 'link_map': 'Mapa punjača BlokVolt', 'link_cene': 'Cene javnog punjenja, BlokVolt'},
+        'en': {'title_map': 'EV charging map of Serbia — BlokVolt', 'title_cene': 'Public charging prices in Serbia — BlokVolt',
+               'src': 'Source:', 'link_map': 'BlokVolt charging map', 'link_cene': 'Public charging prices, BlokVolt'},
+        'ru': {'title_map': 'Карта зарядок для электромобилей в Сербии — BlokVolt', 'title_cene': 'Цены публичной зарядки в Сербии — BlokVolt',
+               'src': 'Источник:', 'link_map': 'Карта зарядок BlokVolt', 'link_cene': 'Цены публичной зарядки, BlokVolt'},
+    },
+    'copied': {'sr': 'Kopirano', 'en': 'Copied', 'ru': 'Скопировано'},
+}, ensure_ascii=False).replace('</', '<\\/')
+render('vidzet.html', '/mapa-za-vas-sajt/', M=M, VZ_CITIES=VZ_CITIES, VZ_CFG=VZ_CFG, section='mapa',
+       title='Mapa punjača za vaš sajt: besplatan vidžet sa cenama | BlokVolt',
+       description="Besplatna mapa javnih punjača u Srbiji za vaš sajt: podesite grad, filtere i jezik, kopirajte kod. Bez registracije, podaci se ažuriraju sami.")
+add_url('/mapa-za-vas-sajt/', '0.6')
+_open_n = len(json.loads((DIST / 'assets' / 'map' / 'punjaci.json').read_text(encoding='utf-8'))['stations'])
+render('za_programere.html', '/za-programere/', OPEN_N=_open_n, section='',
+       title='Podaci o punjačima za programere i medije: vidžet, JSON, CSV | BlokVolt',
+       description='Vidžet mape punjača za sajt, otvoreni JSON sa lokacijama javnih punjača u Srbiji (ODbL) i CSV tabele cena. Besplatno, uz navođenje izvora.')
+add_url('/za-programere/', '0.5')
+
 # ---------------------------------------------------------------- service map (/servisi/), docs/RUNBOOK.md 3.31
 # content/servisi/servisi.json: the authorized services of the brands that sell electric cars (the importers' own lists) and
 # the independent services that say on their own sites that they work on electric cars. Every place has a source and a date;
@@ -2942,7 +3000,7 @@ sm.append('</urlset>')
 (DIST / 'sitemap.xml').write_text('\n'.join(sm), encoding='utf-8')
 
 # ---------------------------------------------------------------- cache busting (/assets/* is cached for a year)
-_ver_map = {a: _ver(DIST / 'assets' / a) for a in ('bv.css', 'bv.js', 'map.js', 'servisi.js', 'nalog.js', 'fx.js', 'valuta.js', 'pretraga.js')}
+_ver_map = {a: _ver(DIST / 'assets' / a) for a in ('bv.css', 'bv.js', 'map.js', 'servisi.js', 'nalog.js', 'fx.js', 'valuta.js', 'pretraga.js', 'embed.css', 'embed.js', 'vidzet.js')}
 _search = json.dumps({'sr': '/assets/search.json?v=' + _ver(DIST / 'assets' / 'search.json'),
                       **{l: f'/assets/search-{l}.json?v=' + _ver(DIST / 'assets' / f'search-{l}.json') for l in _i18n.LANGS}})
 _search_cfg = json.dumps({'lib': '/assets/vendor/minisearch-7.2.0.min.js', 'index': json.loads(_search), 'syn': SEARCH['syn'],
@@ -2980,7 +3038,7 @@ CSP = '; '.join([
     + (' ' + ' '.join(_ph) if _ph else ''),
     "worker-src 'self' blob:",
     "child-src 'self' blob:",
-    'frame-src https://www.youtube-nocookie.com',
+    "frame-src 'self' https://www.youtube-nocookie.com",   # 'self': the widget preview on /mapa-za-vas-sajt/ (3.40)
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
@@ -3011,6 +3069,19 @@ CSP = '; '.join([
     '  Access-Control-Allow-Origin: *',
     '  Cache-Control: public, max-age=3600',
     '/offline',
+    '  X-Robots-Tag: noindex',
+    # the widgets (RUNBOOK 3.40): any site may frame them; their CSP (all but frame-ancestors) is a <meta> in the page
+    '/embed/*',
+    '  ! X-Frame-Options',
+    '  ! Content-Security-Policy',
+    '  X-Robots-Tag: noindex',
+    '/en/embed/*',
+    '  ! X-Frame-Options',
+    '  ! Content-Security-Policy',
+    '  X-Robots-Tag: noindex',
+    '/ru/embed/*',
+    '  ! X-Frame-Options',
+    '  ! Content-Security-Policy',
     '  X-Robots-Tag: noindex',
     '/app/*',
     '  Cache-Control: public, max-age=300',

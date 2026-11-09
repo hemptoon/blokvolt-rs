@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import pagehead %}
+{% from '_icons.html' import ic, mark %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "WebPage", "name": {{ title|tojson }}, "description": {{ description|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "isPartOf": {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/"}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Mapa punjača", "item": "{{ SITE }}/mapa/"}, {"@type": "ListItem", "position": 3, "name": "Mapa za vaš sajt", "item": "{{ SITE }}{{ canon }}"}]}
+ ]
+}</script>{% endblock %}
+{% block pagehead %}{{ pagehead('Mapa punjača za vaš sajt', 'Besplatna mapa javnih punjača u Srbiji, sa cenama po mrežama. Podesite je, kopirajte kod i nalepite ga na svoj sajt. Podaci se ažuriraju sami.', crumbs=[('/mapa/', 'Mapa punjača'), (None, 'Mapa za vaš sajt')]) }}{% endblock %}
+{% block content %}
+<div class="vz" data-vz>
+<form class="vz-form" aria-label="Podešavanje vidžeta">
+<fieldset class="vz-step"><legend><span class="vz-num" aria-hidden="true">1</span>Šta prikazujete</legend>
+<div class="vz-types">
+<label class="vz-type"><input type="radio" name="tip" value="mapa" checked><span class="vz-tc">{{ ic('map') }}<b>Mapa punjača</b><small>Svi javni punjači, pretraga, filteri, cene i navigacija do punjača</small></span></label>
+<label class="vz-type"><input type="radio" name="tip" value="cene"><span class="vz-tc">{{ ic('coins') }}<b>Cene javnog punjenja</b><small>Cene po mrežama, sa datumom provere</small></span></label>
+</div>
+</fieldset>
+
+<fieldset class="vz-step" data-vz-map><legend><span class="vz-num" aria-hidden="true">2</span>Šta mapa pokazuje na početku</legend>
+<div class="field"><label for="vz-pogled">Početni prikaz</label><select class="select" id="vz-pogled" name="pogled">
+<option value="srbija">Cela Srbija</option>
+<option value="grad">Jedan grad</option>
+<option value="mesto">Moja lokacija (hotel, salon, parking)</option>
+</select></div>
+<div class="field" data-vz-if="grad" hidden><label for="vz-grad">Grad</label><select class="select" id="vz-grad" name="grad">{% for slug, name in VZ_CITIES %}<option value="{{ slug }}"{% if slug == 'novi-sad' %} selected{% endif %}>{{ name }}</option>{% endfor %}</select></div>
+<div data-vz-if="mesto" hidden>
+<div class="field"><label for="vz-ll">Koordinate</label><input class="input" id="vz-ll" name="ll" inputmode="decimal" autocomplete="off" placeholder="45.2551, 19.8452" aria-describedby="vz-ll-h vz-ll-e"><span class="hint" id="vz-ll-h">U Google mapama kliknite desnim klikom na svoju zgradu: prvi red menija su koordinate. Kliknite na njih i nalepite ovde.</span><span class="vz-err" id="vz-ll-e" role="alert" hidden>Upišite dva broja, geografsku širinu i dužinu, na primer 45.2551, 19.8452.</span></div>
+<div class="field"><label for="vz-naziv">Naziv na mapi (nije obavezno)</label><input class="input" id="vz-naziv" name="naziv" maxlength="40" autocomplete="off" placeholder="Hotel Dunav"><span class="hint">Mapa prikazuje vaše mesto i ređa punjače po udaljenosti od njega.</span></div>
+</div>
+<div class="field"><label for="vz-filter">Koji punjači</label><select class="select" id="vz-filter" name="filter">
+<option value="all">Svi punjači</option>
+<option value="fast">Samo brzi (DC od 50 kW)</option>
+<option value="free">Samo besplatni</option>
+{% for slug, name, n in M.chips %}<option value="net:{{ slug }}">Samo mreža {{ name }}</option>{% endfor %}
+</select></div>
+<label class="vz-ck"><input type="checkbox" name="ok"><span>Samo potvrđeni punjači</span></label>
+</fieldset>
+
+<fieldset class="vz-step"><legend><span class="vz-num" aria-hidden="true"><span data-vz-n>3</span></span>Jezik i visina</legend>
+<div class="vz-seg" role="radiogroup" aria-label="Jezik">
+<label><input type="radio" name="jezik" value="sr" checked><span>Srpski</span></label>
+<label><input type="radio" name="jezik" value="en"><span translate="no">English</span></label>
+<label><input type="radio" name="jezik" value="ru"><span translate="no" lang="ru">Русский</span></label>
+</div>
+<div class="vz-seg" role="radiogroup" aria-label="Visina">
+<label><input type="radio" name="visina" value="440"><span>Niska</span></label>
+<label><input type="radio" name="visina" value="560" checked><span>Srednja</span></label>
+<label><input type="radio" name="visina" value="720"><span>Visoka</span></label>
+</div>
+</fieldset>
+</form>
+
+<div class="vz-out">
+<div class="vz-stage" data-vz-stage>
+<div class="vz-bar"><span class="vz-bar-t">Pregled</span>
+<div class="vz-dev" role="radiogroup" aria-label="Veličina ekrana"><label><input type="radio" name="dev" value="pc" checked><span>Računar</span></label><label><input type="radio" name="dev" value="tel"><span>Telefon</span></label></div></div>
+<div class="vz-host" data-vz-host>
+<div class="vz-fake" aria-hidden="true"><i></i><i></i><i class="s"></i></div>
+<div class="vz-scale" data-vz-scale><iframe class="vz-frame" data-vz-frame src="/embed/mapa/" title="Pregled vidžeta" height="560" loading="lazy" allow="geolocation"></iframe></div>
+<div class="vz-fake" aria-hidden="true"><i class="s"></i></div>
+</div>
+</div>
+
+<div class="vz-code">
+<div class="vz-code-h"><h2><span class="vz-num" aria-hidden="true" data-vz-cn>4</span>Kopirajte kod</h2><button class="btn dark" type="button" data-vz-copy>{{ ic('copy') }}<span>Kopiraj kod</span></button></div>
+<label class="sr-only" for="vz-kod">Kod za vaš sajt</label>
+<textarea class="vz-ta" id="vz-kod" readonly rows="5" spellcheck="false" translate="no" data-vz-code></textarea>
+<p class="vz-copied" role="status" data-vz-ok hidden>Kod je kopiran. Nalepite ga na svoju stranu kao HTML.</p>
+</div>
+</div>
+</div>
+
+<div class="vz-more">
+<section class="vz-how" aria-labelledby="vz-how-h">
+<h2 id="vz-how-h">Kako da postavite kod</h2>
+<details open><summary>WordPress</summary><p>Otvorite stranu u uređivaču, dodajte blok „Custom HTML“ (Prilagođeni HTML) i nalepite kod. Sačuvajte i otvorite stranu da proverite.</p></details>
+<details><summary>Wix</summary><p>Dodaj → Embed Code → Embed HTML. Nalepite kod, pa razvucite okvir na željenu širinu i visinu.</p></details>
+<details><summary>Tilda</summary><p>Dodajte blok T123 (HTML kod) i nalepite kod. Objavite stranu.</p></details>
+<details><summary>Webflow</summary><p>Prevucite element Embed na stranu i nalepite kod. Objavite sajt.</p></details>
+<details><summary>Drugi sajtovi i aplikacije</summary><p>Kod je običan iframe: radi na svakom sajtu koji prima HTML. U aplikaciji otvorite adresu vidžeta u WebView-u.</p></details>
+</section>
+<section class="vz-faq" aria-labelledby="vz-faq-h">
+<h2 id="vz-faq-h">Pitanja</h2>
+<details><summary>Da li je besplatno?</summary><p>Da. Nema naknade, registracije ni ograničenja broja prikaza. Molimo samo da ostavite link ispod mape, on je već u kodu.</p></details>
+<details><summary>Koliko su podaci sveži?</summary><p>Vidžet čita iste podatke kao <a class="lnk" href="/mapa/">mapa na BlokVoltu</a>. Kad dodamo punjač ili promenimo cenu, promena se vidi i na vašem sajtu, bez novog koda.</p></details>
+<details><summary>Šta vidžet radi sa podacima posetilaca?</summary><p>Ne postavlja kolačiće i ne prati posetioce. Lokaciju za „Najbliži punjač“ pregledač daje samo kad je posetilac dozvoli i ona ne napušta njegov uređaj. Brojimo samo prikaze vidžeta po sajtu, bez podataka o ljudima.</p></details>
+<details><summary>Ima li reklama ili plaćenih mesta?</summary><p>Nema. Sve mreže i punjači prikazani su po istim pravilima kao na sajtu (<a class="lnk" href="/metodologija/">metodologija</a>).</p></details>
+<details><summary>Mogu li da prikažem samo svoje punjače?</summary><p>Ako ste mreža sa liste iznad, izaberite je u polju „Koji punjači“. Ako vaših punjača nema na mapi, dodajte ih dugmetom „Dodaj punjač“ na <a class="lnk" href="/mapa/">mapi</a> ili pišite na <a class="lnk" href="mailto:hello@blokvolt.com">hello@blokvolt.com</a>.</p></details>
+<details><summary>Treba vam spisak punjača ili cene u fajlu?</summary><p>Otvoreni podaci i zahtev za ostale podatke su na strani <a class="lnk" href="/za-programere/">Podaci za programere</a>.</p></details>
+</section>
+</div>
+<script id="vz-cfg" type="application/json">{{ VZ_CFG|safe }}</script>
+{% endblock %}
+{% block scripts %}<script src="/assets/vidzet.js" defer></script>{% endblock %}

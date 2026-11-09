@@ -1,0 +1,63 @@
+{% from '_icons.html' import ic, mark %}<!DOCTYPE html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="{{ EMBED_CSP }}">
+<title>Mapa punjača za električne automobile — BlokVolt</title>
+<meta name="description" content="Mapa javnih punjača u Srbiji sa cenama, za ugradnju na druge sajtove.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{{ SITE }}/mapa/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/onest-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/vendor/maplibre-6.11.1/maplibre-gl.css">
+<link rel="stylesheet" href="/assets/bv.css">
+<link rel="stylesheet" href="/assets/embed.css">
+<link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>
+<base target="_blank">
+</head>
+<body class="emb emb-map map-page">
+<div class="map-app">
+<aside class="map-side" aria-label="Pretraga i lista punjača">
+<div class="map-top">
+<div class="search-box">{{ ic('search') }}<label class="sr-only" for="mq">Pretraga punjača</label><input class="input" id="mq" type="search" placeholder="Grad, adresa ili mreža" autocomplete="off" enterkeyhint="search"></div>
+<div class="car-row" hidden><button class="car-btn" id="mcar" type="button"><span class="car-v" data-carlbl></span></button><button class="near-m" type="button" data-near hidden></button></div>
+<button class="rt-btn" id="mroute" type="button" hidden><span data-rtlbl></span></button>
+<div class="chips" id="mchips">
+<button class="chip" type="button" data-f="all" aria-pressed="true">Svi</button>
+<button class="chip" type="button" data-f="fast" aria-pressed="false">{{ ic('bolt') }}Brzi (DC ≥ 50 kW)</button>
+<button class="chip" type="button" data-f="ac" aria-pressed="false">AC</button>
+<button class="chip" type="button" data-f="free" aria-pressed="false">Besplatni</button>
+<button class="chip chip-ok" type="button" data-f="ok" aria-pressed="false">{{ ic('check') }}Potvrđeni</button>
+<button class="chip" type="button" data-f="chademo" aria-pressed="false">CHAdeMO</button>
+<button class="chip chip-cheap" type="button" data-f="cheap" aria-pressed="false" hidden></button>
+<button class="chip chip-fav" type="button" data-f="fav" aria-pressed="false" hidden><span data-favn hidden></span></button>
+{% for slug, name, n in M.chips %}<button class="chip" type="button" data-f="net:{{ slug }}" aria-pressed="false">{{ name }} <span class="n">{{ n }}</span></button>{% endfor %}
+</div>
+</div>
+<div class="emb-sheet" id="emb-sheet">
+<div class="emb-sheet-h"><span class="emb-grab" aria-hidden="true"></span><div class="map-count" id="mcount" aria-live="polite">Učitavanje…</div><button class="emb-x" type="button" data-emb-close aria-label="Zatvori listu">{{ ic('x') }}</button></div>
+<div class="map-list" id="mlist"><noscript><p class="empty">Za mapu je potreban JavaScript.</p></noscript></div>
+</div>
+<a class="emb-foot" href="/mapa/?utm_source=vidzet&amp;utm_medium=vidzet&amp;utm_campaign=potpis" data-emb-full>{{ mark('emb-mark') }}<span><b translate="no">blokvolt.rs</b><small>Otvori veliku mapu</small></span>{{ ic('ext') }}</a>
+</aside>
+<div class="map-wrap">
+<div id="map" role="region" aria-label="Mapa javnih punjača"></div>
+<div class="map-legend" aria-hidden="true"><span><i class="l-dc"></i>DC</span><span><i class="l-ac"></i>AC</span><span><i class="l-free"></i>Besplatno</span><span><i class="l-nep"></i>Nije potvrđeno</span></div>
+<button class="btn sm map-me" id="mme" type="button">{{ ic('locate') }}<span>Blizu mene</span></button>
+<div class="emb-dock">
+<button class="emb-listbtn" type="button" data-emb-list aria-controls="emb-sheet" aria-expanded="false">{{ ic('list') }}<span>Lista</span></button>
+<button class="btn dark map-near" id="mnear" type="button" data-near>{{ ic('nav') }}<span>Najbliži punjač</span></button>
+</div>
+<div class="map-attr"><a class="emb-by" href="/mapa/?utm_source=vidzet&amp;utm_medium=vidzet&amp;utm_campaign=atribucija" data-emb-full translate="no">{{ mark('emb-mark-s') }}<b>blokvolt</b></a><span class="emb-src">© <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>, <a href="https://openchargemap.org" rel="noopener">Open Charge Map</a>, <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a></span><span class="emb-src-s">© <a href="https://www.openstreetmap.org/copyright" rel="noopener" translate="no">OSM</a>, <a href="https://openchargemap.org" rel="noopener" translate="no">OCM</a></span></div>
+<div class="card-ov" id="mcard"></div>
+</div>
+</div>
+<script id="map-cfg" type="application/json">{{ M.cfg_embed|safe }}</script>
+<script id="bv-i18n" type="application/json">{{ M.i18n|safe }}</script>
+<script src="/assets/bv.js" defer></script>
+<script src="/assets/embed.js" defer></script>
+<script type="module" src="/assets/map.js"></script>
+</body>
+</html>

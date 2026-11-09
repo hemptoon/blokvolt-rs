@@ -14,7 +14,8 @@ const STATUSES = new Set(['ok', 'problem', 'broken', 'missing']);
 // drivers' short answers on the map card (map.js: WHY, FACTS): field -> allowed values
 const FACT_VALUES = { why: new Set(['busy', 'broken', 'app', 'cable', 'closed', 'short']), cab: new Set(['att', 'own']),
   park: new Set(['free', 'paid']), oh: new Set(['24', 'lim']) };
-const KINDS = new Set(['firma', 'mreza', 'ispravka', 'stanica', 'pomoc', 'pretraga']);
+// 'api': a request for data beyond the open set (/za-programere/, RUNBOOK 3.40)
+const KINDS = new Set(['firma', 'mreza', 'ispravka', 'stanica', 'pomoc', 'pretraga', 'api']);
 // "Dodaj punjač": a charger a driver adds on the map (table novi, RUNBOOK 3.11d). Serbia only; every one waits for moderation.
 const NOVI_K = new Set(['dc', 'ac', 'uticnica', 'nz']);                 // DC / AC (Type 2) / ordinary socket / do not know
 const NOVI_PL = new Set(['type2', 'ccs2', 'chademo', 'tesla', 'schuko']);

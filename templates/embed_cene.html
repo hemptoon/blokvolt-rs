@@ -1,0 +1,30 @@
+{% from '_icons.html' import ic, mark %}{% from '_macros.html' import lg %}<!DOCTYPE html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="{{ EMBED_CSP }}">
+<title>Cene javnog punjenja u Srbiji — BlokVolt</title>
+<meta name="description" content="Cene javnog punjenja po mrežama u Srbiji, za ugradnju na druge sajtove.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{{ SITE }}/javno-punjenje/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/bv.css">
+<link rel="stylesheet" href="/assets/embed.css">
+<base target="_blank">
+</head>
+<body class="emb emb-cene">
+<main class="ew">
+<div class="ew-h"><h1>Cene javnog punjenja</h1><time datetime="{{ PRICE_ISO }}">{{ PRICE_DATE }}</time></div>
+<p class="ew-lead">Po mrežama u Srbiji, iz aplikacija mreža i sa računa. Tačnu cenu pre punjenja pokazuje aplikacija mreže.</p>
+<ul class="ew-rows">{% for net in PRICE_SUMMARY %}
+<li class="ew-row">{{ lg(net) }}<div class="ew-n"><b>{% if net.page %}<a href="{{ net.page }}?utm_source=vidzet&amp;utm_medium=vidzet&amp;utm_campaign=cene" data-emb-full>{{ net.name }}</a>{% else %}{{ net.name }}{% endif %}</b>{% if net.sub %}<span>{{ net.sub }}</span>{% endif %}</div>
+<div class="ew-p">{% for c, p in net['items'][:4] %}<div><small>{{ c }}</small><b{% if net.free %} class="free"{% endif %}>{{ p }}</b></div>{% endfor %}</div></li>{% endfor %}
+</ul>
+<a class="ew-foot" href="/javno-punjenje/?utm_source=vidzet&amp;utm_medium=vidzet&amp;utm_campaign=cene" data-emb-full>{{ mark('emb-mark') }}<span><b translate="no">blokvolt.rs</b><small>Sve cene i mapa punjača</small></span>{{ ic('ext') }}</a>
+</main>
+<script src="/assets/bv.js" defer></script>
+<script src="/assets/embed.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import pagehead %}
+{% from '_icons.html' import ic %}
+{% block jsonld %}<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {"@type": "Dataset", "name": "Javni punjači za električne automobile u Srbiji (otvoreni skup)", "description": "Lokacije javnih punjača u Srbiji iz OpenStreetMap-a i Open Charge Map-a, sa mrežom, snagom, priključcima i oznakom provere.", "url": "{{ SITE }}{{ canon }}", "inLanguage": "sr-Latn", "isAccessibleForFree": true, "license": "https://opendatacommons.org/licenses/odbl/1-0/", "creator": {"@type": "Organization", "name": "BlokVolt", "url": "{{ SITE }}/"}, "distribution": {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "{{ SITE }}/assets/map/punjaci.json"}},
+  {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "BlokVolt", "item": "{{ SITE }}/"}, {"@type": "ListItem", "position": 2, "name": "Podaci za programere", "item": "{{ SITE }}{{ canon }}"}]}
+ ]
+}</script>{% endblock %}
+{% block pagehead %}{{ pagehead('Podaci o punjačima za sajtove, aplikacije i medije', 'Gotov vidžet za sajt, otvoreni skup lokacija punjača i tabele za preuzimanje. Sve je besplatno, uz navođenje izvora.') }}{% endblock %}
+{% block content %}
+<div class="dv">
+<a class="dv-hero" href="/mapa-za-vas-sajt/">
+<span class="dv-hero-t"><b>Mapa punjača za vaš sajt</b><span>Najbrži način: podesite mapu ili cene, kopirajte jedan red koda. Bez ključa i registracije.</span></span>
+<span class="btn dark">{{ ic('code') }}Napravi vidžet</span>
+</a>
+
+<section class="dv-sec" aria-labelledby="dv-open">
+<h2 id="dv-open">Otvoreni skup: lokacije punjača</h2>
+<p>Javni punjači u Srbiji iz OpenStreetMap-a i Open Charge Map-a, sa mrežom, snagom, priključcima i oznakom provere. JSON, bez ključa, čita se i sa drugih domena (CORS).</p>
+<div class="dv-url"><code translate="no">{{ SITE }}/assets/map/punjaci.json</code><a class="btn sm" href="/assets/map/punjaci.json" download>{{ ic('download') }}Preuzmi</a></div>
+<dl class="dv-dl">
+<dt>Licenca</dt><dd><a class="lnk" href="https://opendatacommons.org/licenses/odbl/1-0/" rel="noopener">ODbL 1.0</a>, kao OpenStreetMap: izvor navodite, a izmenjenu bazu delite pod istom licencom.</dd>
+<dt>Navođenje izvora</dt><dd translate="no"><code>© OpenStreetMap contributors, Open Charge Map, BlokVolt (blokvolt.rs)</code></dd>
+<dt>Osvežavanje</dt><dd>Pri svakom ažuriranju sajta. Datum snimka i provere je u samom fajlu (<code translate="no">retrieved</code>, <code translate="no">checked</code>).</dd>
+<dt>Polja</dt><dd><code translate="no">id</code>, naziv <code translate="no">n</code>, adresa <code translate="no">a</code>, grad <code translate="no">t</code>, <code translate="no">lat</code>/<code translate="no">lon</code>, mreža <code translate="no">net</code>, operater <code translate="no">opn</code>, priključci <code translate="no">c</code> (vrsta, struja, kW, broj), najveća snaga <code translate="no">dc</code>/<code translate="no">ac</code>, pristup <code translate="no">acc</code>, izvori <code translate="no">src</code> i provera <code translate="no">v</code> (<code translate="no">ok</code> potvrđeno, <code translate="no">nep</code> nije potvrđeno, <code translate="no">prob</code> prijavljen kvar).</dd>
+</dl>
+</section>
+
+<section class="dv-sec" aria-labelledby="dv-csv">
+<h2 id="dv-csv">Tabele u CSV formatu</h2>
+<p>Cene javnog punjenja po mrežama, mreže, firme koje ugrađuju punjače, cene električnih automobila i wallbox modeli. Licenca CC BY-NC 4.0: slobodno za medije, istraživanje i nekomercijalnu upotrebu.</p>
+<p><a class="btn" href="/preuzimanje/">{{ ic('download') }}Podaci za preuzimanje</a></p>
+</section>
+
+<section class="dv-sec" aria-labelledby="dv-req">
+<h2 id="dv-req">Treba vam više?</h2>
+<p>Cene po priključku, radno vreme, provere na licu mesta, istorija cena i punjači sa spiskova mreža nisu deo otvorenog skupa. Napišite šta vam treba i za šta: odgovaramo u roku od 48 sati.</p>
+<form class="bform" data-bv-form="api" novalidate>
+<div class="field"><label for="f-sta">Šta vam treba</label><select class="select" id="f-sta" name="sta"><option value="lokacije">Lokacije punjača (sve, sa spiskova mreža)</option><option value="cene">Cene javnog punjenja po priključku</option><option value="istorija">Istorija cena</option><option value="region">Punjači u regionu (Hrvatska, BiH, Crna Gora…)</option><option value="drugo">Drugo</option></select></div>
+<div class="field"><label for="f-poruka">Za šta vam trebaju podaci</label><textarea class="input" id="f-poruka" name="poruka" rows="4" maxlength="3000" required placeholder="Sajt, aplikacija, istraživanje, članak…"></textarea></div>
+<div class="field"><label for="f-org">Firma, medij ili projekat (nije obavezno)</label><input class="input" id="f-org" name="organizacija" maxlength="200" autocomplete="organization"></div>
+<div class="field"><label for="f-mail">E-mail za odgovor</label><input class="input" id="f-mail" name="email" type="email" maxlength="120" autocomplete="email" required></div>
+<input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="bform-act"><button class="btn dark" type="submit">Pošalji zahtev</button></p>
+<p class="f-msg f-ok" role="status" hidden>Hvala! Zahtev je primljen. Odgovor stiže na vaš e-mail u roku od 48 sati.</p>
+<p class="f-msg f-need" role="alert" hidden>Napišite za šta vam trebaju podaci i ostavite e-mail.</p>
+<p class="f-msg f-err" role="alert" hidden>Slanje nije uspelo. Pokušajte ponovo ili pišite na hello@blokvolt.com.</p>
+<p class="f-msg f-limit" role="alert" hidden>Previše poruka danas. Pišite na hello@blokvolt.com.</p>
+</form>
+</section>
+
+<section class="dv-sec" aria-labelledby="dv-rules">
+<h2 id="dv-rules">Pravila</h2>
+<ul class="dv-ul">
+<li>Nijedna mreža ni firma ne plaća da bude prikazana ili prva, ni na sajtu ni u vidžetu ni u podacima.</li>
+<li>Uz svaki punjač su izvor i datum provere (<a class="lnk" href="/metodologija/">metodologija</a>).</li>
+<li>Podatak nije tačan? <a class="lnk" href="/ispravka/">Pošaljite ispravku</a>: važi i za vaš sajt, jer vidžet čita iste podatke.</li>
+</ul>
+</section>
+</div>
+{% endblock %}

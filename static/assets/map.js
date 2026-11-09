@@ -40,6 +40,14 @@ const tr = s => (s && T['tx:' + s]) || s;
 // the same script draws the country maps of blokvolt.com: centre, zoom, currency and the correction link come from the
 // page's config (defaults = Serbia on www.blokvolt.rs)
 const C0 = cfg.center || [20.9, 44.1], Z0 = cfg.zoom || 6.3, CUR = cfg.cur || 'RSD';
+// the widget for other sites (/embed/mapa/, RUNBOOK 3.40): cfg.embed = { open: the full map's address }. The side list
+// sits next to the map from 700 px of the frame's width (the site's own map: 900 px), the card is narrower, the map zooms
+// with Ctrl/⌘ + wheel or two fingers only (the host page keeps scrolling), and the card's last button opens the charger
+// on blokvolt.rs. ?mesto=<lat>,<lon>&naziv=<text>: the host's own place (a hotel, a showroom) as a marker, the list
+// ordered by the distance from it.
+// (in the widget the card covers the side list, not the map: no room to keep free on the right)
+const EMB = cfg.embed || null, WIDE = EMB ? 700 : 900, CW = EMB ? 0 : 400;
+let HOST = null;
 // blokvolt.com sections pass their own separators (a browser without Albanian or Macedonian locale data would print
 // "0.39"); prices in lek and denars drop trailing zeros ("28–40 ден.", "10,2 lekë")
 const NF = cfg.num || null;
@@ -120,7 +128,8 @@ const track = (e, p) => { try { if (window.bvTrack) window.bvTrack(e, p); } catc
 // ---------- favourites (this browser only) ----------
 const FAV_KEY = 'bv:fav';
 let FAV = new Set();
-try { FAV = new Set((JSON.parse(localStorage.getItem(FAV_KEY) || '[]') || []).filter(x => typeof x === 'string').slice(0, 300)); } catch (e) { FAV = new Set(); }
+// the widget on other sites keeps no favourites and no car (its frame shows the same map to every visitor)
+if (!EMB) try { FAV = new Set((JSON.parse(localStorage.getItem(FAV_KEY) || '[]') || []).filter(x => typeof x === 'string').slice(0, 300)); } catch (e) { FAV = new Set(); }
 function saveFav() { try { localStorage.setItem(FAV_KEY, JSON.stringify([...FAV])); } catch (e) { /* private mode: kept for this visit only */ } }
 function isFav(s) { return FAV.has(s.id); }
 
@@ -137,7 +146,7 @@ function teslaNow() { const c = carSpec(); return TESLA_URL || !!(c && c.mk === 
 // cost per km; a Tesla also makes the Tesla-only chargers usable. A signed-in reader's car is the account's car.
 const CAR_KEY = 'bv:car';
 let CAR = null, CARS = null, CARS_P = null, COSTV = 0;
-try {
+if (!EMB) try {
   const c = JSON.parse(localStorage.getItem(CAR_KEY) || 'null');
   if (c && typeof c.id === 'string' && c.id.length < 90) CAR = { id: c.id, cons: +c.cons || null, cab: !!c.cab, opt: !!c.opt };
 } catch (e) { CAR = null; }
@@ -534,7 +543,7 @@ function renderList() {
   const all = home ? NSR : ST.length;
   const txt = state.bounds ? T.in_view.replace('{n}', rows.length) : (rows.length === all ? T.count_all : T.count).replace('{n}', rows.length).replace('{all}', all);
   $count.innerHTML = esc(txt + (rgAll && T.rg_count ? ' · ' + T.rg_count.replace('{n}', rgAll) : '') + (cheap ? ' · ' + T.sorted_cheap : ref ? ' · ' + T.sorted_near : '')) + (state.bounds ? ' · <button class="lnkbtn" type="button" data-all>' + esc(T.all_serbia) + '</button>' : '');
-  const lim = window.innerWidth <= 900 ? state.lim : Infinity, more = rows.length - lim;
+  const lim = window.innerWidth <= WIDE ? state.lim : Infinity, more = rows.length - lim;
   const html = rows.slice(0, lim).map(s => {
     const k = kind(s), ps = priceShort(s), pw = power(s);
     const sub = [netName(s), place(s), closedNow(s) ? T.closed_now : ''].filter(Boolean).join(' · ') + rating(s);
@@ -899,24 +908,26 @@ function openCard(s, fly, fromNear) {
     sp: T.src_sp, ye: T.src_ye, bp: 'Best in Parking', own: T.src_own, tim: T.src_tim };
   const srcs = s.src.filter(x => x.u).map(x => '<a href="' + esc(lp(x.u)) + '" rel="noopener nofollow">' + esc(tr(x.l) || SRC[x.d] || x.d) + '</a>' + (x.upd ? ' (' + esc(x.upd) + ')' : '')).join(' · ');
   $card.innerHTML = '<div class="ccard" role="dialog" aria-label="' + esc(title(s)) + '"><button class="x" type="button" aria-label="' + esc(T.close) + '">' + ICON.x + '</button>' +
-    favBtn(s) + (cardNear ? '<button class="lnkbtn nr-back" type="button" data-nr="back">← ' + esc(T.nr_title) + '</button>' : cardRt ? '<button class="lnkbtn nr-back" type="button" data-rt="back">← ' + esc(T.rt_title) + '</button>' : '') +
+    (EMB ? '' : favBtn(s)) + (cardNear ? '<button class="lnkbtn nr-back" type="button" data-nr="back">← ' + esc(T.nr_title) + '</button>' : cardRt ? '<button class="lnkbtn nr-back" type="button" data-rt="back">← ' + esc(T.rt_title) + '</button>' : '') +
     '<h2>' + esc(title(s)) + '</h2><p class="addr">' + esc(place(s)) + '</p>' + verHtml(s) + tagsHtml(s) + netLine + conns + priceHtml(s) + noteHtml(s) + howHtml(s) + promoHtml(s, price(s)) + statusHtml(s) + acc + whereHtml(s) +
     '<div class="acts"><a class="btn dark full" href="' + navs[0][1] + '" target="_blank" rel="noopener" data-nav="' + navs[0][2] + '">' + ICON.nav + esc(T.navigate) + '</a>' +
     '<p class="nav-alt">' + esc(T.nav_in) + ' ' + navs.slice(1).map(x => '<a class="lnk" href="' + x[1] + '" target="_blank" rel="noopener" data-nav="' + x[2] + '">' + x[0] + '</a>').join(' · ') + '</p>' +
     (site ? '<a class="btn' + (rg ? ' full' : '') + '" href="' + esc(site) + '"' + (site[0] === '/' ? '' : ' target="_blank" rel="noopener"') + '>' + ICON.ext + esc(rg ? T.rg_open : n && n.page ? T.about_net : T.site) + '</a>' : '') +
     (rg ? '' : '<a class="btn" href="' + fix + '">' + ICON.flag + esc(T.report) + '</a>') +
-    '<button class="btn' + (site ? ' full' : '') + '" type="button" data-share>' + ICON.share + esc(T.share) + '</button></div>' +
+    (EMB ? '<a class="btn' + (site ? ' full' : '') + ' emb-open" href="' + esc(embOpen(s)) + '" target="_blank" rel="noopener" data-open>' + ICON.ext + esc(T.emb_open) + '</a></div>'
+      : '<button class="btn' + (site ? ' full' : '') + '" type="button" data-share>' + ICON.share + esc(T.share) + '</button></div>') +
     rvHtml(s) +
     '<p class="src">' + esc(T.data) + ': ' + srcs + '</p></div>';
   $card.classList.add('is-open');
   fxCard();
   $card.querySelector('.x').addEventListener('click', closeCard);
-  $card.querySelector('.fav').addEventListener('click', () => toggleFav(s));
+  $card.querySelector('.fav')?.addEventListener('click', () => toggleFav(s));
   $card.querySelector('[data-copy]').addEventListener('click', e => { copyLL(e.currentTarget); track('map_copy_coords', { station: s.id, network: s.net || '' }); });
   $card.querySelector('.acts').addEventListener('click', e => {
     if (e.target.closest('[data-share]')) { shareStation(s); return; }
     const a = e.target.closest('a');
     if (!a) return;
+    if (a.dataset.open !== undefined) { track('embed_open', { station: s.id, network: s.net || '', host: embHost() }); return; }
     if (a.dataset.nav) { setNavPref(a.dataset.nav); track('map_navigate', { station: s.id, network: s.net || '', app: a.dataset.nav, from: cardNear ? 'nearest' : cardRt ? 'route' : 'card' }); }
     else track(s.cc ? 'map_region_link' : a.href.indexOf('/ispravka/') >= 0 || a.href.indexOf('mailto:') === 0 ? 'map_report_error' : 'map_network_link', { station: s.id, network: s.net || '' });
   });
@@ -926,6 +937,12 @@ function openCard(s, fly, fromNear) {
   if (fly && map) map.flyTo({ center: [s.lon, s.lat], zoom: Math.max(map.getZoom(), 13), speed: 1.4, padding: padding() });
   history.replaceState(null, '', location.pathname + location.search + '#' + s.id);
   renderList();
+}
+// the widget: the charger on the full map of blokvolt.rs (the host page's name as utm_source, the language kept)
+function embHost() { try { return d.referrer ? new URL(d.referrer).hostname.replace(/^www\./, '').slice(0, 60) : ''; } catch (e) { return ''; } }
+function embOpen(s) {
+  const h = embHost();
+  return lp(EMB.open) + '?utm_source=' + encodeURIComponent(h || 'vidzet') + '&utm_medium=vidzet&utm_campaign=mapa' + (s ? '#' + encodeURIComponent(s.id) : '');
 }
 function shareStation(s) {
   const url = location.origin + location.pathname + '#' + encodeURIComponent(s.id);
@@ -976,7 +993,7 @@ function closeCard() {
   renderList();
 }
 function padding() {
-  return window.innerWidth > 900 ? { left: 0, right: 400, top: 0, bottom: 0 } : { top: 0, bottom: 0, left: 0, right: 0 };
+  return window.innerWidth > WIDE ? { left: 0, right: CW, top: 0, bottom: 0 } : { top: 0, bottom: 0, left: 0, right: 0 };
 }
 
 // ---------- "Najbliži punjač": the three nearest chargers a driver can use, and a route in a navigation app ----------
@@ -1044,7 +1061,7 @@ function nearFit(pt, rows) {
   if (!map || !pt) return;
   const b = new maplibregl.LngLatBounds([pt.lon, pt.lat], [pt.lon, pt.lat]);
   rows.forEach(x => b.extend([x.s.lon, x.s.lat]));
-  const pad = window.innerWidth > 900 ? { top: 70, bottom: 70, left: 60, right: 420 } : { top: 50, bottom: 60, left: 36, right: 36 };
+  const pad = window.innerWidth > WIDE ? { top: 70, bottom: 70, left: 60, right: CW + 20 } : { top: 50, bottom: 60, left: 36, right: 36 };
   map.fitBounds(b, { padding: pad, maxZoom: 15, duration: 900 });
 }
 function showMe() {
@@ -1114,7 +1131,7 @@ function closeNear() {
   $card.classList.remove('is-open');
   $card.innerHTML = '';
   if (map && map.getSource('sel')) map.getSource('sel').setData({ type: 'FeatureCollection', features: [] });
-  if (window.innerWidth > 900 && $near) $near.focus({ preventScroll: true });
+  if (window.innerWidth > WIDE && $near) $near.focus({ preventScroll: true });
 }
 // clicks inside the panel (its HTML is rebuilt on every change) and the "back" link of a card opened from it
 function nearClick(t) {
@@ -1327,7 +1344,7 @@ function rtFit() {
   if (!map || !RT.route) return;
   const b = new maplibregl.LngLatBounds(RT.route.line[0], RT.route.line[0]);
   RT.route.line.forEach(c => b.extend(c));
-  const pad = window.innerWidth > 900 ? { top: 60, bottom: 60, left: 50, right: 420 } : { top: 50, bottom: 100, left: 30, right: 30 };
+  const pad = window.innerWidth > WIDE ? { top: 60, bottom: 60, left: 50, right: CW + 20 } : { top: 50, bottom: 100, left: 30, right: 30 };
   map.fitBounds(b, { padding: pad, maxZoom: 13, duration: 900 });
 }
 function rtBtnPaint() {
@@ -1383,7 +1400,7 @@ function rtPanel(source) {
   $card.classList.add('is-open');
   rtBody(!!RT.route);
   const f = $card.querySelector(RT.to ? '.x' : '#rt-to');
-  if (f && (window.innerWidth > 900 || RT.to)) f.focus({ preventScroll: true });
+  if (f && (window.innerWidth > WIDE || RT.to)) f.focus({ preventScroll: true });
   if (source) track('map_route_open', { source });
 }
 function rtClose() {
@@ -1392,7 +1409,7 @@ function rtClose() {
   $card.classList.remove('is-open');
   $card.innerHTML = '';
   rtClear();
-  if ($rtBtn && window.innerWidth > 900) $rtBtn.focus({ preventScroll: true });
+  if ($rtBtn && window.innerWidth > WIDE) $rtBtn.focus({ preventScroll: true });
 }
 async function rtRun() {
   const fin = $card.querySelector('#rt-from'), tin = $card.querySelector('#rt-to');
@@ -1579,7 +1596,7 @@ async function rtPopPick(k) {
   if (keep && fi && k === 'to') fi.value = keep;
   track('map_pick', { how: P.how, as: k });
   if (k === 'to' || (ti && ti.value.trim())) rtRun();
-  else if (ti && window.innerWidth > 900) ti.focus({ preventScroll: true });
+  else if (ti && window.innerWidth > WIDE) ti.focus({ preventScroll: true });
 }
 // a tap on the map that hit no charger: the name of a place under it, if any (the popup closes otherwise)
 function rtTapPlace(p) {
@@ -2078,11 +2095,22 @@ function mapTap(p) {
 function initMap() {
   map = new maplibregl.Map({
     container: 'map', style: cfg.style, center: C0, zoom: Z0, minZoom: 5, maxZoom: 18,
-    attributionControl: false, cooperativeGestures: false, dragRotate: false, pitchWithRotate: false
+    attributionControl: false, cooperativeGestures: !!EMB, dragRotate: false, pitchWithRotate: false,
+    locale: EMB ? { 'CooperativeGesturesHandler.WindowsHelpText': T.coop_w, 'CooperativeGesturesHandler.MacHelpText': T.coop_m,
+      'CooperativeGesturesHandler.MobileHelpText': T.coop_t } : undefined
   });
   map.touchZoomRotate.disableRotation();
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
   if (cfg.add && cfg.api) map.addControl(new AddControl(), 'top-right');
+  if (HOST) {
+    // the host's place: a dark pin with its name (the name only from the page address, as text)
+    const el = d.createElement('div');
+    el.className = 'host-pin';
+    el.innerHTML = '<span class="host-dot" aria-hidden="true"></span>' + (HOST.n ? '<span class="host-n">' + esc(HOST.n) + '</span>' : '');
+    el.setAttribute('role', 'img');
+    el.setAttribute('aria-label', HOST.n || T.host_pin);
+    new maplibregl.Marker({ element: el, anchor: 'bottom' }).setLngLat([HOST.lon, HOST.lat]).addTo(map);
+  }
   map.on('load', () => {
     const font = cfg.font;
     // Every charger is drawn at every zoom, no number clusters (owner's decision 20.10.2026): small dots on the
@@ -2209,7 +2237,8 @@ function initMap() {
     if (sel) {
       map.getSource('sel').setData({ type: 'FeatureCollection', features: [feat(sel)] });
       map.jumpTo({ center: [sel.lon, sel.lat], zoom: 13, padding: padding() });
-    } else if (llAt) map.jumpTo({ center: [llAt.lon, llAt.lat], zoom: 17 });
+    } else if (HOST) map.jumpTo({ center: [HOST.lon, HOST.lat], zoom: 13.4 });
+    else if (llAt) map.jumpTo({ center: [llAt.lon, llAt.lat], zoom: 17 });
     else if (city) map.jumpTo({ center: [city.lon, city.lat], zoom: 11.2 });
   });
 }
@@ -2493,7 +2522,7 @@ function closeCar() {
   $card.innerHTML = '';
   const back = carBack; carBack = null;
   if (back) openCard(back, false);
-  else if ($carBtn && window.innerWidth > 900) $carBtn.focus({ preventScroll: true });
+  else if ($carBtn && window.innerWidth > WIDE) $carBtn.focus({ preventScroll: true });
 }
 function carForm(list) {
   const box = $card.querySelector('.car-body');
@@ -2568,6 +2597,11 @@ function fromUrl() {
   // ?ll=<lat>,<lon>: the map opens close on that point (the moderation page links new chargers from drivers this way)
   const ll = (p.get('ll') || '').split(',').map(Number);
   if (ll.length === 2 && ll.every(isFinite) && Math.abs(ll[0]) <= 90 && Math.abs(ll[1]) <= 180) llAt = { lat: ll[0], lon: ll[1] };
+  const ms = EMB ? (p.get('mesto') || '').split(',').map(Number) : [];
+  if (ms.length === 2 && ms.every(isFinite) && Math.abs(ms[0]) <= 90 && Math.abs(ms[1]) <= 180) {
+    HOST = { lat: ms[0], lon: ms[1], n: (p.get('naziv') || '').replace(/[\u0000-\u001f]/g, '').trim().slice(0, 40) };
+    city = { lat: HOST.lat, lon: HOST.lon };
+  }
   paintChips();
   if (net && $chips.querySelector('[data-f="net:' + net + '"]')) setChip('net:' + net, true);
   else if (net) { state.q = state.q || net.replace(/-/g, ' '); refresh(); }
@@ -2615,6 +2649,7 @@ Promise.all([getJson(cfg.stations), cfg.nets ? getJson(cfg.nets).catch(() => ({ 
   if ([...FAV].some(id => !ids.has(id))) { FAV = new Set([...FAV].filter(id => ids.has(id))); saveFav(); }
   favCount();
   fromUrl();
+  if (EMB) track('embed_view', { host: embHost(), place: !!HOST });
   loadSummaries();
   loadNovi();
   accSync();
