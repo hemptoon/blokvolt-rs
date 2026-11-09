@@ -1,0 +1,13 @@
+{
+ "home": "/es/",
+ "map": "/es/mapa/",
+ "hub": "/es/puntos-de-carga/",
+ "net": "red",
+ "about": "sobre-los-datos",
+ "download": "descargar",
+ "gnet": "/es/redes-de-carga/",
+ "prices": "/es/precios-de-carga/",
+ "shell_about": "/es/acerca-de/",
+ "sources": "/es/fuentes/",
+ "methodology": "/es/metodologia/"
+}
