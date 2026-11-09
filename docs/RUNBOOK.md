@@ -2389,6 +2389,36 @@ only, never handed out as data (not in `punjaci.json`, not in answers to data re
   errors, wide and narrow layouts, list sheet, card, host pin, network chip, RU, the price widget, the configurator's code
   and preview, no overflow on a phone. Look at the screenshots.
 
+### 3.41 Dev previews and the world layer of blokvolt.com (since 09.11.2026)
+
+Work that is not released goes to **dev previews**, never
+to `main`:
+
+- **Branches.** `dev` = `main` + finished tasks. Task branches `g<N>-<slug>` / `k<N>-<slug>` start from `main`, are
+  rebased on `dev` before a push when they need it, and are merged into `dev` after their checks. `main` stays production.
+- **Workflow** `.github/workflows/preview.yml` runs on every push to `dev`, `g*-*`, `k*-*` (and by hand). It builds both
+  sites with the checks of Deploy plus the world selftests, `check_names.py` and `world_pages_check.py`, runs
+  `scripts/dev_noindex.py` (robots.txt `Disallow: /`, `X-Robots-Tag: noindex, nofollow` in `_headers`, meta robots in every
+  page) and uploads **preview deployments**: blokvolt.rs → Pages project `blokvolt` (`https://<branch>.blokvolt.pages.dev`),
+  blokvolt.com → Pages project `blokvolt-com` (`https://<branch>.blokvolt-com.pages.dev`; production branch `release`,
+  nothing goes there until the domain move is decided, bvcom README GR). The workflow refuses `main`, `release` and
+  `region-data`. No IndexNow, newsletter or D1: previews of `blokvolt` have no D1/AI bindings, so forms and API run in demo mode.
+- **World data on dev.** Tiles (`world/<date>/world.pmtiles`), cards, manifest, the K3 pages bundle and the ODbL dump live in
+  the public repository `hemptoon/blokvolt-tiles`, served by GitHub Pages at `https://hemptoon.github.io/blokvolt-tiles/`
+  (byte ranges for PMTiles, `Access-Control-Allow-Origin: *`). `scripts/dev_world_data.py` downloads them in CI, points the
+  manifest at the tiles host for tiles and the ODbL dump, and the cards are served next to the site under `/world-data/`.
+  Cloudflare Pages does not answer Range requests (and limits a file to 25 MiB), so the tiles cannot sit next to the site.
+  History of the tiles repository does not grow: an update replaces its single commit (force push). Production hosting
+  (R2, `tiles.blokvolt.rs`) only by the owner's decision.
+- **Frame of the world layer (G0)** — `scripts/world_shell.py`: one menu (Map · Charging stations · Open data; sections that
+  do not exist yet are not shown), the footer block (About the data, Download, Sources & licences, Methodology, About), the
+  short pages `/about/`, `/sources/`, `/methodology/` (+ `/sr/o-sajtu/ …`, `/ru/o-sajte/ …`) that lead to "About the data"
+  without repeating it, the static search index `assets/world/search.json`, and with `BV_WORLD_HOME=1` (dev only) a world
+  home at `/`, `/sr/`, `/ru/`. All of it runs only with `BV_WORLD_PAGES`; the hourly build of blokvolt.com (3.10) does not set
+  it, so production is unchanged until a release of the world layer.
+- **Look at a preview:** the run summary lists the URLs; `curl -sI https://dev.blokvolt-com.pages.dev/ | grep -i robots`
+  must show `noindex`. A preview differs from production in: noindex, demo API, tiles from GitHub Pages, the dev home page.
+
 ## 4. Build and check
 
 ```bash

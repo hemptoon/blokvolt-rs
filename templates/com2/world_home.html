@@ -1,0 +1,39 @@
+{% extends 'world_base.html' %}
+{% block head %}{{ super() }}<style>
+.wh-search{position:relative;max-width:560px;margin-top:20px}
+.wh-search label{display:block;font-weight:600;margin-bottom:6px}
+.wh-search input{width:100%;min-height:48px;padding:10px 14px;font:inherit;font-size:17px;border:1.5px solid var(--line,#d5d8de);border-radius:12px;background:var(--bg,#fff);color:inherit}
+.wh-search input:focus-visible{outline:3px solid #2E6BFF;outline-offset:2px}
+.wh-res{list-style:none;margin:6px 0 0;padding:0;border-radius:12px;overflow:hidden}
+.wh-res:empty{display:none}
+.wh-res li a,.wh-res li span{display:flex;justify-content:space-between;gap:12px;min-height:44px;align-items:center;padding:8px 14px;border-bottom:1px solid var(--line,#e5e7eb);text-decoration:none}
+.wh-res li a:hover,.wh-res li a:focus-visible{background:rgba(217,244,91,.35)}
+.wh-res small{opacity:.7;white-space:nowrap}
+.wh-map{display:block;margin:28px 0;padding:28px;border-radius:20px;background:#0D111A;color:#fff}
+.wh-map h2{color:#fff;margin:0 0 8px}.wh-map p{color:#cfd3da;max-width:640px}
+.wh-map .btn{margin-top:8px;background:#D9F45B;color:#0D111A;border-color:#D9F45B}
+.wh-dots{height:10px;background:radial-gradient(circle,#D9F45B 2px,transparent 2.5px) 0 0/18px 10px;opacity:.8;margin-bottom:18px}
+</style>{% endblock %}
+{% block pagehead %}<div class="ph"><div class="wrap">
+<p class="kick">{{ kick }}</p>
+<h1>{{ h1 }}</h1>
+{% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
+<p class="meta">{{ S.data_from.format(date=data_date) }}</p>
+<div class="wh-search" data-idx="{{ search_url }}" data-lang="{{ l }}" data-none="{{ T.search_none }}" data-map="{{ map_url }}">
+<label for="wh-q">{{ T.search_label }}</label>
+<input id="wh-q" type="search" autocomplete="off" placeholder="{{ T.search_ph }}" aria-controls="wh-res">
+<ul id="wh-res" class="wh-res" aria-live="polite"></ul>
+</div>
+</div></div>{% endblock %}
+{% block content %}
+<section class="wh-map"><div class="wh-dots" aria-hidden="true"></div>
+<h2>{{ T.map_h }}</h2><p>{{ T.map_p }}</p>
+<a class="btn" href="{{ map_url }}">{{ T.map_btn }}</a></section>
+<div class="sec"><div class="sec-head"><h2 id="countries">{{ T.countries_h }}</h2></div>
+<div class="chips">{% for n, u in countries %}<a class="chip" href="{{ u }}">{{ n }}</a>{% endfor %}</div>
+<p><a class="btn" href="{{ hub_url }}">{{ T.all_btn }}</a></p></div>
+<div class="sec"><div class="sec-head"><h2 id="region">{{ T.region_h }}</h2></div>
+<p class="note">{{ T.region_p }}</p>
+<div class="chips"><a class="chip" href="{{ RS }}/" hreflang="sr" lang="sr">{{ T.rs_card }}</a>{% for r in regional %}<a class="chip" href="{{ r.path }}" hreflang="{{ r.hl }}" lang="{{ r.lang }}">{{ r.name }}</a>{% endfor %}</div></div>
+{% endblock %}
+{% block scripts %}<script src="{{ home_js }}" defer></script>{% endblock %}

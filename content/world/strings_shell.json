@@ -1,0 +1,207 @@
+{
+ "nav_map": {
+  "en": "Map",
+  "sr": "Mapa",
+  "ru": "Карта"
+ },
+ "nav_stations": {
+  "en": "Charging stations",
+  "sr": "Punjači",
+  "ru": "Зарядки"
+ },
+ "nav_open": {
+  "en": "Open data",
+  "sr": "Otvoreni podaci",
+  "ru": "Открытые данные"
+ },
+ "ft_h": {
+  "en": "World map and data",
+  "sr": "Mapa sveta i podaci",
+  "ru": "Карта мира и данные"
+ },
+ "ft_about_data": {
+  "en": "About the data",
+  "sr": "O podacima",
+  "ru": "О данных"
+ },
+ "ft_download": {
+  "en": "Download",
+  "sr": "Preuzimanje",
+  "ru": "Скачать"
+ },
+ "ft_sources": {
+  "en": "Sources & licences",
+  "sr": "Izvori i licence",
+  "ru": "Источники и лицензии"
+ },
+ "ft_method": {
+  "en": "Methodology",
+  "sr": "Metodologija",
+  "ru": "Методология"
+ },
+ "ft_about": {
+  "en": "About",
+  "sr": "O sajtu",
+  "ru": "О сайте"
+ },
+ "home_title": {
+  "en": "EV charging stations in Europe and the world — map and open data | BlokVolt",
+  "sr": "Punjači za električne automobile u Evropi i svetu — mapa i otvoreni podaci | BlokVolt",
+  "ru": "Зарядки для электромобилей в Европе и мире — карта и открытые данные | BlokVolt"
+ },
+ "home_desc": {
+  "en": "Where to charge an electric car: a map of public charging stations and pages for countries, cities and networks, from open data with a source and a date.",
+  "sr": "Gde napuniti električni automobil: mapa javnih punjača i stranice zemalja, gradova i mreža, iz otvorenih podataka sa izvorom i datumom.",
+  "ru": "Где зарядить электромобиль: карта публичных зарядок и страницы стран, городов и сетей — из открытых данных, с источником и датой."
+ },
+ "home_kick": {
+  "en": "BlokVolt · world",
+  "sr": "BlokVolt · svet",
+  "ru": "BlokVolt · мир"
+ },
+ "home_h1": {
+  "en": "Where to charge an electric car — in every country, city and network",
+  "sr": "Gde napuniti električni automobil — u svakoj zemlji, gradu i mreži",
+  "ru": "Где зарядить электромобиль — в каждой стране, городе и сети"
+ },
+ "home_lead": {
+  "en": "One map: {n} in {c}, from open data. Every place shows where its data comes from and when it was last confirmed.",
+  "sr": "Na jednoj mapi: {n}, {c}, iz otvorenih podataka. Za svako mesto vidi se odakle su podaci i kada su poslednji put potvrđeni.",
+  "ru": "На одной карте — {n}, {c}, из открытых данных. У каждого места видно, откуда данные и когда они последний раз подтверждены."
+ },
+ "search_label": {
+  "en": "Find a country or city",
+  "sr": "Pronađite zemlju ili grad",
+  "ru": "Найти страну или город"
+ },
+ "search_ph": {
+  "en": "e.g. Munich, Germany, Lyon",
+  "sr": "npr. Minhen, Nemačka, Lion",
+  "ru": "например, Мюнхен, Германия, Лион"
+ },
+ "search_none": {
+  "en": "No page for this place yet. Open the map instead.",
+  "sr": "Za ovo mesto još nema stranice. Otvorite mapu.",
+  "ru": "Для этого места пока нет страницы. Откройте карту."
+ },
+ "map_h": {
+  "en": "The map",
+  "sr": "Mapa",
+  "ru": "Карта"
+ },
+ "map_p": {
+  "en": "Every public charging location from open registries, Open Charge Map and OpenStreetMap — no clusters, filters by power, network and data reliability.",
+  "sr": "Sve javne lokacije za punjenje iz otvorenih registara, Open Charge Map i OpenStreetMap — bez klastera, filteri po snazi, mreži i pouzdanosti podatka.",
+  "ru": "Все публичные места для зарядки из открытых реестров, Open Charge Map и OpenStreetMap — без кластеров, с фильтрами по мощности, сети и надёжности данных."
+ },
+ "map_btn": {
+  "en": "Open the map",
+  "sr": "Otvorite mapu",
+  "ru": "Открыть карту"
+ },
+ "countries_h": {
+  "en": "Countries",
+  "sr": "Zemlje",
+  "ru": "Страны"
+ },
+ "all_btn": {
+  "en": "All countries",
+  "sr": "Sve zemlje",
+  "ru": "Все страны"
+ },
+ "region_h": {
+  "en": "Serbia and the Balkans",
+  "sr": "Srbija i Balkan",
+  "ru": "Сербия и Балканы"
+ },
+ "region_p": {
+  "en": "Local guides with prices, tariffs and a checked map of the region.",
+  "sr": "Lokalni vodiči sa cenama, tarifama i proverenom mapom regiona.",
+  "ru": "Местные справочники с ценами, тарифами и проверенной картой региона."
+ },
+ "rs_card": {
+  "en": "Serbia — blokvolt.rs",
+  "sr": "Srbija — blokvolt.rs",
+  "ru": "Сербия — blokvolt.rs"
+ },
+ "about_title": {
+  "en": "About BlokVolt | BlokVolt",
+  "sr": "O sajtu BlokVolt | BlokVolt",
+  "ru": "О сайте BlokVolt | BlokVolt"
+ },
+ "about_h1": {
+  "en": "About BlokVolt",
+  "sr": "O sajtu BlokVolt",
+  "ru": "О сайте BlokVolt"
+ },
+ "about_desc": {
+  "en": "Who runs BlokVolt and how to reach it.",
+  "sr": "Ko vodi BlokVolt i kako se javiti.",
+  "ru": "Кто ведёт BlokVolt и как с ним связаться."
+ },
+ "about_p": {
+  "en": "BlokVolt is an independent reference on electric vehicle charging, run by its founders, Andrei and Danila, in Novi Sad, Serbia. No paid placements and no ratings of networks.",
+  "sr": "BlokVolt je nezavisan vodič za punjenje električnih automobila; vode ga osnivači, Andrej i Danila, iz Novog Sada. Bez plaćenih mesta i bez rangiranja mreža.",
+  "ru": "BlokVolt — независимый справочник по зарядке электромобилей; его ведут основатели, Андрей и Данила, из Нови-Сада (Сербия). Без платных мест и рейтингов сетей."
+ },
+ "about_more": {
+  "en": "How the data is collected and checked",
+  "sr": "Kako se podaci prikupljaju i proveravaju",
+  "ru": "Как собираются и проверяются данные"
+ },
+ "contact": {
+  "en": "Contact",
+  "sr": "Kontakt",
+  "ru": "Контакт"
+ },
+ "sources_title": {
+  "en": "Sources and licences | BlokVolt",
+  "sr": "Izvori i licence | BlokVolt",
+  "ru": "Источники и лицензии | BlokVolt"
+ },
+ "sources_h1": {
+  "en": "Sources and licences",
+  "sr": "Izvori i licence",
+  "ru": "Источники и лицензии"
+ },
+ "sources_desc": {
+  "en": "Where the charging data of BlokVolt comes from and under which licences.",
+  "sr": "Odakle su podaci o punjačima na BlokVoltu i pod kojim licencama.",
+  "ru": "Откуда данные о зарядках BlokVolt и под какими лицензиями."
+ },
+ "sources_p": {
+  "en": "The data comes from {n} open sources: official registries, Open Charge Map, OpenStreetMap and networks' own open data. The full list with licences and attribution is on one page:",
+  "sr": "Podaci dolaze iz {n} otvorenih izvora: zvaničnih registara, Open Charge Map, OpenStreetMap i otvorenih podataka samih mreža. Ceo spisak sa licencama i atribucijom je na jednoj stranici:",
+  "ru": "Данные берутся из {n} открытых источников: официальных реестров, Open Charge Map, OpenStreetMap и открытых данных самих сетей. Полный список с лицензиями и атрибуцией — на одной странице:"
+ },
+ "method_title": {
+  "en": "Methodology | BlokVolt",
+  "sr": "Metodologija | BlokVolt",
+  "ru": "Методология | BlokVolt"
+ },
+ "method_h1": {
+  "en": "Methodology",
+  "sr": "Metodologija",
+  "ru": "Методология"
+ },
+ "method_desc": {
+  "en": "How places are merged, how reliable each one is and which pages exist.",
+  "sr": "Kako se mesta spajaju, koliko je pouzdano svako i koje stranice postoje.",
+  "ru": "Как объединяются места, насколько надёжно каждое и какие страницы существуют."
+ },
+ "method_p": {
+  "en": "Records from different sources that describe one place are merged into one. Each place gets a data reliability from 0 to 100 (source type, a second source, freshness). A country page needs at least 100 public places with reliability 50 or more, a city page at least 20. The formula and the thresholds are explained here:",
+  "sr": "Zapisi iz različitih izvora koji opisuju isto mesto spajaju se u jedno. Svako mesto dobija pouzdanost podatka od 0 do 100 (vrsta izvora, drugi izvor, svežina). Stranica zemlje traži najmanje 100 javnih mesta sa pouzdanošću od 50 naviše, stranica grada najmanje 20. Formula i pragovi su objašnjeni ovde:",
+  "ru": "Записи из разных источников об одном месте сливаются в одно. Каждое место получает надёжность данных от 0 до 100 (тип источника, второй источник, свежесть). Странице страны нужно не меньше 100 публичных мест с надёжностью от 50, странице города — не меньше 20. Формула и пороги объяснены здесь:"
+ },
+ "pl_loc": {
+  "en": "charging location|charging locations|charging locations",
+  "sr": "lokacija za punjenje|lokacije za punjenje|lokacija za punjenje",
+  "ru": "место для зарядки|места для зарядки|мест для зарядки"
+ },
+ "pl_cc": {
+  "en": "country|countries|countries",
+  "sr": "zemlja|zemlje|zemalja",
+  "ru": "страна|страны|стран"
+ }
+}

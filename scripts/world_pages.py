@@ -420,9 +420,8 @@ class Ctx:
 
 
 def nav(c, l):
-    S = c.S[l]
-    return [(c.site.hub(l), S['nav_hub'], 'hub'), (c.map_url(l), S['nav_map'], 'map'),
-            (c.site.about(l), S['nav_about'], 'about'), (c.site.download(l), S['nav_download'], 'download')]
+    import world_shell   # G0: one menu for the world layer — Map · Charging stations · Open data
+    return world_shell.nav(l)
 
 
 def switch(c, urls, l):
@@ -438,7 +437,7 @@ def write_page(c, l, tpl, url, urls, ctx, ptype, robots=None, indexable=True):
     base = dict(SITE=G.SITE, RS=G.RS, EMAIL=G.EMAIL, CHECKED=fmt_date(c.date), CHECKED_ISO=c.date, canon=url, path=url,
                 LOC=L[l], S=S, NAV=nav(c, l), SWITCH=switch(c, urls, l), home=c.site.hub(l), alts=alts,
                 COUNTRIES=G.countries, LOCALS=c.local_hubs, C={'checked': fmt_date(c.lastmod(url))},
-                robots=robots, W=c, l=l, section=ptype, PAGES={})
+                robots=robots, W=c, l=l, section=ptype, PAGES={}, WORLD_FT=__import__('world_shell').footer(l))
     base.update(ctx)
     base['title'] = seo_title(base['title'])
     html = G.env.get_template(tpl).render(**base)

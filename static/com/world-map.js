@@ -68,6 +68,8 @@ function writeUrl() {
 
 // ------------------------------------------------------------------ data
 const base = cfg.data_base.replace(/\/?$/, '/');
+// a manifest may name its files by absolute URL (dev: tiles on GitHub Pages, cards next to the site)
+const at = u => (/^https?:\/\//.test(u) ? u : base + u);
 let M = null;                     // manifest
 const NETS = [];                  // [{i, name, slug, k}] index = tile attribute o
 const BY_SLUG = new Map();        // slug -> [o, …]
@@ -80,7 +82,7 @@ async function getJson(u) {
 }
 async function loadManifest() {
   const latest = await getJson(base + 'latest.json');
-  M = await getJson(base + latest.manifest);
+  M = await getJson(at(latest.manifest));
   SPLIT = new Set(M.cards_split || []);
   (M.networks || []).forEach((n, i) => {
     if (!i || !n) return;
@@ -111,7 +113,7 @@ function cardFile(g5) {
 }
 function loadCards(prefix) {
   if (!CARD_FILES.has(prefix)) {
-    const p = getJson(base + M.cards_base + prefix + '.json').catch(e => {
+    const p = getJson(at(M.cards_base) + prefix + '.json').catch(e => {
       CARD_FILES.delete(prefix);
       if (/^404 /.test(e.message)) return { sites: {} };
       throw e;
@@ -172,7 +174,7 @@ const P_COLOR = ['match', ['get', 'p'], [3, 4, 5], '#0D111A', 7, '#5C6270', 0, '
 const P_STROKE = ['match', ['get', 'p'], [3, 4, 5], '#D9F45B', [0, 6, 7], '#8A909B', '#0D111A'];
 function addLayers() {
   if (!M || !mapLoaded || map.getSource(SRC)) return;
-  map.addSource(SRC, { type: 'vector', url: 'pmtiles://' + base + M.tiles, attribution: '' });
+  map.addSource(SRC, { type: 'vector', url: 'pmtiles://' + at(M.tiles), attribution: '' });
   const big = ['==', ['get', 'p'], 5];
   map.addLayer({
     id: LYR, type: 'circle', source: SRC, 'source-layer': 'sites', filter: pFilter(),
@@ -628,7 +630,7 @@ window.BVWorldMap = { get map() { return map; }, get ready() { return ready; }, 
 async function fitPlace() {
   if (!(st.zemlja || st.grad) || HAD_HASH || !M || !M.places) return;
   let P = null;
-  try { P = await getJson(base + M.places); } catch (e) { return; }
+  try { P = await getJson(at(M.places)); } catch (e) { return; }
   const c = st.grad && P.city && P.city[st.grad], b = c || (st.zemlja && P.cc && P.cc[st.zemlja]);
   if (!b || b.length < 4 || !map) return;
   const go = () => map.fitBounds([[b[0], b[1]], [b[2], b[3]]], { padding: 30, maxZoom: c ? 13 : 9, duration: 0 });

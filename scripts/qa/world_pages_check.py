@@ -215,8 +215,10 @@ def main():
             rel = '/' + str(f.parent.relative_to(dist)).strip('.') + '/'
             if rel.startswith(world_prefixes) or rel.replace('//', '/').startswith(world_prefixes):
                 continue
-            n_old += 1
             t = f.read_text(encoding='utf-8')
+            if 'class="ft-world"' in t:   # a page of the world layer itself (map, G0 shell pages, dev home)
+                continue
+            n_old += 1
             for w in world_prefixes:
                 if f'href="{w}' in t or f'href="{SITE}{w}' in t:
                     fail(f'existing page links to the world layer: {f.relative_to(dist)}')

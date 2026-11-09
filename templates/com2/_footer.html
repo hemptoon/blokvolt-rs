@@ -27,5 +27,6 @@
 </ul></div>
 {% endif %}
 </div>
-<div class="ft-legal"><span>© 2026 BlokVolt · {{ S.ft_checked }} {{ C.checked if C is defined else CHECKED }}</span><span>{{ S.ft_data|safe }}</span></div>
+{% if WORLD_FT %}<nav class="ft-world" aria-label="{{ WORLD_FT.h }}"><h2>{{ WORLD_FT.h }}</h2><ul>{% for href, name in WORLD_FT.links %}<li><a href="{{ href }}">{{ name }}</a></li>{% endfor %}</ul></nav>
+{% endif %}<div class="ft-legal"><span>© 2026 BlokVolt · {{ S.ft_checked }} {{ C.checked if C is defined else CHECKED }}</span><span>{{ S.ft_data|safe }}</span></div>
 </div></footer>
