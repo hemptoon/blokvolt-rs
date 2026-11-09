@@ -1,0 +1,175 @@
+{
+  "about_data": {
+    "h1": "O podacima karte",
+    "title": "Podaci karte punionica: izvori, licence, pouzdanost | BlokVolt",
+    "description": "Odakle dolaze podaci karte punionica, pod kojim se licencama koriste i kako se izračunava pouzdanost svake točke.",
+    "lead": "Karta je izrađena od otvorenih podataka, a svaka točka pokazuje odakle potječe.",
+    "intro": "Karta objedinjuje otvorene podatke iz mnogih izvora: službeni registri, otvoreni podaci državnih tijela, OpenStreetMap, Open Charge Map i stranice s lokacijama samih operatera. Zapisi se spajaju, čiste i mijenjaju, pa se točka na karti može razlikovati od izvornog zapisa. Ista pravila vrijede za svaku mrežu. Karta ne ocjenjuje mreže ni operatere.",
+    "osm_h": "OpenStreetMap i ODbL",
+    "osm_p": "Podaci © OpenStreetMap contributors, dostupni pod licencom Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Objedinjena baza točaka koja sadrži podatke projekta OpenStreetMap dostupna je pod istom licencom na stranici „Preuzimanje otvorenih podataka”: {download_url}.",
+    "sources_h": "Izvori i licence",
+    "sources_note": "Navedeni su samo izvori koji se stvarno pojavljuju u trenutačnim podacima, svaki sa svojom licencom i obveznim navođenjem izvora.",
+    "conf_h": "Kako se izračunava pouzdanost",
+    "conf_p": "Svaka točka dobiva ocjenu pouzdanosti od 0 do 100. Ista formula vrijedi za svaku mrežu. Ocjena se odnosi na podatke o mjestu, a ne na mrežu ili njezinu uslugu.",
+    "conf_rows": [
+      [
+        "Osnovna ocjena prema najboljoj vrsti izvora",
+        "Službeni registar ili otvoreni podaci državnih tijela 70; vlastita provjera BlokVolt 65; OpenStreetMap 50; All The Places 45; Open Charge Map 40; Overture (iz All The Places) 40; ostalo 25"
+      ],
+      [
+        "Neovisna provjera",
+        "Ako među izvorima nema registra, neovisna automatska provjera zapisa može povisiti osnovnu ocjenu, ali nikad iznad vrijednosti koju daje ta provjera"
+      ],
+      [
+        "Podudaranje izvora",
+        "+10 kada se dva ili više izvora slažu oko mjesta; još +5 kod tri ili više izvora"
+      ],
+      [
+        "Ažurnost",
+        "+10 kada je posljednja potvrda unutar posljednjih 12 mjeseci; −15 kada je starija od 3 godine"
+      ],
+      [
+        "Neslaganje oko zemlje",
+        "−10 kada se izvori ne slažu oko zemlje"
+      ],
+      [
+        "Nije u funkciji ili sumnjive koordinate",
+        "Najviše 20"
+      ],
+      [
+        "Raspon",
+        "Ocjena se ograničava na 0–100; mjesta ispod 40 ne prikazuju se na karti ni na stranicama"
+      ]
+    ],
+    "conf_levels": [
+      [
+        "Visoka",
+        "70–100",
+        "Potvrđeno iz službenog izvora ili iz više izvora, nedavno ažurirano"
+      ],
+      [
+        "Srednja",
+        "50–69",
+        "Vjerojatno točno, ali potvrđeno iz manje izvora ili ne nedavno"
+      ],
+      [
+        "Niska",
+        "40–49",
+        "Jedan ili stariji izvor; prije polaska provjerite kod operatera"
+      ]
+    ],
+    "notes_h": "Napomene",
+    "notes": [
+      "Podaci se daju kakvi jesu, bez jamstva točnosti, dostupnosti, cijene ili kompatibilnosti. Prije polaska provjerite kod operatera ili na licu mjesta.",
+      "Kartica svake točke prikazuje izvor, licencu i datum posljednjeg ažuriranja.",
+      "Nazivi mreža i žigovi pripadaju njihovim vlasnicima.",
+      "BlokVolt nije povezan s operaterima ni s institucijama koje objavljuju podatke, i one ne podržavaju ovu kartu.",
+      "Imena fizičkih osoba ne prikazuju se; privatni kućni punjači nisu na karti.",
+      "Grešku, zahtjev za ispravak ili uklanjanje možete poslati putem gumba „Prijavite grešku” na kartici točke ili na {email}. Odgovor stiže u roku od 30 dana."
+    ],
+    "licence_texts_h": "Tekstovi licenci",
+    "licence_texts": [
+      [
+        "CC BY 4.0",
+        "https://creativecommons.org/licenses/by/4.0/"
+      ],
+      [
+        "CC0 1.0",
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      [
+        "ODbL 1.0",
+        "https://opendatacommons.org/licenses/odbl/1-0/"
+      ],
+      [
+        "Licence Ouverte 2.0",
+        "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+      ],
+      [
+        "CDLA Permissive 2.0",
+        "https://cdla.dev/permissive-2-0/"
+      ],
+      [
+        "Open Government Licence v2.0",
+        "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+      ]
+    ]
+  },
+  "download": {
+    "h1": "Preuzimanje otvorenih podataka",
+    "title": "Preuzimanje otvorenih podataka o mjestima za punjenje | BlokVolt",
+    "description": "Tjedna CSV datoteka s javnim mjestima za punjenje: koordinate, mreža, snaga, priključci i izvori. Besplatno, pod licencom ODbL.",
+    "lead": "Javni sloj karte dostupan je kao besplatna CSV datoteka koja se ažurira svakog tjedna.",
+    "what_h": "Što sadrži datoteka",
+    "what_p": "Tjedni CSV izvoz javnog sloja karte: koordinate, mreža, snaga, priključci i izvori za svako mjesto. Datoteka sadrži podatke projekta OpenStreetMap, pa se objavljuje pod licencom Open Database License (ODbL) 1.0. Cijene, ručne provjere i ispravci koje BlokVolt unosi za Balkan nisu dio datoteke.",
+    "fields_h": "Stupci",
+    "fields": [
+      [
+        "pid",
+        "Stalni ID mjesta"
+      ],
+      [
+        "lat",
+        "Geografska širina (WGS 84)"
+      ],
+      [
+        "lon",
+        "Geografska dužina (WGS 84)"
+      ],
+      [
+        "country",
+        "Oznaka zemlje (ISO 3166-1 alpha-2)"
+      ],
+      [
+        "name",
+        "Naziv mjesta"
+      ],
+      [
+        "network",
+        "Naziv mreže ili operatera"
+      ],
+      [
+        "max_kw",
+        "Najveća snaga na mjestu, kW"
+      ],
+      [
+        "dc",
+        "1 ako je dostupno brzo DC punjenje, 0 ako nije"
+      ],
+      [
+        "power_class",
+        "Razred snage mjesta"
+      ],
+      [
+        "connectors",
+        "Vrste priključaka, odvojene zarezom"
+      ],
+      [
+        "points",
+        "Procijenjeni broj mjesta za punjenje"
+      ],
+      [
+        "access",
+        "Vrsta pristupa (javno, ograničen pristup i slično)"
+      ],
+      [
+        "sources",
+        "Ključevi izvora, odvojeni zarezom (vidi stranicu „O podacima”)"
+      ],
+      [
+        "last_confirmed",
+        "Datum posljednje potvrde iz bilo kojeg izvora"
+      ],
+      [
+        "confidence",
+        "Ocjena pouzdanosti 0–100"
+      ]
+    ],
+    "licence_h": "Licenca",
+    "licence_p": "Datoteka je dostupna pod licencom ODbL 1.0. Podatke smijete dijeliti, koristiti za izradu novih djela i prilagođavati, uz navođenje „© OpenStreetMap contributors, BlokVolt” i objavu svake prilagođene baze pod istom licencom. Podaci moraju ostati otvoreni: ne uvodite tehnička ograničenja koja sužavaju ta prava. Cijeli tekst: https://opendatacommons.org/licenses/odbl/1-0/",
+    "file_h": "Datoteka",
+    "file_missing": "Datoteka za ovaj tjedan još se priprema. Molimo, provjerite ponovno kasnije.",
+    "attribution_h": "Kako navesti izvor",
+    "attribution_p": "Kada koristite podatke, navedite „© OpenStreetMap contributors, BlokVolt” s poveznicom na www.openstreetmap.org/copyright i na ovu stranicu te navedite licencu ODbL 1.0. Podaci iz drugih izvora zadržavaju vlastito navođenje, opisano na stranici „O podacima”."
+  }
+}

@@ -1,0 +1,151 @@
+cc,name,slug,in_phrase,note
+AD,Andora,andora,u Andori,name: CLDR name_hr
+AE,Ujedinjeni Arapski Emirati,ujedinjeni-arapski-emirati,u Ujedinjenim Arapskim Emiratima,name: CLDR name_hr
+AL,Albanija,albanija,u Albaniji,name: CLDR name_hr
+AM,Armenija,armenija,u Armeniji,name: CLDR name_hr
+AR,Argentina,argentina,u Argentini,name: CLDR name_hr
+AT,Austrija,austrija,u Austriji,name: CLDR name_hr
+AU,Australija,australija,u Australiji,name: CLDR name_hr
+AW,Aruba,aruba,na Arubi,name: CLDR name_hr
+AX,Ålandski otoci,alandski-otoci,na Ålandskim otocima,name: CLDR name_hr (izmijenjeno)
+AZ,Azerbajdžan,azerbajdzan,u Azerbajdžanu,name: CLDR name_hr
+BA,Bosna i Hercegovina,bosna-i-hercegovina,u Bosni i Hercegovini,name: CLDR name_hr
+BB,Barbados,barbados,na Barbadosu,name: CLDR name_hr
+BE,Belgija,belgija,u Belgiji,name: CLDR name_hr
+BG,Bugarska,bugarska,u Bugarskoj,name: CLDR name_hr
+BH,Bahrein,bahrein,u Bahreinu,name: CLDR name_hr
+BO,Bolivija,bolivija,u Boliviji,name: CLDR name_hr
+BR,Brazil,brazil,u Brazilu,name: CLDR name_hr
+BW,Bocvana,bocvana,u Bocvani,name: CLDR name_hr
+BY,Bjelorusija,bjelorusija,u Bjelorusiji,name: CLDR name_hr
+BZ,Belize,belize,u Belizeu,name: CLDR name_hr
+CA,Kanada,kanada,u Kanadi,name: CLDR name_hr
+CH,Švicarska,svicarska,u Švicarskoj,name: CLDR name_hr
+CL,Čile,cile,u Čileu,name: CLDR name_hr
+CN,Kina,kina,u Kini,name: CLDR name_hr
+CO,Kolumbija,kolumbija,u Kolumbiji,name: CLDR name_hr
+CR,Kostarika,kostarika,u Kostariki,name: CLDR name_hr
+CU,Kuba,kuba,na Kubi,name: CLDR name_hr
+CY,Cipar,cipar,na Cipru,name: CLDR name_hr
+CZ,Češka,ceska,u Češkoj,name: CLDR name_hr
+DE,Njemačka,njemacka,u Njemačkoj,name: CLDR name_hr
+DK,Danska,danska,u Danskoj,name: CLDR name_hr
+DO,Dominikanska Republika,dominikanska-republika,u Dominikanskoj Republici,name: CLDR name_hr
+DZ,Alžir,alzir,u Alžiru,name: CLDR name_hr
+EC,Ekvador,ekvador,u Ekvadoru,name: CLDR name_hr
+EE,Estonija,estonija,u Estoniji,name: CLDR name_hr
+EG,Egipat,egipat,u Egiptu,name: CLDR name_hr
+ES,Španjolska,spanjolska,u Španjolskoj,name: CLDR name_hr
+ET,Etiopija,etiopija,u Etiopiji,name: CLDR name_hr
+FI,Finska,finska,u Finskoj,name: CLDR name_hr
+FJ,Fidži,fidzi,na Fidžiju,name: CLDR name_hr
+FO,Ovčji Otoci,ovcji-otoci,na Ovčjim otocima,name: CLDR name_hr
+FR,Francuska,francuska,u Francuskoj,name: CLDR name_hr
+GB,Ujedinjeno Kraljevstvo,ujedinjeno-kraljevstvo,u Ujedinjenom Kraljevstvu,name: CLDR name_hr
+GE,Gruzija,gruzija,u Gruziji,name: CLDR name_hr
+GG,Guernsey,guernsey,na Guernseyju,name: CLDR name_hr
+GH,Gana,gana,u Gani,name: CLDR name_hr
+GI,Gibraltar,gibraltar,u Gibraltaru,name: CLDR name_hr
+GR,Grčka,grcka,u Grčkoj,name: CLDR name_hr
+GT,Gvatemala,gvatemala,u Gvatemali,name: CLDR name_hr
+GY,Gvajana,gvajana,u Gvajani,name: CLDR name_hr
+HK,Hong Kong,hong-kong,u Hong Kongu,name: CLDR name_hr (izmijenjeno)
+HR,Hrvatska,hrvatska,u Hrvatskoj,name: CLDR name_hr
+HT,Haiti,haiti,na Haitiju,name: CLDR name_hr
+HU,Mađarska,madjarska,u Mađarskoj,name: CLDR name_hr
+ID,Indonezija,indonezija,u Indoneziji,name: CLDR name_hr
+IE,Irska,irska,u Irskoj,name: CLDR name_hr
+IL,Izrael,izrael,u Izraelu,name: CLDR name_hr
+IM,Otok Man,otok-man,na Otoku Man,name: CLDR name_hr
+IN,Indija,indija,u Indiji,name: CLDR name_hr
+IQ,Irak,irak,u Iraku,name: CLDR name_hr
+IR,Iran,iran,u Iranu,name: CLDR name_hr
+IS,Island,island,na Islandu,name: CLDR name_hr
+IT,Italija,italija,u Italiji,name: CLDR name_hr
+JE,Jersey,jersey,na Jerseyju,name: CLDR name_hr
+JM,Jamajka,jamajka,na Jamajci,name: CLDR name_hr
+JO,Jordan,jordan,u Jordanu,name: CLDR name_hr
+JP,Japan,japan,u Japanu,name: CLDR name_hr
+KE,Kenija,kenija,u Keniji,name: CLDR name_hr
+KG,Kirgistan,kirgistan,u Kirgistanu,name: CLDR name_hr
+KH,Kambodža,kambodza,u Kambodži,name: CLDR name_hr
+KR,Južna Koreja,juzna-koreja,u Južnoj Koreji,name: CLDR name_hr
+KW,Kuvajt,kuvajt,u Kuvajtu,name: CLDR name_hr
+KY,Kajmanski Otoci,kajmanski-otoci,na Kajmanskim otocima,name: CLDR name_hr
+KZ,Kazahstan,kazahstan,u Kazahstanu,name: CLDR name_hr
+LB,Libanon,libanon,u Libanonu,name: CLDR name_hr
+LC,Sveta Lucija,sveta-lucija,na Svetoj Luciji,name: CLDR name_hr
+LI,Lihtenštajn,lihtenstajn,u Lihtenštajnu,name: CLDR name_hr
+LK,Šri Lanka,sri-lanka,u Šri Lanki,name: CLDR name_hr
+LT,Litva,litva,u Litvi,name: CLDR name_hr
+LU,Luksemburg,luksemburg,u Luksemburgu,name: CLDR name_hr
+LV,Latvija,latvija,u Latviji,name: CLDR name_hr
+MA,Maroko,maroko,u Maroku,name: CLDR name_hr
+MC,Monako,monako,u Monaku,name: CLDR name_hr
+MD,Moldavija,moldavija,u Moldaviji,name: CLDR name_hr
+ME,Crna Gora,crna-gora,u Crnoj Gori,name: CLDR name_hr
+MF,Saint Martin,saint-martin,na Saint Martinu,name: CLDR name_hr
+MK,Sjeverna Makedonija,sjeverna-makedonija,u Sjevernoj Makedoniji,name: CLDR name_hr
+MM,Mjanmar,mjanmar,u Mjanmaru,name: CLDR name_hr (izmijenjeno)
+MN,Mongolija,mongolija,u Mongoliji,name: CLDR name_hr
+MO,Makao,makao,u Makau,name: CLDR name_hr (izmijenjeno)
+MT,Malta,malta,na Malti,name: CLDR name_hr
+MU,Mauricijus,mauricijus,na Mauricijusu,name: CLDR name_hr
+MX,Meksiko,meksiko,u Meksiku,name: CLDR name_hr
+MY,Malezija,malezija,u Maleziji,name: CLDR name_hr
+NA,Namibija,namibija,u Namibiji,name: CLDR name_hr
+NC,Nova Kaledonija,nova-kaledonija,u Novoj Kaledoniji,name: CLDR name_hr
+NG,Nigerija,nigerija,u Nigeriji,name: CLDR name_hr
+NI,Nikaragva,nikaragva,u Nikaragvi,name: CLDR name_hr
+NL,Nizozemska,nizozemska,u Nizozemskoj,name: CLDR name_hr
+NO,Norveška,norveska,u Norveškoj,name: CLDR name_hr
+NP,Nepal,nepal,u Nepalu,name: CLDR name_hr
+NZ,Novi Zeland,novi-zeland,na Novom Zelandu,name: CLDR name_hr
+OM,Oman,oman,u Omanu,name: CLDR name_hr
+PA,Panama,panama,u Panami,name: CLDR name_hr
+PE,Peru,peru,u Peruu,name: CLDR name_hr
+PF,Francuska Polinezija,francuska-polinezija,u Francuskoj Polineziji,name: CLDR name_hr
+PH,Filipini,filipini,na Filipinima,name: CLDR name_hr
+PK,Pakistan,pakistan,u Pakistanu,name: CLDR name_hr
+PL,Poljska,poljska,u Poljskoj,name: CLDR name_hr
+PR,Portoriko,portoriko,u Portoriku,name: CLDR name_hr
+PS,Palestina,palestina,u Palestini,name: CLDR name_hr (izmijenjeno)
+PT,Portugal,portugal,u Portugalu,name: CLDR name_hr
+PY,Paragvaj,paragvaj,u Paragvaju,name: CLDR name_hr
+QA,Katar,katar,u Kataru,name: CLDR name_hr
+RE,Réunion,reunion,na Réunionu,name: CLDR name_hr
+RO,Rumunjska,rumunjska,u Rumunjskoj,name: CLDR name_hr
+RS,Srbija,srbija,u Srbiji,name: CLDR name_hr
+RU,Rusija,rusija,u Rusiji,name: CLDR name_hr
+RW,Ruanda,ruanda,u Ruandi,name: CLDR name_hr
+SA,Saudijska Arabija,saudijska-arabija,u Saudijskoj Arabiji,name: CLDR name_hr
+SD,Sudan,sudan,u Sudanu,name: CLDR name_hr
+SE,Švedska,svedska,u Švedskoj,name: CLDR name_hr
+SG,Singapur,singapur,u Singapuru,name: CLDR name_hr
+SI,Slovenija,slovenija,u Sloveniji,name: CLDR name_hr
+SJ,Svalbard i Jan Mayen,svalbard-i-jan-mayen,na Svalbardu i Jan Mayenu,name: CLDR name_hr
+SK,Slovačka,slovacka,u Slovačkoj,name: CLDR name_hr
+SM,San Marino,san-marino,u San Marinu,name: CLDR name_hr
+SO,Somalija,somalija,u Somaliji,name: CLDR name_hr
+SR,Surinam,surinam,u Surinamu,name: CLDR name_hr
+SV,Salvador,salvador,u Salvadoru,name: CLDR name_hr
+SY,Sirija,sirija,u Siriji,name: CLDR name_hr
+SZ,Esvatini,esvatini,u Esvatiniju,name: CLDR name_hr
+TH,Tajland,tajland,u Tajlandu,name: CLDR name_hr
+TJ,Tadžikistan,tadzikistan,u Tadžikistanu,name: CLDR name_hr
+TN,Tunis,tunis,u Tunisu,name: CLDR name_hr
+TO,Tonga,tonga,na Tongi,name: CLDR name_hr
+TR,Turska,turska,u Turskoj,name: CLDR name_hr
+TT,Trinidad i Tobago,trinidad-i-tobago,na Trinidadu i Tobagu,name: CLDR name_hr
+TW,Tajvan,tajvan,na Tajvanu,name: CLDR name_hr
+UA,Ukrajina,ukrajina,u Ukrajini,name: CLDR name_hr
+UG,Uganda,uganda,u Ugandi,name: CLDR name_hr
+US,Sjedinjene Američke Države,sjedinjene-americke-drzave,u Sjedinjenim Američkim Državama,name: CLDR name_hr
+UY,Urugvaj,urugvaj,u Urugvaju,name: CLDR name_hr
+UZ,Uzbekistan,uzbekistan,u Uzbekistanu,name: CLDR name_hr
+VC,Sveti Vincent i Grenadini,sveti-vincent-i-grenadini,na Svetom Vincentu i Grenadinima,name: CLDR name_hr
+VE,Venezuela,venezuela,u Venezueli,name: CLDR name_hr
+VN,Vijetnam,vijetnam,u Vijetnamu,name: CLDR name_hr
+WS,Samoa,samoa,na Samoi,name: CLDR name_hr
+XK,Kosovo,kosovo,na Kosovu,name: CLDR name_hr
+ZA,Južnoafrička Republika,juznoafricka-republika,u Južnoafričkoj Republici,name: CLDR name_hr
