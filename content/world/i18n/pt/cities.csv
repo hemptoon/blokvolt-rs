@@ -6,11 +6,11 @@ geonameid,name,in_phrase,decl_ok,note
 2734484,São João da Madeira,em São João da Madeira,1,
 2732265,Viseu,em Viseu,1,
 2261639,Vila Franca de Xira,em Vila Franca de Xira,1,
-2732513,Vilar,na localidade de Vilar,0,artigo incerto
+2732513,Vilar,em Vilar,1,R-PT: sem artigo
 2265788,Montijo,no Montijo,1,
 2740313,Covilhã,na Covilhã,1,
 2736657,Paredes,em Paredes,1,
-2740057,Eiras,na localidade de Eiras,0,artigo incerto
+2740057,Eiras,em Eiras,1,R-PT: sem artigo
 2263352,São Domingos de Rana,em São Domingos de Rana,1,
 2269594,Cascais,em Cascais,1,
 2266319,Moita,na Moita,1,
@@ -28,7 +28,7 @@ geonameid,name,in_phrase,decl_ok,note
 2272215,Alcabideche,em Alcabideche,1,
 2270985,Beja,em Beja,1,
 2736930,Ovar,em Ovar,1,
-2742051,Bougado,na localidade de Bougado,0,artigo incerto
+2742051,Bougado,em Bougado,1,R-PT: sem artigo
 2742504,Baião,em Baião,1,
 2732773,Viana do Castelo,em Viana do Castelo,1,
 2739848,Esposende,em Esposende,1,
@@ -75,7 +75,7 @@ geonameid,name,in_phrase,decl_ok,note
 2738014,Maia,na Maia,1,
 2742027,Bragança,em Bragança,1,
 2270229,Caparica,na Caparica,1,
-2732475,Vilar de Andorinho,na localidade de Vilar de Andorinho,0,artigo incerto
+2732475,Vilar de Andorinho,em Vilar de Andorinho,1,R-PT: sem artigo
 2737523,Monção,em Monção,1,
 2740593,Condeixa-a-Nova,em Condeixa-a-Nova,1,
 2740637,Coimbra,em Coimbra,1,
@@ -1591,7 +1591,7 @@ geonameid,name,in_phrase,decl_ok,note
 3036016,Aurillac,em Aurillac,1,
 2643123,Manchester,em Manchester,1,
 2645753,Kettering,em Kettering,1,
-252601,Tripoli,em Tripoli,1,nome EN (escrita não latina)
+252601,Trípoli,em Trípoli,1,nome EN (escrita não latina)
 264670,Argos,em Argos,1,nome EN (escrita não latina)
 734077,Salónica,em Salónica,1,exónimo pt-PT
 665087,Timișoara,em Timișoara,1,
@@ -2434,8 +2434,8 @@ geonameid,name,in_phrase,decl_ok,note
 6325494,Quebeque,em Quebeque,1,exónimo pt-PT
 5913490,Calgary,em Calgary,1,
 5391811,San Diego,em San Diego,1,
-6058560,Londres,em Londres,1,exónimo pt-PT
-5140405,Siracusa,em Siracusa,1,exónimo pt-PT
+6058560,London,em London,1,"R-PT: cidade norte-americana, nome local"
+5140405,Syracuse,em Syracuse,1,"R-PT: cidade norte-americana, nome local"
 6183235,Winnipeg,em Winnipeg,1,
 6178582,West End,em West End,1,
 5341114,Culver City,em Culver City,1,
@@ -2534,7 +2534,7 @@ geonameid,name,in_phrase,decl_ok,note
 2155472,Newcastle,em Newcastle,1,
 5911592,Burlington,em Burlington,1,
 5359777,Irvine,em Irvine,1,
-5405841,Veneza,em Veneza,1,exónimo pt-PT
+5405841,Venice,em Venice,1,"R-PT: cidade norte-americana, nome local"
 6325521,Lévis,em Lévis,1,
 5133279,Queensbury,em Queensbury,1,
 2156813,Mosman,em Mosman,1,
@@ -2781,7 +2781,7 @@ geonameid,name,in_phrase,decl_ok,note
 8299576,Bridgewater,em Bridgewater,1,
 6182962,Windsor,em Windsor,1,
 7701384,Karabağlar,em Karabağlar,1,
-4180386,Atenas,em Atenas,1,exónimo pt-PT
+4180386,Athens,em Athens,1,"R-PT: cidade norte-americana, nome local"
 4192289,Duluth,em Duluth,1,
 4221333,Sandy Springs,em Sandy Springs,1,
 4363843,North Bethesda,em North Bethesda,1,
@@ -2832,7 +2832,7 @@ geonameid,name,in_phrase,decl_ok,note
 5898138,Beloeil,em Beloeil,1,
 5905132,Boisbriand,em Boisbriand,1,
 6137633,Saint-Constant,em Saint-Constant,1,
-4357340,Hanôver,em Hanôver,1,exónimo pt-PT
+4357340,Hanover,em Hanover,1,"R-PT: cidade norte-americana, nome local"
 4503646,Pleasantville,em Pleasantville,1,
 4623560,Franklin,em Franklin,1,
 4733624,Spring,em Spring,1,
@@ -3053,7 +3053,7 @@ geonameid,name,in_phrase,decl_ok,note
 4068590,Huntsville,em Huntsville,1,
 4143861,Newark,em Newark,1,
 4174402,Sunrise,em Sunrise,1,
-4176380,Veneza,em Veneza,1,exónimo pt-PT
+4176380,Venice,em Venice,1,"R-PT: cidade norte-americana, nome local"
 4177727,Wesley Chapel,em Wesley Chapel,1,
 4184845,Brunswick,em Brunswick,1,
 4285268,Bowling Green,em Bowling Green,1,
@@ -3185,7 +3185,7 @@ geonameid,name,in_phrase,decl_ok,note
 4934500,Danvers,em Danvers,1,
 5116497,Elmira,em Elmira,1,
 5132002,Port Chester,em Port Chester,1,
-5134453,Roterdão,em Roterdão,1,exónimo pt-PT
+5134453,Rotterdam,em Rotterdam,1,"R-PT: cidade norte-americana, nome local"
 5216895,Upper Saint Clair,em Upper Saint Clair,1,
 5322551,Agoura,em Agoura,1,
 5330413,Boyle Heights,em Boyle Heights,1,
@@ -3236,7 +3236,7 @@ geonameid,name,in_phrase,decl_ok,note
 5006250,Portage,em Portage,1,
 5043193,Richfield,em Richfield,1,
 5089178,Manchester,em Manchester,1,
-5134295,Roma,em Roma,1,exónimo pt-PT
+5134295,Rome,em Rome,1,"R-PT: cidade norte-americana, nome local"
 5281730,Avon,em Avon,1,
 5282804,Bridgeport,em Bridgeport,1,
 5343858,Downey,em Downey,1,
@@ -3264,7 +3264,7 @@ geonameid,name,in_phrase,decl_ok,note
 4110486,Fayetteville,em Fayetteville,1,
 4145805,Allapattah,em Allapattah,1,
 4148677,Boynton Beach,em Boynton Beach,1,
-4165565,Nápoles,em Nápoles,1,exónimo pt-PT
+4165565,Naples,em Naples,1,"R-PT: cidade norte-americana, nome local"
 4167519,Palm Beach Gardens,em Palm Beach Gardens,1,
 4174383,Sunny Isles Beach,em Sunny Isles Beach,1,
 4208442,McDonough,em McDonough,1,
@@ -3655,7 +3655,7 @@ geonameid,name,in_phrase,decl_ok,note
 4305974,Richmond,em Richmond,1,
 4373238,Westminster,em Westminster,1,
 4528259,White Oak,em White Oak,1,
-4558475,Hanôver,em Hanôver,1,exónimo pt-PT
+4558475,Hanover,em Hanover,1,"R-PT: cidade norte-americana, nome local"
 4574989,Clemson,em Clemson,1,
 4580599,Greer,em Greer,1,
 4679867,Cedar Park,em Cedar Park,1,
@@ -3664,7 +3664,7 @@ geonameid,name,in_phrase,decl_ok,note
 4772735,Merrifield,em Merrifield,1,
 4839497,Newington,em Newington,1,
 4845871,Wilton,em Wilton,1,
-4938836,Hanôver,em Hanôver,1,exónimo pt-PT
+4938836,Hanover,em Hanover,1,"R-PT: cidade norte-americana, nome local"
 4950898,Shrewsbury,em Shrewsbury,1,
 4952629,Taunton,em Taunton,1,
 4986172,Birmingham,em Birmingham,1,
@@ -3966,7 +3966,7 @@ geonameid,name,in_phrase,decl_ok,note
 4470778,Hickory,em Hickory,1,
 4500546,Atlantic City,em Atlantic City,1,
 4501198,Cherry Hill,em Cherry Hill,1,
-4578737,Florença,em Florença,1,exónimo pt-PT
+4578737,Florence,em Florence,1,"R-PT: cidade norte-americana, nome local"
 4580098,Goose Creek,em Goose Creek,1,
 4581832,Hilton Head Island,em Hilton Head Island,1,
 4635031,La Vergne,em La Vergne,1,
@@ -4174,7 +4174,7 @@ geonameid,name,in_phrase,decl_ok,note
 5099836,Jersey City,em Jersey City,1,
 5100604,Lodi,em Lodi,1,
 5100776,Mahwah,em Mahwah,1,
-5104882,Esparta,em Esparta,1,exónimo pt-PT
+5104882,Sparta,em Sparta,1,"R-PT: cidade norte-americana, nome local"
 5115699,East Amherst,em East Amherst,1,
 5121650,Huntington Station,em Huntington Station,1,
 5123533,Kiryas Joel,em Kiryas Joel,1,
@@ -4597,7 +4597,7 @@ geonameid,name,in_phrase,decl_ok,note
 5097598,Elizabeth,em Elizabeth,1,
 5100854,Maplewood,em Maplewood,1,
 5105127,Summit,em Summit,1,
-5107152,Amesterdão,em Amesterdão,1,exónimo pt-PT
+5107152,Amsterdam,em Amsterdam,1,"R-PT: cidade norte-americana, nome local"
 5112035,Centereach,em Centereach,1,
 5125011,Lockport,em Lockport,1,
 5125738,Mamaroneck,em Mamaroneck,1,
@@ -4819,7 +4819,7 @@ geonameid,name,in_phrase,decl_ok,note
 4373349,Wheaton,em Wheaton,1,
 4381072,Chesterfield,em Chesterfield,1,
 4472687,Indian Trail,em Indian Trail,1,
-4505542,Atenas,em Atenas,1,exónimo pt-PT
+4505542,Athens,em Athens,1,"R-PT: cidade norte-americana, nome local"
 4525304,Springboro,em Springboro,1,
 4528291,Whitehall,em Whitehall,1,
 4571722,Bluffton,em Bluffton,1,
@@ -5381,7 +5381,7 @@ geonameid,name,in_phrase,decl_ok,note
 4569067,Aiken,em Aiken,1,
 4575461,Conway,em Conway,1,
 4624601,Germantown,em Germantown,1,
-4683317,Corinto,em Corinto,1,exónimo pt-PT
+4683317,Corinth,em Corinth,1,"R-PT: cidade norte-americana, nome local"
 4720833,Prosper,em Prosper,1,
 4724564,Sachse,em Sachse,1,
 4724642,Saginaw,em Saginaw,1,
@@ -5446,7 +5446,7 @@ geonameid,name,in_phrase,decl_ok,note
 5378870,Oildale,em Oildale,1,
 5388735,Rosamond,em Rosamond,1,
 5394842,Shafter,em Shafter,1,
-5405288,Valência,em Valência,1,exónimo pt-PT
+5405288,Valencia,em Valencia,1,"R-PT: cidade norte-americana, nome local"
 5406976,Walnut,em Walnut,1,
 5407908,West Carson,em West Carson,1,
 5410095,Winnetka,em Winnetka,1,

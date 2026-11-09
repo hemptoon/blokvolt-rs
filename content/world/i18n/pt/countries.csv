@@ -7,7 +7,7 @@ AR,Argentina,argentina,na Argentina,
 AT,Áustria,austria,na Áustria,
 AU,Austrália,australia,na Austrália,
 AW,Aruba,aruba,em Aruba,
-AX,Alanda,alanda,em Alanda,CLDR pt-PT; também «Ilhas Åland»
+AX,Ilhas Åland,ilhas-aland,nas Ilhas Åland,R-PT: forma da imprensa; CLDR «Alanda»
 AZ,Azerbaijão,azerbaijao,no Azerbaijão,
 BA,Bósnia e Herzegovina,bosnia-e-herzegovina,na Bósnia e Herzegovina,
 BB,Barbados,barbados,em Barbados,
@@ -16,7 +16,7 @@ BG,Bulgária,bulgaria,na Bulgária,
 BH,Barém,barem,no Barém,
 BO,Bolívia,bolivia,na Bolívia,
 BR,Brasil,brasil,no Brasil,
-BW,Botsuana,botsuana,na Botsuana,
+BW,Botsuana,botsuana,no Botsuana,R-PT: masculino em pt-PT
 BY,Bielorrússia,bielorrussia,na Bielorrússia,
 BZ,Belize,belize,no Belize,
 CA,Canadá,canada,no Canadá,
@@ -35,15 +35,15 @@ DZ,Argélia,argelia,na Argélia,
 EC,Equador,equador,no Equador,
 EE,Estónia,estonia,na Estónia,
 EG,Egito,egito,no Egito,
-ES,Espanha,espanha,na Espanha,
+ES,Espanha,espanha,em Espanha,pt-PT: sem artigo (R-PT)
 ET,Etiópia,etiopia,na Etiópia,
 FI,Finlândia,finlandia,na Finlândia,
 FJ,Fiji,fiji,em Fiji,
 FO,Ilhas Faroé,ilhas-faroe,nas Ilhas Faroé,
-FR,França,franca,na França,
+FR,França,franca,em França,pt-PT: sem artigo (R-PT)
 GB,Reino Unido,reino-unido,no Reino Unido,
 GE,Geórgia,georgia,na Geórgia,
-GG,Guernesey,guernesey,em Guernesey,CLDR pt-PT
+GG,Guernsey,guernsey,em Guernsey,R-PT: forma da imprensa; CLDR «Guernesey»
 GH,Gana,gana,no Gana,
 GI,Gibraltar,gibraltar,em Gibraltar,
 GR,Grécia,grecia,na Grécia,
@@ -61,7 +61,7 @@ IN,Índia,india,na Índia,
 IQ,Iraque,iraque,no Iraque,
 IR,Irão,irao,no Irão,
 IS,Islândia,islandia,na Islândia,
-IT,Itália,italia,na Itália,
+IT,Itália,italia,em Itália,pt-PT: uso corrente sem artigo (R-PT)
 JE,Jersey,jersey,em Jersey,
 JM,Jamaica,jamaica,na Jamaica,
 JO,Jordânia,jordania,na Jordânia,
@@ -75,8 +75,8 @@ KY,Ilhas Caimão,ilhas-caimao,nas Ilhas Caimão,
 KZ,Cazaquistão,cazaquistao,no Cazaquistão,
 LB,Líbano,libano,no Líbano,
 LC,Santa Lúcia,santa-lucia,em Santa Lúcia,
-LI,Listenstaine,listenstaine,no Listenstaine,CLDR pt-PT; também «Liechtenstein»
-LK,Sri Lanca,sri-lanca,no Sri Lanca,CLDR pt-PT; também «Sri Lanka»
+LI,Liechtenstein,liechtenstein,no Liechtenstein,R-PT: forma da imprensa; CLDR «Listenstaine»
+LK,Sri Lanka,sri-lanka,no Sri Lanka,R-PT: forma da imprensa; CLDR «Sri Lanca»
 LT,Lituânia,lituania,na Lituânia,
 LU,Luxemburgo,luxemburgo,no Luxemburgo,
 LV,Letónia,letonia,na Letónia,
@@ -86,7 +86,7 @@ MD,Moldávia,moldavia,na Moldávia,
 ME,Montenegro,montenegro,no Montenegro,
 MF,São Martinho,sao-martinho,em São Martinho,CLDR: São Martinho (Saint-Martin) — encurtado
 MK,Macedónia do Norte,macedonia-do-norte,na Macedónia do Norte,
-MM,Mianmar,mianmar,no Mianmar,CLDR: Mianmar (Birmânia) — encurtado
+MM,Mianmar,mianmar,em Mianmar,R-PT: sem artigo
 MN,Mongólia,mongolia,na Mongólia,
 MO,Macau,macau,em Macau,"CLDR: Macau, RAE da China — encurtado"
 MT,Malta,malta,em Malta,
