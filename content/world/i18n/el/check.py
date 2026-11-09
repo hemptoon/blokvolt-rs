@@ -9,6 +9,7 @@ WORLD = HERE.parent.parent
 LANG = HERE.name
 CATS = set(Locale(LANG).plural_form.tags) | {'other'}
 PH = re.compile(r'\{[^{}]*\}')
+U = {'{city_u}': '{city}', '{country_u}': '{country}'}
 TAG = re.compile(r'</?[a-zA-Z][^>]*>|&[a-zA-Z#0-9]+;')
 SLUG = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')
 err = []
@@ -38,7 +39,8 @@ for part in ('map', 'pages', 'shell', 'prices'):
         if not isinstance(t, str) or not t.strip():
             err.append(f'{part}.{k}: empty or not a string')
             continue
-        if sorted(PH.findall(e)) != sorted(PH.findall(t)):
+        # pool 4 (10.11): {city_u}/{country_u} may replace {city}/{country} — the engine fills in_phrase
+        if sorted(U.get(x, x) for x in PH.findall(e)) != sorted(U.get(x, x) for x in PH.findall(t)):
             err.append(f'{part}.{k}: placeholders {sorted(PH.findall(e))} vs {sorted(PH.findall(t))}')
         if tags(e) != tags(t):
             err.append(f'{part}.{k}: tags/entities differ')

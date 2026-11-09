@@ -7,14 +7,14 @@ geonameid,name,in_phrase,decl_ok,note
 2747891,Ρότερνταμ,στο Ρότερνταμ,1,exonym
 2911298,Αμβούργο,στο Αμβούργο,1,exonym
 8063096,Earlsfield,στην πόλη Earlsfield,0,local
-2755251,Χρόνινγκεν,στο Χρόνινγκεν,1,exonym
+2755251,Γκρόνινγκεν,στο Γκρόνινγκεν,1,exonym (R-EL)
 2643743,Λονδίνο,στο Λονδίνο,1,exonym
 2743477,Zwolle,στην πόλη Zwolle,0,local
 2745912,Ουτρέχτη,στην Ουτρέχτη,1,exonym
 2746301,Τίλμπουργκ,στο Τίλμπουργκ,1,exonym
 2758012,Capelle aan den IJssel,στην πόλη Capelle aan den IJssel,0,local
 593116,Βίλνιους,στο Βίλνιους,1,exonym
-2750053,Νάιμεχεν,στο Νάιμεχεν,1,exonym
+2750053,Ναϊμέγκεν,στο Ναϊμέγκεν,1,exonym (R-EL)
 2751283,Μάαστριχτ,στο Μάαστριχτ,1,exonym
 2745321,Voorburg,στην πόλη Voorburg,0,local
 2759706,Apeldoorn,στην πόλη Apeldoorn,0,local
@@ -148,7 +148,7 @@ geonameid,name,in_phrase,decl_ok,note
 2746766,Steenwijk,στην πόλη Steenwijk,0,local
 2756342,Eersel,στην πόλη Eersel,0,local
 3013403,Hérouville-Saint-Clair,στην πόλη Hérouville-Saint-Clair,0,local
-3029241,Caen,στην πόλη Caen,0,local
+3029241,Καν,στην Καν,1,exonym (R-EL)
 2745154,Vught,στην πόλη Vught,0,local
 2755669,Geertruidenberg,στην πόλη Geertruidenberg,0,local
 2748413,Purmerend,στην πόλη Purmerend,0,local
@@ -470,7 +470,7 @@ geonameid,name,in_phrase,decl_ok,note
 2936871,Dinslaken,στην πόλη Dinslaken,0,local
 2973385,Tarbes,στην πόλη Tarbes,0,local
 2947444,Böblingen,στην πόλη Böblingen,0,local
-3104499,Βιτόρια,στο Βιτόρια,1,exonym
+3104499,Βιτόρια,στη Βιτόρια,1,exonym (R-EL)
 2978758,Saint-Lô,στην πόλη Saint-Lô,0,local
 3006283,La Teste-de-Buch,στην πόλη La Teste-de-Buch,0,local
 3014856,Grasse,στην πόλη Grasse,0,local
