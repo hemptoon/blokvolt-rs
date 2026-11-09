@@ -529,6 +529,7 @@ def main():
         print(f"/{LOCALES[key]['dir']}/: {len(pages)} pages, map {M['n']} stations (DC ≥ 50 kW {M['dc50']})")
     import loc_towns; loc_towns.build(sys.modules[__name__], loaded)   # town pages of the local sections (scripts/loc_towns.py)
     copy_assets()
+    __import__('world_map').build(sys.modules[__name__])   # world map /map/ /sr/mapa/ /ru/karta/ (K2, scripts/world_map.py)
     bust()
     (OUT / 'CNAME').write_text('blokvolt.com\n', encoding='utf-8')
     (OUT / 'README.md').write_text(

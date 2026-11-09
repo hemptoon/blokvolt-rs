@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import ic %}
+{# World map of blokvolt.com: /map/, /sr/mapa/, /ru/karta/ (scripts/world_map.py; task K2, P1 §2).
+   Data: PMTiles + card files + manifest from config.data_base (contract v1 §3–5); words: content/world/strings_map.json. #}
+{% block bodyclass %}map-page wm-page{% endblock %}
+{% block head %}{% if not public %}<meta name="robots" content="noindex,nofollow">
+{% endif %}<link rel="stylesheet" href="/assets/vendor/maplibre-6.11.1/maplibre-gl.css">
+<link rel="stylesheet" href="/assets/world/world-map.css?v={{ v_css }}">
+<link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>
+<link rel="preconnect" href="{{ data_origin }}" crossorigin>{% endblock %}
+{% block page %}
+<div class="map-app wm-app">
+<aside class="map-side wm-side">
+<div class="map-top wm-top">
+<h1>{{ T.h1 }}</h1>
+<p>{{ T.lead }}</p>
+<button class="btn sm wm-ftoggle" id="wm-ft" type="button" aria-expanded="false" aria-controls="wm-filters">{{ T.filters_show }} <span class="n" id="wm-fn" hidden></span></button>
+</div>
+<form class="wm-filters" id="wm-filters" action="#" autocomplete="off">
+<fieldset class="wm-fs"><legend>{{ T.f_type }}</legend>
+<div class="chips">
+<button class="chip" type="button" data-snaga="ac" aria-pressed="true"><i class="wm-sw sw-ac" aria-hidden="true"></i>{{ T.t_ac }}</button>
+<button class="chip" type="button" data-snaga="dc" aria-pressed="true"><i class="wm-sw sw-dc" aria-hidden="true"></i>{{ T.t_dc }}</button>
+<button class="chip" type="button" data-snaga="hpc" aria-pressed="true"><i class="wm-sw sw-hpc" aria-hidden="true"></i>{{ T.t_hpc }}</button>
+<button class="chip" type="button" data-snaga="nepoznato" aria-pressed="true"><i class="wm-sw sw-unk" aria-hidden="true"></i>{{ T.t_unk }}</button>
+</div></fieldset>
+<fieldset class="wm-fs"><legend>{{ T.f_net }}</legend>
+<div class="search-box wm-netq">{{ ic('search') }}<label class="sr-only" for="wm-q">{{ T.net_search }}</label><input class="input" id="wm-q" type="search" placeholder="{{ T.net_search }}" aria-controls="wm-qres" autocomplete="off" spellcheck="false"></div>
+<div class="chips wm-qres" id="wm-qres" aria-live="polite"></div>
+<div class="wm-sub" id="wm-selh" hidden>{{ T.net_selected }}</div>
+<div class="chips" id="wm-sel"></div>
+<div class="wm-sub">{{ T.net_top }}</div>
+<div class="chips" id="wm-top"><button class="chip" type="button" data-net="nepoznata" aria-pressed="false">{{ T.net_unknown }}</button></div>
+</fieldset>
+<fieldset class="wm-fs"><legend>{{ T.f_conf }}</legend>
+<div class="chips">
+<button class="chip" type="button" data-p="40" aria-pressed="true">{{ T.c40 }}</button>
+<button class="chip" type="button" data-p="50" aria-pressed="false">{{ T.c50 }}</button>
+<button class="chip" type="button" data-p="70" aria-pressed="false">{{ T.c70 }}</button>
+</div></fieldset>
+<fieldset class="wm-fs"><legend>{{ T.f_acc }}</legend>
+<div class="chips">
+<button class="chip" type="button" data-pristup="javni" aria-pressed="true">{{ T.acc_pub }}</button>
+<button class="chip" type="button" data-pristup="svi" aria-pressed="false">{{ T.acc_all }}</button>
+</div></fieldset>
+<details class="wm-adv" id="wm-adv"><summary>{{ T.adv }}</summary>
+<fieldset class="wm-fs"><legend>{{ T.f_src }}</legend>
+<div class="chips">
+<button class="chip" type="button" data-izvor="drz" aria-pressed="true">{{ T.src_gov }}</button>
+<button class="chip" type="button" data-izvor="zaj" aria-pressed="true">{{ T.src_com }}</button>
+<button class="chip" type="button" data-izvor="mre" aria-pressed="true">{{ T.src_net }}</button>
+<button class="chip" type="button" data-izvor="bv" aria-pressed="true">{{ T.src_bv }}</button>
+</div></fieldset>
+</details>
+<button class="lnkbtn wm-reset" id="wm-reset" type="button">{{ T.reset }}</button>
+<p class="wm-note">{{ T.zoom_note }}</p>
+</form>
+<div class="wm-data" id="wm-data"><noscript><p>{{ T.noscript }}</p></noscript></div>
+</aside>
+<div class="map-wrap wm-wrap">
+<div id="map" role="region" aria-label="{{ T.map_label }}"></div>
+<div class="map-legend wm-legend" role="group" aria-label="{{ T.legend }}"><span><i class="wm-sw sw-ac"></i>{{ T.lg_ac }}</span><span><i class="wm-sw sw-dc"></i>{{ T.lg_dc }}</span><span><i class="wm-sw sw-hpc"></i>{{ T.lg_hpc }}</span><span><i class="wm-sw sw-unk"></i>{{ T.lg_unk }}</span></div>
+<div class="map-attr wm-attr" id="wm-attr">{{ T.attr_map }}: <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/" rel="noopener">OpenMapTiles</a> · © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> (ODbL)</div>
+<div class="wm-msg" id="wm-msg" role="status" hidden></div>
+<div class="card-ov wm-card" id="wm-card" aria-live="polite"></div>
+</div>
+</div>
+<dialog class="wm-dlg" id="wm-src" aria-labelledby="wm-src-h"><div class="wm-dlg-in"><button class="x" type="button" data-close aria-label="{{ T.close }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<h2 id="wm-src-h">{{ T.sources_btn }}</h2><div id="wm-src-body"></div></div></dialog>
+<script id="wm-cfg" type="application/json">{{ wm_cfg|safe }}</script>
+<script id="wm-i18n" type="application/json">{{ wm_i18n|safe }}</script>
+{% endblock %}
+{% block scripts %}<script src="/assets/vendor/pmtiles-{{ pmtiles_ver }}/pmtiles.js" defer></script>
+<script type="module" src="/assets/world/world-map.js?v={{ v_js }}"></script>{% endblock %}

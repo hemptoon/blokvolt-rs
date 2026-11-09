@@ -1,0 +1,592 @@
+{
+ "title": {
+  "en": "World map of EV charging stations | BlokVolt",
+  "sr": "Mapa punjača za električne automobile u svetu | BlokVolt",
+  "ru": "Карта зарядок для электромобилей в мире | BlokVolt"
+ },
+ "description": {
+  "en": "Public charging stations for electric cars across Europe and the world, from open data: power, networks, connectors and the source of every point.",
+  "sr": "Javni punjači za električne automobile u Evropi i svetu, iz otvorenih podataka: snaga, mreže, konektori i izvor svake tačke.",
+  "ru": "Публичные зарядки для электромобилей в Европе и мире по открытым данным: мощность, сети, разъёмы и источник каждой точки."
+ },
+ "h1": {
+  "en": "Charging map",
+  "sr": "Mapa punjača",
+  "ru": "Карта зарядок"
+ },
+ "lead": {
+  "en": "Public chargers outside Serbia and the region, from open data.",
+  "sr": "Javni punjači van Srbije i regiona, iz otvorenih podataka.",
+  "ru": "Публичные зарядки за пределами Сербии и региона, по открытым данным."
+ },
+ "map_label": {
+  "en": "Map of charging stations",
+  "sr": "Mapa punjača",
+  "ru": "Карта зарядок"
+ },
+ "noscript": {
+  "en": "The map needs JavaScript.",
+  "sr": "Za mapu je potreban JavaScript.",
+  "ru": "Для карты нужен JavaScript."
+ },
+ "no_map": {
+  "en": "The map cannot be loaded in this browser.",
+  "sr": "Mapa ne može da se učita u ovom pregledaču.",
+  "ru": "Карту не удаётся загрузить в этом браузере."
+ },
+ "data_err": {
+  "en": "Map data could not be loaded. Try again later.",
+  "sr": "Podaci za mapu nisu učitani. Pokušajte ponovo kasnije.",
+  "ru": "Данные карты не загрузились. Попробуйте позже."
+ },
+ "loading": {
+  "en": "Loading…",
+  "sr": "Učitavanje…",
+  "ru": "Загрузка…"
+ },
+ "filters": {
+  "en": "Filters",
+  "sr": "Filteri",
+  "ru": "Фильтры"
+ },
+ "filters_show": {
+  "en": "Show filters",
+  "sr": "Prikaži filtere",
+  "ru": "Показать фильтры"
+ },
+ "f_type": {
+  "en": "Charging type",
+  "sr": "Vrsta punjenja",
+  "ru": "Тип зарядки"
+ },
+ "t_ac": {
+  "en": "AC up to 22 kW",
+  "sr": "AC do 22 kW",
+  "ru": "AC до 22 кВт"
+ },
+ "t_dc": {
+  "en": "DC up to 149 kW",
+  "sr": "DC do 149 kW",
+  "ru": "DC до 149 кВт"
+ },
+ "t_hpc": {
+  "en": "150 kW and more",
+  "sr": "Od 150 kW",
+  "ru": "От 150 кВт"
+ },
+ "t_unk": {
+  "en": "Power unknown",
+  "sr": "Snaga nepoznata",
+  "ru": "Мощность неизвестна"
+ },
+ "f_net": {
+  "en": "Network",
+  "sr": "Mreža",
+  "ru": "Сеть"
+ },
+ "net_search": {
+  "en": "Find a network",
+  "sr": "Potražite mrežu",
+  "ru": "Найти сеть"
+ },
+ "net_none": {
+  "en": "No network with that name.",
+  "sr": "Nema mreže sa tim nazivom.",
+  "ru": "Сети с таким названием нет."
+ },
+ "net_top": {
+  "en": "Most common in this part of the map",
+  "sr": "Najčešće u ovom delu mape",
+  "ru": "Чаще всего в этой части карты"
+ },
+ "net_unknown": {
+  "en": "Unknown network",
+  "sr": "Nepoznata mreža",
+  "ru": "Сеть неизвестна"
+ },
+ "net_selected": {
+  "en": "Selected networks",
+  "sr": "Izabrane mreže",
+  "ru": "Выбранные сети"
+ },
+ "net_remove": {
+  "en": "Remove filter: {x}",
+  "sr": "Ukloni filter: {x}",
+  "ru": "Убрать фильтр: {x}"
+ },
+ "f_conf": {
+  "en": "Data reliability",
+  "sr": "Pouzdanost podatka",
+  "ru": "Надёжность данных"
+ },
+ "c40": {
+  "en": "All",
+  "sr": "Sve",
+  "ru": "Все"
+ },
+ "c50": {
+  "en": "Medium and high",
+  "sr": "Srednja i visoka",
+  "ru": "Средняя и высокая"
+ },
+ "c70": {
+  "en": "High only",
+  "sr": "Samo visoka",
+  "ru": "Только высокая"
+ },
+ "f_acc": {
+  "en": "Access",
+  "sr": "Javnost",
+  "ru": "Доступ"
+ },
+ "acc_pub": {
+  "en": "Public only",
+  "sr": "Samo javni",
+  "ru": "Только публичные"
+ },
+ "acc_all": {
+  "en": "Show the others too",
+  "sr": "Prikaži i ostale",
+  "ru": "Показать и остальные"
+ },
+ "adv": {
+  "en": "Advanced",
+  "sr": "Napredno",
+  "ru": "Дополнительно"
+ },
+ "f_src": {
+  "en": "Data source",
+  "sr": "Izvor podataka",
+  "ru": "Источник данных"
+ },
+ "src_gov": {
+  "en": "Government registers",
+  "sr": "Državni registri",
+  "ru": "Госреестры"
+ },
+ "src_com": {
+  "en": "Community (OSM, OCM)",
+  "sr": "Zajednica (OSM, OCM)",
+  "ru": "Сообщество (OSM, OCM)"
+ },
+ "src_net": {
+  "en": "Networks' websites",
+  "sr": "Sajtovi mreža",
+  "ru": "Сайты сетей"
+ },
+ "src_bv": {
+  "en": "BlokVolt (region)",
+  "sr": "BlokVolt (region)",
+  "ru": "BlokVolt (регион)"
+ },
+ "reset": {
+  "en": "Reset filters",
+  "sr": "Poništi filtere",
+  "ru": "Сбросить фильтры"
+ },
+ "legend": {
+  "en": "Legend",
+  "sr": "Legenda",
+  "ru": "Легенда"
+ },
+ "lg_ac": {
+  "en": "AC",
+  "sr": "AC",
+  "ru": "AC"
+ },
+ "lg_dc": {
+  "en": "DC",
+  "sr": "DC",
+  "ru": "DC"
+ },
+ "lg_hpc": {
+  "en": "150+ kW",
+  "sr": "150+ kW",
+  "ru": "150+ кВт"
+ },
+ "lg_unk": {
+  "en": "power unknown",
+  "sr": "snaga nepoznata",
+  "ru": "мощность неизвестна"
+ },
+ "zoom_note": {
+  "en": "Zoomed out, the densest areas show only part of the points; zoom in to see all.",
+  "sr": "Na udaljenom prikazu najgušća područja pokazuju samo deo tačaka; približite mapu da vidite sve.",
+  "ru": "На мелком масштабе в самых плотных местах видна только часть точек; приблизьте карту, чтобы увидеть все."
+ },
+ "data_date": {
+  "en": "Data from {d}",
+  "sr": "Podaci od {d}",
+  "ru": "Данные от {d}"
+ },
+ "sources_btn": {
+  "en": "Sources and licences",
+  "sr": "Izvori i licence",
+  "ru": "Источники и лицензии"
+ },
+ "sources_n": {
+  "en": "{n} sources",
+  "sr": "{n} izvora",
+  "ru": "источников: {n}"
+ },
+ "about": {
+  "en": "About the data",
+  "sr": "O podacima",
+  "ru": "О данных"
+ },
+ "attr_map": {
+  "en": "Map",
+  "sr": "Mapa",
+  "ru": "Карта"
+ },
+ "odbl_note": {
+  "en": "The merged point data is available under the ODbL.",
+  "sr": "Objedinjeni podaci o tačkama dostupni su pod licencom ODbL.",
+  "ru": "Объединённые данные о точках доступны по лицензии ODbL."
+ },
+ "close": {
+  "en": "Close",
+  "sr": "Zatvori",
+  "ru": "Закрыть"
+ },
+ "c_unnamed": {
+  "en": "EV charging station",
+  "sr": "Punjač za električne automobile",
+  "ru": "Зарядка для электромобилей"
+ },
+ "c_net": {
+  "en": "Network",
+  "sr": "Mreža",
+  "ru": "Сеть"
+ },
+ "c_power": {
+  "en": "Power",
+  "sr": "Snaga",
+  "ru": "Мощность"
+ },
+ "c_power_unk": {
+  "en": "not known",
+  "sr": "nije poznata",
+  "ru": "неизвестна"
+ },
+ "c_conn": {
+  "en": "Connectors",
+  "sr": "Konektori",
+  "ru": "Разъёмы"
+ },
+ "c_pts": {
+  "en": "Charging points",
+  "sr": "Mesta za punjenje",
+  "ru": "Точек зарядки"
+ },
+ "c_acc": {
+  "en": "Access",
+  "sr": "Pristup",
+  "ru": "Доступ"
+ },
+ "c_src": {
+  "en": "Data source",
+  "sr": "Izvor podataka",
+  "ru": "Источник данных"
+ },
+ "c_lc": {
+  "en": "Last confirmed",
+  "sr": "Poslednja potvrda",
+  "ru": "Последнее подтверждение"
+ },
+ "c_lc_none": {
+  "en": "no date",
+  "sr": "bez datuma",
+  "ru": "без даты"
+ },
+ "c_conf": {
+  "en": "Data reliability",
+  "sr": "Pouzdanost podatka",
+  "ru": "Надёжность данных"
+ },
+ "conf_hi": {
+  "en": "High",
+  "sr": "Visoka",
+  "ru": "Высокая"
+ },
+ "conf_mid": {
+  "en": "Medium",
+  "sr": "Srednja",
+  "ru": "Средняя"
+ },
+ "conf_lo": {
+  "en": "Low",
+  "sr": "Niska",
+  "ru": "Низкая"
+ },
+ "how": {
+  "en": "How it is calculated",
+  "sr": "Kako se računa",
+  "ru": "Как считается"
+ },
+ "conf_note": {
+  "en": "This rates the data about the point, not the network.",
+  "sr": "Ocena se odnosi na podatke o tački, ne na mrežu.",
+  "ru": "Оценка относится к данным о точке, а не к сети."
+ },
+ "nav": {
+  "en": "Directions",
+  "sr": "Navigacija",
+  "ru": "Маршрут"
+ },
+ "share": {
+  "en": "Share",
+  "sr": "Podeli",
+  "ru": "Поделиться"
+ },
+ "copied": {
+  "en": "Link copied",
+  "sr": "Link je kopiran",
+  "ru": "Ссылка скопирована"
+ },
+ "osm_fix": {
+  "en": "Correct it in OpenStreetMap too",
+  "sr": "Ispravite i u OpenStreetMap",
+  "ru": "Исправьте и в OpenStreetMap"
+ },
+ "more": {
+  "en": "Details on the BlokVolt map",
+  "sr": "Detalji na BlokVolt mapi",
+  "ru": "Подробнее на карте BlokVolt"
+ },
+ "bv_note": {
+  "en": "Points in Serbia and the region come from the regional BlokVolt maps.",
+  "sr": "Tačke u Srbiji i regionu dolaze sa regionalnih BlokVolt mapa.",
+  "ru": "Точки в Сербии и регионе берутся с региональных карт BlokVolt."
+ },
+ "card_err": {
+  "en": "The details of this point could not be loaded.",
+  "sr": "Detalji ove tačke nisu učitani.",
+  "ru": "Не удалось загрузить данные этой точки."
+ },
+ "licence": {
+  "en": "licence",
+  "sr": "licenca",
+  "ru": "лицензия"
+ },
+ "acc_public": {
+  "en": "Public",
+  "sr": "Javni",
+  "ru": "Публичный"
+ },
+ "acc_public_membership": {
+  "en": "Public, with a card or app",
+  "sr": "Javni, uz karticu ili aplikaciju",
+  "ru": "Публичный, по карте или в приложении"
+ },
+ "acc_public_pay_at_location": {
+  "en": "Public, pay on site",
+  "sr": "Javni, plaćanje na licu mesta",
+  "ru": "Публичный, оплата на месте"
+ },
+ "acc_public_notice_required": {
+  "en": "Public, by prior notice",
+  "sr": "Javni, uz najavu",
+  "ru": "Публичный, по предварительной записи"
+ },
+ "acc_restricted_customers_staff": {
+  "en": "For customers and staff",
+  "sr": "Za goste i zaposlene",
+  "ru": "Для клиентов и сотрудников"
+ },
+ "acc_restricted_private": {
+  "en": "Private",
+  "sr": "Privatni",
+  "ru": "Частный"
+ },
+ "acc_private_notice_required": {
+  "en": "Private, by prior notice",
+  "sr": "Privatni, uz najavu",
+  "ru": "Частный, по предварительной записи"
+ },
+ "acc_unknown": {
+  "en": "Access not known",
+  "sr": "Pristup nije poznat",
+  "ru": "Доступ неизвестен"
+ },
+ "conn_other": {
+  "en": "other",
+  "sr": "drugo",
+  "ru": "другой"
+ },
+ "rep": {
+  "en": "Report an error",
+  "sr": "Prijavi grešku",
+  "ru": "Сообщить об ошибке"
+ },
+ "r_type": {
+  "en": "What is wrong?",
+  "sr": "Šta nije u redu?",
+  "ru": "Что не так?"
+ },
+ "r_ne_postoji": {
+  "en": "The charger does not exist",
+  "sr": "Punjač ne postoji",
+  "ru": "Зарядки нет"
+ },
+ "r_ne_radi": {
+  "en": "Closed or not working",
+  "sr": "Zatvoren ili ne radi",
+  "ru": "Закрыта или не работает"
+ },
+ "r_lokacija": {
+  "en": "Wrong location",
+  "sr": "Pogrešna lokacija",
+  "ru": "Неверное место"
+ },
+ "r_snaga": {
+  "en": "Wrong power or connectors",
+  "sr": "Pogrešna snaga ili konektori",
+  "ru": "Неверная мощность или разъёмы"
+ },
+ "r_nije_javni": {
+  "en": "Not public",
+  "sr": "Nije javni",
+  "ru": "Не публичная"
+ },
+ "r_drugo": {
+  "en": "Other",
+  "sr": "Drugo",
+  "ru": "Другое"
+ },
+ "r_loc_hint": {
+  "en": "Drag the marker to the right place on the map.",
+  "sr": "Prevucite oznaku na tačno mesto na mapi.",
+  "ru": "Перетащите метку на точное место на карте."
+ },
+ "r_text": {
+  "en": "Comment (optional)",
+  "sr": "Komentar (nije obavezno)",
+  "ru": "Комментарий (необязательно)"
+ },
+ "r_text_max": {
+  "en": "Up to 300 characters",
+  "sr": "Do 300 znakova",
+  "ru": "До 300 знаков"
+ },
+ "r_email": {
+  "en": "E-mail (optional)",
+  "sr": "E-mail (nije obavezno)",
+  "ru": "E-mail (необязательно)"
+ },
+ "r_email_hint": {
+  "en": "Only if you would like a reply.",
+  "sr": "Samo ako želite odgovor.",
+  "ru": "Только если хотите получить ответ."
+ },
+ "r_send": {
+  "en": "Send",
+  "sr": "Pošalji",
+  "ru": "Отправить"
+ },
+ "r_cancel": {
+  "en": "Cancel",
+  "sr": "Odustani",
+  "ru": "Отмена"
+ },
+ "r_sending": {
+  "en": "Sending…",
+  "sr": "Slanje…",
+  "ru": "Отправка…"
+ },
+ "r_ok": {
+  "en": "Thank you. Reports are reviewed once a week; a correction appears after the next data update.",
+  "sr": "Hvala. Prijave se pregledaju jednom nedeljno; ispravka se vidi posle sledećeg osvežavanja podataka.",
+  "ru": "Спасибо. Сообщения разбираются раз в неделю; исправление появится после следующего обновления данных."
+ },
+ "r_need_type": {
+  "en": "Choose what is wrong.",
+  "sr": "Izaberite šta nije u redu.",
+  "ru": "Выберите, что не так."
+ },
+ "r_err_net": {
+  "en": "The report was not sent: no connection to the server. Try again later.",
+  "sr": "Prijava nije poslata: nema veze sa serverom. Pokušajte ponovo kasnije.",
+  "ru": "Сообщение не отправлено: нет связи с сервером. Попробуйте позже."
+ },
+ "r_err_limit": {
+  "en": "Too many reports from this address today. Try again tomorrow.",
+  "sr": "Sa ove adrese je danas poslato previše prijava. Pokušajte ponovo sutra.",
+  "ru": "С этого адреса сегодня отправлено слишком много сообщений. Попробуйте завтра."
+ },
+ "r_err": {
+  "en": "The report was not sent. Check the form and try again.",
+  "sr": "Prijava nije poslata. Proverite podatke i pokušajte ponovo.",
+  "ru": "Сообщение не отправлено. Проверьте данные и попробуйте ещё раз."
+ },
+ "ch_skip": {
+  "en": "Skip to content",
+  "sr": "Pređi na sadržaj",
+  "ru": "Перейти к содержанию"
+ },
+ "ch_home": {
+  "en": "home",
+  "sr": "početna",
+  "ru": "главная"
+ },
+ "ch_menu": {
+  "en": "Menu",
+  "sr": "Meni",
+  "ru": "Меню"
+ },
+ "ch_country_menu": {
+  "en": "Country and language",
+  "sr": "Zemlja i jezik",
+  "ru": "Страна и язык"
+ },
+ "ch_ft_claim": {
+  "en": "Where to charge an electric car in Serbia and its neighbours, what it costs and what the rules are.",
+  "sr": "Gde napuniti električni automobil u Srbiji i susednim zemljama, koliko košta i koja su pravila.",
+  "ru": "Где зарядить электромобиль в Сербии и соседних странах, сколько это стоит и какие действуют правила."
+ },
+ "ch_ft_checked": {
+  "en": "checked",
+  "sr": "provereno",
+  "ru": "проверено"
+ },
+ "ch_ft_charging": {
+  "en": "Charging",
+  "sr": "Punjenje",
+  "ru": "Зарядка"
+ },
+ "ch_ft_region": {
+  "en": "the region",
+  "sr": "region",
+  "ru": "регион"
+ },
+ "ch_ft_data": {
+  "en": "Maps: © <a href=\"https://www.openstreetmap.org/copyright\" rel=\"noopener\">OpenStreetMap</a> contributors, <a href=\"https://openchargemap.org\" rel=\"noopener\">Open Charge Map</a>",
+  "sr": "Mape: © <a href=\"https://www.openstreetmap.org/copyright\" rel=\"noopener\">OpenStreetMap</a> contributors, <a href=\"https://openchargemap.org\" rel=\"noopener\">Open Charge Map</a>",
+  "ru": "Карты: © <a href=\"https://www.openstreetmap.org/copyright\" rel=\"noopener\">OpenStreetMap</a> contributors, <a href=\"https://openchargemap.org\" rel=\"noopener\">Open Charge Map</a>"
+ },
+ "ch_report": {
+  "en": "Report a mistake",
+  "sr": "Prijavi grešku",
+  "ru": "Сообщить об ошибке"
+ },
+ "ch_fix_subject": {
+  "en": "Correction",
+  "sr": "Ispravka",
+  "ru": "Исправление"
+ },
+ "ch_nav_map": {
+  "en": "Map",
+  "sr": "Mapa",
+  "ru": "Карта"
+ },
+ "ch_nav_rs": {
+  "en": "Serbia — blokvolt.rs",
+  "sr": "Srbija — blokvolt.rs",
+  "ru": "Сербия — blokvolt.rs"
+ },
+ "ch_nav_region": {
+  "en": "Region (English)",
+  "sr": "Region (na engleskom)",
+  "ru": "Регион (на английском)"
+ }
+}
