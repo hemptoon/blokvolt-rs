@@ -515,6 +515,7 @@ function distKm(a, b) {
   const h = Math.sin(dLa / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLo / 2) ** 2;
   return 12742 * Math.asin(Math.sqrt(h));
 }
+function kindSr(s, pw) { return pw ? '<span class="sr-only"> kW · ' + esc((s.dc || 0) > 0 || s.kd === 'dc' ? T.k_dc : 'AC') + '</span>' : ''; }
 function badge(s) {
   const v = ver(s);
   if (v === 'nep') return ' <i class="vq" title="' + esc(T.v_nep) + '">?</i>';
@@ -548,7 +549,7 @@ function renderList() {
     const k = kind(s), ps = priceShort(s), pw = power(s);
     const sub = [netName(s), place(s), closedNow(s) ? T.closed_now : ''].filter(Boolean).join(' · ') + rating(s);
     const dist = ref ? '<span>' + fmt(s._d, s._d < 10 ? 1 : 0) + ' km</span>' : '';
-    return '<button class="st' + (sel === s ? ' is-on' : '') + (ver(s) === 'nep' ? ' is-nep' : '') + '" data-id="' + esc(s.id) + '"><span class="dot ' + k + '">' + (pw ? Math.round(pw) : '') + '</span>' +
+    return '<button class="st' + (sel === s ? ' is-on' : '') + (ver(s) === 'nep' ? ' is-nep' : '') + '" data-id="' + esc(s.id) + '"><span class="dot ' + k + '">' + (pw ? Math.round(pw) : '') + kindSr(s, pw) + '</span>' +
       '<span class="nm"><b>' + (isFav(s) ? '<i class="fv">' + STAR + '<span class="sr-only">' + esc(T.fav_sr) + '</span></i>' : '') + esc(title(s)) + badge(s) + '</b><span class="sb">' + esc(sub) + '</span></span><span class="pr ' + ps.cls + '">' + esc(ps.t) + dist + '</span></button>';
   }).join('');
   $list.innerHTML = (html || '<p class="empty">' + esc(state.f === 'fav' && !FAV.size ? T.fav_none : T.none) + '</p>') + (more > 0 ? '<div class="more"><button class="btn sm" type="button" data-more>' + esc(T.more.replace('{n}', more)) + '</button></div>' : '');
@@ -1044,7 +1045,7 @@ function nearRow(x, i) {
   if (s.ax && s.ax.t) tags.push('<span class="tag">' + esc(tr(s.ax.t)) + '</span>');
   else if (s.acc === 'customers') tags.push('<span class="tag">' + esc(T.customers) + '</span>');
   return '<li class="nr' + (i ? '' : ' first') + '">' +
-    '<button class="nr-main" type="button" data-open="' + esc(s.id) + '"><span class="dot ' + k + (ver(s) === 'nep' ? ' nep' : '') + '">' + (pw ? Math.round(pw) : '') + '</span>' +
+    '<button class="nr-main" type="button" data-open="' + esc(s.id) + '"><span class="dot ' + k + (ver(s) === 'nep' ? ' nep' : '') + '">' + (pw ? Math.round(pw) : '') + kindSr(s, pw) + '</span>' +
     '<span class="nr-nm"><b>' + esc(title(s)) + '</b><span class="nr-sb">' + esc([netName(s), place(s)].filter(Boolean).join(' · ')) + '</span>' +
     '<span class="nr-meta"><b>' + esc(dist) + '</b>' + (ps.t ? ' · <span class="nr-pr">' + esc(ps.t) + '</span>' : '') + '</span></span></button>' +
     '<a class="btn ' + (i ? 'sm' : 'dark') + ' nr-go" href="' + esc(navUrl(a, s)) + '" target="_blank" rel="noopener" data-nav="' + a + '" data-st="' + esc(s.id) + '" aria-label="' +
@@ -1322,7 +1323,7 @@ function rtRow(x) {
   else if (s.acc === 'customers') tags.push('<span class="tag">' + esc(T.customers) + '</span>');
   const off = x.d < 0.3 ? T.rt_on : T.rt_off.replace('{d}', fmtDist(x.d));
   return '<li class="nr rt-row">' +
-    '<button class="nr-main" type="button" data-rt-open="' + esc(s.id) + '"><span class="dot ' + k + (ver(s) === 'nep' ? ' nep' : '') + '">' + (pw ? Math.round(pw) : '') + '</span>' +
+    '<button class="nr-main" type="button" data-rt-open="' + esc(s.id) + '"><span class="dot ' + k + (ver(s) === 'nep' ? ' nep' : '') + '">' + (pw ? Math.round(pw) : '') + kindSr(s, pw) + '</span>' +
     '<span class="nr-nm"><b>' + esc(title(s)) + '</b><span class="nr-sb">' + esc([netName(s), place(s)].filter(Boolean).join(' · ')) + '</span>' +
     '<span class="nr-meta"><b>' + esc(T.rt_at.replace('{km}', fmt(x.at, 0))) + '</b> · ' + esc(off) + (ps.t ? ' · <span class="nr-pr">' + esc(ps.t) + '</span>' : '') + '</span></span></button>' +
     '<a class="btn sm nr-go" href="' + esc(navUrl(a, s)) + '" target="_blank" rel="noopener" data-nav="' + a + '" data-st="' + esc(s.id) + '" aria-label="' +

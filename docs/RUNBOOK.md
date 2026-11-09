@@ -1299,6 +1299,9 @@ Since 26.09.2026 `.github/workflows/site-checks.yml` checks the site without any
 - **Status badges** (plain SVG, readable with WebFetch): `…/actions/workflows/site-checks.yml/badge.svg?event=schedule`
   (live) and `…?event=push` (build) under `https://github.com/hemptoon/blokvolt-rs`. GitHub e-mails a failed
   run to the owner.
+- **Accessibility** (`.github/workflows/a11y.yml`, every night at 02:47 UTC and by hand): axe-core and three keyboard/zoom
+  checks on both live sites — 3.41. Its own badge (`…/actions/workflows/a11y.yml/badge.svg`), so a contrast finding never
+  hides a red live check.
 - **Shared quality system.** These checks are the BlokVolt part of the system of both projects described in the
   project doc `claude/Evolako_BlokVolt_Sistema_Kachestva_2026-09-26.md`: nightly run on the owner's Mac (04:30),
   the morning QA review task (08:10) that writes findings to `claude/QA_Log.md`, and the morning Telegram report
@@ -2414,6 +2417,33 @@ only, never handed out as data (not in `punjaci.json`, not in answers to data re
 - **Test:** `python3 scripts/qa/embed_test.py /tmp/emb-shots` (with cfserve on 8787): the frame on another origin, no JS/CSP
   errors, wide and narrow layouts, list sheet, card, host pin, network chip, RU, the price widget, the configurator's code
   and preview, no overflow on a phone. Look at the screenshots.
+### 3.41 Accessibility (since 09.11.2026)
+
+Owner's word 09.11.2026 («да, давай аудит и все остальные твои пункты»): the site is made usable with a screen reader,
+a keyboard only, enlarged text and low vision — quietly, with no "version for the visually impaired" and no overlay
+widget. Target: WCAG 2.2 level AA. The statement is `/pristupacnost/` (`content/podaci/pristupacnost.md`), linked only in
+the footer's legal line; www.evolako.rs has its own (`/pristupacnost`, evolako-web `site/pristupacnost.py`).
+
+- **Keep it true.** The statement lists what is done and what is not. A change that adds a barrier (a new widget, a map
+  layer, a colour) either fixes it or adds a line to „Šta još nije gotovo“ in the same commit, with a line in /izmene/.
+- **Colours.** Text uses `--ink`, `--ink2`, `--mut` or `--mut3` (≥ 4.5:1 on white and on `--surface2`); `--mut2` is for
+  lines, borders and icons only. Never `opacity` below .7 on text. Lime (`--volt`) is a background, never a text colour
+  on white.
+- **Colour is never the only sign.** On /mapa/ the pin colour has a word next to it in the list and on the card (price
+  column: „Ne radi“, „Besplatno“, „Samo Tesla“; the power dot carries „kW · Brzi (DC)/AC“ for screen readers, `kindSr()`
+  in map.js). Charts and tiles say their numbers in text too.
+- **Focus.** The global `:focus-visible` ring stays; a component that removes it draws its own (e.g. `.amc-n a::after`).
+- **Every link has text.** A station without a name links as its network or „Punjač“ (`_macros.html`).
+- **Zoom.** Nothing scrolls sideways at 320 px (400 % zoom); the header hides the globe icon under 375 px for this.
+- **Images.** News photos carry the caption of `content/data/foto.json` as their description; a picture with numbers
+  (a chart, a price table as an image) never holds a number that is not also in the text.
+- **Check.** `python3 scripts/qa/a11y_check.py --site blokvolt --base http://127.0.0.1:8787` against `dist/` (needs
+  Playwright Chromium and `npm i --no-save axe-core@4.14`; `AXE_JS=` points elsewhere). FAIL = a serious/critical axe
+  rule, no skip link, a focus stop without a ring, sideways scrolling at 320 px; WARN = moderate/minor rules. The
+  nightly workflow „Accessibility“ (`.github/workflows/a11y.yml`, 02:47 UTC) runs the same on both live sites
+  (www.blokvolt.rs and www.evolako.rs, three languages); badge `…/actions/workflows/a11y.yml/badge.svg`. Audit
+  09.11.2026 on the built site: 23 pages before — 111 low-contrast texts, 23 language buttons without their visible
+  text in the name, 5 empty links, the menu button off screen at 320 px; after — 0 on 25 pages.
 
 ## 4. Build and check
 
