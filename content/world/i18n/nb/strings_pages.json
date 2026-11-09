@@ -4,7 +4,7 @@
  "below_title": "Ladestasjoner – for lite data nå",
  "conf_link": "Slik beregnes påliteligheten",
  "country_menu": "Språk",
- "crumbs": "Navigasjonssti",
+ "crumbs": "Brødsmulesti",
  "d_city": "Offentlige ladesteder i {city} fra åpne data: DC-hurtigladere med effekt og kontakter, nettverk, byer i nærheten.",
  "d_country": "Offentlige ladesteder {country_u} fra åpne data: DC-hurtigladere, nettverk, byer, kontakter, kilder og lisenser.",
  "d_gnet": "{net}-ladesteder etter land fra åpne data: effekt, kontakter og kilder.",
@@ -74,7 +74,7 @@
  "p_net_share": "Nettverket finnes i {n_cities} {country_u}; det utgjør {share} av de offentlige ladestedene i landet som vises her.",
  "p_nonet": "Uten kjent nettverk: {nonet}.",
  "p_shown": "Vist: {n} fra åpne kilder, ikke alle ladere som finnes. Punkter med pålitelighet under 40 og private ladere er ikke tatt med.",
- "pct": "{x}%",
+ "pct": "{x} %",
  "pl_city": {
   "one": "by",
   "other": "byer"
@@ -112,9 +112,9 @@
   "other": "offentlige ladesteder"
  },
  "regional_guide": "Regional guide for {country}: nettverk, priser, støtteordninger",
- "report": "Meld fra om en feil",
+ "report": "Meld fra om feil",
  "report_map": "En feil ved et ladested kan meldes med knappen «Meld fra om feil» på kortet på kartet.",
- "skip": "Hopp til innholdet",
+ "skip": "Hopp til hovedinnholdet",
  "sources_note": "Hvert ladested beholder kilden til dataene sine; lisensen for hver kilde er oppført her. Nettverksnavn tilhører eierne sine.",
  "st_countries": "land med egen side",
  "st_dc50": "med DC fra 50 kW",

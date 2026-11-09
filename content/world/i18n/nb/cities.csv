@@ -1304,7 +1304,7 @@ geonameid,name,in_phrase,decl_ok,note
 8201845,Gerakas,i Gerakas,1,from name_en
 3042237,Douglas,i Douglas,1,
 2738752,Guimarães,i Guimarães,1,
-683506,București,i București,1,
+683506,Bucuresti,i Bucuresti,1,R-NB: nb form
 2782555,Amstetten,i Amstetten,1,
 2794055,Kortrijk,i Kortrijk,1,
 3070544,Mladá Boleslav,i Mladá Boleslav,1,
@@ -2398,7 +2398,7 @@ geonameid,name,in_phrase,decl_ok,note
 787615,Nova Pazova,i Nova Pazova,1,
 789128,Kragujevac,i Kragujevac,1,
 792078,Čačak,i Čačak,1,
-3183875,Tiranë,i Tiranë,1,
+3183875,Tirana,i Tirana,1,R-NB: nb form
 3186781,Zaprešić,i Zaprešić,1,
 3188244,Velika Gorica,i Velika Gorica,1,
 3192224,Pula,i Pula,1,
@@ -2993,7 +2993,7 @@ geonameid,name,in_phrase,decl_ok,note
 6126305,Rock Forest,i Rock Forest,1,
 6137270,Saguenay,i Saguenay,1,
 6180170,Whitby,i Whitby,1,
-311046,İzmir,i İzmir,1,
+311046,Izmir,i Izmir,1,R-NB: nb form
 12750403,El Camino Real,i El Camino Real,1,
 4142290,Dover,i Dover,1,
 4169014,Pompano Beach,i Pompano Beach,1,
@@ -5599,7 +5599,7 @@ geonameid,name,in_phrase,decl_ok,note
 1513157,Namangan,i Namangan,1,
 5809402,Sammamish,i Sammamish,1,
 323777,Antalya,i Antalya,1,
-745044,İstanbul,i İstanbul,1,
+745044,Istanbul,i Istanbul,1,R-NB: nb form
 1692192,Quezon City,i Quezon City,1,
 5927690,Coquitlam,i Coquitlam,1,
 12908892,New Taipei City,i New Taipei City,1,from name_en

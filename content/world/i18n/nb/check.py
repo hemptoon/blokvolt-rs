@@ -115,18 +115,13 @@ def check_texts():
     src = {
         'about_data': json.load(open(WORLD / 'about_data.json', encoding='utf-8'))['en'],
         'download': json.load(open(WORLD / 'download.json', encoding='utf-8'))['en'],
-        'sources_pages': json.load(open(WORLD / 'sources_pages.json', encoding='utf-8')),
     }
     if list(t) != list(src):
         ERR.append(f'texts.json: top keys {list(t)} != {list(src)}')
         return
     for k in src:
         walk(f'texts.{k}', src[k], t[k])
-    # attribution and URLs must stay verbatim
-    for sk, sv in src['sources_pages'].items():
-        for f in ('attribution', 'url', 'licence_url', 'kind'):
-            if sv.get(f) != t['sources_pages'][sk].get(f):
-                ERR.append(f'texts.sources_pages.{sk}.{f}: must stay verbatim')
+    # sources_pages.json is shared by all languages (README 23:55) and is not translated
     print('texts.json: ok structure' if not any(e.startswith('texts') for e in ERR) else 'texts.json: errors')
 
 
