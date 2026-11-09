@@ -36,7 +36,7 @@ jobs:
           node-version: '22'
       - name: Install
         run: |
-          pip install -q jinja2 markdown beautifulsoup4 pillow
+          pip install -q jinja2 markdown beautifulsoup4 pillow babel
           bash scripts/fetch_fonts.sh >/dev/null
       - name: Build and check blokvolt.rs
         run: |
@@ -47,6 +47,7 @@ jobs:
         run: python3 scripts/dev_world_data.py "$TILES" "$RUNNER_TEMP/world" | tee -a "$GITHUB_ENV"
       - name: Build and check blokvolt.com with the world layer
         run: |
+          python3 scripts/world_i18n.py selftest
           python3 scripts/world_map.py --selftest
           python3 scripts/world_pages.py selftest
           python3 scripts/world_shell.py selftest

@@ -34,17 +34,16 @@ WORLD = ROOT / 'content' / 'world'
 STATIC = ROOT / 'static' / 'com'
 PMTILES_VER = '4.5.0'
 VENDOR = ROOT / 'static' / 'assets' / 'vendor' / f'pmtiles-{PMTILES_VER}'
-LANGS = ('en', 'sr', 'ru')
-PAGES = {'en': '/map/', 'sr': '/sr/mapa/', 'ru': '/ru/karta/'}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import world_i18n as I   # noqa: E402  K8-i18n: languages and addresses from the registry (content/world/config.json)
+LANGS = I.langs()
+PAGES = {l: I.slugs(l)['map'] for l in LANGS}
 # pages of task K3 (contract §8); linked from the map only through the script, so gen_com's link check does not depend on K3
-ABOUT = {'en': '/charging-stations/about-data/', 'sr': '/sr/punjaci/o-podacima/', 'ru': '/ru/zaryadki/o-dannyh/'}
-DOWNLOAD = {'en': '/charging-stations/download/', 'sr': '/sr/punjaci/preuzimanje/', 'ru': '/ru/zaryadki/skachat/'}
-LOCS = {
-    'en': dict(key='en', html='en', hreflang='en', og='en_GB', code='EN', dec='.', thou=','),
-    'sr': dict(key='sr', html='sr-Latn', hreflang='sr', og='sr_RS', code='SR', dec=',', thou='.'),
-    'ru': dict(key='ru', html='ru', hreflang='ru', og='ru_RU', code='RU', dec=',', thou=' ', script='cyrl'),
-}
-SWITCH = [('en', PAGES['en'], 'English', 'en'), ('sr', PAGES['sr'], 'Srpski', 'sr'), ('ru', PAGES['ru'], 'Русский', 'ru')]
+ABOUT = {l: I.slugs(l)['hub'] + I.slugs(l)['about'] + '/' for l in LANGS}
+DOWNLOAD = {l: I.slugs(l)['hub'] + I.slugs(l)['download'] + '/' for l in LANGS}
+LOCS = {l: {k: v for k, v in I.loc(l).items() if k in ('key', 'html', 'hreflang', 'og', 'code', 'dec', 'thou', 'script')}
+        for l in LANGS}
+SWITCH = [(l, PAGES[l], I.label(l), I.reg(l)['hreflang']) for l in LANGS]
 STYLE = 'https://tiles.openfreemap.org/styles/positron'     # the same base map as /mapa/ (OpenFreeMap, no key)
 FONT = ['Noto Sans Bold']                                   # the label font of the positron style (as /mapa/)
 VIEW = {'center': [12.0, 50.0], 'zoom': 3.4}                # Europe when the link has no #z/lat/lon
@@ -63,7 +62,7 @@ def ver(p):
 
 def load_strings():
     """content/world/strings_map.json → {lang: {key: text}}; stops the build when a language is missing or empty."""
-    raw = json.load(open(WORLD / 'strings_map.json', encoding='utf-8'))
+    raw = I.strings_raw('map', LANGS)   # K8: en/sr/ru from strings_map.json, other languages from i18n/<code>/ (stops on a missing key)
     bad = [f'{k}: {lang}' for k, v in raw.items() for lang in LANGS if not isinstance(v, dict) or not str(v.get(lang) or '').strip()]
     if bad:
         raise SystemExit('content/world/strings_map.json: missing translations — ' + ', '.join(bad[:20]))
@@ -75,7 +74,7 @@ def load_strings():
         raise SystemExit('content/world/strings_map.json: keys used by the map but missing — ' + ', '.join(missing))
     for k, v in raw.items():
         for lang in LANGS:
-            for pat in FORBIDDEN:
+            for pat in I.forbidden(FORBIDDEN, lang):
                 if re.search(pat, v[lang], re.I) and not k.startswith('ch_ft_data'):
                     raise SystemExit(f'content/world/strings_map.json: "{k}" ({lang}) has a forbidden word ({pat}): {v[lang]}')
     if re.search(r'\d', ''.join(raw['title'][lang] for lang in LANGS)):
@@ -127,7 +126,7 @@ def copy_files(OUT):
     shutil.copy2(STATIC / 'world-map.css', a / 'world' / 'world-map.css')
     shutil.copytree(VENDOR, a / 'vendor' / f'pmtiles-{PMTILES_VER}', dirs_exist_ok=True)
     # base.html names the share image by language: og-sr / og-ru do not exist on blokvolt.com, so they reuse og-en
-    for lang in ('sr', 'ru'):
+    for lang in LANGS[1:]:
         dst = a / 'og' / f'og-{lang}.png'
         if not dst.exists() and (a / 'og' / 'og-en.png').exists():
             shutil.copy2(a / 'og' / 'og-en.png', dst)
@@ -155,6 +154,8 @@ def build(G):
         wm_cfg = {'lang': lang, 'data_base': cfg['data_base'], 'reports_api': cfg['reports_api'], 'checkins_api': cfg['checkins_api'], 'style': STYLE,
                   'center': VIEW['center'], 'zoom': VIEW['zoom'], 'font': FONT, 'about': ABOUT[lang], 'download': DOWNLOAD[lang], 'pages': PAGES,
                   'prices': (getattr(G, 'WORLD_PRICES', None) or {}).get('map_json', '')}   # G3: price line of the card
+        if lang not in I.BASE:   # K8: number/date locale of an extra language (world-map.js reads it once it is enabled)
+            wm_cfg['intl'] = I.reg(lang).get('intl', lang)
         ctx = dict(WORLD_FT=WFT, LOC=LOCS[lang], S=S, NAV=NAV, SWITCH=SWITCH, home=PAGES[lang] if lang != 'en' else '/', section='map',
                    COUNTRIES=G.countries, LOCALS=locals_, PAGES={'method': None}, T=T, title=T['title'],
                    description=T['description'], alts=alts, public=cfg['public'], noindex=False,

@@ -17,25 +17,28 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 WORLD = ROOT / 'content' / 'world'
-LANGS = ('en', 'sr', 'ru')
-MAP = {'en': '/map/', 'sr': '/sr/mapa/', 'ru': '/ru/karta/'}
-HUB = {'en': '/charging-stations/', 'sr': '/sr/punjaci/', 'ru': '/ru/zaryadki/'}
-ABOUT_DATA = {l: HUB[l] + a + '/' for l, a in (('en', 'about-data'), ('sr', 'o-podacima'), ('ru', 'o-dannyh'))}
-DOWNLOAD = {l: HUB[l] + a + '/' for l, a in (('en', 'download'), ('sr', 'preuzimanje'), ('ru', 'skachat'))}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import world_i18n as I   # noqa: E402  K8-i18n: languages and addresses from content/world/config.json + i18n/<code>/slugs.json
+LANGS = I.langs()
+_SL = {l: I.slugs(l) for l in LANGS}
+MAP = {l: _SL[l]['map'] for l in LANGS}
+HUB = {l: _SL[l]['hub'] for l in LANGS}
+ABOUT_DATA = {l: HUB[l] + _SL[l]['about'] + '/' for l in LANGS}
+DOWNLOAD = {l: HUB[l] + _SL[l]['download'] + '/' for l in LANGS}
 SHELL = {
-    'about': {'en': '/about/', 'sr': '/sr/o-sajtu/', 'ru': '/ru/o-sajte/'},
-    'sources': {'en': '/sources/', 'sr': '/sr/izvori/', 'ru': '/ru/istochniki/'},
-    'methodology': {'en': '/methodology/', 'sr': '/sr/metodologija/', 'ru': '/ru/metodologiya/'},
+    'about': {l: _SL[l]['shell_about'] for l in LANGS},
+    'sources': {l: _SL[l]['sources'] for l in LANGS},
+    'methodology': {l: _SL[l]['methodology'] for l in LANGS},
 }
-HOME = {'en': '/', 'sr': '/sr/', 'ru': '/ru/'}
+HOME = {l: _SL[l]['home'] for l in LANGS}
 
 
 def load_strings():
     raw = json.load(open(WORLD / 'strings_shell.json', encoding='utf-8'))
-    miss = [f'{k}.{l}' for k, v in raw.items() for l in LANGS if not v.get(l)]
+    miss = [f'{k}.{l}' for k, v in raw.items() for l in LANGS if l in I.BASE and not v.get(l)]
     if miss:
         raise SystemExit('world_shell: missing strings ' + ', '.join(miss))
-    return {l: {k: v[l] for k, v in raw.items()} for l in LANGS}
+    return I.load('shell', LANGS)   # other languages: i18n/<code>/strings_shell.json (stops on a missing key)
 
 
 def active():
@@ -133,9 +136,9 @@ def selftest():
         print('FAIL sr words', bad); ok = False
     for l in LANGS:
         for k in ('home_title', 'about_title', 'sources_title', 'method_title'):
-            if re.search(r'\d', T[l][k]):
+            if re.search(r'\d', str(T[l][k])):
                 print('FAIL digit in title', l, k); ok = False
-    if any('Evolako' in v for l in LANGS for v in T[l].values()):
+    if any('Evolako' in str(v) for l in LANGS for v in T[l].values()):
         print('FAIL Evolako'); ok = False
     print('world_shell selftest:', 'OK' if ok else 'FAIL')
     return 0 if ok else 1

@@ -33,8 +33,9 @@ import world_prices_data as D   # noqa: E402
 
 ROOT = D.ROOT
 WORLD = D.WORLD
-LANGS = ('en', 'sr', 'ru')
-HUB = {'en': '/charging-prices/', 'sr': '/sr/cene-punjenja/', 'ru': '/ru/tseny-zaryadki/'}
+import world_i18n as I   # noqa: E402  K8-i18n: languages, addresses and formats from the registry
+LANGS = I.langs()
+HUB = {l: I.slugs(l)['prices'] for l in LANGS}
 DATA_DIR = '/charging-prices/data/'
 STALE_DAYS = 365
 MIN_COVER = 0.10
@@ -57,13 +58,13 @@ FORBIDDEN = [r'\bodmah\b', r'24/7', r'evolako', r'\bredakcij', r'\bmi\s', r'prov
 
 # ------------------------------------------------------------------ strings and formatting
 def load_strings():
-    raw = json.load(open(WORLD / 'strings_prices.json', encoding='utf-8'))
+    raw = I.strings_raw('prices', LANGS)   # K8: other languages from i18n/<code>/strings_prices.json
     bad = [f'{k}:{l}' for k, v in raw.items() for l in LANGS if not (isinstance(v, dict) and str(v.get(l) or '').strip())]
     if bad:
         raise SystemExit('content/world/strings_prices.json: missing translations — ' + ', '.join(bad[:20]))
     for k, v in raw.items():
         for l in LANGS:
-            for pat in FORBIDDEN:
+            for pat in I.forbidden(FORBIDDEN, l):
                 if re.search(pat, v[l], re.I):
                     raise SystemExit(f'strings_prices.json: "{k}" ({l}) has a forbidden word ({pat})')
     for k in ('t_hub', 't_country', 't_net'):
@@ -73,7 +74,7 @@ def load_strings():
 
 
 def fnum(x, l, d=2):
-    dec, th = NUMF[l]
+    dec, th = NUMF[l] if l in NUMF else (I.reg(l)['dec'], I.reg(l)['thou'])
     s = f'{abs(x):,.{d}f}'.replace(',', '§').replace('.', dec).replace('§', th)
     return ('−' if x < 0 else '') + s
 
@@ -94,7 +95,7 @@ def money(x, cur, l, d=None):
 
 def month_label(ym, l):
     y, m = int(ym[:4]), int(ym[5:7])
-    nm = MONTHS[l][m - 1]
+    nm = (MONTHS[l] if l in MONTHS else I.months(l))[m - 1]
     return f'{nm} {y}.' if l == 'sr' else f'{nm} {y}'
 
 
@@ -279,7 +280,7 @@ class Site:
         return HUB[l]
 
     def country(self, cc, l):
-        return f"{HUB[l]}{self.N[cc][f'slug_{l}']}/"
+        return f"{HUB[l]}{I.country_slug(self.N[cc], l)}/"
 
     def net(self, cc, net, l):
         return f'{self.country(cc, l)}{self.slug[(cc, net)][1]}/'
@@ -306,12 +307,14 @@ class R:
         self.page_cur = 'EUR'
 
     def cname(self, cc, l):
-        return self.site.N[cc][f'name_{l}']
+        return I.country_name(self.site.N[cc], l)
 
     def cu(self, cc, l):
         r = self.site.N[cc]
         if l == 'en':
             return 'in ' + ('the ' if cc in ('US', 'GB', 'NL', 'PH', 'AE') else '') + r['name_en']
+        if l not in I.BASE:
+            return I.country_in(r, l)
         return r['sr_u'] if l == 'sr' else r['ru_v']
 
     def t(self, l, k, **kw):
@@ -330,12 +333,12 @@ class R:
         return f'<span class="pz{(" " + cls) if cls else ""}" data-e="{eur:.4f}"{la} data-u="{u}">{money(eur, "EUR", l)}{u}</span>'
 
     def write(self, l, tpl, url, urls, ctx, section='prices'):
-        alts = [(x if x != 'sr' else 'sr', self.G.SITE + urls[x]) for x in LANGS] + [('x-default', self.G.SITE + urls['en'])]
+        alts = [(I.reg(x)['hreflang'], self.G.SITE + urls[x]) for x in LANGS] + [('x-default', self.G.SITE + urls['en'])]
         Sp = dict(self.w.S[l])
         nav = [(u, n, k) for u, n, k in __import__('world_pages').nav(self.w, l)]
         base = dict(SITE=self.G.SITE, RS=self.G.RS, EMAIL=self.G.EMAIL, CHECKED=fdate(self.M.T['updated']),
                     CHECKED_ISO=self.M.T['updated'], canon=url, path=url, LOC=__import__('world_pages').L[l], S=Sp, P=self.S[l],
-                    NAV=nav, SWITCH=[(x, urls[x], self.w.S[x]['lang_label'], x) for x in LANGS], home=self.w.site.hub(l),
+                    NAV=nav, SWITCH=[(x, urls[x], self.w.S[x]['lang_label'] if x in I.BASE else I.label(x), I.reg(x)['hreflang']) for x in LANGS], home=self.w.site.hub(l),
                     alts=alts, COUNTRIES=self.G.countries, LOCALS=self.w.local_hubs, C={'checked': fdate(self.M.T['updated'])},
                     robots=None if self.public else 'noindex,nofollow', W=self.w, l=l, section=section, PAGES={},
                     jsonld=None, local_cur=None, WORLD_FT=__import__('world_shell').footer(l), fx_date=fdate(self.M.FX['date']), usd=self.M.FX['rates']['USD'])
@@ -437,6 +440,9 @@ class R:
     def period(self, l):
         p = self.M.H['period']   # 2026-S1
         y, s = p.split('-S')
+        if l not in I.BASE:   # K8: "Januar–Juni 2026" from the CLDR months of the language
+            m = I.months(l)
+            return f'{m[0]}–{m[5]} {y}' if s == '1' else f'{m[6]}–{m[11]} {y}'
         return {'en': f'{"first" if s == "1" else "second"} half of {y}', 'sr': f'{s}. polugodište {y}.',
                 'ru': f'{"первое" if s == "1" else "второе"} полугодие {y}'}[l]
 
