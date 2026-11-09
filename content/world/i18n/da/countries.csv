@@ -1,0 +1,151 @@
+cc,name,slug,in_phrase,note
+AD,Andorra,andorra,i Andorra,
+AE,De Forenede Arabiske Emirater,de-forenede-arabiske-emirater,i De Forenede Arabiske Emirater,
+AL,Albanien,albanien,i Albanien,
+AM,Armenien,armenien,i Armenien,
+AR,Argentina,argentina,i Argentina,
+AT,Østrig,oestrig,i Østrig,
+AU,Australien,australien,i Australien,
+AW,Aruba,aruba,på Aruba,ø: «på»
+AX,Åland,aaland,på Åland,ø: «på»
+AZ,Aserbajdsjan,aserbajdsjan,i Aserbajdsjan,
+BA,Bosnien-Hercegovina,bosnien-hercegovina,i Bosnien-Hercegovina,
+BB,Barbados,barbados,på Barbados,ø: «på»
+BE,Belgien,belgien,i Belgien,
+BG,Bulgarien,bulgarien,i Bulgarien,
+BH,Bahrain,bahrain,i Bahrain,
+BO,Bolivia,bolivia,i Bolivia,
+BR,Brasilien,brasilien,i Brasilien,
+BW,Botswana,botswana,i Botswana,
+BY,Belarus,belarus,i Belarus,
+BZ,Belize,belize,i Belize,
+CA,Canada,canada,i Canada,
+CH,Schweiz,schweiz,i Schweiz,
+CL,Chile,chile,i Chile,
+CN,Kina,kina,i Kina,
+CO,Colombia,colombia,i Colombia,
+CR,Costa Rica,costa-rica,i Costa Rica,
+CU,Cuba,cuba,på Cuba,ø: «på»
+CY,Cypern,cypern,på Cypern,ø: «på»
+CZ,Tjekkiet,tjekkiet,i Tjekkiet,
+DE,Tyskland,tyskland,i Tyskland,
+DK,Danmark,danmark,i Danmark,
+DO,Den Dominikanske Republik,den-dominikanske-republik,i Den Dominikanske Republik,
+DZ,Algeriet,algeriet,i Algeriet,
+EC,Ecuador,ecuador,i Ecuador,
+EE,Estland,estland,i Estland,
+EG,Egypten,egypten,i Egypten,
+ES,Spanien,spanien,i Spanien,
+ET,Etiopien,etiopien,i Etiopien,
+FI,Finland,finland,i Finland,
+FJ,Fiji,fiji,på Fiji,ø: «på»
+FO,Færøerne,faeroeerne,på Færøerne,ø: «på»
+FR,Frankrig,frankrig,i Frankrig,
+GB,Storbritannien,storbritannien,i Storbritannien,
+GE,Georgien,georgien,i Georgien,
+GG,Guernsey,guernsey,på Guernsey,ø: «på»
+GH,Ghana,ghana,i Ghana,
+GI,Gibraltar,gibraltar,i Gibraltar,
+GR,Grækenland,graekenland,i Grækenland,
+GT,Guatemala,guatemala,i Guatemala,
+GY,Guyana,guyana,i Guyana,
+HK,Hongkong,hongkong,i Hongkong,CLDR «SAR Hongkong» forkortet
+HR,Kroatien,kroatien,i Kroatien,
+HT,Haiti,haiti,i Haiti,
+HU,Ungarn,ungarn,i Ungarn,
+ID,Indonesien,indonesien,i Indonesien,
+IE,Irland,irland,i Irland,
+IL,Israel,israel,i Israel,
+IM,Isle of Man,isle-of-man,på Isle of Man,ø: «på»
+IN,Indien,indien,i Indien,
+IQ,Irak,irak,i Irak,
+IR,Iran,iran,i Iran,
+IS,Island,island,på Island,ø: «på»
+IT,Italien,italien,i Italien,
+JE,Jersey,jersey,på Jersey,ø: «på»
+JM,Jamaica,jamaica,på Jamaica,ø: «på»
+JO,Jordan,jordan,i Jordan,
+JP,Japan,japan,i Japan,
+KE,Kenya,kenya,i Kenya,
+KG,Kirgisistan,kirgisistan,i Kirgisistan,
+KH,Cambodja,cambodja,i Cambodja,
+KR,Sydkorea,sydkorea,i Sydkorea,
+KW,Kuwait,kuwait,i Kuwait,
+KY,Caymanøerne,caymanoeerne,på Caymanøerne,ø: «på»
+KZ,Kasakhstan,kasakhstan,i Kasakhstan,
+LB,Libanon,libanon,i Libanon,
+LC,Saint Lucia,saint-lucia,på Saint Lucia,ø: «på»
+LI,Liechtenstein,liechtenstein,i Liechtenstein,
+LK,Sri Lanka,sri-lanka,på Sri Lanka,ø: «på»
+LT,Litauen,litauen,i Litauen,
+LU,Luxembourg,luxembourg,i Luxembourg,
+LV,Letland,letland,i Letland,
+MA,Marokko,marokko,i Marokko,
+MC,Monaco,monaco,i Monaco,
+MD,Moldova,moldova,i Moldova,
+ME,Montenegro,montenegro,i Montenegro,
+MF,Saint Martin,saint-martin,på Saint Martin,ø: «på»
+MK,Nordmakedonien,nordmakedonien,i Nordmakedonien,
+MM,Myanmar,myanmar,i Myanmar,CLDR «Myanmar (Burma)» forkortet
+MN,Mongoliet,mongoliet,i Mongoliet,
+MO,Macao,macao,i Macao,CLDR «SAR Macao» forkortet
+MT,Malta,malta,på Malta,ø: «på»
+MU,Mauritius,mauritius,på Mauritius,ø: «på»
+MX,Mexico,mexico,i Mexico,
+MY,Malaysia,malaysia,i Malaysia,
+NA,Namibia,namibia,i Namibia,
+NC,Ny Kaledonien,ny-kaledonien,på Ny Kaledonien,ø: «på»
+NG,Nigeria,nigeria,i Nigeria,
+NI,Nicaragua,nicaragua,i Nicaragua,
+NL,Nederlandene,nederlandene,i Nederlandene,CLDR; i daglig tale også «Holland»
+NO,Norge,norge,i Norge,
+NP,Nepal,nepal,i Nepal,
+NZ,New Zealand,new-zealand,i New Zealand,
+OM,Oman,oman,i Oman,
+PA,Panama,panama,i Panama,
+PE,Peru,peru,i Peru,
+PF,Fransk Polynesien,fransk-polynesien,i Fransk Polynesien,
+PH,Filippinerne,filippinerne,på Filippinerne,ø: «på»
+PK,Pakistan,pakistan,i Pakistan,
+PL,Polen,polen,i Polen,
+PR,Puerto Rico,puerto-rico,i Puerto Rico,
+PS,De palæstinensiske områder,de-palaestinensiske-omraader,i de palæstinensiske områder,R-DA: lille »de« efter præposition
+PT,Portugal,portugal,i Portugal,
+PY,Paraguay,paraguay,i Paraguay,
+QA,Qatar,qatar,i Qatar,
+RE,Réunion,reunion,på Réunion,ø: «på»
+RO,Rumænien,rumaenien,i Rumænien,
+RS,Serbien,serbien,i Serbien,
+RU,Rusland,rusland,i Rusland,
+RW,Rwanda,rwanda,i Rwanda,
+SA,Saudi-Arabien,saudi-arabien,i Saudi-Arabien,
+SD,Sudan,sudan,i Sudan,
+SE,Sverige,sverige,i Sverige,
+SG,Singapore,singapore,i Singapore,
+SI,Slovenien,slovenien,i Slovenien,
+SJ,Svalbard og Jan Mayen,svalbard-og-jan-mayen,på Svalbard og Jan Mayen,ø: «på»
+SK,Slovakiet,slovakiet,i Slovakiet,
+SM,San Marino,san-marino,i San Marino,
+SO,Somalia,somalia,i Somalia,
+SR,Surinam,surinam,i Surinam,
+SV,El Salvador,el-salvador,i El Salvador,
+SY,Syrien,syrien,i Syrien,
+SZ,Eswatini,eswatini,i Eswatini,
+TH,Thailand,thailand,i Thailand,
+TJ,Tadsjikistan,tadsjikistan,i Tadsjikistan,
+TN,Tunesien,tunesien,i Tunesien,
+TO,Tonga,tonga,på Tonga,ø: «på»
+TR,Tyrkiet,tyrkiet,i Tyrkiet,
+TT,Trinidad og Tobago,trinidad-og-tobago,på Trinidad og Tobago,"R-DA: ø-stat, »på«"
+TW,Taiwan,taiwan,i Taiwan,
+UA,Ukraine,ukraine,i Ukraine,
+UG,Uganda,uganda,i Uganda,
+US,USA,usa,i USA,
+UY,Uruguay,uruguay,i Uruguay,
+UZ,Usbekistan,usbekistan,i Usbekistan,
+VC,Saint Vincent og Grenadinerne,saint-vincent-og-grenadinerne,på Saint Vincent og Grenadinerne,"R-DA: ø-stat, »på«"
+VE,Venezuela,venezuela,i Venezuela,
+VN,Vietnam,vietnam,i Vietnam,
+WS,Samoa,samoa,på Samoa,ø: «på»
+XK,Kosovo,kosovo,i Kosovo,CLDR; samme neutrale navn som på andre sprog
+ZA,Sydafrika,sydafrika,i Sydafrika,
