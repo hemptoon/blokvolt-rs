@@ -2416,6 +2416,12 @@ to `main`:
   without repeating it, the static search index `assets/world/search.json`, and with `BV_WORLD_HOME=1` (dev only) a world
   home at `/`, `/sr/`, `/ru/`. All of it runs only with `BV_WORLD_PAGES`; the hourly build of blokvolt.com (3.10) does not set
   it, so production is unchanged until a release of the world layer.
+- **Weekly world data (on the Mac, by hand).** `bash ~/dev/evdb/product/weekly_world.sh [--db <base>]` (evdb, not this
+  repo; README there): A1 base rebuild → K1 layer with stable pids → tiles → checks → K3 pages on the K1 layer →
+  `world_pages.update_state()` on a copy of `content/world/state/` → `product/out/<date>/upload/` in the layout of
+  `blokvolt-tiles` + `UPLOAD.md`. It uploads, pushes and commits nothing. Then, by hand and on the owner's word: replace the
+  tiles-repo commit with the new `world/<tag>/`, `data/<tag>/`, `latest.json`, and commit `repo_state/pages_state.json` +
+  `redirects_world.txt` to `content/world/state/` of the branch that is built with that data (`dev` before the launch).
 - **Look at a preview:** the run summary lists the URLs; `curl -sI https://dev.blokvolt-com.pages.dev/ | grep -i robots`
   must show `noindex`. A preview differs from production in: noindex, demo API, tiles from GitHub Pages, the dev home page.
 
