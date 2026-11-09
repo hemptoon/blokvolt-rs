@@ -1,12 +1,12 @@
 {
  "about_data": {
   "h1": "Über die Kartendaten",
-  "title": "Ladekarten-Daten: Quellen, Lizenzen, Zuverlässigkeit | BlokVolt",
-  "description": "Woher die Daten der Ladekarte stammen, unter welchen Lizenzen sie genutzt werden und wie die Zuverlässigkeit jedes Punkts berechnet wird.",
+  "title": "Daten der Ladestationskarte: Quellen, Lizenzen, Zuverlässigkeit | BlokVolt",
+  "description": "Woher die Daten der Karte stammen, unter welchen Lizenzen sie genutzt werden und wie die Zuverlässigkeit jedes Punkts berechnet wird.",
   "lead": "Die Karte basiert auf offenen Daten, und jeder Punkt zeigt, woher er stammt.",
   "intro": "Die Karte kombiniert offene Daten aus vielen Quellen: amtliche Register, offene Verwaltungsdaten, OpenStreetMap, Open Charge Map und die Standortseiten der Betreiber. Die Datensätze werden zusammengeführt, bereinigt und verändert, daher kann ein Punkt auf der Karte vom ursprünglichen Datensatz abweichen. Für jedes Ladenetz gelten dieselben Regeln. Die Karte bewertet weder Ladenetze noch Betreiber.",
   "osm_h": "OpenStreetMap und die ODbL",
-  "osm_p": "Daten © OpenStreetMap contributors, verfügbar unter der Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Die zusammengeführte Datenbank der Punkte, die OpenStreetMap-Daten enthält, ist unter derselben Lizenz auf der Seite „Offene Daten herunterladen“ verfügbar: {download_url}.",
+  "osm_p": "Daten © OpenStreetMap contributors, verfügbar unter der Open Database License (ODbL) 1.0 – www.openstreetmap.org/copyright. Die zusammengeführte Datenbank der Punkte, die OpenStreetMap-Daten enthält, ist unter derselben Lizenz auf der Seite „Offene Daten herunterladen“ verfügbar: {download_url}.",
   "sources_h": "Quellen und Lizenzen",
   "sources_note": "Aufgeführt sind nur Quellen, die in den aktuellen Daten tatsächlich vorkommen, jeweils mit Lizenz und vorgeschriebener Namensnennung.",
   "conf_h": "Wie die Zuverlässigkeit berechnet wird",
@@ -61,11 +61,11 @@
   "notes_h": "Hinweise",
   "notes": [
    "Die Daten werden ohne Gewähr bereitgestellt, ohne Garantie für Richtigkeit, Verfügbarkeit, Preis oder Kompatibilität. Prüfen Sie die Angaben vor der Fahrt beim Betreiber oder vor Ort.",
-   "Jede Punktkarte zeigt Quelle, Lizenz und Datum der letzten Aktualisierung.",
+   "Das Infofenster jedes Standorts zeigt Quelle, Lizenz und Datum der letzten Aktualisierung.",
    "Namen von Ladenetzen und Marken gehören ihren Inhabern.",
-   "BlokVolt ist weder mit den Betreibern noch mit den Institutionen verbunden, die die Daten veröffentlichen, und diese unterstützen diese Karte nicht.",
+   "BlokVolt ist weder mit den Betreibern noch mit den Institutionen verbunden, die die Daten veröffentlichen; diese unterstützen oder empfehlen die Karte nicht.",
    "Namen von Privatpersonen werden nicht angezeigt; private Wallboxen zu Hause sind nicht auf der Karte.",
-   "Um einen Fehler zu melden oder eine Korrektur oder Entfernung zu beantragen, nutzen Sie die Schaltfläche „Fehler melden“ auf der Punktkarte oder schreiben Sie an {email}. Sie erhalten innerhalb von 30 Tagen eine Antwort."
+   "Um einen Fehler zu melden oder eine Korrektur oder Entfernung zu beantragen, nutzen Sie die Schaltfläche „Fehler melden“ im Infofenster des Standorts oder schreiben Sie an {email}. Sie erhalten innerhalb von 30 Tagen eine Antwort."
   ],
   "licence_texts_h": "Lizenztexte",
   "licence_texts": [

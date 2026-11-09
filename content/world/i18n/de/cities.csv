@@ -1002,7 +1002,7 @@ geonameid,name,in_phrase,decl_ok,note
 2659811,Luzern,in Luzern,1,
 2659873,Littau,in Littau,1,
 2659994,Lausanne,in Lausanne,1,
-6295520,Stadt Winterthur (Kreis 1),in Stadt Winterthur (Kreis 1),1,
+6295520,Winterthur (Kreis 1),in Winterthur (Kreis 1),1,R-DE: Stadtkreis; Dublette zu 2657970 Winterthur
 2812522,Weilerswist,in Weilerswist,1,
 2815678,Wachtberg,in Wachtberg,1,
 2858245,Ochtrup,in Ochtrup,1,
@@ -1904,7 +1904,7 @@ geonameid,name,in_phrase,decl_ok,note
 498817,Sankt Petersburg,in Sankt Petersburg,1,Exonym (de.wikipedia)
 2725901,Ängelholm,in Ängelholm,1,
 2797779,Geel,in Geel,1,
-3069011,Olmütz,in Olmütz,1,Exonym (de.wikipedia)
+3069011,Olomouc,in Olomouc,1,R-DE: lokaler Name (Olmütz selten)
 2511401,San Cristóbal de La Laguna,in San Cristóbal de La Laguna,1,
 2521420,Badajoz,in Badajoz,1,
 2522258,Albacete,in Albacete,1,
@@ -4346,7 +4346,7 @@ geonameid,name,in_phrase,decl_ok,note
 2740637,Coimbra,in Coimbra,1,
 2740761,Chaves,in Chaves,1,
 2742700,Arouca,in Arouca,1,
-667873,Sathmar,in Sathmar,1,Exonym (de.wikipedia)
+667873,Satu Mare,in Satu Mare,1,R-DE: lokaler Name (Sathmar selten)
 686254,Arad,in Arad,1,
 2664996,Varberg,in Varberg,1,
 2690960,Motala,in Motala,1,
@@ -4785,7 +4785,7 @@ geonameid,name,in_phrase,decl_ok,note
 2187454,Māngere,in Māngere,1,
 2208032,Tauranga,in Tauranga,1,
 6230919,Whangārei,in Whangārei,1,
-3083271,Thorn,in Thorn,1,Exonym (de.wikipedia)
+3083271,Toruń,in Toruń,1,R-DE: lokaler Name (Thorn selten)
 3085151,Sopot,in Sopot,1,
 3089684,Ostrów Wielkopolski,in Ostrów Wielkopolski,1,
 3095049,Koszalin,in Koszalin,1,
@@ -5470,7 +5470,7 @@ geonameid,name,in_phrase,decl_ok,note
 1692192,Quezon City,in Quezon City,1,
 5927690,Coquitlam,in Coquitlam,1,
 12908892,Neu-Taipeh,in Neu-Taipeh,1,Exonym (de.wikipedia)
-3530597,Ciudad de México,in Ciudad de México,1,
+3530597,Mexiko-Stadt,in Mexiko-Stadt,1,R-DE: deutsches Exonym
 3191648,Rijeka,in Rijeka,1,
 3191281,Sarajevo,in Sarajevo,1,
 3186886,Zagreb,in Zagreb,1,
