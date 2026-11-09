@@ -258,6 +258,14 @@ class Site:
         self.city_pages = {(p['cc'], p['gid']) for p in pages if p['type'] == 'city'}
         self.net_pages = {(p['cc'], p['net']) for p in pages if p['type'] == 'network'}
         self.gnet_pages = {p['net'] for p in pages if p['type'] == 'network_global'}
+        # v2: SR pages exist only for Europe (bvcom §0); every page JSON names its languages
+        self.cc_langs = {p['cc']: tuple(p.get('langs') or LANGS) for p in pages if p['type'] == 'country'}
+
+    def langs(self, p):
+        return tuple(p.get('langs') or p['data'].get('langs') or LANGS)
+
+    def has(self, cc, l):
+        return l in self.cc_langs.get(cc, LANGS)
 
     def hub(self, l):
         return L[l]['hub']
@@ -327,7 +335,7 @@ def update_state(bundle_dir, state_path=STATE, redirects_path=REDIRECTS):
     state = json.load(open(state_path, encoding='utf-8')) if Path(state_path).exists() else {}
     seen = set()
     for p in pages:
-        for l in LANGS:
+        for l in site.langs(p):
             u = site.url(p, l)
             seen.add(u)
             s = state.get(u)
@@ -382,6 +390,7 @@ class Ctx:
         self.written = []       # (lang, type, url, lastmod, indexable)
         a = out / 'assets'
         self.ver = {n: G.ver(a / n) for n in ('bv.css', 'bv.js', 'map.js', 'com.css') if (a / n).exists()}
+        self.places = None
 
     # text helpers
     def t(self, l, key, **kw):
@@ -417,13 +426,13 @@ def nav(c, l):
 
 
 def switch(c, urls, l):
-    return [(x, urls[x], c.S[x]['lang_label'], L[x]['hreflang']) for x in LANGS]
+    return [(x, urls[x], c.S[x]['lang_label'], L[x]['hreflang']) for x in LANGS if x in urls]
 
 
 def write_page(c, l, tpl, url, urls, ctx, ptype, robots=None, indexable=True):
     G = c.G
     S = dict(c.S[l])
-    alts = [(L[x]['hreflang'], G.SITE + urls[x]) for x in LANGS] + [('x-default', G.SITE + urls['en'])]
+    alts = [(L[x]['hreflang'], G.SITE + urls[x]) for x in LANGS if x in urls] + [('x-default', G.SITE + urls['en'])]
     if not c.public:
         robots, indexable = 'noindex,nofollow', False
     base = dict(SITE=G.SITE, RS=G.RS, EMAIL=G.EMAIL, CHECKED=fmt_date(c.date), CHECKED_ISO=c.date, canon=url, path=url,
@@ -511,7 +520,7 @@ def render_country(c, p, urls, l):
     return write_page(c, l, 'world_country.html', urls[l], urls, dict(
         title=title, h1=title, description=c.t(l, 'd_country', **kw), kick=S['k_country'], cname=cname,
         crumbs=[(S['nav_hub'], site.hub(l))], jsonld=ld(graph), b=b, cities=cities, others=others, nets=nets,
-        map_link=c.map_url(l, {'zemlja': cc}, d['center'], d['zoom']), mini=mini(c, p), d=d,
+        map_link=c.map_url(l, {'zemlja': cc}, *view_of(c.places, 'cc', cc, d['center'], d['zoom'])), mini=mini(c, p), d=d,
         regional=regional, data_date=fmt_date(c.lastmod(urls[l]))), 'country')
 
 
@@ -531,6 +540,8 @@ def render_city(c, p, urls, l, dup_titles):
     b['paras'].append(c.t(l, 'p_city_cmp', city=c.n(l, st['dc50_per10'], 1), country=c.n(l, d['country_dc50_per10'], 1), country_name=cname))
     fast = []
     for pid, name, net, kwv, conn, lc, lat, lon in d['fast']:
+        conn = ', '.join(CONN_LABEL.get(x.split('×')[0], x.split('×')[0]) + ('×' + x.split('×')[1] if '×' in x else '')
+                         for x in (conn or '').split(', ') if x)   # NACS_TESLA×16 -> Tesla (NACS)×16
         fast.append(dict(name=name, net=N.net_name(net, l) if net else None, kw=c.n(l, kwv) if kwv else '—', conn=conn or '—',
                          lc=fmt_month(lc), url=c.map_url(l, {'id': pid})))
     near = [dict(name=N.city_name(d['near_info'][str(g)], l), url=site.city(cc, g, l), km=c.t(l, 'km_away', km=c.n(l, km, 1 if km < 10 else 0))) for g, km in d['near']]
@@ -547,7 +558,7 @@ def render_city(c, p, urls, l, dup_titles):
         fast_more=c.t(l, 'fast_more', shown=c.n(l, len(fast)), total=c.n(l, d['fast_total'])) if d['fast_total'] > len(fast) else None,
         ac=c.t(l, 'p_ac', ac=c.n(l, st['ac'])), ac_link=c.map_url(l, {'grad': info['gid'], 'snaga': 'ac'}, d['center'], d['zoom']),
         dc_link=c.map_url(l, {'grad': info['gid'], 'snaga': 'dc,hpc'}, d['center'], d['zoom']),
-        near=near, nets=nets, map_link=c.map_url(l, {'zemlja': cc, 'grad': info['gid']}, d['center'], d['zoom']),
+        near=near, nets=nets, map_link=c.map_url(l, {'zemlja': cc, 'grad': info['gid']}, *view_of(c.places, 'city', info['gid'], d['center'], d['zoom'])),
         mini=mini(c, p), d=d, data_date=fmt_date(c.lastmod(urls[l]))), 'city')
 
 
@@ -580,7 +591,7 @@ def render_gnet(c, p, urls, l):
     b = common_blocks(c, l, d)
     b['paras'].insert(0, c.t(l, 'p_gnet', net=net, n_countries=c.pn(l, len(d['countries']), 'pl_country_in')))
     rows = [dict(name=N.country(cc, l) if cc in N.c else cc,
-                 url=site.net(cc, p['net'], l) if (cc, p['net']) in site.net_pages else c.map_url(l, {'zemlja': cc, 'mreza': N.net_slug(p['net'])}),
+                 url=site.net(cc, p['net'], l) if (cc, p['net']) in site.net_pages and site.has(cc, l) else c.map_url(l, {'zemlja': cc, 'mreza': N.net_slug(p['net'])}),
                  n=c.n(l, n)) for cc, n in d['countries']]
     graph = [{'@type': 'CollectionPage', 'name': title, 'url': c.G.SITE + urls[l], 'inLanguage': L[l]['html'], 'dateModified': c.lastmod(urls[l])},
              crumbs_ld(c, [('BlokVolt', site.hub(l)), (net, urls[l])])]
@@ -593,10 +604,15 @@ def render_gnet(c, p, urls, l):
 def render_hub(c, p, urls, l):
     d, S, site, N, G = p['data'], c.S[l], c.site, c.N, c.G
     stage = c.site.idx['stage']
-    title = S['t_hub_' + stage]
+    title = S['t_hub_' + ('month' if stage.startswith('month') else stage)]
+    if l == 'sr' and 'stats_eu' in d:   # the Serbian layer covers Europe only (bvcom §0)
+        d = dict(d, stats=d['stats_eu'], countries=[r for r in d['countries'] if site.has(r[0], 'sr')],
+                 countries_below=[r for r in d['countries_below'] if len(r) < 3 or r[2] == 'EU'])
+    elif stage == 'month' and d.get('countries') and any(not site.has(r[0], 'sr') for r in d['countries']):
+        title = S['t_hub_month_na']
     b = common_blocks(c, l, d)
     b['tiles'][3] = (c.n(l, len(d['countries'])), S['st_countries'])
-    rows = [dict(name=N.country(cc, l), url=site.country(cc, l), n=c.n(l, n), dc50=c.n(l, dc)) for cc, n, dc in d['countries']]
+    rows = [dict(name=N.country(cc, l), url=site.country(cc, l), n=c.n(l, n), dc50=c.n(l, dc)) for cc, n, dc, *_ in d['countries']]
     rows.sort(key=lambda r: r['name'])
     balkan = []
     en_slug = {x['code']: x['url'] for x in G.countries}
@@ -611,13 +627,14 @@ def render_hub(c, p, urls, l):
         balkan.append(dict(name=N.country(cc, l), url=u))
     balkan.sort(key=lambda r: r['name'])
     below = [dict(name=N.country(cc, l) if cc in N.c else cc, url=c.map_url(l, {'zemlja': cc}), n=c.n(l, n))
-             for cc, n in d['countries_below'] if n >= 1]
+             for cc, n, *_ in d['countries_below'] if n >= 1]
     below.sort(key=lambda r: r['name'])
     graph = [{'@type': 'CollectionPage', 'name': title, 'url': G.SITE + urls[l], 'inLanguage': L[l]['html'], 'dateModified': c.lastmod(urls[l])},
              crumbs_ld(c, [('BlokVolt', urls[l])])]
     return write_page(c, l, 'world_hub.html', urls[l], urls, dict(
         title=title, h1=title, description=S['d_hub'], kick=S['k_hub'], crumbs=[], jsonld=ld(graph), b=b, rows=rows,
-        balkan=balkan, below=below, hub_p=S['p_hub'], map_link=c.map_url(l), data_date=fmt_date(c.lastmod(urls[l]))), 'hub')
+        balkan=balkan, below=below, hub_p=S['p_hub'] + ((' ' + S['p_hub_na']) if l != 'sr' and any(not site.has(r[0], 'sr') for r in d['countries']) else ''),
+        map_link=c.map_url(l), data_date=fmt_date(c.lastmod(urls[l]))), 'hub')
 
 
 def render_about(c, l, sources_used):
@@ -671,6 +688,35 @@ def render_below(c, url, s, l):
     return html
 
 
+def load_places():
+    """K1 v2 places-<date>.json: {"cc": {CC: [w,s,e,n]}, "city": {gid: [w,s,e,n,lat,lon]}} — from BV_WORLD_PLACES, or the
+    file the manifest names (`places`) next to BV_WORLD_MANIFEST. Missing → None (the bundle's own centre and zoom)."""
+    p = os.environ.get('BV_WORLD_PLACES')
+    mp = os.environ.get('BV_WORLD_MANIFEST')
+    if not p and mp and Path(mp).exists():
+        name = (json.load(open(mp, encoding='utf-8')) or {}).get('places')
+        if name and not str(name).startswith('http'):
+            p = str(Path(mp).parent / Path(str(name)).name)
+    if p and Path(p).exists():
+        return json.load(open(p, encoding='utf-8'))
+    return None
+
+
+def view_of(places, kind, key, center, zoom):
+    """Centre and zoom for an «Otvori na mapi» link: the K1 frame when there is one (the same frame the map fits to for
+    zemlja / grad), otherwise the bundle's own."""
+    try:
+        b = places[kind][str(key)]
+    except (TypeError, KeyError):
+        return center, zoom
+    w, s, e, n = b[:4]
+    span = max(e - w, (n - s) * 1.6, 0.01)
+    z = max(3, min(14, int(math.log2(360 / span))))
+    if kind == 'city':
+        z = max(z, 10)
+    return [round((s + n) / 2, 4), round((w + e) / 2, 4)], z
+
+
 def lang_of(url):
     return 'sr' if url.startswith('/sr/') else 'ru' if url.startswith('/ru/') else 'en'
 
@@ -705,6 +751,7 @@ def run(G, local_hubs):
         for p in pages:   # a city named like its country (Luxembourg, Monaco): "u Luksemburgu, Luksemburg"
             if p['type'] == 'city' and l != 'en' and names.city_u(p['data']['city'], l, S) == names.country_u(p['cc'], l):
                 dup.add((l, p['key']))
+    c.places = load_places()
     below_urls = {u for u, s in state.items() if s.get('below_threshold_since')}
     sources_used = sorted({k for p in pages if p['type'] == 'hub' for k, _ in p['data']['stats']['sources']})
     manifest = None
@@ -713,10 +760,10 @@ def run(G, local_hubs):
         manifest = json.load(open(mp, encoding='utf-8'))
     n = 0
     for p in pages:
-        urls = {l: site.url(p, l) for l in LANGS}
+        urls = {l: site.url(p, l) for l in site.langs(p)}
         if any(u in below_urls for u in urls.values()):
             continue
-        for l in LANGS:
+        for l in urls:
             if p['type'] == 'country':
                 render_country(c, p, urls, l)
             elif p['type'] == 'city':
@@ -741,10 +788,105 @@ def run(G, local_hubs):
             (og / f'og-{l}.png').write_bytes((og / 'og-en.png').read_bytes())
     if c.public:
         write_sitemaps(c)
+    si = search_index(c)
+    ll = write_llms(c)
     print(f"world pages: {n} HTML ({len(site.country_pages)} countries, {len(site.city_pages)} cities, {len(site.net_pages)} networks, "
-          f"{len(site.gnet_pages)} global networks × 3 languages; below threshold {len(below_urls)}); public={c.public}; "
+          f"{len(site.gnet_pages)} global networks; SR only for Europe; below threshold {len(below_urls)}); "
+          f"search index {si[0]} entries, {si[2] // 1024} KB gzip; llms.txt {'written' if ll else 'not written (not public)'}; public={c.public}; "
           f"names: {names.src}; {time.time() - t0:.1f} s")
     return c
+
+
+def search_index(c):
+    """Static search index for the home page of blokvolt.com (bvcom G0/G2): every country and city page and the Balkan
+    countries (their own BlokVolt pages), with names in EN/SR/RU, other spellings and the page URL per language (null
+    where the language has no page). /assets/world/search-index.json, ≤ 300 KB in gzip (checked in the build)."""
+    import gzip
+    site, N, G = c.site, c.N, c.G
+    items = []
+    for p in sorted(site.pages, key=lambda p: p['key']):
+        if p['type'] not in ('country', 'city'):
+            continue
+        langs = site.langs(p)
+        if p['type'] == 'country':
+            cc = p['cc']
+            alt = sorted({v for k, v in N.c[cc].items() if k.startswith('name_') and v and v not in
+                          (N.country(cc, 'en'), N.country(cc, 'sr'), N.country(cc, 'ru'))})[:12]
+            items.append(['c', cc, N.country(cc, 'en'), N.country(cc, 'sr'), N.country(cc, 'ru'), alt,
+                          [site.url(p, l) if l in langs else None for l in LANGS], p['n']])
+        else:
+            info = p['data']['city']
+            r = N.city.get(info['gid']) or {}
+            names3 = [N.city_name(info, l) for l in LANGS]
+            alt = sorted({x for x in (r.get('name_local'), info.get('name'), info.get('ascii')) if x and x not in names3})
+            items.append(['t', p['cc'], *names3, alt, [site.url(p, l) if l in langs else None for l in LANGS], p['n']])
+    en_slug = {x['code']: x['url'] for x in G.countries}
+    built = {x['key'] for x in G.BUILT}
+    for cc in BALKAN:
+        if cc not in N.c:
+            continue
+        if cc == 'RS':
+            urls = [G.RS + '/en/gradovi/', G.RS + '/gradovi/', G.RS + '/ru/gradovi/']
+        else:
+            loc = f'/{BALKAN_LOCAL[cc]}/' if BALKAN_LOCAL.get(cc) in built else en_slug.get(cc, '/')
+            urls = [en_slug.get(cc, '/'), loc, loc]
+        items.append(['b', cc, N.country(cc, 'en'), N.country(cc, 'sr'), N.country(cc, 'ru'), [], urls, None])
+    doc = {'v': 1, 'date': c.date, 'langs': list(LANGS),
+           'fields': ['kind (c country, t city, b Balkan country on its own BlokVolt pages)', 'cc', 'name_en', 'name_sr',
+                      'name_ru', 'other names', 'url per language (en, sr, ru; null = no page)', 'public places'],
+           'items': items}
+    raw = json.dumps(doc, ensure_ascii=False, separators=(',', ':')).encode()
+    dst = G.OUT / 'assets' / 'world' / 'search-index.json'
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    dst.write_bytes(raw)
+    gz = len(gzip.compress(raw, 9, mtime=0))
+    if gz > 300 * 1024:
+        raise SystemExit(f'world_pages: search index {gz} bytes in gzip > 300 KB')
+    return len(items), len(raw), gz
+
+
+def llms_text(c):
+    """The world section of /llms.txt (llmstxt.org): what exists, the hubs, the licence, the date. Written only when the
+    world layer is public, or with BV_WORLD_PREVIEW=1 (dev) — the production llms.txt must not point to noindex pages."""
+    G, site = c.G, c.site
+    hub = next(p for p in site.pages if p['type'] == 'hub')
+    st = hub['data']['stats']
+    n_c, n_t, n_n = len(site.country_pages), len(site.city_pages), len(site.net_pages)
+    na = any(not site.has(cc, 'sr') for cc in site.country_pages)
+    scope = 'Europe, the United States and Canada' if na else 'Europe'
+    lines = [
+        '## World EV charging data (blokvolt.com)', '',
+        f'Public EV charging locations in {scope}, merged from open data (OpenStreetMap, Open Charge Map, national '
+        'registries and others), with power, connectors, network, sources and a reliability score. '
+        'No ratings of networks, no paid placements.', '',
+        f'- Data as of: {c.date}',
+        f'- Public locations shown: {st["n"]:,} · countries with a page: {n_c} · city pages: {n_t} · network pages: {n_n}',
+        '- Languages: English and Russian for every page; Serbian for Europe',
+        '- Licence of the merged data: Open Database License (ODbL) 1.0 (contains © OpenStreetMap contributors); city names © GeoNames (CC BY 4.0)', '',
+        f'- [EV charging stations by country (English)]({G.SITE}{site.hub("en")})',
+        f'- [Зарядки для электромобилей по странам (Russian)]({G.SITE}{site.hub("ru")})',
+        f'- [Punjači za električne automobile (Serbian, Europe)]({G.SITE}{site.hub("sr")})',
+        f'- [Map]({c.map_url("en") if c.map_url("en").startswith("http") else G.SITE + c.map_url("en")})',
+        f'- [About the data: sources, licences, reliability]({G.SITE}{site.about("en")})',
+        f'- [Download the open data (ODbL)]({G.SITE}{site.download("en")})',
+        f'- [Serbia: chargers by town (blokvolt.rs)]({G.RS}/en/gradovi/)', '',
+    ]
+    return '\n'.join(lines)
+
+
+def write_llms(c):
+    if not (c.public or os.environ.get('BV_WORLD_PREVIEW') == '1'):
+        return None
+    p = c.G.OUT / 'llms.txt'
+    sec = llms_text(c)
+    if p.exists():
+        t = p.read_text(encoding='utf-8')
+        if '## World EV charging data' not in t:
+            p.write_text(t.rstrip('\n') + '\n\n' + sec, encoding='utf-8')
+    else:
+        p.write_text('# BlokVolt\n\n> Where to charge an electric car, what it costs and what the rules are: Serbia and the '
+                     'Western Balkans (regional guide) and the world charging data.\n\n' + sec, encoding='utf-8')
+    return p
 
 
 def write_sitemaps(c):

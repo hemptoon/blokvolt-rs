@@ -349,6 +349,11 @@
   "ru": "Страница есть у каждой страны, где не меньше 100 публичных мест средней или высокой надёжности. Западные Балканы описаны на отдельных страницах BlokVolt по каждой стране.",
   "sr": "Stranicu ima svaka zemlja sa najmanje 100 javnih lokacija srednje ili visoke pouzdanosti. Zapadni Balkan pokrivaju posebne stranice BlokVolt-a za svaku zemlju."
  },
+ "p_hub_na": {
+  "en": "The United States and Canada are covered in English and Russian; the Serbian pages cover Europe.",
+  "ru": "США и Канада описаны на английском и русском; страницы на сербском охватывают Европу.",
+  "sr": "Stranice na srpskom pokrivaju Evropu; SAD i Kanada su na engleskom i ruskom."
+ },
  "p_multi": {
   "en": "{pct_multi} of the locations are confirmed by two or more sources; {pct_recent} were last confirmed in 2025 or 2026.",
   "ru": "Два и более источника подтверждают {pct_multi} мест; {pct_recent} в последний раз подтверждены в 2025 или 2026 году.",
@@ -493,6 +498,11 @@
   "en": "EV charging stations in Europe by country",
   "ru": "Зарядки для электромобилей в Европе",
   "sr": "Punjači za električne automobile u Evropi"
+ },
+ "t_hub_month_na": {
+  "en": "EV charging stations in Europe, the US and Canada",
+  "ru": "Зарядки для электромобилей в Европе, США и Канаде",
+  "sr": "Punjači za električne automobile u Evropi, SAD i Kanadi"
  },
  "t_hub_quarter": {
   "en": "EV charging stations worldwide by country",

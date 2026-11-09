@@ -94,8 +94,11 @@ def main():
     # every world URL
     urls = {}
     for p in pages:
-        for l in W.LANGS:
+        for l in site.langs(p):
             urls[site.url(p, l)] = (p, l)
+        for l in set(W.LANGS) - set(site.langs(p)):   # v2: no SR page outside Europe
+            if (dist / site.url(p, l).strip('/') / 'index.html').exists():
+                fail(f'page in a language it should not have: {site.url(p, l)}')
     extra = {site.about(l): (None, l) for l in W.LANGS}
     extra.update({site.download(l): (None, l) for l in W.LANGS})
     files = {}
@@ -138,7 +141,8 @@ def main():
         if not cfg.get('public') and x.robots != 'noindex,nofollow':
             fail(f'robots {u}: {x.robots}')
         a = dict(x.alts)
-        if set(a) != {'en', 'sr', 'ru', 'x-default'} or a.get('x-default') != a.get('en'):
+        want = set(site.langs(p)) if p else set(W.LANGS)
+        if set(a) != want | {'x-default'} or a.get('x-default') != a.get('en'):
             fail(f'hreflang set {u}: {sorted(a)}')
         for code, href in x.alts:
             if not href.startswith(SITE + '/'):
@@ -218,13 +222,28 @@ def main():
                     fail(f'existing page links to the world layer: {f.relative_to(dist)}')
         R['existing_pages_checked'] = n_old
 
+    # search index (bvcom G0/G2)
+    import gzip
+    si = dist / 'assets' / 'world' / 'search-index.json'
+    if not si.exists():
+        fail('no search index')
+    else:
+        raw = si.read_bytes()
+        R['search_index'] = dict(entries=len(json.loads(raw)['items']), kb=round(len(raw) / 1024), kb_gzip=round(len(gzip.compress(raw, 9)) / 1024))
+        for it in json.loads(raw)['items']:
+            for u in it[6]:
+                if u and u.startswith('/') and not (dist / u.strip('/') / 'index.html').exists():
+                    fail(f'search index URL missing: {u}')
+        if R['search_index']['kb_gzip'] > 300:
+            fail('search index > 300 KB gzip')
+
     # 100 random numbers from the page JSON on their page
     rnd = random.Random(seed)
     checked, missed = 0, []
     cand = [p for p in pages if p['type'] in ('country', 'city', 'network')]
     for _ in range(100):
         p = rnd.choice(cand)
-        l = rnd.choice(W.LANGS)
+        l = rnd.choice(site.langs(p))
         loc = W.L[l]
         st = p['data']['stats']
         opts = [('stats.n', st['n']), ('stats.dc50', st['dc50']), ('stats.hpc', st['hpc']), ('stats.n_nets', st['n_nets']),
