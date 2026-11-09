@@ -1,0 +1,592 @@
+{
+ "balkan_note": {
+  "en": "These countries have their own BlokVolt pages with checked data.",
+  "ru": "У этих стран есть отдельные страницы BlokVolt с проверенными данными.",
+  "sr": "Ove zemlje imaju posebne stranice BlokVolt-a sa proverenim podacima."
+ },
+ "below_p": {
+  "en": "This page shows a city or network only while the open data has enough public locations for it. Right now it does not. The country page and the map still show every location.",
+  "ru": "Эта страница показывает город или сеть, только пока в открытых данных достаточно публичных мест. Сейчас их недостаточно. Страница страны и карта по-прежнему показывают каждое место.",
+  "sr": "Ova stranica prikazuje grad ili mrežu samo dok otvoreni podaci imaju dovoljno javnih lokacija. Trenutno nemaju. Stranica zemlje i mapa i dalje prikazuju svaku lokaciju."
+ },
+ "below_title": {
+  "en": "Charging stations — not enough data now",
+  "ru": "Зарядки — сейчас недостаточно данных",
+  "sr": "Punjači — trenutno nema dovoljno podataka"
+ },
+ "conf_link": {
+  "en": "How reliability is computed",
+  "ru": "Как считается надёжность",
+  "sr": "Kako se računa pouzdanost"
+ },
+ "country_menu": {
+  "en": "Language",
+  "ru": "Язык",
+  "sr": "Jezik"
+ },
+ "crumbs": {
+  "en": "Breadcrumbs",
+  "ru": "Навигация",
+  "sr": "Putanja"
+ },
+ "d_city": {
+  "en": "Public charging locations in {city} from open data: fast DC chargers with power and connectors, networks, nearby cities.",
+  "ru": "Публичные зарядки {city_v} по открытым данным: быстрые DC с мощностью и разъёмами, сети, города рядом.",
+  "sr": "Javni punjači {city_u} iz otvorenih podataka: brzi DC punjači sa snagom i konektorima, mreže, gradovi u blizini."
+ },
+ "d_country": {
+  "en": "Public charging locations {country_u} from open data: fast DC chargers, networks, cities, connectors, sources and licences.",
+  "ru": "Публичные зарядки {country_v} по открытым данным: быстрые DC, сети, города, разъёмы, источники и лицензии.",
+  "sr": "Javni punjači {country_u} iz otvorenih podataka: brzi DC punjači, mreže, gradovi, konektori, izvori i licence."
+ },
+ "d_gnet": {
+  "en": "{net} charging locations by country from open data: power, connectors and sources.",
+  "ru": "Зарядки {net} по странам по открытым данным: мощность, разъёмы и источники.",
+  "sr": "{net} punjači po zemljama iz otvorenih podataka: snaga, konektori i izvori."
+ },
+ "d_hub": {
+  "en": "Public charging locations from open data by country: fast DC chargers, networks, connectors, sources and licences.",
+  "ru": "Публичные зарядки по открытым данным по странам: быстрые DC, сети, разъёмы, источники и лицензии.",
+  "sr": "Javni punjači iz otvorenih podataka po zemljama: brzi DC punjači, mreže, konektori, izvori i licence."
+ },
+ "d_network": {
+  "en": "{net} charging locations {country_u} from open data: power, connectors and cities, with sources.",
+  "ru": "Зарядки {net} {country_v} по открытым данным: мощность, разъёмы и города, с источниками.",
+  "sr": "{net} punjači {country_u} iz otvorenih podataka: snaga, konektori i gradovi, sa izvorima."
+ },
+ "data_from": {
+  "en": "Data as of {date}",
+  "ru": "Данные от {date}",
+  "sr": "Podaci od {date}"
+ },
+ "dataset_desc": {
+  "en": "Locations of public charging stations for electric vehicles {country_u}, merged from open sources (OpenStreetMap, Open Charge Map, national registries and others), with power, connectors, network, sources and a reliability score.",
+  "ru": "Места публичных зарядок для электромобилей {country_v}, объединённые из открытых источников (OpenStreetMap, Open Charge Map, национальные реестры и другие), с мощностью, разъёмами, сетью, источниками и оценкой надёжности.",
+  "sr": "Lokacije javnih punjača za električne automobile {country_u}, objedinjene iz otvorenih izvora (OpenStreetMap, Open Charge Map, nacionalni registri i drugi), sa snagom, konektorima, mrežom, izvorima i ocenom pouzdanosti."
+ },
+ "dataset_name": {
+  "en": "Public EV charging locations {country_u} (open data, ODbL)",
+  "ru": "Публичные зарядки для электромобилей {country_v} (открытые данные, ODbL)",
+  "sr": "Javni punjači za električne automobile {country_u} (otvoreni podaci, ODbL)"
+ },
+ "disc": {
+  "en": "Data is shown as is, without a guarantee of accuracy or availability. Check with the operator before you go. How reliability is computed and which sources are used:",
+  "ru": "Данные показаны как есть, без гарантии точности и доступности. Перед поездкой стоит уточнить у оператора. Как считается надёжность и какие источники используются:",
+  "sr": "Podaci se prikazuju kakvi jesu, bez garancije tačnosti ili dostupnosti. Pre polaska proverite stanje kod operatera. Kako se računa pouzdanost i koji izvori se koriste:"
+ },
+ "download_link": {
+  "en": "Download the open data (ODbL)",
+  "ru": "Скачать открытые данные (ODbL)",
+  "sr": "Preuzmite otvorene podatke (ODbL)"
+ },
+ "fallback_u": {
+  "en": "in {x}",
+  "ru": "в городе {x}",
+  "sr": "u gradu {x}"
+ },
+ "fast_more": {
+  "en": "Showing {shown} of {total} fast chargers; the map shows all.",
+  "ru": "Показано {shown} из {total} быстрых зарядок; карта показывает все.",
+  "sr": "Prikazano {shown} od {total} brzih punjača; mapa prikazuje sve brze punjače."
+ },
+ "file_link": {
+  "en": "Weekly file of the public layer",
+  "ru": "Еженедельный файл публичного слоя",
+  "sr": "Nedeljna datoteka javnog sloja"
+ },
+ "fix_subject": {
+  "en": "Correction (world map)",
+  "ru": "Исправление (карта мира)",
+  "sr": "Ispravka (mapa sveta)"
+ },
+ "ft_charging": {
+  "en": "Charging stations",
+  "ru": "Зарядки",
+  "sr": "Punjači"
+ },
+ "ft_checked": {
+  "en": "data from",
+  "ru": "данные от",
+  "sr": "podaci od"
+ },
+ "ft_claim": {
+  "en": "Where to charge an electric car, from open data: countries, cities and networks.",
+  "ru": "Где зарядить электромобиль — по открытым данным: страны, города и сети.",
+  "sr": "Gde se puni električni automobil, iz otvorenih podataka: zemlje, gradovi i mreže."
+ },
+ "ft_data": {
+  "en": "Data: © <a href=\"https://www.openstreetmap.org/copyright\" rel=\"noopener\">OpenStreetMap</a> (ODbL), Open Charge Map (CC BY 4.0) and other open sources · city names: GeoNames (CC BY 4.0)",
+  "ru": "Данные: © <a href=\"https://www.openstreetmap.org/copyright\" rel=\"noopener\">OpenStreetMap</a> (ODbL), Open Charge Map (CC BY 4.0) и другие открытые источники · названия городов: GeoNames (CC BY 4.0)",
+  "sr": "Podaci: © <a href=\"https://www.openstreetmap.org/copyright\" rel=\"noopener\">OpenStreetMap</a> (ODbL), Open Charge Map (CC BY 4.0) i drugi otvoreni izvori · nazivi gradova: GeoNames (CC BY 4.0)"
+ },
+ "ft_region": {
+  "en": "Serbia and the region",
+  "ru": "Сербия и регион",
+  "sr": "Srbija i region"
+ },
+ "h_balkan": {
+  "en": "Western Balkans",
+  "ru": "Западные Балканы",
+  "sr": "Zapadni Balkan"
+ },
+ "h_cities": {
+  "en": "Cities",
+  "ru": "Города",
+  "sr": "Gradovi"
+ },
+ "h_cities_other": {
+  "en": "Other cities",
+  "ru": "Другие города",
+  "sr": "Ostali gradovi"
+ },
+ "h_conn": {
+  "en": "Connectors",
+  "ru": "Разъёмы",
+  "sr": "Konektori"
+ },
+ "h_countries": {
+  "en": "Countries",
+  "ru": "Страны",
+  "sr": "Zemlje"
+ },
+ "h_fast": {
+  "en": "Fast chargers (DC from 50 kW)",
+  "ru": "Быстрые зарядки (DC от 50 кВт)",
+  "sr": "Brzi punjači (DC od 50 kW)"
+ },
+ "h_map": {
+  "en": "Map",
+  "ru": "Карта",
+  "sr": "Mapa"
+ },
+ "h_more": {
+  "en": "Other countries in the data",
+  "ru": "Другие страны в данных",
+  "sr": "Ostale zemlje u podacima"
+ },
+ "h_near": {
+  "en": "Nearby cities",
+  "ru": "Города рядом",
+  "sr": "Gradovi u blizini"
+ },
+ "h_nets": {
+  "en": "Networks",
+  "ru": "Сети",
+  "sr": "Mreže"
+ },
+ "h_power": {
+  "en": "Locations by maximum power",
+  "ru": "Места по максимальной мощности",
+  "sr": "Lokacije po najvećoj snazi"
+ },
+ "h_sources": {
+  "en": "Sources and licences",
+  "ru": "Источники и лицензии",
+  "sr": "Izvori i licence"
+ },
+ "home": {
+  "en": "home",
+  "ru": "главная",
+  "sr": "početna"
+ },
+ "k_city": {
+  "en": "City",
+  "ru": "Город",
+  "sr": "Grad"
+ },
+ "k_country": {
+  "en": "Country",
+  "ru": "Страна",
+  "sr": "Zemlja"
+ },
+ "k_hub": {
+  "en": "Open data",
+  "ru": "Открытые данные",
+  "sr": "Otvoreni podaci"
+ },
+ "k_network": {
+  "en": "Network",
+  "ru": "Сеть",
+  "sr": "Mreža"
+ },
+ "km_away": {
+  "en": "{km} km",
+  "ru": "{km} км",
+  "sr": "{km} km"
+ },
+ "lang_label": {
+  "en": "English",
+  "ru": "Русский",
+  "sr": "Srpski"
+ },
+ "menu": {
+  "en": "Menu",
+  "ru": "Меню",
+  "sr": "Meni"
+ },
+ "mini_alt": {
+  "en": "Map of the charging locations: grey — AC or power not stated, blue — DC",
+  "ru": "Карта мест: серые — AC или мощность не указана, синие — DC",
+  "sr": "Mapa lokacija: sivo — AC ili snaga nije navedena, plavo — DC"
+ },
+ "moved": {
+  "en": "This page has moved to",
+  "ru": "Страница перенесена на",
+  "sr": "Stranica je premeštena na"
+ },
+ "nav_about": {
+  "en": "About the data",
+  "ru": "О данных",
+  "sr": "O podacima"
+ },
+ "nav_download": {
+  "en": "Download",
+  "ru": "Скачать",
+  "sr": "Preuzimanje"
+ },
+ "nav_hub": {
+  "en": "Charging stations",
+  "ru": "Зарядки",
+  "sr": "Punjači"
+ },
+ "nav_map": {
+  "en": "Map",
+  "ru": "Карта",
+  "sr": "Mapa"
+ },
+ "net_page": {
+  "en": "network page",
+  "ru": "страница сети",
+  "sr": "stranica mreže"
+ },
+ "no_name": {
+  "en": "No name in the data",
+  "ru": "Без названия в данных",
+  "sr": "Bez naziva u podacima"
+ },
+ "on_map": {
+  "en": "on the map",
+  "ru": "на карте",
+  "sr": "na mapi"
+ },
+ "open_map": {
+  "en": "Open on the map",
+  "ru": "Открыть на карте",
+  "sr": "Otvori na mapi"
+ },
+ "open_map_ac": {
+  "en": "AC chargers on the map",
+  "ru": "AC-зарядки на карте",
+  "sr": "AC punjači na mapi"
+ },
+ "open_map_dc": {
+  "en": "Fast chargers on the map",
+  "ru": "Быстрые зарядки на карте",
+  "sr": "Brzi punjači na mapi"
+ },
+ "p0": {
+  "en": "Power not stated",
+  "ru": "Мощность не указана",
+  "sr": "Snaga nije navedena"
+ },
+ "p1": {
+  "en": "AC up to 7 kW",
+  "ru": "AC до 7 кВт",
+  "sr": "AC do 7 kW"
+ },
+ "p2": {
+  "en": "AC 11–22 kW",
+  "ru": "AC 11–22 кВт",
+  "sr": "AC 11–22 kW"
+ },
+ "p3": {
+  "en": "DC under 50 kW",
+  "ru": "DC до 50 кВт",
+  "sr": "DC ispod 50 kW"
+ },
+ "p4": {
+  "en": "DC 50–149 kW",
+  "ru": "DC 50–149 кВт",
+  "sr": "DC 50–149 kW"
+ },
+ "p5": {
+  "en": "150 kW and more",
+  "ru": "от 150 кВт",
+  "sr": "150 kW i više"
+ },
+ "p6": {
+  "en": "AC, power not stated",
+  "ru": "AC, мощность не указана",
+  "sr": "AC, snaga nije navedena"
+ },
+ "p7": {
+  "en": "DC, power not stated",
+  "ru": "DC, мощность не указана",
+  "sr": "DC, snaga nije navedena"
+ },
+ "p_ac": {
+  "en": "AC chargers: {ac}. They are not listed one by one here; the map shows them all.",
+  "ru": "AC-зарядки: {ac}. Здесь они не перечислены по одной; карта показывает их.",
+  "sr": "AC punjači: {ac}. Ovde nisu navedeni pojedinačno; mapa ih prikazuje."
+ },
+ "p_city_cmp": {
+  "en": "Fast DC chargers from 50 kW per 10 public locations: {city} here, {country} on average across {country_name}.",
+  "ru": "Быстрых DC-зарядок от 50 кВт на 10 публичных мест: здесь {city}, в среднем по стране ({country_name}) {country}.",
+  "sr": "Brzih DC punjača od 50 kW na 10 javnih lokacija: ovde {city}, prosek za zemlju ({country_name}) {country}."
+ },
+ "p_dc": {
+  "en": "Fast DC charging from 50 kW: {dc} ({pct_dc}); 150 kW or more: {hpc}.",
+  "ru": "Быстрая DC-зарядка от 50 кВт: {dc} ({pct_dc}); 150 кВт и более: {hpc}.",
+  "sr": "Brzo DC punjenje od 50 kW: {dc} ({pct_dc}); 150 kW ili više: {hpc}."
+ },
+ "p_gnet": {
+  "en": "{net} appears in {n_countries}.",
+  "ru": "{net} есть в {n_countries}.",
+  "sr": "{net} je prisutna u {n_countries}."
+ },
+ "p_hub": {
+  "en": "Countries with at least 100 public locations of medium or high reliability have a page. The Western Balkans are covered by the BlokVolt pages of each country.",
+  "ru": "Страница есть у каждой страны, где не меньше 100 публичных мест средней или высокой надёжности. Западные Балканы описаны на отдельных страницах BlokVolt по каждой стране.",
+  "sr": "Stranicu ima svaka zemlja sa najmanje 100 javnih lokacija srednje ili visoke pouzdanosti. Zapadni Balkan pokrivaju posebne stranice BlokVolt-a za svaku zemlju."
+ },
+ "p_multi": {
+  "en": "{pct_multi} of the locations are confirmed by two or more sources; {pct_recent} were last confirmed in 2025 or 2026.",
+  "ru": "Два и более источника подтверждают {pct_multi} мест; {pct_recent} в последний раз подтверждены в 2025 или 2026 году.",
+  "sr": "Dva ili više izvora potvrđuju {pct_multi} lokacija; {pct_recent} je poslednji put potvrđeno 2025. ili 2026. godine."
+ },
+ "p_net_share": {
+  "en": "The network is present in {n_cities} {country_u}; it is {share} of the public locations of the country shown here.",
+  "ru": "Сеть есть в {n_cities} {country_v}; это {share} публичных мест страны, показанных здесь.",
+  "sr": "Mreža je prisutna u {n_cities} {country_u}; to je {share} javnih lokacija zemlje prikazanih ovde."
+ },
+ "p_nonet": {
+  "en": "Without a known network: {nonet}.",
+  "ru": "Без известной сети: {nonet}.",
+  "sr": "Bez poznate mreže: {nonet}."
+ },
+ "p_shown": {
+  "en": "Shown: {n} from open sources, not every charger that exists. Points with reliability below 40 and private chargers are not included.",
+  "ru": "Показано: {n} из открытых источников, а не каждая существующая зарядка. Точки с надёжностью ниже 40 и частные зарядки не включены.",
+  "sr": "Prikazano: {n} iz otvorenih izvora, ne svaki punjač koji postoji. Tačke sa pouzdanošću ispod 40 i privatni punjači nisu uključeni."
+ },
+ "pct": {
+  "en": "{x}%",
+  "ru": "{x} %",
+  "sr": "{x} %"
+ },
+ "pl_city": {
+  "en": "city|cities|cities",
+  "ru": "город|города|городов",
+  "sr": "grad|grada|gradova"
+ },
+ "pl_city_in": {
+  "en": "city|cities|cities",
+  "ru": "городе|городах|городах",
+  "sr": "gradu|grada|gradova"
+ },
+ "pl_country": {
+  "en": "country|countries|countries",
+  "ru": "страна|страны|стран",
+  "sr": "zemlja|zemlje|zemalja"
+ },
+ "pl_country_in": {
+  "en": "country|countries|countries",
+  "ru": "стране|странах|странах",
+  "sr": "zemlji|zemlje|zemalja"
+ },
+ "pl_loc": {
+  "en": "charging location|charging locations|charging locations",
+  "ru": "место зарядки|места зарядки|мест зарядки",
+  "sr": "lokacija za punjenje|lokacije za punjenje|lokacija za punjenje"
+ },
+ "pl_net": {
+  "en": "network|networks|networks",
+  "ru": "сеть|сети|сетей",
+  "sr": "mreža|mreže|mreža"
+ },
+ "pl_place": {
+  "en": "location|locations|locations",
+  "ru": "место|места|мест",
+  "sr": "lokacija|lokacije|lokacija"
+ },
+ "pl_point": {
+  "en": "charging point|charging points|charging points",
+  "ru": "точка зарядки|точки зарядки|точек зарядки",
+  "sr": "priključak|priključka|priključaka"
+ },
+ "pl_publoc": {
+  "en": "public charging location|public charging locations|public charging locations",
+  "ru": "публичное место зарядки|публичных места зарядки|публичных мест зарядки",
+  "sr": "javna lokacija za punjenje|javne lokacije za punjenje|javnih lokacija za punjenje"
+ },
+ "regional_guide": {
+  "en": "Regional guide for {country}: networks, prices, subsidies",
+  "ru": "Региональный гид ({country}): сети, цены, субсидии",
+  "sr": "Regionalni vodič ({country}): mreže, cene, subvencije"
+ },
+ "report": {
+  "en": "Report a mistake",
+  "ru": "Сообщить об ошибке",
+  "sr": "Prijavite grešku"
+ },
+ "report_map": {
+  "en": "A mistake in a location can be reported with the “Report an error” button on its card on the map.",
+  "ru": "Об ошибке в месте можно сообщить кнопкой «Сообщить об ошибке» в карточке места на карте.",
+  "sr": "Grešku u lokaciji možete prijaviti dugmetom „Prijavi grešku“ na kartici lokacije na mapi."
+ },
+ "skip": {
+  "en": "Skip to content",
+  "ru": "К содержанию",
+  "sr": "Preskoči na sadržaj"
+ },
+ "sources_note": {
+  "en": "Every location keeps the source of its data; the licence of each source is listed here. Network names belong to their owners.",
+  "ru": "У каждого места сохранён источник данных; лицензия каждого источника указана здесь. Названия сетей принадлежат их владельцам.",
+  "sr": "Svaka lokacija čuva izvor svojih podataka; licenca svakog izvora navedena je ovde. Nazivi mreža pripadaju njihovim vlasnicima."
+ },
+ "st_countries": {
+  "en": "countries with a page",
+  "ru": "стран со страницей",
+  "sr": "zemalja sa stranicom"
+ },
+ "st_dc50": {
+  "en": "with DC from 50 kW",
+  "ru": "с DC от 50 кВт",
+  "sr": "sa DC od 50 kW"
+ },
+ "st_hpc": {
+  "en": "with 150 kW and more",
+  "ru": "с 150 кВт и более",
+  "sr": "sa 150 kW i više"
+ },
+ "st_n": {
+  "en": "public locations",
+  "ru": "публичных мест",
+  "sr": "javnih lokacija"
+ },
+ "st_nets": {
+  "en": "known networks",
+  "ru": "известных сетей",
+  "sr": "poznatih mreža"
+ },
+ "t_city": {
+  "en": "EV charging stations in {city}, {country}",
+  "ru": "Зарядки для электромобилей {city_v}",
+  "sr": "Punjači za električne automobile {city_u}"
+ },
+ "t_city_cc": {
+  "en": "EV charging stations in {city}, {country}",
+  "ru": "Зарядки для электромобилей {city_v}, {country}",
+  "sr": "Punjači za električne automobile {city_u}, {country}"
+ },
+ "t_country": {
+  "en": "EV charging stations {country_u}",
+  "ru": "Зарядки для электромобилей {country_v}",
+  "sr": "Punjači za električne automobile {country_u}"
+ },
+ "t_gnet": {
+  "en": "{net} charging stations by country",
+  "ru": "Зарядки {net} по странам",
+  "sr": "{net} punjači po zemljama"
+ },
+ "t_hub_month": {
+  "en": "EV charging stations in Europe by country",
+  "ru": "Зарядки для электромобилей в Европе",
+  "sr": "Punjači za električne automobile u Evropi"
+ },
+ "t_hub_quarter": {
+  "en": "EV charging stations worldwide by country",
+  "ru": "Зарядки для электромобилей в мире",
+  "sr": "Punjači za električne automobile u svetu"
+ },
+ "t_near": {
+  "en": " (near {x})",
+  "ru": " (рядом: {x})",
+  "sr": " (blizu: {x})"
+ },
+ "t_network": {
+  "en": "{net} charging stations {country_u}",
+  "ru": "Зарядки {net} {country_v}",
+  "sr": "{net} punjači {country_u}"
+ },
+ "th_city": {
+  "en": "City",
+  "ru": "Город",
+  "sr": "Grad"
+ },
+ "th_conn": {
+  "en": "Connector",
+  "ru": "Разъём",
+  "sr": "Konektor"
+ },
+ "th_country": {
+  "en": "Country",
+  "ru": "Страна",
+  "sr": "Zemlja"
+ },
+ "th_dc50": {
+  "en": "DC from 50 kW",
+  "ru": "DC от 50 кВт",
+  "sr": "DC od 50 kW"
+ },
+ "th_km": {
+  "en": "km",
+  "ru": "км",
+  "sr": "km"
+ },
+ "th_kw": {
+  "en": "kW",
+  "ru": "кВт",
+  "sr": "kW"
+ },
+ "th_lc": {
+  "en": "Last confirmed",
+  "ru": "Последнее подтверждение",
+  "sr": "Poslednja potvrda"
+ },
+ "th_licence": {
+  "en": "Licence",
+  "ru": "Лицензия",
+  "sr": "Licenca"
+ },
+ "th_n": {
+  "en": "Locations",
+  "ru": "Мест",
+  "sr": "Lokacija"
+ },
+ "th_name": {
+  "en": "Location",
+  "ru": "Место",
+  "sr": "Lokacija"
+ },
+ "th_net": {
+  "en": "Network",
+  "ru": "Сеть",
+  "sr": "Mreža"
+ },
+ "th_power": {
+  "en": "Power",
+  "ru": "Мощность",
+  "sr": "Snaga"
+ },
+ "th_share": {
+  "en": "Share",
+  "ru": "Доля",
+  "sr": "Udeo"
+ },
+ "th_source": {
+  "en": "Source",
+  "ru": "Источник",
+  "sr": "Izvor"
+ },
+ "to_country": {
+  "en": "Charging stations {country_u}",
+  "ru": "Зарядки {country_v}",
+  "sr": "Punjači {country_u}"
+ },
+ "unknown_net": {
+  "en": "Network not known",
+  "ru": "Сеть неизвестна",
+  "sr": "Mreža nije poznata"
+ }
+}

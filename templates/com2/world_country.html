@@ -1,0 +1,21 @@
+{% extends 'world_base.html' %}
+{% block pagehead %}{{ m.head(kick, h1, None, crumbs, data_date, map_link, last=cname) }}{% endblock %}
+{% block content %}
+{{ m.tiles(b) }}
+{{ m.paras(b) }}
+{% if regional %}<p class="note"><a class="lnk" href="{{ regional.url }}" hreflang="en">{{ S.regional_guide.format(country=cname) }}</a></p>{% endif %}
+{{ m.minimap(mini, map_link) }}
+{% if cities %}<div class="sec"><div class="sec-head"><h2 id="cities">{{ S.h_cities }}</h2></div>
+<div class="tw"><table><thead><tr><th>{{ S.th_city }}</th><th class="num">{{ S.th_n }}</th></tr></thead><tbody>
+{% for r in cities[:60] %}<tr><td><a href="{{ r.url }}" translate="no">{{ r.name }}</a></td><td class="num">{{ r.n }}</td></tr>
+{% endfor %}</tbody></table></div>
+{% if cities|length > 60 %}<p class="w-more" translate="no">{% for r in cities[60:] %}<a href="{{ r.url }}">{{ r.name }}</a> {{ r.n }}{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}</div>{% endif %}
+{% if others %}<div class="sec"><div class="sec-head"><h2 id="other-cities">{{ S.h_cities_other }}</h2></div>
+<div class="chips">{% for r in others %}<a class="chip" href="{{ r.url }}" rel="nofollow" translate="no">{{ r.name }} · {{ r.n }}</a>{% endfor %}</div></div>{% endif %}
+{{ m.nets(nets) }}
+{{ m.power(b) }}
+{{ m.conn(b) }}
+{{ m.sources(b) }}
+<p class="note"><a class="lnk" href="{{ W.site.download(l) }}">{{ S.download_link }}</a></p>
+{{ m.foot(W.site.about(l)) }}
+{% endblock %}

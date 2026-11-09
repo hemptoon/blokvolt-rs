@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% import 'world__m.html' as m with context %}
+{% block head %}{% if robots %}<meta name="robots" content="{{ robots }}">
+{% endif %}<style>.ph,.prose,.note{overflow-wrap:break-word}.w-more a{white-space:nowrap}</style>
+{% endblock %}
+{% block jsonld %}{% if jsonld %}<script type="application/ld+json">{{ jsonld|safe }}</script>{% endif %}{% endblock %}

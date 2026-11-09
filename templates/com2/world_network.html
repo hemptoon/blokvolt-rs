@@ -1,0 +1,16 @@
+{% extends 'world_base.html' %}
+{% block pagehead %}{{ m.head(kick, h1, None, crumbs, data_date, map_link, last=net) }}{% endblock %}
+{% block content %}
+{{ m.tiles(b) }}
+{{ m.paras(b) }}
+{% if gnet_link %}<p class="note"><a class="lnk" href="{{ gnet_link }}">{{ S.t_gnet.format(net=net) }}</a></p>{% endif %}
+{{ m.minimap(mini, map_link) }}
+<div class="sec"><div class="sec-head"><h2 id="cities">{{ S.h_cities }}</h2></div>
+<div class="tw"><table><thead><tr><th>{{ S.th_city }}</th><th class="num">{{ S.th_n }}</th></tr></thead><tbody>
+{% for r in cities %}<tr><td><a href="{{ r.url }}"{% if not r.page %} rel="nofollow"{% endif %} translate="no">{{ r.name }}</a>{% if not r.page %} <small class="muted">· {{ S.on_map }}</small>{% endif %}</td><td class="num">{{ r.n }}</td></tr>
+{% endfor %}</tbody></table></div></div>
+{{ m.power(b) }}
+{{ m.conn(b) }}
+{{ m.sources(b) }}
+{{ m.foot(W.site.about(l)) }}
+{% endblock %}

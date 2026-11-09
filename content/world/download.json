@@ -1,0 +1,233 @@
+{
+ "en": {
+  "h1": "Download open data",
+  "title": "Download open charging point data | BlokVolt",
+  "description": "Weekly CSV file with public charging points: coordinates, network, power, connectors and sources. Free under the ODbL licence.",
+  "lead": "The public layer of the map is available as a free CSV file, updated every week.",
+  "what_h": "What the file contains",
+  "what_p": "A weekly CSV dump of the public layer of the map: coordinates, network, power, connectors and sources of each place. It contains OpenStreetMap data, so it is published under the Open Database License (ODbL) 1.0. Prices, team checks and BlokVolt's corrections for the Balkans are not part of the file.",
+  "fields_h": "Columns",
+  "fields": [
+   [
+    "pid",
+    "Stable ID of the place"
+   ],
+   [
+    "lat",
+    "Latitude (WGS 84)"
+   ],
+   [
+    "lon",
+    "Longitude (WGS 84)"
+   ],
+   [
+    "country",
+    "Country code (ISO 3166-1 alpha-2)"
+   ],
+   [
+    "name",
+    "Name of the place"
+   ],
+   [
+    "network",
+    "Network or operator name"
+   ],
+   [
+    "max_kw",
+    "Highest power at the place, kW"
+   ],
+   [
+    "dc",
+    "1 if DC fast charging is available, 0 if not"
+   ],
+   [
+    "power_class",
+    "Power class of the place"
+   ],
+   [
+    "connectors",
+    "Connector types, comma-separated"
+   ],
+   [
+    "points",
+    "Estimated number of charging points"
+   ],
+   [
+    "access",
+    "Access type (public, restricted and similar)"
+   ],
+   [
+    "sources",
+    "Source keys, comma-separated (see the page \"About the data\")"
+   ],
+   [
+    "last_confirmed",
+    "Date of the last confirmation by any source"
+   ],
+   [
+    "confidence",
+    "Reliability score 0–100"
+   ]
+  ],
+  "licence_h": "Licence",
+  "licence_p": "The file is available under the ODbL 1.0. You may share, create works from and adapt the data, provided that you credit \"© OpenStreetMap contributors, BlokVolt\" and share any adapted database under the same licence. Keep it open: do not apply technical restrictions that limit these rights. Full text: https://opendatacommons.org/licenses/odbl/1-0/",
+  "file_h": "File",
+  "file_missing": "The file for this week is being prepared. Please check again later.",
+  "attribution_h": "How to credit",
+  "attribution_p": "When you use the data, show \"© OpenStreetMap contributors, BlokVolt\" with a link to www.openstreetmap.org/copyright and to this page, and state the ODbL 1.0 licence. Data from other sources keeps its own attribution, listed on the page \"About the data\"."
+ },
+ "sr": {
+  "h1": "Preuzimanje otvorenih podataka",
+  "title": "Preuzimanje otvorenih podataka o punjačima | BlokVolt",
+  "description": "Nedeljni CSV fajl sa javnim punjačima: koordinate, mreža, snaga, konektori i izvori. Besplatno, pod licencom ODbL.",
+  "lead": "Javni sloj mape dostupan je kao besplatan CSV fajl koji se ažurira svake nedelje.",
+  "what_h": "Šta fajl sadrži",
+  "what_p": "Nedeljni CSV izvoz javnog sloja mape: koordinate, mreža, snaga, konektori i izvori za svako mesto. Fajl sadrži podatke OpenStreetMap-a, pa se objavljuje pod licencom Open Database License (ODbL) 1.0. Cene, ručne provere i BlokVolt ispravke za Balkan nisu deo fajla.",
+  "fields_h": "Kolone",
+  "fields": [
+   [
+    "pid",
+    "Stalni ID mesta"
+   ],
+   [
+    "lat",
+    "Geografska širina (WGS 84)"
+   ],
+   [
+    "lon",
+    "Geografska dužina (WGS 84)"
+   ],
+   [
+    "country",
+    "Oznaka države (ISO 3166-1 alpha-2)"
+   ],
+   [
+    "name",
+    "Naziv mesta"
+   ],
+   [
+    "network",
+    "Naziv mreže ili operatera"
+   ],
+   [
+    "max_kw",
+    "Najveća snaga na mestu, kW"
+   ],
+   [
+    "dc",
+    "1 ako postoji brzo DC punjenje, 0 ako ne postoji"
+   ],
+   [
+    "power_class",
+    "Klasa snage mesta"
+   ],
+   [
+    "connectors",
+    "Tipovi konektora, odvojeni zarezom"
+   ],
+   [
+    "points",
+    "Procenjen broj priključnih mesta"
+   ],
+   [
+    "access",
+    "Vrsta pristupa (javni, ograničen i slično)"
+   ],
+   [
+    "sources",
+    "Oznake izvora, odvojene zarezom (stranica „O podacima“)"
+   ],
+   [
+    "last_confirmed",
+    "Datum poslednje potvrde iz bilo kog izvora"
+   ],
+   [
+    "confidence",
+    "Ocena pouzdanosti 0–100"
+   ]
+  ],
+  "licence_h": "Licenca",
+  "licence_p": "Fajl je dostupan pod licencom ODbL 1.0. Podatke možete deliti, koristiti za nova dela i prilagođavati, uz navođenje „© OpenStreetMap contributors, BlokVolt“ i objavu prilagođene baze pod istom licencom. Podaci moraju da ostanu otvoreni: ne uvodite tehnička ograničenja koja sužavaju ova prava. Ceo tekst: https://opendatacommons.org/licenses/odbl/1-0/",
+  "file_h": "Fajl",
+  "file_missing": "Fajl za ovu nedelju se priprema. Proverite ponovo kasnije.",
+  "attribution_h": "Kako navesti izvor",
+  "attribution_p": "Kada koristite podatke, navedite „© OpenStreetMap contributors, BlokVolt“ sa linkom na www.openstreetmap.org/copyright i na ovu stranicu, i navedite licencu ODbL 1.0. Podaci iz drugih izvora zadržavaju svoje navođenje, opisano na stranici „O podacima“."
+ },
+ "ru": {
+  "h1": "Скачать открытые данные",
+  "title": "Скачать открытые данные о зарядках | BlokVolt",
+  "description": "Еженедельный CSV-файл с публичными зарядками: координаты, сеть, мощность, разъёмы и источники. Бесплатно, по лицензии ODbL.",
+  "lead": "Публичный слой карты доступен в виде бесплатного CSV-файла, который обновляется каждую неделю.",
+  "what_h": "Что в файле",
+  "what_p": "Еженедельная CSV-выгрузка публичного слоя карты: координаты, сеть, мощность, разъёмы и источники каждого места. Файл содержит данные OpenStreetMap, поэтому публикуется по лицензии Open Database License (ODbL) 1.0. Цены, проверки команды и балканские исправления BlokVolt в файл не входят.",
+  "fields_h": "Колонки",
+  "fields": [
+   [
+    "pid",
+    "Постоянный ID места"
+   ],
+   [
+    "lat",
+    "Широта (WGS 84)"
+   ],
+   [
+    "lon",
+    "Долгота (WGS 84)"
+   ],
+   [
+    "country",
+    "Код страны (ISO 3166-1 alpha-2)"
+   ],
+   [
+    "name",
+    "Название места"
+   ],
+   [
+    "network",
+    "Название сети или оператора"
+   ],
+   [
+    "max_kw",
+    "Максимальная мощность на месте, кВт"
+   ],
+   [
+    "dc",
+    "1 — есть быстрая DC-зарядка, 0 — нет"
+   ],
+   [
+    "power_class",
+    "Класс мощности места"
+   ],
+   [
+    "connectors",
+    "Типы разъёмов через запятую"
+   ],
+   [
+    "points",
+    "Оценка числа точек зарядки"
+   ],
+   [
+    "access",
+    "Тип доступа (публичный, ограниченный и т. п.)"
+   ],
+   [
+    "sources",
+    "Ключи источников через запятую (см. страницу «О данных»)"
+   ],
+   [
+    "last_confirmed",
+    "Дата последнего подтверждения любым источником"
+   ],
+   [
+    "confidence",
+    "Оценка надёжности 0–100"
+   ]
+  ],
+  "licence_h": "Лицензия",
+  "licence_p": "Файл доступен по лицензии ODbL 1.0. Данные можно распространять, использовать для своих работ и изменять при условии указания «© OpenStreetMap contributors, BlokVolt» и публикации изменённой базы по той же лицензии. Данные должны оставаться открытыми: технические ограничения, сужающие эти права, недопустимы. Полный текст: https://opendatacommons.org/licenses/odbl/1-0/",
+  "file_h": "Файл",
+  "file_missing": "Файл за эту неделю готовится. Стоит проверить позже.",
+  "attribution_h": "Как указывать источник",
+  "attribution_p": "При использовании данных нужно указать «© OpenStreetMap contributors, BlokVolt» со ссылкой на www.openstreetmap.org/copyright и на эту страницу, а также лицензию ODbL 1.0. Данные других источников сохраняют свою атрибуцию — она приведена на странице «О данных»."
+ }
+}

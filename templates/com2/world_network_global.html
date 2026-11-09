@@ -1,0 +1,14 @@
+{% extends 'world_base.html' %}
+{% block pagehead %}{{ m.head(kick, h1, None, crumbs, data_date, map_link, last=net) }}{% endblock %}
+{% block content %}
+{{ m.tiles(b) }}
+{{ m.paras(b) }}
+<div class="sec"><div class="sec-head"><h2 id="countries">{{ S.h_countries }}</h2></div>
+<div class="tw"><table><thead><tr><th>{{ S.th_country }}</th><th class="num">{{ S.th_n }}</th></tr></thead><tbody>
+{% for r in rows %}<tr><td><a href="{{ r.url }}">{{ r.name }}</a></td><td class="num">{{ r.n }}</td></tr>
+{% endfor %}</tbody></table></div></div>
+{{ m.power(b) }}
+{{ m.conn(b) }}
+{{ m.sources(b) }}
+{{ m.foot(W.site.about(l)) }}
+{% endblock %}

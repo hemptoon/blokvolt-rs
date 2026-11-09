@@ -548,6 +548,7 @@ def main():
         sm.append(f'  <url><loc>{SITE}{u}</loc><lastmod>{lm}</lastmod><priority>{pr}</priority></url>')
     sm.append('</urlset>')
     (OUT / 'sitemap.xml').write_text('\n'.join(sm) + '\n', encoding='utf-8')
+    import world_pages; world_pages.run(sys.modules[__name__], local_hubs)  # K3: world pages when BV_WORLD_PAGES is set
     bad = link_check()
     files = [p for p in OUT.rglob('*') if p.is_file()]
     print(f'blokvolt.com: {len(URLS)} pages in the sitemap, {len(files)} files, {n_companies} companies, {n_sources} English sources; broken links: {len(bad)}')

@@ -1,0 +1,20 @@
+{% extends 'world_base.html' %}
+{% block pagehead %}{{ m.head(kick, h1, None, crumbs, data_date, map_link, [(dc_link, S.open_map_dc)], last=city) }}{% endblock %}
+{% block content %}
+{{ m.tiles(b) }}
+{{ m.paras(b) }}
+<div class="sec"><div class="sec-head"><h2 id="fast">{{ S.h_fast }}</h2><a href="{{ dc_link }}" rel="nofollow">{{ S.open_map_dc }}</a></div>
+{% if fast %}<div class="tw"><table><thead><tr><th>{{ S.th_name }}</th><th>{{ S.th_net }}</th><th class="num">{{ S.th_kw }}</th><th>{{ S.th_conn }}</th><th>{{ S.th_lc }}</th></tr></thead><tbody>
+{% for r in fast %}<tr><td data-label="{{ S.th_name }}"><a href="{{ r.url }}" rel="nofollow" translate="no">{{ r.name or S.no_name }}</a></td><td data-label="{{ S.th_net }}" translate="no">{{ r.net or S.unknown_net }}</td><td class="num" data-label="{{ S.th_kw }}"><b>{{ r.kw }}</b></td><td data-label="{{ S.th_conn }}" translate="no">{{ r.conn }}</td><td data-label="{{ S.th_lc }}">{{ r.lc }}</td></tr>
+{% endfor %}</tbody></table></div>{% endif %}
+{% if fast_more %}<p class="note">{{ fast_more }}</p>{% endif %}
+<p class="note">{{ ac }} <a class="lnk" href="{{ ac_link }}" rel="nofollow">{{ S.open_map_ac }}</a></p></div>
+{{ m.minimap(mini, map_link) }}
+{{ m.nets(nets) }}
+{{ m.power(b) }}
+{{ m.conn(b) }}
+{% if near %}<div class="sec"><div class="sec-head"><h2 id="nearby">{{ S.h_near }}</h2></div>
+<div class="chips">{% for r in near %}<a class="chip" href="{{ r.url }}"><span translate="no">{{ r.name }}</span> · {{ r.km }}</a>{% endfor %}</div></div>{% endif %}
+{{ m.sources(b) }}
+{{ m.foot(W.site.about(l)) }}
+{% endblock %}

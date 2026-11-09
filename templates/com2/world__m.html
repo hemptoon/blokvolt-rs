@@ -1,0 +1,56 @@
+{# Macros of the world pages (K3). Text comes from content/world/strings_pages.json (S), numbers are pre-formatted. #}
+{% macro head(kick, h1, lead, crumbs, data_date, map_link=None, extra=None, last=None) -%}
+<div class="ph"><div class="wrap">
+{% if crumbs %}<nav class="crumbs" aria-label="{{ S.crumbs }}">{% for n, u in crumbs %}<a href="{{ u }}">{{ n }}</a><span aria-hidden="true">›</span>{% endfor %}<span>{{ last or h1 }}</span></nav>{% elif kick %}<p class="kick">{{ kick }}</p>{% endif %}
+<h1>{{ h1 }}</h1>
+{% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
+<p class="meta">{{ S.data_from.format(date=data_date) }}</p>
+{% if map_link %}<div class="ph-actions"><a class="btn dark" href="{{ map_link }}" rel="nofollow">{{ S.open_map }}</a>{% if extra %}{% for u, n in extra %}<a class="btn" href="{{ u }}" rel="nofollow">{{ n }}</a>{% endfor %}{% endif %}</div>{% endif %}
+</div></div>
+{%- endmacro %}
+
+{% macro tiles(b) -%}
+<div class="facts glance w-tiles">{% for v, label in b.tiles %}<div class="fact"><span>{{ label }}</span><b>{{ v }}</b></div>{% endfor %}</div>
+{%- endmacro %}
+
+{% macro paras(b) -%}
+<div class="prose w-text">{% for p in b.paras %}<p>{{ p }}</p>{% endfor %}</div>
+{%- endmacro %}
+
+{% macro power(b) -%}
+<div class="sec"><div class="sec-head"><h2 id="power">{{ S.h_power }}</h2></div>
+<div class="tw"><table><thead><tr><th>{{ S.th_power }}</th><th class="num">{{ S.th_n }}</th><th class="num">{{ S.th_share }}</th></tr></thead><tbody>
+{% for name, n, sh in b.power %}<tr><td>{{ name }}</td><td class="num">{{ n }}</td><td class="num">{{ sh }}</td></tr>
+{% endfor %}</tbody></table></div></div>
+{%- endmacro %}
+
+{% macro conn(b) -%}
+{% if b.conn %}<div class="sec"><div class="sec-head"><h2 id="connectors">{{ S.h_conn }}</h2></div>
+<div class="tw"><table><thead><tr><th>{{ S.th_conn }}</th><th class="num">{{ S.th_n }}</th></tr></thead><tbody>
+{% for name, n in b.conn %}<tr><td translate="no">{{ name }}</td><td class="num">{{ n }}</td></tr>
+{% endfor %}</tbody></table></div></div>{% endif %}
+{%- endmacro %}
+
+{% macro nets(rows) -%}
+{% if rows %}<div class="sec"><div class="sec-head"><h2 id="networks">{{ S.h_nets }}</h2></div>
+<div class="tw"><table><thead><tr><th>{{ S.th_net }}</th><th class="num">{{ S.th_n }}</th></tr></thead><tbody>
+{% for r in rows %}<tr><td><a href="{{ r.url }}"{% if not r.page %} rel="nofollow"{% endif %} translate="no">{{ r.name }}</a>{% if not r.page %} <small class="muted">· {{ S.on_map }}</small>{% endif %}</td><td class="num">{{ r.n }}</td></tr>
+{% endfor %}</tbody></table></div></div>{% endif %}
+{%- endmacro %}
+
+{% macro sources(b) -%}
+<div class="sec"><div class="sec-head"><h2 id="sources">{{ S.h_sources }}</h2></div>
+<p class="note">{{ S.sources_note }}</p>
+<div class="tw"><table><thead><tr><th>{{ S.th_source }}</th><th>{{ S.th_licence }}</th><th class="num">{{ S.th_n }}</th></tr></thead><tbody>
+{% for s in b.srcs %}<tr><td translate="no">{% if s.url %}<a href="{{ s.url }}" rel="noopener nofollow">{{ s.name }}</a>{% else %}{{ s.name }}{% endif %}</td><td translate="no">{% if s.licence_url %}<a href="{{ s.licence_url }}" rel="noopener nofollow">{{ s.licence }}</a>{% else %}{{ s.licence }}{% endif %}</td><td class="num">{{ s.n }}</td></tr>
+{% endfor %}</tbody></table></div></div>
+{%- endmacro %}
+
+{% macro minimap(mini, map_link) -%}
+{% if mini %}<div class="sec"><div class="sec-head"><h2 id="minimap">{{ S.h_map }}</h2><a href="{{ map_link }}" rel="nofollow">{{ S.open_map }}</a></div>
+<a class="w-mini" href="{{ map_link }}" rel="nofollow"><img src="{{ mini.src }}" width="{{ mini.w }}" height="{{ mini.h }}" loading="lazy" decoding="async" alt="{{ S.mini_alt }}" style="width:100%;max-width:{{ mini.w }}px;height:auto;border:1px solid var(--line);border-radius:var(--r)"></a></div>{% endif %}
+{%- endmacro %}
+
+{% macro foot(about_url) -%}
+<p class="note disc">{{ S.disc }} <a class="lnk" href="{{ about_url }}">{{ S.nav_about }}</a>. {{ S.report_map }}</p>
+{%- endmacro %}

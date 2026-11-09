@@ -1,0 +1,17 @@
+{% extends 'world_base.html' %}
+{% block pagehead %}{{ m.head(kick, h1, D.lead, crumbs, data_date) }}{% endblock %}
+{% block content %}
+<div class="prose cwide">
+<h2 id="what">{{ D.what_h }}</h2>
+<p>{{ D.what_p }}</p>
+<h2 id="file">{{ D.file_h }}</h2>
+{% if file %}<p><a class="btn dark" href="{{ file }}" rel="nofollow">{{ S.file_link }}</a></p>{% else %}<p>{{ D.file_missing }}</p>{% endif %}
+<h2 id="fields">{{ D.fields_h }}</h2>
+<div class="tw"><table><tbody>{% for a, b in D.fields %}<tr><td translate="no"><code>{{ a }}</code></td><td>{{ b }}</td></tr>{% endfor %}</tbody></table></div>
+<h2 id="licence">{{ D.licence_h }}</h2>
+<p>{{ D.licence_p }}</p>
+<h2 id="attribution">{{ D.attribution_h }}</h2>
+<p>{{ D.attribution_p }}</p>
+<p><a href="{{ about_url }}">{{ S.nav_about }}</a></p>
+</div>
+{% endblock %}

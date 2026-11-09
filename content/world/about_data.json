@@ -1,0 +1,290 @@
+{
+ "en": {
+  "h1": "About the map data",
+  "title": "Charging map data: sources, licences, reliability | BlokVolt",
+  "description": "Where the charging map data comes from, under which licences it is used, and how the reliability of each point is calculated.",
+  "lead": "The map is built from open data, and every point shows where it comes from.",
+  "intro": "The map combines open data from many sources: official registries, government open data, OpenStreetMap, Open Charge Map and operators' own location pages. The records are merged, cleaned and modified, so a point on the map may differ from the original record. The same rules apply to every network. The map does not rate networks or operators.",
+  "osm_h": "OpenStreetMap and the ODbL",
+  "osm_p": "Data © OpenStreetMap contributors, available under the Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. The merged database of points that contains OpenStreetMap data is available under the same licence on the page \"Download open data\": {download_url}.",
+  "sources_h": "Sources and licences",
+  "sources_note": "Only sources that actually appear in the current data are listed, each with its licence and required attribution.",
+  "conf_h": "How reliability is calculated",
+  "conf_p": "Each point gets a reliability score from 0 to 100. One formula applies to every network. The score rates the data about a place, not the network or its service.",
+  "conf_rows": [
+   [
+    "Base score by the best source type",
+    "Official registry or government open data 70; BlokVolt's own check 65; OpenStreetMap 50; All The Places 45; Open Charge Map 40; Overture (from All The Places) 40; other 25"
+   ],
+   [
+    "Independent check",
+    "If no registry is among the sources, an independent automated check of the record can raise the base, but never above what the check gives"
+   ],
+   [
+    "Agreement between sources",
+    "+10 when two or more sources agree on the place; +5 more with three or more"
+   ],
+   [
+    "Freshness",
+    "+10 when the last confirmation is within the last 12 months; −15 when it is older than 3 years"
+   ],
+   [
+    "Country conflict",
+    "−10 when sources disagree about the country"
+   ],
+   [
+    "Not operational or suspicious coordinates",
+    "At most 20"
+   ],
+   [
+    "Range",
+    "The score is clipped to 0–100; places below 40 are not shown on the map or the pages"
+   ]
+  ],
+  "conf_levels": [
+   [
+    "High",
+    "70–100",
+    "Confirmed by an official source or by several sources, recently updated"
+   ],
+   [
+    "Medium",
+    "50–69",
+    "Plausible, but confirmed by fewer sources or not recently"
+   ],
+   [
+    "Low",
+    "40–49",
+    "Single or older source; check with the operator before you go"
+   ]
+  ],
+  "notes_h": "Notes",
+  "notes": [
+   "Data is provided as is, without any warranty of accuracy, availability, price or compatibility. Check with the operator or on site before you go.",
+   "Each point card shows the source, licence and date of last update.",
+   "Network names and trademarks belong to their owners.",
+   "BlokVolt is not affiliated with the operators or with the institutions that publish the data, and they do not endorse this map.",
+   "Names of private individuals are not shown; private home chargers are not on the map.",
+   "To report an error or request a correction or removal, use the \"Report an error\" button on the point card or write to {email}. You will get a reply within 30 days."
+  ],
+  "licence_texts_h": "Licence texts",
+  "licence_texts": [
+   [
+    "CC BY 4.0",
+    "https://creativecommons.org/licenses/by/4.0/"
+   ],
+   [
+    "CC0 1.0",
+    "https://creativecommons.org/publicdomain/zero/1.0/"
+   ],
+   [
+    "ODbL 1.0",
+    "https://opendatacommons.org/licenses/odbl/1-0/"
+   ],
+   [
+    "Licence Ouverte 2.0",
+    "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+   ],
+   [
+    "CDLA Permissive 2.0",
+    "https://cdla.dev/permissive-2-0/"
+   ],
+   [
+    "Open Government Licence v2.0",
+    "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+   ]
+  ]
+ },
+ "sr": {
+  "h1": "O podacima mape",
+  "title": "Podaci mape punjača: izvori, licence, pouzdanost | BlokVolt",
+  "description": "Odakle dolaze podaci mape punjača, pod kojim licencama se koriste i kako se računa pouzdanost svake tačke.",
+  "lead": "Mapa je napravljena od otvorenih podataka, a svaka tačka pokazuje svoj izvor.",
+  "intro": "Mapa objedinjuje otvorene podatke iz više izvora: zvanične registre, otvorene podatke državnih institucija, OpenStreetMap, Open Charge Map i stranice operatera sa lokacijama. Zapisi se spajaju, čiste i menjaju, pa tačka na mapi može da se razlikuje od izvornog zapisa. Ista pravila važe za svaku mrežu. Mapa ne ocenjuje mreže ni operatere.",
+  "osm_h": "OpenStreetMap i ODbL",
+  "osm_p": "Podaci © OpenStreetMap contributors, dostupni pod licencom Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Objedinjena baza tačaka koja sadrži podatke OpenStreetMap-a dostupna je pod istom licencom na stranici „Preuzimanje podataka“: {download_url}.",
+  "sources_h": "Izvori i licence",
+  "sources_note": "Navedeni su samo izvori koji se zaista nalaze u trenutnim podacima, svaki sa svojom licencom i obaveznim navođenjem izvora.",
+  "conf_h": "Kako se računa pouzdanost",
+  "conf_p": "Svaka tačka dobija ocenu pouzdanosti od 0 do 100. Jedna formula važi za svaku mrežu. Ocena se odnosi na podatke o mestu, ne na mrežu ni na njenu uslugu.",
+  "conf_rows": [
+   [
+    "Osnovna ocena prema najboljem tipu izvora",
+    "Zvanični registar ili otvoreni podaci države 70; provera BlokVolt-a 65; OpenStreetMap 50; All The Places 45; Open Charge Map 40; Overture (iz All The Places) 40; ostalo 25"
+   ],
+   [
+    "Nezavisna provera",
+    "Ako među izvorima nema registra, nezavisna automatska provera zapisa može da podigne osnovnu ocenu, ali nikad iznad onoga što provera daje"
+   ],
+   [
+    "Slaganje izvora",
+    "+10 kada se dva ili više izvora slažu oko mesta; još +5 kod tri ili više"
+   ],
+   [
+    "Svežina",
+    "+10 kada je poslednja potvrda u poslednjih 12 meseci; −15 kada je starija od 3 godine"
+   ],
+   [
+    "Neslaganje oko države",
+    "−10 kada se izvori ne slažu oko države"
+   ],
+   [
+    "Ne radi ili sumnjive koordinate",
+    "Najviše 20"
+   ],
+   [
+    "Raspon",
+    "Ocena se ograničava na 0–100; mesta ispod 40 se ne prikazuju na mapi ni na stranicama"
+   ]
+  ],
+  "conf_levels": [
+   [
+    "Visoka",
+    "70–100",
+    "Potvrđeno zvaničnim izvorom ili sa više izvora, skoro ažurirano"
+   ],
+   [
+    "Srednja",
+    "50–69",
+    "Verovatno tačno, ali sa manje izvora ili bez skorije potvrde"
+   ],
+   [
+    "Niska",
+    "40–49",
+    "Jedan ili stariji izvor; pre polaska proverite kod operatera"
+   ]
+  ],
+  "notes_h": "Napomene",
+  "notes": [
+   "Podaci se prikazuju kakvi jesu, bez garancije tačnosti, dostupnosti, cene ili kompatibilnosti. Pre polaska proverite stanje kod operatera ili na licu mesta.",
+   "Kartica svake tačke prikazuje izvor, licencu i datum poslednjeg ažuriranja.",
+   "Nazivi mreža i žigovi pripadaju njihovim vlasnicima.",
+   "BlokVolt nije povezan sa operaterima niti sa institucijama koje objavljuju podatke, i one ne odobravaju ovu mapu.",
+   "Lična imena fizičkih lica se ne prikazuju; privatni punjači nisu na mapi.",
+   "Grešku, zahtev za ispravku ili uklanjanje tačke možete poslati preko dugmeta „Prijavi grešku“ na kartici tačke ili na {email}. Odgovor stiže u roku od 30 dana."
+  ],
+  "licence_texts_h": "Tekstovi licenci",
+  "licence_texts": [
+   [
+    "CC BY 4.0",
+    "https://creativecommons.org/licenses/by/4.0/"
+   ],
+   [
+    "CC0 1.0",
+    "https://creativecommons.org/publicdomain/zero/1.0/"
+   ],
+   [
+    "ODbL 1.0",
+    "https://opendatacommons.org/licenses/odbl/1-0/"
+   ],
+   [
+    "Licence Ouverte 2.0",
+    "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+   ],
+   [
+    "CDLA Permissive 2.0",
+    "https://cdla.dev/permissive-2-0/"
+   ],
+   [
+    "Open Government Licence v2.0",
+    "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+   ]
+  ]
+ },
+ "ru": {
+  "h1": "О данных карты",
+  "title": "Данные карты зарядок: источники и лицензии | BlokVolt",
+  "description": "Откуда берутся данные карты зарядок, по каким лицензиям они используются и как считается надёжность каждой точки.",
+  "lead": "Карта собрана из открытых данных, и у каждой точки указан источник.",
+  "intro": "Карта объединяет открытые данные из многих источников: официальные реестры, открытые данные государственных органов, OpenStreetMap, Open Charge Map и страницы операторов со списком локаций. Записи объединяются, очищаются и изменяются, поэтому точка на карте может отличаться от исходной записи. Для каждой сети действуют одни и те же правила. Карта не оценивает сети и операторов.",
+  "osm_h": "OpenStreetMap и ODbL",
+  "osm_p": "Данные © OpenStreetMap contributors, доступны по лицензии Open Database License (ODbL) 1.0 — www.openstreetmap.org/copyright. Объединённая база точек, содержащая данные OpenStreetMap, доступна по той же лицензии на странице «Скачать открытые данные»: {download_url}.",
+  "sources_h": "Источники и лицензии",
+  "sources_note": "Указаны только источники, которые действительно есть в текущих данных, вместе с их лицензией и обязательной ссылкой на источник.",
+  "conf_h": "Как считается надёжность",
+  "conf_p": "Каждая точка получает оценку надёжности от 0 до 100. Для каждой сети действует одна формула. Оценка относится к данным о месте, а не к сети или её сервису.",
+  "conf_rows": [
+   [
+    "Базовая оценка по лучшему типу источника",
+    "Официальный реестр или государственные открытые данные 70; собственная проверка BlokVolt 65; OpenStreetMap 50; All The Places 45; Open Charge Map 40; Overture (из All The Places) 40; прочее 25"
+   ],
+   [
+    "Независимая проверка",
+    "Если среди источников нет реестра, независимая автоматическая проверка записи может поднять базовую оценку, но не выше того, что даёт проверка"
+   ],
+   [
+    "Согласие источников",
+    "+10, если два или больше источников сходятся в месте; ещё +5 при трёх и более"
+   ],
+   [
+    "Свежесть",
+    "+10, если последнее подтверждение было в последние 12 месяцев; −15, если оно старше 3 лет"
+   ],
+   [
+    "Расхождение по стране",
+    "−10, если источники расходятся в стране"
+   ],
+   [
+    "Не работает или подозрительные координаты",
+    "Не больше 20"
+   ],
+   [
+    "Диапазон",
+    "Оценка ограничивается 0–100; места ниже 40 не показываются на карте и на страницах"
+   ]
+  ],
+  "conf_levels": [
+   [
+    "Высокая",
+    "70–100",
+    "Подтверждено официальным источником или несколькими источниками, недавно обновлено"
+   ],
+   [
+    "Средняя",
+    "50–69",
+    "Скорее всего верно, но источников меньше или подтверждение давнее"
+   ],
+   [
+    "Низкая",
+    "40–49",
+    "Один или устаревший источник; перед поездкой стоит уточнить у оператора"
+   ]
+  ],
+  "notes_h": "Примечания",
+  "notes": [
+   "Данные предоставляются как есть, без гарантий точности, доступности, цены или совместимости. Перед поездкой стоит уточнить у оператора или на месте.",
+   "В карточке каждой точки указаны источник, лицензия и дата последнего обновления.",
+   "Названия сетей и товарные знаки принадлежат их владельцам.",
+   "BlokVolt не связан с операторами и с организациями, публикующими данные, и они не одобряют эту карту.",
+   "Имена частных лиц не показываются; частных домашних зарядок на карте нет.",
+   "Об ошибке, исправлении или удалении точки можно сообщить кнопкой «Сообщить об ошибке» в карточке точки или по адресу {email}. Ответ приходит в течение 30 дней."
+  ],
+  "licence_texts_h": "Тексты лицензий",
+  "licence_texts": [
+   [
+    "CC BY 4.0",
+    "https://creativecommons.org/licenses/by/4.0/"
+   ],
+   [
+    "CC0 1.0",
+    "https://creativecommons.org/publicdomain/zero/1.0/"
+   ],
+   [
+    "ODbL 1.0",
+    "https://opendatacommons.org/licenses/odbl/1-0/"
+   ],
+   [
+    "Licence Ouverte 2.0",
+    "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+   ],
+   [
+    "CDLA Permissive 2.0",
+    "https://cdla.dev/permissive-2-0/"
+   ],
+   [
+    "Open Government Licence v2.0",
+    "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+   ]
+  ]
+ }
+}

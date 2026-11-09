@@ -1,0 +1,86 @@
+cc,name_en,name_sr,name_ru,slug_en,slug_sr,slug_ru,sr_u,ru_v
+US,United States,Sjedinjene Američke Države,США,united-states,sjedinjene-americke-drzave,ssha,u Sjedinjenim Američkim Državama,в США
+DE,Germany,Nemačka,Германия,germany,nemacka,germaniya,u Nemačkoj,в Германии
+NL,Netherlands,Holandija,Нидерланды,netherlands,holandija,niderlandy,u Holandiji,в Нидерландах
+FR,France,Francuska,Франция,france,francuska,franciya,u Francuskoj,во Франции
+GB,United Kingdom,Velika Britanija,Великобритания,united-kingdom,velika-britanija,velikobritaniya,u Velikoj Britaniji,в Великобритании
+CA,Canada,Kanada,Канада,canada,kanada,kanada,u Kanadi,в Канаде
+ES,Spain,Španija,Испания,spain,spanija,ispaniya,u Španiji,в Испании
+BE,Belgium,Belgija,Бельгия,belgium,belgija,belgiya,u Belgiji,в Бельгии
+FI,Finland,Finska,Финляндия,finland,finska,finlyandiya,u Finskoj,в Финляндии
+GR,Greece,Grčka,Греция,greece,grcka,greciya,u Grčkoj,в Греции
+PT,Portugal,Portugalija,Португалия,portugal,portugalija,portugaliya,u Portugaliji,в Португалии
+IT,Italy,Italija,Италия,italy,italija,italiya,u Italiji,в Италии
+AU,Australia,Australija,Австралия,australia,australija,avstraliya,u Australiji,в Австралии
+SG,Singapore,Singapur,Сингапур,singapore,singapur,singapur,u Singapuru,в Сингапуре
+CZ,Czechia,Češka,Чехия,czechia,ceska,chehiya,u Češkoj,в Чехии
+AT,Austria,Austrija,Австрия,austria,austrija,avstriya,u Austriji,в Австрии
+SE,Sweden,Švedska,Швеция,sweden,svedska,shveciya,u Švedskoj,в Швеции
+CH,Switzerland,Švajcarska,Швейцария,switzerland,svajcarska,shvejcariya,u Švajcarskoj,в Швейцарии
+NO,Norway,Norveška,Норвегия,norway,norveska,norvegiya,u Norveškoj,в Норвегии
+ID,Indonesia,Indonezija,Индонезия,indonesia,indonezija,indoneziya,u Indoneziji,в Индонезии
+LT,Lithuania,Litvanija,Литва,lithuania,litvanija,litva,u Litvaniji,в Литве
+PL,Poland,Poljska,Польша,poland,poljska,polsha,u Poljskoj,в Польше
+IE,Ireland,Irska,Ирландия,ireland,irska,irlandiya,u Irskoj,в Ирландии
+IN,India,Indija,Индия,india,indija,indiya,u Indiji,в Индии
+TR,Turkey,Turska,Турция,turkey,turska,turciya,u Turskoj,в Турции
+DK,Denmark,Danska,Дания,denmark,danska,daniya,u Danskoj,в Дании
+HK,Hong Kong,Hongkong,Гонконг,hong-kong,hongkong,gonkong,u Hongkongu,в Гонконге
+HU,Hungary,Mađarska,Венгрия,hungary,madjarska,vengriya,u Mađarskoj,в Венгрии
+BR,Brazil,Brazil,Бразилия,brazil,brazil,braziliya,u Brazilu,в Бразилии
+RU,Russia,Rusija,Россия,russia,rusija,rossiya,u Rusiji,в России
+BG,Bulgaria,Bugarska,Болгария,bulgaria,bugarska,bolgariya,u Bugarskoj,в Болгарии
+NZ,New Zealand,Novi Zeland,Новая Зеландия,new-zealand,novi-zeland,novaya-zelandiya,na Novom Zelandu,в Новой Зеландии
+SK,Slovakia,Slovačka,Словакия,slovakia,slovacka,slovakiya,u Slovačkoj,в Словакии
+LU,Luxembourg,Luksemburg,Люксембург,luxembourg,luksemburg,lyuksemburg,u Luksemburgu,в Люксембурге
+RO,Romania,Rumunija,Румыния,romania,rumunija,rumyniya,u Rumuniji,в Румынии
+MY,Malaysia,Malezija,Малайзия,malaysia,malezija,malajziya,u Maleziji,в Малайзии
+CN,China,Kina,Китай,china,kina,kitaj,u Kini,в Китае
+KR,South Korea,Južna Koreja,Южная Корея,south-korea,juzna-koreja,yuzhnaya-koreya,u Južnoj Koreji,в Южной Корее
+UZ,Uzbekistan,Uzbekistan,Узбекистан,uzbekistan,uzbekistan,uzbekistan,u Uzbekistanu,в Узбекистане
+PH,Philippines,Filipini,Филиппины,philippines,filipini,filippiny,na Filipinima,на Филиппинах
+AZ,Azerbaijan,Azerbejdžan,Азербайджан,azerbaijan,azerbejdzan,azerbajdzhan,u Azerbejdžanu,в Азербайджане
+ZA,South Africa,Južnoafrička Republika,ЮАР,south-africa,juznoafricka-republika,yuar,u Južnoafričkoj Republici,в ЮАР
+VN,Vietnam,Vijetnam,Вьетнам,vietnam,vijetnam,vetnam,u Vijetnamu,во Вьетнаме
+SI,Slovenia,Slovenija,Словения,slovenia,slovenija,sloveniya,u Sloveniji,в Словении
+EE,Estonia,Estonija,Эстония,estonia,estonija,estoniya,u Estoniji,в Эстонии
+UA,Ukraine,Ukrajina,Украина,ukraine,ukrajina,ukraina,u Ukrajini,в Украине
+IS,Iceland,Island,Исландия,iceland,island,islandiya,na Islandu,в Исландии
+JP,Japan,Japan,Япония,japan,japan,yaponiya,u Japanu,в Японии
+UY,Uruguay,Urugvaj,Уругвай,uruguay,urugvaj,urugvaj,u Urugvaju,в Уругвае
+IR,Iran,Iran,Иран,iran,iran,iran,u Iranu,в Иране
+EG,Egypt,Egipat,Египет,egypt,egipat,egipet,u Egiptu,в Египте
+IL,Israel,Izrael,Израиль,israel,izrael,izrail,u Izraelu,в Израиле
+BY,Belarus,Belorusija,Беларусь,belarus,belorusija,belarus,u Belorusiji,в Беларуси
+LV,Latvia,Letonija,Латвия,latvia,letonija,latviya,u Letoniji,в Латвии
+CY,Cyprus,Kipar,Кипр,cyprus,kipar,kipr,na Kipru,на Кипре
+MT,Malta,Malta,Мальта,malta,malta,malta,na Malti,на Мальте
+MD,Moldova,Moldavija,Молдова,moldova,moldavija,moldova,u Moldaviji,в Молдове
+AD,Andorra,Andora,Андорра,andorra,andora,andorra,u Andori,в Андорре
+MC,Monaco,Monako,Монако,monaco,monako,monako,u Monaku,в Монако
+LI,Liechtenstein,Lihtenštajn,Лихтенштейн,liechtenstein,lihtenstajn,lihtenshtejn,u Lihtenštajnu,в Лихтенштейне
+SM,San Marino,San Marino,Сан-Марино,san-marino,san-marino,san-marino,u San Marinu,в Сан-Марино
+GI,Gibraltar,Gibraltar,Гибралтар,gibraltar,gibraltar,gibraltar,na Gibraltaru,в Гибралтаре
+IM,Isle of Man,Ostrvo Man,Остров Мэн,isle-of-man,ostrvo-man,ostrov-men,na Ostrvu Man,на острове Мэн
+JE,Jersey,Džersi,Джерси,jersey,dzersi,dzhersi,na Džersiju,на Джерси
+GG,Guernsey,Gernzi,Гернси,guernsey,gernzi,gernsi,na Gernziju,на Гернси
+FO,Faroe Islands,Farska Ostrva,Фарерские острова,faroe-islands,farska-ostrva,farerskie-ostrova,na Farskim Ostrvima,на Фарерских островах
+AL,Albania,Albanija,Албания,albania,albanija,albaniya,u Albaniji,в Албании
+BA,Bosnia and Herzegovina,Bosna i Hercegovina,Босния и Герцеговина,bosnia-and-herzegovina,bosna-i-hercegovina,bosniya-i-gercegovina,u Bosni i Hercegovini,в Боснии и Герцеговине
+HR,Croatia,Hrvatska,Хорватия,croatia,hrvatska,horvatiya,u Hrvatskoj,в Хорватии
+ME,Montenegro,Crna Gora,Черногория,montenegro,crna-gora,chernogoriya,u Crnoj Gori,в Черногории
+MK,North Macedonia,Severna Makedonija,Северная Македония,north-macedonia,severna-makedonija,severnaya-makedoniya,u Severnoj Makedoniji,в Северной Македонии
+RS,Serbia,Srbija,Сербия,serbia,srbija,serbiya,u Srbiji,в Сербии
+XK,Kosovo,Kosovo,Косово,kosovo,kosovo,kosovo,na Kosovu,в Косово
+MX,Mexico,Meksiko,Мексика,mexico,meksiko,meksika,u Meksiku,в Мексике
+CL,Chile,Čile,Чили,chile,cile,chili,u Čileu,в Чили
+AR,Argentina,Argentina,Аргентина,argentina,argentina,argentina,u Argentini,в Аргентине
+CO,Colombia,Kolumbija,Колумбия,colombia,kolumbija,kolumbiya,u Kolumbiji,в Колумбии
+TH,Thailand,Tajland,Таиланд,thailand,tajland,tailand,u Tajlandu,в Таиланде
+TW,Taiwan,Tajvan,Тайвань,taiwan,tajvan,tajvan,na Tajvanu,на Тайване
+AE,United Arab Emirates,Ujedinjeni Arapski Emirati,ОАЭ,united-arab-emirates,ujedinjeni-arapski-emirati,oae,u Ujedinjenim Arapskim Emiratima,в ОАЭ
+SA,Saudi Arabia,Saudijska Arabija,Саудовская Аравия,saudi-arabia,saudijska-arabija,saudovskaya-araviya,u Saudijskoj Arabiji,в Саудовской Аравии
+QA,Qatar,Katar,Катар,qatar,katar,katar,u Kataru,в Катаре
+KZ,Kazakhstan,Kazahstan,Казахстан,kazakhstan,kazahstan,kazahstan,u Kazahstanu,в Казахстане
+GE,Georgia,Gruzija,Грузия,georgia,gruzija,gruziya,u Gruziji,в Грузии
+AM,Armenia,Jermenija,Армения,armenia,jermenija,armeniya,u Jermeniji,в Армении

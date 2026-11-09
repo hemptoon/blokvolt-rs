@@ -1,0 +1,9 @@
+{% extends 'world_base.html' %}
+{% block head %}{{ super() }}{% if stub %}<meta http-equiv="refresh" content="0; url={{ country_url }}">
+{% endif %}{% endblock %}
+{% block pagehead %}{{ m.head(kick, h1, None, crumbs, data_date) }}{% endblock %}
+{% block content %}
+{% if stub %}<p class="note">{{ S.moved }} <a class="lnk" href="{{ country_url }}">{{ SITE }}{{ country_url }}</a></p>
+{% else %}<p class="note">{{ S.below_p }}</p>
+<p><a class="btn dark" href="{{ country_url }}">{{ S.nav_hub }}</a></p>{% endif %}
+{% endblock %}

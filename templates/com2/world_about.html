@@ -1,0 +1,22 @@
+{% extends 'world_base.html' %}
+{% block pagehead %}{{ m.head(kick, h1, A.lead, crumbs, data_date) }}{% endblock %}
+{% block content %}
+<div class="prose cwide">
+<p>{{ A.intro }}</p>
+<h2 id="odbl">{{ A.osm_h }}</h2>
+<p>{{ A.osm_p }}</p>
+<h2 id="reliability">{{ A.conf_h }}</h2>
+<p>{{ A.conf_p }}</p>
+<div class="tw"><table><tbody>{% for a, b in A.conf_rows %}<tr><td><b>{{ a }}</b></td><td>{{ b }}</td></tr>{% endfor %}</tbody></table></div>
+<div class="tw"><table><tbody>{% for a, r, b in A.conf_levels %}<tr><td><b>{{ a }}</b></td><td class="num">{{ r }}</td><td>{{ b }}</td></tr>{% endfor %}</tbody></table></div>
+<h2 id="sources">{{ A.sources_h }}</h2>
+<p>{{ A.sources_note }}</p>
+<ul>{% for r in rows %}<li translate="no">{% if r.url %}<a href="{{ r.url }}" rel="noopener nofollow">{{ r.name }}</a>{% else %}{{ r.name }}{% endif %} — {% if r.licence_url %}<a href="{{ r.licence_url }}" rel="noopener nofollow">{{ r.licence }}</a>{% else %}{{ r.licence }}{% endif %}{% if r.attribution %}. {{ r.attribution }}{% endif %}</li>{% endfor %}
+<li translate="no"><a href="https://www.geonames.org/" rel="noopener nofollow">GeoNames</a> — <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener nofollow">CC BY 4.0</a></li></ul>
+<h2 id="licences">{{ A.licence_texts_h }}</h2>
+<ul>{% for n, u in A.licence_texts %}<li><a href="{{ u }}" rel="noopener nofollow">{{ n }}</a></li>{% endfor %}</ul>
+<h2 id="notes">{{ A.notes_h }}</h2>
+<ul>{% for n in A.notes %}<li>{{ n }}</li>{% endfor %}</ul>
+<p><a href="{{ dl_url }}">{{ S.download_link }}</a></p>
+</div>
+{% endblock %}

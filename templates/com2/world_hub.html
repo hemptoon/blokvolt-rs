@@ -1,0 +1,18 @@
+{% extends 'world_base.html' %}
+{% block pagehead %}{{ m.head(kick, h1, None, crumbs, data_date, map_link) }}{% endblock %}
+{% block content %}
+{{ m.tiles(b) }}
+<div class="prose w-text"><p>{{ b.paras[0] }}</p><p>{{ b.paras[1] }}</p><p>{{ hub_p }}</p></div>
+<div class="sec"><div class="sec-head"><h2 id="countries">{{ S.h_countries }}</h2></div>
+<div class="tw"><table><thead><tr><th>{{ S.th_country }}</th><th class="num">{{ S.th_n }}</th><th class="num">{{ S.th_dc50 }}</th></tr></thead><tbody>
+{% for r in rows %}<tr><td><a href="{{ r.url }}">{{ r.name }}</a></td><td class="num">{{ r.n }}</td><td class="num">{{ r.dc50 }}</td></tr>
+{% endfor %}</tbody></table></div></div>
+<div class="sec"><div class="sec-head"><h2 id="balkans">{{ S.h_balkan }}</h2></div>
+<p class="note">{{ S.balkan_note }}</p>
+<div class="chips">{% for r in balkan %}<a class="chip" href="{{ r.url }}">{{ r.name }}</a>{% endfor %}</div></div>
+{% if below %}<div class="sec"><div class="sec-head"><h2 id="other">{{ S.h_more }}</h2></div>
+<div class="chips">{% for r in below %}<a class="chip" href="{{ r.url }}" rel="nofollow">{{ r.name }} · {{ r.n }}</a>{% endfor %}</div></div>{% endif %}
+{{ m.power(b) }}
+{{ m.sources(b) }}
+{{ m.foot(W.site.about(l)) }}
+{% endblock %}
