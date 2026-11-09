@@ -1,0 +1,175 @@
+{
+ "about_data": {
+  "h1": "Harita verileri hakkında",
+  "title": "Şarj haritası verileri: kaynaklar, lisanslar, güvenilirlik | BlokVolt",
+  "description": "Şarj haritası verilerinin nereden geldiği, hangi lisanslarla kullanıldığı ve her noktanın güvenilirliğinin nasıl hesaplandığı.",
+  "lead": "Harita açık verilerden oluşturulur ve her nokta, verinin kaynağını gösterir.",
+  "intro": "Harita, birçok kaynaktan gelen açık verileri bir araya getirir: resmi siciller, kamu açık verileri, OpenStreetMap, Open Charge Map ve operatörlerin kendi lokasyon sayfaları. Kayıtlar birleştirilir, temizlenir ve düzenlenir; bu nedenle haritadaki bir nokta orijinal kayıttan farklı olabilir. Her şarj ağı için aynı kurallar geçerlidir. Harita, şarj ağlarını veya operatörleri değerlendirmez.",
+  "osm_h": "OpenStreetMap ve ODbL",
+  "osm_p": "Veriler © OpenStreetMap katkıda bulunanları, Open Database License (ODbL) 1.0 kapsamında kullanılabilir — www.openstreetmap.org/copyright. OpenStreetMap verilerini içeren birleştirilmiş nokta veri tabanı, aynı lisansla \"Açık veri indirme\" sayfasında sunulur: {download_url}.",
+  "sources_h": "Kaynaklar ve lisanslar",
+  "sources_note": "Yalnızca güncel verilerde gerçekten yer alan kaynaklar, lisansları ve gerekli atıf bilgileriyle birlikte listelenir.",
+  "conf_h": "Güvenilirlik nasıl hesaplanır",
+  "conf_p": "Her noktaya 0 ile 100 arasında bir güvenilirlik puanı verilir. Tüm şarj ağları için tek bir formül uygulanır. Puan, şarj ağını veya hizmetini değil, bir lokasyona ilişkin verileri değerlendirir.",
+  "conf_rows": [
+   [
+    "En iyi kaynak türüne göre temel puan",
+    "Resmi sicil veya kamu açık verisi 70; BlokVolt'un kendi kontrolü 65; OpenStreetMap 50; All The Places 45; Open Charge Map 40; Overture (All The Places kaynaklı) 40; diğer 25"
+   ],
+   [
+    "Bağımsız kontrol",
+    "Kaynaklar arasında sicil yoksa, kaydın bağımsız otomatik kontrolü temel puanı yükseltebilir, ancak hiçbir zaman kontrolün verdiği değerin üzerine çıkarmaz"
+   ],
+   [
+    "Kaynaklar arası uyum",
+    "İki veya daha fazla kaynak lokasyon konusunda uyuşursa +10; üç veya daha fazla kaynakta ek +5"
+   ],
+   [
+    "Güncellik",
+    "Son doğrulama son 12 ay içindeyse +10; 3 yıldan eskiyse −15"
+   ],
+   [
+    "Ülke uyuşmazlığı",
+    "Kaynaklar ülke konusunda uyuşmazsa −10"
+   ],
+   [
+    "Çalışmıyor veya şüpheli koordinatlar",
+    "En fazla 20"
+   ],
+   [
+    "Aralık",
+    "Puan 0–100 aralığıyla sınırlandırılır; 40'ın altındaki lokasyonlar haritada ve sayfalarda gösterilmez"
+   ]
+  ],
+  "conf_levels": [
+   [
+    "Yüksek",
+    "70–100",
+    "Resmi bir kaynak veya birden fazla kaynak tarafından doğrulanmış, yakın zamanda güncellenmiş"
+   ],
+   [
+    "Orta",
+    "50–69",
+    "Makul, ancak daha az kaynakla veya uzun süre önce doğrulanmış"
+   ],
+   [
+    "Düşük",
+    "40–49",
+    "Tek veya eski kaynak; yola çıkmadan önce operatörle kontrol edin"
+   ]
+  ],
+  "notes_h": "Notlar",
+  "notes": [
+   "Veriler, doğruluk, erişilebilirlik, fiyat veya uyumluluk konusunda herhangi bir garanti verilmeksizin olduğu gibi sunulur. Yola çıkmadan önce operatörle veya yerinde kontrol edin.",
+   "Her nokta kartında kaynak, lisans ve son güncelleme tarihi gösterilir.",
+   "Şarj ağı adları ve ticari markalar sahiplerine aittir.",
+   "BlokVolt'un operatörlerle veya verileri yayımlayan kurumlarla herhangi bir bağlantısı yoktur ve bu kuruluşlar bu haritayı onaylamaz.",
+   "Özel kişilerin adları gösterilmez; evlerdeki özel şarj noktaları haritada yer almaz.",
+   "Bir hatayı bildirmek veya düzeltme ya da kaldırma talep etmek için nokta kartındaki \"Hata bildir\" düğmesini kullanın veya {email} adresine yazın. Talebinize 30 gün içinde yanıt verilir."
+  ],
+  "licence_texts_h": "Lisans metinleri",
+  "licence_texts": [
+   [
+    "CC BY 4.0",
+    "https://creativecommons.org/licenses/by/4.0/"
+   ],
+   [
+    "CC0 1.0",
+    "https://creativecommons.org/publicdomain/zero/1.0/"
+   ],
+   [
+    "ODbL 1.0",
+    "https://opendatacommons.org/licenses/odbl/1-0/"
+   ],
+   [
+    "Licence Ouverte 2.0",
+    "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+   ],
+   [
+    "CDLA Permissive 2.0",
+    "https://cdla.dev/permissive-2-0/"
+   ],
+   [
+    "Open Government Licence v2.0",
+    "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/"
+   ]
+  ]
+ },
+ "download": {
+  "h1": "Açık veri indirme",
+  "title": "Açık şarj noktası verilerini indirin | BlokVolt",
+  "description": "Halka açık şarj noktalarını içeren haftalık CSV dosyası: koordinatlar, şarj ağı, güç, konnektörler ve kaynaklar. ODbL lisansıyla ücretsiz.",
+  "lead": "Haritanın halka açık katmanı, her hafta güncellenen ücretsiz bir CSV dosyası olarak sunulur.",
+  "what_h": "Dosyanın içeriği",
+  "what_p": "Haritanın halka açık katmanının haftalık CSV dökümü: her lokasyonun koordinatları, şarj ağı, güç, konnektörler ve kaynakları. Dosya OpenStreetMap verileri içerdiğinden Open Database License (ODbL) 1.0 kapsamında yayımlanır. Fiyatlar, ekip kontrolleri ve BlokVolt'un Balkanlar için yaptığı düzeltmeler dosyaya dahil değildir.",
+  "fields_h": "Sütunlar",
+  "fields": [
+   [
+    "pid",
+    "Lokasyonun kalıcı kimliği"
+   ],
+   [
+    "lat",
+    "Enlem (WGS 84)"
+   ],
+   [
+    "lon",
+    "Boylam (WGS 84)"
+   ],
+   [
+    "country",
+    "Ülke kodu (ISO 3166-1 alpha-2)"
+   ],
+   [
+    "name",
+    "Lokasyonun adı"
+   ],
+   [
+    "network",
+    "Şarj ağı veya operatör adı"
+   ],
+   [
+    "max_kw",
+    "Lokasyondaki en yüksek güç, kW"
+   ],
+   [
+    "dc",
+    "DC hızlı şarj varsa 1, yoksa 0"
+   ],
+   [
+    "power_class",
+    "Lokasyonun güç sınıfı"
+   ],
+   [
+    "connectors",
+    "Konnektör türleri, virgülle ayrılmış"
+   ],
+   [
+    "points",
+    "Tahmini şarj noktası sayısı"
+   ],
+   [
+    "access",
+    "Erişim türü (halka açık, kısıtlı vb.)"
+   ],
+   [
+    "sources",
+    "Kaynak anahtarları, virgülle ayrılmış (bkz. \"Veriler hakkında\" sayfası)"
+   ],
+   [
+    "last_confirmed",
+    "Herhangi bir kaynak tarafından yapılan son doğrulamanın tarihi"
+   ],
+   [
+    "confidence",
+    "Güvenilirlik puanı 0–100"
+   ]
+  ],
+  "licence_h": "Lisans",
+  "licence_p": "Dosya ODbL 1.0 lisansıyla sunulur. \"© OpenStreetMap contributors, BlokVolt\" atfını belirtmeniz ve uyarlanmış her veri tabanını aynı lisansla paylaşmanız koşuluyla verileri paylaşabilir, verilerden eserler oluşturabilir ve verileri uyarlayabilirsiniz. Verileri açık tutun: bu hakları kısıtlayan teknik sınırlamalar uygulamayın. Tam metin: https://opendatacommons.org/licenses/odbl/1-0/",
+  "file_h": "Dosya",
+  "file_missing": "Bu haftanın dosyası hazırlanıyor. Lütfen daha sonra tekrar kontrol edin.",
+  "attribution_h": "Atıf nasıl yapılır",
+  "attribution_p": "Verileri kullanırken www.openstreetmap.org/copyright adresine ve bu sayfaya bağlantı vererek \"© OpenStreetMap contributors, BlokVolt\" ibaresini gösterin ve ODbL 1.0 lisansını belirtin. Diğer kaynaklardan gelen veriler, \"Veriler hakkında\" sayfasında listelenen kendi atıflarını korur."
+ }
+}
