@@ -175,10 +175,10 @@ function addLayers() {
     id: LYR, type: 'circle', source: SRC, 'source-layer': 'sites', filter: pFilter(),
     layout: { 'circle-sort-key': ['match', ['get', 'p'], 5, 4, [3, 4], 3, [1, 2], 2, 7, 1, 0] },
     paint: {
-      'circle-radius': zrb(big, [2.6, 4.2, 9, 12.5], [1.8, 3.2, 7.5, 11]),
+      'circle-radius': zrb(big, [1.8, 4, 9, 12.5], [1.2, 3, 7.5, 11]),
       'circle-color': P_COLOR,
       'circle-stroke-color': P_STROKE,
-      'circle-stroke-width': zrb(big, [1, 1.6, 3, 3.2], [0.7, 1.1, 2, 2.4]),
+      'circle-stroke-width': zrb(big, [0.7, 1.5, 3, 3.2], [0.4, 1, 2, 2.4]),
       // restricted places (only with "Prikaži i ostale") are drawn faded
       'circle-opacity': ['case', ['==', ['get', 'a'], 1], 0.45, 1],
       'circle-stroke-opacity': ['case', ['==', ['get', 'a'], 1], 0.55, 1]
