@@ -1,0 +1,13 @@
+{
+ "home": "/ro/",
+ "map": "/ro/harta/",
+ "hub": "/ro/statii-de-incarcare/",
+ "net": "retea",
+ "about": "despre-date",
+ "download": "descarcare",
+ "gnet": "/ro/retele-de-incarcare/",
+ "prices": "/ro/preturi-incarcare/",
+ "shell_about": "/ro/despre/",
+ "sources": "/ro/surse/",
+ "methodology": "/ro/metodologie/"
+}
