@@ -716,5 +716,38 @@
         5517
       ]
     ]
+  },
+  "electricity": {
+    "checked": "10.11.2026",
+    "checked_iso": "2026-11-10",
+    "next_check": "20.12.2026 (ERE miraton tarifat për vitin 2027 zakonisht në dhjetor)",
+    "computed": "Faqja përdor power.tariffs: çmimi me TVSH = çmimi i ERE-së × 1,20. 100 kWh = allin × 100; 44 kWh nga matësi (40 kWh në bateri + 10 % humbje) = allin × 44; 100 km = 17 kWh × 1,1 = 18,7 kWh; 1.200 km në muaj = 224,4 kWh. Shembulli i pragut: power.example (550 kWh shtëpia + 200 kWh makina).",
+    "sources": [
+      {
+        "label": "ERE — Tarifat dhe çmimet e energjisë elektrike për vitin 2026 (Vendimi nr. 322, 15.12.2025): familjarët 8,5 lekë/kWh deri në 700 kWh në muaj dhe 9,5 lekë/kWh mbi 700 kWh për gjithë konsumin",
+        "url": "https://www.ere.gov.al/media/files/2025/12/24/Tarifat_dhe_%C3%87mimet_e_energjis%C3%AB_Elektrike_dhe_Gazit_natyror_p%C3%ABr_VITIN_2026.pdf",
+        "date": "24.12.2025; kontrolluar 10.11.2026"
+      },
+      {
+        "label": "ERE — njoftimi i mbledhjes së Bordit nr. 02: 8,5 dhe 9,5 lekë/kWh pa TVSH, çmimi 9,5 vlen për gjithë sasinë nga kWh i parë",
+        "url": "https://ere.gov.al/media/files/2025/01/09/Njoftim_Mbledhje_Bordi_nr._02_dt._08.01.2025.pdf",
+        "date": "08.01.2025"
+      },
+      {
+        "label": "ERE — relacioni i FSHU-së: shembulli i faturës për 700 dhe 701 kWh",
+        "url": "https://ere.gov.al/media/files/2025/01/15/relacioni_i_FSHU_shkurt_2025.pdf",
+        "date": "15.01.2025"
+      },
+      {
+        "label": "OSHEE — 8,5 lekë për konsumin deri në 700 kWh",
+        "url": "https://oshee.al/vendimi-oshee-aplikon-8-5-lek-cmimin-e-energjise-elektrike-per-konsumin-deri-ne-700-kwh-perfitojne-mbi-1-mln-abonente/",
+        "date": "08.01.2025"
+      },
+      {
+        "label": "ERE — tarifa për pikat e karikimit mbi 11 kW: 22 lekë/kWh, 25,3 lekë/kWh në orar pik (Vendimi nr. 255, 15.10.2025)",
+        "url": "https://www.ere.gov.al/media/files/2025/11/13/Tarifat_dhe_%C3%87mimet_e_energjis%C3%AB_Elektrike_dhe_Gazit_natyror_p%C3%ABr_periudh%C3%ABn_1_Shkurt-31_Dhjetor_2025.pdf",
+        "date": "13.11.2025"
+      }
+    ]
   }
 }
