@@ -40,6 +40,6 @@ Pravila o zajedničkim dijelovima zgrade u BiH donose kantoni i entiteti, a punj
 
 {{ w.facts_list(C.buildings) }}
 
-Ako punjač u garaži zgrade dira zajedničku instalaciju ili zajedničko brojilo, računajte na odluku etažnih vlasnika. Ovo je sažetak propisa, ne pravni savjet.
+Ako punjač u garaži zgrade dira zajedničku instalaciju ili zajedničko brojilo, računajte na odluku etažnih vlasnika. Više: [Punjač u stambenoj zgradi]({{ PAGES.buildings.path }}).
 
 {{ w.sources(C.power.sources) }}
