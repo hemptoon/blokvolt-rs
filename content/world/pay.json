@@ -6,7 +6,7 @@
   "url": "https://eur-lex.europa.eu/eli/reg/2023/1804/oj/eng",
   "url_consolidated": "https://eur-lex.europa.eu/eli/reg/2023/1804/2026-01-08/eng",
   "checked": "2026-11-09",
-  "verification": "PARTIAL 09.11.2026: EUR-Lex URLs confirmed, page text not opened from the sandbox; re-read Art. 2 and Art. 5 in the consolidated text before 'релиз G4'.",
+  "verification": "V5 10.11.2026: paragraph numbers corrected by Commission Q&A (17.04.2024, Art. 5(1) incl. 3rd subpara = TEN-T retrofit) and secondary sources; EUR-Lex text still not opened (WebFetch limit) — Art. 5(4) for price display to confirm. Earlier: PARTIAL 09.11.2026: EUR-Lex URLs confirmed, page text not opened from the sandbox; re-read Art. 2 and Art. 5 in the consolidated text before 'релиз G4'.",
   "points": [
    {
     "para": "Art. 2",
@@ -15,31 +15,31 @@
     "ru": "Разовая зарядка (ad hoc): можно заряжаться без регистрации и без договора с оператором."
    },
    {
-    "para": "Art. 5(2)",
+    "para": "Art. 5(1)",
     "en": "Operators of public chargers must offer ad hoc charging with a payment method widely used in the EU.",
     "sr": "Operateri javnih punjača moraju da omoguće punjenje bez registracije, plaćanjem sredstvom koje je široko u upotrebi u EU.",
     "ru": "Операторы публичных зарядок обязаны давать разовую зарядку с оплатой способом, широко распространённым в ЕС."
    },
    {
-    "para": "Art. 5(2)(a)",
+    "para": "Art. 5(1)(a)–(b)",
     "en": "New public chargers of 50 kW and more installed from 13 April 2024 must take bank cards through a card reader or a contactless device.",
     "sr": "Novi javni punjači od 50 kW i više, postavljeni od 13. aprila 2024, moraju da primaju bankovne kartice preko čitača ili beskontaktnog uređaja.",
     "ru": "Новые публичные зарядки от 50 кВт, установленные с 13 апреля 2024 года, должны принимать банковские карты через считыватель или бесконтактное устройство."
    },
    {
-    "para": "Art. 5(2)(b)",
+    "para": "Art. 5(1)(c)",
     "en": "New public chargers below 50 kW may instead offer online payment, for example a QR code of the charger.",
     "sr": "Novi javni punjači ispod 50 kW mogu umesto toga da nude plaćanje preko interneta, na primer QR kodom punjača.",
     "ru": "Новые публичные зарядки до 50 кВт могут вместо этого предлагать оплату онлайн, например по QR-коду зарядки."
    },
    {
-    "para": "Art. 5(2), retrofit",
+    "para": "Art. 5(1), 3rd subparagraph",
     "en": "From 1 January 2027 this also applies to existing stations of 50 kW and more on the TEN-T road network and in safe and secure parking areas.",
     "sr": "Od 1. januara 2027. ovo važi i za postojeće stanice od 50 kW i više na putnoj mreži TEN-T i na bezbednim parkiralištima.",
     "ru": "С 1 января 2027 года это касается и существующих станций от 50 кВт на дорожной сети TEN-T и на охраняемых парковках."
    },
    {
-    "para": "Art. 5(3)",
+    "para": "Art. 5(4)",
     "en": "The ad hoc price and its parts must be shown at the station before the session starts.",
     "sr": "Cena punjenja bez registracije i njeni delovi moraju biti prikazani na stanici pre početka punjenja.",
     "ru": "Разовая цена и её составляющие должны быть показаны на станции до начала зарядки."
