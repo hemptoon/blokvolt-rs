@@ -1295,6 +1295,7 @@ VODICI_GROUPS = [
     ('Kupovina i vlasništvo', [
         A('/elektricni-automobili/', 'Električni automobili u Srbiji', 'Sve marke sa zvaničnom prodajom: uvoznik, saloni, modeli i početna cena.', icon='car'),
         A('/elektricni-automobili/polovni/', icon='car'),
+        A('/kineski-elektricni-auto-u-srbiji.html', icon='shield'),
         A('/podaci/subvencije-2026/', icon='gift'), A('/podaci/cene-elektricnih-automobila/', 'Cene električnih automobila', icon='car'),
         A('/podaci/registracija-i-porezi/', icon='doc'), A('/podaci/uvoz-i-carina/', icon='doc'),
         A('/podaci/osiguranje-elektricnog-automobila/', icon='shield'), A('/podaci/krediti-i-lizing/', icon='coins'),

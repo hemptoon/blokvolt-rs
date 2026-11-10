@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 09.11.2026
+updated: 10.11.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-11-09
+modified: 2026-11-10
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 10. novembar 2026
+
+- Novi vodič [Kineski električni auto: garancija i servis](/kineski-elektricni-auto-u-srbiji.html): koliko traje garancija na vozilo i bateriju kod BYD, MG, Geely i Leapmotor, gde su ovlašćeni servisi, šta važi za rezervne delove i koja prava kupcu daje novi Zakon o zaštiti potrošača.
+
 ## 9. novembar 2026
 
 - [Mapa punjača](/mapa/): ispravke posle provere po spiskovima mreža i otvorenim bazama (9. novembar). U Srbiji su uklonjena tri zapisa (dva dupla i jedan koji ne postoji), pa je na mapi 395 punjača; kod 11 punjača ispravljeni su naziv, adresa ili priključci, a dva punjača sa spiska tima sada imaju oznaku „Samo za goste ili kupce“. Na punjačima susednih zemalja 170 ima oznaku „Potvrđeno“ po spisku mreže ili sajtu vlasnika (Tesla, ELEN, Lidl, Qelo, EVN, EP BiH i drugi), 25 duplih ili pogrešnih zapisa je uklonjeno (među njima punjač za bicikle), a dodato je pet punjača EP BiH u Bosni i Hercegovini. Iste ispravke važe i na mapama na blokvolt.com i ostaju posle mesečnog osvežavanja otvorenih podataka.
