@@ -2931,6 +2931,7 @@ function vzParse(b) {
   if (!LANGS.has(l)) return { error: 'lang' };
   return { h, k, l };
 }
+const VZ_IP_DAY = 60;   // V10: views one IP may count per day across all hosts
 async function svWidgetApi(request, env, p, m) {
   if (p === '/api/admin/vidzet') {
     if (!adminOk(request, env)) return bad('not found', 404);
@@ -2974,6 +2975,7 @@ async function svWidgetApi(request, env, p, m) {
   }
   const r = vzParse(b);
   if (r.error) return json({ ok: false, error: r.error }, 400, H);
+  if (!(await allow_(env, 'vzip:' + ip, VZ_IP_DAY))) return json({ ok: true }, 200, H);   // V10: one reader cannot invent unlimited hosts
   if (!(await allow_(env, 'vz:' + r.h + ':' + ip, 1))) return json({ ok: true }, 200, H);   // this reader on this site today
   const day = new Date().toISOString().slice(0, 10);
   await env.DB.prepare(VZ_TABLE).run();
