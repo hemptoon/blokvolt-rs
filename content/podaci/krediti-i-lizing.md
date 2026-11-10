@@ -8,7 +8,7 @@ lead: Samo nekoliko banaka javno nudi nižu kamatu za električni automobil, a s
 updated: 22.09.2026
 next_check: 15.11.2026
 published: 2026-09-22
-modified: 2026-09-22
+modified: 2026-11-10
 priority: 0.7
 disclaimer: Ovo nije finansijski savet — uslovi se menjaju, a konačnu ponudu daje banka. Tekst je pripremljen uz pomoć AI alata; kamate i uslove proverila je redakcija BlokVolta sa sajtova banaka. Grešku ili promenu prijavite na
 sources: Uredba o subvencionisanoj kupovini novih električnih vozila, čl. 5 — subvencija kao učešće u finansijskom lizingu :: https://www.paragraf.rs/propisi/uredba-o-uslovima-subvencionisane-kupovine-elektricnih-hibridnih-vozila.html | Raiffeisen banka — električna i hibridna vozila, vodič i uslovi (19.02.2026) :: https://www.raiffeisenbank.rs/sr/stanovnistvo/krediti/auto-kredit/tekstovi/elektricna-hibridna-vozila-vodic-procedura.html | Erste banka — Zeleni auto kredit :: https://www.erstebank.rs/sr/Stanovnistvo/zeleni-krediti/zeleni-auto-kredit | OTP banka — auto kredit u auto salonu (reprezentativni primer 01.06.2026) :: https://www.otpbanka.rs/stanovnistvo/auto-krediti/auto-kredit-u-auto-salonu/ | Banca Intesa — auto krediti :: https://www.bancaintesa.rs/stanovnistvo/krediti/auto-krediti.html | Poštanska štedionica — auto krediti :: https://www.posted.co.rs/stanovnistvo/krediti/auto/index.html | madeinchina.rs — pregled uslova 9 banaka (provereno 12.08.2026) :: https://madeinchina.rs/kalkulator-rate/ | Porsche Leasing Srbija :: https://www.porscheleasing.rs/ | Intesa Leasing :: https://www.intesaleasing.rs/
@@ -38,7 +38,7 @@ Raiffeisen: rok 13–84 meseca, u RSD bez obaveznog učešća; EKS na stranici n
 
 ## Lizing
 
-Obaveznih 15 % učešća uz subvenciju u finansijskom lizingu Uredba ne propisuje — vidi [subvencije 2026](/podaci/subvencije-2026/). Porsche Leasing i Intesa Leasing posebne programe ni kamate za električne automobile ne objavljuju.
+Uz subvenciju u finansijskom lizingu Uredba traži da kupac davaocu lizinga uplati najmanje 15 % kupoprodajne cene (čl. 5 st. 2) — vidi [subvencije 2026](/podaci/subvencije-2026/). Porsche Leasing i Intesa Leasing posebne programe ni kamate za električne automobile ne objavljuju.
 
 <details markdown="1">
 <summary>Detalji: lizing</summary>

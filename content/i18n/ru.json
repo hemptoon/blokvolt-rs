@@ -5331,7 +5331,7 @@
  "OTP Leasing — predmeti lizinga u ponudi": "OTP Leasing — предметы лизинга в продаже",
  "OTP banka — auto kredit u auto salonu (reprezentativni primer ⟦0⟧)": "OTP banka — автокредит в автосалоне (пример расчёта ⟦0⟧)",
  "OTP, kredit u auto salonu (primer): EUR fiksna NKS ⟦0⟧ %, EKS ⟦1⟧ %, 13–84 meseca, naknada ⟦2⟧ %; u RSD akcija ⟦3⟧ % do ⟦4⟧ RSD, bez naknade.": "OTP, кредит в автосалоне (пример): EUR, фиксированная NKS ⟦0⟧ %, EKS ⟦1⟧ %, 13–84 месяца, комиссия ⟦2⟧ %; в RSD — акция: ⟦3⟧ % на сумму до ⟦4⟧ RSD, без комиссии.",
- "Obaveznih 15 % učešća uz subvenciju u finansijskom lizingu Uredba ne propisuje — vidi <a href=\"/podaci/subvencije-2026/\">subvencije 2026</a>. Porsche Leasing i Intesa Leasing posebne programe ni kamate za električne automobile ne objavljuju.": "Постановление не требует обязательного первоначального взноса 15 % при субсидии в финансовом лизинге — см. <a href=\"/podaci/subvencije-2026/\">субсидии 2026</a>. Porsche Leasing и Intesa Leasing не публикуют ни особых программ, ни ставок для электромобилей.",
+ "Uz subvenciju u finansijskom lizingu Uredba traži da kupac davaocu lizinga uplati najmanje 15 % kupoprodajne cene (čl. 5 st. 2) — vidi <a href=\"/podaci/subvencije-2026/\">subvencije 2026</a>. Porsche Leasing i Intesa Leasing posebne programe ni kamate za električne automobile ne objavljuju.": "При субсидии в финансовом лизинге постановление требует, чтобы покупатель внёс лизингодателю не менее 15 % цены покупки (ст. 5 п. 2) — см. <a href=\"/podaci/subvencije-2026/\">субсидии 2026</a>. Porsche Leasing и Intesa Leasing не публикуют ни особых программ, ни ставок для электромобилей.",
  "Obična (šuko) utičnica, oko ⟦0⟧ kW": "Обычная розетка (Schuko), около ⟦0⟧ кВт",
  "Obična utičnica": "Обычная розетка",
  "Obična šuko utičnica na 16 A pregreje se do ~100 °C za pola sata neprekidnog rada: <a href=\"/bezbednost-punjenja-atest\">bezbednost i atest</a>.": "Обычная розетка Schuko на 16 A за полчаса непрерывной работы нагревается до ~100 °C: <a href=\"/bezbednost-punjenja-atest\">безопасность и атест</a>.",
@@ -7585,7 +7585,8 @@
  "Uputstvo je opšte: tačan postupak za ovo mesto nije objavljen.": "Инструкция общая: точный порядок для этого места не опубликован.",
  "Uputstvo korak po korak i rešenja za česte poruke telefona su u <a href=\"/pomoc/android-aplikacija-apk/\">pomoći</a>. Za iPhone i računar: <a href=\"/pomoc/iphone-i-racunar/\">dodavanje na početni ekran</a>.": "Пошаговая инструкция и разбор частых сообщений телефона — в разделе <a href=\"/pomoc/android-aplikacija-apk/\">Помощь</a>. Для iPhone и компьютера: <a href=\"/pomoc/iphone-i-racunar/\">добавление на главный экран</a>.",
  "Uračunata je naknada za pokretanje od {s} RSD.": "В расчёт включена плата за начало зарядки — {s} RSD.",
- "Uredba nema gornju granicu cene, zabranu prodaje u roku od godinu dana, ograničenje „jedno vozilo po podnosiocu“ ni „minimum 15 % učešća kod lizinga“.": "В постановлении нет ни верхнего предела цены, ни запрета на продажу в течение года, ни ограничения «одно транспортное средство на заявителя», ни «минимального взноса 15 % при лизинге».",
+ "Uredba nema gornju granicu cene, zabranu prodaje u roku od godinu dana ni ograničenje „jedno vozilo po podnosiocu“.": "В постановлении нет ни верхнего предела цены, ни запрета на продажу в течение года, ни ограничения «одно транспортное средство на заявителя».",
+ "Kod finansijskog lizinga kupac pre isplate subvencije uplaćuje davaocu lizinga najmanje 15 % kupoprodajne cene (čl. 5 st. 2).": "При финансовом лизинге покупатель до выплаты субсидии вносит лизингодателю не менее 15 % цены покупки (ст. 5 п. 2).",
  "Uredba o subvencionisanoj kupovini električnih vozila (Sl. glasnik 12/2026 i 86/2026)": "Постановление о субсидированной покупке электрических транспортных средств («Службени гласник» № 12/2026 и 86/2026)",
  "Uredba o subvencionisanoj kupovini novih električnih vozila, čl. 5 — subvencija kao učešće u finansijskom lizingu": "Постановление о субсидированной покупке новых электрических транспортных средств, ст. 5 — субсидия как первоначальный взнос по финансовому лизингу",
  "Uredba o subvencionisanoj kupovini novih vozila isključivo na električni pogon (Sl. glasnik 12/2026 i 86/2026)": "Постановление о субсидированной покупке новых транспортных средств исключительно на электрической тяге («Службени гласник» № 12/2026 и 86/2026)",
@@ -9303,5 +9304,7 @@
  "⟦0⟧–70 RSD/min + 50 RSD po sesiji": "⟦0⟧–70 RSD/мин + 50 RSD за сессию",
  "⟦0⟧–⟦1⟧ RSD<small>ugradnja</small>": "⟦0⟧–⟦1⟧ RSD<small>установка</small>",
  "⟦0⟧–⟦1⟧ cm³": "⟦0⟧–⟦1⟧ см³",
- "⟦0⟧–⟦1⟧ €, po lokaciji i dobu dana": "⟦0⟧–⟦1⟧ €, в зависимости от места и времени суток"
+ "⟦0⟧–⟦1⟧ €, po lokaciji i dobu dana": "⟦0⟧–⟦1⟧ €, в зависимости от места и времени суток",
+ "10. novembar 2026": "10 ноября 2026",
+ "<a href=\"/podaci/subvencije-2026/\">Subvencije 2026</a> i <a href=\"/podaci/krediti-i-lizing/\">Krediti i lizing</a>: ispravka. Uredba (čl. 5 st. 2) ipak traži da kupac uz subvenciju u finansijskom lizingu davaocu lizinga uplati najmanje 15 % kupoprodajne cene; ranije je pisalo da taj uslov ne postoji.": "<a href=\"/podaci/subvencije-2026/\">Субсидии 2026</a> и <a href=\"/podaci/krediti-i-lizing/\">Кредиты и лизинг</a>: исправление. Постановление (ст. 5 п. 2) всё же требует, чтобы покупатель при субсидии в финансовом лизинге внёс лизингодателю не менее 15 % цены покупки; раньше было написано, что такого условия нет."
 }
