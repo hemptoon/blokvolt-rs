@@ -110,6 +110,8 @@
    {"label": "ZRRE — vendimi V_2703_2025 për tarifat me pakicë 2025 (tabela si imazh)", "url": "https://www.ero-ks.org/zrre/sites/default/files/Publikimet/Vendimet/Vendimet%202025/3.%20Decision%20on%20Tariffs_2025_USS-FINAL.pdf", "date": "16.04.2025"},
    {"label": "Dukagjini — tarifat nga 1 maji 2025 (9,05 / 3,88 dhe 15,43 / 7,28 centë për kWh)", "url": "https://www.dukagjini.com/zrre-formalizoi-vendimin-nga-1-maji-rryma-shtrenjtohet-per-16-1/", "date": "16.04.2025"},
    {"label": "Fikso — tarifat nga 1 maji 2025 (7,21 centë për natën mbi 800 kWh)", "url": "https://fikso.al/tarifat-e-reja-ne-fuqi-nga-1-maji-energjia-elektrike-ne-kosove-rritet-me-16-1/", "date": "16.04.2025"},
+   {"label": "ZRRE — seanca e V e Bordit 2026: struktura e tarifave me pakicë të KESCO-s mbetet e pandryshuar për vitin 2026", "url": "https://ero-ks.org/zrre/sites/default/files/Publikimet/Vendimet/Vendimet%202026/Fifth%20(Vth)%20Session%20of%20the%20ERO%20Board%20in%202026.pdf", "date": "05.05.2026"},
+   {"label": "ZRRE — njoftimi për seancën e Bordit", "url": "https://ero-ks.org/zrre/en/node/747", "date": "05.05.2026"},
    {"label": "Zëri — ZRRE-ja pa ndryshime në çmimin e energjisë për vitin 2026", "url": "https://zeri.info/ekonomia/621834/zrre-ja-miraton-tarifat-per-kostt-in-keds-in-dhe-kesco-n-pa-ndryshime-ne-cmimin-e-energjise-per-vitin-2026/", "date": "07.05.2026"},
    {"label": "Kosovo.energy — blloku mbi 800 kWh", "url": "https://kosovo.energy/sa-do-te-kushtoj-energjia-elektrike-per-familjet-nese-aprovohen-tarifat-e-reja/", "date": "02.02.2026"},
    {"label": "KESCO — si lexohet fatura (orët e tarifave, TVSH 8 %)", "url": "https://fatura.kesco-energy.com/Static/how-to-read-my-bill", "date": "28.09.2026"},
@@ -209,6 +211,16 @@
     "label": "KESCO — pyetjet e shpeshta (tarifa fikse)",
     "url": "https://www.kesco-energy.com/shq/qendra-e-ndihmes/pyetjet-e-shpeshta/",
     "date": "kontrolluar 28.09.2026"
+   },
+   {
+    "label": "ZRRE — seanca e V e Bordit 2026: struktura e tarifave me pakicë për klientët me tarifa të rregulluara (FSHU-KESCO) mbetet e pandryshuar, pa rritje për vitin 2026",
+    "url": "https://ero-ks.org/zrre/sites/default/files/Publikimet/Vendimet/Vendimet%202026/Fifth%20(Vth)%20Session%20of%20the%20ERO%20Board%20in%202026.pdf",
+    "date": "05.05.2026"
+   },
+   {
+    "label": "ZRRE — njoftimi për seancën e Bordit",
+    "url": "https://ero-ks.org/zrre/en/node/747",
+    "date": "05.05.2026"
    },
    {
     "label": "Zëri — ZRRE-ja miratoi tarifat për KOSTT-in, KEDS-in dhe KESCO-n pa ndryshime në çmimin e energjisë për vitin 2026",

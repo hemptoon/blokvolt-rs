@@ -424,11 +424,11 @@
   ]
  },
  "fuel": {
-  "petrol": 1.626,
-  "diesel": 1.949,
-  "date": "3. 11. 2026",
-  "src": "https://www.gov.si/novice/2026-11-02-od-jutri-nekoliko-nizje-cene-bencina-ter-visje-cene-dizla-in-kurilnega-olja/",
-  "src_label": "Vlada RS — najvišje dovoljene cene goriv zunaj avtocest od 3. 11. 2026 (veljajo en teden)"
+  "petrol": 1.506,
+  "diesel": 1.848,
+  "date": "10. 11. 2026",
+  "src": "https://www.energetika-portal.si/podrocja/energetika/cene-naftnih-derivatov/regulirane-cene-naftnih-derivatov/",
+  "src_label": "Energetika portal (MOPE) — regulirane cene naftnih derivatov zunaj avtocest, veljavne od 10. 11. 2026 (veljajo en teden; tedenski pregled na tej strani)"
  },
  "calc": {
   "km": 1200,

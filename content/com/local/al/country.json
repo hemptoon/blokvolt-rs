@@ -269,7 +269,7 @@
     "src_label": "OSHEE, 11.11.2025"
   },
   "station_tariff": {
-    "text": "ERE ka një tarifë të veçantë për pikat dhe stacionet e karikimit me fuqi të instaluar mbi 11 kW: 22 lekë për kWh dhe 25,3 lekë në orar pik. Orari pik është 18:00–22:00 nga 1 nëntori deri më 31 mars dhe 19:00–23:00 nga 1 prilli deri më 31 tetor. Kjo është tarifa me të cilën operatori i stacionit blen energjinë nga furnizuesi universal, jo çmimi që paguan shoferi; nuk thuhet nëse përfshin TVSH. Vlen nga 01.11.2025 (Vendimi nr. 255, 15.10.2025) dhe është edhe në tabelën për vitin 2026. Disa media e kanë paraqitur si çmimin e karikimit për shoferët.",
+    "text": "ERE ka një tarifë të veçantë për pikat dhe stacionet e karikimit me fuqi të instaluar mbi 11 kW: 22 lekë për kWh dhe 25,3 lekë në orar pik. Orari pik është 18:00–22:00 nga 1 nëntori deri më 31 mars dhe 19:00–23:00 nga 1 prilli deri më 31 tetor. Kjo është tarifa me të cilën operatori i stacionit blen energjinë nga furnizuesi universal, jo çmimi që paguan shoferi; nuk thuhet nëse përfshin TVSH. E vendosi fillimisht Vendimi nr. 255, 15.10.2025, nga 01.11.2025; për periudhën 1 janar – 31 dhjetor 2026 e miraton Vendimi nr. 322, 15.12.2025. Disa media e kanë paraqitur si çmimin e karikimit për shoferët.",
     "src": "https://www.ere.gov.al/media/files/2025/11/13/Tarifat_dhe_%C3%87mimet_e_energjis%C3%AB_Elektrike_dhe_Gazit_natyror_p%C3%ABr_periudh%C3%ABn_1_Shkurt-31_Dhjetor_2025.pdf",
     "src_label": "ERE, tarifat 1 shkurt–31 dhjetor 2025"
   },
@@ -355,9 +355,9 @@
         "date": "08.01.2025"
       },
       {
-        "label": "ERE — tarifa për pikat e karikimit mbi 11 kW (Vendimi nr. 255, 15.10.2025)",
-        "url": "https://www.ere.gov.al/media/files/2025/11/13/Tarifat_dhe_%C3%87mimet_e_energjis%C3%AB_Elektrike_dhe_Gazit_natyror_p%C3%ABr_periudh%C3%ABn_1_Shkurt-31_Dhjetor_2025.pdf",
-        "date": "13.11.2025"
+        "label": "ERE — tarifa për pikat e karikimit mbi 11 kW për vitin 2026 (Vendimi nr. 322, 15.12.2025; fillimisht Vendimi nr. 255, 15.10.2025)",
+        "url": "https://www.ere.gov.al/media/files/2025/12/24/Tarifat_dhe_%C3%87mimet_e_energjis%C3%AB_Elektrike_dhe_Gazit_natyror_p%C3%ABr_VITIN_2026.pdf",
+        "date": "24.12.2025"
       },
       {
         "label": "BalkanWeb — Bordi i Transparencës, çmimet maksimale të karburanteve nga 14.10.2026: nafta 213 lekë, benzina 190 lekë për litër",
@@ -744,9 +744,9 @@
         "date": "08.01.2025"
       },
       {
-        "label": "ERE — tarifa për pikat e karikimit mbi 11 kW: 22 lekë/kWh, 25,3 lekë/kWh në orar pik (Vendimi nr. 255, 15.10.2025)",
-        "url": "https://www.ere.gov.al/media/files/2025/11/13/Tarifat_dhe_%C3%87mimet_e_energjis%C3%AB_Elektrike_dhe_Gazit_natyror_p%C3%ABr_periudh%C3%ABn_1_Shkurt-31_Dhjetor_2025.pdf",
-        "date": "13.11.2025"
+        "label": "ERE — tarifa për pikat e karikimit mbi 11 kW: 22 lekë/kWh, 25,3 lekë/kWh në orar pik; për vitin 2026 Vendimi nr. 322, 15.12.2025 (fillimisht Vendimi nr. 255, 15.10.2025)",
+        "url": "https://www.ere.gov.al/media/files/2025/12/24/Tarifat_dhe_%C3%87mimet_e_energjis%C3%AB_Elektrike_dhe_Gazit_natyror_p%C3%ABr_VITIN_2026.pdf",
+        "date": "24.12.2025"
       }
     ]
   }

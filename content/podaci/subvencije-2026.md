@@ -58,7 +58,7 @@ Prijave traju od 1. marta. Prvobitni rok, 30. septembar, produžen je uredbom u 
 
 ## Stanje budžeta
 
-Do avgusta je stiglo preko 1.000 zahteva i finansirano oko 600 vozila, za oko 3 miliona € (oko 350 miliona RSD). To je duplo više od prvobitnog budžeta: novac je dodavan, ali novi zvanični limit nije objavljen ni posle rebalansa budžeta, koji je Skupština usvojila 31. avgusta. Uredan zahtev ulazi u red. Ako novac bude potrošen pre 1. decembra, dodela se prekida, a ministarstvo to objavljuje na svom sajtu. Do 28. oktobra ni mediji ni eUprava nisu objavili da je novac potrošen, a usluga na eUpravi je aktivna.
+Do početka avgusta stiglo je preko 1.000 zahteva i finansirano oko 600 vozila, za oko 3 miliona € (oko 350 miliona RSD). To je duplo više od prvobitnog budžeta: novac je dodavan, ali novi zvanični limit nije objavljen ni posle rebalansa budžeta, koji je Skupština usvojila 31. avgusta. Uredan zahtev ulazi u red. Ako novac bude potrošen pre 1. decembra, dodela se prekida, a ministarstvo to objavljuje na svom sajtu. Do 28. oktobra ni mediji ni eUprava nisu objavili da je novac potrošen, a usluga na eUpravi je aktivna.
 
 <details markdown="1">
 <summary>Detalji: hronologija i 2025.</summary>
