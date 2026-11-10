@@ -184,8 +184,32 @@ const P_STROKE = ['match', ['get', 'p'], [3, 4, 5], '#D9F45B', [0, 6, 7], '#8A90
 const zrl = (big, x, y) => ['interpolate', ['linear'], ['zoom'], ...[2, 5, 8, 10, 12, 16].flatMap((z, k) => [z, ['case', big, x[k], y[k]]])];
 const P_LOW = ['match', ['get', 'p'], [3, 4, 5], '#0D111A', 7, '#5C6270', 0, '#8A909B', '#2B3240'];
 const restricted = ['==', ['get', 'a'], 1];
+// FIX1: the base-map labels (cities, countries) sit above the points and get a strong halo, so they stay readable
+// over dense areas without hiding any point; names follow the page language (cfg.lang), then Latin, then local.
+function labelName(l) {
+  if (l === 'en') return ['coalesce', ['get', 'name:en'], ['get', 'name_en'], ['get', 'name:latin'], ['get', 'name']];
+  if (l === 'sr') return ['coalesce', ['get', 'name:sr-Latn'], ['get', 'name:hr'], ['get', 'name:latin'], ['get', 'name']];
+  return ['coalesce', ['get', 'name:' + l], ['get', 'name:latin'], ['get', 'name']];
+}
+function styleLabels() {
+  const dark = !!(TEMA && cfg.style_dark), name = labelName(LANG);
+  (map.getStyle().layers || []).forEach(l => {
+    if (l.type !== 'symbol' || l['source-layer'] !== 'place') return;
+    const ctry = /^label_country/.test(l.id), soft = l.id === 'label_state' || l.id === 'label_other';
+    const set = (k, v, lay) => { try { (lay ? map.setLayoutProperty : map.setPaintProperty).call(map, l.id, k, v); } catch (e) { /* layer without that property */ } };
+    set('text-field', name, true);
+    set('text-halo-color', dark ? 'rgba(11,15,23,0.95)' : 'rgba(255,255,255,0.95)');
+    set('text-halo-width', ctry ? 2.4 : 2);
+    set('text-halo-blur', 0.3);
+    set('text-color', dark ? (soft ? '#B8BDC7' : '#F4F3EE') : (soft ? '#3A404C' : '#0D111A'));
+    if (ctry) { set('text-transform', 'uppercase', true); set('text-letter-spacing', 0.08, true); }
+  });
+}
 function addLayers() {
   if (!M || !mapLoaded || map.getSource(SRC)) return;
+  // points go under the first label layer of the base map; the selection ring stays on top of everything
+  const before = ((map.getStyle().layers || []).find(l => l.type === 'symbol') || {}).id;
+  styleLabels();
   map.addSource(SRC, { type: 'vector', url: 'pmtiles://' + at(M.tiles), attribution: '' });
   const big = ['==', ['get', 'p'], 5];
   map.addLayer({
@@ -200,7 +224,7 @@ function addLayers() {
       'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, ['case', restricted, 0.35, 0.7], 5, ['case', restricted, 0.4, 0.85], 7, ['case', restricted, 0.45, 1]],
       'circle-stroke-opacity': ['case', restricted, 0.55, 1]
     }
-  });
+  }, before);
   // max kW inside the point from zoom 12, as on /mapa/ (tile attribute k; a point without k simply has no number)
   map.addLayer({
     id: 'wm-kw', type: 'symbol', source: SRC, 'source-layer': 'sites', minzoom: 12, filter: kwFilter(),
@@ -208,7 +232,7 @@ function addLayers() {
       'symbol-sort-key': ['match', ['get', 'p'], 5, 4, [3, 4], 3, [1, 2], 2, 7, 1, 0] },
     paint: { 'text-color': ['match', ['get', 'p'], [3, 4, 5], '#D9F45B', 7, '#FFFFFF', [0, 6], '#5C6270', '#0D111A'],
       'text-opacity': ['case', ['==', ['get', 'a'], 1], 0.6, 1] }
-  });
+  }, before);
   map.addSource('wm-sel', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addLayer({ id: 'wm-sel', type: 'circle', source: 'wm-sel',
     paint: { 'circle-radius': zr(8, 10, 15, 18), 'circle-color': 'rgba(217,244,91,.35)', 'circle-stroke-width': 3, 'circle-stroke-color': '#0D111A' } });
