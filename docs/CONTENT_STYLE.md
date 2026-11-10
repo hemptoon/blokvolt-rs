@@ -64,3 +64,10 @@ a bar chart, one „Važno“ line and path cards — plus a cover photo when th
 written exactly as the page writes them in that language. A new page gets its app layer in the same commit, and a
 change of a fact on the page changes the app layer in the same commit. Schema, rules and the validator:
 `docs/RUNBOOK.md` §3.38; check with `python3 scripts/app_layer.py --strict`.
+
+## Accessibility (since 09.11.2026)
+
+Every page is read by people with a screen reader, a keyboard only or enlarged text (RUNBOOK 3.41). In practice: a link
+says where it goes („cene električnih automobila“, never „ovde“ or „kliknite“); headings go in order (H2, then H3);
+a table has a header row; a colour, an icon or a picture is never the only carrier of a fact — the fact is also written.
+
