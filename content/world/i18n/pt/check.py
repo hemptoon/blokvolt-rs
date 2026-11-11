@@ -23,7 +23,8 @@ def cmp_text(where, en, alts, pt):
     if tags(pt) != tags(en):
         ERR.append(f'{where}: tags {tags(pt)} != EN {tags(en)}')
 
-for f in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices']:
+for f in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+          'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed']:
     src = json.load(open(WORLD / f'{f}.json', encoding='utf-8'))
     p = HERE / f'{f}.json'
     if not p.exists():
@@ -56,11 +57,27 @@ def walk(where, en, pt):
         ERR.append(f'{where}: non-text value changed')
 
 tx = json.load(open(HERE / 'texts.json', encoding='utf-8'))
-if set(tx) != {'about_data', 'download', 'sources_pages'}: ERR.append('texts.json: top-level keys')
+if set(tx) != {'about_data', 'download', 'sources_pages', 'pay', 'routes'}: ERR.append('texts.json: top-level keys')
 walk('texts.about_data', json.load(open(WORLD / 'about_data.json', encoding='utf-8'))['en'], tx.get('about_data'))
 walk('texts.download', json.load(open(WORLD / 'download.json', encoding='utf-8'))['en'], tx.get('download'))
 sp = json.load(open(WORLD / 'sources_pages.json', encoding='utf-8'))
 walk('texts.sources_pages', sp, tx.get('sources_pages'))
+
+# texts.json → pay / routes (LANG0 format: dotted path of a multilingual node → text)
+def ml_nodes(x, p, out):
+    if isinstance(x, dict):
+        if isinstance(x.get('en'), str) and {'en', 'sr', 'ru'} <= set(x):
+            out[p] = x['en']; return
+        for k, v in x.items(): ml_nodes(v, f'{p}.{k}' if p else k, out)
+    elif isinstance(x, list):
+        for i, v in enumerate(x): ml_nodes(v, f'{p}[{i}]', out)
+for sec in ('pay', 'routes'):
+    nodes = {}; ml_nodes(json.load(open(WORLD / f'{sec}.json', encoding='utf-8')), '', nodes)
+    got = tx.get(sec) or {}
+    for k in set(got) - set(nodes): ERR.append(f'texts.{sec}.{k}: no such multilingual node')
+    for k, en in nodes.items():
+        if k not in got: ERR.append(f'texts.{sec}.{k}: missing'); continue
+        cmp_text(f'texts.{sec}.{k}', en, [], got[k])
 
 SL = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
 PATHS = ['home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
