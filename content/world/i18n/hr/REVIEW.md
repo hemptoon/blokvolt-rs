@@ -39,3 +39,25 @@ Gradovi (100 redaka u `cities.csv`):
 ## Povratni prijevod (zaseban agent, naslijepo, 40 izmijenjenih nizova)
 - OK 37, ISSUE 3 — sva tri ispravljena: `p_city_cmp` („od 50 kW” čitano kao „točno 50 kW”, „na 10” kao fiksni broj) → „(50 kW i više) na svakih 10”; `th_ratio` „kuća” = zgrada → „DC / kod kuće”; `p_multi` slaganje glagola → „potvrđeno je iz dva ili više izvora”.
 - Svih 31 lokativa gradova u uzorku: OK.
+
+# L2-HR — dopuna za blokvolt.com jezike (11.11.2026)
+
+Grana `l2-hr` od `dev` (bb86f74). Samo `content/world/i18n/hr/`.
+
+## Što je dodano
+- 274 ključa: `strings_map` 29 (`ci_*` provjere vozača, `emb_open`), nove datoteke `strings_pay` 93, `strings_press` 54, `strings_b2b` 33, `strings_embed` 65. HOME2 još nije u `dev` — njegovi ključi nisu uključeni (LANGI).
+- `texts.json`: odjeljci `pay` (6 točaka AFIR, `afir.points[i]`) i `routes` (59 naziva gradova, `routes[i].stops[j].city`; Beograd, Sofija, Budimpešta, Veliko Trnovo, ostalo izvorno).
+- Svoje zemlje (`market_countries` = HR): Hrvatska u `countries.csv` u redu; svih 24 grada HR u `cities.csv` provjereno, `decl_ok = 1`. Za HR nema svjetskih stranica gradova (K3: lokalni odjeljak `/hr/`), pa novih gradova nema. 144 nova grada NOBIL (SE 138, NO 6) nisu u `names/cities.csv` — nisu za hr.
+- `check.py`: sada svih 8 datoteka nizova i odjeljci `texts.pay` / `texts.routes` (ključevi = putanje višejezičnih čvorova u `pay.json`/`routes.json`, plaseholderi). Rezultat: OK.
+
+## Termini
+- ad hoc → „bez ugovora” (kao u cijenama); roaming → „roaming” (glossary); toll → „cestarina”, vignette → „vinjeta”, stretch → „dionica”, stop → „stajalište”; widget → „widget”; developers → „programeri”; check-in → „provjera”.
+- `{cu}`, `{lo}`, `{hi}` = lokativna fraza zemlje („u Hrvatskoj”); `{name}` = nominativ; `{month}` = naziv mjeseca, uvijek bez prijedloga („({month})”, „izdanje „{prev}””).
+
+## Povratni prijevod (zaseban agent, naslijepo, 60 nasumičnih novih nizova)
+- Smisao: 60/60 OK, bez MISMATCH. Agent je dao 17 stilskih napomena; ispravljeno 9: `d_pay_country` („koje se mogu koristiti”), `d_route`/`d_routes` („najmanje svakih 150 km”, „tri modela automobila”), `lead_pay_hub` (tri načina jasno odvojena), `issue_note` („u eurima po kWh, po tečaju ESB-a na dan”), `f_checkins` (broj na kraju kao „Broj …: {n}”), `what_price` („tarife mreža za punjenje bez ugovora”), `focus` („Srednja Azija”), `ci_rules` (eksplicitni subjekt), `dv_lead`, `afir.points[5]` („sastavnice”).
+- Ostavljeno: „javni sloj” (termin cijelog sučelja), „dnevni otisak veze / hash s ključem” (tehnički točno, isto u EN), `cov_no` „Nije navedena” (stupac je zemlja).
+
+## Spornije
+- Duljina iznad EN × 1,4 samo u zaglavljima (`th_app` „Aplikacija ili kartica”, `th_car` „Automobil”) — prihvatljivo.
+- `pl_*` novih nema; nizovi s `{n}` napisani bez oblika („Broj …: {n}”).
