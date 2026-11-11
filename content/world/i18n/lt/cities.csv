@@ -2622,7 +2622,7 @@ geonameid,name,in_phrase,decl_ok,note
 2155472,Newcastle,mieste Newcastle,0,
 5911592,Burlington,mieste Burlington,0,
 5359777,Irvine,mieste Irvine,0,
-5405841,Venecija,Venecijoje,1,exonym
+5405841,Venice,mieste Venice,0,namesake_orig
 6325521,Lévis,mieste Lévis,0,
 5133279,Queensbury,mieste Queensbury,0,
 2156813,Mosman,mieste Mosman,0,
@@ -2872,7 +2872,7 @@ geonameid,name,in_phrase,decl_ok,note
 8299576,Bridgewater,mieste Bridgewater,0,
 6182962,Windsor,mieste Windsor,0,
 7701384,Karabağlar,mieste Karabağlar,0,
-4180386,Atėnai,Atėnuose,1,exonym
+4180386,Athens,mieste Athens,0,namesake_orig
 4192289,Duluth,mieste Duluth,0,
 4221333,Sandy Springs,mieste Sandy Springs,0,
 4363843,North Bethesda,mieste North Bethesda,0,
@@ -3144,7 +3144,7 @@ geonameid,name,in_phrase,decl_ok,note
 4068590,Huntsville,mieste Huntsville,0,
 4143861,Newark,mieste Newark,0,
 4174402,Sunrise,mieste Sunrise,0,
-4176380,Venecija,Venecijoje,1,exonym
+4176380,Venice,mieste Venice,0,namesake_orig
 4177727,Wesley Chapel,mieste Wesley Chapel,0,
 4184845,Brunswick,mieste Brunswick,0,
 4285268,Bowling Green,mieste Bowling Green,0,
@@ -3327,7 +3327,7 @@ geonameid,name,in_phrase,decl_ok,note
 5006250,Portage,mieste Portage,0,
 5043193,Richfield,mieste Richfield,0,
 5089178,Mančesteris,Mančesteryje,1,exonym
-5134295,Roma,Romoje,1,exonym
+5134295,Rome,mieste Rome,0,namesake_orig
 5281730,Avon,mieste Avon,0,
 5282804,Bridgeport,mieste Bridgeport,0,
 5343858,Downey,mieste Downey,0,
@@ -3355,7 +3355,7 @@ geonameid,name,in_phrase,decl_ok,note
 4110486,Fayetteville,mieste Fayetteville,0,
 4145805,Allapattah,mieste Allapattah,0,
 4148677,Boynton Beach,mieste Boynton Beach,0,
-4165565,Neapolis,Neapolyje,1,exonym
+4165565,Naples,mieste Naples,0,namesake_orig
 4167519,Palm Beach Gardens,mieste Palm Beach Gardens,0,
 4174383,Sunny Isles Beach,mieste Sunny Isles Beach,0,
 4208442,McDonough,mieste McDonough,0,
@@ -4065,7 +4065,7 @@ geonameid,name,in_phrase,decl_ok,note
 4470778,Hickory,mieste Hickory,0,
 4500546,Atlantic City,mieste Atlantic City,0,
 4501198,Cherry Hill,mieste Cherry Hill,0,
-4578737,Florencija,Florencijoje,1,exonym
+4578737,Florence,mieste Florence,0,namesake_orig
 4580098,Goose Creek,mieste Goose Creek,0,
 4581832,Hilton Head Island,mieste Hilton Head Island,0,
 4635031,La Vergne,mieste La Vergne,0,
@@ -4938,7 +4938,7 @@ geonameid,name,in_phrase,decl_ok,note
 4373349,Wheaton,mieste Wheaton,0,
 4381072,Chesterfield,mieste Chesterfield,0,
 4472687,Indian Trail,mieste Indian Trail,0,
-4505542,Atėnai,Atėnuose,1,exonym
+4505542,Athens,mieste Athens,0,namesake_orig
 4525304,Springboro,mieste Springboro,0,
 4528291,Whitehall,mieste Whitehall,0,
 4571722,Bluffton,mieste Bluffton,0,
