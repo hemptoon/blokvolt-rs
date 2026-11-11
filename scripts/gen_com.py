@@ -168,6 +168,7 @@ env.globals['pl'] = pl
 # only the local sections that have content are linked from menus and footers
 BUILT = [l for l in LOCALES.values() if (LOCAL / l['dir'] / 'country.json').exists()]
 env.globals['LOCALS_ALL'] = BUILT
+env.globals['COUNTER_NOTE'] = json.load(open(ROOT / 'content' / 'com' / 'counter_note.json', encoding='utf-8'))   # STATCOM: /about/
 
 
 # ------------------------------------------------------------------ writing pages
@@ -518,6 +519,7 @@ def copy_assets():
     if len(__import__('world_i18n').langs()) > 3 and (fonts / 'inter-greek-wght-normal.woff2').exists():   # LANG0: Greek pages (world-grek.css)
         shutil.copy2(fonts / 'inter-greek-wght-normal.woff2', a / 'fonts' / 'inter-greek-wght-normal.woff2')
     shutil.copy2(ROOT / 'static' / 'com' / 'com.css', a / 'com.css')
+    shutil.copy2(ROOT / 'static' / 'com' / 'bvc.js', a / 'bvc.js')   # visit counter (STATCOM 11.11.2026, RUNBOOK 3.16)
     (a / 'og').mkdir(exist_ok=True)
     for f in (ROOT / 'static' / 'com').glob('og-*.png'):
         shutil.copy2(f, a / 'og' / f.name)
@@ -528,7 +530,7 @@ def copy_assets():
 
 def bust():
     a = OUT / 'assets'
-    v = {n: ver(a / n) for n in ('bv.css', 'bv.js', 'map.js', 'com.css')}
+    v = {n: ver(a / n) for n in ('bv.css', 'bv.js', 'map.js', 'com.css', 'bvc.js')}
     for p in OUT.rglob('*.html'):
         t = p.read_text(encoding='utf-8')
         for n, h in v.items():

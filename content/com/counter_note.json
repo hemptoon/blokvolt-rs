@@ -1,0 +1,15 @@
+{
+ "_comment": "Visit counting on blokvolt.com (STATCOM 11.11.2026, RUNBOOK 3.16 and 3.26): shown on the world About page (/about/, SR, RU) after the notes. Same meaning as #merenje-poseta of the privacy policy on www.blokvolt.rs. The local sections say it in their methodology pages (Privatnost).",
+ "en": {
+  "h": "Visit counting",
+  "p": "There is no third-party analytics and no advertising on blokvolt.com. Visits are counted only by BlokVolt's own counter, on Cloudflare servers in the EU: which page was opened (without the parameters in the address), which website the visit came from (the site name only), campaign tags (utm), the page language, country, device type and browser. The counter sets no cookies and writes nothing to the browser. To count the same person once a day, an anonymous fingerprint is made from the IP address and browser data with a random key that is valid only for that day; the IP address is not stored. The data is used only in aggregate and is deleted after one year."
+ },
+ "sr": {
+  "h": "Merenje poseta",
+  "p": "Na blokvolt.com nema analitike trećih strana ni reklama. Posete broji samo sopstveni brojač BlokVolta, na Cloudflare serverima u EU: koja stranica je otvorena (bez parametara iz adrese), sa kog sajta je poseta došla (samo naziv sajta), oznake kampanje (utm), jezik stranice, zemlja, tip uređaja i pregledač. Brojač ne postavlja kolačiće i ništa ne upisuje u pregledač. Da bi se ista osoba brojala jednom dnevno, od IP adrese i podataka o pregledaču pravi se anonimni otisak sa slučajnim ključem koji važi samo taj dan; IP adresa se ne čuva. Podaci se koriste samo zbirno i brišu se posle godinu dana."
+ },
+ "ru": {
+  "h": "Подсчёт посещений",
+  "p": "На blokvolt.com нет сторонней аналитики и рекламы. Посещения считает только собственный счётчик BlokVolt на серверах Cloudflare в ЕС: какая страница открыта (без параметров адреса), с какого сайта пришёл посетитель (только название сайта), метки кампании (utm), язык страницы, страна, тип устройства и браузер. Счётчик не ставит cookie и ничего не записывает в браузер. Чтобы один человек считался раз в день, из IP-адреса и данных браузера делается анонимный отпечаток со случайным ключом, который действует только этот день; IP-адрес не хранится. Данные используются только в сводном виде и удаляются через год."
+ }
+}

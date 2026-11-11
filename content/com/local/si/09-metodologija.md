@@ -37,4 +37,4 @@ Ste našli napako ali polnilnica manjka? Pišite na [hello@blokvolt.com](mailto:
 
 ## Zasebnost
 
-Strani nimajo analitike, oglasov ali piškotkov. Podlaga zemljevida se nalaga s strežnika OpenFreeMap. Lokacija se na zemljevidu uporabi samo, ko pritisnete »V bližini«, in ostane v vašem brskalniku.
+Strani nimajo oglasov, piškotkov ali analitike tretjih oseb. Obiske šteje le lastni števec BlokVolta na Cloudflarovih strežnikih v EU: katera stran je odprta (brez parametrov v naslovu), s katerega spletnega mesta je obisk prišel (samo ime mesta), oznake kampanje (utm), jezik strani, država, vrsta naprave in brskalnik. Števec ne nastavlja piškotkov in v brskalnik ničesar ne shranjuje; naslov IP se ne hrani, podatki se uporabljajo le zbirno in se izbrišejo po enem letu. Podlaga zemljevida se nalaga s strežnika OpenFreeMap. Lokacija se na zemljevidu uporabi samo, ko pritisnete »V bližini«, in ostane v vašem brskalniku.
