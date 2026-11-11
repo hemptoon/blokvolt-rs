@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""L-FI: checks content/world/i18n/fi against the EN sources. Run from repo root: python3 content/world/i18n/fi/check.py"""
+"""L-FI / L2-fi: checks content/world/i18n/fi against the EN sources. Run from repo root: python3 content/world/i18n/fi/check.py"""
 import csv, json, re, sys
 from pathlib import Path
 LANG = 'fi'
@@ -17,8 +17,12 @@ try:
     cats = set(Locale(LANG).plural_form.tags) | {'other'}
 except Exception as e:
     cats = {'one', 'other'}; print('babel missing, using', cats)
-for f in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
+# L2-fi 11.11: all 8 string files of the world layer
+STRING_FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices', 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed')
+for f in STRING_FILES:
     en = {k: v['en'] for k, v in json.load(open(W / f'{f}.json', encoding='utf-8')).items()}
+    if not (D / f'{f}.json').exists():
+        err(f'{f}: file missing'); continue
     tr = json.load(open(D / f'{f}.json', encoding='utf-8'))
     for k in en.keys() - tr.keys(): err(f'{f}: missing key {k}')
     for k in tr.keys() - en.keys(): err(f'{f}: extra key {k}')
@@ -49,8 +53,26 @@ def walk(a, b, p):
 t = json.load(open(D / 'texts.json', encoding='utf-8'))
 src = {'about_data': json.load(open(W / 'about_data.json'))['en'], 'download': json.load(open(W / 'download.json'))['en'],
        'sources_pages': json.load(open(W / 'sources_pages.json'))}
-if set(t) != set(src): err(f'texts.json top keys {sorted(t)}')
+# L2-fi 11.11: LANG0 format for multilingual nodes of pay.json / routes.json: {"afir.points[0]": "text", "routes[3].stops[1].city": "text"}
+def ml_nodes(x, p, out):
+    if isinstance(x, dict):
+        if isinstance(x.get('en'), str) and ('ru' in x or 'sr' in x):
+            out[p] = x['en']; return
+        for k, v in x.items(): ml_nodes(v, (p + '.' if p else '') + k, out)
+    elif isinstance(x, list):
+        for i, v in enumerate(x): ml_nodes(v, f'{p}[{i}]', out)
+ML = {}
+for name in ('pay', 'routes'):
+    ML[name] = {}; ml_nodes(json.load(open(W / f'{name}.json', encoding='utf-8')), '', ML[name])
+if set(t) != set(src) | set(ML): err(f'texts.json top keys {sorted(t)}')
 for k in src: walk(src[k], t.get(k), '.' + k)
+for name, nodes in ML.items():
+    tr = t.get(name) or {}
+    for k in nodes.keys() - tr.keys(): err(f'texts.{name}: missing node {k}')
+    for k in tr.keys() - nodes.keys(): err(f'texts.{name}: unknown node {k}')
+    for k in nodes.keys() & tr.keys():
+        if not isinstance(tr[k], str) or not tr[k].strip(): err(f'texts.{name}.{k}: empty or not a string')
+        elif sig(tr[k]) != sig(nodes[k]): err(f'texts.{name}.{k}: placeholders/tags differ')
 # slugs
 s = json.load(open(D / 'slugs.json'))
 need = {'home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology'}
