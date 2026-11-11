@@ -17,11 +17,13 @@ TAG = re.compile(r'</?[a-zA-Z][^>]*>')
 ENT = re.compile(r'&[a-z]+;|&#\d+;')
 # EN "in {city}" needs a declined slot in inflected languages; the engine passes all of them (world_pages.render_*).
 EQUIV = {'{city}': {'{city_u}', '{city_v}'}, '{country}': {'{country_u}', '{country_v}'},
-         '{country_u}': {'{country_v}'}, '{city_u}': {'{city_v}'}}
-STRING_FILES = ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+         '{country_u}': {'{country_v}'}, '{city_u}': {'{city_v}'},
+         '{name}': {'{name_nom}'}}  # FIXL D14: {name_nom} may stand where EN has {name}
+STRING_FILES = ['strings_home', 'strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
                 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed']
 SLUG_KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
 FULL = {'home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology'}
+EXTRA = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']  # FIXL F5: allowed in addition (full paths)
 
 err, warn = [], []
 
@@ -166,15 +168,18 @@ def texts():
 
 def slugs():
     s = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
-    if list(s) != SLUG_KEYS:
-        err.append(f'slugs.json keys {list(s)} != {SLUG_KEYS}')
+    if list(s)[:len(SLUG_KEYS)] != SLUG_KEYS or set(s) - set(SLUG_KEYS) - set(EXTRA):
+        err.append(f'slugs.json keys {list(s)}: need {SLUG_KEYS}, then optional {EXTRA}')
     for k, v in s.items():
-        if k in FULL:
+        if k in EXTRA:
+            if not re.fullmatch(rf'/{CODE}/([a-z0-9]+(-[a-z0-9]+)*/)+', v):
+                err.append(f'slugs.{k}: {v!r} not /{CODE}/…/ ASCII lowercase')
+        elif k in FULL:
             if not re.fullmatch(rf'/{CODE}/([a-z0-9]+(-[a-z0-9]+)*/)?', v):
                 err.append(f'slugs.{k}: {v!r} not /{CODE}/…/ ASCII lowercase')
         elif not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v):
             err.append(f'slugs.{k}: {v!r} not one ASCII segment')
-    full = [v for k, v in s.items() if k in FULL]
+    full = [v for k, v in s.items() if k in FULL or k in EXTRA]
     if len(set(full)) != len(full):
         err.append('slugs: duplicate paths')
 
@@ -182,7 +187,7 @@ def slugs():
 def csvs():
     src_c = [r['cc'] for r in csv.DictReader(open(NAMES / 'countries.csv', encoding='utf-8'))]
     rows = list(csv.DictReader(open(HERE / 'countries.csv', encoding='utf-8')))
-    if rows and list(rows[0]) != ['cc', 'name', 'slug', 'in_phrase', 'note']:
+    if rows and list(rows[0]) not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):
         err.append(f'countries.csv header {list(rows[0])}')
     if [r['cc'] for r in rows] != src_c:
         err.append(f'countries.csv: {len(rows)} rows, cc list differs from names/countries.csv ({len(src_c)})')
@@ -209,6 +214,15 @@ def csvs():
     for r in cr:
         if not (r['name'] and r['in_phrase']) or r['decl_ok'] not in ('0', '1'):
             err.append(f"cities.csv {r['geonameid']}: empty field or bad decl_ok")
+    # FIXL: every city page of state/pages_state.json must have a row
+    ps = WORLD / 'state' / 'pages_state.json'
+    if ps.exists():
+        page_g = {v['key'].split(':')[-1] for v in json.load(open(ps, encoding='utf-8')).values()
+                  if v.get('type') == 'city' and str(v.get('key', '')).startswith('t:')}
+        if page_g - set(ids):
+            err.append(f'cities.csv: {len(page_g - set(ids))} city pages without a row, e.g. {sorted(page_g - set(ids))[:5]}')
+    else:
+        warn.append('state/pages_state.json not found: city pages not checked')
     return len(rows), len(cr), sum(r['decl_ok'] == '1' for r in cr)
 
 

@@ -50,3 +50,9 @@ Independent agent translated 60 random ET strings back to EN blind, then compare
 - City titles use `{city_u}` (`t_city`, `t_city_cc`, `d_city`) — engine must pass `city_u` for et; `t_near` → " (lähedal: {x})" (x is nominative).
 - No "me/meie/toimetus/kohe" (check.py). "toimetuslik" avoided → *ajakirjanduslik sisu*.
 - check.py: all 8 files, `texts.pay`/`texts.routes` against the multilingual nodes of pay.json/routes.json, `{city_u}`/`{country_u}` accepted for `{city}`/`{country}`/`{country_name}`.
+
+## FIXL (11.11.2026)
+- `strings_home.json` — 71 keys; plurals {one, other} = nominative / partitive sg (*laadimiskoht / laadimiskohta*, *riik / riiki*, *avalik koht / avalikku kohta*).
+- Section slugs: /et/kuidas-maksta/, /et/marsruudid/, /et/meediale/, /et/andmed-ettevotetele/, /et/embed/kaart/, /et/kaart-veebilehele/, /et/arendajatele/.
+- D13: Kiiev, Holland, 2sg buttons / polite messages — kept. name_nom (D14) not needed for et.
+- cities.csv: +48 NOBIL (-s/-is rule, decl_ok=0) + Genf/Genfis.

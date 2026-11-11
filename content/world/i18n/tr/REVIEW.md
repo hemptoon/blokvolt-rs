@@ -38,3 +38,14 @@ ASCII, естественные; раздела `content/com/local/tr/` нет �
 - **check.py**: 8 файлов строк, разделы texts.json `pay`/`routes` по путям узлов LANG0, города из pages_state → 0 ошибок.
 - **Обратный перевод** 60 случайных новых строк (независимый агент): смысловых расхождений 0. По замечаниям исправлено 10 строк: «embed», «bülten», «Kullanımda», «Diğer», «{c} km mesafe içinde» (было «на расстоянии», а не «в пределах»), f_europe, th_change, dv_f_ok.
 - Длина ≤ EN×1,4: укорочены cf_copy, th_fast, th_gaps, th_car, dv_contact; длиннее остались «Kopyalandı», «Güzergâhlar», «Listelenmiş» — короче по-турецки нет.
+
+## FIXL 11.11.2026
+Проверено: новый `strings_home.json` (71 ключ), `lang_hint`/`lang_hint_close`, D11 (`dv_p_lang`, `p_hub_na`), D13 (8 строк strings_map), D12 (8 городов), 7 слагов, Женева, 48 городов NOBIL (сверены по произношению — правок нет, только note).
+Обратный перевод (волна 2, вслепую): 10 строк home (title, h1, sub, search_none, near_err, prices_p, p_ratio, work_p, ap_note, routes_h) + 5 изменённых (ci_n30, r_ok, dv_p_lang, p_hub_na, lang_hint).
+- Расхождение: `prices_p` — потерялось «против цены дома» (читалось как «цена DC и ev elektriği») → добавлено «ev elektriğiyle karşılaştırmalı».
+- `routes_h` «Uzun yol güzergâhları» ≈ "long-distance routes" для EN "Road trips" — оставлено (в турецком «road trip» так и передаётся).
+- «EV» в title не используется: по-турецки «EV şarj» читается как «домашняя зарядка» (ev = дом).
+D13: check-in водителя = «durum bildirimi» (ci_last_ne_radi, ci_last_zauzeto, ci_n30, ci_privacy, home work_p), сообщение об ошибке = «hata bildirimi» (r_ok, r_err_net, r_err_limit, r_err). press.f_checkins (цены от водителей) оставлено «bildirim» — это не статус и не ошибка.
+D12 (исторические/османские названия чужих городов → официальное местное, латиница = name_en): Kandiye (Heraklion) → Heraklion, Eğriboz (Halkida) → Chalkida, İstanköy (Kos) → Kos, Resmo → Rethymno, Yanya → Ioannina, Preveze → Preveza, Filibe (Plovdiv) → Plovdiv (и в texts.routes[5].stops[3]), İşkodra → Shkodër («Shkodër şehrinde», decl_ok=0).
+Оставлены как обычные турецкие экзонимы крупных городов (их же использует МИД Турции в названиях консульств): Selanik, Sofya, Burgaz, Üsküp, Ohri, Priştine, Saraybosna, Belgrad, Bükreş, Atina, Tiflis; фонетические Hanya, Rodos, Korfu, Korint.
+Сомнения: Burgaz/Üsküp/Selanik — если нужна строже нейтральность, заменить на Burgas/Skopje/Thessaloniki; Kiev (D13 его не трогает) — турецкая пресса всё чаще пишет «Kiev», МИД — «Kiev»; оставлено.

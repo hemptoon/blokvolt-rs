@@ -36,3 +36,13 @@
 - `press.d_issue`, `f_mom`: {month}/{prev} в именительном → «({month})», «z obdobjem {prev}».
 - 48 новых городов NO/SE (NOBIL) — «v kraju X», decl_ok 0; их ещё нет в names/cities.csv, check.py допускает id из pages_state.
 - Кавычки: в новых строках словенские »…« (apps_note), в старых texts — ASCII. Унифицировать при вычитке.
+
+## FIXL 11.11.2026
+Preverjeno: strings_home (71 ključev, nova datoteka), strings_shell `lang_hint`/`lang_hint_close`, D11 (`dv_p_lang`, `p_hub_na`), slugs (+7), cities.csv (48 NOBIL preverjenih + Ženeva), D12, D13 (narekovaji).
+Povratni prevod (val 2, naslepo, nato primerjava z EN): 10 nizov home (title, desc, h1, sub, near_err, map_err, prices_p, work_p, trust_p, org_desc) + 4 spremenjeni (dv_p_lang, p_hub_na, lang_hint, lang_hint_close).
+- Popravljeno: `work_p` »brez računa« je dvoumno (račun = tudi »bill«) → »brez uporabniškega računa«.
+- `desc` brez »za vsako mesto« na koncu (dolžina 168) — smisel ostaja.
+- `search_label` »mesto« = city; ob »polnilno mesto« možna dvoumnost, a v paru z »državo« jasno.
+D13: narekovaji »…« — pregledani vsi JSON v sl/: ASCII "…" ali „…“ v besedilu ni več (razen HTML atributov). Nove vrstice brez narekovajev.
+D12: »Valona« (italijansko ime) → »Vlora«, »v Vlori«. Ostali eksonimi so ustaljeni v slovenščini in nevtralni (Gradec, Celovec, Beljak, Trst, Videm, Bocen, Reka, Pulj, Pečuh, Sombotel, Šopron, Temišvar, Lvov) — ostanejo. Dvom: »Skadar« (Shkodër) — ustaljeno v slovenščini, ostavljeno; odločitev naročnika.
+48 krajev NOBIL: imena = name_local, »v kraju X«, decl_ok=0 — pravilno; opomba posodobljena (zdaj so v names/cities.csv).

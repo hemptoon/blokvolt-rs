@@ -41,7 +41,7 @@
  "dv_p_mreza": "Slug da rede; vários, separados por vírgulas",
  "dv_p_snaga": "Classes de potência: ac, dc, hpc, nepoznato (desconhecida)",
  "dv_p_tema": "tamna = mapa de base escuro",
- "dv_p_lang": "Idioma: definido pelo endereço do widget (EN, SR, RU)",
+ "dv_p_lang": "Idioma: definido pelo endereço do widget",
  "dv_p_hash": "Vista exata: #zoom/latitude/longitude no fim do endereço",
  "dv_open_h": "Dados abertos do mapa mundial",
  "dv_open_p": "Um ficheiro CSV semanal da camada pública, ODbL 1.0, colunas: {n}.",

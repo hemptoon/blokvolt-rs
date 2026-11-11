@@ -45,5 +45,7 @@
  "pl_cc": {
   "one": "land",
   "other": "lande"
- }
+ },
+ "lang_hint": "Denne side findes også på dansk",
+ "lang_hint_close": "Luk"
 }

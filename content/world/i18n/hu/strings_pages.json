@@ -69,21 +69,48 @@
  "p_dc": "DC gyorstöltés 50 kW-tól: {dc} ({pct_dc}); 150 kW vagy több: {hpc}.",
  "p_gnet": "A(z) {net} {n_countries} van jelen.",
  "p_hub": "Saját oldala annak az országnak van, ahol legalább 100 közepes vagy magas megbízhatóságú nyilvános töltőhely található. A Nyugat-Balkán országait az egyes országok BlokVolt-oldalai fedik le.",
- "p_hub_na": "Az Egyesült Államok és Kanada angolul és oroszul érhető el; a szerb nyelvű oldalak Európát fedik le.",
+ "p_hub_na": "A városok és a hálózatok oldalai minden országhoz elérhetők angolul és oroszul, valamint az adott ország nyelvén.",
  "p_multi": "Két vagy több forrással megerősített töltőhelyek aránya: {pct_multi}; a 2025-ben vagy 2026-ban utoljára megerősített helyek aránya: {pct_recent}.",
  "p_net_share": "A hálózat {country_u} {n_cities} van jelen; részesedése az ország itt bemutatott nyilvános töltőhelyeiből: {share}.",
  "p_nonet": "Ismert hálózat nélkül: {nonet}.",
  "p_shown": "Látható: {n} nyílt forrásokból, nem minden létező töltő. A 40 alatti megbízhatóságú pontok és a magántöltők nem szerepelnek.",
  "pct": "{x}%",
- "pl_city": {"one": "város", "other": "város"},
- "pl_city_in": {"one": "városban", "other": "városban"},
- "pl_country": {"one": "ország", "other": "ország"},
- "pl_country_in": {"one": "országban", "other": "országban"},
- "pl_loc": {"one": "töltőhely", "other": "töltőhely"},
- "pl_net": {"one": "hálózat", "other": "hálózat"},
- "pl_place": {"one": "helyszín", "other": "helyszín"},
- "pl_point": {"one": "töltőpont", "other": "töltőpont"},
- "pl_publoc": {"one": "nyilvános töltőhely", "other": "nyilvános töltőhely"},
+ "pl_city": {
+  "one": "város",
+  "other": "város"
+ },
+ "pl_city_in": {
+  "one": "városban",
+  "other": "városban"
+ },
+ "pl_country": {
+  "one": "ország",
+  "other": "ország"
+ },
+ "pl_country_in": {
+  "one": "országban",
+  "other": "országban"
+ },
+ "pl_loc": {
+  "one": "töltőhely",
+  "other": "töltőhely"
+ },
+ "pl_net": {
+  "one": "hálózat",
+  "other": "hálózat"
+ },
+ "pl_place": {
+  "one": "helyszín",
+  "other": "helyszín"
+ },
+ "pl_point": {
+  "one": "töltőpont",
+  "other": "töltőpont"
+ },
+ "pl_publoc": {
+  "one": "nyilvános töltőhely",
+  "other": "nyilvános töltőhely"
+ },
  "regional_guide": "Regionális útmutató – {country}: hálózatok, árak, támogatások",
  "report": "Hiba bejelentése",
  "report_map": "Egy töltőhely hibája a térképen, a töltőhely kártyáján lévő „Hiba bejelentése” gombbal jelenthető be.",

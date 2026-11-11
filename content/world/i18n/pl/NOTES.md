@@ -72,3 +72,14 @@ Tłumaczenie wsteczne 60 losowych ciągów (osobny agent, najpierw na ślepo PL�
 - **Dla LANG0/K8:** `world_press.py` ma na sztywno teksty faktów tylko dla de/fr (`FACTS_DE_FR`) i `Names.in_()` bez gałęzi pl — dla PL musi brać `strings_press` i `countries.csv:in_phrase`. Tak samo `cu()` w `world_pay.py`.
 - Termin: coverage aplikacji = „lista krajów / kraje obsługiwane”, coverage danych (B2B) = „pokrycie” — nie „zasięg” (kojarzy się z zasięgiem auta).
 - Kraj własny: PL. Wszystkie 9 miast PL z `pages_state.json` są w `cities.csv` z pełną odmianą (we Wrocławiu, w Białymstoku, w Łodzi…); nowych miast PL brak. 48 miast NOBIL (SE 46, NO 2) nie ma jeszcze w `names/cities.csv` — to nie rynek PL, w PL będą tylko na stronach EN-fallback.
+
+## FIXL (11.11.2026)
+
+- Slugi (F5): `/pl/jak-placic/`, `/pl/trasy/`, `/pl/dla-mediow/`, `/pl/dane-dla-firm/`, `/pl/embed/mapa/`, `/pl/mapa-na-strone/`,
+  `/pl/dla-programistow/`.
+- Strona główna (F3): "charging place" = lokalizacja ładowania; `pl_countries` w mianowniku/dopełniaczu liczebnikowym
+  (kraj/kraje/krajów/kraju), nie w miejscowniku jak `pl_cc`; tytuł SEO z «mapa ładowarek».
+- D12: nazwy historyczne małych miast litewskich i Strzałów/Gryfia → nazwy urzędowe (lista w REVIEW.md).
+- name_nom nie jest potrzebne (brak rodzajników); check.py dopuszcza `{name_nom}` zamiast `{name}` dla zgodności.
+- Miasta: 48 NOBIL — -köping/-berg/-borg/-holm odmieniane (w Nyköpingu, w Sundbybergu, w Katrineholmie), -å nieodmienne
+  (w Luleå, jak w Umeå), reszta «w mieście X» (decl_ok=0); Genewa — «w Genewie».

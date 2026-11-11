@@ -45,5 +45,7 @@
  "pl_cc": {
   "one": "Land",
   "other": "Ländern"
- }
+ },
+ "lang_hint": "Diese Seite gibt es auch auf Deutsch",
+ "lang_hint_close": "Schließen"
 }

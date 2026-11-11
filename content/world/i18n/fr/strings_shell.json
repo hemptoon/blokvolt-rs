@@ -47,5 +47,7 @@
   "one": "pays",
   "many": "pays",
   "other": "pays"
- }
+ },
+ "lang_hint": "Cette page existe aussi en français",
+ "lang_hint_close": "Fermer"
 }

@@ -34,3 +34,10 @@ töltőállomás — станция; töltőhely — место/локация; 
 - **Для LANG0 — какие формы ждут плейсхолдеры:** `{cu}` (t_pay_country, d_pay_country) и `{lo}`/`{hi}` в `f_range` — форма места = `in_phrase` из countries.csv («Németországban»). `{name}` в pay и `{lo}`/`{hi}` в `f_home` — именительный; фразы построены так, чтобы не требовать артикля a/az («Ez az ország ({name}) …», «Töltőállomások — {name}»). `{month}`, `{prev}`, `{date}`, `{fx}`, `{layer}` стоят без падежных суффиксов (после двоеточия или в скобках) — подойдёт любой формат даты/месяца.
 - Название индекса: «Európai elektromosautó-töltési árindex». «Sajtónak» = For media. «szerkesztőségi» не используется (запрещённое слово в check.py) — «sajtótartalom».
 - check.py: все 8 файлов + texts.json about_data, download, pay, routes (пути узлов сверяются с pay.json/routes.json) → OK.
+
+## FIXL (11.11.2026)
+- strings_home.json (71 kulcs); lang_hint „Ez az oldal magyarul is elérhető”, lang_hint_close „Bezárás”.
+- Slugok: /hu/fizetesi-modok/ /hu/utvonalak/ /hu/sajtonak/ /hu/adatok-cegeknek/ /hu/embed/terkep/ /hu/terkep-a-weboldalara/ /hu/fejlesztoknek/.
+- name_nom: nem használjuk (D14 csak de fr it es pt el); a check.py megengedi.
+- D12 (végleges): a volt Magyar Királyság más országbeli városai helyi hivatalos névvel (Bratislava, Košice, Cluj-Napoca, Timișoara, Novi Sad, Subotica, Osijek, Čakovec, Sibiu …, 32 sor) — a fenti „спорное” kérdés lezárva. Bevett semleges exonimák maradnak (Bécs, Prága, Belgrád, Zágráb, Bukarest).
+- cities.csv: +48 NOBIL (auto -ban/-ben) + Genf „Genfben”.

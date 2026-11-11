@@ -41,7 +41,7 @@
  "dv_p_mreza": "A hálózat slugja; több is lehet, vesszővel elválasztva",
  "dv_p_snaga": "Teljesítményosztályok: ac, dc, hpc, nepoznato (ismeretlen)",
  "dv_p_tema": "tamna = sötét alaptérkép",
- "dv_p_lang": "Nyelv: a widget URL-je határozza meg (EN, SR, RU)",
+ "dv_p_lang": "Nyelv: a widget URL-je határozza meg",
  "dv_p_hash": "Pontos nézet: #nagyítás/szélesség/hosszúság a cím végén",
  "dv_open_h": "A világtérkép nyílt adatai",
  "dv_open_p": "Heti CSV-fájl a nyilvános rétegről, ODbL 1.0, oszlopok: {n}.",

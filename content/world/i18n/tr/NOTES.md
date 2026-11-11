@@ -36,3 +36,10 @@
 - `sources_pages.json` is not translated (by rule).
 - Native-speaker read before the language is enabled (G8): the long texts (texts.json, m1–m4, profiles_note).
 - decl_ok=0 cities (4,067) — can be improved by hand or with pronunciation data.
+
+## FIXL (11.11.2026)
+- `strings_home.json` (HOME2) — 71 ключ; pl_* = {one, other}, обе формы одинаковы. Нет «EV» (ev = дом).
+- D13: driver check-in = «durum bildirimi», error report = «hata bildirimi».
+- D12: османские названия греческих/болгарских/албанских городов заменены местными (Heraklion, Chalkida, Kos, Rethymno, Ioannina, Preveza, Plovdiv, Shkodër); Selanik, Üsküp, Sofya, Burgaz и др. крупные — оставлены.
+- Слаги разделов: /tr/nasil-odenir/, /tr/guzergahlar/, /tr/medya-icin/, /tr/isletmeler-icin-veri/, /tr/embed/harita/, /tr/siteniz-icin-harita/, /tr/gelistiriciler-icin/.
+- Cities: Cenevre (Cenevre'de); 48 NOBIL проверены. name_nom (D14) для tr не нужен (нет артиклей).

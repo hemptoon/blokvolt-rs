@@ -9,5 +9,12 @@
  "prices": "/sv/laddpriser/",
  "shell_about": "/sv/om/",
  "sources": "/sv/kallor/",
- "methodology": "/sv/metod/"
+ "methodology": "/sv/metod/",
+ "pay": "/sv/sa-betalar-du/",
+ "routes": "/sv/rutter/",
+ "press": "/sv/for-media/",
+ "b2b": "/sv/data-for-foretag/",
+ "embed": "/sv/embed/karta/",
+ "map_conf": "/sv/karta-for-din-webbplats/",
+ "developers": "/sv/for-utvecklare/"
 }

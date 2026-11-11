@@ -77,3 +77,11 @@ See `BACKTRANS.md` (60 random strings, NL → EN by a separate reviewer, compare
 - Press: issue → editie, credit → bronvermelding; B2B: data → gegevens (plural verb).
 - `{cu}`, `{lo}`, `{hi}` are expected to be full in-phrases ("in België"); route cities in texts.json use cities.csv names.
 - check.py now covers all 8 strings files and texts.json `pay` / `routes`; back-translation in BACKTRANS_L2.md.
+
+## FIXL (11.11.2026)
+
+- D13: the reader is addressed with **je / je eigen** everywhere (was u/uw). check.py now bans «u/uw/uzelf» instead of «je/jij/jouw».
+- Slugs (F5): `/nl/betalen/`, `/nl/routes/`, `/nl/pers/`, `/nl/gegevens-voor-bedrijven/`, `/nl/embed/kaart/`,
+  `/nl/kaart-voor-je-website/`, `/nl/ontwikkelaars/`.
+- Home (F3): "charging place" → laadlocatie; Asia-Pacific → Azië-Pacific; "how to pay" heading → «Zo betaal je» (menu stays «Betalen»).
+- Cities: 48 NOBIL towns (local Swedish/Norwegian names, «in X») + Genève (2660646). No name_nom needed (no articles with country names in subject position except «de Verenigde Staten» etc., not used with `{name}`).

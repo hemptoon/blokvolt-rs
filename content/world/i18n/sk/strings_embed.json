@@ -41,7 +41,7 @@
  "dv_p_mreza": "Slug siete, viac sietí oddeľte čiarkou",
  "dv_p_snaga": "Triedy výkonu: ac, dc, hpc, nepoznato (neznámy)",
  "dv_p_tema": "tamna = tmavý podklad mapy",
- "dv_p_lang": "Jazyk: adresa widgetu (EN, SR, RU)",
+ "dv_p_lang": "Jazyk: určuje ho adresa widgetu",
  "dv_p_hash": "Presný výrez: #priblíženie/zemepisná šírka/zemepisná dĺžka na konci adresy",
  "dv_open_h": "Otvorené údaje svetovej mapy",
  "dv_open_p": "Týždenný CSV súbor verejnej vrstvy, ODbL 1.0, počet stĺpcov: {n}.",

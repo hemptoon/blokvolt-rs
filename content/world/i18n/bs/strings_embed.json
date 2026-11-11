@@ -41,7 +41,7 @@
  "dv_p_mreza": "Slug mreže, više njih odvojenih zarezom",
  "dv_p_snaga": "Klase snage: ac, dc, hpc, nepoznato",
  "dv_p_tema": "tamna = tamna podloga",
- "dv_p_lang": "Jezik: određuje ga adresa vidžeta (EN, SR, RU)",
+ "dv_p_lang": "Jezik: određuje ga adresa vidžeta",
  "dv_p_hash": "Tačan prikaz: #zum/širina/dužina na kraju adrese",
  "dv_open_h": "Otvoreni podaci mape svijeta",
  "dv_open_p": "Sedmična CSV datoteka javnog sloja, ODbL 1.0, kolone: {n}.",

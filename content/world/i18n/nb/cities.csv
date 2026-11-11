@@ -2886,7 +2886,7 @@ geonameid,name,in_phrase,decl_ok,note
 8299576,Bridgewater,i Bridgewater,1,
 6182962,Windsor,i Windsor,1,
 7701384,Karabağlar,i Karabağlar,1,
-4180386,Athen,i Athen,1,exonym nb
+4180386,Athens,i Athens,1,"FIXL: US town, local name (was exonym by mistake)"
 4192289,Duluth,i Duluth,1,
 4221333,Sandy Springs,i Sandy Springs,1,
 4363843,North Bethesda,i North Bethesda,1,
@@ -4944,7 +4944,7 @@ geonameid,name,in_phrase,decl_ok,note
 4373349,Wheaton,i Wheaton,1,
 4381072,Chesterfield,i Chesterfield,1,
 4472687,Indian Trail,i Indian Trail,1,
-4505542,Athen,i Athen,1,exonym nb
+4505542,Athens,i Athens,1,"FIXL: US town, local name (was exonym by mistake)"
 4525304,Springboro,i Springboro,1,
 4528291,Whitehall,i Whitehall,1,
 4571722,Bluffton,i Bluffton,1,
@@ -5516,7 +5516,7 @@ geonameid,name,in_phrase,decl_ok,note
 4569067,Aiken,i Aiken,1,
 4575461,Conway,i Conway,1,
 4624601,Germantown,i Germantown,1,
-4683317,Korint,i Korint,1,exonym nb
+4683317,Corinth,i Corinth,1,"FIXL: US town, local name (was exonym by mistake)"
 4720833,Prosper,i Prosper,1,
 4724564,Sachse,i Sachse,1,
 4724642,Saginaw,i Saginaw,1,
@@ -5606,3 +5606,50 @@ geonameid,name,in_phrase,decl_ok,note
 5927690,Coquitlam,i Coquitlam,1,
 12908892,New Taipei City,i New Taipei City,1,from name_en
 3530597,Mexico by,i Mexico by,1,exonym nb
+2660646,Genève,i Genève,1,FIXL
+2727234,Åkersberga,i Åkersberga,1,FIXL
+2726756,Alingsås,i Alingsås,1,FIXL
+2721259,Boo,i Boo,1,FIXL
+2716166,Enköping,i Enköping,1,FIXL
+2715946,Eslöv,i Eslöv,1,FIXL
+2715573,Falkenberg,i Falkenberg,1,FIXL
+2715568,Falköping,i Falköping,1,FIXL
+2709628,Gustavsberg,i Gustavsberg,1,FIXL
+2707953,Haninge,i Haninge,1,FIXL
+2704620,Huddinge,i Huddinge,1,FIXL
+2704613,Hudiksvall,i Hudiksvall,1,FIXL
+2704136,Huskvarna,i Huskvarna,1,FIXL
+2703396,Jakobsberg,i Jakobsberg,1,FIXL
+2701715,Karlskoga,i Karlskoga,1,FIXL
+2701223,Katrineholm,i Katrineholm,1,FIXL
+2699791,Köping,i Köping,1,FIXL
+2699282,Kristinehamn,i Kristinehamn,1,FIXL
+2698767,Kumla,i Kumla,1,FIXL
+2697720,Landskrona,i Landskrona,1,FIXL
+2696503,Lerum,i Lerum,1,FIXL
+2696334,Lidingö,i Lidingö,1,FIXL
+604490,Luleå,i Luleå,1,FIXL
+2692613,Mariestad,i Mariestad,1,FIXL
+2692475,Märsta,i Märsta,1,FIXL
+2690580,Nacka,i Nacka,1,FIXL
+2690170,Nässjö,i Nässjö,1,FIXL
+2688250,Norrtälje,i Norrtälje,1,FIXL
+2687700,Nyköping,i Nyköping,1,FIXL
+2686469,Örnsköldsvik,i Örnsköldsvik,1,FIXL
+2686162,Oskarshamn,i Oskarshamn,1,FIXL
+2684395,Partille,i Partille,1,FIXL
+603570,Piteå,i Piteå,1,FIXL
+602913,Skellefteå,i Skellefteå,1,FIXL
+2676176,Södertälje,i Södertälje,1,FIXL
+2675408,Sollentuna,i Sollentuna,1,FIXL
+2675397,Solna,i Solna,1,FIXL
+2674649,Staffanstorp,i Staffanstorp,1,FIXL
+2670879,Sundbyberg,i Sundbyberg,1,FIXL
+2669772,Täby,i Täby,1,FIXL
+2667303,Trollhättan,i Trollhättan,1,FIXL
+2667094,Tumba,i Tumba,1,FIXL
+2666238,Upplands Väsby,i Upplands Väsby,1,FIXL
+2664203,Västervik,i Västervik,1,FIXL
+2665171,Vänersborg,i Vänersborg,1,FIXL
+2664855,Värnamo,i Värnamo,1,FIXL
+2662689,Visby,i Visby,1,FIXL

@@ -50,3 +50,10 @@
 - Vizuálne opravy: h1 mapy „Mapa nabíjacích staníc“, „Údaje k {d}“, „Ad hoc cena“, below_title „zatiaľ málo údajov“, search_ph „napr. Bratislava, Rakúsko, Mníchov“.
 - Vlastný trh SK: všetkých 6 mestských stránok (Bratislava, Košice, Liptovský Mikuláš, Prešov, Ružomberok, Žilina) má riadok s decl_ok=1; check.py to kontroluje.
 - Otvorené: Ráb/Päťkostolie/Stoličný Belehrad/Brémy vs. Győr/Pécs/Székesfehérvár/Bremen — rozhodnúť pri natívnej korektúre.
+
+## FIXL (11.11.2026)
+- strings_home.json (71 kľúčov); lang_hint „Táto stránka je k dispozícii aj v slovenčine“, lang_hint_close „Zavrieť“.
+- Slugy: /sk/ako-platit/ /sk/trasy/ /sk/pre-media/ /sk/udaje-pre-firmy/ /sk/embed/mapa/ /sk/mapa-na-vas-web/ /sk/pre-vyvojarov/.
+- name_nom: nepoužíva sa (D14 len de fr it es pt el); check.py ho však povoľuje.
+- D12: maďarské mestá miestnym názvom — Győr, Pécs, Székesfehérvár, Eger, Szolnok (Ráb/Päťkostolie/Stoličný Belehrad/Jáger/Solnok zrušené).
+- cities.csv: +48 NOBIL (SE/NO, väčšinou „v meste X“, -berg/-borg skloňované) + Ženeva „v Ženeve“.

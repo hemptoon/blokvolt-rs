@@ -9,5 +9,12 @@
  "prices": "/de/ladepreise/",
  "shell_about": "/de/ueber/",
  "sources": "/de/quellen/",
- "methodology": "/de/methodik/"
+ "methodology": "/de/methodik/",
+ "pay": "/de/bezahlen/",
+ "routes": "/de/routen/",
+ "press": "/de/fuer-medien/",
+ "b2b": "/de/daten-fuer-unternehmen/",
+ "embed": "/de/embed/karte/",
+ "map_conf": "/de/karte-fuer-ihre-website/",
+ "developers": "/de/fuer-entwickler/"
 }

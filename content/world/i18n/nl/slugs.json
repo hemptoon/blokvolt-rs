@@ -9,5 +9,12 @@
  "prices": "/nl/laadprijzen/",
  "shell_about": "/nl/over/",
  "sources": "/nl/bronnen/",
- "methodology": "/nl/methodologie/"
+ "methodology": "/nl/methodologie/",
+ "pay": "/nl/betalen/",
+ "routes": "/nl/routes/",
+ "press": "/nl/pers/",
+ "b2b": "/nl/gegevens-voor-bedrijven/",
+ "embed": "/nl/embed/kaart/",
+ "map_conf": "/nl/kaart-voor-je-website/",
+ "developers": "/nl/ontwikkelaars/"
 }

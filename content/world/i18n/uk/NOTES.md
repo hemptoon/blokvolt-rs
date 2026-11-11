@@ -83,3 +83,9 @@ The report is in `bt_report.md` in the work folder on the Mac.
 - Check-in terms: «відмітка» for a check-in, «Працює / Не працює / Зайнято».
 - Press: {month} stands only where the nominative fits (after a dash, in brackets, in quotes).
 - check.py now covers all 8 string files and texts pay/routes/sources_pages.
+
+## FIXL (11.11.2026)
+- name_nom (D4) not used for uk; countries.csv keeps 5 columns.
+- New slugs (KMU 2010): pay `/uk/yak-oplatyty/`, routes `/uk/marshruty/`, press `/uk/dlia-media/`, b2b `/uk/dani-dlia-biznesu/`, embed `/uk/embed/karta/`, map_conf `/uk/karta-dlia-vashoho-saitu/`, developers `/uk/dlia-rozrobnykiv/`.
+- Cities: +49 (48 NOBIL SE/NO + Женева «у Женеві»), note `FIXL`.
+- lang_hint: «Ця сторінка є також українською».

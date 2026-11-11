@@ -69,7 +69,7 @@
  "p_dc": "DC-Schnellladen ab 50 kW: {dc} ({pct_dc}); 150 kW oder mehr: {hpc}.",
  "p_gnet": "{net} ist in {n_countries} vertreten.",
  "p_hub": "Länder mit mindestens 100 öffentlichen Standorten mittlerer oder hoher Zuverlässigkeit haben eine eigene Seite. Der Westbalkan wird durch die BlokVolt-Seiten der einzelnen Länder abgedeckt.",
- "p_hub_na": "Seiten zu den USA und Kanada gibt es auf Englisch und Russisch; die Seiten auf Serbisch decken Europa ab.",
+ "p_hub_na": "Stadt- und Netzseiten gibt es für jedes Land auf Englisch und Russisch sowie in der jeweiligen Landessprache.",
  "p_multi": "{pct_multi} der Standorte sind von zwei oder mehr Quellen bestätigt; {pct_recent} wurden zuletzt 2025 oder 2026 bestätigt.",
  "p_net_share": "Das Ladenetz ist in {n_cities} {country_u} vertreten; das sind {share} der hier gezeigten öffentlichen Standorte des Landes.",
  "p_nonet": "Ohne bekanntes Ladenetz: {nonet}.",

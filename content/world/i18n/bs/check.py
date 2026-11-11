@@ -20,7 +20,7 @@ def strs(v):
     elif isinstance(v, list):
         for x in v: yield from strs(x)
 
-FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices', 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed')   # L2: all 8
+FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices', 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed', 'strings_home')   # L2: all 8; FIXL: + home
 for f in FILES:
     en = {k: v['en'] for k, v in json.load(open(WORLD / f'{f}.json', encoding='utf-8')).items()}
     tr = json.load(open(HERE / f'{f}.json', encoding='utf-8'))
@@ -33,7 +33,8 @@ for f in FILES:
             elif not all(isinstance(x, str) and x.strip() for x in t.values()): err.append(f'{f}.{k}: empty plural form')
             continue
         if not isinstance(t, str) or not t.strip(): err.append(f'{f}.{k}: empty'); continue
-        nph = lambda x: sorted(re.sub(r'\{(city|country)_u\}', r'{\1}', y) for y in PH.findall(x))   # R-BS: {city_u}/{country_u} allowed for {city}/{country} (pool 4, 00:12)
+        # R-BS: {city_u}/{country_u} allowed for {city}/{country} (pool 4, 00:12); FIXL D14: {name_nom} for {name}
+        nph = lambda x: sorted(re.sub(r'\{(city|country)_u\}', r'{\1}', y).replace('{name_nom}', '{name}') for y in PH.findall(x))
         if nph(e) != nph(t): err.append(f'{f}.{k}: placeholders {PH.findall(e)} vs {PH.findall(t)}')
         if len(e) <= 25 and '{' not in e and len(t) > max(len(e) * 1.4, len(e) + 4): warn.append(f'{f}.{k}: short UI string longer than EN x1.4: {t!r} vs {e!r}')
         if sorted(TAG.findall(e)) != sorted(TAG.findall(t)): err.append(f'{f}.{k}: html/entities differ')
@@ -82,7 +83,8 @@ for sec in ('pay', 'routes'):
 
 KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
 sl = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
-if list(sl) != KEYS and set(sl) != set(KEYS): err.append(f'slugs: keys {list(sl)}')
+EXTRA = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']   # FIXL F5: optional section paths
+if not set(KEYS) <= set(sl) <= set(KEYS) | set(EXTRA): err.append(f'slugs: keys {list(sl)}')
 for k, v in sl.items():
     if k in ('net', 'about', 'download'):
         if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v): err.append(f'slugs.{k}: {v}')
@@ -91,7 +93,8 @@ if len(set(sl.values())) != len(sl): err.append('slugs: duplicates')
 
 src_c = {r['cc'] for r in csv.DictReader(open(WORLD / 'names/countries.csv', encoding='utf-8'))}
 cs = list(csv.DictReader(open(HERE / 'countries.csv', encoding='utf-8')))
-if cs and list(cs[0]) != ['cc', 'name', 'slug', 'in_phrase', 'note']: err.append('countries.csv: columns')
+if cs and list(cs[0]) not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):
+    err.append('countries.csv: columns')   # FIXL D4: an extra last column name_nom is allowed
 if {r['cc'] for r in cs} != src_c: err.append('countries.csv: cc set differs')
 for r in cs:
     if not (r['name'] and r['in_phrase']): err.append(f"countries {r['cc']}: empty")
@@ -103,6 +106,12 @@ src_g = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities.csv',
 ci = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
 if ci and list(ci[0]) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: err.append('cities.csv: columns')
 if not {r['geonameid'] for r in ci} <= src_g: err.append('cities.csv: unknown geonameid')
+# FIXL: every city page of pages_state must have a row
+_ps = WORLD / 'state' / 'pages_state.json'
+if _ps.exists():
+    _pages = {str(v.get('key', '')).split(':')[-1] for v in json.load(open(_ps, encoding='utf-8')).values()
+              if v.get('type') == 'city' and str(v.get('key', '')).startswith('t:')}
+    for x in sorted(_pages - {r['geonameid'] for r in ci}): err.append(f'cities.csv: city with a page missing: {x}')
 for r in ci:
     if not (r['name'] and r['in_phrase']) or r['decl_ok'] not in ('0', '1'): err.append(f"cities {r['geonameid']}: bad row")
     if r['in_phrase'].startswith('u gradu') and r['decl_ok'] != '0': err.append(f"cities {r['geonameid']}: safe phrase must be decl_ok=0")

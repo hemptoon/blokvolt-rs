@@ -11,6 +11,8 @@ CATS = sorted(set(Locale(LANG).plural_form.tags) | {'other'})
 PH = re.compile(r'\{[^{}]*\}')
 TAG = re.compile(r'</?[a-zA-Z][^>]*>|&[a-z#0-9]+;')
 SLUG_KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
+SLUG_EXTRA = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']   # FIXL F5: allowed in addition
+ALT = {'{city_u}': '{city}', '{country_u}': '{country}'}   # FIXL: allowed where EN has {city}/{country}
 ONE_SEG = {'net', 'about', 'download'}
 err = []
 
@@ -19,7 +21,12 @@ def sig(s):
     return sorted(PH.findall(s)), sorted(re.sub(r'\s+', ' ', t) for t in TAG.findall(s))
 
 
-FILES = ['map', 'pages', 'shell', 'prices', 'pay', 'press', 'b2b', 'embed']
+def same(e, t):
+    a, b = sig(e), sig(t)
+    return a == b or (a[1] == b[1] and a[0] == sorted(ALT.get(x, x) for x in b[0]))
+
+
+FILES = ['map', 'pages', 'shell', 'prices', 'pay', 'press', 'b2b', 'embed', 'home']
 for f in FILES:
     en = json.load(open(WORLD / f'strings_{f}.json'))
     tr = json.load(open(HERE / f'strings_{f}.json'))
@@ -33,7 +40,7 @@ for f in FILES:
             elif not all(str(x).strip() for x in t.values()): err.append(f'{f}.{k}: empty plural form')
             continue
         if not isinstance(t, str) or not t.strip(): err.append(f'{f}.{k}: empty/not string'); continue
-        if sig(e) != sig(t): err.append(f'{f}.{k}: placeholders/tags differ {sig(e)} vs {sig(t)}')
+        if not same(e, t): err.append(f'{f}.{k}: placeholders/tags differ {sig(e)} vs {sig(t)}')
         if e.endswith(' | BlokVolt') and not t.endswith(' | BlokVolt'): err.append(f'{f}.{k}: lost " | BlokVolt"')
 
 
@@ -78,16 +85,16 @@ for k in ('pay', 'routes'):
         if sig(e) != sig(t): err.append(f'texts.{k}.{p}: placeholders/tags differ')
 
 sl = json.load(open(HERE / 'slugs.json'))
-if list(sl) != SLUG_KEYS: err.append(f'slugs.json: keys {list(sl)}')
+if [k for k in SLUG_KEYS if k not in sl] or [k for k in sl if k not in SLUG_KEYS + SLUG_EXTRA]: err.append(f'slugs.json: keys {list(sl)}')
 for k, v in sl.items():
     if k in ONE_SEG:
         if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v): err.append(f'slug {k}={v}')
-    elif not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)?', v): err.append(f'slug {k}={v}')
+    elif not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)*', v): err.append(f'slug {k}={v}')
 if len(set(sl.values())) != len(sl): err.append('slugs.json: duplicate values')
 
 src_cc = {r['cc'] for r in csv.DictReader(open(WORLD / 'names' / 'countries.csv'))}
 cc = list(csv.DictReader(open(HERE / 'countries.csv')))
-if [*cc[0]] != ['cc', 'name', 'slug', 'in_phrase', 'note']: err.append('countries.csv header')
+if [*cc[0]] not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']): err.append('countries.csv header')
 if {r['cc'] for r in cc} != src_cc: err.append(f'countries.csv: cc set differs ({len(cc)} vs {len(src_cc)})')
 slugs = [r['slug'] for r in cc]
 if len(set(slugs)) != len(slugs): err.append('countries.csv: duplicate slugs')
@@ -101,6 +108,10 @@ if [*ci[0]] != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: err.append
 g = [r['geonameid'] for r in ci]
 if len(set(g)) != len(g): err.append('cities.csv: duplicate geonameid')
 if set(g) - src_g: err.append(f'cities.csv: unknown geonameid {sorted(set(g) - src_g)[:5]}')
+# FIXL: every city page of pages_state.json must have a row
+_ps = json.load(open(WORLD / 'state' / 'pages_state.json'))
+_pg = {v['key'].split(':')[2] for v in _ps.values() if v.get('type') == 'city'}
+if _pg - set(g): err.append(f'cities.csv: city pages without a name {sorted(_pg - set(g))[:5]} ({len(_pg - set(g))})')
 for r in ci:
     if not r['name'].strip() or not r['in_phrase'].strip() or r['decl_ok'] not in ('0', '1'): err.append(f"city {r['geonameid']}: bad row")
 

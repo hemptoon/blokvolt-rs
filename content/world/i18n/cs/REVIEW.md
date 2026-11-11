@@ -44,3 +44,11 @@ ASCII, естественные, пересечений нет (`content/com/loc
 - Город: «ve Žďáru» → «ve Žďáře nad Sázavou» (норма ÚJČ). Все 63 города CZ и 19 городских страниц CZ из pages_state на месте.
 - check.py проверяет все 8 файлов и разделы `pay`/`routes` → 0 ошибок.
 - Обратный перевод вслепую, 60 случайных новых строк: смысловых расхождений 0, 8 флагов, 4 исправления (`th_trip`, `stops_note`, `lic_p`, `desc` в b2b). Не исправлено: `ci_u_min` «minutu» (стоит после «Cena za» — винительный здесь верный), `cov_yes`/`cov_no` «Uvedena»/«Neuvedena» (речь о стране — женский род), `ci_err` «Odpověď» (так в интерфейсе отметок), «váhy» в press. Файл — `BACKTRANSLATION_L2.tsv`.
+
+## FIXL 11.11.2026
+- Проверено: новый `strings_home.json` (71 ключ, pl_* = one/few/many/other), `lang_hint`/`lang_hint_close`, D11 (`dv_p_lang`, `p_hub_na`), 7 новых слагов, +49 городов.
+- Обратный перевод (волна 2): 10 строк home (title, desc, sub, near_err, search_none, prices_p, p_src, work_p, trust_p, org_desc) + 4 изменённых (dv_p_lang, p_hub_na, lang_hint, lang_hint_close). Смысл совпал 14/14.
+- Исправлено: `prices_p` «Eura za kWh» → «Ceny v eurech za kWh včetně DPH»; `near_err` «posuňte ji na své místo» (двусмысленно) → «posuňte ji tam, kde jste».
+- D12: исторических/ирредентистских экзонимов не найдено. Отличающиеся от местных формы (Vratislav, Štětín, Lvov, Budyšín, Zhořelec, Žitava, Kostnice, Řezno, Cáchy, Linec, Lutych, Lovaň, Soluň, Petrohrad…) — живые стандартные чешские экзонимы, оставлены. Braunschweig уже в местной форме.
+- Шведские/норвежские города NOBIL — «ve městě X», decl_ok 0 (как Linköping, Västerås, Umeå в файле); Женева — «Ženeva», «v Ženevě».
+- Сомнения: «Funguje nabíječka?» (EN «Is it working?»), «Cesty autem» для Road trips.

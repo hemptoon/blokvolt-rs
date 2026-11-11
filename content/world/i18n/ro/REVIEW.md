@@ -38,3 +38,10 @@ ASCII, firești, fără coliziuni: nu există `content/com/local/ro/`; prefixul 
 - `check.py` extins: toate 8 fișiere `strings_*` + `texts.pay` / `texts.routes` (căi existente, placeholdere, diacritice) — 0 erori, 0 avertismente.
 - Retraducere oarbă (alt agent, fără EN) a 60 de șiruri noi aleatorii: sensul coincide la toate 60. 17 observații de stil; aplicate 16 (afir_src, th_cover, stops_note, viniete, th_gaps, ch_europe_d, d_issue, d_press/h_charts/charts_p/embed_code, h_data, desc, what_price, form_p, titlurile hărții încorporate, cf_light „Deschisă”, dv_balkan_p). Neaplicat: road_none „Neverificat încă” (fără substantiv de acord — corect).
 - Butoane > EN × 1,4 rămase inevitabil: Funcționează/Working, Hartă/Map, Mașină/Car, Trimiteți cererea/Send request.
+
+## FIXL 11.11.2026
+- Verificat: `strings_home.json` nou (71 de chei), `lang_hint`/`lang_hint_close`, D11 (`dv_p_lang`, `p_hub_na`), 7 slug-uri noi, 49 de rânduri noi în cities.csv, D13.
+- Retraducere (valul 2): 10 șiruri home (title, desc, data_as_of, search_none, p_ratio, prices_p, o_widget, trust_p, btn_near, countries_p) + cele schimbate (lang_hint, lang_hint_close, dv_p_lang, p_hub_na, NL). Divergență corectată: `btn_near` „În apropiere” („Nearby”) → „Lângă mine” (EN „Near me”). Restul: sensul coincide.
+- D13: NL = „Olanda”, „în Olanda”; slug `tarile-de-jos` → `olanda` (slug-ul era derivat din nume; limba ro nu e încă publicată, deci nicio adresă publică nu se schimbă).
+- `title` scurtat la 69 de caractere: „Stații de încărcare în Europa și lume: hartă, prețuri, plată | BlokVolt”.
+- Rânduri noi orașe: 46 SE + 2 NO cu numele local (diacritice), „în X”, decl_ok=1; Geneva (2660646) = „Geneva”, „în Geneva”. Nota veche despre cele 144 de orașe NOBIL lipsă: rezolvată pentru cele 48 de pagini existente.

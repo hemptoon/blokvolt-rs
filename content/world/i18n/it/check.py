@@ -9,7 +9,8 @@ WORLD = HERE.parent.parent
 errs, warns = [], []
 PH = re.compile(r'\{[^{}]*\}'); TAG = re.compile(r'</?[a-zA-Z][^>]*>|&[a-zA-Z#0-9]+;')
 # pool 4 (10.11.2026): {city_u}/{country_u} may replace {city}/{country}/{country_name} where a preposition+case is needed
-_U = {'{city_u}': '{city}', '{country_u}': '{country}'}
+# FIXL (11.11.2026, D14): {name_nom} (country name with article, countries.csv:name_nom) may stand where EN has {name}
+_U = {'{city_u}': '{city}', '{country_u}': '{country}', '{name_nom}': '{name}'}
 def toks(s, rx): return sorted(_U.get(t, t) for t in rx.findall(s))
 def toks_en(s, rx): return sorted({'{country_name}': '{country}'}.get(t, t) for t in toks(s, rx))
 try:
@@ -24,7 +25,7 @@ FORBID = [r'\bnoi\b', r'\bnostr[aoie]\b', r'\bredazion', r'24/7', r'\bsubito\b',
 def forbid(where, v):
     for pat in FORBID:
         if re.search(pat, v, re.I): errs.append(f'{where}: forbidden word ({pat})')
-for name in ('map', 'pages', 'shell', 'prices', 'pay', 'press', 'b2b', 'embed'):
+for name in ('map', 'pages', 'shell', 'prices', 'pay', 'press', 'b2b', 'embed', 'home'):   # FIXL: + strings_home
     src = json.load(open(WORLD / f'strings_{name}.json', encoding='utf-8'))
     p = HERE / f'strings_{name}.json'
     if not p.exists(): errs.append(f'{p.name}: missing'); continue
@@ -96,12 +97,13 @@ else:
 
 # slugs.json
 SLUG_KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
+SLUG_OPT = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']   # FIXL F5: section paths, optional
 sl = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
-if sorted(sl) != sorted(SLUG_KEYS): errs.append(f'slugs.json: keys {sorted(sl)}')
+if set(SLUG_KEYS) - set(sl) or set(sl) - set(SLUG_KEYS) - set(SLUG_OPT): errs.append(f'slugs.json: keys {sorted(sl)}')
 for k, v in sl.items():
     if k in ('net', 'about', 'download'):
         if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v): errs.append(f'slugs.json:{k}: bad segment {v!r}')
-    elif not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)?', v): errs.append(f'slugs.json:{k}: bad path {v!r}')
+    elif not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)*', v): errs.append(f'slugs.json:{k}: bad path {v!r}')
 paths = [v for k, v in sl.items() if k not in ('net', 'about', 'download')]
 if len(set(paths)) != len(paths): errs.append('slugs.json: duplicate paths')
 
@@ -109,10 +111,12 @@ if len(set(paths)) != len(paths): errs.append('slugs.json: duplicate paths')
 names = list(csv.DictReader(open(WORLD / 'names/countries.csv', encoding='utf-8')))
 cc_all = {r['cc'] for r in names}
 rows = list(csv.DictReader(open(HERE / 'countries.csv', encoding='utf-8')))
-if rows and list(rows[0]) != ['cc', 'name', 'slug', 'in_phrase', 'note']: errs.append('countries.csv: columns')
+# FIXL D14: optional last column name_nom (country as sentence subject, with article)
+if rows and list(rows[0]) not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']): errs.append('countries.csv: columns')
 if {r['cc'] for r in rows} != cc_all: errs.append(f'countries.csv: cc set differs ({len(rows)} rows)')
 for r in rows:
     if not r['name'] or not r['in_phrase']: errs.append(f'countries.csv:{r["cc"]}: empty')
+    if 'name_nom' in r and not (r['name_nom'] or '').endswith(r['name']) and r['cc'] != 'MC': errs.append(f'countries.csv:{r["cc"]}: name_nom {r["name_nom"]!r} does not end with name')
     if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', r['slug']): errs.append(f'countries.csv:{r["cc"]}: slug {r["slug"]!r}')
 if len({r['slug'] for r in rows}) != len(rows): errs.append('countries.csv: duplicate slugs')
 
@@ -123,6 +127,14 @@ if rows and list(rows[0]) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note
 ids = [r['geonameid'] for r in rows]
 if len(set(ids)) != len(ids): errs.append('cities.csv: duplicate geonameid')
 if set(ids) - cg: errs.append(f'cities.csv: {len(set(ids)-cg)} unknown geonameid')
+# FIXL F2: every city page of pages_state must have an Italian row
+try:
+    _ps = json.load(open(WORLD / 'state/pages_state.json', encoding='utf-8'))
+    page_g = {v['key'].split(':')[2] for v in _ps.values() if v.get('type') == 'city'}
+    nopage = sorted(page_g - set(ids))
+    if nopage: errs.append(f'cities.csv: city pages without a row {nopage[:5]} ({len(nopage)})')
+except Exception as e:
+    warns.append(f'pages_state.json not readable ({e}): city pages not checked')
 for r in rows:
     if not r['name'] or not r['in_phrase'] or r['decl_ok'] not in ('0', '1'): errs.append(f'cities.csv:{r["geonameid"]}: bad row')
 print(f'L-{LANG.upper()} check: cities {len(rows)}/{len(cg)}; errors {len(errs)}, warnings {len(warns)}')

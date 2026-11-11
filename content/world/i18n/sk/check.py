@@ -12,8 +12,9 @@ HERE = Path(__file__).resolve().parent
 WORLD = HERE.parent.parent
 NAMES = WORLD / 'names'
 FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
-         'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed')  # L2 (11.11.2026): all 8
+         'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed', 'strings_home')  # L2: all 8; FIXL: + home
 SLUG_KEYS = ('home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology')
+SLUG_EXTRA = ('pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers')  # FIXL F5: allowed in addition
 SLUG_SEGMENT = ('net', 'about', 'download')
 FORBIDDEN = [r'24\s*/\s*7', r'\bokamžite\b', r'\bhneď\b', r'\bEvolako\b', r'\bredakci', r'\bnáš\b', r'\bnaš[aeiou]',
              r'\bmy\s', r'najlepš\w*\s+(nabíjac\w*\s+)?sie']
@@ -25,8 +26,8 @@ ENT = re.compile(r'&[a-zA-Z#0-9]+;')
 
 
 def _norm_ph(x):
-    # pool 4 (10.11.2026): {city_u}/{country_u} may replace {city}/{country}
-    return {'{city_u}': '{city}', '{country_u}': '{country}'}.get(x, x)
+    # pool 4 (10.11.2026): {city_u}/{country_u} may replace {city}/{country}; FIXL (D14): {name_nom} may replace {name}
+    return {'{city_u}': '{city}', '{country_u}': '{country}', '{name_nom}': '{name}'}.get(x, x)
 
 
 def sig(s):
@@ -148,8 +149,10 @@ for part in ('pay', 'routes'):  # L2 (11.11.2026)
         n_txt += 1
 
 S = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
-if tuple(sorted(S)) != tuple(sorted(SLUG_KEYS)):
-    err.append(f'slugs.json keys {sorted(S)} != {sorted(SLUG_KEYS)}')
+if set(SLUG_KEYS) - set(S):
+    err.append(f'slugs.json: missing keys {sorted(set(SLUG_KEYS) - set(S))}')
+if set(S) - set(SLUG_KEYS) - set(SLUG_EXTRA):
+    err.append(f'slugs.json: unknown keys {sorted(set(S) - set(SLUG_KEYS) - set(SLUG_EXTRA))}')
 for k, v in S.items():
     if k in SLUG_SEGMENT:
         ok = re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v)
@@ -161,19 +164,19 @@ if len(set(S.values())) != len(S):
     err.append('slugs.json: duplicate values')
 
 
-def read_csv(name, header):
+def read_csv(name, header, alt=None):  # FIXL D4: alt = optional header with name_nom
     p = HERE / name
     try:
         rows = list(csv.DictReader(open(p, encoding='utf-8', newline='')))
     except FileNotFoundError:
         err.append(f'{name} missing')
         return []
-    if rows and list(rows[0].keys()) != header:
+    if rows and list(rows[0].keys()) not in (header, alt):
         err.append(f'{name}: header {list(rows[0].keys())} != {header}')
     return rows
 
 
-C = read_csv('countries.csv', ['cc', 'name', 'slug', 'in_phrase', 'note'])
+C = read_csv('countries.csv', ['cc', 'name', 'slug', 'in_phrase', 'note'], alt=['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom'])
 src_cc = {r['cc'] for r in csv.DictReader(open(NAMES / 'countries.csv', encoding='utf-8'))}
 if {r['cc'] for r in C} != src_cc:
     err.append(f'countries.csv: cc set differs from names/countries.csv ({len(C)} vs {len(src_cc)})')
@@ -218,6 +221,10 @@ if sk_missing:
 MARKET = ('SK',)
 try:
     PS = json.load(open(WORLD / 'state' / 'pages_state.json', encoding='utf-8'))
+    all_pages = {v['key'].split(':')[2] for v in PS.values() if v.get('type') == 'city'}
+    miss_all = all_pages - set(ids)  # FIXL F2: every city page of pages_state must have a row
+    if miss_all:
+        err.append(f'cities.csv: {len(miss_all)} city pages missing: {sorted(miss_all)[:10]}')
     page_ids = {v['key'].split(':')[2] for v in PS.values()
                 if v.get('type') == 'city' and v['key'].split(':')[1] in MARKET}
     miss = page_ids - set(ids)

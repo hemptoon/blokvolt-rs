@@ -41,7 +41,7 @@
  "dv_p_mreza": "Identyfikator (slug) sieci; kilka — oddzielone przecinkami",
  "dv_p_snaga": "Klasy mocy: ac, dc, hpc, nepoznato (nieznana)",
  "dv_p_tema": "tamna = ciemna mapa bazowa",
- "dv_p_lang": "Język: adres widżetu (EN, SR, RU)",
+ "dv_p_lang": "Język: zależy od adresu widżetu",
  "dv_p_hash": "Dokładny widok: #zoom/szerokość/długość na końcu adresu",
  "dv_open_h": "Otwarte dane mapy świata",
  "dv_open_p": "Cotygodniowy plik CSV z danymi o publicznych punktach ładowania, ODbL 1.0, kolumny: {n}.",

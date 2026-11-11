@@ -1181,7 +1181,7 @@ geonameid,name,in_phrase,decl_ok,note
 2760134,Aalsmeer,in Aalsmeer,1,
 3117735,Madrid,in Madrid,1,
 2748371,Raalte,in Raalte,1,
-3078610,Brünn,in Brünn,1,Exonym (de.wikipedia)
+3078610,Brno,in Brno,1,FIXL D12: lokaler Name
 2971549,Troyes,in Troyes,1,
 2745641,Venlo,in Venlo,1,
 2754669,Heerenveen,in Heerenveen,1,
@@ -1507,7 +1507,7 @@ geonameid,name,in_phrase,decl_ok,note
 2756559,Dronten,in Dronten,1,
 2803073,Arlon,in Arlon,1,
 3068799,Ostrava,in Ostrava,1,
-3077916,Budweis,in Budweis,1,Exonym (de.wikipedia)
+3077916,České Budějovice,in České Budějovice,1,FIXL D12: lokaler Name
 2514301,Mahón,in Mahón,1,Exonym (de.wikipedia)
 630752,Ylöjärvi,in Ylöjärvi,1,
 2987825,Pertuis,in Pertuis,1,
@@ -1584,7 +1584,7 @@ geonameid,name,in_phrase,decl_ok,note
 2794860,Jumet,in Jumet,1,
 2992292,Montluçon,in Montluçon,1,
 3002465,Le Puy-en-Velay,in Le Puy-en-Velay,1,
-3081368,Breslau,in Breslau,1,Exonym (de.wikipedia)
+3081368,Wrocław,in Wrocław,1,FIXL D12: lokaler Name
 2263352,São Domingos de Rana,in São Domingos de Rana,1,
 2792413,Lüttich,in Lüttich,1,Exonym (de.wikipedia)
 2795912,Herve,in Herve,1,
@@ -1687,7 +1687,7 @@ geonameid,name,in_phrase,decl_ok,note
 2265169,Parede,in Parede,1,
 2739723,Santa Maria da Feira,in Santa Maria da Feira,1,
 728193,Plowdiw,in Plowdiw,1,Transliteration (Duden)
-3068160,Pilsen,in Pilsen,1,Exonym (de.wikipedia)
+3068160,Plzeň,in Plzeň,1,FIXL D12: lokaler Name
 2511174,Santa Cruz de Tenerife,in Santa Cruz de Tenerife,1,
 2520493,Calvià,in Calvià,1,
 2521886,Almería,in Almería,1,
@@ -1995,7 +1995,7 @@ geonameid,name,in_phrase,decl_ok,note
 2642607,Middlesbrough,in Middlesbrough,1,
 2655095,Bournemouth,in Bournemouth,1,
 260989,Karditsa,in Karditsa,1,EN-Form (lateinische Umschrift)
-3088171,Posen,in Posen,1,Exonym (de.wikipedia)
+3088171,Poznań,in Poznań,1,FIXL D12: lokaler Name
 2732773,Viana do Castelo,in Viana do Castelo,1,
 2739848,Esposende,in Esposende,1,
 2664454,Västerås,in Västerås,1,
@@ -3525,7 +3525,7 @@ geonameid,name,in_phrase,decl_ok,note
 3064379,Tábor,in Tábor,1,
 3071677,Litoměřice,in Litoměřice,1,
 3073699,Kladno,in Kladno,1,
-3073803,Karlsbad,in Karlsbad,1,Exonym (de.wikipedia)
+3073803,Karlovy Vary,in Karlovy Vary,1,FIXL D12: lokaler Name
 3074204,Jičín,in Jičín,1,
 2516395,Jaén,in Jaén,1,
 2518949,Cullera,in Cullera,1,
@@ -3829,7 +3829,7 @@ geonameid,name,in_phrase,decl_ok,note
 1735106,George Town,in George Town,1,
 2745673,Velsen-Zuid,in Velsen-Zuid,1,
 3140390,Sandefjord,in Sandefjord,1,
-3083829,Stettin,in Stettin,1,Exonym (de.wikipedia)
+3083829,Szczecin,in Szczecin,1,FIXL D12: lokaler Name
 760778,Radom,in Radom,1,
 2264359,Póvoa de Santa Iria,in Póvoa de Santa Iria,1,
 2271977,Algueirão-Mem Martins,in Algueirão-Mem Martins,1,
@@ -4143,7 +4143,7 @@ geonameid,name,in_phrase,decl_ok,note
 599506,Gargždai,in Gargždai,1,
 3162955,Arendal,in Arendal,1,
 3090048,Opole,in Opole,1,
-3099434,Danzig,in Danzig,1,Exonym (de.wikipedia)
+3099434,Gdańsk,in Gdańsk,1,FIXL D12: lokaler Name
 2266977,Loures,in Loures,1,
 2268575,Entroncamento,in Entroncamento,1,
 2738014,Maia,in Maia,1,
@@ -4793,7 +4793,7 @@ geonameid,name,in_phrase,decl_ok,note
 2266988,Loulé,in Loulé,1,
 2269282,Charneca da Caparica,in Charneca da Caparica,1,
 2271961,Almada,in Almada,1,
-667268,Hermannstadt,in Hermannstadt,1,Exonym (de.wikipedia)
+667268,Sibiu,in Sibiu,1,FIXL D12: lokaler Name
 1496747,Nowosibirsk,in Nowosibirsk,1,Transliteration (Duden)
 2694560,Ljungby,in Ljungby,1,
 2707399,Hässleholm,in Hässleholm,1,
@@ -5652,3 +5652,4 @@ geonameid,name,in_phrase,decl_ok,note
 2665171,Vänersborg,in Vänersborg,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
 2664855,Värnamo,in Värnamo,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
 2662689,Visby,in Visby,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2660646,Genf,in Genf,1,FIXL

@@ -53,3 +53,9 @@
 - Числа с существительным — только в нейтральной форме «(mreža: {nets})», без «{n} cijena».
 - Свои страны: BA — название, слаг `bosna-i-hercegovina`, 19 городов BiH с падежами проверены, все верны. Страниц городов BA в мировом слое нет (K3). 48 новых городов NOBIL (NO/SE) в `pages_state.json` ещё нет в `names/cities.csv` — для bs они не нужны (не свой рынок).
 - `check.py` расширен на все 8 файлов и `texts.pay`/`texts.routes` (пути = многоязычные узлы pay.json/routes.json).
+
+## FIXL (11.11.2026)
+- strings_home.json (71 ključ): „Mapa punjača”, „mjesto za punjenje”, „tačka”, „filteri”, „aplikacije i kartice za roaming”, „putarine”, „Azija i Okeanija”, „bez korisničkog računa”.
+- lang_hint „Ova stranica postoji i na bosanskom”, close „Zatvori”.
+- Putanje odjeljaka: /bs/kako-platiti/ /bs/rute/ /bs/za-medije/ /bs/podaci-za-firme/ /bs/embed/mapa/ /bs/mapa-za-vasu-stranicu/ /bs/za-programere/.
+- D12: Ser → Seres. +49 gradova (kao hr: izvorna imena, lokativ iz sr_u, inače „u gradu X”; Ženeva → u Ženevi). name_nom nije potreban (bs nije u D14).

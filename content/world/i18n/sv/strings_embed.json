@@ -41,7 +41,7 @@
  "dv_p_mreza": "Nätverkets slug, flera avgränsade med kommatecken",
  "dv_p_snaga": "Effektklasser: ac, dc, hpc, nepoznato (okänd)",
  "dv_p_tema": "tamna = mörk bakgrundskarta",
- "dv_p_lang": "Språk: widgetens adress (EN, SR, RU)",
+ "dv_p_lang": "Språk: bestäms av widgetens adress",
  "dv_p_hash": "Exakt vy: #zoom/latitud/longitud i slutet av adressen",
  "dv_open_h": "Öppna data för världskartan",
  "dv_open_p": "En veckovis uppdaterad CSV-fil med det publika lagret, ODbL 1.0, kolumner: {n}.",

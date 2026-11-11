@@ -18,7 +18,10 @@ TAG = re.compile(r"</?([a-zA-Z0-9]+)[^>]*>")
 ENT = re.compile(r"&[a-zA-Z#0-9]+;")
 SLUG = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 STRING_FILES = ["strings_map", "strings_pages", "strings_shell", "strings_prices",
-                "strings_pay", "strings_press", "strings_b2b", "strings_embed"]
+                "strings_pay", "strings_press", "strings_b2b", "strings_embed",
+                "strings_home"]  # FIXL: главная (HOME2)
+# FIXL: разделы, которые читает движок; необязательны сверх 11 обязательных ключей
+SECTION_SLUGS = ["pay", "routes", "press", "b2b", "embed", "map_conf", "developers"]
 BANNED = [r"24/7", r"\bmenjëherë\b", r"\bevolako\b"]
 
 
@@ -32,7 +35,9 @@ def plural_tags():
 
 
 def sig(s):
-    return (sorted(PH.findall(s)), [t.lower() for t in TAG.findall(s)], sorted(ENT.findall(s)))
+    # FIXL: {name_nom} допустим там, где в EN {name}; {city_u}/{country_u} — где {city}/{country}
+    ph = [x.replace("{name_nom}", "{name}").replace("_u}", "}") for x in PH.findall(s)]
+    return (sorted(ph), [t.lower() for t in TAG.findall(s)], sorted(ENT.findall(s)))
 
 
 def check_str(where, en, tr):
@@ -130,12 +135,12 @@ def ml_nodes(p, x, out):
 def check_slugs():
     need = ["home", "map", "hub", "net", "about", "download", "gnet", "prices", "shell_about", "sources", "methodology"]
     s = json.load(open(HERE / "slugs.json", encoding="utf-8"))
-    if sorted(s) != sorted(need):
-        ERR.append(f"slugs.json: ключи {sorted(s)} ≠ {sorted(need)}")
+    if not set(need) <= set(s) <= set(need) | set(SECTION_SLUGS):
+        ERR.append(f"slugs.json: ключи {sorted(s)}: нужны {sorted(need)}, можно добавить {SECTION_SLUGS}")
     for k in ["net", "about", "download"]:
         if not SLUG.match(s.get(k, "")):
             ERR.append(f"slugs.{k}: не ASCII-сегмент: {s.get(k)!r}")
-    full = [k for k in need if k not in ("net", "about", "download")]
+    full = [k for k in need if k not in ("net", "about", "download")] + [k for k in SECTION_SLUGS if k in s]
     for k in full:
         v = s.get(k, "")
         segs = v.strip("/").split("/")
@@ -150,7 +155,8 @@ def check_slugs():
 def check_csv():
     cc_src = {r["cc"] for r in csv.DictReader(open(WORLD / "names/countries.csv", encoding="utf-8"))}
     rows = list(csv.DictReader(open(HERE / "countries.csv", encoding="utf-8")))
-    if rows and list(rows[0]) != ["cc", "name", "slug", "in_phrase", "note"]:
+    if rows and list(rows[0]) not in (["cc", "name", "slug", "in_phrase", "note"],
+                                      ["cc", "name", "slug", "in_phrase", "note", "name_nom"]):  # FIXL: D4
         ERR.append(f"countries.csv: колонки {list(rows[0])}")
     got = {r["cc"] for r in rows}
     if got != cc_src:
@@ -162,13 +168,12 @@ def check_csv():
         if not SLUG.match(r["slug"]): ERR.append(f"countries {r['cc']}: слаг {r['slug']!r}")
         if not r["name"].strip() or not r["in_phrase"].strip(): ERR.append(f"countries {r['cc']}: пусто")
     geo = {r["geonameid"] for r in csv.DictReader(open(WORLD / "names/cities.csv", encoding="utf-8"))}
-    # L2: города страниц из state/pages_state.json (в т. ч. новые города NOBIL) тоже допустимы и должны быть
+    # FIXL: каждый geonameid обязан быть в names/cities.csv; города страниц из state/pages_state.json должны быть
     st = WORLD / "state/pages_state.json"
     page_ids = set()
     if st.exists():
         page_ids = {v["key"].split(":")[-1] for v in json.load(open(st, encoding="utf-8")).values()
                     if v.get("type") == "city"}
-    geo |= page_ids
     rows = list(csv.DictReader(open(HERE / "cities.csv", encoding="utf-8")))
     if rows and list(rows[0]) != ["geonameid", "name", "in_phrase", "decl_ok", "note"]:
         ERR.append(f"cities.csv: колонки {list(rows[0])}")

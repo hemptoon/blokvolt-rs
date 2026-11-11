@@ -31,3 +31,14 @@
 ## Для движка (LANG0)
 - `f_range` ждёт `names.in_` (местный падеж: «Lietuvoje») — как сейчас в world_press.py.
 - `p_net_share` «veikia {n_cities} {country_u}» — при n ≥ 10 даёт «12 miestų» (род. п.), это норма; проверить вживую.
+
+## FIXL 11.11.2026
+Проверено: новый `strings_home.json` (71 ключ), `lang_hint`/`lang_hint_close`, D11 (`dv_p_lang`, `p_hub_na`), 7 слагов, 49 городов (48 NOBIL + Женева).
+Обратный перевод (волна 2, вслепую): 10 строк home (title, h1, sub, data_as_of, search_none, near_err, prices_p, p_ratio, work_p, routes_p) + 3 изменённых (dv_p_lang, p_hub_na, lang_hint) — по смыслу совпадают, правок нет.
+- `data_as_of` = «duomenų data: {date}» (а не «duomenys {date}») — так дата не требует падежа.
+- `p_ratio` = «{x}× brangiau nei namuose» — знак «×» вместо «kartus/karto», чтобы не согласовывать с дробным числом.
+- `tab_ap` «Azija ir Okeanija» — короче «Azijos ir Ramiojo vandenyno regionas» для вкладки; смысл тот же набор стран.
+- `trust_p`: «mokamų įrašų» вместо «mokamų vietų» (в about_p «mokamų vietų» двусмысленно — «платные места [зарядки]»; при вычитке R-LT стоит поправить и shell.about_p).
+D13 (lt): имена основателей без литовских окончаний — проверено, в about_p уже «Andrei ir Danila».
+D12: чужие города проверены — исторических/ирредентистских экзонимов нет; Balstogė (Białystok), Krokuva, Varšuva — нормативные литовские формы (VLKK), оставлены.
+Города NOBIL: шведская/норвежская форма, «mieste X», decl_ok=0 (как у остальных шведских городов файла); Женева = «Ženeva / Ženevoje», decl_ok=1.

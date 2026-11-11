@@ -1,151 +1,151 @@
-cc,name,slug,in_phrase,note
-AD,Andorra,andorra,en Andorra,
-AE,Emiratos Árabes Unidos,emiratos-arabes-unidos,en los Emiratos Árabes Unidos,
-AL,Albania,albania,en Albania,
-AM,Armenia,armenia,en Armenia,
-AR,Argentina,argentina,en Argentina,
-AT,Austria,austria,en Austria,
-AU,Australia,australia,en Australia,
-AW,Aruba,aruba,en Aruba,
-AX,Islas Åland,islas-aland,en las Islas Åland,"CLDR «Islas Aland» → с Å, как пишет RAE/Fundéu"
-AZ,Azerbaiyán,azerbaiyan,en Azerbaiyán,
-BA,Bosnia y Herzegovina,bosnia-y-herzegovina,en Bosnia y Herzegovina,
-BB,Barbados,barbados,en Barbados,
-BE,Bélgica,belgica,en Bélgica,
-BG,Bulgaria,bulgaria,en Bulgaria,
-BH,Baréin,barein,en Baréin,
-BO,Bolivia,bolivia,en Bolivia,
-BR,Brasil,brasil,en Brasil,
-BW,Botsuana,botsuana,en Botsuana,
-BY,Bielorrusia,bielorrusia,en Bielorrusia,
-BZ,Belice,belice,en Belice,
-CA,Canadá,canada,en Canadá,
-CH,Suiza,suiza,en Suiza,
-CL,Chile,chile,en Chile,
-CN,China,china,en China,
-CO,Colombia,colombia,en Colombia,
-CR,Costa Rica,costa-rica,en Costa Rica,
-CU,Cuba,cuba,en Cuba,
-CY,Chipre,chipre,en Chipre,
-CZ,Chequia,chequia,en Chequia,CLDR «Chequia» (RAE); «República Checa» тоже в ходу
-DE,Alemania,alemania,en Alemania,
-DK,Dinamarca,dinamarca,en Dinamarca,
-DO,República Dominicana,republica-dominicana,en la República Dominicana,
-DZ,Argelia,argelia,en Argelia,
-EC,Ecuador,ecuador,en Ecuador,
-EE,Estonia,estonia,en Estonia,
-EG,Egipto,egipto,en Egipto,
-ES,España,espana,en España,
-ET,Etiopía,etiopia,en Etiopía,
-FI,Finlandia,finlandia,en Finlandia,
-FJ,Fiyi,fiyi,en Fiyi,
-FO,Islas Feroe,islas-feroe,en las Islas Feroe,
-FR,Francia,francia,en Francia,
-GB,Reino Unido,reino-unido,en el Reino Unido,
-GE,Georgia,georgia,en Georgia,
-GG,Guernesey,guernesey,en Guernesey,
-GH,Ghana,ghana,en Ghana,
-GI,Gibraltar,gibraltar,en Gibraltar,
-GR,Grecia,grecia,en Grecia,
-GT,Guatemala,guatemala,en Guatemala,
-GY,Guyana,guyana,en Guyana,
-HK,Hong Kong,hong-kong,en Hong Kong,"CLDR «RAE de Hong Kong (China)» → короткая форма, как в EN"
-HR,Croacia,croacia,en Croacia,
-HT,Haití,haiti,en Haití,
-HU,Hungría,hungria,en Hungría,
-ID,Indonesia,indonesia,en Indonesia,
-IE,Irlanda,irlanda,en Irlanda,
-IL,Israel,israel,en Israel,
-IM,Isla de Man,isla-de-man,en la Isla de Man,
-IN,India,india,en la India,с артиклем по DPD RAE
-IQ,Irak,irak,en Irak,
-IR,Irán,iran,en Irán,
-IS,Islandia,islandia,en Islandia,
-IT,Italia,italia,en Italia,
-JE,Jersey,jersey,en Jersey,
-JM,Jamaica,jamaica,en Jamaica,
-JO,Jordania,jordania,en Jordania,
-JP,Japón,japon,en Japón,
-KE,Kenia,kenia,en Kenia,
-KG,Kirguistán,kirguistan,en Kirguistán,
-KH,Camboya,camboya,en Camboya,
-KR,Corea del Sur,corea-del-sur,en Corea del Sur,
-KW,Kuwait,kuwait,en Kuwait,
-KY,Islas Caimán,islas-caiman,en las Islas Caimán,
-KZ,Kazajistán,kazajistan,en Kazajistán,
-LB,Líbano,libano,en el Líbano,с артиклем по DPD RAE
-LC,Santa Lucía,santa-lucia,en Santa Lucía,
-LI,Liechtenstein,liechtenstein,en Liechtenstein,
-LK,Sri Lanka,sri-lanka,en Sri Lanka,
-LT,Lituania,lituania,en Lituania,
-LU,Luxemburgo,luxemburgo,en Luxemburgo,
-LV,Letonia,letonia,en Letonia,
-MA,Marruecos,marruecos,en Marruecos,
-MC,Mónaco,monaco,en Mónaco,
-MD,Moldavia,moldavia,en Moldavia,
-ME,Montenegro,montenegro,en Montenegro,
-MF,San Martín,san-martin,en San Martín,
-MK,Macedonia del Norte,macedonia-del-norte,en Macedonia del Norte,
-MM,Myanmar,myanmar,en Myanmar,CLDR «Myanmar (Birmania)» → без скобок
-MN,Mongolia,mongolia,en Mongolia,
-MO,Macao,macao,en Macao,"CLDR «RAE de Macao (China)» → короткая форма, как в EN"
-MT,Malta,malta,en Malta,
-MU,Mauricio,mauricio,en Mauricio,
-MX,México,mexico,en México,
-MY,Malasia,malasia,en Malasia,
-NA,Namibia,namibia,en Namibia,
-NC,Nueva Caledonia,nueva-caledonia,en Nueva Caledonia,
-NG,Nigeria,nigeria,en Nigeria,
-NI,Nicaragua,nicaragua,en Nicaragua,
-NL,Países Bajos,paises-bajos,en los Países Bajos,
-NO,Noruega,noruega,en Noruega,
-NP,Nepal,nepal,en Nepal,
-NZ,Nueva Zelanda,nueva-zelanda,en Nueva Zelanda,
-OM,Omán,oman,en Omán,
-PA,Panamá,panama,en Panamá,
-PE,Perú,peru,en Perú,
-PF,Polinesia Francesa,polinesia-francesa,en la Polinesia Francesa,"с артиклем, как обычно в испанском"
-PH,Filipinas,filipinas,en Filipinas,
-PK,Pakistán,pakistan,en Pakistán,
-PL,Polonia,polonia,en Polonia,
-PR,Puerto Rico,puerto-rico,en Puerto Rico,
-PS,Territorios Palestinos,territorios-palestinos,en los Territorios Palestinos,
-PT,Portugal,portugal,en Portugal,
-PY,Paraguay,paraguay,en Paraguay,
-QA,Catar,catar,en Catar,
-RE,Reunión,reunion,en Reunión,
-RO,Rumanía,rumania,en Rumanía,
-RS,Serbia,serbia,en Serbia,
-RU,Rusia,rusia,en Rusia,
-RW,Ruanda,ruanda,en Ruanda,
-SA,Arabia Saudí,arabia-saudi,en Arabia Saudí,
-SD,Sudán,sudan,en Sudán,
-SE,Suecia,suecia,en Suecia,
-SG,Singapur,singapur,en Singapur,
-SI,Eslovenia,eslovenia,en Eslovenia,
-SJ,Svalbard y Jan Mayen,svalbard-y-jan-mayen,en Svalbard y Jan Mayen,
-SK,Eslovaquia,eslovaquia,en Eslovaquia,
-SM,San Marino,san-marino,en San Marino,
-SO,Somalia,somalia,en Somalia,
-SR,Surinam,surinam,en Surinam,
-SV,El Salvador,el-salvador,en El Salvador,
-SY,Siria,siria,en Siria,
-SZ,Esuatini,esuatini,en Esuatini,
-TH,Tailandia,tailandia,en Tailandia,
-TJ,Tayikistán,tayikistan,en Tayikistán,
-TN,Túnez,tunez,en Túnez,
-TO,Tonga,tonga,en Tonga,
-TR,Turquía,turquia,en Turquía,
-TT,Trinidad y Tobago,trinidad-y-tobago,en Trinidad y Tobago,
-TW,Taiwán,taiwan,en Taiwán,
-UA,Ucrania,ucrania,en Ucrania,
-UG,Uganda,uganda,en Uganda,
-US,Estados Unidos,estados-unidos,en Estados Unidos,без артикля («en Estados Unidos») — допустимо по RAE
-UY,Uruguay,uruguay,en Uruguay,
-UZ,Uzbekistán,uzbekistan,en Uzbekistán,
-VC,San Vicente y las Granadinas,san-vicente-y-las-granadinas,en San Vicente y las Granadinas,
-VE,Venezuela,venezuela,en Venezuela,
-VN,Vietnam,vietnam,en Vietnam,
-WS,Samoa,samoa,en Samoa,
-XK,Kosovo,kosovo,en Kosovo,
-ZA,Sudáfrica,sudafrica,en Sudáfrica,
+cc,name,slug,in_phrase,note,name_nom
+AD,Andorra,andorra,en Andorra,,Andorra
+AE,Emiratos Árabes Unidos,emiratos-arabes-unidos,en los Emiratos Árabes Unidos,,los Emiratos Árabes Unidos
+AL,Albania,albania,en Albania,,Albania
+AM,Armenia,armenia,en Armenia,,Armenia
+AR,Argentina,argentina,en Argentina,,Argentina
+AT,Austria,austria,en Austria,,Austria
+AU,Australia,australia,en Australia,,Australia
+AW,Aruba,aruba,en Aruba,,Aruba
+AX,Islas Åland,islas-aland,en las Islas Åland,"CLDR «Islas Aland» → с Å, как пишет RAE/Fundéu",las Islas Åland
+AZ,Azerbaiyán,azerbaiyan,en Azerbaiyán,,Azerbaiyán
+BA,Bosnia y Herzegovina,bosnia-y-herzegovina,en Bosnia y Herzegovina,,Bosnia y Herzegovina
+BB,Barbados,barbados,en Barbados,,Barbados
+BE,Bélgica,belgica,en Bélgica,,Bélgica
+BG,Bulgaria,bulgaria,en Bulgaria,,Bulgaria
+BH,Baréin,barein,en Baréin,,Baréin
+BO,Bolivia,bolivia,en Bolivia,,Bolivia
+BR,Brasil,brasil,en Brasil,,Brasil
+BW,Botsuana,botsuana,en Botsuana,,Botsuana
+BY,Bielorrusia,bielorrusia,en Bielorrusia,,Bielorrusia
+BZ,Belice,belice,en Belice,,Belice
+CA,Canadá,canada,en Canadá,,Canadá
+CH,Suiza,suiza,en Suiza,,Suiza
+CL,Chile,chile,en Chile,,Chile
+CN,China,china,en China,,China
+CO,Colombia,colombia,en Colombia,,Colombia
+CR,Costa Rica,costa-rica,en Costa Rica,,Costa Rica
+CU,Cuba,cuba,en Cuba,,Cuba
+CY,Chipre,chipre,en Chipre,,Chipre
+CZ,Chequia,chequia,en Chequia,CLDR «Chequia» (RAE); «República Checa» тоже в ходу,Chequia
+DE,Alemania,alemania,en Alemania,,Alemania
+DK,Dinamarca,dinamarca,en Dinamarca,,Dinamarca
+DO,República Dominicana,republica-dominicana,en la República Dominicana,,la República Dominicana
+DZ,Argelia,argelia,en Argelia,,Argelia
+EC,Ecuador,ecuador,en Ecuador,,Ecuador
+EE,Estonia,estonia,en Estonia,,Estonia
+EG,Egipto,egipto,en Egipto,,Egipto
+ES,España,espana,en España,,España
+ET,Etiopía,etiopia,en Etiopía,,Etiopía
+FI,Finlandia,finlandia,en Finlandia,,Finlandia
+FJ,Fiyi,fiyi,en Fiyi,,Fiyi
+FO,Islas Feroe,islas-feroe,en las Islas Feroe,,las Islas Feroe
+FR,Francia,francia,en Francia,,Francia
+GB,Reino Unido,reino-unido,en el Reino Unido,,el Reino Unido
+GE,Georgia,georgia,en Georgia,,Georgia
+GG,Guernesey,guernesey,en Guernesey,,Guernesey
+GH,Ghana,ghana,en Ghana,,Ghana
+GI,Gibraltar,gibraltar,en Gibraltar,,Gibraltar
+GR,Grecia,grecia,en Grecia,,Grecia
+GT,Guatemala,guatemala,en Guatemala,,Guatemala
+GY,Guyana,guyana,en Guyana,,Guyana
+HK,Hong Kong,hong-kong,en Hong Kong,"CLDR «RAE de Hong Kong (China)» → короткая форма, как в EN",Hong Kong
+HR,Croacia,croacia,en Croacia,,Croacia
+HT,Haití,haiti,en Haití,,Haití
+HU,Hungría,hungria,en Hungría,,Hungría
+ID,Indonesia,indonesia,en Indonesia,,Indonesia
+IE,Irlanda,irlanda,en Irlanda,,Irlanda
+IL,Israel,israel,en Israel,,Israel
+IM,Isla de Man,isla-de-man,en la Isla de Man,,la Isla de Man
+IN,India,india,en la India,с артиклем по DPD RAE,la India
+IQ,Irak,irak,en Irak,,Irak
+IR,Irán,iran,en Irán,,Irán
+IS,Islandia,islandia,en Islandia,,Islandia
+IT,Italia,italia,en Italia,,Italia
+JE,Jersey,jersey,en Jersey,,Jersey
+JM,Jamaica,jamaica,en Jamaica,,Jamaica
+JO,Jordania,jordania,en Jordania,,Jordania
+JP,Japón,japon,en Japón,,Japón
+KE,Kenia,kenia,en Kenia,,Kenia
+KG,Kirguistán,kirguistan,en Kirguistán,,Kirguistán
+KH,Camboya,camboya,en Camboya,,Camboya
+KR,Corea del Sur,corea-del-sur,en Corea del Sur,,Corea del Sur
+KW,Kuwait,kuwait,en Kuwait,,Kuwait
+KY,Islas Caimán,islas-caiman,en las Islas Caimán,,las Islas Caimán
+KZ,Kazajistán,kazajistan,en Kazajistán,,Kazajistán
+LB,Líbano,libano,en el Líbano,с артиклем по DPD RAE,el Líbano
+LC,Santa Lucía,santa-lucia,en Santa Lucía,,Santa Lucía
+LI,Liechtenstein,liechtenstein,en Liechtenstein,,Liechtenstein
+LK,Sri Lanka,sri-lanka,en Sri Lanka,,Sri Lanka
+LT,Lituania,lituania,en Lituania,,Lituania
+LU,Luxemburgo,luxemburgo,en Luxemburgo,,Luxemburgo
+LV,Letonia,letonia,en Letonia,,Letonia
+MA,Marruecos,marruecos,en Marruecos,,Marruecos
+MC,Mónaco,monaco,en Mónaco,,Mónaco
+MD,Moldavia,moldavia,en Moldavia,,Moldavia
+ME,Montenegro,montenegro,en Montenegro,,Montenegro
+MF,San Martín,san-martin,en San Martín,,San Martín
+MK,Macedonia del Norte,macedonia-del-norte,en Macedonia del Norte,,Macedonia del Norte
+MM,Myanmar,myanmar,en Myanmar,CLDR «Myanmar (Birmania)» → без скобок,Myanmar
+MN,Mongolia,mongolia,en Mongolia,,Mongolia
+MO,Macao,macao,en Macao,"CLDR «RAE de Macao (China)» → короткая форма, как в EN",Macao
+MT,Malta,malta,en Malta,,Malta
+MU,Mauricio,mauricio,en Mauricio,,Mauricio
+MX,México,mexico,en México,,México
+MY,Malasia,malasia,en Malasia,,Malasia
+NA,Namibia,namibia,en Namibia,,Namibia
+NC,Nueva Caledonia,nueva-caledonia,en Nueva Caledonia,,Nueva Caledonia
+NG,Nigeria,nigeria,en Nigeria,,Nigeria
+NI,Nicaragua,nicaragua,en Nicaragua,,Nicaragua
+NL,Países Bajos,paises-bajos,en los Países Bajos,,los Países Bajos
+NO,Noruega,noruega,en Noruega,,Noruega
+NP,Nepal,nepal,en Nepal,,Nepal
+NZ,Nueva Zelanda,nueva-zelanda,en Nueva Zelanda,,Nueva Zelanda
+OM,Omán,oman,en Omán,,Omán
+PA,Panamá,panama,en Panamá,,Panamá
+PE,Perú,peru,en Perú,,Perú
+PF,Polinesia Francesa,polinesia-francesa,en la Polinesia Francesa,"с артиклем, как обычно в испанском",la Polinesia Francesa
+PH,Filipinas,filipinas,en Filipinas,,Filipinas
+PK,Pakistán,pakistan,en Pakistán,,Pakistán
+PL,Polonia,polonia,en Polonia,,Polonia
+PR,Puerto Rico,puerto-rico,en Puerto Rico,,Puerto Rico
+PS,Territorios Palestinos,territorios-palestinos,en los Territorios Palestinos,,los Territorios Palestinos
+PT,Portugal,portugal,en Portugal,,Portugal
+PY,Paraguay,paraguay,en Paraguay,,Paraguay
+QA,Catar,catar,en Catar,,Catar
+RE,Reunión,reunion,en Reunión,,Reunión
+RO,Rumanía,rumania,en Rumanía,,Rumanía
+RS,Serbia,serbia,en Serbia,,Serbia
+RU,Rusia,rusia,en Rusia,,Rusia
+RW,Ruanda,ruanda,en Ruanda,,Ruanda
+SA,Arabia Saudí,arabia-saudi,en Arabia Saudí,,Arabia Saudí
+SD,Sudán,sudan,en Sudán,,Sudán
+SE,Suecia,suecia,en Suecia,,Suecia
+SG,Singapur,singapur,en Singapur,,Singapur
+SI,Eslovenia,eslovenia,en Eslovenia,,Eslovenia
+SJ,Svalbard y Jan Mayen,svalbard-y-jan-mayen,en Svalbard y Jan Mayen,,Svalbard y Jan Mayen
+SK,Eslovaquia,eslovaquia,en Eslovaquia,,Eslovaquia
+SM,San Marino,san-marino,en San Marino,,San Marino
+SO,Somalia,somalia,en Somalia,,Somalia
+SR,Surinam,surinam,en Surinam,,Surinam
+SV,El Salvador,el-salvador,en El Salvador,,El Salvador
+SY,Siria,siria,en Siria,,Siria
+SZ,Esuatini,esuatini,en Esuatini,,Esuatini
+TH,Tailandia,tailandia,en Tailandia,,Tailandia
+TJ,Tayikistán,tayikistan,en Tayikistán,,Tayikistán
+TN,Túnez,tunez,en Túnez,,Túnez
+TO,Tonga,tonga,en Tonga,,Tonga
+TR,Turquía,turquia,en Turquía,,Turquía
+TT,Trinidad y Tobago,trinidad-y-tobago,en Trinidad y Tobago,,Trinidad y Tobago
+TW,Taiwán,taiwan,en Taiwán,,Taiwán
+UA,Ucrania,ucrania,en Ucrania,,Ucrania
+UG,Uganda,uganda,en Uganda,,Uganda
+US,Estados Unidos,estados-unidos,en Estados Unidos,без артикля («en Estados Unidos») — допустимо по RAE,Estados Unidos
+UY,Uruguay,uruguay,en Uruguay,,Uruguay
+UZ,Uzbekistán,uzbekistan,en Uzbekistán,,Uzbekistán
+VC,San Vicente y las Granadinas,san-vicente-y-las-granadinas,en San Vicente y las Granadinas,,San Vicente y las Granadinas
+VE,Venezuela,venezuela,en Venezuela,,Venezuela
+VN,Vietnam,vietnam,en Vietnam,,Vietnam
+WS,Samoa,samoa,en Samoa,,Samoa
+XK,Kosovo,kosovo,en Kosovo,,Kosovo
+ZA,Sudáfrica,sudafrica,en Sudáfrica,,Sudáfrica

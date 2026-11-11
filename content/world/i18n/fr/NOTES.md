@@ -43,3 +43,10 @@ station de recharge / borne de recharge / point de charge / site de recharge · 
 - Титулы страниц: «Stations de recharge…» → «Bornes de recharge…» (так ищут во Франции и Бельгии; карта уже «bornes»).
 - `check.py`: все 8 файлов + `texts.pay`/`texts.routes` → 0 ошибок.
 - Открыто: `t_near` без элизии (нужен `de_elide` в моторе); Женевы нет в `names/cities.csv`, у Базеля, Лозанны и Люцерна нет страниц городов (данные G2, не перевод); «sans inscription» vs «à l’acte» — по глоссарию.
+
+## FIXL (11.11.2026)
+- `strings_home.json` (71 ключ, `pl_*` = one/many/other); `strings_shell`: `lang_hint` «Cette page existe aussi en français», `lang_hint_close` «Fermer».
+- D14: `countries.csv` + колонка `name_nom` (артикль: le/la/l’/les; без артикля — Israël, Haïti, острова/города-государства на «à»: Malte, Chypre, Cuba, Monaco, Singapour, Oman…; «la Barbade», «La Réunion», «l’île de Man», «les îles Åland»). `{name_nom}` никогда не в начале предложения и не после de/à (нет du/au).
+- D15: `t_near` = « (près {city_de})». `city_de.csv` (98 строк): города с артиклем (du Havre, des Sables-d’Olonne, de La Rochelle, du Bronx…) + все H/Y-города FR/BE/CH явно (d’Hyères, d’Halluin, d’Ypres; de Haguenau, de Huy, de Houilles, de Yutz). Мотору: элизия «d’» только перед гласной, никогда перед h.
+- Слаги: /fr/comment-payer/ /fr/itineraires/ /fr/medias/ /fr/donnees-entreprises/ /fr/embed/carte/ /fr/carte-pour-votre-site/ /fr/developpeurs/.
+- D13: «sans inscription» сохранено. D12: Zweibrücken, Jülich. Женева = Genève.

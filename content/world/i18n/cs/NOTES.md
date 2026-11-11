@@ -37,3 +37,9 @@ CLDR cs: `one` (1), `few` (2–4), `many` (дробные: 1,5 → род. п. �
 - 274 новых ключа (pay, press, b2b, embed, `ci_*`) и `texts.json` → `pay`/`routes`. Подробности — REVIEW.md, раздел L2-CS.
 - Свои страны: только CZ (`market_countries`). Все города CZ есть и склоняются.
 - Открыто: в `names/cities.csv` нет 144 городских страниц SE/NO (новые NOBIL). Для cs их страниц не строят, но запасной EN-счётчик у мотора вырастет.
+
+## FIXL (11.11.2026)
+- `strings_home.json` (71 ключ). h1 «Mapa nabíjení elektromobilů v Evropě a ve světě».
+- Слаги (F5): pay `/cs/jak-platit/` · routes `/cs/trasy/` · press `/cs/pro-media/` · b2b `/cs/data-pro-firmy/` · embed `/cs/embed/mapa/` · map_conf `/cs/mapa-pro-vas-web/` · developers `/cs/pro-vyvojare/`. check.py теперь допускает многосегментные пути.
+- name_nom (D14) к cs не относится; D13 — ничего для cs.
+- cities.csv: +48 NOBIL (ve městě X, decl_ok 0) + Ženeva (v Ženevě).

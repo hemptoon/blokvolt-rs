@@ -1982,7 +1982,7 @@ geonameid,name,in_phrase,decl_ok,note
 3201047,Dubrovnik,Dubrovnikban,1,"auto: -ban/-ben, hangrend"
 3345300,Karlovac,Karlovacban,1,"auto: -ban/-ben, hangrend"
 3197728,Koprivnica,Koprivnicában,1,"auto: -ban/-ben, hangrend"
-3193935,Eszék,Eszéken,1,"hu: exonima, kézi"
+3193935,Osijek,Osijekben,1,FIXL D12: local name instead of historical Hungarian name
 3190589,Požega,Požegában,1,"auto: -ban/-ben, hangrend"
 3192224,Pula,Pulában,1,"auto: -ban/-ben, hangrend"
 3191648,Rijeka,Rijekában,1,"auto: -ban/-ben, hangrend"
@@ -1992,14 +1992,14 @@ geonameid,name,in_phrase,decl_ok,note
 3190586,Slavonski Brod,Slavonski Brodban,1,"auto: -ban/-ben, hangrend"
 3190359,Solin,Solinban,1,"auto: -ban/-ben, hangrend"
 3190261,Split,Splitben,1,"auto: -ban/-ben, hangrend"
-3188383,Varasd,Varasdon,1,"hu: exonima, kézi"
+3188383,Varaždin,Varaždinban,1,FIXL D12: local name instead of historical Hungarian name
 3188244,Velika Gorica,Velika Goricában,1,"auto: -ban/-ben, hangrend"
 3187719,Vinkovci,Vinkovciban,1,"auto: -ban/-ben, hangrend"
 3187047,Vukovar,Vukovarban,1,"auto: -ban/-ben, hangrend"
 3186952,Zadar,Zadarban,1,"auto: -ban/-ben, hangrend"
 3186886,Zágráb,Zágrábban,1,"hu: exonima, kézi"
 3186781,Zaprešić,Zaprešićben,1,"auto: -ban/-ben, hangrend"
-3202888,Csáktornya,Csáktornyán,1,"hu: exonima, kézi"
+3202888,Čakovec,Čakovecben,1,FIXL D12: local name instead of historical Hungarian name
 3202220,Đakovo,Đakovóban,1,"auto: -ban/-ben, hangrend"
 3190941,Šibenik,Šibenikben,1,"auto: -ban/-ben, hangrend"
 3313472,Athlone,Athlone városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
@@ -2414,20 +2414,20 @@ geonameid,name,in_phrase,decl_ok,note
 2732513,Vilar,Vilarban,1,"auto: -ban/-ben, hangrend"
 2732265,Viseu,Viseuban,1,"auto: -ban/-ben, hangrend"
 2738707,Ílhavo,Ílhavóban,1,"auto: -ban/-ben, hangrend"
-683844,Brassó,Brassóban,1,"hu: exonima, kézi"
+683844,Brașov,Brașovban,1,FIXL D12: local name instead of historical Hungarian name
 683506,Bukarest,Bukarestben,1,"hu: exonima, kézi"
-681290,Kolozsvár,Kolozsváron,1,"hu: exonima, kézi"
+681290,Cluj-Napoca,Cluj-Napocában,1,FIXL D12: local name instead of historical Hungarian name
 677697,Galac,Galacon,1,"hu: exonima, kézi"
-665087,Temesvár,Temesváron,1,"hu: exonima, kézi"
+665087,Timișoara,Timișoarában,1,FIXL D12: local name instead of historical Hungarian name
 793111,Aranđelovac,Aranđelovacban,1,"auto: -ban/-ben, hangrend"
 3204674,Bačka Palanka,Bačka Palankában,1,"auto: -ban/-ben, hangrend"
 3204672,Bačka Topola,Bačka Topolában,1,"auto: -ban/-ben, hangrend"
 792680,Belgrád,Belgrádban,1,"hu: exonima, kézi"
-3200802,Futak,Futakon,1,"hu: exonima, kézi"
+3200802,Futog,Futogban,1,FIXL D12: local name instead of historical Hungarian name
 790367,Gornji Milanovac,Gornji Milanovacban,1,"auto: -ban/-ben, hangrend"
 790015,Inđija,Inđijában,1,"auto: -ban/-ben, hangrend"
 789923,Jagodina,Jagodinában,1,"auto: -ban/-ben, hangrend"
-789518,Nagykikinda,Nagykikindán,1,"hu: exonima, kézi"
+789518,Kikinda,Kikindában,1,FIXL D12: local name instead of historical Hungarian name
 789128,Kragujevac,Kragujevacban,1,"auto: -ban/-ben, hangrend"
 789107,Kraljevo,Kraljevóban,1,"auto: -ban/-ben, hangrend"
 788975,Kruševac,Kruševacban,1,"auto: -ban/-ben, hangrend"
@@ -2437,20 +2437,20 @@ geonameid,name,in_phrase,decl_ok,note
 787657,Niš,Nišben,1,"auto: -ban/-ben, hangrend"
 787615,Nova Pazova,Nova Pazovában,1,"auto: -ban/-ben, hangrend"
 787595,Novi Pazar,Novi Pazarban,1,"auto: -ban/-ben, hangrend"
-3194360,Újvidék,Újvidéken,1,"hu: exonima, kézi"
+3194360,Novi Sad,Novi Sadban,1,FIXL D12: local name instead of historical Hungarian name
 787516,Obrenovac,Obrenovacban,1,"auto: -ban/-ben, hangrend"
-787237,Pancsova,Pancsován,1,"hu: exonima, kézi"
+787237,Pančevo,Pančevóban,1,FIXL D12: local name instead of historical Hungarian name
 787050,Pirot,Pirotban,1,"auto: -ban/-ben, hangrend"
 786827,Požarevac,Požarevacban,1,"auto: -ban/-ben, hangrend"
 786690,Prokuplje,Prokupljében,1,"auto: -ban/-ben, hangrend"
 3191429,Ruma,Rumában,1,"auto: -ban/-ben, hangrend"
 785756,Smederevo,Smederevóban,1,"auto: -ban/-ben, hangrend"
 785753,Smederevska Palanka,Smederevska Palankában,1,"auto: -ban/-ben, hangrend"
-3190342,Zombor,Zomborban,1,"hu: exonima, kézi"
+3190342,Sombor,Somborban,1,FIXL D12: local name instead of historical Hungarian name
 3190103,Sremska Mitrovica,Sremska Mitrovicában,1,"auto: -ban/-ben, hangrend"
 785615,Sremčica,Sremčicában,1,"auto: -ban/-ben, hangrend"
 785559,Stara Pazova,Stara Pazovában,1,"auto: -ban/-ben, hangrend"
-3189595,Szabadka,Szabadkán,1,"hu: exonima, kézi"
+3189595,Subotica,Suboticában,1,FIXL D12: local name instead of historical Hungarian name
 784873,Trstenik,Trstenikben,1,"auto: -ban/-ben, hangrend"
 3188434,Užice,Užicében,1,"auto: -ban/-ben, hangrend"
 3188402,Valjevo,Valjevóban,1,"auto: -ban/-ben, hangrend"
@@ -2458,7 +2458,7 @@ geonameid,name,in_phrase,decl_ok,note
 784136,Vršac,Vršacban,1,"auto: -ban/-ben, hangrend"
 784024,Zaječar,Zaječarban,1,"auto: -ban/-ben, hangrend"
 783920,Zemun,Zemunban,1,"auto: -ban/-ben, hangrend"
-783814,Nagybecskerek,Nagybecskereken,1,"hu: exonima, kézi"
+783814,Zrenjanin,Zrenjaninban,1,FIXL D12: local name instead of historical Hungarian name
 791678,Ćuprija,Ćuprijában,1,"auto: -ban/-ben, hangrend"
 792078,Čačak,Čačakban,1,"auto: -ban/-ben, hangrend"
 3191376,Šabac,Šabacban,1,"auto: -ban/-ben, hangrend"
@@ -2491,12 +2491,12 @@ geonameid,name,in_phrase,decl_ok,note
 2685750,Östersund,Östersundban,1,"auto: -ban/-ben, hangrend"
 3196359,Ljubljana,Ljubljanában,1,hu: kézi
 3195506,Maribor,Mariborban,1,hu: kézi
-3060972,Pozsony,Pozsonyban,1,"hu: exonima, kézi"
-724443,Kassa,Kassán,1,"hu: exonima, kézi"
-3059050,Liptószentmiklós,Liptószentmiklóson,1,"hu: exonima, kézi"
-723819,Eperjes,Eperjesen,1,"hu: exonima, kézi"
-3057789,Rózsahegy,Rózsahegyen,1,"hu: exonima, kézi"
-3056508,Zsolna,Zsolnán,1,"hu: exonima, kézi"
+3060972,Bratislava,Bratislavában,1,FIXL D12: local name instead of historical Hungarian name
+724443,Košice,Košicében,1,FIXL D12: local name instead of historical Hungarian name
+3059050,Liptovský Mikuláš,Liptovský Mikuláš városában,0,FIXL D12: local name instead of historical Hungarian name
+723819,Prešov,Prešovban,1,FIXL D12: local name instead of historical Hungarian name
+3057789,Ružomberok,Ružomberokban,1,FIXL D12: local name instead of historical Hungarian name
+3056508,Žilina,Žilinában,1,FIXL D12: local name instead of historical Hungarian name
 702550,Lviv,Lvivben,1,"hu: exonima, kézi"
 789228,Fushë Kosovë,Fushë Kosovë városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
 790674,Gjilan,Gjilan városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
@@ -3867,10 +3867,10 @@ geonameid,name,in_phrase,decl_ok,note
 2732475,Vilar de Andorinho,Vilar de Andorinhóban,1,"auto: -ban/-ben, hangrend"
 2268406,Évora,Évorában,1,"auto: -ban/-ben, hangrend"
 686254,Arad,Aradon,1,hu: kézi
-685826,Nagybánya,Nagybányán,1,"hu: exonima, kézi"
-671768,Nagyvárad,Nagyváradon,1,"hu: exonima, kézi"
-667873,Szatmárnémeti,Szatmárnémetiben,1,"hu: exonima, kézi"
-667268,Nagyszeben,Nagyszebenben,1,"hu: exonima, kézi"
+685826,Baia Mare,Baia Mare városában,0,FIXL D12: local name instead of historical Hungarian name
+671768,Oradea,Oradea városában,0,FIXL D12: local name instead of historical Hungarian name
+667873,Satu Mare,Satu Mare városában,0,FIXL D12: local name instead of historical Hungarian name
+667268,Sibiu,Sibiuban,1,FIXL D12: local name instead of historical Hungarian name
 662476,Voluntari,Voluntariban,1,"auto: -ban/-ben, hangrend"
 1486209,Yekaterinburg,Yekaterinburg városában,0,"auto: biztonságos szerkezet (nem latin írás, angol alak)"
 555312,Ivanovo,Ivanovo városában,0,"auto: biztonságos szerkezet (nem latin írás, angol alak)"
@@ -3910,16 +3910,16 @@ geonameid,name,in_phrase,decl_ok,note
 3197378,Kranj,Kranjban,1,"auto: -ban/-ben, hangrend"
 3077170,Devínska Nová Ves,Devínska Nová Vesben,1,"auto: -ban/-ben, hangrend"
 3060346,Dubnica nad Váhom,Dubnica nad Váhomban,1,"auto: -ban/-ben, hangrend"
-3060308,Dunaszerdahely,Dunaszerdahelyen,1,"hu: exonima, kézi"
-724503,Késmárk,Késmárkon,1,"hu: exonima, kézi"
-3059101,Léva,Léván,1,"hu: exonima, kézi"
+3060308,Dunajská Streda,Dunajská Streda városában,0,FIXL D12: local name instead of historical Hungarian name
+724503,Kežmarok,Kežmarokban,1,FIXL D12: local name instead of historical Hungarian name
+3059101,Levice,Levicében,1,FIXL D12: local name instead of historical Hungarian name
 3058780,Martin,Martinban,1,"auto: -ban/-ben, hangrend"
-3058531,Nyitra,Nyitrán,1,"hu: exonima, kézi"
-723846,Poprád,Poprádon,1,"hu: exonima, kézi"
-723526,Igló,Iglón,1,"hu: exonima, kézi"
-3057140,Trencsén,Trencsénben,1,"hu: exonima, kézi"
-3057124,Nagyszombat,Nagyszombatban,1,"hu: exonima, kézi"
-3056459,Zólyom,Zólyomban,1,"hu: exonima, kézi"
+3058531,Nitra,Nitrában,1,FIXL D12: local name instead of historical Hungarian name
+723846,Poprad,Popradban,1,FIXL D12: local name instead of historical Hungarian name
+723526,Spišská Nová Ves,Spišská Nová Ves városában,0,FIXL D12: local name instead of historical Hungarian name
+3057140,Trenčín,Trenčínben,1,FIXL D12: local name instead of historical Hungarian name
+3057124,Trnava,Trnavában,1,FIXL D12: local name instead of historical Hungarian name
+3056459,Zvolen,Zvolenben,1,FIXL D12: local name instead of historical Hungarian name
 325363,Adana,Adanában,1,"auto: -ban/-ben, hangrend"
 323786,Ankara,Ankarában,1,"auto: -ban/-ben, hangrend"
 323777,Antalya,Antalyában,1,"auto: -ban/-ben, hangrend"
@@ -5604,3 +5604,52 @@ geonameid,name,in_phrase,decl_ok,note
 993800,Johannesburg,Johannesburg városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
 1105776,Midrand,Midrand városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
 964137,Pretoria,Pretoria városában,0,auto: biztonságos szerkezet (nem fonetikus írás)
+2660646,Genf,Genfben,1,FIXL; hu: kézi
+3149563,Kongsberg,Kongsbergben,1,"FIXL; auto: -ban/-ben, hangrend"
+3139075,Skien,Skienben,1,"FIXL; auto: -ban/-ben, hangrend"
+2727234,Åkersberga,Åkersbergában,1,"FIXL; auto: -ban/-ben, hangrend"
+2726756,Alingsås,Alingsåsban,1,"FIXL; auto: -ban/-ben, hangrend"
+2721259,Boo,Boo városában,0,FIXL
+2716166,Enköping,Enköpingben,1,"FIXL; auto: -ban/-ben, hangrend"
+2715946,Eslöv,Eslövben,1,"FIXL; auto: -ban/-ben, hangrend"
+2715573,Falkenberg,Falkenbergben,1,"FIXL; auto: -ban/-ben, hangrend"
+2715568,Falköping,Falköpingben,1,"FIXL; auto: -ban/-ben, hangrend"
+2709628,Gustavsberg,Gustavsbergben,1,"FIXL; auto: -ban/-ben, hangrend"
+2707953,Haninge,Haningében,1,"FIXL; auto: -ban/-ben, hangrend"
+2704620,Huddinge,Huddingében,1,"FIXL; auto: -ban/-ben, hangrend"
+2704613,Hudiksvall,Hudiksvallban,1,"FIXL; auto: -ban/-ben, hangrend"
+2704136,Huskvarna,Huskvarnában,1,"FIXL; auto: -ban/-ben, hangrend"
+2703396,Jakobsberg,Jakobsbergben,1,"FIXL; auto: -ban/-ben, hangrend"
+2701715,Karlskoga,Karlskogában,1,"FIXL; auto: -ban/-ben, hangrend"
+2701223,Katrineholm,Katrineholmban,1,"FIXL; auto: -ban/-ben, hangrend"
+2699791,Köping,Köpingben,1,"FIXL; auto: -ban/-ben, hangrend"
+2699282,Kristinehamn,Kristinehamnban,1,"FIXL; auto: -ban/-ben, hangrend"
+2698767,Kumla,Kumlában,1,"FIXL; auto: -ban/-ben, hangrend"
+2697720,Landskrona,Landskronában,1,"FIXL; auto: -ban/-ben, hangrend"
+2696503,Lerum,Lerumban,1,"FIXL; auto: -ban/-ben, hangrend"
+2696334,Lidingö,Lidingőben,1,"FIXL; auto: -ban/-ben, hangrend"
+604490,Luleå,Luleåban,1,"FIXL; auto: -ban/-ben, hangrend"
+2692613,Mariestad,Mariestadban,1,"FIXL; auto: -ban/-ben, hangrend"
+2692475,Märsta,Märstában,1,"FIXL; auto: -ban/-ben, hangrend"
+2690580,Nacka,Nackában,1,"FIXL; auto: -ban/-ben, hangrend"
+2690170,Nässjö,Nässjőben,1,"FIXL; auto: -ban/-ben, hangrend"
+2688250,Norrtälje,Norrtäljében,1,"FIXL; auto: -ban/-ben, hangrend"
+2687700,Nyköping,Nyköpingben,1,"FIXL; auto: -ban/-ben, hangrend"
+2686469,Örnsköldsvik,Örnsköldsvikben,1,"FIXL; auto: -ban/-ben, hangrend"
+2686162,Oskarshamn,Oskarshamnban,1,"FIXL; auto: -ban/-ben, hangrend"
+2684395,Partille,Partillében,1,"FIXL; auto: -ban/-ben, hangrend"
+603570,Piteå,Piteåban,1,"FIXL; auto: -ban/-ben, hangrend"
+602913,Skellefteå,Skellefteåban,1,"FIXL; auto: -ban/-ben, hangrend"
+2676176,Södertälje,Södertäljében,1,"FIXL; auto: -ban/-ben, hangrend"
+2675408,Sollentuna,Sollentunában,1,"FIXL; auto: -ban/-ben, hangrend"
+2675397,Solna,Solnában,1,"FIXL; auto: -ban/-ben, hangrend"
+2674649,Staffanstorp,Staffanstorpban,1,"FIXL; auto: -ban/-ben, hangrend"
+2670879,Sundbyberg,Sundbybergben,1,"FIXL; auto: -ban/-ben, hangrend"
+2669772,Täby,Täbyben,1,"FIXL; auto: -ban/-ben, hangrend"
+2667303,Trollhättan,Trollhättanban,1,"FIXL; auto: -ban/-ben, hangrend"
+2667094,Tumba,Tumbában,1,"FIXL; auto: -ban/-ben, hangrend"
+2666238,Upplands Väsby,Upplands Väsbyben,1,"FIXL; auto: -ban/-ben, hangrend"
+2664203,Västervik,Västervikben,1,"FIXL; auto: -ban/-ben, hangrend"
+2665171,Vänersborg,Vänersborgban,1,"FIXL; auto: -ban/-ben, hangrend"
+2664855,Värnamo,Värnamóban,1,"FIXL; auto: -ban/-ben, hangrend"
+2662689,Visby,Visbyben,1,"FIXL; auto: -ban/-ben, hangrend"

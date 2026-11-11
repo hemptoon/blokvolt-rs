@@ -45,5 +45,7 @@
  "pl_cc": {
   "one": "shtet",
   "other": "shtete"
- }
+ },
+ "lang_hint": "Kjo faqe është edhe në shqip",
+ "lang_hint_close": "Mbyll"
 }

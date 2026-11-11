@@ -55,17 +55,17 @@
    [
     "Laag",
     "40–49",
-    "Eén of oudere bron; vraag het na bij de exploitant voordat u gaat"
+    "Eén of oudere bron; vraag het na bij de exploitant voordat je gaat"
    ]
   ],
   "notes_h": "Opmerkingen",
   "notes": [
-   "Gegevens worden geleverd zoals ze zijn, zonder enige garantie over juistheid, beschikbaarheid, prijs of compatibiliteit. Vraag het na bij de exploitant of ter plaatse voordat u gaat.",
+   "Gegevens worden geleverd zoals ze zijn, zonder enige garantie over juistheid, beschikbaarheid, prijs of compatibiliteit. Vraag het na bij de exploitant of ter plaatse voordat je gaat.",
    "Elke puntkaart toont de bron, de licentie en de datum van de laatste update.",
    "Netwerknamen en merken zijn eigendom van hun eigenaars.",
    "BlokVolt is niet verbonden aan de exploitanten of aan de instellingen die de gegevens publiceren, en zij onderschrijven deze kaart niet.",
    "Namen van particulieren worden niet getoond; privélaadpalen bij woningen staan niet op de kaart.",
-   "Om een fout te melden of een correctie of verwijdering aan te vragen, gebruikt u de knop \"Fout melden\" op de puntkaart of schrijft u naar {email}. U krijgt binnen 30 dagen antwoord."
+   "Om een fout te melden of een correctie of verwijdering aan te vragen, gebruik je de knop \"Fout melden\" op de puntkaart of schrijf je naar {email}. Je krijgt binnen 30 dagen antwoord."
   ],
   "licence_texts_h": "Licentieteksten",
   "licence_texts": [
@@ -166,11 +166,11 @@
    ]
   ],
   "licence_h": "Licentie",
-  "licence_p": "Het bestand is beschikbaar onder de ODbL 1.0. U mag de gegevens delen, er werken mee maken en ze aanpassen, op voorwaarde dat u \"© OpenStreetMap contributors, BlokVolt\" vermeldt en elke aangepaste database onder dezelfde licentie deelt. Houd ze open: pas geen technische beperkingen toe die deze rechten inperken. Volledige tekst: https://opendatacommons.org/licenses/odbl/1-0/",
+  "licence_p": "Het bestand is beschikbaar onder de ODbL 1.0. Je mag de gegevens delen, er werken mee maken en ze aanpassen, op voorwaarde dat je \"© OpenStreetMap contributors, BlokVolt\" vermeldt en elke aangepaste database onder dezelfde licentie deelt. Houd ze open: pas geen technische beperkingen toe die deze rechten inperken. Volledige tekst: https://opendatacommons.org/licenses/odbl/1-0/",
   "file_h": "Bestand",
   "file_missing": "Het bestand voor deze week wordt voorbereid. Kijk later nog eens.",
-  "attribution_h": "Hoe u de bron vermeldt",
-  "attribution_p": "Als u de gegevens gebruikt, toont u \"© OpenStreetMap contributors, BlokVolt\" met een link naar www.openstreetmap.org/copyright en naar deze pagina, en vermeldt u de licentie ODbL 1.0. Gegevens uit andere bronnen behouden hun eigen naamsvermelding, die op de pagina \"Over de gegevens\" staat."
+  "attribution_h": "Hoe je de bron vermeldt",
+  "attribution_p": "Als je de gegevens gebruikt, toon je \"© OpenStreetMap contributors, BlokVolt\" met een link naar www.openstreetmap.org/copyright en naar deze pagina, en vermeld je de licentie ODbL 1.0. Gegevens uit andere bronnen behouden hun eigen naamsvermelding, die op de pagina \"Over de gegevens\" staat."
  },
  "sources_pages": {
   "ocm": {
@@ -422,7 +422,7 @@
   }
  },
  "pay": {
-  "afir.points[0]": "Ad-hocladen: u kunt laden zonder u te registreren of een contract met de exploitant te sluiten.",
+  "afir.points[0]": "Ad-hocladen: je kunt laden zonder je te registreren of een contract met de exploitant te sluiten.",
   "afir.points[1]": "Exploitanten van openbare laadpalen moeten ad-hocladen aanbieden met een betaalmiddel dat in de EU veel wordt gebruikt.",
   "afir.points[2]": "Nieuwe openbare laadpalen van 50 kW en meer die vanaf 13 april 2024 zijn geplaatst, moeten betaalkaarten accepteren via een kaartlezer of een contactloos apparaat.",
   "afir.points[3]": "Nieuwe openbare laadpalen onder 50 kW mogen in plaats daarvan online betalen aanbieden, bijvoorbeeld via een QR-code op de laadpaal.",

@@ -24,7 +24,7 @@ SLUG_SEG = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')
 FORBIDDEN = [r'24/7', r'\bведнага\b', r'\bние\b', r'\bнаш[аиe]?\b', r'\bредакци', r'Evolako']
 
 STRING_FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
-                'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed')
+                'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed', 'strings_home')   # FIXL: + home
 NODE_LANGS = {'en', 'sr', 'ru'}
 
 errors, warns = [], []
@@ -50,7 +50,8 @@ def plural_cats():
 
 def _norm_ph(x):
     # {city_u}/{country_u} are allowed in every language (pool 4, 00:12): engine puts the language's in_phrase there
-    return re.sub(r'\{(city|country)_u\}', r'{\1}', x)
+    # FIXL D14: {name_nom} may stand where EN has {name}
+    return re.sub(r'\{(city|country)_u\}', r'{\1}', x).replace('{name_nom}', '{name}')
 
 
 def sig(s):
@@ -170,9 +171,10 @@ def check_texts():
 
 def check_slugs():
     want = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
+    extra = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']   # FIXL F5: optional section paths
     s = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
-    if sorted(s) != sorted(want):
-        err(f'slugs.json keys {sorted(s)}')
+    if not set(want) <= set(s) <= set(want) | set(extra):
+        err(f'slugs.json keys {sorted(s)}: need {sorted(want)}, may add {sorted(extra)}')
     for k, v in s.items():
         if k in ('net', 'about', 'download'):
             if not SLUG_SEG.match(v):
@@ -191,7 +193,8 @@ def check_slugs():
 def check_csv():
     src_c = {r['cc']: r for r in csv.DictReader(open(NAMES / 'countries.csv', encoding='utf-8'))}
     rows = list(csv.DictReader(open(HERE / 'countries.csv', encoding='utf-8')))
-    if rows and list(rows[0].keys()) != ['cc', 'name', 'slug', 'in_phrase', 'note']:
+    if rows and list(rows[0].keys()) not in (['cc', 'name', 'slug', 'in_phrase', 'note'],
+                                             ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):   # FIXL D4
         err(f'countries.csv columns {list(rows[0].keys())}')
     seen = set()
     for r in rows:
@@ -232,6 +235,13 @@ def check_csv():
     must = {g for g, r in src.items() if r['cc'] == 'BG' or r['stage'] == 'month'}
     if must - seen:
         err(f'cities.csv: {len(must - seen)} BG/month cities missing')
+    # FIXL: every city page of pages_state must have a row
+    ps = WORLD / 'state' / 'pages_state.json'
+    if ps.exists():
+        pages = {str(v.get('key', '')).split(':')[-1] for v in json.load(open(ps, encoding='utf-8')).values()
+                 if v.get('type') == 'city' and str(v.get('key', '')).startswith('t:')}
+        for g in sorted(pages - seen):
+            err(f'cities.csv: city with a page missing: {g}')
     if len(seen) < len(src):
         warn(f'cities.csv: {len(seen)}/{len(src)} cities covered')
     return len(seen), len(src)

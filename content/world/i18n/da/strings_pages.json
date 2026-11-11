@@ -69,7 +69,7 @@
  "p_dc": "DC-hurtigladning fra 50 kW: {dc} ({pct_dc}); 150 kW eller mere: {hpc}.",
  "p_gnet": "{net} findes i {n_countries}.",
  "p_hub": "Lande med mindst 100 offentlige lokationer med mellem eller høj pålidelighed har en side. Landene på Vestbalkan dækkes af BlokVolts sider for hvert land.",
- "p_hub_na": "USA og Canada findes på de engelske og russiske sider; de serbiske sider dækker Europa.",
+ "p_hub_na": "Sider om byer og ladenetværk findes på engelsk og russisk for alle lande og på landets eget sprog.",
  "p_multi": "{pct_multi} af lokationerne er bekræftet af to eller flere kilder; {pct_recent} blev senest bekræftet i 2025 eller 2026.",
  "p_net_share": "Ladenetværket findes i {n_cities} {country_u}; det udgør {share} af landets offentlige lokationer, der vises her.",
  "p_nonet": "Uden kendt ladenetværk: {nonet}.",

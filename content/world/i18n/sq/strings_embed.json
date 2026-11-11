@@ -41,7 +41,7 @@
  "dv_p_mreza": "Slug-u i rrjetit; disa, të ndara me presje",
  "dv_p_snaga": "Klasat e fuqisë: ac, dc, hpc, nepoznato (e panjohur)",
  "dv_p_tema": "tamna = hartë bazë e errët",
- "dv_p_lang": "Gjuha: përcaktohet nga adresa e widget-it (EN, SR, RU)",
+ "dv_p_lang": "Gjuha: përcaktohet nga adresa e widget-it",
  "dv_p_hash": "Pamja e saktë: #zoom/gjerësia/gjatësia gjeografike në fund të adresës",
  "dv_open_h": "Të dhënat e hapura të hartës botërore",
  "dv_open_p": "Një skedar CSV javor i shtresës publike, ODbL 1.0, kolonat: {n}.",

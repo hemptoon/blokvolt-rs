@@ -45,3 +45,9 @@
 - `texts.download.licence_p`: порядок слов «Mund t'i ndani të dhënat…».
 Не исправлено, вопрос: «priza» (розетки) для connectors. Проверяющий предлагает «konektorë», потому что кабели DC (CCS, CHAdeMO) — не розетки. Оставлено «prizë», как в glossary.csv и в /al/. Если меняем, то во всём /al/ и в glossary сразу (3 строки здесь: `d_hub`, `r_snaga`, `d_network` + `c_conn`, `description`, texts).
 Полный отчёт проверяющего: `~/dev/evdb/work/L-SQ/backtranslation_report.md`.
+
+## FIXL (11.11.2026)
+- D13: connector (CCS, Type 2…) → **konektor** (pl. konektorë, def. konektorët); household socket → **prizë**. Replaces the earlier «prizë» for connectors.
+- name_nom (D4) not used for sq; countries.csv keeps 5 columns.
+- New slugs: pay `/sq/si-te-paguani/`, routes `/sq/itineraret/`, press `/sq/per-mediat/`, b2b `/sq/te-dhena-per-biznesin/`, embed `/sq/embed/harta/`, map_conf `/sq/harta-per-faqen-tuaj/`, developers `/sq/per-zhvilluesit/`.
+- Geneva = «Gjenevë» (in_phrase «në Gjenevë»).

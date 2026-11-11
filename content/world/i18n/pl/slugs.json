@@ -9,5 +9,12 @@
  "prices": "/pl/ceny-ladowania/",
  "shell_about": "/pl/o-serwisie/",
  "sources": "/pl/zrodla/",
- "methodology": "/pl/metodologia/"
+ "methodology": "/pl/metodologia/",
+ "pay": "/pl/jak-placic/",
+ "routes": "/pl/trasy/",
+ "press": "/pl/dla-mediow/",
+ "b2b": "/pl/dane-dla-firm/",
+ "embed": "/pl/embed/mapa/",
+ "map_conf": "/pl/mapa-na-strone/",
+ "developers": "/pl/dla-programistow/"
 }

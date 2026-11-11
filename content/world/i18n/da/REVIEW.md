@@ -58,3 +58,17 @@ Tilbageoversættelse (60 strenge, blind, andet agent): 60/60 i betydning, 16 bem
 Byer: alle 16 DK-byer i pages_state (+10 netværk, 1 land) findes med korrekt navn og slug; cities.csv har alle 5 605 fra names/cities.csv. 48 byer i pages_state (SE 46, NO 2 — NOBIL) mangler i `names/cities.csv` og kan ikke tilføjes i i18n (check kræver geonameid i names) — opgave for sv/nb/LANG0, ikke DK.
 
 Åbent: `p_hub_na` (stadig), `pay.th_map` »Kort« i en betalingskontekst (kort = map/card) — står kun i rute-tabellen, OK.
+
+## FIXL 11.11.2026
+
+Kontrol (tilbageoversættelse da → EN, bølge 1): 20 strenge fra `strings_home` (title, desc, h1, sub, search_none, near_err, map_alt, map_err, map_more, countries_p, ap_note, below_h, prices_p, p_ratio, p_src, pay_p, routes_p, work_p, trust_p, org_desc) + alle andre ændrede strenge (`embed.dv_p_lang`, `pages.p_hub_na`, `shell.lang_hint`, `shell.lang_hint_close`).
+Resultat: ingen betydningsafvigelser. Bevidste forskelle:
+- `desc`: forkortet til «priser, betaling og ladestop på langture» (≤ 160 tegn).
+- `sub`, `near_err`: upersonlig form («Hvor der kan lades …», «flyt det til det rigtige sted»).
+- `org_desc`: «independent» → «neutralt opslagsværk».
+- `o_widget`: «Kort til hjemmesider» (ingen «din»).
+- `pages.p_hub_na` er nu skrevet om efter den nye EN — det gamle åbne punkt i NOTES er dermed løst.
+
+D12: gennemgået alle danske eksonymer for udenlandske byer. Beholdt, fordi det er almindelig nutidig dansk og ikke irredentistisk: Hamborg, Prag, Lissabon, Venedig, Bukarest, Riga, Teheran; Flensborg, Slesvig, Rendsborg, Egernførde (de danske navne bruges af det danske mindretal i Sydslesvig); Malmø.
+cities.csv: + 46 svenske og 2 norske NOBIL-byer (lokale navne, «i X», decl_ok 1) + Genève (2660646).
+Åben tvivl: Rendsborg/Egernførde og Malmø kan for svenske/tyske læsere virke historiske; hvis D12 skal læses strengt → Rendsburg, Eckernförde, Malmö.

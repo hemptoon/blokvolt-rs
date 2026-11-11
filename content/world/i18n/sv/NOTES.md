@@ -60,3 +60,9 @@ CLDR sv: `one`, `other` (Babel 2.18). Alla `pl_*` är objekt `{one, other}`. ”
 - `cities.csv`: +46 svenska orter (nya NOBIL-sidor) som ännu saknas i `names/cities.csv`, not = ”NOBIL, not yet in names/cities.csv”; ”på Lidingö”. Alla 149 stadssidor i SE+FI har namn.
 - `check.py`: alla 8 strängfiler, `texts.json` → `pay`/`routes` (sökväg ↔ nod i pay.json/routes.json), geonameid från `pages_state.json` godtas, kontroll att alla stadssidor i SE/FI har namn.
 - Bakåtöversättning: 60 slumpvisa nya strängar (seed 20261111), separat agent utan EN. Betydelsen stämde i 60/60; 13 stilanmärkningar, 11 rättade — se REVIEW.md.
+
+## FIXL (2026-11-11)
+- `strings_home.json` ny (71 nycklar, pl_* = {one, other}); hemsidans h1 ”Laddkarta för elbilar i Europa och världen”.
+- Slugs (F5): pay `/sv/sa-betalar-du/` · routes `/sv/rutter/` · press `/sv/for-media/` · b2b `/sv/data-for-foretag/` · embed `/sv/embed/karta/` · map_conf `/sv/karta-for-din-webbplats/` · developers `/sv/for-utvecklare/`.
+- Inget `name_nom` (D14 gäller inte sv). D13: inget för sv.
+- cities.csv: + Kongsberg, Skien (”i …”), Genève (”i Genève”); de 46 NOBIL-raderna har nu not ”FIXL: verified (NOBIL)”.

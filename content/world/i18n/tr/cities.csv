@@ -379,7 +379,7 @@ geonameid,name,in_phrase,decl_ok,note
 2747751,Sassenheim,Sassenheim'de,1,güvenli yapı
 2872649,Mayen,Mayen'de,1,kural (ünlü uyumu)
 2936909,Dingolfing,Dingolfing'de,1,kural (ünlü uyumu)
-261745,Kandiye (Heraklion),Kandiye'de (Heraklion),1,egzonim/yaygın Türkçe ad
+261745,Heraklion,Heraklion'da,1,FIXL D12: yerel resmî ad (önceden Kandiye (Heraklion))
 2751651,Lichtenvoorde,Lichtenvoorde'de,1,güvenli yapı
 2772400,Linz,Linz'de,1,kural (ünlü uyumu)
 2813040,Weiden in der Oberpfalz,Weiden in der Oberpfalz şehrinde,0,güvenli yapı
@@ -564,7 +564,7 @@ geonameid,name,in_phrase,decl_ok,note
 2970148,Vence,Vence şehrinde,0,güvenli yapı
 3023240,Coulommiers,Coulommiers şehrinde,0,güvenli yapı
 3029030,Cambrai,Cambrai şehrinde,0,güvenli yapı
-261779,Yanya,Yanya'da,1,egzonim/yaygın Türkçe ad
+261779,Ioannina,Ioannina'da,1,FIXL D12: yerel resmî ad (önceden Yanya)
 3046446,Pest,Pest'te,1,kural (ünlü uyumu)
 2790869,Mons,Mons şehrinde,0,güvenli yapı
 2795113,Huy,Huy şehrinde,0,güvenli yapı
@@ -899,7 +899,7 @@ geonameid,name,in_phrase,decl_ok,note
 2996944,Lyon,Lyon'da,1,
 3002570,Le Pontet,Le Pontet şehrinde,0,güvenli yapı
 2653646,Carshalton,Carshalton şehrinde,0,güvenli yapı
-260133,Eğriboz (Halkida),Eğriboz'da (Halkida),1,egzonim/yaygın Türkçe ad
+260133,Chalkida,Chalkida'da,1,FIXL D12: yerel resmî ad (önceden Eğriboz (Halkida))
 3165243,Trento,Trento'da,1,
 11952858,Petershausen-West,Petershausen-West'te,1,kural (ünlü uyumu)
 2855047,Peine,Peine'de,1,kural (ünlü uyumu)
@@ -1023,7 +1023,7 @@ geonameid,name,in_phrase,decl_ok,note
 2986930,Plaisir,Plaisir şehrinde,0,güvenli yapı
 2998975,Levallois-Perret,Levallois-Perret şehrinde,0,güvenli yapı
 2636389,Swindon,Swindon şehrinde,0,güvenli yapı
-254352,Resmo,Resmo'da,1,egzonim/yaygın Türkçe ad
+254352,Rethymno,Rethymno'da,1,FIXL D12: yerel resmî ad (önceden Resmo)
 2960634,Dudelange,Dudelange şehrinde,0,güvenli yapı
 2786824,Seraing,Seraing şehrinde,0,güvenli yapı
 2798297,Fleurus,Fleurus şehrinde,0,güvenli yapı
@@ -1103,7 +1103,7 @@ geonameid,name,in_phrase,decl_ok,note
 596128,Panevėžys,Panevėžys şehrinde,0,güvenli yapı
 2265169,Parede,Parede şehrinde,0,güvenli yapı
 2739723,Santa Maria da Feira,Santa Maria da Feira şehrinde,0,güvenli yapı
-728193,Filibe (Plovdiv),Filibe'de (Plovdiv),1,egzonim/yaygın Türkçe ad
+728193,Plovdiv,Plovdiv'de,1,FIXL D12: yerel resmî ad (önceden Filibe (Plovdiv))
 2658606,Sierre,Sierre şehrinde,0,güvenli yapı
 3068160,Plzeň,Plzeň'de,1,kural (ünlü uyumu)
 2841463,Sankt Wendel,Sankt Wendel şehrinde,0,güvenli yapı
@@ -1124,7 +1124,7 @@ geonameid,name,in_phrase,decl_ok,note
 3031133,Boulogne-sur-Mer,Boulogne-sur-Mer şehrinde,0,güvenli yapı
 2653822,Cardiff,Cardiff şehrinde,0,güvenli yapı
 2463679,Korfu,Korfu'da,1,egzonim/yaygın Türkçe ad
-259245,İstanköy (Kos),İstanköy'de (Kos),1,egzonim/yaygın Türkçe ad
+259245,Kos,Kos'ta,1,FIXL D12: yerel resmî ad (önceden İstanköy (Kos))
 261604,Kalamata,Kalamata'da,1,egzonim/yaygın Türkçe ad
 3169272,Riva del Garda,Riva del Garda şehrinde,0,güvenli yapı
 2701680,Karlstad,Karlstad şehrinde,0,güvenli yapı
@@ -1147,7 +1147,7 @@ geonameid,name,in_phrase,decl_ok,note
 3019459,Étampes,Étampes şehrinde,0,güvenli yapı
 3024223,Colomiers,Colomiers şehrinde,0,güvenli yapı
 3037051,Argentan,Argentan şehrinde,0,güvenli yapı
-254698,Preveze,Preveze'de,1,egzonim/yaygın Türkçe ad
+254698,Preveza,Preveza'da,1,FIXL D12: yerel resmî ad (önceden Preveze)
 264371,Atina,Atina'da,1,egzonim/yaygın Türkçe ad
 734712,Peraia,Peraia şehrinde,0,güvenli yapı
 2750521,Naarden,Naarden şehrinde,0,güvenli yapı
@@ -2447,7 +2447,7 @@ geonameid,name,in_phrase,decl_ok,note
 787237,Pančevo,Pančevo'da,1,kural (ünlü uyumu)
 789518,Kikinda,Kikinda'da,1,kural (ünlü uyumu)
 785238,Suharekë,Suharekë şehrinde,0,güvenli yapı
-3184081,İşkodra,İşkodra'da,1,egzonim/yaygın Türkçe ad
+3184081,Shkodër,Shkodër şehrinde,0,FIXL D12: yerel resmî ad (önceden İşkodra)
 3184935,Lezhë,Lezhë şehrinde,0,güvenli yapı
 781988,Pogradec,Pogradec şehrinde,0,güvenli yapı
 782756,Korçë,Korçë şehrinde,0,güvenli yapı
@@ -5604,51 +5604,52 @@ geonameid,name,in_phrase,decl_ok,note
 5927690,Coquitlam,Coquitlam şehrinde,0,güvenli yapı
 12908892,New Taipei City,New Taipei City şehrinde,0,güvenli yapı
 3530597,Meksiko,Meksiko'da,1,egzonim/yaygın Türkçe ad
-3139075,Skien,Skien şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-3149563,Kongsberg,Kongsberg şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2662689,Visby,Visby'de,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2664203,Västervik,Västervik şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2664855,Värnamo,Värnamo şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2665171,Vänersborg,Vänersborg şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2666238,Upplands Väsby,Upplands Väsby şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2667094,Tumba,Tumba'da,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2667303,Trollhättan,Trollhättan şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2669772,Täby,Täby şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2670879,Sundbyberg,Sundbyberg şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2674649,Staffanstorp,Staffanstorp şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2675397,Solna,Solna'da,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2675408,Sollentuna,Sollentuna'da,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2676176,Södertälje,Södertälje'de,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2684395,Partille,Partille'de,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2686162,Oskarshamn,Oskarshamn şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2686469,Örnsköldsvik,Örnsköldsvik şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2687700,Nyköping,Nyköping şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2688250,Norrtälje,Norrtälje'de,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2690170,Nässjö,Nässjö'de,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2690580,Nacka,Nacka'da,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2692475,Märsta,Märsta şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2692613,Mariestad,Mariestad şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2696334,Lidingö,Lidingö şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2696503,Lerum,Lerum şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2697720,Landskrona,Landskrona'da,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2698767,Kumla,Kumla'da,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2699282,Kristinehamn,Kristinehamn şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2699791,Köping,Köping şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2701223,Katrineholm,Katrineholm şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2701715,Karlskoga,Karlskoga'da,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2703396,Jakobsberg,Jakobsberg şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2704136,Huskvarna,Huskvarna'da,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2704613,Hudiksvall,Hudiksvall şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2704620,Huddinge,Huddinge'de,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2707953,Haninge,Haninge'de,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-2709628,Gustavsberg,Gustavsberg şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2715568,Falköping,Falköping şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2715573,Falkenberg,Falkenberg şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2715946,Eslöv,Eslöv şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2716166,Enköping,Enköping şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2721259,Boo,Boo şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2726756,Alingsås,Alingsås şehrinde,0,"L2: NOBIL/pages_state, not in names/cities.csv"
-2727234,Åkersberga,Åkersberga'da,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-602913,Skellefteå,Skellefteå'da,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-603570,Piteå,Piteå'da,1,"L2: NOBIL/pages_state, not in names/cities.csv"
-604490,Luleå,Luleå'da,1,"L2: NOBIL/pages_state, not in names/cities.csv"
+3139075,Skien,Skien şehrinde,0,"FIXL: NOBIL city page, checked"
+3149563,Kongsberg,Kongsberg şehrinde,0,"FIXL: NOBIL city page, checked"
+2662689,Visby,Visby'de,1,"FIXL: NOBIL city page, checked"
+2664203,Västervik,Västervik şehrinde,0,"FIXL: NOBIL city page, checked"
+2664855,Värnamo,Värnamo şehrinde,0,"FIXL: NOBIL city page, checked"
+2665171,Vänersborg,Vänersborg şehrinde,0,"FIXL: NOBIL city page, checked"
+2666238,Upplands Väsby,Upplands Väsby şehrinde,0,"FIXL: NOBIL city page, checked"
+2667094,Tumba,Tumba'da,1,"FIXL: NOBIL city page, checked"
+2667303,Trollhättan,Trollhättan şehrinde,0,"FIXL: NOBIL city page, checked"
+2669772,Täby,Täby şehrinde,0,"FIXL: NOBIL city page, checked"
+2670879,Sundbyberg,Sundbyberg şehrinde,0,"FIXL: NOBIL city page, checked"
+2674649,Staffanstorp,Staffanstorp şehrinde,0,"FIXL: NOBIL city page, checked"
+2675397,Solna,Solna'da,1,"FIXL: NOBIL city page, checked"
+2675408,Sollentuna,Sollentuna'da,1,"FIXL: NOBIL city page, checked"
+2676176,Södertälje,Södertälje'de,1,"FIXL: NOBIL city page, checked"
+2684395,Partille,Partille'de,1,"FIXL: NOBIL city page, checked"
+2686162,Oskarshamn,Oskarshamn şehrinde,0,"FIXL: NOBIL city page, checked"
+2686469,Örnsköldsvik,Örnsköldsvik şehrinde,0,"FIXL: NOBIL city page, checked"
+2687700,Nyköping,Nyköping şehrinde,0,"FIXL: NOBIL city page, checked"
+2688250,Norrtälje,Norrtälje'de,1,"FIXL: NOBIL city page, checked"
+2690170,Nässjö,Nässjö'de,1,"FIXL: NOBIL city page, checked"
+2690580,Nacka,Nacka'da,1,"FIXL: NOBIL city page, checked"
+2692475,Märsta,Märsta şehrinde,0,"FIXL: NOBIL city page, checked"
+2692613,Mariestad,Mariestad şehrinde,0,"FIXL: NOBIL city page, checked"
+2696334,Lidingö,Lidingö şehrinde,0,"FIXL: NOBIL city page, checked"
+2696503,Lerum,Lerum şehrinde,0,"FIXL: NOBIL city page, checked"
+2697720,Landskrona,Landskrona'da,1,"FIXL: NOBIL city page, checked"
+2698767,Kumla,Kumla'da,1,"FIXL: NOBIL city page, checked"
+2699282,Kristinehamn,Kristinehamn şehrinde,0,"FIXL: NOBIL city page, checked"
+2699791,Köping,Köping şehrinde,0,"FIXL: NOBIL city page, checked"
+2701223,Katrineholm,Katrineholm şehrinde,0,"FIXL: NOBIL city page, checked"
+2701715,Karlskoga,Karlskoga'da,1,"FIXL: NOBIL city page, checked"
+2703396,Jakobsberg,Jakobsberg şehrinde,0,"FIXL: NOBIL city page, checked"
+2704136,Huskvarna,Huskvarna'da,1,"FIXL: NOBIL city page, checked"
+2704613,Hudiksvall,Hudiksvall şehrinde,0,"FIXL: NOBIL city page, checked"
+2704620,Huddinge,Huddinge'de,1,"FIXL: NOBIL city page, checked"
+2707953,Haninge,Haninge'de,1,"FIXL: NOBIL city page, checked"
+2709628,Gustavsberg,Gustavsberg şehrinde,0,"FIXL: NOBIL city page, checked"
+2715568,Falköping,Falköping şehrinde,0,"FIXL: NOBIL city page, checked"
+2715573,Falkenberg,Falkenberg şehrinde,0,"FIXL: NOBIL city page, checked"
+2715946,Eslöv,Eslöv şehrinde,0,"FIXL: NOBIL city page, checked"
+2716166,Enköping,Enköping şehrinde,0,"FIXL: NOBIL city page, checked"
+2721259,Boo,Boo şehrinde,0,"FIXL: NOBIL city page, checked"
+2726756,Alingsås,Alingsås şehrinde,0,"FIXL: NOBIL city page, checked"
+2727234,Åkersberga,Åkersberga'da,1,"FIXL: NOBIL city page, checked"
+602913,Skellefteå,Skellefteå'da,1,"FIXL: NOBIL city page, checked"
+603570,Piteå,Piteå'da,1,"FIXL: NOBIL city page, checked"
+604490,Luleå,Luleå'da,1,"FIXL: NOBIL city page, checked"
+2660646,Cenevre,Cenevre'de,1,FIXL; egzonim/yaygın Türkçe ad

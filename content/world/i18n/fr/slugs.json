@@ -9,5 +9,12 @@
  "prices": "/fr/prix-de-la-recharge/",
  "shell_about": "/fr/a-propos/",
  "sources": "/fr/sources/",
- "methodology": "/fr/methodologie/"
+ "methodology": "/fr/methodologie/",
+ "pay": "/fr/comment-payer/",
+ "routes": "/fr/itineraires/",
+ "press": "/fr/medias/",
+ "b2b": "/fr/donnees-entreprises/",
+ "embed": "/fr/embed/carte/",
+ "map_conf": "/fr/carte-pour-votre-site/",
+ "developers": "/fr/developpeurs/"
 }

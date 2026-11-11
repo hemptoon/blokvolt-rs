@@ -49,3 +49,27 @@ Minor, accepted:
 - `nav_pay`/`kick_pay`/`pay_more` = „Bezahlen“ (shorter than „So bezahlen Sie“ for navigation).
 - `ci_n30` „Rückmeldungen“ for check-ins (no English loan word).
 Fixed after the check: `pay_disc` „verkauft weder Strom“ → „weder Ladevorgänge“ (EN „charging“; avoid any hint of electricity sales).
+
+## FIXL 11.11.2026
+
+Geprüft (Rückübersetzung DE → EN, Welle 1): 20 Strings aus `strings_home` (title, desc, h1, sub, search_none, near_err, map_alt, map_err, map_more, countries_p, ap_note, below_h, prices_p, p_ratio, p_src, pay_p, routes_p, work_p, trust_p, org_desc) und alle übrigen geänderten Strings (`pay.afir_eu`, `pay.afir_non`, `pay.conn_txt`, `embed.dv_p_lang`, `pages.p_hub_na`, `shell.lang_hint`, `shell.lang_hint_close`, `texts.routes[15].stops[2].city`) sowie die 9 D12-Städtenamen.
+Ergebnis: keine Sinnabweichung. Bewusste Unterschiede:
+- `desc`: „für jeden Standort“ am Ende gestrichen (Länge ≤ 160); `title` als Suchphrase „E-Auto laden in Europa und weltweit – Karte, Preise, Bezahlen“ (72 Zeichen).
+- `org_desc`: EN „independent reference“ → „Neutrales Nachschlagewerk“ (Regel aus NOTES).
+- `p_ratio`: „{x}× so teuer wie zu Hause“ statt wörtlich „{x}× der Hauspreis“.
+- `map_alt`: „lime“ → „hellgrün“.
+
+D14: `countries.csv` + Spalte `name_nom` (Artikel: die Schweiz, die Niederlande, das Vereinigte Königreich, die Vereinigten Staaten, der Irak, das Kosovo …). Umgeschrieben:
+- `afir_eu` „Für {name_nom} als EU-Mitglied gilt bei öffentlichen Ladesäulen die … (AFIR).“
+- `afir_non` „Die AFIR ist EU-Recht; für {name_nom} als Nicht-EU-Land greifen die Regeln unten womöglich nicht. …“
+- `conn_txt` „Zahlen zu Steckern, Schnellladern und Ladenetzen für {name_nom} finden Sie auf der Länderseite.“
+Bewusst „für {name_nom}“ und nicht „{name_nom} gehört …“: Ein Subjekt bräuchte Verb-Kongruenz („die Niederlande gehören“), die der Motor nicht kennt. Nach „für“ ist Akkusativ = Nominativ für Femininum, Neutrum und Plural; falsch wäre es nur bei maskulinen Ländern (der Irak, der Iran, der Libanon, der Sudan) — keines davon hat eine Länder- oder Bezahlseite. `{name_nom}` steht nie am Satzanfang.
+
+D12 (neutrale Ortsnamen anderer Länder), `cities.csv` + `texts.routes`:
+Breslau → Wrocław, Danzig → Gdańsk, Stettin → Szczecin, Posen → Poznań, Hermannstadt → Sibiu (auch Routenhalt routes[15]), Brünn → Brno, Budweis → České Budějovice, Karlsbad → Karlovy Vary, Pilsen → Plzeň. Pressburg kam nicht vor (Bratislava war schon lokal); Olmütz/Thorn/Sathmar waren schon lokal.
+Bleiben (übliche neutrale Exonyme bzw. Amtssprache vor Ort): Prag, Warschau, Krakau, Bukarest, Belgrad, Kopenhagen, Brüssel, Lüttich, Brügge, Ostende, Ypern, Mailand, Turin, Neapel, Venedig, Padua, Mantua, Straßburg, Nizza, Dünkirchen, Lissabon, Saragossa; Bozen/Meran (amtlich zweisprachig); Luxemburg/Schweiz (Deutsch Amtssprache).
+D13: „Kyjiw“ war schon gesetzt, „Kiew“ kommt nirgends vor.
+
+Offene Zweifel:
+- Pilsen/Brünn sind im heutigen Deutsch neutraler als Breslau/Danzig; wegen einheitlicher Regel (CZ/PL/RO: lokal außer Hauptstädten und Krakau) trotzdem lokal. Bei Bedarf Pilsen zurück.
+- Trient (Trento) gelassen — geläufig, aber historisch österreichisch; Kandidat für „lokal“, falls die Regel strenger sein soll.

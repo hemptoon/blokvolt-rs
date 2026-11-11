@@ -61,3 +61,11 @@ Grana `l2-hr` od `dev` (bb86f74). Samo `content/world/i18n/hr/`.
 ## Spornije
 - Duljina iznad EN × 1,4 samo u zaglavljima (`th_app` „Aplikacija ili kartica”, `th_car` „Automobil”) — prihvatljivo.
 - `pl_*` novih nema; nizovi s `{n}` napisani bez oblika („Broj …: {n}”).
+
+## FIXL 11.11.2026
+Provjereno: strings_home (71 ključ, nova datoteka), strings_shell `lang_hint`/`lang_hint_close`, D11 (`dv_p_lang`, `p_hub_na`), slugovi (+7), cities.csv (+49), D12.
+Povratni prijevod (val 2, naslijepo pa usporedba s EN): 10 nizova home (title, desc, h1, sub, near_err, map_err, prices_p, work_p, trust_p, routes_p) + 4 izmijenjena (dv_p_lang, p_hub_na, lang_hint, lang_hint_close).
+- Ispravljeno: `lang_hint` „Ova stranica postoji i na hrvatskom” (srbizam/kalk) → „Ova je stranica dostupna i na hrvatskom”.
+- `desc` bez „za svako mjesto” na kraju (duljina 160) — smisao ostaje.
+D12: „Ser” (734330, Σέρρες; povijesni srpski egzonim) → „Seres”, „u Seresu”. Ostali egzonimi uobičajeni i neutralni (Beč, Prag, Napulj, Krakov, Gdanjsk, Solun, Atena).
+Slugovi: `/hr/…` bez sudara s lokalnim odjeljkom Hrvatske (karta/, cijene/, putovanje/ … i slugovi mjesta).

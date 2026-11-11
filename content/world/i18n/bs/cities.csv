@@ -2005,7 +2005,7 @@ geonameid,name,in_phrase,decl_ok,note
 2656379,Banstead,u Bansteadu,1,
 264194,Agija Paraskevi,u gradu Agija Paraskevi,0,transliteracija kao sr
 265560,Agrinio,u gradu Agrinio,0,transliteracija kao sr
-734330,Ser,u Seru,1,transliteracija kao sr
+734330,Seres,u Seresu,1,D12: bilo „Ser” (historijski egzonim) → službeno Serres/Seres
 3315278,Sandyford,u Sandyfordu,1,
 3172189,Novara,u Novari,1,
 3174659,Livorno,u Livornu,1,
@@ -5604,3 +5604,52 @@ geonameid,name,in_phrase,decl_ok,note
 5927690,Coquitlam,u Coquitlamu,1,
 12908892,Novi Tajpej,u Novom Tajpeju,1,transliteracija kao sr
 3530597,Ciudad de México,u gradu Ciudad de México,0,
+2660646,Ženeva,u Ženevi,1,FIXL
+3149563,Kongsberg,u Kongsbergu,1,FIXL
+3139075,Skien,u gradu Skien,0,FIXL
+2727234,Åkersberga,u gradu Åkersberga,0,FIXL
+2726756,Alingsås,u Alingsåsu,1,FIXL
+2721259,Boo,u gradu Boo,0,FIXL
+2716166,Enköping,u Enköpingu,1,FIXL
+2715946,Eslöv,u Eslövu,1,FIXL
+2715573,Falkenberg,u Falkenbergu,1,FIXL
+2715568,Falköping,u Falköpingu,1,FIXL
+2709628,Gustavsberg,u Gustavsbergu,1,FIXL
+2707953,Haninge,u gradu Haninge,0,FIXL
+2704620,Huddinge,u gradu Huddinge,0,FIXL
+2704613,Hudiksvall,u Hudiksvallu,1,FIXL
+2704136,Huskvarna,u gradu Huskvarna,0,FIXL
+2703396,Jakobsberg,u Jakobsbergu,1,FIXL
+2701715,Karlskoga,u gradu Karlskoga,0,FIXL
+2701223,Katrineholm,u Katrineholmu,1,FIXL
+2699791,Köping,u Köpingu,1,FIXL
+2699282,Kristinehamn,u Kristinehamnu,1,FIXL
+2698767,Kumla,u gradu Kumla,0,FIXL
+2697720,Landskrona,u gradu Landskrona,0,FIXL
+2696503,Lerum,u Lerumu,1,FIXL
+2696334,Lidingö,u gradu Lidingö,0,FIXL
+604490,Luleå,u gradu Luleå,0,FIXL
+2692613,Mariestad,u Mariestadu,1,FIXL
+2692475,Märsta,u gradu Märsta,0,FIXL
+2690580,Nacka,u gradu Nacka,0,FIXL
+2690170,Nässjö,u gradu Nässjö,0,FIXL
+2688250,Norrtälje,u gradu Norrtälje,0,FIXL
+2687700,Nyköping,u Nyköpingu,1,FIXL
+2686469,Örnsköldsvik,u Örnsköldsviku,1,FIXL
+2686162,Oskarshamn,u Oskarshamnu,1,FIXL
+2684395,Partille,u gradu Partille,0,FIXL
+603570,Piteå,u gradu Piteå,0,FIXL
+602913,Skellefteå,u gradu Skellefteå,0,FIXL
+2676176,Södertälje,u gradu Södertälje,0,FIXL
+2675408,Sollentuna,u gradu Sollentuna,0,FIXL
+2675397,Solna,u gradu Solna,0,FIXL
+2674649,Staffanstorp,u Staffanstorpu,1,FIXL
+2670879,Sundbyberg,u Sundbybergu,1,FIXL
+2669772,Täby,u gradu Täby,0,FIXL
+2667303,Trollhättan,u Trollhättanu,1,FIXL
+2667094,Tumba,u gradu Tumba,0,FIXL
+2666238,Upplands Väsby,u gradu Upplands Väsby,0,FIXL
+2664203,Västervik,u Västerviku,1,FIXL
+2665171,Vänersborg,u Vänersborgu,1,FIXL
+2664855,Värnamo,u gradu Värnamo,0,FIXL
+2662689,Visby,u gradu Visby,0,FIXL

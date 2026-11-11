@@ -45,3 +45,9 @@ uzlādes stacija / vieta / punkts, uzlādes tīkls, operators, elektromobilis, �
 - Числа в связке с существительным — через двоеточие («Uzlādes tīkli: {n}»), чтобы не ломалось на 21, 31…
 - check.py: все 8 файлов + texts.pay/routes; стоп-слова lv (mēs, mūsu, redakcija, 24/7, nekavējoties, uzreiz).
 - Вычитка R-уровня — REVIEW.md.
+
+## FIXL (11.11.2026)
+- `strings_home.json` — 71 keys; plurals {zero, one, other}, zero = other.
+- Section slugs: /lv/ka-maksat/, /lv/marsruti/, /lv/medijiem/, /lv/dati-uznemumiem/, /lv/embed/karte/, /lv/karte-jusu-vietnei/, /lv/izstradatajiem/.
+- D13: «viesabonēšana» kept. name_nom (D14) not needed for lv.
+- cities.csv: +48 NOBIL («pilsētā X», decl_ok=0) + Ženēva/Ženēvā.

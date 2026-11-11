@@ -49,5 +49,7 @@
     "few": "země",
     "many": "země",
     "other": "zemí"
-  }
+  },
+  "lang_hint": "Tato stránka je k dispozici i v češtině",
+  "lang_hint_close": "Zavřít"
 }

@@ -61,3 +61,9 @@
 ## L2 (11.11.2026)
 
 Добавлены 274 ключа (`ci_*`, `emb_open`, strings_pay / press / b2b / embed) и `texts.json` → `pay`, `routes` (формат LANG0). Пакет вычитан целиком, см. `REVIEW.md`. Новые термины: tarptinklinės programėlės (roaming), valdiklis (widget), leidinys (issue), žiniasklaidai (for media). `check.py` проверяет все 8 файлов и разделы pay/routes.
+
+## FIXL (11.11.2026)
+- `strings_home.json` — 71 ключ, плюралы {one, few, many, other} как у pl_loc/pl_cc.
+- Слаги разделов: /lt/kaip-moketi/, /lt/marsrutai/, /lt/ziniasklaidai/, /lt/duomenys-verslui/, /lt/embed/zemelapis/, /lt/zemelapis-svetainei/, /lt/kurejams/.
+- D13: Andrei, Danila — без окончаний. name_nom (D14) для lt не нужен.
+- cities.csv: +48 NOBIL («mieste X», decl_ok=0) + Ženeva/Ženevoje.

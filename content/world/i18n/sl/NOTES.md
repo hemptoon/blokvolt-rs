@@ -54,3 +54,9 @@
 - {month}/{prev}/{countries} в press — через скобки и двоеточие, чтобы не склонять.
 - cities.csv: +48 городов NOBIL (NO 2, SE 46) с «v kraju X», decl_ok = 0.
 - check.py: все 8 файлов strings_*, texts.pay/routes, города из pages_state.
+
+## FIXL (11.11.2026)
+- strings_home.json (71 ključev): »polnilno mesto« v pl_places (1 polnilno mesto, 2 polnilni mesti, 3 polnilna mesta, 5 polnilnih mest), »Zemljevid polnilnic«, »aplikacije in kartice za gostovanje«, »brez uporabniškega računa«, »Azija in Oceanija«.
+- lang_hint »Ta stran je na voljo tudi v slovenščini«, close »Zapri«.
+- Poti razdelkov: /sl/kako-placati/ /sl/poti/ /sl/za-medije/ /sl/podatki-za-podjetja/ /sl/embed/zemljevid/ /sl/zemljevid-za-vaso-stran/ /sl/za-razvijalce/.
+- D13: narekovaji »…« povsod (preverjeno). D12: Valona → Vlora. name_nom ni potreben (sl ni v D14). Ženeva dodana (v Ženevi).

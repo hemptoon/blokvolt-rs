@@ -98,10 +98,10 @@
  "download": {
   "h1": "Shkarkoni të dhënat e hapura",
   "title": "Shkarkoni të dhënat e hapura të pikave të karikimit | BlokVolt",
-  "description": "Skedar CSV javor me pikat publike të karikimit: koordinatat, rrjeti, fuqia, prizat dhe burimet. Falas sipas licencës ODbL.",
+  "description": "Skedar CSV javor me pikat publike të karikimit: koordinatat, rrjeti, fuqia, konektorët dhe burimet. Falas sipas licencës ODbL.",
   "lead": "Shtresa publike e hartës është e disponueshme si skedar CSV falas, i përditësuar çdo javë.",
   "what_h": "Çfarë përmban skedari",
-  "what_p": "Një eksport javor CSV i shtresës publike të hartës: koordinatat, rrjeti, fuqia, prizat dhe burimet e çdo vendi. Përmban të dhëna të OpenStreetMap, prandaj publikohet sipas Open Database License (ODbL) 1.0. Çmimet, kontrollet e ekipit dhe korrigjimet e BlokVolt për Ballkanin nuk janë pjesë e skedarit.",
+  "what_p": "Një eksport javor CSV i shtresës publike të hartës: koordinatat, rrjeti, fuqia, konektorët dhe burimet e çdo vendi. Përmban të dhëna të OpenStreetMap, prandaj publikohet sipas Open Database License (ODbL) 1.0. Çmimet, kontrollet e ekipit dhe korrigjimet e BlokVolt për Ballkanin nuk janë pjesë e skedarit.",
   "fields_h": "Kolonat",
   "fields": [
    [
@@ -142,7 +142,7 @@
    ],
    [
     "connectors",
-    "Llojet e prizave, të ndara me presje"
+    "Llojet e konektorëve, të ndara me presje"
    ],
    [
     "points",

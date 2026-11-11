@@ -9,5 +9,12 @@
  "prices": "/hu/toltesi-arak/",
  "shell_about": "/hu/nevjegy/",
  "sources": "/hu/forrasok/",
- "methodology": "/hu/modszertan/"
+ "methodology": "/hu/modszertan/",
+ "pay": "/hu/fizetesi-modok/",
+ "routes": "/hu/utvonalak/",
+ "press": "/hu/sajtonak/",
+ "b2b": "/hu/adatok-cegeknek/",
+ "embed": "/hu/embed/terkep/",
+ "map_conf": "/hu/terkep-a-weboldalara/",
+ "developers": "/hu/fejlesztoknek/"
 }

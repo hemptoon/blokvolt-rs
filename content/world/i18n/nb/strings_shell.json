@@ -45,5 +45,7 @@
  "pl_cc": {
   "one": "land",
   "other": "land"
- }
+ },
+ "lang_hint": "Denne siden finnes også på norsk",
+ "lang_hint_close": "Lukk"
 }

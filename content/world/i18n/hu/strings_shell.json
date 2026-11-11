@@ -27,7 +27,7 @@
  "about_title": "A BlokVoltról | BlokVolt",
  "about_h1": "A BlokVoltról",
  "about_desc": "Ki üzemelteti a BlokVoltot, és hogyan érhető el.",
- "about_p": "A BlokVolt független tájékoztató oldal az elektromos járművek töltéséről, amelyet alapítói, Andrei és Danila üzemeltetnek a szerbiai Újvidéken (Novi Sad). Nincsenek fizetett megjelenések és nincsenek hálózati rangsorok.",
+ "about_p": "A BlokVolt független tájékoztató oldal az elektromos járművek töltéséről, amelyet alapítói, Andrei és Danila üzemeltetnek Novi Sadban, Szerbiában. Nincsenek fizetett megjelenések és nincsenek hálózati rangsorok.",
  "about_more": "Az adatok gyűjtése és ellenőrzése",
  "contact": "Kapcsolat",
  "sources_title": "Források és licencek | BlokVolt",
@@ -38,6 +38,14 @@
  "method_h1": "Módszertan",
  "method_desc": "A helyek összevonása, az egyes helyek megbízhatósága és a meglévő oldalak.",
  "method_p": "A különböző forrásokból származó, ugyanazt a helyet leíró rekordok egyetlen hellyé olvadnak össze. Minden hely 0 és 100 közötti adatmegbízhatósági értéket kap (a forrás típusa, második forrás, frissesség). Egy országoldalhoz legalább 100 nyilvános hely kell legalább 50-es megbízhatósággal, egy városoldalhoz legalább 20. A képlet és a küszöbértékek itt olvashatók:",
- "pl_loc": {"one": "töltőhely", "other": "töltőhely"},
- "pl_cc": {"one": "országban", "other": "országban"}
+ "pl_loc": {
+  "one": "töltőhely",
+  "other": "töltőhely"
+ },
+ "pl_cc": {
+  "one": "országban",
+  "other": "országban"
+ },
+ "lang_hint": "Ez az oldal magyarul is elérhető",
+ "lang_hint_close": "Bezárás"
 }

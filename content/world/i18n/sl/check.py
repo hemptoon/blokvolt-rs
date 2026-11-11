@@ -10,9 +10,10 @@ LANG = 'sl'
 HERE = os.path.dirname(os.path.abspath(__file__))
 WORLD = os.path.normpath(os.path.join(HERE, '..', '..'))
 STRINGS = ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
-           'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed']
+           'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed', 'strings_home']   # FIXL: + home (HOME2)
 SLUG_KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
-FULL_PATH = {'home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology'}
+SECTION_KEYS = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']   # FIXL F5: optional section paths
+FULL_PATH = {'home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology'} | set(SECTION_KEYS)
 PH = re.compile(r'\{[a-zA-Z0-9_]*\}')
 TAG = re.compile(r'</?[a-zA-Z][^>]*>')
 ENT = re.compile(r'&[a-zA-Z#0-9]+;')
@@ -31,7 +32,7 @@ def cldr_tags():
         return {'one', 'two', 'few', 'other'}
 
 def tags(s): return sorted(TAG.findall(s))
-def phs(s): return sorted(PH.findall(s))
+def phs(s): return sorted(x.replace('{name_nom}', '{name}') for x in PH.findall(s))   # FIXL D14: {name_nom} may stand for {name}
 
 def check_text(where, en, tr, alt_ph=None):
     if not isinstance(tr, str) or not tr.strip():
@@ -112,10 +113,11 @@ for name in ('pay', 'routes'):
 
 # slugs.json
 slugs = json.load(open(os.path.join(HERE, 'slugs.json'), encoding='utf-8'))
-if sorted(slugs) != sorted(SLUG_KEYS): err(f'slugs: keys {sorted(slugs)} != {sorted(SLUG_KEYS)}')
+if not set(SLUG_KEYS) <= set(slugs) <= set(SLUG_KEYS) | set(SECTION_KEYS):
+    err(f'slugs: keys {sorted(slugs)}: need {sorted(SLUG_KEYS)}, may add {sorted(SECTION_KEYS)}')
 for k, v in slugs.items():
     if k in FULL_PATH:
-        if not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)?', v): err(f'slugs.{k}: bad path {v!r}')
+        if not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)*', v): err(f'slugs.{k}: bad path {v!r}')
     elif not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v): err(f'slugs.{k}: bad segment {v!r}')
 paths = [v for k, v in slugs.items() if k in FULL_PATH]
 if len(paths) != len(set(paths)): err('slugs: duplicate paths')
@@ -123,7 +125,8 @@ if len(paths) != len(set(paths)): err('slugs: duplicate paths')
 # countries.csv
 src_cc = [r['cc'] for r in csv.DictReader(open(os.path.join(WORLD, 'names', 'countries.csv'), encoding='utf-8'))]
 rows = list(csv.DictReader(open(os.path.join(HERE, 'countries.csv'), encoding='utf-8')))
-if rows and list(rows[0].keys()) != ['cc', 'name', 'slug', 'in_phrase', 'note']: err('countries.csv: wrong columns')
+if rows and list(rows[0].keys()) not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):
+    err('countries.csv: wrong columns')   # FIXL D4: an extra last column name_nom is allowed
 if sorted(r['cc'] for r in rows) != sorted(src_cc): err('countries.csv: country set differs from names/countries.csv')
 for r in rows:
     if not r['name'] or not r['in_phrase']: err(f"countries.csv {r['cc']}: empty name/in_phrase")
@@ -133,19 +136,18 @@ if len({r['slug'] for r in rows}) != len(rows): err('countries.csv: duplicate sl
 
 # cities.csv
 src_ids = {r['geonameid'] for r in csv.DictReader(open(os.path.join(WORLD, 'names', 'cities.csv'), encoding='utf-8'))}
-# cities that already have pages but are not yet in names/cities.csv (e.g. new NOBIL towns) are allowed
+# FIXL: every geonameid must exist in names/cities.csv; every city page of pages_state must have a row
 _ps = os.path.join(WORLD, 'state', 'pages_state.json')
 page_ids = set()
 if os.path.exists(_ps):
     for _v in json.load(open(_ps, encoding='utf-8')).values():
         if _v.get('type') == 'city' and str(_v.get('key', '')).startswith('t:'): page_ids.add(_v['key'].split(':')[-1])
-missing_pages = page_ids - src_ids
 crow = list(csv.DictReader(open(os.path.join(HERE, 'cities.csv'), encoding='utf-8')))
 if crow and list(crow[0].keys()) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: err('cities.csv: wrong columns')
 ids = [r['geonameid'] for r in crow]
 if len(ids) != len(set(ids)): err('cities.csv: duplicate geonameid')
-unknown = set(ids) - src_ids - page_ids
-for g in sorted(missing_pages - set(ids)): err(f'cities.csv: city with a page missing: {g}')
+unknown = set(ids) - src_ids
+for g in sorted(page_ids - set(ids)): err(f'cities.csv: city with a page missing: {g}')
 if unknown: err(f'cities.csv: {len(unknown)} geonameid not in names/cities.csv')
 for r in crow:
     if not r['name'] or not r['in_phrase']: err(f"cities.csv {r['geonameid']}: empty")

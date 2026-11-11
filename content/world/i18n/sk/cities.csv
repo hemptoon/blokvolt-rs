@@ -1457,7 +1457,7 @@ geonameid,name,in_phrase,decl_ok,note
 2653775,Carlisle,v meste Carlisle,0,
 2657832,Aberdeen,v meste Aberdeen,0,
 735914,Katerini,v meste Katerini,0,fallback EN
-3044774,Stoličný Belehrad,v Stoličnom Belehrade,1,exonym
+3044774,Székesfehérvár,v meste Székesfehérvár,0,FIXL D12: local name
 3133880,Trondheim,v Trondheime,1,
 2739590,Figueira da Foz,v meste Figueira da Foz,0,
 498817,Petrohrad,v Petrohrade,1,exonym
@@ -2249,7 +2249,7 @@ geonameid,name,in_phrase,decl_ok,note
 734883,Oraiokastro,v meste Oraiokastro,0,fallback EN
 736364,Drama,v meste Drama,0,fallback EN
 8358544,Zografou,v meste Zografou,0,fallback EN
-3052009,Ráb,v Rábe,1,exonym
+3052009,Győr,v Győri,1,FIXL D12: local name
 2961297,Swords,v meste Swords,0,
 2962308,Navan,v meste Navan,0,
 3182997,Aosta,v meste Aosta,0,
@@ -2317,7 +2317,7 @@ geonameid,name,in_phrase,decl_ok,note
 255524,Peristeri,v meste Peristeri,0,fallback EN
 259973,Chios,v meste Chios,0,fallback EN
 3050212,Keszthely,v meste Keszthely,0,
-721239,Jáger,v Jágri,1,exonym
+721239,Eger,v Egeri,1,FIXL D12: local name
 2962961,Letterkenny,v meste Letterkenny,0,
 2964405,Ennis,v meste Ennis,0,
 2965353,Clonmel,v meste Clonmel,0,
@@ -4276,7 +4276,7 @@ geonameid,name,in_phrase,decl_ok,note
 252910,Téby,v Tébach,1,exonym
 260183,Chaidari,v meste Chaidari,0,fallback EN
 265488,Acharnes,v meste Acharnes,0,fallback EN
-3046526,Päťkostolie,v Päťkostolí,1,exonym
+3046526,Pécs,v Pécsi,1,FIXL D12: local name
 1627459,Serpong,v meste Serpong,0,
 1635882,Mataram,v meste Mataram,0,
 595689,Plungė,v meste Plungė,0,
@@ -5300,7 +5300,7 @@ geonameid,name,in_phrase,decl_ok,note
 8358563,Agioi Anargyroi,v meste Agioi Anargyroi,0,fallback EN
 3044760,Szekszárd,v meste Szekszárd,0,
 3053281,Érd,v meste Érd,0,
-715126,Solnok,v Solnoku,1,exonym
+715126,Szolnok,v Szolnoku,1,FIXL D12: local name
 1625084,Tangerang,v meste Tangerang,0,
 1274664,Changanassery,v meste Changanassery,0,
 3164241,Villafranca di Verona,v meste Villafranca di Verona,0,
@@ -5604,3 +5604,52 @@ geonameid,name,in_phrase,decl_ok,note
 786950,Podujevë,v meste Podujevë,0,
 788470,Llazicë,v meste Llazicë,0,
 790674,Gjilan,v meste Gjilan,0,
+2660646,Ženeva,v Ženeve,1,FIXL
+3149563,Kongsberg,v Kongsbergu,1,FIXL
+3139075,Skien,v meste Skien,0,FIXL
+2727234,Åkersberga,v meste Åkersberga,0,FIXL
+2726756,Alingsås,v meste Alingsås,0,FIXL
+2721259,Boo,v meste Boo,0,FIXL
+2716166,Enköping,v meste Enköping,0,FIXL
+2715946,Eslöv,v meste Eslöv,0,FIXL
+2715573,Falkenberg,vo Falkenbergu,1,FIXL
+2715568,Falköping,v meste Falköping,0,FIXL
+2709628,Gustavsberg,v Gustavsbergu,1,FIXL
+2707953,Haninge,v meste Haninge,0,FIXL
+2704620,Huddinge,v meste Huddinge,0,FIXL
+2704613,Hudiksvall,v meste Hudiksvall,0,FIXL
+2704136,Huskvarna,v meste Huskvarna,0,FIXL
+2703396,Jakobsberg,v Jakobsbergu,1,FIXL
+2701715,Karlskoga,v meste Karlskoga,0,FIXL
+2701223,Katrineholm,v meste Katrineholm,0,FIXL
+2699791,Köping,v meste Köping,0,FIXL
+2699282,Kristinehamn,v meste Kristinehamn,0,FIXL
+2698767,Kumla,v meste Kumla,0,FIXL
+2697720,Landskrona,v meste Landskrona,0,FIXL
+2696503,Lerum,v meste Lerum,0,FIXL
+2696334,Lidingö,v meste Lidingö,0,FIXL
+604490,Luleå,v meste Luleå,0,FIXL
+2692613,Mariestad,v meste Mariestad,0,FIXL
+2692475,Märsta,v meste Märsta,0,FIXL
+2690580,Nacka,v meste Nacka,0,FIXL
+2690170,Nässjö,v meste Nässjö,0,FIXL
+2688250,Norrtälje,v meste Norrtälje,0,FIXL
+2687700,Nyköping,v meste Nyköping,0,FIXL
+2686469,Örnsköldsvik,v meste Örnsköldsvik,0,FIXL
+2686162,Oskarshamn,v meste Oskarshamn,0,FIXL
+2684395,Partille,v meste Partille,0,FIXL
+603570,Piteå,v meste Piteå,0,FIXL
+602913,Skellefteå,v meste Skellefteå,0,FIXL
+2676176,Södertälje,v meste Södertälje,0,FIXL
+2675408,Sollentuna,v meste Sollentuna,0,FIXL
+2675397,Solna,v meste Solna,0,FIXL
+2674649,Staffanstorp,v meste Staffanstorp,0,FIXL
+2670879,Sundbyberg,v Sundbybergu,1,FIXL
+2669772,Täby,v meste Täby,0,FIXL
+2667303,Trollhättan,v meste Trollhättan,0,FIXL
+2667094,Tumba,v meste Tumba,0,FIXL
+2666238,Upplands Väsby,v meste Upplands Väsby,0,FIXL
+2664203,Västervik,v meste Västervik,0,FIXL
+2665171,Vänersborg,vo Vänersborgu,1,FIXL
+2664855,Värnamo,v meste Värnamo,0,FIXL
+2662689,Visby,v meste Visby,0,FIXL

@@ -41,7 +41,7 @@
  "dv_p_mreza": "Tinklo slug, keli — atskirti kableliais",
  "dv_p_snaga": "Galios klasės: ac, dc, hpc, nepoznato (nežinoma)",
  "dv_p_tema": "tamna = tamsus pagrindo žemėlapis",
- "dv_p_lang": "Kalba: valdiklio adresas (EN, SR, RU)",
+ "dv_p_lang": "Kalba: nustatoma pagal valdiklio adresą",
  "dv_p_hash": "Tikslus vaizdas: #mastelis/platuma/ilguma adreso pabaigoje",
  "dv_open_h": "Pasaulio žemėlapio atviri duomenys",
  "dv_open_p": "Savaitinis viešojo sluoksnio CSV failas, ODbL 1.0, stulpeliai: {n}.",

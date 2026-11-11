@@ -49,3 +49,9 @@
 - `p_hub_na` переведена буквально («США и Канада — на английском и русском…»). Когда es включат, проверить, верно ли это для испанской версии.
 - `home_title` — 70 символов, длиннее 60. В EN тоже длинный (76).
 - Экзонимы проставлены для известных городов. Полной ручной проверки по 5 605 городам не было: остальные идут под местным латинским названием.
+
+## FIXL (11.11.2026)
+- Добавлен `strings_home.json` (71 ключ, плюралы one/many/other). Shell: `lang_hint` «Esta página también está disponible en español», `lang_hint_close` «Cerrar».
+- D14: колонка `name_nom` = `in_phrase` без «en » (артикль там же, где в in_phrase). `{name_nom}` не ставить в начало фразы и после «de»/«a»; конструкция «Al formar parte {name_nom} de la UE…».
+- Слаги (F5): /es/como-pagar/ /es/rutas/ /es/para-medios/ /es/datos-para-empresas/ /es/embed/mapa/ /es/mapa-para-su-web/ /es/desarrolladores/.
+- Города: Женева = Ginebra; 48 городов NOBIL — шведские/норвежские названия с диакритикой, «en X», decl_ok=1.

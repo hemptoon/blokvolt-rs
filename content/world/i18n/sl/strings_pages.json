@@ -69,7 +69,7 @@
  "p_dc": "Hitro polnjenje DC od 50 kW: {dc} ({pct_dc}); 150 kW ali več: {hpc}.",
  "p_gnet": "Omrežje {net} je prisotno v {n_countries}.",
  "p_hub": "Stran ima vsaka država z najmanj 100 javnimi lokacijami srednje ali visoke zanesljivosti. Zahodni Balkan pokrivajo strani BlokVolt posameznih držav.",
- "p_hub_na": "Združene države in Kanada so na voljo v angleščini in ruščini; strani v slovenščini pokrivajo Evropo.",
+ "p_hub_na": "Strani mest in omrežij so za vsako državo na voljo v angleščini in ruščini ter v jeziku te države.",
  "p_multi": "Delež lokacij, ki jih potrjujeta dva ali več virov: {pct_multi}; nazadnje potrjenih v letu 2025 ali 2026: {pct_recent}.",
  "p_net_share": "Omrežje je prisotno v {n_cities} {country_u}; to je {share} tukaj prikazanih javnih lokacij v državi.",
  "p_nonet": "Brez znanega omrežja: {nonet}.",

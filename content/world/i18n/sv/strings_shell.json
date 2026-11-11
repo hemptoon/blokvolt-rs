@@ -45,5 +45,7 @@
  "pl_cc": {
   "one": "land",
   "other": "länder"
- }
+ },
+ "lang_hint": "Den här sidan finns även på svenska",
+ "lang_hint_close": "Stäng"
 }

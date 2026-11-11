@@ -13,12 +13,15 @@ try:
 except Exception as e:
     CATS = ['one', 'other']; print('babel missing, assuming', CATS)
 PL = {'strings_pages': {'pl_city','pl_city_in','pl_country','pl_country_in','pl_loc','pl_net','pl_place','pl_point','pl_publoc'},
-      'strings_shell': {'pl_loc','pl_cc'}}
+      'strings_shell': {'pl_loc','pl_cc'}, 'strings_home': {'pl_places','pl_countries','pl_public'}}
+# FIXL: {name_nom} may stand where EN has {name}; {city_u}/{country_u} where EN has {city}/{country}
+EQUIV = {'{name_nom}': '{name}', '{city_u}': '{city}', '{country_u}': '{country}'}
 def same(a, b, where):
     for name, rx in (('placeholders', PH), ('tags', TAG), ('entities', ENT)):
-        if sorted(rx.findall(a)) != sorted(rx.findall(b)):
+        got = [EQUIV.get(x, x) if name == 'placeholders' and EQUIV.get(x) in rx.findall(a) else x for x in rx.findall(b)]
+        if sorted(rx.findall(a)) != sorted(got):
             err.append(f'{where}: {name} differ EN={sorted(rx.findall(a))} TR={sorted(rx.findall(b))}')
-FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices', 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed')
+FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices', 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed', 'strings_home')
 for f in FILES:
     en = json.load(open(W / f'{f}.json')); tr = json.load(open(HERE / f'{f}.json'))
     for k in set(en) - set(tr): err.append(f'{f}: missing {k}')
@@ -68,17 +71,20 @@ for sec, fn in (('pay', 'pay.json'), ('routes', 'routes.json')):
         same(want[k], v, f'texts.{sec}.{k}')
 # slugs
 KEYS = ['home','map','hub','net','about','download','gnet','prices','shell_about','sources','methodology']
+SECTION = ['pay','routes','press','b2b','embed','map_conf','developers']   # FIXL F5: optional, full paths (embed has two segments)
 s = json.load(open(HERE / 'slugs.json'))
-if sorted(s) != sorted(KEYS): err.append('slugs: keys differ')
+if not set(KEYS) <= set(s) <= set(KEYS) | set(SECTION): err.append('slugs: keys differ')
 for k, v in s.items():
-    if k in ('net','about','download'):
+    if k in SECTION:
+        if not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)+', v): err.append(f'slugs.{k}: bad path {v}')
+    elif k in ('net','about','download'):
         if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v): err.append(f'slugs.{k}: bad segment {v}')
     elif not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)?', v): err.append(f'slugs.{k}: bad path {v}')
 if len(set(s.values())) != len(s): err.append('slugs: duplicates')
 # countries
 en_c = {r['cc'] for r in csv.DictReader(open(W / 'names' / 'countries.csv'))}
 rows = list(csv.DictReader(open(HERE / 'countries.csv')))
-if [*rows[0]] != ['cc','name','slug','in_phrase','note']: err.append('countries: header')
+if [*rows[0]] not in (['cc','name','slug','in_phrase','note'], ['cc','name','slug','in_phrase','note','name_nom']): err.append('countries: header')
 if {r['cc'] for r in rows} != en_c: err.append('countries: cc set differs')
 sl = [r['slug'] for r in rows]
 if len(set(sl)) != len(sl): err.append('countries: duplicate slugs')
@@ -87,11 +93,10 @@ for r in rows:
     if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', r['slug']): err.append(f"countries {r['cc']}: bad slug")
 # cities
 ids = {r['geonameid'] for r in csv.DictReader(open(W / 'names' / 'cities.csv'))}
-# L2: cities with pages that are not yet in names/cities.csv (e.g. NOBIL NO/SE) are allowed too
+# FIXL F2: every geonameid must exist in names/cities.csv; every city page needs a row
 _ps = json.load(open(W / 'state' / 'pages_state.json'))
 page_ids = {v['key'].split(':')[2] for v in _ps.values() if v.get('type') == 'city' and str(v.get('key', '')).startswith('t:')}
 for g in sorted(page_ids - {r['geonameid'] for r in csv.DictReader(open(HERE / 'cities.csv'))}): err.append(f'cities {g}: page city missing')
-ids |= page_ids
 rows = list(csv.DictReader(open(HERE / 'cities.csv')))
 if [*rows[0]] != ['geonameid','name','in_phrase','decl_ok','note']: err.append('cities: header')
 seen = set()
@@ -101,6 +106,6 @@ for r in rows:
     if g in seen: err.append(f'cities {g}: duplicate')
     seen.add(g)
     if not (r['name'] and r['in_phrase']) or r['decl_ok'] not in ('0','1'): err.append(f'cities {g}: bad row')
-print(f'cities: {len(rows)}/{len(ids)} covered (names + pages_state), decl_ok=1: {sum(r["decl_ok"]=="1" for r in rows)}')
+print(f'cities: {len(rows)}/{len(ids)} covered (names/cities.csv), decl_ok=1: {sum(r["decl_ok"]=="1" for r in rows)}')
 print('\n'.join(err) if err else 'OK: 0 errors')
 sys.exit(1 if err else 0)

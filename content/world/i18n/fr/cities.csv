@@ -1880,7 +1880,7 @@ geonameid,name,in_phrase,decl_ok,note
 2885397,Korschenbroich,à Korschenbroich,1,
 2892786,Karlstadt,à Karlstadt,1,
 2894375,Kaarst,à Kaarst,1,
-2894553,Juliers,à Juliers,1,exonyme FR
+2894553,Jülich,à Jülich,1,FIXL D12: nom officiel (Juliers historique)
 2894637,Jüchen,à Jüchen,1,
 2910514,Haren,à Haren,1,
 2913433,Güstrow,à Güstrow,1,
@@ -2075,7 +2075,7 @@ geonameid,name,in_phrase,decl_ok,note
 2739848,Esposende,à Esposende,1,
 2664454,Västerås,à Västerås,1,
 3074603,Jablonec nad Nisou,à Jablonec nad Nisou,1,
-2803620,Deux-Ponts,à Deux-Ponts,1,exonyme FR
+2803620,Zweibrücken,à Zweibrücken,1,FIXL D12: nom officiel (Deux-Ponts historique)
 2806081,Wörth am Rhein,à Wörth am Rhein,1,
 2811899,Weißenfels,à Weißenfels,1,
 2829758,Stadtlohn,à Stadtlohn,1,
@@ -5604,3 +5604,52 @@ geonameid,name,in_phrase,decl_ok,note
 786950,Podujevë,à Podujevë,1,
 788470,Llazicë,à Llazicë,1,
 790674,Gjilan,à Gjilan,1,
+2660646,Genève,à Genève,1,FIXL
+3149563,Kongsberg,à Kongsberg,1,FIXL
+3139075,Skien,à Skien,1,FIXL
+2727234,Åkersberga,à Åkersberga,1,FIXL
+2726756,Alingsås,à Alingsås,1,FIXL
+2721259,Boo,à Boo,1,FIXL
+2716166,Enköping,à Enköping,1,FIXL
+2715946,Eslöv,à Eslöv,1,FIXL
+2715573,Falkenberg,à Falkenberg,1,FIXL
+2715568,Falköping,à Falköping,1,FIXL
+2709628,Gustavsberg,à Gustavsberg,1,FIXL
+2707953,Haninge,à Haninge,1,FIXL
+2704620,Huddinge,à Huddinge,1,FIXL
+2704613,Hudiksvall,à Hudiksvall,1,FIXL
+2704136,Huskvarna,à Huskvarna,1,FIXL
+2703396,Jakobsberg,à Jakobsberg,1,FIXL
+2701715,Karlskoga,à Karlskoga,1,FIXL
+2701223,Katrineholm,à Katrineholm,1,FIXL
+2699791,Köping,à Köping,1,FIXL
+2699282,Kristinehamn,à Kristinehamn,1,FIXL
+2698767,Kumla,à Kumla,1,FIXL
+2697720,Landskrona,à Landskrona,1,FIXL
+2696503,Lerum,à Lerum,1,FIXL
+2696334,Lidingö,à Lidingö,1,FIXL
+604490,Luleå,à Luleå,1,FIXL
+2692613,Mariestad,à Mariestad,1,FIXL
+2692475,Märsta,à Märsta,1,FIXL
+2690580,Nacka,à Nacka,1,FIXL
+2690170,Nässjö,à Nässjö,1,FIXL
+2688250,Norrtälje,à Norrtälje,1,FIXL
+2687700,Nyköping,à Nyköping,1,FIXL
+2686469,Örnsköldsvik,à Örnsköldsvik,1,FIXL
+2686162,Oskarshamn,à Oskarshamn,1,FIXL
+2684395,Partille,à Partille,1,FIXL
+603570,Piteå,à Piteå,1,FIXL
+602913,Skellefteå,à Skellefteå,1,FIXL
+2676176,Södertälje,à Södertälje,1,FIXL
+2675408,Sollentuna,à Sollentuna,1,FIXL
+2675397,Solna,à Solna,1,FIXL
+2674649,Staffanstorp,à Staffanstorp,1,FIXL
+2670879,Sundbyberg,à Sundbyberg,1,FIXL
+2669772,Täby,à Täby,1,FIXL
+2667303,Trollhättan,à Trollhättan,1,FIXL
+2667094,Tumba,à Tumba,1,FIXL
+2666238,Upplands Väsby,à Upplands Väsby,1,FIXL
+2664203,Västervik,à Västervik,1,FIXL
+2665171,Vänersborg,à Vänersborg,1,FIXL
+2664855,Värnamo,à Värnamo,1,FIXL
+2662689,Visby,à Visby,1,FIXL

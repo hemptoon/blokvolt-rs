@@ -41,7 +41,7 @@
  "dv_p_mreza": "Şarj ağının slug'ı; birden fazlası virgülle ayrılır",
  "dv_p_snaga": "Güç sınıfları: ac, dc, hpc, nepoznato (bilinmiyor)",
  "dv_p_tema": "tamna = koyu altlık harita",
- "dv_p_lang": "Dil: widget'ın adresi (EN, SR, RU)",
+ "dv_p_lang": "Dil: widget'ın adresine göre belirlenir",
  "dv_p_hash": "Tam görünüm: adresin sonunda #zoom/enlem/boylam",
  "dv_open_h": "Dünya haritasının açık verileri",
  "dv_open_p": "Halka açık katmanın haftalık CSV dosyası, ODbL 1.0, sütunlar: {n}.",

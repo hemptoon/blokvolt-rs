@@ -2435,7 +2435,7 @@ geonameid,name,in_phrase,decl_ok,note
 3191376,Šabac,në Šabac,1,auto
 784873,Trstenik,në Trstenik,1,auto
 787050,Pirot,në Pirot,1,auto
-787595,Pazar i Ri,në Pazar të Ri,1,ekzonim
+787595,Novi Pazar,në Novi Pazar,1,FIXL D12: emri zyrtar (jo Pazar i Ri)
 788709,Leskovac,në Leskovac,1,auto
 790015,Inđija,në qytetin Inđija,0,"auto: emri mbaron me -a, formë e sigurt"
 791678,Ćuprija,në qytetin Ćuprija,0,"auto: emri mbaron me -a, formë e sigurt"
@@ -2450,7 +2450,7 @@ geonameid,name,in_phrase,decl_ok,note
 3197728,Koprivnica,në qytetin Koprivnica,0,"auto: emri mbaron me -a, formë e sigurt"
 3203982,Bjelovar,në Bjelovar,1,auto
 3199394,Herceg Novi,në Herceg Novi,1,auto
-3204509,Tivar,në Tivar,1,ekzonim
+3204509,Bar,në Bar,1,FIXL D12: emri zyrtar (jo Tivar)
 3191429,Ruma,në qytetin Ruma,0,"auto: emri mbaron me -a, formë e sigurt"
 784024,Zaječar,në Zaječar,1,auto
 787237,Pančevo,në Pančevo,1,auto
@@ -5652,3 +5652,4 @@ geonameid,name,in_phrase,decl_ok,note
 602913,Skellefteå,në Skellefteå,1,"L2: NOBIL, emri vendas"
 603570,Piteå,në Piteå,1,"L2: NOBIL, emri vendas"
 604490,Luleå,në Luleå,1,"L2: NOBIL, emri vendas"
+2660646,Gjenevë,në Gjenevë,1,FIXL: ekzonim

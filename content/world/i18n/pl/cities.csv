@@ -530,7 +530,7 @@ geonameid,name,in_phrase,decl_ok,note
 2797713,Gembloux,w Gembloux,1,
 2803560,Zwickau,w Zwickau,1,
 2810716,Wertheim,w Wertheimie,1,
-2826287,Strzałów,w Strzałowie,1,exonym
+2826287,Stralsund,w Stralsundzie,1,FIXL D12: nazwa urzędowa zamiast historycznej «Strzałów»
 2835482,Schwäbisch Gmünd,w Schwäbisch Gmünd,1,R-PL: forma nieodmienna
 2513416,Murcja,w Murcji,1,exonym
 2970148,Vence,w Vence,1,
@@ -1011,7 +1011,7 @@ geonameid,name,in_phrase,decl_ok,note
 2879241,Leimen,w Leimen,1,
 2893544,Kaltenkirchen,w Kaltenkirchen,1,
 2905826,Herrenberg,w Herrenbergu,1,
-2917788,Gryfia,w Gryfii,1,exonym
+2917788,Greifswald,w Greifswaldzie,1,FIXL D12: nazwa urzędowa zamiast historycznej «Gryfia»
 2925192,Freiberg,we Freibergu,1,
 2516479,Eivissa,w mieście Eivissa,0,
 631707,Vihti,w Vihti,1,
@@ -1309,7 +1309,7 @@ geonameid,name,in_phrase,decl_ok,note
 2646504,Hove,w Hove,1,
 2655351,Bletchley,w Bletchley,1,
 733840,Xanthi,w mieście Xanthi,0,
-597231,Mariampol,w Mariampolu,1,exonym
+597231,Marijampolė,w mieście Marijampolė,0,FIXL D12: nazwa urzędowa zamiast historycznej «Mariampol»
 2785470,Tienen,w Tienen,1,
 2796696,Halle,w Halle,1,
 2806768,Wolfratshausen,w Wolfratshausen,1,
@@ -1548,7 +1548,7 @@ geonameid,name,in_phrase,decl_ok,note
 2646057,Ipswich,w Ipswich,1,
 2655984,Belfast,w Belfaście,1,
 258038,Artemida,w mieście Artemida,0,
-601084,Olita,w Olicie,1,exonym
+601084,Alytus,w mieście Alytus,0,FIXL D12: nazwa urzędowa zamiast historycznej «Olita»
 2745932,Urk,w Urk,1,R-PL: forma nieodmienna
 2753376,IJmuiden,w IJmuiden,1,
 2755496,Glanerbrug,w Glanerbrug,1,R-PL: forma nieodmienna
@@ -2112,7 +2112,7 @@ geonameid,name,in_phrase,decl_ok,note
 3173153,Monfalcone,w Monfalcone,1,
 3181554,Brescia,w Brescii,1,
 3183343,Albenga,w mieście Albenga,0,
-597188,Możejki,w Możejkach,1,exonym
+597188,Mažeikiai,w mieście Mažeikiai,0,FIXL D12: nazwa urzędowa zamiast historycznej «Możejki»
 2265447,Olhão,w Olhão,1,
 2271985,Algés,w mieście Algés,0,
 2670781,Sundsvall,w Sundsvall,1,R-PL: forma nieodmienna
@@ -2253,8 +2253,8 @@ geonameid,name,in_phrase,decl_ok,note
 2961297,Swords,w Swords,1,
 2962308,Navan,w Navan,1,R-PL: forma nieodmienna
 3182997,Aosta,w Aoście,1,
-593959,Taurogi,w Taurogach,1,exonym
-598272,Kiejdany,w Kiejdanach,1,exonym
+593959,Tauragė,w mieście Tauragė,0,FIXL D12: nazwa urzędowa zamiast historycznej «Taurogi»
+598272,Kėdainiai,w mieście Kėdainiai,0,FIXL D12: nazwa urzędowa zamiast historycznej «Kiejdany»
 2758587,Borssele,w Borssele,1,
 3154084,Hamar,w Hamar,1,R-PL: forma nieodmienna
 2262912,Sintra,w Sintrze,1,
@@ -3448,7 +3448,7 @@ geonameid,name,in_phrase,decl_ok,note
 3168429,San Donà di Piave,w San Donà di Piave,1,
 3171586,Palazzolo sull'Oglio,w Palazzolo sull'Oglio,1,
 1835848,Seul,w Seulu,1,exonym
-598818,Janów,w Janowie,1,exonym
+598818,Jonava,w mieście Jonava,0,FIXL D12: nazwa urzędowa zamiast historycznej «Janów»
 1735227,Kuantan,w mieście Kuantan,0,
 3153623,Haugesund,w mieście Haugesund,0,
 1486209,Jekaterynburg,w Jekaterynburgu,1,exonym
@@ -3587,7 +3587,7 @@ geonameid,name,in_phrase,decl_ok,note
 3164699,Varese,w Varese,1,
 3175532,Imperia,w mieście Imperia,0,
 3181495,Brugherio,w Brugherio,1,
-593672,Uciana,w Ucianie,1,exonym
+593672,Utena,w mieście Utena,0,FIXL D12: nazwa urzędowa zamiast historycznej «Uciana»
 460570,Cēsis,w mieście Cēsis,0,
 1771304,Kampung Baru Balakong,w mieście Kampung Baru Balakong,0,
 3151770,Horten,w mieście Horten,0,
@@ -3743,7 +3743,7 @@ geonameid,name,in_phrase,decl_ok,note
 3174051,Mantua,w Mantui,1,exonym
 3177610,Desenzano del Garda,w mieście Desenzano del Garda,0,
 6457398,Verbania,w mieście Verbania,0,
-593733,Wiłkomierz,w Wiłkomierzu,1,exonym
+593733,Ukmergė,w mieście Ukmergė,0,FIXL D12: nazwa urzędowa zamiast historycznej «Wiłkomierz»
 1735106,George Town,w mieście George Town,0,
 2745673,Velsen-Zuid,w mieście Velsen-Zuid,0,
 3140390,Sandefjord,w mieście Sandefjord,0,
@@ -5604,3 +5604,52 @@ geonameid,name,in_phrase,decl_ok,note
 786950,Podujevë,w mieście Podujevë,0,
 788470,Llazicë,w mieście Llazicë,0,
 790674,Gjilan,w mieście Gjilan,0,
+2660646,Genewa,w Genewie,1,FIXL
+3149563,Kongsberg,w Kongsbergu,1,FIXL
+3139075,Skien,w mieście Skien,0,FIXL
+2727234,Åkersberga,w mieście Åkersberga,0,FIXL
+2726756,Alingsås,w mieście Alingsås,0,FIXL
+2721259,Boo,w mieście Boo,0,FIXL
+2716166,Enköping,w Enköpingu,1,FIXL
+2715946,Eslöv,w mieście Eslöv,0,FIXL
+2715573,Falkenberg,w Falkenbergu,1,FIXL
+2715568,Falköping,w Falköpingu,1,FIXL
+2709628,Gustavsberg,w Gustavsbergu,1,FIXL
+2707953,Haninge,w mieście Haninge,0,FIXL
+2704620,Huddinge,w mieście Huddinge,0,FIXL
+2704613,Hudiksvall,w mieście Hudiksvall,0,FIXL
+2704136,Huskvarna,w mieście Huskvarna,0,FIXL
+2703396,Jakobsberg,w Jakobsbergu,1,FIXL
+2701715,Karlskoga,w mieście Karlskoga,0,FIXL
+2701223,Katrineholm,w Katrineholmie,1,FIXL
+2699791,Köping,w Köpingu,1,FIXL
+2699282,Kristinehamn,w mieście Kristinehamn,0,FIXL
+2698767,Kumla,w mieście Kumla,0,FIXL
+2697720,Landskrona,w mieście Landskrona,0,FIXL
+2696503,Lerum,w mieście Lerum,0,FIXL
+2696334,Lidingö,w mieście Lidingö,0,FIXL
+604490,Luleå,w Luleå,1,FIXL
+2692613,Mariestad,w mieście Mariestad,0,FIXL
+2692475,Märsta,w mieście Märsta,0,FIXL
+2690580,Nacka,w mieście Nacka,0,FIXL
+2690170,Nässjö,w mieście Nässjö,0,FIXL
+2688250,Norrtälje,w mieście Norrtälje,0,FIXL
+2687700,Nyköping,w Nyköpingu,1,FIXL
+2686469,Örnsköldsvik,w mieście Örnsköldsvik,0,FIXL
+2686162,Oskarshamn,w mieście Oskarshamn,0,FIXL
+2684395,Partille,w mieście Partille,0,FIXL
+603570,Piteå,w Piteå,1,FIXL
+602913,Skellefteå,w Skellefteå,1,FIXL
+2676176,Södertälje,w mieście Södertälje,0,FIXL
+2675408,Sollentuna,w mieście Sollentuna,0,FIXL
+2675397,Solna,w mieście Solna,0,FIXL
+2674649,Staffanstorp,w mieście Staffanstorp,0,FIXL
+2670879,Sundbyberg,w Sundbybergu,1,FIXL
+2669772,Täby,w mieście Täby,0,FIXL
+2667303,Trollhättan,w mieście Trollhättan,0,FIXL
+2667094,Tumba,w mieście Tumba,0,FIXL
+2666238,Upplands Väsby,w mieście Upplands Väsby,0,FIXL
+2664203,Västervik,w mieście Västervik,0,FIXL
+2665171,Vänersborg,w Vänersborgu,1,FIXL
+2664855,Värnamo,w mieście Värnamo,0,FIXL
+2662689,Visby,w mieście Visby,0,FIXL

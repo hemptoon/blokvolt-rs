@@ -69,7 +69,7 @@
  "p_dc": "Ātrā DC uzlāde no 50 kW: {dc} ({pct_dc}); 150 kW vai vairāk: {hpc}.",
  "p_gnet": "{net} ir pārstāvēts {n_countries}.",
  "p_hub": "Lapa ir valstīm, kurās ir vismaz 100 publisku vietu ar vidēju vai augstu ticamību. Rietumbalkānus aptver katras valsts BlokVolt lapas.",
- "p_hub_na": "Amerikas Savienotās Valstis un Kanāda ir aptvertas angļu un krievu valodā; serbu valodas lapas aptver Eiropu.",
+ "p_hub_na": "Pilsētu un uzlādes tīklu lapas katrai valstij ir angļu un krievu valodā, kā arī attiecīgās valsts valodā.",
  "p_multi": "{pct_multi} vietu apstiprina divi vai vairāk avoti; {pct_recent} pēdējo reizi apstiprinātas 2025. vai 2026. gadā.",
  "p_net_share": "Tīkls ir pārstāvēts {n_cities} {country_u}; tas veido {share} no šeit rādītajām valsts publiskajām vietām.",
  "p_nonet": "Bez zināma tīkla: {nonet}.",

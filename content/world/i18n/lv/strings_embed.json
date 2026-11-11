@@ -41,7 +41,7 @@
  "dv_p_mreza": "Uzlādes tīkla identifikators adresē (slug), vairākus atdala ar komatiem",
  "dv_p_snaga": "Jaudas klases: ac, dc, hpc, nepoznato (nav zināma)",
  "dv_p_tema": "tamna = tumša pamatkarte",
- "dv_p_lang": "Valoda: logrīka adrese (EN, SR, RU)",
+ "dv_p_lang": "Valoda: to nosaka logrīka adrese",
  "dv_p_hash": "Precīzs skats: #mērogs/platums/garums adreses beigās",
  "dv_open_h": "Pasaules kartes atvērtie dati",
  "dv_open_p": "Iknedēļas publiskā slāņa CSV fails, ODbL 1.0, kolonnas: {n}.",

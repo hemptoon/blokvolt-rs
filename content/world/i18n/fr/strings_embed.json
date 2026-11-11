@@ -41,7 +41,7 @@
  "dv_p_mreza": "Identifiant (slug) du réseau ; plusieurs, séparés par des virgules",
  "dv_p_snaga": "Classes de puissance : ac, dc, hpc, nepoznato (inconnue)",
  "dv_p_tema": "tamna = fond de carte sombre",
- "dv_p_lang": "Langue : selon l’adresse du widget (EN, SR, RU)",
+ "dv_p_lang": "Langue : définie par l’adresse du widget",
  "dv_p_hash": "Vue précise : #zoom/latitude/longitude à la fin de l’adresse",
  "dv_open_h": "Données ouvertes de la carte mondiale",
  "dv_open_p": "Un fichier CSV hebdomadaire de la couche publique, ODbL 1.0, colonnes : {n}.",

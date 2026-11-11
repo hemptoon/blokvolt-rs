@@ -24,3 +24,14 @@ Cities: all 1 128 `decl_ok=1` read:
 - Anchorage «Ankurija» → «Enkoridža».
 - Other exonym-auto forms checked against common Latvian usage (Zalcburga, Grāca, Belgrada, Novisada, Kijiva, Ļviva, Stambula, Ņujorka …) — fine.
 Disputed, left: Heraklion «Hērakliona» vs Irakleio «Iraklija» (two GeoNames rows), Seinäjoki/Pori locative = name.
+
+## FIXL 11.11.2026
+Checked: new `strings_home.json` (71 keys), `lang_hint`/`lang_hint_close`, D11 (`dv_p_lang`, `p_hub_na`), 7 slugs, 49 cities (48 NOBIL + Geneva).
+Back-translation (wave 2, blind): 10 home strings (title, h1, data_as_of, search_none, near_err, prices_p, p_ratio, work_p, routes_p, trust_p) + 3 changed (dv_p_lang, p_hub_na, lang_hint) — all match in meaning, no fixes.
+- `tab_ap` «Āzija un Okeānija» (shorter than «Āzijas un Klusā okeāna reģions») — same set of countries; minor wording divergence from EN "Asia-Pacific".
+- `prices_p` keeps «ad hoc (bez līguma)», as in strings_prices; `map_alt` lime = «dzeltenzaļais».
+- `p_ratio` «{x}× dārgāk nekā mājās» — the × sign avoids number agreement.
+D13 (lv): «viesabonēšana» kept everywhere (pay_p uses it too).
+D12: foreign city names checked — no historical/irredentist exonyms; Viļņa, Kauņa, Belostoka, Grodņa are the normal Latvian forms, kept.
+NOBIL towns: Swedish/Norwegian form, «pilsētā X», decl_ok=0 (like Västerås, Umeå in this file); Geneva «Ženēva / Ženēvā», decl_ok=1.
+Open: `exonym-auto` forms are still unchecked by a native speaker (R-LV).

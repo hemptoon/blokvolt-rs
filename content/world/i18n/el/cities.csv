@@ -3326,7 +3326,7 @@ geonameid,name,in_phrase,decl_ok,note
 1273780,Cuttack,στην πόλη Cuttack,0,local
 7626690,Pimpri-Chinchwad,στην πόλη Pimpri-Chinchwad,0,local
 317851,Menderes,στην πόλη Menderes,0,local
-322830,Αϊδίνιο,στο Αϊδίνιο,1,exonym
+322830,Αϊντίν,στο Αϊντίν,1,FIXL D12: official local name (was Αϊδίνιο)
 4166232,North Miami,στην πόλη North Miami,0,local
 4166233,North Miami Beach,στην πόλη North Miami Beach,0,local
 4166673,Ocala,στην πόλη Ocala,0,local
@@ -4085,7 +4085,7 @@ geonameid,name,in_phrase,decl_ok,note
 2662149,Ystad,στην πόλη Ystad,0,local
 2696329,Lidköping,στην πόλη Lidköping,0,local
 2712414,Gävle,στην πόλη Gävle,0,local
-300399,Σώκια,στα Σώκια,1,exonym
+300399,Σιόκε,στο Σιόκε,1,FIXL D12: official local name (was Σώκια)
 316541,Ντιγιάρμπακιρ,στο Ντιγιάρμπακιρ,1,exonym
 6955677,Çankaya,στην πόλη Çankaya,0,local
 706483,Χάρκοβο,στο Χάρκοβο,1,exonym
@@ -4513,7 +4513,7 @@ geonameid,name,in_phrase,decl_ok,note
 3056459,Zvolen,στην πόλη Zvolen,0,local
 3058531,Nitra,στην πόλη Nitra,0,local
 3059101,Levice,στην πόλη Levice,0,local
-297090,Δίδυμα,στα Δίδυμα,1,exonym
+297090,Ντιντίμ,στο Ντιντίμ,1,FIXL D12: official local name (was Δίδυμα)
 6947637,Ataşehir,στην πόλη Ataşehir,0,local
 751324,Bağcılar,στην πόλη Bağcılar,0,local
 4084888,Prichard,στην πόλη Prichard,0,local
@@ -5190,7 +5190,7 @@ geonameid,name,in_phrase,decl_ok,note
 726546,Σβίλενγκραντ,στο Σβίλενγκραντ,1,exonym
 727079,Σλίβεν,στο Σλίβεν,1,exonym
 727462,Samokov,στην πόλη Samokov,0,local
-728288,Πετρίτσι,στο Πετρίτσι,1,exonym
+728288,Πέτριτς,στο Πέτριτς,1,FIXL D12: official local name (was Πετρίτσι)
 733191,Μπλαγκόεβγκραντ,στο Μπλαγκόεβγκραντ,1,exonym
 13607919,Fredericton North,στην πόλη Fredericton North,0,local
 5897321,Bedford,στην πόλη Bedford,0,local
@@ -5336,7 +5336,7 @@ geonameid,name,in_phrase,decl_ok,note
 2715953,Eskilstuna,στην πόλη Eskilstuna,0,local
 3058780,Martin,στην πόλη Martin,0,local
 3060346,Dubnica nad Váhom,στην πόλη Dubnica nad Váhom,0,local
-304355,Μύλασα,στα Μύλασα,1,exonym
+304355,Μιλάς,στο Μιλάς,1,FIXL D12: official local name (was Μύλασα)
 322165,Μπαλίκεσιρ,στο Μπαλίκεσιρ,1,exonym
 737081,Zekeriyaköy,στην πόλη Zekeriyaköy,0,local
 739549,Şişli,στην πόλη Şişli,0,local
@@ -5541,7 +5541,7 @@ geonameid,name,in_phrase,decl_ok,note
 3184081,Σκόδρα,στη Σκόδρα,1,exonym
 3184935,Λέζα,στη Λέζα,1,exonym
 781988,Πόγραδετς,στο Πόγραδετς,1,exonym
-782756,Κορυτσά,στην Κορυτσά,1,exonym
+782756,Κόρτσα,στην Κόρτσα,1,FIXL D12: official local name (was Κορυτσά)
 783263,Ελβασάν,στο Ελβασάν,1,exonym
 3188893,Τρέμπινιε,στο Τρέμπινιε,1,exonym
 3192409,Πρίεντορ,στο Πρίεντορ,1,exonym
@@ -5554,9 +5554,9 @@ geonameid,name,in_phrase,decl_ok,note
 785058,Veles,στην πόλη Veles,0,local
 785482,Στιπ,στο Στιπ,1,exonym
 785842,Σκόπια,στα Σκόπια,1,exonym
-787487,Αχρίδα,στην Αχρίδα,1,exonym
+787487,Οχρίντ,στο Οχρίντ,1,FIXL D12: official local name (was Αχρίδα)
 789403,Κότσανι,στο Κότσανι,1,exonym
-790744,Γευγελή,στη Γευγελή,1,exonym
+790744,Γκεβγκέλια,στην Γκεβγκέλια,1,FIXL D12: official local name (was Γευγελή)
 3190342,Σόμπορ,στο Σόμπορ,1,exonym
 3196153,Loznica,στην πόλη Loznica,0,local
 3204674,Bačka Palanka,στην πόλη Bačka Palanka,0,local
@@ -5571,14 +5571,14 @@ geonameid,name,in_phrase,decl_ok,note
 793111,Aranđelovac,στην πόλη Aranđelovac,0,local
 786714,Πρίστινα,στην Πρίστινα,1,exonym
 787157,Πέια,στην Πέια,1,exonym
-3183719,Αυλώνα,στην Αυλώνα,1,exonym
+3183719,Βλόρα,στη Βλόρα,1,FIXL D12: official local name (was Αυλώνα)
 3184517,Patos Fshat,στην πόλη Patos Fshat,0,local
 3184862,Λουσνιά,στη Λουσνιά,1,exonym
 3185638,Fushë-Krujë,στην πόλη Fushë-Krujë,0,local
 3185672,Φίερι,στο Φίερι,1,exonym
-363243,Άγιοι Σαράντα,στους Αγίους Σαράντα,1,exonym
+363243,Σαράντα,στην πόλη Σαράντα,0,FIXL D12: official local name (was Άγιοι Σαράντα)
 782661,Κούκες,στο Κούκες,1,exonym
-783148,Αργυρόκαστρο,στο Αργυρόκαστρο,1,exonym
+783148,Γκιροκάστρα,στην Γκιροκάστρα,1,FIXL D12: official local name (was Αργυρόκαστρο)
 3196079,Lukavac,στην πόλη Lukavac,0,local
 3200396,Goražde,στην πόλη Goražde,0,local
 3203099,Bugojno,στην πόλη Bugojno,0,local
@@ -5604,3 +5604,52 @@ geonameid,name,in_phrase,decl_ok,note
 786950,Podujeva,στην πόλη Podujeva,0,local
 788470,Llazicë,στην πόλη Llazicë,0,local
 790674,Γκιλάν,στο Γκιλάν,1,exonym
+2660646,Γενεύη,στη Γενεύη,1,FIXL
+3149563,Kongsberg,στην πόλη Kongsberg,0,FIXL
+3139075,Skien,στην πόλη Skien,0,FIXL
+2727234,Åkersberga,στην πόλη Åkersberga,0,FIXL
+2726756,Alingsås,στην πόλη Alingsås,0,FIXL
+2721259,Boo,στην πόλη Boo,0,FIXL
+2716166,Enköping,στην πόλη Enköping,0,FIXL
+2715946,Eslöv,στην πόλη Eslöv,0,FIXL
+2715573,Falkenberg,στην πόλη Falkenberg,0,FIXL
+2715568,Falköping,στην πόλη Falköping,0,FIXL
+2709628,Gustavsberg,στην πόλη Gustavsberg,0,FIXL
+2707953,Haninge,στην πόλη Haninge,0,FIXL
+2704620,Huddinge,στην πόλη Huddinge,0,FIXL
+2704613,Hudiksvall,στην πόλη Hudiksvall,0,FIXL
+2704136,Huskvarna,στην πόλη Huskvarna,0,FIXL
+2703396,Jakobsberg,στην πόλη Jakobsberg,0,FIXL
+2701715,Karlskoga,στην πόλη Karlskoga,0,FIXL
+2701223,Katrineholm,στην πόλη Katrineholm,0,FIXL
+2699791,Köping,στην πόλη Köping,0,FIXL
+2699282,Kristinehamn,στην πόλη Kristinehamn,0,FIXL
+2698767,Kumla,στην πόλη Kumla,0,FIXL
+2697720,Landskrona,στην πόλη Landskrona,0,FIXL
+2696503,Lerum,στην πόλη Lerum,0,FIXL
+2696334,Lidingö,στην πόλη Lidingö,0,FIXL
+604490,Luleå,στην πόλη Luleå,0,FIXL
+2692613,Mariestad,στην πόλη Mariestad,0,FIXL
+2692475,Märsta,στην πόλη Märsta,0,FIXL
+2690580,Nacka,στην πόλη Nacka,0,FIXL
+2690170,Nässjö,στην πόλη Nässjö,0,FIXL
+2688250,Norrtälje,στην πόλη Norrtälje,0,FIXL
+2687700,Nyköping,στην πόλη Nyköping,0,FIXL
+2686469,Örnsköldsvik,στην πόλη Örnsköldsvik,0,FIXL
+2686162,Oskarshamn,στην πόλη Oskarshamn,0,FIXL
+2684395,Partille,στην πόλη Partille,0,FIXL
+603570,Piteå,στην πόλη Piteå,0,FIXL
+602913,Skellefteå,στην πόλη Skellefteå,0,FIXL
+2676176,Södertälje,στην πόλη Södertälje,0,FIXL
+2675408,Sollentuna,στην πόλη Sollentuna,0,FIXL
+2675397,Solna,στην πόλη Solna,0,FIXL
+2674649,Staffanstorp,στην πόλη Staffanstorp,0,FIXL
+2670879,Sundbyberg,στην πόλη Sundbyberg,0,FIXL
+2669772,Täby,στην πόλη Täby,0,FIXL
+2667303,Trollhättan,στην πόλη Trollhättan,0,FIXL
+2667094,Tumba,στην πόλη Tumba,0,FIXL
+2666238,Upplands Väsby,στην πόλη Upplands Väsby,0,FIXL
+2664203,Västervik,στην πόλη Västervik,0,FIXL
+2665171,Vänersborg,στην πόλη Vänersborg,0,FIXL
+2664855,Värnamo,στην πόλη Värnamo,0,FIXL
+2662689,Visby,στην πόλη Visby,0,FIXL

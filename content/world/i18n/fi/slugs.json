@@ -9,5 +9,12 @@
  "prices": "/fi/lataushinnat/",
  "shell_about": "/fi/tietoa/",
  "sources": "/fi/lahteet/",
- "methodology": "/fi/menetelmat/"
+ "methodology": "/fi/menetelmat/",
+ "pay": "/fi/maksaminen/",
+ "routes": "/fi/reitit/",
+ "press": "/fi/medialle/",
+ "b2b": "/fi/dataa-yrityksille/",
+ "embed": "/fi/embed/kartta/",
+ "map_conf": "/fi/kartta-omalle-sivustolle/",
+ "developers": "/fi/kehittajille/"
 }

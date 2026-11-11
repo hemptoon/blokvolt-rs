@@ -41,7 +41,7 @@
  "dv_p_mreza": "Slugul rețelei, mai multe separate prin virgulă",
  "dv_p_snaga": "Clase de putere: ac, dc, hpc, nepoznato (necunoscută)",
  "dv_p_tema": "tamna = hartă de bază întunecată",
- "dv_p_lang": "Limba: adresa widgetului (EN, SR, RU)",
+ "dv_p_lang": "Limba: stabilită de adresa widgetului",
  "dv_p_hash": "Vedere exactă: #zoom/latitudine/longitudine la sfârșitul adresei",
  "dv_open_h": "Datele deschise ale hărții lumii",
  "dv_open_p": "Un fișier CSV săptămânal al stratului public, ODbL 1.0, coloane: {n}.",

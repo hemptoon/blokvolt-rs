@@ -9,7 +9,7 @@ WORLD = HERE.parent.parent
 errs, warns = [], []
 PH = re.compile(r'\{[a-z_0-9]*\}')
 TAG = re.compile(r'</?[a-zA-Z][^>]*>|&[a-z#0-9]+;')
-ALIASES = {'{city}': {'{city_u}'}, '{country}': {'{country_u}'}}   # same slot, other case (as sr/ru do)
+ALIASES = {'{city}': {'{city_u}'}, '{country}': {'{country_u}'}, '{name}': {'{name_nom}'}}   # same slot, other case (as sr/ru do); FIXL D14: {name_nom}
 ALLOWED_EXTRA = {'t_city': {'{city_u}'}, 't_city_cc': {'{city_u}'}, 'd_city': {'{city_u}'}}
 
 try:
@@ -19,7 +19,8 @@ except Exception as e:   # babel missing
     CATS = {'one', 'other'}
     warns.append(f'babel unavailable ({e}); assuming {CATS}')
 
-FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices', 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed')
+FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices', 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed',
+         'strings_home')  # FIXL F3
 FORBID = re.compile(r'24/7|\bmink\b|\bnálunk\b|\bnekünk\b|\brólunk\b|\bminket\b|szerkesztőség|Evolako', re.I)
 for f in FILES:
     if not (HERE / f'{f}.json').exists():
@@ -44,7 +45,7 @@ for f in FILES:
             errs.append(f'{f}.{k}: empty or not a string'); continue
         pe, pt = set(PH.findall(e)), set(PH.findall(t))
         missing = {p for p in pe - pt if not (ALIASES.get(p, set()) & pt)}
-        extra = pt - pe - ALLOWED_EXTRA.get(k, set())
+        extra = pt - pe - ALLOWED_EXTRA.get(k, set()) - {a for p in pe for a in ALIASES.get(p, set())}
         if missing or extra:
             errs.append(f'{f}.{k}: placeholders missing {sorted(missing)} extra {sorted(extra)}')
         if sorted(TAG.findall(e)) != sorted(TAG.findall(t)):
@@ -116,26 +117,27 @@ for name in ('pay', 'routes'):
             errs.append(f'texts.{name}.{k}: forbidden word')
 
 SLUG_KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
+SLUG_EXTRA = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']  # FIXL F5: allowed in addition
 sl = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
-if sorted(sl) != sorted(SLUG_KEYS):
+if set(SLUG_KEYS) - set(sl) or set(sl) - set(SLUG_KEYS) - set(SLUG_EXTRA):
     errs.append(f'slugs.json keys {sorted(sl)}')
 for k, v in sl.items():
     if k in ('net', 'about', 'download'):
         if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v):
             errs.append(f'slug {k}={v!r} must be one ASCII segment')
-    elif not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)?', v):
+    elif not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)' + ('*' if k in SLUG_EXTRA else '?'), v):
         errs.append(f'slug {k}={v!r} must be /{LANG}/…/ ASCII')
 if len(set(sl.values())) != len(sl):
     errs.append('slugs: duplicate values')
 
-def rows(p, cols):
+def rows(p, cols, alt=None):
     with open(p, encoding='utf-8', newline='') as fh:
         r = list(csv.DictReader(fh))
-    if not r or list(r[0].keys()) != cols:
+    if not r or list(r[0].keys()) not in (cols, alt):
         errs.append(f'{p.name}: columns != {cols}')
     return r
 
-c = rows(HERE / 'countries.csv', ['cc', 'name', 'slug', 'in_phrase', 'note'])
+c = rows(HERE / 'countries.csv', ['cc', 'name', 'slug', 'in_phrase', 'note'], alt=['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom'])  # FIXL D4
 base = {r['cc'] for r in csv.DictReader(open(WORLD / 'names' / 'countries.csv', encoding='utf-8'))}
 if {r['cc'] for r in c} != base:
     errs.append(f'countries.csv: cc set differs from names/countries.csv ({len(c)} vs {len(base)})')
@@ -160,6 +162,11 @@ for r in ci:
     if not r['name'].strip() or not r['in_phrase'].strip() or r['decl_ok'] not in ('0', '1'):
         errs.append(f'cities {r["geonameid"]}: bad row')
 ok1 = sum(r['decl_ok'] == '1' for r in ci)
+# FIXL F2: every city page of pages_state must have a row
+PS = json.load(open(WORLD / 'state' / 'pages_state.json', encoding='utf-8'))
+miss = {v['key'].split(':')[2] for v in PS.values() if v.get('type') == 'city'} - {r['geonameid'] for r in ci}
+if miss:
+    errs.append(f'cities.csv: {len(miss)} city pages missing: {sorted(miss)[:10]}')
 
 print(f'{LANG}: strings ok ({len(FILES)} files), texts: ' + ', '.join(k for k in texts) if not [e for e in errs if not e.startswith(("texts", "slug", "countries", "cities"))] else '')
 print(f'countries {len(c)}, cities {len(ci)} of {len(gids)} (decl_ok=1: {ok1}), plural categories {sorted(CATS)}')

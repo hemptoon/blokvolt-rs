@@ -34,3 +34,9 @@ Base : `origin/l-fr` (8456166). Branche : `r-fr`. Relecteur indépendant ; le tr
 - `map.ci_privacy`, `map.ci_once` — «le site» читается как «веб-сайт» → «la borne»;
 - `press.f_mom_n` — «la valeur DC» → «Pays où l’indice DC a le plus varié : {list}.»;
 - `press.f_home` — «de … à … fois» → «entre … et … fois».
+
+## FIXL 11.11.2026
+Обратный перевод (волна 1): 20 строк `strings_home` (title, desc, h1, sub, search_none, near_err, map_err, map_more, ap_note, below_h, prices_p, p_ratio, p_src, pay_p, routes_p, work_h, work_p, trust_p, org_desc, o_widget_p) + все 8 изменённых строк (`shell.lang_hint`, `lang_hint_close`, `embed.dv_p_lang`, `pages.p_hub_na`, `pages.t_near`, `pay.afir_eu`, `pay.afir_non`, `pay.conn_txt`). Смысловых ошибок 0.
+Расхождения (осознанные): `home.title` без «how to pay» — иначе > 80 знаков, «paiement» есть в desc; `home.prices_p` pay-as-you-go = «sans inscription» (глоссарий, D13); `pay.afir_eu`/`afir_non` перестроены так, чтобы `{name_nom}` стоял не в начале фразы и без согласования глагола («L’Union européenne compte {name_nom} parmi ses membres…», «…qui ne compte pas {name_nom} parmi ses membres») — работает и для «les Pays-Bas», «les États-Unis»; `conn_txt` через «pour {name_nom}» — нет слияния de/à + le.
+D12: `Deux-Ponts` → `Zweibrücken`, `Juliers` → `Jülich` (исторические экзонимы). Оставлены как обычные французские экзонимы: Aix-la-Chapelle, Mayence, Trèves, Ratisbonne, Sarrebruck, Spire, Iéna, Wittemberg, бельгийские/швейцарские французские формы (Anvers, Malines, Hal, Bâle, Coire…).
+Сомнения: h muet в `city_de.csv` для Hayange, Hautmont, Haubourdin (взято «d’…» по употреблению мэрий; проверить носителем); «Touchez un site» — на десктопе «Cliquez» было бы точнее, оставлено нейтрально как в EN «Tap».

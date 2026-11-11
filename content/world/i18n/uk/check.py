@@ -13,6 +13,8 @@ NAMES = os.path.join(WORLD, 'names')
 SLUG_KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices',
              'shell_about', 'sources', 'methodology']
 SEGMENT_KEYS = {'net', 'about', 'download'}
+# FIXL (11.11.2026): section paths the engine reads; optional in addition to the 11 required keys
+SECTION_KEYS = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']
 
 PH = re.compile(r'\{[^{}]*\}')
 TAG = re.compile(r'</?[a-zA-Z][^>]*>')
@@ -48,7 +50,8 @@ def cmp_string(label, en, tr):
         err(f'{label}: empty or not a string')
         return
     # pool 4 (10.11.2026): {city_u}/{country_u} may stand for {city}/{country}; the engine fills in_phrase
-    norm = lambda xs: [x.replace('_u}', '}') for x in xs]
+    # FIXL: {name_nom} may stand where EN has {name}
+    norm = lambda xs: [x.replace('{name_nom}', '{name}').replace('_u}', '}') for x in xs]
     same(label, norm(PH.findall(en)), norm(PH.findall(tr)), 'placeholders')
     same(label, TAG.findall(en), TAG.findall(tr), 'HTML tags')
     same(label, ENT.findall(en), ENT.findall(tr), 'entities')
@@ -171,7 +174,8 @@ def ml_nodes(o, p, out):
 def check_slugs():
     p = os.path.join(HERE, 'slugs.json')
     s = json.load(open(p))
-    same('slugs.json', SLUG_KEYS, list(s), 'keys')
+    if not set(SLUG_KEYS) <= set(s) <= set(SLUG_KEYS) | set(SECTION_KEYS):
+        err(f'slugs.json: keys {sorted(s)}: need {SLUG_KEYS}, may add {SECTION_KEYS}')
     for k, v in s.items():
         if k in SEGMENT_KEYS:
             if not SLUG.match(v):
@@ -202,7 +206,12 @@ def read_csv(name, cols):
 
 
 def check_countries():
-    rows = read_csv('countries.csv', ['cc', 'name', 'slug', 'in_phrase', 'note'])
+    p = os.path.join(HERE, 'countries.csv')
+    with open(p, newline='', encoding='utf-8') as f:
+        hdr = next(csv.reader(f), [])
+    # FIXL: an extra last column name_nom (D4) is allowed
+    cols = ['cc', 'name', 'slug', 'in_phrase', 'note'] + (['name_nom'] if hdr[-1:] == ['name_nom'] else [])
+    rows = read_csv('countries.csv', cols)
     src = [r['cc'] for r in csv.DictReader(open(os.path.join(NAMES, 'countries.csv'), newline=''))]
     got = [r['cc'] for r in rows]
     if sorted(got) != sorted(src):
@@ -244,6 +253,13 @@ def check_cities():
         stage.setdefault(r['stage'], [0, 0])[0] += 1
         if g in seen:
             stage[r['stage']][1] += 1
+    # FIXL: every city page of state/pages_state.json must have a row
+    st = os.path.join(WORLD, 'state', 'pages_state.json')
+    if os.path.exists(st):
+        page_ids = {v['key'].split(':')[-1] for v in json.load(open(st)).values() if v.get('type') == 'city'}
+        lost = sorted(page_ids - seen)
+        if lost:
+            err(f'cities.csv: city pages without a row: {lost[:10]} ({len(lost)})')
     ua = [g for g, r in src.items() if r['cc'] == 'UA']
     miss_ua = [g for g in ua if g not in seen]
     if miss_ua:
@@ -254,7 +270,8 @@ def check_cities():
 def main():
     out = {}
     for f in ('strings_map.json', 'strings_pages.json', 'strings_shell.json', 'strings_prices.json',
-              'strings_pay.json', 'strings_press.json', 'strings_b2b.json', 'strings_embed.json'):
+              'strings_pay.json', 'strings_press.json', 'strings_b2b.json', 'strings_embed.json',
+              'strings_home.json'):  # FIXL: home page
         out[f] = check_strings(f)
     out['texts.json strings'] = check_texts()
     out['slugs.json'] = check_slugs()

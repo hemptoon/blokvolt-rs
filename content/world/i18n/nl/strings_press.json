@@ -24,7 +24,7 @@
  "cls_dc": "DC 50–149 kW",
  "cls_hpc": "HPC ≥ 150 kW",
  "credit": "Bron: BlokVolt, Europese prijsindex voor het laden van EV's, {month}",
- "h_cite": "Zo vermeldt u de bron",
+ "h_cite": "Zo vermeld je de bron",
  "cite_1": "Vermeld de index en de maand en link naar de prijzenpagina, bijvoorbeeld:",
  "cite_2": "Cijfers en grafieken mogen zonder toestemming worden geciteerd, overgenomen en ingesloten in redactionele content, met die bronvermelding. De CSV-bestanden vallen onder CC BY-NC 4.0: vrij voor niet-commercieel gebruik met bronvermelding; commercieel gebruik van de gegevens (producten, betaalde rapporten, doorverkoop) vereist een schriftelijke overeenkomst.",
  "cite_3": "Citeer prijzen als gemiddelden van ad-hocprijzen uit de eigen prijslijsten van de netwerken, niet als wat elke rijder betaalt: abonnementen en roaming-apps kunnen goedkoper of duurder zijn.",

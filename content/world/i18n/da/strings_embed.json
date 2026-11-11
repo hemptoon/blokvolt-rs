@@ -41,7 +41,7 @@
  "dv_p_mreza": "Netværkets slug, flere adskilt med komma",
  "dv_p_snaga": "Effektklasser: ac, dc, hpc, nepoznato (ukendt)",
  "dv_p_tema": "tamna = mørkt baggrundskort",
- "dv_p_lang": "Sprog: widgettens adresse (EN, SR, RU)",
+ "dv_p_lang": "Sprog: bestemmes af widgettens adresse",
  "dv_p_hash": "Præcis visning: #zoom/breddegrad/længdegrad sidst i adressen",
  "dv_open_h": "Åbne data fra verdenskortet",
  "dv_open_p": "En ugentlig CSV-fil med det offentlige lag, ODbL 1.0, kolonner: {n}.",

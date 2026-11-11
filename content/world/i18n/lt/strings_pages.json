@@ -69,7 +69,7 @@
  "p_dc": "Greitasis DC įkrovimas nuo 50 kW: {dc} ({pct_dc}); 150 kW ar daugiau: {hpc}.",
  "p_gnet": "{net} veikia {n_countries}.",
  "p_hub": "Puslapį turi kiekviena šalis, kurioje yra ne mažiau kaip 100 vidutinio ar aukšto patikimumo viešų vietų. Vakarų Balkanams skirti atskiri BlokVolt puslapiai kiekvienai šaliai.",
- "p_hub_na": "Jungtinės Valstijos ir Kanada aprašytos anglų ir rusų kalbomis; puslapiai serbų kalba apima Europą.",
+ "p_hub_na": "Miestų ir tinklų puslapiai kiekvienai šaliai pateikiami anglų ir rusų kalbomis, taip pat tos šalies kalba.",
  "p_multi": "{pct_multi} vietų patvirtina du ar daugiau šaltinių; {pct_recent} paskutinį kartą patvirtintos 2025 ar 2026 m.",
  "p_net_share": "Tinklas veikia {n_cities} {country_u}; tai {share} čia rodomų šalies viešų vietų.",
  "p_nonet": "Be žinomo tinklo: {nonet}.",

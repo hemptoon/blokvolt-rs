@@ -63,3 +63,10 @@ Status: forberedt, ikke slået til. Danish is turned on only after gate G8.
 - 60 af 60 stemmer i betydning. Ingen fejl.
 - Rettet efter rapporten: about_data.intro "offentlige åbne data" → "myndigheders åbne data" (EN: government open data).
 - Fuld rapport: `backtranslation_report.md`.
+
+## FIXL (11.11.2026)
+- `strings_home.json` ny (71 nøgler); `strings_shell` + `lang_hint` «Denne side findes også på dansk», `lang_hint_close` «Luk».
+- Slugs: `/da/betaling/`, `/da/ruter/`, `/da/til-medier/`, `/da/data-til-virksomheder/`, `/da/embed/kort/`, `/da/kort-til-hjemmesider/`, `/da/til-udviklere/`.
+- `pages.p_hub_na` omskrevet (åbent punkt løst). `embed.dv_p_lang` = «Sprog: bestemmes af widgettens adresse».
+- cities.csv: 5 654 rækker (alle i names/cities.csv); check.py kontrollerer nu også, at alle bysider i pages_state har et navn.
+- D12: danske eksonymer beholdt (se REVIEW). Ingen `name_nom` (da har ikke D14).

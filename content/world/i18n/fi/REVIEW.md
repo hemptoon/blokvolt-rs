@@ -144,3 +144,9 @@
 `b2b.m_need`, `b2b.what_cmp`, `b2b.what_price`, `b2b.f_w_other`, `pay.cost_note` (без глагола), `pay.th_trip`, `pay.sys_mixed`, `pay.th_gaps`, `embed.cf_net`, `embed.cf_rules`, `press.d_issue` (месяц не в начале строки — `{month}` в нижнем регистре), `press.issue_of`, `press.h_cite`, `press.cite_3`.
 Не принято: `press.d_press` — название индекса «Euroopan sähköautojen latauksen hintaindeksi» уже закреплено в `strings_prices` (t_hub) и `press.credit`, меняем только везде сразу.
 Регистр: «me/meidän», «heti», «24/7» — 0; «lataus» в значении «загрузка» — 0 (кнопка CSV — «Tiedosto ja sarakkeet»).
+
+## FIXL 11.11.2026
+Обратный перевод (волна 1): 20 строк `strings_home` (title, desc, h1, sub, search_none, near_err, map_err, map_loading, countries_h, ap_note, prices_p, p_ratio, routes_h, work_h, work_p, o_widget_p, trust_p, org_desc, tab_ap, btn_near) + все 4 изменённые строки (`shell.lang_hint`, `lang_hint_close`, `embed.dv_p_lang`, `pages.p_hub_na`). Смысловых ошибок 0.
+Расхождения (осознанные): `home.title` без «maksaminen» (77 → 65 знаков; оплата есть в desc); pay-as-you-go = «kertahinta» (как в `strings_prices`); `map_err` «ei voitu näyttää» вместо «ladata» — избегаем двусмысленности lataus (зарядка/загрузка).
+D12: исторических/ирредентистских экзонимов в `cities.csv` нет (экзонимы — обычные финские: Tukholma, Pietari, Kiova…). Новое: Luleå = «Luulaja» (устоявшийся финский экзоним, Kotus/Yle); Piteå, Skellefteå — шведские формы. Upplands Väsby — безопасная форма «kaupungissa Upplands Väsby» (decl_ok = 0).
+Сомнения: гармония Sundbybergissä (по y) и Märstassa (по a) — по правилу последней не-нейтральной гласной; «Luulaja» vs «Luleå» — решить, если нужна единообразность со шведскими формами.

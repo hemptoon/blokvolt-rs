@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""L-SV / L2-sv check (8 string files, texts.json incl. pay/routes, slugs, countries, cities): content/world/i18n/sv vs EN sources. Run from repo root or anywhere: python3 content/world/i18n/sv/check.py"""
+"""L-SV / L2-sv / FIXL check (9 string files, texts.json incl. pay/routes, slugs, countries, cities): content/world/i18n/sv vs EN sources. Run from repo root or anywhere: python3 content/world/i18n/sv/check.py"""
 import csv, json, re, sys
 from pathlib import Path
 from babel import Locale
@@ -12,11 +12,14 @@ PH = re.compile(r'\{[^{}]*\}')
 TAG = re.compile(r'</?[a-zA-Z][^>]*>|&[a-z]+;|&#\d+;')
 err = []
 
+# pool 4 / FIXL: {city_u}/{country_u} may stand where EN has {city}/{country}; {name_nom} where EN has {name} (D14)
+ALT = {'{city_u}': '{city}', '{country_u}': '{country}', '{name_nom}': '{name}'}
+
 def sig(s):
-    return sorted(PH.findall(s)), sorted(TAG.findall(s))
+    return sorted(ALT.get(x, x) for x in PH.findall(s)), sorted(TAG.findall(s))
 
 for name in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
-             'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed']:
+             'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed', 'strings_home']:  # FIXL: + home
     en = json.load(open(WORLD / f'{name}.json', encoding='utf-8'))
     tr = json.load(open(HERE / f'{name}.json', encoding='utf-8'))
     for k in en:
@@ -93,8 +96,9 @@ for sec, nodes in ML.items():
 
 # slugs
 SK = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
+SK_OPT = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']  # FIXL F5 (paths /sv/…/)
 sl = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
-if list(sl) != SK and set(sl) != set(SK):
+if not set(SK) <= set(sl) <= set(SK) | set(SK_OPT):
     err.append(f'slugs.json keys {sorted(sl)}')
 for k, v in sl.items():
     if k in ('net', 'about', 'download'):
@@ -107,7 +111,8 @@ if len(set(paths)) != len(paths): err.append('slugs: duplicate paths')
 # countries
 cn = {r['cc']: r for r in csv.DictReader(open(WORLD / 'names' / 'countries.csv', encoding='utf-8'))}
 cs = list(csv.DictReader(open(HERE / 'countries.csv', encoding='utf-8')))
-if [*cs[0].keys()] != ['cc', 'name', 'slug', 'in_phrase', 'note']: err.append('countries.csv header')
+if [*cs[0].keys()] not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):  # D4
+    err.append('countries.csv header')
 if {r['cc'] for r in cs} != set(cn) or len(cs) != len(cn): err.append(f'countries.csv: {len(cs)} rows vs {len(cn)}')
 slugs = [r['slug'] for r in cs]
 if len(set(slugs)) != len(slugs): err.append('countries.csv: duplicate slugs')
@@ -118,15 +123,15 @@ for r in cs:
 
 # cities
 ci = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities.csv', encoding='utf-8'))}
-# city pages that exist but are not yet in names/cities.csv (e.g. new NOBIL towns) are allowed too
+# FIXL: every geonameid must exist in names/cities.csv (no allowance for page cities outside names/)
 ps = json.load(open(WORLD / 'state' / 'pages_state.json', encoding='utf-8'))
-ci_pages = {v['key'].split(':')[-1] for v in ps.values() if v.get('type') == 'city'}
-ci_all = ci | ci_pages
 cc = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
 if [*cc[0].keys()] != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: err.append('cities.csv header')
 ids = [r['geonameid'] for r in cc]
 if len(set(ids)) != len(ids): err.append('cities.csv: duplicate geonameid')
-if set(ids) - ci_all: err.append(f'cities.csv: unknown geonameid {sorted(set(ids) - ci_all)[:5]}')
+if set(ids) - ci: err.append(f'cities.csv: unknown geonameid {sorted(set(ids) - ci)[:5]}')
+all_pages = {v['key'].split(':')[-1] for v in ps.values() if v.get('type') == 'city'}
+if all_pages - set(ids): err.append(f'cities.csv: {len(all_pages - set(ids))} city pages without a row, e.g. {sorted(all_pages - set(ids))[:5]}')
 for r in cc:
     if not r['name'].strip() or not r['in_phrase'].strip() or r['decl_ok'] not in ('0', '1'):
         err.append(f"city {r['geonameid']}: bad row")

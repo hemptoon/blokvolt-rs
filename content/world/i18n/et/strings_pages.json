@@ -69,7 +69,7 @@
  "p_dc": "Kiire alalisvoolulaadimine alates 50 kW: {dc} ({pct_dc}); 150 kW või rohkem: {hpc}.",
  "p_gnet": "{net} on esindatud {n_countries}.",
  "p_hub": "Oma leht on riikidel, kus on vähemalt 100 keskmise või kõrge usaldusväärsusega avalikku laadimiskohta. Lääne-Balkani riike käsitlevad iga riigi BlokVolti lehed.",
- "p_hub_na": "Ameerika Ühendriike ja Kanadat käsitletakse inglise ja vene keeles; serbiakeelsed lehed hõlmavad Euroopat.",
+ "p_hub_na": "Linnade ja laadimisvõrkude lehed on iga riigi kohta inglise ja vene keeles ning ka riigi enda keeles.",
  "p_multi": "{pct_multi} laadimiskohtadest on kinnitatud kahe või enama allikaga; {pct_recent} on viimati kinnitatud 2025. või 2026. aastal.",
  "p_net_share": "Laadimisvõrk on esindatud {n_cities} {country_u}; see moodustab {share} siin näidatud riigi avalikest laadimiskohtadest.",
  "p_nonet": "Teadaoleva laadimisvõrguta: {nonet}.",

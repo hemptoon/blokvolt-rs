@@ -9,5 +9,12 @@
  "prices": "/et/laadimishinnad/",
  "shell_about": "/et/teave/",
  "sources": "/et/allikad/",
- "methodology": "/et/metoodika/"
+ "methodology": "/et/metoodika/",
+ "pay": "/et/kuidas-maksta/",
+ "routes": "/et/marsruudid/",
+ "press": "/et/meediale/",
+ "b2b": "/et/andmed-ettevotetele/",
+ "embed": "/et/embed/kaart/",
+ "map_conf": "/et/kaart-veebilehele/",
+ "developers": "/et/arendajatele/"
 }

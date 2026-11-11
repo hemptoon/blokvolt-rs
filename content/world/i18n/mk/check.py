@@ -11,7 +11,9 @@ PL_KEYS = {'strings_pages': {'pl_city', 'pl_city_in', 'pl_country', 'pl_country_
                              'pl_place', 'pl_point', 'pl_publoc'},
            'strings_shell': {'pl_loc', 'pl_cc'}}
 SLUG_KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
-FULL = {'home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology'}
+# FIXL (11.11.2026): section paths the engine reads, optional in addition to the 11 required keys
+SECTION_KEYS = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']
+FULL = {'home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology'} | set(SECTION_KEYS)
 errs, warns = [], []
 PH = re.compile(r'\{[a-z_0-9]*\}')
 TAG = re.compile(r'</?[a-z][^>]*>|&[a-z#0-9]+;')
@@ -26,8 +28,13 @@ def cats():
         return {'one', 'other'}
 
 
+def norm_ph(xs):
+    # FIXL: {name_nom} may stand where EN has {name}; {city_u}/{country_u} where EN has {city}/{country}
+    return sorted(x.replace('{name_nom}', '{name}').replace('_u}', '}') for x in xs)
+
+
 def same_marks(en, tr, where):
-    if sorted(PH.findall(en)) != sorted(PH.findall(tr)):
+    if norm_ph(PH.findall(en)) != norm_ph(PH.findall(tr)):
         errs.append(f'{where}: placeholders {PH.findall(en)} != {PH.findall(tr)}')
     if sorted(TAG.findall(en)) != sorted(TAG.findall(tr)):
         errs.append(f'{where}: tags/entities differ')
@@ -44,7 +51,8 @@ def same_marks(en, tr, where):
 C = cats()
 n_str = 0
 FILES = ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
-         'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed']  # L2: all 8 files
+         'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed',  # L2: all 8 files
+         'strings_home']  # FIXL: home page (HOME2)
 for f in FILES:
     en = json.load(open(WORLD / f'{f}.json'))
     if not (HERE / f'{f}.json').exists():
@@ -130,11 +138,11 @@ for part in ['pay', 'routes']:
 
 # slugs.json
 sl = json.load(open(HERE / 'slugs.json'))
-if list(sl) != SLUG_KEYS and set(sl) != set(SLUG_KEYS):
-    errs.append(f'slugs: keys must be exactly {SLUG_KEYS}')
+if not set(SLUG_KEYS) <= set(sl) <= set(SLUG_KEYS) | set(SECTION_KEYS):
+    errs.append(f'slugs: keys must be {SLUG_KEYS}, optionally plus {SECTION_KEYS}')
 for k, v in sl.items():
     if k in FULL:
-        if not re.fullmatch(r'/mk/([a-z0-9]+(-[a-z0-9]+)*/)?', v):
+        if not re.fullmatch(r'/mk/([a-z0-9]+(-[a-z0-9]+)*/)*', v):
             errs.append(f'slugs.{k}: full ASCII path with /mk/ prefix expected, got {v}')
     elif not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v):
         errs.append(f'slugs.{k}: one ASCII segment expected, got {v}')
@@ -151,8 +159,8 @@ for k, v in sl.items():
 # countries.csv
 src_c = {r['cc'] for r in csv.DictReader(open(WORLD / 'names/countries.csv'))}
 rows = list(csv.DictReader(open(HERE / 'countries.csv')))
-if [*rows[0].keys()] != ['cc', 'name', 'slug', 'in_phrase', 'note']:
-    errs.append('countries.csv: header must be cc,name,slug,in_phrase,note')
+if [*rows[0].keys()] not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):
+    errs.append('countries.csv: header must be cc,name,slug,in_phrase,note[,name_nom]')
 got = {r['cc'] for r in rows}
 if got != src_c:
     errs.append(f'countries.csv: cc differ {sorted(got ^ src_c)}')
@@ -179,6 +187,13 @@ if len(ids) != len(set(ids)):
     errs.append('cities.csv: duplicate geonameid')
 if set(ids) - src:
     errs.append(f'cities.csv: unknown geonameid {sorted(set(ids) - src)[:5]}')
+# FIXL: every city page of state/pages_state.json must have a row
+st = WORLD / 'state/pages_state.json'
+if st.exists():
+    page_ids = {v['key'].split(':')[-1] for v in json.load(open(st)).values() if v.get('type') == 'city'}
+    lost = page_ids - set(ids)
+    if lost:
+        errs.append(f'cities.csv: city pages without a row {sorted(lost)[:10]} ({len(lost)})')
 for r in rows:
     if not r['name'].strip() or not r['in_phrase'].strip() or r['decl_ok'] not in ('0', '1'):
         errs.append(f"cities.csv {r['geonameid']}: empty name/in_phrase or bad decl_ok")

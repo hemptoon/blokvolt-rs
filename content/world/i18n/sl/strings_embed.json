@@ -41,7 +41,7 @@
  "dv_p_mreza": "Oznaka (slug) omrežja, več jih ločite z vejicami",
  "dv_p_snaga": "Razredi moči: ac, dc, hpc, nepoznato (neznano)",
  "dv_p_tema": "tamna = temna podlaga zemljevida",
- "dv_p_lang": "Jezik: naslov pripomočka (EN, SR, RU)",
+ "dv_p_lang": "Jezik: določa ga naslov pripomočka",
  "dv_p_hash": "Natančen pogled: #zoom/zemljepisna širina/zemljepisna dolžina na koncu naslova",
  "dv_open_h": "Odprti podatki svetovnega zemljevida",
  "dv_open_p": "Tedenska datoteka CSV javnega sloja, ODbL 1.0, stolpci: {n}.",

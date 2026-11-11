@@ -60,3 +60,14 @@ Full table: `~/dev/evdb/work/L2-SQ/bt_result.json`.
 
 ## Open
 - "prizë" vs "konektorë" for connector (from L-SQ) — still Andrei's call; new strings use "prizë" (`h_conn`, `conn_txt`, `what_cov`).
+
+## FIXL 11.11.2026
+Checked: new `strings_home.json` (71 keys), `strings_shell` lang_hint/lang_hint_close, D11 (`dv_p_lang`, `p_hub_na`), D13 connector → «konektor» (14 strings + 3 texts nodes), 7 new slugs, the 48 NOBIL towns (L2) + Geneva.
+Back-translation (wave 2, blind): 10 home strings (title, data_as_of, search_none, near_err, map_alt, prices_p, p_ratio, work_p, trust_p, routes_p) + 6 changed (r_snaga, th_conn, conn_txt, d_city, dv_p_lang, p_hub_na).
+- Fixed: `home.prices_p` used «pa regjistrim» for pay-as-you-go; the rest of the sq world layer says «ad hoc» (prices, press) → «Çmimi mesatar i publikuar ad hoc …».
+- Fixed: `home.desc` shortened («ku të ndaleni në rrugë»), 222 chars vs EN 206.
+- D13 resolved the open "prizë vs konektorë" point: connector types (CCS, Type 2, table/filter «Konektorët», `r_snaga` «konektorë të gabuar», download fields «Llojet e konektorëve») now «konektor»; «prizë» stays only for a household socket (none in the sq world layer now).
+- NOBIL 48 towns verified: names = Swedish/Norwegian local forms with diacritics, -a names in the safe «në qytetin X» (decl_ok 0), consistent with the file. Geneva added: «Gjenevë», «në Gjenevë».
+- D12 fixed (historical Albanian exonyms of towns in countries where Albanian is not official there): 3204509 Tivar → **Bar** («në Bar»), 787595 Pazar i Ri → **Novi Pazar** («në Novi Pazar»).
+- D12 kept: North Macedonia and Kosovo towns (Shkup, Ohër, Kumanovë, Prishtinë, Pejë…) — Albanian is an official language there; Albanian spellings of current names (Nish, Budvë, Podgoricë, Nikshiq, Cetinë, Sarajevë); big-city exonyms (Vjenë, Selanik, Janinë, Korfuz, Stamboll, Athinë).
+Open: «Kiev» (UA, Kyiv) kept as the established Albanian form — D13 does not cover sq, Andrei may want «Kyiv»; «Janinë»/«Korfuz» are standard, but a native check of the Greek exonyms is welcome.

@@ -35,7 +35,10 @@ def is_plural_en(v):
 
 def sig(s):
     # pool 4 (10.11.2026): {city_u}/{country_u} may replace {city}/{country} in any language
-    ph = [p.replace('{city_u}', '{city}').replace('{country_u}', '{country}') for p in PH.findall(s)]
+    # FIXL (11.11.2026): {name_nom} may replace {name} (D14); fr: {city_de} may replace {city} or {x} (D15)
+    ph = [p.replace('{city_u}', '{city}').replace('{country_u}', '{country}').replace('{name_nom}', '{name}')
+          for p in PH.findall(s)]
+    ph = ['{city}' if p in ('{city_de}', '{x}') else p for p in ph]
     return (sorted(ph), sorted(TAG.findall(s)), sorted(ENT.findall(s)))
 
 
@@ -52,8 +55,9 @@ cats = cldr_cats(LANG)
 
 # 1. strings_*.json
 # LANG pool L2 (11.11.2026): all 8 string files
+# FIXL (11.11.2026): + strings_home
 for name in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
-             'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed'):
+             'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed', 'strings_home'):
     src = json.loads((WORLD / f'{name}.json').read_text())
     p = HERE / f'{name}.json'
     if not p.exists():
@@ -129,8 +133,10 @@ else:
 
 # 3. slugs.json
 KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
+# FIXL (11.11.2026): section slugs allowed in addition (D7: dev = developers, widget = map_conf)
+OPT = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']
 s = json.loads((HERE / 'slugs.json').read_text())
-if sorted(s) != sorted(KEYS): errors.append(f'slugs.json keys {sorted(s)}')
+if not set(KEYS) <= set(s) <= set(KEYS) | set(OPT): errors.append(f'slugs.json keys {sorted(s)}')
 for k, v in s.items():
     if k in ('net', 'about', 'download'):
         if not SLUG.match(v): errors.append(f'slugs.{k}: not an ASCII segment: {v!r}')
@@ -144,7 +150,8 @@ if len(set(paths)) != len(paths): errors.append('slugs.json: duplicate paths')
 # 4. countries.csv
 base_cc = {r['cc'] for r in csv.DictReader(open(NAMES / 'countries.csv', encoding='utf-8'))}
 rows = list(csv.DictReader(open(HERE / 'countries.csv', encoding='utf-8')))
-if rows and list(rows[0]) != ['cc', 'name', 'slug', 'in_phrase', 'note']:
+# FIXL (11.11.2026, D4/D14): optional last column name_nom
+if rows and list(rows[0]) not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):
     errors.append(f'countries.csv header {list(rows[0])}')
 cc = [r['cc'] for r in rows]
 if set(cc) != base_cc or len(cc) != len(base_cc): errors.append(f'countries.csv: {len(cc)} rows, cc set differs from names/countries.csv')
@@ -153,6 +160,7 @@ if len(set(sl)) != len(sl): errors.append('countries.csv: duplicate slugs')
 for r in rows:
     if not SLUG.match(r['slug']): errors.append(f"countries {r['cc']}: bad slug {r['slug']!r}")
     if not r['name'].strip() or not r['in_phrase'].strip(): errors.append(f"countries {r['cc']}: empty name/in_phrase")
+    if 'name_nom' in r and not (r['name_nom'] or '').strip(): errors.append(f"countries {r['cc']}: empty name_nom")
 
 # 5. cities.csv
 base = {r['geonameid'] for r in csv.DictReader(open(NAMES / 'cities.csv', encoding='utf-8'))}
@@ -168,7 +176,22 @@ if p.exists():
     for r in rows:
         if not r['name'].strip() or not r['in_phrase'].strip(): errors.append(f"cities {r['geonameid']}: empty")
         if r['decl_ok'] not in ('0', '1'): errors.append(f"cities {r['geonameid']}: decl_ok {r['decl_ok']!r}")
+    # FIXL (11.11.2026): every city page of pages_state must have a row
+    st = json.loads((WORLD / 'state' / 'pages_state.json').read_text())
+    page_g = {v['key'].split(':')[-1] for v in st.values() if v.get('type') == 'city'}
+    lost = page_g - set(ids)
+    if lost: errors.append(f'cities.csv: {len(lost)} city pages without a row, e.g. {sorted(lost)[:5]}')
     print(f'cities.csv: {len(rows)} of {len(base)} cities, decl_ok=0: {sum(r["decl_ok"] == "0" for r in rows)}')
+    # FIXL (11.11.2026, D15): city_de.csv — exceptions of «de {city}»
+    pd = HERE / 'city_de.csv'
+    if pd.exists():
+        cd = list(csv.DictReader(open(pd, encoding='utf-8')))
+        if cd and list(cd[0]) != ['geonameid', 'city_de']: errors.append(f'city_de.csv header {list(cd[0])}')
+        cid = [r['geonameid'] for r in cd]
+        if len(set(cid)) != len(cid): errors.append('city_de.csv: duplicate geonameid')
+        if set(cid) - set(ids): errors.append(f'city_de.csv: {len(set(cid) - set(ids))} geonameids not in cities.csv')
+        for r in cd:
+            if not re.match(r"^(de |du |des |d’)\S", r['city_de'] or ''): errors.append(f"city_de {r['geonameid']}: {r['city_de']!r}")
 else:
     warns.append('cities.csv missing')
 

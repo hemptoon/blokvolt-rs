@@ -30,3 +30,14 @@ Kept on purpose: *rändlus(rakendus)* (Estonian EV usage), *lepinguta* (one term
 1. *Holland* or official *Madalmaad* for NL (slug `holland`)? Kept *Holland*.
 2. *Kiiev* (EKI, current Estonian usage) — kept.
 3. Buttons now 2sg (*Ava, Sulge*), messages polite plural — OK as the rule for et?
+
+## FIXL 11.11.2026
+Checked: new `strings_home.json` (71 keys), `lang_hint`/`lang_hint_close`, D11 (`dv_p_lang`, `p_hub_na`), 7 slugs, 49 cities (48 NOBIL + Geneva).
+Back-translation (wave 2, blind): 10 home strings (title, h1, sub, data_as_of, search_none, near_err, prices_p, p_ratio, work_p, routes_p) + 3 changed (dv_p_lang, p_hub_na, lang_hint) — all match in meaning, no fixes.
+- Buttons/links/chips in 2nd person singular (*Ava täielik kaart, Uuri kaarti siin, Laadi andmed alla, Otsi*), messages polite plural (*Avage kaart…, Puudutage kaardil kohta*) — D13 rule kept.
+- `pl_countries` = *riik / riiki* (nominative/partitive; the home stat line is "150 riiki", not inessive like shell.pl_cc).
+- `p_ratio` «{x} korda kallim kui kodus» — fine with a decimal number (*2,4 korda*).
+- `tab_ap` «Aasia ja Okeaania» — shorter than «Aasia ja Vaikse ookeani piirkond».
+D13 (et): *Kiiev* and *Holland* (countries.csv NL: Holland / Hollandis / slug holland) kept — no change.
+D12: foreign city names checked — no historical exonyms (Riia, Varssavi, Peterburi, Kiiev are normal Estonian forms).
+NOBIL towns: Swedish/Norwegian form, inessive by the file's rule (*Kongsbergis, Åkersbergas, Luleås, Upplands Väsbys*), decl_ok=0 / note "auto: -s/-is reegel" like the other Swedish towns; Geneva = *Genf / Genfis*, decl_ok=1.

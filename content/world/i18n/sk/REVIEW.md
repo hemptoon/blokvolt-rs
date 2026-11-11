@@ -120,3 +120,10 @@ Spätný preklad: 60 náhodných nových reťazcov (seed 1111) preložil naslepo
 | 58 | `press.f_range` | DC charging was cheapest {lo} ({lo_v}) and most expensive {hi} ({hi_v}). |
 | 59 | `press.lead_issue` | Network ad hoc prices: {nets}, countries: {countries}; from the networks' own price lists, weighted by number of charge points. |
 | 60 | `embed.dv_f_ok` | The request was sent. The answer will come by e-mail. |
+
+## FIXL 11.11.2026
+- Skontrolované: nový `strings_home.json` (71 kľúčov), `lang_hint`/`lang_hint_close`, D11 (`dv_p_lang`, `p_hub_na`), 7 nových slugov, 49 riadkov cities.csv, D12.
+- Spätný preklad (vlna 2): 10 reťazcov home (title, sub, search_none, near_err, p_ratio, prices_p, routes_h, work_h, trust_p, org_desc) + 4 zmenené (lang_hint, dv_p_lang, p_hub_na, texts routes[1] Győr). Významové odchýlky: 0. „pay-as-you-go“ = „ad hoc cena“ (glosár NOTES), zámerné.
+- D12: Ráb → Győr (v Győri), Päťkostolie → Pécs (v Pécsi), Stoličný Belehrad → Székesfehérvár (v meste Székesfehérvár, decl_ok=0); navyše historické/zriedkavé: Jáger → Eger (v Egeri), Solnok → Szolnok (v Szolnoku). texts.json routes[1].stops[0]: Ráb → Győr.
+- Ponechané bežné exonymá: Budapešť, Pešť, Debrecín, Segedín, Kečkemét, Šopron, Miškovec, Temešvár, Brašov, Viedeň, Brémy… — otvorená otázka: Miškovec/Temešvár/Šopron sú v SK médiách bežné, ale pri natívnej korektúre zvážiť Miskolc/Timișoara/Sopron.
+- Otvorené: lokál „v Győri“, „v Pécsi“ (podľa výslovnosti), decl_ok=1 — overiť natívne.

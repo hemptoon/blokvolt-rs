@@ -49,3 +49,9 @@
 - OK 53 · MINOR 6 · MISMATCH 1. Uzorak je uzet prije zadnjih ispravaka.
 - Ispravljeno: acc_restricted_customers_staff „Za goste…” → „Za kupce i zaposlenike”; src_net → „Web-stranice mreža”; table_note (jasnije „onih punjača … kojima je mreža poznata”); home_lead „{n} u {c}”; data_p „Licencija” → „Licenca”; „Prijavite pogrešku” → „Prijavite grešku” svugdje (glossary).
 - p_hub „zasebne” ostavljeno (smisao isti). Puni izvještaj: bt_report.md u ~/dev/evdb/work/L-HR/.
+
+## FIXL (11.11.2026)
+- strings_home.json (71 ključ): „Karta punionica”, „mjesto za punjenje”, „U blizini”, „bez korisničkog računa”, „Azija i Oceanija”, „cestarine”, „Europski indeks cijena”.
+- lang_hint „Ova je stranica dostupna i na hrvatskom”, close „Zatvori”.
+- Putanje odjeljaka: /hr/kako-platiti/ /hr/rute/ /hr/za-medije/ /hr/podaci-za-tvrtke/ /hr/embed/karta/ /hr/karta-za-vasu-stranicu/ /hr/za-programere/ (bez sudara s lokalnim /hr/ odjeljkom).
+- D12: Ser → Seres. +49 gradova (NOBIL: imena izvorno, lokativ iz sr_u gdje decl_ok_sr=1, inače „u gradu X”; Ženeva → u Ženevi). name_nom nije potreban (hr nije u D14).

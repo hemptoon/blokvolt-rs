@@ -68,3 +68,11 @@ Stilanmärkningar (13) och beslut:
 - Dessutom: ”taxa/taxor” i nya strängar → ”tariff/tariffer” för att följa befintliga strings_prices/strings_map.
 
 Öppet: `dv_p_lang` listar ”EN, SR, RU” som i EN — uppdateras när LANG0 ändrar EN-källan.
+
+## FIXL 11.11.2026
+- Kontrollerat: `strings_home.json` (71 nycklar, ny), `lang_hint`/`lang_hint_close`, `dv_p_lang`, `p_hub_na` (D11), 7 nya slugs, cities.csv (+3, 46 NOBIL-rader verifierade).
+- Bakåtöversättning (våg 1): 20 hemsträngar (title, desc, h1, sub, search_none, near_err, map_alt, map_err, map_more, countries_p, ap_note, below_h, prices_p, p_ratio, p_src, pay_p, routes_p, work_p, trust_p, org_desc) + 4 ändrade (lang_hint, lang_hint_close, dv_p_lang, p_hub_na). Betydelsen stämde i 24/24.
+- Rättat: `org_desc` ”Oberoende referens om …” (anglicism) → ”Oberoende översikt över laddning av elbilar …”.
+- Medvetna avvikelser: `work_h` ”Fungerar laddaren?” (EN ”Is it working?” — svenska behöver subjekt); `ap_note` ”Landssidor för den här regionen …” (EN ”here”); `near_err` ”Din position …” (EN ”Location”).
+- D12: inga historiska/irredentistiska exonymer hittade. Utländska namn som skiljer sig från lokala är vanliga neutrala exonymer (Bryssel, Prag, Köpenhamn, Aten, Belgrad, Neapel, Venedig …). Finska orter med svenskt namn (Helsingfors, Åbo, Tammerfors, Uleåborg …) är officiella eller standard på svenska — behålls.
+- Öppet: ”uppgifter per {date}” vs ”data per {date}”; Genève (inte ”Genf”/”Geneva”) — svensk norm.

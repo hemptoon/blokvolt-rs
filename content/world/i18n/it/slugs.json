@@ -9,5 +9,12 @@
  "prices": "/it/prezzi-di-ricarica/",
  "shell_about": "/it/informazioni/",
  "sources": "/it/fonti/",
- "methodology": "/it/metodologia/"
+ "methodology": "/it/metodologia/",
+ "pay": "/it/come-pagare/",
+ "routes": "/it/percorsi/",
+ "press": "/it/per-i-media/",
+ "b2b": "/it/dati-per-le-aziende/",
+ "embed": "/it/embed/mappa/",
+ "map_conf": "/it/mappa-per-il-tuo-sito/",
+ "developers": "/it/sviluppatori/"
 }

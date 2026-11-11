@@ -52,3 +52,10 @@ Strittig, bewusst gewählt:
 - Routen-Städte wie cities.csv: Belgrad, Plowdiw, Plewen, Weliko Tarnowo, Hermannstadt.
 - cities.csv: +48 NOBIL-Orte (NO 2, SE 46) mit lokalem Namen; drei Namen nach de.wikipedia: Siders, Düdelingen, Esch an der Alzette.
 - check.py: alle 8 strings-Dateien, texts.pay/routes, Stadtseiten aus state/pages_state.json.
+
+## FIXL (11.11.2026)
+- `strings_home.json` neu (71 Schlüssel); `strings_shell` + `lang_hint` „Diese Seite gibt es auch auf Deutsch“, `lang_hint_close` „Schließen“.
+- `countries.csv` + Spalte `name_nom` (Nominativ mit Artikel). Verwendung nur nach „für“ (`afir_eu`, `afir_non`, `conn_txt`), nie am Satzanfang, nie als Subjekt mit Verb (Kongruenz Plural).
+- Slugs: `/de/bezahlen/`, `/de/routen/`, `/de/fuer-medien/`, `/de/daten-fuer-unternehmen/`, `/de/embed/karte/`, `/de/karte-fuer-ihre-website/`, `/de/fuer-entwickler/`.
+- D12: Städte in PL/CZ/RO mit lokalem Namen außer Prag, Warschau, Krakau, Bukarest (offene Frage 1 oben damit entschieden). D13: Kyjiw.
+- cities.csv: + Genf (2660646); check.py lässt keine geonameid außerhalb von names/cities.csv mehr zu.

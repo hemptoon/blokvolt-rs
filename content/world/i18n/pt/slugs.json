@@ -9,5 +9,12 @@
  "prices": "/pt/precos-de-carregamento/",
  "shell_about": "/pt/sobre/",
  "sources": "/pt/fontes/",
- "methodology": "/pt/metodologia/"
+ "methodology": "/pt/metodologia/",
+ "pay": "/pt/como-pagar/",
+ "routes": "/pt/itinerarios/",
+ "press": "/pt/imprensa/",
+ "b2b": "/pt/dados-para-empresas/",
+ "embed": "/pt/embed/mapa/",
+ "map_conf": "/pt/mapa-para-o-seu-site/",
+ "developers": "/pt/programadores/"
 }

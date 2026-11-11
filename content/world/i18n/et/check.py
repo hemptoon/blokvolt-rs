@@ -14,10 +14,11 @@ def sig(s): return sorted(PH.findall(s)), sorted(TAG.findall(s))
 def sig_t(t, e):
     # pool-4 rule: {city_u}/{country_u} (case form from cities.csv/countries.csv) may stand for {city}/{country}/{country_name}
     t = t.replace('{city_u}', '{city}')
+    if '{name_nom}' in t and '{name}' in e: t = t.replace('{name_nom}', '{name}')   # FIXL D14
     if '{country_u}' in t and '{country_u}' not in e:
         t = t.replace('{country_u}', '{country}' if '{country}' in e else '{country_name}')
     return sig(t)
-FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices', 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed')
+FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices', 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed', 'strings_home')
 try:
     from babel import Locale
     cats = set(Locale(LANG).plural_form.tags) | {'other'}
@@ -80,15 +81,20 @@ for pat in (r'24\s*/\s*7', r'evolako', r'\bmeie\b', r'\bme\b', r'\bkohe\b', r'to
 # slugs
 s = json.load(open(D / 'slugs.json'))
 need = {'home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology'}
-if set(s) != need: err(f'slugs keys {set(s) ^ need}')
+section = {'pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers'}   # FIXL F5: optional, full paths
+if not need <= set(s) <= need | section: err(f'slugs keys {sorted(set(s) ^ need)}: need {sorted(need)}, may add {sorted(section)}')
 for k, v in s.items():
-    if k in ('net', 'about', 'download'):
+    if k in section:
+        if not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)+', v): err(f'slug {k}={v} not /{LANG}/…/ ASCII')
+    elif k in ('net', 'about', 'download'):
         if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v): err(f'slug {k}={v} not one ASCII segment')
     elif not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)?', v): err(f'slug {k}={v} not /{LANG}/…/ ASCII')
 if len(set(s.values())) != len(s): err('duplicate slugs')
 # countries
 cc_src = [r['cc'] for r in csv.DictReader(open(W / 'names' / 'countries.csv', encoding='utf-8'))]
 rows = list(csv.DictReader(open(D / 'countries.csv', encoding='utf-8')))
+if rows and list(rows[0]) not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):
+    err(f'countries.csv header {list(rows[0])}')   # FIXL D4: name_nom may be added as the last column
 if [r['cc'] for r in rows] != cc_src: err('countries.csv: cc list differs from names/countries.csv')
 slugs = [r['slug'] for r in rows]
 if len(set(slugs)) != len(slugs): err('countries.csv: duplicate slug')
@@ -103,6 +109,9 @@ for r in crow:
     if r['geonameid'] not in gid_src: err(f"cities: unknown geonameid {r['geonameid']}")
     if not r['name'] or not r['in_phrase'] or r['decl_ok'] not in ('0', '1'): err(f"cities {r['geonameid']}: bad row")
 if len({r['geonameid'] for r in crow}) != len(crow): err('cities: duplicate geonameid')
+_ps = json.load(open(W / 'state' / 'pages_state.json', encoding='utf-8'))   # FIXL F2: every city page needs a row
+for g in sorted({str(v['key']).split(':')[2] for v in _ps.values() if v.get('type') == 'city' and str(v.get('key', '')).startswith('t:')} - {r['geonameid'] for r in crow}):
+    err(f'cities {g}: city page without a row')
 print(f'cities: {len(crow)}/{len(gid_src)} rows, decl_ok=1: {sum(r["decl_ok"] == "1" for r in crow)}')
 print(f'countries: {len(rows)}; slugs: {len(s)}')
 print('\n'.join(errs) if errs else 'OK: 0 errors')

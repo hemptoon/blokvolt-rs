@@ -110,3 +110,14 @@
 - `dv_p_lang` перечисляет EN, SR, RU. Когда в виджете появится es, строку нужно обновить во всех языках (это задача LANG0/EN).
 - В `pages_state.json` 144 города NOBIL (NO и SE), которых нет в `names/cities.csv`. Для es это не свои страны, но таких городов нет и в общем справочнике. Их нужно добавить в `names` (задача LANG0/LANGI).
 - `credit` и цитата в `data_p` используют английское название индекса «European EV Charging Price Index», как в R-ES.
+
+## FIXL 11.11.2026
+Что проверено: новый `strings_home.json` (71 ключ), `lang_hint`/`lang_hint_close`, D11 (`embed.dv_p_lang`, `pages.p_hub_na`), D14 (`pay.afir_eu`, `afir_non`, `conn_txt` через `{name_nom}`), колонка `name_nom` в countries.csv, 49 городов FIXL, 7 слагов разделов.
+Обратный перевод (волна 1, вслепую, сделан самим агентом FIXL): 20 строк home (title, desc, h1, sub, data_as_of, search_none, near_err, map_more, countries_h, below_h, prices_p, p_src, routes_p, work_p, o_press_p, trust_p, org_desc, map_err, ap_note, p_ratio) и все 7 других изменённых строк. По смыслу всё совпадает. Исправлено:
+- `trust_p`: «Sin posiciones de pago» читалось как «без платёжных позиций» → «Sin posicionamiento de pago».
+- `desc` сокращён до 213 знаков (EN 206): «EE. UU.», «de cada lugar».
+- `near_err`: «ubicación» заменено на «geolocalización», чтобы не путать с термином «ubicación» (место для зарядки).
+Принятые расхождения: в `h1`/`title` «puntos de carga» без «coches eléctricos» (как в хабе и карте); `p_src` «verificados» — по глоссарию (checked = verificado).
+D14: `name_nom` = `in_phrase` без «en » (los Países Bajos, el Reino Unido, la India, el Líbano, Estados Unidos, España). Чтобы не было «Los Países Bajos» с маленькой буквы в начале фразы и проблем с согласованием глагола (los Países Bajos forman/España forma), использован инфинитив: «Al formar parte {name_nom} de la UE, …». После «de» `{name_nom}` не ставится (de + el = del) — в `conn_txt` «que hay en {name_nom}».
+D12: в es cities.csv исторических/ирредентистских экзонимов нет (Niza, Ratisbona, Tesalónica, Leópolis — нормальные экзонимы RAE/Fundéu). Ничего не меняли.
+Открыто: `pay.conn_lnk` по правилу оставлен с `{name}` («Puntos de carga en {name}» → «en Países Bajos» без артикля). `pages.p_city_cmp` «de media en {country_name}» — та же проблема с артиклем; движку нужен `{country_u}` для этого ключа.

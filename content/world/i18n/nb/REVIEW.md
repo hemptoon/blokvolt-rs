@@ -94,3 +94,17 @@
 - `shell.home_title` «i Europa og verden» → «i Europa og resten av verden» (как в `map.description`).
 - `pages.below_title` «for lite data nå» → «foreløpig for lite data».
 - `prices.pr_home` «Lader hjemme» → «Hjemmelader».
+
+## FIXL 11.11.2026
+
+Kontroll (tilbakeoversettelse nb → EN, bølge 1): 20 strenger fra `strings_home` (title, desc, h1, sub, search_none, near_err, map_alt, map_err, map_more, countries_p, ap_note, below_h, prices_p, p_ratio, p_src, pay_p, routes_p, work_p, trust_p, org_desc) + alle andre endrede strenger (`pay.nav_pay`, `embed.dv_p_lang`, `pages.p_hub_na`, `shell.lang_hint`, `shell.lang_hint_close`) + 3 bynavn.
+Resultat: ingen meningsavvik. Bevisste forskjeller:
+- `desc`: «what charging costs, how to pay and where to stop» → «priser, betaling og ladestopp på langtur» (lengde ≤ 165).
+- `near_err`: «move it to your place» → «flytt det til riktig sted» (upersonlig).
+- `org_desc`: «independent» → «nøytralt oppslagsverk».
+- `sub` bruker generisk «du» som `shell.home_h1` (se NOTES).
+
+D13: menypunktet `strings_pay.nav_pay` = «Betaling»; `kick_pay`, `t_/h1_pay_*`, `pay_more` og `strings_home.pay_h` beholder «Slik betaler du».
+D12: ingen historiske/irredentistiske eksonymer funnet. Funnet og rettet en feil: tre amerikanske byer hadde fått greske eksonymer — 4180386 Athens (GA) og 4505542 Athens (OH) «Athen» → «Athens», 4683317 Corinth «Korint» → «Corinth».
+cities.csv: + 46 svenske NOBIL-byer (lokale navn, «i X», decl_ok 1) + Genève (2660646). Kongsberg og Skien var der fra før og er kontrollert.
+Åpne spørsmål: ingen nye.

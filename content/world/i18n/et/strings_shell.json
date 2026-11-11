@@ -45,5 +45,7 @@
  "pl_cc": {
   "one": "riigis",
   "other": "riigis"
- }
+ },
+ "lang_hint": "See leht on saadaval ka eesti keeles",
+ "lang_hint_close": "Sulge"
 }
