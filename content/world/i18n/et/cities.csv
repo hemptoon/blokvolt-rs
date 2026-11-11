@@ -233,7 +233,7 @@ geonameid,name,in_phrase,decl_ok,note
 6690866,Surbiton,Surbitonis,0,auto: -s/-is reegel
 2757872,Culemborg,Culemborgis,0,auto: -s/-is reegel
 2959083,Ahrensburg,Ahrensburgis,0,auto: -s/-is reegel
-643492,Oulu,Oulus,0,auto: -s/-is reegel
+643492,Oulu,Oulus,1,käsitsi (R-ET)
 3037854,Amiens,Amiens'is,0,auto: -s/-is reegel
 2755003,Haarlem,Haarlemis,0,auto: -s/-is reegel
 2873891,Mannheim,Mannheimis,0,auto: -s/-is reegel
@@ -261,7 +261,7 @@ geonameid,name,in_phrase,decl_ok,note
 2757340,Delfzijl,Delfzijlis,0,auto: -s/-is reegel
 2807240,Wittlich,Wittlichis,0,auto: -s/-is reegel
 2867838,Mülheim an der Ruhr,Mülheim an der Ruhris,0,auto: -s/-is reegel
-660158,Espoo,Espoos,0,auto: -s/-is reegel
+660158,Espoo,Espoos,1,käsitsi (R-ET)
 3033123,Besançon,Besançonis,0,auto: -s/-is reegel
 2639577,Reading,Readingis,0,auto: -s/-is reegel
 2750815,Mijdrecht,Mijdrechtis,0,auto: -s/-is reegel
@@ -359,7 +359,7 @@ geonameid,name,in_phrase,decl_ok,note
 2977845,Saint-Omer,Saint-Omeris,0,auto: -s/-is reegel
 2751456,Loon op Zand,Loon op Zandis,0,auto: -s/-is reegel
 2267057,Lissabon,Lissabonis,1,käsitsi
-2787889,Roeselare,Roeselare'is,0,auto: -s/-is reegel
+2787889,Roeselare,Roeselares,1,käsitsi (R-ET)
 2835297,Schwandorf,Schwandorfis,0,auto: -s/-is reegel
 2904789,Hildesheim,Hildesheimis,0,auto: -s/-is reegel
 3030300,Brest,Brest'is,0,auto: -s/-is reegel
@@ -413,7 +413,7 @@ geonameid,name,in_phrase,decl_ok,note
 2757220,Den Helder,Den Helderis,0,auto: -s/-is reegel
 2757850,Dalfsen,Dalfsenis,0,auto: -s/-is reegel
 2758460,Boxtel,Boxtelis,0,auto: -s/-is reegel
-2797656,Gent,Gent'is,0,auto: -s/-is reegel
+2797656,Gent,Gentis,1,käsitsi (R-ET)
 2817202,Vilshofen an der Donau,Vilshofen an der Donaus,0,auto: -s/-is reegel
 2821515,Traunstein,Traunsteinis,0,auto: -s/-is reegel
 2939797,Crailsheim,Crailsheimis,0,auto: -s/-is reegel
@@ -857,7 +857,7 @@ geonameid,name,in_phrase,decl_ok,note
 3030985,Bourg-lès-Valence,Bourg-lès-Valence'is,0,auto: -s/-is reegel
 3038266,Albertville,Albertville'is,0,auto: -s/-is reegel
 2740313,Covilhã,Covilhãs,0,auto: -s/-is reegel
-2692969,Malmö,Malmös,0,auto: -s/-is reegel
+2692969,Malmö,Malmös,1,käsitsi (R-ET)
 2855935,Ottobrunn,Ottobrunnis,0,auto: -s/-is reegel
 2857185,Opladen,Opladenis,0,auto: -s/-is reegel
 2882440,Künzell,Künzellis,0,auto: -s/-is reegel
@@ -971,7 +971,7 @@ geonameid,name,in_phrase,decl_ok,note
 3107418,Tudela,Tudelas,0,auto: -s/-is reegel
 3108288,Tarragona,Tarragonas,0,auto: -s/-is reegel
 631077,Vuosaari,Vuosaaris,0,auto: -s/-is reegel
-632453,Vantaa,Vantaas,0,auto: -s/-is reegel
+632453,Vantaa,Vantaas,1,käsitsi (R-ET)
 641489,Pirkkala,Pirkkalas,0,auto: -s/-is reegel
 2972284,Tourcoing,Tourcoingis,0,auto: -s/-is reegel
 2986306,Pont-à-Mousson,Pont-à-Moussonis,0,auto: -s/-is reegel
@@ -2484,7 +2484,7 @@ geonameid,name,in_phrase,decl_ok,note
 2155472,Newcastle,Newcastle'is,0,auto: -s/-is reegel
 5911592,Burlington,Burlingtonis,0,auto: -s/-is reegel
 5359777,Irvine,Irvine'is,0,auto: -s/-is reegel
-5405841,Veneetsia,Veneetsias,1,käsitsi
+5405841,Venice,Venice'is,1,käsitsi (R-ET)
 6325521,Lévis,Lévis'is,0,auto: -s/-is reegel
 5133279,Queensbury,Queensburys,0,auto: -s/-is reegel
 2156813,Mosman,Mosmanis,0,auto: -s/-is reegel
@@ -2734,7 +2734,7 @@ geonameid,name,in_phrase,decl_ok,note
 8299576,Bridgewater,Bridgewateris,0,auto: -s/-is reegel
 6182962,Windsor,Windsoris,0,auto: -s/-is reegel
 7701384,Karabağlar,Karabağlaris,0,auto: -s/-is reegel
-4180386,Ateena,Ateenas,1,käsitsi
+4180386,Athens,Athensis,1,käsitsi (R-ET)
 4192289,Duluth,Duluthis,0,auto: -s/-is reegel
 4221333,Sandy Springs,Sandy Springsis,0,auto: -s/-is reegel
 4363843,North Bethesda,North Bethesdas,0,auto: -s/-is reegel
@@ -2819,7 +2819,7 @@ geonameid,name,in_phrase,decl_ok,note
 6074377,Milton,Miltonis,0,auto: -s/-is reegel
 6157977,Stratford,Stratford'is,0,auto: -s/-is reegel
 6173017,Val-d'Or,Val-d'Oris,0,auto: -s/-is reegel
-6324729,Halifax,Halifax'is,0,auto: -s/-is reegel
+6324729,Halifax,Halifaxis,1,käsitsi (R-ET)
 1650357,Bandung,Bandungis,0,auto: -s/-is reegel
 418863,Isfahan,Isfahanis,0,auto: -s/-is reegel
 4101260,Bentonville,Bentonville'is,0,auto: -s/-is reegel
@@ -3006,7 +3006,7 @@ geonameid,name,in_phrase,decl_ok,note
 4068590,Huntsville,Huntsville'is,0,auto: -s/-is reegel
 4143861,Newark,Newarkis,0,auto: -s/-is reegel
 4174402,Sunrise,Sunrise'is,0,auto: -s/-is reegel
-4176380,Veneetsia,Veneetsias,1,käsitsi
+4176380,Venice,Venice'is,1,käsitsi (R-ET)
 4177727,Wesley Chapel,Wesley Chapelis,0,auto: -s/-is reegel
 4184845,Brunswick,Brunswickis,0,auto: -s/-is reegel
 4285268,Bowling Green,Bowling Greenis,0,auto: -s/-is reegel
@@ -3189,7 +3189,7 @@ geonameid,name,in_phrase,decl_ok,note
 5006250,Portage,Portage'is,0,auto: -s/-is reegel
 5043193,Richfield,Richfieldis,0,auto: -s/-is reegel
 5089178,Manchester,Manchesteris,1,käsitsi
-5134295,Rooma,Roomas,1,käsitsi
+5134295,Rome,Rome'is,1,käsitsi (R-ET)
 5281730,Avon,Avonis,0,auto: -s/-is reegel
 5282804,Bridgeport,Bridgeportis,0,auto: -s/-is reegel
 5343858,Downey,Downeys,0,auto: -s/-is reegel
@@ -3217,7 +3217,7 @@ geonameid,name,in_phrase,decl_ok,note
 4110486,Fayetteville,Fayetteville'is,0,auto: -s/-is reegel
 4145805,Allapattah,Allapattahis,0,auto: -s/-is reegel
 4148677,Boynton Beach,Boynton Beachis,0,auto: -s/-is reegel
-4165565,Napoli,Napolis,1,käsitsi
+4165565,Naples,Naplesis,1,käsitsi (R-ET)
 4167519,Palm Beach Gardens,Palm Beach Gardensis,0,auto: -s/-is reegel
 4174383,Sunny Isles Beach,Sunny Isles Beachis,0,auto: -s/-is reegel
 4208442,McDonough,McDonoughis,0,auto: -s/-is reegel
@@ -3452,8 +3452,8 @@ geonameid,name,in_phrase,decl_ok,note
 598818,Jonava,Jonavas,0,auto: -s/-is reegel
 1735227,Kuantan,Kuantanis,0,auto: -s/-is reegel
 3153623,Haugesund,Haugesundis,0,auto: -s/-is reegel
-1486209,Jekaterinburg,Jekaterinburgis,0,auto: -s/-is reegel
-500096,Rjazan,Rjazanis,0,auto: -s/-is reegel
+1486209,Jekaterinburg,Jekaterinburgis,1,käsitsi (R-ET)
+500096,Rjazan,Rjazanis,1,käsitsi (R-ET)
 542374,Krasnogorsk,Krasnogorskis,0,auto: -s/-is reegel
 4076598,Mobile,Mobile'is,0,auto: -s/-is reegel
 4154568,Estero,Esteros,0,auto: -s/-is reegel
@@ -3930,7 +3930,7 @@ geonameid,name,in_phrase,decl_ok,note
 4470778,Hickory,Hickorys,0,auto: -s/-is reegel
 4500546,Atlantic City,Atlantic Citys,0,auto: -s/-is reegel
 4501198,Cherry Hill,Cherry Hillis,0,auto: -s/-is reegel
-4578737,Firenze,Firenzes,1,käsitsi
+4578737,Florence,Florence'is,1,käsitsi (R-ET)
 4580098,Goose Creek,Goose Creekis,0,auto: -s/-is reegel
 4581832,Hilton Head Island,Hilton Head Islandis,0,auto: -s/-is reegel
 4635031,La Vergne,La Vergne'is,0,auto: -s/-is reegel
@@ -4399,7 +4399,7 @@ geonameid,name,in_phrase,decl_ok,note
 6113355,Prince Edward,Prince Edward'is,0,auto: -s/-is reegel
 6180550,Whitehorse,Whitehorse'is,0,auto: -s/-is reegel
 7281936,West Kelowna,West Kelownas,0,auto: -s/-is reegel
-2659522,Muttenz,Muttenz'is,0,auto: -s/-is reegel
+2659522,Muttenz,Muttenzis,1,käsitsi (R-ET)
 2661228,Cham,Chamis,0,auto: -s/-is reegel
 3061344,Znojmo,Znojmos,0,auto: -s/-is reegel
 3075919,Havlíčkův Brod,Havlíčkův Brodis,0,auto: -s/-is reegel
@@ -4508,7 +4508,7 @@ geonameid,name,in_phrase,decl_ok,note
 2740174,Custóias,Custóiasis,0,auto: -s/-is reegel
 2742493,Bairro Novo,Bairro Novos,0,auto: -s/-is reegel
 2742611,Aveiro,Aveiros,0,auto: -s/-is reegel
-501175,Rostov-na-Donu,Rostov-na-Donus,0,auto: -s/-is reegel
+501175,Rostov Doni ääres,Rostovis Doni ääres,1,käsitsi (R-ET)
 542420,Krasnodar,Krasnodaris,0,auto: -s/-is reegel
 2677234,Skövde,Skövdes,0,auto: -s/-is reegel
 3056459,Zvolen,Zvolenis,0,auto: -s/-is reegel
@@ -4715,7 +4715,7 @@ geonameid,name,in_phrase,decl_ok,note
 2644547,Leyland,Leylandis,0,auto: -s/-is reegel
 2645347,Kippax,Kippaxis,0,auto: -s/-is reegel
 2646460,Hucknall,Hucknallis,0,auto: -s/-is reegel
-2647632,Halifax,Halifaxis,0,auto: -s/-is reegel
+2647632,Halifax,Halifaxis,1,käsitsi (R-ET)
 2650396,Eastleigh,Eastleighis,0,auto: -s/-is reegel
 2651048,Dover,Doveris,0,auto: -s/-is reegel
 2651513,Darlington,Darlingtonis,0,auto: -s/-is reegel
@@ -4804,7 +4804,7 @@ geonameid,name,in_phrase,decl_ok,note
 4373349,Wheaton,Wheatonis,0,auto: -s/-is reegel
 4381072,Chesterfield,Chesterfieldis,0,auto: -s/-is reegel
 4472687,Indian Trail,Indian Trailis,0,auto: -s/-is reegel
-4505542,Ateena,Ateenas,1,käsitsi
+4505542,Athens,Athensis,1,käsitsi (R-ET)
 4525304,Springboro,Springboros,0,auto: -s/-is reegel
 4528291,Whitehall,Whitehallis,0,auto: -s/-is reegel
 4571722,Bluffton,Blufftonis,0,auto: -s/-is reegel
@@ -5068,7 +5068,7 @@ geonameid,name,in_phrase,decl_ok,note
 2739788,Fafe,Fafes,0,auto: -s/-is reegel
 2742804,Arcos de Valdevez,Arcos de Valdevezis,0,auto: -s/-is reegel
 662476,Voluntari,Voluntaris,0,auto: -s/-is reegel
-520555,Nižnii Novgorod,Nižnii Novgorodis,0,auto: -s/-is reegel
+520555,Nižni Novgorod,Nižni Novgorodis,1,käsitsi (R-ET)
 3202781,Celje,Celjes,0,auto: -s/-is reegel
 3057124,Trnava,Trnavas,0,auto: -s/-is reegel
 3077170,Devínska Nová Ves,Devínska Nová Vesis,0,auto: -s/-is reegel
@@ -5325,7 +5325,7 @@ geonameid,name,in_phrase,decl_ok,note
 2271772,Amadora,Amadoras,0,auto: -s/-is reegel
 2732978,Valongo,Valongos,0,auto: -s/-is reegel
 2738348,Leça da Palmeira,Leça da Palmeiras,0,auto: -s/-is reegel
-1488754,Tjumen,Tjumenis,0,auto: -s/-is reegel
+1488754,Tjumen,Tjumenis,1,käsitsi (R-ET)
 493316,Šušarõ,Šušarõs,0,auto: -s/-is reegel
 511565,Penza,Penzas,0,auto: -s/-is reegel
 548602,Kingisepp,Kingiseppis,0,auto: -s/-is reegel
