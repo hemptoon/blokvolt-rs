@@ -9,7 +9,8 @@ import csv, json, os, re, sys
 LANG = 'sl'
 HERE = os.path.dirname(os.path.abspath(__file__))
 WORLD = os.path.normpath(os.path.join(HERE, '..', '..'))
-STRINGS = ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices']
+STRINGS = ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+           'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed']
 SLUG_KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
 FULL_PATH = {'home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology'}
 PH = re.compile(r'\{[a-zA-Z0-9_]*\}')
@@ -89,6 +90,26 @@ for name in ('about_data', 'download'):
     if name not in texts: err(f'texts.{name}: missing')
     else: walk(f'texts.{name}', src, texts[name])
 
+# texts.json → pay / routes (LANG0 format: dotted path of a multilingual node -> text)
+def ml_nodes(n, p, acc):
+    if isinstance(n, dict):
+        if isinstance(n.get('en'), str) and isinstance(n.get('sr'), str):
+            acc[p] = n['en']; return
+        for k, v in n.items(): ml_nodes(v, f'{p}.{k}' if p else k, acc)
+    elif isinstance(n, list):
+        for i, v in enumerate(n): ml_nodes(v, f'{p}[{i}]', acc)
+
+for name in ('pay', 'routes'):
+    src = {}
+    ml_nodes(json.load(open(os.path.join(WORLD, name + '.json'), encoding='utf-8')), '', src)
+    tr = texts.get(name)
+    if not isinstance(tr, dict): err(f'texts.{name}: missing'); continue
+    for k, en in src.items():
+        if k not in tr: err(f'texts.{name}.{k}: missing')
+        else: check_text(f'texts.{name}.{k}', en, tr[k])
+    for k in tr:
+        if k not in src: err(f'texts.{name}.{k}: extra key (no such node)')
+
 # slugs.json
 slugs = json.load(open(os.path.join(HERE, 'slugs.json'), encoding='utf-8'))
 if sorted(slugs) != sorted(SLUG_KEYS): err(f'slugs: keys {sorted(slugs)} != {sorted(SLUG_KEYS)}')
@@ -112,11 +133,19 @@ if len({r['slug'] for r in rows}) != len(rows): err('countries.csv: duplicate sl
 
 # cities.csv
 src_ids = {r['geonameid'] for r in csv.DictReader(open(os.path.join(WORLD, 'names', 'cities.csv'), encoding='utf-8'))}
+# cities that already have pages but are not yet in names/cities.csv (e.g. new NOBIL towns) are allowed
+_ps = os.path.join(WORLD, 'state', 'pages_state.json')
+page_ids = set()
+if os.path.exists(_ps):
+    for _v in json.load(open(_ps, encoding='utf-8')).values():
+        if _v.get('type') == 'city' and str(_v.get('key', '')).startswith('t:'): page_ids.add(_v['key'].split(':')[-1])
+missing_pages = page_ids - src_ids
 crow = list(csv.DictReader(open(os.path.join(HERE, 'cities.csv'), encoding='utf-8')))
 if crow and list(crow[0].keys()) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: err('cities.csv: wrong columns')
 ids = [r['geonameid'] for r in crow]
 if len(ids) != len(set(ids)): err('cities.csv: duplicate geonameid')
-unknown = set(ids) - src_ids
+unknown = set(ids) - src_ids - page_ids
+for g in sorted(missing_pages - set(ids)): err(f'cities.csv: city with a page missing: {g}')
 if unknown: err(f'cities.csv: {len(unknown)} geonameid not in names/cities.csv')
 for r in crow:
     if not r['name'] or not r['in_phrase']: err(f"cities.csv {r['geonameid']}: empty")
