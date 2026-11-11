@@ -120,6 +120,87 @@ def pictures(meta, urls):
     return out
 
 
+REGIONS = json.load(open(WORLD / 'regions.json', encoding='utf-8'))
+REG_OF = {cc: r for r, v in REGIONS['regions'].items() for cc in v.split()}
+CARDS = {'eu': 12, 'na': 2}   # HOME3: cards of the largest countries per region (other regions: 8)
+_FOLD = str.maketrans({'đ': 'dj', 'ß': 'ss', 'ł': 'l', 'ø': 'o', 'æ': 'ae', 'ı': 'i', 'ə': 'e'})
+
+
+def fold(x):
+    import unicodedata
+    x = unicodedata.normalize('NFD', str(x).lower().translate(_FOLD))
+    return ''.join(ch for ch in x if not unicodedata.combining(ch))
+
+
+def counts_by_country():
+    """{cc: places} — all places of the map layer per country (stats.json → by_country, written into hero.json by
+    world_hero.py --stats; HOME3 12: "charging places" = manifest.counts.sites, one definition everywhere)."""
+    return dict(hero_meta().get('countries') or {})
+
+
+def directory(G, c, l, t):
+    """HOME3 3: one country directory for the home and the hub — every country of the data in its region, the largest as
+    cards, all of them A–Z with the number of charging places. A country leads to its page, a Balkan country to its
+    English guide, any other country to the map opened on it."""
+    W = sys.modules['world_pages']
+    Lc = W.L[l]
+    bc = counts_by_country()
+    if not bc:
+        raise SystemExit('world_home: hero.json has no "countries" — run scripts/world_hero.py with --stats stats.json')
+    en_guide = {x['code']: (x['url'] if x['code'] != 'RS' else '/serbia/') for x in G.countries}
+    balkan = set((c.site.idx.get('balkan') if hasattr(c.site, 'idx') else None) or ['RS', 'HR', 'BA', 'ME', 'MK', 'AL', 'XK'])
+    # names a visitor may type: this language, English and the language of the country itself (market languages)
+    endo = {}
+    for ml, ccs in (I.config().get('market_countries') or {}).items():
+        for cc in ccs:
+            endo.setdefault(cc, set()).add(ml)
+    regions = {r: [] for r in REGIONS['order']}
+    for cc, n in bc.items():
+        r = REG_OF.get(cc)
+        if not r:
+            print(f'world_home: WARNING {cc} is not in content/world/regions.json — shown under Asia')
+            r = 'as'
+        name = c.N.country(cc, l)
+        keys = {fold(name), fold(c.N.country(cc, 'en'))}
+        for ml in endo.get(cc, ()):
+            try:
+                keys.add(fold(c.N.country(cc, ml)))
+            except SystemExit:
+                pass
+        if cc in balkan and cc in en_guide:
+            url, kind = en_guide[cc], 'guide'
+        elif c.site.has(cc, l) and built(G, c.site.country(cc, l)):
+            url, kind = c.site.country(cc, l), 'page'
+        else:
+            url, kind = c.map_url(l, {'zemlja': cc}), 'map'
+        regions[r].append(dict(cc=cc, name=name, n=n, n_txt=W.fmt_num(n, Lc), unit=I.pl_form(n, t['pl_places'], l),
+                               url=url, kind=kind, k=' '.join(sorted(keys))))
+    out = []
+    for r in REGIONS['order']:
+        rows = regions[r]
+        if not rows:
+            continue
+        cards = sorted(rows, key=lambda x: -x['n'])[:CARDS.get(r, 8)]
+        az = sorted(rows, key=lambda x: fold(x['name']))
+        out.append(dict(id=r, name=t['tab_' + r], cards=cards, az=az, total=sum(x['n'] for x in rows),
+                        total_txt=W.fmt_num(sum(x['n'] for x in rows), Lc), n_c=len(rows)))
+    total = sum(bc.values())
+    return dict(regions=out, total=total, n=len(bc), tz={k: v for k, v in REGIONS['tz'].items() if k != 'about'})
+
+
+def market_order(l, ccs, size):
+    """HOME3 4: the markets of the page's language first (config market_countries, LANG0), then by size."""
+    mk = (I.config().get('market_countries') or {}).get(l) or []
+    return sorted(ccs, key=lambda cc: (mk.index(cc) if cc in mk else len(mk), -size.get(cc, 0)))
+
+
+def copy_dir_js(G):
+    a = G.OUT / 'assets' / 'world'
+    a.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(STATIC / 'world-dir.js', a / 'world-dir.js')
+    return f"/assets/world/world-dir.js?v={hashlib.sha1((a / 'world-dir.js').read_bytes()).hexdigest()[:10]}"
+
+
 def run(G, c):
     if c is None or not enabled():
         print('world home: off (old regional home at /)' if c is not None else 'world home: skipped (no world layer)')
@@ -131,22 +212,29 @@ def run(G, c):
     meta = hero_meta()
     hurls = copy_hero(G, meta)
     assets = copy_js(G)
+    dir_js = copy_dir_js(G)
     pics = pictures(meta, hurls)
     mp = os.environ.get('BV_WORLD_MANIFEST')
     manifest = json.load(open(mp, encoding='utf-8')) if mp and Path(mp).exists() else {}
     counts = manifest.get('counts') or {}
     mdate = manifest.get('date') or c.date
+    bc = counts_by_country()
+    # HOME3 12: the number of the first screen = the sum of the directory = manifest.counts.sites
+    if counts.get('sites') and sum(bc.values()) != counts['sites']:
+        msg = (f"world_home: the directory adds up to {sum(bc.values())} places, the manifest says {counts['sites']} "
+               f"(hero.json {meta.get('date')}, manifest {mdate}) — run scripts/world_hero.py --stats on the same build")
+        if meta.get('date') == mdate:
+            raise SystemExit(msg)
+        print('WARNING', msg)
     hub = next((p['data'] for p in c.site.pages if p['type'] == 'hub'), {})
     cfg = world_map.load_config()
-    # search index (K3) as world_shell prepares it
+    th = cfg.get('map_theme') or {}
     a = G.OUT / 'assets' / 'world'
     idx = a / 'search-index.json'
     sver = hashlib.sha1(idx.read_bytes()).hexdigest()[:10] if idx.exists() else '0'
     P = getattr(G, 'WORLD_PRICES', None)
     R = getattr(G, 'WORLD_PAY', None)
-    press = getattr(world_shell, 'PRESS', None)
-    import world_embed
-    import world_b2b  # noqa: F401  (footer link is added by world_shell.footer)
+    import world_pay
     out = []
     for l in LANGS:
         t = T[l]
@@ -158,66 +246,35 @@ def run(G, c):
             stat.append(pl(counts['sites'], 'pl_places'))
         if counts.get('countries'):
             stat.append(pl(counts['countries'], 'pl_countries'))
-        stat.append(t['data_as_of'].format(date=W.fmt_date(mdate)))
-
-        def ccard(cc, n, dc50):
-            url = c.site.country(cc, l)
-            ok = c.site.has(cc, l) and built(G, url)
-            return dict(cc=cc, name=c.N.country(cc, l), n=n, n_txt=num(n), unit=I.pl_form(n, t['pl_public'], l),
-                        dc=t['dc_line'].format(n=num(dc50)) if dc50 else '', url=url if ok else c.map_url(l, {'zemlja': cc}),
-                        page=ok)
+        D = directory(G, c, l, t)
         rows = hub.get('countries') or []
-        eu = [ccard(cc, n, d) for cc, n, d, r in rows if r == 'EU' and cc not in hub.get('balkan', [])][:EUROPE_TOP]
-        na = [ccard(cc, n, d) for cc, n, d, r in rows if r == 'NA'][:NA_TOP]
-        allc = sorted([ccard(cc, n, d) for cc, n, d, r in rows], key=lambda x: x['name'])
-        below = sorted([dict(name=c.N.country(cc, l), url=c.map_url(l, {'zemlja': cc})) for cc, n, r in hub.get('countries_below', [])],
-                       key=lambda x: x['name'])
-        ap = []
-        places_cc = (c.places or {}).get('cc', {}) if isinstance(c.places, dict) else {}
-        for cc in meta.get('apac', []):
-            if places_cc and cc not in places_cc:
-                continue
-            try:
-                ap.append(dict(name=c.N.country(cc, l), url=c.map_url(l, {'zemlja': cc})))
-            except SystemExit:
-                continue
-        # prices: the largest markets with a weighted DC average and a household price (world_prices model)
+        size = dict(bc)
+        # prices in Europe: the markets of the language first, then the largest (world_prices model)
         prices = None
         if P:
             M = P['model']
-            cand = [(cc, x) for cc, x in M.countries.items() if x['cls']['dc']['value'] and x['home'] and x['cls']['dc']['method'] == 'w']
-            size = {cc: n for cc, n, _, _ in rows}
-            cand.sort(key=lambda kv: -size.get(kv[0], 0))
+            cand = [cc for cc, x in M.countries.items() if x['cls']['dc']['value'] and x['home'] and x['cls']['dc']['method'] == 'w']
             items = []
-            for cc, x in cand[:PRICE_N]:
+            for cc in market_order(l, cand, size)[:PRICE_N]:
+                x = M.countries[cc]
                 dc, home = x['cls']['dc']['value'], x['home']
                 url = P['country_pages'].get(cc, {}).get(l)
                 items.append(dict(name=c.N.country(cc, l), dc=num(dc, 2), home=num(home, 2), dc_v=dc, home_v=home,
                                   ratio=t['p_ratio'].format(x=num(dc / home, 1)), url=url if url and built(G, url) else None))
             if items:
-                hsrc = M.H.get('source', {})
-                home_name = '; '.join(v['name'] for v in hsrc.values() if isinstance(v, dict) and v.get('name'))
+                ym = str(M.T['updated'])[:7]
+                month = I.month_label(ym, l) if l not in I.BASE else __import__('world_prices').month_label(ym, l)
                 prices = dict(items=items, maxv=max(max(i['dc_v'], i['home_v']) for i in items),
-                              src=t['p_src'].format(date=W.fmt_date(M.T['updated']), home=home_name), hub=P['hub'][l])
-        pay, routes = [], []
+                              src=t['p_month'].format(month=month), hub=P['hub'][l])
+        pay = []
         if R is not None:
-            size = {cc: n for cc, n, _, _ in rows}
-            for cc in sorted((cc for cc in R.countries if l in R.langs(cc)), key=lambda x: -size.get(x, 0))[:PAY_N]:
+            for cc in market_order(l, [cc for cc in R.countries if l in R.langs(cc)], size)[:PAY_N]:
                 u = R.pay_url(cc, l)
                 if built(G, u):
                     pay.append(dict(name=R.cname(cc, l), url=u))
-            for rt in R.RT['routes'][:ROUTES_N]:
-                u = R.route_url(rt, l)
-                if built(G, u):
-                    routes.append(dict(name=R.route_title(rt, l), url=u))
-        import world_pay
-        tools = [(world_shell.DOWNLOAD[l], t['o_dl'], t['o_dl_p']), (world_embed.CONF[l], t['o_widget'], t['o_widget_p']),
-                 (world_embed.DEV[l], t['o_dev'], t['o_dev_p'])]
-        if press:
-            tools.append((press[l][0], t['o_press'], t['o_press_p']))
-        tools = [x for x in tools if built(G, x[0])]
         regional = [dict(path=WB, name=t['reg_wb'], hl='en', lang='en')] + \
                    [dict(path=h['path'], name=h['loc']['country'], hl=h['loc']['hreflang'], lang=h['loc']['html']) for h in c.local_hubs]
+        routes_hub = world_pay.ROUTES[l] if built(G, world_pay.ROUTES[l]) else None
         site = G.SITE + HOME[l]
         jsonld = W.ld([
             {'@type': 'WebSite', '@id': G.SITE + '/#website', 'name': 'BlokVolt', 'url': site, 'inLanguage': Lc['html'],
@@ -231,23 +288,26 @@ def run(G, c):
         hero_cfg = dict(lang=l, data_base=cfg['data_base'], pics=pics, map=HOME_MAP(l), font=world_map.FONT,
                         borders=hurls.get('borders.json'), lib='/assets/vendor/maplibre-6.11.1/maplibre-gl.mjs',
                         pmtiles=f'/assets/vendor/pmtiles-{world_map.PMTILES_VER}/pmtiles.js',
-                        tz_west=TZ_WEST, near_err=t['near_err'], err=t['map_err'], label=t['map_label'],
+                        style_dark=th.get('style_dark', ''), dark_paint=th.get('dark_paint', {}),
+                        near_err=t['near_err'], err=t['map_err'], label=t['map_label'],
                         **({'intl': I.reg(l)['intl']} if l not in I.BASE else {}))   # LANG0: number locale of the other languages
+        mapu = W.L[l]['map']
         html = W.write_page(c, l, 'world_home.html', HOME[l], HOME, dict(
             title=t['title'].replace(' | BlokVolt', ''), description=t['desc'], h1=t['h1'], T=t, crumbs=None, kick=None,
             jsonld=jsonld, stat=stat, pics=pics, hero_cfg=json.dumps(hero_cfg, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/'),
-            search_url=world_shell.search_url(a, l, sver), map_url=W.L[l]['map'], hub_url=c.site.hub(l),
-            q_dc=W.L[l]['map'] + '?snaga=dc,hpc', q_hpc=W.L[l]['map'] + '?snaga=hpc',
-            eu=eu, na=na, ap=ap, allc=allc, below=below, prices=prices, pay=pay, routes=routes,
-            pay_hub=world_pay.PAY[l], routes_hub=world_pay.ROUTES[l], tools=tools, regional=regional,
+            search_url=world_shell.search_url(a, l, sver), map_url=mapu, hub_url=c.site.hub(l),
+            q_dc=mapu + '?snaga=dc,hpc', q_hpc=mapu + '?snaga=hpc', q_pub=mapu + '?pristup=javni',
+            D=D, DT=t, dir_js=dir_js, tz=json.dumps(D['tz'], separators=(',', ':')),
+            prices=prices, pay=pay, pay_hub=world_pay.PAY[l], routes_hub=routes_hub, regional=regional,
             sources_url=world_shell.SHELL['sources'][l], method_url=world_shell.SHELL['methodology'][l],
+            data_date=W.fmt_date(mdate),
             og_image=(G.SITE + hurls['og-world.jpg'].split('?')[0]) if 'og-world.jpg' in hurls else None,
             assets=assets, lcp=pics['eu']), 'home')
         out.append(HOME[l])
-    js = sum((G.OUT / 'assets' / 'world' / n).stat().st_size for n in ('world-home.js',))
+    js = sum((G.OUT / 'assets' / 'world' / n).stat().st_size for n in ('world-home.js', 'world-dir.js'))
     print(f"world home: {', '.join(out)} — {counts.get('sites')} places, {counts.get('countries')} countries, data {mdate}; "
-          f"Europe {len(eu)} cards, North America {len(na)}, Asia-Pacific {len(ap)}; prices {len(prices['items']) if prices else 0}; "
-          f"pay {len(pay)}, routes {len(routes)}; pictures {', '.join(meta.get('formats', []))} of {meta.get('date')}; home JS {js // 1024} KB")
+          f"directory {D['n']} countries / {D['total']} places in {len(D['regions'])} regions; prices {len(prices['items']) if prices else 0}; "
+          f"pay {len(pay)}; pictures {', '.join(meta.get('formats', []))} of {meta.get('date')}; home JS {js // 1024} KB")
     return out
 
 

@@ -1,0 +1,20 @@
+{# HOME3 (11.11.2026): the country directory — the home (world_home.html) and the hub (world_hub.html) use the same macro.
+   D = world_home.directory(): regions (eu, na, la, as, me, oc) with cards of the largest countries and every country A–Z
+   with its number of charging places (all places of the map layer). Without JS every region shows with its heading;
+   with JS (world-dir.js) the regions become tabs, the visitor's region (time zone, no location) is opened first and
+   "Find a country" filters every region at once. #}
+{% macro directory(D, T, hid='dir') -%}
+<div class="wd" data-tz='{{ D.tz|tojson }}' id="{{ hid }}">
+<div class="wd-find" hidden><label for="{{ hid }}-q">{{ T.dir_find }}</label>
+<div class="wd-sbox"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="{{ hid }}-q" type="search" autocomplete="off" spellcheck="false" placeholder="{{ T.dir_find_ph }}" aria-controls="{{ hid }}-res"></div>
+<p class="wd-none" hidden>{{ T.dir_none }}</p></div>
+<ul class="wd-res wd-az" id="{{ hid }}-res" aria-live="polite" hidden></ul>
+<div class="wd-tabs" role="tablist" aria-label="{{ T.countries_h }}" hidden>{% for r in D.regions %}<button role="tab" type="button" id="{{ hid }}-t-{{ r.id }}" aria-controls="{{ hid }}-p-{{ r.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}"{% if not loop.first %} tabindex="-1"{% endif %} data-r="{{ r.id }}">{{ r.name }}</button>{% endfor %}</div>
+{% for r in D.regions %}<section class="wd-pan" id="{{ hid }}-p-{{ r.id }}" role="tabpanel" aria-labelledby="{{ hid }}-t-{{ r.id }}" data-r="{{ r.id }}">
+<h3 class="wd-panh">{{ r.name }} <small>{{ r.total_txt }}</small></h3>
+<ul class="wd-cards">{% for x in r.cards %}<li><a class="wd-cty" href="{{ x.url }}"{% if x.kind == 'guide' %} hreflang="en"{% endif %}><span class="wd-ctyn" translate="no">{{ x.name }}</span><span class="wd-num">{{ x.n_txt }}</span><span class="wd-unit">{{ x.unit }}</span></a></li>{% endfor %}</ul>
+<h4 class="wd-azh">{{ T.dir_az }}</h4>
+<ul class="wd-az">{% for x in r.az %}<li data-k="{{ x.k }}" data-cc="{{ x.cc }}"><a href="{{ x.url }}"{% if x.kind == 'map' %} rel="nofollow"{% endif %}{% if x.kind == 'guide' %} hreflang="en"{% endif %}><span translate="no">{{ x.name }}</span><small>{{ x.n_txt }}</small></a></li>{% endfor %}</ul>
+</section>
+{% endfor %}</div>
+{%- endmacro %}

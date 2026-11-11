@@ -15,9 +15,9 @@
   "ru": "Карта зарядок"
  },
  "lead": {
-  "en": "Public chargers outside Serbia and the region, from open data.",
-  "sr": "Javni punjači van Srbije i regiona, iz otvorenih podataka.",
-  "ru": "Публичные зарядки за пределами Сербии и региона, по открытым данным."
+  "en": "EV charging across Europe and the world, from open data.",
+  "sr": "Punjenje električnih automobila u Evropi i svetu, iz otvorenih podataka.",
+  "ru": "Зарядка электромобилей в Европе и мире, по открытым данным."
  },
  "map_label": {
   "en": "Map of charging stations",
@@ -768,5 +768,50 @@
   "en": "Open on BlokVolt",
   "sr": "Otvori na BlokVoltu",
   "ru": "Открыть на BlokVolt"
+ },
+ "acc_all2": {
+  "en": "All places",
+  "sr": "Sva mesta",
+  "ru": "Все места"
+ },
+ "lg_acc_unk": {
+  "en": "access not confirmed",
+  "sr": "pristup nije potvrđen",
+  "ru": "доступ не подтверждён"
+ },
+ "lg_acc_res": {
+  "en": "customers only or private",
+  "sr": "samo za goste ili privatno",
+  "ru": "только для клиентов или частная"
+ },
+ "theme_dark": {
+  "en": "Dark map",
+  "sr": "Tamna mapa",
+  "ru": "Тёмная карта"
+ },
+ "theme_light": {
+  "en": "Light map",
+  "sr": "Svetla mapa",
+  "ru": "Светлая карта"
+ },
+ "attr_osm": {
+  "en": "OpenStreetMap contributors",
+  "sr": "saradnici OpenStreetMap-a",
+  "ru": "участники OpenStreetMap"
+ },
+ "attr_sources": {
+  "en": "Sources",
+  "sr": "Izvori",
+  "ru": "Источники"
+ },
+ "attr_data": {
+  "en": "Map data",
+  "sr": "Podaci mape",
+  "ru": "Данные карты"
+ },
+ "count_line": {
+  "en": "{n} charging places · {m} public",
+  "sr": "Mesta za punjenje: {n} · javnih: {m}",
+  "ru": "Мест зарядки: {n} · публичных: {m}"
  }
 }

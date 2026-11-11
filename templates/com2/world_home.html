@@ -1,13 +1,14 @@
 {% extends 'world_base.html' %}
+{% from 'world__dir.html' import directory %}
 {# World home of blokvolt.com — /, /sr/, /ru/ (scripts/world_home.py, task HOME2). The first screen is the map: a picture of
    the public layer (scripts/world_hero.py) swapped in place for the live map (static/com/world-hero-map.js) on the first
    tap or click. Region of the first view from the time zone only — no location request until "Near me" is pressed. #}
 {% block bodyclass %}wh-page{% endblock %}
 {% block ogimage %}{% if og_image %}<meta property="og:image" content="{{ og_image }}">{% else %}{{ super() }}{% endif %}{% endblock %}
 {% block head %}{{ super() }}<script id="wh-cfg" type="application/json">{{ hero_cfg|safe }}</script>
-<script>(function(){try{var c=JSON.parse(document.getElementById('wh-cfg').textContent),z='',r='eu';try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}
-if(/^America\//.test(z))r='na';else if(/^(Asia|Australia|Pacific|Indian)\//.test(z)&&c.tz_west.indexOf(z.split('/')[1])<0)r='ap';
-var d=document.documentElement;d.setAttribute('data-hr',r);d.classList.add('wh-js');
+<script>(function(){try{var c=JSON.parse(document.getElementById('wh-cfg').textContent),T={{ tz|safe }},z='',g='eu',r='eu',k;try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}
+for(k in T){if(new RegExp(T[k]).test(z)){g=k;break}}r=g==='na'||g==='la'?'na':g==='as'||g==='oc'?'ap':'eu';
+var d=document.documentElement;d.setAttribute('data-hr',r);d.setAttribute('data-dr',g);d.classList.add('wh-js');
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('wh-rm');
 var p=c.pics[r];[['t','(max-width: 720px)'],['w','(min-width: 721px)']].forEach(function(s){var x=p[s[0]],l=document.createElement('link');
 l.rel='preload';l.as='image';l.setAttribute('fetchpriority','high');l.media=s[1];if(x.avif){l.setAttribute('imagesrcset',x.avif);l.type='image/avif'}else{l.href=x.webp;l.type='image/webp'}
@@ -29,7 +30,11 @@ document.head.appendChild(l)})}catch(e){}})();</script>
 <button class="wh-go" id="wh-go" type="button"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9 2 12l3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/></svg><span>{{ T.map_go }}</span></button>
 <a class="wh-more" id="wh-more" href="{{ map_url }}" hidden>{{ T.map_more }} <span aria-hidden="true">→</span></a>
 <p class="wh-status" id="wh-status" role="status" aria-live="polite" data-loading="{{ T.map_loading }}"></p>
-<p class="wh-attr"><span class="wh-al">{{ T.attr }}</span><span class="wh-as">{{ T.attr_short }}</span> · <a href="{{ sources_url }}">{{ T.attr_more }}</a> · {{ T.attr_borders }}</p>
+<div class="wh-attr" id="wh-attr"><span class="wh-attr-s">© <a href="https://www.openstreetmap.org/copyright" rel="noopener">{{ T.attr_osm }}</a> · <a href="{{ sources_url }}">{{ T.attr_src }}</a></span>
+<button class="wh-attr-i" type="button" aria-expanded="false" aria-controls="wh-attr-more" aria-label="{{ T.attr_info }}" hidden>i</button>
+<div class="wh-attr-more" id="wh-attr-more" hidden><p>{{ T.attr_data }}: © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> (ODbL) · Open Charge Map (CC BY 4.0) · {{ T.attr_reg }}</p>
+<p>{{ T.attr_base }}: <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/" rel="noopener">OpenMapTiles</a> · {{ T.attr_borders }}</p>
+{% set dd = T.data_as_of.format(date=data_date) %}<p>{{ dd[:1]|upper }}{{ dd[1:] }} · <a href="{{ sources_url }}">{{ T.trust_src }}</a></p></div></div>
 </div>
 <div class="wh-panel"><div class="wrap"><div class="wh-card">
 <h1 id="wh-h1">{{ h1 }}</h1>
@@ -45,64 +50,35 @@ document.head.appendChild(l)})}catch(e){}})();</script>
 <a class="wh-btn wh-btn-main" id="wh-full" href="{{ map_url }}" data-map>{{ T.btn_full }}</a>
 <button class="wh-btn" id="wh-near" type="button"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7.5"/></svg>{{ T.btn_near }}</button>
 </div>
-<div class="wh-quick" role="group" aria-label="{{ T.quick_h }}"><a class="wh-chip" href="{{ q_dc }}" data-map>{{ T.q_dc }}</a><a class="wh-chip" href="{{ q_hpc }}" data-map>{{ T.q_hpc }}</a></div>
+<div class="wh-quick" role="group" aria-label="{{ T.quick_h }}"><a class="wh-chip" href="{{ q_dc }}" data-map>{{ T.q_fast }}</a><a class="wh-chip" href="{{ q_hpc }}" data-map>{{ T.q_ultra }}</a><a class="wh-chip" href="{{ q_pub }}" data-map>{{ T.q_pub }}</a></div>
 </div></div></div>
 </section>
 
 <div class="wh-body">
-<section class="wh-sec wh-rv" aria-labelledby="wh-cc"><div class="wrap">
-<div class="wh-head"><h2 id="wh-cc">{{ T.countries_h }}</h2><p>{{ T.countries_p }}</p></div>
-<div class="wh-tabs" role="tablist" aria-label="{{ T.countries_h }}" hidden>
-<button role="tab" id="tab-eu" aria-controls="pan-eu" aria-selected="true">{{ T.tab_eu }}</button><button role="tab" id="tab-na" aria-controls="pan-na" aria-selected="false" tabindex="-1">{{ T.tab_na }}</button>{% if ap %}<button role="tab" id="tab-ap" aria-controls="pan-ap" aria-selected="false" tabindex="-1">{{ T.tab_ap }}</button>{% endif %}<button role="tab" id="tab-all" aria-controls="pan-all" aria-selected="false" tabindex="-1">{{ T.tab_all }}</button>
-</div>
-<div class="wh-pan" id="pan-eu" role="tabpanel" aria-labelledby="tab-eu"><h3 class="wh-panh">{{ T.tab_eu }}</h3>
-<ul class="wh-cards">{% for x in eu %}<li><a class="wh-cty" href="{{ x.url }}"><span class="wh-ctyn" translate="no">{{ x.name }}</span><span class="wh-num" data-n="{{ x.n }}">{{ x.n_txt }}</span><span class="wh-unit">{{ x.unit }}</span>{% if x.dc %}<span class="wh-dc">{{ x.dc }}</span>{% endif %}</a></li>{% endfor %}</ul></div>
-<div class="wh-pan" id="pan-na" role="tabpanel" aria-labelledby="tab-na"><h3 class="wh-panh">{{ T.tab_na }}</h3>
-<ul class="wh-cards wh-cards-2">{% for x in na %}<li><a class="wh-cty" href="{{ x.url }}"><span class="wh-ctyn" translate="no">{{ x.name }}</span><span class="wh-num" data-n="{{ x.n }}">{{ x.n_txt }}</span><span class="wh-unit">{{ x.unit }}</span>{% if x.dc %}<span class="wh-dc">{{ x.dc }}</span>{% endif %}</a></li>{% endfor %}</ul></div>
-{% if ap %}<div class="wh-pan" id="pan-ap" role="tabpanel" aria-labelledby="tab-ap"><h3 class="wh-panh">{{ T.tab_ap }}</h3>
-<p class="wh-note">{{ T.ap_note }}</p>
-<ul class="wh-chips">{% for x in ap %}<li><a class="wh-chip" href="{{ x.url }}" translate="no">{{ x.name }}</a></li>{% endfor %}</ul></div>{% endif %}
-<div class="wh-pan" id="pan-all" role="tabpanel" aria-labelledby="tab-all"><h3 class="wh-panh">{{ T.tab_all }}</h3>
-<ul class="wh-chips">{% for x in allc %}<li><a class="wh-chip" href="{{ x.url }}"><span translate="no">{{ x.name }}</span> <small>{{ x.n_txt }}</small></a></li>{% endfor %}</ul>
-{% if below %}<p class="wh-subh">{{ T.below_h }}</p><ul class="wh-chips">{% for x in below %}<li><a class="wh-chip wh-chip-q" href="{{ x.url }}" translate="no">{{ x.name }}</a></li>{% endfor %}</ul>{% endif %}</div>
+<section class="wh-sec wh-rv in" aria-labelledby="wh-cc"><div class="wrap">
+<div class="wh-head"><h2 id="wh-cc">{{ T.countries_h }}</h2><p>{{ T.countries_p2 }}</p></div>
+{{ directory(D, DT, 'wd') }}
 <p class="wh-more-l"><a href="{{ hub_url }}">{{ T.all_link }} <span aria-hidden="true">→</span></a></p>
 </div></section>
 
-{% if prices %}<section class="wh-sec wh-alt wh-rv" aria-labelledby="wh-pr"><div class="wrap">
-<div class="wh-head"><h2 id="wh-pr">{{ T.prices_h }}</h2><p>{{ T.prices_p }}</p></div>
+{% if prices or pay %}<section class="wh-sec wh-alt wh-rv" aria-labelledby="wh-pr"><div class="wrap">
+{% if prices %}<div class="wh-head"><h2 id="wh-pr">{{ T.prices_h_eu }}</h2><p>{{ T.prices_p }}</p></div>
 <ul class="wh-prices">{% for x in prices['items'] %}<li class="wh-pc">{% if x.url %}<a href="{{ x.url }}">{% endif %}<span class="wh-pcn" translate="no">{{ x.name }}</span>
 <span class="wh-bar"><span class="wh-bl">{{ T.p_dc }}</span><span class="wh-bt"><i style="--w:{{ (100 * x.dc_v / prices.maxv)|round(1) }}%"></i></span><b>€{{ x.dc }}</b></span>
 <span class="wh-bar wh-bar-h"><span class="wh-bl">{{ T.p_home }}</span><span class="wh-bt"><i style="--w:{{ (100 * x.home_v / prices.maxv)|round(1) }}%"></i></span><b>€{{ x.home }}</b></span>
 <span class="wh-ratio">{{ x.ratio }}</span>{% if x.url %}</a>{% endif %}</li>{% endfor %}</ul>
-<p class="wh-src">{{ prices.src }}</p>
-<p><a class="wh-btn" href="{{ prices.hub }}">{{ T.p_btn }}</a></p>
-</div></section>{% endif %}
-
-<section class="wh-sec wh-rv" aria-label="{{ T.pay_h }} · {{ T.routes_h }}"><div class="wrap"><div class="wh-two">
-{% if pay %}<div class="wh-box"><h2>{{ T.pay_h }}</h2><p>{{ T.pay_p }}</p>
+<p class="wh-src">{{ prices.src }} · <a href="{{ prices.hub }}">{{ T.p_btn }}</a></p>{% endif %}
+{% if pay %}<div class="wh-box wh-pay"><h2>{{ T.pay_h_eu }}</h2><p>{{ T.pay_p }}</p>
 <ul class="wh-chips">{% for x in pay %}<li><a class="wh-chip" href="{{ x.url }}" translate="no">{{ x.name }}</a></li>{% endfor %}</ul>
 <p class="wh-more-l"><a href="{{ pay_hub }}">{{ T.pay_all }} <span aria-hidden="true">→</span></a></p></div>{% endif %}
-{% if routes %}<div class="wh-box"><h2>{{ T.routes_h }}</h2><p>{{ T.routes_p }}</p>
-<ul class="wh-chips">{% for x in routes %}<li><a class="wh-chip" href="{{ x.url }}" translate="no">{{ x.name }}</a></li>{% endfor %}</ul>
-<p class="wh-more-l"><a href="{{ routes_hub }}">{{ T.routes_all }} <span aria-hidden="true">→</span></a></p></div>{% endif %}
-</div></div></section>
-
-<section class="wh-sec wh-rv" aria-labelledby="wh-wk"><div class="wrap"><div class="wh-work">
-<span class="wh-dots" aria-hidden="true"><i class="ok"></i><i class="bad"></i><i class="busy"></i></span>
-<div><h2 id="wh-wk">{{ T.work_h }}</h2><p>{{ T.work_p }}</p></div>
-<a class="wh-btn" href="{{ map_url }}" data-map>{{ T.btn_full }}</a>
-</div></div></section>
-
-{% if tools %}<section class="wh-sec wh-alt wh-rv" aria-labelledby="wh-od"><div class="wrap">
-<div class="wh-head"><h2 id="wh-od">{{ T.open_h }}</h2></div>
-<ul class="wh-tools">{% for u, h, p in tools %}<li><a href="{{ u }}"><b>{{ h }}</b><span>{{ p }}</span></a></li>{% endfor %}</ul>
 </div></section>{% endif %}
 
 <section class="wh-sec wh-rv" aria-labelledby="wh-rg"><div class="wrap">
+<p class="wh-workl"><span class="wh-dots" aria-hidden="true"><i class="ok"></i><i class="bad"></i><i class="busy"></i></span><span><b id="wh-wk">{{ T.work_h }}</b> {{ T.work_line }} <a href="{{ map_url }}" data-map>{{ T.btn_full }} <span aria-hidden="true">→</span></a></span></p>
 <div class="wh-reg"><h2 id="wh-rg">{{ T.reg_h }}</h2>
-<ul class="wh-chips">{% for r in regional %}<li><a class="wh-chip" href="{{ r.path }}" hreflang="{{ r.hl }}" lang="{{ r.lang }}">{{ r.name }}</a></li>{% endfor %}<li><a class="wh-chip" href="{{ RS }}{{ {'en': '/en/', 'ru': '/ru/'}.get(l, '/') }}" hreflang="{{ l if l in ('en', 'ru') else 'sr' }}">{{ T.reg_rs }}</a></li></ul></div>
-<div class="wh-trust"><h2>{{ T.trust_h }}</h2><p>{{ T.trust_p }}</p><p class="wh-tl"><a href="{{ sources_url }}">{{ T.trust_src }}</a> · <a href="{{ method_url }}">{{ T.trust_method }}</a></p></div>
+<ul class="wh-chips">{% for r in regional %}<li><a class="wh-chip" href="{{ r.path }}" hreflang="{{ r.hl }}" lang="{{ r.lang }}">{{ r.name }}</a></li>{% endfor %}<li><a class="wh-chip" href="{{ RS }}{{ {'en': '/en/', 'ru': '/ru/'}.get(l, '/') }}" hreflang="{{ l if l in ('en', 'ru') else 'sr' }}">{{ T.reg_rs }}</a></li>{% if routes_hub %}<li><a class="wh-chip" href="{{ routes_hub }}">{{ T.reg_routes }}</a></li>{% endif %}</ul></div>
 </div></section>
 </div>
 {% endblock %}
-{% block scripts %}<script src="{{ assets['world-home.js'] }}" data-map-js="{{ assets['world-hero-map.js'] }}" defer></script>{% endblock %}
+{% block scripts %}<script src="{{ assets['world-home.js'] }}" data-map-js="{{ assets['world-hero-map.js'] }}" defer></script>
+<script src="{{ dir_js }}" defer></script>{% endblock %}

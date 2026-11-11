@@ -1,0 +1,81 @@
+{
+ "_comment": "HOME3 (11.11.2026): /terms/ (EN), /sr/uslovi/, /ru/usloviya/ — terms of use and privacy of blokvolt.com (world_shell.py). Facts only, no legal promises beyond them. The visit-counting paragraph is content/com/counter_note.json (same text as /about/). Other languages link to the English page. {sources} {download} {email} {date} {about_data} are filled by the build.",
+ "en": {
+  "title": "Terms of use and privacy",
+  "desc": "What BlokVolt is, the licences of its data and the attribution, how to correct a place, and what is counted and stored.",
+  "h1": "Terms of use and privacy",
+  "sections": [
+   ["What BlokVolt is", [
+    "BlokVolt is a free reference on electric-vehicle charging: a map of charging places, what charging costs and how to pay, country by country. It is run by its founders.",
+    "The data comes from open sources and is shown as it is. A charger may have closed, changed or be out of order — check on site before you rely on it. Prices are for reference only: the price that applies is the one the operator's app or the charger shows.",
+    "BlokVolt is not connected with any charging operator or public body. Data from public bodies — for example the U.S. Department of Energy and NLR, MITECO in Spain, LTA in Singapore, Transport for NSW and the Government of Hong Kong — is used under their open licences; this does not mean that they endorse BlokVolt or check its pages.",
+    "Networks are not ranked and there are no paid placements."]],
+   ["Licences and attribution", [
+    "Map data © OpenStreetMap contributors, available under the Open Database License (ODbL 1.0). Open Charge Map data is used under CC BY 4.0. National registers and the open data of networks are used under their own licences; the full list with the licence and the attribution text of each source is on <a href=\"{sources}\">Sources and licences</a> and <a href=\"{about_data}\">About the data</a>.",
+    "The merged data of the map is available for download under the ODbL: <a href=\"{download}\">Open data</a>.",
+    "Base map: OpenFreeMap, © OpenMapTiles, data © OpenStreetMap contributors. Country borders of the picture on the home page: Natural Earth (public domain). City names: GeoNames (CC BY 4.0).",
+    "Data as of {date}."]],
+   ["Corrections", [
+    "If a place is wrong, missing or closed, open it on the map: under \"Is it working?\" any driver can mark whether it works, without an account, and \"Report an error\" sends a correction. You can also write to <a href=\"mailto:{email}\">{email}</a>.",
+    "Many places come from OpenStreetMap; where a card links to it, a correction there reaches every map that uses OpenStreetMap."]],
+   ["Privacy", [
+    "Records of private persons are not shown on the map, and where a record of a charging place names a person, the name is masked.",
+    "Marks and error reports are stored without an account. To limit abuse, the server keeps a fingerprint made from the IP address with a random key that is valid for one day; the IP address itself is not stored.",
+    "To object to a record that concerns you or to ask for it to be removed (the Serbian Law on Personal Data Protection, the GDPR), write to <a href=\"mailto:{email}\">{email}</a> with the link to the place. The answer comes within 30 days."]]
+  ],
+  "contact_h": "Contact",
+  "contact_p": "<a href=\"mailto:{email}\">{email}</a>"
+ },
+ "sr": {
+  "title": "Uslovi korišćenja i privatnost",
+  "desc": "Šta je BlokVolt, licence njegovih podataka i navođenje izvora, kako se ispravlja mesto i šta se broji i čuva.",
+  "h1": "Uslovi korišćenja i privatnost",
+  "sections": [
+   ["Šta je BlokVolt", [
+    "BlokVolt je besplatan vodič kroz punjenje električnih automobila: mapa mesta za punjenje, koliko punjenje košta i kako se plaća, zemlju po zemlju. Vode ga osnivači.",
+    "Podaci potiču iz otvorenih izvora i prikazuju se onakvi kakvi jesu. Punjač je možda zatvoren, izmenjen ili ne radi — proverite na licu mesta pre nego što se na njega oslonite. Cene su okvirne: važi cena koju pokazuje aplikacija operatera ili sam punjač.",
+    "BlokVolt nije povezan ni sa jednim operaterom punjača ni sa jednim državnim organom. Podaci javnih organa — na primer Ministarstva energetike SAD i NLR-a, MITECO-a u Španiji, LTA u Singapuru, Transport for NSW i Vlade Hongkonga — koriste se pod njihovim otvorenim licencama; to ne znači da oni podržavaju BlokVolt niti da proveravaju njegove stranice.",
+    "Mreže se ne rangiraju i nema plaćenih mesta."]],
+   ["Licence i navođenje izvora", [
+    "Podaci mape © saradnici OpenStreetMap-a, dostupni pod licencom Open Database License (ODbL 1.0). Podaci Open Charge Map-a koriste se pod licencom CC BY 4.0. Nacionalni registri i otvoreni podaci mreža koriste se pod svojim licencama; potpun spisak sa licencom i tekstom navođenja za svaki izvor nalazi se na stranicama <a href=\"{sources}\">Izvori i licence</a> i <a href=\"{about_data}\">O podacima</a>.",
+    "Objedinjeni podaci mape mogu se preuzeti pod licencom ODbL: <a href=\"{download}\">Otvoreni podaci</a>.",
+    "Osnovna mapa: OpenFreeMap, © OpenMapTiles, podaci © saradnici OpenStreetMap-a. Granice zemalja na slici početne stranice: Natural Earth (javno dobro). Nazivi gradova: GeoNames (CC BY 4.0).",
+    "Podaci od {date}."]],
+   ["Ispravke", [
+    "Ako je mesto pogrešno, ako nedostaje ili je zatvoreno, otvorite ga na mapi: u odeljku „Da li radi?” svaki vozač može da označi da li punjač radi, bez naloga, a „Prijavi grešku” šalje ispravku. Možete pisati i na <a href=\"mailto:{email}\">{email}</a>.",
+    "Mnoga mesta potiču iz OpenStreetMap-a; kada kartica vodi do njega, ispravka tamo stiže do svih mapa koje koriste OpenStreetMap."]],
+   ["Privatnost", [
+    "Zapisi privatnih lica ne prikazuju se na mapi, a kada zapis o mestu za punjenje sadrži ime osobe, ime se skriva.",
+    "Oznake i prijave grešaka čuvaju se bez naloga. Da bi se sprečile zloupotrebe, server čuva otisak napravljen od IP adrese sa slučajnim ključem koji važi jedan dan; sama IP adresa se ne čuva.",
+    "Da biste uložili prigovor na zapis koji se odnosi na vas ili zatražili njegovo brisanje (Zakon o zaštiti podataka o ličnosti, GDPR), pišite na <a href=\"mailto:{email}\">{email}</a> sa linkom do mesta. Odgovor stiže u roku od 30 dana."]]
+  ],
+  "contact_h": "Kontakt",
+  "contact_p": "<a href=\"mailto:{email}\">{email}</a>"
+ },
+ "ru": {
+  "title": "Условия использования и приватность",
+  "desc": "Что такое BlokVolt, лицензии данных и атрибуция, как исправить место и что считается и хранится.",
+  "h1": "Условия использования и приватность",
+  "sections": [
+   ["Что такое BlokVolt", [
+    "BlokVolt — бесплатный справочник по зарядке электромобилей: карта мест зарядки, сколько стоит зарядка и как платить — по странам. Его ведут основатели.",
+    "Данные взяты из открытых источников и показаны как есть. Зарядка может быть закрыта, изменена или не работать — проверьте на месте, прежде чем на неё рассчитывать. Цены справочные: действует цена, которую показывает приложение оператора или сама зарядка.",
+    "BlokVolt не связан ни с одним оператором зарядок и ни с одним государственным органом. Данные государственных органов — например, Министерства энергетики США и NLR, MITECO в Испании, LTA в Сингапуре, Transport for NSW и правительства Гонконга — используются по их открытым лицензиям; это не значит, что они поддерживают BlokVolt или проверяют его страницы.",
+    "Сети не ранжируются, платных мест нет."]],
+   ["Лицензии и атрибуция", [
+    "Данные карты © участники OpenStreetMap, доступны по лицензии Open Database License (ODbL 1.0). Данные Open Charge Map используются по лицензии CC BY 4.0. Национальные реестры и открытые данные сетей используются по их собственным лицензиям; полный список с лицензией и текстом атрибуции каждого источника — на страницах <a href=\"{sources}\">Источники и лицензии</a> и <a href=\"{about_data}\">О данных</a>.",
+    "Объединённые данные карты можно скачать по лицензии ODbL: <a href=\"{download}\">Открытые данные</a>.",
+    "Подложка: OpenFreeMap, © OpenMapTiles, данные © участники OpenStreetMap. Границы стран на картинке главной страницы: Natural Earth (общественное достояние). Названия городов: GeoNames (CC BY 4.0).",
+    "Данные на {date}."]],
+   ["Исправления", [
+    "Если место указано неверно, его нет или оно закрыто, откройте его на карте: в блоке «Работает?» любой водитель может отметить, работает ли зарядка, без аккаунта, а «Сообщить об ошибке» отправляет исправление. Можно также написать на <a href=\"mailto:{email}\">{email}</a>.",
+    "Многие места взяты из OpenStreetMap; если карточка ведёт туда, исправление в OpenStreetMap дойдёт до всех карт, которые его используют."]],
+   ["Приватность", [
+    "Записи частных лиц на карту не выводятся, а если в записи о месте зарядки указано имя человека, оно скрывается.",
+    "Отметки и сообщения об ошибках хранятся без аккаунта. Чтобы ограничить злоупотребления, сервер хранит отпечаток, сделанный из IP-адреса со случайным ключом, который действует один день; сам IP-адрес не хранится.",
+    "Чтобы возразить против записи, которая касается вас, или попросить её удалить (сербский Закон о защите персональных данных, GDPR), напишите на <a href=\"mailto:{email}\">{email}</a> со ссылкой на место. Ответ придёт в течение 30 дней."]]
+  ],
+  "contact_h": "Контакт",
+  "contact_p": "<a href=\"mailto:{email}\">{email}</a>"
+ }
+}

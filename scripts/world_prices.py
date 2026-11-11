@@ -352,7 +352,7 @@ class R:
         nav = [(u, n, k) for u, n, k in __import__('world_pages').nav(self.w, l)]
         base = dict(SITE=self.G.SITE, RS=self.G.RS, EMAIL=self.G.EMAIL, CHECKED=fdate(self.M.T['updated']),
                     CHECKED_ISO=self.M.T['updated'], canon=url, path=url, LOC=__import__('world_pages').L[l], S=Sp, P=self.S[l],
-                    NAV=nav, SWITCH=[(x, urls[x], self.w.S[x]['lang_label'] if x in I.BASE else I.label(x), I.reg(x)['hreflang']) for x in LANGS], home=self.w.site.hub(l),
+                    NAV=nav, SWITCH=[(x, urls[x], self.w.S[x]['lang_label'] if x in I.BASE else I.label(x), I.reg(x)['hreflang']) for x in LANGS], home=__import__('world_shell').HOME[l], WFOOT=__import__('world_shell').wfooter(l, self.G), OG_WORLD=__import__('world_shell').OG_WORLD,
                     alts=alts, COUNTRIES=self.G.countries, LOCALS=self.w.local_hubs, C={'checked': fdate(self.M.T['updated'])},
                     robots=None if self.public else 'noindex,nofollow', W=self.w, l=l, section=section, PAGES={},
                     jsonld=None, local_cur=None, WORLD_FT=__import__('world_shell').footer(l), fx_date=fdate(self.M.FX['date']), usd=self.M.FX['rates']['USD'],

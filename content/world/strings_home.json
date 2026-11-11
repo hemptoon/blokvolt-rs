@@ -85,9 +85,9 @@
   "ru": "От 150 кВт"
  },
  "map_alt": {
-  "en": "Map of public charging places: every lime dot is one place",
-  "sr": "Mapa javnih mesta za punjenje: svaka zelena tačka je jedno mesto",
-  "ru": "Карта публичных мест для зарядки: каждая салатовая точка — одно место"
+  "en": "Map of charging places: every lime dot is one place",
+  "sr": "Mapa mesta za punjenje: svaka zelena tačka je jedno mesto",
+  "ru": "Карта мест зарядки: каждая салатовая точка — одно место"
  },
  "map_go": {
   "en": "Explore the map here",
@@ -110,9 +110,9 @@
   "ru": "Улицы, фильтры и подробности — открыть полную карту здесь"
  },
  "map_label": {
-  "en": "Map of public charging places",
-  "sr": "Mapa javnih mesta za punjenje",
-  "ru": "Карта публичных мест для зарядки"
+  "en": "Map of charging places",
+  "sr": "Mapa mesta za punjenje",
+  "ru": "Карта мест зарядки"
  },
  "attr": {
   "en": "Data: OpenStreetMap contributors (ODbL), Open Charge Map (CC BY 4.0) and national registers",
@@ -353,5 +353,120 @@
   "en": "Data © OpenStreetMap (ODbL), Open Charge Map, registers",
   "sr": "Podaci © OpenStreetMap (ODbL), Open Charge Map, registri",
   "ru": "Данные © OpenStreetMap (ODbL), Open Charge Map, реестры"
+ },
+ "attr_osm": {
+  "en": "OpenStreetMap contributors",
+  "sr": "saradnici OpenStreetMap-a",
+  "ru": "участники OpenStreetMap"
+ },
+ "attr_src": {
+  "en": "Sources",
+  "sr": "Izvori",
+  "ru": "Источники"
+ },
+ "attr_info": {
+  "en": "Map data and licences",
+  "sr": "Podaci mape i licence",
+  "ru": "Данные карты и лицензии"
+ },
+ "attr_data": {
+  "en": "Map data",
+  "sr": "Podaci mape",
+  "ru": "Данные карты"
+ },
+ "attr_reg": {
+  "en": "national registers",
+  "sr": "nacionalni registri",
+  "ru": "национальные реестры"
+ },
+ "attr_base": {
+  "en": "Base map",
+  "sr": "Osnovna mapa",
+  "ru": "Подложка"
+ },
+ "q_fast": {
+  "en": "Fast 50 kW+",
+  "sr": "Brzi 50 kW+",
+  "ru": "Быстрые 50 кВт+"
+ },
+ "q_ultra": {
+  "en": "Ultra-fast 150 kW+",
+  "sr": "Ultrabrzi 150 kW+",
+  "ru": "Сверхбыстрые 150 кВт+"
+ },
+ "q_pub": {
+  "en": "Public only",
+  "sr": "Samo javni",
+  "ru": "Только публичные"
+ },
+ "countries_p2": {
+  "en": "Charging places in every country of the data. A country opens its own page where there is one, otherwise the map.",
+  "sr": "Mesta za punjenje u svakoj zemlji iz podataka. Zemlja vodi na svoju stranicu ako postoji, inače na mapu.",
+  "ru": "Места зарядки в каждой стране из данных. Страна открывает свою страницу, если она есть, иначе — карту."
+ },
+ "dir_find": {
+  "en": "Find a country",
+  "sr": "Pronađite zemlju",
+  "ru": "Найти страну"
+ },
+ "dir_find_ph": {
+  "en": "Country name",
+  "sr": "Naziv zemlje",
+  "ru": "Название страны"
+ },
+ "dir_none": {
+  "en": "No country by that name in the data.",
+  "sr": "U podacima nema zemlje s tim nazivom.",
+  "ru": "Страны с таким названием в данных нет."
+ },
+ "dir_az": {
+  "en": "All countries A–Z",
+  "sr": "Sve zemlje od A do Ž",
+  "ru": "Все страны от А до Я"
+ },
+ "tab_la": {
+  "en": "Latin America",
+  "sr": "Latinska Amerika",
+  "ru": "Латинская Америка"
+ },
+ "tab_as": {
+  "en": "Asia",
+  "sr": "Azija",
+  "ru": "Азия"
+ },
+ "tab_me": {
+  "en": "Middle East & Africa",
+  "sr": "Bliski istok i Afrika",
+  "ru": "Ближний Восток и Африка"
+ },
+ "tab_oc": {
+  "en": "Oceania",
+  "sr": "Okeanija",
+  "ru": "Океания"
+ },
+ "prices_h_eu": {
+  "en": "What charging costs in Europe",
+  "sr": "Koliko košta punjenje u Evropi",
+  "ru": "Сколько стоит зарядка в Европе"
+ },
+ "pay_h_eu": {
+  "en": "How to pay in Europe",
+  "sr": "Kako se plaća u Evropi",
+  "ru": "Как платить в Европе"
+ },
+ "p_month": {
+  "en": "Price index: {month}",
+  "sr": "Indeks cena: {month}",
+  "ru": "Индекс цен: {month}"
+ },
+ "work_line": {
+  "en": "Drivers mark on the map whether a charger works — no account needed.",
+  "sr": "Vozači na mapi označavaju da li punjač radi — bez naloga.",
+  "ru": "Водители отмечают на карте, работает ли зарядка, — без аккаунта."
+ },
+ "reg_routes": {
+  "en": "Road trips to the Balkans",
+  "sr": "Putovanja kolima na Balkan",
+  "ru": "Поездки на Балканы"
  }
 }

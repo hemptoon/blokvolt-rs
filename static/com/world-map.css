@@ -111,6 +111,16 @@
  .wm-attr.is-min{background:none;box-shadow:none;padding:0}
  .wm-attr.is-min .wm-attr-full{display:none}
 }
+/* HOME3: the attribution is one short line ("© OpenStreetMap contributors · Sources"), visible without any action; after
+   5 s it folds into "(i)" on every width; "(i)" opens the full panel (map data, base map, data date, sources) */
+.wm-page .wm-attr{display:flex;align-items:flex-end;gap:4px;flex-wrap:wrap}
+.wm-page .wm-attr-more{display:none;flex-basis:100%;order:-1;padding:2px 0 4px}
+.wm-page .wm-attr.is-open .wm-attr-more{display:block}
+.wm-page .wm-attr-i{position:relative;z-index:0;display:inline-grid;place-items:center;flex:none;width:32px;height:28px;margin:-6px -6px -4px 0;padding:0;border:0;background:none;cursor:pointer;font:700 12px/1 Georgia,serif;color:var(--ink)}
+.wm-page .wm-attr-i::before{content:"";position:absolute;z-index:-1;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.wm-page .wm-attr.is-min{background:none;box-shadow:none;padding:0}
+.wm-page .wm-attr.is-min .wm-attr-full{display:none}
+@media (pointer:coarse){.wm-page .wm-attr-i{width:44px;height:44px;margin:-10px -8px -8px 0}}
 /* G6: drivers' check-ins */
 .wm-ci{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
 .wm-ci h3{font-size:14px;font-weight:650;margin:0 0 4px}
@@ -126,3 +136,61 @@
 .wm-rules summary{cursor:pointer;font-weight:600}
 .wm-rules p{margin:6px 0 0}
 @media (pointer:coarse){.wm-ci .btn{min-height:44px}.wm-prow .input{min-height:44px}}
+
+/* HOME3: places that are not public — rings, in the legend and on top of their card */
+.sw-acc-unk{background:transparent;box-shadow:inset 0 0 0 2px #4E6410}
+.sw-acc-res{background:transparent;box-shadow:inset 0 0 0 2px #C2410C}
+.wm-accb{display:inline-flex;align-items:center;gap:6px;margin:0 0 10px;padding:4px 10px;border-radius:999px;font-size:13.5px;font-weight:600;background:var(--surface2);color:var(--ink)}
+.wm-accb .wm-sw{margin:0}
+.wm-count{font-size:14px;color:var(--ink)}
+/* light / dark toggle on the map */
+.wm-theme{position:absolute;right:10px;bottom:34px;z-index:3;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 12px;border-radius:999px;border:1px solid var(--line2);background:rgba(255,255,255,.94);color:var(--ink);font:inherit;font-size:13px;font-weight:620;cursor:pointer;box-shadow:var(--shadow)}
+.wm-theme[hidden]{display:none}
+@media (pointer:coarse){.wm-theme{min-height:44px}}
+@media (max-width:900px){.wm-theme{bottom:auto;top:54px;right:10px}.wm-legend .wm-lg-acc{display:none}}
+
+/* ---------------------------------------------------------------- dark map page (html.wm-dark; HOME3)
+   The same tokens as the dark home (world-home.css): night #0B0F17, surfaces #141A26/#1B2230, ink #EEF0F3, muted #A6ADBA
+   (≥ 4.5:1 on every surface), lime accent. Only the map page: the widget has its own dark rules (world-embed.css). */
+html.wm-dark .wm-page{--bg:#0B0F17;--surface:#141A26;--surface2:#1F2736;--surface3:#273042;--ink:#EEF0F3;--ink2:#D3D7DE;--mut:#A6ADBA;--mut2:#8E96A4;--mut3:#A6ADBA;
+  --line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.20);--voltbg:#26300B;color-scheme:dark;background:#0B0F17;color:#EEF0F3}
+html.wm-dark .wm-page .hd{background:rgba(11,15,23,.94);border-bottom-color:rgba(255,255,255,.08)}
+html.wm-dark .wm-page .logo,html.wm-dark .wm-page .hd-nav a,html.wm-dark .wm-page .ib{color:#E9ECEF}
+html.wm-dark .wm-page .hd-nav a:hover,html.wm-dark .wm-page .ib:hover{background:rgba(255,255,255,.08);color:#fff}
+html.wm-dark .wm-page .hd-nav a[aria-current="page"]{background:#D9F45B;color:#151B05}
+html.wm-dark .wm-page .lang-menu{background:#141A26;border-color:rgba(255,255,255,.12)}
+@media (max-width:960px){html.wm-dark .wm-page .hd-nav{background:#141A26;border-color:rgba(255,255,255,.12)}}
+html.wm-dark .wm-page .lang-menu a{color:#E9ECEF}
+html.wm-dark .wm-page .map-app,html.wm-dark .wm-page .map-side{background:#0F141E;border-color:rgba(255,255,255,.08)}
+html.wm-dark .wm-page h1,html.wm-dark .wm-page h2,html.wm-dark .wm-page h3{color:#EEF0F3}
+html.wm-dark .wm-page .chip,html.wm-dark .wm-page .btn,html.wm-dark .wm-page .input,html.wm-dark .wm-page .select{background:#141A26;color:#E4E8EF;border-color:rgba(255,255,255,.20)}
+html.wm-dark .wm-page .chip:hover,html.wm-dark .wm-page .btn:hover{border-color:#D9F45B;color:#fff}
+html.wm-dark .wm-page .chip[aria-pressed="true"],html.wm-dark .wm-page .chip.is-on{background:#D9F45B;border-color:#D9F45B;color:#151B05}
+html.wm-dark .wm-page .btn.dark{background:#D9F45B;border-color:#D9F45B;color:#151B05}
+html.wm-dark .wm-page .wm-ftoggle .n{background:#D9F45B;color:#151B05}
+html.wm-dark .wm-page .lnkbtn,html.wm-dark .wm-page .wm-data a,html.wm-dark .wm-page .wm-cc a:not(.btn){color:#E4E8EF}
+html.wm-dark .wm-page :focus-visible{outline-color:#D9F45B}
+html.wm-dark .wm-page details{background:transparent;border-color:rgba(255,255,255,.12)}
+html.wm-dark .wm-page .map-legend,html.wm-dark .wm-page .map-attr,html.wm-dark .wm-page .wm-msg,html.wm-dark .wm-page .wm-theme{background:rgba(15,20,30,.92);color:#E4E8EF;border-color:rgba(255,255,255,.14)}
+html.wm-dark .wm-page .map-attr a,html.wm-dark .wm-page .map-attr .lnkbtn{color:#F2F4F7}
+html.wm-dark .wm-page .wm-attr.is-min{background:none}
+html.wm-dark .wm-page .wm-attr-i{color:#0B0F17}
+html.wm-dark .wm-page .wm-attr-i::before{background:#EEF0F3;box-shadow:none}
+html.wm-dark .wm-page .card-ov .ccard,html.wm-dark .wm-page .ccard,html.wm-dark .wm-page .wm-card>*{background:#141A26;color:#EEF0F3;border-color:rgba(255,255,255,.10)}
+html.wm-dark .wm-page .ccard .x,html.wm-dark .wm-dlg .x{background:#1F2736;color:#EEF0F3}
+html.wm-dark .wm-dlg{background:#141A26;color:#EEF0F3}
+html.wm-dark .wm-dlg a{color:#E4E8EF}
+html.wm-dark .wm-skel{background:linear-gradient(90deg,#1A2130 25%,#232B3B 50%,#1A2130 75%);background-size:200% 100%}
+html.wm-dark .wm-page .wm-hint{color:#8FB1FF}
+html.wm-dark .wm-page .ft{background:#0B0F17;border-top:1px solid rgba(255,255,255,.06)}
+html.wm-dark .wm-page .maplibregl-ctrl-group{background:#141A26;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+html.wm-dark .wm-page .maplibregl-ctrl-group button+button{border-top-color:rgba(255,255,255,.14)}
+html.wm-dark .wm-page .maplibregl-ctrl-icon{filter:invert(1) brightness(1.4)}
+/* swatches of the dark point colours */
+html.wm-dark .sw-ac{background:#E4E8EF;box-shadow:inset 0 0 0 2px #0B0F17}
+html.wm-dark .sw-dc{background:#D9F45B;box-shadow:inset 0 0 0 2px #0B0F17}
+html.wm-dark .sw-hpc{background:#E9FF8A;box-shadow:inset 0 0 0 3px #F6FFD2}
+html.wm-dark .sw-unk{background:#8A909B;box-shadow:inset 0 0 0 2px #0B0F17}
+html.wm-dark .sw-acc-unk{background:transparent;box-shadow:inset 0 0 0 2px #D9F45B}
+html.wm-dark .sw-acc-res{background:transparent;box-shadow:inset 0 0 0 2px #FF9B71}
+html.wm-dark .chip[aria-pressed="true"] .sw-ac{box-shadow:inset 0 0 0 2px #151B05}

@@ -213,5 +213,105 @@
   "en": "Close",
   "sr": "Zatvori",
   "ru": "Закрыть"
+ },
+ "ft_hub_by": {
+  "en": "Charging stations by country",
+  "sr": "Punjači po zemljama",
+  "ru": "Зарядки по странам"
+ },
+ "ft_c_charging": {
+  "en": "Charging",
+  "sr": "Punjenje",
+  "ru": "Зарядка"
+ },
+ "ft_c_wb": {
+  "en": "Western Balkans",
+  "sr": "Zapadni Balkan",
+  "ru": "Западные Балканы"
+ },
+ "ft_wb_guide": {
+  "en": "Guide (in English)",
+  "sr": "Vodič (na engleskom)",
+  "ru": "Путеводитель (на английском)"
+ },
+ "ft_rs": {
+  "en": "Serbia — blokvolt.rs",
+  "sr": "Srbija — blokvolt.rs",
+  "ru": "Сербия — blokvolt.rs"
+ },
+ "ft_routes": {
+  "en": "Road trips to the Balkans",
+  "sr": "Putovanja kolima na Balkan",
+  "ru": "Поездки на Балканы"
+ },
+ "ft_partners": {
+  "en": "List or correct a company",
+  "sr": "Dodavanje ili ispravka firme",
+  "ru": "Добавить или исправить компанию"
+ },
+ "ft_c_data": {
+  "en": "Data & tools",
+  "sr": "Podaci i alati",
+  "ru": "Данные и инструменты"
+ },
+ "ft_open": {
+  "en": "Open data (download, ODbL)",
+  "sr": "Otvoreni podaci (preuzimanje, ODbL)",
+  "ru": "Открытые данные (скачать, ODbL)"
+ },
+ "ft_widget": {
+  "en": "Map widget",
+  "sr": "Mapa za vaš sajt",
+  "ru": "Карта для сайта"
+ },
+ "ft_dev": {
+  "en": "Developers",
+  "sr": "Za programere",
+  "ru": "Разработчикам"
+ },
+ "ft_press2": {
+  "en": "Price index for media",
+  "sr": "Indeks cena za medije",
+  "ru": "Индекс цен для СМИ"
+ },
+ "ft_b2b": {
+  "en": "Data for business",
+  "sr": "Podaci za firme",
+  "ru": "Данные для бизнеса"
+ },
+ "ft_terms": {
+  "en": "Terms & privacy",
+  "sr": "Uslovi i privatnost",
+  "ru": "Условия и приватность"
+ },
+ "ft_line": {
+  "en": "Data from OpenStreetMap (ODbL), Open Charge Map, NOBIL and national registers",
+  "sr": "Podaci iz OpenStreetMap-a (ODbL), Open Charge Map-a, NOBIL-a i nacionalnih registara",
+  "ru": "Данные OpenStreetMap (ODbL), Open Charge Map, NOBIL и национальных реестров"
+ },
+ "ft_nopaid": {
+  "en": "No paid placements; networks are not ranked",
+  "sr": "Bez plaćenih mesta; mreže se ne rangiraju",
+  "ru": "Без платных мест; сети не ранжируются"
+ },
+ "ft_lang": {
+  "en": "Language",
+  "sr": "Jezik",
+  "ru": "Язык"
+ },
+ "src_count_note": {
+  "en": "Open Charge Map counts as one source; the data providers inside it are listed separately in the full list.",
+  "sr": "Open Charge Map se računa kao jedan izvor; dobavljači podataka unutar njega navedeni su posebno u potpunom spisku.",
+  "ru": "Open Charge Map считается одним источником; поставщики данных внутри него перечислены отдельно в полном списке."
+ },
+ "src_map": {
+  "en": "Base map: OpenFreeMap, © OpenMapTiles, data © OpenStreetMap contributors. Country borders of the home picture: Natural Earth (public domain). City names: GeoNames (CC BY 4.0).",
+  "sr": "Osnovna mapa: OpenFreeMap, © OpenMapTiles, podaci © saradnici OpenStreetMap-a. Granice zemalja na slici početne stranice: Natural Earth (javno dobro). Nazivi gradova: GeoNames (CC BY 4.0).",
+  "ru": "Подложка: OpenFreeMap, © OpenMapTiles, данные © участники OpenStreetMap. Границы стран на картинке главной: Natural Earth (общественное достояние). Названия городов: GeoNames (CC BY 4.0)."
+ },
+ "src_date": {
+  "en": "Data as of {date}.",
+  "sr": "Podaci od {date}.",
+  "ru": "Данные на {date}."
  }
 }

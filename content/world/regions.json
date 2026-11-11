@@ -1,0 +1,21 @@
+{
+ "about": "HOME3 (11.11.2026): one table of world regions for the country directory of the home page and the hub (scripts/world_home.py, world_pages.py) and for the pictures of world_hero.py. Disputed cases as decided by the owner session: Turkey and Cyprus — Europe (as EAFO); Caucasus and Kazakhstan — Asia; Israel and the Gulf — Middle East & Africa. A country of the data missing here goes to 'as' with a build warning.",
+ "order": ["eu", "na", "la", "as", "me", "oc"],
+ "regions": {
+  "eu": "AD AL AT AX BA BE BG BY CH CY CZ DE DK EE ES FI FO FR GB GG GI GR HR HU IE IM IS IT JE LI LT LU LV MC MD ME MK MT NL NO PL PT RO RS RU SE SI SK SM TR UA VA XK",
+  "na": "US CA",
+  "la": "AR AW BO BR BZ CL CO CR CU DO EC GT GY HT JM KY MF MX NI PA PE PR PY SR SV TT UY VC VE",
+  "as": "AM AZ BD BN BT CN GE HK ID IN JP KG KH KR KZ LA LK MM MN MO MV MY NP PH PK SG TH TJ TL TM TW UZ VN",
+  "me": "AE BH DZ EG ET GH IL IQ IR JO KE KW LB MA MU NG OM PS QA RE RW SA SD SY SZ TN ZA",
+  "oc": "AU FJ NC NZ PF PG SB TO VU WS"
+ },
+ "tz": {
+  "about": "time-zone → region of the directory (the same helper picks the picture of the first screen: eu / na / ap)",
+  "na": "^(America/(New_York|Chicago|Denver|Los_Angeles|Phoenix|Anchorage|Juneau|Sitka|Nome|Yakutat|Metlakatla|Adak|Boise|Detroit|Indiana/.*|Kentucky/.*|North_Dakota/.*|Menominee|Toronto|Vancouver|Edmonton|Winnipeg|Halifax|St_Johns|Regina|Swift_Current|Moncton|Glace_Bay|Goose_Bay|Whitehorse|Dawson|Dawson_Creek|Yellowknife|Iqaluit|Rankin_Inlet|Cambridge_Bay|Inuvik|Creston|Fort_Nelson|Atikokan|Blanc-Sablon|Resolute|Rainy_River|Thunder_Bay|Nipigon|Pangnirtung)|Pacific/Honolulu|US/.*|Canada/.*)$",
+  "la": "^America/",
+  "eu": "^(Europe/|Atlantic/(Reykjavik|Faroe|Canary|Madeira|Azores)|Asia/(Nicosia|Famagusta|Istanbul))",
+  "oc": "^(Australia/|Pacific/)",
+  "me": "^(Africa/|Indian/(Reunion|Mauritius|Mayotte|Comoro|Antananarivo|Mahe)|Asia/(Dubai|Jerusalem|Tel_Aviv|Beirut|Amman|Riyadh|Qatar|Tehran|Baghdad|Kuwait|Bahrain|Muscat|Damascus|Gaza|Hebron|Aden))",
+  "as": "^(Asia/|Indian/)"
+ }
+}

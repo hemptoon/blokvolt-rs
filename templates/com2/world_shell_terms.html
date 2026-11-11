@@ -1,0 +1,13 @@
+{% extends 'world_base.html' %}
+{# HOME3 (11.11.2026): terms of use and privacy — /terms/, /sr/uslovi/, /ru/usloviya/ (content/world/terms.json, world_shell.py) #}
+{% block pagehead %}<div class="ph"><div class="wrap"><h1>{{ h1 }}</h1></div></div>{% endblock %}
+{% block content %}
+<div class="prose cwide">
+{% for h, ps in TT.sections %}<h2>{{ h }}</h2>
+{% for p in ps %}<p>{{ p|safe }}</p>
+{% endfor %}{% if loop.index == 4 and CN %}<p>{{ CN.p }}</p>
+{% endif %}{% endfor %}
+<h2>{{ TT.contact_h }}</h2>
+<p>{{ TT.contact_p|safe }}</p>
+</div>
+{% endblock %}

@@ -12,7 +12,7 @@
   const REG = H.getAttribute('data-hr') || 'eu';
   const RM = H.classList.contains('wh-rm');
   const LOC = cfg.intl || { en: 'en-GB', sr: 'sr-Latn-RS', ru: 'ru-RU' }[cfg.lang] || 'en-GB';
-  const VIEW = { na: '#3.2/41/-98', ap: '#2.6/12/112' };
+  const VIEW = { na: '#3.2/41/-98', ap: '#2.6/12/112' };   // the directory's tabs: world-dir.js (HOME3)
   const nf = new Intl.NumberFormat(LOC);
   const done = new WeakSet();
   const mapLinks = () => d.querySelectorAll('a[data-map]');
@@ -76,40 +76,28 @@
     if (pq) { q.value = pq.slice(0, 80); load().then(show); }
   }
 
-  // ------------------------------------------------------------ country tabs (ARIA tabs; without JS every panel shows)
-  const tl = d.querySelector('.wh-tabs');
-  if (tl) {
-    const tabs = [...tl.querySelectorAll('[role=tab]')];
-    const pick = (t, focus) => {
-      tabs.forEach(x => {
-        const on = x === t;
-        x.setAttribute('aria-selected', String(on));
-        x.tabIndex = on ? 0 : -1;
-        const p = d.getElementById(x.getAttribute('aria-controls'));
-        if (p) p.hidden = !on;
-      });
-      if (focus) t.focus();
-      count(d.getElementById(t.getAttribute('aria-controls')));
-    };
-    tl.hidden = false;
-    const first = tabs.find(t => t.id === 'tab-' + (REG === 'na' ? 'na' : REG === 'ap' && d.getElementById('tab-ap') ? 'ap' : 'eu')) || tabs[0];
-    tabs.forEach(t => t.addEventListener('click', () => pick(t)));
-    tl.addEventListener('keydown', e => {
-      const i = tabs.indexOf(d.activeElement);
-      if (i < 0) return;
-      const n = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : null;
-      if (n === null) return;
-      e.preventDefault();
-      pick(tabs[(n + tabs.length) % tabs.length], true);
+  // ------------------------------------------------------------ attribution of the first screen (HOME3, L1 §2)
+  // "© OpenStreetMap contributors · Sources" in the corner, visible without any action; after 5 s (never earlier) it folds
+  // into "ⓘ"; "ⓘ" opens the panel with the map data, the base map, the borders and the data date
+  const at = d.getElementById('wh-attr');
+  if (at) {
+    const ib = at.querySelector('.wh-attr-i'), more = d.getElementById('wh-attr-more');
+    ib.hidden = false;
+    setTimeout(() => { if (ib.getAttribute('aria-expanded') !== 'true') at.classList.add('is-min'); }, 5000);
+    ib.addEventListener('click', e => {
+      e.stopPropagation();
+      const open = ib.getAttribute('aria-expanded') !== 'true';
+      ib.setAttribute('aria-expanded', String(open));
+      more.hidden = !open;
+      at.classList.toggle('is-min', !open);
     });
-    pick(first);
   }
 
   // ------------------------------------------------------------ count-up and reveal
   function count(root) {
     if (RM || !root) return;
     root.querySelectorAll('.wh-num[data-n]').forEach(el => {
-      if (done.has(el) || !root.closest('.wh-rv.in')) return;
+      if (done.has(el) || !root.closest('.wh-rv.in')) return;   // (HOME3: the directory numbers do not count up)
       done.add(el);
       const to = +el.dataset.n, txt = el.textContent, t0 = performance.now(), dur = 900;
       const step = now => {

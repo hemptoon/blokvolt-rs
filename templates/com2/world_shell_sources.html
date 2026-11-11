@@ -3,6 +3,9 @@
 {% block content %}
 <div class="prose cwide">
 <p>{{ T.sources_p.format(n=n_sources) }} <a href="{{ about_data }}#sources">{{ T.ft_about_data }}</a>.</p>
-<p><a href="{{ download }}">{{ T.ft_download }}</a> (ODbL)</p>
+<p>{{ T.src_count_note }}</p>
+<p>{{ T.src_map }}</p>
+<p><b>{{ T.src_date.format(date=data_date) }}</b></p>
+<p><a href="{{ download }}">{{ T.ft_download }}</a> (ODbL) · <a href="{{ terms }}">{{ T.ft_terms }}</a></p>
 </div>
 {% endblock %}

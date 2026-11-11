@@ -480,9 +480,9 @@ def write_page(c, l, tpl, url, urls, ctx, ptype, robots=None, indexable=True, up
     if not c.public:
         robots, indexable = 'noindex,nofollow', False
     base = dict(SITE=G.SITE, RS=G.RS, EMAIL=G.EMAIL, CHECKED=fmt_date(c.date), CHECKED_ISO=c.date, canon=url, path=url,
-                LOC=L[l], S=S, NAV=nav(c, l), SWITCH=switch(c, urls, l), home=c.site.hub(l), alts=alts,
+                LOC=L[l], S=S, NAV=nav(c, l), SWITCH=switch(c, urls, l), home=__import__('world_shell').HOME[l], alts=alts,
                 COUNTRIES=G.countries, LOCALS=c.local_hubs, C={'checked': fmt_date(c.lastmod(url))},
-                robots=robots, W=c, l=l, section=ptype, PAGES={}, WORLD_FT=__import__('world_shell').footer(l),
+                robots=robots, W=c, l=l, section=ptype, PAGES={}, WORLD_FT=__import__('world_shell').footer(l), WFOOT=__import__('world_shell').wfooter(l, G), OG_WORLD=__import__('world_shell').OG_WORLD,
                 LANGMENU=I.lang_menu(urls, l, list(ups or []) + [{x: c.site.hub(x) for x in LANGS}]), LANGJS=lang_js(c))
     base.update(ctx)
     base['title'] = seo_title(base['title'])
@@ -545,6 +545,16 @@ def render_country(c, p, urls, l):
     c.pk = dict(kw, country_name=cname)
     title = c.t(l, 't_country', **kw)
     b = common_blocks(c, l, d)
+    # HOME3 (11.11.2026): the first number is every charging place of the country on the map (the home and the hub count the
+    # same), next to it the public ones; the other numbers stay public and say so
+    import world_home
+    n_all = world_home.counts_by_country().get(cc)
+    st = d['stats']
+    if n_all:
+        b['tiles'] = [(c.n(l, n_all), S['st_places']), (c.n(l, st['n']), S['st_public']), (c.n(l, st['dc50']), S['st_dc50_pub']),
+                      (c.n(l, st['hpc']), S['st_hpc_pub'])]
+        b['paras'][0] = c.t(l, 'p_shown2', n=c.pn(l, n_all, 'pl_place2'), m=c.n(l, st['n']))
+    b['paras'][1] = c.t(l, 'p_dc_pub', dc=c.pn(l, st['dc50'], 'pl_place2'), pct_dc=c.pct(l, st['pct_dc50']), hpc=c.pn(l, st['hpc'], 'pl_place2'))
     # LANG0: a city or network without a page in this language (not a market country, preview cap) → the map
     cities = [dict(name=N.city_name(d['city_info'][str(g)], l), url=site.city(cc, g, l), n=c.n(l, n)) for g, n in d['city_pages'] if site.has_city(cc, g, l)]
     others = [dict(name=N.city_name(d['city_info'][str(g)], l), url=c.map_url(l, {'zemlja': cc, 'grad': g}), n=c.n(l, n))
@@ -669,6 +679,20 @@ def render_hub(c, p, urls, l):
         title = S['t_hub_month_na']
     b = common_blocks(c, l, d)
     b['tiles'][3] = (c.n(l, len(d['countries'])), S['st_countries'])
+    # HOME3 (11.11.2026): the hub is the world directory — every country of the data, one number per country (all charging
+    # places of the map layer), the same macro as the home; the H1 has no number (RUNBOOK 3.34)
+    import world_home
+    TH = world_home.load_strings()[l]
+    D = world_home.directory(c.G, c, l, TH)
+    mp = os.environ.get('BV_WORLD_MANIFEST')
+    mcounts = (json.load(open(mp, encoding='utf-8')).get('counts') or {}) if mp and Path(mp).exists() else {}
+    if mcounts.get('sites'):
+        b['tiles'] = [(c.n(l, mcounts['sites']), S['st_places']), (c.n(l, mcounts.get('public', 0)), S['st_public'])] + b['tiles'][1:3]
+        b['paras'][0] = c.t(l, 'p_shown2', n=c.pn(l, mcounts['sites'], 'pl_place2'), m=c.n(l, mcounts.get('public', 0)))
+    st = d['stats']
+    b['tiles'][2:4] = [(c.n(l, st['dc50']), S['st_dc50_pub']), (c.n(l, st['hpc']), S['st_hpc_pub'])] if mcounts.get('sites') else b['tiles'][2:4]
+    b['paras'][1] = c.t(l, 'p_dc_pub', dc=c.pn(l, st['dc50'], 'pl_place2'), pct_dc=c.pct(l, st['pct_dc50']), hpc=c.pn(l, st['hpc'], 'pl_place2'))
+    title = S['t_hub_world']
     rows = [dict(name=N.country(cc, l), url=site.country(cc, l), n=c.n(l, n), dc50=c.n(l, dc)) for cc, n, dc, *_ in d['countries']]
     rows.sort(key=lambda r: r['name'])
     balkan = []
@@ -689,7 +713,8 @@ def render_hub(c, p, urls, l):
     graph = [{'@type': 'CollectionPage', 'name': title, 'url': G.SITE + urls[l], 'inLanguage': L[l]['html'], 'dateModified': c.lastmod(urls[l])},
              crumbs_ld(c, [('BlokVolt', urls[l])])]
     return write_page(c, l, 'world_hub.html', urls[l], urls, dict(
-        title=title, h1=title, description=S['d_hub'], kick=S['k_hub'], crumbs=[], jsonld=ld(graph), b=b, rows=rows,
+        title=title, h1=title, description=S['d_hub2'], kick=S['k_hub'], crumbs=[], jsonld=ld(graph), b=b, rows=rows, D=D, DT=TH,
+        dir_js=world_home.copy_dir_js(c.G), tz=json.dumps(D['tz'], separators=(',', ':')),
         balkan=balkan, below=below, hub_p=S['p_hub'] + ((' ' + S['p_hub_na']) if l in ('en', 'ru') and any(not site.has(r[0], 'sr') for r in d['countries']) else ''),
         map_link=c.map_url(l), data_date=fmt_date(c.lastmod(urls[l]))), 'hub')
 

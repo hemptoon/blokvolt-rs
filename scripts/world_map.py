@@ -38,6 +38,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import world_i18n as I   # noqa: E402  K8-i18n: languages and addresses from the registry (content/world/config.json)
 LANGS = I.langs()
 PAGES = {l: I.slugs(l)['map'] for l in LANGS}
+HOME = {l: I.slugs(l)['home'] for l in LANGS}   # HOME3: the logo leads to the home of the language
 # pages of task K3 (contract §8); linked from the map only through the script, so gen_com's link check does not depend on K3
 ABOUT = {l: I.slugs(l)['hub'] + I.slugs(l)['about'] + '/' for l in LANGS}
 DOWNLOAD = {l: I.slugs(l)['hub'] + I.slugs(l)['download'] + '/' for l in LANGS}
@@ -151,13 +152,17 @@ def build(G):
         WFT = None
         if world_shell.active():
             NAV, WFT = world_shell.nav(lang), world_shell.footer(lang)
-        wm_cfg = {'lang': lang, 'data_base': cfg['data_base'], 'reports_api': cfg['reports_api'], 'checkins_api': cfg['checkins_api'], 'style': STYLE,
+        th = cfg.get('map_theme') or {}
+        wm_cfg = {'lang': lang, 'data_base': cfg['data_base'], 'reports_api': cfg['reports_api'], 'checkins_api': cfg['checkins_api'],
+                  'style': th.get('style') or STYLE, 'style_dark': th.get('style_dark', ''), 'dark_paint': th.get('dark_paint', {}),
+                  'theme': th.get('default', 'svetla'), 'home': HOME[lang], 'sources': I.slugs(lang)['sources'],
                   'center': VIEW['center'], 'zoom': VIEW['zoom'], 'font': FONT, 'about': ABOUT[lang], 'download': DOWNLOAD[lang], 'pages': PAGES,
                   'prices': (getattr(G, 'WORLD_PRICES', None) or {}).get('map_json', '')}   # G3: price line of the card
         if lang not in I.BASE:   # K8/LANG0: number/date locale of an extra language (world-map.js: cfg.intl)
             wm_cfg['intl'] = I.reg(lang).get('intl', lang)
             wm_cfg['dec'], wm_cfg['thou'] = I.reg(lang)['dec'], I.reg(lang)['thou']
-        ctx = dict(WORLD_FT=WFT, LOC=LOCS[lang], S=S, NAV=NAV, SWITCH=SWITCH, LANGMENU=I.lang_menu(PAGES, lang), LANGJS=I.lang_assets(OUT), home=PAGES[lang] if lang != 'en' else '/', section='map',
+        ctx = dict(WORLD_FT=WFT, WFOOT=world_shell.wfooter(lang, G) if world_shell.active() else None, OG_WORLD=world_shell.OG_WORLD if world_shell.active() else None, LOC=LOCS[lang], S=S, NAV=NAV, SWITCH=SWITCH, LANGMENU=I.lang_menu(PAGES, lang), LANGJS=I.lang_assets(OUT), home=HOME[lang] if world_shell.active() else (PAGES[lang] if lang != 'en' else '/'), section='map',
+                   theme_default=(cfg.get('map_theme') or {}).get('default', 'svetla'), sources_url=I.slugs(lang)['sources'],
                    COUNTRIES=G.countries, LOCALS=locals_, PAGES={'method': None}, T=T, title=T['title'],
                    description=T['description'], alts=alts, public=cfg['public'], noindex=False,
                    wm_cfg=json.dumps(wm_cfg, ensure_ascii=False).replace('</', '<\\/'),

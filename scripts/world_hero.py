@@ -1,7 +1,8 @@
 """First screen of the world home of blokvolt.com (task HOME2, 11.11.2026): "night lights" pictures of the public layer.
 
-Draws every place of the public layer (K1 public_sites.geojsonseq) as lime light on a dark ground with thin country
-borders and coastlines (Natural Earth 1:50m, public domain — content/world/home/ne_lines.json), in Web Mercator, for
+Draws every place of the map layer (K1 public_sites.geojsonseq — all places of the layer, not only the public ones) as
+lime light on dark land and darker sea (Natural Earth 1:10m land, content/world/home/ne_land.json) with thin country
+borders (Natural Earth 1:50m, public domain — content/world/home/ne_lines.json), in Web Mercator, for
 three regions (eu = Europe, na = USA and Canada, ap = Asia-Pacific) and two shapes (w = wide, for screens wider than
 720 px; t = tall, for phones). Each picture records its view (centre, MapLibre zoom at 512 px tiles, size), so the live
 map of the home page (static/com/world-hero-map.js) opens exactly where the picture is and looks the same: the picture is
@@ -14,8 +15,10 @@ Output (committed to blokvolt-rs; the weekly world run on the Mac writes it into
                                                           Asia-Pacific countries by size — from stats.json when given)
     static/com/hero/og-world.jpg                         (only with --og: the og:image of the home, 1200×630)
 
-Numbers on the page never come from here except the order of the Asia-Pacific countries: the counts come from the
-manifest and the pages bundle at build time (scripts/world_home.py).
+HOME3 (11.11.2026): the colours are the ones of the dark map (OpenFreeMap "dark" recoloured by content/world/config.json
+→ "dark_paint": land, sea and borders), so the picture, the live map of the home and /map/ look the same. With --stats the
+number of places per country (stats.json → by_country, all places of the layer) goes into hero.json → "countries": the
+country directory of the home and the hub reads it, so the weekly world run (weekly_world.sh, step 5b) updates it.
 
     python3 scripts/world_hero.py <public_sites.geojsonseq[.gz]> [--stats stats.json] [--out <repo root>] [--og] [--date D]
     python3 scripts/world_hero.py selftest
@@ -49,11 +52,14 @@ NAMERICA = {'US', 'CA'}
 APAC = set('AU BD BN BT CN FJ HK ID IN JP KH KR LA LK MM MN MO MV MY NC NP NZ PF PG PH PK SB SG TH TL TO TW VN VU WS '
            'KZ KG TJ TM UZ'.split())
 
-BG = (11, 15, 23)          # --night of bv.css (#0B0F17)
+LAND_P = ROOT / 'content' / 'world' / 'home' / 'ne_land.json'
+# HOME3: the palette of the dark map (content/world/config.json → dark_paint; keep the two in step)
+BG = (17, 22, 33)          # land  #111621
+SEA = (9, 12, 18)          # sea   #090C12
 LIME = (217, 244, 91)      # --volt (#D9F45B)
 OLIVE = (60, 76, 14)
 HOT = (246, 255, 210)
-LINE = (150, 160, 182)
+LINE = (150, 160, 182)     # borders #96A0B6 at 0.40
 
 
 def region_of(cc):
@@ -103,6 +109,29 @@ def lines_of(ne, keys=('b', 'c')):
             yield k, list(zip(flat[0::2], flat[1::2]))
 
 
+def land_mask(w, h, z, ox, oy, land):
+    """0..1 array: 1 on land (Natural Earth polygons, holes = lakes), anti-aliased by drawing at 2x."""
+    import numpy as np
+    from PIL import Image, ImageDraw
+    ss = 2
+    lay = Image.new('L', (w * ss, h * ss), 0)
+    dr = ImageDraw.Draw(lay)
+    for poly in land['p']:
+        for k, ring in enumerate(poly):
+            lo = np.array(ring[0::2])
+            la = np.array(ring[1::2])
+            px, py = world_px(lo, la, z)
+            px, py = (px - ox) * ss, (py - oy) * ss
+            if px.max() < 0 or px.min() > w * ss or py.max() < 0 or py.min() > h * ss:
+                continue
+            dr.polygon(list(zip(px.tolist(), py.tolist())), fill=0 if k else 255)
+    lay = lay.resize((w, h), Image.LANCZOS)
+    return np.asarray(lay, dtype=np.float64) / 255
+
+
+_LAND = None
+
+
 def render(lon, lat, view, ne, scale=1.0):
     """RGB image (Pillow) of one view; scale > 1 renders a bigger picture of the same area (og image)."""
     import numpy as np
@@ -122,10 +151,13 @@ def render(lon, lat, view, ne, scale=1.0):
     # tone map: each place is visible on its own, dense cities glow without burning out
     a = np.clip(np.log1p(core * 2.2) / math.log1p(14), 0, 1)
     g = np.clip(np.log1p(glow * 22) / math.log1p(60), 0, 1)
-    img = np.empty((h, w, 3), dtype=np.float64)
-    img[:] = BG
+    global _LAND
+    if _LAND is None:
+        _LAND = json.load(open(LAND_P, encoding='utf-8'))
+    lm = land_mask(w, h, z, ox, oy, _LAND)[..., None]
+    img = np.array(SEA, dtype=np.float64) * (1 - lm) + np.array(BG, dtype=np.float64) * lm
     glow_col = np.array(OLIVE, dtype=np.float64)
-    img += (glow_col - np.array(BG)) * (g[..., None] * 0.95)
+    img += (glow_col - img) * (g[..., None] * 0.95)
     lime = np.array(LIME, dtype=np.float64)
     img = img * (1 - a[..., None]) + lime * a[..., None]
     hot = np.clip((core - 3) / 25, 0, 1) ** 0.7
@@ -135,7 +167,7 @@ def render(lon, lat, view, ne, scale=1.0):
     ss = 2
     lay = Image.new('L', (w * ss, h * ss), 0)
     dr = ImageDraw.Draw(lay)
-    for kind, pts in lines_of(ne):
+    for kind, pts in lines_of(ne, ('b',)):   # HOME3: borders only; the coast is the edge of land and sea
         lo = np.array([p[0] for p in pts])
         la = np.array([p[1] for p in pts])
         px, py = world_px(lo, la, z)
@@ -265,9 +297,14 @@ def main(argv):
             reg[r] = reg.get(r, 0) + n
         meta['regions'] = reg
         meta['apac'] = [cc for cc, _ in sorted(((cc, n) for cc, n in bc.items() if cc in APAC), key=lambda x: -x[1])]
+        # HOME3: places per country (all places of the layer) for the country directory; the totals for the check
+        meta['countries'] = dict(sorted(bc.items(), key=lambda x: (-x[1], x[0])))
+        meta['counts'] = {k: stats['counts'][k] for k in ('sites', 'public', 'countries') if k in stats.get('counts', {})}
+        if sum(bc.values()) != meta['counts'].get('sites', sum(bc.values())):
+            raise SystemExit('world_hero: by_country does not add up to counts.sites')
     elif meta_p.exists():   # keep the order from the last run with stats
         old = json.load(open(meta_p, encoding='utf-8'))
-        for k in ('regions', 'apac'):
+        for k in ('regions', 'apac', 'countries', 'counts'):
             if k in old:
                 meta[k] = old[k]
     json.dump(meta, open(meta_p, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
@@ -292,6 +329,8 @@ def selftest():
     ok &= region_of('DE') == 'eu' and region_of('US') == 'na' and region_of('JP') == 'ap' and region_of('BR') == 'other'
     ne = json.load(open(NE, encoding='utf-8'))
     ok &= len(ne['b']) > 100 and len(ne['c']) > 100
+    land = json.load(open(LAND_P, encoding='utf-8'))
+    ok &= len(land['p']) > 500
     print('world_hero selftest:', 'OK' if ok else 'FAIL')
     return 0 if ok else 1
 

@@ -3,6 +3,102 @@
  "data_base": "https://tiles.blokvolt.rs/world/",
  "reports_api": "https://www.blokvolt.rs/api/svet/prijava",
  "checkins_api": "https://www.blokvolt.rs/api/svet/stanje",
+ "map_theme": {
+  "about": "HOME3 (11.11.2026): /map/ and the live map of the home open dark (OpenFreeMap 'dark' recoloured below to the palette of the home picture, scripts/world_hero.py BG/SEA/LINE — keep them in step); a toggle switches to the light base map (positron); the choice is kept in the browser and in the address (tema=svetla|tamna). The widget (/embed/map/) keeps its own default (light, tema=tamna on request).",
+  "default": "tamna",
+  "style": "https://tiles.openfreemap.org/styles/positron",
+  "style_dark": "https://tiles.openfreemap.org/styles/dark",
+  "dark_paint": {
+   "background": {
+    "background-color": "#111621"
+   },
+   "water": {
+    "fill-color": "#090C12"
+   },
+   "waterway": {
+    "line-color": "#090C12"
+   },
+   "landcover_ice_shelf": {
+    "fill-color": "#141A25"
+   },
+   "landcover_glacier": {
+    "fill-color": "#141A25"
+   },
+   "landuse_residential": {
+    "fill-color": "#161D2B",
+    "fill-opacity": 0.55
+   },
+   "landcover_wood": {
+    "fill-color": "#141B25"
+   },
+   "landuse_park": {
+    "fill-color": "#141B25"
+   },
+   "building": {
+    "fill-color": "#0E131C",
+    "fill-outline-color": "#1C2331"
+   },
+   "aeroway-area": {
+    "fill-color": "#0E131C"
+   },
+   "road_area_pier": {
+    "fill-color": "#111621"
+   },
+   "road_pier": {
+    "line-color": "#111621"
+   },
+   "highway_path": {
+    "line-color": "#222A38"
+   },
+   "highway_minor": {
+    "line-color": "#1F2633"
+   },
+   "highway_major_casing": {
+    "line-color": "rgba(88,98,120,0.75)"
+   },
+   "highway_major_inner": {
+    "line-color": "#171E2B"
+   },
+   "highway_major_subtle": {
+    "line-color": "#283041"
+   },
+   "highway_motorway_casing": {
+    "line-color": "rgba(98,108,130,0.8)"
+   },
+   "highway_motorway_subtle": {
+    "line-color": "#283041"
+   },
+   "railway_transit": {
+    "line-color": "#262D3B"
+   },
+   "railway_transit_dashline": {
+    "line-color": "#111621"
+   },
+   "railway_minor": {
+    "line-color": "#262D3B"
+   },
+   "railway_minor_dashline": {
+    "line-color": "#111621"
+   },
+   "railway": {
+    "line-color": "#262D3B"
+   },
+   "railway_dashline": {
+    "line-color": "#111621"
+   },
+   "boundary_state": {
+    "line-color": "#3A4252"
+   },
+   "boundary_country_z0-4": {
+    "line-color": "#96A0B6",
+    "line-opacity": 0.42
+   },
+   "boundary_country_z5-": {
+    "line-color": "#96A0B6",
+    "line-opacity": 0.42
+   }
+  }
+ },
  "langs_enabled": [
   "en",
   "sr",

@@ -2,8 +2,11 @@
    click or key press on the picture, so MapLibre (≈ 1 MB) never loads with the page. It looks like the picture it replaces
    (scripts/world_hero.py): the same dark ground, the same Natural Earth lines (/assets/world/hero/borders.json) and lime
    points — now from the PMTiles of the world map (layer `sites`, contract v1 §3), opened at the picture's own view.
-   No base map from a third party here: streets, filters and the cards are on the full map (/map/); a tap on a point opens
-   it there (?id=), and from zoom 7 a button offers the full map at the same view. Attribution stays on screen (L1 §2). */
+   HOME3 (11.11.2026): the ground is the dark base map of /map/ (OpenFreeMap "dark" recoloured with cfg.dark_paint — the
+   colours of the picture), so picture → live map → /map/ look the same; its labels fade in only from zoom 5 (the picture has
+   none). If that style cannot load, the Natural Earth lines of HOME2 are the ground. Filters and the cards are on the full
+   map (/map/); a tap on a point opens it there (?id=), and from zoom 7 a button offers the full map at the same view.
+   Attribution stays on screen (L1 §2). */
 let pmLoaded = null;
 function loadPm(src) {
   if (window.pmtiles) return Promise.resolve();
@@ -40,23 +43,46 @@ export async function start(o) {
   const M = await getJson(at(latest.manifest));
   const proto = new window.pmtiles.Protocol();
   ml.addProtocol('pmtiles', proto.tile);
-  const style = {
+  const points = [
+    { id: 'glow', type: 'circle', source: 'wm', 'source-layer': 'sites',
+      paint: { 'circle-color': '#4A5C12', 'circle-blur': 1, 'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.5, 7, 0.32],
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 4, 5, 7, 8, 10, 12, 16] } },
+    { id: 'pt', type: 'circle', source: 'wm', 'source-layer': 'sites',
+      paint: { 'circle-color': ['match', ['get', 'p'], 5, '#F4FFD2', '#D9F45B'],
+        'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.75, 6, 0.95],
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 0.7, 5, 1.2, 8, 2.6, 12, 5.5] } }
+  ];
+  const wm = { type: 'vector', url: 'pmtiles://' + at(M.tiles), attribution: '' };
+  let style = null;
+  if (cfg.style_dark) {
+    try {
+      const j = await getJson(cfg.style_dark);
+      const P = cfg.dark_paint || {};
+      j.layers.forEach(l => {
+        if (P[l.id]) l.paint = Object.assign({}, l.paint || {}, P[l.id]);
+        if (l.type === 'symbol') {   // no labels on the picture: they come in from zoom 5, light on the dark ground
+          l.paint = Object.assign({}, l.paint || {}, { 'text-opacity': ['interpolate', ['linear'], ['zoom'], 4.6, 0, 5.4, 1],
+            'icon-opacity': ['interpolate', ['linear'], ['zoom'], 4.6, 0, 5.4, 1] });
+          if (l['source-layer'] === 'place') Object.assign(l.paint, { 'text-color': '#F4F3EE', 'text-halo-color': 'rgba(11,15,23,0.95)', 'text-halo-width': 2 });
+        }
+      });
+      const k = j.layers.findIndex(l => l.type === 'symbol');
+      j.sources.wm = wm;
+      j.layers.splice(k < 0 ? j.layers.length : k, 0, ...points);
+      style = j;
+    } catch (e) { style = null; }
+  }
+  if (!style) style = {
     version: 8,
     sources: {
       ne: { type: 'geojson', data: cfg.borders, attribution: '' },
-      wm: { type: 'vector', url: 'pmtiles://' + at(M.tiles), attribution: '' }
+      wm
     },
     layers: [
-      { id: 'bg', type: 'background', paint: { 'background-color': '#0B0F17' } },
+      { id: 'bg', type: 'background', paint: { 'background-color': '#111621' } },
       { id: 'coast', type: 'line', source: 'ne', filter: ['==', ['get', 'k'], 'c'], paint: { 'line-color': '#96A0B6', 'line-opacity': 0.32, 'line-width': 0.8 } },
       { id: 'border', type: 'line', source: 'ne', filter: ['==', ['get', 'k'], 'b'], paint: { 'line-color': '#96A0B6', 'line-opacity': 0.42, 'line-width': 0.8 } },
-      { id: 'glow', type: 'circle', source: 'wm', 'source-layer': 'sites',
-        paint: { 'circle-color': '#5A7016', 'circle-blur': 1, 'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.55, 7, 0.35],
-          'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 4, 5, 7, 8, 10, 12, 16] } },
-      { id: 'pt', type: 'circle', source: 'wm', 'source-layer': 'sites',
-        paint: { 'circle-color': ['match', ['get', 'p'], 5, '#F4FFD2', '#D9F45B'],
-          'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.75, 6, 0.95],
-          'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 0.7, 5, 1.2, 8, 2.6, 12, 5.5] } }
+      ...points
     ]
   };
   const map = new ml.Map({

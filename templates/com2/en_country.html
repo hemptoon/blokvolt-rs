@@ -10,7 +10,7 @@
 }</script>{% endblock %}
 {% block pagehead %}{{ m.ph(('Guide' if c.code == 'XK' else 'Country guide') ~ ' · ' ~ c.group ~ ' · checked ' ~ r.checked, 'EV charging in ' ~ c.name, r.summary,
   chips=[('#public-charging', 'Public charging'), ('#electricity', 'Electricity at home'), ('#subsidies', 'Subsidies'), ('#buildings', 'Apartment buildings'), ('#home-charging', 'Home chargers'), ('#sources', 'Sources')],
-  meta='Checked ' ~ r.checked ~ ' · ' ~ n_sources ~ ' sources') }}{% endblock %}
+  meta='Checked ' ~ r.checked ~ ' · ' ~ n_sources ~ ' sources', crumbs=[('Western Balkans', WB_PATH)] if WORLD_HOME else None, last=c.name) }}{% endblock %}
 {% block content %}
 {% if local %}<div class="loc-banner"><span class="lg mono" translate="no">{{ local.code }}</span><div><b lang="{{ local.html }}">{{ LOCALS|selectattr('loc.key', 'equalto', local.key)|map(attribute='title')|first }}</b><p>The full local guide, in {{ local.lang_en }}: a map of public chargers from the open databases, network prices where they are published, a home-charging calculator, subsidies and tax benefits, and travel tips.</p></div><a class="btn dark" href="/{{ local.dir }}/" hreflang="{{ local.hreflang }}" lang="{{ local.html }}">{{ local.open_local }}</a></div>{% endif %}
 <div class="facts glance">{% for label, fact in glance %}<div class="fact"><span>{{ label }}</span><b>{{ fact }}</b></div>{% endfor %}</div>

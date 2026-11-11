@@ -1,3 +1,4 @@
+{% if WFOOT is defined and WFOOT %}{% include '_wfooter.html' %}{% else %}
 {% from '_icons.html' import ic, mark %}
 <footer class="ft"><div class="wrap">
 <div class="ft-in">
@@ -21,6 +22,7 @@
 {% endfor %}</ul></div>
 <div><h2>BlokVolt</h2><ul>
 {% if PAGES.method %}<li><a href="{{ PAGES.method.path }}">{{ PAGES.method.nav_ft or PAGES.method.h1 }}</a></li>
+{% endif %}{% if WORLD_HOME and WORLD_LOCAL_HOME and LOC.key in WORLD_LOCAL_HOME %}{% set wh = WORLD_LOCAL_HOME[LOC.key] %}<li><a href="{{ wh[0] }}" hreflang="{{ wh[2] }}" lang="{{ wh[2] }}">{{ wh[1] }}</a></li>
 {% endif %}<li><a href="{{ WB_PATH if WORLD_HOME else '/' }}" hreflang="en" lang="en">English — {{ S.ft_region }}</a></li>
 <li><a href="{{ RS }}/" hreflang="sr" lang="sr">Srbija — blokvolt.rs</a></li>
 {% for l in LOCALS_ALL if l.key != LOC.key %}<li><a href="/{{ l.dir }}/" hreflang="{{ l.hreflang }}" lang="{{ l.html }}">{{ l.country }}</a></li>
@@ -31,3 +33,4 @@
 {% if WORLD_FT %}<nav class="ft-world" aria-label="{{ WORLD_FT.h }}"><h2>{{ WORLD_FT.h }}</h2><ul>{% for href, name in WORLD_FT.links %}<li><a href="{{ href }}">{{ name }}</a></li>{% endfor %}</ul></nav>
 {% endif %}<div class="ft-legal"><span>© 2026 BlokVolt · {{ S.ft_checked }} {{ C.checked if C is defined else CHECKED }}</span><span>{{ S.ft_data|safe }}</span></div>
 </div></footer>
+{% endif %}

@@ -10,8 +10,9 @@
 {% set k = s|lower %}<span class="badge st-{{ {'open': 'open', 'closed': 'closed', 'none': 'none', 'unconfirmed': 'announced'}.get(k, k) }}">{{ {'open': 'Open', 'closed': 'Closed', 'none': 'No scheme', 'unconfirmed': 'Unconfirmed', 'announced': 'Announced', 'paused': 'Paused', 'exhausted': 'Funds used up'}.get(k, s) }}</span>
 {%- endmacro %}
 
-{% macro ph(kick, h1, lead, chips=None, meta=None) -%}
+{% macro ph(kick, h1, lead, chips=None, meta=None, crumbs=None, last=None) -%}
 <div class="ph"><div class="wrap">
+{% if crumbs %}<nav class="crumbs" aria-label="Breadcrumbs">{% for n, u in crumbs %}<a href="{{ u }}">{{ n }}</a><span aria-hidden="true">›</span>{% endfor %}<span>{{ last }}</span></nav>{% endif %}
 {% if kick %}<p class="kick">{{ kick }}</p>{% endif %}
 <h1>{{ h1 }}</h1>
 {% if lead %}<p class="lead">{{ lead|lk }}</p>{% endif %}

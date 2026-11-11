@@ -34,14 +34,20 @@ const IS_ANDROID = /Android/i.test(UA), IS_IOS = /iPhone|iPad|iPod/i.test(UA);
 // widget for other sites (/embed/map/, G5, RUNBOOK 3.42): cfg.embed = {open, utm}. Two-finger gestures so the host page
 // still scrolls, no reports, the card's button opens the place on blokvolt.com; &tema=tamna picks the dark base map.
 const EMB = cfg.embed || null;
-const TEMA = EMB && /^(tamna|dark)$/.test(new URLSearchParams(location.search).get('tema') || '') ? 'tamna' : '';
+// HOME3 (11.11.2026): /map/ opens dark (cfg.theme, the inline script of the page has already set html.wm-dark from
+// ?tema=, the browser's memory or the default); the widget keeps its own rule (light unless &tema=tamna)
+let TEMA = EMB ? (/^(tamna|dark)$/.test(new URLSearchParams(location.search).get('tema') || '') ? 'tamna' : '')
+  : (d.documentElement.classList.contains('wm-dark') ? 'tamna' : '');
 if (TEMA) d.documentElement.classList.add('wm-dark');
+const DARK = () => !!(TEMA && cfg.style_dark);
 
 // ------------------------------------------------------------------ state <-> URL
 const SNAGA = ['ac', 'dc', 'hpc', 'nepoznato'];
 const IZVOR = { drz: 1, zaj: 2, mre: 4, bv: 8 };
 const PCODES = { ac: [1, 2], dc: [3, 4], hpc: [5], nepoznato: [0, 6, 7] };
-const st = { snaga: new Set(SNAGA), mreza: new Set(), p: 40, pristup: 'javni', izvor: new Set(Object.keys(IZVOR)), zemlja: '', grad: '', id: '' };
+// HOME3: the full map shows every place of the layer by default ("Public only" is one tap, ?pristup=javni); the widget keeps "javni"
+const DEF_PR = EMB ? 'javni' : 'svi';
+const st = { snaga: new Set(SNAGA), mreza: new Set(), p: 40, pristup: DEF_PR, izvor: new Set(Object.keys(IZVOR)), zemlja: '', grad: '', id: '' };
 function readUrl() {
   const q = new URLSearchParams(location.search);
   const list = (k, ok) => (q.get(k) || '').split(',').map(x => x.trim().toLowerCase()).filter(x => x && (!ok || ok.includes(x)));
@@ -50,7 +56,7 @@ function readUrl() {
   st.mreza = new Set(list('mreza').map(slug).filter(Boolean));
   const p = +q.get('p');
   st.p = [40, 50, 70].includes(p) ? p : 40;
-  st.pristup = q.get('pristup') === 'svi' ? 'svi' : 'javni';
+  st.pristup = q.get('pristup') === 'svi' ? 'svi' : q.get('pristup') === 'javni' ? 'javni' : DEF_PR;
   const iz = list('izvor', Object.keys(IZVOR));
   if (iz.length) st.izvor = new Set(iz);
   st.zemlja = (q.get('zemlja') || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2);
@@ -62,12 +68,13 @@ function writeUrl() {
   if (st.snaga.size !== SNAGA.length) q.set('snaga', SNAGA.filter(x => st.snaga.has(x)).join(','));
   if (st.mreza.size) q.set('mreza', [...st.mreza].join(','));
   if (st.p !== 40) q.set('p', String(st.p));
-  if (st.pristup !== 'javni') q.set('pristup', 'svi');
+  if (st.pristup !== DEF_PR) q.set('pristup', st.pristup);
   if (st.izvor.size !== 4) q.set('izvor', Object.keys(IZVOR).filter(x => st.izvor.has(x)).join(','));
   if (st.zemlja) q.set('zemlja', st.zemlja);
   if (st.grad) q.set('grad', st.grad);
   if (st.id) q.set('id', st.id);
-  if (TEMA) q.set('tema', TEMA);
+  if (EMB) { if (TEMA) q.set('tema', TEMA); }
+  else if ((TEMA || 'svetla') !== (cfg.theme || 'svetla')) q.set('tema', TEMA || 'svetla');
   const s = q.toString().replace(/%2C/g, ',');
   history.replaceState(history.state, '', location.pathname + (s ? '?' + s : '') + location.hash);
 }
@@ -159,8 +166,9 @@ function pFilter() {
     f.push(['in', ['get', 'o'], ['literal', os.length ? os : [-1]]]);
   }
   if (st.p > 40) f.push(['>=', ['get', 'c'], st.p]);
-  // "Samo javni": public and unknown access (P1 §2.2: unknown is shown with the public ones, its card says so)
-  if (st.pristup === 'javni') f.push(['!=', ['get', 'a'], 1]);
+  // "Public only": a = 0 (public*), the number of manifest.counts.public (HOME3); the widget keeps its old rule
+  // (public and unknown access, P1 §2.2)
+  if (st.pristup === 'javni') f.push(EMB ? ['!=', ['get', 'a'], 1] : ['==', ['get', 'a'], 0]);
   if (st.izvor.size < 4) {
     let m = 0;
     st.izvor.forEach(k => { m |= IZVOR[k]; });
@@ -184,6 +192,40 @@ const P_STROKE = ['match', ['get', 'p'], [3, 4, 5], '#D9F45B', [0, 6, 7], '#8A90
 const zrl = (big, x, y) => ['interpolate', ['linear'], ['zoom'], ...[2, 5, 8, 10, 12, 16].flatMap((z, k) => [z, ['case', big, x[k], y[k]]])];
 const P_LOW = ['match', ['get', 'p'], [3, 4, 5], '#0D111A', 7, '#5C6270', 0, '#8A909B', '#2B3240'];
 const restricted = ['==', ['get', 'a'], 1];
+// HOME3 dark map: zoomed out every place is a lime light (the picture of the home); from zoom 8 the types — AC light grey,
+// DC lime, 150 kW+ a larger lime point with a light ring, unknown power grey
+const D_COLOR = ['match', ['get', 'p'], [3, 4], '#D9F45B', 5, '#E9FF8A', 7, '#7E8696', 0, '#8A909B', '#E4E8EF'];
+const D_STROKE = ['match', ['get', 'p'], [3, 4], '#0B0F17', 5, '#F6FFD2', '#0B0F17'];
+const D_LOW = ['match', ['get', 'p'], 5, '#F4FFD2', '#D9F45B'];
+// places that are not public draw as a ring (no fill) from zoom 8: access not confirmed in the colour of the type,
+// customers only / private in orange; zoomed out they are smaller, fainter dots
+const notPub = ['!=', ['get', 'a'], 0];
+const RING_UNK_L = ['match', ['get', 'p'], [3, 4, 5], '#4E6410', [0, 6, 7], '#5C6270', '#0D111A'];
+const RING_UNK_D = ['match', ['get', 'p'], [3, 4, 5], '#D9F45B', [0, 6, 7], '#9AA1AD', '#E4E8EF'];
+const RING_RES_L = '#C2410C', RING_RES_D = '#FF9B71';
+function pointPaint() {
+  const dk = DARK(), big = ['==', ['get', 'p'], 5];
+  if (EMB) return {   // the widget draws as before HOME3 (G5): restricted places faded, no rings
+    'circle-radius': zrl(big, [1.8, 3, 4.5, 7, 9, 12.5], [1.5, 2.5, 3.5, 5.7, 7.5, 11]),
+    'circle-color': ['interpolate', ['linear'], ['zoom'], 5, P_LOW, 8, P_COLOR],
+    'circle-stroke-color': P_STROKE,
+    'circle-stroke-width': zrl(big, [0, 0.6, 1.2, 2.4, 3, 3.2], [0, 0.4, 0.8, 1.6, 2, 2.4]),
+    'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, ['case', restricted, 0.35, 0.7], 5, ['case', restricted, 0.4, 0.85], 7, ['case', restricted, 0.45, 1]],
+    'circle-stroke-opacity': ['case', restricted, 0.55, 1]
+  };
+  const ring = ['case', restricted, dk ? RING_RES_D : RING_RES_L, dk ? RING_UNK_D : RING_UNK_L];
+  return {
+    'circle-radius': zrl(big, [1.8, 3, 4.5, 7, 9, 12.5], [1.5, 2.5, 3.5, 5.7, 7.5, 11]),
+    'circle-color': dk ? ['interpolate', ['linear'], ['zoom'], 6, D_LOW, 8.5, D_COLOR] : ['interpolate', ['linear'], ['zoom'], 5, P_LOW, 8, P_COLOR],
+    'circle-stroke-color': ['case', notPub, ring, dk ? D_STROKE : P_STROKE],
+    'circle-stroke-width': ['interpolate', ['linear'], ['zoom'], ...[2, 5, 8, 10, 12, 16].flatMap((z, k) => [z, ['case', notPub,
+      [0, 0, 1.6, 2.2, 2.6, 3][k], ['case', big, [0, 0.6, 1.2, 2.4, 3, 3.2][k], [0, 0.4, 0.8, 1.6, 2, 2.4][k]]]])],
+    // a "grid" of thinned tiles zoomed out is softened by lower opacity there (HOME2 note, HOME3 7)
+    'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, ['case', notPub, 0.3, dk ? 0.75 : 0.7], 5, ['case', notPub, 0.4, 0.85],
+      7, ['case', notPub, 0.35, 1], 8.5, ['case', notPub, 0, 1]],
+    'circle-stroke-opacity': ['interpolate', ['linear'], ['zoom'], 7, ['case', notPub, 0.6, 1], 8.5, 1]
+  };
+}
 // FIX1: the base-map labels (cities, countries) sit above the points and get a strong halo, so they stay readable
 // over dense areas without hiding any point; names follow the page language (cfg.lang), then Latin, then local.
 function labelName(l) {
@@ -192,8 +234,34 @@ function labelName(l) {
   if (l === 'nb') return ['coalesce', ['get', 'name:nb'], ['get', 'name:no'], ['get', 'name:latin'], ['get', 'name']];
   return ['coalesce', ['get', 'name:' + l], ['get', 'name:latin'], ['get', 'name']];
 }
+// HOME3: the dark base map in the colours of the home picture (content/world/config.json → map_theme.dark_paint). The style
+// JSON of OpenFreeMap is fetched once and recoloured before MapLibre draws it, so the dark map never flashes black.
+let darkJson = null;
+async function darkStyle() {
+  if (!darkJson) {
+    const j = await getJson(cfg.style_dark);
+    const P = (!EMB && cfg.dark_paint) || {};
+    (j.layers || []).forEach(l => { if (P[l.id]) l.paint = Object.assign({}, l.paint || {}, P[l.id]); });
+    darkJson = j;
+  }
+  return darkJson;
+}
+const DARK_BG = { version: 8, sources: {}, layers: [{ id: 'background', type: 'background', paint: { 'background-color': '#111621' } }] };
+let realStyle = false;   // true once a base map (not the plain dark ground) has been handed to MapLibre
+function useStyle() {
+  if (!DARK()) { realStyle = true; map.setStyle(cfg.style); return; }
+  darkStyle().then(j => { realStyle = true; map.setStyle(j); })
+    .catch(() => { TEMA = ''; d.documentElement.classList.remove('wm-dark'); paintTheme(); writeUrl(); realStyle = true; map.setStyle(cfg.style); });
+}
+function paintDark() {
+  if (EMB || !DARK() || !cfg.dark_paint) return;
+  for (const id in cfg.dark_paint) {
+    if (!map.getLayer(id)) continue;
+    for (const k in cfg.dark_paint[id]) { try { map.setPaintProperty(id, k, cfg.dark_paint[id][k]); } catch (e) { /* not in this style */ } }
+  }
+}
 function styleLabels() {
-  const dark = !!(TEMA && cfg.style_dark), name = labelName(LANG);
+  const dark = DARK(), name = labelName(LANG);
   (map.getStyle().layers || []).forEach(l => {
     if (l.type !== 'symbol' || l['source-layer'] !== 'place') return;
     const ctry = /^label_country/.test(l.id), soft = l.id === 'label_state' || l.id === 'label_other';
@@ -210,33 +278,32 @@ function addLayers() {
   if (!M || !mapLoaded || map.getSource(SRC)) return;
   // points go under the first label layer of the base map; the selection ring stays on top of everything
   const before = ((map.getStyle().layers || []).find(l => l.type === 'symbol') || {}).id;
+  paintDark();
   styleLabels();
   map.addSource(SRC, { type: 'vector', url: 'pmtiles://' + at(M.tiles), attribution: '' });
-  const big = ['==', ['get', 'p'], 5];
+  if (DARK() && !EMB) {   // the glow of the home picture, zoomed out only
+    map.addLayer({ id: 'wm-glow', type: 'circle', source: SRC, 'source-layer': 'sites', maxzoom: 9, filter: pFilter(),
+      paint: { 'circle-color': '#4A5C12', 'circle-blur': 1, 'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 3, 5, 5, 8, 8],
+        'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.45, 7, 0.3, 9, 0] } }, before);
+  }
   map.addLayer({
     id: LYR, type: 'circle', source: SRC, 'source-layer': 'sites', filter: pFilter(),
-    layout: { 'circle-sort-key': ['match', ['get', 'p'], 5, 4, [3, 4], 3, [1, 2], 2, 7, 1, 0] },
-    paint: {
-      'circle-radius': zrl(big, [1.8, 3, 4.5, 7, 9, 12.5], [1.5, 2.5, 3.5, 5.7, 7.5, 11]),
-      'circle-color': ['interpolate', ['linear'], ['zoom'], 5, P_LOW, 8, P_COLOR],
-      'circle-stroke-color': P_STROKE,
-      'circle-stroke-width': zrl(big, [0, 0.6, 1.2, 2.4, 3, 3.2], [0, 0.4, 0.8, 1.6, 2, 2.4]),
-      // restricted places (only with "Prikaži i ostale") are drawn faded; everything is a little lighter below zoom 7
-      'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, ['case', restricted, 0.35, 0.7], 5, ['case', restricted, 0.4, 0.85], 7, ['case', restricted, 0.45, 1]],
-      'circle-stroke-opacity': ['case', restricted, 0.55, 1]
-    }
+    // public places are drawn above the rings of the others; inside each group 150 kW+ on top
+    layout: { 'circle-sort-key': EMB ? ['match', ['get', 'p'], 5, 4, [3, 4], 3, [1, 2], 2, 7, 1, 0] : ['+', ['case', notPub, 0, 10], ['match', ['get', 'p'], 5, 4, [3, 4], 3, [1, 2], 2, 7, 1, 0]] },
+    paint: pointPaint()
   }, before);
   // max kW inside the point from zoom 12, as on /mapa/ (tile attribute k; a point without k simply has no number)
   map.addLayer({
     id: 'wm-kw', type: 'symbol', source: SRC, 'source-layer': 'sites', minzoom: 12, filter: kwFilter(),
     layout: { 'text-field': ['to-string', ['get', 'k']], 'text-font': cfg.font, 'text-size': 10, 'text-allow-overlap': true, 'text-ignore-placement': true,
       'symbol-sort-key': ['match', ['get', 'p'], 5, 4, [3, 4], 3, [1, 2], 2, 7, 1, 0] },
-    paint: { 'text-color': ['match', ['get', 'p'], [3, 4, 5], '#D9F45B', 7, '#FFFFFF', [0, 6], '#5C6270', '#0D111A'],
-      'text-opacity': ['case', ['==', ['get', 'a'], 1], 0.6, 1] }
+    paint: EMB ? { 'text-color': ['match', ['get', 'p'], [3, 4, 5], '#D9F45B', 7, '#FFFFFF', [0, 6], '#5C6270', '#0D111A'],
+      'text-opacity': ['case', ['==', ['get', 'a'], 1], 0.6, 1] } : { 'text-color': DARK() ? ['case', notPub, ['case', restricted, RING_RES_D, '#E4E8EF'], ['match', ['get', 'p'], [3, 4, 5], '#0B0F17', 7, '#FFFFFF', [0, 6], '#0B0F17', '#0B0F17']]
+        : ['case', notPub, ['case', restricted, RING_RES_L, '#0D111A'], ['match', ['get', 'p'], [3, 4, 5], '#D9F45B', 7, '#FFFFFF', [0, 6], '#5C6270', '#0D111A']] }
   }, before);
   map.addSource('wm-sel', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addLayer({ id: 'wm-sel', type: 'circle', source: 'wm-sel',
-    paint: { 'circle-radius': zr(8, 10, 15, 18), 'circle-color': 'rgba(217,244,91,.35)', 'circle-stroke-width': 3, 'circle-stroke-color': '#0D111A' } });
+    paint: { 'circle-radius': zr(8, 10, 15, 18), 'circle-color': 'rgba(217,244,91,.35)', 'circle-stroke-width': 3, 'circle-stroke-color': DARK() && !EMB ? '#F6FFD2' : '#0D111A' } });
   ready = true;
   map.once('idle', () => { topNets(); if (st.id) openFromUrl(); });
 }
@@ -245,7 +312,7 @@ function kwFilter() {
   return f === true ? ['has', 'k'] : ['all', ['has', 'k'], f];
 }
 function applyFilter() {
-  if (ready) { map.setFilter(LYR, pFilter()); map.setFilter('wm-kw', kwFilter()); }
+  if (ready) { map.setFilter(LYR, pFilter()); map.setFilter('wm-kw', kwFilter()); if (map.getLayer('wm-glow')) map.setFilter('wm-glow', pFilter()); }
   writeUrl();
   paintFilters();
 }
@@ -259,7 +326,7 @@ function initMap() {
   maplibregl.addProtocol('pmtiles', proto.tile);
   try {
     map = new maplibregl.Map({
-      container: 'map', style: TEMA && cfg.style_dark ? cfg.style_dark : cfg.style, center: cfg.center, zoom: cfg.zoom, minZoom: 1.5, maxZoom: 18, hash: true,
+      container: 'map', style: DARK() ? DARK_BG : cfg.style, center: cfg.center, zoom: cfg.zoom, minZoom: 1.5, maxZoom: 18, hash: true,
       attributionControl: false, dragRotate: false, pitchWithRotate: false, cooperativeGestures: !!EMB
     });
   } catch (e) {
@@ -268,7 +335,15 @@ function initMap() {
   }
   map.touchZoomRotate.disableRotation();
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
-  map.on('load', () => { mapLoaded = true; addLayers(); });
+  if (DARK()) useStyle(); else realStyle = true;
+  // the first real base map counts as loaded (HOME3: the dark style arrives a moment after the plain dark ground)
+  // (every new base map — the theme toggle too — gets the points again; addLayers() does nothing when they are there)
+  map.on('style.load', () => {
+    if (!realStyle || !map.getStyle().layers.some(l => l.type !== 'background')) return;
+    mapLoaded = true;
+    if (!map.getSource(SRC)) { ready = false; addLayers(); if (cur && cur.ll) selPoint(cur.ll); }
+  });
+  map.on('load', () => { if (realStyle) { mapLoaded = true; addLayers(); } });
   map.on('click', e => tap(e.point));
   map.on('mousemove', e => {
     if (!ready) return;
@@ -323,7 +398,7 @@ function paintFilters() {
   const sel = $('wm-sel'), names = [...st.mreza].map(s => [s, s === 'nepoznata' ? t('net_unknown') : netName(s)]);
   sel.innerHTML = names.map(([s, n]) => `<button class="chip is-on wm-x" type="button" data-unnet="${esc(s)}" aria-label="${esc(t('net_remove', { x: n }))}">${esc(n)} <span aria-hidden="true">×</span></button>`).join('');
   $('wm-selh').hidden = !names.length;
-  const n = (st.snaga.size !== 4) + st.mreza.size + (st.p !== 40) + (st.pristup !== 'javni') + (st.izvor.size !== 4);
+  const n = (st.snaga.size !== 4) + st.mreza.size + (st.p !== 40) + (st.pristup !== DEF_PR) + (st.izvor.size !== 4);
   const fn = $('wm-fn');
   fn.textContent = n ? String(n) : '';
   fn.hidden = !n;
@@ -352,7 +427,7 @@ fForm.addEventListener('click', e => {
     q.focus();
     return;
   } else if (b.id === 'wm-reset') {
-    st.snaga = new Set(SNAGA); st.mreza.clear(); st.p = 40; st.pristup = 'javni'; st.izvor = new Set(Object.keys(IZVOR));
+    st.snaga = new Set(SNAGA); st.mreza.clear(); st.p = 40; st.pristup = DEF_PR; st.izvor = new Set(Object.keys(IZVOR));
   } else return;
   applyFilter();
 });
@@ -505,7 +580,10 @@ function renderCard(c) {
   const row = (k, v) => (v ? `<div><dt>${esc(k)}</dt><dd>${v}</dd></div>` : '');
   const accKey = 'acc_' + (c.acc || 'unknown');
   const acc = T[accKey] ? t(accKey) : esc(c.acc);
-  let h = `<h2 id="wm-ct" translate="no">${esc(title)}</h2>${sub ? `<p class="wm-sub2">${esc(sub)}</p>` : ''}<dl class="wm-dl">`;
+  // HOME3: a place that is not public says so at the top of its card, in the colour of its ring on the map
+  const accCls = /^public/.test(c.acc || '') ? '' : /^(restricted|private)/.test(c.acc || '') ? 'res' : 'unk';
+  let h = `<h2 id="wm-ct" translate="no">${esc(title)}</h2>${sub ? `<p class="wm-sub2">${esc(sub)}</p>` : ''}` +
+    (accCls && !c.more ? `<p class="wm-accb wm-accb-${accCls}"><i class="wm-sw sw-acc-${accCls}" aria-hidden="true"></i>${esc(acc)}</p>` : '') + '<dl class="wm-dl">';
   h += row(t('c_power'), esc(pw));
   if (c.more) {
     // Serbia and the region: the regional BlokVolt map has the full card (prices, checks, reports)
@@ -795,6 +873,38 @@ async function ciSendPrice(e) {
 
 // ------------------------------------------------------------------ attribution, sources, data date
 function attribution() {
+  if (EMB) { attributionEmb(); return; }
+  // HOME3: one short line in the corner, "© OpenStreetMap contributors · Sources", visible without any action (L1 §2,
+  // OSMF guidelines); 5 s after the start it folds into "ⓘ" (never earlier); "ⓘ" opens a panel with the map data, the
+  // base map, the data date and the number of sources. The widget keeps its own line (G5).
+  const S = M.sources || {};
+  const lic = k => (S[k] && S[k].licence ? ` (${esc(S[k].licence)})` : '');
+  const n = nSources();
+  const at = $('wm-attr');
+  const short = `© <a href="https://www.openstreetmap.org/copyright" rel="noopener">${esc(t('attr_osm'))}</a>` +
+    (EMB ? '' : ` · <a href="${esc(cfg.sources || cfg.about)}">${esc(t('attr_sources'))}</a>`);
+  const parts = [`${esc(t('attr_data'))}: © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>${lic('osm') || ' (ODbL)'}` +
+    (S.ocm ? ` · <a href="https://openchargemap.org" rel="noopener">Open Charge Map</a>${lic('ocm')}` : '') +
+    (S.geonames ? ` · <a href="https://www.geonames.org/" rel="noopener">GeoNames</a>${lic('geonames')}` : ''),
+    `${esc(t('attr_map'))}: <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/" rel="noopener">OpenMapTiles</a>`,
+    `${esc(t('data_date', { d: fmtDate(M.date) }))} · ${esc(t('sources_n', { n: nf(n) }))} · <button class="lnkbtn" type="button" data-sources>${esc(t('sources_btn'))}</button>`];
+  at.innerHTML = `<span class="wm-attr-full">${short}</span><span class="wm-attr-more" id="wm-attr-more">${parts.join('<br>')}</span>` +
+    `<button class="wm-attr-i" type="button" aria-expanded="false" aria-controls="wm-attr-more" aria-label="${esc(t('attr_show'))}">i</button>`;
+  let opened = false;
+  const fold = () => { if (!opened) at.classList.add('is-min'); };
+  setTimeout(() => {
+    if (EMB && !(window.matchMedia && matchMedia('(max-width: 480px)').matches)) return;
+    fold();
+  }, 5000);
+  const c = M.counts || {};
+  $('wm-data').innerHTML = (c.sites ? `<p class="wm-count"><b>${esc(t('count_line', { n: nf(c.sites), m: nf(c.public || 0) }))}</b></p>` : '') +
+    `<p><button class="lnkbtn" type="button" data-sources>${esc(t('sources_btn'))}</button> · <a href="${esc(cfg.about)}">${esc(t('about'))}</a>` +
+    (cfg.download ? ` · <a href="${esc(cfg.download)}">${esc(t('download'))}</a>` : '') + `</p><p class="wm-small">${esc(t('odbl_note'))}</p>`;
+}
+// one number of sources everywhere (HOME3 12): the publishers of the layer — Open Charge Map counts once, the data
+// providers inside it (manifest keys "ocm:<id>") are listed in the dialog but not counted again (as on /sources/)
+function nSources() { return Object.keys((M && M.sources) || {}).filter(k => !k.startsWith('ocm:')).length; }
+function attributionEmb() {   // the widget keeps its G5 line (unchanged by HOME3)
   const S = M.sources || {};
   const lic = k => (S[k] && S[k].licence ? ` (${esc(S[k].licence)})` : '');
   const parts = [`${esc(t('attr_map'))}: <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/" rel="noopener">OpenMapTiles</a>`,
@@ -824,15 +934,17 @@ function sourcesDialog() {
     const lic = s.licence ? (s.licence_url ? `<a href="${esc(s.licence_url)}" rel="noopener license">${esc(s.licence)}</a>` : esc(s.licence)) : '';
     return `<li><b>${name}</b>${lic ? ' — ' + lic : ''}${s.attribution && s.attribution !== s.name ? `<br><small>${esc(s.attribution)}</small>` : ''}</li>`;
   }).join('');
-  $('wm-src-body').innerHTML = `<p>${esc(t('data_date', { d: fmtDate(M.date) }))}</p><ul class="wm-srcl">${rows}</ul><p class="wm-small">${esc(t('odbl_note'))} <a href="${esc(cfg.about)}">${esc(t('about'))}</a></p>`;
+  $('wm-src-body').innerHTML = `<p>${esc(t('data_date', { d: fmtDate(M.date) }))} · ${esc(t('sources_n', { n: nf(nSources()) }))}</p><ul class="wm-srcl">${rows}</ul><p class="wm-small">${esc(t('odbl_note'))} <a href="${esc(cfg.about)}">${esc(t('about'))}</a></p>`;
   const dl = $('wm-src');
   if (dl.showModal) dl.showModal(); else dl.setAttribute('open', '');
 }
 d.addEventListener('click', e => {
   const i = e.target.closest('.wm-attr-i');
   if (i) {
-    const at = $('wm-attr'), min = at.classList.toggle('is-min');
-    i.setAttribute('aria-expanded', String(!min));
+    const at = $('wm-attr'), open = !at.classList.contains('is-open');
+    at.classList.toggle('is-open', open);
+    at.classList.toggle('is-min', !open);
+    i.setAttribute('aria-expanded', String(open));
     return;
   }
   const b = e.target.closest('[data-sources]');
@@ -875,8 +987,29 @@ function embedInit() {
   }
 }
 
+// ------------------------------------------------------------------ light / dark map (HOME3)
+function paintTheme() {
+  const b = $('wm-theme');
+  if (!b) return;
+  if (EMB || !cfg.style_dark) { b.hidden = true; return; }
+  b.setAttribute('aria-pressed', String(!!TEMA));
+  b.querySelector('span').textContent = TEMA ? b.dataset.light : b.dataset.dark;
+}
+function setTheme(x) {
+  TEMA = x === 'tamna' ? 'tamna' : '';
+  d.documentElement.classList.toggle('wm-dark', !!TEMA);
+  try { localStorage.setItem('bv-map-tema', TEMA || 'svetla'); } catch (e) { /* private mode */ }
+  writeUrl();
+  paintTheme();
+  if (!map) return;
+  ready = false;
+  useStyle();   // the points come back in the 'style.load' handler of initMap()
+}
+if ($('wm-theme')) $('wm-theme').addEventListener('click', () => setTheme(TEMA ? 'svetla' : 'tamna'));
+
 // ------------------------------------------------------------------ start
 readUrl();
+paintTheme();
 paintFilters();
 initMap();
 if (EMB) embedInit();

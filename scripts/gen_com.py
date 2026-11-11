@@ -68,6 +68,9 @@ LOCALES = {
 SI_HELD = {'si': dict(key='si', cc='SI', dir='si', html='sl', hreflang='sl-SI', og='sl_SI', code='SI', en='/slovenia/',
                country='Slovenija', switch='Slovenija', cur='EUR', cur_sign='€', dec=',', thou='.', plural='sl',
                lang_en='Slovenian', open_local='Odpri vodnik v slovenščini')}
+# HOME3 (11.11.2026): no native reader will come (owner, 20:01) — three independent checks by agents (language, back-translation,
+# facts against Slovenian primary sources) replaced the reading; the fixes are in content/com/local/si/ and /si/ is built again.
+LOCALES.update(SI_HELD)
 EN = dict(key='en', html='en', hreflang='en', og='en_GB', code='EN', dec='.', thou=',')
 # page keys that blokvolt.rs has too: one hreflang cluster across both domains (build.py writes the .rs side from
 # the same list, scripts/region_pages.py)
@@ -168,6 +171,24 @@ env.globals['pl'] = pl
 # only the local sections that have content are linked from menus and footers
 BUILT = [l for l in LOCALES.values() if (LOCAL / l['dir'] / 'country.json').exists()]
 env.globals['LOCALS_ALL'] = BUILT
+# HOME3: the footer of every local section links to the world home in its language (when that language is built),
+# otherwise to the English world home
+_WL = {'hr': ('hr', 'Karta punionica u svijetu'), 'ba': ('bs', 'Karta punjača u svijetu'), 'me': ('sr', 'Mapa punjača u svijetu'),
+       'mk': ('mk', 'Карта на полначи во светот'), 'al': ('sq', 'Harta e karikuesve në botë'), 'xk': ('sq', 'Harta e karikuesve në botë'),
+       'si': ('sl', 'Zemljevid polnilnic po svetu')}
+
+
+def _world_local_home():
+    if not os.environ.get('BV_WORLD_PAGES'):
+        return {}
+    import world_i18n as _I
+    out = {}
+    for k, (wl, label) in _WL.items():
+        out[k] = (_I.slugs(wl)['home'], label, wl) if wl in _I.langs() else ('/', label, 'en')
+    return out
+
+
+env.globals['WORLD_LOCAL_HOME'] = _world_local_home()
 env.globals['COUNTER_NOTE'] = json.load(open(ROOT / 'content' / 'com' / 'counter_note.json', encoding='utf-8'))   # STATCOM: /about/
 
 
@@ -319,6 +340,9 @@ def build_english(local_hubs):
     pages = []
     en_ctx = dict(LOC=EN, S=STRINGS['en'], NAV=EN_NAV, SWITCH=en_switch(), home='/', COUNTRIES=countries, LOCALS=local_hubs,
                   WORLD_LINKS=WORLD_LINKS)
+    if WORLD_HOME:   # HOME3: the English pages (404, /partners/, /western-balkans/, the Balkan guides) wear the world header and footer
+        import world_shell
+        en_ctx.update(NAV=world_shell.nav('en'), WFOOT=world_shell.wfooter('en', sys.modules[__name__]))
     for c in countries:
         if c['code'] == 'RS':
             continue
@@ -570,16 +594,16 @@ def main():
         all_pages[loc['key']] = {p['key']: p for p in pages}
         hub = next(p for p in pages if p['key'] == 'hub')
         local_hubs.append(dict(loc=loc, path=hub['path'], title=hub['h1'], lead=hub.get('card', hub.get('lead', '')), C=C))
+    if os.environ.get('BV_WORLD_PAGES'):   # HOME3: menu and footer entries before the English pages, which now wear them too
+        __import__('world_pay').prepare()   # G4: menu entries How to pay · Routes (scripts/world_pay.py)
+    __import__('world_prices').prepare(sys.modules[__name__])   # G3: price file of the map card + URLs (scripts/world_prices.py)
+    __import__('world_press').prepare(sys.modules[__name__])   # G7: footer link to /press/ (scripts/world_press.py)
     n_sources, n_companies = build_english(local_hubs)
     for key, (C, st, pages) in loaded.items():
         M = build_local(LOCALES[key], C, st, pages, all_pages)
         print(f"/{LOCALES[key]['dir']}/: {len(pages)} pages, map {M['n']} stations (DC ≥ 50 kW {M['dc50']})")
     import loc_towns; loc_towns.build(sys.modules[__name__], loaded)   # town pages of the local sections (scripts/loc_towns.py)
     copy_assets()
-    if os.environ.get('BV_WORLD_PAGES'):
-        __import__('world_pay').prepare()   # G4: menu entries How to pay · Routes (scripts/world_pay.py)
-    __import__('world_prices').prepare(sys.modules[__name__])   # G3: price file of the map card + URLs (scripts/world_prices.py)
-    __import__('world_press').prepare(sys.modules[__name__])   # G7: footer link to /press/ (scripts/world_press.py)
     __import__('world_map').build(sys.modules[__name__])   # world map /map/ /sr/mapa/ /ru/karta/ (K2, scripts/world_map.py)
     bust()
     (OUT / 'CNAME').write_text('blokvolt.com\n', encoding='utf-8')

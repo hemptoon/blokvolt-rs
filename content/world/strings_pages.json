@@ -598,5 +598,55 @@
   "en": "Network not known",
   "ru": "Сеть неизвестна",
   "sr": "Mreža nije poznata"
+ },
+ "st_places": {
+  "en": "charging places",
+  "sr": "mesta za punjenje",
+  "ru": "мест зарядки"
+ },
+ "st_public": {
+  "en": "of them public",
+  "sr": "od toga javnih",
+  "ru": "из них публичных"
+ },
+ "st_dc50_pub": {
+  "en": "public with fast charging (50 kW+)",
+  "sr": "javnih sa brzim punjenjem (50 kW+)",
+  "ru": "публичных с быстрой зарядкой (50 кВт+)"
+ },
+ "st_hpc_pub": {
+  "en": "public with 150 kW and more",
+  "sr": "javnih sa 150 kW i više",
+  "ru": "публичных со 150 кВт и выше"
+ },
+ "st_countries_all": {
+  "en": "countries",
+  "sr": "zemalja",
+  "ru": "стран"
+ },
+ "pl_place2": {
+  "en": "charging place|charging places|charging places",
+  "sr": "mesto za punjenje|mesta za punjenje|mesta za punjenje",
+  "ru": "место зарядки|места зарядки|мест зарядки"
+ },
+ "p_shown2": {
+  "en": "On the map: {n} from open sources, {m} of them public. Not every charger that exists; places with reliability below 40 are not included.",
+  "sr": "Na mapi: {n} iz otvorenih izvora, od toga {m} javnih. Nije prikazan baš svaki punjač koji postoji; mesta sa pouzdanošću ispod 40 nisu uključena.",
+  "ru": "На карте: {n} из открытых источников, из них публичных — {m}. Это не все существующие зарядки; места с надёжностью ниже 40 не включены."
+ },
+ "p_dc_pub": {
+  "en": "Fast charging from 50 kW: {dc} ({pct_dc}); 150 kW or more: {hpc} — public places only.",
+  "sr": "Brzo punjenje od 50 kW: {dc} ({pct_dc}); 150 kW ili više: {hpc} — samo javna mesta.",
+  "ru": "Быстрая зарядка от 50 кВт: {dc} ({pct_dc}); 150 кВт и выше: {hpc} — только публичные места."
+ },
+ "t_hub_world": {
+  "en": "EV charging stations by country",
+  "sr": "Punjači za električne automobile po zemljama",
+  "ru": "Зарядки для электромобилей по странам"
+ },
+ "d_hub2": {
+  "en": "Charging places for electric cars in every country of the open data: how many, fast chargers, networks, sources and licences.",
+  "sr": "Mesta za punjenje električnih automobila u svakoj zemlji iz otvorenih podataka: koliko ih ima, brzi punjači, mreže, izvori i licence.",
+  "ru": "Места зарядки электромобилей в каждой стране по открытым данным: сколько их, быстрые зарядки, сети, источники и лицензии."
  }
 }
