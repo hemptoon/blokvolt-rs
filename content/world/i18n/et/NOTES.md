@@ -39,3 +39,14 @@ Branch `l-et` from `g3-prices` (cf44fc3). Everything lives in `content/world/i18
 
 ## Back-translation (60 random strings)
 Independent agent translated 60 random ET strings back to EN blind, then compared: **60/60 match in meaning, 0 grammar errors**. Its one "bug" (`pl_loc` shown as an object) is a sampling artefact — plural keys are objects by contract. Worth a look: `t_net` / `d_network` "{net} laadimishinnad {country_u}" reads right only with the inessive in_phrase (which the engine gives).
+
+## L2-et (11.11.2026)
+- +274 keys: strings_map 29 (`ci_*`, `emb_open`), new strings_pay 93, strings_press 54, strings_b2b 33, strings_embed 65. HOME2 keys not in `dev` yet — LANGI adds them.
+- `texts.json`: sections `pay` (6 AFIR points, `afir.points[i]`) and `routes` (59 stop cities, `routes[i].stops[j].city`), LANG0 format.
+- ad hoc → **lepinguta** everywhere (map card, prices, pay, press); first mention on pay pages "lepinguta (ad hoc)".
+- Buttons, links and chips → 2nd person singular (*Ava kaart, Sulge, Jaga, Saada, Tühista, Teata veast, Laadi alla*), as Estonian UIs do; sentences and messages stay polite plural (*Proovige uuesti, Kontrollige*).
+- "Loading…" → *Laaditakse…* (*Laadimine* also means "charging").
+- `{cu}` (pay) = in_phrase of countries.csv; `{name}` (pay) = nominative, so `conn_txt` uses "(…{name})".
+- City titles use `{city_u}` (`t_city`, `t_city_cc`, `d_city`) — engine must pass `city_u` for et; `t_near` → " (lähedal: {x})" (x is nominative).
+- No "me/meie/toimetus/kohe" (check.py). "toimetuslik" avoided → *ajakirjanduslik sisu*.
+- check.py: all 8 files, `texts.pay`/`texts.routes` against the multilingual nodes of pay.json/routes.json, `{city_u}`/`{country_u}` accepted for `{city}`/`{country}`/`{country_name}`.

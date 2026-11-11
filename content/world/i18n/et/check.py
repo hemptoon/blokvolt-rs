@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""L-ET: checks content/world/i18n/fi against the EN sources. Run from repo root: python3 content/world/i18n/fi/check.py"""
+"""L-ET / L2-et: checks content/world/i18n/et against the EN sources (8 strings files, texts.json incl. pay/routes). Run from repo root: python3 content/world/i18n/et/check.py"""
 import csv, json, re, sys
 from pathlib import Path
 LANG = 'et'
@@ -11,12 +11,20 @@ def err(m): errs.append(m)
 PH = re.compile(r'\{[^{}]*\}')
 TAG = re.compile(r'<[^>]+>|&[a-z#0-9]+;')
 def sig(s): return sorted(PH.findall(s)), sorted(TAG.findall(s))
+def sig_t(t, e):
+    # pool-4 rule: {city_u}/{country_u} (case form from cities.csv/countries.csv) may stand for {city}/{country}/{country_name}
+    t = t.replace('{city_u}', '{city}')
+    if '{country_u}' in t and '{country_u}' not in e:
+        t = t.replace('{country_u}', '{country}' if '{country}' in e else '{country_name}')
+    return sig(t)
+FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices', 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed')
 try:
     from babel import Locale
     cats = set(Locale(LANG).plural_form.tags) | {'other'}
 except Exception as e:
     cats = {'one', 'other'}; print('babel missing, using', cats)
-for f in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
+for f in FILES:
+    if not (D / f'{f}.json').exists(): err(f'{f}.json missing'); continue
     en = {k: v['en'] for k, v in json.load(open(W / f'{f}.json', encoding='utf-8')).items()}
     tr = json.load(open(D / f'{f}.json', encoding='utf-8'))
     for k in en.keys() - tr.keys(): err(f'{f}: missing key {k}')
@@ -32,7 +40,7 @@ for f in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
             continue
         if '|' in e and k.startswith('pl_'): err(f'{f}.{k}: EN is a plural form, ET must be an object')
         if not str(t).strip() and str(e).strip(): err(f'{f}.{k}: empty')
-        if sig(t) != sig(e): err(f'{f}.{k}: placeholders/tags differ: {sig(e)} vs {sig(t)}')
+        if sig_t(t, e) != sig(e): err(f'{f}.{k}: placeholders/tags differ: {sig(e)} vs {sig(t)}')
 # texts.json
 def walk(a, b, p):
     if type(a) != type(b): return err(f'texts{p}: type {type(a).__name__} vs {type(b).__name__}')
@@ -47,10 +55,26 @@ def walk(a, b, p):
         if sig(a) != sig(b): err(f'texts{p}: placeholders/tags differ')
 t = json.load(open(D / 'texts.json', encoding='utf-8'))
 src = {'about_data': json.load(open(W / 'about_data.json'))['en'], 'download': json.load(open(W / 'download.json'))['en']}  # sources_pages.json is not translated (README 23:55)
-if set(t) != set(src): err(f'texts.json top keys {sorted(t)}')
+if set(t) != set(src) | {'pay', 'routes'}: err(f'texts.json top keys {sorted(t)}')
 for k in src: walk(src[k], t.get(k), '.' + k)
+# texts.json pay / routes (LANG0 format: dotted path of a multilingual node -> text)
+def ml_nodes(o, p, out):
+    if isinstance(o, dict):
+        if isinstance(o.get('en'), str) and 'ru' in o: out[p] = o['en']; return
+        for k, v in o.items(): ml_nodes(v, f'{p}.{k}' if p else k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o): ml_nodes(v, f'{p}[{i}]', out)
+    return out
+for sec, fn in (('pay', 'pay.json'), ('routes', 'routes.json')):
+    want = ml_nodes(json.load(open(W / fn, encoding='utf-8')), '', {})
+    got = t.get(sec, {})
+    for k in want.keys() - got.keys(): err(f'texts.{sec}: missing {k}')
+    for k in got.keys() - want.keys(): err(f'texts.{sec}: extra {k}')
+    for k in want.keys() & got.keys():
+        if not str(got[k]).strip(): err(f'texts.{sec}.{k}: empty')
+        if sig(got[k]) != sig(want[k]): err(f'texts.{sec}.{k}: placeholders/tags differ')
 # forbidden words (README §1.7)
-_all = json.dumps([json.load(open(D / f'{f}.json', encoding='utf-8')) for f in ('strings_map','strings_pages','strings_shell','strings_prices','texts')], ensure_ascii=False)
+_all = json.dumps([json.load(open(D / f'{f}.json', encoding='utf-8')) for f in FILES + ('texts',) if (D / f'{f}.json').exists()], ensure_ascii=False)
 for pat in (r'24\s*/\s*7', r'evolako', r'\bmeie\b', r'\bme\b', r'\bkohe\b', r'toimetus'):
     if re.search(pat, _all, re.I): err(f'forbidden word: {pat}')
 # slugs
