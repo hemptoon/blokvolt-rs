@@ -31,3 +31,24 @@
 - Латинские названия городов — в оригинале по Pravopisu (Leipzig, а не Lajpcig), как решила L-BS.
 - `fast_more`, `st_countries` («zemalja sa stranicom») при 21–24 дают неточную форму — редко, оставлено.
 - ~2 960 городов stage quarter/balkan вне топ-500 — не вычитаны, безопасная форма «u gradu X».
+
+## L2-bs — обратный перевод 60 новых строк (11.11.2026)
+Выборка: 60 случайных из 237 новых строк (seed 20261111; strings_pay/press/b2b/embed, ci_* + emb_open, texts.pay). Независимый агент переводил bs → EN, не видя оригиналов. 48 — смысл совпал, 12 — замечания; экавизмов и хорватизмов нет, плейсхолдеры целы.
+Применено:
+- `press.f_checkins` — «{n} plaćenih cijena» не согласуется с 1–4 → «Broj cijena koje su vozači … potvrdili …: {n}».
+- `press.lead_issue` — «{nets} mreža u {countries} zemalja» (та же проблема, найдена при сверке с R-BS) → «(mreža: {nets}; zemalja: {countries})».
+- `pay.afir_non` — «nije članica EU» (ж. р.) не подходит к Kosovo / Ujedinjeno Kraljevstvo → «nije u Evropskoj uniji».
+- `press.h_charts`, `press.d_press` — «za ugradnju» читалось как монтаж → «za vašu stranicu» / «za objavu na vašoj stranici».
+- `press.f_mom` — «u odnosu na period {prev}» → «u odnosu na {prev}»; `press.f_mom_n` — «DC vrijednosti» → «DC indeksa».
+- `pay.cost_all` → «indeks postoji za sve zemlje na ruti»; `embed.dv_open_btn` → «Preuzimanje i opis kolona»; `embed.dv_p_lang` → «Jezik: određuje ga adresa vidžeta (EN, SR, RU)».
+Не применено:
+- `press.f_range` «najjeftinije {lo}» — ложная тревога: `{lo}`/`{hi}` подставляются как `names.in_()` («u Njemačkoj»), предлог уже внутри.
+- `press.d_issue` «u periodu {month}» — оставлено: `month_name()` даёт именительный («oktobar 2026»), «u {month}» дал бы «u oktobar».
+- `embed.cf_view` «Grad ili tačan prikaz» — как в SR, под полем есть пояснение `cf_view_help`.
+
+## FIXL 11.11.2026
+Provjereno: strings_home (71 ključ, nova datoteka), strings_shell `lang_hint`/`lang_hint_close`, D11 (`dv_p_lang`, `p_hub_na`), slugovi (+7), cities.csv (+49), D12.
+Povratni prijevod (val 2, naslijepo pa poređenje s EN): 10 nizova home (title, desc, h1, sub, near_err, map_err, prices_p, work_p, trust_p, org_desc) + 4 izmijenjena (dv_p_lang, p_hub_na, lang_hint, lang_hint_close). Smisao se svuda poklapa; nema ispravki.
+- `desc` bez „za svako mjesto” na kraju (dužina 157) — smisao ostaje.
+- `o_widget` „Mapa za vašu web-stranicu” duže od EN (upozorenje check.py) — ostavljeno radi dosljednosti s `cf_h1`.
+D12: „Ser” (734330) → „Seres”, „u Seresu”. „Temišvar”, „Minhen”, „Keln” — ustaljeni bosanski egzonimi, ostaju.

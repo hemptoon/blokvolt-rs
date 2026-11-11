@@ -52,3 +52,18 @@ CLDR sv: `one`, `other` (Babel 2.18). Alla `pl_*` är objekt `{one, other}`. ”
 - Inmatning av en infödd svensk talare innan G8 (titlar och priser).
 - ”USA” (kort form) vs ”Förenta staterna” — valt ”USA”.
 - `p_hub_na` nämner serbiska sidor — kan behöva ny lydelse när sv aktiveras (vilka språk täcker vad).
+
+## L2-sv (2026-11-11, gren `l2-sv` från `dev` bb86f74)
+- Nya nycklar: 274 (strings_map 29: `ci_*` + `emb_open`; strings_pay 93, strings_press 54, strings_b2b 33, strings_embed 65 — nya filer). HOME2 fanns inte i `dev`, inga hemnycklar.
+- Termer tillagda: check-in → ”rapport”; tariff → ”tariff/tariffer” (som i strings_prices); household electricity → ”hushållsel”; roaming card → ”laddkort”; widget → ”widget”; issue (index) → ”utgåva”; credit/cite → ”källhänvisning”; HPC/high-power → ”HPC”.
+- `texts.json`: nya avsnitt `pay` (6 noder, AFIR-punkterna) och `routes` (59 ortnamn; svenska namn ur cities.csv, exonym bara Belgrad).
+- `cities.csv`: +46 svenska orter (nya NOBIL-sidor) som ännu saknas i `names/cities.csv`, not = ”NOBIL, not yet in names/cities.csv”; ”på Lidingö”. Alla 149 stadssidor i SE+FI har namn.
+- `check.py`: alla 8 strängfiler, `texts.json` → `pay`/`routes` (sökväg ↔ nod i pay.json/routes.json), geonameid från `pages_state.json` godtas, kontroll att alla stadssidor i SE/FI har namn.
+- Bakåtöversättning: 60 slumpvisa nya strängar (seed 20261111), separat agent utan EN. Betydelsen stämde i 60/60; 13 stilanmärkningar, 11 rättade — se REVIEW.md.
+
+## FIXL (2026-11-11)
+- `strings_home.json` ny (71 nycklar, pl_* = {one, other}); hemsidans h1 ”Laddkarta för elbilar i Europa och världen”.
+- Slugs (F5): pay `/sv/sa-betalar-du/` · routes `/sv/rutter/` · press `/sv/for-media/` · b2b `/sv/data-for-foretag/` · embed `/sv/embed/karta/` · map_conf `/sv/karta-for-din-webbplats/` · developers `/sv/for-utvecklare/`.
+- Inget `name_nom` (D14 gäller inte sv). D13: inget för sv.
+- cities.csv: + Kongsberg, Skien (”i …”), Genève (”i Genève”); de 46 NOBIL-raderna har nu not ”FIXL: verified (NOBIL)”.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 9)

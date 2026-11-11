@@ -43,7 +43,7 @@
  "serbia_link": "Prisindeks for Serbia",
  "h_profiles": "Hva 100 km koster for tre typer bilister",
  "profiles_note": "Bil: {car}, {cons} kWh per 100 km (anslag, mildt vær, energi fra batteriet; tap under lading er ikke medregnet). Andeler av ladingen: «lader hjemme» {p1}; «blandet» {p2}; «uten lader hjemme» {p3}. Landpriser fra tabellen ovenfor.",
- "pr_home": "Lader hjemme",
+ "pr_home": "Hjemmelader",
  "pr_mixed": "Blandet",
  "pr_street": "Uten lader hjemme",
  "share_home": "hjemme {x}",

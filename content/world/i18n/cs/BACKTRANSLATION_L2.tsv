@@ -1,0 +1,60 @@
+strings_pay.th_trip	Trip, EUR	Ambiguous: "cesta" can mean trip/journey, route or road; fine only if column context makes it clear
+strings_pay.h_by_country	Networks, apps and tolls by country	
+strings_b2b.title	Data for businesses: EV charging coverage and prices | BlokVolt	
+strings_pay.conn_lnk	Charging station – {name}	
+strings_b2b.lic_p	Row-level data for commercial use are produced without OpenStreetMap – from open state registries, Open Charge Map, Overture Maps and BlokVolt's own survey, with an attribution file for each source. A dataset including OpenStreetMap is possible only under the Open Database License (ODbL 1.0) and its share-alike terms. Open data stay free: the whole public layer can be downloaded under ODbL.	Unnatural calque: "Data na úrovni řádků" (row-level data) reads oddly in Czech; e.g. "Data po jednotlivých záznamech"
+strings_embed.cf_preview	Preview	
+strings_pay.afir_src	Source: Regulation (EU) 2023/1804 on EUR-Lex, as of {date}.	
+strings_embed.dv_balkan_h	Serbia and the Balkans	
+strings_pay.th_map	Map	
+strings_pay.th_prices	Prices	
+strings_press.issue_note	Prices incl. VAT, euros per kWh at the ECB rate {fx}. Price lists verified up to {checked}; weights from the public layer dated {layer}; electricity at home: {home}.	Minor: "váhy" (weights) is opaque to a general reader without context
+strings_pay.th_cover	Countries on the official coverage page	
+strings_embed.cf_theme	Theme	
+strings_pay.h_apps_all	Apps and cards: official coverage	
+strings_pay.stops_note	The farthest fast charger within 150 km of the previous stop; when two are close together, the more powerful one. Kilometres are an estimate along the route. Before the trip, it is advisable to check the location on the map.	Ambiguous: "je vhodné místo ověřit" can also be read as "the suitable place should be checked"; clearer: "Před cestou si místo ověřte na mapě"
+strings_press.ch_europe	Europe: average ad hoc price by charging class, €/kWh	
+strings_map.ci_err	The response could not be sent. Try again.	Slightly odd: "Odpověď" (reply/answer) for a form submission; "Zprávu se nepodařilo odeslat" is more natural
+strings_b2b.form_p	Describe what you need. The reply will come from hello@blokvolt.com.	
+strings_embed.dv_params_h	Widget parameters	
+strings_press.credit	Source: BlokVolt, European EV Charging Price Index, {month}	
+strings_b2b.desc	Datasets on public EV charging for businesses and public institutions: locations, power, networks and published price lists by country, with sources and dates.	Ambiguous: "daty" is the instrumental of both "data" (data) and "datum" (dates) – reads as "with sources and data" or "with sources and dates"
+strings_press.h1_issue	European EV Charging Price Index – {month}	
+strings_pay.sys_vignette	Motorway vignette (time-based).	
+strings_embed.dv_f_msg	What data and what for	
+strings_embed.cf_frame_title	EV charging map – BlokVolt	
+strings_b2b.what_cov	<b>Coverage</b> – public charging points by country, city and network: power classes, share of DC and high power, connectors, number of sources, date of last confirmation.	
+strings_embed.cf_net_any	All networks	
+strings_pay.typ_none	There are not yet enough official prices for this country's index.	
+strings_embed.dv_lead	Everything open is free and requires no key. For anything else, send a request.	
+strings_pay.h_conn	Connectors and locations	
+strings_map.ci_last_ne_radi	Last report: not working, {d}	
+strings_press.cite_2	Figures and charts may be quoted, reused and embedded in editorial content without a request, with this attribution. CSV files are under CC BY-NC 4.0: free for non-commercial use with attribution; commercial use of the data (products, paid reports, resale) requires a written agreement.	
+strings_pay.h_season	Winter and summer	
+strings_pay.road_none	Not verified yet.	
+strings_embed.cf_copied	Copied	
+strings_press.t_press	European EV Charging Price Index – for media | BlokVolt	
+strings_embed.dv_f_demo	Preview: the form sends nothing here. Write to the address below.	
+strings_map.ci_month	Month	
+strings_map.ci_u_min	minute (accusative)	Fragment: accusative "minutu" only works after a preposition (e.g. "za minutu" / "per minute"); standalone it looks wrong – check how it is concatenated
+strings_pay.th_gaps	Gaps > 150 km	
+strings_b2b.f_countries	Country	
+strings_press.th_change	DC change	
+strings_pay.th_fast	Fast chargers	
+strings_b2b.form_h	Data request	
+strings_embed.dv_attr_h	How to cite the source	
+strings_pay.pay_more	How to pay	
+strings_pay.th_kw	kW	
+strings_press.method_link	How the index is calculated	
+strings_pay.h1_routes	EV routes across the Balkans	
+strings_embed.dv_p_mreza	Network slug, separate multiple networks with commas	
+strings_embed.cf_link	BlokVolt charging map	
+strings_embed.cf_more	Open data and API requests	
+strings_embed.cf_title	EV charging map for your website: free widget | BlokVolt	
+strings_press.h1_press	European EV Charging Price Index for media	
+strings_press.svg_file	SVG file, {month}	
+strings_pay.cov_no	Not stated (feminine)	Gender-specific: "Neuvedena" agrees only with a feminine noun (e.g. cena); mismatches if used for neuter/masculine fields – "Neuvedeno" is the safe neutral form
+strings_b2b.f_what	Data	
+strings_pay.apps_unk	the official page does not list countries	
+strings_press.h_archive	All editions	
+strings_pay.t_routes	By EV across the Balkans: fast chargers by route	

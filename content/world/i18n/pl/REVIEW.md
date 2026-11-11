@@ -49,3 +49,27 @@ A separate agent back-translated 39 changed lines blind (13 strings and 26 citie
 - `texts.json` contains `sources_pages` (the L-PL author partly translated the `licence` field). By the 23:55 decision `sources_pages` is not translated; K8 should read only `about_data` and `download` from texts.json.
 - OSM attribution: the map uses "© współtwórcy OpenStreetMap", texts use "© OpenStreetMap contributors". Not unified: this needs the official PL wording from osm.org/copyright.
 - The remaining ~1,400 `quarter` cities in "w mieście X" form are untouched (decl_ok=0, the safe form).
+
+# L2-PL — back-translation of the new strings (11.11.2026)
+
+Sample: 60 random strings out of the 280 new ones (5 string files + texts.pay), seed 20261111. A separate agent translated them PL→EN without seeing the EN source. **Meaning: 60 of 60 match, 0 serious mismatches.** Its style notes as a native editor, and what was done with them:
+
+- "zasięg" (coverage of apps) is read as the car's driving range → replaced by "lista krajów / kraje obsługiwane" (strings_pay `d_pay_hub`, `lead_pay_hub`, `apps_note`, `th_cover`, `h_apps_all`, `pay_disc`) and "pokrycie" (strings_b2b `lead`, `what_cov`, `f_w_cov`, `f_w_both`, `title`).
+- "bez płatnych miejsc" is read as "no paid parking" → "bez płatnego wyróżniania"; "Klienci danych" → "Odbiorcy danych" (b2b `neutral`).
+- Calques fixed: "Ceny od kierowców" → "Ceny zgłaszane przez kierowców" (`ci_paid_ok`); "Linia atrybucji" → "Informacja o źródle" (`cf_rules`); `dv_p_mreza`, `dv_balkan_p`, `dv_desc`, `dv_open_p`, `f_mom_n` ("indeksu DC"), `lead_press` ("pod warunkiem podania źródła i linku"), `pay_disc` ("warto to sprawdzić"), texts.pay `afir.points[2]` (card reader / contactless device).
+- Kept on purpose: "Należy…" in hints (impersonal register of the pack, NOTES.md); "raza" in `f_home` — the engine always formats the ratio with one decimal (`num(x, l, 1)` in world_press.py), and "1,8 raza" is the correct form; "odpowiedź" in check-in messages (it is the answer to "Czy działa?"); "e-myto" — generic Polish word for electronic toll.
+
+## FIXL 11.11.2026
+
+- Sprawdzono: nowy `strings_home.json` (71 kluczy), `lang_hint`/`lang_hint_close`, D11 (`dv_p_lang`, `p_hub_na`), 7 nowych slugów,
+  49 miast (48 NOBIL + Genewa), D12 w `cities.csv`.
+- Tłumaczenie wsteczne PL→EN, fala 1: 20 losowych kluczy `strings_home` (te same co NL/PT) + 4 zmienione ciągi + nazwy miast.
+  Rozbieżności znaczeniowych brak; `p_ratio` «{x}× cena w domu» — skrót w etykiecie wykresu, dopuszczalny.
+- D12 (nazwy historyczne obcych miast → nazwy urzędowe, 10 wierszy): Litwa — Janów→Jonava, Uciana→Utena, Wiłkomierz→Ukmergė,
+  Taurogi→Tauragė, Kiejdany→Kėdainiai, Możejki→Mažeikiai, Mariampol→Marijampolė, Olita→Alytus («w mieście X», decl_ok=0);
+  Niemcy — Strzałów→Stralsund («w Stralsundzie»), Gryfia→Greifswald («w Greifswaldzie»).
+  Zostawione jako żywe egzonimy (jak «Beč»/«Mníchov»): Wilno, Kowno, Kłajpeda, Szawle, Poniewież, Połąga, Lwów, Kijów, Łuck,
+  Brześć, Budziszyn, Chociebuż, Koszyce, Preszów, Pecz, Segedyn, Braszów, Sybin, Kluż-Napoka.
+- Wątpliwości: Połąga/Szawle/Poniewież (używane w prasie, ale na Litwie drażliwe) — do decyzji; Pecz/Segedyn (rzadziej niż Pécs/Szeged).
+- `near_err`: «Położenie» zamiast «Lokalizacja», bo «lokalizacja» = charging location w tym pakiecie; `map_loading` «Wczytywanie mapy…»
+  zamiast «Ładowanie mapy…» (dwuznaczne z ładowaniem auta).

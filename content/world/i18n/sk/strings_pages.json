@@ -1,7 +1,7 @@
 {
  "balkan_note": "Tieto krajiny majú vlastné stránky BlokVolt s overenými údajmi.",
  "below_p": "Táto stránka zobrazuje mesto alebo sieť len vtedy, keď majú otvorené údaje dostatok verejných miest. Momentálne to tak nie je. Stránka krajiny a mapa naďalej zobrazujú všetky miesta.",
- "below_title": "Nabíjacie stanice – momentálne nedostatok údajov",
+ "below_title": "Nabíjacie stanice – zatiaľ málo údajov",
  "conf_link": "Ako sa počíta spoľahlivosť",
  "country_menu": "Jazyk",
  "crumbs": "Navigačná cesta",
@@ -69,7 +69,7 @@
  "p_dc": "Rýchle DC nabíjanie od 50 kW: {dc} ({pct_dc}); 150 kW a viac: {hpc}.",
  "p_gnet": "Sieť {net} je prítomná v {n_countries}.",
  "p_hub": "Stránku má každá krajina s najmenej 100 verejnými miestami strednej alebo vysokej spoľahlivosti. Západný Balkán pokrývajú samostatné stránky BlokVolt pre každú krajinu.",
- "p_hub_na": "Spojené štáty a Kanada sú spracované v angličtine a ruštine; slovenské stránky pokrývajú Európu.",
+ "p_hub_na": "Stránky miest a sietí sú pre každú krajinu v angličtine a ruštine a tiež v jazyku danej krajiny.",
  "p_multi": "Podiel miest potvrdených dvoma alebo viacerými zdrojmi: {pct_multi}; naposledy potvrdených v roku 2025 alebo 2026: {pct_recent}.",
  "p_net_share": "Sieť je prítomná v {n_cities} {country_u}; tvorí {share} verejných miest krajiny zobrazených tu.",
  "p_nonet": "Bez známej siete: {nonet}.",

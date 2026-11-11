@@ -12,6 +12,7 @@ import unicodedata
 from pathlib import Path
 
 LANG = 'nb'
+MARKET = {'NO'}  # market_countries, LANG_pool §0.3
 HERE = Path(__file__).resolve().parent
 WORLD = HERE.parent.parent
 ERR = []
@@ -20,7 +21,7 @@ PH = re.compile(r'\{[^{}]*\}')
 TAG = re.compile(r'</?[a-zA-Z][^>]*>')
 ENT = re.compile(r'&[a-zA-Z#0-9]+;')
 SLUG = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')
-PATH = re.compile(r'^/[a-z]{2,3}/([a-z0-9]+(-[a-z0-9]+)*/)?$')
+PATH = re.compile(r'^/[a-z]{2,3}/([a-z0-9]+(-[a-z0-9]+)*/)*$')
 FORBIDDEN = re.compile(r'\b(vi|vår|vårt|våre|redaksjonen|24/7|umiddelbart|Evolako)\b', re.I)
 
 
@@ -43,6 +44,10 @@ def cmp_text(where, en, tr):
         ERR.append(f'{where}: empty or not a string')
         return
     a, b = tokens(en), tokens(tr)
+    # FIXL: {city_u}/{country_u} may stand where EN has {city}/{country}
+    alt = {'{city_u}': '{city}', '{country_u}': '{country}'}
+    if a[0] != b[0] and a[0] == sorted(alt.get(x, x) for x in b[0]):
+        b = (a[0],) + b[1:]
     for name, x, y in zip(('placeholders', 'tags', 'entities'), a, b):
         if x != y:
             ERR.append(f'{where}: {name} differ: EN {x} vs {LANG} {y}')
@@ -52,7 +57,8 @@ def cmp_text(where, en, tr):
 
 
 def check_strings(tags):
-    for f in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
+    for f in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+              'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed', 'strings_home'):
         en = json.load(open(WORLD / f'{f}.json', encoding='utf-8'))
         p = HERE / f'{f}.json'
         if not p.exists():
@@ -106,6 +112,19 @@ def walk(where, en, tr):
         ERR.append(f'{where}: non-text value changed')
 
 
+def ml_nodes(x, path, out):
+    """Multilingual node = dict with a string 'en' and at least one of 'sr'/'ru'."""
+    if isinstance(x, dict):
+        if isinstance(x.get('en'), str) and ('sr' in x or 'ru' in x):
+            out[path] = x['en']
+            return
+        for k, v in x.items():
+            ml_nodes(v, f'{path}.{k}' if path else k, out)
+    elif isinstance(x, list):
+        for i, v in enumerate(x):
+            ml_nodes(v, f'{path}[{i}]', out)
+
+
 def check_texts():
     p = HERE / 'texts.json'
     if not p.exists():
@@ -116,20 +135,37 @@ def check_texts():
         'about_data': json.load(open(WORLD / 'about_data.json', encoding='utf-8'))['en'],
         'download': json.load(open(WORLD / 'download.json', encoding='utf-8'))['en'],
     }
-    if list(t) != list(src):
-        ERR.append(f'texts.json: top keys {list(t)} != {list(src)}')
+    want = list(src) + ['pay', 'routes']
+    if list(t) != want:
+        ERR.append(f'texts.json: top keys {list(t)} != {want}')
         return
     for k in src:
         walk(f'texts.{k}', src[k], t[k])
+    # LANG0 format: path of a multilingual node in pay.json / routes.json -> text
+    for sec in ('pay', 'routes'):
+        nodes = {}
+        ml_nodes(json.load(open(WORLD / f'{sec}.json', encoding='utf-8')), '', nodes)
+        got = t[sec]
+        miss = [k for k in nodes if k not in got]
+        extra = [k for k in got if k not in nodes]
+        if miss:
+            ERR.append(f'texts.{sec}: {len(miss)} nodes missing, e.g. {miss[:3]}')
+        if extra:
+            ERR.append(f'texts.{sec}: {len(extra)} unknown nodes, e.g. {extra[:3]}')
+        for k, e in nodes.items():
+            if k in got:
+                cmp_text(f'texts.{sec}.{k}', e, got[k])
+        print(f'texts.{sec}: {len(got)} of {len(nodes)} nodes')
     # sources_pages.json is shared by all languages (README 23:55) and is not translated
     print('texts.json: ok structure' if not any(e.startswith('texts') for e in ERR) else 'texts.json: errors')
 
 
 def check_slugs():
     keys = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
+    extra = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']  # FIXL F5: allowed in addition
     s = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
-    if sorted(s) != sorted(keys):
-        ERR.append(f'slugs.json: keys {sorted(s)} != {sorted(keys)}')
+    if [k for k in keys if k not in s] or [k for k in s if k not in keys + extra]:
+        ERR.append(f'slugs.json: keys {sorted(s)} (required {sorted(keys)}, allowed also {extra})')
     for k, v in s.items():
         if k in ('net', 'about', 'download'):
             if not SLUG.match(v):
@@ -146,7 +182,7 @@ def check_slugs():
 def check_csv():
     cc_src = {r['cc'] for r in csv.DictReader(open(WORLD / 'names' / 'countries.csv', encoding='utf-8'))}
     rows = list(csv.DictReader(open(HERE / 'countries.csv', encoding='utf-8')))
-    if rows and list(rows[0]) != ['cc', 'name', 'slug', 'in_phrase', 'note']:
+    if rows and list(rows[0]) not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):
         ERR.append(f'countries.csv: header {list(rows[0])}')
     got = {r['cc'] for r in rows}
     if got != cc_src:
@@ -162,15 +198,28 @@ def check_csv():
     print('countries.csv:', len(rows), 'rows')
 
     ids_src = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities.csv', encoding='utf-8'))}
+    # FIXL: every city page of pages_state.json (all countries) must have a row
+    state = json.load(open(WORLD / 'state' / 'pages_state.json', encoding='utf-8'))
+    market = set()
+    for v in state.values():
+        if v.get('type') == 'city':
+            market.add(v['key'].split(':')[2])
     rows = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
     if rows and list(rows[0]) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']:
         ERR.append(f'cities.csv: header {list(rows[0])}')
     ids = [r['geonameid'] for r in rows]
     if len(set(ids)) != len(ids):
         ERR.append('cities.csv: duplicate geonameid')
-    unknown = set(ids) - ids_src
+    lost = market - set(ids)
+    if lost:
+        ERR.append(f'cities.csv: {len(lost)} city pages without a name, e.g. {sorted(lost)[:5]}')
+    print(f'cities.csv: {len(market)} city pages, all named' if not lost else '')
+    # FIXL: every geonameid must exist in names/cities.csv (no allowance for page cities outside it)
+    # FIXL2: names/cities_extra.csv is also a valid source
+    extra_src = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities_extra.csv', encoding='utf-8'))}
+    unknown = set(ids) - ids_src - extra_src
     if unknown:
-        ERR.append(f'cities.csv: {len(unknown)} unknown geonameid')
+        ERR.append(f'cities.csv: {len(unknown)} geonameid not in names/cities.csv or names/cities_extra.csv, e.g. {sorted(unknown)[:5]}')
     for r in rows:
         if not r['name'] or not r['in_phrase'] or r['decl_ok'] not in ('0', '1'):
             ERR.append(f'cities.csv {r["geonameid"]}: bad row')

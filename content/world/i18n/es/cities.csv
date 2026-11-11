@@ -29,7 +29,7 @@ geonameid,name,in_phrase,decl_ok,note
 3110983,Salt,en Salt,1,
 2514097,Marratxí,en Marratxí,1,
 3130583,Alcobendas,en Alcobendas,1,
-2518878,Dénia,en Dénia,1,
+2518878,Denia,en Denia,1,официально «Dénia»
 3107418,Tudela,en Tudela,1,
 3108288,Tarragona,en Tarragona,1,
 2518559,Elche,en Elche,1,
@@ -44,7 +44,7 @@ geonameid,name,in_phrase,decl_ok,note
 2520493,Calvià,en Calvià,1,
 2521886,Almería,en Almería,1,
 2510253,Torrevieja,en Torrevieja,1,
-2517367,Gandia,en Gandia,1,
+2517367,Gandía,en Gandía,1,официально «Gandia»
 2521088,Benidorm,en Benidorm,1,
 3123667,El Astillero,en El Astillero,1,
 2510409,Toledo,en Toledo,1,
@@ -53,7 +53,7 @@ geonameid,name,in_phrase,decl_ok,note
 2519752,Castellón de la Plana,en Castellón de la Plana,1,официально «Castelló de la Plana»
 3109642,Santiago de Compostela,en Santiago de Compostela,1,
 3115093,Olot,en Olot,1,
-2513106,Ontinyent,en Ontinyent,1,
+2513106,Onteniente,en Onteniente,1,официально «Ontinyent»
 3105976,Vigo,en Vigo,1,
 3117164,Mataró,en Mataró,1,
 3107784,Torrejón de Ardoz,en Torrejón de Ardoz,1,
@@ -85,7 +85,7 @@ geonameid,name,in_phrase,decl_ok,note
 3126888,Granada,en Granada,1,
 3127065,Calahorra,en Calahorra,1,
 3130564,Alcorcón,en Alcorcón,1,
-2516345,Xàtiva,en Xàtiva,1,
+2516345,Játiva,en Játiva,1,официально «Xàtiva»
 2517117,Cambrils,en Cambrils,1,
 3104342,Zamora,en Zamora,1,
 3111348,Roses,en Roses,1,
@@ -152,7 +152,7 @@ geonameid,name,in_phrase,decl_ok,note
 2514891,Lorca,en Lorca,1,
 2522152,Alcantarilla,en Alcantarilla,1,
 3121960,Fuenlabrada,en Fuenlabrada,1,
-3128272,Benicàssim,en Benicàssim,1,
+3128272,Benicasim,en Benicasim,1,официально «Benicàssim»
 2510693,Talavera de la Reina,en Talavera de la Reina,1,
 2511330,Sant Joan d'Alacant,en Sant Joan d'Alacant,1,
 2519513,Chiclana de la Frontera,en Chiclana de la Frontera,1,
@@ -5604,3 +5604,873 @@ geonameid,name,in_phrase,decl_ok,note
 1692192,Quezon City,en Quezon City,1,
 5927690,Coquitlam,en Coquitlam,1,
 12908892,New Taipei City,en New Taipei City,1,латиница из name_en
+2660646,Ginebra,en Ginebra,1,FIXL; экзоним
+3149563,Kongsberg,en Kongsberg,1,FIXL
+3139075,Skien,en Skien,1,FIXL
+2727234,Åkersberga,en Åkersberga,1,FIXL
+2726756,Alingsås,en Alingsås,1,FIXL
+2721259,Boo,en Boo,1,FIXL
+2716166,Enköping,en Enköping,1,FIXL
+2715946,Eslöv,en Eslöv,1,FIXL
+2715573,Falkenberg,en Falkenberg,1,FIXL
+2715568,Falköping,en Falköping,1,FIXL
+2709628,Gustavsberg,en Gustavsberg,1,FIXL
+2707953,Haninge,en Haninge,1,FIXL
+2704620,Huddinge,en Huddinge,1,FIXL
+2704613,Hudiksvall,en Hudiksvall,1,FIXL
+2704136,Huskvarna,en Huskvarna,1,FIXL
+2703396,Jakobsberg,en Jakobsberg,1,FIXL
+2701715,Karlskoga,en Karlskoga,1,FIXL
+2701223,Katrineholm,en Katrineholm,1,FIXL
+2699791,Köping,en Köping,1,FIXL
+2699282,Kristinehamn,en Kristinehamn,1,FIXL
+2698767,Kumla,en Kumla,1,FIXL
+2697720,Landskrona,en Landskrona,1,FIXL
+2696503,Lerum,en Lerum,1,FIXL
+2696334,Lidingö,en Lidingö,1,FIXL
+604490,Luleå,en Luleå,1,FIXL
+2692613,Mariestad,en Mariestad,1,FIXL
+2692475,Märsta,en Märsta,1,FIXL
+2690580,Nacka,en Nacka,1,FIXL
+2690170,Nässjö,en Nässjö,1,FIXL
+2688250,Norrtälje,en Norrtälje,1,FIXL
+2687700,Nyköping,en Nyköping,1,FIXL
+2686469,Örnsköldsvik,en Örnsköldsvik,1,FIXL
+2686162,Oskarshamn,en Oskarshamn,1,FIXL
+2684395,Partille,en Partille,1,FIXL
+603570,Piteå,en Piteå,1,FIXL
+602913,Skellefteå,en Skellefteå,1,FIXL
+2676176,Södertälje,en Södertälje,1,FIXL
+2675408,Sollentuna,en Sollentuna,1,FIXL
+2675397,Solna,en Solna,1,FIXL
+2674649,Staffanstorp,en Staffanstorp,1,FIXL
+2670879,Sundbyberg,en Sundbyberg,1,FIXL
+2669772,Täby,en Täby,1,FIXL
+2667303,Trollhättan,en Trollhättan,1,FIXL
+2667094,Tumba,en Tumba,1,FIXL
+2666238,Upplands Väsby,en Upplands Väsby,1,FIXL
+2664203,Västervik,en Västervik,1,FIXL
+2665171,Vänersborg,en Vänersborg,1,FIXL
+2664855,Värnamo,en Värnamo,1,FIXL
+2662689,Visby,en Visby,1,FIXL
+2763423,Traun,en Traun,1,FIXL2
+2760910,Wolfsberg,en Wolfsberg,1,FIXL2
+2803429,Aarschot,en Aarschot,1,FIXL2
+2802743,Balen,en Balen,1,FIXL2
+2801226,Boussu,en Boussu,1,FIXL2
+2799496,Destelbergen,en Destelbergen,1,FIXL2
+2799412,Diepenbeek,en Diepenbeek,1,FIXL2
+2799226,Dour,en Dour,1,FIXL2
+2799090,Duffel,en Duffel,1,FIXL2
+2799007,Edegem,en Edegem,1,FIXL2
+2796833,Haaltert,en Haaltert,1,FIXL2
+2796637,Hamme,en Hamme,1,FIXL2
+2796012,Herent,en Herent,1,FIXL2
+2795800,Heusden,en Heusden,1,FIXL2
+2794663,Kasterlee,en Kasterlee,1,FIXL2
+2794210,Knokke-Heist,en Knokke-Heist,1,FIXL2
+2794179,Koersel,en Koersel,1,FIXL2
+2793446,Lanaken,en Lanaken,1,FIXL2
+2793144,Lebbeke,en Lebbeke,1,FIXL2
+2792360,Lille,en Lille,1,FIXL2
+2791961,Maasmechelen,en Maasmechelen,1,FIXL2
+2791857,Maldegem,en Maldegem,1,FIXL2
+2791424,Meise,en Meise,1,FIXL2
+2791194,Middelkerke,en Middelkerke,1,FIXL2
+2790114,Ninove,en Ninove,1,FIXL2
+2789751,Oostkamp,en Oostkamp,1,FIXL2
+2789413,Overijse,en Overijse,1,FIXL2
+2788726,Poperinge,en Poperinge,1,FIXL2
+2788348,Ranst,en Ranst,1,FIXL2
+2786344,Soumagne,en Soumagne,1,FIXL2
+2786229,Stabroek,en Stabroek,1,FIXL2
+2783632,Willebroek,en Willebroek,1,FIXL2
+2783293,Zele,en Zele,1,FIXL2
+2783197,Zolder,en Zolder,1,FIXL2
+2783188,Zonhoven,en Zonhoven,1,FIXL2
+2783081,Zwijndrecht,en Zwijndrecht,1,FIXL2
+733618,Asenovgrad,en Asenovgrad,1,FIXL2
+733579,Aytos,en Aytos,1,FIXL2
+733264,Berkovitsa,en Berkovitsa,1,FIXL2
+733014,Botevgrad,en Botevgrad,1,FIXL2
+732452,Chirpan,en Chirpan,1,FIXL2
+726418,Dobrich,en Dobrich,1,FIXL2
+726872,Dupnitsa,en Dupnitsa,1,FIXL2
+731549,Gabrovo,en Gabrovo,1,FIXL2
+731233,Gorna Oryahovitsa,en Gorna Oryahovitsa,1,FIXL2
+731108,Gotse Delchev,en Gotse Delchev,1,FIXL2
+730442,Harmanli,en Harmanli,1,FIXL2
+729794,Kardzhali,en Kardzhali,1,FIXL2
+730565,Karlovo,en Karlovo,1,FIXL2
+730559,Karnobat,en Karnobat,1,FIXL2
+730496,Kazanlak,en Kazanlak,1,FIXL2
+729730,Kyustendil,en Kyustendil,1,FIXL2
+729581,Lom,en Lom,1,FIXL2
+729559,Lovech,en Lovech,1,FIXL2
+729114,Montana,en Montana,1,FIXL2
+728742,Nova Zagora,en Nova Zagora,1,FIXL2
+728448,Panagyurishte,en Panagyurishte,1,FIXL2
+727886,Parvomay,en Parvomay,1,FIXL2
+728317,Peshtera,en Peshtera,1,FIXL2
+728075,Popovo,en Popovo,1,FIXL2
+727696,Razgrad,en Razgrad,1,FIXL2
+727447,Sandanski,en Sandanski,1,FIXL2
+727337,Sevlievo,en Sevlievo,1,FIXL2
+727233,Shumen,en Shumen,1,FIXL2
+727221,Silistra,en Silistra,1,FIXL2
+726848,Stara Zagora,en Stara Zagora,1,FIXL2
+726534,Svishtov,en Svishtov,1,FIXL2
+726174,Targovishte,en Targovishte,1,FIXL2
+726320,Troyan,en Troyan,1,FIXL2
+725988,Velingrad,en Velingrad,1,FIXL2
+725905,Vidin,en Vidin,1,FIXL2
+725712,Vratsa,en Vratsa,1,FIXL2
+725578,Yambol,en Yambol,1,FIXL2
+630429,Baranovichi,en Baranovichi,1,FIXL2
+630468,Bobruisk,en Bobruisk,1,FIXL2
+627907,Gomel,en Gomel,1,FIXL2
+627083,Kolodishchi,en Kolodishchi,1,FIXL2
+627145,Kobrin,en Kobrin,1,FIXL2
+625972,Logoysk,en Logoysk,1,FIXL2
+625665,Mogilev,en Mogilev,1,FIXL2
+625625,Molodechno,en Molodechno,1,FIXL2
+624079,Orsha,en Orsha,1,FIXL2
+630515,Oshmyany,en Oshmyany,1,FIXL2
+622794,Rechitsa,en Rechitsa,1,FIXL2
+621729,Smolevichi,en Smolevichi,1,FIXL2
+621713,Smorgon,en Smorgon,1,FIXL2
+622428,Soligorsk,en Soligorsk,1,FIXL2
+620127,Vitebsk,en Vitebsk,1,FIXL2
+2661810,Allschwil,en Allschwil,1,FIXL2
+2661265,Carouge,en Carouge,1,FIXL2
+2660925,Einsiedeln,en Einsiedeln,1,FIXL2
+2660727,Frauenfeld,en Frauenfeld,1,FIXL2
+2660549,Gossau,en Gossau,1,FIXL2
+2660305,Horgen,en Horgen,1,FIXL2
+2659667,Meyrin,en Meyrin,1,FIXL2
+2659296,Onex,en Onex,1,FIXL2
+2658761,Schaffhausen,en Schaffhausen,1,FIXL2
+2658494,Steffisburg,en Steffisburg,1,FIXL2
+2658216,Uster,en Uster,1,FIXL2
+2658154,Vernier,en Vernier,1,FIXL2
+2658011,Wettingen,en Wettingen,1,FIXL2
+2657908,Zug,en Zug,1,FIXL2
+3079129,Bohumín,en Bohumín,1,FIXL2
+3078545,Bruntál,en Bruntál,1,FIXL2
+3077835,Cheb,en Cheb,1,FIXL2
+3077244,Děčín,en Děčín,1,FIXL2
+3074020,Kadaň,en Kadaň,1,FIXL2
+3073789,Karviná,en Karviná,1,FIXL2
+3073660,Klatovy,en Klatovy,1,FIXL2
+3072656,Krnov,en Krnov,1,FIXL2
+3070862,Mělník,en Mělník,1,FIXL2
+3069844,Neratovice,en Neratovice,1,FIXL2
+3068873,Orlová,en Orlová,1,FIXL2
+3068690,Otrokovice,en Otrokovice,1,FIXL2
+3062339,Vsetín,en Vsetín,1,FIXL2
+3061822,Žatec,en Žatec,1,FIXL2
+2951679,Beckingen,en Beckingen,1,FIXL2
+2930182,Enger,en Enger,1,FIXL2
+2930043,Ennepetal,en Ennepetal,1,FIXL2
+2929865,Eppelborn,en Eppelborn,1,FIXL2
+2917737,Greiz,en Greiz,1,FIXL2
+2905290,Hessisch Oldendorf,en Hessisch Oldendorf,1,FIXL2
+2904985,Heusweiler,en Heusweiler,1,FIXL2
+2904886,Hiddenhausen,en Hiddenhausen,1,FIXL2
+2891014,Kierspe,en Kierspe,1,FIXL2
+2879832,Lebach,en Lebach,1,FIXL2
+2879315,Leichlingen,en Leichlingen,1,FIXL2
+2877142,Lindlar,en Lindlar,1,FIXL2
+2876218,Lohmar,en Lohmar,1,FIXL2
+2872519,Meerane,en Meerane,1,FIXL2
+2863240,Nieder-Ingelheim,en Nieder-Ingelheim,1,FIXL2
+2851584,Püttlingen,en Püttlingen,1,FIXL2
+2847033,Riegelsberg,en Riegelsberg,1,FIXL2
+2835382,Schwalbach,en Schwalbach,1,FIXL2
+2810969,Werdau,en Werdau,1,FIXL2
+2625070,Aabenraa,en Aabenraa,1,FIXL2
+2624906,Albertslund,en Albertslund,1,FIXL2
+2621927,Frederikshavn,en Frederikshavn,1,FIXL2
+2621912,Frederikssund,en Frederikssund,1,FIXL2
+2620583,Hedensted,en Hedensted,1,FIXL2
+2620473,Helsingør,en Helsingør,1,FIXL2
+2619771,Horsens,en Horsens,1,FIXL2
+2619528,Hvidovre,en Hvidovre,1,FIXL2
+2619856,Hørsholm,en Hørsholm,1,FIXL2
+2619377,Ishøj,en Ishøj,1,FIXL2
+2619154,Kalundborg,en Kalundborg,1,FIXL2
+2618415,Køge,en Køge,1,FIXL2
+2617658,Lillerød,en Lillerød,1,FIXL2
+2616015,Nyborg,en Nyborg,1,FIXL2
+2615961,Nykøbing Falster,en Nykøbing Falster,1,FIXL2
+2614764,Ringsted,en Ringsted,1,FIXL2
+2614481,Roskilde,en Roskilde,1,FIXL2
+2613731,Skive,en Skive,1,FIXL2
+2613460,Slagelse,en Slagelse,1,FIXL2
+2613233,Solrød Strand,en Solrød Strand,1,FIXL2
+2612629,Stenløse,en Stenløse,1,FIXL2
+2611497,Tønder,en Tønder,1,FIXL2
+2610319,Viborg,en Viborg,1,FIXL2
+591260,Kohtla-Järve,en Kohtla-Järve,1,FIXL2
+590447,Maardu,en Maardu,1,FIXL2
+590031,Narva,en Narva,1,FIXL2
+589580,Pärnu,en Pärnu,1,FIXL2
+587577,Viljandi,en Viljandi,1,FIXL2
+2522208,Albolote,en Albolote,1,FIXL2
+2522165,Alcalá de Guadaíra,en Alcalá de Guadaíra,1,FIXL2
+2522012,Algemesí,en Algemesí,1,FIXL2
+2521964,Aljaraque,en Aljaraque,1,FIXL2
+2521923,Almansa,en Almansa,1,FIXL2
+2521804,Altea,en Altea,1,FIXL2
+2521665,Arcos de la Frontera,en Arcos de la Frontera,1,FIXL2
+2521582,Arona,en Arona,1,FIXL2
+3129356,Arroyomolinos,en Arroyomolinos,1,FIXL2
+2521510,Aspe,en Aspe,1,FIXL2
+2521486,Atamaría,en Atamaría,1,FIXL2
+2521485,Atarfe,en Atarfe,1,FIXL2
+2521335,Barbate,en Barbate,1,FIXL2
+2521215,Baza,en Baza,1,FIXL2
+2521016,Berja,en Berja,1,FIXL2
+3127007,Calella,en Calella,1,FIXL2
+2520052,Cartaya,en Cartaya,1,FIXL2
+2519738,Castilleja de la Cuesta,en Castilleja de la Cuesta,1,FIXL2
+2519690,Catarroja,en Catarroja,1,FIXL2
+2519651,Cehegín,en Cehegín,1,FIXL2
+3109402,Cerdanyola del Vallès,en Cerdanyola del Vallès,1,FIXL2
+2519477,Chipiona,en Chipiona,1,FIXL2
+2519289,Conil de la Frontera,en Conil de la Frontera,1,FIXL2
+3124569,Cornellà de Llobregat,en Cornellà de Llobregat,1,FIXL2
+2519367,Coín,en Coín,1,FIXL2
+2519110,Crevillente,en Crevillente,1,FIXL2
+3124041,Culleredo,en Culleredo,1,FIXL2
+2520055,Cártama,en Cártama,1,FIXL2
+2520447,El Campello,en El Campello,1,FIXL2
+3117232,El Masnou,en El Masnou,1,FIXL2
+3123493,Ferrol,en Ferrol,1,FIXL2
+3121766,Galapagar,en Galapagar,1,FIXL2
+2516797,Hellín,en Hellín,1,FIXL2
+3121881,Hondarribia,en Hondarribia,1,FIXL2
+3120501,Humanes de Madrid,en Humanes de Madrid,1,FIXL2
+2516474,Icod de los Vinos,en Icod de los Vinos,1,FIXL2
+2516443,Ingenio,en Ingenio,1,FIXL2
+2515692,La Orotava,en La Orotava,1,FIXL2
+2515219,Las Torres de Cotillas,en Las Torres de Cotillas,1,FIXL2
+2515072,Lepe,en Lepe,1,FIXL2
+2514868,Los Alcázares,en Los Alcázares,1,FIXL2
+2514553,Los Palacios y Villafranca,en Los Palacios y Villafranca,1,FIXL2
+2514158,Marchena,en Marchena,1,FIXL2
+2514042,Maspalomas,en Maspalomas,1,FIXL2
+2513983,Mazarrón,en Mazarrón,1,FIXL2
+2513703,Moncada,en Moncada,1,FIXL2
+3116527,Montcada i Reixac,en Montcada i Reixac,1,FIXL2
+2513604,Montijo,en Montijo,1,FIXL2
+2513240,Nerja,en Nerja,1,FIXL2
+2513195,Novelda,en Novelda,1,FIXL2
+2513222,Níjar,en Níjar,1,FIXL2
+2513052,Osuna,en Osuna,1,FIXL2
+6354969,Playa del Inglés,en Playa del Inglés,1,FIXL2
+3113082,Portugalete,en Portugalete,1,FIXL2
+2519068,Quart de Poblet,en Quart de Poblet,1,FIXL2
+2511994,Realejo Alto,en Realejo Alto,1,FIXL2
+2511852,Rincón de la Victoria,en Rincón de la Victoria,1,FIXL2
+3111605,Ripollet,en Ripollet,1,FIXL2
+2511700,Rota,en Rota,1,FIXL2
+3110986,Salou,en Salou,1,FIXL2
+2511440,San Bartolomé de Tirajana,en San Bartolomé de Tirajana,1,FIXL2
+2511371,San Isidro,en San Isidro,1,FIXL2
+2511287,San Miguel de Abona,en San Miguel de Abona,1,FIXL2
+3110642,Sant Feliu de Llobregat,en Sant Feliu de Llobregat,1,FIXL2
+3110519,Sant Joan Despí,en Sant Joan Despí,1,FIXL2
+3109546,Sant Just Desvern,en Sant Just Desvern,1,FIXL2
+2511150,Santa Lucía,en Santa Lucía,1,FIXL2
+3109897,Ribeira,en Ribeira,1,FIXL2
+2511160,Santa Fe,en Santa Fe,1,FIXL2
+3109050,Seseña,en Seseña,1,FIXL2
+3109041,Sestao,en Sestao,1,FIXL2
+2510764,Sueca,en Sueca,1,FIXL2
+3108317,Tarancón,en Tarancón,1,FIXL2
+2510394,Tomares,en Tomares,1,FIXL2
+3107955,Tordera,en Tordera,1,FIXL2
+2510245,Torrox,en Torrox,1,FIXL2
+2510485,Tías,en Tías,1,FIXL2
+2510112,Ubrique,en Ubrique,1,FIXL2
+2510073,Utrera,en Utrera,1,FIXL2
+3105247,Villanueva de la Cañada,en Villanueva de la Cañada,1,FIXL2
+3105148,Villaquilambre,en Villaquilambre,1,FIXL2
+3104703,Villaviciosa de Odón,en Villaviciosa de Odón,1,FIXL2
+3104475,Viveiro,en Viveiro,1,FIXL2
+2509408,Yaiza,en Yaiza,1,FIXL2
+2509402,Yecla,en Yecla,1,FIXL2
+2509377,Zafra,en Zafra,1,FIXL2
+659169,Hamina,en Hamina,1,FIXL2
+651659,Kontiolahti,en Kontiolahti,1,FIXL2
+648738,Laukaa,en Laukaa,1,FIXL2
+643644,Orimattila,en Orimattila,1,FIXL2
+3037423,Antony,en Antony,1,FIXL2
+3031898,Boissy-Saint-Léger,en Boissy-Saint-Léger,1,FIXL2
+3030990,Bourg-la-Reine,en Bourg-la-Reine,1,FIXL2
+8555643,Cergy-Pontoise,en Cergy-Pontoise,1,FIXL2
+3026637,Charenton-le-Pont,en Charenton-le-Pont,1,FIXL2
+3025622,Chelles,en Chelles,1,FIXL2
+3020832,Draveil,en Draveil,1,FIXL2
+3018280,Fleury-les-Aubrais,en Fleury-les-Aubrais,1,FIXL2
+3017341,Franconville,en Franconville,1,FIXL2
+3016830,Gagny,en Gagny,1,FIXL2
+3002647,Le Plessis-Trévise,en Le Plessis-Trévise,1,FIXL2
+2998305,Limeil-Brévannes,en Limeil-Brévannes,1,FIXL2
+2998056,Livry-Gargan,en Livry-Gargan,1,FIXL2
+2997904,Lognes,en Lognes,1,FIXL2
+2995206,Massy,en Massy,1,FIXL2
+2992616,Montfermeil,en Montfermeil,1,FIXL2
+2992090,Montreuil,en Montreuil,1,FIXL2
+2990616,Neuilly-Plaisance,en Neuilly-Plaisance,1,FIXL2
+2986025,Port-de-Bouc,en Port-de-Bouc,1,FIXL2
+2983440,Ris-Orangis,en Ris-Orangis,1,FIXL2
+2983026,Romainville,en Romainville,1,FIXL2
+2981512,Saint-Avertin,en Saint-Avertin,1,FIXL2
+2980558,Sainte-Geneviève-des-Bois,en Sainte-Geneviève-des-Bois,1,FIXL2
+2974681,Sevran,en Sevran,1,FIXL2
+2973841,Stains,en Stains,1,FIXL2
+2968653,Villemomble,en Villemomble,1,FIXL2
+2968555,Villeneuve-la-Garenne,en Villeneuve-la-Garenne,1,FIXL2
+2967934,Viroflay,en Viroflay,1,FIXL2
+3020020,Épinay-sur-Seine,en Épinay-sur-Seine,1,FIXL2
+2634677,Watford,en Watford,1,FIXL2
+8478257,Agios Ioannis Rentis,en Agios Ioannis Rentis,1,FIXL2
+736229,Florina,en Florina,1,FIXL2
+8310138,Ilioupoli,en Ilioupoli,1,FIXL2
+261249,Kamatero,en Kamatero,1,FIXL2
+259824,Kifisia,en Kifisia,1,FIXL2
+9034728,Nea Ionia,en Nea Ionia,1,FIXL2
+256575,Nea Smyrni,en Nea Smyrni,1,FIXL2
+256429,Nikaia,en Nikaia,1,FIXL2
+255377,Petroupoli,en Petroupoli,1,FIXL2
+734301,Sykies,en Sykies,1,FIXL2
+251948,Vyronas,en Vyronas,1,FIXL2
+256601,Ilion,en Ilion,1,FIXL2
+723030,Abony,en Abony,1,FIXL2
+3056357,Ajka,en Ajka,1,FIXL2
+3055685,Baja,en Baja,1,FIXL2
+722636,Balmazújváros,en Balmazújváros,1,FIXL2
+722437,Békéscsaba,en Békéscsaba,1,FIXL2
+3054543,Cegléd,en Cegléd,1,FIXL2
+3053438,Dunaújváros,en Dunaújváros,1,FIXL2
+3053163,Esztergom,en Esztergom,1,FIXL2
+720334,Gyula,en Gyula,1,FIXL2
+3052040,Gyöngyös,en Gyöngyös,1,FIXL2
+3052241,Göd,en Göd,1,FIXL2
+3052236,Gödöllő,en Gödöllő,1,FIXL2
+720284,Hajdúnánás,en Hajdúnánás,1,FIXL2
+720276,Hajdúszoboszló,en Hajdúszoboszló,1,FIXL2
+3050907,Jászberény,en Jászberény,1,FIXL2
+719404,Karcag,en Karcag,1,FIXL2
+719311,Kazincbarcika,en Kazincbarcika,1,FIXL2
+3049885,Kiskunfélegyháza,en Kiskunfélegyháza,1,FIXL2
+3049880,Kiskunhalas,en Kiskunhalas,1,FIXL2
+3049896,Kiskőrös,en Kiskőrös,1,FIXL2
+718739,Kisvárda,en Kisvárda,1,FIXL2
+3049512,Komló,en Komló,1,FIXL2
+3049519,Komárom,en Komárom,1,FIXL2
+717902,Makó,en Makó,1,FIXL2
+717652,Mezőkövesd,en Mezőkövesd,1,FIXL2
+717635,Mezőtúr,en Mezőtúr,1,FIXL2
+3047942,Monor,en Monor,1,FIXL2
+3047896,Mosonmagyaróvár,en Mosonmagyaróvár,1,FIXL2
+717771,Mátészalka,en Mátészalka,1,FIXL2
+3047651,Nagykőrös,en Nagykőrös,1,FIXL2
+716736,Orosháza,en Orosháza,1,FIXL2
+3046888,Oroszlány,en Oroszlány,1,FIXL2
+3046768,Paks,en Paks,1,FIXL2
+3046686,Pápa,en Pápa,1,FIXL2
+3045643,Salgótarján,en Salgótarján,1,FIXL2
+715466,Szarvas,en Szarvas,1,FIXL2
+3044681,Szentendre,en Szentendre,1,FIXL2
+715337,Szentes,en Szentes,1,FIXL2
+3044821,Százhalombatta,en Százhalombatta,1,FIXL2
+3045487,Sárvár,en Sárvár,1,FIXL2
+715839,Sátoraljaújhely,en Sátoraljaújhely,1,FIXL2
+3044083,Tata,en Tata,1,FIXL2
+714697,Tiszaújváros,en Tiszaújváros,1,FIXL2
+3043293,Vác,en Vác,1,FIXL2
+3042638,Zalaegerszeg,en Zalaegerszeg,1,FIXL2
+716671,Ózd,en Ózd,1,FIXL2
+2965715,Carrigaline,en Carrigaline,1,FIXL2
+2962974,Leixlip,en Leixlip,1,FIXL2
+2962785,Lucan,en Lucan,1,FIXL2
+2633274,Akureyri,en Akureyri,1,FIXL2
+3415496,Keflavík,en Keflavík,1,FIXL2
+8644037,Reykjanesbær,en Reykjanesbær,1,FIXL2
+3183587,Abano Terme,en Abano Terme,1,FIXL2
+3183573,Abbiategrasso,en Abbiategrasso,1,FIXL2
+3183490,Acqui Terme,en Acqui Terme,1,FIXL2
+2525769,Adrano,en Adrano,1,FIXL2
+3183319,Albignasego,en Albignasego,1,FIXL2
+2525755,Alcamo,en Alcamo,1,FIXL2
+3183284,Alghero,en Alghero,1,FIXL2
+3183089,Ancona,en Ancona,1,FIXL2
+3183072,Andria,en Andria,1,FIXL2
+3182904,Arcore,en Arcore,1,FIXL2
+3182884,Arezzo,en Arezzo,1,FIXL2
+3182749,Ascoli Piceno,en Ascoli Piceno,1,FIXL2
+3182650,Avellino,en Avellino,1,FIXL2
+3182361,Bareggio,en Bareggio,1,FIXL2
+3182297,Bassano del Grappa,en Bassano del Grappa,1,FIXL2
+3182272,Battipaglia,en Battipaglia,1,FIXL2
+8224092,Bellaria-Igea Marina,en Bellaria-Igea Marina,1,FIXL2
+3182210,Belluno,en Belluno,1,FIXL2
+2525571,Belpasso,en Belpasso,1,FIXL2
+3182179,Benevento,en Benevento,1,FIXL2
+3181631,Bra,en Bra,1,FIXL2
+2525473,Cagliari,en Cagliari,1,FIXL2
+3180991,Campobasso,en Campobasso,1,FIXL2
+2525405,Canicattì,en Canicattì,1,FIXL2
+3180581,Carate Brianza,en Carate Brianza,1,FIXL2
+2525350,Carini,en Carini,1,FIXL2
+3180445,Carpi,en Carpi,1,FIXL2
+3180224,Casalecchio di Reno,en Casalecchio di Reno,1,FIXL2
+2525207,Casarano,en Casarano,1,FIXL2
+3179866,Caserta,en Caserta,1,FIXL2
+6534235,Cassano Magnago,en Cassano Magnago,1,FIXL2
+3179781,Cassino,en Cassino,1,FIXL2
+3179686,Castelfranco Emilia,en Castelfranco Emilia,1,FIXL2
+3179684,Castelfranco Veneto,en Castelfranco Veneto,1,FIXL2
+2525070,Castrovillari,en Castrovillari,1,FIXL2
+2525068,Catania,en Catania,1,FIXL2
+2525059,Catanzaro,en Catanzaro,1,FIXL2
+3178999,Cerveteri,en Cerveteri,1,FIXL2
+6534280,Cesano Boscone,en Cesano Boscone,1,FIXL2
+3178957,Cesena,en Cesena,1,FIXL2
+3178850,Chiari,en Chiari,1,FIXL2
+3178832,Chiavari,en Chiavari,1,FIXL2
+3178796,Chieti,en Chieti,1,FIXL2
+3178784,Chioggia,en Chioggia,1,FIXL2
+3178745,Chivasso,en Chivasso,1,FIXL2
+3178671,Cinisello Balsamo,en Cinisello Balsamo,1,FIXL2
+3178650,Ciriè,en Ciriè,1,FIXL2
+3170102,Civitanova Marche,en Civitanova Marche,1,FIXL2
+3178402,Colle di Val d'Elsa,en Colle di Val d'Elsa,1,FIXL2
+3178398,Colleferro,en Colleferro,1,FIXL2
+3178388,Collegno,en Collegno,1,FIXL2
+3178283,Cologno Monzese,en Cologno Monzese,1,FIXL2
+3178112,Cordenons,en Cordenons,1,FIXL2
+9003711,Corigliano Scalo,en Corigliano Scalo,1,FIXL2
+3178074,Cornaredo,en Cornaredo,1,FIXL2
+3178004,Corsico,en Corsico,1,FIXL2
+3177841,Crema,en Crema,1,FIXL2
+2524881,Crotone,en Crotone,1,FIXL2
+3177700,Cuneo,en Cuneo,1,FIXL2
+3177608,Desio,en Desio,1,FIXL2
+3177532,Domodossola,en Domodossola,1,FIXL2
+2524819,Enna,en Enna,1,FIXL2
+3177337,Este,en Este,1,FIXL2
+3177171,Fasano,en Fasano,1,FIXL2
+3176959,Florencia,en Florencia,1,FIXL2
+2524734,Floridia,en Floridia,1,FIXL2
+3176849,Follonica,en Follonica,1,FIXL2
+3176843,Fondi,en Fondi,1,FIXL2
+3176746,Forlì,en Forlì,1,FIXL2
+3176733,Formigine,en Formigine,1,FIXL2
+3176639,Fossano,en Fossano,1,FIXL2
+3176515,Frosinone,en Frosinone,1,FIXL2
+3176407,Galatina,en Galatina,1,FIXL2
+3176391,Gallarate,en Gallarate,1,FIXL2
+3176379,Galliate,en Galliate,1,FIXL2
+3176219,Génova,en Génova,1,FIXL2
+3176177,Ghedi,en Ghedi,1,FIXL2
+2524606,Gioia Tauro,en Gioia Tauro,1,FIXL2
+3176041,Giussano,en Giussano,1,FIXL2
+3175990,Gorgonzola,en Gorgonzola,1,FIXL2
+3175986,Gorizia,en Gorizia,1,FIXL2
+3175755,Grugliasco,en Grugliasco,1,FIXL2
+6698332,Infernetto,en Infernetto,1,FIXL2
+3175458,Ischia,en Ischia,1,FIXL2
+3175445,Isernia,en Isernia,1,FIXL2
+3175384,Ivrea,en Ivrea,1,FIXL2
+3175238,Lainate,en Lainate,1,FIXL2
+3164090,Villorba,en Villorba,1,FIXL2
+3174953,Lecce,en Lecce,1,FIXL2
+3174921,Legnano,en Legnano,1,FIXL2
+2524410,Lentini,en Lentini,1,FIXL2
+3174719,Limbiate,en Limbiate,1,FIXL2
+3174638,Lodi,en Lodi,1,FIXL2
+3174530,Lucca,en Lucca,1,FIXL2
+3174494,Lugo,en Lugo,1,FIXL2
+6534216,Lumezzane,en Lumezzane,1,FIXL2
+3174380,Macerata,en Macerata,1,FIXL2
+3174295,Magenta,en Magenta,1,FIXL2
+3174141,Malnate,en Malnate,1,FIXL2
+3173949,Mariano Comense,en Mariano Comense,1,FIXL2
+3173945,Marigliano,en Marigliano,1,FIXL2
+3173721,Matera,en Matera,1,FIXL2
+3173671,Meda,en Meda,1,FIXL2
+2524170,Mesina,en Mesina,1,FIXL2
+3173370,Mirandola,en Mirandola,1,FIXL2
+3173326,Modugno,en Modugno,1,FIXL2
+3173314,Mogliano Veneto,en Mogliano Veneto,1,FIXL2
+3173180,Moncalieri,en Moncalieri,1,FIXL2
+3173162,Mondovì,en Mondovì,1,FIXL2
+3173124,Monselice,en Monselice,1,FIXL2
+3173029,Montebelluna,en Montebelluna,1,FIXL2
+3172996,Montecatini Terme,en Montecatini Terme,1,FIXL2
+3172979,Montecchio Maggiore,en Montecchio Maggiore,1,FIXL2
+3172768,Monterotondo,en Monterotondo,1,FIXL2
+3172729,Montesilvano,en Montesilvano,1,FIXL2
+3172718,Montevarchi,en Montevarchi,1,FIXL2
+3172681,Montichiari,en Montichiari,1,FIXL2
+3172629,Monza,en Monza,1,FIXL2
+2523998,Noto,en Noto,1,FIXL2
+3172184,Novate Milanese,en Novate Milanese,1,FIXL2
+3172170,Novi Ligure,en Novi Ligure,1,FIXL2
+3172154,Nuoro,en Nuoro,1,FIXL2
+3171986,Orbassano,en Orbassano,1,FIXL2
+2523964,Oristano,en Oristano,1,FIXL2
+6534264,Orta di Atella,en Orta di Atella,1,FIXL2
+3171848,Osimo,en Osimo,1,FIXL2
+3171786,Ostuni,en Ostuni,1,FIXL2
+2523920,Palermo,en Palermo,1,FIXL2
+2523902,Palmi,en Palmi,1,FIXL2
+3171484,Parabiago,en Parabiago,1,FIXL2
+3171180,Perugia,en Perugia,1,FIXL2
+3170778,Pietrasanta,en Pietrasanta,1,FIXL2
+3170676,Pioltello,en Pioltello,1,FIXL2
+3170647,Pisa,en Pisa,1,FIXL2
+3170621,Pistoia,en Pistoia,1,FIXL2
+3170504,Poggibonsi,en Poggibonsi,1,FIXL2
+3170342,Pomezia,en Pomezia,1,FIXL2
+3170272,Pontedera,en Pontedera,1,FIXL2
+3170147,Pordenone,en Pordenone,1,FIXL2
+3170073,Porto San Giorgio,en Porto San Giorgio,1,FIXL2
+3170027,Potenza,en Potenza,1,FIXL2
+3169984,Pozzuoli,en Pozzuoli,1,FIXL2
+3169921,Prato,en Prato,1,FIXL2
+2523664,Quattromiglia,en Quattromiglia,1,FIXL2
+2523650,Ragusa,en Ragusa,1,FIXL2
+3169602,Rapallo,en Rapallo,1,FIXL2
+2523630,Reggio Calabria,en Reggio Calabria,1,FIXL2
+3169424,Riccione,en Riccione,1,FIXL2
+3169412,Rieti,en Rieti,1,FIXL2
+3169361,Rimini,en Rimini,1,FIXL2
+3169231,Rivoli,en Rivoli,1,FIXL2
+3169056,Romano di Lombardia,en Romano di Lombardia,1,FIXL2
+3169070,Roma,en Roma,1,FIXL2
+3168936,Roseto degli Abruzzi,en Roseto degli Abruzzi,1,FIXL2
+3168930,Rosignano Solvay,en Rosignano Solvay,1,FIXL2
+2523577,Rossano Scalo,en Rossano Scalo,1,FIXL2
+3168843,Rovigo,en Rovigo,1,FIXL2
+3168837,Rozzano,en Rozzano,1,FIXL2
+3168730,Sacile,en Sacile,1,FIXL2
+3168627,Salsomaggiore Terme,en Salsomaggiore Terme,1,FIXL2
+3168609,Saluzzo,en Saluzzo,1,FIXL2
+3168550,San Benedetto del Tronto,en San Benedetto del Tronto,1,FIXL2
+6534252,San Felice a Cancello,en San Felice a Cancello,1,FIXL2
+3168236,San Giovanni Lupatoto,en San Giovanni Lupatoto,1,FIXL2
+3168231,San Giovanni Valdarno,en San Giovanni Valdarno,1,FIXL2
+2523461,San Giovanni in Fiore,en San Giovanni in Fiore,1,FIXL2
+3168222,San Giuliano Milanese,en San Giuliano Milanese,1,FIXL2
+3168175,San Lazzaro di Savena,en San Lazzaro di Savena,1,FIXL2
+3167978,San Mauro Torinese,en San Mauro Torinese,1,FIXL2
+3167953,San Miniato,en San Miniato,1,FIXL2
+3167751,San Salvo,en San Salvo,1,FIXL2
+3167744,San Sebastiano,en San Sebastiano,1,FIXL2
+3167731,San Severo,en San Severo,1,FIXL2
+3167777,Sanremo,en Sanremo,1,FIXL2
+3167113,Saronno,en Saronno,1,FIXL2
+3167104,Sarzana,en Sarzana,1,FIXL2
+3167053,Sassuolo,en Sassuolo,1,FIXL2
+3167034,Savigliano,en Savigliano,1,FIXL2
+3166989,Scandiano,en Scandiano,1,FIXL2
+3166988,Scandicci,en Scandicci,1,FIXL2
+3166808,Segrate,en Segrate,1,FIXL2
+3166740,Senigallia,en Senigallia,1,FIXL2
+3166601,Sesto Fiorentino,en Sesto Fiorentino,1,FIXL2
+3166598,Sesto San Giovanni,en Sesto San Giovanni,1,FIXL2
+3166574,Seveso,en Seveso,1,FIXL2
+3166548,Siena,en Siena,1,FIXL2
+2523083,Siracusa,en Siracusa,1,FIXL2
+3166397,Sondrio,en Sondrio,1,FIXL2
+3166387,Sora,en Sora,1,FIXL2
+3219114,Spinea,en Spinea,1,FIXL2
+3166034,Sulmona,en Sulmona,1,FIXL2
+3166006,Suzzara,en Suzzara,1,FIXL2
+3165803,Teramo,en Teramo,1,FIXL2
+3165788,Terlizzi,en Terlizzi,1,FIXL2
+2522960,Termini Imerese,en Termini Imerese,1,FIXL2
+3165773,Termoli,en Termoli,1,FIXL2
+3165612,Todi,en Todi,1,FIXL2
+3165595,Tolentino,en Tolentino,1,FIXL2
+3165370,Tortona,en Tortona,1,FIXL2
+3165340,Tradate,en Tradate,1,FIXL2
+2522876,Trapani,en Trapani,1,FIXL2
+3165201,Treviso,en Treviso,1,FIXL2
+3165198,Trezzano sul Naviglio,en Trezzano sul Naviglio,1,FIXL2
+3165185,Trieste,en Trieste,1,FIXL2
+3165178,Triggiano,en Triggiano,1,FIXL2
+3164617,Venaria Reale,en Venaria Reale,1,FIXL2
+3164440,Viadana,en Viadana,1,FIXL2
+3164433,Viareggio,en Viareggio,1,FIXL2
+3164342,Vignola,en Vignola,1,FIXL2
+8378910,Villanova,en Villanova,1,FIXL2
+3164083,Vimercate,en Vimercate,1,FIXL2
+3164080,Vimodrone,en Vimodrone,1,FIXL2
+3164039,Viterbo,en Viterbo,1,FIXL2
+3164028,Vittorio Veneto,en Vittorio Veneto,1,FIXL2
+3163995,Voghera,en Voghera,1,FIXL2
+3163853,Zola Predosa,en Zola Predosa,1,FIXL2
+597989,Kretinga,en Kretinga,1,FIXL2
+593926,Telšiai,en Telšiai,1,FIXL2
+847633,Alta,en Alta,1,FIXL2
+3153823,Harstad,en Harstad,1,FIXL2
+3145614,Mo i Rana,en Mo i Rana,1,FIXL2
+776175,Biała Podlaska,en Biała Podlaska,1,FIXL2
+3103402,Bielsko-Biała,en Bielsko-Biała,1,FIXL2
+775922,Biłgoraj,en Biłgoraj,1,FIXL2
+3102987,Bolesławiec,en Bolesławiec,1,FIXL2
+3101619,Chorzów,en Chorzów,1,FIXL2
+3101547,Chrzanów,en Chrzanów,1,FIXL2
+3101076,Czechowice-Dziedzice,en Czechowice-Dziedzice,1,FIXL2
+3099759,Elbląg,en Elbląg,1,FIXL2
+3099424,Gdynia,en Gdynia,1,FIXL2
+3099230,Gliwice,en Gliwice,1,FIXL2
+771506,Grajewo,en Grajewo,1,FIXL2
+3098218,Grudziądz,en Grudziądz,1,FIXL2
+3099213,Głogów,en Głogów,1,FIXL2
+3097257,Jelenia Góra,en Jelenia Góra,1,FIXL2
+3096880,Kalisz,en Kalisz,1,FIXL2
+3096779,Kamienna Góra,en Kamienna Góra,1,FIXL2
+769250,Kielce,en Kielce,1,FIXL2
+3095971,Knurów,en Knurów,1,FIXL2
+3095795,Kołobrzeg,en Kołobrzeg,1,FIXL2
+767470,Krosno,en Krosno,1,FIXL2
+3094170,Kutno,en Kutno,1,FIXL2
+766555,Legionowo,en Legionowo,1,FIXL2
+3093692,Legnica,en Legnica,1,FIXL2
+3093524,Leszno,en Leszno,1,FIXL2
+3093040,Lubań,en Lubań,1,FIXL2
+3091150,Nakło nad Notecią,en Nakło nad Notecią,1,FIXL2
+763534,Nowy Sącz,en Nowy Sącz,1,FIXL2
+3090452,Nowy Tomyśl,en Nowy Tomyśl,1,FIXL2
+762423,Piaseczno,en Piaseczno,1,FIXL2
+3089125,Piekary Śląskie,en Piekary Śląskie,1,FIXL2
+3088972,Piotrków Trybunalski,en Piotrków Trybunalski,1,FIXL2
+3089033,Piła,en Piła,1,FIXL2
+761228,Pruszków,en Pruszków,1,FIXL2
+761131,Przeworsk,en Przeworsk,1,FIXL2
+3088825,Płock,en Płock,1,FIXL2
+3087497,Radomsko,en Radomsko,1,FIXL2
+3087418,Radzionków,en Radzionków,1,FIXL2
+3086706,Rumia,en Rumia,1,FIXL2
+3086586,Rybnik,en Rybnik,1,FIXL2
+3086511,Rypin,en Rypin,1,FIXL2
+3085807,Skawina,en Skawina,1,FIXL2
+758626,Sokołów Podlaski,en Sokołów Podlaski,1,FIXL2
+3085128,Sosnowiec,en Sosnowiec,1,FIXL2
+758390,Starachowice,en Starachowice,1,FIXL2
+757718,Suwałki,en Suwałki,1,FIXL2
+3084130,Swarzędz,en Swarzędz,1,FIXL2
+3083878,Szamotuły,en Szamotuły,1,FIXL2
+3085450,Słupsk,en Słupsk,1,FIXL2
+3083426,Tczew,en Tczew,1,FIXL2
+3082998,Turek,en Turek,1,FIXL2
+3082756,Ustka,en Ustka,1,FIXL2
+3082751,Ustroń,en Ustroń,1,FIXL2
+3082197,Wieluń,en Wieluń,1,FIXL2
+3081741,Włocławek,en Włocławek,1,FIXL2
+3080985,Zabrze,en Zabrze,1,FIXL2
+3080414,Zduńska Wola,en Zduńska Wola,1,FIXL2
+3080251,Zgierz,en Zgierz,1,FIXL2
+3080165,Zielona Góra,en Zielona Góra,1,FIXL2
+754351,Ząbki,en Ząbki,1,FIXL2
+3080074,Złotoryja,en Złotoryja,1,FIXL2
+3083955,Świnoujście,en Świnoujście,1,FIXL2
+3083988,Świętochłowice,en Świętochłowice,1,FIXL2
+3080944,Żagań,en Żagań,1,FIXL2
+3079855,Żywiec,en Żywiec,1,FIXL2
+2743095,Alfena,en Alfena,1,FIXL2
+2271473,Arrentela,en Arrentela,1,FIXL2
+2742506,Baguim do Monte,en Baguim do Monte,1,FIXL2
+2270503,Cacém,en Cacém,1,FIXL2
+2270377,Camarate,en Camarate,1,FIXL2
+2270157,Carnaxide,en Carnaxide,1,FIXL2
+2269041,Corroios,en Corroios,1,FIXL2
+2739756,Fânzeres,en Fânzeres,1,FIXL2
+2738925,Gondomar,en Gondomar,1,FIXL2
+2267131,Laranjeiro,en Laranjeiro,1,FIXL2
+2267067,Linda-a-Velha,en Linda-a-Velha,1,FIXL2
+2266621,Massamá,en Massamá,1,FIXL2
+2265464,Oeiras,en Oeiras,1,FIXL2
+2265326,Paço de Arcos,en Paço de Arcos,1,FIXL2
+2264736,Piedade,en Piedade,1,FIXL2
+2264428,Porto de Mós,en Porto de Mós,1,FIXL2
+2735787,Póvoa de Varzim,en Póvoa de Varzim,1,FIXL2
+2264269,Quelfes,en Quelfes,1,FIXL2
+6559488,Quinta do Conde,en Quinta do Conde,1,FIXL2
+2264087,Ramada,en Ramada,1,FIXL2
+2735175,Ribeira de Frades,en Ribeira de Frades,1,FIXL2
+2735083,Rio Tinto,en Rio Tinto,1,FIXL2
+2734140,Senhora da Hora,en Senhora da Hora,1,FIXL2
+2262957,Sesimbra,en Sesimbra,1,FIXL2
+2263326,São João da Talha,en São João da Talha,1,FIXL2
+2734434,São Mamede de Infesta,en São Mamede de Infesta,1,FIXL2
+2734379,São Paulo de Frades,en São Paulo de Frades,1,FIXL2
+2734363,São Pedro da Cova,en São Pedro da Cova,1,FIXL2
+2734306,Custóias,en Custóias,1,FIXL2
+2262582,Torres Novas,en Torres Novas,1,FIXL2
+2733263,Valadares,en Valadares,1,FIXL2
+2743304,Águas Santas,en Águas Santas,1,FIXL2
+686578,Alba Iulia,en Alba Iulia,1,FIXL2
+685948,Bacău,en Bacău,1,FIXL2
+684657,Bistrița,en Bistrița,1,FIXL2
+684039,Botoșani,en Botoșani,1,FIXL2
+683760,Breaza,en Breaza,1,FIXL2
+683902,Brăila,en Brăila,1,FIXL2
+683394,Buftea,en Buftea,1,FIXL2
+683123,Buzău,en Buzău,1,FIXL2
+682729,Caransebeș,en Caransebeș,1,FIXL2
+681502,Cisnădie,en Cisnădie,1,FIXL2
+681179,Codlea,en Codlea,1,FIXL2
+680963,Constanța,en Constanța,1,FIXL2
+680332,Craiova,en Craiova,1,FIXL2
+681862,Câmpina,en Câmpina,1,FIXL2
+679452,Deva,en Deva,1,FIXL2
+678817,Drobeta-Turnu Severin,en Drobeta-Turnu Severin,1,FIXL2
+678978,Drăgășani,en Drăgășani,1,FIXL2
+678015,Focșani,en Focșani,1,FIXL2
+676527,Gura Humorului,en Gura Humorului,1,FIXL2
+677742,Găești,en Găești,1,FIXL2
+675810,Iași,en Iași,1,FIXL2
+674531,Lugoj,en Lugoj,1,FIXL2
+671964,Odorheiu Secuiesc,en Odorheiu Secuiesc,1,FIXL2
+671382,Pantelimon,en Pantelimon,1,FIXL2
+670889,Piatra Neamț,en Piatra Neamț,1,FIXL2
+670609,Pitești,en Pitești,1,FIXL2
+670474,Ploiești,en Ploiești,1,FIXL2
+669870,Popești-Leordeni,en Popești-Leordeni,1,FIXL2
+668605,Roșiorii de Vede,en Roșiorii de Vede,1,FIXL2
+668872,Râmnicu Vâlcea,en Râmnicu Vâlcea,1,FIXL2
+667526,Sebeș,en Sebeș,1,FIXL2
+667227,Sighetu Marmației,en Sighetu Marmației,1,FIXL2
+8436351,Sighișoara,en Sighișoara,1,FIXL2
+666767,Slatina,en Slatina,1,FIXL2
+665850,Suceava,en Suceava,1,FIXL2
+664518,Tulcea,en Tulcea,1,FIXL2
+664460,Turda,en Turda,1,FIXL2
+665024,Târgoviște,en Târgoviște,1,FIXL2
+665004,Târgu Mureș,en Târgu Mureș,1,FIXL2
+662334,Zalău,en Zalău,1,FIXL2
+662284,Zărnești,en Zărnești,1,FIXL2
+1508291,Chelyabinsk,en Chelyabinsk,1,FIXL2
+819740,Drozhzhino,en Drozhzhino,1,FIXL2
+553915,Kaluga,en Kaluga,1,FIXL2
+550280,Khimki,en Khimki,1,FIXL2
+547523,Klin,en Klin,1,FIXL2
+535121,Lipetsk,en Lipetsk,1,FIXL2
+534595,Lobnya,en Lobnya,1,FIXL2
+523812,Mytishchi,en Mytishchi,1,FIXL2
+511196,Perm,en Perm,1,FIXL2
+508101,Podolsk,en Podolsk,1,FIXL2
+502018,Reutov,en Reutov,1,FIXL2
+496638,Sergiyev Posad,en Sergiyev Posad,1,FIXL2
+473778,Vidnoye,en Vidnoye,1,FIXL2
+473247,Vladimir,en Vladimir,1,FIXL2
+472757,Volgograd,en Volgograd,1,FIXL2
+468902,Yaroslavl,en Yaroslavl,1,FIXL2
+606531,Boden,en Boden,1,FIXL2
+2700839,Kinna,en Kinna,1,FIXL2
+605155,Kiruna,en Kiruna,1,FIXL2
+2667109,Tullinge,en Tullinge,1,FIXL2
+2665452,Vallentuna,en Vallentuna,1,FIXL2
+3194351,Novo Mesto,en Novo Mesto,1,FIXL2
+3192241,Ptuj,en Ptuj,1,FIXL2
+3188915,Trbovlje,en Trbovlje,1,FIXL2
+3189075,Velenje,en Velenje,1,FIXL2
+3061186,Banská Bystrica,en Banská Bystrica,1,FIXL2
+3060950,Brezno,en Brezno,1,FIXL2
+3060405,Dolný Kubín,en Dolný Kubín,1,FIXL2
+3060219,Galanta,en Galanta,1,FIXL2
+3060139,Handlová,en Handlová,1,FIXL2
+3060095,Hlohovec,en Hlohovec,1,FIXL2
+3059435,Komárno,en Komárno,1,FIXL2
+3059436,Komárno,en Komárno,1,FIXL2
+3058986,Lučenec,en Lučenec,1,FIXL2
+3058897,Malacky,en Malacky,1,FIXL2
+724144,Michalovce,en Michalovce,1,FIXL2
+3058477,Nové Mesto nad Váhom,en Nové Mesto nad Váhom,1,FIXL2
+3058472,Nové Zámky,en Nové Zámky,1,FIXL2
+3058268,Partizánske,en Partizánske,1,FIXL2
+3058210,Pezinok,en Pezinok,1,FIXL2
+3058202,Piešťany,en Piešťany,1,FIXL2
+3058060,Považská Bystrica,en Považská Bystrica,1,FIXL2
+3058000,Prievidza,en Prievidza,1,FIXL2
+3057963,Púchov,en Púchov,1,FIXL2
+723736,Rimavská Sobota,en Rimavská Sobota,1,FIXL2
+723713,Rožňava,en Rožňava,1,FIXL2
+3057692,Senec,en Senec,1,FIXL2
+3057691,Senica,en Senica,1,FIXL2
+3057630,Skalica,en Skalica,1,FIXL2
+723559,Snina,en Snina,1,FIXL2
+3057174,Topoľčany,en Topoľčany,1,FIXL2
+723195,Vranov nad Topľou,en Vranov nad Topľou,1,FIXL2
+3057769,Šaľa,en Šaľa,1,FIXL2
+3056523,Žiar nad Hronom,en Žiar nad Hronom,1,FIXL2
+712165,Bila Tserkva,en Bila Tserkva,1,FIXL2
+712590,Bilohorodka,en Bilohorodka,1,FIXL2
+711660,Boryspil,en Boryspil,1,FIXL2
+711416,Brody,en Brody,1,FIXL2
+711390,Brovary,en Brovary,1,FIXL2
+710791,Cherkasy,en Cherkasy,1,FIXL2
+710719,Chernivtsi,en Chernivtsi,1,FIXL2
+707688,Chornomorsk,en Chornomorsk,1,FIXL2
+709930,Dnipro,en Dnipro,1,FIXL2
+709540,Dubno,en Dubno,1,FIXL2
+13546531,Fortechnyi,en Fortechnyi,1,FIXL2
+708901,Haisyn,en Haisyn,1,FIXL2
+707565,Irpin,en Irpin,1,FIXL2
+707471,Ivano-Frankivsk,en Ivano-Frankivsk,1,FIXL2
+706950,Kamianets-Podilskyi,en Kamianets-Podilskyi,1,FIXL2
+706369,Khmelnytskyi,en Khmelnytskyi,1,FIXL2
+706165,Khust,en Khust,1,FIXL2
+12519211,Knyahynyn,en Knyahynyn,1,FIXL2
+705392,Kolomyia,en Kolomyia,1,FIXL2
+13609094,Korolyov,en Korolyov,1,FIXL2
+704901,Korosten,en Korosten,1,FIXL2
+704858,Korsun-Shevchenkivskyi,en Korsun-Shevchenkivskyi,1,FIXL2
+704617,Kovel,en Kovel,1,FIXL2
+705812,Kropyvnytskyi,en Kropyvnytskyi,1,FIXL2
+703845,Kryvyi Rih,en Kryvyi Rih,1,FIXL2
+13561778,Kyivskyi,en Kyivskyi,1,FIXL2
+700696,Mostyska,en Mostyska,1,FIXL2
+700646,Mukachevo,en Mukachevo,1,FIXL2
+700569,Mykolaiv,en Mykolaiv,1,FIXL2
+700507,Nadvirna,en Nadvirna,1,FIXL2
+700261,Netishyn,en Netishyn,1,FIXL2
+8468760,Novoiavorivsk,en Novoiavorivsk,1,FIXL2
+13608468,Novozavodskyi,en Novozavodskyi,1,FIXL2
+698740,Odesa,en Odesa,1,FIXL2
+698625,Oleksandriia,en Oleksandriia,1,FIXL2
+697593,Pervomaisk,en Pervomaisk,1,FIXL2
+696943,Pidhorodnye,en Pidhorodnye,1,FIXL2
+13631378,Rakove,en Rakove,1,FIXL2
+695594,Rivne,en Rivne,1,FIXL2
+699445,Samar,en Samar,1,FIXL2
+694792,Sarny,en Sarny,1,FIXL2
+710554,Sheptytskyi,en Sheptytskyi,1,FIXL2
+13561779,Shevchenko,en Shevchenko,1,FIXL2
+693457,Smila,en Smila,1,FIXL2
+693301,Sokal,en Sokal,1,FIXL2
+692372,Stryi,en Stryi,1,FIXL2
+692129,Svalyava,en Svalyava,1,FIXL2
+691650,Ternopil,en Ternopil,1,FIXL2
+691179,Truskavets,en Truskavets,1,FIXL2
+690688,Uman,en Uman,1,FIXL2
+690548,Uzhhorod,en Uzhhorod,1,FIXL2
+689558,Vinnytsia,en Vinnytsia,1,FIXL2
+689159,Volochysk,en Volochysk,1,FIXL2
+689378,Volodymyr-Volynskyi,en Volodymyr-Volynskyi,1,FIXL2
+688723,Vyshhorod,en Vyshhorod,1,FIXL2
+689487,Vyshneve,en Vyshneve,1,FIXL2
+687700,Zaporizhzhia,en Zaporizhzhia,1,FIXL2
+686967,Zhytomyr,en Zhytomyr,1,FIXL2
+686919,Znamianka,en Znamianka,1,FIXL2
+686803,Zvenyhorodka,en Zvenyhorodka,1,FIXL2
+699553,Zvyahel,en Zvyahel,1,FIXL2
+6941080,Fort Bragg,en Fort Bragg,1,FIXL2

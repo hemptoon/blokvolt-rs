@@ -9,5 +9,12 @@
  "prices": "/lv/uzlades-cenas/",
  "shell_about": "/lv/par-vietni/",
  "sources": "/lv/avoti/",
- "methodology": "/lv/metodologija/"
+ "methodology": "/lv/metodologija/",
+ "pay": "/lv/ka-maksat/",
+ "routes": "/lv/marsruti/",
+ "press": "/lv/medijiem/",
+ "b2b": "/lv/dati-uznemumiem/",
+ "embed": "/lv/embed/karte/",
+ "map_conf": "/lv/karte-jusu-vietnei/",
+ "developers": "/lv/izstradatajiem/"
 }

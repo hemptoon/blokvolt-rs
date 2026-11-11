@@ -9,5 +9,12 @@
  "prices": "/mk/ceni-na-polnenje/",
  "shell_about": "/mk/za-blokvolt/",
  "sources": "/mk/izvori/",
- "methodology": "/mk/metodologija-na-podatocite/"
+ "methodology": "/mk/metodologija-na-podatocite/",
+ "pay": "/mk/kako-da-platite/",
+ "routes": "/mk/ruti/",
+ "press": "/mk/za-mediumi/",
+ "b2b": "/mk/podatoci-za-kompanii/",
+ "embed": "/mk/embed/svetska-mapa/",
+ "map_conf": "/mk/mapa-za-vashiot-sajt/",
+ "developers": "/mk/za-programeri/"
 }

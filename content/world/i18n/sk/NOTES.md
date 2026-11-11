@@ -41,3 +41,20 @@
 ## Zostáva
 - Natívna korektúra (slovensky hovoriaci človek) pred zapnutím jazyka po bráne G8.
 - Stĺpec `sk` v glossary.csv.
+
+## L2 (11.11.2026)
+- Doplnených 274 kľúčov: strings_map +29 (ci_* check-in, emb_open), nové strings_pay (93), strings_press (54), strings_b2b (33), strings_embed (65).
+- texts.json: sekcie `pay` (6 bodov AFIR) a `routes` (59 názvov miest zastávok, rovnaké mená ako v cities.csv — Ľubľana, Záhreb, Belehrad, Budapešť, Báčska Topola, Ráb).
+- Termíny: fast charger → rýchlonabíjačka (trasy), rýchle nabíjanie (index); ad hoc cena (pred podst. menom, ako doteraz); toll → mýto; vignette → diaľničná známka; roaming app → roamingová aplikácia; check-in → hlásenie; idle fee → poplatok za blokovanie stanice.
+- `{cu}`, `{lo}`, `{hi}` (pay, press) = lokál s predložkou z countries.csv in_phrase; `{name}` = nominatív.
+- Vizuálne opravy: h1 mapy „Mapa nabíjacích staníc“, „Údaje k {d}“, „Ad hoc cena“, below_title „zatiaľ málo údajov“, search_ph „napr. Bratislava, Rakúsko, Mníchov“.
+- Vlastný trh SK: všetkých 6 mestských stránok (Bratislava, Košice, Liptovský Mikuláš, Prešov, Ružomberok, Žilina) má riadok s decl_ok=1; check.py to kontroluje.
+- Otvorené: Ráb/Päťkostolie/Stoličný Belehrad/Brémy vs. Győr/Pécs/Székesfehérvár/Bremen — rozhodnúť pri natívnej korektúre.
+
+## FIXL (11.11.2026)
+- strings_home.json (71 kľúčov); lang_hint „Táto stránka je k dispozícii aj v slovenčine“, lang_hint_close „Zavrieť“.
+- Slugy: /sk/ako-platit/ /sk/trasy/ /sk/pre-media/ /sk/udaje-pre-firmy/ /sk/embed/mapa/ /sk/mapa-na-vas-web/ /sk/pre-vyvojarov/.
+- name_nom: nepoužíva sa (D14 len de fr it es pt el); check.py ho však povoľuje.
+- D12: maďarské mestá miestnym názvom — Győr, Pécs, Székesfehérvár, Eger, Szolnok (Ráb/Päťkostolie/Stoličný Belehrad/Jáger/Solnok zrušené).
+- cities.csv: +48 NOBIL (SE/NO, väčšinou „v meste X“, -berg/-borg skloňované) + Ženeva „v Ženeve“.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 29) — SK: ručne lokál (v Banskej Bystrici, v Malackách, vo Vranove nad Topľou…); UA/RU/BY/BG slovenská transkripcia (Záporožie, Černovice, Gomeľ, Šumen), GR bez diakritiky; exonymá Rím, Florencia, Janov, Terst, Syrakúzy; ostatné „v meste X“ (decl_ok=0), CZ skloňované.

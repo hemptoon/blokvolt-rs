@@ -69,7 +69,7 @@
  "p_dc": "Snabb DC-laddning från 50 kW: {dc} ({pct_dc}); 150 kW eller mer: {hpc}.",
  "p_gnet": "{net} finns i {n_countries}.",
  "p_hub": "Länder med minst 100 publika platser med medelhög eller hög tillförlitlighet har en sida. Västra Balkan täcks av BlokVolts sidor för respektive land.",
- "p_hub_na": "USA och Kanada finns på engelska och ryska; på serbiska täcks bara Europa.",
+ "p_hub_na": "Sidor för städer och nätverk finns på engelska och ryska för alla länder, och dessutom på varje lands eget språk.",
  "p_multi": "{pct_multi} av platserna bekräftas av två eller fler källor; {pct_recent} bekräftades senast 2025 eller 2026.",
  "p_net_share": "Nätverket finns i {n_cities} {country_u}; det står för {share} av landets publika platser som visas här.",
  "p_nonet": "Utan känt nätverk: {nonet}.",

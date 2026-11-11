@@ -39,5 +39,7 @@
  "method_desc": "Lokasyonların nasıl birleştirildiği, her birinin ne kadar güvenilir olduğu ve hangi sayfaların bulunduğu.",
  "method_p": "Farklı kaynaklardan gelen ve aynı yeri tanımlayan kayıtlar tek kayıtta birleştirilir. Her lokasyona 0 ile 100 arasında bir veri güvenilirliği puanı verilir (kaynak türü, ikinci bir kaynak, güncellik). Bir ülke sayfası için güvenilirliği 50 veya üzeri olan en az 100 halka açık lokasyon, bir şehir sayfası için en az 20 lokasyon gerekir. Formül ve eşikler burada açıklanır:",
  "pl_loc": {"one": "şarj lokasyonu", "other": "şarj lokasyonu"},
- "pl_cc": {"one": "ülke", "other": "ülke"}
+ "pl_cc": {"one": "ülke", "other": "ülke"},
+ "lang_hint": "Bu sayfa Türkçe olarak da mevcut",
+ "lang_hint_close": "Kapat"
 }

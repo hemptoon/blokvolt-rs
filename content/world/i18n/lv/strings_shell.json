@@ -47,5 +47,7 @@
   "zero": "valstis",
   "one": "valsts",
   "other": "valstis"
- }
+ },
+ "lang_hint": "Šī lapa ir pieejama arī latviešu valodā",
+ "lang_hint_close": "Aizvērt"
 }

@@ -44,3 +44,9 @@
 - В исходном `names/cities.csv` у Hollola два geonameid (657530 month, 657531 quarter) — дубль источника, не перевода.
 - Экзоним Вильнюса — «Vilna» (рекомендация Kotus); в СМИ часто «Vilnius/Vilniuksessa».
 - Названия сетей (`networks.csv`) не переводятся (P1: общие).
+
+## FIXL (11.11.2026)
+- `strings_home.json` (71 ключ, `pl_*` = one/other, партитив после числа); `strings_shell`: `lang_hint` «Tämä sivu on saatavilla myös suomeksi», `lang_hint_close` «Sulje».
+- Слаги: /fi/maksaminen/ /fi/reitit/ /fi/medialle/ /fi/dataa-yrityksille/ /fi/embed/kartta/ /fi/kartta-omalle-sivustolle/ /fi/kehittajille/.
+- `cities.csv` +49 (NOBIL NO 2 + SE 46 + Geneve «Genevessä»), note «FIXL». `name_nom` (D14) к fi не относится.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 4: Haminassa, Kontiolahdella, Laukaassa, Orimattilassa). Muut: turvamuoto «kaupungissa X» (decl_ok=0), ~35 varmaa taivutusta käsin (Roomassa, Firenzessä, Odessassa…). Eksonyymit Rooma, Firenze, Genova, Syrakusa, Odessa, Homel; UA/RU/BY/BG/GR englantilainen latinaistus kuten tiedostossa. check.py: gid cities.csv TAI cities_extra.csv.

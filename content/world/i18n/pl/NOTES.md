@@ -63,3 +63,24 @@ Tłumaczenie wsteczne 60 losowych ciągów (osobny agent, najpierw na ślepo PL�
 - `mini_alt`, `p0`, `p6`, `p7` — «moc nieznana» → «moc niepodana» (EN «not stated»); `t_unk` (mapa) zostaje «Moc nieznana» (EN «unknown»).
 - `m2` (ceny) — «wchodzi do DC» → «jest uwzględniana w DC i w HPC»; `map_p` — «z filtrami według mocy…».
 - `pl_place` — próba brała tylko formę `many`; obiekt ma one/few/many/other, ok.
+
+## L2-PL (11.11.2026) — nowe pliki i sekcje
+
+- Dodano `strings_pay`, `strings_press`, `strings_b2b`, `strings_embed` i 29 kluczy `strings_map` (`ci_*` z G6, `emb_open`): 274 klucze. Bez pluralów (EN nie ma `|` w tych plikach).
+- `texts.json`: sekcje `pay` (6 punktów AFIR) i `routes` (59 nazw miast postojów, nazwy jak w `cities.csv`: Belgrad, Zagrzeb, Lublana, Budapeszt, Płowdiw, Szybenik, Ochryda, Plewen, Wielkie Tyrnowo, Sybin) w formacie LANG0 (`a.b[i].c` → tekst). Dodano też nowe źródło `sources_pages.nobil` (pola jak w EN).
+- **Kontekst plejsholderów:** `{cu}` (pay) i `{lo}`/`{hi}` w `f_range` (press) — fraza z przyimkiem („w Niemczech”); `{name}` — mianownik, dlatego `afir_eu`/`afir_non`/`conn_lnk` mają konstrukcję z myślnikiem („{name} — państwo członkowskie UE…”), bez uzgadniania czasownika (Niemcy/Czechy to l.mn.). `{a}`, `{b}` (trasy) — mianownik: „{a} — {b} samochodem elektrycznym”. `{via}` — lista po dwukropku („przez: …”). `{month}` — mianownik („— {month}”). `{n}` w `f_checkins` — po dwukropku, bez odmiany rzeczownika.
+- **Dla LANG0/K8:** `world_press.py` ma na sztywno teksty faktów tylko dla de/fr (`FACTS_DE_FR`) i `Names.in_()` bez gałęzi pl — dla PL musi brać `strings_press` i `countries.csv:in_phrase`. Tak samo `cu()` w `world_pay.py`.
+- Termin: coverage aplikacji = „lista krajów / kraje obsługiwane”, coverage danych (B2B) = „pokrycie” — nie „zasięg” (kojarzy się z zasięgiem auta).
+- Kraj własny: PL. Wszystkie 9 miast PL z `pages_state.json` są w `cities.csv` z pełną odmianą (we Wrocławiu, w Białymstoku, w Łodzi…); nowych miast PL brak. 48 miast NOBIL (SE 46, NO 2) nie ma jeszcze w `names/cities.csv` — to nie rynek PL, w PL będą tylko na stronach EN-fallback.
+
+## FIXL (11.11.2026)
+
+- Slugi (F5): `/pl/jak-placic/`, `/pl/trasy/`, `/pl/dla-mediow/`, `/pl/dane-dla-firm/`, `/pl/embed/mapa/`, `/pl/mapa-na-strone/`,
+  `/pl/dla-programistow/`.
+- Strona główna (F3): "charging place" = lokalizacja ładowania; `pl_countries` w mianowniku/dopełniaczu liczebnikowym
+  (kraj/kraje/krajów/kraju), nie w miejscowniku jak `pl_cc`; tytuł SEO z «mapa ładowarek».
+- D12: nazwy historyczne małych miast litewskich i Strzałów/Gryfia → nazwy urzędowe (lista w REVIEW.md).
+- name_nom nie jest potrzebne (brak rodzajników); check.py dopuszcza `{name_nom}` zamiast `{name}` dla zgodności.
+- Miasta: 48 NOBIL — -köping/-berg/-borg/-holm odmieniane (w Nyköpingu, w Sundbybergu, w Katrineholmie), -å nieodmienne
+  (w Luleå, jak w Umeå), reszta «w mieście X» (decl_ok=0); Genewa — «w Genewie».
+- FIXL2: +821 cities from names/cities_extra.csv (own market 64)

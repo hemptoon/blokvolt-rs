@@ -9,9 +9,9 @@
  "ft_method": "Methodologie",
  "ft_about": "Over BlokVolt",
  "home_title": "Laadstations in Europa en de wereld — kaart en open data | BlokVolt",
- "home_desc": "Waar u een elektrische auto kunt laden: een kaart van openbare laadstations en pagina's per land, stad en netwerk, uit open data met bron en datum.",
+ "home_desc": "Waar je een elektrische auto kunt laden: een kaart van openbare laadstations en pagina's per land, stad en netwerk, uit open data met bron en datum.",
  "home_kick": "BlokVolt · wereld",
- "home_h1": "Waar u een elektrische auto kunt laden — in elk land, elke stad en elk netwerk",
+ "home_h1": "Waar je een elektrische auto kunt laden — in elk land, elke stad en elk netwerk",
  "home_lead": "Eén kaart: {n} in {c}, uit open data. Bij elke locatie staat waar de gegevens vandaan komen en wanneer ze voor het laatst zijn bevestigd.",
  "search_label": "Zoek een land of stad",
  "search_ph": "bijv. München, Duitsland, Lyon",
@@ -26,7 +26,7 @@
  "rs_card": "Servië — blokvolt.rs",
  "about_title": "Over BlokVolt | BlokVolt",
  "about_h1": "Over BlokVolt",
- "about_desc": "Wie BlokVolt beheert en hoe u contact opneemt.",
+ "about_desc": "Wie BlokVolt beheert en hoe je contact opneemt.",
  "about_p": "BlokVolt is een onafhankelijk naslagwerk over het laden van elektrische voertuigen, beheerd door de oprichters, Andrei en Danila, in Novi Sad, Servië. Geen betaalde vermeldingen en geen ranglijsten van netwerken.",
  "about_more": "Hoe de gegevens worden verzameld en gecontroleerd",
  "contact": "Contact",
@@ -45,5 +45,7 @@
  "pl_cc": {
   "one": "land",
   "other": "landen"
- }
+ },
+ "lang_hint": "Deze pagina is ook beschikbaar in het Nederlands",
+ "lang_hint_close": "Sluiten"
 }

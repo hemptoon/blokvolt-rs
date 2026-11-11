@@ -3326,7 +3326,7 @@ geonameid,name,in_phrase,decl_ok,note
 1273780,Cuttack,στην πόλη Cuttack,0,local
 7626690,Pimpri-Chinchwad,στην πόλη Pimpri-Chinchwad,0,local
 317851,Menderes,στην πόλη Menderes,0,local
-322830,Αϊδίνιο,στο Αϊδίνιο,1,exonym
+322830,Αϊντίν,στο Αϊντίν,1,FIXL D12: official local name (was Αϊδίνιο)
 4166232,North Miami,στην πόλη North Miami,0,local
 4166233,North Miami Beach,στην πόλη North Miami Beach,0,local
 4166673,Ocala,στην πόλη Ocala,0,local
@@ -4085,7 +4085,7 @@ geonameid,name,in_phrase,decl_ok,note
 2662149,Ystad,στην πόλη Ystad,0,local
 2696329,Lidköping,στην πόλη Lidköping,0,local
 2712414,Gävle,στην πόλη Gävle,0,local
-300399,Σώκια,στα Σώκια,1,exonym
+300399,Σιόκε,στο Σιόκε,1,FIXL D12: official local name (was Σώκια)
 316541,Ντιγιάρμπακιρ,στο Ντιγιάρμπακιρ,1,exonym
 6955677,Çankaya,στην πόλη Çankaya,0,local
 706483,Χάρκοβο,στο Χάρκοβο,1,exonym
@@ -4513,7 +4513,7 @@ geonameid,name,in_phrase,decl_ok,note
 3056459,Zvolen,στην πόλη Zvolen,0,local
 3058531,Nitra,στην πόλη Nitra,0,local
 3059101,Levice,στην πόλη Levice,0,local
-297090,Δίδυμα,στα Δίδυμα,1,exonym
+297090,Ντιντίμ,στο Ντιντίμ,1,FIXL D12: official local name (was Δίδυμα)
 6947637,Ataşehir,στην πόλη Ataşehir,0,local
 751324,Bağcılar,στην πόλη Bağcılar,0,local
 4084888,Prichard,στην πόλη Prichard,0,local
@@ -5190,7 +5190,7 @@ geonameid,name,in_phrase,decl_ok,note
 726546,Σβίλενγκραντ,στο Σβίλενγκραντ,1,exonym
 727079,Σλίβεν,στο Σλίβεν,1,exonym
 727462,Samokov,στην πόλη Samokov,0,local
-728288,Πετρίτσι,στο Πετρίτσι,1,exonym
+728288,Πέτριτς,στο Πέτριτς,1,FIXL D12: official local name (was Πετρίτσι)
 733191,Μπλαγκόεβγκραντ,στο Μπλαγκόεβγκραντ,1,exonym
 13607919,Fredericton North,στην πόλη Fredericton North,0,local
 5897321,Bedford,στην πόλη Bedford,0,local
@@ -5336,7 +5336,7 @@ geonameid,name,in_phrase,decl_ok,note
 2715953,Eskilstuna,στην πόλη Eskilstuna,0,local
 3058780,Martin,στην πόλη Martin,0,local
 3060346,Dubnica nad Váhom,στην πόλη Dubnica nad Váhom,0,local
-304355,Μύλασα,στα Μύλασα,1,exonym
+304355,Μιλάς,στο Μιλάς,1,FIXL D12: official local name (was Μύλασα)
 322165,Μπαλίκεσιρ,στο Μπαλίκεσιρ,1,exonym
 737081,Zekeriyaköy,στην πόλη Zekeriyaköy,0,local
 739549,Şişli,στην πόλη Şişli,0,local
@@ -5541,7 +5541,7 @@ geonameid,name,in_phrase,decl_ok,note
 3184081,Σκόδρα,στη Σκόδρα,1,exonym
 3184935,Λέζα,στη Λέζα,1,exonym
 781988,Πόγραδετς,στο Πόγραδετς,1,exonym
-782756,Κορυτσά,στην Κορυτσά,1,exonym
+782756,Κόρτσα,στην Κόρτσα,1,FIXL D12: official local name (was Κορυτσά)
 783263,Ελβασάν,στο Ελβασάν,1,exonym
 3188893,Τρέμπινιε,στο Τρέμπινιε,1,exonym
 3192409,Πρίεντορ,στο Πρίεντορ,1,exonym
@@ -5554,9 +5554,9 @@ geonameid,name,in_phrase,decl_ok,note
 785058,Veles,στην πόλη Veles,0,local
 785482,Στιπ,στο Στιπ,1,exonym
 785842,Σκόπια,στα Σκόπια,1,exonym
-787487,Αχρίδα,στην Αχρίδα,1,exonym
+787487,Οχρίντ,στο Οχρίντ,1,FIXL D12: official local name (was Αχρίδα)
 789403,Κότσανι,στο Κότσανι,1,exonym
-790744,Γευγελή,στη Γευγελή,1,exonym
+790744,Γκεβγκέλια,στην Γκεβγκέλια,1,FIXL D12: official local name (was Γευγελή)
 3190342,Σόμπορ,στο Σόμπορ,1,exonym
 3196153,Loznica,στην πόλη Loznica,0,local
 3204674,Bačka Palanka,στην πόλη Bačka Palanka,0,local
@@ -5571,14 +5571,14 @@ geonameid,name,in_phrase,decl_ok,note
 793111,Aranđelovac,στην πόλη Aranđelovac,0,local
 786714,Πρίστινα,στην Πρίστινα,1,exonym
 787157,Πέια,στην Πέια,1,exonym
-3183719,Αυλώνα,στην Αυλώνα,1,exonym
+3183719,Βλόρα,στη Βλόρα,1,FIXL D12: official local name (was Αυλώνα)
 3184517,Patos Fshat,στην πόλη Patos Fshat,0,local
 3184862,Λουσνιά,στη Λουσνιά,1,exonym
 3185638,Fushë-Krujë,στην πόλη Fushë-Krujë,0,local
 3185672,Φίερι,στο Φίερι,1,exonym
-363243,Άγιοι Σαράντα,στους Αγίους Σαράντα,1,exonym
+363243,Σαράντα,στην πόλη Σαράντα,0,FIXL D12: official local name (was Άγιοι Σαράντα)
 782661,Κούκες,στο Κούκες,1,exonym
-783148,Αργυρόκαστρο,στο Αργυρόκαστρο,1,exonym
+783148,Γκιροκάστρα,στην Γκιροκάστρα,1,FIXL D12: official local name (was Αργυρόκαστρο)
 3196079,Lukavac,στην πόλη Lukavac,0,local
 3200396,Goražde,στην πόλη Goražde,0,local
 3203099,Bugojno,στην πόλη Bugojno,0,local
@@ -5604,3 +5604,873 @@ geonameid,name,in_phrase,decl_ok,note
 786950,Podujeva,στην πόλη Podujeva,0,local
 788470,Llazicë,στην πόλη Llazicë,0,local
 790674,Γκιλάν,στο Γκιλάν,1,exonym
+2660646,Γενεύη,στη Γενεύη,1,FIXL
+3149563,Kongsberg,στην πόλη Kongsberg,0,FIXL
+3139075,Skien,στην πόλη Skien,0,FIXL
+2727234,Åkersberga,στην πόλη Åkersberga,0,FIXL
+2726756,Alingsås,στην πόλη Alingsås,0,FIXL
+2721259,Boo,στην πόλη Boo,0,FIXL
+2716166,Enköping,στην πόλη Enköping,0,FIXL
+2715946,Eslöv,στην πόλη Eslöv,0,FIXL
+2715573,Falkenberg,στην πόλη Falkenberg,0,FIXL
+2715568,Falköping,στην πόλη Falköping,0,FIXL
+2709628,Gustavsberg,στην πόλη Gustavsberg,0,FIXL
+2707953,Haninge,στην πόλη Haninge,0,FIXL
+2704620,Huddinge,στην πόλη Huddinge,0,FIXL
+2704613,Hudiksvall,στην πόλη Hudiksvall,0,FIXL
+2704136,Huskvarna,στην πόλη Huskvarna,0,FIXL
+2703396,Jakobsberg,στην πόλη Jakobsberg,0,FIXL
+2701715,Karlskoga,στην πόλη Karlskoga,0,FIXL
+2701223,Katrineholm,στην πόλη Katrineholm,0,FIXL
+2699791,Köping,στην πόλη Köping,0,FIXL
+2699282,Kristinehamn,στην πόλη Kristinehamn,0,FIXL
+2698767,Kumla,στην πόλη Kumla,0,FIXL
+2697720,Landskrona,στην πόλη Landskrona,0,FIXL
+2696503,Lerum,στην πόλη Lerum,0,FIXL
+2696334,Lidingö,στην πόλη Lidingö,0,FIXL
+604490,Luleå,στην πόλη Luleå,0,FIXL
+2692613,Mariestad,στην πόλη Mariestad,0,FIXL
+2692475,Märsta,στην πόλη Märsta,0,FIXL
+2690580,Nacka,στην πόλη Nacka,0,FIXL
+2690170,Nässjö,στην πόλη Nässjö,0,FIXL
+2688250,Norrtälje,στην πόλη Norrtälje,0,FIXL
+2687700,Nyköping,στην πόλη Nyköping,0,FIXL
+2686469,Örnsköldsvik,στην πόλη Örnsköldsvik,0,FIXL
+2686162,Oskarshamn,στην πόλη Oskarshamn,0,FIXL
+2684395,Partille,στην πόλη Partille,0,FIXL
+603570,Piteå,στην πόλη Piteå,0,FIXL
+602913,Skellefteå,στην πόλη Skellefteå,0,FIXL
+2676176,Södertälje,στην πόλη Södertälje,0,FIXL
+2675408,Sollentuna,στην πόλη Sollentuna,0,FIXL
+2675397,Solna,στην πόλη Solna,0,FIXL
+2674649,Staffanstorp,στην πόλη Staffanstorp,0,FIXL
+2670879,Sundbyberg,στην πόλη Sundbyberg,0,FIXL
+2669772,Täby,στην πόλη Täby,0,FIXL
+2667303,Trollhättan,στην πόλη Trollhättan,0,FIXL
+2667094,Tumba,στην πόλη Tumba,0,FIXL
+2666238,Upplands Väsby,στην πόλη Upplands Väsby,0,FIXL
+2664203,Västervik,στην πόλη Västervik,0,FIXL
+2665171,Vänersborg,στην πόλη Vänersborg,0,FIXL
+2664855,Värnamo,στην πόλη Värnamo,0,FIXL
+2662689,Visby,στην πόλη Visby,0,FIXL
+2763423,Traun,στην πόλη Traun,0,FIXL2
+2760910,Wolfsberg,στην πόλη Wolfsberg,0,FIXL2
+2803429,Aarschot,στην πόλη Aarschot,0,FIXL2
+2802743,Balen,στην πόλη Balen,0,FIXL2
+2801226,Boussu,στην πόλη Boussu,0,FIXL2
+2799496,Destelbergen,στην πόλη Destelbergen,0,FIXL2
+2799412,Diepenbeek,στην πόλη Diepenbeek,0,FIXL2
+2799226,Dour,στην πόλη Dour,0,FIXL2
+2799090,Duffel,στην πόλη Duffel,0,FIXL2
+2799007,Edegem,στην πόλη Edegem,0,FIXL2
+2796833,Haaltert,στην πόλη Haaltert,0,FIXL2
+2796637,Hamme,στην πόλη Hamme,0,FIXL2
+2796012,Herent,στην πόλη Herent,0,FIXL2
+2795800,Heusden,στην πόλη Heusden,0,FIXL2
+2794663,Kasterlee,στην πόλη Kasterlee,0,FIXL2
+2794210,Knokke-Heist,στην πόλη Knokke-Heist,0,FIXL2
+2794179,Koersel,στην πόλη Koersel,0,FIXL2
+2793446,Lanaken,στην πόλη Lanaken,0,FIXL2
+2793144,Lebbeke,στην πόλη Lebbeke,0,FIXL2
+2792360,Lille,στην πόλη Lille,0,FIXL2
+2791961,Maasmechelen,στην πόλη Maasmechelen,0,FIXL2
+2791857,Maldegem,στην πόλη Maldegem,0,FIXL2
+2791424,Meise,στην πόλη Meise,0,FIXL2
+2791194,Middelkerke,στην πόλη Middelkerke,0,FIXL2
+2790114,Ninove,στην πόλη Ninove,0,FIXL2
+2789751,Oostkamp,στην πόλη Oostkamp,0,FIXL2
+2789413,Overijse,στην πόλη Overijse,0,FIXL2
+2788726,Poperinge,στην πόλη Poperinge,0,FIXL2
+2788348,Ranst,στην πόλη Ranst,0,FIXL2
+2786344,Soumagne,στην πόλη Soumagne,0,FIXL2
+2786229,Stabroek,στην πόλη Stabroek,0,FIXL2
+2783632,Willebroek,στην πόλη Willebroek,0,FIXL2
+2783293,Zele,στην πόλη Zele,0,FIXL2
+2783197,Zolder,στην πόλη Zolder,0,FIXL2
+2783188,Zonhoven,στην πόλη Zonhoven,0,FIXL2
+2783081,Zwijndrecht,στην πόλη Zwijndrecht,0,FIXL2
+733618,Ασένοβγκραντ,στο Ασένοβγκραντ,1,FIXL2
+733579,Αϊτός,στο Αϊτός,1,FIXL2
+733264,Μπερκόβιτσα,στην Μπερκόβιτσα,1,FIXL2
+733014,Μπότεβγκραντ,στο Μπότεβγκραντ,1,FIXL2
+732452,Τσίρπαν,στο Τσίρπαν,1,FIXL2
+726418,Ντόμπριτς,στο Ντόμπριτς,1,FIXL2
+726872,Ντούπνιτσα,στην Ντούπνιτσα,1,FIXL2
+731549,Γκάμπροβο,στο Γκάμπροβο,1,FIXL2
+731233,Γκόρνα Οριαχόβιτσα,στην Γκόρνα Οριαχόβιτσα,1,FIXL2
+731108,Γκότσε Ντέλτσεφ,στο Γκότσε Ντέλτσεφ,1,FIXL2
+730442,Χαρμανλί,στο Χαρμανλί,1,FIXL2
+729794,Κάρτζαλι,στο Κάρτζαλι,1,FIXL2
+730565,Κάρλοβο,στο Κάρλοβο,1,FIXL2
+730559,Καρνόμπατ,στο Καρνόμπατ,1,FIXL2
+730496,Καζανλάκ,στο Καζανλάκ,1,FIXL2
+729730,Κιουστεντίλ,στο Κιουστεντίλ,1,FIXL2
+729581,Λομ,στο Λομ,1,FIXL2
+729559,Λόβετς,στο Λόβετς,1,FIXL2
+729114,Μοντάνα,στη Μοντάνα,1,FIXL2
+728742,Νόβα Ζαγόρα,στη Νόβα Ζαγόρα,1,FIXL2
+728448,Παναγκιούριστε,στο Παναγκιούριστε,1,FIXL2
+727886,Πάρβομαϊ,στο Πάρβομαϊ,1,FIXL2
+728317,Πέστερα,στην Πέστερα,1,FIXL2
+728075,Πόποβο,στο Πόποβο,1,FIXL2
+727696,Ράζγκραντ,στο Ράζγκραντ,1,FIXL2
+727447,Σαντάνσκι,στο Σαντάνσκι,1,FIXL2
+727337,Σεβλίεβο,στο Σεβλίεβο,1,FIXL2
+727233,Σούμεν,στο Σούμεν,1,FIXL2
+727221,Σιλίστρα,στη Σιλίστρα,1,FIXL2
+726848,Στάρα Ζαγόρα,στη Στάρα Ζαγόρα,1,FIXL2
+726534,Σβίστοφ,στο Σβίστοφ,1,FIXL2
+726174,Τάργκοβιστε,στο Τάργκοβιστε,1,FIXL2
+726320,Τρογιάν,στο Τρογιάν,1,FIXL2
+725988,Βέλινγκραντ,στο Βέλινγκραντ,1,FIXL2
+725905,Βίντιν,στο Βίντιν,1,FIXL2
+725712,Βράτσα,στη Βράτσα,1,FIXL2
+725578,Γιάμπολ,στο Γιάμπολ,1,FIXL2
+630429,Μπαρανόβιτσι,στο Μπαρανόβιτσι,1,FIXL2
+630468,Μπομπρούισκ,στο Μπομπρούισκ,1,FIXL2
+627907,Γκόμελ,στο Γκόμελ,1,FIXL2
+627083,Καλοντίστσι,στο Καλοντίστσι,1,FIXL2
+627145,Κόμπριν,στο Κόμπριν,1,FIXL2
+625972,Λογκόισκ,στο Λογκόισκ,1,FIXL2
+625665,Μογκιλιόφ,στο Μογκιλιόφ,1,FIXL2
+625625,Μολοντέτσνο,στο Μολοντέτσνο,1,FIXL2
+624079,Όρσα,στην Όρσα,1,FIXL2
+630515,Οσμιάνι,στο Οσμιάνι,1,FIXL2
+622794,Ρέτσιτσα,στη Ρέτσιτσα,1,FIXL2
+621729,Σμολέβιτσι,στο Σμολέβιτσι,1,FIXL2
+621713,Σμοργκόν,στο Σμοργκόν,1,FIXL2
+622428,Σολιγκόρσκ,στο Σολιγκόρσκ,1,FIXL2
+620127,Βίτεμπσκ,στο Βίτεμπσκ,1,FIXL2
+2661810,Allschwil,στην πόλη Allschwil,0,FIXL2
+2661265,Carouge,στην πόλη Carouge,0,FIXL2
+2660925,Einsiedeln,στην πόλη Einsiedeln,0,FIXL2
+2660727,Frauenfeld,στην πόλη Frauenfeld,0,FIXL2
+2660549,Gossau,στην πόλη Gossau,0,FIXL2
+2660305,Horgen,στην πόλη Horgen,0,FIXL2
+2659667,Meyrin,στην πόλη Meyrin,0,FIXL2
+2659296,Onex,στην πόλη Onex,0,FIXL2
+2658761,Schaffhausen,στην πόλη Schaffhausen,0,FIXL2
+2658494,Steffisburg,στην πόλη Steffisburg,0,FIXL2
+2658216,Uster,στην πόλη Uster,0,FIXL2
+2658154,Vernier,στην πόλη Vernier,0,FIXL2
+2658011,Wettingen,στην πόλη Wettingen,0,FIXL2
+2657908,Zug,στην πόλη Zug,0,FIXL2
+3079129,Bohumín,στην πόλη Bohumín,0,FIXL2
+3078545,Bruntál,στην πόλη Bruntál,0,FIXL2
+3077835,Cheb,στην πόλη Cheb,0,FIXL2
+3077244,Děčín,στην πόλη Děčín,0,FIXL2
+3074020,Kadaň,στην πόλη Kadaň,0,FIXL2
+3073789,Karviná,στην πόλη Karviná,0,FIXL2
+3073660,Klatovy,στην πόλη Klatovy,0,FIXL2
+3072656,Krnov,στην πόλη Krnov,0,FIXL2
+3070862,Mělník,στην πόλη Mělník,0,FIXL2
+3069844,Neratovice,στην πόλη Neratovice,0,FIXL2
+3068873,Orlová,στην πόλη Orlová,0,FIXL2
+3068690,Otrokovice,στην πόλη Otrokovice,0,FIXL2
+3062339,Vsetín,στην πόλη Vsetín,0,FIXL2
+3061822,Žatec,στην πόλη Žatec,0,FIXL2
+2951679,Beckingen,στην πόλη Beckingen,0,FIXL2
+2930182,Enger,στην πόλη Enger,0,FIXL2
+2930043,Ennepetal,στην πόλη Ennepetal,0,FIXL2
+2929865,Eppelborn,στην πόλη Eppelborn,0,FIXL2
+2917737,Greiz,στην πόλη Greiz,0,FIXL2
+2905290,Hessisch Oldendorf,στην πόλη Hessisch Oldendorf,0,FIXL2
+2904985,Heusweiler,στην πόλη Heusweiler,0,FIXL2
+2904886,Hiddenhausen,στην πόλη Hiddenhausen,0,FIXL2
+2891014,Kierspe,στην πόλη Kierspe,0,FIXL2
+2879832,Lebach,στην πόλη Lebach,0,FIXL2
+2879315,Leichlingen,στην πόλη Leichlingen,0,FIXL2
+2877142,Lindlar,στην πόλη Lindlar,0,FIXL2
+2876218,Lohmar,στην πόλη Lohmar,0,FIXL2
+2872519,Meerane,στην πόλη Meerane,0,FIXL2
+2863240,Ingelheim am Rhein,στην πόλη Ingelheim am Rhein,0,FIXL2
+2851584,Püttlingen,στην πόλη Püttlingen,0,FIXL2
+2847033,Riegelsberg,στην πόλη Riegelsberg,0,FIXL2
+2835382,Schwalbach,στην πόλη Schwalbach,0,FIXL2
+2810969,Werdau,στην πόλη Werdau,0,FIXL2
+2625070,Aabenraa,στην πόλη Aabenraa,0,FIXL2
+2624906,Albertslund,στην πόλη Albertslund,0,FIXL2
+2621927,Frederikshavn,στην πόλη Frederikshavn,0,FIXL2
+2621912,Frederikssund,στην πόλη Frederikssund,0,FIXL2
+2620583,Hedensted,στην πόλη Hedensted,0,FIXL2
+2620473,Ελσινόρη,στην Ελσινόρη,1,FIXL2
+2619771,Horsens,στην πόλη Horsens,0,FIXL2
+2619528,Hvidovre,στην πόλη Hvidovre,0,FIXL2
+2619856,Hørsholm,στην πόλη Hørsholm,0,FIXL2
+2619377,Ishøj,στην πόλη Ishøj,0,FIXL2
+2619154,Kalundborg,στην πόλη Kalundborg,0,FIXL2
+2618415,Køge,στην πόλη Køge,0,FIXL2
+2617658,Lillerød,στην πόλη Lillerød,0,FIXL2
+2616015,Nyborg,στην πόλη Nyborg,0,FIXL2
+2615961,Nykøbing Falster,στην πόλη Nykøbing Falster,0,FIXL2
+2614764,Ringsted,στην πόλη Ringsted,0,FIXL2
+2614481,Ρόσκιλντε,στο Ρόσκιλντε,1,FIXL2
+2613731,Skive,στην πόλη Skive,0,FIXL2
+2613460,Slagelse,στην πόλη Slagelse,0,FIXL2
+2613233,Solrød Strand,στην πόλη Solrød Strand,0,FIXL2
+2612629,Stenløse,στην πόλη Stenløse,0,FIXL2
+2611497,Tønder,στην πόλη Tønder,0,FIXL2
+2610319,Viborg,στην πόλη Viborg,0,FIXL2
+591260,Kohtla-Järve,στην πόλη Kohtla-Järve,0,FIXL2
+590447,Maardu,στην πόλη Maardu,0,FIXL2
+590031,Νάρβα,στη Νάρβα,1,FIXL2
+589580,Pärnu,στην πόλη Pärnu,0,FIXL2
+587577,Viljandi,στην πόλη Viljandi,0,FIXL2
+2522208,Albolote,στην πόλη Albolote,0,FIXL2
+2522165,Alcalá de Guadaira,στην πόλη Alcalá de Guadaira,0,FIXL2
+2522012,Algemesí,στην πόλη Algemesí,0,FIXL2
+2521964,Aljaraque,στην πόλη Aljaraque,0,FIXL2
+2521923,Almansa,στην πόλη Almansa,0,FIXL2
+2521804,Altea,στην πόλη Altea,0,FIXL2
+2521665,Arcos de la Frontera,στην πόλη Arcos de la Frontera,0,FIXL2
+2521582,Arona,στην πόλη Arona,0,FIXL2
+3129356,Arroyomolinos,στην πόλη Arroyomolinos,0,FIXL2
+2521510,Aspe,στην πόλη Aspe,0,FIXL2
+2521486,Atamaría,στην πόλη Atamaría,0,FIXL2
+2521485,Atarfe,στην πόλη Atarfe,0,FIXL2
+2521335,Barbate,στην πόλη Barbate,0,FIXL2
+2521215,Baza,στην πόλη Baza,0,FIXL2
+2521016,Berja,στην πόλη Berja,0,FIXL2
+3127007,Calella,στην πόλη Calella,0,FIXL2
+2520052,Cartaya,στην πόλη Cartaya,0,FIXL2
+2519738,Castilleja de la Cuesta,στην πόλη Castilleja de la Cuesta,0,FIXL2
+2519690,Catarroja,στην πόλη Catarroja,0,FIXL2
+2519651,Cehegín,στην πόλη Cehegín,0,FIXL2
+3109402,Cerdanyola del Vallès,στην πόλη Cerdanyola del Vallès,0,FIXL2
+2519477,Chipiona,στην πόλη Chipiona,0,FIXL2
+2519289,Conil de la Frontera,στην πόλη Conil de la Frontera,0,FIXL2
+3124569,Cornellà de Llobregat,στην πόλη Cornellà de Llobregat,0,FIXL2
+2519367,Coín,στην πόλη Coín,0,FIXL2
+2519110,Crevillente,στην πόλη Crevillente,0,FIXL2
+3124041,Culleredo,στην πόλη Culleredo,0,FIXL2
+2520055,Cártama,στην πόλη Cártama,0,FIXL2
+2520447,El Campello,στην πόλη El Campello,0,FIXL2
+3117232,El Masnou,στην πόλη El Masnou,0,FIXL2
+3123493,Ferrol,στην πόλη Ferrol,0,FIXL2
+3121766,Galapagar,στην πόλη Galapagar,0,FIXL2
+2516797,Hellín,στην πόλη Hellín,0,FIXL2
+3121881,Hondarribia,στην πόλη Hondarribia,0,FIXL2
+3120501,Humanes de Madrid,στην πόλη Humanes de Madrid,0,FIXL2
+2516474,Icod de los Vinos,στην πόλη Icod de los Vinos,0,FIXL2
+2516443,Ingenio,στην πόλη Ingenio,0,FIXL2
+2515692,La Orotava,στην πόλη La Orotava,0,FIXL2
+2515219,Las Torres de Cotillas,στην πόλη Las Torres de Cotillas,0,FIXL2
+2515072,Lepe,στην πόλη Lepe,0,FIXL2
+2514868,Los Alcázares,στην πόλη Los Alcázares,0,FIXL2
+2514553,Los Palacios y Villafranca,στην πόλη Los Palacios y Villafranca,0,FIXL2
+2514158,Marchena,στην πόλη Marchena,0,FIXL2
+2514042,Maspalomas,στην πόλη Maspalomas,0,FIXL2
+2513983,Mazarrón,στην πόλη Mazarrón,0,FIXL2
+2513703,Moncada,στην πόλη Moncada,0,FIXL2
+3116527,Montcada i Reixac,στην πόλη Montcada i Reixac,0,FIXL2
+2513604,Montijo,στην πόλη Montijo,0,FIXL2
+2513240,Nerja,στην πόλη Nerja,0,FIXL2
+2513195,Novelda,στην πόλη Novelda,0,FIXL2
+2513222,Níjar,στην πόλη Níjar,0,FIXL2
+2513052,Osuna,στην πόλη Osuna,0,FIXL2
+6354969,Playa del Inglés,στην πόλη Playa del Inglés,0,FIXL2
+3113082,Portugalete,στην πόλη Portugalete,0,FIXL2
+2519068,Quart de Poblet,στην πόλη Quart de Poblet,0,FIXL2
+2511994,Realejo Alto,στην πόλη Realejo Alto,0,FIXL2
+2511852,Rincón de la Victoria,στην πόλη Rincón de la Victoria,0,FIXL2
+3111605,Ripollet,στην πόλη Ripollet,0,FIXL2
+2511700,Rota,στην πόλη Rota,0,FIXL2
+3110986,Salou,στην πόλη Salou,0,FIXL2
+2511440,San Bartolomé de Tirajana,στην πόλη San Bartolomé de Tirajana,0,FIXL2
+2511371,San Isidro,στην πόλη San Isidro,0,FIXL2
+2511287,San Miguel de Abona,στην πόλη San Miguel de Abona,0,FIXL2
+3110642,Sant Feliu de Llobregat,στην πόλη Sant Feliu de Llobregat,0,FIXL2
+3110519,Sant Joan Despí,στην πόλη Sant Joan Despí,0,FIXL2
+3109546,Sant Just Desvern,στην πόλη Sant Just Desvern,0,FIXL2
+2511150,Santa Lucía,στην πόλη Santa Lucía,0,FIXL2
+3109897,Ribeira,στην πόλη Ribeira,0,FIXL2
+2511160,Santa Fe,στην πόλη Santa Fe,0,FIXL2
+3109050,Seseña,στην πόλη Seseña,0,FIXL2
+3109041,Sestao,στην πόλη Sestao,0,FIXL2
+2510764,Sueca,στην πόλη Sueca,0,FIXL2
+3108317,Tarancón,στην πόλη Tarancón,0,FIXL2
+2510394,Tomares,στην πόλη Tomares,0,FIXL2
+3107955,Tordera,στην πόλη Tordera,0,FIXL2
+2510245,Torrox,στην πόλη Torrox,0,FIXL2
+2510485,Tías,στην πόλη Tías,0,FIXL2
+2510112,Ubrique,στην πόλη Ubrique,0,FIXL2
+2510073,Utrera,στην πόλη Utrera,0,FIXL2
+3105247,Villanueva de la Cañada,στην πόλη Villanueva de la Cañada,0,FIXL2
+3105148,Villaquilambre,στην πόλη Villaquilambre,0,FIXL2
+3104703,Villaviciosa de Odón,στην πόλη Villaviciosa de Odón,0,FIXL2
+3104475,Viveiro,στην πόλη Viveiro,0,FIXL2
+2509408,Yaiza,στην πόλη Yaiza,0,FIXL2
+2509402,Yecla,στην πόλη Yecla,0,FIXL2
+2509377,Zafra,στην πόλη Zafra,0,FIXL2
+659169,Hamina,στην πόλη Hamina,0,FIXL2
+651659,Kontiolahti,στην πόλη Kontiolahti,0,FIXL2
+648738,Laukaa,στην πόλη Laukaa,0,FIXL2
+643644,Orimattila,στην πόλη Orimattila,0,FIXL2
+3037423,Antony,στην πόλη Antony,0,FIXL2
+3031898,Boissy-Saint-Léger,στην πόλη Boissy-Saint-Léger,0,FIXL2
+3030990,Bourg-la-Reine,στην πόλη Bourg-la-Reine,0,FIXL2
+8555643,Cergy,στην πόλη Cergy,0,FIXL2
+3026637,Charenton-le-Pont,στην πόλη Charenton-le-Pont,0,FIXL2
+3025622,Chelles,στην πόλη Chelles,0,FIXL2
+3020832,Draveil,στην πόλη Draveil,0,FIXL2
+3018280,Fleury-les-Aubrais,στην πόλη Fleury-les-Aubrais,0,FIXL2
+3017341,Franconville,στην πόλη Franconville,0,FIXL2
+3016830,Gagny,στην πόλη Gagny,0,FIXL2
+3002647,Le Plessis-Trévise,στην πόλη Le Plessis-Trévise,0,FIXL2
+2998305,Limeil-Brévannes,στην πόλη Limeil-Brévannes,0,FIXL2
+2998056,Livry-Gargan,στην πόλη Livry-Gargan,0,FIXL2
+2997904,Lognes,στην πόλη Lognes,0,FIXL2
+2995206,Massy,στην πόλη Massy,0,FIXL2
+2992616,Montfermeil,στην πόλη Montfermeil,0,FIXL2
+2992090,Montreuil,στην πόλη Montreuil,0,FIXL2
+2990616,Neuilly-Plaisance,στην πόλη Neuilly-Plaisance,0,FIXL2
+2986025,Port-de-Bouc,στην πόλη Port-de-Bouc,0,FIXL2
+2983440,Ris-Orangis,στην πόλη Ris-Orangis,0,FIXL2
+2983026,Romainville,στην πόλη Romainville,0,FIXL2
+2981512,Saint-Avertin,στην πόλη Saint-Avertin,0,FIXL2
+2980558,Sainte-Geneviève-des-Bois,στην πόλη Sainte-Geneviève-des-Bois,0,FIXL2
+2974681,Sevran,στην πόλη Sevran,0,FIXL2
+2973841,Stains,στην πόλη Stains,0,FIXL2
+2968653,Villemomble,στην πόλη Villemomble,0,FIXL2
+2968555,Villeneuve-la-Garenne,στην πόλη Villeneuve-la-Garenne,0,FIXL2
+2967934,Viroflay,στην πόλη Viroflay,0,FIXL2
+3020020,Épinay-sur-Seine,στην πόλη Épinay-sur-Seine,0,FIXL2
+2634677,Γουότφορντ,στο Γουότφορντ,1,FIXL2
+8478257,Άγιος Ιωάννης Ρέντης,στον Άγιο Ιωάννη Ρέντη,1,FIXL2
+736229,Φλώρινα,στη Φλώρινα,1,FIXL2
+8310138,Ηλιούπολη,στην Ηλιούπολη,1,FIXL2
+261249,Καματερό,στο Καματερό,1,FIXL2
+259824,Κηφισιά,στην Κηφισιά,1,FIXL2
+9034728,Νέα Ιωνία,στη Νέα Ιωνία,1,FIXL2
+256575,Νέα Σμύρνη,στη Νέα Σμύρνη,1,FIXL2
+256429,Νίκαια,στη Νίκαια,1,FIXL2
+255377,Πετρούπολη,στην Πετρούπολη,1,FIXL2
+734301,Συκιές,στις Συκιές,1,FIXL2
+251948,Βύρωνας,στον Βύρωνα,1,FIXL2
+256601,Ίλιον,στο Ίλιον,1,FIXL2
+723030,Abony,στην πόλη Abony,0,FIXL2
+3056357,Ajka,στην πόλη Ajka,0,FIXL2
+3055685,Baja,στην πόλη Baja,0,FIXL2
+722636,Balmazújváros,στην πόλη Balmazújváros,0,FIXL2
+722437,Békéscsaba,στην πόλη Békéscsaba,0,FIXL2
+3054543,Cegléd,στην πόλη Cegléd,0,FIXL2
+3053438,Dunaújváros,στην πόλη Dunaújváros,0,FIXL2
+3053163,Esztergom,στην πόλη Esztergom,0,FIXL2
+720334,Gyula,στην πόλη Gyula,0,FIXL2
+3052040,Gyöngyös,στην πόλη Gyöngyös,0,FIXL2
+3052241,Göd,στην πόλη Göd,0,FIXL2
+3052236,Gödöllő,στην πόλη Gödöllő,0,FIXL2
+720284,Hajdúnánás,στην πόλη Hajdúnánás,0,FIXL2
+720276,Hajdúszoboszló,στην πόλη Hajdúszoboszló,0,FIXL2
+3050907,Jászberény,στην πόλη Jászberény,0,FIXL2
+719404,Karcag,στην πόλη Karcag,0,FIXL2
+719311,Kazincbarcika,στην πόλη Kazincbarcika,0,FIXL2
+3049885,Kiskunfélegyháza,στην πόλη Kiskunfélegyháza,0,FIXL2
+3049880,Kiskunhalas,στην πόλη Kiskunhalas,0,FIXL2
+3049896,Kiskőrös,στην πόλη Kiskőrös,0,FIXL2
+718739,Kisvárda,στην πόλη Kisvárda,0,FIXL2
+3049512,Komló,στην πόλη Komló,0,FIXL2
+3049519,Komárom,στην πόλη Komárom,0,FIXL2
+717902,Makó,στην πόλη Makó,0,FIXL2
+717652,Mezőkövesd,στην πόλη Mezőkövesd,0,FIXL2
+717635,Mezőtúr,στην πόλη Mezőtúr,0,FIXL2
+3047942,Monor,στην πόλη Monor,0,FIXL2
+3047896,Mosonmagyaróvár,στην πόλη Mosonmagyaróvár,0,FIXL2
+717771,Mátészalka,στην πόλη Mátészalka,0,FIXL2
+3047651,Nagykőrös,στην πόλη Nagykőrös,0,FIXL2
+716736,Orosháza,στην πόλη Orosháza,0,FIXL2
+3046888,Oroszlány,στην πόλη Oroszlány,0,FIXL2
+3046768,Paks,στην πόλη Paks,0,FIXL2
+3046686,Pápa,στην πόλη Pápa,0,FIXL2
+3045643,Salgótarján,στην πόλη Salgótarján,0,FIXL2
+715466,Szarvas,στην πόλη Szarvas,0,FIXL2
+3044681,Szentendre,στην πόλη Szentendre,0,FIXL2
+715337,Szentes,στην πόλη Szentes,0,FIXL2
+3044821,Százhalombatta,στην πόλη Százhalombatta,0,FIXL2
+3045487,Sárvár,στην πόλη Sárvár,0,FIXL2
+715839,Sátoraljaújhely,στην πόλη Sátoraljaújhely,0,FIXL2
+3044083,Tata,στην πόλη Tata,0,FIXL2
+714697,Tiszaújváros,στην πόλη Tiszaújváros,0,FIXL2
+3043293,Vác,στην πόλη Vác,0,FIXL2
+3042638,Zalaegerszeg,στην πόλη Zalaegerszeg,0,FIXL2
+716671,Ózd,στην πόλη Ózd,0,FIXL2
+2965715,Carrigaline,στην πόλη Carrigaline,0,FIXL2
+2962974,Leixlip,στην πόλη Leixlip,0,FIXL2
+2962785,Lucan,στην πόλη Lucan,0,FIXL2
+2633274,Akureyri,στην πόλη Akureyri,0,FIXL2
+3415496,Keflavík,στην πόλη Keflavík,0,FIXL2
+8644037,Reykjanesbær,στην πόλη Reykjanesbær,0,FIXL2
+3183587,Abano Terme,στην πόλη Abano Terme,0,FIXL2
+3183573,Abbiategrasso,στην πόλη Abbiategrasso,0,FIXL2
+3183490,Acqui Terme,στην πόλη Acqui Terme,0,FIXL2
+2525769,Adrano,στην πόλη Adrano,0,FIXL2
+3183319,Albignasego,στην πόλη Albignasego,0,FIXL2
+2525755,Alcamo,στην πόλη Alcamo,0,FIXL2
+3183284,Alghero,στην πόλη Alghero,0,FIXL2
+3183089,Ανκόνα,στην Ανκόνα,1,FIXL2
+3183072,Andria,στην πόλη Andria,0,FIXL2
+3182904,Arcore,στην πόλη Arcore,0,FIXL2
+3182884,Αρέτσο,στο Αρέτσο,1,FIXL2
+3182749,Ascoli Piceno,στην πόλη Ascoli Piceno,0,FIXL2
+3182650,Avellino,στην πόλη Avellino,0,FIXL2
+3182361,Bareggio,στην πόλη Bareggio,0,FIXL2
+3182297,Bassano del Grappa,στην πόλη Bassano del Grappa,0,FIXL2
+3182272,Battipaglia,στην πόλη Battipaglia,0,FIXL2
+8224092,Bellaria-Igea Marina,στην πόλη Bellaria-Igea Marina,0,FIXL2
+3182210,Belluno,στην πόλη Belluno,0,FIXL2
+2525571,Belpasso,στην πόλη Belpasso,0,FIXL2
+3182179,Μπενεβέντο,στο Μπενεβέντο,1,FIXL2
+3181631,Bra,στην πόλη Bra,0,FIXL2
+2525473,Κάλιαρι,στο Κάλιαρι,1,FIXL2
+3180991,Campobasso,στην πόλη Campobasso,0,FIXL2
+2525405,Canicattì,στην πόλη Canicattì,0,FIXL2
+3180581,Carate Brianza,στην πόλη Carate Brianza,0,FIXL2
+2525350,Carini,στην πόλη Carini,0,FIXL2
+3180445,Carpi,στην πόλη Carpi,0,FIXL2
+3180224,Casalecchio di Reno,στην πόλη Casalecchio di Reno,0,FIXL2
+2525207,Casarano,στην πόλη Casarano,0,FIXL2
+3179866,Caserta,στην πόλη Caserta,0,FIXL2
+6534235,Cassano Magnago,στην πόλη Cassano Magnago,0,FIXL2
+3179781,Cassino,στην πόλη Cassino,0,FIXL2
+3179686,Castelfranco Emilia,στην πόλη Castelfranco Emilia,0,FIXL2
+3179684,Castelfranco Veneto,στην πόλη Castelfranco Veneto,0,FIXL2
+2525070,Castrovillari,στην πόλη Castrovillari,0,FIXL2
+2525068,Κατάνια,στην Κατάνια,1,FIXL2
+2525059,Κατανζάρο,στο Κατανζάρο,1,FIXL2
+3178999,Cerveteri,στην πόλη Cerveteri,0,FIXL2
+6534280,Cesano Boscone,στην πόλη Cesano Boscone,0,FIXL2
+3178957,Cesena,στην πόλη Cesena,0,FIXL2
+3178850,Chiari,στην πόλη Chiari,0,FIXL2
+3178832,Chiavari,στην πόλη Chiavari,0,FIXL2
+3178796,Chieti,στην πόλη Chieti,0,FIXL2
+3178784,Chioggia,στην πόλη Chioggia,0,FIXL2
+3178745,Chivasso,στην πόλη Chivasso,0,FIXL2
+3178671,Cinisello Balsamo,στην πόλη Cinisello Balsamo,0,FIXL2
+3178650,Ciriè,στην πόλη Ciriè,0,FIXL2
+3170102,Civitanova Marche,στην πόλη Civitanova Marche,0,FIXL2
+3178402,Colle di Val d'Elsa,στην πόλη Colle di Val d'Elsa,0,FIXL2
+3178398,Colleferro,στην πόλη Colleferro,0,FIXL2
+3178388,Collegno,στην πόλη Collegno,0,FIXL2
+3178283,Cologno Monzese,στην πόλη Cologno Monzese,0,FIXL2
+3178112,Cordenons,στην πόλη Cordenons,0,FIXL2
+9003711,Corigliano Scalo,στην πόλη Corigliano Scalo,0,FIXL2
+3178074,Cornaredo,στην πόλη Cornaredo,0,FIXL2
+3178004,Corsico,στην πόλη Corsico,0,FIXL2
+3177841,Crema,στην πόλη Crema,0,FIXL2
+2524881,Crotone,στην πόλη Crotone,0,FIXL2
+3177700,Cuneo,στην πόλη Cuneo,0,FIXL2
+3177608,Desio,στην πόλη Desio,0,FIXL2
+3177532,Domodossola,στην πόλη Domodossola,0,FIXL2
+2524819,Enna,στην πόλη Enna,0,FIXL2
+3177337,Este,στην πόλη Este,0,FIXL2
+3177171,Fasano,στην πόλη Fasano,0,FIXL2
+3176959,Φλωρεντία,στη Φλωρεντία,1,FIXL2
+2524734,Floridia,στην πόλη Floridia,0,FIXL2
+3176849,Follonica,στην πόλη Follonica,0,FIXL2
+3176843,Fondi,στην πόλη Fondi,0,FIXL2
+3176746,Forlì,στην πόλη Forlì,0,FIXL2
+3176733,Formigine,στην πόλη Formigine,0,FIXL2
+3176639,Fossano,στην πόλη Fossano,0,FIXL2
+3176515,Frosinone,στην πόλη Frosinone,0,FIXL2
+3176407,Galatina,στην πόλη Galatina,0,FIXL2
+3176391,Gallarate,στην πόλη Gallarate,0,FIXL2
+3176379,Galliate,στην πόλη Galliate,0,FIXL2
+3176219,Γένοβα,στη Γένοβα,1,FIXL2
+3176177,Ghedi,στην πόλη Ghedi,0,FIXL2
+2524606,Gioia Tauro,στην πόλη Gioia Tauro,0,FIXL2
+3176041,Giussano,στην πόλη Giussano,0,FIXL2
+3175990,Gorgonzola,στην πόλη Gorgonzola,0,FIXL2
+3175986,Gorizia,στην πόλη Gorizia,0,FIXL2
+3175755,Grugliasco,στην πόλη Grugliasco,0,FIXL2
+6698332,Infernetto,στην πόλη Infernetto,0,FIXL2
+3175458,Ίσκια,στην Ίσκια,1,FIXL2
+3175445,Isernia,στην πόλη Isernia,0,FIXL2
+3175384,Ivrea,στην πόλη Ivrea,0,FIXL2
+3175238,Lainate,στην πόλη Lainate,0,FIXL2
+3164090,Villorba,στην πόλη Villorba,0,FIXL2
+3174953,Λέτσε,στο Λέτσε,1,FIXL2
+3174921,Legnano,στην πόλη Legnano,0,FIXL2
+2524410,Lentini,στην πόλη Lentini,0,FIXL2
+3174719,Limbiate,στην πόλη Limbiate,0,FIXL2
+3174638,Lodi,στην πόλη Lodi,0,FIXL2
+3174530,Λούκα,στη Λούκα,1,FIXL2
+3174494,Lugo,στην πόλη Lugo,0,FIXL2
+6534216,Lumezzane,στην πόλη Lumezzane,0,FIXL2
+3174380,Macerata,στην πόλη Macerata,0,FIXL2
+3174295,Magenta,στην πόλη Magenta,0,FIXL2
+3174141,Malnate,στην πόλη Malnate,0,FIXL2
+3173949,Mariano Comense,στην πόλη Mariano Comense,0,FIXL2
+3173945,Marigliano,στην πόλη Marigliano,0,FIXL2
+3173721,Ματέρα,στη Ματέρα,1,FIXL2
+3173671,Meda,στην πόλη Meda,0,FIXL2
+2524170,Μεσσήνη,στη Μεσσήνη,1,FIXL2
+3173370,Mirandola,στην πόλη Mirandola,0,FIXL2
+3173326,Modugno,στην πόλη Modugno,0,FIXL2
+3173314,Mogliano Veneto,στην πόλη Mogliano Veneto,0,FIXL2
+3173180,Moncalieri,στην πόλη Moncalieri,0,FIXL2
+3173162,Mondovì,στην πόλη Mondovì,0,FIXL2
+3173124,Monselice,στην πόλη Monselice,0,FIXL2
+3173029,Montebelluna,στην πόλη Montebelluna,0,FIXL2
+3172996,Montecatini Terme,στην πόλη Montecatini Terme,0,FIXL2
+3172979,Montecchio Maggiore,στην πόλη Montecchio Maggiore,0,FIXL2
+3172768,Monterotondo,στην πόλη Monterotondo,0,FIXL2
+3172729,Montesilvano,στην πόλη Montesilvano,0,FIXL2
+3172718,Montevarchi,στην πόλη Montevarchi,0,FIXL2
+3172681,Montichiari,στην πόλη Montichiari,0,FIXL2
+3172629,Μόντσα,στη Μόντσα,1,FIXL2
+2523998,Noto,στην πόλη Noto,0,FIXL2
+3172184,Novate Milanese,στην πόλη Novate Milanese,0,FIXL2
+3172170,Novi Ligure,στην πόλη Novi Ligure,0,FIXL2
+3172154,Nuoro,στην πόλη Nuoro,0,FIXL2
+3171986,Orbassano,στην πόλη Orbassano,0,FIXL2
+2523964,Oristano,στην πόλη Oristano,0,FIXL2
+6534264,Orta di Atella,στην πόλη Orta di Atella,0,FIXL2
+3171848,Osimo,στην πόλη Osimo,0,FIXL2
+3171786,Ostuni,στην πόλη Ostuni,0,FIXL2
+2523920,Παλέρμο,στο Παλέρμο,1,FIXL2
+2523902,Palmi,στην πόλη Palmi,0,FIXL2
+3171484,Parabiago,στην πόλη Parabiago,0,FIXL2
+3171180,Περούτζια,στην Περούτζια,1,FIXL2
+3170778,Pietrasanta,στην πόλη Pietrasanta,0,FIXL2
+3170676,Pioltello,στην πόλη Pioltello,0,FIXL2
+3170647,Πίζα,στην Πίζα,1,FIXL2
+3170621,Pistoia,στην πόλη Pistoia,0,FIXL2
+3170504,Poggibonsi,στην πόλη Poggibonsi,0,FIXL2
+3170342,Pomezia,στην πόλη Pomezia,0,FIXL2
+3170272,Pontedera,στην πόλη Pontedera,0,FIXL2
+3170147,Pordenone,στην πόλη Pordenone,0,FIXL2
+3170073,Porto San Giorgio,στην πόλη Porto San Giorgio,0,FIXL2
+3170027,Potenza,στην πόλη Potenza,0,FIXL2
+3169984,Pozzuoli,στην πόλη Pozzuoli,0,FIXL2
+3169921,Πράτο,στο Πράτο,1,FIXL2
+2523664,Quattromiglia,στην πόλη Quattromiglia,0,FIXL2
+2523650,Ragusa,στην πόλη Ragusa,0,FIXL2
+3169602,Rapallo,στην πόλη Rapallo,0,FIXL2
+2523630,Ρέτζιο Καλάμπρια,στο Ρέτζιο Καλάμπρια,1,FIXL2
+3169424,Riccione,στην πόλη Riccione,0,FIXL2
+3169412,Rieti,στην πόλη Rieti,0,FIXL2
+3169361,Ρίμινι,στο Ρίμινι,1,FIXL2
+3169231,Rivoli,στην πόλη Rivoli,0,FIXL2
+3169056,Romano di Lombardia,στην πόλη Romano di Lombardia,0,FIXL2
+3169070,Ρώμη,στη Ρώμη,1,FIXL2
+3168936,Roseto degli Abruzzi,στην πόλη Roseto degli Abruzzi,0,FIXL2
+3168930,Rosignano Solvay,στην πόλη Rosignano Solvay,0,FIXL2
+2523577,Rossano Stazione,στην πόλη Rossano Stazione,0,FIXL2
+3168843,Rovigo,στην πόλη Rovigo,0,FIXL2
+3168837,Rozzano,στην πόλη Rozzano,0,FIXL2
+3168730,Sacile,στην πόλη Sacile,0,FIXL2
+3168627,Salsomaggiore Terme,στην πόλη Salsomaggiore Terme,0,FIXL2
+3168609,Saluzzo,στην πόλη Saluzzo,0,FIXL2
+3168550,San Benedetto del Tronto,στην πόλη San Benedetto del Tronto,0,FIXL2
+6534252,San Felice a Cancello,στην πόλη San Felice a Cancello,0,FIXL2
+3168236,San Giovanni Lupatoto,στην πόλη San Giovanni Lupatoto,0,FIXL2
+3168231,San Giovanni Valdarno,στην πόλη San Giovanni Valdarno,0,FIXL2
+2523461,San Giovanni in Fiore,στην πόλη San Giovanni in Fiore,0,FIXL2
+3168222,San Giuliano Milanese,στην πόλη San Giuliano Milanese,0,FIXL2
+3168175,San Lazzaro,στην πόλη San Lazzaro,0,FIXL2
+3167978,San Mauro Torinese,στην πόλη San Mauro Torinese,0,FIXL2
+3167953,San Miniato,στην πόλη San Miniato,0,FIXL2
+3167751,San Salvo,στην πόλη San Salvo,0,FIXL2
+3167744,San Sebastiano,στην πόλη San Sebastiano,0,FIXL2
+3167731,San Severo,στην πόλη San Severo,0,FIXL2
+3167777,Σαν Ρέμο,στο Σαν Ρέμο,1,FIXL2
+3167113,Saronno,στην πόλη Saronno,0,FIXL2
+3167104,Sarzana,στην πόλη Sarzana,0,FIXL2
+3167053,Sassuolo,στην πόλη Sassuolo,0,FIXL2
+3167034,Savigliano,στην πόλη Savigliano,0,FIXL2
+3166989,Scandiano,στην πόλη Scandiano,0,FIXL2
+3166988,Scandicci,στην πόλη Scandicci,0,FIXL2
+3166808,Segrate,στην πόλη Segrate,0,FIXL2
+3166740,Senigallia,στην πόλη Senigallia,0,FIXL2
+3166601,Sesto Fiorentino,στην πόλη Sesto Fiorentino,0,FIXL2
+3166598,Sesto San Giovanni,στην πόλη Sesto San Giovanni,0,FIXL2
+3166574,Seveso,στην πόλη Seveso,0,FIXL2
+3166548,Σιένα,στη Σιένα,1,FIXL2
+2523083,Συρακούσες,στις Συρακούσες,1,FIXL2
+3166397,Sondrio,στην πόλη Sondrio,0,FIXL2
+3166387,Sora,στην πόλη Sora,0,FIXL2
+3219114,Spinea,στην πόλη Spinea,0,FIXL2
+3166034,Sulmona,στην πόλη Sulmona,0,FIXL2
+3166006,Suzzara,στην πόλη Suzzara,0,FIXL2
+3165803,Teramo,στην πόλη Teramo,0,FIXL2
+3165788,Terlizzi,στην πόλη Terlizzi,0,FIXL2
+2522960,Termini Imerese,στην πόλη Termini Imerese,0,FIXL2
+3165773,Termoli,στην πόλη Termoli,0,FIXL2
+3165612,Todi,στην πόλη Todi,0,FIXL2
+3165595,Tolentino,στην πόλη Tolentino,0,FIXL2
+3165370,Tortona,στην πόλη Tortona,0,FIXL2
+3165340,Tradate,στην πόλη Tradate,0,FIXL2
+2522876,Τράπανι,στο Τράπανι,1,FIXL2
+3165201,Τρεβίζο,στο Τρεβίζο,1,FIXL2
+3165198,Trezzano sul Naviglio,στην πόλη Trezzano sul Naviglio,0,FIXL2
+3165185,Τεργέστη,στην Τεργέστη,1,FIXL2
+3165178,Triggiano,στην πόλη Triggiano,0,FIXL2
+3164617,Venaria Reale,στην πόλη Venaria Reale,0,FIXL2
+3164440,Viadana,στην πόλη Viadana,0,FIXL2
+3164433,Viareggio,στην πόλη Viareggio,0,FIXL2
+3164342,Vignola,στην πόλη Vignola,0,FIXL2
+8378910,Villanova,στην πόλη Villanova,0,FIXL2
+3164083,Vimercate,στην πόλη Vimercate,0,FIXL2
+3164080,Vimodrone,στην πόλη Vimodrone,0,FIXL2
+3164039,Viterbo,στην πόλη Viterbo,0,FIXL2
+3164028,Vittorio Veneto,στην πόλη Vittorio Veneto,0,FIXL2
+3163995,Voghera,στην πόλη Voghera,0,FIXL2
+3163853,Zola Predosa,στην πόλη Zola Predosa,0,FIXL2
+597989,Kretinga,στην πόλη Kretinga,0,FIXL2
+593926,Telšiai,στην πόλη Telšiai,0,FIXL2
+847633,Alta,στην πόλη Alta,0,FIXL2
+3153823,Harstad,στην πόλη Harstad,0,FIXL2
+3145614,Mo i Rana,στην πόλη Mo i Rana,0,FIXL2
+776175,Biała Podlaska,στην πόλη Biała Podlaska,0,FIXL2
+3103402,Bielsko-Biała,στην πόλη Bielsko-Biała,0,FIXL2
+775922,Biłgoraj,στην πόλη Biłgoraj,0,FIXL2
+3102987,Bolesławiec,στην πόλη Bolesławiec,0,FIXL2
+3101619,Chorzów,στην πόλη Chorzów,0,FIXL2
+3101547,Chrzanów,στην πόλη Chrzanów,0,FIXL2
+3101076,Czechowice-Dziedzice,στην πόλη Czechowice-Dziedzice,0,FIXL2
+3099759,Elbląg,στην πόλη Elbląg,0,FIXL2
+3099424,Γκντίνια,στην Γκντίνια,1,FIXL2
+3099230,Gliwice,στην πόλη Gliwice,0,FIXL2
+771506,Grajewo,στην πόλη Grajewo,0,FIXL2
+3098218,Grudziądz,στην πόλη Grudziądz,0,FIXL2
+3099213,Głogów,στην πόλη Głogów,0,FIXL2
+3097257,Jelenia Góra,στην πόλη Jelenia Góra,0,FIXL2
+3096880,Kalisz,στην πόλη Kalisz,0,FIXL2
+3096779,Kamienna Góra,στην πόλη Kamienna Góra,0,FIXL2
+769250,Kielce,στην πόλη Kielce,0,FIXL2
+3095971,Knurów,στην πόλη Knurów,0,FIXL2
+3095795,Kołobrzeg,στην πόλη Kołobrzeg,0,FIXL2
+767470,Krosno,στην πόλη Krosno,0,FIXL2
+3094170,Kutno,στην πόλη Kutno,0,FIXL2
+766555,Legionowo,στην πόλη Legionowo,0,FIXL2
+3093692,Legnica,στην πόλη Legnica,0,FIXL2
+3093524,Leszno,στην πόλη Leszno,0,FIXL2
+3093040,Lubań,στην πόλη Lubań,0,FIXL2
+3091150,Nakło nad Notecią,στην πόλη Nakło nad Notecią,0,FIXL2
+763534,Nowy Sącz,στην πόλη Nowy Sącz,0,FIXL2
+3090452,Nowy Tomyśl,στην πόλη Nowy Tomyśl,0,FIXL2
+762423,Piaseczno,στην πόλη Piaseczno,0,FIXL2
+3089125,Piekary Śląskie,στην πόλη Piekary Śląskie,0,FIXL2
+3088972,Piotrków Trybunalski,στην πόλη Piotrków Trybunalski,0,FIXL2
+3089033,Piła,στην πόλη Piła,0,FIXL2
+761228,Pruszków,στην πόλη Pruszków,0,FIXL2
+761131,Przeworsk,στην πόλη Przeworsk,0,FIXL2
+3088825,Płock,στην πόλη Płock,0,FIXL2
+3087497,Radomsko,στην πόλη Radomsko,0,FIXL2
+3087418,Radzionków,στην πόλη Radzionków,0,FIXL2
+3086706,Rumia,στην πόλη Rumia,0,FIXL2
+3086586,Rybnik,στην πόλη Rybnik,0,FIXL2
+3086511,Rypin,στην πόλη Rypin,0,FIXL2
+3085807,Skawina,στην πόλη Skawina,0,FIXL2
+758626,Sokołów Podlaski,στην πόλη Sokołów Podlaski,0,FIXL2
+3085128,Sosnowiec,στην πόλη Sosnowiec,0,FIXL2
+758390,Starachowice,στην πόλη Starachowice,0,FIXL2
+757718,Suwałki,στην πόλη Suwałki,0,FIXL2
+3084130,Swarzędz,στην πόλη Swarzędz,0,FIXL2
+3083878,Szamotuły,στην πόλη Szamotuły,0,FIXL2
+3085450,Słupsk,στην πόλη Słupsk,0,FIXL2
+3083426,Tczew,στην πόλη Tczew,0,FIXL2
+3082998,Turek,στην πόλη Turek,0,FIXL2
+3082756,Ustka,στην πόλη Ustka,0,FIXL2
+3082751,Ustroń,στην πόλη Ustroń,0,FIXL2
+3082197,Wieluń,στην πόλη Wieluń,0,FIXL2
+3081741,Włocławek,στην πόλη Włocławek,0,FIXL2
+3080985,Zabrze,στην πόλη Zabrze,0,FIXL2
+3080414,Zduńska Wola,στην πόλη Zduńska Wola,0,FIXL2
+3080251,Zgierz,στην πόλη Zgierz,0,FIXL2
+3080165,Zielona Góra,στην πόλη Zielona Góra,0,FIXL2
+754351,Ząbki,στην πόλη Ząbki,0,FIXL2
+3080074,Złotoryja,στην πόλη Złotoryja,0,FIXL2
+3083955,Świnoujście,στην πόλη Świnoujście,0,FIXL2
+3083988,Świętochłowice,στην πόλη Świętochłowice,0,FIXL2
+3080944,Żagań,στην πόλη Żagań,0,FIXL2
+3079855,Żywiec,στην πόλη Żywiec,0,FIXL2
+2743095,Alfena,στην πόλη Alfena,0,FIXL2
+2271473,Arrentela,στην πόλη Arrentela,0,FIXL2
+2742506,Baguim do Monte,στην πόλη Baguim do Monte,0,FIXL2
+2270503,Cacém,στην πόλη Cacém,0,FIXL2
+2270377,Camarate,στην πόλη Camarate,0,FIXL2
+2270157,Carnaxide,στην πόλη Carnaxide,0,FIXL2
+2269041,Corroios,στην πόλη Corroios,0,FIXL2
+2739756,Fânzeres,στην πόλη Fânzeres,0,FIXL2
+2738925,Gondomar,στην πόλη Gondomar,0,FIXL2
+2267131,Laranjeiro,στην πόλη Laranjeiro,0,FIXL2
+2267067,Linda-a-Velha,στην πόλη Linda-a-Velha,0,FIXL2
+2266621,Massamá,στην πόλη Massamá,0,FIXL2
+2265464,Oeiras,στην πόλη Oeiras,0,FIXL2
+2265326,Paço de Arcos,στην πόλη Paço de Arcos,0,FIXL2
+2264736,Piedade,στην πόλη Piedade,0,FIXL2
+2264428,Porto de Mós,στην πόλη Porto de Mós,0,FIXL2
+2735787,Póvoa de Varzim,στην πόλη Póvoa de Varzim,0,FIXL2
+2264269,Quelfes,στην πόλη Quelfes,0,FIXL2
+6559488,Quinta do Conde,στην πόλη Quinta do Conde,0,FIXL2
+2264087,Ramada,στην πόλη Ramada,0,FIXL2
+2735175,Ribeira de Frades,στην πόλη Ribeira de Frades,0,FIXL2
+2735083,Rio Tinto,στην πόλη Rio Tinto,0,FIXL2
+2734140,Senhora da Hora,στην πόλη Senhora da Hora,0,FIXL2
+2262957,Sesimbra,στην πόλη Sesimbra,0,FIXL2
+2263326,São João da Talha,στην πόλη São João da Talha,0,FIXL2
+2734434,São Mamede de Infesta,στην πόλη São Mamede de Infesta,0,FIXL2
+2734379,São Paulo de Frades,στην πόλη São Paulo de Frades,0,FIXL2
+2734363,São Pedro da Cova,στην πόλη São Pedro da Cova,0,FIXL2
+2734306,Custóias,στην πόλη Custóias,0,FIXL2
+2262582,Torres Novas,στην πόλη Torres Novas,0,FIXL2
+2733263,Valadares,στην πόλη Valadares,0,FIXL2
+2743304,Águas Santas,στην πόλη Águas Santas,0,FIXL2
+686578,Alba Iulia,στην πόλη Alba Iulia,0,FIXL2
+685948,Bacău,στην πόλη Bacău,0,FIXL2
+684657,Bistrița,στην πόλη Bistrița,0,FIXL2
+684039,Botoșani,στην πόλη Botoșani,0,FIXL2
+683760,Breaza,στην πόλη Breaza,0,FIXL2
+683902,Βραΐλα,στη Βραΐλα,1,FIXL2
+683394,Buftea,στην πόλη Buftea,0,FIXL2
+683123,Buzău,στην πόλη Buzău,0,FIXL2
+682729,Caransebeș,στην πόλη Caransebeș,0,FIXL2
+681502,Cisnădie,στην πόλη Cisnădie,0,FIXL2
+681179,Codlea,στην πόλη Codlea,0,FIXL2
+680963,Κωνστάντζα,στην Κωνστάντζα,1,FIXL2
+680332,Κραϊόβα,στην Κραϊόβα,1,FIXL2
+681862,Câmpina,στην πόλη Câmpina,0,FIXL2
+679452,Deva,στην πόλη Deva,0,FIXL2
+678817,Drobeta-Turnu Severin,στην πόλη Drobeta-Turnu Severin,0,FIXL2
+678978,Drăgășani,στην πόλη Drăgășani,0,FIXL2
+678015,Focșani,στην πόλη Focșani,0,FIXL2
+676527,Gura Humorului,στην πόλη Gura Humorului,0,FIXL2
+677742,Găești,στην πόλη Găești,0,FIXL2
+675810,Ιάσιο,στο Ιάσιο,1,FIXL2
+674531,Lugoj,στην πόλη Lugoj,0,FIXL2
+671964,Odorheiu Secuiesc,στην πόλη Odorheiu Secuiesc,0,FIXL2
+671382,Pantelimon,στην πόλη Pantelimon,0,FIXL2
+670889,Piatra Neamț,στην πόλη Piatra Neamț,0,FIXL2
+670609,Pitești,στην πόλη Pitești,0,FIXL2
+670474,Πλοϊέστι,στο Πλοϊέστι,1,FIXL2
+669870,Popești-Leordeni,στην πόλη Popești-Leordeni,0,FIXL2
+668605,Roșiorii de Vede,στην πόλη Roșiorii de Vede,0,FIXL2
+668872,Râmnicu Vâlcea,στην πόλη Râmnicu Vâlcea,0,FIXL2
+667526,Sebeș,στην πόλη Sebeș,0,FIXL2
+667227,Sighetu Marmației,στην πόλη Sighetu Marmației,0,FIXL2
+8436351,Sighișoara,στην πόλη Sighișoara,0,FIXL2
+666767,Slatina,στην πόλη Slatina,0,FIXL2
+665850,Suceava,στην πόλη Suceava,0,FIXL2
+664518,Tulcea,στην πόλη Tulcea,0,FIXL2
+664460,Turda,στην πόλη Turda,0,FIXL2
+665024,Târgoviște,στην πόλη Târgoviște,0,FIXL2
+665004,Târgu Mureș,στην πόλη Târgu Mureș,0,FIXL2
+662334,Zalău,στην πόλη Zalău,0,FIXL2
+662284,Zărnești,στην πόλη Zărnești,0,FIXL2
+1508291,Τσελιάμπινσκ,στο Τσελιάμπινσκ,1,FIXL2
+819740,Ντρόζζινο,στο Ντρόζζινο,1,FIXL2
+553915,Καλούγκα,στην Καλούγκα,1,FIXL2
+550280,Χίμκι,στο Χίμκι,1,FIXL2
+547523,Κλιν,στο Κλιν,1,FIXL2
+535121,Λίπετσκ,στο Λίπετσκ,1,FIXL2
+534595,Λόμπνια,στη Λόμπνια,1,FIXL2
+523812,Μιτίστσι,στο Μιτίστσι,1,FIXL2
+511196,Περμ,στο Περμ,1,FIXL2
+508101,Ποντόλσκ,στο Ποντόλσκ,1,FIXL2
+502018,Ρεούτοφ,στο Ρεούτοφ,1,FIXL2
+496638,Σεργκίεφ Ποσάντ,στο Σεργκίεφ Ποσάντ,1,FIXL2
+473778,Βίντνογιε,στο Βίντνογιε,1,FIXL2
+473247,Βλαντιμίρ,στο Βλαντιμίρ,1,FIXL2
+472757,Βόλγκογκραντ,στο Βόλγκογκραντ,1,FIXL2
+468902,Γιαροσλάβλ,στο Γιαροσλάβλ,1,FIXL2
+606531,Boden,στην πόλη Boden,0,FIXL2
+2700839,Kinna,στην πόλη Kinna,0,FIXL2
+605155,Kiruna,στην πόλη Kiruna,0,FIXL2
+2667109,Tullinge,στην πόλη Tullinge,0,FIXL2
+2665452,Vallentuna,στην πόλη Vallentuna,0,FIXL2
+3194351,Novo Mesto,στην πόλη Novo Mesto,0,FIXL2
+3192241,Ptuj,στην πόλη Ptuj,0,FIXL2
+3188915,Trbovlje,στην πόλη Trbovlje,0,FIXL2
+3189075,Velenje,στην πόλη Velenje,0,FIXL2
+3061186,Banská Bystrica,στην πόλη Banská Bystrica,0,FIXL2
+3060950,Brezno,στην πόλη Brezno,0,FIXL2
+3060405,Dolný Kubín,στην πόλη Dolný Kubín,0,FIXL2
+3060219,Galanta,στην πόλη Galanta,0,FIXL2
+3060139,Handlová,στην πόλη Handlová,0,FIXL2
+3060095,Hlohovec,στην πόλη Hlohovec,0,FIXL2
+3059435,Komárno,στην πόλη Komárno,0,FIXL2
+3059436,Komárno,στην πόλη Komárno,0,FIXL2
+3058986,Lučenec,στην πόλη Lučenec,0,FIXL2
+3058897,Malacky,στην πόλη Malacky,0,FIXL2
+724144,Michalovce,στην πόλη Michalovce,0,FIXL2
+3058477,Nové Mesto nad Váhom,στην πόλη Nové Mesto nad Váhom,0,FIXL2
+3058472,Nové Zámky,στην πόλη Nové Zámky,0,FIXL2
+3058268,Partizánske,στην πόλη Partizánske,0,FIXL2
+3058210,Pezinok,στην πόλη Pezinok,0,FIXL2
+3058202,Piešťany,στην πόλη Piešťany,0,FIXL2
+3058060,Považská Bystrica,στην πόλη Považská Bystrica,0,FIXL2
+3058000,Prievidza,στην πόλη Prievidza,0,FIXL2
+3057963,Púchov,στην πόλη Púchov,0,FIXL2
+723736,Rimavská Sobota,στην πόλη Rimavská Sobota,0,FIXL2
+723713,Rožňava,στην πόλη Rožňava,0,FIXL2
+3057692,Senec,στην πόλη Senec,0,FIXL2
+3057691,Senica,στην πόλη Senica,0,FIXL2
+3057630,Skalica,στην πόλη Skalica,0,FIXL2
+723559,Snina,στην πόλη Snina,0,FIXL2
+3057174,Topoľčany,στην πόλη Topoľčany,0,FIXL2
+723195,Vranov nad Topľou,στην πόλη Vranov nad Topľou,0,FIXL2
+3057769,Šaľa,στην πόλη Šaľa,0,FIXL2
+3056523,Žiar nad Hronom,στην πόλη Žiar nad Hronom,0,FIXL2
+712165,Μπίλα Τσέρκβα,στην Μπίλα Τσέρκβα,1,FIXL2
+712590,Μπιλοχορόντκα,στην Μπιλοχορόντκα,1,FIXL2
+711660,Μπορίσπιλ,στο Μπορίσπιλ,1,FIXL2
+711416,Μπρόντι,στο Μπρόντι,1,FIXL2
+711390,Μπροβαρί,στο Μπροβαρί,1,FIXL2
+710791,Τσερκάσι,στο Τσερκάσι,1,FIXL2
+710719,Τσερνίβτσι,στο Τσερνίβτσι,1,FIXL2
+707688,Τσορνομόρσκ,στο Τσορνομόρσκ,1,FIXL2
+709930,Ντνίπρο,στο Ντνίπρο,1,FIXL2
+709540,Ντούμπνο,στο Ντούμπνο,1,FIXL2
+13546531,Φορτέτσνι,στο Φορτέτσνι,1,FIXL2
+708901,Χάισιν,στο Χάισιν,1,FIXL2
+707565,Ίρπιν,στο Ίρπιν,1,FIXL2
+707471,Ιβάνο-Φρανκίβσκ,στο Ιβάνο-Φρανκίβσκ,1,FIXL2
+706950,Καμιάνετς-Ποντίλσκι,στο Καμιάνετς-Ποντίλσκι,1,FIXL2
+706369,Χμελνίτσκι,στο Χμελνίτσκι,1,FIXL2
+706165,Χουστ,στο Χουστ,1,FIXL2
+12519211,Κνιαχίνιν,στο Κνιαχίνιν,1,FIXL2
+705392,Κολομίια,στην Κολομίια,1,FIXL2
+13609094,Κορολιόβ,στο Κορολιόβ,1,FIXL2
+704901,Κοροστέν,στο Κοροστέν,1,FIXL2
+704858,Κορσούν-Σεβτσενκίβσκι,στο Κορσούν-Σεβτσενκίβσκι,1,FIXL2
+704617,Κόβελ,στο Κόβελ,1,FIXL2
+705812,Κροπιβνίτσκι,στο Κροπιβνίτσκι,1,FIXL2
+703845,Κρίβι Ριχ,στο Κρίβι Ριχ,1,FIXL2
+13561778,Κιίβσκι,στο Κιίβσκι,1,FIXL2
+700696,Μοστίσκα,στη Μοστίσκα,1,FIXL2
+700646,Μουκάτσεβο,στο Μουκάτσεβο,1,FIXL2
+700569,Μικολάιβ,στο Μικολάιβ,1,FIXL2
+700507,Ναντβίρνα,στη Ναντβίρνα,1,FIXL2
+700261,Νετίσιν,στο Νετίσιν,1,FIXL2
+8468760,Νοβογιαβορίβσκ,στο Νοβογιαβορίβσκ,1,FIXL2
+13608468,Νοβοζαβόντσκι,στο Νοβοζαβόντσκι,1,FIXL2
+698740,Οδησσός,στην Οδησσό,1,FIXL2
+698625,Ολεξάντρια,στην Ολεξάντρια,1,FIXL2
+697593,Περβομάισκ,στο Περβομάισκ,1,FIXL2
+696943,Πιντχορόντνε,στο Πιντχορόντνε,1,FIXL2
+13631378,Ράκοβε,στο Ράκοβε,1,FIXL2
+695594,Ρίβνε,στο Ρίβνε,1,FIXL2
+699445,Σαμάρ,στο Σαμάρ,1,FIXL2
+694792,Σάρνι,στο Σάρνι,1,FIXL2
+710554,Σεπτίτσκι,στο Σεπτίτσκι,1,FIXL2
+13561779,Σεβτσένκο,στο Σεβτσένκο,1,FIXL2
+693457,Σμίλα,στη Σμίλα,1,FIXL2
+693301,Σοκάλ,στο Σοκάλ,1,FIXL2
+692372,Στρι,στο Στρι,1,FIXL2
+692129,Σβάλιαβα,στη Σβάλιαβα,1,FIXL2
+691650,Τερνόπιλ,στο Τερνόπιλ,1,FIXL2
+691179,Τρουσκάβετς,στο Τρουσκάβετς,1,FIXL2
+690688,Ουμάν,στο Ουμάν,1,FIXL2
+690548,Ούζχοροντ,στο Ούζχοροντ,1,FIXL2
+689558,Βίνιτσα,στη Βίνιτσα,1,FIXL2
+689159,Βολοτσίσκ,στο Βολοτσίσκ,1,FIXL2
+689378,Βολοντίμιρ,στο Βολοντίμιρ,1,FIXL2
+688723,Βίσχοροντ,στο Βίσχοροντ,1,FIXL2
+689487,Βίσνεβε,στο Βίσνεβε,1,FIXL2
+687700,Ζαπορίζια,στη Ζαπορίζια,1,FIXL2
+686967,Ζιτόμιρ,στο Ζιτόμιρ,1,FIXL2
+686919,Ζναμιάνκα,στη Ζναμιάνκα,1,FIXL2
+686803,Ζβενιχορόντκα,στη Ζβενιχορόντκα,1,FIXL2
+699553,Ζβιάχελ,στο Ζβιάχελ,1,FIXL2
+6941080,Fort Bragg,στην πόλη Fort Bragg,0,FIXL2

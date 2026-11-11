@@ -9,5 +9,12 @@
  "prices": "/bg/tseni-za-zaryazhdane/",
  "shell_about": "/bg/za-blokvolt/",
  "sources": "/bg/iztochnitsi/",
- "methodology": "/bg/metodologiya/"
+ "methodology": "/bg/metodologiya/",
+ "pay": "/bg/kak-se-plashta/",
+ "routes": "/bg/marshruti/",
+ "press": "/bg/za-medii/",
+ "b2b": "/bg/danni-za-biznesa/",
+ "embed": "/bg/embed/karta/",
+ "map_conf": "/bg/karta-za-vashiya-sayt/",
+ "developers": "/bg/za-razrabotchitsi/"
 }

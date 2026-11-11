@@ -58,3 +58,11 @@ See RESULT/back-translation for counts. GR cities: Greek names with article (dec
 ## Cities — result
 5 605/5 605 rows. decl_ok=1: 701 (all 90 GR cities with article + 611 established Greek forms); decl_ok=0: 4 904 (Latin name, «στην πόλη X»).
 Doubts: Burgas «Μπουργκάς» (not «Πύργος», clash with Greek Pyrgos); Galați, Leeds, Caen, Veles left Latin (clashes/unsure); HU «Pest» → «Πέστη» (may be the district); small Balkan towns transliterated, not established (Ζάγετσαρ, Βρσατς, Πέια, Γκιλάν, Λέζα, Κούκες, Κότσανι, Νεγκότινο, Πλιέβλια) — decl_ok=1 but worth a native look. Attica's Heraklion → «Ηράκλειο Αττικής».
+
+## FIXL (11.11.2026)
+- `strings_home.json` new (71 keys). Home h1 «Χάρτης φόρτισης ηλεκτρικών αυτοκινήτων σε Ευρώπη και κόσμο».
+- countries.csv: new last column `name_nom` (D4/D14) = article + name («η Ελβετία», «οι Ηνωμένες Πολιτείες», «το Βέλγιο», «ο Καναδάς»). Use `{name_nom}` only where it is not sentence-initial and only with «είναι» (number-neutral).
+- D13: Netherlands = «Ολλανδία» (slug `ollandia`).
+- D12: small TR/AL/MK/BG towns use official local names in Greek script; big-city exonyms kept (see REVIEW FIXL).
+- Slugs (F5, ELOT 743): pay `/el/tropoi-pliromis/` · routes `/el/diadromes/` · press `/el/mesa-enimerosis/` · b2b `/el/dedomena-gia-epicheiriseis/` · embed `/el/embed/chartis/` · map_conf `/el/chartis-gia-istotopo/` · developers `/el/gia-programmatistes/`.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 12)

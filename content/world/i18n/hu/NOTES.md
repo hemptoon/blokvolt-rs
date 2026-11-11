@@ -27,3 +27,18 @@ töltőállomás — станция; töltőhely — место/локация; 
 
 ## Не сделано
 - Носитель языка не вычитывал. texts.json переведён отдельным агентом и проверен структурно + выборочно.
+
+## L2-HU (11.11.2026)
+- +274 ключа: strings_map +29 (ci_*, emb_open), новые strings_pay 93, strings_press 54, strings_b2b 33, strings_embed 65. HOME2 в dev ещё не было — его ключей нет.
+- texts.json: `pay` (6 пунктов AFIR) и `routes` (59 узлов `routes[i].stops[j].city`) в формате LANG0. Названия остановок взяты из hu/cities.csv, чтобы совпадать со страницами городов (Belgrád, Szófia, Zágráb; Čakovec → Csáktornya, Sibiu → Nagyszeben — тот же открытый вопрос об исторических названиях).
+- **Для LANG0 — какие формы ждут плейсхолдеры:** `{cu}` (t_pay_country, d_pay_country) и `{lo}`/`{hi}` в `f_range` — форма места = `in_phrase` из countries.csv («Németországban»). `{name}` в pay и `{lo}`/`{hi}` в `f_home` — именительный; фразы построены так, чтобы не требовать артикля a/az («Ez az ország ({name}) …», «Töltőállomások — {name}»). `{month}`, `{prev}`, `{date}`, `{fx}`, `{layer}` стоят без падежных суффиксов (после двоеточия или в скобках) — подойдёт любой формат даты/месяца.
+- Название индекса: «Európai elektromosautó-töltési árindex». «Sajtónak» = For media. «szerkesztőségi» не используется (запрещённое слово в check.py) — «sajtótartalom».
+- check.py: все 8 файлов + texts.json about_data, download, pay, routes (пути узлов сверяются с pay.json/routes.json) → OK.
+
+## FIXL (11.11.2026)
+- strings_home.json (71 kulcs); lang_hint „Ez az oldal magyarul is elérhető”, lang_hint_close „Bezárás”.
+- Slugok: /hu/fizetesi-modok/ /hu/utvonalak/ /hu/sajtonak/ /hu/adatok-cegeknek/ /hu/embed/terkep/ /hu/terkep-a-weboldalara/ /hu/fejlesztoknek/.
+- name_nom: nem használjuk (D14 csak de fr it es pt el); a check.py megengedi.
+- D12 (végleges): a volt Magyar Királyság más országbeli városai helyi hivatalos névvel (Bratislava, Košice, Cluj-Napoca, Timișoara, Novi Sad, Subotica, Osijek, Čakovec, Sibiu …, 32 sor) — a fenti „спорное” kérdés lezárva. Bevett semleges exonimák maradnak (Bécs, Prága, Belgrád, Zágráb, Bukarest).
+- cities.csv: +48 NOBIL (auto -ban/-ben) + Genf „Genfben”.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 46) — HU: kézi -on/-en/-ön/-ban/-ben (Ajkán, Gödön, Vácon, Komáromban…); D12: SK/RO/UA városok helyi névvel (Komárno, Odorheiu Secuiesc, Sighișoara, Uzhhorod, Mukachevo, Khust); UA/RU/BY/BG nagyobbak magyar átírással (Odessza, Zaporizzsja, Vityebszk, Sztara Zagora), kisebbek latin átírással „X városában”; Róma, Firenze, Trieszt, Szirakúza; auto -ban/-ben a fonetikus latin országokban.

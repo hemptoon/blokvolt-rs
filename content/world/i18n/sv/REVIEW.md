@@ -50,3 +50,29 @@
 - «USA» вместо «Förenta staterna» — норма шведских СМИ, оставлено.
 - `p_hub_na` говорит, какие страны есть на каких языках; при включении sv фразу нужно обновить (вопрос из L-SV остаётся).
 - Города за пределами SE/FI/AX и первых 500 `month` проверены только по списку экзонимов.
+
+## L2-sv — bakåtöversättning (2026-11-11)
+60 slumpvisa nya strängar (seed 20261111) översattes tillbaka till EN av en separat agent som inte såg originalet. Betydelseavvikelser: 0.
+
+Stilanmärkningar (13) och beslut:
+- `lg_home` ”El hemma” tvetydigt → ”Hushållsel” (även `ch_dc_home`, `d_issue`).
+- `what_price`, `what_cov`: ”högeffekt” som substantiv, ”valuta och EUR” oklart → ”AC-, DC- och HPC-pris”, ”andel DC och HPC”, ”originalvaluta och EUR”.
+- `dv_desc`, `dv_open_p`: ordföljd → ”veckovis uppdaterade öppna data”, ”En veckovis uppdaterad CSV-fil”.
+- `ci_err`, `ci_err_limit`: ”svar”/”adress” → ”Det gick inte att skicka”, ”rapporter från den här anslutningen”.
+- `ci_demo`: ”Förhandsversion” → ”Förhandsvisning” (som `m_demo`, `cf_preview`); även `ci_demo_note`.
+- `dv_p_mreza`: → ”avgränsade med kommatecken”.
+- `pay_disc`: → ”Apparnas täckning … Kontrollera i själva appen”.
+- `dv_balkan_p`: ”avsnitten” → ”de regionala delarna”.
+- `typ_none`: dubbelt ”för” → ”Ännu för få officiella priser för att beräkna ett index för landet.”
+- Ej ändrat: `d_pay_country` ({cu} bär prepositionen — avsiktligt, se NOTES); `what_cov` ”kontakter” (ordlistans term, som i strings_map).
+- Dessutom: ”taxa/taxor” i nya strängar → ”tariff/tariffer” för att följa befintliga strings_prices/strings_map.
+
+Öppet: `dv_p_lang` listar ”EN, SR, RU” som i EN — uppdateras när LANG0 ändrar EN-källan.
+
+## FIXL 11.11.2026
+- Kontrollerat: `strings_home.json` (71 nycklar, ny), `lang_hint`/`lang_hint_close`, `dv_p_lang`, `p_hub_na` (D11), 7 nya slugs, cities.csv (+3, 46 NOBIL-rader verifierade).
+- Bakåtöversättning (våg 1): 20 hemsträngar (title, desc, h1, sub, search_none, near_err, map_alt, map_err, map_more, countries_p, ap_note, below_h, prices_p, p_ratio, p_src, pay_p, routes_p, work_p, trust_p, org_desc) + 4 ändrade (lang_hint, lang_hint_close, dv_p_lang, p_hub_na). Betydelsen stämde i 24/24.
+- Rättat: `org_desc` ”Oberoende referens om …” (anglicism) → ”Oberoende översikt över laddning av elbilar …”.
+- Medvetna avvikelser: `work_h` ”Fungerar laddaren?” (EN ”Is it working?” — svenska behöver subjekt); `ap_note` ”Landssidor för den här regionen …” (EN ”here”); `near_err` ”Din position …” (EN ”Location”).
+- D12: inga historiska/irredentistiska exonymer hittade. Utländska namn som skiljer sig från lokala är vanliga neutrala exonymer (Bryssel, Prag, Köpenhamn, Aten, Belgrad, Neapel, Venedig …). Finska orter med svenskt namn (Helsingfors, Åbo, Tammerfors, Uleåborg …) är officiella eller standard på svenska — behålls.
+- Öppet: ”uppgifter per {date}” vs ”data per {date}”; Genève (inte ”Genf”/”Geneva”) — svensk norm.

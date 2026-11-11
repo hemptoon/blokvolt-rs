@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""L-BS check: python3 content/world/i18n/bs/check.py  (exit 1 on errors)"""
+"""L-BS / L2-bs check (8 string files + texts pay/routes): python3 content/world/i18n/bs/check.py  (exit 1 on errors)"""
 import csv, json, re, sys
 from pathlib import Path
 from babel import Locale
@@ -20,7 +20,8 @@ def strs(v):
     elif isinstance(v, list):
         for x in v: yield from strs(x)
 
-for f in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
+FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices', 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed', 'strings_home')   # L2: all 8; FIXL: + home
+for f in FILES:
     en = {k: v['en'] for k, v in json.load(open(WORLD / f'{f}.json', encoding='utf-8')).items()}
     tr = json.load(open(HERE / f'{f}.json', encoding='utf-8'))
     if set(en) != set(tr): err.append(f'{f}: keys differ: missing {sorted(set(en)-set(tr))} extra {sorted(set(tr)-set(en))}')
@@ -32,7 +33,8 @@ for f in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
             elif not all(isinstance(x, str) and x.strip() for x in t.values()): err.append(f'{f}.{k}: empty plural form')
             continue
         if not isinstance(t, str) or not t.strip(): err.append(f'{f}.{k}: empty'); continue
-        nph = lambda x: sorted(re.sub(r'\{(city|country)_u\}', r'{\1}', y) for y in PH.findall(x))   # R-BS: {city_u}/{country_u} allowed for {city}/{country} (pool 4, 00:12)
+        # R-BS: {city_u}/{country_u} allowed for {city}/{country} (pool 4, 00:12); FIXL D14: {name_nom} for {name}
+        nph = lambda x: sorted(re.sub(r'\{(city|country)_u\}', r'{\1}', y).replace('{name_nom}', '{name}') for y in PH.findall(x))
         if nph(e) != nph(t): err.append(f'{f}.{k}: placeholders {PH.findall(e)} vs {PH.findall(t)}')
         if len(e) <= 25 and '{' not in e and len(t) > max(len(e) * 1.4, len(e) + 4): warn.append(f'{f}.{k}: short UI string longer than EN x1.4: {t!r} vs {e!r}')
         if sorted(TAG.findall(e)) != sorted(TAG.findall(t)): err.append(f'{f}.{k}: html/entities differ')
@@ -56,13 +58,33 @@ def same_shape(a, b, path):
         if EKAV.search(b): warn.append(f'texts {path}: ekavian? {EKAV.search(b).group(0)}')
 
 texts = json.load(open(HERE / 'texts.json', encoding='utf-8'))
-if set(texts) != {'about_data', 'download'}: err.append('texts.json: top keys')
+if set(texts) != {'about_data', 'download', 'pay', 'routes'}: err.append(f'texts.json: top keys {sorted(texts)}')
 for k in ('about_data', 'download'):
     same_shape(json.load(open(WORLD / f'{k}.json', encoding='utf-8'))['en'], texts.get(k), k)
 
+# L2 / LANG0: texts.pay and texts.routes — dotted path of each multilingual node of pay.json / routes.json -> text
+def ml_nodes(v, p, out):
+    if isinstance(v, dict):
+        if isinstance(v.get('en'), str) and ('sr' in v or 'ru' in v): out[p] = v['en']; return
+        for k, x in v.items(): ml_nodes(x, f'{p}.{k}' if p else k, out)
+    elif isinstance(v, list):
+        for i, x in enumerate(v): ml_nodes(x, f'{p}[{i}]', out)
+for sec in ('pay', 'routes'):
+    nodes = {}; ml_nodes(json.load(open(WORLD / f'{sec}.json', encoding='utf-8')), '', nodes)
+    got = texts.get(sec) or {}
+    if set(nodes) != set(got): err.append(f'texts.{sec}: paths differ: missing {sorted(set(nodes)-set(got))[:5]} extra {sorted(set(got)-set(nodes))[:5]}')
+    for path, e in nodes.items():
+        t = got.get(path)
+        if t is None: continue
+        if not isinstance(t, str) or not t.strip(): err.append(f'texts.{sec} {path}: empty'); continue
+        if sorted(PH.findall(e)) != sorted(PH.findall(t)): err.append(f'texts.{sec} {path}: placeholders')
+        if BAD.search(t): err.append(f'texts.{sec} {path}: forbidden {BAD.search(t).group(0)}')
+        if EKAV.search(t): warn.append(f'texts.{sec} {path}: ekavian? {EKAV.search(t).group(0)}')
+
 KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
 sl = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
-if list(sl) != KEYS and set(sl) != set(KEYS): err.append(f'slugs: keys {list(sl)}')
+EXTRA = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']   # FIXL F5: optional section paths
+if not set(KEYS) <= set(sl) <= set(KEYS) | set(EXTRA): err.append(f'slugs: keys {list(sl)}')
 for k, v in sl.items():
     if k in ('net', 'about', 'download'):
         if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v): err.append(f'slugs.{k}: {v}')
@@ -71,7 +93,8 @@ if len(set(sl.values())) != len(sl): err.append('slugs: duplicates')
 
 src_c = {r['cc'] for r in csv.DictReader(open(WORLD / 'names/countries.csv', encoding='utf-8'))}
 cs = list(csv.DictReader(open(HERE / 'countries.csv', encoding='utf-8')))
-if cs and list(cs[0]) != ['cc', 'name', 'slug', 'in_phrase', 'note']: err.append('countries.csv: columns')
+if cs and list(cs[0]) not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):
+    err.append('countries.csv: columns')   # FIXL D4: an extra last column name_nom is allowed
 if {r['cc'] for r in cs} != src_c: err.append('countries.csv: cc set differs')
 for r in cs:
     if not (r['name'] and r['in_phrase']): err.append(f"countries {r['cc']}: empty")
@@ -82,12 +105,20 @@ if len({r['slug'] for r in cs}) != len(cs): err.append('countries: duplicate slu
 src_g = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities.csv', encoding='utf-8'))}
 ci = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
 if ci and list(ci[0]) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: err.append('cities.csv: columns')
-if not {r['geonameid'] for r in ci} <= src_g: err.append('cities.csv: unknown geonameid')
+_ex = WORLD / 'names/cities_extra.csv'   # FIXL2: geonameids may also come from names/cities_extra.csv
+ext_g = {r['geonameid'] for r in csv.DictReader(open(_ex, encoding='utf-8'))} if _ex.exists() else set()
+if not {r['geonameid'] for r in ci} <= src_g | ext_g: err.append('cities.csv: unknown geonameid')
+# FIXL: every city page of pages_state must have a row
+_ps = WORLD / 'state' / 'pages_state.json'
+if _ps.exists():
+    _pages = {str(v.get('key', '')).split(':')[-1] for v in json.load(open(_ps, encoding='utf-8')).values()
+              if v.get('type') == 'city' and str(v.get('key', '')).startswith('t:')}
+    for x in sorted(_pages - {r['geonameid'] for r in ci}): err.append(f'cities.csv: city with a page missing: {x}')
 for r in ci:
     if not (r['name'] and r['in_phrase']) or r['decl_ok'] not in ('0', '1'): err.append(f"cities {r['geonameid']}: bad row")
     if r['in_phrase'].startswith('u gradu') and r['decl_ok'] != '0': err.append(f"cities {r['geonameid']}: safe phrase must be decl_ok=0")
 
-print(f'cities {len(ci)}/{len(src_g)}, decl_ok=1: {sum(r["decl_ok"]=="1" for r in ci)}; countries {len(cs)}')
+print(f'cities {len(ci)}/{len(src_g | ext_g)}, decl_ok=1: {sum(r["decl_ok"]=="1" for r in ci)}; countries {len(cs)}')
 for w in warn: print('WARN', w)
 for e in err: print('ERR ', e)
 print('OK' if not err else f'{len(err)} errors')

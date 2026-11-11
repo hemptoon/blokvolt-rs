@@ -9,5 +9,12 @@
  "prices": "/ro/preturi-incarcare/",
  "shell_about": "/ro/despre/",
  "sources": "/ro/surse/",
- "methodology": "/ro/metodologie/"
+ "methodology": "/ro/metodologie/",
+ "pay": "/ro/cum-platiti/",
+ "routes": "/ro/rute/",
+ "press": "/ro/pentru-presa/",
+ "b2b": "/ro/date-pentru-companii/",
+ "embed": "/ro/embed/harta/",
+ "map_conf": "/ro/harta-pentru-site/",
+ "developers": "/ro/pentru-dezvoltatori/"
 }

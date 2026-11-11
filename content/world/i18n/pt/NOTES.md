@@ -73,3 +73,14 @@
 - Assinalado `strings_prices.t_country` («Preços de carregamento de VE {country_u}») — correto, porque `{country_u}` já traz «na Alemanha».
 - `attribution` de fontes (AFDC, Overture, NSW, Luxemburgo) e «© OpenStreetMap contributors» ficaram na língua original de propósito: texto de atribuição exigido pela licença.
 - `odbl_note` uniformizado para «ao abrigo da licença».
+
+## FIXL (11.11.2026)
+
+- D14: `countries.csv` tem a coluna `name_nom` (forma com artigo: «a Suíça», «os Países Baixos», «o Reino Unido», «Portugal»,
+  «a França»). Usada em `strings_pay` `afir_eu`, `afir_non`, `conn_txt`; `conn_lnk` fica com `{name}`.
+  Regra: nunca `{name_nom}` depois de «de/em/a/por» (contração); evitar `{name_nom}` como sujeito de verbo (concordância no plural).
+- Slugs (F5): `/pt/como-pagar/`, `/pt/itinerarios/`, `/pt/imprensa/`, `/pt/dados-para-empresas/`, `/pt/embed/mapa/`,
+  `/pt/mapa-para-o-seu-site/`, `/pt/programadores/`.
+- Home (F3): «local de carregamento» para "charging place"; botões no infinitivo; Asia-Pacific = «Ásia-Pacífico».
+- Cidades: 48 NOBIL (nome local, «em X») + Genebra (2660646, «em Genebra»).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 32)

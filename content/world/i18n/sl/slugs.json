@@ -9,5 +9,12 @@
  "prices": "/sl/cene-polnjenja/",
  "shell_about": "/sl/o-strani/",
  "sources": "/sl/viri/",
- "methodology": "/sl/metodologija/"
+ "methodology": "/sl/metodologija/",
+ "pay": "/sl/kako-placati/",
+ "routes": "/sl/poti/",
+ "press": "/sl/za-medije/",
+ "b2b": "/sl/podatki-za-podjetja/",
+ "embed": "/sl/embed/zemljevid/",
+ "map_conf": "/sl/zemljevid-za-vaso-stran/",
+ "developers": "/sl/za-razvijalce/"
 }

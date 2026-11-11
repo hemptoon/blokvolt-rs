@@ -210,9 +210,9 @@
   "ru": "tamna = тёмная подложка"
  },
  "dv_p_lang": {
-  "en": "Language: the address of the widget (EN, SR, RU)",
-  "sr": "Jezik: adresa vidžeta (EN, SR, RU)",
-  "ru": "Язык: адрес виджета (EN, SR, RU)"
+  "en": "Language: set by the widget address",
+  "sr": "Jezik: određuje ga adresa vidžeta",
+  "ru": "Язык: задаётся адресом виджета"
  },
  "dv_p_hash": {
   "en": "Exact view: #zoom/latitude/longitude at the end of the address",

@@ -379,7 +379,7 @@ geonameid,name,in_phrase,decl_ok,note
 2747751,Sassenheim,Sassenheim'de,1,güvenli yapı
 2872649,Mayen,Mayen'de,1,kural (ünlü uyumu)
 2936909,Dingolfing,Dingolfing'de,1,kural (ünlü uyumu)
-261745,Kandiye (Heraklion),Kandiye'de (Heraklion),1,egzonim/yaygın Türkçe ad
+261745,Heraklion,Heraklion'da,1,FIXL D12: yerel resmî ad (önceden Kandiye (Heraklion))
 2751651,Lichtenvoorde,Lichtenvoorde'de,1,güvenli yapı
 2772400,Linz,Linz'de,1,kural (ünlü uyumu)
 2813040,Weiden in der Oberpfalz,Weiden in der Oberpfalz şehrinde,0,güvenli yapı
@@ -564,7 +564,7 @@ geonameid,name,in_phrase,decl_ok,note
 2970148,Vence,Vence şehrinde,0,güvenli yapı
 3023240,Coulommiers,Coulommiers şehrinde,0,güvenli yapı
 3029030,Cambrai,Cambrai şehrinde,0,güvenli yapı
-261779,Yanya,Yanya'da,1,egzonim/yaygın Türkçe ad
+261779,Ioannina,Ioannina'da,1,FIXL D12: yerel resmî ad (önceden Yanya)
 3046446,Pest,Pest'te,1,kural (ünlü uyumu)
 2790869,Mons,Mons şehrinde,0,güvenli yapı
 2795113,Huy,Huy şehrinde,0,güvenli yapı
@@ -899,7 +899,7 @@ geonameid,name,in_phrase,decl_ok,note
 2996944,Lyon,Lyon'da,1,
 3002570,Le Pontet,Le Pontet şehrinde,0,güvenli yapı
 2653646,Carshalton,Carshalton şehrinde,0,güvenli yapı
-260133,Eğriboz (Halkida),Eğriboz'da (Halkida),1,egzonim/yaygın Türkçe ad
+260133,Chalkida,Chalkida'da,1,FIXL D12: yerel resmî ad (önceden Eğriboz (Halkida))
 3165243,Trento,Trento'da,1,
 11952858,Petershausen-West,Petershausen-West'te,1,kural (ünlü uyumu)
 2855047,Peine,Peine'de,1,kural (ünlü uyumu)
@@ -1023,7 +1023,7 @@ geonameid,name,in_phrase,decl_ok,note
 2986930,Plaisir,Plaisir şehrinde,0,güvenli yapı
 2998975,Levallois-Perret,Levallois-Perret şehrinde,0,güvenli yapı
 2636389,Swindon,Swindon şehrinde,0,güvenli yapı
-254352,Resmo,Resmo'da,1,egzonim/yaygın Türkçe ad
+254352,Rethymno,Rethymno'da,1,FIXL D12: yerel resmî ad (önceden Resmo)
 2960634,Dudelange,Dudelange şehrinde,0,güvenli yapı
 2786824,Seraing,Seraing şehrinde,0,güvenli yapı
 2798297,Fleurus,Fleurus şehrinde,0,güvenli yapı
@@ -1103,7 +1103,7 @@ geonameid,name,in_phrase,decl_ok,note
 596128,Panevėžys,Panevėžys şehrinde,0,güvenli yapı
 2265169,Parede,Parede şehrinde,0,güvenli yapı
 2739723,Santa Maria da Feira,Santa Maria da Feira şehrinde,0,güvenli yapı
-728193,Filibe (Plovdiv),Filibe'de (Plovdiv),1,egzonim/yaygın Türkçe ad
+728193,Plovdiv,Plovdiv'de,1,FIXL D12: yerel resmî ad (önceden Filibe (Plovdiv))
 2658606,Sierre,Sierre şehrinde,0,güvenli yapı
 3068160,Plzeň,Plzeň'de,1,kural (ünlü uyumu)
 2841463,Sankt Wendel,Sankt Wendel şehrinde,0,güvenli yapı
@@ -1124,7 +1124,7 @@ geonameid,name,in_phrase,decl_ok,note
 3031133,Boulogne-sur-Mer,Boulogne-sur-Mer şehrinde,0,güvenli yapı
 2653822,Cardiff,Cardiff şehrinde,0,güvenli yapı
 2463679,Korfu,Korfu'da,1,egzonim/yaygın Türkçe ad
-259245,İstanköy (Kos),İstanköy'de (Kos),1,egzonim/yaygın Türkçe ad
+259245,Kos,Kos'ta,1,FIXL D12: yerel resmî ad (önceden İstanköy (Kos))
 261604,Kalamata,Kalamata'da,1,egzonim/yaygın Türkçe ad
 3169272,Riva del Garda,Riva del Garda şehrinde,0,güvenli yapı
 2701680,Karlstad,Karlstad şehrinde,0,güvenli yapı
@@ -1147,7 +1147,7 @@ geonameid,name,in_phrase,decl_ok,note
 3019459,Étampes,Étampes şehrinde,0,güvenli yapı
 3024223,Colomiers,Colomiers şehrinde,0,güvenli yapı
 3037051,Argentan,Argentan şehrinde,0,güvenli yapı
-254698,Preveze,Preveze'de,1,egzonim/yaygın Türkçe ad
+254698,Preveza,Preveza'da,1,FIXL D12: yerel resmî ad (önceden Preveze)
 264371,Atina,Atina'da,1,egzonim/yaygın Türkçe ad
 734712,Peraia,Peraia şehrinde,0,güvenli yapı
 2750521,Naarden,Naarden şehrinde,0,güvenli yapı
@@ -2447,7 +2447,7 @@ geonameid,name,in_phrase,decl_ok,note
 787237,Pančevo,Pančevo'da,1,kural (ünlü uyumu)
 789518,Kikinda,Kikinda'da,1,kural (ünlü uyumu)
 785238,Suharekë,Suharekë şehrinde,0,güvenli yapı
-3184081,İşkodra,İşkodra'da,1,egzonim/yaygın Türkçe ad
+3184081,Shkodër,Shkodër şehrinde,0,FIXL D12: yerel resmî ad (önceden İşkodra)
 3184935,Lezhë,Lezhë şehrinde,0,güvenli yapı
 781988,Pogradec,Pogradec şehrinde,0,güvenli yapı
 782756,Korçë,Korçë şehrinde,0,güvenli yapı
@@ -5604,3 +5604,873 @@ geonameid,name,in_phrase,decl_ok,note
 5927690,Coquitlam,Coquitlam şehrinde,0,güvenli yapı
 12908892,New Taipei City,New Taipei City şehrinde,0,güvenli yapı
 3530597,Meksiko,Meksiko'da,1,egzonim/yaygın Türkçe ad
+3139075,Skien,Skien şehrinde,0,"FIXL: NOBIL city page, checked"
+3149563,Kongsberg,Kongsberg şehrinde,0,"FIXL: NOBIL city page, checked"
+2662689,Visby,Visby'de,1,"FIXL: NOBIL city page, checked"
+2664203,Västervik,Västervik şehrinde,0,"FIXL: NOBIL city page, checked"
+2664855,Värnamo,Värnamo şehrinde,0,"FIXL: NOBIL city page, checked"
+2665171,Vänersborg,Vänersborg şehrinde,0,"FIXL: NOBIL city page, checked"
+2666238,Upplands Väsby,Upplands Väsby şehrinde,0,"FIXL: NOBIL city page, checked"
+2667094,Tumba,Tumba'da,1,"FIXL: NOBIL city page, checked"
+2667303,Trollhättan,Trollhättan şehrinde,0,"FIXL: NOBIL city page, checked"
+2669772,Täby,Täby şehrinde,0,"FIXL: NOBIL city page, checked"
+2670879,Sundbyberg,Sundbyberg şehrinde,0,"FIXL: NOBIL city page, checked"
+2674649,Staffanstorp,Staffanstorp şehrinde,0,"FIXL: NOBIL city page, checked"
+2675397,Solna,Solna'da,1,"FIXL: NOBIL city page, checked"
+2675408,Sollentuna,Sollentuna'da,1,"FIXL: NOBIL city page, checked"
+2676176,Södertälje,Södertälje'de,1,"FIXL: NOBIL city page, checked"
+2684395,Partille,Partille'de,1,"FIXL: NOBIL city page, checked"
+2686162,Oskarshamn,Oskarshamn şehrinde,0,"FIXL: NOBIL city page, checked"
+2686469,Örnsköldsvik,Örnsköldsvik şehrinde,0,"FIXL: NOBIL city page, checked"
+2687700,Nyköping,Nyköping şehrinde,0,"FIXL: NOBIL city page, checked"
+2688250,Norrtälje,Norrtälje'de,1,"FIXL: NOBIL city page, checked"
+2690170,Nässjö,Nässjö'de,1,"FIXL: NOBIL city page, checked"
+2690580,Nacka,Nacka'da,1,"FIXL: NOBIL city page, checked"
+2692475,Märsta,Märsta şehrinde,0,"FIXL: NOBIL city page, checked"
+2692613,Mariestad,Mariestad şehrinde,0,"FIXL: NOBIL city page, checked"
+2696334,Lidingö,Lidingö şehrinde,0,"FIXL: NOBIL city page, checked"
+2696503,Lerum,Lerum şehrinde,0,"FIXL: NOBIL city page, checked"
+2697720,Landskrona,Landskrona'da,1,"FIXL: NOBIL city page, checked"
+2698767,Kumla,Kumla'da,1,"FIXL: NOBIL city page, checked"
+2699282,Kristinehamn,Kristinehamn şehrinde,0,"FIXL: NOBIL city page, checked"
+2699791,Köping,Köping şehrinde,0,"FIXL: NOBIL city page, checked"
+2701223,Katrineholm,Katrineholm şehrinde,0,"FIXL: NOBIL city page, checked"
+2701715,Karlskoga,Karlskoga'da,1,"FIXL: NOBIL city page, checked"
+2703396,Jakobsberg,Jakobsberg şehrinde,0,"FIXL: NOBIL city page, checked"
+2704136,Huskvarna,Huskvarna'da,1,"FIXL: NOBIL city page, checked"
+2704613,Hudiksvall,Hudiksvall şehrinde,0,"FIXL: NOBIL city page, checked"
+2704620,Huddinge,Huddinge'de,1,"FIXL: NOBIL city page, checked"
+2707953,Haninge,Haninge'de,1,"FIXL: NOBIL city page, checked"
+2709628,Gustavsberg,Gustavsberg şehrinde,0,"FIXL: NOBIL city page, checked"
+2715568,Falköping,Falköping şehrinde,0,"FIXL: NOBIL city page, checked"
+2715573,Falkenberg,Falkenberg şehrinde,0,"FIXL: NOBIL city page, checked"
+2715946,Eslöv,Eslöv şehrinde,0,"FIXL: NOBIL city page, checked"
+2716166,Enköping,Enköping şehrinde,0,"FIXL: NOBIL city page, checked"
+2721259,Boo,Boo şehrinde,0,"FIXL: NOBIL city page, checked"
+2726756,Alingsås,Alingsås şehrinde,0,"FIXL: NOBIL city page, checked"
+2727234,Åkersberga,Åkersberga'da,1,"FIXL: NOBIL city page, checked"
+602913,Skellefteå,Skellefteå'da,1,"FIXL: NOBIL city page, checked"
+603570,Piteå,Piteå'da,1,"FIXL: NOBIL city page, checked"
+604490,Luleå,Luleå'da,1,"FIXL: NOBIL city page, checked"
+2660646,Cenevre,Cenevre'de,1,FIXL; egzonim/yaygın Türkçe ad
+2763423,Traun,Traun şehrinde,0,FIXL2
+2760910,Wolfsberg,Wolfsberg şehrinde,0,FIXL2
+2803429,Aarschot,Aarschot şehrinde,0,FIXL2
+2802743,Balen,Balen şehrinde,0,FIXL2
+2801226,Boussu,Boussu şehrinde,0,FIXL2
+2799496,Destelbergen,Destelbergen şehrinde,0,FIXL2
+2799412,Diepenbeek,Diepenbeek şehrinde,0,FIXL2
+2799226,Dour,Dour şehrinde,0,FIXL2
+2799090,Duffel,Duffel şehrinde,0,FIXL2
+2799007,Edegem,Edegem şehrinde,0,FIXL2
+2796833,Haaltert,Haaltert şehrinde,0,FIXL2
+2796637,Hamme,Hamme şehrinde,0,FIXL2
+2796012,Herent,Herent şehrinde,0,FIXL2
+2795800,Heusden,Heusden şehrinde,0,FIXL2
+2794663,Kasterlee,Kasterlee şehrinde,0,FIXL2
+2794210,Knokke-Heist,Knokke-Heist şehrinde,0,FIXL2
+2794179,Koersel,Koersel şehrinde,0,FIXL2
+2793446,Lanaken,Lanaken şehrinde,0,FIXL2
+2793144,Lebbeke,Lebbeke şehrinde,0,FIXL2
+2792360,Lille,Lille şehrinde,0,FIXL2
+2791961,Maasmechelen,Maasmechelen şehrinde,0,FIXL2
+2791857,Maldegem,Maldegem şehrinde,0,FIXL2
+2791424,Meise,Meise şehrinde,0,FIXL2
+2791194,Middelkerke,Middelkerke şehrinde,0,FIXL2
+2790114,Ninove,Ninove şehrinde,0,FIXL2
+2789751,Oostkamp,Oostkamp şehrinde,0,FIXL2
+2789413,Overijse,Overijse şehrinde,0,FIXL2
+2788726,Poperinge,Poperinge şehrinde,0,FIXL2
+2788348,Ranst,Ranst şehrinde,0,FIXL2
+2786344,Soumagne,Soumagne şehrinde,0,FIXL2
+2786229,Stabroek,Stabroek şehrinde,0,FIXL2
+2783632,Willebroek,Willebroek şehrinde,0,FIXL2
+2783293,Zele,Zele şehrinde,0,FIXL2
+2783197,Zolder,Zolder şehrinde,0,FIXL2
+2783188,Zonhoven,Zonhoven şehrinde,0,FIXL2
+2783081,Zwijndrecht,Zwijndrecht şehrinde,0,FIXL2
+733618,Asenovgrad,Asenovgrad şehrinde,0,FIXL2
+733579,Aytos,Aytos şehrinde,0,FIXL2
+733264,Berkovitsa,Berkovitsa şehrinde,0,FIXL2
+733014,Botevgrad,Botevgrad şehrinde,0,FIXL2
+732452,Chirpan,Chirpan şehrinde,0,FIXL2
+726418,Dobrich,Dobrich şehrinde,0,FIXL2
+726872,Dupnitsa,Dupnitsa şehrinde,0,FIXL2
+731549,Gabrovo,Gabrovo şehrinde,0,FIXL2
+731233,Gorna Oryahovitsa,Gorna Oryahovitsa şehrinde,0,FIXL2
+731108,Gotse Delchev,Gotse Delchev şehrinde,0,FIXL2
+730442,Harmanli,Harmanli şehrinde,0,FIXL2
+729794,Kardzhali,Kardzhali şehrinde,0,FIXL2
+730565,Karlovo,Karlovo şehrinde,0,FIXL2
+730559,Karnobat,Karnobat şehrinde,0,FIXL2
+730496,Kazanlak,Kazanlak şehrinde,0,FIXL2
+729730,Kyustendil,Kyustendil şehrinde,0,FIXL2
+729581,Lom,Lom şehrinde,0,FIXL2
+729559,Lovech,Lovech şehrinde,0,FIXL2
+729114,Montana,Montana şehrinde,0,FIXL2
+728742,Nova Zagora,Nova Zagora şehrinde,0,FIXL2
+728448,Panagyurishte,Panagyurishte şehrinde,0,FIXL2
+727886,Parvomay,Parvomay şehrinde,0,FIXL2
+728317,Peshtera,Peshtera şehrinde,0,FIXL2
+728075,Popovo,Popovo şehrinde,0,FIXL2
+727696,Razgrad,Razgrad şehrinde,0,FIXL2
+727447,Sandanski,Sandanski şehrinde,0,FIXL2
+727337,Sevlievo,Sevlievo şehrinde,0,FIXL2
+727233,Shumen,Shumen şehrinde,0,FIXL2
+727221,Silistra,Silistra şehrinde,0,FIXL2
+726848,Stara Zagora,Stara Zagora şehrinde,0,FIXL2
+726534,Svishtov,Svishtov şehrinde,0,FIXL2
+726174,Targovishte,Targovishte şehrinde,0,FIXL2
+726320,Troyan,Troyan şehrinde,0,FIXL2
+725988,Velingrad,Velingrad şehrinde,0,FIXL2
+725905,Vidin,Vidin şehrinde,0,FIXL2
+725712,Vratsa,Vratsa şehrinde,0,FIXL2
+725578,Yambol,Yambol şehrinde,0,FIXL2
+630429,Baranovichi,Baranovichi şehrinde,0,FIXL2
+630468,Bobruisk,Bobruisk şehrinde,0,FIXL2
+627907,Gomel,Gomel şehrinde,0,FIXL2
+627083,Kolodishchi,Kolodishchi şehrinde,0,FIXL2
+627145,Kobryn,Kobryn şehrinde,0,FIXL2
+625972,Logoisk,Logoisk şehrinde,0,FIXL2
+625665,Mogilev,Mogilev şehrinde,0,FIXL2
+625625,Molodechno,Molodechno şehrinde,0,FIXL2
+624079,Orsha,Orsha şehrinde,0,FIXL2
+630515,Oshmyany,Oshmyany şehrinde,0,FIXL2
+622794,Rechitsa,Rechitsa şehrinde,0,FIXL2
+621729,Smolevichi,Smolevichi şehrinde,0,FIXL2
+621713,Smorgon,Smorgon şehrinde,0,FIXL2
+622428,Soligorsk,Soligorsk şehrinde,0,FIXL2
+620127,Vitebsk,Vitebsk şehrinde,0,FIXL2
+2661810,Allschwil,Allschwil şehrinde,0,FIXL2
+2661265,Carouge,Carouge şehrinde,0,FIXL2
+2660925,Einsiedeln,Einsiedeln şehrinde,0,FIXL2
+2660727,Frauenfeld,Frauenfeld şehrinde,0,FIXL2
+2660549,Gossau,Gossau şehrinde,0,FIXL2
+2660305,Horgen,Horgen şehrinde,0,FIXL2
+2659667,Meyrin,Meyrin şehrinde,0,FIXL2
+2659296,Onex,Onex şehrinde,0,FIXL2
+2658761,Schaffhausen,Schaffhausen şehrinde,0,FIXL2
+2658494,Steffisburg,Steffisburg şehrinde,0,FIXL2
+2658216,Uster,Uster şehrinde,0,FIXL2
+2658154,Vernier,Vernier şehrinde,0,FIXL2
+2658011,Wettingen,Wettingen şehrinde,0,FIXL2
+2657908,Zug,Zug şehrinde,0,FIXL2
+3079129,Bohumín,Bohumín şehrinde,0,FIXL2
+3078545,Bruntál,Bruntál şehrinde,0,FIXL2
+3077835,Cheb,Cheb şehrinde,0,FIXL2
+3077244,Děčín,Děčín şehrinde,0,FIXL2
+3074020,Kadaň,Kadaň şehrinde,0,FIXL2
+3073789,Karviná,Karviná şehrinde,0,FIXL2
+3073660,Klatovy,Klatovy şehrinde,0,FIXL2
+3072656,Krnov,Krnov şehrinde,0,FIXL2
+3070862,Mělník,Mělník şehrinde,0,FIXL2
+3069844,Neratovice,Neratovice şehrinde,0,FIXL2
+3068873,Orlová,Orlová şehrinde,0,FIXL2
+3068690,Otrokovice,Otrokovice şehrinde,0,FIXL2
+3062339,Vsetín,Vsetín şehrinde,0,FIXL2
+3061822,Žatec,Žatec şehrinde,0,FIXL2
+2951679,Beckingen,Beckingen şehrinde,0,FIXL2
+2930182,Enger,Enger şehrinde,0,FIXL2
+2930043,Ennepetal,Ennepetal şehrinde,0,FIXL2
+2929865,Eppelborn,Eppelborn şehrinde,0,FIXL2
+2917737,Greiz,Greiz şehrinde,0,FIXL2
+2905290,Hessisch Oldendorf,Hessisch Oldendorf şehrinde,0,FIXL2
+2904985,Heusweiler,Heusweiler şehrinde,0,FIXL2
+2904886,Hiddenhausen,Hiddenhausen şehrinde,0,FIXL2
+2891014,Kierspe,Kierspe şehrinde,0,FIXL2
+2879832,Lebach,Lebach şehrinde,0,FIXL2
+2879315,Leichlingen,Leichlingen şehrinde,0,FIXL2
+2877142,Lindlar,Lindlar şehrinde,0,FIXL2
+2876218,Lohmar,Lohmar şehrinde,0,FIXL2
+2872519,Meerane,Meerane şehrinde,0,FIXL2
+2863240,Nieder-Ingelheim,Nieder-Ingelheim şehrinde,0,FIXL2
+2851584,Püttlingen,Püttlingen şehrinde,0,FIXL2
+2847033,Riegelsberg,Riegelsberg şehrinde,0,FIXL2
+2835382,Schwalbach,Schwalbach şehrinde,0,FIXL2
+2810969,Werdau,Werdau şehrinde,0,FIXL2
+2625070,Aabenraa,Aabenraa şehrinde,0,FIXL2
+2624906,Albertslund,Albertslund şehrinde,0,FIXL2
+2621927,Frederikshavn,Frederikshavn şehrinde,0,FIXL2
+2621912,Frederikssund,Frederikssund şehrinde,0,FIXL2
+2620583,Hedensted,Hedensted şehrinde,0,FIXL2
+2620473,Helsingør,Helsingør şehrinde,0,FIXL2
+2619771,Horsens,Horsens şehrinde,0,FIXL2
+2619528,Hvidovre,Hvidovre şehrinde,0,FIXL2
+2619856,Hørsholm,Hørsholm şehrinde,0,FIXL2
+2619377,Ishøj,Ishøj şehrinde,0,FIXL2
+2619154,Kalundborg,Kalundborg şehrinde,0,FIXL2
+2618415,Køge,Køge şehrinde,0,FIXL2
+2617658,Lillerød,Lillerød şehrinde,0,FIXL2
+2616015,Nyborg,Nyborg şehrinde,0,FIXL2
+2615961,Nykøbing Falster,Nykøbing Falster şehrinde,0,FIXL2
+2614764,Ringsted,Ringsted şehrinde,0,FIXL2
+2614481,Roskilde,Roskilde şehrinde,0,FIXL2
+2613731,Skive,Skive şehrinde,0,FIXL2
+2613460,Slagelse,Slagelse şehrinde,0,FIXL2
+2613233,Solrød Strand,Solrød Strand şehrinde,0,FIXL2
+2612629,Stenløse,Stenløse şehrinde,0,FIXL2
+2611497,Tønder,Tønder şehrinde,0,FIXL2
+2610319,Viborg,Viborg şehrinde,0,FIXL2
+591260,Kohtla-Järve,Kohtla-Järve şehrinde,0,FIXL2
+590447,Maardu,Maardu şehrinde,0,FIXL2
+590031,Narva,Narva şehrinde,0,FIXL2
+589580,Pärnu,Pärnu şehrinde,0,FIXL2
+587577,Viljandi,Viljandi şehrinde,0,FIXL2
+2522208,Albolote,Albolote şehrinde,0,FIXL2
+2522165,Alcalá de Guadaira,Alcalá de Guadaira şehrinde,0,FIXL2
+2522012,Algemesí,Algemesí şehrinde,0,FIXL2
+2521964,Aljaraque,Aljaraque şehrinde,0,FIXL2
+2521923,Almansa,Almansa şehrinde,0,FIXL2
+2521804,Altea,Altea şehrinde,0,FIXL2
+2521665,Arcos de la Frontera,Arcos de la Frontera şehrinde,0,FIXL2
+2521582,Arona,Arona şehrinde,0,FIXL2
+3129356,Arroyomolinos,Arroyomolinos şehrinde,0,FIXL2
+2521510,Aspe,Aspe şehrinde,0,FIXL2
+2521486,Atamaría,Atamaría şehrinde,0,FIXL2
+2521485,Atarfe,Atarfe şehrinde,0,FIXL2
+2521335,Barbate,Barbate şehrinde,0,FIXL2
+2521215,Baza,Baza şehrinde,0,FIXL2
+2521016,Berja,Berja şehrinde,0,FIXL2
+3127007,Calella,Calella şehrinde,0,FIXL2
+2520052,Cartaya,Cartaya şehrinde,0,FIXL2
+2519738,Castilleja de la Cuesta,Castilleja de la Cuesta şehrinde,0,FIXL2
+2519690,Catarroja,Catarroja şehrinde,0,FIXL2
+2519651,Cehegín,Cehegín şehrinde,0,FIXL2
+3109402,Cerdanyola del Vallès,Cerdanyola del Vallès şehrinde,0,FIXL2
+2519477,Chipiona,Chipiona şehrinde,0,FIXL2
+2519289,Conil de la Frontera,Conil de la Frontera şehrinde,0,FIXL2
+3124569,Cornellà de Llobregat,Cornellà de Llobregat şehrinde,0,FIXL2
+2519367,Coín,Coín şehrinde,0,FIXL2
+2519110,Crevillente,Crevillente şehrinde,0,FIXL2
+3124041,Culleredo,Culleredo şehrinde,0,FIXL2
+2520055,Cártama,Cártama şehrinde,0,FIXL2
+2520447,El Campello,El Campello şehrinde,0,FIXL2
+3117232,El Masnou,El Masnou şehrinde,0,FIXL2
+3123493,Ferrol,Ferrol şehrinde,0,FIXL2
+3121766,Galapagar,Galapagar şehrinde,0,FIXL2
+2516797,Hellín,Hellín şehrinde,0,FIXL2
+3121881,Hondarribia,Hondarribia şehrinde,0,FIXL2
+3120501,Humanes de Madrid,Humanes de Madrid şehrinde,0,FIXL2
+2516474,Icod de los Vinos,Icod de los Vinos şehrinde,0,FIXL2
+2516443,Ingenio,Ingenio şehrinde,0,FIXL2
+2515692,La Orotava,La Orotava şehrinde,0,FIXL2
+2515219,Las Torres de Cotillas,Las Torres de Cotillas şehrinde,0,FIXL2
+2515072,Lepe,Lepe şehrinde,0,FIXL2
+2514868,Los Alcázares,Los Alcázares şehrinde,0,FIXL2
+2514553,Los Palacios y Villafranca,Los Palacios y Villafranca şehrinde,0,FIXL2
+2514158,Marchena,Marchena şehrinde,0,FIXL2
+2514042,Maspalomas,Maspalomas şehrinde,0,FIXL2
+2513983,Mazarrón,Mazarrón şehrinde,0,FIXL2
+2513703,Moncada,Moncada şehrinde,0,FIXL2
+3116527,Montcada i Reixac,Montcada i Reixac şehrinde,0,FIXL2
+2513604,Montijo,Montijo şehrinde,0,FIXL2
+2513240,Nerja,Nerja şehrinde,0,FIXL2
+2513195,Novelda,Novelda şehrinde,0,FIXL2
+2513222,Níjar,Níjar şehrinde,0,FIXL2
+2513052,Osuna,Osuna şehrinde,0,FIXL2
+6354969,Playa del Inglés,Playa del Inglés şehrinde,0,FIXL2
+3113082,Portugalete,Portugalete şehrinde,0,FIXL2
+2519068,Quart de Poblet,Quart de Poblet şehrinde,0,FIXL2
+2511994,Realejo Alto,Realejo Alto şehrinde,0,FIXL2
+2511852,Rincón de la Victoria,Rincón de la Victoria şehrinde,0,FIXL2
+3111605,Ripollet,Ripollet şehrinde,0,FIXL2
+2511700,Rota,Rota şehrinde,0,FIXL2
+3110986,Salou,Salou şehrinde,0,FIXL2
+2511440,San Bartolomé de Tirajana,San Bartolomé de Tirajana şehrinde,0,FIXL2
+2511371,San Isidro,San Isidro şehrinde,0,FIXL2
+2511287,San Miguel de Abona,San Miguel de Abona şehrinde,0,FIXL2
+3110642,Sant Feliu de Llobregat,Sant Feliu de Llobregat şehrinde,0,FIXL2
+3110519,Sant Joan Despí,Sant Joan Despí şehrinde,0,FIXL2
+3109546,Sant Just Desvern,Sant Just Desvern şehrinde,0,FIXL2
+2511150,Santa Lucía,Santa Lucía şehrinde,0,FIXL2
+3109897,Santa Uxía de Ribeira,Santa Uxía de Ribeira şehrinde,0,FIXL2
+2511160,Santa Fe,Santa Fe şehrinde,0,FIXL2
+3109050,Seseña,Seseña şehrinde,0,FIXL2
+3109041,Sestao,Sestao şehrinde,0,FIXL2
+2510764,Sueca,Sueca şehrinde,0,FIXL2
+3108317,Tarancón,Tarancón şehrinde,0,FIXL2
+2510394,Tomares,Tomares şehrinde,0,FIXL2
+3107955,Tordera,Tordera şehrinde,0,FIXL2
+2510245,Torrox,Torrox şehrinde,0,FIXL2
+2510485,Tías,Tías şehrinde,0,FIXL2
+2510112,Ubrique,Ubrique şehrinde,0,FIXL2
+2510073,Utrera,Utrera şehrinde,0,FIXL2
+3105247,Villanueva de la Cañada,Villanueva de la Cañada şehrinde,0,FIXL2
+3105148,Villaquilambre,Villaquilambre şehrinde,0,FIXL2
+3104703,Villaviciosa de Odón,Villaviciosa de Odón şehrinde,0,FIXL2
+3104475,Viveiro,Viveiro şehrinde,0,FIXL2
+2509408,Yaiza,Yaiza şehrinde,0,FIXL2
+2509402,Yecla,Yecla şehrinde,0,FIXL2
+2509377,Zafra,Zafra şehrinde,0,FIXL2
+659169,Hamina,Hamina şehrinde,0,FIXL2
+651659,Kontiolahti,Kontiolahti şehrinde,0,FIXL2
+648738,Laukaa,Laukaa şehrinde,0,FIXL2
+643644,Orimattila,Orimattila şehrinde,0,FIXL2
+3037423,Antony,Antony şehrinde,0,FIXL2
+3031898,Boissy-Saint-Léger,Boissy-Saint-Léger şehrinde,0,FIXL2
+3030990,Bourg-la-Reine,Bourg-la-Reine şehrinde,0,FIXL2
+8555643,Cergy-Pontoise,Cergy-Pontoise şehrinde,0,FIXL2
+3026637,Charenton-le-Pont,Charenton-le-Pont şehrinde,0,FIXL2
+3025622,Chelles,Chelles şehrinde,0,FIXL2
+3020832,Draveil,Draveil şehrinde,0,FIXL2
+3018280,Fleury-les-Aubrais,Fleury-les-Aubrais şehrinde,0,FIXL2
+3017341,Franconville,Franconville şehrinde,0,FIXL2
+3016830,Gagny,Gagny şehrinde,0,FIXL2
+3002647,Le Plessis-Trévise,Le Plessis-Trévise şehrinde,0,FIXL2
+2998305,Limeil-Brévannes,Limeil-Brévannes şehrinde,0,FIXL2
+2998056,Livry-Gargan,Livry-Gargan şehrinde,0,FIXL2
+2997904,Lognes,Lognes şehrinde,0,FIXL2
+2995206,Massy,Massy şehrinde,0,FIXL2
+2992616,Montfermeil,Montfermeil şehrinde,0,FIXL2
+2992090,Montreuil,Montreuil şehrinde,0,FIXL2
+2990616,Neuilly-Plaisance,Neuilly-Plaisance şehrinde,0,FIXL2
+2986025,Port-de-Bouc,Port-de-Bouc şehrinde,0,FIXL2
+2983440,Ris-Orangis,Ris-Orangis şehrinde,0,FIXL2
+2983026,Romainville,Romainville şehrinde,0,FIXL2
+2981512,Saint-Avertin,Saint-Avertin şehrinde,0,FIXL2
+2980558,Sainte-Geneviève-des-Bois,Sainte-Geneviève-des-Bois şehrinde,0,FIXL2
+2974681,Sevran,Sevran şehrinde,0,FIXL2
+2973841,Stains,Stains şehrinde,0,FIXL2
+2968653,Villemomble,Villemomble şehrinde,0,FIXL2
+2968555,Villeneuve-la-Garenne,Villeneuve-la-Garenne şehrinde,0,FIXL2
+2967934,Viroflay,Viroflay şehrinde,0,FIXL2
+3020020,Épinay-sur-Seine,Épinay-sur-Seine şehrinde,0,FIXL2
+2634677,Watford,Watford şehrinde,0,FIXL2
+8478257,Agios Ioannis Rentis,Agios Ioannis Rentis şehrinde,0,FIXL2
+736229,Florina,Florina şehrinde,0,FIXL2
+8310138,Ilioupoli,Ilioupoli şehrinde,0,FIXL2
+261249,Kamatero,Kamatero şehrinde,0,FIXL2
+259824,Kifisia,Kifisia şehrinde,0,FIXL2
+9034728,Nea Ionia,Nea Ionia şehrinde,0,FIXL2
+256575,Nea Smyrni,Nea Smyrni şehrinde,0,FIXL2
+256429,Nikaia,Nikaia şehrinde,0,FIXL2
+255377,Petroupoli,Petroupoli şehrinde,0,FIXL2
+734301,Sykies,Sykies şehrinde,0,FIXL2
+251948,Vyronas,Vyronas şehrinde,0,FIXL2
+256601,Ilion,Ilion şehrinde,0,FIXL2
+723030,Abony,Abony şehrinde,0,FIXL2
+3056357,Ajka,Ajka şehrinde,0,FIXL2
+3055685,Baja,Baja şehrinde,0,FIXL2
+722636,Balmazújváros,Balmazújváros şehrinde,0,FIXL2
+722437,Békéscsaba,Békéscsaba şehrinde,0,FIXL2
+3054543,Cegléd,Cegléd şehrinde,0,FIXL2
+3053438,Dunaújváros,Dunaújváros şehrinde,0,FIXL2
+3053163,Esztergom,Esztergom şehrinde,0,FIXL2
+720334,Gyula,Gyula şehrinde,0,FIXL2
+3052040,Gyöngyös,Gyöngyös şehrinde,0,FIXL2
+3052241,Göd,Göd şehrinde,0,FIXL2
+3052236,Gödöllő,Gödöllő şehrinde,0,FIXL2
+720284,Hajdúnánás,Hajdúnánás şehrinde,0,FIXL2
+720276,Hajdúszoboszló,Hajdúszoboszló şehrinde,0,FIXL2
+3050907,Jászberény,Jászberény şehrinde,0,FIXL2
+719404,Karcag,Karcag şehrinde,0,FIXL2
+719311,Kazincbarcika,Kazincbarcika şehrinde,0,FIXL2
+3049885,Kiskunfélegyháza,Kiskunfélegyháza şehrinde,0,FIXL2
+3049880,Kiskunhalas,Kiskunhalas şehrinde,0,FIXL2
+3049896,Kiskőrös,Kiskőrös şehrinde,0,FIXL2
+718739,Kisvárda,Kisvárda şehrinde,0,FIXL2
+3049512,Komló,Komló şehrinde,0,FIXL2
+3049519,Komárom,Komárom şehrinde,0,FIXL2
+717902,Makó,Makó şehrinde,0,FIXL2
+717652,Mezőkövesd,Mezőkövesd şehrinde,0,FIXL2
+717635,Mezőtúr,Mezőtúr şehrinde,0,FIXL2
+3047942,Monor,Monor şehrinde,0,FIXL2
+3047896,Mosonmagyaróvár,Mosonmagyaróvár şehrinde,0,FIXL2
+717771,Mátészalka,Mátészalka şehrinde,0,FIXL2
+3047651,Nagykőrös,Nagykőrös şehrinde,0,FIXL2
+716736,Orosháza,Orosháza şehrinde,0,FIXL2
+3046888,Oroszlány,Oroszlány şehrinde,0,FIXL2
+3046768,Paks,Paks şehrinde,0,FIXL2
+3046686,Pápa,Pápa şehrinde,0,FIXL2
+3045643,Salgótarján,Salgótarján şehrinde,0,FIXL2
+715466,Szarvas,Szarvas şehrinde,0,FIXL2
+3044681,Szentendre,Szentendre şehrinde,0,FIXL2
+715337,Szentes,Szentes şehrinde,0,FIXL2
+3044821,Százhalombatta,Százhalombatta şehrinde,0,FIXL2
+3045487,Sárvár,Sárvár şehrinde,0,FIXL2
+715839,Sátoraljaújhely,Sátoraljaújhely şehrinde,0,FIXL2
+3044083,Tata,Tata şehrinde,0,FIXL2
+714697,Tiszaújváros,Tiszaújváros şehrinde,0,FIXL2
+3043293,Vác,Vác şehrinde,0,FIXL2
+3042638,Zalaegerszeg,Zalaegerszeg şehrinde,0,FIXL2
+716671,Ózd,Ózd şehrinde,0,FIXL2
+2965715,Carrigaline,Carrigaline şehrinde,0,FIXL2
+2962974,Leixlip,Leixlip şehrinde,0,FIXL2
+2962785,Lucan,Lucan şehrinde,0,FIXL2
+2633274,Akureyri,Akureyri şehrinde,0,FIXL2
+3415496,Keflavík,Keflavík şehrinde,0,FIXL2
+8644037,Reykjanesbær,Reykjanesbær şehrinde,0,FIXL2
+3183587,Abano Terme,Abano Terme şehrinde,0,FIXL2
+3183573,Abbiategrasso,Abbiategrasso şehrinde,0,FIXL2
+3183490,Acqui Terme,Acqui Terme şehrinde,0,FIXL2
+2525769,Adrano,Adrano şehrinde,0,FIXL2
+3183319,Albignasego,Albignasego şehrinde,0,FIXL2
+2525755,Alcamo,Alcamo şehrinde,0,FIXL2
+3183284,Alghero,Alghero şehrinde,0,FIXL2
+3183089,Ancona,Ancona şehrinde,0,FIXL2
+3183072,Andria,Andria şehrinde,0,FIXL2
+3182904,Arcore,Arcore şehrinde,0,FIXL2
+3182884,Arezzo,Arezzo şehrinde,0,FIXL2
+3182749,Ascoli Piceno,Ascoli Piceno şehrinde,0,FIXL2
+3182650,Avellino,Avellino şehrinde,0,FIXL2
+3182361,Bareggio,Bareggio şehrinde,0,FIXL2
+3182297,Bassano del Grappa,Bassano del Grappa şehrinde,0,FIXL2
+3182272,Battipaglia,Battipaglia şehrinde,0,FIXL2
+8224092,Bellaria-Igea Marina,Bellaria-Igea Marina şehrinde,0,FIXL2
+3182210,Belluno,Belluno şehrinde,0,FIXL2
+2525571,Belpasso,Belpasso şehrinde,0,FIXL2
+3182179,Benevento,Benevento şehrinde,0,FIXL2
+3181631,Bra,Bra şehrinde,0,FIXL2
+2525473,Cagliari,Cagliari şehrinde,0,FIXL2
+3180991,Campobasso,Campobasso şehrinde,0,FIXL2
+2525405,Canicattì,Canicattì şehrinde,0,FIXL2
+3180581,Carate Brianza,Carate Brianza şehrinde,0,FIXL2
+2525350,Carini,Carini şehrinde,0,FIXL2
+3180445,Carpi,Carpi şehrinde,0,FIXL2
+3180224,Casalecchio di Reno,Casalecchio di Reno şehrinde,0,FIXL2
+2525207,Casarano,Casarano şehrinde,0,FIXL2
+3179866,Caserta,Caserta şehrinde,0,FIXL2
+6534235,Cassano Magnago,Cassano Magnago şehrinde,0,FIXL2
+3179781,Cassino,Cassino şehrinde,0,FIXL2
+3179686,Castelfranco Emilia,Castelfranco Emilia şehrinde,0,FIXL2
+3179684,Castelfranco Veneto,Castelfranco Veneto şehrinde,0,FIXL2
+2525070,Castrovillari,Castrovillari şehrinde,0,FIXL2
+2525068,Catania,Catania şehrinde,0,FIXL2
+2525059,Catanzaro,Catanzaro şehrinde,0,FIXL2
+3178999,Cerveteri,Cerveteri şehrinde,0,FIXL2
+6534280,Cesano Boscone,Cesano Boscone şehrinde,0,FIXL2
+3178957,Cesena,Cesena şehrinde,0,FIXL2
+3178850,Chiari,Chiari şehrinde,0,FIXL2
+3178832,Chiavari,Chiavari şehrinde,0,FIXL2
+3178796,Chieti,Chieti şehrinde,0,FIXL2
+3178784,Chioggia,Chioggia şehrinde,0,FIXL2
+3178745,Chivasso,Chivasso şehrinde,0,FIXL2
+3178671,Cinisello Balsamo,Cinisello Balsamo şehrinde,0,FIXL2
+3178650,Ciriè,Ciriè şehrinde,0,FIXL2
+3170102,Civitanova Marche,Civitanova Marche şehrinde,0,FIXL2
+3178402,Colle di Val d'Elsa,Colle di Val d'Elsa şehrinde,0,FIXL2
+3178398,Colleferro,Colleferro şehrinde,0,FIXL2
+3178388,Collegno,Collegno şehrinde,0,FIXL2
+3178283,Cologno Monzese,Cologno Monzese şehrinde,0,FIXL2
+3178112,Cordenons,Cordenons şehrinde,0,FIXL2
+9003711,Corigliano Scalo,Corigliano Scalo şehrinde,0,FIXL2
+3178074,Cornaredo,Cornaredo şehrinde,0,FIXL2
+3178004,Corsico,Corsico şehrinde,0,FIXL2
+3177841,Crema,Crema şehrinde,0,FIXL2
+2524881,Crotone,Crotone şehrinde,0,FIXL2
+3177700,Cuneo,Cuneo şehrinde,0,FIXL2
+3177608,Desio,Desio şehrinde,0,FIXL2
+3177532,Domodossola,Domodossola şehrinde,0,FIXL2
+2524819,Enna,Enna şehrinde,0,FIXL2
+3177337,Este,Este şehrinde,0,FIXL2
+3177171,Fasano,Fasano şehrinde,0,FIXL2
+3176959,Floransa,Floransa'da,1,FIXL2
+2524734,Floridia,Floridia şehrinde,0,FIXL2
+3176849,Follonica,Follonica şehrinde,0,FIXL2
+3176843,Fondi,Fondi şehrinde,0,FIXL2
+3176746,Forlì,Forlì şehrinde,0,FIXL2
+3176733,Formigine,Formigine şehrinde,0,FIXL2
+3176639,Fossano,Fossano şehrinde,0,FIXL2
+3176515,Frosinone,Frosinone şehrinde,0,FIXL2
+3176407,Galatina,Galatina şehrinde,0,FIXL2
+3176391,Gallarate,Gallarate şehrinde,0,FIXL2
+3176379,Galliate,Galliate şehrinde,0,FIXL2
+3176219,Cenova,Cenova'da,1,FIXL2
+3176177,Ghedi,Ghedi şehrinde,0,FIXL2
+2524606,Gioia Tauro,Gioia Tauro şehrinde,0,FIXL2
+3176041,Giussano,Giussano şehrinde,0,FIXL2
+3175990,Gorgonzola,Gorgonzola şehrinde,0,FIXL2
+3175986,Gorizia,Gorizia şehrinde,0,FIXL2
+3175755,Grugliasco,Grugliasco şehrinde,0,FIXL2
+6698332,Infernetto,Infernetto şehrinde,0,FIXL2
+3175458,Ischia,Ischia şehrinde,0,FIXL2
+3175445,Isernia,Isernia şehrinde,0,FIXL2
+3175384,Ivrea,Ivrea şehrinde,0,FIXL2
+3175238,Lainate,Lainate şehrinde,0,FIXL2
+3164090,Lancenigo-Villorba,Lancenigo-Villorba şehrinde,0,FIXL2
+3174953,Lecce,Lecce şehrinde,0,FIXL2
+3174921,Legnano,Legnano şehrinde,0,FIXL2
+2524410,Lentini,Lentini şehrinde,0,FIXL2
+3174719,Limbiate,Limbiate şehrinde,0,FIXL2
+3174638,Lodi,Lodi şehrinde,0,FIXL2
+3174530,Lucca,Lucca şehrinde,0,FIXL2
+3174494,Lugo,Lugo şehrinde,0,FIXL2
+6534216,Lumezzane,Lumezzane şehrinde,0,FIXL2
+3174380,Macerata,Macerata şehrinde,0,FIXL2
+3174295,Magenta,Magenta şehrinde,0,FIXL2
+3174141,Malnate,Malnate şehrinde,0,FIXL2
+3173949,Mariano Comense,Mariano Comense şehrinde,0,FIXL2
+3173945,Marigliano,Marigliano şehrinde,0,FIXL2
+3173721,Matera,Matera şehrinde,0,FIXL2
+3173671,Meda,Meda şehrinde,0,FIXL2
+2524170,Messina,Messina şehrinde,0,FIXL2
+3173370,Mirandola,Mirandola şehrinde,0,FIXL2
+3173326,Modugno,Modugno şehrinde,0,FIXL2
+3173314,Mogliano Veneto,Mogliano Veneto şehrinde,0,FIXL2
+3173180,Moncalieri,Moncalieri şehrinde,0,FIXL2
+3173162,Mondovì,Mondovì şehrinde,0,FIXL2
+3173124,Monselice,Monselice şehrinde,0,FIXL2
+3173029,Montebelluna,Montebelluna şehrinde,0,FIXL2
+3172996,Montecatini Terme,Montecatini Terme şehrinde,0,FIXL2
+3172979,Montecchio Maggiore-Alte Ceccato,Montecchio Maggiore-Alte Ceccato şehrinde,0,FIXL2
+3172768,Monterotondo,Monterotondo şehrinde,0,FIXL2
+3172729,Montesilvano,Montesilvano şehrinde,0,FIXL2
+3172718,Montevarchi,Montevarchi şehrinde,0,FIXL2
+3172681,Montichiari,Montichiari şehrinde,0,FIXL2
+3172629,Monza,Monza şehrinde,0,FIXL2
+2523998,Noto,Noto şehrinde,0,FIXL2
+3172184,Novate Milanese,Novate Milanese şehrinde,0,FIXL2
+3172170,Novi Ligure,Novi Ligure şehrinde,0,FIXL2
+3172154,Nuoro,Nuoro şehrinde,0,FIXL2
+3171986,Orbassano,Orbassano şehrinde,0,FIXL2
+2523964,Oristano,Oristano şehrinde,0,FIXL2
+6534264,Orta di Atella,Orta di Atella şehrinde,0,FIXL2
+3171848,Osimo,Osimo şehrinde,0,FIXL2
+3171786,Ostuni,Ostuni şehrinde,0,FIXL2
+2523920,Palermo,Palermo'da,1,FIXL2
+2523902,Palmi,Palmi şehrinde,0,FIXL2
+3171484,Parabiago,Parabiago şehrinde,0,FIXL2
+3171180,Perugia,Perugia şehrinde,0,FIXL2
+3170778,Pietrasanta,Pietrasanta şehrinde,0,FIXL2
+3170676,Pioltello,Pioltello şehrinde,0,FIXL2
+3170647,Pisa,Pisa şehrinde,0,FIXL2
+3170621,Pistoia,Pistoia şehrinde,0,FIXL2
+3170504,Poggibonsi,Poggibonsi şehrinde,0,FIXL2
+3170342,Pomezia,Pomezia şehrinde,0,FIXL2
+3170272,Pontedera,Pontedera şehrinde,0,FIXL2
+3170147,Pordenone,Pordenone şehrinde,0,FIXL2
+3170073,Porto San Giorgio,Porto San Giorgio şehrinde,0,FIXL2
+3170027,Potenza,Potenza şehrinde,0,FIXL2
+3169984,Pozzuoli,Pozzuoli şehrinde,0,FIXL2
+3169921,Prato,Prato şehrinde,0,FIXL2
+2523664,Quattromiglia,Quattromiglia şehrinde,0,FIXL2
+2523650,Ragusa,Ragusa şehrinde,0,FIXL2
+3169602,Rapallo,Rapallo şehrinde,0,FIXL2
+2523630,Reggio Calabria,Reggio Calabria şehrinde,0,FIXL2
+3169424,Riccione,Riccione şehrinde,0,FIXL2
+3169412,Rieti,Rieti şehrinde,0,FIXL2
+3169361,Rimini,Rimini şehrinde,0,FIXL2
+3169231,Rivoli,Rivoli şehrinde,0,FIXL2
+3169056,Romano di Lombardia,Romano di Lombardia şehrinde,0,FIXL2
+3169070,Roma,Roma'da,1,FIXL2
+3168936,Roseto degli Abruzzi,Roseto degli Abruzzi şehrinde,0,FIXL2
+3168930,Rosignano Solvay-Castiglioncello,Rosignano Solvay-Castiglioncello şehrinde,0,FIXL2
+2523577,Rossano Stazione,Rossano Stazione şehrinde,0,FIXL2
+3168843,Rovigo,Rovigo şehrinde,0,FIXL2
+3168837,Rozzano,Rozzano şehrinde,0,FIXL2
+3168730,Sacile,Sacile şehrinde,0,FIXL2
+3168627,Salsomaggiore Terme,Salsomaggiore Terme şehrinde,0,FIXL2
+3168609,Saluzzo,Saluzzo şehrinde,0,FIXL2
+3168550,San Benedetto del Tronto,San Benedetto del Tronto şehrinde,0,FIXL2
+6534252,San Felice a Cancello,San Felice a Cancello şehrinde,0,FIXL2
+3168236,San Giovanni Lupatoto,San Giovanni Lupatoto şehrinde,0,FIXL2
+3168231,San Giovanni Valdarno,San Giovanni Valdarno şehrinde,0,FIXL2
+2523461,San Giovanni in Fiore,San Giovanni in Fiore şehrinde,0,FIXL2
+3168222,San Giuliano Milanese,San Giuliano Milanese şehrinde,0,FIXL2
+3168175,San Lazzaro,San Lazzaro şehrinde,0,FIXL2
+3167978,San Mauro Torinese,San Mauro Torinese şehrinde,0,FIXL2
+3167953,San Miniato,San Miniato şehrinde,0,FIXL2
+3167751,San Salvo,San Salvo şehrinde,0,FIXL2
+3167744,San Sebastiano,San Sebastiano şehrinde,0,FIXL2
+3167731,San Severo,San Severo şehrinde,0,FIXL2
+3167777,Sanremo,Sanremo şehrinde,0,FIXL2
+3167113,Saronno,Saronno şehrinde,0,FIXL2
+3167104,Sarzana,Sarzana şehrinde,0,FIXL2
+3167053,Sassuolo,Sassuolo şehrinde,0,FIXL2
+3167034,Savigliano,Savigliano şehrinde,0,FIXL2
+3166989,Scandiano,Scandiano şehrinde,0,FIXL2
+3166988,Scandicci,Scandicci şehrinde,0,FIXL2
+3166808,Segrate,Segrate şehrinde,0,FIXL2
+3166740,Senigallia,Senigallia şehrinde,0,FIXL2
+3166601,Sesto Fiorentino,Sesto Fiorentino şehrinde,0,FIXL2
+3166598,Sesto San Giovanni,Sesto San Giovanni şehrinde,0,FIXL2
+3166574,Seveso,Seveso şehrinde,0,FIXL2
+3166548,Siena,Siena şehrinde,0,FIXL2
+2523083,Siracusa,Siracusa şehrinde,0,FIXL2
+3166397,Sondrio,Sondrio şehrinde,0,FIXL2
+3166387,Sora,Sora şehrinde,0,FIXL2
+3219114,Spinea-Orgnano,Spinea-Orgnano şehrinde,0,FIXL2
+3166034,Sulmona,Sulmona şehrinde,0,FIXL2
+3166006,Suzzara,Suzzara şehrinde,0,FIXL2
+3165803,Teramo,Teramo şehrinde,0,FIXL2
+3165788,Terlizzi,Terlizzi şehrinde,0,FIXL2
+2522960,Termini Imerese,Termini Imerese şehrinde,0,FIXL2
+3165773,Termoli,Termoli şehrinde,0,FIXL2
+3165612,Todi,Todi şehrinde,0,FIXL2
+3165595,Tolentino,Tolentino şehrinde,0,FIXL2
+3165370,Tortona,Tortona şehrinde,0,FIXL2
+3165340,Tradate,Tradate şehrinde,0,FIXL2
+2522876,Trapani,Trapani şehrinde,0,FIXL2
+3165201,Treviso,Treviso şehrinde,0,FIXL2
+3165198,Trezzano sul Naviglio,Trezzano sul Naviglio şehrinde,0,FIXL2
+3165185,Trieste,Trieste şehrinde,0,FIXL2
+3165178,Triggiano,Triggiano şehrinde,0,FIXL2
+3164617,Venaria Reale,Venaria Reale şehrinde,0,FIXL2
+3164440,Viadana,Viadana şehrinde,0,FIXL2
+3164433,Viareggio,Viareggio şehrinde,0,FIXL2
+3164342,Vignola,Vignola şehrinde,0,FIXL2
+8378910,Villanova,Villanova şehrinde,0,FIXL2
+3164083,Vimercate,Vimercate şehrinde,0,FIXL2
+3164080,Vimodrone,Vimodrone şehrinde,0,FIXL2
+3164039,Viterbo,Viterbo şehrinde,0,FIXL2
+3164028,Vittorio Veneto,Vittorio Veneto şehrinde,0,FIXL2
+3163995,Voghera,Voghera şehrinde,0,FIXL2
+3163853,Zola Predosa,Zola Predosa şehrinde,0,FIXL2
+597989,Kretinga,Kretinga şehrinde,0,FIXL2
+593926,Telšiai,Telšiai şehrinde,0,FIXL2
+847633,Alta,Alta şehrinde,0,FIXL2
+3153823,Harstad,Harstad şehrinde,0,FIXL2
+3145614,Mo i Rana,Mo i Rana şehrinde,0,FIXL2
+776175,Biała Podlaska,Biała Podlaska şehrinde,0,FIXL2
+3103402,Bielsko-Biała,Bielsko-Biała şehrinde,0,FIXL2
+775922,Biłgoraj,Biłgoraj şehrinde,0,FIXL2
+3102987,Bolesławiec,Bolesławiec şehrinde,0,FIXL2
+3101619,Chorzów,Chorzów şehrinde,0,FIXL2
+3101547,Chrzanów,Chrzanów şehrinde,0,FIXL2
+3101076,Czechowice-Dziedzice,Czechowice-Dziedzice şehrinde,0,FIXL2
+3099759,Elbląg,Elbląg şehrinde,0,FIXL2
+3099424,Gdynia,Gdynia şehrinde,0,FIXL2
+3099230,Gliwice,Gliwice şehrinde,0,FIXL2
+771506,Grajewo,Grajewo şehrinde,0,FIXL2
+3098218,Grudziądz,Grudziądz şehrinde,0,FIXL2
+3099213,Głogów,Głogów şehrinde,0,FIXL2
+3097257,Jelenia Góra,Jelenia Góra şehrinde,0,FIXL2
+3096880,Kalisz,Kalisz şehrinde,0,FIXL2
+3096779,Kamienna Góra,Kamienna Góra şehrinde,0,FIXL2
+769250,Kielce,Kielce şehrinde,0,FIXL2
+3095971,Knurów,Knurów şehrinde,0,FIXL2
+3095795,Kołobrzeg,Kołobrzeg şehrinde,0,FIXL2
+767470,Krosno,Krosno şehrinde,0,FIXL2
+3094170,Kutno,Kutno şehrinde,0,FIXL2
+766555,Legionowo,Legionowo şehrinde,0,FIXL2
+3093692,Legnica,Legnica şehrinde,0,FIXL2
+3093524,Leszno,Leszno şehrinde,0,FIXL2
+3093040,Lubań,Lubań şehrinde,0,FIXL2
+3091150,Nakło nad Notecią,Nakło nad Notecią şehrinde,0,FIXL2
+763534,Nowy Sącz,Nowy Sącz şehrinde,0,FIXL2
+3090452,Nowy Tomyśl,Nowy Tomyśl şehrinde,0,FIXL2
+762423,Piaseczno,Piaseczno şehrinde,0,FIXL2
+3089125,Piekary Śląskie,Piekary Śląskie şehrinde,0,FIXL2
+3088972,Piotrków Trybunalski,Piotrków Trybunalski şehrinde,0,FIXL2
+3089033,Piła,Piła şehrinde,0,FIXL2
+761228,Pruszków,Pruszków şehrinde,0,FIXL2
+761131,Przeworsk,Przeworsk şehrinde,0,FIXL2
+3088825,Płock,Płock şehrinde,0,FIXL2
+3087497,Radomsko,Radomsko şehrinde,0,FIXL2
+3087418,Radzionków,Radzionków şehrinde,0,FIXL2
+3086706,Rumia,Rumia şehrinde,0,FIXL2
+3086586,Rybnik,Rybnik şehrinde,0,FIXL2
+3086511,Rypin,Rypin şehrinde,0,FIXL2
+3085807,Skawina,Skawina şehrinde,0,FIXL2
+758626,Sokołów Podlaski,Sokołów Podlaski şehrinde,0,FIXL2
+3085128,Sosnowiec,Sosnowiec şehrinde,0,FIXL2
+758390,Starachowice,Starachowice şehrinde,0,FIXL2
+757718,Suwałki,Suwałki şehrinde,0,FIXL2
+3084130,Swarzędz,Swarzędz şehrinde,0,FIXL2
+3083878,Szamotuły,Szamotuły şehrinde,0,FIXL2
+3085450,Słupsk,Słupsk şehrinde,0,FIXL2
+3083426,Tczew,Tczew şehrinde,0,FIXL2
+3082998,Turek,Turek şehrinde,0,FIXL2
+3082756,Ustka,Ustka şehrinde,0,FIXL2
+3082751,Ustroń,Ustroń şehrinde,0,FIXL2
+3082197,Wieluń,Wieluń şehrinde,0,FIXL2
+3081741,Włocławek,Włocławek şehrinde,0,FIXL2
+3080985,Zabrze,Zabrze şehrinde,0,FIXL2
+3080414,Zduńska Wola,Zduńska Wola şehrinde,0,FIXL2
+3080251,Zgierz,Zgierz şehrinde,0,FIXL2
+3080165,Zielona Góra,Zielona Góra şehrinde,0,FIXL2
+754351,Ząbki,Ząbki şehrinde,0,FIXL2
+3080074,Złotoryja,Złotoryja şehrinde,0,FIXL2
+3083955,Świnoujście,Świnoujście şehrinde,0,FIXL2
+3083988,Świętochłowice,Świętochłowice şehrinde,0,FIXL2
+3080944,Żagań,Żagań şehrinde,0,FIXL2
+3079855,Żywiec,Żywiec şehrinde,0,FIXL2
+2743095,Alfena,Alfena şehrinde,0,FIXL2
+2271473,Arrentela,Arrentela şehrinde,0,FIXL2
+2742506,Baguim do Monte,Baguim do Monte şehrinde,0,FIXL2
+2270503,Cacém,Cacém şehrinde,0,FIXL2
+2270377,Camarate,Camarate şehrinde,0,FIXL2
+2270157,Carnaxide,Carnaxide şehrinde,0,FIXL2
+2269041,Corroios,Corroios şehrinde,0,FIXL2
+2739756,Fânzeres,Fânzeres şehrinde,0,FIXL2
+2738925,Gondomar,Gondomar şehrinde,0,FIXL2
+2267131,Laranjeiro,Laranjeiro şehrinde,0,FIXL2
+2267067,Linda-a-Velha,Linda-a-Velha şehrinde,0,FIXL2
+2266621,Massamá,Massamá şehrinde,0,FIXL2
+2265464,Oeiras,Oeiras şehrinde,0,FIXL2
+2265326,Paço de Arcos,Paço de Arcos şehrinde,0,FIXL2
+2264736,Piedade,Piedade şehrinde,0,FIXL2
+2264428,Porto de Mós,Porto de Mós şehrinde,0,FIXL2
+2735787,Póvoa de Varzim,Póvoa de Varzim şehrinde,0,FIXL2
+2264269,Quelfes,Quelfes şehrinde,0,FIXL2
+6559488,Quinta do Conde,Quinta do Conde şehrinde,0,FIXL2
+2264087,Ramada,Ramada şehrinde,0,FIXL2
+2735175,Ribeira de Frades,Ribeira de Frades şehrinde,0,FIXL2
+2735083,Rio Tinto,Rio Tinto şehrinde,0,FIXL2
+2734140,Senhora da Hora,Senhora da Hora şehrinde,0,FIXL2
+2262957,Sesimbra,Sesimbra şehrinde,0,FIXL2
+2263326,São João da Talha,São João da Talha şehrinde,0,FIXL2
+2734434,São Mamede de Infesta,São Mamede de Infesta şehrinde,0,FIXL2
+2734379,São Paulo de Frades,São Paulo de Frades şehrinde,0,FIXL2
+2734363,São Pedro da Cova,São Pedro da Cova şehrinde,0,FIXL2
+2734306,São Tiago de Custoias,São Tiago de Custoias şehrinde,0,FIXL2
+2262582,Torres Novas,Torres Novas şehrinde,0,FIXL2
+2733263,Valadares,Valadares şehrinde,0,FIXL2
+2743304,Águas Santas,Águas Santas şehrinde,0,FIXL2
+686578,Alba Iulia,Alba Iulia şehrinde,0,FIXL2
+685948,Bacău,Bacău şehrinde,0,FIXL2
+684657,Bistrița,Bistrița şehrinde,0,FIXL2
+684039,Botoșani,Botoșani şehrinde,0,FIXL2
+683760,Breaza,Breaza şehrinde,0,FIXL2
+683902,Brăila,Brăila şehrinde,0,FIXL2
+683394,Buftea,Buftea şehrinde,0,FIXL2
+683123,Buzău,Buzău şehrinde,0,FIXL2
+682729,Caransebeș,Caransebeș şehrinde,0,FIXL2
+681502,Cisnădie,Cisnădie şehrinde,0,FIXL2
+681179,Codlea,Codlea şehrinde,0,FIXL2
+680963,Constanța,Constanța şehrinde,0,FIXL2
+680332,Craiova,Craiova şehrinde,0,FIXL2
+681862,Câmpina,Câmpina şehrinde,0,FIXL2
+679452,Deva,Deva şehrinde,0,FIXL2
+678817,Drobeta-Turnu Severin,Drobeta-Turnu Severin şehrinde,0,FIXL2
+678978,Drăgășani,Drăgășani şehrinde,0,FIXL2
+678015,Focșani,Focșani şehrinde,0,FIXL2
+676527,Gura Humorului,Gura Humorului şehrinde,0,FIXL2
+677742,Găești,Găești şehrinde,0,FIXL2
+675810,Iași,Iași şehrinde,0,FIXL2
+674531,Lugoj,Lugoj şehrinde,0,FIXL2
+671964,Odorheiu Secuiesc,Odorheiu Secuiesc şehrinde,0,FIXL2
+671382,Pantelimon,Pantelimon şehrinde,0,FIXL2
+670889,Piatra Neamț,Piatra Neamț şehrinde,0,FIXL2
+670609,Pitești,Pitești şehrinde,0,FIXL2
+670474,Ploiești,Ploiești şehrinde,0,FIXL2
+669870,Popești-Leordeni,Popești-Leordeni şehrinde,0,FIXL2
+668605,Roșiorii de Vede,Roșiorii de Vede şehrinde,0,FIXL2
+668872,Râmnicu Vâlcea,Râmnicu Vâlcea şehrinde,0,FIXL2
+667526,Sebeș,Sebeș şehrinde,0,FIXL2
+667227,Sighetu Marmației,Sighetu Marmației şehrinde,0,FIXL2
+8436351,Sighișoara,Sighișoara şehrinde,0,FIXL2
+666767,Slatina,Slatina şehrinde,0,FIXL2
+665850,Suceava,Suceava şehrinde,0,FIXL2
+664518,Tulcea,Tulcea şehrinde,0,FIXL2
+664460,Turda,Turda şehrinde,0,FIXL2
+665024,Târgoviște,Târgoviște şehrinde,0,FIXL2
+665004,Târgu Mureș,Târgu Mureș şehrinde,0,FIXL2
+662334,Zalău,Zalău şehrinde,0,FIXL2
+662284,Zărnești,Zărnești şehrinde,0,FIXL2
+1508291,Chelyabinsk,Chelyabinsk şehrinde,0,FIXL2
+819740,Drozhzhino,Drozhzhino şehrinde,0,FIXL2
+553915,Kaluga,Kaluga şehrinde,0,FIXL2
+550280,Khimki,Khimki şehrinde,0,FIXL2
+547523,Klin,Klin şehrinde,0,FIXL2
+535121,Lipetsk,Lipetsk şehrinde,0,FIXL2
+534595,Lobnya,Lobnya şehrinde,0,FIXL2
+523812,Mytishchi,Mytishchi şehrinde,0,FIXL2
+511196,Perm,Perm şehrinde,0,FIXL2
+508101,Podolsk,Podolsk şehrinde,0,FIXL2
+502018,Reutov,Reutov şehrinde,0,FIXL2
+496638,Sergiyev Posad,Sergiyev Posad şehrinde,0,FIXL2
+473778,Vidnoye,Vidnoye şehrinde,0,FIXL2
+473247,Vladimir,Vladimir şehrinde,0,FIXL2
+472757,Volgograd,Volgograd şehrinde,0,FIXL2
+468902,Yaroslavl,Yaroslavl şehrinde,0,FIXL2
+606531,Boden,Boden şehrinde,0,FIXL2
+2700839,Kinna,Kinna şehrinde,0,FIXL2
+605155,Kiruna,Kiruna şehrinde,0,FIXL2
+2667109,Tullinge,Tullinge şehrinde,0,FIXL2
+2665452,Vallentuna,Vallentuna şehrinde,0,FIXL2
+3194351,Novo Mesto,Novo Mesto şehrinde,0,FIXL2
+3192241,Ptuj,Ptuj şehrinde,0,FIXL2
+3188915,Trbovlje,Trbovlje şehrinde,0,FIXL2
+3189075,Velenje,Velenje şehrinde,0,FIXL2
+3061186,Banská Bystrica,Banská Bystrica şehrinde,0,FIXL2
+3060950,Brezno,Brezno şehrinde,0,FIXL2
+3060405,Dolný Kubín,Dolný Kubín şehrinde,0,FIXL2
+3060219,Galanta,Galanta şehrinde,0,FIXL2
+3060139,Handlová,Handlová şehrinde,0,FIXL2
+3060095,Hlohovec,Hlohovec şehrinde,0,FIXL2
+3059435,Komárno,Komárno şehrinde,0,FIXL2
+3059436,Komárno,Komárno şehrinde,0,FIXL2
+3058986,Lučenec,Lučenec şehrinde,0,FIXL2
+3058897,Malacky,Malacky şehrinde,0,FIXL2
+724144,Michalovce,Michalovce şehrinde,0,FIXL2
+3058477,Nové Mesto nad Váhom,Nové Mesto nad Váhom şehrinde,0,FIXL2
+3058472,Nové Zámky,Nové Zámky şehrinde,0,FIXL2
+3058268,Partizánske,Partizánske şehrinde,0,FIXL2
+3058210,Pezinok,Pezinok şehrinde,0,FIXL2
+3058202,Piešťany,Piešťany şehrinde,0,FIXL2
+3058060,Považská Bystrica,Považská Bystrica şehrinde,0,FIXL2
+3058000,Prievidza,Prievidza şehrinde,0,FIXL2
+3057963,Púchov,Púchov şehrinde,0,FIXL2
+723736,Rimavská Sobota,Rimavská Sobota şehrinde,0,FIXL2
+723713,Rožňava,Rožňava şehrinde,0,FIXL2
+3057692,Senec,Senec şehrinde,0,FIXL2
+3057691,Senica,Senica şehrinde,0,FIXL2
+3057630,Skalica,Skalica şehrinde,0,FIXL2
+723559,Snina,Snina şehrinde,0,FIXL2
+3057174,Topoľčany,Topoľčany şehrinde,0,FIXL2
+723195,Vranov nad Topľou,Vranov nad Topľou şehrinde,0,FIXL2
+3057769,Šaľa,Šaľa şehrinde,0,FIXL2
+3056523,Žiar nad Hronom,Žiar nad Hronom şehrinde,0,FIXL2
+712165,Bila Tserkva,Bila Tserkva şehrinde,0,FIXL2
+712590,Bilohorodka,Bilohorodka şehrinde,0,FIXL2
+711660,Boryspil,Boryspil şehrinde,0,FIXL2
+711416,Brody,Brody şehrinde,0,FIXL2
+711390,Brovary,Brovary şehrinde,0,FIXL2
+710791,Cherkasy,Cherkasy şehrinde,0,FIXL2
+710719,Chernivtsi,Chernivtsi şehrinde,0,FIXL2
+707688,Chornomorsk,Chornomorsk şehrinde,0,FIXL2
+709930,Dnipro,Dnipro şehrinde,0,FIXL2
+709540,Dubno,Dubno şehrinde,0,FIXL2
+13546531,Fortechnyi,Fortechnyi şehrinde,0,FIXL2
+708901,Haisyn,Haisyn şehrinde,0,FIXL2
+707565,Irpin,Irpin şehrinde,0,FIXL2
+707471,Ivano-Frankivsk,Ivano-Frankivsk şehrinde,0,FIXL2
+706950,Kamianets-Podilskyi,Kamianets-Podilskyi şehrinde,0,FIXL2
+706369,Khmelnytskyi,Khmelnytskyi şehrinde,0,FIXL2
+706165,Khust,Khust şehrinde,0,FIXL2
+12519211,Kniahynyn,Kniahynyn şehrinde,0,FIXL2
+705392,Kolomyia,Kolomyia şehrinde,0,FIXL2
+13609094,Korolyov,Korolyov şehrinde,0,FIXL2
+704901,Korosten,Korosten şehrinde,0,FIXL2
+704858,Korsun-Shevchenkivskyi,Korsun-Shevchenkivskyi şehrinde,0,FIXL2
+704617,Kovel,Kovel şehrinde,0,FIXL2
+705812,Kropyvnytskyi,Kropyvnytskyi şehrinde,0,FIXL2
+703845,Kryvyi Rih,Kryvyi Rih şehrinde,0,FIXL2
+13561778,Kyivskyi,Kyivskyi şehrinde,0,FIXL2
+700696,Mostyska,Mostyska şehrinde,0,FIXL2
+700646,Mukachevo,Mukachevo şehrinde,0,FIXL2
+700569,Mykolaiv,Mykolaiv şehrinde,0,FIXL2
+700507,Nadvirna,Nadvirna şehrinde,0,FIXL2
+700261,Netishyn,Netishyn şehrinde,0,FIXL2
+8468760,Novoiavorivsk,Novoiavorivsk şehrinde,0,FIXL2
+13608468,Novozavodskyi,Novozavodskyi şehrinde,0,FIXL2
+698740,Odessa,Odessa'da,1,FIXL2
+698625,Oleksandriia,Oleksandriia şehrinde,0,FIXL2
+697593,Pervomaisk,Pervomaisk şehrinde,0,FIXL2
+696943,Pidhorodne,Pidhorodne şehrinde,0,FIXL2
+13631378,Rakove,Rakove şehrinde,0,FIXL2
+695594,Rivne,Rivne şehrinde,0,FIXL2
+699445,Samar,Samar şehrinde,0,FIXL2
+694792,Sarny,Sarny şehrinde,0,FIXL2
+710554,Sheptytskyi,Sheptytskyi şehrinde,0,FIXL2
+13561779,Shevchenko,Shevchenko şehrinde,0,FIXL2
+693457,Smila,Smila şehrinde,0,FIXL2
+693301,Sokal,Sokal şehrinde,0,FIXL2
+692372,Stryi,Stryi şehrinde,0,FIXL2
+692129,Svaliava,Svaliava şehrinde,0,FIXL2
+691650,Ternopil,Ternopil şehrinde,0,FIXL2
+691179,Truskavets,Truskavets şehrinde,0,FIXL2
+690688,Uman,Uman şehrinde,0,FIXL2
+690548,Uzhhorod,Uzhhorod şehrinde,0,FIXL2
+689558,Vinnytsia,Vinnytsia şehrinde,0,FIXL2
+689159,Volochysk,Volochysk şehrinde,0,FIXL2
+689378,Volodymyr,Volodymyr şehrinde,0,FIXL2
+688723,Vyshhorod,Vyshhorod şehrinde,0,FIXL2
+689487,Vyshneve,Vyshneve şehrinde,0,FIXL2
+687700,Zaporizhzhia,Zaporizhzhia şehrinde,0,FIXL2
+686967,Zhytomyr,Zhytomyr şehrinde,0,FIXL2
+686919,Znamianka,Znamianka şehrinde,0,FIXL2
+686803,Zvenyhorodka,Zvenyhorodka şehrinde,0,FIXL2
+699553,Zviahel,Zviahel şehrinde,0,FIXL2
+6941080,Fort Bragg,Fort Bragg şehrinde,0,FIXL2

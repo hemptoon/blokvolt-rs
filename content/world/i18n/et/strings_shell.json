@@ -13,12 +13,12 @@
  "home_kick": "BlokVolt · maailm",
  "home_h1": "Kus elektriautot laadida — igas riigis, linnas ja laadimisvõrgus",
  "home_lead": "Üks kaart: {n} {c}, avaandmetest. Iga koha juures on näha, kust selle andmed pärinevad ja millal neid viimati kinnitati.",
- "search_label": "Leidke riik või linn",
+ "search_label": "Otsi riiki või linna",
  "search_ph": "nt München, Saksamaa, Lyon",
  "search_none": "Selle koha lehte veel ei ole. Avage selle asemel kaart.",
  "map_h": "Kaart",
  "map_p": "Kõik avalikud laadimiskohad avatud registritest, Open Charge Mapist ja OpenStreetMapist — ilma klastriteta, filtritega võimsuse, laadimisvõrgu ja andmete usaldusväärsuse järgi.",
- "map_btn": "Avage kaart",
+ "map_btn": "Ava kaart",
  "countries_h": "Riigid",
  "all_btn": "Kõik riigid",
  "region_h": "Serbia ja Balkan",
@@ -26,8 +26,8 @@
  "rs_card": "Serbia — blokvolt.rs",
  "about_title": "BlokVoltist | BlokVolt",
  "about_h1": "BlokVoltist",
- "about_desc": "Kes BlokVolti haldab ja kuidas sellega ühendust võtta.",
- "about_p": "BlokVolt on sõltumatu teatmik elektrisõidukite laadimise kohta, mida haldavad selle asutajad Andrei ja Danila Novi Sadis Serbias. Ei mingeid tasulisi paigutusi ega laadimisvõrkude reitinguid.",
+ "about_desc": "Kes BlokVolti haldab ja kuidas temaga ühendust võtta.",
+ "about_p": "BlokVolt on sõltumatu teatmik elektrisõidukite laadimise kohta, mida haldavad selle asutajad Andrei ja Danila Novi Sadis Serbias. Tasulisi paigutusi ega laadimisvõrkude reitinguid ei ole.",
  "about_more": "Kuidas andmeid kogutakse ja kontrollitakse",
  "contact": "Kontakt",
  "sources_title": "Allikad ja litsentsid | BlokVolt",
@@ -45,5 +45,7 @@
  "pl_cc": {
   "one": "riigis",
   "other": "riigis"
- }
+ },
+ "lang_hint": "See leht on saadaval ka eesti keeles",
+ "lang_hint_close": "Sulge"
 }

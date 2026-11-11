@@ -48,3 +48,22 @@
 
 ## Проверка
 `python3 content/world/i18n/it/check.py` — 0 ошибок, 3 предупреждения. check.py обновлён: `{city_u}`/`{country_u}` засчитываются вместо `{city}`/`{country}`/`{country_name}` (уточнение пула 4).
+
+## L2-IT back-translation (11.11.2026)
+Blind back-translation by a separate agent of 60 random new strings (seed 1111: strings_map ci_*, pay, press, b2b, embed, texts.pay). Meaning: 60 of 60 equivalent, 0 major. Wording notes (7) — all fixed:
+- `map.ci_thanks`, `ci_err_limit` (and for consistency `ci_once`, `ci_err`, `ci_demo_note`, `ci_rules`, `ci_privacy`): "risposta" → "segnalazione" (a user check-in reads as a report, matches `ci_n30`).
+- `pay.th_apps_c`: "che indicano il Paese" → "con il Paese in elenco" (= listed in coverage).
+- `pay.th_place`: "Sito" → "Luogo" (in the route table "sito" read as website).
+- `pay.gap_line`: word order made natural, "nel livello pubblico dei dati" at the end.
+- `b2b.lic_p`: share-alike = clausola «condividi allo stesso modo» (official CC/ODbL Italian wording).
+- `embed.cf_country_any`: "(oppure l'area della mappa qui sotto)".
+Not changed: `pay.h_stops` has "150 km" written in, as in EN; `kick_pay` = `pay_more` = "Come pagare", as in EN.
+
+## FIXL 11.11.2026
+Scope: new `strings_home.json` (71 keys), shell `lang_hint`/`lang_hint_close`, D11 (`embed.dv_p_lang`, `pages.p_hub_na`), D14 (`pay.afir_eu`, `afir_non`, `conn_txt` with `{name_nom}`), countries.csv `name_nom`, 49 FIXL cities, 7 section slugs.
+Back-translation (wave 1, blind, done by the FIXL agent itself): 20 home strings (title, desc, h1, sub, search_none, near_err, map_alt, map_err, countries_h, dc_line, ap_note, below_h, prices_p, p_ratio, p_src, routes_h, routes_p, work_p, trust_p, org_desc) + all 7 other changed strings. Meaning equivalent in all; fixes:
+- `pay.afir_eu`: "there" was lost → "alle colonnine pubbliche **del Paese**".
+- home `title` shortened to 71 chars ("Colonnine in Europa e nel mondo: mappa, prezzi e come pagare | BlokVolt"); "EV" is implied by "colonnine".
+Accepted divergences: `routes_h` "Viaggi in auto" (= car trips, EN "Road trips"); `below_h` "Meno siti: da vedere sulla mappa"; `countries_h` "La ricarica Paese per Paese".
+D12: no Fiume/Pola/Zara in the file (Croatian/Slovenian coast already local: Rijeka, Pula, Zadar, Koper). Grep of other exonyms of foreign towns: Nizza, Mentone, Breslavia, Danzica, Stettino, Leopoli, Smirne, Salonicco, Corfù, Scutari, Valona — all are the current it.wikipedia/Treccani titles, not irredentist forms → kept. Doubt for Andrei: Mentone (ex-Sardinian town, like Fiume/Pola/Zara a "lost" town) and Breslavia/Stettino (old-fashioned; "Wrocław"/"Szczecin" also common) — switch if the D12 rule should be read strictly.
+Open: `pages.p_city_cmp` uses `{country_u}` where EN has `{country_name}` (pool 4 decision; allowed by check.py, flagged by `world_i18n.py check`). `pay.conn_lnk` keeps `{name}` ("Stazioni di ricarica: {name}").

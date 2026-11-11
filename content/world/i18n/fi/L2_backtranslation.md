@@ -1,0 +1,65 @@
+# Finnish → English back-translation review (sample of 60)
+
+- strings_pay.d_routes — "Fast chargers of at least 50 kW on popular routes to and across the Balkans: a stop at most every 150 km, charging networks, apps, tolls and trip cost." — OK
+- strings_pay.road_none — "Not checked yet." — OK
+- strings_press.cite_3 — "Prices should be presented as averages of the ad-hoc prices in the networks' own price lists, not as the amount every driver pays: contracts and roaming apps may come out cheaper or more expensive." — ISSUE (minor): "voivat tulla halvemmiksi" is colloquial; "summana" reads oddly next to "hinnat" → "…eikä hintana, jonka jokainen kuljettaja maksaa: sopimuksilla ja roaming-sovelluksilla hinta voi olla halvempi tai kalliimpi."
+- strings_pay.afir_eu — "{name} is in the EU, so the Alternative Fuels Infrastructure Regulation (AFIR) applies to public chargers there." — OK
+- strings_press.d_issue — "{month}: what public EV charging cost in Europe – AC, DC and HPC ad-hoc prices by country compared with household electricity." — ISSUE: prices are compared with "electricity", not with the electricity price; also if {month} comes in lowercase ("lokakuu 2026"), the string starts lowercase → "{month}: mitä sähköauton julkinen lataus maksoi Euroopassa – AC-, DC- ja HPC-kertahinnat maittain verrattuna kotitaloussähkön hintaan." (and capitalize the month in code)
+- strings_embed.cf_link — "BlokVolt charging map" — OK
+- strings_b2b.form_p — "Tell us what you need. The reply comes from hello@blokvolt.com." — OK
+- strings_embed.dv_f_msg — "What data and for what purpose" — OK
+- strings_pay.h_road — "Motorway tolls and vignettes" — OK
+- strings_b2b.f_w_cov — "Coverage" — OK
+- strings_press.h_cite — "How to cite" — ISSUE (minor): bare infinitive heading is a calque of "How to cite"; the rest of the site uses "viittausohjeet" → "Viittausohjeet"
+- strings_b2b.f_send — "Send request" — OK
+- strings_embed.cf_rules — "The widget is free, also on commercial sites. The credit and the BlokVolt link must stay visible. No sign-up, no cookies and no ads in the widget. The widget only counts how many times it is shown on each site (site name, nothing about the reader)." — ISSUE (minor): the parenthesis is an elliptic calque → "…(vain sivuston nimi, ei mitään tietoja lukijasta)."
+- strings_pay.h_nets — "Largest charging networks and their apps" — OK
+- strings_pay.cov_no — "Not included" — OK
+- strings_pay.th_trip — "Trip, EUR" — ISSUE: "Matka" can mean distance as well as trip, so "Matka, EUR" is unclear → "Matkan hinta, EUR"
+- strings_embed.cf_copy — "Copy code" — OK
+- strings_map.ci_paid — "How much did the charging cost?" — OK
+- strings_embed.dv_f_demo — "Preview: the form does not send anything from here. Write to the address below." — OK
+- strings_pay.th_place — "Place" — OK
+- strings_pay.afir_non — "{name} is not an EU member: AFIR is EU law and the rules below may not apply there. Check the network's own terms." — OK (optional: "EU:n jäsenvaltio")
+- strings_pay.th_checked — "Checked" — OK
+- strings_embed.cf_rules_h — "Terms of use" — OK
+- strings_pay.th_prices — "Prices" — OK
+- strings_b2b.m_ok — "Thank you, the request has been received." — OK
+- strings_b2b.what_h — "What is available" — OK
+- strings_press.embed_code — "Embed code" — OK
+- strings_pay.th_road — "Tolls" — OK
+- strings_press.nav_press — "For media" — OK
+- strings_pay.h1_route — "{a} – {b} by electric car" — OK
+- strings_embed.dv_f_email — "Email" — OK
+- strings_embed.cf_src — "Source:" — OK
+- strings_pay.h1_routes — "EV routes in the Balkans" — OK
+- strings_b2b.h1 — "Data for businesses" — OK
+- strings_pay.h_stops — "Suggested stops (at most every 150 km)" — OK
+- strings_press.d_press — "Europe's monthly EV charging price index: key figures, embeddable charts, citation guidelines and contacts for journalists." — ISSUE (minor): stacked genitive chain "Euroopan sähköautojen latauksen" is heavy ("Europe's electric cars' charging") → "Sähköautojen latauksen kuukausittainen hintaindeksi Euroopassa: keskeiset luvut, upotettavat kaaviot, viittausohjeet ja yhteystiedot toimittajille." (if the index name in press.credit is a fixed product name, keep it there and make both match)
+- strings_b2b.what_cmp — "Comparisons – public charging compared with household electricity, country and network reviews, updated monthly or quarterly with a changelog." — ISSUE: "verkkokatsaukset" reads as "online reviews" (verkko = web); "kera" is bookish → "<b>Vertailut</b> – julkinen lataus verrattuna kotitaloussähköön, maa- ja latausverkkokohtaiset katsaukset, päivitys kuukausittain tai neljännesvuosittain, muutosloki mukana."
+- strings_map.ci_ne_radi — "Not working" — OK
+- strings_pay.th_fast — "Fast chargers" — OK
+- strings_pay.afir_src — "Source: Regulation (EU) 2023/1804, EUR-Lex, as of {date}." — OK
+- strings_b2b.m_need — "Fill in name, email, message and consent." — ISSUE: consent is a checkbox and cannot be "filled in" → "Täytä nimi, sähköposti ja viesti ja hyväksy ehdot."
+- strings_press.for_media_link — "Charts, citation guidelines and contacts for media" — OK
+- strings_b2b.what_price — "Prices – networks' published ad-hoc prices: AC, DC and high-power charging price, start and idle fees, currency and EUR, VAT, source and check date." — ISSUE: "valuutta ja EUR" ("currency and EUR") is unclear → "…paikallisessa valuutassa ja euroina, arvonlisävero, lähde ja tarkistuspäivä." (also note: d_issue says "HPC", this string says "suurteholataus", so pick one term)
+- strings_pay.th_gaps — "Gaps > 150 km" — ISSUE (minor): "Aukot" is a calque of "gaps" for a column header → "Yli 150 km:n välit"
+- strings_pay.nav_routes — "Routes" — OK
+- strings_pay.cost_note — "All charging at public DC chargers at the country's DC index price; losses during charging not included. If a country has no index yet, the European DC average ({eu}) is used: {miss}." — ISSUE: the first sentence has no verb → "Laskelmassa kaikki lataus tehdään julkisilla DC-latureilla maan DC-indeksin hinnalla, eikä latauksen aikaisia häviöitä ole otettu huomioon. Jos maalla ei vielä ole indeksiä, käytetään Euroopan DC-keskiarvoa ({eu}): {miss}."
+- strings_map.ci_thanks — "Thanks. The answer will be shown on the card to other drivers." — OK
+- strings_press.credit — "Source: BlokVolt, European EV charging price index, {month}" — OK (see the d_press note on keeping the index name consistent)
+- strings_map.ci_n30 — "Reports in the last 30 days: {n}" — OK
+- strings_embed.dv_contact — "Or write to" — OK
+- strings_embed.cf_net — "Network" — ISSUE: plain "Verkko" can be read as "web/internet" → "Latausverkko"
+- strings_embed.dv_widget_btn — "Create code" — OK
+- strings_press.data_csv — "Monthly index, CSV" — OK
+- strings_b2b.f_w_other — "Something else" — ISSUE (minor): option lists normally say "Muu" → "Muu"
+- strings_pay.sys_mixed — "Vignette and per-section tolls." — ISSUE: "osuuskohtaiset" can be read as "per-share" (osuus = share) → "Vinjetti ja tieosuuskohtaiset tiemaksut."
+- strings_pay.th_app — "App or card" — OK
+- strings_b2b.form_h — "Request data" — OK
+- strings_pay.typ_more — "All prices and sources" — OK
+- strings_press.read_issue — "Read the full report" — OK
+- strings_press.issue_of — "Report {date}" — ISSUE (depends on the date format): fine with a numeric date ("Katsaus 1.11.2026"), but with a month name ("Katsaus lokakuu 2026") the case is wrong → "Katsaus, {date}" or a genitive month form "Lokakuun 2026 katsaus"
+
+## Summary
+60 strings reviewed: 45 OK, 15 flagged (5 minor style, 10 substantive). No forbidden register items found: no "me/meidän", "heti" or "24/7"; buttons use singular imperative. The "lataus" (charging vs download) ambiguity does not come up anywhere in the sample. The main substantive problems are ambiguous single nouns (verkko, matka, osuus), the consent field that cannot be "filled in", a verbless sentence in cost_note, and how month/date placeholders fit the grammar.

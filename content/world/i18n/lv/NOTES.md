@@ -36,3 +36,19 @@ uzlādes stacija / vieta / punkts, uzlādes tīkls, operators, elektromobilis, �
 - Вычитка носителем (R-LV), особенно `exonym-auto` и `decl_ok=0`.
 - Длина: `plan_sub` «Abonements» и `h_more` длиннее EN×1.4 (не кнопки).
 - Разделитель тысяч: в латышском пробел («2 500»), в строках цен стоит как в EN.
+
+## L2 (11.11.2026)
+- Новые файлы: strings_pay, strings_press, strings_b2b, strings_embed (+29 ключей strings_map: `ci_*`, `emb_open`); texts.json: разделы `pay` (6) и `routes` (59, имена городов = cities.csv).
+- Термины: roaming → «viesabonēšana» (lietotnes un kartes); check-in → «atzīme»; widget → «logrīks»; embed → «iegult»; toll → «nodeva»; vignette → «vinjete»; reliability → «ticamība» (везде, «uzticamība» убрана).
+- Индекс: «Eiropas elektromobiļu uzlādes cenu indekss» (и в ценах, и в прессе, и в цитате).
+- Даты: «uz {date}» («Dati uz…», «kursa uz…»). Кавычки: „…”.
+- Числа в связке с существительным — через двоеточие («Uzlādes tīkli: {n}»), чтобы не ломалось на 21, 31…
+- check.py: все 8 файлов + texts.pay/routes; стоп-слова lv (mēs, mūsu, redakcija, 24/7, nekavējoties, uzreiz).
+- Вычитка R-уровня — REVIEW.md.
+
+## FIXL (11.11.2026)
+- `strings_home.json` — 71 keys; plurals {zero, one, other}, zero = other.
+- Section slugs: /lv/ka-maksat/, /lv/marsruti/, /lv/medijiem/, /lv/dati-uznemumiem/, /lv/embed/karte/, /lv/karte-jusu-vietnei/, /lv/izstradatajiem/.
+- D13: «viesabonēšana» kept. name_nom (D14) not needed for lv.
+- cities.csv: +48 NOBIL («pilsētā X», decl_ok=0) + Ženēva/Ženēvā.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 0)

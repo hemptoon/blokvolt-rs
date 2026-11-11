@@ -44,3 +44,19 @@ Strittig, bewusst gewählt:
 ## QA
 - check.py: Schlüssel, Platzhalter, HTML, Entities, leere Werte, Plural-Kategorien (Babel), Slugs ASCII, CSV lesbar, verbotene Wörter.
 - Rückübersetzung von 60 zufälligen Strings (blind): 59 ok, 1 „minor“ (`ft_about`, bewusst), 0 Sinnabweichungen.
+
+## L2-de (11.11.2026)
+- Neue Dateien: strings_pay, strings_press, strings_b2b, strings_embed; strings_map + 29 Schlüssel (Check-ins). texts.json + `pay`, `routes` (LANG0-Format: Knotenpfad → Text).
+- Begriffe: check-in → „Rückmeldung“; drivers → „Fahrende“; Preisindex einheitlich „Europäischer Preisindex für das Laden von E-Autos“ (wie strings_prices); ODbL-„public layer“ → „öffentliche Ebene“.
+- `{name}` (Land im Nominativ) nur in artikelfesten Konstruktionen („{name} gehört zur EU“, Länderseite „{name}“), damit „Schweiz/Niederlande“ ohne Artikel nicht holpern. Bei „Die Schweiz gehört …“ würde der Motor den Artikel brauchen — offen für LANGI.
+- Routen-Städte wie cities.csv: Belgrad, Plowdiw, Plewen, Weliko Tarnowo, Hermannstadt.
+- cities.csv: +48 NOBIL-Orte (NO 2, SE 46) mit lokalem Namen; drei Namen nach de.wikipedia: Siders, Düdelingen, Esch an der Alzette.
+- check.py: alle 8 strings-Dateien, texts.pay/routes, Stadtseiten aus state/pages_state.json.
+
+## FIXL (11.11.2026)
+- `strings_home.json` neu (71 Schlüssel); `strings_shell` + `lang_hint` „Diese Seite gibt es auch auf Deutsch“, `lang_hint_close` „Schließen“.
+- `countries.csv` + Spalte `name_nom` (Nominativ mit Artikel). Verwendung nur nach „für“ (`afir_eu`, `afir_non`, `conn_txt`), nie am Satzanfang, nie als Subjekt mit Verb (Kongruenz Plural).
+- Slugs: `/de/bezahlen/`, `/de/routen/`, `/de/fuer-medien/`, `/de/daten-fuer-unternehmen/`, `/de/embed/karte/`, `/de/karte-fuer-ihre-website/`, `/de/fuer-entwickler/`.
+- D12: Städte in PL/CZ/RO mit lokalem Namen außer Prag, Warschau, Krakau, Bukarest (offene Frage 1 oben damit entschieden). D13: Kyjiw.
+- cities.csv: + Genf (2660646); check.py lässt keine geonameid außerhalb von names/cities.csv mehr zu.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 35). Kyrillisch wie bisher (Duden): UA/RU deutsch transkribiert (Saporischschja, Tscherniwzi, Odessa), BY belarussisch wie Hrodna (Wizebsk, Homel, Mahiljou), BG deutsch (Stara Sagora, Schumen); GR ohne Akzente; RO mit ș/ț; Nieder-Ingelheim → Ingelheim am Rhein; Exonyme Rom, Florenz, Genua, Syrakus, Triest. check.py akzeptiert names/cities_extra.csv.

@@ -47,5 +47,7 @@
   "one": "zemlja",
   "few": "zemlje",
   "other": "zemalja"
- }
+ },
+ "lang_hint": "Ova je stranica dostupna i na hrvatskom",
+ "lang_hint_close": "Zatvori"
 }

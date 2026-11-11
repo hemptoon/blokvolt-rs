@@ -1,7 +1,7 @@
 {
  "balkan_note": "Disse landene har egne BlokVolt-sider med kontrollerte data.",
  "below_p": "Denne siden viser en by eller et nettverk bare så lenge de åpne dataene har nok offentlige ladesteder. Det har de ikke nå. Landsiden og kartet viser fortsatt alle ladesteder.",
- "below_title": "Ladestasjoner – for lite data nå",
+ "below_title": "Ladestasjoner – foreløpig for lite data",
  "conf_link": "Slik beregnes påliteligheten",
  "country_menu": "Språk",
  "crumbs": "Brødsmulesti",
@@ -69,7 +69,7 @@
  "p_dc": "DC-hurtiglading fra 50 kW: {dc} ({pct_dc}); 150 kW eller mer: {hpc}.",
  "p_gnet": "{net} finnes i {n_countries}.",
  "p_hub": "Land med minst 100 offentlige ladesteder med middels eller høy pålitelighet har egen side. Vest-Balkan dekkes av BlokVolts sider for hvert land.",
- "p_hub_na": "USA og Canada dekkes på engelsk og russisk; de serbiske sidene dekker Europa.",
+ "p_hub_na": "Sider for byer og nettverk finnes på engelsk og russisk for hvert land, og på landets eget språk.",
  "p_multi": "{pct_multi} av ladestedene er bekreftet av to eller flere kilder; {pct_recent} ble sist bekreftet i 2025 eller 2026.",
  "p_net_share": "Nettverket finnes i {n_cities} {country_u}; det utgjør {share} av de offentlige ladestedene i landet som vises her.",
  "p_nonet": "Uten kjent nettverk: {nonet}.",

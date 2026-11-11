@@ -69,7 +69,7 @@
  "p_dc": "Carga rápida DC desde 50 kW: {dc} ({pct_dc}); 150 kW o más: {hpc}.",
  "p_gnet": "{net} está presente en {n_countries}.",
  "p_hub": "Cada país con al menos 100 ubicaciones públicas de fiabilidad media o alta tiene su propia página. Los Balcanes Occidentales se tratan en las páginas de BlokVolt de cada país.",
- "p_hub_na": "Estados Unidos y Canadá se tratan en inglés y en ruso; las páginas en serbio abarcan Europa.",
+ "p_hub_na": "Las páginas de ciudades y redes están en inglés y en ruso para todos los países, y también en el idioma de cada país.",
  "p_multi": "El {pct_multi} de las ubicaciones están confirmadas por dos o más fuentes; el {pct_recent} se confirmaron por última vez en 2025 o 2026.",
  "p_net_share": "La red está presente en {n_cities} {country_u}; supone el {share} de las ubicaciones públicas del país que se muestran aquí.",
  "p_nonet": "Sin red conocida: {nonet}.",

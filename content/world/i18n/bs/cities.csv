@@ -2005,7 +2005,7 @@ geonameid,name,in_phrase,decl_ok,note
 2656379,Banstead,u Bansteadu,1,
 264194,Agija Paraskevi,u gradu Agija Paraskevi,0,transliteracija kao sr
 265560,Agrinio,u gradu Agrinio,0,transliteracija kao sr
-734330,Ser,u Seru,1,transliteracija kao sr
+734330,Seres,u Seresu,1,D12: bilo „Ser” (historijski egzonim) → službeno Serres/Seres
 3315278,Sandyford,u Sandyfordu,1,
 3172189,Novara,u Novari,1,
 3174659,Livorno,u Livornu,1,
@@ -5604,3 +5604,873 @@ geonameid,name,in_phrase,decl_ok,note
 5927690,Coquitlam,u Coquitlamu,1,
 12908892,Novi Tajpej,u Novom Tajpeju,1,transliteracija kao sr
 3530597,Ciudad de México,u gradu Ciudad de México,0,
+2660646,Ženeva,u Ženevi,1,FIXL
+3149563,Kongsberg,u Kongsbergu,1,FIXL
+3139075,Skien,u gradu Skien,0,FIXL
+2727234,Åkersberga,u gradu Åkersberga,0,FIXL
+2726756,Alingsås,u Alingsåsu,1,FIXL
+2721259,Boo,u gradu Boo,0,FIXL
+2716166,Enköping,u Enköpingu,1,FIXL
+2715946,Eslöv,u Eslövu,1,FIXL
+2715573,Falkenberg,u Falkenbergu,1,FIXL
+2715568,Falköping,u Falköpingu,1,FIXL
+2709628,Gustavsberg,u Gustavsbergu,1,FIXL
+2707953,Haninge,u gradu Haninge,0,FIXL
+2704620,Huddinge,u gradu Huddinge,0,FIXL
+2704613,Hudiksvall,u Hudiksvallu,1,FIXL
+2704136,Huskvarna,u gradu Huskvarna,0,FIXL
+2703396,Jakobsberg,u Jakobsbergu,1,FIXL
+2701715,Karlskoga,u gradu Karlskoga,0,FIXL
+2701223,Katrineholm,u Katrineholmu,1,FIXL
+2699791,Köping,u Köpingu,1,FIXL
+2699282,Kristinehamn,u Kristinehamnu,1,FIXL
+2698767,Kumla,u gradu Kumla,0,FIXL
+2697720,Landskrona,u gradu Landskrona,0,FIXL
+2696503,Lerum,u Lerumu,1,FIXL
+2696334,Lidingö,u gradu Lidingö,0,FIXL
+604490,Luleå,u gradu Luleå,0,FIXL
+2692613,Mariestad,u Mariestadu,1,FIXL
+2692475,Märsta,u gradu Märsta,0,FIXL
+2690580,Nacka,u gradu Nacka,0,FIXL
+2690170,Nässjö,u gradu Nässjö,0,FIXL
+2688250,Norrtälje,u gradu Norrtälje,0,FIXL
+2687700,Nyköping,u Nyköpingu,1,FIXL
+2686469,Örnsköldsvik,u Örnsköldsviku,1,FIXL
+2686162,Oskarshamn,u Oskarshamnu,1,FIXL
+2684395,Partille,u gradu Partille,0,FIXL
+603570,Piteå,u gradu Piteå,0,FIXL
+602913,Skellefteå,u gradu Skellefteå,0,FIXL
+2676176,Södertälje,u gradu Södertälje,0,FIXL
+2675408,Sollentuna,u gradu Sollentuna,0,FIXL
+2675397,Solna,u gradu Solna,0,FIXL
+2674649,Staffanstorp,u Staffanstorpu,1,FIXL
+2670879,Sundbyberg,u Sundbybergu,1,FIXL
+2669772,Täby,u gradu Täby,0,FIXL
+2667303,Trollhättan,u Trollhättanu,1,FIXL
+2667094,Tumba,u gradu Tumba,0,FIXL
+2666238,Upplands Väsby,u gradu Upplands Väsby,0,FIXL
+2664203,Västervik,u Västerviku,1,FIXL
+2665171,Vänersborg,u Vänersborgu,1,FIXL
+2664855,Värnamo,u gradu Värnamo,0,FIXL
+2662689,Visby,u gradu Visby,0,FIXL
+2763423,Traun,u gradu Traun,0,FIXL2
+2760910,Wolfsberg,u gradu Wolfsberg,0,FIXL2
+2803429,Aarschot,u gradu Aarschot,0,FIXL2
+2802743,Balen,u gradu Balen,0,FIXL2
+2801226,Boussu,u gradu Boussu,0,FIXL2
+2799496,Destelbergen,u gradu Destelbergen,0,FIXL2
+2799412,Diepenbeek,u gradu Diepenbeek,0,FIXL2
+2799226,Dour,u gradu Dour,0,FIXL2
+2799090,Duffel,u gradu Duffel,0,FIXL2
+2799007,Edegem,u gradu Edegem,0,FIXL2
+2796833,Haaltert,u gradu Haaltert,0,FIXL2
+2796637,Hamme,u gradu Hamme,0,FIXL2
+2796012,Herent,u gradu Herent,0,FIXL2
+2795800,Heusden,u gradu Heusden,0,FIXL2
+2794663,Kasterlee,u gradu Kasterlee,0,FIXL2
+2794210,Knokke-Heist,u gradu Knokke-Heist,0,FIXL2
+2794179,Koersel,u gradu Koersel,0,FIXL2
+2793446,Lanaken,u gradu Lanaken,0,FIXL2
+2793144,Lebbeke,u gradu Lebbeke,0,FIXL2
+2792360,Lille,u gradu Lille,0,FIXL2
+2791961,Maasmechelen,u gradu Maasmechelen,0,FIXL2
+2791857,Maldegem,u gradu Maldegem,0,FIXL2
+2791424,Meise,u gradu Meise,0,FIXL2
+2791194,Middelkerke,u gradu Middelkerke,0,FIXL2
+2790114,Ninove,u gradu Ninove,0,FIXL2
+2789751,Oostkamp,u gradu Oostkamp,0,FIXL2
+2789413,Overijse,u gradu Overijse,0,FIXL2
+2788726,Poperinge,u gradu Poperinge,0,FIXL2
+2788348,Ranst,u gradu Ranst,0,FIXL2
+2786344,Soumagne,u gradu Soumagne,0,FIXL2
+2786229,Stabroek,u gradu Stabroek,0,FIXL2
+2783632,Willebroek,u gradu Willebroek,0,FIXL2
+2783293,Zele,u gradu Zele,0,FIXL2
+2783197,Zolder,u gradu Zolder,0,FIXL2
+2783188,Zonhoven,u gradu Zonhoven,0,FIXL2
+2783081,Zwijndrecht,u gradu Zwijndrecht,0,FIXL2
+733618,Asenovgrad,u Asenovgradu,1,FIXL2
+733579,Ajtos,u Ajtosu,1,FIXL2
+733264,Berkovica,u Berkovici,1,FIXL2
+733014,Botevgrad,u Botevgradu,1,FIXL2
+732452,Čirpan,u Čirpanu,1,FIXL2
+726418,Dobrič,u Dobriču,1,FIXL2
+726872,Dupnica,u Dupnici,1,FIXL2
+731549,Gabrovo,u Gabrovu,1,FIXL2
+731233,Gorna Orjahovica,u gradu Gorna Orjahovica,0,FIXL2
+731108,Goce Delčev,u gradu Goce Delčev,0,FIXL2
+730442,Harmanli,u gradu Harmanli,0,FIXL2
+729794,Krdžali,u gradu Krdžali,0,FIXL2
+730565,Karlovo,u Karlovu,1,FIXL2
+730559,Karnobat,u Karnobatu,1,FIXL2
+730496,Kazanlak,u Kazanlaku,1,FIXL2
+729730,Ćustendil,u Ćustendilu,1,FIXL2
+729581,Lom,u Lomu,1,FIXL2
+729559,Loveč,u Loveču,1,FIXL2
+729114,Montana,u Montani,1,FIXL2
+728742,Nova Zagora,u Novoj Zagori,1,FIXL2
+728448,Panagjurište,u Panagjurištu,1,FIXL2
+727886,Prvomaj,u gradu Prvomaj,0,FIXL2
+728317,Peštera,u Pešteri,1,FIXL2
+728075,Popovo,u Popovu,1,FIXL2
+727696,Razgrad,u Razgradu,1,FIXL2
+727447,Sandanski,u gradu Sandanski,0,FIXL2
+727337,Sevlievo,u Sevlievu,1,FIXL2
+727233,Šumen,u Šumenu,1,FIXL2
+727221,Silistra,u Silistri,1,FIXL2
+726848,Stara Zagora,u Staroj Zagori,1,FIXL2
+726534,Svištov,u Svištovu,1,FIXL2
+726174,Trgovište,u Trgovištu,1,FIXL2
+726320,Trojan,u Trojanu,1,FIXL2
+725988,Velingrad,u Velingradu,1,FIXL2
+725905,Vidin,u Vidinu,1,FIXL2
+725712,Vraca,u Vraci,1,FIXL2
+725578,Jambol,u Jambolu,1,FIXL2
+630429,Baranoviči,u gradu Baranoviči,0,FIXL2
+630468,Bobrujsk,u Bobrujsku,1,FIXL2
+627907,Gomelj,u Gomelju,1,FIXL2
+627083,Kolodišči,u gradu Kolodišči,0,FIXL2
+627145,Kobrin,u Kobrinu,1,FIXL2
+625972,Logojsk,u Logojsku,1,FIXL2
+625665,Mogiljov,u Mogiljovu,1,FIXL2
+625625,Molodečno,u Molodečnu,1,FIXL2
+624079,Orša,u Orši,1,FIXL2
+630515,Ošmjani,u gradu Ošmjani,0,FIXL2
+622794,Rečica,u Rečici,1,FIXL2
+621729,Smoleviči,u gradu Smoleviči,0,FIXL2
+621713,Smorgonj,u gradu Smorgonj,0,FIXL2
+622428,Soligorsk,u Soligorsku,1,FIXL2
+620127,Vitebsk,u Vitebsku,1,FIXL2
+2661810,Allschwil,u gradu Allschwil,0,FIXL2
+2661265,Carouge,u gradu Carouge,0,FIXL2
+2660925,Einsiedeln,u gradu Einsiedeln,0,FIXL2
+2660727,Frauenfeld,u gradu Frauenfeld,0,FIXL2
+2660549,Gossau,u gradu Gossau,0,FIXL2
+2660305,Horgen,u gradu Horgen,0,FIXL2
+2659667,Meyrin,u gradu Meyrin,0,FIXL2
+2659296,Onex,u gradu Onex,0,FIXL2
+2658761,Schaffhausen,u gradu Schaffhausen,0,FIXL2
+2658494,Steffisburg,u gradu Steffisburg,0,FIXL2
+2658216,Uster,u gradu Uster,0,FIXL2
+2658154,Vernier,u gradu Vernier,0,FIXL2
+2658011,Wettingen,u gradu Wettingen,0,FIXL2
+2657908,Zug,u gradu Zug,0,FIXL2
+3079129,Bohumín,u gradu Bohumín,0,FIXL2
+3078545,Bruntál,u gradu Bruntál,0,FIXL2
+3077835,Cheb,u gradu Cheb,0,FIXL2
+3077244,Děčín,u gradu Děčín,0,FIXL2
+3074020,Kadaň,u gradu Kadaň,0,FIXL2
+3073789,Karviná,u gradu Karviná,0,FIXL2
+3073660,Klatovy,u gradu Klatovy,0,FIXL2
+3072656,Krnov,u gradu Krnov,0,FIXL2
+3070862,Mělník,u gradu Mělník,0,FIXL2
+3069844,Neratovice,u gradu Neratovice,0,FIXL2
+3068873,Orlová,u gradu Orlová,0,FIXL2
+3068690,Otrokovice,u gradu Otrokovice,0,FIXL2
+3062339,Vsetín,u gradu Vsetín,0,FIXL2
+3061822,Žatec,u gradu Žatec,0,FIXL2
+2951679,Beckingen,u gradu Beckingen,0,FIXL2
+2930182,Enger,u gradu Enger,0,FIXL2
+2930043,Ennepetal,u gradu Ennepetal,0,FIXL2
+2929865,Eppelborn,u gradu Eppelborn,0,FIXL2
+2917737,Greiz,u gradu Greiz,0,FIXL2
+2905290,Hessisch Oldendorf,u gradu Hessisch Oldendorf,0,FIXL2
+2904985,Heusweiler,u gradu Heusweiler,0,FIXL2
+2904886,Hiddenhausen,u gradu Hiddenhausen,0,FIXL2
+2891014,Kierspe,u gradu Kierspe,0,FIXL2
+2879832,Lebach,u gradu Lebach,0,FIXL2
+2879315,Leichlingen,u gradu Leichlingen,0,FIXL2
+2877142,Lindlar,u gradu Lindlar,0,FIXL2
+2876218,Lohmar,u gradu Lohmar,0,FIXL2
+2872519,Meerane,u gradu Meerane,0,FIXL2
+2863240,Nieder-Ingelheim,u gradu Nieder-Ingelheim,0,FIXL2
+2851584,Püttlingen,u gradu Püttlingen,0,FIXL2
+2847033,Riegelsberg,u gradu Riegelsberg,0,FIXL2
+2835382,Schwalbach,u gradu Schwalbach,0,FIXL2
+2810969,Werdau,u gradu Werdau,0,FIXL2
+2625070,Aabenraa,u gradu Aabenraa,0,FIXL2
+2624906,Albertslund,u gradu Albertslund,0,FIXL2
+2621927,Frederikshavn,u gradu Frederikshavn,0,FIXL2
+2621912,Frederikssund,u gradu Frederikssund,0,FIXL2
+2620583,Hedensted,u gradu Hedensted,0,FIXL2
+2620473,Helsingør,u gradu Helsingør,0,FIXL2
+2619771,Horsens,u gradu Horsens,0,FIXL2
+2619528,Hvidovre,u gradu Hvidovre,0,FIXL2
+2619856,Hørsholm,u gradu Hørsholm,0,FIXL2
+2619377,Ishøj,u gradu Ishøj,0,FIXL2
+2619154,Kalundborg,u gradu Kalundborg,0,FIXL2
+2618415,Køge,u gradu Køge,0,FIXL2
+2617658,Lillerød,u gradu Lillerød,0,FIXL2
+2616015,Nyborg,u gradu Nyborg,0,FIXL2
+2615961,Nykøbing Falster,u gradu Nykøbing Falster,0,FIXL2
+2614764,Ringsted,u gradu Ringsted,0,FIXL2
+2614481,Roskilde,u gradu Roskilde,0,FIXL2
+2613731,Skive,u gradu Skive,0,FIXL2
+2613460,Slagelse,u gradu Slagelse,0,FIXL2
+2613233,Solrød Strand,u gradu Solrød Strand,0,FIXL2
+2612629,Stenløse,u gradu Stenløse,0,FIXL2
+2611497,Tønder,u gradu Tønder,0,FIXL2
+2610319,Viborg,u gradu Viborg,0,FIXL2
+591260,Kohtla-Järve,u gradu Kohtla-Järve,0,FIXL2
+590447,Maardu,u gradu Maardu,0,FIXL2
+590031,Narva,u gradu Narva,0,FIXL2
+589580,Pärnu,u gradu Pärnu,0,FIXL2
+587577,Viljandi,u gradu Viljandi,0,FIXL2
+2522208,Albolote,u gradu Albolote,0,FIXL2
+2522165,Alcalá de Guadaira,u gradu Alcalá de Guadaira,0,FIXL2
+2522012,Algemesí,u gradu Algemesí,0,FIXL2
+2521964,Aljaraque,u gradu Aljaraque,0,FIXL2
+2521923,Almansa,u gradu Almansa,0,FIXL2
+2521804,Altea,u gradu Altea,0,FIXL2
+2521665,Arcos de la Frontera,u gradu Arcos de la Frontera,0,FIXL2
+2521582,Arona,u gradu Arona,0,FIXL2
+3129356,Arroyomolinos,u gradu Arroyomolinos,0,FIXL2
+2521510,Aspe,u gradu Aspe,0,FIXL2
+2521486,Atamaría,u gradu Atamaría,0,FIXL2
+2521485,Atarfe,u gradu Atarfe,0,FIXL2
+2521335,Barbate,u gradu Barbate,0,FIXL2
+2521215,Baza,u gradu Baza,0,FIXL2
+2521016,Berja,u gradu Berja,0,FIXL2
+3127007,Calella,u gradu Calella,0,FIXL2
+2520052,Cartaya,u gradu Cartaya,0,FIXL2
+2519738,Castilleja de la Cuesta,u gradu Castilleja de la Cuesta,0,FIXL2
+2519690,Catarroja,u gradu Catarroja,0,FIXL2
+2519651,Cehegín,u gradu Cehegín,0,FIXL2
+3109402,Cerdanyola del Vallès,u gradu Cerdanyola del Vallès,0,FIXL2
+2519477,Chipiona,u gradu Chipiona,0,FIXL2
+2519289,Conil de la Frontera,u gradu Conil de la Frontera,0,FIXL2
+3124569,Cornellà de Llobregat,u gradu Cornellà de Llobregat,0,FIXL2
+2519367,Coín,u gradu Coín,0,FIXL2
+2519110,Crevillente,u gradu Crevillente,0,FIXL2
+3124041,Culleredo,u gradu Culleredo,0,FIXL2
+2520055,Cártama,u gradu Cártama,0,FIXL2
+2520447,El Campello,u gradu El Campello,0,FIXL2
+3117232,El Masnou,u gradu El Masnou,0,FIXL2
+3123493,Ferrol,u gradu Ferrol,0,FIXL2
+3121766,Galapagar,u gradu Galapagar,0,FIXL2
+2516797,Hellín,u gradu Hellín,0,FIXL2
+3121881,Hondarribia,u gradu Hondarribia,0,FIXL2
+3120501,Humanes de Madrid,u gradu Humanes de Madrid,0,FIXL2
+2516474,Icod de los Vinos,u gradu Icod de los Vinos,0,FIXL2
+2516443,Ingenio,u gradu Ingenio,0,FIXL2
+2515692,La Orotava,u gradu La Orotava,0,FIXL2
+2515219,Las Torres de Cotillas,u gradu Las Torres de Cotillas,0,FIXL2
+2515072,Lepe,u gradu Lepe,0,FIXL2
+2514868,Los Alcázares,u gradu Los Alcázares,0,FIXL2
+2514553,Los Palacios y Villafranca,u gradu Los Palacios y Villafranca,0,FIXL2
+2514158,Marchena,u gradu Marchena,0,FIXL2
+2514042,Maspalomas,u gradu Maspalomas,0,FIXL2
+2513983,Mazarrón,u gradu Mazarrón,0,FIXL2
+2513703,Moncada,u gradu Moncada,0,FIXL2
+3116527,Montcada i Reixac,u gradu Montcada i Reixac,0,FIXL2
+2513604,Montijo,u gradu Montijo,0,FIXL2
+2513240,Nerja,u gradu Nerja,0,FIXL2
+2513195,Novelda,u gradu Novelda,0,FIXL2
+2513222,Níjar,u gradu Níjar,0,FIXL2
+2513052,Osuna,u gradu Osuna,0,FIXL2
+6354969,Playa del Inglés,u gradu Playa del Inglés,0,FIXL2
+3113082,Portugalete,u gradu Portugalete,0,FIXL2
+2519068,Quart de Poblet,u gradu Quart de Poblet,0,FIXL2
+2511994,Realejo Alto,u gradu Realejo Alto,0,FIXL2
+2511852,Rincón de la Victoria,u gradu Rincón de la Victoria,0,FIXL2
+3111605,Ripollet,u gradu Ripollet,0,FIXL2
+2511700,Rota,u gradu Rota,0,FIXL2
+3110986,Salou,u gradu Salou,0,FIXL2
+2511440,San Bartolomé de Tirajana,u gradu San Bartolomé de Tirajana,0,FIXL2
+2511371,San Isidro,u gradu San Isidro,0,FIXL2
+2511287,San Miguel de Abona,u gradu San Miguel de Abona,0,FIXL2
+3110642,Sant Feliu de Llobregat,u gradu Sant Feliu de Llobregat,0,FIXL2
+3110519,Sant Joan Despí,u gradu Sant Joan Despí,0,FIXL2
+3109546,Sant Just Desvern,u gradu Sant Just Desvern,0,FIXL2
+2511150,Santa Lucía,u gradu Santa Lucía,0,FIXL2
+3109897,Santa Uxía de Ribeira,u gradu Santa Uxía de Ribeira,0,FIXL2
+2511160,Santafé,u gradu Santafé,0,FIXL2
+3109050,Seseña,u gradu Seseña,0,FIXL2
+3109041,Sestao,u gradu Sestao,0,FIXL2
+2510764,Sueca,u gradu Sueca,0,FIXL2
+3108317,Tarancón,u gradu Tarancón,0,FIXL2
+2510394,Tomares,u gradu Tomares,0,FIXL2
+3107955,Tordera,u gradu Tordera,0,FIXL2
+2510245,Torrox,u gradu Torrox,0,FIXL2
+2510485,Tías,u gradu Tías,0,FIXL2
+2510112,Ubrique,u gradu Ubrique,0,FIXL2
+2510073,Utrera,u gradu Utrera,0,FIXL2
+3105247,Villanueva de la Cañada,u gradu Villanueva de la Cañada,0,FIXL2
+3105148,Villaquilambre,u gradu Villaquilambre,0,FIXL2
+3104703,Villaviciosa de Odón,u gradu Villaviciosa de Odón,0,FIXL2
+3104475,Viveiro,u gradu Viveiro,0,FIXL2
+2509408,Yaiza,u gradu Yaiza,0,FIXL2
+2509402,Yecla,u gradu Yecla,0,FIXL2
+2509377,Zafra,u gradu Zafra,0,FIXL2
+659169,Hamina,u gradu Hamina,0,FIXL2
+651659,Kontiolahti,u gradu Kontiolahti,0,FIXL2
+648738,Laukaa,u gradu Laukaa,0,FIXL2
+643644,Orimattila,u gradu Orimattila,0,FIXL2
+3037423,Antony,u gradu Antony,0,FIXL2
+3031898,Boissy-Saint-Léger,u gradu Boissy-Saint-Léger,0,FIXL2
+3030990,Bourg-la-Reine,u gradu Bourg-la-Reine,0,FIXL2
+8555643,Cergy-Pontoise,u gradu Cergy-Pontoise,0,FIXL2
+3026637,Charenton-le-Pont,u gradu Charenton-le-Pont,0,FIXL2
+3025622,Chelles,u gradu Chelles,0,FIXL2
+3020832,Draveil,u gradu Draveil,0,FIXL2
+3018280,Fleury-les-Aubrais,u gradu Fleury-les-Aubrais,0,FIXL2
+3017341,Franconville,u gradu Franconville,0,FIXL2
+3016830,Gagny,u gradu Gagny,0,FIXL2
+3002647,Le Plessis-Trévise,u gradu Le Plessis-Trévise,0,FIXL2
+2998305,Limeil-Brévannes,u gradu Limeil-Brévannes,0,FIXL2
+2998056,Livry-Gargan,u gradu Livry-Gargan,0,FIXL2
+2997904,Lognes,u gradu Lognes,0,FIXL2
+2995206,Massy,u gradu Massy,0,FIXL2
+2992616,Montfermeil,u gradu Montfermeil,0,FIXL2
+2992090,Montreuil,u gradu Montreuil,0,FIXL2
+2990616,Neuilly-Plaisance,u gradu Neuilly-Plaisance,0,FIXL2
+2986025,Port-de-Bouc,u gradu Port-de-Bouc,0,FIXL2
+2983440,Ris-Orangis,u gradu Ris-Orangis,0,FIXL2
+2983026,Romainville,u gradu Romainville,0,FIXL2
+2981512,Saint-Avertin,u gradu Saint-Avertin,0,FIXL2
+2980558,Sainte-Geneviève-des-Bois,u gradu Sainte-Geneviève-des-Bois,0,FIXL2
+2974681,Sevran,u gradu Sevran,0,FIXL2
+2973841,Stains,u gradu Stains,0,FIXL2
+2968653,Villemomble,u gradu Villemomble,0,FIXL2
+2968555,Villeneuve-la-Garenne,u gradu Villeneuve-la-Garenne,0,FIXL2
+2967934,Viroflay,u gradu Viroflay,0,FIXL2
+3020020,Épinay-sur-Seine,u gradu Épinay-sur-Seine,0,FIXL2
+2634677,Watford,u gradu Watford,0,FIXL2
+8478257,Agios Joanis Rendis,u gradu Agios Joanis Rendis,0,FIXL2
+736229,Florina,u Florini,1,FIXL2
+8310138,Iliupoli,u gradu Iliupoli,0,FIXL2
+261249,Kamatero,u gradu Kamatero,0,FIXL2
+259824,Kifisija,u Kifisiji,1,FIXL2
+9034728,Nea Jonija,u gradu Nea Jonija,0,FIXL2
+256575,Nea Smirni,u gradu Nea Smirni,0,FIXL2
+256429,Nikea,u gradu Nikea,0,FIXL2
+255377,Petrupoli,u gradu Petrupoli,0,FIXL2
+734301,Sikies,u gradu Sikies,0,FIXL2
+251948,Vironas,u gradu Vironas,0,FIXL2
+256601,Ilion,u gradu Ilion,0,FIXL2
+723030,Abony,u gradu Abony,0,FIXL2
+3056357,Ajka,u gradu Ajka,0,FIXL2
+3055685,Baja,u gradu Baja,0,FIXL2
+722636,Balmazújváros,u gradu Balmazújváros,0,FIXL2
+722437,Békéscsaba,u gradu Békéscsaba,0,FIXL2
+3054543,Cegléd,u gradu Cegléd,0,FIXL2
+3053438,Dunaújváros,u gradu Dunaújváros,0,FIXL2
+3053163,Esztergom,u gradu Esztergom,0,FIXL2
+720334,Gyula,u gradu Gyula,0,FIXL2
+3052040,Gyöngyös,u gradu Gyöngyös,0,FIXL2
+3052241,Göd,u gradu Göd,0,FIXL2
+3052236,Gödöllő,u gradu Gödöllő,0,FIXL2
+720284,Hajdúnánás,u gradu Hajdúnánás,0,FIXL2
+720276,Hajdúszoboszló,u gradu Hajdúszoboszló,0,FIXL2
+3050907,Jászberény,u gradu Jászberény,0,FIXL2
+719404,Karcag,u gradu Karcag,0,FIXL2
+719311,Kazincbarcika,u gradu Kazincbarcika,0,FIXL2
+3049885,Kiskunfélegyháza,u gradu Kiskunfélegyháza,0,FIXL2
+3049880,Kiskunhalas,u gradu Kiskunhalas,0,FIXL2
+3049896,Kiskőrös,u gradu Kiskőrös,0,FIXL2
+718739,Kisvárda,u gradu Kisvárda,0,FIXL2
+3049512,Komló,u gradu Komló,0,FIXL2
+3049519,Komárom,u gradu Komárom,0,FIXL2
+717902,Makó,u gradu Makó,0,FIXL2
+717652,Mezőkövesd,u gradu Mezőkövesd,0,FIXL2
+717635,Mezőtúr,u gradu Mezőtúr,0,FIXL2
+3047942,Monor,u gradu Monor,0,FIXL2
+3047896,Mosonmagyaróvár,u gradu Mosonmagyaróvár,0,FIXL2
+717771,Mátészalka,u gradu Mátészalka,0,FIXL2
+3047651,Nagykőrös,u gradu Nagykőrös,0,FIXL2
+716736,Orosháza,u gradu Orosháza,0,FIXL2
+3046888,Oroszlány,u gradu Oroszlány,0,FIXL2
+3046768,Paks,u gradu Paks,0,FIXL2
+3046686,Pápa,u gradu Pápa,0,FIXL2
+3045643,Salgótarján,u gradu Salgótarján,0,FIXL2
+715466,Szarvas,u gradu Szarvas,0,FIXL2
+3044681,Szentendre,u gradu Szentendre,0,FIXL2
+715337,Szentes,u gradu Szentes,0,FIXL2
+3044821,Százhalombatta,u gradu Százhalombatta,0,FIXL2
+3045487,Sárvár,u gradu Sárvár,0,FIXL2
+715839,Sátoraljaújhely,u gradu Sátoraljaújhely,0,FIXL2
+3044083,Tata,u gradu Tata,0,FIXL2
+714697,Tiszaújváros,u gradu Tiszaújváros,0,FIXL2
+3043293,Vác,u gradu Vác,0,FIXL2
+3042638,Zalaegerszeg,u gradu Zalaegerszeg,0,FIXL2
+716671,Ózd,u gradu Ózd,0,FIXL2
+2965715,Carrigaline,u gradu Carrigaline,0,FIXL2
+2962974,Leixlip,u gradu Leixlip,0,FIXL2
+2962785,Lucan,u gradu Lucan,0,FIXL2
+2633274,Akureyri,u gradu Akureyri,0,FIXL2
+3415496,Keflavík,u gradu Keflavík,0,FIXL2
+8644037,Reykjanesbær,u gradu Reykjanesbær,0,FIXL2
+3183587,Abano Terme,u gradu Abano Terme,0,FIXL2
+3183573,Abbiategrasso,u gradu Abbiategrasso,0,FIXL2
+3183490,Acqui Terme,u gradu Acqui Terme,0,FIXL2
+2525769,Adrano,u gradu Adrano,0,FIXL2
+3183319,Albignasego,u gradu Albignasego,0,FIXL2
+2525755,Alcamo,u gradu Alcamo,0,FIXL2
+3183284,Alghero,u gradu Alghero,0,FIXL2
+3183089,Ankona,u Ankoni,1,FIXL2
+3183072,Andria,u gradu Andria,0,FIXL2
+3182904,Arcore,u gradu Arcore,0,FIXL2
+3182884,Arezzo,u gradu Arezzo,0,FIXL2
+3182749,Ascoli Piceno,u gradu Ascoli Piceno,0,FIXL2
+3182650,Avellino,u gradu Avellino,0,FIXL2
+3182361,Bareggio,u gradu Bareggio,0,FIXL2
+3182297,Bassano del Grappa,u gradu Bassano del Grappa,0,FIXL2
+3182272,Battipaglia,u gradu Battipaglia,0,FIXL2
+8224092,Bellaria-Igea Marina,u gradu Bellaria-Igea Marina,0,FIXL2
+3182210,Belluno,u gradu Belluno,0,FIXL2
+2525571,Belpasso,u gradu Belpasso,0,FIXL2
+3182179,Benevento,u gradu Benevento,0,FIXL2
+3181631,Bra,u gradu Bra,0,FIXL2
+2525473,Cagliari,u gradu Cagliari,0,FIXL2
+3180991,Campobasso,u gradu Campobasso,0,FIXL2
+2525405,Canicattì,u gradu Canicattì,0,FIXL2
+3180581,Carate Brianza,u gradu Carate Brianza,0,FIXL2
+2525350,Carini,u gradu Carini,0,FIXL2
+3180445,Carpi,u gradu Carpi,0,FIXL2
+3180224,Casalecchio di Reno,u gradu Casalecchio di Reno,0,FIXL2
+2525207,Casarano,u gradu Casarano,0,FIXL2
+3179866,Caserta,u gradu Caserta,0,FIXL2
+6534235,Cassano Magnago,u gradu Cassano Magnago,0,FIXL2
+3179781,Cassino,u gradu Cassino,0,FIXL2
+3179686,Castelfranco Emilia,u gradu Castelfranco Emilia,0,FIXL2
+3179684,Castelfranco Veneto,u gradu Castelfranco Veneto,0,FIXL2
+2525070,Castrovillari,u gradu Castrovillari,0,FIXL2
+2525068,Catania,u gradu Catania,0,FIXL2
+2525059,Catanzaro,u gradu Catanzaro,0,FIXL2
+3178999,Cerveteri,u gradu Cerveteri,0,FIXL2
+6534280,Cesano Boscone,u gradu Cesano Boscone,0,FIXL2
+3178957,Cesena,u gradu Cesena,0,FIXL2
+3178850,Chiari,u gradu Chiari,0,FIXL2
+3178832,Chiavari,u gradu Chiavari,0,FIXL2
+3178796,Chieti,u gradu Chieti,0,FIXL2
+3178784,Chioggia,u gradu Chioggia,0,FIXL2
+3178745,Chivasso,u gradu Chivasso,0,FIXL2
+3178671,Cinisello Balsamo,u gradu Cinisello Balsamo,0,FIXL2
+3178650,Ciriè,u gradu Ciriè,0,FIXL2
+3170102,Civitanova Marche,u gradu Civitanova Marche,0,FIXL2
+3178402,Colle di Val d'Elsa,u gradu Colle di Val d'Elsa,0,FIXL2
+3178398,Colleferro,u gradu Colleferro,0,FIXL2
+3178388,Collegno,u gradu Collegno,0,FIXL2
+3178283,Cologno Monzese,u gradu Cologno Monzese,0,FIXL2
+3178112,Cordenons,u gradu Cordenons,0,FIXL2
+9003711,Corigliano Scalo,u gradu Corigliano Scalo,0,FIXL2
+3178074,Cornaredo,u gradu Cornaredo,0,FIXL2
+3178004,Corsico,u gradu Corsico,0,FIXL2
+3177841,Crema,u gradu Crema,0,FIXL2
+2524881,Crotone,u gradu Crotone,0,FIXL2
+3177700,Cuneo,u gradu Cuneo,0,FIXL2
+3177608,Desio,u gradu Desio,0,FIXL2
+3177532,Domodossola,u gradu Domodossola,0,FIXL2
+2524819,Enna,u gradu Enna,0,FIXL2
+3177337,Este,u gradu Este,0,FIXL2
+3177171,Fasano,u gradu Fasano,0,FIXL2
+3176959,Firenca,u Firenci,1,FIXL2
+2524734,Floridia,u gradu Floridia,0,FIXL2
+3176849,Follonica,u gradu Follonica,0,FIXL2
+3176843,Fondi,u gradu Fondi,0,FIXL2
+3176746,Forlì,u gradu Forlì,0,FIXL2
+3176733,Formigine,u gradu Formigine,0,FIXL2
+3176639,Fossano,u gradu Fossano,0,FIXL2
+3176515,Frosinone,u gradu Frosinone,0,FIXL2
+3176407,Galatina,u gradu Galatina,0,FIXL2
+3176391,Gallarate,u gradu Gallarate,0,FIXL2
+3176379,Galliate,u gradu Galliate,0,FIXL2
+3176219,Đenova,u Đenovi,1,FIXL2
+3176177,Ghedi,u gradu Ghedi,0,FIXL2
+2524606,Gioia Tauro,u gradu Gioia Tauro,0,FIXL2
+3176041,Giussano,u gradu Giussano,0,FIXL2
+3175990,Gorgonzola,u gradu Gorgonzola,0,FIXL2
+3175986,Gorica,u Gorici,1,FIXL2
+3175755,Grugliasco,u gradu Grugliasco,0,FIXL2
+6698332,Infernetto,u gradu Infernetto,0,FIXL2
+3175458,Ischia,u gradu Ischia,0,FIXL2
+3175445,Isernia,u gradu Isernia,0,FIXL2
+3175384,Ivrea,u gradu Ivrea,0,FIXL2
+3175238,Lainate,u gradu Lainate,0,FIXL2
+3164090,Lancenigo-Villorba,u gradu Lancenigo-Villorba,0,FIXL2
+3174953,Lecce,u gradu Lecce,0,FIXL2
+3174921,Legnano,u gradu Legnano,0,FIXL2
+2524410,Lentini,u gradu Lentini,0,FIXL2
+3174719,Limbiate,u gradu Limbiate,0,FIXL2
+3174638,Lodi,u gradu Lodi,0,FIXL2
+3174530,Lucca,u gradu Lucca,0,FIXL2
+3174494,Lugo,u gradu Lugo,0,FIXL2
+6534216,Lumezzane,u gradu Lumezzane,0,FIXL2
+3174380,Macerata,u gradu Macerata,0,FIXL2
+3174295,Magenta,u gradu Magenta,0,FIXL2
+3174141,Malnate,u gradu Malnate,0,FIXL2
+3173949,Mariano Comense,u gradu Mariano Comense,0,FIXL2
+3173945,Marigliano,u gradu Marigliano,0,FIXL2
+3173721,Matera,u gradu Matera,0,FIXL2
+3173671,Meda,u gradu Meda,0,FIXL2
+2524170,Messina,u gradu Messina,0,FIXL2
+3173370,Mirandola,u gradu Mirandola,0,FIXL2
+3173326,Modugno,u gradu Modugno,0,FIXL2
+3173314,Mogliano Veneto,u gradu Mogliano Veneto,0,FIXL2
+3173180,Moncalieri,u gradu Moncalieri,0,FIXL2
+3173162,Mondovì,u gradu Mondovì,0,FIXL2
+3173124,Monselice,u gradu Monselice,0,FIXL2
+3173029,Montebelluna,u gradu Montebelluna,0,FIXL2
+3172996,Montecatini Terme,u gradu Montecatini Terme,0,FIXL2
+3172979,Montecchio Maggiore-Alte Ceccato,u gradu Montecchio Maggiore-Alte Ceccato,0,FIXL2
+3172768,Monterotondo,u gradu Monterotondo,0,FIXL2
+3172729,Montesilvano,u gradu Montesilvano,0,FIXL2
+3172718,Montevarchi,u gradu Montevarchi,0,FIXL2
+3172681,Montichiari,u gradu Montichiari,0,FIXL2
+3172629,Monza,u gradu Monza,0,FIXL2
+2523998,Noto,u gradu Noto,0,FIXL2
+3172184,Novate Milanese,u gradu Novate Milanese,0,FIXL2
+3172170,Novi Ligure,u gradu Novi Ligure,0,FIXL2
+3172154,Nuoro,u gradu Nuoro,0,FIXL2
+3171986,Orbassano,u gradu Orbassano,0,FIXL2
+2523964,Oristano,u gradu Oristano,0,FIXL2
+6534264,Orta di Atella,u gradu Orta di Atella,0,FIXL2
+3171848,Osimo,u gradu Osimo,0,FIXL2
+3171786,Ostuni,u gradu Ostuni,0,FIXL2
+2523920,Palermo,u Palermu,1,FIXL2
+2523902,Palmi,u gradu Palmi,0,FIXL2
+3171484,Parabiago,u gradu Parabiago,0,FIXL2
+3171180,Perugia,u gradu Perugia,0,FIXL2
+3170778,Pietrasanta,u gradu Pietrasanta,0,FIXL2
+3170676,Pioltello,u gradu Pioltello,0,FIXL2
+3170647,Pisa,u gradu Pisa,0,FIXL2
+3170621,Pistoia,u gradu Pistoia,0,FIXL2
+3170504,Poggibonsi,u gradu Poggibonsi,0,FIXL2
+3170342,Pomezia,u gradu Pomezia,0,FIXL2
+3170272,Pontedera,u gradu Pontedera,0,FIXL2
+3170147,Pordenone,u gradu Pordenone,0,FIXL2
+3170073,Porto San Giorgio,u gradu Porto San Giorgio,0,FIXL2
+3170027,Potenza,u gradu Potenza,0,FIXL2
+3169984,Pozzuoli,u gradu Pozzuoli,0,FIXL2
+3169921,Prato,u gradu Prato,0,FIXL2
+2523664,Quattromiglia,u gradu Quattromiglia,0,FIXL2
+2523650,Ragusa,u gradu Ragusa,0,FIXL2
+3169602,Rapallo,u gradu Rapallo,0,FIXL2
+2523630,Reggio Calabria,u gradu Reggio Calabria,0,FIXL2
+3169424,Riccione,u gradu Riccione,0,FIXL2
+3169412,Rieti,u gradu Rieti,0,FIXL2
+3169361,Rimini,u gradu Rimini,0,FIXL2
+3169231,Rivoli,u gradu Rivoli,0,FIXL2
+3169056,Romano di Lombardia,u gradu Romano di Lombardia,0,FIXL2
+3169070,Rim,u Rimu,1,FIXL2
+3168936,Roseto degli Abruzzi,u gradu Roseto degli Abruzzi,0,FIXL2
+3168930,Rosignano Solvay-Castiglioncello,u gradu Rosignano Solvay-Castiglioncello,0,FIXL2
+2523577,Rossano Stazione,u gradu Rossano Stazione,0,FIXL2
+3168843,Rovigo,u gradu Rovigo,0,FIXL2
+3168837,Rozzano,u gradu Rozzano,0,FIXL2
+3168730,Sacile,u gradu Sacile,0,FIXL2
+3168627,Salsomaggiore Terme,u gradu Salsomaggiore Terme,0,FIXL2
+3168609,Saluzzo,u gradu Saluzzo,0,FIXL2
+3168550,San Benedetto del Tronto,u gradu San Benedetto del Tronto,0,FIXL2
+6534252,San Felice a Cancello,u gradu San Felice a Cancello,0,FIXL2
+3168236,San Giovanni Lupatoto,u gradu San Giovanni Lupatoto,0,FIXL2
+3168231,San Giovanni Valdarno,u gradu San Giovanni Valdarno,0,FIXL2
+2523461,San Giovanni in Fiore,u gradu San Giovanni in Fiore,0,FIXL2
+3168222,San Giuliano Milanese,u gradu San Giuliano Milanese,0,FIXL2
+3168175,San Lazzaro,u gradu San Lazzaro,0,FIXL2
+3167978,San Mauro Torinese,u gradu San Mauro Torinese,0,FIXL2
+3167953,San Miniato,u gradu San Miniato,0,FIXL2
+3167751,San Salvo,u gradu San Salvo,0,FIXL2
+3167744,San Sebastiano,u gradu San Sebastiano,0,FIXL2
+3167731,San Severo,u gradu San Severo,0,FIXL2
+3167777,Sanremo,u gradu Sanremo,0,FIXL2
+3167113,Saronno,u gradu Saronno,0,FIXL2
+3167104,Sarzana,u gradu Sarzana,0,FIXL2
+3167053,Sassuolo,u gradu Sassuolo,0,FIXL2
+3167034,Savigliano,u gradu Savigliano,0,FIXL2
+3166989,Scandiano,u gradu Scandiano,0,FIXL2
+3166988,Scandicci,u gradu Scandicci,0,FIXL2
+3166808,Segrate,u gradu Segrate,0,FIXL2
+3166740,Senigallia,u gradu Senigallia,0,FIXL2
+3166601,Sesto Fiorentino,u gradu Sesto Fiorentino,0,FIXL2
+3166598,Sesto San Giovanni,u gradu Sesto San Giovanni,0,FIXL2
+3166574,Seveso,u gradu Seveso,0,FIXL2
+3166548,Siena,u gradu Siena,0,FIXL2
+2523083,Sirakuza,u Sirakuzi,1,FIXL2
+3166397,Sondrio,u gradu Sondrio,0,FIXL2
+3166387,Sora,u gradu Sora,0,FIXL2
+3219114,Spinea-Orgnano,u gradu Spinea-Orgnano,0,FIXL2
+3166034,Sulmona,u gradu Sulmona,0,FIXL2
+3166006,Suzzara,u gradu Suzzara,0,FIXL2
+3165803,Teramo,u gradu Teramo,0,FIXL2
+3165788,Terlizzi,u gradu Terlizzi,0,FIXL2
+2522960,Termini Imerese,u gradu Termini Imerese,0,FIXL2
+3165773,Termoli,u gradu Termoli,0,FIXL2
+3165612,Todi,u gradu Todi,0,FIXL2
+3165595,Tolentino,u gradu Tolentino,0,FIXL2
+3165370,Tortona,u gradu Tortona,0,FIXL2
+3165340,Tradate,u gradu Tradate,0,FIXL2
+2522876,Trapani,u gradu Trapani,0,FIXL2
+3165201,Treviso,u gradu Treviso,0,FIXL2
+3165198,Trezzano sul Naviglio,u gradu Trezzano sul Naviglio,0,FIXL2
+3165185,Trst,u Trstu,1,FIXL2
+3165178,Triggiano,u gradu Triggiano,0,FIXL2
+3164617,Venaria Reale,u gradu Venaria Reale,0,FIXL2
+3164440,Viadana,u gradu Viadana,0,FIXL2
+3164433,Viareggio,u gradu Viareggio,0,FIXL2
+3164342,Vignola,u gradu Vignola,0,FIXL2
+8378910,Villanova,u gradu Villanova,0,FIXL2
+3164083,Vimercate,u gradu Vimercate,0,FIXL2
+3164080,Vimodrone,u gradu Vimodrone,0,FIXL2
+3164039,Viterbo,u gradu Viterbo,0,FIXL2
+3164028,Vittorio Veneto,u gradu Vittorio Veneto,0,FIXL2
+3163995,Voghera,u gradu Voghera,0,FIXL2
+3163853,Zola Predosa,u gradu Zola Predosa,0,FIXL2
+597989,Kretinga,u gradu Kretinga,0,FIXL2
+593926,Telšiai,u gradu Telšiai,0,FIXL2
+847633,Alta,u gradu Alta,0,FIXL2
+3153823,Harstad,u gradu Harstad,0,FIXL2
+3145614,Mo i Rana,u gradu Mo i Rana,0,FIXL2
+776175,Biała Podlaska,u gradu Biała Podlaska,0,FIXL2
+3103402,Bielsko-Biała,u gradu Bielsko-Biała,0,FIXL2
+775922,Biłgoraj,u gradu Biłgoraj,0,FIXL2
+3102987,Bolesławiec,u gradu Bolesławiec,0,FIXL2
+3101619,Chorzów,u gradu Chorzów,0,FIXL2
+3101547,Chrzanów,u gradu Chrzanów,0,FIXL2
+3101076,Czechowice-Dziedzice,u gradu Czechowice-Dziedzice,0,FIXL2
+3099759,Elbląg,u gradu Elbląg,0,FIXL2
+3099424,Gdynia,u gradu Gdynia,0,FIXL2
+3099230,Gliwice,u gradu Gliwice,0,FIXL2
+771506,Grajewo,u gradu Grajewo,0,FIXL2
+3098218,Grudziądz,u gradu Grudziądz,0,FIXL2
+3099213,Głogów,u gradu Głogów,0,FIXL2
+3097257,Jelenia Góra,u gradu Jelenia Góra,0,FIXL2
+3096880,Kalisz,u gradu Kalisz,0,FIXL2
+3096779,Kamienna Góra,u gradu Kamienna Góra,0,FIXL2
+769250,Kielce,u gradu Kielce,0,FIXL2
+3095971,Knurów,u gradu Knurów,0,FIXL2
+3095795,Kołobrzeg,u gradu Kołobrzeg,0,FIXL2
+767470,Krosno,u gradu Krosno,0,FIXL2
+3094170,Kutno,u gradu Kutno,0,FIXL2
+766555,Legionowo,u gradu Legionowo,0,FIXL2
+3093692,Legnica,u gradu Legnica,0,FIXL2
+3093524,Leszno,u gradu Leszno,0,FIXL2
+3093040,Lubań,u gradu Lubań,0,FIXL2
+3091150,Nakło nad Notecią,u gradu Nakło nad Notecią,0,FIXL2
+763534,Nowy Sącz,u gradu Nowy Sącz,0,FIXL2
+3090452,Nowy Tomyśl,u gradu Nowy Tomyśl,0,FIXL2
+762423,Piaseczno,u gradu Piaseczno,0,FIXL2
+3089125,Piekary Śląskie,u gradu Piekary Śląskie,0,FIXL2
+3088972,Piotrków Trybunalski,u gradu Piotrków Trybunalski,0,FIXL2
+3089033,Piła,u gradu Piła,0,FIXL2
+761228,Pruszków,u gradu Pruszków,0,FIXL2
+761131,Przeworsk,u gradu Przeworsk,0,FIXL2
+3088825,Płock,u gradu Płock,0,FIXL2
+3087497,Radomsko,u gradu Radomsko,0,FIXL2
+3087418,Radzionków,u gradu Radzionków,0,FIXL2
+3086706,Rumia,u gradu Rumia,0,FIXL2
+3086586,Rybnik,u gradu Rybnik,0,FIXL2
+3086511,Rypin,u gradu Rypin,0,FIXL2
+3085807,Skawina,u gradu Skawina,0,FIXL2
+758626,Sokołów Podlaski,u gradu Sokołów Podlaski,0,FIXL2
+3085128,Sosnowiec,u gradu Sosnowiec,0,FIXL2
+758390,Starachowice,u gradu Starachowice,0,FIXL2
+757718,Suwałki,u gradu Suwałki,0,FIXL2
+3084130,Swarzędz,u gradu Swarzędz,0,FIXL2
+3083878,Szamotuły,u gradu Szamotuły,0,FIXL2
+3085450,Słupsk,u gradu Słupsk,0,FIXL2
+3083426,Tczew,u gradu Tczew,0,FIXL2
+3082998,Turek,u gradu Turek,0,FIXL2
+3082756,Ustka,u gradu Ustka,0,FIXL2
+3082751,Ustroń,u gradu Ustroń,0,FIXL2
+3082197,Wieluń,u gradu Wieluń,0,FIXL2
+3081741,Włocławek,u gradu Włocławek,0,FIXL2
+3080985,Zabrze,u gradu Zabrze,0,FIXL2
+3080414,Zduńska Wola,u gradu Zduńska Wola,0,FIXL2
+3080251,Zgierz,u gradu Zgierz,0,FIXL2
+3080165,Zielona Góra,u gradu Zielona Góra,0,FIXL2
+754351,Ząbki,u gradu Ząbki,0,FIXL2
+3080074,Złotoryja,u gradu Złotoryja,0,FIXL2
+3083955,Świnoujście,u gradu Świnoujście,0,FIXL2
+3083988,Świętochłowice,u gradu Świętochłowice,0,FIXL2
+3080944,Żagań,u gradu Żagań,0,FIXL2
+3079855,Żywiec,u gradu Żywiec,0,FIXL2
+2743095,Alfena,u gradu Alfena,0,FIXL2
+2271473,Arrentela,u gradu Arrentela,0,FIXL2
+2742506,Baguim do Monte,u gradu Baguim do Monte,0,FIXL2
+2270503,Cacém,u gradu Cacém,0,FIXL2
+2270377,Camarate,u gradu Camarate,0,FIXL2
+2270157,Carnaxide,u gradu Carnaxide,0,FIXL2
+2269041,Corroios,u gradu Corroios,0,FIXL2
+2739756,Fânzeres,u gradu Fânzeres,0,FIXL2
+2738925,Gondomar,u gradu Gondomar,0,FIXL2
+2267131,Laranjeiro,u gradu Laranjeiro,0,FIXL2
+2267067,Linda-a-Velha,u gradu Linda-a-Velha,0,FIXL2
+2266621,Massamá,u gradu Massamá,0,FIXL2
+2265464,Oeiras,u gradu Oeiras,0,FIXL2
+2265326,Paço de Arcos,u gradu Paço de Arcos,0,FIXL2
+2264736,Piedade,u gradu Piedade,0,FIXL2
+2264428,Porto de Mós,u gradu Porto de Mós,0,FIXL2
+2735787,Póvoa de Varzim,u gradu Póvoa de Varzim,0,FIXL2
+2264269,Quelfes,u gradu Quelfes,0,FIXL2
+6559488,Quinta do Conde,u gradu Quinta do Conde,0,FIXL2
+2264087,Ramada,u gradu Ramada,0,FIXL2
+2735175,Ribeira de Frades,u gradu Ribeira de Frades,0,FIXL2
+2735083,Rio Tinto,u gradu Rio Tinto,0,FIXL2
+2734140,Senhora da Hora,u gradu Senhora da Hora,0,FIXL2
+2262957,Sesimbra,u gradu Sesimbra,0,FIXL2
+2263326,São João da Talha,u gradu São João da Talha,0,FIXL2
+2734434,São Mamede de Infesta,u gradu São Mamede de Infesta,0,FIXL2
+2734379,São Paulo de Frades,u gradu São Paulo de Frades,0,FIXL2
+2734363,São Pedro da Cova,u gradu São Pedro da Cova,0,FIXL2
+2734306,São Tiago de Custoias,u gradu São Tiago de Custoias,0,FIXL2
+2262582,Torres Novas,u gradu Torres Novas,0,FIXL2
+2733263,Valadares,u gradu Valadares,0,FIXL2
+2743304,Águas Santas,u gradu Águas Santas,0,FIXL2
+686578,Alba Iulia,u gradu Alba Iulia,0,FIXL2
+685948,Bacău,u gradu Bacău,0,FIXL2
+684657,Bistrița,u gradu Bistrița,0,FIXL2
+684039,Botoșani,u gradu Botoșani,0,FIXL2
+683760,Breaza,u gradu Breaza,0,FIXL2
+683902,Brăila,u gradu Brăila,0,FIXL2
+683394,Buftea,u gradu Buftea,0,FIXL2
+683123,Buzău,u gradu Buzău,0,FIXL2
+682729,Caransebeș,u gradu Caransebeș,0,FIXL2
+681502,Cisnădie,u gradu Cisnădie,0,FIXL2
+681179,Codlea,u gradu Codlea,0,FIXL2
+680963,Constanța,u gradu Constanța,0,FIXL2
+680332,Craiova,u gradu Craiova,0,FIXL2
+681862,Câmpina,u gradu Câmpina,0,FIXL2
+679452,Deva,u gradu Deva,0,FIXL2
+678817,Drobeta-Turnu Severin,u gradu Drobeta-Turnu Severin,0,FIXL2
+678978,Drăgășani,u gradu Drăgășani,0,FIXL2
+678015,Focșani,u gradu Focșani,0,FIXL2
+676527,Gura Humorului,u gradu Gura Humorului,0,FIXL2
+677742,Găești,u gradu Găești,0,FIXL2
+675810,Iași,u gradu Iași,0,FIXL2
+674531,Lugoj,u gradu Lugoj,0,FIXL2
+671964,Odorheiu Secuiesc,u gradu Odorheiu Secuiesc,0,FIXL2
+671382,Pantelimon,u gradu Pantelimon,0,FIXL2
+670889,Piatra Neamț,u gradu Piatra Neamț,0,FIXL2
+670609,Pitești,u gradu Pitești,0,FIXL2
+670474,Ploiești,u gradu Ploiești,0,FIXL2
+669870,Popești-Leordeni,u gradu Popești-Leordeni,0,FIXL2
+668605,Roșiorii de Vede,u gradu Roșiorii de Vede,0,FIXL2
+668872,Râmnicu Vâlcea,u gradu Râmnicu Vâlcea,0,FIXL2
+667526,Sebeș,u gradu Sebeș,0,FIXL2
+667227,Sighetu Marmației,u gradu Sighetu Marmației,0,FIXL2
+8436351,Sighișoara,u gradu Sighișoara,0,FIXL2
+666767,Slatina,u gradu Slatina,0,FIXL2
+665850,Suceava,u gradu Suceava,0,FIXL2
+664518,Tulcea,u gradu Tulcea,0,FIXL2
+664460,Turda,u gradu Turda,0,FIXL2
+665024,Târgoviște,u gradu Târgoviște,0,FIXL2
+665004,Târgu Mureș,u gradu Târgu Mureș,0,FIXL2
+662334,Zalău,u gradu Zalău,0,FIXL2
+662284,Zărnești,u gradu Zărnești,0,FIXL2
+1508291,Čeljabinsk,u Čeljabinsku,1,FIXL2
+819740,Drožžino,u gradu Drožžino,0,FIXL2
+553915,Kaluga,u Kalugi,1,FIXL2
+550280,Himki,u gradu Himki,0,FIXL2
+547523,Klin,u Klinu,1,FIXL2
+535121,Lipeck,u Lipecku,1,FIXL2
+534595,Lobnja,u Lobnji,1,FIXL2
+523812,Mitišči,u gradu Mitišči,0,FIXL2
+511196,Perm,u Permu,1,FIXL2
+508101,Podoljsk,u Podoljsku,1,FIXL2
+502018,Reutov,u Reutovu,1,FIXL2
+496638,Sergijev Posad,u gradu Sergijev Posad,0,FIXL2
+473778,Vidnoje,u gradu Vidnoje,0,FIXL2
+473247,Vladimir,u Vladimiru,1,FIXL2
+472757,Volgograd,u Volgogradu,1,FIXL2
+468902,Jaroslavlj,u Jaroslavlju,1,FIXL2
+606531,Boden,u gradu Boden,0,FIXL2
+2700839,Kinna,u gradu Kinna,0,FIXL2
+605155,Kiruna,u gradu Kiruna,0,FIXL2
+2667109,Tullinge,u gradu Tullinge,0,FIXL2
+2665452,Vallentuna,u gradu Vallentuna,0,FIXL2
+3194351,Novo mesto,u Novom mestu,1,FIXL2
+3192241,Ptuj,u Ptuju,1,FIXL2
+3188915,Trbovlje,u Trbovlju,1,FIXL2
+3189075,Velenje,u Velenju,1,FIXL2
+3061186,Banská Bystrica,u gradu Banská Bystrica,0,FIXL2
+3060950,Brezno,u gradu Brezno,0,FIXL2
+3060405,Dolný Kubín,u gradu Dolný Kubín,0,FIXL2
+3060219,Galanta,u gradu Galanta,0,FIXL2
+3060139,Handlová,u gradu Handlová,0,FIXL2
+3060095,Hlohovec,u gradu Hlohovec,0,FIXL2
+3059435,Komárno,u gradu Komárno,0,FIXL2
+3059436,Komárno,u gradu Komárno,0,FIXL2
+3058986,Lučenec,u gradu Lučenec,0,FIXL2
+3058897,Malacky,u gradu Malacky,0,FIXL2
+724144,Michalovce,u gradu Michalovce,0,FIXL2
+3058477,Nové Mesto nad Váhom,u gradu Nové Mesto nad Váhom,0,FIXL2
+3058472,Nové Zámky,u gradu Nové Zámky,0,FIXL2
+3058268,Partizánske,u gradu Partizánske,0,FIXL2
+3058210,Pezinok,u gradu Pezinok,0,FIXL2
+3058202,Piešťany,u gradu Piešťany,0,FIXL2
+3058060,Považská Bystrica,u gradu Považská Bystrica,0,FIXL2
+3058000,Prievidza,u gradu Prievidza,0,FIXL2
+3057963,Púchov,u gradu Púchov,0,FIXL2
+723736,Rimavská Sobota,u gradu Rimavská Sobota,0,FIXL2
+723713,Rožňava,u gradu Rožňava,0,FIXL2
+3057692,Senec,u gradu Senec,0,FIXL2
+3057691,Senica,u gradu Senica,0,FIXL2
+3057630,Skalica,u gradu Skalica,0,FIXL2
+723559,Snina,u gradu Snina,0,FIXL2
+3057174,Topoľčany,u gradu Topoľčany,0,FIXL2
+723195,Vranov nad Topľou,u gradu Vranov nad Topľou,0,FIXL2
+3057769,Šaľa,u gradu Šaľa,0,FIXL2
+3056523,Žiar nad Hronom,u gradu Žiar nad Hronom,0,FIXL2
+712165,Bila Cerkva,u gradu Bila Cerkva,0,FIXL2
+712590,Bilohorodka,u gradu Bilohorodka,0,FIXL2
+711660,Borispilj,u Borispilju,1,FIXL2
+711416,Brodi,u gradu Brodi,0,FIXL2
+711390,Brovari,u gradu Brovari,0,FIXL2
+710791,Čerkasi,u gradu Čerkasi,0,FIXL2
+710719,Černivci,u gradu Černivci,0,FIXL2
+707688,Čornomorsk,u Čornomorsku,1,FIXL2
+709930,Dnipro,u Dnipru,1,FIXL2
+709540,Dubno,u Dubnu,1,FIXL2
+13546531,Fortečnij,u gradu Fortečnij,0,FIXL2
+708901,Hajsin,u Hajsinu,1,FIXL2
+707565,Irpinj,u Irpinju,1,FIXL2
+707471,Ivano-Frankivsk,u Ivano-Frankivsku,1,FIXL2
+706950,Kamjanec-Podiljskij,u gradu Kamjanec-Podiljskij,0,FIXL2
+706369,Hmeljnickij,u gradu Hmeljnickij,0,FIXL2
+706165,Hust,u Hustu,1,FIXL2
+12519211,Knjahinin,u Knjahininu,1,FIXL2
+705392,Kolomija,u Kolomiji,1,FIXL2
+13609094,Koroljov,u gradu Koroljov,0,FIXL2
+704901,Korostenj,u gradu Korostenj,0,FIXL2
+704858,Korsunj-Ševčenkivskij,u gradu Korsunj-Ševčenkivskij,0,FIXL2
+704617,Kovelj,u Kovelju,1,FIXL2
+705812,Kropivnickij,u gradu Kropivnickij,0,FIXL2
+703845,Krivij Rih,u gradu Krivij Rih,0,FIXL2
+13561778,Kijivskij,u gradu Kijivskij,0,FIXL2
+700696,Mostiska,u gradu Mostiska,0,FIXL2
+700646,Mukačevo,u Mukačevu,1,FIXL2
+700569,Mikolajiv,u Mikolajivu,1,FIXL2
+700507,Nadvirna,u gradu Nadvirna,0,FIXL2
+700261,Netišin,u Netišinu,1,FIXL2
+8468760,Novojavorivsk,u Novojavorivsku,1,FIXL2
+13608468,Novozavodskij,u gradu Novozavodskij,0,FIXL2
+698740,Odesa,u Odesi,1,FIXL2
+698625,Oleksandrija,u Oleksandriji,1,FIXL2
+697593,Pervomajsk,u Pervomajsku,1,FIXL2
+696943,Pidhorodne,u gradu Pidhorodne,0,FIXL2
+13631378,Rakove,u gradu Rakove,0,FIXL2
+695594,Rivne,u gradu Rivne,0,FIXL2
+699445,Samar,u Samaru,1,FIXL2
+694792,Sarni,u gradu Sarni,0,FIXL2
+710554,Šeptickij,u gradu Šeptickij,0,FIXL2
+13561779,Ševčenko,u gradu Ševčenko,0,FIXL2
+693457,Smila,u Smili,1,FIXL2
+693301,Sokalj,u Sokalju,1,FIXL2
+692372,Strij,u gradu Strij,0,FIXL2
+692129,Svaljava,u Svaljavi,1,FIXL2
+691650,Ternopilj,u Ternopilju,1,FIXL2
+691179,Truskavec,u gradu Truskavec,0,FIXL2
+690688,Umanj,u Umanju,1,FIXL2
+690548,Užhorod,u Užhorodu,1,FIXL2
+689558,Vinnica,u Vinnici,1,FIXL2
+689159,Voločisk,u Voločisku,1,FIXL2
+689378,Volodimir-Volinskij,u gradu Volodimir-Volinskij,0,FIXL2
+688723,Višhorod,u Višhorodu,1,FIXL2
+689487,Višneve,u gradu Višneve,0,FIXL2
+687700,Zaporižja,u gradu Zaporižja,0,FIXL2
+686967,Žitomir,u Žitomiru,1,FIXL2
+686919,Znamjanka,u Znamjanki,1,FIXL2
+686803,Zvenihorodka,u gradu Zvenihorodka,0,FIXL2
+699553,Zvjahelj,u gradu Zvjahelj,0,FIXL2
+6941080,Fort Bragg,u gradu Fort Bragg,0,FIXL2

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check content/world/i18n/uk against the EN sources (L-UK, pool 3).
+"""Check content/world/i18n/uk against the EN sources (L-UK, pool 3; L2-uk: 8 string files, texts pay/routes/sources_pages).
 
 Run from the repo root:  python3 content/world/i18n/uk/check.py
 Exit code 0 = no errors. Warnings do not fail.
@@ -13,6 +13,8 @@ NAMES = os.path.join(WORLD, 'names')
 SLUG_KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices',
              'shell_about', 'sources', 'methodology']
 SEGMENT_KEYS = {'net', 'about', 'download'}
+# FIXL (11.11.2026): section paths the engine reads; optional in addition to the 11 required keys
+SECTION_KEYS = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']
 
 PH = re.compile(r'\{[^{}]*\}')
 TAG = re.compile(r'</?[a-zA-Z][^>]*>')
@@ -48,7 +50,8 @@ def cmp_string(label, en, tr):
         err(f'{label}: empty or not a string')
         return
     # pool 4 (10.11.2026): {city_u}/{country_u} may stand for {city}/{country}; the engine fills in_phrase
-    norm = lambda xs: [x.replace('_u}', '}') for x in xs]
+    # FIXL: {name_nom} may stand where EN has {name}
+    norm = lambda xs: [x.replace('{name_nom}', '{name}').replace('_u}', '}') for x in xs]
     same(label, norm(PH.findall(en)), norm(PH.findall(tr)), 'placeholders')
     same(label, TAG.findall(en), TAG.findall(tr), 'HTML tags')
     same(label, ENT.findall(en), ENT.findall(tr), 'entities')
@@ -123,17 +126,56 @@ def check_texts():
         return 0
     tr = json.load(open(p))
     src = {'about_data': 'about_data.json', 'download': 'download.json'}
-    same('texts.json', list(src), list(tr), 'top keys')
+    flat = {'pay': 'pay.json', 'routes': 'routes.json'}  # L2 (LANG0 format): node path -> text
+    same('texts.json', list(src) + ['sources_pages'] + list(flat), list(tr), 'top keys')
     n = 0
     for k, f in src.items():
         n = walk(json.load(open(os.path.join(WORLD, f)))['en'], tr.get(k), k, n)
+    # sources_pages: same structure as EN; urls/kind unchanged, name/licence may be translated
+    sp_en = json.load(open(os.path.join(WORLD, 'sources_pages.json')))
+    sp = tr.get('sources_pages', {})
+    same('texts:sources_pages', list(sp_en), list(sp), 'keys')
+    for k, v in sp_en.items():
+        t = sp.get(k, {})
+        same(f'texts:sources_pages.{k}', list(v), list(t), 'fields')
+        for f2, e in v.items():
+            if f2 in ('url', 'licence_url', 'kind', 'attribution') or not isinstance(e, str):
+                if t.get(f2) != e:
+                    err(f'texts:sources_pages.{k}.{f2}: must stay as EN')
+            elif not isinstance(t.get(f2), str) or not t.get(f2, '').strip():
+                err(f'texts:sources_pages.{k}.{f2}: empty')
+            else:
+                n += 1
+    for k, f in flat.items():
+        nodes = []
+        ml_nodes(json.load(open(os.path.join(WORLD, f))), '', nodes)
+        got = tr.get(k, {})
+        same(f'texts:{k}', [p for p, _ in nodes], list(got), 'node paths')
+        for p, en in nodes:
+            if p in got:
+                cmp_string(f'texts:{k}.{p}', en, got[p])
+                n += 1
     return n
+
+
+def ml_nodes(o, p, out):
+    """Multilingual nodes {en, sr|ru, ...} of pay.json / routes.json as (dot path, EN text)."""
+    if isinstance(o, dict):
+        if isinstance(o.get('en'), str) and ('sr' in o or 'ru' in o):
+            out.append((p, o['en']))
+            return
+        for k, v in o.items():
+            ml_nodes(v, f'{p}.{k}' if p else k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            ml_nodes(v, f'{p}[{i}]', out)
 
 
 def check_slugs():
     p = os.path.join(HERE, 'slugs.json')
     s = json.load(open(p))
-    same('slugs.json', SLUG_KEYS, list(s), 'keys')
+    if not set(SLUG_KEYS) <= set(s) <= set(SLUG_KEYS) | set(SECTION_KEYS):
+        err(f'slugs.json: keys {sorted(s)}: need {SLUG_KEYS}, may add {SECTION_KEYS}')
     for k, v in s.items():
         if k in SEGMENT_KEYS:
             if not SLUG.match(v):
@@ -164,7 +206,12 @@ def read_csv(name, cols):
 
 
 def check_countries():
-    rows = read_csv('countries.csv', ['cc', 'name', 'slug', 'in_phrase', 'note'])
+    p = os.path.join(HERE, 'countries.csv')
+    with open(p, newline='', encoding='utf-8') as f:
+        hdr = next(csv.reader(f), [])
+    # FIXL: an extra last column name_nom (D4) is allowed
+    cols = ['cc', 'name', 'slug', 'in_phrase', 'note'] + (['name_nom'] if hdr[-1:] == ['name_nom'] else [])
+    rows = read_csv('countries.csv', cols)
     src = [r['cc'] for r in csv.DictReader(open(os.path.join(NAMES, 'countries.csv'), newline=''))]
     got = [r['cc'] for r in rows]
     if sorted(got) != sorted(src):
@@ -187,10 +234,15 @@ def check_countries():
 def check_cities():
     rows = read_csv('cities.csv', ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note'])
     src = {r['geonameid']: r for r in csv.DictReader(open(os.path.join(NAMES, 'cities.csv'), newline=''))}
+    # FIXL2: geonameids from names/cities_extra.csv are allowed too (not counted in stage stats)
+    ext = os.path.join(NAMES, 'cities_extra.csv')
+    known = set(src)
+    if os.path.exists(ext):
+        known |= {r['geonameid'] for r in csv.DictReader(open(ext, newline=''))}
     seen = set()
     for r in rows:
         g = r['geonameid']
-        if g not in src:
+        if g not in known:
             err(f'cities.csv:{g}: unknown geonameid')
         if g in seen:
             err(f'cities.csv:{g}: duplicate')
@@ -206,6 +258,13 @@ def check_cities():
         stage.setdefault(r['stage'], [0, 0])[0] += 1
         if g in seen:
             stage[r['stage']][1] += 1
+    # FIXL: every city page of state/pages_state.json must have a row
+    st = os.path.join(WORLD, 'state', 'pages_state.json')
+    if os.path.exists(st):
+        page_ids = {v['key'].split(':')[-1] for v in json.load(open(st)).values() if v.get('type') == 'city'}
+        lost = sorted(page_ids - seen)
+        if lost:
+            err(f'cities.csv: city pages without a row: {lost[:10]} ({len(lost)})')
     ua = [g for g, r in src.items() if r['cc'] == 'UA']
     miss_ua = [g for g in ua if g not in seen]
     if miss_ua:
@@ -215,7 +274,9 @@ def check_cities():
 
 def main():
     out = {}
-    for f in ('strings_map.json', 'strings_pages.json', 'strings_shell.json', 'strings_prices.json'):
+    for f in ('strings_map.json', 'strings_pages.json', 'strings_shell.json', 'strings_prices.json',
+              'strings_pay.json', 'strings_press.json', 'strings_b2b.json', 'strings_embed.json',
+              'strings_home.json'):  # FIXL: home page
         out[f] = check_strings(f)
     out['texts.json strings'] = check_texts()
     out['slugs.json'] = check_slugs()

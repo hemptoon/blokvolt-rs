@@ -45,3 +45,19 @@
 - Исправлено: `strings_pages.p_gnet` → «Omrežje {net} je prisotno v {n_countries}.» (род прилагательного не зависел от названия бренда); `strings_prices.m3` → «je uteženo s številom» вместо кальки «šteje s».
 - Проверка для K8: `t_city` = «Polnilne postaje za električna vozila {city_u}» — `{city_u}` должен приходить как «v Ljubljani» (in_phrase), как в SR.
 - Мелочь: кавычки — в texts ASCII "…", в `strings_prices.cars_note` словенские »…«. Унифицировать при вычитке.
+
+## L2-SL (11.11.2026)
+- Добавлены strings_pay (93), strings_press (54), strings_b2b (33), strings_embed (65) и 29 ключей strings_map (28 `ci_*` + `emb_open`) — всего 274.
+- texts.json: разделы `pay` (6 пунктов AFIR) и `routes` (59 узлов `routes[i].stops[j].city` — словенские названия из cities.csv: Beograd, Budimpešta, Gradec, Beljak, Sofija, Karlovec…).
+- Check-in на карте: «poročilo» (не «prijava» — двусмысленно), кнопка «Pošlji».
+- Строки с `{name}` (страна в именительном) построены без падежа: «{name} je članica EU», «Polnilne postaje — {name}», «za državo {name}».
+- {month}/{prev}/{countries} в press — через скобки и двоеточие, чтобы не склонять.
+- cities.csv: +48 городов NOBIL (NO 2, SE 46) с «v kraju X», decl_ok = 0.
+- check.py: все 8 файлов strings_*, texts.pay/routes, города из pages_state.
+
+## FIXL (11.11.2026)
+- strings_home.json (71 ključev): »polnilno mesto« v pl_places (1 polnilno mesto, 2 polnilni mesti, 3 polnilna mesta, 5 polnilnih mest), »Zemljevid polnilnic«, »aplikacije in kartice za gostovanje«, »brez uporabniškega računa«, »Azija in Oceanija«.
+- lang_hint »Ta stran je na voljo tudi v slovenščini«, close »Zapri«.
+- Poti razdelkov: /sl/kako-placati/ /sl/poti/ /sl/za-medije/ /sl/podatki-za-podjetja/ /sl/embed/zemljevid/ /sl/zemljevid-za-vaso-stran/ /sl/za-razvijalce/.
+- D13: narekovaji »…« povsod (preverjeno). D12: Valona → Vlora. name_nom ni potreben (sl ni v D14). Ženeva dodana (v Ženevi).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 4)

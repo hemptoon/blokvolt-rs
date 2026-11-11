@@ -13,14 +13,18 @@ TAG = re.compile(r'</?[a-zA-Z][^>]*>')
 ENT = re.compile(r'&[a-zA-Z#0-9]+;')
 CAT = set(Locale(LANG).plural_form.tags) | {'other'}
 
+ALIAS = {'{city_u}': '{city}', '{country_u}': '{country}', '{name_nom}': '{name}'}  # FIXL D14: {name_nom} may stand for {name}
 def sig(s):
-    return (sorted(PH.findall(s)), sorted(TAG.findall(s)), sorted(ENT.findall(s)))
+    return (sorted(ALIAS.get(x, x) for x in PH.findall(s)), sorted(TAG.findall(s)), sorted(ENT.findall(s)))
 
 def bad_chars(where, s):
     if re.search('[şţŞŢ]', s): err.append(f'{where}: cedilla ş/ţ instead of comma-below ș/ț')
 
 # 1. strings
-for f in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices']:
+FILES = ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+         'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed', 'strings_home']  # FIXL F3: + home
+for f in FILES:
+    if not (HERE / f'{f}.json').exists(): err.append(f'{f}.json: file missing'); continue
     en = {k: v['en'] for k, v in json.load(open(WORLD / f'{f}.json', encoding='utf-8')).items()}
     tr = json.load(open(HERE / f'{f}.json', encoding='utf-8'))
     for k in en.keys() - tr.keys(): err.append(f'{f}: missing key {k}')
@@ -58,20 +62,44 @@ T = json.load(open(HERE / 'texts.json', encoding='utf-8'))
 for name in ['about_data', 'download']:
     walk(json.load(open(WORLD / f'{name}.json', encoding='utf-8'))['en'], T.get(name), f'.{name}')
 
+# 2b. texts.json -> pay / routes (LANG0 format: dotted path of a multilingual node -> text)
+def nodes(x, p, out):
+    if isinstance(x, dict):
+        if isinstance(x.get('en'), str) and ('sr' in x or 'ru' in x):
+            out[p] = x['en']; return
+        for k, v in x.items(): nodes(v, f'{p}.{k}' if p else k, out)
+    elif isinstance(x, list):
+        for i, v in enumerate(x): nodes(v, f'{p}[{i}]', out)
+for sec in ['pay', 'routes']:
+    want = {}; nodes(json.load(open(WORLD / f'{sec}.json', encoding='utf-8')), '', want)
+    got = T.get(sec)
+    if not isinstance(got, dict): err.append(f'texts.{sec}: section missing'); continue
+    for k in want.keys() - got.keys(): err.append(f'texts.{sec}: missing {k}')
+    for k in got.keys() - want.keys(): err.append(f'texts.{sec}: unknown path {k}')
+    for k in want.keys() & got.keys():
+        v = got[k]
+        if not isinstance(v, str) or not v.strip(): err.append(f'texts.{sec}.{k}: empty'); continue
+        if sig(want[k]) != sig(v): err.append(f'texts.{sec}.{k}: placeholders/tags differ')
+        bad_chars(f'texts.{sec}.{k}', v)
+
 # 3. slugs
 S = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
 KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
-if set(S) != set(KEYS): err.append(f'slugs: keys {sorted(S)} != {KEYS}')
+EXTRA = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']  # FIXL F5: allowed in addition
+if set(KEYS) - set(S): err.append(f'slugs: missing keys {sorted(set(KEYS) - set(S))}')
+if set(S) - set(KEYS) - set(EXTRA): err.append(f'slugs: unknown keys {sorted(set(S) - set(KEYS) - set(EXTRA))}')
 for k, v in S.items():
     if k in ('net', 'about', 'download'):
         if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v): err.append(f'slugs.{k}: bad segment {v!r}')
-    elif not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)?', v): err.append(f'slugs.{k}: bad path {v!r}')
+    elif not re.fullmatch(rf'/{LANG}/([a-z0-9]+(-[a-z0-9]+)*/)' + ('*' if k in EXTRA else '?'), v): err.append(f'slugs.{k}: bad path {v!r}')
 paths = [v for k, v in S.items() if k not in ('net', 'about', 'download')]
 if len(set(paths)) != len(paths): err.append('slugs: duplicate paths')
 
 # 4. CSV
 cc_src = {r['cc'] for r in csv.DictReader(open(WORLD / 'names/countries.csv', encoding='utf-8'))}
 cs = list(csv.DictReader(open(HERE / 'countries.csv', encoding='utf-8')))
+if not cs or list(cs[0].keys()) not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):  # FIXL D4
+    err.append(f'countries.csv: header {list(cs[0].keys()) if cs else []}')
 if {r['cc'] for r in cs} != cc_src: err.append('countries.csv: cc set differs from names/countries.csv')
 if len({r['slug'] for r in cs}) != len(cs): err.append('countries.csv: duplicate slugs')
 for r in cs:
@@ -79,6 +107,7 @@ for r in cs:
     if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', r['slug']): err.append(f'countries {r["cc"]}: bad slug')
     bad_chars(f'countries {r["cc"]}', r['name'] + r['in_phrase'])
 gid_src = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities.csv', encoding='utf-8'))}
+gid_src |= {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities_extra.csv', encoding='utf-8'))}  # FIXL2
 ct = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
 gids = [r['geonameid'] for r in ct]
 if len(set(gids)) != len(gids): err.append('cities.csv: duplicate geonameid')
@@ -86,6 +115,11 @@ if set(gids) - gid_src: err.append(f'cities.csv: unknown geonameid {len(set(gids
 for r in ct:
     if not (r['name'] and r['in_phrase']) or r['decl_ok'] not in ('0', '1'): err.append(f'cities {r["geonameid"]}: bad row')
     bad_chars(f'cities {r["geonameid"]}', r['name'])
+if list(ct[0].keys()) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: err.append(f'cities.csv: header {list(ct[0].keys())}')
+# FIXL F2: every city page of pages_state must have a row
+PS = json.load(open(WORLD / 'state/pages_state.json', encoding='utf-8'))
+miss = {v['key'].split(':')[2] for v in PS.values() if v.get('type') == 'city'} - set(gids)
+if miss: err.append(f'cities.csv: {len(miss)} city pages missing: {sorted(miss)[:10]}')
 print(f'cities: {len(ct)}/{len(gid_src)} covered')
 
 for w in warn: print('WARN', w)

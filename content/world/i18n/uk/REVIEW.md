@@ -38,3 +38,33 @@
 ## Обратный перевод (отдельный агент, вслепую)
 
 32 изменённые строки → EN, затем сверка с оригиналом: ok 26, minor 6, mismatch 0. По итогам исправлены ещё 2 строки: `p_hub` (двусмысленный порядок «Балкани охоплюють сторінки» → «охоплено сторінками») и `shell.map_p` («офіційних реєстрів» → «відкритих реєстрів», как в EN). Остальные minor — осознанные («за попереднім записом», «заряджання вдома»). Итого исправлено 34 строки.
+
+## L2-uk (11.11.2026) — back-translation of new strings
+
+A separate agent blind-translated 60 random new strings (seed 20261111; 280 new strings of strings_map ci_*/emb_open, strings_pay, strings_press, strings_b2b, strings_embed and texts.pay) back into EN.
+
+Result: 60 ok in meaning, 0 mismatch. Style notes taken in:
+- press.lead_press: «з зазначенням» → «із зазначенням» (euphony).
+- embed.cf_more: «запити на API» → «доступ до API».
+- embed.dv_widget_btn: «Створити код» → «Згенерувати код».
+- embed.cf_view, dv_p_hash: «точний вигляд» → «точне положення карти».
+- embed.dv_open_btn: «Завантаження та колонки» → «Файл і колонки».
+- embed.dv_lead: «Усе відкрите…» → «Усі відкриті дані безкоштовні…».
+- pay.gap_note: «Плануйте під’їхати…» → «Заїжджайте на цю ділянку з повною батареєю».
+
+Left as is (deliberate):
+- «разова оплата» for ad hoc — the term fixed in NOTES.md and used in strings_prices.
+- «достовірність від 70» — same scale as the rest of the site (0–100, explained on the methodology page).
+- «Слаг» on the developers page — audience is developers.
+- {cu} is the country in_phrase («в Україні»), not a bare name (scripts/world_pay.py: cu()).
+- press {month} is used only in positions where the nominative fits: after a dash, in brackets, in quotes («Порівняно з випуском «{prev}»»).
+
+## FIXL 11.11.2026
+Checked: new `strings_home.json` (71 keys, 4 plural categories), `strings_shell` lang_hint/lang_hint_close, D11 (`dv_p_lang`, `p_hub_na`), 7 new slugs, 49 new cities (48 NOBIL + Geneva). No D12–D15 items for uk.
+Back-translation (wave 2, blind): 10 home strings (title, sub, search_none, near_err, prices_p, p_ratio, work_p, tab_ap, data_as_of, map_more) + 2 changed (dv_p_lang, p_hub_na). Meaning matched in all 12; no fixes needed.
+- `home.prices_p`: pay-as-you-go = «з разовою оплатою», as fixed in NOTES.md.
+- `home.p_ratio` «у {x} раза дорожче, ніж удома» — works for fractions («у 2,3 раза»).
+- `home.tab_ap` «Азія і Тихий океан» — shorter than «Азійсько-Тихоокеанський регіон» for a tab.
+Cities: Swedish names transcribed as in the file (Лінчепінг, Єнчепінг, Вестерос): ö→е, å→о, y→ю, k/sk before front vowels → ч/ш, h → г (Ганінге, Гудіксвалль, Оскарсгамн, Тролльгеттан). Locative written by hand (-берг → -берзі, -га → -зі, -а → -і; names in -е/-о/-ю/-є indeclinable); «в» before a vowel, «у» before a consonant.
+Open: Nässjö = «Несше» with safe «у місті Несше» (decl_ok 0) — pronunciation [nɛʃøː], native check welcome; Skien = «Шієн».
+D12 grep: no historical/irredentist exonyms of foreign towns found that need changing. Kept as established Ukrainian forms: Білосток, Пряшів (Prešov — traditional Ukrainian name, still in use; switch to «Прешов» if Andrei wants strict local names), Вроцлав, Гданськ.

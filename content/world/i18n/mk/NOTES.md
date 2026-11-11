@@ -39,3 +39,19 @@
 - Проверка носителем: 5 072 города `auto: ru`, предлоги «на» для островов.
 - Свести «без договор» vs «Без регистрација» с разделом /mk/.
 - Решение по адресам (см. выше).
+
+## L2 (11.11.2026)
+- Добавлены strings_pay/press/b2b/embed и 29 ключей strings_map (`ci_*`, `emb_open`); `texts.json` → `pay` и `routes` в формате LANG0.
+- Термины: route → **рута** (не «правец»: в glossary «Навигација» = directions); stop → **постојка**; toll → **патарина**, vignette → **винета**; widget → **виџет**; file → **датотека**; e-mail → **е-пошта**; preview/demo → **Пробна верзија** (карта) / **Преглед** (формы); for media → **за медиуми**.
+- Километры — «км», как в существующих строках; kW/kWh — латиницей.
+- `{cu}`, `{lo}`, `{hi}` — in_phrase («во X»); `{name}` — именительный; `{month}` — «ноември 2026», ставится после «во»/«со».
+- Свои страны — только MK; страниц городов MK в мировом слое нет (K3), 16 городов MK в `cities.csv` проверены R-MK. 48 новых городов SE/NO из `pages_state.json` нет ни в `names/cities.csv`, ни здесь — для mk не нужны (не свои страны).
+- `check.py` проверяет все 8 файлов и `texts.json` → pay/routes.
+
+## FIXL (11.11.2026)
+- ad hoc → **без регистрација** везде (D13, как в /mk/); «без договор» только где EN «without a contract».
+- name_nom (D4) не нужен: в mk нет падежей, `countries.csv` без колонки name_nom.
+- Новые слаги: pay `/mk/kako-da-platite/`, routes `/mk/ruti/` (не `patuvanje` — занято /mk/), press `/mk/za-mediumi/`, b2b `/mk/podatoci-za-kompanii/`, embed `/mk/embed/svetska-mapa/`, map_conf `/mk/mapa-za-vashiot-sajt/`, developers `/mk/za-programeri/`. Пересечений с /mk/ нет.
+- D12: северогреческие города — греческие официальные названия кириллицей (Серес, Едеса, Верија…), Солун/Атина/Јанина/Пиреј — устоявшиеся экзонимы; Lezhë = Лежа.
+- Города: +49 (48 NOBIL + Женева), `во X`, decl_ok 1.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 0) — кириллица; UA по украинской форме (Одеса, Днипро, Кропивницки), устоявшиеся Фиренца/Џенова/Рим/Трст/Запорожје/Ќустендил; BG/RU/BY/GR — транскрипция; `во X`, decl_ok 1; note FIXL2.

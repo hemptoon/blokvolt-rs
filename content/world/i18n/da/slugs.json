@@ -9,5 +9,12 @@
  "prices": "/da/ladepriser/",
  "shell_about": "/da/om/",
  "sources": "/da/kilder/",
- "methodology": "/da/metode/"
+ "methodology": "/da/metode/",
+ "pay": "/da/betaling/",
+ "routes": "/da/ruter/",
+ "press": "/da/til-medier/",
+ "b2b": "/da/data-til-virksomheder/",
+ "embed": "/da/embed/kort/",
+ "map_conf": "/da/kort-til-hjemmesider/",
+ "developers": "/da/til-udviklere/"
 }

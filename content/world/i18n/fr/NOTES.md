@@ -33,3 +33,21 @@ station de recharge / borne de recharge / point de charge / site de recharge · 
 ## Проверка
 - `python3 content/world/i18n/fr/check.py` → 0 ошибок.
 - Обратный перевод 60 случайных строк (seed 42): ok 57, minor 3, mismatch 0; все 3 minor исправлены (Formule ×2, sur préavis).
+
+
+## L2-fr (LANG pool, 11.11.2026)
+- Добавлены 274 ключа: `strings_map` (28 `ci_*` + `emb_open`), `strings_pay` 93, `strings_press` 54, `strings_b2b` 33, `strings_embed` 65. Генератор с типографикой — `tools/l2_fr.py`.
+- `texts.json`: разделы `pay` (6 узлов `afir.points[i]`) и `routes` (59 узлов `routes[i].stops[j].city`; Salzbourg — экзоним, остальное как в `cities.csv`).
+- `{name}` в `afir_eu`/`afir_non`/`conn_txt`/`conn_lnk` — голое название страны без артикля, поэтому конструкция «{name} : pays…», а не «L’Allemagne est…».
+- `press.f_*` взяты из `FACTS_DE_FR` в `scripts/world_press.py` и поправлены по обратному переводу; код сейчас берёт FR оттуда, а не из `strings_press` — LANG0/LANGI должны переключить на файл.
+- Титулы страниц: «Stations de recharge…» → «Bornes de recharge…» (так ищут во Франции и Бельгии; карта уже «bornes»).
+- `check.py`: все 8 файлов + `texts.pay`/`texts.routes` → 0 ошибок.
+- Открыто: `t_near` без элизии (нужен `de_elide` в моторе); Женевы нет в `names/cities.csv`, у Базеля, Лозанны и Люцерна нет страниц городов (данные G2, не перевод); «sans inscription» vs «à l’acte» — по глоссарию.
+
+## FIXL (11.11.2026)
+- `strings_home.json` (71 ключ, `pl_*` = one/many/other); `strings_shell`: `lang_hint` «Cette page existe aussi en français», `lang_hint_close` «Fermer».
+- D14: `countries.csv` + колонка `name_nom` (артикль: le/la/l’/les; без артикля — Israël, Haïti, острова/города-государства на «à»: Malte, Chypre, Cuba, Monaco, Singapour, Oman…; «la Barbade», «La Réunion», «l’île de Man», «les îles Åland»). `{name_nom}` никогда не в начале предложения и не после de/à (нет du/au).
+- D15: `t_near` = « (près {city_de})». `city_de.csv` (98 строк): города с артиклем (du Havre, des Sables-d’Olonne, de La Rochelle, du Bronx…) + все H/Y-города FR/BE/CH явно (d’Hyères, d’Halluin, d’Ypres; de Haguenau, de Huy, de Houilles, de Yutz). Мотору: элизия «d’» только перед гласной, никогда перед h.
+- Слаги: /fr/comment-payer/ /fr/itineraires/ /fr/medias/ /fr/donnees-entreprises/ /fr/embed/carte/ /fr/carte-pour-votre-site/ /fr/developpeurs/.
+- D13: «sans inscription» сохранено. D12: Zweibrücken, Jülich. Женева = Genève.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 77). Экзонимы: Gênes, Pise, Sienne, Pérouse, Palerme, Messine, Catane, Syracuse, Lucques, Trévise, Ivrée, Coni, Bénévent, Caserte, Pouzzoles, Viterbe, Elseneur, Schaffhouse, Zoug; UA/RU/BY/BG/GR — французская транскрипция (Zaporijjia, Jytomyr, Tcheliabinsk, Choumen…). `city_de.csv` +6: du Plessis-Trévise, de Haaltert/Hamme/Herent/Heusden/Horgen. check.py: gid из cities.csv ИЛИ cities_extra.csv.

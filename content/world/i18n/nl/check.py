@@ -2,7 +2,7 @@
 """L-NL check: Dutch files in content/world/i18n/nl/ against the EN sources.
 
 Run from anywhere: python3 content/world/i18n/nl/check.py  (exit 1 on errors).
-Checks: every EN key present (and no extra keys), placeholders {..} and HTML tags/entities identical,
+Checks (L2 + FIXL, 11.11.2026: all 9 strings_*.json incl. strings_home and texts.json pay/routes): every EN key present (and no extra keys), placeholders {..} and HTML tags/entities identical,
 no empty values, plural keys = CLDR categories of nl (Babel), slugs ASCII, texts.json mirrors the EN
 structure, countries.csv / cities.csv readable and complete, banned words absent.
 """
@@ -23,7 +23,8 @@ PH = re.compile(r'\{[^{}]*\}')
 TAG = re.compile(r'</?[a-zA-Z][^>]*>')
 ENT = re.compile(r'&[a-zA-Z#0-9]+;')
 URL = re.compile(r'https?://[^\s"\'<>)]+')
-BANNED = re.compile(r'\b(we|wij|ons|onze|redactie|je|jij|jouw|jullie)\b|24/7|evolako', re.I)
+# FIXL D13 (11.11.2026): the reader is addressed with «je» everywhere — the formal «u/uw» is now the banned form.
+BANNED = re.compile(r'\b(we|wij|ons|onze|redactie|u|uw|uzelf)\b|24/7|evolako', re.I)
 
 
 def plural_cats():
@@ -47,11 +48,11 @@ def sig(s):
 def cmp_text(where, en, nl):
     if not isinstance(nl, str) or not nl.strip():
         return err(f'{where}: empty or not a string')
-    a, b = sig(en), sig(nl)
+    a, b = sig(en), sig(nl.replace('{name_nom}', '{name}') if '{name}' in en else nl)  # D14: {name_nom} may replace {name}
     for name, x, y in zip(('placeholders', 'tags', 'entities', 'urls'), a, b):
         if x != y:
             err(f'{where}: {name} differ: EN {x} / NL {y}')
-    m = BANNED.search(TAG.sub(' ', nl))
+    m = BANNED.search(PH.sub(' ', URL.sub(' ', TAG.sub(' ', nl))).replace('U.S.', ' '))  # {u} placeholder, U.S. DOE
     if m:
         err(f'{where}: banned word «{m.group(0)}»')
 
@@ -100,13 +101,36 @@ def walk(where, en, nl):
         err(f'{where}: non-text value changed')
 
 
+def ml_nodes(path, x, out):
+    """Multilingual nodes ({'en': str, 'sr'|'ru': …}) of pay.json / routes.json, keyed a.b[i].c."""
+    if isinstance(x, dict):
+        if isinstance(x.get('en'), str) and ('sr' in x or 'ru' in x):
+            out[path] = x['en']
+            return
+        for k, v in x.items():
+            ml_nodes(f'{path}.{k}' if path else k, v, out)
+    elif isinstance(x, list):
+        for i, v in enumerate(x):
+            ml_nodes(f'{path}[{i}]', v, out)
+
+
 def check_texts():
     p = HERE / 'texts.json'
     if not p.exists():
         return err('texts.json: missing')
     t = json.load(open(p, encoding='utf-8'))
-    if set(t) != {'about_data', 'download', 'sources_pages'}:
+    if set(t) != {'about_data', 'download', 'sources_pages', 'pay', 'routes'}:
         err(f'texts.json: top keys {sorted(t)}')
+    for sec in ('pay', 'routes'):  # LANG0 format: path of a multilingual node -> text
+        nodes = {}
+        ml_nodes('', json.load(open(WORLD / f'{sec}.json', encoding='utf-8')), nodes)
+        got = t.get(sec) or {}
+        for k in nodes.keys() - got.keys():
+            err(f'texts.{sec}: missing node {k}')
+        for k in got.keys() - nodes.keys():
+            err(f'texts.{sec}: extra node {k}')
+        for k in nodes.keys() & got.keys():
+            cmp_text(f'texts.{sec}.{k}', nodes[k], got[k])
     walk('about_data', json.load(open(WORLD / 'about_data.json', encoding='utf-8'))['en'], t.get('about_data'))
     walk('download', json.load(open(WORLD / 'download.json', encoding='utf-8'))['en'], t.get('download'))
     src = json.load(open(WORLD / 'sources_pages.json', encoding='utf-8'))
@@ -119,12 +143,13 @@ def check_texts():
 SLUG = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')
 PATH = re.compile(r'^/' + LANG + r'/([a-z0-9]+(-[a-z0-9]+)*/)*$')
 SLUG_KEYS = {'home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology'}
+SLUG_EXTRA = {'pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers'}  # FIXL F5: allowed in addition
 
 
 def check_slugs():
     s = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
-    if set(s) != SLUG_KEYS:
-        err(f'slugs.json: keys {sorted(set(s) ^ SLUG_KEYS)}')
+    if not SLUG_KEYS <= set(s) or set(s) - SLUG_KEYS - SLUG_EXTRA:
+        err(f'slugs.json: missing {sorted(SLUG_KEYS - set(s))} unknown {sorted(set(s) - SLUG_KEYS - SLUG_EXTRA)}')
     for k, v in s.items():
         if k in ('net', 'about', 'download'):
             if not SLUG.match(v):
@@ -139,7 +164,7 @@ def check_slugs():
 def check_csv():
     src_c = {r['cc'] for r in csv.DictReader(open(NAMES / 'countries.csv', encoding='utf-8'))}
     rows = list(csv.DictReader(open(HERE / 'countries.csv', encoding='utf-8')))
-    if rows and list(rows[0]) != ['cc', 'name', 'slug', 'in_phrase', 'note']:
+    if rows and list(rows[0]) not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):
         err(f'countries.csv: header {list(rows[0])}')
     got = {r['cc'] for r in rows}
     if got != src_c:
@@ -153,6 +178,9 @@ def check_csv():
         if r['name'] not in r['in_phrase']:
             err(f'countries.csv {r["cc"]}: in_phrase does not contain name')
     src = {r['geonameid'] for r in csv.DictReader(open(NAMES / 'cities.csv', encoding='utf-8'))}
+    # FIXL2: rows for names/cities_extra.csv (cities missing from names/cities.csv) are allowed too
+    if (NAMES / 'cities_extra.csv').exists():
+        src |= {r['geonameid'] for r in csv.DictReader(open(NAMES / 'cities_extra.csv', encoding='utf-8'))}
     rows = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
     if rows and list(rows[0]) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']:
         err(f'cities.csv: header {list(rows[0])}')
@@ -164,11 +192,22 @@ def check_csv():
     for r in rows:
         if not r['name'] or not r['in_phrase'] or r['decl_ok'] not in ('0', '1'):
             err(f'cities.csv {r["geonameid"]}: empty field or bad decl_ok')
+    # FIXL: every city page of state/pages_state.json must have a row
+    ps = WORLD / 'state' / 'pages_state.json'
+    if ps.exists():
+        page_g = {v['key'].split(':')[-1] for v in json.load(open(ps, encoding='utf-8')).values()
+                  if v.get('type') == 'city' and str(v.get('key', '')).startswith('t:')}
+        lost = page_g - set(ids)
+        if lost:
+            err(f'cities.csv: {len(lost)} city pages without a row, e.g. {sorted(lost)[:5]}')
+    else:
+        warns.append('state/pages_state.json not found: city pages not checked')
     return len(rows), len(src)
 
 
 if __name__ == '__main__':
-    n = {f: check_strings(f) for f in ('strings_map.json', 'strings_pages.json', 'strings_shell.json', 'strings_prices.json')}
+    n = {f: check_strings(f) for f in ('strings_home.json', 'strings_map.json', 'strings_pages.json', 'strings_shell.json', 'strings_prices.json',
+                                       'strings_pay.json', 'strings_press.json', 'strings_b2b.json', 'strings_embed.json')}
     check_texts()
     check_slugs()
     cities = check_csv()

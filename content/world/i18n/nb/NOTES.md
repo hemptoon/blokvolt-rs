@@ -76,3 +76,19 @@
 - `pct` оставлен «{x}%» как в EN; по норвежской норме «{x} %». Формат чисел для nb в реестре K8: десятичная запятая, пробел (неразрывный) как разделитель тысяч, `{x} %`.
 - Даты: месяцы в `strings_prices` — строчными (januar … desember) там, где они есть; формат даты в реестре — `9. november 2026`.
 - Глоссарий: колонка `nb`.
+
+## L2 (11.11.2026)
+
+- Новые файлы: `strings_pay` 93, `strings_press` 54, `strings_b2b` 33, `strings_embed` 65; `strings_map` +29 (`ci_*` чек-ин, `emb_open`).
+- `texts.json` → `pay` (AFIR, 6 пунктов) и `routes` (59 названий городов в остановках) в формате LANG0: путь узла → текст. Города — из `cities.csv` nb (Belgrade → Beograd, остальные местной латиницей).
+- Термины новых разделов: How to pay — «Slik betaler du» (обобщённое «du», как в заголовках главной); Routes — «Ruter»; roaming app/card — «roamingapp / ladekort»; coverage — «dekning»; tolls — «bompenger», vignette — «vignett»; check-in — «melding / Sist rapportert»; price index — «prisindeks for elbillading»; widget — «widget»; preview — «forhåndsvisning»; credit (citation) — «kildehenvisning».
+- Города своих стран (NO): 31 страница в `pages_state.json`; добавлены Kongsberg (3149563) и Skien (3139075) — их нет в `names/cities.csv`, `check.py` принимает geonameid из `pages_state.json` для `MARKET = {'NO'}`.
+- `check.py`: все 8 файлов `strings_*`, разделы `texts.pay` / `texts.routes` против многоязычных узлов `pay.json` / `routes.json`, проверка, что у каждой городской страницы NO есть имя.
+
+## FIXL (11.11.2026)
+- `strings_home.json` ny (71 nøkler); `strings_shell` + `lang_hint` «Denne siden finnes også på norsk», `lang_hint_close` «Lukk». «du» også i `strings_home.sub` og `pay_h` (samme regel som overskriftene).
+- D13: `nav_pay` = «Betaling» (meny); overskrifter/kicker «Slik betaler du».
+- Slugs: `/nb/betaling/`, `/nb/ruter/`, `/nb/for-media/`, `/nb/data-for-bedrifter/`, `/nb/embed/kart/`, `/nb/kart-til-nettsiden/`, `/nb/for-utviklere/`.
+- cities.csv: alle 5 654 rader i names/cities.csv; check.py krever nå at hver geonameid finnes der og at alle bysider i pages_state (alle land, ikke bare NO) har navn.
+- countries.csv: ingen `name_nom` (nb har ikke D14).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 3). Kyrillisk: UA norsk translitterasjon (Zjytomyr, Tsjernivtsi, Zaporizjzja), RU/BY som filen (russisk form: Gomel, Mogiljov, Tsjeljabinsk), BG engelsk form som før; GR uten aksenter; RO med ș/ț; Roma, Firenze, Genova. check.py godtar names/cities_extra.csv.

@@ -36,3 +36,11 @@ Propunere: coloana `ro` în `names/glossary.csv` cu acești termeni — de adău
 - Corectate: r_err, r_err_net (+ r_ok, r_err_limit) — „Raportarea” → „Sesizarea/Sesizările”; h_more → „Alte țări din setul de date”; lead_hub — frază reformulată, numerele scoase în „Rețele: {nets}; țări: {countries}”; h_profiles → „Cât costă 100 km pentru trei tipuri de șoferi”; hpc_note — reformulat.
 - Lăsate ca în EN: ch_ft_data („Hărți:” — așa e și în EN; dacă se schimbă EN, se schimbă și aici), acc_all („Afișați și celelalte” = EN „Show the others too”).
 - Restul de 48: sensul coincide cu EN.
+
+## FIXL (11.11.2026)
+- strings_home.json (71 de chei); lang_hint „Această pagină este disponibilă și în română”, lang_hint_close „Închideți”.
+- Slug-uri: /ro/cum-platiti/ /ro/rute/ /ro/pentru-presa/ /ro/date-pentru-companii/ /ro/embed/harta/ /ro/harta-pentru-site/ /ro/pentru-dezvoltatori/.
+- name_nom: nefolosit (D14 doar de fr it es pt el); check.py îl permite.
+- D13: Olanda (nu „Țările de Jos”), „în Olanda”, slug `olanda`.
+- cities.csv: +48 NOBIL (nume local, „în X”) + Geneva „în Geneva”.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 41) — RO: diacritice cu virgulă (Iași, Pitești, Constanța, Târgu Mureș); UA/RU/BY/BG transliterare ca în fișier (Zaporojie, Odesa, Chernivtsi — nu Cernăuți, D12), GR fără accente; Roma, Florența, Genova, Triest, Siracuza; toate „în X”.

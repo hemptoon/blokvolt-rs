@@ -88,7 +88,7 @@
  "th_pub_dc": "Viešasis DC",
  "cars_note": "Sąnaudos iš baterijos švelniais orais, įvertis (Open EV Data, © 2019 Chargeprice, MIT); žiemą apie 20–30 % daugiau. Įkrovimo nuostoliai neįskaičiuoti. Viešosios kainos: šalies indeksas; kur jo nėra – „—“.",
  "cars_note_net": "Sąnaudos iš baterijos švelniais orais, įvertis (Open EV Data, © 2019 Chargeprice, MIT); žiemą apie 20–30 % daugiau. Įkrovimo nuostoliai neįskaičiuoti. Kainos: tinklo tarifas be sutarties.",
- "h_pay": "Kaip mokėti trumpai",
+ "h_pay": "Trumpai: kaip mokėti",
  "pay_adhoc": "Be sutarties (skelbiama kaina be sutarties): {list}.",
  "pay_sub": "Planai: {list}.",
  "pay_free": "be mėnesinio mokesčio",

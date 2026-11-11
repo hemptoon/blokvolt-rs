@@ -64,3 +64,47 @@
 - `prices.th_ratio` «DC mot hjemmelading» — не взято: заголовок колонки, лимит длины; рядом колонка «Hjemme», смысл ясен;
 - `prices.lead_hub` «sammenlignet med» вместо «ved siden av» — не взято: EN «next to», формулировка верна.
 - «på Gibraltar», «på Taiwan», «Bucuresti» — агент подтвердил.
+
+---
+
+# L2-NB — дельта ключей, обратный перевод (11.11.2026)
+
+Ветка `l2-nb` от `dev` (`bb86f74`). Новые 274 ключа: map 29 (`ci_*`, `emb_open`), pay 93, press 54, b2b 33, embed 65; `texts.json` → `pay` (6 узлов) и `routes` (59 узлов).
+
+## Обратный перевод 60 случайных новых строк
+
+Отдельный агент, не видевший EN, перевёл nb → EN (`backtranslation_L2_60.json`, значения до правок). Смысл совпал во всех 60. Замечаний 10:
+
+Исправлено (6):
+- `pay.th_trip` «Turen, EUR» → «Kostnad for turen, EUR» — без «kostnad» неясно, что это цена.
+- `b2b.lic_p` «dens del-på-samme-vilkår-krav» → «kravet om deling på samme vilkår» — калька.
+- `press.th_change` «Endring DC» → «DC-endring».
+- `map.ci_last_ne_radi` / `ci_last_zauzeto` «Siste melding: …» → «Sist rapportert: …».
+- `pay.h_conn` «Kontakter og steder» → «Kontakttyper og ladesteder» — в заголовке без контекста «kontakter» читается как «контакты (люди)».
+- `pay.th_gaps` «Hull > 150 km» → «Hull i dekningen > 150 km».
+
+Оставлено (4):
+- `map.ci_err` «Svaret ble ikke sendt» — это ответ на вопрос «Virker laderen?», не форма; «svaret» верно.
+- `press.issue_note` «vekter fra det offentlige laget» — так же непрозрачно в EN; термин «det offentlige laget» уже принят на всём сайте.
+- `pay.th_cover` — заголовок колонки, повторяет EN.
+- `b2b.what_cov` «kontakter» — термин глоссария nb для connector, используется во всём интерфейсе карты; в перечне рядом с «effektklasser» однозначен.
+
+## Видимые строки — правки носителя
+
+- `shell.home_title` «i Europa og verden» → «i Europa og resten av verden» (как в `map.description`).
+- `pages.below_title` «for lite data nå» → «foreløpig for lite data».
+- `prices.pr_home` «Lader hjemme» → «Hjemmelader».
+
+## FIXL 11.11.2026
+
+Kontroll (tilbakeoversettelse nb → EN, bølge 1): 20 strenger fra `strings_home` (title, desc, h1, sub, search_none, near_err, map_alt, map_err, map_more, countries_p, ap_note, below_h, prices_p, p_ratio, p_src, pay_p, routes_p, work_p, trust_p, org_desc) + alle andre endrede strenger (`pay.nav_pay`, `embed.dv_p_lang`, `pages.p_hub_na`, `shell.lang_hint`, `shell.lang_hint_close`) + 3 bynavn.
+Resultat: ingen meningsavvik. Bevisste forskjeller:
+- `desc`: «what charging costs, how to pay and where to stop» → «priser, betaling og ladestopp på langtur» (lengde ≤ 165).
+- `near_err`: «move it to your place» → «flytt det til riktig sted» (upersonlig).
+- `org_desc`: «independent» → «nøytralt oppslagsverk».
+- `sub` bruker generisk «du» som `shell.home_h1` (se NOTES).
+
+D13: menypunktet `strings_pay.nav_pay` = «Betaling»; `kick_pay`, `t_/h1_pay_*`, `pay_more` og `strings_home.pay_h` beholder «Slik betaler du».
+D12: ingen historiske/irredentistiske eksonymer funnet. Funnet og rettet en feil: tre amerikanske byer hadde fått greske eksonymer — 4180386 Athens (GA) og 4505542 Athens (OH) «Athen» → «Athens», 4683317 Corinth «Korint» → «Corinth».
+cities.csv: + 46 svenske NOBIL-byer (lokale navn, «i X», decl_ok 1) + Genève (2660646). Kongsberg og Skien var der fra før og er kontrollert.
+Åpne spørsmål: ingen nye.

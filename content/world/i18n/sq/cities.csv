@@ -2435,7 +2435,7 @@ geonameid,name,in_phrase,decl_ok,note
 3191376,Šabac,në Šabac,1,auto
 784873,Trstenik,në Trstenik,1,auto
 787050,Pirot,në Pirot,1,auto
-787595,Pazar i Ri,në Pazar të Ri,1,ekzonim
+787595,Novi Pazar,në Novi Pazar,1,FIXL D12: emri zyrtar (jo Pazar i Ri)
 788709,Leskovac,në Leskovac,1,auto
 790015,Inđija,në qytetin Inđija,0,"auto: emri mbaron me -a, formë e sigurt"
 791678,Ćuprija,në qytetin Ćuprija,0,"auto: emri mbaron me -a, formë e sigurt"
@@ -2450,7 +2450,7 @@ geonameid,name,in_phrase,decl_ok,note
 3197728,Koprivnica,në qytetin Koprivnica,0,"auto: emri mbaron me -a, formë e sigurt"
 3203982,Bjelovar,në Bjelovar,1,auto
 3199394,Herceg Novi,në Herceg Novi,1,auto
-3204509,Tivar,në Tivar,1,ekzonim
+3204509,Bar,në Bar,1,FIXL D12: emri zyrtar (jo Tivar)
 3191429,Ruma,në qytetin Ruma,0,"auto: emri mbaron me -a, formë e sigurt"
 784024,Zaječar,në Zaječar,1,auto
 787237,Pančevo,në Pančevo,1,auto
@@ -5604,3 +5604,873 @@ geonameid,name,in_phrase,decl_ok,note
 5927690,Coquitlam,në Coquitlam,1,auto
 12908892,New Taipei City,në New Taipei City,1,auto
 3530597,Ciudad de México,në Ciudad de México,1,auto
+2662689,Visby,në Visby,1,"L2: NOBIL, emri vendas"
+2664203,Västervik,në Västervik,1,"L2: NOBIL, emri vendas"
+2664855,Värnamo,në Värnamo,1,"L2: NOBIL, emri vendas"
+2665171,Vänersborg,në Vänersborg,1,"L2: NOBIL, emri vendas"
+2666238,Upplands Väsby,në Upplands Väsby,1,"L2: NOBIL, emri vendas"
+2667094,Tumba,në qytetin Tumba,0,"L2: NOBIL, emri mbaron me -a, formë e sigurt"
+2667303,Trollhättan,në Trollhättan,1,"L2: NOBIL, emri vendas"
+2669772,Täby,në Täby,1,"L2: NOBIL, emri vendas"
+2670879,Sundbyberg,në Sundbyberg,1,"L2: NOBIL, emri vendas"
+2674649,Staffanstorp,në Staffanstorp,1,"L2: NOBIL, emri vendas"
+2675397,Solna,në qytetin Solna,0,"L2: NOBIL, emri mbaron me -a, formë e sigurt"
+2675408,Sollentuna,në qytetin Sollentuna,0,"L2: NOBIL, emri mbaron me -a, formë e sigurt"
+2676176,Södertälje,në Södertälje,1,"L2: NOBIL, emri vendas"
+2684395,Partille,në Partille,1,"L2: NOBIL, emri vendas"
+2686162,Oskarshamn,në Oskarshamn,1,"L2: NOBIL, emri vendas"
+2686469,Örnsköldsvik,në Örnsköldsvik,1,"L2: NOBIL, emri vendas"
+2687700,Nyköping,në Nyköping,1,"L2: NOBIL, emri vendas"
+2688250,Norrtälje,në Norrtälje,1,"L2: NOBIL, emri vendas"
+2690170,Nässjö,në Nässjö,1,"L2: NOBIL, emri vendas"
+2690580,Nacka,në qytetin Nacka,0,"L2: NOBIL, emri mbaron me -a, formë e sigurt"
+2692475,Märsta,në qytetin Märsta,0,"L2: NOBIL, emri mbaron me -a, formë e sigurt"
+2692613,Mariestad,në Mariestad,1,"L2: NOBIL, emri vendas"
+2696334,Lidingö,në Lidingö,1,"L2: NOBIL, emri vendas"
+2696503,Lerum,në Lerum,1,"L2: NOBIL, emri vendas"
+2697720,Landskrona,në qytetin Landskrona,0,"L2: NOBIL, emri mbaron me -a, formë e sigurt"
+2698767,Kumla,në qytetin Kumla,0,"L2: NOBIL, emri mbaron me -a, formë e sigurt"
+2699282,Kristinehamn,në Kristinehamn,1,"L2: NOBIL, emri vendas"
+2699791,Köping,në Köping,1,"L2: NOBIL, emri vendas"
+2701223,Katrineholm,në Katrineholm,1,"L2: NOBIL, emri vendas"
+2701715,Karlskoga,në qytetin Karlskoga,0,"L2: NOBIL, emri mbaron me -a, formë e sigurt"
+2703396,Jakobsberg,në Jakobsberg,1,"L2: NOBIL, emri vendas"
+2704136,Huskvarna,në qytetin Huskvarna,0,"L2: NOBIL, emri mbaron me -a, formë e sigurt"
+2704613,Hudiksvall,në Hudiksvall,1,"L2: NOBIL, emri vendas"
+2704620,Huddinge,në Huddinge,1,"L2: NOBIL, emri vendas"
+2707953,Haninge,në Haninge,1,"L2: NOBIL, emri vendas"
+2709628,Gustavsberg,në Gustavsberg,1,"L2: NOBIL, emri vendas"
+2715568,Falköping,në Falköping,1,"L2: NOBIL, emri vendas"
+2715573,Falkenberg,në Falkenberg,1,"L2: NOBIL, emri vendas"
+2715946,Eslöv,në Eslöv,1,"L2: NOBIL, emri vendas"
+2716166,Enköping,në Enköping,1,"L2: NOBIL, emri vendas"
+2721259,Boo,në Boo,1,"L2: NOBIL, emri vendas"
+2726756,Alingsås,në Alingsås,1,"L2: NOBIL, emri vendas"
+2727234,Åkersberga,në qytetin Åkersberga,0,"L2: NOBIL, emri mbaron me -a, formë e sigurt"
+3139075,Skien,në Skien,1,"L2: NOBIL, emri vendas"
+3149563,Kongsberg,në Kongsberg,1,"L2: NOBIL, emri vendas"
+602913,Skellefteå,në Skellefteå,1,"L2: NOBIL, emri vendas"
+603570,Piteå,në Piteå,1,"L2: NOBIL, emri vendas"
+604490,Luleå,në Luleå,1,"L2: NOBIL, emri vendas"
+2660646,Gjenevë,në Gjenevë,1,FIXL: ekzonim
+2763423,Traun,në Traun,1,FIXL2
+2760910,Wolfsberg,në Wolfsberg,1,FIXL2
+2803429,Aarschot,në Aarschot,1,FIXL2
+2802743,Balen,në Balen,1,FIXL2
+2801226,Boussu,në Boussu,1,FIXL2
+2799496,Destelbergen,në Destelbergen,1,FIXL2
+2799412,Diepenbeek,në Diepenbeek,1,FIXL2
+2799226,Dour,në Dour,1,FIXL2
+2799090,Duffel,në Duffel,1,FIXL2
+2799007,Edegem,në Edegem,1,FIXL2
+2796833,Haaltert,në Haaltert,1,FIXL2
+2796637,Hamme,në Hamme,1,FIXL2
+2796012,Herent,në Herent,1,FIXL2
+2795800,Heusden,në Heusden,1,FIXL2
+2794663,Kasterlee,në Kasterlee,1,FIXL2
+2794210,Knokke-Heist,në Knokke-Heist,1,FIXL2
+2794179,Koersel,në Koersel,1,FIXL2
+2793446,Lanaken,në Lanaken,1,FIXL2
+2793144,Lebbeke,në Lebbeke,1,FIXL2
+2792360,Lille,në Lille,1,FIXL2
+2791961,Maasmechelen,në Maasmechelen,1,FIXL2
+2791857,Maldegem,në Maldegem,1,FIXL2
+2791424,Meise,në Meise,1,FIXL2
+2791194,Middelkerke,në Middelkerke,1,FIXL2
+2790114,Ninove,në Ninove,1,FIXL2
+2789751,Oostkamp,në Oostkamp,1,FIXL2
+2789413,Overijse,në Overijse,1,FIXL2
+2788726,Poperinge,në Poperinge,1,FIXL2
+2788348,Ranst,në Ranst,1,FIXL2
+2786344,Soumagne,në Soumagne,1,FIXL2
+2786229,Stabroek,në Stabroek,1,FIXL2
+2783632,Willebroek,në Willebroek,1,FIXL2
+2783293,Zele,në Zele,1,FIXL2
+2783197,Zolder,në Zolder,1,FIXL2
+2783188,Zonhoven,në Zonhoven,1,FIXL2
+2783081,Zwijndrecht,në Zwijndrecht,1,FIXL2
+733618,Asenovgrad,në Asenovgrad,1,FIXL2
+733579,Aytos,në Aytos,1,FIXL2
+733264,Berkovitsa,në qytetin Berkovitsa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+733014,Botevgrad,në Botevgrad,1,FIXL2
+732452,Chirpan,në Chirpan,1,FIXL2
+726418,Dobrich,në Dobrich,1,FIXL2
+726872,Dupnitsa,në qytetin Dupnitsa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+731549,Gabrovo,në Gabrovo,1,FIXL2
+731233,Gorna Oryahovitsa,në qytetin Gorna Oryahovitsa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+731108,Gotse Delchev,në Gotse Delchev,1,FIXL2
+730442,Harmanli,në Harmanli,1,FIXL2
+729794,Kardzhali,në Kardzhali,1,FIXL2
+730565,Karlovo,në Karlovo,1,FIXL2
+730559,Karnobat,në Karnobat,1,FIXL2
+730496,Kazanlak,në Kazanlak,1,FIXL2
+729730,Kyustendil,në Kyustendil,1,FIXL2
+729581,Lom,në Lom,1,FIXL2
+729559,Lovech,në Lovech,1,FIXL2
+729114,Montana,në qytetin Montana,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+728742,Nova Zagora,në qytetin Nova Zagora,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+728448,Panagyurishte,në Panagyurishte,1,FIXL2
+727886,Parvomay,në Parvomay,1,FIXL2
+728317,Peshtera,në qytetin Peshtera,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+728075,Popovo,në Popovo,1,FIXL2
+727696,Razgrad,në Razgrad,1,FIXL2
+727447,Sandanski,në Sandanski,1,FIXL2
+727337,Sevlievo,në Sevlievo,1,FIXL2
+727233,Shumen,në Shumen,1,FIXL2
+727221,Silistra,në qytetin Silistra,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+726848,Stara Zagora,në qytetin Stara Zagora,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+726534,Svishtov,në Svishtov,1,FIXL2
+726174,Targovishte,në Targovishte,1,FIXL2
+726320,Troyan,në Troyan,1,FIXL2
+725988,Velingrad,në Velingrad,1,FIXL2
+725905,Vidin,në Vidin,1,FIXL2
+725712,Vratsa,në qytetin Vratsa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+725578,Yambol,në Yambol,1,FIXL2
+630429,Baranovichi,në Baranovichi,1,FIXL2
+630468,Bobruysk,në Bobruysk,1,FIXL2
+627907,Gomel,në Gomel,1,FIXL2
+627083,Kolodishchi,në Kolodishchi,1,FIXL2
+627145,Kobrin,në Kobrin,1,FIXL2
+625972,Logoysk,në Logoysk,1,FIXL2
+625665,Mogilev,në Mogilev,1,FIXL2
+625625,Molodechno,në Molodechno,1,FIXL2
+624079,Orsha,në qytetin Orsha,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+630515,Oshmyany,në Oshmyany,1,FIXL2
+622794,Rechitsa,në qytetin Rechitsa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+621729,Smolevichi,në Smolevichi,1,FIXL2
+621713,Smorgon,në Smorgon,1,FIXL2
+622428,Soligorsk,në Soligorsk,1,FIXL2
+620127,Vitebsk,në Vitebsk,1,FIXL2
+2661810,Allschwil,në Allschwil,1,FIXL2
+2661265,Carouge,në Carouge,1,FIXL2
+2660925,Einsiedeln,në Einsiedeln,1,FIXL2
+2660727,Frauenfeld,në Frauenfeld,1,FIXL2
+2660549,Gossau,në Gossau,1,FIXL2
+2660305,Horgen,në Horgen,1,FIXL2
+2659667,Meyrin,në Meyrin,1,FIXL2
+2659296,Onex,në Onex,1,FIXL2
+2658761,Schaffhausen,në Schaffhausen,1,FIXL2
+2658494,Steffisburg,në Steffisburg,1,FIXL2
+2658216,Uster,në Uster,1,FIXL2
+2658154,Vernier,në Vernier,1,FIXL2
+2658011,Wettingen,në Wettingen,1,FIXL2
+2657908,Zug,në Zug,1,FIXL2
+3079129,Bohumín,në Bohumín,1,FIXL2
+3078545,Bruntál,në Bruntál,1,FIXL2
+3077835,Cheb,në Cheb,1,FIXL2
+3077244,Děčín,në Děčín,1,FIXL2
+3074020,Kadaň,në Kadaň,1,FIXL2
+3073789,Karviná,në Karviná,1,FIXL2
+3073660,Klatovy,në Klatovy,1,FIXL2
+3072656,Krnov,në Krnov,1,FIXL2
+3070862,Mělník,në Mělník,1,FIXL2
+3069844,Neratovice,në Neratovice,1,FIXL2
+3068873,Orlová,në Orlová,1,FIXL2
+3068690,Otrokovice,në Otrokovice,1,FIXL2
+3062339,Vsetín,në Vsetín,1,FIXL2
+3061822,Žatec,në Žatec,1,FIXL2
+2951679,Beckingen,në Beckingen,1,FIXL2
+2930182,Enger,në Enger,1,FIXL2
+2930043,Ennepetal,në Ennepetal,1,FIXL2
+2929865,Eppelborn,në Eppelborn,1,FIXL2
+2917737,Greiz,në Greiz,1,FIXL2
+2905290,Hessisch Oldendorf,në Hessisch Oldendorf,1,FIXL2
+2904985,Heusweiler,në Heusweiler,1,FIXL2
+2904886,Hiddenhausen,në Hiddenhausen,1,FIXL2
+2891014,Kierspe,në Kierspe,1,FIXL2
+2879832,Lebach,në Lebach,1,FIXL2
+2879315,Leichlingen,në Leichlingen,1,FIXL2
+2877142,Lindlar,në Lindlar,1,FIXL2
+2876218,Lohmar,në Lohmar,1,FIXL2
+2872519,Meerane,në Meerane,1,FIXL2
+2863240,Nieder-Ingelheim,në Nieder-Ingelheim,1,FIXL2
+2851584,Püttlingen,në Püttlingen,1,FIXL2
+2847033,Riegelsberg,në Riegelsberg,1,FIXL2
+2835382,Schwalbach,në Schwalbach,1,FIXL2
+2810969,Werdau,në Werdau,1,FIXL2
+2625070,Aabenraa,në qytetin Aabenraa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2624906,Albertslund,në Albertslund,1,FIXL2
+2621927,Frederikshavn,në Frederikshavn,1,FIXL2
+2621912,Frederikssund,në Frederikssund,1,FIXL2
+2620583,Hedensted,në Hedensted,1,FIXL2
+2620473,Helsingør,në Helsingør,1,FIXL2
+2619771,Horsens,në Horsens,1,FIXL2
+2619528,Hvidovre,në Hvidovre,1,FIXL2
+2619856,Hørsholm,në Hørsholm,1,FIXL2
+2619377,Ishøj,në Ishøj,1,FIXL2
+2619154,Kalundborg,në Kalundborg,1,FIXL2
+2618415,Køge,në Køge,1,FIXL2
+2617658,Lillerød,në Lillerød,1,FIXL2
+2616015,Nyborg,në Nyborg,1,FIXL2
+2615961,Nykøbing Falster,në Nykøbing Falster,1,FIXL2
+2614764,Ringsted,në Ringsted,1,FIXL2
+2614481,Roskilde,në Roskilde,1,FIXL2
+2613731,Skive,në Skive,1,FIXL2
+2613460,Slagelse,në Slagelse,1,FIXL2
+2613233,Solrød Strand,në Solrød Strand,1,FIXL2
+2612629,Stenløse,në Stenløse,1,FIXL2
+2611497,Tønder,në Tønder,1,FIXL2
+2610319,Viborg,në Viborg,1,FIXL2
+591260,Kohtla-Järve,në Kohtla-Järve,1,FIXL2
+590447,Maardu,në Maardu,1,FIXL2
+590031,Narva,në qytetin Narva,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+589580,Pärnu,në Pärnu,1,FIXL2
+587577,Viljandi,në Viljandi,1,FIXL2
+2522208,Albolote,në Albolote,1,FIXL2
+2522165,Alcalá de Guadaira,në qytetin Alcalá de Guadaira,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2522012,Algemesí,në Algemesí,1,FIXL2
+2521964,Aljaraque,në Aljaraque,1,FIXL2
+2521923,Almansa,në qytetin Almansa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2521804,Altea,në qytetin Altea,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2521665,Arcos de la Frontera,në qytetin Arcos de la Frontera,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2521582,Arona,në qytetin Arona,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3129356,Arroyomolinos,në Arroyomolinos,1,FIXL2
+2521510,Aspe,në Aspe,1,FIXL2
+2521486,Atamaría,në qytetin Atamaría,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2521485,Atarfe,në Atarfe,1,FIXL2
+2521335,Barbate,në Barbate,1,FIXL2
+2521215,Baza,në qytetin Baza,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2521016,Berja,në qytetin Berja,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3127007,Calella,në qytetin Calella,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2520052,Cartaya,në qytetin Cartaya,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2519738,Castilleja de la Cuesta,në qytetin Castilleja de la Cuesta,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2519690,Catarroja,në qytetin Catarroja,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2519651,Cehegín,në Cehegín,1,FIXL2
+3109402,Cerdanyola del Vallès,në Cerdanyola del Vallès,1,FIXL2
+2519477,Chipiona,në qytetin Chipiona,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2519289,Conil de la Frontera,në qytetin Conil de la Frontera,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3124569,Cornellà de Llobregat,në Cornellà de Llobregat,1,FIXL2
+2519367,Coín,në Coín,1,FIXL2
+2519110,Crevillente,në Crevillente,1,FIXL2
+3124041,Culleredo,në Culleredo,1,FIXL2
+2520055,Cártama,në qytetin Cártama,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2520447,El Campello,në El Campello,1,FIXL2
+3117232,El Masnou,në El Masnou,1,FIXL2
+3123493,Ferrol,në Ferrol,1,FIXL2
+3121766,Galapagar,në Galapagar,1,FIXL2
+2516797,Hellín,në Hellín,1,FIXL2
+3121881,Hondarribia,në qytetin Hondarribia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3120501,Humanes de Madrid,në Humanes de Madrid,1,FIXL2
+2516474,Icod de los Vinos,në Icod de los Vinos,1,FIXL2
+2516443,Ingenio,në Ingenio,1,FIXL2
+2515692,La Orotava,në qytetin La Orotava,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2515219,Las Torres de Cotillas,në Las Torres de Cotillas,1,FIXL2
+2515072,Lepe,në Lepe,1,FIXL2
+2514868,Los Alcázares,në Los Alcázares,1,FIXL2
+2514553,Los Palacios y Villafranca,në qytetin Los Palacios y Villafranca,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2514158,Marchena,në qytetin Marchena,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2514042,Maspalomas,në Maspalomas,1,FIXL2
+2513983,Mazarrón,në Mazarrón,1,FIXL2
+2513703,Moncada,në qytetin Moncada,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3116527,Montcada i Reixac,në Montcada i Reixac,1,FIXL2
+2513604,Montijo,në Montijo,1,FIXL2
+2513240,Nerja,në qytetin Nerja,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2513195,Novelda,në qytetin Novelda,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2513222,Níjar,në Níjar,1,FIXL2
+2513052,Osuna,në qytetin Osuna,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+6354969,Playa del Inglés,në Playa del Inglés,1,FIXL2
+3113082,Portugalete,në Portugalete,1,FIXL2
+2519068,Quart de Poblet,në Quart de Poblet,1,FIXL2
+2511994,Realejo Alto,në Realejo Alto,1,FIXL2
+2511852,Rincón de la Victoria,në qytetin Rincón de la Victoria,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3111605,Ripollet,në Ripollet,1,FIXL2
+2511700,Rota,në qytetin Rota,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3110986,Salou,në Salou,1,FIXL2
+2511440,San Bartolomé de Tirajana,në qytetin San Bartolomé de Tirajana,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2511371,San Isidro,në San Isidro,1,FIXL2
+2511287,San Miguel de Abona,në qytetin San Miguel de Abona,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3110642,Sant Feliu de Llobregat,në Sant Feliu de Llobregat,1,FIXL2
+3110519,Sant Joan Despí,në Sant Joan Despí,1,FIXL2
+3109546,Sant Just Desvern,në Sant Just Desvern,1,FIXL2
+2511150,Santa Lucía,në qytetin Santa Lucía,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3109897,Santa Uxía de Ribeira,në qytetin Santa Uxía de Ribeira,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2511160,Santafé,në Santafé,1,FIXL2
+3109050,Seseña,në qytetin Seseña,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3109041,Sestao,në Sestao,1,FIXL2
+2510764,Sueca,në qytetin Sueca,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3108317,Tarancón,në Tarancón,1,FIXL2
+2510394,Tomares,në Tomares,1,FIXL2
+3107955,Tordera,në qytetin Tordera,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2510245,Torrox,në Torrox,1,FIXL2
+2510485,Tías,në Tías,1,FIXL2
+2510112,Ubrique,në Ubrique,1,FIXL2
+2510073,Utrera,në qytetin Utrera,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3105247,Villanueva de la Cañada,në qytetin Villanueva de la Cañada,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3105148,Villaquilambre,në Villaquilambre,1,FIXL2
+3104703,Villaviciosa de Odón,në Villaviciosa de Odón,1,FIXL2
+3104475,Viveiro,në Viveiro,1,FIXL2
+2509408,Yaiza,në qytetin Yaiza,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2509402,Yecla,në qytetin Yecla,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2509377,Zafra,në qytetin Zafra,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+659169,Hamina,në qytetin Hamina,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+651659,Kontiolahti,në Kontiolahti,1,FIXL2
+648738,Laukaa,në qytetin Laukaa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+643644,Orimattila,në qytetin Orimattila,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3037423,Antony,në Antony,1,FIXL2
+3031898,Boissy-Saint-Léger,në Boissy-Saint-Léger,1,FIXL2
+3030990,Bourg-la-Reine,në Bourg-la-Reine,1,FIXL2
+8555643,Cergy-Pontoise,në Cergy-Pontoise,1,FIXL2
+3026637,Charenton-le-Pont,në Charenton-le-Pont,1,FIXL2
+3025622,Chelles,në Chelles,1,FIXL2
+3020832,Draveil,në Draveil,1,FIXL2
+3018280,Fleury-les-Aubrais,në Fleury-les-Aubrais,1,FIXL2
+3017341,Franconville,në Franconville,1,FIXL2
+3016830,Gagny,në Gagny,1,FIXL2
+3002647,Le Plessis-Trévise,në Le Plessis-Trévise,1,FIXL2
+2998305,Limeil-Brévannes,në Limeil-Brévannes,1,FIXL2
+2998056,Livry-Gargan,në Livry-Gargan,1,FIXL2
+2997904,Lognes,në Lognes,1,FIXL2
+2995206,Massy,në Massy,1,FIXL2
+2992616,Montfermeil,në Montfermeil,1,FIXL2
+2992090,Montreuil,në Montreuil,1,FIXL2
+2990616,Neuilly-Plaisance,në Neuilly-Plaisance,1,FIXL2
+2986025,Port-de-Bouc,në Port-de-Bouc,1,FIXL2
+2983440,Ris-Orangis,në Ris-Orangis,1,FIXL2
+2983026,Romainville,në Romainville,1,FIXL2
+2981512,Saint-Avertin,në Saint-Avertin,1,FIXL2
+2980558,Sainte-Geneviève-des-Bois,në Sainte-Geneviève-des-Bois,1,FIXL2
+2974681,Sevran,në Sevran,1,FIXL2
+2973841,Stains,në Stains,1,FIXL2
+2968653,Villemomble,në Villemomble,1,FIXL2
+2968555,Villeneuve-la-Garenne,në Villeneuve-la-Garenne,1,FIXL2
+2967934,Viroflay,në Viroflay,1,FIXL2
+3020020,Épinay-sur-Seine,në Épinay-sur-Seine,1,FIXL2
+2634677,Watford,në Watford,1,FIXL2
+8478257,Agios Ioannis Rentis,në Agios Ioannis Rentis,1,FIXL2
+736229,Florina,në qytetin Florina,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+8310138,Ilioupoli,në Ilioupoli,1,FIXL2
+261249,Kamatero,në Kamatero,1,FIXL2
+259824,Kifisia,në qytetin Kifisia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+9034728,Nea Ionia,në qytetin Nea Ionia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+256575,Nea Smyrni,në Nea Smyrni,1,FIXL2
+256429,Nikaia,në qytetin Nikaia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+255377,Petroupoli,në Petroupoli,1,FIXL2
+734301,Sykies,në Sykies,1,FIXL2
+251948,Vyronas,në Vyronas,1,FIXL2
+256601,Ilion,në Ilion,1,FIXL2
+723030,Abony,në Abony,1,FIXL2
+3056357,Ajka,në qytetin Ajka,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3055685,Baja,në qytetin Baja,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+722636,Balmazújváros,në Balmazújváros,1,FIXL2
+722437,Békéscsaba,në qytetin Békéscsaba,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3054543,Cegléd,në Cegléd,1,FIXL2
+3053438,Dunaújváros,në Dunaújváros,1,FIXL2
+3053163,Esztergom,në Esztergom,1,FIXL2
+720334,Gyula,në qytetin Gyula,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3052040,Gyöngyös,në Gyöngyös,1,FIXL2
+3052241,Göd,në Göd,1,FIXL2
+3052236,Gödöllő,në Gödöllő,1,FIXL2
+720284,Hajdúnánás,në Hajdúnánás,1,FIXL2
+720276,Hajdúszoboszló,në Hajdúszoboszló,1,FIXL2
+3050907,Jászberény,në Jászberény,1,FIXL2
+719404,Karcag,në Karcag,1,FIXL2
+719311,Kazincbarcika,në qytetin Kazincbarcika,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3049885,Kiskunfélegyháza,në qytetin Kiskunfélegyháza,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3049880,Kiskunhalas,në Kiskunhalas,1,FIXL2
+3049896,Kiskőrös,në Kiskőrös,1,FIXL2
+718739,Kisvárda,në qytetin Kisvárda,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3049512,Komló,në Komló,1,FIXL2
+3049519,Komárom,në Komárom,1,FIXL2
+717902,Makó,në Makó,1,FIXL2
+717652,Mezőkövesd,në Mezőkövesd,1,FIXL2
+717635,Mezőtúr,në Mezőtúr,1,FIXL2
+3047942,Monor,në Monor,1,FIXL2
+3047896,Mosonmagyaróvár,në Mosonmagyaróvár,1,FIXL2
+717771,Mátészalka,në qytetin Mátészalka,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3047651,Nagykőrös,në Nagykőrös,1,FIXL2
+716736,Orosháza,në qytetin Orosháza,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3046888,Oroszlány,në Oroszlány,1,FIXL2
+3046768,Paks,në Paks,1,FIXL2
+3046686,Pápa,në qytetin Pápa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3045643,Salgótarján,në Salgótarján,1,FIXL2
+715466,Szarvas,në Szarvas,1,FIXL2
+3044681,Szentendre,në Szentendre,1,FIXL2
+715337,Szentes,në Szentes,1,FIXL2
+3044821,Százhalombatta,në qytetin Százhalombatta,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3045487,Sárvár,në Sárvár,1,FIXL2
+715839,Sátoraljaújhely,në Sátoraljaújhely,1,FIXL2
+3044083,Tata,në qytetin Tata,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+714697,Tiszaújváros,në Tiszaújváros,1,FIXL2
+3043293,Vác,në Vác,1,FIXL2
+3042638,Zalaegerszeg,në Zalaegerszeg,1,FIXL2
+716671,Ózd,në Ózd,1,FIXL2
+2965715,Carrigaline,në Carrigaline,1,FIXL2
+2962974,Leixlip,në Leixlip,1,FIXL2
+2962785,Lucan,në Lucan,1,FIXL2
+2633274,Akureyri,në Akureyri,1,FIXL2
+3415496,Keflavík,në Keflavík,1,FIXL2
+8644037,Reykjanesbær,në Reykjanesbær,1,FIXL2
+3183587,Abano Terme,në Abano Terme,1,FIXL2
+3183573,Abbiategrasso,në Abbiategrasso,1,FIXL2
+3183490,Acqui Terme,në Acqui Terme,1,FIXL2
+2525769,Adrano,në Adrano,1,FIXL2
+3183319,Albignasego,në Albignasego,1,FIXL2
+2525755,Alcamo,në Alcamo,1,FIXL2
+3183284,Alghero,në Alghero,1,FIXL2
+3183089,Ancona,në qytetin Ancona,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3183072,Andria,në qytetin Andria,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3182904,Arcore,në Arcore,1,FIXL2
+3182884,Arezzo,në Arezzo,1,FIXL2
+3182749,Ascoli Piceno,në Ascoli Piceno,1,FIXL2
+3182650,Avellino,në Avellino,1,FIXL2
+3182361,Bareggio,në Bareggio,1,FIXL2
+3182297,Bassano del Grappa,në qytetin Bassano del Grappa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3182272,Battipaglia,në qytetin Battipaglia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+8224092,Bellaria-Igea Marina,në qytetin Bellaria-Igea Marina,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3182210,Belluno,në Belluno,1,FIXL2
+2525571,Belpasso,në Belpasso,1,FIXL2
+3182179,Benevento,në Benevento,1,FIXL2
+3181631,Bra,në qytetin Bra,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2525473,Cagliari,në Cagliari,1,FIXL2
+3180991,Campobasso,në Campobasso,1,FIXL2
+2525405,Canicattì,në Canicattì,1,FIXL2
+3180581,Carate Brianza,në qytetin Carate Brianza,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2525350,Carini,në Carini,1,FIXL2
+3180445,Carpi,në Carpi,1,FIXL2
+3180224,Casalecchio di Reno,në Casalecchio di Reno,1,FIXL2
+2525207,Casarano,në Casarano,1,FIXL2
+3179866,Caserta,në qytetin Caserta,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+6534235,Cassano Magnago,në Cassano Magnago,1,FIXL2
+3179781,Cassino,në Cassino,1,FIXL2
+3179686,Castelfranco Emilia,në qytetin Castelfranco Emilia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3179684,Castelfranco Veneto,në Castelfranco Veneto,1,FIXL2
+2525070,Castrovillari,në Castrovillari,1,FIXL2
+2525068,Catania,në qytetin Catania,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2525059,Catanzaro,në Catanzaro,1,FIXL2
+3178999,Cerveteri,në Cerveteri,1,FIXL2
+6534280,Cesano Boscone,në Cesano Boscone,1,FIXL2
+3178957,Cesena,në qytetin Cesena,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3178850,Chiari,në Chiari,1,FIXL2
+3178832,Chiavari,në Chiavari,1,FIXL2
+3178796,Chieti,në Chieti,1,FIXL2
+3178784,Chioggia,në qytetin Chioggia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3178745,Chivasso,në Chivasso,1,FIXL2
+3178671,Cinisello Balsamo,në Cinisello Balsamo,1,FIXL2
+3178650,Ciriè,në Ciriè,1,FIXL2
+3170102,Civitanova Marche,në Civitanova Marche,1,FIXL2
+3178402,Colle di Val d'Elsa,në qytetin Colle di Val d'Elsa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3178398,Colleferro,në Colleferro,1,FIXL2
+3178388,Collegno,në Collegno,1,FIXL2
+3178283,Cologno Monzese,në Cologno Monzese,1,FIXL2
+3178112,Cordenons,në Cordenons,1,FIXL2
+9003711,Corigliano Scalo,në Corigliano Scalo,1,FIXL2
+3178074,Cornaredo,në Cornaredo,1,FIXL2
+3178004,Corsico,në Corsico,1,FIXL2
+3177841,Crema,në qytetin Crema,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2524881,Crotone,në Crotone,1,FIXL2
+3177700,Cuneo,në Cuneo,1,FIXL2
+3177608,Desio,në Desio,1,FIXL2
+3177532,Domodossola,në qytetin Domodossola,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2524819,Enna,në qytetin Enna,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3177337,Este,në Este,1,FIXL2
+3177171,Fasano,në Fasano,1,FIXL2
+3176959,Firence,në Firence,1,FIXL2: ekzonim
+2524734,Floridia,në qytetin Floridia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3176849,Follonica,në qytetin Follonica,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3176843,Fondi,në Fondi,1,FIXL2
+3176746,Forlì,në Forlì,1,FIXL2
+3176733,Formigine,në Formigine,1,FIXL2
+3176639,Fossano,në Fossano,1,FIXL2
+3176515,Frosinone,në Frosinone,1,FIXL2
+3176407,Galatina,në qytetin Galatina,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3176391,Gallarate,në Gallarate,1,FIXL2
+3176379,Galliate,në Galliate,1,FIXL2
+3176219,Gjenovë,në Gjenovë,1,FIXL2: ekzonim
+3176177,Ghedi,në Ghedi,1,FIXL2
+2524606,Gioia Tauro,në Gioia Tauro,1,FIXL2
+3176041,Giussano,në Giussano,1,FIXL2
+3175990,Gorgonzola,në qytetin Gorgonzola,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3175986,Gorizia,në qytetin Gorizia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3175755,Grugliasco,në Grugliasco,1,FIXL2
+6698332,Infernetto,në Infernetto,1,FIXL2
+3175458,Ischia,në qytetin Ischia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3175445,Isernia,në qytetin Isernia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3175384,Ivrea,në qytetin Ivrea,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3175238,Lainate,në Lainate,1,FIXL2
+3164090,Lancenigo-Villorba,në qytetin Lancenigo-Villorba,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3174953,Lecce,në Lecce,1,FIXL2
+3174921,Legnano,në Legnano,1,FIXL2
+2524410,Lentini,në Lentini,1,FIXL2
+3174719,Limbiate,në Limbiate,1,FIXL2
+3174638,Lodi,në Lodi,1,FIXL2
+3174530,Lucca,në qytetin Lucca,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3174494,Lugo,në Lugo,1,FIXL2
+6534216,Lumezzane,në Lumezzane,1,FIXL2
+3174380,Macerata,në qytetin Macerata,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3174295,Magenta,në qytetin Magenta,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3174141,Malnate,në Malnate,1,FIXL2
+3173949,Mariano Comense,në Mariano Comense,1,FIXL2
+3173945,Marigliano,në Marigliano,1,FIXL2
+3173721,Matera,në qytetin Matera,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3173671,Meda,në qytetin Meda,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2524170,Messina,në qytetin Messina,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3173370,Mirandola,në qytetin Mirandola,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3173326,Modugno,në Modugno,1,FIXL2
+3173314,Mogliano Veneto,në Mogliano Veneto,1,FIXL2
+3173180,Moncalieri,në Moncalieri,1,FIXL2
+3173162,Mondovì,në Mondovì,1,FIXL2
+3173124,Monselice,në Monselice,1,FIXL2
+3173029,Montebelluna,në qytetin Montebelluna,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3172996,Montecatini-Terme,në Montecatini-Terme,1,FIXL2
+3172979,Montecchio Maggiore-Alte Ceccato,në Montecchio Maggiore-Alte Ceccato,1,FIXL2
+3172768,Monterotondo,në Monterotondo,1,FIXL2
+3172729,Montesilvano,në Montesilvano,1,FIXL2
+3172718,Montevarchi,në Montevarchi,1,FIXL2
+3172681,Montichiari,në Montichiari,1,FIXL2
+3172629,Monza,në qytetin Monza,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2523998,Noto,në Noto,1,FIXL2
+3172184,Novate Milanese,në Novate Milanese,1,FIXL2
+3172170,Novi Ligure,në Novi Ligure,1,FIXL2
+3172154,Nuoro,në Nuoro,1,FIXL2
+3171986,Orbassano,në Orbassano,1,FIXL2
+2523964,Oristano,në Oristano,1,FIXL2
+6534264,Orta di Atella,në qytetin Orta di Atella,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3171848,Osimo,në Osimo,1,FIXL2
+3171786,Ostuni,në Ostuni,1,FIXL2
+2523920,Palermo,në Palermo,1,FIXL2
+2523902,Palmi,në Palmi,1,FIXL2
+3171484,Parabiago,në Parabiago,1,FIXL2
+3171180,Perugia,në qytetin Perugia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3170778,Pietrasanta,në qytetin Pietrasanta,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3170676,Pioltello,në Pioltello,1,FIXL2
+3170647,Pisa,në qytetin Pisa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3170621,Pistoia,në qytetin Pistoia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3170504,Poggibonsi,në Poggibonsi,1,FIXL2
+3170342,Pomezia,në qytetin Pomezia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3170272,Pontedera,në qytetin Pontedera,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3170147,Pordenone,në Pordenone,1,FIXL2
+3170073,Porto San Giorgio,në Porto San Giorgio,1,FIXL2
+3170027,Potenza,në qytetin Potenza,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3169984,Pozzuoli,në Pozzuoli,1,FIXL2
+3169921,Prato,në Prato,1,FIXL2
+2523664,Quattromiglia,në qytetin Quattromiglia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2523650,Ragusa,në qytetin Ragusa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3169602,Rapallo,në Rapallo,1,FIXL2
+2523630,Reggio Calabria,në qytetin Reggio Calabria,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3169424,Riccione,në Riccione,1,FIXL2
+3169412,Rieti,në Rieti,1,FIXL2
+3169361,Rimini,në Rimini,1,FIXL2
+3169231,Rivoli,në Rivoli,1,FIXL2
+3169056,Romano di Lombardia,në qytetin Romano di Lombardia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3169070,Romë,në Romë,1,FIXL2: ekzonim
+3168936,Roseto degli Abruzzi,në Roseto degli Abruzzi,1,FIXL2
+3168930,Rosignano Solvay-Castiglioncello,në Rosignano Solvay-Castiglioncello,1,FIXL2
+2523577,Rossano Stazione,në Rossano Stazione,1,FIXL2
+3168843,Rovigo,në Rovigo,1,FIXL2
+3168837,Rozzano,në Rozzano,1,FIXL2
+3168730,Sacile,në Sacile,1,FIXL2
+3168627,Salsomaggiore Terme,në Salsomaggiore Terme,1,FIXL2
+3168609,Saluzzo,në Saluzzo,1,FIXL2
+3168550,San Benedetto del Tronto,në San Benedetto del Tronto,1,FIXL2
+6534252,San Felice a Cancello,në San Felice a Cancello,1,FIXL2
+3168236,San Giovanni Lupatoto,në San Giovanni Lupatoto,1,FIXL2
+3168231,San Giovanni Valdarno,në San Giovanni Valdarno,1,FIXL2
+2523461,San Giovanni in Fiore,në San Giovanni in Fiore,1,FIXL2
+3168222,San Giuliano Milanese,në San Giuliano Milanese,1,FIXL2
+3168175,San Lazzaro,në San Lazzaro,1,FIXL2
+3167978,San Mauro Torinese,në San Mauro Torinese,1,FIXL2
+3167953,San Miniato,në San Miniato,1,FIXL2
+3167751,San Salvo,në San Salvo,1,FIXL2
+3167744,San Sebastiano,në San Sebastiano,1,FIXL2
+3167731,San Severo,në San Severo,1,FIXL2
+3167777,Sanremo,në Sanremo,1,FIXL2
+3167113,Saronno,në Saronno,1,FIXL2
+3167104,Sarzana,në qytetin Sarzana,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3167053,Sassuolo,në Sassuolo,1,FIXL2
+3167034,Savigliano,në Savigliano,1,FIXL2
+3166989,Scandiano,në Scandiano,1,FIXL2
+3166988,Scandicci,në Scandicci,1,FIXL2
+3166808,Segrate,në Segrate,1,FIXL2
+3166740,Senigallia,në qytetin Senigallia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3166601,Sesto Fiorentino,në Sesto Fiorentino,1,FIXL2
+3166598,Sesto San Giovanni,në Sesto San Giovanni,1,FIXL2
+3166574,Seveso,në Seveso,1,FIXL2
+3166548,Siena,në qytetin Siena,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2523083,Siracusa,në qytetin Siracusa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3166397,Sondrio,në Sondrio,1,FIXL2
+3166387,Sora,në qytetin Sora,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3219114,Spinea-Orgnano,në Spinea-Orgnano,1,FIXL2
+3166034,Sulmona,në qytetin Sulmona,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3166006,Suzzara,në qytetin Suzzara,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3165803,Teramo,në Teramo,1,FIXL2
+3165788,Terlizzi,në Terlizzi,1,FIXL2
+2522960,Termini Imerese,në Termini Imerese,1,FIXL2
+3165773,Termoli,në Termoli,1,FIXL2
+3165612,Todi,në Todi,1,FIXL2
+3165595,Tolentino,në Tolentino,1,FIXL2
+3165370,Tortona,në qytetin Tortona,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3165340,Tradate,në Tradate,1,FIXL2
+2522876,Trapani,në Trapani,1,FIXL2
+3165201,Treviso,në Treviso,1,FIXL2
+3165198,Trezzano sul Naviglio,në Trezzano sul Naviglio,1,FIXL2
+3165185,Trieste,në Trieste,1,FIXL2
+3165178,Triggiano,në Triggiano,1,FIXL2
+3164617,Venaria Reale,në Venaria Reale,1,FIXL2
+3164440,Viadana,në qytetin Viadana,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3164433,Viareggio,në Viareggio,1,FIXL2
+3164342,Vignola,në qytetin Vignola,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+8378910,Villanova,në qytetin Villanova,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3164083,Vimercate,në Vimercate,1,FIXL2
+3164080,Vimodrone,në Vimodrone,1,FIXL2
+3164039,Viterbo,në Viterbo,1,FIXL2
+3164028,Vittorio Veneto,në Vittorio Veneto,1,FIXL2
+3163995,Voghera,në qytetin Voghera,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3163853,Zola Predosa,në qytetin Zola Predosa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+597989,Kretinga,në qytetin Kretinga,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+593926,Telšiai,në Telšiai,1,FIXL2
+847633,Alta,në qytetin Alta,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3153823,Harstad,në Harstad,1,FIXL2
+3145614,Mo i Rana,në qytetin Mo i Rana,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+776175,Biała Podlaska,në qytetin Biała Podlaska,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3103402,Bielsko-Biała,në qytetin Bielsko-Biała,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+775922,Biłgoraj,në Biłgoraj,1,FIXL2
+3102987,Bolesławiec,në Bolesławiec,1,FIXL2
+3101619,Chorzów,në Chorzów,1,FIXL2
+3101547,Chrzanów,në Chrzanów,1,FIXL2
+3101076,Czechowice-Dziedzice,në Czechowice-Dziedzice,1,FIXL2
+3099759,Elbląg,në Elbląg,1,FIXL2
+3099424,Gdynia,në qytetin Gdynia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3099230,Gliwice,në Gliwice,1,FIXL2
+771506,Grajewo,në Grajewo,1,FIXL2
+3098218,Grudziądz,në Grudziądz,1,FIXL2
+3099213,Głogów,në Głogów,1,FIXL2
+3097257,Jelenia Góra,në qytetin Jelenia Góra,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3096880,Kalisz,në Kalisz,1,FIXL2
+3096779,Kamienna Góra,në qytetin Kamienna Góra,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+769250,Kielce,në Kielce,1,FIXL2
+3095971,Knurów,në Knurów,1,FIXL2
+3095795,Kołobrzeg,në Kołobrzeg,1,FIXL2
+767470,Krosno,në Krosno,1,FIXL2
+3094170,Kutno,në Kutno,1,FIXL2
+766555,Legionowo,në Legionowo,1,FIXL2
+3093692,Legnica,në qytetin Legnica,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3093524,Leszno,në Leszno,1,FIXL2
+3093040,Lubań,në Lubań,1,FIXL2
+3091150,Nakło nad Notecią,në Nakło nad Notecią,1,FIXL2
+763534,Nowy Sącz,në Nowy Sącz,1,FIXL2
+3090452,Nowy Tomyśl,në Nowy Tomyśl,1,FIXL2
+762423,Piaseczno,në Piaseczno,1,FIXL2
+3089125,Piekary Śląskie,në Piekary Śląskie,1,FIXL2
+3088972,Piotrków Trybunalski,në Piotrków Trybunalski,1,FIXL2
+3089033,Piła,në qytetin Piła,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+761228,Pruszków,në Pruszków,1,FIXL2
+761131,Przeworsk,në Przeworsk,1,FIXL2
+3088825,Płock,në Płock,1,FIXL2
+3087497,Radomsko,në Radomsko,1,FIXL2
+3087418,Radzionków,në Radzionków,1,FIXL2
+3086706,Rumia,në qytetin Rumia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3086586,Rybnik,në Rybnik,1,FIXL2
+3086511,Rypin,në Rypin,1,FIXL2
+3085807,Skawina,në qytetin Skawina,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+758626,Sokołów Podlaski,në Sokołów Podlaski,1,FIXL2
+3085128,Sosnowiec,në Sosnowiec,1,FIXL2
+758390,Starachowice,në Starachowice,1,FIXL2
+757718,Suwałki,në Suwałki,1,FIXL2
+3084130,Swarzędz,në Swarzędz,1,FIXL2
+3083878,Szamotuły,në Szamotuły,1,FIXL2
+3085450,Słupsk,në Słupsk,1,FIXL2
+3083426,Tczew,në Tczew,1,FIXL2
+3082998,Turek,në Turek,1,FIXL2
+3082756,Ustka,në qytetin Ustka,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3082751,Ustroń,në Ustroń,1,FIXL2
+3082197,Wieluń,në Wieluń,1,FIXL2
+3081741,Włocławek,në Włocławek,1,FIXL2
+3080985,Zabrze,në Zabrze,1,FIXL2
+3080414,Zduńska Wola,në qytetin Zduńska Wola,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3080251,Zgierz,në Zgierz,1,FIXL2
+3080165,Zielona Góra,në qytetin Zielona Góra,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+754351,Ząbki,në Ząbki,1,FIXL2
+3080074,Złotoryja,në qytetin Złotoryja,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3083955,Świnoujście,në Świnoujście,1,FIXL2
+3083988,Świętochłowice,në Świętochłowice,1,FIXL2
+3080944,Żagań,në Żagań,1,FIXL2
+3079855,Żywiec,në Żywiec,1,FIXL2
+2743095,Alfena,në qytetin Alfena,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2271473,Arrentela,në qytetin Arrentela,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2742506,Baguim do Monte,në Baguim do Monte,1,FIXL2
+2270503,Cacém,në Cacém,1,FIXL2
+2270377,Camarate,në Camarate,1,FIXL2
+2270157,Carnaxide,në Carnaxide,1,FIXL2
+2269041,Corroios,në Corroios,1,FIXL2
+2739756,Fânzeres,në Fânzeres,1,FIXL2
+2738925,Gondomar,në Gondomar,1,FIXL2
+2267131,Laranjeiro,në Laranjeiro,1,FIXL2
+2267067,Linda-a-Velha,në qytetin Linda-a-Velha,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2266621,Massamá,në Massamá,1,FIXL2
+2265464,Oeiras,në Oeiras,1,FIXL2
+2265326,Paço de Arcos,në Paço de Arcos,1,FIXL2
+2264736,Piedade,në Piedade,1,FIXL2
+2264428,Porto de Mós,në Porto de Mós,1,FIXL2
+2735787,Póvoa de Varzim,në Póvoa de Varzim,1,FIXL2
+2264269,Quelfes,në Quelfes,1,FIXL2
+6559488,Quinta do Conde,në Quinta do Conde,1,FIXL2
+2264087,Ramada,në qytetin Ramada,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2735175,Ribeira de Frades,në Ribeira de Frades,1,FIXL2
+2735083,Rio Tinto,në Rio Tinto,1,FIXL2
+2734140,Senhora da Hora,në qytetin Senhora da Hora,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2262957,Sesimbra,në qytetin Sesimbra,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2263326,São João da Talha,në qytetin São João da Talha,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2734434,São Mamede de Infesta,në qytetin São Mamede de Infesta,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2734379,São Paulo de Frades,në São Paulo de Frades,1,FIXL2
+2734363,São Pedro da Cova,në qytetin São Pedro da Cova,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2734306,São Tiago de Custoias,në São Tiago de Custoias,1,FIXL2
+2262582,Torres Novas,në Torres Novas,1,FIXL2
+2733263,Valadares,në Valadares,1,FIXL2
+2743304,Águas Santas,në Águas Santas,1,FIXL2
+686578,Alba Iulia,në qytetin Alba Iulia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+685948,Bacău,në Bacău,1,FIXL2
+684657,Bistrița,në qytetin Bistrița,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+684039,Botoșani,në Botoșani,1,FIXL2
+683760,Breaza,në qytetin Breaza,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+683902,Brăila,në qytetin Brăila,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+683394,Buftea,në qytetin Buftea,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+683123,Buzău,në Buzău,1,FIXL2
+682729,Caransebeș,në Caransebeș,1,FIXL2
+681502,Cisnădie,në Cisnădie,1,FIXL2
+681179,Codlea,në qytetin Codlea,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+680963,Constanța,në qytetin Constanța,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+680332,Craiova,në qytetin Craiova,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+681862,Câmpina,në qytetin Câmpina,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+679452,Deva,në qytetin Deva,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+678817,Drobeta-Turnu Severin,në Drobeta-Turnu Severin,1,FIXL2
+678978,Drăgășani,në Drăgășani,1,FIXL2
+678015,Focșani,në Focșani,1,FIXL2
+676527,Gura Humorului,në Gura Humorului,1,FIXL2
+677742,Găești,në Găești,1,FIXL2
+675810,Iași,në Iași,1,FIXL2
+674531,Lugoj,në Lugoj,1,FIXL2
+671964,Odorheiu Secuiesc,në Odorheiu Secuiesc,1,FIXL2
+671382,Pantelimon,në Pantelimon,1,FIXL2
+670889,Piatra Neamț,në Piatra Neamț,1,FIXL2
+670609,Pitești,në Pitești,1,FIXL2
+670474,Ploiești,në Ploiești,1,FIXL2
+669870,Popești-Leordeni,në Popești-Leordeni,1,FIXL2
+668605,Roșiorii de Vede,në Roșiorii de Vede,1,FIXL2
+668872,Râmnicu Vâlcea,në qytetin Râmnicu Vâlcea,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+667526,Sebeș,në Sebeș,1,FIXL2
+667227,Sighetu Marmației,në Sighetu Marmației,1,FIXL2
+8436351,Sighișoara,në qytetin Sighișoara,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+666767,Slatina,në qytetin Slatina,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+665850,Suceava,në qytetin Suceava,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+664518,Tulcea,në qytetin Tulcea,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+664460,Turda,në qytetin Turda,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+665024,Târgoviște,në Târgoviște,1,FIXL2
+665004,Târgu Mureș,në Târgu Mureș,1,FIXL2
+662334,Zalău,në Zalău,1,FIXL2
+662284,Zărnești,në Zărnești,1,FIXL2
+1508291,Chelyabinsk,në Chelyabinsk,1,FIXL2
+819740,Drozhzhino,në Drozhzhino,1,FIXL2
+553915,Kaluga,në qytetin Kaluga,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+550280,Khimki,në Khimki,1,FIXL2
+547523,Klin,në Klin,1,FIXL2
+535121,Lipetsk,në Lipetsk,1,FIXL2
+534595,Lobnya,në qytetin Lobnya,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+523812,Mytishchi,në Mytishchi,1,FIXL2
+511196,Perm,në Perm,1,FIXL2
+508101,Podolsk,në Podolsk,1,FIXL2
+502018,Reutov,në Reutov,1,FIXL2
+496638,Sergiyev Posad,në Sergiyev Posad,1,FIXL2
+473778,Vidnoye,në Vidnoye,1,FIXL2
+473247,Vladimir,në Vladimir,1,FIXL2
+472757,Volgograd,në Volgograd,1,FIXL2
+468902,Yaroslavl,në Yaroslavl,1,FIXL2
+606531,Boden,në Boden,1,FIXL2
+2700839,Kinna,në qytetin Kinna,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+605155,Kiruna,në qytetin Kiruna,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+2667109,Tullinge,në Tullinge,1,FIXL2
+2665452,Vallentuna,në qytetin Vallentuna,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3194351,Novo Mesto,në Novo Mesto,1,FIXL2
+3192241,Ptuj,në Ptuj,1,FIXL2
+3188915,Trbovlje,në Trbovlje,1,FIXL2
+3189075,Velenje,në Velenje,1,FIXL2
+3061186,Banská Bystrica,në qytetin Banská Bystrica,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3060950,Brezno,në Brezno,1,FIXL2
+3060405,Dolný Kubín,në Dolný Kubín,1,FIXL2
+3060219,Galanta,në qytetin Galanta,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3060139,Handlová,në Handlová,1,FIXL2
+3060095,Hlohovec,në Hlohovec,1,FIXL2
+3059435,Komárno,në Komárno,1,FIXL2
+3059436,Komárno,në Komárno,1,FIXL2
+3058986,Lučenec,në Lučenec,1,FIXL2
+3058897,Malacky,në Malacky,1,FIXL2
+724144,Michalovce,në Michalovce,1,FIXL2
+3058477,Nové Mesto nad Váhom,në Nové Mesto nad Váhom,1,FIXL2
+3058472,Nové Zámky,në Nové Zámky,1,FIXL2
+3058268,Partizánske,në Partizánske,1,FIXL2
+3058210,Pezinok,në Pezinok,1,FIXL2
+3058202,Piešťany,në Piešťany,1,FIXL2
+3058060,Považská Bystrica,në qytetin Považská Bystrica,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3058000,Prievidza,në qytetin Prievidza,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3057963,Púchov,në Púchov,1,FIXL2
+723736,Rimavská Sobota,në qytetin Rimavská Sobota,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+723713,Rožňava,në qytetin Rožňava,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3057692,Senec,në Senec,1,FIXL2
+3057691,Senica,në qytetin Senica,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3057630,Skalica,në qytetin Skalica,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+723559,Snina,në qytetin Snina,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3057174,Topoľčany,në Topoľčany,1,FIXL2
+723195,Vranov nad Topľou,në Vranov nad Topľou,1,FIXL2
+3057769,Šaľa,në qytetin Šaľa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+3056523,Žiar nad Hronom,në Žiar nad Hronom,1,FIXL2
+712165,Bila Tserkva,në qytetin Bila Tserkva,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+712590,Bilohorodka,në qytetin Bilohorodka,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+711660,Boryspil,në Boryspil,1,FIXL2
+711416,Brody,në Brody,1,FIXL2
+711390,Brovary,në Brovary,1,FIXL2
+710791,Cherkasy,në Cherkasy,1,FIXL2
+710719,Chernivtsi,në Chernivtsi,1,FIXL2
+707688,Chornomorsk,në Chornomorsk,1,FIXL2
+709930,Dnipro,në Dnipro,1,FIXL2
+709540,Dubno,në Dubno,1,FIXL2
+13546531,Kropyvnytskyi (Fortechnyi),në Kropyvnytskyi (Fortechnyi),1,FIXL2
+708901,Haisyn,në Haisyn,1,FIXL2
+707565,Irpin,në Irpin,1,FIXL2
+707471,Ivano-Frankivsk,në Ivano-Frankivsk,1,FIXL2
+706950,Kamianets-Podilskyi,në Kamianets-Podilskyi,1,FIXL2
+706369,Khmelnytskyi,në Khmelnytskyi,1,FIXL2
+706165,Khust,në Khust,1,FIXL2
+12519211,Kniahynyn,në Kniahynyn,1,FIXL2
+705392,Kolomyia,në qytetin Kolomyia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+13609094,Zhytomyr (Koroliovskyi),në Zhytomyr (Koroliovskyi),1,FIXL2
+704901,Korosten,në Korosten,1,FIXL2
+704858,Korsun-Shevchenkivskyi,në Korsun-Shevchenkivskyi,1,FIXL2
+704617,Kovel,në Kovel,1,FIXL2
+705812,Kropyvnytskyi,në Kropyvnytskyi,1,FIXL2
+703845,Kryvyi Rih,në Kryvyi Rih,1,FIXL2
+13561778,Poltava (Kyivskyi),në Poltava (Kyivskyi),1,FIXL2
+700696,Mostyska,në qytetin Mostyska,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+700646,Mukachevo,në Mukachevo,1,FIXL2
+700569,Mykolaiv,në Mykolaiv,1,FIXL2
+700507,Nadvirna,në qytetin Nadvirna,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+700261,Netishyn,në Netishyn,1,FIXL2
+8468760,Novoyavorivsk,në Novoyavorivsk,1,FIXL2
+13608468,Chernihiv (Novozavodskyi),në Chernihiv (Novozavodskyi),1,FIXL2
+698740,Odesa,në qytetin Odesa,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+698625,Oleksandriia,në qytetin Oleksandriia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+697593,Pervomaisk,në Pervomaisk,1,FIXL2
+696943,Pidhorodne,në Pidhorodne,1,FIXL2
+13631378,Khmelnytskyi (Rakove),në Khmelnytskyi (Rakove),1,FIXL2
+695594,Rivne,në Rivne,1,FIXL2
+699445,Samar,në Samar,1,FIXL2
+694792,Sarny,në Sarny,1,FIXL2
+710554,Sheptytskyi,në Sheptytskyi,1,FIXL2
+13561779,Poltava (Shevchenkivskyi),në Poltava (Shevchenkivskyi),1,FIXL2
+693457,Smila,në qytetin Smila,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+693301,Sokal,në Sokal,1,FIXL2
+692372,Stryi,në Stryi,1,FIXL2
+692129,Svaliava,në qytetin Svaliava,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+691650,Ternopil,në Ternopil,1,FIXL2
+691179,Truskavets,në Truskavets,1,FIXL2
+690688,Uman,në Uman,1,FIXL2
+690548,Uzhhorod,në Uzhhorod,1,FIXL2
+689558,Vinnytsia,në qytetin Vinnytsia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+689159,Volochysk,në Volochysk,1,FIXL2
+689378,Volodymyr,në Volodymyr,1,FIXL2
+688723,Vyshhorod,në Vyshhorod,1,FIXL2
+689487,Vyshneve,në Vyshneve,1,FIXL2
+687700,Zaporizhzhia,në qytetin Zaporizhzhia,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+686967,Zhytomyr,në Zhytomyr,1,FIXL2
+686919,Znamianka,në qytetin Znamianka,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+686803,Zvenyhorodka,në qytetin Zvenyhorodka,0,"FIXL2: emri mbaron me -a, formë e sigurt"
+699553,Zviahel,në Zviahel,1,FIXL2
+6941080,Fort Bragg,në Fort Bragg,1,FIXL2

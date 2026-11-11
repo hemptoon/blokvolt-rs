@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Checks the BG localisation of the world layer (L-BG, pool 3).
 
+L2-BG (11.11.2026): all 8 strings_*.json files and the texts.json sections
+pay / routes (LANG0 format: dotted path of a multilingual node -> text).
+
 Run from the repo root:  python3 content/world/i18n/bg/check.py
 Exit code 0 = no errors. Warnings do not fail.
 """
@@ -19,6 +22,10 @@ TAG = re.compile(r'</?([a-zA-Z0-9]+)[^>]*>')
 ENT = re.compile(r'&[a-zA-Z#0-9]+;')
 SLUG_SEG = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')
 FORBIDDEN = [r'24/7', r'\bведнага\b', r'\bние\b', r'\bнаш[аиe]?\b', r'\bредакци', r'Evolako']
+
+STRING_FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+                'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed', 'strings_home')   # FIXL: + home
+NODE_LANGS = {'en', 'sr', 'ru'}
 
 errors, warns = [], []
 
@@ -43,7 +50,8 @@ def plural_cats():
 
 def _norm_ph(x):
     # {city_u}/{country_u} are allowed in every language (pool 4, 00:12): engine puts the language's in_phrase there
-    return re.sub(r'\{(city|country)_u\}', r'{\1}', x)
+    # FIXL D14: {name_nom} may stand where EN has {name}
+    return re.sub(r'\{(city|country)_u\}', r'{\1}', x).replace('{name_nom}', '{name}')
 
 
 def sig(s):
@@ -66,7 +74,7 @@ def check_text(where, en, bg):
 
 
 def check_strings(cats):
-    for name in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
+    for name in STRING_FILES:
         en = {k: v['en'] for k, v in json.load(open(WORLD / f'{name}.json', encoding='utf-8')).items()}
         p = HERE / f'{name}.json'
         if not p.exists():
@@ -120,24 +128,53 @@ def walk(where, en, bg):
         err(f'{where}: non-text value changed')
 
 
+def ml_nodes(x, path='', out=None):
+    """Multilingual nodes of pay.json / routes.json: dicts with 'en' plus 'sr'/'ru'."""
+    out = {} if out is None else out
+    if isinstance(x, dict):
+        if isinstance(x.get('en'), str) and (NODE_LANGS - {'en'}) & set(x):
+            out[path] = x['en']
+            return out
+        for k, v in x.items():
+            ml_nodes(v, f'{path}.{k}' if path else k, out)
+    elif isinstance(x, list):
+        for i, v in enumerate(x):
+            ml_nodes(v, f'{path}[{i}]', out)
+    return out
+
+
 def check_texts():
     p = HERE / 'texts.json'
     if not p.exists():
         err('texts.json missing')
         return
     bg = json.load(open(p, encoding='utf-8'))
-    if set(bg) != {'about_data', 'download'}:
-        err(f'texts.json: top keys {sorted(bg)}')
+    want = {'about_data', 'download', 'pay', 'routes'}
+    if set(bg) != want:
+        err(f'texts.json: top keys {sorted(bg)} != {sorted(want)}')
     for k in ('about_data', 'download'):
         en = json.load(open(WORLD / f'{k}.json', encoding='utf-8'))['en']
         walk(f'texts.{k}', en, bg.get(k))
+    for k in ('pay', 'routes'):
+        nodes = ml_nodes(json.load(open(WORLD / f'{k}.json', encoding='utf-8')))
+        got = bg.get(k) or {}
+        if not isinstance(got, dict):
+            err(f'texts.{k}: must be an object path -> text')
+            continue
+        for path in nodes.keys() - got.keys():
+            err(f'texts.{k}.{path}: missing')
+        for path in got.keys() - nodes.keys():
+            err(f'texts.{k}.{path}: no such multilingual node')
+        for path in nodes.keys() & got.keys():
+            check_text(f'texts.{k}.{path}', nodes[path], got[path])
 
 
 def check_slugs():
     want = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
+    extra = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']   # FIXL F5: optional section paths
     s = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
-    if sorted(s) != sorted(want):
-        err(f'slugs.json keys {sorted(s)}')
+    if not set(want) <= set(s) <= set(want) | set(extra):
+        err(f'slugs.json keys {sorted(s)}: need {sorted(want)}, may add {sorted(extra)}')
     for k, v in s.items():
         if k in ('net', 'about', 'download'):
             if not SLUG_SEG.match(v):
@@ -156,7 +193,8 @@ def check_slugs():
 def check_csv():
     src_c = {r['cc']: r for r in csv.DictReader(open(NAMES / 'countries.csv', encoding='utf-8'))}
     rows = list(csv.DictReader(open(HERE / 'countries.csv', encoding='utf-8')))
-    if rows and list(rows[0].keys()) != ['cc', 'name', 'slug', 'in_phrase', 'note']:
+    if rows and list(rows[0].keys()) not in (['cc', 'name', 'slug', 'in_phrase', 'note'],
+                                             ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):   # FIXL D4
         err(f'countries.csv columns {list(rows[0].keys())}')
     seen = set()
     for r in rows:
@@ -178,12 +216,14 @@ def check_csv():
 
     src = {r['geonameid']: r for r in csv.DictReader(open(NAMES / 'cities.csv', encoding='utf-8'))}
     rows = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
+    # FIXL2: geonameids may also come from names/cities_extra.csv
+    extra = {r['geonameid']: r for r in csv.DictReader(open(NAMES / 'cities_extra.csv', encoding='utf-8'))} if (NAMES / 'cities_extra.csv').exists() else {}
     if rows and list(rows[0].keys()) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']:
         err(f'cities.csv columns {list(rows[0].keys())}')
     seen = set()
     for r in rows:
         g = r['geonameid']
-        if g not in src:
+        if g not in src and g not in extra:
             err(f'cities.csv: unknown geonameid {g}')
         if g in seen:
             err(f'cities.csv: duplicate {g}')
@@ -192,14 +232,23 @@ def check_csv():
             err(f'cities.csv {g}: empty name/in_phrase')
         if r['decl_ok'] not in ('0', '1'):
             err(f'cities.csv {g}: decl_ok must be 0/1')
+        if re.search(r'[A-Za-z]', r['name']):   # FIXL2: Cyrillic only
+            err(f'cities.csv {g}: Latin letters in name')
         if not re.match(r'^(в|във|на) ', r['in_phrase']):
             err(f'cities.csv {g}: in_phrase must start with „в“/„във“/„на“')
-    must = {g for g, r in src.items() if r['cc'] == 'BG' or r['stage'] == 'month'}
+    must = {g for g, r in src.items() if r['cc'] == 'BG' or r['stage'] == 'month'} | {g for g, r in extra.items() if r['cc'] == 'BG'}
     if must - seen:
         err(f'cities.csv: {len(must - seen)} BG/month cities missing')
-    if len(seen) < len(src):
-        warn(f'cities.csv: {len(seen)}/{len(src)} cities covered')
-    return len(seen), len(src)
+    # FIXL: every city page of pages_state must have a row
+    ps = WORLD / 'state' / 'pages_state.json'
+    if ps.exists():
+        pages = {str(v.get('key', '')).split(':')[-1] for v in json.load(open(ps, encoding='utf-8')).values()
+                 if v.get('type') == 'city' and str(v.get('key', '')).startswith('t:')}
+        for g in sorted(pages - seen):
+            err(f'cities.csv: city with a page missing: {g}')
+    if len(seen) < len(src) + len(extra):
+        warn(f'cities.csv: {len(seen)}/{len(src) + len(extra)} cities covered')
+    return len(seen), len(src) + len(extra)
 
 
 def main():

@@ -45,3 +45,21 @@ See section at the end (60 random strings).
 
 ### Back-translation result (separate agent, 60 random strings, blind)
 56 of 60 equivalent, 4 minor, 0 major. Fixed: `pages.t_country` (and for consistency `t_city`, `t_city_cc`, `t_hub_*`) now say "Stazioni di ricarica per auto elettriche" (EN "EV charging stations"); `prices.h_nets` "Reti e piani tariffari" ("plans" is broader than "abbonamenti"); `pages.st_dc50`, `p_dc`, `p_city_cmp` — "da 50 kW in su" to avoid reading "exactly 50 kW". No "noi", "24/7", "subito" or network ratings found.
+
+## L2-IT (11.11.2026, branch `l2-it` from `dev bb86f74`)
+- New keys: 274 — strings_map +29 (`ci_*` check-ins from G6, `emb_open`), new files strings_pay (93), strings_press (54), strings_b2b (33), strings_embed (65). HOME2 keys not in `dev` yet — to be added by LANGI.
+- `texts.json`: new sections `pay` (6 AFIR points, keys `afir.points[i]`) and `routes` (59 stop city names, keys `routes[i].stops[j].city`, Italian names taken from `cities.csv`: Salisburgo, Lubiana, Zagabria, Belgrado, rest local). `sources_pages.nobil` added as is (not translated by contract).
+- Check-ins: "segnalazione" for check-in, "automobilisti" for drivers; question "Quanto è costata la ricarica?" (impersonal instead of "hai pagato").
+- Pay: `{name}` (country name without article) is put at the start with a colon ("Germania: Paese dell'UE, …") because Italian needs an article before country names; `{cu}` = `countries.csv:in_phrase`.
+- Press: index called "Indice europeo dei prezzi di ricarica per auto elettriche" in titles; the credit line keeps the English product name (as in `prices.data_p`).
+- Embed/B2B: imperative tu in buttons and the configurator ("Copia il codice", "Apri la mappa completa", "per il tuo sito" — standard Italian web UI); impersonal infinitives in instructions and errors. Parameter values `tamna`, `nepoznato` stay as they are (they are URL values).
+- Own countries (IT CH SM VA): all 62 city pages of IT (28) and CH (34) have Italian names and `in_phrase`; SM/VA have no city pages; VA is not in `names/countries.csv`.
+- 48 new NOBIL cities (SE 46, NO 2) are in `pages_state.json` but not in `names/cities.csv`, so they can't be added here (check fails on unknown geonameid); outside the IT market anyway.
+- check.py: now checks all 8 files, the `pay`/`routes` sections of texts.json and forbidden words (noi, nostro, redazione, 24/7, subito, evolako, "mi ", sconto).
+
+## FIXL (11.11.2026)
+- `strings_home.json` added (71 keys; plurals one/many/other, `many` = "di …"). Shell: `lang_hint` "Questa pagina è disponibile anche in italiano", `lang_hint_close` "Chiudi".
+- D14 `name_nom` in countries.csv = name with the article used as a subject (la Svizzera, i Paesi Bassi, gli Stati Uniti, il Regno Unito, l'Italia, lo Sri Lanka, il Principato di Monaco); no article for city-states/islands (Cipro, Malta, Cuba, San Marino, Singapore, Hong Kong, Israele, Andorra). Never put `{name_nom}` after di/a/da/in/su (articulated prepositions: "della Svizzera") — use "per {name_nom}" or an absolute gerund ("Essendo {name_nom} un Paese dell'UE, …"), which also avoids verb agreement with plural names.
+- Slugs (F5): /it/come-pagare/ /it/percorsi/ /it/per-i-media/ /it/dati-per-le-aziende/ /it/embed/mappa/ /it/mappa-per-il-tuo-sito/ /it/sviluppatori/.
+- D13: "Kiev" and "Repubblica Ceca" kept. Geneva = Ginevra; 48 NOBIL towns under Swedish/Norwegian names ("ad" only before A-, as in the file).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 230). Exonyms: Firenze, Genova, Roma, Sciaffusa, Zugo, Odessa; GeoNames frazioni → comune (Villorba, Spinea, Montecchio Maggiore, San Lazzaro di Savena); RO ş/ţ → ș/ț; GR/UA/BY in the file's English romanisation (no accents; BY Russian-based as Grodno).

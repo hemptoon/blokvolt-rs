@@ -2352,6 +2352,7 @@ geonameid,cc,name_local,name_en,name_sr,name_ru,slug,sr_u,ru_v,decl_ok,note,stag
 3180423,IT,Carrara,Carrara,Karara,Каррара,carrara,u Karari,в Карраре,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
 6534232,IT,Lamezia Terme,Lamezia Terme,Lamezia Terme,Ламеция-Терме,lamezia-terme,u gradu Lamezia Terme,в городе Ламеция-Терме,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,0,0
 756135,PL,Warszawa,Warsaw,Varšava,Варшава,warszawa,u Varšavi,в Варшаве,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",month,1,1
+2660646,CH,Genève,Geneva,Ženeva,Женева,geneve,u Ženevi,в Женеве,1,FIXL: no city page yet — Geneva points are not normalised to this city (data task),month,1,1
 1880252,SG,Singapore,Singapore,Singapur,Сингапур,singapore,u Singapuru,в Сингапуре,1,,quarter,1,1
 6167865,CA,Toronto,Toronto,Toronto,Торонто,toronto,u Torontu,в Торонто,1,,quarter,1,1
 1819609,HK,九龍,Kowloon,Kaulun,Коулун,kowloon,u gradu Kaulun,в Коулуне,0,"area of Hong Kong, not a separate city; transkripcija",quarter,0,1
@@ -5471,6 +5472,54 @@ geonameid,cc,name_local,name_en,name_sr,name_ru,slug,sr_u,ru_v,decl_ok,note,stag
 5927690,CA,Coquitlam,Coquitlam,Coquitlam,Кокуитлам,coquitlam,u Coquitlamu,в Кокуитламе,1,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",quarter,1,1
 12908892,TW,新北,New Taipei City,Novi Tajpej,Новый Тайбэй,new-taipei-city,u Novom Tajpeju,в Новом Тайбэе,1,"transkripcija; добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",quarter,1,1
 3530597,MX,Ciudad de México,Mexico City,Meksiko Siti,Мехико,ciudad-de-mexico,u gradu Meksiko Siti,в Мехико,0,"добавлен в v2: цель слияния агломерации K1 (agglomerations.csv), без stage в geo/cities.csv",quarter,0,1
+3149563,NO,Kongsberg,Kongsberg,Kongsberg,Конгсберг,kongsberg,u Kongsbergu,в Конгсберге,1,FIXL: NOBIL city page,quarter,1,1
+3139075,NO,Skien,Skien,Skien,Шиен,skien,u gradu Skien,в Шиене,0,FIXL: NOBIL city page,quarter,0,1
+2727234,SE,Åkersberga,Åkersberga,Åkersberga,Окерсберга,akersberga,u gradu Åkersberga,в Окерсберге,0,FIXL: NOBIL city page,quarter,0,1
+2726756,SE,Alingsås,Alingsås,Alingsås,Алингсос,alingsas,u Alingsåsu,в Алингсосе,1,FIXL: NOBIL city page,quarter,1,1
+2721259,SE,Boo,Boo,Boo,Бу,boo,u gradu Boo,в Бу,0,FIXL: NOBIL city page,quarter,0,1
+2716166,SE,Enköping,Enköping,Enköping,Энчёпинг,enkoping,u Enköpingu,в Энчёпинге,1,FIXL: NOBIL city page,quarter,1,1
+2715946,SE,Eslöv,Eslöv,Eslöv,Эслёв,eslov,u Eslövu,в Эслёве,1,FIXL: NOBIL city page,quarter,1,1
+2715573,SE,Falkenberg,Falkenberg,Falkenberg,Фалькенберг,falkenberg,u Falkenbergu,в Фалькенберге,1,FIXL: NOBIL city page,quarter,1,1
+2715568,SE,Falköping,Falköping,Falköping,Фальчёпинг,falkoeping,u Falköpingu,в Фальчёпинге,1,FIXL: NOBIL city page; slug as published (ö→oe),quarter,1,1
+2709628,SE,Gustavsberg,Gustavsberg,Gustavsberg,Густавсберг,gustavsberg,u Gustavsbergu,в Густавсберге,1,FIXL: NOBIL city page,quarter,1,1
+2707953,SE,Haninge,Haninge,Haninge,Ханинге,haninge,u gradu Haninge,в Ханинге,0,FIXL: NOBIL city page,quarter,0,1
+2704620,SE,Huddinge,Huddinge,Huddinge,Худдинге,huddinge,u gradu Huddinge,в Худдинге,0,FIXL: NOBIL city page,quarter,0,1
+2704613,SE,Hudiksvall,Hudiksvall,Hudiksvall,Худиксвалль,hudiksvall,u Hudiksvallu,в Худиксвалле,1,FIXL: NOBIL city page,quarter,1,1
+2704136,SE,Huskvarna,Huskvarna,Huskvarna,Хускварна,huskvarna,u gradu Huskvarna,в Хускварне,0,FIXL: NOBIL city page,quarter,0,1
+2703396,SE,Jakobsberg,Jakobsberg,Jakobsberg,Якобсберг,jakobsberg,u Jakobsbergu,в Якобсберге,1,FIXL: NOBIL city page,quarter,1,1
+2701715,SE,Karlskoga,Karlskoga,Karlskoga,Карлскуга,karlskoga,u gradu Karlskoga,в Карлскуге,0,FIXL: NOBIL city page,quarter,0,1
+2701223,SE,Katrineholm,Katrineholm,Katrineholm,Катринехольм,katrineholm,u Katrineholmu,в Катринехольме,1,FIXL: NOBIL city page,quarter,1,1
+2699791,SE,Köping,Köping,Köping,Чёпинг,koping,u Köpingu,в Чёпинге,1,FIXL: NOBIL city page,quarter,1,1
+2699282,SE,Kristinehamn,Kristinehamn,Kristinehamn,Кристинехамн,kristinehamn,u Kristinehamnu,в Кристинехамне,1,FIXL: NOBIL city page,quarter,1,1
+2698767,SE,Kumla,Kumla,Kumla,Кумла,kumla,u gradu Kumla,в Кумле,0,FIXL: NOBIL city page,quarter,0,1
+2697720,SE,Landskrona,Landskrona,Landskrona,Ландскруна,landskrona,u gradu Landskrona,в Ландскруне,0,FIXL: NOBIL city page,quarter,0,1
+2696503,SE,Lerum,Lerum,Lerum,Лерум,lerum,u Lerumu,в Леруме,1,FIXL: NOBIL city page,quarter,1,1
+2696334,SE,Lidingö,Lidingö,Lidingö,Лидингё,lidingoe,u gradu Lidingö,в городе Лидингё,0,FIXL: NOBIL city page; slug as published (ö→oe),quarter,0,0
+604490,SE,Luleå,Luleå,Luleå,Лулео,lulea,u gradu Luleå,в Лулео,0,FIXL: NOBIL city page,quarter,0,1
+2692613,SE,Mariestad,Mariestad,Mariestad,Мариестад,mariestad,u Mariestadu,в Мариестаде,1,FIXL: NOBIL city page,quarter,1,1
+2692475,SE,Märsta,Märsta,Märsta,Мерста,marsta,u gradu Märsta,в Мерсте,0,FIXL: NOBIL city page,quarter,0,1
+2690580,SE,Nacka,Nacka,Nacka,Накка,nacka,u gradu Nacka,в Накке,0,FIXL: NOBIL city page,quarter,0,1
+2690170,SE,Nässjö,Nässjö,Nässjö,Нэшё,nassjo,u gradu Nässjö,в Нэшё,0,FIXL: NOBIL city page,quarter,0,1
+2688250,SE,Norrtälje,Norrtälje,Norrtälje,Норртелье,norrtalje,u gradu Norrtälje,в Норртелье,0,FIXL: NOBIL city page,quarter,0,1
+2687700,SE,Nyköping,Nyköping,Nyköping,Нючёпинг,nykoping,u Nyköpingu,в Нючёпинге,1,FIXL: NOBIL city page,quarter,1,1
+2686469,SE,Örnsköldsvik,Örnsköldsvik,Örnsköldsvik,Эрншёльдсвик,ornskoldsvik,u Örnsköldsviku,в Эрншёльдсвике,1,FIXL: NOBIL city page,quarter,1,1
+2686162,SE,Oskarshamn,Oskarshamn,Oskarshamn,Оскарсхамн,oskarshamn,u Oskarshamnu,в Оскарсхамне,1,FIXL: NOBIL city page,quarter,1,1
+2684395,SE,Partille,Partille,Partille,Партилле,partille,u gradu Partille,в Партилле,0,FIXL: NOBIL city page,quarter,0,1
+603570,SE,Piteå,Piteå,Piteå,Питео,pitea,u gradu Piteå,в Питео,0,FIXL: NOBIL city page,quarter,0,1
+602913,SE,Skellefteå,Skellefteå,Skellefteå,Шеллефтео,skelleftea,u gradu Skellefteå,в Шеллефтео,0,FIXL: NOBIL city page,quarter,0,1
+2676176,SE,Södertälje,Södertälje,Södertälje,Сёдертелье,soedertaelje,u gradu Södertälje,в Сёдертелье,0,FIXL: NOBIL city page; slug as published (ö→oe),quarter,0,1
+2675408,SE,Sollentuna,Sollentuna,Sollentuna,Соллентуна,sollentuna,u gradu Sollentuna,в Соллентуне,0,FIXL: NOBIL city page,quarter,0,1
+2675397,SE,Solna,Solna,Solna,Сольна,solna,u gradu Solna,в Сольне,0,FIXL: NOBIL city page,quarter,0,1
+2674649,SE,Staffanstorp,Staffanstorp,Staffanstorp,Стаффансторп,staffanstorp,u Staffanstorpu,в Стаффансторпе,1,FIXL: NOBIL city page,quarter,1,1
+2670879,SE,Sundbyberg,Sundbyberg,Sundbyberg,Сундбюберг,sundbyberg,u Sundbybergu,в Сундбюберге,1,FIXL: NOBIL city page,quarter,1,1
+2669772,SE,Täby,Täby,Täby,Тебю,taby,u gradu Täby,в Тебю,0,FIXL: NOBIL city page,quarter,0,1
+2667303,SE,Trollhättan,Trollhättan,Trollhättan,Труллхеттан,trollhattan,u Trollhättanu,в Труллхеттане,1,FIXL: NOBIL city page,quarter,1,1
+2667094,SE,Tumba,Tumba,Tumba,Тумба,tumba,u gradu Tumba,в Тумбе,0,FIXL: NOBIL city page,quarter,0,1
+2666238,SE,Upplands Väsby,Upplands Väsby,Upplands Väsby,Упландс-Весбю,upplands-vaesby,u gradu Upplands Väsby,в Упландс-Весбю,0,FIXL: NOBIL city page; slug as published (ö→oe),quarter,0,1
+2664203,SE,Västervik,Västervik,Västervik,Вестервик,vaestervik,u Västerviku,в Вестервике,1,FIXL: NOBIL city page; slug as published (ö→oe),quarter,1,1
+2665171,SE,Vänersborg,Vänersborg,Vänersborg,Венерсборг,vanersborg,u Vänersborgu,в Венерсборге,1,FIXL: NOBIL city page,quarter,1,1
+2664855,SE,Värnamo,Värnamo,Värnamo,Вернаму,varnamo,u gradu Värnamo,в Вернаму,0,FIXL: NOBIL city page,quarter,0,1
+2662689,SE,Visby,Visby,Visby,Висбю,visby,u gradu Visby,в Висбю,0,FIXL: NOBIL city page,quarter,0,1
 3191648,HR,Rijeka,Rijeka,Rijeka,Риека,rijeka,u Rijeci,в Риеке,1,,balkan,1,1
 3191281,BA,Sarajevo,Sarajevo,Sarajevo,Сараево,sarajevo,u Sarajevu,в Сараеве,1,,balkan,1,1
 3186886,HR,Zagreb,Zagreb,Zagreb,Загреб,zagreb,u Zagrebu,в Загребе,1,,balkan,1,1

@@ -1,151 +1,151 @@
-cc,name,slug,in_phrase,note
-AD,Andorre,andorre,en Andorre,
-AE,Émirats arabes unis,emirats-arabes-unis,aux Émirats arabes unis,
-AL,Albanie,albanie,en Albanie,
-AM,Arménie,armenie,en Arménie,
-AR,Argentine,argentine,en Argentine,
-AT,Autriche,autriche,en Autriche,
-AU,Australie,australie,en Australie,
-AW,Aruba,aruba,à Aruba,
-AX,Îles Åland,iles-aland,aux îles Åland,
-AZ,Azerbaïdjan,azerbaidjan,en Azerbaïdjan,
-BA,Bosnie-Herzégovine,bosnie-herzegovine,en Bosnie-Herzégovine,
-BB,Barbade,barbade,à la Barbade,
-BE,Belgique,belgique,en Belgique,
-BG,Bulgarie,bulgarie,en Bulgarie,
-BH,Bahreïn,bahrein,à Bahreïn,
-BO,Bolivie,bolivie,en Bolivie,
-BR,Brésil,bresil,au Brésil,
-BW,Botswana,botswana,au Botswana,
-BY,Biélorussie,bielorussie,en Biélorussie,
-BZ,Belize,belize,au Belize,
-CA,Canada,canada,au Canada,
-CH,Suisse,suisse,en Suisse,
-CL,Chili,chili,au Chili,
-CN,Chine,chine,en Chine,
-CO,Colombie,colombie,en Colombie,
-CR,Costa Rica,costa-rica,au Costa Rica,
-CU,Cuba,cuba,à Cuba,
-CY,Chypre,chypre,à Chypre,
-CZ,Tchéquie,tchequie,en Tchéquie,
-DE,Allemagne,allemagne,en Allemagne,
-DK,Danemark,danemark,au Danemark,
-DO,République dominicaine,republique-dominicaine,en République dominicaine,
-DZ,Algérie,algerie,en Algérie,
-EC,Équateur,equateur,en Équateur,
-EE,Estonie,estonie,en Estonie,
-EG,Égypte,egypte,en Égypte,
-ES,Espagne,espagne,en Espagne,
-ET,Éthiopie,ethiopie,en Éthiopie,
-FI,Finlande,finlande,en Finlande,
-FJ,Fidji,fidji,aux Fidji,
-FO,Îles Féroé,iles-feroe,aux îles Féroé,
-FR,France,france,en France,
-GB,Royaume-Uni,royaume-uni,au Royaume-Uni,
-GE,Géorgie,georgie,en Géorgie,
-GG,Guernesey,guernesey,à Guernesey,
-GH,Ghana,ghana,au Ghana,
-GI,Gibraltar,gibraltar,à Gibraltar,
-GR,Grèce,grece,en Grèce,
-GT,Guatemala,guatemala,au Guatemala,
-GY,Guyana,guyana,au Guyana,
-HK,Hong Kong,hong-kong,à Hong Kong,CLDR : « R.A.S. chinoise de Hong Kong » — forme courte usuelle
-HR,Croatie,croatie,en Croatie,
-HT,Haïti,haiti,en Haïti,
-HU,Hongrie,hongrie,en Hongrie,
-ID,Indonésie,indonesie,en Indonésie,
-IE,Irlande,irlande,en Irlande,
-IL,Israël,israel,en Israël,
-IM,Île de Man,ile-de-man,sur l’île de Man,
-IN,Inde,inde,en Inde,
-IQ,Irak,irak,en Irak,
-IR,Iran,iran,en Iran,
-IS,Islande,islande,en Islande,
-IT,Italie,italie,en Italie,
-JE,Jersey,jersey,à Jersey,
-JM,Jamaïque,jamaique,en Jamaïque,
-JO,Jordanie,jordanie,en Jordanie,
-JP,Japon,japon,au Japon,
-KE,Kenya,kenya,au Kenya,
-KG,Kirghizstan,kirghizstan,au Kirghizstan,
-KH,Cambodge,cambodge,au Cambodge,
-KR,Corée du Sud,coree-du-sud,en Corée du Sud,
-KW,Koweït,koweit,au Koweït,
-KY,Îles Caïmans,iles-caimans,aux îles Caïmans,
-KZ,Kazakhstan,kazakhstan,au Kazakhstan,
-LB,Liban,liban,au Liban,
-LC,Sainte-Lucie,sainte-lucie,à Sainte-Lucie,
-LI,Liechtenstein,liechtenstein,au Liechtenstein,
-LK,Sri Lanka,sri-lanka,au Sri Lanka,
-LT,Lituanie,lituanie,en Lituanie,
-LU,Luxembourg,luxembourg,au Luxembourg,
-LV,Lettonie,lettonie,en Lettonie,
-MA,Maroc,maroc,au Maroc,
-MC,Monaco,monaco,à Monaco,
-MD,Moldavie,moldavie,en Moldavie,
-ME,Monténégro,montenegro,au Monténégro,
-MF,Saint-Martin,saint-martin,à Saint-Martin,
-MK,Macédoine du Nord,macedoine-du-nord,en Macédoine du Nord,
-MM,Myanmar,myanmar,au Myanmar,CLDR : « Myanmar (Birmanie) » — forme courte
-MN,Mongolie,mongolie,en Mongolie,
-MO,Macao,macao,à Macao,CLDR : « R.A.S. chinoise de Macao » — forme courte usuelle
-MT,Malte,malte,à Malte,
-MU,Maurice,maurice,à Maurice,
-MX,Mexique,mexique,au Mexique,
-MY,Malaisie,malaisie,en Malaisie,
-NA,Namibie,namibie,en Namibie,
-NC,Nouvelle-Calédonie,nouvelle-caledonie,en Nouvelle-Calédonie,
-NG,Nigeria,nigeria,au Nigeria,
-NI,Nicaragua,nicaragua,au Nicaragua,
-NL,Pays-Bas,pays-bas,aux Pays-Bas,
-NO,Norvège,norvege,en Norvège,
-NP,Népal,nepal,au Népal,
-NZ,Nouvelle-Zélande,nouvelle-zelande,en Nouvelle-Zélande,
-OM,Oman,oman,à Oman,
-PA,Panama,panama,au Panama,
-PE,Pérou,perou,au Pérou,
-PF,Polynésie française,polynesie-francaise,en Polynésie française,
-PH,Philippines,philippines,aux Philippines,
-PK,Pakistan,pakistan,au Pakistan,
-PL,Pologne,pologne,en Pologne,
-PR,Porto Rico,porto-rico,à Porto Rico,
-PS,Territoires palestiniens,territoires-palestiniens,dans les Territoires palestiniens,
-PT,Portugal,portugal,au Portugal,
-PY,Paraguay,paraguay,au Paraguay,
-QA,Qatar,qatar,au Qatar,
-RE,La Réunion,la-reunion,à La Réunion,
-RO,Roumanie,roumanie,en Roumanie,
-RS,Serbie,serbie,en Serbie,
-RU,Russie,russie,en Russie,
-RW,Rwanda,rwanda,au Rwanda,
-SA,Arabie saoudite,arabie-saoudite,en Arabie saoudite,
-SD,Soudan,soudan,au Soudan,
-SE,Suède,suede,en Suède,
-SG,Singapour,singapour,à Singapour,
-SI,Slovénie,slovenie,en Slovénie,
-SJ,Svalbard et Jan Mayen,svalbard-et-jan-mayen,au Svalbard et à Jan Mayen,
-SK,Slovaquie,slovaquie,en Slovaquie,
-SM,Saint-Marin,saint-marin,à Saint-Marin,
-SO,Somalie,somalie,en Somalie,
-SR,Suriname,suriname,au Suriname,
-SV,Salvador,salvador,au Salvador,
-SY,Syrie,syrie,en Syrie,
-SZ,Eswatini,eswatini,en Eswatini,
-TH,Thaïlande,thailande,en Thaïlande,
-TJ,Tadjikistan,tadjikistan,au Tadjikistan,
-TN,Tunisie,tunisie,en Tunisie,
-TO,Tonga,tonga,aux Tonga,
-TR,Turquie,turquie,en Turquie,
-TT,Trinité-et-Tobago,trinite-et-tobago,à Trinité-et-Tobago,
-TW,Taïwan,taiwan,à Taïwan,
-UA,Ukraine,ukraine,en Ukraine,
-UG,Ouganda,ouganda,en Ouganda,
-US,États-Unis,etats-unis,aux États-Unis,
-UY,Uruguay,uruguay,en Uruguay,
-UZ,Ouzbékistan,ouzbekistan,en Ouzbékistan,
-VC,Saint-Vincent-et-les-Grenadines,saint-vincent-et-les-grenadines,à Saint-Vincent-et-les-Grenadines,trait d’union officiel (CLDR sans trait)
-VE,Venezuela,venezuela,au Venezuela,
-VN,Viêt Nam,viet-nam,au Viêt Nam,
-WS,Samoa,samoa,aux Samoa,
-XK,Kosovo,kosovo,au Kosovo,
-ZA,Afrique du Sud,afrique-du-sud,en Afrique du Sud,
+cc,name,slug,in_phrase,note,name_nom
+AD,Andorre,andorre,en Andorre,,l’Andorre
+AE,Émirats arabes unis,emirats-arabes-unis,aux Émirats arabes unis,,les Émirats arabes unis
+AL,Albanie,albanie,en Albanie,,l’Albanie
+AM,Arménie,armenie,en Arménie,,l’Arménie
+AR,Argentine,argentine,en Argentine,,l’Argentine
+AT,Autriche,autriche,en Autriche,,l’Autriche
+AU,Australie,australie,en Australie,,l’Australie
+AW,Aruba,aruba,à Aruba,,Aruba
+AX,Îles Åland,iles-aland,aux îles Åland,,les îles Åland
+AZ,Azerbaïdjan,azerbaidjan,en Azerbaïdjan,,l’Azerbaïdjan
+BA,Bosnie-Herzégovine,bosnie-herzegovine,en Bosnie-Herzégovine,,la Bosnie-Herzégovine
+BB,Barbade,barbade,à la Barbade,,la Barbade
+BE,Belgique,belgique,en Belgique,,la Belgique
+BG,Bulgarie,bulgarie,en Bulgarie,,la Bulgarie
+BH,Bahreïn,bahrein,à Bahreïn,,Bahreïn
+BO,Bolivie,bolivie,en Bolivie,,la Bolivie
+BR,Brésil,bresil,au Brésil,,le Brésil
+BW,Botswana,botswana,au Botswana,,le Botswana
+BY,Biélorussie,bielorussie,en Biélorussie,,la Biélorussie
+BZ,Belize,belize,au Belize,,le Belize
+CA,Canada,canada,au Canada,,le Canada
+CH,Suisse,suisse,en Suisse,,la Suisse
+CL,Chili,chili,au Chili,,le Chili
+CN,Chine,chine,en Chine,,la Chine
+CO,Colombie,colombie,en Colombie,,la Colombie
+CR,Costa Rica,costa-rica,au Costa Rica,,le Costa Rica
+CU,Cuba,cuba,à Cuba,,Cuba
+CY,Chypre,chypre,à Chypre,,Chypre
+CZ,Tchéquie,tchequie,en Tchéquie,,la Tchéquie
+DE,Allemagne,allemagne,en Allemagne,,l’Allemagne
+DK,Danemark,danemark,au Danemark,,le Danemark
+DO,République dominicaine,republique-dominicaine,en République dominicaine,,la République dominicaine
+DZ,Algérie,algerie,en Algérie,,l’Algérie
+EC,Équateur,equateur,en Équateur,,l’Équateur
+EE,Estonie,estonie,en Estonie,,l’Estonie
+EG,Égypte,egypte,en Égypte,,l’Égypte
+ES,Espagne,espagne,en Espagne,,l’Espagne
+ET,Éthiopie,ethiopie,en Éthiopie,,l’Éthiopie
+FI,Finlande,finlande,en Finlande,,la Finlande
+FJ,Fidji,fidji,aux Fidji,,les Fidji
+FO,Îles Féroé,iles-feroe,aux îles Féroé,,les îles Féroé
+FR,France,france,en France,,la France
+GB,Royaume-Uni,royaume-uni,au Royaume-Uni,,le Royaume-Uni
+GE,Géorgie,georgie,en Géorgie,,la Géorgie
+GG,Guernesey,guernesey,à Guernesey,,Guernesey
+GH,Ghana,ghana,au Ghana,,le Ghana
+GI,Gibraltar,gibraltar,à Gibraltar,,Gibraltar
+GR,Grèce,grece,en Grèce,,la Grèce
+GT,Guatemala,guatemala,au Guatemala,,le Guatemala
+GY,Guyana,guyana,au Guyana,,le Guyana
+HK,Hong Kong,hong-kong,à Hong Kong,CLDR : « R.A.S. chinoise de Hong Kong » — forme courte usuelle,Hong Kong
+HR,Croatie,croatie,en Croatie,,la Croatie
+HT,Haïti,haiti,en Haïti,,Haïti
+HU,Hongrie,hongrie,en Hongrie,,la Hongrie
+ID,Indonésie,indonesie,en Indonésie,,l’Indonésie
+IE,Irlande,irlande,en Irlande,,l’Irlande
+IL,Israël,israel,en Israël,,Israël
+IM,Île de Man,ile-de-man,sur l’île de Man,,l’île de Man
+IN,Inde,inde,en Inde,,l’Inde
+IQ,Irak,irak,en Irak,,l’Irak
+IR,Iran,iran,en Iran,,l’Iran
+IS,Islande,islande,en Islande,,l’Islande
+IT,Italie,italie,en Italie,,l’Italie
+JE,Jersey,jersey,à Jersey,,Jersey
+JM,Jamaïque,jamaique,en Jamaïque,,la Jamaïque
+JO,Jordanie,jordanie,en Jordanie,,la Jordanie
+JP,Japon,japon,au Japon,,le Japon
+KE,Kenya,kenya,au Kenya,,le Kenya
+KG,Kirghizstan,kirghizstan,au Kirghizstan,,le Kirghizstan
+KH,Cambodge,cambodge,au Cambodge,,le Cambodge
+KR,Corée du Sud,coree-du-sud,en Corée du Sud,,la Corée du Sud
+KW,Koweït,koweit,au Koweït,,le Koweït
+KY,Îles Caïmans,iles-caimans,aux îles Caïmans,,les îles Caïmans
+KZ,Kazakhstan,kazakhstan,au Kazakhstan,,le Kazakhstan
+LB,Liban,liban,au Liban,,le Liban
+LC,Sainte-Lucie,sainte-lucie,à Sainte-Lucie,,Sainte-Lucie
+LI,Liechtenstein,liechtenstein,au Liechtenstein,,le Liechtenstein
+LK,Sri Lanka,sri-lanka,au Sri Lanka,,le Sri Lanka
+LT,Lituanie,lituanie,en Lituanie,,la Lituanie
+LU,Luxembourg,luxembourg,au Luxembourg,,le Luxembourg
+LV,Lettonie,lettonie,en Lettonie,,la Lettonie
+MA,Maroc,maroc,au Maroc,,le Maroc
+MC,Monaco,monaco,à Monaco,,Monaco
+MD,Moldavie,moldavie,en Moldavie,,la Moldavie
+ME,Monténégro,montenegro,au Monténégro,,le Monténégro
+MF,Saint-Martin,saint-martin,à Saint-Martin,,Saint-Martin
+MK,Macédoine du Nord,macedoine-du-nord,en Macédoine du Nord,,la Macédoine du Nord
+MM,Myanmar,myanmar,au Myanmar,CLDR : « Myanmar (Birmanie) » — forme courte,le Myanmar
+MN,Mongolie,mongolie,en Mongolie,,la Mongolie
+MO,Macao,macao,à Macao,CLDR : « R.A.S. chinoise de Macao » — forme courte usuelle,Macao
+MT,Malte,malte,à Malte,,Malte
+MU,Maurice,maurice,à Maurice,,Maurice
+MX,Mexique,mexique,au Mexique,,le Mexique
+MY,Malaisie,malaisie,en Malaisie,,la Malaisie
+NA,Namibie,namibie,en Namibie,,la Namibie
+NC,Nouvelle-Calédonie,nouvelle-caledonie,en Nouvelle-Calédonie,,la Nouvelle-Calédonie
+NG,Nigeria,nigeria,au Nigeria,,le Nigeria
+NI,Nicaragua,nicaragua,au Nicaragua,,le Nicaragua
+NL,Pays-Bas,pays-bas,aux Pays-Bas,,les Pays-Bas
+NO,Norvège,norvege,en Norvège,,la Norvège
+NP,Népal,nepal,au Népal,,le Népal
+NZ,Nouvelle-Zélande,nouvelle-zelande,en Nouvelle-Zélande,,la Nouvelle-Zélande
+OM,Oman,oman,à Oman,,Oman
+PA,Panama,panama,au Panama,,le Panama
+PE,Pérou,perou,au Pérou,,le Pérou
+PF,Polynésie française,polynesie-francaise,en Polynésie française,,la Polynésie française
+PH,Philippines,philippines,aux Philippines,,les Philippines
+PK,Pakistan,pakistan,au Pakistan,,le Pakistan
+PL,Pologne,pologne,en Pologne,,la Pologne
+PR,Porto Rico,porto-rico,à Porto Rico,,Porto Rico
+PS,Territoires palestiniens,territoires-palestiniens,dans les Territoires palestiniens,,les Territoires palestiniens
+PT,Portugal,portugal,au Portugal,,le Portugal
+PY,Paraguay,paraguay,au Paraguay,,le Paraguay
+QA,Qatar,qatar,au Qatar,,le Qatar
+RE,La Réunion,la-reunion,à La Réunion,,La Réunion
+RO,Roumanie,roumanie,en Roumanie,,la Roumanie
+RS,Serbie,serbie,en Serbie,,la Serbie
+RU,Russie,russie,en Russie,,la Russie
+RW,Rwanda,rwanda,au Rwanda,,le Rwanda
+SA,Arabie saoudite,arabie-saoudite,en Arabie saoudite,,l’Arabie saoudite
+SD,Soudan,soudan,au Soudan,,le Soudan
+SE,Suède,suede,en Suède,,la Suède
+SG,Singapour,singapour,à Singapour,,Singapour
+SI,Slovénie,slovenie,en Slovénie,,la Slovénie
+SJ,Svalbard et Jan Mayen,svalbard-et-jan-mayen,au Svalbard et à Jan Mayen,,le Svalbard et Jan Mayen
+SK,Slovaquie,slovaquie,en Slovaquie,,la Slovaquie
+SM,Saint-Marin,saint-marin,à Saint-Marin,,Saint-Marin
+SO,Somalie,somalie,en Somalie,,la Somalie
+SR,Suriname,suriname,au Suriname,,le Suriname
+SV,Salvador,salvador,au Salvador,,le Salvador
+SY,Syrie,syrie,en Syrie,,la Syrie
+SZ,Eswatini,eswatini,en Eswatini,,l’Eswatini
+TH,Thaïlande,thailande,en Thaïlande,,la Thaïlande
+TJ,Tadjikistan,tadjikistan,au Tadjikistan,,le Tadjikistan
+TN,Tunisie,tunisie,en Tunisie,,la Tunisie
+TO,Tonga,tonga,aux Tonga,,les Tonga
+TR,Turquie,turquie,en Turquie,,la Turquie
+TT,Trinité-et-Tobago,trinite-et-tobago,à Trinité-et-Tobago,,Trinité-et-Tobago
+TW,Taïwan,taiwan,à Taïwan,,Taïwan
+UA,Ukraine,ukraine,en Ukraine,,l’Ukraine
+UG,Ouganda,ouganda,en Ouganda,,l’Ouganda
+US,États-Unis,etats-unis,aux États-Unis,,les États-Unis
+UY,Uruguay,uruguay,en Uruguay,,l’Uruguay
+UZ,Ouzbékistan,ouzbekistan,en Ouzbékistan,,l’Ouzbékistan
+VC,Saint-Vincent-et-les-Grenadines,saint-vincent-et-les-grenadines,à Saint-Vincent-et-les-Grenadines,trait d’union officiel (CLDR sans trait),Saint-Vincent-et-les-Grenadines
+VE,Venezuela,venezuela,au Venezuela,,le Venezuela
+VN,Viêt Nam,viet-nam,au Viêt Nam,,le Viêt Nam
+WS,Samoa,samoa,aux Samoa,,les Samoa
+XK,Kosovo,kosovo,au Kosovo,,le Kosovo
+ZA,Afrique du Sud,afrique-du-sud,en Afrique du Sud,,l’Afrique du Sud

@@ -14,7 +14,7 @@
  "home_h1": "Kde nabiť elektromobil – v každej krajine, meste a sieti",
  "home_lead": "Na jednej mape: {n}, {c}, z otvorených údajov. Pri každom mieste je uvedené, odkiaľ údaje pochádzajú a kedy boli naposledy potvrdené.",
  "search_label": "Nájsť krajinu alebo mesto",
- "search_ph": "napr. Mníchov, Nemecko, Lyon",
+ "search_ph": "napr. Bratislava, Rakúsko, Mníchov",
  "search_none": "Pre toto miesto zatiaľ nie je stránka. Otvorte radšej mapu.",
  "map_h": "Mapa",
  "map_p": "Všetky verejné nabíjacie miesta z otvorených registrov, Open Charge Map a OpenStreetMap – bez zhlukov, s filtrami podľa výkonu, siete a spoľahlivosti údajov.",
@@ -49,5 +49,7 @@
   "few": "krajiny",
   "many": "krajiny",
   "other": "krajín"
- }
+ },
+ "lang_hint": "Táto stránka je k dispozícii aj v slovenčine",
+ "lang_hint_close": "Zavrieť"
 }

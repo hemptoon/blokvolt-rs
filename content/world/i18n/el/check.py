@@ -9,7 +9,7 @@ WORLD = HERE.parent.parent
 LANG = HERE.name
 CATS = set(Locale(LANG).plural_form.tags) | {'other'}
 PH = re.compile(r'\{[^{}]*\}')
-U = {'{city_u}': '{city}', '{country_u}': '{country}'}
+U = {'{city_u}': '{city}', '{country_u}': '{country}', '{name_nom}': '{name}'}  # FIXL D14: {name_nom} for {name}
 TAG = re.compile(r'</?[a-zA-Z][^>]*>|&[a-zA-Z#0-9]+;')
 SLUG = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')
 err = []
@@ -19,7 +19,7 @@ def tags(s):  # tag names + entities, attribute order ignored
     return sorted(re.sub(r'\s.*', '', t.rstrip('>')) for t in TAG.findall(s))
 
 
-for part in ('map', 'pages', 'shell', 'prices'):
+for part in ('map', 'pages', 'shell', 'prices', 'pay', 'press', 'b2b', 'embed', 'home'):  # L2: all 8 files; FIXL: + home
     en = json.load(open(WORLD / f'strings_{part}.json'))
     tr = json.load(open(HERE / f'strings_{part}.json'))
     for k in en.keys() - tr.keys():
@@ -77,10 +77,52 @@ for name, src in (('about_data', 'about_data.json'), ('download', 'download.json
     else:
         walk(json.load(open(WORLD / src))['en'], texts[name], '.' + name)
 
+# texts.json → pay / routes (LANG0 format): dotted path of each multilingual node → text
+def ml_nodes(o, p, out):
+    if isinstance(o, dict):
+        if 'en' in o and 'sr' in o and isinstance(o['en'], str):
+            out[p] = o['en']; return out
+        for k, v in o.items():
+            ml_nodes(v, (p + '.' if p else '') + k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            ml_nodes(v, f'{p}[{i}]', out)
+    return out
+
+for name, src in (('pay', 'pay.json'), ('routes', 'routes.json')):
+    want = ml_nodes(json.load(open(WORLD / src)), '', {})
+    got = texts.get(name)
+    if not isinstance(got, dict):
+        err.append(f'texts: missing section {name}'); continue
+    for k in want.keys() - got.keys():
+        err.append(f'texts.{name}: missing {k}')
+    for k in got.keys() - want.keys():
+        err.append(f'texts.{name}: extra {k}')
+    for k, e in want.items():
+        t = got.get(k)
+        if k in got and (not isinstance(t, str) or not t.strip()):
+            err.append(f'texts.{name}.{k}: empty')
+        elif k in got and (sorted(PH.findall(e)) != sorted(PH.findall(t)) or tags(e) != tags(t)):
+            err.append(f'texts.{name}.{k}: placeholders/tags differ')
+
+# tone: impersonal (no "we"), no 24/7 — RUNBOOK §0 / CONTENT_STYLE
+BAD = re.compile(r'24/7|\bεμείς\b|ευχαριστούμε|\bη σύνταξη\b', re.I)
+def all_str(o):
+    if isinstance(o, str): yield o
+    elif isinstance(o, dict):
+        for v in o.values(): yield from all_str(v)
+    elif isinstance(o, list):
+        for v in o: yield from all_str(v)
+for f in sorted(HERE.glob('strings_*.json')) + [HERE / 'texts.json']:
+    for x in all_str(json.load(open(f))):
+        if BAD.search(x):
+            err.append(f'{f.name}: forbidden wording: {x[:60]}')
+
 # slugs.json
 KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
 sl = json.load(open(HERE / 'slugs.json'))
-if sorted(sl) != sorted(KEYS):
+OPT = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']  # FIXL F5, paths /el/…/
+if not set(KEYS) <= set(sl) <= set(KEYS) | set(OPT):
     err.append(f'slugs: keys {sorted(sl)}')
 for k, v in sl.items():
     if k in ('net', 'about', 'download'):
@@ -101,8 +143,10 @@ if [r['cc'] for r in rows] != src_c:
     err.append('countries: cc list differs from names/countries.csv')
 seen = set()
 for r in rows:
-    if list(r) != ['cc', 'name', 'slug', 'in_phrase', 'note']:
+    if list(r) not in (['cc', 'name', 'slug', 'in_phrase', 'note'], ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):  # D4
         err.append('countries: header'); break
+    if 'name_nom' in r and not (r['name_nom'] or '').endswith(' ' + r['name']):  # D14: article + name
+        err.append(f"countries {r['cc']}: name_nom {r['name_nom']!r}")
     if not r['name'].strip() or not r['in_phrase'].strip():
         err.append(f"countries {r['cc']}: empty name/in_phrase")
     if not SLUG.match(r['slug']):
@@ -113,6 +157,7 @@ for r in rows:
 
 # cities.csv
 src = [r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities.csv'))]
+src += [r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities_extra.csv'))]   # FIXL2
 rows = list(csv.DictReader(open(HERE / 'cities.csv')))
 if rows and list(rows[0]) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']:
     err.append('cities: header')
@@ -124,6 +169,11 @@ if set(ids) - set(src):
 for r in rows:
     if not r['name'].strip() or not r['in_phrase'].strip() or r['decl_ok'] not in ('0', '1'):
         err.append(f"cities {r['geonameid']}: empty field or bad decl_ok")
+# FIXL: every city page must have a row
+ps = json.load(open(WORLD / 'state' / 'pages_state.json'))
+pages = {v['key'].split(':')[-1] for v in ps.values() if v.get('type') == 'city'}
+if pages - set(ids):
+    err.append(f'cities: {len(pages - set(ids))} city pages without a row, e.g. {sorted(pages - set(ids))[:5]}')
 
 print(f'L-{LANG.upper()}: cities {len(rows)}/{len(src)}, decl_ok=1 {sum(r["decl_ok"] == "1" for r in rows)}')
 for e in err:

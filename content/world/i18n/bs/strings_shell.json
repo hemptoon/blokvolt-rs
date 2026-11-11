@@ -47,5 +47,7 @@
   "one": "zemlja",
   "few": "zemlje",
   "other": "zemalja"
- }
+ },
+ "lang_hint": "Ova stranica postoji i na bosanskom",
+ "lang_hint_close": "Zatvori"
 }

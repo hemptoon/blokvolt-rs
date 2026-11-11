@@ -37,7 +37,7 @@ geonameid,name,in_phrase,decl_ok,note
 3065067,Strakonice,ve Strakonicích,1,
 3073254,Kopřivnice,v Kopřivnici,1,
 3077929,Česká Lípa,v České Lípě,1,
-3061695,Žďár nad Sázavou,ve Žďáru nad Sázavou,1,
+3061695,Žďár nad Sázavou,ve Žďáře nad Sázavou,1,
 3065617,Sokolov,v Sokolově,1,
 3067051,Rakovník,v Rakovníku,1,
 3067542,Příbram,v Příbrami,1,
@@ -5604,3 +5604,873 @@ geonameid,name,in_phrase,decl_ok,note
 786950,Podujevë,ve městě Podujevë,0,
 788470,Llazicë,ve městě Llazicë,0,
 790674,Gjilan,ve městě Gjilan,0,
+2660646,Ženeva,v Ženevě,1,FIXL
+3149563,Kongsberg,ve městě Kongsberg,0,FIXL
+3139075,Skien,ve městě Skien,0,FIXL
+2727234,Åkersberga,ve městě Åkersberga,0,FIXL
+2726756,Alingsås,ve městě Alingsås,0,FIXL
+2721259,Boo,ve městě Boo,0,FIXL
+2716166,Enköping,ve městě Enköping,0,FIXL
+2715946,Eslöv,ve městě Eslöv,0,FIXL
+2715573,Falkenberg,ve městě Falkenberg,0,FIXL
+2715568,Falköping,ve městě Falköping,0,FIXL
+2709628,Gustavsberg,ve městě Gustavsberg,0,FIXL
+2707953,Haninge,ve městě Haninge,0,FIXL
+2704620,Huddinge,ve městě Huddinge,0,FIXL
+2704613,Hudiksvall,ve městě Hudiksvall,0,FIXL
+2704136,Huskvarna,ve městě Huskvarna,0,FIXL
+2703396,Jakobsberg,ve městě Jakobsberg,0,FIXL
+2701715,Karlskoga,ve městě Karlskoga,0,FIXL
+2701223,Katrineholm,ve městě Katrineholm,0,FIXL
+2699791,Köping,ve městě Köping,0,FIXL
+2699282,Kristinehamn,ve městě Kristinehamn,0,FIXL
+2698767,Kumla,ve městě Kumla,0,FIXL
+2697720,Landskrona,ve městě Landskrona,0,FIXL
+2696503,Lerum,ve městě Lerum,0,FIXL
+2696334,Lidingö,ve městě Lidingö,0,FIXL
+604490,Luleå,ve městě Luleå,0,FIXL
+2692613,Mariestad,ve městě Mariestad,0,FIXL
+2692475,Märsta,ve městě Märsta,0,FIXL
+2690580,Nacka,ve městě Nacka,0,FIXL
+2690170,Nässjö,ve městě Nässjö,0,FIXL
+2688250,Norrtälje,ve městě Norrtälje,0,FIXL
+2687700,Nyköping,ve městě Nyköping,0,FIXL
+2686469,Örnsköldsvik,ve městě Örnsköldsvik,0,FIXL
+2686162,Oskarshamn,ve městě Oskarshamn,0,FIXL
+2684395,Partille,ve městě Partille,0,FIXL
+603570,Piteå,ve městě Piteå,0,FIXL
+602913,Skellefteå,ve městě Skellefteå,0,FIXL
+2676176,Södertälje,ve městě Södertälje,0,FIXL
+2675408,Sollentuna,ve městě Sollentuna,0,FIXL
+2675397,Solna,ve městě Solna,0,FIXL
+2674649,Staffanstorp,ve městě Staffanstorp,0,FIXL
+2670879,Sundbyberg,ve městě Sundbyberg,0,FIXL
+2669772,Täby,ve městě Täby,0,FIXL
+2667303,Trollhättan,ve městě Trollhättan,0,FIXL
+2667094,Tumba,ve městě Tumba,0,FIXL
+2666238,Upplands Väsby,ve městě Upplands Väsby,0,FIXL
+2664203,Västervik,ve městě Västervik,0,FIXL
+2665171,Vänersborg,ve městě Vänersborg,0,FIXL
+2664855,Värnamo,ve městě Värnamo,0,FIXL
+2662689,Visby,ve městě Visby,0,FIXL
+2763423,Traun,ve městě Traun,0,FIXL2
+2760910,Wolfsberg,ve městě Wolfsberg,0,FIXL2
+2803429,Aarschot,ve městě Aarschot,0,FIXL2
+2802743,Balen,ve městě Balen,0,FIXL2
+2801226,Boussu,ve městě Boussu,0,FIXL2
+2799496,Destelbergen,ve městě Destelbergen,0,FIXL2
+2799412,Diepenbeek,ve městě Diepenbeek,0,FIXL2
+2799226,Dour,ve městě Dour,0,FIXL2
+2799090,Duffel,ve městě Duffel,0,FIXL2
+2799007,Edegem,ve městě Edegem,0,FIXL2
+2796833,Haaltert,ve městě Haaltert,0,FIXL2
+2796637,Hamme,ve městě Hamme,0,FIXL2
+2796012,Herent,ve městě Herent,0,FIXL2
+2795800,Heusden,ve městě Heusden,0,FIXL2
+2794663,Kasterlee,ve městě Kasterlee,0,FIXL2
+2794210,Knokke-Heist,ve městě Knokke-Heist,0,FIXL2
+2794179,Koersel,ve městě Koersel,0,FIXL2
+2793446,Lanaken,ve městě Lanaken,0,FIXL2
+2793144,Lebbeke,ve městě Lebbeke,0,FIXL2
+2792360,Lille,ve městě Lille,0,FIXL2
+2791961,Maasmechelen,ve městě Maasmechelen,0,FIXL2
+2791857,Maldegem,ve městě Maldegem,0,FIXL2
+2791424,Meise,ve městě Meise,0,FIXL2
+2791194,Middelkerke,ve městě Middelkerke,0,FIXL2
+2790114,Ninove,ve městě Ninove,0,FIXL2
+2789751,Oostkamp,ve městě Oostkamp,0,FIXL2
+2789413,Overijse,ve městě Overijse,0,FIXL2
+2788726,Poperinge,ve městě Poperinge,0,FIXL2
+2788348,Ranst,ve městě Ranst,0,FIXL2
+2786344,Soumagne,ve městě Soumagne,0,FIXL2
+2786229,Stabroek,ve městě Stabroek,0,FIXL2
+2783632,Willebroek,ve městě Willebroek,0,FIXL2
+2783293,Zele,ve městě Zele,0,FIXL2
+2783197,Zolder,ve městě Zolder,0,FIXL2
+2783188,Zonhoven,ve městě Zonhoven,0,FIXL2
+2783081,Zwijndrecht,ve městě Zwijndrecht,0,FIXL2
+733618,Asenovgrad,ve městě Asenovgrad,0,FIXL2
+733579,Aytos,ve městě Aytos,0,FIXL2
+733264,Berkovitsa,ve městě Berkovitsa,0,FIXL2
+733014,Botevgrad,ve městě Botevgrad,0,FIXL2
+732452,Chirpan,ve městě Chirpan,0,FIXL2
+726418,Dobrich,ve městě Dobrich,0,FIXL2
+726872,Dupnitsa,ve městě Dupnitsa,0,FIXL2
+731549,Gabrovo,ve městě Gabrovo,0,FIXL2
+731233,Gorna Oryahovitsa,ve městě Gorna Oryahovitsa,0,FIXL2
+731108,Gotse Delchev,ve městě Gotse Delchev,0,FIXL2
+730442,Harmanli,ve městě Harmanli,0,FIXL2
+729794,Kardzhali,ve městě Kardzhali,0,FIXL2
+730565,Karlovo,ve městě Karlovo,0,FIXL2
+730559,Karnobat,ve městě Karnobat,0,FIXL2
+730496,Kazanlak,ve městě Kazanlak,0,FIXL2
+729730,Kyustendil,ve městě Kyustendil,0,FIXL2
+729581,Lom,ve městě Lom,0,FIXL2
+729559,Lovech,ve městě Lovech,0,FIXL2
+729114,Montana,ve městě Montana,0,FIXL2
+728742,Nova Zagora,ve městě Nova Zagora,0,FIXL2
+728448,Panagyurishte,ve městě Panagyurishte,0,FIXL2
+727886,Parvomay,ve městě Parvomay,0,FIXL2
+728317,Peshtera,ve městě Peshtera,0,FIXL2
+728075,Popovo,ve městě Popovo,0,FIXL2
+727696,Razgrad,ve městě Razgrad,0,FIXL2
+727447,Sandanski,ve městě Sandanski,0,FIXL2
+727337,Sevlievo,ve městě Sevlievo,0,FIXL2
+727233,Shumen,ve městě Shumen,0,FIXL2
+727221,Silistra,ve městě Silistra,0,FIXL2
+726848,Stara Zagora,ve městě Stara Zagora,0,FIXL2
+726534,Svishtov,ve městě Svishtov,0,FIXL2
+726174,Targovishte,ve městě Targovishte,0,FIXL2
+726320,Troyan,ve městě Troyan,0,FIXL2
+725988,Velingrad,ve městě Velingrad,0,FIXL2
+725905,Vidin,ve městě Vidin,0,FIXL2
+725712,Vratsa,ve městě Vratsa,0,FIXL2
+725578,Yambol,ve městě Yambol,0,FIXL2
+630429,Baranovichi,ve městě Baranovichi,0,FIXL2
+630468,Bobruisk,ve městě Bobruisk,0,FIXL2
+627907,Homel,v Homelu,1,FIXL2
+627083,Kolodishchi,ve městě Kolodishchi,0,FIXL2
+627145,Kobrin,ve městě Kobrin,0,FIXL2
+625972,Logoisk,ve městě Logoisk,0,FIXL2
+625665,Mogilev,ve městě Mogilev,0,FIXL2
+625625,Molodechno,ve městě Molodechno,0,FIXL2
+624079,Orsha,ve městě Orsha,0,FIXL2
+630515,Oshmyany,ve městě Oshmyany,0,FIXL2
+622794,Rechitsa,ve městě Rechitsa,0,FIXL2
+621729,Smolevichi,ve městě Smolevichi,0,FIXL2
+621713,Smorgon,ve městě Smorgon,0,FIXL2
+622428,Soligorsk,ve městě Soligorsk,0,FIXL2
+620127,Vitebsk,ve městě Vitebsk,0,FIXL2
+2661810,Allschwil,ve městě Allschwil,0,FIXL2
+2661265,Carouge,ve městě Carouge,0,FIXL2
+2660925,Einsiedeln,ve městě Einsiedeln,0,FIXL2
+2660727,Frauenfeld,ve městě Frauenfeld,0,FIXL2
+2660549,Gossau,ve městě Gossau,0,FIXL2
+2660305,Horgen,ve městě Horgen,0,FIXL2
+2659667,Meyrin,ve městě Meyrin,0,FIXL2
+2659296,Onex,ve městě Onex,0,FIXL2
+2658761,Schaffhausen,ve městě Schaffhausen,0,FIXL2
+2658494,Steffisburg,ve městě Steffisburg,0,FIXL2
+2658216,Uster,ve městě Uster,0,FIXL2
+2658154,Vernier,ve městě Vernier,0,FIXL2
+2658011,Wettingen,ve městě Wettingen,0,FIXL2
+2657908,Zug,ve městě Zug,0,FIXL2
+3079129,Bohumín,v Bohumíně,1,FIXL2
+3078545,Bruntál,v Bruntále,1,FIXL2
+3077835,Cheb,v Chebu,1,FIXL2
+3077244,Děčín,v Děčíně,1,FIXL2
+3074020,Kadaň,v Kadani,1,FIXL2
+3073789,Karviná,v Karviné,1,FIXL2
+3073660,Klatovy,v Klatovech,1,FIXL2
+3072656,Krnov,v Krnově,1,FIXL2
+3070862,Mělník,v Mělníku,1,FIXL2
+3069844,Neratovice,v Neratovicích,1,FIXL2
+3068873,Orlová,v Orlové,1,FIXL2
+3068690,Otrokovice,v Otrokovicích,1,FIXL2
+3062339,Vsetín,ve Vsetíně,1,FIXL2
+3061822,Žatec,v Žatci,1,FIXL2
+2951679,Beckingen,ve městě Beckingen,0,FIXL2
+2930182,Enger,ve městě Enger,0,FIXL2
+2930043,Ennepetal,ve městě Ennepetal,0,FIXL2
+2929865,Eppelborn,ve městě Eppelborn,0,FIXL2
+2917737,Greiz,ve městě Greiz,0,FIXL2
+2905290,Hessisch Oldendorf,ve městě Hessisch Oldendorf,0,FIXL2
+2904985,Heusweiler,ve městě Heusweiler,0,FIXL2
+2904886,Hiddenhausen,ve městě Hiddenhausen,0,FIXL2
+2891014,Kierspe,ve městě Kierspe,0,FIXL2
+2879832,Lebach,ve městě Lebach,0,FIXL2
+2879315,Leichlingen,ve městě Leichlingen,0,FIXL2
+2877142,Lindlar,ve městě Lindlar,0,FIXL2
+2876218,Lohmar,ve městě Lohmar,0,FIXL2
+2872519,Meerane,ve městě Meerane,0,FIXL2
+2863240,Ingelheim am Rhein,ve městě Ingelheim am Rhein,0,FIXL2
+2851584,Püttlingen,ve městě Püttlingen,0,FIXL2
+2847033,Riegelsberg,ve městě Riegelsberg,0,FIXL2
+2835382,Schwalbach,ve městě Schwalbach,0,FIXL2
+2810969,Werdau,ve městě Werdau,0,FIXL2
+2625070,Aabenraa,ve městě Aabenraa,0,FIXL2
+2624906,Albertslund,ve městě Albertslund,0,FIXL2
+2621927,Frederikshavn,ve městě Frederikshavn,0,FIXL2
+2621912,Frederikssund,ve městě Frederikssund,0,FIXL2
+2620583,Hedensted,ve městě Hedensted,0,FIXL2
+2620473,Helsingør,ve městě Helsingør,0,FIXL2
+2619771,Horsens,ve městě Horsens,0,FIXL2
+2619528,Hvidovre,ve městě Hvidovre,0,FIXL2
+2619856,Hørsholm,ve městě Hørsholm,0,FIXL2
+2619377,Ishøj,ve městě Ishøj,0,FIXL2
+2619154,Kalundborg,ve městě Kalundborg,0,FIXL2
+2618415,Køge,ve městě Køge,0,FIXL2
+2617658,Lillerød,ve městě Lillerød,0,FIXL2
+2616015,Nyborg,ve městě Nyborg,0,FIXL2
+2615961,Nykøbing Falster,ve městě Nykøbing Falster,0,FIXL2
+2614764,Ringsted,ve městě Ringsted,0,FIXL2
+2614481,Roskilde,ve městě Roskilde,0,FIXL2
+2613731,Skive,ve městě Skive,0,FIXL2
+2613460,Slagelse,ve městě Slagelse,0,FIXL2
+2613233,Solrød Strand,ve městě Solrød Strand,0,FIXL2
+2612629,Stenløse,ve městě Stenløse,0,FIXL2
+2611497,Tønder,ve městě Tønder,0,FIXL2
+2610319,Viborg,ve městě Viborg,0,FIXL2
+591260,Kohtla-Järve,ve městě Kohtla-Järve,0,FIXL2
+590447,Maardu,ve městě Maardu,0,FIXL2
+590031,Narva,ve městě Narva,0,FIXL2
+589580,Pärnu,ve městě Pärnu,0,FIXL2
+587577,Viljandi,ve městě Viljandi,0,FIXL2
+2522208,Albolote,ve městě Albolote,0,FIXL2
+2522165,Alcalá de Guadaira,ve městě Alcalá de Guadaira,0,FIXL2
+2522012,Algemesí,ve městě Algemesí,0,FIXL2
+2521964,Aljaraque,ve městě Aljaraque,0,FIXL2
+2521923,Almansa,ve městě Almansa,0,FIXL2
+2521804,Altea,ve městě Altea,0,FIXL2
+2521665,Arcos de la Frontera,ve městě Arcos de la Frontera,0,FIXL2
+2521582,Arona,ve městě Arona,0,FIXL2
+3129356,Arroyomolinos,ve městě Arroyomolinos,0,FIXL2
+2521510,Aspe,ve městě Aspe,0,FIXL2
+2521486,Atamaría,ve městě Atamaría,0,FIXL2
+2521485,Atarfe,ve městě Atarfe,0,FIXL2
+2521335,Barbate,ve městě Barbate,0,FIXL2
+2521215,Baza,ve městě Baza,0,FIXL2
+2521016,Berja,ve městě Berja,0,FIXL2
+3127007,Calella,ve městě Calella,0,FIXL2
+2520052,Cartaya,ve městě Cartaya,0,FIXL2
+2519738,Castilleja de la Cuesta,ve městě Castilleja de la Cuesta,0,FIXL2
+2519690,Catarroja,ve městě Catarroja,0,FIXL2
+2519651,Cehegín,ve městě Cehegín,0,FIXL2
+3109402,Cerdanyola del Vallès,ve městě Cerdanyola del Vallès,0,FIXL2
+2519477,Chipiona,ve městě Chipiona,0,FIXL2
+2519289,Conil de la Frontera,ve městě Conil de la Frontera,0,FIXL2
+3124569,Cornellà de Llobregat,ve městě Cornellà de Llobregat,0,FIXL2
+2519367,Coín,ve městě Coín,0,FIXL2
+2519110,Crevillente,ve městě Crevillente,0,FIXL2
+3124041,Culleredo,ve městě Culleredo,0,FIXL2
+2520055,Cártama,ve městě Cártama,0,FIXL2
+2520447,El Campello,ve městě El Campello,0,FIXL2
+3117232,El Masnou,ve městě El Masnou,0,FIXL2
+3123493,Ferrol,ve městě Ferrol,0,FIXL2
+3121766,Galapagar,ve městě Galapagar,0,FIXL2
+2516797,Hellín,ve městě Hellín,0,FIXL2
+3121881,Hondarribia,ve městě Hondarribia,0,FIXL2
+3120501,Humanes de Madrid,ve městě Humanes de Madrid,0,FIXL2
+2516474,Icod de los Vinos,ve městě Icod de los Vinos,0,FIXL2
+2516443,Ingenio,ve městě Ingenio,0,FIXL2
+2515692,La Orotava,ve městě La Orotava,0,FIXL2
+2515219,Las Torres de Cotillas,ve městě Las Torres de Cotillas,0,FIXL2
+2515072,Lepe,ve městě Lepe,0,FIXL2
+2514868,Los Alcázares,ve městě Los Alcázares,0,FIXL2
+2514553,Los Palacios y Villafranca,ve městě Los Palacios y Villafranca,0,FIXL2
+2514158,Marchena,ve městě Marchena,0,FIXL2
+2514042,Maspalomas,ve městě Maspalomas,0,FIXL2
+2513983,Mazarrón,ve městě Mazarrón,0,FIXL2
+2513703,Moncada,ve městě Moncada,0,FIXL2
+3116527,Montcada i Reixac,ve městě Montcada i Reixac,0,FIXL2
+2513604,Montijo,ve městě Montijo,0,FIXL2
+2513240,Nerja,ve městě Nerja,0,FIXL2
+2513195,Novelda,ve městě Novelda,0,FIXL2
+2513222,Níjar,ve městě Níjar,0,FIXL2
+2513052,Osuna,ve městě Osuna,0,FIXL2
+6354969,Playa del Inglés,ve městě Playa del Inglés,0,FIXL2
+3113082,Portugalete,ve městě Portugalete,0,FIXL2
+2519068,Quart de Poblet,ve městě Quart de Poblet,0,FIXL2
+2511994,Realejo Alto,ve městě Realejo Alto,0,FIXL2
+2511852,Rincón de la Victoria,ve městě Rincón de la Victoria,0,FIXL2
+3111605,Ripollet,ve městě Ripollet,0,FIXL2
+2511700,Rota,ve městě Rota,0,FIXL2
+3110986,Salou,ve městě Salou,0,FIXL2
+2511440,San Bartolomé de Tirajana,ve městě San Bartolomé de Tirajana,0,FIXL2
+2511371,San Isidro,ve městě San Isidro,0,FIXL2
+2511287,San Miguel de Abona,ve městě San Miguel de Abona,0,FIXL2
+3110642,Sant Feliu de Llobregat,ve městě Sant Feliu de Llobregat,0,FIXL2
+3110519,Sant Joan Despí,ve městě Sant Joan Despí,0,FIXL2
+3109546,Sant Just Desvern,ve městě Sant Just Desvern,0,FIXL2
+2511150,Santa Lucía,ve městě Santa Lucía,0,FIXL2
+3109897,Ribeira,ve městě Ribeira,0,FIXL2
+2511160,Santa Fe,ve městě Santa Fe,0,FIXL2
+3109050,Seseña,ve městě Seseña,0,FIXL2
+3109041,Sestao,ve městě Sestao,0,FIXL2
+2510764,Sueca,ve městě Sueca,0,FIXL2
+3108317,Tarancón,ve městě Tarancón,0,FIXL2
+2510394,Tomares,ve městě Tomares,0,FIXL2
+3107955,Tordera,ve městě Tordera,0,FIXL2
+2510245,Torrox,ve městě Torrox,0,FIXL2
+2510485,Tías,ve městě Tías,0,FIXL2
+2510112,Ubrique,ve městě Ubrique,0,FIXL2
+2510073,Utrera,ve městě Utrera,0,FIXL2
+3105247,Villanueva de la Cañada,ve městě Villanueva de la Cañada,0,FIXL2
+3105148,Villaquilambre,ve městě Villaquilambre,0,FIXL2
+3104703,Villaviciosa de Odón,ve městě Villaviciosa de Odón,0,FIXL2
+3104475,Viveiro,ve městě Viveiro,0,FIXL2
+2509408,Yaiza,ve městě Yaiza,0,FIXL2
+2509402,Yecla,ve městě Yecla,0,FIXL2
+2509377,Zafra,ve městě Zafra,0,FIXL2
+659169,Hamina,ve městě Hamina,0,FIXL2
+651659,Kontiolahti,ve městě Kontiolahti,0,FIXL2
+648738,Laukaa,ve městě Laukaa,0,FIXL2
+643644,Orimattila,ve městě Orimattila,0,FIXL2
+3037423,Antony,ve městě Antony,0,FIXL2
+3031898,Boissy-Saint-Léger,ve městě Boissy-Saint-Léger,0,FIXL2
+3030990,Bourg-la-Reine,ve městě Bourg-la-Reine,0,FIXL2
+8555643,Cergy,ve městě Cergy,0,FIXL2
+3026637,Charenton-le-Pont,ve městě Charenton-le-Pont,0,FIXL2
+3025622,Chelles,ve městě Chelles,0,FIXL2
+3020832,Draveil,ve městě Draveil,0,FIXL2
+3018280,Fleury-les-Aubrais,ve městě Fleury-les-Aubrais,0,FIXL2
+3017341,Franconville,ve městě Franconville,0,FIXL2
+3016830,Gagny,ve městě Gagny,0,FIXL2
+3002647,Le Plessis-Trévise,ve městě Le Plessis-Trévise,0,FIXL2
+2998305,Limeil-Brévannes,ve městě Limeil-Brévannes,0,FIXL2
+2998056,Livry-Gargan,ve městě Livry-Gargan,0,FIXL2
+2997904,Lognes,ve městě Lognes,0,FIXL2
+2995206,Massy,ve městě Massy,0,FIXL2
+2992616,Montfermeil,ve městě Montfermeil,0,FIXL2
+2992090,Montreuil,ve městě Montreuil,0,FIXL2
+2990616,Neuilly-Plaisance,ve městě Neuilly-Plaisance,0,FIXL2
+2986025,Port-de-Bouc,ve městě Port-de-Bouc,0,FIXL2
+2983440,Ris-Orangis,ve městě Ris-Orangis,0,FIXL2
+2983026,Romainville,ve městě Romainville,0,FIXL2
+2981512,Saint-Avertin,ve městě Saint-Avertin,0,FIXL2
+2980558,Sainte-Geneviève-des-Bois,ve městě Sainte-Geneviève-des-Bois,0,FIXL2
+2974681,Sevran,ve městě Sevran,0,FIXL2
+2973841,Stains,ve městě Stains,0,FIXL2
+2968653,Villemomble,ve městě Villemomble,0,FIXL2
+2968555,Villeneuve-la-Garenne,ve městě Villeneuve-la-Garenne,0,FIXL2
+2967934,Viroflay,ve městě Viroflay,0,FIXL2
+3020020,Épinay-sur-Seine,ve městě Épinay-sur-Seine,0,FIXL2
+2634677,Watford,ve městě Watford,0,FIXL2
+8478257,Agios Ioannis Rentis,ve městě Agios Ioannis Rentis,0,FIXL2
+736229,Florina,ve městě Florina,0,FIXL2
+8310138,Ilioupoli,ve městě Ilioupoli,0,FIXL2
+261249,Kamatero,ve městě Kamatero,0,FIXL2
+259824,Kifisia,ve městě Kifisia,0,FIXL2
+9034728,Nea Ionia,ve městě Nea Ionia,0,FIXL2
+256575,Nea Smyrni,ve městě Nea Smyrni,0,FIXL2
+256429,Nikaia,ve městě Nikaia,0,FIXL2
+255377,Petroupoli,ve městě Petroupoli,0,FIXL2
+734301,Sykies,ve městě Sykies,0,FIXL2
+251948,Vyronas,ve městě Vyronas,0,FIXL2
+256601,Ilion,ve městě Ilion,0,FIXL2
+723030,Abony,ve městě Abony,0,FIXL2
+3056357,Ajka,ve městě Ajka,0,FIXL2
+3055685,Baja,ve městě Baja,0,FIXL2
+722636,Balmazújváros,ve městě Balmazújváros,0,FIXL2
+722437,Békéscsaba,ve městě Békéscsaba,0,FIXL2
+3054543,Cegléd,ve městě Cegléd,0,FIXL2
+3053438,Dunaújváros,ve městě Dunaújváros,0,FIXL2
+3053163,Ostřihom,v Ostřihomi,1,FIXL2
+720334,Gyula,ve městě Gyula,0,FIXL2
+3052040,Gyöngyös,ve městě Gyöngyös,0,FIXL2
+3052241,Göd,ve městě Göd,0,FIXL2
+3052236,Gödöllő,ve městě Gödöllő,0,FIXL2
+720284,Hajdúnánás,ve městě Hajdúnánás,0,FIXL2
+720276,Hajdúszoboszló,ve městě Hajdúszoboszló,0,FIXL2
+3050907,Jászberény,ve městě Jászberény,0,FIXL2
+719404,Karcag,ve městě Karcag,0,FIXL2
+719311,Kazincbarcika,ve městě Kazincbarcika,0,FIXL2
+3049885,Kiskunfélegyháza,ve městě Kiskunfélegyháza,0,FIXL2
+3049880,Kiskunhalas,ve městě Kiskunhalas,0,FIXL2
+3049896,Kiskőrös,ve městě Kiskőrös,0,FIXL2
+718739,Kisvárda,ve městě Kisvárda,0,FIXL2
+3049512,Komló,ve městě Komló,0,FIXL2
+3049519,Komárom,ve městě Komárom,0,FIXL2
+717902,Makó,ve městě Makó,0,FIXL2
+717652,Mezőkövesd,ve městě Mezőkövesd,0,FIXL2
+717635,Mezőtúr,ve městě Mezőtúr,0,FIXL2
+3047942,Monor,ve městě Monor,0,FIXL2
+3047896,Mosonmagyaróvár,ve městě Mosonmagyaróvár,0,FIXL2
+717771,Mátészalka,ve městě Mátészalka,0,FIXL2
+3047651,Nagykőrös,ve městě Nagykőrös,0,FIXL2
+716736,Orosháza,ve městě Orosháza,0,FIXL2
+3046888,Oroszlány,ve městě Oroszlány,0,FIXL2
+3046768,Paks,ve městě Paks,0,FIXL2
+3046686,Pápa,ve městě Pápa,0,FIXL2
+3045643,Salgótarján,ve městě Salgótarján,0,FIXL2
+715466,Szarvas,ve městě Szarvas,0,FIXL2
+3044681,Szentendre,ve městě Szentendre,0,FIXL2
+715337,Szentes,ve městě Szentes,0,FIXL2
+3044821,Százhalombatta,ve městě Százhalombatta,0,FIXL2
+3045487,Sárvár,ve městě Sárvár,0,FIXL2
+715839,Sátoraljaújhely,ve městě Sátoraljaújhely,0,FIXL2
+3044083,Tata,ve městě Tata,0,FIXL2
+714697,Tiszaújváros,ve městě Tiszaújváros,0,FIXL2
+3043293,Vác,ve městě Vác,0,FIXL2
+3042638,Zalaegerszeg,ve městě Zalaegerszeg,0,FIXL2
+716671,Ózd,ve městě Ózd,0,FIXL2
+2965715,Carrigaline,ve městě Carrigaline,0,FIXL2
+2962974,Leixlip,ve městě Leixlip,0,FIXL2
+2962785,Lucan,ve městě Lucan,0,FIXL2
+2633274,Akureyri,ve městě Akureyri,0,FIXL2
+3415496,Keflavík,ve městě Keflavík,0,FIXL2
+8644037,Reykjanesbær,ve městě Reykjanesbær,0,FIXL2
+3183587,Abano Terme,ve městě Abano Terme,0,FIXL2
+3183573,Abbiategrasso,ve městě Abbiategrasso,0,FIXL2
+3183490,Acqui Terme,ve městě Acqui Terme,0,FIXL2
+2525769,Adrano,ve městě Adrano,0,FIXL2
+3183319,Albignasego,ve městě Albignasego,0,FIXL2
+2525755,Alcamo,ve městě Alcamo,0,FIXL2
+3183284,Alghero,ve městě Alghero,0,FIXL2
+3183089,Ancona,ve městě Ancona,0,FIXL2
+3183072,Andria,ve městě Andria,0,FIXL2
+3182904,Arcore,ve městě Arcore,0,FIXL2
+3182884,Arezzo,ve městě Arezzo,0,FIXL2
+3182749,Ascoli Piceno,ve městě Ascoli Piceno,0,FIXL2
+3182650,Avellino,ve městě Avellino,0,FIXL2
+3182361,Bareggio,ve městě Bareggio,0,FIXL2
+3182297,Bassano del Grappa,ve městě Bassano del Grappa,0,FIXL2
+3182272,Battipaglia,ve městě Battipaglia,0,FIXL2
+8224092,Bellaria-Igea Marina,ve městě Bellaria-Igea Marina,0,FIXL2
+3182210,Belluno,ve městě Belluno,0,FIXL2
+2525571,Belpasso,ve městě Belpasso,0,FIXL2
+3182179,Benevento,ve městě Benevento,0,FIXL2
+3181631,Bra,ve městě Bra,0,FIXL2
+2525473,Cagliari,ve městě Cagliari,0,FIXL2
+3180991,Campobasso,ve městě Campobasso,0,FIXL2
+2525405,Canicattì,ve městě Canicattì,0,FIXL2
+3180581,Carate Brianza,ve městě Carate Brianza,0,FIXL2
+2525350,Carini,ve městě Carini,0,FIXL2
+3180445,Carpi,ve městě Carpi,0,FIXL2
+3180224,Casalecchio di Reno,ve městě Casalecchio di Reno,0,FIXL2
+2525207,Casarano,ve městě Casarano,0,FIXL2
+3179866,Caserta,ve městě Caserta,0,FIXL2
+6534235,Cassano Magnago,ve městě Cassano Magnago,0,FIXL2
+3179781,Cassino,ve městě Cassino,0,FIXL2
+3179686,Castelfranco Emilia,ve městě Castelfranco Emilia,0,FIXL2
+3179684,Castelfranco Veneto,ve městě Castelfranco Veneto,0,FIXL2
+2525070,Castrovillari,ve městě Castrovillari,0,FIXL2
+2525068,Catania,ve městě Catania,0,FIXL2
+2525059,Catanzaro,ve městě Catanzaro,0,FIXL2
+3178999,Cerveteri,ve městě Cerveteri,0,FIXL2
+6534280,Cesano Boscone,ve městě Cesano Boscone,0,FIXL2
+3178957,Cesena,ve městě Cesena,0,FIXL2
+3178850,Chiari,ve městě Chiari,0,FIXL2
+3178832,Chiavari,ve městě Chiavari,0,FIXL2
+3178796,Chieti,ve městě Chieti,0,FIXL2
+3178784,Chioggia,ve městě Chioggia,0,FIXL2
+3178745,Chivasso,ve městě Chivasso,0,FIXL2
+3178671,Cinisello Balsamo,ve městě Cinisello Balsamo,0,FIXL2
+3178650,Ciriè,ve městě Ciriè,0,FIXL2
+3170102,Civitanova Marche,ve městě Civitanova Marche,0,FIXL2
+3178402,Colle di Val d'Elsa,ve městě Colle di Val d'Elsa,0,FIXL2
+3178398,Colleferro,ve městě Colleferro,0,FIXL2
+3178388,Collegno,ve městě Collegno,0,FIXL2
+3178283,Cologno Monzese,ve městě Cologno Monzese,0,FIXL2
+3178112,Cordenons,ve městě Cordenons,0,FIXL2
+9003711,Corigliano Scalo,ve městě Corigliano Scalo,0,FIXL2
+3178074,Cornaredo,ve městě Cornaredo,0,FIXL2
+3178004,Corsico,ve městě Corsico,0,FIXL2
+3177841,Crema,ve městě Crema,0,FIXL2
+2524881,Crotone,ve městě Crotone,0,FIXL2
+3177700,Cuneo,ve městě Cuneo,0,FIXL2
+3177608,Desio,ve městě Desio,0,FIXL2
+3177532,Domodossola,ve městě Domodossola,0,FIXL2
+2524819,Enna,ve městě Enna,0,FIXL2
+3177337,Este,ve městě Este,0,FIXL2
+3177171,Fasano,ve městě Fasano,0,FIXL2
+3176959,Florencie,ve Florencii,1,FIXL2
+2524734,Floridia,ve městě Floridia,0,FIXL2
+3176849,Follonica,ve městě Follonica,0,FIXL2
+3176843,Fondi,ve městě Fondi,0,FIXL2
+3176746,Forlì,ve městě Forlì,0,FIXL2
+3176733,Formigine,ve městě Formigine,0,FIXL2
+3176639,Fossano,ve městě Fossano,0,FIXL2
+3176515,Frosinone,ve městě Frosinone,0,FIXL2
+3176407,Galatina,ve městě Galatina,0,FIXL2
+3176391,Gallarate,ve městě Gallarate,0,FIXL2
+3176379,Galliate,ve městě Galliate,0,FIXL2
+3176219,Janov,v Janově,1,FIXL2
+3176177,Ghedi,ve městě Ghedi,0,FIXL2
+2524606,Gioia Tauro,ve městě Gioia Tauro,0,FIXL2
+3176041,Giussano,ve městě Giussano,0,FIXL2
+3175990,Gorgonzola,ve městě Gorgonzola,0,FIXL2
+3175986,Gorizia,ve městě Gorizia,0,FIXL2
+3175755,Grugliasco,ve městě Grugliasco,0,FIXL2
+6698332,Infernetto,ve městě Infernetto,0,FIXL2
+3175458,Ischia,ve městě Ischia,0,FIXL2
+3175445,Isernia,ve městě Isernia,0,FIXL2
+3175384,Ivrea,ve městě Ivrea,0,FIXL2
+3175238,Lainate,ve městě Lainate,0,FIXL2
+3164090,Villorba,ve městě Villorba,0,FIXL2
+3174953,Lecce,ve městě Lecce,0,FIXL2
+3174921,Legnano,ve městě Legnano,0,FIXL2
+2524410,Lentini,ve městě Lentini,0,FIXL2
+3174719,Limbiate,ve městě Limbiate,0,FIXL2
+3174638,Lodi,ve městě Lodi,0,FIXL2
+3174530,Lucca,ve městě Lucca,0,FIXL2
+3174494,Lugo,ve městě Lugo,0,FIXL2
+6534216,Lumezzane,ve městě Lumezzane,0,FIXL2
+3174380,Macerata,ve městě Macerata,0,FIXL2
+3174295,Magenta,ve městě Magenta,0,FIXL2
+3174141,Malnate,ve městě Malnate,0,FIXL2
+3173949,Mariano Comense,ve městě Mariano Comense,0,FIXL2
+3173945,Marigliano,ve městě Marigliano,0,FIXL2
+3173721,Matera,ve městě Matera,0,FIXL2
+3173671,Meda,ve městě Meda,0,FIXL2
+2524170,Messina,ve městě Messina,0,FIXL2
+3173370,Mirandola,ve městě Mirandola,0,FIXL2
+3173326,Modugno,ve městě Modugno,0,FIXL2
+3173314,Mogliano Veneto,ve městě Mogliano Veneto,0,FIXL2
+3173180,Moncalieri,ve městě Moncalieri,0,FIXL2
+3173162,Mondovì,ve městě Mondovì,0,FIXL2
+3173124,Monselice,ve městě Monselice,0,FIXL2
+3173029,Montebelluna,ve městě Montebelluna,0,FIXL2
+3172996,Montecatini Terme,ve městě Montecatini Terme,0,FIXL2
+3172979,Montecchio Maggiore,ve městě Montecchio Maggiore,0,FIXL2
+3172768,Monterotondo,ve městě Monterotondo,0,FIXL2
+3172729,Montesilvano,ve městě Montesilvano,0,FIXL2
+3172718,Montevarchi,ve městě Montevarchi,0,FIXL2
+3172681,Montichiari,ve městě Montichiari,0,FIXL2
+3172629,Monza,ve městě Monza,0,FIXL2
+2523998,Noto,ve městě Noto,0,FIXL2
+3172184,Novate Milanese,ve městě Novate Milanese,0,FIXL2
+3172170,Novi Ligure,ve městě Novi Ligure,0,FIXL2
+3172154,Nuoro,ve městě Nuoro,0,FIXL2
+3171986,Orbassano,ve městě Orbassano,0,FIXL2
+2523964,Oristano,ve městě Oristano,0,FIXL2
+6534264,Orta di Atella,ve městě Orta di Atella,0,FIXL2
+3171848,Osimo,ve městě Osimo,0,FIXL2
+3171786,Ostuni,ve městě Ostuni,0,FIXL2
+2523920,Palermo,v Palermu,1,FIXL2
+2523902,Palmi,ve městě Palmi,0,FIXL2
+3171484,Parabiago,ve městě Parabiago,0,FIXL2
+3171180,Perugia,ve městě Perugia,0,FIXL2
+3170778,Pietrasanta,ve městě Pietrasanta,0,FIXL2
+3170676,Pioltello,ve městě Pioltello,0,FIXL2
+3170647,Pisa,v Pise,1,FIXL2
+3170621,Pistoia,ve městě Pistoia,0,FIXL2
+3170504,Poggibonsi,ve městě Poggibonsi,0,FIXL2
+3170342,Pomezia,ve městě Pomezia,0,FIXL2
+3170272,Pontedera,ve městě Pontedera,0,FIXL2
+3170147,Pordenone,ve městě Pordenone,0,FIXL2
+3170073,Porto San Giorgio,ve městě Porto San Giorgio,0,FIXL2
+3170027,Potenza,ve městě Potenza,0,FIXL2
+3169984,Pozzuoli,ve městě Pozzuoli,0,FIXL2
+3169921,Prato,ve městě Prato,0,FIXL2
+2523664,Quattromiglia,ve městě Quattromiglia,0,FIXL2
+2523650,Ragusa,ve městě Ragusa,0,FIXL2
+3169602,Rapallo,ve městě Rapallo,0,FIXL2
+2523630,Reggio Calabria,ve městě Reggio Calabria,0,FIXL2
+3169424,Riccione,ve městě Riccione,0,FIXL2
+3169412,Rieti,ve městě Rieti,0,FIXL2
+3169361,Rimini,ve městě Rimini,0,FIXL2
+3169231,Rivoli,ve městě Rivoli,0,FIXL2
+3169056,Romano di Lombardia,ve městě Romano di Lombardia,0,FIXL2
+3169070,Řím,v Římě,1,FIXL2
+3168936,Roseto degli Abruzzi,ve městě Roseto degli Abruzzi,0,FIXL2
+3168930,Rosignano Solvay,ve městě Rosignano Solvay,0,FIXL2
+2523577,Rossano Stazione,ve městě Rossano Stazione,0,FIXL2
+3168843,Rovigo,ve městě Rovigo,0,FIXL2
+3168837,Rozzano,ve městě Rozzano,0,FIXL2
+3168730,Sacile,ve městě Sacile,0,FIXL2
+3168627,Salsomaggiore Terme,ve městě Salsomaggiore Terme,0,FIXL2
+3168609,Saluzzo,ve městě Saluzzo,0,FIXL2
+3168550,San Benedetto del Tronto,ve městě San Benedetto del Tronto,0,FIXL2
+6534252,San Felice a Cancello,ve městě San Felice a Cancello,0,FIXL2
+3168236,San Giovanni Lupatoto,ve městě San Giovanni Lupatoto,0,FIXL2
+3168231,San Giovanni Valdarno,ve městě San Giovanni Valdarno,0,FIXL2
+2523461,San Giovanni in Fiore,ve městě San Giovanni in Fiore,0,FIXL2
+3168222,San Giuliano Milanese,ve městě San Giuliano Milanese,0,FIXL2
+3168175,San Lazzaro,ve městě San Lazzaro,0,FIXL2
+3167978,San Mauro Torinese,ve městě San Mauro Torinese,0,FIXL2
+3167953,San Miniato,ve městě San Miniato,0,FIXL2
+3167751,San Salvo,ve městě San Salvo,0,FIXL2
+3167744,San Sebastiano,ve městě San Sebastiano,0,FIXL2
+3167731,San Severo,ve městě San Severo,0,FIXL2
+3167777,Sanremo,ve městě Sanremo,0,FIXL2
+3167113,Saronno,ve městě Saronno,0,FIXL2
+3167104,Sarzana,ve městě Sarzana,0,FIXL2
+3167053,Sassuolo,ve městě Sassuolo,0,FIXL2
+3167034,Savigliano,ve městě Savigliano,0,FIXL2
+3166989,Scandiano,ve městě Scandiano,0,FIXL2
+3166988,Scandicci,ve městě Scandicci,0,FIXL2
+3166808,Segrate,ve městě Segrate,0,FIXL2
+3166740,Senigallia,ve městě Senigallia,0,FIXL2
+3166601,Sesto Fiorentino,ve městě Sesto Fiorentino,0,FIXL2
+3166598,Sesto San Giovanni,ve městě Sesto San Giovanni,0,FIXL2
+3166574,Seveso,ve městě Seveso,0,FIXL2
+3166548,Siena,v Sieně,1,FIXL2
+2523083,Syrakusy,v Syrakusách,1,FIXL2
+3166397,Sondrio,ve městě Sondrio,0,FIXL2
+3166387,Sora,ve městě Sora,0,FIXL2
+3219114,Spinea,ve městě Spinea,0,FIXL2
+3166034,Sulmona,ve městě Sulmona,0,FIXL2
+3166006,Suzzara,ve městě Suzzara,0,FIXL2
+3165803,Teramo,ve městě Teramo,0,FIXL2
+3165788,Terlizzi,ve městě Terlizzi,0,FIXL2
+2522960,Termini Imerese,ve městě Termini Imerese,0,FIXL2
+3165773,Termoli,ve městě Termoli,0,FIXL2
+3165612,Todi,ve městě Todi,0,FIXL2
+3165595,Tolentino,ve městě Tolentino,0,FIXL2
+3165370,Tortona,ve městě Tortona,0,FIXL2
+3165340,Tradate,ve městě Tradate,0,FIXL2
+2522876,Trapani,ve městě Trapani,0,FIXL2
+3165201,Treviso,ve městě Treviso,0,FIXL2
+3165198,Trezzano sul Naviglio,ve městě Trezzano sul Naviglio,0,FIXL2
+3165185,Terst,v Terstu,1,FIXL2
+3165178,Triggiano,ve městě Triggiano,0,FIXL2
+3164617,Venaria Reale,ve městě Venaria Reale,0,FIXL2
+3164440,Viadana,ve městě Viadana,0,FIXL2
+3164433,Viareggio,ve městě Viareggio,0,FIXL2
+3164342,Vignola,ve městě Vignola,0,FIXL2
+8378910,Villanova,ve městě Villanova,0,FIXL2
+3164083,Vimercate,ve městě Vimercate,0,FIXL2
+3164080,Vimodrone,ve městě Vimodrone,0,FIXL2
+3164039,Viterbo,ve městě Viterbo,0,FIXL2
+3164028,Vittorio Veneto,ve městě Vittorio Veneto,0,FIXL2
+3163995,Voghera,ve městě Voghera,0,FIXL2
+3163853,Zola Predosa,ve městě Zola Predosa,0,FIXL2
+597989,Kretinga,ve městě Kretinga,0,FIXL2
+593926,Telšiai,ve městě Telšiai,0,FIXL2
+847633,Alta,ve městě Alta,0,FIXL2
+3153823,Harstad,ve městě Harstad,0,FIXL2
+3145614,Mo i Rana,ve městě Mo i Rana,0,FIXL2
+776175,Biała Podlaska,ve městě Biała Podlaska,0,FIXL2
+3103402,Bielsko-Biała,ve městě Bielsko-Biała,0,FIXL2
+775922,Biłgoraj,ve městě Biłgoraj,0,FIXL2
+3102987,Bolesławiec,ve městě Bolesławiec,0,FIXL2
+3101619,Chorzów,ve městě Chorzów,0,FIXL2
+3101547,Chrzanów,ve městě Chrzanów,0,FIXL2
+3101076,Czechowice-Dziedzice,ve městě Czechowice-Dziedzice,0,FIXL2
+3099759,Elbląg,ve městě Elbląg,0,FIXL2
+3099424,Gdyně,v Gdyni,1,FIXL2
+3099230,Gliwice,ve městě Gliwice,0,FIXL2
+771506,Grajewo,ve městě Grajewo,0,FIXL2
+3098218,Grudziądz,ve městě Grudziądz,0,FIXL2
+3099213,Głogów,ve městě Głogów,0,FIXL2
+3097257,Jelenia Góra,ve městě Jelenia Góra,0,FIXL2
+3096880,Kalisz,ve městě Kalisz,0,FIXL2
+3096779,Kamienna Góra,ve městě Kamienna Góra,0,FIXL2
+769250,Kielce,ve městě Kielce,0,FIXL2
+3095971,Knurów,ve městě Knurów,0,FIXL2
+3095795,Kołobrzeg,ve městě Kołobrzeg,0,FIXL2
+767470,Krosno,ve městě Krosno,0,FIXL2
+3094170,Kutno,ve městě Kutno,0,FIXL2
+766555,Legionowo,ve městě Legionowo,0,FIXL2
+3093692,Legnica,ve městě Legnica,0,FIXL2
+3093524,Leszno,ve městě Leszno,0,FIXL2
+3093040,Lubań,ve městě Lubań,0,FIXL2
+3091150,Nakło nad Notecią,ve městě Nakło nad Notecią,0,FIXL2
+763534,Nowy Sącz,ve městě Nowy Sącz,0,FIXL2
+3090452,Nowy Tomyśl,ve městě Nowy Tomyśl,0,FIXL2
+762423,Piaseczno,ve městě Piaseczno,0,FIXL2
+3089125,Piekary Śląskie,ve městě Piekary Śląskie,0,FIXL2
+3088972,Piotrków Trybunalski,ve městě Piotrków Trybunalski,0,FIXL2
+3089033,Piła,ve městě Piła,0,FIXL2
+761228,Pruszków,ve městě Pruszków,0,FIXL2
+761131,Przeworsk,ve městě Przeworsk,0,FIXL2
+3088825,Płock,ve městě Płock,0,FIXL2
+3087497,Radomsko,ve městě Radomsko,0,FIXL2
+3087418,Radzionków,ve městě Radzionków,0,FIXL2
+3086706,Rumia,ve městě Rumia,0,FIXL2
+3086586,Rybnik,ve městě Rybnik,0,FIXL2
+3086511,Rypin,ve městě Rypin,0,FIXL2
+3085807,Skawina,ve městě Skawina,0,FIXL2
+758626,Sokołów Podlaski,ve městě Sokołów Podlaski,0,FIXL2
+3085128,Sosnowiec,ve městě Sosnowiec,0,FIXL2
+758390,Starachowice,ve městě Starachowice,0,FIXL2
+757718,Suwałki,ve městě Suwałki,0,FIXL2
+3084130,Swarzędz,ve městě Swarzędz,0,FIXL2
+3083878,Szamotuły,ve městě Szamotuły,0,FIXL2
+3085450,Słupsk,ve městě Słupsk,0,FIXL2
+3083426,Tczew,ve městě Tczew,0,FIXL2
+3082998,Turek,ve městě Turek,0,FIXL2
+3082756,Ustka,ve městě Ustka,0,FIXL2
+3082751,Ustroń,ve městě Ustroń,0,FIXL2
+3082197,Wieluń,ve městě Wieluń,0,FIXL2
+3081741,Włocławek,ve městě Włocławek,0,FIXL2
+3080985,Zabrze,ve městě Zabrze,0,FIXL2
+3080414,Zduńska Wola,ve městě Zduńska Wola,0,FIXL2
+3080251,Zgierz,ve městě Zgierz,0,FIXL2
+3080165,Zielona Góra,ve městě Zielona Góra,0,FIXL2
+754351,Ząbki,ve městě Ząbki,0,FIXL2
+3080074,Złotoryja,ve městě Złotoryja,0,FIXL2
+3083955,Świnoujście,ve městě Świnoujście,0,FIXL2
+3083988,Świętochłowice,ve městě Świętochłowice,0,FIXL2
+3080944,Żagań,ve městě Żagań,0,FIXL2
+3079855,Żywiec,ve městě Żywiec,0,FIXL2
+2743095,Alfena,ve městě Alfena,0,FIXL2
+2271473,Arrentela,ve městě Arrentela,0,FIXL2
+2742506,Baguim do Monte,ve městě Baguim do Monte,0,FIXL2
+2270503,Cacém,ve městě Cacém,0,FIXL2
+2270377,Camarate,ve městě Camarate,0,FIXL2
+2270157,Carnaxide,ve městě Carnaxide,0,FIXL2
+2269041,Corroios,ve městě Corroios,0,FIXL2
+2739756,Fânzeres,ve městě Fânzeres,0,FIXL2
+2738925,Gondomar,ve městě Gondomar,0,FIXL2
+2267131,Laranjeiro,ve městě Laranjeiro,0,FIXL2
+2267067,Linda-a-Velha,ve městě Linda-a-Velha,0,FIXL2
+2266621,Massamá,ve městě Massamá,0,FIXL2
+2265464,Oeiras,ve městě Oeiras,0,FIXL2
+2265326,Paço de Arcos,ve městě Paço de Arcos,0,FIXL2
+2264736,Piedade,ve městě Piedade,0,FIXL2
+2264428,Porto de Mós,ve městě Porto de Mós,0,FIXL2
+2735787,Póvoa de Varzim,ve městě Póvoa de Varzim,0,FIXL2
+2264269,Quelfes,ve městě Quelfes,0,FIXL2
+6559488,Quinta do Conde,ve městě Quinta do Conde,0,FIXL2
+2264087,Ramada,ve městě Ramada,0,FIXL2
+2735175,Ribeira de Frades,ve městě Ribeira de Frades,0,FIXL2
+2735083,Rio Tinto,ve městě Rio Tinto,0,FIXL2
+2734140,Senhora da Hora,ve městě Senhora da Hora,0,FIXL2
+2262957,Sesimbra,ve městě Sesimbra,0,FIXL2
+2263326,São João da Talha,ve městě São João da Talha,0,FIXL2
+2734434,São Mamede de Infesta,ve městě São Mamede de Infesta,0,FIXL2
+2734379,São Paulo de Frades,ve městě São Paulo de Frades,0,FIXL2
+2734363,São Pedro da Cova,ve městě São Pedro da Cova,0,FIXL2
+2734306,Custóias,ve městě Custóias,0,FIXL2
+2262582,Torres Novas,ve městě Torres Novas,0,FIXL2
+2733263,Valadares,ve městě Valadares,0,FIXL2
+2743304,Águas Santas,ve městě Águas Santas,0,FIXL2
+686578,Alba Iulia,ve městě Alba Iulia,0,FIXL2
+685948,Bacău,ve městě Bacău,0,FIXL2
+684657,Bistrița,ve městě Bistrița,0,FIXL2
+684039,Botoșani,ve městě Botoșani,0,FIXL2
+683760,Breaza,ve městě Breaza,0,FIXL2
+683902,Brăila,ve městě Brăila,0,FIXL2
+683394,Buftea,ve městě Buftea,0,FIXL2
+683123,Buzău,ve městě Buzău,0,FIXL2
+682729,Caransebeș,ve městě Caransebeș,0,FIXL2
+681502,Cisnădie,ve městě Cisnădie,0,FIXL2
+681179,Codlea,ve městě Codlea,0,FIXL2
+680963,Konstanca,v Konstanci,1,FIXL2
+680332,Craiova,ve městě Craiova,0,FIXL2
+681862,Câmpina,ve městě Câmpina,0,FIXL2
+679452,Deva,ve městě Deva,0,FIXL2
+678817,Drobeta-Turnu Severin,ve městě Drobeta-Turnu Severin,0,FIXL2
+678978,Drăgășani,ve městě Drăgășani,0,FIXL2
+678015,Focșani,ve městě Focșani,0,FIXL2
+676527,Gura Humorului,ve městě Gura Humorului,0,FIXL2
+677742,Găești,ve městě Găești,0,FIXL2
+675810,Jasy,v Jasech,1,FIXL2
+674531,Lugoj,ve městě Lugoj,0,FIXL2
+671964,Odorheiu Secuiesc,ve městě Odorheiu Secuiesc,0,FIXL2
+671382,Pantelimon,ve městě Pantelimon,0,FIXL2
+670889,Piatra Neamț,ve městě Piatra Neamț,0,FIXL2
+670609,Pitești,ve městě Pitești,0,FIXL2
+670474,Ploiești,ve městě Ploiești,0,FIXL2
+669870,Popești-Leordeni,ve městě Popești-Leordeni,0,FIXL2
+668605,Roșiorii de Vede,ve městě Roșiorii de Vede,0,FIXL2
+668872,Râmnicu Vâlcea,ve městě Râmnicu Vâlcea,0,FIXL2
+667526,Sebeș,ve městě Sebeș,0,FIXL2
+667227,Sighetu Marmației,ve městě Sighetu Marmației,0,FIXL2
+8436351,Sighișoara,ve městě Sighișoara,0,FIXL2
+666767,Slatina,ve městě Slatina,0,FIXL2
+665850,Suceava,ve městě Suceava,0,FIXL2
+664518,Tulcea,ve městě Tulcea,0,FIXL2
+664460,Turda,ve městě Turda,0,FIXL2
+665024,Târgoviște,ve městě Târgoviște,0,FIXL2
+665004,Târgu Mureș,ve městě Târgu Mureș,0,FIXL2
+662334,Zalău,ve městě Zalău,0,FIXL2
+662284,Zărnești,ve městě Zărnești,0,FIXL2
+1508291,Chelyabinsk,ve městě Chelyabinsk,0,FIXL2
+819740,Drozhzhino,ve městě Drozhzhino,0,FIXL2
+553915,Kaluga,ve městě Kaluga,0,FIXL2
+550280,Khimki,ve městě Khimki,0,FIXL2
+547523,Klin,ve městě Klin,0,FIXL2
+535121,Lipetsk,ve městě Lipetsk,0,FIXL2
+534595,Lobnya,ve městě Lobnya,0,FIXL2
+523812,Mytishchi,ve městě Mytishchi,0,FIXL2
+511196,Perm,ve městě Perm,0,FIXL2
+508101,Podolsk,ve městě Podolsk,0,FIXL2
+502018,Reutov,ve městě Reutov,0,FIXL2
+496638,Sergiyev Posad,ve městě Sergiyev Posad,0,FIXL2
+473778,Vidnoye,ve městě Vidnoye,0,FIXL2
+473247,Vladimir,ve městě Vladimir,0,FIXL2
+472757,Volgograd,ve Volgogradu,1,FIXL2
+468902,Yaroslavl,ve městě Yaroslavl,0,FIXL2
+606531,Boden,ve městě Boden,0,FIXL2
+2700839,Kinna,ve městě Kinna,0,FIXL2
+605155,Kiruna,ve městě Kiruna,0,FIXL2
+2667109,Tullinge,ve městě Tullinge,0,FIXL2
+2665452,Vallentuna,ve městě Vallentuna,0,FIXL2
+3194351,Novo Mesto,ve městě Novo Mesto,0,FIXL2
+3192241,Ptuj,ve městě Ptuj,0,FIXL2
+3188915,Trbovlje,ve městě Trbovlje,0,FIXL2
+3189075,Velenje,ve městě Velenje,0,FIXL2
+3061186,Banská Bystrica,v Banské Bystrici,1,FIXL2
+3060950,Brezno,v Brezně,1,FIXL2
+3060405,Dolný Kubín,ve městě Dolný Kubín,0,FIXL2
+3060219,Galanta,v Galantě,1,FIXL2
+3060139,Handlová,ve městě Handlová,0,FIXL2
+3060095,Hlohovec,v Hlohovci,1,FIXL2
+3059435,Komárno,v Komárně,1,FIXL2
+3059436,Komárno,v Komárně,1,FIXL2
+3058986,Lučenec,v Lučenci,1,FIXL2
+3058897,Malacky,v Malackách,1,FIXL2
+724144,Michalovce,v Michalovcích,1,FIXL2
+3058477,Nové Mesto nad Váhom,ve městě Nové Mesto nad Váhom,0,FIXL2
+3058472,Nové Zámky,v Nových Zámcích,1,FIXL2
+3058268,Partizánske,ve městě Partizánske,0,FIXL2
+3058210,Pezinok,v Pezinku,1,FIXL2
+3058202,Piešťany,v Piešťanech,1,FIXL2
+3058060,Považská Bystrica,v Považské Bystrici,1,FIXL2
+3058000,Prievidza,v Prievidzi,1,FIXL2
+3057963,Púchov,v Púchově,1,FIXL2
+723736,Rimavská Sobota,v Rimavské Sobotě,1,FIXL2
+723713,Rožňava,v Rožňavě,1,FIXL2
+3057692,Senec,v Senci,1,FIXL2
+3057691,Senica,v Senici,1,FIXL2
+3057630,Skalica,ve Skalici,1,FIXL2
+723559,Snina,ve městě Snina,0,FIXL2
+3057174,Topoľčany,ve městě Topoľčany,0,FIXL2
+723195,Vranov nad Topľou,ve městě Vranov nad Topľou,0,FIXL2
+3057769,Šaľa,ve městě Šaľa,0,FIXL2
+3056523,Žiar nad Hronom,ve městě Žiar nad Hronom,0,FIXL2
+712165,Bila Tserkva,ve městě Bila Tserkva,0,FIXL2
+712590,Bilohorodka,ve městě Bilohorodka,0,FIXL2
+711660,Boryspil,ve městě Boryspil,0,FIXL2
+711416,Brody,ve městě Brody,0,FIXL2
+711390,Brovary,ve městě Brovary,0,FIXL2
+710791,Cherkasy,ve městě Cherkasy,0,FIXL2
+710719,Chernivtsi,ve městě Chernivtsi,0,FIXL2
+707688,Chornomorsk,ve městě Chornomorsk,0,FIXL2
+709930,Dnipro,v Dnipru,1,FIXL2
+709540,Dubno,ve městě Dubno,0,FIXL2
+13546531,Fortechnyi,ve městě Fortechnyi,0,FIXL2
+708901,Haisyn,ve městě Haisyn,0,FIXL2
+707565,Irpin,ve městě Irpin,0,FIXL2
+707471,Ivano-Frankivsk,ve městě Ivano-Frankivsk,0,FIXL2
+706950,Kamianets-Podilskyi,ve městě Kamianets-Podilskyi,0,FIXL2
+706369,Khmelnytskyi,ve městě Khmelnytskyi,0,FIXL2
+706165,Chust,v Chustu,1,FIXL2
+12519211,Knyahynyn,ve městě Knyahynyn,0,FIXL2
+705392,Kolomyia,ve městě Kolomyia,0,FIXL2
+13609094,Koroliov,ve městě Koroliov,0,FIXL2
+704901,Korosten,ve městě Korosten,0,FIXL2
+704858,Korsun-Shevchenkivskyi,ve městě Korsun-Shevchenkivskyi,0,FIXL2
+704617,Kovel,ve městě Kovel,0,FIXL2
+705812,Kropyvnytskyi,ve městě Kropyvnytskyi,0,FIXL2
+703845,Kryvyi Rih,ve městě Kryvyi Rih,0,FIXL2
+13561778,Kyivskyi,ve městě Kyivskyi,0,FIXL2
+700696,Mostyska,ve městě Mostyska,0,FIXL2
+700646,Mukačevo,v Mukačevu,1,FIXL2
+700569,Mykolaiv,ve městě Mykolaiv,0,FIXL2
+700507,Nadvirna,ve městě Nadvirna,0,FIXL2
+700261,Netishyn,ve městě Netishyn,0,FIXL2
+8468760,Novoiavorivsk,ve městě Novoiavorivsk,0,FIXL2
+13608468,Novozavodskyi,ve městě Novozavodskyi,0,FIXL2
+698740,Oděsa,v Oděse,1,FIXL2
+698625,Oleksandriia,ve městě Oleksandriia,0,FIXL2
+697593,Pervomaisk,ve městě Pervomaisk,0,FIXL2
+696943,Pidhorodne,ve městě Pidhorodne,0,FIXL2
+13631378,Rakove,ve městě Rakove,0,FIXL2
+695594,Rivne,ve městě Rivne,0,FIXL2
+699445,Samar,ve městě Samar,0,FIXL2
+694792,Sarny,ve městě Sarny,0,FIXL2
+710554,Sheptytskyi,ve městě Sheptytskyi,0,FIXL2
+13561779,Shevchenko,ve městě Shevchenko,0,FIXL2
+693457,Smila,ve městě Smila,0,FIXL2
+693301,Sokal,ve městě Sokal,0,FIXL2
+692372,Stryi,ve městě Stryi,0,FIXL2
+692129,Svaliava,ve městě Svaliava,0,FIXL2
+691650,Ternopil,ve městě Ternopil,0,FIXL2
+691179,Truskavets,ve městě Truskavets,0,FIXL2
+690688,Uman,ve městě Uman,0,FIXL2
+690548,Užhorod,v Užhorodu,1,FIXL2
+689558,Vinnytsia,ve městě Vinnytsia,0,FIXL2
+689159,Volochysk,ve městě Volochysk,0,FIXL2
+689378,Volodymyr,ve městě Volodymyr,0,FIXL2
+688723,Vyshhorod,ve městě Vyshhorod,0,FIXL2
+689487,Vyshneve,ve městě Vyshneve,0,FIXL2
+687700,Záporoží,v Záporoží,1,FIXL2
+686967,Zhytomyr,ve městě Zhytomyr,0,FIXL2
+686919,Znamianka,ve městě Znamianka,0,FIXL2
+686803,Zvenyhorodka,ve městě Zvenyhorodka,0,FIXL2
+699553,Zviahel,ve městě Zviahel,0,FIXL2
+6941080,Fort Bragg,ve městě Fort Bragg,0,FIXL2

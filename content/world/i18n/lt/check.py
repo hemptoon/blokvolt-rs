@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Check an L-task language pack: content/world/i18n/<code>/ against the EN sources.
 
-Usage: python3 content/world/i18n/pl/check.py      (code = folder name)
+Usage: python3 content/world/i18n/lt/check.py      (code = folder name)
+L2 (11.11.2026): all 8 strings_*.json and texts.json sections pay / routes.
 Exit 1 on any error. Warnings do not fail.
 """
 import csv, json, re, sys
@@ -17,9 +18,12 @@ TAG = re.compile(r'</?[a-zA-Z][^>]*>')
 ENT = re.compile(r'&[a-z]+;|&#\d+;')
 # EN "in {city}" needs a declined slot in inflected languages; the engine passes all of them (world_pages.render_*).
 EQUIV = {'{city}': {'{city_u}', '{city_v}'}, '{country}': {'{country_u}', '{country_v}'},
-         '{country_u}': {'{country_v}'}, '{city_u}': {'{city_v}'}}
+         '{country_u}': {'{country_v}'}, '{city_u}': {'{city_v}'},
+         '{name}': {'{name_nom}'}}   # FIXL D14: nominative-with-article form of a country name
 SLUG_KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
-FULL = {'home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology'}
+# FIXL F5: optional section slugs (full paths, may have several segments, e.g. /lt/embed/zemelapis/)
+SECTION_KEYS = ['pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers']
+FULL = {'home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology'} | set(SECTION_KEYS)
 
 err, warn = [], []
 
@@ -58,7 +62,8 @@ def check_str(where, en, tr):
 
 def strings(cats):
     n = 0
-    for f in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices']:
+    for f in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+              'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed', 'strings_home']:
         p = HERE / f'{f}.json'
         if not p.exists():
             err.append(f'{f}.json missing'); continue
@@ -124,15 +129,44 @@ def texts():
             err.append(f'texts.{k} missing')
         else:
             walk(v, t[k], '.' + k)
+    # L2 (LANG0 format): multilingual nodes of pay.json / routes.json, key = dotted path with [i]
+    for sec in ('pay', 'routes'):
+        want = {}
+        ml_nodes(json.load(open(WORLD / f'{sec}.json', encoding='utf-8')), '', want)
+        got = t.get(sec)
+        if not isinstance(got, dict):
+            err.append(f'texts.{sec} missing'); continue
+        if list(got) != list(want):
+            err.append(f'texts.{sec}: paths differ from {sec}.json ({len(got)} vs {len(want)})')
+        for p, e in want.items():
+            if p in got:
+                cnt[0] += 1
+                cnt[1] += got[p] != e
+                check_str(f'texts.{sec}.{p}', e, got[p])
     return cnt
+
+
+def ml_nodes(o, path, out):
+    """Multilingual leaf nodes ({en, sr, ...}) of a data file, path like afir.points[0] / routes[3].stops[1].city."""
+    if isinstance(o, dict):
+        if isinstance(o.get('en'), str) and 'sr' in o:
+            out[path] = o['en']; return
+        for k, v in o.items():
+            ml_nodes(v, f'{path}.{k}' if path else k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            ml_nodes(v, f'{path}[{i}]', out)
 
 
 def slugs():
     s = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
-    if list(s) != SLUG_KEYS:
-        err.append(f'slugs.json keys {list(s)} != {SLUG_KEYS}')
+    if list(s)[:len(SLUG_KEYS)] != SLUG_KEYS or not set(list(s)[len(SLUG_KEYS):]) <= set(SECTION_KEYS):
+        err.append(f'slugs.json keys {list(s)}: need {SLUG_KEYS}, may add {SECTION_KEYS}')
     for k, v in s.items():
-        if k in FULL:
+        if k in SECTION_KEYS:
+            if not re.fullmatch(rf'/{CODE}/([a-z0-9]+(-[a-z0-9]+)*/)+', v):
+                err.append(f'slugs.{k}: {v!r} not /{CODE}/…/ ASCII lowercase')
+        elif k in FULL:
             if not re.fullmatch(rf'/{CODE}/([a-z0-9]+(-[a-z0-9]+)*/)?', v):
                 err.append(f'slugs.{k}: {v!r} not /{CODE}/…/ ASCII lowercase')
         elif not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v):
@@ -145,7 +179,8 @@ def slugs():
 def csvs():
     src_c = [r['cc'] for r in csv.DictReader(open(NAMES / 'countries.csv', encoding='utf-8'))]
     rows = list(csv.DictReader(open(HERE / 'countries.csv', encoding='utf-8')))
-    if rows and list(rows[0]) != ['cc', 'name', 'slug', 'in_phrase', 'note']:
+    if rows and list(rows[0]) not in (['cc', 'name', 'slug', 'in_phrase', 'note'],
+                                      ['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom']):   # FIXL D4/D14
         err.append(f'countries.csv header {list(rows[0])}')
     if [r['cc'] for r in rows] != src_c:
         err.append(f'countries.csv: {len(rows)} rows, cc list differs from names/countries.csv ({len(src_c)})')
@@ -153,11 +188,11 @@ def csvs():
     if len(set(sl)) != len(sl):
         err.append('countries.csv: duplicate slugs')
     for r in rows:
-        if not (r['name'] and r['in_phrase']):
-            err.append(f"countries.csv {r['cc']}: empty name/in_phrase")
+        if not (r['name'] and r['in_phrase']) or ('name_nom' in r and not r['name_nom']):
+            err.append(f"countries.csv {r['cc']}: empty name/in_phrase/name_nom")
         if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', r['slug']):
             err.append(f"countries.csv {r['cc']}: slug {r['slug']!r}")
-    src_g = [r['geonameid'] for r in csv.DictReader(open(NAMES / 'cities.csv', encoding='utf-8'))]
+    src_g = [r['geonameid'] for f in ('cities.csv', 'cities_extra.csv') for r in csv.DictReader(open(NAMES / f, encoding='utf-8'))]  # FIXL2: + cities_extra.csv
     p = HERE / 'cities.csv'
     if not p.exists():
         err.append('cities.csv missing'); return len(rows), 0, 0
@@ -169,6 +204,10 @@ def csvs():
         err.append('cities.csv: duplicate or unknown geonameid')
     if len(ids) < len(src_g):
         warn.append(f'cities.csv: {len(ids)} of {len(src_g)} cities (rest falls back to EN)')
+    ps = json.load(open(WORLD / 'state' / 'pages_state.json', encoding='utf-8'))
+    page_g = {str(v['key']).split(':')[2] for v in ps.values() if v.get('type') == 'city' and str(v.get('key', '')).startswith('t:')}
+    for g in sorted(page_g - set(ids)):
+        err.append(f'cities.csv {g}: city page without a row')
     for r in cr:
         if not (r['name'] and r['in_phrase']) or r['decl_ok'] not in ('0', '1'):
             err.append(f"cities.csv {r['geonameid']}: empty field or bad decl_ok")
@@ -176,7 +215,7 @@ def csvs():
 
 
 def style():
-    bad = re.compile(r'\b(my|nasz\w*|prosimy|dziękujemy|zapraszamy|redakcj\w*|24/7|od razu|natychmiast\w*)\b', re.I)
+    bad = re.compile(r'\b(mes|mūsų|mums|redakcij\w*|24/7|iš karto|akimirksniu|Evolako)\b', re.I)
     for f in HERE.glob('*.json'):
         for m in bad.finditer(f.read_text(encoding='utf-8')):
             warn.append(f'{f.name}: style word {m.group(0)!r}')

@@ -74,3 +74,19 @@ Result: 59 ok, 1 minor, 0 mismatch.
 The one minor is `strings_shell.home_lead`: «{n}, {c}» instead of «{n} in {c}». It is deliberate (see «Constructions that differ from EN»).
 
 The report is in `bt_report.md` in the work folder on the Mac.
+
+## L2-uk (11.11.2026)
+
+- Added 274 keys: strings_map 29 (ci_* check-ins, emb_open), strings_pay 93, strings_press 54, strings_b2b 33, strings_embed 65.
+- texts.json: new sections `pay` (6 AFIR points, path → text), `routes` (59 city names of route stops, taken from cities.csv) and `sources_pages` (as in de/pl: names and licence notes translated, URLs and attributions unchanged).
+- Own market: UA. Pages_state has 1 Ukrainian city page (Львів) plus 2 network pages; all 4 UA cities of names/cities.csv are in cities.csv with decl_ok=1. No cities to add.
+- Check-in terms: «відмітка» for a check-in, «Працює / Не працює / Зайнято».
+- Press: {month} stands only where the nominative fits (after a dash, in brackets, in quotes).
+- check.py now covers all 8 string files and texts pay/routes/sources_pages.
+
+## FIXL (11.11.2026)
+- name_nom (D4) not used for uk; countries.csv keeps 5 columns.
+- New slugs (KMU 2010): pay `/uk/yak-oplatyty/`, routes `/uk/marshruty/`, press `/uk/dlia-media/`, b2b `/uk/dani-dlia-biznesu/`, embed `/uk/embed/karta/`, map_conf `/uk/karta-dlia-vashoho-saitu/`, developers `/uk/dlia-rozrobnykiv/`.
+- Cities: +49 (48 NOBIL SE/NO + Женева «у Женеві»), note `FIXL`.
+- lang_hint: «Ця сторінка є також українською».
+- FIXL2: +821 cities from names/cities_extra.csv (own market 61) — UA towns in Ukrainian with hand-written locatives (Володимир, not Volodymyr-Volynskyi; GeoNames city districts → «Полтава (Київський район)» etc.); others transcribed into Ukrainian, compound/uncertain names «у місті X» decl_ok 0 (197); note FIXL2.

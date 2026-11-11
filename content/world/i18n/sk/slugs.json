@@ -9,5 +9,12 @@
  "prices": "/sk/ceny-nabijania/",
  "shell_about": "/sk/o-projekte/",
  "sources": "/sk/zdroje/",
- "methodology": "/sk/metodika/"
+ "methodology": "/sk/metodika/",
+ "pay": "/sk/ako-platit/",
+ "routes": "/sk/trasy/",
+ "press": "/sk/pre-media/",
+ "b2b": "/sk/udaje-pre-firmy/",
+ "embed": "/sk/embed/mapa/",
+ "map_conf": "/sk/mapa-na-vas-web/",
+ "developers": "/sk/pre-vyvojarov/"
 }

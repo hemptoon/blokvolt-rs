@@ -69,7 +69,7 @@
  "p_dc": "50 kW ve üzeri hızlı DC şarj: {dc} ({pct_dc}); 150 kW ve üzeri: {hpc}.",
  "p_gnet": "{net}, {n_countries} bulunuyor.",
  "p_hub": "Orta veya yüksek güvenilirlikte en az 100 halka açık lokasyonu olan her ülkenin bir sayfası vardır. Batı Balkanlar, her ülke için ayrı BlokVolt sayfalarında ele alınır.",
- "p_hub_na": "ABD ve Kanada İngilizce ve Rusça sayfalarda yer alır; Sırpça sayfalar Avrupa'yı kapsar.",
+ "p_hub_na": "Şehir ve şarj ağı sayfaları her ülke için İngilizce ve Rusça, ayrıca o ülkenin kendi dilinde yer alır.",
  "p_multi": "İki veya daha fazla kaynakla doğrulanan lokasyonların payı: {pct_multi}; en son 2025 veya 2026'da doğrulananların payı: {pct_recent}.",
  "p_net_share": "Şarj ağı {country_u} {n_cities} bulunuyor; burada gösterilen ülkedeki halka açık lokasyonlar içindeki payı: {share}.",
  "p_nonet": "Bilinen bir şarj ağına bağlı olmayanlar: {nonet}.",

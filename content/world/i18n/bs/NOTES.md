@@ -45,3 +45,18 @@
 56 совпадают по смыслу, 4 — мелкие нюансы, ошибок смысла нет. Подробно — `BACKCHECK.md`.
 Применено: `download.what_p` (team checks → «provjere BlokVolta»), `download.fields[access]` → «(javni, ograničeni i slično)», «zvaničn-» → «služben-» (норма BiH), «fajl» → «datoteka» везде.
 Не применено: `prices.t_hub` «Evropski indeks cijena javnog punjenja» — оставлено (короче, смысл тот же).
+
+## L2-bs (11.11.2026)
+- +274 ключа: strings_map +29 (28 `ci_*` + `emb_open`), новые strings_pay 93, strings_press 54, strings_b2b 33, strings_embed 65. Плюралов `pl_*` в новых файлах нет.
+- `texts.json`: разделы `pay` (6 узлов `afir.points[i]`) и `routes` (59 узлов `routes[i].stops[j].city`) — формат LANG0, путь через точку. Города маршрутов — из `cities.csv` этого языка (Budimpešta, Beograd, Sofija; Salzburg, Graz, Győr — в оригинале по правилу выше).
+- «ad hoc» = «bez ugovora» (как в prices), в тексте AFIR — «bez registracije (ad hoc)»; «roaming» (как в `/ba/`), «autocesta» (как в `/ba/`), «dionica», «datoteka», «web-stranica», «e-mail».
+- Числа с существительным — только в нейтральной форме «(mreža: {nets})», без «{n} cijena».
+- Свои страны: BA — название, слаг `bosna-i-hercegovina`, 19 городов BiH с падежами проверены, все верны. Страниц городов BA в мировом слое нет (K3). 48 новых городов NOBIL (NO/SE) в `pages_state.json` ещё нет в `names/cities.csv` — для bs они не нужны (не свой рынок).
+- `check.py` расширен на все 8 файлов и `texts.pay`/`texts.routes` (пути = многоязычные узлы pay.json/routes.json).
+
+## FIXL (11.11.2026)
+- strings_home.json (71 ključ): „Mapa punjača”, „mjesto za punjenje”, „tačka”, „filteri”, „aplikacije i kartice za roaming”, „putarine”, „Azija i Okeanija”, „bez korisničkog računa”.
+- lang_hint „Ova stranica postoji i na bosanskom”, close „Zatvori”.
+- Putanje odjeljaka: /bs/kako-platiti/ /bs/rute/ /bs/za-medije/ /bs/podaci-za-firme/ /bs/embed/mapa/ /bs/mapa-za-vasu-stranicu/ /bs/za-programere/.
+- D12: Ser → Seres. +49 gradova (kao hr: izvorna imena, lokativ iz sr_u, inače „u gradu X”; Ženeva → u Ženevi). name_nom nije potreban (bs nije u D14).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 0)

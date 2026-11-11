@@ -9,5 +9,12 @@
  "prices": "/lt/ikrovimo-kainos/",
  "shell_about": "/lt/apie/",
  "sources": "/lt/saltiniai/",
- "methodology": "/lt/metodika/"
+ "methodology": "/lt/metodika/",
+ "pay": "/lt/kaip-moketi/",
+ "routes": "/lt/marsrutai/",
+ "press": "/lt/ziniasklaidai/",
+ "b2b": "/lt/duomenys-verslui/",
+ "embed": "/lt/embed/zemelapis/",
+ "map_conf": "/lt/zemelapis-svetainei/",
+ "developers": "/lt/kurejams/"
 }

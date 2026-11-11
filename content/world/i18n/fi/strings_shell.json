@@ -45,5 +45,7 @@
  "pl_cc": {
   "one": "maassa",
   "other": "maassa"
- }
+ },
+ "lang_hint": "Tämä sivu on saatavilla myös suomeksi",
+ "lang_hint_close": "Sulje"
 }

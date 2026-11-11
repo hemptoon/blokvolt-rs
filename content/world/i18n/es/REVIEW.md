@@ -89,3 +89,35 @@
 | cities.csv | 2989317 | name: Orléans | Orleans |
 | cities.csv | 2989317 | in_phrase: en Orléans | en Orleans |
 | cities.csv | 2989317 | note:  | экзоним RAE/Fundéu |
+
+# L2-ES — дельта ключей, тексты данных, свои страны (11.11.2026)
+
+Ветка `l2-es` от `dev` (bb86f74). HOME2 в `dev` ещё не было — его ключей нет.
+
+## Что сделано
+- 274 новых ключа: strings_map +29 (28 `ci_*` и `emb_open`), новые файлы strings_pay (93), strings_press (54), strings_b2b (33), strings_embed (65). Форма «usted», ad hoc = «sin registro», кавычки « », «24/7», «nosotros» и «el equipo» не используются.
+- `texts.json`: новые разделы `pay` (6 узлов `afir.points[i]`) и `routes` (59 узлов `routes[i].stops[j].city`). Названия городов берутся из `cities.csv` es: Belgrado, Sofía, Salzburgo, Liubliana.
+- Свои страны ES и AD: названия и `in_phrase` в порядке. Города со страницами — 177, все есть в `cities.csv`, `decl_ok = 1`. Пяти валенсийским городам поставлена кастильская форма, как раньше у Alcoy и Jávea: Játiva, Denia, Onteniente, Benicasim, Gandía. Официальное название записано в `note`. Слаги не меняются: они берутся из `names/cities.csv`.
+- `check.py` теперь проверяет все 8 файлов строк и разделы `texts.pay` и `texts.routes`: ключи сверяются с многоязычными узлами `pay.json` и `routes.json`, плейсхолдеры и теги — с EN. Итог: 839 строк, 0 ошибок.
+
+## Обратный перевод (60 случайных новых строк, отдельный агент вслепую)
+60 из 60 — смысл совпадает. Мелочи, которые оставлены сознательно:
+- «sin registro» обратно переводится как «no registration», а не «ad hoc». Это принятый термин R-ES.
+- `ci_last_*` «aviso» → «report», а не «check-in». Термин тот же, что у формы ошибок.
+- `th_gaps` «Tramos sin carga > 150 km» читается понятнее, чем EN «Gaps».
+
+## Вопросы
+- `dv_p_lang` перечисляет EN, SR, RU. Когда в виджете появится es, строку нужно обновить во всех языках (это задача LANG0/EN).
+- В `pages_state.json` 144 города NOBIL (NO и SE), которых нет в `names/cities.csv`. Для es это не свои страны, но таких городов нет и в общем справочнике. Их нужно добавить в `names` (задача LANG0/LANGI).
+- `credit` и цитата в `data_p` используют английское название индекса «European EV Charging Price Index», как в R-ES.
+
+## FIXL 11.11.2026
+Что проверено: новый `strings_home.json` (71 ключ), `lang_hint`/`lang_hint_close`, D11 (`embed.dv_p_lang`, `pages.p_hub_na`), D14 (`pay.afir_eu`, `afir_non`, `conn_txt` через `{name_nom}`), колонка `name_nom` в countries.csv, 49 городов FIXL, 7 слагов разделов.
+Обратный перевод (волна 1, вслепую, сделан самим агентом FIXL): 20 строк home (title, desc, h1, sub, data_as_of, search_none, near_err, map_more, countries_h, below_h, prices_p, p_src, routes_p, work_p, o_press_p, trust_p, org_desc, map_err, ap_note, p_ratio) и все 7 других изменённых строк. По смыслу всё совпадает. Исправлено:
+- `trust_p`: «Sin posiciones de pago» читалось как «без платёжных позиций» → «Sin posicionamiento de pago».
+- `desc` сокращён до 213 знаков (EN 206): «EE. UU.», «de cada lugar».
+- `near_err`: «ubicación» заменено на «geolocalización», чтобы не путать с термином «ubicación» (место для зарядки).
+Принятые расхождения: в `h1`/`title` «puntos de carga» без «coches eléctricos» (как в хабе и карте); `p_src` «verificados» — по глоссарию (checked = verificado).
+D14: `name_nom` = `in_phrase` без «en » (los Países Bajos, el Reino Unido, la India, el Líbano, Estados Unidos, España). Чтобы не было «Los Países Bajos» с маленькой буквы в начале фразы и проблем с согласованием глагола (los Países Bajos forman/España forma), использован инфинитив: «Al formar parte {name_nom} de la UE, …». После «de» `{name_nom}` не ставится (de + el = del) — в `conn_txt` «que hay en {name_nom}».
+D12: в es cities.csv исторических/ирредентистских экзонимов нет (Niza, Ratisbona, Tesalónica, Leópolis — нормальные экзонимы RAE/Fundéu). Ничего не меняли.
+Открыто: `pay.conn_lnk` по правилу оставлен с `{name}` («Puntos de carga en {name}» → «en Países Bajos» без артикля). `pages.p_city_cmp` «de media en {country_name}» — та же проблема с артиклем; движку нужен `{country_u}` для этого ключа.

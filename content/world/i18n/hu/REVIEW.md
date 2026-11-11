@@ -26,3 +26,15 @@ FJ → «a Fidzsi-szigeteken»; MF → «Saint Martinon» (единый вид �
 
 ## Проверка
 `check.py` — OK. Обратный перевод изменённых строк отдельным агентом: смысл совпадает, 2 его замечания приняты (`p_multi`, `h_more`).
+
+## L2-HU — обратный перевод (11.11.2026)
+60 случайных новых строк, независимый агент без доступа к EN: смысл совпал 60/60. Его стилистические замечания — 8; принято 6:
+`b2b.lic_p` («készlet» → «adatkészlet», «soronkénti» → «rekordszintű»), `b2b.what_price` («nagy teljesítményű ár» → «HPC-ár»), `pay.th_gaps` («Hézagok» → «Töltő nélkül > 150 km»), `press.read_issue` (+«elolvasása»), `press.th_change` → «A DC-ár változása», `embed.dv_p_lang` («cím» двусмысленно: адрес/заголовок → «URL-je»).
+Не приняты: `pay.checked` «Adatok: {date}» — так же, как `data_date` на карте; `embed.cf_more` «API-kérések» — в контексте ссылки однозначно.
+
+## FIXL 11.11.2026
+- Ellenőrizve: új `strings_home.json` (71 kulcs), `lang_hint`/`lang_hint_close`, D11 (`dv_p_lang`, `p_hub_na`), 7 új slug, 49 új cities.csv-sor, D12.
+- Visszafordítás (2. hullám): 10 home-sztring (title, desc, data_as_of, near_err, p_ratio, routes_h, trust_p, map_go, o_widget_p, org_desc) + változtatottak (lang_hint, p_hub_na, dv_p_lang, shell.about_p, texts routes). Jelentésbeli eltérés: 0. Javítva: `trust_p` — „Nincsenek fizetett megjelenések és hálózati rangsorok” → „…, és nincsenek hálózati rangsorok” (egyértelműbb, mint az about_p). `dv_p_lang` maradt „URL-je” (L2 döntés: a „cím” kétértelmű).
+- D12 (32 sor): Pozsony→Bratislava, Kassa→Košice, Eperjes→Prešov, Zsolna→Žilina, Nyitra→Nitra, Nagyszombat→Trnava, Trencsén→Trenčín, Zólyom→Zvolen, Léva→Levice, Késmárk→Kežmarok, Poprád→Poprad, Rózsahegy→Ružomberok, Igló→Spišská Nová Ves, Liptószentmiklós→Liptovský Mikuláš, Dunaszerdahely→Dunajská Streda; Kolozsvár→Cluj-Napoca, Temesvár→Timișoara, Brassó→Brașov, Nagyszeben→Sibiu, Nagyvárad→Oradea, Nagybánya→Baia Mare, Szatmárnémeti→Satu Mare; Újvidék→Novi Sad, Szabadka→Subotica, Zombor→Sombor, Pancsova→Pančevo, Nagybecskerek→Zrenjanin, Nagykikinda→Kikinda, Futak→Futog; Eszék→Osijek, Varasd→Varaždin, Csáktornya→Čakovec. Többszavas/bizonytalan ragozású nevek: „X városában”, decl_ok=0 (Baia Mare, Satu Mare, Oradea, Liptovský Mikuláš, Dunajská Streda, Spišská Nová Ves). texts.json: Csáktornya→Čakovec, Nagyszeben→Sibiu; shell.about_p: „a szerbiai Újvidéken (Novi Sad)” → „Novi Sadban, Szerbiában”.
+- Maradt (semleges, bevett exonimák): Bécs, Bécsújhely, Prága, Varsó, Belgrád, Zágráb, Bukarest, Galac, Szófia stb. Nyitott kérdés: Zágráb (a Magyar Korona része volt, de főváros, bevett semleges név) — marad; Bécsújhely — marad.
+- Nyitott: az automatikus -ban/-ben ragozás a 47 svéd/norvég városnál (pl. Nässjőben, Lidingőben, Luleåban) — anyanyelvi ellenőrzés kell; Boo → „Boo városában”.
