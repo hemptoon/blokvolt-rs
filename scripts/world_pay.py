@@ -278,11 +278,11 @@ class R:
             title=S['t_pay_country'].format(cu=self.cu(cc, l)), h1=S['t_pay_country'].format(cu=self.cu(cc, l)),
             description=S['d_pay_country'].format(cu=self.cu(cc, l)), kick=None, jsonld=None, last=name,
             crumbs=[(S['nav_pay'], PAY[l])], checked=S['checked'].format(date=self.date(self.P['updated'])),
-            afir_head=(S['afir_eu'] if cc in EU else S['afir_non']).format(name=name, name_nom=nom),
+            afir_head=I.fmt_nom(S['afir_eu'] if cc in EU else S['afir_non'], name=name, name_nom=nom),
             afir_points=self.afir_points(l) if cc in EU else [], afir_src=S['afir_src'].format(date=self.date(A['checked'])), afir_url=A['url'],
             nets=self.nets_of(cc, l), apps=apps, typ=typ, price_url=price_url, road=self.toll(cc, l),
-            conn_txt=S['conn_txt'].format(name=name, name_nom=nom), conn_url=self.w.site.country(cc, l),
-            conn_lnk=S['conn_lnk'].format(name=name, name_nom=nom),
+            conn_txt=I.fmt_nom(S['conn_txt'], name=name, name_nom=nom), conn_url=self.w.site.country(cc, l),
+            conn_lnk=I.fmt_nom(S['conn_lnk'], name=name, name_nom=nom),
             routes=[(self.route_title(rt, l), self.route_url(rt, l)) for rt in self.RT['routes'] if cc in {x['cc'] for x in rt['countries']}][:8]),
             'pay', ups=[PAY])
 

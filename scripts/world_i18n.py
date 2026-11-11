@@ -371,6 +371,16 @@ def country_nom(row, lang):
     return country_name(row, lang)
 
 
+def fmt_nom(template, **kw):
+    """str.format for strings with {name_nom}: a sentence that opens with the article form gets its capital
+    ("{name_nom} ist kein EU-Mitglied" → "Die Schweiz ist kein EU-Mitglied", "Les Pays-Bas sont …")."""
+    out = template.format(**kw)
+    if template.lstrip().startswith('{name_nom}') and out:
+        i = len(out) - len(out.lstrip())
+        out = out[:i] + out[i:i + 1].upper() + out[i + 1:]
+    return out
+
+
 FR_VOWEL = re.compile(r'[AEIOUYÀÂÄÆÉÈÊËÎÏÔÖŒÙÛÜŸaeiouyàâäæéèêëîïôöœùûüÿ]')
 # French towns with a mute h ("d'Hyères"); every other h counts as aspirated ("de Hambourg", "de Hanovre", "de Heidelberg")
 FR_H_MUET = {'hyeres', 'herouville-saint-clair', 'henin-beaumont', 'hazebrouck', 'hennebont', 'herblay', 'herblay-sur-seine'}
@@ -816,6 +826,9 @@ def selftest():
                 errs.append(f'month_label {l}: {month_label("2026-11", l)} != {v}')
     except SystemExit:
         pass
+    if fmt_nom('{name_nom} ist kein EU-Mitglied.', name_nom='die Schweiz') != 'Die Schweiz ist kein EU-Mitglied.' or \
+            fmt_nom('Für {name_nom} gilt …', name_nom='die Schweiz') != 'Für die Schweiz gilt …':
+        errs.append('fmt_nom')
     if registry().get('ro', {}).get('pct') != '{x}%':
         errs.append('ro pct must be {x}% (D8)')
     for l in BASE:
