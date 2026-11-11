@@ -150,7 +150,7 @@ geonameid,name,in_phrase,decl_ok,note
 2853572,Pirna,in Pirna,1,
 2913537,Gunzenhausen,in Gunzenhausen,1,
 2930523,Emmendingen,in Emmendingen,1,
-2960596,Esch-sur-Alzette,in Esch-sur-Alzette,1,
+2960596,Esch an der Alzette,in Esch an der Alzette,1,L2-de: de.wikipedia title
 2844437,Rotenburg (Wümme),in Rotenburg (Wümme),1,
 2855525,Papenburg,in Papenburg,1,
 2857798,Offenburg,in Offenburg,1,
@@ -378,7 +378,7 @@ geonameid,name,in_phrase,decl_ok,note
 2871736,Merseburg,in Merseburg,1,
 2896736,Idstein,in Idstein,1,
 2953568,Backnang,in Backnang,1,
-2960634,Dudelange,in Dudelange,1,
+2960634,Düdelingen,in Düdelingen,1,L2-de: de.wikipedia title
 2660718,Freiburg im Üechtland,in Freiburg im Üechtland,1,Exonym (de.wikipedia)
 2820973,Trossingen,in Trossingen,1,
 2835345,Schwalmstadt,in Schwalmstadt,1,
@@ -413,7 +413,7 @@ geonameid,name,in_phrase,decl_ok,note
 2920329,Ginsheim-Gustavsburg,in Ginsheim-Gustavsburg,1,
 2939945,Coesfeld,in Coesfeld,1,
 2954006,Aurich,in Aurich,1,
-2658606,Sierre,in Sierre,1,
+2658606,Siders,in Siders,1,L2-de: de.wikipedia title
 2841463,Sankt Wendel,in Sankt Wendel,1,
 2849548,Rees,in Rees,1,
 2871486,Metzingen,in Metzingen,1,
@@ -5604,3 +5604,51 @@ geonameid,name,in_phrase,decl_ok,note
 786950,Podujeva,in Podujeva,1,Exonym (de.wikipedia)
 788470,Llazicë,in Llazicë,1,
 790674,Gjilan,in Gjilan,1,
+3149563,Kongsberg,in Kongsberg,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+3139075,Skien,in Skien,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2727234,Åkersberga,in Åkersberga,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2726756,Alingsås,in Alingsås,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2721259,Boo,in Boo,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2716166,Enköping,in Enköping,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2715946,Eslöv,in Eslöv,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2715573,Falkenberg,in Falkenberg,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2715568,Falköping,in Falköping,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2709628,Gustavsberg,in Gustavsberg,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2707953,Haninge,in Haninge,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2704620,Huddinge,in Huddinge,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2704613,Hudiksvall,in Hudiksvall,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2704136,Huskvarna,in Huskvarna,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2703396,Jakobsberg,in Jakobsberg,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2701715,Karlskoga,in Karlskoga,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2701223,Katrineholm,in Katrineholm,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2699791,Köping,in Köping,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2699282,Kristinehamn,in Kristinehamn,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2698767,Kumla,in Kumla,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2697720,Landskrona,in Landskrona,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2696503,Lerum,in Lerum,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2696334,Lidingö,in Lidingö,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+604490,Luleå,in Luleå,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2692613,Mariestad,in Mariestad,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2692475,Märsta,in Märsta,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2690580,Nacka,in Nacka,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2690170,Nässjö,in Nässjö,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2688250,Norrtälje,in Norrtälje,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2687700,Nyköping,in Nyköping,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2686469,Örnsköldsvik,in Örnsköldsvik,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2686162,Oskarshamn,in Oskarshamn,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2684395,Partille,in Partille,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+603570,Piteå,in Piteå,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+602913,Skellefteå,in Skellefteå,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2676176,Södertälje,in Södertälje,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2675408,Sollentuna,in Sollentuna,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2675397,Solna,in Solna,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2674649,Staffanstorp,in Staffanstorp,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2670879,Sundbyberg,in Sundbyberg,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2669772,Täby,in Täby,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2667303,Trollhättan,in Trollhättan,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2667094,Tumba,in Tumba,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2666238,Upplands Väsby,in Upplands Väsby,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2664203,Västervik,in Västervik,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2665171,Vänersborg,in Vänersborg,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2664855,Värnamo,in Värnamo,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)
+2662689,Visby,in Visby,1,NOBIL (L2-de): not yet in names/cities.csv; local name (geonames)

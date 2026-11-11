@@ -36,3 +36,16 @@ Base `origin/l-de` (ba1d6e0), branch `r-de`. Native-editor pass over all 403 str
 - texts.json still carries `sources_pages` (translated by L-DE before the 23:55 rule). Kept, not deleted; K8 should read only about_data and download.
 - Shared `names/cities.csv`: 6295520 “Stadt Winterthur (Kreis 1)” duplicates 2657970 Winterthur — for N/K to drop from the city list.
 - Back-translation (blind, 29 changed strings): 11 remarks, 9 applied, 2 left (disc “Verfügbarkeit” = intended, both readings fine; lead_hub dashes = kept, mirrors EN).
+
+---
+
+# L2-de — Delta und Rückübersetzung (11.11.2026)
+
+Branch `l2-de` from `dev` (bb86f74). HOME2 not yet in `dev` → 274 new keys: strings_map 29 (`ci_*`, `emb_open`), strings_pay 93, strings_press 54, strings_b2b 33, strings_embed 65. texts.json: new sections `pay` (6 nodes) and `routes` (59 nodes), `sources_pages.nobil` added (attribution verbatim).
+
+Blind back-translation of 60 random new strings (separate agent, saw German only): 60/60 meaning kept, 0 discrepancies.
+Minor, accepted:
+- `strings_pay.t_pay_hub` — title rewritten for search („Laden bezahlen in Europa: Karte, App, Ladekarte“), H1 keeps the EN wording.
+- `nav_pay`/`kick_pay`/`pay_more` = „Bezahlen“ (shorter than „So bezahlen Sie“ for navigation).
+- `ci_n30` „Rückmeldungen“ for check-ins (no English loan word).
+Fixed after the check: `pay_disc` „verkauft weder Strom“ → „weder Ladevorgänge“ (EN „charging“; avoid any hint of electricity sales).
