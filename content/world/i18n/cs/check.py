@@ -27,7 +27,8 @@ def same(a, b, where):
     if a.endswith(' | BlokVolt') != b.endswith(' | BlokVolt'):
         err.append(f'{where}: " | BlokVolt" tail')
 
-for name in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
+for name in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+             'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed'):   # L2: all 8 files
     en = {k: v['en'] for k, v in json.load(open(W / f'{name}.json')).items()}
     cs = json.load(open(HERE / f'{name}.json'))
     for k in en.keys() - cs.keys(): err.append(f'{name}: missing {k}')
@@ -64,6 +65,26 @@ t = json.load(open(HERE / 'texts.json'))
 for key, fn in (('about_data', 'about_data.json'), ('download', 'download.json')):
     src = json.load(open(W / fn))
     walk(src['en'] if 'en' in src else src, t.get(key), f'.{key}')
+
+# L2 (LANG0 format): texts.json -> pay / routes = {"path.to[i].node": "text"} for every multilingual node
+def ml_nodes(n, p, out):
+    if isinstance(n, dict):
+        if isinstance(n.get('en'), str) and ('sr' in n or 'ru' in n):
+            out[p] = n['en']; return
+        for k, v in n.items(): ml_nodes(v, f'{p}.{k}' if p else k, out)
+    elif isinstance(n, list):
+        for i, v in enumerate(n): ml_nodes(v, f'{p}[{i}]', out)
+for key in ('pay', 'routes'):
+    exp = {}; ml_nodes(json.load(open(W / f'{key}.json')), '', exp)
+    got = t.get(key)
+    if not isinstance(got, dict): err.append(f'texts.{key}: missing section'); continue
+    for k in exp.keys() - got.keys(): err.append(f'texts.{key}: missing {k}')
+    for k in got.keys() - exp.keys(): err.append(f'texts.{key}: extra {k}')
+    for k, ev in exp.items():
+        v = got.get(k)
+        if v is None: continue
+        if not isinstance(v, str) or not v.strip(): err.append(f'texts.{key}.{k}: empty')
+        else: same(v, ev, f'texts.{key}.{k}')
 
 s = json.load(open(HERE / 'slugs.json'))
 KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
