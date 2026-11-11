@@ -75,7 +75,8 @@ def static(out):
                 continue
             h = f.read_text(encoding='utf-8')
             check(all(f'hreflang="{x}"' in h for x in ('en', 'sr', 'ru', 'x-default')), f'{p} hreflang en/sr/ru/x-default')
-            check(not re.search(r'\d', re.search(r'<title>(.*?)</title>', h).group(1)), f'{p} no number in <title>')
+            # LANG1: the title as the reader sees it ("EV&#39;s" is not a number)
+            check(not re.search(r'\d', __import__('html').unescape(re.search(r'<title>(.*?)</title>', h).group(1))), f'{p} no number in <title>')
             for pat in (r'\bodmah\b', r'24/7', r'Evolako'):
                 check(not re.search(pat, h), f'{p} no "{pat}"')
     sm = (out / 'sitemap.xml').read_text(encoding='utf-8') if (out / 'sitemap.xml').exists() else ''
