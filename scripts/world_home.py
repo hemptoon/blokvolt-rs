@@ -60,8 +60,9 @@ def load_strings():
         else:   # K8/LANG0: an extra language brings its own file; production stops on a missing key, a preview shows "[EN] …"
             out[l] = I.load('home', [l])[l]
     for l, d in out.items():
-        for k, v in d.items():
+        for k, v0 in d.items():
             for pat in I.forbidden(FORBIDDEN, l):
+                v = ' '.join(v0.values()) if isinstance(v0, dict) else v0   # LANG0: CLDR plural objects of other languages
                 if re.search(pat, v, re.I):
                     raise SystemExit(f'content/world/strings_home.json: "{k}" ({l}) has a forbidden word ({pat}): {v}')
     return out
