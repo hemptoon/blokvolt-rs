@@ -524,7 +524,7 @@ def check_folder(lang, folder=None):
         for k, v in sl.items():
             if (k in SLUG_PATHS or k in SLUG_ALIASES) and not re.fullmatch(r'/[a-z]{2,3}/([a-z0-9]+(-[a-z0-9]+)*/)*', v or ''):
                 errs.append(f'slugs.{k}: "{v}" is not /<lang>/…/ in ASCII lowercase')
-            if k not in SLUG_PATHS and not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v or ''):
+            if k not in SLUG_PATHS and k not in SLUG_ALIASES and not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v or ''):
                 errs.append(f'slugs.{k}: "{v}" is not one ASCII segment')
     t = json.load(open(folder / 'texts.json', encoding='utf-8')) if (folder / 'texts.json').exists() else {}
     for sec in DATA_TEXTS:   # LANG0: texts.json → pay / routes, key = path of the multilingual node
