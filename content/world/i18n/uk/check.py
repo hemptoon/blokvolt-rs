@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check content/world/i18n/uk against the EN sources (L-UK, pool 3).
+"""Check content/world/i18n/uk against the EN sources (L-UK, pool 3; L2-uk: 8 string files, texts pay/routes/sources_pages).
 
 Run from the repo root:  python3 content/world/i18n/uk/check.py
 Exit code 0 = no errors. Warnings do not fail.
@@ -123,11 +123,49 @@ def check_texts():
         return 0
     tr = json.load(open(p))
     src = {'about_data': 'about_data.json', 'download': 'download.json'}
-    same('texts.json', list(src), list(tr), 'top keys')
+    flat = {'pay': 'pay.json', 'routes': 'routes.json'}  # L2 (LANG0 format): node path -> text
+    same('texts.json', list(src) + ['sources_pages'] + list(flat), list(tr), 'top keys')
     n = 0
     for k, f in src.items():
         n = walk(json.load(open(os.path.join(WORLD, f)))['en'], tr.get(k), k, n)
+    # sources_pages: same structure as EN; urls/kind unchanged, name/licence may be translated
+    sp_en = json.load(open(os.path.join(WORLD, 'sources_pages.json')))
+    sp = tr.get('sources_pages', {})
+    same('texts:sources_pages', list(sp_en), list(sp), 'keys')
+    for k, v in sp_en.items():
+        t = sp.get(k, {})
+        same(f'texts:sources_pages.{k}', list(v), list(t), 'fields')
+        for f2, e in v.items():
+            if f2 in ('url', 'licence_url', 'kind', 'attribution') or not isinstance(e, str):
+                if t.get(f2) != e:
+                    err(f'texts:sources_pages.{k}.{f2}: must stay as EN')
+            elif not isinstance(t.get(f2), str) or not t.get(f2, '').strip():
+                err(f'texts:sources_pages.{k}.{f2}: empty')
+            else:
+                n += 1
+    for k, f in flat.items():
+        nodes = []
+        ml_nodes(json.load(open(os.path.join(WORLD, f))), '', nodes)
+        got = tr.get(k, {})
+        same(f'texts:{k}', [p for p, _ in nodes], list(got), 'node paths')
+        for p, en in nodes:
+            if p in got:
+                cmp_string(f'texts:{k}.{p}', en, got[p])
+                n += 1
     return n
+
+
+def ml_nodes(o, p, out):
+    """Multilingual nodes {en, sr|ru, ...} of pay.json / routes.json as (dot path, EN text)."""
+    if isinstance(o, dict):
+        if isinstance(o.get('en'), str) and ('sr' in o or 'ru' in o):
+            out.append((p, o['en']))
+            return
+        for k, v in o.items():
+            ml_nodes(v, f'{p}.{k}' if p else k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            ml_nodes(v, f'{p}[{i}]', out)
 
 
 def check_slugs():
@@ -215,7 +253,8 @@ def check_cities():
 
 def main():
     out = {}
-    for f in ('strings_map.json', 'strings_pages.json', 'strings_shell.json', 'strings_prices.json'):
+    for f in ('strings_map.json', 'strings_pages.json', 'strings_shell.json', 'strings_prices.json',
+              'strings_pay.json', 'strings_press.json', 'strings_b2b.json', 'strings_embed.json'):
         out[f] = check_strings(f)
     out['texts.json strings'] = check_texts()
     out['slugs.json'] = check_slugs()

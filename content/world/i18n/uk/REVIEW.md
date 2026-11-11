@@ -38,3 +38,23 @@
 ## Обратный перевод (отдельный агент, вслепую)
 
 32 изменённые строки → EN, затем сверка с оригиналом: ok 26, minor 6, mismatch 0. По итогам исправлены ещё 2 строки: `p_hub` (двусмысленный порядок «Балкани охоплюють сторінки» → «охоплено сторінками») и `shell.map_p` («офіційних реєстрів» → «відкритих реєстрів», как в EN). Остальные minor — осознанные («за попереднім записом», «заряджання вдома»). Итого исправлено 34 строки.
+
+## L2-uk (11.11.2026) — back-translation of new strings
+
+A separate agent blind-translated 60 random new strings (seed 20261111; 280 new strings of strings_map ci_*/emb_open, strings_pay, strings_press, strings_b2b, strings_embed and texts.pay) back into EN.
+
+Result: 60 ok in meaning, 0 mismatch. Style notes taken in:
+- press.lead_press: «з зазначенням» → «із зазначенням» (euphony).
+- embed.cf_more: «запити на API» → «доступ до API».
+- embed.dv_widget_btn: «Створити код» → «Згенерувати код».
+- embed.cf_view, dv_p_hash: «точний вигляд» → «точне положення карти».
+- embed.dv_open_btn: «Завантаження та колонки» → «Файл і колонки».
+- embed.dv_lead: «Усе відкрите…» → «Усі відкриті дані безкоштовні…».
+- pay.gap_note: «Плануйте під’їхати…» → «Заїжджайте на цю ділянку з повною батареєю».
+
+Left as is (deliberate):
+- «разова оплата» for ad hoc — the term fixed in NOTES.md and used in strings_prices.
+- «достовірність від 70» — same scale as the rest of the site (0–100, explained on the methodology page).
+- «Слаг» on the developers page — audience is developers.
+- {cu} is the country in_phrase («в Україні»), not a bare name (scripts/world_pay.py: cu()).
+- press {month} is used only in positions where the nominative fits: after a dash, in brackets, in quotes («Порівняно з випуском «{prev}»»).
