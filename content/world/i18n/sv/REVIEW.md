@@ -50,3 +50,21 @@
 - «USA» вместо «Förenta staterna» — норма шведских СМИ, оставлено.
 - `p_hub_na` говорит, какие страны есть на каких языках; при включении sv фразу нужно обновить (вопрос из L-SV остаётся).
 - Города за пределами SE/FI/AX и первых 500 `month` проверены только по списку экзонимов.
+
+## L2-sv — bakåtöversättning (2026-11-11)
+60 slumpvisa nya strängar (seed 20261111) översattes tillbaka till EN av en separat agent som inte såg originalet. Betydelseavvikelser: 0.
+
+Stilanmärkningar (13) och beslut:
+- `lg_home` ”El hemma” tvetydigt → ”Hushållsel” (även `ch_dc_home`, `d_issue`).
+- `what_price`, `what_cov`: ”högeffekt” som substantiv, ”valuta och EUR” oklart → ”AC-, DC- och HPC-pris”, ”andel DC och HPC”, ”originalvaluta och EUR”.
+- `dv_desc`, `dv_open_p`: ordföljd → ”veckovis uppdaterade öppna data”, ”En veckovis uppdaterad CSV-fil”.
+- `ci_err`, `ci_err_limit`: ”svar”/”adress” → ”Det gick inte att skicka”, ”rapporter från den här anslutningen”.
+- `ci_demo`: ”Förhandsversion” → ”Förhandsvisning” (som `m_demo`, `cf_preview`); även `ci_demo_note`.
+- `dv_p_mreza`: → ”avgränsade med kommatecken”.
+- `pay_disc`: → ”Apparnas täckning … Kontrollera i själva appen”.
+- `dv_balkan_p`: ”avsnitten” → ”de regionala delarna”.
+- `typ_none`: dubbelt ”för” → ”Ännu för få officiella priser för att beräkna ett index för landet.”
+- Ej ändrat: `d_pay_country` ({cu} bär prepositionen — avsiktligt, se NOTES); `what_cov` ”kontakter” (ordlistans term, som i strings_map).
+- Dessutom: ”taxa/taxor” i nya strängar → ”tariff/tariffer” för att följa befintliga strings_prices/strings_map.
+
+Öppet: `dv_p_lang` listar ”EN, SR, RU” som i EN — uppdateras när LANG0 ändrar EN-källan.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""L-SV check: content/world/i18n/sv vs EN sources. Run from repo root or anywhere: python3 content/world/i18n/sv/check.py"""
+"""L-SV / L2-sv check (8 string files, texts.json incl. pay/routes, slugs, countries, cities): content/world/i18n/sv vs EN sources. Run from repo root or anywhere: python3 content/world/i18n/sv/check.py"""
 import csv, json, re, sys
 from pathlib import Path
 from babel import Locale
@@ -15,7 +15,8 @@ err = []
 def sig(s):
     return sorted(PH.findall(s)), sorted(TAG.findall(s))
 
-for name in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices']:
+for name in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+             'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed']:
     en = json.load(open(WORLD / f'{name}.json', encoding='utf-8'))
     tr = json.load(open(HERE / f'{name}.json', encoding='utf-8'))
     for k in en:
@@ -61,10 +62,34 @@ def walk(a, b, p):
     elif a != b:
         err.append(f'texts {p}: non-text value changed')
 
-if set(tx) != set(src):
+# LANG0 sections: path of a multilingual node in pay.json / routes.json -> text
+def ml_nodes(x, p, out):
+    if isinstance(x, dict):
+        if isinstance(x.get('en'), str) and ('sr' in x or 'ru' in x):
+            out[p] = x['en']; return
+        for k, v in x.items(): ml_nodes(v, f'{p}.{k}' if p else k, out)
+    elif isinstance(x, list):
+        for i, v in enumerate(x): ml_nodes(v, f'{p}[{i}]', out)
+
+ML = {}
+for sec in ('pay', 'routes'):
+    ML[sec] = {}; ml_nodes(json.load(open(WORLD / f'{sec}.json', encoding='utf-8')), '', ML[sec])
+
+if not (set(src) | set(ML)) <= set(tx) <= set(src) | set(ML) | {'sources_pages'}:
     err.append(f'texts.json keys {sorted(tx)}')
 for k in src:
     if k in tx: walk(src[k], tx[k], k)
+    else: err.append(f'texts.json: missing {k}')
+for sec, nodes in ML.items():
+    got = tx.get(sec)
+    if not isinstance(got, dict):
+        err.append(f'texts.json: missing section {sec}'); continue
+    for p, e in nodes.items():
+        t = got.get(p)
+        if not isinstance(t, str) or not t.strip(): err.append(f'texts {sec} {p}: missing/empty')
+        elif sig(e) != sig(t): err.append(f'texts {sec} {p}: placeholders differ')
+    for p in got:
+        if p not in nodes: err.append(f'texts {sec}: extra path {p}')
 
 # slugs
 SK = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
@@ -93,16 +118,25 @@ for r in cs:
 
 # cities
 ci = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities.csv', encoding='utf-8'))}
+# city pages that exist but are not yet in names/cities.csv (e.g. new NOBIL towns) are allowed too
+ps = json.load(open(WORLD / 'state' / 'pages_state.json', encoding='utf-8'))
+ci_pages = {v['key'].split(':')[-1] for v in ps.values() if v.get('type') == 'city'}
+ci_all = ci | ci_pages
 cc = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
 if [*cc[0].keys()] != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: err.append('cities.csv header')
 ids = [r['geonameid'] for r in cc]
 if len(set(ids)) != len(ids): err.append('cities.csv: duplicate geonameid')
-if set(ids) - ci: err.append(f'cities.csv: unknown geonameid {sorted(set(ids) - ci)[:5]}')
+if set(ids) - ci_all: err.append(f'cities.csv: unknown geonameid {sorted(set(ids) - ci_all)[:5]}')
 for r in cc:
     if not r['name'].strip() or not r['in_phrase'].strip() or r['decl_ok'] not in ('0', '1'):
         err.append(f"city {r['geonameid']}: bad row")
 
-print(f'{LANG}: plural categories {sorted(CATS)}; countries {len(cs)}; cities {len(cc)}/{len(ci)}')
+MC = ['SE', 'FI']  # market_countries (LANG_pool §0.3)
+base_cc = {r['geonameid']: r['cc'] for r in csv.DictReader(open(WORLD / 'names' / 'cities.csv', encoding='utf-8'))}
+own = {v['key'].split(':')[-1] for v in ps.values() if v.get('type') == 'city' and v['key'].split(':')[1] in MC}
+miss = own - set(ids)
+if miss: err.append(f'cities.csv: {len(miss)} city pages of {MC} without a name, e.g. {sorted(miss)[:5]}')
+print(f'{LANG}: plural categories {sorted(CATS)}; countries {len(cs)}; cities {len(cc)}/{len(ci)} (+{len(set(ids) - ci)} not in names/); own-market city pages {len(own)}, named {len(own) - len(miss)}')
 if err:
     print(f'{len(err)} errors'); print('\n'.join(err[:80])); sys.exit(1)
 print('OK — 0 errors')
