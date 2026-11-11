@@ -13,6 +13,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 10. novembar 2026
 
+- Novi vodič [Kineski električni auto: garancija i servis](/kineski-elektricni-auto-u-srbiji.html): koliko traje garancija na vozilo i bateriju kod BYD, MG, Geely i Leapmotor, gde su ovlašćeni servisi, šta važi za rezervne delove i koja prava kupcu daje novi Zakon o zaštiti potrošača.
 - [Subvencije 2026](/podaci/subvencije-2026/) i [Krediti i lizing](/podaci/krediti-i-lizing/): ispravka. Uredba (čl. 5 st. 2) ipak traži da kupac uz subvenciju u finansijskom lizingu davaocu lizinga uplati najmanje 15 % kupoprodajne cene; ranije je pisalo da taj uslov ne postoji.
 
 ## 9. novembar 2026

@@ -1,0 +1,45 @@
+{
+  "cover": {"image": "servisi", "alt": {"sr": "Električni automobil u ovlašćenom servisu", "en": "An electric car at an authorized service center", "ru": "Электромобиль в официальном сервисе"}},
+  "sr": {
+    "hero": {"value": "96 meseci", "label": "garancija na bateriju BYD, do 250.000 km"},
+    "brief": [
+      "MG daje 84 meseca ili 150.000 km na bateriju, Geely 8 godina ili 150.000 km",
+      "Prodavac po zakonu odgovara za nesaobraznost 2 godine od isporuke",
+      "Auto uvezen mimo zastupnika po pravilu nema fabričku garanciju"
+    ],
+    "keys": [
+      {"value": "72 meseca", "label": "garancija na vozilo BYD", "icon": "car"},
+      {"value": "84 meseca", "label": "garancija na vozilo MG", "icon": "shield"},
+      {"value": "30 dana", "label": "od isporuke birate zamenu ili raskid", "icon": "calendar"}
+    ],
+    "important": "Ako živite daleko od servisa, pre kupovine pitajte ko plaća šlepovanje i da li dobijate zamensko vozilo"
+  },
+  "en": {
+    "hero": {"value": "96 months", "label": "BYD battery warranty, up to 250.000 km"},
+    "brief": [
+      "MG gives 84 months or 150.000 km on the battery, Geely 8 years or 150.000 km",
+      "By law the seller is liable for non-conformity for 2 years from delivery",
+      "A car imported outside the official importer as a rule has no factory warranty"
+    ],
+    "keys": [
+      {"value": "72 months", "label": "BYD vehicle warranty", "icon": "car"},
+      {"value": "84 months", "label": "MG vehicle warranty", "icon": "shield"},
+      {"value": "30 days", "label": "after delivery to choose replacement", "icon": "calendar"}
+    ],
+    "important": "If you live far from a service center, ask before buying who pays for towing and whether you get a replacement car"
+  },
+  "ru": {
+    "hero": {"value": "96 месяцев", "label": "гарантия на батарею BYD, до 250.000 км"},
+    "brief": [
+      "MG даёт на батарею 84 месяца или 150.000 км, Geely — 8 лет или 150.000 км",
+      "По закону продавец отвечает за несоответствие 2 года с момента передачи",
+      "Автомобиль, ввезённый в обход импортёра, заводской гарантии, как правило, не имеет"
+    ],
+    "keys": [
+      {"value": "72 месяца", "label": "гарантия на автомобиль BYD", "icon": "car"},
+      {"value": "84 месяца", "label": "гарантия на автомобиль MG", "icon": "shield"},
+      {"value": "30 дней", "label": "после передачи — выбор замены", "icon": "calendar"}
+    ],
+    "important": "Если вы живёте далеко от сервиса, до покупки спросите, кто платит за эвакуатор и дают ли подменный автомобиль"
+  }
+}
