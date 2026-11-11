@@ -2,6 +2,7 @@
 """Проверка локализации мирового слоя: content/world/i18n/<код>/ против EN.
 
 Запуск: python3 content/world/i18n/sq/check.py   (из корня репозитория или откуда угодно)
+L2 (11.11.2026): все 8 файлов strings_*.json, texts.json → pay/routes, города из pages_state.json.
 Выход 0 — ошибок нет; иначе печатает ошибки и выходит с кодом 1.
 """
 import csv, json, re, sys
@@ -16,6 +17,8 @@ PH = re.compile(r"\{[^{}]*\}")
 TAG = re.compile(r"</?([a-zA-Z0-9]+)[^>]*>")
 ENT = re.compile(r"&[a-zA-Z#0-9]+;")
 SLUG = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
+STRING_FILES = ["strings_map", "strings_pages", "strings_shell", "strings_prices",
+                "strings_pay", "strings_press", "strings_b2b", "strings_embed"]
 BANNED = [r"24/7", r"\bmenjëherë\b", r"\bevolako\b"]
 
 
@@ -45,7 +48,7 @@ def check_str(where, en, tr):
 
 
 def check_strings(tags):
-    for f in ["strings_map", "strings_pages", "strings_shell", "strings_prices"]:
+    for f in STRING_FILES:
         en = {k: v["en"] for k, v in json.load(open(WORLD / f"{f}.json", encoding="utf-8")).items()}
         p = HERE / f"{f}.json"
         if not p.exists():
@@ -97,6 +100,31 @@ def check_texts():
         if key not in tr:
             ERR.append(f"texts.{key}: отсутствует"); continue
         walk(f"texts.{key}", en, tr[key])
+    # L2: разделы pay и routes — путь многоязычного узла через точку → текст (формат LANG0)
+    for key, src in [("pay", "pay.json"), ("routes", "routes.json")]:
+        nodes = {}
+        ml_nodes("", json.load(open(WORLD / src, encoding="utf-8")), nodes)
+        if key not in tr:
+            ERR.append(f"texts.{key}: отсутствует"); continue
+        got = tr[key]
+        for path in set(nodes) - set(got):
+            ERR.append(f"texts.{key}.{path}: ключ отсутствует")
+        for path in set(got) - set(nodes):
+            ERR.append(f"texts.{key}.{path}: лишний ключ (нет такого узла в {src})")
+        for path in set(nodes) & set(got):
+            check_str(f"texts.{key}.{path}", nodes[path], got[path])
+
+
+def ml_nodes(p, x, out):
+    """Многоязычные узлы {en, sr|ru…} → out[путь] = текст EN."""
+    if isinstance(x, dict):
+        if isinstance(x.get("en"), str) and ("sr" in x or "ru" in x):
+            out[p] = x["en"]; return
+        for k, v in x.items():
+            ml_nodes(p + ("." if p else "") + k, v, out)
+    elif isinstance(x, list):
+        for i, v in enumerate(x):
+            ml_nodes(p + f"[{i}]", v, out)
 
 
 def check_slugs():
@@ -134,6 +162,13 @@ def check_csv():
         if not SLUG.match(r["slug"]): ERR.append(f"countries {r['cc']}: слаг {r['slug']!r}")
         if not r["name"].strip() or not r["in_phrase"].strip(): ERR.append(f"countries {r['cc']}: пусто")
     geo = {r["geonameid"] for r in csv.DictReader(open(WORLD / "names/cities.csv", encoding="utf-8"))}
+    # L2: города страниц из state/pages_state.json (в т. ч. новые города NOBIL) тоже допустимы и должны быть
+    st = WORLD / "state/pages_state.json"
+    page_ids = set()
+    if st.exists():
+        page_ids = {v["key"].split(":")[-1] for v in json.load(open(st, encoding="utf-8")).values()
+                    if v.get("type") == "city"}
+    geo |= page_ids
     rows = list(csv.DictReader(open(HERE / "cities.csv", encoding="utf-8")))
     if rows and list(rows[0]) != ["geonameid", "name", "in_phrase", "decl_ok", "note"]:
         ERR.append(f"cities.csv: колонки {list(rows[0])}")
@@ -141,9 +176,13 @@ def check_csv():
     if len(set(ids)) != len(ids): ERR.append("cities.csv: повтор geonameid")
     extra = set(ids) - geo
     if extra: ERR.append(f"cities.csv: geonameid нет в names/cities.csv: {sorted(extra)[:10]}")
+    lost = page_ids - set(ids)
+    if lost: ERR.append(f"cities.csv: нет городов со страницами (pages_state): {sorted(lost)[:10]} …{len(lost)}")
     for r in rows:
         if not r["name"].strip() or not r["in_phrase"].strip():
             ERR.append(f"cities {r['geonameid']}: пусто")
+        elif not r["in_phrase"].startswith("në "):
+            WARN.append(f"cities {r['geonameid']}: in_phrase без «në»: {r['in_phrase']!r}")
         if r["decl_ok"] not in ("0", "1"):
             ERR.append(f"cities {r['geonameid']}: decl_ok={r['decl_ok']!r}")
     print(f"города: {len(rows)} из {len(geo)}; decl_ok=0: {sum(r['decl_ok']=='0' for r in rows)}")
