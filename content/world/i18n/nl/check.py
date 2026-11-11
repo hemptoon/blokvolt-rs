@@ -2,7 +2,7 @@
 """L-NL check: Dutch files in content/world/i18n/nl/ against the EN sources.
 
 Run from anywhere: python3 content/world/i18n/nl/check.py  (exit 1 on errors).
-Checks: every EN key present (and no extra keys), placeholders {..} and HTML tags/entities identical,
+Checks (L2, 11.11.2026: all 8 strings_*.json and texts.json pay/routes): every EN key present (and no extra keys), placeholders {..} and HTML tags/entities identical,
 no empty values, plural keys = CLDR categories of nl (Babel), slugs ASCII, texts.json mirrors the EN
 structure, countries.csv / cities.csv readable and complete, banned words absent.
 """
@@ -100,13 +100,36 @@ def walk(where, en, nl):
         err(f'{where}: non-text value changed')
 
 
+def ml_nodes(path, x, out):
+    """Multilingual nodes ({'en': str, 'sr'|'ru': …}) of pay.json / routes.json, keyed a.b[i].c."""
+    if isinstance(x, dict):
+        if isinstance(x.get('en'), str) and ('sr' in x or 'ru' in x):
+            out[path] = x['en']
+            return
+        for k, v in x.items():
+            ml_nodes(f'{path}.{k}' if path else k, v, out)
+    elif isinstance(x, list):
+        for i, v in enumerate(x):
+            ml_nodes(f'{path}[{i}]', v, out)
+
+
 def check_texts():
     p = HERE / 'texts.json'
     if not p.exists():
         return err('texts.json: missing')
     t = json.load(open(p, encoding='utf-8'))
-    if set(t) != {'about_data', 'download', 'sources_pages'}:
+    if set(t) != {'about_data', 'download', 'sources_pages', 'pay', 'routes'}:
         err(f'texts.json: top keys {sorted(t)}')
+    for sec in ('pay', 'routes'):  # LANG0 format: path of a multilingual node -> text
+        nodes = {}
+        ml_nodes('', json.load(open(WORLD / f'{sec}.json', encoding='utf-8')), nodes)
+        got = t.get(sec) or {}
+        for k in nodes.keys() - got.keys():
+            err(f'texts.{sec}: missing node {k}')
+        for k in got.keys() - nodes.keys():
+            err(f'texts.{sec}: extra node {k}')
+        for k in nodes.keys() & got.keys():
+            cmp_text(f'texts.{sec}.{k}', nodes[k], got[k])
     walk('about_data', json.load(open(WORLD / 'about_data.json', encoding='utf-8'))['en'], t.get('about_data'))
     walk('download', json.load(open(WORLD / 'download.json', encoding='utf-8'))['en'], t.get('download'))
     src = json.load(open(WORLD / 'sources_pages.json', encoding='utf-8'))
@@ -168,7 +191,8 @@ def check_csv():
 
 
 if __name__ == '__main__':
-    n = {f: check_strings(f) for f in ('strings_map.json', 'strings_pages.json', 'strings_shell.json', 'strings_prices.json')}
+    n = {f: check_strings(f) for f in ('strings_map.json', 'strings_pages.json', 'strings_shell.json', 'strings_prices.json',
+                                       'strings_pay.json', 'strings_press.json', 'strings_b2b.json', 'strings_embed.json')}
     check_texts()
     check_slugs()
     cities = check_csv()
