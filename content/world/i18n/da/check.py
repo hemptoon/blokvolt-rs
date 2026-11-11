@@ -19,7 +19,8 @@ def sig(s):
     return sorted(PH.findall(s)), sorted(re.sub(r'\s+', ' ', t) for t in TAG.findall(s))
 
 
-for f in ['map', 'pages', 'shell', 'prices']:
+FILES = ['map', 'pages', 'shell', 'prices', 'pay', 'press', 'b2b', 'embed']
+for f in FILES:
     en = json.load(open(WORLD / f'strings_{f}.json'))
     tr = json.load(open(HERE / f'strings_{f}.json'))
     for k in set(en) - set(tr): err.append(f'{f}: missing {k}')
@@ -51,9 +52,30 @@ def walk(e, t, path):
 
 
 texts = json.load(open(HERE / 'texts.json'))
-if set(texts) != {'about_data', 'download'}: err.append('texts.json: top keys')
+if set(texts) != {'about_data', 'download', 'pay', 'routes'}: err.append('texts.json: top keys')
 for k in ('about_data', 'download'):
     walk(json.load(open(WORLD / f'{k}.json'))['en'], texts.get(k), f'.{k}')
+
+
+def ml_nodes(o, p, out):   # LANG0 format: multilingual {en, sr|ru} nodes, path with '.' and '[i]'
+    if isinstance(o, dict):
+        if isinstance(o.get('en'), str) and ('sr' in o or 'ru' in o): out[p] = o['en']; return out
+        for k, v in o.items(): ml_nodes(v, f'{p}.{k}' if p else k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o): ml_nodes(v, f'{p}[{i}]', out)
+    return out
+
+
+for k in ('pay', 'routes'):
+    en = ml_nodes(json.load(open(WORLD / f'{k}.json')), '', {})
+    tr = texts.get(k) or {}
+    for p in set(en) - set(tr): err.append(f'texts.{k}: missing {p}')
+    for p in set(tr) - set(en): err.append(f'texts.{k}: extra {p}')
+    for p, e in en.items():
+        t = tr.get(p)
+        if p not in tr: continue
+        if not isinstance(t, str) or not t.strip(): err.append(f'texts.{k}.{p}: empty'); continue
+        if sig(e) != sig(t): err.append(f'texts.{k}.{p}: placeholders/tags differ')
 
 sl = json.load(open(HERE / 'slugs.json'))
 if list(sl) != SLUG_KEYS: err.append(f'slugs.json: keys {list(sl)}')
@@ -82,7 +104,7 @@ if set(g) - src_g: err.append(f'cities.csv: unknown geonameid {sorted(set(g) - s
 for r in ci:
     if not r['name'].strip() or not r['in_phrase'].strip() or r['decl_ok'] not in ('0', '1'): err.append(f"city {r['geonameid']}: bad row")
 
-print(f'{LANG}: plural cats {CATS}; strings ok for {sum(len(json.load(open(HERE / f"strings_{f}.json"))) for f in ["map","pages","shell","prices"])} keys; '
+print(f'{LANG}: plural cats {CATS}; strings ok for {sum(len(json.load(open(HERE / f"strings_{f}.json"))) for f in FILES)} keys; '
       f'countries {len(cc)}/{len(src_cc)}; cities {len(ci)}/{len(src_g)}; errors {len(err)}')
 for e in err[:80]: print(' -', e)
 sys.exit(1 if err else 0)
