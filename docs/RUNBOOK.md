@@ -2722,6 +2722,44 @@ The registry and the rules are in `docs/WORLD_I18N.md`; the work plan is `claude
   languages (section paths stay LANG0's `slugs.json` keys). Rules in `docs/WORLD_I18N.md`; built-site check
   `BV_WORLD_PREVIEW=1 python3 scripts/qa/world_lang_check.py dist-com` (in `preview.yml`).
 
+
+### 3.49 One world chrome, the country directory, the dark map and /terms/ (HOME3, since 11.11.2026; dev only until "релиз главной и языков")
+
+- **One number per country.** "Charging places" = every place of the map layer (`manifest.counts.sites`; per country
+  `stats.json → by_country`). `scripts/world_hero.py --stats` writes the per-country numbers into
+  `content/world/home/hero.json → countries` (the weekly run, step 5b, does it already); the home, the hub and the first
+  number of a country page read only that. "Public" = `public*` (`counts.public`, tile attribute `a = 0`). The home stops the
+  build when the directory does not add up to the manifest of the same date.
+- **Regions:** `content/world/regions.json` — one table (Europe incl. Turkey and Cyprus, North America, Latin America,
+  Asia incl. the Caucasus and Kazakhstan, Middle East & Africa incl. Israel and the Gulf, Oceania) + time-zone patterns;
+  the same helper picks the picture of the first screen and the region tab of the directory. A new country of the data
+  that is not in the table shows under Asia with a build warning — add it.
+- **Directory** (`templates/com2/world__dir.html`, `static/com/world-dir.js`): home and hub; cards of the largest
+  countries, all countries A–Z with the number, "Find a country" (page language, English, the country's own language,
+  without accents). A country leads to its page, a Balkan country to its English guide, others to `/map/?zemlja=<cc>`.
+- **Map:** `/map/` and the live map of the home open **dark** and with **all places** (`pristup=svi`); "Public only" =
+  `?pristup=javni`; not-public places are rings (access not confirmed — the colour of the type; customers only or private —
+  orange) with a legend and a badge in the card. Theme: `content/world/config.json → map_theme` (`default`, `style`,
+  `style_dark` = OpenFreeMap "dark", `dark_paint` = its recolouring to the palette of the home picture — keep it in step
+  with `world_hero.py` BG/SEA/LINE). The toggle keeps the choice in `localStorage` (`bv-map-tema`) and in the address
+  (`tema=svetla|tamna`). The widget (`/embed/map/`) is unchanged: light, `javni`, its own attribution.
+- **Attribution (L1 §2):** one short line "© OpenStreetMap contributors · Sources" in the corner of the picture and the
+  map, folds into "ⓘ" after 5 s (never earlier); "ⓘ" opens map data, base map, data date and the number of sources.
+  The number of sources is one everywhere: publishers of the layer, Open Charge Map counted once (`ocm:*` providers are
+  listed in the dialog but not counted).
+- **Chrome:** every world page, the map, 404, `/partners/`, `/western-balkans/`, `/routes/` and the English Balkan guides
+  wear the world header (Map · Charging stations · Prices · How to pay · Open data; the logo leads to the home of the
+  language) and the world footer (`_wfooter.html`, `world_shell.wfooter`). The local sections keep theirs, with a link to
+  the world home of their language. Footer: no data date, no update rhythm, no Evolako.
+- **/terms/** (EN), `/sr/uslovi/`, `/ru/usloviya/`: `content/world/terms.json` + `counter_note.json`; other languages
+  link to the English page. Facts only (open data "as is", no link with operators or public bodies, licences, corrections,
+  privacy: private persons not shown, names masked, daily IP fingerprint, objection/removal within 30 days).
+- **/si/** is built again (`gen_com.LOCALES`, `region_pages.LOCALES`): the native reading was replaced by three
+  independent agent checks (language, back-translation, facts; 11.11.2026). Re-check before each refresh of the section:
+  fuel prices (weekly), IONITY packages, Borzen calls.
+- **Checks:** `world_hero.py selftest`, `world_home.py selftest`, `world_pages_check` (no rating words — the footer says
+  "networks are not ranked"), `world_i18n.py check` for all languages, screenshots light/dark 360/768/1440.
+
 ## 4. Build and check
 
 ```bash
