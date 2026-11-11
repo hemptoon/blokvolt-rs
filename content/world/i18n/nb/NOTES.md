@@ -76,3 +76,11 @@
 - `pct` оставлен «{x}%» как в EN; по норвежской норме «{x} %». Формат чисел для nb в реестре K8: десятичная запятая, пробел (неразрывный) как разделитель тысяч, `{x} %`.
 - Даты: месяцы в `strings_prices` — строчными (januar … desember) там, где они есть; формат даты в реестре — `9. november 2026`.
 - Глоссарий: колонка `nb`.
+
+## L2 (11.11.2026)
+
+- Новые файлы: `strings_pay` 93, `strings_press` 54, `strings_b2b` 33, `strings_embed` 65; `strings_map` +29 (`ci_*` чек-ин, `emb_open`).
+- `texts.json` → `pay` (AFIR, 6 пунктов) и `routes` (59 названий городов в остановках) в формате LANG0: путь узла → текст. Города — из `cities.csv` nb (Belgrade → Beograd, остальные местной латиницей).
+- Термины новых разделов: How to pay — «Slik betaler du» (обобщённое «du», как в заголовках главной); Routes — «Ruter»; roaming app/card — «roamingapp / ladekort»; coverage — «dekning»; tolls — «bompenger», vignette — «vignett»; check-in — «melding / Sist rapportert»; price index — «prisindeks for elbillading»; widget — «widget»; preview — «forhåndsvisning»; credit (citation) — «kildehenvisning».
+- Города своих стран (NO): 31 страница в `pages_state.json`; добавлены Kongsberg (3149563) и Skien (3139075) — их нет в `names/cities.csv`, `check.py` принимает geonameid из `pages_state.json` для `MARKET = {'NO'}`.
+- `check.py`: все 8 файлов `strings_*`, разделы `texts.pay` / `texts.routes` против многоязычных узлов `pay.json` / `routes.json`, проверка, что у каждой городской страницы NO есть имя.
