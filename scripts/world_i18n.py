@@ -489,6 +489,10 @@ def check_folder(lang, folder=None):
             # {country}/{country_u}/{country_v}); a group may be left out only where SR or RU leave it out too
             base_ph = [{_ph_group(p) for p in PH.findall(str(v.get(x) or ''))} for x in BASE]
             tg = {_ph_group(p, lang, k) for p in PH.findall(t)}
+            # LANG1: where English has a number in {country} and the name in {country_name} (p_city_cmp), "in Italia" may
+            # take the name's slot: the engine passes {country_u} on every page (world_pages.t)
+            if '{country_name}' in set.union(*base_ph) and '{country_name}' not in tg and re.search(r'\{country_[uv]\}', t):
+                tg.add('{country_name}')
             if not tg <= set.union(*base_ph) or not set.intersection(*base_ph) <= tg:
                 errs.append(f'{part}.{k}: placeholders {PH.findall(en)} != {PH.findall(t)}')
             if sorted(TAG.findall(en)) != sorted(TAG.findall(t)):
