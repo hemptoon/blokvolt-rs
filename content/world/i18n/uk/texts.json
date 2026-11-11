@@ -171,5 +171,323 @@
   "file_missing": "Файл на цей тиждень готується. Перевірте пізніше.",
   "attribution_h": "Як зазначати авторство",
   "attribution_p": "Використовуючи дані, вказуйте «© OpenStreetMap contributors, BlokVolt» з посиланням на www.openstreetmap.org/copyright і на цю сторінку, а також зазначайте ліцензію ODbL 1.0. Дані з інших джерел зберігають власне зазначення авторства, наведене на сторінці «Про дані»."
+ },
+ "sources_pages": {
+  "ocm": {
+   "name": "Open Charge Map",
+   "licence": "CC BY 4.0 (ліцензію постачальника вказано в картці точки)",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Open Charge Map (openchargemap.org), CC BY 4.0",
+   "url": "https://openchargemap.org",
+   "kind": "community"
+  },
+  "osm": {
+   "name": "OpenStreetMap",
+   "licence": "ODbL 1.0",
+   "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+   "attribution": "© OpenStreetMap contributors",
+   "url": "https://www.openstreetmap.org/copyright",
+   "kind": "community"
+  },
+  "afdc": {
+   "name": "U.S. DOE Alternative Fuels Data Center",
+   "licence": "Дані уряду США, можна використовувати з будь-якою метою (data.gov: CC0)",
+   "licence_url": "https://afdc.energy.gov/data_download",
+   "attribution": "U.S. Department of Energy, Alternative Fuels Data Center (afdc.energy.gov). Use of this data does not imply endorsement by DOE or NLR.",
+   "url": "https://afdc.energy.gov",
+   "kind": "registry"
+  },
+  "bnetza": {
+   "name": "Bundesnetzagentur — Ladesäulenregister",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Bundesnetzagentur.de (data changed)",
+   "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/E-Mobilitaet/Ladesaeulenkarte/start.html",
+   "kind": "registry"
+  },
+  "atp": {
+   "name": "All The Places",
+   "licence": "CC0 1.0",
+   "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "attribution": "All The Places (alltheplaces.xyz), CC0 1.0",
+   "url": "https://alltheplaces.xyz",
+   "kind": "network_sites"
+  },
+  "ndw": {
+   "name": "NDW — Nationaal Dataportaal Wegverkeer",
+   "licence": "CC0 1.0",
+   "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "attribution": "Bron: NDW (DOT-NL)",
+   "url": "https://opendata.ndw.nu/",
+   "kind": "registry"
+  },
+  "ovt": {
+   "name": "Overture Maps Foundation (місця)",
+   "licence": "CDLA Permissive 2.0",
+   "licence_url": "https://cdla.dev/permissive-2-0/",
+   "attribution": "Overture Maps Foundation (overturemaps.org); data from Microsoft, PinMeTo, DAC, BrightQuery, Uberall",
+   "url": "https://overturemaps.org",
+   "kind": "network_sites"
+  },
+  "irve": {
+   "name": "Base nationale des IRVE (data.gouv.fr)",
+   "licence": "Licence Ouverte 2.0 (Etalab)",
+   "licence_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+   "attribution": "data.gouv.fr — Base nationale des IRVE (mise à jour : {date})",
+   "url": "https://transport.data.gouv.fr/datasets/base-nationale-des-irve-data-gouv-infrastructures-de-recharge-pour-vehicules-electriques-donnees-statiques",
+   "kind": "registry"
+  },
+  "ovt_atp": {
+   "name": "All The Places через Overture Maps Foundation",
+   "licence": "CC0 1.0 (через Overture Maps Foundation)",
+   "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "attribution": "Data from AllThePlaces via Overture Maps Foundation",
+   "url": "https://docs.overturemaps.org/attribution/",
+   "kind": "network_sites"
+  },
+  "miteco": {
+   "name": "MITECO — puntos de recarga",
+   "licence": "Умови повторного використання MITECO (не CC BY)",
+   "licence_url": "https://www.datosabiertos.miteco.gob.es/en/aviso-legal.html",
+   "attribution": "Origen de los datos: Ministerio para la Transición Ecológica y el Reto Demográfico (actualización: {date})",
+   "url": "https://catalogo.datosabiertos.miteco.gob.es/",
+   "kind": "registry"
+  },
+  "gb": {
+   "name": "Відкриті дані операторів зарядних станцій Великої Британії (Public Charge Point Regulations 2023)",
+   "licence": "Відкриті дані згідно з The Public Charge Point Regulations 2023, reg. 10",
+   "licence_url": "https://www.legislation.gov.uk/uksi/2023/1168/regulation/10",
+   "attribution": "Open data published under The Public Charge Point Regulations 2023 by Char.gy, Monta, Connected Kerb, MFG EV Power, GeniePoint, Mer",
+   "url": "https://www.legislation.gov.uk/uksi/2023/1168/regulation/10",
+   "kind": "registry"
+  },
+  "kr": {
+   "name": "KEPCO — 전기차충전소위경도 (data.go.kr)",
+   "licence": "공공데이터포털 이용허락범위 제한 없음 (без обмежень)",
+   "licence_url": "https://www.data.go.kr/data/15102458/fileData.do",
+   "attribution": "출처: 한국전력공사 (KEPCO), 공공데이터포털 (data.go.kr)",
+   "url": "https://www.data.go.kr/data/15102458/fileData.do",
+   "kind": "registry"
+  },
+  "digitraffic": {
+   "name": "Fintraffic / Digitraffic AFIR",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Source: Fintraffic / digitraffic.fi, license CC 4.0 BY",
+   "url": "https://afir.digitraffic.fi/",
+   "kind": "registry"
+  },
+  "be_wal": {
+   "name": "SPW Mobilité et Infrastructures — bornes de recharge en Wallonie",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Service public de Wallonie (SPW), CC BY 4.0",
+   "url": "https://geoportail.wallonie.be/catalogue/c731a282-e378-49f3-8ab6-f9a90e7a5683.html",
+   "kind": "registry",
+   "licence_from": "db"
+  },
+  "gr": {
+   "name": "Міністерство інфраструктури та транспорту Греції (MYFAH), data.gov.gr",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Υπουργείο Υποδομών και Μεταφορών (ΜΥΦΑΗ), data.gov.gr, CC BY 4.0",
+   "url": "https://data.gov.gr/dataset/dimosios-prosvasima-simeia-fortisis",
+   "kind": "registry"
+  },
+  "lta": {
+   "name": "Land Transport Authority — DataMall",
+   "licence": "Singapore Open Data Licence v1.0",
+   "licence_url": "https://data.gov.sg/open-data-licence",
+   "attribution": "Contains information from EV Charging Points accessed on {date} from LTA DataMall which is made available under the terms of the Singapore Open Data Licence version 1.0",
+   "url": "https://datamall.lta.gov.sg/",
+   "kind": "registry"
+  },
+  "cz_mpo": {
+   "name": "Реєстр MPO ČR (Statutární město Brno, data.gov.cz)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Statutární město Brno, CC BY 4.0",
+   "url": "https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2F44992785%2F86ea2ee70870ed560996b293d8472369",
+   "kind": "registry"
+  },
+  "au_nsw": {
+   "name": "Transport for NSW — EV Charging Locations",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Source: Transport for NSW, CC BY 4.0",
+   "url": "https://opendata.transport.nsw.gov.au/data/dataset/ev-charging-locations",
+   "kind": "registry"
+  },
+  "be_bxl": {
+   "name": "Ville de Bruxelles — bornes de recharge (opendata.brussels.be)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Ville de Bruxelles / Data Management, CC BY 4.0",
+   "url": "https://opendata.brussels.be/explore/dataset/bornes-de-recharge-pour-voitures-electriques-rbc/",
+   "kind": "registry",
+   "licence_from": "db"
+  },
+  "lt": {
+   "name": "AB Via Lietuva — національний реєстр зарядних станцій",
+   "licence": "CC BY 4.0 / ODC-BY 1.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "AB Via Lietuva (ev.vialietuva.lt), CC BY 4.0",
+   "url": "https://ev.vialietuva.lt/en/data-provision",
+   "kind": "registry",
+   "licence_from": "db"
+  },
+  "hk": {
+   "name": "Environmental Protection Department, HKSAR (DATA.GOV.HK)",
+   "licence": "DATA.GOV.HK Terms and Conditions v1.2",
+   "licence_url": "https://data.gov.hk/en/terms-and-conditions",
+   "attribution": "Source: Environmental Protection Department, HKSAR Government, via DATA.GOV.HK",
+   "url": "https://data.gov.hk/en-data/dataset/hk-epd-evcpateam-evc-1",
+   "kind": "registry"
+  },
+  "it_odh": {
+   "name": "Open Data Hub (NOI Techpark, South Tyrol)",
+   "licence": "CC0 1.0",
+   "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "attribution": "Open Data Hub (opendatahub.com), CC0 1.0",
+   "url": "https://opendatahub.com/",
+   "kind": "registry",
+   "licence_from": "db"
+  },
+  "nz": {
+   "name": "Waka Kotahi NZ Transport Agency — EVRoam",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Waka Kotahi NZ Transport Agency (EVRoam), CC BY 4.0",
+   "url": "https://catalogue.data.govt.nz/dataset/ev-roam-charging-stations3",
+   "kind": "registry"
+  },
+  "lu": {
+   "name": "Géoportail Luxembourg — зарядні станції (Chargy)",
+   "licence": "CC0 1.0",
+   "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "attribution": "Administration du cadastre et de la topographie (Géoportail Luxembourg), CC0 1.0",
+   "url": "https://data.public.lu/en/datasets/inspire-annex-i-theme-transport-networks-roads-roadnode-electrical-charging-stations/",
+   "kind": "registry",
+   "licence_from": "db"
+  },
+  "ie": {
+   "name": "ESB ecars — публічна мережа заряджання (data.gov.ie)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "Source: ESB, data.gov.ie, CC BY 4.0",
+   "url": "https://data.gov.ie/dataset/esb-ev-public-charging-network",
+   "kind": "registry"
+  },
+  "au_vic": {
+   "name": "Victoria DEECA — публічні зарядні станції з державним фінансуванням",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "© State of Victoria (DEECA), CC BY 4.0",
+   "url": "https://discover.data.vic.gov.au/dataset/government-funded-public-ev-chargers",
+   "kind": "registry"
+  },
+  "mobie": {
+   "name": "Câmara Municipal de Lisboa — postos de carregamento Mobi.E (dados.gov.pt)",
+   "licence": "див. джерело",
+   "licence_url": "https://dados.gov.pt/datasets/postos-de-carregamento-mobi-e",
+   "attribution": "Fonte: Câmara Municipal de Lisboa",
+   "url": "https://dados.gov.pt/datasets/postos-de-carregamento-mobi-e",
+   "kind": "registry",
+   "unverified": true
+  },
+  "au_qld": {
+   "name": "Queensland Department of Transport and Main Roads",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "© State of Queensland (Department of Transport and Main Roads), CC BY 4.0",
+   "url": "https://www.data.qld.gov.au/dataset/find-a-charging-station-electric-vehicle",
+   "kind": "registry"
+  },
+  "blokvolt": {
+   "name": "Власна перевірка BlokVolt",
+   "licence": "див. джерело",
+   "licence_url": "https://www.blokvolt.rs/mapa/",
+   "attribution": "BlokVolt",
+   "url": "https://www.blokvolt.rs/mapa/",
+   "kind": "own",
+   "unverified": true
+  },
+  "nobil": {
+   "name": "NOBIL (Enova / Energimyndigheten)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "NOBIL (nobil.no) — Enova SF, Energimyndigheten; CC BY 4.0 (data modified)",
+   "url": "https://info.nobil.no/",
+   "kind": "registry"
+  }
+ },
+ "pay": {
+  "afir.points[0]": "Разова оплата: заряджатися можна без реєстрації чи договору з оператором.",
+  "afir.points[1]": "Оператори публічних зарядних пристроїв мають пропонувати разову оплату способом, широко поширеним у ЄС.",
+  "afir.points[2]": "Нові публічні зарядні пристрої від 50 кВт, установлені з 13 квітня 2024 року, мають приймати банківські картки через зчитувач карток або безконтактний пристрій.",
+  "afir.points[3]": "Нові публічні зарядні пристрої до 50 кВт можуть натомість пропонувати онлайн-оплату, наприклад через QR-код зарядного пристрою.",
+  "afir.points[4]": "З 1 січня 2027 року це стосується й наявних станцій від 50 кВт на дорожній мережі TEN-T і на безпечних та охоронюваних стоянках.",
+  "afir.points[5]": "Ціну разової оплати та її складники слід показувати на станції до початку сесії."
+ },
+ "routes": {
+  "routes[0].stops[0].city": "Зальцбург",
+  "routes[0].stops[1].city": "Філлах",
+  "routes[0].stops[2].city": "Любляна",
+  "routes[0].stops[3].city": "Загреб",
+  "routes[0].stops[4].city": "Сесвете",
+  "routes[0].stops[5].city": "Сесвете",
+  "routes[0].stops[6].city": "Славонський Брод",
+  "routes[1].stops[0].city": "Дьєр",
+  "routes[1].stops[1].city": "Будапешт",
+  "routes[1].stops[3].city": "Бачка-Топола",
+  "routes[1].stops[4].city": "Белград",
+  "routes[2].stops[1].city": "Бачка-Топола",
+  "routes[2].stops[2].city": "Белград",
+  "routes[3].stops[1].city": "Славонський Брод",
+  "routes[3].stops[2].city": "Сесвете",
+  "routes[4].stops[0].city": "Чуприя",
+  "routes[4].stops[1].city": "Лесковац",
+  "routes[4].stops[2].city": "Чаїр",
+  "routes[4].stops[3].city": "Неготино",
+  "routes[5].stops[0].city": "Чуприя",
+  "routes[5].stops[1].city": "Пірот",
+  "routes[5].stops[2].city": "Софія",
+  "routes[5].stops[3].city": "Пловдив",
+  "routes[6].stops[0].city": "Чачак",
+  "routes[6].stops[1].city": "Чачак",
+  "routes[6].stops[2].city": "Чачак",
+  "routes[6].stops[3].city": "Бієло-Поле",
+  "routes[7].stops[0].city": "Лозниця",
+  "routes[8].stops[0].city": "Сесвете",
+  "routes[8].stops[1].city": "Сесвете",
+  "routes[8].stops[2].city": "Славонський Брод",
+  "routes[8].stops[3].city": "Добой",
+  "routes[9].stops[0].city": "Загреб",
+  "routes[10].stops[0].city": "Шіофок",
+  "routes[10].stops[1].city": "Чаковець",
+  "routes[10].stops[2].city": "Карловац",
+  "routes[10].stops[4].city": "Шибеник",
+  "routes[11].stops[0].city": "Медлінг",
+  "routes[11].stops[1].city": "Медлінг",
+  "routes[11].stops[2].city": "Грац",
+  "routes[11].stops[4].city": "Карловац",
+  "routes[11].stops[6].city": "Шибеник",
+  "routes[12].stops[0].city": "Карловац",
+  "routes[12].stops[2].city": "Шибеник",
+  "routes[13].stops[0].city": "Чуприя",
+  "routes[13].stops[1].city": "Лесковац",
+  "routes[13].stops[2].city": "Чаїр",
+  "routes[13].stops[3].city": "Охрид",
+  "routes[14].stops[0].city": "Чуприя",
+  "routes[14].stops[1].city": "Пірот",
+  "routes[14].stops[2].city": "Софія",
+  "routes[14].stops[4].city": "Плевен",
+  "routes[14].stops[5].city": "Велико-Тирново",
+  "routes[15].stops[0].city": "Вршац",
+  "routes[15].stops[2].city": "Сібіу",
+  "routes[16].stops[0].city": "Загреб",
+  "routes[16].stops[1].city": "Сесвете",
+  "routes[16].stops[2].city": "Сесвете",
+  "routes[16].stops[3].city": "Славонський Брод"
  }
 }
