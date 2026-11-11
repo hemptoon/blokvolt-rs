@@ -19,7 +19,7 @@ def tags(s):  # tag names + entities, attribute order ignored
     return sorted(re.sub(r'\s.*', '', t.rstrip('>')) for t in TAG.findall(s))
 
 
-for part in ('map', 'pages', 'shell', 'prices'):
+for part in ('map', 'pages', 'shell', 'prices', 'pay', 'press', 'b2b', 'embed'):  # L2: all 8 files
     en = json.load(open(WORLD / f'strings_{part}.json'))
     tr = json.load(open(HERE / f'strings_{part}.json'))
     for k in en.keys() - tr.keys():
@@ -76,6 +76,47 @@ for name, src in (('about_data', 'about_data.json'), ('download', 'download.json
         err.append(f'texts: missing {name}')
     else:
         walk(json.load(open(WORLD / src))['en'], texts[name], '.' + name)
+
+# texts.json → pay / routes (LANG0 format): dotted path of each multilingual node → text
+def ml_nodes(o, p, out):
+    if isinstance(o, dict):
+        if 'en' in o and 'sr' in o and isinstance(o['en'], str):
+            out[p] = o['en']; return out
+        for k, v in o.items():
+            ml_nodes(v, (p + '.' if p else '') + k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            ml_nodes(v, f'{p}[{i}]', out)
+    return out
+
+for name, src in (('pay', 'pay.json'), ('routes', 'routes.json')):
+    want = ml_nodes(json.load(open(WORLD / src)), '', {})
+    got = texts.get(name)
+    if not isinstance(got, dict):
+        err.append(f'texts: missing section {name}'); continue
+    for k in want.keys() - got.keys():
+        err.append(f'texts.{name}: missing {k}')
+    for k in got.keys() - want.keys():
+        err.append(f'texts.{name}: extra {k}')
+    for k, e in want.items():
+        t = got.get(k)
+        if k in got and (not isinstance(t, str) or not t.strip()):
+            err.append(f'texts.{name}.{k}: empty')
+        elif k in got and (sorted(PH.findall(e)) != sorted(PH.findall(t)) or tags(e) != tags(t)):
+            err.append(f'texts.{name}.{k}: placeholders/tags differ')
+
+# tone: impersonal (no "we"), no 24/7 — RUNBOOK §0 / CONTENT_STYLE
+BAD = re.compile(r'24/7|\bεμείς\b|ευχαριστούμε|\bη σύνταξη\b', re.I)
+def all_str(o):
+    if isinstance(o, str): yield o
+    elif isinstance(o, dict):
+        for v in o.values(): yield from all_str(v)
+    elif isinstance(o, list):
+        for v in o: yield from all_str(v)
+for f in sorted(HERE.glob('strings_*.json')) + [HERE / 'texts.json']:
+    for x in all_str(json.load(open(f))):
+        if BAD.search(x):
+            err.append(f'{f.name}: forbidden wording: {x[:60]}')
 
 # slugs.json
 KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']

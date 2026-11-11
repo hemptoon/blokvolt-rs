@@ -37,3 +37,12 @@ A separate agent back-translated all 20 changed items: 0 meaning mismatches. Its
 - `share` «Κοινοποίηση» is 11 characters against a limit of 7. There is no shorter natural Greek word, so it was kept.
 - About 4 900 cities stay in Latin script with «στην πόλη X», decl_ok=0. This is grammatically safe. Exonyms beyond the top 500 were not reviewed.
 - `{fx}`/`{d}`/`{date}` after «της» assume the engine renders a date (for example «9 Νοεμβρίου 2026» or «09.11.2026»). That reads fine either way.
+
+## L2-EL — 11.11.2026 (delta to 8 files, LANG pool)
+- Added 274 keys: strings_map +29 (28 `ci_*` check-ins + `emb_open`), new strings_pay (93), strings_press (54), strings_b2b (33), strings_embed (65). HOME2 keys: not in `dev` yet — none.
+- texts.json: new sections `pay` (6 AFIR points) and `routes` (59 stop-city nodes; Greek names taken from `cities.csv` — 23 Greek exonyms, 9 kept Latin where cities.csv has decl_ok=0).
+- Tone: «Thank you» in `ci_thanks`, `ci_paid_ok`, `m_ok` rendered without «Ευχαριστούμε» (first-person plural), as in L-EL `r_ok`. Country-name slots without article: `afir_eu`/`afir_non` «{name}: …», `conn_txt` «για τη χώρα {name}», `f_range` «στη χώρα {lo}».
+- check.py now covers all 8 strings files, texts.json `pay`/`routes` (all paths, no extras, placeholders) and forbidden wording (24/7, εμείς, ευχαριστούμε). Result: OK, 0 errors.
+- Blind back-translation of 60 random new strings (seed 274) by a separate agent: 0 meaning mismatches; 10 notes, 5 applied (m_demo, sys_mixed, lead_issue, dv_p_grad, season «απόθεμα μπαταρίας»), 5 declined (ci_unit fragment is a form label as in EN; `tamna`/`nepoznato` are literal parameter values; {month}/{name} slots depend on engine format).
+- Own countries GR, CY: names/slugs OK (Ελλάδα/ellada, Κύπρος/kypros); all 58 GR city pages in pages_state have Greek name + in_phrase, decl_ok=1; CY has no city pages; nothing to add.
+- Open: slugs for pay/routes/press/b2b/developers are not in the `slugs.json` contract (LANG0 decides); NL «Κάτω Χώρες» vs «Ολλανδία» still Andrei's call.
