@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Checks the BG localisation of the world layer (L-BG, pool 3).
 
+L2-BG (11.11.2026): all 8 strings_*.json files and the texts.json sections
+pay / routes (LANG0 format: dotted path of a multilingual node -> text).
+
 Run from the repo root:  python3 content/world/i18n/bg/check.py
 Exit code 0 = no errors. Warnings do not fail.
 """
@@ -19,6 +22,10 @@ TAG = re.compile(r'</?([a-zA-Z0-9]+)[^>]*>')
 ENT = re.compile(r'&[a-zA-Z#0-9]+;')
 SLUG_SEG = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')
 FORBIDDEN = [r'24/7', r'\bведнага\b', r'\bние\b', r'\bнаш[аиe]?\b', r'\bредакци', r'Evolako']
+
+STRING_FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+                'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed')
+NODE_LANGS = {'en', 'sr', 'ru'}
 
 errors, warns = [], []
 
@@ -66,7 +73,7 @@ def check_text(where, en, bg):
 
 
 def check_strings(cats):
-    for name in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
+    for name in STRING_FILES:
         en = {k: v['en'] for k, v in json.load(open(WORLD / f'{name}.json', encoding='utf-8')).items()}
         p = HERE / f'{name}.json'
         if not p.exists():
@@ -120,17 +127,45 @@ def walk(where, en, bg):
         err(f'{where}: non-text value changed')
 
 
+def ml_nodes(x, path='', out=None):
+    """Multilingual nodes of pay.json / routes.json: dicts with 'en' plus 'sr'/'ru'."""
+    out = {} if out is None else out
+    if isinstance(x, dict):
+        if isinstance(x.get('en'), str) and (NODE_LANGS - {'en'}) & set(x):
+            out[path] = x['en']
+            return out
+        for k, v in x.items():
+            ml_nodes(v, f'{path}.{k}' if path else k, out)
+    elif isinstance(x, list):
+        for i, v in enumerate(x):
+            ml_nodes(v, f'{path}[{i}]', out)
+    return out
+
+
 def check_texts():
     p = HERE / 'texts.json'
     if not p.exists():
         err('texts.json missing')
         return
     bg = json.load(open(p, encoding='utf-8'))
-    if set(bg) != {'about_data', 'download'}:
-        err(f'texts.json: top keys {sorted(bg)}')
+    want = {'about_data', 'download', 'pay', 'routes'}
+    if set(bg) != want:
+        err(f'texts.json: top keys {sorted(bg)} != {sorted(want)}')
     for k in ('about_data', 'download'):
         en = json.load(open(WORLD / f'{k}.json', encoding='utf-8'))['en']
         walk(f'texts.{k}', en, bg.get(k))
+    for k in ('pay', 'routes'):
+        nodes = ml_nodes(json.load(open(WORLD / f'{k}.json', encoding='utf-8')))
+        got = bg.get(k) or {}
+        if not isinstance(got, dict):
+            err(f'texts.{k}: must be an object path -> text')
+            continue
+        for path in nodes.keys() - got.keys():
+            err(f'texts.{k}.{path}: missing')
+        for path in got.keys() - nodes.keys():
+            err(f'texts.{k}.{path}: no such multilingual node')
+        for path in nodes.keys() & got.keys():
+            check_text(f'texts.{k}.{path}', nodes[path], got[path])
 
 
 def check_slugs():
