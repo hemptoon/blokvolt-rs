@@ -23,3 +23,14 @@ Base : `origin/l-fr` (8456166). Branche : `r-fr`. Relecteur indépendant ; le tr
 3. `t_near` « (près de {x}) » sans élision (« près de Ulm ») — à régler dans le moteur K8.
 4. Valence (Espagne) homonyme de Valence (France) : le titre porte le pays, donc acceptable.
 5. Plusieurs clés (`d_country`, `disc`, `t_country`) existent dans `strings_pages` et `strings_prices` avec des EN différents : vérifié, chaque fichier FR suit son fichier EN.
+
+
+## L2-fr — обратный перевод новых строк (11.11.2026)
+
+60 случайных строк из 274 новых ключей + `texts.pay` (seed 42), агент без доступа к EN.
+Смысл: 60 ok, расхождений 0. Замечаний по языку: 5, все приняты:
+- `pay.afir_non` — «une législation» → «un règlement de l’UE»;
+- `pay.lead_route`, `pay.lead_routes` — «à {c} km au plus de la route» → «à moins de {c} km de la route»;
+- `map.ci_privacy`, `map.ci_once` — «le site» читается как «веб-сайт» → «la borne»;
+- `press.f_mom_n` — «la valeur DC» → «Pays où l’indice DC a le plus varié : {list}.»;
+- `press.f_home` — «de … à … fois» → «entre … et … fois».
