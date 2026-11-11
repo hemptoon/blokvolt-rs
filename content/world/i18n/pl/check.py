@@ -18,6 +18,8 @@ ENT = re.compile(r'&[a-z]+;|&#\d+;')
 # EN "in {city}" needs a declined slot in inflected languages; the engine passes all of them (world_pages.render_*).
 EQUIV = {'{city}': {'{city_u}', '{city_v}'}, '{country}': {'{country_u}', '{country_v}'},
          '{country_u}': {'{country_v}'}, '{city_u}': {'{city_v}'}}
+STRING_FILES = ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+                'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed']
 SLUG_KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
 FULL = {'home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology'}
 
@@ -58,7 +60,7 @@ def check_str(where, en, tr):
 
 def strings(cats):
     n = 0
-    for f in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices']:
+    for f in STRING_FILES:
         p = HERE / f'{f}.json'
         if not p.exists():
             err.append(f'{f}.json missing'); continue
@@ -85,6 +87,18 @@ def strings(cats):
         if list(tr) != list(en):
             warn.append(f'{f}: key order differs from EN')
     return n
+
+
+def ml_nodes(o, p, out):
+    """Paths of multilingual text nodes ({en: str, sr|ru: …}) in pay.json / routes.json, LANG0 notation a.b[i].c."""
+    if isinstance(o, dict):
+        if isinstance(o.get('en'), str) and ('sr' in o or 'ru' in o):
+            out.append((p, o['en'])); return
+        for k, v in o.items():
+            ml_nodes(v, f'{p}.{k}' if p else k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            ml_nodes(v, f'{p}[{i}]', out)
 
 
 def texts():
@@ -119,6 +133,25 @@ def texts():
         elif a != b:
             err.append(f'texts{path}: value changed')
 
+    # L2/LANG0: multilingual nodes of pay.json / routes.json -> texts.json {pay|routes: {"a.b[i].c": text}}
+    for sec in ('pay', 'routes'):
+        nodes = []
+        ml_nodes(json.load(open(WORLD / f'{sec}.json', encoding='utf-8')), '', nodes)
+        got = t.get(sec)
+        if got is None:
+            err.append(f'texts.{sec} missing'); continue
+        want = dict(nodes)
+        for path, en in want.items():
+            if path not in got:
+                err.append(f'texts.{sec}["{path}"]: missing'); continue
+            cnt[0] += 1
+            cnt[1] += got[path] != en
+            check_str(f'texts.{sec}["{path}"]', en, got[path])
+        for path in got:
+            if path not in want:
+                err.append(f'texts.{sec}["{path}"]: no such multilingual node')
+        if list(got) != list(want):
+            warn.append(f'texts.{sec}: key order differs from the source file')
     for k, v in src.items():
         if k not in t:
             err.append(f'texts.{k} missing')
