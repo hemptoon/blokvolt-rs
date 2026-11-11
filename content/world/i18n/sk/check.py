@@ -11,7 +11,8 @@ LANG = 'sk'
 HERE = Path(__file__).resolve().parent
 WORLD = HERE.parent.parent
 NAMES = WORLD / 'names'
-FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices')
+FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+         'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed')  # L2 (11.11.2026): all 8
 SLUG_KEYS = ('home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology')
 SLUG_SEGMENT = ('net', 'about', 'download')
 FORBIDDEN = [r'24\s*/\s*7', r'\bokamžite\b', r'\bhneď\b', r'\bEvolako\b', r'\bredakci', r'\bnáš\b', r'\bnaš[aeiou]',
@@ -115,6 +116,36 @@ try:
         n_txt = walk(json.load(open(WORLD / f'{part}.json', encoding='utf-8'))['en'], T.get(part), part, n_txt)
 except FileNotFoundError:
     err.append('texts.json missing')
+    T = {}
+
+
+def ml_nodes(node, path, out):
+    # LANG0 contract: multilingual node {en, sr, ru} -> dotted path, list index [i]
+    if isinstance(node, dict):
+        if isinstance(node.get('en'), str) and ('sr' in node or 'ru' in node):
+            out[path] = node['en']
+            return out
+        for k, v in node.items():
+            ml_nodes(v, f'{path}.{k}' if path else k, out)
+    elif isinstance(node, list):
+        for i, v in enumerate(node):
+            ml_nodes(v, f'{path}[{i}]', out)
+    return out
+
+
+for part in ('pay', 'routes'):  # L2 (11.11.2026)
+    src = ml_nodes(json.load(open(WORLD / f'{part}.json', encoding='utf-8')), '', {})
+    got = T.get(part)
+    if not isinstance(got, dict):
+        err.append(f'texts.json: section {part!r} missing')
+        continue
+    for k in src.keys() - got.keys():
+        err.append(f'texts {part}: missing node {k}')
+    for k in got.keys() - src.keys():
+        err.append(f'texts {part}: extra node {k}')
+    for k in src.keys() & got.keys():
+        check_text(f'texts {part} {k}', src[k], got[k])
+        n_txt += 1
 
 S = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
 if tuple(sorted(S)) != tuple(sorted(SLUG_KEYS)):
@@ -183,6 +214,20 @@ for r in src_city.values():
 sk_missing = [g for g, r in src_city.items() if r['cc'] == 'SK' and g not in set(ids)]
 if sk_missing:
     err.append(f'cities.csv: {len(sk_missing)} SK cities missing')
+# L2: every city page of the own market (market_countries sk = SK) must have a row
+MARKET = ('SK',)
+try:
+    PS = json.load(open(WORLD / 'state' / 'pages_state.json', encoding='utf-8'))
+    page_ids = {v['key'].split(':')[2] for v in PS.values()
+                if v.get('type') == 'city' and v['key'].split(':')[1] in MARKET}
+    miss = page_ids - set(ids)
+    if miss:
+        err.append(f'cities.csv: {len(miss)} city pages of {MARKET} missing: {sorted(miss)[:10]}')
+    for r in Y:
+        if r['geonameid'] in page_ids and r['decl_ok'] != '1':
+            warn.append(f'cities.csv {r["geonameid"]}: own-market city page with decl_ok=0')
+except FileNotFoundError:
+    warn.append('state/pages_state.json not found — own-market city check skipped')
 
 print(f'{LANG}: strings {n_keys} keys, texts {n_txt} strings, slugs {len(S)}, countries {len(C)}, cities {len(Y)}')
 print('cities coverage by stage: ' + ', '.join(f'{s} {cov.get(s, 0)}/{tot[s]}' for s in sorted(tot)))
