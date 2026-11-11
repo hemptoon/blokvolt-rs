@@ -152,7 +152,9 @@ def run(G, c):
         W.write_page(c, l, 'world_embed_conf.html', CONF[l], CONF, dict(
             title=t['cf_title'].replace(' | BlokVolt', ''), h1=t['cf_h1'], description=t['cf_desc'], T=t, crumbs=None, kick=None,
             jsonld=None, data_date=W.fmt_date(c.date), COUNTRIES_ALL=countries(l), NETS=nets, MT=MS[l], dev_url=DEV[l],
-            WLANGS=[(x, I.label(x)) for x in LANGS],
+            # D9: every enabled language of the registry; more than three → one <select> by native name (the menu's order)
+            WLANGS=[(x, I.label(x), I.reg(x)['hreflang']) for x in (LANGS if len(LANGS) <= 3 else
+                    [e['code'] for e in I.lang_menu({x: '/' for x in LANGS}, l)])],
             preview_src=EMBED[l], map_url=world_map.PAGES[l], vz=json.dumps(vz, ensure_ascii=False).replace('</', '<\\/'),
             css=f"/assets/world/world-embed.css?v={ver['world-embed.css']}", js=f"/assets/world/world-widget.js?v={ver['world-widget.js']}"), 'conf')
         out.append(CONF[l])

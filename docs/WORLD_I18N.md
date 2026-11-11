@@ -31,6 +31,32 @@ shell_about, sources, methodology; optional since LANG0: pay, routes, press, b2b
 the path is the home prefix + the English path, `/de/how-to-pay/`), `countries.csv` (`cc,name,slug,in_phrase,note`),
 `cities.csv` (`geonameid,name,in_phrase,decl_ok,note`; also names the route towns by their GeoNames id).
 
+## Placeholders and names of the LANG_pool decisions (LANG1, 11.11.2026)
+
+- **D1 `{cu}`, `{lo}`/`{hi}`, "in <country>"** — every language other than en/sr/ru takes `in_phrase` of its
+  `i18n/<code>/countries.csv` (How to pay, prices, pages, press facts). No built-in German or French lists remain.
+- **D2 press facts** — `f_*` of the language's own `strings_press.json`, also for a press-release draft of a language that is
+  not built (`world_press.py facts 2026-11 de` reads `i18n/de/strings_press.json` and stops when an `f_*` is missing).
+- **D3 `{month}`** — en/sr/ru as before; every other language the stand-alone nominative month and the year (Babel
+  `LLLL y`: "studeni 2026", "листопад 2026"), `world_i18n.month_label()`.
+- **D4 `{name_nom}`** — optional column `name_nom` of `countries.csv` (after the five columns): the country in the middle of a
+  sentence with its article ("die Schweiz", "les Pays-Bas", "η Ελβετία"); empty → the name. May stand wherever English has
+  `{name}` (How to pay: `afir_eu`, `afir_non`, `conn_txt`, `conn_lnk`). A string that opens with `{name_nom}` gets its capital
+  ("Die Schweiz ist kein EU-Mitglied"). French: write no "de {name_nom}" (it would read "de les Pays-Bas").
+- **D5 `{city_de}`** (French only) — "de Lyon", "d’Ulm", "du Havre", "des Herbiers"; h counts as aspirated except a short
+  list of towns with a mute h (`FR_H_MUET`). Stands for `{city}` on city pages and for `{x}` in `t_near` (" (près {city_de})").
+- **D6 `{city_u}`** — available on `t_city`, `t_city_cc`, `d_city` (and every other string of a city page) in every language:
+  `in_phrase` of `cities.csv`, or the safe `fallback_u` construction when there is none.
+- **`{country_u}` for `{country_name}`** — where English has a number in `{country}` and the name in `{country_name}`
+  (`p_city_cmp`), a language may write "in Italia" in the name's slot.
+- **Section paths** — LANG0's contract (D7 replaced by it, LANG_pool "Поправка 18:45"): optional `slugs.json` keys `pay`,
+  `routes`, `press`, `b2b`, `embed`, `map_conf`, `developers`; without one, home prefix + the English path (`/de/how-to-pay/`).
+- **D8** — Romanian percent `{x}%` (registry; `world_i18n.py registry` keeps it, `PCT_FIXED`).
+- **D9** — the widget configurator lists every built language; above three, one `<select>` by native name.
+- **D10** — `strings_home.json` of every language through the common loader (LANG0); `world-home.js` and the hero map take
+  the page's own strings and `intl`.
+- Check on a built site: `BV_WORLD_PREVIEW=1 python3 scripts/qa/world_lang_check.py dist-com [de,fr,pl,uk,hr]` (preview.yml).
+
 ## Rules of the engine
 
 - An enabled language without a key, file or slug → the build stops.
