@@ -1014,6 +1014,14 @@ No messages, comments or forms to anyone — the outreach rule of 3.7 applies to
   `hemptoon/evolako-web`, branch `site-migration`; before that Webflow) to `https://app.evolako.rs/s/p` (a Pages
   Function of the app `evolako-app` with the same binding, same repository, since 27.10.2026). The privacy policy
   describes it (#merenje-poseta, second paragraph).
+- **blokvolt.com** (STATCOM, 11.11.2026, the owner's word 16:54) — the same counter, the only measurement there (no
+  third-party analytics, no ads; 3.26). `static/com/bvc.js` (≤ 1 KB, copied to `/assets/bvc.js` by `gen_com.py`, loaded
+  `defer` by `templates/com2/base.html`, so on every page of the world shell, the local sections and 404; not in the
+  `/embed/` widget) posts straight to `https://evolako-bot.mr-smekhov.workers.dev/s/p` (GitHub Pages has no worker,
+  no CSP there). Only from `blokvolt.com` and `www.blokvolt.com`; not from other hosts, localhost or webdriver. The bot
+  accepts the host only with a matching Origin; site key `blokvolt.com`; its own block in the morning report (people,
+  sources, pages, countries, page languages). Team mark: https://blokvolt.com/?tim=1. Privacy: /about/ (EN/SR/RU,
+  `content/com/counter_note.json`) and „Privatnost“ in the methodology page of every local section.
 - **PostHog** (EU cloud) — prepared in the code, off while `analytics.posthog_key` in `content/data/site.json` is
   empty. `analytics.consent` (true since 25.09.2026, the owner's choice) picks the mode:
   - `consent: true` — every reader is measured **without cookies** (`cookieless_mode: 'always'`, nothing written to
@@ -1491,7 +1499,8 @@ The media kit is public since 29.09.2026 (owner's decision); an ad appears only 
   and cards, the region) and `vesti` (every news item and the news list). One advertiser per rubric, one ad per page,
   at the end of the text after the „Ažurirano“ line, labelled „Oglas“. Never on the home page, the map, the register
   of firms and networks, prices, statistics, the guides and calculators about charging at home and in buildings, in
-  the apps or on blokvolt.com (no analytics there, nothing to sell yet).
+  the apps or on blokvolt.com (there only our own cookie-free visit counter, as on .rs — no third-party analytics
+  and no ads; nothing to sell yet).
 - **Not accepted:** selling or installing home chargers and wallboxes (the site is edited by the team behind Evolako,
   and the page says so), public charging networks in „Na putu“ or next to news about that network, gambling, alcohol
   and tobacco, crypto and financial schemes, political ads, claims that cannot be checked. **Never for sale:** place,

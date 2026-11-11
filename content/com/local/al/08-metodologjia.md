@@ -37,4 +37,4 @@ Nëse gjeni një gabim, një çmim të ndryshuar ose një karikues që mungon, s
 
 ## Privatësia
 
-Faqet nuk kanë mjete analitike, reklama as kuki. Sfondi i hartës ngarkohet nga serverët e OpenFreeMap. Vendndodhja përdoret në hartë vetëm kur shtypni „Pranë meje“ dhe mbetet në shfletuesin tuaj.
+Faqet nuk kanë reklama, kuki as mjete analitike të palëve të treta. Vizitat i numëron vetëm numëruesi i vetë BlokVolt, në serverët e Cloudflare në BE: cila faqe u hap (pa parametrat e adresës), nga cila faqe erdhi vizita (vetëm emri i faqes), etiketat e fushatës (utm), gjuha e faqes, shteti, lloji i pajisjes dhe shfletuesi. Numëruesi nuk vendos kuki dhe nuk ruan asgjë në shfletues; adresa IP nuk ruhet, të dhënat përdoren vetëm në mënyrë të përmbledhur dhe fshihen pas një viti. Sfondi i hartës ngarkohet nga serverët e OpenFreeMap. Vendndodhja përdoret në hartë vetëm kur shtypni „Pranë meje“ dhe mbetet në shfletuesin tuaj.
