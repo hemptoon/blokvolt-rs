@@ -51,7 +51,9 @@ def cmp_text(where, en, tr):
 cats = cldr_cats(LANG)
 
 # 1. strings_*.json
-for name in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
+# LANG pool L2 (11.11.2026): all 8 string files
+for name in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+             'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed'):
     src = json.loads((WORLD / f'{name}.json').read_text())
     p = HERE / f'{name}.json'
     if not p.exists():
@@ -98,10 +100,29 @@ p = HERE / 'texts.json'
 if p.exists():
     t = json.loads(p.read_text())
     # pool 3, 23:55: sources_pages.json is not translated; texts.json = about_data + download
-    if set(t) != {'about_data', 'download'}:
-        errors.append('texts.json: top keys must be about_data, download')
+    # LANG pool L2 (11.11.2026): + pay, routes (LANG0 format: node path -> text)
+    if set(t) != {'about_data', 'download', 'pay', 'routes'}:
+        errors.append(f'texts.json: top keys must be about_data, download, pay, routes, got {sorted(t)}')
     for n in ('about_data', 'download'):
         walk(f'texts.{n}', json.loads((WORLD / f'{n}.json').read_text())['en'], t.get(n))
+
+    def ml_nodes(n, p, out):
+        if isinstance(n, dict):
+            if isinstance(n.get('en'), str) and {'sr', 'ru'} <= set(n):
+                out[p] = n['en']; return
+            for k, v in n.items(): ml_nodes(v, f'{p}.{k}' if p else k, out)
+        elif isinstance(n, list):
+            for i, v in enumerate(n): ml_nodes(v, f'{p}[{i}]', out)
+
+    for n in ('pay', 'routes'):
+        en_nodes = {}
+        ml_nodes(json.loads((WORLD / f'{n}.json').read_text()), '', en_nodes)
+        tr = t.get(n) or {}
+        miss, extra = set(en_nodes) - set(tr), set(tr) - set(en_nodes)
+        if miss: errors.append(f'texts.{n}: missing paths {sorted(miss)[:10]} ({len(miss)})')
+        if extra: errors.append(f'texts.{n}: unknown paths {sorted(extra)[:10]} ({len(extra)})')
+        for k in en_nodes.keys() & tr.keys():
+            cmp_text(f'texts.{n}.{k}', en_nodes[k], tr[k])
     if False: walk('texts.sources_pages', json.loads((WORLD / 'sources_pages.json').read_text()), t.get('sources_pages'))
 else:
     errors.append('texts.json missing')

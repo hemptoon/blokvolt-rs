@@ -33,3 +33,13 @@ station de recharge / borne de recharge / point de charge / site de recharge · 
 ## Проверка
 - `python3 content/world/i18n/fr/check.py` → 0 ошибок.
 - Обратный перевод 60 случайных строк (seed 42): ok 57, minor 3, mismatch 0; все 3 minor исправлены (Formule ×2, sur préavis).
+
+
+## L2-fr (LANG pool, 11.11.2026)
+- Добавлены 274 ключа: `strings_map` (28 `ci_*` + `emb_open`), `strings_pay` 93, `strings_press` 54, `strings_b2b` 33, `strings_embed` 65. Генератор с типографикой — `tools/l2_fr.py`.
+- `texts.json`: разделы `pay` (6 узлов `afir.points[i]`) и `routes` (59 узлов `routes[i].stops[j].city`; Salzbourg — экзоним, остальное как в `cities.csv`).
+- `{name}` в `afir_eu`/`afir_non`/`conn_txt`/`conn_lnk` — голое название страны без артикля, поэтому конструкция «{name} : pays…», а не «L’Allemagne est…».
+- `press.f_*` взяты из `FACTS_DE_FR` в `scripts/world_press.py` и поправлены по обратному переводу; код сейчас берёт FR оттуда, а не из `strings_press` — LANG0/LANGI должны переключить на файл.
+- Титулы страниц: «Stations de recharge…» → «Bornes de recharge…» (так ищут во Франции и Бельгии; карта уже «bornes»).
+- `check.py`: все 8 файлов + `texts.pay`/`texts.routes` → 0 ошибок.
+- Открыто: `t_near` без элизии (нужен `de_elide` в моторе); Женевы нет в `names/cities.csv`, у Базеля, Лозанны и Люцерна нет страниц городов (данные G2, не перевод); «sans inscription» vs «à l’acte» — по глоссарию.
