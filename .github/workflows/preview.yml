@@ -6,10 +6,13 @@
 # Never production: main and release are refused below; no IndexNow, no newsletter, no D1 (preview deployments of
 # "blokvolt" have no D1/AI bindings, so its API answers in demo mode). World data: hemptoon/blokvolt-tiles (GitHub Pages).
 # Secrets and pins: the same as deploy.yml (token "Account · Cloudflare Pages · Edit", wrangler pinned).
+# Languages (LANG0, LANG_pool): BV_WORLD_PREVIEW=1 builds content/world/config.json "langs_enabled_preview" (production keeps
+# "langs_enabled"); a missing translation shows the English string marked "[EN] "; at most "preview_pages_cap" city + network
+# pages per language, so the deployment stays under 19 000 files (Cloudflare Pages Free: 20 000).
 name: Preview
 on:
   push:
-    branches: ['dev', 'g[0-9]*-*', 'k[0-9]*-*', 'home[0-9]*-*']
+    branches: ['dev', 'g[0-9]*-*', 'k[0-9]*-*', 'home[0-9]*-*', 'lang*', 'l2-*']
   workflow_dispatch:
 permissions:
   contents: read
@@ -72,10 +75,12 @@ jobs:
           cp "$MANIFEST" dist-com/world-data/
           if [ -n "$PLACES" ]; then cp "$PLACES" dist-com/world-data/; fi
           printf '{"manifest": "%s"}' "$(basename "$MANIFEST")" > dist-com/world-data/latest.json
-          python3 scripts/qa/world_pages_check.py dist-com "$PAGES" --report "$RUNNER_TEMP/world_pages_check.json"
-          python3 scripts/qa/world_embed_check.py dist-com
+          BV_WORLD_PREVIEW=1 python3 scripts/qa/world_pages_check.py dist-com "$PAGES" --report "$RUNNER_TEMP/world_pages_check.json"
+          BV_WORLD_PREVIEW=1 python3 scripts/qa/world_embed_check.py dist-com
           rm -f dist-com/CNAME
-          echo "blokvolt.com files: $(find dist-com -type f | wc -l) (Cloudflare Pages Free: 20000)"
+          n=$(find dist-com -type f | wc -l)
+          echo "blokvolt.com files: $n (Cloudflare Pages Free: 20000; LANG0 budget: under 19000)"
+          if [ "$n" -ge 19000 ]; then echo "::error::$n files — lower preview_pages_cap in content/world/config.json"; exit 1; fi
       - name: noindex for both previews
         run: python3 scripts/dev_noindex.py dist dist-com
       - name: Pages project blokvolt-com (created once)

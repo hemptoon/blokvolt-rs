@@ -27,6 +27,9 @@
 {% endif %}
 <link rel="stylesheet" href="/assets/bv.css">
 <link rel="stylesheet" href="/assets/com.css">
+{% if LANGJS %}<link rel="stylesheet" href="{{ LANGJS.css }}">
+{% if LOC.script == 'grek' %}<link rel="stylesheet" href="{{ LANGJS.grek }}">
+{% endif %}{% endif %}
 {% block head %}{% endblock %}
 {% block jsonld %}{% endblock %}
 </head>
@@ -38,6 +41,7 @@
 </main>
 {% include '_footer.html' %}
 <script src="/assets/bv.js" defer></script>
-{% block scripts %}{% endblock %}
+{% if LANGJS %}<script src="{{ LANGJS.js }}" defer></script>
+{% endif %}{% block scripts %}{% endblock %}
 </body>
 </html>

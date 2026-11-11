@@ -203,5 +203,15 @@
   "en": "country|countries|countries",
   "sr": "zemlja|zemlje|zemalja",
   "ru": "страна|страны|стран"
+ },
+ "lang_hint": {
+  "en": "This page is also available in English",
+  "sr": "Ova stranica postoji i na srpskom",
+  "ru": "Эта страница есть и на русском"
+ },
+ "lang_hint_close": {
+  "en": "Close",
+  "sr": "Zatvori",
+  "ru": "Закрыть"
  }
 }

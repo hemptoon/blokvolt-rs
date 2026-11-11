@@ -6,7 +6,7 @@
 {% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
 <p class="meta">{{ checked }}</p>
 <div class="wp-cur" role="group" aria-label="{{ P.cur_label }}"><span>{{ P.cur_label }}:</span>
-<button type="button" class="chip" data-wcur="eur" aria-pressed="true">EUR</button><button type="button" class="chip" data-wcur="usd" aria-pressed="false">USD</button>{% if local_cur and local_cur != 'EUR' %}<button type="button" class="chip" data-wcur="loc" aria-pressed="false">{{ P.cur_local }} · {{ local_cur }}</button>{% endif %}</div>
+<button type="button" class="chip" data-wcur="eur" aria-pressed="{{ 'false' if cur_loc else 'true' }}">EUR</button><button type="button" class="chip" data-wcur="usd" aria-pressed="false">USD</button>{% if local_cur and local_cur != 'EUR' %}<button type="button" class="chip" data-wcur="loc" aria-pressed="{{ 'true' if cur_loc else 'false' }}">{{ P.cur_local }} · {{ local_cur }}</button>{% endif %}</div>
 </div></div>
 {%- endmacro %}
 
@@ -32,5 +32,5 @@
 {%- endmacro %}
 
 {% macro fxnote() -%}
-<p class="note wp-fxn" hidden>{{ P.fx_note.format(date=fx_date) }}</p>
+<p class="note wp-fxn"{% if not cur_loc %} hidden{% endif %}>{{ P.fx_note.format(date=fx_date) }}</p>
 {%- endmacro %}

@@ -2673,6 +2673,41 @@ Built by `gen_com.py` with the world layer, right after the price pages; noindex
 - **Checks:** `python3 scripts/world_hero.py selftest`, `python3 scripts/world_home.py selftest` (both in `preview.yml`); after a build — links (gen_com), screenshots 360/768/1440 light and dark, the live map after a click (`data-state=live`).
 - **IndexNow note (3.37):** `indexnow.py` now waits until the live key file answers before the first request and retries a 403/429 once after 45 s; `RESEND` lists sitemaps to send again in full until a date (blokvolt.com `sitemap-world-ru-city.xml` until 30.11.2026 — the batch that got 403 on 11.11 because it went out before the key file answered). Remove the entry when a run log shows 200/202 for it.
 
+### 3.48 Languages of the world layer of blokvolt.com — the engine for ~30 languages (LANG0, since 11.11.2026)
+
+The registry and the rules are in `docs/WORLD_I18N.md`; the work plan is `claude/bvcom_tasks/LANG_pool.md` (LANG0 → L2-<code>
+→ LANGI). In short:
+
+- `content/world/config.json`: `langs_enabled` = production (en, sr, ru until the owner's „релиз языков“) — the only
+  languages that enter a sitemap or IndexNow; `langs_enabled_preview` = what dev previews build (`BV_WORLD_PREVIEW=1`);
+  `waves` (1: de fr nl es it pl sv nb da fi pt; 2: the other 16); `market_countries` per language;
+  `preview_pages_cap` (1000).
+- Coverage: every enabled language gets the home, `/map/`, the hub and **every** country, prices, How to pay, routes, about,
+  sources, methodology, download, press, B2B, developers and the widget; **city and network pages only for its
+  `market_countries`**. Links to a city/network page that a language does not have go to the map with the filter.
+- Previews: a missing translation shows the English string with `[EN] ` (counted in the build log); at most
+  `preview_pages_cap` city + network pages per language (largest first) so the deployment stays under 19 000 files
+  (`preview.yml` fails at 19 000). Production never caps and never falls back: a missing key stops the build.
+- Every build prints `world size forecast (production, no page cap): prod … · wave 1 … · all 27 …` and stops when the
+  production languages would pass 800 MB (GitHub Pages: 1 GB).
+- Language menu: with more than three languages, native names A–Z (`static/com/world-lang.js` + `world-lang.css`: the
+  browser's languages first, keyboard, mobile sheet); a language without the page leads to the nearest page above
+  (country → hub). The hint strip „This page is also available in …“ shows once, never redirects, closing is kept in
+  `localStorage` `bv:langhint`. With only en/sr/ru the pages are byte-identical to before (except the `?v=` of changed JS).
+- Currency: an extra language opens the price pages of its own non-euro countries in the local currency (SEK, NOK, DKK, PLN,
+  CZK, HUF, RON, BGN, CHF); everywhere else EUR.
+- Greek: Onest has no Greek letters; Greek pages load `world-grek.css` (Inter's Greek subset, OFL, mapped into 'Onest').
+- Section paths of How to pay, routes, press, B2B, widget, configurator, developers: en/sr/ru in `config.json`
+  (`slugs`); another language may set them in its `slugs.json` (`pay`, `routes`, `press`, `b2b`, `embed`, `map_conf`,
+  `developers`), otherwise `/<home>/` + the English path (`/de/how-to-pay/`).
+- Texts of `pay.json` / `routes.json`: `i18n/<code>/texts.json` → `pay` / `routes`, key = path of the node
+  (`afir.points[0]`, `routes[3].stops[1].city`; optional notes `tolls.HR.note`, `apps[2].note`).
+- IndexNow (`scripts/indexnow.py`): one request per language, at most 10 000 URLs each (nothing is cut off).
+- blokvolt.com production (`hemptoon/blokvolt-com`, branch `lang0-com`, merged only at „релиз языков“): the folders of every
+  registry language stay out of that repository (`python3 scripts/world_i18n.py world-paths`), artifact only.
+- Checks: `python3 scripts/world_i18n.py selftest`, `… check <code>`, the pseudo-language build of `docs/WORLD_I18N.md`,
+  `BV_WORLD_PREVIEW=1 python3 scripts/qa/world_pages_check.py dist-com <pages>` (the same mode as the build).
+
 ## 4. Build and check
 
 ```bash

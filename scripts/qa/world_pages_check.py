@@ -142,7 +142,8 @@ def main():
             fail(f'robots {u}: {x.robots}')
         a = dict(x.alts)
         want = set(site.langs(p)) if p else set(W.LANGS)
-        if set(a) != want | {'x-default'} or a.get('x-default') != a.get('en'):
+        xd = {'x-default'} if 'en' in want else set()   # LANG0: a preview cap may leave a page without its English version
+        if set(a) != want | xd or a.get('x-default') != a.get('en'):
             fail(f'hreflang set {u}: {sorted(a)}')
         for code, href in x.alts:
             if not href.startswith(SITE + '/'):
@@ -242,7 +243,7 @@ def main():
     # 100 random numbers from the page JSON on their page
     rnd = random.Random(seed)
     checked, missed = 0, []
-    cand = [p for p in pages if p['type'] in ('country', 'city', 'network')]
+    cand = [p for p in pages if p['type'] in ('country', 'city', 'network') and site.langs(p)]   # LANG0: preview cap
     for _ in range(100):
         p = rnd.choice(cand)
         l = rnd.choice(site.langs(p))

@@ -1,4 +1,4 @@
-# World layer of blokvolt.com in N languages (K8-i18n, 10.11.2026)
+# World layer of blokvolt.com in N languages (K8-i18n 10.11.2026, LANG0 11.11.2026)
 
 The world layer (map, world pages, shell, prices) no longer hard-codes EN / SR / RU. Languages come from one registry;
 new languages are prepared in `content/world/i18n/<code>/` (L-tasks) and switched on only after gate G8.
@@ -7,18 +7,29 @@ new languages are prepared in `content/world/i18n/<code>/` (L-tasks) and switche
 
 - `langs`: code → `hreflang`, `html` (lang attribute), `og`, `code`, `label` (switcher), `script` (latn/cyrl/grek), `dir`,
   `dec`, `thou`, `pct`, `intl` (JS locale), `date` (CLDR short pattern, reference), `plural` (CLDR categories), `months`,
-  optional `babel` (locale for plural rules, e.g. `sr_Latn`), optional `scope` (`europe` default = the pages that have
-  Serbian, or `all`). `en`/`sr`/`ru` also hold `slugs`; 24 L-languages are generated from Babel
+  optional `babel` (locale for plural rules, e.g. `sr_Latn`). `en`/`sr`/`ru` also hold `slugs`; 24 L-languages are generated from Babel
   (`python3 scripts/world_i18n.py registry`).
-- `langs_enabled`: `["en","sr","ru"]`. **The only switch for a new language.** `world_i18n selftest` fails while the
-  pushed config enables anything else (remove that check at G8).
+- `langs_enabled`: `["en","sr","ru"]` — **production**, the only languages of the sitemaps and IndexNow. `world_i18n
+  selftest` fails while the pushed config enables anything else (drop that check at „релиз языков“, LANGI step 6).
+- `langs_enabled_preview` (LANG0): the languages of dev previews (`BV_WORLD_PREVIEW=1`, set by `preview.yml`): en, sr, ru +
+  all 27. In a preview a missing key shows the English string with `[EN] ` (counted: `world pages: …` log and
+  `world_i18n.missing_report()`); a production build stops instead.
+- `waves` (LANG_pool §0.2), `market_countries` (§0.3): a language gets city and network pages only for these countries.
+- `preview_pages_cap` (1000): at most this many city + network pages per language in a preview (the largest first, by
+  places), so the preview of all 30 languages stays under 19 000 files (Cloudflare Pages Free: 20 000). `BV_WORLD_PAGES_CAP`
+  overrides it for a test; production never caps.
+- 27 extra languages: the 24 of K8 + `et`, `lt`, `lv` (LANG0, Babel entries).
 
-## Files of a language (contract of the L-tasks, do not change)
+## Files of a language (contract of the L-tasks)
 
-`content/world/i18n/<code>/`: `strings_map.json`, `strings_pages.json`, `strings_shell.json`, `strings_prices.json`
-(`{key: "text"}`, plural keys `pl_*` as `{one, few, many, other}`), `texts.json` (`about_data`, `download`),
-`slugs.json` (home, map, hub, net, about, download, gnet, prices, shell_about, sources, methodology),
-`countries.csv` (`cc,name,slug,in_phrase,note`), `cities.csv` (`geonameid,name,in_phrase,decl_ok,note`).
+`content/world/i18n/<code>/`: `strings_map.json`, `strings_pages.json`, `strings_shell.json`, `strings_prices.json`,
+`strings_pay.json`, `strings_press.json`, `strings_b2b.json`, `strings_embed.json` (all eight since LANG0; `{key: "text"}`,
+plural keys `pl_*` as `{one, few, many, other}`), `texts.json` (`about_data`, `download`, and since LANG0 `pay` / `routes`:
+path of the multilingual node of `pay.json` / `routes.json` → text, e.g. `afir.points[0]`, `routes[3].stops[1].city`;
+optional notes `tolls.<CC>.note`, `apps[<i>].note`), `slugs.json` (home, map, hub, net, about, download, gnet, prices,
+shell_about, sources, methodology; optional since LANG0: pay, routes, press, b2b, embed, map_conf, developers — without them
+the path is the home prefix + the English path, `/de/how-to-pay/`), `countries.csv` (`cc,name,slug,in_phrase,note`),
+`cities.csv` (`geonameid,name,in_phrase,decl_ok,note`; also names the route towns by their GeoNames id).
 
 ## Rules of the engine
 
@@ -28,12 +39,20 @@ new languages are prepared in `content/world/i18n/<code>/` (L-tasks) and switche
 - Plurals: `"one|few|many"` strings of en/sr/ru keep the old rule (byte-identical builds); objects use the CLDR category
   (Babel; `world_i18n selftest` checks that Babel and the old rule agree for sr/ru on 0…1999).
 - City slugs and network slugs are shared by all languages (P1); country slug, section slugs and names are per language.
-- hreflang clusters, the switcher and per-language sitemaps cover the enabled languages only.
+- Coverage (LANG0): an extra language gets the hub, every country, prices, How to pay, routes and the shell pages; city and
+  network pages only in its `market_countries`. A link to a page a language lacks goes to the map with the filter.
+- hreflang clusters cover the languages that have the page; x-default = English. The sitemaps take only `langs_enabled`.
+- Language menu (more than three languages): native names A–Z, browser languages first (`static/com/world-lang.js`), a
+  language without the page leads to the nearest page above (country → hub). Hint strip once per browser, no redirect.
+- JS: each page carries its own language only (map: `wm-i18n` in the page; `cfg.intl`, `cfg.dec`, `cfg.thou` for the
+  other languages; prices: `WP_FX.dec/thou/def`; home search: `search-index-<code>.json` with the name in item[8]).
+- Currency: price pages of a language's own non-euro countries open in the local currency (`WP_FX.def = "loc"`).
+- Greek pages: `world-grek.css` (Inter's Greek subset in the 'Onest' family). `html lang` = the registry `html`.
+- Size: every build prints the production forecast (prod / wave 1 / all 27) and stops above 800 MB for production.
 - Search index: `search-index.json` stays en/sr/ru (unchanged); each extra language gets `search-index-<code>.json`
   (`langs` = en, sr, ru, <code>; its names go to "other names") and its home page loads that file. One index with all
   24 languages would be 365 KB gzip, over the 300 KB limit.
 - An extra language whose path collides with an existing page (regional `/hr/`, `/mk/` …) stops the build.
-- Extra languages follow Serbian's coverage (Europe) by default; `"scope": "all"` gives them every page.
 
 ## Local test (never push)
 
@@ -43,14 +62,12 @@ BV_WORLD_LANGS=en,sr,ru,xx BV_WORLD_I18N=/tmp/i18n BV_WORLD_PAGES=… python3 sc
 python3 scripts/world_i18n.py check de [folder]         # an i18n folder against the EN keys
 ```
 
-## Enabling a language at G8 (checklist)
+## Enabling languages — „релиз языков“ (LANGI step 6)
 
-1. Merge its `l-<code>` folder; `python3 scripts/world_i18n.py check <code>` → OK.
-2. Add the code to `langs_enabled`; drop the "exactly en, sr, ru" check in `world_i18n.selftest`.
-3. `static/com/world-home.js`: take the URL column from `doc.langs.indexOf(lang)` (today `{en:0, sr:1, ru:2}`, other
-   languages get English URLs). `static/com/world-map.js`: read `cfg.intl` for the number/date locale (today it maps sr/ru/en only; other languages
-   fall back to en-GB numbers). Changing the JS changes its version hash on every map page — do it with the first language.
-4. `pip install babel` in `deploy.yml` (preview already has it).
-5. Watch the Cloudflare Pages limit: one extra Europe-scoped language adds ≈3 100 files (dist-com 15 494 → 18 604 with one).
-   Above 20 000 files the world pages need another host or fewer pages per language.
-6. og image per language (`og-<code>.png`) — today a copy of the English one.
+1. All `l2-<code>` folders merged; `python3 scripts/world_i18n.py check <code>` → OK for each.
+2. Add the codes to `langs_enabled`; drop the "exactly en, sr, ru" check in `world_i18n.selftest`.
+3. Merge `lang0-com` in `hemptoon/blokvolt-com` (world folders of every language stay out of that repository).
+4. Watch the forecast line of the build (≤ 800 MB) and the IndexNow lines (one request per language).
+5. og image per language (`og-<code>.png`) — today a copy of the English one.
+
+`python3 scripts/world_i18n.py world-paths` prints the rsync excludes of all world folders (blokvolt-com deploy.yml).

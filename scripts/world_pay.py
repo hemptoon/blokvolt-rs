@@ -7,7 +7,9 @@ Data:
   content/world/routes.json  fast chargers along 17 routes from the public layer (scripts/world_routes_calc.py on the mac
                              → scripts/world_routes_slim.py); rule: DC >= 50 kW, reliability >= 70, step <= 150 km
   G3 (scripts/world_prices.py): DC index per country for the trip cost and the price block; networks / weights
-Strings: content/world/strings_pay.json ({key: {en, sr, ru}}; the build stops on a missing language or a forbidden word).
+Strings: content/world/strings_pay.json ({key: {en, sr, ru}}; the build stops on a missing language or a forbidden word);
+other languages (LANG0): i18n/<code>/strings_pay.json, the texts of pay.json / routes.json from i18n/<code>/texts.json
+("pay" / "routes": path of the node → text), route towns from i18n/<code>/cities.csv, section paths from world_i18n.slugs.
 Templates: templates/com2/world_pay_*.html.
 
 Pages (noindex and out of the sitemap while the world layer is not public — same switch as world_pages):
@@ -26,9 +28,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 WORLD = ROOT / 'content' / 'world'
-LANGS = ('en', 'sr', 'ru')
-PAY = {'en': '/how-to-pay/', 'sr': '/sr/kako-platiti/', 'ru': '/ru/kak-platit/'}
-ROUTES = {'en': '/routes/', 'sr': '/sr/rute/', 'ru': '/ru/marshruty/'}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import world_i18n as I   # noqa: E402  LANG0: languages, section paths and texts of the other languages
+LANGS = I.langs()
+PAY = {l: I.slugs(l)['pay'] for l in LANGS}          # /how-to-pay/ /sr/kako-platiti/ /ru/kak-platit/ /de/… (config / slugs.json)
+ROUTES = {l: I.slugs(l)['routes'] for l in LANGS}    # /routes/ /sr/rute/ /ru/marshruty/ …
 EU = set('AT BE BG HR CY CZ DK EE FI FR DE GR HU IE IT LV LT LU MT NL PL PT RO SK SI ES SE'.split())
 FORBIDDEN = [r'\bodmah\b', r'24/7', r'evolako', r'\bredakcij', r'\bmi\s', r'popust', r'скидк', r'\batest', r'\bwe\b', r'\bмы\b']
 URL = re.compile(r'^https://[^\s]+$')
@@ -68,12 +72,13 @@ def load_json(p):
 
 def load_strings():
     raw = load_json(WORLD / 'strings_pay.json')
-    bad = [f'{k}:{l}' for k, v in raw.items() for l in LANGS if not (isinstance(v, dict) and str(v.get(l) or '').strip())]
+    bad = [f'{k}:{l}' for k, v in raw.items() for l in I.BASE if l in LANGS and not (isinstance(v, dict) and str(v.get(l) or '').strip())]
     if bad:
         raise SystemExit('content/world/strings_pay.json: missing translations — ' + ', '.join(bad[:20]))
+    raw = I.strings_raw('pay', LANGS)   # LANG0: other languages from i18n/<code>/strings_pay.json (stops on a missing key)
     for k, v in raw.items():
         for l in LANGS:
-            for pat in FORBIDDEN:
+            for pat in I.forbidden(FORBIDDEN, l):
                 if re.search(pat, v[l], re.I):
                     raise SystemExit(f'strings_pay.json: "{k}" ({l}) has a forbidden word ({pat})')
         if k.startswith('t_') and any(re.search(r'\d', v[l]) for l in LANGS):
@@ -89,7 +94,7 @@ def validate():
     if not URL.match(a.get('url') or '') or not DATE.match(a.get('checked') or ''):
         errs.append('afir: url/checked')
     for i, pt in enumerate(a.get('points') or []):
-        if any(not (pt.get(l) or '').strip() for l in LANGS):
+        if any(not (pt.get(l) or '').strip() for l in I.BASE):
             errs.append(f'afir.points[{i}]: missing language')
     seen = set()
     for app in P.get('apps') or []:
@@ -129,7 +134,30 @@ def validate():
 
 def town(name, l):
     t = TOWNS.get(name)
-    return t[LANGS.index(l)] if t else name
+    if l in I.BASE:
+        return t[I.BASE.index(l)] if t else name
+    gid = _town_gid().get(name)   # LANG0: the town by its GeoNames id in i18n/<code>/cities.csv, else English (counted)
+    x = I.cities(l).get(gid) if gid else None
+    if x and x.get('name'):
+        return x['name']
+    I.fallback(l, 'route_town', name)
+    return t[0] if t else name
+
+
+_TG = {}
+
+
+def _town_gid():
+    """Route towns (TOWNS, TOWN_CC) → geonameid of content/world/names/cities.csv (English or Serbian name in its country)."""
+    if not _TG:
+        import csv
+        rows = list(csv.DictReader(open(WORLD / 'names' / 'cities.csv', encoding='utf-8')))
+        for name, cc in TOWN_CC.items():
+            want = {name, *(TOWNS.get(name) or ())}
+            r = next((r for r in rows if r['cc'] == cc and ({r['name_en'], r['name_sr'], r['name_local']} & want)), None)
+            if r:
+                _TG[name] = int(r['geonameid'])
+    return _TG
 
 
 def country_km(rt):
@@ -166,19 +194,21 @@ class R:
     # ---------------- helpers
     def cname(self, cc, l):
         r = self.names.get(cc)
-        return r[f'name_{l}'] if r else cc
+        return (r[f'name_{l}'] if l in I.BASE else I.country_name(r, l)) if r else cc
 
     def cu(self, cc, l):
         r = self.names[cc]
         if l == 'en':
             return 'in ' + ('the ' if cc in ('US', 'GB', 'NL', 'CZ') else '') + r['name_en']
+        if l not in I.BASE:
+            return I.country_in(r, l)
         return r['sr_u'] if l == 'sr' else r['ru_v']
 
     def langs(self, cc):
         return tuple(x for x in LANGS if x in self.w.site.cc_langs.get(cc, LANGS))
 
     def pay_url(self, cc, l):
-        return f"{PAY[l]}{self.names[cc][f'slug_{l}']}/"
+        return f"{PAY[l]}{I.country_slug(self.names[cc], l)}/"
 
     def eur(self, v, l):
         return self.WP.money(v, 'EUR', l) if v is not None else '—'
@@ -190,16 +220,25 @@ class R:
         t = (self.P.get('tolls') or {}).get(cc)
         if not t:
             return None
+        note = (t.get('note_' + l) or '') if l in I.BASE else I.data_note(l, 'pay', f'tolls.{cc}.note')
         return dict(text=self.S[l]['sys_' + t['system']], url=t['url'], op=t.get('operator') or '', checked=self.date(t['checked']),
-                    note=t.get('note_' + l) or '')
+                    note=note)
 
     def apps_in(self, cc):
         return [a for a in self.P['apps'] if cc in a['countries']]
 
-    def write(self, l, tpl, url, urls, ctx, ptype):
+    def write(self, l, tpl, url, urls, ctx, ptype, ups=None):
         ctx = dict(ctx, T=self.S[l], PAYH=PAY, ROUTESH=ROUTES)
-        self.W.write_page(self.w, l, tpl, url, urls, ctx, ptype)
+        self.W.write_page(self.w, l, tpl, url, urls, ctx, ptype, ups=ups)
         self.n += 1
+
+    def afir_points(self, l):
+        return [I.data_text(l, 'pay', f'afir.points[{i}]', p) for i, p in enumerate(self.P['afir']['points'])]
+
+    def app_note(self, i, a, l):
+        if l in I.BASE:
+            return a.get('note_' + l) or (a.get('note') if l == 'en' else '')
+        return I.data_note(l, 'pay', f'apps[{i}].note')
 
     # ---------------- how to pay
     def nets_of(self, cc, l):
@@ -217,7 +256,7 @@ class R:
                 continue
             pnet = by_layer.get(key)
             purl = self.psite.net(cc, pnet, l) if (self.psite and pnet and (cc, pnet) in self.psite.slug) else None
-            page = self.w.site.net(cc, key, l) if (cc, key) in self.w.site.net_pages else None
+            page = self.w.site.net(cc, key, l) if self.w.site.has_net(cc, key, l) else None
             out.append(dict(name=key, dc=self.W.fmt_num(n_dc, self.W.L[l]), purl=purl, page=page))
         return out
 
@@ -238,11 +277,11 @@ class R:
             description=S['d_pay_country'].format(cu=self.cu(cc, l)), kick=None, jsonld=None, last=name,
             crumbs=[(S['nav_pay'], PAY[l])], checked=S['checked'].format(date=self.date(self.P['updated'])),
             afir_head=(S['afir_eu'] if cc in EU else S['afir_non']).format(name=name),
-            afir_points=[p[l] for p in A['points']] if cc in EU else [], afir_src=S['afir_src'].format(date=self.date(A['checked'])), afir_url=A['url'],
+            afir_points=self.afir_points(l) if cc in EU else [], afir_src=S['afir_src'].format(date=self.date(A['checked'])), afir_url=A['url'],
             nets=self.nets_of(cc, l), apps=apps, typ=typ, price_url=price_url, road=self.toll(cc, l),
             conn_txt=S['conn_txt'].format(name=name), conn_url=self.w.site.country(cc, l), conn_lnk=S['conn_lnk'].format(name=name),
             routes=[(self.route_title(rt, l), self.route_url(rt, l)) for rt in self.RT['routes'] if cc in {x['cc'] for x in rt['countries']}][:8]),
-            'pay')
+            'pay', ups=[PAY])
 
     def page_pay_hub(self, l):
         S = self.S[l]
@@ -250,13 +289,13 @@ class R:
                 for cc in self.countries if l in self.langs(cc)]
         rows.sort(key=lambda r: r['name'])
         apps = [dict(name=a['name'], maker=a.get('maker') or '', url=a['url'], checked=self.date(a['checked']),
-                     n=S['apps_n'].format(n=len(a['countries'])) if a.get('list_complete') else S['apps_unk'], note=a.get('note_' + l) or (a.get('note') if l == 'en' else ''))
-                for a in self.P['apps']]
+                     n=S['apps_n'].format(n=len(a['countries'])) if a.get('list_complete') else S['apps_unk'], note=self.app_note(i, a, l))
+                for i, a in enumerate(self.P['apps'])]
         A = self.P['afir']
         self.write(l, 'world_pay_hub.html', PAY[l], PAY, dict(
             title=S['t_pay_hub'], h1=S['h1_pay_hub'], description=S['d_pay_hub'], kick=S['kick_pay'], crumbs=None, jsonld=None,
             lead=S['lead_pay_hub'], checked=S['checked'].format(date=self.date(self.P['updated'])), rows=rows, apps=apps,
-            afir_points=[p[l] for p in A['points']], afir_src=S['afir_src'].format(date=self.date(A['checked'])), afir_url=A['url'],
+            afir_points=self.afir_points(l), afir_src=S['afir_src'].format(date=self.date(A['checked'])), afir_url=A['url'],
             routes_url=ROUTES[l]), 'pay')
 
     # ---------------- routes
@@ -290,8 +329,9 @@ class R:
         a, b = town(rt['waypoints'][0][0], l), town(rt['waypoints'][-1][0], l)
         via = S['via'].join(town(w[0], l) for w in rt['waypoints'][1:-1])
         stops = []
-        for s in rt['stops']:
-            city = (s.get('city') or {}).get(l) or ''
+        ri = self.RT['routes'].index(rt)
+        for si, s in enumerate(rt['stops']):
+            city = I.data_text(l, 'routes', f'routes[{ri}].stops[{si}].city', s['city']) if isinstance(s.get('city'), dict) else ''
             stops.append(dict(km=self.W.fmt_num(s['km'], self.W.L[l]), name=s.get('name') or s.get('net') or ('HPC' if s['cls'] == 5 else 'DC'), net=s.get('net') or '',
                               city=city, cc=self.cname(s['cc'], l) if s.get('cc') else '', kw=self.W.fmt_num(s['kw'], self.W.L[l]) if s.get('kw') else '—',
                               pts=s.get('pts') or '—', map=self.w.map_url(l, None, (s['lat'], s['lon']), 16)))
@@ -312,7 +352,7 @@ class R:
             lead=S['lead_route'].format(km=self.W.fmt_num(rt['km'], L), via=via, c=self.W.fmt_num(rule['corridor_km'], L), n=rt['n_fast'], h=rt['n_hpc']),
             stops=stops, gaps=gaps, byc=byc, cars=cars, cost_note=cost_note,
             method=S['method'].format(f=round((rule['road_factor'] - 1) * 100), date=self.date(self.RT['layer_date']), c=self.W.fmt_num(rule['corridor_km'], L))),
-            'routes')
+            'routes', ups=[ROUTES])
 
     def page_routes_hub(self, l):
         S = self.S[l]

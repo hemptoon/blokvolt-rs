@@ -4,7 +4,8 @@
 Registry: content/world/config.json
   "langs":          code -> {hreflang, html, og, code, label, script, dir, dec, thou, pct, intl, date, plural, months,
                               slugs (en/sr/ru only; other languages keep theirs in i18n/<code>/slugs.json)}
-  "langs_enabled":  the languages that are built — ["en", "sr", "ru"] until gate G8.
+  "langs_enabled":  production — ["en", "sr", "ru"] until the owner's „релиз языков“ (LANG_pool); sitemaps/IndexNow only these
+  "langs_enabled_preview", "waves", "market_countries", "preview_pages_cap" — LANG0 (docs/WORLD_I18N.md, RUNBOOK 3.48)
 A local test build may override the enabled list with BV_WORLD_LANGS=en,sr,ru,de (never in a pushed config) and point
 the strings of extra languages to another folder with BV_WORLD_I18N=<dir> (the pseudo-language "xx" of the K8 check).
 
@@ -33,9 +34,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 WORLD = ROOT / 'content' / 'world'
 BASE = ('en', 'sr', 'ru')                      # languages of the combined string files
-PARTS = ('map', 'pages', 'shell', 'prices')
+PARTS = ('map', 'pages', 'shell', 'prices', 'pay', 'press', 'b2b', 'embed', 'home')   # LANG0: all string files (+ home of HOME2)
 SLUG_KEYS = ('home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology')
-SLUG_PATHS = ('home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology')
+# LANG0: section paths of G4/G5/G7/G10. en/sr/ru keep them in config.json; another language may name them in its
+# slugs.json, otherwise the engine takes its home prefix + the English path (/de/ + how-to-pay/ = /de/how-to-pay/)
+SECTION_SLUGS = ('pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers')
+SLUG_PATHS = ('home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology') + SECTION_SLUGS
+MARK = '[EN] '                                 # preview only: an English string standing in for a missing translation
+MISSING = Counter()                            # (lang, part) -> keys filled with English in a preview build
+MISSING_EX = {}
 FALLBACK = Counter()                           # (lang, kind) -> count of English fallbacks
 FALLBACK_EX = {}
 
@@ -60,11 +67,28 @@ def i18n_dir(lang):
     return WORLD / 'i18n' / lang
 
 
+def preview():
+    """A dev/preview build (preview.yml sets BV_WORLD_PREVIEW=1): langs_enabled_preview, English stand-ins for missing
+    strings (marked [EN]) and the page budget of Cloudflare Pages (preview_pages_cap)."""
+    return os.environ.get('BV_WORLD_PREVIEW') == '1'
+
+
+def prod_langs():
+    """The languages of production (config "langs_enabled"): the only ones that may enter a sitemap or IndexNow."""
+    return tuple(config().get('langs_enabled') or BASE)
+
+
 @lru_cache(maxsize=None)
 def langs():
-    """The enabled languages, English first."""
+    """The enabled languages, English first: BV_WORLD_LANGS (local test) › langs_enabled_preview (preview builds) ›
+    langs_enabled (production)."""
     env = os.environ.get('BV_WORLD_LANGS')
-    ls = [x.strip() for x in env.split(',') if x.strip()] if env else list(config().get('langs_enabled') or BASE)
+    if env:
+        ls = [x.strip() for x in env.split(',') if x.strip()]
+    elif preview() and config().get('langs_enabled_preview'):
+        ls = list(config()['langs_enabled_preview'])
+    else:
+        ls = list(config().get('langs_enabled') or BASE)
     reg = registry()
     for l in ls:
         if l not in reg and l != 'xx':
@@ -87,7 +111,7 @@ def reg(lang):
 def slugs(lang):
     r = reg(lang)
     if lang in BASE:
-        s = r['slugs']
+        s = dict(r['slugs'])
     else:
         p = i18n_dir(lang) / 'slugs.json'
         if not p.exists():
@@ -96,7 +120,33 @@ def slugs(lang):
     bad = [k for k in SLUG_KEYS if not s.get(k)]
     if bad:
         raise SystemExit(f'world_i18n: slugs of {lang} miss {bad}')
+    en = registry()['en']['slugs']
+    for k in SECTION_SLUGS:   # LANG0: optional in slugs.json — home prefix + the English path
+        if not s.get(k):
+            s[k] = s['home'].rstrip('/') + en[k]
     return s
+
+
+def market(lang):
+    """Countries whose city and network pages a language gets (config "market_countries"; LANG_pool §0.3).
+    en/ru: every country; sr: every country of its bundle scope (Europe)."""
+    if lang in BASE:
+        return None
+    if lang == 'xx':   # pseudo-language of the local check: the first two countries of every wave-1 language
+        return set(sum((v[:2] for v in config().get('market_countries', {}).values()), []))
+    return set(config().get('market_countries', {}).get(lang) or ())
+
+
+def pages_cap():
+    """Preview builds only: the most city + network pages per language (0 = no cap); production builds everything."""
+    if not preview():
+        return 0
+    env = os.environ.get('BV_WORLD_PAGES_CAP')
+    return int(env) if env is not None else int(config().get('preview_pages_cap') or 0)
+
+
+def waves():
+    return {k: list(v) for k, v in (config().get('waves') or {}).items()}
 
 
 def loc(lang):
@@ -104,8 +154,8 @@ def loc(lang):
     r, s = reg(lang), slugs(lang)
     d = dict(key=lang, html=r['html'], hreflang=r['hreflang'], og=r['og'], code=r['code'], dec=r['dec'], thou=r['thou'],
              pct=r['pct'], hub=s['hub'], net=s['net'], about=s['about'], download=s['download'], gnet=s['gnet'], map=s['map'])
-    if r.get('script') == 'cyrl':
-        d['script'] = 'cyrl'
+    if r.get('script', 'latn') != 'latn':   # cyrl (preloads the Cyrillic face), grek (world-grek.css)
+        d['script'] = r['script']
     return d
 
 
@@ -114,10 +164,22 @@ def scope(lang):
     return reg(lang).get('scope', 'europe')
 
 
-def page_langs(bundle_langs):
-    """Languages of one page: en/sr/ru as the bundle names them, extra enabled languages by their scope."""
+def page_langs(bundle_langs, ptype=None, cc=None):
+    """Languages of one world page (LANG_pool §0.1): en/sr/ru as the bundle names them; an extra language gets the hub,
+    every country page and the global networks, but city and network pages only in its market_countries."""
+    return tuple(l for l in langs() if page_has(l, bundle_langs, ptype, cc))
+
+
+def page_has(l, bundle_langs, ptype=None, cc=None):
+    """The rule of page_langs for one language, enabled or not (the size forecast uses it for languages not built)."""
     bl = tuple(bundle_langs or BASE)
-    return tuple(l for l in langs() if (l in bl if l in BASE else (scope(l) == 'all' or 'sr' in bl)))
+    if l in BASE:
+        return l in bl
+    if ptype in ('city', 'network'):
+        return cc in market(l)
+    if ptype is None:   # legacy callers: follow the registry scope
+        return scope(l) == 'all' or 'sr' in bl
+    return True
 
 
 def label(lang):
@@ -129,23 +191,54 @@ def latin(lang):
 
 
 # ------------------------------------------------------------------ strings
-def load(part, langs_=None):
-    """{lang: {key: value}} for the enabled languages; stops when an enabled language misses a key."""
+def mark(v, plural=False):
+    """The English stand-in of a missing translation in a preview build: "[EN] text"; plural "a|b|c" → {one, other}."""
+    if plural and isinstance(v, str) and v.count('|') == 2:
+        one, few, _ = v.split('|')
+        return {'one': MARK + one, 'other': MARK + few}
+    return MARK + v if isinstance(v, str) else v
+
+
+def missing(lang, part, key):
+    """Counts a key that a preview build filled with English (printed per language by missing_report())."""
+    MISSING[(lang, part)] += 1
+    if len(MISSING_EX.setdefault((lang, part), [])) < 5:
+        MISSING_EX[(lang, part)].append(key)
+
+
+def missing_report():
+    rows = {}
+    for (l, part), n in sorted(MISSING.items()):
+        rows.setdefault(l, {})[part] = n
+    return rows
+
+
+@lru_cache(maxsize=None)
+def _load(part, l):
     raw = json.load(open(WORLD / f'strings_{part}.json', encoding='utf-8'))
+    if l in BASE:
+        return {k: v.get(l) for k, v in raw.items()}
+    p = i18n_dir(l) / f'strings_{part}.json'
+    if not p.exists() and not preview():
+        raise SystemExit(f'world_i18n: {p} is missing (language {l} is enabled)')
+    tr = json.load(open(p, encoding='utf-8')) if p.exists() else {}
+    miss = [k for k in raw if k not in tr or tr[k] in (None, '', {})]
+    if miss and not preview():
+        raise SystemExit(f'world_i18n: {p} misses {len(miss)} keys, e.g. {miss[:5]}')
     out = {}
-    for l in (langs_ or langs()):
-        if l in BASE:
-            out[l] = {k: v.get(l) for k, v in raw.items()}
-            continue
-        p = i18n_dir(l) / f'strings_{part}.json'
-        if not p.exists():
-            raise SystemExit(f'world_i18n: {p} is missing (language {l} is enabled)')
-        tr = json.load(open(p, encoding='utf-8'))
-        miss = [k for k in raw if k not in tr or tr[k] in (None, '', {})]
-        if miss:
-            raise SystemExit(f'world_i18n: {p} misses {len(miss)} keys, e.g. {miss[:5]}')
-        out[l] = {k: tr[k] for k in raw}
+    for k, v in raw.items():
+        if k in miss:
+            missing(l, part, k)
+            out[k] = mark(v['en'], k.startswith('pl_'))
+        else:
+            out[k] = tr[k]
     return out
+
+
+def load(part, langs_=None):
+    """{lang: {key: value}} for the enabled languages; stops when an enabled language misses a key (production) or puts
+    the English string with the [EN] mark in its place (preview, counted)."""
+    return {l: dict(_load(part, l)) for l in (langs_ or langs())}
 
 
 def strings_raw(part, langs_=None):
@@ -345,13 +438,23 @@ def check_folder(lang, folder=None):
         errs.append('slugs.json missing')
     else:
         sl = json.load(open(s, encoding='utf-8'))
-        if set(sl) != set(SLUG_KEYS):
-            errs.append(f'slugs.json keys {sorted(sl)} != {sorted(SLUG_KEYS)}')
+        if not set(SLUG_KEYS) <= set(sl) <= set(SLUG_KEYS) | set(SECTION_SLUGS):
+            errs.append(f'slugs.json keys {sorted(sl)}: need {sorted(SLUG_KEYS)}, may add {sorted(SECTION_SLUGS)}')
         for k, v in sl.items():
             if k in SLUG_PATHS and not re.fullmatch(r'/[a-z]{2,3}/([a-z0-9]+(-[a-z0-9]+)*/)*', v or ''):
                 errs.append(f'slugs.{k}: "{v}" is not /<lang>/…/ in ASCII lowercase')
             if k not in SLUG_PATHS and not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v or ''):
                 errs.append(f'slugs.{k}: "{v}" is not one ASCII segment')
+    t = json.load(open(folder / 'texts.json', encoding='utf-8')) if (folder / 'texts.json').exists() else {}
+    for sec in DATA_TEXTS:   # LANG0: texts.json → pay / routes, key = path of the multilingual node
+        have = t.get(sec) or {}
+        nodes = data_nodes(sec)
+        miss = [k for k in nodes if not str(have.get(k) or '').strip()]
+        if miss:
+            errs.append(f'texts.{sec}: {len(miss)} of {len(nodes)} missing, e.g. {miss[:3]}')
+        extra = [k for k in have if k not in nodes and not re.fullmatch(r'(tolls\.[A-Z]{2}|apps\[\d+\])\.note', k)]
+        if extra:
+            errs.append(f'texts.{sec}: unknown keys {extra[:3]}')
     for name, cols in (('countries.csv', ['cc', 'name', 'slug', 'in_phrase', 'note']),
                        ('cities.csv', ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note'])):
         p = folder / name
@@ -414,7 +517,10 @@ def write_pseudo(dest):
         pass
     en_texts = {'about_data': json.load(open(WORLD / 'about_data.json', encoding='utf-8'))['en'],
                 'download': json.load(open(WORLD / 'download.json', encoding='utf-8'))['en']}
-    json.dump(_pseudo_tree(en_texts), open(d / 'texts.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    en_texts = _pseudo_tree(en_texts)
+    for sec in DATA_TEXTS:   # pay: every text; routes: every second place name (the rest tests the English fallback)
+        en_texts[sec] = {k: pseudo_text(v['en']) for i, (k, v) in enumerate(data_nodes(sec).items()) if sec == 'pay' or i % 2 == 0}
+    json.dump(en_texts, open(d / 'texts.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     return d
 
 
@@ -442,11 +548,120 @@ def texts(lang, name):
     return t[name]
 
 
+# ------------------------------------------------------------------ texts of the data files (LANG0)
+DATA_TEXTS = {'pay': 'pay.json', 'routes': 'routes.json'}
+NAME_SECTIONS = ('routes',)    # sections that hold place names: a missing one falls back to English and is counted
+
+
+@lru_cache(maxsize=None)
+def data_nodes(section):
+    """{path: node} of the multilingual nodes ({en, sr, ru}) of pay.json / routes.json; the path is the key of the
+    section in i18n/<code>/texts.json: afir.points[0], routes[3].stops[1].city (LANG_pool, LANG0 step 2)."""
+    out = {}
+
+    def walk(x, path):
+        if isinstance(x, dict):
+            if all(isinstance(x.get(l), str) for l in BASE):
+                out[path] = x
+                return
+            for k, v in x.items():
+                walk(v, f'{path}.{k}' if path else k)
+        elif isinstance(x, list):
+            for i, v in enumerate(x):
+                walk(v, f'{path}[{i}]')
+    walk(json.load(open(WORLD / DATA_TEXTS[section], encoding='utf-8')), '')
+    return out
+
+
+@lru_cache(maxsize=None)
+def _texts_file(lang):
+    p = i18n_dir(lang) / 'texts.json'
+    return json.load(open(p, encoding='utf-8')) if p.exists() else {}
+
+
+def data_text(lang, section, path, node=None):
+    """The text of a multilingual node of pay.json / routes.json in any language. en/sr/ru: the node itself; others:
+    texts.json[section][path]. A missing place name → English (counted); a missing text → build stops (production) or
+    English with the [EN] mark (preview, counted)."""
+    node = node if node is not None else data_nodes(section)[path]
+    if lang in BASE:
+        return node[lang]
+    v = (_texts_file(lang).get(section) or {}).get(path)
+    if isinstance(v, str) and v.strip():
+        return v
+    if section in NAME_SECTIONS:
+        fallback(lang, section + '_name', path)
+        return node['en']
+    if not preview():
+        raise SystemExit(f'world_i18n: {i18n_dir(lang) / "texts.json"} has no "{section}" → "{path}" (language {lang} is enabled)')
+    missing(lang, 'texts.' + section, path)
+    return MARK + node['en']
+
+
+def data_note(lang, section, path):
+    """Optional short notes of pay.json (note_sr / note_ru of tolls and apps) for another language: texts.json
+    [section][path] (path like tolls.HR.note or apps[2].note), '' when not translated — as SR/RU without a note."""
+    return ((_texts_file(lang).get(section) or {}).get(path) or '').strip()
+
+
+# ------------------------------------------------------------------ language menu (LANG0 step 4)
+def _fold(s):
+    import unicodedata
+    return unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode().lower() or s.lower()
+
+
+def lang_menu(urls, l, ups=()):
+    """Entries of the language menu of a page with more than three languages, or None (en/sr/ru keep the old menu):
+    every enabled language by its native name, A–Z (Latin, then Cyrillic and Greek); a language without this page leads to
+    the nearest page that has it (ups: {lang: url} dicts, nearest first: country → hub → home), marked up=True.
+    The hint strip (world-lang.js) uses `hint`, the sentence of each language about itself."""
+    ls = langs()
+    if len(ls) <= 3:
+        return None
+    hints = load('shell')
+    out = []
+    for x in ls:
+        href, up = urls.get(x), False
+        if not href:
+            up = True
+            href = next((u[x] for u in ups if u and u.get(x)), None) or slugs(x)['hub']
+        out.append(dict(code=x, href=href, label=label(x), hl=reg(x)['hreflang'], html=reg(x)['html'], on=x == l, up=up,
+                        # a preview stand-in ("[EN] This page is also available in English") would mislead: no strip then
+                        hint='' if str(hints[x].get('lang_hint') or '').startswith(MARK) else hints[x].get('lang_hint') or '',
+                        close=hints[l].get('lang_hint_close') or ''))
+    out.sort(key=lambda e: (0 if reg(e['code']).get('script', 'latn') == 'latn' else 1, _fold(e['label'])))
+    return out
+
+
+_ASSETS = {}
+
+
+def lang_assets(out):
+    """LANG0: copies static/com/world-lang.js, world-lang.css and world-grek.css into <out>/assets/world/ once per build and
+    returns their versioned URLs {js, css, grek}; None while only en/sr/ru are built (their pages stay as they were)."""
+    if len(langs()) <= 3:
+        return None
+    key = str(out)
+    if key not in _ASSETS:
+        import hashlib
+        import shutil
+        a = Path(out) / 'assets' / 'world'
+        a.mkdir(parents=True, exist_ok=True)
+        v = {}
+        for f in ('world-lang.js', 'world-lang.css', 'world-grek.css'):
+            shutil.copy2(ROOT / 'static' / 'com' / f, a / f)
+            v[f] = hashlib.sha1((a / f).read_bytes()).hexdigest()[:10]
+        _ASSETS[key] = {'js': f"/assets/world/world-lang.js?v={v['world-lang.js']}", 'css': f"/assets/world/world-lang.css?v={v['world-lang.css']}",
+                        'grek': f"/assets/world/world-grek.css?v={v['world-grek.css']}"}
+    return _ASSETS[key]
+
+
 # ------------------------------------------------------------------ registry entries from Babel
-L_CODES = 'de fr es it nl pl pt sv nb da fi cs sk hu ro bg el tr uk sl hr bs mk sq'.split()
+L_CODES = 'de fr es it nl pl pt sv nb da fi cs sk hu ro bg el tr uk sl hr bs mk sq et lt lv'.split()
 OG = {'de': 'de_DE', 'fr': 'fr_FR', 'es': 'es_ES', 'it': 'it_IT', 'nl': 'nl_NL', 'pl': 'pl_PL', 'pt': 'pt_PT', 'sv': 'sv_SE',
       'nb': 'nb_NO', 'da': 'da_DK', 'fi': 'fi_FI', 'cs': 'cs_CZ', 'sk': 'sk_SK', 'hu': 'hu_HU', 'ro': 'ro_RO', 'bg': 'bg_BG',
-      'el': 'el_GR', 'tr': 'tr_TR', 'uk': 'uk_UA', 'sl': 'sl_SI', 'hr': 'hr_HR', 'bs': 'bs_BA', 'mk': 'mk_MK', 'sq': 'sq_AL'}
+      'el': 'el_GR', 'tr': 'tr_TR', 'uk': 'uk_UA', 'sl': 'sl_SI', 'hr': 'hr_HR', 'bs': 'bs_BA', 'mk': 'mk_MK', 'sq': 'sq_AL',
+      'et': 'et_EE', 'lt': 'lt_LT', 'lv': 'lv_LV'}
 
 
 def babel_entry(code):
@@ -468,7 +683,24 @@ def babel_entry(code):
 def selftest():
     errs = []
     if tuple(config().get('langs_enabled') or ()) != BASE:
-        errs.append('pushed config must enable exactly en, sr, ru until G8')
+        errs.append('pushed config must enable exactly en, sr, ru until "релиз языков" (LANG_pool, LANGI step 6)')
+    pv = config().get('langs_enabled_preview') or []
+    if pv[:1] != ['en'] or any(x not in registry() for x in pv) or len(set(pv)) != len(pv):
+        errs.append('langs_enabled_preview: English first, registry languages only, no repeats')
+    mc = config().get('market_countries') or {}
+    for code in L_CODES:
+        if not mc.get(code) or any(not re.fullmatch(r'[A-Z]{2}', c) for c in mc[code]):
+            errs.append(f'market_countries: {code} needs ISO2 countries')
+    wv = sum(waves().values(), [])
+    if sorted(wv) != sorted(L_CODES):
+        errs.append(f'waves must hold every extra language once: {sorted(set(L_CODES) ^ set(wv))}')
+    for code in L_CODES:
+        if code in registry():
+            r = registry()[code]
+            if r.get('slugs'):
+                errs.append(f'{code}: slugs belong in i18n/{code}/slugs.json')
+            if not r.get('label') or not r.get('intl'):
+                errs.append(f'{code}: label/intl')
     for l in BASE:
         if set(slugs(l)) < set(SLUG_KEYS):
             errs.append(f'slugs of {l}')
@@ -511,6 +743,20 @@ if __name__ == '__main__':
         sys.exit(1 if e else 0)
     elif cmd == 'pseudo':
         print(write_pseudo(sys.argv[2]))
+    elif cmd == 'world-paths':   # LANG0: top folders of the world layer in every registry language (blokvolt-com deploy.yml)
+        ps = set()
+        for l in registry():
+            if l == 'en':
+                continue
+            sl = slugs(l) if (l in BASE or (WORLD / 'i18n' / l / 'slugs.json').exists()) else {}
+            for k in SLUG_PATHS:
+                v = sl.get(k)
+                if v:
+                    seg = v.strip('/').split('/')
+                    # a language with its own folder (/de/, /sr/) goes whole; a language that shares a folder with a regional
+                    # section (/hr/, /mk/) goes by its world folders only (/hr/svijet/, /hr/karta-svijeta/ …)
+                    ps.add('/' + seg[0] + '/' if seg[0] not in ('hr', 'mk', 'ba', 'me', 'al', 'xk', 'si') else '/' + '/'.join(seg[:2]) + '/')
+        print(' '.join(f'--exclude={x}' for x in sorted(ps)))
     elif cmd == 'registry':
         print(json.dumps({c: babel_entry(c) for c in L_CODES}, ensure_ascii=False, indent=1))
     else:

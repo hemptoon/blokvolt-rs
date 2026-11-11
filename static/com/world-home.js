@@ -2,14 +2,16 @@
    count-up and section reveal (both off with prefers-reduced-motion), "Near me" (asks for the location only on the press),
    and the first screen: the picture of the map is swapped in place for the live map on the first tap, click or key press —
    world-hero-map.js (MapLibre + pmtiles) is imported only then, so it is not part of the start of the page.
-   No tracking, no cookies, no requests while typing (the index loads once, on the first focus). */
+   No tracking, no cookies, no requests while typing (the index loads once, on the first focus).
+   LANG0: another language loads search-index-<code>.json (doc.langs = en, sr, ru, <code>; item[8] = the name in that
+   language) and formats numbers with cfg.intl. */
 (function () {
   const d = document, H = d.documentElement;
   const cfgEl = d.getElementById('wh-cfg');
   const cfg = cfgEl ? JSON.parse(cfgEl.textContent) : {};
   const REG = H.getAttribute('data-hr') || 'eu';
   const RM = H.classList.contains('wh-rm');
-  const LOC = { en: 'en-GB', sr: 'sr-Latn-RS', ru: 'ru-RU' }[cfg.lang] || 'en-GB';
+  const LOC = cfg.intl || { en: 'en-GB', sr: 'sr-Latn-RS', ru: 'ru-RU' }[cfg.lang] || 'en-GB';
   const VIEW = { na: '#3.2/41/-98', ap: '#2.6/12/112' };
   const nf = new Intl.NumberFormat(LOC);
   const done = new WeakSet();
@@ -21,19 +23,22 @@
   const box = d.querySelector('.wh-search');
   if (box) {
     const q = box.querySelector('input'), out = box.querySelector('ul');
-    const L = { en: 0, sr: 1, ru: 2 }[box.dataset.lang] || 0;
+    let L = { en: 0, sr: 1, ru: 2 }[box.dataset.lang] || 0;
     let rows = null, loading = null, sel = -1;
+    const nm = r => (L > 2 ? r[8] || r[2] : r[2 + L]);
     const fold = s => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
       .replace(/đ/g, 'dj').replace(/ß/g, 'ss').replace(/ł/g, 'l').replace(/ø/g, 'o').replace(/æ/g, 'ae');
     const load = () => {
       if (!loading) loading = fetch(box.dataset.idx).then(r => r.json()).then(j => {
-        rows = j.items.map(r => ({ r, u: r[6][L] || r[6][0], k: [r[2], r[3], r[4], ...(r[5] || [])].map(fold) }));
+        const i = (j.langs || []).indexOf(box.dataset.lang);
+        if (i > 2) L = i;
+        rows = j.items.map(r => ({ r, u: r[6][L] || r[6][0], k: [r[8], r[2], r[3], r[4], ...(r[5] || [])].map(fold) }));
         return rows;
       });
       return loading;
     };
     const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-    const country = cc => { const c = rows.find(x => x.r[0] !== 't' && x.r[1] === cc); return c ? c.r[2 + L] : cc; };
+    const country = cc => { const c = rows.find(x => x.r[0] !== 't' && x.r[1] === cc); return c ? nm(c.r) : cc; };
     const show = () => {
       const t = fold(q.value.trim());
       sel = -1;
@@ -44,10 +49,10 @@
         for (const k of x.k) { if (!k) continue; if (k.startsWith(t)) s = Math.max(s, 2); else if (k.includes(' ' + t) || k.includes('-' + t)) s = Math.max(s, 1); }
         if (s >= 0 && x.u) hit.push([s + (x.r[0] !== 't' ? 1 : 0) + (x.r[7] || 0) / 1e6, x]);
       }
-      hit.sort((a, b) => b[0] - a[0] || a[1].r[2 + L].localeCompare(b[1].r[2 + L]));
+      hit.sort((a, b) => b[0] - a[0] || nm(a[1].r).localeCompare(nm(b[1].r)));
       q.setAttribute('aria-expanded', 'true');
       if (!hit.length) { out.innerHTML = `<li><span>${esc(box.dataset.none)} <a href="${box.dataset.map}">→</a></span></li>`; return; }
-      out.innerHTML = hit.slice(0, 8).map(([, x]) => `<li><a href="${x.u}" translate="no">${esc(x.r[2 + L])}` +
+      out.innerHTML = hit.slice(0, 8).map(([, x]) => `<li><a href="${x.u}" translate="no">${esc(nm(x.r))}` +
         (x.r[0] === 't' ? `<small>${esc(country(x.r[1]))}</small>` : '') + '</a></li>').join('');
     };
     const mark = () => out.querySelectorAll('a').forEach((a, i) => a.setAttribute('aria-selected', String(i === sel)));

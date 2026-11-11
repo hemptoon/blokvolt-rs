@@ -16,7 +16,7 @@ const HAD_HASH = /^#\d/.test(location.hash);
 const cfg = JSON.parse(d.getElementById('wm-cfg').textContent);
 const T = JSON.parse(d.getElementById('wm-i18n').textContent);
 const LANG = cfg.lang;
-const LOC = LANG === 'sr' ? 'sr-Latn-RS' : LANG === 'ru' ? 'ru-RU' : 'en-GB';
+const LOC = cfg.intl || (LANG === 'sr' ? 'sr-Latn-RS' : LANG === 'ru' ? 'ru-RU' : 'en-GB');   // LANG0: cfg.intl of the other languages
 const t = (k, v) => {
   let s = T[k] == null ? k : T[k];
   if (v) for (const x in v) s = s.split('{' + x + '}').join(v[x]);
@@ -189,6 +189,7 @@ const restricted = ['==', ['get', 'a'], 1];
 function labelName(l) {
   if (l === 'en') return ['coalesce', ['get', 'name:en'], ['get', 'name_en'], ['get', 'name:latin'], ['get', 'name']];
   if (l === 'sr') return ['coalesce', ['get', 'name:sr-Latn'], ['get', 'name:hr'], ['get', 'name:latin'], ['get', 'name']];
+  if (l === 'nb') return ['coalesce', ['get', 'name:nb'], ['get', 'name:no'], ['get', 'name:latin'], ['get', 'name']];
   return ['coalesce', ['get', 'name:' + l], ['get', 'name:latin'], ['get', 'name']];
 }
 function styleLabels() {
@@ -408,16 +409,16 @@ const country = cc => { try { return (REGION && cc && REGION.of(cc)) || cc || ''
 function fmtDate(iso) {
   const [y, m, dd] = String(iso || '').split('-');
   if (!y) return '';
-  if (LANG === 'en') return new Date(Date.UTC(+y, +m - 1, +dd || 1)).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  if (LANG === 'en' || cfg.intl) return new Date(Date.UTC(+y, +m - 1, +dd || 1)).toLocaleDateString(cfg.intl || 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
   return (dd ? dd + '.' : '') + m + '.' + y + (LANG === 'sr' ? '.' : '');
 }
 const fmtMonth = ym => {
   if (!ym) return '';
   const [y, m] = ym.split('-');
-  if (LANG === 'en') return new Date(Date.UTC(+y, +m - 1, 1)).toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+  if (LANG === 'en' || cfg.intl) return new Date(Date.UTC(+y, +m - 1, 1)).toLocaleDateString(cfg.intl || 'en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' });
   return m + '.' + y + (LANG === 'sr' ? '.' : '');
 };
-const KW = LANG === 'ru' ? 'кВт' : 'kW';
+const KW = LANG === 'ru' || LANG === 'uk' || LANG === 'bg' ? 'кВт' : 'kW';
 const CONN = { TYPE2: 'Type 2', TYPE1: 'Type 1', CCS2: 'CCS2', CCS1: 'CCS1', CCS: 'CCS', CHADEMO: 'CHAdeMO', NACS_TESLA: 'NACS (Tesla)', TESLA: 'Tesla',
   SCHUKO: 'Schuko', NEMA: 'NEMA', GBT: 'GB/T', GB_T: 'GB/T', CEE: 'CEE', TYPE3: 'Type 3' };
 const connName = c => CONN[String(c).toUpperCase()] || (/^other$/i.test(c) ? t('conn_other') : String(c));

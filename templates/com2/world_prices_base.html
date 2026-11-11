@@ -2,4 +2,4 @@
 {% import 'world_prices__m.html' as pm with context %}
 {% block head %}{{ super() }}<link rel="stylesheet" href="/assets/world/world-prices.css?v={{ WP_VER['world-prices.css'] }}">
 {% endblock %}
-{% block scripts %}<script>window.WP_FX={usd:{{ usd }},lang:"{{ l }}"};</script><script src="/assets/world/world-prices.js?v={{ WP_VER['world-prices.js'] }}" defer></script>{% endblock %}
+{% block scripts %}<script>window.WP_FX={usd:{{ usd }},lang:"{{ l }}"{% if FMT %},dec:"{{ FMT.dec }}",thou:"{{ FMT.thou }}"{% endif %}{% if cur_loc %},def:"loc"{% endif %}};</script><script src="/assets/world/world-prices.js?v={{ WP_VER['world-prices.js'] }}" defer></script>{% endblock %}

@@ -16,16 +16,18 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 WORLD = ROOT / 'content' / 'world'
-LANGS = ('en', 'sr', 'ru')
-URLS = {'en': '/data-for-business/', 'sr': '/sr/podaci-za-firme/', 'ru': '/ru/dannye-dlya-biznesa/'}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import world_i18n as I   # noqa: E402  LANG0: languages and section paths from the registry
+LANGS = I.langs()
+URLS = {l: I.slugs(l)['b2b'] for l in LANGS}   # /data-for-business/ /sr/podaci-za-firme/ /ru/dannye-dlya-biznesa/ /de/…
 
 
 def load_strings():
     raw = json.load(open(WORLD / 'strings_b2b.json', encoding='utf-8'))
-    miss = [f'{k}.{l}' for k, v in raw.items() for l in LANGS if not v.get(l)]
+    miss = [f'{k}.{l}' for k, v in raw.items() for l in I.BASE if l in LANGS and not v.get(l)]
     if miss:
         raise SystemExit('world_b2b: missing strings ' + ', '.join(miss))
-    return {l: {k: v[l] for k, v in raw.items()} for l in LANGS}
+    return I.load('b2b', LANGS)   # LANG0: other languages from i18n/<code>/strings_b2b.json (stops on a missing key)
 
 
 def footer_link(l):
@@ -60,7 +62,7 @@ def run(G, c):
         W.write_page(c, l, 'world_b2b.html', URLS[l], URLS, dict(
             title=t['title'].replace(' | BlokVolt', ''), h1=t['h1'], description=t['desc'], T=t, crumbs=None, kick=None,
             jsonld=None, api=api, js=f'/assets/world/world-b2b.js?v={ver}', download=dl[l]), 'b2b')
-    print(f"world b2b: {len(LANGS)} pages ({', '.join(URLS.values())}), form {'live: ' + api if api else 'demo'}")
+    print(f"world b2b: {len(LANGS)} pages ({', '.join(list(URLS.values())[:3])} …), form {'live: ' + api if api else 'demo'}")
 
 
 def selftest():
@@ -69,6 +71,8 @@ def selftest():
     for l in LANGS:
         if set(T[l]) != set(T['en']):
             print('FAIL keys', l); ok = False
+        if l not in I.BASE:
+            continue   # the word rules below are for en/sr/ru; other languages: check.py of the L2 sessions
         for k, v in T[l].items():
             if re.search(r'\d', v) and k not in ('title', 'lic_p'):
                 print('FAIL digit (no numbers on this page)', l, k); ok = False

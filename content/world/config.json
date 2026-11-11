@@ -8,6 +8,172 @@
   "sr",
   "ru"
  ],
+ "langs_enabled_preview": [
+  "en",
+  "sr",
+  "ru",
+  "de",
+  "fr",
+  "nl",
+  "es",
+  "it",
+  "pl",
+  "sv",
+  "nb",
+  "da",
+  "fi",
+  "pt",
+  "el",
+  "cs",
+  "sk",
+  "hu",
+  "ro",
+  "bg",
+  "sl",
+  "hr",
+  "bs",
+  "mk",
+  "sq",
+  "uk",
+  "tr",
+  "lt",
+  "lv",
+  "et"
+ ],
+ "waves": {
+  "1": [
+   "de",
+   "fr",
+   "nl",
+   "es",
+   "it",
+   "pl",
+   "sv",
+   "nb",
+   "da",
+   "fi",
+   "pt"
+  ],
+  "2": [
+   "el",
+   "cs",
+   "sk",
+   "hu",
+   "ro",
+   "bg",
+   "sl",
+   "hr",
+   "bs",
+   "mk",
+   "sq",
+   "uk",
+   "tr",
+   "lt",
+   "lv",
+   "et"
+  ]
+ },
+ "market_countries": {
+  "de": [
+   "DE",
+   "AT",
+   "CH",
+   "LI",
+   "LU"
+  ],
+  "fr": [
+   "FR",
+   "BE",
+   "CH",
+   "LU",
+   "MC"
+  ],
+  "nl": [
+   "NL",
+   "BE"
+  ],
+  "es": [
+   "ES",
+   "AD"
+  ],
+  "it": [
+   "IT",
+   "CH",
+   "SM",
+   "VA"
+  ],
+  "pl": [
+   "PL"
+  ],
+  "sv": [
+   "SE",
+   "FI"
+  ],
+  "nb": [
+   "NO"
+  ],
+  "da": [
+   "DK"
+  ],
+  "fi": [
+   "FI"
+  ],
+  "pt": [
+   "PT"
+  ],
+  "el": [
+   "GR",
+   "CY"
+  ],
+  "cs": [
+   "CZ"
+  ],
+  "sk": [
+   "SK"
+  ],
+  "hu": [
+   "HU"
+  ],
+  "ro": [
+   "RO",
+   "MD"
+  ],
+  "bg": [
+   "BG"
+  ],
+  "sl": [
+   "SI"
+  ],
+  "hr": [
+   "HR"
+  ],
+  "bs": [
+   "BA"
+  ],
+  "mk": [
+   "MK"
+  ],
+  "sq": [
+   "AL",
+   "XK"
+  ],
+  "uk": [
+   "UA"
+  ],
+  "tr": [
+   "TR"
+  ],
+  "lt": [
+   "LT"
+  ],
+  "lv": [
+   "LV"
+  ],
+  "et": [
+   "EE"
+  ]
+ },
+ "preview_pages_cap": 1000,
  "langs": {
   "en": {
    "hreflang": "en",
@@ -51,7 +217,14 @@
     "prices": "/charging-prices/",
     "shell_about": "/about/",
     "sources": "/sources/",
-    "methodology": "/methodology/"
+    "methodology": "/methodology/",
+    "pay": "/how-to-pay/",
+    "routes": "/routes/",
+    "press": "/press/",
+    "b2b": "/data-for-business/",
+    "embed": "/embed/map/",
+    "map_conf": "/map-for-your-site/",
+    "developers": "/developers/"
    }
   },
   "sr": {
@@ -98,7 +271,14 @@
     "prices": "/sr/cene-punjenja/",
     "shell_about": "/sr/o-sajtu/",
     "sources": "/sr/izvori/",
-    "methodology": "/sr/metodologija/"
+    "methodology": "/sr/metodologija/",
+    "pay": "/sr/kako-platiti/",
+    "routes": "/sr/rute/",
+    "press": "/sr/za-medije/",
+    "b2b": "/sr/podaci-za-firme/",
+    "embed": "/sr/embed/mapa/",
+    "map_conf": "/sr/mapa-za-vas-sajt/",
+    "developers": "/sr/za-programere/"
    }
   },
   "ru": {
@@ -145,7 +325,14 @@
     "prices": "/ru/tseny-zaryadki/",
     "shell_about": "/ru/o-sajte/",
     "sources": "/ru/istochniki/",
-    "methodology": "/ru/metodologiya/"
+    "methodology": "/ru/metodologiya/",
+    "pay": "/ru/kak-platit/",
+    "routes": "/ru/marshruty/",
+    "press": "/ru/dlya-smi/",
+    "b2b": "/ru/dannye-dlya-biznesa/",
+    "embed": "/ru/embed/karta/",
+    "map_conf": "/ru/karta-dlya-sajta/",
+    "developers": "/ru/razrabotchikam/"
    }
   },
   "de": {
@@ -931,6 +1118,105 @@
     "tetor",
     "nëntor",
     "dhjetor"
+   ]
+  },
+  "et": {
+   "hreflang": "et",
+   "html": "et",
+   "og": "et_EE",
+   "code": "ET",
+   "label": "Eesti",
+   "script": "latn",
+   "dir": "ltr",
+   "dec": ",",
+   "thou": " ",
+   "pct": "{x}%",
+   "intl": "et-EE",
+   "date": "dd.MM.yy",
+   "plural": [
+    "one",
+    "other"
+   ],
+   "months": [
+    "jaanuar",
+    "veebruar",
+    "märts",
+    "aprill",
+    "mai",
+    "juuni",
+    "juuli",
+    "august",
+    "september",
+    "oktoober",
+    "november",
+    "detsember"
+   ]
+  },
+  "lt": {
+   "hreflang": "lt",
+   "html": "lt",
+   "og": "lt_LT",
+   "code": "LT",
+   "label": "Lietuvių",
+   "script": "latn",
+   "dir": "ltr",
+   "dec": ",",
+   "thou": " ",
+   "pct": "{x} %",
+   "intl": "lt-LT",
+   "date": "y-MM-dd",
+   "plural": [
+    "few",
+    "many",
+    "one",
+    "other"
+   ],
+   "months": [
+    "sausis",
+    "vasaris",
+    "kovas",
+    "balandis",
+    "gegužė",
+    "birželis",
+    "liepa",
+    "rugpjūtis",
+    "rugsėjis",
+    "spalis",
+    "lapkritis",
+    "gruodis"
+   ]
+  },
+  "lv": {
+   "hreflang": "lv",
+   "html": "lv",
+   "og": "lv_LV",
+   "code": "LV",
+   "label": "Latviešu",
+   "script": "latn",
+   "dir": "ltr",
+   "dec": ",",
+   "thou": " ",
+   "pct": "{x}%",
+   "intl": "lv-LV",
+   "date": "dd.MM.yy",
+   "plural": [
+    "one",
+    "other",
+    "zero"
+   ],
+   "months": [
+    "janvāris",
+    "februāris",
+    "marts",
+    "aprīlis",
+    "maijs",
+    "jūnijs",
+    "jūlijs",
+    "augusts",
+    "septembris",
+    "oktobris",
+    "novembris",
+    "decembris"
    ]
   }
  },

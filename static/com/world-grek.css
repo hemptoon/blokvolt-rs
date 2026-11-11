@@ -1,0 +1,4 @@
+/* LANG0: Onest has no Greek letters. On Greek pages only, the Greek range of the 'Onest' family comes from Inter (variable,
+   SIL Open Font License 1.1, © The Inter Project Authors; scripts/fetch_fonts.sh copies it from @fontsource-variable/inter).
+   unicode-range: browsers download it only when a Greek letter is on the page; Latin and digits stay Onest. */
+@font-face{font-family:'Onest';font-style:normal;font-display:swap;font-weight:100 900;src:url(/assets/fonts/inter-greek-wght-normal.woff2) format('woff2');unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}

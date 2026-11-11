@@ -274,14 +274,33 @@ class Site:
         self.city_pages = {(p['cc'], p['gid']) for p in pages if p['type'] == 'city'}
         self.net_pages = {(p['cc'], p['net']) for p in pages if p['type'] == 'network'}
         self.gnet_pages = {p['net'] for p in pages if p['type'] == 'network_global'}
-        # v2: SR pages exist only for Europe (bvcom §0); every page JSON names its languages
-        self.cc_langs = {p['cc']: I.page_langs(p.get('langs')) for p in pages if p['type'] == 'country'}
+        # v2: SR pages exist only for Europe (bvcom §0); every page JSON names its languages.
+        # LANG0: an extra language gets the hub and every country, city and network pages only in its market_countries;
+        # a preview build keeps at most I.pages_cap() city + network pages per language (the largest first)
+        self.allowed = {p['key']: I.page_langs(p.get('langs') or p['data'].get('langs'), p['type'], p.get('cc')) for p in pages}
+        self.capped = {}
+        cap = I.pages_cap()
+        if cap:
+            for l in LANGS:
+                rank = sorted((p for p in pages if p['type'] in ('city', 'network') and l in self.allowed[p['key']]),
+                              key=lambda p: (-(p.get('n') or 0), p['key']))
+                for p in rank[cap:]:
+                    self.allowed[p['key']] = tuple(x for x in self.allowed[p['key']] if x != l)
+                self.capped[l] = max(0, len(rank) - cap)
+        self.cc_langs = {p['cc']: self.allowed[p['key']] for p in pages if p['type'] == 'country'}
 
     def langs(self, p):
-        return I.page_langs(p.get('langs') or p['data'].get('langs'))
+        return self.allowed[p['key']]
 
     def has(self, cc, l):
         return l in self.cc_langs.get(cc, LANGS)
+
+    def has_city(self, cc, gid, l):
+        """LANG0: a city page exists in language l (market countries of the language, preview cap)."""
+        return l in self.allowed.get(f't:{cc}:{gid}', ())
+
+    def has_net(self, cc, net, l):
+        return l in self.allowed.get(f'n:{cc}:{net}', ())
 
     def hub(self, l):
         return L[l]['hub']
@@ -410,6 +429,9 @@ class Ctx:
 
     # text helpers
     def t(self, l, key, **kw):
+        # LANG0: the names of the page (country/city/network and their "in …" forms) are always at hand, so a translation may
+        # use {country_u} where English has a number in {country} (check_folder allows the case variants of a group)
+        kw = dict(getattr(self, 'pk', None) or {}, **kw)
         for a, b in (('country_u', 'country_v'), ('city_u', 'city_v')):   # sr "u …" and ru "в …" are one slot
             if a in kw and b not in kw:
                 kw[b] = kw[a]
@@ -444,16 +466,24 @@ def switch(c, urls, l):
     return [(x, urls[x], c.S[x]['lang_label'] if x in I.BASE else I.label(x), L[x]['hreflang']) for x in LANGS if x in urls]
 
 
-def write_page(c, l, tpl, url, urls, ctx, ptype, robots=None, indexable=True):
+def lang_js(c):
+    """LANG0: menu for many languages, hint strip and Greek face (world_i18n.lang_assets); None with only en/sr/ru."""
+    return I.lang_assets(c.out)
+
+
+def write_page(c, l, tpl, url, urls, ctx, ptype, robots=None, indexable=True, ups=None):
+    """ups (LANG0): {lang: url} dicts of the pages above this one, nearest first — the language menu leads a language
+    without this page there (country → hub); the hub of the language is always the last step."""
     G = c.G
     S = dict(c.S[l])
-    alts = [(L[x]['hreflang'], G.SITE + urls[x]) for x in LANGS if x in urls] + [('x-default', G.SITE + urls['en'])]
+    alts = [(L[x]['hreflang'], G.SITE + urls[x]) for x in LANGS if x in urls] + ([('x-default', G.SITE + urls['en'])] if 'en' in urls else [])
     if not c.public:
         robots, indexable = 'noindex,nofollow', False
     base = dict(SITE=G.SITE, RS=G.RS, EMAIL=G.EMAIL, CHECKED=fmt_date(c.date), CHECKED_ISO=c.date, canon=url, path=url,
                 LOC=L[l], S=S, NAV=nav(c, l), SWITCH=switch(c, urls, l), home=c.site.hub(l), alts=alts,
                 COUNTRIES=G.countries, LOCALS=c.local_hubs, C={'checked': fmt_date(c.lastmod(url))},
-                robots=robots, W=c, l=l, section=ptype, PAGES={}, WORLD_FT=__import__('world_shell').footer(l))
+                robots=robots, W=c, l=l, section=ptype, PAGES={}, WORLD_FT=__import__('world_shell').footer(l),
+                LANGMENU=I.lang_menu(urls, l, list(ups or []) + [{x: c.site.hub(x) for x in LANGS}]), LANGJS=lang_js(c))
     base.update(ctx)
     base['title'] = seo_title(base['title'])
     html = G.env.get_template(tpl).render(**base)
@@ -512,14 +542,17 @@ def render_country(c, p, urls, l):
     d, cc, S, site, N = p['data'], p['cc'], c.S[l], c.site, c.N
     cname = N.country(cc, l)
     kw = dict(country=cname, country_u=N.country_u(cc, l), country_v=N.country_u(cc, l))
+    c.pk = dict(kw, country_name=cname)
     title = c.t(l, 't_country', **kw)
     b = common_blocks(c, l, d)
-    cities = [dict(name=N.city_name(d['city_info'][str(g)], l), url=site.city(cc, g, l), n=c.n(l, n)) for g, n in d['city_pages']]
-    others = [dict(name=N.city_name(d['city_info'][str(g)], l), url=c.map_url(l, {'zemlja': cc, 'grad': g}), n=c.n(l, n)) for g, n in d['cities_other']]
-    nets = [dict(name=N.net_name(net, l), url=site.net(cc, net, l) if (cc, net) in site.net_pages else c.map_url(l, {'zemlja': cc, 'mreza': N.net_slug(net)}),
-                 page=(cc, net) in site.net_pages, n=c.n(l, n)) for net, n in d['stats']['nets']]
+    # LANG0: a city or network without a page in this language (not a market country, preview cap) → the map
+    cities = [dict(name=N.city_name(d['city_info'][str(g)], l), url=site.city(cc, g, l), n=c.n(l, n)) for g, n in d['city_pages'] if site.has_city(cc, g, l)]
+    others = [dict(name=N.city_name(d['city_info'][str(g)], l), url=c.map_url(l, {'zemlja': cc, 'grad': g}), n=c.n(l, n))
+              for g, n in [x for x in d['city_pages'] if not site.has_city(cc, x[0], l)] + list(d['cities_other'])]
+    nets = [dict(name=N.net_name(net, l), url=site.net(cc, net, l) if site.has_net(cc, net, l) else c.map_url(l, {'zemlja': cc, 'mreza': N.net_slug(net)}),
+                 page=site.has_net(cc, net, l), n=c.n(l, n)) for net, n in d['stats']['nets']]
     for net, n in d['net_pages']:   # network pages outside the top list are still linked
-        if net not in {x for x, _ in d['stats']['nets']}:
+        if net not in {x for x, _ in d['stats']['nets']} and site.has_net(cc, net, l):
             nets.append(dict(name=N.net_name(net, l), url=site.net(cc, net, l), page=True, n=c.n(l, n)))
     regional = next((x for x in c.G.countries if x['code'] == cc), None)
     dl = c.G.SITE + site.download(l)
@@ -545,6 +578,7 @@ def render_city(c, p, urls, l, dup_titles):
     cname, city = N.country(cc, l), N.city_name(info, l)
     kw = dict(country=cname, country_u=N.country_u(cc, l), country_v=N.country_u(cc, l), city=city,
               city_u=N.city_u(info, l, c.S), city_v=N.city_u(info, l, c.S))
+    c.pk = dict(kw, country_name=cname)
     key = 't_city_cc' if (l, p['key']) in dup_titles else 't_city'
     title = c.t(l, key, **kw)
     near_other = [g for g, _ in d['near'] if N.city_name(d['near_info'][str(g)], l) != city]
@@ -559,9 +593,10 @@ def render_city(c, p, urls, l, dup_titles):
                          for x in (conn or '').split(', ') if x)   # NACS_TESLA×16 -> Tesla (NACS)×16
         fast.append(dict(name=name, net=N.net_name(net, l) if net else None, kw=c.n(l, kwv) if kwv else '—', conn=conn or '—',
                          lc=fmt_month(lc), url=c.map_url(l, {'id': pid})))
-    near = [dict(name=N.city_name(d['near_info'][str(g)], l), url=site.city(cc, g, l), km=c.t(l, 'km_away', km=c.n(l, km, 1 if km < 10 else 0))) for g, km in d['near']]
-    nets = [dict(name=N.net_name(net, l), url=site.net(cc, net, l) if (cc, net) in site.net_pages else c.map_url(l, {'grad': info['gid'], 'mreza': N.net_slug(net)}),
-                 page=(cc, net) in site.net_pages, n=c.n(l, n)) for net, n in st['nets']]
+    near = [dict(name=N.city_name(d['near_info'][str(g)], l), url=site.city(cc, g, l), km=c.t(l, 'km_away', km=c.n(l, km, 1 if km < 10 else 0)))
+            for g, km in d['near'] if site.has_city(cc, g, l)]
+    nets = [dict(name=N.net_name(net, l), url=site.net(cc, net, l) if site.has_net(cc, net, l) else c.map_url(l, {'grad': info['gid'], 'mreza': N.net_slug(net)}),
+                 page=site.has_net(cc, net, l), n=c.n(l, n)) for net, n in st['nets']]
     graph = [{'@type': 'CollectionPage', 'name': title, 'url': c.G.SITE + urls[l], 'inLanguage': L[l]['html'],
               'dateModified': c.lastmod(urls[l]), 'about': {'@type': 'City', 'name': N.city_name(info, 'en'),
                                                            'containedInPlace': {'@type': 'Country', 'name': N.country(cc, 'en')}},
@@ -574,20 +609,22 @@ def render_city(c, p, urls, l, dup_titles):
         ac=c.t(l, 'p_ac', ac=c.n(l, st['ac'])), ac_link=c.map_url(l, {'grad': info['gid'], 'snaga': 'ac'}, d['center'], d['zoom']),
         dc_link=c.map_url(l, {'grad': info['gid'], 'snaga': 'dc,hpc'}, d['center'], d['zoom']),
         near=near, nets=nets, map_link=c.map_url(l, {'zemlja': cc, 'grad': info['gid']}, *view_of(c.places, 'city', info['gid'], d['center'], d['zoom'])),
-        mini=mini(c, p), d=d, data_date=fmt_date(c.lastmod(urls[l]))), 'city')
+        mini=mini(c, p), d=d, data_date=fmt_date(c.lastmod(urls[l]))), 'city',
+        ups=[{x: site.country(cc, x) for x in LANGS if site.has(cc, x)}])
 
 
 def render_network(c, p, urls, l):
     d, cc, S, site, N = p['data'], p['cc'], c.S[l], c.site, c.N
     cname, net = N.country(cc, l), N.net_name(p['net'], l)
     kw = dict(country=cname, country_u=N.country_u(cc, l), country_v=N.country_u(cc, l), net=net)
+    c.pk = dict(kw, country_name=cname)
     title = c.t(l, 't_network', **kw)
     b = common_blocks(c, l, d)
     b['paras'].insert(1, c.t(l, 'p_net_share', n_cities=c.pn(l, d['n_cities'], 'pl_city_in'), share=c.pct(l, d['share_of_country']),
                              country_u=kw['country_u']))
     cities = [dict(name=N.city_name(d['city_info'][str(g)], l),
-                   url=site.city(cc, g, l) if (cc, g) in site.city_pages else c.map_url(l, {'grad': g, 'mreza': N.net_slug(p['net'])}),
-                   page=(cc, g) in site.city_pages, n=c.n(l, n)) for g, n in d['cities']]
+                   url=site.city(cc, g, l) if site.has_city(cc, g, l) else c.map_url(l, {'grad': g, 'mreza': N.net_slug(p['net'])}),
+                   page=site.has_city(cc, g, l), n=c.n(l, n)) for g, n in d['cities']]
     graph = [{'@type': 'CollectionPage', 'name': title, 'url': c.G.SITE + urls[l], 'inLanguage': L[l]['html'],
               'dateModified': c.lastmod(urls[l]), 'isPartOf': {'@type': 'WebSite', 'name': 'BlokVolt', 'url': c.G.SITE + '/'}},
              crumbs_ld(c, [('BlokVolt', site.hub(l)), (cname, site.country(cc, l)), (net, urls[l])])]
@@ -596,17 +633,19 @@ def render_network(c, p, urls, l):
         title=title, h1=title, description=c.t(l, 'd_network', **kw), kick=S['k_network'], cname=cname, net=net,
         crumbs=[(S['nav_hub'], site.hub(l)), (cname, site.country(cc, l))], jsonld=ld(graph), b=b, cities=cities,
         map_link=c.map_url(l, {'zemlja': cc, 'mreza': N.net_slug(p['net'])}, d['center'], d['zoom']), gnet_link=gl,
-        mini=mini(c, p), d=d, data_date=fmt_date(c.lastmod(urls[l]))), 'network')
+        mini=mini(c, p), d=d, data_date=fmt_date(c.lastmod(urls[l]))), 'network',
+        ups=[{x: site.country(cc, x) for x in LANGS if site.has(cc, x)}])
 
 
 def render_gnet(c, p, urls, l):
     d, S, site, N = p['data'], c.S[l], c.site, c.N
     net = N.net_name(p['net'], l)
+    c.pk = dict(net=net)
     title = c.t(l, 't_gnet', net=net)
     b = common_blocks(c, l, d)
     b['paras'].insert(0, c.t(l, 'p_gnet', net=net, n_countries=c.pn(l, len(d['countries']), 'pl_country_in')))
     rows = [dict(name=N.country(cc, l) if cc in N.c else cc,
-                 url=site.net(cc, p['net'], l) if (cc, p['net']) in site.net_pages and site.has(cc, l) else c.map_url(l, {'zemlja': cc, 'mreza': N.net_slug(p['net'])}),
+                 url=site.net(cc, p['net'], l) if site.has_net(cc, p['net'], l) else c.map_url(l, {'zemlja': cc, 'mreza': N.net_slug(p['net'])}),
                  n=c.n(l, n)) for cc, n in d['countries']]
     graph = [{'@type': 'CollectionPage', 'name': title, 'url': c.G.SITE + urls[l], 'inLanguage': L[l]['html'], 'dateModified': c.lastmod(urls[l])},
              crumbs_ld(c, [('BlokVolt', site.hub(l)), (net, urls[l])])]
@@ -619,8 +658,9 @@ def render_gnet(c, p, urls, l):
 def render_hub(c, p, urls, l):
     d, S, site, N, G = p['data'], c.S[l], c.site, c.N, c.G
     stage = c.site.idx['stage']
+    c.pk = {}
     title = S['t_hub_' + ('month' if stage.startswith('month') else stage)]
-    eu_only = l == 'sr' or (l not in I.BASE and I.scope(l) == 'europe')   # K8: extra languages follow Serbian by default
+    eu_only = l == 'sr'   # LANG0: an extra language has every country (LANG_pool §0.1); only Serbian covers Europe alone
     if eu_only and 'stats_eu' in d:   # the Serbian layer covers Europe only (bvcom §0)
         d = dict(d, stats=d['stats_eu'], countries=[r for r in d['countries'] if site.has(r[0], l)],
                  countries_below=[r for r in d['countries_below'] if len(r) < 3 or r[2] == 'EU'])
@@ -649,7 +689,7 @@ def render_hub(c, p, urls, l):
              crumbs_ld(c, [('BlokVolt', urls[l])])]
     return write_page(c, l, 'world_hub.html', urls[l], urls, dict(
         title=title, h1=title, description=S['d_hub'], kick=S['k_hub'], crumbs=[], jsonld=ld(graph), b=b, rows=rows,
-        balkan=balkan, below=below, hub_p=S['p_hub'] + ((' ' + S['p_hub_na']) if not eu_only and any(not site.has(r[0], 'sr') for r in d['countries']) else ''),
+        balkan=balkan, below=below, hub_p=S['p_hub'] + ((' ' + S['p_hub_na']) if l in ('en', 'ru') and any(not site.has(r[0], 'sr') for r in d['countries']) else ''),
         map_link=c.map_url(l), data_date=fmt_date(c.lastmod(urls[l]))), 'hub')
 
 
@@ -815,10 +855,72 @@ def run(G, local_hubs):
           f"search index {si[0]} entries, {si[2] // 1024} KB gzip; llms.txt {'written' if ll else 'not written (not public)'}; public={c.public}; "
           f"names: {names.src}; {time.time() - t0:.1f} s")
     if len(LANGS) > 3 or tuple(LANGS) != I.BASE:   # K8: English fallbacks of country/city names per extra language
-        print(f"world pages: languages {', '.join(LANGS)}")
+        print(f"world pages: languages {', '.join(LANGS)}"
+              + (f"; preview cap {I.pages_cap()} city + network pages per language (left out: "
+                 + ', '.join(f'{l} {n}' for l, n in site.capped.items() if n) + ')' if I.pages_cap() else ''))
         for line in I.fallback_report():
             print(line)
     return c
+
+
+PROD_LIMIT_MB = 800   # LANG0: production of blokvolt.com is a GitHub Pages site (1 GB); the build stops above 800 MB
+
+
+def forecast(c):
+    """LANG0 step 10: size of the production site (dist-com, no page cap) for the languages of langs_enabled, wave 1 and all
+    languages. Model: what this build wrote for a language (its world pages) + the city/network pages a preview cap left
+    out (average size of the language's own city/network pages, else the English one); a language not built here gets the
+    English fixed pages + its market pages × the English average. Everything that is not a world page stays as built.
+    Prints one line; stops the build when the production languages (langs_enabled) would pass PROD_LIMIT_MB."""
+    if c is None:
+        return None
+    out = c.out
+    total = sum(f.stat().st_size for f in out.rglob('*') if f.is_file())
+    size = {}
+    bdir = Path(os.environ.get('BV_WORLD_PAGES') or '.')
+    jsz = {p['key']: (bdir / p['file']).stat().st_size if (bdir / p['file']).exists() else 0 for p in c.site.pages if 'file' in p}
+    u2k = {}
+    for p in c.site.pages:
+        if p['type'] in ('city', 'network'):
+            for l in c.site.langs(p):
+                u2k[c.site.url(p, l)] = p['key']
+    for l, t, url, _lm, _ok in c.written:
+        f = out / url.strip('/') / 'index.html'
+        if f.exists():
+            k = 'cn' if t in ('city', 'network') else 'fix'
+            a = size.setdefault(l, {'fix': 0, 'cn': 0, 'n_cn': 0, 'json': 0, 'keys': set()})
+            a[k] += f.stat().st_size
+            if k == 'cn' and url in u2k:
+                a['n_cn'] += 1
+                a['json'] += jsz.get(u2k[url], 0)
+                a['keys'].add(u2k[url])
+    en = size.get('en') or {'fix': 0, 'cn': 0, 'n_cn': 0, 'json': 0, 'keys': set()}
+    ratio_en = en['cn'] / en['json'] if en['json'] else 0
+    cn = [p for p in c.site.pages if p['type'] in ('city', 'network')]
+
+    def full_json(l):   # bundle bytes of the city + network pages of a language without the preview cap
+        return sum(jsz.get(p['key'], 0) for p in cn if I.page_has(l, p.get('langs') or p['data'].get('langs'), p['type'], p.get('cc')))
+
+    def lang_bytes(l):
+        """HTML of a page grows with its data: the left-out pages are estimated from their bundle JSON × the HTML/JSON
+        ratio of the pages built (top pages by size are larger than the average one)."""
+        a = size.get(l)
+        if a:
+            r = a['cn'] / a['json'] if a['json'] else ratio_en
+            return a['fix'] + a['cn'] + max(0, full_json(l) - a['json']) * r
+        return en['fix'] + full_json(l) * ratio_en
+    built = set(size)
+    base = total - sum(size[l]['fix'] + size[l]['cn'] for l in built)
+    mb = lambda ls: (base + sum(lang_bytes(l) for l in ls)) / 1e6
+    w = I.waves()
+    scen = [('prod (' + ','.join(I.prod_langs()) + ')', list(I.prod_langs())),
+            ('wave 1', list(I.BASE) + w.get('1', [])), ('all ' + str(len(sum(w.values(), []))), list(I.BASE) + sum(w.values(), []))]
+    res = [(n, mb(ls)) for n, ls in scen]
+    print('world size forecast (production, no page cap): ' + ' · '.join(f'{n} {v:.0f} MB' + (' ⚠' if v > PROD_LIMIT_MB else '') for n, v in res)
+          + f' (limit {PROD_LIMIT_MB} MB; this build {total / 1e6:.0f} MB, {sum(1 for f in out.rglob("*") if f.is_file())} files)')
+    if res[0][1] > PROD_LIMIT_MB:
+        raise SystemExit(f'world_pages: production would be {res[0][1]:.0f} MB > {PROD_LIMIT_MB} MB (GitHub Pages ≤ 1 GB) — fewer pages per language or another host')
+    return res
 
 
 def search_index(c, ls=None, name='search-index.json'):
@@ -846,14 +948,15 @@ def search_index(c, ls=None, name='search-index.json'):
             if len(LANGS_) > 3:   # K8: names of the extra languages join the other names (base layout of the index unchanged)
                 alt = sorted(set(alt) | {N.country(cc, l) for l in LANGS_ if l not in I.BASE} - {N.country(cc, x) for x in I.BASE})
             items.append(['c', cc, N.country(cc, 'en'), N.country(cc, 'sr'), N.country(cc, 'ru'), alt,
-                          [site.url(p, l) if l in langs else None for l in LANGS_], p['n']])
+                          [site.url(p, l) if l in langs else None for l in LANGS_], p['n']] + ([N.country(cc, LANGS_[3])] if len(LANGS_) > 3 else []))
         else:
             info = p['data']['city']
             r = N.city.get(info['gid']) or {}
             names3 = [N.city_name(info, l) for l in I.BASE]   # columns name_en/sr/ru stay fixed; extra languages → other names
             alt = sorted({x for x in (r.get('name_local'), info.get('name'), info.get('ascii'),
                                       *[N.city_name(info, l) for l in LANGS_ if l not in I.BASE]) if x and x not in names3})
-            items.append(['t', p['cc'], *names3, alt, [site.url(p, l) if l in langs else None for l in LANGS_], p['n']])
+            items.append(['t', p['cc'], *names3, alt, [site.url(p, l) if l in langs else None for l in LANGS_], p['n']]
+                         + ([N.city_name(info, LANGS_[3])] if len(LANGS_) > 3 else []))
     en_slug = {x['code']: x['url'] for x in G.countries}
     built = {x['key'] for x in G.BUILT}
     for cc in BALKAN:
@@ -865,10 +968,12 @@ def search_index(c, ls=None, name='search-index.json'):
             loc = f'/{BALKAN_LOCAL[cc]}/' if BALKAN_LOCAL.get(cc) in built else en_slug.get(cc, '/')
             urls = [en_slug.get(cc, '/'), loc, loc]
         urls += [loc if cc != 'RS' else G.RS + '/en/gradovi/' for _ in LANGS_[3:]]   # K8: extra languages → the local section
-        items.append(['b', cc, N.country(cc, 'en'), N.country(cc, 'sr'), N.country(cc, 'ru'), [], urls, None])
+        items.append(['b', cc, N.country(cc, 'en'), N.country(cc, 'sr'), N.country(cc, 'ru'), [], urls, None]
+                     + ([N.country(cc, LANGS_[3])] if len(LANGS_) > 3 else []))
     doc = {'v': 1, 'date': c.date, 'langs': list(LANGS_),
            'fields': ['kind (c country, t city, b Balkan country on its own BlokVolt pages)', 'cc', 'name_en', 'name_sr',
-                      'name_ru', 'other names', 'url per language (en, sr, ru; null = no page)', 'public places'],
+                      'name_ru', 'other names', 'url per language (en, sr, ru; null = no page)', 'public places']
+                     + (['name in the language of this index (LANG0)'] if len(LANGS_) > 3 else []),
            'items': items}
     raw = json.dumps(doc, ensure_ascii=False, separators=(',', ':')).encode()
     dst = G.OUT / 'assets' / 'world' / name
@@ -927,8 +1032,9 @@ def write_llms(c):
 def write_sitemaps(c):
     G = c.G
     groups = {}
+    prod = I.prod_langs()   # LANG0: a language enters the sitemaps (and so IndexNow) only once it is in langs_enabled
     for l, t, url, lm, ok in c.written:
-        if ok:
+        if ok and l in prod:
             groups.setdefault((l, t), []).append((url, lm))
     files = []
     for (l, t), rows in sorted(groups.items()):

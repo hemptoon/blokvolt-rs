@@ -154,15 +154,16 @@ def build(G):
         wm_cfg = {'lang': lang, 'data_base': cfg['data_base'], 'reports_api': cfg['reports_api'], 'checkins_api': cfg['checkins_api'], 'style': STYLE,
                   'center': VIEW['center'], 'zoom': VIEW['zoom'], 'font': FONT, 'about': ABOUT[lang], 'download': DOWNLOAD[lang], 'pages': PAGES,
                   'prices': (getattr(G, 'WORLD_PRICES', None) or {}).get('map_json', '')}   # G3: price line of the card
-        if lang not in I.BASE:   # K8: number/date locale of an extra language (world-map.js reads it once it is enabled)
+        if lang not in I.BASE:   # K8/LANG0: number/date locale of an extra language (world-map.js: cfg.intl)
             wm_cfg['intl'] = I.reg(lang).get('intl', lang)
-        ctx = dict(WORLD_FT=WFT, LOC=LOCS[lang], S=S, NAV=NAV, SWITCH=SWITCH, home=PAGES[lang] if lang != 'en' else '/', section='map',
+            wm_cfg['dec'], wm_cfg['thou'] = I.reg(lang)['dec'], I.reg(lang)['thou']
+        ctx = dict(WORLD_FT=WFT, LOC=LOCS[lang], S=S, NAV=NAV, SWITCH=SWITCH, LANGMENU=I.lang_menu(PAGES, lang), LANGJS=I.lang_assets(OUT), home=PAGES[lang] if lang != 'en' else '/', section='map',
                    COUNTRIES=G.countries, LOCALS=locals_, PAGES={'method': None}, T=T, title=T['title'],
                    description=T['description'], alts=alts, public=cfg['public'], noindex=False,
                    wm_cfg=json.dumps(wm_cfg, ensure_ascii=False).replace('</', '<\\/'),
                    wm_i18n=json.dumps(T, ensure_ascii=False).replace('</', '<\\/'),
                    v_js=v_js, v_css=v_css, pmtiles_ver=PMTILES_VER, data_origin=origin)
-        G.render('world_map.html', PAGES[lang], ctx, priority='0.6', sitemap=cfg['public'])
+        G.render('world_map.html', PAGES[lang], ctx, priority='0.6', sitemap=cfg['public'] and lang in I.prod_langs())
         out.append(PAGES[lang])
     print(f"world map: {', '.join(out)} ({'public' if cfg['public'] else 'noindex, not in the sitemap'}; data {cfg['data_base']})")
     return out

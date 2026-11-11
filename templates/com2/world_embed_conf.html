@@ -12,7 +12,7 @@
 {% for k, lbl in (('ac', MT.t_ac), ('dc', MT.t_dc), ('hpc', MT.t_hpc), ('nepoznato', MT.t_unk)) %}<label class="chip wz-chk"><input type="checkbox" name="snaga" value="{{ k }}" checked> {{ lbl }}</label>{% endfor %}
 </div></fieldset>
 <fieldset class="wz-f"><legend>{{ T.cf_lang }}</legend><div class="chips">
-{% for k, lbl in (('en', 'English'), ('sr', 'Srpski'), ('ru', 'Русский')) %}<label class="chip wz-chk"><input type="radio" name="lang" value="{{ k }}"{% if k == l %} checked{% endif %}> {{ lbl }}</label>{% endfor %}
+{% for k, lbl in WLANGS %}<label class="chip wz-chk"><input type="radio" name="lang" value="{{ k }}"{% if k == l %} checked{% endif %}> {{ lbl }}</label>{% endfor %}
 </div></fieldset>
 <fieldset class="wz-f"><legend>{{ T.cf_theme }}</legend><div class="chips">
 <label class="chip wz-chk"><input type="radio" name="tema" value="" checked> {{ T.cf_light }}</label><label class="chip wz-chk"><input type="radio" name="tema" value="tamna"> {{ T.cf_dark }}</label>

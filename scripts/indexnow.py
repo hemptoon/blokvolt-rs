@@ -32,7 +32,7 @@ ENDPOINT = 'https://api.indexnow.org/indexnow'
 # Remove an entry once the run log shows "HTTP 200/202" for it.
 RESEND = {'blokvolt.com': {'sitemap-world-ru-city.xml': '2026-11-30'}}
 KEY_WAIT = (0, 10, 20, 30, 60)     # seconds between checks that the live key file answers before the first request
-LIMIT = 10000                       # the protocol's maximum per request
+LIMIT = 10000                       # the protocol's maximum per request (LANG0: longer lists go in several requests)
 NS = '{http://www.sitemaps.org/schemas/sitemap/0.9}'
 
 
@@ -127,19 +127,43 @@ def main():
     if not urls:
         print('IndexNow: nothing changed — nothing sent')
         return
-    if len(urls) > LIMIT:
-        print(f'IndexNow: {len(urls)} URLs, only the first {LIMIT} are sent (protocol limit)')
-        urls = urls[:LIMIT]
     for u in urls[:20]:
         print('  ' + u)
     if len(urls) > 20:
         print(f'  … and {len(urls) - 20} more')
+    if not dry and not key_live(k):
+        print(f'IndexNow: {SITE}/{k}.txt does not answer with the key yet — sending anyway (the engine may refuse with 403)')
+    failed = 0
+    for lang, part in batches(urls):   # LANG0: one request per language, at most LIMIT URLs each (nothing is cut off)
+        failed += not send(k, part, f'{lang}, {len(part)} URLs', dry)
+    if failed:
+        sys.exit(1)
+
+
+def lang_of(url):
+    """Language of a URL by its first path segment (/de/…, /sr/…); the English pages (no prefix) and the regional
+    sections are "en" here — the grouping only keeps one request per language."""
+    m = re.match(re.escape(SITE) + r'/([a-z]{2})(?:/|$)', url)
+    return m.group(1) if m else 'en'
+
+
+def batches(urls):
+    """[(language, ≤ LIMIT URLs)] in a stable order: English first, then the other languages A–Z."""
+    groups = {}
+    for u in urls:
+        groups.setdefault(lang_of(u), []).append(u)
+    out = []
+    for lang in sorted(groups, key=lambda x: (x != 'en', x)):
+        g = groups[lang]
+        out += [(lang, g[i:i + LIMIT]) for i in range(0, len(g), LIMIT)]
+    return out
+
+
+def send(k, urls, what, dry=False):
     body = json.dumps({'host': HOST, 'key': k, 'keyLocation': f'{SITE}/{k}.txt', 'urlList': urls}).encode('utf-8')
     if dry:
-        print(f'IndexNow: dry run, {len(urls)} URLs not sent ({len(body)} bytes)')
-        return
-    if not key_live(k):
-        print(f'IndexNow: {SITE}/{k}.txt does not answer with the key yet — sending anyway (the engine may refuse with 403)')
+        print(f'IndexNow: dry run, {what} not sent ({len(body)} bytes)')
+        return True
     try:
         status = post(body)
         if status in (403, 429):   # key not visible to the engine yet / too fast: one more try after a pause
@@ -148,12 +172,12 @@ def main():
             time.sleep(45)
             status = post(body)
     except urllib.error.URLError as e:
-        sys.exit(f'IndexNow: {len(urls)} URLs not sent — {e.reason}')
+        print(f'IndexNow: {what} not sent — {e.reason}')
+        return False
     # 200 accepted, 202 accepted (the key is being checked); 400 bad request, 403 key not valid, 422 URLs not of this
     # host or key mismatch, 429 too many requests
-    print(f'IndexNow: sent {len(urls)} URLs → HTTP {status}')
-    if status not in (200, 202):
-        sys.exit(1)
+    print(f'IndexNow: sent {what} → HTTP {status}')
+    return status in (200, 202)
 
 
 if __name__ == '__main__':

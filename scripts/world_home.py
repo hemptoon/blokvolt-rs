@@ -57,15 +57,8 @@ def load_strings():
             if miss:
                 raise SystemExit(f'content/world/strings_home.json: missing {l} for ' + ', '.join(miss))
             out[l] = {k: v[l] for k, v in raw.items()}
-        else:   # K8: an extra language brings its own file; the build stops on a missing key
-            p = I.i18n_dir(l) / 'strings_home.json'
-            if not p.exists():
-                raise SystemExit(f'world_home: {p} is missing (language {l} is enabled)')
-            tr = json.load(open(p, encoding='utf-8'))
-            miss = [k for k in raw if not tr.get(k)]
-            if miss:
-                raise SystemExit(f'world_home: {p} misses {miss[:5]}')
-            out[l] = {k: tr[k] for k in raw}
+        else:   # K8/LANG0: an extra language brings its own file; production stops on a missing key, a preview shows "[EN] …"
+            out[l] = I.load('home', [l])[l]
     for l, d in out.items():
         for k, v in d.items():
             for pat in I.forbidden(FORBIDDEN, l):
@@ -237,7 +230,8 @@ def run(G, c):
         hero_cfg = dict(lang=l, data_base=cfg['data_base'], pics=pics, map=HOME_MAP(l), font=world_map.FONT,
                         borders=hurls.get('borders.json'), lib='/assets/vendor/maplibre-6.11.1/maplibre-gl.mjs',
                         pmtiles=f'/assets/vendor/pmtiles-{world_map.PMTILES_VER}/pmtiles.js',
-                        tz_west=TZ_WEST, near_err=t['near_err'], err=t['map_err'], label=t['map_label'])
+                        tz_west=TZ_WEST, near_err=t['near_err'], err=t['map_err'], label=t['map_label'],
+                        **({'intl': I.reg(l)['intl']} if l not in I.BASE else {}))   # LANG0: number locale of the other languages
         html = W.write_page(c, l, 'world_home.html', HOME[l], HOME, dict(
             title=t['title'].replace(' | BlokVolt', ''), description=t['desc'], h1=t['h1'], T=t, crumbs=None, kick=None,
             jsonld=jsonld, stat=stat, pics=pics, hero_cfg=json.dumps(hero_cfg, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/'),

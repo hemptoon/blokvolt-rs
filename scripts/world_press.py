@@ -34,7 +34,8 @@ WORLD = WP.WORLD
 HIST = WORLD / 'index_history'
 CHECKINS = WORLD / 'checkins_month.json'
 LANGS = WP.LANGS
-PRESS = {'en': '/press/', 'sr': '/sr/za-medije/', 'ru': '/ru/dlya-smi/'}
+I = WP.I                                              # LANG0: languages, section paths, names of the other languages
+PRESS = {l: I.slugs(l)['press'] for l in LANGS}       # /press/ /sr/za-medije/ /ru/dlya-smi/ /de/… (config / slugs.json)
 CHART_DIR = '/press/charts/'
 CHARTS = ('dc-vs-home', 'europe')
 SITE_URL = 'https://blokvolt.com'
@@ -45,13 +46,11 @@ FORBIDDEN = WP.FORBIDDEN + [r'\bmy\s', r'редакци']
 
 def load_strings():
     raw = json.load(open(WORLD / 'strings_press.json', encoding='utf-8'))
-    out = {l: {} for l in LANGS}
     for k, v in raw.items():
-        for l in LANGS:
-            if not v.get(l):
+        for l in I.BASE:
+            if l in LANGS and not v.get(l):
                 raise SystemExit(f'world press: strings_press.json: "{k}" has no {l}')
-            out[l][k] = v[l]
-    return out
+    return I.load('press', LANGS)   # LANG0: other languages from i18n/<code>/strings_press.json (stops on a missing key)
 
 
 # ------------------------------------------------------------------ snapshots
@@ -130,8 +129,8 @@ def cents(x, l):
     v = x * 100
     s = f'{v:+.1f}'
     if l != 'en':
-        s = s.replace('.', ',')
-    return {'en': f'{s} ct', 'sr': f'{s} c', 'ru': f'{s} ц.', 'de': f'{s} ct', 'fr': f'{s} ct'}[l]
+        s = s.replace('.', ',' if l in ('sr', 'ru', 'de', 'fr') else I.reg(l)['dec'])
+    return {'en': f'{s} ct', 'sr': f'{s} c', 'ru': f'{s} ц.', 'de': f'{s} ct', 'fr': f'{s} ct'}.get(l, f'{s} ct')   # LANG0: euro cent "ct" 
 
 
 def checkins_of(month):
@@ -146,6 +145,8 @@ class Names:
 
     def name(self, cc, l):
         r = self.N[cc]
+        if l not in I.BASE and l in I.langs():   # LANG0: i18n/<code>/countries.csv first
+            return I.country_name(r, l)
         return r.get(f'name_{l}') or r['name_en']
 
     def in_(self, cc, l):
@@ -160,7 +161,7 @@ class Names:
             return {'NL': 'in den Niederlanden', 'GB': 'im Vereinigten Königreich', 'CZ': 'in Tschechien'}.get(cc, 'in ' + self.name(cc, 'de'))
         if l == 'fr':
             return FR_IN.get(cc, 'en ' + self.name(cc, 'fr'))
-        return r['name_en']
+        return I.country_in(r, l)   # LANG0
 
 
 FR_IN = {'DE': 'en Allemagne', 'ES': 'en Espagne', 'FR': 'en France', 'GB': 'au Royaume-Uni', 'HR': 'en Croatie', 'IE': 'en Irlande',
@@ -187,7 +188,7 @@ FACTS_DE_FR = {
 
 def num(x, l, d=1):
     s = f'{x:.{d}f}'
-    return s if l == 'en' else s.replace('.', ',')
+    return s if l == 'en' else s.replace('.', ',' if l in ('sr', 'ru', 'de', 'fr') else I.reg(l)['dec'])
 
 
 def facts(hist, month, l, names=None):
@@ -195,8 +196,8 @@ def facts(hist, month, l, names=None):
     S = load_strings()
     names = names or Names()
 
-    def T(k, **kw):
-        if l in ('de', 'fr'):
+    def T(k, **kw):   # de/fr of the press release drafts unless the site has its own translation (LANG0)
+        if l in ('de', 'fr') and (l not in S or str(S[l][k]).startswith(I.MARK)):
             return FACTS_DE_FR[k][l].format(**kw)
         return S[l][k].format(**kw)
     s = hist[month]
@@ -427,7 +428,7 @@ class Press(WP.R):
     def period_of(self, p, l):
         y, h = p.split('-S')
         return {'en': f'Eurostat, {"first" if h == "1" else "second"} half of {y}', 'sr': f'Eurostat, {h}. polugodište {y}.',
-                'ru': f'Eurostat, {"первое" if h == "1" else "второе"} полугодие {y}'}[l]
+                'ru': f'Eurostat, {"первое" if h == "1" else "второе"} полугодие {y}'}.get(l, f'Eurostat {y}-S{h}')   # LANG0: Eurostat's own notation
 
     def page_press(self, hist, last):
         s = hist[last]

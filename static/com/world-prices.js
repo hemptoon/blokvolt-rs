@@ -4,7 +4,7 @@
 (function () {
   'use strict';
   var FX = window.WP_FX || { usd: 0, lang: 'en' };
-  var L = FX.lang, DEC = L === 'en' ? '.' : ',', TH = L === 'en' ? ',' : L === 'sr' ? '.' : ' ';
+  var L = FX.lang, DEC = FX.dec || (L === 'en' ? '.' : ','), TH = FX.thou || (L === 'en' ? ',' : L === 'sr' ? '.' : ' ');   // LANG0: dec/thou of other languages
   var SYM = { EUR: '€', USD: '$', GBP: '£', SEK: 'kr', NOK: 'kr', DKK: 'kr', CZK: 'Kč', PLN: 'zł', HUF: 'Ft', RON: 'lei', CHF: 'CHF' };
   function num(x, d) {
     var s = Math.abs(x).toFixed(d).split('.');
@@ -17,7 +17,8 @@
     var n = num(x, d), s = SYM[c] || c;
     return L === 'en' && (c === 'EUR' || c === 'USD' || c === 'GBP') ? s + n : n + ' ' + s;
   }
-  function get() { try { return localStorage.getItem('bv:wcur') || 'eur'; } catch (e) { return 'eur'; } }
+  // LANG0: FX.def = "loc" — the page of an own country in its own language opens in the local currency (built so)
+  function get() { try { return localStorage.getItem('bv:wcur') || FX.def || 'eur'; } catch (e) { return FX.def || 'eur'; } }
   function set(v) { try { localStorage.setItem('bv:wcur', v); } catch (e) { /* private mode */ } }
   function apply(cur) {
     var spans = document.querySelectorAll('.pz'), i, el, e, u, out;
@@ -45,5 +46,5 @@
   });
   var c = get();
   if (c === 'loc' && !document.querySelector('[data-wcur="loc"]')) c = 'eur';
-  if (c !== 'eur') apply(c);
+  if (c !== (FX.def || 'eur')) apply(c);
 })();

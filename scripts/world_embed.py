@@ -33,10 +33,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 WORLD = ROOT / 'content' / 'world'
 STATIC = ROOT / 'static' / 'com'
-LANGS = ('en', 'sr', 'ru')
-EMBED = {'en': '/embed/map/', 'sr': '/sr/embed/mapa/', 'ru': '/ru/embed/karta/'}
-CONF = {'en': '/map-for-your-site/', 'sr': '/sr/mapa-za-vas-sajt/', 'ru': '/ru/karta-dlya-sajta/'}
-DEV = {'en': '/developers/', 'sr': '/sr/za-programere/', 'ru': '/ru/razrabotchikam/'}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import world_i18n as I   # noqa: E402  LANG0: languages and section paths from the registry (config.json / slugs.json)
+LANGS = I.langs()
+EMBED = {l: I.slugs(l)['embed'] for l in LANGS}      # /embed/map/ /sr/embed/mapa/ /ru/embed/karta/ /de/embed/map/ …
+CONF = {l: I.slugs(l)['map_conf'] for l in LANGS}    # /map-for-your-site/ /sr/mapa-za-vas-sajt/ /ru/karta-dlya-sajta/ …
+DEV = {l: I.slugs(l)['developers'] for l in LANGS}   # /developers/ /sr/za-programere/ /ru/razrabotchikam/ …
 STYLE_DARK = 'https://tiles.openfreemap.org/styles/dark'
 FORBIDDEN = [r'\bodmah\b', r'24/7', r'evolako', r'\bredakcij', r'\bmi\s', r'\bnaš', r'\bмы\b', r'\bнаш', r'редакци', r'\bwe\b', r'\bour\b', r'сразу']
 # the CSP of the widget pages as <meta> (all but frame-ancestors, which a <meta> cannot carry); data hosts are added at build
@@ -47,12 +49,13 @@ CSP = ["default-src 'self'", "script-src 'self'", "style-src 'self' 'unsafe-inli
 
 def load_strings():
     raw = json.load(open(WORLD / 'strings_embed.json', encoding='utf-8'))
-    miss = [f'{k}.{l}' for k, v in raw.items() for l in LANGS if not str(v.get(l) or '').strip()]
+    miss = [f'{k}.{l}' for k, v in raw.items() for l in I.BASE if l in LANGS and not str(v.get(l) or '').strip()]
     if miss:
         raise SystemExit('content/world/strings_embed.json: missing translations — ' + ', '.join(miss[:20]))
+    raw = I.strings_raw('embed', LANGS)   # LANG0: other languages from i18n/<code>/strings_embed.json (stops on a missing key)
     for k, v in raw.items():
         for l in LANGS:
-            for pat in FORBIDDEN:
+            for pat in I.forbidden(FORBIDDEN, l):
                 if re.search(pat, v[l], re.I):
                     raise SystemExit(f'content/world/strings_embed.json: "{k}" ({l}) has a forbidden word ({pat}): {v[l]}')
     for k in ('cf_title', 'dv_title', 'emb_title'):
@@ -68,6 +71,8 @@ def api(cfg, key, env):
 
 def countries(l):
     rows = list(csv.DictReader(open(WORLD / 'names' / 'countries.csv', encoding='utf-8')))
+    if l not in I.BASE:   # LANG0: i18n/<code>/countries.csv first
+        return sorted(((r['cc'], I.country_name(r, l)) for r in rows), key=lambda x: x[1])
     key = 'name_' + l
     return sorted(((r['cc'], r[key] or r['name_en']) for r in rows), key=lambda x: x[1])
 
@@ -122,6 +127,8 @@ def run(G, c):
                   'center': world_map.VIEW['center'], 'zoom': world_map.VIEW['zoom'], 'font': world_map.FONT,
                   'about': G.SITE + world_map.ABOUT[l], 'download': G.SITE + world_map.DOWNLOAD[l], 'pages': world_map.PAGES,
                   'embed': {'open': G.SITE + world_map.PAGES[l], 'utm': 'world-map', 'views': wapi}}
+        if l not in I.BASE:   # LANG0: number/date locale of the other languages (world-map.js: cfg.intl)
+            wm_cfg.update(intl=I.reg(l)['intl'], dec=I.reg(l)['dec'], thou=I.reg(l)['thou'])
         html = G.env.get_template('world_embed.html').render(
             LOC=world_map.LOCS[l], T=M, E=t, SITE=G.SITE, canon=world_map.PAGES[l], CSP=csp, data_origin=hosts[0] if hosts else G.SITE,
             full=G.SITE + world_map.PAGES[l], pmtiles_ver=world_map.PMTILES_VER, v=ver,
@@ -145,15 +152,16 @@ def run(G, c):
         W.write_page(c, l, 'world_embed_conf.html', CONF[l], CONF, dict(
             title=t['cf_title'].replace(' | BlokVolt', ''), h1=t['cf_h1'], description=t['cf_desc'], T=t, crumbs=None, kick=None,
             jsonld=None, data_date=W.fmt_date(c.date), COUNTRIES_ALL=countries(l), NETS=nets, MT=MS[l], dev_url=DEV[l],
+            WLANGS=[(x, I.label(x)) for x in LANGS],
             preview_src=EMBED[l], map_url=world_map.PAGES[l], vz=json.dumps(vz, ensure_ascii=False).replace('</', '<\\/'),
             css=f"/assets/world/world-embed.css?v={ver['world-embed.css']}", js=f"/assets/world/world-widget.js?v={ver['world-widget.js']}"), 'conf')
         out.append(CONF[l])
         W.write_page(c, l, 'world_developers.html', DEV[l], DEV, dict(
             title=t['dv_title'].replace(' | BlokVolt', ''), h1=t['dv_h1'], description=t['dv_desc'], T=t, crumbs=None, kick=None,
             jsonld=None, data_date=W.fmt_date(c.date), conf_url=CONF[l], download=world_map.DOWNLOAD[l], embed_url=EMBED[l],
-            open_p=t['dv_open_p'].format(n=n_fields), attribution=dl[l]['attribution_p'],
+            open_p=t['dv_open_p'].format(n=n_fields), attribution=(dl[l] if l in dl else I.texts(l, 'download'))['attribution_p'],
             balkan=[(cc, dict(countries(l)).get(cc, cc), u) for cc, u in balkan_all],
-            rs_dev=G.RS + {'en': '/en/za-programere/', 'ru': '/ru/za-programere/'}.get(l, '/za-programere/'),
+            rs_dev=G.RS + {'sr': '/za-programere/', 'ru': '/ru/za-programere/'}.get(l, '/en/za-programere/'),
             requests_api=rapi, EMAIL=G.EMAIL,
             css=f"/assets/world/world-embed.css?v={ver['world-embed.css']}", js=f"/assets/world/world-widget.js?v={ver['world-widget.js']}"), 'developers')
         out.append(DEV[l])

@@ -305,6 +305,7 @@ class R:
         self.cars = self.M.cars()
         self.n_written = 0
         self.page_cur = 'EUR'
+        self.cur_loc = False   # LANG0: local currency first on the pages of a language's own countries (LANG_pool §0.4)
 
     def cname(self, cc, l):
         return I.country_name(self.site.N[cc], l)
@@ -326,11 +327,22 @@ class R:
             return '<span class="muted">—</span>'
         u = {'kWh': self.S[l]['per_kwh'], 'min': self.S[l]['per_min'], 'session': self.S[l]['per_session'], '': ''}[unit]
         la = ''
+        shown = money(eur, 'EUR', l)
         if loc is not None and cur != 'EUR':
             la = f' data-l="{loc:.4f}" data-c="{cur}"'
+            if self.cur_loc:
+                shown = money(loc, cur, l)
         elif self.page_cur != 'EUR' and self.page_cur in self.M.FX['rates']:   # EUR figure on a non-euro country page
             la = f' data-l="{eur * self.M.FX["rates"][self.page_cur]:.4f}" data-c="{self.page_cur}" data-a="1"'
-        return f'<span class="pz{(" " + cls) if cls else ""}" data-e="{eur:.4f}"{la} data-u="{u}">{money(eur, "EUR", l)}{u}</span>'
+            if self.cur_loc:
+                shown = '≈ ' + money(eur * self.M.FX['rates'][self.page_cur], self.page_cur, l)
+        return f'<span class="pz{(" " + cls) if cls else ""}" data-e="{eur:.4f}"{la} data-u="{u}">{shown}{u}</span>'
+
+    def own_cur(self, cc, l):
+        """LANG0 (LANG_pool §0.4): an extra language shows the local currency first on the pages of its own countries
+        (SEK, NOK, DKK, PLN, CZK, HUF, RON, BGN, CHF …); everywhere else EUR stays the default."""
+        return l not in I.BASE and cc in (I.market(l) or ()) and D.CURRENCY.get(cc, 'EUR') != 'EUR' \
+            and D.CURRENCY.get(cc) in self.M.FX['rates']
 
     def write(self, l, tpl, url, urls, ctx, section='prices'):
         alts = [(I.reg(x)['hreflang'], self.G.SITE + urls[x]) for x in LANGS] + [('x-default', self.G.SITE + urls['en'])]
@@ -341,7 +353,9 @@ class R:
                     NAV=nav, SWITCH=[(x, urls[x], self.w.S[x]['lang_label'] if x in I.BASE else I.label(x), I.reg(x)['hreflang']) for x in LANGS], home=self.w.site.hub(l),
                     alts=alts, COUNTRIES=self.G.countries, LOCALS=self.w.local_hubs, C={'checked': fdate(self.M.T['updated'])},
                     robots=None if self.public else 'noindex,nofollow', W=self.w, l=l, section=section, PAGES={},
-                    jsonld=None, local_cur=None, WORLD_FT=__import__('world_shell').footer(l), fx_date=fdate(self.M.FX['date']), usd=self.M.FX['rates']['USD'])
+                    jsonld=None, local_cur=None, WORLD_FT=__import__('world_shell').footer(l), fx_date=fdate(self.M.FX['date']), usd=self.M.FX['rates']['USD'],
+                    cur_loc=self.cur_loc, LANGMENU=I.lang_menu(urls, l, [HUB, {x: self.w.site.hub(x) for x in LANGS}]), LANGJS=I.lang_assets(self.G.OUT),
+                    FMT={'dec': I.reg(l)['dec'], 'thou': I.reg(l)['thou']} if l not in I.BASE else None)
         base.update(ctx)
         base['title'] = __import__('world_pages').seo_title(base['title'])
         html = self.G.env.get_template(tpl).render(**base)
@@ -387,6 +401,7 @@ class R:
         M, S = self.M, self.S[l]
         urls = {x: HUB[x] for x in LANGS}
         self.page_cur = 'EUR'
+        self.cur_loc = False   # LANG0: local currency first on the pages of a language's own countries (LANG_pool §0.4)
         month = month_label(M.month, l)
         rows, empty = [], []
         for cc, c in sorted(M.countries.items(), key=lambda kv: self.cname(kv[0], l)):
@@ -501,6 +516,7 @@ class R:
         M, S, site = self.M, self.S[l], self.site
         urls = {x: site.country(cc, x) for x in LANGS}
         self.page_cur = D.CURRENCY.get(cc, 'EUR')
+        self.cur_loc = self.own_cur(cc, l)
         c, v, tiles = self.country_blocks(cc, l)
         cu = self.cu(cc, l)
         cur = D.CURRENCY.get(cc, 'EUR')
@@ -537,6 +553,7 @@ class R:
         M, S, site = self.M, self.S[l], self.site
         urls = {x: site.net(cc, net, x) for x in LANGS}
         self.page_cur = D.CURRENCY.get(cc, 'EUR')
+        self.cur_loc = self.own_cur(cc, l)
         c = M.countries[cc]
         cu = self.cu(cc, l)
         rows = [r for r in c['rows'] if r['network'] == net]
@@ -556,7 +573,7 @@ class R:
         pl = {k: sum(wn.get(x, {}).get(k, 0) for x in keys) for k in ('all', 'dc50', 'hpc')}
         station = None
         for k in keys:
-            if (cc, k) in self.w.site.net_pages:
+            if self.w.site.has_net(cc, k, l):
                 station = (self.w.site.net(cc, k, l), self.t(l, 'n_station_page', net=net, country_u=cu))
                 break
         ld = {'@context': 'https://schema.org', '@graph': [
@@ -652,7 +669,7 @@ def run(G, wctx):
         for cc, net in r.site.nets:
             r.page_net(cc, net, l)
     M = r.M
-    print(f"world prices: {r.n_written} HTML ({len(r.site.countries)} countries, {len(r.site.nets)} networks × 3 languages), "
+    print(f"world prices: {r.n_written} HTML ({len(r.site.countries)} countries, {len(r.site.nets)} networks × {len(LANGS)} languages), "
           f"index {sum(1 for c in M.countries.values() if c['indexed'])} countries; Europe AC {M.europe['ac']:.3f} / DC {M.europe['dc']:.3f} / "
           f"HPC {M.europe['hpc']:.3f} EUR/kWh; public={r.public}")
     return r

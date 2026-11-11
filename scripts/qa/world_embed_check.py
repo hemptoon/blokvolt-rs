@@ -53,7 +53,8 @@ def static(out):
         check('http-equiv="Content-Security-Policy"' in h and 'frame-ancestors' not in re.search(r'http-equiv="Content-Security-Policy" content="([^"]*)"', h).group(1), f'{p} CSP meta without frame-ancestors')
         check('<header' not in h and 'site-footer' not in h, f'{p} no site header or footer')
         cfg = json.loads(re.search(r'<script id="wm-cfg" type="application/json">(.*?)</script>', h, re.S).group(1))
-        check(cfg.get('embed', {}).get('open', '').endswith(('/map/', '/sr/mapa/', '/ru/karta/')) and cfg['reports_api'] == '', f'{p} cfg.embed, no reports')
+        maps = tuple(__import__('world_i18n').slugs(x)['map'] for x in WE.LANGS)   # LANG0: the map of every enabled language
+        check(cfg.get('embed', {}).get('open', '').endswith(maps) and cfg['reports_api'] == '', f'{p} cfg.embed, no reports')
         check('OpenStreetMap' in h and 'OpenFreeMap' in h, f'{p} attribution visible without a click')
         for pat in (r'\bodmah\b', r'24/7', r'Evolako'):
             check(not re.search(pat, h), f'{p} no "{pat}"')
