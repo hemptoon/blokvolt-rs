@@ -19,7 +19,12 @@ except Exception as e:
     CATS = None; warns.append(f'babel unavailable: {e}')
 PLURAL_KEYS = lambda en: en.count('|') == 2 and '{' not in en and ' | ' not in en
 
-for name in ('map', 'pages', 'shell', 'prices'):
+# L2 (11.11.2026): all 8 string files
+FORBID = [r'\bnoi\b', r'\bnostr[aoie]\b', r'\bredazion', r'24/7', r'\bsubito\b', r'evolako', r'\bmi\s', r'\bscont[oi]\b']
+def forbid(where, v):
+    for pat in FORBID:
+        if re.search(pat, v, re.I): errs.append(f'{where}: forbidden word ({pat})')
+for name in ('map', 'pages', 'shell', 'prices', 'pay', 'press', 'b2b', 'embed'):
     src = json.load(open(WORLD / f'strings_{name}.json', encoding='utf-8'))
     p = HERE / f'strings_{name}.json'
     if not p.exists(): errs.append(f'{p.name}: missing'); continue
@@ -37,6 +42,7 @@ for name in ('map', 'pages', 'shell', 'prices'):
             if any(not str(x).strip() for x in v.values()): errs.append(f'{p.name}:{k}: empty plural form')
             continue
         if not isinstance(v, str) or not v.strip(): errs.append(f'{p.name}:{k}: empty or not a string'); continue
+        forbid(f'{p.name}:{k}', v)
         if toks_en(v, PH) != toks_en(en, PH): errs.append(f'{p.name}:{k}: placeholders {toks(v,PH)} != {toks(en,PH)}')
         if toks(v, TAG) != toks(en, TAG): errs.append(f'{p.name}:{k}: tags/entities differ')
         if v.strip() == en.strip() and len(en) > 12: warns.append(f'{p.name}:{k}: identical to EN')
@@ -66,7 +72,27 @@ else:
             if toks(a, PH) != toks(b, PH): errs.append(f'texts.json:{path}: placeholders differ')
             if toks(a, TAG) != toks(b, TAG): errs.append(f'texts.json:{path}: tags differ')
         elif a != b: errs.append(f'texts.json:{path}: non-string value changed')
-    walk(src, tr, '')
+    walk(src, {k: tr.get(k) for k in src}, '')
+    # L2: sections pay / routes = {dot.path[i]: text} for every multilingual node of pay.json / routes.json (LANG0 format)
+    def nodes(o, path=''):
+        if isinstance(o, dict):
+            if isinstance(o.get('en'), str): yield path, o['en']; return
+            for k, v in o.items(): yield from nodes(v, f'{path}.{k}' if path else k)
+        elif isinstance(o, list):
+            for i, v in enumerate(o): yield from nodes(v, f'{path}[{i}]')
+    for sec in ('pay', 'routes'):
+        want = dict(nodes(json.load(open(WORLD / f'{sec}.json', encoding='utf-8'))))
+        got = tr.get(sec)
+        if not isinstance(got, dict): errs.append(f'texts.json: section {sec} missing'); continue
+        for k in want:
+            if k not in got: errs.append(f'texts.json:{sec}.{k}: missing')
+        for k, v in got.items():
+            if k not in want: errs.append(f'texts.json:{sec}.{k}: extra (no such node)'); continue
+            if not isinstance(v, str) or not v.strip(): errs.append(f'texts.json:{sec}.{k}: empty'); continue
+            if toks(v, PH) != toks(want[k], PH): errs.append(f'texts.json:{sec}.{k}: placeholders differ')
+            forbid(f'texts.json:{sec}.{k}', v)
+    extra = set(tr) - set(src) - {'pay', 'routes'}
+    if extra: errs.append(f'texts.json: unknown sections {sorted(extra)}')
 
 # slugs.json
 SLUG_KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']

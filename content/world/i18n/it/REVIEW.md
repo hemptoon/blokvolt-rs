@@ -48,3 +48,13 @@
 
 ## Проверка
 `python3 content/world/i18n/it/check.py` — 0 ошибок, 3 предупреждения. check.py обновлён: `{city_u}`/`{country_u}` засчитываются вместо `{city}`/`{country}`/`{country_name}` (уточнение пула 4).
+
+## L2-IT back-translation (11.11.2026)
+Blind back-translation by a separate agent of 60 random new strings (seed 1111: strings_map ci_*, pay, press, b2b, embed, texts.pay). Meaning: 60 of 60 equivalent, 0 major. Wording notes (7) — all fixed:
+- `map.ci_thanks`, `ci_err_limit` (and for consistency `ci_once`, `ci_err`, `ci_demo_note`, `ci_rules`, `ci_privacy`): "risposta" → "segnalazione" (a user check-in reads as a report, matches `ci_n30`).
+- `pay.th_apps_c`: "che indicano il Paese" → "con il Paese in elenco" (= listed in coverage).
+- `pay.th_place`: "Sito" → "Luogo" (in the route table "sito" read as website).
+- `pay.gap_line`: word order made natural, "nel livello pubblico dei dati" at the end.
+- `b2b.lic_p`: share-alike = clausola «condividi allo stesso modo» (official CC/ODbL Italian wording).
+- `embed.cf_country_any`: "(oppure l'area della mappa qui sotto)".
+Not changed: `pay.h_stops` has "150 km" written in, as in EN; `kick_pay` = `pay_more` = "Come pagare", as in EN.
