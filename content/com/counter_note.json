@@ -1,5 +1,5 @@
 {
- "_comment": "Visit counting on blokvolt.com (STATCOM 11.11.2026, RUNBOOK 3.16 and 3.26): shown on the world About page (/about/, SR, RU) after the notes. Same meaning as #merenje-poseta of the privacy policy on www.blokvolt.rs. The local sections say it in their methodology pages (Privatnost).",
+ "_comment": "Visit counting on blokvolt.com (STATCOM 11.11.2026, RUNBOOK 3.16 and 3.26): shown on the world About page (/about/, SR, RU) after the notes. Same meaning as #merenje-poseta of the privacy policy on www.blokvolt.rs. The local sections say it in their methodology pages (Privatnost). LANGI 11.11.2026: wave-1 languages (de fr nl es it pl sv nb da fi pt) added; wave 2 shows no block until translated.",
  "en": {
   "h": "Visit counting",
   "p": "There is no third-party analytics and no advertising on blokvolt.com. Visits are counted only by BlokVolt's own counter, on Cloudflare servers in the EU: which page was opened (without the parameters in the address), which website the visit came from (the site name only), campaign tags (utm), the page language, country, device type and browser. The counter sets no cookies and writes nothing to the browser. To count the same person once a day, an anonymous fingerprint is made from the IP address and browser data with a random key that is valid only for that day; the IP address is not stored. The data is used only in aggregate and is deleted after one year."
@@ -11,5 +11,49 @@
  "ru": {
   "h": "Подсчёт посещений",
   "p": "На blokvolt.com нет сторонней аналитики и рекламы. Посещения считает только собственный счётчик BlokVolt на серверах Cloudflare в ЕС: какая страница открыта (без параметров адреса), с какого сайта пришёл посетитель (только название сайта), метки кампании (utm), язык страницы, страна, тип устройства и браузер. Счётчик не ставит cookie и ничего не записывает в браузер. Чтобы один человек считался раз в день, из IP-адреса и данных браузера делается анонимный отпечаток со случайным ключом, который действует только этот день; IP-адрес не хранится. Данные используются только в сводном виде и удаляются через год."
+ },
+ "de": {
+  "h": "Besucherzählung",
+  "p": "Auf blokvolt.com gibt es weder Analysedienste von Drittanbietern noch Werbung. Besuche zählt nur der eigene Zähler von BlokVolt auf Cloudflare-Servern in der EU: welche Seite aufgerufen wurde (ohne die Parameter in der Adresse), von welcher Website der Besuch kam (nur der Name der Website), Kampagnen-Tags (utm), die Sprache der Seite, das Land, der Gerätetyp und der Browser. Der Zähler setzt keine Cookies und speichert nichts im Browser. Damit dieselbe Person nur einmal am Tag gezählt wird, entsteht aus IP-Adresse und Browserdaten ein anonymer Fingerabdruck mit einem zufälligen Schlüssel, der nur für diesen Tag gilt; die IP-Adresse wird nicht gespeichert. Die Daten werden nur zusammengefasst ausgewertet und nach einem Jahr gelöscht."
+ },
+ "fr": {
+  "h": "Mesure des visites",
+  "p": "Il n’y a sur blokvolt.com ni outil d’analyse tiers ni publicité. Les visites sont comptées uniquement par le compteur de BlokVolt, sur des serveurs Cloudflare situés dans l’UE : la page ouverte (sans les paramètres de l’adresse), le site d’où vient la visite (son nom seulement), les balises de campagne (utm), la langue de la page, le pays, le type d’appareil et le navigateur. Le compteur ne dépose aucun cookie et n’enregistre rien dans le navigateur. Pour qu’une même personne ne soit comptée qu’une fois par jour, une empreinte anonyme est calculée à partir de l’adresse IP et des données du navigateur avec une clé aléatoire valable ce jour-là seulement ; l’adresse IP n’est pas conservée. Les données ne sont utilisées que sous forme agrégée et sont supprimées au bout d’un an."
+ },
+ "nl": {
+  "h": "Bezoeken tellen",
+  "p": "Op blokvolt.com is er geen analyse van derden en geen reclame. Bezoeken worden alleen geteld door de eigen teller van BlokVolt, op servers van Cloudflare in de EU: welke pagina is geopend (zonder de parameters in het adres), van welke website het bezoek kwam (alleen de naam van de site), campagnelabels (utm), de taal van de pagina, het land, het type apparaat en de browser. De teller plaatst geen cookies en slaat niets op in de browser. Om dezelfde persoon maar één keer per dag te tellen, wordt uit het IP-adres en de browsergegevens een anonieme vingerafdruk gemaakt met een willekeurige sleutel die alleen die dag geldig is; het IP-adres wordt niet bewaard. De gegevens worden alleen in totalen gebruikt en na een jaar verwijderd."
+ },
+ "es": {
+  "h": "Recuento de visitas",
+  "p": "En blokvolt.com no hay analítica de terceros ni publicidad. Las visitas solo las cuenta el contador propio de BlokVolt, en servidores de Cloudflare en la UE: qué página se abrió (sin los parámetros de la dirección), desde qué sitio llegó la visita (solo el nombre del sitio), las etiquetas de campaña (utm), el idioma de la página, el país, el tipo de dispositivo y el navegador. El contador no usa cookies ni guarda nada en el navegador. Para contar a una misma persona una vez al día, se crea una huella anónima a partir de la dirección IP y los datos del navegador con una clave aleatoria válida solo ese día; la dirección IP no se guarda. Los datos solo se usan de forma agregada y se eliminan al cabo de un año."
+ },
+ "it": {
+  "h": "Conteggio delle visite",
+  "p": "Su blokvolt.com non ci sono strumenti di analisi di terze parti né pubblicità. Le visite sono contate solo dal contatore di BlokVolt, su server Cloudflare nell’UE: quale pagina è stata aperta (senza i parametri dell’indirizzo), da quale sito arriva la visita (solo il nome del sito), i tag di campagna (utm), la lingua della pagina, il paese, il tipo di dispositivo e il browser. Il contatore non usa cookie e non salva nulla nel browser. Per contare la stessa persona una sola volta al giorno, dall’indirizzo IP e dai dati del browser si ricava un’impronta anonima con una chiave casuale valida solo per quel giorno; l’indirizzo IP non viene conservato. I dati sono usati solo in forma aggregata e vengono cancellati dopo un anno."
+ },
+ "pl": {
+  "h": "Liczenie odwiedzin",
+  "p": "Na blokvolt.com nie ma zewnętrznej analityki ani reklam. Odwiedziny liczy tylko własny licznik BlokVolt na serwerach Cloudflare w UE: jaka strona została otwarta (bez parametrów w adresie), z jakiej witryny przyszła wizyta (tylko jej nazwa), znaczniki kampanii (utm), język strony, kraj, typ urządzenia i przeglądarka. Licznik nie ustawia plików cookie i niczego nie zapisuje w przeglądarce. Aby tę samą osobę liczyć raz dziennie, z adresu IP i danych przeglądarki tworzony jest anonimowy odcisk z losowym kluczem ważnym tylko tego dnia; adres IP nie jest przechowywany. Dane są używane wyłącznie zbiorczo i usuwane po roku."
+ },
+ "sv": {
+  "h": "Besöksräkning",
+  "p": "På blokvolt.com finns ingen analys från tredje part och ingen reklam. Besök räknas bara av BlokVolts egen räknare, på Cloudflares servrar i EU: vilken sida som öppnades (utan parametrarna i adressen), vilken webbplats besöket kom från (bara webbplatsens namn), kampanjtaggar (utm), sidans språk, land, enhetstyp och webbläsare. Räknaren sätter inga cookies och sparar inget i webbläsaren. För att samma person bara ska räknas en gång per dag skapas ett anonymt fingeravtryck av IP-adressen och webbläsardata med en slumpmässig nyckel som bara gäller den dagen; IP-adressen sparas inte. Uppgifterna används bara sammanställda och raderas efter ett år."
+ },
+ "nb": {
+  "h": "Telling av besøk",
+  "p": "På blokvolt.com er det verken analyse fra tredjeparter eller reklame. Besøk telles bare av BlokVolts egen teller, på Cloudflare-servere i EU: hvilken side som ble åpnet (uten parameterne i adressen), hvilket nettsted besøket kom fra (bare navnet på nettstedet), kampanjemerker (utm), sidens språk, land, enhetstype og nettleser. Telleren setter ingen informasjonskapsler og lagrer ingenting i nettleseren. For at samme person bare skal telles én gang per dag, lages et anonymt fingeravtrykk av IP-adressen og nettleserdata med en tilfeldig nøkkel som bare gjelder den dagen; IP-adressen lagres ikke. Dataene brukes bare samlet og slettes etter ett år."
+ },
+ "da": {
+  "h": "Optælling af besøg",
+  "p": "På blokvolt.com er der hverken analyse fra tredjeparter eller reklamer. Besøg tælles kun af BlokVolts egen tæller på Cloudflares servere i EU: hvilken side der blev åbnet (uden parametrene i adressen), hvilket websted besøget kom fra (kun webstedets navn), kampagnemærker (utm), sidens sprog, land, enhedstype og browser. Tælleren sætter ingen cookies og gemmer intet i browseren. For at den samme person kun tælles én gang om dagen, dannes et anonymt fingeraftryk af IP-adressen og browserdata med en tilfældig nøgle, der kun gælder den dag; IP-adressen gemmes ikke. Dataene bruges kun samlet og slettes efter et år."
+ },
+ "fi": {
+  "h": "Käyntien laskenta",
+  "p": "Sivustolla blokvolt.com ei ole kolmansien osapuolten analytiikkaa eikä mainoksia. Käynnit laskee vain BlokVoltin oma laskuri Cloudflaren palvelimilla EU:ssa: mikä sivu avattiin (ilman osoitteen parametreja), miltä sivustolta käynti tuli (vain sivuston nimi), kampanjatunnisteet (utm), sivun kieli, maa, laitetyyppi ja selain. Laskuri ei käytä evästeitä eikä tallenna selaimeen mitään. Jotta sama henkilö laskettaisiin vain kerran päivässä, IP-osoitteesta ja selaimen tiedoista muodostetaan anonyymi sormenjälki satunnaisella avaimella, joka on voimassa vain sen päivän; IP-osoitetta ei tallenneta. Tietoja käytetään vain koottuina, ja ne poistetaan vuoden kuluttua."
+ },
+ "pt": {
+  "h": "Contagem de visitas",
+  "p": "No blokvolt.com não há análise de terceiros nem publicidade. As visitas são contadas apenas pelo contador próprio da BlokVolt, em servidores da Cloudflare na UE: que página foi aberta (sem os parâmetros do endereço), de que site veio a visita (apenas o nome do site), etiquetas de campanha (utm), o idioma da página, o país, o tipo de dispositivo e o navegador. O contador não usa cookies nem guarda nada no navegador. Para contar a mesma pessoa uma só vez por dia, cria-se uma impressão digital anónima a partir do endereço IP e dos dados do navegador, com uma chave aleatória válida apenas nesse dia; o endereço IP não é guardado. Os dados só são usados de forma agregada e são apagados ao fim de um ano."
  }
 }

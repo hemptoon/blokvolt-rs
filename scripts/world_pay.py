@@ -152,9 +152,17 @@ def _town_gid():
     if not _TG:
         import csv
         rows = list(csv.DictReader(open(WORLD / 'names' / 'cities.csv', encoding='utf-8')))
+        # LANGI 11.11.2026: also names/cities_extra.csv (FIXL2) — towns without a city page (Botevgrad, Pitești, Edirne…);
+        # names compared case-blind, Romanian cedilla = comma (Piteşti = Pitești). Only languages outside en/sr/ru use this.
+        extra = list(csv.DictReader(open(WORLD / 'names' / 'cities_extra.csv', encoding='utf-8')))
+
+        def k(x):
+            return (x or '').strip().lower().replace('ş', 'ș').replace('ţ', 'ț')
         for name, cc in TOWN_CC.items():
-            want = {name, *(TOWNS.get(name) or ())}
-            r = next((r for r in rows if r['cc'] == cc and ({r['name_en'], r['name_sr'], r['name_local']} & want)), None)
+            want = {k(x) for x in (name, *(TOWNS.get(name) or ()))}
+            r = next((r for r in rows if r['cc'] == cc and ({k(r['name_en']), k(r['name_sr']), k(r['name_local'])} & want)), None)
+            if not r:
+                r = next((r for r in extra if r['cc'] == cc and ({k(r['name_geonames']), k(r['ascii'])} & want)), None)
             if r:
                 _TG[name] = int(r['geonameid'])
     return _TG

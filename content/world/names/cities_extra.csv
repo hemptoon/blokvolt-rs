@@ -820,3 +820,7 @@ geonameid,cc,name_geonames,ascii,note
 686803,UA,Zvenyhorodka,Zvenyhorodka,"FIXL: bundle 2026-11-11, English fallback in LANG0 build"
 699553,UA,Zvyahel,Novohrad-Volyns'kyy,"FIXL: bundle 2026-11-11, English fallback in LANG0 build"
 6941080,US,Fort Bragg,Fort Bragg,"FIXL: bundle 2026-11-11, English fallback in LANG0 build"
+785082,MK,Tetovo,Tetovo,"LANGI: route town (world_pay), GeoNames cities15000"
+789527,MK,Kičevo,Kicevo,"LANGI: route town (world_pay), GeoNames cities15000"
+747712,TR,Edirne,Edirne,"LANGI: route town (world_pay), GeoNames cities15000"
+741855,TR,Lüleburgaz,Luleburgaz,"LANGI: route town (world_pay), GeoNames cities15000"
