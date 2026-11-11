@@ -27,3 +27,10 @@ töltőállomás — станция; töltőhely — место/локация; 
 
 ## Не сделано
 - Носитель языка не вычитывал. texts.json переведён отдельным агентом и проверен структурно + выборочно.
+
+## L2-HU (11.11.2026)
+- +274 ключа: strings_map +29 (ci_*, emb_open), новые strings_pay 93, strings_press 54, strings_b2b 33, strings_embed 65. HOME2 в dev ещё не было — его ключей нет.
+- texts.json: `pay` (6 пунктов AFIR) и `routes` (59 узлов `routes[i].stops[j].city`) в формате LANG0. Названия остановок взяты из hu/cities.csv, чтобы совпадать со страницами городов (Belgrád, Szófia, Zágráb; Čakovec → Csáktornya, Sibiu → Nagyszeben — тот же открытый вопрос об исторических названиях).
+- **Для LANG0 — какие формы ждут плейсхолдеры:** `{cu}` (t_pay_country, d_pay_country) и `{lo}`/`{hi}` в `f_range` — форма места = `in_phrase` из countries.csv («Németországban»). `{name}` в pay и `{lo}`/`{hi}` в `f_home` — именительный; фразы построены так, чтобы не требовать артикля a/az («Ez az ország ({name}) …», «Töltőállomások — {name}»). `{month}`, `{prev}`, `{date}`, `{fx}`, `{layer}` стоят без падежных суффиксов (после двоеточия или в скобках) — подойдёт любой формат даты/месяца.
+- Название индекса: «Európai elektromosautó-töltési árindex». «Sajtónak» = For media. «szerkesztőségi» не используется (запрещённое слово в check.py) — «sajtótartalom».
+- check.py: все 8 файлов + texts.json about_data, download, pay, routes (пути узлов сверяются с pay.json/routes.json) → OK.

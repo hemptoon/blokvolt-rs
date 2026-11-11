@@ -26,3 +26,8 @@ FJ → «a Fidzsi-szigeteken»; MF → «Saint Martinon» (единый вид �
 
 ## Проверка
 `check.py` — OK. Обратный перевод изменённых строк отдельным агентом: смысл совпадает, 2 его замечания приняты (`p_multi`, `h_more`).
+
+## L2-HU — обратный перевод (11.11.2026)
+60 случайных новых строк, независимый агент без доступа к EN: смысл совпал 60/60. Его стилистические замечания — 8; принято 6:
+`b2b.lic_p` («készlet» → «adatkészlet», «soronkénti» → «rekordszintű»), `b2b.what_price` («nagy teljesítményű ár» → «HPC-ár»), `pay.th_gaps` («Hézagok» → «Töltő nélkül > 150 km»), `press.read_issue` (+«elolvasása»), `press.th_change` → «A DC-ár változása», `embed.dv_p_lang` («cím» двусмысленно: адрес/заголовок → «URL-je»).
+Не приняты: `pay.checked` «Adatok: {date}» — так же, как `data_date` на карте; `embed.cf_more` «API-kérések» — в контексте ссылки однозначно.
