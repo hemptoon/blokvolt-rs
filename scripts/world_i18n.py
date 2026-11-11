@@ -21,6 +21,8 @@ CLI:
   python3 scripts/world_i18n.py check <code>         # an i18n/<code>/ folder against the EN keys (same checks as L-tasks)
   python3 scripts/world_i18n.py pseudo <dir>          # writes the pseudo-language xx (⟦…⟧, +30 % length) into <dir>/xx/
   python3 scripts/world_i18n.py registry              # prints registry entries made with Babel for the L-task languages
+  python3 scripts/world_i18n.py status                # LANG0: keys each language still lacks against EN (all files, texts)
+  python3 scripts/world_i18n.py world-paths           # LANG0: rsync excludes of the world folders of every language
 """
 import csv
 import json
@@ -743,6 +745,27 @@ if __name__ == '__main__':
         sys.exit(1 if e else 0)
     elif cmd == 'pseudo':
         print(write_pseudo(sys.argv[2]))
+    elif cmd == 'status':   # LANG0: what each language still lacks against EN (all string files + texts pay/routes)
+        rows = []
+        for code in L_CODES:
+            n, parts = 0, []
+            for part in PARTS:
+                raw = json.load(open(WORLD / f'strings_{part}.json', encoding='utf-8'))
+                pth = i18n_dir(code) / f'strings_{part}.json'
+                tr = json.load(open(pth, encoding='utf-8')) if pth.exists() else {}
+                m = sum(1 for k in raw if tr.get(k) in (None, '', {}))
+                if m:
+                    parts.append(f'{part} {m}')
+                    n += m
+            tx = _texts_file(code)
+            for sec in DATA_TEXTS:
+                m = sum(1 for k in data_nodes(sec) if not str((tx.get(sec) or {}).get(k) or '').strip())
+                if m:
+                    parts.append(f'texts.{sec} {m}')
+                    n += m * (sec not in NAME_SECTIONS)
+            rows.append((code, n, parts))
+        for code, n, parts in rows:
+            print(f'{code}: {n} keys missing' + (f" ({', '.join(parts)})" if parts else ''))
     elif cmd == 'world-paths':   # LANG0: top folders of the world layer in every registry language (blokvolt-com deploy.yml)
         ps = set()
         for l in registry():
