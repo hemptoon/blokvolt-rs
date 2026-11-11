@@ -31,3 +31,11 @@
 
 - `check.py` — 0 ошибок.
 - Обратный перевод 40 строк (20 изменённых + 20 случайных) вслепую отдельным агентом: 37 ok, 3 minor, 0 mismatch. Minor-замечания исправлены (zoom_note) или оставлены осознанно (f_conf/c_conf — длина). Подробно — `BACKTRANS_R.md`.
+
+## L2 (11.11.2026, branch l2-nl)
+
+- 274 new keys translated: strings_map +29 (ci_* check-ins, emb_open), strings_pay 93, strings_press 54, strings_b2b 33, strings_embed 65.
+- texts.json: new sections `pay` (6 AFIR points) and `routes` (59 stop city names, Dutch exonyms from cities.csv: Belgrado, Boedapest); `sources_pages.nobil` added (verbatim attribution).
+- Back-translation of 60 random new strings: 0 meaning drifts, style fixes applied — see BACKTRANS_L2.md.
+- NL/BE cities: all 302 city pages of NL and BE are in cities.csv (0 added); names and exonyms re-checked.
+- Open: `cu`/`lo`/`hi` placeholders must carry the Dutch preposition ("in Duitsland", "in de Verenigde Staten") — LANG0 should fill them from `in_phrase`.
