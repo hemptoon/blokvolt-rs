@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Check an L-task language pack: content/world/i18n/<code>/ against the EN sources.
 
-Usage: python3 content/world/i18n/pl/check.py      (code = folder name)
+Usage: python3 content/world/i18n/lt/check.py      (code = folder name)
+L2 (11.11.2026): all 8 strings_*.json and texts.json sections pay / routes.
 Exit 1 on any error. Warnings do not fail.
 """
 import csv, json, re, sys
@@ -58,7 +59,8 @@ def check_str(where, en, tr):
 
 def strings(cats):
     n = 0
-    for f in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices']:
+    for f in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+              'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed']:
         p = HERE / f'{f}.json'
         if not p.exists():
             err.append(f'{f}.json missing'); continue
@@ -124,7 +126,33 @@ def texts():
             err.append(f'texts.{k} missing')
         else:
             walk(v, t[k], '.' + k)
+    # L2 (LANG0 format): multilingual nodes of pay.json / routes.json, key = dotted path with [i]
+    for sec in ('pay', 'routes'):
+        want = {}
+        ml_nodes(json.load(open(WORLD / f'{sec}.json', encoding='utf-8')), '', want)
+        got = t.get(sec)
+        if not isinstance(got, dict):
+            err.append(f'texts.{sec} missing'); continue
+        if list(got) != list(want):
+            err.append(f'texts.{sec}: paths differ from {sec}.json ({len(got)} vs {len(want)})')
+        for p, e in want.items():
+            if p in got:
+                cnt[0] += 1
+                cnt[1] += got[p] != e
+                check_str(f'texts.{sec}.{p}', e, got[p])
     return cnt
+
+
+def ml_nodes(o, path, out):
+    """Multilingual leaf nodes ({en, sr, ...}) of a data file, path like afir.points[0] / routes[3].stops[1].city."""
+    if isinstance(o, dict):
+        if isinstance(o.get('en'), str) and 'sr' in o:
+            out[path] = o['en']; return
+        for k, v in o.items():
+            ml_nodes(v, f'{path}.{k}' if path else k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            ml_nodes(v, f'{path}[{i}]', out)
 
 
 def slugs():
@@ -176,7 +204,7 @@ def csvs():
 
 
 def style():
-    bad = re.compile(r'\b(my|nasz\w*|prosimy|dziękujemy|zapraszamy|redakcj\w*|24/7|od razu|natychmiast\w*)\b', re.I)
+    bad = re.compile(r'\b(mes|mūsų|mums|redakcij\w*|24/7|iš karto|akimirksniu|Evolako)\b', re.I)
     for f in HERE.glob('*.json'):
         for m in bad.finditer(f.read_text(encoding='utf-8')):
             warn.append(f'{f.name}: style word {m.group(0)!r}')
