@@ -43,8 +43,12 @@ def same_marks(en, tr, where):
 
 C = cats()
 n_str = 0
-for f in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices']:
+FILES = ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+         'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed']  # L2: all 8 files
+for f in FILES:
     en = json.load(open(WORLD / f'{f}.json'))
+    if not (HERE / f'{f}.json').exists():
+        errs.append(f'{f}: file missing'); continue
     tr = json.load(open(HERE / f'{f}.json'))
     for k in en.keys() - tr.keys():
         errs.append(f'{f}: missing key {k}')
@@ -55,7 +59,7 @@ for f in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices']:
             continue
         e = en[k]['en']
         n_str += 1
-        if k in PL_KEYS.get(f, set()):
+        if k in PL_KEYS.get(f, set()) or k.startswith('pl_'):
             if not isinstance(v, dict) or set(v) != C:
                 errs.append(f'{f}.{k}: plural object must have exactly {sorted(C)}')
             elif not all(isinstance(x, str) and x.strip() for x in v.values()):
@@ -91,6 +95,38 @@ def walk(a, b, p):
 
 for part in ['about_data', 'download']:
     walk(json.load(open(WORLD / f'{part}.json'))['en'], texts.get(part), part)
+
+
+# L2 / LANG0: texts.json -> pay, routes = {dotted path of a multilingual node: text}
+def nodes(o, p, out):
+    if isinstance(o, dict):
+        if 'en' in o and 'sr' in o and all(isinstance(v, str) for v in o.values()):
+            out[p] = o['en']; return
+        for k, v in o.items():
+            nodes(v, f'{p}.{k}' if p else k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            nodes(v, f'{p}[{i}]', out)
+
+
+n_data = 0
+for part in ['pay', 'routes']:
+    want = {}
+    nodes(json.load(open(WORLD / f'{part}.json')), '', want)
+    got_t = texts.get(part)
+    if not isinstance(got_t, dict):
+        errs.append(f'texts.{part}: section missing'); continue
+    for k in want.keys() - got_t.keys():
+        errs.append(f'texts.{part}: missing node {k}')
+    for k in got_t.keys() - want.keys():
+        errs.append(f'texts.{part}: unknown node {k}')
+    for k in want.keys() & got_t.keys():
+        n_data += 1
+        if not isinstance(got_t[k], str):
+            errs.append(f'texts.{part}.{k}: must be a string'); continue
+        same_marks(want[k], got_t[k], f'texts.{part}.{k}')
+        if part == 'routes' and re.search(r'[A-Za-z]', got_t[k]):
+            warns.append(f'texts.routes.{k}: Latin letters {got_t[k]}')
 
 # slugs.json
 sl = json.load(open(HERE / 'slugs.json'))
@@ -149,7 +185,7 @@ for r in rows:
     if re.search(r'[A-Za-z]', r['name']) and 'latin' not in r['note']:
         warns.append(f"cities.csv {r['geonameid']}: Latin letters in name {r['name']}")
 
-print(f'mk: {n_str} strings, {len(texts)} texts, {len(sl)} slugs, {len(got)} countries, '
+print(f'mk: {n_str} strings, {len(texts)} texts ({n_data} data nodes), {len(sl)} slugs, {len(got)} countries, '
       f'{len(rows)} cities of {len(src)}; plural categories {sorted(C)}')
 for w in warns[:30]:
     print('WARN', w)
