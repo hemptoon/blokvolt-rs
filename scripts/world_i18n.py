@@ -41,6 +41,9 @@ SLUG_KEYS = ('home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices',
 # LANG0: section paths of G4/G5/G7/G10. en/sr/ru keep them in config.json; another language may name them in its
 # slugs.json, otherwise the engine takes its home prefix + the English path (/de/ + how-to-pay/ = /de/how-to-pay/)
 SECTION_SLUGS = ('pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers')
+# LANG1 (D7): the contract of slugs.json names the developers page "dev" and the configurator "widget"; LANG0 called them
+# "developers" and "map_conf". Both spellings are read (the D7 name wins when a file holds both); the engine uses LANG0's.
+SLUG_ALIASES = {'dev': 'developers', 'widget': 'map_conf'}
 SLUG_PATHS = ('home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology') + SECTION_SLUGS
 MARK = '[EN] '                                 # preview only: an English string standing in for a missing translation
 MISSING = Counter()                            # (lang, part) -> keys filled with English in a preview build
@@ -119,6 +122,9 @@ def slugs(lang):
         if not p.exists():
             raise SystemExit(f'world_i18n: {p} is missing (language {lang} is enabled)')
         s = json.load(open(p, encoding='utf-8'))
+        for a, k in SLUG_ALIASES.items():   # D7 names → engine names
+            if s.get(a):
+                s[k] = s[a]
     bad = [k for k in SLUG_KEYS if not s.get(k)]
     if bad:
         raise SystemExit(f'world_i18n: slugs of {lang} miss {bad}')
@@ -126,6 +132,8 @@ def slugs(lang):
     for k in SECTION_SLUGS:   # LANG0: optional in slugs.json — home prefix + the English path
         if not s.get(k):
             s[k] = s['home'].rstrip('/') + en[k]
+    for a, k in SLUG_ALIASES.items():   # D7: both names answer
+        s[a] = s[k]
     return s
 
 
@@ -353,6 +361,53 @@ def country_in(row, lang):
     return country_name(row, lang)
 
 
+def country_nom(row, lang):
+    """D4: the name of a country in the middle of a sentence ({name_nom}), with the article where the language needs one
+    ("die Schweiz", "les Pays-Bas", "η Ελβετία"): optional column name_nom of i18n/<code>/countries.csv, else the name."""
+    if lang not in BASE:
+        x = countries(lang).get(row['cc'])
+        if x and (x.get('name_nom') or '').strip():
+            return x['name_nom'].strip()
+    return country_name(row, lang)
+
+
+FR_VOWEL = re.compile(r'[AEIOUYÀÂÄÆÉÈÊËÎÏÔÖŒÙÛÜŸaeiouyàâäæéèêëîïôöœùûüÿ]')
+# French towns with a mute h ("d'Hyères"); every other h counts as aspirated ("de Hambourg", "de Hanovre", "de Heidelberg")
+FR_H_MUET = {'hyeres', 'herouville-saint-clair', 'henin-beaumont', 'hazebrouck', 'hennebont', 'herblay', 'herblay-sur-seine'}
+
+
+def city_de(name, lang):
+    """D5: "de Lyon" / "d’Ulm" / "du Havre" / "des Sables-d’Olonne" — the French "of/near <town>" with elision and the
+    contracted article ({city_de}; FR t_near "près {city_de}"). Other languages: the name unchanged (the placeholder is
+    meant for fr only; check_folder allows it there)."""
+    if lang not in ('fr', 'xx') or not name:
+        return name
+    n = name.strip()
+    if n.startswith('Le '):
+        return 'du ' + n[3:]
+    if n.startswith('Les '):
+        return 'des ' + n[4:]
+    first = n[0]
+    if FR_VOWEL.match(first) or (first in 'Hh' and _fold(n).replace(' ', '-') in FR_H_MUET):
+        return 'd’' + n
+    return 'de ' + n
+
+
+def month_label(ym, lang):
+    """D3: {month} of the other languages — the stand-alone month in the nominative and the year (CLDR "LLLL y"):
+    "listopad 2026" (hr, pl, cs), "листопад 2026" (uk), not the genitive of a date. en/sr/ru keep their own rule
+    (world_prices.month_label)."""
+    y, m = int(ym[:4]), int(ym[5:7])
+    try:
+        import datetime
+        from babel.dates import format_date
+        if lang == 'xx':
+            raise ImportError
+        return format_date(datetime.date(y, m, 1), 'LLLL y', locale=reg(lang).get('babel') or lang)
+    except ImportError:
+        return f'{months(lang)[m - 1]} {y}'
+
+
 def check_collisions(out):
     """Stops the build when a page path of an extra language is already taken by another page of blokvolt.com
     (e.g. /hr/ = the Croatian regional section). Called after the regional sections and before the world pages."""
@@ -390,7 +445,13 @@ PH = re.compile(r'\{[^{}]*\}')
 TAG = re.compile(r'</?[a-zA-Z][^>]*>|&[a-z#0-9]+;')
 
 
-def _ph_group(ph):
+def _ph_group(ph, lang=None, key=None):
+    """The group of a placeholder: case variants count as the base slot ({city_u} = {city}); D4 {name_nom} = {name} in
+    every language; D5 {city_de} = {city} in French (and = {x} in t_near, "près {city_de}")."""
+    if ph == '{name_nom}':
+        return '{name}'
+    if ph == '{city_de}' and lang in ('fr', 'xx'):
+        return '{x}' if key == 't_near' else '{city}'
     return re.sub(r'^\{(city|country)_[uv]\}$', r'{\1}', ph)
 
 
@@ -426,8 +487,8 @@ def check_folder(lang, folder=None):
                 continue
             # placeholders: the same as EN, with the case variants the engine also passes ({city}/{city_u}/{city_v},
             # {country}/{country_u}/{country_v}); a group may be left out only where SR or RU leave it out too
-            base_ph = [set(map(_ph_group, PH.findall(str(v.get(x) or '')))) for x in BASE]
-            tg = set(map(_ph_group, PH.findall(t)))
+            base_ph = [{_ph_group(p) for p in PH.findall(str(v.get(x) or ''))} for x in BASE]
+            tg = {_ph_group(p, lang, k) for p in PH.findall(t)}
             if not tg <= set.union(*base_ph) or not set.intersection(*base_ph) <= tg:
                 errs.append(f'{part}.{k}: placeholders {PH.findall(en)} != {PH.findall(t)}')
             if sorted(TAG.findall(en)) != sorted(TAG.findall(t)):
@@ -440,10 +501,14 @@ def check_folder(lang, folder=None):
         errs.append('slugs.json missing')
     else:
         sl = json.load(open(s, encoding='utf-8'))
-        if not set(SLUG_KEYS) <= set(sl) <= set(SLUG_KEYS) | set(SECTION_SLUGS):
-            errs.append(f'slugs.json keys {sorted(sl)}: need {sorted(SLUG_KEYS)}, may add {sorted(SECTION_SLUGS)}')
+        opt = set(SECTION_SLUGS) | set(SLUG_ALIASES)
+        if not set(SLUG_KEYS) <= set(sl) <= set(SLUG_KEYS) | opt:
+            errs.append(f'slugs.json keys {sorted(sl)}: need {sorted(SLUG_KEYS)}, may add {sorted(opt)}')
+        for a, k in SLUG_ALIASES.items():
+            if sl.get(a) and sl.get(k) and sl[a] != sl[k]:
+                errs.append(f'slugs.{a} and slugs.{k} name the same page differently')
         for k, v in sl.items():
-            if k in SLUG_PATHS and not re.fullmatch(r'/[a-z]{2,3}/([a-z0-9]+(-[a-z0-9]+)*/)*', v or ''):
+            if (k in SLUG_PATHS or k in SLUG_ALIASES) and not re.fullmatch(r'/[a-z]{2,3}/([a-z0-9]+(-[a-z0-9]+)*/)*', v or ''):
                 errs.append(f'slugs.{k}: "{v}" is not /<lang>/…/ in ASCII lowercase')
             if k not in SLUG_PATHS and not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v or ''):
                 errs.append(f'slugs.{k}: "{v}" is not one ASCII segment')
@@ -463,8 +528,9 @@ def check_folder(lang, folder=None):
         if p.exists():
             with open(p, encoding='utf-8', newline='') as f:
                 hdr = next(csv.reader(f), [])
-            if hdr != cols:
-                errs.append(f'{name}: header {hdr} != {cols}')
+            opt = ['name_nom'] if name == 'countries.csv' else []   # D4: optional column, anywhere after the five
+            if hdr[:len(cols)] != cols or any(h not in opt for h in hdr[len(cols):]) or len(set(hdr)) != len(hdr):
+                errs.append(f'{name}: header {hdr} != {cols}' + (f' (+ optional {opt})' if opt else ''))
     return errs
 
 
@@ -498,6 +564,9 @@ def write_pseudo(dest):
                 tr[k] = pseudo_text(en[:-len(' | BlokVolt')]) + ' | BlokVolt'
             else:
                 tr[k] = pseudo_text(en)
+            if isinstance(tr[k], str):   # LANG1: the pseudo-language also exercises D4 {name_nom} and D5 {city_de}
+                tr[k] = tr[k].replace('{name}', '{name_nom}') if part == 'pay' else tr[k]
+                tr[k] = tr[k].replace('{x}', '{city_de}') if (part, k) == ('pages', 't_near') else tr[k]
         json.dump(tr, open(d / f'strings_{part}.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     sl = {'home': '/xx/', 'map': '/xx/xmap/', 'hub': '/xx/xstations/', 'net': 'xnet', 'about': 'xabout-data',
           'download': 'xdownload', 'gnet': '/xx/xnetworks/', 'prices': '/xx/xprices/', 'shell_about': '/xx/xabout/',
@@ -506,9 +575,10 @@ def write_pseudo(dest):
     names = WORLD / 'names' / 'countries.csv'
     with open(d / 'countries.csv', 'w', encoding='utf-8', newline='') as f:
         w = csv.writer(f)
-        w.writerow(['cc', 'name', 'slug', 'in_phrase', 'note'])
+        w.writerow(['cc', 'name', 'slug', 'in_phrase', 'note', 'name_nom'])
         for r in read_csv(names):
-            w.writerow([r['cc'], '⟦' + r['name_en'] + '⟧', 'x' + r['slug_en'], '⟦in ' + r['name_en'] + '⟧', 'pseudo'])
+            w.writerow([r['cc'], '⟦' + r['name_en'] + '⟧', 'x' + r['slug_en'], '⟦in ' + r['name_en'] + '⟧', 'pseudo',
+                        '⟦the ' + r['name_en'] + '⟧'])
     with open(d / 'cities.csv', 'w', encoding='utf-8', newline='') as f:   # half of the cities: the rest tests the fallback
         w = csv.writer(f)
         w.writerow(['geonameid', 'name', 'in_phrase', 'decl_ok', 'note'])
@@ -666,6 +736,9 @@ OG = {'de': 'de_DE', 'fr': 'fr_FR', 'es': 'es_ES', 'it': 'it_IT', 'nl': 'nl_NL',
       'et': 'et_EE', 'lt': 'lt_LT', 'lv': 'lv_LV'}
 
 
+PCT_FIXED = {'ro': '{x}%'}   # LANG1, D8 (LANG_pool): the percent pattern the language keeps whatever Babel says
+
+
 def babel_entry(code):
     from babel import Locale
     lc = Locale.parse(code)
@@ -674,6 +747,7 @@ def babel_entry(code):
     script = {'bg': 'cyrl', 'uk': 'cyrl', 'mk': 'cyrl', 'el': 'grek'}.get(code, 'latn')
     pat = lc.percent_formats[None].pattern.replace('#,##0', '{x}').replace('#', '').replace('%', pctsym).replace('\xa0', ' ').strip()
     months = [lc.months['stand-alone']['wide'][i] for i in range(1, 13)]
+    pat = PCT_FIXED.get(code, pat)   # D8: Romanian "15%" (Babel: "15 %")
     t = OG[code].split('_')[1]
     return dict(hreflang=code, html=code, og=OG[code], code=code.upper(), label=lc.get_display_name(code)[:1].upper() + lc.get_display_name(code)[1:],
                 script=script, dir='ltr', dec=get_decimal_symbol(code), thou=get_group_symbol(code), pct=pat,
@@ -724,6 +798,29 @@ def selftest():
                 errs.append(f'registry misses {code}')
     except ImportError:
         print('world_i18n selftest: Babel not installed — CLDR checks skipped')
+    # LANG1: D3 months, D5 French "de", D7 slug names, D8 Romanian percent, D4/D5 placeholder rules
+    want = {('Ulm', 'fr'): 'd’Ulm', ('Lyon', 'fr'): 'de Lyon', ('Le Havre', 'fr'): 'du Havre', ('Les Herbiers', 'fr'): 'des Herbiers',
+            ('Hambourg', 'fr'): 'de Hambourg', ('Hyères', 'fr'): 'd’Hyères', ('Évry', 'fr'): 'd’Évry', ('Ulm', 'de'): 'Ulm',
+            ('La Rochelle', 'fr'): 'de La Rochelle', ('Yverdon-les-Bains', 'fr'): 'd’Yverdon-les-Bains'}
+    for (n, l), v in want.items():
+        if city_de(n, l) != v:
+            errs.append(f'city_de({n}, {l}) = {city_de(n, l)} != {v}')
+    try:
+        for l, v in (('hr', 'studeni 2026'), ('uk', 'листопад 2026'), ('pl', 'listopad 2026'), ('cs', 'listopad 2026'),
+                     ('el', 'Νοέμβριος 2026'), ('de', 'November 2026'), ('fi', 'marraskuu 2026')):
+            if month_label('2026-11', l) != v:
+                errs.append(f'month_label {l}: {month_label("2026-11", l)} != {v}')
+    except SystemExit:
+        pass
+    if registry().get('ro', {}).get('pct') != '{x}%':
+        errs.append('ro pct must be {x}% (D8)')
+    for l in BASE:
+        s_ = slugs(l)
+        if s_['dev'] != s_['developers'] or s_['widget'] != s_['map_conf']:
+            errs.append(f'slug aliases of {l}')
+    if _ph_group('{name_nom}', 'de') != '{name}' or _ph_group('{city_de}', 'fr') != '{city}' or \
+            _ph_group('{city_de}', 'fr', 't_near') != '{x}' or _ph_group('{city_de}', 'de') == '{city}':
+        errs.append('placeholder groups name_nom / city_de')
     if pseudo_text('{n} of <b>x</b>').count('{n}') != 1:
         errs.append('pseudo keeps placeholders')
     for l in langs():

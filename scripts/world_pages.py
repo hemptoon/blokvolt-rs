@@ -577,13 +577,14 @@ def render_city(c, p, urls, l, dup_titles):
     info = d['city']
     cname, city = N.country(cc, l), N.city_name(info, l)
     kw = dict(country=cname, country_u=N.country_u(cc, l), country_v=N.country_u(cc, l), city=city,
-              city_u=N.city_u(info, l, c.S), city_v=N.city_u(info, l, c.S))
+              city_u=N.city_u(info, l, c.S), city_v=N.city_u(info, l, c.S), city_de=I.city_de(city, l))   # D5, D6
     c.pk = dict(kw, country_name=cname)
     key = 't_city_cc' if (l, p['key']) in dup_titles else 't_city'
     title = c.t(l, key, **kw)
     near_other = [g for g, _ in d['near'] if N.city_name(d['near_info'][str(g)], l) != city]
     if (l, p['key']) in dup_titles and near_other and kw['city_u'] != kw['country_u']:   # same name twice in one country (Senden, Senden): "(near Ulm)"
-        title += c.t(l, 't_near', x=N.city_name(d['near_info'][str(near_other[0])], l))
+        x = N.city_name(d['near_info'][str(near_other[0])], l)
+        title += c.t(l, 't_near', x=x, city_de=I.city_de(x, l))   # D5/D15: fr " (près d’Ulm)" 
     b = common_blocks(c, l, d)
     st = d['stats']
     b['paras'].append(c.t(l, 'p_city_cmp', city=c.n(l, st['dc50_per10'], 1), country=c.n(l, d['country_dc50_per10'], 1), country_name=cname))

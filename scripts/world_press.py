@@ -39,8 +39,6 @@ PRESS = {l: I.slugs(l)['press'] for l in LANGS}       # /press/ /sr/za-medije/ /
 CHART_DIR = '/press/charts/'
 CHARTS = ('dc-vs-home', 'europe')
 SITE_URL = 'https://blokvolt.com'
-MONTHS_DE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
-MONTHS_FR = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
 FORBIDDEN = WP.FORBIDDEN + [r'\bmy\s', r'редакци']
 
 
@@ -51,6 +49,22 @@ def load_strings():
             if l in LANGS and not v.get(l):
                 raise SystemExit(f'world press: strings_press.json: "{k}" has no {l}')
     return I.load('press', LANGS)   # LANG0: other languages from i18n/<code>/strings_press.json (stops on a missing key)
+
+
+def strings_of(l, S=None):
+    """LANG1 (D2): the press strings of one language — the built ones when the language is enabled, otherwise straight
+    from i18n/<code>/strings_press.json (the press release drafts of G7 in de, fr … while the site has only en/sr/ru).
+    No built-in German or French any more: a language without its f_* keys stops with the name of the file."""
+    S = S if S is not None else load_strings()
+    if l in S and not any(str(S[l].get(k, '')).startswith(I.MARK) for k in S[l] if k.startswith('f_')):
+        return S[l]
+    p = I.i18n_dir(l) / 'strings_press.json'
+    tr = json.load(open(p, encoding='utf-8')) if p.exists() else {}
+    raw = json.load(open(WORLD / 'strings_press.json', encoding='utf-8'))
+    miss = [k for k in raw if k.startswith('f_') and not str(tr.get(k) or '').strip()]
+    if miss:
+        raise SystemExit(f'world press: {p} lacks {", ".join(miss)} (the facts of an issue in {l} come from there — LANG_pool D2)')
+    return {k: (tr.get(k) if tr.get(k) not in (None, '') else raw[k]['en']) for k in raw}
 
 
 # ------------------------------------------------------------------ snapshots
@@ -110,18 +124,12 @@ def prev_month(hist, month):
 
 
 def month_name(ym, l):
-    y, m = ym.split('-')
-    if l == 'de':
-        return f'{MONTHS_DE[int(m) - 1]} {y}'
-    if l == 'fr':
-        return f'{MONTHS_FR[int(m) - 1]} {y}'
+    """D3: "November 2026", "novembar 2026.", "ноябрь 2026" (en/sr/ru as before); every other language the stand-alone
+    month in the nominative and the year (Babel "LLLL y": "listopad 2026", "листопад 2026")."""
     return WP.month_label(ym, l)
 
 
 def eur(x, l):
-    if l in ('de', 'fr'):
-        s = f'{x:.2f}'.replace('.', ',')
-        return f'{s} €' if l == 'fr' else f'{s} €'
     return WP.money(x, 'EUR', l)
 
 
@@ -129,8 +137,8 @@ def cents(x, l):
     v = x * 100
     s = f'{v:+.1f}'
     if l != 'en':
-        s = s.replace('.', ',' if l in ('sr', 'ru', 'de', 'fr') else I.reg(l)['dec'])
-    return {'en': f'{s} ct', 'sr': f'{s} c', 'ru': f'{s} ц.', 'de': f'{s} ct', 'fr': f'{s} ct'}.get(l, f'{s} ct')   # LANG0: euro cent "ct" 
+        s = s.replace('.', I.reg(l)['dec'] if l not in ('sr', 'ru') else ',')
+    return {'en': f'{s} ct', 'sr': f'{s} c', 'ru': f'{s} ц.'}.get(l, f'{s} ct')   # euro cent: "ct" outside sr/ru
 
 
 def checkins_of(month):
@@ -145,11 +153,13 @@ class Names:
 
     def name(self, cc, l):
         r = self.N[cc]
-        if l not in I.BASE and l in I.langs():   # LANG0: i18n/<code>/countries.csv first
+        if l not in I.BASE:   # i18n/<code>/countries.csv of any language, built or not (press release drafts)
             return I.country_name(r, l)
         return r.get(f'name_{l}') or r['name_en']
 
     def in_(self, cc, l):
+        """D1: "in Germany" / "u Nemačkoj" / "в Германии"; every other language its in_phrase of i18n/<code>/countries.csv
+        ("in den Niederlanden", "aux Pays-Bas", "w Niemczech") — no built-in German or French list any more."""
         r = self.N[cc]
         if l == 'en':
             return 'in ' + ('the ' if cc in ('US', 'GB', 'NL', 'PH', 'AE') else '') + r['name_en']
@@ -157,49 +167,21 @@ class Names:
             return r['sr_u']
         if l == 'ru':
             return r['ru_v']
-        if l == 'de':
-            return {'NL': 'in den Niederlanden', 'GB': 'im Vereinigten Königreich', 'CZ': 'in Tschechien'}.get(cc, 'in ' + self.name(cc, 'de'))
-        if l == 'fr':
-            return FR_IN.get(cc, 'en ' + self.name(cc, 'fr'))
-        return I.country_in(r, l)   # LANG0
-
-
-FR_IN = {'DE': 'en Allemagne', 'ES': 'en Espagne', 'FR': 'en France', 'GB': 'au Royaume-Uni', 'HR': 'en Croatie', 'IE': 'en Irlande',
-         'IT': 'en Italie', 'NL': 'aux Pays-Bas', 'SE': 'en Suède', 'SI': 'en Slovénie', 'BE': 'en Belgique', 'CZ': 'en Tchéquie',
-         'DK': 'au Danemark', 'NO': 'en Norvège', 'PL': 'en Pologne', 'PT': 'au Portugal', 'SK': 'en Slovaquie', 'AT': 'en Autriche',
-         'FI': 'en Finlande', 'GR': 'en Grèce', 'CH': 'en Suisse', 'LU': 'au Luxembourg', 'HU': 'en Hongrie', 'RO': 'en Roumanie'}
-
-FACTS_DE_FR = {
-    'f_europe': {'de': 'Schnellladen (DC 50–149 kW) kostete im Schnitt des Index {dc} pro kWh, Ultraschnellladen (HPC, ab 150 kW) {hpc}, AC {ac}.',
-                 'fr': 'La recharge rapide (DC 50–149 kW) a coûté en moyenne {dc} le kWh dans l’indice, la recharge ultrarapide (HPC, 150 kW et plus) {hpc}, la recharge AC {ac}.'},
-    'f_range': {'de': 'Am günstigsten war DC-Laden {lo} ({lo_v}), am teuersten {hi} ({hi_v}).',
-                'fr': 'La recharge DC était la moins chère {lo} ({lo_v}) et la plus chère {hi} ({hi_v}).'},
-    'f_home': {'de': 'Öffentliches DC-Laden kostete das {lo_r}-Fache ({lo}) bis {hi_r}-Fache ({hi}) des Haushaltsstrompreises.',
-               'fr': 'La recharge DC publique a coûté de {lo_r} fois ({lo}) à {hi_r} fois ({hi}) le prix de l’électricité domestique.'},
-    'f_mom': {'de': 'Gegenüber {prev} veränderte sich der europäische DC-Durchschnitt um {d} ({p}).',
-              'fr': 'Par rapport à {prev}, la moyenne européenne DC a varié de {d} ({p}).'},
-    'f_mom_n': {'de': 'Die größten Veränderungen beim DC-Wert: {list}.', 'fr': 'Plus fortes variations de la valeur DC : {list}.'},
-    'f_first': {'de': 'Dies ist die erste Ausgabe; Veränderungen zum Vormonat folgen ab der nächsten.',
-                'fr': 'C’est le premier numéro ; les variations d’un mois sur l’autre commencent avec le suivant.'},
-    'f_checkins': {'de': 'Fahrerinnen und Fahrer bestätigten in diesem Monat {n} bezahlte Preise an Ladesäulen.',
-                   'fr': 'Les conducteurs ont confirmé ce mois-ci {n} prix payés aux bornes.'},
-}
+        return I.country_in(r, l)
 
 
 def num(x, l, d=1):
     s = f'{x:.{d}f}'
-    return s if l == 'en' else s.replace('.', ',' if l in ('sr', 'ru', 'de', 'fr') else I.reg(l)['dec'])
+    return s if l == 'en' else s.replace('.', ',' if l in ('sr', 'ru') else I.reg(l)['dec'])
 
 
 def facts(hist, month, l, names=None):
     """Key sentences of an issue: Europe, range of DC, DC vs home, month on month, check-ins. Only numbers of the snapshot."""
-    S = load_strings()
+    SL = strings_of(l)
     names = names or Names()
 
-    def T(k, **kw):   # de/fr of the press release drafts unless the site has its own translation (LANG0)
-        if l in ('de', 'fr') and (l not in S or str(S[l][k]).startswith(I.MARK)):
-            return FACTS_DE_FR[k][l].format(**kw)
-        return S[l][k].format(**kw)
+    def T(k, **kw):   # D2: f_* of the language's own strings_press (built, or i18n/<code>/ for a draft)
+        return SL[k].format(**kw)
     s = hist[month]
     E = s['europe']
     out = [T('f_europe', dc=eur(E['dc'], l), hpc=eur(E['hpc'], l), ac=eur(E['ac'], l))]
@@ -497,9 +479,6 @@ def selftest():
     for l in LANGS:
         for k, v in S[l].items():
             chk(set(re.findall(r'{(\w+)}', v)) == en_keys[k], f'placeholders {k}/{l}')
-    for k, v in FACTS_DE_FR.items():
-        for l in ('de', 'fr'):
-            chk(set(re.findall(r'{(\w+)}', v[l])) == en_keys[k], f'placeholders {k}/{l}')
     hist = load_history()
     chk(hist, 'at least one snapshot in content/world/index_history/')
     if hist:
@@ -513,7 +492,8 @@ def selftest():
                       f"(refreeze with `snapshot --force` only before the issue is announced)")
         names = Names()
         for m in hist:
-            for l in LANGS + ('de', 'fr'):
+            drafts = tuple(x for x in ('de', 'fr') if x not in LANGS and (I.i18n_dir(x) / 'strings_press.json').exists())
+            for l in LANGS + drafts:   # D2: de/fr drafts only once their strings_press.json is merged (L2 → FIXL → LANGI)
                 fs = facts(hist, m, l, names)
                 chk(len(fs) >= 3, f'facts {m} {l}')
                 chk(all('{' not in f for f in fs), f'facts unfilled {m} {l}')
@@ -536,6 +516,9 @@ def selftest():
         chk(any('+1.0 ct' in f for f in fs), 'month on month Europe')
         chk(any('Germany +2.0 ct' in f for f in fs), 'month on month countries')
         chk(month_name('2026-11', 'de') == 'November 2026' and month_name('2026-11', 'fr') == 'novembre 2026', 'month de/fr')
+        chk(month_name('2026-11', 'hr') == 'studeni 2026' and month_name('2026-11', 'uk') == 'листопад 2026', 'month hr/uk (D3)')
+        chk(month_name('2026-11', 'en') == 'November 2026' and month_name('2026-11', 'sr') == 'novembar 2026.', 'month en/sr')
+        chk(names.in_('NL', 'fr') == I.country_in(names.N['NL'], 'fr'), 'in_ fr from countries.csv (D1)')
     print('world_press selftest:', 'OK' if ok else 'FAILED')
     return 0 if ok else 1
 

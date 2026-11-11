@@ -94,8 +94,10 @@ def money(x, cur, l, d=None):
 
 
 def month_label(ym, l):
+    if l not in MONTHS:   # LANG1 (D3): other languages — stand-alone month in the nominative + year (CLDR "LLLL y")
+        return I.month_label(ym, l)
     y, m = int(ym[:4]), int(ym[5:7])
-    nm = (MONTHS[l] if l in MONTHS else I.months(l))[m - 1]
+    nm = MONTHS[l][m - 1]
     return f'{nm} {y}.' if l == 'sr' else f'{nm} {y}'
 
 

@@ -803,7 +803,7 @@
    "dir": "ltr",
    "dec": ",",
    "thou": ".",
-   "pct": "{x} %",
+   "pct": "{x}%",
    "intl": "ro-RO",
    "date": "dd.MM.y",
    "plural": [

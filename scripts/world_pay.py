@@ -272,14 +272,17 @@ class R:
                 for a in self.P['apps']]
         A = self.P['afir']
         name = self.cname(cc, l)
+        # D4: {name_nom} — the country with its article in the middle of a sentence ("Die Schweiz ist …"); en/sr/ru = name
+        nom = I.country_nom(self.names[cc], l) if (l not in I.BASE and cc in self.names) else name
         self.write(l, 'world_pay_country.html', urls[l], urls, dict(
             title=S['t_pay_country'].format(cu=self.cu(cc, l)), h1=S['t_pay_country'].format(cu=self.cu(cc, l)),
             description=S['d_pay_country'].format(cu=self.cu(cc, l)), kick=None, jsonld=None, last=name,
             crumbs=[(S['nav_pay'], PAY[l])], checked=S['checked'].format(date=self.date(self.P['updated'])),
-            afir_head=(S['afir_eu'] if cc in EU else S['afir_non']).format(name=name),
+            afir_head=(S['afir_eu'] if cc in EU else S['afir_non']).format(name=name, name_nom=nom),
             afir_points=self.afir_points(l) if cc in EU else [], afir_src=S['afir_src'].format(date=self.date(A['checked'])), afir_url=A['url'],
             nets=self.nets_of(cc, l), apps=apps, typ=typ, price_url=price_url, road=self.toll(cc, l),
-            conn_txt=S['conn_txt'].format(name=name), conn_url=self.w.site.country(cc, l), conn_lnk=S['conn_lnk'].format(name=name),
+            conn_txt=S['conn_txt'].format(name=name, name_nom=nom), conn_url=self.w.site.country(cc, l),
+            conn_lnk=S['conn_lnk'].format(name=name, name_nom=nom),
             routes=[(self.route_title(rt, l), self.route_url(rt, l)) for rt in self.RT['routes'] if cc in {x['cc'] for x in rt['countries']}][:8]),
             'pay', ups=[PAY])
 
