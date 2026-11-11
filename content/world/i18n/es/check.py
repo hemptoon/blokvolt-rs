@@ -33,7 +33,7 @@ def same_marks(a, b, where):
 
 # 1. strings
 n_str = 0
-for f in ('map', 'pages', 'shell', 'prices'):
+for f in ('map', 'pages', 'shell', 'prices', 'pay', 'press', 'b2b', 'embed'):
     en = json.load(open(WORLD / f'strings_{f}.json', encoding='utf-8'))
     p = HERE / f'strings_{f}.json'
     if not p.exists():
@@ -87,6 +87,34 @@ def walk(a, b, where):
             errs.append(f'{where}: empty')
         same_marks(a, b, where)
 
+
+# 2b. texts.json pay / routes (LANG0 format): "path.to[i].node" -> text, one per multilingual node
+def ml_nodes(o, p, out):
+    if isinstance(o, dict):
+        if 'en' in o and isinstance(o['en'], str) and ('sr' in o or 'ru' in o):
+            out[p] = o['en']; return
+        for k, v in o.items():
+            ml_nodes(v, f'{p}.{k}' if p else k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            ml_nodes(v, f'{p}[{i}]', out)
+
+
+for key, fn in (('pay', 'pay.json'), ('routes', 'routes.json')):
+    need = {}
+    ml_nodes(json.load(open(WORLD / fn, encoding='utf-8')), '', need)
+    got = texts.get(key)
+    if not isinstance(got, dict):
+        errs.append(f'texts.json: missing section {key}'); continue
+    for k in need.keys() - got.keys():
+        errs.append(f'texts.{key}: missing {k}')
+    for k in got.keys() - need.keys():
+        errs.append(f'texts.{key}: extra {k}')
+    for k in need.keys() & got.keys():
+        n_str += 1
+        if not isinstance(got[k], str) or not got[k].strip():
+            errs.append(f'texts.{key}.{k}: empty'); continue
+        same_marks(need[k], got[k], f'texts.{key}.{k}')
 
 for key, fn in SRC.items():
     src = json.load(open(WORLD / fn, encoding='utf-8'))

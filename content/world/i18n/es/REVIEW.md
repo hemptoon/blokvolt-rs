@@ -89,3 +89,24 @@
 | cities.csv | 2989317 | name: Orléans | Orleans |
 | cities.csv | 2989317 | in_phrase: en Orléans | en Orleans |
 | cities.csv | 2989317 | note:  | экзоним RAE/Fundéu |
+
+# L2-ES — дельта ключей, тексты данных, свои страны (11.11.2026)
+
+Ветка `l2-es` от `dev` (bb86f74). HOME2 в `dev` ещё не было — его ключей нет.
+
+## Что сделано
+- 274 новых ключа: strings_map +29 (28 `ci_*` и `emb_open`), новые файлы strings_pay (93), strings_press (54), strings_b2b (33), strings_embed (65). Форма «usted», ad hoc = «sin registro», кавычки « », «24/7», «nosotros» и «el equipo» не используются.
+- `texts.json`: новые разделы `pay` (6 узлов `afir.points[i]`) и `routes` (59 узлов `routes[i].stops[j].city`). Названия городов берутся из `cities.csv` es: Belgrado, Sofía, Salzburgo, Liubliana.
+- Свои страны ES и AD: названия и `in_phrase` в порядке. Города со страницами — 177, все есть в `cities.csv`, `decl_ok = 1`. Пяти валенсийским городам поставлена кастильская форма, как раньше у Alcoy и Jávea: Játiva, Denia, Onteniente, Benicasim, Gandía. Официальное название записано в `note`. Слаги не меняются: они берутся из `names/cities.csv`.
+- `check.py` теперь проверяет все 8 файлов строк и разделы `texts.pay` и `texts.routes`: ключи сверяются с многоязычными узлами `pay.json` и `routes.json`, плейсхолдеры и теги — с EN. Итог: 839 строк, 0 ошибок.
+
+## Обратный перевод (60 случайных новых строк, отдельный агент вслепую)
+60 из 60 — смысл совпадает. Мелочи, которые оставлены сознательно:
+- «sin registro» обратно переводится как «no registration», а не «ad hoc». Это принятый термин R-ES.
+- `ci_last_*` «aviso» → «report», а не «check-in». Термин тот же, что у формы ошибок.
+- `th_gaps` «Tramos sin carga > 150 km» читается понятнее, чем EN «Gaps».
+
+## Вопросы
+- `dv_p_lang` перечисляет EN, SR, RU. Когда в виджете появится es, строку нужно обновить во всех языках (это задача LANG0/EN).
+- В `pages_state.json` 144 города NOBIL (NO и SE), которых нет в `names/cities.csv`. Для es это не свои страны, но таких городов нет и в общем справочнике. Их нужно добавить в `names` (задача LANG0/LANGI).
+- `credit` и цитата в `data_p` используют английское название индекса «European EV Charging Price Index», как в R-ES.
