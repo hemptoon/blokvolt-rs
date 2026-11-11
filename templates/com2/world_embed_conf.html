@@ -12,7 +12,8 @@
 {% for k, lbl in (('ac', MT.t_ac), ('dc', MT.t_dc), ('hpc', MT.t_hpc), ('nepoznato', MT.t_unk)) %}<label class="chip wz-chk"><input type="checkbox" name="snaga" value="{{ k }}" checked> {{ lbl }}</label>{% endfor %}
 </div></fieldset>
 <fieldset class="wz-f"><legend>{{ T.cf_lang }}</legend><div class="chips">
-{% for k, lbl in WLANGS %}<label class="chip wz-chk"><input type="radio" name="lang" value="{{ k }}"{% if k == l %} checked{% endif %}> {{ lbl }}</label>{% endfor %}
+{% if WLANGS|length > 3 %}<select class="input" name="lang" aria-label="{{ T.cf_lang }}">{% for k, lbl, hl in WLANGS %}<option value="{{ k }}" lang="{{ hl }}"{% if k == l %} selected{% endif %}>{{ lbl }}</option>{% endfor %}</select>
+{% else %}{% for k, lbl, hl in WLANGS %}<label class="chip wz-chk"><input type="radio" name="lang" value="{{ k }}"{% if k == l %} checked{% endif %}> {{ lbl }}</label>{% endfor %}{% endif %}
 </div></fieldset>
 <fieldset class="wz-f"><legend>{{ T.cf_theme }}</legend><div class="chips">
 <label class="chip wz-chk"><input type="radio" name="tema" value="" checked> {{ T.cf_light }}</label><label class="chip wz-chk"><input type="radio" name="tema" value="tamna"> {{ T.cf_dark }}</label>
