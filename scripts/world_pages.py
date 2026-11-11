@@ -405,7 +405,7 @@ class Ctx:
         self.sources = json.load(open(WORLD / 'sources_pages.json', encoding='utf-8'))
         self.written = []       # (lang, type, url, lastmod, indexable)
         a = out / 'assets'
-        self.ver = {n: G.ver(a / n) for n in ('bv.css', 'bv.js', 'map.js', 'com.css') if (a / n).exists()}
+        self.ver = {n: G.ver(a / n) for n in ('bv.css', 'bv.js', 'map.js', 'com.css', 'bvc.js') if (a / n).exists()}
         self.places = None
 
     # text helpers

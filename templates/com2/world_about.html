@@ -17,6 +17,8 @@
 <ul>{% for n, u in A.licence_texts %}<li><a href="{{ u }}" rel="noopener nofollow">{{ n }}</a></li>{% endfor %}</ul>
 <h2 id="notes">{{ A.notes_h }}</h2>
 <ul>{% for n in A.notes %}<li>{{ n }}</li>{% endfor %}</ul>
+{% set cn = COUNTER_NOTE.get(l) if COUNTER_NOTE else none %}{% if cn %}<h2 id="visits">{{ cn.h }}</h2>
+<p>{{ cn.p }}</p>{% endif %}
 <p><a href="{{ dl_url }}">{{ S.download_link }}</a></p>
 </div>
 {% endblock %}

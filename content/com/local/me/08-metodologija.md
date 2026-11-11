@@ -33,4 +33,4 @@ Našli ste grešku ili nedostaje punjač? Pišite na [hello@blokvolt.com](mailto
 
 ## Privatnost
 
-Stranice nemaju analitiku, reklame ni kolačiće. Podloga mape se učitava sa servera OpenFreeMap. Lokacija se na mapi koristi samo kad pritisnete „Blizu mene” i ostaje u vašem pregledaču.
+Stranice nemaju reklame, kolačiće ni analitiku trećih strana. Posjete broji samo sopstveni brojač BlokVolta, na Cloudflare serverima u EU: koja je stranica otvorena (bez parametara iz adrese), sa kog sajta je posjeta došla (samo naziv sajta), oznake kampanje (utm), jezik stranice, zemlja, tip uređaja i pregledač. Brojač ne postavlja kolačiće i ništa ne upisuje u pregledač; IP adresa se ne čuva, podaci se koriste samo zbirno i brišu se nakon godinu dana. Podloga mape se učitava sa servera OpenFreeMap. Lokacija se na mapi koristi samo kad pritisnete „Blizu mene” i ostaje u vašem pregledaču.

@@ -39,4 +39,4 @@ Našli ste grešku, promijenila se cijena ili nedostaje punionica? Pišite na [h
 
 ## Privatnost
 
-Stranice nemaju analitiku, oglase ni kolačiće. Podloga karte učitava se s poslužitelja OpenFreeMap. Lokacija se na karti koristi samo kad pritisnete „Blizu mene” i ostaje u vašem pregledniku; omiljene punionice spremaju se samo u pregledniku.
+Stranice nemaju oglase, kolačiće ni analitiku trećih strana. Posjete broji samo vlastiti brojač BlokVolta, na Cloudflareovim poslužiteljima u EU: koja je stranica otvorena (bez parametara iz adrese), s koje je stranice posjet došao (samo naziv stranice), oznake kampanje (utm), jezik stranice, zemlja, vrsta uređaja i preglednik. Brojač ne postavlja kolačiće i ništa ne sprema u preglednik; IP adresa se ne pohranjuje, podaci se koriste samo zbirno i brišu se nakon godinu dana. Podloga karte učitava se s poslužitelja OpenFreeMap. Lokacija se na karti koristi samo kad pritisnete „Blizu mene” i ostaje u vašem pregledniku; omiljene punionice spremaju se samo u pregledniku.
