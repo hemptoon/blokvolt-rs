@@ -34,3 +34,13 @@
 ASCII, естественные, пересечений нет (`content/com/local/` чешского раздела не имеет).
 
 `python3 content/world/i18n/cs/check.py` → OK — 0 errors.
+
+## L2-CS (11.11.2026) — добор ключей до мотора LANG0
+- Добавлено 274 ключа: strings_map +29 (28 `ci_*` и `emb_open`), новые strings_pay (93), strings_press (54), strings_b2b (33), strings_embed (65). Ключей HOME2 в `dev` пока нет.
+- texts.json: разделы `pay` (6 пунктов AFIR) и `routes` (59 названий городов; экзонимы взяты из `cities.csv`: Salcburk, Lublaň, Záhřeb, Budapešť, Bělehrad, Sofie, Štýrský Hradec).
+- `{cu}`, `{lo}`, `{hi}` — это `in_phrase` («v Německu»); `{name}`, `{a}`, `{b}`, `{month}` — именительный, поэтому в шаблонах стоят тире и двоеточие, а не предлоги с падежом.
+- Без «my»: `r_ok` «Děkujeme» → «Díky»; в `ci_thanks`, `m_ok` тоже «Díky».
+- Тире: 23 « — » → « – » (чешская норма).
+- Город: «ve Žďáru» → «ve Žďáře nad Sázavou» (норма ÚJČ). Все 63 города CZ и 19 городских страниц CZ из pages_state на месте.
+- check.py проверяет все 8 файлов и разделы `pay`/`routes` → 0 ошибок.
+- Обратный перевод вслепую, 60 случайных новых строк: смысловых расхождений 0, 8 флагов, 4 исправления (`th_trip`, `stops_note`, `lic_p`, `desc` в b2b). Не исправлено: `ci_u_min` «minutu» (стоит после «Cena za» — винительный здесь верный), `cov_yes`/`cov_no` «Uvedena»/«Neuvedena» (речь о стране — женский род), `ci_err` «Odpověď» (так в интерфейсе отметок), «váhy» в press. Файл — `BACKTRANSLATION_L2.tsv`.

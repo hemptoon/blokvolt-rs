@@ -1,7 +1,7 @@
 {
   "balkan_note": "Tyto země mají vlastní stránky BlokVolt s ověřenými daty.",
   "below_p": "Tato stránka zobrazuje město nebo síť jen tehdy, když mají otevřená data dost veřejných míst. Momentálně to tak není. Stránka země a mapa i nadále zobrazují všechna místa.",
-  "below_title": "Nabíjecí stanice — momentálně nedostatek dat",
+  "below_title": "Nabíjecí stanice – momentálně nedostatek dat",
   "conf_link": "Jak se počítá spolehlivost",
   "country_menu": "Jazyk",
   "crumbs": "Drobečková navigace",
@@ -44,7 +44,7 @@
   "km_away": "{km} km",
   "lang_label": "Čeština",
   "menu": "Menu",
-  "mini_alt": "Mapa nabíjecích míst: šedě — AC nebo neuvedený výkon, modře — DC",
+  "mini_alt": "Mapa nabíjecích míst: šedě – AC nebo neuvedený výkon, modře – DC",
   "moved": "Tato stránka se přesunula na",
   "nav_about": "O datech",
   "nav_download": "Ke stažení",
