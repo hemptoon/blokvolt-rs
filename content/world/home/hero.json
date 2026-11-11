@@ -1,0 +1,185 @@
+{
+ "about": "Pictures of the first screen of the world home (scripts/world_hero.py, HOME2). Views: centre [lon, lat], MapLibre zoom at 512 px tiles for the picture size w×h; n = places inside the picture.",
+ "date": "2026-11-11",
+ "places": 383339,
+ "formats": [
+  "avif",
+  "webp"
+ ],
+ "views": {
+  "eu": {
+   "w": {
+    "c": [
+     -1.5,
+     52.0
+    ],
+    "z": 3.8,
+    "w": 1920,
+    "h": 1080,
+    "n": 273467
+   },
+   "t": {
+    "c": [
+     14.0,
+     46.0
+    ],
+    "z": 3.08,
+    "w": 720,
+    "h": 1000,
+    "n": 273896
+   }
+  },
+  "na": {
+   "w": {
+    "c": [
+     -118.0,
+     42.0
+    ],
+    "z": 3.25,
+    "w": 1920,
+    "h": 1080,
+    "n": 79902
+   },
+   "t": {
+    "c": [
+     -96.0,
+     33.0
+    ],
+    "z": 2.38,
+    "w": 720,
+    "h": 1000,
+    "n": 80405
+   }
+  },
+  "ap": {
+   "w": {
+    "c": [
+     100.0,
+     12.0
+    ],
+    "z": 2.75,
+    "w": 1920,
+    "h": 1080,
+    "n": 244294
+   },
+   "t": {
+    "c": [
+     118.0,
+     2.0
+    ],
+    "z": 1.95,
+    "w": 720,
+    "h": 1000,
+    "n": 24870
+   }
+  }
+ },
+ "files": {
+  "hero-eu-w.avif": {
+   "bytes": 88651,
+   "q": 60,
+   "v": "d4b9a932ab"
+  },
+  "hero-eu-w.webp": {
+   "bytes": 123132,
+   "q": 82,
+   "v": "d42eb54ddd"
+  },
+  "hero-eu-t.avif": {
+   "bytes": 48428,
+   "q": 60,
+   "v": "86c61d8415"
+  },
+  "hero-eu-t.webp": {
+   "bytes": 68832,
+   "q": 82,
+   "v": "ca25eab46f"
+  },
+  "hero-na-w.avif": {
+   "bytes": 50100,
+   "q": 60,
+   "v": "e200b2de93"
+  },
+  "hero-na-w.webp": {
+   "bytes": 62670,
+   "q": 82,
+   "v": "6a7fd9936c"
+  },
+  "hero-na-t.avif": {
+   "bytes": 29556,
+   "q": 60,
+   "v": "3d9eb3e387"
+  },
+  "hero-na-t.webp": {
+   "bytes": 37414,
+   "q": 82,
+   "v": "39cf17f4de"
+  },
+  "hero-ap-w.avif": {
+   "bytes": 62284,
+   "q": 60,
+   "v": "be13f37d42"
+  },
+  "hero-ap-w.webp": {
+   "bytes": 76450,
+   "q": 82,
+   "v": "bba66748b6"
+  },
+  "hero-ap-t.avif": {
+   "bytes": 20786,
+   "q": 60,
+   "v": "fab2ae06d1"
+  },
+  "hero-ap-t.webp": {
+   "bytes": 23328,
+   "q": 82,
+   "v": "fa3c26c1d6"
+  },
+  "borders.json": {
+   "bytes": 153364,
+   "v": "411f8724f7"
+  },
+  "og-world.jpg": {
+   "bytes": 111977,
+   "v": "1ade066295"
+  }
+ },
+ "regions": {
+  "na": 79217,
+  "eu": 272895,
+  "ap": 24364,
+  "other": 6863
+ },
+ "apac": [
+  "KR",
+  "CN",
+  "AU",
+  "SG",
+  "IN",
+  "ID",
+  "JP",
+  "HK",
+  "MY",
+  "NZ",
+  "TW",
+  "PH",
+  "UZ",
+  "VN",
+  "KZ",
+  "TH",
+  "LK",
+  "PK",
+  "NP",
+  "KH",
+  "MO",
+  "KG",
+  "MN",
+  "NC",
+  "PF",
+  "MM",
+  "TJ",
+  "WS",
+  "FJ",
+  "TO"
+ ]
+}

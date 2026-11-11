@@ -1,39 +1,108 @@
 {% extends 'world_base.html' %}
-{% block head %}{{ super() }}<style>
-.wh-search{position:relative;max-width:560px;margin-top:20px}
-.wh-search label{display:block;font-weight:600;margin-bottom:6px}
-.wh-search input{width:100%;min-height:48px;padding:10px 14px;font:inherit;font-size:17px;border:1.5px solid var(--line,#d5d8de);border-radius:12px;background:var(--bg,#fff);color:inherit}
-.wh-search input:focus-visible{outline:3px solid #2E6BFF;outline-offset:2px}
-.wh-res{list-style:none;margin:6px 0 0;padding:0;border-radius:12px;overflow:hidden}
-.wh-res:empty{display:none}
-.wh-res li a,.wh-res li span{display:flex;justify-content:space-between;gap:12px;min-height:44px;align-items:center;padding:8px 14px;border-bottom:1px solid var(--line,#e5e7eb);text-decoration:none}
-.wh-res li a:hover,.wh-res li a:focus-visible{background:rgba(217,244,91,.35)}
-.wh-res small{opacity:.7;white-space:nowrap}
-.wh-map{display:block;margin:28px 0;padding:28px;border-radius:20px;background:#0D111A;color:#fff}
-.wh-map h2{color:#fff;margin:0 0 8px}.wh-map p{color:#cfd3da;max-width:640px}
-.wh-map .btn{margin-top:8px;background:#D9F45B;color:#0D111A;border-color:#D9F45B}
-.wh-dots{height:10px;background:radial-gradient(circle,#D9F45B 2px,transparent 2.5px) 0 0/18px 10px;opacity:.8;margin-bottom:18px}
-</style>{% endblock %}
-{% block pagehead %}<div class="ph"><div class="wrap">
-<p class="kick">{{ kick }}</p>
-<h1>{{ h1 }}</h1>
-{% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
-<p class="meta">{{ S.data_from.format(date=data_date) }}</p>
-<div class="wh-search" data-idx="{{ search_url }}" data-lang="{{ l }}" data-none="{{ T.search_none }}" data-map="{{ map_url }}">
-<label for="wh-q">{{ T.search_label }}</label>
-<input id="wh-q" type="search" autocomplete="off" placeholder="{{ T.search_ph }}" aria-controls="wh-res">
-<ul id="wh-res" class="wh-res" aria-live="polite"></ul>
-</div>
-</div></div>{% endblock %}
-{% block content %}
-<section class="wh-map"><div class="wh-dots" aria-hidden="true"></div>
-<h2>{{ T.map_h }}</h2><p>{{ T.map_p }}</p>
-<a class="btn" href="{{ map_url }}">{{ T.map_btn }}</a></section>
-<div class="sec"><div class="sec-head"><h2 id="countries">{{ T.countries_h }}</h2></div>
-<div class="chips">{% for n, u in countries %}<a class="chip" href="{{ u }}">{{ n }}</a>{% endfor %}</div>
-<p><a class="btn" href="{{ hub_url }}">{{ T.all_btn }}</a></p></div>
-<div class="sec"><div class="sec-head"><h2 id="region">{{ T.region_h }}</h2></div>
-<p class="note">{{ T.region_p }}</p>
-<div class="chips"><a class="chip" href="{{ RS }}{{ {'en': '/en/', 'ru': '/ru/'}.get(l, '/') }}" hreflang="{{ l }}">{{ T.rs_card }}</a>{% for r in regional %}<a class="chip" href="{{ r.path }}" hreflang="{{ r.hl }}" lang="{{ r.lang }}">{{ r.name }}</a>{% endfor %}</div></div>
+{# World home of blokvolt.com — /, /sr/, /ru/ (scripts/world_home.py, task HOME2). The first screen is the map: a picture of
+   the public layer (scripts/world_hero.py) swapped in place for the live map (static/com/world-hero-map.js) on the first
+   tap or click. Region of the first view from the time zone only — no location request until "Near me" is pressed. #}
+{% block bodyclass %}wh-page{% endblock %}
+{% block ogimage %}{% if og_image %}<meta property="og:image" content="{{ og_image }}">{% else %}{{ super() }}{% endif %}{% endblock %}
+{% block head %}{{ super() }}<script id="wh-cfg" type="application/json">{{ hero_cfg|safe }}</script>
+<script>(function(){try{var c=JSON.parse(document.getElementById('wh-cfg').textContent),z='',r='eu';try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}
+if(/^America\//.test(z))r='na';else if(/^(Asia|Australia|Pacific|Indian)\//.test(z)&&c.tz_west.indexOf(z.split('/')[1])<0)r='ap';
+var d=document.documentElement;d.setAttribute('data-hr',r);d.classList.add('wh-js');
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('wh-rm');
+var p=c.pics[r];[['t','(max-width: 720px)'],['w','(min-width: 721px)']].forEach(function(s){var x=p[s[0]],l=document.createElement('link');
+l.rel='preload';l.as='image';l.setAttribute('fetchpriority','high');l.media=s[1];if(x.avif){l.setAttribute('imagesrcset',x.avif);l.type='image/avif'}else{l.href=x.webp;l.type='image/webp'}
+document.head.appendChild(l)})}catch(e){}})();</script>
+<link rel="stylesheet" href="{{ assets['world-home.css'] }}">
 {% endblock %}
-{% block scripts %}<script src="{{ home_js }}" defer></script>{% endblock %}
+{% block page %}
+<section class="wh-hero" aria-labelledby="wh-h1">
+<div class="wh-map" id="wh-map" data-state="pic">
+<div class="wh-pic" id="wh-pic">
+{% for reg, p in pics.items() %}<template id="wh-pic-{{ reg }}"><picture>
+{% if p.t.avif %}<source media="(max-width: 720px)" type="image/avif" srcset="{{ p.t.avif }}">{% endif %}<source media="(max-width: 720px)" type="image/webp" srcset="{{ p.t.webp }}">
+{% if p.w.avif %}<source type="image/avif" srcset="{{ p.w.avif }}">{% endif %}<img src="{{ p.w.webp }}" width="{{ p.w.w }}" height="{{ p.w.h }}" alt="{{ T.map_alt }}" fetchpriority="high" decoding="async" data-reg="{{ reg }}">
+</picture></template>
+{% endfor %}<script>(function(){var r=document.documentElement.getAttribute('data-hr')||'eu',t=document.getElementById('wh-pic-'+r);if(t)document.getElementById('wh-pic').appendChild(t.content.cloneNode(true))})();</script>
+<noscript><picture>{% if lcp.t.avif %}<source media="(max-width: 720px)" type="image/avif" srcset="{{ lcp.t.avif }}">{% endif %}<source media="(max-width: 720px)" type="image/webp" srcset="{{ lcp.t.webp }}">{% if lcp.w.avif %}<source type="image/avif" srcset="{{ lcp.w.avif }}">{% endif %}<img src="{{ lcp.w.webp }}" width="{{ lcp.w.w }}" height="{{ lcp.w.h }}" alt="{{ T.map_alt }}"></picture></noscript>
+</div>
+<div class="wh-live" id="wh-live" role="region" aria-label="{{ T.map_label }}" hidden></div>
+<button class="wh-go" id="wh-go" type="button"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9 2 12l3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/></svg><span>{{ T.map_go }}</span></button>
+<a class="wh-more" id="wh-more" href="{{ map_url }}" hidden>{{ T.map_more }} <span aria-hidden="true">→</span></a>
+<p class="wh-status" id="wh-status" role="status" aria-live="polite" data-loading="{{ T.map_loading }}"></p>
+<p class="wh-attr"><span class="wh-al">{{ T.attr }}</span><span class="wh-as">{{ T.attr_short }}</span> · <a href="{{ sources_url }}">{{ T.attr_more }}</a> · {{ T.attr_borders }}</p>
+</div>
+<div class="wh-panel"><div class="wrap"><div class="wh-card">
+<h1 id="wh-h1">{{ h1 }}</h1>
+<p class="wh-sub">{{ T.sub }}</p>
+<p class="wh-stat">{% for s in stat %}<span>{{ s }}</span>{% endfor %}</p>
+<form class="wh-search" role="search" action="{{ map_url }}" data-idx="{{ search_url }}" data-lang="{{ l }}" data-none="{{ T.search_none }}" data-map="{{ map_url }}">
+<label for="wh-q">{{ T.search_label }}</label>
+<div class="wh-sbox"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+<input id="wh-q" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="{{ T.search_ph }}" aria-controls="wh-res" aria-autocomplete="list"></div>
+<ul id="wh-res" class="wh-res" aria-live="polite"></ul>
+</form>
+<div class="wh-acts">
+<a class="wh-btn wh-btn-main" id="wh-full" href="{{ map_url }}" data-map>{{ T.btn_full }}</a>
+<button class="wh-btn" id="wh-near" type="button"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7.5"/></svg>{{ T.btn_near }}</button>
+</div>
+<div class="wh-quick" role="group" aria-label="{{ T.quick_h }}"><a class="wh-chip" href="{{ q_dc }}" data-map>{{ T.q_dc }}</a><a class="wh-chip" href="{{ q_hpc }}" data-map>{{ T.q_hpc }}</a></div>
+</div></div></div>
+</section>
+
+<div class="wh-body">
+<section class="wh-sec wh-rv" aria-labelledby="wh-cc"><div class="wrap">
+<div class="wh-head"><h2 id="wh-cc">{{ T.countries_h }}</h2><p>{{ T.countries_p }}</p></div>
+<div class="wh-tabs" role="tablist" aria-label="{{ T.countries_h }}" hidden>
+<button role="tab" id="tab-eu" aria-controls="pan-eu" aria-selected="true">{{ T.tab_eu }}</button><button role="tab" id="tab-na" aria-controls="pan-na" aria-selected="false" tabindex="-1">{{ T.tab_na }}</button>{% if ap %}<button role="tab" id="tab-ap" aria-controls="pan-ap" aria-selected="false" tabindex="-1">{{ T.tab_ap }}</button>{% endif %}<button role="tab" id="tab-all" aria-controls="pan-all" aria-selected="false" tabindex="-1">{{ T.tab_all }}</button>
+</div>
+<div class="wh-pan" id="pan-eu" role="tabpanel" aria-labelledby="tab-eu"><h3 class="wh-panh">{{ T.tab_eu }}</h3>
+<ul class="wh-cards">{% for x in eu %}<li><a class="wh-cty" href="{{ x.url }}"><span class="wh-ctyn" translate="no">{{ x.name }}</span><span class="wh-num" data-n="{{ x.n }}">{{ x.n_txt }}</span><span class="wh-unit">{{ x.unit }}</span>{% if x.dc %}<span class="wh-dc">{{ x.dc }}</span>{% endif %}</a></li>{% endfor %}</ul></div>
+<div class="wh-pan" id="pan-na" role="tabpanel" aria-labelledby="tab-na"><h3 class="wh-panh">{{ T.tab_na }}</h3>
+<ul class="wh-cards wh-cards-2">{% for x in na %}<li><a class="wh-cty" href="{{ x.url }}"><span class="wh-ctyn" translate="no">{{ x.name }}</span><span class="wh-num" data-n="{{ x.n }}">{{ x.n_txt }}</span><span class="wh-unit">{{ x.unit }}</span>{% if x.dc %}<span class="wh-dc">{{ x.dc }}</span>{% endif %}</a></li>{% endfor %}</ul></div>
+{% if ap %}<div class="wh-pan" id="pan-ap" role="tabpanel" aria-labelledby="tab-ap"><h3 class="wh-panh">{{ T.tab_ap }}</h3>
+<p class="wh-note">{{ T.ap_note }}</p>
+<ul class="wh-chips">{% for x in ap %}<li><a class="wh-chip" href="{{ x.url }}" translate="no">{{ x.name }}</a></li>{% endfor %}</ul></div>{% endif %}
+<div class="wh-pan" id="pan-all" role="tabpanel" aria-labelledby="tab-all"><h3 class="wh-panh">{{ T.tab_all }}</h3>
+<ul class="wh-chips">{% for x in allc %}<li><a class="wh-chip" href="{{ x.url }}"><span translate="no">{{ x.name }}</span> <small>{{ x.n_txt }}</small></a></li>{% endfor %}</ul>
+{% if below %}<p class="wh-subh">{{ T.below_h }}</p><ul class="wh-chips">{% for x in below %}<li><a class="wh-chip wh-chip-q" href="{{ x.url }}" translate="no">{{ x.name }}</a></li>{% endfor %}</ul>{% endif %}</div>
+<p class="wh-more-l"><a href="{{ hub_url }}">{{ T.all_link }} <span aria-hidden="true">→</span></a></p>
+</div></section>
+
+{% if prices %}<section class="wh-sec wh-alt wh-rv" aria-labelledby="wh-pr"><div class="wrap">
+<div class="wh-head"><h2 id="wh-pr">{{ T.prices_h }}</h2><p>{{ T.prices_p }}</p></div>
+<ul class="wh-prices">{% for x in prices['items'] %}<li class="wh-pc">{% if x.url %}<a href="{{ x.url }}">{% endif %}<span class="wh-pcn" translate="no">{{ x.name }}</span>
+<span class="wh-bar"><span class="wh-bl">{{ T.p_dc }}</span><span class="wh-bt"><i style="--w:{{ (100 * x.dc_v / prices.maxv)|round(1) }}%"></i></span><b>€{{ x.dc }}</b></span>
+<span class="wh-bar wh-bar-h"><span class="wh-bl">{{ T.p_home }}</span><span class="wh-bt"><i style="--w:{{ (100 * x.home_v / prices.maxv)|round(1) }}%"></i></span><b>€{{ x.home }}</b></span>
+<span class="wh-ratio">{{ x.ratio }}</span>{% if x.url %}</a>{% endif %}</li>{% endfor %}</ul>
+<p class="wh-src">{{ prices.src }}</p>
+<p><a class="wh-btn" href="{{ prices.hub }}">{{ T.p_btn }}</a></p>
+</div></section>{% endif %}
+
+<section class="wh-sec wh-rv" aria-label="{{ T.pay_h }} · {{ T.routes_h }}"><div class="wrap"><div class="wh-two">
+{% if pay %}<div class="wh-box"><h2>{{ T.pay_h }}</h2><p>{{ T.pay_p }}</p>
+<ul class="wh-chips">{% for x in pay %}<li><a class="wh-chip" href="{{ x.url }}" translate="no">{{ x.name }}</a></li>{% endfor %}</ul>
+<p class="wh-more-l"><a href="{{ pay_hub }}">{{ T.pay_all }} <span aria-hidden="true">→</span></a></p></div>{% endif %}
+{% if routes %}<div class="wh-box"><h2>{{ T.routes_h }}</h2><p>{{ T.routes_p }}</p>
+<ul class="wh-chips">{% for x in routes %}<li><a class="wh-chip" href="{{ x.url }}" translate="no">{{ x.name }}</a></li>{% endfor %}</ul>
+<p class="wh-more-l"><a href="{{ routes_hub }}">{{ T.routes_all }} <span aria-hidden="true">→</span></a></p></div>{% endif %}
+</div></div></section>
+
+<section class="wh-sec wh-rv" aria-labelledby="wh-wk"><div class="wrap"><div class="wh-work">
+<span class="wh-dots" aria-hidden="true"><i class="ok"></i><i class="bad"></i><i class="busy"></i></span>
+<div><h2 id="wh-wk">{{ T.work_h }}</h2><p>{{ T.work_p }}</p></div>
+<a class="wh-btn" href="{{ map_url }}" data-map>{{ T.btn_full }}</a>
+</div></div></section>
+
+{% if tools %}<section class="wh-sec wh-alt wh-rv" aria-labelledby="wh-od"><div class="wrap">
+<div class="wh-head"><h2 id="wh-od">{{ T.open_h }}</h2></div>
+<ul class="wh-tools">{% for u, h, p in tools %}<li><a href="{{ u }}"><b>{{ h }}</b><span>{{ p }}</span></a></li>{% endfor %}</ul>
+</div></section>{% endif %}
+
+<section class="wh-sec wh-rv" aria-labelledby="wh-rg"><div class="wrap">
+<div class="wh-reg"><h2 id="wh-rg">{{ T.reg_h }}</h2>
+<ul class="wh-chips">{% for r in regional %}<li><a class="wh-chip" href="{{ r.path }}" hreflang="{{ r.hl }}" lang="{{ r.lang }}">{{ r.name }}</a></li>{% endfor %}<li><a class="wh-chip" href="{{ RS }}{{ {'en': '/en/', 'ru': '/ru/'}.get(l, '/') }}" hreflang="{{ l if l in ('en', 'ru') else 'sr' }}">{{ T.reg_rs }}</a></li></ul></div>
+<div class="wh-trust"><h2>{{ T.trust_h }}</h2><p>{{ T.trust_p }}</p><p class="wh-tl"><a href="{{ sources_url }}">{{ T.trust_src }}</a> · <a href="{{ method_url }}">{{ T.trust_method }}</a></p></div>
+</div></section>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ assets['world-home.js'] }}" data-map-js="{{ assets['world-hero-map.js'] }}" defer></script>{% endblock %}

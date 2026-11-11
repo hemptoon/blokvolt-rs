@@ -1,4 +1,4 @@
-# Dev previews (RUNBOOK "Dev previews", bvcom README §3): every push to the branch dev or to a task branch (g<N>-…, k<N>-…)
+# Dev previews (RUNBOOK "Dev previews", bvcom README §3): every push to the branch dev or to a task branch (g<N>-…, k<N>-…, home<N>-…)
 # builds www.blokvolt.rs and blokvolt.com with the same checks as Deploy, makes both builds noindex and uploads them as
 # PREVIEW deployments: blokvolt.rs → Cloudflare Pages project "blokvolt" (https://<branch>.blokvolt.pages.dev),
 # blokvolt.com with the world layer → project "blokvolt-com" (https://<branch>.blokvolt-com.pages.dev; its production
@@ -9,7 +9,7 @@
 name: Preview
 on:
   push:
-    branches: ['dev', 'g[0-9]*-*', 'k[0-9]*-*']
+    branches: ['dev', 'g[0-9]*-*', 'k[0-9]*-*', 'home[0-9]*-*']
   workflow_dispatch:
 permissions:
   contents: read
@@ -56,6 +56,8 @@ jobs:
           python3 scripts/world_map.py --selftest
           python3 scripts/world_pages.py selftest
           python3 scripts/world_shell.py selftest
+          python3 scripts/world_hero.py selftest
+          python3 scripts/world_home.py selftest
           python3 scripts/world_prices_data.py validate
           python3 scripts/world_prices.py selftest
           python3 scripts/world_pay.py selftest
@@ -64,7 +66,7 @@ jobs:
           python3 scripts/world_embed.py selftest
           node scripts/qa/vidzet_world_test.mjs
           python3 content/world/names/check_names.py
-          BV_WORLD_HOME=1 BV_WORLD_PREVIEW=1 BV_WORLD_PAGES="$PAGES" BV_WORLD_MANIFEST="$MANIFEST" BV_WORLD_DATA=/world-data/ python3 scripts/gen_com.py
+          BV_WORLD_PREVIEW=1 BV_WORLD_PAGES="$PAGES" BV_WORLD_MANIFEST="$MANIFEST" BV_WORLD_DATA=/world-data/ python3 scripts/gen_com.py
           mkdir -p dist-com/world-data
           cp -r "$CARDS" dist-com/world-data/
           cp "$MANIFEST" dist-com/world-data/

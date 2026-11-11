@@ -26,6 +26,12 @@ ROOT = Path(__file__).resolve().parent.parent
 HOST = os.environ.get('INDEXNOW_HOST', 'www.blokvolt.rs')   # blokvolt.com: its workflow sets INDEXNOW_HOST (bvcom README §3)
 SITE = 'https://' + HOST
 ENDPOINT = 'https://api.indexnow.org/indexnow'
+# HOME2 (11.11.2026): sitemaps whose URLs are sent again in full until the date, even when unchanged — for a batch an
+# engine refused. 11.11 the first request of the first .com run (sitemap-world-ru-city.xml, 3 136 URLs) got 403: it went
+# out right after the deploy, before the key file answered on blokvolt.com; the next requests of the same run were accepted.
+# Remove an entry once the run log shows "HTTP 200/202" for it.
+RESEND = {'blokvolt.com': {'sitemap-world-ru-city.xml': '2026-11-30'}}
+KEY_WAIT = (0, 10, 20, 30, 60)     # seconds between checks that the live key file answers before the first request
 LIMIT = 10000                       # the protocol's maximum per request
 NS = '{http://www.sitemaps.org/schemas/sitemap/0.9}'
 
@@ -63,6 +69,41 @@ def changed(old, new):
     return [loc for loc, lm in new.items() if loc.startswith(SITE + '/') and old.get(loc) != lm]
 
 
+def resend(name, new, today=None):
+    """URLs of the new sitemap to send in full again (RESEND), [] when the sitemap is not listed or its date has passed."""
+    import datetime as dt
+    until = RESEND.get(HOST, {}).get(name)
+    today = today or dt.date.today().isoformat()
+    if not until or today > until:
+        return []
+    return [loc for loc in new if loc.startswith(SITE + '/')]
+
+
+def key_live(k):
+    """True once https://<host>/<key>.txt answers with the key (an engine checks it; right after a deploy it may not yet)."""
+    import time
+    for w in KEY_WAIT:
+        if w:
+            time.sleep(w)
+        try:
+            with urllib.request.urlopen(urllib.request.Request(f'{SITE}/{k}.txt', headers={'Cache-Control': 'no-cache'}), timeout=20) as r:
+                if r.status == 200 and r.read().decode('utf-8', 'replace').strip() == k:
+                    return True
+        except Exception:
+            pass
+    return False
+
+
+def post(body):
+    req = urllib.request.Request(ENDPOINT, data=body, method='POST',
+                                 headers={'Content-Type': 'application/json; charset=utf-8', 'User-Agent': 'BlokVolt-deploy (+' + SITE + '/)'})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return r.status
+    except urllib.error.HTTPError as e:
+        return e.code
+
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith('--')]
     dry = '--dry-run' in sys.argv
@@ -79,6 +120,10 @@ def main():
         print(f'IndexNow: {args[0]} is an empty sitemap — first publication, every URL of the new one is sent')
     urls = changed(old, new)
     print(f'IndexNow: {len(new)} URLs in the new sitemap, {len(old)} in the old one, {len(urls)} new or changed')
+    again = [u for u in resend(Path(args[1]).name, new) if u not in set(urls)]
+    if again:
+        print(f'IndexNow: {len(again)} unchanged URLs sent again (RESEND {Path(args[1]).name} until {RESEND[HOST][Path(args[1]).name]})')
+        urls += again
     if not urls:
         print('IndexNow: nothing changed — nothing sent')
         return
@@ -93,13 +138,15 @@ def main():
     if dry:
         print(f'IndexNow: dry run, {len(urls)} URLs not sent ({len(body)} bytes)')
         return
-    req = urllib.request.Request(ENDPOINT, data=body, method='POST',
-                                 headers={'Content-Type': 'application/json; charset=utf-8', 'User-Agent': 'BlokVolt-deploy (+' + SITE + '/)'})
+    if not key_live(k):
+        print(f'IndexNow: {SITE}/{k}.txt does not answer with the key yet — sending anyway (the engine may refuse with 403)')
     try:
-        with urllib.request.urlopen(req, timeout=60) as r:
-            status = r.status
-    except urllib.error.HTTPError as e:
-        status = e.code
+        status = post(body)
+        if status in (403, 429):   # key not visible to the engine yet / too fast: one more try after a pause
+            import time
+            print(f'IndexNow: HTTP {status}, one more try in 45 s')
+            time.sleep(45)
+            status = post(body)
     except urllib.error.URLError as e:
         sys.exit(f'IndexNow: {len(urls)} URLs not sent — {e.reason}')
     # 200 accepted, 202 accepted (the key is being checked); 400 bad request, 403 key not valid, 422 URLs not of this

@@ -265,6 +265,15 @@ def _world_public():
 
 # REL1 (11.11.2026): once the world layer is public, the English menu and home lead into it (map and prices first)
 WORLD_LINKS = _world_public()
+# HOME2 (11.11.2026): with the world layer the home page is the world home (scripts/world_home.py); the regional home
+# is /western-balkans/ — linked from the footer of every page and from the world home ("Regional guides")
+WORLD_HOME = bool(os.environ.get('BV_WORLD_PAGES')) and os.environ.get('BV_WORLD_HOME', '1') != '0'
+WB_PATH = '/western-balkans/'
+env.globals['WB_PATH'] = WB_PATH
+env.globals['WORLD_HOME'] = WORLD_HOME
+if WORLD_HOME:   # the Balkan anchors of the English menu now live on /western-balkans/
+    EN_NAV = [(WB_PATH + h[1:] if h.startswith('/#') else h, n, k) for h, n, k in EN_NAV]
+WORLD_PAY = None
 if WORLD_LINKS:
     EN_NAV = [('/map/', 'Map', 'map'), ('/charging-prices/', 'Prices', 'prices')] + EN_NAV
 
@@ -351,11 +360,15 @@ def build_english(local_hubs):
                                               description=(f"Serbia in short: {MAPV['map_n']} public chargers on the map, {n_rs} home-charger installers, "
                                                            'EPS electricity prices and the €5,000 subsidy. Full guide on blokvolt.rs.')),
            priority='0.8')
-    render('en_home.html', '/', dict(en_ctx, n_companies=n_companies, n_sources=len(all_sources), n_rs_firms=n_rs, section='', alts=[],
-                                     title='EV charging in Serbia and the Western Balkans | BlokVolt',
-                                     description=('Charging maps, prices and subsidies for Serbia, Croatia, Bosnia and Herzegovina, Montenegro, '
-                                                  'North Macedonia, Albania, Kosovo and Slovenia.')),
-           priority='1.0')
+    # HOME2 (11.11.2026): the regional home moved to /western-balkans/ (same title, so it keeps the Balkan searches of the
+    # old home); / is the world home of scripts/world_home.py whenever the world layer is built (BV_WORLD_HOME=0: old home at /)
+    wb_ctx = dict(en_ctx, n_companies=n_companies, n_sources=len(all_sources), n_rs_firms=n_rs, section='', alts=[],
+                  title='EV charging in Serbia and the Western Balkans | BlokVolt',
+                  description=('Charging maps, prices and subsidies for Serbia, Croatia, Bosnia and Herzegovina, Montenegro, '
+                               'North Macedonia, Albania, Kosovo and Slovenia.'))
+    render('en_home.html', WB_PATH, dict(wb_ctx, WB=True), priority='0.9')
+    if not WORLD_HOME:
+        render('en_home.html', '/', dict(wb_ctx, WB=False), priority='1.0')
     render('en_partners.html', '/partners/', dict(en_ctx, section='partners', alts=[], title='For companies and suppliers | BlokVolt',
                                                   description='How to get a company listed or corrected on BlokVolt — free and by the same rules for everyone — and where charging-hardware quotations go.'),
            priority='0.3')
@@ -585,10 +598,12 @@ def main():
     import world_pages; wc = world_pages.run(sys.modules[__name__], local_hubs)  # K3: world pages when BV_WORLD_PAGES is set
     import world_shell; world_shell.run(sys.modules[__name__], wc)  # G0: world menu/footer pages, search index, dev home
     __import__('world_prices').run(sys.modules[__name__], wc)  # G3: price index and price pages (with the world layer only)
-    __import__('world_pay').run(sys.modules[__name__], wc)  # G4: how to pay + routes (with the world layer only)
+    global WORLD_PAY
+    WORLD_PAY = __import__('world_pay').run(sys.modules[__name__], wc)  # G4: how to pay + routes (with the world layer only)
     __import__('world_press').run(sys.modules[__name__], wc)  # G7: monthly issue of the index, /press/, embeds, archive CSV
     import world_b2b; world_b2b.run(sys.modules[__name__], wc)  # G10: /data-for-business/ (EN/SR/RU) with the request form
     import world_embed; world_embed.run(sys.modules[__name__], wc)  # G5: /embed/map/, /map-for-your-site/, /developers/
+    import world_home; world_home.run(sys.modules[__name__], wc)  # HOME2: world home /, /sr/, /ru/ with the map first
     if wc is not None and wc.public:  # REL1: the world sitemaps again, now with the pages of G0/G3/G4/G5/G7/G10 written after world_pages
         world_pages.write_sitemaps(wc)
     bad = link_check()

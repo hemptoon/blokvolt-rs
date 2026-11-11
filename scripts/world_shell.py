@@ -1,6 +1,6 @@
 """Frame of the world layer of blokvolt.com (G0): one menu and one footer block for the world map and the world pages,
 the short pages /about/, /sources/, /methodology/ (EN, SR, RU) that lead to "About the data", the home search (K3's static index of
-countries and cities), and — only with BV_WORLD_HOME=1 (dev builds) — a world home page at /, /sr/, /ru/.
+countries and cities). The world home itself (/, /sr/, /ru/) is scripts/world_home.py (HOME2).
 
 Runs only together with the world pages (BV_WORLD_PAGES, scripts/world_pages.py); without them blokvolt.com builds
 exactly as before. Strings: content/world/strings_shell.json ({key: {en, sr, ru}}); the build stops on a missing
@@ -98,26 +98,8 @@ def run(G, c):
                 T=t, crumbs=None, kick=None, jsonld=None, data_date=W.fmt_date(c.date), n_sources=n_sources,
                 about_data=ABOUT_DATA[l], download=DOWNLOAD[l]), 'shell')
             out.append(urls[l])
-    if os.environ.get('BV_WORLD_HOME') == '1':
-        counts = (manifest or {}).get('counts') or {}
-        for l in LANGS:
-            t = T[l]
-            lead = ''
-            if counts.get('sites') and counts.get('countries'):
-                n = W.fmt_num(counts['sites'], W.L[l]) + ' ' + W.pl_form(counts['sites'], t['pl_loc'], l)
-                k = W.fmt_num(counts['countries'], W.L[l]) + ' ' + W.pl_form(counts['countries'], t['pl_cc'], l)
-                lead = t['home_lead'].format(n=n, c=k)
-            countries = sorted(((c.N.country(p['cc'], l), c.site.country(p['cc'], l)) for p in c.site.pages
-                                if p['type'] == 'country' and l in c.site.langs(p)), key=lambda x: x[0])
-            locals_ = [dict(path=h['path'], name=h['loc']['country'], hl=h['loc']['hreflang'], lang=h['loc']['html'])
-                       for h in c.local_hubs]
-            W.write_page(c, l, 'world_home.html', HOME[l], HOME, dict(
-                title=t['home_title'].replace(' | BlokVolt', ''), h1=t['home_h1'], description=t['home_desc'], T=t,
-                lead=lead, crumbs=None, kick=t['home_kick'], jsonld=None, data_date=W.fmt_date(c.date),
-                countries=countries, regional=locals_, map_url=MAP[l], hub_url=HUB[l],
-                search_url=search_url(a, l, sver), home_js=f'/assets/world/world-home.js?v={hver}'), 'home')
-            out.append(HOME[l])
-    print(f"world shell: {len(out)} pages ({', '.join(out[:3])} …), search index {n_idx} places; home {'on' if os.environ.get('BV_WORLD_HOME') == '1' else 'off'}")
+    # HOME2 (11.11.2026): the world home is written by scripts/world_home.py (after prices, pay and widgets)
+    print(f"world shell: {len(out)} pages ({', '.join(out[:3])} …), search index {n_idx} places")
 
 
 def search_url(a, l, sver):

@@ -1,0 +1,357 @@
+{
+ "title": {
+  "en": "EV Charging Map of Europe and the World — Prices & How to Pay | BlokVolt",
+  "sr": "Mapa punjača za električne automobile u Evropi i svetu — cene i plaćanje | BlokVolt",
+  "ru": "Карта зарядок для электромобилей в Европе и мире — цены и оплата | BlokVolt"
+ },
+ "desc": {
+  "en": "Map of public EV charging stations in Europe, the USA, Canada and the rest of the world: what charging costs, how to pay and where to stop on a road trip. Open data with a source and a date for every place.",
+  "sr": "Mapa javnih punjača za električne automobile u Evropi, SAD, Kanadi i ostatku sveta: koliko košta punjenje, kako se plaća i gde stati na putu. Otvoreni podaci, sa izvorom i datumom za svako mesto.",
+  "ru": "Карта публичных зарядок для электромобилей в Европе, США, Канаде и остальном мире: сколько стоит зарядка, чем платить и где остановиться в поездке. Открытые данные с источником и датой у каждого места."
+ },
+ "h1": {
+  "en": "EV charging map of Europe and the world",
+  "sr": "Mapa punjača za električne automobile u Evropi i svetu",
+  "ru": "Карта зарядок для электромобилей в Европе и мире"
+ },
+ "sub": {
+  "en": "Where to charge, what it costs and how to pay — from open data, with a source and a date for every place.",
+  "sr": "Gde napuniti auto, koliko to košta i kako se plaća — iz otvorenih podataka, sa izvorom i datumom za svako mesto.",
+  "ru": "Где зарядиться, сколько это стоит и чем платить — по открытым данным, с источником и датой у каждого места."
+ },
+ "pl_places": {
+  "en": "charging place|charging places|charging places",
+  "sr": "mesto za punjenje|mesta za punjenje|mesta za punjenje",
+  "ru": "место для зарядки|места для зарядки|мест для зарядки"
+ },
+ "pl_countries": {
+  "en": "country|countries|countries",
+  "sr": "zemlja|zemlje|zemalja",
+  "ru": "страна|страны|стран"
+ },
+ "data_as_of": {
+  "en": "data as of {date}",
+  "sr": "podaci od {date}",
+  "ru": "данные на {date}"
+ },
+ "search_label": {
+  "en": "Find a city, country or network",
+  "sr": "Pronađite grad, zemlju ili mrežu",
+  "ru": "Найти город, страну или сеть"
+ },
+ "search_ph": {
+  "en": "City, country or network",
+  "sr": "Grad, zemlja ili mreža",
+  "ru": "Город, страна или сеть"
+ },
+ "search_none": {
+  "en": "No page for this yet — the map shows every place.",
+  "sr": "Za ovo još nema stranice — na mapi su sva mesta.",
+  "ru": "Отдельной страницы пока нет — на карте есть все места."
+ },
+ "search_go": {
+  "en": "Search",
+  "sr": "Pretraga",
+  "ru": "Найти"
+ },
+ "btn_full": {
+  "en": "Open the full map",
+  "sr": "Otvorite celu mapu",
+  "ru": "Открыть полную карту"
+ },
+ "btn_near": {
+  "en": "Near me",
+  "sr": "U blizini",
+  "ru": "Рядом со мной"
+ },
+ "near_err": {
+  "en": "Location is not available. Open the map and move it to your place.",
+  "sr": "Lokacija nije dostupna. Otvorite mapu i pomerite je do svog mesta.",
+  "ru": "Местоположение недоступно. Откройте карту и передвиньте её к себе."
+ },
+ "quick_h": {
+  "en": "Quick filters",
+  "sr": "Brzi filteri",
+  "ru": "Быстрые фильтры"
+ },
+ "q_dc": {
+  "en": "DC charging",
+  "sr": "DC punjenje",
+  "ru": "Зарядка DC"
+ },
+ "q_hpc": {
+  "en": "150 kW and more",
+  "sr": "Od 150 kW",
+  "ru": "От 150 кВт"
+ },
+ "map_alt": {
+  "en": "Map of public charging places: every lime dot is one place",
+  "sr": "Mapa javnih mesta za punjenje: svaka zelena tačka je jedno mesto",
+  "ru": "Карта публичных мест для зарядки: каждая салатовая точка — одно место"
+ },
+ "map_go": {
+  "en": "Explore the map here",
+  "sr": "Istražite mapu ovde",
+  "ru": "Смотреть карту здесь"
+ },
+ "map_loading": {
+  "en": "Loading the map…",
+  "sr": "Mapa se učitava…",
+  "ru": "Карта загружается…"
+ },
+ "map_err": {
+  "en": "The map could not load here. The full map opens on its own page.",
+  "sr": "Mapa ovde nije mogla da se učita. Cela mapa se otvara na svojoj stranici.",
+  "ru": "Карта здесь не загрузилась. Полная карта открывается на своей странице."
+ },
+ "map_more": {
+  "en": "Streets, filters and details — open the full map here",
+  "sr": "Ulice, filteri i detalji — otvorite celu mapu ovde",
+  "ru": "Улицы, фильтры и подробности — открыть полную карту здесь"
+ },
+ "map_label": {
+  "en": "Map of public charging places",
+  "sr": "Mapa javnih mesta za punjenje",
+  "ru": "Карта публичных мест для зарядки"
+ },
+ "attr": {
+  "en": "Data: OpenStreetMap contributors (ODbL), Open Charge Map (CC BY 4.0) and national registers",
+  "sr": "Podaci: saradnici OpenStreetMap-a (ODbL), Open Charge Map (CC BY 4.0) i nacionalni registri",
+  "ru": "Данные: участники OpenStreetMap (ODbL), Open Charge Map (CC BY 4.0) и национальные реестры"
+ },
+ "attr_more": {
+  "en": "all sources",
+  "sr": "svi izvori",
+  "ru": "все источники"
+ },
+ "attr_borders": {
+  "en": "borders: Natural Earth",
+  "sr": "granice: Natural Earth",
+  "ru": "границы: Natural Earth"
+ },
+ "countries_h": {
+  "en": "Charging by country",
+  "sr": "Punjenje po zemljama",
+  "ru": "Зарядка по странам"
+ },
+ "countries_p": {
+  "en": "Public charging places, networks, fast chargers and cities — one page per country.",
+  "sr": "Javna mesta za punjenje, mreže, brzi punjači i gradovi — po jedna stranica za svaku zemlju.",
+  "ru": "Публичные места для зарядки, сети, быстрые зарядки и города — отдельная страница для каждой страны."
+ },
+ "tab_eu": {
+  "en": "Europe",
+  "sr": "Evropa",
+  "ru": "Европа"
+ },
+ "tab_na": {
+  "en": "North America",
+  "sr": "Severna Amerika",
+  "ru": "Северная Америка"
+ },
+ "tab_ap": {
+  "en": "Asia-Pacific",
+  "sr": "Azija i Pacifik",
+  "ru": "Азия и Тихий океан"
+ },
+ "tab_all": {
+  "en": "All countries",
+  "sr": "Sve zemlje",
+  "ru": "Все страны"
+ },
+ "pl_public": {
+  "en": "public place|public places|public places",
+  "sr": "javno mesto|javna mesta|javnih mesta",
+  "ru": "публичное место|публичных места|публичных мест"
+ },
+ "dc_line": {
+  "en": "DC 50 kW+: {n}",
+  "sr": "DC od 50 kW: {n}",
+  "ru": "DC от 50 кВт: {n}"
+ },
+ "ap_note": {
+  "en": "Country pages here come later; the map already shows every place.",
+  "sr": "Stranice ovih zemalja dolaze kasnije; na mapi su već sva mesta.",
+  "ru": "Страницы этих стран появятся позже; на карте уже есть все места."
+ },
+ "on_map": {
+  "en": "on the map",
+  "sr": "na mapi",
+  "ru": "на карте"
+ },
+ "all_link": {
+  "en": "All countries, cities and networks",
+  "sr": "Sve zemlje, gradovi i mreže",
+  "ru": "Все страны, города и сети"
+ },
+ "below_h": {
+  "en": "Fewer places — open on the map",
+  "sr": "Manje mesta — otvorite na mapi",
+  "ru": "Мест меньше — открыть на карте"
+ },
+ "prices_h": {
+  "en": "What charging costs",
+  "sr": "Koliko košta punjenje",
+  "ru": "Сколько стоит зарядка"
+ },
+ "prices_p": {
+  "en": "Average published pay-as-you-go price of fast DC charging, against electricity at home. Euro per kWh, VAT included.",
+  "sr": "Prosečna objavljena cena brzog DC punjenja bez pretplate, u poređenju sa strujom kod kuće. Evra po kWh, sa PDV-om.",
+  "ru": "Средняя опубликованная цена быстрой DC-зарядки без подписки в сравнении с домашним электричеством. Евро за кВт·ч, с НДС."
+ },
+ "p_dc": {
+  "en": "Public DC",
+  "sr": "Javni DC",
+  "ru": "Публичная DC"
+ },
+ "p_home": {
+  "en": "At home",
+  "sr": "Kod kuće",
+  "ru": "Дома"
+ },
+ "p_ratio": {
+  "en": "{x}× the home price",
+  "sr": "{x}× od cene kod kuće",
+  "ru": "в {x} раза дороже, чем дома"
+ },
+ "p_src": {
+  "en": "Operators' published prices, checked {date}; household electricity: {home}.",
+  "sr": "Objavljene cene operatera, provereno {date}; struja za domaćinstva: {home}.",
+  "ru": "Опубликованные цены операторов, проверено {date}; электричество для домохозяйств: {home}."
+ },
+ "p_btn": {
+  "en": "European price index",
+  "sr": "Evropski indeks cena",
+  "ru": "Европейский индекс цен"
+ },
+ "pay_h": {
+  "en": "How to pay",
+  "sr": "Kako platiti",
+  "ru": "Чем платить"
+ },
+ "pay_p": {
+  "en": "Networks' own apps, roaming apps and cards, and paying by bank card — country by country.",
+  "sr": "Aplikacije mreža, roming aplikacije i kartice i plaćanje bankovnom karticom — zemlju po zemlju.",
+  "ru": "Приложения сетей, роуминговые приложения и карты, оплата банковской картой — по каждой стране."
+ },
+ "pay_all": {
+  "en": "All countries",
+  "sr": "Sve zemlje",
+  "ru": "Все страны"
+ },
+ "routes_h": {
+  "en": "Road trips",
+  "sr": "Putovanja",
+  "ru": "Поездки"
+ },
+ "routes_p": {
+  "en": "Fast chargers along the way, what the trip costs to charge, and tolls.",
+  "sr": "Brzi punjači duž puta, koliko košta punjenje na putu i putarine.",
+  "ru": "Быстрые зарядки по пути, сколько стоит зарядка в поездке и платные дороги."
+ },
+ "routes_all": {
+  "en": "All routes",
+  "sr": "Sve rute",
+  "ru": "Все маршруты"
+ },
+ "work_h": {
+  "en": "Is it working?",
+  "sr": "Da li radi?",
+  "ru": "Работает ли зарядка?"
+ },
+ "work_p": {
+  "en": "Drivers mark whether a charger works, is broken or busy — no account needed. Tap a place on the map.",
+  "sr": "Vozači označavaju da li punjač radi, ne radi ili je zauzet — bez naloga. Dodirnite mesto na mapi.",
+  "ru": "Водители отмечают, работает ли зарядка, сломана ли она или занята, — без аккаунта. Нажмите на место на карте."
+ },
+ "open_h": {
+  "en": "Open data & tools",
+  "sr": "Otvoreni podaci i alati",
+  "ru": "Открытые данные и инструменты"
+ },
+ "o_dl": {
+  "en": "Download the data",
+  "sr": "Preuzmite podatke",
+  "ru": "Скачать данные"
+ },
+ "o_dl_p": {
+  "en": "Every public place as CSV, ODbL",
+  "sr": "Sva javna mesta kao CSV, ODbL",
+  "ru": "Все публичные места в CSV, ODbL"
+ },
+ "o_widget": {
+  "en": "Map for your site",
+  "sr": "Mapa za vaš sajt",
+  "ru": "Карта для вашего сайта"
+ },
+ "o_widget_p": {
+  "en": "Embed the map with your filters",
+  "sr": "Ugradite mapu sa svojim filterima",
+  "ru": "Встройте карту со своими фильтрами"
+ },
+ "o_dev": {
+  "en": "For developers",
+  "sr": "Za programere",
+  "ru": "Разработчикам"
+ },
+ "o_dev_p": {
+  "en": "Fields, update rhythm, attribution",
+  "sr": "Polja, učestalost ažuriranja, atribucija",
+  "ru": "Поля, частота обновления, атрибуция"
+ },
+ "o_press": {
+  "en": "Price index for the press",
+  "sr": "Indeks cena za medije",
+  "ru": "Индекс цен для СМИ"
+ },
+ "o_press_p": {
+  "en": "Charts, CSV and citation rules",
+  "sr": "Grafikoni, CSV i pravila citiranja",
+  "ru": "Графики, CSV и правила цитирования"
+ },
+ "reg_h": {
+  "en": "Regional guides",
+  "sr": "Regionalni vodiči",
+  "ru": "Региональные гиды"
+ },
+ "reg_wb": {
+  "en": "Western Balkans (in English)",
+  "sr": "Zapadni Balkan (na engleskom)",
+  "ru": "Западные Балканы (на английском)"
+ },
+ "reg_rs": {
+  "en": "Serbia — blokvolt.rs",
+  "sr": "Srbija — blokvolt.rs",
+  "ru": "Сербия — blokvolt.rs"
+ },
+ "trust_h": {
+  "en": "Where the data comes from",
+  "sr": "Odakle su podaci",
+  "ru": "Откуда данные"
+ },
+ "trust_p": {
+  "en": "OpenStreetMap, Open Charge Map and national registers such as BNetzA, NOBIL and AFDC. Every place shows its source and the date it was last confirmed. No paid placements and no ratings of networks.",
+  "sr": "OpenStreetMap, Open Charge Map i nacionalni registri kao što su BNetzA, NOBIL i AFDC. Svako mesto prikazuje izvor i datum poslednje potvrde. Bez plaćenih pozicija i bez ocena mreža.",
+  "ru": "OpenStreetMap, Open Charge Map и национальные реестры, например BNetzA, NOBIL и AFDC. У каждого места указаны источник и дата последнего подтверждения. Без платных мест и без рейтингов сетей."
+ },
+ "trust_src": {
+  "en": "Sources & licences",
+  "sr": "Izvori i licence",
+  "ru": "Источники и лицензии"
+ },
+ "trust_method": {
+  "en": "Methodology",
+  "sr": "Metodologija",
+  "ru": "Методология"
+ },
+ "org_desc": {
+  "en": "Independent reference on electric vehicle charging: map, prices and how to pay, from open data.",
+  "sr": "Nezavisan vodič za punjenje električnih automobila: mapa, cene i plaćanje, iz otvorenih podataka.",
+  "ru": "Независимый справочник по зарядке электромобилей: карта, цены и оплата по открытым данным."
+ },
+ "attr_short": {
+  "en": "Data © OpenStreetMap (ODbL), Open Charge Map, registers",
+  "sr": "Podaci © OpenStreetMap (ODbL), Open Charge Map, registri",
+  "ru": "Данные © OpenStreetMap (ODbL), Open Charge Map, реестры"
+ }
+}

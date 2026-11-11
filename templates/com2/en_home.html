@@ -5,7 +5,7 @@
  "@context": "https://schema.org",
  "@graph": [
   {"@type": "WebSite", "name": "BlokVolt", "url": "{{ SITE }}/", "inLanguage": "en", "description": {{ description|tojson }}},
-  {"@type": "CollectionPage", "name": {{ title|tojson }}, "url": "{{ SITE }}/", "inLanguage": "en", "dateModified": "{{ CHECKED_ISO }}",
+  {"@type": "CollectionPage", "name": {{ title|tojson }}, "url": "{{ SITE }}{{ canon }}", "inLanguage": "en", "dateModified": "{{ CHECKED_ISO }}",
    "mainEntity": {"@type": "ItemList", "numberOfItems": {{ COUNTRIES|length }}, "itemListElement": [{% for c in COUNTRIES %}{"@type": "ListItem", "position": {{ loop.index }}, "name": {{ ('EV charging in ' ~ c.name)|tojson }}, "url": "{{ SITE }}{{ c.url }}"}{% if not loop.last %},{% endif %}{% endfor %}]}}
  ]
 }</script>{% endblock %}
@@ -31,6 +31,6 @@
 <div class="box"><h3>Same rules for every company</h3><p>What a company says on its own site goes into the same columns for everyone. No ratings, no rankings, no paid placements.</p></div>
 <div class="box"><h3>Gaps are published</h3><p>Each country page lists what could not be verified, so you know where the picture is incomplete. Maps come from OpenStreetMap and Open Charge Map and say so.</p></div>
 </div>
-<p class="note disc">BlokVolt is run by the team of Evolako, a home-charger installer that works in Serbia. Outside Serbia it does not sell or install anything. Found a mistake or want a company added? Write to <a class="lnk" href="mailto:{{ EMAIL }}">{{ EMAIL }}</a> — corrections are free and follow the same rules for everyone. The full rules are in the <a class="lnk" href="{{ RS }}/en/metodologija/">methodology</a>.</p>
+<p class="note disc">Found a mistake or want a company added? Write to <a class="lnk" href="mailto:{{ EMAIL }}">{{ EMAIL }}</a> — corrections are free and follow the same rules for everyone. The full rules are in the <a class="lnk" href="{{ RS }}/en/metodologija/">methodology</a>.</p>
 </div>
 {% endblock %}

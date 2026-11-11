@@ -12,7 +12,8 @@
 <div><h2>In your language</h2><ul>
 {% for h in LOCALS %}<li><a href="{{ h.path }}" hreflang="{{ h.loc.hreflang }}" lang="{{ h.loc.html }}">{{ h.loc.country }}</a></li>
 {% endfor %}<li><a href="{{ RS }}/" hreflang="sr" lang="sr">Srbija — blokvolt.rs</a></li>
-<li><a href="/partners/">For companies</a></li>
+{% if WORLD_HOME %}<li><a href="{{ WB_PATH }}">Western Balkans guide</a></li>
+{% endif %}<li><a href="/partners/">For companies</a></li>
 </ul></div>
 {% else %}
 <div><h2>{{ S.ft_charging }}</h2><ul>
@@ -20,7 +21,7 @@
 {% endfor %}</ul></div>
 <div><h2>BlokVolt</h2><ul>
 {% if PAGES.method %}<li><a href="{{ PAGES.method.path }}">{{ PAGES.method.nav_ft or PAGES.method.h1 }}</a></li>
-{% endif %}<li><a href="/" hreflang="en" lang="en">English — {{ S.ft_region }}</a></li>
+{% endif %}<li><a href="{{ WB_PATH if WORLD_HOME else '/' }}" hreflang="en" lang="en">English — {{ S.ft_region }}</a></li>
 <li><a href="{{ RS }}/" hreflang="sr" lang="sr">Srbija — blokvolt.rs</a></li>
 {% for l in LOCALS_ALL if l.key != LOC.key %}<li><a href="/{{ l.dir }}/" hreflang="{{ l.hreflang }}" lang="{{ l.html }}">{{ l.country }}</a></li>
 {% endfor %}<li><a href="mailto:{{ EMAIL }}?subject={{ S.fix_subject|urlencode }}">{{ S.report }}</a></li>
