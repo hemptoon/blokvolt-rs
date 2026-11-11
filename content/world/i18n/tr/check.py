@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""L-TR: check content/world/i18n/tr against the EN sources. Run from repo root or anywhere."""
+"""L-TR / L2-TR: check content/world/i18n/tr against the EN sources. Run from repo root or anywhere."""
 import json, csv, re, sys
 from pathlib import Path
 HERE = Path(__file__).resolve().parent
@@ -18,7 +18,8 @@ def same(a, b, where):
     for name, rx in (('placeholders', PH), ('tags', TAG), ('entities', ENT)):
         if sorted(rx.findall(a)) != sorted(rx.findall(b)):
             err.append(f'{where}: {name} differ EN={sorted(rx.findall(a))} TR={sorted(rx.findall(b))}')
-for f in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
+FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices', 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed')
+for f in FILES:
     en = json.load(open(W / f'{f}.json')); tr = json.load(open(HERE / f'{f}.json'))
     for k in set(en) - set(tr): err.append(f'{f}: missing {k}')
     for k in set(tr) - set(en): err.append(f'{f}: extra {k}')
@@ -47,7 +48,24 @@ def walk(a, b, p):
         if a.strip() and not b.strip(): err.append(f'texts{p}: empty')
         same(a, b, f'texts{p}')
 t = json.load(open(HERE / 'texts.json'))
-walk({'about_data': json.load(open(W / 'about_data.json'))['en'], 'download': json.load(open(W / 'download.json'))['en']}, t, '')
+if sorted(t) != ['about_data', 'download', 'pay', 'routes']: err.append(f'texts: sections {sorted(t)}')
+walk({'about_data': json.load(open(W / 'about_data.json'))['en'], 'download': json.load(open(W / 'download.json'))['en']},
+     {k: t.get(k) for k in ('about_data', 'download')}, '')
+# texts.json pay/routes (LANG0 format): dotted path of each multilingual node -> text
+def ml_nodes(o, p, out):
+    if isinstance(o, dict):
+        if isinstance(o.get('en'), str) and ('sr' in o or 'ru' in o): out[p] = o['en']; return
+        for k, v in o.items(): ml_nodes(v, f'{p}.{k}' if p else k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o): ml_nodes(v, f'{p}[{i}]', out)
+for sec, fn in (('pay', 'pay.json'), ('routes', 'routes.json')):
+    want = {}; ml_nodes(json.load(open(W / fn)), '', want); got = t.get(sec, {})
+    for k in set(want) - set(got): err.append(f'texts.{sec}: missing {k}')
+    for k in set(got) - set(want): err.append(f'texts.{sec}: extra {k}')
+    for k, v in got.items():
+        if k not in want: continue
+        if not isinstance(v, str) or not v.strip(): err.append(f'texts.{sec}.{k}: empty'); continue
+        same(want[k], v, f'texts.{sec}.{k}')
 # slugs
 KEYS = ['home','map','hub','net','about','download','gnet','prices','shell_about','sources','methodology']
 s = json.load(open(HERE / 'slugs.json'))
@@ -69,6 +87,11 @@ for r in rows:
     if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', r['slug']): err.append(f"countries {r['cc']}: bad slug")
 # cities
 ids = {r['geonameid'] for r in csv.DictReader(open(W / 'names' / 'cities.csv'))}
+# L2: cities with pages that are not yet in names/cities.csv (e.g. NOBIL NO/SE) are allowed too
+_ps = json.load(open(W / 'state' / 'pages_state.json'))
+page_ids = {v['key'].split(':')[2] for v in _ps.values() if v.get('type') == 'city' and str(v.get('key', '')).startswith('t:')}
+for g in sorted(page_ids - {r['geonameid'] for r in csv.DictReader(open(HERE / 'cities.csv'))}): err.append(f'cities {g}: page city missing')
+ids |= page_ids
 rows = list(csv.DictReader(open(HERE / 'cities.csv')))
 if [*rows[0]] != ['geonameid','name','in_phrase','decl_ok','note']: err.append('cities: header')
 seen = set()
@@ -78,6 +101,6 @@ for r in rows:
     if g in seen: err.append(f'cities {g}: duplicate')
     seen.add(g)
     if not (r['name'] and r['in_phrase']) or r['decl_ok'] not in ('0','1'): err.append(f'cities {g}: bad row')
-print(f'cities: {len(rows)}/{len(ids)} covered, decl_ok=1: {sum(r["decl_ok"]=="1" for r in rows)}')
+print(f'cities: {len(rows)}/{len(ids)} covered (names + pages_state), decl_ok=1: {sum(r["decl_ok"]=="1" for r in rows)}')
 print('\n'.join(err) if err else 'OK: 0 errors')
 sys.exit(1 if err else 0)
