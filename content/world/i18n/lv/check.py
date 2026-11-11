@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Check an L-task language pack: content/world/i18n/<code>/ against the EN sources.
+"""Check an L/L2-task language pack (all 8 strings_*.json + texts.json incl. pay/routes): content/world/i18n/<code>/ against the EN sources.
 
-Usage: python3 content/world/i18n/pl/check.py      (code = folder name)
+Usage: python3 content/world/i18n/lv/check.py      (code = folder name)
 Exit 1 on any error. Warnings do not fail.
 """
 import csv, json, re, sys
@@ -20,6 +20,9 @@ EQUIV = {'{city}': {'{city_u}', '{city_v}'}, '{country}': {'{country_u}', '{coun
          '{country_u}': {'{country_v}'}, '{city_u}': {'{city_v}'}}
 SLUG_KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
 FULL = {'home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology'}
+
+STRING_FILES = ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+                'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed']
 
 err, warn = [], []
 
@@ -58,7 +61,7 @@ def check_str(where, en, tr):
 
 def strings(cats):
     n = 0
-    for f in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices']:
+    for f in STRING_FILES:
         p = HERE / f'{f}.json'
         if not p.exists():
             err.append(f'{f}.json missing'); continue
@@ -124,7 +127,36 @@ def texts():
             err.append(f'texts.{k} missing')
         else:
             walk(v, t[k], '.' + k)
+    # L2 / LANG0: multilingual nodes of pay.json and routes.json, key = node path ("afir.points[0]", "routes[3].stops[1].city")
+    for sec in ('pay', 'routes'):
+        nodes = []
+        ml_nodes(json.load(open(WORLD / f'{sec}.json', encoding='utf-8')), '', nodes)
+        tr = t.get(sec)
+        if not isinstance(tr, dict):
+            err.append(f'texts.{sec} missing'); continue
+        en = dict(nodes)
+        for k in en:
+            if k not in tr:
+                err.append(f'texts.{sec}["{k}"]: missing')
+            else:
+                cnt[0] += 1
+                check_str(f'texts.{sec}["{k}"]', en[k], tr[k])
+        for k in tr:
+            if k not in en:
+                err.append(f'texts.{sec}["{k}"]: no such node')
     return cnt
+
+
+def ml_nodes(o, path, out):
+    """Multilingual nodes: dicts with an 'en' string next to 'sr'/'ru'."""
+    if isinstance(o, dict):
+        if isinstance(o.get('en'), str) and ('sr' in o or 'ru' in o):
+            out.append((path, o['en'])); return
+        for k, v in o.items():
+            ml_nodes(v, f'{path}.{k}' if path else k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o):
+            ml_nodes(v, f'{path}[{i}]', out)
 
 
 def slugs():
@@ -176,7 +208,8 @@ def csvs():
 
 
 def style():
-    bad = re.compile(r'\b(my|nasz\w*|prosimy|dziękujemy|zapraszamy|redakcj\w*|24/7|od razu|natychmiast\w*)\b', re.I)
+    # lv: no "mēs"/"mūsu", no "redakcija", no 24/7 or instant promises
+    bad = re.compile(r'(?<!\w)(mēs|mūsu|mums|redakcij\w*|24/7|nekavējoties|uzreiz|tūlīt\w*)(?!\w)', re.I)
     for f in HERE.glob('*.json'):
         for m in bad.finditer(f.read_text(encoding='utf-8')):
             warn.append(f'{f.name}: style word {m.group(0)!r}')

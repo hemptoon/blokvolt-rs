@@ -1,6 +1,6 @@
 geonameid,name,in_phrase,decl_ok,note
 460570,Cēsis,Cēsīs,1,lv-native
-456172,Rīga,pilsētā Rīga,1,lv-native
+456172,Rīga,Rīgā,1,lv-native
 453754,Valmiera,Valmierā,1,lv-native
 2950159,Berlīne,Berlīnē,1,exonym
 2758401,Breda,pilsētā Breda,0,
@@ -1926,7 +1926,7 @@ geonameid,name,in_phrase,decl_ok,note
 3094802,Krakova,Krakovā,1,exonym
 3096472,Katovice,Katovicē,1,exonym-auto
 2732649,Vila do Conde,pilsētā Vila do Conde,0,
-681290,Kluža-Napoka,Kluža-Napokā,1,exonym-auto
+681290,Kluža-Napoka,Klužā-Napokā,1,exonym-auto
 2720501,Borås,pilsētā Borås,0,
 2761353,Wiener Neustadt,pilsētā Wiener Neustadt,0,
 2780180,Eisenzicken,pilsētā Eisenzicken,0,
@@ -2386,7 +2386,7 @@ geonameid,name,in_phrase,decl_ok,note
 6325494,Kvebeka,Kvebekā,1,exonym-auto
 5913490,Calgary,pilsētā Calgary,0,
 5391811,San Diego,pilsētā San Diego,0,
-6058560,Londona,Londonā,1,exonym-auto
+6058560,London,pilsētā London,0,r-lv-namesake
 5140405,Syracuse,pilsētā Syracuse,0,
 6183235,Vinipega,Vinipegā,1,exonym-auto
 6178582,West End,pilsētā West End,0,
@@ -2736,7 +2736,7 @@ geonameid,name,in_phrase,decl_ok,note
 8299576,Bridgewater,pilsētā Bridgewater,0,
 6182962,Windsor,pilsētā Windsor,0,
 7701384,Karabağlar,pilsētā Karabağlar,0,
-4180386,Atēnas,Atēnās,1,exonym-auto
+4180386,Athens,pilsētā Athens,0,r-lv-namesake
 4192289,Duluth,pilsētā Duluth,0,
 4221333,Sandy Springs,pilsētā Sandy Springs,0,
 4363843,North Bethesda,pilsētā North Bethesda,0,
@@ -4379,7 +4379,7 @@ geonameid,name,in_phrase,decl_ok,note
 5802049,Lynnwood,pilsētā Lynnwood,0,
 5803139,Mercer Island,pilsētā Mercer Island,0,
 5809805,SeaTac,pilsētā SeaTac,0,
-5879400,Ankurija,Ankurijā,1,exonym-auto
+5879400,Enkoridža,Enkoridžā,1,exonym-auto
 7257992,Bel Air South,pilsētā Bel Air South,0,
 7259034,St. Charles,pilsētā St. Charles,0,
 8097131,Oak Hill,pilsētā Oak Hill,0,
@@ -4575,7 +4575,7 @@ geonameid,name,in_phrase,decl_ok,note
 5097598,Elizabeth,pilsētā Elizabeth,0,
 5100854,Maplewood,pilsētā Maplewood,0,
 5105127,Summit,pilsētā Summit,0,
-5107152,Amsterdama,Amsterdamā,1,exonym-auto
+5107152,Amsterdam,pilsētā Amsterdam,0,r-lv-namesake
 5112035,Centereach,pilsētā Centereach,0,
 5125011,Lockport,pilsētā Lockport,0,
 5125738,Mamaroneck,pilsētā Mamaroneck,0,
