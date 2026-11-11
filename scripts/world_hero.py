@@ -278,10 +278,14 @@ def main(argv):
 
 
 def selftest():
-    import numpy as np
+    """Runs without numpy too (CI of the previews installs only what the site build needs)."""
     ok = True
-    x, y = world_px(np.array([0.0]), np.array([0.0]), 0)
-    ok &= abs(x[0] - 256) < 1e-6 and abs(y[0] - 256) < 1e-6
+    try:
+        import numpy as np
+        x, y = world_px(np.array([0.0]), np.array([0.0]), 0)
+        ok &= abs(x[0] - 256) < 1e-6 and abs(y[0] - 256) < 1e-6
+    except ImportError:
+        print('world_hero selftest: numpy not installed — projection check skipped (needed only to draw the pictures)')
     for reg, shapes in VIEWS.items():
         for shp, v in shapes.items():
             ok &= v['size'][0] <= 1920 and v['size'][1] <= 1080 and 1 <= v['z'] <= 6
