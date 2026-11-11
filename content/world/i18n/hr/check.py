@@ -23,7 +23,9 @@ def same(a, b, where):
         if norm(rx.findall(a)) != norm(rx.findall(b)):
             err.append(f'{where}: {what} differ: EN {sorted(rx.findall(a))} vs {sorted(rx.findall(b))}')
 
-for f in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
+STRINGS = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+           'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed')   # L2: all 8 files
+for f in STRINGS:
     en = {k: v['en'] for k, v in json.load(open(WORLD / f'{f}.json')).items()}
     tr = json.load(open(HERE / f'{f}.json'))
     for k in en.keys() - tr.keys(): err.append(f'{f}: missing key {k}')
@@ -52,6 +54,26 @@ def walk(a, b, where):
 texts = json.load(open(HERE / 'texts.json'))
 for f in ('about_data', 'download'):
     walk(json.load(open(WORLD / f'{f}.json'))['en'], texts.get(f), f'texts.{f}')
+
+# L2 / LANG0: texts.json "pay" and "routes" = {path of a multilingual node in pay.json / routes.json: text}
+def nodes(o, p, out):
+    if isinstance(o, dict):
+        if isinstance(o.get('en'), str) and ('sr' in o or 'ru' in o):
+            out[p] = o['en']; return
+        for k, v in o.items(): nodes(v, (p + '.' if p else '') + k, out)
+    elif isinstance(o, list):
+        for i, v in enumerate(o): nodes(v, f'{p}[{i}]', out)
+for f in ('pay', 'routes'):
+    en = {}; nodes(json.load(open(WORLD / f'{f}.json')), '', en)
+    tr = texts.get(f)
+    if not isinstance(tr, dict): err.append(f'texts.{f}: missing section'); continue
+    for k in en.keys() - tr.keys(): err.append(f'texts.{f}: missing node {k}')
+    for k in tr.keys() - en.keys(): err.append(f'texts.{f}: extra node {k}')
+    for k, e in en.items():
+        t = tr.get(k)
+        if t is None: continue
+        if not isinstance(t, str) or not t.strip(): err.append(f'texts.{f}.{k}: empty or not a string'); continue
+        same(e, t, f'texts.{f}.{k}')
 
 SLUG = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')
 s = json.load(open(HERE / 'slugs.json'))
