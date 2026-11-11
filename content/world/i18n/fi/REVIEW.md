@@ -138,3 +138,9 @@
 
 ## Замечание
 В `texts.json` есть `sources_pages`, хотя по уточнению 23:55 его не переводят. Ветка оставляет его как есть: движку K8 стоит этот блок игнорировать.
+
+## L2-fi (11.11.2026) — обратный перевод 60 новых строк
+Отдельный агент, без доступа к EN, полный протокол — `L2_backtranslation.md`. Из 60 строк 45 OK, 15 замечаний; принято 14:
+`b2b.m_need`, `b2b.what_cmp`, `b2b.what_price`, `b2b.f_w_other`, `pay.cost_note` (без глагола), `pay.th_trip`, `pay.sys_mixed`, `pay.th_gaps`, `embed.cf_net`, `embed.cf_rules`, `press.d_issue` (месяц не в начале строки — `{month}` в нижнем регистре), `press.issue_of`, `press.h_cite`, `press.cite_3`.
+Не принято: `press.d_press` — название индекса «Euroopan sähköautojen latauksen hintaindeksi» уже закреплено в `strings_prices` (t_hub) и `press.credit`, меняем только везде сразу.
+Регистр: «me/meidän», «heti», «24/7» — 0; «lataus» в значении «загрузка» — 0 (кнопка CSV — «Tiedosto ja sarakkeet»).
