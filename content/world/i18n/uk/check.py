@@ -234,10 +234,15 @@ def check_countries():
 def check_cities():
     rows = read_csv('cities.csv', ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note'])
     src = {r['geonameid']: r for r in csv.DictReader(open(os.path.join(NAMES, 'cities.csv'), newline=''))}
+    # FIXL2: geonameids from names/cities_extra.csv are allowed too (not counted in stage stats)
+    ext = os.path.join(NAMES, 'cities_extra.csv')
+    known = set(src)
+    if os.path.exists(ext):
+        known |= {r['geonameid'] for r in csv.DictReader(open(ext, newline=''))}
     seen = set()
     for r in rows:
         g = r['geonameid']
-        if g not in src:
+        if g not in known:
             err(f'cities.csv:{g}: unknown geonameid')
         if g in seen:
             err(f'cities.csv:{g}: duplicate')

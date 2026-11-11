@@ -55,3 +55,4 @@
 - lang_hint „Ova je stranica dostupna i na hrvatskom”, close „Zatvori”.
 - Putanje odjeljaka: /hr/kako-platiti/ /hr/rute/ /hr/za-medije/ /hr/podaci-za-tvrtke/ /hr/embed/karta/ /hr/karta-za-vasu-stranicu/ /hr/za-programere/ (bez sudara s lokalnim /hr/ odjeljkom).
 - D12: Ser → Seres. +49 gradova (NOBIL: imena izvorno, lokativ iz sr_u gdje decl_ok_sr=1, inače „u gradu X”; Ženeva → u Ženevi). name_nom nije potreban (hr nije u D14).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 0)

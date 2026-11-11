@@ -194,12 +194,13 @@ if len({r['slug'] for r in C}) != len(C):
 
 Y = read_csv('cities.csv', ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note'])
 src_city = {r['geonameid']: r for r in csv.DictReader(open(NAMES / 'cities.csv', encoding='utf-8'))}
+extra_city = {r['geonameid'] for r in csv.DictReader(open(NAMES / 'cities_extra.csv', encoding='utf-8'))}  # FIXL2
 ids = [r['geonameid'] for r in Y]
 if len(ids) != len(set(ids)):
     err.append('cities.csv: duplicate geonameid')
-unknown = set(ids) - set(src_city)
+unknown = set(ids) - set(src_city) - extra_city
 if unknown:
-    err.append(f'cities.csv: {len(unknown)} geonameid not in names/cities.csv')
+    err.append(f'cities.csv: {len(unknown)} geonameid not in names/cities.csv or names/cities_extra.csv')
 for r in Y:
     if not r['name'] or not r['in_phrase']:
         err.append(f'cities.csv {r["geonameid"]}: empty name/in_phrase')

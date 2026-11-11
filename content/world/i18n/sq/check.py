@@ -168,6 +168,9 @@ def check_csv():
         if not SLUG.match(r["slug"]): ERR.append(f"countries {r['cc']}: слаг {r['slug']!r}")
         if not r["name"].strip() or not r["in_phrase"].strip(): ERR.append(f"countries {r['cc']}: пусто")
     geo = {r["geonameid"] for r in csv.DictReader(open(WORLD / "names/cities.csv", encoding="utf-8"))}
+    # FIXL2: gid lejohet edhe nga names/cities_extra.csv
+    if (WORLD / "names/cities_extra.csv").exists():
+        geo |= {r["geonameid"] for r in csv.DictReader(open(WORLD / "names/cities_extra.csv", encoding="utf-8"))}
     # FIXL: каждый geonameid обязан быть в names/cities.csv; города страниц из state/pages_state.json должны быть
     st = WORLD / "state/pages_state.json"
     page_ids = set()
@@ -180,7 +183,7 @@ def check_csv():
     ids = [r["geonameid"] for r in rows]
     if len(set(ids)) != len(ids): ERR.append("cities.csv: повтор geonameid")
     extra = set(ids) - geo
-    if extra: ERR.append(f"cities.csv: geonameid нет в names/cities.csv: {sorted(extra)[:10]}")
+    if extra: ERR.append(f"cities.csv: geonameid нет в names/cities.csv / cities_extra.csv: {sorted(extra)[:10]}")
     lost = page_ids - set(ids)
     if lost: ERR.append(f"cities.csv: нет городов со страницами (pages_state): {sorted(lost)[:10]} …{len(lost)}")
     for r in rows:

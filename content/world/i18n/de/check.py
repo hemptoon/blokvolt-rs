@@ -173,6 +173,8 @@ if len({r['slug'] for r in rows}) != len(rows): errs.append('countries.csv: dupl
 
 # 5. cities.csv
 src_g = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities.csv', encoding='utf-8'))}
+# FIXL2: names/cities_extra.csv (821 nearby/list cities outside names/cities.csv) is also a valid source
+extra_g = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities_extra.csv', encoding='utf-8'))}
 # FIXL: every geonameid must exist in names/cities.csv; every city page must have a row
 try:
     _ps = json.load(open(WORLD / 'state/pages_state.json', encoding='utf-8'))
@@ -182,7 +184,7 @@ except Exception:
     warns.append('pages_state.json not readable: city pages not checked')
 cr = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
 if cr and list(cr[0]) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: errs.append('cities.csv: header')
-unk = [r['geonameid'] for r in cr if r['geonameid'] not in src_g]
+unk = [r['geonameid'] for r in cr if r['geonameid'] not in src_g | extra_g]
 nopage = sorted(page_g - {r['geonameid'] for r in cr})
 if nopage: errs.append(f'cities.csv: city pages without a German name {nopage[:5]} ({len(nopage)})')
 if unk: errs.append(f'cities.csv: unknown geonameid {unk[:5]}')

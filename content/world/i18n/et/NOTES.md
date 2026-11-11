@@ -56,3 +56,4 @@ Independent agent translated 60 random ET strings back to EN blind, then compare
 - Section slugs: /et/kuidas-maksta/, /et/marsruudid/, /et/meediale/, /et/andmed-ettevotetele/, /et/embed/kaart/, /et/kaart-veebilehele/, /et/arendajatele/.
 - D13: Kiiev, Holland, 2sg buttons / polite messages — kept. name_nom (D14) not needed for et.
 - cities.csv: +48 NOBIL (-s/-is rule, decl_ok=0) + Genf/Genfis.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 5)

@@ -100,6 +100,8 @@ for r in rows:
     if r['slug'] in [v.strip('/').split('/')[-1] for v in s.values()]: err(f"countries {r['cc']}: slug collides with a page slug")
 # cities
 gid_src = {r['geonameid'] for r in csv.DictReader(open(W / 'names' / 'cities.csv', encoding='utf-8'))}
+# FIXL2 11.11: + names/cities_extra.csv
+gid_src |= {r['geonameid'] for r in csv.DictReader(open(W / 'names' / 'cities_extra.csv', encoding='utf-8'))}
 crow = list(csv.DictReader(open(D / 'cities.csv', encoding='utf-8')))
 for r in crow:
     if r['geonameid'] not in gid_src: err(f"cities: unknown geonameid {r['geonameid']}")

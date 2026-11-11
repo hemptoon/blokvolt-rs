@@ -163,6 +163,9 @@ for r in rows:
 
 # 5. cities.csv
 src_ids = {r['geonameid'] for r in csv.DictReader(open(NAMES / 'cities.csv', encoding='utf-8'))}
+# FIXL2 (11.11.2026): rows may also come from names/cities_extra.csv
+if (NAMES / 'cities_extra.csv').exists():
+    src_ids |= {r['geonameid'] for r in csv.DictReader(open(NAMES / 'cities_extra.csv', encoding='utf-8'))}
 crow = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
 ids = [r['geonameid'] for r in crow]
 if len(ids) != len(set(ids)):

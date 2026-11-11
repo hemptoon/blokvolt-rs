@@ -157,6 +157,7 @@ for r in rows:
 
 # cities.csv
 src = [r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities.csv'))]
+src += [r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities_extra.csv'))]   # FIXL2
 rows = list(csv.DictReader(open(HERE / 'cities.csv')))
 if rows and list(rows[0]) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']:
     err.append('cities: header')

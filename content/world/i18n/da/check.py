@@ -107,7 +107,9 @@ ci = list(csv.DictReader(open(HERE / 'cities.csv')))
 if [*ci[0]] != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: err.append('cities.csv header')
 g = [r['geonameid'] for r in ci]
 if len(set(g)) != len(g): err.append('cities.csv: duplicate geonameid')
-if set(g) - src_g: err.append(f'cities.csv: unknown geonameid {sorted(set(g) - src_g)[:5]}')
+# FIXL2: names/cities_extra.csv is also a valid source
+extra_g = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities_extra.csv'))}
+if set(g) - src_g - extra_g: err.append(f'cities.csv: unknown geonameid {sorted(set(g) - src_g - extra_g)[:5]}')
 # FIXL: every city page of pages_state.json must have a row
 _ps = json.load(open(WORLD / 'state' / 'pages_state.json'))
 _pg = {v['key'].split(':')[2] for v in _ps.values() if v.get('type') == 'city'}

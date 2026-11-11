@@ -108,6 +108,9 @@ for r in rows:
     if 'name_nom' in r and (not r['name_nom'] or not r['name_nom'].endswith(r['name'])): ERR.append(f"countries {r['cc']}: name_nom {r['name_nom']!r}")  # D14
 
 src_g = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities.csv', encoding='utf-8'))}
+# FIXL2: rows for names/cities_extra.csv (cities missing from names/cities.csv) are allowed too
+if (WORLD / 'names/cities_extra.csv').exists():
+    src_g |= {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities_extra.csv', encoding='utf-8'))}
 rows = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
 if rows and list(rows[0]) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: ERR.append('cities.csv: columns')
 g = [r['geonameid'] for r in rows]

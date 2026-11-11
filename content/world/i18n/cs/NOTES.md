@@ -43,3 +43,4 @@ CLDR cs: `one` (1), `few` (2–4), `many` (дробные: 1,5 → род. п. �
 - Слаги (F5): pay `/cs/jak-platit/` · routes `/cs/trasy/` · press `/cs/pro-media/` · b2b `/cs/data-pro-firmy/` · embed `/cs/embed/mapa/` · map_conf `/cs/mapa-pro-vas-web/` · developers `/cs/pro-vyvojare/`. check.py теперь допускает многосегментные пути.
 - name_nom (D14) к cs не относится; D13 — ничего для cs.
 - cities.csv: +48 NOBIL (ve městě X, decl_ok 0) + Ženeva (v Ženevě).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 14)

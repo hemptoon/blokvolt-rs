@@ -51,3 +51,4 @@
 - name_nom (D4) not used for sq; countries.csv keeps 5 columns.
 - New slugs: pay `/sq/si-te-paguani/`, routes `/sq/itineraret/`, press `/sq/per-mediat/`, b2b `/sq/te-dhena-per-biznesin/`, embed `/sq/embed/harta/`, map_conf `/sq/harta-per-faqen-tuaj/`, developers `/sq/per-zhvilluesit/`.
 - Geneva = «Gjenevë» (in_phrase «në Gjenevë»).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 0) — local names with diacritics (RO ș/ț), UA/BY/RU/BG/GR in the file's English romanisation (Gomel, Mogilev, Kryvyi Rih; Greek without accents); exonyms only Romë/Firence/Gjenovë; names in -a → «në qytetin X», decl_ok 0; note FIXL2.

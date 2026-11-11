@@ -89,3 +89,4 @@ The report is in `bt_report.md` in the work folder on the Mac.
 - New slugs (KMU 2010): pay `/uk/yak-oplatyty/`, routes `/uk/marshruty/`, press `/uk/dlia-media/`, b2b `/uk/dani-dlia-biznesu/`, embed `/uk/embed/karta/`, map_conf `/uk/karta-dlia-vashoho-saitu/`, developers `/uk/dlia-rozrobnykiv/`.
 - Cities: +49 (48 NOBIL SE/NO + Женева «у Женеві»), note `FIXL`.
 - lang_hint: «Ця сторінка є також українською».
+- FIXL2: +821 cities from names/cities_extra.csv (own market 61) — UA towns in Ukrainian with hand-written locatives (Володимир, not Volodymyr-Volynskyi; GeoNames city districts → «Полтава (Київський район)» etc.); others transcribed into Ukrainian, compound/uncertain names «у місті X» decl_ok 0 (197); note FIXL2.

@@ -66,3 +66,4 @@ CLDR sv: `one`, `other` (Babel 2.18). Alla `pl_*` är objekt `{one, other}`. ”
 - Slugs (F5): pay `/sv/sa-betalar-du/` · routes `/sv/rutter/` · press `/sv/for-media/` · b2b `/sv/data-for-foretag/` · embed `/sv/embed/karta/` · map_conf `/sv/karta-for-din-webbplats/` · developers `/sv/for-utvecklare/`.
 - Inget `name_nom` (D14 gäller inte sv). D13: inget för sv.
 - cities.csv: + Kongsberg, Skien (”i …”), Genève (”i Genève”); de 46 NOBIL-raderna har nu not ”FIXL: verified (NOBIL)”.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 9)

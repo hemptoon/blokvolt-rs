@@ -41,3 +41,4 @@ töltőállomás — станция; töltőhely — место/локация; 
 - name_nom: nem használjuk (D14 csak de fr it es pt el); a check.py megengedi.
 - D12 (végleges): a volt Magyar Királyság más országbeli városai helyi hivatalos névvel (Bratislava, Košice, Cluj-Napoca, Timișoara, Novi Sad, Subotica, Osijek, Čakovec, Sibiu …, 32 sor) — a fenti „спорное” kérdés lezárva. Bevett semleges exonimák maradnak (Bécs, Prága, Belgrád, Zágráb, Bukarest).
 - cities.csv: +48 NOBIL (auto -ban/-ben) + Genf „Genfben”.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 46) — HU: kézi -on/-en/-ön/-ban/-ben (Ajkán, Gödön, Vácon, Komáromban…); D12: SK/RO/UA városok helyi névvel (Komárno, Odorheiu Secuiesc, Sighișoara, Uzhhorod, Mukachevo, Khust); UA/RU/BY/BG nagyobbak magyar átírással (Odessza, Zaporizzsja, Vityebszk, Sztara Zagora), kisebbek latin átírással „X városában”; Róma, Firenze, Trieszt, Szirakúza; auto -ban/-ben a fonetikus latin országokban.

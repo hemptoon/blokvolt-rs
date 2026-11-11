@@ -43,3 +43,4 @@ Propunere: coloana `ro` în `names/glossary.csv` cu acești termeni — de adău
 - name_nom: nefolosit (D14 doar de fr it es pt el); check.py îl permite.
 - D13: Olanda (nu „Țările de Jos”), „în Olanda”, slug `olanda`.
 - cities.csv: +48 NOBIL (nume local, „în X”) + Geneva „în Geneva”.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 41) — RO: diacritice cu virgulă (Iași, Pitești, Constanța, Târgu Mureș); UA/RU/BY/BG transliterare ca în fișier (Zaporojie, Odesa, Chernivtsi — nu Cernăuți, D12), GR fără accente; Roma, Florența, Genova, Triest, Siracuza; toate „în X”.

@@ -153,9 +153,10 @@ for r in c:
 
 ci = rows(HERE / 'cities.csv', ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note'])
 gids = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities.csv', encoding='utf-8'))}
-bad = [r['geonameid'] for r in ci if r['geonameid'] not in gids]
+gids_extra = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities_extra.csv', encoding='utf-8'))}  # FIXL2
+bad = [r['geonameid'] for r in ci if r['geonameid'] not in gids and r['geonameid'] not in gids_extra]
 if bad:
-    errs.append(f'cities.csv: {len(bad)} geonameids not in names/cities.csv')
+    errs.append(f'cities.csv: {len(bad)} geonameids not in names/cities.csv or names/cities_extra.csv')
 if len({r['geonameid'] for r in ci}) != len(ci):
     errs.append('cities.csv: duplicate geonameid')
 for r in ci:
@@ -169,7 +170,7 @@ if miss:
     errs.append(f'cities.csv: {len(miss)} city pages missing: {sorted(miss)[:10]}')
 
 print(f'{LANG}: strings ok ({len(FILES)} files), texts: ' + ', '.join(k for k in texts) if not [e for e in errs if not e.startswith(("texts", "slug", "countries", "cities"))] else '')
-print(f'countries {len(c)}, cities {len(ci)} of {len(gids)} (decl_ok=1: {ok1}), plural categories {sorted(CATS)}')
+print(f'countries {len(c)}, cities {len(ci)} of {len(gids) + len(gids_extra)} (decl_ok=1: {ok1}), plural categories {sorted(CATS)}')
 for w in warns:
     print('WARN', w)
 for e in errs:

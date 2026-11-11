@@ -83,3 +83,4 @@
   `/pt/mapa-para-o-seu-site/`, `/pt/programadores/`.
 - Home (F3): «local de carregamento» para "charging place"; botões no infinitivo; Asia-Pacific = «Ásia-Pacífico».
 - Cidades: 48 NOBIL (nome local, «em X») + Genebra (2660646, «em Genebra»).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 32)

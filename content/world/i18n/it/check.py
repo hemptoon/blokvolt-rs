@@ -122,6 +122,8 @@ if len({r['slug'] for r in rows}) != len(rows): errs.append('countries.csv: dupl
 
 # cities.csv
 cg = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities.csv', encoding='utf-8'))}
+# FIXL2 (11.11.2026): rows may also come from names/cities_extra.csv
+if (WORLD / 'names/cities_extra.csv').exists(): cg |= {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities_extra.csv', encoding='utf-8'))}
 rows = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
 if rows and list(rows[0]) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: errs.append('cities.csv: columns')
 ids = [r['geonameid'] for r in rows]

@@ -65,3 +65,4 @@ Doubts: Burgas «Μπουργκάς» (not «Πύργος», clash with Greek Py
 - D13: Netherlands = «Ολλανδία» (slug `ollandia`).
 - D12: small TR/AL/MK/BG towns use official local names in Greek script; big-city exonyms kept (see REVIEW FIXL).
 - Slugs (F5, ELOT 743): pay `/el/tropoi-pliromis/` · routes `/el/diadromes/` · press `/el/mesa-enimerosis/` · b2b `/el/dedomena-gia-epicheiriseis/` · embed `/el/embed/chartis/` · map_conf `/el/chartis-gia-istotopo/` · developers `/el/gia-programmatistes/`.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 12)

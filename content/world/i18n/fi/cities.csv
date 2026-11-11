@@ -5653,3 +5653,824 @@ geonameid,name,in_phrase,decl_ok,note
 2665171,Vänersborg,Vänersborgissa,1,FIXL
 2664855,Värnamo,Värnamossa,1,FIXL
 2662689,Visby,Visbyssä,1,FIXL
+2763423,Traun,kaupungissa Traun,0,FIXL2
+2760910,Wolfsberg,kaupungissa Wolfsberg,0,FIXL2
+2803429,Aarschot,kaupungissa Aarschot,0,FIXL2
+2802743,Balen,kaupungissa Balen,0,FIXL2
+2801226,Boussu,kaupungissa Boussu,0,FIXL2
+2799496,Destelbergen,kaupungissa Destelbergen,0,FIXL2
+2799412,Diepenbeek,kaupungissa Diepenbeek,0,FIXL2
+2799226,Dour,kaupungissa Dour,0,FIXL2
+2799090,Duffel,kaupungissa Duffel,0,FIXL2
+2799007,Edegem,kaupungissa Edegem,0,FIXL2
+2796833,Haaltert,kaupungissa Haaltert,0,FIXL2
+2796637,Hamme,kaupungissa Hamme,0,FIXL2
+2796012,Herent,kaupungissa Herent,0,FIXL2
+2795800,Heusden,kaupungissa Heusden,0,FIXL2
+2794663,Kasterlee,kaupungissa Kasterlee,0,FIXL2
+2794210,Knokke-Heist,kaupungissa Knokke-Heist,0,FIXL2
+2794179,Koersel,kaupungissa Koersel,0,FIXL2
+2793446,Lanaken,kaupungissa Lanaken,0,FIXL2
+2793144,Lebbeke,kaupungissa Lebbeke,0,FIXL2
+2792360,Lille,kaupungissa Lille,0,FIXL2
+2791961,Maasmechelen,kaupungissa Maasmechelen,0,FIXL2
+2791857,Maldegem,kaupungissa Maldegem,0,FIXL2
+2791424,Meise,kaupungissa Meise,0,FIXL2
+2791194,Middelkerke,kaupungissa Middelkerke,0,FIXL2
+2790114,Ninove,kaupungissa Ninove,0,FIXL2
+2789751,Oostkamp,kaupungissa Oostkamp,0,FIXL2
+2789413,Overijse,kaupungissa Overijse,0,FIXL2
+2788726,Poperinge,kaupungissa Poperinge,0,FIXL2
+2788348,Ranst,kaupungissa Ranst,0,FIXL2
+2786344,Soumagne,kaupungissa Soumagne,0,FIXL2
+2786229,Stabroek,kaupungissa Stabroek,0,FIXL2
+2783632,Willebroek,kaupungissa Willebroek,0,FIXL2
+2783293,Zele,kaupungissa Zele,0,FIXL2
+2783197,Zolder,kaupungissa Zolder,0,FIXL2
+2783188,Zonhoven,kaupungissa Zonhoven,0,FIXL2
+2783081,Zwijndrecht,kaupungissa Zwijndrecht,0,FIXL2
+733618,Asenovgrad,kaupungissa Asenovgrad,0,FIXL2
+733579,Aytos,kaupungissa Aytos,0,FIXL2
+733264,Berkovitsa,kaupungissa Berkovitsa,0,FIXL2
+733014,Botevgrad,kaupungissa Botevgrad,0,FIXL2
+732452,Chirpan,kaupungissa Chirpan,0,FIXL2
+726418,Dobrich,kaupungissa Dobrich,0,FIXL2
+726872,Dupnitsa,kaupungissa Dupnitsa,0,FIXL2
+731549,Gabrovo,kaupungissa Gabrovo,0,FIXL2
+731233,Gorna Oryahovitsa,kaupungissa Gorna Oryahovitsa,0,FIXL2
+731108,Gotse Delchev,kaupungissa Gotse Delchev,0,FIXL2
+730442,Harmanli,kaupungissa Harmanli,0,FIXL2
+729794,Kardzhali,kaupungissa Kardzhali,0,FIXL2
+730565,Karlovo,kaupungissa Karlovo,0,FIXL2
+730559,Karnobat,kaupungissa Karnobat,0,FIXL2
+730496,Kazanlak,kaupungissa Kazanlak,0,FIXL2
+729730,Kyustendil,kaupungissa Kyustendil,0,FIXL2
+729581,Lom,kaupungissa Lom,0,FIXL2
+729559,Lovech,kaupungissa Lovech,0,FIXL2
+729114,Montana,kaupungissa Montana,0,FIXL2
+728742,Nova Zagora,kaupungissa Nova Zagora,0,FIXL2
+728448,Panagyurishte,kaupungissa Panagyurishte,0,FIXL2
+727886,Parvomay,kaupungissa Parvomay,0,FIXL2
+728317,Peshtera,kaupungissa Peshtera,0,FIXL2
+728075,Popovo,kaupungissa Popovo,0,FIXL2
+727696,Razgrad,kaupungissa Razgrad,0,FIXL2
+727447,Sandanski,kaupungissa Sandanski,0,FIXL2
+727337,Sevlievo,kaupungissa Sevlievo,0,FIXL2
+727233,Shumen,kaupungissa Shumen,0,FIXL2
+727221,Silistra,kaupungissa Silistra,0,FIXL2
+726848,Stara Zagora,kaupungissa Stara Zagora,0,FIXL2
+726534,Svishtov,kaupungissa Svishtov,0,FIXL2
+726174,Targovishte,kaupungissa Targovishte,0,FIXL2
+726320,Troyan,kaupungissa Troyan,0,FIXL2
+725988,Velingrad,kaupungissa Velingrad,0,FIXL2
+725905,Vidin,kaupungissa Vidin,0,FIXL2
+725712,Vratsa,kaupungissa Vratsa,0,FIXL2
+725578,Yambol,kaupungissa Yambol,0,FIXL2
+630429,Baranovichi,kaupungissa Baranovichi,0,FIXL2
+630468,Bobruysk,kaupungissa Bobruysk,0,FIXL2
+627907,Homel,kaupungissa Homel,0,FIXL2
+627083,Kalodzishchy,kaupungissa Kalodzishchy,0,FIXL2
+627145,Kobryn,kaupungissa Kobryn,0,FIXL2
+625972,Logoysk,kaupungissa Logoysk,0,FIXL2
+625665,Mahiljou,kaupungissa Mahiljou,0,FIXL2
+625625,Maladziečna,kaupungissa Maladziečna,0,FIXL2
+624079,Orsha,kaupungissa Orsha,0,FIXL2
+630515,Oshmyany,kaupungissa Oshmyany,0,FIXL2
+622794,Rechytsa,kaupungissa Rechytsa,0,FIXL2
+621729,Smaliavičy,kaupungissa Smaliavičy,0,FIXL2
+621713,Smarhoń,kaupungissa Smarhoń,0,FIXL2
+622428,Soligorsk,kaupungissa Soligorsk,0,FIXL2
+620127,Vitebsk,Vitebskissä,1,FIXL2
+2661810,Allschwil,kaupungissa Allschwil,0,FIXL2
+2661265,Carouge,kaupungissa Carouge,0,FIXL2
+2660925,Einsiedeln,kaupungissa Einsiedeln,0,FIXL2
+2660727,Frauenfeld,kaupungissa Frauenfeld,0,FIXL2
+2660549,Gossau,kaupungissa Gossau,0,FIXL2
+2660305,Horgen,kaupungissa Horgen,0,FIXL2
+2659667,Meyrin,kaupungissa Meyrin,0,FIXL2
+2659296,Onex,kaupungissa Onex,0,FIXL2
+2658761,Schaffhausen,kaupungissa Schaffhausen,0,FIXL2
+2658494,Steffisburg,kaupungissa Steffisburg,0,FIXL2
+2658216,Uster,kaupungissa Uster,0,FIXL2
+2658154,Vernier,kaupungissa Vernier,0,FIXL2
+2658011,Wettingen,kaupungissa Wettingen,0,FIXL2
+2657908,Zug,kaupungissa Zug,0,FIXL2
+3079129,Bohumín,kaupungissa Bohumín,0,FIXL2
+3078545,Bruntál,kaupungissa Bruntál,0,FIXL2
+3077835,Cheb,kaupungissa Cheb,0,FIXL2
+3077244,Děčín,kaupungissa Děčín,0,FIXL2
+3074020,Kadaň,kaupungissa Kadaň,0,FIXL2
+3073789,Karviná,kaupungissa Karviná,0,FIXL2
+3073660,Klatovy,kaupungissa Klatovy,0,FIXL2
+3072656,Krnov,kaupungissa Krnov,0,FIXL2
+3070862,Mělník,kaupungissa Mělník,0,FIXL2
+3069844,Neratovice,kaupungissa Neratovice,0,FIXL2
+3068873,Orlová,kaupungissa Orlová,0,FIXL2
+3068690,Otrokovice,kaupungissa Otrokovice,0,FIXL2
+3062339,Vsetín,kaupungissa Vsetín,0,FIXL2
+3061822,Žatec,kaupungissa Žatec,0,FIXL2
+2951679,Beckingen,kaupungissa Beckingen,0,FIXL2
+2930182,Enger,kaupungissa Enger,0,FIXL2
+2930043,Ennepetal,kaupungissa Ennepetal,0,FIXL2
+2929865,Eppelborn,kaupungissa Eppelborn,0,FIXL2
+2917737,Greiz,kaupungissa Greiz,0,FIXL2
+2905290,Hessisch Oldendorf,kaupungissa Hessisch Oldendorf,0,FIXL2
+2904985,Heusweiler,kaupungissa Heusweiler,0,FIXL2
+2904886,Hiddenhausen,kaupungissa Hiddenhausen,0,FIXL2
+2891014,Kierspe,kaupungissa Kierspe,0,FIXL2
+2879832,Lebach,kaupungissa Lebach,0,FIXL2
+2879315,Leichlingen,kaupungissa Leichlingen,0,FIXL2
+2877142,Lindlar,kaupungissa Lindlar,0,FIXL2
+2876218,Lohmar,kaupungissa Lohmar,0,FIXL2
+2872519,Meerane,kaupungissa Meerane,0,FIXL2
+2863240,Nieder-Ingelheim,kaupungissa Nieder-Ingelheim,0,FIXL2
+2851584,Püttlingen,kaupungissa Püttlingen,0,FIXL2
+2847033,Riegelsberg,kaupungissa Riegelsberg,0,FIXL2
+2835382,Schwalbach,kaupungissa Schwalbach,0,FIXL2
+2810969,Werdau,kaupungissa Werdau,0,FIXL2
+2625070,Aabenraa,kaupungissa Aabenraa,0,FIXL2
+2624906,Albertslund,kaupungissa Albertslund,0,FIXL2
+2621927,Frederikshavn,kaupungissa Frederikshavn,0,FIXL2
+2621912,Frederikssund,kaupungissa Frederikssund,0,FIXL2
+2620583,Hedensted,kaupungissa Hedensted,0,FIXL2
+2620473,Helsingør,kaupungissa Helsingør,0,FIXL2
+2619771,Horsens,Horsensissa,1,FIXL2
+2619528,Hvidovre,kaupungissa Hvidovre,0,FIXL2
+2619856,Hørsholm,kaupungissa Hørsholm,0,FIXL2
+2619377,Ishøj,kaupungissa Ishøj,0,FIXL2
+2619154,Kalundborg,kaupungissa Kalundborg,0,FIXL2
+2618415,Køge,kaupungissa Køge,0,FIXL2
+2617658,Lillerød,kaupungissa Lillerød,0,FIXL2
+2616015,Nyborg,kaupungissa Nyborg,0,FIXL2
+2615961,Nykøbing Falster,kaupungissa Nykøbing Falster,0,FIXL2
+2614764,Ringsted,kaupungissa Ringsted,0,FIXL2
+2614481,Roskilde,Roskildessa,1,FIXL2
+2613731,Skive,kaupungissa Skive,0,FIXL2
+2613460,Slagelse,kaupungissa Slagelse,0,FIXL2
+2613233,Solrød Strand,kaupungissa Solrød Strand,0,FIXL2
+2612629,Stenløse,kaupungissa Stenløse,0,FIXL2
+2611497,Tønder,kaupungissa Tønder,0,FIXL2
+2610319,Viborg,Viborgissa,1,FIXL2
+591260,Kohtla-Järve,kaupungissa Kohtla-Järve,0,FIXL2
+590447,Maardu,kaupungissa Maardu,0,FIXL2
+590031,Narva,Narvassa,1,FIXL2
+589580,Pärnu,Pärnussa,1,FIXL2
+587577,Viljandi,Viljandissa,1,FIXL2
+2522208,Albolote,kaupungissa Albolote,0,FIXL2
+2522165,Alcalá de Guadaíra,kaupungissa Alcalá de Guadaíra,0,FIXL2
+2522012,Algemesí,kaupungissa Algemesí,0,FIXL2
+2521964,Aljaraque,kaupungissa Aljaraque,0,FIXL2
+2521923,Almansa,kaupungissa Almansa,0,FIXL2
+2521804,Altea,kaupungissa Altea,0,FIXL2
+2521665,Arcos de la Frontera,kaupungissa Arcos de la Frontera,0,FIXL2
+2521582,Arona,kaupungissa Arona,0,FIXL2
+3129356,Arroyomolinos,kaupungissa Arroyomolinos,0,FIXL2
+2521510,Aspe,kaupungissa Aspe,0,FIXL2
+2521486,Atamaría,kaupungissa Atamaría,0,FIXL2
+2521485,Atarfe,kaupungissa Atarfe,0,FIXL2
+2521335,Barbate,kaupungissa Barbate,0,FIXL2
+2521215,Baza,kaupungissa Baza,0,FIXL2
+2521016,Berja,kaupungissa Berja,0,FIXL2
+3127007,Calella,kaupungissa Calella,0,FIXL2
+2520052,Cartaya,kaupungissa Cartaya,0,FIXL2
+2519738,Castilleja de la Cuesta,kaupungissa Castilleja de la Cuesta,0,FIXL2
+2519690,Catarroja,kaupungissa Catarroja,0,FIXL2
+2519651,Cehegín,kaupungissa Cehegín,0,FIXL2
+3109402,Cerdanyola del Vallès,kaupungissa Cerdanyola del Vallès,0,FIXL2
+2519477,Chipiona,kaupungissa Chipiona,0,FIXL2
+2519289,Conil de la Frontera,kaupungissa Conil de la Frontera,0,FIXL2
+3124569,Cornellà de Llobregat,kaupungissa Cornellà de Llobregat,0,FIXL2
+2519367,Coín,kaupungissa Coín,0,FIXL2
+2519110,Crevillent,kaupungissa Crevillent,0,FIXL2
+3124041,Culleredo,kaupungissa Culleredo,0,FIXL2
+2520055,Cártama,kaupungissa Cártama,0,FIXL2
+2520447,El Campello,kaupungissa El Campello,0,FIXL2
+3117232,El Masnou,kaupungissa El Masnou,0,FIXL2
+3123493,Ferrol,kaupungissa Ferrol,0,FIXL2
+3121766,Galapagar,kaupungissa Galapagar,0,FIXL2
+2516797,Hellín,kaupungissa Hellín,0,FIXL2
+3121881,Hondarribia,kaupungissa Hondarribia,0,FIXL2
+3120501,Humanes de Madrid,kaupungissa Humanes de Madrid,0,FIXL2
+2516474,Icod de los Vinos,kaupungissa Icod de los Vinos,0,FIXL2
+2516443,Ingenio,kaupungissa Ingenio,0,FIXL2
+2515692,La Orotava,kaupungissa La Orotava,0,FIXL2
+2515219,Las Torres de Cotillas,kaupungissa Las Torres de Cotillas,0,FIXL2
+2515072,Lepe,kaupungissa Lepe,0,FIXL2
+2514868,Los Alcázares,kaupungissa Los Alcázares,0,FIXL2
+2514553,Los Palacios y Villafranca,kaupungissa Los Palacios y Villafranca,0,FIXL2
+2514158,Marchena,kaupungissa Marchena,0,FIXL2
+2514042,Maspalomas,kaupungissa Maspalomas,0,FIXL2
+2513983,Mazarrón,kaupungissa Mazarrón,0,FIXL2
+2513703,Moncada,kaupungissa Moncada,0,FIXL2
+3116527,Montcada i Reixac,kaupungissa Montcada i Reixac,0,FIXL2
+2513604,Montijo,kaupungissa Montijo,0,FIXL2
+2513240,Nerja,kaupungissa Nerja,0,FIXL2
+2513195,Novelda,kaupungissa Novelda,0,FIXL2
+2513222,Níjar,kaupungissa Níjar,0,FIXL2
+2513052,Osuna,kaupungissa Osuna,0,FIXL2
+6354969,Playa del Inglés,kaupungissa Playa del Inglés,0,FIXL2
+3113082,Portugalete,kaupungissa Portugalete,0,FIXL2
+2519068,Quart de Poblet,kaupungissa Quart de Poblet,0,FIXL2
+2511994,Realejo Alto,kaupungissa Realejo Alto,0,FIXL2
+2511852,Rincón de la Victoria,kaupungissa Rincón de la Victoria,0,FIXL2
+3111605,Ripollet,kaupungissa Ripollet,0,FIXL2
+2511700,Rota,kaupungissa Rota,0,FIXL2
+3110986,Salou,kaupungissa Salou,0,FIXL2
+2511440,San Bartolomé de Tirajana,kaupungissa San Bartolomé de Tirajana,0,FIXL2
+2511371,San Isidro,kaupungissa San Isidro,0,FIXL2
+2511287,San Miguel de Abona,kaupungissa San Miguel de Abona,0,FIXL2
+3110642,Sant Feliu de Llobregat,kaupungissa Sant Feliu de Llobregat,0,FIXL2
+3110519,Sant Joan Despí,kaupungissa Sant Joan Despí,0,FIXL2
+3109546,Sant Just Desvern,kaupungissa Sant Just Desvern,0,FIXL2
+2511150,Santa Lucía,kaupungissa Santa Lucía,0,FIXL2
+3109897,Ribeira,kaupungissa Ribeira,0,FIXL2
+2511160,Santa Fe,kaupungissa Santa Fe,0,FIXL2
+3109050,Seseña,kaupungissa Seseña,0,FIXL2
+3109041,Sestao,kaupungissa Sestao,0,FIXL2
+2510764,Sueca,kaupungissa Sueca,0,FIXL2
+3108317,Tarancón,kaupungissa Tarancón,0,FIXL2
+2510394,Tomares,kaupungissa Tomares,0,FIXL2
+3107955,Tordera,kaupungissa Tordera,0,FIXL2
+2510245,Torrox,kaupungissa Torrox,0,FIXL2
+2510485,Tías,kaupungissa Tías,0,FIXL2
+2510112,Ubrique,kaupungissa Ubrique,0,FIXL2
+2510073,Utrera,kaupungissa Utrera,0,FIXL2
+3105247,Villanueva de la Cañada,kaupungissa Villanueva de la Cañada,0,FIXL2
+3105148,Villaquilambre,kaupungissa Villaquilambre,0,FIXL2
+3104703,Villaviciosa de Odón,kaupungissa Villaviciosa de Odón,0,FIXL2
+3104475,Viveiro,kaupungissa Viveiro,0,FIXL2
+2509408,Yaiza,kaupungissa Yaiza,0,FIXL2
+2509402,Yecla,kaupungissa Yecla,0,FIXL2
+2509377,Zafra,kaupungissa Zafra,0,FIXL2
+659169,Hamina,Haminassa,1,FIXL2
+651659,Kontiolahti,Kontiolahdella,1,FIXL2
+648738,Laukaa,Laukaassa,1,FIXL2
+643644,Orimattila,Orimattilassa,1,FIXL2
+3037423,Antony,kaupungissa Antony,0,FIXL2
+3031898,Boissy-Saint-Léger,kaupungissa Boissy-Saint-Léger,0,FIXL2
+3030990,Bourg-la-Reine,kaupungissa Bourg-la-Reine,0,FIXL2
+8555643,Cergy-Pontoise,kaupungissa Cergy-Pontoise,0,FIXL2
+3026637,Charenton-le-Pont,kaupungissa Charenton-le-Pont,0,FIXL2
+3025622,Chelles,kaupungissa Chelles,0,FIXL2
+3020832,Draveil,kaupungissa Draveil,0,FIXL2
+3018280,Fleury-les-Aubrais,kaupungissa Fleury-les-Aubrais,0,FIXL2
+3017341,Franconville,kaupungissa Franconville,0,FIXL2
+3016830,Gagny,kaupungissa Gagny,0,FIXL2
+3002647,Le Plessis-Trévise,kaupungissa Le Plessis-Trévise,0,FIXL2
+2998305,Limeil-Brévannes,kaupungissa Limeil-Brévannes,0,FIXL2
+2998056,Livry-Gargan,kaupungissa Livry-Gargan,0,FIXL2
+2997904,Lognes,kaupungissa Lognes,0,FIXL2
+2995206,Massy,kaupungissa Massy,0,FIXL2
+2992616,Montfermeil,kaupungissa Montfermeil,0,FIXL2
+2992090,Montreuil,kaupungissa Montreuil,0,FIXL2
+2990616,Neuilly-Plaisance,kaupungissa Neuilly-Plaisance,0,FIXL2
+2986025,Port-de-Bouc,kaupungissa Port-de-Bouc,0,FIXL2
+2983440,Ris-Orangis,kaupungissa Ris-Orangis,0,FIXL2
+2983026,Romainville,kaupungissa Romainville,0,FIXL2
+2981512,Saint-Avertin,kaupungissa Saint-Avertin,0,FIXL2
+2980558,Sainte-Geneviève-des-Bois,kaupungissa Sainte-Geneviève-des-Bois,0,FIXL2
+2974681,Sevran,kaupungissa Sevran,0,FIXL2
+2973841,Stains,kaupungissa Stains,0,FIXL2
+2968653,Villemomble,kaupungissa Villemomble,0,FIXL2
+2968555,Villeneuve-la-Garenne,kaupungissa Villeneuve-la-Garenne,0,FIXL2
+2967934,Viroflay,kaupungissa Viroflay,0,FIXL2
+3020020,Épinay-sur-Seine,kaupungissa Épinay-sur-Seine,0,FIXL2
+2634677,Watford,kaupungissa Watford,0,FIXL2
+8478257,Agios Ioannis Rentis,kaupungissa Agios Ioannis Rentis,0,FIXL2
+736229,Florina,kaupungissa Florina,0,FIXL2
+8310138,Ilioupoli,kaupungissa Ilioupoli,0,FIXL2
+261249,Kamatero,kaupungissa Kamatero,0,FIXL2
+259824,Kifisia,kaupungissa Kifisia,0,FIXL2
+9034728,Nea Ionia,kaupungissa Nea Ionia,0,FIXL2
+256575,Nea Smyrni,kaupungissa Nea Smyrni,0,FIXL2
+256429,Nikaia,kaupungissa Nikaia,0,FIXL2
+255377,Petroupoli,kaupungissa Petroupoli,0,FIXL2
+734301,Sykies,kaupungissa Sykies,0,FIXL2
+251948,Vyronas,kaupungissa Vyronas,0,FIXL2
+256601,Ilion,kaupungissa Ilion,0,FIXL2
+723030,Abony,kaupungissa Abony,0,FIXL2
+3056357,Ajka,kaupungissa Ajka,0,FIXL2
+3055685,Baja,kaupungissa Baja,0,FIXL2
+722636,Balmazújváros,kaupungissa Balmazújváros,0,FIXL2
+722437,Békéscsaba,kaupungissa Békéscsaba,0,FIXL2
+3054543,Cegléd,kaupungissa Cegléd,0,FIXL2
+3053438,Dunaújváros,kaupungissa Dunaújváros,0,FIXL2
+3053163,Esztergom,kaupungissa Esztergom,0,FIXL2
+720334,Gyula,kaupungissa Gyula,0,FIXL2
+3052040,Gyöngyös,kaupungissa Gyöngyös,0,FIXL2
+3052241,Göd,kaupungissa Göd,0,FIXL2
+3052236,Gödöllő,kaupungissa Gödöllő,0,FIXL2
+720284,Hajdúnánás,kaupungissa Hajdúnánás,0,FIXL2
+720276,Hajdúszoboszló,kaupungissa Hajdúszoboszló,0,FIXL2
+3050907,Jászberény,kaupungissa Jászberény,0,FIXL2
+719404,Karcag,kaupungissa Karcag,0,FIXL2
+719311,Kazincbarcika,kaupungissa Kazincbarcika,0,FIXL2
+3049885,Kiskunfélegyháza,kaupungissa Kiskunfélegyháza,0,FIXL2
+3049880,Kiskunhalas,kaupungissa Kiskunhalas,0,FIXL2
+3049896,Kiskőrös,kaupungissa Kiskőrös,0,FIXL2
+718739,Kisvárda,kaupungissa Kisvárda,0,FIXL2
+3049512,Komló,kaupungissa Komló,0,FIXL2
+3049519,Komárom,kaupungissa Komárom,0,FIXL2
+717902,Makó,kaupungissa Makó,0,FIXL2
+717652,Mezőkövesd,kaupungissa Mezőkövesd,0,FIXL2
+717635,Mezőtúr,kaupungissa Mezőtúr,0,FIXL2
+3047942,Monor,kaupungissa Monor,0,FIXL2
+3047896,Mosonmagyaróvár,kaupungissa Mosonmagyaróvár,0,FIXL2
+717771,Mátészalka,kaupungissa Mátészalka,0,FIXL2
+3047651,Nagykőrös,kaupungissa Nagykőrös,0,FIXL2
+716736,Orosháza,kaupungissa Orosháza,0,FIXL2
+3046888,Oroszlány,kaupungissa Oroszlány,0,FIXL2
+3046768,Paks,kaupungissa Paks,0,FIXL2
+3046686,Pápa,kaupungissa Pápa,0,FIXL2
+3045643,Salgótarján,kaupungissa Salgótarján,0,FIXL2
+715466,Szarvas,kaupungissa Szarvas,0,FIXL2
+3044681,Szentendre,kaupungissa Szentendre,0,FIXL2
+715337,Szentes,kaupungissa Szentes,0,FIXL2
+3044821,Százhalombatta,kaupungissa Százhalombatta,0,FIXL2
+3045487,Sárvár,kaupungissa Sárvár,0,FIXL2
+715839,Sátoraljaújhely,kaupungissa Sátoraljaújhely,0,FIXL2
+3044083,Tata,kaupungissa Tata,0,FIXL2
+714697,Tiszaújváros,kaupungissa Tiszaújváros,0,FIXL2
+3043293,Vác,kaupungissa Vác,0,FIXL2
+3042638,Zalaegerszeg,kaupungissa Zalaegerszeg,0,FIXL2
+716671,Ózd,kaupungissa Ózd,0,FIXL2
+2965715,Carrigaline,kaupungissa Carrigaline,0,FIXL2
+2962974,Leixlip,kaupungissa Leixlip,0,FIXL2
+2962785,Lucan,kaupungissa Lucan,0,FIXL2
+2633274,Akureyri,Akureyrissä,1,FIXL2
+3415496,Keflavík,kaupungissa Keflavík,0,FIXL2
+8644037,Reykjanesbær,kaupungissa Reykjanesbær,0,FIXL2
+3183587,Abano Terme,kaupungissa Abano Terme,0,FIXL2
+3183573,Abbiategrasso,kaupungissa Abbiategrasso,0,FIXL2
+3183490,Acqui Terme,kaupungissa Acqui Terme,0,FIXL2
+2525769,Adrano,kaupungissa Adrano,0,FIXL2
+3183319,Albignasego,kaupungissa Albignasego,0,FIXL2
+2525755,Alcamo,kaupungissa Alcamo,0,FIXL2
+3183284,Alghero,kaupungissa Alghero,0,FIXL2
+3183089,Ancona,Anconassa,1,FIXL2
+3183072,Andria,kaupungissa Andria,0,FIXL2
+3182904,Arcore,kaupungissa Arcore,0,FIXL2
+3182884,Arezzo,kaupungissa Arezzo,0,FIXL2
+3182749,Ascoli Piceno,kaupungissa Ascoli Piceno,0,FIXL2
+3182650,Avellino,kaupungissa Avellino,0,FIXL2
+3182361,Bareggio,kaupungissa Bareggio,0,FIXL2
+3182297,Bassano del Grappa,kaupungissa Bassano del Grappa,0,FIXL2
+3182272,Battipaglia,kaupungissa Battipaglia,0,FIXL2
+8224092,Bellaria-Igea Marina,kaupungissa Bellaria-Igea Marina,0,FIXL2
+3182210,Belluno,kaupungissa Belluno,0,FIXL2
+2525571,Belpasso,kaupungissa Belpasso,0,FIXL2
+3182179,Benevento,kaupungissa Benevento,0,FIXL2
+3181631,Bra,kaupungissa Bra,0,FIXL2
+2525473,Cagliari,Cagliarissa,1,FIXL2
+3180991,Campobasso,kaupungissa Campobasso,0,FIXL2
+2525405,Canicattì,kaupungissa Canicattì,0,FIXL2
+3180581,Carate Brianza,kaupungissa Carate Brianza,0,FIXL2
+2525350,Carini,kaupungissa Carini,0,FIXL2
+3180445,Carpi,kaupungissa Carpi,0,FIXL2
+3180224,Casalecchio di Reno,kaupungissa Casalecchio di Reno,0,FIXL2
+2525207,Casarano,kaupungissa Casarano,0,FIXL2
+3179866,Caserta,kaupungissa Caserta,0,FIXL2
+6534235,Cassano Magnago,kaupungissa Cassano Magnago,0,FIXL2
+3179781,Cassino,kaupungissa Cassino,0,FIXL2
+3179686,Castelfranco Emilia,kaupungissa Castelfranco Emilia,0,FIXL2
+3179684,Castelfranco Veneto,kaupungissa Castelfranco Veneto,0,FIXL2
+2525070,Castrovillari,kaupungissa Castrovillari,0,FIXL2
+2525068,Catania,Cataniassa,1,FIXL2
+2525059,Catanzaro,kaupungissa Catanzaro,0,FIXL2
+3178999,Cerveteri,kaupungissa Cerveteri,0,FIXL2
+6534280,Cesano Boscone,kaupungissa Cesano Boscone,0,FIXL2
+3178957,Cesena,kaupungissa Cesena,0,FIXL2
+3178850,Chiari,kaupungissa Chiari,0,FIXL2
+3178832,Chiavari,kaupungissa Chiavari,0,FIXL2
+3178796,Chieti,kaupungissa Chieti,0,FIXL2
+3178784,Chioggia,kaupungissa Chioggia,0,FIXL2
+3178745,Chivasso,kaupungissa Chivasso,0,FIXL2
+3178671,Cinisello Balsamo,kaupungissa Cinisello Balsamo,0,FIXL2
+3178650,Ciriè,kaupungissa Ciriè,0,FIXL2
+3170102,Civitanova Marche,kaupungissa Civitanova Marche,0,FIXL2
+3178402,Colle di Val dElsa,kaupungissa Colle di Val dElsa,0,FIXL2
+3178398,Colleferro,kaupungissa Colleferro,0,FIXL2
+3178388,Collegno,kaupungissa Collegno,0,FIXL2
+3178283,Cologno Monzese,kaupungissa Cologno Monzese,0,FIXL2
+3178112,Cordenons,kaupungissa Cordenons,0,FIXL2
+9003711,Corigliano Scalo,kaupungissa Corigliano Scalo,0,FIXL2
+3178074,Cornaredo,kaupungissa Cornaredo,0,FIXL2
+3178004,Corsico,kaupungissa Corsico,0,FIXL2
+3177841,Crema,kaupungissa Crema,0,FIXL2
+2524881,Crotone,kaupungissa Crotone,0,FIXL2
+3177700,Cuneo,kaupungissa Cuneo,0,FIXL2
+3177608,Desio,kaupungissa Desio,0,FIXL2
+3177532,Domodossola,kaupungissa Domodossola,0,FIXL2
+2524819,Enna,kaupungissa Enna,0,FIXL2
+3177337,Este,kaupungissa Este,0,FIXL2
+3177171,Fasano,kaupungissa Fasano,0,FIXL2
+3176959,Firenze,Firenzessä,1,FIXL2
+2524734,Floridia,kaupungissa Floridia,0,FIXL2
+3176849,Follonica,kaupungissa Follonica,0,FIXL2
+3176843,Fondi,kaupungissa Fondi,0,FIXL2
+3176746,Forlì,kaupungissa Forlì,0,FIXL2
+3176733,Formigine,kaupungissa Formigine,0,FIXL2
+3176639,Fossano,kaupungissa Fossano,0,FIXL2
+3176515,Frosinone,kaupungissa Frosinone,0,FIXL2
+3176407,Galatina,kaupungissa Galatina,0,FIXL2
+3176391,Gallarate,kaupungissa Gallarate,0,FIXL2
+3176379,Galliate,kaupungissa Galliate,0,FIXL2
+3176219,Genova,Genovassa,1,FIXL2
+3176177,Ghedi,kaupungissa Ghedi,0,FIXL2
+2524606,Gioia Tauro,kaupungissa Gioia Tauro,0,FIXL2
+3176041,Giussano,kaupungissa Giussano,0,FIXL2
+3175990,Gorgonzola,kaupungissa Gorgonzola,0,FIXL2
+3175986,Gorizia,kaupungissa Gorizia,0,FIXL2
+3175755,Grugliasco,kaupungissa Grugliasco,0,FIXL2
+6698332,Infernetto,kaupungissa Infernetto,0,FIXL2
+3175458,Ischia,kaupungissa Ischia,0,FIXL2
+3175445,Isernia,kaupungissa Isernia,0,FIXL2
+3175384,Ivrea,kaupungissa Ivrea,0,FIXL2
+3175238,Lainate,kaupungissa Lainate,0,FIXL2
+3164090,Villorba,kaupungissa Villorba,0,FIXL2
+3174953,Lecce,Leccessä,1,FIXL2
+3174921,Legnano,kaupungissa Legnano,0,FIXL2
+2524410,Lentini,kaupungissa Lentini,0,FIXL2
+3174719,Limbiate,kaupungissa Limbiate,0,FIXL2
+3174638,Lodi,kaupungissa Lodi,0,FIXL2
+3174530,Lucca,kaupungissa Lucca,0,FIXL2
+3174494,Lugo,kaupungissa Lugo,0,FIXL2
+6534216,Lumezzane,kaupungissa Lumezzane,0,FIXL2
+3174380,Macerata,kaupungissa Macerata,0,FIXL2
+3174295,Magenta,kaupungissa Magenta,0,FIXL2
+3174141,Malnate,kaupungissa Malnate,0,FIXL2
+3173949,Mariano Comense,kaupungissa Mariano Comense,0,FIXL2
+3173945,Marigliano,kaupungissa Marigliano,0,FIXL2
+3173721,Matera,kaupungissa Matera,0,FIXL2
+3173671,Meda,kaupungissa Meda,0,FIXL2
+2524170,Messina,Messinassa,1,FIXL2
+3173370,Mirandola,kaupungissa Mirandola,0,FIXL2
+3173326,Modugno,kaupungissa Modugno,0,FIXL2
+3173314,Mogliano Veneto,kaupungissa Mogliano Veneto,0,FIXL2
+3173180,Moncalieri,kaupungissa Moncalieri,0,FIXL2
+3173162,Mondovì,kaupungissa Mondovì,0,FIXL2
+3173124,Monselice,kaupungissa Monselice,0,FIXL2
+3173029,Montebelluna,kaupungissa Montebelluna,0,FIXL2
+3172996,Montecatini Terme,kaupungissa Montecatini Terme,0,FIXL2
+3172979,Montecchio Maggiore,kaupungissa Montecchio Maggiore,0,FIXL2
+3172768,Monterotondo,kaupungissa Monterotondo,0,FIXL2
+3172729,Montesilvano,kaupungissa Montesilvano,0,FIXL2
+3172718,Montevarchi,kaupungissa Montevarchi,0,FIXL2
+3172681,Montichiari,kaupungissa Montichiari,0,FIXL2
+3172629,Monza,kaupungissa Monza,0,FIXL2
+2523998,Noto,kaupungissa Noto,0,FIXL2
+3172184,Novate Milanese,kaupungissa Novate Milanese,0,FIXL2
+3172170,Novi Ligure,kaupungissa Novi Ligure,0,FIXL2
+3172154,Nuoro,kaupungissa Nuoro,0,FIXL2
+3171986,Orbassano,kaupungissa Orbassano,0,FIXL2
+2523964,Oristano,kaupungissa Oristano,0,FIXL2
+6534264,Orta di Atella,kaupungissa Orta di Atella,0,FIXL2
+3171848,Osimo,kaupungissa Osimo,0,FIXL2
+3171786,Ostuni,kaupungissa Ostuni,0,FIXL2
+2523920,Palermo,Palermossa,1,FIXL2
+2523902,Palmi,kaupungissa Palmi,0,FIXL2
+3171484,Parabiago,kaupungissa Parabiago,0,FIXL2
+3171180,Perugia,Perugiassa,1,FIXL2
+3170778,Pietrasanta,kaupungissa Pietrasanta,0,FIXL2
+3170676,Pioltello,kaupungissa Pioltello,0,FIXL2
+3170647,Pisa,Pisassa,1,FIXL2
+3170621,Pistoia,kaupungissa Pistoia,0,FIXL2
+3170504,Poggibonsi,kaupungissa Poggibonsi,0,FIXL2
+3170342,Pomezia,kaupungissa Pomezia,0,FIXL2
+3170272,Pontedera,kaupungissa Pontedera,0,FIXL2
+3170147,Pordenone,kaupungissa Pordenone,0,FIXL2
+3170073,Porto San Giorgio,kaupungissa Porto San Giorgio,0,FIXL2
+3170027,Potenza,kaupungissa Potenza,0,FIXL2
+3169984,Pozzuoli,kaupungissa Pozzuoli,0,FIXL2
+3169921,Prato,kaupungissa Prato,0,FIXL2
+2523664,Quattromiglia,kaupungissa Quattromiglia,0,FIXL2
+2523650,Ragusa,kaupungissa Ragusa,0,FIXL2
+3169602,Rapallo,kaupungissa Rapallo,0,FIXL2
+2523630,Reggio Calabria,kaupungissa Reggio Calabria,0,FIXL2
+3169424,Riccione,kaupungissa Riccione,0,FIXL2
+3169412,Rieti,kaupungissa Rieti,0,FIXL2
+3169361,Rimini,Riminissä,1,FIXL2
+3169231,Rivoli,kaupungissa Rivoli,0,FIXL2
+3169056,Romano di Lombardia,kaupungissa Romano di Lombardia,0,FIXL2
+3169070,Rooma,Roomassa,1,FIXL2
+3168936,Roseto degli Abruzzi,kaupungissa Roseto degli Abruzzi,0,FIXL2
+3168930,Rosignano Solvay,kaupungissa Rosignano Solvay,0,FIXL2
+2523577,Rossano Stazione,kaupungissa Rossano Stazione,0,FIXL2
+3168843,Rovigo,kaupungissa Rovigo,0,FIXL2
+3168837,Rozzano,kaupungissa Rozzano,0,FIXL2
+3168730,Sacile,kaupungissa Sacile,0,FIXL2
+3168627,Salsomaggiore Terme,kaupungissa Salsomaggiore Terme,0,FIXL2
+3168609,Saluzzo,kaupungissa Saluzzo,0,FIXL2
+3168550,San Benedetto del Tronto,kaupungissa San Benedetto del Tronto,0,FIXL2
+6534252,San Felice a Cancello,kaupungissa San Felice a Cancello,0,FIXL2
+3168236,San Giovanni Lupatoto,kaupungissa San Giovanni Lupatoto,0,FIXL2
+3168231,San Giovanni Valdarno,kaupungissa San Giovanni Valdarno,0,FIXL2
+2523461,San Giovanni in Fiore,kaupungissa San Giovanni in Fiore,0,FIXL2
+3168222,San Giuliano Milanese,kaupungissa San Giuliano Milanese,0,FIXL2
+3168175,San Lazzaro di Savena,kaupungissa San Lazzaro di Savena,0,FIXL2
+3167978,San Mauro Torinese,kaupungissa San Mauro Torinese,0,FIXL2
+3167953,San Miniato,kaupungissa San Miniato,0,FIXL2
+3167751,San Salvo,kaupungissa San Salvo,0,FIXL2
+3167744,San Sebastiano,kaupungissa San Sebastiano,0,FIXL2
+3167731,San Severo,kaupungissa San Severo,0,FIXL2
+3167777,Sanremo,kaupungissa Sanremo,0,FIXL2
+3167113,Saronno,kaupungissa Saronno,0,FIXL2
+3167104,Sarzana,kaupungissa Sarzana,0,FIXL2
+3167053,Sassuolo,kaupungissa Sassuolo,0,FIXL2
+3167034,Savigliano,kaupungissa Savigliano,0,FIXL2
+3166989,Scandiano,kaupungissa Scandiano,0,FIXL2
+3166988,Scandicci,kaupungissa Scandicci,0,FIXL2
+3166808,Segrate,kaupungissa Segrate,0,FIXL2
+3166740,Senigallia,kaupungissa Senigallia,0,FIXL2
+3166601,Sesto Fiorentino,kaupungissa Sesto Fiorentino,0,FIXL2
+3166598,Sesto San Giovanni,kaupungissa Sesto San Giovanni,0,FIXL2
+3166574,Seveso,kaupungissa Seveso,0,FIXL2
+3166548,Siena,Sienassa,1,FIXL2
+2523083,Syrakusa,kaupungissa Syrakusa,0,FIXL2
+3166397,Sondrio,kaupungissa Sondrio,0,FIXL2
+3166387,Sora,kaupungissa Sora,0,FIXL2
+3219114,Spinea,kaupungissa Spinea,0,FIXL2
+3166034,Sulmona,kaupungissa Sulmona,0,FIXL2
+3166006,Suzzara,kaupungissa Suzzara,0,FIXL2
+3165803,Teramo,kaupungissa Teramo,0,FIXL2
+3165788,Terlizzi,kaupungissa Terlizzi,0,FIXL2
+2522960,Termini Imerese,kaupungissa Termini Imerese,0,FIXL2
+3165773,Termoli,kaupungissa Termoli,0,FIXL2
+3165612,Todi,kaupungissa Todi,0,FIXL2
+3165595,Tolentino,kaupungissa Tolentino,0,FIXL2
+3165370,Tortona,kaupungissa Tortona,0,FIXL2
+3165340,Tradate,kaupungissa Tradate,0,FIXL2
+2522876,Trapani,kaupungissa Trapani,0,FIXL2
+3165201,Treviso,Trevisossa,1,FIXL2
+3165198,Trezzano sul Naviglio,kaupungissa Trezzano sul Naviglio,0,FIXL2
+3165185,Trieste,Triestessä,1,FIXL2
+3165178,Triggiano,kaupungissa Triggiano,0,FIXL2
+3164617,Venaria Reale,kaupungissa Venaria Reale,0,FIXL2
+3164440,Viadana,kaupungissa Viadana,0,FIXL2
+3164433,Viareggio,kaupungissa Viareggio,0,FIXL2
+3164342,Vignola,kaupungissa Vignola,0,FIXL2
+8378910,Villanova,kaupungissa Villanova,0,FIXL2
+3164083,Vimercate,kaupungissa Vimercate,0,FIXL2
+3164080,Vimodrone,kaupungissa Vimodrone,0,FIXL2
+3164039,Viterbo,kaupungissa Viterbo,0,FIXL2
+3164028,Vittorio Veneto,kaupungissa Vittorio Veneto,0,FIXL2
+3163995,Voghera,kaupungissa Voghera,0,FIXL2
+3163853,Zola Predosa,kaupungissa Zola Predosa,0,FIXL2
+597989,Kretinga,kaupungissa Kretinga,0,FIXL2
+593926,Telšiai,kaupungissa Telšiai,0,FIXL2
+847633,Alta,kaupungissa Alta,0,FIXL2
+3153823,Harstad,Harstadissa,1,FIXL2
+3145614,Mo i Rana,kaupungissa Mo i Rana,0,FIXL2
+776175,Biała Podlaska,kaupungissa Biała Podlaska,0,FIXL2
+3103402,Bielsko-Biała,kaupungissa Bielsko-Biała,0,FIXL2
+775922,Biłgoraj,kaupungissa Biłgoraj,0,FIXL2
+3102987,Bolesławiec,kaupungissa Bolesławiec,0,FIXL2
+3101619,Chorzów,kaupungissa Chorzów,0,FIXL2
+3101547,Chrzanów,kaupungissa Chrzanów,0,FIXL2
+3101076,Czechowice-Dziedzice,kaupungissa Czechowice-Dziedzice,0,FIXL2
+3099759,Elbląg,kaupungissa Elbląg,0,FIXL2
+3099424,Gdynia,Gdyniassa,1,FIXL2
+3099230,Gliwice,Gliwicessä,1,FIXL2
+771506,Grajewo,kaupungissa Grajewo,0,FIXL2
+3098218,Grudziądz,kaupungissa Grudziądz,0,FIXL2
+3099213,Głogów,kaupungissa Głogów,0,FIXL2
+3097257,Jelenia Góra,kaupungissa Jelenia Góra,0,FIXL2
+3096880,Kalisz,kaupungissa Kalisz,0,FIXL2
+3096779,Kamienna Góra,kaupungissa Kamienna Góra,0,FIXL2
+769250,Kielce,Kielcessä,1,FIXL2
+3095971,Knurów,kaupungissa Knurów,0,FIXL2
+3095795,Kołobrzeg,kaupungissa Kołobrzeg,0,FIXL2
+767470,Krosno,kaupungissa Krosno,0,FIXL2
+3094170,Kutno,kaupungissa Kutno,0,FIXL2
+766555,Legionowo,kaupungissa Legionowo,0,FIXL2
+3093692,Legnica,kaupungissa Legnica,0,FIXL2
+3093524,Leszno,kaupungissa Leszno,0,FIXL2
+3093040,Lubań,kaupungissa Lubań,0,FIXL2
+3091150,Nakło nad Notecią,kaupungissa Nakło nad Notecią,0,FIXL2
+763534,Nowy Sącz,kaupungissa Nowy Sącz,0,FIXL2
+3090452,Nowy Tomyśl,kaupungissa Nowy Tomyśl,0,FIXL2
+762423,Piaseczno,kaupungissa Piaseczno,0,FIXL2
+3089125,Piekary Śląskie,kaupungissa Piekary Śląskie,0,FIXL2
+3088972,Piotrków Trybunalski,kaupungissa Piotrków Trybunalski,0,FIXL2
+3089033,Piła,kaupungissa Piła,0,FIXL2
+761228,Pruszków,kaupungissa Pruszków,0,FIXL2
+761131,Przeworsk,kaupungissa Przeworsk,0,FIXL2
+3088825,Płock,kaupungissa Płock,0,FIXL2
+3087497,Radomsko,kaupungissa Radomsko,0,FIXL2
+3087418,Radzionków,kaupungissa Radzionków,0,FIXL2
+3086706,Rumia,kaupungissa Rumia,0,FIXL2
+3086586,Rybnik,Rybnikissä,1,FIXL2
+3086511,Rypin,kaupungissa Rypin,0,FIXL2
+3085807,Skawina,kaupungissa Skawina,0,FIXL2
+758626,Sokołów Podlaski,kaupungissa Sokołów Podlaski,0,FIXL2
+3085128,Sosnowiec,kaupungissa Sosnowiec,0,FIXL2
+758390,Starachowice,kaupungissa Starachowice,0,FIXL2
+757718,Suwałki,kaupungissa Suwałki,0,FIXL2
+3084130,Swarzędz,kaupungissa Swarzędz,0,FIXL2
+3083878,Szamotuły,kaupungissa Szamotuły,0,FIXL2
+3085450,Słupsk,kaupungissa Słupsk,0,FIXL2
+3083426,Tczew,kaupungissa Tczew,0,FIXL2
+3082998,Turek,kaupungissa Turek,0,FIXL2
+3082756,Ustka,kaupungissa Ustka,0,FIXL2
+3082751,Ustroń,kaupungissa Ustroń,0,FIXL2
+3082197,Wieluń,kaupungissa Wieluń,0,FIXL2
+3081741,Włocławek,kaupungissa Włocławek,0,FIXL2
+3080985,Zabrze,kaupungissa Zabrze,0,FIXL2
+3080414,Zduńska Wola,kaupungissa Zduńska Wola,0,FIXL2
+3080251,Zgierz,kaupungissa Zgierz,0,FIXL2
+3080165,Zielona Góra,kaupungissa Zielona Góra,0,FIXL2
+754351,Ząbki,kaupungissa Ząbki,0,FIXL2
+3080074,Złotoryja,kaupungissa Złotoryja,0,FIXL2
+3083955,Świnoujście,kaupungissa Świnoujście,0,FIXL2
+3083988,Świętochłowice,kaupungissa Świętochłowice,0,FIXL2
+3080944,Żagań,kaupungissa Żagań,0,FIXL2
+3079855,Żywiec,kaupungissa Żywiec,0,FIXL2
+2743095,Alfena,kaupungissa Alfena,0,FIXL2
+2271473,Arrentela,kaupungissa Arrentela,0,FIXL2
+2742506,Baguim do Monte,kaupungissa Baguim do Monte,0,FIXL2
+2270503,Cacém,kaupungissa Cacém,0,FIXL2
+2270377,Camarate,kaupungissa Camarate,0,FIXL2
+2270157,Carnaxide,kaupungissa Carnaxide,0,FIXL2
+2269041,Corroios,kaupungissa Corroios,0,FIXL2
+2739756,Fânzeres,kaupungissa Fânzeres,0,FIXL2
+2738925,Gondomar,kaupungissa Gondomar,0,FIXL2
+2267131,Laranjeiro,kaupungissa Laranjeiro,0,FIXL2
+2267067,Linda-a-Velha,kaupungissa Linda-a-Velha,0,FIXL2
+2266621,Massamá,kaupungissa Massamá,0,FIXL2
+2265464,Oeiras,kaupungissa Oeiras,0,FIXL2
+2265326,Paço de Arcos,kaupungissa Paço de Arcos,0,FIXL2
+2264736,Piedade,kaupungissa Piedade,0,FIXL2
+2264428,Porto de Mós,kaupungissa Porto de Mós,0,FIXL2
+2735787,Póvoa de Varzim,kaupungissa Póvoa de Varzim,0,FIXL2
+2264269,Quelfes,kaupungissa Quelfes,0,FIXL2
+6559488,Quinta do Conde,kaupungissa Quinta do Conde,0,FIXL2
+2264087,Ramada,kaupungissa Ramada,0,FIXL2
+2735175,Ribeira de Frades,kaupungissa Ribeira de Frades,0,FIXL2
+2735083,Rio Tinto,kaupungissa Rio Tinto,0,FIXL2
+2734140,Senhora da Hora,kaupungissa Senhora da Hora,0,FIXL2
+2262957,Sesimbra,kaupungissa Sesimbra,0,FIXL2
+2263326,São João da Talha,kaupungissa São João da Talha,0,FIXL2
+2734434,São Mamede de Infesta,kaupungissa São Mamede de Infesta,0,FIXL2
+2734379,São Paulo de Frades,kaupungissa São Paulo de Frades,0,FIXL2
+2734363,São Pedro da Cova,kaupungissa São Pedro da Cova,0,FIXL2
+2734306,São Tiago de Custoias,kaupungissa São Tiago de Custoias,0,FIXL2
+2262582,Torres Novas,kaupungissa Torres Novas,0,FIXL2
+2733263,Valadares,kaupungissa Valadares,0,FIXL2
+2743304,Águas Santas,kaupungissa Águas Santas,0,FIXL2
+686578,Alba Iulia,kaupungissa Alba Iulia,0,FIXL2
+685948,Bacău,kaupungissa Bacău,0,FIXL2
+684657,Bistrița,kaupungissa Bistrița,0,FIXL2
+684039,Botoșani,kaupungissa Botoșani,0,FIXL2
+683760,Breaza,kaupungissa Breaza,0,FIXL2
+683902,Brăila,kaupungissa Brăila,0,FIXL2
+683394,Buftea,kaupungissa Buftea,0,FIXL2
+683123,Buzău,kaupungissa Buzău,0,FIXL2
+682729,Caransebeș,kaupungissa Caransebeș,0,FIXL2
+681502,Cisnădie,kaupungissa Cisnădie,0,FIXL2
+681179,Codlea,kaupungissa Codlea,0,FIXL2
+680963,Constanța,kaupungissa Constanța,0,FIXL2
+680332,Craiova,kaupungissa Craiova,0,FIXL2
+681862,Câmpina,kaupungissa Câmpina,0,FIXL2
+679452,Deva,kaupungissa Deva,0,FIXL2
+678817,Drobeta-Turnu Severin,kaupungissa Drobeta-Turnu Severin,0,FIXL2
+678978,Drăgășani,kaupungissa Drăgășani,0,FIXL2
+678015,Focșani,kaupungissa Focșani,0,FIXL2
+676527,Gura Humorului,kaupungissa Gura Humorului,0,FIXL2
+677742,Găești,kaupungissa Găești,0,FIXL2
+675810,Iași,kaupungissa Iași,0,FIXL2
+674531,Lugoj,kaupungissa Lugoj,0,FIXL2
+671964,Odorheiu Secuiesc,kaupungissa Odorheiu Secuiesc,0,FIXL2
+671382,Pantelimon,kaupungissa Pantelimon,0,FIXL2
+670889,Piatra Neamț,kaupungissa Piatra Neamț,0,FIXL2
+670609,Pitești,kaupungissa Pitești,0,FIXL2
+670474,Ploiești,kaupungissa Ploiești,0,FIXL2
+669870,Popești-Leordeni,kaupungissa Popești-Leordeni,0,FIXL2
+668605,Roșiorii de Vede,kaupungissa Roșiorii de Vede,0,FIXL2
+668872,Râmnicu Vâlcea,kaupungissa Râmnicu Vâlcea,0,FIXL2
+667526,Sebeș,kaupungissa Sebeș,0,FIXL2
+667227,Sighetu Marmației,kaupungissa Sighetu Marmației,0,FIXL2
+8436351,Sighișoara,kaupungissa Sighișoara,0,FIXL2
+666767,Slatina,kaupungissa Slatina,0,FIXL2
+665850,Suceava,kaupungissa Suceava,0,FIXL2
+664518,Tulcea,kaupungissa Tulcea,0,FIXL2
+664460,Turda,kaupungissa Turda,0,FIXL2
+665024,Târgoviște,kaupungissa Târgoviște,0,FIXL2
+665004,Târgu Mureș,kaupungissa Târgu Mureș,0,FIXL2
+662334,Zalău,kaupungissa Zalău,0,FIXL2
+662284,Zărnești,kaupungissa Zărnești,0,FIXL2
+1508291,Chelyabinsk,kaupungissa Chelyabinsk,0,FIXL2
+819740,Drozhzhino,kaupungissa Drozhzhino,0,FIXL2
+553915,Kaluga,kaupungissa Kaluga,0,FIXL2
+550280,Khimki,kaupungissa Khimki,0,FIXL2
+547523,Klin,kaupungissa Klin,0,FIXL2
+535121,Lipetsk,Lipetskissä,1,FIXL2
+534595,Lobnya,kaupungissa Lobnya,0,FIXL2
+523812,Mytishchi,kaupungissa Mytishchi,0,FIXL2
+511196,Perm,Permissä,1,FIXL2
+508101,Podolsk,kaupungissa Podolsk,0,FIXL2
+502018,Reutov,kaupungissa Reutov,0,FIXL2
+496638,Sergiyev Posad,kaupungissa Sergiyev Posad,0,FIXL2
+473778,Vidnoye,kaupungissa Vidnoye,0,FIXL2
+473247,Vladimir,kaupungissa Vladimir,0,FIXL2
+472757,Volgograd,Volgogradissa,1,FIXL2
+468902,Yaroslavl,kaupungissa Yaroslavl,0,FIXL2
+606531,Boden,kaupungissa Boden,0,FIXL2
+2700839,Kinna,kaupungissa Kinna,0,FIXL2
+605155,Kiruna,Kirunassa,1,FIXL2
+2667109,Tullinge,kaupungissa Tullinge,0,FIXL2
+2665452,Vallentuna,kaupungissa Vallentuna,0,FIXL2
+3194351,Novo Mesto,kaupungissa Novo Mesto,0,FIXL2
+3192241,Ptuj,kaupungissa Ptuj,0,FIXL2
+3188915,Trbovlje,kaupungissa Trbovlje,0,FIXL2
+3189075,Velenje,kaupungissa Velenje,0,FIXL2
+3061186,Banská Bystrica,kaupungissa Banská Bystrica,0,FIXL2
+3060950,Brezno,kaupungissa Brezno,0,FIXL2
+3060405,Dolný Kubín,kaupungissa Dolný Kubín,0,FIXL2
+3060219,Galanta,kaupungissa Galanta,0,FIXL2
+3060139,Handlová,kaupungissa Handlová,0,FIXL2
+3060095,Hlohovec,kaupungissa Hlohovec,0,FIXL2
+3059435,Komárno,kaupungissa Komárno,0,FIXL2
+3059436,Komárno,kaupungissa Komárno,0,FIXL2
+3058986,Lučenec,kaupungissa Lučenec,0,FIXL2
+3058897,Malacky,kaupungissa Malacky,0,FIXL2
+724144,Michalovce,kaupungissa Michalovce,0,FIXL2
+3058477,Nové Mesto nad Váhom,kaupungissa Nové Mesto nad Váhom,0,FIXL2
+3058472,Nové Zámky,kaupungissa Nové Zámky,0,FIXL2
+3058268,Partizánske,kaupungissa Partizánske,0,FIXL2
+3058210,Pezinok,kaupungissa Pezinok,0,FIXL2
+3058202,Piešťany,kaupungissa Piešťany,0,FIXL2
+3058060,Považská Bystrica,kaupungissa Považská Bystrica,0,FIXL2
+3058000,Prievidza,kaupungissa Prievidza,0,FIXL2
+3057963,Púchov,kaupungissa Púchov,0,FIXL2
+723736,Rimavská Sobota,kaupungissa Rimavská Sobota,0,FIXL2
+723713,Rožňava,kaupungissa Rožňava,0,FIXL2
+3057692,Senec,kaupungissa Senec,0,FIXL2
+3057691,Senica,kaupungissa Senica,0,FIXL2
+3057630,Skalica,kaupungissa Skalica,0,FIXL2
+723559,Snina,kaupungissa Snina,0,FIXL2
+3057174,Topoľčany,kaupungissa Topoľčany,0,FIXL2
+723195,Vranov nad Topľou,kaupungissa Vranov nad Topľou,0,FIXL2
+3057769,Šaľa,kaupungissa Šaľa,0,FIXL2
+3056523,Žiar nad Hronom,kaupungissa Žiar nad Hronom,0,FIXL2
+712165,Bila Tserkva,kaupungissa Bila Tserkva,0,FIXL2
+712590,Bilohorodka,kaupungissa Bilohorodka,0,FIXL2
+711660,Boryspil,kaupungissa Boryspil,0,FIXL2
+711416,Brody,kaupungissa Brody,0,FIXL2
+711390,Brovary,kaupungissa Brovary,0,FIXL2
+710791,Cherkasy,kaupungissa Cherkasy,0,FIXL2
+710719,Chernivtsi,kaupungissa Chernivtsi,0,FIXL2
+707688,Chornomorsk,kaupungissa Chornomorsk,0,FIXL2
+709930,Dnipro,Dniprossa,1,FIXL2
+709540,Dubno,kaupungissa Dubno,0,FIXL2
+13546531,Fortechnyi,kaupungissa Fortechnyi,0,FIXL2
+708901,Haysyn,kaupungissa Haysyn,0,FIXL2
+707565,Irpin,kaupungissa Irpin,0,FIXL2
+707471,Ivano-Frankivsk,kaupungissa Ivano-Frankivsk,0,FIXL2
+706950,Kamyanets-Podilskyi,kaupungissa Kamyanets-Podilskyi,0,FIXL2
+706369,Khmelnytskyi,kaupungissa Khmelnytskyi,0,FIXL2
+706165,Khust,kaupungissa Khust,0,FIXL2
+12519211,Knyahynyn,kaupungissa Knyahynyn,0,FIXL2
+705392,Kolomyia,kaupungissa Kolomyia,0,FIXL2
+13609094,Korolyov,kaupungissa Korolyov,0,FIXL2
+704901,Korosten,kaupungissa Korosten,0,FIXL2
+704858,Korsun-Shevchenkivskyi,kaupungissa Korsun-Shevchenkivskyi,0,FIXL2
+704617,Kovel,kaupungissa Kovel,0,FIXL2
+705812,Kropyvnytskyi,kaupungissa Kropyvnytskyi,0,FIXL2
+703845,Kryvyy Rih,kaupungissa Kryvyy Rih,0,FIXL2
+13561778,Kyivskyi,kaupungissa Kyivskyi,0,FIXL2
+700696,Mostyska,kaupungissa Mostyska,0,FIXL2
+700646,Mukachevo,kaupungissa Mukachevo,0,FIXL2
+700569,Mykolayiv,kaupungissa Mykolayiv,0,FIXL2
+700507,Nadvirna,kaupungissa Nadvirna,0,FIXL2
+700261,Netishyn,kaupungissa Netishyn,0,FIXL2
+8468760,Novoyavorivsk,kaupungissa Novoyavorivsk,0,FIXL2
+13608468,Novozavodskyi,kaupungissa Novozavodskyi,0,FIXL2
+698740,Odessa,Odessassa,1,FIXL2
+698625,Oleksandriya,kaupungissa Oleksandriya,0,FIXL2
+697593,Pervomaysk,kaupungissa Pervomaysk,0,FIXL2
+696943,Pidhorodnye,kaupungissa Pidhorodnye,0,FIXL2
+13631378,Rakove,kaupungissa Rakove,0,FIXL2
+695594,Rivne,kaupungissa Rivne,0,FIXL2
+699445,Samar,kaupungissa Samar,0,FIXL2
+694792,Sarny,kaupungissa Sarny,0,FIXL2
+710554,Sheptytskyi,kaupungissa Sheptytskyi,0,FIXL2
+13561779,Shevchenko,kaupungissa Shevchenko,0,FIXL2
+693457,Smila,kaupungissa Smila,0,FIXL2
+693301,Sokal,kaupungissa Sokal,0,FIXL2
+692372,Stryi,kaupungissa Stryi,0,FIXL2
+692129,Svalyava,kaupungissa Svalyava,0,FIXL2
+691650,Ternopil,kaupungissa Ternopil,0,FIXL2
+691179,Truskavets,kaupungissa Truskavets,0,FIXL2
+690688,Uman,kaupungissa Uman,0,FIXL2
+690548,Uzhhorod,kaupungissa Uzhhorod,0,FIXL2
+689558,Vinnytsya,kaupungissa Vinnytsya,0,FIXL2
+689159,Volochysk,kaupungissa Volochysk,0,FIXL2
+689378,Volodymyr,kaupungissa Volodymyr,0,FIXL2
+688723,Vyshhorod,kaupungissa Vyshhorod,0,FIXL2
+689487,Vyshneve,kaupungissa Vyshneve,0,FIXL2
+687700,Zaporizhzhya,kaupungissa Zaporizhzhya,0,FIXL2
+686967,Zhytomyr,kaupungissa Zhytomyr,0,FIXL2
+686919,Znamyanka,kaupungissa Znamyanka,0,FIXL2
+686803,Zvenyhorodka,kaupungissa Zvenyhorodka,0,FIXL2
+699553,Zvyahel,kaupungissa Zvyahel,0,FIXL2
+6941080,Fort Bragg,kaupungissa Fort Bragg,0,FIXL2

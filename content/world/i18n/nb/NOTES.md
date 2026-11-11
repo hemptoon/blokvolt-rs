@@ -91,3 +91,4 @@
 - Slugs: `/nb/betaling/`, `/nb/ruter/`, `/nb/for-media/`, `/nb/data-for-bedrifter/`, `/nb/embed/kart/`, `/nb/kart-til-nettsiden/`, `/nb/for-utviklere/`.
 - cities.csv: alle 5 654 rader i names/cities.csv; check.py krever nå at hver geonameid finnes der og at alle bysider i pages_state (alle land, ikke bare NO) har navn.
 - countries.csv: ingen `name_nom` (nb har ikke D14).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 3). Kyrillisk: UA norsk translitterasjon (Zjytomyr, Tsjernivtsi, Zaporizjzja), RU/BY som filen (russisk form: Gomel, Mogiljov, Tsjeljabinsk), BG engelsk form som før; GR uten aksenter; RO med ș/ț; Roma, Firenze, Genova. check.py godtar names/cities_extra.csv.

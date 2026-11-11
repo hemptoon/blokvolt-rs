@@ -54,3 +54,4 @@
 - Новые слаги: pay `/mk/kako-da-platite/`, routes `/mk/ruti/` (не `patuvanje` — занято /mk/), press `/mk/za-mediumi/`, b2b `/mk/podatoci-za-kompanii/`, embed `/mk/embed/svetska-mapa/`, map_conf `/mk/mapa-za-vashiot-sajt/`, developers `/mk/za-programeri/`. Пересечений с /mk/ нет.
 - D12: северогреческие города — греческие официальные названия кириллицей (Серес, Едеса, Верија…), Солун/Атина/Јанина/Пиреј — устоявшиеся экзонимы; Lezhë = Лежа.
 - Города: +49 (48 NOBIL + Женева), `во X`, decl_ok 1.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 0) — кириллица; UA по украинской форме (Одеса, Днипро, Кропивницки), устоявшиеся Фиренца/Џенова/Рим/Трст/Запорожје/Ќустендил; BG/RU/BY/GR — транскрипция; `во X`, decl_ok 1; note FIXL2.

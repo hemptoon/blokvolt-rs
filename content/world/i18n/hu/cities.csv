@@ -5653,3 +5653,824 @@ geonameid,name,in_phrase,decl_ok,note
 2665171,Vänersborg,Vänersborgban,1,"FIXL; auto: -ban/-ben, hangrend"
 2664855,Värnamo,Värnamóban,1,"FIXL; auto: -ban/-ben, hangrend"
 2662689,Visby,Visbyben,1,"FIXL; auto: -ban/-ben, hangrend"
+2763423,Traun,Traunban,1,FIXL2
+2760910,Wolfsberg,Wolfsbergben,1,FIXL2
+2803429,Aarschot,Aarschot városában,0,FIXL2
+2802743,Balen,Balen városában,0,FIXL2
+2801226,Boussu,Boussu városában,0,FIXL2
+2799496,Destelbergen,Destelbergen városában,0,FIXL2
+2799412,Diepenbeek,Diepenbeek városában,0,FIXL2
+2799226,Dour,Dour városában,0,FIXL2
+2799090,Duffel,Duffel városában,0,FIXL2
+2799007,Edegem,Edegem városában,0,FIXL2
+2796833,Haaltert,Haaltert városában,0,FIXL2
+2796637,Hamme,Hamme városában,0,FIXL2
+2796012,Herent,Herent városában,0,FIXL2
+2795800,Heusden,Heusden városában,0,FIXL2
+2794663,Kasterlee,Kasterlee városában,0,FIXL2
+2794210,Knokke-Heist,Knokke-Heist városában,0,FIXL2
+2794179,Koersel,Koersel városában,0,FIXL2
+2793446,Lanaken,Lanaken városában,0,FIXL2
+2793144,Lebbeke,Lebbeke városában,0,FIXL2
+2792360,Lille,Lille városában,0,FIXL2
+2791961,Maasmechelen,Maasmechelen városában,0,FIXL2
+2791857,Maldegem,Maldegem városában,0,FIXL2
+2791424,Meise,Meise városában,0,FIXL2
+2791194,Middelkerke,Middelkerke városában,0,FIXL2
+2790114,Ninove,Ninove városában,0,FIXL2
+2789751,Oostkamp,Oostkamp városában,0,FIXL2
+2789413,Overijse,Overijse városában,0,FIXL2
+2788726,Poperinge,Poperinge városában,0,FIXL2
+2788348,Ranst,Ranst városában,0,FIXL2
+2786344,Soumagne,Soumagne városában,0,FIXL2
+2786229,Stabroek,Stabroek városában,0,FIXL2
+2783632,Willebroek,Willebroek városában,0,FIXL2
+2783293,Zele,Zele városában,0,FIXL2
+2783197,Zolder,Zolder városában,0,FIXL2
+2783188,Zonhoven,Zonhoven városában,0,FIXL2
+2783081,Zwijndrecht,Zwijndrecht városában,0,FIXL2
+733618,Asenovgrad,Asenovgrad városában,0,FIXL2
+733579,Aytos,Aytos városában,0,FIXL2
+733264,Berkovitsa,Berkovitsa városában,0,FIXL2
+733014,Botevgrad,Botevgrad városában,0,FIXL2
+732452,Chirpan,Chirpan városában,0,FIXL2
+726418,Dobrics,Dobricsban,1,FIXL2
+726872,Dupnitsa,Dupnitsa városában,0,FIXL2
+731549,Gabrovo,Gabrovo városában,0,FIXL2
+731233,Gorna Oryahovitsa,Gorna Oryahovitsa városában,0,FIXL2
+731108,Gotse Delchev,Gotse Delchev városában,0,FIXL2
+730442,Harmanli,Harmanli városában,0,FIXL2
+729794,Kardzhali,Kardzhali városában,0,FIXL2
+730565,Karlovo,Karlovo városában,0,FIXL2
+730559,Karnobat,Karnobat városában,0,FIXL2
+730496,Kazanlak,Kazanlak városában,0,FIXL2
+729730,Kyustendil,Kyustendil városában,0,FIXL2
+729581,Lom,Lom városában,0,FIXL2
+729559,Lovech,Lovech városában,0,FIXL2
+729114,Montana,Montana városában,0,FIXL2
+728742,Nova Zagora,Nova Zagora városában,0,FIXL2
+728448,Panagyurishte,Panagyurishte városában,0,FIXL2
+727886,Parvomay,Parvomay városában,0,FIXL2
+728317,Peshtera,Peshtera városában,0,FIXL2
+728075,Popovo,Popovo városában,0,FIXL2
+727696,Razgrad,Razgrad városában,0,FIXL2
+727447,Sandanski,Sandanski városában,0,FIXL2
+727337,Sevlievo,Sevlievo városában,0,FIXL2
+727233,Sumen,Sumenben,1,FIXL2
+727221,Szilisztra,Szilisztrában,1,FIXL2
+726848,Sztara Zagora,Sztara Zagorában,1,FIXL2
+726534,Svishtov,Svishtov városában,0,FIXL2
+726174,Targovishte,Targovishte városában,0,FIXL2
+726320,Troyan,Troyan városában,0,FIXL2
+725988,Velingrad,Velingrad városában,0,FIXL2
+725905,Vidin,Vidin városában,0,FIXL2
+725712,Vratsa,Vratsa városában,0,FIXL2
+725578,Jambol,Jambolban,1,FIXL2
+630429,Baranovichi,Baranovichi városában,0,FIXL2
+630468,Bobrujszk,Bobrujszkban,1,FIXL2
+627907,Gomel,Gomelben,1,FIXL2
+627083,Kalodishchi,Kalodishchi városában,0,FIXL2
+627145,Kobrin,Kobrin városában,0,FIXL2
+625972,Logoisk,Logoisk városában,0,FIXL2
+625665,Mogiljov,Mogiljovban,1,FIXL2
+625625,Molodechno,Molodechno városában,0,FIXL2
+624079,Orsha,Orsha városában,0,FIXL2
+630515,Oshmiany,Oshmiany városában,0,FIXL2
+622794,Rechitsa,Rechitsa városában,0,FIXL2
+621729,Smolevichi,Smolevichi városában,0,FIXL2
+621713,Smorgon,Smorgon városában,0,FIXL2
+622428,Soligorsk,Soligorsk városában,0,FIXL2
+620127,Vityebszk,Vityebszkben,1,FIXL2
+2661810,Allschwil,Allschwilban,1,FIXL2
+2661265,Carouge,Carouge városában,0,FIXL2
+2660925,Einsiedeln,Einsiedelnben,1,FIXL2
+2660727,Frauenfeld,Frauenfeldben,1,FIXL2
+2660549,Gossau,Gossauban,1,FIXL2
+2660305,Horgen,Horgenben,1,FIXL2
+2659667,Meyrin,Meyrin városában,0,FIXL2
+2659296,Onex,Onex városában,0,FIXL2
+2658761,Schaffhausen,Schaffhausenben,1,FIXL2
+2658494,Steffisburg,Steffisburgban,1,FIXL2
+2658216,Uster,Usterben,1,FIXL2
+2658154,Vernier,Vernier városában,0,FIXL2
+2658011,Wettingen,Wettingenben,1,FIXL2
+2657908,Zug,Zugban,1,FIXL2
+3079129,Bohumín,Bohumínban,1,FIXL2
+3078545,Bruntál,Bruntálban,1,FIXL2
+3077835,Cheb,Chebben,1,FIXL2
+3077244,Děčín,Děčínben,1,FIXL2
+3074020,Kadaň,Kadaňban,1,FIXL2
+3073789,Karviná,Karvinában,1,FIXL2
+3073660,Klatovy,Klatovyban,1,FIXL2
+3072656,Krnov,Krnovban,1,FIXL2
+3070862,Mělník,Mělníkben,1,FIXL2
+3069844,Neratovice,Neratovicében,1,FIXL2
+3068873,Orlová,Orlovában,1,FIXL2
+3068690,Otrokovice,Otrokovicében,1,FIXL2
+3062339,Vsetín,Vsetínben,1,FIXL2
+3061822,Žatec,Žatecben,1,FIXL2
+2951679,Beckingen,Beckingenben,1,FIXL2
+2930182,Enger,Engerben,1,FIXL2
+2930043,Ennepetal,Ennepetalban,1,FIXL2
+2929865,Eppelborn,Eppelbornban,1,FIXL2
+2917737,Greiz,Greizben,1,FIXL2
+2905290,Hessisch Oldendorf,Hessisch Oldendorfban,1,FIXL2
+2904985,Heusweiler,Heusweilerben,1,FIXL2
+2904886,Hiddenhausen,Hiddenhausenben,1,FIXL2
+2891014,Kierspe,Kierspében,1,FIXL2
+2879832,Lebach,Lebachban,1,FIXL2
+2879315,Leichlingen,Leichlingenben,1,FIXL2
+2877142,Lindlar,Lindlarban,1,FIXL2
+2876218,Lohmar,Lohmarban,1,FIXL2
+2872519,Meerane,Meeranében,1,FIXL2
+2863240,Nieder-Ingelheim,Nieder-Ingelheimben,1,FIXL2
+2851584,Püttlingen,Püttlingenben,1,FIXL2
+2847033,Riegelsberg,Riegelsbergben,1,FIXL2
+2835382,Schwalbach,Schwalbachban,1,FIXL2
+2810969,Werdau,Werdauban,1,FIXL2
+2625070,Aabenraa,Aabenraaban,1,FIXL2
+2624906,Albertslund,Albertslundban,1,FIXL2
+2621927,Frederikshavn,Frederikshavnban,1,FIXL2
+2621912,Frederikssund,Frederikssundban,1,FIXL2
+2620583,Hedensted,Hedenstedben,1,FIXL2
+2620473,Helsingør,Helsingørben,1,FIXL2
+2619771,Horsens,Horsensben,1,FIXL2
+2619528,Hvidovre,Hvidovrében,1,FIXL2
+2619856,Hørsholm,Hørsholmban,1,FIXL2
+2619377,Ishøj,Ishøjben,1,FIXL2
+2619154,Kalundborg,Kalundborgban,1,FIXL2
+2618415,Køge,Køgében,1,FIXL2
+2617658,Lillerød,Lillerødben,1,FIXL2
+2616015,Nyborg,Nyborgban,1,FIXL2
+2615961,Nykøbing Falster,Nykøbing Falsterben,1,FIXL2
+2614764,Ringsted,Ringstedben,1,FIXL2
+2614481,Roskilde,Roskildében,1,FIXL2
+2613731,Skive,Skivében,1,FIXL2
+2613460,Slagelse,Slagelsében,1,FIXL2
+2613233,Solrød Strand,Solrød Strandban,1,FIXL2
+2612629,Stenløse,Stenløsében,1,FIXL2
+2611497,Tønder,Tønderben,1,FIXL2
+2610319,Viborg,Viborgban,1,FIXL2
+591260,Kohtla-Järve,Kohtla-Järvében,1,FIXL2
+590447,Maardu,Maarduban,1,FIXL2
+590031,Narva,Narvában,1,FIXL2
+589580,Pärnu,Pärnuban,1,FIXL2
+587577,Viljandi,Viljandiban,1,FIXL2
+2522208,Albolote,Albolotében,1,FIXL2
+2522165,Alcalá de Guadaira,Alcalá de Guadairában,1,FIXL2
+2522012,Algemesí,Algemesíben,1,FIXL2
+2521964,Aljaraque,Aljaraquében,1,FIXL2
+2521923,Almansa,Almansában,1,FIXL2
+2521804,Altea,Alteában,1,FIXL2
+2521665,Arcos de la Frontera,Arcos de la Fronterában,1,FIXL2
+2521582,Arona,Aronában,1,FIXL2
+3129356,Arroyomolinos,Arroyomolinosban,1,FIXL2
+2521510,Aspe,Aspében,1,FIXL2
+2521486,Atamaría,Atamaríában,1,FIXL2
+2521485,Atarfe,Atarfében,1,FIXL2
+2521335,Barbate,Barbatében,1,FIXL2
+2521215,Baza,Bazában,1,FIXL2
+2521016,Berja,Berjában,1,FIXL2
+3127007,Calella,Calellában,1,FIXL2
+2520052,Cartaya,Cartayában,1,FIXL2
+2519738,Castilleja de la Cuesta,Castilleja de la Cuestában,1,FIXL2
+2519690,Catarroja,Catarrojában,1,FIXL2
+2519651,Cehegín,Cehegínben,1,FIXL2
+3109402,Cerdanyola del Vallès,Cerdanyola del Vallèsben,1,FIXL2
+2519477,Chipiona,Chipionában,1,FIXL2
+2519289,Conil de la Frontera,Conil de la Fronterában,1,FIXL2
+3124569,Cornellà de Llobregat,Cornellà de Llobregatban,1,FIXL2
+2519367,Coín,Coínban,1,FIXL2
+2519110,Crevillente,Crevillentében,1,FIXL2
+3124041,Culleredo,Culleredóban,1,FIXL2
+2520055,Cártama,Cártamában,1,FIXL2
+2520447,El Campello,El Campellóban,1,FIXL2
+3117232,El Masnou,El Masnouban,1,FIXL2
+3123493,Ferrol,Ferrolban,1,FIXL2
+3121766,Galapagar,Galapagarban,1,FIXL2
+2516797,Hellín,Hellínben,1,FIXL2
+3121881,Hondarribia,Hondarribiában,1,FIXL2
+3120501,Humanes de Madrid,Humanes de Madridban,1,FIXL2
+2516474,Icod de los Vinos,Icod de los Vinosban,1,FIXL2
+2516443,Ingenio,Ingenióban,1,FIXL2
+2515692,La Orotava,La Orotavában,1,FIXL2
+2515219,Las Torres de Cotillas,Las Torres de Cotillasban,1,FIXL2
+2515072,Lepe,Lepében,1,FIXL2
+2514868,Los Alcázares,Los Alcázaresben,1,FIXL2
+2514553,Los Palacios y Villafranca,Los Palacios y Villafrancában,1,FIXL2
+2514158,Marchena,Marchenában,1,FIXL2
+2514042,Maspalomas,Maspalomasban,1,FIXL2
+2513983,Mazarrón,Mazarrónban,1,FIXL2
+2513703,Moncada,Moncadában,1,FIXL2
+3116527,Montcada i Reixac,Montcada i Reixacban,1,FIXL2
+2513604,Montijo,Montijóban,1,FIXL2
+2513240,Nerja,Nerjában,1,FIXL2
+2513195,Novelda,Noveldában,1,FIXL2
+2513222,Níjar,Níjarban,1,FIXL2
+2513052,Osuna,Osunában,1,FIXL2
+6354969,Playa del Inglés,Playa del Inglésben,1,FIXL2
+3113082,Portugalete,Portugaletében,1,FIXL2
+2519068,Quart de Poblet,Quart de Pobletben,1,FIXL2
+2511994,Realejo Alto,Realejo Altóban,1,FIXL2
+2511852,Rincón de la Victoria,Rincón de la Victoriában,1,FIXL2
+3111605,Ripollet,Ripolletben,1,FIXL2
+2511700,Rota,Rotában,1,FIXL2
+3110986,Salou,Salouban,1,FIXL2
+2511440,San Bartolomé de Tirajana,San Bartolomé de Tirajanában,1,FIXL2
+2511371,San Isidro,San Isidróban,1,FIXL2
+2511287,San Miguel de Abona,San Miguel de Abonában,1,FIXL2
+3110642,Sant Feliu de Llobregat,Sant Feliu de Llobregatban,1,FIXL2
+3110519,Sant Joan Despí,Sant Joan Despíben,1,FIXL2
+3109546,Sant Just Desvern,Sant Just Desvernben,1,FIXL2
+2511150,Santa Lucía,Santa Lucíában,1,FIXL2
+3109897,Santa Uxía de Ribeira,Santa Uxía de Ribeirában,1,FIXL2
+2511160,Santa Fe,Santa Fében,1,FIXL2
+3109050,Seseña,Seseñában,1,FIXL2
+3109041,Sestao,Sestaóban,1,FIXL2
+2510764,Sueca,Suecában,1,FIXL2
+3108317,Tarancón,Tarancónban,1,FIXL2
+2510394,Tomares,Tomaresben,1,FIXL2
+3107955,Tordera,Torderában,1,FIXL2
+2510245,Torrox,Torroxban,1,FIXL2
+2510485,Tías,Tíasban,1,FIXL2
+2510112,Ubrique,Ubriquében,1,FIXL2
+2510073,Utrera,Utrerában,1,FIXL2
+3105247,Villanueva de la Cañada,Villanueva de la Cañadában,1,FIXL2
+3105148,Villaquilambre,Villaquilambrében,1,FIXL2
+3104703,Villaviciosa de Odón,Villaviciosa de Odónban,1,FIXL2
+3104475,Viveiro,Viveiróban,1,FIXL2
+2509408,Yaiza,Yaizában,1,FIXL2
+2509402,Yecla,Yeclában,1,FIXL2
+2509377,Zafra,Zafrában,1,FIXL2
+659169,Hamina,Haminában,1,FIXL2
+651659,Kontiolahti,Kontiolahtiban,1,FIXL2
+648738,Laukaa,Laukaaban,1,FIXL2
+643644,Orimattila,Orimattilában,1,FIXL2
+3037423,Antony,Antony városában,0,FIXL2
+3031898,Boissy-Saint-Léger,Boissy-Saint-Léger városában,0,FIXL2
+3030990,Bourg-la-Reine,Bourg-la-Reine városában,0,FIXL2
+8555643,Cergy-Pontoise,Cergy-Pontoise városában,0,FIXL2
+3026637,Charenton-le-Pont,Charenton-le-Pont városában,0,FIXL2
+3025622,Chelles,Chelles városában,0,FIXL2
+3020832,Draveil,Draveil városában,0,FIXL2
+3018280,Fleury-les-Aubrais,Fleury-les-Aubrais városában,0,FIXL2
+3017341,Franconville,Franconville városában,0,FIXL2
+3016830,Gagny,Gagny városában,0,FIXL2
+3002647,Le Plessis-Trévise,Le Plessis-Trévise városában,0,FIXL2
+2998305,Limeil-Brévannes,Limeil-Brévannes városában,0,FIXL2
+2998056,Livry-Gargan,Livry-Gargan városában,0,FIXL2
+2997904,Lognes,Lognes városában,0,FIXL2
+2995206,Massy,Massy városában,0,FIXL2
+2992616,Montfermeil,Montfermeil városában,0,FIXL2
+2992090,Montreuil,Montreuil városában,0,FIXL2
+2990616,Neuilly-Plaisance,Neuilly-Plaisance városában,0,FIXL2
+2986025,Port-de-Bouc,Port-de-Bouc városában,0,FIXL2
+2983440,Ris-Orangis,Ris-Orangis városában,0,FIXL2
+2983026,Romainville,Romainville városában,0,FIXL2
+2981512,Saint-Avertin,Saint-Avertin városában,0,FIXL2
+2980558,Sainte-Geneviève-des-Bois,Sainte-Geneviève-des-Bois városában,0,FIXL2
+2974681,Sevran,Sevran városában,0,FIXL2
+2973841,Stains,Stains városában,0,FIXL2
+2968653,Villemomble,Villemomble városában,0,FIXL2
+2968555,Villeneuve-la-Garenne,Villeneuve-la-Garenne városában,0,FIXL2
+2967934,Viroflay,Viroflay városában,0,FIXL2
+3020020,Épinay-sur-Seine,Épinay-sur-Seine városában,0,FIXL2
+2634677,Watford,Watford városában,0,FIXL2
+8478257,Agios Ioannis Rentis,Agios Ioannis Rentis városában,0,FIXL2
+736229,Florina,Florina városában,0,FIXL2
+8310138,Ilioupoli,Ilioupoli városában,0,FIXL2
+261249,Kamateron,Kamateron városában,0,FIXL2
+259824,Kifisia,Kifisia városában,0,FIXL2
+9034728,Nea Ionia,Nea Ionia városában,0,FIXL2
+256575,Nea Smyrni,Nea Smyrni városában,0,FIXL2
+256429,Nikaia,Nikaia városában,0,FIXL2
+255377,Petroupoli,Petroupoli városában,0,FIXL2
+734301,Sykies,Sykies városában,0,FIXL2
+251948,Vyronas,Vyronas városában,0,FIXL2
+256601,Ilion,Ilion városában,0,FIXL2
+723030,Abony,Abonyban,1,FIXL2
+3056357,Ajka,Ajkán,1,FIXL2
+3055685,Baja,Baján,1,FIXL2
+722636,Balmazújváros,Balmazújvároson,1,FIXL2
+722437,Békéscsaba,Békéscsabán,1,FIXL2
+3054543,Cegléd,Cegléden,1,FIXL2
+3053438,Dunaújváros,Dunaújvárosban,1,FIXL2
+3053163,Esztergom,Esztergomban,1,FIXL2
+720334,Gyula,Gyulán,1,FIXL2
+3052040,Gyöngyös,Gyöngyösön,1,FIXL2
+3052241,Göd,Gödön,1,FIXL2
+3052236,Gödöllő,Gödöllőn,1,FIXL2
+720284,Hajdúnánás,Hajdúnánáson,1,FIXL2
+720276,Hajdúszoboszló,Hajdúszoboszlón,1,FIXL2
+3050907,Jászberény,Jászberényben,1,FIXL2
+719404,Karcag,Karcagon,1,FIXL2
+719311,Kazincbarcika,Kazincbarcikán,1,FIXL2
+3049885,Kiskunfélegyháza,Kiskunfélegyházán,1,FIXL2
+3049880,Kiskunhalas,Kiskunhalason,1,FIXL2
+3049896,Kiskőrös,Kiskőrösön,1,FIXL2
+718739,Kisvárda,Kisvárdán,1,FIXL2
+3049512,Komló,Komlón,1,FIXL2
+3049519,Komárom,Komáromban,1,FIXL2
+717902,Makó,Makón,1,FIXL2
+717652,Mezőkövesd,Mezőkövesden,1,FIXL2
+717635,Mezőtúr,Mezőtúron,1,FIXL2
+3047942,Monor,Monoron,1,FIXL2
+3047896,Mosonmagyaróvár,Mosonmagyaróváron,1,FIXL2
+717771,Mátészalka,Mátészalkán,1,FIXL2
+3047651,Nagykőrös,Nagykőrösön,1,FIXL2
+716736,Orosháza,Orosházán,1,FIXL2
+3046888,Oroszlány,Oroszlányban,1,FIXL2
+3046768,Paks,Pakson,1,FIXL2
+3046686,Pápa,Pápán,1,FIXL2
+3045643,Salgótarján,Salgótarjánban,1,FIXL2
+715466,Szarvas,Szarvason,1,FIXL2
+3044681,Szentendre,Szentendrén,1,FIXL2
+715337,Szentes,Szentesen,1,FIXL2
+3044821,Százhalombatta,Százhalombattán,1,FIXL2
+3045487,Sárvár,Sárváron,1,FIXL2
+715839,Sátoraljaújhely,Sátoraljaújhelyen,1,FIXL2
+3044083,Tata,Tatán,1,FIXL2
+714697,Tiszaújváros,Tiszaújvárosban,1,FIXL2
+3043293,Vác,Vácon,1,FIXL2
+3042638,Zalaegerszeg,Zalaegerszegen,1,FIXL2
+716671,Ózd,Ózdon,1,FIXL2
+2965715,Carrigaline,Carrigaline városában,0,FIXL2
+2962974,Leixlip,Leixlip városában,0,FIXL2
+2962785,Lucan,Lucan városában,0,FIXL2
+2633274,Akureyri,Akureyriben,1,FIXL2
+3415496,Keflavík,Keflavíkban,1,FIXL2
+8644037,Reykjanesbær,Reykjanesbærben,1,FIXL2
+3183587,Abano Terme,Abano Termében,1,FIXL2
+3183573,Abbiategrasso,Abbiategrassóban,1,FIXL2
+3183490,Acqui Terme,Acqui Termében,1,FIXL2
+2525769,Adrano,Adranóban,1,FIXL2
+3183319,Albignasego,Albignasegóban,1,FIXL2
+2525755,Alcamo,Alcamóban,1,FIXL2
+3183284,Alghero,Algheróban,1,FIXL2
+3183089,Ancona,Anconában,1,FIXL2
+3183072,Andria,Andriában,1,FIXL2
+3182904,Arcore,Arcorében,1,FIXL2
+3182884,Arezzo,Arezzóban,1,FIXL2
+3182749,Ascoli Piceno,Ascoli Picenóban,1,FIXL2
+3182650,Avellino,Avellinóban,1,FIXL2
+3182361,Bareggio,Bareggióban,1,FIXL2
+3182297,Bassano del Grappa,Bassano del Grappában,1,FIXL2
+3182272,Battipaglia,Battipagliában,1,FIXL2
+8224092,Bellaria-Igea Marina,Bellaria-Igea Marinában,1,FIXL2
+3182210,Belluno,Bellunóban,1,FIXL2
+2525571,Belpasso,Belpassóban,1,FIXL2
+3182179,Benevento,Beneventóban,1,FIXL2
+3181631,Bra,Brában,1,FIXL2
+2525473,Cagliari,Cagliariban,1,FIXL2
+3180991,Campobasso,Campobassóban,1,FIXL2
+2525405,Canicattì,Canicattìban,1,FIXL2
+3180581,Carate Brianza,Carate Brianzában,1,FIXL2
+2525350,Carini,Cariniban,1,FIXL2
+3180445,Carpi,Carpiban,1,FIXL2
+3180224,Casalecchio di Reno,Casalecchio di Renóban,1,FIXL2
+2525207,Casarano,Casaranóban,1,FIXL2
+3179866,Caserta,Casertában,1,FIXL2
+6534235,Cassano Magnago,Cassano Magnagóban,1,FIXL2
+3179781,Cassino,Cassinóban,1,FIXL2
+3179686,Castelfranco Emilia,Castelfranco Emiliában,1,FIXL2
+3179684,Castelfranco Veneto,Castelfranco Venetóban,1,FIXL2
+2525070,Castrovillari,Castrovillariban,1,FIXL2
+2525068,Catania,Cataniában,1,FIXL2
+2525059,Catanzaro,Catanzaróban,1,FIXL2
+3178999,Cerveteri,Cerveteriben,1,FIXL2
+6534280,Cesano Boscone,Cesano Bosconében,1,FIXL2
+3178957,Cesena,Cesenában,1,FIXL2
+3178850,Chiari,Chiariban,1,FIXL2
+3178832,Chiavari,Chiavariban,1,FIXL2
+3178796,Chieti,Chietiben,1,FIXL2
+3178784,Chioggia,Chioggiában,1,FIXL2
+3178745,Chivasso,Chivassóban,1,FIXL2
+3178671,Cinisello Balsamo,Cinisello Balsamóban,1,FIXL2
+3178650,Ciriè,Cirièben,1,FIXL2
+3170102,Civitanova Marche,Civitanova Marchében,1,FIXL2
+3178402,Colle di Val d'Elsa,Colle di Val d'Elsában,1,FIXL2
+3178398,Colleferro,Colleferróban,1,FIXL2
+3178388,Collegno,Collegnóban,1,FIXL2
+3178283,Cologno Monzese,Cologno Monzesében,1,FIXL2
+3178112,Cordenons,Cordenonsban,1,FIXL2
+9003711,Corigliano Scalo,Corigliano Scalóban,1,FIXL2
+3178074,Cornaredo,Cornaredóban,1,FIXL2
+3178004,Corsico,Corsicóban,1,FIXL2
+3177841,Crema,Cremában,1,FIXL2
+2524881,Crotone,Crotonében,1,FIXL2
+3177700,Cuneo,Cuneóban,1,FIXL2
+3177608,Desio,Desióban,1,FIXL2
+3177532,Domodossola,Domodossolában,1,FIXL2
+2524819,Enna,Ennában,1,FIXL2
+3177337,Este,Estében,1,FIXL2
+3177171,Fasano,Fasanóban,1,FIXL2
+3176959,Firenze,Firenzében,1,FIXL2
+2524734,Floridia,Floridiában,1,FIXL2
+3176849,Follonica,Follonicában,1,FIXL2
+3176843,Fondi,Fondiban,1,FIXL2
+3176746,Forlì,Forlìban,1,FIXL2
+3176733,Formigine,Formiginében,1,FIXL2
+3176639,Fossano,Fossanóban,1,FIXL2
+3176515,Frosinone,Frosinonében,1,FIXL2
+3176407,Galatina,Galatinában,1,FIXL2
+3176391,Gallarate,Gallaratében,1,FIXL2
+3176379,Galliate,Galliatében,1,FIXL2
+3176219,Genova,Genovában,1,FIXL2
+3176177,Ghedi,Ghediben,1,FIXL2
+2524606,Gioia Tauro,Gioia Tauróban,1,FIXL2
+3176041,Giussano,Giussanóban,1,FIXL2
+3175990,Gorgonzola,Gorgonzolában,1,FIXL2
+3175986,Gorizia,Goriziában,1,FIXL2
+3175755,Grugliasco,Grugliascóban,1,FIXL2
+6698332,Infernetto,Infernettóban,1,FIXL2
+3175458,Ischia,Ischiában,1,FIXL2
+3175445,Isernia,Iserniában,1,FIXL2
+3175384,Ivrea,Ivreában,1,FIXL2
+3175238,Lainate,Lainatében,1,FIXL2
+3164090,Lancenigo-Villorba,Lancenigo-Villorbában,1,FIXL2
+3174953,Lecce,Leccében,1,FIXL2
+3174921,Legnano,Legnanóban,1,FIXL2
+2524410,Lentini,Lentiniben,1,FIXL2
+3174719,Limbiate,Limbiatében,1,FIXL2
+3174638,Lodi,Lodiban,1,FIXL2
+3174530,Lucca,Luccában,1,FIXL2
+3174494,Lugo,Lugóban,1,FIXL2
+6534216,Lumezzane,Lumezzanében,1,FIXL2
+3174380,Macerata,Maceratában,1,FIXL2
+3174295,Magenta,Magentában,1,FIXL2
+3174141,Malnate,Malnatében,1,FIXL2
+3173949,Mariano Comense,Mariano Comensében,1,FIXL2
+3173945,Marigliano,Mariglianóban,1,FIXL2
+3173721,Matera,Materában,1,FIXL2
+3173671,Meda,Medában,1,FIXL2
+2524170,Messina,Messinában,1,FIXL2
+3173370,Mirandola,Mirandolában,1,FIXL2
+3173326,Modugno,Modugnóban,1,FIXL2
+3173314,Mogliano Veneto,Mogliano Venetóban,1,FIXL2
+3173180,Moncalieri,Moncalieriben,1,FIXL2
+3173162,Mondovì,Mondovìban,1,FIXL2
+3173124,Monselice,Monselicében,1,FIXL2
+3173029,Montebelluna,Montebellunában,1,FIXL2
+3172996,Montecatini-Terme,Montecatini-Termében,1,FIXL2
+3172979,Montecchio Maggiore-Alte Ceccato,Montecchio Maggiore-Alte Ceccatóban,1,FIXL2
+3172768,Monterotondo,Monterotondóban,1,FIXL2
+3172729,Montesilvano,Montesilvanóban,1,FIXL2
+3172718,Montevarchi,Montevarchiban,1,FIXL2
+3172681,Montichiari,Montichiariban,1,FIXL2
+3172629,Monza,Monzában,1,FIXL2
+2523998,Noto,Notóban,1,FIXL2
+3172184,Novate Milanese,Novate Milanesében,1,FIXL2
+3172170,Novi Ligure,Novi Ligurében,1,FIXL2
+3172154,Nuoro,Nuoróban,1,FIXL2
+3171986,Orbassano,Orbassanóban,1,FIXL2
+2523964,Oristano,Oristanóban,1,FIXL2
+6534264,Orta di Atella,Orta di Atellában,1,FIXL2
+3171848,Osimo,Osimóban,1,FIXL2
+3171786,Ostuni,Ostuniban,1,FIXL2
+2523920,Palermo,Palermóban,1,FIXL2
+2523902,Palmi,Palmiban,1,FIXL2
+3171484,Parabiago,Parabiagóban,1,FIXL2
+3171180,Perugia,Perugiában,1,FIXL2
+3170778,Pietrasanta,Pietrasantában,1,FIXL2
+3170676,Pioltello,Pioltellóban,1,FIXL2
+3170647,Pisa,Pisában,1,FIXL2
+3170621,Pistoia,Pistoiában,1,FIXL2
+3170504,Poggibonsi,Poggibonsiban,1,FIXL2
+3170342,Pomezia,Pomeziában,1,FIXL2
+3170272,Pontedera,Pontederában,1,FIXL2
+3170147,Pordenone,Pordenonében,1,FIXL2
+3170073,Porto San Giorgio,Porto San Giorgióban,1,FIXL2
+3170027,Potenza,Potenzában,1,FIXL2
+3169984,Pozzuoli,Pozzuoliban,1,FIXL2
+3169921,Prato,Pratóban,1,FIXL2
+2523664,Quattromiglia,Quattromigliában,1,FIXL2
+2523650,Ragusa,Ragusában,1,FIXL2
+3169602,Rapallo,Rapallóban,1,FIXL2
+2523630,Reggio Calabria,Reggio Calabriában,1,FIXL2
+3169424,Riccione,Riccionében,1,FIXL2
+3169412,Rieti,Rietiben,1,FIXL2
+3169361,Rimini,Riminiben,1,FIXL2
+3169231,Rivoli,Rivoliban,1,FIXL2
+3169056,Romano di Lombardia,Romano di Lombardiában,1,FIXL2
+3169070,Róma,Rómában,1,FIXL2
+3168936,Roseto degli Abruzzi,Roseto degli Abruzziban,1,FIXL2
+3168930,Rosignano Solvay-Castiglioncello,Rosignano Solvay-Castiglioncellóban,1,FIXL2
+2523577,Rossano Stazione,Rossano Stazionében,1,FIXL2
+3168843,Rovigo,Rovigóban,1,FIXL2
+3168837,Rozzano,Rozzanóban,1,FIXL2
+3168730,Sacile,Sacilében,1,FIXL2
+3168627,Salsomaggiore Terme,Salsomaggiore Termében,1,FIXL2
+3168609,Saluzzo,Saluzzóban,1,FIXL2
+3168550,San Benedetto del Tronto,San Benedetto del Trontóban,1,FIXL2
+6534252,San Felice a Cancello,San Felice a Cancellóban,1,FIXL2
+3168236,San Giovanni Lupatoto,San Giovanni Lupatotóban,1,FIXL2
+3168231,San Giovanni Valdarno,San Giovanni Valdarnóban,1,FIXL2
+2523461,San Giovanni in Fiore,San Giovanni in Fiorében,1,FIXL2
+3168222,San Giuliano Milanese,San Giuliano Milanesében,1,FIXL2
+3168175,San Lazzaro,San Lazzaróban,1,FIXL2
+3167978,San Mauro Torinese,San Mauro Torinesében,1,FIXL2
+3167953,San Miniato,San Miniatóban,1,FIXL2
+3167751,San Salvo,San Salvóban,1,FIXL2
+3167744,San Sebastiano,San Sebastianóban,1,FIXL2
+3167731,San Severo,San Severóban,1,FIXL2
+3167777,Sanremo,Sanremóban,1,FIXL2
+3167113,Saronno,Saronnóban,1,FIXL2
+3167104,Sarzana,Sarzanában,1,FIXL2
+3167053,Sassuolo,Sassuolóban,1,FIXL2
+3167034,Savigliano,Saviglianóban,1,FIXL2
+3166989,Scandiano,Scandianóban,1,FIXL2
+3166988,Scandicci,Scandicciban,1,FIXL2
+3166808,Segrate,Segratében,1,FIXL2
+3166740,Senigallia,Senigalliában,1,FIXL2
+3166601,Sesto Fiorentino,Sesto Fiorentinóban,1,FIXL2
+3166598,Sesto San Giovanni,Sesto San Giovanniban,1,FIXL2
+3166574,Seveso,Sevesóban,1,FIXL2
+3166548,Siena,Sienában,1,FIXL2
+2523083,Szirakúza,Szirakúzában,1,FIXL2
+3166397,Sondrio,Sondrióban,1,FIXL2
+3166387,Sora,Sorában,1,FIXL2
+3219114,Spinea-Orgnano,Spinea-Orgnanóban,1,FIXL2
+3166034,Sulmona,Sulmonában,1,FIXL2
+3166006,Suzzara,Suzzarában,1,FIXL2
+3165803,Teramo,Teramóban,1,FIXL2
+3165788,Terlizzi,Terlizziben,1,FIXL2
+2522960,Termini Imerese,Termini Imeresében,1,FIXL2
+3165773,Termoli,Termoliban,1,FIXL2
+3165612,Todi,Todiban,1,FIXL2
+3165595,Tolentino,Tolentinóban,1,FIXL2
+3165370,Tortona,Tortonában,1,FIXL2
+3165340,Tradate,Tradatében,1,FIXL2
+2522876,Trapani,Trapaniban,1,FIXL2
+3165201,Treviso,Trevisóban,1,FIXL2
+3165198,Trezzano sul Naviglio,Trezzano sul Naviglióban,1,FIXL2
+3165185,Trieszt,Triesztben,1,FIXL2
+3165178,Triggiano,Triggianóban,1,FIXL2
+3164617,Venaria Reale,Venaria Realében,1,FIXL2
+3164440,Viadana,Viadanában,1,FIXL2
+3164433,Viareggio,Viareggióban,1,FIXL2
+3164342,Vignola,Vignolában,1,FIXL2
+8378910,Villanova,Villanovában,1,FIXL2
+3164083,Vimercate,Vimercatében,1,FIXL2
+3164080,Vimodrone,Vimodronében,1,FIXL2
+3164039,Viterbo,Viterbóban,1,FIXL2
+3164028,Vittorio Veneto,Vittorio Venetóban,1,FIXL2
+3163995,Voghera,Vogherában,1,FIXL2
+3163853,Zola Predosa,Zola Predosában,1,FIXL2
+597989,Kretinga,Kretingában,1,FIXL2
+593926,Telšiai,Telšiaiban,1,FIXL2
+847633,Alta,Altában,1,FIXL2
+3153823,Harstad,Harstadban,1,FIXL2
+3145614,Mo i Rana,Mo i Ranában,1,FIXL2
+776175,Biała Podlaska,Biała Podlaskában,1,FIXL2
+3103402,Bielsko-Biała,Bielsko-Białában,1,FIXL2
+775922,Biłgoraj,Biłgorajban,1,FIXL2
+3102987,Bolesławiec,Bolesławiecben,1,FIXL2
+3101619,Chorzów,Chorzówban,1,FIXL2
+3101547,Chrzanów,Chrzanówban,1,FIXL2
+3101076,Czechowice-Dziedzice,Czechowice-Dziedzicében,1,FIXL2
+3099759,Elbląg,Elblągban,1,FIXL2
+3099424,Gdynia,Gdyniában,1,FIXL2
+3099230,Gliwice,Gliwicében,1,FIXL2
+771506,Grajewo,Grajewóban,1,FIXL2
+3098218,Grudziądz,Grudziądzban,1,FIXL2
+3099213,Głogów,Głogówban,1,FIXL2
+3097257,Jelenia Góra,Jelenia Górában,1,FIXL2
+3096880,Kalisz,Kaliszban,1,FIXL2
+3096779,Kamienna Góra,Kamienna Górában,1,FIXL2
+769250,Kielce,Kielcében,1,FIXL2
+3095971,Knurów,Knurówban,1,FIXL2
+3095795,Kołobrzeg,Kołobrzegben,1,FIXL2
+767470,Krosno,Krosnóban,1,FIXL2
+3094170,Kutno,Kutnóban,1,FIXL2
+766555,Legionowo,Legionowóban,1,FIXL2
+3093692,Legnica,Legnicában,1,FIXL2
+3093524,Leszno,Lesznóban,1,FIXL2
+3093040,Lubań,Lubańban,1,FIXL2
+3091150,Nakło nad Notecią,Nakło nad Noteciąban,1,FIXL2
+763534,Nowy Sącz,Nowy Sączban,1,FIXL2
+3090452,Nowy Tomyśl,Nowy Tomyślban,1,FIXL2
+762423,Piaseczno,Piasecznóban,1,FIXL2
+3089125,Piekary Śląskie,Piekary Śląskiében,1,FIXL2
+3088972,Piotrków Trybunalski,Piotrków Trybunalskiban,1,FIXL2
+3089033,Piła,Piłában,1,FIXL2
+761228,Pruszków,Pruszkówban,1,FIXL2
+761131,Przeworsk,Przeworskban,1,FIXL2
+3088825,Płock,Płockban,1,FIXL2
+3087497,Radomsko,Radomskóban,1,FIXL2
+3087418,Radzionków,Radzionkówban,1,FIXL2
+3086706,Rumia,Rumiában,1,FIXL2
+3086586,Rybnik,Rybnikben,1,FIXL2
+3086511,Rypin,Rypinben,1,FIXL2
+3085807,Skawina,Skawinában,1,FIXL2
+758626,Sokołów Podlaski,Sokołów Podlaskiban,1,FIXL2
+3085128,Sosnowiec,Sosnowiecben,1,FIXL2
+758390,Starachowice,Starachowicében,1,FIXL2
+757718,Suwałki,Suwałkiban,1,FIXL2
+3084130,Swarzędz,Swarzędzben,1,FIXL2
+3083878,Szamotuły,Szamotułyban,1,FIXL2
+3085450,Słupsk,Słupskban,1,FIXL2
+3083426,Tczew,Tczewben,1,FIXL2
+3082998,Turek,Turekben,1,FIXL2
+3082756,Ustka,Ustkában,1,FIXL2
+3082751,Ustroń,Ustrońban,1,FIXL2
+3082197,Wieluń,Wieluńban,1,FIXL2
+3081741,Włocławek,Włocławekben,1,FIXL2
+3080985,Zabrze,Zabrzében,1,FIXL2
+3080414,Zduńska Wola,Zduńska Wolában,1,FIXL2
+3080251,Zgierz,Zgierzben,1,FIXL2
+3080165,Zielona Góra,Zielona Górában,1,FIXL2
+754351,Ząbki,Ząbkiban,1,FIXL2
+3080074,Złotoryja,Złotoryjában,1,FIXL2
+3083955,Świnoujście,Świnoujściében,1,FIXL2
+3083988,Świętochłowice,Świętochłowicében,1,FIXL2
+3080944,Żagań,Żagańban,1,FIXL2
+3079855,Żywiec,Żywiecben,1,FIXL2
+2743095,Alfena,Alfenában,1,FIXL2
+2271473,Arrentela,Arrentelában,1,FIXL2
+2742506,Baguim do Monte,Baguim do Montében,1,FIXL2
+2270503,Cacém,Cacémben,1,FIXL2
+2270377,Camarate,Camaratében,1,FIXL2
+2270157,Carnaxide,Carnaxidében,1,FIXL2
+2269041,Corroios,Corroiosban,1,FIXL2
+2739756,Fânzeres,Fânzeresben,1,FIXL2
+2738925,Gondomar,Gondomarban,1,FIXL2
+2267131,Laranjeiro,Laranjeiróban,1,FIXL2
+2267067,Linda-a-Velha,Linda-a-Velhában,1,FIXL2
+2266621,Massamá,Massamában,1,FIXL2
+2265464,Oeiras,Oeirasban,1,FIXL2
+2265326,Paço de Arcos,Paço de Arcosban,1,FIXL2
+2264736,Piedade,Piedadében,1,FIXL2
+2264428,Porto de Mós,Porto de Mósban,1,FIXL2
+2735787,Póvoa de Varzim,Póvoa de Varzimban,1,FIXL2
+2264269,Quelfes,Quelfesben,1,FIXL2
+6559488,Quinta do Conde,Quinta do Condében,1,FIXL2
+2264087,Ramada,Ramadában,1,FIXL2
+2735175,Ribeira de Frades,Ribeira de Fradesben,1,FIXL2
+2735083,Rio Tinto,Rio Tintóban,1,FIXL2
+2734140,Senhora da Hora,Senhora da Horában,1,FIXL2
+2262957,Sesimbra,Sesimbrában,1,FIXL2
+2263326,São João da Talha,São João da Talhában,1,FIXL2
+2734434,São Mamede de Infesta,São Mamede de Infestában,1,FIXL2
+2734379,São Paulo de Frades,São Paulo de Fradesben,1,FIXL2
+2734363,São Pedro da Cova,São Pedro da Covában,1,FIXL2
+2734306,São Tiago de Custoias,São Tiago de Custoiasban,1,FIXL2
+2262582,Torres Novas,Torres Novasban,1,FIXL2
+2733263,Valadares,Valadaresben,1,FIXL2
+2743304,Águas Santas,Águas Santasban,1,FIXL2
+686578,Alba Iulia,Alba Iulia városában,0,FIXL2
+685948,Bacău,Bacăuban,1,FIXL2
+684657,Bistrița,Bistrițában,1,FIXL2
+684039,Botoșani,Botoșaniban,1,FIXL2
+683760,Breaza,Breazában,1,FIXL2
+683902,Brăila,Brăilában,1,FIXL2
+683394,Buftea,Bufteában,1,FIXL2
+683123,Buzău,Buzăuban,1,FIXL2
+682729,Caransebeș,Caransebeșben,1,FIXL2
+681502,Cisnădie,Cisnădiében,1,FIXL2
+681179,Codlea,Codleában,1,FIXL2
+680963,Constanța,Constanțában,1,FIXL2
+680332,Craiova,Craiovában,1,FIXL2
+681862,Câmpina,Câmpinában,1,FIXL2
+679452,Deva,Devában,1,FIXL2
+678817,Drobeta-Turnu Severin,Drobeta-Turnu Severin városában,0,FIXL2
+678978,Drăgășani,Drăgășaniban,1,FIXL2
+678015,Focșani,Focșaniban,1,FIXL2
+676527,Gura Humorului,Gura Humorului városában,0,FIXL2
+677742,Găești,Găeștiben,1,FIXL2
+675810,Iași,Iașiban,1,FIXL2
+674531,Lugoj,Lugojban,1,FIXL2
+671964,Odorheiu Secuiesc,Odorheiu Secuiesc városában,0,FIXL2
+671382,Pantelimon,Pantelimonban,1,FIXL2
+670889,Piatra Neamț,Piatra Neamț városában,0,FIXL2
+670609,Pitești,Piteștiben,1,FIXL2
+670474,Ploiești,Ploieștiben,1,FIXL2
+669870,Popești-Leordeni,Popești-Leordeniben,1,FIXL2
+668605,Roșiorii de Vede,Roșiorii de Vede városában,0,FIXL2
+668872,Râmnicu Vâlcea,Râmnicu Vâlcea városában,0,FIXL2
+667526,Sebeș,Sebeșben,1,FIXL2
+667227,Sighetu Marmației,Sighetu Marmației városában,0,FIXL2
+8436351,Sighișoara,Sighișoarában,1,FIXL2
+666767,Slatina,Slatinában,1,FIXL2
+665850,Suceava,Suceavában,1,FIXL2
+664518,Tulcea,Tulceában,1,FIXL2
+664460,Turda,Turdában,1,FIXL2
+665024,Târgoviște,Târgoviștében,1,FIXL2
+665004,Târgu Mureș,Târgu Mureș városában,0,FIXL2
+662334,Zalău,Zalăuban,1,FIXL2
+662284,Zărnești,Zărneștiben,1,FIXL2
+1508291,Cseljabinszk,Cseljabinszkban,1,FIXL2
+819740,Drozhzhino,Drozhzhino városában,0,FIXL2
+553915,Kaluga,Kalugában,1,FIXL2
+550280,Khimki,Khimki városában,0,FIXL2
+547523,Klin,Klin városában,0,FIXL2
+535121,Lipetsk,Lipetsk városában,0,FIXL2
+534595,Lobnya,Lobnya városában,0,FIXL2
+523812,Mytishchi,Mytishchi városában,0,FIXL2
+511196,Perm,Permben,1,FIXL2
+508101,Podolsk,Podolsk városában,0,FIXL2
+502018,Reutov,Reutov városában,0,FIXL2
+496638,Sergiyev Posad,Sergiyev Posad városában,0,FIXL2
+473778,Vidnoye,Vidnoye városában,0,FIXL2
+473247,Vlagyimir,Vlagyimirban,1,FIXL2
+472757,Volgográd,Volgográdban,1,FIXL2
+468902,Jaroszlavl,Jaroszlavlban,1,FIXL2
+606531,Boden,Bodenben,1,FIXL2
+2700839,Kinna,Kinnában,1,FIXL2
+605155,Kiruna,Kirunában,1,FIXL2
+2667109,Tullinge,Tullingében,1,FIXL2
+2665452,Vallentuna,Vallentunában,1,FIXL2
+3194351,Novo Mesto,Novo Mestóban,1,FIXL2
+3192241,Ptuj,Ptujban,1,FIXL2
+3188915,Trbovlje,Trbovljében,1,FIXL2
+3189075,Velenje,Velenjében,1,FIXL2
+3061186,Banská Bystrica,Banská Bystrica városában,0,FIXL2
+3060950,Brezno,Breznóban,1,FIXL2
+3060405,Dolný Kubín,Dolný Kubín városában,0,FIXL2
+3060219,Galanta,Galantában,1,FIXL2
+3060139,Handlová,Handlovában,1,FIXL2
+3060095,Hlohovec,Hlohovecben,1,FIXL2
+3059435,Komárno,Komárnóban,1,FIXL2
+3059436,Komárno,Komárnóban,1,FIXL2
+3058986,Lučenec,Lučenecben,1,FIXL2
+3058897,Malacky,Malackyban,1,FIXL2
+724144,Michalovce,Michalovcében,1,FIXL2
+3058477,Nové Mesto nad Váhom,Nové Mesto nad Váhom városában,0,FIXL2
+3058472,Nové Zámky,Nové Zámky városában,0,FIXL2
+3058268,Partizánske,Partizánskében,1,FIXL2
+3058210,Pezinok,Pezinokban,1,FIXL2
+3058202,Piešťany,Piešťanyban,1,FIXL2
+3058060,Považská Bystrica,Považská Bystrica városában,0,FIXL2
+3058000,Prievidza,Prievidzában,1,FIXL2
+3057963,Púchov,Púchovban,1,FIXL2
+723736,Rimavská Sobota,Rimavská Sobota városában,0,FIXL2
+723713,Rožňava,Rožňavában,1,FIXL2
+3057692,Senec,Senecben,1,FIXL2
+3057691,Senica,Senicában,1,FIXL2
+3057630,Skalica,Skalicában,1,FIXL2
+723559,Snina,Sninában,1,FIXL2
+3057174,Topoľčany,Topoľčanyban,1,FIXL2
+723195,Vranov nad Topľou,Vranov nad Topľou városában,0,FIXL2
+3057769,Šaľa,Šaľában,1,FIXL2
+3056523,Žiar nad Hronom,Žiar nad Hronom városában,0,FIXL2
+712165,Bila Cerkva,Bila Cerkvában,1,FIXL2
+712590,Bilohorodka,Bilohorodka városában,0,FIXL2
+711660,Boriszpil,Boriszpilban,1,FIXL2
+711416,Brody,Brody városában,0,FIXL2
+711390,Brovari,Brovariban,1,FIXL2
+710791,Cserkaszi,Cserkasziban,1,FIXL2
+710719,Csernyivci,Csernyivciben,1,FIXL2
+707688,Csornomorszk,Csornomorszkban,1,FIXL2
+709930,Dnyipro,Dnyipróban,1,FIXL2
+709540,Dubno,Dubno városában,0,FIXL2
+13546531,Fortechnyi,Fortechnyi városában,0,FIXL2
+708901,Haisyn,Haisyn városában,0,FIXL2
+707565,Irpiny,Irpinyben,1,FIXL2
+707471,Ivano-Frankivszk,Ivano-Frankivszkban,1,FIXL2
+706950,Kamjanec-Pogyilszkij,Kamjanec-Pogyilszkijban,1,FIXL2
+706369,Hmelnickij,Hmelnickijben,1,FIXL2
+706165,Khust,Khust városában,0,FIXL2
+12519211,Kniahynyn,Kniahynyn városában,0,FIXL2
+705392,Kolomija,Kolomijában,1,FIXL2
+13609094,Koroliov,Koroliov városában,0,FIXL2
+704901,Korosten,Korosten városában,0,FIXL2
+704858,Korsun-Shevchenkivskyi,Korsun-Shevchenkivskyi városában,0,FIXL2
+704617,Kovel,Kovelben,1,FIXL2
+705812,Kropivnickij,Kropivnickijban,1,FIXL2
+703845,Krivij Rih,Krivij Rihben,1,FIXL2
+13561778,Kyivskyi,Kyivskyi városában,0,FIXL2
+700696,Mostyska,Mostyska városában,0,FIXL2
+700646,Mukachevo,Mukachevo városában,0,FIXL2
+700569,Mikolajiv,Mikolajivban,1,FIXL2
+700507,Nadvirna,Nadvirna városában,0,FIXL2
+700261,Netishyn,Netishyn városában,0,FIXL2
+8468760,Novoiavorivsk,Novoiavorivsk városában,0,FIXL2
+13608468,Novozavodskyi,Novozavodskyi városában,0,FIXL2
+698740,Odessza,Odesszában,1,FIXL2
+698625,Oleksandriia,Oleksandriia városában,0,FIXL2
+697593,Pervomaisk,Pervomaisk városában,0,FIXL2
+696943,Pidhorodne,Pidhorodne városában,0,FIXL2
+13631378,Rakove,Rakove városában,0,FIXL2
+695594,Rivne,Rivnében,1,FIXL2
+699445,Samar,Samar városában,0,FIXL2
+694792,Sarny,Sarny városában,0,FIXL2
+710554,Sheptytskyi,Sheptytskyi városában,0,FIXL2
+13561779,Shevchenko,Shevchenko városában,0,FIXL2
+693457,Smila,Smila városában,0,FIXL2
+693301,Sokal,Sokal városában,0,FIXL2
+692372,Sztrij,Sztrijben,1,FIXL2
+692129,Svaliava,Svaliava városában,0,FIXL2
+691650,Ternopil,Ternopilban,1,FIXL2
+691179,Truszkavec,Truszkavecben,1,FIXL2
+690688,Uman,Umanban,1,FIXL2
+690548,Uzhhorod,Uzhhorod városában,0,FIXL2
+689558,Vinnicja,Vinnicjában,1,FIXL2
+689159,Volochysk,Volochysk városában,0,FIXL2
+689378,Volodymyr,Volodymyr városában,0,FIXL2
+688723,Vyshhorod,Vyshhorod városában,0,FIXL2
+689487,Vyshneve,Vyshneve városában,0,FIXL2
+687700,Zaporizzsja,Zaporizzsjában,1,FIXL2
+686967,Zsitomir,Zsitomirban,1,FIXL2
+686919,Znamianka,Znamianka városában,0,FIXL2
+686803,Zvenyhorodka,Zvenyhorodka városában,0,FIXL2
+699553,Zviahel,Zviahel városában,0,FIXL2
+6941080,Fort Bragg,Fort Bragg városában,0,FIXL2

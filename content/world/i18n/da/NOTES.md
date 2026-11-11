@@ -70,3 +70,4 @@ Status: forberedt, ikke slået til. Danish is turned on only after gate G8.
 - `pages.p_hub_na` omskrevet (åbent punkt løst). `embed.dv_p_lang` = «Sprog: bestemmes af widgettens adresse».
 - cities.csv: 5 654 rækker (alle i names/cities.csv); check.py kontrollerer nu også, at alle bysider i pages_state har et navn.
 - D12: danske eksonymer beholdt (se REVIEW). Ingen `name_nom` (da har ikke D14).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 23). Kyrillisk: UA dansk translitteration (Zjytomyr, Tjernivtsi, Zaporizjzja), RU/BY som filen (russisk form, з→s: Drosjsjino, Gomel, Tjeljabinsk), BG engelsk form som før; GR uden accenter; RO med ș/ț; Rom, Firenze, Genova, Syrakus. check.py godtager names/cities_extra.csv.

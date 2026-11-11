@@ -5653,3 +5653,824 @@ geonameid,name,in_phrase,decl_ok,note
 2664855,Värnamo,Värnamos,0,FIXL; auto: -s/-is reegel
 2662689,Visby,Visbys,0,FIXL; auto: -s/-is reegel
 2660646,Genf,Genfis,1,FIXL; käsitsi
+2763423,Traun,Traunis,0,FIXL2
+2760910,Wolfsberg,Wolfsbergis,0,FIXL2
+2803429,Aarschot,Aarschotis,0,FIXL2
+2802743,Balen,Balenis,0,FIXL2
+2801226,Boussu,Boussus,0,FIXL2
+2799496,Destelbergen,Destelbergenis,0,FIXL2
+2799412,Diepenbeek,Diepenbeekis,0,FIXL2
+2799226,Dour,Douris,0,FIXL2
+2799090,Duffel,Duffelis,0,FIXL2
+2799007,Edegem,Edegemis,0,FIXL2
+2796833,Haaltert,Haaltertis,0,FIXL2
+2796637,Hamme,Hammes,0,FIXL2
+2796012,Herent,Herentis,0,FIXL2
+2795800,Heusden,Heusdenis,0,FIXL2
+2794663,Kasterlee,Kasterlees,0,FIXL2
+2794210,Knokke-Heist,Knokke-Heistis,0,FIXL2
+2794179,Koersel,Koerselis,0,FIXL2
+2793446,Lanaken,Lanakenis,0,FIXL2
+2793144,Lebbeke,Lebbekes,0,FIXL2
+2792360,Lille,Lilles,0,FIXL2
+2791961,Maasmechelen,Maasmechelenis,0,FIXL2
+2791857,Maldegem,Maldegemis,0,FIXL2
+2791424,Meise,Meises,0,FIXL2
+2791194,Middelkerke,Middelkerkes,0,FIXL2
+2790114,Ninove,Ninoves,0,FIXL2
+2789751,Oostkamp,Oostkampis,0,FIXL2
+2789413,Overijse,Overijses,0,FIXL2
+2788726,Poperinge,Poperinges,0,FIXL2
+2788348,Ranst,Ranstis,0,FIXL2
+2786344,Soumagne,Soumagnes,0,FIXL2
+2786229,Stabroek,Stabroekis,0,FIXL2
+2783632,Willebroek,Willebroekis,0,FIXL2
+2783293,Zele,Zeles,0,FIXL2
+2783197,Zolder,Zolderis,0,FIXL2
+2783188,Zonhoven,Zonhovenis,0,FIXL2
+2783081,Zwijndrecht,Zwijndrechtis,0,FIXL2
+733618,Asenovgrad,Asenovgradis,0,FIXL2
+733579,Aitos,Aitosis,0,FIXL2
+733264,Berkovitsa,Berkovitsas,0,FIXL2
+733014,Botevgrad,Botevgradis,0,FIXL2
+732452,Tširpan,Tširpanis,0,FIXL2
+726418,Dobritš,Dobritšis,0,FIXL2
+726872,Dupnitsa,Dupnitsas,0,FIXL2
+731549,Gabrovo,Gabrovos,0,FIXL2
+731233,Gorna Orjahovitsa,Gorna Orjahovitsas,0,FIXL2
+731108,Gotse Deltšev,Gotse Deltševis,0,FIXL2
+730442,Harmanli,Harmanlis,0,FIXL2
+729794,Kardžali,Kardžalis,0,FIXL2
+730565,Karlovo,Karlovos,0,FIXL2
+730559,Karnobat,Karnobatis,0,FIXL2
+730496,Kazanlõk,Kazanlõkis,0,FIXL2
+729730,Kjustendil,Kjustendilis,0,FIXL2
+729581,Lom,Lomis,0,FIXL2
+729559,Lovetš,Lovetšis,0,FIXL2
+729114,Montana,Montanas,0,FIXL2
+728742,Nova Zagora,Nova Zagoras,0,FIXL2
+728448,Panagjurište,Panagjurištes,0,FIXL2
+727886,Põrvomai,Põrvomais,0,FIXL2
+728317,Peštera,Pešteras,0,FIXL2
+728075,Popovo,Popovos,0,FIXL2
+727696,Razgrad,Razgradis,0,FIXL2
+727447,Sandanski,Sandanskis,0,FIXL2
+727337,Sevlievo,Sevlievos,0,FIXL2
+727233,Šumen,Šumenis,0,FIXL2
+727221,Silistra,Silistras,0,FIXL2
+726848,Stara Zagora,Stara Zagoras,0,FIXL2
+726534,Svištov,Svištovis,0,FIXL2
+726174,Tõrgovište,Tõrgovištes,0,FIXL2
+726320,Trojan,Trojanis,0,FIXL2
+725988,Velingrad,Velingradis,0,FIXL2
+725905,Vidin,Vidinis,0,FIXL2
+725712,Vratsa,Vratsas,0,FIXL2
+725578,Jambol,Jambolis,0,FIXL2
+630429,Baranovitši,Baranovitšis,0,FIXL2
+630468,Bobruisk,Bobruiskis,0,FIXL2
+627907,Gomel,Gomelis,0,FIXL2
+627083,Kolodištši,Kolodištšis,0,FIXL2
+627145,Kobrin,Kobrinis,0,FIXL2
+625972,Logoisk,Logoiskis,0,FIXL2
+625665,Mogiljov,Mogiljovis,0,FIXL2
+625625,Molodetšno,Molodetšnos,0,FIXL2
+624079,Orša,Oršas,0,FIXL2
+630515,Ošmjanõ,Ošmjanõs,0,FIXL2
+622794,Retšitsa,Retšitsas,0,FIXL2
+621729,Smolevitši,Smolevitšis,0,FIXL2
+621713,Smorgon,Smorgonis,0,FIXL2
+622428,Soligorsk,Soligorskis,0,FIXL2
+620127,Vitebsk,Vitebskis,0,FIXL2
+2661810,Allschwil,Allschwilis,0,FIXL2
+2661265,Carouge,Carouges,0,FIXL2
+2660925,Einsiedeln,Einsiedelnis,0,FIXL2
+2660727,Frauenfeld,Frauenfeldis,0,FIXL2
+2660549,Gossau,Gossaus,0,FIXL2
+2660305,Horgen,Horgenis,0,FIXL2
+2659667,Meyrin,Meyrinis,0,FIXL2
+2659296,Onex,Onexis,0,FIXL2
+2658761,Schaffhausen,Schaffhausenis,0,FIXL2
+2658494,Steffisburg,Steffisburgis,0,FIXL2
+2658216,Uster,Usteris,0,FIXL2
+2658154,Vernier,Vernieris,0,FIXL2
+2658011,Wettingen,Wettingenis,0,FIXL2
+2657908,Zug,Zugis,0,FIXL2
+3079129,Bohumín,Bohumínis,0,FIXL2
+3078545,Bruntál,Bruntális,0,FIXL2
+3077835,Cheb,Chebis,0,FIXL2
+3077244,Děčín,Děčínis,0,FIXL2
+3074020,Kadaň,Kadaňis,0,FIXL2
+3073789,Karviná,Karvináis,0,FIXL2
+3073660,Klatovy,Klatovys,0,FIXL2
+3072656,Krnov,Krnovis,0,FIXL2
+3070862,Mělník,Mělníkis,0,FIXL2
+3069844,Neratovice,Neratovices,0,FIXL2
+3068873,Orlová,Orlováis,0,FIXL2
+3068690,Otrokovice,Otrokovices,0,FIXL2
+3062339,Vsetín,Vsetínis,0,FIXL2
+3061822,Žatec,Žatecis,0,FIXL2
+2951679,Beckingen,Beckingenis,0,FIXL2
+2930182,Enger,Engeris,0,FIXL2
+2930043,Ennepetal,Ennepetalis,0,FIXL2
+2929865,Eppelborn,Eppelbornis,0,FIXL2
+2917737,Greiz,Greizis,0,FIXL2
+2905290,Hessisch Oldendorf,Hessisch Oldendorfis,0,FIXL2
+2904985,Heusweiler,Heusweileris,0,FIXL2
+2904886,Hiddenhausen,Hiddenhausenis,0,FIXL2
+2891014,Kierspe,Kierspes,0,FIXL2
+2879832,Lebach,Lebachis,0,FIXL2
+2879315,Leichlingen,Leichlingenis,0,FIXL2
+2877142,Lindlar,Lindlaris,0,FIXL2
+2876218,Lohmar,Lohmaris,0,FIXL2
+2872519,Meerane,Meeranes,0,FIXL2
+2863240,Nieder-Ingelheim,Nieder-Ingelheimis,0,FIXL2
+2851584,Püttlingen,Püttlingenis,0,FIXL2
+2847033,Riegelsberg,Riegelsbergis,0,FIXL2
+2835382,Schwalbach,Schwalbachis,0,FIXL2
+2810969,Werdau,Werdaus,0,FIXL2
+2625070,Aabenraa,Aabenraas,0,FIXL2
+2624906,Albertslund,Albertslundis,0,FIXL2
+2621927,Frederikshavn,Frederikshavnis,0,FIXL2
+2621912,Frederikssund,Frederikssundis,0,FIXL2
+2620583,Hedensted,Hedenstedis,0,FIXL2
+2620473,Helsingør,Helsingøris,0,FIXL2
+2619771,Horsens,Horsensis,0,FIXL2
+2619528,Hvidovre,Hvidovres,0,FIXL2
+2619856,Hørsholm,Hørsholmis,0,FIXL2
+2619377,Ishøj,Ishøjis,0,FIXL2
+2619154,Kalundborg,Kalundborgis,0,FIXL2
+2618415,Køge,Køges,0,FIXL2
+2617658,Lillerød,Lillerødis,0,FIXL2
+2616015,Nyborg,Nyborgis,0,FIXL2
+2615961,Nykøbing Falster,Nykøbing Falsteris,0,FIXL2
+2614764,Ringsted,Ringstedis,0,FIXL2
+2614481,Roskilde,Roskildes,0,FIXL2
+2613731,Skive,Skives,0,FIXL2
+2613460,Slagelse,Slagelses,0,FIXL2
+2613233,Solrød Strand,Solrød Strandis,0,FIXL2
+2612629,Stenløse,Stenløses,0,FIXL2
+2611497,Tønder,Tønderis,0,FIXL2
+2610319,Viborg,Viborgis,0,FIXL2
+591260,Kohtla-Järve,Kohtla-Järvel,1,FIXL2
+590447,Maardu,Maardus,1,FIXL2
+590031,Narva,Narvas,1,FIXL2
+589580,Pärnu,Pärnus,1,FIXL2
+587577,Viljandi,Viljandis,1,FIXL2
+2522208,Albolote,Albolotes,0,FIXL2
+2522165,Alcalá de Guadaira,Alcalá de Guadairas,0,FIXL2
+2522012,Algemesí,Algemesíis,0,FIXL2
+2521964,Aljaraque,Aljaraques,0,FIXL2
+2521923,Almansa,Almansas,0,FIXL2
+2521804,Altea,Alteas,0,FIXL2
+2521665,Arcos de la Frontera,Arcos de la Fronteras,0,FIXL2
+2521582,Arona,Aronas,0,FIXL2
+3129356,Arroyomolinos,Arroyomolinosis,0,FIXL2
+2521510,Aspe,Aspes,0,FIXL2
+2521486,Atamaría,Atamarías,0,FIXL2
+2521485,Atarfe,Atarfes,0,FIXL2
+2521335,Barbate,Barbates,0,FIXL2
+2521215,Baza,Bazas,0,FIXL2
+2521016,Berja,Berjas,0,FIXL2
+3127007,Calella,Calellas,0,FIXL2
+2520052,Cartaya,Cartayas,0,FIXL2
+2519738,Castilleja de la Cuesta,Castilleja de la Cuestas,0,FIXL2
+2519690,Catarroja,Catarrojas,0,FIXL2
+2519651,Cehegín,Cehegínis,0,FIXL2
+3109402,Cerdanyola del Vallès,Cerdanyola del Vallèsis,0,FIXL2
+2519477,Chipiona,Chipionas,0,FIXL2
+2519289,Conil de la Frontera,Conil de la Fronteras,0,FIXL2
+3124569,Cornellà de Llobregat,Cornellà de Llobregatis,0,FIXL2
+2519367,Coín,Coínis,0,FIXL2
+2519110,Crevillente,Crevillentes,0,FIXL2
+3124041,Culleredo,Culleredos,0,FIXL2
+2520055,Cártama,Cártamas,0,FIXL2
+2520447,El Campello,El Campellos,0,FIXL2
+3117232,El Masnou,El Masnous,0,FIXL2
+3123493,Ferrol,Ferrolis,0,FIXL2
+3121766,Galapagar,Galapagaris,0,FIXL2
+2516797,Hellín,Hellínis,0,FIXL2
+3121881,Hondarribia,Hondarribias,0,FIXL2
+3120501,Humanes de Madrid,Humanes de Madridis,0,FIXL2
+2516474,Icod de los Vinos,Icod de los Vinosis,0,FIXL2
+2516443,Ingenio,Ingenios,0,FIXL2
+2515692,La Orotava,La Orotavas,0,FIXL2
+2515219,Las Torres de Cotillas,Las Torres de Cotillasis,0,FIXL2
+2515072,Lepe,Lepes,0,FIXL2
+2514868,Los Alcázares,Los Alcázaresis,0,FIXL2
+2514553,Los Palacios y Villafranca,Los Palacios y Villafrancas,0,FIXL2
+2514158,Marchena,Marchenas,0,FIXL2
+2514042,Maspalomas,Maspalomasis,0,FIXL2
+2513983,Mazarrón,Mazarrónis,0,FIXL2
+2513703,Moncada,Moncadas,0,FIXL2
+3116527,Montcada i Reixac,Montcada i Reixacis,0,FIXL2
+2513604,Montijo,Montijos,0,FIXL2
+2513240,Nerja,Nerjas,0,FIXL2
+2513195,Novelda,Noveldas,0,FIXL2
+2513222,Níjar,Níjaris,0,FIXL2
+2513052,Osuna,Osunas,0,FIXL2
+6354969,Playa del Inglés,Playa del Inglésis,0,FIXL2
+3113082,Portugalete,Portugaletes,0,FIXL2
+2519068,Quart de Poblet,Quart de Pobletis,0,FIXL2
+2511994,Realejo Alto,Realejo Altos,0,FIXL2
+2511852,Rincón de la Victoria,Rincón de la Victorias,0,FIXL2
+3111605,Ripollet,Ripolletis,0,FIXL2
+2511700,Rota,Rotas,0,FIXL2
+3110986,Salou,Salous,0,FIXL2
+2511440,San Bartolomé de Tirajana,San Bartolomé de Tirajanas,0,FIXL2
+2511371,San Isidro,San Isidros,0,FIXL2
+2511287,San Miguel de Abona,San Miguel de Abonas,0,FIXL2
+3110642,Sant Feliu de Llobregat,Sant Feliu de Llobregatis,0,FIXL2
+3110519,Sant Joan Despí,Sant Joan Despíis,0,FIXL2
+3109546,Sant Just Desvern,Sant Just Desvernis,0,FIXL2
+2511150,Santa Lucía,Santa Lucías,0,FIXL2
+3109897,Santa Uxía de Ribeira,Santa Uxía de Ribeiras,0,FIXL2
+2511160,Santa Fe,Santa Fes,0,FIXL2
+3109050,Seseña,Seseñas,0,FIXL2
+3109041,Sestao,Sestaos,0,FIXL2
+2510764,Sueca,Suecas,0,FIXL2
+3108317,Tarancón,Tarancónis,0,FIXL2
+2510394,Tomares,Tomaresis,0,FIXL2
+3107955,Tordera,Torderas,0,FIXL2
+2510245,Torrox,Torroxis,0,FIXL2
+2510485,Tías,Tíasis,0,FIXL2
+2510112,Ubrique,Ubriques,0,FIXL2
+2510073,Utrera,Utreras,0,FIXL2
+3105247,Villanueva de la Cañada,Villanueva de la Cañadas,0,FIXL2
+3105148,Villaquilambre,Villaquilambres,0,FIXL2
+3104703,Villaviciosa de Odón,Villaviciosa de Odónis,0,FIXL2
+3104475,Viveiro,Viveiros,0,FIXL2
+2509408,Yaiza,Yaizas,0,FIXL2
+2509402,Yecla,Yeclas,0,FIXL2
+2509377,Zafra,Zafras,0,FIXL2
+659169,Hamina,Haminas,0,FIXL2
+651659,Kontiolahti,Kontiolahtis,0,FIXL2
+648738,Laukaa,Laukaas,0,FIXL2
+643644,Orimattila,Orimattilas,0,FIXL2
+3037423,Antony,Antonys,0,FIXL2
+3031898,Boissy-Saint-Léger,Boissy-Saint-Légeris,0,FIXL2
+3030990,Bourg-la-Reine,Bourg-la-Reines,0,FIXL2
+8555643,Cergy-Pontoise,Cergy-Pontoises,0,FIXL2
+3026637,Charenton-le-Pont,Charenton-le-Pontis,0,FIXL2
+3025622,Chelles,Chellesis,0,FIXL2
+3020832,Draveil,Draveilis,0,FIXL2
+3018280,Fleury-les-Aubrais,Fleury-les-Aubraisis,0,FIXL2
+3017341,Franconville,Franconvilles,0,FIXL2
+3016830,Gagny,Gagnys,0,FIXL2
+3002647,Le Plessis-Trévise,Le Plessis-Trévises,0,FIXL2
+2998305,Limeil-Brévannes,Limeil-Brévannesis,0,FIXL2
+2998056,Livry-Gargan,Livry-Garganis,0,FIXL2
+2997904,Lognes,Lognesis,0,FIXL2
+2995206,Massy,Massys,0,FIXL2
+2992616,Montfermeil,Montfermeilis,0,FIXL2
+2992090,Montreuil,Montreuilis,0,FIXL2
+2990616,Neuilly-Plaisance,Neuilly-Plaisances,0,FIXL2
+2986025,Port-de-Bouc,Port-de-Boucis,0,FIXL2
+2983440,Ris-Orangis,Ris-Orangisis,0,FIXL2
+2983026,Romainville,Romainvilles,0,FIXL2
+2981512,Saint-Avertin,Saint-Avertinis,0,FIXL2
+2980558,Sainte-Geneviève-des-Bois,Sainte-Geneviève-des-Boisis,0,FIXL2
+2974681,Sevran,Sevranis,0,FIXL2
+2973841,Stains,Stainsis,0,FIXL2
+2968653,Villemomble,Villemombles,0,FIXL2
+2968555,Villeneuve-la-Garenne,Villeneuve-la-Garennes,0,FIXL2
+2967934,Viroflay,Viroflays,0,FIXL2
+3020020,Épinay-sur-Seine,Épinay-sur-Seines,0,FIXL2
+2634677,Watford,Watfordis,0,FIXL2
+8478257,Agios Ioannis Rentis,Agios Ioannis Rentisis,0,FIXL2
+736229,Florina,Florinas,0,FIXL2
+8310138,Ilioupoli,Ilioupolis,0,FIXL2
+261249,Kamatero,Kamateros,0,FIXL2
+259824,Kifisia,Kifisias,0,FIXL2
+9034728,Nea Ionia,Nea Ionias,0,FIXL2
+256575,Nea Smyrni,Nea Smyrnis,0,FIXL2
+256429,Nikaia,Nikaias,0,FIXL2
+255377,Petroupoli,Petroupolis,0,FIXL2
+734301,Sykies,Sykiesis,0,FIXL2
+251948,Vyronas,Vyronasis,0,FIXL2
+256601,Ilion,Ilionis,0,FIXL2
+723030,Abony,Abonys,0,FIXL2
+3056357,Ajka,Ajkas,0,FIXL2
+3055685,Baja,Bajas,0,FIXL2
+722636,Balmazújváros,Balmazújvárosis,0,FIXL2
+722437,Békéscsaba,Békéscsabas,0,FIXL2
+3054543,Cegléd,Ceglédis,0,FIXL2
+3053438,Dunaújváros,Dunaújvárosis,0,FIXL2
+3053163,Esztergom,Esztergomis,0,FIXL2
+720334,Gyula,Gyulas,0,FIXL2
+3052040,Gyöngyös,Gyöngyösis,0,FIXL2
+3052241,Göd,Gödis,0,FIXL2
+3052236,Gödöllő,Gödöllőis,0,FIXL2
+720284,Hajdúnánás,Hajdúnánásis,0,FIXL2
+720276,Hajdúszoboszló,Hajdúszoboszlóis,0,FIXL2
+3050907,Jászberény,Jászberénys,0,FIXL2
+719404,Karcag,Karcagis,0,FIXL2
+719311,Kazincbarcika,Kazincbarcikas,0,FIXL2
+3049885,Kiskunfélegyháza,Kiskunfélegyházas,0,FIXL2
+3049880,Kiskunhalas,Kiskunhalasis,0,FIXL2
+3049896,Kiskőrös,Kiskőrösis,0,FIXL2
+718739,Kisvárda,Kisvárdas,0,FIXL2
+3049512,Komló,Komlóis,0,FIXL2
+3049519,Komárom,Komáromis,0,FIXL2
+717902,Makó,Makóis,0,FIXL2
+717652,Mezőkövesd,Mezőkövesdis,0,FIXL2
+717635,Mezőtúr,Mezőtúris,0,FIXL2
+3047942,Monor,Monoris,0,FIXL2
+3047896,Mosonmagyaróvár,Mosonmagyaróváris,0,FIXL2
+717771,Mátészalka,Mátészalkas,0,FIXL2
+3047651,Nagykőrös,Nagykőrösis,0,FIXL2
+716736,Orosháza,Orosházas,0,FIXL2
+3046888,Oroszlány,Oroszlánys,0,FIXL2
+3046768,Paks,Paksis,0,FIXL2
+3046686,Pápa,Pápas,0,FIXL2
+3045643,Salgótarján,Salgótarjánis,0,FIXL2
+715466,Szarvas,Szarvasis,0,FIXL2
+3044681,Szentendre,Szentendres,0,FIXL2
+715337,Szentes,Szentesis,0,FIXL2
+3044821,Százhalombatta,Százhalombattas,0,FIXL2
+3045487,Sárvár,Sárváris,0,FIXL2
+715839,Sátoraljaújhely,Sátoraljaújhelys,0,FIXL2
+3044083,Tata,Tatas,0,FIXL2
+714697,Tiszaújváros,Tiszaújvárosis,0,FIXL2
+3043293,Vác,Vácis,0,FIXL2
+3042638,Zalaegerszeg,Zalaegerszegis,0,FIXL2
+716671,Ózd,Ózdis,0,FIXL2
+2965715,Carrigaline,Carrigalines,0,FIXL2
+2962974,Leixlip,Leixlipis,0,FIXL2
+2962785,Lucan,Lucanis,0,FIXL2
+2633274,Akureyri,Akureyris,0,FIXL2
+3415496,Keflavík,Keflavíkis,0,FIXL2
+8644037,Reykjanesbær,Reykjanesbæris,0,FIXL2
+3183587,Abano Terme,Abano Termes,0,FIXL2
+3183573,Abbiategrasso,Abbiategrassos,0,FIXL2
+3183490,Acqui Terme,Acqui Termes,0,FIXL2
+2525769,Adrano,Adranos,0,FIXL2
+3183319,Albignasego,Albignasegos,0,FIXL2
+2525755,Alcamo,Alcamos,0,FIXL2
+3183284,Alghero,Algheros,0,FIXL2
+3183089,Ancona,Anconas,0,FIXL2
+3183072,Andria,Andrias,0,FIXL2
+3182904,Arcore,Arcores,0,FIXL2
+3182884,Arezzo,Arezzos,0,FIXL2
+3182749,Ascoli Piceno,Ascoli Picenos,0,FIXL2
+3182650,Avellino,Avellinos,0,FIXL2
+3182361,Bareggio,Bareggios,0,FIXL2
+3182297,Bassano del Grappa,Bassano del Grappas,0,FIXL2
+3182272,Battipaglia,Battipaglias,0,FIXL2
+8224092,Bellaria-Igea Marina,Bellaria-Igea Marinas,0,FIXL2
+3182210,Belluno,Bellunos,0,FIXL2
+2525571,Belpasso,Belpassos,0,FIXL2
+3182179,Benevento,Beneventos,0,FIXL2
+3181631,Bra,Bras,0,FIXL2
+2525473,Cagliari,Cagliaris,0,FIXL2
+3180991,Campobasso,Campobassos,0,FIXL2
+2525405,Canicattì,Canicattìis,0,FIXL2
+3180581,Carate Brianza,Carate Brianzas,0,FIXL2
+2525350,Carini,Carinis,0,FIXL2
+3180445,Carpi,Carpis,0,FIXL2
+3180224,Casalecchio di Reno,Casalecchio di Renos,0,FIXL2
+2525207,Casarano,Casaranos,0,FIXL2
+3179866,Caserta,Casertas,0,FIXL2
+6534235,Cassano Magnago,Cassano Magnagos,0,FIXL2
+3179781,Cassino,Cassinos,0,FIXL2
+3179686,Castelfranco Emilia,Castelfranco Emilias,0,FIXL2
+3179684,Castelfranco Veneto,Castelfranco Venetos,0,FIXL2
+2525070,Castrovillari,Castrovillaris,0,FIXL2
+2525068,Catania,Catanias,0,FIXL2
+2525059,Catanzaro,Catanzaros,0,FIXL2
+3178999,Cerveteri,Cerveteris,0,FIXL2
+6534280,Cesano Boscone,Cesano Boscones,0,FIXL2
+3178957,Cesena,Cesenas,0,FIXL2
+3178850,Chiari,Chiaris,0,FIXL2
+3178832,Chiavari,Chiavaris,0,FIXL2
+3178796,Chieti,Chietis,0,FIXL2
+3178784,Chioggia,Chioggias,0,FIXL2
+3178745,Chivasso,Chivassos,0,FIXL2
+3178671,Cinisello Balsamo,Cinisello Balsamos,0,FIXL2
+3178650,Ciriè,Cirièis,0,FIXL2
+3170102,Civitanova Marche,Civitanova Marches,0,FIXL2
+3178402,Colle di Val d'Elsa,Colle di Val d'Elsas,0,FIXL2
+3178398,Colleferro,Colleferros,0,FIXL2
+3178388,Collegno,Collegnos,0,FIXL2
+3178283,Cologno Monzese,Cologno Monzeses,0,FIXL2
+3178112,Cordenons,Cordenonsis,0,FIXL2
+9003711,Corigliano Scalo,Corigliano Scalos,0,FIXL2
+3178074,Cornaredo,Cornaredos,0,FIXL2
+3178004,Corsico,Corsicos,0,FIXL2
+3177841,Crema,Cremas,0,FIXL2
+2524881,Crotone,Crotones,0,FIXL2
+3177700,Cuneo,Cuneos,0,FIXL2
+3177608,Desio,Desios,0,FIXL2
+3177532,Domodossola,Domodossolas,0,FIXL2
+2524819,Enna,Ennas,0,FIXL2
+3177337,Este,Estes,0,FIXL2
+3177171,Fasano,Fasanos,0,FIXL2
+3176959,Firenze,Firenzes,1,FIXL2
+2524734,Floridia,Floridias,0,FIXL2
+3176849,Follonica,Follonicas,0,FIXL2
+3176843,Fondi,Fondis,0,FIXL2
+3176746,Forlì,Forlìis,0,FIXL2
+3176733,Formigine,Formigines,0,FIXL2
+3176639,Fossano,Fossanos,0,FIXL2
+3176515,Frosinone,Frosinones,0,FIXL2
+3176407,Galatina,Galatinas,0,FIXL2
+3176391,Gallarate,Gallarates,0,FIXL2
+3176379,Galliate,Galliates,0,FIXL2
+3176219,Genova,Genovas,1,FIXL2
+3176177,Ghedi,Ghedis,0,FIXL2
+2524606,Gioia Tauro,Gioia Tauros,0,FIXL2
+3176041,Giussano,Giussanos,0,FIXL2
+3175990,Gorgonzola,Gorgonzolas,0,FIXL2
+3175986,Gorizia,Gorizias,0,FIXL2
+3175755,Grugliasco,Grugliascos,0,FIXL2
+6698332,Infernetto,Infernettos,0,FIXL2
+3175458,Ischia,Ischias,0,FIXL2
+3175445,Isernia,Isernias,0,FIXL2
+3175384,Ivrea,Ivreas,0,FIXL2
+3175238,Lainate,Lainates,0,FIXL2
+3164090,Lancenigo-Villorba,Lancenigo-Villorbas,0,FIXL2
+3174953,Lecce,Lecces,0,FIXL2
+3174921,Legnano,Legnanos,0,FIXL2
+2524410,Lentini,Lentinis,0,FIXL2
+3174719,Limbiate,Limbiates,0,FIXL2
+3174638,Lodi,Lodis,0,FIXL2
+3174530,Lucca,Luccas,0,FIXL2
+3174494,Lugo,Lugos,0,FIXL2
+6534216,Lumezzane,Lumezzanes,0,FIXL2
+3174380,Macerata,Maceratas,0,FIXL2
+3174295,Magenta,Magentas,0,FIXL2
+3174141,Malnate,Malnates,0,FIXL2
+3173949,Mariano Comense,Mariano Comenses,0,FIXL2
+3173945,Marigliano,Mariglianos,0,FIXL2
+3173721,Matera,Materas,0,FIXL2
+3173671,Meda,Medas,0,FIXL2
+2524170,Messina,Messinas,0,FIXL2
+3173370,Mirandola,Mirandolas,0,FIXL2
+3173326,Modugno,Modugnos,0,FIXL2
+3173314,Mogliano Veneto,Mogliano Venetos,0,FIXL2
+3173180,Moncalieri,Moncalieris,0,FIXL2
+3173162,Mondovì,Mondovìis,0,FIXL2
+3173124,Monselice,Monselices,0,FIXL2
+3173029,Montebelluna,Montebellunas,0,FIXL2
+3172996,Montecatini Terme,Montecatini Termes,0,FIXL2
+3172979,Montecchio Maggiore-Alte Ceccato,Montecchio Maggiore-Alte Ceccatos,0,FIXL2
+3172768,Monterotondo,Monterotondos,0,FIXL2
+3172729,Montesilvano,Montesilvanos,0,FIXL2
+3172718,Montevarchi,Montevarchis,0,FIXL2
+3172681,Montichiari,Montichiaris,0,FIXL2
+3172629,Monza,Monzas,0,FIXL2
+2523998,Noto,Notos,0,FIXL2
+3172184,Novate Milanese,Novate Milaneses,0,FIXL2
+3172170,Novi Ligure,Novi Ligures,0,FIXL2
+3172154,Nuoro,Nuoros,0,FIXL2
+3171986,Orbassano,Orbassanos,0,FIXL2
+2523964,Oristano,Oristanos,0,FIXL2
+6534264,Orta di Atella,Orta di Atellas,0,FIXL2
+3171848,Osimo,Osimos,0,FIXL2
+3171786,Ostuni,Ostunis,0,FIXL2
+2523920,Palermo,Palermos,0,FIXL2
+2523902,Palmi,Palmis,0,FIXL2
+3171484,Parabiago,Parabiagos,0,FIXL2
+3171180,Perugia,Perugias,0,FIXL2
+3170778,Pietrasanta,Pietrasantas,0,FIXL2
+3170676,Pioltello,Pioltellos,0,FIXL2
+3170647,Pisa,Pisas,0,FIXL2
+3170621,Pistoia,Pistoias,0,FIXL2
+3170504,Poggibonsi,Poggibonsis,0,FIXL2
+3170342,Pomezia,Pomezias,0,FIXL2
+3170272,Pontedera,Pontederas,0,FIXL2
+3170147,Pordenone,Pordenones,0,FIXL2
+3170073,Porto San Giorgio,Porto San Giorgios,0,FIXL2
+3170027,Potenza,Potenzas,0,FIXL2
+3169984,Pozzuoli,Pozzuolis,0,FIXL2
+3169921,Prato,Pratos,0,FIXL2
+2523664,Quattromiglia,Quattromiglias,0,FIXL2
+2523650,Ragusa,Ragusas,0,FIXL2
+3169602,Rapallo,Rapallos,0,FIXL2
+2523630,Reggio Calabria,Reggio Calabrias,0,FIXL2
+3169424,Riccione,Ricciones,0,FIXL2
+3169412,Rieti,Rietis,0,FIXL2
+3169361,Rimini,Riminis,0,FIXL2
+3169231,Rivoli,Rivolis,0,FIXL2
+3169056,Romano di Lombardia,Romano di Lombardias,0,FIXL2
+3169070,Rooma,Roomas,1,FIXL2
+3168936,Roseto degli Abruzzi,Roseto degli Abruzzis,0,FIXL2
+3168930,Rosignano Solvay-Castiglioncello,Rosignano Solvay-Castiglioncellos,0,FIXL2
+2523577,Rossano Stazione,Rossano Staziones,0,FIXL2
+3168843,Rovigo,Rovigos,0,FIXL2
+3168837,Rozzano,Rozzanos,0,FIXL2
+3168730,Sacile,Saciles,0,FIXL2
+3168627,Salsomaggiore Terme,Salsomaggiore Termes,0,FIXL2
+3168609,Saluzzo,Saluzzos,0,FIXL2
+3168550,San Benedetto del Tronto,San Benedetto del Trontos,0,FIXL2
+6534252,San Felice a Cancello,San Felice a Cancellos,0,FIXL2
+3168236,San Giovanni Lupatoto,San Giovanni Lupatotos,0,FIXL2
+3168231,San Giovanni Valdarno,San Giovanni Valdarnos,0,FIXL2
+2523461,San Giovanni in Fiore,San Giovanni in Fiores,0,FIXL2
+3168222,San Giuliano Milanese,San Giuliano Milaneses,0,FIXL2
+3168175,San Lazzaro,San Lazzaros,0,FIXL2
+3167978,San Mauro Torinese,San Mauro Torineses,0,FIXL2
+3167953,San Miniato,San Miniatos,0,FIXL2
+3167751,San Salvo,San Salvos,0,FIXL2
+3167744,San Sebastiano,San Sebastianos,0,FIXL2
+3167731,San Severo,San Severos,0,FIXL2
+3167777,Sanremo,Sanremos,0,FIXL2
+3167113,Saronno,Saronnos,0,FIXL2
+3167104,Sarzana,Sarzanas,0,FIXL2
+3167053,Sassuolo,Sassuolos,0,FIXL2
+3167034,Savigliano,Saviglianos,0,FIXL2
+3166989,Scandiano,Scandianos,0,FIXL2
+3166988,Scandicci,Scandiccis,0,FIXL2
+3166808,Segrate,Segrates,0,FIXL2
+3166740,Senigallia,Senigallias,0,FIXL2
+3166601,Sesto Fiorentino,Sesto Fiorentinos,0,FIXL2
+3166598,Sesto San Giovanni,Sesto San Giovannis,0,FIXL2
+3166574,Seveso,Sevesos,0,FIXL2
+3166548,Siena,Sienas,0,FIXL2
+2523083,Siracusa,Siracusas,0,FIXL2
+3166397,Sondrio,Sondrios,0,FIXL2
+3166387,Sora,Soras,0,FIXL2
+3219114,Spinea-Orgnano,Spinea-Orgnanos,0,FIXL2
+3166034,Sulmona,Sulmonas,0,FIXL2
+3166006,Suzzara,Suzzaras,0,FIXL2
+3165803,Teramo,Teramos,0,FIXL2
+3165788,Terlizzi,Terlizzis,0,FIXL2
+2522960,Termini Imerese,Termini Imereses,0,FIXL2
+3165773,Termoli,Termolis,0,FIXL2
+3165612,Todi,Todis,0,FIXL2
+3165595,Tolentino,Tolentinos,0,FIXL2
+3165370,Tortona,Tortonas,0,FIXL2
+3165340,Tradate,Tradates,0,FIXL2
+2522876,Trapani,Trapanis,0,FIXL2
+3165201,Treviso,Trevisos,0,FIXL2
+3165198,Trezzano sul Naviglio,Trezzano sul Naviglios,0,FIXL2
+3165185,Trieste,Triestes,0,FIXL2
+3165178,Triggiano,Triggianos,0,FIXL2
+3164617,Venaria Reale,Venaria Reales,0,FIXL2
+3164440,Viadana,Viadanas,0,FIXL2
+3164433,Viareggio,Viareggios,0,FIXL2
+3164342,Vignola,Vignolas,0,FIXL2
+8378910,Villanova,Villanovas,0,FIXL2
+3164083,Vimercate,Vimercates,0,FIXL2
+3164080,Vimodrone,Vimodrones,0,FIXL2
+3164039,Viterbo,Viterbos,0,FIXL2
+3164028,Vittorio Veneto,Vittorio Venetos,0,FIXL2
+3163995,Voghera,Vogheras,0,FIXL2
+3163853,Zola Predosa,Zola Predosas,0,FIXL2
+597989,Kretinga,Kretingas,0,FIXL2
+593926,Telšiai,Telšiais,0,FIXL2
+847633,Alta,Altas,0,FIXL2
+3153823,Harstad,Harstadis,0,FIXL2
+3145614,Mo i Rana,Mo i Ranas,0,FIXL2
+776175,Biała Podlaska,Biała Podlaskas,0,FIXL2
+3103402,Bielsko-Biała,Bielsko-Białas,0,FIXL2
+775922,Biłgoraj,Biłgorajis,0,FIXL2
+3102987,Bolesławiec,Bolesławiecis,0,FIXL2
+3101619,Chorzów,Chorzówis,0,FIXL2
+3101547,Chrzanów,Chrzanówis,0,FIXL2
+3101076,Czechowice-Dziedzice,Czechowice-Dziedzices,0,FIXL2
+3099759,Elbląg,Elblągis,0,FIXL2
+3099424,Gdynia,Gdynias,0,FIXL2
+3099230,Gliwice,Gliwices,0,FIXL2
+771506,Grajewo,Grajewos,0,FIXL2
+3098218,Grudziądz,Grudziądzis,0,FIXL2
+3099213,Głogów,Głogówis,0,FIXL2
+3097257,Jelenia Góra,Jelenia Góras,0,FIXL2
+3096880,Kalisz,Kaliszis,0,FIXL2
+3096779,Kamienna Góra,Kamienna Góras,0,FIXL2
+769250,Kielce,Kielces,0,FIXL2
+3095971,Knurów,Knurówis,0,FIXL2
+3095795,Kołobrzeg,Kołobrzegis,0,FIXL2
+767470,Krosno,Krosnos,0,FIXL2
+3094170,Kutno,Kutnos,0,FIXL2
+766555,Legionowo,Legionowos,0,FIXL2
+3093692,Legnica,Legnicas,0,FIXL2
+3093524,Leszno,Lesznos,0,FIXL2
+3093040,Lubań,Lubańis,0,FIXL2
+3091150,Nakło nad Notecią,Nakło nad Noteciąis,0,FIXL2
+763534,Nowy Sącz,Nowy Sączis,0,FIXL2
+3090452,Nowy Tomyśl,Nowy Tomyślis,0,FIXL2
+762423,Piaseczno,Piasecznos,0,FIXL2
+3089125,Piekary Śląskie,Piekary Śląskies,0,FIXL2
+3088972,Piotrków Trybunalski,Piotrków Trybunalskis,0,FIXL2
+3089033,Piła,Piłas,0,FIXL2
+761228,Pruszków,Pruszkówis,0,FIXL2
+761131,Przeworsk,Przeworskis,0,FIXL2
+3088825,Płock,Płockis,0,FIXL2
+3087497,Radomsko,Radomskos,0,FIXL2
+3087418,Radzionków,Radzionkówis,0,FIXL2
+3086706,Rumia,Rumias,0,FIXL2
+3086586,Rybnik,Rybnikis,0,FIXL2
+3086511,Rypin,Rypinis,0,FIXL2
+3085807,Skawina,Skawinas,0,FIXL2
+758626,Sokołów Podlaski,Sokołów Podlaskis,0,FIXL2
+3085128,Sosnowiec,Sosnowiecis,0,FIXL2
+758390,Starachowice,Starachowices,0,FIXL2
+757718,Suwałki,Suwałkis,0,FIXL2
+3084130,Swarzędz,Swarzędzis,0,FIXL2
+3083878,Szamotuły,Szamotułys,0,FIXL2
+3085450,Słupsk,Słupskis,0,FIXL2
+3083426,Tczew,Tczewis,0,FIXL2
+3082998,Turek,Turekis,0,FIXL2
+3082756,Ustka,Ustkas,0,FIXL2
+3082751,Ustroń,Ustrońis,0,FIXL2
+3082197,Wieluń,Wieluńis,0,FIXL2
+3081741,Włocławek,Włocławekis,0,FIXL2
+3080985,Zabrze,Zabrzes,0,FIXL2
+3080414,Zduńska Wola,Zduńska Wolas,0,FIXL2
+3080251,Zgierz,Zgierzis,0,FIXL2
+3080165,Zielona Góra,Zielona Góras,0,FIXL2
+754351,Ząbki,Ząbkis,0,FIXL2
+3080074,Złotoryja,Złotoryjas,0,FIXL2
+3083955,Świnoujście,Świnoujścies,0,FIXL2
+3083988,Świętochłowice,Świętochłowices,0,FIXL2
+3080944,Żagań,Żagańis,0,FIXL2
+3079855,Żywiec,Żywiecis,0,FIXL2
+2743095,Alfena,Alfenas,0,FIXL2
+2271473,Arrentela,Arrentelas,0,FIXL2
+2742506,Baguim do Monte,Baguim do Montes,0,FIXL2
+2270503,Cacém,Cacémis,0,FIXL2
+2270377,Camarate,Camarates,0,FIXL2
+2270157,Carnaxide,Carnaxides,0,FIXL2
+2269041,Corroios,Corroiosis,0,FIXL2
+2739756,Fânzeres,Fânzeresis,0,FIXL2
+2738925,Gondomar,Gondomaris,0,FIXL2
+2267131,Laranjeiro,Laranjeiros,0,FIXL2
+2267067,Linda-a-Velha,Linda-a-Velhas,0,FIXL2
+2266621,Massamá,Massamáis,0,FIXL2
+2265464,Oeiras,Oeirasis,0,FIXL2
+2265326,Paço de Arcos,Paço de Arcosis,0,FIXL2
+2264736,Piedade,Piedades,0,FIXL2
+2264428,Porto de Mós,Porto de Mósis,0,FIXL2
+2735787,Póvoa de Varzim,Póvoa de Varzimis,0,FIXL2
+2264269,Quelfes,Quelfesis,0,FIXL2
+6559488,Quinta do Conde,Quinta do Condes,0,FIXL2
+2264087,Ramada,Ramadas,0,FIXL2
+2735175,Ribeira de Frades,Ribeira de Fradesis,0,FIXL2
+2735083,Rio Tinto,Rio Tintos,0,FIXL2
+2734140,Senhora da Hora,Senhora da Horas,0,FIXL2
+2262957,Sesimbra,Sesimbras,0,FIXL2
+2263326,São João da Talha,São João da Talhas,0,FIXL2
+2734434,São Mamede de Infesta,São Mamede de Infestas,0,FIXL2
+2734379,São Paulo de Frades,São Paulo de Fradesis,0,FIXL2
+2734363,São Pedro da Cova,São Pedro da Covas,0,FIXL2
+2734306,São Tiago de Custoias,São Tiago de Custoiasis,0,FIXL2
+2262582,Torres Novas,Torres Novasis,0,FIXL2
+2733263,Valadares,Valadaresis,0,FIXL2
+2743304,Águas Santas,Águas Santasis,0,FIXL2
+686578,Alba Iulia,Alba Iulias,0,FIXL2
+685948,Bacău,Bacăus,0,FIXL2
+684657,Bistrița,Bistrițas,0,FIXL2
+684039,Botoșani,Botoșanis,0,FIXL2
+683760,Breaza,Breazas,0,FIXL2
+683902,Brăila,Brăilas,0,FIXL2
+683394,Buftea,Bufteas,0,FIXL2
+683123,Buzău,Buzăus,0,FIXL2
+682729,Caransebeș,Caransebeșis,0,FIXL2
+681502,Cisnădie,Cisnădies,0,FIXL2
+681179,Codlea,Codleas,0,FIXL2
+680963,Constanța,Constanțas,0,FIXL2
+680332,Craiova,Craiovas,0,FIXL2
+681862,Câmpina,Câmpinas,0,FIXL2
+679452,Deva,Devas,0,FIXL2
+678817,Drobeta-Turnu Severin,Drobeta-Turnu Severinis,0,FIXL2
+678978,Drăgășani,Drăgășanis,0,FIXL2
+678015,Focșani,Focșanis,0,FIXL2
+676527,Gura Humorului,Gura Humoruluis,0,FIXL2
+677742,Găești,Găeștis,0,FIXL2
+675810,Iași,Iașis,0,FIXL2
+674531,Lugoj,Lugojis,0,FIXL2
+671964,Odorheiu Secuiesc,Odorheiu Secuiescis,0,FIXL2
+671382,Pantelimon,Pantelimonis,0,FIXL2
+670889,Piatra Neamț,Piatra Neamțis,0,FIXL2
+670609,Pitești,Piteștis,0,FIXL2
+670474,Ploiești,Ploieștis,0,FIXL2
+669870,Popești-Leordeni,Popești-Leordenis,0,FIXL2
+668605,Roșiorii de Vede,Roșiorii de Vedes,0,FIXL2
+668872,Râmnicu Vâlcea,Râmnicu Vâlceas,0,FIXL2
+667526,Sebeș,Sebeșis,0,FIXL2
+667227,Sighetu Marmației,Sighetu Marmațieis,0,FIXL2
+8436351,Sighișoara,Sighișoaras,0,FIXL2
+666767,Slatina,Slatinas,0,FIXL2
+665850,Suceava,Suceavas,0,FIXL2
+664518,Tulcea,Tulceas,0,FIXL2
+664460,Turda,Turdas,0,FIXL2
+665024,Târgoviște,Târgoviștes,0,FIXL2
+665004,Târgu Mureș,Târgu Mureșis,0,FIXL2
+662334,Zalău,Zalăus,0,FIXL2
+662284,Zărnești,Zărneștis,0,FIXL2
+1508291,Tšeljabinsk,Tšeljabinskis,0,FIXL2
+819740,Drožžino,Drožžinos,0,FIXL2
+553915,Kaluga,Kalugas,0,FIXL2
+550280,Himki,Himkis,0,FIXL2
+547523,Klin,Klinis,0,FIXL2
+535121,Lipetsk,Lipetskis,0,FIXL2
+534595,Lobnja,Lobnjas,0,FIXL2
+523812,Mõtištši,Mõtištšis,0,FIXL2
+511196,Perm,Permis,0,FIXL2
+508101,Podolsk,Podolskis,0,FIXL2
+502018,Reutov,Reutovis,0,FIXL2
+496638,Sergijev Possad,Sergijev Possadis,0,FIXL2
+473778,Vidnoje,Vidnojes,0,FIXL2
+473247,Vladimir,Vladimiris,0,FIXL2
+472757,Volgograd,Volgogradis,0,FIXL2
+468902,Jaroslavl,Jaroslavlis,0,FIXL2
+606531,Boden,Bodenis,0,FIXL2
+2700839,Kinna,Kinnas,0,FIXL2
+605155,Kiruna,Kirunas,0,FIXL2
+2667109,Tullinge,Tullinges,0,FIXL2
+2665452,Vallentuna,Vallentunas,0,FIXL2
+3194351,Novo Mesto,Novo Mestos,0,FIXL2
+3192241,Ptuj,Ptujis,0,FIXL2
+3188915,Trbovlje,Trbovljes,0,FIXL2
+3189075,Velenje,Velenjes,0,FIXL2
+3061186,Banská Bystrica,Banská Bystricas,0,FIXL2
+3060950,Brezno,Breznos,0,FIXL2
+3060405,Dolný Kubín,Dolný Kubínis,0,FIXL2
+3060219,Galanta,Galantas,0,FIXL2
+3060139,Handlová,Handlováis,0,FIXL2
+3060095,Hlohovec,Hlohovecis,0,FIXL2
+3059435,Komárno,Komárnos,0,FIXL2
+3059436,Komárno,Komárnos,0,FIXL2
+3058986,Lučenec,Lučenecis,0,FIXL2
+3058897,Malacky,Malackys,0,FIXL2
+724144,Michalovce,Michalovces,0,FIXL2
+3058477,Nové Mesto nad Váhom,Nové Mesto nad Váhomis,0,FIXL2
+3058472,Nové Zámky,Nové Zámkys,0,FIXL2
+3058268,Partizánske,Partizánskes,0,FIXL2
+3058210,Pezinok,Pezinokis,0,FIXL2
+3058202,Piešťany,Piešťanys,0,FIXL2
+3058060,Považská Bystrica,Považská Bystricas,0,FIXL2
+3058000,Prievidza,Prievidzas,0,FIXL2
+3057963,Púchov,Púchovis,0,FIXL2
+723736,Rimavská Sobota,Rimavská Sobotas,0,FIXL2
+723713,Rožňava,Rožňavas,0,FIXL2
+3057692,Senec,Senecis,0,FIXL2
+3057691,Senica,Senicas,0,FIXL2
+3057630,Skalica,Skalicas,0,FIXL2
+723559,Snina,Sninas,0,FIXL2
+3057174,Topoľčany,Topoľčanys,0,FIXL2
+723195,Vranov nad Topľou,Vranov nad Topľous,0,FIXL2
+3057769,Šaľa,Šaľas,0,FIXL2
+3056523,Žiar nad Hronom,Žiar nad Hronomis,0,FIXL2
+712165,Bila Tserkva,Bila Tserkvas,0,FIXL2
+712590,Bilohorodka,Bilohorodkas,0,FIXL2
+711660,Borõspil,Borõspilis,0,FIXL2
+711416,Brodõ,Brodõs,0,FIXL2
+711390,Brovarõ,Brovarõs,0,FIXL2
+710791,Tšerkassõ,Tšerkassõs,0,FIXL2
+710719,Tšernivtsi,Tšernivtsis,0,FIXL2
+707688,Tšornomorsk,Tšornomorskis,0,FIXL2
+709930,Dnipro,Dnipros,0,FIXL2
+709540,Dubno,Dubnos,0,FIXL2
+13546531,Fortetšnõi,Fortetšnõis,0,FIXL2
+708901,Haisõn,Haisõnis,0,FIXL2
+707565,Irpin,Irpinis,0,FIXL2
+707471,Ivano-Frankivsk,Ivano-Frankivskis,0,FIXL2
+706950,Kamjanets-Podilskõi,Kamjanets-Podilskõis,0,FIXL2
+706369,Hmelnõtskõi,Hmelnõtskõis,0,FIXL2
+706165,Hust,Hustis,0,FIXL2
+12519211,Knjahõnõn,Knjahõnõnis,0,FIXL2
+705392,Kolomõja,Kolomõjas,0,FIXL2
+13609094,Koroljov,Koroljovis,0,FIXL2
+704901,Korosten,Korostenis,0,FIXL2
+704858,Korsun-Ševtšenkivskõi,Korsun-Ševtšenkivskõis,0,FIXL2
+704617,Kovel,Kovelis,0,FIXL2
+705812,Kropõvnõtskõi,Kropõvnõtskõis,0,FIXL2
+703845,Krõvõi Rih,Krõvõi Rihis,0,FIXL2
+13561778,Kõjivskõi,Kõjivskõis,0,FIXL2
+700696,Mostõska,Mostõskas,0,FIXL2
+700646,Mukatševo,Mukatševos,0,FIXL2
+700569,Mõkolajiv,Mõkolajivis,0,FIXL2
+700507,Nadvirna,Nadvirnas,0,FIXL2
+700261,Netišõn,Netišõnis,0,FIXL2
+8468760,Novojavorivsk,Novojavorivskis,0,FIXL2
+13608468,Novozavodskõi,Novozavodskõis,0,FIXL2
+698740,Odessa,Odessas,1,FIXL2
+698625,Oleksandrija,Oleksandrijas,0,FIXL2
+697593,Pervomaisk,Pervomaiskis,0,FIXL2
+696943,Pidhorodne,Pidhorodnes,0,FIXL2
+13631378,Rakove,Rakoves,0,FIXL2
+695594,Rivne,Rivnes,0,FIXL2
+699445,Samar,Samaris,0,FIXL2
+694792,Sarnõ,Sarnõs,0,FIXL2
+710554,Šeptõtskõi,Šeptõtskõis,0,FIXL2
+13561779,Ševtšenko,Ševtšenkos,0,FIXL2
+693457,Smila,Smilas,0,FIXL2
+693301,Sokal,Sokalis,0,FIXL2
+692372,Strõi,Strõis,0,FIXL2
+692129,Svaljava,Svaljavas,0,FIXL2
+691650,Ternopil,Ternopilis,0,FIXL2
+691179,Truskavets,Truskavetsis,0,FIXL2
+690688,Uman,Umanis,0,FIXL2
+690548,Užhorod,Užhorodis,0,FIXL2
+689558,Vinnõtsja,Vinnõtsjas,0,FIXL2
+689159,Volotšõsk,Volotšõskis,0,FIXL2
+689378,Volodõmõr,Volodõmõris,0,FIXL2
+688723,Võšhorod,Võšhorodis,0,FIXL2
+689487,Võšneve,Võšneves,0,FIXL2
+687700,Zaporižžja,Zaporižžjas,0,FIXL2
+686967,Žõtomõr,Žõtomõris,0,FIXL2
+686919,Znamjanka,Znamjankas,0,FIXL2
+686803,Zvenõhorodka,Zvenõhorodkas,0,FIXL2
+699553,Zvjahel,Zvjahelis,0,FIXL2
+6941080,Fort Bragg,Fort Braggis,0,FIXL2

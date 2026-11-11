@@ -200,6 +200,9 @@ def csvs():
         if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', r['slug']):
             err.append(f"countries.csv {r['cc']}: slug {r['slug']!r}")
     src_g = [r['geonameid'] for r in csv.DictReader(open(NAMES / 'cities.csv', encoding='utf-8'))]
+    # FIXL2: rows for names/cities_extra.csv (cities missing from names/cities.csv) are allowed too
+    if (NAMES / 'cities_extra.csv').exists():
+        src_g += [r['geonameid'] for r in csv.DictReader(open(NAMES / 'cities_extra.csv', encoding='utf-8'))]
     p = HERE / 'cities.csv'
     if not p.exists():
         err.append('cities.csv missing'); return len(rows), 0, 0

@@ -103,7 +103,7 @@ for r in rows:
     if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', r['slug']): err(f"countries {r['cc']}: slug {r['slug']}")
     if r['slug'] in [v.strip('/').split('/')[-1] for v in s.values()]: err(f"countries {r['cc']}: slug collides with a page slug")
 # cities
-gid_src = {r['geonameid'] for r in csv.DictReader(open(W / 'names' / 'cities.csv', encoding='utf-8'))}
+gid_src = {r['geonameid'] for f in ('cities.csv', 'cities_extra.csv') for r in csv.DictReader(open(W / 'names' / f, encoding='utf-8'))}  # FIXL2: + cities_extra.csv
 crow = list(csv.DictReader(open(D / 'cities.csv', encoding='utf-8')))
 for r in crow:
     if r['geonameid'] not in gid_src: err(f"cities: unknown geonameid {r['geonameid']}")

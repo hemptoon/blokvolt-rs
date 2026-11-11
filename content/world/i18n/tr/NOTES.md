@@ -43,3 +43,4 @@
 - D12: османские названия греческих/болгарских/албанских городов заменены местными (Heraklion, Chalkida, Kos, Rethymno, Ioannina, Preveza, Plovdiv, Shkodër); Selanik, Üsküp, Sofya, Burgaz и др. крупные — оставлены.
 - Слаги разделов: /tr/nasil-odenir/, /tr/guzergahlar/, /tr/medya-icin/, /tr/isletmeler-icin-veri/, /tr/embed/harita/, /tr/siteniz-icin-harita/, /tr/gelistiriciler-icin/.
 - Cities: Cenevre (Cenevre'de); 48 NOBIL проверены. name_nom (D14) для tr не нужен (нет артиклей).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 0)

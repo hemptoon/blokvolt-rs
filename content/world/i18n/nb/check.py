@@ -215,9 +215,11 @@ def check_csv():
         ERR.append(f'cities.csv: {len(lost)} city pages without a name, e.g. {sorted(lost)[:5]}')
     print(f'cities.csv: {len(market)} city pages, all named' if not lost else '')
     # FIXL: every geonameid must exist in names/cities.csv (no allowance for page cities outside it)
-    unknown = set(ids) - ids_src
+    # FIXL2: names/cities_extra.csv is also a valid source
+    extra_src = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities_extra.csv', encoding='utf-8'))}
+    unknown = set(ids) - ids_src - extra_src
     if unknown:
-        ERR.append(f'cities.csv: {len(unknown)} geonameid not in names/cities.csv, e.g. {sorted(unknown)[:5]}')
+        ERR.append(f'cities.csv: {len(unknown)} geonameid not in names/cities.csv or names/cities_extra.csv, e.g. {sorted(unknown)[:5]}')
     for r in rows:
         if not r['name'] or not r['in_phrase'] or r['decl_ok'] not in ('0', '1'):
             ERR.append(f'cities.csv {r["geonameid"]}: bad row')

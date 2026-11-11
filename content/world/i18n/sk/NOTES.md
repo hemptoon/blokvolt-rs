@@ -57,3 +57,4 @@
 - name_nom: nepoužíva sa (D14 len de fr it es pt el); check.py ho však povoľuje.
 - D12: maďarské mestá miestnym názvom — Győr, Pécs, Székesfehérvár, Eger, Szolnok (Ráb/Päťkostolie/Stoličný Belehrad/Jáger/Solnok zrušené).
 - cities.csv: +48 NOBIL (SE/NO, väčšinou „v meste X“, -berg/-borg skloňované) + Ženeva „v Ženeve“.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 29) — SK: ručne lokál (v Banskej Bystrici, v Malackách, vo Vranove nad Topľou…); UA/RU/BY/BG slovenská transkripcia (Záporožie, Černovice, Gomeľ, Šumen), GR bez diakritiky; exonymá Rím, Florencia, Janov, Terst, Syrakúzy; ostatné „v meste X“ (decl_ok=0), CZ skloňované.

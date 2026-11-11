@@ -179,6 +179,9 @@ for r in rows:
 
 # cities.csv
 src = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities.csv'))}
+# FIXL2: cities from names/cities_extra.csv are allowed too
+if (WORLD / 'names/cities_extra.csv').exists():
+    src |= {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities_extra.csv'))}
 rows = list(csv.DictReader(open(HERE / 'cities.csv')))
 if [*rows[0].keys()] != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']:
     errs.append('cities.csv: header must be geonameid,name,in_phrase,decl_ok,note')

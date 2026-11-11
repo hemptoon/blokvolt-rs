@@ -83,3 +83,4 @@ Tłumaczenie wsteczne 60 losowych ciągów (osobny agent, najpierw na ślepo PL�
 - name_nom nie jest potrzebne (brak rodzajników); check.py dopuszcza `{name_nom}` zamiast `{name}` dla zgodności.
 - Miasta: 48 NOBIL — -köping/-berg/-borg/-holm odmieniane (w Nyköpingu, w Sundbybergu, w Katrineholmie), -å nieodmienne
   (w Luleå, jak w Umeå), reszta «w mieście X» (decl_ok=0); Genewa — «w Genewie».
+- FIXL2: +821 cities from names/cities_extra.csv (own market 64)

@@ -123,6 +123,7 @@ for r in cs:
 
 # cities
 ci = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities.csv', encoding='utf-8'))}
+ci |= {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities_extra.csv', encoding='utf-8'))}   # FIXL2
 # FIXL: every geonameid must exist in names/cities.csv (no allowance for page cities outside names/)
 ps = json.load(open(WORLD / 'state' / 'pages_state.json', encoding='utf-8'))
 cc = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))

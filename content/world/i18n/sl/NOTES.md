@@ -60,3 +60,4 @@
 - lang_hint »Ta stran je na voljo tudi v slovenščini«, close »Zapri«.
 - Poti razdelkov: /sl/kako-placati/ /sl/poti/ /sl/za-medije/ /sl/podatki-za-podjetja/ /sl/embed/zemljevid/ /sl/zemljevid-za-vaso-stran/ /sl/za-razvijalce/.
 - D13: narekovaji »…« povsod (preverjeno). D12: Valona → Vlora. name_nom ni potreben (sl ni v D14). Ženeva dodana (v Ženevi).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 4)

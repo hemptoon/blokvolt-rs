@@ -178,6 +178,9 @@ def check_csv():
         if r['name'] not in r['in_phrase']:
             err(f'countries.csv {r["cc"]}: in_phrase does not contain name')
     src = {r['geonameid'] for r in csv.DictReader(open(NAMES / 'cities.csv', encoding='utf-8'))}
+    # FIXL2: rows for names/cities_extra.csv (cities missing from names/cities.csv) are allowed too
+    if (NAMES / 'cities_extra.csv').exists():
+        src |= {r['geonameid'] for r in csv.DictReader(open(NAMES / 'cities_extra.csv', encoding='utf-8'))}
     rows = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
     if rows and list(rows[0]) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']:
         err(f'cities.csv: header {list(rows[0])}')

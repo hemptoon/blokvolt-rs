@@ -66,3 +66,4 @@
 - lang_hint «Тази страница е достъпна и на български», close «Затвори» (как `close` в strings_map).
 - Слаги разделов: /bg/kak-se-plashta/ /bg/marshruti/ /bg/za-medii/ /bg/danni-za-biznesa/ /bg/embed/karta/ /bg/karta-za-vashiya-sayt/ /bg/za-razrabotchitsi/.
 - name_nom не нужен (bg не в D14). D12: Сяр → Серес. +49 городов (NOBIL + Женева), `decl_ok=0` кроме Женевы.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 37)

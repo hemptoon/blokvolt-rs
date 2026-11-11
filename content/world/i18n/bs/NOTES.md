@@ -59,3 +59,4 @@
 - lang_hint „Ova stranica postoji i na bosanskom”, close „Zatvori”.
 - Putanje odjeljaka: /bs/kako-platiti/ /bs/rute/ /bs/za-medije/ /bs/podaci-za-firme/ /bs/embed/mapa/ /bs/mapa-za-vasu-stranicu/ /bs/za-programere/.
 - D12: Ser → Seres. +49 gradova (kao hr: izvorna imena, lokativ iz sr_u, inače „u gradu X”; Ženeva → u Ženevi). name_nom nije potreban (bs nije u D14).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 0)

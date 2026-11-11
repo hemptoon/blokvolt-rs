@@ -164,6 +164,8 @@ for r in rows:
 
 # 5. cities.csv
 base = {r['geonameid'] for r in csv.DictReader(open(NAMES / 'cities.csv', encoding='utf-8'))}
+# FIXL2 (11.11.2026): + names/cities_extra.csv
+base |= {r['geonameid'] for r in csv.DictReader(open(NAMES / 'cities_extra.csv', encoding='utf-8'))}
 p = HERE / 'cities.csv'
 if p.exists():
     rows = list(csv.DictReader(open(p, encoding='utf-8')))
@@ -172,7 +174,7 @@ if p.exists():
     ids = [r['geonameid'] for r in rows]
     if len(set(ids)) != len(ids): errors.append('cities.csv: duplicate geonameid')
     unk = set(ids) - base
-    if unk: errors.append(f'cities.csv: {len(unk)} geonameids not in names/cities.csv')
+    if unk: errors.append(f'cities.csv: {len(unk)} geonameids not in names/cities.csv or cities_extra.csv')
     for r in rows:
         if not r['name'].strip() or not r['in_phrase'].strip(): errors.append(f"cities {r['geonameid']}: empty")
         if r['decl_ok'] not in ('0', '1'): errors.append(f"cities {r['geonameid']}: decl_ok {r['decl_ok']!r}")

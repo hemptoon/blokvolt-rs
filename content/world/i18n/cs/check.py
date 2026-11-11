@@ -108,6 +108,7 @@ sl = [r['slug'] for r in rows]
 if len(sl) != len(set(sl)): err.append('countries.csv: duplicate slugs')
 
 src_g = {r['geonameid'] for r in csv.DictReader(open(W / 'names/cities.csv', encoding='utf-8'))}
+src_g |= {r['geonameid'] for r in csv.DictReader(open(W / 'names/cities_extra.csv', encoding='utf-8'))}   # FIXL2
 rows = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
 if list(rows[0]) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: err.append('cities.csv header')
 g = [r['geonameid'] for r in rows]

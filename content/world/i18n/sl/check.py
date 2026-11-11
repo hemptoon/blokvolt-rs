@@ -146,16 +146,18 @@ crow = list(csv.DictReader(open(os.path.join(HERE, 'cities.csv'), encoding='utf-
 if crow and list(crow[0].keys()) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']: err('cities.csv: wrong columns')
 ids = [r['geonameid'] for r in crow]
 if len(ids) != len(set(ids)): err('cities.csv: duplicate geonameid')
-unknown = set(ids) - src_ids
+_ex = os.path.join(WORLD, 'names', 'cities_extra.csv')   # FIXL2: or in names/cities_extra.csv
+extra_ids = {r['geonameid'] for r in csv.DictReader(open(_ex, encoding='utf-8'))} if os.path.exists(_ex) else set()
+unknown = set(ids) - src_ids - extra_ids
 for g in sorted(page_ids - set(ids)): err(f'cities.csv: city with a page missing: {g}')
-if unknown: err(f'cities.csv: {len(unknown)} geonameid not in names/cities.csv')
+if unknown: err(f'cities.csv: {len(unknown)} geonameid not in names/cities.csv or names/cities_extra.csv')
 for r in crow:
     if not r['name'] or not r['in_phrase']: err(f"cities.csv {r['geonameid']}: empty")
     if r['decl_ok'] not in ('0', '1'): err(f"cities.csv {r['geonameid']}: decl_ok must be 0/1")
     if not re.match(r'^(v|na) ', r['in_phrase']): err(f"cities.csv {r['geonameid']}: in_phrase without v/na")
-cov = len(set(ids)) / len(src_ids) * 100
+cov = len(set(ids)) / len(src_ids | extra_ids) * 100
 
-print(f'sl check: {len(errors)} errors, {len(warns)} warnings; cities {len(crow)}/{len(src_ids)} ({cov:.0f} %), '
+print(f'sl check: {len(errors)} errors, {len(warns)} warnings; cities {len(crow)}/{len(src_ids | extra_ids)} ({cov:.0f} %), '
       f"decl_ok=1: {sum(r['decl_ok'] == '1' for r in crow)}")
 for w in warns: print('WARN', w)
 for e in errors: print('ERR ', e)

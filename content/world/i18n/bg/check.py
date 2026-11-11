@@ -216,12 +216,14 @@ def check_csv():
 
     src = {r['geonameid']: r for r in csv.DictReader(open(NAMES / 'cities.csv', encoding='utf-8'))}
     rows = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
+    # FIXL2: geonameids may also come from names/cities_extra.csv
+    extra = {r['geonameid']: r for r in csv.DictReader(open(NAMES / 'cities_extra.csv', encoding='utf-8'))} if (NAMES / 'cities_extra.csv').exists() else {}
     if rows and list(rows[0].keys()) != ['geonameid', 'name', 'in_phrase', 'decl_ok', 'note']:
         err(f'cities.csv columns {list(rows[0].keys())}')
     seen = set()
     for r in rows:
         g = r['geonameid']
-        if g not in src:
+        if g not in src and g not in extra:
             err(f'cities.csv: unknown geonameid {g}')
         if g in seen:
             err(f'cities.csv: duplicate {g}')
@@ -230,9 +232,11 @@ def check_csv():
             err(f'cities.csv {g}: empty name/in_phrase')
         if r['decl_ok'] not in ('0', '1'):
             err(f'cities.csv {g}: decl_ok must be 0/1')
+        if re.search(r'[A-Za-z]', r['name']):   # FIXL2: Cyrillic only
+            err(f'cities.csv {g}: Latin letters in name')
         if not re.match(r'^(в|във|на) ', r['in_phrase']):
             err(f'cities.csv {g}: in_phrase must start with „в“/„във“/„на“')
-    must = {g for g, r in src.items() if r['cc'] == 'BG' or r['stage'] == 'month'}
+    must = {g for g, r in src.items() if r['cc'] == 'BG' or r['stage'] == 'month'} | {g for g, r in extra.items() if r['cc'] == 'BG'}
     if must - seen:
         err(f'cities.csv: {len(must - seen)} BG/month cities missing')
     # FIXL: every city page of pages_state must have a row
@@ -242,9 +246,9 @@ def check_csv():
                  if v.get('type') == 'city' and str(v.get('key', '')).startswith('t:')}
         for g in sorted(pages - seen):
             err(f'cities.csv: city with a page missing: {g}')
-    if len(seen) < len(src):
-        warn(f'cities.csv: {len(seen)}/{len(src)} cities covered')
-    return len(seen), len(src)
+    if len(seen) < len(src) + len(extra):
+        warn(f'cities.csv: {len(seen)}/{len(src) + len(extra)} cities covered')
+    return len(seen), len(src) + len(extra)
 
 
 def main():

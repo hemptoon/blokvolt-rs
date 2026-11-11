@@ -67,3 +67,4 @@
 - Слаги разделов: /lt/kaip-moketi/, /lt/marsrutai/, /lt/ziniasklaidai/, /lt/duomenys-verslui/, /lt/embed/zemelapis/, /lt/zemelapis-svetainei/, /lt/kurejams/.
 - D13: Andrei, Danila — без окончаний. name_nom (D14) для lt не нужен.
 - cities.csv: +48 NOBIL («mieste X», decl_ok=0) + Ženeva/Ženevoje.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 2)

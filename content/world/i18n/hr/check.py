@@ -106,7 +106,9 @@ src_g = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names' / 'cities.c
 ci = list(csv.DictReader(open(HERE / 'cities.csv')))
 g = [r['geonameid'] for r in ci]
 if len(g) != len(set(g)): err.append('cities.csv: duplicate geonameid')
-if set(g) - src_g: err.append(f'cities.csv: {len(set(g) - src_g)} unknown geonameid')
+_ex = WORLD / 'names' / 'cities_extra.csv'   # FIXL2: geonameids may also come from names/cities_extra.csv
+ext_g = {r['geonameid'] for r in csv.DictReader(open(_ex, encoding='utf-8'))} if _ex.exists() else set()
+if set(g) - src_g - ext_g: err.append(f'cities.csv: {len(set(g) - src_g - ext_g)} unknown geonameid')
 # FIXL: every city page of pages_state must have a row
 _ps = WORLD / 'state' / 'pages_state.json'
 if _ps.exists():
@@ -116,7 +118,7 @@ if _ps.exists():
 for r in ci:
     if not r['name'].strip() or not r['in_phrase'].strip() or r['decl_ok'] not in ('0', '1'): err.append(f'cities {r["geonameid"]}: bad row')
 
-print(f'{LANG}: strings, texts, slugs, {len(cc)} countries, {len(ci)}/{len(src_g)} cities checked')
+print(f'{LANG}: strings, texts, slugs, {len(cc)} countries, {len(ci)}/{len(src_g | ext_g)} cities checked')
 for e in err: print('ERR', e)
 print('OK' if not err else f'{len(err)} errors')
 sys.exit(1 if err else 0)

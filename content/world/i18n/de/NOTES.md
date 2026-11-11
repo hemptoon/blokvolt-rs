@@ -59,3 +59,4 @@ Strittig, bewusst gewählt:
 - Slugs: `/de/bezahlen/`, `/de/routen/`, `/de/fuer-medien/`, `/de/daten-fuer-unternehmen/`, `/de/embed/karte/`, `/de/karte-fuer-ihre-website/`, `/de/fuer-entwickler/`.
 - D12: Städte in PL/CZ/RO mit lokalem Namen außer Prag, Warschau, Krakau, Bukarest (offene Frage 1 oben damit entschieden). D13: Kyjiw.
 - cities.csv: + Genf (2660646); check.py lässt keine geonameid außerhalb von names/cities.csv mehr zu.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 35). Kyrillisch wie bisher (Duden): UA/RU deutsch transkribiert (Saporischschja, Tscherniwzi, Odessa), BY belarussisch wie Hrodna (Wizebsk, Homel, Mahiljou), BG deutsch (Stara Sagora, Schumen); GR ohne Akzente; RO mit ș/ț; Nieder-Ingelheim → Ingelheim am Rhein; Exonyme Rom, Florenz, Genua, Syrakus, Triest. check.py akzeptiert names/cities_extra.csv.

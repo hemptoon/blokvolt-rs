@@ -92,7 +92,7 @@ for r in rows:
     if not (r['name'] and r['in_phrase']): err.append(f"countries {r['cc']}: empty")
     if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', r['slug']): err.append(f"countries {r['cc']}: bad slug")
 # cities
-ids = {r['geonameid'] for r in csv.DictReader(open(W / 'names' / 'cities.csv'))}
+ids = {r['geonameid'] for f in ('cities.csv', 'cities_extra.csv') for r in csv.DictReader(open(W / 'names' / f))}  # FIXL2: + cities_extra.csv
 # FIXL F2: every geonameid must exist in names/cities.csv; every city page needs a row
 _ps = json.load(open(W / 'state' / 'pages_state.json'))
 page_ids = {v['key'].split(':')[2] for v in _ps.values() if v.get('type') == 'city' and str(v.get('key', '')).startswith('t:')}
@@ -106,6 +106,6 @@ for r in rows:
     if g in seen: err.append(f'cities {g}: duplicate')
     seen.add(g)
     if not (r['name'] and r['in_phrase']) or r['decl_ok'] not in ('0','1'): err.append(f'cities {g}: bad row')
-print(f'cities: {len(rows)}/{len(ids)} covered (names/cities.csv), decl_ok=1: {sum(r["decl_ok"]=="1" for r in rows)}')
+print(f'cities: {len(rows)}/{len(ids)} covered (names/cities.csv + cities_extra.csv), decl_ok=1: {sum(r["decl_ok"]=="1" for r in rows)}')
 print('\n'.join(err) if err else 'OK: 0 errors')
 sys.exit(1 if err else 0)

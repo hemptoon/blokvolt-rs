@@ -107,6 +107,7 @@ for r in cs:
     if not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', r['slug']): err.append(f'countries {r["cc"]}: bad slug')
     bad_chars(f'countries {r["cc"]}', r['name'] + r['in_phrase'])
 gid_src = {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities.csv', encoding='utf-8'))}
+gid_src |= {r['geonameid'] for r in csv.DictReader(open(WORLD / 'names/cities_extra.csv', encoding='utf-8'))}  # FIXL2
 ct = list(csv.DictReader(open(HERE / 'cities.csv', encoding='utf-8')))
 gids = [r['geonameid'] for r in ct]
 if len(set(gids)) != len(gids): err.append('cities.csv: duplicate geonameid')

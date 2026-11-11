@@ -85,3 +85,4 @@ See `BACKTRANS.md` (60 random strings, NL → EN by a separate reviewer, compare
   `/nl/kaart-voor-je-website/`, `/nl/ontwikkelaars/`.
 - Home (F3): "charging place" → laadlocatie; Asia-Pacific → Azië-Pacific; "how to pay" heading → «Zo betaal je» (menu stays «Betalen»).
 - Cities: 48 NOBIL towns (local Swedish/Norwegian names, «in X») + Genève (2660646). No name_nom needed (no articles with country names in subject position except «de Verenigde Staten» etc., not used with `{name}`).
+- FIXL2: +821 cities from names/cities_extra.csv (own market 34)

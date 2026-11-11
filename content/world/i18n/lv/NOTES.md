@@ -51,3 +51,4 @@ uzlādes stacija / vieta / punkts, uzlādes tīkls, operators, elektromobilis, �
 - Section slugs: /lv/ka-maksat/, /lv/marsruti/, /lv/medijiem/, /lv/dati-uznemumiem/, /lv/embed/karte/, /lv/karte-jusu-vietnei/, /lv/izstradatajiem/.
 - D13: «viesabonēšana» kept. name_nom (D14) not needed for lv.
 - cities.csv: +48 NOBIL («pilsētā X», decl_ok=0) + Ženēva/Ženēvā.
+- FIXL2: +821 cities from names/cities_extra.csv (own market 0)
