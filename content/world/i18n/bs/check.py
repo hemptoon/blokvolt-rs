@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""L-BS check: python3 content/world/i18n/bs/check.py  (exit 1 on errors)"""
+"""L-BS / L2-bs check (8 string files + texts pay/routes): python3 content/world/i18n/bs/check.py  (exit 1 on errors)"""
 import csv, json, re, sys
 from pathlib import Path
 from babel import Locale
@@ -20,7 +20,8 @@ def strs(v):
     elif isinstance(v, list):
         for x in v: yield from strs(x)
 
-for f in ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices'):
+FILES = ('strings_map', 'strings_pages', 'strings_shell', 'strings_prices', 'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed')   # L2: all 8
+for f in FILES:
     en = {k: v['en'] for k, v in json.load(open(WORLD / f'{f}.json', encoding='utf-8')).items()}
     tr = json.load(open(HERE / f'{f}.json', encoding='utf-8'))
     if set(en) != set(tr): err.append(f'{f}: keys differ: missing {sorted(set(en)-set(tr))} extra {sorted(set(tr)-set(en))}')
@@ -56,9 +57,28 @@ def same_shape(a, b, path):
         if EKAV.search(b): warn.append(f'texts {path}: ekavian? {EKAV.search(b).group(0)}')
 
 texts = json.load(open(HERE / 'texts.json', encoding='utf-8'))
-if set(texts) != {'about_data', 'download'}: err.append('texts.json: top keys')
+if set(texts) != {'about_data', 'download', 'pay', 'routes'}: err.append(f'texts.json: top keys {sorted(texts)}')
 for k in ('about_data', 'download'):
     same_shape(json.load(open(WORLD / f'{k}.json', encoding='utf-8'))['en'], texts.get(k), k)
+
+# L2 / LANG0: texts.pay and texts.routes — dotted path of each multilingual node of pay.json / routes.json -> text
+def ml_nodes(v, p, out):
+    if isinstance(v, dict):
+        if isinstance(v.get('en'), str) and ('sr' in v or 'ru' in v): out[p] = v['en']; return
+        for k, x in v.items(): ml_nodes(x, f'{p}.{k}' if p else k, out)
+    elif isinstance(v, list):
+        for i, x in enumerate(v): ml_nodes(x, f'{p}[{i}]', out)
+for sec in ('pay', 'routes'):
+    nodes = {}; ml_nodes(json.load(open(WORLD / f'{sec}.json', encoding='utf-8')), '', nodes)
+    got = texts.get(sec) or {}
+    if set(nodes) != set(got): err.append(f'texts.{sec}: paths differ: missing {sorted(set(nodes)-set(got))[:5]} extra {sorted(set(got)-set(nodes))[:5]}')
+    for path, e in nodes.items():
+        t = got.get(path)
+        if t is None: continue
+        if not isinstance(t, str) or not t.strip(): err.append(f'texts.{sec} {path}: empty'); continue
+        if sorted(PH.findall(e)) != sorted(PH.findall(t)): err.append(f'texts.{sec} {path}: placeholders')
+        if BAD.search(t): err.append(f'texts.{sec} {path}: forbidden {BAD.search(t).group(0)}')
+        if EKAV.search(t): warn.append(f'texts.{sec} {path}: ekavian? {EKAV.search(t).group(0)}')
 
 KEYS = ['home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology']
 sl = json.load(open(HERE / 'slugs.json', encoding='utf-8'))

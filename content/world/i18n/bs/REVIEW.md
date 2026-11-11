@@ -31,3 +31,17 @@
 - Латинские названия городов — в оригинале по Pravopisu (Leipzig, а не Lajpcig), как решила L-BS.
 - `fast_more`, `st_countries` («zemalja sa stranicom») при 21–24 дают неточную форму — редко, оставлено.
 - ~2 960 городов stage quarter/balkan вне топ-500 — не вычитаны, безопасная форма «u gradu X».
+
+## L2-bs — обратный перевод 60 новых строк (11.11.2026)
+Выборка: 60 случайных из 237 новых строк (seed 20261111; strings_pay/press/b2b/embed, ci_* + emb_open, texts.pay). Независимый агент переводил bs → EN, не видя оригиналов. 48 — смысл совпал, 12 — замечания; экавизмов и хорватизмов нет, плейсхолдеры целы.
+Применено:
+- `press.f_checkins` — «{n} plaćenih cijena» не согласуется с 1–4 → «Broj cijena koje su vozači … potvrdili …: {n}».
+- `press.lead_issue` — «{nets} mreža u {countries} zemalja» (та же проблема, найдена при сверке с R-BS) → «(mreža: {nets}; zemalja: {countries})».
+- `pay.afir_non` — «nije članica EU» (ж. р.) не подходит к Kosovo / Ujedinjeno Kraljevstvo → «nije u Evropskoj uniji».
+- `press.h_charts`, `press.d_press` — «za ugradnju» читалось как монтаж → «za vašu stranicu» / «za objavu na vašoj stranici».
+- `press.f_mom` — «u odnosu na period {prev}» → «u odnosu na {prev}»; `press.f_mom_n` — «DC vrijednosti» → «DC indeksa».
+- `pay.cost_all` → «indeks postoji za sve zemlje na ruti»; `embed.dv_open_btn` → «Preuzimanje i opis kolona»; `embed.dv_p_lang` → «Jezik: određuje ga adresa vidžeta (EN, SR, RU)».
+Не применено:
+- `press.f_range` «najjeftinije {lo}» — ложная тревога: `{lo}`/`{hi}` подставляются как `names.in_()` («u Njemačkoj»), предлог уже внутри.
+- `press.d_issue` «u periodu {month}» — оставлено: `month_name()` даёт именительный («oktobar 2026»), «u {month}» дал бы «u oktobar».
+- `embed.cf_view` «Grad ili tačan prikaz» — как в SR, под полем есть пояснение `cf_view_help`.
