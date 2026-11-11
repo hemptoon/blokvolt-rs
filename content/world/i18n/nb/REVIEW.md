@@ -64,3 +64,33 @@
 - `prices.th_ratio` «DC mot hjemmelading» — не взято: заголовок колонки, лимит длины; рядом колонка «Hjemme», смысл ясен;
 - `prices.lead_hub` «sammenlignet med» вместо «ved siden av» — не взято: EN «next to», формулировка верна.
 - «på Gibraltar», «på Taiwan», «Bucuresti» — агент подтвердил.
+
+---
+
+# L2-NB — дельта ключей, обратный перевод (11.11.2026)
+
+Ветка `l2-nb` от `dev` (`bb86f74`). Новые 274 ключа: map 29 (`ci_*`, `emb_open`), pay 93, press 54, b2b 33, embed 65; `texts.json` → `pay` (6 узлов) и `routes` (59 узлов).
+
+## Обратный перевод 60 случайных новых строк
+
+Отдельный агент, не видевший EN, перевёл nb → EN (`backtranslation_L2_60.json`, значения до правок). Смысл совпал во всех 60. Замечаний 10:
+
+Исправлено (6):
+- `pay.th_trip` «Turen, EUR» → «Kostnad for turen, EUR» — без «kostnad» неясно, что это цена.
+- `b2b.lic_p` «dens del-på-samme-vilkår-krav» → «kravet om deling på samme vilkår» — калька.
+- `press.th_change` «Endring DC» → «DC-endring».
+- `map.ci_last_ne_radi` / `ci_last_zauzeto` «Siste melding: …» → «Sist rapportert: …».
+- `pay.h_conn` «Kontakter og steder» → «Kontakttyper og ladesteder» — в заголовке без контекста «kontakter» читается как «контакты (люди)».
+- `pay.th_gaps` «Hull > 150 km» → «Hull i dekningen > 150 km».
+
+Оставлено (4):
+- `map.ci_err` «Svaret ble ikke sendt» — это ответ на вопрос «Virker laderen?», не форма; «svaret» верно.
+- `press.issue_note` «vekter fra det offentlige laget» — так же непрозрачно в EN; термин «det offentlige laget» уже принят на всём сайте.
+- `pay.th_cover` — заголовок колонки, повторяет EN.
+- `b2b.what_cov` «kontakter» — термин глоссария nb для connector, используется во всём интерфейсе карты; в перечне рядом с «effektklasser» однозначен.
+
+## Видимые строки — правки носителя
+
+- `shell.home_title` «i Europa og verden» → «i Europa og resten av verden» (как в `map.description`).
+- `pages.below_title` «for lite data nå» → «foreløpig for lite data».
+- `prices.pr_home` «Lader hjemme» → «Hjemmelader».

@@ -1,0 +1,422 @@
+[
+ {
+  "id": "pay.th_trip",
+  "en": "Trip, EUR",
+  "nb_checked": "Turen, EUR",
+  "back_en": "The trip, EUR",
+  "note": "Terse/ambiguous: 'Turen' = 'the trip/tour'; if meant as trip cost, 'Turen totalt, EUR' or 'Kostnad for turen, EUR' is clearer."
+ },
+ {
+  "id": "pay.h_by_country",
+  "en": "Networks, apps and tolls by country",
+  "nb_checked": "Nettverk, apper og bompenger per land",
+  "back_en": "Networks, apps and tolls per country",
+  "note": ""
+ },
+ {
+  "id": "b2b.title",
+  "en": "Data for business: EV charging coverage and prices | BlokVolt",
+  "nb_checked": "Data for bedrifter: dekning og priser for elbillading | BlokVolt",
+  "back_en": "Data for businesses: coverage and prices for EV charging | BlokVolt",
+  "note": ""
+ },
+ {
+  "id": "pay.conn_lnk",
+  "en": "Charging stations in {name}",
+  "nb_checked": "Ladestasjoner i {name}",
+  "back_en": "Charging stations in {name}",
+  "note": ""
+ },
+ {
+  "id": "b2b.lic_p",
+  "en": "Row-level data for commercial use is built without OpenStreetMap, from open government registers, Open Charge Map, Overture Maps and BlokVolt's own research, with an attribution file for every source. A set that includes OpenStreetMap is possible only under the Open Database License (ODbL 1.0) and its share-alike terms. The open data stays free: the full public layer can be downloaded under ODbL.",
+  "nb_checked": "Data på radnivå til kommersiell bruk bygges uten OpenStreetMap, fra åpne offentlige registre, Open Charge Map, Overture Maps og BlokVolts egne undersøkelser, med en attribusjonsfil for hver kilde. Et datasett som inkluderer OpenStreetMap, er bare mulig under Open Database License (ODbL 1.0) og dens del-på-samme-vilkår-krav. De åpne dataene forblir gratis: hele det offentlige laget kan lastes ned under ODbL.",
+  "back_en": "Row-level data for commercial use is built without OpenStreetMap, from open public registers, Open Charge Map, Overture Maps and BlokVolt's own surveys, with an attribution file for each source. A dataset that includes OpenStreetMap is only possible under the Open Database License (ODbL 1.0) and its share-alike requirement. The open data remains free: the entire public layer can be downloaded under ODbL.",
+  "note": "'dens del-på-samme-vilkår-krav' is a clumsy literal calque of 'share-alike'; natural: 'kravet om deling på samme vilkår'. 'Data på radnivå' is understandable but jargon-ish."
+ },
+ {
+  "id": "embed.cf_preview",
+  "en": "Preview",
+  "nb_checked": "Forhåndsvisning",
+  "back_en": "Preview",
+  "note": ""
+ },
+ {
+  "id": "pay.afir_src",
+  "en": "Source: Regulation (EU) 2023/1804 on EUR-Lex, as of {date}.",
+  "nb_checked": "Kilde: forordning (EU) 2023/1804 på EUR-Lex, per {date}.",
+  "back_en": "Source: Regulation (EU) 2023/1804 on EUR-Lex, as of {date}.",
+  "note": ""
+ },
+ {
+  "id": "embed.dv_balkan_h",
+  "en": "Serbia and the Balkans",
+  "nb_checked": "Serbia og Balkan",
+  "back_en": "Serbia and the Balkans",
+  "note": ""
+ },
+ {
+  "id": "pay.th_map",
+  "en": "Map",
+  "nb_checked": "Kart",
+  "back_en": "Map",
+  "note": ""
+ },
+ {
+  "id": "pay.th_prices",
+  "en": "Prices",
+  "nb_checked": "Priser",
+  "back_en": "Prices",
+  "note": ""
+ },
+ {
+  "id": "press.issue_note",
+  "en": "Prices with VAT, euro per kWh at the ECB rate of {fx}. Tariffs checked up to {checked}; weights from the public layer of {layer}; electricity at home: {home}.",
+  "nb_checked": "Priser inkl. mva., euro per kWh etter ECBs kurs per {fx}. Tariffer sjekket til og med {checked}; vekter fra det offentlige laget per {layer}; strøm hjemme: {home}.",
+  "back_en": "Prices incl. VAT, euros per kWh at the ECB rate as of {fx}. Tariffs checked up to and including {checked}; weights from the public layer as of {layer}; home electricity: {home}.",
+  "note": "'vekter fra det offentlige laget' (weights from the public layer) is opaque to a lay reader."
+ },
+ {
+  "id": "pay.th_cover",
+  "en": "Country on the official coverage page",
+  "nb_checked": "Landet på den offisielle dekningssiden",
+  "back_en": "The country on the official coverage page",
+  "note": "Ambiguous fragment: unclear whether it means 'the country is listed on the official coverage page' or is a label/link; 'Landet er oppført på den offisielle dekningssiden' would be clearer."
+ },
+ {
+  "id": "embed.cf_theme",
+  "en": "Theme",
+  "nb_checked": "Tema",
+  "back_en": "Topic / Theme",
+  "note": ""
+ },
+ {
+  "id": "pay.h_apps_all",
+  "en": "Apps and cards: official coverage",
+  "nb_checked": "Apper og kort: offisiell dekning",
+  "back_en": "Apps and cards: official coverage",
+  "note": ""
+ },
+ {
+  "id": "pay.stops_note",
+  "en": "The farthest fast charger within 150 km of the previous stop, the more powerful one when two are close. Kilometres are an estimate along the route. Check the place on the map before you go.",
+  "nb_checked": "Den hurtigladeren innen 150 km fra forrige stopp som ligger lengst unna; ligger to nær hverandre, velges den kraftigste. Kilometertallene er et anslag langs ruten. Sjekk stedet på kartet før avreise.",
+  "back_en": "The fast charger within 150 km of the previous stop that is farthest away; if two are close to each other, the more powerful one is chosen. The kilometre figures are an estimate along the route. Check the location on the map before departure.",
+  "note": ""
+ },
+ {
+  "id": "press.ch_europe",
+  "en": "Europe: average ad hoc price by charging class, €/kWh",
+  "nb_checked": "Europa: gjennomsnittlig ad hoc-pris per ladeklasse, €/kWh",
+  "back_en": "Europe: average ad hoc price per charging class, €/kWh",
+  "note": ""
+ },
+ {
+  "id": "map.ci_err",
+  "en": "The answer was not sent. Try again.",
+  "nb_checked": "Svaret ble ikke sendt. Prøv igjen.",
+  "back_en": "The reply was not sent. Try again.",
+  "note": "Unnatural for a form error: 'svaret' means 'the answer/reply'; for a submitted form/message 'Meldingen ble ikke sendt' or 'Skjemaet ble ikke sendt' is expected."
+ },
+ {
+  "id": "b2b.form_p",
+  "en": "Describe what you need. The answer comes from hello@blokvolt.com.",
+  "nb_checked": "Beskriv hva som trengs. Svaret kommer fra hello@blokvolt.com.",
+  "back_en": "Describe what is needed. The reply will come from hello@blokvolt.com.",
+  "note": ""
+ },
+ {
+  "id": "embed.dv_params_h",
+  "en": "Widget parameters",
+  "nb_checked": "Widgetparametere",
+  "back_en": "Widget parameters",
+  "note": ""
+ },
+ {
+  "id": "press.credit",
+  "en": "Source: BlokVolt, European EV Charging Price Index, {month}",
+  "nb_checked": "Kilde: BlokVolt, europeisk prisindeks for elbillading, {month}",
+  "back_en": "Source: BlokVolt, European EV charging price index, {month}",
+  "note": ""
+ },
+ {
+  "id": "b2b.desc",
+  "en": "Data sets on public EV charging for companies and public bodies: locations, power, networks and published tariffs by country, with sources and dates.",
+  "nb_checked": "Datasett om offentlig elbillading for bedrifter og offentlige virksomheter: ladesteder, effekt, nettverk og publiserte tariffer per land, med kilder og datoer.",
+  "back_en": "Dataset on public EV charging for businesses and public bodies: charging sites, power, networks and published tariffs per country, with sources and dates.",
+  "note": ""
+ },
+ {
+  "id": "press.h1_issue",
+  "en": "European EV Charging Price Index — {month}",
+  "nb_checked": "Europeisk prisindeks for elbillading — {month}",
+  "back_en": "European EV charging price index — {month}",
+  "note": ""
+ },
+ {
+  "id": "pay.sys_vignette",
+  "en": "Vignette (time-based) for motorways.",
+  "nb_checked": "Vignett (tidsbasert) for motorveier.",
+  "back_en": "Vignette (time-based) for motorways.",
+  "note": ""
+ },
+ {
+  "id": "embed.dv_f_msg",
+  "en": "What data and for what",
+  "nb_checked": "Hvilke data og til hva",
+  "back_en": "What data and for what",
+  "note": ""
+ },
+ {
+  "id": "embed.cf_frame_title",
+  "en": "EV charging map — BlokVolt",
+  "nb_checked": "Ladekart for elbil — BlokVolt",
+  "back_en": "EV charging map — BlokVolt",
+  "note": ""
+ },
+ {
+  "id": "b2b.what_cov",
+  "en": "<b>Coverage</b> — public charging locations by country, city and network: power classes, DC and high-power share, connectors, number of sources, date of the last confirmation.",
+  "nb_checked": "<b>Dekning</b> — offentlige ladesteder per land, by og nettverk: effektklasser, andel DC og lynladere, kontakter, antall kilder, dato for siste bekreftelse.",
+  "back_en": "<b>Coverage</b> — public charging sites per country, city and network: power classes, share of DC and ultra-fast chargers, connectors, number of sources, date of last confirmation.",
+  "note": "'kontakter' is ambiguous (plugs/connectors vs. contacts/people); 'kontakttyper' or 'pluggtyper' would be clearer."
+ },
+ {
+  "id": "embed.cf_net_any",
+  "en": "All networks",
+  "nb_checked": "Alle nettverk",
+  "back_en": "All networks",
+  "note": ""
+ },
+ {
+  "id": "pay.typ_none",
+  "en": "Not enough official prices yet for an index of this country.",
+  "nb_checked": "Ennå ikke nok offisielle priser til en indeks for dette landet.",
+  "back_en": "Not yet enough official prices for an index for this country.",
+  "note": ""
+ },
+ {
+  "id": "embed.dv_lead",
+  "en": "Everything that is open is free and needs no key. For anything beyond it, send a request.",
+  "nb_checked": "Alt som er åpent, er gratis og krever ingen nøkkel. For alt utover det: send en forespørsel.",
+  "back_en": "Everything that is open is free and requires no key. For anything beyond that: send a request.",
+  "note": ""
+ },
+ {
+  "id": "pay.h_conn",
+  "en": "Connectors and places",
+  "nb_checked": "Kontakter og steder",
+  "back_en": "Connectors and locations / Contacts and places",
+  "note": "Ambiguous: 'Kontakter og steder' most naturally reads as 'contacts (people) and places'; if plugs are meant, use 'Kontakttyper og steder'."
+ },
+ {
+  "id": "map.ci_last_ne_radi",
+  "en": "Latest check-in: not working, {d}",
+  "nb_checked": "Siste melding: virker ikke, {d}",
+  "back_en": "Last report: not working, {d}",
+  "note": "'Siste melding' (last message) is vague; 'Sist rapportert: virker ikke, {d}' would read more naturally."
+ },
+ {
+  "id": "press.cite_2",
+  "en": "Figures and charts may be quoted, reproduced and embedded in editorial content without asking, with that credit. The CSV files are under CC BY-NC 4.0: free for non-commercial use with a credit; commercial use of the data (products, paid reports, resale) needs a written agreement.",
+  "nb_checked": "Tall og grafer kan siteres, gjengis og bygges inn i redaksjonelt innhold uten å spørre, med denne kildehenvisningen. CSV-filene er lisensiert under CC BY-NC 4.0: fri ikke-kommersiell bruk med kildehenvisning; kommersiell bruk av dataene (produkter, betalte rapporter, videresalg) krever skriftlig avtale.",
+  "back_en": "Figures and charts may be quoted, reproduced and embedded in editorial content without asking, with this source credit. The CSV files are licensed under CC BY-NC 4.0: free non-commercial use with attribution; commercial use of the data (products, paid reports, resale) requires a written agreement.",
+  "note": ""
+ },
+ {
+  "id": "pay.h_season",
+  "en": "Winter and summer",
+  "nb_checked": "Vinter og sommer",
+  "back_en": "Winter and summer",
+  "note": ""
+ },
+ {
+  "id": "pay.road_none",
+  "en": "Not checked yet.",
+  "nb_checked": "Ikke sjekket ennå.",
+  "back_en": "Not checked yet.",
+  "note": ""
+ },
+ {
+  "id": "embed.cf_copied",
+  "en": "Copied",
+  "nb_checked": "Kopiert",
+  "back_en": "Copied",
+  "note": ""
+ },
+ {
+  "id": "press.t_press",
+  "en": "European EV Charging Price Index — for media | BlokVolt",
+  "nb_checked": "Europeisk prisindeks for elbillading — for media | BlokVolt",
+  "back_en": "European EV charging price index — for media | BlokVolt",
+  "note": ""
+ },
+ {
+  "id": "embed.dv_f_demo",
+  "en": "Preview: the form does not send anything here. Write to the address below.",
+  "nb_checked": "Forhåndsvisning: skjemaet sender ingenting herfra. Skriv til adressen nedenfor.",
+  "back_en": "Preview: the form sends nothing from here. Write to the address below.",
+  "note": ""
+ },
+ {
+  "id": "map.ci_month",
+  "en": "Month",
+  "nb_checked": "Måned",
+  "back_en": "Month",
+  "note": ""
+ },
+ {
+  "id": "map.ci_u_min",
+  "en": "minute",
+  "nb_checked": "minutt",
+  "back_en": "minute",
+  "note": ""
+ },
+ {
+  "id": "pay.th_gaps",
+  "en": "Gaps > 150 km",
+  "nb_checked": "Hull > 150 km",
+  "back_en": "Gap > 150 km",
+  "note": "'Hull' (hole) is understandable but slightly odd for a gap in charging coverage; 'Avstand > 150 km' or 'Lade-hull > 150 km' could be clearer."
+ },
+ {
+  "id": "b2b.f_countries",
+  "en": "Countries",
+  "nb_checked": "Land",
+  "back_en": "Country",
+  "note": ""
+ },
+ {
+  "id": "press.th_change",
+  "en": "DC change",
+  "nb_checked": "Endring DC",
+  "back_en": "Change DC",
+  "note": "Terse/unidiomatic word order; 'Endring, DC' or 'DC-endring' reads better."
+ },
+ {
+  "id": "pay.th_fast",
+  "en": "Fast chargers",
+  "nb_checked": "Hurtigladere",
+  "back_en": "Fast chargers",
+  "note": ""
+ },
+ {
+  "id": "b2b.form_h",
+  "en": "Request data",
+  "nb_checked": "Be om data",
+  "back_en": "Request data",
+  "note": ""
+ },
+ {
+  "id": "embed.dv_attr_h",
+  "en": "How to credit",
+  "nb_checked": "Slik oppgis kilden",
+  "back_en": "How to cite the source",
+  "note": ""
+ },
+ {
+  "id": "pay.pay_more",
+  "en": "How to pay",
+  "nb_checked": "Slik betaler du",
+  "back_en": "How to pay",
+  "note": ""
+ },
+ {
+  "id": "pay.th_kw",
+  "en": "kW",
+  "nb_checked": "kW",
+  "back_en": "kW",
+  "note": ""
+ },
+ {
+  "id": "press.method_link",
+  "en": "How the index is calculated",
+  "nb_checked": "Slik beregnes indeksen",
+  "back_en": "How the index is calculated",
+  "note": ""
+ },
+ {
+  "id": "pay.h1_routes",
+  "en": "EV routes across the Balkans",
+  "nb_checked": "Elbilruter gjennom Balkan",
+  "back_en": "EV routes through the Balkans",
+  "note": ""
+ },
+ {
+  "id": "embed.dv_p_mreza",
+  "en": "Network slug, several separated by commas",
+  "nb_checked": "Nettverkets slug, flere skilles med komma",
+  "back_en": "Network slug, separate multiple with commas",
+  "note": ""
+ },
+ {
+  "id": "embed.cf_link",
+  "en": "BlokVolt charging map",
+  "nb_checked": "BlokVolts ladekart",
+  "back_en": "BlokVolt's charging map",
+  "note": ""
+ },
+ {
+  "id": "embed.cf_more",
+  "en": "Open data and API requests",
+  "nb_checked": "Åpne data og API-forespørsler",
+  "back_en": "Open data and API requests",
+  "note": ""
+ },
+ {
+  "id": "embed.cf_title",
+  "en": "EV charging map for your website: free widget | BlokVolt",
+  "nb_checked": "Ladekart for elbil til nettsiden: gratis widget | BlokVolt",
+  "back_en": "EV charging map for your website: free widget | BlokVolt",
+  "note": ""
+ },
+ {
+  "id": "press.h1_press",
+  "en": "European EV Charging Price Index for media",
+  "nb_checked": "Europeisk prisindeks for elbillading for media",
+  "back_en": "European EV charging price index for media",
+  "note": ""
+ },
+ {
+  "id": "press.svg_file",
+  "en": "SVG file, {month}",
+  "nb_checked": "SVG-fil, {month}",
+  "back_en": "SVG file, {month}",
+  "note": ""
+ },
+ {
+  "id": "pay.cov_no",
+  "en": "Not listed",
+  "nb_checked": "Ikke oppført",
+  "back_en": "Not listed",
+  "note": ""
+ },
+ {
+  "id": "b2b.f_what",
+  "en": "Data",
+  "nb_checked": "Data",
+  "back_en": "Data",
+  "note": ""
+ },
+ {
+  "id": "pay.apps_unk",
+  "en": "the official page names no country list",
+  "nb_checked": "den offisielle siden oppgir ingen landliste",
+  "back_en": "the official page gives no list of countries",
+  "note": ""
+ },
+ {
+  "id": "press.h_archive",
+  "en": "All issues",
+  "nb_checked": "Alle utgaver",
+  "back_en": "All editions",
+  "note": ""
+ },
+ {
+  "id": "pay.t_routes",
+  "en": "EV road trips across the Balkans: fast chargers by route",
+  "nb_checked": "Elbiltur gjennom Balkan: hurtigladere langs rutene",
+  "back_en": "EV trip through the Balkans: fast chargers along the routes",
+  "note": ""
+ }
+]
