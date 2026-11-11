@@ -49,9 +49,8 @@ the path is the home prefix + the English path, `/de/how-to-pay/`), `countries.c
   `in_phrase` of `cities.csv`, or the safe `fallback_u` construction when there is none.
 - **`{country_u}` for `{country_name}`** — where English has a number in `{country}` and the name in `{country_name}`
   (`p_city_cmp`), a language may write "in Italia" in the name's slot.
-- **D7 section paths** — `slugs.json` may name them `pay`, `routes`, `press`, `b2b`, `dev`, `widget` (the D7 names) or
-  `developers`, `map_conf` (LANG0's names for the last two); both answer, the D7 name wins. Without a key: home prefix +
-  the English path (`/de/how-to-pay/`). en/sr/ru paths do not change.
+- **Section paths** — LANG0's contract (D7 replaced by it, LANG_pool "Поправка 18:45"): optional `slugs.json` keys `pay`,
+  `routes`, `press`, `b2b`, `embed`, `map_conf`, `developers`; without one, home prefix + the English path (`/de/how-to-pay/`).
 - **D8** — Romanian percent `{x}%` (registry; `world_i18n.py registry` keeps it, `PCT_FIXED`).
 - **D9** — the widget configurator lists every built language; above three, one `<select>` by native name.
 - **D10** — `strings_home.json` of every language through the common loader (LANG0); `world-home.js` and the hero map take

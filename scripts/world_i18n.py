@@ -41,9 +41,6 @@ SLUG_KEYS = ('home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices',
 # LANG0: section paths of G4/G5/G7/G10. en/sr/ru keep them in config.json; another language may name them in its
 # slugs.json, otherwise the engine takes its home prefix + the English path (/de/ + how-to-pay/ = /de/how-to-pay/)
 SECTION_SLUGS = ('pay', 'routes', 'press', 'b2b', 'embed', 'map_conf', 'developers')
-# LANG1 (D7): the contract of slugs.json names the developers page "dev" and the configurator "widget"; LANG0 called them
-# "developers" and "map_conf". Both spellings are read (the D7 name wins when a file holds both); the engine uses LANG0's.
-SLUG_ALIASES = {'dev': 'developers', 'widget': 'map_conf'}
 SLUG_PATHS = ('home', 'map', 'hub', 'gnet', 'prices', 'shell_about', 'sources', 'methodology') + SECTION_SLUGS
 MARK = '[EN] '                                 # preview only: an English string standing in for a missing translation
 MISSING = Counter()                            # (lang, part) -> keys filled with English in a preview build
@@ -122,9 +119,6 @@ def slugs(lang):
         if not p.exists():
             raise SystemExit(f'world_i18n: {p} is missing (language {lang} is enabled)')
         s = json.load(open(p, encoding='utf-8'))
-        for a, k in SLUG_ALIASES.items():   # D7 names → engine names
-            if s.get(a):
-                s[k] = s[a]
     bad = [k for k in SLUG_KEYS if not s.get(k)]
     if bad:
         raise SystemExit(f'world_i18n: slugs of {lang} miss {bad}')
@@ -132,8 +126,6 @@ def slugs(lang):
     for k in SECTION_SLUGS:   # LANG0: optional in slugs.json — home prefix + the English path
         if not s.get(k):
             s[k] = s['home'].rstrip('/') + en[k]
-    for a, k in SLUG_ALIASES.items():   # D7: both names answer
-        s[a] = s[k]
     return s
 
 
@@ -515,16 +507,12 @@ def check_folder(lang, folder=None):
         errs.append('slugs.json missing')
     else:
         sl = json.load(open(s, encoding='utf-8'))
-        opt = set(SECTION_SLUGS) | set(SLUG_ALIASES)
-        if not set(SLUG_KEYS) <= set(sl) <= set(SLUG_KEYS) | opt:
-            errs.append(f'slugs.json keys {sorted(sl)}: need {sorted(SLUG_KEYS)}, may add {sorted(opt)}')
-        for a, k in SLUG_ALIASES.items():
-            if sl.get(a) and sl.get(k) and sl[a] != sl[k]:
-                errs.append(f'slugs.{a} and slugs.{k} name the same page differently')
+        if not set(SLUG_KEYS) <= set(sl) <= set(SLUG_KEYS) | set(SECTION_SLUGS):
+            errs.append(f'slugs.json keys {sorted(sl)}: need {sorted(SLUG_KEYS)}, may add {sorted(SECTION_SLUGS)}')
         for k, v in sl.items():
-            if (k in SLUG_PATHS or k in SLUG_ALIASES) and not re.fullmatch(r'/[a-z]{2,3}/([a-z0-9]+(-[a-z0-9]+)*/)*', v or ''):
+            if k in SLUG_PATHS and not re.fullmatch(r'/[a-z]{2,3}/([a-z0-9]+(-[a-z0-9]+)*/)*', v or ''):
                 errs.append(f'slugs.{k}: "{v}" is not /<lang>/…/ in ASCII lowercase')
-            if k not in SLUG_PATHS and k not in SLUG_ALIASES and not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v or ''):
+            if k not in SLUG_PATHS and not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', v or ''):
                 errs.append(f'slugs.{k}: "{v}" is not one ASCII segment')
     t = json.load(open(folder / 'texts.json', encoding='utf-8')) if (folder / 'texts.json').exists() else {}
     for sec in DATA_TEXTS:   # LANG0: texts.json → pay / routes, key = path of the multilingual node
@@ -812,7 +800,7 @@ def selftest():
                 errs.append(f'registry misses {code}')
     except ImportError:
         print('world_i18n selftest: Babel not installed — CLDR checks skipped')
-    # LANG1: D3 months, D5 French "de", D7 slug names, D8 Romanian percent, D4/D5 placeholder rules
+    # LANG1: D3 months, D5 French "de", D8 Romanian percent, D4/D5 placeholder rules
     want = {('Ulm', 'fr'): 'd’Ulm', ('Lyon', 'fr'): 'de Lyon', ('Le Havre', 'fr'): 'du Havre', ('Les Herbiers', 'fr'): 'des Herbiers',
             ('Hambourg', 'fr'): 'de Hambourg', ('Hyères', 'fr'): 'd’Hyères', ('Évry', 'fr'): 'd’Évry', ('Ulm', 'de'): 'Ulm',
             ('La Rochelle', 'fr'): 'de La Rochelle', ('Yverdon-les-Bains', 'fr'): 'd’Yverdon-les-Bains'}
@@ -831,10 +819,6 @@ def selftest():
         errs.append('fmt_nom')
     if registry().get('ro', {}).get('pct') != '{x}%':
         errs.append('ro pct must be {x}% (D8)')
-    for l in BASE:
-        s_ = slugs(l)
-        if s_['dev'] != s_['developers'] or s_['widget'] != s_['map_conf']:
-            errs.append(f'slug aliases of {l}')
     if _ph_group('{name_nom}', 'de') != '{name}' or _ph_group('{city_de}', 'fr') != '{city}' or \
             _ph_group('{city_de}', 'fr', 't_near') != '{x}' or _ph_group('{city_de}', 'de') == '{city}':
         errs.append('placeholder groups name_nom / city_de')

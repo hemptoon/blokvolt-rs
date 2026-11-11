@@ -2709,8 +2709,8 @@ The registry and the rules are in `docs/WORLD_I18N.md`; the work plan is `claude
   `BV_WORLD_PREVIEW=1 python3 scripts/qa/world_pages_check.py dist-com <pages>` (the same mode as the build).
 - LANG1 (11.11.2026, decisions D1–D10 of `LANG_pool.md`): countries "in …" of every language from `countries.csv`
   (press too), press facts from each language's `strings_press`, `{month}` = nominative month + year, optional
-  `countries.csv` column `name_nom` → `{name_nom}`, French `{city_de}`, `slugs.json` keys `dev` / `widget` (= `developers` /
-  `map_conf`), Romanian `{x}%`, configurator `<select>` of all languages. Rules in `docs/WORLD_I18N.md`; built-site check
+  `countries.csv` column `name_nom` → `{name_nom}`, French `{city_de}`, Romanian `{x}%`, configurator `<select>` of all
+  languages (section paths stay LANG0's `slugs.json` keys). Rules in `docs/WORLD_I18N.md`; built-site check
   `BV_WORLD_PREVIEW=1 python3 scripts/qa/world_lang_check.py dist-com` (in `preview.yml`).
 
 ## 4. Build and check

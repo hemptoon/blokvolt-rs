@@ -11,7 +11,7 @@
    - D4 {name_nom}: where the language's pay strings use it, the country's name_nom stands on the page (any case);
    - D5 {city_de}: fr titles with t_near read "de X" / "d’X" / "du X", never "de {vowel}…";
    - D3 {month}: the press page shows the stand-alone month + year (Babel "LLLL y"), never the genitive of a date;
-   - D7: the section paths of slugs.json (also under the names dev / widget) are the folders that were built;
+   - section paths of slugs.json (LANG0 contract: pay, routes, press, b2b, embed, map_conf, developers) were built;
    - D9: the widget configurator offers every built language.
 Exit 1 on any failure. Needs a build of the same languages (gen_com.py) and the same BV_WORLD_I18N.
 """
@@ -117,17 +117,17 @@ def main(out, sample):
             m = I.month_label(sorted(p.stem for p in (I.WORLD / 'index_history').glob('*.json'))[-1], l)
             if m not in text(hp):
                 fail(f'{l} D3: "{m}" not on {I.slugs(l)["press"]}')
-        # D7 — section folders
-        for k in ('pay', 'routes', 'press', 'b2b', 'dev', 'widget'):
+        # section folders (LANG0 contract of slugs.json; D7 replaced by it, LANG_pool "Поправка 18:45")
+        for k in ('pay', 'routes', 'press', 'b2b', 'map_conf', 'developers'):
             if not page(out, I.slugs(l)[k]):
-                fail(f'{l} D7 {k}: {I.slugs(l)[k]} not built')
+                fail(f'{l} section {k}: {I.slugs(l)[k]} not built')
         # D9 — configurator languages
-        hc = page(out, I.slugs(l)['widget']) or ''
+        hc = page(out, I.slugs(l)['map_conf']) or ''
         offered = set(re.findall(r'name="lang" value="([a-z]{2,3})"', hc)) | set(re.findall(r'<option value="([a-z]{2,3})" lang=', hc))
         if offered != set(I.langs()):
             fail(f'{l} D9: configurator offers {len(offered)} of {len(I.langs())} languages')
         if len(fails) == k0:
-            print(f'ok   {l}: D1 {checked} pay pages, D6 {city_ok} city titles, D3 month, D7 paths, D9 {len(offered)} languages')
+            print(f'ok   {l}: D1 {checked} pay pages, D6 {city_ok} city titles, D3 month, section paths, D9 {len(offered)} languages')
     print('world_lang_check:', 'ALL OK' if not fails else f'{len(fails)} FAIL')
     return 1 if fails else 0
 

@@ -56,7 +56,7 @@ def strings_of(l, S=None):
     from i18n/<code>/strings_press.json (the press release drafts of G7 in de, fr … while the site has only en/sr/ru).
     No built-in German or French any more: a language without its f_* keys stops with the name of the file."""
     S = S if S is not None else load_strings()
-    if l in S and not any(str(S[l].get(k, '')).startswith(I.MARK) for k in S[l] if k.startswith('f_')):
+    if l in S:   # a built language: its own strings (a preview shows "[EN] …" where a translation is missing)
         return S[l]
     p = I.i18n_dir(l) / 'strings_press.json'
     tr = json.load(open(p, encoding='utf-8')) if p.exists() else {}
