@@ -13,7 +13,10 @@
   'Where to charge, what public charging costs, what a kilowatt-hour costs at home, which subsidies are open and what the rules are in apartment buildings — country by country, with a source and a check date for every figure.',
   chips=COUNTRIES|map(attribute='url')|zip(COUNTRIES|map(attribute='name'))|list, meta=(COUNTRIES|length) ~ ' countries · ' ~ n_sources ~ ' sources') }}{% endblock %}
 {% block content %}
-<div class="sec" id="local"><div class="sec-head"><h2>Guides in your language</h2></div>
+{% if WORLD_LINKS %}<div class="sec" id="world"><div class="sec-head"><h2>Public charging across Europe and beyond</h2></div>
+<p>Every public charging location from open registries, Open Charge Map and OpenStreetMap on one map, with filters by power, network and data reliability — plus pages per country, city and network, public charging prices and how to pay.</p>
+<div class="tiles w4"><a class="tile" href="/map/"><h3>Charging map</h3><p>Open the map</p></a><a class="tile" href="/charging-stations/"><h3>Charging stations</h3><p>By country, city and network</p></a><a class="tile" href="/charging-prices/"><h3>Charging prices</h3><p>Price index and prices per network</p></a><a class="tile" href="/how-to-pay/"><h3>How to pay</h3><p>Apps, cards and roaming</p></a></div></div>
+{% endif %}<div class="sec" id="local"><div class="sec-head"><h2>Guides in your language</h2></div>
 <div class="tiles loc2">{% for h in LOCALS %}<a class="tile big" href="{{ h.path }}" hreflang="{{ h.loc.hreflang }}" lang="{{ h.loc.html }}"><span class="ic">{{ ic('map') }}</span><h3>{{ h.title }}</h3><p>{{ h.lead }}</p></a>{% endfor %}
 <a class="tile big" href="{{ RS }}/" hreflang="sr" lang="sr"><span class="ic">{{ ic('map') }}</span><h3>Punjenje električnih automobila u Srbiji</h3><p>Mapa punjača, cene, firme i vodiči — blokvolt.rs, na srpskom, engleskom i ruskom.</p></a></div></div>
 

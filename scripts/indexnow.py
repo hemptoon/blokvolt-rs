@@ -6,7 +6,8 @@ IndexNow engines which pages are new or changed, so they crawl them now instead 
 
 Called by .github/workflows/deploy.yml after a successful deploy (that step may fail without failing the deploy). A URL
 is sent when it is in the new sitemap and was not in the old one, or its <lastmod> differs. Nothing is sent when nothing
-changed, or when the old sitemap could not be read (no guessing: a lost download must not send the whole site).
+changed, or when the old sitemap could not be read (no guessing: a lost download must not send the whole site). An empty
+<urlset> as the old sitemap means "did not exist before" (the blokvolt.com workflow writes one on HTTP 404): all URLs are sent.
 
 The key is the name of the one file static/<32 hex>.txt (its content is the key); build.py copies static/ to the site
 root, so it is served at https://www.blokvolt.rs/<key>.txt — the keyLocation the engines check. A new key = a new file
@@ -71,9 +72,11 @@ def main():
     old, new = lastmods(args[0]), lastmods(args[1])
     if new is None:
         sys.exit(f'indexnow: {args[1]} is not a sitemap')
-    if not old:
+    if old is None:
         print(f'IndexNow: the live sitemap before the deploy could not be read ({args[0]}) — nothing sent')
         return
+    if not old:   # an empty <urlset>: the caller says the sitemap did not exist before (HTTP 404) — first publication
+        print(f'IndexNow: {args[0]} is an empty sitemap — first publication, every URL of the new one is sent')
     urls = changed(old, new)
     print(f'IndexNow: {len(new)} URLs in the new sitemap, {len(old)} in the old one, {len(urls)} new or changed')
     if not urls:

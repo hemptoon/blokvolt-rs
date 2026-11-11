@@ -92,6 +92,10 @@ small.csrc a{color:var(--mut)}
 .tile.big{min-height:170px}
 .tiles.loc2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .tiles.loc2 .tile.big{grid-column:auto}
+/* REL1: the world block on the English home (four short links in one row; two per row on small screens) */
+.tiles.w4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.tiles.w4 .tile{min-height:0}
+@media (max-width:900px){.tiles.w4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* the tariff names are long (blocks, day/night): the select takes the whole row, the own-price field goes below it */
 .calc .fields2 .field.wide{grid-column:1/-1}

@@ -61,11 +61,13 @@ LOCALES = {
     'mk': dict(key='mk', cc='MK', dir='mk', html='mk', hreflang='mk-MK', og='mk_MK', code='MK', en='/north-macedonia/',
                country='Северна Македонија', switch='Северна Македонија', cur='MKD', cur_sign='ден.', dec=',', thou='.',
                plural='mk', script='cyrl', trim=True, lang_en='Macedonian', open_local='Отвори го водичот на македонски'),
-    # Slovenian (SI1 09.11.2026): four noun forms — 1, 101 one; 2, 102 dual; 3–4, 103–104 few; else many
-    'si': dict(key='si', cc='SI', dir='si', html='sl', hreflang='sl-SI', og='sl_SI', code='SI', en='/slovenia/',
-               country='Slovenija', switch='Slovenija', cur='EUR', cur_sign='€', dec=',', thou='.', plural='sl',
-               lang_en='Slovenian', open_local='Odpri vodnik v slovenščini'),
 }
+# /si/ is held back until a native speaker has read it (REL1, owner 11.11.2026): not in LOCALES, so it is not built, not in the
+# sitemap and not in any hreflang cluster. The content stays in content/com/local/si/; to release, move the entry back into LOCALES.
+# Slovenian (SI1 09.11.2026): four noun forms — 1, 101 one; 2, 102 dual; 3–4, 103–104 few; else many
+SI_HELD = {'si': dict(key='si', cc='SI', dir='si', html='sl', hreflang='sl-SI', og='sl_SI', code='SI', en='/slovenia/',
+               country='Slovenija', switch='Slovenija', cur='EUR', cur_sign='€', dec=',', thou='.', plural='sl',
+               lang_en='Slovenian', open_local='Odpri vodnik v slovenščini')}
 EN = dict(key='en', html='en', hreflang='en', og='en_GB', code='EN', dec='.', thou=',')
 # page keys that blokvolt.rs has too: one hreflang cluster across both domains (build.py writes the .rs side from
 # the same list, scripts/region_pages.py)
@@ -251,6 +253,22 @@ EN_NAV = [('/#countries', 'Countries', 'countries'), ('/#local', 'In your langua
           ('/partners/', 'For companies', 'partners')]
 
 
+def _world_public():
+    """True when this build carries the world layer (BV_WORLD_PAGES) and content/world/config.json says "public": true."""
+    if not os.environ.get('BV_WORLD_PAGES'):
+        return False
+    try:
+        return bool(json.load(open(ROOT / 'content' / 'world' / 'config.json', encoding='utf-8')).get('public'))
+    except (OSError, ValueError):
+        return False
+
+
+# REL1 (11.11.2026): once the world layer is public, the English menu and home lead into it (map and prices first)
+WORLD_LINKS = _world_public()
+if WORLD_LINKS:
+    EN_NAV = [('/map/', 'Map', 'map'), ('/charging-prices/', 'Prices', 'prices')] + EN_NAV
+
+
 def rs_firm_count():
     n = 0
     for p in (ROOT / 'content' / 'firme').glob('*.json'):
@@ -289,7 +307,8 @@ def build_english(local_hubs):
     n_rs = rs_firm_count()
     research, all_sources, n_companies = {}, set(), n_rs
     pages = []
-    en_ctx = dict(LOC=EN, S=STRINGS['en'], NAV=EN_NAV, SWITCH=en_switch(), home='/', COUNTRIES=countries, LOCALS=local_hubs)
+    en_ctx = dict(LOC=EN, S=STRINGS['en'], NAV=EN_NAV, SWITCH=en_switch(), home='/', COUNTRIES=countries, LOCALS=local_hubs,
+                  WORLD_LINKS=WORLD_LINKS)
     for c in countries:
         if c['code'] == 'RS':
             continue
@@ -570,6 +589,8 @@ def main():
     __import__('world_press').run(sys.modules[__name__], wc)  # G7: monthly issue of the index, /press/, embeds, archive CSV
     import world_b2b; world_b2b.run(sys.modules[__name__], wc)  # G10: /data-for-business/ (EN/SR/RU) with the request form
     import world_embed; world_embed.run(sys.modules[__name__], wc)  # G5: /embed/map/, /map-for-your-site/, /developers/
+    if wc is not None and wc.public:  # REL1: the world sitemaps again, now with the pages of G0/G3/G4/G5/G7/G10 written after world_pages
+        world_pages.write_sitemaps(wc)
     bad = link_check()
     files = [p for p in OUT.rglob('*') if p.is_file()]
     print(f'blokvolt.com: {len(URLS)} pages in the sitemap, {len(files)} files, {n_companies} companies, {n_sources} English sources; broken links: {len(bad)}')

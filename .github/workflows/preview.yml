@@ -18,9 +18,11 @@ concurrency:
   cancel-in-progress: true
 env:
   TILES: https://hemptoon.github.io/blokvolt-tiles
-  # K7 only (even point density): this branch reads its own tiles folder; drop this line when K7 is merged and the folder
-  # becomes latest.json of the tiles host
-  BV_TILES_PATH: world/2026-11-09-k7/world.pmtiles
+  # since the world release (REL1, 11.11.2026) content/world/config.json holds the live API addresses; previews keep the
+  # demo mode (no D1 on preview deployments, and the live API answers only blokvolt.com origins)
+  BV_WORLD_CHECKINS: demo
+  BV_WORLD_WIDGET_API: ''
+  BV_WORLD_REQUESTS_API: ''
 jobs:
   preview:
     runs-on: ubuntu-latest

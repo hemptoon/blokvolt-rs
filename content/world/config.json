@@ -1,8 +1,8 @@
 {
- "public": false,
- "data_base": "https://tiles.blokvolt.rs/world/",
+ "public": true,
+ "data_base": "https://hemptoon.github.io/blokvolt-tiles/world/",
  "reports_api": "https://www.blokvolt.rs/api/svet/prijava",
- "checkins_api": "demo",
+ "checkins_api": "https://www.blokvolt.rs/api/svet/stanje",
  "langs_enabled": [
   "en",
   "sr",
@@ -934,6 +934,6 @@
    ]
   }
  },
- "widget_api": "",
- "requests_api": ""
+ "widget_api": "https://www.blokvolt.rs/api/svet/vidzet",
+ "requests_api": "https://www.blokvolt.rs/api/svet/zahtev"
 }

@@ -15,7 +15,9 @@ COM = 'https://blokvolt.com'
 
 # local section folder -> hreflang (Montenegrin as sr-ME: Google takes ISO 639-1 codes only, "cnr" is not one; Albanian
 # for Kosovo as plain "sq": XK is not an ISO 3166-1 region, and sq-AL belongs to the Albanian section)
-LOCALES = {'hr': 'hr-HR', 'ba': 'bs-BA', 'me': 'sr-ME', 'al': 'sq-AL', 'xk': 'sq', 'mk': 'mk-MK', 'si': 'sl-SI'}
+LOCALES = {'hr': 'hr-HR', 'ba': 'bs-BA', 'me': 'sr-ME', 'al': 'sq-AL', 'xk': 'sq', 'mk': 'mk-MK'}
+# /si/ held back until a native speaker has read it (REL1, 11.11.2026; gen_com.SI_HELD): no .rs hreflang to it until then
+SI_HELD = {'si': 'sl-SI'}
 
 # page keys that blokvolt.rs has too, and the Serbian page for each
 RS_PAGES = {'map': '/mapa/', 'prices': '/javno-punjenje/', 'apps': '/javno-punjenje/aplikacije-i-kartice/',

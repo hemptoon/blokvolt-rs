@@ -2275,6 +2275,9 @@ Free tools only; nothing here may slow the site down or add steps for visitors.
   `https://www.blokvolt.rs/<key>.txt`. A new key = a new file; the old one is removed by the owner. No account is
   needed; Bing Webmaster Tools → IndexNow shows what arrived.
 - Search Console has no IndexNow: Google still gets the sitemap and, for important pages, a manual indexing request.
+- blokvolt.com (since REL1, 11.11.2026): the workflow of `hemptoon/blokvolt-com` serves the same key file at its root and,
+  after its deploy, runs `indexnow.py` with `INDEXNOW_HOST=blokvolt.com` per sitemap (`sitemap.xml` and each world sitemap).
+  A sitemap that answered 404 before the deploy is passed as an empty `<urlset>`: first publication, all its URLs are sent.
 
 ### 3.38 App layer of guides and news (since 29.10.2026)
 
@@ -2482,7 +2485,20 @@ to `main`:
   home at `/`, `/sr/`, `/ru/`. All of it runs only with `BV_WORLD_PAGES`; the hourly build of blokvolt.com (3.10) does not set
   it, so production is unchanged until a release of the world layer.
 - **Look at a preview:** the run summary lists the URLs; `curl -sI https://dev.blokvolt-com.pages.dev/ | grep -i robots`
-  must show `noindex`. A preview differs from production in: noindex, demo API, tiles from GitHub Pages, the dev home page.
+  must show `noindex`. A preview differs from production in: noindex, demo API, cards next to the site, the dev home page.
+- **Production since the world release (REL1, 11.11.2026, owner: «релиз мира»).** `content/world/config.json`: `public: true`,
+  `langs_enabled` en/sr/ru, `data_base` = `https://hemptoon.github.io/blokvolt-tiles/world/` (the tiles repository serves
+  `world/latest.json` → `world/manifest-<date>.json` → K7 tiles, `world/cards-<date>/`, `world/places-<date>.json`; the ODbL dump
+  stays in `data/<date>/`; a weekly data update writes these too, see the README of the tiles repository), `reports_api`,
+  `checkins_api`, `widget_api`, `requests_api` live on the blokvolt.rs worker. R2 (`tiles.blokvolt.rs`) replaces the host only
+  by the owner's decision (change `data_base`). The hourly workflow of `hemptoon/blokvolt-com` builds the world layer when
+  `public` is true (its branch `world-layer`, merged 11.11.2026): world files go only into the Pages artifact, never into that
+  repository (rsync exclusions there — extend them when a new top-level world folder appears). With `public`, the English
+  menu and home of blokvolt.com lead into the world (`gen_com.WORLD_LINKS`: Map · Prices first, a block on the home), the world
+  pages are indexable, `sitemap-world.xml` (index) is in robots.txt and lists every indexable world page (written again after
+  G3/G4/G5/G7/G10). `preview.yml` keeps previews in demo mode (`BV_WORLD_CHECKINS=demo`, empty widget/request API). blokvolt.rs
+  gets no new links to the world. `/si/` is held back until a native speaker has read it (`gen_com.SI_HELD`,
+  `region_pages.SI_HELD`): not built, not in a sitemap or a hreflang cluster; release = move the entry back into `LOCALES`.
 ### 3.42 World charging prices of blokvolt.com: index, price pages, map card (G3, since 09.11.2026)
 
 The price layer of the world .com (task G3 of the pool `claude/bvcom_tasks/`): the "European EV Charging Price Index",
@@ -2546,7 +2562,7 @@ the worker on first use), weekly script `scripts/world_checkins.py`, owner queue
 
 **Address of the API — `content/world/config.json` `checkins_api`:** `"demo"` on dev and previews (the form works,
 nothing leaves the browser, the card says „Preview version“; previews have no D1, 3.41); the URL
-`https://www.blokvolt.rs/api/svet/stanje` only in the release „релиз G6“ together with the worker deploy; `""` = no
+`https://www.blokvolt.rs/api/svet/stanje` in production since the world release (REL1, 11.11.2026); `""` = no
 block. `BV_WORLD_CHECKINS` overrides it for one local build (tests).
 
 **API (`/api/svet/stanje`, CORS for blokvolt.com and localhost like the reports of K6):**
@@ -2619,7 +2635,7 @@ Built by `gen_com.py` with the world layer, right after the price pages; noindex
 - **Widget address:** `?zemlja=<cc>&grad=<geonameid>&mreza=<slug,…>&snaga=ac,dc,hpc,nepoznato&tema=tamna`, view in `#z/lat/lon`; the language is the path. The widget has no reports, two-finger gestures (the host page keeps scrolling), the card button and the corner badge open the same view on blokvolt.com with `utm_source=<host>&utm_medium=widget`. Attribution line is always visible. noindex, never in the sitemap.
 - **Framing:** `dist-com/_headers` (Cloudflare Pages): `/*` X-Frame-Options SAMEORIGIN; the three widget paths detach it and send `frame-ancestors *`. The page CSP is a `<meta>` (no frame-ancestors). GitHub Pages ignores `_headers`.
 - **View count:** POST `/api/svet/vidzet` `{h, k, l}` on the blokvolt.rs worker → D1 `world_widget_views (day, host, k, l, n)`; host name from `document.referrer` only, no IP, no cookie; one count per host and daily IP fingerprint (`rl`). Totals: GET `/api/admin/vidzet` (owner's key). **Request access** on /developers/: POST `/api/svet/zahtev` → `requests` kind `api` (the bot's request topic, as /za-programere/). Both routes accept only blokvolt.com origins (`svOrigin`).
-- **Demo mode:** `content/world/config.json` `widget_api` and `requests_api` stay empty until "релиз G5": the widget sends nothing, the form says it is a preview. At the release: deploy the worker, then set `"widget_api": "https://www.blokvolt.rs/api/svet/vidzet"`, `"requests_api": "https://www.blokvolt.rs/api/svet/zahtev"`.
+- **Demo mode:** with `widget_api` and `requests_api` empty the widget sends nothing and the form says it is a preview (previews: `preview.yml` empties them). Production since the world release (REL1, 11.11.2026): `"widget_api": "https://www.blokvolt.rs/api/svet/vidzet"`, `"requests_api": "https://www.blokvolt.rs/api/svet/zahtev"`.
 - **Checks:** `python3 scripts/world_embed.py selftest`; after a build `python3 scripts/qa/world_embed_check.py dist-com [--browser]` (iframe on a mock foreign origin, one count with the host only, link back with utm, configurator code, 360/768/1440 without horizontal scroll); `node scripts/qa/vidzet_world_test.mjs` (field checks of the count).
 
 ## 4. Build and check
