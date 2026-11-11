@@ -49,5 +49,25 @@
   "other": "zemalja"
  },
  "lang_hint": "Ova je stranica dostupna i na hrvatskom",
- "lang_hint_close": "Zatvori"
+ "lang_hint_close": "Zatvori",
+ "ft_hub_by": "Punionice po zemljama",
+ "ft_c_charging": "Punjenje",
+ "ft_c_wb": "Zapadni Balkan",
+ "ft_wb_guide": "Vodič (na engleskom)",
+ "ft_rs": "Srbija — blokvolt.rs",
+ "ft_routes": "Automobilom na Balkan",
+ "ft_partners": "Dodavanje ili ispravak tvrtke",
+ "ft_c_data": "Podaci i alati",
+ "ft_open": "Otvoreni podaci (preuzimanje, ODbL)",
+ "ft_widget": "Widget karte",
+ "ft_dev": "Za programere",
+ "ft_press2": "Indeks cijena za medije",
+ "ft_b2b": "Podaci za tvrtke",
+ "ft_terms": "Uvjeti i privatnost",
+ "ft_line": "Podaci: OpenStreetMap (ODbL), Open Charge Map, NOBIL i nacionalni registri",
+ "ft_nopaid": "Bez plaćenih pozicija; mreže se ne rangiraju",
+ "ft_lang": "Jezik",
+ "src_count_note": "Open Charge Map računa se kao jedan izvor; pružatelji podataka unutar njega zasebno su navedeni u cijelom popisu.",
+ "src_map": "Osnovna karta: OpenFreeMap, © OpenMapTiles, podaci © suradnici OpenStreetMapa. Granice zemalja na slici na početnoj stranici: Natural Earth (javna domena). Nazivi gradova: GeoNames (CC BY 4.0).",
+ "src_date": "Podaci od {date}."
 }

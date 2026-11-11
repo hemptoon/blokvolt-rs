@@ -145,5 +145,18 @@
  "th_share": "Osakaal",
  "th_source": "Allikas",
  "to_country": "Laadimisjaamad {country_u}",
- "unknown_net": "Laadimisvõrk teadmata"
+ "unknown_net": "Laadimisvõrk teadmata",
+ "st_places": "laadimiskohta",
+ "st_public": "neist avalikku",
+ "st_dc50_pub": "avalikku kiirlaadimisega kohta (50 kW+)",
+ "st_hpc_pub": "avalikku kohta võimsusega 150 kW ja rohkem",
+ "st_countries_all": "riiki",
+ "pl_place2": {
+  "one": "laadimiskoht",
+  "other": "laadimiskohta"
+ },
+ "p_shown2": "Kaardil: {n} avatud allikatest, neist avalikud: {m}. Need ei ole kõik olemasolevad laadijad; kohad usaldusväärsusega alla 40 ei ole kaasatud.",
+ "p_dc_pub": "Kiirlaadimine alates 50 kW: {dc} ({pct_dc}); 150 kW või rohkem: {hpc} — ainult avalikud kohad.",
+ "t_hub_world": "Elektriautode laadimisjaamad riigiti",
+ "d_hub2": "Elektriautode laadimiskohad igas avaandmetes olevas riigis: kui palju, kiirlaadijad, laadimisvõrgud, allikad ja litsentsid."
 }

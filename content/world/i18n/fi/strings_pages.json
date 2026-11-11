@@ -145,5 +145,18 @@
  "th_share": "Osuus",
  "th_source": "Lähde",
  "to_country": "Latausasemat {country_u}",
- "unknown_net": "Latausverkko ei tiedossa"
+ "unknown_net": "Latausverkko ei tiedossa",
+ "st_places": "latauspaikkaa",
+ "st_public": "joista julkisia",
+ "st_dc50_pub": "julkista pikalatauspaikkaa (50 kW+)",
+ "st_hpc_pub": "julkista vähintään 150 kW:n paikkaa",
+ "st_countries_all": "maata",
+ "pl_place2": {
+  "one": "latauspaikka",
+  "other": "latauspaikkaa"
+ },
+ "p_shown2": "Kartalla: {n} avoimista lähteistä, joista julkisia {m}. Kaikki olemassa olevat laturit eivät ole mukana; paikat, joiden luotettavuus on alle 40, on jätetty pois.",
+ "p_dc_pub": "Pikalataus vähintään 50 kW:n teholla: {dc} ({pct_dc}); 150 kW tai enemmän: {hpc} – vain julkiset paikat.",
+ "t_hub_world": "Sähköautojen latausasemat maittain",
+ "d_hub2": "Sähköautojen latauspaikat kaikissa avoimen datan maissa: määrät, pikalaturit, latausverkot, lähteet ja lisenssit."
 }

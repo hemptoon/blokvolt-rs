@@ -145,5 +145,18 @@
  "th_share": "Pay",
  "th_source": "Kaynak",
  "to_country": "{country_u}ki şarj istasyonları",
- "unknown_net": "Şarj ağı bilinmiyor"
+ "unknown_net": "Şarj ağı bilinmiyor",
+ "st_places": "şarj lokasyonu",
+ "st_public": "bunlardan halka açık",
+ "st_dc50_pub": "halka açık, hızlı şarj (50 kW+)",
+ "st_hpc_pub": "halka açık, 150 kW ve üzeri",
+ "st_countries_all": "ülke",
+ "pl_place2": {
+  "one": "şarj lokasyonu",
+  "other": "şarj lokasyonu"
+ },
+ "p_shown2": "Haritada: açık kaynaklardan {n}, bunların {m} tanesi halka açık. Mevcut tüm şarj noktaları değildir; güvenilirliği 40'ın altında olan lokasyonlar dahil edilmemiştir.",
+ "p_dc_pub": "50 kW ve üzeri hızlı şarj: {dc} ({pct_dc}); 150 kW ve üzeri: {hpc} — yalnızca halka açık lokasyonlar.",
+ "t_hub_world": "Ülkelere göre elektrikli araç şarj istasyonları",
+ "d_hub2": "Açık verilerdeki her ülkede elektrikli araç şarj lokasyonları: sayıları, hızlı şarj noktaları, şarj ağları, kaynaklar ve lisanslar."
 }

@@ -47,5 +47,25 @@
   "other": "riigis"
  },
  "lang_hint": "See leht on saadaval ka eesti keeles",
- "lang_hint_close": "Sulge"
+ "lang_hint_close": "Sulge",
+ "ft_hub_by": "Laadimisjaamad riigiti",
+ "ft_c_charging": "Laadimine",
+ "ft_c_wb": "Lääne-Balkan",
+ "ft_wb_guide": "Juhend (inglise keeles)",
+ "ft_rs": "Serbia — blokvolt.rs",
+ "ft_routes": "Autoreisid Balkanile",
+ "ft_partners": "Lisa või paranda ettevõte",
+ "ft_c_data": "Andmed ja tööriistad",
+ "ft_open": "Avaandmed (allalaadimine, ODbL)",
+ "ft_widget": "Kaardividin",
+ "ft_dev": "Arendajatele",
+ "ft_press2": "Hinnaindeks meediale",
+ "ft_b2b": "Andmed ettevõtetele",
+ "ft_terms": "Tingimused ja privaatsus",
+ "ft_line": "Andmed: OpenStreetMap (ODbL), Open Charge Map, NOBIL ja riiklikud registrid",
+ "ft_nopaid": "Tasulisi paigutusi ei ole; laadimisvõrke pingeritta ei seata",
+ "ft_lang": "Keel",
+ "src_count_note": "Open Charge Map loetakse üheks allikaks; selle sees olevad andmete tarnijad on täielikus loetelus eraldi välja toodud.",
+ "src_map": "Aluskaart: OpenFreeMap, © OpenMapTiles, andmed © OpenStreetMapi kaastöölised. Avalehe pildi riigipiirid: Natural Earth (avalik omand). Linnade nimed: GeoNames (CC BY 4.0).",
+ "src_date": "Andmed seisuga {date}."
 }

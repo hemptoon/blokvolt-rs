@@ -154,5 +154,19 @@
  "th_share": "Part",
  "th_source": "Source",
  "to_country": "Stations de recharge {country_u}",
- "unknown_net": "Réseau inconnu"
+ "unknown_net": "Réseau inconnu",
+ "st_places": "sites de recharge",
+ "st_public": "dont publics",
+ "st_dc50_pub": "publics avec recharge rapide (50 kW et plus)",
+ "st_hpc_pub": "publics avec 150 kW et plus",
+ "st_countries_all": "pays",
+ "pl_place2": {
+  "one": "site de recharge",
+  "many": "sites de recharge",
+  "other": "sites de recharge"
+ },
+ "p_shown2": "Sur la carte : {n} provenant de sources ouvertes, dont {m} publics. Ce ne sont pas toutes les bornes existantes ; les sites dont la fiabilité est inférieure à 40 ne sont pas inclus.",
+ "p_dc_pub": "Recharge rapide à partir de 50 kW : {dc} ({pct_dc}) ; 150 kW ou plus : {hpc} — sites publics uniquement.",
+ "t_hub_world": "Bornes de recharge pour voitures électriques par pays",
+ "d_hub2": "Sites de recharge pour voitures électriques dans chaque pays couvert par les données ouvertes : combien, bornes rapides, réseaux, sources et licences."
 }

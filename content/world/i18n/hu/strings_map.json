@@ -2,7 +2,7 @@
  "title": "Elektromosautó-töltőállomások világtérképe | BlokVolt",
  "description": "Nyilvános töltőállomások elektromos autókhoz Európában és a világban, nyílt adatokból: teljesítmény, hálózatok, csatlakozók és minden pont adatforrása.",
  "h1": "Töltőtérkép",
- "lead": "Nyilvános töltők Szerbián és a régión kívül, nyílt adatokból.",
+ "lead": "Elektromosautó-töltés Európában és a világon, nyílt adatokból.",
  "map_label": "Töltőállomások térképe",
  "noscript": "A térképhez JavaScript szükséges.",
  "no_map": "A térkép ebben a böngészőben nem tölthető be.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Szabályok és adatvédelem",
  "ci_rules": "Nem kell hozzá fiók. Csak a különböző sofőröktől érkező válaszok számítanak. Az árat a hálózat közzétett tarifájával vetik össze; az árindex jelöltjévé csak akkor válhat, ha két sofőr egymástól függetlenül ugyanazt az árat jelenti, a biztosan hibás árak pedig rejtve maradnak. A reklámot, linket vagy személyes adatot tartalmazó válaszokat törlik. Ugyanezek a szabályok minden hálózatra vonatkoznak.",
  "ci_privacy": "Tárolt adatok: a helyszín, a válasza, az ár (ha megadta), a nyelv és a kapcsolat napi ujjlenyomata — kulccsal képzett hash, amely naponta változik, nem az IP-cím. Nincs süti, nincs e-mail. Csak összesítések látszanak: az utolsó megerősítés és a visszajelzések száma.",
- "emb_open": "Tovább a BlokVoltra"
+ "emb_open": "Tovább a BlokVoltra",
+ "acc_all2": "Minden hely",
+ "lg_acc_unk": "nem megerősített hozzáférés",
+ "lg_acc_res": "csak ügyfeleknek vagy magán",
+ "theme_dark": "Sötét térkép",
+ "theme_light": "Világos térkép",
+ "attr_osm": "az OpenStreetMap közreműködői",
+ "attr_sources": "Források",
+ "attr_data": "Térképadatok",
+ "count_line": "{n} töltőhely · {m} nyilvános"
 }

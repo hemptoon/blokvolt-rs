@@ -51,5 +51,25 @@
   "other": "državah"
  },
  "lang_hint": "Ta stran je na voljo tudi v slovenščini",
- "lang_hint_close": "Zapri"
+ "lang_hint_close": "Zapri",
+ "ft_hub_by": "Polnilne postaje po državah",
+ "ft_c_charging": "Polnjenje",
+ "ft_c_wb": "Zahodni Balkan",
+ "ft_wb_guide": "Vodnik (v angleščini)",
+ "ft_rs": "Srbija — blokvolt.rs",
+ "ft_routes": "Z avtom na Balkan",
+ "ft_partners": "Vpis ali popravek podjetja",
+ "ft_c_data": "Podatki in orodja",
+ "ft_open": "Odprti podatki (prenos, ODbL)",
+ "ft_widget": "Zemljevid za vašo stran",
+ "ft_dev": "Za razvijalce",
+ "ft_press2": "Indeks cen za medije",
+ "ft_b2b": "Podatki za podjetja",
+ "ft_terms": "Pogoji in zasebnost",
+ "ft_line": "Podatki iz OpenStreetMap (ODbL), Open Charge Map, NOBIL in nacionalnih registrov",
+ "ft_nopaid": "Brez plačanih uvrstitev; omrežja se ne razvrščajo",
+ "ft_lang": "Jezik",
+ "src_count_note": "Open Charge Map šteje kot en vir; ponudniki podatkov v njem so v celotnem seznamu navedeni posebej.",
+ "src_map": "Osnovni zemljevid: OpenFreeMap, © OpenMapTiles, podatki © sodelavci OpenStreetMap. Meje držav na sliki na začetni strani: Natural Earth (javna domena). Imena mest: GeoNames (CC BY 4.0).",
+ "src_date": "Podatki z dne {date}."
 }

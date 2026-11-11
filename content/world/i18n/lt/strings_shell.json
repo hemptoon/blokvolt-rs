@@ -51,5 +51,25 @@
   "other": "šalių"
  },
  "lang_hint": "Šis puslapis yra ir lietuvių kalba",
- "lang_hint_close": "Uždaryti"
+ "lang_hint_close": "Uždaryti",
+ "ft_hub_by": "Įkrovimo stotelės pagal šalis",
+ "ft_c_charging": "Įkrovimas",
+ "ft_c_wb": "Vakarų Balkanai",
+ "ft_wb_guide": "Gidas (anglų kalba)",
+ "ft_rs": "Serbija — blokvolt.rs",
+ "ft_routes": "Kelionės automobiliu į Balkanus",
+ "ft_partners": "Įtraukti ar pataisyti įmonę",
+ "ft_c_data": "Duomenys ir įrankiai",
+ "ft_open": "Atviri duomenys (atsisiųsti, ODbL)",
+ "ft_widget": "Žemėlapis svetainei",
+ "ft_dev": "Kūrėjams",
+ "ft_press2": "Kainų indeksas žiniasklaidai",
+ "ft_b2b": "Duomenys verslui",
+ "ft_terms": "Sąlygos ir privatumas",
+ "ft_line": "Duomenys: OpenStreetMap (ODbL), Open Charge Map, NOBIL ir nacionaliniai registrai",
+ "ft_nopaid": "Jokių mokamų įrašų; tinklai neranguojami",
+ "ft_lang": "Kalba",
+ "src_count_note": "Open Charge Map laikomas vienu šaltiniu; jame esantys duomenų teikėjai visame sąraše nurodyti atskirai.",
+ "src_map": "Pagrindo žemėlapis: OpenFreeMap, © OpenMapTiles, duomenys © OpenStreetMap autoriai. Šalių sienos pagrindinio puslapio paveikslėlyje: Natural Earth (viešasis domenas). Miestų pavadinimai: GeoNames (CC BY 4.0).",
+ "src_date": "Duomenų data: {date}."
 }

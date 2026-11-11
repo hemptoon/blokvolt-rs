@@ -2,7 +2,7 @@
  "title": "Mapa stacji ładowania samochodów elektrycznych na świecie | BlokVolt",
  "description": "Publiczne stacje ładowania samochodów elektrycznych w Europie i na świecie, z otwartych danych: moc, sieci, złącza i źródło każdego punktu.",
  "h1": "Mapa ładowania",
- "lead": "Publiczne punkty ładowania poza Serbią i regionem, z otwartych danych.",
+ "lead": "Ładowanie samochodów elektrycznych w Europie i na świecie, z otwartych danych.",
  "map_label": "Mapa stacji ładowania",
  "noscript": "Mapa wymaga JavaScriptu.",
  "no_map": "Nie można wczytać mapy w tej przeglądarce.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Zasady i prywatność",
  "ci_rules": "Konto nie jest potrzebne. Liczą się tylko odpowiedzi różnych kierowców. Cena jest porównywana z opublikowaną taryfą sieci; kandydatem do indeksu cen może zostać dopiero wtedy, gdy dwóch kierowców niezależnie poda tę samą cenę, a ceny, które nie mogą być prawdziwe, są ukrywane. Odpowiedzi z reklamą, linkami lub danymi osobowymi są usuwane. Te same zasady obowiązują każdą sieć.",
  "ci_privacy": "Zapisywane są: miejsce, odpowiedź, cena (jeśli podana), język oraz dzienny odcisk połączenia — skrót z kluczem, zmieniany codziennie, a nie adres IP. Bez plików cookie i bez e-maila. Widoczne są tylko sumy: ostatnie potwierdzenie i liczba zgłoszeń.",
- "emb_open": "Otwórz w BlokVolt"
+ "emb_open": "Otwórz w BlokVolt",
+ "acc_all2": "Wszystkie",
+ "lg_acc_unk": "dostęp niepotwierdzony",
+ "lg_acc_res": "tylko dla klientów lub prywatne",
+ "theme_dark": "Ciemna mapa",
+ "theme_light": "Jasna mapa",
+ "attr_osm": "współtwórcy OpenStreetMap",
+ "attr_sources": "Źródła",
+ "attr_data": "Dane mapy",
+ "count_line": "Lokalizacje ładowania: {n} · publiczne: {m}"
 }

@@ -2,7 +2,7 @@
  "title": "Carte mondiale des bornes de recharge pour voitures électriques | BlokVolt",
  "description": "Bornes de recharge publiques pour voitures électriques en Europe et dans le monde, à partir de données ouvertes : puissance, réseaux, prises et source de chaque point.",
  "h1": "Carte des bornes de recharge",
- "lead": "Bornes de recharge publiques hors de Serbie et de la région, à partir de données ouvertes.",
+ "lead": "La recharge des voitures électriques en Europe et dans le monde, à partir de données ouvertes.",
  "map_label": "Carte des stations de recharge",
  "noscript": "La carte nécessite JavaScript.",
  "no_map": "La carte ne peut pas être chargée dans ce navigateur.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Règles et confidentialité",
  "ci_rules": "Aucun compte n’est nécessaire. Seules comptent les réponses de conducteurs différents. Un prix est comparé au tarif publié du réseau ; il ne devient candidat à l’indice des prix que si deux conducteurs signalent indépendamment le même prix, et les prix impossibles sont masqués. Les réponses contenant de la publicité, des liens ou des données personnelles sont supprimées. Les mêmes règles s’appliquent à tous les réseaux.",
  "ci_privacy": "Sont conservés : la borne, votre réponse, le prix s’il est indiqué, la langue et une empreinte quotidienne de la connexion — un hachage à clé qui change chaque jour, et non l’adresse IP. Pas de cookies, pas d’e-mail. Seuls des totaux sont affichés : la dernière confirmation et le nombre de signalements.",
- "emb_open": "Ouvrir sur BlokVolt"
+ "emb_open": "Ouvrir sur BlokVolt",
+ "acc_all2": "Tous les sites",
+ "lg_acc_unk": "accès non confirmé",
+ "lg_acc_res": "réservé aux clients ou privé",
+ "theme_dark": "Carte sombre",
+ "theme_light": "Carte claire",
+ "attr_osm": "les contributeurs d’OpenStreetMap",
+ "attr_sources": "Sources",
+ "attr_data": "Données de la carte",
+ "count_line": "Sites de recharge : {n} · publics : {m}"
 }

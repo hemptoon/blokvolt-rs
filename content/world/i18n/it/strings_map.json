@@ -2,7 +2,7 @@
  "title": "Mappa mondiale delle stazioni di ricarica per auto elettriche | BlokVolt",
  "description": "Stazioni di ricarica pubbliche per auto elettriche in Europa e nel mondo, da dati aperti: potenza, reti, connettori e fonte di ogni punto.",
  "h1": "Mappa delle colonnine",
- "lead": "Colonnine pubbliche fuori dalla Serbia e dalla regione, da dati aperti.",
+ "lead": "La ricarica delle auto elettriche in Europa e nel mondo, da dati aperti.",
  "map_label": "Mappa delle stazioni di ricarica",
  "noscript": "Per la mappa serve JavaScript.",
  "no_map": "La mappa non può essere caricata in questo browser.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Regole e privacy",
  "ci_rules": "Non serve un account. Contano solo le segnalazioni di automobilisti diversi. Il prezzo viene confrontato con la tariffa pubblicata dalla rete; può entrare tra i candidati per l'indice dei prezzi solo quando due automobilisti indicano lo stesso prezzo in modo indipendente, mentre i prezzi impossibili vengono nascosti. Le segnalazioni con pubblicità, link o dati personali vengono rimosse. Le stesse regole valgono per tutte le reti.",
  "ci_privacy": "Vengono salvati: il punto, la segnalazione, l'eventuale prezzo, la lingua e un'impronta giornaliera della connessione — un hash con chiave che cambia ogni giorno, non l'indirizzo IP. Nessun cookie, nessuna e-mail. Vengono mostrati solo i totali: l'ultima conferma e il numero di segnalazioni.",
- "emb_open": "Apri su BlokVolt"
+ "emb_open": "Apri su BlokVolt",
+ "acc_all2": "Tutti i siti",
+ "lg_acc_unk": "accesso non confermato",
+ "lg_acc_res": "solo per clienti o privato",
+ "theme_dark": "Mappa scura",
+ "theme_light": "Mappa chiara",
+ "attr_osm": "contributori di OpenStreetMap",
+ "attr_sources": "Fonti",
+ "attr_data": "Dati della mappa",
+ "count_line": "Siti di ricarica: {n} · pubblici: {m}"
 }

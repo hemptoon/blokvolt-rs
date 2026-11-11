@@ -154,5 +154,19 @@
  "th_share": "Quota",
  "th_source": "Fonte",
  "to_country": "Stazioni di ricarica {country_u}",
- "unknown_net": "Rete non nota"
+ "unknown_net": "Rete non nota",
+ "st_places": "siti di ricarica",
+ "st_public": "di cui pubblici",
+ "st_dc50_pub": "pubblici con ricarica rapida (da 50 kW in su)",
+ "st_hpc_pub": "pubblici con 150 kW e oltre",
+ "st_countries_all": "Paesi",
+ "pl_place2": {
+  "one": "sito di ricarica",
+  "many": "di siti di ricarica",
+  "other": "siti di ricarica"
+ },
+ "p_shown2": "Sulla mappa: {n} da fonti aperte, di cui {m} pubblici. Non sono tutte le colonnine esistenti; i siti con affidabilità inferiore a 40 non sono inclusi.",
+ "p_dc_pub": "Ricarica rapida da 50 kW in su: {dc} ({pct_dc}); 150 kW o più: {hpc} (solo siti pubblici).",
+ "t_hub_world": "Stazioni di ricarica per auto elettriche per Paese",
+ "d_hub2": "Siti di ricarica per auto elettriche in ogni Paese presente nei dati aperti: quanti sono, colonnine rapide, reti, fonti e licenze."
 }

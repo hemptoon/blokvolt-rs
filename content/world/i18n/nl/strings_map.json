@@ -2,7 +2,7 @@
  "title": "Wereldkaart met laadstations voor elektrische auto's | BlokVolt",
  "description": "Openbare laadstations voor elektrische auto's in Europa en de wereld, uit open data: vermogen, netwerken, stekkers en de bron van elk punt.",
  "h1": "Laadkaart",
- "lead": "Openbare laadpalen buiten Servië en de regio, uit open data.",
+ "lead": "Laden van elektrische auto's in Europa en de rest van de wereld, uit open data.",
  "map_label": "Kaart met laadstations",
  "noscript": "Voor de kaart is JavaScript nodig.",
  "no_map": "De kaart kan in deze browser niet worden geladen.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Regels en privacy",
  "ci_rules": "Een account is niet nodig. Alleen antwoorden van verschillende rijders tellen mee. Een prijs wordt getoetst aan het gepubliceerde tarief van het netwerk; hij kan pas kandidaat worden voor de prijsindex als twee rijders onafhankelijk van elkaar dezelfde prijs melden, en prijzen die niet kunnen kloppen worden verborgen. Antwoorden met reclame, links of persoonsgegevens worden verwijderd. Voor elk netwerk gelden dezelfde regels.",
  "ci_privacy": "Opgeslagen worden: de locatie, je antwoord, de prijs als je die opgeeft, de taal en een dagelijkse vingerafdruk van de verbinding — een hash met sleutel die elke dag verandert, niet het IP-adres. Geen cookies, geen e-mail. Alleen totalen worden getoond: de laatste bevestiging en het aantal meldingen.",
- "emb_open": "Openen op BlokVolt"
+ "emb_open": "Openen op BlokVolt",
+ "acc_all2": "Alle locaties",
+ "lg_acc_unk": "toegang niet bevestigd",
+ "lg_acc_res": "alleen voor klanten of privé",
+ "theme_dark": "Donkere kaart",
+ "theme_light": "Lichte kaart",
+ "attr_osm": "OpenStreetMap-bijdragers",
+ "attr_sources": "Bronnen",
+ "attr_data": "Kaartgegevens",
+ "count_line": "Laadlocaties: {n} · openbaar: {m}"
 }

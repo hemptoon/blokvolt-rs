@@ -163,5 +163,20 @@
  "th_share": "Dalis",
  "th_source": "Šaltinis",
  "to_country": "Įkrovimo stotelės {country_u}",
- "unknown_net": "Tinklas nežinomas"
+ "unknown_net": "Tinklas nežinomas",
+ "st_places": "įkrovimo vietos",
+ "st_public": "iš jų viešosios",
+ "st_dc50_pub": "viešosios su greituoju įkrovimu (50 kW+)",
+ "st_hpc_pub": "viešosios su 150 kW ir daugiau",
+ "st_countries_all": "šalys",
+ "pl_place2": {
+  "one": "įkrovimo vieta",
+  "few": "įkrovimo vietos",
+  "many": "įkrovimo vietos",
+  "other": "įkrovimo vietų"
+ },
+ "p_shown2": "Žemėlapyje: {n} iš atvirų šaltinių, iš jų viešųjų — {m}. Tai ne visi esami įkrovikliai; vietos, kurių patikimumas žemesnis nei 40, neįtrauktos.",
+ "p_dc_pub": "Greitasis įkrovimas nuo 50 kW: {dc} ({pct_dc}); 150 kW ar daugiau: {hpc} — tik viešosios vietos.",
+ "t_hub_world": "Elektromobilių įkrovimo stotelės pagal šalis",
+ "d_hub2": "Elektromobilių įkrovimo vietos kiekvienoje atvirų duomenų šalyje: kiek jų yra, greitieji įkrovikliai, tinklai, šaltiniai ir licencijos."
 }

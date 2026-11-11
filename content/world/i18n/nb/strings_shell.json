@@ -47,5 +47,25 @@
   "other": "land"
  },
  "lang_hint": "Denne siden finnes også på norsk",
- "lang_hint_close": "Lukk"
+ "lang_hint_close": "Lukk",
+ "ft_hub_by": "Ladestasjoner etter land",
+ "ft_c_charging": "Lading",
+ "ft_c_wb": "Vest-Balkan",
+ "ft_wb_guide": "Guide (på engelsk)",
+ "ft_rs": "Serbia — blokvolt.rs",
+ "ft_routes": "Langturer til Balkan",
+ "ft_partners": "Legg til eller rett et firma",
+ "ft_c_data": "Data og verktøy",
+ "ft_open": "Åpne data (nedlasting, ODbL)",
+ "ft_widget": "Kartwidget",
+ "ft_dev": "For utviklere",
+ "ft_press2": "Prisindeks for media",
+ "ft_b2b": "Data for bedrifter",
+ "ft_terms": "Vilkår og personvern",
+ "ft_line": "Data fra OpenStreetMap (ODbL), Open Charge Map, NOBIL og nasjonale registre",
+ "ft_nopaid": "Ingen betalte plasseringer; nettverkene rangeres ikke",
+ "ft_lang": "Språk",
+ "src_count_note": "Open Charge Map regnes som én kilde; dataleverandørene i den står oppført hver for seg i den fullstendige listen.",
+ "src_map": "Bakgrunnskart: OpenFreeMap, © OpenMapTiles, data © OpenStreetMap-bidragsytere. Landegrenser i bildet på forsiden: Natural Earth (fri for opphavsrett). Stedsnavn: GeoNames (CC BY 4.0).",
+ "src_date": "Data per {date}."
 }

@@ -12,7 +12,7 @@ try:
     CATS = sorted(Locale(LANG).plural_form.tags | {'other'})
 except Exception as e:
     CATS = ['one', 'other']; print('babel missing, assuming', CATS)
-PL = {'strings_pages': {'pl_city','pl_city_in','pl_country','pl_country_in','pl_loc','pl_net','pl_place','pl_point','pl_publoc'},
+PL = {'strings_pages': {'pl_city','pl_city_in','pl_country','pl_country_in','pl_loc','pl_net','pl_place','pl_place2','pl_point','pl_publoc'},
       'strings_shell': {'pl_loc','pl_cc'}, 'strings_home': {'pl_places','pl_countries','pl_public'}}
 # FIXL: {name_nom} may stand where EN has {name}; {city_u}/{country_u} where EN has {city}/{country}
 EQUIV = {'{name_nom}': '{name}', '{city_u}': '{city}', '{country_u}': '{country}'}

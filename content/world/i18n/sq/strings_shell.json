@@ -47,5 +47,25 @@
   "other": "shtete"
  },
  "lang_hint": "Kjo faqe është edhe në shqip",
- "lang_hint_close": "Mbyll"
+ "lang_hint_close": "Mbyll",
+ "ft_hub_by": "Karikuesit sipas vendit",
+ "ft_c_charging": "Karikimi",
+ "ft_c_wb": "Ballkani Perëndimor",
+ "ft_wb_guide": "Udhëzues (në anglisht)",
+ "ft_rs": "Serbia — blokvolt.rs",
+ "ft_routes": "Me makinë drejt Ballkanit",
+ "ft_partners": "Shtoni ose korrigjoni një kompani",
+ "ft_c_data": "Të dhëna dhe mjete",
+ "ft_open": "Të dhëna të hapura (shkarkim, ODbL)",
+ "ft_widget": "Widget-i i hartës",
+ "ft_dev": "Për zhvilluesit",
+ "ft_press2": "Indeksi i çmimeve për mediat",
+ "ft_b2b": "Të dhëna për biznesin",
+ "ft_terms": "Kushtet dhe privatësia",
+ "ft_line": "Të dhëna: OpenStreetMap (ODbL), Open Charge Map, NOBIL dhe regjistrat kombëtarë",
+ "ft_nopaid": "Pa vendosje me pagesë; rrjetet nuk renditen",
+ "ft_lang": "Gjuha",
+ "src_count_note": "Open Charge Map llogaritet si një burim; ofruesit e të dhënave brenda tij jepen veçmas në listën e plotë.",
+ "src_map": "Harta bazë: OpenFreeMap, © OpenMapTiles, të dhëna © kontribuuesit e OpenStreetMap. Kufijtë e shteteve në figurën e faqes kryesore: Natural Earth (domen publik). Emrat e qyteteve: GeoNames (CC BY 4.0).",
+ "src_date": "Të dhënat deri më {date}."
 }

@@ -154,5 +154,19 @@
  "th_share": "Pondere",
  "th_source": "Sursă",
  "to_country": "Stații de încărcare {country_u}",
- "unknown_net": "Rețea necunoscută"
+ "unknown_net": "Rețea necunoscută",
+ "st_places": "locații de încărcare",
+ "st_public": "dintre care publice",
+ "st_dc50_pub": "publice, cu încărcare rapidă (50 kW+)",
+ "st_hpc_pub": "publice, cu 150 kW și peste",
+ "st_countries_all": "țări",
+ "pl_place2": {
+  "one": "locație de încărcare",
+  "few": "locații de încărcare",
+  "other": "de locații de încărcare"
+ },
+ "p_shown2": "Pe hartă: {n} din surse deschise, dintre care publice: {m}. Nu sunt toate încărcătoarele existente; locațiile cu fiabilitate sub 40 nu sunt incluse.",
+ "p_dc_pub": "Încărcare rapidă de la 50 kW: {dc} ({pct_dc}); 150 kW sau mai mult: {hpc} — doar locații publice.",
+ "t_hub_world": "Stații de încărcare pentru mașini electrice, pe țări",
+ "d_hub2": "Locații de încărcare pentru mașini electrice în fiecare țară din datele deschise: câte sunt, încărcătoare rapide, rețele, surse și licențe."
 }

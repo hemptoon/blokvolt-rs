@@ -154,5 +154,19 @@
  "th_share": "Daļa",
  "th_source": "Avots",
  "to_country": "Uzlādes stacijas {country_u}",
- "unknown_net": "Tīkls nav zināms"
+ "unknown_net": "Tīkls nav zināms",
+ "st_places": "uzlādes vietas",
+ "st_public": "no tām publiskas",
+ "st_dc50_pub": "publiskas ar ātro uzlādi (50 kW+)",
+ "st_hpc_pub": "publiskas ar 150 kW un vairāk",
+ "st_countries_all": "valstis",
+ "pl_place2": {
+  "zero": "uzlādes vietas",
+  "one": "uzlādes vieta",
+  "other": "uzlādes vietas"
+ },
+ "p_shown2": "Kartē: {n} no atvērtiem avotiem, no tām publiskas — {m}. Tie nav visi esošie lādētāji; vietas ar ticamību zem 40 nav iekļautas.",
+ "p_dc_pub": "Ātrā uzlāde no 50 kW: {dc} ({pct_dc}); 150 kW vai vairāk: {hpc} — tikai publiskās vietas.",
+ "t_hub_world": "Elektromobiļu uzlādes stacijas pa valstīm",
+ "d_hub2": "Elektromobiļu uzlādes vietas katrā atvērto datu valstī: cik to ir, ātrie lādētāji, uzlādes tīkli, avoti un licences."
 }

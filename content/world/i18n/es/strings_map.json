@@ -2,7 +2,7 @@
  "title": "Mapa mundial de puntos de carga para coches eléctricos | BlokVolt",
  "description": "Estaciones de carga públicas para coches eléctricos en Europa y en el mundo, a partir de datos abiertos: potencia, redes, conectores y la fuente de cada punto.",
  "h1": "Mapa de puntos de carga",
- "lead": "Cargadores públicos fuera de Serbia y la región, a partir de datos abiertos.",
+ "lead": "Carga de coches eléctricos en Europa y el mundo, a partir de datos abiertos.",
  "map_label": "Mapa de puntos de carga",
  "noscript": "El mapa necesita JavaScript.",
  "no_map": "El mapa no se puede cargar en este navegador.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Normas y privacidad",
  "ci_rules": "No hace falta cuenta. Solo cuentan respuestas de conductores distintos. Cada precio se compara con la tarifa publicada de la red; solo puede optar al índice de precios cuando dos conductores comunican por separado el mismo precio, y los precios imposibles se ocultan. Las respuestas con publicidad, enlaces o datos personales se eliminan. Las mismas normas se aplican a todas las redes.",
  "ci_privacy": "Se guarda: la ubicación, su respuesta, el precio si lo indica, el idioma y una huella diaria de la conexión: un hash con clave que cambia cada día, no la dirección IP. Sin cookies ni correo electrónico. Solo se muestran totales: la última confirmación y el número de avisos.",
- "emb_open": "Abrir en BlokVolt"
+ "emb_open": "Abrir en BlokVolt",
+ "acc_all2": "Todas las ubicaciones",
+ "lg_acc_unk": "acceso sin confirmar",
+ "lg_acc_res": "solo para clientes o privado",
+ "theme_dark": "Mapa oscuro",
+ "theme_light": "Mapa claro",
+ "attr_osm": "colaboradores de OpenStreetMap",
+ "attr_sources": "Fuentes",
+ "attr_data": "Datos del mapa",
+ "count_line": "Ubicaciones de carga: {n} · públicas: {m}"
 }

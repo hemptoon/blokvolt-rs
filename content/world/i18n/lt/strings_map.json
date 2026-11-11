@@ -2,7 +2,7 @@
  "title": "Pasaulio elektromobilių įkrovimo stotelių žemėlapis | BlokVolt",
  "description": "Viešosios elektromobilių įkrovimo stotelės Europoje ir pasaulyje pagal atvirus duomenis: galia, tinklai, jungtys ir kiekvieno taško šaltinis.",
  "h1": "Įkrovimo žemėlapis",
- "lead": "Viešieji įkrovikliai už Serbijos ir regiono ribų pagal atvirus duomenis.",
+ "lead": "Elektromobilių įkrovimas Europoje ir pasaulyje pagal atvirus duomenis.",
  "map_label": "Įkrovimo stotelių žemėlapis",
  "noscript": "Žemėlapiui reikia JavaScript.",
  "no_map": "Šioje naršyklėje žemėlapio įkelti nepavyksta.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Taisyklės ir privatumas",
  "ci_rules": "Paskyros nereikia. Įskaitomi tik skirtingų vairuotojų atsakymai. Kaina tikrinama pagal skelbiamą tinklo tarifą; kandidate į kainų indeksą ji tampa tik tada, kai tą pačią kainą nepriklausomai nurodo du vairuotojai, o neįmanomos kainos slepiamos. Atsakymai su reklama, nuorodomis ar asmens duomenimis šalinami. Visiems tinklams taikomos tos pačios taisyklės.",
  "ci_privacy": "Saugoma: vieta, jūsų atsakymas, kaina (jei nurodyta), kalba ir dienos ryšio atspaudas — raktu apsaugota maiša, kuri keičiasi kasdien, o ne IP adresas. Jokių slapukų, jokio el. pašto. Rodomos tik suvestinės: paskutinis patvirtinimas ir žymų skaičius.",
- "emb_open": "Atidaryti BlokVolt svetainėje"
+ "emb_open": "Atidaryti BlokVolt svetainėje",
+ "acc_all2": "Visos vietos",
+ "lg_acc_unk": "prieiga nepatvirtinta",
+ "lg_acc_res": "tik klientams arba privati",
+ "theme_dark": "Tamsus žemėlapis",
+ "theme_light": "Šviesus žemėlapis",
+ "attr_osm": "OpenStreetMap autoriai",
+ "attr_sources": "Šaltiniai",
+ "attr_data": "Žemėlapio duomenys",
+ "count_line": "Įkrovimo vietų: {n} · viešųjų: {m}"
 }

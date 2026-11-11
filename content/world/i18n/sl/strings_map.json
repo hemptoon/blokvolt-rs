@@ -2,7 +2,7 @@
  "title": "Svetovni zemljevid polnilnih postaj | BlokVolt",
  "description": "Javne polnilne postaje za električne avtomobile po Evropi in svetu iz odprtih podatkov: moč, omrežja, priključki in vir za vsako točko.",
  "h1": "Zemljevid polnilnic",
- "lead": "Javni polnilniki zunaj Srbije in regije, iz odprtih podatkov.",
+ "lead": "Polnjenje električnih vozil po Evropi in svetu, iz odprtih podatkov.",
  "map_label": "Zemljevid polnilnih postaj",
  "noscript": "Zemljevid potrebuje JavaScript.",
  "no_map": "Zemljevida v tem brskalniku ni mogoče naložiti.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Pravila in zasebnost",
  "ci_rules": "Račun ni potreben. Štejejo samo odgovori različnih voznikov. Cena se primerja z objavljenim cenikom omrežja; kandidatka za indeks cen postane šele, ko dva voznika neodvisno sporočita isto ceno, cene, ki ne morejo biti pravilne, pa so skrite. Odgovori z oglasi, povezavami ali osebnimi podatki se odstranijo. Za vsa omrežja veljajo enaka pravila.",
  "ci_privacy": "Shrani se: lokacija, vaš odgovor, cena (če jo navedete), jezik in dnevni prstni odtis povezave — zgoščena vrednost s ključem, ki se vsak dan spremeni, ne naslov IP. Brez piškotkov, brez e-pošte. Prikazani so samo skupni podatki: zadnja potrditev in število prijav.",
- "emb_open": "Odpri na BlokVoltu"
+ "emb_open": "Odpri na BlokVoltu",
+ "acc_all2": "Vse lokacije",
+ "lg_acc_unk": "dostop ni potrjen",
+ "lg_acc_res": "samo za stranke ali zasebno",
+ "theme_dark": "Temni zemljevid",
+ "theme_light": "Svetli zemljevid",
+ "attr_osm": "sodelavci OpenStreetMap",
+ "attr_sources": "Viri",
+ "attr_data": "Podatki zemljevida",
+ "count_line": "Polnilna mesta: {n} · javna: {m}"
 }

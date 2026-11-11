@@ -145,5 +145,18 @@
  "th_share": "Anteil",
  "th_source": "Quelle",
  "to_country": "Ladestationen {country_u}",
- "unknown_net": "Ladenetz nicht bekannt"
+ "unknown_net": "Ladenetz nicht bekannt",
+ "st_places": "Ladestandorte",
+ "st_public": "davon öffentlich",
+ "st_dc50_pub": "öffentlich, mit Schnellladen ab 50 kW",
+ "st_hpc_pub": "öffentlich, mit 150 kW und mehr",
+ "st_countries_all": "Länder",
+ "pl_place2": {
+  "one": "Ladestandort",
+  "other": "Ladestandorte"
+ },
+ "p_shown2": "Auf der Karte: {n} aus offenen Quellen, davon {m} öffentlich. Nicht jede existierende Ladesäule ist enthalten; Standorte mit einer Zuverlässigkeit unter 40 fehlen.",
+ "p_dc_pub": "Schnellladen ab 50 kW: {dc} ({pct_dc}); 150 kW oder mehr: {hpc} – nur öffentliche Standorte.",
+ "t_hub_world": "Ladestationen für E-Autos nach Land",
+ "d_hub2": "Ladestandorte für Elektroautos in jedem Land der offenen Daten: wie viele, Schnelllader, Ladenetze, Quellen und Lizenzen."
 }

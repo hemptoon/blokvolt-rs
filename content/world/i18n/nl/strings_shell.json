@@ -47,5 +47,25 @@
   "other": "landen"
  },
  "lang_hint": "Deze pagina is ook beschikbaar in het Nederlands",
- "lang_hint_close": "Sluiten"
+ "lang_hint_close": "Sluiten",
+ "ft_hub_by": "Laadstations per land",
+ "ft_c_charging": "Laden",
+ "ft_c_wb": "Westelijke Balkan",
+ "ft_wb_guide": "Gids (in het Engels)",
+ "ft_rs": "Servië — blokvolt.rs",
+ "ft_routes": "Autoreizen naar de Balkan",
+ "ft_partners": "Bedrijf toevoegen of corrigeren",
+ "ft_c_data": "Gegevens en tools",
+ "ft_open": "Open data (downloaden, ODbL)",
+ "ft_widget": "Kaart voor je website",
+ "ft_dev": "Ontwikkelaars",
+ "ft_press2": "Prijsindex voor de media",
+ "ft_b2b": "Gegevens voor bedrijven",
+ "ft_terms": "Voorwaarden en privacy",
+ "ft_line": "Gegevens van OpenStreetMap (ODbL), Open Charge Map, NOBIL en nationale registers",
+ "ft_nopaid": "Geen betaalde vermeldingen; netwerken worden niet gerangschikt",
+ "ft_lang": "Taal",
+ "src_count_note": "Open Charge Map telt als één bron; de gegevensleveranciers daarbinnen staan apart in de volledige lijst.",
+ "src_map": "Achtergrondkaart: OpenFreeMap, © OpenMapTiles, gegevens © OpenStreetMap-bijdragers. Landsgrenzen op de afbeelding van de startpagina: Natural Earth (publiek domein). Plaatsnamen: GeoNames (CC BY 4.0).",
+ "src_date": "Gegevens per {date}."
 }

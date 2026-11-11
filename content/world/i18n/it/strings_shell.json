@@ -49,5 +49,25 @@
   "other": "Paesi"
  },
  "lang_hint": "Questa pagina è disponibile anche in italiano",
- "lang_hint_close": "Chiudi"
+ "lang_hint_close": "Chiudi",
+ "ft_hub_by": "Stazioni di ricarica per Paese",
+ "ft_c_charging": "Ricarica",
+ "ft_c_wb": "Balcani occidentali",
+ "ft_wb_guide": "Guida (in inglese)",
+ "ft_rs": "Serbia — blokvolt.rs",
+ "ft_routes": "Viaggi in auto verso i Balcani",
+ "ft_partners": "Aggiungi o correggi un'azienda",
+ "ft_c_data": "Dati e strumenti",
+ "ft_open": "Dati aperti (download, ODbL)",
+ "ft_widget": "Mappa per il tuo sito",
+ "ft_dev": "Sviluppatori",
+ "ft_press2": "Indice dei prezzi per i media",
+ "ft_b2b": "Dati per le aziende",
+ "ft_terms": "Termini e privacy",
+ "ft_line": "Dati da OpenStreetMap (ODbL), Open Charge Map, NOBIL e registri nazionali",
+ "ft_nopaid": "Nessun posizionamento a pagamento; le reti non vengono messe in classifica",
+ "ft_lang": "Lingua",
+ "src_count_note": "Open Charge Map conta come una sola fonte; i fornitori di dati che raccoglie sono elencati a parte nell'elenco completo.",
+ "src_map": "Mappa di base: OpenFreeMap, © OpenMapTiles, dati © contributori di OpenStreetMap. Confini dei Paesi nell'immagine della pagina iniziale: Natural Earth (pubblico dominio). Nomi delle città: GeoNames (CC BY 4.0).",
+ "src_date": "Dati al {date}."
 }

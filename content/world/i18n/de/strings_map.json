@@ -2,7 +2,7 @@
  "title": "Weltkarte der Ladestationen für E-Autos | BlokVolt",
  "description": "Öffentliche Ladestationen für Elektroautos in Europa und weltweit, aus offenen Daten: Leistung, Ladenetze, Stecker und die Quelle jedes Punkts.",
  "h1": "Ladestationskarte",
- "lead": "Öffentliche Ladesäulen außerhalb Serbiens und der Region, aus offenen Daten.",
+ "lead": "Laden von Elektroautos in Europa und weltweit, aus offenen Daten.",
  "map_label": "Karte der Ladestationen",
  "noscript": "Die Karte benötigt JavaScript.",
  "no_map": "Die Karte kann in diesem Browser nicht geladen werden.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Regeln und Datenschutz",
  "ci_rules": "Ein Konto ist nicht nötig. Gezählt werden nur Antworten verschiedener Fahrender. Ein Preis wird mit dem veröffentlichten Tarif des Ladenetzes abgeglichen; für den Preisindex kommt er erst infrage, wenn zwei Fahrende unabhängig voneinander denselben Preis melden, und unmögliche Preise werden ausgeblendet. Antworten mit Werbung, Links oder personenbezogenen Daten werden entfernt. Für alle Ladenetze gelten dieselben Regeln.",
  "ci_privacy": "Gespeichert werden: der Standort, Ihre Antwort, gegebenenfalls der Preis, die Sprache und ein täglicher Fingerabdruck der Verbindung – ein Hash mit Schlüssel, der sich jeden Tag ändert, nicht die IP-Adresse. Keine Cookies, keine E-Mail. Angezeigt werden nur Summen: die letzte Bestätigung und die Zahl der Rückmeldungen.",
- "emb_open": "Auf BlokVolt öffnen"
+ "emb_open": "Auf BlokVolt öffnen",
+ "acc_all2": "Alle Standorte",
+ "lg_acc_unk": "Zugang nicht bestätigt",
+ "lg_acc_res": "nur für Kunden oder privat",
+ "theme_dark": "Dunkle Karte",
+ "theme_light": "Helle Karte",
+ "attr_osm": "OpenStreetMap-Mitwirkende",
+ "attr_sources": "Quellen",
+ "attr_data": "Kartendaten",
+ "count_line": "Ladestandorte: {n} · öffentlich: {m}"
 }

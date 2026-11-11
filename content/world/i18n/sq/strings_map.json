@@ -2,7 +2,7 @@
  "title": "Harta botërore e karikuesve për makina elektrike | BlokVolt",
  "description": "Karikues publikë për makina elektrike në Evropë dhe në botë, nga të dhëna të hapura: fuqia, rrjetet, konektorët dhe burimi i çdo pike.",
  "h1": "Harta e karikimit",
- "lead": "Karikues publikë jashtë Serbisë dhe rajonit, nga të dhëna të hapura.",
+ "lead": "Karikimi i makinave elektrike në Evropë dhe në botë, nga të dhëna të hapura.",
  "map_label": "Harta e karikuesve",
  "noscript": "Harta kërkon JavaScript.",
  "no_map": "Harta nuk mund të ngarkohet në këtë shfletues.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Rregullat dhe privatësia",
  "ci_rules": "Nuk nevojitet llogari. Numërohen vetëm përgjigjet nga shoferë të ndryshëm. Çmimi krahasohet me tarifën e publikuar të rrjetit; ai mund të bëhet kandidat për indeksin e çmimeve vetëm kur dy shoferë raportojnë në mënyrë të pavarur të njëjtin çmim, ndërsa çmimet që nuk mund të jenë të sakta fshihen. Përgjigjet me reklama, lidhje ose të dhëna personale hiqen. Të njëjtat rregulla vlejnë për çdo rrjet.",
  "ci_privacy": "Ruhen: vendi i karikimit, përgjigjja juaj, çmimi nëse jepet, gjuha dhe një gjurmë ditore e lidhjes — një hash me çelës që ndryshon çdo ditë, jo adresa IP. Pa cookies, pa e-mail. Shfaqen vetëm totalet: konfirmimi i fundit dhe numri i raportimeve.",
- "emb_open": "Hapni në BlokVolt"
+ "emb_open": "Hapni në BlokVolt",
+ "acc_all2": "Të gjithë karikuesit",
+ "lg_acc_unk": "aksesi i pakonfirmuar",
+ "lg_acc_res": "vetëm për klientët ose privat",
+ "theme_dark": "Hartë e errët",
+ "theme_light": "Hartë e çelët",
+ "attr_osm": "kontribuuesit e OpenStreetMap",
+ "attr_sources": "Burimet",
+ "attr_data": "Të dhënat e hartës",
+ "count_line": "Vende karikimi: {n} · publike: {m}"
 }

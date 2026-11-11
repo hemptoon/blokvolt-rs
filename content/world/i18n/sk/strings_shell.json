@@ -51,5 +51,25 @@
   "other": "krajín"
  },
  "lang_hint": "Táto stránka je k dispozícii aj v slovenčine",
- "lang_hint_close": "Zavrieť"
+ "lang_hint_close": "Zavrieť",
+ "ft_hub_by": "Nabíjacie stanice podľa krajín",
+ "ft_c_charging": "Nabíjanie",
+ "ft_c_wb": "Západný Balkán",
+ "ft_wb_guide": "Sprievodca (po anglicky)",
+ "ft_rs": "Srbsko – blokvolt.rs",
+ "ft_routes": "Cesty autom na Balkán",
+ "ft_partners": "Pridať alebo opraviť firmu",
+ "ft_c_data": "Údaje a nástroje",
+ "ft_open": "Otvorené údaje (stiahnuť, ODbL)",
+ "ft_widget": "Mapa na váš web",
+ "ft_dev": "Pre vývojárov",
+ "ft_press2": "Cenový index pre médiá",
+ "ft_b2b": "Údaje pre firmy",
+ "ft_terms": "Podmienky a súkromie",
+ "ft_line": "Údaje z OpenStreetMap (ODbL), Open Charge Map, NOBIL a národných registrov",
+ "ft_nopaid": "Bez platených umiestnení; siete sa nezoraďujú do rebríčkov",
+ "ft_lang": "Jazyk",
+ "src_count_note": "Open Charge Map sa počíta ako jeden zdroj; poskytovatelia údajov v ňom sú v úplnom zozname uvedení samostatne.",
+ "src_map": "Podkladová mapa: OpenFreeMap, © OpenMapTiles, údaje © prispievatelia OpenStreetMap. Hranice štátov na obrázku úvodnej stránky: Natural Earth (voľné dielo). Názvy miest: GeoNames (CC BY 4.0).",
+ "src_date": "Údaje k {date}."
 }

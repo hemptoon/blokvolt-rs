@@ -2,7 +2,7 @@
  "title": "Elektrikli araç şarj istasyonlarının dünya haritası | BlokVolt",
  "description": "Avrupa'da ve dünyada elektrikli araçlar için halka açık şarj istasyonları, açık verilerden: güç, şarj ağları, konnektörler ve her noktanın kaynağı.",
  "h1": "Şarj haritası",
- "lead": "Sırbistan ve bölge dışındaki halka açık şarj noktaları, açık verilerden.",
+ "lead": "Avrupa'da ve dünyada elektrikli araç şarjı, açık verilerden.",
  "map_label": "Şarj istasyonları haritası",
  "noscript": "Harita için JavaScript gereklidir.",
  "no_map": "Harita bu tarayıcıda yüklenemiyor.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Kurallar ve gizlilik",
  "ci_rules": "Hesap gerekmez. Yalnızca farklı sürücülerin yanıtları sayılır. Fiyat, şarj ağının yayımladığı tarifeyle karşılaştırılır; ancak iki sürücü birbirinden bağımsız olarak aynı fiyatı bildirdiğinde fiyat endeksi için aday olabilir, doğru olamayacak fiyatlar gizlenir. Reklam, bağlantı veya kişisel veri içeren yanıtlar silinir. Aynı kurallar her şarj ağı için geçerlidir.",
  "ci_privacy": "Saklananlar: lokasyon, yanıtınız, varsa fiyat, dil ve bağlantının günlük parmak izi — IP adresi değil, her gün değişen anahtarlı bir özet (hash). Çerez yok, e-posta yok. Yalnızca toplamlar gösterilir: son doğrulama ve durum bildirimi sayısı.",
- "emb_open": "BlokVolt'ta açın"
+ "emb_open": "BlokVolt'ta açın",
+ "acc_all2": "Tüm lokasyonlar",
+ "lg_acc_unk": "erişim doğrulanmadı",
+ "lg_acc_res": "yalnızca müşteriler için veya özel",
+ "theme_dark": "Koyu harita",
+ "theme_light": "Açık harita",
+ "attr_osm": "OpenStreetMap katkıda bulunanları",
+ "attr_sources": "Kaynaklar",
+ "attr_data": "Harita verileri",
+ "count_line": "Şarj lokasyonu: {n} · halka açık: {m}"
 }

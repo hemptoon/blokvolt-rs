@@ -47,5 +47,25 @@
   "other": "maassa"
  },
  "lang_hint": "Tämä sivu on saatavilla myös suomeksi",
- "lang_hint_close": "Sulje"
+ "lang_hint_close": "Sulje",
+ "ft_hub_by": "Latausasemat maittain",
+ "ft_c_charging": "Lataus",
+ "ft_c_wb": "Länsi-Balkan",
+ "ft_wb_guide": "Opas (englanniksi)",
+ "ft_rs": "Serbia — blokvolt.rs",
+ "ft_routes": "Automatkat Balkanille",
+ "ft_partners": "Lisää tai korjaa yritys",
+ "ft_c_data": "Data ja työkalut",
+ "ft_open": "Avoin data (ladattavissa, ODbL)",
+ "ft_widget": "Karttawidget",
+ "ft_dev": "Kehittäjille",
+ "ft_press2": "Hintaindeksi medialle",
+ "ft_b2b": "Dataa yrityksille",
+ "ft_terms": "Ehdot ja tietosuoja",
+ "ft_line": "Tiedot: OpenStreetMap (ODbL), Open Charge Map, NOBIL ja kansalliset rekisterit",
+ "ft_nopaid": "Ei maksullista näkyvyyttä; latausverkkoja ei aseteta paremmuusjärjestykseen",
+ "ft_lang": "Kieli",
+ "src_count_note": "Open Charge Map lasketaan yhdeksi lähteeksi; sen sisältämät datan toimittajat luetellaan erikseen koko luettelossa.",
+ "src_map": "Taustakartta: OpenFreeMap, © OpenMapTiles, tiedot © OpenStreetMapin tekijät. Etusivun kuvan maiden rajat: Natural Earth (tekijänoikeuksista vapaa). Kaupunkien nimet: GeoNames (CC BY 4.0).",
+ "src_date": "Tilanne {date}."
 }

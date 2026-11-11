@@ -154,5 +154,19 @@
  "th_share": "Quota",
  "th_source": "Fonte",
  "to_country": "Postos de carregamento {country_u}",
- "unknown_net": "Rede desconhecida"
+ "unknown_net": "Rede desconhecida",
+ "st_places": "locais de carregamento",
+ "st_public": "dos quais públicos",
+ "st_dc50_pub": "públicos com carregamento rápido (a partir de 50 kW)",
+ "st_hpc_pub": "públicos com 150 kW ou mais",
+ "st_countries_all": "países",
+ "pl_place2": {
+  "one": "local de carregamento",
+  "many": "de locais de carregamento",
+  "other": "locais de carregamento"
+ },
+ "p_shown2": "No mapa: {n} de fontes abertas, dos quais {m} públicos. Não são todos os carregadores existentes; os locais com fiabilidade inferior a 40 não estão incluídos.",
+ "p_dc_pub": "Carregamento rápido a partir de 50 kW: {dc} ({pct_dc}); 150 kW ou mais: {hpc} — apenas locais públicos.",
+ "t_hub_world": "Postos de carregamento para carros elétricos por país",
+ "d_hub2": "Locais de carregamento para carros elétricos em cada país presente nos dados abertos: quantos são, carregadores rápidos, redes, fontes e licenças."
 }

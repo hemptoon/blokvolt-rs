@@ -145,5 +145,18 @@
  "th_share": "Andel",
  "th_source": "Källa",
  "to_country": "Laddstationer {country_u}",
- "unknown_net": "Okänt nätverk"
+ "unknown_net": "Okänt nätverk",
+ "st_places": "laddplatser",
+ "st_public": "varav publika",
+ "st_dc50_pub": "publika med snabbladdning (50 kW+)",
+ "st_hpc_pub": "publika med 150 kW och mer",
+ "st_countries_all": "länder",
+ "pl_place2": {
+  "one": "laddplats",
+  "other": "laddplatser"
+ },
+ "p_shown2": "På kartan: {n} från öppna källor, varav {m} publika. Inte alla laddare som finns; platser med tillförlitlighet under 40 ingår inte.",
+ "p_dc_pub": "Snabbladdning från 50 kW: {dc} ({pct_dc}); 150 kW eller mer: {hpc} — endast publika platser.",
+ "t_hub_world": "Laddstationer för elbilar per land",
+ "d_hub2": "Laddplatser för elbilar i alla länder i öppna data: hur många, snabbladdare, nätverk, källor och licenser."
 }

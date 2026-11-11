@@ -163,5 +163,20 @@
   "th_share": "Podíl",
   "th_source": "Zdroj",
   "to_country": "Nabíjecí stanice {country_u}",
-  "unknown_net": "Síť neznámá"
+  "unknown_net": "Síť neznámá",
+  "st_places": "nabíjecích míst",
+  "st_public": "z toho veřejných",
+  "st_dc50_pub": "veřejných s rychlým nabíjením (50 kW+)",
+  "st_hpc_pub": "veřejných se 150 kW a více",
+  "st_countries_all": "zemí",
+  "pl_place2": {
+    "one": "nabíjecí místo",
+    "few": "nabíjecí místa",
+    "many": "nabíjecího místa",
+    "other": "nabíjecích míst"
+  },
+  "p_shown2": "Na mapě: {n} z otevřených zdrojů, z toho {m} veřejných. Není to každá existující nabíječka; místa se spolehlivostí pod 40 zahrnuta nejsou.",
+  "p_dc_pub": "Rychlé nabíjení od 50 kW: {dc} ({pct_dc}); 150 kW a více: {hpc} – jen veřejná místa.",
+  "t_hub_world": "Nabíjecí stanice pro elektromobily podle zemí",
+  "d_hub2": "Nabíjecí místa pro elektromobily v každé zemi z otevřených dat: kolik jich je, rychlonabíječky, sítě, zdroje a licence."
 }

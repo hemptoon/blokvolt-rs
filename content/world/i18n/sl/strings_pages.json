@@ -163,5 +163,20 @@
  "th_share": "Delež",
  "th_source": "Vir",
  "to_country": "Polnilne postaje {country_u}",
- "unknown_net": "Omrežje ni znano"
+ "unknown_net": "Omrežje ni znano",
+ "st_places": "polnilnih mest",
+ "st_public": "od tega javnih",
+ "st_dc50_pub": "javnih s hitrim polnjenjem (50 kW+)",
+ "st_hpc_pub": "javnih s 150 kW in več",
+ "st_countries_all": "držav",
+ "pl_place2": {
+  "one": "polnilno mesto",
+  "two": "polnilni mesti",
+  "few": "polnilna mesta",
+  "other": "polnilnih mest"
+ },
+ "p_shown2": "Na zemljevidu: {n} iz odprtih virov, od tega javnih: {m}. To niso vsi obstoječi polnilniki; lokacije z zanesljivostjo pod 40 niso vključene.",
+ "p_dc_pub": "Hitro polnjenje od 50 kW: {dc} ({pct_dc}); 150 kW ali več: {hpc} — samo javna polnilna mesta.",
+ "t_hub_world": "Polnilne postaje za električna vozila po državah",
+ "d_hub2": "Polnilna mesta za električne avtomobile v vsaki državi iz odprtih podatkov: koliko jih je, hitri polnilniki, omrežja, viri in licence."
 }

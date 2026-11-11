@@ -47,5 +47,25 @@
   "other": "Ländern"
  },
  "lang_hint": "Diese Seite gibt es auch auf Deutsch",
- "lang_hint_close": "Schließen"
+ "lang_hint_close": "Schließen",
+ "ft_hub_by": "Ladestationen nach Land",
+ "ft_c_charging": "Laden",
+ "ft_c_wb": "Westbalkan",
+ "ft_wb_guide": "Ratgeber (auf Englisch)",
+ "ft_rs": "Serbien – blokvolt.rs",
+ "ft_routes": "Autoreisen auf den Balkan",
+ "ft_partners": "Firma eintragen oder korrigieren",
+ "ft_c_data": "Daten & Werkzeuge",
+ "ft_open": "Offene Daten (Download, ODbL)",
+ "ft_widget": "Karte für Ihre Website",
+ "ft_dev": "Für Entwickler",
+ "ft_press2": "Preisindex für die Presse",
+ "ft_b2b": "Daten für Unternehmen",
+ "ft_terms": "Bedingungen & Datenschutz",
+ "ft_line": "Daten von OpenStreetMap (ODbL), Open Charge Map, NOBIL und nationalen Registern",
+ "ft_nopaid": "Keine bezahlten Platzierungen; keine Rangfolge der Ladenetze",
+ "ft_lang": "Sprache",
+ "src_count_note": "Open Charge Map zählt als eine Quelle; die darin enthaltenen Datenlieferanten sind in der vollständigen Liste einzeln aufgeführt.",
+ "src_map": "Hintergrundkarte: OpenFreeMap, © OpenMapTiles, Daten © OpenStreetMap-Mitwirkende. Ländergrenzen im Bild der Startseite: Natural Earth (gemeinfrei). Städtenamen: GeoNames (CC BY 4.0).",
+ "src_date": "Datenstand: {date}."
 }

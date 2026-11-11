@@ -154,5 +154,19 @@
  "th_share": "Proporción",
  "th_source": "Fuente",
  "to_country": "Puntos de carga {country_u}",
- "unknown_net": "Red desconocida"
+ "unknown_net": "Red desconocida",
+ "st_places": "ubicaciones de carga",
+ "st_public": "de ellas, públicas",
+ "st_dc50_pub": "públicas con carga rápida (desde 50 kW)",
+ "st_hpc_pub": "públicas con 150 kW o más",
+ "st_countries_all": "países",
+ "pl_place2": {
+  "one": "ubicación de carga",
+  "many": "ubicaciones de carga",
+  "other": "ubicaciones de carga"
+ },
+ "p_shown2": "En el mapa: {n} de fuentes abiertas, {m} de ellas públicas. No son todos los cargadores que existen; no se incluyen las ubicaciones con una fiabilidad inferior a 40.",
+ "p_dc_pub": "Carga rápida desde 50 kW: {dc} ({pct_dc}); 150 kW o más: {hpc} (solo ubicaciones públicas).",
+ "t_hub_world": "Puntos de carga para coches eléctricos por país",
+ "d_hub2": "Ubicaciones de carga para coches eléctricos en cada país de los datos abiertos: cuántas hay, cargadores rápidos, redes, fuentes y licencias."
 }

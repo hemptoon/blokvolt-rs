@@ -47,5 +47,25 @@
   "other": "länder"
  },
  "lang_hint": "Den här sidan finns även på svenska",
- "lang_hint_close": "Stäng"
+ "lang_hint_close": "Stäng",
+ "ft_hub_by": "Laddstationer per land",
+ "ft_c_charging": "Laddning",
+ "ft_c_wb": "Västra Balkan",
+ "ft_wb_guide": "Guide (på engelska)",
+ "ft_rs": "Serbien — blokvolt.rs",
+ "ft_routes": "Bilresor till Balkan",
+ "ft_partners": "Lägg till eller rätta ett företag",
+ "ft_c_data": "Data och verktyg",
+ "ft_open": "Öppna data (nedladdning, ODbL)",
+ "ft_widget": "Kartwidget",
+ "ft_dev": "För utvecklare",
+ "ft_press2": "Prisindex för media",
+ "ft_b2b": "Data för företag",
+ "ft_terms": "Villkor och integritet",
+ "ft_line": "Data från OpenStreetMap (ODbL), Open Charge Map, NOBIL och nationella register",
+ "ft_nopaid": "Inga betalda placeringar; nätverken rankas inte",
+ "ft_lang": "Språk",
+ "src_count_note": "Open Charge Map räknas som en källa; dataleverantörerna inom den redovisas separat i den fullständiga listan.",
+ "src_map": "Bakgrundskarta: OpenFreeMap, © OpenMapTiles, data © OpenStreetMap-bidragsgivare. Landsgränser i startsidans bild: Natural Earth (fri från upphovsrätt). Ortnamn: GeoNames (CC BY 4.0).",
+ "src_date": "Uppgifter per {date}."
 }

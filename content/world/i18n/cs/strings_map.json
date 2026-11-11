@@ -2,7 +2,7 @@
   "title": "Mapa nabíjecích stanic pro elektromobily ve světě | BlokVolt",
   "description": "Veřejné nabíjecí stanice pro elektromobily v Evropě a ve světě, z otevřených dat: výkon, sítě, konektory a zdroj každého bodu.",
   "h1": "Mapa nabíjení",
-  "lead": "Veřejné nabíječky mimo Srbsko a region, z otevřených dat.",
+  "lead": "Nabíjení elektromobilů v Evropě a ve světě, z otevřených dat.",
   "map_label": "Mapa nabíjecích stanic",
   "noscript": "Mapa vyžaduje JavaScript.",
   "no_map": "Mapu nelze v tomto prohlížeči načíst.",
@@ -152,5 +152,14 @@
   "ci_rules_h": "Pravidla a soukromí",
   "ci_rules": "Účet není potřeba. Počítají se jen odpovědi od různých řidičů. Cena se porovnává se zveřejněným ceníkem sítě; kandidátem pro cenový index se stane, až když stejnou cenu nezávisle nahlásí dva řidiči, a ceny, které nemohou být správné, se skrývají. Odpovědi s reklamou, odkazy nebo osobními údaji se odstraňují. Pro všechny sítě platí stejná pravidla.",
   "ci_privacy": "Ukládá se: místo, vaše odpověď, cena (pokud je zadaná), jazyk a denní otisk připojení – hash s klíčem, který se každý den mění, nikoli IP adresa. Žádné cookies, žádný e-mail. Zobrazují se jen souhrny: poslední potvrzení a počet hlášení.",
-  "emb_open": "Otevřít na mapě BlokVolt"
+  "emb_open": "Otevřít na mapě BlokVolt",
+  "acc_all2": "Všechna místa",
+  "lg_acc_unk": "přístup nepotvrzen",
+  "lg_acc_res": "jen pro zákazníky nebo soukromé",
+  "theme_dark": "Tmavá mapa",
+  "theme_light": "Světlá mapa",
+  "attr_osm": "přispěvatelé OpenStreetMap",
+  "attr_sources": "Zdroje",
+  "attr_data": "Mapová data",
+  "count_line": "Nabíjecí místa: {n} · veřejná: {m}"
 }

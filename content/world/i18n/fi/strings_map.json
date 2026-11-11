@@ -2,7 +2,7 @@
  "title": "Sähköautojen latausasemien maailmankartta | BlokVolt",
  "description": "Sähköautojen julkiset latausasemat Euroopassa ja muualla maailmassa avoimesta datasta: teho, latausverkot, liittimet ja jokaisen pisteen lähde.",
  "h1": "Latauskartta",
- "lead": "Julkiset latauspisteet Serbian ja sen lähialueen ulkopuolella avoimesta datasta.",
+ "lead": "Sähköautojen lataus Euroopassa ja muualla maailmassa avoimesta datasta.",
  "map_label": "Latausasemien kartta",
  "noscript": "Kartta vaatii JavaScriptin.",
  "no_map": "Karttaa ei voi näyttää tässä selaimessa.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Säännöt ja yksityisyys",
  "ci_rules": "Tiliä ei tarvita. Vastaukset lasketaan vain eri kuljettajilta. Hintaa verrataan latausverkon julkaisemaan hinnastoon; hintaindeksin ehdokkaaksi se voi nousta vain, kun kaksi kuljettajaa ilmoittaa toisistaan riippumatta saman hinnan, ja mahdottomat hinnat piilotetaan. Mainoksia, linkkejä tai henkilötietoja sisältävät vastaukset poistetaan. Samat säännöt koskevat kaikkia latausverkkoja.",
  "ci_privacy": "Tallennetaan: paikka, vastaus, hinta, jos se on annettu, kieli sekä yhteyden vuorokausikohtainen tunniste – avaimella laskettu tiiviste, joka vaihtuu joka päivä, ei IP-osoite. Ei evästeitä, ei sähköpostia. Näkyvissä ovat vain yhteenvedot: viimeisin vahvistus ja ilmoitusten määrä.",
- "emb_open": "Avaa BlokVoltissa"
+ "emb_open": "Avaa BlokVoltissa",
+ "acc_all2": "Kaikki paikat",
+ "lg_acc_unk": "käyttöoikeus vahvistamatta",
+ "lg_acc_res": "vain asiakkaille tai yksityinen",
+ "theme_dark": "Tumma kartta",
+ "theme_light": "Vaalea kartta",
+ "attr_osm": "OpenStreetMapin tekijät",
+ "attr_sources": "Lähteet",
+ "attr_data": "Karttatiedot",
+ "count_line": "Latauspaikkoja: {n} · julkisia: {m}"
 }

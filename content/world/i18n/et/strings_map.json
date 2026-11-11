@@ -2,7 +2,7 @@
  "title": "Elektriautode laadimisjaamade maailmakaart | BlokVolt",
  "description": "Avalikud elektriautode laadimisjaamad üle Euroopa ja maailma, avaandmetest: võimsus, laadimisvõrgud, pistikud ja iga punkti allikas.",
  "h1": "Laadimiskaart",
- "lead": "Avalikud laadijad väljaspool Serbiat ja piirkonda, avaandmetest.",
+ "lead": "Elektriautode laadimine üle Euroopa ja maailma, avaandmetest.",
  "map_label": "Laadimisjaamade kaart",
  "noscript": "Kaart vajab JavaScripti.",
  "no_map": "Kaarti ei saa selles brauseris laadida.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Reeglid ja privaatsus",
  "ci_rules": "Kontot pole vaja. Arvesse lähevad ainult eri juhtide vastused. Hinda võrreldakse võrgu avaldatud tariifiga; hinnaindeksi kandidaadiks võib see saada alles siis, kui kaks juhti teatavad üksteisest sõltumatult sama hinna, ning võimatud hinnad peidetakse. Reklaami, linkide või isikuandmetega vastused eemaldatakse. Kõigile võrkudele kehtivad samad reeglid.",
  "ci_privacy": "Salvestatakse: koht, teie vastus, hind (kui see on sisestatud), keel ja ühenduse päevane sõrmejälg — võtmega räsi, mis muutub iga päev, mitte IP-aadress. Küpsiseid ega e-posti ei kasutata. Näidatakse ainult kokkuvõtet: viimane kinnitus ja märgete arv.",
- "emb_open": "Ava BlokVoltis"
+ "emb_open": "Ava BlokVoltis",
+ "acc_all2": "Kõik kohad",
+ "lg_acc_unk": "juurdepääs kinnitamata",
+ "lg_acc_res": "ainult klientidele või privaatne",
+ "theme_dark": "Tume kaart",
+ "theme_light": "Hele kaart",
+ "attr_osm": "OpenStreetMapi kaastöölised",
+ "attr_sources": "Allikad",
+ "attr_data": "Kaardiandmed",
+ "count_line": "Laadimiskohti: {n} · avalikke: {m}"
 }

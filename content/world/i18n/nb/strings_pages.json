@@ -145,5 +145,18 @@
  "th_share": "Andel",
  "th_source": "Kilde",
  "to_country": "Ladestasjoner {country_u}",
- "unknown_net": "Ukjent nettverk"
+ "unknown_net": "Ukjent nettverk",
+ "st_places": "ladesteder",
+ "st_public": "herav offentlige",
+ "st_dc50_pub": "offentlige med hurtiglading (50 kW+)",
+ "st_hpc_pub": "offentlige med 150 kW og mer",
+ "st_countries_all": "land",
+ "pl_place2": {
+  "one": "ladested",
+  "other": "ladesteder"
+ },
+ "p_shown2": "På kartet: {n} fra åpne kilder, herav {m} offentlige. Ikke alle ladere som finnes; steder med pålitelighet under 40 er ikke tatt med.",
+ "p_dc_pub": "Hurtiglading fra 50 kW: {dc} ({pct_dc}); 150 kW eller mer: {hpc} — bare offentlige ladesteder.",
+ "t_hub_world": "Ladestasjoner for elbil etter land",
+ "d_hub2": "Ladesteder for elbil i alle land i de åpne dataene: hvor mange, hurtigladere, nettverk, kilder og lisenser."
 }

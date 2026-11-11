@@ -49,5 +49,25 @@
   "other": "países"
  },
  "lang_hint": "Esta página también está disponible en español",
- "lang_hint_close": "Cerrar"
+ "lang_hint_close": "Cerrar",
+ "ft_hub_by": "Puntos de carga por país",
+ "ft_c_charging": "Carga",
+ "ft_c_wb": "Balcanes Occidentales",
+ "ft_wb_guide": "Guía (en inglés)",
+ "ft_rs": "Serbia — blokvolt.rs",
+ "ft_routes": "Viajes por carretera a los Balcanes",
+ "ft_partners": "Añadir o corregir una empresa",
+ "ft_c_data": "Datos y herramientas",
+ "ft_open": "Datos abiertos (descarga, ODbL)",
+ "ft_widget": "Mapa para su web",
+ "ft_dev": "Desarrolladores",
+ "ft_press2": "Índice de precios para medios",
+ "ft_b2b": "Datos para empresas",
+ "ft_terms": "Condiciones y privacidad",
+ "ft_line": "Datos de OpenStreetMap (ODbL), Open Charge Map, NOBIL y registros nacionales",
+ "ft_nopaid": "Sin posicionamiento de pago; las redes no se clasifican",
+ "ft_lang": "Idioma",
+ "src_count_note": "Open Charge Map cuenta como una sola fuente; los proveedores de datos que incluye figuran por separado en la lista completa.",
+ "src_map": "Mapa base: OpenFreeMap, © OpenMapTiles, datos © colaboradores de OpenStreetMap. Fronteras de los países en la imagen de la página de inicio: Natural Earth (dominio público). Nombres de ciudades: GeoNames (CC BY 4.0).",
+ "src_date": "Datos a fecha de {date}."
 }

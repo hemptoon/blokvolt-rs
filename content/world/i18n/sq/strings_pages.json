@@ -145,5 +145,18 @@
  "th_share": "Pjesa",
  "th_source": "Burimi",
  "to_country": "Karikues {country_u}",
- "unknown_net": "Rrjet i panjohur"
+ "unknown_net": "Rrjet i panjohur",
+ "st_places": "vende karikimi",
+ "st_public": "prej tyre publike",
+ "st_dc50_pub": "publike me karikim të shpejtë (50 kW+)",
+ "st_hpc_pub": "publike me 150 kW e më shumë",
+ "st_countries_all": "shtete",
+ "pl_place2": {
+  "one": "vend karikimi",
+  "other": "vende karikimi"
+ },
+ "p_shown2": "Në hartë: {n} nga burime të hapura, prej tyre publike: {m}. Nuk shfaqet çdo karikues që ekziston; vendet me besueshmëri nën 40 nuk përfshihen.",
+ "p_dc_pub": "Karikim i shpejtë nga 50 kW: {dc} ({pct_dc}); 150 kW e më shumë: {hpc} — vetëm vende publike.",
+ "t_hub_world": "Karikues për makina elektrike sipas vendit",
+ "d_hub2": "Vende karikimi për makina elektrike në çdo shtet sipas të dhënave të hapura: sa janë, karikues të shpejtë, rrjete, burime dhe licenca."
 }

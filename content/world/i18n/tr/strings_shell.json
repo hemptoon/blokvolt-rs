@@ -38,8 +38,34 @@
  "method_h1": "Metodoloji",
  "method_desc": "Lokasyonların nasıl birleştirildiği, her birinin ne kadar güvenilir olduğu ve hangi sayfaların bulunduğu.",
  "method_p": "Farklı kaynaklardan gelen ve aynı yeri tanımlayan kayıtlar tek kayıtta birleştirilir. Her lokasyona 0 ile 100 arasında bir veri güvenilirliği puanı verilir (kaynak türü, ikinci bir kaynak, güncellik). Bir ülke sayfası için güvenilirliği 50 veya üzeri olan en az 100 halka açık lokasyon, bir şehir sayfası için en az 20 lokasyon gerekir. Formül ve eşikler burada açıklanır:",
- "pl_loc": {"one": "şarj lokasyonu", "other": "şarj lokasyonu"},
- "pl_cc": {"one": "ülke", "other": "ülke"},
+ "pl_loc": {
+  "one": "şarj lokasyonu",
+  "other": "şarj lokasyonu"
+ },
+ "pl_cc": {
+  "one": "ülke",
+  "other": "ülke"
+ },
  "lang_hint": "Bu sayfa Türkçe olarak da mevcut",
- "lang_hint_close": "Kapat"
+ "lang_hint_close": "Kapat",
+ "ft_hub_by": "Ülkelere göre şarj istasyonları",
+ "ft_c_charging": "Şarj",
+ "ft_c_wb": "Batı Balkanlar",
+ "ft_wb_guide": "Rehber (İngilizce)",
+ "ft_rs": "Sırbistan — blokvolt.rs",
+ "ft_routes": "Balkanlar'a araçla yolculuk",
+ "ft_partners": "Şirket ekleme veya düzeltme",
+ "ft_c_data": "Veriler ve araçlar",
+ "ft_open": "Açık veriler (indirme, ODbL)",
+ "ft_widget": "Siteniz için harita",
+ "ft_dev": "Geliştiriciler için",
+ "ft_press2": "Medya için fiyat endeksi",
+ "ft_b2b": "İşletmeler için veri",
+ "ft_terms": "Koşullar ve gizlilik",
+ "ft_line": "Veriler: OpenStreetMap (ODbL), Open Charge Map, NOBIL ve ulusal kayıtlar",
+ "ft_nopaid": "Ücretli listeleme yok; şarj ağları sıralanmaz",
+ "ft_lang": "Dil",
+ "src_count_note": "Open Charge Map tek bir kaynak olarak sayılır; içindeki veri sağlayıcılar tam listede ayrıca gösterilir.",
+ "src_map": "Altlık harita: OpenFreeMap, © OpenMapTiles, veriler © OpenStreetMap katkıda bulunanları. Ana sayfa görselindeki ülke sınırları: Natural Earth (kamu malı). Şehir adları: GeoNames (CC BY 4.0).",
+ "src_date": "Veriler {date} itibarıyla."
 }

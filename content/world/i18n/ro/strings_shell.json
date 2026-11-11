@@ -49,5 +49,25 @@
   "other": "de țări"
  },
  "lang_hint": "Această pagină este disponibilă și în română",
- "lang_hint_close": "Închideți"
+ "lang_hint_close": "Închideți",
+ "ft_hub_by": "Stații de încărcare pe țări",
+ "ft_c_charging": "Încărcare",
+ "ft_c_wb": "Balcanii de Vest",
+ "ft_wb_guide": "Ghid (în engleză)",
+ "ft_rs": "Serbia — blokvolt.rs",
+ "ft_routes": "Călătorii cu mașina în Balcani",
+ "ft_partners": "Adăugați sau corectați o firmă",
+ "ft_c_data": "Date și instrumente",
+ "ft_open": "Date deschise (descărcare, ODbL)",
+ "ft_widget": "Hartă pentru site",
+ "ft_dev": "Pentru dezvoltatori",
+ "ft_press2": "Indicele prețurilor pentru presă",
+ "ft_b2b": "Date pentru companii",
+ "ft_terms": "Termeni și confidențialitate",
+ "ft_line": "Date din OpenStreetMap (ODbL), Open Charge Map, NOBIL și registre naționale",
+ "ft_nopaid": "Fără plasări plătite; rețelele nu sunt ierarhizate",
+ "ft_lang": "Limbă",
+ "src_count_note": "Open Charge Map contează ca o singură sursă; furnizorii de date din cadrul său sunt enumerați separat în lista completă.",
+ "src_map": "Harta de bază: OpenFreeMap, © OpenMapTiles, date © contribuitorii OpenStreetMap. Granițele țărilor din imaginea paginii principale: Natural Earth (domeniu public). Denumirile orașelor: GeoNames (CC BY 4.0).",
+ "src_date": "Date la {date}."
 }

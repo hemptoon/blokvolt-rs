@@ -47,5 +47,25 @@
   "other": "országban"
  },
  "lang_hint": "Ez az oldal magyarul is elérhető",
- "lang_hint_close": "Bezárás"
+ "lang_hint_close": "Bezárás",
+ "ft_hub_by": "Töltőállomások országonként",
+ "ft_c_charging": "Töltés",
+ "ft_c_wb": "Nyugat-Balkán",
+ "ft_wb_guide": "Útmutató (angolul)",
+ "ft_rs": "Szerbia — blokvolt.rs",
+ "ft_routes": "Autós utazások a Balkánra",
+ "ft_partners": "Cég felvétele vagy javítása",
+ "ft_c_data": "Adatok és eszközök",
+ "ft_open": "Nyílt adatok (letöltés, ODbL)",
+ "ft_widget": "Térkép a weboldalára",
+ "ft_dev": "Fejlesztőknek",
+ "ft_press2": "Árindex a sajtónak",
+ "ft_b2b": "Adatok cégeknek",
+ "ft_terms": "Feltételek és adatvédelem",
+ "ft_line": "Adatok: OpenStreetMap (ODbL), Open Charge Map, NOBIL és nemzeti nyilvántartások",
+ "ft_nopaid": "Nincsenek fizetett megjelenések; a hálózatok nincsenek rangsorolva",
+ "ft_lang": "Nyelv",
+ "src_count_note": "Az Open Charge Map egy forrásnak számít; a benne szereplő adatszolgáltatók a teljes listában külön szerepelnek.",
+ "src_map": "Alaptérkép: OpenFreeMap, © OpenMapTiles, adatok © az OpenStreetMap közreműködői. Országhatárok a kezdőlap képén: Natural Earth (közkincs). Városnevek: GeoNames (CC BY 4.0).",
+ "src_date": "Adatok állapota: {date}."
 }

@@ -2,7 +2,7 @@
  "title": "Harta mondială a stațiilor de încărcare pentru mașini electrice | BlokVolt",
  "description": "Stații publice de încărcare pentru mașini electrice din Europa și din lume, din date deschise: putere, rețele, conectori și sursa fiecărui punct.",
  "h1": "Harta stațiilor de încărcare",
- "lead": "Puncte publice de încărcare din afara Serbiei și a regiunii, din date deschise.",
+ "lead": "Încărcarea mașinilor electrice în Europa și în lume, din date deschise.",
  "map_label": "Harta stațiilor de încărcare",
  "noscript": "Harta necesită JavaScript.",
  "no_map": "Harta nu poate fi încărcată în acest browser.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Reguli și confidențialitate",
  "ci_rules": "Nu este nevoie de cont. Se iau în calcul doar răspunsurile unor șoferi diferiți. Prețul este comparat cu tariful publicat al rețelei; poate deveni candidat pentru indicele de prețuri doar când doi șoferi raportează independent același preț, iar prețurile imposibile sunt ascunse. Răspunsurile cu reclame, linkuri sau date personale sunt șterse. Aceleași reguli se aplică tuturor rețelelor.",
  "ci_privacy": "Se stochează: locația, răspunsul, prețul (dacă e indicat), limba și o amprentă zilnică a conexiunii — un hash cu cheie care se schimbă în fiecare zi, nu adresa IP. Fără cookie-uri, fără e-mail. Se afișează doar totalurile: ultima confirmare și numărul de semnalări.",
- "emb_open": "Deschideți pe BlokVolt"
+ "emb_open": "Deschideți pe BlokVolt",
+ "acc_all2": "Toate locațiile",
+ "lg_acc_unk": "acces neconfirmat",
+ "lg_acc_res": "doar pentru clienți sau privată",
+ "theme_dark": "Hartă întunecată",
+ "theme_light": "Hartă luminoasă",
+ "attr_osm": "contribuitorii OpenStreetMap",
+ "attr_sources": "Surse",
+ "attr_data": "Datele hărții",
+ "count_line": "Locații de încărcare: {n} · publice: {m}"
 }

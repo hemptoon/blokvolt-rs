@@ -2,7 +2,7 @@
  "title": "Elektromobiļu uzlādes staciju pasaules karte | BlokVolt",
  "description": "Publiskās elektromobiļu uzlādes stacijas Eiropā un pasaulē no atvērtajiem datiem: jauda, uzlādes tīkli, savienotāji un katra punkta avots.",
  "h1": "Uzlādes karte",
- "lead": "Publiskās uzlādes stacijas ārpus Serbijas un reģiona, no atvērtajiem datiem.",
+ "lead": "Elektromobiļu uzlāde Eiropā un pasaulē, no atvērtajiem datiem.",
  "map_label": "Uzlādes staciju karte",
  "noscript": "Kartei nepieciešams JavaScript.",
  "no_map": "Šajā pārlūkā karti nevar ielādēt.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Noteikumi un privātums",
  "ci_rules": "Konts nav vajadzīgs. Tiek ņemtas vērā tikai dažādu autovadītāju atbildes. Cenu salīdzina ar uzlādes tīkla publicēto tarifu; par kandidāti cenu indeksam tā var kļūt tikai tad, ja divi autovadītāji neatkarīgi viens no otra norāda vienu un to pašu cenu, bet neiespējamas cenas tiek paslēptas. Atbildes ar reklāmu, saitēm vai personas datiem tiek dzēstas. Noteikumi ir vienādi visiem uzlādes tīkliem.",
  "ci_privacy": "Tiek saglabāts: vieta, jūsu atbilde, cena (ja norādīta), valoda un savienojuma diennakts nospiedums — ar atslēgu veidots jaucējkods, kas mainās katru dienu, nevis IP adrese. Bez sīkdatnēm, bez e-pasta. Tiek rādīti tikai kopsavilkumi: pēdējais apstiprinājums un atzīmju skaits.",
- "emb_open": "Atvērt BlokVolt"
+ "emb_open": "Atvērt BlokVolt",
+ "acc_all2": "Visas vietas",
+ "lg_acc_unk": "piekļuve nav apstiprināta",
+ "lg_acc_res": "tikai klientiem vai privāta",
+ "theme_dark": "Tumšā karte",
+ "theme_light": "Gaišā karte",
+ "attr_osm": "OpenStreetMap līdzautori",
+ "attr_sources": "Avoti",
+ "attr_data": "Kartes dati",
+ "count_line": "Uzlādes vietas: {n} · publiskās: {m}"
 }

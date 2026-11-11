@@ -2,7 +2,7 @@
  "title": "Karta punionica za električne automobile u svijetu | BlokVolt",
  "description": "Javne punionice za električne automobile u Europi i svijetu, iz otvorenih podataka: snaga, mreže, priključci i izvor svake točke.",
  "h1": "Karta punionica",
- "lead": "Javne punionice izvan Srbije i regije, iz otvorenih podataka.",
+ "lead": "Punjenje električnih automobila u Europi i svijetu, iz otvorenih podataka.",
  "map_label": "Karta punionica",
  "noscript": "Za kartu je potreban JavaScript.",
  "no_map": "Karta se ne može učitati u ovom pregledniku.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Pravila i privatnost",
  "ci_rules": "Korisnički račun nije potreban. Računaju se samo odgovori različitih vozača. Cijena se uspoređuje s objavljenim cjenikom mreže; cijena postaje kandidat za indeks cijena tek kad dva vozača neovisno prijave istu cijenu, a cijene koje ne mogu biti točne skrivaju se. Odgovori s reklamama, poveznicama ili osobnim podacima uklanjaju se. Ista pravila vrijede za sve mreže.",
  "ci_privacy": "Sprema se: lokacija, vaš odgovor, cijena ako je unesena, jezik i dnevni otisak veze — hash s ključem koji se mijenja svaki dan, a ne IP adresa. Bez kolačića, bez e-pošte. Prikazuju se samo zbirni podaci: posljednja potvrda i broj provjera.",
- "emb_open": "Otvori na BlokVoltu"
+ "emb_open": "Otvori na BlokVoltu",
+ "acc_all2": "Sve lokacije",
+ "lg_acc_unk": "pristup nije potvrđen",
+ "lg_acc_res": "samo za kupce ili privatno",
+ "theme_dark": "Tamna karta",
+ "theme_light": "Svijetla karta",
+ "attr_osm": "suradnici OpenStreetMapa",
+ "attr_sources": "Izvori",
+ "attr_data": "Podaci karte",
+ "count_line": "Mjesta za punjenje: {n} · javnih: {m}"
 }

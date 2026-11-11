@@ -2,7 +2,7 @@
  "title": "Mapa mundial de postos de carregamento | BlokVolt",
  "description": "Postos de carregamento públicos para carros elétricos na Europa e no mundo, a partir de dados abertos: potência, redes, conectores e a fonte de cada ponto.",
  "h1": "Mapa de carregamento",
- "lead": "Carregadores públicos fora da Sérvia e da região, a partir de dados abertos.",
+ "lead": "Carregamento de carros elétricos na Europa e no mundo, a partir de dados abertos.",
  "map_label": "Mapa de postos de carregamento",
  "noscript": "O mapa necessita de JavaScript.",
  "no_map": "Não é possível carregar o mapa neste navegador.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Regras e privacidade",
  "ci_rules": "Não é preciso conta. Só contam respostas de condutores diferentes. Cada preço é comparado com o tarifário publicado da rede; só pode entrar no índice de preços como candidato quando dois condutores indicam, de forma independente, o mesmo preço, e os preços impossíveis ficam ocultos. Respostas com publicidade, ligações ou dados pessoais são removidas. As mesmas regras aplicam-se a todas as redes.",
  "ci_privacy": "Guarda-se: o local, a resposta, o preço (se indicado), o idioma e uma impressão diária da ligação — um hash com chave que muda todos os dias, não o endereço IP. Sem cookies, sem e-mail. Só se mostram totais: a última confirmação e o número de respostas.",
- "emb_open": "Abrir no BlokVolt"
+ "emb_open": "Abrir no BlokVolt",
+ "acc_all2": "Todos os locais",
+ "lg_acc_unk": "acesso não confirmado",
+ "lg_acc_res": "apenas para clientes ou privado",
+ "theme_dark": "Mapa escuro",
+ "theme_light": "Mapa claro",
+ "attr_osm": "contribuidores do OpenStreetMap",
+ "attr_sources": "Fontes",
+ "attr_data": "Dados do mapa",
+ "count_line": "Locais de carregamento: {n} · públicos: {m}"
 }

@@ -49,5 +49,25 @@
   "other": "valstis"
  },
  "lang_hint": "Šī lapa ir pieejama arī latviešu valodā",
- "lang_hint_close": "Aizvērt"
+ "lang_hint_close": "Aizvērt",
+ "ft_hub_by": "Uzlādes stacijas pa valstīm",
+ "ft_c_charging": "Uzlāde",
+ "ft_c_wb": "Rietumbalkāni",
+ "ft_wb_guide": "Ceļvedis (angļu valodā)",
+ "ft_rs": "Serbija — blokvolt.rs",
+ "ft_routes": "Ceļojumi ar auto uz Balkāniem",
+ "ft_partners": "Pievienot vai labot uzņēmumu",
+ "ft_c_data": "Dati un rīki",
+ "ft_open": "Atvērtie dati (lejupielāde, ODbL)",
+ "ft_widget": "Karte jūsu vietnei",
+ "ft_dev": "Izstrādātājiem",
+ "ft_press2": "Cenu indekss medijiem",
+ "ft_b2b": "Dati uzņēmumiem",
+ "ft_terms": "Noteikumi un privātums",
+ "ft_line": "Dati no OpenStreetMap (ODbL), Open Charge Map, NOBIL un valstu reģistriem",
+ "ft_nopaid": "Bez maksas izvietojumiem; uzlādes tīkli netiek ranžēti",
+ "ft_lang": "Valoda",
+ "src_count_note": "Open Charge Map tiek uzskatīts par vienu avotu; tajā iekļautie datu sniedzēji pilnajā sarakstā norādīti atsevišķi.",
+ "src_map": "Pamatkarte: OpenFreeMap, © OpenMapTiles, dati © OpenStreetMap līdzautori. Valstu robežas sākumlapas attēlā: Natural Earth (publiskais domēns). Pilsētu nosaukumi: GeoNames (CC BY 4.0).",
+ "src_date": "Dati uz {date}."
 }

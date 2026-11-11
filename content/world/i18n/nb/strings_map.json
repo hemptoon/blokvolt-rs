@@ -2,7 +2,7 @@
  "title": "Verdenskart over ladestasjoner for elbil | BlokVolt",
  "description": "Offentlige ladestasjoner for elbil i Europa og resten av verden, fra åpne data: effekt, nettverk, kontakter og kilden til hvert punkt.",
  "h1": "Ladekart",
- "lead": "Offentlige ladestasjoner utenfor Serbia og regionen, fra åpne data.",
+ "lead": "Elbillading i Europa og resten av verden, fra åpne data.",
  "map_label": "Kart over ladestasjoner",
  "noscript": "Kartet krever JavaScript.",
  "no_map": "Kartet kan ikke lastes i denne nettleseren.",
@@ -152,5 +152,14 @@
  "ci_rules_h": "Regler og personvern",
  "ci_rules": "Ingen konto trengs. Bare svar fra ulike bilister telles. En pris sjekkes mot nettverkets publiserte tariff; den kan bli kandidat til prisindeksen først når to bilister uavhengig av hverandre oppgir samme pris, og priser som ikke kan stemme, skjules. Svar med reklame, lenker eller personopplysninger fjernes. De samme reglene gjelder for alle nettverk.",
  "ci_privacy": "Det lagres: stedet, svaret, prisen hvis den er oppgitt, språket og et daglig fingeravtrykk av forbindelsen — en nøkkelbasert hash som endres hver dag, ikke IP-adressen. Ingen informasjonskapsler, ingen e-post. Bare totaler vises: siste bekreftelse og antall meldinger.",
- "emb_open": "Åpne på BlokVolt"
+ "emb_open": "Åpne på BlokVolt",
+ "acc_all2": "Alle steder",
+ "lg_acc_unk": "tilgang ikke bekreftet",
+ "lg_acc_res": "bare for kunder eller privat",
+ "theme_dark": "Mørkt kart",
+ "theme_light": "Lyst kart",
+ "attr_osm": "OpenStreetMap-bidragsytere",
+ "attr_sources": "Kilder",
+ "attr_data": "Kartdata",
+ "count_line": "Ladesteder: {n} · offentlige: {m}"
 }
