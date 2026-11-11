@@ -27,3 +27,14 @@ ASCII, firești, fără coliziuni: nu există `content/com/local/ro/`; prefixul 
 ## Verificare
 - `check.py` — 0 erori, 0 avertismente.
 - Retraducere oarbă (alt agent) a celor 22 de șiruri + 4 nume: sensul coincide. Din 8 observații, 5 aplicate (data_date, r_nije_javni, nav, lg_home, p_city_cmp), 3 false (`{country_u}` conține deja prepoziția; p_hub_na e la fel în EN).
+
+## L2-RO — 11.11.2026 (ramura `l2-ro` de la `dev` bb86f74)
+- Chei noi traduse: 274 = strings_map 29 (28 `ci_*` + `emb_open`), strings_pay 93, strings_press 54, strings_b2b 33, strings_embed 65. Chei HOME2: încă nu sunt în `dev` — rămân pentru LANGI.
+- `texts.json`: secțiuni noi `pay` (6 noduri `afir.points[i]`) și `routes` (59 noduri `routes[i].stops[j].city`, numele din `cities.csv` ro), format LANG0.
+- Țările proprii (RO, MD): nume, slug-uri și `in_phrase` verificate; toate 11 orașe RO corecte (din care 5 cu pagină în `pages_state.json`), MD — 0 orașe în set. Acoperire `cities.csv`: 5605/5605.
+- Corectat: Veliko Tarnovo → Veliko Tărnovo (exonim românesc).
+- Nu s-au adăugat: 144 de orașe noi NOBIL (SE 138, NO 6) din `pages_state.json` — lipsesc din `names/cities.csv` (doar slug ASCII, fără nume local); nu sunt țări proprii pentru ro, iar în română numele lor rămân cele locale. De adăugat după ce `names/cities.csv` le primește.
+- Termeni: „semnalare” (check-in, consecvent cu „sesizare” pentru erori), „vinietă” (nu „rovinietă” — numele vinietei din România), „încorporare/încorporat” (embed), „amprentă zilnică” (daily fingerprint).
+- `check.py` extins: toate 8 fișiere `strings_*` + `texts.pay` / `texts.routes` (căi existente, placeholdere, diacritice) — 0 erori, 0 avertismente.
+- Retraducere oarbă (alt agent, fără EN) a 60 de șiruri noi aleatorii: sensul coincide la toate 60. 17 observații de stil; aplicate 16 (afir_src, th_cover, stops_note, viniete, th_gaps, ch_europe_d, d_issue, d_press/h_charts/charts_p/embed_code, h_data, desc, what_price, form_p, titlurile hărții încorporate, cf_light „Deschisă”, dv_balkan_p). Neaplicat: road_none „Neverificat încă” (fără substantiv de acord — corect).
+- Butoane > EN × 1,4 rămase inevitabil: Funcționează/Working, Hartă/Map, Mașină/Car, Trimiteți cererea/Send request.

@@ -20,7 +20,10 @@ def bad_chars(where, s):
     if re.search('[şţŞŢ]', s): err.append(f'{where}: cedilla ş/ţ instead of comma-below ș/ț')
 
 # 1. strings
-for f in ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices']:
+FILES = ['strings_map', 'strings_pages', 'strings_shell', 'strings_prices',
+         'strings_pay', 'strings_press', 'strings_b2b', 'strings_embed']
+for f in FILES:
+    if not (HERE / f'{f}.json').exists(): err.append(f'{f}.json: file missing'); continue
     en = {k: v['en'] for k, v in json.load(open(WORLD / f'{f}.json', encoding='utf-8')).items()}
     tr = json.load(open(HERE / f'{f}.json', encoding='utf-8'))
     for k in en.keys() - tr.keys(): err.append(f'{f}: missing key {k}')
@@ -57,6 +60,26 @@ def walk(e, t, path):
 T = json.load(open(HERE / 'texts.json', encoding='utf-8'))
 for name in ['about_data', 'download']:
     walk(json.load(open(WORLD / f'{name}.json', encoding='utf-8'))['en'], T.get(name), f'.{name}')
+
+# 2b. texts.json -> pay / routes (LANG0 format: dotted path of a multilingual node -> text)
+def nodes(x, p, out):
+    if isinstance(x, dict):
+        if isinstance(x.get('en'), str) and ('sr' in x or 'ru' in x):
+            out[p] = x['en']; return
+        for k, v in x.items(): nodes(v, f'{p}.{k}' if p else k, out)
+    elif isinstance(x, list):
+        for i, v in enumerate(x): nodes(v, f'{p}[{i}]', out)
+for sec in ['pay', 'routes']:
+    want = {}; nodes(json.load(open(WORLD / f'{sec}.json', encoding='utf-8')), '', want)
+    got = T.get(sec)
+    if not isinstance(got, dict): err.append(f'texts.{sec}: section missing'); continue
+    for k in want.keys() - got.keys(): err.append(f'texts.{sec}: missing {k}')
+    for k in got.keys() - want.keys(): err.append(f'texts.{sec}: unknown path {k}')
+    for k in want.keys() & got.keys():
+        v = got[k]
+        if not isinstance(v, str) or not v.strip(): err.append(f'texts.{sec}.{k}: empty'); continue
+        if sig(want[k]) != sig(v): err.append(f'texts.{sec}.{k}: placeholders/tags differ')
+        bad_chars(f'texts.{sec}.{k}', v)
 
 # 3. slugs
 S = json.load(open(HERE / 'slugs.json', encoding='utf-8'))
