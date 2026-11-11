@@ -2476,8 +2476,8 @@ to `main`:
   (byte ranges for PMTiles, `Access-Control-Allow-Origin: *`). `scripts/dev_world_data.py` downloads them in CI, points the
   manifest at the tiles host for tiles and the ODbL dump, and the cards are served next to the site under `/world-data/`.
   Cloudflare Pages does not answer Range requests (and limits a file to 25 MiB), so the tiles cannot sit next to the site.
-  History of the tiles repository does not grow: an update replaces its single commit (force push). Production hosting
-  (R2, `tiles.blokvolt.rs`) only by the owner's decision.
+  Since REL3 (11.11.2026) updates of the tiles repository are ordinary commits on top (no force push, nothing deleted by
+  Claude); old `data/<date>/` and `world/<date>/` folders are removed only by Andrei. Production map data: R2 (below).
 - **Frame of the world layer (G0)** — `scripts/world_shell.py`: one menu (Map · Charging stations · Open data; sections that
   do not exist yet are not shown), the footer block (About the data, Download, Sources & licences, Methodology, About), the
   short pages `/about/`, `/sources/`, `/methodology/` (+ `/sr/o-sajtu/ …`, `/ru/o-sajte/ …`) that lead to "About the data"
@@ -2490,8 +2490,9 @@ to `main`:
   `langs_enabled` en/sr/ru, `data_base` = `https://hemptoon.github.io/blokvolt-tiles/world/` (the tiles repository serves
   `world/latest.json` → `world/manifest-<date>.json` → K7 tiles, `world/cards-<date>/`, `world/places-<date>.json`; the ODbL dump
   stays in `data/<date>/`; a weekly data update writes these too, see the README of the tiles repository), `reports_api`,
-  `checkins_api`, `widget_api`, `requests_api` live on the blokvolt.rs worker. R2 (`tiles.blokvolt.rs`) replaces the host only
-  by the owner's decision (change `data_base`). The hourly workflow of `hemptoon/blokvolt-com` builds the world layer when
+  `checkins_api`, `widget_api`, `requests_api` live on the blokvolt.rs worker. Since REL3 (11.11.2026, owner: «R2 готов,
+  заливаем nobil») `data_base` = `https://tiles.blokvolt.rs/world/` (R2, see "World data hosting" below); the GitHub Pages
+  folder `world/` of the tiles repository stays as the fallback host (switch back = change `data_base`). The hourly workflow of `hemptoon/blokvolt-com` builds the world layer when
   `public` is true (its branch `world-layer`, merged 11.11.2026): world files go only into the Pages artifact, never into that
   repository (rsync exclusions there — extend them when a new top-level world folder appears). With `public`, the English
   menu and home of blokvolt.com lead into the world (`gen_com.WORLD_LINKS`: Map · Prices first, a block on the home), the world
@@ -2499,6 +2500,27 @@ to `main`:
   G3/G4/G5/G7/G10). `preview.yml` keeps previews in demo mode (`BV_WORLD_CHECKINS=demo`, empty widget/request API). blokvolt.rs
   gets no new links to the world. `/si/` is held back until a native speaker has read it (`gen_com.SI_HELD`,
   `region_pages.SI_HELD`): not built, not in a sitemap or a hreflang cluster; release = move the entry back into `LOCALES`.
+- **World data hosting (R2, since REL3 11.11.2026).** The world map of blokvolt.com reads its data in the browser from the R2
+  bucket `blokvolt-tiles` (region EEUR) through the custom domain `https://tiles.blokvolt.rs` (the r2.dev address is off).
+  Layout `world/` is flat, as `world/` on the tiles repository: `latest.json` → `manifest-<date>.json` → `world-<date>.pmtiles`,
+  `cards-<date>/`, `places-<date>.json`, `odbl-<date>.csv.gz` (+ README), `attribution-<date>.json`.
+  - **Upload — only by Andrei**, on his word, from the Mac: `bash ~/dev/evdb/product/upload_r2.sh <run folder>` (needs his
+    `wrangler login`; Claude never runs wrangler and never holds the keys). The script checks every file before it starts,
+    retries each file three times and uploads `latest.json` last (≈3,460 objects, about an hour). Then the same run goes to the
+    tiles repository (pages bundle `data/<run>/` + root `latest.json`, read by the hourly build of blokvolt.com through
+    `WORLD_DATA`), the page state to `content/world/state/`, and a push to `main`.
+  - **CORS** (bucket settings): origins `https://blokvolt.com`, `https://www.blokvolt.com`, `https://www.blokvolt.rs`; methods
+    GET, HEAD; request headers range, if-match, if-none-match; exposed etag, content-length, content-range, accept-ranges.
+    Dev previews (`*.pages.dev`) are not in CORS and do not need to be: `preview.yml` sets `BV_WORLD_DATA=/world-data/` (cards
+    and manifest next to the site, tiles and the ODbL dump on GitHub Pages), so `data_base` of config.json is production only.
+  - **Cache** (zone blokvolt.rs, cache rules, free plan): 1) `tiles cache` — `https://tiles.blokvolt.rs/*`: eligible for cache,
+    Edge TTL from the origin's cache-control, browser TTL as origin; 2) `tiles latest` — `https://tiles.blokvolt.rs/*latest.json`:
+    eligible, Edge TTL ignores cache-control, 10 minutes (second in the list). Objects carry `public, max-age=31536000,
+    immutable`, `latest.json` `public, max-age=600`. A new week = new file names, so only `latest.json` changes in place; a
+    404 of `latest.json` may also sit in the edge cache up to 10 minutes, so check a fresh upload after that.
+  - **No automatic deletion** (only the default rule that aborts unfinished multipart uploads) as long as the weekly upload is
+    not automated: old weeks stay in the bucket; Andrei deletes them by hand when he decides.
+
 ### 3.42 World charging prices of blokvolt.com: index, price pages, map card (G3, since 09.11.2026)
 
 The price layer of the world .com (task G3 of the pool `claude/bvcom_tasks/`): the "European EV Charging Price Index",

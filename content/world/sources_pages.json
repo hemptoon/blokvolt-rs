@@ -237,5 +237,13 @@
   "url": "https://www.blokvolt.rs/mapa/",
   "kind": "own",
   "unverified": true
+ },
+ "nobil": {
+  "name": "NOBIL (Enova / Energimyndigheten)",
+  "licence": "CC BY 4.0",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "NOBIL (nobil.no) — Enova SF, Energimyndigheten; CC BY 4.0 (data modified)",
+  "url": "https://info.nobil.no/",
+  "kind": "registry"
  }
 }
