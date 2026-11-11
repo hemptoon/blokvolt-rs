@@ -847,7 +847,9 @@ let idTried = false;
 function openFromUrl() {
   if (idTried || !st.id) return;
   idTried = true;
-  const pid = st.id;
+  // a point merged into another by the weekly build (manifest.redirects: old pid → kept pid): an old shared link opens the kept one
+  const to = M && M.redirects && M.redirects[st.id];
+  const pid = to ? String(to) : st.id;
   // a shared link puts the point in the hash (#z/lat/lon): its card file is found from there
   const c = map.getCenter();
   const near = map.queryRenderedFeatures({ layers: [LYR] }).find(f => String(f.properties.i) === pid);
