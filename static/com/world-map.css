@@ -144,10 +144,10 @@
 .wm-accb .wm-sw{margin:0}
 .wm-count{font-size:14px;color:var(--ink)}
 /* light / dark toggle on the map */
-.wm-theme{position:absolute;right:10px;bottom:34px;z-index:3;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 12px;border-radius:999px;border:1px solid var(--line2);background:rgba(255,255,255,.94);color:var(--ink);font:inherit;font-size:13px;font-weight:620;cursor:pointer;box-shadow:var(--shadow)}
+.wm-theme{position:absolute;left:10px;bottom:40px;z-index:3;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 12px;border-radius:999px;border:1px solid var(--line2);background:rgba(255,255,255,.94);color:var(--ink);font:inherit;font-size:13px;font-weight:620;cursor:pointer;box-shadow:var(--shadow)}
 .wm-theme[hidden]{display:none}
 @media (pointer:coarse){.wm-theme{min-height:44px}}
-@media (max-width:900px){.wm-theme{bottom:10px;right:10px;min-height:40px;padding:6px 10px}}
+@media (max-width:900px){.wm-theme{left:auto;bottom:10px;right:10px;min-height:40px;padding:6px 10px}}
 
 /* ---------------------------------------------------------------- dark map page (html.wm-dark; HOME3)
    The same tokens as the dark home (world-home.css): night #0B0F17, surfaces #141A26/#1B2230, ink #EEF0F3, muted #A6ADBA

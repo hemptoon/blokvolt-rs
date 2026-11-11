@@ -195,8 +195,8 @@ const restricted = ['==', ['get', 'a'], 1];
 // HOME3 dark map: zoomed out every place is a lime light (the picture of the home); from zoom 8 the types — AC light grey,
 // DC lime, 150 kW+ a larger lime point with a light ring, unknown power grey
 const D_COLOR = ['match', ['get', 'p'], [3, 4], '#D9F45B', 5, '#E9FF8A', 7, '#7E8696', 0, '#8A909B', '#E4E8EF'];
-const D_STROKE = ['match', ['get', 'p'], [3, 4], '#0B0F17', 5, '#F6FFD2', '#0B0F17'];
-const D_LOW = ['match', ['get', 'p'], 5, '#F4FFD2', '#D9F45B'];
+const D_STROKE = ['match', ['get', 'p'], [3, 4], '#0B0F17', 5, '#F6FFD2', '#AEB5C2'];
+const D_LOW = ['match', ['get', 'p'], 5, '#F4FFD2', [3, 4], '#D9F45B', '#A9BC45'];
 // places that are not public draw as a ring (no fill) from zoom 8: access not confirmed in the colour of the type,
 // customers only / private in orange; zoomed out they are smaller, fainter dots
 const notPub = ['!=', ['get', 'a'], 0];
@@ -215,7 +215,8 @@ function pointPaint() {
   };
   const ring = ['case', restricted, dk ? RING_RES_D : RING_RES_L, dk ? RING_UNK_D : RING_UNK_L];
   return {
-    'circle-radius': zrl(big, [1.8, 3, 4.5, 7, 9, 12.5], [1.5, 2.5, 3.5, 5.7, 7.5, 11]),
+    // dark: smaller points zoomed out, so the lime reads as lights, not as one patch (HOME3 7)
+    'circle-radius': dk ? zrl(big, [1.2, 1.9, 3.6, 7, 9, 12.5], [0.9, 1.4, 2.8, 5.7, 7.5, 11]) : zrl(big, [1.8, 3, 4.5, 7, 9, 12.5], [1.5, 2.5, 3.5, 5.7, 7.5, 11]),
     'circle-color': dk ? ['interpolate', ['linear'], ['zoom'], 6, D_LOW, 8.5, D_COLOR] : ['interpolate', ['linear'], ['zoom'], 5, P_LOW, 8, P_COLOR],
     'circle-stroke-color': ['case', notPub, ring, dk ? D_STROKE : P_STROKE],
     'circle-stroke-width': ['interpolate', ['linear'], ['zoom'], ...[2, 5, 8, 10, 12, 16].flatMap((z, k) => [z, ['case', notPub,
@@ -283,8 +284,8 @@ function addLayers() {
   map.addSource(SRC, { type: 'vector', url: 'pmtiles://' + at(M.tiles), attribution: '' });
   if (DARK() && !EMB) {   // the glow of the home picture, zoomed out only
     map.addLayer({ id: 'wm-glow', type: 'circle', source: SRC, 'source-layer': 'sites', maxzoom: 9, filter: pFilter(),
-      paint: { 'circle-color': '#4A5C12', 'circle-blur': 1, 'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 3, 5, 5, 8, 8],
-        'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.45, 7, 0.3, 9, 0] } }, before);
+      paint: { 'circle-color': '#4A5C12', 'circle-blur': 1, 'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 2, 5, 3.5, 8, 7],
+        'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.16, 7, 0.22, 9, 0] } }, before);
   }
   map.addLayer({
     id: LYR, type: 'circle', source: SRC, 'source-layer': 'sites', filter: pFilter(),

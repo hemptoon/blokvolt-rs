@@ -45,12 +45,13 @@ export async function start(o) {
   ml.addProtocol('pmtiles', proto.tile);
   const points = [
     { id: 'glow', type: 'circle', source: 'wm', 'source-layer': 'sites',
-      paint: { 'circle-color': '#4A5C12', 'circle-blur': 1, 'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.5, 7, 0.32],
-        'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 4, 5, 7, 8, 10, 12, 16] } },
+      // the tiles are thinned on a regular grid zoomed out (K7): a faint, small glow, so the grid does not read as a carpet
+      paint: { 'circle-color': '#4A5C12', 'circle-blur': 1, 'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.16, 6, 0.22, 9, 0.3],
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 2, 5, 3.5, 8, 7, 12, 14] } },
     { id: 'pt', type: 'circle', source: 'wm', 'source-layer': 'sites',
       paint: { 'circle-color': ['match', ['get', 'p'], 5, '#F4FFD2', '#D9F45B'],
         'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.75, 6, 0.95],
-        'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 0.7, 5, 1.2, 8, 2.6, 12, 5.5] } }
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 0.55, 5, 1, 8, 2.4, 12, 5.5] } }
   ];
   const wm = { type: 'vector', url: 'pmtiles://' + at(M.tiles), attribution: '' };
   let style = null;
@@ -60,6 +61,7 @@ export async function start(o) {
       const P = cfg.dark_paint || {};
       j.layers.forEach(l => {
         if (P[l.id]) l.paint = Object.assign({}, l.paint || {}, P[l.id]);
+        if (l.id === 'boundary_state') l.paint = Object.assign({}, l.paint || {}, { 'line-opacity': ['interpolate', ['linear'], ['zoom'], 4.6, 0, 5.4, 1] });
         if (l.type === 'symbol') {   // no labels on the picture: they come in from zoom 5, light on the dark ground
           l.paint = Object.assign({}, l.paint || {}, { 'text-opacity': ['interpolate', ['linear'], ['zoom'], 4.6, 0, 5.4, 1],
             'icon-opacity': ['interpolate', ['linear'], ['zoom'], 4.6, 0, 5.4, 1] });
