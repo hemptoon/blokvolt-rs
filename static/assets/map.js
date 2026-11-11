@@ -1665,7 +1665,7 @@ function ago(t) {
   const days = Math.floor((Date.now() / 1000 - t) / 86400);
   if (days < 1) return T.today;
   if (days < 2) return T.yesterday;
-  if (days < 7) return T.days_ago.replace('{n}', days);
+  if (days < 7) return ((days === 2 && T.days_ago_2) || T.days_ago).replace('{n}', days);   // days_ago_2: the Slovenian dual
   return new Date(t * 1000).toLocaleDateString(LOC, { day: 'numeric', month: 'numeric', year: 'numeric' });
 }
 function starBar(r) {

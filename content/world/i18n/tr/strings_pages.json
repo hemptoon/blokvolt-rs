@@ -148,8 +148,8 @@
  "unknown_net": "Şarj ağı bilinmiyor",
  "st_places": "şarj lokasyonu",
  "st_public": "bunlardan halka açık",
- "st_dc50_pub": "halka açık, hızlı şarj (50 kW+)",
- "st_hpc_pub": "halka açık, 150 kW ve üzeri",
+ "st_dc50_pub": "hızlı şarjlı halka açık lokasyon (50 kW+)",
+ "st_hpc_pub": "150 kW ve üzeri halka açık lokasyon",
  "st_countries_all": "ülke",
  "pl_place2": {
   "one": "şarj lokasyonu",

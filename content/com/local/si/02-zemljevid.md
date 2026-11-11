@@ -25,7 +25,7 @@ related: prices, road, home
 ---
 ## Od kod so podatki
 
-Polnilnice so iz dveh odprtih baz: **OpenStreetMap** (licenca ODbL) in **Open Charge Map** (CC BY 4.0). Posnetek je z dne {{ M.retrieved }}; stanje OpenStreetMapa {{ M.osm_base }}, izvoz Open Charge Mapa {{ M.ocm_export }}. Isto mesto iz obeh baz je prikazano enkrat. Na zemljevidu je {{ num(M.n) }} {{ pl(M.n, 'polnilnica', 'polnilnici', 'polnilnice', 'polnilnic') }}, od tega {{ num(M.dc50) }} z DC-polnjenjem od 50 kW naprej.
+Polnilnice so iz dveh odprtih baz: **OpenStreetMap** (licenca ODbL) in **Open Charge Map** (CC BY 4.0). Posnetek je z dne {{ M.retrieved }}; stanje OpenStreetMapa {{ M.osm_base }}, izvoz Open Charge Mapa {{ M.ocm_export }}. Polnilnica, ki je v obeh bazah, je prikazana enkrat. Na zemljevidu je {{ num(M.n) }} {{ pl(M.n, 'polnilnica', 'polnilnici', 'polnilnice', 'polnilnic') }}, od tega {{ num(M.dc50) }} z DC-polnjenjem od 50 kW naprej.
 
 **Polnilnice niso posamično preverjene.** Odprte baze urejajo vozniki in prostovoljci, zato kakšna polnilnica morda ne deluje več ali je samo za goste. Uradni register (NAP / Prometej) je večji: po zemljevidu društva DeMS ima {{ C.points.dems }} ([DeMS, 28. 8. 2026]({{ C.points.dems_src }})). Pred potjo preverite pri operaterju.
 
@@ -33,7 +33,7 @@ Kjer je cena znana, je v kartici polnilnice. Vse o cenah: [Cene]({{ PAGES.prices
 
 ## Kako uporabljati zemljevid
 
-- **Filtri** nad seznamom: vse, hitre DC-polnilnice od 50 kW, samo AC, CHAdeMO in mreže. Iskanje išče po imenu, naslovu, kraju in mreži.
+- **Filtri** nad seznamom: vse, hitre DC-polnilnice od 50 kW, samo AC, CHAdeMO in mreže. Iščete lahko po imenu, naslovu, kraju in mreži.
 - **V bližini** zahteva lokacijo šele, ko pritisnete gumb; lokacija ostane v vašem brskalniku.
 - **Priljubljene** (zvezdica v kartici) se hranijo samo v tem brskalniku.
 - **Navigacija** odpre Google Maps, Apple Maps ali Waze.

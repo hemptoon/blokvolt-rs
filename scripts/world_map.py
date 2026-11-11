@@ -155,14 +155,14 @@ def build(G):
         th = cfg.get('map_theme') or {}
         wm_cfg = {'lang': lang, 'data_base': cfg['data_base'], 'reports_api': cfg['reports_api'], 'checkins_api': cfg['checkins_api'],
                   'style': th.get('style') or STYLE, 'style_dark': th.get('style_dark', ''), 'dark_paint': th.get('dark_paint', {}),
-                  'theme': th.get('default', 'svetla'), 'home': HOME[lang], 'sources': I.slugs(lang)['sources'],
+                  'theme': th.get('default', 'svetla'), 'home': HOME[lang], 'sources': I.slugs(lang)['sources'] if world_shell.active() else '',
                   'center': VIEW['center'], 'zoom': VIEW['zoom'], 'font': FONT, 'about': ABOUT[lang], 'download': DOWNLOAD[lang], 'pages': PAGES,
                   'prices': (getattr(G, 'WORLD_PRICES', None) or {}).get('map_json', '')}   # G3: price line of the card
         if lang not in I.BASE:   # K8/LANG0: number/date locale of an extra language (world-map.js: cfg.intl)
             wm_cfg['intl'] = I.reg(lang).get('intl', lang)
             wm_cfg['dec'], wm_cfg['thou'] = I.reg(lang)['dec'], I.reg(lang)['thou']
         ctx = dict(WORLD_FT=WFT, WFOOT=world_shell.wfooter(lang, G) if world_shell.active() else None, OG_WORLD=world_shell.OG_WORLD if world_shell.active() else None, LOC=LOCS[lang], S=S, NAV=NAV, SWITCH=SWITCH, LANGMENU=I.lang_menu(PAGES, lang), LANGJS=I.lang_assets(OUT), home=HOME[lang] if world_shell.active() else (PAGES[lang] if lang != 'en' else '/'), section='map',
-                   theme_default=(cfg.get('map_theme') or {}).get('default', 'svetla'), sources_url=I.slugs(lang)['sources'],
+                   theme_default=(cfg.get('map_theme') or {}).get('default', 'svetla'), sources_url=I.slugs(lang)['sources'] if world_shell.active() else None,
                    COUNTRIES=G.countries, LOCALS=locals_, PAGES={'method': None}, T=T, title=T['title'],
                    description=T['description'], alts=alts, public=cfg['public'], noindex=False,
                    wm_cfg=json.dumps(wm_cfg, ensure_ascii=False).replace('</', '<\\/'),

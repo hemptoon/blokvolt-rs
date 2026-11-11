@@ -64,7 +64,7 @@
 <div id="map" role="region" aria-label="{{ T.map_label }}"></div>
 <div class="map-legend wm-legend" role="group" aria-label="{{ T.legend }}"><span><i class="wm-sw sw-ac"></i>{{ T.lg_ac }}</span><span><i class="wm-sw sw-dc"></i>{{ T.lg_dc }}</span><span><i class="wm-sw sw-hpc"></i>{{ T.lg_hpc }}</span><span><i class="wm-sw sw-unk"></i>{{ T.lg_unk }}</span><span class="wm-lg-acc"><i class="wm-sw sw-acc-unk"></i>{{ T.lg_acc_unk }}</span><span class="wm-lg-acc"><i class="wm-sw sw-acc-res"></i>{{ T.lg_acc_res }}</span></div>
 <button class="wm-theme" id="wm-theme" type="button" aria-pressed="false" data-dark="{{ T.theme_dark }}" data-light="{{ T.theme_light }}"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg><span>{{ T.theme_light }}</span></button>
-<div class="map-attr wm-attr" id="wm-attr"><span class="wm-attr-full">© <a href="https://www.openstreetmap.org/copyright" rel="noopener">{{ T.attr_osm }}</a> · <a href="{{ sources_url }}">{{ T.attr_sources }}</a></span></div>
+<div class="map-attr wm-attr" id="wm-attr"><span class="wm-attr-full">© <a href="https://www.openstreetmap.org/copyright" rel="noopener">{{ T.attr_osm }}</a>{% if sources_url %} · <a href="{{ sources_url }}">{{ T.attr_sources }}</a>{% endif %}</span></div>
 <div class="wm-msg" id="wm-msg" role="status" hidden></div>
 <div class="card-ov wm-card" id="wm-card" aria-live="polite"></div>
 </div>

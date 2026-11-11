@@ -3,9 +3,9 @@
 <footer class="ft wft"><div class="wrap">
 <div class="wft-top"><a class="logo" href="{{ home }}" aria-label="BlokVolt — {{ S.home }}">{{ mark() }}<span translate="no">blok<b>volt</b></span></a>
 {% if LANGMENU %}<details class="wft-lang"><summary>{{ ic('globe') }}<span class="sr-only">{{ WFOOT.lang }}: </span><span translate="no">{{ LOC.code }}</span></summary>
-<ul translate="no">{% for e in LANGMENU %}<li><a hreflang="{{ e.hl }}" lang="{{ e.html }}" href="{{ e.href }}"{% if e.on %} aria-current="true"{% endif %}>{{ e.label }}</a></li>{% endfor %}</ul></details>
+<ul translate="no">{% for e in LANGMENU %}<li><a translate="no" hreflang="{{ e.hl }}" lang="{{ e.html }}" href="{{ e.href }}"{% if e.on %} aria-current="true"{% endif %}>{{ e.label }}</a></li>{% endfor %}</ul></details>
 {% elif SWITCH %}<details class="wft-lang"><summary>{{ ic('globe') }}<span class="sr-only">{{ WFOOT.lang }}: </span><span translate="no">{{ LOC.code }}</span></summary>
-<ul translate="no">{% for code, href, label, hl in SWITCH %}<li><a hreflang="{{ hl }}" lang="{{ hl }}" href="{{ href }}"{% if code == LOC.key %} aria-current="true"{% endif %}>{{ label }}</a></li>{% endfor %}</ul></details>{% endif %}
+<ul translate="no">{% for code, href, label, hl in SWITCH %}<li><a translate="no" hreflang="{{ hl }}" lang="{{ hl }}" href="{{ href }}"{% if code == LOC.key %} aria-current="true"{% endif %}>{{ label }}</a></li>{% endfor %}</ul></details>{% endif %}
 </div>
 <div class="wft-cols">{% for h, links in WFOOT.cols %}<nav aria-label="{{ h }}"><h2>{{ h }}</h2><ul>{% for href, name, hl, lang in links %}<li><a href="{{ href }}"{% if hl %} hreflang="{{ hl }}"{% endif %}{% if lang %} lang="{{ lang }}"{% endif %}>{{ name }}</a></li>{% endfor %}</ul></nav>{% endfor %}</div>
 <p class="wft-legal">© {{ WFOOT.year }} BlokVolt · {{ WFOOT.line }} — <a href="{{ WFOOT.sources }}">{{ WFOOT.sources_name }}</a> · {{ WFOOT.nopaid }}</p>

@@ -14,22 +14,22 @@ related: map, prices, stats
 ---
 ## Kdo stoji za BlokVoltom
 
-BlokVolt je vodnik za polnjenje električnih avtomobilov v Srbiji in sosednjih državah. Vodita ga ustanovitelja srbskega podjetja Evolako, ki vgrajuje domače polnilnice v stanovanjskih stavbah — samo v Srbiji. V Sloveniji BlokVolt ničesar ne prodaja, nima partnerjev med operaterji ali proizvajalci in ne zaračunava mesta na strani. Srbski del vodnika je na [blokvolt.rs](https://www.blokvolt.rs/).
+BlokVolt je vodnik za polnjenje električnih avtomobilov v Srbiji, v drugih državah Zahodnega Balkana in v Sloveniji. Vodita ga ustanovitelja srbskega podjetja Evolako, ki vgrajuje domače polnilnice v stanovanjske stavbe — samo v Srbiji. V Sloveniji BlokVolt ničesar ne prodaja, nima partnerjev med operaterji ali proizvajalci in ne zaračunava mesta na strani. Srbski del vodnika je na [blokvolt.rs](https://www.blokvolt.rs/).
 
 ## Pravila
 
 1. **Samo javni viri.** Strani operaterjev, Borzen, vlada, Agencija za energijo, Uradni list, ACEA, AMZS. Kjer številko navajajo samo mediji ali primerjalne strani, to piše ob podatku, z oznako nizke ali srednje zanesljivosti.
 2. **Datum ob vsakem podatku.** Ob ceni sta datum, od katerega velja, in datum preverjanja. Cene goriv in subvencije se preverjajo pogosteje.
-3. **Enaka pravila za vse.** Enaki stolpci in enak vrstni red podatkov za vse mreže, brez ocen, lestvic in plačanih mest.
+3. **Enaka pravila za vse.** Enaki stolpci in enak vrstni red podatkov za vse mreže, brez ocen, lestvic in plačanih uvrstitev.
 4. **Vrzeli se objavijo.** Če operater cene ne objavlja ali se stran ni naložila, to piše ob mreži.
 
 ## Kaj ni bilo preverjeno
 
-Ob zadnjem preverjanju ({{ C.checked }}) se niso naložile strani Eko sklada, Statističnega urada (podatki SURS so povzeti po medijih), Energije plus in MOL Plugee; Petrolov cenik javnega polnjenja se ni prikazal. Teh podatkov vodnik ne navaja kot preverjenih.
+Ob zadnjem preverjanju ({{ C.checked }}) se niso naložile strani Statističnega urada (podatki SURS so povzeti po medijih), Energije plus in MOL Plugee. Teh podatkov vodnik ne navaja kot preverjenih.
 
 ## Zemljevid
 
-Polnilnice so iz OpenStreetMapa (ODbL 1.0) in Open Charge Mapa (CC BY 4.0). Obe bazi se prenašata enkrat na mesec; isto mesto iz obeh baz je prikazano enkrat. Polnilnice niso posamično preverjene, kar piše tudi v kartici vsake polnilnice. Iz Google Zemljevidov se ne prevzema nič, trenutna zasedenost polnilnic se ne prikazuje. Združeni seznam je odprt pod licenco ODbL: [stanice.json](/assets/region/si/stanice.json).
+Polnilnice so iz OpenStreetMapa (ODbL 1.0) in Open Charge Mapa (CC BY 4.0). Obe bazi se prenašata enkrat na mesec; polnilnica, ki je v obeh bazah, je prikazana enkrat. Polnilnice niso posamično preverjene, kar piše tudi v kartici vsake polnilnice. Iz Google Zemljevidov se ne prevzema nič, trenutna zasedenost polnilnic se ne prikazuje. Združeni seznam je odprt pod licenco ODbL: [stanice.json](/assets/region/si/stanice.json).
 
 ## Napake in popravki
 

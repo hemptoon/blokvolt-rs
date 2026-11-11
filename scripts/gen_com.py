@@ -485,6 +485,10 @@ def hreflang(key, loc, all_pages):
 def build_local(loc, C, st, pages, all_pages):
     S = STRINGS[loc['key']]
     M = map_stats(st)
+    if loc['key'] == 'si':   # HOME3 /si/ check: dates of the map data as Slovenian writes them (3. 11. 2026)
+        import loc_towns as _lt
+        for _k in ('retrieved', 'osm_base', 'ocm_export'):
+            M[_k] = _lt.date_local(M.get(_k), loc)
     by_key = {p['key']: p for p in pages}
     NAV = [(p['path'], p['nav'], p['key']) for p in pages if p.get('nav')]
     SWITCH = en_switch()

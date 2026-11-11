@@ -25,13 +25,13 @@ Cene energije pri več dobaviteljih in kako se sestavi račun, so na strani [Cen
 
 - **Groba ocena 0,17 €/kWh** je s primerjalne strani brez datuma; v kalkulatorju jo lahko zamenjate s ceno s svojega računa (»Svoja cena«).
 - **Samo energija** pri GEN-I: manjša tarifa (MT) je cenejša od višje (VT); omrežnina, prispevki in trošarina se obračunajo posebej.
-- **Omrežnina** se od leta 2025 obračunava tudi po dogovorjeni moči v časovnih blokih. Večja moč za hitrejše polnjenje lahko poveča mesečni del računa.
+- **Omrežnina** se od 1. 10. 2024 obračunava tudi po dogovorjeni moči v časovnih blokih. Večja dogovorjena moč za hitrejše polnjenje lahko poveča mesečni račun.
 
 ## Domača polnilnica: cene
 
 {{ w.pairs(C.home_prices, 'Kaj', 'Razpon cen') }}
 
-Ceniki podjetij, preverjeno 23. 9. 2026 (npr. [Elektro Požun]({{ C.home_prices_src }})). Pri več prodajalcih je cena polnilnice z osnovno vgradnjo navedena z znižano stopnjo DDV 9,5 %. Za domačo polnilnico je na voljo [subvencija Borzen]({{ PAGES.subsidies.path }}) (55 %, do 1.000 €).
+Vir: ceniki podjetij, preverjeno 23. 9. 2026 (npr. [Elektro Požun]({{ C.home_prices_src }})). Pri več prodajalcih je cena polnilnice z osnovno vgradnjo navedena z znižano stopnjo DDV 9,5 %. Za domačo polnilnico obstaja [Borzenova subvencija]({{ PAGES.subsidies.path }}) (55 %, do 1.000 €), vendar zaprošeni zneski že presegajo sredstva za leto 2026.
 
 ## Polnilnica v bloku
 
@@ -39,7 +39,7 @@ Ceniki podjetij, preverjeno 23. 9. 2026 (npr. [Elektro Požun]({{ C.home_prices_
 
 <details markdown="1"><summary>Kako se računa</summary>
 
-- **Doma:** kilovatne ure iz stene = kilometri × poraba ÷ 100 × (1 + izgube) × cena kWh. Privzeta je groba ocena skupne cene; izberete lahko tudi samo energijo pri GEN-I ali vpišete svojo ceno.
+- **Doma:** strošek = kilometri × poraba ÷ 100 × (1 + izgube) × cena kWh. Privzeta je groba ocena skupne cene; izberete lahko tudi samo energijo pri GEN-I ali vpišete svojo ceno.
 - **Javne polnilnice:** kWh, ki jih prejme avto × cena kWh; pristojbine za polnjenje in časovni dodatki niso všteti.
 - **Gorivo:** kilometri × litri na 100 km ÷ 100 × cena litra. Privzete so najvišje dovoljene cene zunaj avtocest od {{ C.fuel.date }}: bencin 95 {{ money(C.fuel.petrol, 3) }}, dizel {{ money(C.fuel.diesel, 3) }} ([Vlada RS]({{ C.fuel.src }})). Vlada jih spreminja vsak teden; ob avtocestah so cene proste.
 </details>

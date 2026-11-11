@@ -35,6 +35,7 @@ KEYS = ('word', 'nav', 'idx_title', 'idx_desc', 'idx_h1', 'idx_lead', 'idx_th_to
         'hub_line', 'none_now')
 TOWN_FIELDS = ('name', 'slug', 'lat', 'lon', 'loc', 'region', 'aliases', 'page')
 SLUG_RE = re.compile(r'^[a-z0-9]+(?:-[a-z0-9]+)*$')
+CONN_SL = {'type2': 'Tip 2', 'type1': 'Tip 1'}   # HOME3: the sl glossary term (/si/ language check)
 CONN = {'ccs2': 'CCS2', 'ccs1': 'CCS1', 'chademo': 'CHAdeMO', 'type2': 'Type 2', 'type1': 'Type 1', 'tesla': 'Tesla',
         'gbt': 'GB/T', 'cee': 'CEE'}
 
@@ -128,6 +129,8 @@ def date_local(ddmmyyyy, loc):
         return f'{int(d)}. {int(mo)}. {y}.'
     if loc['key'] in ('ba', 'me'):
         return f'{d}.{mo}.{y}.'
+    if loc['key'] == 'si':   # HOME3 /si/ check: Slovenian writes 3. 11. 2026 (spaces, no leading zeros, no final period)
+        return f'{int(d)}. {int(mo)}. {y}'
     return f'{d}.{mo}.{y}'
 
 
@@ -149,7 +152,7 @@ def station_row(s, C, S, T, G, loc, map_path, price_nets):
         pw = T['unknown']
     agg = {}
     for c in s.get('c') or []:
-        lab = CONN.get(c[0]) or S['map'].get(c[0]) or S['map']['other']
+        lab = (CONN_SL.get(c[0]) if loc['key'] == 'si' else None) or CONN.get(c[0]) or S['map'].get(c[0]) or S['map']['other']
         agg[lab] = agg.get(lab, 0) + (int(c[3]) if len(c) > 3 and c[3] else 1)
     conns = ' · '.join(f'{k} ×{v}' if v > 1 else k for k, v in agg.items())
     return dict(id=s['id'], name=name, addr=addr, net=net, net_slug=s.get('net') or '',

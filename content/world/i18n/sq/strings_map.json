@@ -153,7 +153,7 @@
  "ci_rules": "Nuk nevojitet llogari. Numërohen vetëm përgjigjet nga shoferë të ndryshëm. Çmimi krahasohet me tarifën e publikuar të rrjetit; ai mund të bëhet kandidat për indeksin e çmimeve vetëm kur dy shoferë raportojnë në mënyrë të pavarur të njëjtin çmim, ndërsa çmimet që nuk mund të jenë të sakta fshihen. Përgjigjet me reklama, lidhje ose të dhëna personale hiqen. Të njëjtat rregulla vlejnë për çdo rrjet.",
  "ci_privacy": "Ruhen: vendi i karikimit, përgjigjja juaj, çmimi nëse jepet, gjuha dhe një gjurmë ditore e lidhjes — një hash me çelës që ndryshon çdo ditë, jo adresa IP. Pa cookies, pa e-mail. Shfaqen vetëm totalet: konfirmimi i fundit dhe numri i raportimeve.",
  "emb_open": "Hapni në BlokVolt",
- "acc_all2": "Të gjithë karikuesit",
+ "acc_all2": "Të gjitha vendet e karikimit",
  "lg_acc_unk": "aksesi i pakonfirmuar",
  "lg_acc_res": "vetëm për klientët ose privat",
  "theme_dark": "Hartë e errët",

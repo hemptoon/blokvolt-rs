@@ -19,7 +19,7 @@
 
 {% macro pcell(n, seg) -%}
 {% set rows = n.prices|selectattr('seg', 'equalto', seg)|list %}
-{% if rows %}{% for p in rows %}<div class="pv"><b>{{ num(p.v, 2) }} {{ LOC.cur_sign }}</b>{% if p.cond %} <small>{{ p.cond }}</small>{% endif %}</div>{% endfor %}{% else %}<span class="muted">—</span>{% endif %}
+{% if rows %}{% for p in rows %}<div class="pv">{% if p.power and LOC.key == 'si' %}<small>{{ p.power }}:</small> {% endif %}<b>{{ num(p.v, 2) }} {{ LOC.cur_sign }}</b>{% if p.cond %} <small>{{ p.cond }}</small>{% endif %}</div>{% endfor %}{% else %}<span class="muted">—</span>{% endif %}
 {%- endmacro %}
 
 {# the networks-and-prices table: one row per network, prices per kWh as the network publishes them #}
@@ -40,7 +40,7 @@
 {% macro net_cards() -%}
 <div class="ncards2">{% for n in C.networks %}<section class="pcard ncard2" id="{{ n.slug }}">
 <div class="pcard-h"><span class="lg mono" aria-hidden="true" translate="no">{{ n.name|mono }}</span><div><b><a href="{{ n.site }}" rel="noopener nofollow">{{ n.name }}</a></b><span>{{ n.owner }}{% if n.registry %} · {{ n.registry }} {{ S.reg_rows }}{% elif n.sites_text %} · {{ n.sites_text }}{% endif %}</span></div></div>
-{% if n.prices %}<ul class="pl">{% for p in n.prices %}<li><span>{{ p.seg if p.seg != 'HPC' else S.hpc_short }} {{ p.power }}{% if p.cond %}, {{ p.cond }}{% endif %}</span><b>{{ num(p.v, 2) }} {{ S.per_kwh }}</b></li>{% endfor %}</ul>
+{% if n.prices %}<ul class="pl">{% for p in n.prices %}<li><span>{{ p.seg if p.seg != 'HPC' else S.hpc_short }}{% if p.power %} {{ p.power }}{% endif %}{% if p.cond %}, {{ p.cond }}{% endif %}</span><b>{{ num(p.v, 2) }} {{ S.per_kwh }}</b></li>{% endfor %}</ul>
 {% else %}<p class="pt">{{ n.price_text }}</p>{% endif %}
 <dl class="nd">
 {% if n.fees %}<dt>{{ S.fees }}</dt><dd>{{ n.fees|join(' ') }}</dd>{% endif %}
@@ -136,7 +136,7 @@
 <div class="field"><label for="c-fuel">{{ T.fuel_type }}</label><select class="select" id="c-fuel"><option value="petrol">{{ S.petrol }}</option><option value="diesel">{{ S.diesel }}</option></select></div>
 <div class="field"><label for="c-l100">{{ T.l100 }}</label><input class="input" type="number" id="c-l100" min="2" max="25" step="0.1" value="{{ K.l100_petrol }}" inputmode="decimal"></div>
 </div>
-<div class="field"><label for="c-lp">{{ T.l_price }}</label><input class="input" type="number" id="c-lp" min="{{ K.l_min or 0.5 }}" max="{{ K.l_max or 5 }}" step="{{ K.l_step or 0.01 }}" value="{{ C.fuel.petrol }}" inputmode="decimal"><span class="hint">{{ S.fuel_hint }} {{ C.fuel.date }}: {{ S.petrol }} {{ num(C.fuel.petrol, 2) }}, {{ S.diesel }} {{ num(C.fuel.diesel, 2) }} {{ LOC.cur_sign }}{{ '' if LOC.cur_sign.endswith('.') else '.' }}</span></div>
+<div class="field"><label for="c-lp">{{ T.l_price }}</label><input class="input" type="number" id="c-lp" min="{{ K.l_min or 0.5 }}" max="{{ K.l_max or 5 }}" step="{{ K.l_step or 0.01 }}" value="{{ C.fuel.petrol }}" inputmode="decimal"><span class="hint">{{ S.fuel_hint }} {{ C.fuel.date }}: {{ S.petrol|lower if LOC.key == 'si' else S.petrol }} {{ num(C.fuel.petrol, 2) }}{% if LOC.key == 'si' %} {{ LOC.cur_sign }}{% endif %}, {{ S.diesel|lower if LOC.key == 'si' else S.diesel }} {{ num(C.fuel.diesel, 2) }} {{ LOC.cur_sign }}{{ '' if LOC.cur_sign.endswith('.') else '.' }}</span></div>
 </div>
 </div>
 <aside class="box res" aria-live="polite">

@@ -6,7 +6,7 @@ nav: Subvencije
 icon: gift
 priority: 0.7
 title: Subvencije za električne avtomobile v Sloveniji 2026 — Borzen | BlokVolt
-description: Subvencije Borzen za nakup električnih vozil (do 7.800 €) in domačih polnilnic (55 %, do 1.000 €) v letu 2026: pogoji, zneski in zakaj so sredstva že porabljena.
+description: Borzenove subvencije za nakup električnih vozil (do 7.800 €) in domačih polnilnic (55 %, do 1.000 €) v letu 2026: pogoji, zneski in stanje sredstev.
 h1: Subvencije za električne avtomobile
 lead: Kaj Borzen v letu 2026 sofinancira za vozila in domače polnilnice, kakšno je stanje pozivov in kaj še ni potrjeno.
 card: Borzen: do 7.800 € za avto in do 1.000 € za domačo polnilnico; zaprošeni zneski že presegajo sredstva.

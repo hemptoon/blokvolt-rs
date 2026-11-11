@@ -27,7 +27,7 @@ Od januarja do septembra 2026 jih je bilo **{{ num(C.acea.y2026_9m) }}** (leto p
 
 ## Vozni park
 
-Natančnega števila baterijskih električnih avtomobilov na cestah ni bilo mogoče najti. Konec leta 2025 je bil njihov delež v voznem parku (skoraj 1,3 milijona osebnih avtomobilov) okoli {{ C.fleet.share }} ([{{ C.fleet.share_label }}]({{ C.fleet.share_src }})); Forbes Slovenija navaja zaokroženo okoli {{ num(C.fleet.approx) }}, brez navedbe vira ([{{ C.fleet.src_label }}]({{ C.fleet.src }})).
+Natančnega števila baterijskih električnih avtomobilov na cestah ni bilo mogoče najti. Konec leta 2025 je bil njihov delež v voznem parku (skoraj 1,3 milijona osebnih avtomobilov) okoli {{ C.fleet.share }} (okoli 2 % po [{{ C.fleet.share_label }}]({{ C.fleet.share_src }}), okoli 1,6 % in okoli 20.000 vozil po Svet24, 1. 7. 2026); Forbes Slovenija navaja okoli {{ num(C.fleet.approx) }}, brez navedbe vira ([{{ C.fleet.src_label }}]({{ C.fleet.src }})).
 
 ## Javne polnilne točke
 
@@ -36,7 +36,7 @@ Natančnega števila baterijskih električnih avtomobilov na cestah ni bilo mogo
 - **Največja operaterja:** {{ C.points.top2 }}
 - **Zemljevid tega vodnika:** {{ num(M.n) }} {{ pl(M.n, 'polnilnica', 'polnilnici', 'polnilnice', 'polnilnic') }} iz OpenStreetMapa in Open Charge Mapa, od tega {{ num(M.dc50) }} z DC od 50 kW naprej. [Zemljevid]({{ PAGES.map.path }})
 
-Številke se razlikujejo, ker štejejo različne enote (polnilne točke ali lokacije) in so z različnih datumov.
+Številke se razlikujejo, ker viri štejejo različne enote (polnilne točke ali lokacije) in so z različnih datumov.
 
 ## Podatki za prenos
 
