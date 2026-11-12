@@ -67,5 +67,17 @@
  "ft_lang": "Kieli",
  "src_count_note": "Open Charge Map lasketaan yhdeksi lähteeksi; sen sisältämät datan toimittajat luetellaan erikseen koko luettelossa.",
  "src_map": "Taustakartta: OpenFreeMap, © OpenMapTiles, tiedot © OpenStreetMapin tekijät. Etusivun kuvan maiden rajat: Natural Earth (tekijänoikeuksista vapaa). Kaupunkien nimet: GeoNames (CC BY 4.0).",
- "src_date": "Tilanne {date}."
+ "src_date": "Tilanne {date}.",
+ "ft_claim": "Maailman julkiset latausasemat avoimesta datasta – jokaisen luvun takana on lähde.",
+ "act_h": "Auta pitämään kartta oikeana",
+ "act_broken": "Onko laturi rikki? Merkitse se kartalle",
+ "act_fix": "Ehdota korjausta",
+ "act_widget": "Lisää kartta omalle sivustollesi",
+ "ft_place": "Novi Sad, Serbia",
+ "ft_line2": "Tiedot © OpenStreetMapin tekijät (ODbL), Open Charge Map, NOBIL ja kansalliset rekisterit",
+ "ft_social": "Seuraa BlokVoltia",
+ "pl_sources": {
+  "one": "tietolähde",
+  "other": "tietolähdettä"
+ }
 }

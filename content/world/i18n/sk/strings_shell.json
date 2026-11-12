@@ -71,5 +71,19 @@
  "ft_lang": "Jazyk",
  "src_count_note": "Open Charge Map sa počíta ako jeden zdroj; poskytovatelia údajov v ňom sú v úplnom zozname uvedení samostatne.",
  "src_map": "Podkladová mapa: OpenFreeMap, © OpenMapTiles, údaje © prispievatelia OpenStreetMap. Hranice štátov na obrázku úvodnej stránky: Natural Earth (voľné dielo). Názvy miest: GeoNames (CC BY 4.0).",
- "src_date": "Údaje k {date}."
+ "src_date": "Údaje k {date}.",
+ "ft_claim": "Verejné nabíjacie stanice celého sveta z otvorených dát — pri každom čísle je zdroj.",
+ "act_h": "Pomôžte udržať mapu presnú",
+ "act_broken": "Nabíjačka nefunguje? Označte to na mape",
+ "act_fix": "Navrhnite opravu",
+ "act_widget": "Vložte mapu na svoj web",
+ "ft_place": "Nový Sad, Srbsko",
+ "ft_line2": "Údaje © prispievatelia OpenStreetMap (ODbL), Open Charge Map, NOBIL a národné registre",
+ "ft_social": "Sledujte BlokVolt",
+ "pl_sources": {
+  "one": "zdroj údajov",
+  "few": "zdroje údajov",
+  "many": "zdroja údajov",
+  "other": "zdrojov údajov"
+ }
 }

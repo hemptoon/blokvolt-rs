@@ -71,5 +71,19 @@
  "ft_lang": "Jezik",
  "src_count_note": "Open Charge Map šteje kot en vir; ponudniki podatkov v njem so v celotnem seznamu navedeni posebej.",
  "src_map": "Osnovni zemljevid: OpenFreeMap, © OpenMapTiles, podatki © sodelavci OpenStreetMap. Meje držav na sliki na začetni strani: Natural Earth (javna domena). Imena mest: GeoNames (CC BY 4.0).",
- "src_date": "Podatki z dne {date}."
+ "src_date": "Podatki z dne {date}.",
+ "ft_claim": "Javne polnilnice sveta iz odprtih podatkov — za vsako številko stoji vir.",
+ "act_h": "Pomagajte ohranjati zemljevid točen",
+ "act_broken": "Polnilnica ne deluje? Označite to na zemljevidu",
+ "act_fix": "Predlagajte popravek",
+ "act_widget": "Postavite zemljevid na svojo stran",
+ "ft_place": "Novi Sad, Srbija",
+ "ft_line2": "Podatki © sodelavci OpenStreetMap (ODbL), Open Charge Map, NOBIL in nacionalni registri",
+ "ft_social": "Sledite BlokVoltu",
+ "pl_sources": {
+  "one": "vir podatkov",
+  "two": "vira podatkov",
+  "few": "viri podatkov",
+  "other": "virov podatkov"
+ }
 }

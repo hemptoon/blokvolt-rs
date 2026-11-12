@@ -100,10 +100,69 @@ def wfooter(l, G, built_locals=None):
     data += [(sl['b2b'], T['ft_b2b']), (SHELL['sources'][l], T['ft_sources']), (SHELL['methodology'][l], T['ft_method'])]
     bv = [(SHELL['about'][l], T['ft_about']), ('mailto:' + G.EMAIL, T['contact'] + ' (' + G.EMAIL + ')'), (terms_url(l), T['ft_terms'])]
     import datetime
+    from urllib.parse import quote
+    # POLISH (12.11.2026): big action buttons instead of "write to us" (blokvolt.com has no social accounts or phone);
+    # a correction goes the existing way — the map card's "Report an error" for a place, the e-mail with the world subject
+    # (strings_pages fix_subject) for anything else
+    fix = 'mailto:' + G.EMAIL + '?subject=' + quote(_pages_strings()[l]['fix_subject'])
+    acts = [(MAP[l], 'pin', T['act_broken']), (fix, 'tool', T['act_fix']), (sl['map_conf'], 'code', T['act_widget']),
+            ('mailto:' + G.EMAIL, 'mail', G.EMAIL)]
+    social = [(x['url'], x['name']) for x in (I.config().get('social') or []) if x.get('url') and x.get('name')]
     return {'cols': [(T['ft_c_charging'], [(u, n, None, None) for u, n in charging]), (T['ft_c_wb'], wb),
                      (T['ft_c_data'], [(u, n, None, None) for u, n in data]), ('BlokVolt', [(u, n, None, None) for u, n in bv])],
-            'line': T['ft_line'], 'nopaid': T['ft_nopaid'], 'sources': SHELL['sources'][l], 'sources_name': T['ft_sources'],
-            'year': datetime.date.today().year, 'lang': T['ft_lang']}
+            'line': T['ft_line2'], 'nopaid': T['ft_nopaid'], 'sources': SHELL['sources'][l], 'sources_name': T['ft_sources'],
+            'year': datetime.date.today().year, 'lang': T['ft_lang'], 'lang_name': I.label(l), 'place': T['ft_place'],
+            'terms': terms_url(l), 'terms_name': T['ft_terms'], 'claim': T['ft_claim'], 'stats': footer_stats(l),
+            'act_h': T['act_h'], 'acts': acts, 'social': social, 'social_h': T['ft_social'], 'lights': LIGHTS_URL}
+
+
+LIGHTS_URL = '/assets/ft-lights.webp'   # POLISH: the charger lights inside "volt" (scripts/world_footer_lights.py)
+_MANIFEST = {}
+_PAGES_STRINGS = {}
+
+
+def _pages_strings():
+    if not _PAGES_STRINGS:
+        _PAGES_STRINGS.update(I.load('pages', LANGS))
+    return _PAGES_STRINGS
+
+
+def footer_stats(l):
+    key = (os.environ.get('BV_WORLD_MANIFEST'), l)
+    if key not in _STATS:
+        _STATS[key] = _footer_stats(l)
+    return _STATS[key]
+
+
+_STATS = {}
+
+
+def _footer_stats(l):
+    """POLISH: the live numbers of the footer — places and countries as on the home (manifest counts), data sources as on
+    /sources/ (manifest sources without the per-country Open Charge Map entries). Nothing when there is no manifest."""
+    mp = os.environ.get('BV_WORLD_MANIFEST')
+    if not mp or not Path(mp).exists():
+        return []
+    if mp not in _MANIFEST:
+        _MANIFEST[mp] = json.load(open(mp, encoding='utf-8'))
+    m = _MANIFEST[mp]
+    counts = m.get('counts') or {}
+    H = I.load('home', [l])[l]
+    T = load_strings()[l]
+    loc = I.loc(l)
+
+    def num(x):
+        s = f'{int(x):,d}'
+        return s.replace(',', loc['thou'])
+    out = []
+    if counts.get('sites'):
+        out.append((num(counts['sites']), I.pl_form(counts['sites'], H['pl_places'], l)))
+    if counts.get('countries'):
+        out.append((num(counts['countries']), I.pl_form(counts['countries'], H['pl_countries'], l)))
+    ns = len([k for k in (m.get('sources') or {}) if not k.startswith('ocm:')])
+    if ns:
+        out.append((num(ns), I.pl_form(ns, T['pl_sources'], l)))
+    return out
 
 
 def footer(l):

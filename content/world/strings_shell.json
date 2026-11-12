@@ -313,5 +313,50 @@
   "en": "Data as of {date}.",
   "sr": "Podaci od {date}.",
   "ru": "Данные на {date}."
+ },
+ "ft_claim": {
+  "en": "The world's public EV chargers from open data — with a source behind every number.",
+  "sr": "Javni punjači sveta iz otvorenih podataka — uz izvor iza svakog broja.",
+  "ru": "Публичные зарядки мира из открытых данных — за каждой цифрой стоит источник."
+ },
+ "act_h": {
+  "en": "Help keep the map right",
+  "sr": "Pomozite da mapa bude tačna",
+  "ru": "Помогите карте оставаться точной"
+ },
+ "act_broken": {
+  "en": "Is a charger broken? Mark it on the map",
+  "sr": "Punjač ne radi? Označite to na mapi",
+  "ru": "Зарядка не работает? Отметьте это на карте"
+ },
+ "act_fix": {
+  "en": "Suggest a correction",
+  "sr": "Predložite ispravku",
+  "ru": "Предложите исправление"
+ },
+ "act_widget": {
+  "en": "Put the map on your site",
+  "sr": "Postavite mapu na svoj sajt",
+  "ru": "Поставьте карту на свой сайт"
+ },
+ "ft_place": {
+  "en": "Novi Sad, Serbia",
+  "sr": "Novi Sad, Srbija",
+  "ru": "Нови-Сад, Сербия"
+ },
+ "ft_line2": {
+  "en": "Data © OpenStreetMap contributors (ODbL), Open Charge Map, NOBIL and national registers",
+  "sr": "Podaci © saradnici OpenStreetMap-a (ODbL), Open Charge Map, NOBIL i nacionalni registri",
+  "ru": "Данные © участники OpenStreetMap (ODbL), Open Charge Map, NOBIL и национальные реестры"
+ },
+ "ft_social": {
+  "en": "Follow BlokVolt",
+  "sr": "BlokVolt na mrežama",
+  "ru": "BlokVolt в соцсетях"
+ },
+ "pl_sources": {
+  "en": "data source|data sources|data sources",
+  "sr": "izvor podataka|izvora podataka|izvora podataka",
+  "ru": "источник данных|источника данных|источников данных"
  }
 }

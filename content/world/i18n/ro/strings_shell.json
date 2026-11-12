@@ -69,5 +69,18 @@
  "ft_lang": "Limbă",
  "src_count_note": "Open Charge Map contează ca o singură sursă; furnizorii de date din cadrul său sunt enumerați separat în lista completă.",
  "src_map": "Harta de bază: OpenFreeMap, © OpenMapTiles, date © contribuitorii OpenStreetMap. Granițele țărilor din imaginea paginii principale: Natural Earth (domeniu public). Denumirile orașelor: GeoNames (CC BY 4.0).",
- "src_date": "Date la {date}."
+ "src_date": "Date la {date}.",
+ "ft_claim": "Stațiile publice de încărcare din lume, din date deschise — cu o sursă în spatele fiecărei cifre.",
+ "act_h": "Ajutați ca harta să rămână corectă",
+ "act_broken": "O stație nu funcționează? Marcați-o pe hartă",
+ "act_fix": "Propuneți o corectură",
+ "act_widget": "Puneți harta pe site-ul dumneavoastră",
+ "ft_place": "Novi Sad, Serbia",
+ "ft_line2": "Date © contributorii OpenStreetMap (ODbL), Open Charge Map, NOBIL și registre naționale",
+ "ft_social": "Urmăriți BlokVolt",
+ "pl_sources": {
+  "one": "sursă de date",
+  "few": "surse de date",
+  "other": "de surse de date"
+ }
 }

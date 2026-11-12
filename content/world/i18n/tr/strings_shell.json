@@ -67,5 +67,17 @@
  "ft_lang": "Dil",
  "src_count_note": "Open Charge Map tek bir kaynak olarak sayılır; içindeki veri sağlayıcılar tam listede ayrıca gösterilir.",
  "src_map": "Altlık harita: OpenFreeMap, © OpenMapTiles, veriler © OpenStreetMap katkıda bulunanları. Ana sayfa görselindeki ülke sınırları: Natural Earth (kamu malı). Şehir adları: GeoNames (CC BY 4.0).",
- "src_date": "Veriler {date} itibarıyla."
+ "src_date": "Veriler {date} itibarıyla.",
+ "ft_claim": "Dünyadaki halka açık şarj istasyonları açık verilerden — her sayının arkasında bir kaynak var.",
+ "act_h": "Haritanın doğru kalmasına yardım edin",
+ "act_broken": "Şarj noktası arızalı mı? Haritada işaretleyin",
+ "act_fix": "Düzeltme önerin",
+ "act_widget": "Haritayı sitenize ekleyin",
+ "ft_place": "Novi Sad, Sırbistan",
+ "ft_line2": "Veriler © OpenStreetMap katkıda bulunanları (ODbL), Open Charge Map, NOBIL ve ulusal kayıtlar",
+ "ft_social": "BlokVolt’u takip edin",
+ "pl_sources": {
+  "one": "veri kaynağı",
+  "other": "veri kaynağı"
+ }
 }

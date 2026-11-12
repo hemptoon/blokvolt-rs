@@ -67,5 +67,17 @@
  "ft_lang": "Sprache",
  "src_count_note": "Open Charge Map zählt als eine Quelle; die darin enthaltenen Datenlieferanten sind in der vollständigen Liste einzeln aufgeführt.",
  "src_map": "Hintergrundkarte: OpenFreeMap, © OpenMapTiles, Daten © OpenStreetMap-Mitwirkende. Ländergrenzen im Bild der Startseite: Natural Earth (gemeinfrei). Städtenamen: GeoNames (CC BY 4.0).",
- "src_date": "Datenstand: {date}."
+ "src_date": "Datenstand: {date}.",
+ "ft_claim": "Öffentliche Ladestationen weltweit aus offenen Daten – mit einer Quelle hinter jeder Zahl.",
+ "act_h": "Helfen Sie, die Karte korrekt zu halten",
+ "act_broken": "Ladestation defekt? Auf der Karte melden",
+ "act_fix": "Korrektur vorschlagen",
+ "act_widget": "Karte auf Ihrer Website einbinden",
+ "ft_place": "Novi Sad, Serbien",
+ "ft_line2": "Daten © OpenStreetMap-Mitwirkende (ODbL), Open Charge Map, NOBIL und nationale Register",
+ "ft_social": "BlokVolt folgen",
+ "pl_sources": {
+  "one": "Datenquelle",
+  "other": "Datenquellen"
+ }
 }

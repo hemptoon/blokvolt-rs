@@ -69,5 +69,18 @@
  "ft_lang": "Jezik",
  "src_count_note": "Open Charge Map se računa kao jedan izvor; dobavljači podataka unutar njega navedeni su posebno u potpunom spisku.",
  "src_map": "Osnovna mapa: OpenFreeMap, © OpenMapTiles, podaci © saradnici OpenStreetMapa. Granice zemalja na slici na početnoj stranici: Natural Earth (javno dobro). Nazivi gradova: GeoNames (CC BY 4.0).",
- "src_date": "Podaci od {date}."
+ "src_date": "Podaci od {date}.",
+ "ft_claim": "Javni punjači svijeta iz otvorenih podataka — uz izvor iza svakog broja.",
+ "act_h": "Pomozite da mapa bude tačna",
+ "act_broken": "Punjač ne radi? Označite to na mapi",
+ "act_fix": "Predložite ispravku",
+ "act_widget": "Postavite mapu na svoju stranicu",
+ "ft_place": "Novi Sad, Srbija",
+ "ft_line2": "Podaci © saradnici OpenStreetMapa (ODbL), Open Charge Map, NOBIL i nacionalni registri",
+ "ft_social": "Pratite BlokVolt",
+ "pl_sources": {
+  "one": "izvor podataka",
+  "few": "izvora podataka",
+  "other": "izvora podataka"
+ }
 }

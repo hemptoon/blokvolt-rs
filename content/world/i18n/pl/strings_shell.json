@@ -71,5 +71,19 @@
  "ft_lang": "Język",
  "src_count_note": "Open Charge Map liczy się jako jedno źródło; dostawcy danych w jego ramach są wymienieni osobno na pełnej liście.",
  "src_map": "Podkład mapy: OpenFreeMap, © OpenMapTiles, dane © współtwórcy OpenStreetMap. Granice państw na ilustracji strony głównej: Natural Earth (domena publiczna). Nazwy miast: GeoNames (CC BY 4.0).",
- "src_date": "Stan danych: {date}."
+ "src_date": "Stan danych: {date}.",
+ "ft_claim": "Publiczne stacje ładowania z całego świata z otwartych danych — za każdą liczbą stoi źródło.",
+ "act_h": "Pomóż utrzymać mapę aktualną",
+ "act_broken": "Ładowarka nie działa? Zaznacz to na mapie",
+ "act_fix": "Zaproponuj poprawkę",
+ "act_widget": "Umieść mapę na swojej stronie",
+ "ft_place": "Nowy Sad, Serbia",
+ "ft_line2": "Dane © współtwórcy OpenStreetMap (ODbL), Open Charge Map, NOBIL i rejestry krajowe",
+ "ft_social": "Obserwuj BlokVolt",
+ "pl_sources": {
+  "one": "źródło danych",
+  "few": "źródła danych",
+  "many": "źródeł danych",
+  "other": "źródła danych"
+ }
 }

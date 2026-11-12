@@ -15,4 +15,4 @@
 .wp-chart .wp-home{fill:#9AA3AF}
 .wp-key{display:inline-block;width:.8em;height:.8em;border-radius:2px;margin-right:.3em;vertical-align:-.05em}
 .wp-key-dc{background:#2E6BFF}.wp-key-home{background:#9AA3AF}
-@media (prefers-color-scheme:dark){.wp-chart .wp-home{fill:#6b7480}}
+html[data-theme="dark"] .wp-chart .wp-home{fill:#6b7480}

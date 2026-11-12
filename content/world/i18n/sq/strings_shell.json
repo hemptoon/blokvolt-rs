@@ -67,5 +67,17 @@
  "ft_lang": "Gjuha",
  "src_count_note": "Open Charge Map llogaritet si një burim; ofruesit e të dhënave brenda tij jepen veçmas në listën e plotë.",
  "src_map": "Harta bazë: OpenFreeMap, © OpenMapTiles, të dhëna © kontribuuesit e OpenStreetMap. Kufijtë e shteteve në figurën e faqes kryesore: Natural Earth (domen publik). Emrat e qyteteve: GeoNames (CC BY 4.0).",
- "src_date": "Të dhënat deri më {date}."
+ "src_date": "Të dhënat deri më {date}.",
+ "ft_claim": "Karikuesit publikë të botës nga të dhëna të hapura — me një burim pas çdo numri.",
+ "act_h": "Ndihmoni që harta të jetë e saktë",
+ "act_broken": "Një karikues nuk punon? Shënojeni në hartë",
+ "act_fix": "Propozoni një korrigjim",
+ "act_widget": "Vendoseni hartën në faqen tuaj",
+ "ft_place": "Novi Sad, Serbi",
+ "ft_line2": "Të dhëna © kontribuuesit e OpenStreetMap (ODbL), Open Charge Map, NOBIL dhe regjistrat kombëtarë",
+ "ft_social": "Ndiqni BlokVolt",
+ "pl_sources": {
+  "one": "burim të dhënash",
+  "other": "burime të dhënash"
+ }
 }

@@ -69,5 +69,18 @@
  "ft_lang": "Valoda",
  "src_count_note": "Open Charge Map tiek uzskatīts par vienu avotu; tajā iekļautie datu sniedzēji pilnajā sarakstā norādīti atsevišķi.",
  "src_map": "Pamatkarte: OpenFreeMap, © OpenMapTiles, dati © OpenStreetMap līdzautori. Valstu robežas sākumlapas attēlā: Natural Earth (publiskais domēns). Pilsētu nosaukumi: GeoNames (CC BY 4.0).",
- "src_date": "Dati uz {date}."
+ "src_date": "Dati uz {date}.",
+ "ft_claim": "Pasaules publiskās uzlādes stacijas no atvērtajiem datiem — katram skaitlim ir avots.",
+ "act_h": "Palīdziet uzturēt karti precīzu",
+ "act_broken": "Uzlādes stacija nedarbojas? Atzīmējiet to kartē",
+ "act_fix": "Iesakiet labojumu",
+ "act_widget": "Ievietojiet karti savā vietnē",
+ "ft_place": "Novisada, Serbija",
+ "ft_line2": "Dati © OpenStreetMap līdzautori (ODbL), Open Charge Map, NOBIL un valstu reģistri",
+ "ft_social": "Sekojiet BlokVolt",
+ "pl_sources": {
+  "zero": "datu avotu",
+  "one": "datu avots",
+  "other": "datu avoti"
+ }
 }

@@ -67,5 +67,17 @@
  "ft_lang": "Språk",
  "src_count_note": "Open Charge Map räknas som en källa; dataleverantörerna inom den redovisas separat i den fullständiga listan.",
  "src_map": "Bakgrundskarta: OpenFreeMap, © OpenMapTiles, data © OpenStreetMap-bidragsgivare. Landsgränser i startsidans bild: Natural Earth (fri från upphovsrätt). Ortnamn: GeoNames (CC BY 4.0).",
- "src_date": "Uppgifter per {date}."
+ "src_date": "Uppgifter per {date}.",
+ "ft_claim": "Världens publika laddstationer från öppna data – med en källa bakom varje siffra.",
+ "act_h": "Hjälp till att hålla kartan rätt",
+ "act_broken": "Fungerar inte en laddare? Markera det på kartan",
+ "act_fix": "Föreslå en rättelse",
+ "act_widget": "Lägg kartan på din webbplats",
+ "ft_place": "Novi Sad, Serbien",
+ "ft_line2": "Data © OpenStreetMap-bidragsgivare (ODbL), Open Charge Map, NOBIL och nationella register",
+ "ft_social": "Följ BlokVolt",
+ "pl_sources": {
+  "one": "datakälla",
+  "other": "datakällor"
+ }
 }

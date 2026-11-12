@@ -1,6 +1,8 @@
 {% if WFOOT is defined and WFOOT %}{% include '_wfooter.html' %}{% else %}
 {% from '_icons.html' import ic, mark %}
-<footer class="ft"><div class="wrap">
+{# POLISH (12.11.2026): the local sections keep their own footer (language, links, data date) inside the same dark panel as the
+   world footer, with the giant word — no new strings, the word is decorative (com.css .wft-loc). #}
+<footer class="ft wft-loc"><div class="wft-out"><div class="wft-pan"><div class="wft-locin">
 <div class="ft-in">
 <div><a class="logo" href="{{ home }}" aria-label="BlokVolt — {{ S.home }}">{{ mark() }}<span translate="no">blok<b>volt</b></span></a>
 <p>{{ S.ft_claim }}</p>
@@ -31,6 +33,9 @@
 {% endif %}
 </div>
 {% if WORLD_FT %}<nav class="ft-world" aria-label="{{ WORLD_FT.h }}"><h2>{{ WORLD_FT.h }}</h2><ul>{% for href, name in WORLD_FT.links %}<li><a href="{{ href }}">{{ name }}</a></li>{% endfor %}</ul></nav>
-{% endif %}<div class="ft-legal"><span>© 2026 BlokVolt · {{ S.ft_checked }} {{ C.checked if C is defined else CHECKED }}</span><span>{{ S.ft_data|safe }}</span></div>
+{% endif %}</div>
+<div class="wft-word" aria-hidden="true" translate="no" data-lights="/assets/ft-lights.webp"><span class="wft-w1">blok</span><span class="wft-w2">volt</span></div>
+</div>
+<div class="ft-legal wft-loclegal"><span>© 2026 BlokVolt · {{ S.ft_checked }} {{ C.checked if C is defined else CHECKED }}</span><span>{{ S.ft_data|safe }}</span></div>
 </div></footer>
 {% endif %}

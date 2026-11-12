@@ -197,3 +197,18 @@ html.wm-dark .sw-unk{background:#8A909B;box-shadow:inset 0 0 0 2px #0B0F17}
 html.wm-dark .sw-acc-unk{background:transparent;box-shadow:inset 0 0 0 2px #D9F45B}
 html.wm-dark .sw-acc-res{background:transparent;box-shadow:inset 0 0 0 2px #FF9B71}
 html.wm-dark .chip[aria-pressed="true"] .sw-ac{box-shadow:inset 0 0 0 2px #151B05}
+/* POLISH (12.11.2026): phones. The map keeps its height while Safari's address bar comes and goes (svh, not dvh); the legend
+   is one line that scrolls sideways instead of four lines over the map; held horizontally (≤ 500 px high) the title and the
+   filter button share one line, the lead hides, and the map takes the whole screen under the header. */
+@media (max-width:900px){
+ .wm-page .map-wrap{height:62vh;height:64svh;min-height:340px}
+ .wm-page .wm-legend{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;font-size:12px}
+ .wm-page .wm-legend::-webkit-scrollbar{display:none}
+}
+@media (orientation:landscape) and (max-height:500px){
+ .wm-page .map-top,.wm-page .wm-top{display:flex;align-items:center;gap:12px;padding:8px 16px 8px;padding-left:max(16px,env(safe-area-inset-left))}
+ .wm-page .wm-top h1{font-size:19px;margin:0}
+ .wm-page .wm-top p{display:none}
+ .wm-page .wm-ftoggle{margin:0 0 0 auto}
+ .wm-page .map-wrap{height:calc(100vh - var(--hd));height:calc(100svh - var(--hd));min-height:240px}
+}

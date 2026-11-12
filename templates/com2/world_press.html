@@ -9,7 +9,7 @@
 <p class="note">{{ P.charts_p }}</p>
 {% for e in emb %}<figure class="wp-fig">{{ e.svg|safe }}</figure>
 <p><label for="emb-{{ loop.index }}"><b>{{ P.embed_code }}</b> — {{ e.title }}</label></p>
-<textarea id="emb-{{ loop.index }}" class="wp-emb" readonly rows="3" style="width:100%;font:12px ui-monospace,monospace">{{ e.code }}</textarea>
+<textarea id="emb-{{ loop.index }}" class="input wz-code wp-emb" readonly rows="5" spellcheck="false">{{ e.code }}</textarea>
 <div class="chips"><a class="chip" href="{{ e.file[0] }}" download>{{ e.file[1] }}</a></div>
 {% endfor %}</div>
 <div class="sec"><div class="sec-head"><h2 id="cite">{{ P.h_cite }}</h2></div>
