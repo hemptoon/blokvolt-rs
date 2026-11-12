@@ -354,3 +354,4 @@ html[data-theme="dark"] input[type=checkbox],html[data-theme="dark"] input[type=
   :is(h1,h2,h3,p,li,td,th,dd,.fact>span,.tile,.wft-claim,.wft-act span){-webkit-hyphens:auto;hyphens:auto;hyphenate-limit-chars:10 4 4;overflow-wrap:break-word}
   :is(code,pre,.wft-word,[translate="no"]){-webkit-hyphens:manual;hyphens:manual}
 }
+@media (max-width:719px){.tw tbody th,.tw th[scope=row]{-webkit-hyphens:manual;hyphens:manual}}
