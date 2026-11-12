@@ -690,7 +690,7 @@
         res.list.forEach(function (x) { var g = x.r[0]; if (order.indexOf(g) < 0) order.push(g); });
         order.forEach(function (g) {
           var xs = res.list.filter(function (x) { return x.r[0] === g; }).slice(0, 60);
-          html += '<section class="bvs-sec"><h2>' + esc(T['g_' + g]) + '</h2><ul class="bvs-ul">' + xs.map(function (x, k) { x.n = k; x.oid = 'bvsa-' + g + k; return row(I, x, false).replace('role="option"', '').replace('tabindex="-1"', ''); }).join('') + '</ul></section>';
+          html += '<section class="bvs-sec"><h2>' + esc(T['g_' + g]) + '</h2><ul class="bvs-ul">' + xs.map(function (x, k) { x.n = k; x.oid = 'bvsa-' + g + k; return row(I, x, false).replace(' role="option"', '').replace(/ aria-selected="\w+"/, '').replace(' tabindex="-1"', ''); }).join('') + '</ul></section>';
         });
       }
       html += '<p class="bvs-foot"><a href="' + esc(I.doc.map) + '">' + esc(T.on_map) + '</a><a href="' + esc(I.doc.hub) + '">' + esc(T.countries) + '</a></p>';
