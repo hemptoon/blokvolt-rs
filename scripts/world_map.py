@@ -218,7 +218,7 @@ def selftest():
             errs.append(f'{path}: in the sitemap')
         if f'<html lang="{LOCS[lang]["html"]}"' not in h:   # THEME: data-theme follows
             errs.append(f'{path}: wrong lang')
-        title = re.search(r'<title>(.*?)</title>', h).group(1)
+        title = __import__('html').unescape(re.search(r'<title>(.*?)</title>', h).group(1))   # &#39; (auto's) is not a number
         if re.search(r'\d', title):
             errs.append(f'{path}: number in <title>')
         for pat in (r'odmah', r'24/7', r'Evolako', r'evolako\.png'):
