@@ -760,8 +760,10 @@ def babel_entry(code):
 # ------------------------------------------------------------------ selftest
 def selftest():
     errs = []
-    if tuple(config().get('langs_enabled') or ()) != BASE:
-        errs.append('pushed config must enable exactly en, sr, ru until "релиз языков" (LANG_pool, LANGI step 6)')
+    # «релиз главной и языков» (12.11.2026, POLISH): production = en, sr, ru + wave 1; wave 2 comes with «релиз языков 2»
+    en_ = list(config().get('langs_enabled') or ())
+    if en_[:3] != list(BASE) or any(x not in registry() for x in en_) or len(set(en_)) != len(en_):
+        errs.append('langs_enabled: en, sr, ru first, then registry languages only, no repeats')
     pv = config().get('langs_enabled_preview') or []
     if pv[:1] != ['en'] or any(x not in registry() for x in pv) or len(set(pv)) != len(pv):
         errs.append('langs_enabled_preview: English first, registry languages only, no repeats')
