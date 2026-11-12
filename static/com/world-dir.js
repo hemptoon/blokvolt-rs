@@ -52,6 +52,9 @@
     const res = root.querySelector('.wd-res'), none = box && box.querySelector('.wd-none');
     if (!q || !res) return;
     box.hidden = false;
+    // SEARCH (12.11.2026): with the site search on the page, "Find a country" is its countries-only mode (suggestions in
+    // every language and with typos); this filter in place stays the way without it
+    if (d.querySelector('script[src*="world-search.js"]')) return;
     const items = [];
     const seen = new Set();
     pans.forEach(p => p.querySelectorAll('.wd-az li[data-k]').forEach(li => {

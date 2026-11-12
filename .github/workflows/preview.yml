@@ -67,6 +67,7 @@ jobs:
           python3 scripts/world_checkins.py --selftest
           python3 scripts/world_press.py selftest
           python3 scripts/world_embed.py selftest
+          python3 scripts/world_search.py selftest
           node scripts/qa/vidzet_world_test.mjs
           python3 content/world/names/check_names.py
           BV_WORLD_PREVIEW=1 BV_WORLD_PAGES="$PAGES" BV_WORLD_MANIFEST="$MANIFEST" BV_WORLD_DATA=/world-data/ python3 scripts/gen_com.py
@@ -78,6 +79,7 @@ jobs:
           BV_WORLD_PREVIEW=1 python3 scripts/qa/world_pages_check.py dist-com "$PAGES" --report "$RUNNER_TEMP/world_pages_check.json"
           BV_WORLD_PREVIEW=1 python3 scripts/qa/world_embed_check.py dist-com
           BV_WORLD_PREVIEW=1 python3 scripts/qa/world_lang_check.py dist-com
+          node scripts/qa/world_search_test.mjs dist-com
           rm -f dist-com/CNAME
           n=$(find dist-com -type f | wc -l)
           echo "blokvolt.com files: $n (Cloudflare Pages Free: 20000; LANG0 budget: under 19000)"

@@ -36,7 +36,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 WORLD = ROOT / 'content' / 'world'
 BASE = ('en', 'sr', 'ru')                      # languages of the combined string files
-PARTS = ('map', 'pages', 'shell', 'prices', 'pay', 'press', 'b2b', 'embed', 'home')   # LANG0: all string files (+ home of HOME2)
+PARTS = ('map', 'pages', 'shell', 'prices', 'pay', 'press', 'b2b', 'embed', 'home', 'search')   # LANG0: all string files (+ home of HOME2, + search of SEARCH)
 SLUG_KEYS = ('home', 'map', 'hub', 'net', 'about', 'download', 'gnet', 'prices', 'shell_about', 'sources', 'methodology')
 # LANG0: section paths of G4/G5/G7/G10. en/sr/ru keep them in config.json; another language may name them in its
 # slugs.json, otherwise the engine takes its home prefix + the English path (/de/ + how-to-pay/ = /de/how-to-pay/)

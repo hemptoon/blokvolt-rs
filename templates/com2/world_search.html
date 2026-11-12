@@ -1,0 +1,17 @@
+{% extends 'world_base.html' %}
+{# SEARCH (12.11.2026): all results of the site search, noindex; world-search.js draws them from ?q= (scripts/world_search.py) #}
+{% block pagehead %}<div class="ph"><div class="wrap"><h1>{{ h1 }}</h1></div></div>{% endblock %}
+{% block content %}
+<div class="cwide bvs-page">
+<form class="bvs bvs-inpage" role="search" action="" data-idx="{{ idx }}" data-mode="page">
+<label class="sr-only" for="bvs-page-q">{{ TS.label }}</label>
+<div class="bvs-box"><svg class="bvs-ic" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+<input id="bvs-page-q" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="{{ TS.ph }}" maxlength="80">
+<button class="bvs-go" type="submit">{{ TS.go }}</button></div>
+</form>
+<p class="bvs-hint" id="bvs-hint">{{ TS.page_hint }}</p>
+<div class="bvs-all" id="bvs-all" aria-live="polite"></div>
+<noscript><p><a href="{{ map_url }}">{{ TS.on_map }}</a> · <a href="{{ hub_url }}">{{ TS.countries }}</a></p></noscript>
+</div>
+{% endblock %}
+{% block scripts %}<script src="/assets/world/world-search.js" defer></script>{% endblock %}

@@ -18,6 +18,8 @@
 <div class="map-top wm-top">
 <h1>{{ T.h1 }}</h1>
 <p>{{ T.lead }}</p>
+{% if not embed %}<form class="bvs wm-find" role="search" action="@@BVS_ALL@@" data-mode="map"><label class="sr-only" for="wm-find-q">@@BVS_LABEL@@</label>
+<div class="bvs-box"><svg class="bvs-ic" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="wm-find-q" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="@@BVS_PH@@" maxlength="80"></div></form>{% endif %}
 <button class="btn sm wm-ftoggle" id="wm-ft" type="button" aria-expanded="false" aria-controls="wm-filters">{{ T.filters_show }} <span class="n" id="wm-fn" hidden></span></button>
 </div>
 <form class="wm-filters" id="wm-filters" action="#" autocomplete="off">
@@ -76,4 +78,5 @@
 <script id="wm-i18n" type="application/json">{{ wm_i18n|safe }}</script>
 {% endblock %}
 {% block scripts %}<script src="/assets/vendor/pmtiles-{{ pmtiles_ver }}/pmtiles.js" defer></script>
-<script type="module" src="/assets/world/world-map.js?v={{ v_js }}"></script>{% endblock %}
+<script type="module" src="/assets/world/world-map.js?v={{ v_js }}"></script>{% if not embed %}
+<script src="/assets/world/world-search.js" defer></script>{% endif %}{% endblock %}

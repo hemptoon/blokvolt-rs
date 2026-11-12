@@ -653,6 +653,7 @@ def main():
     import world_b2b; world_b2b.run(sys.modules[__name__], wc)  # G10: /data-for-business/ (EN/SR/RU) with the request form
     import world_embed; world_embed.run(sys.modules[__name__], wc)  # G5: /embed/map/, /map-for-your-site/, /developers/
     import world_home; world_home.run(sys.modules[__name__], wc)  # HOME2: world home /, /sr/, /ru/ with the map first
+    __import__('world_search').run(sys.modules[__name__], wc)  # SEARCH: one search index per language + /search/ (after all pages)
     if wc is not None:
         world_pages.forecast(wc)  # LANG0: size of production per language set (stops the build above 800 MB)
     if wc is not None and wc.public:  # REL1: the world sitemaps again, now with the pages of G0/G3/G4/G5/G7/G10 written after world_pages

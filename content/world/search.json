@@ -1,0 +1,6160 @@
+{
+ "about": "SEARCH (12.11.2026): dictionaries of the site search of blokvolt.com (scripts/world_search.py, static/com/world-search.js). sections: words that lead to a section, in all 30 languages (any language finds a section on every page); stop: connector words dropped from a query (\"charging stations in\", \"Ladestationen\", \"зарядки в\") unless nothing else is left; fast / ultra / ac: words that turn a place into the map with a power filter (single words only); country_alias / network_alias / region_alias: other names; network_merge: networks of the manifest that are one network for a driver (one result, the map with both slugs). Words are folded at build time (case, accents, Cyrillic and Greek do not matter).",
+ "sections": {
+  "map": {
+   "en": [
+    "map",
+    "maps",
+    "charger map",
+    "charging map",
+    "charging station map",
+    "ev map"
+   ],
+   "sr": [
+    "mapa",
+    "mape",
+    "mapa punjača",
+    "mapa punionica",
+    "karta",
+    "mapa stanica"
+   ],
+   "ru": [
+    "карта",
+    "карты",
+    "карта зарядок",
+    "карта зарядных станций",
+    "карта электрозаправок"
+   ],
+   "de": [
+    "karte",
+    "landkarte",
+    "ladekarte",
+    "ladestationen karte",
+    "stromtankstellen karte",
+    "map"
+   ],
+   "fr": [
+    "carte",
+    "cartes",
+    "carte des bornes",
+    "carte de recharge",
+    "plan"
+   ],
+   "nl": [
+    "kaart",
+    "kaarten",
+    "laadpalenkaart",
+    "kaart laadpalen",
+    "plattegrond"
+   ],
+   "es": [
+    "mapa",
+    "mapas",
+    "mapa de cargadores",
+    "mapa de puntos de recarga",
+    "mapa de recarga"
+   ],
+   "it": [
+    "mappa",
+    "mappe",
+    "cartina",
+    "mappa colonnine",
+    "mappa ricarica",
+    "mappa delle colonnine"
+   ],
+   "pl": [
+    "mapa",
+    "mapy",
+    "mapa ładowarek",
+    "mapa stacji ładowania",
+    "mapa ładowania"
+   ],
+   "sv": [
+    "karta",
+    "kartor",
+    "laddkarta",
+    "karta laddstationer",
+    "laddstationskarta"
+   ],
+   "nb": [
+    "kart",
+    "kartet",
+    "ladekart",
+    "kart over ladestasjoner",
+    "ladestasjonskart"
+   ],
+   "da": [
+    "kort",
+    "kortet",
+    "landkort",
+    "kort over ladestandere",
+    "kort over ladestationer"
+   ],
+   "fi": [
+    "kartta",
+    "kartat",
+    "latauskartta",
+    "latausasemakartta",
+    "latauspisteet kartalla"
+   ],
+   "pt": [
+    "mapa",
+    "mapas",
+    "mapa de carregadores",
+    "mapa de postos de carregamento",
+    "mapa de carregamento"
+   ],
+   "el": [
+    "χάρτης",
+    "χάρτες",
+    "χάρτη",
+    "χάρτης φορτιστών",
+    "χάρτης σταθμών φόρτισης"
+   ],
+   "cs": [
+    "mapa",
+    "mapy",
+    "mapa nabíječek",
+    "mapa nabíjecích stanic",
+    "mapa dobíjecích stanic"
+   ],
+   "sk": [
+    "mapa",
+    "mapy",
+    "mapa nabíjačiek",
+    "mapa nabíjacích staníc",
+    "mapa nabíjania"
+   ],
+   "hu": [
+    "térkép",
+    "térképek",
+    "töltőtérkép",
+    "töltőállomás térkép",
+    "töltők térképe"
+   ],
+   "ro": [
+    "hartă",
+    "harta",
+    "hărți",
+    "harta stațiilor de încărcare",
+    "hartă încărcătoare"
+   ],
+   "bg": [
+    "карта",
+    "карти",
+    "карта зарядни станции",
+    "карта на зарядните станции",
+    "карта зарядни"
+   ],
+   "sl": [
+    "zemljevid",
+    "zemljevidi",
+    "karta",
+    "zemljevid polnilnic",
+    "polnilnice zemljevid"
+   ],
+   "hr": [
+    "karta",
+    "karte",
+    "mapa",
+    "karta punionica",
+    "karta punjača",
+    "mapa punionica"
+   ],
+   "bs": [
+    "mapa",
+    "mape",
+    "karta",
+    "mapa punjača",
+    "mapa punionica",
+    "karta punionica"
+   ],
+   "mk": [
+    "мапа",
+    "мапи",
+    "карта",
+    "мапа на полначи",
+    "мапа на станици за полнење"
+   ],
+   "sq": [
+    "hartë",
+    "harta",
+    "hartat",
+    "harta e karikuesve",
+    "harta e stacioneve të karikimit"
+   ],
+   "uk": [
+    "карта",
+    "карти",
+    "мапа",
+    "карта зарядок",
+    "карта зарядних станцій",
+    "мапа зарядок"
+   ],
+   "tr": [
+    "harita",
+    "haritalar",
+    "şarj haritası",
+    "şarj istasyonu haritası",
+    "şarj istasyonları haritası"
+   ],
+   "lt": [
+    "žemėlapis",
+    "žemėlapiai",
+    "įkrovimo stočių žemėlapis",
+    "krovimo stotelių žemėlapis",
+    "žemėlapyje"
+   ],
+   "lv": [
+    "karte",
+    "kartes",
+    "uzlādes staciju karte",
+    "lādētāju karte",
+    "kartē"
+   ],
+   "et": [
+    "kaart",
+    "kaardid",
+    "laadimisjaamade kaart",
+    "laadijate kaart",
+    "kaardil"
+   ]
+  },
+  "hub": {
+   "en": [
+    "charging stations",
+    "chargers",
+    "all countries",
+    "countries",
+    "country",
+    "by country",
+    "stations list"
+   ],
+   "sr": [
+    "punionice",
+    "punjači",
+    "sve zemlje",
+    "zemlje",
+    "države",
+    "po zemljama",
+    "lista punionica"
+   ],
+   "ru": [
+    "зарядные станции",
+    "зарядки",
+    "все страны",
+    "страны",
+    "страна",
+    "по странам",
+    "список станций"
+   ],
+   "de": [
+    "ladestationen",
+    "ladesäulen",
+    "alle länder",
+    "länder",
+    "land",
+    "nach land",
+    "übersicht"
+   ],
+   "fr": [
+    "bornes de recharge",
+    "bornes",
+    "tous les pays",
+    "pays",
+    "par pays",
+    "liste des bornes"
+   ],
+   "nl": [
+    "laadpalen",
+    "laadstations",
+    "alle landen",
+    "landen",
+    "land",
+    "per land"
+   ],
+   "es": [
+    "puntos de recarga",
+    "cargadores",
+    "electrolineras",
+    "todos los países",
+    "países",
+    "país",
+    "por país"
+   ],
+   "it": [
+    "colonnine",
+    "colonnine di ricarica",
+    "stazioni di ricarica",
+    "tutti i paesi",
+    "paesi",
+    "paese",
+    "per paese"
+   ],
+   "pl": [
+    "stacje ładowania",
+    "ładowarki",
+    "wszystkie kraje",
+    "kraje",
+    "kraj",
+    "według kraju"
+   ],
+   "sv": [
+    "laddstationer",
+    "laddplatser",
+    "alla länder",
+    "länder",
+    "land",
+    "per land"
+   ],
+   "nb": [
+    "ladestasjoner",
+    "ladere",
+    "alle land",
+    "land",
+    "per land",
+    "landoversikt"
+   ],
+   "da": [
+    "ladestandere",
+    "ladestationer",
+    "alle lande",
+    "lande",
+    "land",
+    "efter land"
+   ],
+   "fi": [
+    "latausasemat",
+    "latauspisteet",
+    "kaikki maat",
+    "maat",
+    "maa",
+    "maittain"
+   ],
+   "pt": [
+    "postos de carregamento",
+    "carregadores",
+    "todos os países",
+    "países",
+    "país",
+    "por país"
+   ],
+   "el": [
+    "σταθμοί φόρτισης",
+    "φορτιστές",
+    "όλες οι χώρες",
+    "χώρες",
+    "χώρα",
+    "ανά χώρα"
+   ],
+   "cs": [
+    "nabíjecí stanice",
+    "nabíječky",
+    "všechny země",
+    "země",
+    "státy",
+    "podle země"
+   ],
+   "sk": [
+    "nabíjacie stanice",
+    "nabíjačky",
+    "všetky krajiny",
+    "krajiny",
+    "krajina",
+    "podľa krajiny"
+   ],
+   "hu": [
+    "töltőállomások",
+    "töltők",
+    "összes ország",
+    "országok",
+    "ország",
+    "országonként"
+   ],
+   "ro": [
+    "stații de încărcare",
+    "încărcătoare",
+    "toate țările",
+    "țări",
+    "țara",
+    "pe țări"
+   ],
+   "bg": [
+    "зарядни станции",
+    "зарядни",
+    "всички държави",
+    "държави",
+    "държава",
+    "по държави"
+   ],
+   "sl": [
+    "polnilnice",
+    "polnilne postaje",
+    "vse države",
+    "države",
+    "država",
+    "po državah"
+   ],
+   "hr": [
+    "punionice",
+    "punjači",
+    "sve zemlje",
+    "zemlje",
+    "države",
+    "po državama"
+   ],
+   "bs": [
+    "punionice",
+    "punjači",
+    "sve zemlje",
+    "zemlje",
+    "države",
+    "po državama"
+   ],
+   "mk": [
+    "станици за полнење",
+    "полначи",
+    "сите земји",
+    "земји",
+    "држави",
+    "по земја"
+   ],
+   "sq": [
+    "stacione karikimi",
+    "karikues",
+    "të gjitha vendet",
+    "vendet",
+    "vende",
+    "shtetet"
+   ],
+   "uk": [
+    "зарядні станції",
+    "зарядки",
+    "всі країни",
+    "країни",
+    "країна",
+    "за країнами"
+   ],
+   "tr": [
+    "şarj istasyonları",
+    "şarj noktaları",
+    "tüm ülkeler",
+    "ülkeler",
+    "ülke",
+    "ülkelere göre"
+   ],
+   "lt": [
+    "įkrovimo stotelės",
+    "krovimo stotelės",
+    "visos šalys",
+    "šalys",
+    "šalis",
+    "pagal šalį"
+   ],
+   "lv": [
+    "uzlādes stacijas",
+    "lādētāji",
+    "visas valstis",
+    "valstis",
+    "valsts",
+    "pa valstīm"
+   ],
+   "et": [
+    "laadimisjaamad",
+    "laadijad",
+    "kõik riigid",
+    "riigid",
+    "riik",
+    "riikide kaupa"
+   ]
+  },
+  "prices": {
+   "en": [
+    "price",
+    "prices",
+    "cost",
+    "costs",
+    "tariff",
+    "tariffs",
+    "how much",
+    "price per kwh"
+   ],
+   "sr": [
+    "cena",
+    "cene",
+    "koštanje",
+    "tarifa",
+    "tarife",
+    "koliko košta",
+    "cena po kwh",
+    "cenovnik"
+   ],
+   "ru": [
+    "цена",
+    "цены",
+    "стоимость",
+    "тариф",
+    "тарифы",
+    "сколько стоит",
+    "цена за квт",
+    "прайс"
+   ],
+   "de": [
+    "preis",
+    "preise",
+    "kosten",
+    "tarif",
+    "tarife",
+    "ladepreise",
+    "ladepreis",
+    "was kostet"
+   ],
+   "fr": [
+    "prix",
+    "tarif",
+    "tarifs",
+    "coût",
+    "coûts",
+    "combien",
+    "prix du kwh",
+    "prix recharge"
+   ],
+   "nl": [
+    "prijs",
+    "prijzen",
+    "kosten",
+    "tarief",
+    "tarieven",
+    "laadtarieven",
+    "hoeveel kost",
+    "kwh prijs"
+   ],
+   "es": [
+    "precio",
+    "precios",
+    "coste",
+    "costo",
+    "tarifa",
+    "tarifas",
+    "cuánto cuesta",
+    "precio kwh"
+   ],
+   "it": [
+    "prezzo",
+    "prezzi",
+    "costo",
+    "costi",
+    "tariffa",
+    "tariffe",
+    "quanto costa",
+    "prezzo kwh"
+   ],
+   "pl": [
+    "cena",
+    "ceny",
+    "koszt",
+    "koszty",
+    "taryfa",
+    "cennik",
+    "ile kosztuje",
+    "cena za kwh"
+   ],
+   "sv": [
+    "pris",
+    "priser",
+    "kostnad",
+    "kostnader",
+    "taxa",
+    "tariff",
+    "laddpriser",
+    "vad kostar"
+   ],
+   "nb": [
+    "pris",
+    "priser",
+    "kostnad",
+    "kostnader",
+    "tariff",
+    "ladepriser",
+    "hva koster",
+    "pris per kwh"
+   ],
+   "da": [
+    "pris",
+    "priser",
+    "omkostninger",
+    "takst",
+    "takster",
+    "tarif",
+    "ladepriser",
+    "hvad koster"
+   ],
+   "fi": [
+    "hinta",
+    "hinnat",
+    "kustannus",
+    "kustannukset",
+    "tariffi",
+    "hinnasto",
+    "paljonko maksaa",
+    "latauksen hinta"
+   ],
+   "pt": [
+    "preço",
+    "preços",
+    "custo",
+    "custos",
+    "tarifa",
+    "tarifas",
+    "quanto custa",
+    "preço kwh"
+   ],
+   "el": [
+    "τιμή",
+    "τιμές",
+    "κόστος",
+    "τιμολόγιο",
+    "τιμολόγια",
+    "χρέωση",
+    "πόσο κοστίζει",
+    "τιμή kwh"
+   ],
+   "cs": [
+    "cena",
+    "ceny",
+    "náklady",
+    "tarif",
+    "tarify",
+    "ceník",
+    "kolik stojí",
+    "cena za kwh"
+   ],
+   "sk": [
+    "cena",
+    "ceny",
+    "náklady",
+    "tarifa",
+    "tarify",
+    "cenník",
+    "koľko stojí",
+    "cena za kwh"
+   ],
+   "hu": [
+    "ár",
+    "árak",
+    "költség",
+    "költségek",
+    "tarifa",
+    "tarifák",
+    "mennyibe kerül",
+    "töltési árak"
+   ],
+   "ro": [
+    "preț",
+    "prețuri",
+    "cost",
+    "costuri",
+    "tarif",
+    "tarife",
+    "cât costă",
+    "preț kwh"
+   ],
+   "bg": [
+    "цена",
+    "цени",
+    "стойност",
+    "тарифа",
+    "тарифи",
+    "колко струва",
+    "разходи",
+    "цена за квтч"
+   ],
+   "sl": [
+    "cena",
+    "cene",
+    "stroški",
+    "tarifa",
+    "tarife",
+    "cenik",
+    "koliko stane",
+    "cena na kwh"
+   ],
+   "hr": [
+    "cijena",
+    "cijene",
+    "troškovi",
+    "tarifa",
+    "tarife",
+    "cjenik",
+    "koliko košta",
+    "cijena po kwh"
+   ],
+   "bs": [
+    "cijena",
+    "cijene",
+    "troškovi",
+    "tarifa",
+    "tarife",
+    "cjenovnik",
+    "koliko košta",
+    "cijena po kwh"
+   ],
+   "mk": [
+    "цена",
+    "цени",
+    "трошок",
+    "трошоци",
+    "тарифа",
+    "тарифи",
+    "колку чини",
+    "ценовник"
+   ],
+   "sq": [
+    "çmim",
+    "çmimi",
+    "çmimet",
+    "kosto",
+    "tarifa",
+    "tarifat",
+    "sa kushton",
+    "çmimi për kwh"
+   ],
+   "uk": [
+    "ціна",
+    "ціни",
+    "вартість",
+    "тариф",
+    "тарифи",
+    "скільки коштує",
+    "ціна за квт"
+   ],
+   "tr": [
+    "fiyat",
+    "fiyatlar",
+    "ücret",
+    "ücretler",
+    "maliyet",
+    "tarife",
+    "ne kadar",
+    "kwh fiyatı"
+   ],
+   "lt": [
+    "kaina",
+    "kainos",
+    "kaštai",
+    "tarifas",
+    "tarifai",
+    "kiek kainuoja",
+    "kaina už kwh",
+    "įkrovimo kainos"
+   ],
+   "lv": [
+    "cena",
+    "cenas",
+    "izmaksas",
+    "tarifs",
+    "tarifi",
+    "cik maksā",
+    "uzlādes cenas",
+    "cena par kwh"
+   ],
+   "et": [
+    "hind",
+    "hinnad",
+    "kulu",
+    "kulud",
+    "tariif",
+    "tariifid",
+    "kui palju maksab",
+    "laadimise hind"
+   ]
+  },
+  "pay": {
+   "en": [
+    "how to pay",
+    "payment",
+    "pay",
+    "paying",
+    "charging card",
+    "app",
+    "apps",
+    "roaming"
+   ],
+   "sr": [
+    "kako platiti",
+    "plaćanje",
+    "platiti",
+    "kartica za punjenje",
+    "aplikacija",
+    "aplikacije",
+    "roming",
+    "roaming"
+   ],
+   "ru": [
+    "как оплатить",
+    "оплата",
+    "оплатить",
+    "платёж",
+    "карта для зарядки",
+    "приложение",
+    "приложения",
+    "роуминг"
+   ],
+   "de": [
+    "wie bezahlen",
+    "bezahlen",
+    "zahlung",
+    "bezahlung",
+    "ladekarte",
+    "ladekarten",
+    "app",
+    "roaming"
+   ],
+   "fr": [
+    "comment payer",
+    "paiement",
+    "payer",
+    "carte de recharge",
+    "badge",
+    "application",
+    "appli",
+    "itinérance"
+   ],
+   "nl": [
+    "hoe betalen",
+    "betalen",
+    "betaling",
+    "laadpas",
+    "laadpassen",
+    "app",
+    "roaming"
+   ],
+   "es": [
+    "cómo pagar",
+    "pago",
+    "pagar",
+    "tarjeta de recarga",
+    "tarjeta",
+    "aplicación",
+    "app",
+    "roaming"
+   ],
+   "it": [
+    "come pagare",
+    "pagamento",
+    "pagare",
+    "tessera di ricarica",
+    "card ricarica",
+    "app",
+    "applicazione",
+    "roaming"
+   ],
+   "pl": [
+    "jak zapłacić",
+    "płatność",
+    "płatności",
+    "zapłacić",
+    "karta do ładowania",
+    "aplikacja",
+    "roaming"
+   ],
+   "sv": [
+    "hur betala",
+    "betalning",
+    "betala",
+    "laddkort",
+    "laddbricka",
+    "app",
+    "appar",
+    "roaming"
+   ],
+   "nb": [
+    "hvordan betale",
+    "betaling",
+    "betale",
+    "ladebrikke",
+    "ladekort",
+    "app",
+    "apper",
+    "roaming"
+   ],
+   "da": [
+    "hvordan betaler man",
+    "betaling",
+    "betale",
+    "ladebrik",
+    "ladekort",
+    "app",
+    "apps",
+    "roaming"
+   ],
+   "fi": [
+    "miten maksan",
+    "maksaminen",
+    "maksu",
+    "latauskortti",
+    "lataustunniste",
+    "sovellus",
+    "roaming"
+   ],
+   "pt": [
+    "como pagar",
+    "pagamento",
+    "pagar",
+    "cartão de carregamento",
+    "cartão",
+    "aplicação",
+    "app",
+    "roaming"
+   ],
+   "el": [
+    "πώς πληρώνω",
+    "πληρωμή",
+    "πληρωμές",
+    "πληρώνω",
+    "κάρτα φόρτισης",
+    "εφαρμογή",
+    "εφαρμογές",
+    "περιαγωγή"
+   ],
+   "cs": [
+    "jak zaplatit",
+    "platba",
+    "platby",
+    "placení",
+    "nabíjecí karta",
+    "čip",
+    "aplikace",
+    "roaming"
+   ],
+   "sk": [
+    "ako zaplatiť",
+    "platba",
+    "platby",
+    "platenie",
+    "nabíjacia karta",
+    "aplikácia",
+    "roaming"
+   ],
+   "hu": [
+    "hogyan fizessek",
+    "fizetés",
+    "fizetni",
+    "töltőkártya",
+    "kártya",
+    "alkalmazás",
+    "app",
+    "roaming"
+   ],
+   "ro": [
+    "cum plătesc",
+    "plată",
+    "plata",
+    "card de încărcare",
+    "aplicație",
+    "aplicatie",
+    "roaming"
+   ],
+   "bg": [
+    "как да платя",
+    "плащане",
+    "плащания",
+    "платя",
+    "карта за зареждане",
+    "приложение",
+    "роуминг"
+   ],
+   "sl": [
+    "kako plačati",
+    "plačilo",
+    "plačevanje",
+    "polnilna kartica",
+    "kartica",
+    "aplikacija",
+    "gostovanje",
+    "roaming"
+   ],
+   "hr": [
+    "kako platiti",
+    "plaćanje",
+    "platiti",
+    "kartica za punjenje",
+    "aplikacija",
+    "roaming"
+   ],
+   "bs": [
+    "kako platiti",
+    "plaćanje",
+    "platiti",
+    "kartica za punjenje",
+    "aplikacija",
+    "roming",
+    "roaming"
+   ],
+   "mk": [
+    "како да платам",
+    "плаќање",
+    "плати",
+    "картичка за полнење",
+    "апликација",
+    "роаминг"
+   ],
+   "sq": [
+    "si të paguaj",
+    "pagesa",
+    "pagesë",
+    "paguaj",
+    "kartë karikimi",
+    "aplikacion",
+    "roaming"
+   ],
+   "uk": [
+    "як оплатити",
+    "оплата",
+    "оплатити",
+    "платіж",
+    "картка для зарядки",
+    "застосунок",
+    "додаток",
+    "роумінг"
+   ],
+   "tr": [
+    "nasıl ödenir",
+    "ödeme",
+    "öde",
+    "şarj kartı",
+    "uygulama",
+    "uygulamalar",
+    "roaming"
+   ],
+   "lt": [
+    "kaip sumokėti",
+    "mokėjimas",
+    "apmokėjimas",
+    "mokėti",
+    "įkrovimo kortelė",
+    "programėlė",
+    "roaming"
+   ],
+   "lv": [
+    "kā samaksāt",
+    "maksājums",
+    "samaksa",
+    "maksāt",
+    "uzlādes karte",
+    "lietotne",
+    "aplikācija",
+    "roaming"
+   ],
+   "et": [
+    "kuidas maksta",
+    "maksmine",
+    "makse",
+    "maksta",
+    "laadimiskaart",
+    "rakendus",
+    "äpp",
+    "roaming"
+   ]
+  },
+  "routes": {
+   "en": [
+    "route",
+    "routes",
+    "road trip",
+    "trip",
+    "journey",
+    "route planner",
+    "travel"
+   ],
+   "sr": [
+    "ruta",
+    "rute",
+    "putovanje",
+    "putovanja",
+    "plan puta",
+    "planer rute",
+    "maršruta"
+   ],
+   "ru": [
+    "маршрут",
+    "маршруты",
+    "поездка",
+    "путешествие",
+    "автопутешествие",
+    "планировщик маршрута"
+   ],
+   "de": [
+    "route",
+    "routen",
+    "reise",
+    "roadtrip",
+    "routenplaner",
+    "fahrt",
+    "strecke"
+   ],
+   "fr": [
+    "itinéraire",
+    "itinéraires",
+    "trajet",
+    "trajets",
+    "voyage",
+    "road trip",
+    "planificateur"
+   ],
+   "nl": [
+    "route",
+    "routes",
+    "reis",
+    "roadtrip",
+    "routeplanner",
+    "rit"
+   ],
+   "es": [
+    "ruta",
+    "rutas",
+    "viaje",
+    "viajes",
+    "road trip",
+    "planificador de rutas",
+    "trayecto"
+   ],
+   "it": [
+    "percorso",
+    "percorsi",
+    "itinerario",
+    "viaggio",
+    "viaggi",
+    "road trip",
+    "tragitto"
+   ],
+   "pl": [
+    "trasa",
+    "trasy",
+    "podróż",
+    "podróże",
+    "wycieczka",
+    "planer trasy",
+    "road trip"
+   ],
+   "sv": [
+    "rutt",
+    "rutter",
+    "resa",
+    "resor",
+    "roadtrip",
+    "ruttplanerare",
+    "bilresa"
+   ],
+   "nb": [
+    "rute",
+    "ruter",
+    "reise",
+    "tur",
+    "biltur",
+    "ruteplanlegger",
+    "roadtrip"
+   ],
+   "da": [
+    "rute",
+    "ruter",
+    "rejse",
+    "tur",
+    "køretur",
+    "ruteplanlægger",
+    "roadtrip"
+   ],
+   "fi": [
+    "reitti",
+    "reitit",
+    "matka",
+    "matkat",
+    "automatka",
+    "reittisuunnittelija",
+    "road trip"
+   ],
+   "pt": [
+    "rota",
+    "rotas",
+    "viagem",
+    "viagens",
+    "percurso",
+    "planeador de rotas",
+    "road trip"
+   ],
+   "el": [
+    "διαδρομή",
+    "διαδρομές",
+    "ταξίδι",
+    "ταξίδια",
+    "οδικό ταξίδι",
+    "σχεδιασμός διαδρομής"
+   ],
+   "cs": [
+    "trasa",
+    "trasy",
+    "cesta",
+    "cestování",
+    "výlet",
+    "plánovač trasy",
+    "roadtrip"
+   ],
+   "sk": [
+    "trasa",
+    "trasy",
+    "cesta",
+    "cestovanie",
+    "výlet",
+    "plánovač trasy"
+   ],
+   "hu": [
+    "útvonal",
+    "útvonalak",
+    "utazás",
+    "autós utazás",
+    "útvonaltervező",
+    "road trip"
+   ],
+   "ro": [
+    "traseu",
+    "trasee",
+    "rută",
+    "rute",
+    "călătorie",
+    "călătorii",
+    "road trip"
+   ],
+   "bg": [
+    "маршрут",
+    "маршрути",
+    "пътуване",
+    "пътувания",
+    "пътешествие",
+    "планиране на маршрут"
+   ],
+   "sl": [
+    "pot",
+    "poti",
+    "potovanje",
+    "izlet",
+    "načrtovalnik poti",
+    "trasa"
+   ],
+   "hr": [
+    "ruta",
+    "rute",
+    "putovanje",
+    "putovanja",
+    "put",
+    "planer rute"
+   ],
+   "bs": [
+    "ruta",
+    "rute",
+    "putovanje",
+    "putovanja",
+    "put",
+    "planer rute"
+   ],
+   "mk": [
+    "рута",
+    "рути",
+    "маршрута",
+    "патување",
+    "патувања",
+    "пат"
+   ],
+   "sq": [
+    "rrugë",
+    "rruga",
+    "itinerar",
+    "udhëtim",
+    "udhëtime",
+    "rrugëtim"
+   ],
+   "uk": [
+    "маршрут",
+    "маршрути",
+    "подорож",
+    "поїздка",
+    "автоподорож",
+    "планувальник маршруту"
+   ],
+   "tr": [
+    "rota",
+    "rotalar",
+    "güzergah",
+    "yolculuk",
+    "seyahat",
+    "yol gezisi",
+    "rota planlayıcı"
+   ],
+   "lt": [
+    "maršrutas",
+    "maršrutai",
+    "kelionė",
+    "kelionės",
+    "kelionė automobiliu",
+    "maršruto planavimas"
+   ],
+   "lv": [
+    "maršruts",
+    "maršruti",
+    "ceļojums",
+    "ceļojumi",
+    "brauciens",
+    "maršruta plānotājs"
+   ],
+   "et": [
+    "marsruut",
+    "marsruudid",
+    "reis",
+    "teekond",
+    "autoreis",
+    "teekonnaplaneerija"
+   ]
+  },
+  "download": {
+   "en": [
+    "open data",
+    "download",
+    "dataset",
+    "datasets",
+    "csv",
+    "odbl",
+    "geojson",
+    "data export"
+   ],
+   "sr": [
+    "otvoreni podaci",
+    "preuzimanje",
+    "preuzmi",
+    "skup podataka",
+    "baza podataka",
+    "csv",
+    "odbl"
+   ],
+   "ru": [
+    "открытые данные",
+    "скачать",
+    "загрузка",
+    "датасет",
+    "набор данных",
+    "csv",
+    "odbl"
+   ],
+   "de": [
+    "offene daten",
+    "open data",
+    "download",
+    "herunterladen",
+    "datensatz",
+    "datensätze",
+    "csv",
+    "odbl"
+   ],
+   "fr": [
+    "données ouvertes",
+    "open data",
+    "télécharger",
+    "téléchargement",
+    "jeu de données",
+    "csv",
+    "odbl"
+   ],
+   "nl": [
+    "open data",
+    "downloaden",
+    "download",
+    "dataset",
+    "datasets",
+    "csv",
+    "odbl"
+   ],
+   "es": [
+    "datos abiertos",
+    "descargar",
+    "descarga",
+    "conjunto de datos",
+    "dataset",
+    "csv",
+    "odbl"
+   ],
+   "it": [
+    "dati aperti",
+    "open data",
+    "scarica",
+    "scaricare",
+    "download",
+    "dataset",
+    "csv"
+   ],
+   "pl": [
+    "otwarte dane",
+    "pobierz",
+    "pobieranie",
+    "zbiór danych",
+    "dataset",
+    "csv",
+    "odbl"
+   ],
+   "sv": [
+    "öppna data",
+    "öppen data",
+    "ladda ner",
+    "nedladdning",
+    "dataset",
+    "datamängd",
+    "csv"
+   ],
+   "nb": [
+    "åpne data",
+    "last ned",
+    "nedlasting",
+    "datasett",
+    "csv",
+    "odbl"
+   ],
+   "da": [
+    "åbne data",
+    "download",
+    "hent",
+    "datasæt",
+    "csv",
+    "odbl"
+   ],
+   "fi": [
+    "avoin data",
+    "avoimet tiedot",
+    "tietoaineisto",
+    "aineisto",
+    "lataa data",
+    "csv",
+    "odbl"
+   ],
+   "pt": [
+    "dados abertos",
+    "descarregar",
+    "baixar",
+    "download",
+    "conjunto de dados",
+    "csv",
+    "odbl"
+   ],
+   "el": [
+    "ανοιχτά δεδομένα",
+    "λήψη",
+    "κατέβασμα",
+    "σύνολο δεδομένων",
+    "dataset",
+    "csv"
+   ],
+   "cs": [
+    "otevřená data",
+    "stáhnout",
+    "stažení",
+    "datová sada",
+    "dataset",
+    "csv",
+    "odbl"
+   ],
+   "sk": [
+    "otvorené dáta",
+    "stiahnuť",
+    "stiahnutie",
+    "dátová sada",
+    "dataset",
+    "csv"
+   ],
+   "hu": [
+    "nyílt adatok",
+    "nyílt adat",
+    "letöltés",
+    "letölteni",
+    "adatkészlet",
+    "csv",
+    "odbl"
+   ],
+   "ro": [
+    "date deschise",
+    "descărcare",
+    "descarcă",
+    "set de date",
+    "dataset",
+    "csv",
+    "odbl"
+   ],
+   "bg": [
+    "отворени данни",
+    "изтегляне",
+    "изтегли",
+    "набор от данни",
+    "dataset",
+    "csv"
+   ],
+   "sl": [
+    "odprti podatki",
+    "prenos",
+    "prenesi",
+    "nabor podatkov",
+    "zbirka podatkov",
+    "csv"
+   ],
+   "hr": [
+    "otvoreni podaci",
+    "preuzimanje",
+    "preuzmi",
+    "skup podataka",
+    "csv",
+    "odbl"
+   ],
+   "bs": [
+    "otvoreni podaci",
+    "preuzimanje",
+    "preuzmi",
+    "skup podataka",
+    "csv",
+    "odbl"
+   ],
+   "mk": [
+    "отворени податоци",
+    "преземи",
+    "преземање",
+    "база на податоци",
+    "сет на податоци",
+    "csv"
+   ],
+   "sq": [
+    "të dhëna të hapura",
+    "shkarko",
+    "shkarkim",
+    "grup të dhënash",
+    "dataset",
+    "csv"
+   ],
+   "uk": [
+    "відкриті дані",
+    "завантажити",
+    "завантаження",
+    "набір даних",
+    "датасет",
+    "csv"
+   ],
+   "tr": [
+    "açık veri",
+    "indir",
+    "indirme",
+    "veri seti",
+    "veri kümesi",
+    "csv",
+    "odbl"
+   ],
+   "lt": [
+    "atviri duomenys",
+    "atsisiųsti",
+    "atsisiuntimas",
+    "duomenų rinkinys",
+    "csv",
+    "odbl"
+   ],
+   "lv": [
+    "atvērtie dati",
+    "lejupielādēt",
+    "lejupielāde",
+    "datu kopa",
+    "csv",
+    "odbl"
+   ],
+   "et": [
+    "avaandmed",
+    "avatud andmed",
+    "laadi alla",
+    "allalaadimine",
+    "andmestik",
+    "csv"
+   ]
+  },
+  "about_data": {
+   "en": [
+    "about the data",
+    "data",
+    "data quality",
+    "coverage",
+    "accuracy",
+    "how up to date",
+    "freshness"
+   ],
+   "sr": [
+    "o podacima",
+    "podaci",
+    "kvalitet podataka",
+    "pokrivenost",
+    "tačnost",
+    "ažurnost"
+   ],
+   "ru": [
+    "о данных",
+    "данные",
+    "качество данных",
+    "покрытие",
+    "точность",
+    "актуальность"
+   ],
+   "de": [
+    "über die daten",
+    "daten",
+    "datenqualität",
+    "abdeckung",
+    "genauigkeit",
+    "aktualität"
+   ],
+   "fr": [
+    "à propos des données",
+    "données",
+    "qualité des données",
+    "couverture",
+    "précision",
+    "fraîcheur"
+   ],
+   "nl": [
+    "over de data",
+    "gegevens",
+    "data",
+    "datakwaliteit",
+    "dekking",
+    "nauwkeurigheid",
+    "actualiteit"
+   ],
+   "es": [
+    "sobre los datos",
+    "datos",
+    "calidad de datos",
+    "cobertura",
+    "precisión",
+    "actualización"
+   ],
+   "it": [
+    "sui dati",
+    "dati",
+    "qualità dei dati",
+    "copertura",
+    "accuratezza",
+    "aggiornamento"
+   ],
+   "pl": [
+    "o danych",
+    "dane",
+    "jakość danych",
+    "pokrycie",
+    "zasięg",
+    "dokładność",
+    "aktualność"
+   ],
+   "sv": [
+    "om data",
+    "data",
+    "datakvalitet",
+    "täckning",
+    "noggrannhet",
+    "aktualitet"
+   ],
+   "nb": [
+    "om dataene",
+    "data",
+    "datakvalitet",
+    "dekning",
+    "nøyaktighet",
+    "oppdatert"
+   ],
+   "da": [
+    "om data",
+    "data",
+    "datakvalitet",
+    "dækning",
+    "nøjagtighed",
+    "opdatering"
+   ],
+   "fi": [
+    "tietoja datasta",
+    "data",
+    "datan laatu",
+    "kattavuus",
+    "tarkkuus",
+    "ajantasaisuus"
+   ],
+   "pt": [
+    "sobre os dados",
+    "dados",
+    "qualidade dos dados",
+    "cobertura",
+    "precisão",
+    "atualização"
+   ],
+   "el": [
+    "σχετικά με τα δεδομένα",
+    "δεδομένα",
+    "ποιότητα δεδομένων",
+    "κάλυψη",
+    "ακρίβεια",
+    "ενημέρωση"
+   ],
+   "cs": [
+    "o datech",
+    "data",
+    "kvalita dat",
+    "pokrytí",
+    "přesnost",
+    "aktuálnost"
+   ],
+   "sk": [
+    "o dátach",
+    "dáta",
+    "údaje",
+    "kvalita dát",
+    "pokrytie",
+    "presnosť",
+    "aktuálnosť"
+   ],
+   "hu": [
+    "az adatokról",
+    "adatok",
+    "adatminőség",
+    "lefedettség",
+    "pontosság",
+    "frissesség"
+   ],
+   "ro": [
+    "despre date",
+    "date",
+    "calitatea datelor",
+    "acoperire",
+    "acuratețe",
+    "actualizare"
+   ],
+   "bg": [
+    "за данните",
+    "данни",
+    "качество на данните",
+    "покритие",
+    "точност",
+    "актуалност"
+   ],
+   "sl": [
+    "o podatkih",
+    "podatki",
+    "kakovost podatkov",
+    "pokritost",
+    "natančnost",
+    "ažurnost"
+   ],
+   "hr": [
+    "o podacima",
+    "podaci",
+    "kvaliteta podataka",
+    "pokrivenost",
+    "točnost",
+    "ažurnost"
+   ],
+   "bs": [
+    "o podacima",
+    "podaci",
+    "kvalitet podataka",
+    "pokrivenost",
+    "tačnost",
+    "ažurnost"
+   ],
+   "mk": [
+    "за податоците",
+    "податоци",
+    "квалитет на податоци",
+    "покриеност",
+    "точност",
+    "ажурност"
+   ],
+   "sq": [
+    "rreth të dhënave",
+    "të dhënat",
+    "cilësia e të dhënave",
+    "mbulimi",
+    "saktësia",
+    "përditësimi"
+   ],
+   "uk": [
+    "про дані",
+    "дані",
+    "якість даних",
+    "покриття",
+    "точність",
+    "актуальність"
+   ],
+   "tr": [
+    "veriler hakkında",
+    "veri",
+    "veriler",
+    "veri kalitesi",
+    "kapsam",
+    "doğruluk",
+    "güncellik"
+   ],
+   "lt": [
+    "apie duomenis",
+    "duomenys",
+    "duomenų kokybė",
+    "aprėptis",
+    "tikslumas",
+    "aktualumas"
+   ],
+   "lv": [
+    "par datiem",
+    "dati",
+    "datu kvalitāte",
+    "pārklājums",
+    "precizitāte",
+    "aktualitāte"
+   ],
+   "et": [
+    "andmetest",
+    "andmed",
+    "andmete kvaliteet",
+    "katvus",
+    "täpsus",
+    "ajakohasus"
+   ]
+  },
+  "widget": {
+   "en": [
+    "widget",
+    "embed",
+    "map for your site",
+    "iframe",
+    "embed map",
+    "website map"
+   ],
+   "sr": [
+    "vidžet",
+    "widget",
+    "ugradi mapu",
+    "mapa za sajt",
+    "mapa za vaš sajt",
+    "iframe"
+   ],
+   "ru": [
+    "виджет",
+    "встроить",
+    "встроить карту",
+    "карта для сайта",
+    "iframe",
+    "код для сайта"
+   ],
+   "de": [
+    "widget",
+    "einbetten",
+    "karte einbetten",
+    "karte für ihre website",
+    "iframe",
+    "embed"
+   ],
+   "fr": [
+    "widget",
+    "intégrer",
+    "intégrer la carte",
+    "carte pour votre site",
+    "iframe"
+   ],
+   "nl": [
+    "widget",
+    "insluiten",
+    "kaart insluiten",
+    "kaart voor je website",
+    "iframe",
+    "embed"
+   ],
+   "es": [
+    "widget",
+    "insertar",
+    "incrustar",
+    "mapa para tu web",
+    "iframe"
+   ],
+   "it": [
+    "widget",
+    "incorpora",
+    "incorporare",
+    "mappa per il tuo sito",
+    "iframe",
+    "embed"
+   ],
+   "pl": [
+    "widżet",
+    "widget",
+    "osadź",
+    "osadzanie",
+    "mapa na stronę",
+    "iframe"
+   ],
+   "sv": [
+    "widget",
+    "bädda in",
+    "inbäddning",
+    "karta för din webbplats",
+    "iframe"
+   ],
+   "nb": [
+    "widget",
+    "bygg inn",
+    "innebygging",
+    "kart til nettsiden",
+    "iframe"
+   ],
+   "da": [
+    "widget",
+    "indlejr",
+    "indlejring",
+    "kort til din hjemmeside",
+    "iframe"
+   ],
+   "fi": [
+    "widget",
+    "upota",
+    "upotus",
+    "kartta sivustolle",
+    "iframe"
+   ],
+   "pt": [
+    "widget",
+    "incorporar",
+    "incorporar mapa",
+    "mapa para o seu site",
+    "iframe"
+   ],
+   "el": [
+    "widget",
+    "ενσωμάτωση",
+    "ενσωμάτωση χάρτη",
+    "χάρτης για ιστοσελίδα",
+    "iframe"
+   ],
+   "cs": [
+    "widget",
+    "vložit",
+    "vložení mapy",
+    "mapa na web",
+    "iframe"
+   ],
+   "sk": [
+    "widget",
+    "vložiť",
+    "vloženie mapy",
+    "mapa na web",
+    "iframe"
+   ],
+   "hu": [
+    "widget",
+    "beágyazás",
+    "beágyaz",
+    "térkép weboldalra",
+    "iframe"
+   ],
+   "ro": [
+    "widget",
+    "încorporare",
+    "încorporează harta",
+    "hartă pentru site",
+    "iframe"
+   ],
+   "bg": [
+    "уиджет",
+    "widget",
+    "вграждане",
+    "вгради карта",
+    "карта за сайт",
+    "iframe"
+   ],
+   "sl": [
+    "gradnik",
+    "widget",
+    "vdelaj",
+    "vdelava",
+    "zemljevid za spletno stran",
+    "iframe"
+   ],
+   "hr": [
+    "widget",
+    "ugradi",
+    "ugradnja karte",
+    "karta za web",
+    "iframe"
+   ],
+   "bs": [
+    "widget",
+    "vidžet",
+    "ugradi",
+    "ugradnja mape",
+    "mapa za sajt",
+    "iframe"
+   ],
+   "mk": [
+    "виџет",
+    "widget",
+    "вгради",
+    "вградување",
+    "мапа за веб-страница",
+    "iframe"
+   ],
+   "sq": [
+    "widget",
+    "ngulit",
+    "vendos në faqe",
+    "harta për faqen tuaj",
+    "iframe"
+   ],
+   "uk": [
+    "віджет",
+    "вбудувати",
+    "вбудувати карту",
+    "карта для сайту",
+    "iframe"
+   ],
+   "tr": [
+    "widget",
+    "yerleştir",
+    "harita yerleştirme",
+    "siteniz için harita",
+    "iframe"
+   ],
+   "lt": [
+    "valdiklis",
+    "widget",
+    "įterpti",
+    "žemėlapis svetainei",
+    "iframe"
+   ],
+   "lv": [
+    "logrīks",
+    "widget",
+    "iegult",
+    "karte vietnei",
+    "iframe"
+   ],
+   "et": [
+    "vidin",
+    "widget",
+    "manusta",
+    "kaart veebilehele",
+    "iframe"
+   ]
+  },
+  "developers": {
+   "en": [
+    "developers",
+    "developer",
+    "api",
+    "api key",
+    "documentation",
+    "docs"
+   ],
+   "sr": [
+    "programeri",
+    "developeri",
+    "api",
+    "api ključ",
+    "dokumentacija",
+    "za programere"
+   ],
+   "ru": [
+    "разработчики",
+    "разработчик",
+    "api",
+    "апи",
+    "документация",
+    "для разработчиков"
+   ],
+   "de": [
+    "entwickler",
+    "api",
+    "schnittstelle",
+    "dokumentation",
+    "api-schlüssel",
+    "für entwickler"
+   ],
+   "fr": [
+    "développeurs",
+    "développeur",
+    "api",
+    "documentation",
+    "clé api"
+   ],
+   "nl": [
+    "ontwikkelaars",
+    "ontwikkelaar",
+    "api",
+    "documentatie",
+    "api-sleutel"
+   ],
+   "es": [
+    "desarrolladores",
+    "desarrollador",
+    "api",
+    "documentación",
+    "clave api"
+   ],
+   "it": [
+    "sviluppatori",
+    "sviluppatore",
+    "api",
+    "documentazione",
+    "chiave api"
+   ],
+   "pl": [
+    "deweloperzy",
+    "programiści",
+    "programista",
+    "api",
+    "dokumentacja",
+    "klucz api"
+   ],
+   "sv": [
+    "utvecklare",
+    "api",
+    "dokumentation",
+    "api-nyckel",
+    "för utvecklare"
+   ],
+   "nb": [
+    "utviklere",
+    "utvikler",
+    "api",
+    "dokumentasjon",
+    "api-nøkkel"
+   ],
+   "da": [
+    "udviklere",
+    "udvikler",
+    "api",
+    "dokumentation",
+    "api-nøgle"
+   ],
+   "fi": [
+    "kehittäjät",
+    "kehittäjille",
+    "kehittäjä",
+    "api",
+    "rajapinta",
+    "dokumentaatio"
+   ],
+   "pt": [
+    "programadores",
+    "desenvolvedores",
+    "programador",
+    "api",
+    "documentação",
+    "chave api"
+   ],
+   "el": [
+    "προγραμματιστές",
+    "developers",
+    "api",
+    "τεκμηρίωση",
+    "κλειδί api"
+   ],
+   "cs": [
+    "vývojáři",
+    "vývojář",
+    "pro vývojáře",
+    "api",
+    "dokumentace"
+   ],
+   "sk": [
+    "vývojári",
+    "vývojár",
+    "pre vývojárov",
+    "api",
+    "dokumentácia"
+   ],
+   "hu": [
+    "fejlesztők",
+    "fejlesztő",
+    "fejlesztőknek",
+    "api",
+    "dokumentáció"
+   ],
+   "ro": [
+    "dezvoltatori",
+    "dezvoltator",
+    "programatori",
+    "api",
+    "documentație"
+   ],
+   "bg": [
+    "разработчици",
+    "програмисти",
+    "api",
+    "документация",
+    "апи ключ"
+   ],
+   "sl": [
+    "razvijalci",
+    "razvijalec",
+    "za razvijalce",
+    "api",
+    "dokumentacija"
+   ],
+   "hr": [
+    "programeri",
+    "developeri",
+    "razvojni programeri",
+    "api",
+    "dokumentacija"
+   ],
+   "bs": [
+    "programeri",
+    "developeri",
+    "api",
+    "dokumentacija",
+    "za programere"
+   ],
+   "mk": [
+    "програмери",
+    "развивачи",
+    "api",
+    "документација",
+    "апи клуч"
+   ],
+   "sq": [
+    "zhvillues",
+    "zhvilluesit",
+    "programues",
+    "api",
+    "dokumentacion"
+   ],
+   "uk": [
+    "розробники",
+    "розробник",
+    "для розробників",
+    "api",
+    "апі",
+    "документація"
+   ],
+   "tr": [
+    "geliştiriciler",
+    "geliştirici",
+    "api",
+    "dokümantasyon",
+    "api anahtarı"
+   ],
+   "lt": [
+    "kūrėjai",
+    "programuotojai",
+    "kūrėjams",
+    "api",
+    "dokumentacija"
+   ],
+   "lv": [
+    "izstrādātāji",
+    "izstrādātājiem",
+    "programmētāji",
+    "api",
+    "dokumentācija"
+   ],
+   "et": [
+    "arendajad",
+    "arendajale",
+    "arendajatele",
+    "api",
+    "dokumentatsioon"
+   ]
+  },
+  "press": {
+   "en": [
+    "press",
+    "media",
+    "journalists",
+    "price index",
+    "index",
+    "media kit",
+    "press kit"
+   ],
+   "sr": [
+    "mediji",
+    "novinari",
+    "štampa",
+    "indeks cena",
+    "indeks",
+    "medija kit",
+    "press"
+   ],
+   "ru": [
+    "пресса",
+    "сми",
+    "журналисты",
+    "индекс цен",
+    "индекс",
+    "медиакит",
+    "для прессы"
+   ],
+   "de": [
+    "presse",
+    "medien",
+    "journalisten",
+    "preisindex",
+    "index",
+    "pressemappe",
+    "pressekit"
+   ],
+   "fr": [
+    "presse",
+    "médias",
+    "journalistes",
+    "indice des prix",
+    "indice",
+    "kit média",
+    "dossier de presse"
+   ],
+   "nl": [
+    "pers",
+    "media",
+    "journalisten",
+    "prijsindex",
+    "index",
+    "perskit",
+    "persmap"
+   ],
+   "es": [
+    "prensa",
+    "medios",
+    "periodistas",
+    "índice de precios",
+    "índice",
+    "kit de prensa"
+   ],
+   "it": [
+    "stampa",
+    "media",
+    "giornalisti",
+    "indice dei prezzi",
+    "indice",
+    "cartella stampa",
+    "press kit"
+   ],
+   "pl": [
+    "prasa",
+    "media",
+    "dziennikarze",
+    "indeks cen",
+    "indeks",
+    "materiały prasowe"
+   ],
+   "sv": [
+    "press",
+    "media",
+    "journalister",
+    "prisindex",
+    "index",
+    "pressmaterial"
+   ],
+   "nb": [
+    "presse",
+    "media",
+    "journalister",
+    "prisindeks",
+    "indeks",
+    "pressemateriell"
+   ],
+   "da": [
+    "presse",
+    "medier",
+    "journalister",
+    "prisindeks",
+    "indeks",
+    "pressemateriale"
+   ],
+   "fi": [
+    "lehdistö",
+    "media",
+    "toimittajat",
+    "hintaindeksi",
+    "indeksi",
+    "mediapaketti"
+   ],
+   "pt": [
+    "imprensa",
+    "media",
+    "mídia",
+    "jornalistas",
+    "índice de preços",
+    "índice",
+    "kit de imprensa"
+   ],
+   "el": [
+    "τύπος",
+    "μέσα ενημέρωσης",
+    "δημοσιογράφοι",
+    "δείκτης τιμών",
+    "δείκτης",
+    "media kit"
+   ],
+   "cs": [
+    "tisk",
+    "média",
+    "novináři",
+    "cenový index",
+    "index",
+    "pro média"
+   ],
+   "sk": [
+    "tlač",
+    "médiá",
+    "novinári",
+    "cenový index",
+    "index",
+    "pre médiá"
+   ],
+   "hu": [
+    "sajtó",
+    "média",
+    "újságírók",
+    "árindex",
+    "index",
+    "sajtóanyag"
+   ],
+   "ro": [
+    "presă",
+    "media",
+    "jurnaliști",
+    "indicele prețurilor",
+    "indice",
+    "kit de presă"
+   ],
+   "bg": [
+    "преса",
+    "медии",
+    "журналисти",
+    "ценови индекс",
+    "индекс",
+    "медиен кит"
+   ],
+   "sl": [
+    "mediji",
+    "novinarji",
+    "tisk",
+    "indeks cen",
+    "indeks",
+    "za medije"
+   ],
+   "hr": [
+    "mediji",
+    "novinari",
+    "tisak",
+    "indeks cijena",
+    "indeks",
+    "press kit"
+   ],
+   "bs": [
+    "mediji",
+    "novinari",
+    "štampa",
+    "indeks cijena",
+    "indeks",
+    "press"
+   ],
+   "mk": [
+    "медиуми",
+    "новинари",
+    "печат",
+    "индекс на цени",
+    "индекс",
+    "прес"
+   ],
+   "sq": [
+    "shtypi",
+    "media",
+    "gazetarë",
+    "gazetarët",
+    "indeksi i çmimeve",
+    "indeks"
+   ],
+   "uk": [
+    "преса",
+    "змі",
+    "журналісти",
+    "індекс цін",
+    "індекс",
+    "медіакіт"
+   ],
+   "tr": [
+    "basın",
+    "medya",
+    "gazeteciler",
+    "fiyat endeksi",
+    "endeks",
+    "basın kiti"
+   ],
+   "lt": [
+    "spauda",
+    "žiniasklaida",
+    "žurnalistai",
+    "kainų indeksas",
+    "indeksas",
+    "žiniasklaidai"
+   ],
+   "lv": [
+    "prese",
+    "mediji",
+    "žurnālisti",
+    "cenu indekss",
+    "indekss",
+    "medijiem"
+   ],
+   "et": [
+    "press",
+    "meedia",
+    "ajakirjanikud",
+    "hinnaindeks",
+    "indeks",
+    "meediale"
+   ]
+  },
+  "b2b": {
+   "en": [
+    "data for business",
+    "business",
+    "b2b",
+    "commercial data",
+    "enterprise",
+    "commercial",
+    "data licensing"
+   ],
+   "sr": [
+    "podaci za biznis",
+    "biznis",
+    "poslovni korisnici",
+    "b2b",
+    "komercijalni podaci",
+    "za firme",
+    "kompanije"
+   ],
+   "ru": [
+    "данные для бизнеса",
+    "бизнес",
+    "b2b",
+    "коммерческие данные",
+    "для компаний",
+    "корпоративный"
+   ],
+   "de": [
+    "daten für unternehmen",
+    "unternehmen",
+    "b2b",
+    "kommerzielle daten",
+    "business",
+    "firmenkunden",
+    "gewerblich"
+   ],
+   "fr": [
+    "données pour entreprises",
+    "entreprise",
+    "entreprises",
+    "b2b",
+    "données commerciales",
+    "professionnels"
+   ],
+   "nl": [
+    "data voor bedrijven",
+    "bedrijven",
+    "zakelijk",
+    "b2b",
+    "commerciële data",
+    "enterprise"
+   ],
+   "es": [
+    "datos para empresas",
+    "empresas",
+    "negocio",
+    "b2b",
+    "datos comerciales",
+    "profesional"
+   ],
+   "it": [
+    "dati per aziende",
+    "aziende",
+    "business",
+    "b2b",
+    "dati commerciali",
+    "impresa"
+   ],
+   "pl": [
+    "dane dla firm",
+    "firmy",
+    "biznes",
+    "b2b",
+    "dane komercyjne",
+    "dla biznesu"
+   ],
+   "sv": [
+    "data för företag",
+    "företag",
+    "b2b",
+    "kommersiell data",
+    "affärer",
+    "näringsliv"
+   ],
+   "nb": [
+    "data for bedrifter",
+    "bedrift",
+    "bedrifter",
+    "b2b",
+    "kommersielle data",
+    "næringsliv"
+   ],
+   "da": [
+    "data til virksomheder",
+    "virksomhed",
+    "virksomheder",
+    "erhverv",
+    "b2b",
+    "kommercielle data"
+   ],
+   "fi": [
+    "data yrityksille",
+    "yritykset",
+    "yrityksille",
+    "b2b",
+    "kaupallinen data",
+    "liiketoiminta"
+   ],
+   "pt": [
+    "dados para empresas",
+    "empresas",
+    "negócios",
+    "b2b",
+    "dados comerciais",
+    "empresarial"
+   ],
+   "el": [
+    "δεδομένα για επιχειρήσεις",
+    "επιχειρήσεις",
+    "επιχείρηση",
+    "b2b",
+    "εμπορικά δεδομένα"
+   ],
+   "cs": [
+    "data pro firmy",
+    "firmy",
+    "byznys",
+    "b2b",
+    "komerční data",
+    "podniky"
+   ],
+   "sk": [
+    "dáta pre firmy",
+    "firmy",
+    "biznis",
+    "b2b",
+    "komerčné dáta",
+    "podniky"
+   ],
+   "hu": [
+    "adatok cégeknek",
+    "cégek",
+    "üzleti",
+    "vállalatok",
+    "b2b",
+    "kereskedelmi adatok"
+   ],
+   "ro": [
+    "date pentru companii",
+    "companii",
+    "afaceri",
+    "b2b",
+    "date comerciale",
+    "business"
+   ],
+   "bg": [
+    "данни за бизнеса",
+    "бизнес",
+    "фирми",
+    "компании",
+    "b2b",
+    "търговски данни"
+   ],
+   "sl": [
+    "podatki za podjetja",
+    "podjetja",
+    "poslovno",
+    "b2b",
+    "komercialni podatki"
+   ],
+   "hr": [
+    "podaci za tvrtke",
+    "tvrtke",
+    "poslovanje",
+    "b2b",
+    "komercijalni podaci",
+    "poslovni korisnici"
+   ],
+   "bs": [
+    "podaci za firme",
+    "firme",
+    "biznis",
+    "b2b",
+    "komercijalni podaci",
+    "kompanije"
+   ],
+   "mk": [
+    "податоци за бизнис",
+    "бизнис",
+    "компании",
+    "фирми",
+    "b2b",
+    "комерцијални податоци"
+   ],
+   "sq": [
+    "të dhëna për biznese",
+    "biznes",
+    "bizneset",
+    "kompani",
+    "b2b",
+    "të dhëna komerciale"
+   ],
+   "uk": [
+    "дані для бізнесу",
+    "бізнес",
+    "компаніям",
+    "b2b",
+    "комерційні дані",
+    "корпоративний"
+   ],
+   "tr": [
+    "işletmeler için veri",
+    "işletme",
+    "iş",
+    "kurumsal",
+    "b2b",
+    "ticari veri"
+   ],
+   "lt": [
+    "duomenys verslui",
+    "verslas",
+    "verslui",
+    "įmonėms",
+    "b2b",
+    "komerciniai duomenys"
+   ],
+   "lv": [
+    "dati uzņēmumiem",
+    "uzņēmumi",
+    "bizness",
+    "b2b",
+    "komercdati",
+    "komerciālie dati"
+   ],
+   "et": [
+    "andmed ettevõtetele",
+    "ettevõtted",
+    "äri",
+    "b2b",
+    "ärikliendid",
+    "kommertsandmed"
+   ]
+  },
+  "sources": {
+   "en": [
+    "sources",
+    "source",
+    "licence",
+    "license",
+    "licenses",
+    "attribution",
+    "credits"
+   ],
+   "sr": [
+    "izvori",
+    "izvor",
+    "licenca",
+    "licence",
+    "atribucija",
+    "izvori podataka"
+   ],
+   "ru": [
+    "источники",
+    "источник",
+    "лицензия",
+    "лицензии",
+    "атрибуция",
+    "источники данных"
+   ],
+   "de": [
+    "quellen",
+    "quelle",
+    "datenquellen",
+    "lizenz",
+    "lizenzen",
+    "namensnennung"
+   ],
+   "fr": [
+    "sources",
+    "source",
+    "licence",
+    "licences",
+    "attribution",
+    "crédits"
+   ],
+   "nl": [
+    "bronnen",
+    "bron",
+    "licentie",
+    "licenties",
+    "naamsvermelding",
+    "bronvermelding"
+   ],
+   "es": [
+    "fuentes",
+    "fuente",
+    "licencia",
+    "licencias",
+    "atribución",
+    "créditos"
+   ],
+   "it": [
+    "fonti",
+    "fonte",
+    "licenza",
+    "licenze",
+    "attribuzione",
+    "crediti"
+   ],
+   "pl": [
+    "źródła",
+    "źródło",
+    "licencja",
+    "licencje",
+    "atrybucja",
+    "źródła danych"
+   ],
+   "sv": [
+    "källor",
+    "källa",
+    "licens",
+    "licenser",
+    "attribution",
+    "källhänvisning"
+   ],
+   "nb": [
+    "kilder",
+    "kilde",
+    "lisens",
+    "lisenser",
+    "kreditering",
+    "kildehenvisning"
+   ],
+   "da": [
+    "kilder",
+    "kilde",
+    "licens",
+    "licenser",
+    "kreditering",
+    "kildeangivelse"
+   ],
+   "fi": [
+    "lähteet",
+    "lähde",
+    "lisenssi",
+    "lisenssit",
+    "tekijätiedot",
+    "tietolähteet"
+   ],
+   "pt": [
+    "fontes",
+    "fonte",
+    "licença",
+    "licenças",
+    "atribuição",
+    "créditos"
+   ],
+   "el": [
+    "πηγές",
+    "πηγή",
+    "άδεια",
+    "άδειες",
+    "άδεια χρήσης",
+    "αναφορά πηγής"
+   ],
+   "cs": [
+    "zdroje",
+    "zdroj",
+    "licence",
+    "licenční podmínky",
+    "uvedení zdroje"
+   ],
+   "sk": [
+    "zdroje",
+    "zdroj",
+    "licencia",
+    "licencie",
+    "uvedenie zdroja"
+   ],
+   "hu": [
+    "források",
+    "forrás",
+    "licenc",
+    "licencek",
+    "forrásmegjelölés"
+   ],
+   "ro": [
+    "surse",
+    "sursă",
+    "sursa",
+    "licență",
+    "licențe",
+    "atribuire"
+   ],
+   "bg": [
+    "източници",
+    "източник",
+    "лиценз",
+    "лицензи",
+    "атрибуция"
+   ],
+   "sl": [
+    "viri",
+    "vir",
+    "licenca",
+    "licence",
+    "navedba vira"
+   ],
+   "hr": [
+    "izvori",
+    "izvor",
+    "licenca",
+    "licencije",
+    "atribucija",
+    "navođenje izvora"
+   ],
+   "bs": [
+    "izvori",
+    "izvor",
+    "licenca",
+    "licence",
+    "atribucija"
+   ],
+   "mk": [
+    "извори",
+    "извор",
+    "лиценца",
+    "лиценци",
+    "атрибуција"
+   ],
+   "sq": [
+    "burime",
+    "burimet",
+    "burim",
+    "licencë",
+    "licenca",
+    "atribuim"
+   ],
+   "uk": [
+    "джерела",
+    "джерело",
+    "ліцензія",
+    "ліцензії",
+    "атрибуція"
+   ],
+   "tr": [
+    "kaynaklar",
+    "kaynak",
+    "lisans",
+    "lisanslar",
+    "atıf"
+   ],
+   "lt": [
+    "šaltiniai",
+    "šaltinis",
+    "licencija",
+    "licencijos",
+    "šaltinio nurodymas"
+   ],
+   "lv": [
+    "avoti",
+    "avots",
+    "licence",
+    "licences",
+    "atsauce uz avotu"
+   ],
+   "et": [
+    "allikad",
+    "allikas",
+    "litsents",
+    "litsentsid",
+    "viide allikale"
+   ]
+  },
+  "methodology": {
+   "en": [
+    "methodology",
+    "method",
+    "how we count",
+    "reliability",
+    "reliability score",
+    "score",
+    "how it works"
+   ],
+   "sr": [
+    "metodologija",
+    "metoda",
+    "kako brojimo",
+    "pouzdanost",
+    "ocena pouzdanosti",
+    "skor"
+   ],
+   "ru": [
+    "методология",
+    "методика",
+    "как считаем",
+    "надёжность",
+    "надежность",
+    "оценка надёжности"
+   ],
+   "de": [
+    "methodik",
+    "methodologie",
+    "methode",
+    "wie wir zählen",
+    "zuverlässigkeit",
+    "zuverlässigkeitswert",
+    "score"
+   ],
+   "fr": [
+    "méthodologie",
+    "méthode",
+    "comment nous comptons",
+    "fiabilité",
+    "score de fiabilité"
+   ],
+   "nl": [
+    "methodologie",
+    "methode",
+    "hoe we tellen",
+    "betrouwbaarheid",
+    "betrouwbaarheidsscore",
+    "score"
+   ],
+   "es": [
+    "metodología",
+    "método",
+    "cómo contamos",
+    "fiabilidad",
+    "confiabilidad",
+    "puntuación de fiabilidad"
+   ],
+   "it": [
+    "metodologia",
+    "metodo",
+    "come contiamo",
+    "affidabilità",
+    "punteggio di affidabilità"
+   ],
+   "pl": [
+    "metodologia",
+    "metoda",
+    "jak liczymy",
+    "niezawodność",
+    "wiarygodność",
+    "ocena niezawodności"
+   ],
+   "sv": [
+    "metodik",
+    "metod",
+    "hur vi räknar",
+    "tillförlitlighet",
+    "pålitlighet",
+    "tillförlitlighetspoäng"
+   ],
+   "nb": [
+    "metodikk",
+    "metode",
+    "hvordan vi teller",
+    "pålitelighet",
+    "pålitelighetspoeng",
+    "score"
+   ],
+   "da": [
+    "metode",
+    "metodik",
+    "hvordan vi tæller",
+    "pålidelighed",
+    "pålidelighedsscore"
+   ],
+   "fi": [
+    "menetelmä",
+    "metodologia",
+    "miten laskemme",
+    "luotettavuus",
+    "luotettavuuspisteet"
+   ],
+   "pt": [
+    "metodologia",
+    "método",
+    "como contamos",
+    "fiabilidade",
+    "confiabilidade",
+    "pontuação de fiabilidade"
+   ],
+   "el": [
+    "μεθοδολογία",
+    "μέθοδος",
+    "πώς μετράμε",
+    "αξιοπιστία",
+    "βαθμός αξιοπιστίας"
+   ],
+   "cs": [
+    "metodika",
+    "metodologie",
+    "jak počítáme",
+    "spolehlivost",
+    "skóre spolehlivosti"
+   ],
+   "sk": [
+    "metodika",
+    "metodológia",
+    "ako počítame",
+    "spoľahlivosť",
+    "skóre spoľahlivosti"
+   ],
+   "hu": [
+    "módszertan",
+    "módszer",
+    "hogyan számolunk",
+    "megbízhatóság",
+    "megbízhatósági pontszám"
+   ],
+   "ro": [
+    "metodologie",
+    "metodă",
+    "cum numărăm",
+    "fiabilitate",
+    "scor de fiabilitate"
+   ],
+   "bg": [
+    "методология",
+    "методика",
+    "как броим",
+    "надеждност",
+    "оценка за надеждност"
+   ],
+   "sl": [
+    "metodologija",
+    "metoda",
+    "kako štejemo",
+    "zanesljivost",
+    "ocena zanesljivosti"
+   ],
+   "hr": [
+    "metodologija",
+    "metoda",
+    "kako brojimo",
+    "pouzdanost",
+    "ocjena pouzdanosti"
+   ],
+   "bs": [
+    "metodologija",
+    "metoda",
+    "kako brojimo",
+    "pouzdanost",
+    "ocjena pouzdanosti"
+   ],
+   "mk": [
+    "методологија",
+    "метод",
+    "како броиме",
+    "доверливост",
+    "оценка на доверливост"
+   ],
+   "sq": [
+    "metodologjia",
+    "metodologji",
+    "metoda",
+    "si numërojmë",
+    "besueshmëria",
+    "pikët e besueshmërisë"
+   ],
+   "uk": [
+    "методологія",
+    "методика",
+    "як рахуємо",
+    "надійність",
+    "оцінка надійності"
+   ],
+   "tr": [
+    "metodoloji",
+    "yöntem",
+    "nasıl sayıyoruz",
+    "güvenilirlik",
+    "güvenilirlik puanı"
+   ],
+   "lt": [
+    "metodika",
+    "metodologija",
+    "kaip skaičiuojame",
+    "patikimumas",
+    "patikimumo balas"
+   ],
+   "lv": [
+    "metodoloģija",
+    "metodika",
+    "kā mēs skaitām",
+    "uzticamība",
+    "uzticamības rādītājs"
+   ],
+   "et": [
+    "metoodika",
+    "metodoloogia",
+    "kuidas loendame",
+    "usaldusväärsus",
+    "usaldusväärsuse skoor"
+   ]
+  },
+  "terms": {
+   "en": [
+    "terms",
+    "terms of use",
+    "privacy",
+    "privacy policy",
+    "legal",
+    "cookies",
+    "imprint"
+   ],
+   "sr": [
+    "uslovi",
+    "uslovi korišćenja",
+    "privatnost",
+    "politika privatnosti",
+    "pravne informacije",
+    "kolačići"
+   ],
+   "ru": [
+    "условия",
+    "условия использования",
+    "конфиденциальность",
+    "политика конфиденциальности",
+    "правовая информация",
+    "cookies"
+   ],
+   "de": [
+    "nutzungsbedingungen",
+    "bedingungen",
+    "datenschutz",
+    "impressum",
+    "rechtliches",
+    "agb",
+    "cookies"
+   ],
+   "fr": [
+    "conditions",
+    "conditions d'utilisation",
+    "cgu",
+    "confidentialité",
+    "mentions légales",
+    "cookies"
+   ],
+   "nl": [
+    "voorwaarden",
+    "gebruiksvoorwaarden",
+    "privacy",
+    "privacybeleid",
+    "juridisch",
+    "cookies"
+   ],
+   "es": [
+    "términos",
+    "términos de uso",
+    "condiciones",
+    "privacidad",
+    "aviso legal",
+    "cookies"
+   ],
+   "it": [
+    "termini",
+    "termini d'uso",
+    "condizioni",
+    "privacy",
+    "note legali",
+    "cookie"
+   ],
+   "pl": [
+    "regulamin",
+    "warunki",
+    "warunki korzystania",
+    "prywatność",
+    "polityka prywatności",
+    "cookies"
+   ],
+   "sv": [
+    "villkor",
+    "användarvillkor",
+    "integritet",
+    "integritetspolicy",
+    "juridiskt",
+    "cookies"
+   ],
+   "nb": [
+    "vilkår",
+    "bruksvilkår",
+    "personvern",
+    "personvernerklæring",
+    "juridisk",
+    "informasjonskapsler"
+   ],
+   "da": [
+    "vilkår",
+    "brugsvilkår",
+    "privatliv",
+    "privatlivspolitik",
+    "juridisk",
+    "cookies"
+   ],
+   "fi": [
+    "ehdot",
+    "käyttöehdot",
+    "tietosuoja",
+    "tietosuojaseloste",
+    "evästeet"
+   ],
+   "pt": [
+    "termos",
+    "termos de uso",
+    "termos de utilização",
+    "privacidade",
+    "política de privacidade",
+    "cookies"
+   ],
+   "el": [
+    "όροι",
+    "όροι χρήσης",
+    "απόρρητο",
+    "πολιτική απορρήτου",
+    "νομικά",
+    "cookies"
+   ],
+   "cs": [
+    "podmínky",
+    "podmínky použití",
+    "soukromí",
+    "ochrana osobních údajů",
+    "právní informace",
+    "cookies"
+   ],
+   "sk": [
+    "podmienky",
+    "podmienky používania",
+    "súkromie",
+    "ochrana osobných údajov",
+    "cookies"
+   ],
+   "hu": [
+    "feltételek",
+    "felhasználási feltételek",
+    "adatvédelem",
+    "adatvédelmi irányelvek",
+    "jogi nyilatkozat",
+    "sütik"
+   ],
+   "ro": [
+    "termeni",
+    "termeni și condiții",
+    "confidențialitate",
+    "politica de confidențialitate",
+    "cookie-uri"
+   ],
+   "bg": [
+    "условия",
+    "условия за ползване",
+    "поверителност",
+    "политика за поверителност",
+    "бисквитки"
+   ],
+   "sl": [
+    "pogoji",
+    "pogoji uporabe",
+    "zasebnost",
+    "varstvo zasebnosti",
+    "pravno obvestilo",
+    "piškotki"
+   ],
+   "hr": [
+    "uvjeti",
+    "uvjeti korištenja",
+    "privatnost",
+    "pravila privatnosti",
+    "pravne informacije",
+    "kolačići"
+   ],
+   "bs": [
+    "uslovi",
+    "uslovi korištenja",
+    "privatnost",
+    "politika privatnosti",
+    "pravne informacije",
+    "kolačići"
+   ],
+   "mk": [
+    "услови",
+    "услови за користење",
+    "приватност",
+    "политика за приватност",
+    "колачиња"
+   ],
+   "sq": [
+    "kushtet",
+    "kushtet e përdorimit",
+    "privatësia",
+    "politika e privatësisë",
+    "cookies"
+   ],
+   "uk": [
+    "умови",
+    "умови використання",
+    "конфіденційність",
+    "політика конфіденційності",
+    "правова інформація",
+    "cookies"
+   ],
+   "tr": [
+    "koşullar",
+    "kullanım koşulları",
+    "gizlilik",
+    "gizlilik politikası",
+    "yasal",
+    "çerezler"
+   ],
+   "lt": [
+    "sąlygos",
+    "naudojimo sąlygos",
+    "privatumas",
+    "privatumo politika",
+    "slapukai"
+   ],
+   "lv": [
+    "noteikumi",
+    "lietošanas noteikumi",
+    "privātums",
+    "privātuma politika",
+    "sīkdatnes"
+   ],
+   "et": [
+    "tingimused",
+    "kasutustingimused",
+    "privaatsus",
+    "privaatsuspoliitika",
+    "küpsised"
+   ]
+  },
+  "about": {
+   "en": [
+    "about",
+    "about us",
+    "who we are",
+    "contact",
+    "contacts",
+    "team",
+    "founders"
+   ],
+   "sr": [
+    "o nama",
+    "o sajtu",
+    "ko smo",
+    "kontakt",
+    "kontakti",
+    "tim",
+    "osnivači"
+   ],
+   "ru": [
+    "о нас",
+    "о сайте",
+    "кто мы",
+    "контакты",
+    "контакт",
+    "команда",
+    "основатели"
+   ],
+   "de": [
+    "über uns",
+    "über die seite",
+    "wer wir sind",
+    "kontakt",
+    "team",
+    "gründer"
+   ],
+   "fr": [
+    "à propos",
+    "qui sommes-nous",
+    "contact",
+    "contacts",
+    "équipe",
+    "fondateurs"
+   ],
+   "nl": [
+    "over ons",
+    "over de site",
+    "wie zijn wij",
+    "contact",
+    "team",
+    "oprichters"
+   ],
+   "es": [
+    "acerca de",
+    "sobre nosotros",
+    "quiénes somos",
+    "contacto",
+    "equipo",
+    "fundadores"
+   ],
+   "it": [
+    "chi siamo",
+    "info",
+    "contatti",
+    "contatto",
+    "team",
+    "fondatori"
+   ],
+   "pl": [
+    "o nas",
+    "o stronie",
+    "kim jesteśmy",
+    "kontakt",
+    "zespół",
+    "założyciele"
+   ],
+   "sv": [
+    "om oss",
+    "om sajten",
+    "vilka vi är",
+    "kontakt",
+    "team",
+    "grundare"
+   ],
+   "nb": [
+    "om oss",
+    "om siden",
+    "hvem vi er",
+    "kontakt",
+    "team",
+    "gründere"
+   ],
+   "da": [
+    "om os",
+    "om siden",
+    "hvem er vi",
+    "kontakt",
+    "team",
+    "stiftere"
+   ],
+   "fi": [
+    "tietoa meistä",
+    "meistä",
+    "keitä olemme",
+    "yhteystiedot",
+    "ota yhteyttä",
+    "tiimi",
+    "perustajat"
+   ],
+   "pt": [
+    "sobre",
+    "sobre nós",
+    "quem somos",
+    "contacto",
+    "contato",
+    "equipa",
+    "fundadores"
+   ],
+   "el": [
+    "σχετικά με εμάς",
+    "ποιοι είμαστε",
+    "επικοινωνία",
+    "επαφή",
+    "ομάδα",
+    "ιδρυτές"
+   ],
+   "cs": [
+    "o nás",
+    "o webu",
+    "kdo jsme",
+    "kontakt",
+    "kontakty",
+    "tým",
+    "zakladatelé"
+   ],
+   "sk": [
+    "o nás",
+    "o stránke",
+    "kto sme",
+    "kontakt",
+    "kontakty",
+    "tím",
+    "zakladatelia"
+   ],
+   "hu": [
+    "rólunk",
+    "az oldalról",
+    "kik vagyunk",
+    "kapcsolat",
+    "elérhetőség",
+    "csapat",
+    "alapítók"
+   ],
+   "ro": [
+    "despre noi",
+    "despre site",
+    "cine suntem",
+    "contact",
+    "echipa",
+    "fondatori"
+   ],
+   "bg": [
+    "за нас",
+    "за сайта",
+    "кои сме ние",
+    "контакти",
+    "контакт",
+    "екип",
+    "основатели"
+   ],
+   "sl": [
+    "o nas",
+    "o strani",
+    "kdo smo",
+    "kontakt",
+    "ekipa",
+    "ustanovitelji"
+   ],
+   "hr": [
+    "o nama",
+    "o stranici",
+    "tko smo",
+    "kontakt",
+    "kontakti",
+    "tim",
+    "osnivači"
+   ],
+   "bs": [
+    "o nama",
+    "o stranici",
+    "ko smo",
+    "kontakt",
+    "kontakti",
+    "tim",
+    "osnivači"
+   ],
+   "mk": [
+    "за нас",
+    "за сајтот",
+    "кои сме",
+    "контакт",
+    "контакти",
+    "тим",
+    "основачи"
+   ],
+   "sq": [
+    "rreth nesh",
+    "rreth faqes",
+    "kush jemi",
+    "kontakt",
+    "kontakti",
+    "ekipi",
+    "themeluesit"
+   ],
+   "uk": [
+    "про нас",
+    "про сайт",
+    "хто ми",
+    "контакти",
+    "контакт",
+    "команда",
+    "засновники"
+   ],
+   "tr": [
+    "hakkımızda",
+    "hakkında",
+    "biz kimiz",
+    "iletişim",
+    "ekip",
+    "kurucular"
+   ],
+   "lt": [
+    "apie mus",
+    "apie svetainę",
+    "kas mes",
+    "kontaktai",
+    "kontaktas",
+    "komanda",
+    "įkūrėjai"
+   ],
+   "lv": [
+    "par mums",
+    "par vietni",
+    "kas mēs esam",
+    "kontakti",
+    "kontakts",
+    "komanda",
+    "dibinātāji"
+   ],
+   "et": [
+    "meist",
+    "saidist",
+    "kes me oleme",
+    "kontakt",
+    "kontaktid",
+    "meeskond",
+    "asutajad"
+   ]
+  },
+  "western_balkans": {
+   "en": [
+    "western balkans",
+    "balkans",
+    "balkan",
+    "former yugoslavia",
+    "ex-yugoslavia",
+    "balkan region"
+   ],
+   "sr": [
+    "zapadni balkan",
+    "zapadnog balkana",
+    "balkan",
+    "balkana",
+    "region",
+    "bivša jugoslavija",
+    "ex yu"
+   ],
+   "ru": [
+    "западные балканы",
+    "балканы",
+    "балкан",
+    "бывшая югославия",
+    "экс-югославия"
+   ],
+   "de": [
+    "westbalkan",
+    "westlicher balkan",
+    "balkan",
+    "ex-jugoslawien",
+    "balkanstaaten"
+   ],
+   "fr": [
+    "balkans occidentaux",
+    "balkans",
+    "balkan",
+    "ex-yougoslavie"
+   ],
+   "nl": [
+    "westelijke balkan",
+    "balkan",
+    "ex-joegoslavië",
+    "balkanlanden"
+   ],
+   "es": [
+    "balcanes occidentales",
+    "balcanes",
+    "balcán",
+    "ex yugoslavia",
+    "antigua yugoslavia"
+   ],
+   "it": [
+    "balcani occidentali",
+    "balcani",
+    "balcanico",
+    "ex jugoslavia"
+   ],
+   "pl": [
+    "bałkany zachodnie",
+    "bałkany",
+    "bałkan",
+    "była jugosławia",
+    "półwysep bałkański"
+   ],
+   "sv": [
+    "västra balkan",
+    "balkan",
+    "balkanländerna",
+    "forna jugoslavien"
+   ],
+   "nb": [
+    "vest-balkan",
+    "balkan",
+    "balkanlandene",
+    "tidligere jugoslavia"
+   ],
+   "da": [
+    "vestbalkan",
+    "det vestlige balkan",
+    "balkan",
+    "balkanlandene",
+    "tidligere jugoslavien"
+   ],
+   "fi": [
+    "länsi-balkan",
+    "balkan",
+    "balkanin maat",
+    "entinen jugoslavia"
+   ],
+   "pt": [
+    "balcãs ocidentais",
+    "balcãs",
+    "bálcãs",
+    "ex-jugoslávia",
+    "antiga jugoslávia"
+   ],
+   "el": [
+    "δυτικά βαλκάνια",
+    "βαλκάνια",
+    "βαλκανική",
+    "πρώην γιουγκοσλαβία"
+   ],
+   "cs": [
+    "západní balkán",
+    "balkán",
+    "bývalá jugoslávie",
+    "balkánské státy"
+   ],
+   "sk": [
+    "západný balkán",
+    "balkán",
+    "bývalá juhoslávia",
+    "balkánske krajiny"
+   ],
+   "hu": [
+    "nyugat-balkán",
+    "balkán",
+    "volt jugoszlávia",
+    "balkáni országok"
+   ],
+   "ro": [
+    "balcanii de vest",
+    "balcani",
+    "balcanii",
+    "fosta iugoslavie"
+   ],
+   "bg": [
+    "западни балкани",
+    "балкани",
+    "балканите",
+    "бивша югославия"
+   ],
+   "sl": [
+    "zahodni balkan",
+    "balkan",
+    "nekdanja jugoslavija",
+    "bivša jugoslavija",
+    "ex-yu"
+   ],
+   "hr": [
+    "zapadni balkan",
+    "balkan",
+    "regija",
+    "bivša jugoslavija",
+    "ex-yu"
+   ],
+   "bs": [
+    "zapadni balkan",
+    "balkan",
+    "region",
+    "regija",
+    "bivša jugoslavija",
+    "ex-yu"
+   ],
+   "mk": [
+    "западен балкан",
+    "балкан",
+    "балканот",
+    "регион",
+    "поранешна југославија",
+    "бивша југославија"
+   ],
+   "sq": [
+    "ballkani perëndimor",
+    "ballkan",
+    "ballkani",
+    "rajoni",
+    "ish-jugosllavia"
+   ],
+   "uk": [
+    "західні балкани",
+    "балкани",
+    "балкан",
+    "колишня югославія"
+   ],
+   "tr": [
+    "batı balkanlar",
+    "balkanlar",
+    "balkan",
+    "eski yugoslavya"
+   ],
+   "lt": [
+    "vakarų balkanai",
+    "balkanai",
+    "balkanų šalys",
+    "buvusi jugoslavija"
+   ],
+   "lv": [
+    "rietumbalkāni",
+    "balkāni",
+    "balkānu valstis",
+    "bijusī dienvidslāvija"
+   ],
+   "et": [
+    "lääne-balkan",
+    "balkan",
+    "balkani riigid",
+    "endine jugoslaavia"
+   ]
+  },
+  "networks": {
+   "en": [
+    "networks",
+    "network",
+    "operator",
+    "operators",
+    "cpo",
+    "charging network",
+    "charging networks",
+    "provider"
+   ],
+   "sr": [
+    "mreže",
+    "mreža",
+    "operater",
+    "operateri",
+    "operatori",
+    "mreža punionica",
+    "cpo",
+    "provajder"
+   ],
+   "ru": [
+    "сети",
+    "сеть",
+    "оператор",
+    "операторы",
+    "зарядная сеть",
+    "сети зарядных станций",
+    "cpo",
+    "провайдер"
+   ],
+   "de": [
+    "netze",
+    "netz",
+    "ladenetz",
+    "ladenetze",
+    "betreiber",
+    "ladesäulenbetreiber",
+    "anbieter",
+    "cpo"
+   ],
+   "fr": [
+    "réseaux",
+    "réseau",
+    "opérateur",
+    "opérateurs",
+    "réseau de recharge",
+    "cpo",
+    "fournisseur"
+   ],
+   "nl": [
+    "netwerken",
+    "netwerk",
+    "laadnetwerk",
+    "exploitant",
+    "exploitanten",
+    "aanbieder",
+    "cpo"
+   ],
+   "es": [
+    "redes",
+    "red",
+    "operador",
+    "operadores",
+    "red de recarga",
+    "cpo",
+    "proveedor"
+   ],
+   "it": [
+    "reti",
+    "rete",
+    "operatore",
+    "operatori",
+    "rete di ricarica",
+    "cpo",
+    "gestore",
+    "gestori"
+   ],
+   "pl": [
+    "sieci",
+    "sieć",
+    "operator",
+    "operatorzy",
+    "sieć ładowania",
+    "cpo",
+    "dostawca"
+   ],
+   "sv": [
+    "nätverk",
+    "laddnätverk",
+    "operatör",
+    "operatörer",
+    "laddoperatör",
+    "cpo",
+    "leverantör"
+   ],
+   "nb": [
+    "nettverk",
+    "ladenettverk",
+    "operatør",
+    "operatører",
+    "ladeoperatør",
+    "cpo",
+    "leverandør"
+   ],
+   "da": [
+    "netværk",
+    "ladenetværk",
+    "operatør",
+    "operatører",
+    "ladeoperatør",
+    "cpo",
+    "udbyder"
+   ],
+   "fi": [
+    "verkostot",
+    "verkosto",
+    "latausverkosto",
+    "operaattori",
+    "operaattorit",
+    "cpo",
+    "palveluntarjoaja"
+   ],
+   "pt": [
+    "redes",
+    "rede",
+    "operador",
+    "operadores",
+    "rede de carregamento",
+    "cpo",
+    "fornecedor"
+   ],
+   "el": [
+    "δίκτυα",
+    "δίκτυο",
+    "πάροχος",
+    "πάροχοι",
+    "φορέας λειτουργίας",
+    "δίκτυο φόρτισης",
+    "cpo"
+   ],
+   "cs": [
+    "sítě",
+    "síť",
+    "provozovatel",
+    "provozovatelé",
+    "nabíjecí síť",
+    "cpo",
+    "poskytovatel"
+   ],
+   "sk": [
+    "siete",
+    "sieť",
+    "prevádzkovateľ",
+    "prevádzkovatelia",
+    "nabíjacia sieť",
+    "cpo",
+    "poskytovateľ"
+   ],
+   "hu": [
+    "hálózatok",
+    "hálózat",
+    "üzemeltető",
+    "üzemeltetők",
+    "töltőhálózat",
+    "szolgáltató",
+    "cpo"
+   ],
+   "ro": [
+    "rețele",
+    "rețea",
+    "operator",
+    "operatori",
+    "rețea de încărcare",
+    "cpo",
+    "furnizor"
+   ],
+   "bg": [
+    "мрежи",
+    "мрежа",
+    "оператор",
+    "оператори",
+    "зарядна мрежа",
+    "cpo",
+    "доставчик"
+   ],
+   "sl": [
+    "omrežja",
+    "omrežje",
+    "operater",
+    "operaterji",
+    "polnilno omrežje",
+    "ponudnik",
+    "cpo"
+   ],
+   "hr": [
+    "mreže",
+    "mreža",
+    "operater",
+    "operateri",
+    "mreža punionica",
+    "pružatelj",
+    "cpo"
+   ],
+   "bs": [
+    "mreže",
+    "mreža",
+    "operater",
+    "operateri",
+    "mreža punionica",
+    "cpo",
+    "provajder"
+   ],
+   "mk": [
+    "мрежи",
+    "мрежа",
+    "оператор",
+    "оператори",
+    "мрежа за полнење",
+    "cpo",
+    "провајдер"
+   ],
+   "sq": [
+    "rrjete",
+    "rrjeti",
+    "rrjet",
+    "operator",
+    "operatorët",
+    "rrjeti i karikimit",
+    "cpo",
+    "ofrues"
+   ],
+   "uk": [
+    "мережі",
+    "мережа",
+    "оператор",
+    "оператори",
+    "зарядна мережа",
+    "cpo",
+    "провайдер"
+   ],
+   "tr": [
+    "ağlar",
+    "ağ",
+    "operatör",
+    "operatörler",
+    "şarj ağı",
+    "şarj operatörü",
+    "cpo",
+    "sağlayıcı"
+   ],
+   "lt": [
+    "tinklai",
+    "tinklas",
+    "operatorius",
+    "operatoriai",
+    "įkrovimo tinklas",
+    "cpo",
+    "tiekėjas"
+   ],
+   "lv": [
+    "tīkli",
+    "tīkls",
+    "operators",
+    "operatori",
+    "uzlādes tīkls",
+    "cpo",
+    "pakalpojumu sniedzējs"
+   ],
+   "et": [
+    "võrgud",
+    "võrk",
+    "operaator",
+    "operaatorid",
+    "laadimisvõrk",
+    "cpo",
+    "teenusepakkuja"
+   ]
+  }
+ },
+ "stop": {
+  "en": [
+   "charging",
+   "charger",
+   "chargers",
+   "station",
+   "stations",
+   "charging station",
+   "charging stations",
+   "charging point",
+   "charging points",
+   "ev",
+   "evs",
+   "electric",
+   "electric car",
+   "electric vehicle",
+   "car",
+   "cars",
+   "point",
+   "points",
+   "near",
+   "nearby",
+   "in",
+   "at",
+   "the",
+   "a",
+   "of",
+   "for",
+   "to",
+   "around",
+   "on",
+   "me"
+  ],
+  "sr": [
+   "punjač",
+   "punjaci",
+   "punjači",
+   "punjača",
+   "punionica",
+   "punionice",
+   "punionicu",
+   "stanica",
+   "stanice",
+   "punjenje",
+   "električni auto",
+   "električni automobil",
+   "električna vozila",
+   "auto",
+   "automobil",
+   "u",
+   "na",
+   "za",
+   "kod",
+   "blizu",
+   "pored",
+   "od",
+   "do",
+   "i"
+  ],
+  "ru": [
+   "зарядка",
+   "зарядки",
+   "зарядку",
+   "зарядок",
+   "зарядная станция",
+   "зарядные станции",
+   "станция",
+   "станции",
+   "электрозаправка",
+   "электрозаправки",
+   "электромобиль",
+   "электромобиля",
+   "электромобилей",
+   "электрокар",
+   "в",
+   "на",
+   "у",
+   "около",
+   "рядом",
+   "для",
+   "возле",
+   "по",
+   "и"
+  ],
+  "de": [
+   "ladestation",
+   "ladestationen",
+   "ladesäule",
+   "ladesäulen",
+   "ladepunkt",
+   "ladepunkte",
+   "laden",
+   "aufladen",
+   "e-auto",
+   "elektroauto",
+   "elektroautos",
+   "stromtankstelle",
+   "in",
+   "bei",
+   "der",
+   "die",
+   "das",
+   "den",
+   "im",
+   "am",
+   "von",
+   "für",
+   "nähe",
+   "nahe",
+   "um"
+  ],
+  "fr": [
+   "borne",
+   "bornes",
+   "borne de recharge",
+   "bornes de recharge",
+   "recharge",
+   "recharger",
+   "station",
+   "stations",
+   "voiture électrique",
+   "véhicule électrique",
+   "ve",
+   "à",
+   "au",
+   "aux",
+   "en",
+   "de",
+   "des",
+   "du",
+   "la",
+   "le",
+   "les",
+   "près",
+   "pour",
+   "dans",
+   "autour"
+  ],
+  "nl": [
+   "laadpaal",
+   "laadpalen",
+   "laadstation",
+   "laadstations",
+   "laadpunt",
+   "laadpunten",
+   "laden",
+   "opladen",
+   "elektrische auto",
+   "ev",
+   "in",
+   "bij",
+   "de",
+   "het",
+   "een",
+   "van",
+   "voor",
+   "nabij",
+   "rond",
+   "buurt"
+  ],
+  "es": [
+   "cargador",
+   "cargadores",
+   "punto de recarga",
+   "puntos de recarga",
+   "electrolinera",
+   "electrolineras",
+   "estación de carga",
+   "recarga",
+   "cargar",
+   "coche eléctrico",
+   "vehículo eléctrico",
+   "en",
+   "cerca",
+   "cerca de",
+   "de",
+   "del",
+   "la",
+   "el",
+   "los",
+   "las",
+   "para",
+   "a"
+  ],
+  "it": [
+   "colonnina",
+   "colonnine",
+   "colonnina di ricarica",
+   "stazione di ricarica",
+   "stazioni",
+   "ricarica",
+   "ricaricare",
+   "auto elettrica",
+   "auto elettriche",
+   "veicolo elettrico",
+   "a",
+   "in",
+   "di",
+   "del",
+   "della",
+   "il",
+   "la",
+   "le",
+   "vicino",
+   "vicino a",
+   "per",
+   "presso"
+  ],
+  "pl": [
+   "ładowarka",
+   "ładowarki",
+   "ładowarek",
+   "stacja ładowania",
+   "stacje ładowania",
+   "stacji",
+   "ładowanie",
+   "samochód elektryczny",
+   "elektryk",
+   "auto elektryczne",
+   "w",
+   "we",
+   "na",
+   "przy",
+   "koło",
+   "blisko",
+   "obok",
+   "dla",
+   "do",
+   "z"
+  ],
+  "sv": [
+   "laddstation",
+   "laddstationer",
+   "laddstolpe",
+   "laddstolpar",
+   "laddplats",
+   "laddplatser",
+   "laddare",
+   "laddning",
+   "elbil",
+   "elbilar",
+   "i",
+   "på",
+   "vid",
+   "nära",
+   "för",
+   "av",
+   "till",
+   "runt"
+  ],
+  "nb": [
+   "ladestasjon",
+   "ladestasjoner",
+   "ladestasjonen",
+   "lader",
+   "ladere",
+   "ladepunkt",
+   "ladepunkter",
+   "lading",
+   "elbil",
+   "elbiler",
+   "i",
+   "på",
+   "ved",
+   "nær",
+   "for",
+   "av",
+   "til",
+   "rundt"
+  ],
+  "da": [
+   "ladestander",
+   "ladestandere",
+   "ladestation",
+   "ladestationer",
+   "ladepunkt",
+   "ladestik",
+   "opladning",
+   "elbil",
+   "elbiler",
+   "i",
+   "på",
+   "ved",
+   "nær",
+   "for",
+   "af",
+   "til",
+   "omkring"
+  ],
+  "fi": [
+   "latausasema",
+   "latausasemat",
+   "latausasemia",
+   "latauspiste",
+   "latauspisteet",
+   "laturi",
+   "laturit",
+   "lataus",
+   "sähköauto",
+   "sähköautot",
+   "sähköauton",
+   "lähellä",
+   "lähistöllä",
+   "ja"
+  ],
+  "pt": [
+   "carregador",
+   "carregadores",
+   "posto de carregamento",
+   "postos de carregamento",
+   "ponto de carregamento",
+   "carregamento",
+   "carregar",
+   "carro elétrico",
+   "veículo elétrico",
+   "em",
+   "no",
+   "na",
+   "perto",
+   "perto de",
+   "de",
+   "do",
+   "da",
+   "o",
+   "a",
+   "os",
+   "as",
+   "para"
+  ],
+  "el": [
+   "φορτιστής",
+   "φορτιστές",
+   "φορτιστή",
+   "σταθμός φόρτισης",
+   "σταθμοί φόρτισης",
+   "φόρτιση",
+   "ηλεκτρικό αυτοκίνητο",
+   "ηλεκτρικά αυτοκίνητα",
+   "ηλεκτρικό",
+   "σε",
+   "στο",
+   "στη",
+   "στην",
+   "κοντά",
+   "για",
+   "του",
+   "της",
+   "το",
+   "η",
+   "ο"
+  ],
+  "cs": [
+   "nabíječka",
+   "nabíječky",
+   "nabíjecí stanice",
+   "nabíjecí bod",
+   "dobíjecí stanice",
+   "nabíjení",
+   "elektroauto",
+   "elektromobil",
+   "elektromobily",
+   "v",
+   "ve",
+   "na",
+   "u",
+   "blízko",
+   "poblíž",
+   "pro",
+   "do",
+   "z"
+  ],
+  "sk": [
+   "nabíjačka",
+   "nabíjačky",
+   "nabíjacia stanica",
+   "nabíjacie stanice",
+   "nabíjanie",
+   "elektroauto",
+   "elektromobil",
+   "elektromobily",
+   "v",
+   "vo",
+   "na",
+   "pri",
+   "blízko",
+   "pre",
+   "do",
+   "z"
+  ],
+  "hu": [
+   "töltő",
+   "töltők",
+   "töltőállomás",
+   "töltőállomások",
+   "töltőpont",
+   "töltés",
+   "elektromos autó",
+   "villanyautó",
+   "e-autó",
+   "közelében",
+   "közel",
+   "a",
+   "az",
+   "és"
+  ],
+  "ro": [
+   "stație de încărcare",
+   "stații de încărcare",
+   "stație",
+   "stații",
+   "încărcător",
+   "încărcătoare",
+   "încărcare",
+   "mașină electrică",
+   "mașini electrice",
+   "în",
+   "la",
+   "lângă",
+   "de",
+   "din",
+   "pentru",
+   "pe",
+   "aproape"
+  ],
+  "bg": [
+   "зарядна станция",
+   "зарядни станции",
+   "зарядна",
+   "зарядни",
+   "зарядно",
+   "зареждане",
+   "електромобил",
+   "електромобили",
+   "електрически автомобил",
+   "в",
+   "на",
+   "до",
+   "близо",
+   "около",
+   "за",
+   "при"
+  ],
+  "sl": [
+   "polnilnica",
+   "polnilnice",
+   "polnilna postaja",
+   "polnilne postaje",
+   "polnilec",
+   "polnjenje",
+   "električni avto",
+   "električno vozilo",
+   "v",
+   "na",
+   "pri",
+   "blizu",
+   "za",
+   "ob"
+  ],
+  "hr": [
+   "punionica",
+   "punionice",
+   "punjač",
+   "punjači",
+   "punjenje",
+   "stanica za punjenje",
+   "električni automobil",
+   "električno vozilo",
+   "auto",
+   "u",
+   "na",
+   "za",
+   "kod",
+   "blizu",
+   "pored"
+  ],
+  "bs": [
+   "punjač",
+   "punjači",
+   "punjaci",
+   "punionica",
+   "punionice",
+   "stanica",
+   "punjenje",
+   "električni auto",
+   "električno vozilo",
+   "auto",
+   "u",
+   "na",
+   "za",
+   "kod",
+   "blizu",
+   "pored"
+  ],
+  "mk": [
+   "полнач",
+   "полначи",
+   "станица за полнење",
+   "станици за полнење",
+   "полнење",
+   "електричен автомобил",
+   "електрично возило",
+   "во",
+   "на",
+   "кај",
+   "близу",
+   "за",
+   "до",
+   "покрај"
+  ],
+  "sq": [
+   "karikues",
+   "karikuesit",
+   "karikuesi",
+   "stacion karikimi",
+   "stacione karikimi",
+   "karikim",
+   "karikimi",
+   "makinë elektrike",
+   "makina elektrike",
+   "në",
+   "pranë",
+   "afër",
+   "për",
+   "te",
+   "tek",
+   "i",
+   "e"
+  ],
+  "uk": [
+   "зарядка",
+   "зарядки",
+   "зарядна станція",
+   "зарядні станції",
+   "станція",
+   "станції",
+   "електрозаправка",
+   "електромобіль",
+   "електромобілі",
+   "електрокар",
+   "в",
+   "у",
+   "на",
+   "біля",
+   "поруч",
+   "для",
+   "коло"
+  ],
+  "tr": [
+   "şarj",
+   "şarj istasyonu",
+   "şarj istasyonları",
+   "şarj noktası",
+   "istasyon",
+   "istasyonlar",
+   "elektrikli araç",
+   "elektrikli araba",
+   "elektrikli",
+   "araç",
+   "yakın",
+   "yakınında",
+   "yakınımda",
+   "de",
+   "da",
+   "için",
+   "en yakın"
+  ],
+  "lt": [
+   "įkrovimo stotelė",
+   "įkrovimo stotelės",
+   "krovimo stotelė",
+   "stotelė",
+   "įkroviklis",
+   "įkrovikliai",
+   "įkrovimas",
+   "elektromobilis",
+   "elektromobiliai",
+   "elektrinis automobilis",
+   "prie",
+   "šalia",
+   "netoli",
+   "į",
+   "iš",
+   "ir"
+  ],
+  "lv": [
+   "uzlādes stacija",
+   "uzlādes stacijas",
+   "lādētājs",
+   "lādētāji",
+   "uzlāde",
+   "elektroauto",
+   "elektromobilis",
+   "elektromobiļi",
+   "pie",
+   "tuvu",
+   "netālu",
+   "un",
+   "uz",
+   "ar"
+  ],
+  "et": [
+   "laadimisjaam",
+   "laadimisjaamad",
+   "laadija",
+   "laadijad",
+   "laadimispunkt",
+   "laadimine",
+   "elektriauto",
+   "elektriautod",
+   "elektrisõiduk",
+   "lähedal",
+   "juures",
+   "ja",
+   "kus"
+  ]
+ },
+ "fast": {
+  "en": [
+   "fast",
+   "rapid",
+   "dc",
+   "quick",
+   "fast charger",
+   "fast charging",
+   "rapid charger"
+  ],
+  "sr": [
+   "brzi",
+   "brza",
+   "brzo",
+   "brzi punjač",
+   "brzo punjenje",
+   "dc"
+  ],
+  "ru": [
+   "быстрые",
+   "быстрая",
+   "быстрый",
+   "быстрая зарядка",
+   "быстрые зарядки",
+   "dc"
+  ],
+  "de": [
+   "schnell",
+   "schnellladen",
+   "schnelllader",
+   "schnellladestation",
+   "schnellladesäule",
+   "dc"
+  ],
+  "fr": [
+   "rapide",
+   "rapides",
+   "recharge rapide",
+   "borne rapide",
+   "dc"
+  ],
+  "nl": [
+   "snel",
+   "snellader",
+   "snelladers",
+   "snelladen",
+   "snellaadpaal",
+   "dc"
+  ],
+  "es": [
+   "rápido",
+   "rápida",
+   "rápidos",
+   "carga rápida",
+   "cargador rápido",
+   "dc"
+  ],
+  "it": [
+   "veloce",
+   "rapida",
+   "ricarica veloce",
+   "ricarica rapida",
+   "fast",
+   "dc"
+  ],
+  "pl": [
+   "szybka",
+   "szybkie",
+   "szybkie ładowanie",
+   "szybka ładowarka",
+   "dc"
+  ],
+  "sv": [
+   "snabb",
+   "snabbladdning",
+   "snabbladdare",
+   "snabbladdstation",
+   "dc"
+  ],
+  "nb": [
+   "hurtig",
+   "hurtiglader",
+   "hurtigladere",
+   "hurtiglading",
+   "dc"
+  ],
+  "da": [
+   "hurtig",
+   "hurtiglader",
+   "hurtigladere",
+   "hurtigladning",
+   "dc"
+  ],
+  "fi": [
+   "pikalataus",
+   "pikalaturi",
+   "pikalaturit",
+   "nopea",
+   "dc"
+  ],
+  "pt": [
+   "rápido",
+   "rápida",
+   "carregamento rápido",
+   "carregador rápido",
+   "dc"
+  ],
+  "el": [
+   "γρήγορη",
+   "γρήγορος",
+   "γρήγορη φόρτιση",
+   "ταχυφορτιστής",
+   "dc"
+  ],
+  "cs": [
+   "rychlá",
+   "rychlé",
+   "rychlonabíječka",
+   "rychlonabíjení",
+   "rychlé nabíjení",
+   "dc"
+  ],
+  "sk": [
+   "rýchla",
+   "rýchle",
+   "rýchlonabíjačka",
+   "rýchle nabíjanie",
+   "dc"
+  ],
+  "hu": [
+   "gyors",
+   "gyorstöltő",
+   "gyorstöltők",
+   "gyorstöltés",
+   "dc"
+  ],
+  "ro": [
+   "rapid",
+   "rapidă",
+   "încărcare rapidă",
+   "încărcător rapid",
+   "dc"
+  ],
+  "bg": [
+   "бърза",
+   "бързо",
+   "бързо зареждане",
+   "бърза зарядна",
+   "dc"
+  ],
+  "sl": [
+   "hitra",
+   "hitro",
+   "hitro polnjenje",
+   "hitra polnilnica",
+   "hitri polnilec",
+   "dc"
+  ],
+  "hr": [
+   "brzi",
+   "brza",
+   "brzo punjenje",
+   "brzi punjač",
+   "brza punionica",
+   "dc"
+  ],
+  "bs": [
+   "brzi",
+   "brza",
+   "brzo punjenje",
+   "brzi punjač",
+   "brza punionica",
+   "dc"
+  ],
+  "mk": [
+   "брз",
+   "брзо",
+   "брзо полнење",
+   "брз полнач",
+   "брзи полначи",
+   "dc"
+  ],
+  "sq": [
+   "i shpejtë",
+   "shpejt",
+   "karikim i shpejtë",
+   "karikues i shpejtë",
+   "dc"
+  ],
+  "uk": [
+   "швидка",
+   "швидкі",
+   "швидкий",
+   "швидка зарядка",
+   "dc"
+  ],
+  "tr": [
+   "hızlı",
+   "hızlı şarj",
+   "hızlı şarj istasyonu",
+   "dc",
+   "dc şarj"
+  ],
+  "lt": [
+   "greitas",
+   "greitasis",
+   "greitoji",
+   "greitasis įkrovimas",
+   "greito įkrovimo",
+   "dc"
+  ],
+  "lv": [
+   "ātrā",
+   "ātrais",
+   "ātrā uzlāde",
+   "ātrās uzlādes",
+   "ātrais lādētājs",
+   "dc"
+  ],
+  "et": [
+   "kiire",
+   "kiirlaadija",
+   "kiirlaadijad",
+   "kiirlaadimine",
+   "dc"
+  ]
+ },
+ "ultra": {
+  "en": [
+   "ultra",
+   "ultra-fast",
+   "ultrafast",
+   "hpc",
+   "high power",
+   "150 kw"
+  ],
+  "sr": [
+   "ultrabrzi",
+   "ultra brzi",
+   "ultra",
+   "hpc",
+   "velike snage",
+   "150 kw"
+  ],
+  "ru": [
+   "сверхбыстрая",
+   "ультрабыстрая",
+   "ультра",
+   "hpc",
+   "высокой мощности",
+   "150 квт"
+  ],
+  "de": [
+   "ultraschnell",
+   "ultraschnelllader",
+   "hpc",
+   "high power",
+   "hochleistung",
+   "150 kw"
+  ],
+  "fr": [
+   "ultra-rapide",
+   "ultrarapide",
+   "hpc",
+   "haute puissance",
+   "150 kw"
+  ],
+  "nl": [
+   "ultrasnel",
+   "ultrasnellader",
+   "hpc",
+   "hoog vermogen",
+   "150 kw"
+  ],
+  "es": [
+   "ultrarrápida",
+   "ultrarrápido",
+   "ultra rápida",
+   "hpc",
+   "alta potencia",
+   "150 kw"
+  ],
+  "it": [
+   "ultraveloce",
+   "ultra veloce",
+   "ultrarapida",
+   "hpc",
+   "alta potenza",
+   "150 kw"
+  ],
+  "pl": [
+   "ultraszybka",
+   "ultraszybkie",
+   "ultraszybkie ładowanie",
+   "hpc",
+   "duża moc",
+   "150 kw"
+  ],
+  "sv": [
+   "ultrasnabb",
+   "ultrasnabbladdning",
+   "hpc",
+   "högeffekt",
+   "150 kw"
+  ],
+  "nb": [
+   "ultrahurtig",
+   "ultrahurtiglader",
+   "lynlader",
+   "hpc",
+   "høy effekt",
+   "150 kw"
+  ],
+  "da": [
+   "ultrahurtig",
+   "lynlader",
+   "lynladere",
+   "hpc",
+   "høj effekt",
+   "150 kw"
+  ],
+  "fi": [
+   "ultranopea",
+   "suurteholataus",
+   "suurteholaturi",
+   "hpc",
+   "150 kw"
+  ],
+  "pt": [
+   "ultrarrápido",
+   "ultrarrápida",
+   "ultra-rápido",
+   "hpc",
+   "alta potência",
+   "150 kw"
+  ],
+  "el": [
+   "υπερταχεία",
+   "υπερταχύς",
+   "πολύ γρήγορη",
+   "hpc",
+   "150 kw"
+  ],
+  "cs": [
+   "ultrarychlá",
+   "ultrarychlé",
+   "ultrarychlé nabíjení",
+   "hpc",
+   "vysoký výkon",
+   "150 kw"
+  ],
+  "sk": [
+   "ultrarýchla",
+   "ultrarýchle",
+   "ultrarýchle nabíjanie",
+   "hpc",
+   "vysoký výkon",
+   "150 kw"
+  ],
+  "hu": [
+   "ultragyors",
+   "villámtöltő",
+   "nagy teljesítményű",
+   "hpc",
+   "150 kw"
+  ],
+  "ro": [
+   "ultra-rapid",
+   "ultrarapid",
+   "ultrarapidă",
+   "hpc",
+   "putere mare",
+   "150 kw"
+  ],
+  "bg": [
+   "ултрабърза",
+   "ултра бързо",
+   "свръхбърза",
+   "hpc",
+   "висока мощност",
+   "150 kw"
+  ],
+  "sl": [
+   "ultrahitra",
+   "ultra hitro",
+   "ultrahitro polnjenje",
+   "hpc",
+   "visoka moč",
+   "150 kw"
+  ],
+  "hr": [
+   "ultrabrzi",
+   "ultra brzi",
+   "ultrabrza",
+   "hpc",
+   "velika snaga",
+   "150 kw"
+  ],
+  "bs": [
+   "ultrabrzi",
+   "ultra brzi",
+   "ultrabrza",
+   "hpc",
+   "velika snaga",
+   "150 kw"
+  ],
+  "mk": [
+   "ултрабрз",
+   "ултра брзо",
+   "ултрабрзо полнење",
+   "hpc",
+   "висока моќност",
+   "150 kw"
+  ],
+  "sq": [
+   "ultra i shpejtë",
+   "ultra",
+   "fuqi e lartë",
+   "hpc",
+   "150 kw"
+  ],
+  "uk": [
+   "надшвидка",
+   "ультрашвидка",
+   "ультра",
+   "hpc",
+   "висока потужність",
+   "150 квт"
+  ],
+  "tr": [
+   "ultra hızlı",
+   "ultra hızlı şarj",
+   "yüksek güç",
+   "hpc",
+   "150 kw"
+  ],
+  "lt": [
+   "itin greitas",
+   "ultragreitas",
+   "didelės galios",
+   "hpc",
+   "150 kw"
+  ],
+  "lv": [
+   "īpaši ātrā",
+   "ultraātrā",
+   "lielas jaudas",
+   "hpc",
+   "150 kw"
+  ],
+  "et": [
+   "ülikiire",
+   "ülikiirlaadija",
+   "suure võimsusega",
+   "hpc",
+   "150 kw"
+  ]
+ },
+ "ac": {
+  "en": [
+   "ac",
+   "slow",
+   "normal",
+   "type 2",
+   "standard"
+  ],
+  "sr": [
+   "ac",
+   "sporo",
+   "spori",
+   "normalno",
+   "tip 2"
+  ],
+  "ru": [
+   "ac",
+   "медленная",
+   "медленные",
+   "обычная",
+   "тип 2"
+  ],
+  "de": [
+   "ac",
+   "langsam",
+   "normal",
+   "normalladen",
+   "typ 2"
+  ],
+  "fr": [
+   "ac",
+   "lente",
+   "normale",
+   "recharge normale",
+   "type 2"
+  ],
+  "nl": [
+   "ac",
+   "langzaam",
+   "normaal",
+   "normaal laden",
+   "type 2"
+  ],
+  "es": [
+   "ac",
+   "lenta",
+   "lento",
+   "carga lenta",
+   "tipo 2"
+  ],
+  "it": [
+   "ac",
+   "lenta",
+   "ricarica lenta",
+   "normale",
+   "tipo 2"
+  ],
+  "pl": [
+   "ac",
+   "wolne",
+   "wolna",
+   "wolne ładowanie",
+   "typ 2"
+  ],
+  "sv": [
+   "ac",
+   "långsam",
+   "normal",
+   "normalladdning",
+   "typ 2"
+  ],
+  "nb": [
+   "ac",
+   "treg",
+   "normal",
+   "normallading",
+   "type 2"
+  ],
+  "da": [
+   "ac",
+   "langsom",
+   "normal",
+   "normalladning",
+   "type 2"
+  ],
+  "fi": [
+   "ac",
+   "hidas",
+   "normaali",
+   "peruslataus",
+   "tyyppi 2"
+  ],
+  "pt": [
+   "ac",
+   "lento",
+   "lenta",
+   "normal",
+   "tipo 2"
+  ],
+  "el": [
+   "ac",
+   "αργή",
+   "αργός",
+   "κανονική",
+   "τύπος 2"
+  ],
+  "cs": [
+   "ac",
+   "pomalá",
+   "pomalé",
+   "normální",
+   "typ 2"
+  ],
+  "sk": [
+   "ac",
+   "pomalá",
+   "pomalé",
+   "normálne",
+   "typ 2"
+  ],
+  "hu": [
+   "ac",
+   "lassú",
+   "normál",
+   "normál töltés",
+   "type 2"
+  ],
+  "ro": [
+   "ac",
+   "lentă",
+   "lent",
+   "normală",
+   "tip 2"
+  ],
+  "bg": [
+   "ac",
+   "бавна",
+   "бавно",
+   "нормална",
+   "тип 2"
+  ],
+  "sl": [
+   "ac",
+   "počasna",
+   "počasno",
+   "normalno",
+   "tip 2"
+  ],
+  "hr": [
+   "ac",
+   "spori",
+   "sporo",
+   "normalno",
+   "tip 2"
+  ],
+  "bs": [
+   "ac",
+   "spori",
+   "sporo",
+   "normalno",
+   "tip 2"
+  ],
+  "mk": [
+   "ac",
+   "бавно",
+   "бавен",
+   "нормално",
+   "тип 2"
+  ],
+  "sq": [
+   "ac",
+   "i ngadaltë",
+   "ngadalë",
+   "normal",
+   "tip 2"
+  ],
+  "uk": [
+   "ac",
+   "повільна",
+   "повільні",
+   "звичайна",
+   "тип 2"
+  ],
+  "tr": [
+   "ac",
+   "yavaş",
+   "normal",
+   "tip 2",
+   "yavaş şarj"
+  ],
+  "lt": [
+   "ac",
+   "lėtas",
+   "lėtasis",
+   "įprastas",
+   "2 tipas"
+  ],
+  "lv": [
+   "ac",
+   "lēnā",
+   "lēnais",
+   "parastā",
+   "2 tips"
+  ],
+  "et": [
+   "ac",
+   "aeglane",
+   "tavaline",
+   "tavalaadimine",
+   "tüüp 2"
+  ]
+ },
+ "mod_exclude": [
+  "charger",
+  "charging",
+  "recharge",
+  "ricarica",
+  "carga",
+  "borne",
+  "punjac",
+  "punjenje",
+  "sarj",
+  "polnjenje",
+  "zarjadka",
+  "laden",
+  "ladowanie",
+  "nabijanie",
+  "power",
+  "moc",
+  "snaga",
+  "snage",
+  "velika",
+  "velike",
+  "high",
+  "alta",
+  "haute",
+  "hoog",
+  "tip",
+  "type",
+  "typ",
+  "tipo",
+  "typos",
+  "tips",
+  "tipas",
+  "tuup",
+  "tyyppi",
+  "2",
+  "kw",
+  "kvt",
+  "toltes",
+  "incarcare",
+  "ikrovimas",
+  "ikrovimo",
+  "istasyonu",
+  "polnenje",
+  "nabijeni",
+  "cargador",
+  "carregador",
+  "carregamento",
+  "karikim",
+  "karikues",
+  "uzlade",
+  "uzlades",
+  "zarezdane",
+  "zarjadki",
+  "zarjadna",
+  "polnac",
+  "polnaci",
+  "polnilec",
+  "polnilnica",
+  "punionica",
+  "ladetajs",
+  "incarcator",
+  "ladowarka",
+  "nabijanie",
+  "potencia",
+  "potenza",
+  "puissance",
+  "putere",
+  "vermogen",
+  "effekt",
+  "galios",
+  "jaudas",
+  "teljesitmenyu",
+  "vykon",
+  "guc",
+  "fuqi",
+  "larte",
+  "mare",
+  "nagy",
+  "hoj",
+  "hoy",
+  "yuksek",
+  "visoka",
+  "vysoky",
+  "vysokoi",
+  "duza",
+  "dideles",
+  "lielas",
+  "suure",
+  "itin",
+  "ipasi",
+  "poly",
+  "e",
+  "i"
+ ],
+ "country_alias": {
+  "US": [
+   "USA",
+   "U.S.A.",
+   "US",
+   "America",
+   "United States of America",
+   "Amerika",
+   "США",
+   "Америка"
+  ],
+  "GB": [
+   "UK",
+   "U.K.",
+   "Britain",
+   "Great Britain",
+   "United Kingdom",
+   "Великобритания",
+   "Британия",
+   "Англия"
+  ],
+  "NL": [
+   "Holland",
+   "Nederland",
+   "Голландия"
+  ],
+  "CZ": [
+   "Czech Republic",
+   "Czechia",
+   "Česko",
+   "Česká republika",
+   "Чехия"
+  ],
+  "TR": [
+   "Turkey",
+   "Türkiye",
+   "Turkiye",
+   "Турция"
+  ],
+  "AE": [
+   "UAE",
+   "Emirates",
+   "ОАЭ",
+   "Эмираты"
+  ],
+  "KR": [
+   "South Korea",
+   "Korea",
+   "Республика Корея",
+   "Южная Корея"
+  ],
+  "RU": [
+   "Russia",
+   "Russian Federation",
+   "Россия",
+   "Rossiya"
+  ],
+  "BY": [
+   "Belarus",
+   "Беларусь",
+   "Белоруссия"
+  ],
+  "MK": [
+   "Macedonia",
+   "North Macedonia",
+   "Македонија",
+   "Македония"
+  ],
+  "BA": [
+   "Bosnia",
+   "BiH",
+   "Bosna",
+   "Bosna i Hercegovina",
+   "Босния"
+  ],
+  "XK": [
+   "Kosova",
+   "Kosovo",
+   "Косово"
+  ],
+  "ME": [
+   "Crna Gora",
+   "Црна Гора",
+   "Черногория"
+  ],
+  "RS": [
+   "Srbija",
+   "Србија",
+   "Сербия"
+  ],
+  "AL": [
+   "Shqipëria",
+   "Shqiperia",
+   "Албания"
+  ],
+  "HR": [
+   "Hrvatska",
+   "Хорватия"
+  ],
+  "SI": [
+   "Slovenija",
+   "Словения"
+  ],
+  "DE": [
+   "Deutschland",
+   "BRD",
+   "Германия"
+  ],
+  "AT": [
+   "Österreich",
+   "Austria",
+   "Австрия"
+  ],
+  "CH": [
+   "Schweiz",
+   "Suisse",
+   "Svizzera",
+   "Svizra",
+   "Швейцария"
+  ],
+  "ES": [
+   "España",
+   "Испания"
+  ],
+  "IT": [
+   "Italia",
+   "Италия"
+  ],
+  "PT": [
+   "Portugal",
+   "Португалия"
+  ],
+  "GR": [
+   "Hellas",
+   "Ellada",
+   "Ελλάδα",
+   "Греция"
+  ],
+  "CY": [
+   "Kıbrıs",
+   "Κύπρος",
+   "Кипр"
+  ],
+  "IE": [
+   "Éire",
+   "Eire",
+   "Ирландия"
+  ],
+  "IS": [
+   "Ísland",
+   "Исландия"
+  ],
+  "NO": [
+   "Norge",
+   "Noreg",
+   "Норвегия"
+  ],
+  "SE": [
+   "Sverige",
+   "Швеция"
+  ],
+  "FI": [
+   "Suomi",
+   "Финляндия"
+  ],
+  "DK": [
+   "Danmark",
+   "Дания"
+  ],
+  "PL": [
+   "Polska",
+   "Польша"
+  ],
+  "HU": [
+   "Magyarország",
+   "Венгрия"
+  ],
+  "RO": [
+   "România",
+   "Румыния"
+  ],
+  "BG": [
+   "България",
+   "Bulgaria",
+   "Болгария"
+  ],
+  "UA": [
+   "Україна",
+   "Ukraina",
+   "Украина"
+  ],
+  "LT": [
+   "Lietuva",
+   "Литва"
+  ],
+  "LV": [
+   "Latvija",
+   "Латвия"
+  ],
+  "EE": [
+   "Eesti",
+   "Эстония"
+  ],
+  "LU": [
+   "Lëtzebuerg",
+   "Luxemburg",
+   "Люксембург"
+  ],
+  "BE": [
+   "België",
+   "Belgique",
+   "Belgien",
+   "Бельгия"
+  ],
+  "SK": [
+   "Slovensko",
+   "Словакия"
+  ],
+  "MD": [
+   "Moldova",
+   "Молдова",
+   "Молдавия"
+  ],
+  "GE": [
+   "Sakartvelo",
+   "საქართველო",
+   "Грузия"
+  ],
+  "AM": [
+   "Hayastan",
+   "Армения"
+  ],
+  "AZ": [
+   "Azərbaycan",
+   "Азербайджан"
+  ],
+  "KZ": [
+   "Qazaqstan",
+   "Казахстан"
+  ],
+  "JP": [
+   "Nippon",
+   "Nihon",
+   "Япония"
+  ],
+  "CN": [
+   "Zhongguo",
+   "PRC",
+   "Китай"
+  ],
+  "IN": [
+   "Bharat",
+   "Индия"
+  ],
+  "IL": [
+   "Israel",
+   "Израиль"
+  ],
+  "FR": [
+   "France",
+   "Франция"
+  ],
+  "CA": [
+   "Canada",
+   "Канада"
+  ],
+  "AU": [
+   "Australia",
+   "Australien",
+   "Австралия"
+  ],
+  "NZ": [
+   "Aotearoa",
+   "Новая Зеландия"
+  ],
+  "MX": [
+   "México",
+   "Мексика"
+  ],
+  "BR": [
+   "Brasil",
+   "Бразилия"
+  ],
+  "TH": [
+   "Thailand",
+   "Таиланд",
+   "Тайланд"
+  ],
+  "MA": [
+   "Maroc",
+   "Марокко"
+  ],
+  "EG": [
+   "Egypt",
+   "Египет"
+  ],
+  "SA": [
+   "Saudi",
+   "KSA",
+   "Саудовская Аравия"
+  ],
+  "UZ": [
+   "O‘zbekiston",
+   "Узбекистан"
+  ],
+  "KG": [
+   "Kyrgyzstan",
+   "Кыргызстан",
+   "Киргизия"
+  ],
+  "TW": [
+   "Taiwan",
+   "Тайвань"
+  ],
+  "SG": [
+   "Singapore",
+   "Сингапур"
+  ],
+  "HK": [
+   "Hong Kong",
+   "Гонконг"
+  ]
+ },
+ "network_alias": {
+  "tesla": [
+   "Tesla Supercharger",
+   "Supercharger",
+   "Superchargers",
+   "Tesla Destination"
+  ],
+  "ionity": [
+   "Ionity"
+  ],
+  "enbw": [
+   "EnBW mobility+",
+   "EnBW mobility",
+   "mobility+"
+  ],
+  "iberdrola-bp-pulse": [
+   "Iberdrola",
+   "bp pulse"
+  ],
+  "bp-pulse": [
+   "BP Pulse",
+   "bp chargemaster",
+   "Chargemaster"
+  ],
+  "e-on": [
+   "EON",
+   "E.ON Drive"
+  ],
+  "shell-recharge": [
+   "Shell",
+   "Shell Recharge"
+  ],
+  "electrify-america": [
+   "EA"
+  ],
+  "aral-pulse": [
+   "Aral"
+  ],
+  "ewe-go": [
+   "EWE"
+  ],
+  "fastned": [
+   "Fast Ned"
+  ],
+  "vattenfall-incharge": [
+   "InCharge",
+   "Vattenfall"
+  ],
+  "totalenergies": [
+   "Total"
+  ],
+  "enel-x-way": [
+   "Enel X",
+   "Enel"
+  ],
+  "endesa-x-way": [
+   "Endesa"
+  ],
+  "pod-point": [
+   "Podpoint"
+  ],
+  "gridserve": [
+   "Gridserve Electric Highway",
+   "Electric Highway"
+  ],
+  "mer": [
+   "Mer"
+  ]
+ },
+ "network_merge": {
+  "tesla-supercharger": "tesla",
+  "tesla-destination": "tesla",
+  "ionity-2": "ionity"
+ },
+ "region_alias": {
+  "DE:Bavaria": [
+   "Bayern"
+  ],
+  "DE:North Rhine-Westphalia": [
+   "Nordrhein-Westfalen",
+   "NRW"
+  ],
+  "DE:Lower Saxony": [
+   "Niedersachsen"
+  ],
+  "DE:Hesse": [
+   "Hessen"
+  ],
+  "DE:Saxony": [
+   "Sachsen"
+  ],
+  "DE:Saxony-Anhalt": [
+   "Sachsen-Anhalt"
+  ],
+  "DE:Thuringia": [
+   "Thüringen"
+  ],
+  "DE:Baden-Wuerttemberg": [
+   "Baden-Württemberg"
+  ],
+  "DE:Rheinland-Pfalz": [
+   "Rhineland-Palatinate"
+  ],
+  "DE:Mecklenburg-Vorpommern": [
+   "Mecklenburg-Western Pomerania"
+  ],
+  "AT:Lower Austria": [
+   "Niederösterreich"
+  ],
+  "AT:Upper Austria": [
+   "Oberösterreich"
+  ],
+  "AT:Styria": [
+   "Steiermark"
+  ],
+  "AT:Carinthia": [
+   "Kärnten"
+  ],
+  "AT:Tyrol": [
+   "Tirol"
+  ],
+  "IT:Lombardy": [
+   "Lombardia"
+  ],
+  "IT:Piedmont": [
+   "Piemonte"
+  ],
+  "IT:Tuscany": [
+   "Toscana"
+  ],
+  "IT:Sicily": [
+   "Sicilia"
+  ],
+  "IT:Sardinia": [
+   "Sardegna"
+  ],
+  "IT:Apulia": [
+   "Puglia"
+  ],
+  "IT:Latium": [
+   "Lazio"
+  ],
+  "IT:The Marches": [
+   "Marche"
+  ],
+  "IT:Aosta Valley": [
+   "Valle d'Aosta"
+  ],
+  "IT:Trentino-Alto Adige": [
+   "Trentino-Südtirol",
+   "Südtirol",
+   "South Tyrol",
+   "Alto Adige"
+  ],
+  "IT:Basilicate": [
+   "Basilicata"
+  ],
+  "ES:Andalusia": [
+   "Andalucía"
+  ],
+  "ES:Catalonia": [
+   "Cataluña",
+   "Catalunya"
+  ],
+  "ES:Castille and Leon": [
+   "Castilla y León"
+  ],
+  "ES:Castille-La Mancha": [
+   "Castilla-La Mancha"
+  ],
+  "ES:Basque Country": [
+   "País Vasco",
+   "Euskadi"
+  ],
+  "ES:Navarre": [
+   "Navarra"
+  ],
+  "ES:Aragon": [
+   "Aragón"
+  ],
+  "ES:Valencia": [
+   "Comunitat Valenciana",
+   "Comunidad Valenciana"
+  ],
+  "ES:Balearic Islands": [
+   "Illes Balears",
+   "Islas Baleares"
+  ],
+  "ES:Canary Islands": [
+   "Canarias",
+   "Islas Canarias"
+  ],
+  "FR:Brittany": [
+   "Bretagne"
+  ],
+  "FR:Ile-de-France": [
+   "Île-de-France"
+  ],
+  "FR:Corsica": [
+   "Corse"
+  ],
+  "FR:Provence-Alpes-Cote d'Azur": [
+   "Provence-Alpes-Côte d'Azur",
+   "PACA",
+   "Côte d'Azur"
+  ],
+  "FR:Lower Normandy": [
+   "Normandie",
+   "Normandy"
+  ],
+  "FR:Haute-Normandie": [
+   "Normandie",
+   "Normandy"
+  ],
+  "FR:Rhone-Alpes": [
+   "Auvergne-Rhône-Alpes",
+   "Rhône-Alpes"
+  ],
+  "NL:North Holland": [
+   "Noord-Holland"
+  ],
+  "NL:South Holland": [
+   "Zuid-Holland"
+  ],
+  "NL:North Brabant": [
+   "Noord-Brabant"
+  ],
+  "BE:Flanders": [
+   "Vlaanderen",
+   "Flandre"
+  ],
+  "BE:Wallonia": [
+   "Wallonie"
+  ],
+  "CH:Grisons": [
+   "Graubünden"
+  ],
+  "CH:Valais": [
+   "Wallis"
+  ],
+  "CH:Ticino": [
+   "Tessin"
+  ],
+  "PL:Lesser Poland Voivodeship": [
+   "Małopolska",
+   "Małopolskie"
+  ],
+  "PL:Masovian Voivodeship": [
+   "Mazowsze",
+   "Mazowieckie"
+  ],
+  "PL:Silesian Voivodeship": [
+   "Śląsk",
+   "Śląskie"
+  ],
+  "PL:Lower Silesian Voivodeship": [
+   "Dolny Śląsk",
+   "Dolnośląskie"
+  ],
+  "PL:Greater Poland Voivodeship": [
+   "Wielkopolska"
+  ],
+  "PL:Pomeranian Voivodeship": [
+   "Pomorze",
+   "Pomorskie"
+  ]
+ }
+}

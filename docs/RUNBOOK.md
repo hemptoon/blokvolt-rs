@@ -2791,6 +2791,48 @@ The registry and the rules are in `docs/WORLD_I18N.md`; the work plan is `claude
   keyboard, the theme kept across pages and languages, no flash of the other theme on a slow network and CPU (screencast),
   .rs HTML unchanged.
 
+### 3.51 One search for the whole of blokvolt.com (SEARCH, since 12.11.2026; dev only until "релиз поиска")
+
+**What.** One component, `static/com/world-search.js` (+ `world-search.css`, added by the script itself), on four places:
+the field of the first screen of every home, `/map/` (above the filters — a choice moves the map and sets `mreza` / `snaga`
+instead of leaving the page), "Find a country" of the directory (home and hub; countries only) and the 404; plus the noindex
+page of all results `/search/?q=` (EN) · `/<code>/search/?q=`. It finds countries (all of the layer), every city with
+charging places (`places-<date>.json`, ~13 750; no page → `/map/?grad=<geonameid>`), first-level regions (GeoNames admin1 →
+the map framed on their cities), every network of the manifest (page, else `/map/?mreza=`), the sections of the site with
+synonyms in 30 languages, every page of prices, how to pay and routes, and "network + place" / "fast + place"
+(`ionity munich`, `fast chargers vienna` → the map with filters). Single stations are not searched (the map does that).
+
+**Spelling and typos.** One fold in the build (`scripts/world_search.py fold`) and in the browser (must stay identical —
+the index carries ~240 pairs and `world_search_test.mjs` compares them): case, diacritics (ü = u and also ue; ø, å, æ, ß,
+ł, ı, đ), Cyrillic and Greek → Latin, hyphens/dots/apostrophes = spaces, St/Sankt/Saint = st. Typos: 1 for 4–7 letters,
+2 from 8; beginnings while typing; "Did you mean" when nothing is found. Connector words ("charging stations in",
+"Ladestationen", "зарядки в", "punjači u") are dropped unless nothing else is left.
+
+**Ranking.** A whole name > every word whole > beginnings > typos; then the kind and size (country > city > network >
+region > page; places of the page and population; networks by the order of the manifest), the visitor's region (time
+zone, `content/world/regions.json`) and the market countries of the page language; the name as shown in this language
+first; a section named by its own word ("Preise", "карта") first.
+
+**Index — built at every build, after all world pages** (`gen_com.py` → `world_search.run`, needs nothing by hand):
+- `/assets/world/search-<code>-0.json` (~2 KB: strings + popular places of each region — the list opens at once);
+- `search-<code>.json` (≤ ~65 KB gzip: countries, sections, the largest cities and networks; ready-made dictionary);
+- `search-<code>-2.json`, `-3.json`… (the long tail in columns, each ≤ 300 KB gzip — the build adds files as the data
+  grows and stops if one is still larger); the browser loads them right after the first and adds them when idle.
+- Sources: the bundle (`places`, pages, manifest networks), `content/world/names/*`, `i18n/<code>/countries.csv` and
+  `cities.csv`, `content/world/search.json` (synonyms, connector and power words, country / network / region aliases,
+  networks that are one for a driver: `network_merge`), `content/world/search/cities15000.tsv.gz` (GeoNames CC BY 4.0 names,
+  population and region of the 34 006 places of geonamescache 3.0.2 that evdb uses — regenerate only if evdb changes that
+  list: `python3 scripts/world_search_geo.py <cities15000.json> <rg_cities1000.csv>`).
+- Strings: `content/world/strings_search.json` (en/sr/ru) + `i18n/<code>/strings_search.json` (part `search` of LANG0).
+- Pages with a field get the version (`?v=`) and the placeholder at the end of the build (`world_search.stamp`).
+
+**Checks.** `python3 scripts/world_search.py selftest`; `node scripts/qa/world_search_test.mjs dist-com` (in `preview.yml`;
+409 queries in 30 languages — `scripts/qa/world_search_queries.json`; pass: ≥ 95 % in the top 3, exact names first,
+fold identical); `node scripts/qa/world_search_ui.mjs dist-com <shots>` (Playwright + Chrome, by hand: 5 places × 360/768/1440
+× both themes, keyboard, ARIA, phone sheet, nothing covers the list, speed at 4× CPU + slow 4G: first suggestions ≤ 300 ms
+after the first focus, ≤ 30 ms a key press).
+**Not done here:** the old K3 index (`search-index*.json`) is still written by `world_pages.py` and read by nothing.
+
 ## 4. Build and check
 
 ```bash

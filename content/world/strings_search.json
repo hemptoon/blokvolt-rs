@@ -1,0 +1,167 @@
+{
+ "label": {
+  "en": "Search the site",
+  "sr": "Pretraga sajta",
+  "ru": "Поиск по сайту"
+ },
+ "ph": {
+  "en": "Country, city, network or topic",
+  "sr": "Zemlja, grad, mreža ili tema",
+  "ru": "Страна, город, сеть или тема"
+ },
+ "g_c": {
+  "en": "Countries",
+  "sr": "Zemlje",
+  "ru": "Страны"
+ },
+ "g_t": {
+  "en": "Cities",
+  "sr": "Gradovi",
+  "ru": "Города"
+ },
+ "g_n": {
+  "en": "Networks",
+  "sr": "Mreže",
+  "ru": "Сети"
+ },
+ "g_r": {
+  "en": "Regions",
+  "sr": "Regioni",
+  "ru": "Регионы"
+ },
+ "g_p": {
+  "en": "Pages",
+  "sr": "Stranice",
+  "ru": "Страницы"
+ },
+ "g_q": {
+  "en": "On the map",
+  "sr": "Na mapi",
+  "ru": "На карте"
+ },
+ "all": {
+  "en": "All results",
+  "sr": "Svi rezultati",
+  "ru": "Все результаты"
+ },
+ "on_map": {
+  "en": "Search on the map",
+  "sr": "Traži na mapi",
+  "ru": "Искать на карте"
+ },
+ "countries": {
+  "en": "All countries",
+  "sr": "Sve zemlje",
+  "ru": "Все страны"
+ },
+ "dym": {
+  "en": "Did you mean {q}?",
+  "sr": "Da li ste mislili {q}?",
+  "ru": "Может быть, вы имели в виду {q}?"
+ },
+ "none": {
+  "en": "Nothing found for “{q}”.",
+  "sr": "Za „{q}“ nema rezultata.",
+  "ru": "По запросу «{q}» ничего не найдено."
+ },
+ "recent": {
+  "en": "Recent searches",
+  "sr": "Nedavne pretrage",
+  "ru": "Недавние запросы"
+ },
+ "popular": {
+  "en": "Popular in your region",
+  "sr": "Popularno u vašem regionu",
+  "ru": "Популярное в вашем регионе"
+ },
+ "clear": {
+  "en": "Clear",
+  "sr": "Obriši",
+  "ru": "Очистить"
+ },
+ "close": {
+  "en": "Close search",
+  "sr": "Zatvori pretragu",
+  "ru": "Закрыть поиск"
+ },
+ "n_res": {
+  "en": "Results: {n}",
+  "sr": "Rezultata: {n}",
+  "ru": "Результатов: {n}"
+ },
+ "places": {
+  "en": "Charging places",
+  "sr": "Mesta za punjenje",
+  "ru": "Мест для зарядки"
+ },
+ "map_tag": {
+  "en": "Map",
+  "sr": "Mapa",
+  "ru": "Карта"
+ },
+ "k_c": {
+  "en": "Country",
+  "sr": "Zemlja",
+  "ru": "Страна"
+ },
+ "k_t": {
+  "en": "City",
+  "sr": "Grad",
+  "ru": "Город"
+ },
+ "k_n": {
+  "en": "Network",
+  "sr": "Mreža",
+  "ru": "Сеть"
+ },
+ "k_r": {
+  "en": "Region",
+  "sr": "Region",
+  "ru": "Регион"
+ },
+ "k_p": {
+  "en": "Page",
+  "sr": "Stranica",
+  "ru": "Страница"
+ },
+ "fast": {
+  "en": "Fast charging (DC)",
+  "sr": "Brzo punjenje (DC)",
+  "ru": "Быстрая зарядка (DC)"
+ },
+ "ultra": {
+  "en": "Ultra-fast (150 kW+)",
+  "sr": "Ultrabrzo (150 kW+)",
+  "ru": "Сверхбыстрая (150 кВт+)"
+ },
+ "ac": {
+  "en": "AC charging",
+  "sr": "AC punjenje",
+  "ru": "Зарядка AC"
+ },
+ "page_title": {
+  "en": "Search",
+  "sr": "Pretraga",
+  "ru": "Поиск"
+ },
+ "page_h1": {
+  "en": "Search",
+  "sr": "Pretraga",
+  "ru": "Поиск"
+ },
+ "page_desc": {
+  "en": "Search countries, cities, charging networks and pages of BlokVolt in any language.",
+  "sr": "Pretraga zemalja, gradova, mreža punjača i stranica BlokVolta na bilo kom jeziku.",
+  "ru": "Поиск стран, городов, зарядных сетей и страниц BlokVolt на любом языке."
+ },
+ "page_hint": {
+  "en": "Type a country, a city, a charging network or a topic — in any language, typos are fine.",
+  "sr": "Upišite zemlju, grad, mrežu punjača ili temu — na bilo kom jeziku, greške u kucanju nisu problem.",
+  "ru": "Введите страну, город, зарядную сеть или тему — на любом языке, опечатки не страшны."
+ },
+ "go": {
+  "en": "Search",
+  "sr": "Traži",
+  "ru": "Найти"
+ }
+}

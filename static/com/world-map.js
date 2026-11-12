@@ -1033,6 +1033,28 @@ initMap();
 if (EMB) embedInit();
 // for debugging and scripts/qa/world_map_test.py (read only by tests; nothing on the page depends on it)
 window.BVWorldMap = { get map() { return map; }, get ready() { return ready; }, get manifest() { return M; }, state: st, openCard };
+// SEARCH (12.11.2026): the site search above the filters (world-search.js) — a place, a network or "ionity munich" chosen
+// there moves this map (and sets the network / power filter) instead of opening another page; pages still open
+d.addEventListener('bvs-pick', e => {
+  if (!map || EMB) return;
+  const u = new URL(e.detail.map, location.href), q = u.searchParams;
+  e.preventDefault();
+  if (q.get('mreza')) st.mreza = new Set(q.get('mreza').split(',').map(slug).filter(Boolean));
+  if (q.get('snaga')) st.snaga = new Set(q.get('snaga').split(',').filter(x => SNAGA.includes(x)));
+  st.zemlja = (q.get('zemlja') || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2);
+  st.grad = (q.get('grad') || '').replace(/\D/g, '');
+  applyFilter();
+  paintFilters();
+  const h = /^#([\d.]+)\/(-?[\d.]+)\/(-?[\d.]+)/.exec(u.hash);
+  if (h) map.flyTo({ zoom: +h[1], center: [+h[3], +h[2]], duration: 900 });
+  else if (st.zemlja || st.grad) flyPlace();
+});
+async function flyPlace() {
+  let P = null;
+  try { P = await getJson(at(M.places)); } catch (e) { return; }
+  const c = st.grad && P.city && P.city[st.grad], b = c || (st.zemlja && P.cc && P.cc[st.zemlja]);
+  if (b && b.length >= 4) map.fitBounds([[b[0], b[1]], [b[2], b[3]]], { padding: 30, maxZoom: c ? 13 : 9, duration: 900 });
+}
 async function fitPlace() {
   if (!(st.zemlja || st.grad) || HAD_HASH || !M || !M.places) return;
   let P = null;

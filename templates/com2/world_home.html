@@ -41,7 +41,7 @@ document.head.appendChild(l)})}catch(e){}})();</script>
 <h1 id="wh-h1">{{ h1 }}</h1>
 <p class="wh-sub">{{ T.sub }}</p>
 <p class="wh-stat">{% for s in stat %}<span>{{ s }}</span>{% endfor %}</p>
-<form class="wh-search" role="search" action="{{ map_url }}" data-idx="{{ search_url }}" data-lang="{{ l }}" data-none="{{ T.search_none }}" data-map="{{ map_url }}">
+<form class="wh-search" role="search" action="{{ map_url }}" data-idx="/assets/world/search-{{ l }}.json" data-lang="{{ l }}" data-none="{{ T.search_none }}" data-map="{{ map_url }}">
 <label for="wh-q">{{ T.search_label }}</label>
 <div class="wh-sbox"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
 <input id="wh-q" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="{{ T.search_ph }}" aria-controls="wh-res" aria-autocomplete="list"></div>
@@ -82,4 +82,5 @@ document.head.appendChild(l)})}catch(e){}})();</script>
 </div>
 {% endblock %}
 {% block scripts %}<script src="{{ assets['world-home.js'] }}" data-map-js="{{ assets['world-hero-map.js'] }}" defer></script>
-<script src="{{ dir_js }}" defer></script>{% endblock %}
+<script src="{{ dir_js }}" defer></script>
+<script src="/assets/world/world-search.js" defer></script>{% endblock %}
