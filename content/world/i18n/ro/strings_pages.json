@@ -169,5 +169,10 @@
  "p_dc_pub": "Încărcare rapidă de la 50 kW: {dc} ({pct_dc}); 150 kW sau mai mult: {hpc} — doar locații publice.",
  "t_hub_world": "Stații de încărcare pentru mașini electrice, pe țări",
  "d_hub2": "Locații de încărcare pentru mașini electrice în fiecare țară din datele deschise: câte sunt, încărcătoare rapide, rețele, surse și licențe.",
- "theme_dark": "Temă întunecată"
+ "theme_dark": "Temă întunecată",
+ "cov_points": "Potrivit {src} ({date}), numărul punctelor de încărcare publice este {n}. BlokVolt afișează locațiile publice din date deschise: {m}; o locație are adesea mai multe puncte de încărcare.",
+ "cov_points_semi": "Potrivit {src} ({date}), numărul punctelor de încărcare publice și semipublice este {n}. BlokVolt afișează locațiile publice din date deschise: {m}; o locație are adesea mai multe puncte de încărcare.",
+ "cov_stations": "Potrivit {src} ({date}), numărul stațiilor de încărcare publice este {n}. BlokVolt afișează locațiile publice din date deschise: {m}.",
+ "cov_part": "Datele deschise acoperă aici doar o parte dintre încărcătoare.",
+ "cov_link": "Sursă"
 }

@@ -1,0 +1,298 @@
+{
+ "about": "WORLD2 (12.11.2026): official (or, where marked, industry) counts of PUBLIC charging points / stations per country for the coverage line of the country pages (world_pages.py). One source per country, with its date and link. EAFO 2024 Q1 for Europe (one verified table for all); outside Europe only counts checked on 12.11.2026. unit: points = charging points; stations = charging stations; points_semi = public and semi-public points. The line \"open data cover only part of the chargers here\" appears when points per BlokVolt public place > 6 (stations: > 3). Update: replace a row with a newer count of the same kind and keep the source and date.",
+ "thresholds": {
+  "points": 6,
+  "points_semi": 6,
+  "stations": 3
+ },
+ "countries": {
+  "AT": {
+   "n": 22133,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "BE": {
+   "n": 52429,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "BG": {
+   "n": 2218,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "BR": {
+   "n": 29866,
+   "unit": "points_semi",
+   "source": "ABVE",
+   "date": "2026-08",
+   "url": "https://www.autodata.com.br/mobility/2026/09/24/brasil-se-aproxima-dos-30-mil-pontos-de-recarga-para-veiculos-eletrificados/136076/",
+   "note": "ABVE (Brazilian EV Association) with Tupi: public and semi-public charging points, data for August 2026 (cited by the MME technical note of 23.10.2026); industry association, not a government count; verified 12.11.2026"
+  },
+  "CH": {
+   "n": 14656,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "CN": {
+   "n": 5009000,
+   "unit": "points",
+   "source": "NEA",
+   "date": "2026-06",
+   "url": "https://www.cnfin.com/hg-lb/detail/20260728/4447202_1.html",
+   "note": "National Energy Administration of China: public charging facilities (guns) 500.9万 at the end of June 2026 (released 28.07.2026, via Xinhua Finance); verified 12.11.2026"
+  },
+  "CY": {
+   "n": 372,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "CZ": {
+   "n": 4892,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "DE": {
+   "n": 130828,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "DK": {
+   "n": 25779,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "EE": {
+   "n": 560,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "ES": {
+   "n": 28655,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "FI": {
+   "n": 12789,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "FR": {
+   "n": 127530,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "GB": {
+   "n": 75074,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "GR": {
+   "n": 4268,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "HR": {
+   "n": 1378,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "HU": {
+   "n": 3566,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "IE": {
+   "n": 2992,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "IN": {
+   "n": 29277,
+   "unit": "stations",
+   "source": "Ministry of Power",
+   "date": "2025-08",
+   "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/aug/doc202581598101.pdf",
+   "note": "Government of India, Ministry of Power via PIB (Rajya Sabha reply, August 2025): public EV charging stations; verified 12.11.2026"
+  },
+  "IS": {
+   "n": 1678,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "IT": {
+   "n": 44429,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "LI": {
+   "n": 106,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "LT": {
+   "n": 3047,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "LU": {
+   "n": 2133,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "LV": {
+   "n": 698,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "MT": {
+   "n": 101,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "NL": {
+   "n": 154219,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "NO": {
+   "n": 25710,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "PL": {
+   "n": 6649,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "PT": {
+   "n": 9071,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "RO": {
+   "n": 3031,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "SE": {
+   "n": 43313,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "SI": {
+   "n": 1708,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "SK": {
+   "n": 2635,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "TR": {
+   "n": 10172,
+   "unit": "points",
+   "source": "EAFO",
+   "date": "2024-03",
+   "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
+   "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  }
+ }
+}

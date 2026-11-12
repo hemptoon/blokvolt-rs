@@ -169,5 +169,10 @@
  "p_dc_pub": "Recharge rapide à partir de 50 kW : {dc} ({pct_dc}) ; 150 kW ou plus : {hpc} — sites publics uniquement.",
  "t_hub_world": "Bornes de recharge pour voitures électriques par pays",
  "d_hub2": "Sites de recharge pour voitures électriques dans chaque pays couvert par les données ouvertes : combien, bornes rapides, réseaux, sources et licences.",
- "theme_dark": "Thème sombre"
+ "theme_dark": "Thème sombre",
+ "cov_points": "Selon {src} ({date}), on compte {n} points de charge publics. BlokVolt affiche les sites de recharge publics issus des données ouvertes : {m} ; un site compte souvent plusieurs points de charge.",
+ "cov_points_semi": "Selon {src} ({date}), on compte {n} points de charge publics et semi-publics. BlokVolt affiche les sites de recharge publics issus des données ouvertes : {m} ; un site compte souvent plusieurs points de charge.",
+ "cov_stations": "Selon {src} ({date}), on compte {n} stations de recharge publiques. BlokVolt affiche les sites de recharge publics issus des données ouvertes : {m}.",
+ "cov_part": "Les données ouvertes ne couvrent ici qu’une partie des bornes.",
+ "cov_link": "Source"
 }

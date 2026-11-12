@@ -159,5 +159,10 @@
  "p_dc_pub": "Pikalataus vähintään 50 kW:n teholla: {dc} ({pct_dc}); 150 kW tai enemmän: {hpc} – vain julkiset paikat.",
  "t_hub_world": "Sähköautojen latausasemat maittain",
  "d_hub2": "Sähköautojen latauspaikat kaikissa avoimen datan maissa: määrät, pikalaturit, latausverkot, lähteet ja lisenssit.",
- "theme_dark": "Tumma teema"
+ "theme_dark": "Tumma teema",
+ "cov_points": "Lähteen {src} ({date}) mukaan julkisia latauspisteitä on {n}. BlokVolt näyttää avoimesta datasta julkiset latauspaikat: {m}; yhdessä paikassa on usein useita latauspisteitä.",
+ "cov_points_semi": "Lähteen {src} ({date}) mukaan julkisia ja puolijulkisia latauspisteitä on {n}. BlokVolt näyttää avoimesta datasta julkiset latauspaikat: {m}; yhdessä paikassa on usein useita latauspisteitä.",
+ "cov_stations": "Lähteen {src} ({date}) mukaan julkisia latausasemia on {n}. BlokVolt näyttää avoimesta datasta julkiset latauspaikat: {m}.",
+ "cov_part": "Avoin data kattaa täällä vain osan latureista.",
+ "cov_link": "Lähde"
 }

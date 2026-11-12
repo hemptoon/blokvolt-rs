@@ -159,5 +159,10 @@
  "p_dc_pub": "Schnellladen ab 50 kW: {dc} ({pct_dc}); 150 kW oder mehr: {hpc} – nur öffentliche Standorte.",
  "t_hub_world": "Ladestationen für E-Autos nach Land",
  "d_hub2": "Ladestandorte für Elektroautos in jedem Land der offenen Daten: wie viele, Schnelllader, Ladenetze, Quellen und Lizenzen.",
- "theme_dark": "Dunkles Design"
+ "theme_dark": "Dunkles Design",
+ "cov_points": "Laut {src} ({date}) gibt es {n} öffentliche Ladepunkte. BlokVolt zeigt öffentliche Ladestandorte aus offenen Daten: {m}; ein Standort hat oft mehrere Ladepunkte.",
+ "cov_points_semi": "Laut {src} ({date}) gibt es {n} öffentliche und halböffentliche Ladepunkte. BlokVolt zeigt öffentliche Ladestandorte aus offenen Daten: {m}; ein Standort hat oft mehrere Ladepunkte.",
+ "cov_stations": "Laut {src} ({date}) gibt es {n} öffentliche Ladestationen. BlokVolt zeigt öffentliche Ladestandorte aus offenen Daten: {m}.",
+ "cov_part": "Offene Daten erfassen hier nur einen Teil der Ladesäulen.",
+ "cov_link": "Quelle"
 }

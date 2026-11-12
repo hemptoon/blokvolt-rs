@@ -169,5 +169,10 @@
  "p_dc_pub": "Ricarica rapida da 50 kW in su: {dc} ({pct_dc}); 150 kW o più: {hpc} (solo siti pubblici).",
  "t_hub_world": "Stazioni di ricarica per auto elettriche per Paese",
  "d_hub2": "Siti di ricarica per auto elettriche in ogni Paese presente nei dati aperti: quanti sono, colonnine rapide, reti, fonti e licenze.",
- "theme_dark": "Tema scuro"
+ "theme_dark": "Tema scuro",
+ "cov_points": "Secondo {src} ({date}), ci sono {n} punti di ricarica pubblici. BlokVolt mostra i siti pubblici ricavati da dati aperti: {m}; un sito ha spesso più punti di ricarica.",
+ "cov_points_semi": "Secondo {src} ({date}), ci sono {n} punti di ricarica pubblici e semipubblici. BlokVolt mostra i siti pubblici ricavati da dati aperti: {m}; un sito ha spesso più punti di ricarica.",
+ "cov_stations": "Secondo {src} ({date}), ci sono {n} stazioni di ricarica pubbliche. BlokVolt mostra i siti pubblici ricavati da dati aperti: {m}.",
+ "cov_part": "Qui i dati aperti coprono solo una parte delle colonnine.",
+ "cov_link": "Fonte"
 }

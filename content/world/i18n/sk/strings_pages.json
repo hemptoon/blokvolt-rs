@@ -179,5 +179,10 @@
  "p_dc_pub": "Rýchle nabíjanie od 50 kW: {dc} ({pct_dc}); 150 kW a viac: {hpc} – iba verejné miesta.",
  "t_hub_world": "Nabíjacie stanice pre elektromobily podľa krajín",
  "d_hub2": "Nabíjacie miesta pre elektromobily v každej krajine z otvorených údajov: koľko ich je, rýchlonabíjačky, siete, zdroje a licencie.",
- "theme_dark": "Tmavý motív"
+ "theme_dark": "Tmavý motív",
+ "cov_points": "Podľa údajov {src} ({date}) je počet verejných nabíjacích bodov {n}. BlokVolt zobrazuje verejné miesta z otvorených údajov: {m}; na jednom mieste je často viac nabíjacích bodov.",
+ "cov_points_semi": "Podľa údajov {src} ({date}) je počet verejných a poloverejných nabíjacích bodov {n}. BlokVolt zobrazuje verejné miesta z otvorených údajov: {m}; na jednom mieste je často viac nabíjacích bodov.",
+ "cov_stations": "Podľa údajov {src} ({date}) je počet verejných nabíjacích staníc {n}. BlokVolt zobrazuje verejné miesta z otvorených údajov: {m}.",
+ "cov_part": "Otvorené údaje tu pokrývajú len časť nabíjacích staníc.",
+ "cov_link": "Zdroj"
 }

@@ -159,5 +159,10 @@
  "p_dc_pub": "50 kW ve üzeri hızlı şarj: {dc} ({pct_dc}); 150 kW ve üzeri: {hpc} — yalnızca halka açık lokasyonlar.",
  "t_hub_world": "Ülkelere göre elektrikli araç şarj istasyonları",
  "d_hub2": "Açık verilerdeki her ülkede elektrikli araç şarj lokasyonları: sayıları, hızlı şarj noktaları, şarj ağları, kaynaklar ve lisanslar.",
- "theme_dark": "Koyu tema"
+ "theme_dark": "Koyu tema",
+ "cov_points": "{src} ({date}) verilerine göre {n} halka açık şarj noktası bulunuyor. BlokVolt, açık verilerdeki halka açık lokasyonları gösterir: {m}; bir lokasyonda çoğu zaman birden fazla şarj noktası bulunur.",
+ "cov_points_semi": "{src} ({date}) verilerine göre {n} halka açık ve yarı halka açık şarj noktası bulunuyor. BlokVolt, açık verilerdeki halka açık lokasyonları gösterir: {m}; bir lokasyonda çoğu zaman birden fazla şarj noktası bulunur.",
+ "cov_stations": "{src} ({date}) verilerine göre {n} halka açık şarj istasyonu bulunuyor. BlokVolt, açık verilerdeki halka açık lokasyonları gösterir: {m}.",
+ "cov_part": "Açık veriler burada şarj noktalarının yalnızca bir kısmını kapsar.",
+ "cov_link": "Kaynak"
 }

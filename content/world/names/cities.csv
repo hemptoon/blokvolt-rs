@@ -5520,6 +5520,14 @@ geonameid,cc,name_local,name_en,name_sr,name_ru,slug,sr_u,ru_v,decl_ok,note,stag
 2665171,SE,Vänersborg,Vänersborg,Vänersborg,Венерсборг,vanersborg,u Vänersborgu,в Венерсборге,1,FIXL: NOBIL city page,quarter,1,1
 2664855,SE,Värnamo,Värnamo,Värnamo,Вернаму,varnamo,u gradu Värnamo,в Вернаму,0,FIXL: NOBIL city page,quarter,0,1
 2662689,SE,Visby,Visby,Visby,Висбю,visby,u gradu Visby,в Висбю,0,FIXL: NOBIL city page,quarter,0,1
+3182297,IT,Bassano del Grappa,Bassano del Grappa,Bassano del Grappa,Бассано-дель-Граппа,bassano-del-grappa,u gradu Bassano del Grappa,в Бассано-дель-Граппа,0,WORLD2 12.11.2026: new city page (bundle 2026-11-12),quarter,0,1
+3145614,NO,Mo i Rana,Mo i Rana,Mo i Rana,Му-и-Рана,mo-i-rana,u gradu Mo i Rana,в Му-и-Ране,0,WORLD2 12.11.2026: new city page (bundle 2026-11-12),quarter,0,1
+3153823,NO,Harstad,Harstad,Harstad,Харстад,harstad,u Harstadu,в Харстаде,1,WORLD2 12.11.2026: new city page (bundle 2026-11-12),quarter,1,1
+847633,NO,Alta,Alta,Alta,Альта,alta,u Alti,в Альте,1,WORLD2 12.11.2026: new city page (bundle 2026-11-12),quarter,1,1
+2665452,SE,Vallentuna,Vallentuna,Valentuna,Валлентуна,vallentuna,u gradu Valentuna,в Валлентуне,0,WORLD2 12.11.2026: new city page (bundle 2026-11-12); SR transcription as in Serbian practice (single l),quarter,0,1
+2667109,SE,Tullinge,Tullinge,Tulinge,Туллинге,tullinge,u gradu Tulinge,в Туллинге,0,WORLD2 12.11.2026: new city page (bundle 2026-11-12),quarter,0,1
+2700839,SE,Kinna,Kinna,Čina,Чинна,kinna,u gradu Čina,в Чинне,0,"WORLD2 12.11.2026: new city page (bundle 2026-11-12); Swedish k before i = Č (SR), Ч (RU)",quarter,0,1
+605155,SE,Kiruna,Kiruna,Kiruna,Кируна,kiruna,u Kiruni,в Кируне,1,WORLD2 12.11.2026: new city page (bundle 2026-11-12),quarter,1,1
 3191648,HR,Rijeka,Rijeka,Rijeka,Риека,rijeka,u Rijeci,в Риеке,1,,balkan,1,1
 3191281,BA,Sarajevo,Sarajevo,Sarajevo,Сараево,sarajevo,u Sarajevu,в Сараеве,1,,balkan,1,1
 3186886,HR,Zagreb,Zagreb,Zagreb,Загреб,zagreb,u Zagrebu,в Загребе,1,,balkan,1,1
