@@ -502,6 +502,7 @@
     input.setAttribute('aria-expanded', 'false');
     input.setAttribute('aria-controls', lb.id);
     input.setAttribute('autocomplete', 'off');
+    input.setAttribute('enterkeyhint', 'search');   // the phone keyboard shows "Search" (POLISH note)
     var opts = [], sel = -1, lastQ = null, mob = function () { return matchMedia('(max-width: 640px)').matches && !opt.inline; };
     var sheet = null;   // phone: the search opens full screen in a sheet of its own (above every layer of the page)
     function setOpen(on) {
