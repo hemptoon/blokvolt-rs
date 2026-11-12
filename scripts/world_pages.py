@@ -282,8 +282,13 @@ class Site:
         cap = I.pages_cap()
         if cap:
             for l in LANGS:
-                rank = sorted((p for p in pages if p['type'] in ('city', 'network') and l in self.allowed[p['key']]),
-                              key=lambda p: (-(p.get('n') or 0), p['key']))
+                cand = [p for p in pages if p['type'] in ('city', 'network') and l in self.allowed[p['key']]]
+                top = {}   # WORLD2: the largest city of every country first, so every country of the world shows one in a preview
+                for p in cand:
+                    if p['type'] == 'city' and (p['cc'] not in top or (p.get('n') or 0) > (top[p['cc']].get('n') or 0)):
+                        top[p['cc']] = p
+                first = {p['key'] for p in top.values()}
+                rank = sorted(cand, key=lambda p: (p['key'] not in first, -(p.get('n') or 0), p['key']))
                 for p in rank[cap:]:
                     self.allowed[p['key']] = tuple(x for x in self.allowed[p['key']] if x != l)
                 self.capped[l] = max(0, len(rank) - cap)
@@ -525,6 +530,43 @@ def common_blocks(c, l, d):
     return dict(paras=paras, tiles=tiles, power=power, conn=conn, srcs=srcs)
 
 
+def totals_first(c, l, b, st, n_all, nets=False):
+    """HOME3 for countries, WORLD2 P4 for cities and networks: the first number is every charging place on the map, the
+    next one the public ones; the other numbers stay public and say so. Cities and networks keep the networks tile in
+    place of the 150 kW one (that number stays in the paragraph)."""
+    S = c.S[l]
+    last = (c.n(l, st['n_nets']), S['st_nets']) if nets else (c.n(l, st['hpc']), S['st_hpc_pub'])
+    b['tiles'] = [(c.n(l, n_all), S['st_places']), (c.n(l, st['n']), S['st_public']), (c.n(l, st['dc50']), S['st_dc50_pub']), last]
+    b['paras'][0] = c.t(l, 'p_shown2', n=c.pn(l, n_all, 'pl_place2'), m=c.n(l, st['n']))
+
+
+_OFFICIAL = None
+
+
+def official_counts():
+    global _OFFICIAL
+    if _OFFICIAL is None:
+        f = WORLD / 'official_counts.json'
+        _OFFICIAL = json.load(open(f, encoding='utf-8')) if f.exists() else {'countries': {}, 'thresholds': {}}
+    return _OFFICIAL
+
+
+def coverage(c, l, cc, m):
+    """WORLD2 P3: "<source> counted N public charging points (<month>). BlokVolt shows M public places from open data …"
+    for a country with an official count (content/world/official_counts.json); one more sentence when the source has
+    more than 6 points (3 stations) per public place of ours. No percentages, source and date always."""
+    oc = official_counts()
+    r = oc['countries'].get(cc)
+    if not r or not m:
+        return None
+    month = I.month_label(r['date'], l) if l not in I.BASE else __import__('world_prices').month_label(r['date'], l)
+    key = {'points': 'cov_points', 'points_semi': 'cov_points_semi', 'stations': 'cov_stations'}[r['unit']]
+    text = c.t(l, key, src=r['source'], n=c.n(l, r['n']), date=month, m=c.n(l, m))
+    lim = (oc.get('thresholds') or {}).get(r['unit'], 6)
+    part = c.t(l, 'cov_part') if r['n'] / m > lim else None
+    return dict(text=text, part=part, url=r['url'], link=c.S[l]['cov_link'])
+
+
 def mini(c, p):
     name = mini_name(p)
     if not name or not p['data'].get('dots', {}).get('d'):
@@ -551,9 +593,7 @@ def render_country(c, p, urls, l):
     n_all = world_home.counts_by_country().get(cc)
     st = d['stats']
     if n_all:
-        b['tiles'] = [(c.n(l, n_all), S['st_places']), (c.n(l, st['n']), S['st_public']), (c.n(l, st['dc50']), S['st_dc50_pub']),
-                      (c.n(l, st['hpc']), S['st_hpc_pub'])]
-        b['paras'][0] = c.t(l, 'p_shown2', n=c.pn(l, n_all, 'pl_place2'), m=c.n(l, st['n']))
+        totals_first(c, l, b, st, n_all)
     b['paras'][1] = c.t(l, 'p_dc_pub', dc=c.pn(l, st['dc50'], 'pl_place2'), pct_dc=c.pct(l, st['pct_dc50']), hpc=c.pn(l, st['hpc'], 'pl_place2'))
     # LANG0: a city or network without a page in this language (not a market country, preview cap) → the map
     cities = [dict(name=N.city_name(d['city_info'][str(g)], l), url=site.city(cc, g, l), n=c.n(l, n)) for g, n in d['city_pages'] if site.has_city(cc, g, l)]
@@ -579,7 +619,7 @@ def render_country(c, p, urls, l):
         title=title, h1=title, description=c.t(l, 'd_country', **kw), kick=S['k_country'], cname=cname,
         crumbs=[(S['nav_hub'], site.hub(l))], jsonld=ld(graph), b=b, cities=cities, others=others, nets=nets,
         map_link=c.map_url(l, {'zemlja': cc}, *view_of(c.places, 'cc', cc, d['center'], d['zoom'])), mini=mini(c, p), d=d,
-        regional=regional, data_date=fmt_date(c.lastmod(urls[l]))), 'country')
+        regional=regional, coverage=coverage(c, l, cc, st['n']), data_date=fmt_date(c.lastmod(urls[l]))), 'country')
 
 
 def render_city(c, p, urls, l, dup_titles):
@@ -597,6 +637,8 @@ def render_city(c, p, urls, l, dup_titles):
         title += c.t(l, 't_near', x=x, city_de=I.city_de(x, l))   # D5/D15: fr " (près d’Ulm)" 
     b = common_blocks(c, l, d)
     st = d['stats']
+    if d.get('n_all'):   # WORLD2 P4: "N charging places, M public" as on the country pages
+        totals_first(c, l, b, st, d['n_all'], nets=True)
     b['paras'].append(c.t(l, 'p_city_cmp', city=c.n(l, st['dc50_per10'], 1), country=c.n(l, d['country_dc50_per10'], 1), country_name=cname))
     fast = []
     for pid, name, net, kwv, conn, lc, lat, lon in d['fast']:
@@ -631,6 +673,8 @@ def render_network(c, p, urls, l):
     c.pk = dict(kw, country_name=cname)
     title = c.t(l, 't_network', **kw)
     b = common_blocks(c, l, d)
+    if d.get('n_all'):   # WORLD2 P4
+        totals_first(c, l, b, d['stats'], d['n_all'], nets=True)
     b['paras'].insert(1, c.t(l, 'p_net_share', n_cities=c.pn(l, d['n_cities'], 'pl_city_in'), share=c.pct(l, d['share_of_country']),
                              country_u=kw['country_u']))
     cities = [dict(name=N.city_name(d['city_info'][str(g)], l),

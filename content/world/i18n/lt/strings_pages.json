@@ -178,5 +178,10 @@
  "p_shown2": "Žemėlapyje: {n} iš atvirų šaltinių, iš jų viešųjų — {m}. Tai ne visi esami įkrovikliai; vietos, kurių patikimumas žemesnis nei 40, neįtrauktos.",
  "p_dc_pub": "Greitasis įkrovimas nuo 50 kW: {dc} ({pct_dc}); 150 kW ar daugiau: {hpc} — tik viešosios vietos.",
  "t_hub_world": "Elektromobilių įkrovimo stotelės pagal šalis",
- "d_hub2": "Elektromobilių įkrovimo vietos kiekvienoje atvirų duomenų šalyje: kiek jų yra, greitieji įkrovikliai, tinklai, šaltiniai ir licencijos."
+ "d_hub2": "Elektromobilių įkrovimo vietos kiekvienoje atvirų duomenų šalyje: kiek jų yra, greitieji įkrovikliai, tinklai, šaltiniai ir licencijos.",
+ "cov_points": "Pagal {src} duomenis ({date}), viešųjų įkrovimo taškų — {n}. BlokVolt rodo viešąsias vietas iš atvirųjų duomenų: {m}; vienoje vietoje dažnai būna keli įkrovimo taškai.",
+ "cov_points_semi": "Pagal {src} duomenis ({date}), viešųjų ir pusiau viešųjų įkrovimo taškų — {n}. BlokVolt rodo viešąsias vietas iš atvirųjų duomenų: {m}; vienoje vietoje dažnai būna keli įkrovimo taškai.",
+ "cov_stations": "Pagal {src} duomenis ({date}), viešųjų įkrovimo stotelių — {n}. BlokVolt rodo viešąsias vietas iš atvirųjų duomenų: {m}.",
+ "cov_part": "Atvirieji duomenys čia apima tik dalį įkroviklių.",
+ "cov_link": "Šaltinis"
 }

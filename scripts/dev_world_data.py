@@ -25,7 +25,16 @@ def main(base, work):
     base = base.rstrip('/')
     work = Path(work)
     work.mkdir(parents=True, exist_ok=True)
-    latest = json.loads(get(f'{base}/latest.json'))
+    # WORLD2 (12.11.2026): a task branch may build its preview from its own data package on the tiles host without
+    # switching the root latest.json (that switch is the release): BV_DATA_LATEST or content/world/preview_data.json
+    # {"latest": "data/<run>/latest.json"}; empty or missing = the root latest.json as before
+    rel = os.environ.get('BV_DATA_LATEST')
+    pf = Path(__file__).resolve().parent.parent / 'content' / 'world' / 'preview_data.json'
+    if rel is None and pf.exists():
+        rel = json.load(open(pf, encoding='utf-8')).get('latest') or ''
+    latest = json.loads(get(f"{base}/{rel or 'latest.json'}"))
+    if rel:
+        print(f'# preview data: {rel}', file=sys.stderr)
     d = latest['date']
     dd = f"{base}/{latest.get('data', f'data/{d}/')}".rstrip('/')
     for name in (f'pages-{d}.tar.gz', f'cards-{d}.tar.gz', f'manifest-{d}.json'):

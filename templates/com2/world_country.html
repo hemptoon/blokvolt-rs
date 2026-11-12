@@ -3,6 +3,7 @@
 {% block content %}
 {{ m.tiles(b) }}
 {{ m.paras(b) }}
+{% if coverage %}<p class="note">{{ coverage.text }}{% if coverage.part %} {{ coverage.part }}{% endif %} <a class="lnk" href="{{ coverage.url }}" rel="nofollow noopener" target="_blank">{{ coverage.link }}</a></p>{% endif %}
 {% if regional %}<p class="note"><a class="lnk" href="{{ regional.url }}" hreflang="en">{{ S.regional_guide.format(country=cname) }}</a></p>{% endif %}
 {{ m.minimap(mini, map_link) }}
 {% if cities %}<div class="sec"><div class="sec-head"><h2 id="cities">{{ S.h_cities }}</h2></div>

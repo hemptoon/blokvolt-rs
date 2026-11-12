@@ -648,5 +648,30 @@
   "en": "Charging places for electric cars in every country of the open data: how many, fast chargers, networks, sources and licences.",
   "sr": "Mesta za punjenje električnih automobila u svakoj zemlji iz otvorenih podataka: koliko ih ima, brzi punjači, mreže, izvori i licence.",
   "ru": "Места зарядки электромобилей в каждой стране по открытым данным: сколько их, быстрые зарядки, сети, источники и лицензии."
+ },
+ "cov_points": {
+  "en": "According to {src} ({date}), there are {n} public charging points. BlokVolt shows public places from open data: {m}; one place often has several points.",
+  "sr": "Prema podacima {src} ({date}), javnih tačaka za punjenje ima {n}. BlokVolt prikazuje javna mesta iz otvorenih podataka: {m}; na jednom mestu često ima više tačaka.",
+  "ru": "По данным {src} ({date}), публичных точек зарядки — {n}. BlokVolt показывает публичные места из открытых данных: {m}; в одном месте часто несколько точек."
+ },
+ "cov_points_semi": {
+  "en": "According to {src} ({date}), there are {n} public and semi-public charging points. BlokVolt shows public places from open data: {m}; one place often has several points.",
+  "sr": "Prema podacima {src} ({date}), javnih i polujavnih tačaka za punjenje ima {n}. BlokVolt prikazuje javna mesta iz otvorenih podataka: {m}; na jednom mestu često ima više tačaka.",
+  "ru": "По данным {src} ({date}), публичных и полупубличных точек зарядки — {n}. BlokVolt показывает публичные места из открытых данных: {m}; в одном месте часто несколько точек."
+ },
+ "cov_stations": {
+  "en": "According to {src} ({date}), there are {n} public charging stations. BlokVolt shows public places from open data: {m}.",
+  "sr": "Prema podacima {src} ({date}), javnih stanica za punjenje ima {n}. BlokVolt prikazuje javna mesta iz otvorenih podataka: {m}.",
+  "ru": "По данным {src} ({date}), публичных зарядных станций — {n}. BlokVolt показывает публичные места из открытых данных: {m}."
+ },
+ "cov_part": {
+  "en": "Open data cover only part of the chargers here.",
+  "sr": "Otvoreni podaci ovde pokrivaju samo deo punjača.",
+  "ru": "Открытые данные покрывают здесь только часть зарядок."
+ },
+ "cov_link": {
+  "en": "Source",
+  "sr": "Izvor",
+  "ru": "Источник"
  }
 }

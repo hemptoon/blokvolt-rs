@@ -158,5 +158,10 @@
  "p_shown2": "På kortet: {n} fra åbne kilder, heraf {m} offentlige. Ikke alle eksisterende ladestandere; steder med pålidelighed under 40 er ikke medtaget.",
  "p_dc_pub": "Hurtigladning fra 50 kW: {dc} ({pct_dc}); 150 kW eller mere: {hpc} — kun offentlige steder.",
  "t_hub_world": "Ladestationer til elbiler efter land",
- "d_hub2": "Ladesteder til elbiler i alle lande i de åbne data: hvor mange, hurtigladere, ladenetværk, kilder og licenser."
+ "d_hub2": "Ladesteder til elbiler i alle lande i de åbne data: hvor mange, hurtigladere, ladenetværk, kilder og licenser.",
+ "cov_points": "Ifølge {src} ({date}) er der {n} offentlige ladepunkter. BlokVolt viser offentlige ladesteder fra åbne data: {m}; et ladested har ofte flere ladepunkter.",
+ "cov_points_semi": "Ifølge {src} ({date}) er der {n} offentlige og semioffentlige ladepunkter. BlokVolt viser offentlige ladesteder fra åbne data: {m}; et ladested har ofte flere ladepunkter.",
+ "cov_stations": "Ifølge {src} ({date}) er der {n} offentlige ladestationer. BlokVolt viser offentlige ladesteder fra åbne data: {m}.",
+ "cov_part": "Åbne data dækker her kun en del af ladestanderne.",
+ "cov_link": "Kilde"
 }

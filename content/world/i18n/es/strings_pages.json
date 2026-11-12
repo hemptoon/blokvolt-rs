@@ -168,5 +168,10 @@
  "p_shown2": "En el mapa: {n} de fuentes abiertas, {m} de ellas públicas. No son todos los cargadores que existen; no se incluyen las ubicaciones con una fiabilidad inferior a 40.",
  "p_dc_pub": "Carga rápida desde 50 kW: {dc} ({pct_dc}); 150 kW o más: {hpc} (solo ubicaciones públicas).",
  "t_hub_world": "Puntos de carga para coches eléctricos por país",
- "d_hub2": "Ubicaciones de carga para coches eléctricos en cada país de los datos abiertos: cuántas hay, cargadores rápidos, redes, fuentes y licencias."
+ "d_hub2": "Ubicaciones de carga para coches eléctricos en cada país de los datos abiertos: cuántas hay, cargadores rápidos, redes, fuentes y licencias.",
+ "cov_points": "Según {src} ({date}), hay {n} puntos de carga públicos. BlokVolt muestra las ubicaciones públicas a partir de datos abiertos: {m}; una ubicación suele tener varios puntos de carga.",
+ "cov_points_semi": "Según {src} ({date}), hay {n} puntos de carga públicos y semipúblicos. BlokVolt muestra las ubicaciones públicas a partir de datos abiertos: {m}; una ubicación suele tener varios puntos de carga.",
+ "cov_stations": "Según {src} ({date}), hay {n} estaciones de carga públicas. BlokVolt muestra las ubicaciones públicas a partir de datos abiertos: {m}.",
+ "cov_part": "Los datos abiertos solo cubren aquí una parte de los cargadores.",
+ "cov_link": "Fuente"
 }

@@ -158,5 +158,10 @@
  "p_shown2": "Kaardil: {n} avatud allikatest, neist avalikud: {m}. Need ei ole kõik olemasolevad laadijad; kohad usaldusväärsusega alla 40 ei ole kaasatud.",
  "p_dc_pub": "Kiirlaadimine alates 50 kW: {dc} ({pct_dc}); 150 kW või rohkem: {hpc} — ainult avalikud kohad.",
  "t_hub_world": "Elektriautode laadimisjaamad riigiti",
- "d_hub2": "Elektriautode laadimiskohad igas avaandmetes olevas riigis: kui palju, kiirlaadijad, laadimisvõrgud, allikad ja litsentsid."
+ "d_hub2": "Elektriautode laadimiskohad igas avaandmetes olevas riigis: kui palju, kiirlaadijad, laadimisvõrgud, allikad ja litsentsid.",
+ "cov_points": "Allika {src} ({date}) andmetel on avalikke laadimispunkte {n}. BlokVolt näitab avatud andmete põhjal avalikke laadimiskohti: {m}; ühes kohas on sageli mitu laadimispunkti.",
+ "cov_points_semi": "Allika {src} ({date}) andmetel on avalikke ja poolavalikke laadimispunkte {n}. BlokVolt näitab avatud andmete põhjal avalikke laadimiskohti: {m}; ühes kohas on sageli mitu laadimispunkti.",
+ "cov_stations": "Allika {src} ({date}) andmetel on avalikke laadimisjaamu {n}. BlokVolt näitab avatud andmete põhjal avalikke laadimiskohti: {m}.",
+ "cov_part": "Avatud andmed katavad siin vaid osa laadijatest.",
+ "cov_link": "Allikas"
 }

@@ -1,0 +1,4 @@
+{
+ "about": "WORLD2 (12.11.2026): the preview builds (scripts/dev_world_data.py) read this data package of hemptoon/blokvolt-tiles instead of the root latest.json. At «релиз WORLD2» the root latest.json points to the same package; then set \"latest\" to \"\" so previews follow the root again.",
+ "latest": "data/2026-11-12-world2/latest.json"
+}

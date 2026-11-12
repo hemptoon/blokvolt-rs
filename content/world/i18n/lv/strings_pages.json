@@ -168,5 +168,10 @@
  "p_shown2": "Kartē: {n} no atvērtiem avotiem, no tām publiskas — {m}. Tie nav visi esošie lādētāji; vietas ar ticamību zem 40 nav iekļautas.",
  "p_dc_pub": "Ātrā uzlāde no 50 kW: {dc} ({pct_dc}); 150 kW vai vairāk: {hpc} — tikai publiskās vietas.",
  "t_hub_world": "Elektromobiļu uzlādes stacijas pa valstīm",
- "d_hub2": "Elektromobiļu uzlādes vietas katrā atvērto datu valstī: cik to ir, ātrie lādētāji, uzlādes tīkli, avoti un licences."
+ "d_hub2": "Elektromobiļu uzlādes vietas katrā atvērto datu valstī: cik to ir, ātrie lādētāji, uzlādes tīkli, avoti un licences.",
+ "cov_points": "Saskaņā ar {src} datiem ({date}) publisko uzlādes punktu skaits ir {n}. BlokVolt rāda publiskas vietas no atvērtajiem datiem: {m}; vienā vietā bieži ir vairāki uzlādes punkti.",
+ "cov_points_semi": "Saskaņā ar {src} datiem ({date}) publisko un daļēji publisko uzlādes punktu skaits ir {n}. BlokVolt rāda publiskas vietas no atvērtajiem datiem: {m}; vienā vietā bieži ir vairāki uzlādes punkti.",
+ "cov_stations": "Saskaņā ar {src} datiem ({date}) publisko uzlādes staciju skaits ir {n}. BlokVolt rāda publiskas vietas no atvērtajiem datiem: {m}.",
+ "cov_part": "Atvērtie dati šeit aptver tikai daļu lādētāju.",
+ "cov_link": "Avots"
 }

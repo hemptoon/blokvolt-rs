@@ -168,5 +168,10 @@
  "p_shown2": "Na karti: {n} iz otvorenih izvora, od toga {m} javnih. Nije prikazan baš svaki punjač koji postoji; lokacije s pouzdanošću ispod 40 nisu uključene.",
  "p_dc_pub": "Brzo punjenje od 50 kW: {dc} ({pct_dc}); 150 kW ili više: {hpc} — samo javna mjesta.",
  "t_hub_world": "Punionice za električne automobile po zemljama",
- "d_hub2": "Mjesta za punjenje električnih automobila u svakoj zemlji iz otvorenih podataka: koliko ih ima, brzi punjači, mreže, izvori i licence."
+ "d_hub2": "Mjesta za punjenje električnih automobila u svakoj zemlji iz otvorenih podataka: koliko ih ima, brzi punjači, mreže, izvori i licence.",
+ "cov_points": "Prema podacima {src} ({date}), javnih mjesta za punjenje ima {n}. BlokVolt prikazuje javne lokacije iz otvorenih podataka: {m}; na jednoj lokaciji često ima više mjesta za punjenje.",
+ "cov_points_semi": "Prema podacima {src} ({date}), javnih i polujavnih mjesta za punjenje ima {n}. BlokVolt prikazuje javne lokacije iz otvorenih podataka: {m}; na jednoj lokaciji često ima više mjesta za punjenje.",
+ "cov_stations": "Prema podacima {src} ({date}), javnih punionica ima {n}. BlokVolt prikazuje javne lokacije iz otvorenih podataka: {m}.",
+ "cov_part": "Otvoreni podaci ovdje pokrivaju samo dio punjača.",
+ "cov_link": "Izvor"
 }

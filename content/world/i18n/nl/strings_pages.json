@@ -158,5 +158,10 @@
  "p_shown2": "Op de kaart: {n} uit open bronnen, waarvan {m} openbaar. Niet elke bestaande laadpaal staat erop; locaties met een betrouwbaarheid onder 40 zijn niet opgenomen.",
  "p_dc_pub": "Snelladen vanaf 50 kW: {dc} ({pct_dc}); 150 kW of meer: {hpc} — alleen openbare locaties.",
  "t_hub_world": "Laadstations voor elektrische auto's per land",
- "d_hub2": "Laadlocaties voor elektrische auto's in elk land uit de open data: hoeveel, snelladers, netwerken, bronnen en licenties."
+ "d_hub2": "Laadlocaties voor elektrische auto's in elk land uit de open data: hoeveel, snelladers, netwerken, bronnen en licenties.",
+ "cov_points": "Volgens {src} ({date}) zijn er {n} openbare laadpunten. BlokVolt toont openbare laadlocaties uit open data: {m}; één locatie heeft vaak meerdere laadpunten.",
+ "cov_points_semi": "Volgens {src} ({date}) zijn er {n} openbare en semi-openbare laadpunten. BlokVolt toont openbare laadlocaties uit open data: {m}; één locatie heeft vaak meerdere laadpunten.",
+ "cov_stations": "Volgens {src} ({date}) zijn er {n} openbare laadstations. BlokVolt toont openbare laadlocaties uit open data: {m}.",
+ "cov_part": "Open data dekken hier slechts een deel van de laadpalen.",
+ "cov_link": "Bron"
 }

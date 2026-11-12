@@ -178,5 +178,10 @@
  "p_shown2": "Na mapie: {n} z otwartych źródeł, w tym publiczne: {m}. Nie są to wszystkie istniejące ładowarki; lokalizacje o wiarygodności poniżej 40 nie są uwzględnione.",
  "p_dc_pub": "Szybkie ładowanie od 50 kW: {dc} ({pct_dc}); 150 kW lub więcej: {hpc} — tylko lokalizacje publiczne.",
  "t_hub_world": "Stacje ładowania samochodów elektrycznych według krajów",
- "d_hub2": "Lokalizacje ładowania samochodów elektrycznych we wszystkich krajach z otwartych danych: ile ich jest, szybkie ładowarki, sieci, źródła i licencje."
+ "d_hub2": "Lokalizacje ładowania samochodów elektrycznych we wszystkich krajach z otwartych danych: ile ich jest, szybkie ładowarki, sieci, źródła i licencje.",
+ "cov_points": "Według danych {src} ({date}) liczba publicznych punktów ładowania wynosi {n}. BlokVolt pokazuje publiczne lokalizacje z otwartych danych: {m}; w jednej lokalizacji często jest kilka punktów ładowania.",
+ "cov_points_semi": "Według danych {src} ({date}) liczba publicznych i półpublicznych punktów ładowania wynosi {n}. BlokVolt pokazuje publiczne lokalizacje z otwartych danych: {m}; w jednej lokalizacji często jest kilka punktów ładowania.",
+ "cov_stations": "Według danych {src} ({date}) liczba publicznych stacji ładowania wynosi {n}. BlokVolt pokazuje publiczne lokalizacje z otwartych danych: {m}.",
+ "cov_part": "Otwarte dane obejmują tu tylko część ładowarek.",
+ "cov_link": "Źródło"
 }

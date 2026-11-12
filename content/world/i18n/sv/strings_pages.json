@@ -158,5 +158,10 @@
  "p_shown2": "På kartan: {n} från öppna källor, varav {m} publika. Inte alla laddare som finns; platser med tillförlitlighet under 40 ingår inte.",
  "p_dc_pub": "Snabbladdning från 50 kW: {dc} ({pct_dc}); 150 kW eller mer: {hpc} — endast publika platser.",
  "t_hub_world": "Laddstationer för elbilar per land",
- "d_hub2": "Laddplatser för elbilar i alla länder i öppna data: hur många, snabbladdare, nätverk, källor och licenser."
+ "d_hub2": "Laddplatser för elbilar i alla länder i öppna data: hur många, snabbladdare, nätverk, källor och licenser.",
+ "cov_points": "Enligt {src} ({date}) finns det {n} publika laddpunkter. BlokVolt visar publika laddplatser från öppna data: {m}; en plats har ofta flera laddpunkter.",
+ "cov_points_semi": "Enligt {src} ({date}) finns det {n} publika och semipublika laddpunkter. BlokVolt visar publika laddplatser från öppna data: {m}; en plats har ofta flera laddpunkter.",
+ "cov_stations": "Enligt {src} ({date}) finns det {n} publika laddstationer. BlokVolt visar publika laddplatser från öppna data: {m}.",
+ "cov_part": "Öppna data täcker här bara en del av laddarna.",
+ "cov_link": "Källa"
 }
