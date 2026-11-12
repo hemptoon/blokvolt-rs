@@ -216,7 +216,7 @@ html[data-theme="light"] .wh-attr-more a{color:#0D111A}
   .wh-map::after{background:linear-gradient(0deg,rgba(11,15,23,1) 0,rgba(11,15,23,.7) 18%,rgba(11,15,23,0) 42%)}
   .wh-panel{position:relative;inset:auto;display:block;margin-top:-120px;padding-bottom:var(--s6)}
   .wh-card{max-width:none;padding:0}
-  .wh-go{right:var(--s3);top:auto;bottom:132px;min-height:40px;font-size:14px;padding:0 14px}
+  .wh-go{right:var(--s3);top:auto;bottom:132px;min-height:44px;font-size:14px;padding:0 14px}
   .wh-more{right:56px;left:var(--s3);top:var(--s3);bottom:auto;max-width:none}
   .wh-attr{left:var(--s3);right:auto;top:var(--s3);bottom:auto;justify-content:flex-start;text-align:left;max-width:calc(100% - 24px);font-size:11px}
   .wh-map[data-state=live] .wh-attr{max-width:calc(100% - 24px);top:auto;bottom:126px}
@@ -235,3 +235,8 @@ html[data-theme="light"] .wh-attr-more a{color:#0D111A}
   .wh-tools{grid-template-columns:1fr}
   .wh-acts .wh-btn{flex:1 1 auto}
 }
+/* POLISH (12.11.2026): touch targets at least 44 px */
+@media (pointer:coarse){.wh-chip{min-height:44px}}
+/* POLISH: phone held horizontally — the hero leaves room for the title and the stats line */
+@media (orientation:landscape) and (max-height:500px){.wh-map{height:clamp(240px,72svh,360px)}}
+@media (max-width:420px){.wh-workl a{white-space:normal}.wh-workl>span{min-width:0}}

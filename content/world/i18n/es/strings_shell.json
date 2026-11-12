@@ -69,5 +69,18 @@
  "ft_lang": "Idioma",
  "src_count_note": "Open Charge Map cuenta como una sola fuente; los proveedores de datos que incluye figuran por separado en la lista completa.",
  "src_map": "Mapa base: OpenFreeMap, © OpenMapTiles, datos © colaboradores de OpenStreetMap. Fronteras de los países en la imagen de la página de inicio: Natural Earth (dominio público). Nombres de ciudades: GeoNames (CC BY 4.0).",
- "src_date": "Datos a fecha de {date}."
+ "src_date": "Datos a fecha de {date}.",
+ "ft_claim": "Los puntos de carga públicos del mundo, a partir de datos abiertos: cada cifra tiene su fuente.",
+ "act_h": "Ayude a que el mapa sea correcto",
+ "act_broken": "¿Un punto de carga no funciona? Márquelo en el mapa",
+ "act_fix": "Proponga una corrección",
+ "act_widget": "Ponga el mapa en su web",
+ "ft_place": "Novi Sad, Serbia",
+ "ft_line2": "Datos © colaboradores de OpenStreetMap (ODbL), Open Charge Map, NOBIL y registros nacionales",
+ "ft_social": "Siga a BlokVolt",
+ "pl_sources": {
+  "one": "fuente de datos",
+  "many": "fuentes de datos",
+  "other": "fuentes de datos"
+ }
 }

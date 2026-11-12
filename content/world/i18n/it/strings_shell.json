@@ -69,5 +69,18 @@
  "ft_lang": "Lingua",
  "src_count_note": "Open Charge Map conta come una sola fonte; i fornitori di dati che raccoglie sono elencati a parte nell'elenco completo.",
  "src_map": "Mappa di base: OpenFreeMap, © OpenMapTiles, dati © contributori di OpenStreetMap. Confini dei Paesi nell'immagine della pagina iniziale: Natural Earth (pubblico dominio). Nomi delle città: GeoNames (CC BY 4.0).",
- "src_date": "Dati al {date}."
+ "src_date": "Dati al {date}.",
+ "ft_claim": "Le colonnine pubbliche di tutto il mondo da dati aperti, con una fonte dietro ogni numero.",
+ "act_h": "Aiuta a mantenere la mappa precisa",
+ "act_broken": "Una colonnina non funziona? Segnalala sulla mappa",
+ "act_fix": "Proponi una correzione",
+ "act_widget": "Metti la mappa sul tuo sito",
+ "ft_place": "Novi Sad, Serbia",
+ "ft_line2": "Dati © contributori di OpenStreetMap (ODbL), Open Charge Map, NOBIL e registri nazionali",
+ "ft_social": "Segui BlokVolt",
+ "pl_sources": {
+  "one": "fonte di dati",
+  "many": "di fonti di dati",
+  "other": "fonti di dati"
+ }
 }

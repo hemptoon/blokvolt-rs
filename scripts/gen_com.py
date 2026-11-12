@@ -565,6 +565,7 @@ def copy_assets():
     shutil.copy2(ROOT / 'static' / 'com' / 'com.css', a / 'com.css')
     shutil.copy2(ROOT / 'static' / 'com' / 'theme.css', a / 'theme.css')   # THEME 12.11.2026: light / dark of every page
     shutil.copy2(ROOT / 'static' / 'com' / 'bvc.js', a / 'bvc.js')   # visit counter (STATCOM 11.11.2026, RUNBOOK 3.16)
+    shutil.copy2(ROOT / 'static' / 'com' / 'ft-lights.webp', a / 'ft-lights.webp')   # POLISH: lights of the footer word (world_footer_lights.py)
     (a / 'og').mkdir(exist_ok=True)
     for f in (ROOT / 'static' / 'com').glob('og-*.png'):
         shutil.copy2(f, a / 'og' / f.name)

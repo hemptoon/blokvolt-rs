@@ -69,5 +69,18 @@
  "ft_lang": "Langue",
  "src_count_note": "Open Charge Map compte comme une seule source ; les fournisseurs de données qu’elle regroupe sont énumérés séparément dans la liste complète.",
  "src_map": "Fond de carte : OpenFreeMap, © OpenMapTiles, données © les contributeurs d’OpenStreetMap. Frontières des pays sur l’image de la page d’accueil : Natural Earth (domaine public). Noms des villes : GeoNames (CC BY 4.0).",
- "src_date": "Données au {date}."
+ "src_date": "Données au {date}.",
+ "ft_claim": "Les bornes de recharge publiques du monde entier, issues de données ouvertes — une source derrière chaque chiffre.",
+ "act_h": "Contribuer à l’exactitude de la carte",
+ "act_broken": "Une borne en panne ? La signaler sur la carte",
+ "act_fix": "Proposer une correction",
+ "act_widget": "Intégrer la carte à votre site",
+ "ft_place": "Novi Sad, Serbie",
+ "ft_line2": "Données © contributeurs d’OpenStreetMap (ODbL), Open Charge Map, NOBIL et registres nationaux",
+ "ft_social": "Suivre BlokVolt",
+ "pl_sources": {
+  "one": "source de données",
+  "many": "sources de données",
+  "other": "sources de données"
+ }
 }

@@ -67,5 +67,17 @@
  "ft_lang": "Keel",
  "src_count_note": "Open Charge Map loetakse üheks allikaks; selle sees olevad andmete tarnijad on täielikus loetelus eraldi välja toodud.",
  "src_map": "Aluskaart: OpenFreeMap, © OpenMapTiles, andmed © OpenStreetMapi kaastöölised. Avalehe pildi riigipiirid: Natural Earth (avalik omand). Linnade nimed: GeoNames (CC BY 4.0).",
- "src_date": "Andmed seisuga {date}."
+ "src_date": "Andmed seisuga {date}.",
+ "ft_claim": "Maailma avalikud laadimisjaamad avaandmetest — iga numbri taga on allikas.",
+ "act_h": "Aidake hoida kaart täpsena",
+ "act_broken": "Laadija ei tööta? Märkige see kaardile",
+ "act_fix": "Pakkuge parandust",
+ "act_widget": "Pange kaart oma veebilehele",
+ "ft_place": "Novi Sad, Serbia",
+ "ft_line2": "Andmed © OpenStreetMapi kaastöötajad (ODbL), Open Charge Map, NOBIL ja riiklikud registrid",
+ "ft_social": "Jälgige BlokVolti",
+ "pl_sources": {
+  "one": "andmeallikas",
+  "other": "andmeallikat"
+ }
 }

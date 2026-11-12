@@ -156,23 +156,202 @@ small.csrc a{color:var(--mut)}
  .wd-az a{font-size:14.5px;min-height:44px}
 }
 @media (max-width:360px){.wd-az{columns:1}}
-/* HOME3: footer of the world (templates/com2/_wfooter.html) — on the dark ground of .ft; muted text #A7ADB7 on #0B0F17 = 8.3:1 */
-.wft-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:36px 0 8px}
-.wft-lang{position:relative;background:none;border:0;margin:0}
-.wft-lang summary{list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.18);color:#E8EAE3;cursor:pointer;font-size:14px;font-weight:600}
-.wft-lang summary::-webkit-details-marker{display:none}
-.wft-lang summary svg{width:16px;height:16px}
-.wft-lang ul{position:absolute;right:0;bottom:46px;z-index:5;margin:0;padding:6px;max-height:60vh;overflow:auto;min-width:200px;background:#141A26;border:1px solid rgba(255,255,255,.12);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-.wft-lang li{margin:0}
-.wft-lang a{display:block;padding:8px 10px;border-radius:8px;font-size:14px}
-.wft-lang a:hover,.wft-lang a[aria-current]{background:rgba(255,255,255,.08);text-decoration:none}
-.wft-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;padding:20px 0 24px}
-.wft-cols li{margin:0 0 7px}
-.wft-cols a{font-size:14.5px;overflow-wrap:anywhere}
-.wft-legal{margin:0;padding:16px 0 28px;border-top:1px solid rgba(255,255,255,.08);font-size:12.5px;line-height:1.5;color:#A7ADB7!important;max-width:none!important}
-.wft-legal a{font-size:12.5px;text-decoration:underline;text-underline-offset:2px}
-@media (max-width:899px){.wft-cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px}}
-@media (pointer:coarse){.wft-cols a{display:inline-block;min-height:32px;padding:4px 0}}
-.wft-lang summary::after{display:none}
-.wft-lang>:not(summary){margin:0}
-.wft-lang summary{justify-content:flex-start;padding:0 12px;font-size:14px;color:#E8EAE3}
+/* POLISH (12.11.2026): footer of the world (templates/com2/_wfooter.html) — a dark rounded panel in BOTH themes (a dark footer on
+   the light site is the brand's mark, as on evolako.rs); the giant word "blokvolt" is cut by the panel's lower edge.
+   Contrast on #121826: ink #EEF0F3 15:1, muted #A6ADBA 7.6:1, lime #D9F45B 13:1; the legal line under the panel takes the theme. */
+body>.wft{flex-shrink:0}
+.wft{margin:56px 0 0;padding:0 12px;color:#EEF0F3}
+.wft-out{max-width:1440px;margin:0 auto}
+.wft-pan{position:relative;overflow:hidden;border-radius:clamp(24px,3.2vw,44px);background:#121826;border:1px solid rgba(255,255,255,.07);
+  padding:clamp(28px,4.4vw,64px) clamp(20px,4.6vw,72px) 0;isolation:isolate}
+.wft-pan::before{content:'';position:absolute;z-index:-1;left:50%;bottom:-18%;width:80%;height:60%;transform:translateX(-50%);
+  background:radial-gradient(closest-side,rgba(217,244,91,.10),rgba(217,244,91,0));pointer-events:none}
+.wft a{color:#EEF0F3;text-decoration:none}
+.wft a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.wft :focus-visible{outline:2px solid #D9F45B;outline-offset:3px;border-radius:6px}
+.wft ul{list-style:none;margin:0;padding:0}
+.wft li{margin:0}
+.wft .logo{color:#fff}
+.wft-h{margin:0 0 14px;font-size:12px;font-weight:650;letter-spacing:.11em;text-transform:uppercase;color:#A6ADBA}
+/* top: about (claim, live numbers, language + theme) · actions */
+.wft-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:clamp(32px,6vw,96px);align-items:start;padding:0 0 clamp(32px,4vw,52px)}
+.wft-claim{margin:20px 0 0;max-width:30ch;font-size:clamp(21px,2.1vw,29px);line-height:1.22;font-weight:560;letter-spacing:-.02em;color:#EEF0F3;text-wrap:balance}
+.wft-stats{display:flex;flex-wrap:wrap;gap:14px clamp(24px,3.4vw,48px);margin:28px 0 0!important}
+.wft-stats li{display:flex;flex-direction:column;gap:2px;min-width:0}
+.wft-stats b{font-size:clamp(28px,3.1vw,42px);line-height:1.05;font-weight:700;letter-spacing:-.03em;color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wft-stats span{font-size:13.5px;line-height:1.3;color:#A6ADBA}
+.wft-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:28px}
+.wft-lang{position:relative;background:none!important;color:#EEF0F3!important;border:0;margin:0;padding:0;border-radius:0}
+.wft-lang>summary{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.05);color:#EEF0F3;font-size:15px;font-weight:600;cursor:pointer;list-style:none}
+.wft-lang>summary::after,.wft-col>summary::after{display:none}
+.wft-lang>summary::-webkit-details-marker,.wft-col>summary::-webkit-details-marker{display:none}
+.wft-lang>summary:hover{background:rgba(255,255,255,.09);color:#fff}
+.wft-lang>summary .i{width:18px;height:18px}
+.wft-lang>summary .wft-chev{width:16px;height:16px;transform:rotate(90deg);opacity:.75;transition:transform .2s}
+.wft-lang[open]>summary .wft-chev{transform:rotate(-90deg)}
+.wft-lang>ul{position:absolute;left:0;bottom:52px;z-index:6;margin:0!important;padding:6px!important;max-height:min(60vh,440px);overflow:auto;overscroll-behavior:contain;
+  min-width:220px;background:#1B2230;border:1px solid rgba(255,255,255,.12);border-radius:14px;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.wft-lang>ul a{display:flex;align-items:center;min-height:40px;padding:0 12px;border-radius:9px;font-size:15px}
+.wft-lang>ul a:hover,.wft-lang>ul a[aria-current]{background:rgba(255,255,255,.08);text-decoration:none}
+.wft-lang>ul a[aria-current]{color:#D9F45B}
+.wft-thm{display:inline-flex;align-items:center;gap:10px;min-height:44px;cursor:pointer;padding:0 6px 0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.05);font-size:15px;font-weight:600;color:#EEF0F3}
+.wft-thm .thm{border-color:rgba(255,255,255,.2);background:#232B3B;color:#A6ADBA}
+.wft-thm .thm-k{background:#EEF0F3}
+html[data-theme="light"] .wft-thm .thm .thm-sun{color:#151B05}
+/* action buttons — Evolako's "write to us" buttons: icon, text, chevron */
+.wft-acts ul{display:grid;gap:10px}
+.wft-act{display:flex;align-items:center;gap:14px;min-height:56px;padding:10px 14px 10px 12px;border-radius:16px;background:rgba(255,255,255,.055);
+  border:1px solid rgba(226,232,245,.10);font-size:16px;font-weight:580;line-height:1.3;transition:background .15s,border-color .15s}
+.wft a.wft-act:hover{background:rgba(217,244,91,.10);border-color:rgba(217,244,91,.45);text-decoration:none}
+.wft-act .wft-ai{flex:none;width:36px;height:36px;padding:8px;border-radius:11px;background:rgba(217,244,91,.12);color:#D9F45B}
+.wft-act span{flex:1;min-width:0;overflow-wrap:anywhere}
+.wft-act .wft-chev{flex:none;width:18px;height:18px;color:#A6ADBA;transition:transform .15s}
+.wft a.wft-act:hover .wft-chev{transform:translateX(3px);color:#D9F45B}
+.wft-h2{margin-top:24px}
+.wft-soc{display:flex!important;flex-wrap:wrap;gap:8px}
+.wft-soc a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.14)}
+/* the four groups of links: columns; accordions on phones (bvc.js closes them there) */
+.wft-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px clamp(20px,3vw,44px);padding:clamp(28px,3.4vw,44px) 0 0;border-top:1px solid rgba(255,255,255,.09)}
+.wft-col{background:none!important;color:#EEF0F3!important;border:0;margin:0;padding:0;border-radius:0}
+.wft-col>*{margin-left:0!important;margin-right:0!important}
+.wft-col>summary{display:block;padding:0;cursor:default;pointer-events:none;color:inherit;font-size:inherit}
+.wft-col>summary .wft-chev{display:none}
+.wft-col li{margin:0 0 2px}
+.wft-col a{display:inline-flex;align-items:center;min-height:32px;font-size:15.5px;line-height:1.35;color:#D3D7DE;overflow-wrap:anywhere}
+.wft-col a:hover{color:#fff}
+/* the word, cut by the lower edge; "volt" lit (bvc.js adds .is-lit when ft-lights.webp has loaded) */
+.wft-word{position:relative;margin:clamp(36px,5vw,72px) 0 0;text-align:center;white-space:nowrap;font-size:clamp(64px,19.4vw,292px);line-height:.74;
+  letter-spacing:-.055em;margin-bottom:-.075em;user-select:none;pointer-events:none;font-family:inherit}
+.wft-word span{display:inline-block}
+.wft-w1{font-weight:330;color:#E9ECEF}
+.wft-w2{font-weight:800;color:#D9F45B;padding:0 .04em 0 .035em}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .wft-word.is-lit .wft-w2{background-image:var(--wft-lights),linear-gradient(180deg,#E2F86E 0,#C6E146 45%,#9DB828 100%);background-size:cover,auto;
+    background-position:50% 50%,0 0;background-blend-mode:screen;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  @media (prefers-reduced-motion:no-preference){
+    .wft-word.is-lit .wft-w2{background-size:135% auto,auto;animation:wft-drift 38s ease-in-out infinite alternate}
+    @keyframes wft-drift{from{background-position:0% 40%,0 0}to{background-position:100% 60%,0 0}}
+  }
+}
+/* legal line under the panel, on the page */
+.wft-legal{max-width:1160px!important;margin:0 auto!important;padding:18px 12px 28px;font-size:12.5px;line-height:1.55;color:var(--mut,#5E6573)!important;text-align:center;text-wrap:balance}
+.wft-legal a{color:inherit!important;font-size:inherit;text-decoration:underline;text-underline-offset:2px}
+html[data-theme="dark"] .wft-legal{color:#A6ADBA!important}
+html[data-theme="dark"] .wft-pan{background:#121826}
+html[data-theme="light"] .wft-pan{background:#0E131D;border-color:#0E131D}
+@media (max-width:1023px){
+  .wft-top{grid-template-columns:1fr;gap:36px}
+  .wft-acts ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .wft-cols{gap:24px 20px}
+  .wft-col a{font-size:15px}
+}
+@media (max-width:719px){
+  .wft{margin-top:40px;padding:0 8px}
+  .wft-acts ul{grid-template-columns:1fr}
+  .wft-act{min-height:58px;font-size:16px}
+  .wft-stats{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px}
+  .wft-stats li:first-child{grid-column:1/-1}
+  .wft-stats b{font-size:clamp(28px,9vw,36px)}
+  .wft-cols{grid-template-columns:1fr;gap:0;padding-top:8px}
+  .wft-col{border-bottom:1px solid rgba(255,255,255,.09)}
+  .wft-col>summary{display:flex;align-items:center;justify-content:space-between;min-height:56px;cursor:pointer;pointer-events:auto}
+  .wft-col>summary .wft-h{margin:0;font-size:13px;color:#D3D7DE}
+  .wft-col>summary .wft-chev{display:block;width:18px;height:18px;color:#A6ADBA;transform:rotate(90deg);transition:transform .2s}
+  .wft-col[open]>summary .wft-chev{transform:rotate(-90deg)}
+  .wft-col ul{padding:0 0 14px}
+  .wft-col a{min-height:44px;font-size:16px}
+  .wft-word{margin-top:36px;font-size:19.6vw}
+  .wft-lang>ul{position:fixed;left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));max-height:min(70vh,520px);min-width:0}
+  .wft-legal{padding-bottom:max(24px,env(safe-area-inset-bottom));text-align:left}
+}
+/* POLISH: local sections (/hr/, /ba/ …) — their own footer in the same panel */
+.ft.wft-loc{background:none!important;border:0!important;margin:56px 0 0;padding:0 12px;color:#E8EAE3}
+.wft-loc .ft-in{padding:0 0 8px}
+.wft-loc .ft-world{margin-top:8px}
+.wft-loc .wft-word{margin-top:clamp(28px,4vw,56px)}
+.wft-loc .ft-legal.wft-loclegal{max-width:1160px;margin:0 auto;padding:16px 12px 28px;border:0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;
+  font-size:12.5px;color:#5E6573}
+.wft-loc .wft-loclegal a{color:inherit}
+html[data-theme="dark"] .wft-loc .wft-loclegal{color:#A6ADBA}
+@media (max-width:719px){.ft.wft-loc{margin-top:40px;padding:0 8px}.wft-loc .wft-word{font-size:19.6vw}}
+@media (prefers-reduced-motion:reduce){.wft-act,.wft-act .wft-chev,.wft-lang>summary .wft-chev,.wft-col>summary .wft-chev{transition:none}}
+/* POLISH (12.11.2026): touch screens — every target at least 44 × 44 px (links inside table cells, crumbs and section heads get
+   the height through padding that does not move the text), and no form field under 16 px (Safari zooms in on focus).
+   Only .com loads this file; bv.css (shared with www.blokvolt.rs) is unchanged. */
+@media (pointer:coarse){
+  .chip,.btn,.ib,.wh-chip,.wd-tabs button,.ft-mail,.wft-lang>ul a{min-height:44px}
+  .ib{height:44px;min-width:44px}
+  .chips{gap:8px}
+  .logo{min-height:44px}
+  .thm{position:relative}
+  .thm::before{content:'';position:absolute;inset:-7px -4px}
+  :is(td,th,.crumbs,.sec-head,.note,small,.wm-attr-full) a,a.lnk,a.w-mini{padding-block:12px;margin-block:-12px}
+  :is(td,th,.crumbs) a{position:relative}
+  :is(td,th,.crumbs) a::after{content:'';position:absolute;inset:0 -8px}
+  .hd-tools .ib{min-width:44px}
+  .btn.sm{height:auto;min-height:44px}
+  .maplibregl-ctrl-group button{width:44px!important;height:44px!important}
+  .map-top .search-box .input{height:44px}
+  .wft-loc li a{display:inline-flex;align-items:center;min-height:44px}
+  .wft-col a{min-height:44px}
+  .wft-col li{margin:0}
+  .hd-nav a{min-height:44px;display:inline-flex;align-items:center}
+  .w-more a{padding-block:12px;margin-block:-12px}
+  .wft-loc li{margin:0}
+  input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea{font-size:16px!important}
+}
+/* text under 12 px — the legal and attribution lines excepted */
+.logo .loc-tag{font-size:12px}
+.wm-legend{font-size:12px!important}
+.st .dot{font-size:12px}
+/* POLISH: the phone menu — the page under it stays still, the menu scrolls inside when it is taller than the screen */
+html.bv-menu-open,html.bv-menu-open body{overflow:hidden;overscroll-behavior:none}
+html.bv-menu-open .hd-nav.is-open{max-height:calc(100dvh - var(--hd,60px));overflow-y:auto;overscroll-behavior:contain}
+/* POLISH (12.11.2026): tables on phones. Row headers (<th scope=row>: app, network, route, country) read as normal text — not the
+   upper-case, one-line style of the column headers, which pushed every other column off the screen. A table (or chart) that is
+   still wider than the screen shows it: the right edge fades and a small "↔" sits above it until the reader has scrolled to the end
+   (static/com/bvc.js adds .tw-more / .tw-end). */
+.tw tbody th,.tw th[scope=row]{white-space:normal;text-transform:none;letter-spacing:0;font-size:15px;font-weight:620;color:var(--ink);background:transparent}
+html[data-theme="dark"] .tw tbody th{background:transparent;color:var(--ink)}
+.tw a,.wp-fig a{overflow-wrap:break-word}
+.tw tbody th{min-width:6.5em}
+.tw.tw-more,.wp-fig.tw-more{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 56px),rgba(0,0,0,.18));mask-image:linear-gradient(90deg,#000 calc(100% - 56px),rgba(0,0,0,.18))}
+.tw.tw-more.tw-end,.wp-fig.tw-more.tw-end{-webkit-mask-image:none;mask-image:none}
+.tw-hint{position:relative;z-index:2;height:0;margin:0;pointer-events:none}
+.tw-hint span{position:absolute;right:10px;top:1px;display:inline-flex;align-items:center;padding:1px 10px;border-radius:999px;background:var(--ink,#0D111A);color:var(--bg,#fff);
+  font-size:14px;font-weight:700;line-height:1.6;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+html[data-theme="dark"] .tw-hint span{background:#D9F45B;color:#151B05}
+.tw-hint[hidden]{display:none}
+@media (max-width:719px){
+  .tw th,.tw td{padding:10px 11px}
+  .tw td:not(.num){min-width:7em}
+  .tw table{font-size:14.5px}
+}
+/* POLISH: units keep their case — "kW", not "KW" (labels of the number cards and the column heads were upper-cased) */
+.fact>span,.tw thead th,.tw th{text-transform:none;letter-spacing:0}
+.fact>span{font-size:13px}
+.tw thead th{font-size:13px}
+/* press: the embed codes as the code box of the widget page, with room after each chart */
+.wp-emb{display:block;width:100%;height:auto!important;min-height:118px;padding:10px 12px;border-radius:12px;font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical;word-break:break-all}
+.wp-emb+.chips{margin:10px 0 36px}
+@media (max-width:420px){.chips .chip{max-width:100%;white-space:normal;text-align:left}}
+@media (orientation:landscape) and (max-height:500px){.wp-fig svg{max-width:640px}}
+.tw code{word-break:break-all}
+/* POLISH: cards of the regional guide and the local sections — one column on small phones (two columns left 135 px cards) */
+@media (max-width:400px){.tiles,.tiles.w4,.tiles.loc2{grid-template-columns:1fr}.tile.big{grid-column:auto}}
+@media (max-width:719px){.tiles+p,.tiles+.note{margin-top:20px}}
+.w-more .w-mi{white-space:nowrap}
+/* POLISH: "Listed" on How to pay — lime only on the dark theme; dark olive on the light one (lime on white was ~1.3:1) */
+html[data-theme="light"] .wpay-y{color:#4D6B00!important}
+html[data-theme="dark"] .wpay-y{color:#D9F45B!important}
+a.btn,a.btn:hover{text-decoration:none}
+html[data-theme="dark"] input[type=checkbox],html[data-theme="dark"] input[type=radio]{accent-color:#D9F45B}
+/* POLISH: long words (German, Finnish, Hungarian compounds …) break with a hyphen on phones — by the language of the page
+   (html lang, set by the registry) — only words of 10+ letters, never in the brand, codes or the giant footer word */
+@media (max-width:719px){
+  :is(h1,h2,h3,p,li,td,th,dd,.fact>span,.tile,.wft-claim,.wft-act span){-webkit-hyphens:auto;hyphens:auto;hyphenate-limit-chars:10 4 4;overflow-wrap:break-word}
+  :is(code,pre,.wft-word,[translate="no"]){-webkit-hyphens:manual;hyphens:manual}
+}
+@media (max-width:719px){.tw tbody th,.tw th[scope=row]{-webkit-hyphens:manual;hyphens:manual}}

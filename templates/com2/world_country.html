@@ -9,7 +9,7 @@
 <div class="tw"><table><thead><tr><th>{{ S.th_city }}</th><th class="num">{{ S.th_n }}</th></tr></thead><tbody>
 {% for r in cities[:60] %}<tr><td><a href="{{ r.url }}" translate="no">{{ r.name }}</a></td><td class="num">{{ r.n }}</td></tr>
 {% endfor %}</tbody></table></div>
-{% if cities|length > 60 %}<p class="w-more" translate="no">{% for r in cities[60:] %}<a href="{{ r.url }}">{{ r.name }}</a> {{ r.n }}{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}</div>{% endif %}
+{% if cities|length > 60 %}<p class="w-more" translate="no">{% for r in cities[60:] %}<span class="w-mi"><a href="{{ r.url }}">{{ r.name }}</a>&nbsp;{{ r.n }}</span>{% if not loop.last %}&nbsp;· {% endif %}{% endfor %}</p>{% endif %}</div>{% endif %}
 {% if others %}<div class="sec"><div class="sec-head"><h2 id="other-cities">{{ S.h_cities_other }}</h2></div>
 <div class="chips">{% for r in others %}<a class="chip" href="{{ r.url }}" rel="nofollow" translate="no">{{ r.name }} · {{ r.n }}</a>{% endfor %}</div></div>{% endif %}
 {{ m.nets(nets) }}

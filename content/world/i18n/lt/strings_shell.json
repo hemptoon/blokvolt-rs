@@ -71,5 +71,19 @@
  "ft_lang": "Kalba",
  "src_count_note": "Open Charge Map laikomas vienu šaltiniu; jame esantys duomenų teikėjai visame sąraše nurodyti atskirai.",
  "src_map": "Pagrindo žemėlapis: OpenFreeMap, © OpenMapTiles, duomenys © OpenStreetMap autoriai. Šalių sienos pagrindinio puslapio paveikslėlyje: Natural Earth (viešasis domenas). Miestų pavadinimai: GeoNames (CC BY 4.0).",
- "src_date": "Duomenų data: {date}."
+ "src_date": "Duomenų data: {date}.",
+ "ft_claim": "Pasaulio viešosios įkrovimo stotelės iš atvirųjų duomenų — kiekvienas skaičius turi šaltinį.",
+ "act_h": "Padėkite, kad žemėlapis būtų tikslus",
+ "act_broken": "Neveikia įkrovimo stotelė? Pažymėkite tai žemėlapyje",
+ "act_fix": "Pasiūlykite pataisymą",
+ "act_widget": "Įdėkite žemėlapį į savo svetainę",
+ "ft_place": "Novi Sadas, Serbija",
+ "ft_line2": "Duomenys © OpenStreetMap bendraautoriai (ODbL), Open Charge Map, NOBIL ir nacionaliniai registrai",
+ "ft_social": "Sekite BlokVolt",
+ "pl_sources": {
+  "one": "duomenų šaltinis",
+  "few": "duomenų šaltiniai",
+  "many": "duomenų šaltinio",
+  "other": "duomenų šaltinių"
+ }
 }

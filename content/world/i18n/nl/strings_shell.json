@@ -67,5 +67,17 @@
  "ft_lang": "Taal",
  "src_count_note": "Open Charge Map telt als één bron; de gegevensleveranciers daarbinnen staan apart in de volledige lijst.",
  "src_map": "Achtergrondkaart: OpenFreeMap, © OpenMapTiles, gegevens © OpenStreetMap-bijdragers. Landsgrenzen op de afbeelding van de startpagina: Natural Earth (publiek domein). Plaatsnamen: GeoNames (CC BY 4.0).",
- "src_date": "Gegevens per {date}."
+ "src_date": "Gegevens per {date}.",
+ "ft_claim": "Publieke laadstations wereldwijd uit open data — met een bron achter elk getal.",
+ "act_h": "Help mee om de kaart te laten kloppen",
+ "act_broken": "Laadpunt kapot? Markeer het op de kaart",
+ "act_fix": "Stel een correctie voor",
+ "act_widget": "Zet de kaart op je website",
+ "ft_place": "Novi Sad, Servië",
+ "ft_line2": "Gegevens © OpenStreetMap-bijdragers (ODbL), Open Charge Map, NOBIL en nationale registers",
+ "ft_social": "Volg BlokVolt",
+ "pl_sources": {
+  "one": "databron",
+  "other": "databronnen"
+ }
 }

@@ -67,5 +67,17 @@
  "ft_lang": "Nyelv",
  "src_count_note": "Az Open Charge Map egy forrásnak számít; a benne szereplő adatszolgáltatók a teljes listában külön szerepelnek.",
  "src_map": "Alaptérkép: OpenFreeMap, © OpenMapTiles, adatok © az OpenStreetMap közreműködői. Országhatárok a kezdőlap képén: Natural Earth (közkincs). Városnevek: GeoNames (CC BY 4.0).",
- "src_date": "Adatok állapota: {date}."
+ "src_date": "Adatok állapota: {date}.",
+ "ft_claim": "A világ nyilvános töltőállomásai nyílt adatokból — minden szám mögött forrás áll.",
+ "act_h": "Segítsen, hogy a térkép pontos maradjon",
+ "act_broken": "Nem működik egy töltő? Jelölje meg a térképen",
+ "act_fix": "Javasoljon javítást",
+ "act_widget": "Tegye ki a térképet a weboldalára",
+ "ft_place": "Novi Sad, Szerbia",
+ "ft_line2": "Adatok © OpenStreetMap közreműködők (ODbL), Open Charge Map, NOBIL és nemzeti nyilvántartások",
+ "ft_social": "Kövesse a BlokVoltot",
+ "pl_sources": {
+  "one": "adatforrás",
+  "other": "adatforrás"
+ }
 }

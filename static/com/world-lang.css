@@ -20,3 +20,10 @@
 .lang-hint-x{flex:none;width:32px;height:32px;border:0;border-radius:8px;background:transparent;color:var(--ink2);font:inherit;font-size:20px;line-height:1;cursor:pointer}
 .lang-hint-x:hover{background:var(--surface2)}
 .lang-hint-x:focus-visible{outline:2px solid var(--ink)}
+/* POLISH (12.11.2026): the language hint floats over the page (bottom; on the map pages under the header) instead of pushing the
+   page down after it has painted (a layout shift of up to 0.10 on phones); targets 44 px */
+.lang-hint{position:fixed;z-index:70;left:50%;transform:translateX(-50%);bottom:max(10px,env(safe-area-inset-bottom));width:min(560px,calc(100% - 20px));
+  box-sizing:border-box;justify-content:space-between;padding:4px 4px 4px 14px;border:1px solid var(--line2);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.28)}
+.lang-hint a{display:inline-flex;align-items:center;min-height:44px}
+.lang-hint-x{width:44px;height:44px}
+.map-page .lang-hint{bottom:auto;top:calc(var(--hd,60px) + 8px)}
