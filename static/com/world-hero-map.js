@@ -37,8 +37,8 @@ function loadCss(href) {
 // of /map/) and the live map follows it: positron, places as dark olive dots in a lime haze. A theme switch while the live map
 // is open restyles it (restyle()).
 const PTS = {
-  dark: { glow: '#4A5C12', glowOp: [0.16, 0.22, 0.3], pt: '#D9F45B', hot: '#F4FFD2', ptOp: [0.75, 0.95], ground: '#111621', line: '#96A0B6' },
-  light: { glow: '#CFEC50', glowOp: [0.35, 0.45, 0.55], pt: '#566E0E', hot: '#283408', ptOp: [0.8, 0.95], ground: '#F2F3F0', line: '#B3B3B3' }
+  dark: { glow: '#4A5C12', glowOp: [0.16, 0.22, 0.3], pt: '#D9F45B', hot: '#F4FFD2', ptOp: [0.75, 0.95], rad: [0.55, 1, 2.4], ground: '#111621', line: '#96A0B6' },
+  light: { glow: '#CFEC50', glowOp: [0.5, 0.6, 0.65], pt: '#566E0E', hot: '#283408', ptOp: [0.9, 1], rad: [0.95, 1.5, 2.8], ground: '#F2F3F0', line: '#B3B3B3' }
 };
 let ML = null, WM = null, CFG = null;
 const styles = {};
@@ -53,7 +53,7 @@ async function styleFor(theme) {
     { id: 'pt', type: 'circle', source: 'wm', 'source-layer': 'sites',
       paint: { 'circle-color': ['match', ['get', 'p'], 5, C.hot, C.pt],
         'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, C.ptOp[0], 6, C.ptOp[1]],
-        'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 0.55, 5, 1, 8, 2.4, 12, 5.5] } }
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, C.rad[0], 5, C.rad[1], 8, C.rad[2], 12, 5.5] } }
   ];
   let style = null;
   const src = theme === 'light' ? CFG.style : CFG.style_dark;
