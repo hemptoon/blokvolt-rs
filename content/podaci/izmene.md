@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 10.11.2026
+updated: 12.11.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-11-10
+modified: 2026-11-12
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 12. novembar 2026
+
+- Novi vodič [Državni punjači na autoputu: kako pokrenuti punjenje](/javno-punjenje/drzavni-punjaci-orion-aplikacija/): punjači JP „Putevi Srbije“ su za sada besplatni, a punjenje se pokreće samo preko aplikacije Orion eMobility. Redosled koraka, kabl na AC i DC punjačima, kraj punjenja i šta proveriti ako punjenje ne krene.
+
 ## 10. novembar 2026
 
 - Novi vodič [Kineski električni auto: garancija i servis](/kineski-elektricni-auto-u-srbiji.html): koliko traje garancija na vozilo i bateriju kod BYD, MG, Geely i Leapmotor, gde su ovlašćeni servisi, šta važi za rezervne delove i koja prava kupcu daje novi Zakon o zaštiti potrošača.

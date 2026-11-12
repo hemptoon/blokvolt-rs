@@ -1,0 +1,113 @@
+{
+  "sr": {
+    "hero": {
+      "value": "36",
+      "label": "državnih punjača instalirano na autoputevima"
+    },
+    "brief": [
+      "Punjenje na punjačima JP „Putevi Srbije“ je za sada besplatno",
+      "Pokreće se samo preko aplikacije Orion eMobility, QR kodom ili RFID karticom",
+      "Na AC punjačima koristite sopstveni kabl; brzi DC punjači imaju ugrađen kabl"
+    ],
+    "steps": {
+      "title": "Punjenje na državnom punjaču",
+      "items": [
+        {
+          "title": "Nalog u aplikaciji",
+          "text": "Orion eMobility, nalog i platna kartica, napravljeni kod kuće"
+        },
+        {
+          "title": "QR kod ili RFID",
+          "text": "Skenirajte QR kod na punjaču ili prislonite RFID karticu"
+        },
+        {
+          "title": "Kabl",
+          "text": "Povežite kabl sa vozilom"
+        },
+        {
+          "title": "Pokretanje",
+          "text": "Pokrenite punjenje u aplikaciji"
+        },
+        {
+          "title": "Kraj",
+          "text": "Završite u aplikaciji ili RFID karticom, pa izvucite kabl"
+        }
+      ]
+    },
+    "important": "Priključen punjač nije uvek ispravan: pre puta u aplikaciji proverite da li je punjač slobodan"
+  },
+  "en": {
+    "hero": {
+      "value": "36",
+      "label": "state chargers installed on the motorways"
+    },
+    "brief": [
+      "Charging at JP “Putevi Srbije” chargers is free for now",
+      "It starts only via the Orion eMobility app, with the QR code or an RFID card",
+      "At AC chargers use your own cable; fast DC chargers have a built-in cable"
+    ],
+    "steps": {
+      "title": "Charging at a state charger",
+      "items": [
+        {
+          "title": "Account in the app",
+          "text": "Orion eMobility, an account and a payment card, set up at home"
+        },
+        {
+          "title": "QR code or RFID",
+          "text": "Scan the QR code on the charger or tap your RFID card"
+        },
+        {
+          "title": "Cable",
+          "text": "Connect the cable to the car"
+        },
+        {
+          "title": "Start",
+          "text": "Start charging in the app"
+        },
+        {
+          "title": "End",
+          "text": "End in the app or with the RFID card, then unplug the cable"
+        }
+      ]
+    },
+    "important": "A connected charger is not always working: before the trip, check in the app whether the charger is available"
+  },
+  "ru": {
+    "hero": {
+      "value": "36",
+      "label": "государственных станций на автомагистралях"
+    },
+    "brief": [
+      "Зарядка на станциях JP «Putevi Srbije» пока бесплатна",
+      "Запускается только через приложение Orion eMobility, QR-кодом или RFID-картой",
+      "На AC-станциях нужен свой кабель; у быстрых DC-станций кабель встроен"
+    ],
+    "steps": {
+      "title": "Зарядка на государственной станции",
+      "items": [
+        {
+          "title": "Аккаунт в приложении",
+          "text": "Orion eMobility, аккаунт и платёжная карта — заранее, дома"
+        },
+        {
+          "title": "QR-код или RFID",
+          "text": "Отсканируйте QR-код на станции или приложите RFID-карту"
+        },
+        {
+          "title": "Кабель",
+          "text": "Подключите кабель к машине"
+        },
+        {
+          "title": "Запуск",
+          "text": "Запустите зарядку в приложении"
+        },
+        {
+          "title": "Окончание",
+          "text": "Закончите в приложении или RFID-картой, затем выньте кабель"
+        }
+      ]
+    },
+    "important": "Подключённая станция не всегда исправна: перед поездкой проверьте в приложении, свободна ли станция"
+  }
+}
