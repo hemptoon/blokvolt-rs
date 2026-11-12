@@ -78,18 +78,25 @@
 
   // ------------------------------------------------------------ attribution of the first screen (HOME3, L1 §2)
   // "© OpenStreetMap contributors · Sources" in the corner, visible without any action; after 5 s (never earlier) it folds
-  // into "ⓘ"; "ⓘ" opens the panel with the map data, the base map, the borders and the data date
+  // into "ⓘ"; "ⓘ" opens the panel with the map data, the base map, the borders and the data date.
+  // THEME (12.11.2026): the panel is a small card of its own above (on phones in the picture: below) the "ⓘ", on the
+  // colours of the theme, and never over a button; it closes with "ⓘ" again, Esc, a click elsewhere or a move of the map.
   const at = d.getElementById('wh-attr');
+  let attrClose = () => {};
   if (at) {
     const ib = at.querySelector('.wh-attr-i'), more = d.getElementById('wh-attr-more');
     ib.hidden = false;
     setTimeout(() => { if (ib.getAttribute('aria-expanded') !== 'true') at.classList.add('is-min'); }, 5000);
-    ib.addEventListener('click', e => {
-      e.stopPropagation();
-      const open = ib.getAttribute('aria-expanded') !== 'true';
+    const setOpen = open => {
       ib.setAttribute('aria-expanded', String(open));
       more.hidden = !open;
-      at.classList.toggle('is-min', !open);
+      at.classList.toggle('is-open', open);
+    };
+    attrClose = () => { if (ib.getAttribute('aria-expanded') === 'true') setOpen(false); };
+    ib.addEventListener('click', e => { e.stopPropagation(); setOpen(ib.getAttribute('aria-expanded') !== 'true'); });
+    d.addEventListener('click', e => { if (!at.contains(e.target)) attrClose(); });
+    d.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && ib.getAttribute('aria-expanded') === 'true') { setOpen(false); ib.focus(); }
     });
   }
 
@@ -146,7 +153,7 @@
   const wrap = d.getElementById('wh-map'), live = d.getElementById('wh-live'), go = d.getElementById('wh-go');
   const status = d.getElementById('wh-status'), more = d.getElementById('wh-more'), full = d.getElementById('wh-full');
   const js = d.currentScript && d.currentScript.dataset.mapJs;
-  let started = false;
+  let started = false, heroMod = null, heroMap = null;
   function activate(e) {
     if (started || !wrap || !js) return;
     if (e && e.target && e.target.closest && e.target.closest('a,.wh-attr')) return;
@@ -162,17 +169,24 @@
       [full, more].forEach(a => { if (a) a.href = a.getAttribute('href').split('#')[0] + h; });
       if (more) more.hidden = z < 7;
     };
-    import(js).then(m => m.start({ el: live, cfg, center: pic.c, zoom, onMove: setLinks, onReady: () => {
+    import(js).then(m => { heroMod = m; return m.start({ el: live, cfg, center: pic.c, zoom, onMove: setLinks, onMoveStart: attrClose,
+      theme: H.getAttribute('data-theme') === 'light' ? 'light' : 'dark', onReady: () => {
       live.hidden = false;
       wrap.dataset.state = 'live';
       status.textContent = '';
-    } })).catch(() => {
+    } }); }).then(m => { heroMap = m; }).catch(() => {
       wrap.dataset.state = 'pic';
       status.textContent = cfg.err || '';
       started = false;
     });
     live.hidden = false;
   }
+  // THEME: the switch of the header — the picture of the other theme (only now loaded), and the live map restyled
+  d.addEventListener('bv-theme', e => {
+    const pic = d.getElementById('wh-pic'), t = d.getElementById('wh-pic-' + REG + (e.detail === 'light' ? '-light' : ''));
+    if (pic && t) { pic.querySelectorAll('picture').forEach(x => x.remove()); pic.appendChild(t.content.cloneNode(true)); }
+    if (heroMod && heroMap) heroMod.restyle(heroMap, e.detail === 'light' ? 'light' : 'dark');
+  });
   if (wrap) {
     wrap.addEventListener('click', activate);
     if (go) go.addEventListener('click', e => { e.stopPropagation(); activate(); });

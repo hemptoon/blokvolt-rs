@@ -216,7 +216,7 @@ def selftest():
             errs.append(f'{path}: no noindex,nofollow')
         if not public and path in sm:
             errs.append(f'{path}: in the sitemap')
-        if f'<html lang="{LOCS[lang]["html"]}">' not in h:
+        if f'<html lang="{LOCS[lang]["html"]}"' not in h:   # THEME: data-theme follows
             errs.append(f'{path}: wrong lang')
         title = re.search(r'<title>(.*?)</title>', h).group(1)
         if re.search(r'\d', title):

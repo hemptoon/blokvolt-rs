@@ -158,5 +158,6 @@
  "p_shown2": "Haritada: açık kaynaklardan {n}, bunların {m} tanesi halka açık. Mevcut tüm şarj noktaları değildir; güvenilirliği 40'ın altında olan lokasyonlar dahil edilmemiştir.",
  "p_dc_pub": "50 kW ve üzeri hızlı şarj: {dc} ({pct_dc}); 150 kW ve üzeri: {hpc} — yalnızca halka açık lokasyonlar.",
  "t_hub_world": "Ülkelere göre elektrikli araç şarj istasyonları",
- "d_hub2": "Açık verilerdeki her ülkede elektrikli araç şarj lokasyonları: sayıları, hızlı şarj noktaları, şarj ağları, kaynaklar ve lisanslar."
+ "d_hub2": "Açık verilerdeki her ülkede elektrikli araç şarj lokasyonları: sayıları, hızlı şarj noktaları, şarj ağları, kaynaklar ve lisanslar.",
+ "theme_dark": "Koyu tema"
 }

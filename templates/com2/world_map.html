@@ -3,9 +3,10 @@
 {# World map of blokvolt.com: /map/, /sr/mapa/, /ru/karta/ (scripts/world_map.py; task K2, P1 §2).
    Data: PMTiles + card files + manifest from config.data_base (contract v1 §3–5); words: content/world/strings_map.json. #}
 {% block bodyclass %}map-page wm-page{% endblock %}
-{% block head %}{# HOME3: the map opens dark (config map_theme.default), or as the visitor chose (?tema=, then the browser's memory) —
-   decided before the first paint, so the page never flashes light #}
-<script>(function(){var t='{{ theme_default }}';try{var q=new URLSearchParams(location.search).get('tema');if(/^(svetla|light)$/.test(q))t='svetla';else if(/^(tamna|dark)$/.test(q))t='tamna';else{var m=localStorage.getItem('bv-map-tema');if(m==='svetla'||m==='tamna')t=m}}catch(e){}if(t==='tamna')document.documentElement.classList.add('wm-dark')})();</script>
+{% block head %}{# THEME (12.11.2026): the map takes the theme of the whole site (base.html: html[data-theme], dark by default, the
+   switch in the header); ?tema=svetla|tamna still sets the look for one link without changing the visitor's choice.
+   html.wm-dark (world-map.css, world-map.js) follows html[data-theme] — decided before the first paint. #}
+<script>(function(){var d=document.documentElement,t=d.getAttribute('data-theme');try{var q=new URLSearchParams(location.search).get('tema');if(/^(svetla|light)$/.test(q))t='light';else if(/^(tamna|dark)$/.test(q))t='dark'}catch(e){}d.setAttribute('data-theme',t);if(t==='dark')d.classList.add('wm-dark');var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='dark'?'#0B0F17':'#FFFFFF'})();</script>
 {% if not public %}<meta name="robots" content="noindex,nofollow">
 {% endif %}<link rel="stylesheet" href="/assets/vendor/maplibre-6.11.1/maplibre-gl.css">
 <link rel="stylesheet" href="/assets/world/world-map.css?v={{ v_css }}">
@@ -63,7 +64,7 @@
 <div class="map-wrap wm-wrap">
 <div id="map" role="region" aria-label="{{ T.map_label }}"></div>
 <div class="map-legend wm-legend" role="group" aria-label="{{ T.legend }}"><span><i class="wm-sw sw-ac"></i>{{ T.lg_ac }}</span><span><i class="wm-sw sw-dc"></i>{{ T.lg_dc }}</span><span><i class="wm-sw sw-hpc"></i>{{ T.lg_hpc }}</span><span><i class="wm-sw sw-unk"></i>{{ T.lg_unk }}</span><span class="wm-lg-acc"><i class="wm-sw sw-acc-unk"></i>{{ T.lg_acc_unk }}</span><span class="wm-lg-acc"><i class="wm-sw sw-acc-res"></i>{{ T.lg_acc_res }}</span></div>
-<button class="wm-theme" id="wm-theme" type="button" aria-pressed="false" data-dark="{{ T.theme_dark }}" data-light="{{ T.theme_light }}"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg><span>{{ T.theme_light }}</span></button>
+{# THEME: the light/dark switch of the map (HOME3) is now the switch of the header — one switch, one memory #}
 <div class="map-attr wm-attr" id="wm-attr"><span class="wm-attr-full">© <a href="https://www.openstreetmap.org/copyright" rel="noopener">{{ T.attr_osm }}</a>{% if sources_url %} · <a href="{{ sources_url }}">{{ T.attr_sources }}</a>{% endif %}</span></div>
 <div class="wm-msg" id="wm-msg" role="status" hidden></div>
 <div class="card-ov wm-card" id="wm-card" aria-live="polite"></div>

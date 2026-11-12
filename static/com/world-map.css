@@ -114,7 +114,9 @@
 /* HOME3: the attribution is one short line ("© OpenStreetMap contributors · Sources"), visible without any action; after
    5 s it folds into "(i)" on every width; "(i)" opens the full panel (map data, base map, data date, sources) */
 .wm-page .wm-attr{display:flex;align-items:flex-end;gap:4px;flex-wrap:wrap}
-.wm-page .wm-attr-more{display:none;flex-basis:100%;order:-1;padding:2px 0 4px}
+.wm-page .wm-attr-more{display:none;position:absolute;left:0;bottom:calc(100% + 6px);z-index:4;width:min(380px,calc(100vw - 40px));box-sizing:border-box;
+  padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink2);font-size:12.5px;line-height:1.55;box-shadow:0 12px 32px rgba(13,17,26,.18)}
+/* THEME (12.11.2026): the "ⓘ" card stands above the corner line on its own surface (no longer over the map, nothing under it) */
 .wm-page .wm-attr.is-open .wm-attr-more{display:block}
 .wm-page .wm-attr-i{position:relative;z-index:0;display:inline-grid;place-items:center;flex:none;width:32px;height:28px;margin:-6px -6px -4px 0;padding:0;border:0;background:none;cursor:pointer;font:700 12px/1 Georgia,serif;color:var(--ink)}
 .wm-page .wm-attr-i::before{content:"";position:absolute;z-index:-1;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1.5px var(--ink)}
@@ -174,6 +176,7 @@ html.wm-dark .wm-page details{background:transparent;border-color:rgba(255,255,2
 html.wm-dark .wm-page .map-legend,html.wm-dark .wm-page .map-attr,html.wm-dark .wm-page .wm-msg,html.wm-dark .wm-page .wm-theme{background:rgba(15,20,30,.92);color:#E4E8EF;border-color:rgba(255,255,255,.14)}
 html.wm-dark .wm-page .map-attr a,html.wm-dark .wm-page .map-attr .lnkbtn{color:#F2F4F7}
 html.wm-dark .wm-page .wm-attr.is-min{background:none}
+html.wm-dark .wm-page .wm-attr-more{background:#141A26;color:#D3D7DE;border-color:rgba(255,255,255,.12);box-shadow:0 12px 32px rgba(0,0,0,.45)}
 html.wm-dark .wm-page .wm-attr-i{color:#0B0F17}
 html.wm-dark .wm-page .wm-attr-i::before{background:#EEF0F3;box-shadow:none}
 html.wm-dark .wm-page .card-ov .ccard,html.wm-dark .wm-page .ccard,html.wm-dark .wm-page .wm-card>*{background:#141A26;color:#EEF0F3;border-color:rgba(255,255,255,.10)}

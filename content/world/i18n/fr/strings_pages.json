@@ -168,5 +168,6 @@
  "p_shown2": "Sur la carte : {n} provenant de sources ouvertes, dont {m} publics. Ce ne sont pas toutes les bornes existantes ; les sites dont la fiabilité est inférieure à 40 ne sont pas inclus.",
  "p_dc_pub": "Recharge rapide à partir de 50 kW : {dc} ({pct_dc}) ; 150 kW ou plus : {hpc} — sites publics uniquement.",
  "t_hub_world": "Bornes de recharge pour voitures électriques par pays",
- "d_hub2": "Sites de recharge pour voitures électriques dans chaque pays couvert par les données ouvertes : combien, bornes rapides, réseaux, sources et licences."
+ "d_hub2": "Sites de recharge pour voitures électriques dans chaque pays couvert par les données ouvertes : combien, bornes rapides, réseaux, sources et licences.",
+ "theme_dark": "Thème sombre"
 }

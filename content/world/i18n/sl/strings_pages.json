@@ -178,5 +178,6 @@
  "p_shown2": "Na zemljevidu: {n} iz odprtih virov, od tega javnih: {m}. To niso vsi obstoječi polnilniki; lokacije z zanesljivostjo pod 40 niso vključene.",
  "p_dc_pub": "Hitro polnjenje od 50 kW: {dc} ({pct_dc}); 150 kW ali več: {hpc} — samo javna polnilna mesta.",
  "t_hub_world": "Polnilne postaje za električna vozila po državah",
- "d_hub2": "Polnilna mesta za električne avtomobile v vsaki državi iz odprtih podatkov: koliko jih je, hitri polnilniki, omrežja, viri in licence."
+ "d_hub2": "Polnilna mesta za električne avtomobile v vsaki državi iz odprtih podatkov: koliko jih je, hitri polnilniki, omrežja, viri in licence.",
+ "theme_dark": "Temna tema"
 }

@@ -648,5 +648,10 @@
   "en": "Charging places for electric cars in every country of the open data: how many, fast chargers, networks, sources and licences.",
   "sr": "Mesta za punjenje električnih automobila u svakoj zemlji iz otvorenih podataka: koliko ih ima, brzi punjači, mreže, izvori i licence.",
   "ru": "Места зарядки электромобилей в каждой стране по открытым данным: сколько их, быстрые зарядки, сети, источники и лицензии."
+ },
+ "theme_dark": {
+  "en": "Dark theme",
+  "ru": "Тёмная тема",
+  "sr": "Tamna tema"
  }
 }

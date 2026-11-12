@@ -1,0 +1,120 @@
+/* THEME (12.11.2026) — one theme for every page of blokvolt.com (templates/com2/base.html: html[data-theme]).
+   Dark is the default (the brand's "night lights", as the home and the map); light when the visitor chose it (localStorage
+   bv_theme, the switch in the header, static/com/bvc.js). Only .com loads this file: bv.css is shared with www.blokvolt.rs
+   and stays as it is, so blokvolt.rs never changes (its pages carry no data-theme).
+   Dark palette = HOME3 (world-home.css, world-map.css): night #0B0F17, surfaces #141A26 / #1B2230 / #232B3B, ink #EEF0F3,
+   muted #A6ADBA (≥ 4.5:1 on every surface), lime #D9F45B as the accent and the pressed state.
+   The widget (/embed/) has its own rules (world-embed.css) and does not load this file. */
+
+/* ---------------------------------------------------------------- the switch (both themes) */
+.thm{position:relative;display:inline-flex;align-items:center;justify-content:space-between;flex:none;width:62px;height:32px;padding:0 7px;
+  border:1px solid var(--line2);border-radius:999px;background:var(--surface2);color:var(--mut);cursor:pointer;font:inherit}
+.thm svg{position:relative;z-index:1;width:16px;height:16px;transition:color .2s}
+.thm-k{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:var(--surface);box-shadow:0 1px 3px rgba(13,17,26,.25);transition:transform .2s cubic-bezier(.2,.7,.2,1)}
+.thm .thm-sun{color:var(--ink)}
+.thm:hover{border-color:var(--ink2)}
+.thm:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+html[data-theme="dark"] .thm-k{transform:translateX(28px);background:#D9F45B;box-shadow:none}
+html[data-theme="dark"] .thm .thm-sun{color:var(--mut)}
+html[data-theme="dark"] .thm .thm-moon{color:#151B05}
+html[data-theme="dark"] .thm:focus-visible{outline-color:#D9F45B}
+.hd-tools .thm-hd{margin-right:6px}
+.hd-thm{display:none}
+@media (max-width:960px){
+  .hd-tools .thm-hd{display:none}
+  .hd-thm{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:6px 0 0;padding:14px 12px 4px;border-top:1px solid var(--line);font-size:17px;font-weight:560;color:var(--ink2)}
+  .hd-thm .thm{width:68px;height:36px}
+  .hd-thm .thm-k{width:28px;height:28px}
+  html[data-theme="dark"] .hd-thm .thm-k{transform:translateX(30px)}
+}
+@media (min-width:961px) and (max-width:1080px){
+  html[lang="ru"] .hd-tools .thm-hd{display:none}
+  html[lang="ru"] .hd-thm{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:6px 0 0;padding:14px 12px 4px;border-top:1px solid var(--line);font-size:17px;font-weight:560;color:var(--ink2)}
+}
+@media (prefers-reduced-motion:reduce){.thm-k,.thm svg{transition:none}}
+
+/* ---------------------------------------------------------------- light: what the browser draws (forms, scroll bars) */
+html[data-theme="light"]{color-scheme:light}
+
+/* ---------------------------------------------------------------- dark: tokens of bv.css */
+html[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0B0F17;--surface:#141A26;--surface2:#1B2230;--surface3:#232B3B;
+  --ink:#EEF0F3;--ink2:#D3D7DE;--mut:#A6ADBA;--mut2:#959DAB;--mut3:#A6ADBA;
+  --line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.20);
+  --voltd:#C9E83E;--voltbg:#1C2410;
+  --ok:#A9DA6B;--okbg:#17240E;--warn:#F2C14E;--warnbg:#2A2210;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 26px rgba(0,0,0,.30);
+  background:#0B0F17
+}
+html[data-theme="dark"] body{background:var(--bg);color:var(--ink)}
+html[data-theme="dark"] :focus-visible{outline-color:#D9F45B}
+html[data-theme="dark"] .skip{background:#D9F45B;color:#151B05}
+
+/* header and menus */
+html[data-theme="dark"] .hd{background:rgba(11,15,23,.94);border-bottom-color:rgba(255,255,255,.08)}
+html[data-theme="dark"] .logo,html[data-theme="dark"] .hd-nav a,html[data-theme="dark"] .ib{color:#E9ECEF}
+html[data-theme="dark"] .hd-nav a:hover,html[data-theme="dark"] .ib:hover{background:rgba(255,255,255,.08);color:#fff}
+html[data-theme="dark"] .hd-nav a[aria-current="page"]{background:#D9F45B;color:#151B05}
+html[data-theme="dark"] .lang-menu{background:#141A26;border-color:rgba(255,255,255,.12)}
+html[data-theme="dark"] .lang-menu a{color:#E9ECEF}
+html[data-theme="dark"] .lang-menu a:hover{background:rgba(255,255,255,.08)}
+@media (max-width:960px){html[data-theme="dark"] .hd-nav{background:#141A26;border-color:rgba(255,255,255,.12)}}
+@media (min-width:961px) and (max-width:1080px){html[data-theme="dark"][lang="ru"] .hd-nav{background:#141A26;border-color:rgba(255,255,255,.12)}}
+
+/* surfaces that bv.css paints white */
+html[data-theme="dark"] :is(.sum,details,.tw,.tw.stack tr,.btn,.chip,.input,.select,.tile,.stat,.box,.rows,.of-nav button,.rail>li,.of-empty,
+  .ftile,.lg,.fact,.st,.ccard,.car-btn,.rt-btn,.rt-sug,.cbox ul.cns li.cn,.ru-note,.news-item,.ncard,.af,.ao,.app-faq details,.consent,.sug,
+  .pcard,.bform,.flow,.conns .conn,.mk-stat,.mk-card,.mk-price-ex,.mk-rule,.mk-steps li,.mk-ask,.nl-card,.nl-ben li,.pg-list li,.kako-box,
+  .amc,.amc.lead,.vz-tc,.vz-host,.vz-code,.loc-banner,.bars,.app-qr){background:var(--surface);color:var(--ink)}
+html[data-theme="dark"] .tw th{background:#1B2230;color:var(--mut)}
+html[data-theme="dark"] :is(a.row:hover,details.frow>summary.row:hover,details.frow[open]>summary.row,.fmore,.st:hover,.st.is-on,.hits .hit:hover){background:#1B2230}
+html[data-theme="dark"] .btn:hover,html[data-theme="dark"] .chip:hover{border-color:#D9F45B;color:#fff}
+html[data-theme="dark"] .btn.dark,html[data-theme="dark"] .btn.dark:hover{background:#D9F45B;border-color:#D9F45B;color:#151B05}
+html[data-theme="dark"] :is(.chip[aria-pressed="true"],.chip.is-on,.add-form .opts .chip:has(input:checked)){background:#D9F45B;border-color:#D9F45B;color:#151B05}
+html[data-theme="dark"] .input,html[data-theme="dark"] .select{background-color:#141A26;border-color:rgba(255,255,255,.22)}
+html[data-theme="dark"] .input::placeholder{color:#8E96A4}
+html[data-theme="dark"] .tile.big{background:#141A26;border-color:rgba(217,244,91,.35)}
+html[data-theme="dark"] .box.cta{background:#1B2230;border:1px solid rgba(255,255,255,.10)}
+html[data-theme="dark"] .ft{border-top:1px solid rgba(255,255,255,.07)}
+html[data-theme="dark"] :is(.promo,.pmini,.car-btn.is-set,.rt-btn.is-set,.res .rsave,.nl-ask,.pg-box){border-color:rgba(217,244,91,.28)}
+html[data-theme="dark"] :is(.vq.no,.vf-warn.no,.rv-s.broken,.rv-s.missing,.f-err,.f-need,.f-limit,.nl-msg,.nl-chip.bad,.flow .fl-b.no,.badge.st-exhausted,.badge.st-paused){background:#3A1C12;color:#FFB79A}
+html[data-theme="dark"] .vf-warn.no>b{color:#FFB79A}
+html[data-theme="dark"] :is(.stl li.no b,.rv-last.broken b,.rv-last.missing b,.conf.is-low,small.cf.low,.vz-err){color:#FF9B71}
+html[data-theme="dark"] .kick{color:#C9E83E}
+html[data-theme="dark"] .vz-ta{background:#05070C;border:1px solid rgba(255,255,255,.10)}
+html[data-theme="dark"] .dv-hero{background:#141A26;border:1px solid rgba(217,244,91,.35)}
+html[data-theme="dark"] .hw-steps i b,html[data-theme="dark"] .nl-toast{background:#D9F45B;color:#151B05}
+
+/* charts drawn with bv.css colours */
+html[data-theme="dark"] .bars rect.b{fill:#3A4252}
+html[data-theme="dark"] .bars rect.b-last{fill:#D9F45B}
+
+/* tabs of the country directory (home, hub): the pressed tab is lime, as every pressed control of the dark theme */
+html[data-theme="dark"] :is(.wd-tabs,.wh-tabs) button[aria-selected=true]{background:#D9F45B;color:#151B05}
+
+/* mini-maps of countries, cities and networks (world_pages.py draws them light, as <img>): the same picture in the dark
+   colours — inverted lightness, hues kept (blue points stay blue, light ground turns night) */
+html[data-theme="dark"] .w-mini img{filter:invert(1) hue-rotate(180deg) brightness(1.05);border-color:rgba(255,255,255,.10)!important}
+
+/* widget configurator (/map-for-your-site/, world-embed.css): the form in the dark; the preview is the widget itself */
+html[data-theme="dark"] .wz-f small{color:var(--mut)}
+html[data-theme="dark"] .wz-bad{color:#FF9B8A!important}
+html[data-theme="dark"] .wz-ok{color:#A9DA6B}
+html[data-theme="dark"] .wz-chk input{accent-color:#D9F45B}
+html[data-theme="dark"] .wz-prev{border-color:rgba(255,255,255,.12)}
+
+/* maps of the local sections (/hr/karta/ … — map.js of www.blokvolt.rs, shared, so its base map stays light): the panel,
+   the legend and the corner line in the dark; the station dots keep the colours of the map's own markers */
+html[data-theme="dark"] :is(.map-app,.map-side){background:#0F141E;border-color:rgba(255,255,255,.08)}
+html[data-theme="dark"] :is(.map-legend,.map-attr){background:rgba(15,20,30,.92);color:#E4E8EF}
+html[data-theme="dark"] .map-attr a{color:#F2F4F7}
+html[data-theme="dark"] .dot.dc{background:#0B0F17;color:#D9F45B;box-shadow:inset 0 0 0 1.5px rgba(217,244,91,.55)}
+html[data-theme="dark"] .dot.ac{background:#F2F3EF;color:#0B0F17;box-shadow:inset 0 0 0 2px #0B0F17}
+html[data-theme="dark"] .dot.off,html[data-theme="dark"] .dot.tesla{background:#3A4252;color:#E4E8EF;box-shadow:inset 0 0 0 2px #8E96A4}
+html[data-theme="dark"] .map-legend .l-dc{background:#0B0F17;box-shadow:0 0 0 2px #D9F45B inset}
+html[data-theme="dark"] .map-legend :is(.l-ac,.l-nep,.l-rg){background:#F2F3EF;box-shadow:0 0 0 2px #0B0F17 inset}
+html[data-theme="dark"] .map-legend .l-svo{background:#0B0F17}
+html[data-theme="dark"] .map-legend .l-svn{box-shadow:0 0 0 2px #0B0F17 inset}
+html[data-theme="dark"] .stl li.no i{background:#FF9B71}
+html[data-theme="dark"] .ccard .x{background:#1F2736;color:#EEF0F3}

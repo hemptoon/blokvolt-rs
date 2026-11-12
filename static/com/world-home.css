@@ -1,5 +1,5 @@
 /* World home of blokvolt.com (HOME2, 11.11.2026) — templates/com2/world_home.html.
-   Tokens: colour (light / dark by prefers-color-scheme), spacing and type; the first screen (map) is always dark.
+   Tokens: colour (light / dark by html[data-theme], THEME 12.11.2026), spacing and type; the first screen follows the theme too.
    Builds on bv.css (Onest, --volt lime, --night); nothing here is used by other pages. */
 .wh-page{
   --wh-bg:var(--bg,#F4F3EE);--wh-surface:#fff;--wh-ink:#0D111A;--wh-ink2:#2A303C;--wh-mut:#565C69;--wh-line:rgba(13,17,26,.10);
@@ -10,20 +10,12 @@
   --wh-h1:clamp(30px,4.4vw,54px);--wh-h2:clamp(23px,2.6vw,32px);
   --wh-ease:cubic-bezier(.2,.7,.2,1)
 }
-@media (prefers-color-scheme:dark){
-  .wh-page{
-    --bg:#0B0F17;--surface:#141A26;--ink:#EEF0F3;--ink2:#D3D7DE;--mut:#A6ADBA;--line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.18);
-    --wh-bg:#0B0F17;--wh-surface:#141A26;--wh-ink:#EEF0F3;--wh-ink2:#D3D7DE;--wh-mut:#A6ADBA;--wh-line:rgba(255,255,255,.10);
-    --wh-link:#D9F45B;--wh-bar:#D9F45B;--wh-bar2:#5E6676;color-scheme:dark
-  }
-  .wh-page .hd{background:rgba(11,15,23,.94);border-bottom-color:rgba(255,255,255,.08)}
-  .wh-page .logo,.wh-page .hd-nav a,.wh-page .ib{color:#E9ECEF}
-  .wh-page .hd-nav a[aria-current],.wh-page .hd-nav a:hover{background:rgba(255,255,255,.08)}
-  .wh-page .lang-menu{background:#141A26;border-color:rgba(255,255,255,.12)}
-  .wh-page .lang-menu a{color:#E9ECEF}
-  .wh-page .hd-nav{background:inherit}
-  .wh-page .ft{margin-top:0;border-top:1px solid rgba(255,255,255,.06)}
+/* THEME (12.11.2026): dark / light follow html[data-theme] of the whole site (theme.css), no longer the system setting */
+html[data-theme="dark"] .wh-page{
+  --wh-bg:#0B0F17;--wh-surface:#141A26;--wh-ink:#EEF0F3;--wh-ink2:#D3D7DE;--wh-mut:#A6ADBA;--wh-line:rgba(255,255,255,.10);
+  --wh-link:#D9F45B;--wh-bar:#D9F45B;--wh-bar2:#5E6676
 }
+html[data-theme="dark"] .wh-page .ft{margin-top:0}
 .wh-page{background:var(--wh-bg);color:var(--wh-ink)}
 .wh-page main{padding:0}
 
@@ -41,11 +33,11 @@
 .wh-map::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
   background:linear-gradient(90deg,rgba(11,15,23,.94) 0,rgba(11,15,23,.78) 28%,rgba(11,15,23,.25) 52%,rgba(11,15,23,0) 66%),
              linear-gradient(0deg,rgba(11,15,23,.55) 0,rgba(11,15,23,0) 22%)}
-.wh-go{position:absolute;z-index:5;right:var(--s5);bottom:calc(var(--s5) + 26px);display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;
+.wh-go{position:absolute;z-index:5;right:var(--s5);top:var(--s5);display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;
   border-radius:999px;border:1px solid rgba(217,244,91,.55);background:rgba(11,15,23,.82);color:#F2F3EF;font:inherit;font-size:15px;font-weight:620;cursor:pointer}
 .wh-go:hover{border-color:#D9F45B}
 .wh-map[data-state=live] .wh-go,.wh-map[data-state=loading] .wh-go{display:none}
-.wh-more{position:absolute;z-index:5;right:var(--s5);bottom:calc(var(--s5) + 26px);max-width:min(420px,calc(100% - 32px));display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px;
+.wh-more{position:absolute;z-index:5;right:56px;top:var(--s4);max-width:min(420px,calc(100% - 32px));display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px;
   border-radius:14px;background:#D9F45B;color:#151B05;font-weight:680;font-size:15px;text-decoration:none;box-shadow:0 6px 24px rgba(0,0,0,.35)}
 .wh-status{position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;padding:8px 14px;border-radius:999px;background:rgba(11,15,23,.85);color:#F2F3EF;font-size:14px}
 .wh-status:empty{display:none}
@@ -56,7 +48,10 @@
 .wh-attr-i::before{content:"";position:absolute;z-index:-1;width:20px;height:20px;border-radius:50%;background:#E6E9ED}
 .wh-attr-i[hidden]{display:none}
 .wh-attr.is-min .wh-attr-s{display:none}
-.wh-attr-more{flex-basis:100%;order:-1;margin:0 0 4px;padding:10px 12px;border-radius:12px;background:rgba(15,20,30,.94);text-align:left;text-shadow:none}
+.wh-attr-more{position:absolute;right:0;bottom:calc(100% + 4px);z-index:6;width:min(380px,calc(100vw - 32px));box-sizing:border-box;margin:0;padding:12px 14px;
+  border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#141A26;color:#D3D7DE;font-size:12.5px;line-height:1.5;text-align:left;text-shadow:none;
+  box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.wh-attr-more a{color:#F2F3EF}
 .wh-attr-more[hidden]{display:none}
 .wh-attr-more p{margin:0 0 4px}
 @media (pointer:coarse){.wh-attr-i{width:44px;height:44px}}
@@ -67,7 +62,7 @@
 .wh-sub{margin:0 0 var(--s4);font-size:clamp(16px,1.35vw,19px);line-height:1.45;color:var(--wh-on-night2);max-width:500px}
 .wh-stat{display:flex;flex-wrap:wrap;gap:6px 0;margin:0 0 var(--s5);font-size:14.5px;color:#D9F45B;font-weight:600;font-variant-numeric:tabular-nums}
 .wh-stat span+span::before{content:"·";margin:0 10px;color:#6B7280}
-.wh-search{position:relative;margin:0 0 var(--s4)}
+.wh-search{position:relative;z-index:6;margin:0 0 var(--s4)}   /* THEME: the results list above the buttons and chips below (each animated child is a layer of its own) */
 .wh-search label{display:block;font-size:14px;font-weight:600;margin:0 0 6px;color:var(--wh-on-night2)}
 .wh-sbox{position:relative}
 .wh-sbox svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#6B7280;pointer-events:none}
@@ -98,6 +93,35 @@
 .wh-near-err{margin:8px 0 0;font-size:14px;color:#FFD9A8}
 .wh-page a:focus-visible,.wh-page button:focus-visible{outline:3px solid #2E6BFF;outline-offset:2px}
 .wh-hero a:focus-visible,.wh-hero button:focus-visible{outline-color:#D9F45B}
+
+/* ---------------------------------------------------------------- first screen in the light theme (THEME 12.11.2026)
+   The light picture (world_hero.py "light" = positron) and the light live map; text in ink, the lime stays the button. */
+html[data-theme="light"] .wh-page{--wh-night:#F2F3F0;--wh-night2:#E8E9E4;--wh-on-night:#0D111A;--wh-on-night2:#3A404C}
+html[data-theme="light"] .wh-map::after{background:linear-gradient(90deg,rgba(242,243,240,.96) 0,rgba(242,243,240,.84) 28%,rgba(242,243,240,.3) 52%,rgba(242,243,240,0) 66%),
+  linear-gradient(0deg,rgba(242,243,240,.6) 0,rgba(242,243,240,0) 22%)}
+html[data-theme="light"] .wh-card h1{color:#0D111A}
+html[data-theme="light"] .wh-stat{color:#3F5208}
+html[data-theme="light"] .wh-stat span+span::before{color:#8A909B}
+html[data-theme="light"] .wh-search input{border-color:rgba(13,17,26,.22);box-shadow:0 4px 18px rgba(13,17,26,.08)}
+html[data-theme="light"] .wh-search input:focus-visible{outline-color:#0D111A;border-color:#0D111A}
+html[data-theme="light"] .wh-res{box-shadow:0 18px 40px rgba(13,17,26,.18);border:1px solid rgba(13,17,26,.10)}
+html[data-theme="light"] .wh-hero .wh-btn{background:#fff;border-color:rgba(13,17,26,.18);color:#0D111A}
+html[data-theme="light"] .wh-hero .wh-btn:hover{border-color:#0D111A}
+html[data-theme="light"] .wh-hero .wh-btn-main{background:#D9F45B;border-color:#B9D43A;color:#151B05}
+html[data-theme="light"] .wh-hero .wh-chip{background:rgba(255,255,255,.8);border-color:rgba(13,17,26,.16);color:#2A2F3A}
+html[data-theme="light"] .wh-hero .wh-chip:hover{border-color:#0D111A;color:#0D111A}
+html[data-theme="light"] .wh-near-err{color:#8A5A00}
+html[data-theme="light"] .wh-hero a:focus-visible,html[data-theme="light"] .wh-hero button:focus-visible{outline-color:#0D111A}
+html[data-theme="light"] .wh-go{background:rgba(255,255,255,.92);border-color:rgba(13,17,26,.22);color:#0D111A;box-shadow:0 4px 14px rgba(13,17,26,.12)}
+html[data-theme="light"] .wh-go:hover{border-color:#0D111A}
+html[data-theme="light"] .wh-status{background:rgba(255,255,255,.94);color:#0D111A;box-shadow:0 4px 14px rgba(13,17,26,.12)}
+html[data-theme="light"] .wh-attr{color:#3A404C;text-shadow:0 1px 2px #F2F3F0}
+html[data-theme="light"] .wh-attr a{color:#0D111A}
+html[data-theme="light"] .wh-attr-i{color:#fff}
+html[data-theme="light"] .wh-attr-i::before{background:#3A404C}
+html[data-theme="light"] .wh-attr-more{background:#fff;color:#2A2F3A;border-color:rgba(13,17,26,.12);box-shadow:0 12px 32px rgba(13,17,26,.18)}
+html[data-theme="light"] .wh-attr-more a{color:#0D111A}
+@media (max-width:899px){html[data-theme="light"] .wh-map::after{background:linear-gradient(0deg,rgba(242,243,240,1) 0,rgba(242,243,240,.7) 18%,rgba(242,243,240,0) 42%)}}
 
 /* ---------------------------------------------------------------- sections */
 .wh-body{background:var(--wh-bg)}
@@ -192,10 +216,13 @@
   .wh-map::after{background:linear-gradient(0deg,rgba(11,15,23,1) 0,rgba(11,15,23,.7) 18%,rgba(11,15,23,0) 42%)}
   .wh-panel{position:relative;inset:auto;display:block;margin-top:-120px;padding-bottom:var(--s6)}
   .wh-card{max-width:none;padding:0}
-  .wh-go{right:var(--s3);bottom:132px;min-height:40px;font-size:14px;padding:0 14px}
+  .wh-go{right:var(--s3);top:auto;bottom:132px;min-height:40px;font-size:14px;padding:0 14px}
   .wh-more{right:56px;left:var(--s3);top:var(--s3);bottom:auto;max-width:none}
   .wh-attr{left:var(--s3);right:auto;top:var(--s3);bottom:auto;justify-content:flex-start;text-align:left;max-width:calc(100% - 24px);font-size:11px}
   .wh-map[data-state=live] .wh-attr{max-width:calc(100% - 24px);top:auto;bottom:126px}
+  /* THEME: in the picture the corner line sits at the top, so its card opens below it; on the live map (line at the bottom) above */
+  .wh-attr-more{left:0;right:auto;top:calc(100% + 4px);bottom:auto}
+  .wh-map[data-state=live] .wh-attr-more{top:auto;bottom:calc(100% + 4px)}
   .wh-two{grid-template-columns:1fr}
   .wh-workl{align-items:flex-start;padding:var(--s4)}
 }

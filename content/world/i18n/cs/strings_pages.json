@@ -178,5 +178,6 @@
   "p_shown2": "Na mapě: {n} z otevřených zdrojů, z toho {m} veřejných. Není to každá existující nabíječka; místa se spolehlivostí pod 40 zahrnuta nejsou.",
   "p_dc_pub": "Rychlé nabíjení od 50 kW: {dc} ({pct_dc}); 150 kW a více: {hpc} – jen veřejná místa.",
   "t_hub_world": "Nabíjecí stanice pro elektromobily podle zemí",
-  "d_hub2": "Nabíjecí místa pro elektromobily v každé zemi z otevřených dat: kolik jich je, rychlonabíječky, sítě, zdroje a licence."
+  "d_hub2": "Nabíjecí místa pro elektromobily v každé zemi z otevřených dat: kolik jich je, rychlonabíječky, sítě, zdroje a licence.",
+  "theme_dark": "Tmavý motiv"
 }

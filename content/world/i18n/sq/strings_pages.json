@@ -158,5 +158,6 @@
  "p_shown2": "Në hartë: {n} nga burime të hapura, prej tyre publike: {m}. Nuk shfaqet çdo karikues që ekziston; vendet me besueshmëri nën 40 nuk përfshihen.",
  "p_dc_pub": "Karikim i shpejtë nga 50 kW: {dc} ({pct_dc}); 150 kW e më shumë: {hpc} — vetëm vende publike.",
  "t_hub_world": "Karikues për makina elektrike sipas vendit",
- "d_hub2": "Vende karikimi për makina elektrike në çdo shtet sipas të dhënave të hapura: sa janë, karikues të shpejtë, rrjete, burime dhe licenca."
+ "d_hub2": "Vende karikimi për makina elektrike në çdo shtet sipas të dhënave të hapura: sa janë, karikues të shpejtë, rrjete, burime dhe licenca.",
+ "theme_dark": "Temë e errët"
 }

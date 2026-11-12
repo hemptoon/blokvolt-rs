@@ -158,5 +158,6 @@
  "p_shown2": "A térképen: {n} nyílt forrásokból, ebből {m} nyilvános. Nem minden létező töltő szerepel; a 40 alatti megbízhatóságú helyek nincsenek benne.",
  "p_dc_pub": "Gyorstöltés 50 kW-tól: {dc} ({pct_dc}); 150 kW vagy több: {hpc} — csak nyilvános helyek.",
  "t_hub_world": "Elektromosautó-töltőállomások országonként",
- "d_hub2": "Elektromos autók töltőhelyei a nyílt adatokban szereplő minden országban: hány van, gyorstöltők, hálózatok, források és licencek."
+ "d_hub2": "Elektromos autók töltőhelyei a nyílt adatokban szereplő minden országban: hány van, gyorstöltők, hálózatok, források és licencek.",
+ "theme_dark": "Sötét téma"
 }

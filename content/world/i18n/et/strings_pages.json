@@ -158,5 +158,6 @@
  "p_shown2": "Kaardil: {n} avatud allikatest, neist avalikud: {m}. Need ei ole kõik olemasolevad laadijad; kohad usaldusväärsusega alla 40 ei ole kaasatud.",
  "p_dc_pub": "Kiirlaadimine alates 50 kW: {dc} ({pct_dc}); 150 kW või rohkem: {hpc} — ainult avalikud kohad.",
  "t_hub_world": "Elektriautode laadimisjaamad riigiti",
- "d_hub2": "Elektriautode laadimiskohad igas avaandmetes olevas riigis: kui palju, kiirlaadijad, laadimisvõrgud, allikad ja litsentsid."
+ "d_hub2": "Elektriautode laadimiskohad igas avaandmetes olevas riigis: kui palju, kiirlaadijad, laadimisvõrgud, allikad ja litsentsid.",
+ "theme_dark": "Tume teema"
 }

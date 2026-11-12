@@ -158,5 +158,6 @@
  "p_shown2": "Kartalla: {n} avoimista lähteistä, joista julkisia {m}. Kaikki olemassa olevat laturit eivät ole mukana; paikat, joiden luotettavuus on alle 40, on jätetty pois.",
  "p_dc_pub": "Pikalataus vähintään 50 kW:n teholla: {dc} ({pct_dc}); 150 kW tai enemmän: {hpc} – vain julkiset paikat.",
  "t_hub_world": "Sähköautojen latausasemat maittain",
- "d_hub2": "Sähköautojen latauspaikat kaikissa avoimen datan maissa: määrät, pikalaturit, latausverkot, lähteet ja lisenssit."
+ "d_hub2": "Sähköautojen latauspaikat kaikissa avoimen datan maissa: määrät, pikalaturit, latausverkot, lähteet ja lisenssit.",
+ "theme_dark": "Tumma teema"
 }

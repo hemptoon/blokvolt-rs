@@ -10,8 +10,8 @@
 for(k in T){if(new RegExp(T[k]).test(z)){g=k;break}}r=g==='na'||g==='la'?'na':g==='as'||g==='oc'?'ap':'eu';
 var d=document.documentElement;d.setAttribute('data-hr',r);d.setAttribute('data-dr',g);d.classList.add('wh-js');
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('wh-rm');
-var p=c.pics[r];[['t','(max-width: 720px)'],['w','(min-width: 721px)']].forEach(function(s){var x=p[s[0]],l=document.createElement('link');
-l.rel='preload';l.as='image';l.setAttribute('fetchpriority','high');l.media=s[1];if(x.avif){l.setAttribute('imagesrcset',x.avif);l.type='image/avif'}else{l.href=x.webp;l.type='image/webp'}
+var p=c.pics[r],L=d.getAttribute('data-theme')==='light'?'l':'';[['t','(max-width: 720px)'],['w','(min-width: 721px)']].forEach(function(s){var x=p[s[0]],l=document.createElement('link');
+l.rel='preload';l.as='image';l.setAttribute('fetchpriority','high');l.media=s[1];if(x[L+'avif']){l.setAttribute('imagesrcset',x[L+'avif']);l.type='image/avif'}else{l.href=x[L+'webp'];l.type='image/webp'}
 document.head.appendChild(l)})}catch(e){}})();</script>
 <link rel="stylesheet" href="{{ assets['world-home.css'] }}">
 {% endblock %}
@@ -19,11 +19,12 @@ document.head.appendChild(l)})}catch(e){}})();</script>
 <section class="wh-hero" aria-labelledby="wh-h1">
 <div class="wh-map" id="wh-map" data-state="pic">
 <div class="wh-pic" id="wh-pic">
-{% for reg, p in pics.items() %}<template id="wh-pic-{{ reg }}"><picture>
-{% if p.t.avif %}<source media="(max-width: 720px)" type="image/avif" srcset="{{ p.t.avif }}">{% endif %}<source media="(max-width: 720px)" type="image/webp" srcset="{{ p.t.webp }}">
-{% if p.w.avif %}<source type="image/avif" srcset="{{ p.w.avif }}">{% endif %}<img src="{{ p.w.webp }}" width="{{ p.w.w }}" height="{{ p.w.h }}" alt="{{ T.map_alt }}" fetchpriority="high" decoding="async" data-reg="{{ reg }}">
+{# THEME (12.11.2026): a dark and a light picture per region — only the one of the page's theme is put in and loaded #}
+{% for reg, p in pics.items() %}{% for th, k in (('', ''), ('-light', 'l')) %}<template id="wh-pic-{{ reg }}{{ th }}"><picture>
+{% if p.t[k ~ 'avif'] %}<source media="(max-width: 720px)" type="image/avif" srcset="{{ p.t[k ~ 'avif'] }}">{% endif %}<source media="(max-width: 720px)" type="image/webp" srcset="{{ p.t[k ~ 'webp'] }}">
+{% if p.w[k ~ 'avif'] %}<source type="image/avif" srcset="{{ p.w[k ~ 'avif'] }}">{% endif %}<img src="{{ p.w[k ~ 'webp'] }}" width="{{ p.w.w }}" height="{{ p.w.h }}" alt="{{ T.map_alt }}" fetchpriority="high" decoding="async" data-reg="{{ reg }}">
 </picture></template>
-{% endfor %}<script>(function(){var r=document.documentElement.getAttribute('data-hr')||'eu',t=document.getElementById('wh-pic-'+r);if(t)document.getElementById('wh-pic').appendChild(t.content.cloneNode(true))})();</script>
+{% endfor %}{% endfor %}<script>(function(){var h=document.documentElement,r=h.getAttribute('data-hr')||'eu',t=document.getElementById('wh-pic-'+r+(h.getAttribute('data-theme')==='light'?'-light':''));if(t)document.getElementById('wh-pic').appendChild(t.content.cloneNode(true))})();</script>
 <noscript><picture>{% if lcp.t.avif %}<source media="(max-width: 720px)" type="image/avif" srcset="{{ lcp.t.avif }}">{% endif %}<source media="(max-width: 720px)" type="image/webp" srcset="{{ lcp.t.webp }}">{% if lcp.w.avif %}<source type="image/avif" srcset="{{ lcp.w.avif }}">{% endif %}<img src="{{ lcp.w.webp }}" width="{{ lcp.w.w }}" height="{{ lcp.w.h }}" alt="{{ T.map_alt }}"></picture></noscript>
 </div>
 <div class="wh-live" id="wh-live" role="region" aria-label="{{ T.map_label }}" hidden></div>

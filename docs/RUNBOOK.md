@@ -2742,7 +2742,7 @@ The registry and the rules are in `docs/WORLD_I18N.md`; the work plan is `claude
   orange) with a legend and a badge in the card. Theme: `content/world/config.json → map_theme` (`default`, `style`,
   `style_dark` = OpenFreeMap "dark", `dark_paint` = its recolouring to the palette of the home picture — keep it in step
   with `world_hero.py` BG/SEA/LINE). The toggle keeps the choice in `localStorage` (`bv-map-tema`) and in the address
-  (`tema=svetla|tamna`). The widget (`/embed/map/`) is unchanged: light, `javni`, its own attribution.
+  (`tema=svetla|tamna`) — THEME (3.50) replaced it with the switch of the whole site. The widget (`/embed/map/`) is unchanged: light, `javni`, its own attribution.
 - **Attribution (L1 §2):** one short line "© OpenStreetMap contributors · Sources" in the corner of the picture and the
   map, folds into "ⓘ" after 5 s (never earlier); "ⓘ" opens map data, base map, data date and the number of sources.
   The number of sources is one everywhere: publishers of the layer, Open Charge Map counted once (`ocm:*` providers are
@@ -2759,6 +2759,37 @@ The registry and the rules are in `docs/WORLD_I18N.md`; the work plan is `claude
   fuel prices (weekly), IONITY packages, Borzen calls.
 - **Checks:** `world_hero.py selftest`, `world_home.py selftest`, `world_pages_check` (no rating words — the footer says
   "networks are not ranked"), `world_i18n.py check` for all languages, screenshots light/dark 360/768/1440.
+
+### 3.50 One light/dark theme for every page of blokvolt.com (THEME, since 12.11.2026; dev only until the release)
+
+- **Where:** `templates/com2/base.html` (every .com page except the widget) — `<html data-theme="dark">` in the markup and a
+  tiny inline script at the top of `<head>` that switches to light when `localStorage.bv_theme === "light"` (in try/catch),
+  before the first paint; `<meta name="theme-color">` follows. Dark is the default whatever the system setting is (the
+  brand's "night lights"). No JavaScript → dark.
+- **Switch:** `templates/com2/_header.html` — sun/moon `role="switch"` (checked = dark) in the header; on phones (≤ 960 px,
+  RU ≤ 1080 px) the same switch with its name written out in the menu. Name for screen readers: `theme_dark` of
+  `content/world/strings_pages.json` (en/sr/ru) and `i18n/<code>/strings_pages.json` (the other 27 — the local sections take
+  the language of their page: hr, bs, sr, mk, sq, sl), `gen_com.THEME_LABEL`. Behaviour: `static/com/bvc.js`
+  (`window.bvTheme`, event `bv-theme` on `document`, other tabs follow through `storage`).
+- **Colours:** `static/com/theme.css` (only .com loads it). **bv.css is shared with www.blokvolt.rs and is not touched** —
+  every dark rule sits under `html[data-theme="dark"]`, a .rs page never carries it, and .rs HTML stays byte-identical
+  (check: build .rs before and after, `diff -rq dist …` → no `.html`). Tokens of bv.css are overridden with the palette of
+  the dark home/map (night #0B0F17, surfaces #141A26/#1B2230/#232B3B, ink #EEF0F3, muted #A6ADBA, lime = pressed state);
+  surfaces bv.css paints white are listed in one rule. Mini-maps (`<img>` SVG of world_pages.py) are inverted by a CSS
+  filter in the dark; the local-section maps (`map.js` of .rs) keep their light base map with a dark panel.
+- **Home:** `world-home.css` follows `html[data-theme]` (no more `prefers-color-scheme`); the first screen has a light
+  picture next to the dark one (`world_hero.py` palette "light" = OpenFreeMap positron: land rgb(242,243,240), water
+  rgb(194,200,202); files `hero-<region>-<shape>-light.avif/.webp`, ≤ 150 KB, only the picture of the current theme is
+  loaded) and the live map uses positron with olive points (`world-hero-map.js` PTS — keep in step with the palette).
+- **Map:** `/map/` follows the site theme; `?tema=svetla|tamna` still sets the look for one link without changing the
+  visitor's choice; HOME3's own map toggle and its key `bv-map-tema` are gone. The widget is unchanged.
+- **"ⓘ" (home and /map/):** the attribution panel is a card of its own above the corner line (on phones in the picture:
+  below it), on the colours of the theme; it closes with "ⓘ", Esc, a click elsewhere or a move of the map. "Explore the
+  map here" sits top-right (phones: above the text panel), "Open the full map at this view" top-right left of the zoom
+  buttons — nothing shares the corner of the attribution. The first 5 s of the line are as before (L1 §2).
+- **Checks:** contrast audit of every page type in both themes (AA), screenshots 390/1440 both themes, the switch with the
+  keyboard, the theme kept across pages and languages, no flash of the other theme on a slow network and CPU (screencast),
+  .rs HTML unchanged.
 
 ## 4. Build and check
 

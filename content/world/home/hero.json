@@ -85,6 +85,16 @@
    "q": 82,
    "v": "da56c61ee6"
   },
+  "hero-eu-w-light.avif": {
+   "bytes": 83298,
+   "q": 60,
+   "v": "41d9cffa43"
+  },
+  "hero-eu-w-light.webp": {
+   "bytes": 97990,
+   "q": 82,
+   "v": "c8c6e9ad44"
+  },
   "hero-eu-t.avif": {
    "bytes": 46815,
    "q": 60,
@@ -94,6 +104,16 @@
    "bytes": 66642,
    "q": 82,
    "v": "c9f3e665e7"
+  },
+  "hero-eu-t-light.avif": {
+   "bytes": 45342,
+   "q": 60,
+   "v": "a74c3aca2a"
+  },
+  "hero-eu-t-light.webp": {
+   "bytes": 54972,
+   "q": 82,
+   "v": "ea0e67bb8b"
   },
   "hero-na-w.avif": {
    "bytes": 43504,
@@ -105,6 +125,16 @@
    "q": 82,
    "v": "7986d9b969"
   },
+  "hero-na-w-light.avif": {
+   "bytes": 48357,
+   "q": 60,
+   "v": "faa6a2c700"
+  },
+  "hero-na-w-light.webp": {
+   "bytes": 52250,
+   "q": 82,
+   "v": "881aec78bd"
+  },
   "hero-na-t.avif": {
    "bytes": 24944,
    "q": 60,
@@ -114,6 +144,16 @@
    "bytes": 31968,
    "q": 82,
    "v": "704004ac5a"
+  },
+  "hero-na-t-light.avif": {
+   "bytes": 28388,
+   "q": 60,
+   "v": "feb693b031"
+  },
+  "hero-na-t-light.webp": {
+   "bytes": 31450,
+   "q": 82,
+   "v": "9903d5ee07"
   },
   "hero-ap-w.avif": {
    "bytes": 55226,
@@ -125,6 +165,16 @@
    "q": 82,
    "v": "f8663ac4b8"
   },
+  "hero-ap-w-light.avif": {
+   "bytes": 58368,
+   "q": 60,
+   "v": "3b6c784112"
+  },
+  "hero-ap-w-light.webp": {
+   "bytes": 62924,
+   "q": 82,
+   "v": "c998af7b8b"
+  },
   "hero-ap-t.avif": {
    "bytes": 17729,
    "q": 60,
@@ -135,13 +185,19 @@
    "q": 82,
    "v": "7d42288286"
   },
+  "hero-ap-t-light.avif": {
+   "bytes": 19398,
+   "q": 60,
+   "v": "44a6d51c3f"
+  },
+  "hero-ap-t-light.webp": {
+   "bytes": 19312,
+   "q": 82,
+   "v": "4afc9e506a"
+  },
   "borders.json": {
    "bytes": 153364,
    "v": "411f8724f7"
-  },
-  "og-world.jpg": {
-   "bytes": 110042,
-   "v": "1e60639a63"
   }
  },
  "regions": {

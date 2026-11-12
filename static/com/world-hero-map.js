@@ -33,43 +33,45 @@ function loadCss(href) {
   document.head.appendChild(l);
 }
 
-export async function start(o) {
-  const { el, cfg } = o;
-  loadCss(cfg.lib.replace(/maplibre-gl\.mjs$/, 'maplibre-gl.css'));
-  const [ml] = await Promise.all([import(cfg.lib), loadPm(cfg.pmtiles)]);
-  const base = cfg.data_base.replace(/\/?$/, '/');
-  const at = u => (/^https?:\/\//.test(u) ? u : base + u);
-  const latest = await getJson(base + 'latest.json');
-  const M = await getJson(at(latest.manifest));
-  const proto = new window.pmtiles.Protocol();
-  ml.addProtocol('pmtiles', proto.tile);
+// THEME (12.11.2026): the light home has the light picture (world_hero.py palette "light" = OpenFreeMap positron, the light map
+// of /map/) and the live map follows it: positron, places as dark olive dots in a lime haze. A theme switch while the live map
+// is open restyles it (restyle()).
+const PTS = {
+  dark: { glow: '#4A5C12', glowOp: [0.16, 0.22, 0.3], pt: '#D9F45B', hot: '#F4FFD2', ptOp: [0.75, 0.95], ground: '#111621', line: '#96A0B6' },
+  light: { glow: '#CFEC50', glowOp: [0.35, 0.45, 0.55], pt: '#566E0E', hot: '#283408', ptOp: [0.8, 0.95], ground: '#F2F3F0', line: '#B3B3B3' }
+};
+let ML = null, WM = null, CFG = null;
+const styles = {};
+async function styleFor(theme) {
+  if (styles[theme]) return JSON.parse(JSON.stringify(styles[theme]));
+  const C = PTS[theme] || PTS.dark;
   const points = [
     { id: 'glow', type: 'circle', source: 'wm', 'source-layer': 'sites',
       // the tiles are thinned on a regular grid zoomed out (K7): a faint, small glow, so the grid does not read as a carpet
-      paint: { 'circle-color': '#4A5C12', 'circle-blur': 1, 'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.16, 6, 0.22, 9, 0.3],
+      paint: { 'circle-color': C.glow, 'circle-blur': 1, 'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, C.glowOp[0], 6, C.glowOp[1], 9, C.glowOp[2]],
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 2, 5, 3.5, 8, 7, 12, 14] } },
     { id: 'pt', type: 'circle', source: 'wm', 'source-layer': 'sites',
-      paint: { 'circle-color': ['match', ['get', 'p'], 5, '#F4FFD2', '#D9F45B'],
-        'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.75, 6, 0.95],
+      paint: { 'circle-color': ['match', ['get', 'p'], 5, C.hot, C.pt],
+        'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2, C.ptOp[0], 6, C.ptOp[1]],
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 0.55, 5, 1, 8, 2.4, 12, 5.5] } }
   ];
-  const wm = { type: 'vector', url: 'pmtiles://' + at(M.tiles), attribution: '' };
   let style = null;
-  if (cfg.style_dark) {
+  const src = theme === 'light' ? CFG.style : CFG.style_dark;
+  if (src) {
     try {
-      const j = await getJson(cfg.style_dark);
-      const P = cfg.dark_paint || {};
+      const j = await getJson(src);
+      const P = theme === 'light' ? {} : (CFG.dark_paint || {});
       j.layers.forEach(l => {
         if (P[l.id]) l.paint = Object.assign({}, l.paint || {}, P[l.id]);
         if (l.id === 'boundary_state') l.paint = Object.assign({}, l.paint || {}, { 'line-opacity': ['interpolate', ['linear'], ['zoom'], 4.6, 0, 5.4, 1] });
-        if (l.type === 'symbol') {   // no labels on the picture: they come in from zoom 5, light on the dark ground
+        if (l.type === 'symbol') {   // no labels on the picture: they come in from zoom 5
           l.paint = Object.assign({}, l.paint || {}, { 'text-opacity': ['interpolate', ['linear'], ['zoom'], 4.6, 0, 5.4, 1],
             'icon-opacity': ['interpolate', ['linear'], ['zoom'], 4.6, 0, 5.4, 1] });
-          if (l['source-layer'] === 'place') Object.assign(l.paint, { 'text-color': '#F4F3EE', 'text-halo-color': 'rgba(11,15,23,0.95)', 'text-halo-width': 2 });
+          if (theme !== 'light' && l['source-layer'] === 'place') Object.assign(l.paint, { 'text-color': '#F4F3EE', 'text-halo-color': 'rgba(11,15,23,0.95)', 'text-halo-width': 2 });
         }
       });
       const k = j.layers.findIndex(l => l.type === 'symbol');
-      j.sources.wm = wm;
+      j.sources.wm = WM;
       j.layers.splice(k < 0 ? j.layers.length : k, 0, ...points);
       style = j;
     } catch (e) { style = null; }
@@ -77,16 +79,39 @@ export async function start(o) {
   if (!style) style = {
     version: 8,
     sources: {
-      ne: { type: 'geojson', data: cfg.borders, attribution: '' },
-      wm
+      ne: { type: 'geojson', data: CFG.borders, attribution: '' },
+      wm: WM
     },
     layers: [
-      { id: 'bg', type: 'background', paint: { 'background-color': '#111621' } },
-      { id: 'coast', type: 'line', source: 'ne', filter: ['==', ['get', 'k'], 'c'], paint: { 'line-color': '#96A0B6', 'line-opacity': 0.32, 'line-width': 0.8 } },
-      { id: 'border', type: 'line', source: 'ne', filter: ['==', ['get', 'k'], 'b'], paint: { 'line-color': '#96A0B6', 'line-opacity': 0.42, 'line-width': 0.8 } },
+      { id: 'bg', type: 'background', paint: { 'background-color': C.ground } },
+      { id: 'coast', type: 'line', source: 'ne', filter: ['==', ['get', 'k'], 'c'], paint: { 'line-color': C.line, 'line-opacity': 0.32, 'line-width': 0.8 } },
+      { id: 'border', type: 'line', source: 'ne', filter: ['==', ['get', 'k'], 'b'], paint: { 'line-color': C.line, 'line-opacity': 0.42, 'line-width': 0.8 } },
       ...points
     ]
   };
+  styles[theme] = style;
+  return JSON.parse(JSON.stringify(style));
+}
+
+export async function restyle(map, theme) {
+  if (!map || !CFG) return;
+  map.setStyle(await styleFor(theme));
+}
+
+export async function start(o) {
+  const { el, cfg } = o;
+  CFG = cfg;
+  loadCss(cfg.lib.replace(/maplibre-gl\.mjs$/, 'maplibre-gl.css'));
+  const [ml] = await Promise.all([import(cfg.lib), loadPm(cfg.pmtiles)]);
+  ML = ml;
+  const base = cfg.data_base.replace(/\/?$/, '/');
+  const at = u => (/^https?:\/\//.test(u) ? u : base + u);
+  const latest = await getJson(base + 'latest.json');
+  const M = await getJson(at(latest.manifest));
+  const proto = new window.pmtiles.Protocol();
+  ml.addProtocol('pmtiles', proto.tile);
+  WM = { type: 'vector', url: 'pmtiles://' + at(M.tiles), attribution: '' };
+  const style = await styleFor(o.theme === 'light' ? 'light' : 'dark');
   const map = new ml.Map({
     container: el, style, center: o.center, zoom: o.zoom, minZoom: 1.2, maxZoom: 13,
     attributionControl: false, dragRotate: false, pitchWithRotate: false, keyboard: true, fadeDuration: 0
@@ -96,6 +121,7 @@ export async function start(o) {
   map.getCanvas().setAttribute('aria-label', cfg.label || 'Map');
   const report = () => o.onMove && o.onMove(map.getZoom(), map.getCenter());
   map.on('moveend', report);
+  map.on('movestart', e => { if (e.originalEvent && o.onMoveStart) o.onMoveStart(); });   // THEME: a move closes the "ⓘ" card
   map.once('idle', () => { report(); o.onReady && o.onReady(); map.getCanvas().focus({ preventScroll: true }); });
   map.on('error', e => { if (!map.loaded() && o.onError) o.onError(e); });
   const hit = p => map.queryRenderedFeatures([[p.x - 8, p.y - 8], [p.x + 8, p.y + 8]], { layers: ['pt'] });

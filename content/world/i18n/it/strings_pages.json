@@ -168,5 +168,6 @@
  "p_shown2": "Sulla mappa: {n} da fonti aperte, di cui {m} pubblici. Non sono tutte le colonnine esistenti; i siti con affidabilità inferiore a 40 non sono inclusi.",
  "p_dc_pub": "Ricarica rapida da 50 kW in su: {dc} ({pct_dc}); 150 kW o più: {hpc} (solo siti pubblici).",
  "t_hub_world": "Stazioni di ricarica per auto elettriche per Paese",
- "d_hub2": "Siti di ricarica per auto elettriche in ogni Paese presente nei dati aperti: quanti sono, colonnine rapide, reti, fonti e licenze."
+ "d_hub2": "Siti di ricarica per auto elettriche in ogni Paese presente nei dati aperti: quanti sono, colonnine rapide, reti, fonti e licenze.",
+ "theme_dark": "Tema scuro"
 }

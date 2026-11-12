@@ -34,8 +34,10 @@ const IS_ANDROID = /Android/i.test(UA), IS_IOS = /iPhone|iPad|iPod/i.test(UA);
 // widget for other sites (/embed/map/, G5, RUNBOOK 3.42): cfg.embed = {open, utm}. Two-finger gestures so the host page
 // still scrolls, no reports, the card's button opens the place on blokvolt.com; &tema=tamna picks the dark base map.
 const EMB = cfg.embed || null;
-// HOME3 (11.11.2026): /map/ opens dark (cfg.theme, the inline script of the page has already set html.wm-dark from
-// ?tema=, the browser's memory or the default); the widget keeps its own rule (light unless &tema=tamna)
+// HOME3 (11.11.2026): /map/ opens dark; THEME (12.11.2026): it follows the theme of the whole site — the inline scripts of
+// base.html and world_map.html have set html[data-theme] and html.wm-dark (?tema= for one link, else the visitor's choice,
+// else dark), the switch of the header changes it ("bv-theme", static/com/bvc.js). The widget keeps its own rule (light
+// unless &tema=tamna)
 let TEMA = EMB ? (/^(tamna|dark)$/.test(new URLSearchParams(location.search).get('tema') || '') ? 'tamna' : '')
   : (d.documentElement.classList.contains('wm-dark') ? 'tamna' : '');
 if (TEMA) d.documentElement.classList.add('wm-dark');
@@ -252,7 +254,7 @@ let realStyle = false;   // true once a base map (not the plain dark ground) has
 function useStyle() {
   if (!DARK()) { realStyle = true; map.setStyle(cfg.style); return; }
   darkStyle().then(j => { realStyle = true; map.setStyle(j); })
-    .catch(() => { TEMA = ''; d.documentElement.classList.remove('wm-dark'); paintTheme(); writeUrl(); realStyle = true; map.setStyle(cfg.style); });
+    .catch(() => { TEMA = ''; realStyle = true; map.setStyle(cfg.style); });   // the page stays dark; only the base map is light
 }
 function paintDark() {
   if (EMB || !DARK() || !cfg.dark_paint) return;
@@ -353,6 +355,7 @@ function initMap() {
   });
   let tm = 0;
   map.on('moveend', () => { clearTimeout(tm); tm = setTimeout(topNets, 350); });
+  map.on('movestart', e => { if (e.originalEvent && attrIsOpen()) attrOpen(false); });   // THEME: a move closes the "ⓘ" card
   map.on('error', e => {
     // a missing or unreachable tile file: say it once on the map (MapLibre logs the details itself only in dev)
     if (e && e.sourceId === SRC) msg(t('data_err'));
@@ -939,15 +942,30 @@ function sourcesDialog() {
   const dl = $('wm-src');
   if (dl.showModal) dl.showModal(); else dl.setAttribute('open', '');
 }
+// THEME (12.11.2026): the "ⓘ" card closes with "ⓘ" again, Esc, a click elsewhere or a move of the map (as on the home)
+function attrOpen(open) {
+  const at = $('wm-attr'), i = at && at.querySelector('.wm-attr-i');
+  if (!at || !i || EMB) return;
+  at.classList.toggle('is-open', open);
+  at.classList.toggle('is-min', !open);
+  i.setAttribute('aria-expanded', String(open));
+}
+const attrIsOpen = () => { const at = $('wm-attr'); return !!(at && at.classList.contains('is-open')); };
+d.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && attrIsOpen()) { attrOpen(false); const i = $('wm-attr').querySelector('.wm-attr-i'); if (i) i.focus(); }
+});
 d.addEventListener('click', e => {
   const i = e.target.closest('.wm-attr-i');
   if (i) {
-    const at = $('wm-attr'), open = !at.classList.contains('is-open');
-    at.classList.toggle('is-open', open);
-    at.classList.toggle('is-min', !open);
-    i.setAttribute('aria-expanded', String(open));
+    if (EMB) {
+      const at = $('wm-attr'), open = !at.classList.contains('is-open');
+      at.classList.toggle('is-open', open);
+      at.classList.toggle('is-min', !open);
+      i.setAttribute('aria-expanded', String(open));
+    } else attrOpen(!attrIsOpen());
     return;
   }
+  if (attrIsOpen() && !e.target.closest('#wm-attr')) attrOpen(false);
   const b = e.target.closest('[data-sources]');
   if (b && M) sourcesDialog();
 });
@@ -988,9 +1006,9 @@ function embedInit() {
   }
 }
 
-// ------------------------------------------------------------------ light / dark map (HOME3)
+// ------------------------------------------------------------------ light / dark map (HOME3; THEME: the switch of the header)
 function paintTheme() {
-  const b = $('wm-theme');
+  const b = $('wm-theme');   // HOME3's own button is gone (THEME): the header's switch does it for the whole site
   if (!b) return;
   if (EMB || !cfg.style_dark) { b.hidden = true; return; }
   b.setAttribute('aria-pressed', String(!!TEMA));
@@ -999,14 +1017,13 @@ function paintTheme() {
 function setTheme(x) {
   TEMA = x === 'tamna' ? 'tamna' : '';
   d.documentElement.classList.toggle('wm-dark', !!TEMA);
-  try { localStorage.setItem('bv-map-tema', TEMA || 'svetla'); } catch (e) { /* private mode */ }
   writeUrl();
   paintTheme();
   if (!map) return;
   ready = false;
   useStyle();   // the points come back in the 'style.load' handler of initMap()
 }
-if ($('wm-theme')) $('wm-theme').addEventListener('click', () => setTheme(TEMA ? 'svetla' : 'tamna'));
+if (!EMB) d.addEventListener('bv-theme', e => setTheme(e.detail === 'dark' ? 'tamna' : 'svetla'));
 
 // ------------------------------------------------------------------ start
 readUrl();

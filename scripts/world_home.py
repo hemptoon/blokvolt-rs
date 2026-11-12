@@ -114,8 +114,11 @@ def pictures(meta, urls):
                 n = f'hero-{reg}-{shp}.{fmt}'
                 if n in urls:
                     d[fmt] = urls[n]
-            if 'webp' not in d:
-                raise SystemExit(f'world_home: hero-{reg}-{shp}.webp is missing in static/com/hero/')
+                n = f'hero-{reg}-{shp}-light.{fmt}'   # THEME (12.11.2026): the light picture, "l" + format
+                if n in urls:
+                    d['l' + fmt] = urls[n]
+            if 'webp' not in d or 'lwebp' not in d:
+                raise SystemExit(f'world_home: hero-{reg}-{shp}.webp or its -light twin is missing in static/com/hero/ — run scripts/world_hero.py')
             out[reg][shp] = d
     return out
 
@@ -288,7 +291,7 @@ def run(G, c):
         hero_cfg = dict(lang=l, data_base=cfg['data_base'], pics=pics, map=HOME_MAP(l), font=world_map.FONT,
                         borders=hurls.get('borders.json'), lib='/assets/vendor/maplibre-6.11.1/maplibre-gl.mjs',
                         pmtiles=f'/assets/vendor/pmtiles-{world_map.PMTILES_VER}/pmtiles.js',
-                        style_dark=th.get('style_dark', ''), dark_paint=th.get('dark_paint', {}),
+                        style_dark=th.get('style_dark', ''), dark_paint=th.get('dark_paint', {}), style=th.get('style', ''),
                         near_err=t['near_err'], err=t['map_err'], label=t['map_label'],
                         **({'intl': I.reg(l)['intl']} if l not in I.BASE else {}))   # LANG0: number locale of the other languages
         mapu = W.L[l]['map']
@@ -334,11 +337,10 @@ def selftest():
     for reg in ('eu', 'na', 'ap'):
         for shp in ('w', 't'):
             v = m['views'][reg][shp]
-            if not (HERO / f'hero-{reg}-{shp}.webp').exists():
+            if not (HERO / f'hero-{reg}-{shp}.webp').exists() or not (HERO / f'hero-{reg}-{shp}-light.webp').exists():
                 print('FAIL picture', reg, shp)
                 ok = False
-            for fmt in ('avif', 'webp'):
-                f = HERO / f'hero-{reg}-{shp}.{fmt}'
+            for f in [HERO / f'hero-{reg}-{shp}{suf}.{fmt}' for suf in ('', '-light') for fmt in ('avif', 'webp')]:
                 if f.exists() and f.stat().st_size > 150_000:
                     print('FAIL over 150 KB', f.name)
                     ok = False

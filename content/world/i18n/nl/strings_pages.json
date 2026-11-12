@@ -158,5 +158,6 @@
  "p_shown2": "Op de kaart: {n} uit open bronnen, waarvan {m} openbaar. Niet elke bestaande laadpaal staat erop; locaties met een betrouwbaarheid onder 40 zijn niet opgenomen.",
  "p_dc_pub": "Snelladen vanaf 50 kW: {dc} ({pct_dc}); 150 kW of meer: {hpc} — alleen openbare locaties.",
  "t_hub_world": "Laadstations voor elektrische auto's per land",
- "d_hub2": "Laadlocaties voor elektrische auto's in elk land uit de open data: hoeveel, snelladers, netwerken, bronnen en licenties."
+ "d_hub2": "Laadlocaties voor elektrische auto's in elk land uit de open data: hoeveel, snelladers, netwerken, bronnen en licenties.",
+ "theme_dark": "Donker thema"
 }

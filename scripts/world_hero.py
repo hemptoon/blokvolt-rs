@@ -10,6 +10,7 @@ swapped for the map in place on the first tap or click.
 
 Output (committed to blokvolt-rs; the weekly world run on the Mac writes it into out/<date>/repo_state/hero/):
     static/com/hero/hero-<region>-<shape>.avif / .webp   (each ≤ 150 KB; AVIF only where Pillow can write it)
+    static/com/hero/hero-<region>-<shape>-light.avif / .webp   (THEME 12.11.2026: the same views in the light palette)
     static/com/hero/borders.json                         (coarser lines for the live map, loaded on the first tap)
     content/world/home/hero.json                         (date, number of places drawn, views, file sizes, regions,
                                                           Asia-Pacific countries by size — from stats.json when given)
@@ -60,6 +61,14 @@ LIME = (217, 244, 91)      # --volt (#D9F45B)
 OLIVE = (60, 76, 14)
 HOT = (246, 255, 210)
 LINE = (150, 160, 182)     # borders #96A0B6 at 0.40
+# THEME (12.11.2026): two palettes — "dark" (above, HOME3) and "light": the colours of OpenFreeMap "positron", the light map
+# of /map/ (land rgb(242,243,240), water rgb(194,200,202), borders hsl(0,0%,70%)), places as dark olive dots in a lime haze
+# (static/com/world-hero-map.js draws the live map of the light home with the same colours — keep the two in step).
+PALETTES = {
+    'dark': dict(land=BG, sea=SEA, glow=OLIVE, glow_k=0.95, core=LIME, hot=HOT, line=LINE, line_a=0.40),
+    'light': dict(land=(242, 243, 240), sea=(194, 200, 202), glow=(207, 236, 80), glow_k=0.55, core=(86, 110, 14),
+                  hot=(40, 52, 8), line=(179, 179, 179), line_a=0.75),
+}
 
 
 def region_of(cc):
@@ -132,8 +141,9 @@ def land_mask(w, h, z, ox, oy, land):
 _LAND = None
 
 
-def render(lon, lat, view, ne, scale=1.0):
+def render(lon, lat, view, ne, scale=1.0, pal='dark'):
     """RGB image (Pillow) of one view; scale > 1 renders a bigger picture of the same area (og image)."""
+    P = PALETTES[pal]
     import numpy as np
     from PIL import Image, ImageDraw
     w, h = (int(round(v * scale)) for v in view['size'])
@@ -155,13 +165,13 @@ def render(lon, lat, view, ne, scale=1.0):
     if _LAND is None:
         _LAND = json.load(open(LAND_P, encoding='utf-8'))
     lm = land_mask(w, h, z, ox, oy, _LAND)[..., None]
-    img = np.array(SEA, dtype=np.float64) * (1 - lm) + np.array(BG, dtype=np.float64) * lm
-    glow_col = np.array(OLIVE, dtype=np.float64)
-    img += (glow_col - img) * (g[..., None] * 0.95)
-    lime = np.array(LIME, dtype=np.float64)
+    img = np.array(P['sea'], dtype=np.float64) * (1 - lm) + np.array(P['land'], dtype=np.float64) * lm
+    glow_col = np.array(P['glow'], dtype=np.float64)
+    img += (glow_col - img) * (g[..., None] * P['glow_k'])
+    lime = np.array(P['core'], dtype=np.float64)
     img = img * (1 - a[..., None]) + lime * a[..., None]
     hot = np.clip((core - 3) / 25, 0, 1) ** 0.7
-    img = img * (1 - hot[..., None] * 0.6) + np.array(HOT) * hot[..., None] * 0.6
+    img = img * (1 - hot[..., None] * 0.6) + np.array(P['hot']) * hot[..., None] * 0.6
     base = Image.fromarray(np.clip(img, 0, 255).astype(np.uint8), 'RGB')
     # borders and coasts: drawn at 2× on a transparent layer, scaled down (thin, anti-aliased), under the lights
     ss = 2
@@ -176,10 +186,10 @@ def render(lon, lat, view, ne, scale=1.0):
             continue
         dr.line(list(zip(px.tolist(), py.tolist())), fill=255 if kind == 'b' else 200, width=max(1, int(round(1.1 * scale))))
     lay = lay.resize((w, h), Image.LANCZOS)
-    m = np.asarray(lay, dtype=np.float64)[..., None] / 255 * 0.40
+    m = np.asarray(lay, dtype=np.float64)[..., None] / 255 * P['line_a']
     arr = np.asarray(base, dtype=np.float64)
     under = 1 - np.clip(a * 1.5, 0, 1)[..., None]          # the lights stay on top of the lines
-    arr = arr * (1 - m * under) + np.array(LINE) * m * under
+    arr = arr * (1 - m * under) + np.array(P['line']) * m * under
     return Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8), 'RGB'), int(ok.sum())
 
 
@@ -269,13 +279,14 @@ def main(argv):
     for reg, shapes in VIEWS.items():
         views[reg] = {}
         for shp, v in shapes.items():
-            img, n = render(lon, lat, v, ne)
-            views[reg][shp] = {'c': v['c'], 'z': v['z'], 'w': v['size'][0], 'h': v['size'][1], 'n': n}
-            for fmt in fmts:
-                data, q = encode(img, fmt)
-                name = f'hero-{reg}-{shp}.{fmt}'
-                (hero_dir / name).write_bytes(data)
-                files[name] = {'bytes': len(data), 'q': q, 'v': hashlib.sha1(data).hexdigest()[:10]}
+            for pal, suf in (('dark', ''), ('light', '-light')):   # THEME: the light picture next to the dark one
+                img, n = render(lon, lat, v, ne, pal=pal)
+                views[reg][shp] = {'c': v['c'], 'z': v['z'], 'w': v['size'][0], 'h': v['size'][1], 'n': n}
+                for fmt in fmts:
+                    data, q = encode(img, fmt)
+                    name = f'hero-{reg}-{shp}{suf}.{fmt}'
+                    (hero_dir / name).write_bytes(data)
+                    files[name] = {'bytes': len(data), 'q': q, 'v': hashlib.sha1(data).hexdigest()[:10]}
     live = json.dumps(coarse_lines(ne), separators=(',', ':'))
     (hero_dir / 'borders.json').write_text(live, encoding='utf-8')
     files['borders.json'] = {'bytes': len(live), 'v': hashlib.sha1(live.encode()).hexdigest()[:10]}

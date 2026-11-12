@@ -1,7 +1,12 @@
 {% from '_icons.html' import ic, mark %}<!DOCTYPE html>
-<html lang="{{ LOC.html }}">
+<html lang="{{ LOC.html }}" data-theme="dark">
 <head>
 <meta charset="utf-8">
+{# THEME (12.11.2026): one theme for every .com page — dark by default (the brand's "night lights"), light when the visitor chose
+   it (localStorage bv_theme, the switch in the header); set before the first paint, so no page ever flashes the other theme.
+   The page of the map may still take ?tema= for one link (world_map.html). The widget (/embed/) has its own rules. #}
+<meta name="theme-color" content="#0B0F17">
+<script>(function(){try{if(localStorage.getItem('bv_theme')==='light'){document.documentElement.setAttribute('data-theme','light');document.querySelector('meta[name=theme-color]').content='#FFFFFF'}}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
@@ -17,7 +22,6 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#FFFFFF">
 {% if noindex %}<meta name="robots" content="noindex">
 {% endif %}<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -27,6 +31,7 @@
 {% endif %}
 <link rel="stylesheet" href="/assets/bv.css">
 <link rel="stylesheet" href="/assets/com.css">
+<link rel="stylesheet" href="/assets/theme.css">
 {% if LANGJS %}<link rel="stylesheet" href="{{ LANGJS.css }}">
 {% if LOC.script == 'grek' %}<link rel="stylesheet" href="{{ LANGJS.grek }}">
 {% endif %}{% endif %}

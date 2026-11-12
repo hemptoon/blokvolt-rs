@@ -158,5 +158,6 @@
  "p_shown2": "På kartet: {n} fra åpne kilder, herav {m} offentlige. Ikke alle ladere som finnes; steder med pålitelighet under 40 er ikke tatt med.",
  "p_dc_pub": "Hurtiglading fra 50 kW: {dc} ({pct_dc}); 150 kW eller mer: {hpc} — bare offentlige ladesteder.",
  "t_hub_world": "Ladestasjoner for elbil etter land",
- "d_hub2": "Ladesteder for elbil i alle land i de åpne dataene: hvor mange, hurtigladere, nettverk, kilder og lisenser."
+ "d_hub2": "Ladesteder for elbil i alle land i de åpne dataene: hvor mange, hurtigladere, nettverk, kilder og lisenser.",
+ "theme_dark": "Mørkt tema"
 }

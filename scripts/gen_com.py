@@ -192,6 +192,22 @@ env.globals['WORLD_LOCAL_HOME'] = _world_local_home()
 env.globals['COUNTER_NOTE'] = json.load(open(ROOT / 'content' / 'com' / 'counter_note.json', encoding='utf-8'))   # STATCOM: /about/
 
 
+def _theme_labels():
+    """THEME (12.11.2026): the screen-reader name of the light/dark switch in the header of every .com page, by the primary
+    language tag of the page (sr-Latn-ME → sr): strings_pages.json → theme_dark (en/sr/ru) and i18n/<code>/strings_pages.json
+    (the other 27, the languages of the local sections included); English where a language has none."""
+    W = ROOT / 'content' / 'world'
+    out = dict(json.load(open(W / 'strings_pages.json', encoding='utf-8'))['theme_dark'])
+    for f in sorted((W / 'i18n').glob('*/strings_pages.json')):
+        t = json.load(open(f, encoding='utf-8')).get('theme_dark')
+        if t:
+            out[f.parent.name] = t
+    return out
+
+
+env.globals['THEME_LABEL'] = _theme_labels()
+
+
 # ------------------------------------------------------------------ writing pages
 URLS = []   # (path, priority, lastmod, alternates)
 
@@ -547,6 +563,7 @@ def copy_assets():
     if len(__import__('world_i18n').langs()) > 3 and (fonts / 'inter-greek-wght-normal.woff2').exists():   # LANG0: Greek pages (world-grek.css)
         shutil.copy2(fonts / 'inter-greek-wght-normal.woff2', a / 'fonts' / 'inter-greek-wght-normal.woff2')
     shutil.copy2(ROOT / 'static' / 'com' / 'com.css', a / 'com.css')
+    shutil.copy2(ROOT / 'static' / 'com' / 'theme.css', a / 'theme.css')   # THEME 12.11.2026: light / dark of every page
     shutil.copy2(ROOT / 'static' / 'com' / 'bvc.js', a / 'bvc.js')   # visit counter (STATCOM 11.11.2026, RUNBOOK 3.16)
     (a / 'og').mkdir(exist_ok=True)
     for f in (ROOT / 'static' / 'com').glob('og-*.png'):
@@ -558,7 +575,7 @@ def copy_assets():
 
 def bust():
     a = OUT / 'assets'
-    v = {n: ver(a / n) for n in ('bv.css', 'bv.js', 'map.js', 'com.css', 'bvc.js')}
+    v = {n: ver(a / n) for n in ('bv.css', 'bv.js', 'map.js', 'com.css', 'theme.css', 'bvc.js')}
     for p in OUT.rglob('*.html'):
         t = p.read_text(encoding='utf-8')
         for n, h in v.items():

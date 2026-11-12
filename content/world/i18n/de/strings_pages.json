@@ -158,5 +158,6 @@
  "p_shown2": "Auf der Karte: {n} aus offenen Quellen, davon {m} öffentlich. Nicht jede existierende Ladesäule ist enthalten; Standorte mit einer Zuverlässigkeit unter 40 fehlen.",
  "p_dc_pub": "Schnellladen ab 50 kW: {dc} ({pct_dc}); 150 kW oder mehr: {hpc} – nur öffentliche Standorte.",
  "t_hub_world": "Ladestationen für E-Autos nach Land",
- "d_hub2": "Ladestandorte für Elektroautos in jedem Land der offenen Daten: wie viele, Schnelllader, Ladenetze, Quellen und Lizenzen."
+ "d_hub2": "Ladestandorte für Elektroautos in jedem Land der offenen Daten: wie viele, Schnelllader, Ladenetze, Quellen und Lizenzen.",
+ "theme_dark": "Dunkles Design"
 }

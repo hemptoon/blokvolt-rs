@@ -168,5 +168,6 @@
  "p_shown2": "Pe hartă: {n} din surse deschise, dintre care publice: {m}. Nu sunt toate încărcătoarele existente; locațiile cu fiabilitate sub 40 nu sunt incluse.",
  "p_dc_pub": "Încărcare rapidă de la 50 kW: {dc} ({pct_dc}); 150 kW sau mai mult: {hpc} — doar locații publice.",
  "t_hub_world": "Stații de încărcare pentru mașini electrice, pe țări",
- "d_hub2": "Locații de încărcare pentru mașini electrice în fiecare țară din datele deschise: câte sunt, încărcătoare rapide, rețele, surse și licențe."
+ "d_hub2": "Locații de încărcare pentru mașini electrice în fiecare țară din datele deschise: câte sunt, încărcătoare rapide, rețele, surse și licențe.",
+ "theme_dark": "Temă întunecată"
 }
