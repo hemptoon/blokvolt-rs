@@ -212,3 +212,4 @@ html.wm-dark .chip[aria-pressed="true"] .sw-ac{box-shadow:inset 0 0 0 2px #151B0
  .wm-page .wm-ftoggle{margin:0 0 0 auto}
  .wm-page .map-wrap{height:calc(100vh - var(--hd));height:calc(100svh - var(--hd));min-height:240px}
 }
+@media (pointer:coarse){.wm-page details.wm-adv>summary{min-height:44px}}

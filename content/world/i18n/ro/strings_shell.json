@@ -73,10 +73,10 @@
  "ft_claim": "Stațiile publice de încărcare din lume, din date deschise — cu o sursă în spatele fiecărei cifre.",
  "act_h": "Ajutați ca harta să rămână corectă",
  "act_broken": "O stație nu funcționează? Marcați-o pe hartă",
- "act_fix": "Propuneți o corectură",
+ "act_fix": "Propuneți o corectare",
  "act_widget": "Puneți harta pe site-ul dumneavoastră",
  "ft_place": "Novi Sad, Serbia",
- "ft_line2": "Date © contributorii OpenStreetMap (ODbL), Open Charge Map, NOBIL și registre naționale",
+ "ft_line2": "Date © contribuitorii OpenStreetMap (ODbL), Open Charge Map, NOBIL și registre naționale",
  "ft_social": "Urmăriți BlokVolt",
  "pl_sources": {
   "one": "sursă de date",

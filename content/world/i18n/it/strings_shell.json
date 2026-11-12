@@ -72,7 +72,7 @@
  "src_date": "Dati al {date}.",
  "ft_claim": "Le colonnine pubbliche di tutto il mondo da dati aperti, con una fonte dietro ogni numero.",
  "act_h": "Aiuta a mantenere la mappa precisa",
- "act_broken": "Una colonnina non funziona? Segnalalo sulla mappa",
+ "act_broken": "Una colonnina non funziona? Segnalala sulla mappa",
  "act_fix": "Proponi una correzione",
  "act_widget": "Metti la mappa sul tuo sito",
  "ft_place": "Novi Sad, Serbia",
@@ -80,7 +80,7 @@
  "ft_social": "Segui BlokVolt",
  "pl_sources": {
   "one": "fonte di dati",
-  "many": "fonti di dati",
+  "many": "di fonti di dati",
   "other": "fonti di dati"
  }
 }
