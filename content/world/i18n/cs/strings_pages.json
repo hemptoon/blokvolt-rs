@@ -180,9 +180,9 @@
   "t_hub_world": "Nabíjecí stanice pro elektromobily podle zemí",
   "d_hub2": "Nabíjecí místa pro elektromobily v každé zemi z otevřených dat: kolik jich je, rychlonabíječky, sítě, zdroje a licence.",
   "theme_dark": "Tmavý motiv",
-  "cov_points": "Podle údajů {src} ({date}) činí počet veřejných nabíjecích bodů {n}. BlokVolt zobrazuje veřejná místa z otevřených dat: {m}; na jednom místě bývá často více nabíjecích bodů.",
-  "cov_points_semi": "Podle údajů {src} ({date}) činí počet veřejných a poloveřejných nabíjecích bodů {n}. BlokVolt zobrazuje veřejná místa z otevřených dat: {m}; na jednom místě bývá často více nabíjecích bodů.",
+  "cov_points": "Podle údajů {src} ({date}) činí počet veřejných nabíjecích bodů {n}. BlokVolt zobrazuje veřejná místa z otevřených dat: {m}; na jednom místě bývá více nabíjecích bodů.",
+  "cov_points_semi": "Podle údajů {src} ({date}) činí počet veřejných a poloveřejných nabíjecích bodů {n}. BlokVolt zobrazuje veřejná místa z otevřených dat: {m}; na jednom místě bývá více nabíjecích bodů.",
   "cov_stations": "Podle údajů {src} ({date}) činí počet veřejných nabíjecích stanic {n}. BlokVolt zobrazuje veřejná místa z otevřených dat: {m}.",
-  "cov_part": "Otevřená data tu pokrývají jen část nabíječek.",
+  "cov_part": "Otevřená data tu pokrývají jen část nabíjecích stanic.",
   "cov_link": "Zdroj"
 }

@@ -162,7 +162,7 @@
  "theme_dark": "Temë e errët",
  "cov_points": "Sipas {src} ({date}), ka {n} pika karikimi publike. BlokVolt shfaq vende karikimi publike nga të dhëna të hapura: {m}; në një vend shpesh ka disa pika karikimi.",
  "cov_points_semi": "Sipas {src} ({date}), ka {n} pika karikimi publike dhe gjysmëpublike. BlokVolt shfaq vende karikimi publike nga të dhëna të hapura: {m}; në një vend shpesh ka disa pika karikimi.",
- "cov_stations": "Sipas {src} ({date}), ka {n} karikues publikë. BlokVolt shfaq vende karikimi publike nga të dhëna të hapura: {m}.",
+ "cov_stations": "Sipas {src} ({date}), ka {n} stacione karikimi publike. BlokVolt shfaq vende karikimi publike nga të dhëna të hapura: {m}.",
  "cov_part": "Të dhënat e hapura këtu mbulojnë vetëm një pjesë të karikuesve.",
  "cov_link": "Burimi"
 }

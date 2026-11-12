@@ -160,9 +160,9 @@
  "t_hub_world": "Elektromosautó-töltőállomások országonként",
  "d_hub2": "Elektromos autók töltőhelyei a nyílt adatokban szereplő minden országban: hány van, gyorstöltők, hálózatok, források és licencek.",
  "theme_dark": "Sötét téma",
- "cov_points": "A(z) {src} adatai szerint ({date}) {n} nyilvános töltőpont van. A BlokVolt nyílt adatokból mutatja a nyilvános töltőhelyeket: {m}; egy helyen gyakran több töltőpont is van.",
- "cov_points_semi": "A(z) {src} adatai szerint ({date}) {n} nyilvános és félnyilvános töltőpont van. A BlokVolt nyílt adatokból mutatja a nyilvános töltőhelyeket: {m}; egy helyen gyakran több töltőpont is van.",
- "cov_stations": "A(z) {src} adatai szerint ({date}) {n} nyilvános töltőállomás van. A BlokVolt nyílt adatokból mutatja a nyilvános töltőhelyeket: {m}.",
+ "cov_points": "A forrás ({src}, {date}) szerint {n} nyilvános töltőpont van. A BlokVolt nyílt adatokból mutatja a nyilvános töltőhelyeket: {m}; egy helyen gyakran több töltőpont is van.",
+ "cov_points_semi": "A forrás ({src}, {date}) szerint {n} nyilvános és félnyilvános töltőpont van. A BlokVolt nyílt adatokból mutatja a nyilvános töltőhelyeket: {m}; egy helyen gyakran több töltőpont is van.",
+ "cov_stations": "A forrás ({src}, {date}) szerint {n} nyilvános töltőállomás van. A BlokVolt nyílt adatokból mutatja a nyilvános töltőhelyeket: {m}.",
  "cov_part": "A nyílt adatok itt csak a töltők egy részét fedik le.",
  "cov_link": "Forrás"
 }

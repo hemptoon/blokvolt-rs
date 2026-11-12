@@ -180,9 +180,9 @@
  "t_hub_world": "Polnilne postaje za električna vozila po državah",
  "d_hub2": "Polnilna mesta za električne avtomobile v vsaki državi iz odprtih podatkov: koliko jih je, hitri polnilniki, omrežja, viri in licence.",
  "theme_dark": "Temna tema",
- "cov_points": "Po podatkih {src} ({date}) je število javnih polnilnih točk {n}. BlokVolt prikazuje javna mesta iz odprtih podatkov: {m}; na enem mestu je pogosto več polnilnih točk.",
- "cov_points_semi": "Po podatkih {src} ({date}) je število javnih in poljavnih polnilnih točk {n}. BlokVolt prikazuje javna mesta iz odprtih podatkov: {m}; na enem mestu je pogosto več polnilnih točk.",
- "cov_stations": "Po podatkih {src} ({date}) je število javnih polnilnih postaj {n}. BlokVolt prikazuje javna mesta iz odprtih podatkov: {m}.",
+ "cov_points": "Po podatkih {src} ({date}) je število javnih polnilnih točk {n}. BlokVolt prikazuje javne polnilne lokacije iz odprtih podatkov: {m}; na enem mestu je pogosto več polnilnih točk.",
+ "cov_points_semi": "Po podatkih {src} ({date}) je število javnih in poljavnih polnilnih točk {n}. BlokVolt prikazuje javne polnilne lokacije iz odprtih podatkov: {m}; na enem mestu je pogosto več polnilnih točk.",
+ "cov_stations": "Po podatkih {src} ({date}) je število javnih polnilnih postaj {n}. BlokVolt prikazuje javne polnilne lokacije iz odprtih podatkov: {m}.",
  "cov_part": "Odprti podatki tu zajemajo le del polnilnikov.",
  "cov_link": "Vir"
 }
