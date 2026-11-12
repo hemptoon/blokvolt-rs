@@ -315,16 +315,18 @@ html.bv-menu-open .hd-nav.is-open{max-height:calc(100dvh - var(--hd,60px));overf
    (static/com/bvc.js adds .tw-more / .tw-end). */
 .tw tbody th,.tw th[scope=row]{white-space:normal;text-transform:none;letter-spacing:0;font-size:15px;font-weight:620;color:var(--ink);background:transparent}
 html[data-theme="dark"] .tw tbody th{background:transparent;color:var(--ink)}
-.tw a,.wp-fig a{overflow-wrap:anywhere}
+.tw a,.wp-fig a{overflow-wrap:break-word}
+.tw tbody th{min-width:6.5em}
 .tw.tw-more,.wp-fig.tw-more{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 56px),rgba(0,0,0,.18));mask-image:linear-gradient(90deg,#000 calc(100% - 56px),rgba(0,0,0,.18))}
 .tw.tw-more.tw-end,.wp-fig.tw-more.tw-end{-webkit-mask-image:none;mask-image:none}
 .tw-hint{position:relative;z-index:2;height:0;margin:0;pointer-events:none}
-.tw-hint span{position:absolute;right:8px;top:20px;display:inline-flex;align-items:center;padding:1px 10px;border-radius:999px;background:var(--ink,#0D111A);color:var(--bg,#fff);
+.tw-hint span{position:absolute;right:10px;top:1px;display:inline-flex;align-items:center;padding:1px 10px;border-radius:999px;background:var(--ink,#0D111A);color:var(--bg,#fff);
   font-size:14px;font-weight:700;line-height:1.6;box-shadow:0 2px 8px rgba(0,0,0,.25)}
 html[data-theme="dark"] .tw-hint span{background:#D9F45B;color:#151B05}
 .tw-hint[hidden]{display:none}
 @media (max-width:719px){
   .tw th,.tw td{padding:10px 11px}
+  .tw td:not(.num){min-width:7em}
   .tw table{font-size:14.5px}
 }
 /* POLISH: units keep their case — "kW", not "KW" (labels of the number cards and the column heads were upper-cased) */
