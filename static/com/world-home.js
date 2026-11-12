@@ -32,7 +32,9 @@
       if (!loading) loading = fetch(box.dataset.idx).then(r => r.json()).then(j => {
         const i = (j.langs || []).indexOf(box.dataset.lang);
         if (i > 2) L = i;
-        rows = j.items.map(r => ({ r, u: r[6][L] || r[6][0], k: [r[8], r[2], r[3], r[4], ...(r[5] || [])].map(fold) }));
+        // THEME 5a: a city without a page opens the map on that city (/map/?grad=<GeoNames id>, item[gid_at])
+        const G = j.gid_at, gid = r => (G && r[0] === 't' && r[G] ? box.dataset.map + '?grad=' + encodeURIComponent(r[G]) : null);
+        rows = j.items.map(r => ({ r, u: r[6][L] || r[6][0] || gid(r), k: [L > 2 ? r[8] : null, r[2], r[3], r[4], ...(r[5] || [])].map(fold) }));
         return rows;
       });
       return loading;

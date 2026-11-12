@@ -2787,6 +2787,9 @@ The registry and the rules are in `docs/WORLD_I18N.md`; the work plan is `claude
   below it), on the colours of the theme; it closes with "ⓘ", Esc, a click elsewhere or a move of the map. "Explore the
   map here" sits top-right (phones: above the text panel), "Open the full map at this view" top-right left of the zoom
   buttons — nothing shares the corner of the attribution. The first 5 s of the line are as before (L1 §2).
+- **Search of the home (5a, 12.11.2026):** the results list sits above the buttons and chips (`.wh-search` z-index) on a solid
+  ground in both themes; a city without a page opens the map on it (`/map/?grad=<GeoNames id>`, `search-index*.json` →
+  `gid_at`, the last field of a city item). Everything else of the search waits for the task SEARCH.
 - **Checks:** contrast audit of every page type in both themes (AA), screenshots 390/1440 both themes, the switch with the
   keyboard, the theme kept across pages and languages, no flash of the other theme on a slow network and CPU (screencast),
   .rs HTML unchanged.

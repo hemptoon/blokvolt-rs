@@ -982,7 +982,7 @@ def search_index(c, ls=None, name='search-index.json'):
             alt = sorted({x for x in (r.get('name_local'), info.get('name'), info.get('ascii'),
                                       *[N.city_name(info, l) for l in LANGS_ if l not in I.BASE]) if x and x not in names3})
             items.append(['t', p['cc'], *names3, alt, [site.url(p, l) if l in langs else None for l in LANGS_], p['n']]
-                         + ([N.city_name(info, LANGS_[3])] if len(LANGS_) > 3 else []))
+                         + ([N.city_name(info, LANGS_[3])] if len(LANGS_) > 3 else []) + [str(info['gid'])])
     en_slug = {x['code']: x['url'] for x in G.countries}
     built = {x['key'] for x in G.BUILT}
     for cc in BALKAN:
@@ -999,7 +999,9 @@ def search_index(c, ls=None, name='search-index.json'):
     doc = {'v': 1, 'date': c.date, 'langs': list(LANGS_),
            'fields': ['kind (c country, t city, b Balkan country on its own BlokVolt pages)', 'cc', 'name_en', 'name_sr',
                       'name_ru', 'other names', 'url per language (en, sr, ru; null = no page)', 'public places']
-                     + (['name in the language of this index (LANG0)'] if len(LANGS_) > 3 else []),
+                     + (['name in the language of this index (LANG0)'] if len(LANGS_) > 3 else [])
+                     + ['cities only: GeoNames id (THEME 5a: a city without a page in the language opens /map/?grad=<id>)'],
+           'gid_at': 9 if len(LANGS_) > 3 else 8,
            'items': items}
     raw = json.dumps(doc, ensure_ascii=False, separators=(',', ':')).encode()
     dst = G.OUT / 'assets' / 'world' / name
