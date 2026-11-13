@@ -8,7 +8,7 @@
    html.wm-dark (world-map.css, world-map.js) follows html[data-theme] — decided before the first paint. #}
 <script>(function(){var d=document.documentElement,t=d.getAttribute('data-theme');try{var q=new URLSearchParams(location.search).get('tema');if(/^(svetla|light)$/.test(q))t='light';else if(/^(tamna|dark)$/.test(q))t='dark'}catch(e){}d.setAttribute('data-theme',t);if(t==='dark')d.classList.add('wm-dark');var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='dark'?'#0B0F17':'#FFFFFF'})();</script>
 {% if not public %}<meta name="robots" content="noindex,nofollow">
-{% endif %}<link rel="stylesheet" href="/assets/vendor/maplibre-6.11.1/maplibre-gl.css">
+{% endif %}{# TAILS P2.7: maplibre-gl.css (83 KB) is loaded by world-map.js when the live map starts, not render-blocking #}
 <link rel="stylesheet" href="/assets/world/world-map.css?v={{ v_css }}">
 <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>
 <link rel="preconnect" href="{{ data_origin }}" crossorigin>{% endblock %}

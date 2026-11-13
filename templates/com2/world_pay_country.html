@@ -11,8 +11,8 @@
 {% endfor %}</tbody></table></div></div>{% endif %}
 <div class="sec"><div class="sec-head"><h2 id="apps">{{ T.h_apps }}</h2></div>
 <p class="note">{{ T.apps_note }}</p>
-<div class="tw"><table class="wpay-t"><thead><tr><th scope="col">{{ T.th_app }}</th><th scope="col">{{ T.th_cover }}</th><th scope="col">{{ T.th_src }}</th><th scope="col">{{ T.th_checked }}</th></tr></thead><tbody>
-{% for a in apps %}<tr><th scope="row" translate="no">{{ a.name }}</th><td>{% if a.yes %}<span class="wpay-y">{{ T.cov_yes }}</span>{% elif a.unk %}<span class="muted">{{ T.cov_unk }}</span>{% else %}{{ T.cov_no }}{% endif %}</td><td><a class="lnk" href="{{ a.url }}" rel="noopener nofollow">{{ T.road_src }}</a></td><td>{{ a.checked }}</td></tr>
+<div class="tw stack wpa"><table class="wpay-t"><thead><tr><th scope="col">{{ T.th_app }}</th><th scope="col">{{ T.th_cover }}</th><th scope="col">{{ T.th_src }}</th><th scope="col">{{ T.th_checked }}</th></tr></thead><tbody>
+{% for a in apps %}<tr><th scope="row" translate="no">{{ a.name }}</th><td class="wpa-cov" data-label="{{ T.th_cover }}">{% if a.yes %}<span class="wpay-y">{{ T.cov_yes }}</span>{% elif a.unk %}<span class="muted">{{ T.cov_unk }}</span>{% else %}{{ T.cov_no }}{% endif %}</td><td data-label="{{ T.th_src }}"><a class="lnk" href="{{ a.url }}" rel="noopener nofollow">{{ T.road_src }}</a></td><td data-label="{{ T.th_checked }}">{{ a.checked }}</td></tr>
 {% endfor %}</tbody></table></div></div>
 <div class="sec"><div class="sec-head"><h2 id="prices">{{ T.h_typical }}</h2></div>
 <p>{{ typ }}</p>{% if price_url %}<div class="chips"><a class="chip" href="{{ price_url }}">{{ T.typ_more }}</a></div>{% endif %}</div>

@@ -330,6 +330,14 @@ function selPoint(c) {
 
 async function initMap(view) {
   try {
+    const css = ML_URL.replace(/maplibre-gl\.mjs$/, 'maplibre-gl.css');
+    if (!d.querySelector(`link[href="${css}"]`)) {
+      const l = d.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = css;
+      d.head.appendChild(l);
+      await new Promise(ok => { l.onload = l.onerror = ok; setTimeout(ok, 3000); });
+    }
     maplibregl = await import(ML_URL);
     if (!window.pmtiles) await new Promise((ok, no) => { const s = d.querySelector('script[src*="pmtiles"]'); if (!s) return no(); s.addEventListener('load', ok); s.addEventListener('error', no); });
   } catch (e) {

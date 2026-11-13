@@ -355,9 +355,30 @@ html[data-theme="dark"] input[type=checkbox],html[data-theme="dark"] input[type=
   :is(code,pre,.wft-word,[translate="no"]){-webkit-hyphens:manual;hyphens:manual}
 }
 @media (max-width:719px){.tw tbody th,.tw th[scope=row]{-webkit-hyphens:manual;hyphens:manual}}
-/* TAILS P2.5 (13.11.2026): long lists of a country page fold under "All cities (N)" / "All networks (N)" — the links stay in the HTML */
-details.w-all{margin-top:12px;border:1px solid var(--line);border-radius:var(--r);padding:0 14px}
-details.w-all>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;list-style-position:inside}
-details.w-all[open]>summary{border-bottom:1px solid var(--line);margin-bottom:10px}
-details.w-all h3{font-size:1rem;margin:14px 0 6px}
-details.w-all .tw{margin-bottom:12px}
+/* TAILS P2.5 (13.11.2026): long lists of a country page fold under "All cities (N)" / "All networks (N)" — the links stay in the HTML
+   (the box and the summary are the ones of bv.css details) */
+details.w-all{margin:12px 0 0}
+details.w-all>:not(summary){margin-left:16px;margin-right:16px}
+details.w-all[open]>summary{border-bottom:1px solid var(--line);margin-bottom:12px}
+details.w-all h3{font-size:1rem;margin-top:14px;margin-bottom:6px}
+details.w-all>.tw{margin-bottom:14px}
+details.w-all>p:last-child{margin-bottom:14px}
+/* TAILS P3.11 (13.11.2026): on phones the main tables of prices and "How to pay" read as cards instead of a sideways scroll —
+   network and plan on top, AC / DC / HPC side by side, the fees under the same card; apps: name, coverage, source, date */
+@media (max-width:640px){
+ .tw.stack.wpc,.tw.stack.wpa{overflow:visible}
+ .tw.stack.wpc tr:not(.wp-fees){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 12px;padding:12px 14px}
+ .tw.stack.wpc td,.tw.stack.wpa td,.tw.stack.wpa th{padding:0;border:0;white-space:normal}
+ .tw.stack.wpc .wpc-net{grid-column:1/-1;font-weight:650;font-size:16px}
+ .tw.stack.wpc .wpc-plan{grid-column:1/-1}
+ .tw.stack.wpc .wpc-src{grid-column:2/-1}
+ .tw.stack.wpc td.num{text-align:left}
+ .tw.stack.wpc td:empty{display:none}
+ .tw.stack.wpc tr.wp-hasfees{margin-bottom:0;border-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0}
+ .tw.stack.wpc tr.wp-fees{margin-top:0;border-top:1px dashed var(--line);border-top-left-radius:0;border-top-right-radius:0;padding:8px 14px 12px}
+ .tw.stack.wpc tr.wp-fees td{white-space:normal}
+ .tw.stack.wpa tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;padding:12px 14px}
+ .tw.stack.wpa th{grid-column:1/-1;font-size:16px}
+ .tw.stack.wpa td.wpa-cov{grid-column:1/-1}
+ .tw.stack .wpa td[data-label]::before,.tw.stack.wpa td[data-label]::before{margin-bottom:2px}
+}
