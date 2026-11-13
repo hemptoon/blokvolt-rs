@@ -239,6 +239,22 @@
   "routes[16].stops[0].city": "Ζάγκρεμπ",
   "routes[16].stops[1].city": "Sesvete",
   "routes[16].stops[2].city": "Sesvete",
-  "routes[16].stops[3].city": "Slavonski Brod"
+  "routes[16].stops[3].city": "Slavonski Brod",
+  "routes[0].stops[7].city": "Βρμπάνια",
+  "routes[1].stops[2].city": "Κίσκουνφελετζχαζα",
+  "routes[2].stops[0].city": "Κίσκουνφελετζχαζα",
+  "routes[3].stops[0].city": "Βρμπάνια",
+  "routes[5].stops[4].city": "Μπουγιουκτσεκμετζέ",
+  "routes[9].stops[1].city": "Πέρουσιτς",
+  "routes[9].stops[2].city": "Μπιόγκραντ να Μόρου",
+  "routes[10].stops[3].city": "Γκόσπιτς",
+  "routes[11].stops[3].city": "Σβέτι Κριζ Ζάτσρετιε",
+  "routes[11].stops[5].city": "Γκόσπιτς",
+  "routes[12].stops[1].city": "Γκόσπιτς",
+  "routes[12].stops[3].city": "Μακάρσκα",
+  "routes[14].stops[3].city": "Λούκοβιτ",
+  "routes[15].stops[1].city": "Λούγκοζ",
+  "routes[15].stops[3].city": "Γκολέστι",
+  "routes[16].stops[4].city": "Βρμπάνια"
  }
 }

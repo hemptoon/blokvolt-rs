@@ -196,7 +196,7 @@ def facts(hist, month, l, names=None):
         P = hist[pm]
         if E['dc'] and P['europe']['dc']:
             d = E['dc'] - P['europe']['dc']
-            out.append(T('f_mom', prev=month_name(pm, l), d=cents(d, l), p=num(100 * d / P['europe']['dc'], l) + ' %'))
+            out.append(T('f_mom', prev=month_name(pm, l), d=cents(d, l), p=I.reg(l)['pct'].format(x=num(100 * d / P['europe']['dc'], l))))
         ch = []
         for cc, c in s['countries'].items():
             pc = P['countries'].get(cc)

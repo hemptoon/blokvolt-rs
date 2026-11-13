@@ -239,6 +239,22 @@
   "routes[16].stops[0].city": "Zagreba",
   "routes[16].stops[1].city": "Sesvete",
   "routes[16].stops[2].city": "Sesvete",
-  "routes[16].stops[3].city": "Slavonski Brod"
+  "routes[16].stops[3].city": "Slavonski Brod",
+  "routes[0].stops[7].city": "Vrbaņa",
+  "routes[1].stops[2].city": "Kiškunfēledhāza",
+  "routes[2].stops[0].city": "Kiškunfēledhāza",
+  "routes[3].stops[0].city": "Vrbaņa",
+  "routes[5].stops[4].city": "Bijikčekmedže",
+  "routes[9].stops[1].city": "Perušiča",
+  "routes[9].stops[2].city": "Biograda na Moru",
+  "routes[10].stops[3].city": "Gospiča",
+  "routes[11].stops[3].city": "Sveti Križ Začretje",
+  "routes[11].stops[5].city": "Gospiča",
+  "routes[12].stops[1].city": "Gospiča",
+  "routes[12].stops[3].city": "Makarska",
+  "routes[14].stops[3].city": "Lukovita",
+  "routes[15].stops[1].city": "Lugoža",
+  "routes[15].stops[3].city": "Golešti",
+  "routes[16].stops[4].city": "Vrbaņa"
  }
 }

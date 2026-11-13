@@ -205,7 +205,12 @@
 "kw": 50.0,
 "cc": "HR",
 "pts": 6,
-"city": null
+"city": {
+"en": "Vrbanja",
+"sr": "Vrbanja",
+"ru": "Врбаня"
+},
+"city_gid": 3187301
 }
 ],
 "countries": [
@@ -447,7 +452,12 @@
 "kw": 75.0,
 "cc": "HU",
 "pts": 12,
-"city": null
+"city": {
+"en": "Kiskunfélegyháza",
+"sr": "Kiškunfeleđhaza",
+"ru": "Кишкунфеледьхаза"
+},
+"city_gid": 3049885
 },
 {
 "pid": 900001051,
@@ -633,7 +643,12 @@
 "kw": 75.0,
 "cc": "HU",
 "pts": 12,
-"city": null
+"city": {
+"en": "Kiskunfélegyháza",
+"sr": "Kiškunfeleđhaza",
+"ru": "Кишкунфеледьхаза"
+},
+"city_gid": 3049885
 },
 {
 "pid": 900001051,
@@ -774,7 +789,12 @@
 "kw": 50.0,
 "cc": "HR",
 "pts": 6,
-"city": null
+"city": {
+"en": "Vrbanja",
+"sr": "Vrbanja",
+"ru": "Врбаня"
+},
+"city_gid": 3187301
 },
 {
 "pid": 900000544,
@@ -1234,7 +1254,12 @@
 "kw": 360.0,
 "cc": "TR",
 "pts": null,
-"city": null
+"city": {
+"en": "Büyükçekmece",
+"sr": "Bujukčekmedže",
+"ru": "Бююкчекмедже"
+},
+"city_gid": 6947641
 }
 ],
 "countries": [
@@ -1816,7 +1841,12 @@
 "kw": 250.0,
 "cc": "HR",
 "pts": 4,
-"city": null
+"city": {
+"en": "Perušić",
+"sr": "Perušić",
+"ru": "Перушич"
+},
+"city_gid": 3193476
 },
 {
 "pid": 900000551,
@@ -1831,7 +1861,12 @@
 "kw": 50.0,
 "cc": "HR",
 "pts": 3,
-"city": null
+"city": {
+"en": "Biograd na Moru",
+"sr": "Biograd na Moru",
+"ru": "Биоград-на-Мору"
+},
+"city_gid": 3204121
 }
 ],
 "countries": [
@@ -2013,7 +2048,12 @@
 "kw": 350.0,
 "cc": "HR",
 "pts": 6,
-"city": null
+"city": {
+"en": "Gospić",
+"sr": "Gospić",
+"ru": "Госпич"
+},
+"city_gid": 3199873
 },
 {
 "pid": 900000686,
@@ -2225,7 +2265,12 @@
 "kw": 350.0,
 "cc": "HR",
 "pts": 6,
-"city": null
+"city": {
+"en": "Sveti Križ Začretje",
+"sr": "Sveti Križ Začretje",
+"ru": "Свети-Криж-Зачретье"
+},
+"city_gid": 3186954
 },
 {
 "pid": 900000404,
@@ -2259,7 +2304,12 @@
 "kw": 350.0,
 "cc": "HR",
 "pts": 6,
-"city": null
+"city": {
+"en": "Gospić",
+"sr": "Gospić",
+"ru": "Госпич"
+},
+"city_gid": 3199873
 },
 {
 "pid": 900000686,
@@ -2459,7 +2509,12 @@
 "kw": 350.0,
 "cc": "HR",
 "pts": 6,
-"city": null
+"city": {
+"en": "Gospić",
+"sr": "Gospić",
+"ru": "Госпич"
+},
+"city_gid": 3199873
 },
 {
 "pid": 900000403,
@@ -2493,7 +2548,12 @@
 "kw": 50.0,
 "cc": "HR",
 "pts": 3,
-"city": null
+"city": {
+"en": "Makarska",
+"sr": "Makarska",
+"ru": "Макарска"
+},
+"city_gid": 3195890
 }
 ],
 "countries": [
@@ -2852,7 +2912,12 @@
 "kw": 90.0,
 "cc": "BG",
 "pts": null,
-"city": null
+"city": {
+"en": "Lukovit",
+"sr": "Lukovit",
+"ru": "Луковит"
+},
+"city_gid": 729507
 },
 {
 "pid": 353826,
@@ -3033,7 +3098,12 @@
 "kw": 50.0,
 "cc": "RO",
 "pts": 2,
-"city": null
+"city": {
+"en": "Lugoj",
+"sr": "Lugoj",
+"ru": "Лугож"
+},
+"city_gid": 674531
 },
 {
 "pid": 364514,
@@ -3067,7 +3137,12 @@
 "kw": 600.0,
 "cc": "RO",
 "pts": 14,
-"city": null
+"city": {
+"en": "Golești",
+"sr": "Golešti",
+"ru": "Голешти"
+},
+"city_gid": 676948
 }
 ],
 "countries": [
@@ -3256,7 +3331,12 @@
 "kw": 50.0,
 "cc": "HR",
 "pts": 6,
-"city": null
+"city": {
+"en": "Vrbanja",
+"sr": "Vrbanja",
+"ru": "Врбаня"
+},
+"city_gid": 3187301
 }
 ],
 "countries": [
@@ -3335,5 +3415,6 @@
 }
 ]
 }
-]
+],
+"city_rule": "TAILS 13.11.2026: every stop has a place — the town of the existing list, otherwise the nearest populated place of GeoNames cities1000 (geonamescache 3.0.2, CC BY 4.0); city_gid = its geonameid"
 }

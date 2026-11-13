@@ -129,7 +129,41 @@ def validate():
             if s['km'] - last > R['rule']['step_km'] + 0.5 and not any(g[0] <= last + 1 and g[1] >= s['km'] - 1 for g in rt['gaps']):
                 errs.append(f"routes.{rt['id']}: step {last}->{s['km']} > {R['rule']['step_km']} km without a gap entry")
             last = s['km']
+            if not (isinstance(s.get('city'), dict) and all((s['city'].get(x) or '').strip() for x in I.BASE)):
+                errs.append(f"routes.{rt['id']}: stop {s['pid']} has no place (TAILS: town or nearest GeoNames place, en/sr/ru)")
     return errs
+
+
+# TAILS P1.3 (13.11.2026): a stop is named by its place (town of GeoNames) and network, never by a service label.
+# The words below are labels, not names: in a place name they are dropped; what remains (a brand, a rest area, a mall)
+# is shown under the place when it adds something.
+LABEL_WORDS = re.compile(
+    r'(?i)\b(?:hpc|dc|ac|ccs2?|chademo|type ?2|charging stations?|charging points?|charging hub|charger|ev charger|'
+    r'ladepunkt[e]?|ladestation(?:en)?|ladesäule[n]?|e-?tankstelle|elektrotankstelle|schnelllade\w*|'
+    r'borne(?:s)? de recharge|station de recharge|punto de recarga|estación de carga|stazione di ricarica|'
+    r'laadpaal|laadstation|stație (?:de )?încărcare(?: mașini electrice)?|станица за полнење|зарядн\w+ станц\w+|'
+    r'punjač|punionica|polnilnica|polnilna postaja|töltőállomás|töltő|şarj (?:istasyonu|noktası))\b')
+
+
+def clean_place_name(name):
+    """The place name of a stop without service labels; '' when nothing but labels is left."""
+    x = LABEL_WORDS.sub(' ', name or '')
+    x = re.sub(r'\s*[-–—,·|/]+\s*$', '', re.sub(r'^\s*[-–—,·|/]+\s*', '', re.sub(r'\s+', ' ', x))).strip()
+    x = re.sub(r'\s+[-–—,·|/]\s*(?=$)', '', x).strip(' -–—,·|/')
+    return x if re.search(r'[^\W\d_]{2}', x) else ''
+
+
+def stop_label(stop, city):
+    """(title, network, note) of a route stop: title = the place (never empty, never a label), network = the network or,
+    without one, the brand left in the place name; note = the rest of the place name when it says more (a rest area,
+    a mall). """
+    net = (stop.get('net') or '').strip()
+    name = clean_place_name(stop.get('name'))
+    if not net and name:
+        net, name = name, ''
+    note = name if name and name.casefold() not in (net.casefold(), (city or '').casefold()) else ''
+    title = city or (stop.get('cc') or '')
+    return title, net, note
 
 
 def town(name, l):
@@ -182,6 +216,14 @@ def country_km(rt):
             out[cb] = out.get(cb, 0) + d / 2
     return out
 
+
+
+def pay_order(nets):
+    """TAILS P1.2 (13.11.2026): "How to pay" lists networks by the number it shows — DC places (≥ 50 kW) — largest first,
+    name as the tie-break. The old key added the 150 kW places on top (they are a part of the DC ones, counted twice), so
+    Shell Recharge (385 DC, many HPC) stood above Pfalzwerke (388 DC). Networks without DC places are not listed."""
+    rows = [(k, v) for k, v in nets.items() if (v.get('dc50') or 0) > 0]
+    return sorted(rows, key=lambda kv: (-(kv[1].get('dc50') or 0), str(kv[0]).casefold()))
 
 class R:
     def __init__(self, G, w, S):
@@ -251,7 +293,7 @@ class R:
     # ---------------- how to pay
     def nets_of(self, cc, l):
         nets = self.M.W['networks'].get(cc, {})
-        rows = sorted(nets.items(), key=lambda kv: -((kv[1].get('dc50') or 0) + (kv[1].get('hpc') or 0)))
+        rows = pay_order(nets)
         out = []
         priced = {r['network']: r for r in self.M.rows if r['cc'] == cc and r['has_price']}
         by_layer = {}
@@ -260,8 +302,6 @@ class R:
                 by_layer[k] = r['network']
         for key, v in rows[:10]:
             n_dc = (v.get('dc50') or 0)
-            if n_dc <= 0:
-                continue
             pnet = by_layer.get(key)
             purl = self.psite.net(cc, pnet, l) if (self.psite and pnet and (cc, pnet) in self.psite.slug) else None
             page = self.w.site.net(cc, key, l) if self.w.site.has_net(cc, key, l) else None
@@ -343,7 +383,8 @@ class R:
         ri = self.RT['routes'].index(rt)
         for si, s in enumerate(rt['stops']):
             city = I.data_text(l, 'routes', f'routes[{ri}].stops[{si}].city', s['city']) if isinstance(s.get('city'), dict) else ''
-            stops.append(dict(km=self.W.fmt_num(s['km'], self.W.L[l]), name=s.get('name') or s.get('net') or ('HPC' if s['cls'] == 5 else 'DC'), net=s.get('net') or '',
+            title, net, note = stop_label(s, city)
+            stops.append(dict(km=self.W.fmt_num(s['km'], self.W.L[l]), name=title, net=net, note=note,
                               city=city, cc=self.cname(s['cc'], l) if s.get('cc') else '', kw=self.W.fmt_num(s['kw'], self.W.L[l]) if s.get('kw') else '—',
                               pts=s.get('pts') or '—', map=self.w.map_url(l, None, (s['lat'], s['lon']), 16)))
         gaps = [S['gap_line'].format(a=self.W.fmt_num(g[0], self.W.L[l]), b=self.W.fmt_num(g[1], self.W.L[l]), c=self.W.fmt_num(rule['corridor_km'], self.W.L[l]))

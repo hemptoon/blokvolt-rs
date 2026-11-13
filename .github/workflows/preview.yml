@@ -80,6 +80,7 @@ jobs:
           BV_WORLD_PREVIEW=1 python3 scripts/qa/world_embed_check.py dist-com
           BV_WORLD_PREVIEW=1 python3 scripts/qa/world_lang_check.py dist-com
           node scripts/qa/world_search_test.mjs dist-com
+          python3 scripts/qa/tails_rules_test.py dist-com "$PAGES"
           rm -f dist-com/CNAME
           n=$(find dist-com -type f | wc -l)
           echo "blokvolt.com files: $n (Cloudflare Pages Free: 20000; LANG0 budget: under 19000)"

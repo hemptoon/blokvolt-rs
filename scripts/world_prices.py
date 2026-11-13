@@ -429,7 +429,7 @@ class R:
             v = M.profile_cost(M.countries[r['cc']], car['cons'])
             if any(x is not None for x in v):
                 prof.append(dict(name=r['name'], url=r['url'], cells=[self.pz(x, l, unit='') for x in v]))
-        pct = lambda x: f'{round(100 * x)} %'
+        pct = lambda x: I.reg(l)['pct'].format(x=int(100 * x + 0.5))   # TAILS P1.1: the language's own sign and space
         shares = [', '.join(filter(None, [self.t(l, 'share_home', x=pct(h)) if h else '', self.t(l, 'share_ac', x=pct(a)) if a else '',
                                           self.t(l, 'share_dc', x=pct(d)) if d else ''])) for _, h, a, d in PROFILES]
         n_ops = len({r['source'] for r in M.rows if r['has_price'] and r['source_kind'] == 'operator'})

@@ -4,7 +4,7 @@
 <div class="sec"><div class="sec-head"><h2 id="stops">{{ T.h_stops }}</h2></div>
 <p class="note">{{ T.stops_note }}</p>
 <div class="tw"><table class="wpay-t"><thead><tr><th scope="col" class="num">{{ T.th_stop_km }}</th><th scope="col">{{ T.th_place }}</th><th scope="col">{{ T.th_country }}</th><th scope="col" class="num">{{ T.th_kw }}</th><th scope="col" class="num">{{ T.th_pts }}</th><th scope="col">{{ T.th_map }}</th></tr></thead><tbody>
-{% for s in stops %}<tr><td class="num">{{ s.km }}</td><th scope="row" translate="no">{{ s.name }}{% if s.net and s.net != s.name %} <small class="muted">· {{ s.net }}</small>{% endif %}{% if s.city %}<br><small class="muted">{{ s.city }}</small>{% endif %}</th><td>{{ s.cc }}</td><td class="num">{{ s.kw }}</td><td class="num">{{ s.pts }}</td><td><a class="lnk" href="{{ s.map }}" rel="nofollow">{{ T.lnk_map }}</a></td></tr>
+{% for s in stops %}<tr><td class="num">{{ s.km }}</td><th scope="row" translate="no">{{ s.name }}{% if s.net %} <small class="muted">· {{ s.net }}</small>{% endif %}{% if s.note %}<br><small class="muted">{{ s.note }}</small>{% endif %}</th><td>{{ s.cc }}</td><td class="num">{{ s.kw }}</td><td class="num">{{ s.pts }}</td><td><a class="lnk" href="{{ s.map }}" rel="nofollow">{{ T.lnk_map }}</a></td></tr>
 {% endfor %}</tbody></table></div></div>
 <div class="sec"><div class="sec-head"><h2 id="gaps">{{ T.h_gaps }}</h2></div>
 {% if gaps %}{% for g in gaps %}<p class="wpay-gap">{{ g }}</p>{% endfor %}<p class="note">{{ T.gap_note }}</p>{% else %}<p>{{ T.no_gaps }}</p>{% endif %}</div>

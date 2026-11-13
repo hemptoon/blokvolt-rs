@@ -90,6 +90,25 @@ def fmt_num(x, loc, d=0):
     return ('−' if float(x) < 0 else '') + s
 
 
+def share_value(part, whole):
+    """TAILS P1.1 (13.11.2026), one rule for every percentage of the world layer: a share above 0 that rounds to 0 is
+    "<1", one below the whole that rounds to 100 is ">99", the rest is rounded half up. Returns a number or that string."""
+    if not whole or part is None:
+        return 0
+    p = 100 * part / whole
+    if 0 < p < 0.5:
+        return '<1'
+    if part < whole and p >= 99.5:
+        return '>99'
+    return int(p + 0.5)
+
+
+def fmt_pct(x, loc):
+    """A percentage in the language's own pattern (sign and space as Babel/LANG1 D8 say); x from share_value()."""
+    v = x if isinstance(x, str) else fmt_num(x, loc)
+    return loc['pct'].format(x=v)
+
+
 def fmt_date(iso):
     y, m, d = iso[:10].split('-')
     return f'{d}.{m}.{y}'
@@ -449,7 +468,10 @@ class Ctx:
         return f"{fmt_num(x, L[l])} {pl_form(x, self.S[l][key], l)}"
 
     def pct(self, l, x):
-        return L[l]['pct'].format(x=fmt_num(x, L[l]))
+        return fmt_pct(x, L[l])
+
+    def share(self, l, part, whole):
+        return fmt_pct(share_value(part, whole), L[l])
 
     def map_url(self, l, params=None, center=None, zoom=None):
         base = L[l]['map'] if self.map_rel else self.G.SITE + L[l]['map']
@@ -513,13 +535,13 @@ def common_blocks(c, l, d):
     st = d['stats']
     S = c.S[l]
     paras = [c.t(l, 'p_shown', n=c.pn(l, st['n'], 'pl_publoc')),
-             c.t(l, 'p_dc', dc=c.pn(l, st['dc50'], 'pl_place'), pct_dc=c.pct(l, st['pct_dc50']), hpc=c.pn(l, st['hpc'], 'pl_place')),
-             c.t(l, 'p_multi', pct_multi=c.pct(l, st['pct_multi']), pct_recent=c.pct(l, st['pct_recent']))]
+             c.t(l, 'p_dc', dc=c.pn(l, st['dc50'], 'pl_place'), pct_dc=c.share(l, st['dc50'], st['n']), hpc=c.pn(l, st['hpc'], 'pl_place')),
+             c.t(l, 'p_multi', pct_multi=c.share(l, st['multi'], st['n']), pct_recent=c.share(l, st['recent'], st['n']))]
     if st['nonet']:
         paras.append(c.t(l, 'p_nonet', nonet=c.pn(l, st['nonet'], 'pl_place')))
     tiles = [(c.n(l, st['n']), S['st_n']), (c.n(l, st['dc50']), S['st_dc50']), (c.n(l, st['hpc']), S['st_hpc']),
              (c.n(l, st['n_nets']), S['st_nets'])]
-    power = [(S[f'p{k}'], c.n(l, st['power'][str(k)]), c.pct(l, round(100 * st['power'][str(k)] / st['n']) if st['n'] else 0))
+    power = [(S[f'p{k}'], c.n(l, st['power'][str(k)]), c.share(l, st['power'][str(k)], st['n']))
              for k in (1, 2, 3, 4, 5, 6, 7, 0) if st['power'][str(k)]]
     conn = [(CONN_LABEL.get(t, t.title()), c.n(l, k)) for t, k in st['conn']]
     srcs = []
@@ -594,7 +616,7 @@ def render_country(c, p, urls, l):
     st = d['stats']
     if n_all:
         totals_first(c, l, b, st, n_all)
-    b['paras'][1] = c.t(l, 'p_dc_pub', dc=c.pn(l, st['dc50'], 'pl_place2'), pct_dc=c.pct(l, st['pct_dc50']), hpc=c.pn(l, st['hpc'], 'pl_place2'))
+    b['paras'][1] = c.t(l, 'p_dc_pub', dc=c.pn(l, st['dc50'], 'pl_place2'), pct_dc=c.share(l, st['dc50'], st['n']), hpc=c.pn(l, st['hpc'], 'pl_place2'))
     # LANG0: a city or network without a page in this language (not a market country, preview cap) → the map
     cities = [dict(name=N.city_name(d['city_info'][str(g)], l), url=site.city(cc, g, l), n=c.n(l, n)) for g, n in d['city_pages'] if site.has_city(cc, g, l)]
     others = [dict(name=N.city_name(d['city_info'][str(g)], l), url=c.map_url(l, {'zemlja': cc, 'grad': g}), n=c.n(l, n))
@@ -666,6 +688,17 @@ def render_city(c, p, urls, l, dup_titles):
         ups=[{x: site.country(cc, x) for x in LANGS if site.has(cc, x)}])
 
 
+def net_share(c, l, d, cc):
+    """The network's share of the country's public places from the counts (TAILS P1.1: IONITY in Germany is 91 of 55 590,
+    "<1%", not the bundle's rounded 0); without the country page the bundle's whole percent, still "<1" above zero."""
+    cp = c.site.by_key.get(f'c:{cc}')
+    whole = ((cp or {}).get('data') or {}).get('stats', {}).get('n')
+    if whole:
+        return c.share(l, d['stats']['n'], whole)
+    x = d.get('share_of_country') or 0
+    return c.pct(l, '<1' if x == 0 and d['stats']['n'] else x)
+
+
 def render_network(c, p, urls, l):
     d, cc, S, site, N = p['data'], p['cc'], c.S[l], c.site, c.N
     cname, net = N.country(cc, l), N.net_name(p['net'], l)
@@ -675,7 +708,7 @@ def render_network(c, p, urls, l):
     b = common_blocks(c, l, d)
     if d.get('n_all'):   # WORLD2 P4
         totals_first(c, l, b, d['stats'], d['n_all'], nets=True)
-    b['paras'].insert(1, c.t(l, 'p_net_share', n_cities=c.pn(l, d['n_cities'], 'pl_city_in'), share=c.pct(l, d['share_of_country']),
+    b['paras'].insert(1, c.t(l, 'p_net_share', n_cities=c.pn(l, d['n_cities'], 'pl_city_in'), share=net_share(c, l, d, cc),
                              country_u=kw['country_u']))
     cities = [dict(name=N.city_name(d['city_info'][str(g)], l),
                    url=site.city(cc, g, l) if site.has_city(cc, g, l) else c.map_url(l, {'grad': g, 'mreza': N.net_slug(p['net'])}),
@@ -735,7 +768,7 @@ def render_hub(c, p, urls, l):
         b['paras'][0] = c.t(l, 'p_shown2', n=c.pn(l, mcounts['sites'], 'pl_place2'), m=c.n(l, mcounts.get('public', 0)))
     st = d['stats']
     b['tiles'][2:4] = [(c.n(l, st['dc50']), S['st_dc50_pub']), (c.n(l, st['hpc']), S['st_hpc_pub'])] if mcounts.get('sites') else b['tiles'][2:4]
-    b['paras'][1] = c.t(l, 'p_dc_pub', dc=c.pn(l, st['dc50'], 'pl_place2'), pct_dc=c.pct(l, st['pct_dc50']), hpc=c.pn(l, st['hpc'], 'pl_place2'))
+    b['paras'][1] = c.t(l, 'p_dc_pub', dc=c.pn(l, st['dc50'], 'pl_place2'), pct_dc=c.share(l, st['dc50'], st['n']), hpc=c.pn(l, st['hpc'], 'pl_place2'))
     title = S['t_hub_world']
     rows = [dict(name=N.country(cc, l), url=site.country(cc, l), n=c.n(l, n), dc50=c.n(l, dc)) for cc, n, dc, *_ in d['countries']]
     rows.sort(key=lambda r: r['name'])

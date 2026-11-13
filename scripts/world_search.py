@@ -57,6 +57,15 @@ COMB = re.compile('[̀-ͯ]')
 NONW = re.compile('[^a-z0-9]+')
 
 
+def shown_n(p):
+    """TAILS P1.4 (13.11.2026): the number a suggestion shows is the first number of its page — every charging place on
+    the map (n_all, WORLD2 P4; countries: HOME3) — not the public count of the bundle index; the pages say the public
+    part separately. A bundle without n_all keeps the index number."""
+    if not p:
+        return None
+    return (p.get('data') or {}).get('n_all') or p.get('n')
+
+
 @lru_cache(maxsize=None)
 def fold(s, exp=False):
     s = unicodedata.normalize('NFC', str(s or '').lower())
@@ -212,7 +221,7 @@ def build(G, c, langs):
             x = rows.get(cc) or {}
             names += [x.get('name'), x.get('name_nom')]
         names += alias.get(cc, [])
-        n = ccount.get(cc) if cc in ccount else (cpages[cc]['n'] if cc in cpages else None)
+        n = shown_n(cpages[cc]) if cc in cpages else ccount.get(cc)   # TAILS P1.4: the page's number first
         it = Item('c', cc, cc=cc, n=n, w=60 + (min(15, 4 * math.log10(n)) if n else 0) + (3 if cc in cpages else 0), names=names)
         it.region = reg_of.get(cc)
         for l in langs:
@@ -265,7 +274,7 @@ def build(G, c, langs):
         # size: places of its page and population together (Vienna before Vienne, Newark before New Bedford)
         size = 0.6 * min(10 * math.log10(n), 30) if n else 0
         size += 0.6 * 8 * (math.log10(pop) - 4) if pop > 10000 else 0
-        it = Item('t', int(gid), cc=cc, n=n, w=20 + min(size, 32) + (3 if p else 0), names=names)
+        it = Item('t', int(gid), cc=cc, n=shown_n(p), w=20 + min(size, 32) + (3 if p else 0), names=names)
         it.pop = pop if not it_known else max(pop, 200000)   # a city of our name lists keeps its names in the long tail
         it.region = reg_of.get(cc)
         for l in langs:
@@ -352,7 +361,7 @@ def build(G, c, langs):
         x = nets[slug]
         names = sorted(x['names']) + nalias.get(slug, [])
         gp = next((p for k, p in gpages.items() if N.net_slug(k) in x['slugs']), None)
-        n = gp['n'] if gp else None
+        n = shown_n(gp) if gp else None
         size = 12 - 3 * math.log10(x['rank'] + 1) + (5 * math.log10(net_n[slug]) if net_n.get(slug) else 0)
         it = Item('n', ','.join(x['slugs']), n=n, w=34 + max(0, min(size, 26)), names=names)
         it.pop = -x['rank']   # order of the manifest (most places first) for ties
@@ -367,7 +376,7 @@ def build(G, c, langs):
         cc = p['cc']
         cnames = [v for v in (crows.get(cc) or {}).values() if v] + alias.get(cc, [])
         cnames += [(i18n_c[l].get(cc) or {}).get('name') for l in i18n_c]
-        it = Item('n', f'{slug}@{cc}', cc=cc, n=p.get('n'), w=40, x=1, names=sorted(x['names']) + nalias.get(slug, []), extra=cnames)
+        it = Item('n', f'{slug}@{cc}', cc=cc, n=shown_n(p), w=40, x=1, names=sorted(x['names']) + nalias.get(slug, []), extra=cnames)
         ok = False
         for l in langs:
             it.label[l] = f"{x['disp']} · {cname[l].get(cc, cc)}"

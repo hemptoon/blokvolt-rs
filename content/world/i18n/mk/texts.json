@@ -239,6 +239,22 @@
   "routes[16].stops[0].city": "Загреб",
   "routes[16].stops[1].city": "Сесвете",
   "routes[16].stops[2].city": "Сесвете",
-  "routes[16].stops[3].city": "Славонски Брод"
+  "routes[16].stops[3].city": "Славонски Брод",
+  "routes[0].stops[7].city": "Врбања",
+  "routes[1].stops[2].city": "Кишкунфелеѓхаза",
+  "routes[2].stops[0].city": "Кишкунфелеѓхаза",
+  "routes[3].stops[0].city": "Врбања",
+  "routes[5].stops[4].city": "Бујукчекмеџе",
+  "routes[9].stops[1].city": "Перушиќ",
+  "routes[9].stops[2].city": "Биоград на Мору",
+  "routes[10].stops[3].city": "Госпиќ",
+  "routes[11].stops[3].city": "Свети Криж Зачретје",
+  "routes[11].stops[5].city": "Госпиќ",
+  "routes[12].stops[1].city": "Госпиќ",
+  "routes[12].stops[3].city": "Макарска",
+  "routes[14].stops[3].city": "Луковит",
+  "routes[15].stops[1].city": "Лугож",
+  "routes[15].stops[3].city": "Голешти",
+  "routes[16].stops[4].city": "Врбања"
  }
 }
