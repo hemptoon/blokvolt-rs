@@ -9,6 +9,8 @@
   "url": "https://www.paragraf.rs/dnevne-vesti/191026/191026-vest7.html"
  },
  "weeks": [
+  {"from": "13.11.2026", "to": "20.11.2026", "dizel": 236, "benzin": 207, "source": "Moj Novi Sad, 13.11.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://www.mojnovisad.com/objavljene-cene-goriva-koje-ce-vaziti-do-20-novembra/"},
+  {"from": "06.11.2026", "to": "13.11.2026", "dizel": 236, "benzin": 207, "source": "Novosti (Tanjug), 06.11.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://www.novosti.rs/ekonomija/vesti/1668646/ovo-nove-cene-goriva-evo-koliko-narednih-sedam-dana-kostati-dizel-benzin"},
   {"from": "30.10.2026", "to": "06.11.2026", "dizel": 236, "benzin": 207, "source": "Srbija Danas, 30.10.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://www.sd.rs/biz/vesti/objavljene-nove-cene-goriva-u-srbiji-2026-10-30"},
   {"from": "23.10.2026", "to": "30.10.2026", "dizel": 236, "benzin": 207, "source": "Biznis.rs, 23.10.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://biznis.rs/vesti/dizel-i-benzin-do-sledeceg-petka-po-nepromenjenim-cenama/"},
   {"from": "16.10.2026", "to": "23.10.2026", "dizel": 236, "benzin": 207, "source": "Biznis.rs, 16.10.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://biznis.rs/vesti/srbija/i-dalje-bez-promene-cena-goriva/"},
