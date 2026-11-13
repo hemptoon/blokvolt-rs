@@ -12,8 +12,8 @@
   "other": "ország"
  },
  "data_as_of": "adatok állapota: {date}",
- "search_label": "Város, ország vagy hálózat keresése",
- "search_ph": "Város, ország vagy hálózat",
+ "search_label": "Ország, város, hálózat vagy árak keresése",
+ "search_ph": "Ország, város, hálózat, árak",
  "search_none": "Ehhez még nincs külön oldal — a térképen minden hely megtalálható.",
  "search_go": "Keresés",
  "btn_full": "A teljes térkép megnyitása",

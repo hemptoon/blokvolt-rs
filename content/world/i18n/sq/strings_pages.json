@@ -164,5 +164,8 @@
  "cov_points_semi": "Sipas {src} ({date}), ka {n} pika karikimi publike dhe gjysmëpublike. BlokVolt shfaq vende karikimi publike nga të dhëna të hapura: {m}; në një vend shpesh ka disa pika karikimi.",
  "cov_stations": "Sipas {src} ({date}), ka {n} stacione karikimi publike. BlokVolt shfaq vende karikimi publike nga të dhëna të hapura: {m}.",
  "cov_part": "Të dhënat e hapura këtu mbulojnë vetëm një pjesë të karikuesve.",
- "cov_link": "Burimi"
+ "cov_link": "Burimi",
+ "all_cities": "Të gjitha qytetet ({n})",
+ "all_nets": "Të gjitha rrjetet ({n})",
+ "h_more_info": "Çmimet dhe pagesa"
 }

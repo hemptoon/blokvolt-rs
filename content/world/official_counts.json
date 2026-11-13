@@ -1,5 +1,5 @@
 {
- "about": "WORLD2 (12.11.2026): official (or, where marked, industry) counts of PUBLIC charging points / stations per country for the coverage line of the country pages (world_pages.py). One source per country, with its date and link. EAFO 2024 Q1 for Europe (one verified table for all); outside Europe only counts checked on 12.11.2026. unit: points = charging points; stations = charging stations; points_semi = public and semi-public points. The line \"open data cover only part of the chargers here\" appears when points per BlokVolt public place > 6 (stations: > 3). Update: replace a row with a newer count of the same kind and keep the source and date.",
+ "about": "WORLD2 (12.11.2026): official (or, where marked, industry) counts of PUBLIC charging points / stations per country for the coverage line of the country pages (world_pages.py). One source per country, with its date and link. EAFO 2024 Q1 for Europe (one verified table for all); outside Europe only counts checked on 12.11.2026; US, CA, JP, KR, AU added 13.11.2026 (TAILS). unit: points = charging points; stations = charging stations; points_semi = public and semi-public points. The line \"open data cover only part of the chargers here\" appears when points per BlokVolt public place > 6 (stations: > 3). Update: replace a row with a newer count of the same kind and keep the source and date.",
  "thresholds": {
   "points": 6,
   "points_semi": 6,
@@ -13,6 +13,14 @@
    "date": "2024-03",
    "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
    "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "AU": {
+   "n": 11602,
+   "unit": "points",
+   "source": "EVC",
+   "date": "2026-06",
+   "url": "https://www.pv-magazine-australia.com/press-releases/state-of-evs-2026-an-ev-bought-every-100-seconds-as-car-choice-charging-and-innovation-accelerate/",
+   "note": "Electric Vehicle Council, State of EVs 2026 (press release 30.09.2026): 11,602 public charging connectors at 4,268 public locations in June 2026; industry association, not a government count (Australia publishes none); verified 13.11.2026 (TAILS)"
   },
   "BE": {
    "n": 52429,
@@ -37,6 +45,14 @@
    "date": "2026-08",
    "url": "https://www.autodata.com.br/mobility/2026/09/24/brasil-se-aproxima-dos-30-mil-pontos-de-recarga-para-veiculos-eletrificados/136076/",
    "note": "ABVE (Brazilian EV Association) with Tupi: public and semi-public charging points, data for August 2026 (cited by the MME technical note of 23.10.2026); industry association, not a government count; verified 12.11.2026"
+  },
+  "CA": {
+   "n": 39654,
+   "unit": "points",
+   "source": "NRCan",
+   "date": "2026-03",
+   "url": "https://electricautonomy.ca/data-trackers/public-charging-networks/2026-04-01/2026-ev-charging-network-report-steady-progress/",
+   "note": "Natural Resources Canada, Electric Charging and Alternative Fuelling Station Locator: at least 39,654 public charging ports at 14,743 locations as of 25.03.2026 (via Electric Autonomy, 01.04.2026; Transport Canada's EV dashboard gives 39,220 public chargers on 31.03.2026); verified 13.11.2026 (TAILS)"
   },
   "CH": {
    "n": 14656,
@@ -182,6 +198,22 @@
    "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
    "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
   },
+  "JP": {
+   "n": 43000,
+   "unit": "points",
+   "source": "METI",
+   "date": "2025-03",
+   "url": "https://www.meti.go.jp/policy/mono_info_service/mono/automobile/setseibizyoukyou.pdf",
+   "note": "Ministry of Economy, Trade and Industry: at the end of FY2024 (March 2025) about 12,000 fast + about 31,000 destination (public) normal charging ports; METI estimate from Zenrin and operator data as of end of May 2025. The 25,000 'basic' ports (apartments, workplaces, monthly parking) are not public and not counted; verified 13.11.2026 (TAILS)"
+  },
+  "KR": {
+   "n": 543037,
+   "unit": "points_semi",
+   "source": "ev.or.kr",
+   "date": "2026-11",
+   "url": "https://www.etnews.com/20261110000317",
+   "note": "Korea's Ministry of Climate, Energy and Environment and its zero-emission vehicle portal ev.or.kr: 543,037 chargers in total, 56,599 of them fast (50 kW+), as of 10.11.2026 (via Electronic Times). Most slow chargers are shared chargers of apartment buildings, so 'public and semi-public'; verified 13.11.2026 (TAILS)"
+  },
   "LI": {
    "n": 106,
    "unit": "points",
@@ -293,6 +325,14 @@
    "date": "2024-03",
    "url": "https://alternative-fuels-observatory.ec.europa.eu/general-information/news/eafo-analysis-trends-ev-charging-infrastructure-across-europe",
    "note": "European Alternative Fuels Observatory, recharging points as per 2024 Q1 (analysis of 10.05.2024); verified 12.11.2026"
+  },
+  "US": {
+   "n": 263974,
+   "unit": "points",
+   "source": "AFDC",
+   "date": "2026-11",
+   "url": "https://afdc.energy.gov/fuels/stations_counts.html",
+   "note": "U.S. DOE Alternative Fuels Data Center, Alternative Fueling Station Counts by State, public electric charging ports (Level 1 688 + Level 2 183,439 + DC fast 79,835; 84,008 station locations), page 'Data last updated: 11/12/2026'; verified 13.11.2026 (TAILS)"
   }
  }
 }

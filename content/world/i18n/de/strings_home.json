@@ -12,8 +12,8 @@
   "other": "Länder"
  },
  "data_as_of": "Datenstand: {date}",
- "search_label": "Stadt, Land oder Ladenetz suchen",
- "search_ph": "Stadt, Land oder Ladenetz",
+ "search_label": "Land, Stadt, Ladenetz oder Preise suchen",
+ "search_ph": "Land, Stadt, Ladenetz, Preise",
  "search_none": "Dazu gibt es noch keine eigene Seite – auf der Karte sind alle Standorte zu sehen.",
  "search_go": "Suchen",
  "btn_full": "Ganze Karte öffnen",

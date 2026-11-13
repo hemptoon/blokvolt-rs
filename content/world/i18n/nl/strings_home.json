@@ -12,8 +12,8 @@
   "other": "landen"
  },
  "data_as_of": "gegevens per {date}",
- "search_label": "Zoek een stad, land of netwerk",
- "search_ph": "Stad, land of netwerk",
+ "search_label": "Zoek een land, stad, netwerk of prijzen",
+ "search_ph": "Land, stad, netwerk, prijzen",
  "search_none": "Hiervoor is nog geen pagina — de kaart toont elke locatie.",
  "search_go": "Zoeken",
  "btn_full": "Open de volledige kaart",

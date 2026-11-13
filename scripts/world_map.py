@@ -133,6 +133,32 @@ def copy_files(OUT):
             shutil.copy2(a / 'og' / 'og-en.png', dst)
 
 
+def poster_files(OUT):
+    """TAILS P2.7 (13.11.2026): /map/ on a phone opens with the "night lights" picture of the home (scripts/world_hero.py,
+    Europe, tall shape, both themes) in the place of the map; world-map.js swaps it for the live map on the first touch,
+    scroll or key at the picture's own view. None when the pictures are missing (the map then starts at once)."""
+    meta_p = ROOT / 'content' / 'world' / 'home' / 'hero.json'
+    hero = ROOT / 'static' / 'com' / 'hero'
+    if not meta_p.exists():
+        return None
+    meta = json.load(open(meta_p, encoding='utf-8'))
+    v = ((meta.get('views') or {}).get('eu') or {}).get('t')
+    if not v:
+        return None
+    dst = OUT / 'assets' / 'world' / 'hero'
+    dst.mkdir(parents=True, exist_ok=True)
+    urls = {}
+    for th, suf in (('d', ''), ('l', '-light')):
+        for fmt in ('avif', 'webp'):
+            src = hero / f'hero-eu-t{suf}.{fmt}'
+            if src.exists():
+                shutil.copy2(src, dst / src.name)
+                urls[th + fmt] = f'/assets/world/hero/{src.name}?v={hashlib.sha1(src.read_bytes()).hexdigest()[:10]}'
+    if 'dwebp' not in urls or 'lwebp' not in urls:
+        return None
+    return dict(urls=urls, w=v['w'], h=v['h'], view={'c': v['c'], 'z': v['z'], 'w': v['w'], 'h': v['h']})
+
+
 def build(G):
     """Render the three pages into G.OUT with gen_com's environment (G = the gen_com module). Returns the page paths."""
     STR = load_strings()
@@ -144,6 +170,7 @@ def build(G):
     origin = f'{u.scheme}://{u.netloc}' if u.netloc else G.SITE
     alts = [(LOCS[l]['hreflang'], G.SITE + PAGES[l]) for l in LANGS] + [('x-default', G.SITE + PAGES['en'])]
     locals_ = [dict(loc=l, path=f"/{l['dir']}/") for l in G.BUILT]
+    poster = poster_files(OUT)
     out = []
     for lang in LANGS:
         T = STR[lang]
@@ -158,6 +185,8 @@ def build(G):
                   'theme': th.get('default', 'svetla'), 'home': HOME[lang], 'sources': I.slugs(lang)['sources'] if world_shell.active() else '',
                   'center': VIEW['center'], 'zoom': VIEW['zoom'], 'font': FONT, 'about': ABOUT[lang], 'download': DOWNLOAD[lang], 'pages': PAGES,
                   'prices': (getattr(G, 'WORLD_PRICES', None) or {}).get('map_json', '')}   # G3: price line of the card
+        if poster:   # TAILS P2.7: the picture of the phone's first screen and its view
+            wm_cfg['poster'] = poster['view']
         if lang not in I.BASE:   # K8/LANG0: number/date locale of an extra language (world-map.js: cfg.intl)
             wm_cfg['intl'] = I.reg(lang).get('intl', lang)
             wm_cfg['dec'], wm_cfg['thou'] = I.reg(lang)['dec'], I.reg(lang)['thou']
@@ -167,7 +196,7 @@ def build(G):
                    description=T['description'], alts=alts, public=cfg['public'], noindex=False,
                    wm_cfg=json.dumps(wm_cfg, ensure_ascii=False).replace('</', '<\\/'),
                    wm_i18n=json.dumps(T, ensure_ascii=False).replace('</', '<\\/'),
-                   v_js=v_js, v_css=v_css, pmtiles_ver=PMTILES_VER, data_origin=origin)
+                   v_js=v_js, v_css=v_css, pmtiles_ver=PMTILES_VER, data_origin=origin, poster=poster)
         G.render('world_map.html', PAGES[lang], ctx, priority='0.6', sitemap=cfg['public'] and lang in I.prod_langs())
         out.append(PAGES[lang])
     print(f"world map: {', '.join(out)} ({'public' if cfg['public'] else 'noindex, not in the sitemap'}; data {cfg['data_base']})")

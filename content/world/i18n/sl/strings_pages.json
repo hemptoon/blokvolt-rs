@@ -184,5 +184,8 @@
  "cov_points_semi": "Po podatkih {src} ({date}) je število javnih in poljavnih polnilnih točk {n}. BlokVolt prikazuje javne polnilne lokacije iz odprtih podatkov: {m}; na enem mestu je pogosto več polnilnih točk.",
  "cov_stations": "Po podatkih {src} ({date}) je število javnih polnilnih postaj {n}. BlokVolt prikazuje javne polnilne lokacije iz odprtih podatkov: {m}.",
  "cov_part": "Odprti podatki tu zajemajo le del polnilnikov.",
- "cov_link": "Vir"
+ "cov_link": "Vir",
+ "all_cities": "Vsa mesta ({n})",
+ "all_nets": "Vsa omrežja ({n})",
+ "h_more_info": "Cene in plačilo"
 }

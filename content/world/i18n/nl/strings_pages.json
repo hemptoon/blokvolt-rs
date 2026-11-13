@@ -164,5 +164,8 @@
  "cov_points_semi": "Volgens {src} ({date}) zijn er {n} openbare en semi-openbare laadpunten. BlokVolt toont openbare laadlocaties uit open data: {m}; één locatie heeft vaak meerdere laadpunten.",
  "cov_stations": "Volgens {src} ({date}) zijn er {n} openbare laadstations. BlokVolt toont openbare laadlocaties uit open data: {m}.",
  "cov_part": "Open data dekken hier slechts een deel van de laadpalen.",
- "cov_link": "Bron"
+ "cov_link": "Bron",
+ "all_cities": "Alle steden ({n})",
+ "all_nets": "Alle netwerken ({n})",
+ "h_more_info": "Prijzen en betalen"
 }

@@ -249,6 +249,7 @@ def build(G, c, langs):
     pcity = P.get('city') or {}
     gids = sorted(set(pcity) | set(tpages), key=lambda g: int(g))
     region_cities = {}
+    rename = {k: v for k, v in D.get('region_rename', {}).items() if k != 'about'}
     n_city = 0
     for gid in gids:
         g = GEO.get(gid) or {}
@@ -291,7 +292,8 @@ def build(G, c, langs):
             it.url[l] = site.url(p, l) if p and l in site.langs(p) else None
         bb = pcity.get(gid)
         if bb and g.get('region'):
-            region_cities.setdefault((cc, g['region']), []).append((bb, pop, n or 0))
+            rn = rename.get(f"{cc}:{g['region']}", g['region'])   # TAILS P3.10: current regions (France 13), old names as aliases
+            region_cities.setdefault((cc, rn), []).append((bb, pop, n or 0))
         items.append(it)
         n_city += 1
 
@@ -317,7 +319,8 @@ def build(G, c, langs):
         it.region = reg_of.get(cc)
         for l in langs:
             al = ralias.get(f'{cc}:{rname}')
-            it.label[l] = al[0] if al and cc in (I.market(l) or ()) else rname   # Bayern on the German pages, Bavaria elsewhere
+            # Bayern on the German pages, Bavaria elsewhere; Russian regions in Russian on the Russian pages (TAILS P3.10)
+            it.label[l] = al[0] if al and (cc in (I.market(l) or ()) or (l == 'ru' and cc == 'RU')) else rname
             it.url[l] = f'#{z}/{la}/{lo}'
         items.append(it)
         n_reg += 1

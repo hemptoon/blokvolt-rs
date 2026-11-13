@@ -14,8 +14,8 @@
   "other": "Paesi"
  },
  "data_as_of": "dati al {date}",
- "search_label": "Cerca una città, un Paese o una rete",
- "search_ph": "Città, Paese o rete",
+ "search_label": "Cerca un Paese, una città, una rete o i prezzi",
+ "search_ph": "Paese, città, rete, prezzi",
  "search_none": "Non c'è ancora una pagina dedicata: la mappa mostra tutti i siti.",
  "search_go": "Cerca",
  "btn_full": "Apri la mappa completa",

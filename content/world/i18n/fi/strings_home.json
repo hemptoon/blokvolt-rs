@@ -12,8 +12,8 @@
   "other": "maata"
  },
  "data_as_of": "tilanne {date}",
- "search_label": "Hae kaupunkia, maata tai latausverkkoa",
- "search_ph": "Kaupunki, maa tai latausverkko",
+ "search_label": "Hae maata, kaupunkia, latausverkkoa tai hintoja",
+ "search_ph": "Maa, kaupunki, verkko, hinnat",
  "search_none": "Tälle ei ole vielä omaa sivua – kartalla näkyvät kaikki paikat.",
  "search_go": "Hae",
  "btn_full": "Avaa koko kartta",

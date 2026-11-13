@@ -174,5 +174,8 @@
  "cov_points_semi": "Prema podacima {src} ({date}), javnih i polujavnih mjesta za punjenje ima {n}. BlokVolt prikazuje javne lokacije iz otvorenih podataka: {m}; na jednoj lokaciji često ima više mjesta za punjenje.",
  "cov_stations": "Prema podacima {src} ({date}), javnih punionica ima {n}. BlokVolt prikazuje javne lokacije iz otvorenih podataka: {m}.",
  "cov_part": "Otvoreni podaci ovdje pokrivaju samo dio punjača.",
- "cov_link": "Izvor"
+ "cov_link": "Izvor",
+ "all_cities": "Svi gradovi ({n})",
+ "all_nets": "Sve mreže ({n})",
+ "h_more_info": "Cijene i plaćanje"
 }

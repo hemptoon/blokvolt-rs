@@ -174,5 +174,8 @@
  "cov_points_semi": "Potrivit {src} ({date}), numărul punctelor de încărcare publice și semipublice este {n}. BlokVolt afișează locațiile publice din date deschise: {m}; o locație are adesea mai multe puncte de încărcare.",
  "cov_stations": "Potrivit {src} ({date}), numărul stațiilor de încărcare publice este {n}. BlokVolt afișează locațiile publice din date deschise: {m}.",
  "cov_part": "Datele deschise acoperă aici doar o parte dintre încărcătoare.",
- "cov_link": "Sursă"
+ "cov_link": "Sursă",
+ "all_cities": "Toate orașele ({n})",
+ "all_nets": "Toate rețelele ({n})",
+ "h_more_info": "Prețuri și plată"
 }

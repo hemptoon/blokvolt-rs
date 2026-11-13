@@ -213,3 +213,18 @@ html.wm-dark .chip[aria-pressed="true"] .sw-ac{box-shadow:inset 0 0 0 2px #151B0
  .wm-page .map-wrap{height:calc(100vh - var(--hd));height:calc(100svh - var(--hd));min-height:240px}
 }
 @media (pointer:coarse){.wm-page details.wm-adv>summary{min-height:44px}}
+/* TAILS P2.7 (13.11.2026): phones open /map/ with the picture of our points (the pictures of the home) in the place of the
+   map; world-map.js starts MapLibre on the first touch, scroll or key and fades the picture out over the live map */
+.wm-poster{display:none}
+@media (max-width:720px){
+ .wm-poster{display:block;position:absolute;inset:0;z-index:1;overflow:hidden;background:#111621;transition:opacity .25s ease;cursor:grab}
+ .wm-poster[hidden]{display:none}
+ .wm-poster.is-gone{opacity:0;pointer-events:none}
+ .wm-poster picture,.wm-poster img{display:block;width:100%;height:100%}
+ .wm-poster img{object-fit:cover;object-position:50% 50%}
+ .wm-poster .wm-pl{display:none}
+ html[data-theme="light"] .wm-poster{background:#F2F3F0}
+ html[data-theme="light"] .wm-poster .wm-pl{display:block}
+ html[data-theme="light"] .wm-poster .wm-pd{display:none}
+}
+@media (prefers-reduced-motion:reduce){.wm-poster{transition:none}}

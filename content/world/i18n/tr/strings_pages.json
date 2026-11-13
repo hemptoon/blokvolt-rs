@@ -164,5 +164,8 @@
  "cov_points_semi": "{src} ({date}) verilerine göre {n} halka açık ve yarı halka açık şarj noktası bulunuyor. BlokVolt, açık verilerdeki halka açık lokasyonları gösterir: {m}; bir lokasyonda çoğu zaman birden fazla şarj noktası bulunur.",
  "cov_stations": "{src} ({date}) verilerine göre {n} halka açık şarj istasyonu bulunuyor. BlokVolt, açık verilerdeki halka açık lokasyonları gösterir: {m}.",
  "cov_part": "Açık veriler burada şarj noktalarının yalnızca bir kısmını kapsar.",
- "cov_link": "Kaynak"
+ "cov_link": "Kaynak",
+ "all_cities": "Tüm şehirler ({n})",
+ "all_nets": "Tüm şarj ağları ({n})",
+ "h_more_info": "Fiyatlar ve ödeme"
 }

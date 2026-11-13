@@ -12,8 +12,8 @@
   "other": "lande"
  },
  "data_as_of": "data pr. {date}",
- "search_label": "Find en by, et land eller et ladenetværk",
- "search_ph": "By, land eller ladenetværk",
+ "search_label": "Find et land, en by, et ladenetværk eller priser",
+ "search_ph": "Land, by, ladenetværk, priser",
  "search_none": "Der er endnu ingen side for dette — kortet viser alle steder.",
  "search_go": "Søg",
  "btn_full": "Åbn hele kortet",

@@ -6085,28 +6085,8 @@
   "FR:Brittany": [
    "Bretagne"
   ],
-  "FR:Ile-de-France": [
-   "Île-de-France"
-  ],
   "FR:Corsica": [
    "Corse"
-  ],
-  "FR:Provence-Alpes-Cote d'Azur": [
-   "Provence-Alpes-Côte d'Azur",
-   "PACA",
-   "Côte d'Azur"
-  ],
-  "FR:Lower Normandy": [
-   "Normandie",
-   "Normandy"
-  ],
-  "FR:Haute-Normandie": [
-   "Normandie",
-   "Normandy"
-  ],
-  "FR:Rhone-Alpes": [
-   "Auvergne-Rhône-Alpes",
-   "Rhône-Alpes"
   ],
   "NL:North Holland": [
    "Noord-Holland"
@@ -6155,6 +6135,152 @@
   "PL:Pomeranian Voivodeship": [
    "Pomorze",
    "Pomorskie"
+  ],
+  "FR:Grand Est": [
+   "Grand Est",
+   "Alsace",
+   "Lorraine",
+   "Champagne-Ardenne"
+  ],
+  "FR:Nouvelle-Aquitaine": [
+   "Nouvelle-Aquitaine",
+   "Aquitaine",
+   "Limousin",
+   "Poitou-Charentes"
+  ],
+  "FR:Auvergne-Rhône-Alpes": [
+   "Auvergne-Rhône-Alpes",
+   "Auvergne",
+   "Rhône-Alpes"
+  ],
+  "FR:Bourgogne-Franche-Comté": [
+   "Bourgogne-Franche-Comté",
+   "Burgundy",
+   "Bourgogne",
+   "Franche-Comté"
+  ],
+  "FR:Centre-Val de Loire": [
+   "Centre-Val de Loire",
+   "Centre"
+  ],
+  "FR:Normandy": [
+   "Normandie",
+   "Haute-Normandie",
+   "Basse-Normandie"
+  ],
+  "FR:Occitania": [
+   "Occitanie",
+   "Languedoc-Roussillon",
+   "Midi-Pyrénées"
+  ],
+  "FR:Hauts-de-France": [
+   "Hauts-de-France",
+   "Nord-Pas-de-Calais",
+   "Picardie",
+   "Picardy"
+  ],
+  "FR:Provence-Alpes-Côte d'Azur": [
+   "Provence-Alpes-Côte d'Azur",
+   "PACA",
+   "Côte d'Azur"
+  ],
+  "FR:Île-de-France": [
+   "Île-de-France",
+   "Ile-de-France"
+  ],
+  "RU:Moscow Oblast": [
+   "Московская область",
+   "Moskovskaya oblast",
+   "Podmoskovye"
+  ],
+  "RU:Krasnodar Krai": [
+   "Краснодарский край",
+   "Krasnodarskiy kray",
+   "Kuban"
+  ],
+  "RU:Krasnoyarsk Krai": [
+   "Красноярский край",
+   "Krasnoyarskiy kray"
+  ],
+  "RU:Stavropol Krai": [
+   "Ставропольский край",
+   "Stavropol'skiy kray"
+  ],
+  "RU:Tver Oblast": [
+   "Тверская область",
+   "Tverskaya oblast"
+  ],
+  "RU:Adygea": [
+   "Адыгея",
+   "Adygeya"
+  ],
+  "RU:Amur Oblast": [
+   "Амурская область",
+   "Amurskaya oblast"
+  ],
+  "RU:Kabardino-Balkaria": [
+   "Кабардино-Балкария",
+   "Kabardino-Balkariya"
+  ],
+  "RU:Udmurtia": [
+   "Удмуртия",
+   "Udmurtiya"
+  ],
+  "RU:Zabaykalsky Krai": [
+   "Забайкальский край",
+   "Transbaikal Territory"
+  ],
+  "RU:Karelia": [
+   "Карелия",
+   "Republic of Karelia"
+  ],
+  "RU:Bashkortostan": [
+   "Башкортостан",
+   "Bashkiria"
+  ],
+  "RU:Tatarstan": [
+   "Татарстан"
+  ],
+  "RU:North Ossetia": [
+   "Северная Осетия",
+   "North Ossetia–Alania"
+  ],
+  "RU:Altai Krai": [
+   "Алтайский край",
+   "Altayskiy kray"
   ]
+ },
+ "region_rename": {
+  "about": "TAILS P3.10 (13.11.2026): GeoNames admin1 of the search is the old division (France before 2016 — 22 regions, Russia partly transliterated). A region named here is shown under its current name; the old name stays an alias, cities of merged regions are one region.",
+  "FR:Alsace": "Grand Est",
+  "FR:Champagne-Ardenne": "Grand Est",
+  "FR:Lorraine": "Grand Est",
+  "FR:Aquitaine": "Nouvelle-Aquitaine",
+  "FR:Limousin": "Nouvelle-Aquitaine",
+  "FR:Poitou-Charentes": "Nouvelle-Aquitaine",
+  "FR:Auvergne": "Auvergne-Rhône-Alpes",
+  "FR:Rhone-Alpes": "Auvergne-Rhône-Alpes",
+  "FR:Bourgogne": "Bourgogne-Franche-Comté",
+  "FR:Franche-Comte": "Bourgogne-Franche-Comté",
+  "FR:Centre": "Centre-Val de Loire",
+  "FR:Haute-Normandie": "Normandy",
+  "FR:Lower Normandy": "Normandy",
+  "FR:Ile-de-France": "Île-de-France",
+  "FR:Languedoc-Roussillon": "Occitania",
+  "FR:Midi-Pyrenees": "Occitania",
+  "FR:Nord-Pas-de-Calais": "Hauts-de-France",
+  "FR:Picardie": "Hauts-de-France",
+  "FR:Provence-Alpes-Cote d'Azur": "Provence-Alpes-Côte d'Azur",
+  "RU:Moskovskaya": "Moscow Oblast",
+  "RU:Krasnodarskiy": "Krasnodar Krai",
+  "RU:Krasnoyarskiy": "Krasnoyarsk Krai",
+  "RU:Stavropol'skiy": "Stavropol Krai",
+  "RU:Tverskaya": "Tver Oblast",
+  "RU:Adygeya": "Adygea",
+  "RU:Amur": "Amur Oblast",
+  "RU:Kabardino-Balkariya": "Kabardino-Balkaria",
+  "RU:Udmurtiya": "Udmurtia",
+  "RU:Transbaikal Territory": "Zabaykalsky Krai",
+  "RU:Republic of Karelia": "Karelia"
  }
 }

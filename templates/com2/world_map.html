@@ -65,6 +65,10 @@
 </aside>
 <div class="map-wrap wm-wrap">
 <div id="map" role="region" aria-label="{{ T.map_label }}"></div>
+{% if poster and not embed %}<div class="wm-poster" id="wm-poster" aria-hidden="true">{# TAILS P2.7: phones only (world-map.css), until the first touch #}
+<picture class="wm-pd">{% if poster.urls.davif %}<source type="image/avif" srcset="{{ poster.urls.davif }}" media="(max-width:720px)">{% endif %}<source type="image/webp" srcset="{{ poster.urls.dwebp }}" media="(max-width:720px)"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="{{ poster.w }}" height="{{ poster.h }}" alt="" fetchpriority="high" decoding="async"></picture>
+<picture class="wm-pl">{% if poster.urls.lavif %}<source type="image/avif" srcset="{{ poster.urls.lavif }}" media="(max-width:720px)">{% endif %}<source type="image/webp" srcset="{{ poster.urls.lwebp }}" media="(max-width:720px)"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="{{ poster.w }}" height="{{ poster.h }}" alt="" loading="lazy" decoding="async"></picture>
+</div>{% endif %}
 <div class="map-legend wm-legend" role="group" aria-label="{{ T.legend }}"><span><i class="wm-sw sw-ac"></i>{{ T.lg_ac }}</span><span><i class="wm-sw sw-dc"></i>{{ T.lg_dc }}</span><span><i class="wm-sw sw-hpc"></i>{{ T.lg_hpc }}</span><span><i class="wm-sw sw-unk"></i>{{ T.lg_unk }}</span><span class="wm-lg-acc"><i class="wm-sw sw-acc-unk"></i>{{ T.lg_acc_unk }}</span><span class="wm-lg-acc"><i class="wm-sw sw-acc-res"></i>{{ T.lg_acc_res }}</span></div>
 {# THEME: the light/dark switch of the map (HOME3) is now the switch of the header — one switch, one memory #}
 <div class="map-attr wm-attr" id="wm-attr"><span class="wm-attr-full">© <a href="https://www.openstreetmap.org/copyright" rel="noopener">{{ T.attr_osm }}</a>{% if sources_url %} · <a href="{{ sources_url }}">{{ T.attr_sources }}</a>{% endif %}</span></div>

@@ -174,5 +174,8 @@
  "cov_points_semi": "Secondo {src} ({date}), ci sono {n} punti di ricarica pubblici e semipubblici. BlokVolt mostra i siti pubblici ricavati da dati aperti: {m}; un sito ha spesso più punti di ricarica.",
  "cov_stations": "Secondo {src} ({date}), ci sono {n} stazioni di ricarica pubbliche. BlokVolt mostra i siti pubblici ricavati da dati aperti: {m}.",
  "cov_part": "Qui i dati aperti coprono solo una parte delle colonnine.",
- "cov_link": "Fonte"
+ "cov_link": "Fonte",
+ "all_cities": "Tutte le città ({n})",
+ "all_nets": "Tutte le reti ({n})",
+ "h_more_info": "Prezzi e pagamento"
 }

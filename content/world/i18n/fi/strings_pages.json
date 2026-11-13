@@ -164,5 +164,8 @@
  "cov_points_semi": "Lähteen {src} ({date}) mukaan julkisia ja puolijulkisia latauspisteitä on {n}. BlokVolt näyttää avoimesta datasta julkiset latauspaikat: {m}; yhdessä paikassa on usein useita latauspisteitä.",
  "cov_stations": "Lähteen {src} ({date}) mukaan julkisia latausasemia on {n}. BlokVolt näyttää avoimesta datasta julkiset latauspaikat: {m}.",
  "cov_part": "Avoin data kattaa tässä maassa vain osan latausasemista.",
- "cov_link": "Lähde"
+ "cov_link": "Lähde",
+ "all_cities": "Kaikki kaupungit ({n})",
+ "all_nets": "Kaikki latausverkot ({n})",
+ "h_more_info": "Hinnat ja maksaminen"
 }

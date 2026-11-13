@@ -16,8 +16,8 @@
   "other": "šalių"
  },
  "data_as_of": "duomenų data: {date}",
- "search_label": "Ieškoti miesto, šalies ar tinklo",
- "search_ph": "Miestas, šalis arba tinklas",
+ "search_label": "Ieškoti šalies, miesto, tinklo ar kainų",
+ "search_ph": "Šalis, miestas, tinklas, kainos",
  "search_none": "Tam puslapio dar nėra — žemėlapyje rodomos visos vietos.",
  "search_go": "Ieškoti",
  "btn_full": "Atidaryti visą žemėlapį",

@@ -164,5 +164,8 @@
  "cov_points_semi": "A forrás ({src}, {date}) szerint {n} nyilvános és félnyilvános töltőpont van. A BlokVolt nyílt adatokból mutatja a nyilvános töltőhelyeket: {m}; egy helyen gyakran több töltőpont is van.",
  "cov_stations": "A forrás ({src}, {date}) szerint {n} nyilvános töltőállomás van. A BlokVolt nyílt adatokból mutatja a nyilvános töltőhelyeket: {m}.",
  "cov_part": "A nyílt adatok itt csak a töltők egy részét fedik le.",
- "cov_link": "Forrás"
+ "cov_link": "Forrás",
+ "all_cities": "Összes város ({n})",
+ "all_nets": "Összes hálózat ({n})",
+ "h_more_info": "Árak és fizetés"
 }

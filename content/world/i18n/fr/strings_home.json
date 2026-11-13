@@ -14,8 +14,8 @@
   "other": "pays"
  },
  "data_as_of": "données au {date}",
- "search_label": "Trouver une ville, un pays ou un réseau",
- "search_ph": "Ville, pays ou réseau",
+ "search_label": "Trouver un pays, une ville, un réseau ou des prix",
+ "search_ph": "Pays, ville, réseau, prix",
  "search_none": "Pas encore de page pour cette recherche — la carte montre tous les sites.",
  "search_go": "Rechercher",
  "btn_full": "Ouvrir la carte complète",

@@ -184,5 +184,8 @@
   "cov_points_semi": "Podle údajů {src} ({date}) činí počet veřejných a poloveřejných nabíjecích bodů {n}. BlokVolt zobrazuje veřejná místa z otevřených dat: {m}; na jednom místě bývá více nabíjecích bodů.",
   "cov_stations": "Podle údajů {src} ({date}) činí počet veřejných nabíjecích stanic {n}. BlokVolt zobrazuje veřejná místa z otevřených dat: {m}.",
   "cov_part": "Otevřená data tu pokrývají jen část nabíjecích stanic.",
-  "cov_link": "Zdroj"
+  "cov_link": "Zdroj",
+  "all_cities": "Všechna města ({n})",
+  "all_nets": "Všechny sítě ({n})",
+  "h_more_info": "Ceny a platba"
 }

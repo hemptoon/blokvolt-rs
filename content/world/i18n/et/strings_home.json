@@ -12,8 +12,8 @@
   "other": "riiki"
  },
  "data_as_of": "andmed seisuga {date}",
- "search_label": "Otsi linna, riiki või laadimisvõrku",
- "search_ph": "Linn, riik või laadimisvõrk",
+ "search_label": "Otsi riiki, linna, laadimisvõrku või hindu",
+ "search_ph": "Riik, linn, laadimisvõrk, hinnad",
  "search_none": "Selle kohta veel lehte ei ole — kaardil on näha kõik kohad.",
  "search_go": "Otsi",
  "btn_full": "Ava täielik kaart",

@@ -14,8 +14,8 @@
   "other": "países"
  },
  "data_as_of": "datos a fecha de {date}",
- "search_label": "Buscar una ciudad, un país o una red",
- "search_ph": "Ciudad, país o red",
+ "search_label": "Buscar un país, una ciudad, una red o precios",
+ "search_ph": "País, ciudad, red, precios",
  "search_none": "Todavía no hay página para esto; el mapa muestra todas las ubicaciones.",
  "search_go": "Buscar",
  "btn_full": "Abrir el mapa completo",

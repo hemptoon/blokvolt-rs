@@ -355,3 +355,9 @@ html[data-theme="dark"] input[type=checkbox],html[data-theme="dark"] input[type=
   :is(code,pre,.wft-word,[translate="no"]){-webkit-hyphens:manual;hyphens:manual}
 }
 @media (max-width:719px){.tw tbody th,.tw th[scope=row]{-webkit-hyphens:manual;hyphens:manual}}
+/* TAILS P2.5 (13.11.2026): long lists of a country page fold under "All cities (N)" / "All networks (N)" — the links stay in the HTML */
+details.w-all{margin-top:12px;border:1px solid var(--line);border-radius:var(--r);padding:0 14px}
+details.w-all>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;list-style-position:inside}
+details.w-all[open]>summary{border-bottom:1px solid var(--line);margin-bottom:10px}
+details.w-all h3{font-size:1rem;margin:14px 0 6px}
+details.w-all .tw{margin-bottom:12px}

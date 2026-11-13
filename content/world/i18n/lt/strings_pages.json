@@ -184,5 +184,8 @@
  "cov_points_semi": "Pagal {src} duomenis ({date}), viešųjų ir pusiau viešųjų įkrovimo taškų — {n}. BlokVolt rodo viešąsias vietas iš atvirųjų duomenų: {m}; vienoje vietoje dažnai būna keli įkrovimo taškai.",
  "cov_stations": "Pagal {src} duomenis ({date}), viešųjų įkrovimo stotelių — {n}. BlokVolt rodo viešąsias vietas iš atvirųjų duomenų: {m}.",
  "cov_part": "Atvirieji duomenys čia apima tik dalį įkroviklių.",
- "cov_link": "Šaltinis"
+ "cov_link": "Šaltinis",
+ "all_cities": "Visi miestai ({n})",
+ "all_nets": "Visi tinklai ({n})",
+ "h_more_info": "Kainos ir mokėjimas"
 }

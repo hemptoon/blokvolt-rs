@@ -16,8 +16,8 @@
   "other": "krajín"
  },
  "data_as_of": "údaje k {date}",
- "search_label": "Nájsť mesto, krajinu alebo sieť",
- "search_ph": "Mesto, krajina alebo sieť",
+ "search_label": "Nájsť krajinu, mesto, sieť alebo ceny",
+ "search_ph": "Krajina, mesto, sieť, ceny",
  "search_none": "Samostatná stránka zatiaľ neexistuje — na mape sú všetky miesta.",
  "search_go": "Hľadať",
  "btn_full": "Otvoriť celú mapu",

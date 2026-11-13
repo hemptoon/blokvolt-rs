@@ -12,8 +12,8 @@
   "other": "land"
  },
  "data_as_of": "data per {date}",
- "search_label": "Finn by, land eller nettverk",
- "search_ph": "By, land eller nettverk",
+ "search_label": "Finn land, by, nettverk eller priser",
+ "search_ph": "Land, by, nettverk, priser",
  "search_none": "Ingen egen side for dette ennå — kartet viser alle steder.",
  "search_go": "Søk",
  "btn_full": "Åpne hele kartet",

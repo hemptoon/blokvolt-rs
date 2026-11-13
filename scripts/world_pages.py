@@ -428,14 +428,21 @@ def update_state(bundle_dir, state_path=STATE, redirects_path=REDIRECTS):
 
 
 # ------------------------------------------------------------------ mini map (SVG file, no JS)
+# TAILS P2.6 (13.11.2026): the colours of the live map (static/com/world-map.js) in one file for both themes — the ground
+# is transparent and the page paints it (night #0B0F17 / paper #F4F4EF, theme.css .w-mini): public fast charging is a lime
+# point with a dark ring, AC a light point with a grey ring; both read on either ground. The dots of the bundle are public
+# places only, so there are no rings of places that are not public. A margin of 6 % keeps the points off the edges.
 def mini_svg(dots):
     w, h = dots['w'], dots['h']
-    ac = ''.join(f'M{x} {y}h0' for x, y, k in dots['d'] if k & 2)    # k: 1 DC only, 2 no DC, 3 both
+    m = round(max(w, h) * 0.06)
+    ac = ''.join(f'M{x} {y}h0' for x, y, k in dots['d'] if k == 2)    # k: 1 DC only, 2 no DC, 3 both
     dc = ''.join(f'M{x} {y}h0' for x, y, k in dots['d'] if k & 1)
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}">'
-            f'<rect width="{w}" height="{h}" fill="#F4F4EF"/>'
-            f'<path d="{ac}" stroke="#9AA3AF" stroke-width="4" stroke-linecap="round" fill="none"/>'
-            f'<path d="{dc}" stroke="#2E6BFF" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>\n')
+
+    def layer(d, fill, ring, r):
+        return (f'<path d="{d}" stroke="{ring}" stroke-width="{r + 1.6}" stroke-linecap="round" fill="none"/>'
+                f'<path d="{d}" stroke="{fill}" stroke-width="{r}" stroke-linecap="round" fill="none"/>')
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{-m} {-m} {w + 2 * m} {h + 2 * m}" width="{w + 2 * m}" height="{h + 2 * m}">'
+            + (layer(ac, '#E4E8EF', '#5C6270', 3) if ac else '') + (layer(dc, '#D9F45B', '#0D111A', 3.6) if dc else '') + '</svg>\n')
 
 
 # ------------------------------------------------------------------ rendering
@@ -589,6 +596,15 @@ def coverage(c, l, cc, m):
     return dict(text=text, part=part, url=r['url'], link=c.S[l]['cov_link'])
 
 
+def city_cov_part(c, l, cc):
+    """TAILS P3.8: a city of a country whose official count is far above the open data (Tokyo: 21 places) says so, with
+    the country's source — so a small number reads as "open data are incomplete", not as "few chargers"."""
+    cp = c.site.by_key.get(f'c:{cc}')
+    m = ((cp or {}).get('data') or {}).get('stats', {}).get('n')
+    cov = coverage(c, l, cc, m) if m else None
+    return dict(text=cov['part'], url=cov['url'], link=cov['link']) if cov and cov.get('part') else None
+
+
 def mini(c, p):
     name = mini_name(p)
     if not name or not p['data'].get('dots', {}).get('d'):
@@ -599,7 +615,9 @@ def mini(c, p):
         dst.parent.mkdir(parents=True, exist_ok=True)
         dst.write_text(svg, encoding='utf-8')
     v = hashlib.sha1(svg.encode()).hexdigest()[:10]
-    return dict(src=f'/assets/world/mini/{name}.svg?v={v}', w=p['data']['dots']['w'], h=p['data']['dots']['h'])
+    w, h = p['data']['dots']['w'], p['data']['dots']['h']
+    m = round(max(w, h) * 0.06)
+    return dict(src=f'/assets/world/mini/{name}.svg?v={v}', w=w + 2 * m, h=h + 2 * m)
 
 
 def render_country(c, p, urls, l):
@@ -641,7 +659,46 @@ def render_country(c, p, urls, l):
         title=title, h1=title, description=c.t(l, 'd_country', **kw), kick=S['k_country'], cname=cname,
         crumbs=[(S['nav_hub'], site.hub(l))], jsonld=ld(graph), b=b, cities=cities, others=others, nets=nets,
         map_link=c.map_url(l, {'zemlja': cc}, *view_of(c.places, 'cc', cc, d['center'], d['zoom'])), mini=mini(c, p), d=d,
-        regional=regional, coverage=coverage(c, l, cc, st['n']), data_date=fmt_date(c.lastmod(urls[l]))), 'country')
+        regional=regional, coverage=coverage(c, l, cc, st['n']), quick=quick_links(c, l, cc), data_date=fmt_date(c.lastmod(urls[l]))), 'country')
+
+
+_QL = {}
+
+
+def quick_links(c, l, cc):
+    """TAILS P2.5: the price page and "How to pay" of the country, right after the numbers (the titles of those pages)."""
+    if 'names' not in _QL:
+        import csv
+        import world_shell
+        _QL['pay'] = any(x[-1] == 'pay' for x in (getattr(world_shell, 'EXTRA', None) or []))
+        _QL['names'] = {r['cc']: r for r in csv.DictReader(open(WORLD / 'names' / 'countries.csv', encoding='utf-8'))}
+        _QL['sp'], _QL['sy'] = {}, {}
+    names = _QL['names']
+    if cc not in names:
+        return []
+
+    def cu(the):
+        r = names[cc]
+        if l == 'en':
+            return 'in ' + ('the ' if cc in the else '') + r['name_en']
+        if l not in I.BASE:
+            return I.country_in(r, l)
+        return r['sr_u'] if l == 'sr' else r['ru_v']
+    out = []
+    u = ((getattr(c.G, 'WORLD_PRICES', None) or {}).get('country_pages') or {}).get(cc, {}).get(l)
+    if u:
+        import world_prices
+        if not _QL['sp']:
+            _QL['sp'] = world_prices.load_strings()
+        out.append(dict(url=u, label=_QL['sp'][l]['t_country'].format(country_u=cu(('US', 'GB', 'NL', 'PH', 'AE')))))
+    import world_prices_data
+    if _QL['pay'] and cc in world_prices_data.SCOPE:
+        import world_pay
+        if not _QL['sy']:
+            _QL['sy'] = world_pay.load_strings()
+        out.append(dict(url=f"{world_pay.PAY[l]}{I.country_slug(names[cc], l)}/",
+                        label=_QL['sy'][l]['t_pay_country'].format(cu=cu(('US', 'GB', 'NL', 'CZ')))))
+    return out
 
 
 def render_city(c, p, urls, l, dup_titles):
@@ -684,7 +741,7 @@ def render_city(c, p, urls, l, dup_titles):
         ac=c.t(l, 'p_ac', ac=c.n(l, st['ac'])), ac_link=c.map_url(l, {'grad': info['gid'], 'snaga': 'ac'}, d['center'], d['zoom']),
         dc_link=c.map_url(l, {'grad': info['gid'], 'snaga': 'dc,hpc'}, d['center'], d['zoom']),
         near=near, nets=nets, map_link=c.map_url(l, {'zemlja': cc, 'grad': info['gid']}, *view_of(c.places, 'city', info['gid'], d['center'], d['zoom'])),
-        mini=mini(c, p), d=d, data_date=fmt_date(c.lastmod(urls[l]))), 'city',
+        mini=mini(c, p), d=d, cov_part=city_cov_part(c, l, cc), data_date=fmt_date(c.lastmod(urls[l]))), 'city',
         ups=[{x: site.country(cc, x) for x in LANGS if site.has(cc, x)}])
 
 

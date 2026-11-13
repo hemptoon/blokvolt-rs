@@ -174,5 +174,8 @@
  "cov_points_semi": "Selon {src} ({date}), on compte {n} points de charge publics et semi-publics. BlokVolt affiche les sites de recharge publics issus des données ouvertes : {m} ; un site compte souvent plusieurs points de charge.",
  "cov_stations": "Selon {src} ({date}), on compte {n} stations de recharge publiques. BlokVolt affiche les sites de recharge publics issus des données ouvertes : {m}.",
  "cov_part": "Les données ouvertes ne couvrent ici qu’une partie des bornes.",
- "cov_link": "Source"
+ "cov_link": "Source",
+ "all_cities": "Toutes les villes ({n})",
+ "all_nets": "Tous les réseaux ({n})",
+ "h_more_info": "Prix et paiement"
 }

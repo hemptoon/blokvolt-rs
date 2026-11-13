@@ -164,5 +164,8 @@
  "cov_points_semi": "Ifølge {src} ({date}) er der {n} offentlige og semioffentlige ladepunkter. BlokVolt viser offentlige ladesteder fra åbne data: {m}; et ladested har ofte flere ladepunkter.",
  "cov_stations": "Ifølge {src} ({date}) er der {n} offentlige ladestationer. BlokVolt viser offentlige ladesteder fra åbne data: {m}.",
  "cov_part": "Åbne data dækker her kun en del af ladestanderne.",
- "cov_link": "Kilde"
+ "cov_link": "Kilde",
+ "all_cities": "Alle byer ({n})",
+ "all_nets": "Alle ladenetværk ({n})",
+ "h_more_info": "Priser og betaling"
 }

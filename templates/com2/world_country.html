@@ -1,21 +1,27 @@
 {% extends 'world_base.html' %}
 {% block pagehead %}{{ m.head(kick, h1, None, crumbs, data_date, map_link, last=cname) }}{% endblock %}
 {% block content %}
+{# TAILS P2.5 (13.11.2026): the main things first — numbers, networks, power, prices and how to pay; then the cities: the
+   top 20 and "All cities (N)" folded (<details>, every link stays in the HTML for search engines), sources last #}
 {{ m.tiles(b) }}
 {{ m.paras(b) }}
 {% if coverage %}<p class="note">{{ coverage.text }}{% if coverage.part %} {{ coverage.part }}{% endif %} <a class="lnk" href="{{ coverage.url }}" rel="nofollow noopener" target="_blank">{{ coverage.link }}</a></p>{% endif %}
 {% if regional %}<p class="note"><a class="lnk" href="{{ regional.url }}" hreflang="en">{{ S.regional_guide.format(country=cname) }}</a></p>{% endif %}
-{{ m.minimap(mini, map_link) }}
-{% if cities %}<div class="sec"><div class="sec-head"><h2 id="cities">{{ S.h_cities }}</h2></div>
-<div class="tw"><table><thead><tr><th>{{ S.th_city }}</th><th class="num">{{ S.th_n }}</th></tr></thead><tbody>
-{% for r in cities[:60] %}<tr><td><a href="{{ r.url }}" translate="no">{{ r.name }}</a></td><td class="num">{{ r.n }}</td></tr>
-{% endfor %}</tbody></table></div>
-{% if cities|length > 60 %}<p class="w-more" translate="no">{% for r in cities[60:] %}<span class="w-mi"><a href="{{ r.url }}">{{ r.name }}</a>&nbsp;{{ r.n }}</span>{% if not loop.last %}&nbsp;· {% endif %}{% endfor %}</p>{% endif %}</div>{% endif %}
-{% if others %}<div class="sec"><div class="sec-head"><h2 id="other-cities">{{ S.h_cities_other }}</h2></div>
-<div class="chips">{% for r in others %}<a class="chip" href="{{ r.url }}" rel="nofollow" translate="no">{{ r.name }} · {{ r.n }}</a>{% endfor %}</div></div>{% endif %}
-{{ m.nets(nets) }}
+{% if quick %}<div class="sec"><div class="sec-head"><h2 id="prices-pay">{{ S.h_more_info }}</h2></div>
+<div class="chips">{% for q in quick %}<a class="chip" href="{{ q.url }}">{{ q.label }}</a>{% endfor %}</div></div>{% endif %}
+{{ m.nets(nets, 20) }}
 {{ m.power(b) }}
 {{ m.conn(b) }}
+{{ m.minimap(mini, map_link) }}
+{% if cities or others %}<div class="sec"><div class="sec-head"><h2 id="cities">{{ S.h_cities }}</h2></div>
+{% if cities %}<div class="tw"><table><thead><tr><th>{{ S.th_city }}</th><th class="num">{{ S.th_n }}</th></tr></thead><tbody>
+{% for r in cities[:20] %}<tr><td><a href="{{ r.url }}" translate="no">{{ r.name }}</a></td><td class="num">{{ r.n }}</td></tr>
+{% endfor %}</tbody></table></div>{% endif %}
+{% if cities|length > 20 or others %}<details class="w-all"><summary>{{ S.all_cities.format(n=fmt_num(cities|length + others|length, LOC)) }}</summary>
+{% if cities|length > 20 %}<p class="w-more" translate="no">{% for r in cities[20:] %}<span class="w-mi"><a href="{{ r.url }}">{{ r.name }}</a>&nbsp;{{ r.n }}</span>{% if not loop.last %}&nbsp;· {% endif %}{% endfor %}</p>{% endif %}
+{% if others %}<h3 id="other-cities">{{ S.h_cities_other }}</h3>
+<p class="w-more" translate="no">{% for r in others %}<span class="w-mi"><a href="{{ r.url }}" rel="nofollow">{{ r.name }}</a>&nbsp;{{ r.n }}</span>{% if not loop.last %}&nbsp;· {% endif %}{% endfor %}</p>{% endif %}
+</details>{% endif %}</div>{% endif %}
 {{ m.sources(b) }}
 <p class="note"><a class="lnk" href="{{ W.site.download(l) }}">{{ S.download_link }}</a></p>
 {{ m.foot(W.site.about(l)) }}

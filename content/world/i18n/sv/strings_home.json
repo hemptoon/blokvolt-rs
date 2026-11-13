@@ -12,8 +12,8 @@
   "other": "länder"
  },
  "data_as_of": "uppgifter per {date}",
- "search_label": "Sök stad, land eller nätverk",
- "search_ph": "Stad, land eller nätverk",
+ "search_label": "Sök land, stad, nätverk eller priser",
+ "search_ph": "Land, stad, nätverk, priser",
  "search_none": "Ingen sida för detta ännu — kartan visar alla platser.",
  "search_go": "Sök",
  "btn_full": "Öppna hela kartan",

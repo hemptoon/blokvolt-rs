@@ -12,8 +12,8 @@
   "other": "ülke"
  },
  "data_as_of": "veriler {date} itibarıyla",
- "search_label": "Şehir, ülke veya şarj ağı arayın",
- "search_ph": "Şehir, ülke veya şarj ağı",
+ "search_label": "Ülke, şehir, şarj ağı veya fiyat arayın",
+ "search_ph": "Ülke, şehir, şarj ağı, fiyatlar",
  "search_none": "Bunun için henüz sayfa yok — haritada tüm lokasyonlar gösterilir.",
  "search_go": "Ara",
  "btn_full": "Haritanın tamamını açın",

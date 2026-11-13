@@ -16,8 +16,8 @@
   "other": "držav"
  },
  "data_as_of": "podatki na dan {date}",
- "search_label": "Poiščite mesto, državo ali omrežje",
- "search_ph": "Mesto, država ali omrežje",
+ "search_label": "Poiščite državo, mesto, omrežje ali cene",
+ "search_ph": "Država, mesto, omrežje, cene",
  "search_none": "Za to še ni strani — na zemljevidu so vse lokacije.",
  "search_go": "Išči",
  "btn_full": "Odprite celoten zemljevid",

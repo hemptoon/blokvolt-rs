@@ -164,5 +164,8 @@
  "cov_points_semi": "Allika {src} ({date}) andmetel on avalikke ja poolavalikke laadimispunkte {n}. BlokVolt näitab avatud andmete põhjal avalikke laadimiskohti: {m}; ühes kohas on sageli mitu laadimispunkti.",
  "cov_stations": "Allika {src} ({date}) andmetel on avalikke laadimisjaamu {n}. BlokVolt näitab avatud andmete põhjal avalikke laadimiskohti: {m}.",
  "cov_part": "Avatud andmed katavad siin vaid osa laadijatest.",
- "cov_link": "Allikas"
+ "cov_link": "Allikas",
+ "all_cities": "Kõik linnad ({n})",
+ "all_nets": "Kõik laadimisvõrgud ({n})",
+ "h_more_info": "Hinnad ja maksmine"
 }

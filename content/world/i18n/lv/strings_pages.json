@@ -174,5 +174,8 @@
  "cov_points_semi": "Saskaņā ar {src} datiem ({date}) publisko un daļēji publisko uzlādes punktu skaits ir {n}. BlokVolt rāda publiskas vietas no atvērtajiem datiem: {m}; vienā vietā bieži ir vairāki uzlādes punkti.",
  "cov_stations": "Saskaņā ar {src} datiem ({date}) publisko uzlādes staciju skaits ir {n}. BlokVolt rāda publiskas vietas no atvērtajiem datiem: {m}.",
  "cov_part": "Atvērtie dati šeit aptver tikai daļu lādētāju.",
- "cov_link": "Avots"
+ "cov_link": "Avots",
+ "all_cities": "Visas pilsētas ({n})",
+ "all_nets": "Visi tīkli ({n})",
+ "h_more_info": "Cenas un maksāšana"
 }

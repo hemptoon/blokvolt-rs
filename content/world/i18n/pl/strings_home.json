@@ -16,8 +16,8 @@
   "other": "kraju"
  },
  "data_as_of": "stan danych: {date}",
- "search_label": "Znajdź miasto, kraj lub sieć",
- "search_ph": "Miasto, kraj lub sieć",
+ "search_label": "Znajdź kraj, miasto, sieć lub ceny",
+ "search_ph": "Kraj, miasto, sieć, ceny",
  "search_none": "Nie ma jeszcze strony dla tego wyniku — mapa pokazuje wszystkie lokalizacje.",
  "search_go": "Szukaj",
  "btn_full": "Otwórz pełną mapę",

@@ -14,8 +14,8 @@
   "other": "zemalja"
  },
  "data_as_of": "podaci na dan {date}",
- "search_label": "Pronađite grad, zemlju ili mrežu",
- "search_ph": "Grad, zemlja ili mreža",
+ "search_label": "Pronađite zemlju, grad, mrežu ili cijene",
+ "search_ph": "Zemlja, grad, mreža, cijene",
  "search_none": "Za ovo još nema stranice — na karti su sva mjesta.",
  "search_go": "Traži",
  "btn_full": "Otvorite cijelu kartu",

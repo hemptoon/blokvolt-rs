@@ -95,7 +95,11 @@ html[data-theme="dark"] :is(.wd-tabs,.wh-tabs) button[aria-selected=true]{backgr
 
 /* mini-maps of countries, cities and networks (world_pages.py draws them light, as <img>): the same picture in the dark
    colours — inverted lightness, hues kept (blue points stay blue, light ground turns night) */
-html[data-theme="dark"] .w-mini img{filter:invert(1) hue-rotate(180deg) brightness(1.05);border-color:rgba(255,255,255,.10)!important}
+/* TAILS P2.6: the mini-map file has no ground — the page paints it per theme; centred, full column width, ≤ 70 % of the screen */
+.w-mini{display:block;margin:0 auto;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#F4F4EF;line-height:0}
+.w-mini img{display:block;width:100%;height:auto;max-height:70vh;object-fit:contain;margin:0 auto}
+html[data-theme="dark"] .w-mini{background:#0B0F17}
+html[data-theme="dark"] .w-mini{border-color:rgba(255,255,255,.10)}
 
 /* widget configurator (/map-for-your-site/, world-embed.css): the form in the dark; the preview is the widget itself */
 html[data-theme="dark"] .wz-f small{color:var(--mut)}

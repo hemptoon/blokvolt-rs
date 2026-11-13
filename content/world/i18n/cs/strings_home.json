@@ -16,8 +16,8 @@
   "other": "zemí"
  },
  "data_as_of": "data k {date}",
- "search_label": "Najít město, zemi nebo síť",
- "search_ph": "Město, země nebo síť",
+ "search_label": "Najít zemi, město, síť nebo ceny",
+ "search_ph": "Země, město, síť, ceny",
  "search_none": "Pro toto zatím stránka není – mapa ukazuje všechna místa.",
  "search_go": "Hledat",
  "btn_full": "Otevřít celou mapu",

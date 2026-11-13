@@ -14,8 +14,8 @@
   "other": "valstis"
  },
  "data_as_of": "dati uz {date}",
- "search_label": "Meklēt pilsētu, valsti vai uzlādes tīklu",
- "search_ph": "Pilsēta, valsts vai uzlādes tīkls",
+ "search_label": "Meklēt valsti, pilsētu, uzlādes tīklu vai cenas",
+ "search_ph": "Valsts, pilsēta, tīkls, cenas",
  "search_none": "Tam vēl nav lapas — kartē redzamas visas vietas.",
  "search_go": "Meklēt",
  "btn_full": "Atvērt pilno karti",

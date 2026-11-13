@@ -148,7 +148,16 @@ def site(dist, pages=None):
                             ERR.append(f'rule 4: {f.name} {k} shows {it[4]}, page {nall[k]}')
         chk(n > 100, f'rule 4: only {n} search items checked')
         print(f'rule 4: {n} search suggestions checked against the pages')
-    print(f'site: {n_files} pages, {n_rows} table rows checked')
+    # P3.10: search regions of France are the 13 current ones (the old 22 are aliases)
+    FR13 = {'Grand Est', 'Nouvelle-Aquitaine', 'Auvergne-Rhône-Alpes', 'Bourgogne-Franche-Comté', 'Brittany', 'Centre-Val de Loire', 'Corsica',
+            'Normandy', 'Île-de-France', 'Occitania', 'Hauts-de-France', 'Pays de la Loire', "Provence-Alpes-Côte d'Azur"}
+    fr = set()
+    for f in dist.glob('assets/world/search-en*.json'):
+        d = json.load(open(f, encoding='utf-8'))
+        fr |= {str(i[1])[3:] for i in d.get('items') or [] if i[0] == 'r' and str(i[1]).startswith('FR:')}
+        fr |= {str(i)[3:] for k, i in zip(d.get('k') or '', d.get('id') or []) if k == 'r' and str(i).startswith('FR:')}
+    chk(fr and fr <= FR13, f'P3.10: French regions in the search: {sorted(fr - FR13)}')
+    print(f'site: {n_files} pages, {n_rows} table rows checked; French regions {len(fr)}')
 
 
 if __name__ == '__main__':

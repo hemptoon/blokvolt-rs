@@ -184,5 +184,8 @@
  "cov_points_semi": "Według danych {src} ({date}) liczba publicznych i półpublicznych punktów ładowania wynosi {n}. BlokVolt pokazuje publiczne lokalizacje z otwartych danych: {m}; w jednej lokalizacji często jest kilka punktów ładowania.",
  "cov_stations": "Według danych {src} ({date}) liczba publicznych stacji ładowania wynosi {n}. BlokVolt pokazuje publiczne lokalizacje z otwartych danych: {m}.",
  "cov_part": "Otwarte dane obejmują tu tylko część ładowarek.",
- "cov_link": "Źródło"
+ "cov_link": "Źródło",
+ "all_cities": "Wszystkie miasta ({n})",
+ "all_nets": "Wszystkie sieci ({n})",
+ "h_more_info": "Ceny i płatności"
 }

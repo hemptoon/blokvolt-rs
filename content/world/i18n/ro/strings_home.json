@@ -14,8 +14,8 @@
   "other": "de țări"
  },
  "data_as_of": "date la {date}",
- "search_label": "Căutați un oraș, o țară sau o rețea",
- "search_ph": "Oraș, țară sau rețea",
+ "search_label": "Căutați o țară, un oraș, o rețea sau prețuri",
+ "search_ph": "Țară, oraș, rețea, prețuri",
  "search_none": "Încă nu există o pagină pentru aceasta — harta arată toate locațiile.",
  "search_go": "Căutați",
  "btn_full": "Deschideți harta completă",

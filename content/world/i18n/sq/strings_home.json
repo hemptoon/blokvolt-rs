@@ -12,8 +12,8 @@
   "other": "shtete"
  },
  "data_as_of": "të dhënat deri më {date}",
- "search_label": "Kërkoni qytet, shtet ose rrjet",
- "search_ph": "Qytet, shtet ose rrjet",
+ "search_label": "Kërkoni shtet, qytet, rrjet ose çmime",
+ "search_ph": "Shtet, qytet, rrjet, çmime",
  "search_none": "Ende nuk ka faqe të veçantë për këtë — harta i tregon të gjitha vendet e karikimit.",
  "search_go": "Kërko",
  "btn_full": "Hapni hartën e plotë",

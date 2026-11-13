@@ -164,5 +164,8 @@
  "cov_points_semi": "Enligt {src} ({date}) finns det {n} publika och semipublika laddpunkter. BlokVolt visar publika laddplatser från öppna data: {m}; en plats har ofta flera laddpunkter.",
  "cov_stations": "Enligt {src} ({date}) finns det {n} publika laddstationer. BlokVolt visar publika laddplatser från öppna data: {m}.",
  "cov_part": "Öppna data täcker här bara en del av laddarna.",
- "cov_link": "Källa"
+ "cov_link": "Källa",
+ "all_cities": "Alla städer ({n})",
+ "all_nets": "Alla nätverk ({n})",
+ "h_more_info": "Priser och betalning"
 }

@@ -164,5 +164,8 @@
  "cov_points_semi": "Laut {src} ({date}) gibt es {n} öffentliche und halböffentliche Ladepunkte. BlokVolt zeigt öffentliche Ladestandorte aus offenen Daten: {m}; ein Standort hat oft mehrere Ladepunkte.",
  "cov_stations": "Laut {src} ({date}) gibt es {n} öffentliche Ladestationen. BlokVolt zeigt öffentliche Ladestandorte aus offenen Daten: {m}.",
  "cov_part": "Offene Daten erfassen hier nur einen Teil der Ladesäulen.",
- "cov_link": "Quelle"
+ "cov_link": "Quelle",
+ "all_cities": "Alle Städte ({n})",
+ "all_nets": "Alle Ladenetze ({n})",
+ "h_more_info": "Preise und Bezahlung"
 }

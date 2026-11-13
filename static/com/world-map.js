@@ -8,7 +8,11 @@
    State lives in the URL (contract §8): ?snaga=ac,dc,hpc,nepoznato &mreza=<slug>,… &p=40|50|70 &pristup=javni|svi
    &izvor=drz,zaj,mre,bv (Napredno) &zemlja=<cc> &grad=<geonameid> &id=<pid>, the view in the hash #z/lat/lon.
    Reports ("Prijavi grešku") go to cfg.reports_api (contract §10). This file does not touch map.js, bv.js or bv.css. */
-import * as maplibregl from '/assets/vendor/maplibre-6.11.1/maplibre-gl.mjs';
+// TAILS P2.7 (13.11.2026): MapLibre (≈ 1 MB) is imported when the live map starts, not with the page — on a phone the
+// first screen is a picture of our points (cfg.poster, the pictures of the home) until the first touch, scroll or key;
+// a link with parameters or a view (?grad=, ?mreza=, ?id=, ?zemlja=, #z/lat/lon) and wider screens start at once
+const ML_URL = '/assets/vendor/maplibre-6.11.1/maplibre-gl.mjs';
+let maplibregl = null;
 
 const d = document;
 // read before MapLibre (hash: true) writes its own #z/lat/lon: a link with a view keeps it, zemlja/grad then do not move it
@@ -324,12 +328,19 @@ function selPoint(c) {
   if (s) s.setData({ type: 'FeatureCollection', features: c ? [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: c } }] : [] });
 }
 
-function initMap() {
+async function initMap(view) {
+  try {
+    maplibregl = await import(ML_URL);
+    if (!window.pmtiles) await new Promise((ok, no) => { const s = d.querySelector('script[src*="pmtiles"]'); if (!s) return no(); s.addEventListener('load', ok); s.addEventListener('error', no); });
+  } catch (e) {
+    msg(t('no_map'));
+    return;
+  }
   const proto = new window.pmtiles.Protocol();
   maplibregl.addProtocol('pmtiles', proto.tile);
   try {
     map = new maplibregl.Map({
-      container: 'map', style: DARK() ? DARK_BG : cfg.style, center: cfg.center, zoom: cfg.zoom, minZoom: 1.5, maxZoom: 18, hash: true,
+      container: 'map', style: DARK() ? DARK_BG : cfg.style, center: (view || cfg).center, zoom: (view || cfg).zoom, minZoom: 1.5, maxZoom: 18, hash: true,
       attributionControl: false, dragRotate: false, pitchWithRotate: false, cooperativeGestures: !!EMB
     });
   } catch (e) {
@@ -1025,11 +1036,38 @@ function setTheme(x) {
 }
 if (!EMB) d.addEventListener('bv-theme', e => setTheme(e.detail === 'dark' ? 'tamna' : 'svetla'));
 
+// ------------------------------------------------------------------ poster → live map (TAILS P2.7)
+function startMap() {
+  const P = $('wm-poster'), pic = cfg.poster;
+  const plain = !location.search.replace(/^\?/, '') && !HAD_HASH;
+  if (EMB || !P || !pic || !plain || !matchMedia('(max-width: 720px)').matches) {
+    if (P) P.hidden = true;
+    initMap();
+    return;
+  }
+  let go = false;
+  const evs = ['pointerdown', 'touchstart', 'keydown', 'wheel'];
+  const start = () => {
+    if (go) return;
+    go = true;
+    evs.forEach(x => d.removeEventListener(x, start, true));
+    window.removeEventListener('scroll', start);
+    // the live map opens exactly where the picture is: same centre, zoom scaled like object-fit: cover
+    const el = $('map'), W = el.clientWidth || pic.w, H = el.clientHeight || pic.h;
+    initMap({ center: pic.c, zoom: pic.z + Math.log2(Math.max(W / pic.w, H / pic.h)) }).then(() => {
+      if (!map) { P.hidden = true; return; }
+      map.once('idle', () => { P.classList.add('is-gone'); setTimeout(() => { P.hidden = true; }, 300); });
+    });
+  };
+  evs.forEach(x => d.addEventListener(x, start, { capture: true, passive: true }));
+  window.addEventListener('scroll', start, { passive: true });
+}
+
 // ------------------------------------------------------------------ start
 readUrl();
 paintTheme();
 paintFilters();
-initMap();
+startMap();
 if (EMB) embedInit();
 // for debugging and scripts/qa/world_map_test.py (read only by tests; nothing on the page depends on it)
 window.BVWorldMap = { get map() { return map; }, get ready() { return ready; }, get manifest() { return M; }, state: st, openCard };

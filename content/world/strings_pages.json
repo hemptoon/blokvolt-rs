@@ -678,5 +678,20 @@
   "en": "Source",
   "sr": "Izvor",
   "ru": "Источник"
+ },
+ "all_cities": {
+  "en": "All cities ({n})",
+  "sr": "Svi gradovi ({n})",
+  "ru": "Все города ({n})"
+ },
+ "all_nets": {
+  "en": "All networks ({n})",
+  "sr": "Sve mreže ({n})",
+  "ru": "Все сети ({n})"
+ },
+ "h_more_info": {
+  "en": "Prices and payment",
+  "sr": "Cene i plaćanje",
+  "ru": "Цены и оплата"
  }
 }

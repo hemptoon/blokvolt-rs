@@ -35,14 +35,14 @@
   "ru": "данные на {date}"
  },
  "search_label": {
-  "en": "Find a city, country or network",
-  "sr": "Pronađite grad, zemlju ili mrežu",
-  "ru": "Найти город, страну или сеть"
+  "en": "Find a country, city, network or prices",
+  "sr": "Pronađite zemlju, grad, mrežu ili cene",
+  "ru": "Найти страну, город, сеть или цены"
  },
  "search_ph": {
-  "en": "City, country or network",
-  "sr": "Grad, zemlja ili mreža",
-  "ru": "Город, страна или сеть"
+  "en": "Country, city, network, prices",
+  "sr": "Zemlja, grad, mreža, cene",
+  "ru": "Страна, город, сеть, цены"
  },
  "search_none": {
   "en": "No page for this yet — the map shows every place.",

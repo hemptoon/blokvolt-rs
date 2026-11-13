@@ -174,5 +174,8 @@
  "cov_points_semi": "Segundo {src} ({date}), existem {n} pontos de carregamento públicos e semipúblicos. O BlokVolt mostra os locais públicos a partir de dados abertos: {m}; um local tem muitas vezes vários pontos de carregamento.",
  "cov_stations": "Segundo {src} ({date}), existem {n} postos de carregamento públicos. O BlokVolt mostra os locais públicos a partir de dados abertos: {m}.",
  "cov_part": "Os dados abertos cobrem aqui apenas uma parte dos carregadores.",
- "cov_link": "Fonte"
+ "cov_link": "Fonte",
+ "all_cities": "Todas as cidades ({n})",
+ "all_nets": "Todas as redes ({n})",
+ "h_more_info": "Preços e pagamento"
 }
