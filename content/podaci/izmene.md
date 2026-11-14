@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 12.11.2026
+updated: 14.11.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-11-12
+modified: 2026-11-14
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 14. novembar 2026
+
+- Novi vodič [Beograd–Niš električnim autom](/javno-punjenje/beograd-nis-elektricnim-autom/): punjači na autoputu A1 u oba smera, da li auto sa baterijom od oko 60 kWh stiže bez punjenja, putarina i cena struje za ceo put.
+
 ## 12. novembar 2026
 
 - Novi vodič [Državni punjači na autoputu: kako pokrenuti punjenje](/javno-punjenje/drzavni-punjaci-orion-aplikacija/): punjači JP „Putevi Srbije“ su za sada besplatni, a punjenje se pokreće samo preko aplikacije Orion eMobility. Redosled koraka, kabl na AC i DC punjačima, kraj punjenja i šta proveriti ako punjenje ne krene.

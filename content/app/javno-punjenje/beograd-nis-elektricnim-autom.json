@@ -1,0 +1,56 @@
+{
+  "sr": {
+    "hero": {
+      "value": "240 km",
+      "label": "od centra Beograda do centra Niša"
+    },
+    "brief": [
+      "Auto sa baterijom od oko 60 kWh leti stiže do Niša bez punjenja, a zimi mu treba jedna dopuna",
+      "Državni punjači na putu ka Nišu su za sada besplatni",
+      "Ka Beogradu državni punjači na putu ne rade, a radi OMV Lapovo Sever"
+    ],
+    "keys": [
+      {"value": "1.170 RSD", "label": "putarina do izlaza Niš sever", "icon": "road"},
+      {"value": "990 RSD", "label": "električni auto uz elektronsku naplatu", "icon": "receipt"},
+      {"value": "42 kWh", "label": "VW ID.3 Pro za ceo put leti", "icon": "battery"},
+      {"value": "54 kWh", "label": "VW ID.3 Pro za ceo put zimi", "icon": "battery"}
+    ],
+    "important": "Pre polaska u aplikaciji proverite da li punjač radi i da li je slobodan"
+  },
+  "en": {
+    "hero": {
+      "value": "240 km",
+      "label": "from central Belgrade to central Niš"
+    },
+    "brief": [
+      "With about 60 kWh a car reaches Niš without charging in summer; in winter it needs one top-up",
+      "State chargers on the way to Niš are free for now",
+      "Towards Belgrade the state chargers on the way are not working; OMV Lapovo Sever is working"
+    ],
+    "keys": [
+      {"value": "1.170 RSD", "label": "toll to the Niš North exit", "icon": "road"},
+      {"value": "990 RSD", "label": "electric car, electronic toll collection", "icon": "receipt"},
+      {"value": "42 kWh", "label": "VW ID.3 Pro, whole trip in summer", "icon": "battery"},
+      {"value": "54 kWh", "label": "VW ID.3 Pro, whole trip in winter", "icon": "battery"}
+    ],
+    "important": "Before you set off, check in the app that the charger is working and free"
+  },
+  "ru": {
+    "hero": {
+      "value": "240 км",
+      "label": "от центра Белграда до центра Ниша"
+    },
+    "brief": [
+      "С батареей около 60 кВт·ч летом машина доезжает до Ниша без зарядки, зимой нужна подзарядка",
+      "Государственные зарядки по пути в Ниш пока бесплатны",
+      "В сторону Белграда государственные зарядки на пути не работают, работает OMV Lapovo Sever"
+    ],
+    "keys": [
+      {"value": "1.170 RSD", "label": "плата за дорогу до съезда Ниш-север", "icon": "road"},
+      {"value": "990 RSD", "label": "электромобиль с электронной оплатой", "icon": "receipt"},
+      {"value": "42 кВт·ч", "label": "VW ID.3 Pro, весь путь летом", "icon": "battery"},
+      {"value": "54 кВт·ч", "label": "VW ID.3 Pro, весь путь зимой", "icon": "battery"}
+    ],
+    "important": "Перед выездом проверьте в приложении, что зарядка работает и свободна"
+  }
+}
