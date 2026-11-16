@@ -38,7 +38,7 @@ const CASES = [
   ['sr', 'Novi Sad', '/gradovi/novi-sad/', 1],
   ['sr', 'Beograd', '/gradovi/beograd/', 1],
   ['sr', 'cacak', '/gradovi/cacak/', 1],
-  ['sr', 'nis', '/gradovi/nis/', 3],
+  ['sr', 'nis', ['/gradovi/nis/', '/javno-punjenje/beograd-nis-elektricnim-autom/'], 3],   // "nis" is also NIS Petrol; since the Belgrade–Niš guide (14.11.2026) the town page is 4th
   ['sr', 'пуњач за стан', ['/punjenje-elektricnog-auta-u-zgradi', '/punjac-u-zgradi-skupstina', '/ko-placa-struju-za-punjenje'], 3],
   ['sr', 'субвенција', '/podaci/subvencije-2026/', 3],
   ['sr', 'chargego', ['/javno-punjenje/chargego/', '/firme/chargego/'], 2],
