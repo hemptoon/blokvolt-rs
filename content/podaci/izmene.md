@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 16.11.2026
+updated: 17.11.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-11-16
+modified: 2026-11-17
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 17. novembar 2026
+
+- [Mapa punjača](/mapa/): punjač u dvorištu stambene zgrade u Kisačkoj 66 u Novom Sadu skinut je sa mape. Po stranici zgrade na sajtu investitora namenjen je samo stanarima, a mapa prikazuje punjače koje mogu da koriste i drugi vozači.
+
 ## 16. novembar 2026
 
 - [Mapa punjača](/mapa/): mesečna provera svih punjača u Srbiji (16. novembar) po spiskovima mreža (Charge&GO i roming, Tesla, JP „Putevi Srbije“, Emobility Spectra, Yesla, EKO, Parking servis Beograd), sajtovima vlasnika i turističkih organizacija i Google mapama. Na mapi je 400 punjača, „Potvrđeno“ ih je 260. Novo: Dima Park u Velikoj Plani (Orion eMobility), EKO Žednik 2, EKO Vrčin 2 i EKO Niš 2, garaža Pionirski park u Beogradu, Radisson Hotel Park u Nišu i četiri punjača sa spiska Emobility Spectra (Čenej, Jagodina, Pirot). Potvrđeno je još devet punjača, među njima javna garaža u Ulici kneza Miloša u Kragujevcu i parkiralište Bežanijska kosa. Tri OMV stanice koje Charge&GO vodi kao „uskoro na mreži“ (Kikinda, Gornji Milanovac, Dragoslava Srejovića u Beogradu) skinute su dok ne prorade. Kod EKO punjača sada stoje snaga (AC 22 kW i DC 50 kW) i način punjenja, a kod deset hotela i restorana da li se punjenje plaća.

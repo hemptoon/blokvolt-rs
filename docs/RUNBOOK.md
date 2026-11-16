@@ -800,6 +800,8 @@ A list without a network can carry its own „Kako se puni ovde“: `kako` in it
 a site's own `kako` wins; map.js/evomap use it when the network has none (Best in Parking: from the price list and
 instructions in the Modena garage, owner's photos 02.11.2026). A site's `cab` (own cable) is carried too. Modena's point
 is the owner's on-site one (`loc.q = field`, 09.11.2026), not the operator's pin.
+A charger only the residents of a building may use is not put on the map, even when the owner's page names it
+(owner's decision 17.11.2026, Erker, Kisačka 66, Novi Sad: „убери с публичной карты“).
 Never publish a person's name from an app's „owner“ field (sole proprietors are named after the owner). When a list is
 read again, change its date in `lists`, add or remove sites, and say in the report which disappeared. Since 16.11.2026
 the Spectra list is read from the network's own web portal (Etrel: `myspectra.etrel.com/DuskyWebApi//noauthlocations`
