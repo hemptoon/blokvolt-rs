@@ -11,8 +11,8 @@
    "oh": {"t": "0–24", "h24": true, "src": "tesla.com"},
    "ax": {"who": "tesla", "t": "Samo Tesla vozila"},
    "fee": {"free": "tesla", "t": "0 RSD za Tesla vozila", "src": "po vozačima 2022–2024, potvrđeno i u septembru 2026", "note": "Tesla cenu za Srbiju ne objavljuje. Punjenje može postati naplatno bez najave."},
-   "v": {"s": "ok", "by": ["te"], "d": "28.09.2026"},
-   "src": [{"d": "te", "l": "Tesla — Beograd", "u": "https://www.tesla.com/findus/location/supercharger/belgradeavasupercharger", "upd": "2026-09-28"}]
+   "v": {"s": "ok", "by": ["te"], "d": "16.11.2026"},
+   "src": [{"d": "te", "l": "Tesla — Beograd", "u": "https://www.tesla.com/findus/location/supercharger/belgradeavasupercharger", "upd": "2026-11-16"}]
   },
   "ocm-150106": {
    "n": "Tesla Supercharger Aleksinac",
@@ -23,8 +23,8 @@
    "oh": {"t": "0–24", "h24": true, "src": "tesla.com"},
    "ax": {"who": "tesla", "t": "Samo Tesla vozila"},
    "fee": {"free": "tesla", "t": "0 RSD za Tesla vozila", "src": "po vozačima 2022–2024, potvrđeno i u septembru 2026", "note": "Tesla cenu za Srbiju ne objavljuje. Punjenje može postati naplatno bez najave."},
-   "v": {"s": "ok", "by": ["te"], "d": "28.09.2026"},
-   "src": [{"d": "te", "l": "Tesla — Aleksinac", "u": "https://www.tesla.com/findus/location/supercharger/aleksinacsupercharger", "upd": "2026-09-28"}]
+   "v": {"s": "ok", "by": ["te"], "d": "16.11.2026"},
+   "src": [{"d": "te", "l": "Tesla — Aleksinac", "u": "https://www.tesla.com/findus/location/supercharger/aleksinacsupercharger", "upd": "2026-11-16"}]
   },
   "osm-n6797205414": {
    "n": "IKEA Beograd — besplatni punjači",
@@ -35,8 +35,8 @@
    "oh": {"t": "10–21 (kartica na info pultu)", "h24": false, "src": "IKEA", "w": [[600, 1260]]},
    "ax": {"who": "all", "how": "card-desk", "t": "Kartica na info pultu"},
    "fee": {"free": "all", "t": "Besplatno", "src": "IKEA, septembar 2026"},
-   "v": {"s": "ok", "by": ["own"], "d": "28.09.2026"},
-   "src": [{"d": "own", "l": "IKEA", "u": "https://www.ikea.com/rs/sr/customer-service/services/punjac-za-elektricna-vozila-pub9e55db50/", "upd": "2026-09-28"}]
+   "v": {"s": "ok", "by": ["own"], "d": "16.11.2026"},
+   "src": [{"d": "own", "l": "IKEA", "u": "https://www.ikea.com/rs/sr/customer-service/services/punjac-za-elektricna-vozila-pub9e55db50/", "upd": "2026-11-16"}]
   },
   "ocm-125797": {
    "a": "Obilićev venac 14–16, 11000 Beograd",
@@ -44,8 +44,8 @@
    "loc": {"q": "site", "venue": "Javna garaža Obilićev venac", "find": "Ulaz u garažu iz Ulice maršala Birjuzova. Kabl je kod obezbeđenja (podatak iz 2021)."},
    "oh": {"t": "0–24", "h24": true, "src": "Parking servis"},
    "ax": {"who": "all", "how": "staff", "t": "Plaća se parking"},
-   "v": {"s": "ok", "by": ["own"], "d": "28.09.2026"},
-   "src": [{"d": "own", "l": "Parking servis", "u": "https://www.parking-servis.co.rs/eng/garaza-obilicev-venac", "upd": "2026-09-28"}, {"d": "own", "l": "N1 — cene garaža Parking servisa od 2025", "u": "https://n1info.rs/biznis/parking-servis-konacno-objavio-kompletan-cenovnik-pojedina-poskupljenja-i-118-odsto/", "upd": "2024-12-25"}],
+   "v": {"s": "ok", "by": ["own"], "d": "16.11.2026"},
+   "src": [{"d": "own", "l": "Parking servis", "u": "https://www.parking-servis.co.rs/garaza-obilicev-venac", "upd": "2026-11-16"}, {"d": "own", "l": "N1 — cene garaža Parking servisa od 2025", "u": "https://n1info.rs/biznis/parking-servis-konacno-objavio-kompletan-cenovnik-pojedina-poskupljenja-i-118-odsto/", "upd": "2024-12-25"}],
    "park": {"t": "Parking 150 RSD po satu (opšta cena od januara 2025)", "src": "N1, 25.12.2024", "d": "25.12.2024"}
   },
   "osm-w1451968119": {
@@ -96,10 +96,10 @@
   "ocm-296382": {
    "a": "Miladina Pećinara 2a, Zlatibor",
    "ax": {"who": "all", "limit": "Najviše 3 sata", "t": "Dostupno svima"},
-   "fee": {"free": "all", "t": "Besplatno", "src": "Turistička organizacija Zlatibor, 25.10.2026"},
-   "v": {"s": "ok", "by": ["to"], "d": "25.10.2026"},
+   "fee": {"free": "all", "t": "Besplatno", "src": "Turistička organizacija Zlatibor, 16.11.2026"},
+   "v": {"s": "ok", "by": ["to"], "d": "16.11.2026"},
    "note": "Po spisku Turističke organizacije Zlatibor punjač je sporog tipa, besplatan i dostupan svima, najviše 3 sata.",
-   "src": [{"d": "own", "l": "Turistička organizacija Zlatibor", "u": "https://www.zlatibor.org.rs/sr/novosti/vesti/punjaci-za-elektricne-automobile-na-zlatiboru", "upd": "2026-10-25"}]
+   "src": [{"d": "own", "l": "Turistička organizacija Zlatibor", "u": "https://www.zlatibor.org.rs/sr/novosti/vesti/punjaci-za-elektricne-automobile-na-zlatiboru", "upd": "2026-11-16"}]
   },
   "osm-n9630355880": {
    "c": [["type2", "ac", 22, 1]], "dc": null, "ac": 22,

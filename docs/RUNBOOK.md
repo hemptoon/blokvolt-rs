@@ -726,7 +726,8 @@ Inputs in `content/mapa/mreze/` (dates in `izvori.json`, change them when a list
   `id|lat|lon|name|street|city|access|icon|connectors`; `access=test` and Skopje are skipped.
 - `roaming-raw.txt` — the roaming layer of the same portal (Hubject: RS*ORI = Orion eMobility, also the
   state chargers; RS*007/RO*PLG = network not published), `lat|lon|op|n|statuses|date|name|street|city|plugs|power`.
-- `tesla.json` — Tesla's own lists of Superchargers and Destination chargers (tesla.com/sl_SI/findus/list/…).
+- `tesla.json` — Tesla's own lists of Superchargers and Destination chargers (`tesla.com/findus/list/superchargers/Serbia`
+  and `…/chargers/Serbia`, without a locale; the `/destinationchargers/` path renders empty).
 - `content/mapa/provera.json` — the hand check: `x` (remove, with the reason), `dup` (join into another
   station), `fix` ([lat, lon] from a network's list), `g` = `g` / `g_old` / `g_none` / `prob` for stations
   on no list (Google check). Stations missing from this file and from the lists count as `g_none`.
@@ -743,6 +744,13 @@ Refresh (browser): open client.chargego.rs, read the element with `data-location
 response of the roaming POST `api/public/locations/locations-update` (needs the page's csrf `_token`) into a
 page variable, then copy it out in 900-character slices with `javascript_tool` (its output is cut at about
 1,000 characters, and `?`, `=` must be replaced before returning). Rewrite the two raw files, update the dates.
+Quicker (16.11.2026): build the lines inside the page, write them into a `<pre>` in an `<article>` and read it with
+`get_page_text`. The `data-locations` element leaves out a location while it is closed (night, restricted hours: 13 of
+91 at 21–23 h on 16.11.2026) — keep such a location from the last list with its old point. The roaming POST gives
+positions only; operator, name, address, plugs and power come from `<#baseURL url>evse-location-info/<lat>/<lon>` (one
+request a point, 60 a minute at most, ~1.2 s apart). Filter the points by country boxes first (16.11.2026: 496 points,
+68 to read, 94 Serbian records) and run the loop in the foreground tab in batches of ~25 that end within 35 s —
+background tabs throttle timers. Never a retry loop on 429 and never ids that are not on the list.
 Google check for the `g_*` stations: search "EV charging station" at the station's coordinates (zoom 18),
 open the nearest place within ~100 m, sort reviews by newest; a review younger than 12 months = `g`.
 Do not batch more than two places per browser call; Google rate-limits fast loops.
@@ -793,7 +801,14 @@ a site's own `kako` wins; map.js/evomap use it when the network has none (Best i
 instructions in the Modena garage, owner's photos 02.11.2026). A site's `cab` (own cable) is carried too. Modena's point
 is the owner's on-site one (`loc.q = field`, 09.11.2026), not the operator's pin.
 Never publish a person's name from an app's „owner“ field (sole proprietors are named after the owner). When a list is
-read again, change its date in `lists`, add or remove sites, and say in the report which disappeared (20.10.2026: AK
+read again, change its date in `lists`, add or remove sites, and say in the report which disappeared. Since 16.11.2026
+the Spectra list is read from the network's own web portal (Etrel: `myspectra.etrel.com/DuskyWebApi//noauthlocations`
+with the map's centre and radius, `…/noauthlocation?Id=<Id>` for connectors and hours, roaming off) — no phone robot;
+Yesla's web map `yesla.rs/app.html` reads the same five sites as the app. Owners' lists read the same day: EKO
+(`ekoserbia.com …/usluge/eko-racing-cafe/`: Sopot, Žednik 1 and 2, Ćuprija 1 and 2, Vrčin 2, Niš 2 — AC 22 kW and DC 50 kW,
+points from its station finder `find-a-station`, `data-latitude`), Parking servis Beograd (each garage page names its
+„parking-mesta sa punjačima“: Obilićev venac 6, Pinki 2, Pionirski park 2, Bežanijska kosa 2), TO Zlatibor (10 places)
+(20.10.2026: AK
 Tasić Jagodina and CITY TAXI Novi Sad were no longer in the Spectra app).
 
 #### 3.11f Places to stay with a charger (/javno-punjenje/smestaj-sa-punjacem/, since 25.10.2026)
@@ -914,6 +929,11 @@ decimal as usual, the build adds it. Keep the file's hand layout: after a script
   kW, RSD, n]]}` (one line per current, power and price), `cab` when the app says "bez kabla"/"sopstveni kabl",
   `oh {t, h24: false, w, src, d}` from the app's closing notes, `loc.find` (floor, gate; the Futura Park phone number
   is not published — "broj za poziv je u aplikaciji"). The test site Nova Crnja (`cg-74`) is not added.
+  Since 16.11.2026 `chargego-app.txt` is read from the network's web client instead of the Android app: for every
+  location of the list, `client.chargego.rs/api/v1/locations/location-info/<id>` (connectors with plug name, power,
+  price per minute with VAT, accessibility, open hours) — the same fields; a price shown as `?` or 0,00 is left out. A
+  location whose name says „uskoro na mreži“ is treated like a test site and not added until the network drops the note
+  (`_app_notes()` `soon`; 16.11.2026: OMV Kikinda, Gornji Milanovac, Dragoslava Srejovića).
 - **Roaming layer.** `ROAM_NET`: `RS*ORI` = Orion eMobility, `RS*007` = eDrive (Voltic d.o.o.); `EVSE_NAMES` names
   the eDrive EVSEs (E00040 Ingrap-Omni Valjevo, …) because the roaming map shows only the EVSE id.
 - **Open data stays open data.** `punjaci.json` (ODbL) has only the open snapshots, the `v` flags and the state
@@ -1399,7 +1419,10 @@ to the committed lists without the region-data cache). So a correction survives 
   monthly refresh and remove the entry when the source has fixed itself. Each run prints
   `<CC>: hand corrections: removed N, changed N, added N, warnings N`.
 - An unknown key or a missing `source_url`/`checked` stops the script. New entries: the same rules for every network.
-  Log a real change in `izmene.md`. The first set (270 entries: B1–B3 checks, MAPFIX 09.11.2026) matched the region-data
+  Log a real change in `izmene.md`. Croatia's ELEN (HEP) publishes its locations on its own Etrel portal
+  (`myhep.etrel.com/DuskyWebApi//noauthlocations?…&searchRadius=…`, details `noauthlocation?Id=`): 230 on 16.11.2026 —
+  a station within 60 m gets `v` mr, a missing one is added at the portal's own point (ids `kar4-hr-hrhep-<code>`).
+  The first set (270 entries: B1–B3 checks, MAPFIX 09.11.2026) matched the region-data
   of 03.11.2026 without a warning. The words "Potvrđeno … na stranici mreže" of the blokvolt.com cards are `v_mr`, `v_te`,
   `v_own` in the section strings.
 

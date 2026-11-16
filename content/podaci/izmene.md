@@ -4,13 +4,18 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 14.11.2026
+updated: 16.11.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-11-14
+modified: 2026-11-16
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 16. novembar 2026
+
+- [Mapa punjača](/mapa/): mesečna provera svih punjača u Srbiji (16. novembar) po spiskovima mreža (Charge&GO i roming, Tesla, JP „Putevi Srbije“, Emobility Spectra, Yesla, EKO, Parking servis Beograd), sajtovima vlasnika i turističkih organizacija i Google mapama. Na mapi je 400 punjača, „Potvrđeno“ ih je 260. Novo: Dima Park u Velikoj Plani (Orion eMobility), EKO Žednik 2, EKO Vrčin 2 i EKO Niš 2, garaža Pionirski park u Beogradu, Radisson Hotel Park u Nišu i četiri punjača sa spiska Emobility Spectra (Čenej, Jagodina, Pirot). Potvrđeno je još devet punjača, među njima javna garaža u Ulici kneza Miloša u Kragujevcu i parkiralište Bežanijska kosa. Tri OMV stanice koje Charge&GO vodi kao „uskoro na mreži“ (Kikinda, Gornji Milanovac, Dragoslava Srejovića u Beogradu) skinute su dok ne prorade. Kod EKO punjača sada stoje snaga (AC 22 kW i DC 50 kW) i način punjenja, a kod deset hotela i restorana da li se punjenje plaća.
+- Mape susednih zemalja na blokvolt.com: Hrvatska ima 715 punjača, 347 sa oznakom „Potvrđeno“ (spiskovi ELEN-a, Tesle, Qela, Eleporta i Petrola; 58 dodato), a u Sloveniji je prvi put potvrđeno 50 punjača po spiskovima Tesle i Lidla, uz četiri uklonjena dupla zapisa. U Bosni i Hercegovini i Severnoj Makedoniji dodato je šest punjača sa spiskova EVN-a i e-GO-a, a još pet je potvrđeno po spiskovima EVN-a, e-GO-a i Tesle.
+
 ## 14. novembar 2026
 
 - Novi vodič [Beograd–Niš električnim autom](/javno-punjenje/beograd-nis-elektricnim-autom/): punjači na autoputu A1 u oba smera, da li auto sa baterijom od oko 60 kWh stiže bez punjenja, putarina i cena struje za ceo put.

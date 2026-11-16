@@ -10,7 +10,7 @@ path: /javno-punjenje/smestaj-sa-punjacem/
 published: 2026-10-25
 modified: 2026-10-25
 priority: 0.7
-sources: Tesla — Destination Charging, Srbija :: https://www.tesla.com/sl_SI/findus/list/chargers/Serbia
+sources: Tesla — Destination Charging, Srbija :: https://www.tesla.com/findus/list/chargers/Serbia
 ---
 <div class="sum" markdown="1">
 - Na spisku su samo mesta za koja **sajt smeštaja** ili **mreža punjača** kaže da gosti mogu da pune

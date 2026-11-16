@@ -502,7 +502,7 @@ NAME_FIX = {
 }
 CITY_FIX = {'belgrade': 'Beograd', 'unknown': '', 'vojvodina': '', 'bajina basta': 'Bajina Bašta', 'loznica 15300': 'Loznica',
             'ub': 'Ub', 'indjija': 'Inđija', 'krusevac': 'Kruševac', 'razanj': 'Ražanj', 'cicevac': 'Ćićevac', 'kosevi': 'Koševi',
-            'vrnjacka banja': 'Vrnjačka Banja', 'pecinci': 'Pećinci', 'sokolici': 'Sokolići', 'jagodina 35000': 'Jagodina'}
+            'vrnjacka banja': 'Vrnjačka Banja', 'pecinci': 'Pećinci', 'sokolici': 'Sokolići', "sokoli'i=": 'Sokolići', 'jagodina 35000': 'Jagodina'}
 KEEP_UP = {'OMV', 'BIG', 'NIS', 'BEX', 'HBIS', 'NCR', 'BMW', 'ABB', 'KPM', 'MIF', 'OBD2', 'FMC', 'MIND', 'SIRIUS'}
 PLUS_CODE = r'\b[23456789CFGHJMPQRVWX]{4}\+[23456789CFGHJMPQRVWX]{2,3}\b'
 # roaming operators of the Charge&GO roaming map: RS*ORI = Orion eMobility; RS*007 = eDrive (Voltic d.o.o.) — its EVSE
@@ -741,7 +741,8 @@ def _app_notes(names):
     """The network's notes in the app names -> cable, closed windows [(from, to, kind) minutes; kind r = restricted access,
     u = unavailable], how to find it."""
     txt = ' / '.join(sorted(set(names)))
-    out = {'cable': bool(re.search(r'(?i)no cable', txt)), 'closed': [], 'find': [], 'phone': bool(re.search(r'(?i)\bcall\b', txt))}
+    out = {'cable': bool(re.search(r'(?i)no cable', txt)), 'closed': [], 'find': [], 'phone': bool(re.search(r'(?i)\bcall\b', txt)),
+           'soon': bool(re.search(r'(?i)uskoro na mre', txt))}   # "(uskoro na mreži)": the network says the site is not open yet (16.11.2026)
     for m in re.finditer(r'(?i)restricted access\s*(\d{1,2})(?::(\d{2}))?\s*-\s*(\d{1,2})(?::(\d{2}))?', txt):
         w = (_hm(m.group(1), m.group(2)), _hm(m.group(3), m.group(4)), 'r')
         if w not in out['closed']:
@@ -829,6 +830,12 @@ def app_layer(sites, meta):
             continue
         site = best[0][2]
         notes = _app_notes([c[1] for c in conns])
+        if notes['soon']:
+            # the network's own name says "uskoro na mreži" (coming soon to the network): treated like a site in trial
+            # operation — not added to the map until the network drops the note (OMV Kikinda, Gornji Milanovac, Dragoslava
+            # Srejovića on 16.11.2026; OMV's own list does not name them either)
+            site['test'] = True
+            print('chargego-app.txt: not open yet (uskoro na mreži):', site['id'], site['n'])
         ac_kw = [c[2] for c in site['c'] if c[1] == 'ac' and c[2]]
         dc_kw = [c[2] for c in site['c'] if c[1] == 'dc' and c[2]]
 

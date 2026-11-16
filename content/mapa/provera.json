@@ -1,6 +1,6 @@
 {
  "about": "Ručna provera punjača koji nisu na spiskovima mreža (content/mapa/mreze/). Za svaki: ukloni (x), spoji sa drugim (dup), pomeri na tačan položaj (fix) ili napomena uz oznaku 'nije potvrđeno'. g = postoji na Google mapama sa recenzijom mlađom od 12 meseci (samo naš zaključak, bez preuzimanja sadržaja); g_old = postoji na Google mapama, ali bez novijih recenzija; g_none = nema ga na Google mapama; prob = skorašnje recenzije kažu da ne radi. Videti docs/RUNBOOK.md §3.11.",
- "checked": "28.10.2026",
+ "checked": "16.11.2026",
  "stations": {
   "osm-n11608859730": {
    "x": "punjač za bicikle"
@@ -81,13 +81,13 @@
    "g": "g_old"
   },
   "osm-n10869327403": {
-   "g": "g_old"
+   "g": "g"
   },
   "osm-n9630355880": {
    "g": "g_old"
   },
   "osm-n10864765534": {
-   "g": "g_old"
+   "g": "g"
   },
   "osm-n10961952025": {
    "g": "g_old"
@@ -159,7 +159,7 @@
    "g": "g_none"
   },
   "osm-n14103645539": {
-   "g": "g_none"
+   "g": "g_old"
   },
   "ocm-475708": {
    "g": "g_none"
@@ -192,7 +192,7 @@
    "g": "g_old"
   },
   "osm-n10078413138": {
-   "g": "g_none"
+   "g": "g_old"
   },
   "osm-n9249259411": {
    "g": "g_none"

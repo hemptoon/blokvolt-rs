@@ -2,7 +2,7 @@
 # "Kako se puni ovde", "Moj auto" with the cost per km, "Najbliži punjač" (with a fixed location), the drivers' short
 # answers and the "Izdvojeno" line. /api/* is answered with sample data and every POST is recorded.
 # Usage (server running, see cfserve.py): python3 scripts/qa/map_v2_test.py [shots-dir]
-import asyncio, json, re, sys
+import asyncio, datetime, json, re, sys
 from pathlib import Path
 from playwright.async_api import async_playwright
 
@@ -27,6 +27,12 @@ async def main():
         for w, h, tag in ((1440, 900, 'd'), (390, 844, 'm')):
             ctx = await b.new_context(viewport={'width': w, 'height': h}, geolocation=NOVI_SAD, permissions=['geolocation'],
                                       is_mobile=tag == 'm', has_touch=tag == 'm')
+            # the cost per km adds half of the car's winter factor in November and March and all of it in December–February
+            # (winterShare() in map.js): the expected numbers below are for a month without it, so the page's clock runs
+            # on 15 October at today's time of day (time still flows, timers are untouched)
+            now = datetime.datetime.now()
+            off = int((now - now.replace(year=2026, month=10, day=15)).total_seconds() * 1000)
+            await ctx.add_init_script('(() => { const off = %d, R = Date; class D extends R { constructor(...a) { if (a.length) super(...a); else super(R.now() - off); } static now() { return R.now() - off; } } window.Date = D; })();' % off)
             pg = await ctx.new_page()
             errs, posts = [], []
             pg.on('pageerror', lambda e: errs.append('JS ' + str(e)[:300]))
@@ -59,7 +65,7 @@ async def main():
             # 1. the network's price of every connector, own cable, "Kako se puni ovde"
             t = await card('/mapa/?qa=1#ocm-260806', 'gazprom')
             check('58,33 RSD/min' in t and '16,67 RSD/min' in t and 'DC 50 kW' in t and 'AC 22 kW' in t, f'{tag} per-connector prices (Gazprom Sokolići)')
-            check('Cena ovog punjača u aplikaciji mreže · 05.10.2026' in t, f'{tag} per-connector price source')
+            check(re.search(r'Cena ovog punjača u aplikaciji mreže · \d\d\.\d\d\.\d{4}', t) is not None, f'{tag} per-connector price source')
             check('kako se puni ovde' in t.lower() and await pg.evaluate("document.querySelectorAll('.ccard .hw-steps li').length") == 4, f'{tag} how-to scheme: 4 steps')
             check('rezerviše se najmanje 2.000 RSD' in t, f'{tag} how-to facts under the steps')
             check(await pg.evaluate("document.querySelectorAll('.ccard .cns .cn>i svg').length") >= 1, f'{tag} connector icons')
