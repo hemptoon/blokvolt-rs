@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 17.11.2026
+updated: 18.11.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-11-17
+modified: 2026-11-18
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 18. novembar 2026
+
+- Novi vodič [Nalog električnog auta](/nalog-elektricnog-auta.html): ko još ima pristup autu preko aplikacije proizvođača, kako da zaštitite nalog, šta da proverite pri kupovini polovnog auta i auta za kinesko tržište i šta da radite kad izgubite pristup. Link je dodat i u spisak provera na stranici [polovni električni automobili](/elektricni-automobili/polovni/).
+
 ## 17. novembar 2026
 
 - [Mapa punjača](/mapa/): punjač u dvorištu stambene zgrade u Kisačkoj 66 u Novom Sadu skinut je sa mape. Po stranici zgrade na sajtu investitora namenjen je samo stanarima, a mapa prikazuje punjače koje mogu da koriste i drugi vozači.

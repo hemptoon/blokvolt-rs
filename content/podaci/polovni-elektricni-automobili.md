@@ -113,6 +113,7 @@ Električnih automobila 24. oktobra nije bilo u ponudama koje su javno vidljive.
 - **Priključak.** Evropski automobili imaju Type 2 za sporo i CCS2 za brzo punjenje. Auto kupljen direktno u Kini ima GB/T i za punjače u Srbiji traži adapter — [koji utikač ima auto](/javno-punjenje/ccs2-type2-chademo-gbt/).
 - **Punjač u autu.** Snaga AC punjenja, na primer 7,4 ili 11 kW, određuje koliko traje punjenje kod kuće i na sporom javnom punjaču.
 - **Servis.** Da li marka ima ovlašćeni servis u Srbiji: popravke baterije i softvera rade ovlašćeni servisi. Za Teslu su najbliži servisi u Temišvaru i Budimpešti — [servisi za električne automobile](/podaci/servisi-za-elektricne-automobile/).
+- **Aplikacija i nalog.** Bivši vlasnik ostaje povezan sa autom u aplikaciji dok sam ne ukloni vozilo iz naloga — [nalog električnog auta](/nalog-elektricnog-auta.html).
 - **Opozivi.** Pitajte da li su urađeni opozivi; primer je [opoziv Volkswagen ID. modela](/vesti/vw-opoziv-id-modela-zvanicno-72700-vozila/) zbog baterijskih ćelija.
 - **Istorija i papiri.** COC, dokaz o poreklu i da li je auto ocarinjen i registrovan u Srbiji; da li je u lizingu ili pod zalogom. Kilometražu, štete i ranije registracije prikazuju izveštaji o istoriji vozila po broju šasije.
 - **Osiguranje.** Za marku bez ovlašćenog servisa u Srbiji pitajte osiguravača za kasko pre kupovine — [osiguranje](/podaci/osiguranje-elektricnog-automobila/).

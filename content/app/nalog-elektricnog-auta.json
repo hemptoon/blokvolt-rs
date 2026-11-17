@@ -1,0 +1,56 @@
+{
+  "sr": {
+    "brief": [
+      "Ko ima nalog vezan za auto, može da ga otključa, vidi gde je i promeni podešavanja",
+      "Bivši vlasnik ostaje povezan dok sam ne ukloni vozilo iz aplikacije",
+      "Kod upisujte samo u zvaničnu aplikaciju, nikad preko javne Wi-Fi mreže ili linka"
+    ],
+    "steps": {"title": "Pre isplate za polovan auto", "items": [
+      {"title": "Meni auta", "text": "Pronađite povezane telefone, ključeve i naloge i uklonite tuđe"},
+      {"title": "Aplikacija prodavca", "text": "Prodavac bira uklanjanje ili prenos vlasništva"},
+      {"title": "Ugovor", "text": "Upišite da su sve veze sa nalozima prodavca uklonjene"},
+      {"title": "Posle preuzimanja", "text": "Registrujte se kao glavni korisnik i vratite fabrička podešavanja"}
+    ]},
+    "important": "Plaćanje otkupa ne garantuje povratak naloga: ako neko traži novac ili je auto nestao, prijavite policiji",
+    "paths": [
+      {"title": "Kineski električni auto", "text": "Garancija i servis kineskih marki u Srbiji", "url": "https://www.blokvolt.rs/kineski-elektricni-auto-u-srbiji.html"},
+      {"title": "Polovni električni automobili", "text": "Oglasi, uvoz iz EU i šta proveriti pre kupovine", "url": "https://www.blokvolt.rs/elektricni-automobili/polovni/"}
+    ]
+  },
+  "en": {
+    "brief": [
+      "Whoever has an account linked to the car can unlock it, see where it is and change settings",
+      "The previous owner stays connected until they remove the vehicle from the app themselves",
+      "Enter the code only in the official app, never through public Wi-Fi or a link"
+    ],
+    "steps": {"title": "Before paying for a used car", "items": [
+      {"title": "Car menu", "text": "Find connected phones, keys and accounts and remove anyone else's"},
+      {"title": "Seller's app", "text": "The seller chooses removal or transfer of ownership"},
+      {"title": "Contract", "text": "Write in that all links to the seller's accounts have been removed"},
+      {"title": "After taking over", "text": "Register as the main user and reset to factory settings"}
+    ]},
+    "important": "Paying a ransom does not guarantee you get the account back: if someone demands money or the car is gone, report it to the police",
+    "paths": [
+      {"title": "Chinese electric cars", "text": "Warranty and service of Chinese brands in Serbia", "url": "https://www.blokvolt.rs/en/kineski-elektricni-auto-u-srbiji.html"},
+      {"title": "Used electric cars", "text": "Listings, imports from the EU and what to check before buying", "url": "https://www.blokvolt.rs/en/elektricni-automobili/polovni/"}
+    ]
+  },
+  "ru": {
+    "brief": [
+      "Тот, у кого есть аккаунт машины, может её открыть, увидеть, где она, и изменить настройки",
+      "Прежний владелец остаётся подключён, пока сам не удалит машину из приложения",
+      "Код вводите только в официальном приложении, не через публичный Wi-Fi и не по ссылке"
+    ],
+    "steps": {"title": "До оплаты подержанной машины", "items": [
+      {"title": "Меню машины", "text": "Найдите подключённые телефоны, ключи и аккаунты и удалите чужие"},
+      {"title": "Приложение продавца", "text": "Продавец выбирает удаление или передачу владения"},
+      {"title": "Договор", "text": "Впишите, что все связи с аккаунтами продавца удалены"},
+      {"title": "После получения", "text": "Зарегистрируйтесь как основной пользователь и сбросьте настройки"}
+    ]},
+    "important": "Выкуп не гарантирует возврат аккаунта: если требуют деньги или машина пропала, заявите в полицию",
+    "paths": [
+      {"title": "Китайские электромобили", "text": "Гарантия и сервис китайских марок в Сербии", "url": "https://www.blokvolt.rs/ru/kineski-elektricni-auto-u-srbiji.html"},
+      {"title": "Подержанные электромобили", "text": "Объявления, ввоз из ЕС и что проверить до покупки", "url": "https://www.blokvolt.rs/ru/elektricni-automobili/polovni/"}
+    ]
+  }
+}
