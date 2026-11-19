@@ -1,0 +1,56 @@
+{
+  "sr": {
+    "hero": {
+      "value": "188 km",
+      "label": "od Beograda do Subotice"
+    },
+    "brief": [
+      "Auto sa baterijom od oko 60 kWh stiže do Subotice bez punjenja, a za povratak mu treba dopuna",
+      "Državni punjači u Staroj Pazovi i Subotici su za sada besplatni, samo u smeru ka Beogradu",
+      "U smeru ka Subotici bateriju dopunite u Novom Sadu ili krenite sa punom"
+    ],
+    "keys": [
+      {"value": "850 RSD", "label": "putarina Beograd–Subotica", "icon": "road"},
+      {"value": "720 RSD", "label": "električni auto uz elektronsku naplatu", "icon": "receipt"},
+      {"value": "33 kWh", "label": "VW ID.3 Pro do Subotice leti", "icon": "battery"},
+      {"value": "43 kWh", "label": "VW ID.3 Pro do Subotice zimi", "icon": "battery"}
+    ],
+    "important": "Pre polaska u aplikaciji proverite da li punjač radi i da li je slobodan"
+  },
+  "en": {
+    "hero": {
+      "value": "188 km",
+      "label": "from Belgrade to Subotica"
+    },
+    "brief": [
+      "With about 60 kWh a car reaches Subotica without charging; for the way back it needs a top-up",
+      "State chargers at Stara Pazova and Subotica are free for now, only towards Belgrade",
+      "Towards Subotica, top up in Novi Sad or set off with a full battery"
+    ],
+    "keys": [
+      {"value": "850 RSD", "label": "toll Belgrade–Subotica", "icon": "road"},
+      {"value": "720 RSD", "label": "electric car, electronic toll collection", "icon": "receipt"},
+      {"value": "33 kWh", "label": "VW ID.3 Pro to Subotica in summer", "icon": "battery"},
+      {"value": "43 kWh", "label": "VW ID.3 Pro to Subotica in winter", "icon": "battery"}
+    ],
+    "important": "Before you set off, check in the app that the charger is working and free"
+  },
+  "ru": {
+    "hero": {
+      "value": "188 км",
+      "label": "от Белграда до Суботицы"
+    },
+    "brief": [
+      "С батареей около 60 кВт·ч машина доезжает до Суботицы без зарядки, обратно нужна подзарядка",
+      "Государственные зарядки в Старой Пазове и Суботице пока бесплатны, только в сторону Белграда",
+      "В сторону Суботицы подзарядитесь в Нови-Саде или выезжайте с полной батареей"
+    ],
+    "keys": [
+      {"value": "850 RSD", "label": "плата за дорогу Белград–Суботица", "icon": "road"},
+      {"value": "720 RSD", "label": "электромобиль с электронной оплатой", "icon": "receipt"},
+      {"value": "33 кВт·ч", "label": "VW ID.3 Pro до Суботицы летом", "icon": "battery"},
+      {"value": "43 кВт·ч", "label": "VW ID.3 Pro до Суботицы зимой", "icon": "battery"}
+    ],
+    "important": "Перед выездом проверьте в приложении, что зарядка работает и свободна"
+  }
+}

@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 18.11.2026
+updated: 19.11.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-11-18
+modified: 2026-11-19
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 19. novembar 2026
+
+- Novi vodič [Beograd–Novi Sad–Subotica: punjači](/javno-punjenje/beograd-novi-sad-subotica-punjaci/): punjači uz autoput A1 po smeru, punjači blizu izlaza u Novom Sadu i Subotici, da li auto sa baterijom od oko 60 kWh stiže bez punjenja i koliko košta put sa putarinom.
+
 ## 18. novembar 2026
 
 - Novi vodič [Nalog električnog auta](/nalog-elektricnog-auta.html): ko još ima pristup autu preko aplikacije proizvođača, kako da zaštitite nalog, šta da proverite pri kupovini polovnog auta i auta za kinesko tržište i šta da radite kad izgubite pristup. Link je dodat i u spisak provera na stranici [polovni električni automobili](/elektricni-automobili/polovni/).
