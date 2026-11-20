@@ -1,0 +1,23 @@
+{
+  "sr": {
+    "hero": {"value": "1,5 mlrd", "label": "dinara za subvencije od 2020, po nalazu DRI"},
+    "brief": [
+      "Na kraju 2025. bilo je oko 6.865 električnih vozila, manje od 0,3 % voznog parka",
+      "Na autoputevima je krajem 2025. radilo 26 od 32 punjača JP „Putevi Srbije“"
+    ]
+  },
+  "en": {
+    "hero": {"value": "1,5 bn", "label": "dinars in subsidies since 2020, per the DRI"},
+    "brief": [
+      "About 6.865 electric vehicles at the end of 2025, less than 0,3 % of the fleet",
+      "At the end of 2025, 26 of 32 “Putevi Srbije” motorway chargers were working"
+    ]
+  },
+  "ru": {
+    "hero": {"value": "1,5 млрд", "label": "динаров на субсидии с 2020 года, по данным DRI"},
+    "brief": [
+      "На конец 2025 года — около 6.865 электромобилей, меньше 0,3 % автопарка",
+      "На конец 2025 года на автомагистралях работали 26 из 32 зарядок «Путеви Србије»"
+    ]
+  }
+}
