@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 19.11.2026
+updated: 20.11.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-11-19
+modified: 2026-11-20
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 20. novembar 2026
+
+- [Cena goriva i struje](/podaci/cena-goriva-i-struje/): najviše cene od 20. novembra — evrodizel 236 RSD, benzin BMB 95 204 RSD (nedelju ranije 236 i 207 RSD).
+
 ## 19. novembar 2026
 
 - Novi vodič [Beograd–Novi Sad–Subotica: punjači](/javno-punjenje/beograd-novi-sad-subotica-punjaci/): punjači uz autoput A1 po smeru, punjači blizu izlaza u Novom Sadu i Subotici, da li auto sa baterijom od oko 60 kWh stiže bez punjenja i koliko košta put sa putarinom.
