@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 20.11.2026
+updated: 21.11.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-11-20
+modified: 2026-11-21
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 21. novembar 2026
+
+- Novi vodič [Brzo punjenje i baterija](/javno-punjenje/da-li-brzo-punjenje-unistava-bateriju/): koliko brzo punjenje ubrzava starenje baterije po podacima Geotaba, Recurrenta i ADAC-a i kako da punite da baterija duže traje.
+
 ## 20. novembar 2026
 
 - [Cena goriva i struje](/podaci/cena-goriva-i-struje/): najviše cene od 20. novembra — evrodizel 236 RSD, benzin BMB 95 204 RSD (nedelju ranije 236 i 207 RSD).
