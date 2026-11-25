@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 21.11.2026
+updated: 25.11.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-11-21
+modified: 2026-11-25
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 25. novembar 2026
+
+- Novi vodič [Punjač ne radi: šta proveriti](/javno-punjenje/punjac-ne-radi-sta-proveriti/): šta proveriti kad punjenje na javnom punjaču ne počinje ili se prekida, kako osloboditi zaključan kabl i koga zvati.
+
 ## 21. novembar 2026
 
 - Novi vodič [Brzo punjenje i baterija](/javno-punjenje/da-li-brzo-punjenje-unistava-bateriju/): koliko brzo punjenje ubrzava starenje baterije po podacima Geotaba, Recurrenta i ADAC-a i kako da punite da baterija duže traje.

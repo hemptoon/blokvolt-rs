@@ -1,0 +1,89 @@
+{
+  "sr": {
+    "hero": {
+      "value": "15 min",
+      "label": "Charge&GO bez naplate posle kraja punjenja"
+    },
+    "brief": [
+      "Punjenje ne počinje: izvucite kabl, sačekajte i priključite ga ponovo",
+      "Ne pomaže: probajte drugi priključak ili drugi stub i javite kvar mreži",
+      "Kabl ne izlazi: završite punjenje onako kako ste ga pokrenuli"
+    ],
+    "steps": {
+      "title": "Kabl ne izlazi",
+      "items": [
+        {
+          "title": "Završite punjenje",
+          "text": "Na isti način kao što ste ga pokrenuli: u aplikaciji ili karticom"
+        },
+        {
+          "title": "Ključ",
+          "text": "Zaključajte pa otključajte auto daljinskim ključem, i to nekoliko puta"
+        },
+        {
+          "title": "Podrška mreže",
+          "text": "Kad operater daljinski završi punjenje, punjač pušta kabl"
+        }
+      ]
+    },
+    "important": "Kod dima, varnica ili oštećenog kabla ne dirajte punjač i pozovite 193 ili 112"
+  },
+  "en": {
+    "hero": {
+      "value": "15 min",
+      "label": "Charge&GO free of charge after charging ends"
+    },
+    "brief": [
+      "Charging does not start: unplug the cable, wait and plug it in again",
+      "Still nothing: try another connector or another post and report the fault to the network",
+      "The cable will not come out: end the session the same way you started it"
+    ],
+    "steps": {
+      "title": "The cable will not come out",
+      "items": [
+        {
+          "title": "End the session",
+          "text": "The same way you started it: in the app or with the card"
+        },
+        {
+          "title": "Key",
+          "text": "Lock and unlock the car with the remote key, several times"
+        },
+        {
+          "title": "Network support",
+          "text": "Once the operator ends the session remotely, the charger releases the cable"
+        }
+      ]
+    },
+    "important": "If there is smoke, sparks or a damaged cable, do not touch the charger and call 193 or 112"
+  },
+  "ru": {
+    "hero": {
+      "value": "15 мин",
+      "label": "Charge&GO бесплатно после конца зарядки"
+    },
+    "brief": [
+      "Зарядка не начинается: выньте кабель, подождите и подключите снова",
+      "Не помогло: попробуйте другой разъём или другую стойку и сообщите о неисправности сети",
+      "Кабель не вынимается: завершите зарядку тем же способом, каким запускали"
+    ],
+    "steps": {
+      "title": "Кабель не вынимается",
+      "items": [
+        {
+          "title": "Завершите зарядку",
+          "text": "Тем же способом, каким запускали: в приложении или картой"
+        },
+        {
+          "title": "Ключ",
+          "text": "Закройте и откройте машину с пульта ключа, несколько раз"
+        },
+        {
+          "title": "Поддержка сети",
+          "text": "Когда оператор удалённо завершит зарядку, станция отпустит кабель"
+        }
+      ]
+    },
+    "important": "При дыме, искрах или повреждённом кабеле не трогайте станцию и звоните 193 или 112"
+  }
+}
