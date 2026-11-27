@@ -13,6 +13,7 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
 ## 27. novembar 2026
 
+- [Cena goriva i struje](/podaci/cena-goriva-i-struje/): najviše cene od 27. novembra — evrodizel 233 RSD, benzin BMB 95 201 RSD (nedelju ranije 236 i 204 RSD).
 - Novi vodič [Punjenje u garaži i tržnom centru](/javno-punjenje/punjenje-u-trznim-centrima-i-garazama/): koliko košta punjenje u javnim garažama u Beogradu i Novom Sadu, u Promenadi, BIG centrima i IKEA i šta se plaća po satu, po kWh, a šta po minutu.
 
 ## 25. novembar 2026

@@ -9,6 +9,7 @@
   "url": "https://www.paragraf.rs/dnevne-vesti/191026/191026-vest7.html"
  },
  "weeks": [
+  {"from": "27.11.2026", "to": "04.12.2026", "dizel": 233, "benzin": 201, "source": "Moj Novi Sad, 27.11.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://www.mojnovisad.com/objavljene-cene-goriva-koje-ce-vaziti-do-4-decembra/"},
   {"from": "20.11.2026", "to": "27.11.2026", "dizel": 236, "benzin": 204, "source": "B92 (Tanjug), 20.11.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://www.b92.net/biz/srbija/vesti/286622/cene-goriva-do-27-novembra/vest"},
   {"from": "13.11.2026", "to": "20.11.2026", "dizel": 236, "benzin": 207, "source": "Moj Novi Sad, 13.11.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://www.mojnovisad.com/objavljene-cene-goriva-koje-ce-vaziti-do-20-novembra/"},
   {"from": "06.11.2026", "to": "13.11.2026", "dizel": 236, "benzin": 207, "source": "Novosti (Tanjug), 06.11.2026 — saopštenje Ministarstva unutrašnje i spoljne trgovine", "url": "https://www.novosti.rs/ekonomija/vesti/1668646/ovo-nove-cene-goriva-evo-koliko-narednih-sedam-dana-kostati-dizel-benzin"},
