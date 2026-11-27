@@ -4,13 +4,17 @@ h1: Izmene na sajtu
 description: Šta je i kada promenjeno na sajtu BlokVolt — nove firme, ispravljene cene, ažurirani propisi. Javni zapis, najnovije na vrhu.
 kicker: O sajtu · dnevnik izmena
 lead: Ispravke i veće izmene na sajtu, najnovije na vrhu.
-updated: 25.11.2026
+updated: 27.11.2026
 path: /izmene/
 published: 2026-09-22
-modified: 2026-11-25
+modified: 2026-11-27
 priority: 0.3
 disclaimer: Propuštenu izmenu ili grešku prijavite na
 ---
+## 27. novembar 2026
+
+- Novi vodič [Punjenje u garaži i tržnom centru](/javno-punjenje/punjenje-u-trznim-centrima-i-garazama/): koliko košta punjenje u javnim garažama u Beogradu i Novom Sadu, u Promenadi, BIG centrima i IKEA i šta se plaća po satu, po kWh, a šta po minutu.
+
 ## 25. novembar 2026
 
 - Novi vodič [Punjač ne radi: šta proveriti](/javno-punjenje/punjac-ne-radi-sta-proveriti/): šta proveriti kad punjenje na javnom punjaču ne počinje ili se prekida, kako osloboditi zaključan kabl i koga zvati.

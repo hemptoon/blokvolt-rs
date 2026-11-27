@@ -1,0 +1,56 @@
+{
+  "sr": {
+    "hero": {"value": "500 RSD", "label": "Novi Sad: 60 minuta parkinga i punjenja"},
+    "brief": [
+      "Garaže Banovina i Modena: 60 RSD/kWh plus 100 RSD po započetom satu",
+      "Promenada i BIG Fashion Kragujevac: AC 22 kW, 16,67 RSD/min, bez kabla",
+      "IKEA Beograd: punjenje besplatno, dva punjača u redu A9"
+    ],
+    "bars": {
+      "title": "Auto koji prima 11 kW",
+      "note": "Oko toliko RSD po kWh",
+      "items": [
+        {"label": "Parking servis Novi Sad", "value": 45, "display": "45 RSD", "accent": true},
+        {"label": "Banovina i Modena", "value": 69, "display": "69 RSD"},
+        {"label": "AC 22 kW Charge&GO", "value": 91, "display": "91 RSD"}
+      ]
+    },
+    "important": "Promenada, BIG Fashion Kragujevac i Modena nemaju kabl na stubu: treba sopstveni Type 2 kabl"
+  },
+  "en": {
+    "hero": {"value": "500 RSD", "label": "Novi Sad: 60 minutes of parking and charging"},
+    "brief": [
+      "Banovina and Modena garages: 60 RSD/kWh plus 100 RSD per started hour",
+      "Promenada and BIG Fashion Kragujevac: AC 22 kW, 16,67 RSD/min, no cable",
+      "IKEA Belgrade: charging is free, two chargers in row A9"
+    ],
+    "bars": {
+      "title": "A car that takes 11 kW",
+      "note": "About this many RSD per kWh",
+      "items": [
+        {"label": "Parking servis Novi Sad", "value": 45, "display": "45 RSD", "accent": true},
+        {"label": "Banovina and Modena", "value": 69, "display": "69 RSD"},
+        {"label": "AC 22 kW Charge&GO", "value": 91, "display": "91 RSD"}
+      ]
+    },
+    "important": "Promenada, BIG Fashion Kragujevac and Modena have no cable on the post: you need your own Type 2 cable"
+  },
+  "ru": {
+    "hero": {"value": "500 RSD", "label": "Нови-Сад: 60 минут парковки и зарядки"},
+    "brief": [
+      "Гаражи Banovina и Modena: 60 RSD/кВт·ч плюс 100 RSD за начатый час",
+      "Promenada и BIG Fashion Крагуевац: AC 22 кВт, 16,67 RSD/мин, без кабеля",
+      "IKEA Белград: зарядка бесплатная, две станции в ряду A9"
+    ],
+    "bars": {
+      "title": "Машина, которая принимает 11 кВт",
+      "note": "Примерно столько RSD за кВт·ч",
+      "items": [
+        {"label": "Parking servis Нови-Сад", "value": 45, "display": "45 RSD", "accent": true},
+        {"label": "Banovina и Modena", "value": 69, "display": "69 RSD"},
+        {"label": "AC 22 кВт Charge&GO", "value": 91, "display": "91 RSD"}
+      ]
+    },
+    "important": "В Promenada, BIG Fashion Крагуевац и Modena кабеля на стойке нет: нужен свой кабель Type 2"
+  }
+}
