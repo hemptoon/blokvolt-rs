@@ -1,0 +1,23 @@
+{
+  "sr": {
+    "hero": {"value": "29.990 €", "label": "cena na sajtu uvoznika, sa PDV-om"},
+    "brief": [
+      "Baterija 52 kWh, motori 155 i 166 kW, domet do 448 km po podacima proizvođača",
+      "Brzo punjenje do 130 kW, od 0 do 80 % za 23 minuta"
+    ]
+  },
+  "en": {
+    "hero": {"value": "29.990 €", "label": "price on the importer's website, incl. VAT"},
+    "brief": [
+      "52 kWh battery, 155 and 166 kW motors, range up to 448 km according to the manufacturer",
+      "Fast charging up to 130 kW, from 0 to 80 % in 23 minutes"
+    ]
+  },
+  "ru": {
+    "hero": {"value": "29.990 €", "label": "цена на сайте импортёра, с НДС"},
+    "brief": [
+      "Батарея 52 кВт·ч, двигатели 155 и 166 кВт, запас хода до 448 км по данным производителя",
+      "Быстрая зарядка до 130 кВт, с 0 до 80 % за 23 минуты"
+    ]
+  }
+}
