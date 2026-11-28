@@ -19,7 +19,6 @@ disclaimer: Propuštenu izmenu ili grešku prijavite na
 ## 25. novembar 2026
 
 - Novi vodič [Punjač ne radi: šta proveriti](/javno-punjenje/punjac-ne-radi-sta-proveriti/): šta proveriti kad punjenje na javnom punjaču ne počinje ili se prekida, kako osloboditi zaključan kabl i koga zvati.
-- Novi vodič [Punjač ne radi: šta proveriti](/javno-punjenje/punjac-ne-radi-sta-proveriti/): šta proveriti kad punjenje na javnom punjaču ne počinje ili se prekida, kako osloboditi zaključan kabl i koga zvati.
 
 ## 21. novembar 2026
 
